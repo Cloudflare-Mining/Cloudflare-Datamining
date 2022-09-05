@@ -1,0 +1,80 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image1-32.png" class="kg-image" alt="Security for SaaS Providers"></figure>
+	<p>一些最大的软件即服务 (SaaS) 提供商使用 Cloudflare 作为底层基础结构，向客户提供快速加载时间、无与伦比的冗余和最强大的安全性。这一切都得益于我们的 <a href="https://blog.cloudflare.com/cloudflare-for-saas/">Cloudflare for SaaS</a> 产品。今天，我们很高兴能为 SaaS 提供商提供新工具，帮助他们增强客户应用程序的安全性。</p>
+	<p>我们为 Enterprise 客户推出了 WAF for SaaS，让 SaaS 提供商能够为客户轻松创建和部署不同的 WAF 规则集。这样，SaaS 提供商可以根据客户的安全性要求，将客户划分为不同的组。</p>
+	<p>对于应用程序开发人员，我们非常兴奋地宣布推出适用于 Free、Pro 和 Biz 计划的 Cloudflare for SaaS Free 层，为客户免费提供 100 个自定义主机名，方便他们配置和测试帐户。此外，为了更方便开发人员扩展应用程序，我们很高兴地宣布将自定义主机名价格从每月 2 美元下调到 0.10 美元。</p>
+	<p>但福利远不止这些！Cloudflare 坚信所有人都应享受安全性。因此，我们为 <a href="https://blog.cloudflare.com/waf-for-everyone/">Free 客户提供新的 WAF 规则集</a>，让所有客户都能保护自己及客户的应用程序。</p>
+	<h2 id="-saas-">让所有人享受 SaaS 基础结构</h2>
+	<p>让 Cloudflare 引以为豪的是，Free 层让任何客户都能利用我们的网络来保持安全和在线。我们为构建全新 SaaS 产品/服务的客户提供 Cloudflare for SaaS Free 层，允许他们免费使用 100 个自定义主机名，希望他们能享受同样的支持。这 100 个自定义主机名会自动分配给 Cloudflare for SaaS 的新老客户。此外，我们还将自定义主机名价格从每月 2 美元下调到 0.10 美元，让 SaaS 提供商能够引导和扩展客户的应用程序。Cloudflare for SaaS 老客户将在下一个计费周期看到新的自定义主机名定价。</p>
+	<p>Cloudflare for SaaS 一开始是作为 SaaS 提供商的 TLS 证书颁发产品。现在，我们进一步帮助客户，使他们的客户保持安全。</p>
+	<h2 id="-waf-for-saas">引入 WAF for SaaS</h2>
+	<p>SaaS 提供商可能有不同的客户群，从夫妻店到知名银行。重要的是，SaaS 提供商必须能为客户提供最佳保护，无论客户是谁，规模如何。</p>
+	<p>Cloudflare 多年来一直在为客户构建最佳 Web 应用程序防火墙。从提供高级零日漏洞保护的托管规则，到阻止流行攻击技术的 OWASP 规则，我们为客户提供保护自己的最佳工具。现在，我们希望将这些工具交给 SaaS 提供商，帮助他们保证客户群的安全。</p>
+	<p>Cloudflare for SaaS 的一个好处是，SaaS 提供商可以在 SaaS 区域配置安全规则和设置，他们的客户会自动继承这些规则和设置。但是一种方法并不适合所有人。为此，我们非常乐意帮助 Enterprise 客户创建各种 WAF 规则集。然后，他们将这作为不同的安全包提供给客户，让最终用户根据需要获得不同级别的保护。</p>
+	<h2 id="-">入门</h2>
+	<p>WAF for SaaS 设置非常轻松。下面的示例展示了如何为各种客户配置不同的 WAF 规则集。</p>
+	<p>规则集创建数量没有限制，您可以为多个客户创建少量配置，也可以为每个客户部署一个规则集，只要适合您！</p>
+	<h2 id="--1">端到端示例</h2>
+	<h3 id="-1-">第 1 步 - 定义自定义主机名</h3>
+	<p>Cloudflare for SaaS 客户通过创建自定义主机名来定义客户的域。自定义主机名指示哪些域需要路由到 SaaS 提供商的源站。自定义主机名可以定义特定域，例如 example.com，也可以扩展到通配符，例如 <code>*.example.com</code>，这允许 <code>example.com</code>, 下的子域路由到 SaaS 服务。WAF for SaaS 支持两种类型的自定义主机名，使 SaaS 提供商可以灵活选择保护范围。</p>
+	<p>第一步是创建自定义主机名来定义客户的域。这可以通过仪表板或 API 完成。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>curl -X POST "https://api.cloudflare.com/client/v4/zones/{zone:id}/custom_hostnames" \
+     -H "X-Auth-Email: {email}" -H "X-Auth-Key: {key}"\
+     -H "Content-Type: application/json" \
+     --data '{
+
+"Hostname":{“example.com”},
+"Ssl":{wildcard: true}
+}'
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h3 id="-2-">第 2 步 - 将自定义元数据关联到自定义主机名</h3>
+	<p>接下来，在自定义主机名（客户的域）与您想连接的防火墙规则集之间创建关联。</p>
+	<p>方法为将 JSON blob 关联到自定义主机名。我们的产品<a href="https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-metadata/" target="_blank">自定义元数据</a>允许客户通过 API 轻松执行此操作。</p>
+	<p>在下面的示例中，具有两个字段（“customer_id” 和 “security_level”）的 JSON blob 将关联到 <code>*.example.com</code> 和 <code>example.com</code> 的每个请求。</p>
+	<p>自定义元数据没有预先确定的模式。字段名称和结构完全可根据客户的需求进行自定义。在此示例中，我们选择了 Tag 标记 “security_level”，预计会向其分配三个值（low、medium 或 high）。这些值进而会触发三组不同的规则。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>curl -sXPATCH "https://api.cloudflare.com/client/v4/zones/{zone:id}/custom_hostnames/{custom_hostname:id}"\
+    -H "X-Auth-Email: {email}" -H "X-Auth-Key: {key}"\
+    -H "Content-Type: application/json"\
+    -d '{
+"Custom_metadata":{
+"customer_id":"12345",
+“security_level”: “low”
+}
+}'
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h3 id="-3-tag-">第 3 步 - 根据 Tag 标记触发安全产品</h3>
+	<p>最后，您可以根据自定义主机名触发规则。自定义元数据字段，例如 “security_level”，在 WAF 运行所在的规则集引擎中可用。在此示例中，“security_level” 可用于触发产品的不同配置，例如 WAF、防火墙规则、高级速率限制和转换规则。</p>
+	<p>可以通过仪表板或 API 构建规则，如下所示。当 “security_level” 设置为 <em>low</em> 时，将触发速率限制规则。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>curl -X PUT "https://api.cloudflare.com/client/v4/zones/{zone:id}/rulesets/phases/http_ratelimit/entrypoint" \
+    -H "X-Auth-Email: {email}" -H "X-Auth-Key: {key}"\
+    -H "Content-Type: application/json"\
+    -d '{
+
+"rules": [
+              {
+                "action": "block",
+                "ratelimit": {
+                  "characteristics": [
+                    "cf.colo.id",
+                    "ip.src"
+                  ],
+                  "period": 10,
+                  "requests_per_period": 2,
+                  "mitigation_timeout": 60
+                },
+                "expression": "lookup_json_string(cf.hostname.metadata, \"security_level\") eq \"low\" and http.request.uri contains \"login\""
+              }
+            ]
+          }}'
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>如果想进一步了解我们的高级速率限制规则，请查看我们的<a href="https://developers.cloudflare.com/waf/custom-rules/rate-limiting/" target="_blank">文档</a>。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image2-30.png" class="kg-image"></figure>
+	<h2 id="--2">总结</h2>
+	<p>我们很高兴成为满足 SaaS 客户基础结构需求的提供商。从自定义域到 TLS 证书，再到 Web 应用程序防火墙，我们随时可以提供帮助。立即注册 Cloudflare for SaaS；如果您是 Enterprise 客户，请联系客户部开始使用 WAF for SaaS。</p>
+</div>

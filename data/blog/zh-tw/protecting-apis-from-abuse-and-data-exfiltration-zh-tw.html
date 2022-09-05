@@ -1,0 +1,48 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/Announcing-Cloudflare-s-Data-Loss-Prevention-platform-OG-blog-body-2.png" class="kg-image"></figure>
+	<p>API 流量增長迅速。僅去年一年，我們的邊緣 API 流量的增長速度就比 Web 流量快 300％。API 為行動裝置和 Web 應用程式提供強大支援，使其可以傳輸各種指令，例如「使用這張信用卡從我最喜歡的餐館訂購披薩」或「進行加密貨幣交易，這些是我的個人詳細資料」，而這些資料很容易被竊取和濫用。OWASP 將資料暴露列為 API 流量的主要威脅之一；這包括資料洩漏和來自來源回應的洩漏 (<a href="https://owasp.org/www-project-api-security/" target="_blank">2019 API 安全性十大威脅</a>)。API 流量的增加和更頻繁的資料攻擊亟需新的安全解決方案。</p>
+	<p>Cloudflare 的安全性工具組始終致力於保護 Web 和 API 流量。但是，在與數百個客戶溝通之後，我們意識到需要在單個介面中針對 API 流量新增可輕鬆部署和設定的安全性工具。為滿足這一需求，我們在 2020 年 10 月發佈了 <a href="https://blog.cloudflare.com/introducing-api-shield/">API ShieldTM</a>，這款新產品旨在整合所有針對 API 流量設計的安全解決方案。初期，我們向所有 Cloudflare 使用者免費提供 mTLS 認證、gRPC 支援和 Beta 版結構描述驗證。在發佈過程中，我們在未來的發佈版本計劃中新增了更多進階安全功能。現在，我們很高興能夠擴展我們的服務，提供全新功能來防止您的 API 暴露敏感性資料。</p>
+	<p>今天，我們將發佈四項功能，目的是幫助減輕洩露攻擊的影響：針對所有企業客戶的結構描述驗證，可讓您封鎖來自開放代理的流量的受管理 IP 清單、進一步控制憑證生命週期，以及資料丟失預防解決方案。之後在本週，我們還將發佈一些功能，這些功能可幫助您發現網路上執行的您可能未注意到的 API，另外，我們還會介紹一些方法，用於識別不符合預期用途的異常請求。</p>
+	<h3 id="-"><strong>全面提供結構描述驗證服務</strong></h3>
+	<p>在 API Shield 發佈期間，我們引入了結構描述驗證，專為部分指定客戶發佈。在過去幾個月中，我們一直在與早期採用者合作，以增加更多功能並直接在我們的儀表板中建構易於使用的介面。現在，您可以前往 [API Shield] 標籤，直接從該使用者介面部署 API 安全產品。稍後我們會擴充部署流程，在儀表板中新增其他功能，例如 mTLS 和限速。此外，我們還將整合 API 異常偵測等新功能，以簡化回饋迴圈。</p>
+	<p>結構描述驗證的工作原理是，基於 API「結構描述」建立可靠的安全模型，該模型是一種合約，用於定義 API 的使用情況並引導開發人員將其整合到他們的系統中。與負面安全性模型 (其規則定義了一個請求必須具有哪些特徵才能觸發一項動作，例如封鎖) 不同，結構描述驗證用於允許經驗證符合要求的請求，同時對其他請求採取相應動作。結構描述驗證接受符合 OpenAPI v3 規格 (也稱為 Swagger 規格) 的結構描述，該規格是定義 RESTful 介面的標準 (<a href="https://swagger.io/solutions/getting-started-with-oas/" target="_blank">在此頁了解詳情</a>)。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image2-32-2.png" class="kg-image" alt="Schema Validation evaluates each request against an API Schema logging or blocking requests that do not comply with it."></figure>
+	<p>結構描述驗證根據 API 結構描述記錄記錄對每個請求進行評估，並封鎖不符合要求的請求。</p>
+	<p>API Shield 提供易於使用的使用者介面，使用者可以在這裡將其結構描述上傳到防火牆，並自動建立規則以根據 API 定義驗證每個請求。如果請求符合要求，則將其轉送到來源。相反，如果請求的格式或資料內容與 API Shield 預期的不相符，則會記錄或丟棄該呼叫，以保護來源免受無效請求或惡意有效負載的入侵。API 開發人員可能無法預知帶有外部輸入的請求，這些請求可能會觸發資料洩漏等無法預料的應用程式行為。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/04/image6-2.gif" class="kg-image" alt="API Shield with Schema Validation being deployed using the Cloudflare Rulesets OpenAPI schema.">
+		<figcaption>具有結構描述驗證功能的 API Shield，使用 Cloudflare Rulesets OpenAPI 結構描述來部署。‌‌</figcaption>
+	</figure>
+	<p>使用者介面會引導使用者執行各個步驟，包括定義主機名稱和用於部署 API Shield 的 API 基礎路徑，以及上傳結構描述檔案。部署完具有結構描述驗證的 API Shield 後，就可以檢查防火牆已剖析哪些端點以及提供何種級別的保護。在查看頁面中，有兩組端點：受保護的端點和不受保護的端點。前者列出結構描述受支援的所有端點和方法，後者指明定義不受支援或模棱兩可的任何端點。為避免中斷導向結構描述檔案中未列出端點的流量，我們提供了一條最終規則，該規則會比對未導向任何受保護端點的流量。</p>
+	<p>每當結構描述驗證識別到不符合要求的請求並採取諸如封鎖或記錄等動作時，系統都會建立一個標記來源「API Shield」的新事件並將其新增到防火牆記錄中。使用者可以透過存取 [概觀] 頁面來存取分析和記錄，然後在該頁面使用我們基於 GraphQL 的靈活儀表板深入分析資料。</p>
+	<p>結構描述驗證對路徑、路徑變數、查詢參數、標頭和 Cookie 進行檢查，並允許記錄不符合要求的流量。結構描述驗證 Beta 版現已向 Enterprise 客戶全面開放，<a href="https://www.cloudflare.com/zh-tw/waf/api-shield" target="_blank">填寫此表格</a>即可獲得使用權限。</p>
+	<h3 id="--1"><strong>資料丟失預防</strong></h3>
+	<p>資料丟失是影響各種規模組織的最大安全隱患之一，也會影響個人及其隱私。敏感性資料的丟失可能會給公司帶來極大影響，包括財務損失、品牌價值下降以及違反最新資料保護相關法律法規。再者，個人敏感性資料的丟失可能會造成個人資金損失和隱私問題。</p>
+	<p>今天稍早，我們發佈了資料丟失預防 (DLP) 產品套件；我們現在擴展這一產品是為了識別在 HTTP 或 API 請求的回應階段中離開您來源的敏感性資料。該解決方案會評估輸出流量，對照敏感性資料的常見模式檢查有效負載。這包括個人識別資訊，例如社會保險號碼和財務資訊，包括信用卡號、銀行詳細資料等。在第一個版本中，使用者將能夠記錄 DLP 觸發的任何比對。我們計劃新增其他動作，例如混淆和封鎖即將離開 Cloudflare 後方來源的敏感性資料。接下來，我們打算讓客戶自訂規則，以識別其應用程式特有的敏感性資料。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/DLP-Diagram-2.png" class="kg-image"></figure>
+	<p>我們在開發 DLP 時以簡單易用為設計原則，既可以保護每個客戶，又不需要進行複雜且費時的設定。我們將 DLP 發佈為受管理規則集，可透過 [防火牆受管理規則] 標籤啟用。DLP 可用作反向 Proxy WAF 的一部分，但也可以用作 Cloudflare for Teams 的一部分，將資料保護整合到零信任設定中。這種緊密整合能夠進一步控制哪些人員可以存取您組織內的敏感性資訊。</p>
+	<p>DLP 目前正處於 beta 測試階段，僅向部分早期採用客戶發佈。請<a href="https://www.cloudflare.com/zh-tw/waf/api-shield" target="_blank">填寫此表</a>加入等候清單。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/04/image22-1-2.png" class="kg-image" alt="Data Loss Protection can be turned on as a Managed Ruleset.">
+		<figcaption>資料丟失預防可作為受管理規則集啟用。</figcaption>
+	</figure>
+	<h3 id="-ip-cloudflare-"><strong>受管理 IP 清單：Cloudflare 的威脅情報</strong></h3>
+	<p>我們即將發佈我們的第一個受管理 IP 清單，該清單將可以在防火牆規則中使用。2020 年 7 月，<a href="https://blog.cloudflare.com/introducing-ip-lists/">我們發佈了 IP 清單</a>，讓客戶能夠上傳大型 IP 清單，使其可在編寫防火牆規則時使用。今天，我們將發佈一個由 Cloudflare 精心編制的清單，客戶可以像使用自訂上傳清單一樣在其規則中使用。</p>
+	<p>[Cloudflare 開放代理] 包含由 Cloudflare 透過分析邊緣流量確定的 Open SOCKS 和 HTTP Proxy 的 IP。這不僅限於 API 請求；規則可以套用於防火牆評估的所有類型的流量。</p>
+	<p>該清單是我們基於 Cloudflare 威脅情報 (得益於我們網路的規模和覆蓋面) 公開的第一個饋送。那麼我們是如何填充此清單？我們會監測網際網路上每個公共可路由 IP 位址的請求。Cloudflare 將開放原始碼清單與其大型網路相結合，以識別開放代理。驗證代理後，Cloudflare 會確定出口 IP 並建立一個清單。然後，我們將此信譽資料饋送到我們的安全系統中，並以受管理 IP 清單的形式將其提供給客戶。</p>
+	<p>該清單適用於所有企業方案，使用方法為在下拉式功能表中選擇 [Cloudflare 開放代理]，收集所有可用的 IP 清單 (請參見下圖)。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/04/image3-29-2.png" class="kg-image" alt="Cloudflare Open Proxies managed list can be used directly in the Firewall rule builder.">
+		<figcaption>可以直接在防火牆規則建立工具中使用 Cloudflare 開放代理受管理清單。</figcaption>
+	</figure>
+	<h3 id="--2"><strong>進一步控制用戶端憑證</strong></h3>
+	<p>我們在推出 mTLS 和 API Shield 的第一個版本時考慮了行動應用程式和 IoT 裝置因素。一般來說，使用戶端憑證強制進行嚴格的認證是一種非常有效的措施，可保護流量免於資料洩露和濫用。但是，如果 IoT 裝置或行動電話被盜、丟失或被惡意執行者控制，Cloudflare 使用者需要一種方法來撤銷可能造成潛在安全風險的憑證。能夠永久性排除進入被入侵裝置的流量是防止資料丟失和惡意攻擊的有效方法。</p>
+	<p>在已經開始將 API Shield 憑證內嵌於應用程式的客戶中，有許多客戶已使用具有 Workers KV 的 Workers 實現了撤銷解決方案。儘管此解決方案允許對憑證進行細項控制，但這需要我們的客戶進行大量開發工作，並且不易擴充。</p>
+	<p>在安全週，我們將發佈完全受管理的解決方案，用於撤銷 (和還原) 憑證，無需編寫任何程式碼。我們建構了簡單直觀的介面，使用者可在我們的邊緣網路管理包括簽發和撤銷在內的整個憑證生命週期。這項工作由我們代為完成，這樣您就可以專注於建構應用程式，而無需擔憂該如何設定複雜且昂貴的公開金鑰基礎結構 (PKI) 以及管理有潛在風險的裝置的撤銷事宜。客戶接觸點包括：用戶端憑證標籤中的 [撤銷] 和 [還原] 按鈕、其支援的 API 呼叫，以及用於防火牆規則的新欄位。</p>
+	<p>對於每個向 Cloudflare 邊緣提交憑證的請求，都需要設定兩個防火牆欄位集：cf.tls_client_auth.cert_verified 和 cf.tls_client_auth.cert_revoked。請求由防火牆處理，使用者可以在其中將這些欄位與所有其他防火牆功能整合在一起。這樣，客戶就可以根據憑證是已經過驗證還是經過驗證但已撤銷，來設定不同的行為。另外，您還可以實作所需的安全性原則，同時為最終使用者提供良好體驗。經典設定是僅允許具有經過驗證之憑證的請求，同時將已撤銷憑證的請求轉送到其他頁面或端點，以根據使用者旅程的要求處理異常狀況。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/04/image5-28-2.png" class="kg-image" alt="Users can revoke certificates by visiting the Client Certificates tab.">
+		<figcaption>使用者可以透過存取 [用戶端憑證] 標籤來撤銷憑證。</figcaption>
+	</figure>
+	<h3 id="--3"><strong>後續計劃</strong></h3>
+	<p>Cloudflare 團隊正致力於在 API Shield 的基礎上發佈更多功能。向使用 Cloudflare 管理 API 流量的數百個客戶尋求建議後，我們決定優先推出以下三項功能：深度 API 分析、更靈活的限速工具以及與 API 異常偵測的整合。</p>
+	<p>結構描述驗證和資料丟失預防功能已於今天發佈，全面整合至我們的記錄和分析引擎中。今後，我們計劃擴充流量分析能力，並為客戶提供各種工具來識別和管理專門針對 API 端點的攻擊。</p>
+	<p>Cloudflare 限速功能的作用是有效管理網路流量，您可以基於 URL 和請求方法編寫規則。現在，我們正致力於將強大的防火牆規則與限速提供的控制功能相整合。這樣，使用者就可以利用防火牆中提供的強大邏輯對流量進行分類。此外，我們還將擴充計數機制，以新增基於 API 金鑰和使用者 ID 進行限速的功能。</p>
+	<p>針對 API 流量進行攻擊時，攻擊模式可能有很大差異，這使得傳統的機器人管理解決方案無法有效識別可疑行為。我們將在週五發佈兩項重要功能，主要用於進一步保護您的應用程式：API 發現和異常偵測。客戶可以利用發現功能對應其端點，並了解其 API 的表面區域。Cloudflare 的異常偵測解決方案可自動將正常 API 流量和惡意活動隔離開來，不但安全可靠，還能夠大規模執行。客戶將能夠同時設定此項功能及 mTLS、結構描述驗證和限速，以提供最大程度的保護。請於週五查看我們的部落格，詳細了解這些新產品。<br></p>
+</div>

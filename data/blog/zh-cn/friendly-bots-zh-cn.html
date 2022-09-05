@@ -1,0 +1,63 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image6-3.png" class="kg-image" alt="Announcing Friendly Bots"></figure>
+	<p>如果提到互联网上的机器人，您的第一反应是什么？</p>
+	<p>很可能是负面印象。我们大多数人会联想到验证码、密码被盗，或者恶意机器人引起的其他糟糕情况。</p>
+	<p>但事实上，互联网上有许多善意机器人，包括 Google 的搜索爬网程序和 Stripe 的支付机器人。Cloudflare 会人工 “验证”善意机器人，防止它们被封锁。客户可以选择将通过验证的任何机器人加入允许列表。遗憾的是，新的机器人层出不穷，令我们应接不暇，无法及时验证。所以，今天我们宣布推出一种解决方案：<strong>友好机器人</strong>。</p>
+	<p>我们先了解一下背景。</p>
+	<h2 id="-">我们如何验证机器人？</h2>
+	<p>我们一般是通过<a href="https://forms.gle/pWVxfCj6cQgWGxDp9" target="_blank">公开表单</a>寻找善意机器人。任何人都可以提交机器人，但我们更欢迎机器人运营者填写表单，向我们提供所需的信息。我们需要一些标准信息：机器人的名称、公开文档及用户代理（或正则表达式）。其次，我们还需要帮助我们验证机器人的信息。有四种常用方法：</p>
+	<p><strong>IP 列表</strong></p>
+	<p>给我们发送机器人使用的 IP 地址列表。不一定是静态列表，您可以向我们提供动态变化页面，提供 URL 即可，我们会每天获取更新。这些 IP 必须公开记录并专属于您的机器人。如果您提供共享 IP 地址（例如代理服务使用的 IP 地址），我们的系统会检测到风险并拒绝合作。我们希望避免意外使用其他流量。</p>
+	<p><strong>rDNS</strong></p>
+	<p>这很有趣。您肯定听说过 <a href="https://www.cloudflare.com/learning/dns/what-is-dns/" target="_blank">DNS</a>：互联网的电话簿，帮助将域名映射到 IP 地址。<a href="https://www.blumira.com/glossary/reverse-dns-rdns/" target="_blank">rDNS</a> 则相反，允许我们利用 IP 地址推断关联的域名。</p>
+	<p>换句话说：给我们一个主机名后缀，在许多情况下，我们都能验证机器人的身份！</p>
+	<p><strong>用户代理 + ASN 验证</strong></p>
+	<p>在一些情况下，我们可以使用相同的用户代理验证来自同一网络（称为“ASN”）的机器人。请注意，我们不能总是这样做，因为流量变得更容易伪造。但我们通常有足够的信心才会使用这种验证方法。</p>
+	<p><strong>机器学习</strong></p>
+	<p>这是最奢华的方法。Cloudflare 每秒能看到 3200 多万个请求。我们将这些请求馈送到一个模型中，准确分析善意机器人。如果上述验证方法不适合您，我们可以使用机器学习寻找您的机器人。但我们需要足够的流量（上千个请求）来检测可用模式。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image1-52.png" class="kg-image"></figure>
+	<p>我们通常会在几周之内批准验证机器人请求，然后花一些时间进行质量测试，确保一切都安全。但如上所述，我们常常需要将此方法留给受信任的合作伙伴和更大的机器人，尽管许多用户需要将他们的机器人加入允许列表。</p>
+	<h2 id="--1">如果我的机器人不是大型全局服务？</h2>
+	<p>我们时时留意（同时关注 Twitter），知道大家想要“个人”版本的已验证机器人。</p>
+	<p>例如：假设您构建自己的监控服务来抓取您的一些个人网站。验证这种机器人没有意义，因为它不符合我们的任何条件：</p>
+	<ol>
+		<li>为更广泛的互联网提供服务。</li>
+		<li>客观表现出善意行为。</li>
+		<li>符合互联网标准，例如 <a href="https://moz.com/learn/seo/robotstxt" target="_blank">robots.txt</a>。</li>
+	</ol>
+	<p>它是您的机器人（对您来说，可能很好！），但其他用户可能不这么认为。想象一下，如果其他人的机器人可以随时轻松进入您的基础结构，您有什么感觉？</p>
+	<p>还有一种情况。可能 Cloudflare 将特定代理标注为机器人，也许是因为人和机器人都使用该代理访问互联网。您可能希望在网站上允许此流量，而不影响其他 Cloudflare 客户。</p>
+	<p>最后，如果您在初创公司工作，您的公司运行的自动化服务可能达不到我们所要求的规模。但您仍然需要将这些服务加入允许列表。</p>
+	<h2 id="--2">隆重推出友好机器人</h2>
+	<p>如上所述的机器人（尤其是常用服务）并无恶意。它们应当介于<em>恶意</em>和<em>善意</em>之间，是<strong>友好</strong>机器人。</p>
+	<p>我们有非常出色的方法来帮助您进行管理。</p>
+	<p>我们的新功能“友好机器人”允许您使用 IP 列表、rDNS 等方法即时自动验证任何流量。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image4-5.png" class="kg-image"></figure>
+	<p>方法如下：在 Cloudflare 仪表板中，向我们提供您的机器人。您可以提供公共 IP 列表或主机名后缀，甚至可以选择其他方法，例如机器学习。通过 Cloudflare Anycast 网络，可以在我们的<em>所有</em>数据中心运行所有这些机制。这意味着机器人验证性能良好、安全，并且可扩展。</p>
+	<p>构建友好机器人集合，在您的站点之间共享，针对此类型的流量创建允许、速率限制或记录等自定义策略。您可能只想关注某个特定机器人；这也是可以的。响应选项非常灵活，可直接与我们的 Workers 平台集成。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image5-6.png" class="kg-image"></figure>
+	<p>过去，我们很难验证并未大规模抓取网页的机器人。为什么？我们的系统依赖已验证流量的缓存，确保特定 IP 或其他数据在互联网上普遍表现出良性的行为。这意味着，如果机器人没有向 Cloudflare 发起上千个请求，有时很难进行验证。利用友好机器人可以解决这个问题，引入新的动态缓存来优化规模较小的项目。</p>
+	<h2 id="--3">下游优点</h2>
+	<p>友好机器人会简化您的仪表板体验。但我们想着重强调一些不容易被发现的优点：</p>
+	<p><strong>更容易验证</strong></p>
+	<p>诚然，获知互联网上的所有善意机器人非常困难。为了验证机器人，我们一直依赖<a href="https://forms.gle/dT9muX2aYRqFokkc8" target="_blank">人工提交</a>，这可能在善意机器人创建后几周甚至几个月才会进行。然而，友好机器人完全改变了这一点。如果我们注意到许多客户将特定机器人加入允许列表，例如特定 IP 地址或主机名后缀，系统会自动将该机器人加入验证队列。我们可以智能使用您的友好机器人来帮助 Cloudflare 的其他客户。</p>
+	<p><strong>即时反馈</strong></p>
+	<p>以前，用户一直被验证过程困扰。<em>是否需要为 IP 提供文档？还有用户代理：它会随时间变化吗？</em>如果验证数据的任何一部分被破坏，我们可能需要几周时间才能识别和修复。</p>
+	<p>现在，这种情况不复存在。利用友好机器人，我们几乎可以即时执行验证。所以，如有异常 （也许您的 rDNS 验证使用了错误的主机名），您第一时间就能知晓，因为机器人无法加入允许列表。不用再等我们的支持团队回复。</p>
+	<p><strong>改善来源</strong></p>
+	<p>以前，我们需要机器人运营者（例如 Google）自己提交验证数据。如果您想验证不属于您的机器人，很不幸，没法进行。</p>
+	<p>使用友好机器人则不需要完全依赖机器人运营者。只要知道标识信息，任何人都可以在他们的网站上登记机器人。</p>
+	<p><strong>无需仲裁</strong></p>
+	<p>如果您的网站出现爬虫，这是好事吗？对某些人来说，是好事，因为问题得到了暴露。对另一些人来说，则不是好事，因为爬虫可能会获取数据。针对迄今为止的每个机器人验证提交，我们都仔细考虑了这个问题。</p>
+	<p>现在：您需要自己做选择。友好机器人把控制权交到您手中，允许您在域级别对机器人分类。我们将继续在全局级别验证机器人（如果行为在客观上是善意的）。</p>
+	<h2 id="cloudflare-radar">Cloudflare Radar</h2>
+	<p>下面是一个有趣福利：除了今天宣布推出的友好机器人，我们还对 <a href="https://radar.cloudflare.com/" target="_blank">Cloudflare Radar</a> 进行了一些更改。</p>
+	<p>您马上就能看到 <a href="https://radar.cloudflare.com/verified-bots" target="_blank">Radar 已验证机器人</a>名单。这令人非常兴奋；我们之前从未发布过如此详细的名单。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image3-20.png" class="kg-image"></figure>
+	<p>所有数据实时更新。新的机器人通过验证后，就会显示在 Radar 模块中。</p>
+	<p>而且，我们还会将特定已验证机器人添加到日志产品。您将看到它们的<a href="https://developers.cloudflare.com/bots/concepts/cloudflare-bot-tags" target="_blank">机器人 Tag 标记</a>，来自 Pinterest 机器人的请求可能包括字符串“pinterest”。</p>
+	<h2 id="--4">接下来？</h2>
+	<p>我们的团队很高兴即将推出友好机器人。我们预计，这将影响整个机器人管理，减少误报、改善可抓取性，从总体上保持站点的稳定性。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image2-42.png" class="kg-image"></figure>
+	<p>如果您需要管理机器人，想尝试这个新功能，请告知客户部（我们一定会将您加入抢先体验名单）。您也可以继续<a href="https://forms.gle/dT9muX2aYRqFokkc8" target="_blank">提交应该验证的机器人</a>。</p>
+</div>

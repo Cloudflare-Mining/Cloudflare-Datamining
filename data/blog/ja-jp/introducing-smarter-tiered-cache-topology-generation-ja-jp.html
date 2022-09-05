@@ -1,0 +1,31 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/06/1-3.png" class="kg-image"></figure>
+	<p>Cachingはマジックのトリックです。お客様のオリジンがすべてのリクエストに応答する代わりに、世界中にあるCloudflareの200以上のデータセンターが、訪問者の近くで地理的にキャッシュされたコンテンツに応答します。Cloudflareがキャッシュされたコンテンツを含むリクエストに応答することで、帯域幅の費用を削減しながら、Webページの負荷パフォーマンスを劇的に向上させます。</p>
+	<p>しかし、コンテンツがキャッシュにない場合、Cloudflareデータセンターは、コンテンツを受信するために、オリジンサーバーと通信する必要があります。これは、キャッシュからコンテンツを配信するほど高速ではありません。また、オリジンサーバーに負荷がかかり、キャッシュから直接サービスを提供するよりもコストがかかります。これらの問題は、Webサイトの訪問者の地理的な分布、オリジンと通信するデータセンターの数、およびリクエストに応答するための利用可能なオリジンリソースによっても増幅されます。</p>
+	<p>データセンターネットワークがオリジンと通信する回数を減らすため、Cloudflareではデータセンターを階層型に編成しました。これにより、上位レベルのデータセンターのみがオリジンからコンテンツをリクエストし、コンテンツを下位階層に分散させることができます。これは、訪問者にとっては、読み込みが速く、提供が安価になり、オリジンリソースの消費も削減されるコンテンツになるということを意味します。</p>
+	<p>本日、Argo Tiered Cacheに対する根本的改善を発表できることを嬉しく思います。当社ではSmart Tiered Cache Tolology（スマート階層型キャッシュトポロジー）と呼んでいます。有効にすると、Argo Tiered Cache はお客様のWebサイトのオリジンごとに最適な上位層を 1 つ動的に選択するとともに、カスタムトポロジーのパフォーマンスを示す階層型Cache Analyticsを提供します。</p>
+	<h3 id="smarter-tiered-cache-topology-"><strong>Smarter Tiered Cache Topology（スマートな階層型キャッシュトロポジー）の生成</strong></h3>
+	<p>Tiered Cacheは<a href="https://blog.cloudflare.com/argo/">Argo</a>の一部で、すべてのCloudflareリクエストからの情報を処理することで、グローバルインターネット全体のルーティングの決定をリアルタイムで分析および最適化する製品シリーズです。これは、オリジンへの高速ルート、遅いルート、訪問者からコンテンツへの最適なパスがいつ、どの時点にあるかを判断します。以前は、Argo Tiered Cacheでは、上位層のデータセンターの静的コレクションを使用してオリジンと通信していました。本日発表する機能強化により、Tiered Cacheは、Argoのパフォーマンスとルーティングデータを使用して、オリジンに最適な単一の上位階層を動的に見つけることができるようになりました。Argoが有効で、特定のコンテンツに対するリクエストが行われた場合、最適なパスを選択するために、リクエストごとに遅延データを収集します。この遅延データを使用して、上位層のデータセンターがオリジンに接続されているかを判断し、遅延が最も少ない最適なデータセンターをオリジンの上位層として、経験に基づいて選択できます。</p>
+	<h3 id="argo-tiered-cache"><strong>Argo Tiered Cache</strong></h3>
+	<p>先ほどの話に少し戻ると、階層型キャッシングは、Cloudflareのグローバルデータセンターのネットワークを上位層と下位層に細分化するプラクティスです。オリジンとCloudflareの間の帯域幅と接続数を制御するために、オリジンからのコンテンツのリクエストは上位層のみに許可され、その情報を下位層に伝達する必要があります。このようにして、Cloudflareデータセンターは、オリジンに問い合わせる前に互いに通知してコンテンツをみつけます。これにより、オリジンにコンテンツをリクエストできるデータセンターの数を制限することで、帯域幅を改善したり、オリジンの負荷を軽減したり、Webサイトの運用コスト効率を向上させることができます。Argo Tiered Cacheのお客様は、クライアントとエッジ間のデータ転送に対してのみ支払いを行い、残りの処理は当社が行います。階層型キャッシングでは訪問者向けパフォーマンスが向上します。Cloudflareデータセンターの間の距離とリンクが一般に縮小され、Cloudflareデータセンターとオリジンのリンクよりも高速となるためです。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/06/2-2.png" class="kg-image"></figure>
+	<p>以前は、WebサイトでArgo Tiered Cacheを有効にした場合、Cloudflareの最大かつ最も接続頻度の高いデータセンターのいくつかは上位階層であると判断され、キャッシュMISS上のオリジンからコンテンツを抽出することができました。多数の上位層データセンターで構成されるトポロジーを活用すると、グローバルにパフォーマンスが向上する可能性がありますが、コスト重視のお客様は通常、Cloudflareネットワークへのコンテンツの効率的なデータ転送を実現するために、オリジンに最適な上位階層を1つ見つけたいと考えていることがわかりました。これがSmarter Tiered Cache Topology（スマートな階層型キャッシュトロポジー）を作った理由です。</p>
+	<h3 id="smart-tiered-cache-topology-"><strong>Smart Tiered Cache Topologyを有効にする方法</strong></h3>
+	<p>Argo Tiered Cacheを有効にすると、Cloudflareはデフォルトでオリジンサーバーへの接続を集中させ、単一のデータセンターから配信されるようになります。これは、当社のCustomer Successやソリューションエンジニアに、最適な単一の上位層をカスタム設定するために連絡する必要はありません。Argoのお客様は、以下の手順でこのトポロジーを生成できます。</p>
+	<ul>
+		<li>Cloudflareアカウントにログインします。</li>
+		<li>Cloudflareのダッシュボードにある「Traffic」タブに移動します。</li>
+		<li>Argoが有効になっていることを確認します。</li>
+		<li>こちらから、Enterpriseプラン以外のArgのお客様は、追加の変更を加えることなく、Smart Tiered Cache Topology（スマート階層型キャッシュトポロジー）に自動的に登録されます。</li>
+	</ul>
+	<p>Enterpriseプランのお客様は、生成するトポロジーのタイプを選択できます。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/06/3-1.png" class="kg-image"></figure>
+	<p>セルフサービスのArgoのお客様は、Smart Tiered Cache Topoloy（スマート階層型キャッシュトポロジー）に自動的に登録されます</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/06/4-1.png" class="kg-image"></figure>
+	<p>Enterpriseプランのお客様は、最適な階層型キャッシュトポロジーを決めることができます。</p>
+	<h3 id="-"><strong>データが多いほど、問題が少なくなる</strong></h3>
+	<p>有効にすると、パフォーマンス面とコスト面の改善に加えて、Smart Tiered Cache Topologyは上位層のパフォーマンスの概略分析（summary analytics）も提供します。これにより、Webサイトのコストとパフォーマンスの利点を監視できます。これらの分析は、ダッシュボードの「Cache Tab」の「Tiered Cache」セクションで利用できます。「プライマリデータセンター」フィールドと「セカンダリデータセンター」フィールドには、オリジンに最適な上位層とフェイルオーバーであると判断されたデータセンターが表示されます。「Cached Hits（キャッシュヒット）」と「Hit Ratio（ヒット率）」には、上位層から配信されたリクエストの割合と、応答のためにオリジンに転送する必要があるリクエストの数が表示されます。「Bytes Saved」は、上位層のデータセンターから下位層への転送の合計を示します。これは、Cloudflareの下位層のデータセンターが、オリジンではなく上位層にコンテンツを尋ねることによって節約された帯域幅の合計を示します。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/06/5.png" class="kg-image"></figure>
+	<p>Smart Tiered Cache Topologyは、既存のCloudflare製品と連携し、シームレスで簡単かつパフォーマンスの高いエクスペリエンスを提供します。これにより、コストを節約し、上位層がお客様のオリジンとどのように連携しているかに関する有益な情報を提供します。Smart Tiered Cache Topologyは、Cloudflareの最も耐障害性が高く有用な製品を活用し、ウェブマスターにさらに多くのメリットを提供します。</p>
+	<p>ArgoとSmart Tiered Cache TopologyがWebプロパティにどのように貢献しているかに興味がある場合は、Cloudflareアカウントにログインし、ダッシュボードの「トラフィック」タブで詳細を確認してください<a href="https://dash.cloudflare.com/traffic" target="_blank">（こちらから）</a>。</p>
+</div>

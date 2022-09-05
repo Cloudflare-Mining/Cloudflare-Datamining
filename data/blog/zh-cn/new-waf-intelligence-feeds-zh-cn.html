@@ -1,0 +1,161 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/unnamed.png" class="kg-image" alt="New WAF intelligence feeds"></figure>
+	<p>Cloudflare 将添加四个新的托管 IP 列表以用作任何自定义防火墙规则的一部分，从而扩展我们的 WAF 威胁情报能力。</p>
+	<p>托管列表由 Cloudflare 创建和维护，并基于通过分析互联网上观察到的模式和趋势所收集的威胁情报源进行构建。Enterprise 客户已经可以使用 Open SOCKS 代理列表（<a href="https://blog.cloudflare.com/zh-cn/protecting-apis-from-abuse-and-data-exfiltration-zh-cn/">于 2021 年 3 月推出</a>），如今我们将添加四个新的 IP 列表：“VPN”、“僵尸网络、命令和控制服务器”、“恶意软件”以及“匿名程序”。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://lh3.googleusercontent.com/XkegdawMtkmBmuCmAin8MIzby8BSozlKq1g_EJRwpKwYIkmx_e0t49a3yoc8YYNltTLJBQ3oFxDRmBFxP01RTytGgD-zCwQsfiQr5r2WyFChLu9wsmDjeAx5Rb0iN5qu4TXz-AYyJQmuPZirUeiwXw" class="kg-image" alt="You can check what rules are available in your plan by navigating to Manage Account -> Configuration -> Lists.">
+		<figcaption>您可以导航至“管理帐户”→“配置”→“列表”，查看您的计划中有哪些规则可用。</figcaption>
+	</figure>
+	<p>客户可以在创建自定义防火墙规则时或在<a href="https://blog.cloudflare.com/zh-cn/advanced-rate-limiting-zh-cn/">高级速率限制</a>中引用这些列表。例如，您可以选择阻止我们归类为 VPN 的 IP 所生成的所有流量，或对所有匿名程序生成的流量进行速率限制。您可以直接在功能强大的防火墙规则构建器中纳入托管 IP 列表。当然，您还可以使用自己的<a href="https://blog.cloudflare.com/introducing-ip-lists/">自定义 IP 列表</a>。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://lh6.googleusercontent.com/WsDGsltjclo0RVf5cZlM3yiQFzdDUIIteuM2jE80480j63zup6IMVvJtrazsG7VSaBTFSgnX0kYqZBpf3xzgqdLOX_VTpxX3sb398t_tj86gO-EiDKFwVoltRR85EF6CO1n1-wojGxV9tO2wh7IBLA" class="kg-image" alt="Managed IP Lists can be used in WAF rules to manage incoming traffic from these IPs.">
+		<figcaption>托管 IP 列表可以在 WAF 规则中用于管理来自这些 IP 的传入流量。</figcaption>
+	</figure>
+	<h3 id="-">这些源从何而来？</h3>
+	<p>这些列表基于 Cloudflare 生成的威胁源，它们作为 IP 列表提供，以便轻松在 WAF 中使用。对每个 IP 进行分类的方法是，合并开源数据并分析利用 Cloudflare 网络规模和覆盖范围的每个 IP 的行为。在其中一个源中包含某个 IP 之后，我们验证此分类，将这些信息反馈到我们的安全系统中，并以托管 IP 列表的形式提供给我们的客户。每个列表的内容每天会更新多次。</p>
+	<p>除了基于 Cloudflare 的内部数据生成 IP 分类之外，Cloudflare 还会精选并组合多个数据源，我们认为这些数据源能够可靠地覆盖有效安全威胁，且误报率很低。在如今的环境中，属于云提供商的某个 IP 可能今天在散布恶意软件，明天就成为您公司的关键资源。</p>
+	<p>某些 IP 地址分类属于可公开获取的 OSINT 数据（例如，Tor 出口节点），并且 Cloudflare 会负责将其集成到我们的匿名程序列表中，这样您就不用管理如何将此列表集成到您网络中的每个资产。其他分类则利用各种 DNS 技术来确定或审查，例如查找、PTR 记录查找以及观察来自 Cloudflare 网络的被动 DNS。</p>
+	<p>我们专注于恶意软件以及命令和控制的列表是通过精选合作伙伴关系生成的，我们在选择合作伙伴时针对的一种 IP 地址类型是可识别安全威胁且没有关联 DNS 记录的数据源。</p>
+	<p>我们的匿名程序列表覆盖执行匿名化的多种服务，包括 VPN、开放代理和 Tor 节点。它是范围更狭窄的 VPN 列表（已知商业 VPN 节点）和 Cloudflare 开放代理列表（无需进行身份验证即可中继流量的代理）的超集。</p>
+	<h3 id="-ip-">仪表板内 IP 注释</h3>
+	<p>使用这些列表为这些 IP 部署预防性安全策略固然是好，但要是知道正在与您的网站或应用程序交互的某个 IP 属于僵尸网络或 VPN 的一部分该怎么办？我们在 Security Week 2022 活动中首次针对匿名程序发布了<a href="https://blog.cloudflare.com/zh-cn/security-center-investigate-zh-cn/">上下文信息</a>，但如今已将该功能扩展至覆盖所有新列表，从而让这件事更加圆满。</p>
+	<p>作为 Cloudflare 威胁情报源的一部分，我们直接将 IP 类别公开给仪表板。假设您要调查被 WAF 阻止的请求，这些请求企图探测您应用程序的已知软件漏洞。如果这些请求的源 IP 匹配我们的某个源（例如，VPN 的一部分），上下文信息将直接显示在分析页面上。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://lh3.googleusercontent.com/ba1SUQnRFtLMyaBYf580Fup-l4DJXdqOXEFrBm_KtT6egoEuFy0dh5HSZJvTSokZvDYC1d7US1dlhXMjn2jFgAgNr3Hmf455vhT6sT76JzXpI5ZyTO7bxGrXdj8oVmxCrRlnN9mIPqoa8snfYxx7PQ" class="kg-image" alt="When the source IP of a WAF event matches one of the threat feeds, we provide contextual information directly onto the Cloudflare dashboard.">
+		<figcaption>WAF 事件的源 IP 匹配某个威胁源时，我们会直接在 Cloudflare 仪表板内提供上下文信息。</figcaption>
+	</figure>
+	<p>此信息可以帮助您看清模式，并决定是否需要使用托管列表来以特定方式处理来自这些 IP 的流量，例如通过创建速率限制规则来减少这些行为者在一段时间内可以执行的请求数。</p>
+	<h3 id="--1">谁获得这项服务？</h3>
+	<p>下表总结了哪些计划可以访问其中每项功能。任何付费计划都可以访问仪表板内的上下文信息，而 Enterprise 将能够使用不同的托管列表。托管列表只能在 Enterprise 帐户中的 Enterprise 区域使用。</p>
+	<!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-tfgg {
+			background-color: #EFEFEF;
+			color: #F00;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-gpin {
+			background-color: #C9DAF8;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-ekg0 {
+			background-color: #EFEFEF;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-5ll9 {
+			background-color: #EFEFEF;
+			color: #009901;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-m0cw {
+			background-color: #C9DAF8;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-gpin"></th>
+				<th class="tg-m0cw"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> FREE</span></th>
+				<th class="tg-m0cw"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">PRO</span></th>
+				<th class="tg-m0cw"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">BIZ</span></th>
+				<th class="tg-m0cw"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ENT</span></th>
+				<th class="tg-m0cw"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">高级 ENT *</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-ekg0"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">注释</span></td>
+				<td class="tg-tfgg"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#F00;background-color:transparent">x</span></td>
+				<td class="tg-5ll9"><span style="font-weight:700;font-style:normal;text-decoration:none;background-color:transparent">✅</span></td>
+				<td class="tg-5ll9"><span style="font-weight:700;font-style:normal;text-decoration:none;background-color:transparent">✅</span></td>
+				<td class="tg-5ll9"><span style="font-weight:700;font-style:normal;text-decoration:none;background-color:transparent">✅</span></td>
+				<td class="tg-5ll9"><span style="font-weight:700;font-style:normal;text-decoration:none;background-color:transparent">✅</span></td>
+			</tr>
+			<tr>
+				<td class="tg-ekg0"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">开放代理</span></td>
+				<td class="tg-tfgg"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#F00;background-color:transparent">x</span></td>
+				<td class="tg-tfgg"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#F00;background-color:transparent">x</span></td>
+				<td class="tg-tfgg"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#F00;background-color:transparent">x</span></td>
+				<td class="tg-5ll9"><span style="font-weight:700;font-style:normal;text-decoration:none;background-color:transparent">✅</span></td>
+				<td class="tg-5ll9"><span style="font-weight:700;font-style:normal;text-decoration:none;background-color:transparent">✅</span></td>
+			</tr>
+			<tr>
+				<td class="tg-ekg0"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">匿名程序</span></td>
+				<td class="tg-tfgg"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#F00;background-color:transparent">x</span></td>
+				<td class="tg-tfgg"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#F00;background-color:transparent">x</span></td>
+				<td class="tg-tfgg"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#F00;background-color:transparent">x</span></td>
+				<td class="tg-tfgg"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#F00;background-color:transparent">x</span></td>
+				<td class="tg-5ll9"><span style="font-weight:700;font-style:normal;text-decoration:none;background-color:transparent">✅</span></td>
+			</tr>
+			<tr>
+				<td class="tg-ekg0"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">VPN</span></td>
+				<td class="tg-tfgg"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#F00;background-color:transparent">x</span></td>
+				<td class="tg-tfgg"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#F00;background-color:transparent">x</span></td>
+				<td class="tg-tfgg"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#F00;background-color:transparent">x</span></td>
+				<td class="tg-tfgg"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#F00;background-color:transparent">x</span></td>
+				<td class="tg-5ll9"><span style="font-weight:700;font-style:normal;text-decoration:none;background-color:transparent">✅</span></td>
+			</tr>
+			<tr>
+				<td class="tg-ekg0"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">僵尸网络、命令和控制</span></td>
+				<td class="tg-tfgg"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#F00;background-color:transparent">x</span></td>
+				<td class="tg-tfgg"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#F00;background-color:transparent">x</span></td>
+				<td class="tg-tfgg"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#F00;background-color:transparent">x</span></td>
+				<td class="tg-tfgg"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#F00;background-color:transparent">x</span></td>
+				<td class="tg-5ll9"><span style="font-weight:700;font-style:normal;text-decoration:none;background-color:transparent">✅</span></td>
+			</tr>
+			<tr>
+				<td class="tg-ekg0"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">恶意软件</span></td>
+				<td class="tg-tfgg"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#F00;background-color:transparent">x</span></td>
+				<td class="tg-tfgg"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#F00;background-color:transparent">x</span></td>
+				<td class="tg-tfgg"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#F00;background-color:transparent">x</span></td>
+				<td class="tg-tfgg"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#F00;background-color:transparent">x</span></td>
+				<td class="tg-5ll9"><span style="font-weight:700;font-style:normal;text-decoration:none;background-color:transparent">✅</span></td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: html-->
+	<!--kg-card-begin: markdown-->
+	<p><small>* 联系您的客户成功经理以了解如何访问这些列表。</small></p>
+	<!--kg-card-end: markdown-->
+	<h3 id="--2">未来发布</h3>
+	<p>我们正在致力于进一步丰富我们的威胁源。未来几个月，我们将提供更多 IP 列表，具体来说，我们会考虑提供云提供商和运营商级网络地址转换 (CG-NAT) 的列表。</p>
+</div>

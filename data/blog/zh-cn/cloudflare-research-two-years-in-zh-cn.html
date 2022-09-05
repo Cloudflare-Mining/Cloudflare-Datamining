@@ -1,0 +1,81 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/1-27.png" class="kg-image"></figure>
+	<blockquote>伟大的科技公司制造创新产品并将其推向世界；标志性的科技公司改变世界本身的性质。</blockquote>
+	<p>Cloudflare 的使命反映我们的抱负：帮助建设更好的互联网。实现这个使命需要多管齐下的方法，包括持续的产品创新，战略决策，并大胆挑战有关互联网结构和潜力的既有假设。Cloudflare Research 于<a href="https://blog.cloudflare.com/cloudflares-approach-to-research/">两年前</a>创立，旨在探索利用基础和应用计算机科学研究来帮助改变竞争环境的机会。</p>
+	<p>我们希望与您分享指导 Cloudflare 应用研究结果来帮助构建更好互联网的 5 个工作原则，以及 5 个证明这些原则的案例研究。Cloudflare Research 本周将持续更新本博客，欢迎关注！</p>
+	<h2 id="-">创新来自四面八方</h2>
+	<p>有创新精神的公司不是依靠公司内部一群致力于未来的人来实现创新的；而是因为它们拥有一种文化，允许新的想法自由流动，而且这些想法可以来自任何人。在研究被允许超越或脱离孤立的实验室环境，深入到公司工作的所有方面，并与全世界联系在一起时，才是最有效的。我们将自己的研究团队视为一个支持部门，致力于发现和培育未来 3-5年后的好想法。</p>
+	<p>Cloudflare Research 优先考虑强有力的协作，以解决来自公司产品和工程团队以及行业的重大问题。在 Cloudflare 内部，我们通过与其他团队密切协作来了解问题。在外部，我们邀请访问研究人员和学术界人士进入董事会和委员会，为开放标准的设计和开发做出贡献，每年参加数十个技术会议，并在研讨会上发表论文。</p>
+	<p>研究工程是<em>真正全栈的工作</em>。我们会孵化各种想法，从概念到原型再到生产代码。我们的团队聘请了具备学术和行业背景的专家，以及能帮助跨学科连接想法的通才。在代码所有权至关重要的情况下，我们与产品和工程组织紧密合作以制定毕业计划。我们还雇佣了许多研究实习生，帮助我们评估和降低新想法的风险，然后将它们纳入生产系统并最终将其交给公司的其他团队。</p>
+	<p>研究问题可以来自公司的各个部门，甚至来自客户。我们的协作方式已为 Cloudflare 乃至整个互联网带来了许多积极的成果。</p>
+	<h2 id="-1-">案例研究 #1：密码安全性</h2>
+	<p>几年前，<a href="https://haveibeenpwned.com/" target="_blank">Have I Been Pwned</a> 的服务开始使用 Cloudflare 来维持网站在负载下正常运行。该服务可让人们检查自己的密码是否已经被泄露。然而，这个设施也凸显了一个隐私问题：Have I Been Pwned 将不可避免地获得提交到该服务的每一个密码，使其成为让攻击者垂涎的目标。这引发一个问题：这类服务能否以保障隐私的方式来运行呢？</p>
+	<p>与研究团队的许多工作一样，解决方案的核心来自公司的其他地方。这个问题的第一个工作来自支持工程部门的成员，他们开发了一个<a href="https://blog.cloudflare.com/validating-leaked-passwords-with-k-anonymity/">巧妙的解决方案</a>，基本上解决了这个问题。然而，这一初步调查勾勒出了一个深刻而复杂的问题空间，其应用远远超出密码。此时，研究团队联系并要求专家参与进来，包括康奈尔理工大学的 Thomas Ristenpart，以帮助更深入地研究这个问题。</p>
+	<p>通过以上协作，我们最终设计了一种新的协议，并在 <a href="https://www.sigsac.org/ccs/CCS2021/" target="_blank">ACM CCS</a> <a href="https://www.sigsac.org/ccs/CCS2021/" target="_blank">2019 </a>会议上发表了一篇题为<a href="https://dl.acm.org/doi/pdf/10.1145/3319535.3354229" target="_blank">检查泄露凭据的协议（Protocols for Checking Compromised Credentials）</a>的论文。这篇论文给我们指明了方向，但我们希望将这项研究付诸实践，因而邀请首位访问研究人员来帮助构建一个原型。当我们得知 Cloudflare 的另一个团队有意为 Cloudflare <a href="https://www.cloudflare.com/zh-cn/waf/" target="_blank">web 应用程序防火墙</a>增加被窃取用户密码检测功能时，我们在公司内部获得了更多的灵感和支持。这个团队最终帮助我们构建了原型，并将其集成到 Cloudflare 的服务中。<br></p>
+	<p>这种客户洞察、内部配合和外部协作的结合不仅形成了一个强大且独特的<a href="https://blog.cloudflare.com/patching-the-internet-against-global-brute-force-campaigns/">客户功能</a>，还在针对身份验证这一在线生活重要方面的隐私保护技术上取得了进步。我们将在本周晚些时候就这种技术作出令人兴奋的宣布，敬请关注。</p>
+	<h2 id="--1">以问题为导向的方法会带来更好的产品</h2>
+	<p>为了支持 Cloudflare 的快速发展，Research 团队采取了问题优先的方式。关注问题是研究自身的本质，但重要的是，认识到这对一个行业领先的公司意味着什么。对于我们的产品已经在解决的问题，我们从不停止提出问题。从桌面到移动计算或从本地安全解决方案到云计算的转变发生在不到10年中，所以有必要问这样的问题：</p>
+	<ul>
+		<li>社会和地缘政治力量的变化将如何影响我们今天正在构建的产品?</li>
+		<li>基于创造者的同质体验，现有系统中可能存在什么假设？</li>
+		<li>行业中正在发生什么将会影响到互联网运作方式的变化？</li>
+		<li>我们发现了哪些利用新型及低成本硬件的机会?</li>
+		<li>我们如何扩展以满足持续增长的需求？</li>
+		<li>是否有新的计算范式需要了解？</li>
+		<li>用户预期正如何变化？</li>
+		<li>我们是否能构建一样东西来帮助互联网向正确的方向发展？</li>
+		<li>未来几年内哪些安全或隐私风险可能会加剧？</li>
+	</ul>
+	<p>通过关注更广泛的问题，并对不符合现有解决方案范围的答案持开放态度，我们有机会见微知著。这种远见不仅仅有助于解决业务问题；还能帮助改善产品和整个互联网。这种远见不仅仅有助于解决业务问题；还能帮助改善产品和整个互联网。公司的研发部门都会问这些问题，但研究重点是那些短期内不容易回答的问题。</p>
+	<h2 id="-2-ssl-tls-">案例研究 #2：SSL/TLS 推荐器</h2>
+	<p>当 Cloudflare 向所有客户提供<a href="https://blog.cloudflare.com/introducing-universal-ssl/">免费和自动的 SSL 证书</a>时，这是向网络安全迈出的一大步。对 Cloudflare SSL 服务的早期批评之一称之为“鲻鱼”。Cloudflare提供了一种名为“灵活 SSL”的模式，可以在浏览器和 Cloudflare 之间加密，但为了向后兼容，Cloudflare 和源站之间的连接不加密。它之所以被批评为“鲻鱼”，是因为灵活 SSL在连接的前半部分提供加密，但在后半部分不提供加密。</p>
+	<p>大多数在线通信的安全风险发生在用户和 Cloudflare 之间（例如在 ISP或咖啡店里），而不是 Cloudflare 和源服务器之间。对于无法在其服务器上启用加密的客户而言，使用 Cloudflare 后的安全态势得到明显改善。</p>
+	<p>然而，在一些孤立的实例中，客户没有利用最安全的配置，这导致了意料之外且影响较大的安全问题。鉴于这种非零风险，并且承认这种针对产品的有效批评，我们提出的问题是：<em>我们能采取什么措施来改善数百万网站的安全态势？</em></p>
+	<p>在具有互联网扫描和测量专业知识的研究实习生帮助下，我们搭建了一个先进的扫描/爬取工具，以查明还有多少改善空间。事实证明，我们可以做很多事情，因此我们与公司的多个团队合作，将我们的扫描基础设施与 Cloudflare 的产品连接起来。我们现在向所有客户提供 <a href="https://developers.cloudflare.com/ssl/origin-configuration/ssl-tls-recommender" target="_blank">“SSL/TLS 推荐器” </a>服务，并已帮助成千上万的客户保护了他们的网站，并修剪了他们的“鲻鱼发型”。网站不加密其部分网站后端的根本原因比较复杂。同时，这个项目之所成为以务实方式提出问题的很好的例子，是因为它不仅给 Cloudflare 带来一个改良产品，还给研究人员一套工具来探索根本问题。</p>
+	<h2 id="--2">今天构建工具来解决明天的问题</h2>
+	<p>在 Cloudflare 背景下进行研究的另一个关键目标是帮助我们为未知做好准备。我们根据社会正在发生或可能发生的变化来确定和解决“假设”情景。成千上万的公司依赖我们的基础设施服务其用户，满足他们的业务需求。我们不断改进他们的体验，提供适用于未来的技术，在他们的高潮和可能的低潮均持续提供支持。</p>
+	<p>我们需要做如下准备：</p>
+	<ol>
+		<li>确定未来风险的领域。</li>
+		<li>探索问题的基本因素</li>
+		<li>建立专业知识，并通过同行评议渠道进行验证。</li>
+		<li>通过原型的大规模试验来建立运作经验。</li>
+		<li>与能够在危机中提供帮助的人建立关系网。</li>
+	</ol>
+	<p>我们希望仿效那些支持社会但往往不可见的组织（例如<a href="https://www.cafiresci.org/research-publications" target="_blank">林业部门</a>或公共卫生部门）所需的战略思维和规划。当发生火灾或下一轮病毒来袭时，我们不仅有最好的机会来度过难关，还能进行创新并蓬勃发展，因为我们通过思考即将带来的挑战，已经采取了缓解措施并建立关系。</p>
+	<h2 id="-3-ip-">案例研究 #3：IP 地址敏捷性</h2>
+	<p>互联网面临的风险之一是 IPv4 地址的耗尽。潜在的 IPv4 地址只有大约 40 亿个，少于全球人口，更不用说联网设备的数量了。我们决定在 Cloudflare 独有网络连接的背景下更深入地研究这个问题。</p>
+	<p>Cloudflare 的架构挑战了有关互联网不同方面相互如何关联的几个假设。在过去，一个服务器 IP 地址对应一台特定的机器。Cloudflare 的任播架构和服务器设计允许任何服务器为任何客户站点提供服务。这种架构使服务能通过极少的工作量以令人难以置信的方式扩展。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/2-12.png" class="kg-image" alt="IP 绑定扼杀创新"></figure>
+	<p>这个发现让我们质疑有关互联网潜在工作方式的其他基本假设。如果一个 IP 地址不需要对应于特定服务器，还可以将什么从 IP 地址脱钩？我们能否将主机名与 IP 地址脱钩呢？也许我们可以做到！我们也可从反面来思考这个问题：如果不利用这种脱钩，我们会有什么损失？至少值得一试。</p>
+	<p>我们决定通过实践来验证这个假设。我们进行了一项实验，通过与 DNS 团队、IP 地址团队和<a href="https://blog.cloudflare.com/unimog-cloudflares-edge-load-balancer/">边缘负载平衡团队</a>进行协调，使用同一个 IP 地址为一个地区的全部免费客户提供服务。实验证明使用单一 IP 地址服务数百万用户是有可能的。结果形成了一篇<a href="https://dl.acm.org/doi/10.1145/3452296.3472922" target="_blank">论文</a>（发表于<a href="https://conferences.sigcomm.org/sigcomm/2021/" target="_blank">ACM SIGCOMM 2021</a>），以及一个对我们的权威 DNS 系统架构进行重新设计以使其灵活性无限提高的项目。优点之一是，拥有这种灵活性帮助 Cloudflare 在潜在的公共政策问题到来之间就将其解决了。</p>
+	<h2 id="--3">携手前进，走得更远</h2>
+	<p>互联网并非只是一个由公司和数十亿美元硬件组成的松散联盟，而是一个互相连接的关系网，具有全球性的社会影响。这些关系网及管制它们的技术标准就是其中的结缔组织，让我们能够在互联网上构建现代社会的重要方面。</p>
+	<p>数以百万计的互联网资产在使用 Cloudflare 的网络，每秒处理数千万个请求。我们做出的决定和发布的产品，对整个行业和数十亿人都有重大影响。在大多数情况下，我们只能控制互联网连接的一侧。为了向数十亿用户和联网设备提供服务，我们受 DNS、BGP、TLS 和QUIC 等各种协议的管理并需要予以支持，这些协议是互联网工程任务组（IETF）等技术标准组织制定的。</p>
+	<p>协议不断发展，新协议也在不断变化，以满足互联网不断演变的需求。我们使命的一个重要部分是帮助建立一个更安全、更私密、更高性能、更可用的互联网，这涉及在制定这些协议、大规模部署以及构建用于实施这些协议的开源软件方面发挥领导作用。</p>
+	<h2 id="-4-oblivious-dns">案例研究 #4：Oblivious DNS</h2>
+	<p>Cloudflare 在 2019 年推出 1.1.1.1 递归 DNS 服务时，隐私问题再次成为人们关注的焦点。我们为1.1.1.1提供了一种新的加密标准 <a href="https://blog.cloudflare.com/zh-cn/dns-encryption-explained-zh-cn/">DNS-over-HTTPS（DoH）</a> ，以保持查询在互联网上传输时的私密性。然而，即使使用 DoH，DNS 查询依然与发送查询的用户关联。Cloudflare 制定了隐私政策，并创建了技术措施，以确保这些数据只保留很短的时间，甚至聘请了一家顶级审计公司来<a href="https://blog.cloudflare.com/zh-cn/announcing-the-results-of-the-1-1-1-1-public-dns-resolver-privacy-examination-zh-cn/">证实这一点</a>。但问题依然存在，我们能否在不需要拥有隐私敏感信息的情况下提供服务？我们创建了<a href="https://blog.cloudflare.com/zh-cn/welcome-hidden-resolver-zh-cn/">Onion Resolver</a> 来让用户通过 Tor 匿名网络来访问该服务，但其速度极慢。我们能否在性能维持可接受水平的前提下提供加密的私密 DNS 服务？这是一个悬而未决的问题。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/3-13.png" class="kg-image" alt="ODoH 架构"></figure>
+	<p>突破是通过多个来源相结合取得的。我们了解到学术界有关一种新兴代理技术的新成果，名为 <a href="https://www.sciendo.com/article/10.2478/popets-2019-0028" target="_blank">Oblivious DNS</a>。我们还发现来自 Apple 和 Fastly 的业内人士也在研究同一个问题。最终的方案将 Oblivious DNS 和 Doh 整合成一种优雅的协议：Oblivious DoH（ODoH）。ODoH 在 IETF 上<a href="https://datatracker.ietf.org/doc/html/draft-pauly-dprive-oblivious-doh-07" target="_blank">发布</a>并得到广泛讨论。DNS 是一种特别依赖于标准的协议，因为系统的不同组成部分由不同参与方运作。ODoH 为这个等式增加了另一个参与方，使得谨慎的互操作性标准变得更加关键。</p>
+	<p>研究团队利用 ODoH 的早期草案，在一位实习生（其经验将在本周晚些时候发布）帮助下，我们在 Cloudflare Workers 上构建了一个原型。使用这个原型，我们测量了大规模 ODoH 部署的性能并证实了可行性，其结果发表于<a href="https://www.sciendo.com/article/10.2478/popets-2021-0085" target="_blank">这篇论文</a>中（<a href="https://petsymposium.org/" target="_blank">PoPETS 2021</a>）。</p>
+	<p>以上实验结果让我们有信心构建一个产品质量的实施。我们的研究工程师与解析器团队的工程师合作实施并发布了 1.1.1.1 的 <a href="https://blog.cloudflare.com/oblivious-dns/">ODoH</a> ，这后来成为 Cloudflare 一个重要合作关系中的主要部分。我们也<a href="https://github.com/search?q=org%3Acloudflare+odoh" target="_blank">开源</a>了 Go、Rust 编写的 ODoH 相关代码和一个 Cloudflare Workers 兼容实施。我们还与开源社区合作，将该协议应用于广泛可用的工具，如 <a href="https://www.dnscrypt.org/" target="_blank">dnscrypt</a>，以帮助推进 ODoH 的进一步普及。ODoH 只是跨行业开发标准的一个例子，后续博文将进一步介绍这些标准。</p>
+	<h2 id="--4">全球规模的从理论到实践</h2>
+	<p>每年有成千上万篇关于互联网技术的论文在数十个渠道发表。学术研究中的想法可以改变我们在科学角度对世界的基本理解，但往往还没有影响到用户。创新来自四面八方，采纳来自更广泛/外部社区的想法非常重要，因为我们很幸运地具备这一条件。</p>
+	<p>作为学者，您会因突破而非后续行动赢得奖励。我们重视追求、甚至推动后续行动的能力，因为这样将向互联网提供切实的改进。我们发现，通过构建和部署来了解一个想法远胜于单纯思考和写下来。实验室环境或理论论文中细微的问题都可能成为互联网规模中的重大问题，看似微不足道的见解都能释放巨大的潜力。</p>
+	<p>作为 Cloudflare 的一份子，我们处于一个非常难得且独特的位置，得以利用互联网的多样性来推进现有研究并研究其对现实世界的影响，我们觉得非常幸运。我们之所以能够将论文中描述的洞察和解决方案付诸实践，是因为我们拥有做到这一点所需的对用户行为的洞察：就在这一刻，<em>几乎每一个互联网用户都在直接或间接使用 Cloudflare。</em></p>
+	<p>我们也拥有足够大的规模，以致于传统方法解决的问题现在必须使用新工具来处理。例如，基于身份的加密和零知识证明等工具已经在理论上存在了数十年。它们直到最近才被部署到少数几个实际使用的系统中，但如今正在成为传统互联网中的有用工具并产生现实影响。</p>
+	<h2 id="-5-">案例研究 #5：人格加密证明</h2>
+	<p>在案例研究 #4 中，我们探讨了一个深刻且基本的网络问题。虽然研究网络技术其乐无穷，探索用户体验问题也非常重要，因为客户能感受到相关变化。Cloudflare 的价值很大一部分在于保护客户以防御机器人，我们使用的工具之一是 CAPTCHA。人们都<a href="https://twitter.com/Nazenko/status/1337987291483136002" target="_blank">讨厌</a> CAPTCHA。在访问某个网站时，被拦下并要求识别低分辨率图片中的路牌和卡车，web 体验中最能引发用户恼怒的莫过于此了。此外，很多人群并不能使用大部分常见的 CAPTCHA，如盲人和视障人士。Cloudflare 机器人团队在使用机器学习来减少服务器端 CAPTCHA 方面取得了巨大进步（这本身就是一个挑战性的问题）。我们决定进一步完善他们的工作，自问能否利用客户端的可用资源来提供与 CAPTCHA 同等的保护。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/4-4.png" class="kg-image" alt="用户工作流"></figure>
+	<p>这个问题引导我们开发了一种新的技术，我们称为<a href="https://blog.cloudflare.com/zh-cn/introducing-cryptographic-attestation-of-personhood-zh-cn/">人格加密证明（Cryptographic Attestation of Personhood，CAP）</a>。我们要求用户证明他们拥有受信任的物理硬件，而非要求他们通过执行人类任务来证明自己是人类。我们通过识别广泛部署的 WebAuthn 标准来做到这一点，这样一来，数以百万计的用户能利用其手机或笔记本电脑上内置的硬件安全密钥或硬件生物识别系统。</p>
+	<p>这个项目引发了几个令人兴奋而深刻的隐私和用户体验问题。在一个具有匿名身份验证经验的研究实习生帮助下，我们撰写了一篇<a href="https://eprint.iacr.org/2021/1183" target="_blank">论文</a> （发表于 <a href="https://www.sac2021.ca/" target="_blank">SAC 2021</a>），利用和改善零知识<a href="https://blog.cloudflare.com/zh-cn/introducing-zero-knowledge-proofs-for-private-web-attestation-with-cross-multi-vendor-hardware-zh-cn/">加密系统</a>，为我们的解决方案增加了额外的隐私保护功能。Cloudflare 的无处不在让我们能够让数百万用户了解到这个新想法并了解其被如何理解：例如，用户是否认为网站能用这个方式收集其生物特征信息？我们即将（与用户研究团队）提交一篇有关这些用户体验问题的论文。</p>
+	<p>这些研究所致问题的答案中有一些令人意外，有些则不然，但在所有情况下，以问题为导向的方法是解决问题的工具。</p>
+	<h2 id="--5">本博客后续更新预告</h2>
+	<p>如上所述，Cloudflare Research 未来几天内通过 Cloudflare 博客进行一些发布并分享技术说明文章，包括：</p>
+	<ul>
+		<li>发布。新的登陆页面，供您阅读我们的研究报告和其他资源。</li>
+		<li>有关研究论文和标准的深入技术探讨，包括上述项目（以及其他很多项目）。</li>
+		<li>了解我们的工作流程以及与我们协作的方式。</li>
+	</ul>
+	<p>欢迎关注！</p>
+</div>

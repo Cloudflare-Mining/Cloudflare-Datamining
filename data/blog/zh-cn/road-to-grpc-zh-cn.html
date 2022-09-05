@@ -1,0 +1,49 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image1-38.png" class="kg-image"></figure>
+	<p>在 2020 年生日周期间，Cloudflare 发布了对 <a href="https://blog.cloudflare.com/announcing-grpc/">gRPC</a>® 的支持。大家对 Beta 测试的浓厚兴趣令我们受宠若惊，在此我们向所有申请并试用 gRPC 的人致以衷心感谢！在本文中，我们将深入探讨有关如何实施这一支持的技术细节。</p>
+	<h3 id="-grpc-">什么是 gRPC？</h3>
+	<p><a href="https://grpc.io/" target="_blank">gRPC</a> 是通过 HTTP/2 运行的一种开源 RPC 框架。RPC（远程过程调用）是供计算机用于命令另一台计算机执行某项操作，而不是调用库中的本地函数。长久以来，分布式计算发展过程中一直都有 RPC 的身影，出现了针对不同领域的不同实现。以下特征造就了 gRPC 的与众不同：</p>
+	<ul>
+		<li>需要现已广泛使用的现代 HTTP/2 协议进行传输。</li>
+		<li>以<a href="https://github.com/grpc" target="_blank">开源</a>形式提供完整的客户端/服务器参考实现、演示和测试套件。</li>
+		<li>不指定消息格式，但<a href="https://developers.google.com/protocol-buffers" target="_blank">协议缓冲区</a>是首选的序列化机制。</li>
+		<li>客户端和服务器都可流式传输数据，避免了轮询新数据或创建新连接的麻烦。</li>
+	</ul>
+	<p>在协议方面，<a href="https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md" target="_blank">gRPC 广泛使用HTTP/2</a> 帧：请求和响应看起来与普通的 HTTP/2 请求非常相似。</p>
+	<p>不过，与众不同的地方在于 gRPC 使用了 HTTP 尾部（trailer）。HTTP 尾部尽管没有得到广泛使用，自 1999 年于<a href="https://tools.ietf.org/html/rfc2616#section-3.6.1" target="_blank">原始 HTTP/1.1 RFC2616</a>中定义以来一直存在。根据定义，HTTP 消息标头位于 HTTP 消息正文之前，但 HTTP 尾部是一组可附加到消息正文后面的 HTTP 标头。不过，由于 HTTP 尾部的用例不多，因此许多服务器和客户端实施没有全面支持它们。虽然 HTTP/1.1 需要为其正文使用分块传输编码来发送 HTTP 尾部，但对于 HTTP/2，尾部位于正文的 DATA 帧之后的 HEADER 帧中。</p>
+	<p>在一些情形中，HTTP 尾部很有用处。例如，我们使用 HTTP 响应代码指示请求的状态，但响应代码是 HTTP 响应的第一行，因此需要尽早确定响应代码。HTTP 尾部可以在正文之后发送一些元数据。例如，假设您的 Web 服务器发送了一个大数据流（非固定大小），最后您要发送所发送数据的 SHA256 校验和，以便客户端可以验证内容。通常，这无法通过 HTTP 状态代码或应在响应开始时发送的响应标头来实现。使用 HTTP 尾部标头，您可以在发送完所有数据后发送另一个标头（例如 <a href="https://tools.ietf.org/html/draft-ietf-httpbis-digest-headers-04#section-10.11" target="_blank">Digest</a>）。</p>
+	<p>gRPC 将 HTTP 尾部用于两个用途。首先，在发送内容后以尾部标头形式发送最终状态（grpc-status）。其二是为了支持流式用例。这些用例的持续时间远比普通 HTTP 请求长。HTTP 尾部用于提供请求或响应的后处理结果。例如，如果在流数据处理过程中发生错误，则可使用尾部发送错误代码，而这无法通过消息正文之前的标头来实现。</p>
+	<p>以下是 HTTP/2 帧中 gRPC 请求和响应的简单示例：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image3-24.png" class="kg-image"></figure>
+	<h3 id="-cloudflare-edge-grpc-">向 Cloudflare Edge 添加 gRPC 支持</h3>
+	<p>既然 gRPC 使用 HTTP/2，原生支持 gRPC 听起来不难，因为 Cloudflare 已经支持 <a href="https://blog.cloudflare.com/introducing-http2/">HTTP/2</a> 了。但是，我们有两个问题：</p>
+	<ul>
+		<li>我们的边缘代理不完全支持 HTTP 请求/响应尾部标头：Cloudflare 使用 NGINX 接受来自用户端的流量，并且对尾部的支持有限。让情况更加复杂的是，穿过 Cloudflare 的请求和响应还需要经过一系列其他代理。</li>
+		<li>HTTP/2 至源站：我们的边缘代理使用 HTTP/1.1 从源站获取对象（无论是动态还是静态对象）。要代理 gRPC 流量，我们需要支持使用 HTTP/2 与客户 gRPC 源站连接。</li>
+		<li>gRPC 流式传输需要允许双向请求/响应流：gRPC 有两种类型的协议流；其一是一元的，即简单的请求和响应，其二是流式传输，允许各个方向上不间断的数据流。为了全面支持流式传输，需要在另一端接收到响应标头之后发送 HTTP 消息正文。例如，<a href="https://grpc.io/docs/what-is-grpc/core-concepts/#client-streaming-rpc" target="_blank">流式传输客户端</a>将在接收到响应标头之后持续发送请求正文。</li>
+	</ul>
+	<p>出于这些原因，gRPC 请求通过我们的网络代理时会中断。为克服这些限制，我们研究了各种各样的解决方案。例如，NGINX 具有<a href="https://www.nginx.com/blog/nginx-1-13-10-grpc/" target="_blank">一个 gRPC 上游模块</a>，可支持 HTTP/2 gRPC 源站，但它是一个单独的模块，而且还需要 HTTP/2 下游，不能用于我们的服务，因为请求在某些情况下会穿过多个 HTTP 代理。由于<a href="https://blog.cloudflare.com/keepalives-considered-harmful/">内部负载平衡架构</a>的关系，而且确保所有内部流量都使用 HTTP/2 将花费太多精力，因此在管道的每一处全部使用 HTTP/2 是不现实的。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image2-25.png" class="kg-image"></figure>
+	<h3 id="-http-1-1-">转换成 HTTP/1.1？</h3>
+	<p>最终，我们找到了一个比较好的办法：在内部网络中将 gRPC 消息转换为不含尾部的 HTTP/1.1 消息，然后在请求发送到源站之前将转换回 HTTP/2。对于 Cloudflare 中不支持 HTTP 尾部的大多数 HTTP 代理，这个办法都适用，而且我们需要的更改也极少。</p>
+	<p>我们不必自己发明格式，gRPC 社区已经开发了一种 HTTP/1.1 兼容版本：<a href="https://github.com/grpc/grpc-web" target="_blank">gRPC-web</a>。gRPC-web 是对基于 HTTP/2 的原始 gRPC 规范的修改。最初目的是与不能直接访问 HTTP/2 帧的 Web 浏览器搭配。使用 gRPC-web 时，HTTP 尾部将移到正文中，因此我们无需担心代理中对 HTTP 尾部的支持。它还附带了流式传输支持。我们的安全产品（例如 WAF 和 Bot Management）仍可以检查生成的 HTTP/1.1 消息，提供的安全级别与 Cloudflare 为其他 HTTP 流量带来的相同。</p>
+	<p>在 Cloudflare 的边缘代理接收到 HTTP/2 gRPC 消息时，该消息将“转换”为 HTTP/1.1 gRPC-web 格式。gRPC 消息转换之后，它将穿过我们的管道，并以和普通 HTTP 请求相同的方式应用 WAF、Cache 和 Argo 等服务。</p>
+	<p>在 gRPC-web 消息即将离开 Cloudflare 网络时，需要再次“转回”成 HTTP/2 gRPC。由我们系统转换的请求会加上标记，因此我们的系统不会意外转换源自客户端的 gRPC-web 流量。</p>
+	<h3 id="http-2-">HTTP/2 源站支持</h3>
+	<p>一个工程方面的挑战是支持使用 HTTP/2 连接到源站。在这个项目之前，Cloudflare 无法通过 HTTP/2 连接到源站。</p>
+	<p>因此，我们决定在内部构建 HTTP/2 源站支持。我们开发了一个独立的源代理，它能通过 HTTP/2 连接到源站。在这个新平台基础上，我们实施了 gRPC 的转换逻辑。gRPC 支持是利用此新平台的第一个功能。路线图中已经规划了对 HTTP/2 连接源服务器的更广泛支持。</p>
+	<h3 id="grpc-">gRPC 流式传输支持</h3>
+	<p>如上文所述，gRPC 具有流式传输模式，可以在流中发送请求正文或响应正文。在 gRPC 请求的生命周期内，可以随时发送 gRPC 消息块。流的末尾有一个 HEADER 帧用来指示流末尾。转换成 gRPC-web 后，我们将使用分块编码发送正文并使连接保持开放以接受正文的两面，直到获得用来指示流末尾的 gRPC 消息块为止。这需要我们的代理支持双向传输。</p>
+	<p>例如，客户端流式传输是一种有趣的模式，其中服务器已经使用响应代码及其标头进行响应，但客户端仍然能够发送请求正文。</p>
+	<h3 id="-">互操作性测试</h3>
+	<p>Cloudflare 的每一新功能在发布之前都需要进行妥善测试。在最初开发过程中，我们使用了 <a href="https://www.envoyproxy.io/" target="_blank">envoy</a> 代理及其 <a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/grpc_web_filter" target="_blank">gRPC-web 过滤器</a>功能以及 gRPC 的官方示例。我们准备了一个带有 envoy 代理和 gRPC 测试源站的测试环境，以确保边缘代理可以正确处理 gRPC 请求。来自 gRPC 测试客户端的请求发送到边缘代理，并转换为 gRPC-web，然后转发到 envoy 代理。之后，envoy 转换回 gRPC 请求并发送到 gRPC 测试源站。我们通过这种办法成功验证了基本行为。</p>
+	<p>基本功能准备就绪后，我们还需要确保两端的转换功能正常工作。为此，我们构建了更深层次的互操作性测试。</p>
+	<p>我们参照现有的 <a href="https://github.com/grpc/grpc/blob/master/doc/interop-test-descriptions.md" target="_blank">gRPC 互操作性测试用例</a>开发了我们的测试套件，并在本地边缘代理和新源站代理之间运行了测试的第一个迭代。</p>
+	<p>对于测试的第二个迭代，我们使用了不同的 gRPC 实施。例如，某些服务器在出现即时错误时以<a href="https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md#responses" target="_blank">仅尾部</a>响应发送最终状态（grpc-status）。此响应在单个 HEADERS 帧块中包含 HTTP/2 响应标头和尾部，并且同时设置了 END_STREAM 和 END_HEADERS 标记。其他实施则在单独的 HEADERS 帧中以尾部形式发送最终状态。</p>
+	<p>在本地验证了互操作性之后，我们针对支持生产环境中所有服务的开发环境运行了测试。这样，我们便可以确保没有意外副作用会影响 gRPC 请求。</p>
+	<p>我们喜欢开展内部测试！我们成功部署了边缘 gRPC 支持的第一批服务，其中之一是 <a href="https://blog.cloudflare.com/inside-the-entropy/">Cloudflare drand 随机信标</a>。启用不难，而且我们过去几周一直在生产环境中运行该信标，从未出现任何问题。</p>
+	<h3 id="--1">总结</h3>
+	<p>支持新协议是一项激动人心的工作！在现有系统中实施新技术支持既令人兴奋，又错综复杂，通常涉及在实施速度和整体系统复杂性之间进行权衡。对于 gRPC，我们成功地快速建立了支持，而且无需对 Cloudflare 边缘进行大幅更改。为实现这个目标，我们仔细考虑了各种实施方案，而后敲定了在 HTTP/2 gRPC 和 HTTP/1.1 gRPC-web 格式之间进行转换的方案。选择这种设计不仅加快并简化了服务集成，而且依然与我们用户的期望和限制相符。</p>
+	<p>如果您对使用 Cloudflare 保护和加速 gRPC 服务感兴趣，可以在<a href="https://blog.cloudflare.com/announcing-grpc/">此处</a>阅读更多内容。另外，如果您想攻克一些有趣的工程挑战（如本文所述的这个），欢迎您<a href="https://www.cloudflare.com/careers/" target="_blank">报名申请</a>！</p>
+	<p><em>gRPC® </em>是<em> The Linux Foundation </em>的注册商标。</p>
+</div>

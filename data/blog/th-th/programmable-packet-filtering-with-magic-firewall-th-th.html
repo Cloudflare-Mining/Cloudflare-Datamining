@@ -1,0 +1,101 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://lh5.googleusercontent.com/FgvF8-vX8HpqkNa8E4GPasHe8hB3KCwhHNINcnghfnvvPQtInchmOHQtRwpV-row5l5r6fDuFRn1l1DfyOXbLGH1Qu5RzZdaGEWvPyAQ44Gv4TGwFRs5NUxK26LXl_pwvnSq6ZLq" class="kg-image" alt="Programmable Packet Filtering with Magic Firewall"></figure>
+	<p>Cloudflare ปกป้องบริการจากการโจมตีที่ซับซ้อนทุกวัน สำหรับผู้ใช้ Magic Transit นั้น การป้องกัน DDoS จะตรวจจับและลดการโจมตี ในขณะที่ <a href="https://www.cloudflare.com/magic-firewall/" target="_blank">Magic Firewall</a> อนุญาตให้มีการตั้งกฎระดับแพ็กเก็ตในแบบที่ต้องการ ทำให้ลูกค้าสามารถเลิกใช้งานอุปกรณ์ฮาร์ดแวร์ไฟร์วอลล์และปิดกั้นการรับส่งข้อมูลที่เป็นอันตรายภายในเครือข่ายของ Cloudflare บริษัทยังคงพัฒนาประเภทของการโจมตีและความซับซ้อนของการโจมตีต่อไป เช่นที่แสดงให้เห็นจาก DDoS และ Reflection <a href="https://blog.cloudflare.com/th-th/attacks-on-voip-providers-th-th/">การ</a> โจมตีผให้บริการ VoIP ที่เล็งเป้าไปที่โปรโตคอล เช่น <a href="https://en.wikipedia.org/wiki/Session_Initiation_Protocol" target="_blank">Session Initiation Protocol</a> (SIP) การต่อสู้กับการโจมตีเหล่านี้จำเป็นต้องผลักดันขีดจำกัดของการกรองแพ็กเก็ตให้มากกว่าที่ไฟร์วอลล์แบบเดิมจะสามารถทำได้ โดยเราได้นำเทคโนโลยีที่ดีที่สุดมารวมเข้าด้วยกันในรูปแบบใหม่เพื่อเปลี่ยน Magic Firewall ให้กลายเป็นไฟร์วอลล์ที่ตั้งค่าโปรแกรมได้อย่างรวดเร็วและเต็มรูปแบบ ซึ่งสามารถต้านทานการโจมตีที่ซับซ้อนที่สุดได้</p>
+	<h3 id="-"><strong>กำแพงเวทย์มนตร์แห่งไฟ</strong></h3>
+	<p><a href="https://blog.cloudflare.com/introducing-magic-firewall/">Magic Firewall</a> เป็นไฟร์วอลล์แพ็กเก็ตไร้สัญชาติแบบกระจายที่สร้างขึ้นบน Linux nftables ไฟร์วอลล์นี้ทำงานบนทุกเซิร์ฟเวอร์ ในศูนย์ข้อมูล Cloudflare ทุกแห่งทั่วโลก หากจะให้การแยกตัวและความยืดหยุ่น กฎ nftables ของลูกค้าแต่ละรายจะได้รับการกำหนดค่าภายในเนมสเปซเครือข่าย Linux ของตนเอง</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image1-20.png" class="kg-image" alt="This diagram shows how packets are processed by Magic Firewall on a Cloudflare server." title="Magic Firewall Diagram"></figure>
+	<p>ไดอะแกรมนี้แสดงอายุของแพ็กเก็ตตัวอย่างเมื่อใช้ <a href="https://blog.cloudflare.com/magic-transit-network-functions/">Magic Transit</a> ซึ่งมี Magic Firewall ในตัว อันดับแรก แพ็กเก็ตจะเข้าสู่เซิร์ฟเวอร์และการป้องกัน DDoS จะถูกนำมาใช้ ซึ่งจะลดการโจมตีให้เร็วที่สุด หลังจากนั้น แพ็กเก็ตจะถูกส่งไปยังเนมสเปซเครือข่ายเฉพาะลูกค้า ซึ่งใช้กฎ nftables กับแพ็กเก็ต แล้วแพ็กเก็ตก็จะถูกส่งกลับไปยังต้นทางผ่าน GRE tunnel โดยผู้ใช้ Magic Firewall สามารถสร้างคำสั่งไฟร์วอลล์จาก <a href="https://developers.cloudflare.com/magic-firewall" target="_blank">API เดียว</a>ด้วย<a href="https://github.com/cloudflare/wirefilter" target="_blank">ซินแท็กซ์ Wirefilter</a> ที่ยืดหยุ่น นอกจากนี้ กฎยังสามารถกำหนดค่าได้ผ่านแดชบอร์ด Cloudflare โดยใช้องค์ประกอบการลากและวาง UI ที่ใช้งานได้ง่าย</p>
+	<p>Magic Firewall ให้ซินแท็กซ์ที่ทรงพลังมากสำหรับการจับคู่กับพารามิเตอร์แพ็กเก็ตต่าง ๆ แต่ยังจำกัดเฉพาะการจับคู่ที่ให้โดย nftables แม้ว่าสิ่งนี้จะมากเกินพอสำหรับกรณีการใช้งานจำนวนมาก แต่ก็ไม่ได้ให้ความยืดหยุ่นเพียงพอเมื่อต้องแยกวิเคราะห์แพ็กเก็ตขั้นสูงและจับคู่เนื้อหาที่เราต้องการ เราต้องการพลังมากกว่าเดิม</p>
+	<h3 id="-ebpf-nftables-"><strong>สวัสดี eBPF ขอเชิญพบกับ Nftables!</strong></h3>
+	<p>เมื่อต้องการเพิ่มพลังให้กับความต้องการเครือข่าย Linux ของคุณ Extended Berkeley Packet Filter (<a href="https://ebpf.io/" target="_blank">eBPF</a>) เป็นตัวเลือกที่เป็นธรรมชาติ เพราะด้วย eBPF คุณสามารถแทรกโปรแกรมประมวลผลแพ็กเก็ตที่รัน<em>ในเคอร์เนล</em> ให้ความยืดหยุ่นของกระบวนทัศน์การเขียนโปรแกรมที่คุ้นเคยด้วยความเร็วของการดำเนินการในเคอร์เนล ทั้งนี้ Cloudflare <a href="https://blog.cloudflare.com/tag/ebpf/">ชื่นชอบ eBPF</a> &nbsp;และเทคโนโลยีนี้ได้รับการเปลี่ยนแปลงเมื่อเปิดใช้งานผลิตภัณฑ์มากมายของเรา เราต้องการหาวิธีใช้ eBPF ให้ได้อย่างเป็นธรรมชาติเพื่อขยายการใช้งาน nftables ใน Magic Firewall ซึ่งจะทำให้เราสามารถจับคู่ได้โดยใช้โปรแกรม eBPF ภายในตารางและโซ่เป็นกฎ การทำเช่นนี้เหมือนกับว่าเรามีเค้กเป็นของเราเอง และกินเองด้วยโดยการรักษาโครงสร้างพื้นฐานและโค้ดที่มีอยู่ของเราไว้ และขยายออกไปมากขึ้นอีก</p>
+	<p>หาก nftables สามารถใช้ประโยชน์จาก eBPF ได้จริง เรื่องนี้จะสั้นกว่านี้มาก เพราะงั้น เราต้องทำภารกิจกันต่อไป การที่เรารู้ว่า iptables ทำงานร่วมกับ eBPF คือจุดเริ่มต้นของภารกิจดังกล่าว ตัวอย่างเช่น เราสามารถใช้ iptables และโปรแกรม eBPF ที่ปักหมุดไว้เพื่อวางแพ็กเก็ตด้วยคำสั่งต่อไปนี้:</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>iptables -A INPUT -m bpf --object-pinned /sys/fs/bpf/match -j DROP
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>เงื่อนงำนี้ช่วยให้เราอยู่บนเส้นทางที่ถูกต้อง Iptables ใช้ส่วนขยาย <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/net/netfilter/xt_bpf.c#n60" target="_blank">xt_bpf</a> เพื่อจับคู่ในโปรแกรม eBPF ส่วนขยายนี้ใช้ประเภทโปรแกรม BPF_PROG_TYPE_SOCKET_FILTER eBPF ซึ่งช่วยให้เราโหลดข้อมูลแพ็กเก็ตจากซ็อกเก็ตบัฟเฟอร์และส่งคืนค่าตามรหัสของเรา</p>
+	<p>เรารู้ว่า iptables สามารถใช้ eBPF ได้ แล้วทำไมไม่ลองใช้ดูล่ะ ปัจจุบัน Magic Firewall ใช้ประโยชน์จาก nftables ซึ่งเป็นตัวเลือกที่ยอดเยี่ยมกับเคสการใช้งานของเราเพราะซินแท็กซ์มีความยืดหยุ่นและอินเทอร์เฟซก็เป็นแบบตั้งโปรแกรมได้ ดังนั้น เราจำเป็นต้องหาวิธีใช้ส่วนขยาย xt_bpf กับ nftables</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image2-13.png" class="kg-image"></figure>
+	<p><a href="https://developers.redhat.com/blog/2020/08/18/iptables-the-two-variants-and-their-relationship-with-nftables#using_iptables_nft" target="_blank">แผนผัง</a>นี้ช่วยอธิบายความสัมพันธ์ระหว่าง iptables, nftables และเคอร์เนล ทั้งนี้ nftables API สามารถใช้ได้กับทั้งโปรแกรม iptables และ nft userspace และสามารถกำหนดค่าการจับคู่ xtables ทั้งสอง (รวมถึง xt_bpf) และการจับคู่ nftables ปกติ</p>
+	<p>ซึ่งหมายความว่าเมื่อมีการเรียก API ที่ถูกต้อง (ข้อความ netlink/netfilter) เราสามารถฝังการจับคู่ xt_bpf ภายในกฎ nftables หากจะดำเนินการนี้ เราต้องเข้าใจว่าข้อความ netfilter ใดที่เราต้องส่ง ซึ่งเมื่อใช้เครื่องมือต่าง ๆ เช่น strace, Wireshark และโดยเฉพาะอย่างยิ่งการใช้ <a href="https://github.com/torvalds/linux/blob/master/net/netfilter/xt_bpf.c" target="_blank">source</a> เราจะสามารถสร้างข้อความที่สามารถผนวกกฎ eBPF ให้กับตารางและเชนได้</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>NFTA_RULE_TABLE table
+NFTA_RULE_CHAIN chain
+NFTA_RULE_EXPRESSIONS | NFTA_MATCH_NAME
+	NFTA_LIST_ELEM | NLA_F_NESTED
+	NFTA_EXPR_NAME "match"
+		NLA_F_NESTED | NFTA_EXPR_DATA
+		NFTA_MATCH_NAME "bpf"
+		NFTA_MATCH_REV 1
+		NFTA_MATCH_INFO ebpf_bytes	
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>โครงสร้างของข้อความ netlink/netfilter เพื่อเพิ่มการจับคู่ eBPF ควรมีลักษณะเหมือนตัวอย่างด้านบน ซึ่งแน่นอนว่าข้อความนี้จำเป็นต้องฝังอย่างถูกต้องและรวมขั้นตอนที่มีเงื่อนไข เช่น verdict เมื่อมีคำที่ตรงกัน ขั้นตอนถัดไปคือการถอดรหัสรูปแบบของ "ebpf_bytes" ตามที่แสดงในตัวอย่างด้านล่าง</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code> struct xt_bpf_info_v1 {
+	__u16 mode;
+	__u16 bpf_program_num_elem;
+	__s32 fd;
+	union {
+		struct sock_filter bpf_program[XT_BPF_MAX_NUM_INSTR];
+		char path[XT_BPF_PATH_MAX];
+	};
+};
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>ดูรูปแบบไบต์ได้จากคำจำกัดความของส่วนหัวเคอร์เนลของ <a href="https://git.netfilter.org/iptables/tree/include/linux/netfilter/xt_bpf.h#n27" target="_blank">struct xt_bpf_info_v1</a> ตัวอย่างโค้ดด้านบนแสดงส่วนที่เกี่ยวข้องของโครงสร้าง</p>
+	<p>โมดูล xt_bpf รองรับทั้ง bytecodes ดิบและเส้นทางไปยังโปรแกรม ebpf ที่ปักหมุดไว้ โหมดต่อมาคือเทคนิคที่เราใช้ในการรวมโปรแกรม ebpf กับ nftables</p>
+	<p>เราสามารถใช้ข้อมูลนี้เพื่อเขียนโค้ดที่สามารถสร้างข้อความ netlink และจัดลำดับช่องข้อมูลที่เกี่ยวข้องได้อย่างถูกต้อง แนวทางนี้เป็นเพียงขั้นตอนแรก เรากำลังพิจารณาที่จะรวมสิ่งนี้เข้ากับเครื่องมือที่เหมาะสม แทนที่จะส่งข้อความ netfilter ที่กำหนดเอง</p>
+	<h3 id="-ebpf"><strong>แค่เพิ่ม eBPF</strong></h3>
+	<p>ตอนนี้ เราต้องสร้างโปรแกรม eBPF และโหลดลงในตาราง nftables และเชนที่มีอยู่ การเริ่มใช้ eBPF อาจสร้างความกังวลเล็กน้อย เราต้องการใช้โปรแกรมประเภทใด เราจะคอมไพล์และโหลดโปรแกรม eBPF ได้อย่างไร เราเริ่มกระบวนการนี้โดยทำการสำรวจและวิจัย</p>
+	<p>ขั้นแรก เราสร้างโปรแกรมตัวอย่างเพื่อทดลองใช้เองก่อน</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>SEC("socket")
+int filter(struct __sk_buff *skb) {
+  /* get header */
+  struct iphdr iph;
+  if (bpf_skb_load_bytes(skb, 0, &amp;iph, sizeof(iph))) {
+    return BPF_DROP;
+  }
+
+  /* read last 5 bytes in payload of udp */
+  __u16 pkt_len = bswap_16(iph.tot_len);
+  char data[5];
+  if (bpf_skb_load_bytes(skb, pkt_len - sizeof(data), &amp;data, sizeof(data))) {
+    return BPF_DROP;
+  }
+
+  /* only packets with the magic word at the end of the payload are allowed */
+  const char SECRET_TOKEN[5] = "xyzzy";
+  for (int i = 0; i &lt; sizeof(SECRET_TOKEN); i++) {
+    if (SECRET_TOKEN[i] != data[i]) {
+      return BPF_DROP;
+    }
+  }
+
+  return BPF_OK;
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>ข้อความที่ตัดตอนมาเป็นตัวอย่างของโปรแกรม eBPF ที่ยอมรับเฉพาะแพ็กเก็ตที่มีแมจิคสตริงต่อท้ายเพย์โหลด ซึ่งต้องตรวจสอบความยาวรวมของแพ็กเก็ตเพื่อค้นหาตำแหน่งที่จะเริ่มต้นการค้นหา กล่าวให้ชัดคือ ตัวอย่างนี้ละเว้นการตรวจสอบข้อผิดพลาดและส่วนหัว</p>
+	<p>เมื่อเรามีโปรแกรมแล้ว ขั้นตอนต่อไปคือการผสานโปรแกรมเข้ากับเครื่องมือของเรา เราลองใช้เทคโนโลยีสองสามอย่างเพื่อโหลดโปรแกรม เช่น BCC, libbpf และเรายังสร้างตัวโหลดแบบกำหนดเองอีกด้วย ท้ายที่สุด เราจะได้ใช้<a href="https://github.com/cilium/ebpf/" target="_blank">ไลบรารี ebpf ของ cilium</a> เนื่องจากเราใช้ Golang สำหรับโปรแกรมควบคุมระนาบของเรา และไลบรารีทำให้ง่ายต่อการสร้าง ฝัง และโหลดโปรแกรม eBPF</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code># nft list ruleset
+table ip mfw {
+	chain input {
+		#match bpf pinned /sys/fs/bpf/mfw/match drop
+	}
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>เมื่อคอมไพล์และปักหมุดโปรแกรมแล้ว เราก็ใช้คำสั่ง netlink เพื่อเพิ่มรายการที่ตรงกันลงใน nftables การแสดงรายการชุดกฎแสดงว่ามีรายการที่ตรงกัน ซึ่งเหลือเชื่อมาก! ขณะนี้ เราสามารถปรับใช้โปรแกรม C แบบกำหนดเองเพื่อให้การจับคู่ขั้นสูงภายในชุดกฎของ Magic Firewall!</p>
+	<h3 id="magic-"><strong>Magic เพิ่มเติม</strong></h3>
+	<p>เมื่อเพิ่ม eBPF ในชุดเครื่องมือของเรา ทำให้ Magic Firewall เป็นวิธีที่ยืดหยุ่นและมีประสิทธิภาพยิ่งขึ้นไปอีก ในการปกป้องเครือข่ายของคุณจากผู้ไม่หวังดี ตอนนี้เราสามารถพิจารณารายละเอียดของแพ็กเก็ตและใช้ตรรกะการจับคู่ที่ซับซ้อนกว่าที่ nftables เท่านั้นที่ทำได้ และเนื่องจากไฟร์วอลล์ของเราทำงานเป็นซอฟต์แวร์บนเซิร์ฟเวอร์ Cloudflare ทั้งหมด เราจึงสามารถทำซ้ำและอัปเดตคุณสมบัติต่าง ๆ ได้อย่างรวดเร็ว</p>
+	<p>ผลลัพธ์หนึ่งของโครงการนี้คือการป้องกัน SIP ซึ่งขณะนี้อยู่ในรุ่นเบต้า นั่นเป็นเพียงจุดเริ่มต้นเท่านั้น เรากำลังสำรวจการใช้ eBPF เพื่อตรวจสอบความถูกต้องของโปรโตคอล การจับคู่ช่องข้อมูลขั้นสูง การดูเพย์โหลด และการสนับสนุนแม้แต่ชุดของรายการ IP ที่ใหญ่ขึ้น</p>
+	<p>เรายินดีรับความช่วยเหลือของคุณที่นี่เช่นกัน! หากคุณมีกรณีการใช้งานและแนวคิดอื่น ๆ โปรดพูดคุยกับทีมดูแลลูกค้าของเรา หากคุณพบว่าเทคโนโลยีนี้น่าสนใจ <a href="https://www.cloudflare.com/careers/" target="_blank">มาร่วมทีมกับเรา</a>!</p>
+	<p><a href="https://twitter.com/intent/tweet?in_reply_to=1467870195343634433" target="_blank"><strong>หารือกันบน Twitter</strong></a><a href="https://news.ycombinator.com/item?id=29459826" target="_blank"><strong> หารือกันบน Hacker News</strong></a><a href="https://reddit.com/r/CloudFlare/comments/ra8cno/how_we_used_ebpf_to_build_programmable_packet/" target="_blank"><strong> หารือกันบน Reddit</strong></a></p>
+	<p><a href="https://blog.cloudflare.com/tag/cio-week/">CIO Week</a> <a href="https://blog.cloudflare.com/tag/magic-firewall/">Magic Firewall</a> <a href="https://blog.cloudflare.com/tag/magic-transit/">Magic Transit</a> <a href="https://blog.cloudflare.com/tag/security/">Security</a> <a href="https://blog.cloudflare.com/tag/voip/">VoIP</a></p>
+	<p>ติดตามบน Twitter</p>
+	<p>Chris J Arges |<a href="https://twitter.com/@ChrisArges" target="_blank">@ChrisArges</a></p>
+	<p>Cloudflare |<a href="https://twitter.com/Cloudflare" target="_blank">Cloudflare</a><br></p>
+</div>

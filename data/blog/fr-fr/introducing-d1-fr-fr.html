@@ -1,0 +1,100 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image1-23.png" class="kg-image" alt="Announcing D1: Our first SQL database"></figure>
+	<p>En 2017, nous avons <a href="https://blog.cloudflare.com/introducing-cloudflare-workers/">annoncé</a> Cloudflare Workers, qui offre aux développeurs un accès à des ressources de traitement sur notre réseau. Nous étions enthousiasmés par les possibilités qu'offrait cette évolution, mais nous avons rapidement pris conscience que la plupart des applications du monde réel sont stateful. Depuis, nous avons déployé KV, Durable Objects et R2, offrant aux développeurs un accès à différents types de stockage.</p>
+	<p>Aujourd'hui, nous sommes heureux d'annoncer D1, notre première base de données SQL.</p>
+	<p>L'attente avant l'accès à la version bêta ne devrait pas être longue, puisque nous commencerons à accepter des utilisateurs dès le mois de juin (<a href="https://www.cloudflare.com/lp/d1/" target="_blank">inscrivez-vous ici</a>), mais nous sommes ravis de vous donner quelques détails sur ce qui vous attend.</p>
+	<h3 id="voici-d1-la-base-de-donn-es-con-ue-pour-cloudflare-workers-">Voici D1, la base de données conçue pour Cloudflare Workers.</h3>
+	<p>D1 a été développée sur SQLite. SQLite n'est pas seulement la base de données la plus omniprésente au monde, utilisée par des milliards d'appareils chaque jour ; c'est aussi la toute première base de données <em>sans serveur</em>. Cela vous surprend ? SQLite était tellement en avance sur son temps qu'elle s'est elle-même surnommée « <a href="https://www.sqlite.org/serverless.html" target="_blank">sans serveur</a> » avant même que le terme ne gagne une connotation liée aux services de Cloud, puisqu'il signifiait littéralement, à l'origine, « n'impliquant pas de serveur ».</p>
+	<p>Puisque Workers se situe entre le serveur et le client, et que la solution s'inspire d'une technologie conçue pour le client, SQLite semblait être la solution idéale pour notre première entrée dans le monde des bases de données.</p>
+	<p>Alors, que pouvez-vous construire avec D1 ? La vraie réponse est « n'importe quoi ou presque ! », mais cela n'est peut-être pas très utile pour stimuler l'imagination ; alors, si nous vous proposions une démonstration en direct ?</p>
+	<h3 id="d-mo-de-d1-northwind-traders">Démo de D1 : Northwind Traders</h3>
+	<p>Vous pouvez découvrir un exemple de déploiement de D1 en essayant notre démo, ici : <a href="https://northwind.d1sql.com/" target="_blank">northwind.d1sql.com</a>.</p>
+	<p>Si vous vous demandez « Qui est Northwind Traders ? », Northwind Traders est en quelque sorte le « Hello, World ! » des bases de données : un exemple de base de données que Microsoft fournissait avec Microsoft Access, et qu'elle utilisait comme tutoriel. La base de données est apparue pour la première fois il y a 25 ans, en 1997, et vous trouverez de nombreux exemples de son utilisation sur Internet.</p>
+	<p>Il s'agit d'une application commerciale typique, avec un schéma réaliste, avec de nombreuses clés étrangères réparties dans de nombreuses tables différentes – une représentation véritablement intemporelle des données.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image3-13.png" class="kg-image"></figure>
+	<p>Quand la dernière commande de Queso Cabrales a-t-elle été expédiée, et sur quel navire ? Vous pouvez le découvrir rapidement. Quelqu'un a appelé pour commander du chai ? Heureusement, Exotic Liquids a encore 39 unités en stock, à seulement 18 $ pièce.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image2-14.png" class="kg-image"></figure>
+	<p>Nous vous invitons à découvrir et fouiner, et nous répondrons à toutes vos questions concernant les activités de Northwind Traders.</p>
+	<p>La démo Northwind Traders comporte également un tableau de bord dans lequel vous pouvez trouver des détails et des indicateurs de mesure concernant les requêtes SQL D1 exécutées en coulisses.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image5-5.png" class="kg-image"></figure>
+	<h3 id="que-pouvez-vous-construire-avec-d1">Que pouvez-vous construire avec D1 ?</h3>
+	<p>Pour en revenir à notre question initiale avant la démo, cependant, que pouvez-vous construire avec D1 ?</p>
+	<p>Même si vous ne dirigez pas vous-même la société Northwind Traders, vous utilisez probablement un logiciel très similaire quelque part. Au cœur même du service de Cloudflare se trouve une base de données ; une base de données SQL remplie de tables, de vues matérialisées et d'une pléthore de procédures stockées. Chaque fois qu'un client interagit avec notre tableau de bord, il finit par changer d'état dans cette base de données.</p>
+	<p>La réalité est que les bases de données sont partout. Elles sont dans le navigateur web dans lequel vous lisez ces lignes, dans chaque application de votre téléphone et dans le stockage de vos transactions bancaires, vos réservations de voyage, vos applications professionnelles et bien d'autres. L'objectif de D1 est de vous aider à créer toutes sortes de choses, des API jusqu'aux applications riches et puissantes, et notamment des sites d'e-commerce, des logiciels de comptabilité, des solutions SaaS et des plateformes CRM.</p>
+	<p>Vous pouvez même associer D1 et Cloudflare Access et créer des tableaux de bord et des outils d'administration internes, uniquement accessibles de manière sécurisée au personnel de votre organisation. Le monde, vraiment, vous appartient !</p>
+	<h3 id="l-exp-rience-des-d-veloppeurs-de-d1">L'expérience des développeurs de D1</h3>
+	<p>Nous parlerons des capacités et des futures fonctionnalités plus loin dans cet article, mais fondamentalement, la force de D1 réside dans l'expérience des développeurs : elle vous permet d'évoluer de rien vers une application à pile complète, en un instant. Pensez à un outil que vous avez utilisé, et qui a rendu le développement magique : c'est exactement ce que nous voulons que vous ressentiez en développant avec Workers et D1.</p>
+	<p>Pour vous donner une idée, voici à quoi ressembleront vos premiers pas dans D1.</p>
+	<h3 id="cr-ation-de-votre-premi-re-base-de-donn-es-d1">Création de votre première base de données D1</h3>
+	<p>Avec D1, vous pourrez créer une base de données en quelques clics seulement : définir les tables, insérer ou transférer les données, sans devoir mémoriser de commandes, sauf si vous en avez besoin.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image4-10.png" class="kg-image"></figure>
+	<p>Bien sûr, si vous préférez la ligne de commande, nous avons annoncé en début de semaine<a href="https://blog.cloudflare.com/10-things-i-love-about-wrangler/"> la nouvelle version améliorée de Wrangler 2</a>, le meilleur outil pour la gestion et le déploiement de vos instances Workers, et bientôt aussi pour le déploiement de D1. Wrangler proposera également la prise en charge native de D1, afin que vous puissiez créer et gérer des bases de données avec quelques commandes simples :</p>
+	<!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 60.42084168336673%;"><iframe src="https://iframe.videodelivery.net/6bc08db0ee3524778effb6af3cbbf90f?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2F6bc08db0ee3524778effb6af3cbbf90f%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D9s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
+	<p></p>
+	<!--kg-card-end: html-->
+	<h4 id="acc-s-d1-depuis-votre-instance-workers">Accès à D1 depuis votre instance Workers</h4>
+	<p>Il est aussi simple d'attacher D1 à votre instance Workers que de créer une nouvelle liaison. Chaque base de données D1 que vous attachez à votre instance Workers est attachée avec sa propre liaison sur le paramètre <code>env</code> &nbsp;:</p>
+	<pre><code class="language-js">export default {
+  async fetch(request, env, ctx) {
+    const { pathname } = new URL(request.url)
+    if (pathname === '/num-products') {
+      const { result } = await env.DB.get(`SELECT count(*) AS num_products FROM Product;`)
+      return new Response(`There are ${result.num_products} products in the D1 database!`)
+    }
+  }
+}</code></pre>
+	<p>Ou, pour un exemple un peu plus complexe, vous pouvez transférer en toute sécurité des paramètres de l'URL à la base de données avec un routeur et des requêtes paramétrées :</p>
+	<pre><code class="language-js">import { Router } from 'itty-router';
+const router = Router();
+
+router.get('/product/:id', async ({ params }, env) =&gt; {
+  const { result } = await env.DB.get(
+    `SELECT * FROM Product WHERE ID = $id;`,
+    { $id: params.id }
+  )
+  return new Response(JSON.stringify(result), {
+    headers: {
+      'content-type': 'application/json'
+    }
+  })
+})
+
+export default {
+  fetch: router.handle,
+}</code></pre>
+	<h3 id="alors-que-pouvez-vous-attendre-de-d1">Alors, que pouvez-vous attendre de D1 ?</h3>
+	<p>Avant tout, nous voulons que vous puissiez développer avec D1, sans devoir vous soucier du coût.</p>
+	<p>Chez Cloudflare, nous n'aimons pas l'idée de tenir vos données en otage ; c'est pourquoi D1, comme R2, ne comportera pas de frais de trafic sortant. Nous prévoyons de fixer le prix de D1 comme celui de nos produits de stockage, en facturant le stockage de base et les opérations de base de données effectuées.</p>
+	<p>Mais, encore une fois, nous ne voulons pas que nos clients s'inquiètent du coût ou des implications si leur entreprise se développe et qu'ils ont besoin de plus de stockage ou que leur activité augmente. Nous voulons que vous puissiez créer des applications aussi simples ou complexes que tout ce que vous pouvez imaginer. Nous veillerons à ce que D1 soit moins onéreuse et plus performante que les solutions centralisées comparables. La promesse qu'offrent l'approche sans serveur et un réseau mondial comme celui de Cloudflare est celle de performances et d'une réduction des coûts grâce à notre architecture.</p>
+	<p>Voici un bref aperçu des fonctionnalités de D1.</p>
+	<h4 id="r-plication-de-lecture">Réplication de lecture</h4>
+	<p>Avec D1, nous voulons faciliter le stockage de l'état de l'ensemble de votre application dans un endroit unique, afin que vous puissiez exécuter des requêtes arbitraires sur la totalité de l'ensemble de données. C'est ce qui rend les bases de données relationnelles si puissantes.</p>
+	<p>Cependant, nous ne croyons pas que puissance doive être synonyme d'encombrement. La plupart des bases de données relationnelles sont immenses et monolithiques, et la configuration de la réplication est tout sauf triviale ; c'est pourquoi, en règle générale, la plupart des systèmes sont conçus pour que toutes les lectures et écritures soient acheminées vers une instance unique. D1 adopte une approche différente.</p>
+	<p>Avec D1, nous voulons vous soulager de la configuration et tirer parti du réseau mondial de Cloudflare. D1 créera des clones en lecture seule de vos données, à proximité de l'endroit où se trouvent vos utilisateurs, et les actualisera continuellement en fonction des modifications effectuées.</p>
+	<h4 id="traitement-par-lot">Traitement par lot</h4>
+	<p>De nombreuses opérations dans une application ne génèrent pas une requête unique. Si votre logique s'exécute dans une instance Workers à proximité de l'utilisateur, mais que chacune de ces requêtes doit être exécutée sur la base de données, il est extrêmement inefficace de les transférer une par une.</p>
+	<p>L'API de D1 inclut le traitement par lot : partout où vous pouvez transmettre une instruction SQL unique, vous pouvez également fournir un tableau de ces instructions ; vous n'avez ainsi besoin que d'un aller-retour HTTP unique pour effectuer plusieurs opérations. C'est la solution parfaite pour les transactions qui doivent être exécutées et validées de manière atomique :</p>
+	<pre><code class="language-js">async function recordPurchase(userId, productId, amount) { 
+  const result = await env.DB.exec([
+    [
+      `UPDATE users SET balance = balance - $amount WHERE user_id = $user_id`,
+      { $amount: amount, $user_id: userId },
+    ],
+    [
+      'UPDATE product SET total_sales = total_sales + $amount WHERE product_id = $product_id',
+      { $amount: amount, $product_id: productId },
+    ],
+  ])
+  return result
+}</code></pre>
+	<h4 id="traitement-int-gr-">Traitement intégré</h4>
+	<p>Toutefois, nous allons plus loin. Avec D1, il sera possible de définir une portion du code de votre instance Workers qui s'exécute directement à proximité de la base de données, ce qui vous donnera un contrôle total et des performances maximales. Chaque requête atteint d'abord votre instance Workers proche de vos utilisateurs, mais selon l'opération, elle peut être transférée vers une autre instance Workers déployée conjointement à une réplique ou vers votre instance principale de D1, afin de terminer son travail.</p>
+	<h4 id="sauvegardes-et-redondance">Sauvegardes et redondance</h4>
+	<p>Peu de choses sont aussi vitales que les données stockées dans la base de données de votre application principale. C'est pourquoi D1 enregistre automatiquement, à intervalles réguliers, des instantanés de votre base de données sur le service de stockage dans le Cloud de Cloudflare, R2, avec un processus de restauration en un clic. Et puisque nous tirons parti du stockage redondant de Durable Objects, votre base de données peut physiquement changer d'endroit, si nécessaire, permettant ainsi la réparation automatique des problèmes les plus catastrophiques en quelques secondes.</p>
+	<h4 id="importation-et-exportation-de-donn-es">Importation et exportation de données</h4>
+	<p>Bien que D1 prenne déjà en charge l'API SQLite, vous permettant ainsi d'écrire facilement vos requêtes, vous pouvez également avoir besoin de données pour les exécuter. Si vous ne créez pas une application entièrement nouvelle, vous pouvez souhaiter importer un jeu de données existant depuis une autre source ou une autre base de données. C'est pourquoi nous allons nous efforcer de vous permettre d'importer vos propres données dans D1.</p>
+	<p>De même, un des avantages de SQLite est sa portabilité. Si votre application dispose d'un environnement dédié, par exemple, vous pourrez cloner un instantané de ces données sur votre machine locale et les utiliser aux fins du développement. Et nous allons ajouter plus de flexibilité, comme la possibilité de créer une nouvelle base de données avec un ensemble de données de test pour chaque nouvelle requête d'extraction dans votre projet Pages.</p>
+	<h3 id="et-ensuite">Et ensuite ?</h3>
+	<p>Ce ne serait pas une annonce de Cloudflare si nous ne terminions pas par « Ce n'est qu'un début ! » – et c'est vrai ! Nous sommes vraiment enthousiasmés par toutes les possibilités puissantes qu'offre notre base de données sur notre réseau mondial. Vous réfléchissez déjà à ce que vous allez construire avec D1 et Workers ? Nous aussi. <a href="https://www.cloudflare.com/lp/d1/" target="_blank">Laissez-nous vos coordonnées</a>, et nous vous donnerons accès dès que possible – attendez-vous à recevoir une invitation à la bêta dès juin 2022 !</p>
+</div>

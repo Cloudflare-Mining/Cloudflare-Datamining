@@ -1,0 +1,70 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/unnamed-25.png" class="kg-image" alt="介绍 Services：在 Cloudflare Workers 上构建可组合、分布式应用"></figure>
+	<p>首先是 Worker 脚本。它很简单，但很巧妙。只需几行代码，您就可以重写 HTTP 请求、附加标头或快速修复您的网站。</p>
+	<p>但是，如果您想在 Workers 上构建一个完整的应用程序该怎么办？您的开发人员工具箱中将需要更多工具。这就是我们在 Workers 平台引入扩展的原因，比如我们的分布式键值存储库 <a href="https://blog.cloudflare.com/zh-cn/workers-kv-is-ga-zh-cn/">KV</a>；<a href="https://blog.cloudflare.com/durable-objects-open-beta/">Durable Objects</a> — 一个一致性程度高、面向对象的数据库；很快会引入 <a href="https://blog.cloudflare.com/zh-cn/introducing-r2-object-storage-zh-cn/">R2</a> （无出口对象存储）。虽然这些工具允许您构建更健壮的应用程序，但在构建由<em>许多</em>应用程序或服务组成的系统架构方面仍然存在差距。</p>
+	<p>假设您已经构建了一个身份验证服务用于授权对您的 API 的请求。您想在您所有的其他服务中重复使用这个逻辑。此外，当您对该身份验证服务进行修改时，您想在受控环境中测试它，而不会影响其他已投入使用的服务。暂时就假设这么多了。</p>
+	<h3 id="-">介绍服务</h3>
+	<p>服务是 Cloudflare Workers 上用于部署应用程序的新构建块。与脚本不同的是，服务是可组合的，这使得服务能够相互对话。服务还支持多个环境，这可让您在预览环境中测试更改，然后在您确信更改可行时再推广到生产环境。</p>
+	<p>为了实现向服务的无缝过渡，我们已经自动迁移了每一个脚本，使其成为具有一个“生产”环境的服务 — 不需要执行任何操作。</p>
+	<h3 id="--1">服务具有环境</h3>
+	<p>每项服务都具有一个生产环境，并且能够创建或克隆几十个预览环境。一个环境的每一个方面都是可以覆盖的：代码、环境变量，甚至诸如 KV 命名空间之类的资源。您只需在仪表板上点击几下，就可以创建和切换环境。</p>
+	<!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 77.57660167130919%;"><iframe src="https://iframe.videodelivery.net/1d87ef3b6dcdebcf1bd3874c8bbbf21e?preload=true" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
+	<!--kg-card-end: html-->
+	<p>每个环境都可以通过唯一的主机名来解析，这个主机名是在您创建或重命名环境时自动生成的。部署后无需等待。您需要的一切，如 DNS 记录、SSL 证书等，几秒钟后即可使用。如果您想要更高级的设置，您还可以添加从您的域到环境的自定义路由。</p>
+	<p>一旦您在预览环境中测试了您的更改，您就可以推广到生产环境了。我们已经使代码从一个环境推广到另一个环境变得非常容易，而不需要再次重建或上传您的代码。环境也会将代码与设置分开管理，所以当您从暂存环境推广到生产环境时，您不需要手动编辑环境变量。</p>
+	<!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 85.37604456824512%;"><iframe src="https://iframe.videodelivery.net/9ecdc37807c67e16562e396c02f52490?preload=true" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
+	<!--kg-card-end: html-->
+	<h3 id="--2">对服务进行版本控制</h3>
+	<p>对服务的每一次更改都进行版本控制和审计。错误确实会发生，但是当错误发生时，重要的是能够快速回滚，然后有工具可以回答这个老问题：“谁在什么时候更改了什么内容？”</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/unnamed--1--15.png" class="kg-image"></figure>
+	<p>服务中的每个环境都有自己的版本历史记录。每次更改代码或更新环境变量时，该环境的版本号都会递增。您也可以给每个版本添加额外的元数据，比如 git commit 或部署标记。</p>
+	<h3 id="--3">服务可以相互对话</h3>
+	<p>服务是可组合的，这允许一个服务与另一个服务对话。为了支持这一点，我们将引入一个新的 API 来促进服务与服务之间的通信：服务绑定。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image2-56.png" class="kg-image"></figure>
+	<p>服务绑定允许您向另一个服务发送 HTTP 请求，而这些请求不会通过互联网传递。这意味着您可以直接从您的代码中调用其他 Workers！服务绑定开辟了一个全新的可组合性世界。在下面的例子中，请求由一个身份验证服务来验证。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">export default {
+  async fetch(request, environment) {
+    const response = await environment.AUTH.fetch(request);
+    if (response.status !== 200) {
+      return response;
+    }
+    return new Response("Authenticated!");
+  }
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image1-83.png" class="kg-image"></figure>
+	<p>服务绑定使用标准的 <a href="https://developers.cloudflare.com/workers/runtime-apis/fetch" target="_blank"> fetch</a> API，因此您可以继续使用现有的实用程序和库。您还可以更改服务绑定的环境，以便您可以测试服务的新版本。在下一个示例中，1% 的请求被路由到服务的“canary”部署。如果对 canary 的请求失败，则会将该请求发送到生产部署以寻求另一个机会。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">export default {
+  canRetry(request) {
+    return request.method === "GET" || request.method === "HEAD";
+  },
+  async fetch(request, environment) {
+    if (Math.random() &lt; 0.01) {
+      const response = await environment.CANARY.fetch(request.clone());
+      if (response.status &lt; 500 || !canRetry(request)) {
+        return response;
+      }
+    }
+    return environment.PRODUCTION.fetch(request);
+  }
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>虽然服务之间的接口是 HTTP，但联网不是使用 HTTP 进行。实际上根本不需要联网！与典型的“微服务架构”不同（其中服务通过网络进行通信并且可能会受到延迟或中断的影响），服务绑定是一种零成本的抽象。当您部署服务时，我们会构建其服务绑定的依赖关系图，然后将所有这些服务打包到一个部署中。当一个服务调用另一个服务时，不会出现网络延迟； 请求会立即执行。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image3-41.png" class="kg-image"></figure>
+	<p>这种零成本模型使团队能够在其组织内共享和重复使用代码，而不受延迟或性能影响。抛却令人费解的 YAML 模板或编排服务吧 — 只需编写代码，我们将把它们拼接在一起。</p>
+	<h3 id="--4">立即行动，试试未来技术吧！</h3>
+	<p>我们很高兴地宣布您今天就可以开始使用服务了！ 如果您已经使用过 Workers，您会注意到您的每个脚本都已升级为具有一个“生产”环境的服务。仪表板和所有现有的 Cloudflare API 将继续与服务一起“正常工作”。</p>
+	<p>作为公开测试版发布的一部分，您还可以创建代码并将其部署到多个“预览”环境。我们仍在研究服务绑定和版本控制，我们将在您开始使用它们后立即提供更新。</p>
+	<p>有关服务的更多信息，请查看以下任何资源：</p>
+	<ul>
+		<li>进入<a href="https://workers.new/" target="_blank"> 仪表板</a>并创建您的第一个服务！</li>
+		<li>报名参加<a href="https://www.cloudflare.com/zh-cn/service-bindings-closed-beta-sign-up/" target="_blank">抢先访问</a> 服务绑定。</li>
+	</ul>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/Lego-1.png" class="kg-image"></figure>
+</div>

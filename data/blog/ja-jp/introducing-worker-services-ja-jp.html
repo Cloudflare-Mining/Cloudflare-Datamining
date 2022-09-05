@@ -1,0 +1,70 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/unnamed-22.png" class="kg-image" alt="Servicesの紹介：Cloudflare Workersに構成可能な分散型アプリケーションを構築"></figure>
+	<p>まず、Workerのスクリプトです。これは、シンプルかつエレガントなものでした。わずか数行のコードで、HTTPリクエストを書き換えたり、ヘッダーを追加したり、Webサイトを素早く修正することができます。</p>
+	<p>ですが、Workersでアプリケーション全体を構築したい場合はどうでしょうか？開発者用ツールボックスには、さらに多くのツールが必要になります。このような理由から、当社の分散キーバリューストアである<a href="https://blog.cloudflare.com/ja-jp/workers-kv-is-ga-ja-jp/">KV </a>などのWorkersプラットフォーム、強固な一貫性があるオブジェクト指向データーベースの<a href="https://blog.cloudflare.com/durable-objects-open-beta/">Durable Objects</a>への拡張を導入してきました。まもなくエグレスのないオブジェクトストレージ<a href="https://blog.cloudflare.com/ja-jp/introducing-r2-object-storage-ja-jp/">R2</a>への拡張も予定しています。これらのツールで、より堅牢なアプリケーションを構築することができますが、<em>多くの</em>アプリケーションやサービスを構成するシステムアーキテクチャの構築に関しては、いまだにギャップがあります。</p>
+	<p>APIへのリクエストを認証する認証サービスを構築したとします。そのロジックを他のすべてのサービスで再利用したい、さらに、その認証サービスに変更を加える際には、運用中の他のサービスに影響を与えないように管理された環境でテストしたいと考えるでしょう。ですが、もう想像する必要はありません。</p>
+	<h3 id="services-">Servicesの紹介</h3>
+	<p><strong>Services</strong>は、Cloudflare Workersにアプリケーションをデプロイするための新しいビルディングブロックです。スクリプトとは異なり、一つのServiceはコンポーザブル（組み立て可能）であるため、Services同士の連携が可能です。また、Servicesは複数の環境をサポートしているため、プレビュー環境で変更をテストし、動作に問題がなければ本番環境に移行することができます。</p>
+	<p>Servicesへのシームレスな移行を可能にするために、すべてのスクリプトが1つの「本番」環境で一つのServiceになるように自動的に移行しました。</p>
+	<h3 id="-services">多数の環境を備えたServices</h3>
+	<p>各Serviceには、本番環境と、何十ものプレビュー環境を作成またはクローン化する機能が付いています。コード、環境変数、そしてKVネームスペースのようなリソースまで、環境のあらゆる側面がオーバーライド可能です。ダッシュボードを数回クリックするだけで、環境を作成したり切り替えたりすることができます。</p>
+	<!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 77.57660167130919%;"><iframe src="https://iframe.videodelivery.net/1d87ef3b6dcdebcf1bd3874c8bbbf21e?preload=true" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
+	<!--kg-card-end: html-->
+	<p>各環境は、環境の作成や名前の変更時に自動的に生成される、固有のホスト名で解決できます。デプロイ後の待ち時間はありません。DNSレコードやSSL証明書など、必要なものはすべて数秒後にはすぐに使用できます。さらに高度なセットアップをご希望の場合は、ドメインから環境にカスタムルートを追加することもできます。</p>
+	<p>プレビュー環境で変更内容をテストしたら、次は本番環境にプロモートできます。コードをリビルドしたり、アップロードしたりすることなく、ある環境から別の環境にコードを非常に簡単にプロモートすることができます。また、環境はコードと設定を別々に管理するため、ステージング環境から本番環境へのプロモート時に環境変数を手動で編集する必要はありません。</p>
+	<!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 85.37604456824512%;"><iframe src="https://iframe.videodelivery.net/9ecdc37807c67e16562e396c02f52490?preload=true" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
+	<!--kg-card-end: html-->
+	<h3 id="services--1">Servicesのバージョン管理</h3>
+	<p><strong>Services</strong>への変更はすべてバージョン管理され、監査されます。ミスは起こりえますが、そのような場合には迅速にロールバックし、昔からある質問「誰が、いつ、何を変更したか？」に答えるためのツールを持つことが重要です。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/unnamed--1--14.png" class="kg-image"></figure>
+	<p>Service内の各環境には、それぞれのバージョン履歴があります。コードが変更されたり、環境変数が更新されたりするたびに、その環境のバージョン番号がインクリメントされます。また、各バージョンには、git commitやdeployment tagなどのメタデータを追加することができます。</p>
+	<h3 id="service-">Service同士が通信可能</h3>
+	<p>Serviceはコンポーザブル(組み立て可能)であり、あるServiceが別のServiceと通信することができます。これをサポートするために、Service間の通信を促進する新しいAPI、サービスバインディング（束ねる）を導入します。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image2-55.png" class="kg-image"></figure>
+	<p>サービスバインディングとは、インターネットを経由せずに、他のServiceにHTTPリクエストを送信することができる機能です。つまり、自分のコードから直接、他のWorkersを呼び出すことができるのです。サービスバインディングは、新しいコンポーザビリティの世界を開きます。以下の例では、リクエストは認証Serviceによって検証されます。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">export default {
+  async fetch(request, environment) {
+    const response = await environment.AUTH.fetch(request);
+    if (response.status !== 200) {
+      return response;
+    }
+    return new Response("Authenticated!");
+  }
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image1-82.png" class="kg-image"></figure>
+	<p>サービスバインディングは、標準の<a href="https://developers.cloudflare.com/workers/runtime-apis/fetch" target="_blank"> fetch</a> APIを使用しているので、既存のユーティリティやライブラリを引き続き使用することができます。また，サービスバインディングの環境を変更することもできるので、Serviceの新しいバージョンをテストすることもできます．次の例では、リクエストの1%がServiceの「カナリア」デプロイメントにルーティングされます。カナリアへのリクエストが失敗すると、本番用のデプロイメントに送られ、再度試行することができます。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">export default {
+  canRetry(request) {
+    return request.method === "GET" || request.method === "HEAD";
+  },
+  async fetch(request, environment) {
+    if (Math.random() &lt; 0.01) {
+      const response = await environment.CANARY.fetch(request.clone());
+      if (response.status &lt; 500 || !canRetry(request)) {
+        return response;
+      }
+    }
+    return environment.PRODUCTION.fetch(request);
+  }
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Service間のインターフェースはHTTPですが、ネットワークはそうではありません。実際、ネットワークは存在しません。一般的な「マイクロサービスアーキテクチャ」では、サービスがネットワークを介して通信し、遅延や中断の影響を受けることがありますが、サービスバインディングはゼロコストで抽象化されています。Servicesをデプロイする際には、そのサービスバインディングの依存関係グラフを作成し、それらのServicesをすべて1つのデプロイメントにパッケージ化します。あるサービスが別のサービスを呼び出すとき、ネットワークの遅延はなく、リクエストは直ちに実行されます。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image3-40.png" class="kg-image"></figure>
+	<p>このゼロコストモデルにより、遅延やパフォーマンスを犠牲にすることなく、チームが組織内でコードを共有・再利用できるようになります。複雑なYAMLテンプレートや、サービスをオーケストレーションするための指数関数的なバックオフの時代は終わりました。ただコードを書くだけで、すべてがつながります。</p>
+	<h3 id="-">今、未来を試す！</h3>
+	<p>本日からServicesをご利用いただけます。すでにWorkersをご利用の方は、各スクリプトが1つの「本番環境」でServiceにアップグレードされていることにお気づきかと思います。ダッシュボードとすべての既存のCloudflare APIは、引き続きServicesで「機能」します。</p>
+	<p>また、オープンベータの開始に伴い、複数の「プレビュー」環境にコードを作成してデプロイすることもできます。サービスバインディングやバージョニングについてはまだ検討中ですが、使用可能になり次第、最新情報をお知らせします。</p>
+	<p>Servicesの詳細については、以下の資料をご覧ください。</p>
+	<ul>
+		<li><a href="https://workers.new/" target="_blank">ダッシュボード</a>に移動して最初のサービスを作成しましょう！</li>
+		<li>サービスバインディングへの<a href="https://www.cloudflare.com/ja-jp/service-bindings-closed-beta-sign-up/" target="_blank">アーリーアクセスのために</a>サインアップしましょう。</li>
+	</ul>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/Lego.png" class="kg-image"></figure>
+</div>

@@ -1,0 +1,55 @@
+<div class="post-content lh-copy gray1">
+	<!--kg-card-begin: markdown-->
+	<p>Back in October I wrote a blog post about CloudFlare and open source software titled <a href="https://blog.cloudflare.com/open-source-two-way-street">CloudFlare And Open Source Software: A Two-Way Street</a> which detailed the many ways in which we use and support open source software.</p>
+	<p>Since then we've pushed out quite a lot of new open source projects, as well as continuing to support the likes of <a href="https://luajit.org/sponsors.html#sponsorship_perf" target="_blank">LuaJIT</a> and <a href="https://openresty.org/" target="_blank">OpenResty</a>. All our open source projects are available via our dedicated GitHub page <a href="https://cloudflare.github.io/" target="_blank">cloudflare.github.io</a>. Here are a few that have been recently updated or released:</p>
+	<ul>
+		<li>
+			<a href="https://github.com/cloudflare/redoctober" target="_blank">Red October</a>: our implementation of the 'two man rule' for control of secrets (and nuclear weapons :-). It was large enough to warrant its own <a href="https://blog.cloudflare.com/red-october-cloudflares-open-source-implementation-of-the-two-man-rule">blog post</a>.
+		</li>
+		<li>
+			<a href="https://github.com/cloudflare/lua-resty-shcache" target="_blank">Lua Resty Shcache</a>: a shared cache implementation for OpenResty and Nginx Lua.
+		</li>
+		<li>
+			<p><a href="https://github.com/agentzh/lua-resty-core" target="_blank">Lua Resty Core</a>: a new FFI-based Lua API for the ngx_lua module (part of work CloudFlare is doing on optimization).
+			</p>
+		</li>
+		<li>
+			<a href="https://github.com/cloudflare/golibs" target="_blank">Go Libs</a>: at the other end of the size spectrum: golibs is where we'll be dumping small Go libraries that might be useful to others.
+		</li>
+		<li>
+			<a href="https://github.com/cloudflare/bm" target="_blank">BM</a>: a Go implementation of Bentley-McIlroy long string compression (which is close to part of the compression performance by <a href="https://www.cloudflare.com/railgun" target="_blank">Railgun</a>).
+		</li>
+		<li>
+			<a href="https://github.com/cloudflare/lua-raven" target="_blank">Lua Raven</a>: a Lua interface for sending error reports to <a href="https://getsentry.com/" target="_blank">Sentry</a>.
+		</li>
+		<li>
+			<a href="https://github.com/cloudflare/lua-resty-logger-socket" target="_blank">Lua Resty Logger Socket</a>: a non-blocking logger for Nginx Lua that supports remote loggers.
+		</li>
+		<li>
+			<a href="https://github.com/cloudflare/conf" target="_blank">conf</a>: a very simple key=value configuration file parser written in Go.<p></p>
+		</li>
+		<li>
+			<a href="https://github.com/cloudflare/lua-resty-kyototycoon" target="_blank">Lua Resty Kyoto Tycoon</a>: a non-blocking Lua interface for <a href="http://fallabs.com/kyototycoon/" target="_blank">Kyoto Tycoon</a>.
+		</li>
+		<li>
+			<a href="https://github.com/cloudflare/golz4" target="_blank">Go LZ4</a>: a Go package for LZ4 compression.
+		</li>
+		<li>
+			<a href="https://github.com/cloudflare/ahocorasick" target="_blank">Aho Corasick</a>: a Go package that does Aho-Corasick string matching.
+		</li>
+		<li>
+			<a href="https://github.com/cloudflare/kt_fdw" target="_blank">kt-fdw</a>: a foreign data wrapper for Postegres that interfaces to Kyoto Tycoon. More details in its <a href="https://blog.cloudflare.com/kyoto_tycoon_with_postgresql">blog post</a>.
+		</li>
+		<li>
+			<a href="https://github.com/cloudflare/lua-resty-cookie" target="_blank">Lua Resty Cookie</a>: a Lua Resty package that improves Cookie handling in OpenResty and Nginx Lua.
+		</li>
+		<li>
+			<a href="https://github.com/terinjokes/docker-npmjs" target="_blank">Docker NPMJS</a>: a Docker image for a private npmjs repository.
+		</li>
+	</ul>
+	<p>We've also been contributing to projects like <a href="https://git.openssl.org/gitweb/?p=openssl.git;a=search;s=Piotr+Sikora;st=author" target="_blank">OpenSSL</a>, <a href="https://sourceware.org/git/gitweb.cgi?p=systemtap.git;a=search;s=Yichun+Zhang+(agentzh);st=author" target="_blank">SystemTap</a> and <a href="https://code.google.com/p/phantomjs/source/detail?r=3ae632e70441125e6830ddb8e6535a3627f9444a&amp;path=/test/webpage-spec.js" target="_blank">PhantomJS</a>, and the names of CloudFlare employees Yichun and Piotr appear regularly in the Nginx <a href="https://nginx.org/en/CHANGES" target="_blank">changelog</a>.</p>
+	<p>And, on a personal level, I've been keeping a repository of all the talks I've given (including any associated code or data) in <a href="https://github.com/cloudflare/jgc-talks" target="_blank">jgc-talks</a>. The most recent of which was a talk in London about <a href="https://github.com/cloudflare/jgc-talks/tree/master/Other/BigO_London" target="_blank">rolling hashes</a>.</p>
+	<p>We'll keep pushing projects, large and small, to Github as we're ready to share them. We've pushed out so much open source code that we've recently reorganized our Github page by language/software. There are now sections for <a href="https://cloudflare.github.io/#cat-JavaScript" target="_blank">JavaScript</a>, <a href="https://cloudflare.github.io/#cat-Go" target="_blank">Go</a>, <a href="https://cloudflare.github.io/#cat-Nginx%20and%20Lua" target="_blank">Nginx and Lua</a>, and <a href="https://cloudflare.github.io/#cat-Postgres" target="_blank">Postgres</a>.</p>
+	<p>Right now there's a large and innovative security project getting ready for release. Expect to hear about it (and see its source code) in the New Year.</p>
+	<!--kg-card-end: markdown-->
+</div>

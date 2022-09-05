@@ -1,0 +1,72 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/customize-your-HTTP-DDoS-protection-settings-1.png" class="kg-image"></figure>
+	<p>Cloudflare는 <strong>HTTP DDoS 관리형 규칙 세트</strong>를 출시하게 되어 기쁘게 생각합니다. Cloudflare 고객은 이 새로운 기능을 이용해 HTTP DDoS 방어 설정을 맞춤형으로 지정할 수 있습니다. Free 요금제 또는 Enterprise 요금제 중 어떤 요금제를 사용하든, 이제 Cloudflare Dashboard 또는 API 내에서 직접 설정을 변경하고 최적화할 수 있습니다.</p>
+	<p>대부분의 경우 Cloudflare 고객은 사용자가 직접 설정을 정의할 필요가 없습니다. DDoS로 인한 서비스 중단을 지나간 일로 만들고, 고객 부담이 없도록 하는 것이 당사의 사명입니다. 이 사명을 달성하기 위해 우리는 자동화 감지 및 완화 시스템에 지속적으로 투자하고 있습니다. 일부 드문 경우에는 구성을 변경할 필요가 있으므로 현재 Cloudflare 고객은 보호 메커니즘을 개별적으로 구성할 수 있습니다. 다음 단계는 고유한 트래픽 패턴에 따라 고객을 위해 시스템이 학습하고 스스로 자동 조정하도록 만드는 것입니다. 규모에 따른 제로 터치 DDoS 방어입니다.</p>
+	<h2 id="-ddos-"><strong>무제한 DDoS 방어</strong></h2>
+	<p>2017년, 당사는 어떠한 금액도 지불하지 않는 고객(즉, Free 요금제를 이용하는 고객)이라 해도 대규모 공격에 직면했다는 이유로 네트워크에서 고객을 내보내지 않을 것이라고 <a href="https://blog.cloudflare.com/unmetered-mitigation/">발표했습니다</a>. 이와 더불어 공격 규모와 기간에 관계 없이 DDoS 공격 트래픽에 대해 고객에게 요금을 부과하지 않겠다고 약속했습니다. 2021년 여름, 당사는 <a href="https://blog.cloudflare.com/ko-kr/cloudflare-thwarts-17-2m-rps-ddos-attack-the-largest-ever-reported-ko-kr/">사상 최대 규모의 DDoS 공격</a>을 자동으로 감지하고 완화했습니다. 다른 벤더와 달리, Cloudflare 고객은 공격 트래픽에 대한 서비스 크레딧을 요청할 필요가 없습니다. 당사는 단순히 청구 시스템에서 DDoS 트래픽을 제외했습니다. 이는 공격 감지 및 완화 메커니즘과 마찬가지로 자동 수행됩니다.</p>
+	<h2 id="-ddos--1"><strong>자율적 DDoS 방어</strong></h2>
+	<p><a href="https://blog.cloudflare.com/250-cities-is-just-the-start/">네트워크 및 기술 스택에 지속적으로 투자하여</a> 무제한 DDoS 방어에 대한 당사의 약속이 가능합니다. 당사 <a href="https://www.cloudflare.com/ko-kr/network/" target="_blank">네트워크</a>의 세계적 범위와 용량 덕분에 기록된 것 중 가장 대규모였던 공격을 직접적인 개입 없이 처리할 수 있었습니다. <a href="https://www.cloudflare.com/learning/cdn/glossary/anycast-network/" target="_blank">BGP Anycast</a>를 사용하여, 트래픽은 전 세계 데이터 센터 사이의 load balancing 형태로 가장 가까운 Cloudflare 에지 데이터 센터로 라우팅됩니다. 그런 다음 트래픽은 당사에서 직접 개발한 L4 load balancer인 <a href="https://blog.cloudflare.com/unimog-cloudflares-edge-load-balancer/">Unimog</a>의 도움으로 서버 간 데이터 센터 내로 효율적으로 부하 분산되어, 트래픽이 가장 부하가 적은 서버에 도착하게 됩니다. 각 서버는 악의적 트래픽을 검사하고 감지될 경우 기술 스택 내 최적의 위치에 완화 기능을 적용합니다. 각 서버는 중앙화된 합의를 요청하지 않고도 공격을 완전히 자율적으로 감지 및 완화하며, 사용하고 있는 다른 멀티캐스트를 사용해서 다른 서버와 세부 정보를 공유합니다. 이는 당사 독점 <a href="https://blog.cloudflare.com/deep-dive-cloudflare-autonomous-edge-ddos-protection/">자율 에지 감지 및 완화 시스템</a>을 사용하여 수행되며, 이를 통해 당사에서 운영하는 규모로 무제한 DDoS 방어를 계속 무료로 제공할 수 있습니다.</p>
+	<h2 id="-ddos--2"><strong>구성 가능한 DDoS 방어</strong></h2>
+	<p>당사 자율 시스템은 공격 패턴, 알려진 공격 도구, 의심되는 패턴, 프로토콜 위반, 대규모 원점 오차를 초래하는 요청, 원점/캐시와 충돌하는 과도한 트래픽, 추가 공격 벡터를 검사하는 동적 규칙 집합을 사용합니다. 각 규칙에는 해당 트래픽이 실제 공격의 일부라는 규칙의 신뢰도에 따라 달라지는 사전에 정의된 민감도 수준 및 기본 작업이 있습니다.</p>
+	<p>하지만 이러한 신뢰도 수준을 어떻게 결정할까요? 이에 대한 답은 특정한 각 규칙과, 해당 규칙이 무엇을 찾는지에 따라 달라집니다. 일부 규칙은 알려진 공격 도구 및 봇넷, 알려진 프로토콜 위반 및 기타 의심스러운 일반적 패턴 및 트래픽 이상으로 생성된 HTTP 속성에서 패턴을 찾습니다. 특정 규칙이 알려진 공격 도구의 HTTP 패턴을 찾고 있는 경우, 이를 찾았을 때 해당 트래픽이 공격의 일부일 가능성(즉, 신뢰도)이 높으면 해당 규칙과 일치하는 모든 트래픽을 안전하게 차단할 수 있습니다. 하지만 다른 경우에는, 감지된 패턴이나 비정상적 활동이 공격과 유사할 수 있지만, 비정상적 HTTP 호출을 생성하는 불량 응용 프로그램, 원본 서버에서 폭주하는 잘못된 API 클라이언트, 심지어는 단순히 프로토콜 표준을 위반한 권한이 있는 트래픽에서 초래된 것일 수도 있습니다. 이러한 경우 규칙과 일치하는 트래픽 속도를 제한하거나 악성 봇 또는 공격자를 차단하면서 권한이 있는 사용자를 확인하고 허용하는 질문 작업을 지원할 수 있습니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/image1-26.png" class="kg-image"></figure>
+	<h3 id="ddos-"><strong>DDoS 방어 설정 구성</strong></h3>
+	<p>이전에는 기본 작업 및 민감도 수준을 사용자가 직접 구성하려면 지원 채널을 거쳐야 했습니다. 일부 경우에는 이를 해결하는 데 원하는 것보다 오래 걸릴 수 있었습니다. 새로운 기능의 출시로, 자율 에지 시스템의 설정을 사용자가 스스로 맞춤화하고 미세 조정하여 특정 응용 프로그램에 필요한 보호 기능의 정확도를 빠르게 높일 수 있습니다.</p>
+	<p>이전에 사용자 지정 기능을 적용하려고 Cloudflare 지원 팀에 문의한 적이 있다면, 기존 사용자 지정에 따라 DDoS 규칙 집합이 사용자의 영역에 대해 기본적으로 꺼져 있거나 낮게 설정되어 있음을 알 수 있습니다. 대시보드로 이동하여 설정을 확인하고 필요할 경우 변경할 수 있습니다.</p>
+	<p>특정 HTTP 속성 또는 IP에 대한 완화를 제외하거나 무시하도록 요청할 경우나, Cloudflare 승인이 필요한 아주 높은 임계값을 요청했을 경우, 해당 사용자 지정이 계속 활성화되어 있지만 대시보드에 아직 표시되지 않았을 수도 있습니다.</p>
+	<p>이전에 이러한 문제를 경험한 적이 없다면 사용자 측에서 수행해야 할 작업은 없습니다. 그러나 DDoS 방어 설정을 사용자 지정하려는 경우에는 <a href="https://dash.cloudflare.com/?to=/:account/:zone/firewall/ddos" target="_blank">DDoS 탭</a>으로 바로 이동하거나 다음 단계를 따르십시오.</p>
+	<ol>
+		<li><a href="https://dash.cloudflare.com/" target="_blank">Cloudflare Dashboard</a>에 로그인하고 계정 및 웹 사이트를 선택합니다.</li>
+		<li><strong>방화벽 &gt; DDoS</strong> 항목으로 이동합니다.</li>
+		<li>다음, <strong>HTTP DDoS 공격 방어</strong> 옆의 <strong>구성</strong>을 클릭합니다.</li>
+		<li><strong>규칙 집합 구</strong>성에서, HTTP DDoS 관리형 규칙 집합 내 모든 규칙의 <strong>작업</strong> 및 <strong>민감도</strong> 값을 선택합니다.</li>
+	</ol>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/image6-19.png" class="kg-image"></figure>
+	<p>대안으로는, <a href="https://developers.cloudflare.com/waf/ddos-l7-mitigation" target="_blank">API 문서</a>를 따라 DDoS 방어 설정을 프로그램 방식으로 구성합니다.</p>
+	<p>구성 페이지에서 다른<strong> 작업</strong> 및 <strong>민감도 수준</strong>을 선택해서 모든 DDoS 방어 규칙을 규칙 그룹(즉, "규칙 집합")으로 재정의할 수 있습니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/image9-4.png" class="kg-image"></figure>
+	<p>대안으로는, <strong>규칙 검색</strong> 항목을 클릭해서 모든 규칙이 아니라 특정 규칙만 규칙 집합으로 재정의할 수 있습니다.</p>
+	<h3 id="-"><strong>완화 작업</strong></h3>
+	<p>완화 작업은 완화 규칙이 적용될 때 수행할 작업을 정의합니다. 시스템은 지속적으로 트래픽을 분석하며 잠재적인 악의적 활동을 추적합니다. 특정한 초당 요청 임계값이 구성된 민감도 수준을 초과할 때, 동적으로 생성된 시그니처가 있는 완화 규칙이 공격을 완화하기 위해 적용됩니다. 기본 완화 작업은 특정 규칙에 따라 다를 수 있습니다. 신뢰도가 낮은 규칙이 부드러운 완화의 형식으로 <strong>질문</strong> 작업에 적용될 수 있으며, 트래픽이 공격의 일부라는 신뢰도가 더 높을 경우, 더 엄격한 완화 작업의 형태로 <strong>차단 </strong>작업을 하도록 마련된 규칙이 적용됩니다.</p>
+	<p>작업에 사용 가능한 값은 다음과 같습니다.</p>
+	<ul>
+		<li>차단</li>
+		<li>질문(캡차)</li>
+		<li>로그</li>
+		<li>규칙 기본값 사용</li>
+	</ul>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/image3-29.png" class="kg-image"></figure>
+	<p>완화 작업을 변경하려는 시기에 대해서는 다음 예가 포함됩니다.</p>
+	<ul>
+		<li><strong>더 안전한 온보딩:</strong> 특이한 트래픽 패턴, 단순히 프로토콜 표준을 위반하거나 급증적 동작을 초래하는 새로운 HTTP 응용 프로그램에 온보딩하고 있습니다. 이러한 경우, 작업을 <strong>로그</strong>로 설정하고 시스템이 표시하는 트래픽을 확인할 수 있습니다. 그런 다음, 필요에 따라 민감도 수준에 필요한 변경을 수행하고 완화 작업을 기본값으로 전환할 수 있습니다.</li>
+		<li><strong>더 엄격한 완화: </strong>DDoS 공격을 탐지했지만 규칙의 기본 로직 때문에 속도 제어 또는 질문 작업이 적용되었습니다. 하지만 이 경우에는 악의적 트래픽인 것이 확실하므로 더 완벽한 완화를 수행하도록 작업을 <strong>차단</strong>으로 변경할 수 있습니다.</li>
+	</ul>
+	<h3 id="--1"><strong>완화 민감도</strong></h3>
+	<p>민감도 수준으로는 완화 규칙이 적용될 시기를 정의합니다. 시스템은 지속적으로 트래픽을 분석하며 잠재적인 악의적 활동을 추적합니다. 특정 초당 요청 임계값을 초과할 때, 동적으로 생성된 시그니처가 있는 완화 규칙이 공격을 완화하기 위해 적용됩니다. 감도 수준을 전환하면 완화가 적용될 <em>시기</em>를 정의하게 됩니다. 감도가 높을수록 완화가 빠르게 적용됩니다. 사용 가능한 감도 값은 다음과 같습니다.</p>
+	<ol>
+		<li>High (높음 - 기본값)</li>
+		<li>Medium (중간)</li>
+		<li>Low (낮음)</li>
+		<li>Essentially off (기본적으로 꺼짐)</li>
+	</ol>
+	<p><strong>기본적으로 꺼짐</strong>은 대부분의 경우 트래픽이 완화되지 않도록 예외적으로 낮은 민감도를 설정했다는 것을 의미합니다. 하지만 Cloudflare 네트워크의 안전 및 안전성을 보장하기 위해 공격 트래픽에는 예외적인 수준에서 완화가 수행됩니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/image10-4.png" class="kg-image"></figure>
+	<p>민감도 작업을 변경하려는 시기에 대해서는 다음 예가 포함됩니다.</p>
+	<ul>
+		<li><strong>권한이 있는 트래픽에 영향을 주지 않으려 함: </strong>규칙 하나가 수상한 패턴 때문에 권한이 있는 트래픽에 완화를 적용했습니다. 이러한 경우, 해당 문제가 재발하여 트래픽에 부정적인 영향을 주지 않도록 하기 위하여 규칙 민감도를 낮추기를 원할 수 있습니다.</li>
+		<li><strong>레거시 응용 프로그램:</strong> 레거시 HTTP 응용 프로그램 하나가 프로토콜 표준을 위반했거나, 모바일 응용 프로그램/API 클라이언트에 실수로 버그가 삽입됐을 수 있습니다. 이러한 경우, 시스템에서 표시하는 비정상적인 트래픽 활동이 나타날 수 있습니다. 이러한 경우, 오탐을 방지하기 위해 사용자 측에서 문제를 해결할 때까지 <strong>기본적으로 꺼짐</strong> 민감도 수준을 선택할 수 있습니다.</li>
+	</ul>
+	<h3 id="--2"><strong>특정 규칙 재정의</strong></h3>
+	<p>앞서 언급한 바와 같이, 특정 규칙을 선택해서 작업 및 민감도 수준을 재정의할 수도 있습니다. 규칙별 재정의는 규칙 집합 재정의보다 우선합니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/image2-31.png" class="kg-image"></figure>
+	<p>규칙별 재정의를 구성할 때 일부 규칙에 <strong>DDoS 동적</strong> 작업이 있음을 확인하게 됩니다. 이는 완화가 다중 단계이며 공격 유형, 요청 특성, 다양한 기타 요인을 포함한 여러 요인에 따라 다른 완화 작업이 적용된다는 것을 의미합니다. 선택할 경우 이 동적 작업도 재정의할 수 있습니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/image7-7.png" class="kg-image"></figure>
+	<h2 id="ddos-analytics"><strong>DDoS 공격 Analytics</strong></h2>
+	<p>DDoS 공격을 감지하고 완화할 때, <a href="https://support.cloudflare.com/hc/ko/articles/360053216191-Cloudflare-DDoS-%EA%B2%BD%EB%B3%B4%EC%9D%98-%EC%9D%B4%ED%95%B4" target="_blank">실시간 DDoS 경고</a>를 받게 되며(구성했을 경우) <a href="https://support.cloudflare.com/hc/en-us/articles/360024520152-Understanding-Cloudflare-Firewall-Analytics" target="_blank">방화벽 분석 대시보드</a>에서 공격을 확인할 수 있습니다. 트리거된 공격 세부 정보 및 규칙 ID도 완화된 각각의 HTTP 요청 로그의 일부로 <strong>활동 로그</strong>에 표시됩니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/image5-22.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/image8-6.png" class="kg-image"></figure>
+	<h2 id="--3"><strong>더 나은 인터넷 구축 지원</strong></h2>
+	<p>Cloudflare에서 수행하는 모든 일은 더 나은 인터넷을 구축하려는 사명에 따릅니다. 이 사명의 중요한 부분은 DDoS 다운타임과 서비스 중단을 지나간 일로 만드는 것입니다. 우리는 DDoS 방어를 이해하고 개선하는 데 필요한 가시성과 도구를 사용자에게 제공하여, 더 나은 인터넷을 향한 또 다른 단계로 나아갈 수 있기를 바랍니다.</p>
+	<p>사용자 인터페이스 또는 다른 사항에 대해 피드백이 있으십니까? 새로운 DDoS 탭에 피드백을 제공할 링크를 추가했으므로, Cloudflare의 DDoS 방어 관리형 규칙의 미래를 만들어 나가는 데 도움을 주실 수 있습니다.</p>
+	<p>Cloudflare를 아직 사용하고 있지 않나요? <a href="https://dash.cloudflare.com/sign-up" target="_blank">지금 사용하세요</a>.</p>
+</div>

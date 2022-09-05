@@ -1,0 +1,86 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/01/caching@3x-1.png" class="kg-image"></figure>
+	<p>Bei Cloudflare wollen wir das Internet für alle schneller und sicherer machen. Eine Möglichkeit dafür ist <em>Caching</em>: Wir bewahren Kopien der Inhalte unserer Kunden in unseren 165 Rechenzentren auf der ganzen Welt auf. Dadurch sind die Inhalte näher bei den Nutzern und die Zugriffe auf die <a href="https://www.cloudflare.com/learning/cdn/glossary/origin-server/" target="_blank">Ursprungsserver</a> werden reduziert.</p>
+	<p>Wir freuen uns, heute eine große Änderung in der Funktionsweise unseres Cache bekannt geben zu können. <a href="https://www.cloudflare.com/products/cloudflare-workers/" target="_blank">Cloudflare Workers</a> integriert nun die <a href="https://developers.cloudflare.com/workers/reference/cache-api/" target="_blank">Cache-API</a>, was Ihnen die programmatische Kontrolle über unsere Caches auf der ganzen Welt verschafft.</p>
+	<h3 id="warum-die-cache-api"><strong>Warum die Cache-API?</strong></h3>
+	<p>Es kann kompliziert sein herauszufinden, was wo zwischengespeichert werden muss. Denken Sie beispielsweise an eine E-Commerce-Site mit einem Warenkorb, ein Content-Management-System (CMS) mit vielen Vorlagen und Hunderten von Artikeln oder eine GraphQL-API. Jede enthält eine Mischung von Elementen, die für einige Benutzer dynamisch sind, die aber für die überwiegende Mehrheit der Anfragen unverändert bleiben können.</p>
+	<p>In den letzten acht Jahren haben wir viele Funktionen hinzugefügt, um unseren Kunden Flexibilität und Kontrolle darüber zu geben, was in den Cache gelangt. Wir haben jedoch gelernt, dass wir mehr bieten müssen, als nur Einstellungsmöglichkeiten in unserem Dashboard hinzuzufügen. Unsere Kunden haben uns klar gesagt, dass sie ihre Ideen in <em>Code</em> umsetzen wollen, um Dinge zu bauen, die wir uns nie hätten vorstellen können.</p>
+	<h3 id="wie-die-cache-api-funktioniert"><strong>Wie die Cache-API funktioniert</strong></h3>
+	<p>Das Abrufen von Inhalten ist eine der häufigsten Aufgaben des Workers. <code>fetch()</code> hat schon immer leistungsstarke Cloudflare-Funktionen wie Argo und Load Balancing genutzt. Es läuft auch durch unseren Cache: Wir suchen lokal nach Inhalten, bevor wir uns mit dem Internet verbinden. Ohne die Cache-API geht der mit <code>fetch()</code> angeforderte Inhalt so in den Cache, wie er ist.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/01/workers-cache-api-1@2x.png" class="kg-image">
+		<figcaption>fetch() wird nach einem Miss immer in den Cache zurückschreiben.</figcaption>
+	</figure>
+	<p>Die Cache-API ändert das alles. Sie basiert auf der <a href="https://developer.mozilla.org/en-US/docs/Web/API/Cache" target="_blank">Service Workers Cache API</a> und bietet im Wesentlichen <a href="https://developers.cloudflare.com/workers/reference/cache-api/" target="_blank">drei Methoden</a>:</p>
+	<ul>
+		<li><strong>put(</strong><em>request, response</em><strong>) </strong>stellt eine Antwort in den Cache, geschlüsselt durch eine Anfrage</li>
+		<li><strong>match(</strong><em>request</em><strong>) </strong>gibt eine gegebene Antwort zurück, die zuvor mit <em>put()</em> in den Cache gestellt wurde</li>
+		<li><strong>delete(</strong><em>request</em><strong>)</strong> löscht eine Antwort, die zuvor mit <em>put()</em> in den Cache gestellt wurde</li>
+	</ul>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/01/workers-cache-api-2@2x.png" class="kg-image">
+		<figcaption>Mit der Cache-API können Sie Inhalte ändern, bevor sie in den Cache geschrieben werden.</figcaption>
+	</figure>
+	<p>Diese API birgt ein enormes Leistungspotential. Da Workers Ihnen die Möglichkeit gibt, Anfrage- und Antwortobjekte <em>zu ändern</em>, können Sie jedes Caching-Verhalten, z. B. TTL oder Cache-Tags, steuern. Sie können kundenspezifische Vary-Logik implementieren oder normalerweise nicht zwischengespeicherte Objekte wie POST-Anfragen zwischenspeichern.</p>
+	<p>Die Cache-API erwartet Anfragen und Antworten, diese müssen aber nicht von externen Servern stammen. Ihr Worker kann beliebige Daten erzeugen, die in unserem Cache gespeichert werden. Das bedeutet, dass Sie die Cache-API als universelle, flüchtige Schlüssel-Werte-Datenbank verwenden können!</p>
+	<h3 id="fallstudie-verwendung-der-cache-api-um-post-anfragen-zwischenzuspeichern"><strong>Fallstudie: Verwendung der Cache-API, um POST-Anfragen zwischenzuspeichern</strong></h3>
+	<p>Seit wir im September <a href="https://blog.cloudflare.com/cache-api-for-cloudflare-workers-is-now-in-beta/">die Beta angekündigt</a> haben, ist die Nutzung der Cache-API auf Tausende von Anfragen pro Sekunde angewachsen. Ein häufiger Anwendungsfall ist das Caching von <a href="https://en.wikipedia.org/wiki/POST_(HTTP)" target="_blank">POST-Anfragen</a>.</p>
+	<p>Normalerweise betrachtet Cloudflare POST-Anfragen nicht als zwischenspeicherbar, da sie als nicht idempotent konzipiert sind, d. h. sie ändern ihren Status auf dem Server, wenn eine Anfrage gestellt wird. Anwendungen können jedoch POST-Anfragen auch verwenden, um große Datenmengen an den Server zu senden, oder als gemeinsame HTTP-Methode für API-Aufrufe.</p>
+	<p>Und das hatte ein Entwickler über die Verwendung der Cache-API zu sagen:</p>
+	<blockquote>Wir mussten einige komplexe serverseitige Codes an die Edge migrieren. Wir haben einen API-Endpunkt, der POST-Anfragen mit großen Bodys akzeptiert, aber hauptsächlich die gleichen Daten zurückgibt, ohne etwas auf unserem Ursprungsserver zu ändern. Mit Workers und der Cache-API konnten wir Antworten auf POST-Anfragen zwischenspeichern, von denen wir wussten, dass sie sicher sind, und so die Belastung unseres Ursprungsservers erheblich reduzieren.</blockquote>
+	<p>– Aaron Dearinger, Edge Architect, Garmin International</p>
+	<p>Das Zwischenspeichern von POST-Anfragen mit der Cache-API ist einfach. Hier etwas Beispielcode aus unserer <a href="https://developers.cloudflare.com/workers/reference/cache-api/" target="_blank">Dokumentation</a>:</p>
+	<p></p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">async function handleRequest(event) {
+  let request = event.request
+  let response
+
+  if (request.method == 'POST') {
+    let body = await request.clone().text()
+    let hash = await sha256(body)
+
+    let url = new URL(request.url)
+    url.pathname = "/posts" + url.pathname + hash
+
+    // Convert to a GET to be able to cache
+    let cacheKey = new Request(url, {
+      headers: request.headers,
+      method: 'GET'
+    })
+
+    let cache = caches.default
+    // try to find the cache key in the cache
+    response = await cache.match(cacheKey)
+
+    // otherwise, fetch from origin
+    if (!response) {
+      // makes POST to the origin
+      response = await fetch(request.url, newRequest)
+      event.waitUntil(cache.put(cacheKey, response.clone()))
+    }
+  } else {
+    response = await fetch(request) 
+  }
+  return response
+}
+
+async function sha256(message) {
+  // encode as UTF-8
+  const msgBuffer = new TextEncoder().encode(message)
+
+  // hash the message
+  const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer)
+
+  // convert ArrayBuffer to Array
+  const hashArray = Array.from(new Uint8Array(hashBuffer))
+
+  // convert bytes to hex string
+  const hashHex =
+    hashArray.map(b =&gt; ('00' + b.toString(16)).slice(-2)).join('')
+  return hashHex
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p></p>
+	<h3 id="probieren-sie-es-selbst-aus"><strong>Probieren Sie es selbst aus</strong></h3>
+	<p>Bereits bei unserer Beta-Version haben wir gesehen, wie Kunden die Cache-API verwenden, um Teile von GraphQL-Abfragen dynamisch zwischenzuspeichern und Kundendaten zu speichern, um die Performance zu verbessern. Wir sind gespannt, welche Verwendung Sie finden werden! Schauen Sie sich den <a href="https://developers.cloudflare.com/workers/" target="_blank">Erste-Schritte-Leitfaden für Cloudflare Workers</a> und die <a href="https://developers.cloudflare.com/workers/reference/cache-api/" target="_blank">Cache-API-Dokumentation</a> an und lassen Sie uns im <a href="https://community.cloudflare.com/c/developers/workers" target="_blank">Workers Community Forum</a> wissen, was Sie gebaut haben.<br></p>
+</div>

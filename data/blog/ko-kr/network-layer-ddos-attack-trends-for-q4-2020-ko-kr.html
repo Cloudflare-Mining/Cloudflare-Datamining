@@ -1,0 +1,88 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/03/image21-4.png" class="kg-image"></figure>
+	<p>2020년 마지막 분기의 DDoS 공격 동향은 여러 가지 면에서 일반성을 벗어났습니다. 2020년 들어 처음으로 대형 DDoS 공격의 수가 늘어난 것이 관찰되었습니다. 구체적으로 500Mbps 및 50Kpps 이상되는 공격의 수가 급증했습니다.</p>
+	<p>또한, 공격 벡터는 계속 발전하여 프로토콜 기반 공격이 전 분기에 비해 3-10배 증가했습니다. 10월과 12월 사이에는 공격자들이 예전보다 &nbsp;집요해졌습니다. 관찰된 모든 공격의 9% 가까이가 24시간 이상 지속되었습니다.</p>
+	<p>아래는 2020년 4분기의 주목할 만한 공격 특성에 관한 설명입니다.</p>
+	<ul>
+		<li>공격 수: 2020년 들어 처음으로 4분기에 관찰된 전체 공격 수가 전 분기 대비 감소했습니다.</li>
+		<li>공격 지속 시간: 관찰된 모든 공격의 73% 가 1시간 미만으로 지속되었으며 이는 3분기의 88%보다 감소한 것입니다.</li>
+		<li>공격 벡터: SYN, ACK, RST 폭주 공격이 여전히 지배적이었으나, 동시에 NetBIOS에 대한 공격이 무려 5,400% 증가했고 ISAKMP와 SPSS에 대한 공격이 그 뒤를 이었습니다.</li>
+		<li>전 세계 DDoS 활동: 모리셔스, 루마니아, 브루나이에 있는 Cloudflare 데이터 센터의 경우, 공격이 아닌 트래픽 대비 DDoS 활동의 비율이 가장 높았습니다.</li>
+		<li>추가적인 공격 전술: 범죄자 집단이 DDoS 공격의 위협을 이용하여 비트코인을 요구하면서, <a href="https://blog.cloudflare.com/ransom-ddos-attacks-target-a-fortune-global-500-company/">랜섬 DDoS(RDDoS)</a> 공격이 여전히 전 세계 목표 조직을 타겟하고 있습니다.</li>
+	</ul>
+	<h2 id="-"><strong>공격 횟수</strong></h2>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/03/1-2.png" class="kg-image"></figure>
+	<p>2020년 들어 처음으로, 관찰된 전체 네트워크 계층 DDoS 공격 수가 전 분기 대비 감소했습니다. 2020년 전체 공격 중 4분기에는 15%를 차지하면서, 3분기의 48%와 대조적인 양상을 보였습니다. 실제로 4분기 전체의 공격 수는 9월 한 달에 관찰된 것과 비교했을 때 무려 60%나 줄어들었습니다. 월별로 보면, 4분기 중 12월에 공격이 가장 활발했습니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/03/2-2.png" class="kg-image"></figure>
+	<h2 id="--1"><strong>공격률</strong></h2>
+	<p>DDoS 공격의 규모를 측정하는 방법은 여러 가지가 있습니다. 우선, 공격의 트래픽 규모를 비트 전송률(구체적으로, 초당 기가비트)로 측정하는 방법이 있습니다. 또 다른 방법은 패킷 전송률(구체적으로, 초당 패킷)로 패킷 개수를 측정하는 것입니다. 비트 전송률이 높은 공격은 인터넷 링크를 포화시키려 하며 패킷 전송률이 높은 공격은 라우터나 기타 인라인 하드웨어 <a href="https://blog.cloudflare.com/network-layer-ddos-attack-trends-for-q3-2020/#blog-1-ddos">장치</a>를 마비시키려는 의도입니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/03/3-2.png" class="kg-image"></figure>
+	<p>이전 분기와 마찬가지로, Q4에도 대다수의 공격은 작았으며 구체적으로 1Gbps 및 1Mpps 미만이었습니다. 대부분의 공격이 사용하기 쉬우면서 비용이 기껏해야 몇 달러에 불과한 도구를 사용하는 아마추어 공격자들에 의해 시작되므로 이러한 추세는 놀라운 일이 아닙니다. 또한, 동시에 진행되는 다른 사이버 공격에서 보안팀의 주의를 돌리기 위한 목적으로 소규모 공격을 진행하는 경우도 있습니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/03/4-2.png" class="kg-image"></figure>
+	<p>하지만 소규모 공격이 많았다는 것은 4분기에 중요한 사항이 아닙니다. 500Mbps 및 50Kpps를 초과하는 공격의 비율이 이전 분기들에 비해 크게 증가했습니다. 실제로, 3분기에 비해 100Gbps 이상의 공격 건수는 10배, 10Mpps 이상의 공격은 3.6배 증가했습니다.</p>
+	<p>Cloudflare는 특이한 ACK 폭주 DoS 공격 하나를 자동으로 감지하고 완화했습니다. 이 공격이 특이한 것은 최대 패킷 속도가 아니라, 음향학 분야에서 아이디어를 얻은 것 같은 공격 방법이었습니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/03/5-2.png" class="kg-image"></figure>
+	<p>위 그래프에서 볼 수 있는 바와 같이 공격의 패킷 속도는 19시간 이상 동안 파형을 따랐는데, 공격자가 <a href="https://en.wikipedia.org/wiki/Beat_%28acoustics%29" target="_blank">비트(beat)</a>라는 음향학 개념에서 아이디어를 받은 것 같습니다. 따라서 Cloudflare는 이를 '비트'라고 부르기로 했습니다. 음향학에서 비트는 주파수가 다른 2개의 파형 간 간섭을 설명하기 위해 사용되는 용어입니다. <a href="https://blog.cloudflare.com/beat-an-acoustics-inspired-ddos-attack/">비트 - 음향학에서 아이디어를 얻은 DDoS 공격</a> 블로그 게시물에서 이를 자세히 다루고 있습니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/03/6-2.png" class="kg-image"></figure>
+	<p>패킷 집약적 혹은 비트(bit) 집약적이거나에 무관하게 대형 DDoS 공격이 증가한다는 것은 분명히 우려되는 추세입니다. 이는 공격자들이 더욱 대담해지고 있으며 대규모 공격을 실행할 수 있는 도구를 사용하고 있다는 것을 의미하기 때문입니다. 더 심각한 것은 대규모 공격은 해당 네트워크 뿐 아니라 대상 네트워크의 다운스트림에서 서비스하는 중간 서비스 제공자를 대상으로 한다는 점입니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/03/7-2.png" class="kg-image"></figure>
+	<h2 id="--2"><strong>공격 지속 시간</strong></h2>
+	<p>2020년 4분기 중 공격의 73%는 지속 시간이 1시간 미만이었습니다. 하지만 동시에 전체 공격 중 9%에 해당하는 공격이 24시간 이상 지속되었으며 이는 전 분기에 1.5%에 불과했던 것과 큰 차이를 보입니다. 따라서 공격의 규모 및 지속 시간과 무관하게 실시간으로 상시 보호할 수 있는 시스템의 필요성이 더욱 커지고 있습니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/03/8-2.png" class="kg-image"></figure>
+	<h2 id="--3"><strong>공격 벡터</strong></h2>
+	<p>'공격 벡터'는 공격 방법을 설명하기 위해 사용하는 용어입니다. 가장 많이 쓰이는 SYN 폭주 공격은 4분기에 관찰된 모든 공격의 약 42%를 차지했고 ACK, RST, UDP 기반 DDoS 공격이 뒤를 이었습니다. 이는 지난 분기들의 결과와 일관됩니다. 하지만 ACK 공격은 분기 기준 13배 증가하여 3분기에는 9위였지만, 2위로 뛰어올랐고, RST 공격에 버금가게 많아졌습니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/03/9-2.png" class="kg-image"></figure>
+	<h2 id="--4"><strong>새롭게 부상하는 위협</strong></h2>
+	<p>SYN 폭주 및 RST 폭주 등 TCP 기반 공격이 여전히 가장 널리 쓰이지만, NetBIOS 및 ISAKMP 기반 DDoS 공격 등 UDP 프로토콜 특정 공격이 전 분기에 비해 크게 폭증했습니다.</p>
+	<p>NetBIOS는 별개의 하드웨어에 있는 응용 프로그램이 근거리 통신망을 통해 통신하며 공유 자원에 액세스할 수 있도록 하는 프로토콜이며, ISAKMP는 <a href="https://www.cloudflare.com/learning/network-layer/what-is-ipsec/" target="_blank">IPsec</a> VPN 연결을 설정 시 보안 연계(SA) 및 암호화 키 확립에 사용되는 프로토콜입니다(IPsec: IKE, Internet Key Exchange) 프로토콜을 사용하여 연결의 보안을 보장하고 IP 네트워크를 통해 전송된 데이터 패킷을 인증하고 암호화합니다).</p>
+	<p>Cloudflare가 관찰한 바에 따르면, 프로토콜 기반 공격(및 실제적인 멀티 벡터 공격)이 네트워크를 중지시키기 위해 지속적으로 배포되고 있습니다. 공격의 복잡성이 증가할수록, 조직을 항상 안전하게 온라인 상태로 유지하기 위해서는 적절한 DDoS 방어가 필요합니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/03/10-2.png" class="kg-image"></figure>
+	<h2 id="-ddos-"><strong>전 세계 DDoS 활동 동향</strong></h2>
+	<p>이러한 공격의 출발점을 파악하기 위해 소스 IP의 위치가 아니라 트래픽이 유입되는 Cloudflare 에지 데이터 센터를 살펴봐야 합니다. 그 이유는 무엇일까요? 공격자가 L3/4 공격을 시작할 때 공격의 출발점을 숨기기 위해 원래의 IP 주소를 '스푸핑'(변조)할 수 있기 때문입니다.</p>
+	<p>이 보고서에서는 동일한 Cloudflare 데이터 센터에서 관찰되는 공격 트래픽과 비공격 트래픽의 비율을 검토하여 지역적인 분포를 관찰하였습니다. 이렇게 함으로써, 다른 지역에 비해 위협이 많은 지역을 특정하기 위한 노력의 정확도를 높일 수 있습니다. Cloudflare는 전 세계 200여 개 도시에 데이터 센터를 확보하고 있어 보고서에서 지리적 정확도를 달성할 수 있습니다.</p>
+	<p>4분기 지표를 살펴보면, 흥미있는 통찰력을 얻을 수 있습니다. 모리셔스, 루마니아, 브루나이에 있는 Cloudflare 데이터 센터의 경우, 공격이 아닌 트래픽 대비 DDoS 트래픽의 비율이 가장 높았습니다. 구체적으로, 이들 나라에서는 4.4%-4.9%의 트래픽이 DDoS 공격에서 비롯되었습니다. 달리 표현하면, 100바이트 중 거의 5바이트가 공격 트래픽이었다는 말입니다. 이러한 관찰 결과에 따르면 이들 국가에서 봇넷의 활동이 증가했음을 알 수 있습니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/03/11-2.png" class="kg-image"></figure>
+	<p>이들 국가에서 DDoS 공격의 발생이 상대적으로 많았다는 점은 무엇을 의미할까요? 단정적으로 말할 수는 없지만, 상위 2개 국가에 대해서는 다음의 가능성이 있습니다.</p>
+	<p><a href="https://en.wikipedia.org/wiki/Mauritius" target="_blank">모리셔스</a> -2020년 8월, &nbsp;약 4,000톤에 달하는 연료를 적재한 선박 사고로 인해 모리셔스에는 환경 비상사태가 선포되었습니다. <a href="https://news.sky.com/story/mauritius-declares-environmental-emergency-after-mass-oil-spill-from-grounded-tanker-12044845" target="_blank"> </a>이 석유 유출 사고로 총리의 사임을 요구하는 <a href="https://en.wikipedia.org/wiki/MV_Wakashio_oil_spill#Anti-government_protests" target="_blank">반정부 시위</a>가 촉발됐습니다. 그 후, 정부는 국회를 두 번 연기했고 지역 언론과 독립 언론이 해당 사건을 취재하지 못하도록 억압했다는 비난을 받고 있습니다. 5개월이 지났지만, 인권에 관련된 스캔들이 계속되고 있으며 <a href="https://www.forbes.com/sites/nishandegnarain/2021/12/30/protests-continue-in-mauritius-five-months-after-oil-spill/" target="_blank">시위는 계속되고 있습니다</a>. 모리셔스의 이러한 정황은 DDoS 활동의 증가와 관련이 있을 수 있습니다.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/03/12-2.png" class="kg-image">
+		<figcaption>자료원: wikipedia</figcaption>
+	</figure>
+	<p><a href="https://en.wikipedia.org/wiki/Romania" target="_blank">루마니아</a> - 루마니아에서 증가된 DDoS 활동의 배후에는 두 가지 사건이 있는 것으로 생각됩니다. 루마니아에서는 총선이 있었으며 이는 2020년 12월 6일에 끝났습니다. 또한, 12월 9일에 EU는 <a href="https://www.zdnet.com/article/romania-to-host-the-eus-new-cybersecurity-research-hub/" target="_blank">루마니아가 새로운 사이버 보안 연구 허브</a> 유럽 사이버보안 산업, 기술 및 연구 역량 센터(ECCC)를 주관할 것이라고 발표했습니다. 또 다른 가능성으로 루마니아가 <a href="https://www.romania-insider.com/romania-cheapest-fast-internet-december-2019#:~:text=The%20price%20of%20super%2Dfast,and%20discounts%20platform%20Picodi.com." target="_blank">세계에서 가장 저렴한 초고속 광대역 인터넷이 제공되는 국가로 </a>루마니아 내에서는 누구나 볼류메트릭 공격을 실행하기가 쉽다는 점을 들 수 있습니다.</p>
+	<h2 id="-ddos--1"><strong>지역별 DDoS 활동</strong></h2>
+	<h3 id="--5"><strong>아프리카</strong></h3>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/03/13-2.png" class="kg-image"></figure>
+	<h3 id="--6"><strong>아시아 태평양 및 오세아니아</strong></h3>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/03/14-2.png" class="kg-image"></figure>
+	<h3 id="--7"><strong>유럽</strong></h3>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/03/15-2.png" class="kg-image"></figure>
+	<h3 id="--8"><strong>중동</strong></h3>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/03/16-2.png" class="kg-image"></figure>
+	<h3 id="--9"><strong>북미</strong></h3>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/03/17-2.png" class="kg-image"></figure>
+	<h3 id="--10"><strong>남미</strong></h3>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/03/18-2.png" class="kg-image"></figure>
+	<h3 id="--11"><strong>미국</strong></h3>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/03/19-2.png" class="kg-image"></figure>
+	<h2 id="--12"><strong>랜섬 기반 공격을 통한 지속적 괴롭힘</strong></h2>
+	<p>Cloudflare는 <a href="https://blog.cloudflare.com/network-layer-ddos-attack-trends-for-q3-2020/">지난 분기의 보고서</a>에서, 탈취 및 랜섬 기반 DDoS(RDDoS) 공격이 세계적으로 증가하고 있음을 지적한 바 있습니다. RDDoS 공격에서 악의적인 행위자는 개인 또는 조직이 대가를 지불하지 않으면 일정 기간 동안 네트워크, 웹 사이트, 응용 프로그램 등을 가동 중단할 수 있는 사이버 공격을 하겠다고 위협합니다. <a href="https://www.cloudflare.com/learning/ddos/ransom-ddos-attack/" target="_blank">RDDoS 공격에 대한 자세한 정보</a>를 참조하세요.</p>
+	<p>2020년 4분기에도 이 추세가 계속되었습니다. 다양한 규모의 조직들이 랜섬 노트에 대응하는 방법을 알아내려고 노력하는 동안 네트워크 인프라를 온라인으로 유지하기 위해 Cloudflare에 도움을 요청했습니다. <a href="https://blog.cloudflare.com/ransom-ddos-attacks-target-a-fortune-global-500-company/">이 사례</a>를 통해 한 Fortune Global 500 기업이 랜섬 노트를 받았을 때 수행한 작업이 무엇인지 알아보고, 권장되는 사항도 살펴보시기 바랍니다.</p>
+	<p>Cloudflare는 계속 이 추세를 예의주시하고 있습니다. 이러한 위협을 받은 경우에는:</p>
+	<ol>
+		<li>당황하지 마십시오. 요구하는 대가를 지불한다하여 앞으로 네트워크를 공격하지 않는다는 보장이 없으므로 금전적인 대가 요구에는 응하지 않는 것이 좋습니다.</li>
+		<li>현지 사법 당국에 알리십시오. 사법 당국이 몸값을 요구하는 문서의 사본을 요청할 가능성이 큽니다.</li>
+		<li>Cloudflare에 연락하십시오. Cloudflare는 웹 사이트 및 네트워크 인프라가 이러한 몸값 공격으로부터 방어할 수 있도록 도와 드립니다.</li>
+	</ol>
+	<h2 id="cloudflare-ddos-"><strong>Cloudflare DDoS 방어</strong></h2>
+	<p>Cloudflare는 포괄적인 L3-L7 DDoS 방어 서비스를 제공합니다. Cloudflare는 2017년에 업계의 표준이었던 DDoS 공격량에 비례하는 프라이싱 방식을 없애고 무제한 DDoS 방어 서비스를 제공했습니다. 그 이후로 <a href="https://www.cloudflare.com/case-studies/wikimedia-foundation" target="_blank">Wikimedia</a>, <a href="https://www.cloudflare.com/case-studies/panasonic" target="_blank">Panasonic</a>, <a href="https://www.cloudflare.com/case-studies/discord" target="_blank">Discord</a> 등 다양한 규모의 고객을 많이 온보딩하여 Cloudflare를 활용해 인터넷 자산을 보호하고 가속화하는 데 도움을 드리고 있습니다. 이들이 Cloudflare를 선택하는 이유는 무엇일까요? 세 가지 주요 이유는 다음과 같습니다.</p>
+	<p>1. 스크러빙 없음</p>
+	<p>Cloudflare는, <a href="https://blog.cloudflare.com/no-scrubs-architecture-unmetered-mitigation/">스크러빙 센터 모델은 DDoS 방어에 적합한 방법이 아니라고 믿기 때문에 스크러빙 센터를 운영하지 않습니다. </a>스크러빙 센터는 지연을 초래하고 구축과 실행 비용이 과도하게 큽니다. 게다가 DDoS 공격은 비대칭적이어서 공격자들이 단일 스크러빙 센터가 처리할 수 있는 것보다 큰 대역폭을 갖고 있습니다.</p>
+	<p>Cloudflare의 네트워크는 모든 데이터 센터의 모든 하드웨어가 DDoS 완화 기능을 수행할 수 있도록 설계되었습니다. 에지에서 이를 수행해야만이 성능에 영향을 주지 않으면서, 대규모 공격을 완화할 수 있습니다. Cloudflare는 Anycast 기반 아키텍처로 인해, Cloudflare의 총 용량이 DDoS 스크러빙 용량이 되며, 이는 51Tbps로 시장에서 가장 큽니다. 즉, Cloudflare는 그 어떤 벤더보다, 공격의 출발점에서 가장 가까운 곳에서 DDoS 공격을 감지하고 완화할 수 있습니다. 또한, Cloudflare의 글로벌 위협 인텔리전스는 인터넷의 면역 체계처럼 작용하여 인체의 면역 체계와 마찬가지로 머신러닝 모델을 이용해 모든 고객에 대한 공격을 통해 학습하며 이를 이용해 모든 고객에 대한 공격을 완화합니다.</p>
+	<p>2. 시간이 Key</p>
+	<p>현재 대부분의 조직들은 온프레미스에서 클라우드로 이전하는 단계에 있습니다. 비즈니스 응용 프로그램의 규모, 위협 환경, 기능 요구 사항은 그 어느 때보다 더 빠르게 진화하고 있으며 네트워크 공격의 양과 정교함은 최첨단 기능을 갖춘 기업의 방어 기능까지도 무력화할 수 있습니다. 클라우드를 채택하면 응용 프로그램의 대기 시간이 길어질까 우려하는 기업이 많습니다. 대부분의 클라우드 기반 DDoS 방어 서비스는 '스크러빙 센터'라고 하는 특수한 데이터 센터에 의존해 DDoS를 완화합니다. 대상 서버의 위치를 기준으로, 데이터 센터의 위치에 따라 데이터 센터로 트래픽을 되돌려 보내는데 상당한 대기 시간이 발생할 수 있습니다.</p>
+	<p>이 문제는 조직이 다양한 네트워크 기능에 대해 여러 공급자를 사용할 때 악화됩니다. 트래픽이 공급자와 공급자 사이를 호핑해야 할 때 수백 밀리초의 대기 시간이 발생할 수 있습니다.</p>
+	<p>Cloudflare<a href="https://www.cloudflare.com/network" target="_blank">는 지리적으로 분산되어 있어 </a>세계적으로 평균 3초 미만에 공격을 감지하고 완화할 수 있으며 이는 업계에서 가장 빠른 속도입니다.</p>
+	<p>3. DDoS는 그저 시작점</p>
+	<p>DDoS 공격은 조직이 직면하는 많은 사이버 위협 중 하나에 불과합니다. 기업들이 <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/" target="_blank">제로 트러스트</a> 접근법으로 전환하는 가운데, 네트워크 및 보안 구매자는 네트워크 액세스와 관련된 더 큰 위협에 직면하게 되고, 빈도도 늘어나고 정교함도 증가하는 봇 관련 공격에도 대응해야 합니다.</p>
+	<p>Cloudflare는 통합성을 중시하며 이를 기반으로 솔루션을 구축합니다. <a href="https://blog.cloudflare.com/introducing-cloudflare-one/">Cloudflare One</a>은 장치, 데이터, 응용 프로그램을 보호하는 개선된 방법인 제로 트러스트 보안 모델을 이용한 솔루션입니다. 또한, 기존의 보안 및 DDoS 솔루션과 밀접하게 통합되어 있습니다.</p>
+	<p>Cloudflare의 DDoS 솔루션에 대해 자세히 알아보려면, <a href="https://www.cloudflare.com/plans/enterprise/" target="_blank">Cloudflare에 연락</a>하거나, 지금 바로 대시보드에 등록하여 <a href="https://dash.cloudflare.com/" target="_blank">시작하실 수 </a>있습니다.</p>
+</div>

@@ -1,0 +1,52 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image2-46.png" class="kg-image"></figure>
+	<p>Hace unos tres años, incluimos varias funciones en la <a href="https://blog.cloudflare.com/new-firewall-tab-and-analytics/">pestaña Firewall</a> de nuestro panel de navegación con la idea de "hacer que nuestros productos y servicios fueran intuitivos". En los últimos tres años, nos hemos esforzado mucho en <a href="https://blog.cloudflare.com/tag/waf/">ampliar nuestra oferta de capacidades</a> y, queremos aprovechar otra oportunidad para evaluar el carácter intuitivo de Cloudflare WAF (Firewall de aplicaciones web).</p>
+	<h2 id="nuestros-clientes-lideran-el-camino-hacia-el-nuevo-waf">Nuestros clientes lideran el camino hacia el nuevo WAF</h2>
+	<p>El panorama de la seguridad está evolucionando vertiginosamente, cada vez hay más tipos de aplicaciones web, y dentro del sector hay varios enfoques de lo que un WAF incluye y puede ofrecer. Cloudflare no solo redirecciona aplicaciones empresariales mediante proxy, sino también millones de blogs personales, sitios de comunidades y tiendas de pequeñas empresas. Varios de nuestros productos incluyen distintos casos de uso. Sin embargo, estos productos están dispersos y eso hace que la visibilidad de las reglas de protección activas sea poco clara. Esta carencia nos invita a reflexionar sobre cómo podemos ayudar a nuestros clientes a sacar el máximo partido al WAF ofreciendo soluciones más claras que cumplan las expectativas.</p>
+	<p>Hace unos meses, nos pusimos en contacto con nuestros clientes para que nos contestaran a una sencilla pregunta: ¿qué crees que forma parte del WAF? Para ello, empleamos una serie de métodos de investigación de experiencia de usuarios, como la clasificación de tarjetas, pruebas de usabilidad para comprobar la arquitectura de contenidos, evaluación del diseño y encuestas. Los resultados de esta investigación mostraron cómo nuestros clientes valoran el WAF, lo que significa para ellos y cómo respalda sus casos de uso. Sus respuestas inspiraron al equipo de producto a ampliar el alcance y contemplar lo que significa la seguridad (de las aplicaciones web), más allá del WAF.</p>
+	<p>En base a las respuestas de cientos de clientes, nuestros equipos de investigación de experiencia de usuarios y diseño de productos colaboraron con el equipo de gestión de productos para replantear la experiencia de seguridad. Revisamos nuestras hipótesis y evaluamos la eficacia de los conceptos de diseño para crear una estructura (o arquitectura de la información) que reflejara los modelos mentales de nuestros clientes.</p>
+	<p>Esta nueva estructura consolida las reglas del firewall, las reglas administradas y las reglas de limitación de velocidad para que formen parte del WAF. El nuevo WAF aspira a ser la ventanilla única para la seguridad de las aplicaciones web en lo que respecta a la diferenciación del tráfico malicioso del legítimo.</p>
+	<p>A partir de hoy, verás los siguientes cambios en nuestra navegación:</p>
+	<ol>
+		<li>El <strong>Firewall</strong> pasa a llamarse <strong>Seguridad.</strong></li>
+		<li>En <strong>Seguridad,</strong> ahora encontrarás <strong>WAF.</strong></li>
+		<li>Las reglas del firewall, las reglas administradas y las reglas de limitación de velocidad aparecerán ahora en <strong>WAF</strong>.</li>
+	</ol>
+	<blockquote>A partir de ahora, cuando nos refiramos a <strong>WAF,</strong> nos referiremos a estos tres componentes.</blockquote>
+	<p>Además, se avecinan algunas actualizaciones importantes para estos componentes. Lanzaremos reglas avanzadas de limitación de velocidad como parte de la Semana de la seguridad, y cada cliente obtendrá también un conjunto gratuito de reglas administradas para <a href="https://jira.cfops.it/browse/BLOG-946" target="_blank">proteger todo el tráfico de vulnerabilidades de alto perfil</a>. Por último, en los próximos meses, las reglas del firewall se trasladarán al <a href="https://developers.cloudflare.com/ruleset-engine/" target="_blank">motor de conjuntos de reglas</a>, añadiendo así capacidades más eficaces gracias a la nueva API de conjuntos de reglas. ¿Te interesa?</p>
+	<h2 id="c-mo-los-clientes-conformaron-el-futuro-del-waf">Cómo los clientes conformaron el futuro del WAF</h2>
+	<p>Casi 500 clientes participaron en este estudio de investigación de experiencia del usuario que nos ayudó a conocer las necesidades y el contexto de uso. Empleamos cuatro métodos de investigación, todos ellos sin moderar, lo que significaba que personas de todo el mundo podían participar a distancia en el momento y lugar que eligieran.</p>
+	<ul>
+		<li>En la clasificación de tarjetas, los participantes agruparon los elementos de navegación en categorías que tenían sentido para ellos.</li>
+		<li>La prueba de usabilidad de la arquitectura de contenido evaluó la eficacia de la estructura de navegación propuesta para nuestro público objetivo.</li>
+		<li>La evaluación del diseño se basó en una tarea para medir la eficacia y la utilidad de los conceptos de diseño.</li>
+		<li>Las preguntas de la encuesta nos ayudaron a analizar los resultados, y a conocer a nuestros clientes participantes.</li>
+	</ul>
+	<p>Los resultados de este estudio de cuatro vertientes sirvieron de base para realizar los cambios en el WAF y la seguridad que se detallan a continuación.</p>
+	<h2 id="nueva-experiencia-waf">Nueva experiencia WAF</h2>
+	<p>El resultado final revela que el WAF forma parte de una categoría más amplia de soluciones de seguridad entre las que se incluye: Gestión de bots, DDoS, API Shield y Page Shield. Este destino te permite crear tus reglas (también conocidas como reglas de firewall), implementar reglas administradas por Cloudflare, establecer condiciones de límite de velocidad, y además incluye herramientas prácticas para proteger tus aplicaciones web.</p>
+	<p>Los productos WAF que verán ahora los clientes de todos los planes se organizarán como se indica a continuación:</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image1-56.png" class="kg-image"></figure>
+	<ol>
+		<li>Las <strong>reglas del firewall</strong> permiten crear una lógica personalizada y definida por el usuario, bloqueando o permitiendo el tráfico que aprovecha todos los componentes de las solicitudes HTTP y los campos dinámicos calculados por Cloudflare, como la puntuación de bots.</li>
+		<li>Las <strong>reglas de limitación de velocidad</strong> incluyen el producto tradicional basado en la IP que lanzamos allá por 2018 y más recientemente la función de Limitación de velocidad avanzada para los clientes Enterprise en el plan Advance (próximamente).</li>
+		<li>Las <strong>reglas administradas</strong> permiten a los clientes implementar conjuntos de reglas administradas por el equipo de analistas de Cloudflare. Estos conjuntos de reglas incluyen un "Conjunto gratuito de reglas administradas de Cloudflare" que se está implementando actualmente para <a href="https://jira.cfops.it/browse/BLOG-946" target="_blank">todos los planes</a>, incluido el gratuito, así como reglas administradas por Cloudflare, la implementación del conjunto de reglas básicas de OWASP y las comprobaciones de credenciales expuestas para todos los planes de pago.</li>
+		<li>Las <strong>herramientas</strong> dan acceso a las reglas de Access de IP, bloqueo de zona y bloqueador de agente de usuario. Aunque todavía siguen recibiendo apoyo activamente, estos productos incluyen casos de uso específicos que se pueden cubrir usando las reglas de firewall. Sin embargo, siguen formando parte del cuadro de herramientas del WAF por comodidad.</li>
+	</ol>
+	<h2 id="nueva-concepci-n-de-la-experiencia-waf">Nueva concepción de la experiencia WAF</h2>
+	<p>Los principios de diseño de Gestalt sugieren que "los elementos que están próximos entre sí se perciben como si compartieran una funcionalidad o rasgos similares". Este principio, sumado a las aportaciones de nuestros clientes, nos sirvió para decidir el diseño.</p>
+	<p>Después de revisar las respuestas del estudio, comprendimos la importancia de facilitar la búsqueda de los productos de seguridad en el panel de control, y la necesidad de aclarar cómo se relacionaban o funcionaban juntos determinados productos.</p>
+	<p>Lo más importante era que la página debía:</p>
+	<ul>
+		<li>Mostrar cada tipo de regla que admitimos, es decir, reglas de firewall, reglas de limitación de velocidad y reglas administradas.</li>
+		<li>Mostrar el uso de cada tipo de regla.</li>
+		<li>Ofrecer al cliente la posibilidad de añadir una nueva regla y administrar las existentes.</li>
+		<li>Permitir que el cliente cambie las prioridades de las reglas utilizando las funciones de arrastrar y soltar.</li>
+		<li>Ser lo suficientemente flexible como para incluir futuros complementos y consolidaciones de las funciones del WAF.</li>
+	</ul>
+	<p>Hemos estudiado varias opciones, incluidos diseños de página predominantemente verticales, diseños de página basados en tablas e incluso diseños en forma de acordeón. Sin embargo, cada una de estas opciones nos obligaría a replicar botones de funcionalidad similar en la página. Ante el riesgo de causar más confusión, descartamos estas opciones en favor de un diseño de página horizontal con pestañas.</p>
+	<h2 id="-c-mo-puedo-conseguirlo">¿Cómo puedo conseguirlo?</h2>
+	<p>A partir de hoy, lanzamos este nuevo diseño del WAF para todo el mundo. Mientras tanto, estamos actualizando la documentación para ayudarte a sacar el máximo partido a Cloudflare WAF.</p>
+	<h2 id="perspectivas">Perspectivas</h2>
+	<p>Este es el punto de partida de nuestro recorrido para hacer que Cloudflare WAF no solo sea eficaz sino también fácil de adaptar a tus necesidades. Estamos evaluando enfoques para potenciar tu proceso de toma de decisiones a la hora de proteger tus aplicaciones web. Teniendo en cuenta la disponibilidad cada vez mayor de información de inteligencia y el aumento de las posibilidades de creación de reglas, queremos acortar el recorrido que tienes que hacer desde la detección de una posible amenaza (por la información general de seguridad, por ejemplo) hasta la configuración de la regla correcta para mitigarla. ¡No te lo pierdas!<br></p>
+</div>

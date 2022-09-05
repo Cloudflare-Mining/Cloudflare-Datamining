@@ -1,0 +1,31 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image3-3.png" class="kg-image" alt="How Cloudflare verifies the code WhatsApp Web serves to users"></figure>
+	<p>WhatsAppがセキュアメッセージングに使用しているコードが改ざんされていないことを確認するために、Cloudflareが行っている内容をご紹介します。</p>
+	<p>Webサイトにアクセスした際にWebブラウザにダウンロードされるコードが、そのWebサイトが意図して実行したコードであることをどのように確認するのでしょうか？信頼できるアプリストアからダウンロードしたモバイルアプリとは対照的に、Webではコードが改ざんされていないという保証は得られません。本日皆様に提供できるのは、<a href="https://engineering.fb.com/2022/03/10/security/code-verify/" target="_blank">WhatsAppと提携</a>し、Web上のWhatsAppにアクセスした際に実行されるコードがWhatsAppの意図したコードであることをユーザーに保証するシステムであり、この発表ができることを嬉しく思います。</p>
+	<p>ブラウザ上でのWhatsAppの利用が拡大し、ジャーナリスト、活動家、人権擁護者などの危険に身を置く利用者が増加する中で、WhatsAppではブラウザベースのユーザーに保証を提供するための対策を講じたいと考えていました。そのような中、当社に対しWhatsAppから、WhatsAppユーザー間のメッセージをエンドツーエンドで暗号化するコードが、第三者によって侵害や改ざんの試みがされることのハードルを大幅に引き上げる内容についてコンタクトをいただいたのです。</p>
+	<p>では、これはどのように機能するのでしょうか？Cloudflareは、WhatsAppユーザーが実行すべきコードのハッシュ値を保持しています。ユーザーがブラウザで WhatsAppを実行すると、拡張機能の「WhatsApp Code Verify」がブラウザで実行されているコードのハッシュ値とCloudflareが持つハッシュ値を比較し、実行されているコードが本来のコードであるかどうかを簡単に確認することができます。</p>
+	<p>ハッシュ値を比較することでファイルの改ざんや破損を検出するというアイデア自体は新しいものではありませんが、それを自動化し、大規模に展開し、WhatsAppユーザーにとって「過不足なく機能する」ようにすることが重要です。WhatsAppからの問い合わせとCloudflareに置かれた暗黙の信頼を踏まえて、技術的観点からこのシステムが実際にどのように機能するのか、より詳細に説明したいと思います。 </p>
+	<p>詳しい説明の前に、重要なことが一つあります。CloudflareではCode Verifyをサポートするために、信頼できる監査エンドポイントを提供しています。WhatsAppのユーザー間のメッセージ、チャット、その他のトラフィックはCloudflareに送信されることなく、非公開のままエンドツーエンドで暗号化されます。メッセージやメディアはこのシステムの一部としてCloudflareのネットワークを経由しません。これは、Cloudflareが信頼できるサードパーティとしての役割を果たす上で重要な特性です。</p>
+	<h3 id="-">検証をより簡単にします</h3>
+	<p>2003年当時に遡ります。Red Hatをベースとした人気のLinuxディストリビューション、Fedoraが発売されたばかりの頃です。あなたはそれをダウンロードしようとしていますが、それが「本物」のFedoraであること、そしてダウンロードしたものが、あなたのパスワードを盗んだりキーストロークを記録したりする「偽物」ではないことを確認したいと考えます。ダウンロードページへ行きダウンロードを開始すると、ダウンロードファイルの横にMD5ハッシュ（当時は安全だと考えられていました）が表示されています。ダウンロードが完了したら、<code>md5 fedora-download.iso</code> を実行して出力されたハッシュ値をページ上のハッシュと比較し、Fedoraのインストールに進みます。</p>
+	<p>しかし、ちょっと待ってください。ダウンロードを提供するWebサイトがハッシュ値も提供している場合、悪意のある者がダウンロードファイルとハッシュ値の両方を独自の値に置き換えている可能性は無いのでしょうか？上で実行した <code>md5</code> のチェックはまだパスしますが、ダウンロードしようとしたソフトウェアが「本物」の（改ざんされていない）バージョンであるという保証はないのです。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/03/image2-6.png" class="kg-image" alt="Hosting the hash on the same server as the software is still common in 2022.">
+		<figcaption>ハッシュ値とソフトウェアを同じサーバーに掲載する行為は、2022年現在でも一般的です。</figcaption>
+	</figure>
+	<p>これを改善しようとする他のアプローチもあります。それは、他の場所でホストされている「well-known」公開鍵で署名されたことをユーザーが検証できる署名付き署名を提供することです。これらの署名（「ハッシュ値」）を信頼できるサードパーティにホスティングすることで、改ざん行為のハードルは劇的に上がりますが、今度はユーザが誰を信頼すべきかを知る事や、<a href="https://www.debian.org/CD/verify" target="_blank">GnuPG</a>といったツールを学ぶ必要が出てきました。これでは、ソフトウェアを信頼し検証することを現代のインターネットの規模で行うことはできません。</p>
+	<p>そこで、<a href="https://chrome.google.com/webstore/detail/code-verify/llohflklppcaghdpehpbklhlfebooeog/related" target="_blank"> 拡張機能「Code Verify」</a>とCloudflareの出番となります。<em>拡張機能「Code Verify」はMeta Open Source社により開発されたもので、WhatsApp Web</em>が使用するライブラリの暗号ハッシュ値をローカルで計算し、信頼できるサードパーティ（この場合 Cloudflare）のハッシュと比較することで、これを自動化します。</p>
+	<p>その仕組みを少しでもわかりやすくするために、ユーザー、WhatsApp、Cloudflareの3者がそれぞれどのようにやり取りしているかを図解しました。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/03/image1-5.png" class="kg-image" alt="WhatsApp Webからのコードを検証するための4つのステップを示した図。"></figure>
+	<p>コードが改ざんされていないことを確認するためには、大きく分けて次の主要な4つのステップがあります：</p>
+	<ol>
+		<li>WhatsAppがJavaScriptライブラリの最新バージョンをサーバーに公開し、そのバージョンに対応するハッシュ値をCloudflareの監査エンドポイントに公開する。</li>
+		<li>WhatsApp WebクライアントがWhatsAppから最新のライブラリを取得する。</li>
+		<li>その後、ブラウザの拡張機能「Code Verify」が別の安全な接続を介してCloudflareからそのバージョンのハッシュ値を取得する。</li>
+		<li>Code Verifyが、Cloudflareからの「known good（既知の無害）」ハッシュ値と、ローカルで計算したライブラリのハッシュ値を比較する。</li>
+	</ol>
+	<p>ハッシュ値が一致した場合、ほとんどの状況で一致するはずであるため、そのコードは拡張機能から見て「検証済み」となります。ハッシュ値が一致<em>しない</em>場合、そのユーザーのブラウザで実行されているコードは WhatsAppがユーザーのブラウザで実行することを意図したコードとは異なることを示しています。</p>
+	<h3 id="--1">セキュリティには利便性が必要</h3>
+	<p>ユーザー作業ではなく自動化されていることも含めて、このプロセスは、スケーラブルな方法で透明性を提供するのに役立ちます。もしユーザーが自分でハッシュ値を手動で取得、計算、比較しなければならないとしたら、改ざんを検出できるのはごく一部の技術を身に着けたユーザーだけでしょう。特にWhatsAppのような大規模なサービスでは、これは誰でも使える、扱いやすいアプローチとは言えません。 </p>
+	<p>このアプローチは、現在使用されている多くの技術とも類似しています。そのひとつが、Webブラウザにおける<a href="https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity" target="_blank">Subresource Integrity（サブリソース完全性）</a>です。サードパーティのアセット（スクリプトやスタイルシートなど）を取得する際、ブラウザは返されたアセットが記述されているハッシュ値に一致するかどうかを検証します。一致しない場合、ブラウザはそのアセットの読み込みを拒否し、潜在的に悪意のあるスクリプトがユーザーデータを吸い上げるのを防ぎます。他には、<a href="https://certificate.transparency.dev/" target="_blank">Certificate Transparency（電子証明書の透明性）</a> や、関連する <a href="https://binary.transparency.dev/" target="_blank">Binary Transparency（バイナリの透明性）</a>プロジェクトもあります。この2つのプロジェクトは、WebPKI証明書やその他のバイナリBLOBを含む重要な資産に対して、公に監査可能な透明性を提供します。この投稿で説明した仕組みは、まだ恣意的なアセットにまでは拡張することはできないものの、Binary Transparencyのように、より一般的で使用可能なものにこの提供を拡張できる方法を模索しています。</p>
+	<p>WhatsAppのチームとのコラボレーションは、Web上のプライバシーとセキュリティの向上を支援するための活動のほんの始まりに過ぎません。私たちは、ユーザーに配信されるコードが、彼らが実行することを意図したコードであることを他の組織が確認できるようにすることを目指しています。大規模なインターネットユーザーの保護とプライバシーの実現は、私たちCloudflareの中核的な考え方であり、2022年を通してこの活動を続けていきたいと考えています。</p>
+</div>

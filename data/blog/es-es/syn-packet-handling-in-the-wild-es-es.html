@@ -1,0 +1,148 @@
+<div class="post-content lh-copy gray1">
+	<p>En Cloudflare, tenemos mucha experiencia en la operación de servidores en la internet de libre circulación. Sin embargo, siempre tratamos de optimizar nuestro dominio de este arte negro. En este mismo blog hemos tratado varios puntos oscuros de los protocolos de internet: como <a href="https://blog.cloudflare.com/this-is-strictly-a-violation-of-the-tcp-specification/">comprensión de FIN-WAIT-2</a> o <a href="https://blog.cloudflare.com/the-story-of-one-latency-spike/">recepción del ajuste de la memoria intermedia</a>.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/10/image5.jpg" class="kg-image">
+		<figcaption><a href="https://creativecommons.org/licenses/by/2.0/" target="_blank">Imagen</a> <a href="https://www.flickr.com/photos/isaimoreno/1471936772/in/photolist-3f54wd-6mweJG-maUn5T-2tgqad-6YuCuM-pZ7r8T-Sa3LQ9-adTFS2-qSLQzk-sJ66Lq-71cJPS-oFU9rf-mbom12-23fVpJW-71ciCN-718DHR-j4VCQQ-71chKo-5DMBr4-5DLQFK-71cG4s-qQFjhZ-2RMBP6-718KWR-71cAFA-fAr8Ri-pe5zev-8TtDbQ-b6p5gk-qAdMqQ-qSBvUZ-qyg7oz-o5yof6-adTGvc-718xp4-5XQgJZ-bgGiwk-kf7aMc-qAjY14-718uti-smXfxF-8Kdnpx-nVVy8a-cmMJGb-puizaG-qP18i9-71cu1E-nYNfjq-718CjH-qyQM72" target="_blank">CC BY 2.0</a> por <a href="https://www.flickr.com/photos/isaimoreno/" target="_blank">Isaí Moreno</a></figcaption>
+	</figure>
+	<p>Sin embargo, no se le ha prestado la atención suficiente a un tema: las inundaciones SYN. Utilizamos Linux y resulta que el manejo de paquetes SYN en Linux es verdaderamente complejo. En esta publicación revelaremos información para aclarar este tema.</p>
+	<h3 id="la-historia-de-dos-colas"><strong>La historia de dos colas</strong></h3>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/10/image2.jpg" class="kg-image"></figure>
+	<p>En primer lugar, debemos entender que cada socket enlazado, en el estado TCP de “ESCUCHA” tiene dos colas separadas:</p>
+	<ul>
+		<li>La cola SYN</li>
+		<li>La cola de aceptación</li>
+	</ul>
+	<p>En los textos, a estas colas se les suelen dar otros nombres como “reqsk_queue”, “registro de ACK”, “registro de escucha” o incluso “registro de TCP”, pero usaré los nombres anteriores para evitar confusiones.</p>
+	<h3 id="cola-syn"><strong>Cola SYN</strong></h3>
+	<p>La cola SYN almacena los paquete SYN entrantes<a href="https://blog.cloudflare.com/syn-packet-handling-in-the-wild/#fn1">[1]</a> (en concreto: <a href="https://elixir.free-electrons.com/linux/v4.14.12/source/include/net/inet_sock.h#L73" target="_blank">struct inet_request_sock</a>). Se encarga de enviar paquetes SYN+ACK y de reintentar el envío en el tiempo de espera. En Linux, el número de reintentos se configura con lo siguiente:</p>
+	<pre><code>$ sysctl net.ipv4.tcp_synack_retries
+net.ipv4.tcp_synack_retries = 5</code></pre>
+	<p>Los <a href="https://www.kernel.org/doc/Documentation/networking/ip-sysctl.txt" target="_blank">documentos describen esta alternancia</a>:</p>
+	<pre><code>tcp_synack_retries - INTEGER
+
+	Number of times SYNACKs for a passive TCP connection attempt
+	will be retransmitted. Should not be higher than 255. Default
+	value is 5, which corresponds to 31 seconds till the last
+	retransmission with the current initial RTO of 1second. With
+	this the final timeout for a passive TCP connection will
+	happen after 63 seconds.
+</code></pre>
+	<p>Después de transmitir el SYN+ACK, la cola SYN espera un paquete ACK del cliente: el último paquete en el protocolo de enlace de tres vías. Todos los paquetes ACK que se reciben primero se deben hacer coincidir con la tabla de conexiones totalmente establecida, y solo después con los datos en la cola SYN correspondiente. En la coincidencia de cola SYN, el núcleo elimina el elemento de la cola SYN, establece una conexión completa (en concreto: <a href="https://elixir.free-electrons.com/linux/v4.14.12/source/include/net/inet_sock.h#L183" target="_blank"> struct inet_sock</a>), y lo agrega a la cola de aceptación.</p>
+	<h3 id="cola-de-aceptaci-n"><strong>Cola de aceptación</strong></h3>
+	<p>La cola de aceptación tiene conexiones completamente establecidas: listas para que la aplicación las tome. Cuando un proceso anuncia aceptar(), los sockets se eliminan de la cola y pasan a la aplicación.</p>
+	<p>Esta es una visión bastante simplificada del manejo de paquetes SYN en Linux. Con la alternancia de sockets como TCP_DEFER_ACCEPT<a href="https://blog.cloudflare.com/syn-packet-handling-in-the-wild/#fn2">[2]</a> y TCP_FASTOPEN, las cosas funcionan un poco diferente.</p>
+	<h3 id="l-mites-de-tama-o-de-cola"><strong>Límites de tamaño de cola</strong></h3>
+	<p>La longitud máxima permitida de ambas colas Accept y SYN se toma del parámetro registro que la aplicación transmite a la llamada del sistema escucha(2). Por ejemplo, esto determina los tamaños de la cola Accept y SYN en 1,024:</p>
+	<p><code>listen(sfd, 1024)</code></p>
+	<p>Importante: en los núcleos anteriores a 4.3, la <a href="https://github.com/torvalds/linux/commit/ef547f2ac16bd9d77a780a0e7c70857e69e8f23f#diff-56ecfd3cd70d57cde321f395f0d8d743L43" target="_blank">longitud de la cola SYN se consideró de manera diferente</a>.</p>
+	<p>Este límite de cola SYN solía ser configurado por la alternancia net.ipv4.tcp_max_syn_backlog,, pero ya no se hace de este modo. Actualmente net.core.somaxconn limita ambos tamaños de cola. En nuestros servidores lo establecemos en 16k:</p>
+	<pre><code>$ sysctl net.core.somaxconn
+net.core.somaxconn = 16384</code></pre>
+	<h3 id="valor-de-registro-perfecto">Valor de registro perfecto</h3>
+	<p>Teniendo en cuenta todo eso, podríamos hacer la siguiente pregunta: ¿cuál es el valor ideal del parámetro de registro?</p>
+	<p>La respuesta es la siguiente: depende. Para la mayoría de los servidores TCP triviales, realmente no es importante. Por ejemplo, antes de la versión 1.11 <a href="https://github.com/golang/go/issues/6079" target="_blank">Golang no respaldó, como es de público conocimiento, la personalización del registro</a>. Sin embargo, hay razones válidas para incrementar este valor:</p>
+	<ul>
+		<li>Cuando el ritmo de las conexiones entrantes es realmente importante, incluso con una aplicación de rendimiento, es posible que la cola SYN entrante necesite un mayor número de espacios.</li>
+		<li>El valor del registro controla el tamaño de la cola SYN. Esto efectivamente se puede leer como “paquetes ACK en proceso”. Cuanto mayor sea el tiempo promedio de ida y vuelta al cliente, más espacios se utilizarán. En el caso de muchos clientes que están lejos del servidor, a cientos de milisegundos de distancia, tiene sentido aumentar el valor del registro.</li>
+		<li>La opción TCP_DEFER_ACCEPT hace que los sockets permanezcan en el estado SYN-RECV por más tiempo y contribuyan con los límites de cola.</li>
+	</ul>
+	<p>Exceder el registro también es malo:</p>
+	<ul>
+		<li>Cada espacio en la cola SYN utiliza cierta memoria. Durante una inundación SYN no tiene sentido desperdiciar recursos en el almacenamiento de paquetes de ataque. Cada entrada struct inet_request_sock en la cola SYN utiliza 256 bytes de memoria en el núcleo 4.14.</li>
+	</ul>
+	<p>Para dar un vistazo a la cola SYN en Linux, podemos utilizar el comando ss y buscar los sockets SYN-RECV. Por ejemplo, en uno de los servidores de Cloudflare podemos ver 119 espacios que se utilizan en la cola tcp/80 SYN y 78 en tcp/443.</p>
+	<pre><code>$ ss -n state syn-recv sport = :80 | wc -l
+119
+$ ss -n state syn-recv sport = :443 | wc -l
+78</code></pre>
+	<p>Se pueden mostrar datos similares con nuestro <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-01-syn-floods/resq.stp" target="_blank">overenginered SystemTap script: resq.stp</a>.</p>
+	<h3 id="aplicaci-n-lenta"><strong>Aplicación lenta</strong></h3>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/10/image3.jpg" class="kg-image"></figure>
+	<p>¿Qué sucede si la aplicación no puede mantener el ritmo rápido de la llamada de aceptación()?</p>
+	<p>¡Aquí es cuando sucede la magia! Cuando la cola de aceptación está completa (tiene un tamaño de registro+1) entonces:</p>
+	<ul>
+		<li>Los paquetes SYN entrantes a la cola SYN se caen.</li>
+		<li>Los paquetes ACK entrantes a la cola SYN se caen.</li>
+		<li>El contador TcpExtListenOverflows / <code>LINUX_MIB_LISTENOVERFLOWS</code> se incrementa.</li>
+		<li>El contador TcpExtListenDrops / <code>LINUX_MIB_LISTENDROPS</code> se incrementa.</li>
+	</ul>
+	<p>Hay una sólida razón para descartar los paquetes <em>entrantes</em>: es un mecanismo de rechazo. La otra parte, tarde o temprano, reenviará los paquetes SYN o ACK, y para ese entonces se espera que la aplicación lenta se haya recuperado.</p>
+	<p>Este es el comportamiento que se desea para la mayoría de los servidores. Para completar: se puede ajustar con la alternancia global net.ipv4.tcp_abort_on_overflow, pero es mejor no tocarlo.</p>
+	<p>Si su servidor necesita manejar una gran cantidad de conexiones entrantes y tiene problemas con la aceptación() del rendimiento, lea nuestra publicación <a href="https://blog.cloudflare.com/the-sad-state-of-linux-socket-balancing/">Ajuste de Nginx / Distribución de trabajo de Epoll</a> y un <a href="https://blog.cloudflare.com/perfect-locality-and-three-epic-systemtap-scripts/">seguimiento que muestre scripts útiles de SystemTap</a>.</p>
+	<p>Puede rastrear las estadísticas de desbordamiento de la cola de aceptación mediante el análisis de los contadoresnstat:</p>
+	<pre><code>$ nstat -az TcpExtListenDrops
+TcpExtListenDrops     49199     0.0</code></pre>
+	<p>Este es un contador global. No es lo ideal: a veces veíamos que aumentaba cuando el estado de todas las aplicaciones no tenía problemas. El primer paso siempre debe ser imprimir los tamaños de la cola de aceptación con ss:</p>
+	<pre><code>$ ss -plnt sport = :6443|cat
+State   Recv-Q Send-Q  Local Address:Port  Peer Address:Port
+LISTEN  0      1024                *:6443             *:*</code></pre>
+	<p>La columna Recv-Q muestra la cantidad de sockets en la cola de aceptación, y Send-Q muestra el parámetro de registro. En este caso, vemos que no hay sockets pendientes de aceptación(), pero aún vemos el incremento del contador ListenDrops.</p>
+	<p>Resulta que nuestra aplicación se atascó por fracciones de segundo. Esto fue suficiente para que la cola de aceptación se desbordara por un período de tiempo muy breve. Momentos después se recuperaría. Los casos como este son difíciles de solucionar con ss, así que escribimos <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-01-syn-floods/acceptq.stp" target="_blank">un acceptq.stp SystemTap script</a> a modo de ayuda. Se enlaza en el núcleo e imprime los paquetes SYN que se están cayendo:</p>
+	<pre><code>$ sudo stap -v acceptq.stp
+time (us)        acceptq qmax  local addr    remote_addr
+1495634198449075  1025   1024  0.0.0.0:6443  10.0.1.92:28585
+1495634198449253  1025   1024  0.0.0.0:6443  10.0.1.92:50500
+1495634198450062  1025   1024  0.0.0.0:6443  10.0.1.92:65434
+...</code></pre>
+	<p>Aquí usted puede ver con precisión qué paquetes SYN se vieron afectados por ListenDrops. Con este script, no tiene importancia entender qué aplicación está eliminando conexiones.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/10/image6.jpg" class="kg-image">
+		<figcaption><a href="https://creativecommons.org/licenses/by/2.0/" target="_blank">Imagen</a> <a href="https://www.flickr.com/photos/16339684@N00/3713965419/in/photolist-6Ec3wx-5jhnwn-bfyTRX-5jhnCa-phYcey-dxZ95n-egkTN-kwT1YH-k22LWZ-5jBUiy-bzvDWx-5jBV31-5jhnr8-5jBTkq-5jxzHk-4K3cbP-9EePyg-4e5XNt-4e5XNn-dxZ8Tn-dy5A89-dxZ6GH-cztXcJ-gF7oY-dxZ9jv-dxZ7qM-ZvSPCv-dxZ6YV-5jBTqs-5jxzaP-MvuyK-nmVwP1-5jBRhY-dxZ7YF-5jxAc2-5jBU9U-5jBTEy-ejbWe6-5jxBc6-99ENZW-99KUsi-9bWScw-5jBRow-5jxzmx-5jBTfw-r6HcW-dy5zXE-5jxzg4-5jxBYR-5jxA2B" target="_blank">CC BY 2.0</a> por <a href="https://www.flickr.com/photos/16339684@N00/" target="_blank">internets_dairy</a></figcaption>
+	</figure>
+	<h3 id="inundaci-n-syn"><strong>Inundación SYN</strong></h3>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/10/image4.jpg" class="kg-image"></figure>
+	<p>Si es posible que se desborde la cola de aceptación, también puede ser posible que se desborde la cola SYN. ¿Qué sucede en ese caso?</p>
+	<p>De esto se tratan los <a href="https://en.wikipedia.org/wiki/SYN_flood" target="_blank">ataques de inundación SYN</a>. En la última inundación, la cola SYN con paquetes SYN falsificados fue un verdadero problema. Antes de 1996, se podía denegar el servicio de prácticamente cualquier servidor TCP con muy poco ancho de banda, solo con completar las colas SYN.</p>
+	<p>La solución es <a href="https://lwn.net/Articles/277146/" target="_blank">Cookies SYN</a>. Las cookies SYN son una construcción que permite que SYN+ACK se genere sin estado, sin guardar en realidad el SYN entrante ni desperdiciar la memoria del sistema. Las cookies SYN no interrumpen el tráfico legítimo. Cuando la otra parte es real, responderá con un paquete ACK válido que incluye el número de secuencia reflejado, que se puede verificara nivel criptográfico.</p>
+	<p>Las cookies SYN se activan de manera predeterminada cuando es necesario - para sockets con una cola SYN completa. Linux actualiza un par de contadores en las cookies SYN. Cuando se envía una cookie SYN:</p>
+	<ul>
+		<li>TcpExtTCPReqQFullDoCookies / <code>LINUX_MIB_TCPREQQFULLDOCOOKIES</code> se incrementa.</li>
+		<li>TcpExtSyncookiesSent / <code>LINUX_MIB_SYNCOOKIESSENT</code> se incrementa.</li>
+		<li>Linux solía incrementar TcpExtListenDrops pero <a href="https://github.com/torvalds/linux/commit/9caad864151e525929d323de96cad382da49c3b2" target="_blank">eso no sucede desde el núcleo 4.7</a>.</li>
+	</ul>
+	<p>Cuando un ACK entrante se dirige a la cola SYN con cookies SYN activadas:</p>
+	<ul>
+		<li>TcpExtSyncookiesRecv / &nbsp;<code>LINUX_MIB_SYNCOOKIESRECV</code> se incrementa cuando la validación de criptografía es correcta.</li>
+		<li>TcpExtSyncookiesFailed / <code>LINUX_MIB_SYNCOOKIESFAILED</code> se incrementa cuando se produce un error en la criptografía.</li>
+	</ul>
+	<p>Un sysctl net.ipv4.tcp_syncookies puede desactivar las cookies SYN o forzar las activaciones. El valor predeterminado es bueno, no lo cambie.</p>
+	<h3 id="cookies-syn-y-marcas-de-tiempo-tcp"><strong>Cookies SYN y marcas de tiempo TCP</strong></h3>
+	<p>La magia de las cookies SYN funciona, pero existen ciertas desventajas. El principal problema es que se pueden guardar muy pocos datos en una cookie SYN. En concreto, solo 32 bits del número de secuencia se devuelven en el ACK. Estos bits se utilizan de la siguiente manera:</p>
+	<pre><code>+----------+--------+-------------------+
+|  6 bits  | 2 bits |     24 bits       |
+| t mod 32 |  MSS   | hash(ip, port, t) |
++----------+--------+-------------------+</code></pre>
+	<p>Con la configuración de MSS <a href="https://github.com/torvalds/linux/blob/5bbcc0f595fadb4cac0eddc4401035ec0bd95b09/net/ipv4/syncookies.c#L142" target="_blank">reducida a solo 4 valores distintos</a>, Linux no conoce ningún parámetro TCP opcional de la otra parte. La información sobre marcas de tiempo, ECN, ACK selectivos o escalado de ventana se pierde y puede disminuir el rendimiento de la sesión de TCP.</p>
+	<p>f, Linux ha trabajado en este tema. Si las marcas de tiempo de TCP están activadas, el núcleo puede reutilizar otro espacio de 32 bits en el campo de marcas de tiempo. Contiene:</p>
+	<pre><code>+-----------+-------+-------+--------+
+|  26 bits  | 1 bit | 1 bit | 4 bits |
+| Timestamp |  ECN  | SACK  | WScale |
++-----------+-------+-------+--------+</code></pre>
+	<p>Las marcas de tiempo de TCP deben estar activadas de manera predeterminada, para verificar el sysctl:</p>
+	<pre><code>$ sysctl net.ipv4.tcp_timestamps
+net.ipv4.tcp_timestamps = 1</code></pre>
+	<p>Históricamente, se ha debatido mucho sobre la utilidad de las marcas de tiempo de TCP.</p>
+	<ul>
+		<li>Anteriormente, las marcas de tiempo generaban pérdidas del tiempo activo del servidor (si eso es importante sería tema d). Esto <a href="https://github.com/torvalds/linux/commit/95a22caee396cef0bb2ca8fafdd82966a49367bb" target="_blank">se solucionó hace 8 meses</a>.</li>
+		<li>Las marcas de tiempo de TCP utilizan <a href="http://highscalability.com/blog/2015/10/14/save-some-bandwidth-by-turning-off-tcp-timestamps.html" target="_blank">una cantidad insignificante de ancho de banda</a> - 12 bytes en cada paquete.</li>
+		<li>Pueden agregar aleatoriedad a las sumas de comprobación del paquete, lo que <a href="https://www.snellman.net/blog/archive/2017-07-20-s3-mystery/" target="_blank">puede ayudar con cierto hardware dañado</a>.</li>
+		<li>Como se mencionó anteriormente, las marcas de tiempo de TCP pueden aumentar el rendimiento de las conexiones TCP si se activan las cookies SYN.</li>
+	</ul>
+	<p>Actualmente, en Cloudflare las marcas de tiempo de TCP están desactivadas.</p>
+	<p>Por último, con las cookies SYN activadas, algunas características interesantes no funcionarán, como por ejemplo <code><a href="https://lwn.net/Articles/645128/" target="_blank">TCP_SAVED_SYN</a>, TCP_DEFER_ACCEPT oTCP_FAST_OPEN</code>.</p>
+	<h3 id="inundaciones-syn-en-proporci-n-a-la-necesidad-de-cloudflare"><strong>Inundaciones SYN en proporción a la necesidad de Cloudflare</strong></h3>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/10/image7-1.png" class="kg-image"></figure>
+	<p>Las cookies SYN son un excelente invento y resuelven el problema de las inundaciones SYN de menor magnitud. Sin embargo, en Cloudflare, tratamos de evitarlas en la medida de lo posible. Si bien el envío de un par de miles de paquetes SYN+ACK verificables a nivel criptográfico por segundo se puede hacer correctamente, vemos <a href="https://blog.cloudflare.com/the-daily-ddos-ten-days-of-massive-attacks/">ataques de más de 200 millones de paquetes por segundo.</a> En esta proporción, nuestras respuestas SYN+ACK simplemente llenarían la internet de basura, sin generar ningún beneficio.</p>
+	<p>En lugar de hacer esto, tratamos de eliminar los paquetes SYN maliciosos en la capa de firewall. Usamos las huellas digitales SYN p0f compiladas para BPF. Puede obtener más información en esta publicación del blog <a href="https://blog.cloudflare.com/introducing-the-p0f-bpf-compiler/">Introducción al compilador p0f BPF</a>. Para detectar e implementar las mitigaciones, hemos desarrollado un sistema de automatización que denominamos “Gatebot”. Lo describimos aquí <a href="https://blog.cloudflare.com/meet-gatebot-a-bot-that-allows-us-to-sleep/">Conoce a Gatebot - el bot que nos permite dormir</a></p>
+	<h3 id="panorama-en-evoluci-n"><strong>Panorama en evolución</strong></h3>
+	<p>Para obtener más información, un poco desactualizada, sobre el tema, lea <a href="https://veithen.github.io/2014/01/01/how-tcp-backlog-works-in-linux.html" target="_blank">una excelente explicación de Andreas Veithen de 2015</a> y <a href="https://www.giac.org/paper/gsec/2013/syn-cookies-exploration/103486" target="_blank">un documento exhaustivo de Gerald W. Gordon de 2013</a>.</p>
+	<p>El panorama del manejo de paquetes SYN de Linux evoluciona constantemente. Hasta hace poco, las cookies SYN eran lentas debido a un bloqueo obsoleto en el núcleo. Esto se solucionó en 4.4 y ahora usted puede confiar en el núcleo para enviar millones de cookies SYN por segundo, y resolver prácticamente el problema de inundación SYN de la mayoría de los usuarios. Con el ajuste adecuado, es posible mitigar incluso las inundaciones SYN más fastidiosas sin afectar el rendimiento de las conexiones legítimas.</p>
+	<p>El rendimiento de las aplicaciones también está recibiendo una atención considerable. Ideas recientes como <code>SO_ATTACH_REUSEPORT_EBPF</code> introducen una capa totalmente nueva de programabilidad en la pila de red.</p>
+	<p>Resulta extraordinario ver cómo las innovaciones y los pensamientos renovados se canalizan en la pila de redes en un mundo de sistemas operativos que de otra manera estaría estancado.</p>
+	<p><em>Agradecemos a Binh Le por colaborar con esta publicación.</em></p>
+	<hr>
+	<p><em>¿Está tratando de que los aspectos internos de Linux y NGINX suenen interesantes? Únase a nuestro</em> <a href="https://boards.greenhouse.io/cloudflare/jobs/589572" target="_blank"><em>equipo de reconocimiento internacional</em></a><em>en Londres, Austin, San Francisco y nuestra selecta oficina en Varsovia, Polonia.</em></p>
+	<hr>
+	<ol>
+		<li>Estoy simplificando, técnicamente hablando, la cola SYN almacena las conexiones aún no ESTABLECIDAS, no paquetes SYN sí. Aunque con TCP_SAVE_SYN se acerca lo suficiente. <a href="https://blog.cloudflare.com/syn-packet-handling-in-the-wild/#fnref1">↩︎</a></li>
+		<li>Si <a href="http://man7.org/linux/man-pages/man7/tcp.7.html" target="_blank">TCP_DEFER_ACCEPT</a> es nuevo para usted, definitivamente verifique la versión de FreeBSD - <a href="https://www.freebsd.org/cgi/man.cgi?query=accf_http&amp;sektion=9" target="_blank">acepta filtros</a>. <a href="https://blog.cloudflare.com/syn-packet-handling-in-the-wild/#fnref2">↩︎</a><a href="https://blog.cloudflare.com/tag/syn/">SYN</a> <a href="https://blog.cloudflare.com/tag/tcp/">TCP</a> <a href="https://blog.cloudflare.com/tag/programming/">Programación</a></li>
+	</ol>
+</div>

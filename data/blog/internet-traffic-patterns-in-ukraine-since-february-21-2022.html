@@ -1,0 +1,83 @@
+<div class="post-content lh-copy gray1">
+	<p>Cloudflare operates in more than 250 cities worldwide where we connect our equipment to the Internet to provide our broad range of services. We have data centers in Ukraine, Belarus and Russia and across the world. To operate our service we monitor traffic trends, performance and errors seen at each data center, aggregate data about DNS, and congestion and packet loss on Internet links.</p>
+	<h3 id="internet-traffic">Internet Traffic</h3>
+	<p>For reference, here is a map of Ukraine showing its major cities. Note that whenever we talk about dates and times in this post, we are using UTC. Ukraine’s current time zone is UTC+2.</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/03/image10.png" class="kg-image">
+		<figcaption>© OpenStreetMap contributors</figcaption>
+	</figure>
+	<p>Internet traffic in Ukraine generally follows a pretty predictable pattern based on day and night. Lowest in the hours after local midnight and picking up as people wake up. It’s not uncommon to see a dip around lunchtime and a peak when people go home in the evening. That pattern is clearly visible in this chart of overall Internet traffic seen by Cloudflare for Ukrainian networks on Monday, Tuesday, and Wednesday prior to the invasion.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/03/2.png" class="kg-image"></figure>
+	<p>Starting Thursday, traffic was significantly lower. On Thursday, we saw about 70% of our normal request volume and about 60% on Friday. Request volumes recovered to 70% of pre-invasion volume on Saturday and Sunday before peaking on Monday and Tuesday because of attacks that we mitigated coming from networks in Ukraine.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/03/3.png" class="kg-image"></figure>
+	<p>This chart shows attack traffic blocked by Cloudflare that originated on networks in Ukraine. Note that this is quite different from attacks against <code>.ua</code> domains, which can originate anywhere in the world and are discussed below.</p>
+	<p>Analysis of network traffic from different cities in Ukraine gives us some insight into people’s use of the Internet and availability of Internet access. Here’s Internet traffic from the capital, <strong>Kyiv</strong>:</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/03/4-1.png" class="kg-image"></figure>
+	<p>Once again the “normal” ebb and flow of Internet traffic is seen on Monday, Tuesday, and Wednesday. Early on Thursday morning, Internet traffic picks up after Vladimir Putin’s announcement of the attack but never reaches normal levels that day. Friday is even lower, but traffic in Kyiv has gradually increased since then.</p>
+	<p>Moving westward to <strong>Lviv,</strong> we see a very different pattern of use.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/03/5-1.png" class="kg-image"></figure>
+	<p>The same normal flows on Monday to Wednesday are visible, followed by a smaller drop for three days and then a dramatic increase in traffic. As many Ukrainians have moved westward towards Poland, Slovakia and Romania, away from the fighting, it appears that Internet traffic has grown with their arrival in Lviv.</p>
+	<p>The city of <strong>Uzhhorod</strong> on the Slovakian border shows a similar pattern.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/03/6.png" class="kg-image"></figure>
+	<p>To the east of Lviv, the city of <strong>Ternopil</strong> has also seen an increase in Internet traffic.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/03/7.png" class="kg-image"></figure>
+	<p>As has <strong>Rivne</strong>.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/03/Rivne.png" class="kg-image"></figure>
+	<p>Looking at Rivne, Ternopil, Uzhhorod, and Lviv, it’s possible that the peaks in Internet traffic on different days show the movement of people westward as they try to escape fighting around the capital and in the east and south.</p>
+	<p>On the opposite side of Ukraine, the situation is quite different. Here’s the traffic pattern for the city of <strong>Kharkiv</strong>. It has stayed at roughly between 50% and 60% (March 3) of the usual rate since the beginning of the invasion.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/03/pasted-image-0.png" class="kg-image"></figure>
+	<p>North of Kharkiv, the city of <strong>Sumy</strong> (north-eastern Ukraine, near the Russian border), traffic levels are very low since yesterday, March 3, 2022.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/03/unnamed.png" class="kg-image"></figure>
+	<p>A similar trend can be seen in the city <strong>Izyum</strong>, south of Kharkiv (east of Ukraine), where traffic is very low since March 2.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/03/10.png" class="kg-image"></figure>
+	<p>Traffic in <strong>Donetsk</strong> has remained fairly consistent throughout the invasion, except for March 1 when there was a dramatic change in traffic. This was most likely caused by an attack against a single <code>.ua</code> domain name, with the attack traffic coming, at least in part, from Donetsk.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/03/11.png" class="kg-image"></figure>
+	<p>Some other areas with fighting have experienced the largest drops and partial Internet outages. Moving to the south, traffic in <strong>Mariupol</strong> declined after the invasion and has dropped dramatically in the last three days with outages on local networks.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/03/12.png" class="kg-image"></figure>
+	<p>Here’s a view of traffic from <strong>AS43554 </strong>in Mariupol showing what seems to be a total outage on March 1 that continued through March 4.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/03/13.png" class="kg-image"></figure>
+	<p>To the west of Mariupol, <strong>Osypenko</strong> shows a gradual decline in traffic followed by three days of minimal Internet use.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/03/14.png" class="kg-image"></figure>
+	<p>Similar large drops are seen in <strong>Irpin</strong> (just outside Kyiv to the northwest).</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/03/15.png" class="kg-image"></figure>
+	<p>And in <strong>Bucha</strong>, which is next to Irpin; both Bucha and Irpin are close to Hostomel airport.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/03/16.png" class="kg-image"></figure>
+	<p><strong>Enerhodar</strong> is the small city in the south of Ukraine where Europe’s <a href="https://en.wikipedia.org/wiki/Zaporizhzhia_Nuclear_Power_Plant" target="_blank">largest nuclear plant, Zaporizhzhya NPP</a>, is located.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/03/17.png" class="kg-image"></figure>
+	<p>There has also been minimal traffic (or possible outage) from <strong>Severodonetsk</strong> (north of Luhansk) for the past four of days.</p>
+	<p>We have started to see traffic from <strong>Starlink</strong> terminals in Ukraine, although traffic levels remain very low.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/03/18.png" class="kg-image"></figure>
+	<h3 id="cyberattacks">Cyberattacks</h3>
+	<p>The physical world invasion has been accompanied by an increase in cyberattacks against Ukrainian domain names and networks.</p>
+	<p>Just prior to the invasion, on February 23, Cloudflare’s automated systems detected a large amount of packet loss on a major Internet connection to our Kyiv data center and automatically mitigated the problem by routing traffic onto other networks. This packet loss was caused by congestion on the transit provider’s network, which in turn was caused by a large <strong>DDoS attack</strong>. It appeared in our dashboards as packet loss over a 30-minute period between 1500-1530 (the different colors are different parts of our network infrastructure in Kyiv).</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/03/19.png" class="kg-image"></figure>
+	<p>This next chart gives an overview of traffic to <code>.ua</code> domains protected by Cloudflare and <strong>requests that are “mitigated”</strong> (i.e. blocked by our firewall products). The chart shows only layer 7 traffic and does not give information about layer 3/4 DDoS, which is covered separately below.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/03/20.png" class="kg-image"></figure>
+	<p>On the first day of the invasion attacks against <code>.ua</code> domains were prevalent and at times responsible for almost 50% of the requests being sent to those domains. From Friday, February 25 attacks returned to levels seen prior to the invasion and started picking up again on Tuesday, March 1.</p>
+	<p>Digging into the layer 7 mitigations we can see that the biggest attacks over all are <strong>layer 7 DDoS attacks</strong>.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/03/21.png" class="kg-image"></figure>
+	<p>The next largest attacks are being <strong>mitigated by firewall</strong> rules put in place by customers.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/03/22.png" class="kg-image"></figure>
+	<p>Followed by <strong>blocking requests </strong>based on our IP threat reputation database.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/03/23.png" class="kg-image"></figure>
+	<p><strong>Layer 3/4</strong> traffic is harder to attribute to a specific domain or target as IP addresses are shared across different customers. Looking at network-level DDoS traffic hitting our Kyiv data center, we see occasional peaks of DDoS traffic reaching a high of nearly &nbsp;1.8 Gbps.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/03/24.png" class="kg-image"></figure>
+	<p>Note that although the layer 3/4 and layer 7 attacks we are mitigating have been relatively small, that does not mean they are not devastating or problematic. A small website or service can be taken down by relatively small attacks, and the layer 7 attack traffic often includes vulnerability scanning, credential stuffing, SQL injection, and the usual panoply of techniques carried out to either deface or penetrate an Internet service.</p>
+	<p>Unprotected Internet properties are vulnerable to even small attacks and need protection.</p>
+	<h3 id="social-media-and-communications">Social media and communications</h3>
+	<p>Much of the imagery and information coming out of Ukraine is being shared on social networks. Looking at social networks in Ukraine via <a href="https://radar.cloudflare.com/glossary#:~:text=the%201.1.1.1%20Public-,DNS,-Resolver%20that%20has" target="_blank">DNS data</a> shows that <strong>Facebook</strong> use has increased.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/03/25.png" class="kg-image"></figure>
+	<p>As has <strong>Instagram</strong>.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/03/26.png" class="kg-image"></figure>
+	<p>However, <strong>TikTok</strong> seems to have lost traffic initially, but it has started to return (although not to its pre-conflict levels) in the last two days.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/03/27.png" class="kg-image"></figure>
+	<p><strong>Twitter</strong> usage increased and has remained higher than levels seen before the invasion.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/03/28.png" class="kg-image"></figure>
+	<p>Turning to messaging apps, we can compare Messenger, Signal, Telegram and WhatsApp. <strong>WhatsApp</strong> traffic appears to have declined inline with the broad change in Internet traffic across Ukraine.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/03/29.png" class="kg-image"></figure>
+	<p><strong>Telegram</strong> stayed largely unchanged until early this week, when we observed a small increase in use.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/03/30.png" class="kg-image"></figure>
+	<p><strong>Messenger</strong> shows a similar pattern.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/03/31.png" class="kg-image"></figure>
+	<p>But the largest change has been traffic to the end-to-end encrypted messaging app <strong>Signal</strong>, which has seen dramatic growth since the invasion began. We are seeing 8x to 10x the DNS volume for Signal as compared to the days before the start of the conflict.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/03/32.png" class="kg-image"></figure>
+</div>

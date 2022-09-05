@@ -1,0 +1,68 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/1-30.png" class="kg-image" alt="End User Security: Account Takeover Protections with Cloudflare"></figure>
+	<p>終端使用者的帳戶安全一直是頭等大事，同時也是一個頗爲棘手的問題。更糟糕的是，驗證使用者身分並非易事。鑒於憑證外洩<a href="https://haveibeenpwned.com/PwnedWebsites" target="_blank">日益氾濫</a>，而且技術先進的機器人透過爬行網路來試圖發動憑證填充攻擊，保護和監控身分驗證端點成為安全團隊面臨的一項挑戰。不但如此，很多身分驗證端點依然僅依賴於提供正確的使用者名稱和密碼，這使得行蹤隱匿的憑證填充惡化為帳戶被惡意行為者盜用。</p>
+	<p>Cloudflare 平台擁有可幫助實施帳戶盜用防護的諸多功能。這篇貼文將介紹幾個範例，並公佈一些新的功能。其中包括：</p>
+	<ul>
+		<li><a href="https://blog.cloudflare.com/zh-tw/protecting-apis-from-abuse-and-data-exfiltration-zh-tw/">開放代理託管清單</a> (新)：確保對您的應用程式進行的身分驗證並非來自於代理服務；</li>
+		<li><a href="https://blog.cloudflare.com/zh-tw/super-bot-fight-mode-zh-tw/">超級機器人抵禦模式</a> (新)：將自動化流量拒於身分驗證端點門外；</li>
+		<li>暴露憑證檢查 (新)：在使用者使用已外洩憑證登入時發出警示。這可用來啟動雙重身分驗證流程或密碼重設；</li>
+		<li>Cloudflare Access：透過整合第三方 OATH 服務來輕鬆增設額外驗證層，近期還將<a href="https://blog.cloudflare.com/zero-trust-with-managed-devices/">推出可選的託管服務實施 </a> (新)；</li>
+		<li>對失敗登入進行限速：阻止對應用程式進行暴力憑證填充；</li>
+	</ul>
+	<p>以上功能若能結合使用，可成為一款功能強大又簡單易用的工具，提升終端使用者的帳戶安全。</p>
+	<h3 id="cloudflare-">Cloudflare 開放代理清單</h3>
+	<p>2020 年 7月，我們推出了 <a href="https://blog.cloudflare.com/introducing-ip-lists/">IP 清單</a>；這是一種可重複使用的 IP 清單，使用者在編寫自訂防火牆規則時可以此為基礎建立和維護清單。雖然這對任何防火牆管理員來說都是一個利器，但與所有用於存取控制的 IP 清單一樣，這也會很快過時。</p>
+	<p>借助我們新推出的 <a href="https://blog.cloudflare.com/zh-tw/protecting-apis-from-abuse-and-data-exfiltration-zh-tw/">Cloudflare 開放代理託管清單</a>，您現在可以編寫自訂防火墻規則，對照一個由 Cloudflare 全面管理和定期更新 (每小時) 的清單來進行比對。這個清單源自於對網路流量的觀察，以及對開放代理端點的主動搜尋。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/04/2-15.png" class="kg-image" alt="The new Open Proxies managed list - can be found under Account Home → Configurations → Lists or used directly in a custom rule">
+		<figcaption>要使用新的開放代理託管清單，請前往帳戶首頁，再點選 [設定] → [清單]，或在自訂規則中直接使用<span class="-mobiledoc-kit__atom">‌‌</span></figcaption>
+	</figure>
+	<p>在編寫自訂防火牆規則時，您可以結合使用這個 IP 清單和其他篩選器，藉此降低身分驗證端點遭受惡意登入的風險。例如，您可以按照下方所示，使用 wirefilter 語法編寫一條利用新清單的規則：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>http.request.uri.path contains "/login" and (not ip.src in $cf.open_proxies and cf.bot_management.score &lt; 30)
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>這樣一來，任何登入嘗試都會依照規則中所選動作得以封鎖或查問。</p>
+	<p>這個 SOCKS 和代理 IP 清單向所有 Enterprise 客戶提供。</p>
+	<h3 id="-api-">超級機器人抵禦模式和 API 濫用偵測</h3>
+	<p>登入端點讓機器人有機可乘。惡意機器人會充分利用時間，短短幾秒內就能測試數千甚至數百萬個憑證。這些機器人會持續工作，直至從您的網站獲得某種價值為止。</p>
+	<p>幸運的是，我們最近發佈了<a href="https://blog.cloudflare.com/zh-tw/super-bot-fight-mode-zh-tw/">超級機器人抵禦模式</a>。這項功能隨附於所有 Pro 和 Business 方案；同時，這還與即時分析相結合，以便您即時觀察攻擊情況。超級機器人抵禦模式旨在阻止憑證填充，在其幕後執行的是很多與驅動 <a href="https://www.cloudflare.com/zh-tw/products/bot-management" target="_blank">Enterprise Bot Management</a> 產品相同的偵測引擎。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/04/3-11.png" class="kg-image" alt="Our new Super Bot Fight Mode. Can be found under Firewall → Bots">
+		<figcaption>我們新推出的超級機器人抵禦模式，可在 [防火牆] → [機器人] 下找到。</figcaption>
+	</figure>
+	<p>最棒的是，您可以即刻添加保護。Pro 使用者可選擇允許、封鎖或查問網際網路上的「絕對機器人」。Business 使用者甚至可以瞄準通常更加複雜、更難偵測的「疑似機器人」。Free 使用者可繼續使用機器人抵禦模式來獲得基本保護。</p>
+	<h3 id="-">暴露憑證檢查</h3>
+	<p>憑證填充攻擊者試圖使用從針對某一服務的攻擊中盜取的使用者憑證 (使用者名稱/密碼對) 來登入目標帳戶。這種方法往往會得逞，因為 <a href="https://www.ndss-symposium.org/ndss2014/programme/tangled-web-password-reuse/" target="_blank">50% 以上使用者在多個帳戶中使用相同的密碼</a>，結果導致大量帳戶外洩。您的終端使用者安全不僅依賴於自身系統的安全，還取決於使用者所用的所有其他系統的安全。雖然多重身分驗證能提供縱深防禦，但很多身分驗證服務和使用者尚未加以利用。即便如此，我們也希望在某個使用者名稱/密碼對存在風險時向有關服務和使用者發出警告。</p>
+	<p>除了機器人偵測等方法之外，一種新的產業最佳實踐是讓登入服務自己檢查使用者的憑證是否存在於已知的資料外洩中。這需要有一個有用的已知外洩使用者名稱/密碼對清單。諸如 <a href="https://haveibeenpwned.com/" target="_blank">Have I Been Pwned</a> 和 <a href="https://security.googleblog.com/2020/10/new-password-protections-and-more-in.html" target="_blank">Google Password Breach Alerting</a> 等服務匯總了龐大的已知外洩使用者名稱/密碼對資料庫，讓公司和終端使用者能透過查詢來確定有無風險。但整合起來頗爲不易，而最理想的情況是，組織要能夠一鍵啟用憑證檢查保護。</p>
+	<p>我們恰好做到了這一點。今天，我們公佈 <a href="https://www.cloudflare.com/zh-tw/waf/" target="_blank">Web Application Firewall (WAF) </a>的一個新功能：暴露憑證檢查。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/04/4-6.png" class="kg-image" alt="Exposed Credential Checks can be easily enabled with our Managed Ruleset. Alternatively, you can write your own custom rules.">
+		<figcaption>藉由我們的託管規則集，即可輕鬆啟用暴露憑證檢查。另外，您也可選擇自行編寫自訂規則。‌‌<span class="-mobiledoc-kit__atom">‌‌</span></figcaption>
+	</figure>
+	<p>對於任何受 Cloudflare 保護的應用程式，其登入請求都將經過 WAF 路由，這為「路徑上」暴露憑證檢查創造了機會。一旦啟用，每次進行身分驗證嘗試時，WAF 都會自動根據 Cloudflare 蒐集和維護的一個外洩憑證資料庫來檢查終端使用者憑證。找到相符項目時，WAF 會向原點新增一個標頭，讓您的應用程式獲得有關外洩憑證的警告，並採取相應行動，例如為該使用者觸發密碼重設流程或第二重身分驗證查問。</p>
+	<!--kg-card-begin: markdown-->
+	<p>至少可以說，處理使用者名稱和密碼是高度敏感性，我們設計暴露憑證檢查功能是為了保護使用者憑證。我們有一個重要的設計理念，使用者名稱/密碼對絕不可暴露在 WAF 處理程序的邊界之外，藉此確保能夠在不增加額外風險的前提下執行檢查。這表示，此項功能絕對不會將使用者名稱和密碼發送到 WAF 處理程序以外或存入日誌<sup>1</sup>，因為我們無意知道這些憑證是什麼，除非這些內容對您的網路安全構成了威脅。但除此之外，我們還制定了一個旨在保護隱私的加密通訊協定，以用來執行資料庫查詢。粗略地說，我們對 WAF 處理程序中的使用者名稱/密碼對套用一個鍵控加密雜湊函數，並檢查產生的雜湊值是否與資料庫中已知外洩憑證的鍵控雜湊值相符。這一點將在後續技術剖析中進一步闡述。</p>
+	<!--kg-card-end: markdown-->
+	<p>自即日起，Enterprise 客戶可透過<a href="https://www.cloudflare.com/zh-tw/waf/exposed-credential-checks/" target="_blank">此頁面</a>聯繫我們團隊來申請使用這項功能。暴露憑證檢查既可作為一種託管規則集提供，對 WordPress、Joomla 等常見系統「開箱即用」，也作為自訂規則的篩選器提供，以支援任何應用程式。</p>
+	<h3 id="cloudflare-access-">Cloudflare Access 與受管理裝置</h3>
+	<p>透過使用 <a href="https://www.cloudflare.com/zh-tw/teams/access/" target="_blank">Cloudflare Access</a>，您可在受 Cloudflare 保護的任何應用程式前增加一道額外的防線。Access 會驗證每一個請求的使用者身分、位置和網路，以此保護應用程式。這自然能加強終端使用者帳戶的安全。</p>
+	<p>然而，使用者所用的裝置也許依然不夠安全。一旦裝置遭到入侵，即使有效的身分驗證工作階段也可導致資料外洩，或者更加糟糕，終端使用者帳戶或應用程式被徹底攻破。企業嘗試透過管理和發放公司裝置來降低這種風險，並利用行動裝置管理 (MDM) 解決方案在這些裝置上執行安全性原則。</p>
+	<p>為解決這個問題，我們正在改良 Cloudflare Access，以強制要求僅公司裝置能夠存取敏感的應用程式。借助存取規則，現在可以對照一個受管理裝置清單來驗證裝置的序號，而後再允許其存取。即使某個使用者的憑證已經暴露，只要裝置的序號不在受管理裝置清單中，就能封鎖任何未經授權的存取。如需瞭解更多資訊，請參見我們近期發佈的<a href="https://blog.cloudflare.com/zero-trust-with-managed-devices/">公告</a>。</p>
+	<h3 id="--1">對失敗登入進行限速</h3>
+	<p>暴力攻擊效果出奇，尤其是透過反覆使用已外洩憑證資料庫來發動攻擊時。為封鎖這些攻擊，可以減慢其速度來使執行代價過於高昂，這樣通常已經足夠。</p>
+	<!--kg-card-begin: markdown-->
+	<p>在發生登入失敗時，很多使用者名稱/密碼表單會發出一個「HTTP 403 禁止」狀態代碼或其他可辨識的錯誤訊息<sup>2</sup>。這可用作發出限速回應的一個非常有效的訊號，藉此避免對合法使用者造成任何潛在的副作用。</p>
+	<!--kg-card-end: markdown-->
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/04/5-6.png" class="kg-image" alt="The rule above rate limits any IP after 5 consecutive failed login attempts in a minute for 1 hour.">
+		<figcaption>以上規則對一分鐘內 5 次連續登入失敗的 IP 執行持續一小時的限速。<span class="-mobiledoc-kit__atom">‌‌</span></figcaption>
+	</figure>
+	<p>限速回應可根據需要自訂為同時支援帶有 JSON 有效負載的 API 或基於標準 HTML 的端點。</p>
+	<p>限速是面向所有自助服務客戶提供的收費附加服務。</p>
+	<h3 id="--2">未來的方案</h3>
+	<p>我們正在花費大量時間思索如何透過簡單的一鍵式解決方案來為終端使用者帳戶提供最佳保護。</p>
+	<p>透過利用我們網路的可見性，我們正在開始獲得僅 Cloudflare 這種規模才有的寶貴見解。我們的託管開放代理清單就是一個這樣的例子，但我們已從簡單的裝置狀態或限速邁出一大步，正在試驗基於異常的偵測。另外，我們也在思考不同的使用案例和情景，研究如何讓全體客戶更加廣泛地分享已經驗證的異常狀況，藉此回到 Cloudflare 創立之初所仰仗的基於社群保護的方法。</p>
+	<p>.....</p>
+	<!--kg-card-begin: markdown-->
+	<p><sup>1</sup>其他 Cloudflare 功能 (例如，<a href="https://blog.cloudflare.com/encrypt-waf-payloads-hpke/">加密 WAF 有效負載記錄</a>) 可以記錄任何請求元件，但其將使用客戶的公開金鑰進行加密。<br>
+		<sup>2</sup>許多滲透測試報告將會凸顯，登入失敗回應上的任何差異是一種資訊外洩漏洞。
+	</p>
+	<!--kg-card-end: markdown-->
+</div>

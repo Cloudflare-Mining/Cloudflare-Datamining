@@ -1,0 +1,30 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image1-66.png" class="kg-image" alt="引入智能边缘重新验证"></figure>
+	<p>今天，我们很高兴地宣布智能边缘重新验证。它旨在确保计算资源在我们的边缘和浏览器之间高效同步。目前，多达 30% 缓存在 Cloudflare 边缘的对象没有重新验证所需的 HTTP 响应标头。这可能会导致不必要的源调用。智能边缘重新验证解决了这个问题：它可以确保这些标头存在，即使源没有将它们发送给我们。这样做的好处是什么？对于不需要重新下载的对象，浪费的带宽和计算将会更少。并且为用户提供更快的浏览器页面加载。</p>
+	<h2 id="-">那么什么是重新验证？</h2>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/Cache-Hit--Miss.png" class="kg-image"></figure>
+	<p>重新验证是关于从中间缓存高效地为源服务器上的对象提供服务的较长过程的一部分。网站的访问者希望网站响应迅速。确保网站对访问者响应迅速的一种基本方法是从缓存中提供对象。通过这种方式，请求和响应不需要将 Internet 的不必要部分传输回源，而是可以从离访问者更近的数据中心提供服务。因此，网站运营商通常只希望在内容发生变化时提供来自源的内容。那么对象如何在缓存中保持所需的时间长度呢？</p>
+	<p>一种方法是使用 HTTP 响应标头。</p>
+	<p>当 Cloudflare 从源获得响应时，该响应中包含许多标头。您可以通过打开任何网页、检查页面、转到网络选项卡并单击任何文件来查看这些标头。在响应标头部分通常会有一个称为 <code>Cache-Control</code> 的标头。此标头是源回答缓存中介问题的一种方式，例如：此对象是否符合缓存条件？此对象应该在缓存中多久？该时间到期后缓存中介应该做什么？</p>
+	<!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 50.250178699070766%;"><iframe src="https://iframe.videodelivery.net/0ec6b5865c9f8b287b854a5db67bae61?preload=true" style="border: none; position: absolute; top: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
+	<!--kg-card-end: html-->
+	<p>可以通过 <code>max-age</code> 或 <code>s-maxage</code> 指令指定某个内容应该在缓存中多长时间。这些指令以秒为单位指定对象的 TTL 或生存时间。一旦对象已在缓存中达到必需的 TTL，时钟就会达到 0（零），并将其标记为已过期。缓存若不弄清楚对象是否在源上发生了更改或是否相同，就无法再安全地为请求提供过期内容。</p>
+	<p>如果更改了，必须从源重新下载。如果没有更改，则它可以标记为新并继续加以提供。这种检查又称为重新验证。</p>
+	<p>我们很高兴智能边缘重新验证将重新验证的效率延伸到所有人，无论源是否发送必要的响应标头</p>
+	<h2 id="--1">重新验证是如何完成的？</h2>
+	<p>源设置了两个额外的标头: <a href="https://datatracker.ietf.org/doc/html/rfc7232#section-2.2" target="_blank"><code>Last-Modified</code></a> &nbsp;和 <a href="https://datatracker.ietf.org/doc/html/rfc7232#section-2.3" target="_blank"><code>ETag</code></a> ，以便在不同修改之间区分相同 <code>URL</code>/对象的不同版本。在对象过期并进行重新验证检查后，如果 &nbsp;<code>ETag</code> 值未更改或不存在更新的 <code>Last-Modified</code> 时间戳，则对象会标记为“已重新验证”，并且可以继续从缓存中提供过期对象。如果 <code>ETag</code> 值或 <code>Last-Modified</code> 时间戳指示发生了更改，则会下载新对象并从缓存中删除旧对象。</p>
+	<p>当浏览器使用 <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/If-Modified-Since" target="_blank"><code>If-Modified-Since</code></a> &nbsp;或 <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/If-None-Match" target="_blank"><code>If-None-Match</code></a> 标头向缓存服务器发送请求时，会发生重新验证检查。这些<em>请求标头</em>是从浏览器缓存发送的关于对象上次更改时间的问题，可以通过缓存服务器上的 <code>ETag</code> 或 <code>Last-Modified</code> <em> 响应标头回答</em>。例如，如果浏览器使用 <code>If-Modified-Since: Tue, 8 Nov 2021 07:28:00 GMT</code> 向缓存服务器发送请求，缓存服务器必须查看所询问的对象，如果自 11 月 8 日上午 7 点 28 分以来它没有更改，它将以 <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/304" target="_blank">304 状态代码</a>响应，表明它没有更改。如果对象已更改，缓存服务器将使用新对象进行响应。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/Cache-Response-Header.png" class="kg-image"></figure>
+	<p>发送一个 304 状态代码来指示一个对象可以复用，这比发送整个对象要高效得多。这就像您经营一个每 24 小时更新一次的新闻网站。当天的内容更新后，您不希望继续从源重新下载相同的未更改内容，相反，您更愿意通过发送表示该效果的轻量级信号来确保复用当天的内容，直到第二天站点发生更改。</p>
+	<p>这个浏览器问题和重新验证响应系统的问题在于，有时源没有设置 <code>ETag</code> 或 <code>Last-Modified</code> 标头，或者它们不是由网站管理员配置的，从而无法重新验证。这意味着每次对象到期时，无论是否发生更改都必须重新下载，因为我们必须假设资产已更新，否则可能会造成提供过时内容的风险。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/Origin-Response-Header.png" class="kg-image"></figure>
+	<p>这是一种令人难以置信的资源浪费，在边缘和访问者之间花费了数百 GB/秒的不必要带宽。这意味着浏览器会下载它们<em>可能已经拥有</em>的数百 GB/秒的内容。如果我们的重新验证基准是所有流量的 10% 左右，并且在初始测试中，智能边缘重新验证将重新验证增加了不到 50%，这意味着无需用户配置任何内容，我们就可以将总重新验证增加约 5%！</p>
+	<p>带宽使用量的大幅减少还带来了潜在的环境效益。根据 Cloudflare 的每字节碳排放量，所使用的不必要带宽可能达到 2000 多公吨二氧化碳当量/年，相当于400 多辆汽车一年的<a href="https://www.epa.gov/energy/greenhouse-gas-equivalencies-calculator" target="_blank">二氧化碳排放量</a>。</p>
+	<p>重新验证还带来了性能改进，因为它通常意味着浏览器下载少于 1KB 的数据来检查资产是否已更改，而提取完整资产可能是 100sKB。这可以提高性能并减少访问者和我们的边缘之间的带宽。</p>
+	<h2 id="--2">智能边缘重新验证的工作原理</h2>
+	<p>当源服务器响应中不存在 <code>Last-Modified</code> 和 <code>ETag</code> 标头时，智能边缘重新验证将使用对象在 Cloudflare 的边缘上缓存的时间作为 <code>Last-Modified</code> 标头值。当浏览器使用 <code>If-Modified-Since</code> 或 <code>If-None-Match</code> 向 Cloudflare 发送重新验证请求时，我们的边缘可以使用从智能边缘重新验证生成的 <code>Last-Modified</code> 标头回答这些重新验证问题。这样，即使标头不是从源发送的，我们的边缘也可以确保高效的重新验证。</p>
+	<p>在未来几周内，将为所有 Cloudflare 客户自动启用智能边缘重新验证。如果这种行为不合适，您始终可以通过<a href="https://web.dev/http-cache/#response-headers" target="_blank">确认您的源在您想要指示更改的内容时</a>是在发送 ETag 还是 Last-Modified 标头，确保智能边缘重新验证未激活。此外，您可以通过确保它设置适当的<a href="https://support.cloudflare.com/hc/en-us/articles/115003206852-Understanding-Origin-Cache-Control" target="_blank">缓存控制标头</a>来让您的源指导您想要的重新验证行为。</p>
+	<p>智能边缘重新验证可带来全赢局面：访问者将从缓存中更快地获得更多内容，网站所有者可以高效地提供和重新验证来自 Cloudflare 的额外内容，并且互联网将变得更加绿色和高效。</p>
+	<p>智能边缘重新验证最近宣布加入我们使网络更具可持续性以帮助构筑更绿色互联网的方式列表—查看本周早些时候的帖子以了解我们的<a href="https://blog.cloudflare.com/cloudflare-committed-to-building-a-greener-internet/">气候承诺</a>、<a href="https://blog.cloudflare.com/zh-cn/announcing-green-compute-zh-cn/">使用 Workers 进行绿色计算</a>、<a href="https://assets.ctfassets.net/slt3lc6tev37/2YzIeTtzSbyKkM4GsryP5S/62ce0dff98e92a142281a0b462ce4408/Cloudflare_Emissions_Inventory_-_2020.pdf" target="_blank">碳影响报告</a>、<a href="https://blog.cloudflare.com/green-hosting-with-cloudflare-pages/">Pages 与绿色网络基金会合作伙伴关系</a>和<a href="https://blog.cloudflare.com/crawler-hints-how-cloudflare-is-reducing-the-environmental-impact-of-web-searches/">爬网程序提示</a>。</p>
+</div>

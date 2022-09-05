@@ -1,0 +1,90 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image6-23.png" class="kg-image"></figure>
+	<p><a href="https://www.cloudflare.com/waf/" target="_blank">Firewall Aplikasi Web (WAF)</a> Cloudflare memblokir lebih dari 57 miliar ancaman siber per hari. Itu adalah 650 ribu permintaan HTTP yang diblokir per detik. Kode asli yang memfilter lalu lintas ini ditulis oleh CTO Cloudflare sekarang dan sejak itu WAF menerima banyak penghargaan termasuk <a href="https://www.cloudflare.com/gartner-mq-waf-2020/" target="_blank">skor tertinggi untuk kemampuan mengeksekusi di Gartner Magic Quadrant 2020 untuk WAF.</a>.</p>
+	<p>Karena kami menghargai penggantian kode ketika tidak lagi dapat dipelihara, berkinerja, atau ditingkatkan seperti dulu, kami secara berkala menulis ulang bagian-bagian penting pada tumpukan Cloudflare. Penggantian tersebut diperlukan karena pertumbuhan kami yang luar biasa sehingga membuat solusi sebelumnya tidak bisa dijalankan. Selama beberapa waktu, kami telah berupaya mengganti kode <a href="https://www.youtube.com/watch?v=nlt4XKhucS4" target="_blank">LuaJIT asli yang ditulis John</a> dengan kode baru, yang ditulis dalam Rust, bersama dengan UI yang ditingkatkan.</p>
+	<p>Kami sekarang dengan senang hati mengumumkan Firewall Aplikasi Web Cloudflare yang baru.</p>
+	<p>Mulai hari ini, 10% akun yang baru dibuat di Cloudflare akan diberikan akses ke WAF baru setiap kali zona paket Pro atau yang lebih tinggi ditambahkan. Persentase ini akan meningkat menjadi 100% dari akun baru selama bulan April, setelah itu upaya migrasi akan dimulai untuk pelanggan yang sudah ada. Pelanggan perusahaan dapat bermigrasi lebih awal dengan menghubungi tim akun mereka.</p>
+	<h3 id="apa-yang-berubah"><strong>Apa yang berubah</strong></h3>
+	<p>Firewall Aplikasi Web (WAF) adalah komponen inti dari platform Cloudflare. Sebagai salah satu produk yang paling sering digunakan dalam portofolio, kami telah memperoleh banyak umpan balik dan pengalaman dari menjalankan WAF dalam skala besar, yang membantu memandu kami dalam iterasi besar ini. WAF menghadirkan:</p>
+	<ul>
+		<li><em><strong>Penjelajahan dan konfigurasi aturan yang lebih baik</strong> </em>- penerapan dengan satu klik yang mudah tanpa kehilangan alat bantu: pemfilteran lanjutan, pengeditan massal, tag aturan, dan lainnya. Mengaktifkan semua aturan WordPress, mengatur semua Aturan Terkelola Cloudflare ke LOG atau mencari tahu aturan mana yang tidak berjalan sekarang mudah dilakukan.</li>
+		<li><em><strong>Mesin pencocokan baru</strong></em> - ditulis dalam Rust dan mendukung sintaks <a href="https://blog.cloudflare.com/how-we-made-firewall-rules/">wirefilter</a> - sintaks yang sama yang digunakan oleh Aturan Firewall kustom. Mesin ini akan memungkinkan kami untuk melakukan penerapan aturan terkelola yang lebih cepat dan mempunyai kemampuan untuk meningkatkan ke tingkat berikutnya dengan memungkinkan WAF untuk diterapkan pada lebih banyak lalu lintas. Semua sekaligus dengan meningkatkan kinerja dan keamanan.</li>
+		<li><em><strong>Ruleset yang Diperbarui</strong> - </em>WAF baru dikirimkan bersama ruleset yang diperbarui yang memberikan kontrol yang lebih baik untuk memisahkan status aturan dari tindakan. Core Ruleset OWASP Cloudflare juga telah ditingkatkan berdasarkan versi terbaru Core Ruleset OWASP (v3.3 pada saat penulisan), yang menambahkan tingkat paranoia dan meningkatkan tingkat positif palsu dibandingkan dengan versi yang tersedia saat ini.</li>
+		<li><em><strong>Konfigurasi global</strong> - </em>memberlakukan konfigurasi yang sama di seluruh akun Anda. Aturan grup sebagai ruleset dan memanfaatkan kemampuan versi dan rollback asli.</li>
+	</ul>
+	<p>Daftar di atas hanyalah sebagian kecil dari hal-hal yang membuat kami bersemangat dan setiap poin layak untuk dibahas dalam postingan tersendiri, tetapi inilah ringkasannya.</p>
+	<h3 id="penjelajahan-dan-konfigurasi-aturan-yang-lebih-baik"><strong>Penjelajahan dan konfigurasi aturan yang lebih baik</strong></h3>
+	<p>Ruleset Terkelola Cloudflare, yang mencakup grup Cloudflare Specials1, yang merupakan salah satu komponen utama WAF. Aturan Terkelola Cloudflare ini memiliki beberapa ratus aturan yang disediakan dan dikelola oleh Cloudflare. Dalam konfigurasi default, kami bertujuan untuk mencapai tingkat positif palsu yang sangat rendah, sekaligus memberikan dasar keamanan yang sangat baik untuk semua aplikasi web. Namun, untuk posisi keamanan terbaik, Anda harus mengaktifkan aturan sebanyak mungkin. Ini berarti bahwa, terkadang perlu menyelami lebih dalam dan menyesuaikan perilaku ruleset berdasarkan aplikasi yang mendasarinya.</p>
+	<p>Dengan WAF baru, kami ingin memastikan pengaktifan Ruleset Terkelola adalah upaya satu klik dengan konfigurasi default, sekaligus memungkinkan pengalaman konfigurasi yang jauh lebih baik bagi mereka yang tertarik.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/03/image8-5.png" class="kg-image" alt="The new WAF UI. One click to turn on the Cloudflare Managed Ruleset and the Cloudflare OWASP ModSecurity Core Ruleset.">
+		<figcaption>UI WAF baru. Satu klik untuk mengaktifkan Ruleset Terkelola Cloudflare dan Core Ruleset ModSecurity OWASP.</figcaption>
+	</figure>
+	<p>Sekarang, untuk mengaktifkan Ruleset Terkelola Cloudflare kami, Anda perlu mengaktifkan switch WAF global dan mengonfigurasikan grup aturan terkait. Sepuluh grup aturan, yang mencakup WordPress, Joomla, PHP, dan sejenisnya, ditampilkan langsung di halaman dengan tombol hidup/mati. UI ini tidak memungkinkan untuk dengan mudah memfilter atau mengonfigurasikan aturan dalam grup tersebut tanpa memeriksa setiap aturan satu per satu.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/03/image4-49.png" class="kg-image" alt="The current (old) Managed Ruleset WAF UI. Clicking on a group displays a list of rules in each group.">
+		<figcaption>UI WAF Ruleset Terkelola (lama) saat ini. Mengklik grup akan menampilkan daftar aturan di setiap grup.</figcaption>
+	</figure>
+	<p>Meskipun UI ini sederhana, namun UI tidak memungkinkan tugas umum dieksekusi dengan cepat. Misalnya: <em>tunjukkan semua aturan yang tidak aktif </em> atau <em>atau tunjukkan semua aturan yang memitigasi serangan XSS</em>. Saat ini, semua aturan ditampilkan dalam satu tabel - tetapi memfilter berdasarkan status aturan, tindakan, dan tag hanya dengan satu klik. Tag aturan juga menggantikan grup, dan aturan mungkin memiliki satu atau beberapa tag, yang membuat sistem lebih fleksibel. Tag akan digunakan untuk:</p>
+	<ul>
+		<li>Mengidentifikasi apakah aturan berlaku untuk komponen perangkat lunak tertentu</li>
+		<li>Mengidentifikasi vektor serangan (mis. XSS, SQLi, RCE)</li>
+		<li>Mengidentifikasi aturan yang spesifik untuk CVE</li>
+	</ul>
+	<p>Terakhir, kami mengizinkan kontrol pengeditan massal selain kontrol aturan tunggal sebaris untuk memungkinkan perubahan konfigurasi yang lebih cepat berdasarkan kasus penggunaan tertentu.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/01/image3-43.png" class="kg-image">
+		<figcaption>Browser ruleset WAF baru. Opsi massal, tag, dan komponen pemfilteran di satu tempat.‌‌</figcaption>
+	</figure>
+	<p>Karena kami memperkirakan jumlah aturan yang tersedia akan meningkat, dan agar lebih banyak pengguna mengadopsi konfigurasi khusus, kami telah menambahkan layar tinjauan saat memberlakukan perubahan konfigurasi. Dari sini Anda dapat dengan mudah melihat setiap perubahan dari default, dan secara opsional mengembalikannya.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/03/image5-34.png" class="kg-image" alt="Ruleset deployment review screen. From here you can review any custom configuration overrides from defaults.">
+		<figcaption>Layar tinjauan penerapan ruleset. Dari sini Anda dapat meninjau penggantian konfigurasi kustom dari default.</figcaption>
+	</figure>
+	<h3 id="mesin-pencocokan-baru"><strong>Mesin pencocokan baru</strong></h3>
+	<p>Cloudflare WAF saat ini, yang bertanggung jawab atas eksekusi ruleset terkelola, ditulis dalam LuaJIT dan diimplementasikan sebagai modul NGINX. Sintaks aturan mengikuti superset sintaks yang diterapkan oleh <a href="https://github.com/SpiderLabs/ModSecurity" target="_blank">ModSecurity</a> dengan fitur tambahan khusus untuk implementasi Cloudflare.</p>
+	<p>Dengan beralih ke mesin baru, kami ingin mencapai:</p>
+	<ul>
+		<li>Lingkungan yang lebih aman, lebih baik, dan lebih berkinerja yang konsisten dengan teknologi lain yang digunakan di Cloudflare</li>
+		<li>Paparan kemampuan pemfilteran dan pencocokan yang jauh lebih baik untuk memungkinkan fleksibilitas pemberlakuan dan penanganan pengecualian yang lebih mudah</li>
+		<li>Kumpulan fitur produk terpadu dengan mengadopsi sintaks wirefilter sebagai dasar untuk ruleset terkelola</li>
+	</ul>
+	<p>Poin terakhir ini sangat penting tidak hanya bagi kami tetapi juga bagi pengguna kami karena sintaks ini sudah digunakan untuk <a href="https://developers.cloudflare.com/firewall/" target="_blank">Aturan Firewall</a> kustom kami, yang bahkan menggunakan perpustakaan Rust dasar yang sama untuk menjalankan filter!</p>
+	<p>Mesin baru diimplementasikan di <a href="https://www.rust-lang.org/" target="_blank">Rust</a>, yang telah kami bicarakan beberapa kali sebelumnya <a href="https://blog.cloudflare.com/tag/rust/">di blog ini</a>. Kami juga berupaya memastikan bahwa penerapan baru ini tidak hanya disertai dengan peningkatan keamanan, tetapi juga peningkatan kecepatan, yang secara spesifik akan kami bahas di entri blog mendatang.</p>
+	<h3 id="ruleset-cloudflare-yang-diperbarui"><strong>Ruleset Cloudflare yang Diperbarui</strong></h3>
+	<p>Ruleset Cloudflare telah diperbarui dan dipindahkan ke WAF baru. Khususnya, ruleset sekarang menggunakan sintaks wirefilter dan status aturan dipisahkan dari tindakan aturan, sehingga Anda dapat mengonfigurasikan keduanya secara terpisah.</p>
+	<p>Core Ruleset OWASP Cloudflare juga telah menerima pembaruan besar secara independen dari mesin. Cloudflare WAF saat ini mengimplementasikan versi 2.x dari <a href="https://owasp.org/www-project-modsecurity-core-rule-set/" target="_blank">Core Ruleset ModSecurity OWASP</a> resmi. Di WAF baru, Core Ruleset OWASP Cloudflare didasarkan langsung pada versi 3.3 terbaru yang tersedia dari <a href="https://github.com/SpiderLabs/owasp-modsecurity-crs" target="_blank">repositori GitHub</a>.</p>
+	<p>Core Ruleset OWASP Cloudflare yang baru, bersama dengan fitur mesin tambahan, membawa beberapa peningkatan dari yang sudah ada:</p>
+	<ul>
+		<li>Lebih sedikit positif palsu dan aturan umum aplikasi yang lebih kuat</li>
+		<li>Kontrol lebih besar atas skor sensitivitas, dengan indikasi yang jelas tentang seberapa besar kontribusi setiap aturan terhadap skor dan berapa skor total pada permintaan yang dipicu</li>
+		<li>Penambahan <a href="https://coreruleset.org/faq/#paranoialevel" target="_blank">tingkat paranoia</a> - untuk memudahkan penyertaan atau pengecualian atau grup aturan berdasarkan risiko positif palsu</li>
+		<li>Tag aturan untuk mengizinkan penerapan dengan aturan terkait berdasarkan aplikasi</li>
+	</ul>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/01/image2-48.png" class="kg-image">
+		<figcaption>Core Ruleset OWASP Cloudflare‌‌</figcaption>
+	</figure>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/01/image7-12.png" class="kg-image">
+		<figcaption>Layar tinjauan Core Ruleset OWASP Cloudflare‌‌</figcaption>
+	</figure>
+	<p>Sebagai bagian dari upaya untuk mengonversi versi terbaru Core Ruleset ModSecurity OWASP ke implementasi Cloudflare, tim juga telah membangun ModSecurity ke konverter sintaks wirefilter. Ini akan memungkinkan kami dalam memberlakukan dan memperbarui ruleset dengan segera setelah peningkatan hulu untuk memastikan pelanggan memiliki akses ke versi terbaru setiap saat. Kami juga berencana untuk membuka sumber dan mengekspos konverter di UI di masa mendatang untuk mempermudah migrasi pelanggan dari WAF berbasis ModSecurity ke Cloudflare.</p>
+	<h3 id="konfigurasi-global"><strong>Konfigurasi global</strong></h3>
+	<p>Cloudflare telah beroperasi pada model berbasis zona untuk Cloudflare WAF sejak awal. Ini berfungsi dengan baik untuk kasus penggunaan sederhana di mana pelanggan melindungi sejumlah kecil aplikasi, atau serangkaian aplikasi yang sangat beragam pada basis per zona.</p>
+	<p>Penerapan yang lebih kompleks atau terpadu di seluruh zona biasanya diterapkan dengan memanfaatkan <a href="https://api.cloudflare.com/" target="_blank">API</a> atau alat otomatisasi seperti <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs" target="_blank">Penyedia Cloudflare Terraform kami</a>.</p>
+	<p>Dengan WAF baru, penerapan ruleset dapat dilakukan di semua filter lalu lintas arbitrer pada satu akun. Misalnya:</p>
+	<ul>
+		<li>Memberlakukan Ruleset Terkelola Cloudflare di semua zona saya.</li>
+		<li>Memberlakukan Core Ruleset OWASP Cloudflare pada semua lalu lintas yang tidak mengandung /api/* di jalurnya.</li>
+		<li>Menonaktifkan Ruleset Terkelola di akun saya untuk lalu lintas yang berasal dari IP saya.</li>
+	</ul>
+	<p>Ini memungkinkan konfigurasi WAF luas akun yang kuat dengan beberapa klik.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/01/image1-56.png" class="kg-image">
+		<figcaption><em><em>Tiga ruleset diterapkan pada aplikasi arbitrer di akun.</em></em></figcaption>
+	</figure>
+	<p>Untuk mencapai ruleset (kelompok aturan) ini menjadi konsep kelas satu, dan berversi asli yang memungkinkan kemampuan rollback dan diffing secara langsung di UI — fitur yang kami rencanakan untuk mulai diekspos dalam beberapa bulan mendatang.</p>
+	<p>Konfigurasi berbasis akun pada awalnya hanya akan tersedia untuk pelanggan Perusahaan yang sekarang dapat meminta akses awal dengan menghubungi tim akun mereka. Aturan Firewall Kustom sendiri akan segera dimigrasikan ke mesin baru, sehingga pelanggan juga dapat membuat aturan firewall kustom mereka sendiri, dan menerapkannya sesuai kebutuhan pada semua filter lalu lintas.</p>
+	<h3 id="platform-baru-untuk-fitur-baru"><strong>Platform baru untuk fitur baru</strong></h3>
+	<p>Ada lebih banyak hal di WAF daripada yang terlihat dan tim sudah sibuk menyelesaikan serangkaian fitur tambahan yang dibangun di atas WAF baru — ini termasuk peningkatan pada mesin itu sendiri, analitik yang lebih baik, dan visibilitas ke dalam peristiwa yang dapat ditindaklanjuti. Seluruh mesin sebenarnya dirancang untuk menjadi dasar bagi banyak produk berbasis aturan Cloudflare, dengan tujuan pada akhirnya mewakili seluruh konfigurasi Cloudflare sebagai seperangkat aturan.</p>
+	<p>Sementara itu, kami menantikan tanggapan Anda dan kami senang melihat sejauh mana kami dapat berinovasi.</p>
+	<!--kg-card-begin: markdown-->
+	<p>.......<br>
+		<sup>1</sup>Cloudflare Specials adalah aturan yang ditulis oleh tim keamanan Cloudflare berdasarkan pengamatan dan perlindungan jutaan aplikasi web yang berada di belakang platform Cloudflare.
+	</p>
+	<!--kg-card-end: markdown-->
+</div>

@@ -1,0 +1,169 @@
+<div class="post-content lh-copy gray1">
+	<!--kg-card-begin: markdown-->
+	<hr>
+	<p>얼마전 우리는 <a href="https://blog.cloudflare.com/spectrum/">Spectrum을 발표</a>하였습니다: 어떤 TCP 기반의 프로토콜이라도 DDoS 방어, 로드밸런싱 그리고 컨텐츠 가속을 할 수 있는 새로운 Cloudflare의 기능입니다.</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/04/13334109713_0b32435032_z.jpg" alt=""><br>
+		<small><a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/liftarn/13334109713" target="_blank">image</a> by <a href="https://www.flickr.com/photos/liftarn" target="_blank">Staffan Vilcans</a></small>
+	</p>
+	<p>Spectrum을 만들기 시작하고 얼마 되지 않아서 중요한 기술적 난관에 부딛히게 되었습니다: Spectrum은 1부터 65535 사이의 어떤 유효한 TCP 포트라도 접속을 허용해야 합니다. 우리의 리눅스 엣지 서버에서는 "<em>임의의</em> 포트 번호에 인바운드 연결을 허용"은 불가능합니다. 이것은 리눅스만의 제한은 아닙니다: 이것은 대부분 운영 체제의 네트워크 어플리케이션의 기반인 BSD 소켓 API의 특성입니다. 내부적으로 Spectrum을 완성하기 위해서 풀어야 하는 서로 겹치는 문제가 둘 있었습니다:</p>
+	<ul>
+		<li>1에서 65535 사이의 모든 포트 번호에 TCP 연결을 어떻게 받아들일 것인가</li>
+		<li>매우 많은 수의 IP 주소로 오는 연결을 받아들이도록 단일 리눅스 서버를 어떻게 설정할 것인가 (우리는 애니캐스트 대역에 수많은 IP주소를 갖고 있습니다)</li>
+	</ul>
+	<h3 id="ip">서버에 수백만의 IP를 할당</h3>
+	<p>Cloudflare의 엣지 서버는 거의 동일한 구성을 갖고 있습니다. 초창기에는 루프백 네트워크 인터페이스에 특정한 /32 (그리고 /128) IP 주소를 할당하였습니다<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>. 이것은 수십개의 IP주소만 갖고 있었을 때에는 잘 동작 하였지만 더 성장함에 따라 확대 적용하는 것에는 실패하였습니다.</p>
+	<p>그때 <a href="https://blog.widodh.nl/2016/04/anyip-bind-a-whole-subnet-to-your-linux-machine/" target="_blank">"AnyIP" 트릭</a>이 등장하였습니다. AnyIP는 단일 주소가 아니라 전체 IP 프리픽스 (서브넷)을 루프백 인터페이스에 할당하도록 해 줍니다. 사실 AnyIP를 많이 사용하고 있습니다: 여러분 컴퓨터에는 루브백 인터페이스에 127.0.0.0/8 이 할당되어 있습니다. 컴퓨터의 관점에서 본다면 127.0.0.1 에서 127.255.255.254 사이의 모든 주소가 로컬 머신에 할당된 것입니다.</p>
+	<p>이 트릭은 127.0.0.1/8 대역 이외에도 적용 가능합니다. 192.0.2.0/24 전체를 로컬에 할당한 것처럼 보이게 하려면 다음을 실행하세요:</p>
+	<pre><code>ip route add local 192.0.2.0/24 dev lo
+</code></pre>
+	<p>다음으로 이 IP 주소 중 하나의 포트 8080에 바인딩하는 것도 문제 없습니다:</p>
+	<pre><code>nc -l 192.0.2.1 8080
+</code></pre>
+	<p>IPv6 을 그렇게 동작하게 하는것은 조금 더 어렵습니다:</p>
+	<pre><code>ip route add local 2001:db8::/64 dev lo
+</code></pre>
+	<p>불행히도 v4 예제처럼 v6 IP주소를 그렇게 할당할 수는 없습니다. 이걸 하기 위해서는 추가적인 권한이 필요한 <code>IP_FREEBIND</code> 소켓 옵션을 사용해야 합니다. 완벽히 하자면 <code>net.ipv6.ip_nonlocal_bind</code> sysctl 이 있습니다만 수정하기 않기를 권장합니다.</p>
+	<p>이 AnyIP 트릭은 각 서버에 로컬 인터페이스로 할당된 수백만의 IP 주소를 가능하게 합니다:</p>
+	<pre><code>$ ip addr show
+1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536
+    inet 1.1.1.0/24 scope global lo
+       valid_lft forever preferred_lft forever
+    inet 104.16.0.0/16 scope global lo
+       valid_lft forever preferred_lft forever
+...
+</code></pre>
+	<h3 id="">모든 포트에 바인딩</h3>
+	<p>두번째로 큰 문제는 임의의 포트 번호에 TCP 소켓을 여는 기능입니다. 리눅스와 BSD 소켓 API를 지원하는 시스템에서는 일반적으로 하나의 <code>bind</code>시스템 콜로 특정 TCP 포트 번호에만 바인딩이 가능 합니다. 한번의 명령으로 여러 포트에 바인드하는 것은 가능하지 않습니다.</p>
+	<p>단순히 생각하면 가능한 65535 포트 각각에 대해 <code>bind</code>를 65535 번하는 것입니다. 물론 이것도 생각해 볼 수 있습니다만 끔찍한 결과를 초래할 수 있습니다:</p>
+	<ul>
+		<li><a href="https://blog.cloudflare.com/revenge-listening-sockets/">리스닝 소켓의 복수</a></li>
+	</ul>
+	<p>내부적으로 리눅스 커널은 리스닝 소켓을 포트 번호로 인덱싱된 해시 테이블 <a href="https://elixir.bootlin.com/linux/latest/source/include/net/inet_hashtables.h#L118" target="_blank">LHTABLE</a> 에 저장하고 32 버킷을 사용 합니다.</p>
+	<pre><code>/* Yes, really, this is all you need. */
+#define INET_LHTABLE_SIZE       32
+</code></pre>
+	<p>6.5만개의 포트를 열게 된다면 이 테이블에서 찾는 것은 매우 느려집니다: 각각의 해시 테이블 버킷이 2천개의 아이템을 포함할 수 있기 때문입니다.</p>
+	<p>이 문제를 해결하는 또 다른 방법은 iptable 의 풍부한 NAT 기능을 사용하는 것입니다. 들어오는 패킷의 수신 주소를 특정 주소/포트로 바꾸어 쓰고 거기에서 어플리케이션이 바인드하고 있는 것입니다.</p>
+	<p>이 방법을 해 보지는 않았습니다만 그 이유는 iptables의 <code>conntrack</code>모듈이 필요하기 때문입니다. 예전에 우리는 <a href="https://patchwork.ozlabs.org/cover/810566/" target="_blank">성능 문제가 되는 경우</a>를 찾아 내었고 <code>conntrack</code>은 우리가 접하게 되는 큰 DDoS 공격을 처리할 수 없습니다.</p>
+	<p>추가적으로 NAT방식으로는 수신자 IP 주소 정보를 잃어버릴 수 있습니다. 이 문제를 보완하기 위해서 <code>SO_ORIGINAL_DST</code>라는 잘 알려지지 않은 소켓 옵션이 있습니다만 <a href="https://github.com/torvalds/linux/blob/b5dbc28762fd3fd40ba76303be0c7f707826f982/net/ipv4/netfilter/nf_conntrack_l3proto_ipv4.c" target="_blank">코드가 그렇게 좋아 보이지는 않습니다.</a></p>
+	<p>다행히 6.5만개 포트에 모두 바인딩하거나 <code>conntrack</code>을 사용하지 않아도 문제를 해결할 방법이 있습니다.</p>
+	<h3 id="">구조용 방화벽</h3>
+	<p>더 자세히 들어가기 전에 운영체제에서 네트워크 패킷의 일반적인 흐름에 대해 다시 알아봅시다.</p>
+	<p>공통적으로 수신 패킷 경로에는 두가지의 나뉘어진 계층이 있습니다:</p>
+	<ul>
+		<li>IP 방화벽</li>
+		<li>네트워크 스택</li>
+	</ul>
+	<p>이것들은 개념적으로 별개입니다. IP 방화벽은 일반적으로 상태 없는 소프트웨어입니다(<code>conntrack</code>과 IP 조각 재조립은 일단 별개로 합시다). 방화벽은 IP 패킷을 분석해서 ACCEPT할지 DROP할지를 결정합니다. 참고로 이 계층은 <em>어플리케이션</em>이나 <em>소켓</em>이 아니라 <em>패킷</em> 과 <em>포트 번호</em>에 대한 것입니다.</p>
+	<p>그리고 네트워크 스택이 있습니다. 이 괴물은 많은 상태를 관리합니다. 주된 작업은 IP패킷을 수신하여 <em>소켓</em>으로 보내는 것이며 이후 사용자 공간의 <em>어플리케이션</em>에 의해 처리됩니다. 네트워크 스택은 사용자 공간에서 공유되는 추상화 계층을 관리합니다. TCP 흐름을 재조립하고, 라우팅을 처리하며, 어떤 IP가 로컬인지를 판별합니다.</p>
+	<h3 id="">마법의 먼지</h3>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/04/upload-1.jpg" alt=""><br>
+		Source: <a href="https://www.youtube.com/watch?v=9CS7j5I6aOc" target="_blank">still from YouTube</a></p>
+	<p>그러다 <code>TPROXY</code> iptable 모듈을 만나게 되었습니다. <a href="http://ipset.netfilter.org/iptables-extensions.man.html" target="_blank">공식 문서</a>는 지나치기 쉽습니다:</p>
+	<pre><code>TPROXY
+이 타켓은 mangle 테이블, PREROUTING 체인과 이 체인에서 호출하는
+사용자 정의 체인에서만 유효하다. 이 기능은 패킷을 헤더 변경 없이
+로컬 소켓으로 리다이렉션한다. 또한 추가적인 라우팅 규칙에 사용될 수
+있도록 마킹되는 값을 변경할 수 있다.
+</code></pre>
+	<p>추가적인 문서는 커널에서 찾을 수 있습니다.</p>
+	<ul>
+		<li><a href="https://www.kernel.org/doc/Documentation/networking/tproxy.txt" target="_blank">docs/networking/tproxy.txt</a></li>
+	</ul>
+	<p>더 생각해 볼 수도록 더 궁금하게 되었습니다.</p>
+	<p>그래서... 결국 <code>TPROXY</code>가 하는 일은 무엇일까요?</p>
+	<h3 id="">마술 트릭을 밝히자</h3>
+	<p><code>TPROXY</code> 코드는 <a href="https://elixir.bootlin.com/linux/v4.16.1/source/net/netfilter/xt_TPROXY.c#L119" target="_blank">놀랍게도 간단합니다</a>:</p>
+	<pre><code>case NFT_LOOKUP_LISTENER:
+  sk = inet_lookup_listener(net, &amp;tcp_hashinfo, skb,
+				    ip_hdrlen(skb) +
+				      __tcp_hdrlen(tcph),
+				    saddr, sport,
+				    daddr, dport,
+				    in-&gt;ifindex, 0);
+</code></pre>
+	<p>이 내용을 다시 이야기 하면: 방화벽의 일부인 <code>iptables</code> 모듈에서 <code>inet_lookup_listener</code>를 호출합니다. 이 함수는 src/dst/port/IP 의 4개 튜플을 인수로 받으며 그 연결을 성립시킬 수 있는 리스닝 소켓을 리턴합니다. 이것은 네트워크 스택 소켓 처리의 핵심 기능입니다.</p>
+	<p>다시 말합니다: 방화벽 코드가 소켓 처리 함수를 부릅니다.</p>
+	<p>이후 <code>TPROXY</code> <a href="https://elixir.bootlin.com/linux/v4.16.1/source/net/netfilter/xt_TPROXY.c#L299" target="_blank">는 실제로 소켓 할당을 합니다</a>:</p>
+	<pre><code>skb-&gt;sk = sk;
+</code></pre>
+	<p>이 행에서 <code>struct sock</code> 소켓을 수신 패킷에 할당하고 처리를 완료 합니다.</p>
+	<h3 id="">모자에서 토끼를 끌어내자</h3>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/04/3649474619_3b800400e9_z-1.jpg" alt=""><br>
+		<small><a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/angelaboothroyd/3649474619" target="_blank">image</a> by <a href="https://www.flickr.com/photos/angelaboothroyd" target="_blank">Angela Boothroyd</a></small>
+	</p>
+	<p><code>TPROXY</code>를 이용하면 모든 포트에 바인딩하는 트릭을 매우 쉽게 할 수 있습니다. 다음과 같이 설정합니다:</p>
+	<pre><code># 192.0.2.0/24를 AnyIP로 로컬에 라우팅되도록 설정
+# 로컬 연결시에 이 네트워크에 사용되는 소스 IP를 127.0.0.0/8 대역으로 지정한다.
+# 이것을 지정하지 않으면 TPROXY 규칙이 전방화 후방 트래픽 모두에 매칭될 수 있다.
+# 여기서는 전방 트래픽만을 잡아내야 한다.
+sudo ip route add local 192.0.2.0/24 dev lo src 127.0.0.1
+
+# 마법의 TPROXY 라우팅 설정
+sudo iptables -t mangle -I PREROUTING \
+        -d 192.0.2.0/24 -p tcp \
+        -j TPROXY --on-port=1234 --on-ip=127.0.0.1
+</code></pre>
+	<p>이 설정에 추가하여 TCP 서버를 <code>SO_TRANSPARENT</code> 소켓 옵션과 같이 시작해야 합니다. 아래 예제가 동작하려면 tcp://127.0.0.1:1234 에서 리스닝할 필요가 있습니다. <code>SO_TRANSPARENT</code> <a href="http://man7.org/linux/man-pages/man7/ip.7.html" target="_blank">매뉴얼 페이지</a>에는 다음과 같이 나와 있습니다:</p>
+	<pre><code>IP_TRANSPARENT (Linux 2.6.24 이후)
+
+이 불리언 값을 설정하여 이 소켓의 투명 프록시를 활성화한다. 이 소켓 옵션은
+호출하는 어플리케이션이 로컬이 아닌 IP주소에 바인드하도록 허용하고 외부
+주소를 로컬 엔드포인트로 하여 클라이언트와 서버로 동작하도록 한다.
+주: 이것은 사용하려면 외부 주소로 나가는 패킷을 TProxy 박스를 통해
+라우팅되도록 해야 한다(예: 어플리케이션을 호스팅하는 시스템에는
+IP_TRANSPARENT 소켓 옵션이 필요함). 이 소켓 옵션을 활성화하려면
+수퍼 유저 권한이 필요하다(CAP_NET_ADMIN 능력이 필요함).
+
+iptables TPROXY 타겟을 이용한 TProxy 리다이렉션을 하기 위해
+이 옵션을 리다이렉션되는 소켓에 설정해야 한다.
+</code></pre>
+	<p>여기 간단한 파이썬 서버가 있습니다:</p>
+	<pre><code>import socket
+
+IP_TRANSPARENT = 19
+
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+s.setsockopt(socket.IPPROTO_IP, IP_TRANSPARENT, 1)
+
+s.bind(('127.0.0.1', 1234))
+s.listen(32)
+print("[+] Bound to tcp://127.0.0.1:1234")
+while True:
+    c, (r_ip, r_port) = s.accept()
+    l_ip, l_port = c.getsockname()
+    print("[ ] Connection from tcp://%s:%d to tcp://%s:%d" % (r_ip, r_port, l_ip, l_port))
+    c.send(b"hello world\n")
+    c.close()
+</code></pre>
+	<p>서버를 실행 후에 임의의 IP주소로 연결할 수 있습니다:</p>
+	<pre><code>$ nc -v 192.0.2.1 9999
+Connection to 192.0.2.1 9999 port [tcp/*] succeeded!
+hello world
+</code></pre>
+	<p>더 중요한 건 <em>아무도 해당 IP와 포트에 리스닝하고 있지 않아도</em> 이 연결의 수신 주소가 192.0.2.1 포트 9999라고 서버가 보고하고 있다는 것입니다.</p>
+	<pre><code>$ sudo python3 transparent2.py
+[+] Bound to tcp://127.0.0.1:1234
+[ ] Connection from tcp://127.0.0.1:60036 to tcp://192.0.2.1:9999
+</code></pre>
+	<p>짠! 이것이 <code>conntrack</code>을 사용하지 않고 리눅스의 <em>임의의 포트에 바인딩하는</em> 방법입니다.</p>
+	<h3 id="">이게 끝!</h3>
+	<p>이 글에서 우리는 원래 투명 프록시을 돕기 위해 만들어졌던 잘 알려져 있지 않은 <code>iptables</code> 모듈을 사용하는 방법에 대해서 알아 보았습니다. 이것의 도움을 받아서 표준 BSD 소켓 API로는 불가능하다고 생각했던 것을을 할 수 있었고 별도의 커널 패치를 만들지 않아도 되었습니다.</p>
+	<p><code>TPROXY</code> 모듈은 리눅스 방화벽이 일반적으로 네트워크 스택에서 이루어지는 일을 수행한다는 점에서 매우 특이합니다. 공식 문서는 다소 부족해서 많은 리눅스 사용자들이 이 모듈의 진정한 힘을 이해하고 있다고 보기는 어렵습니다.</p>
+	<p><code>TPROXY</code>는 우리의 Spectrum 제품이 수정 없는 커널에서 잘 동작하도록 하고 있습니다. 이건 <code>iptables</code>와 네트워크 스택을 이해하도록 노력하는 것이 얼마나 중요한지 보여주는 또 다른 예이기도 합니다!</p>
+	<hr>
+	<p><em>저수준 소켓 작업이 재미있어 보이나요? 런던, 오스틴, 샌프란시스코 및 폴란드 바르샤바의 <a href="https://boards.greenhouse.io/cloudflare/jobs/589572" target="_blank">세계 최고 수준의 팀</a>에 합류 하세요.</em></p>
+	<hr class="footnotes-sep">
+	<section class="footnotes">
+		<ol class="footnotes-list">
+			<li id="fn1" class="footnote-item">
+				<p>적절한 <code>rp_filter</code>와 BGP 설정에 추가로 IP 주소를 루프백 인터페이스에 할당하여 우리의 엣지 서버에서 임의의 IP대역을 처리하도록 합니다. <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+			</li>
+		</ol>
+	</section>
+	<!--kg-card-end: markdown-->
+	<!--kg-card-begin: markdown-->
+	<p><small><em>This is a Korean translation of a <a href="https://blog.cloudflare.com/how-we-built-spectrum/">existing post</a> by <a href="https://blog.cloudflare.com/author/marek-majkowski">Marek Majkowski</a>, translated by <a href="https://blog.cloudflare.com/author/junho/">Junho Choi</a>.</em></small></p>
+	<!--kg-card-end: markdown-->
+</div>

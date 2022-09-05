@@ -1,0 +1,217 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image5-2.png" class="kg-image" alt="Welcome to CIO Week and the future of corporate networks."></figure>
+	<p>Dunia Chief Information Officer telah berubah — saat ini jaringan perusahaan tidak terlihat seperti jaringan perusahaan bahkan lima atau sepuluh tahun lalu — dan perubahan ini menciptakan kesenjangan dari segi visibilitas dan keamanan, menimbulkan biaya dan beban operasi tinggi, serta membuat jaringan lebih lemah dan rentan.</p>
+	<p>Kami optimistis bahwa CIO dapat menyongsong masa depan yang lebih cerah. Internet telah berubah dari proyek penelitian menjadi infrastruktur penting yang diandalkan oleh perusahaan, dan kami yakin Internet yang lebih baik adalah jalan masa depan untuk memecahkan berbagai masalah paling menantang yang dihadapi CIO masa kini. Cloudflare membantu membangun Internet yang lebih cepat, lebih aman, lebih andal, lebih pribadi, dan dapat diprogram. Dengan melakukannya, kami memberdayakan organisasi untuk membangun jaringan generasi berikutnya bersama kami.</p>
+	<p>Minggu ini, kami menunjukkan bagaimana Cloudflare One, Jaringan Zero Trust kami sebagai sebuah Layanan, membantu CIO mentransformasikan jaringan perusahaan mereka. Kami juga memperkenalkan fungsi baru yang memperluas jangkauan platform Cloudflare untuk mengatasi kebutuhan CIO, baik yang sudah ada maupun baru. Namun, sebelum memasuki minggu tersebut, kami ingin meluangkan sedikit waktu untuk menyampaikan visi kami bagi jaringan perusahaan masa depan. Kami harap penjelasan ini akan memperjelas bahasa dan akronim yang digunakan oleh vendor dan analis yang menyadari peluang di bidang ini (apa itu definisi Jaringan Zero Trust sebagai sebuah Layanan?) dan menetapkan konteks terkait cara pendekatan inovatif kami mewujudkan visi ini bagi CIO yang ada di masa kini.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/12/Castle-and-Moat-to-Zero-Trust.png" class="kg-image"></figure>
+	<h2 id="generasi-1-kastel-dan-parit"><strong>Generasi 1: Kastel dan parit</strong></h2>
+	<p>Selama bertahun-tahun, jaringan perusahaan berjalan dengan cara ini:</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/12/unnamed--1--16.png" class="kg-image"></figure>
+	<p>Perusahaan membangun atau menyewa ruang di pusat data yang memiliki lokasi fisik di dalam atau di dekat lokasi kantor utama. Mereka meng-hosting aplikasi bisnis — server email, sistem ERP, CRM, dll. — di server yang ada di pusat data ini. Karyawan di kantor terhubung ke aplikasi ini melalui jaringan area lokal (LAN) atau melalui sambungan ke jaringan area luas pribadi (WAN) dari kantor cabang. Rangkaian perangkat keras keamanan (mis. firewall) di setiap pusat data menerapkan keamanan untuk semua lalu lintas masuk dan keluar. Setelah berada di jaringan perusahaan, pengguna dapat bergerak secara lateral ke perangkat terhubung dan aplikasi yang di-hosting, tetapi bentuk dasar autentikasi jaringan dan kontrol keamanan fisik, seperti sistem lencana karyawan umumnya mencegah akses oleh pengguna yang tidak dipercaya.</p>
+	<p><strong>Kartu Skor Arsitektur Jaringan: Generasi 1</strong></p>
+	<!--kg-card-begin: markdown-->
+	<table>
+		<thead>
+			<tr>
+				<th>Karakteristik</th>
+				<th>Skor</th>
+				<th>Deskripsi</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Keamanan</td>
+				<td>⭐⭐</td>
+				<td>Semua arus lalu lintas melalui perangkat keras keamanan perimeter. Akses jaringan dibatasi dengan kontrol fisik. Gerakan lateral hanya dimungkinkan setelah berada di jaringan.</td>
+			</tr>
+			<tr>
+				<td>Kinerja</td>
+				<td>⭐⭐⭐</td>
+				<td>Kebanyakan pengguna dan aplikasi berada dalam bangunan atau jaringan regional yang sama.</td>
+			</tr>
+			<tr>
+				<td>Keandalan</td>
+				<td>⭐⭐</td>
+				<td>Pusat data khusus, sambungan pribadi, dan perangkat keras keamanan memiliki titik kegagalan tunggal. Ada tarik ulur biaya untuk membeli sambungan dan redundansi perangkat keras.</td>
+			</tr>
+			<tr>
+				<td>Biaya</td>
+				<td>⭐⭐</td>
+				<td>Konektivitas pribadi dan perangkat keras adalah pengeluaran modal berbiaya tinggi, sehingga menimbulkan hambatan masuk yang besar bagi bisnis kecil dan baru. Namun, diperlukan jumlah sambungan/kotak yang terbatas (tarik ulur antara kelebihan perangkat/keandalan). Biaya operasional berada di rentang rendah hingga sedang setelah pemasangan awal.</td>
+			</tr>
+			<tr>
+				<td>Visibilitas</td>
+				<td>⭐⭐⭐</td>
+				<td>Semua lalu lintas dirutekan melalui lokasi pusat, sehingga dapat mengakses tangkapan NetFlow/paket dan lebih banyak lagi untuk 100% arus yang ada.</td>
+			</tr>
+			<tr>
+				<td>Kegesitan</td>
+				<td>⭐</td>
+				<td>SPerubahan jaringan yang besar memiliki lead time yang lama.</td>
+			</tr>
+			<tr>
+				<td>Presisi</td>
+				<td>⭐</td>
+				<td>Kontrol utamanya dijalankan di layer jaringan (mis., IP ACL). Mencapai “hanya izinkan SDM yang mengakses data pembayaran karyawan” terlihat seperti: IP dalam rentang X yang diizinkan mengakses IP dalam rentang Y (dan memerlukan spreadsheet pendamping untuk melacak alokasi IP).</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<p></p>
+	<h2 id="aplikasi-dan-pengguna-meninggalkan-kastel"><strong>Aplikasi dan pengguna meninggalkan kastel</strong></h2>
+	<p>Jadi, apa yang berubah? Singkatnya, Internet. Jauh lebih cepat dari perkiraan siapa pun, Internet menjadi elemen tak terlepaskan dari cara orang berkomunikasi dan menyelesaikan pekerjaan. Internet memperkenalkan peralihan radikal dalam cara organisasi mempertimbangkan sumber daya komputasi mereka: jika komputer dapat berbicara dengan sesama komputer, untuk apa perusahaan memelihara server di gedung yang sama dengan desktop karyawan? Dan yang lebih radikal, apa gunanya membeli dan memelihara server? Dari pertanyaan ini, cloud pun tercipta agar perusahaan dapat menyewa ruang di server lain dan meng-hosting aplikasi mereka sekaligus mengurangi biaya overhead operasional. Industri baru berupa Perangkat lunak sebagai Layanan lahir untuk lebih menyederhanakannya, sehingga perusahaan dapat sepenuhnya menjawab pertanyaan seputar perencanaan kapasitas, keandalan server, dan kesulitan operasional lainnya.</p>
+	<p>Masa depan keemasan yang didukung Internet yang hebat ini — cloud dan SaaS semuanya — terdengar luar biasa! Namun, CIO segera menemui masalah. Jaringan perusahaan yang sudah mapan, dengan arsitektur kastel dan parit, tidak begitu saja dapat ditutup dalam hitungan bulan atau tahun selama transisi berskala besar ini, jadi banyak organisasi masuk ke kondisi hybrid, dengan satu kaki tetap mengandalkan pusat data, perangkat keras, dan MPLS. Dan lalu lintas ke aplikasi harus tetap aman, jadi sekalipun lalu lintas tidak lagi mengarah ke server di pusat data milik perusahaan, banyak perusahaan terus mengirimnya ke sana (dikembalikan melalui saluran pribadi) sehingga mengalir melalui tumpukan kotak firewall dan perangkat keras lainnya sebelum dibuat.</p>
+	<p>Seiring dengan semakin banyaknya aplikasi yang dipindahkan ke Internet, volume lalu lintas yang keluar dari kantor cabang — dan dikembalikan melalui saluran MPLS melalui pusat data untuk tujuan keamanan — terus meningkat. Banyak CIO menjumpai kejutan tidak menyenangkan terkait biaya bandwidth mereka sebulan setelah menerapkan Office 365: dengan arsitektur jaringan tradisional, lebih banyak lalu lintas ke Internet berarti lebih banyak lalu lintas melalui sambungan pribadi yang lebih mahal.</p>
+	<p>Seolah tidak cukup harus mengelola peralihan dramatis pertama ini — yang menciptakan arsitektur hybrid yang rumit dan menghasilkan peningkatan biaya yang tidak terduga—, CIP harus menangani masalah lain yang timbul bersamaan. Internet merevolusi tidak hanya aplikasi, tetapi juga penggunanya. Karena server tidak perlu lagi berada di lokasi fisik di kantor pusat perusahaan, karyawan juga tidak perlu lagi berada di LAN kantor untuk mengakses alat mereka. Dengan VPN orang yang bekerja di luar kantor dapat mengakses aplikasi yang di-hosting di jaringan perusahaan (baik secara fisik atau di cloud).</p>
+	<p>VPN ini memberi pengguna jarak jauh akses ke jaringan perusahaan, tetapi VPN ini lambat, sulit digunakan, dan hanya mendukung orang dalam jumlah terbatas sebelum kinerjanya menurun hingga nyaris tidak berguna. Dan dari sudut pandang keamanan, VPN ini menakutkan — setelah pengguna berada di VPN, mereka dapat bergerak secara lateral untuk menemukan dan mendapatkan akses ke sumber daya lain di jaringan perusahaan. Jauh lebih sulit bagi CIO dan CISO untuk mengontrol laptop dengan akses VPN yang dapat dengan mudah dibawa ke mana saja — taman, transportasi umum, bar — daripada komputer yang digunakan oleh karyawan berlencana di lingkungan kantor kastel dan parit.</p>
+	<p>Pada tahun 2020, COVID-19 menjadi kekhawatiran yang mencuat karena biaya, kinerja, dan keamanan VPN menjadi tantangan sangat penting yang berdampak pada bisnis yang perlu diatasi, dan terus menjadi masalah bahkan setelah beberapa karyawan kembali ke kantor.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/12/unnamed--2-.png" class="kg-image"></figure>
+	<h2 id="generasi-2-perpaduan-solusi-titik"><strong>Generasi 2: Perpaduan solusi titik</strong></h2>
+	<p>Banyak vendor telah muncul untuk mengatasi tantangan yang timbul karena peralihan besar ini, dan sering kali berfokus pada satu atau beberapa kasus penggunaan. Beberapa penyedia menawarkan versi perangkat keras virtual, yang disediakan melalui berbagai platform cloud; lainnya mengambil pendekatan cloud-native yang mengatasi permasalahan tertentu, seperti akses aplikasi atau pemfilteran web. Namun, menyatukan patchwork solusi titik telah menimbulkan masalah yang lebih pelik bagi CIO dan kebanyakan produk yang tersedia hanya berfokus pada mengirimkan identitas, endpoint, dan keamanan aplikasi tanpa benar-benar mengatasi keamanan jaringan.</p>
+	<h4 id="kesenjangan-visibilitas"><strong>Kesenjangan visibilitas</strong></h4>
+	<p>Dibandingkan dengan model kastel dan parit, dengan semua lalu lintas mengalir melalui tumpukan peralatan terpusat, jaringan modern memiliki visibilitas yang luar biasa terpecah-pecah. Tim TI perlu menyatukan informasi dari beragam alat untuk memahami apa yang terjadi dengan lalu lintas mereka. Gambaran utuhnya sering kali tidak mungkin digabungkan, bahkan dengan dukungan alat yang termasuk aplikasi SIEM dan SOAR yang mengonsolidasikan data dari beragam sumber. Hal ini membuat pemecahan masalah menjadi menantang: antrean tiket dukungan TI penuh dengan misteri tak terpecahkan. Bagaimana caranya mengelola hal yang tidak dapat Anda lihat?</p>
+	<h4 id="kesenjangan-keamanan"><strong>Kesenjangan keamanan</strong></h4>
+	<p>Arsitektur patchwork ini — bersama dengan kesenjangan visibilitas yang ditimbulkannya — juga menciptakan tantangan keamanan. Konsep "TI Bayangan" muncul untuk menjelaskan layanan yang diterapkan dan digunakan oleh karyawan tanpa izin TI yang jelas atau integrasi ke dalam alur lalu lintas dan kebijakan keamanan jaringan perusahaan. Pengecualian terhadap kebijakan pemfilteran untuk pengguna dan kasus penggunaan tertentu menjadi tidak dapat dikelola, dan pelanggan kami telah menjelaskan perasaan "interaksi liar" yang umum dialami di jaringan mereka seiring dengan drastisnya peningkatan penggunaan Internet di luar perkiraan siapa pun. Bukan hanya celah pemfilteran yang menjadi momok bagi CIO — penyebarluasan TI Bayangan yang berarti data perusahaan dapat muncul dan tersimpan di begitu banyak tempat yang tidak terkelola di seluruh Internet.</p>
+	<h4 id="pengalaman-pengguna-yang-buruk"><strong>Pengalaman pengguna yang buruk</strong></h4>
+	<p>Mengembalikan lalu lintas melalui lokasi pusat untuk menerapkan langkah keamanan memunculkan latensi bagi pengguna akhir, yang makin parah jika lokasi kerja mereka lebih jauh dari kantor mereka sebelumnya. Dan Internet, meskipun telah banyak berkembang, pada intinya masih sulit diprediksi dan tidak dapat diandalkan. Ini membuat tim TI kesulitan memastikan ketersediaan dan kinerja apps bagi pengguna karena banyak faktor berada di luar kontrol mereka (yang bahkan mencakup Wi-Fi kafe yang tidak stabil).</p>
+	<h4 id="biaya-yang-makin-tinggi"><strong>Biaya yang (makin) tinggi</strong></h4>
+	<p>CIO masih harus membayar sambungan MPLS dan perangkat keras untuk menerapkan keamanan di sebanyak mungkin lalu lintas, tetapi mereka sekarang harus membayar biaya solusi titik tambahan untuk mengamankan jaringan yang makin kompleks. Dan karena visibilitas yang terpecah-pecah dan kesenjangan keamanan, ditambah tantangan kinerja dan ekspektasi yang kian tinggi untuk menghadirkan pengalaman pengguna yang lebih berkualitas, biaya penyediaan dukungan TI makin besar.</p>
+	<h4 id="kerentanan-jaringan"><strong>Kerentanan jaringan</strong></h4>
+	<p>Semua kompleksitas ini berarti membuat perubahan menjadi benar-benar sulit. Dari sisi warisan arsitektur hybrid saat ini, menyediakan lini MPLS dan memberlakukan perangkat keras keamanan baru menimbulkan lead time yang lama. Ini makin parah akibat masalah rantai pasokan perangkat keras global yang terjadi baru-baru ini. Dan dengan kombinasi solusi titik yang diperkenalkan untuk mengelola berbagai aspek jaringan, perubahan ke satu alat mungkin memiliki konsekuensi yang tidak diinginkan pada alat lainnya. Dampaknya berlipat ganda di departemen TI yang sering kali menjadi penghambat perubahan bisnis, membatasi fleksibilitas organisasi untuk beradaptasi dengan laju perubahan yang makin cepat.</p>
+	<p><strong>Kartu Skor Arsitektur Jaringan: Generasi 2</strong></p>
+	<!--kg-card-begin: markdown-->
+	<table>
+		<thead>
+			<tr>
+				<th>Karakteristik</th>
+				<th>Skor</th>
+				<th>Deskripsi</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Keamanan</td>
+				<td>⭐</td>
+				<td>Banyak aliran lalu lintas dirutekan ke luar dari perangkat keras keamanan perimeter, TI Bayangan makin marak terjadi, dan kontrol yang ada diterapkan secara tidak konsisten dan di beragam alat.</td>
+			</tr>
+			<tr>
+				<td>Kinerja</td>
+				<td>⭐</td>
+				<td>Lalu lintas yang dikembalikan melalui lokasi pusat menimbulkan latensi karena lokasi pengguna makin jauh; VPN dan serangkaian alat keamanan memunculkan biaya overhead pemrosesan dan lompatan jaringan tambahan</td>
+			</tr>
+			<tr>
+				<td>Keandalan</td>
+				<td>⭐⭐</td>
+				<td>Redundansi/tarik ulur biaya dari Generasi 1 masih ada; penerapan cloud sebagian memberikan sedikit ketahanan tambahan, tetapi penggunaan Internet yang makin besar dan tidak dapat diandalkan juga memunculkan tantangan baru.</td>
+			</tr>
+			<tr>
+				<td>Biaya</td>
+				<td>⭐</td>
+				<td>Biaya dari arsitektur Generasi 1 masih ada (sejauh ini beberapa perusahaan telah berhasil berhenti menggunakan perangkat keras MPLS/keamanan), tetapi biaya baru untuk alat tambahan ditambahkan dan biaya overhead operasional makin besar.</td>
+			</tr>
+			<tr>
+				<td>Visibilitas</td>
+				<td>⭐</td>
+				<td>Aliran lalu lintas dan visibilitas terpecah-pecah; TI menyatukan potongan ini menjadi gambaran utuh menggunakan berbagai alat.</td>
+			</tr>
+			<tr>
+				<td>Kegesitan</td>
+				<td>⭐⭐</td>
+				<td>Beberapa perubahan lebih mudah untuk dilakukan karena aspek bisnis bermigrasi ke cloud; lainnya menjadi makin sulit dilakukan karena alat tambahan menambah kompleksitas prosesnya.</td>
+			</tr>
+			<tr>
+				<td>Presisi</td>
+				<td>⭐⭐</td>
+				<td>Perpaduan kontrol dijalankan di layer jaringan dan layer aplikasi. Mencapai "hanya izinkan SDM yang mengakses data pembayaran karyawan" terlihat seperti: Pengguna di grup X yang diizinkan untuk mengakses IP di rentang Y (dan spreadsheet pendamping untuk melacak alokasi IP)</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<p>Singkatnya, — untuk menjelaskan kembali awalnya, — tugas CIO modern sangatlah berat. Namun, kami yakin ada masa depan yang lebih cerah.</p>
+	<h2 id="generasi-3-internet-sebagai-jaringan-perusahaan-baru"><strong>Generasi 3: Internet sebagai jaringan perusahaan baru</strong></h2>
+	<p>Jaringan perusahaan generasi berikutnya akan dibangun di Internet. Peralihan ini telah berjalan, tetapi CIO memerlukan platform yang dapat membantu mereka mendapatkan akses ke Internet yang <em>lebih baik</em> — yang lebih aman, lebih cepat, lebih andal, dan menjaga privasi pengguna saat menavigasi peraturan data global yang kompleks.</p>
+	<h3 id="keamanan-zero-trust-di-tingkat-internet"><strong>Keamanan Zero Trust di tingkat Internet</strong></h3>
+	<p>CIO merasa ragu untuk melepaskan bentuk mahal dari konektivitas pribadi karena mereka merasa ini lebih aman daripada Internet publik. Namun, pendekatan Zero Trust, yang dipenuhi melalui Internet, jauh meningkatkan keamanan dibandingkan model klasik kastel dan parit atau patchwork peralatan dan solusi perangkat lunak titik yang diterapkan untuk menciptakan "pertahanan berlapis". Alih-alih memercayai pengguna yang masuk ke jaringan perusahaan dan mengizinkan pergerakan lateral, Zero Trust mewajibkan autentikasi dan otorisasi setiap permintaan masuk, keluar, dan antara entitas dalam jaringan Anda, yang memastikan bahwa pengunjung hanya dapat mengakses aplikasi yang secara eksplisit diizinkan untuk mereka akses. Memenuhi autentikasi dan penerapan kebijakan ini dari lokasi edge di dekat pengguna memberikan kinerja yang jauh lebih baik, alih-alih memaksakan lalu lintas untuk kembali melalui pusat data sentral atau banyak alat keamanan.</p>
+	<p>Untuk menerapkan model baru ini, CIO memerlukan platform yang dapat:</p>
+	<p><strong>Menghubungkan semua entitas dalam jaringan perusahaan mereka.</strong></p>
+	<p>Ini tidak boleh hanya dapat dilakukan, tetapi juga harus mudah dilakukan dan dapat diandalkan dalam menghubungkan pengguna, aplikasi, kantor, pusat data, dan properti cloud ke satu sama lain sefleksibel mungkin. Ini berarti dukungan untuk perangkat keras dan metode konektivitas yang dimiliki oleh pelanggan saat ini, mulai dari memungkinkan klien seluler untuk beroperasi di seluruh versi OS hingga kompatibilitas dengan protokol tunneling standar dan peering jaringan dengan penyedia telekomunikasi global.</p>
+	<p><strong>Menerapkan kebijakan keamanan yang komprehensif.</strong></p>
+	<p>CIO perlu solusi yang terintegrasi dengan baik ke penyedia identitas dan titik akhir yang sudah ada dan menyediakan perlindungan Zero Trust di semua layer dari tumpukan OSI di seluruh lalu lintas dalam jaringan mereka. Ini termasuk enkripsi ujung ke ujung, segmentasi mikro, pemfilteran dan inspeksi yang canggih dan presisi untuk lalu lintas antarentitas dalam jaringan mereka ("Timur/Barat") dan ke/dari Internet ("Utara/Selatan"), dan perlindungan dari ancaman lain, seperti DDoS dan serangan bot.</p>
+	<p><strong>Memvisualisasikan dan memberikan wawasan seputar lalu lintas.</strong></p>
+	<p>Di tingkat dasar, CIO perlu memahami gambaran penuh dari traffic: siapa yang mengakses sumber daya dan seperti apa kinerjanya (latensi, jitter, paket hilang)? Namun, lebih dari sekadar memberikan informasi yang diperlukan untuk menjawab pertanyaan tentang aliran traffic dan akses pengguna, alat visibilitas generasi berikutnya harus membantu pengguna memahami tren dan menyoroti potensi masalah secara proaktif, dan harus menyediakan kontrol yang mudah digunakan untuk merespons potensi masalah tersebut. Bayangkan masuk ke suatu dasbor yang menyediakan tampilan komprehensif atas area serangan, aktivitas pengguna, dan kinerja/kesehatan lalu lintas jaringan Anda, dan menerima saran khusus untuk memperketat keamanan dan mengoptimalkan kinerja, serta dapat menindaklanjuti saran dengan sekali klik.</p>
+	<h3 id="kualitas-pengalaman-yang-lebih-baik-di-mana-pun-di-dunia"><strong>Kualitas pengalaman yang lebih baik, di mana pun di dunia</strong></h3>
+	<p>Kritik yang lebih klasik atas Internet publik: lambat, tidak dapat diandalkan, dan makin terdampak oleh peraturan rumit yang membuat operasi di Internet sebagai CIO di perusahaan yang mendistribusikan secara global kian menantang. CIO platform perlu membuat keputusan yang cerdas untuk mengoptimalkan kinerja dan memastikan keandalan, sekaligus menawarkan fleksibilitas agar kepatuhan mudah dicapai.</p>
+	<p><strong>Cepat, dan bermakna.</strong></p>
+	<p>Metode pengukuran kinerja jaringan tradisional, seperti uji kecepatan, tidak menyampaikan kisah lengkap tentang pengalaman pengguna yang sebenarnya. Platform generasi berikutnya akan mengukur kinerja secara holistik dan mempertimbangkan faktor khusus aplikasi, serta menggunakan data waktu riil terkait kesehatan Internet untuk mengoptimalkan lalu lintas ujung ke ujung.</p>
+	<p><strong>Andal, sekalipun ada faktor di luar kontrol Anda.</strong></p>
+	<p>Downtime terjadwal adalah suatu kemewahan masa lalu: CIO masa kini harus mengoperasikan jaringan 24x7 dengan uptime sedekat mungkin dengan 100% dan keterjangkauan dari mana pun di dunia. Mereka memerlukan penyedia yang tangguh dalam memberikan layanan, tetapi juga memiliki kapasitas untuk menangani serangan berskala besar dengan tenang dan fleksibel guna memecahkan masalah dengan penyedia jangka menengah. Tim jaringan juga tidak boleh mengambil tindakan untuk penghentian pusat data yang terencana dan tidak terencana oleh penyedia, seperti kebutuhan untuk mengonfigurasikan koneksi pusat data baru secara manual. Dan mereka harus dapat menyiapkan lokasi baru kapan saja tanpa menunggu vendor menyediakan kapasitas tambahan di dekat jaringan mereka.</p>
+	<p><strong>Dilokalkan dan mematuhi peraturan data privasi.</strong></p>
+	<p>Undang-undang kedaulatan data berkembang dengan cepat. CIO perlu memanfaatkan platform yang memberi mereka fleksibilitas untuk beradaptasi seiring perlindungan baru diluncurkan di seluruh belahan dunia, dengan satu antarmuka untuk mengelola data mereka (bukan solusi terpecah-pecah di berbagai wilayah).</p>
+	<h3 id="peralihan-paradigma-yang-mungkin-dilakukan-mulai-hari-ini"><strong>Peralihan paradigma yang mungkin dilakukan mulai hari ini</strong></h3>
+	<p>Perubahan ini terdengar radikal dan menarik. Namun, perubahan ini juga menakutkan — tidakkah peralihan sebesar ini terasa tidak mungkin dilakukan, atau setidaknya membutuhkan waktu yang amat sangat lama di jaringan modern yang rumit? Pelanggan kami membuktikan bahwa ini tidak harus demikian.</p>
+	<p><strong>Perubahan yang berarti dimulai dengan hanya satu aliran</strong></p>
+	<p>Platform Generasi 3 harus memprioritaskan kemudahan penggunaan. Perubahan mungkin dapat memulai perjalanan Zero Trust mereka hanya dengan satu aliran traffic dan mengembangkan momentum dari sana. Ada banyak sudut potensial untuk mengawalinya, tetapi kami merasa hal yang termudah adalah mengonfigurasi akses Zero Trust tanpa klien dengan satu aplikasi. Siapa pun, dari organisasi terkecil hingga terbesar, harus dapat mengambil aplikasi dan membuktikan nilai pendekatan ini dalam hitungan menit.</p>
+	<p><strong>Jembatan antara dunia lama dan baru</strong></p>
+	<p>Beralih dari kontrol akses tingkat jaringan (IP ACL, VPN, dll.) ke kontrol tingkat aplikasi dan pengguna untuk menerapkan Zero Trust di seluruh jaringan Anda akan memakan banyak waktu. CIO harus memilih platform yang memudahkan proses migrasi infrastruktur seiring waktu dengan memungkinkan:</p>
+	<ul>
+		<li><strong>Peningkatan dari arsitektur tingkat IP ke tingkat aplikasi seiring waktu</strong>: Mulai dengan terhubung dengan tunnel GRE atau IPsec, lalu gunakan penemuan layanan otomatis guna mengidentifikasi aplikasi prioritas tinggi untuk menargetkan koneksi yang lebih halus.</li>
+		<li><strong>Peningkatan dari kebijakan yang lebih terbuka ke yang lebih ketat seiring waktu</strong>: Mulai dengan aturan keamanan yang mencerminkan arsitektur lama Anda, lalu memanfaatkan analytics dan log untuk menerapkan kebijakan yang lebih ketat setelah Anda dapat melihat siapa yang mengakses apa.</li>
+		<li><strong>Melakukan perubahan dengan cepat dan mudah</strong>: Rancang jaringan Anda generasi berikutnya menggunakan antarmuka SaaS modern.</li>
+	</ul>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/12/unnamed--3-.png" class="kg-image"></figure>
+	<p><strong>Kartu Skor Arsitektur Jaringan: Generasi 3</strong></p>
+	<!--kg-card-begin: markdown-->
+	<table>
+		<thead>
+			<tr>
+				<th>Karakteristik</th>
+				<th>Skor</th>
+				<th>Deskripsi</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Keamanan</td>
+				<td>⭐⭐⭐</td>
+				<td>Kontrol keamanan granular dijalankan pada setiap aliran lalu lintas; serangan diblokir di dekat sumbernya; teknologi seperti Isolasi Browser menjaga kode berbahaya sepenuhnya di luar perangkat pengguna.</td>
+			</tr>
+			<tr>
+				<td>Kinerja</td>
+				<td>⭐⭐⭐</td>
+				<td>Kontrol keamanan diberlakukan di lokasi terdekat dengan masing-masing pengguna; keputusan perutean pintar memastikan kinerja yang optimal untuk semua jenis lalu lintas.</td>
+			</tr>
+			<tr>
+				<td>Keandalan</td>
+				<td>⭐⭐⭐</td>
+				<td>Platform ini memanfaatkan redundansi infrastruktur lama untuk memastikan 100% ketersediaan; tidak ada perangkat yang bertanggung jawab untuk menahan kebijakan dan tidak ada sambungan yang bertanggung jawab untuk semua lalu lintas penting.</td>
+			</tr>
+			<tr>
+				<td>Biaya</td>
+				<td>⭐⭐</td>
+				<td>Total biaya kepemilikan dikurangi dengan mengonsolidasikan fungsi.</td>
+			</tr>
+			<tr>
+				<td>Visibilitas</td>
+				<td>⭐⭐⭐</td>
+				<td>Data dari edge diagregasikan, diproses, dan dipresentasikan bersama dengan wawasan dan kontrol untuk menindaklanjutinya.</td>
+			</tr>
+			<tr>
+				<td>Kegesitan</td>
+				<td>⭐⭐⭐</td>
+				<td>Membuat perubahan pada konfigurasi atau kebijakan jaringan adalah sesederhana menekan tombol pada dasbor; perubahan diterapkan secara global dalam hitungan detik.</td>
+			</tr>
+			<tr>
+				<td>Presisi</td>
+				<td>⭐⭐⭐</td>
+				<td>Kontrol dijalankan pada layer pengguna dan aplikasi. Mencapai “hanya izinkan SDM yang mengakses data pembayaran karyawan” terlihat seperti: Pengguna dalam SDM yang menggunakan perangkat tepercaya diizinkan untuk mengakses data pembayaran karyawan</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<h2 id="cloudflare-one-adalah-platform-terpadu-pertama-yang-dibuat-dari-awal-untuk-jaringan-generasi-berikutnya"><strong>Cloudflare One adalah platform terpadu pertama yang dibuat dari awal untuk jaringan generasi berikutnya</strong></h2>
+	<p>Untuk mencapai visi ambisius yang telah kami jelaskan, CIO memerlukan platform yang dapat memadukan Zero Trust dan layanan jaringan yang beroperasi di jaringan global kelas dunia. Kami yakin Cloudflare One adalah platform pertama yang mampu membantu CIO untuk benar-benar mewujudkan visi ini.</p>
+	<p>Kami membangun Cloudflare One, platform Jaringan Zero Trust sebagai sebuah Layanan gabungan kami, di <a href="https://www.cloudflare.com/network/" target="_blank">jaringan global</a> kami di perangkat lunak pada perangkat keras komoditas. Kami awalnya memulai perjalanan ini untuk melayani kebutuhan tim TI dan keamanan kami sendiri dan memperluas kapabilitasnya bagi pelanggan kami seiring waktu karena kami sadar akan potensi yang ada untuk membantu perusahaan lain mentransformasikan jaringan mereka. Setiap layanan Cloudflare berjalan di setiap server di lebih dari 250 kota dengan kapasitas lebih dari 100 Tbps, yang menghadirkan skala dan kinerja yang belum pernah ada sebelumnya. Layanan keamanan kami juga lebih cepat — pemfilteran DNS kami berjalan di resolver DNS publik tercepat di dunia dan pemeriksaan identitas berjalan di Cloudflare Workers, platform tanpa server tercepat.</p>
+	<p>Kami memanfaatkan wawasan dari lebih dari 28 juta permintaan per detik dan 10.000+ interkoneksi untuk membuat keputusan keamanan dan kinerja yang lebih cerdas bagi semua pelanggan kami. Kami menyediakan konektivitas jaringan dan layanan keamanan di satu platform dengan inspeksi single-pass dan manajemen satu panel untuk mengisi kesenjangan visibilitas dan menghadirkan nilai yang jauh lebih besar dari yang dapat dipenuhi semua solusi titik. Kami memberi CIO akses ke jaringan pintar dan cepat yang didistribusikan di seluruh dunia untuk digunakan sebagai ekstensi jaringan mereka.</p>
+	<p>Minggu ini, kami merangkum dan memperluas Cloudflare One, dengan contoh dari pelanggan nyata yang membangun jaringan generasi berikutnya di Cloudflare. Kami akan membahas lebih dalam kapabilitas yang tersedia hari ini dan cara kami memecahkan masalah yang diperkenalkan di Generasi 2, serta memperkenalkan beberapa area produk baru yang akan membuat hidup CIO lebih mudah dengan menghilangkan biaya dan kompleksitas perangkat lama, memperkuat keamanan di seluruh jaringan mereka dan dari berbagai sudut, serta membuat semua lalu lintas dirutekan melalui jaringan cepat kami agar jauh lebih cepat.</p>
+	<p>Kami senang dapat membagikan cara kami mewujudkan mimpi kami demi masa depan jaringan perusahaan — kami harap CIO (dan semua orang!) yang membaca ini ikut senang mendengarnya.<br></p>
+</div>

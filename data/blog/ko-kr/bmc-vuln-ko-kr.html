@@ -1,0 +1,61 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image3-43.png" class="kg-image" alt="Cloudflare’s approach to handling BMC vulnerabilities."></figure>
+	<p>최근 몇 년 동안, 베이스보드 관리 컨트롤러(BMC) 등의 서버 관리 인터페이스는 랜섬웨어, 임플란트, 운영 차질 등 사이버 공격의 대상이 되고 있습니다. <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-6260" target="_blank">팬츠다운</a> 및 <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-16649" target="_blank">USBAnywhere</a>와 같은 일반적인 BMC 취약점과 더불어 펌웨어 업데이트가 드물어 서버가 취약한 상태였습니다.</p>
+	<p>최근 Cloudflare에서는 신뢰할 수 있는 벤더를 통해, Cloudflare 제품군에 사용하고 있으며 일반적으로 사용되는 BMC 소프트웨어에 대한 <a href="https://eclypsium.com/2022/05/26/quanta-servers-still-vulnerable-to-pantsdown/" target="_blank">새롭고 중대한 취약점</a>을 알게 되었습니다. 파악한 점, Cloudflare가 영향을 완화한 방법, 이러한 유형의 취약점이 Cloudflare와 고객에게 영향을 미치는 것을 방지하기 위해 고려한 방법을 아래에 요약했습니다.</p>
+	<h2 id="-">배경</h2>
+	<p>베이스보드 관리 컨트롤러는 원격 모니터링 및 호스트 시스템 관리에 사용하는 특화된 소형 프로세서입니다. 이 프로세서는 호스트 시스템에 여러 경로로 연결되어 있어 하드웨어 모니터링, BIOS 펌웨어 업데이트, 호스트 주기 작동 등의 기능을 수행할 수 있습니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image1-63.png" class="kg-image"></figure>
+	<p>BMC 액세스는 로컬일 수도 있고 일부 경우에는 원격일 수도 있습니다. 원격 벡터가 열려 있으면 맬웨어가 PCI 익스프레스나 로핀 카운트(LPC) 인터페이스를 통해 로컬에서 BMC에 설치될 가능성이 있습니다. BMC에 손상된 소프트웨어가 있으면 맬웨어나 스파이웨어가 서버에 계속 남아있을 수 있습니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image2-2.gif" class="kg-image"></figure>
+	<p><a href="https://nvd.nist.gov/vuln/detail/CVE-2019-6260" target="_blank">미국 국립 취약점 데이터베이스(NVD)</a>에 따르면, 두 가지 BMC 칩(<a href="https://www.aspeedtech.com/" target="_blank">ASPEED</a> AST2400 및 AST2500)에는 고급 고성능 버스(AHB) 브리지가 구현되어 있으며, 이를 통해 호스트에서 BMC의 물리적 주소 공간에 임의 읽기 및 쓰기 액세스가 주어집니다. 이는 서버에서 실행되는 맬웨어 역시 BMC의 RAM에 액세스할 수 있다는 것을 의미합니다.</p>
+	<p>이러한 BMC 취약점이 있으면 랜섬웨어 전파, 서버 브리킹(수리 불가능하게 손상됨), 데이터 절도를 수행하는 데 충분합니다.</p>
+	<h2 id="--1">영향을 받는 버전</h2>
+	<p>BMC에서 발견된 취약한 소프트웨어로 인해 <a href="https://www.qct.io/product/index/Server/rackmount-server/1U-Rackmount-Server/QuantaGrid-D52B-1U" target="_blank">QuantaGrid D52B</a> 클라우드 서버에 수많은 취약점이 영향을 미치는 것으로 파악되었습니다. 이러한 취약점은 AST2400 및 AST2500에서 노출되고 <a href="https://nvd.nist.gov/vuln/detail/CVE-2019-6260" target="_blank">CVE-2019-6260</a>에서 설명한 특정 인터페이스와 관련됩니다. 문제의 취약한 인터페이스는 다음과 같습니다.</p>
+	<ul>
+		<li>iLPC2AHB 브리지 Pt I</li>
+		<li>iLPC2AHB 브리지 Pt II</li>
+		<li>PCIe VGA P2A 브리지</li>
+		<li>X-DMA를 통하여 송신/수신한 BMC 임시 메모리 <a href="https://en.wikipedia.org/wiki/Direct_memory_access" target="_blank">DMA</a></li>
+		<li><a href="https://en.wikipedia.org/wiki/Universal_asynchronous_receiver-transmitter" target="_blank">UART</a>-기반 SoC 디버그 인터페이스</li>
+		<li>LPC2AHB 브리지</li>
+		<li>PCIe BMC P2A 브리지</li>
+		<li>Watchdog 설정</li>
+	</ul>
+	<p>공격자는 인밴드 LPC나 BMC 디버그 범용 비동기화 송수신기(UART) 시리얼 콘솔을 통해 SoCFlash를 사용하여 직접 BMC를 업데이트할 수 있습니다. 이 방법은 전체가 손상된 경우 일반적인 경로로 생각될 수도 있지만, 실제로는 플래시에 열린 인터페이스를 아무 것이나 사용해 SoCFlash 내에서 악용합니다.</p>
+	<h2 id="--2">완화 및 대응</h2>
+	<h3 id="--3">펌웨어 업데이트</h3>
+	<p>당사의 제조업체 중 하나인 Quanta에 연락하여 시스템 하위집합 내 기존 펌웨어에 실제로 이러한 취약점을 해결할 패치가 수행되었는지 확인했습니다. 일부 펌웨어 버전은 취약하지 않은 반면 다른 펌웨어는 취약했습니다. 제품군 내 영향을 받는 BMC에 패치를 릴리스하고 시험하여 배포했습니다.</p>
+	<p>이와 더불어 Cloudflare 보안 및 인프라 팀이 추가 제조업체와 사전 예방적으로 협력하여 해당 업체의 BMC 패치가 해당 펌웨어 취약점과 인터페이스에 확실히 취약하지 않도록 확인했습니다.</p>
+	<h3 id="bmc-">BMC 원격 인터페이스 노출 축소</h3>
+	<p>서로 다른 트래픽 평면을 분리하기 위해 네트워크 구분을 구현하는 것은 Cloudflare 데이터 센터의 표준 관행입니다. Cloudflare 대역 외 네트워크는 외부에 노출되지 않으며 각각의 데이터 센터에서만 액세스할 수 있습니다. 모든 관리 네트워크에는 심층방어 접근방식으로 액세스하여 제로 트러스트 <a href="https://www.cloudflare.com/cloudflare-one/" target="_blank">Cloudflare One</a> 서비스를 통해 점프호스트와 인증/권한 부여로의 연결을 제한합니다.</p>
+	<h3 id="bmc--1">BMC 로컬 인터페이스 노출 축소</h3>
+	<p>호스트 내 응용 프로그램은 BMC로 호출할 수 있는 것으로 제한됩니다. 이는 호스트에서 BMC로 수행할 수 있는 작업을 제한하고 안전한 인밴드 업데이트와 사용자 공간 로깅 및 모니터링을 가능하게 하려는 목적입니다.</p>
+	<h3 id="--4">기본 비밀번호 사용하지 않기</h3>
+	<p>대부분의 회사에서 상식적으로 알고 있는 것 같겠지만, Cloudflare는 BMC와 함께 제공되는 기본 사용자 이름과 비밀번호를 변경할 뿐만 아니라 기본 계정 사용을 아예 방지하도록 비활성화하는 표준 프로세스를 따릅니다. 정적 계정에서는 모두 정기적으로 비밀번호가 순환됩니다.</p>
+	<h3 id="bmc--2">BMC 로깅 및 감사</h3>
+	<p>Cludflare에서는 기본적으로 BMC의 모든 활동을 기록합니다. 캡처되는 로그에는 다음이 포함됩니다.</p>
+	<ul>
+		<li>인증(성공, 실패)</li>
+		<li>권한 부여(사용자/서비스)</li>
+		<li>인터페이스(SOL, CLI, UI)</li>
+		<li>시스템 상태(전원 켜기/끄기, 재부팅)</li>
+		<li>시스템 변경(펌웨어 업데이트, 플래시 메서드)</li>
+	</ul>
+	<p>악의적 활동이 감지되지 않았다는 점을 확인할 수 있었습니다.</p>
+	<h2 id="bmc--3">BMC의 다음 단계</h2>
+	<p>Cloudflare는 여러 원천 디자인 제조업체(ODM)와 정기적으로 협력하여 자체 사양에 맞게 최고의 성능을 갖추고 효율적이며 안전한 컴퓨팅 시스템을 생산합니다. Cloudflare의 베이스보드 관리 컨트롤러에 사용되는 표준 프로세서는 Cloudflare와 ODM을 유지할 수 있게 투명성이 덜하고 더욱 복잡한 독점 펌웨어와 함께 제공되곤 합니다. Cloudflare는 전 세계 270여 개 도시에서 운영하는 시스템의 모든 구성 요소를 개선할 수 있다고 생각합니다.</p>
+	<h3 id="openbmc">OpenBMC</h3>
+	<p>Cloudflare는 지원되는 베이스보드 관리 컨트롤러에 대한 오픈 소스 펌웨어인 <a href="https://github.com/openbmc/openbmc" target="_blank">OpenBMC</a>를 추진하고 있습니다. Yocto 프로젝트에 따라, Linux 임베디드 시스템의 툴체인인 OpenBMC를 이용하면 물리적 하드웨어 및 ODM과 비슷하게 당사의 사양에 따라 최신 Linux 커널 기능세트를 기반으로 자체 펌웨어를 지정, 빌드, 구성할 수 있게 될 것입니다.</p>
+	<p>OpenBMC 펌웨어로 다음이 가능해집니다.</p>
+	<ul>
+		<li>안정적이고 패치가 수행된 최신 Linux 커널</li>
+		<li>격리된 관리 네트워크를 통해 안전하고 신뢰할 수 있는 커뮤니케이션을 수행하기 위한 내부 관리 TLS 인증서</li>
+		<li>세밀한 자격 증명 관리</li>
+		<li>패치 수행 및 중요 업데이트 시 응답 시간 단축</li>
+	</ul>
+	<p>이러한 기능 중 다수가 커뮤니티 기반이지만 팬츠다운과 같은 취약점은 <a href="https://gerrit.openbmc-project.xyz/c/openbmc/meta-phosphor/+/13290/5/aspeed-layer/recipes-bsp/u-boot/files/0001-aspeed-Disable-unnecessary-features.patch" target="_blank">빠르게 패치됩니다</a>.</p>
+	<h3 id="--5">보안 부팅 확장</h3>
+	<p><a href="https://blog.cloudflare.com/anchoring-trust-a-hardware-secure-boot-story/">하드웨어 신뢰점</a>으로 부팅 프로세스를 보호한 Cloudflare의 최근 작업을 읽어 보셨을 수도 있지만, BMC에는 시스템에 전원이 들어오자마자 시작되는 자체 부팅 프로세스가 있습니다. 새로운 BMC 칩 버전을 사용하고 <a href="https://docs.microsoft.com/en-us/azure/security/fundamentals/project-cerberus" target="_blank">최첨단</a> <a href="https://axiado.com/" target="_blank">보안 코프로세서</a>를 활용하면 BMC/OpenBMC 펌웨어에 암호화 서명을 검증하여 UEFI 펌웨어를 로딩하기 전에 보안 부팅 기능을 확장할 수 있습니다. Cloudflare의 시스템에 전원을 공급하는 가장 최초의 기기까지 보안 부팅 체인을 확장하여 서버를 중단시키는 데 사용될 수 있는 악의적 임플란트의 영향을 대폭 줄입니다.</p>
+	<h2 id="--6">결론</h2>
+	<p>이러한 취약점은 결국 Quanta의 펌웨어 업데이트와 제품군을 확인하고 패치하는 Cloudflare 팀의 빠른 조치로 신속하게 해결할 수 있는 것으로 확인되었지만, Cloudflare는 OpenBMC를 통해 지속해서 혁신을 추구하며 제품군이 최대한 안전하도록 신뢰점을 보호하고 있습니다. Cloudflare 파트너들의 빠른 조치에 감사드립니다. Cloudflare에서는 보안을 얼마나 중요하게 생각하는지 고객이 믿을 수 있도록 모든 위험과 완화 방안을 언제나 기꺼이 보고합니다.</p>
+</div>

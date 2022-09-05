@@ -1,0 +1,38 @@
+<div class="post-content lh-copy gray1">
+	<!--kg-card-begin: markdown-->
+	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/free-ddos-alerts-zh-cn/">简体中文</a>, <a href="https://blog.cloudflare.com/zh-tw/free-ddos-alerts-zh-tw/">繁體中文</a>, <a href="https://blog.cloudflare.com/ja-jp/free-ddos-alerts-ja-jp/">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/free-ddos-alerts-ko-kr/">한국어</a>.</small></em></p>
+	<!--kg-card-end: markdown-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/01/unnamed-13.png" class="kg-image" alt="Cloudflare customers on free plans can now also get real-time DDoS alerts"></figure>
+	<p>We’re excited to announce that customers using our <a href="https://www.cloudflare.com/plans/free/" target="_blank">Free plan</a> can now get real-time alerts about HTTP DDoS attacks that were automatically detected and mitigated by Cloudflare. The real-time DDoS alerts were originally announced over a year ago but were made available to customers on the <a href="https://www.cloudflare.com/plans/" target="_blank">Pro plan or higher</a>. This announcement extends the DDoS alerts feature to Free plan users. You can read the original announcement blog post <a href="https://blog.cloudflare.com/announcing-ddos-alerts/">here</a>.</p>
+	<h3 id="what-is-a-ddos-attack">What is a DDoS attack?</h3>
+	<p>A <a href="https://www.cloudflare.com/en-gb/learning/ddos/what-is-a-ddos-attack/" target="_blank">Distributed Denial of Service (DDoS) attack</a> is a cyber-attack that attempts to disrupt your online business. Whether your business relies on VoIP servers, UDP-based gaming servers, or HTTP servers, DDoS attacks can be used to disrupt any type of Internet property, server, or network.</p>
+	<p>In this blog post, we’ll focus on DDoS attacks that target HTTP servers. Whether your HTTP server is powering a mobile app, an eCommerce website, an API gateway, or any other HTTP application, if an attacker sends you more requests than it can handle, your server won't be able to serve your real users. A flood of requests can cause service disruptions or even take your entire server offline. DDoS attacks can have real-world consequences such as a blow to your revenue and reputation.</p>
+	<h3 id="how-cloudflare-detects-and-mitigates-ddos-attacks">How Cloudflare detects and mitigates DDoS attacks</h3>
+	<p>Protecting your server against DDoS attacks requires two main capabilities:</p>
+	<ol>
+		<li>The bandwidth to absorb both your users’ requests and the attack requests</li>
+		<li>The ability to differentiate between your users’ requests and the attack requests</li>
+	</ol>
+	<p>Using our home-grown systems, we do just that, regardless of the size, frequency and duration of the attacks. All Cloudflare customers, including those using the Free plan, are protected by our <a href="https://blog.cloudflare.com/unmetered-mitigation/">unmetered DDoS mitigation commitment</a>.</p>
+	<p>To protect against DDoS attacks, first, we route your traffic to <a href="https://www.cloudflare.com/network/" target="_blank">our network of data centers</a>. Our network spans more than 250 cities in over 100 countries around the world. Its capacity is over 100 Tbps — fifty times larger than <a href="https://blog.cloudflare.com/cloudflare-blocks-an-almost-2-tbps-multi-vector-ddos-attack/">the largest attack we’ve ever seen</a>. Our bandwidth is more than enough to absorb both your users’ traffic and attack traffic.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/01/image2-18.png" class="kg-image" alt="A map of Cloudflare's global network">
+		<figcaption>Cloudflare's global network</figcaption>
+	</figure>
+	<h3 id="cloudflare-s-global-network">Cloudflare’s global network</h3>
+	<p>Second, once your traffic reaches our data centers, it goes through state-of-the-art analysis mechanisms that constantly scan for DDoS attacks. Once an attack is detected, a real-time mitigation rule is automatically generated to surgically mitigate the attack requests based on the attack pattern, whilst leaving your users' requests untouched. Using the <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/http" target="_blank">HTTP DDoS Managed Ruleset</a> you can customize the settings of the mitigation system to tailor it to your needs and specific traffic patterns.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/01/image1-13.png" class="kg-image" alt="A diagram showing a server unable to respond to legitimate users due to a malicious DDoS attack"></figure>
+	<p>Not sure what to do? That’s ok. For the most part, you won’t need to do anything and our system will automatically keep your servers protected. You can read more about it in our <a href="https://developers.cloudflare.com/ddos-protection/get-started" target="_blank">Get Started guide</a> or in the original <a href="https://blog.cloudflare.com/http-ddos-managed-rules/">blog post</a>. If you’re interested, you can also read more about how our mitigation system works in this technical blog post: <a href="https://blog.cloudflare.com/deep-dive-cloudflare-autonomous-edge-ddos-protection/">A deep-dive into Cloudflare’s autonomous edge DDoS protection</a></p>
+	<h3 id="configuring-a-ddos-alert">Configuring a DDoS alert</h3>
+	<p>Once our system detects and mitigates a DDoS attack, you’ll receive a real-time alert. To receive an alert, make sure you, first, configure a notification policy by following these steps:</p>
+	<ol>
+		<li>Log in to the <a href="https://www.cloudflare.com/login/" target="_blank">Cloudflare dashboard</a> and select your account.</li>
+		<li>In the Home Screen, go to <strong>Notifications.</strong></li>
+		<li>Click <strong>Add</strong> and choose the <strong>HTTP DDoS Attack Alerter</strong>.</li>
+		<li>Give your alert a name, an optional description, add the recipients' email addresses and click <strong>Create</strong>.</li>
+	</ol>
+	<p>To learn more about DDoS alerts and supported delivery methods, check out our guide <a href="https://support.cloudflare.com/hc/en-us/articles/360053216191-Understanding-Cloudflare-DDoS-alerts" target="_blank">Understanding Cloudflare DDoS Alerts</a>.</p>
+	<h3 id="free-ddos-protection-control-and-visibility">Free DDoS protection, control, and visibility</h3>
+	<p>Cloudflare’s mission is to help build a better Internet, and it guides everything we do. As part of this mission, we believe that a better Internet is one where enterprise-grade DDoS protection is available for everyone, not just bigger organizations.</p>
+	<p>Furthermore, we’ve also made our <a href="https://blog.cloudflare.com/http-ddos-managed-rules/">DDoS Managed Ruleset</a> available for everyone to make sure that even non-paying customers can tailor and optimize their DDoS protection settings. Taking a step further, we want all of our users to be able to react as fast as possible when needed. This is why we’re providing real-time alerts for free. Knowledge is power, and notifying our users of attacks in real-time empowers them to ensure their website is safe, available, and performant.</p>
+	<p>Not using Cloudflare yet? <a href="https://dash.cloudflare.com/sign-up" target="_blank">Start now</a>.</p>
+</div>

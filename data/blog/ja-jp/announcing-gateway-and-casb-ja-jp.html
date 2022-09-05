@@ -1,0 +1,23 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image2-41.png" class="kg-image" alt="Announcing Gateway + CASB"></figure>
+	<p>このクラウドの時代、シャドーITと、許可SaaSアプリケーションまたは無許可SaaSアプリケーションへのアクセスの管理は、IT管理者にとって最大の頭痛の種になっています。 </p>
+	<p>今日から、CloudflareのセキュアWebゲートウェイと、新しいAPI駆動型CASB（Cloud Access Security Broker）がシームレスに連携するようになり、ITチームとセキュリティチームは数分でシャドーITを見つけ出し、対処可能になります。</p>
+	<h3 id="saas-">SaaSアプリケーション内のセキュリティの問題を検出する</h3>
+	<p>CloudflareのAPI駆動型CASBでは、SaaSアプリケーションを全体的に可視化するところから始めます。これにより、お客様は、データの漏えいやコンプライアンス違反を簡単に回避できます。Google WorkspaceやMicrosoft 365など、自社で使用するSaaSサービスへの統合はわずか数クリックで完了します。そこから、ITチームとセキュリティチームは、ユーザーがどのアプリケーションとサービスにログインしているか、会社のデータがどのように共有されているかなどを確認できます。</p>
+	<p>さて、これで問題は見つけることができました。では、次にすべきことは何でしょう？</p>
+	<h3 id="-">問題の特定、検出は完了、その次は？</h3>
+	<p>API駆動型CASBのベータ版を試したお客様の感想から、ある共通の疑問が見えてきました。<em>セットアップまではとても簡単で、セキュリティ面の問題もすべて検出できました。でも、その問題を修正する方法は？</em></p>
+	<p>最も重大な問題を調査したあとすぐに、問題の解決に取りかかりたいと思うのは自然なこと。シャドーITに使用されている未知のアプリケーションを検出するか、すでに見つかっている未許可のアプリケーションの機能、アクセス、動作を制限するかに関わらず、その先にあるのは、問題の解決です。</p>
+	<p>このような場合、目の前には有用なデータが膨大にあるのに、解決するための手立てはないと、お客様は感じます。</p>
+	<h3 id="casb-">CASBのセキュリティ結果から、ゲートウェイポリシーを作成する</h3>
+	<p>この問題を解決するために、CASBの<a href="https://developers.cloudflare.com/cloudflare-one/applications/scan-apps/#view-security-findings" target="_blank">セキュリティに関する検出結果</a>から、ゲートウェイポリシーを簡単に作成できるようにしました。セキュリティに関する検出結果とは、ユーザー、保存中のデータ、設定に関連するSaaSアプリケーション内で検出された問題などが該当します。そして、これらには統合ごとに、低、中、高、クリティカルの重大度が割り当てられます。</p>
+	<p>CASBのセキュリティに関する検出結果を使用することで、ゲートウェイポリシーをより細かく調整でき、企業のセキュリティポリシーに沿った使用を許可しながら、将来的に望まない動作を防止できます。これは無許可のSaaSアプリケーションの使用など、CASBのセキュリティ上の問題を見つけることから、アクセスを阻止したり、数分で制御したりするなど、さまざまな目的で利用できます。このシームレスな操作性は、すべて1つの統合プラットフォームで実現されます。</p>
+	<p>たとえば、CASBのGoogle Workspace <a href="https://developers.cloudflare.com/cloudflare-one/applications/scan-apps/casb-integrations/google-workspace/#third-party-apps" target="_blank">で見つかったサードパーティアプリに関するセキュリティの検出結果</a>について見てみましょう。ここでは、サインインやユーザーのアカウントから共有されたその他他の許可を検出します。検出されたSaaSアプリケーションに対し、アップロードやダウンロードなど、アクティビティの一部またはすべてをブロックするゲートウェイポリシーをわずか数クリックで作成できます。このポリシーはユーザーのアカウントに付与されたアクセス権に応じて、特定またはすべてのユーザーに適用できます。</p>
+	<p>CASBで正確な動作を明らかにすることで、迅速かつ、的を絞ったアクションを取れるようになり、ゲートウェイで組織をより適切に保護できます。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/06/image1-44.png" class="kg-image" alt="Creating a Gateway policy from a CASB finding in the Zero Trust dashboard">
+		<figcaption><em><strong>Zero TrustダッシュボードでCASBの検出結果からゲートウェイポリシーを作成</strong></em></figcaption>
+	</figure>
+	<h3 id="cloudflare-one-">Cloudflare Oneで今日から始めましょう</h3>
+	<p>このブログ記事では、SaaSアプリケーション全体のセキュリティ問題を見つけ出し修復するための統一プラットフォームとして、シームレスに連携して機能するCloudflare Oneソリューションの数ある可能性の1つに重点を置いて解説しています。 </p>
+	<p>CloudflareのセキュアWebゲートウェイをご利用になるには、<a href="https://dash.cloudflare.com/sign-up/teams" target="_blank">こちらよりサインアップ</a>してください。CloudflareのAPI駆動型CASBは非公開のベータ版でお試しいただくことができ、毎週、新しいお客様に利用開始をご案内しております。この製品を超えた新機能について関心をお持ちの方は、<a href="https://www.cloudflare.com/products/zero-trust/lp/casb-beta/" target="_blank">こちらより、アクセスをリクエスト</a>してください。</p>
+</div>

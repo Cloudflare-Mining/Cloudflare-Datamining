@@ -5,6 +5,8 @@ import fetch from 'node-fetch';
 import simpleGit from 'simple-git';
 import jsBeautify from 'js-beautify';
 import flat from 'flat';
+import puppeteer from 'puppeteer';
+
 
 // enablle keepalives for faster fetching
 import https from 'node:https';
@@ -150,4 +152,25 @@ export function cfRequest(url, options = {}){
 		},
 		agent,
 	});
+}
+export const userAgent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36';
+
+export async function getBMCookie(url){
+	// launch a browser, get a bot management token. Helps to work around bot management restrictions
+	const browser = await puppeteer.launch({
+		defaultViewport: {
+			width: 1920,
+			height: 1080,
+		},
+	});
+	const page = await browser.newPage();
+	await page.setUserAgent(userAgent);
+	await page.goto(url ?? 'https://www.cloudflare.com', {
+		waitUntil: 'networkidle2',
+	});
+	const cookies = await page.cookies();
+	const bmCookie = cookies.find(cookie => cookie.name === '__cf_bm');
+	await browser.close();
+
+	return bmCookie;
 }

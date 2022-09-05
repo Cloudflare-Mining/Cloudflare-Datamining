@@ -1,0 +1,171 @@
+<div class="post-content lh-copy gray1">
+	<!--kg-card-begin: markdown-->
+	<p><em>The following is a guest post by <a href="https://twitter.com/xavierlacot" target="_blank">Xavier Lacot</a>, a developer at <a href="https://redirection.io/" target="_blank">redirection.io</a> and founder at <a href="https://jolicode.com/" target="_blank">JoliCode</a>. He works primarily on Web and mobile projects as a consultant, trainer and technical expert.</em></p>
+	<h3 id="whatisredirectionio">What is redirection.io</h3>
+	<p>Redirection.io is a Web traffic redirection manager. It provides a collection of tools for website administrators, <abbr title="Search Engine Optimization">SEO</abbr> agencies, and developers, which help analyze HTTP errors, setup HTTP redirections, customize HTTP responses, and monitor the traffic efficiently.</p>
+	<p>The main part of a traditional redirection.io setup is the proxy, a software component which parses every request to check if a redirection or another response override is required. This "proxy" can be of several types - we <a href="https://redirection.io/documentation/developer-documentation/integrations" target="_blank">provide libraries in several languages</a> - but this setup can be simplified for Cloudflare clients by taking advantage of Cloudflare Workers.</p>
+	<h3 id="herecomecloudflareworkers">Here come Cloudflare Workers</h3>
+	<p>Earlier this year, Cloudflare unveiled its <a href="https://www.cloudflare.com/fr-fr/products/cloudflare-workers/" target="_blank">Workers</a> product, a smart way of running code <em>on the edge</em> of Cloudflare locations. This computing feature is particularly interesting, as it allows performing several traffic operations without requiring any change on your own platform, code, or infrastructure: just enable Workers, write some code, and let Cloudflare handle the magic ✨</p>
+	<p>In practical terms, Workers act as application middleware. They proxy incoming HTTP requests to your stack, and can modify both requests and responses. Cloudflare has <a href="https://developers.cloudflare.com/workers/recipes/" target="_blank">examples and code ideas</a> to help you build your own Worker.</p>
+	<p>Here is a very basic Cloudflare Worker:</p>
+	<pre><code class="language-js">addEventListener('fetch', event =&gt; {
+  event.respondWith(handleRequest(event.request))
+})
+
+async function handleRequest(request) {
+  console.log('Got request', request)
+  const response = await fetch(request)
+  console.log('Got response', response)
+  return response
+}
+</code></pre>
+	<p>Luckily, redirection.io already has a public HTTP endpoint for exposing hosted agents (for shared hosting, for instance, where it is impossible to install your own binaries). Offering redirection.io to all Cloudflare Workers users is as simple as querying our hosted agent at each incoming request:</p>
+	<p><img src="https://media.redirection.io/documentation/user/starters-guide/cloudflare-redirectionio.png" alt="Integration of redirection.io with Clourdflare Workers"></p>
+	<p>In terms of code, the pattern we use is very similar to the Workers example: we listen on the incoming request:</p>
+	<pre><code class="language-js">addEventListener('fetch', (event) =&gt; {
+    event.respondWith(redirectAndLog(event.request));
+});
+
+async function redirectAndLog(request) {
+    const response = await redirectOrPass(request);
+    log(request, response);
+
+    return response;
+}
+</code></pre>
+	<p>Of course, we must implement the <code>redirectOrPass()</code> and <code>log()</code> functions, which will do all the magic:</p>
+	<ul>
+		<li><code>redirectOrPass()</code> queries redirection.io's API to know if some action has to be run for the current request, and lets the request pass if necessary. This call is blocking; it will stop the request until a response is received from redirection.io's backend.</li>
+		<li><code>log()</code> sends out log data to our backend for analysis and statistics purpose. This call is non-blocking, as it can be executed even after the response has been sent to the user.</li>
+	</ul>
+	<p>Hence, both of these functions are defined as asynchronous non-blocking functions:</p>
+	<pre><code class="language-js">async function redirectOrPass(request) {
+    ...
+}
+
+async function log(request, response) {
+    ...
+}
+</code></pre>
+	<p>Let's go with the <code>redirectOrPass()</code> implementation! Using the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API" target="_blank">fetch API</a>, we can call redirection.io's agent API:</p>
+	<pre><code class="language-js">const urlObject = new URL(request.url);
+const context = {
+    'host': urlObject.host,
+    'request_uri': urlObject.pathname,
+    'user_agent': request.headers.get('user-agent'),
+    'scheme': urlObject.protocol.includes('https') ? 'https' : 'http'
+};
+let response = null;
+
+try {
+    response = await fetch('https://proxy.redirection.io/' + options.token + '/get', {
+        method: 'POST',
+        body: JSON.stringify(context),
+    });
+} catch (error) {
+    // if no action found, play the regular request
+    return await fetch(request);
+}
+</code></pre>
+	<p>Should our API respond with a <code>404</code> status (which means that no redirection or action rule is defined for a request of that type), we simply return the standard response from your website's backend - this is achieved with <code>return await fetch(request)</code></p>
+	<p>If a redirection has to be run, redirection.io's API will send a status <code>200</code> response with all the information on how to transform the response. The payload could, for instance, look like:</p>
+	<pre><code class="language-json">{
+  "status_code": 302,
+  "location": "/blog-yo"
+}
+</code></pre>
+	<p>... and we can simply use it to change the response:</p>
+	<pre><code class="language-js">const data = await response.text();
+
+try {
+    response = JSON.parse(data);
+} catch (error) {
+    // If some errors, play the regular request
+    return await fetch(request);
+}
+
+// Send gone response
+if (response.status_code === 410) {
+    return new Response('', { status: 410 });
+}
+
+// Send redirection response
+return new Response('', {
+    status: Number(response.status_code),
+    headers: {
+        'Location': response.location
+    }
+});
+</code></pre>
+	<p>The <code>log()</code> function implementation is pretty similar:</p>
+	<pre><code class="language-js">async function log(request, response) {
+    const urlObject = new URL(request.url);
+    const context = {
+        'status_code': response.status,
+        'host': urlObject.host,
+        'request_uri': urlObject.pathname,
+        'user_agent': request.headers.get('user-agent'),
+        'scheme': urlObject.protocol.includes('https') ? 'https' : 'http',
+    };
+
+    try {
+        return await fetch('https://proxy.redirection.io/' + options.token + '/log', {
+            method: 'POST',
+            body: JSON.stringify(context),
+        });
+    } catch (error) {
+        // do nothing, does not matter if some logs are lost
+    }
+}
+</code></pre>
+	<h3 id="impactsandperformanceconcerns">Impacts and performance concerns</h3>
+	<p>Cloudflare workers run <em>very fast</em>. And by "very fast", we mean in microseconds, with the ability for Cloudflare to execute "many thousands of Worker scripts per second" as stated in their documentation.</p>
+	<p>The stack behind redirection.io is also very efficient, able to manage a similar level of traffic without any latency nor slowdown. However, there can be an occasional network slowdown, which could hurt the perceived performance of your web application. There are several ways to mitigate this possible impact.</p>
+	<p>First, Cloudflare Workers support caching subrequests made with the Fetch API. This means that, if a url of your application is often hit (for instance the homepage), you may want to cache the result from redirection.io's API. With this approach, the impact on the vast majority of your incoming requests will be close to zero.</p>
+	<p>Another approach is possible, to define the maximum timing overhead using redirection.io will add: we can simply define a timeout to the <code>fetch()</code> calls made by our Service Worker! Just nest the <code>fetch()</code> call inside a <code>Promise.race()</code>:</p>
+	<pre><code class="language-js">response = await fetch('https://proxy.redirection.io/' + options.token + '/get', {
+    method: 'POST',
+    body: JSON.stringify(context),
+});
+</code></pre>
+	<p>becomes:</p>
+	<pre><code class="language-js">response = await Promise.race([
+  fetch('https://proxy.redirection.io/' + options.token + '/get', {
+    method: 'POST',
+    body: JSON.stringify(context),
+  }),
+  new Promise((_, reject) =&gt;
+    setTimeout(() =&gt; reject(new Error('Timeout')), options.timeout)
+  ),
+])
+</code></pre>
+	<p>When talking about performance, it is a good idea to provide some numbers for a valid comparison:</p>
+	<table>
+		<thead>
+			<tr>
+				<th>Cloudflare enabled</th>
+				<th>Workers enabled</th>
+				<th>Request timing</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>✅</td>
+				<td>❌</td>
+				<td>~32ms</td>
+			</tr>
+			<tr>
+				<td>✅</td>
+				<td>✅ (empty worker)</td>
+				<td>~36ms</td>
+			</tr>
+			<tr>
+				<td>✅</td>
+				<td>✅ (redirection.io Worker with no cache)</td>
+				<td>~44ms</td>
+			</tr>
+		</tbody>
+	</table>
+	<p>This means that you can benefit from redirection.io on your website through Cloudflare workers at the price of ~8ms. And, once responses from redirection.io's api are cached, we do not notice any difference compared to a standard Cloudflare-enabled website. We strongly believe Cloudflare Workers is an amazing way to integrate redirection.io into your website. Try <a href="https://redirection.io/" target="_blank">redirection.io</a> and <a href="https://www.cloudflare.com/products/cloudflare-workers/" target="_blank">Cloudflare Workers</a> today, and report back!</p>
+	<!--kg-card-end: markdown-->
+</div>

@@ -1,0 +1,36 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image1-23-5.png" class="kg-image"></figure>
+	<p>開発者の仕事の多くは、一貫性と可用性、正しさとスピードなど、トレードオフの関係にあります。技術的には様々なトレードオフがあるでしょうが、開発者としては絶対にしてはいけないことがあると考えています。</p>
+	<p>その1つが、使いやすい開発環境です。新しい開発者をチームに迎え入れる場合でも、単に開発期間を短縮したい場合でも、どんなに小さなことでもスピードとシンプルさのために最適化されていることが重要です。</p>
+	<p>そのため、私たちはCloudflare Workers向けの第2世代の開発者ツールを発表することになりました。このツールは、すぐに使えて非常に高速で、ローカルマシン上でWorkersを実行することもできる、新しい開発者エクスペリエンスです。（やりました！）</p>
+	<p>すでに既存のツールに慣れ親しんでいる方には、wrangler CLIだけでなく、次のメジャーリリースであるwrangler 2.0の話です。この新しい体験を少しご覧いただきますので、お付き合いください。</p>
+	<h3 id="-">コンフィグ無し？問題なし</h3>
+	<p>Cloudflare Workerは、より簡単に使い始めることができます。ワーカーを実行するために必要なのは、1つのJavaScriptファイルだけで、設定は必要ありません。また、名前を決める必要もありません。</p>
+	<p><code>wrangler dev &lt;filename&gt;</code>を実行すれば、コードは自動的にバンドルされ、開発環境にデプロイされます。すると、ローカルホストプロキシを使ってその環境へHTTPリクエストを送ることができます。これが実際の様子です。</p>
+	<!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 64.31670281995662%;"><iframe src="https://iframe.videodelivery.net/765a39a1dba51748080bbe98e4205119?preload=true" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
+	<!--kg-card-end: html-->
+	<h3 id="--1">ライブデバッグもこんなに簡単</h3>
+	<p>さて、Workerのデバッグ機能が一新されました。簡単なコマンドでリモートデバッグ機能にアクセスします。これは、Chromeで「Inspect」をクリックしたときに使われるものと同じで、ログ、例外、リクエストをインタラクティブに表示します。Workerがローカルで動作しているように感じられますが、実際にはCloudflareのネットワーク上で動作しています。</p>
+	<!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 64.31670281995662%;"><iframe src="https://iframe.videodelivery.net/ac6691614c4515cb3ee82048a46de96f?preload=true" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
+	<!--kg-card-end: html-->
+	<p>「ただ動く」デバッガー、そして変更を自動検出するデバッガーは、ただコードを書こうとしているときに、大きな違いをもたらします。さらに、デバッグ作業をより簡単にするために、さまざまな改良が加えられています。</p>
+	<ul>
+		<li>キーバインドによるショートカットで、機能の切り替えやウィンドウの表示を素早く行うことができます。</li>
+		<li>静的資産を自動的に提供するための「--public &lt;path&gt;」をサポート。</li>
+		<li>より高速で信頼性の高いファイルウォッチング。</li>
+	</ul>
+	<p>デバッグセッションを開始するには、`wrangler dev &lt;filename&gt;` を実行し、次に「D」キーバインドを押します。</p>
+	<h3 id="--2">ローカルモード？スイッチを切り換えるだけ</h3>
+	<p><strong>新しいデバッグ環境のもう一つの特徴は、ローカルマシン上でWorkerを実行する「ローカルモード」に切り替えられることです。</strong>実際、キーバインドショートカット1つで「ネットワーク」と「ローカル」のモード切り換えが簡単にできます。</p>
+	<!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 64.31670281995662%;"><iframe src="https://iframe.videodelivery.net/9d1f091813399737dfeadaaaa01d26be?preload=true" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
+	<!--kg-card-end: html-->
+	<p>どういった仕組みなのでしょうか。Cloudflareは最近、Node.jsでWorkerをローカルにエミュレートするプロジェクト<a href="https://github.com/cloudflare/miniflare" target="_blank">Miniflare</a>（<a href="https://twitter.com/_mrbbot" target="_blank">Brendan Coll</a>が作成）がCloudflare公式になったことを発表しました。Miniflareは、WorkersをNode.jsでローカルにエミュレートするプロジェクトで、単体テストやインターネット接続せずにWorkersをデバッグしたい場合に最適です。これをローカルの開発エクスペリエンスに直接統合したことにより、ネットワークとローカルホストの両方の利点を楽しむことができるようになりました。<br></p>
+	<h3 id="--3">ご感想をお聞かせください</h3>
+	<p>サーバーレスはシンプルであるべきです。Cloudflareでは、Workersの開発環境の改善ができたことを本当に嬉しく思います。これからもさらに多くのことを計画しています。</p>
+	<p>wrangler 2.0はまだ開発中ですが、“npm install <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d6a1a4b7b8b1bab3a496b4b3a2b7">[email&nbsp;protected]</a>”を実行するか<a href="https://github.com/cloudflare/wrangler2" target="_blank">リポジトリ</a>にアクセスしてベータ版をお試しいただけます。すでにwranglerを使って既存のアプリケーションをデプロイしている場合は、2.0のリリースが正式に発表されるまで、wrangler 1.0を使い続けることをお勧めします。wrangler 1.0 の開発とメンテナンスは、2.0 の後方互換性が完了するまで継続します。</p>
+	<p>これからプロジェクトを始める方や、新しいエクスペリエンスを試してみたい方は、ぜひご意見をお聞かせください。wrangler 2.0で足りないもの、見たいものを教えてください。機能リクエストを作成したり、<a href="https://github.com/cloudflare/wrangler2" target="_blank">リポジトリ</a>でディスカッションを始めることができます。（2.0のベータテストが終了後は、既存のwranglerリポジトリと合体させます。）</p>
+	<p>開発者の皆様に感謝します。皆様が今後開発されるものを楽しみにしています。</p>
+</div>

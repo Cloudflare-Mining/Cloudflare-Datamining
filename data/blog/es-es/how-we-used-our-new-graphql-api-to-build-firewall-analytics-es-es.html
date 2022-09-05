@@ -1,0 +1,146 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/12/image3-13.png" class="kg-image"></figure>
+	<p>Firewall Analytics es el primer producto del panel de control de Cloudflare que utiliza la nueva API GraphQL Analytics. Todos los productos del panel de control de Cloudflare se crean con las mismas API públicas que ofrecemos a nuestros clientes, lo que nos permite comprender los desafíos a los que se enfrentan al interactuar con nuestras API. Esta paridad nos ayuda a crear y diseñar nuestros productos, el más reciente es la nueva API de GraphQL Analytics que hoy nos enorgullece presentar.</p>
+	<p>Al definir los datos que queremos, junto con el formato de respuesta, nuestra API de GraphQL Analytics nos ha permitido crear prototipos de nuevas funcionalidades y reafirmar rápidamente a partir de los comentarios de nuestros usuarios beta. Nos ayuda a ofrecer herramientas de análisis más detalladas en el panel de control de Cloudflare a nuestros clientes.</p>
+	<p>Nuestra investigación y evaluación de los usuarios de <a href="https://blog.cloudflare.com/new-firewall-tab-and-analytics/#new-firewall-analytics-for-analysing-events-and-maintaining-optimal-configurations">Firewall Analytics</a> detectó casos prácticos comunes en el flujo de trabajo de nuestros clientes:</p>
+	<ul>
+		<li>Identificación de picos en la actividad del firewall a lo largo del tiempo</li>
+		<li>Comprensión de los atributos comunes de las amenazas</li>
+		<li>Examen profundo de detalles complejos de un evento individual para identificar posibles falsos positivos</li>
+	</ul>
+	<p>Podemos abordar todos estos casos prácticos mediante nuestra nueva API de GraphQL Analytics.</p>
+	<h3 id="conceptos-b-sicos-de-graphql"><strong>Conceptos básicos de GraphQL</strong></h3>
+	<p>Antes de examinar cómo abordar cada uno de estos casos prácticos, veamos el formato de una consulta de GraphQL y cómo se estructura nuestro esquema.</p>
+	<p>Una serie estructurada de campos forman una consulta GraphQL, para la que el servidor proporciona los valores correspondientes en su respuesta. El esquema define qué campos están disponibles y su tipo. Puedes encontrar más información sobre la sintaxis y el formato de la consulta GraphQL en la <a href="https://graphql.org/learn/queries/" target="_blank">documentación oficial de GraphQL</a>.</p>
+	<p>Para ejecutar algunas consultas GraphQL, se recomienda descargar un cliente GraphQL, como <a href="https://electronjs.org/apps/graphiql" target="_blank">GraphiQL</a>, para explorar nuestro esquema y ejecutar algunas consultas. Puedes encontrar documentación sobre cómo empezar a usar esto en nuestros <a href="https://developers.cloudflare.com/analytics/graphql-api/getting-started/" target="_blank">documentos para desarrolladores</a>.</p>
+	<p>En el nivel superior del esquema está el campo viewer. Esto representa el nodo de nivel superior del usuario que ejecuta la consulta. En este, podemos consultar el campo zones para buscar las zonas a las que el usuario actual tiene acceso, proporcionando un argumento de filter, con una zoneTag del identificador de la zona que queremos acotar.</p>
+	<pre><code>{
+  viewer {
+    zones(filter: { zoneTag: "YOUR_ZONE_ID" }) {
+      # Here is where we'll query our firewall events
+    }
+  }
+}</code></pre>
+	<p>Ahora que tenemos una consulta que busca nuestra zona, podemos empezar a consultar los eventos de firewall que se han producido en esa zona, para ayudar a resolver algunos de los casos prácticos que hemos identificado.</p>
+	<h3 id="c-mo-visualizar-los-picos-en-la-actividad-del-firewall"><strong>Cómo visualizar los picos en la actividad del firewall</strong></h3>
+	<p>Es importante que los clientes puedan visualizar y comprender las anomalías y los picos en su actividad de firewall, ya que estos podrían indicar un ataque o una configuración incorrecta.</p>
+	<p>La esquematización de eventos en un gráfico de series temporales, por su acción respectiva, ofrece a los usuarios una visión general de la tendencia de sus eventos de firewall.</p>
+	<p>Dentro del campo zones de la consulta generada anteriormente, podemos consultar nuestros agregados de eventos de firewall mediante el campo firewallEventsAdaptiveGroups, proporcionando argumentos para limitar el recuento de grupos, un filtro para el rango de fechas que estamos buscando (combinado con cualquier filtro ingresado por el usuario) y una lista de campos para ordenar; en este caso, solo el campodatetimeHour por el que estamos agrupando.</p>
+	<p>Dentro del campozonesen la consulta que generamos anteriormente, además podemos consultar nuestros agregados de eventos de firewall mediante el campo firewallEventsAdaptiveGroups y brindar argumentos para lo siguiente:</p>
+	<ul>
+		<li>Un limit para el recuento de grupos</li>
+		<li>Un filter para el rango de fechas que buscamos (combinado con los filtros ingresados por el usuario)</li>
+		<li>Una lista de campos para orderBy (en este caso, solo el campo datetimeHour por el que estamos agrupando).</li>
+	</ul>
+	<p>Al agregar el campo dimensions, consultamos por grupos de eventos de firewall, agregados por los campos que anidan dentro de dimensions. En este caso, nuestra consulta incluye los campos action y datetimeHour, lo que significa que la respuesta serán grupos de eventos de firewall que comparten la misma acción y se encuentran dentro de la misma hora. También agregamos un campo count para obtener un recuento numérico de la cantidad de eventos que incluye cada grupo.</p>
+	<pre><code>query FirewallEventsByTime($zoneTag: string, $filter: FirewallEventsAdaptiveGroupsFilter_InputObject) {
+  viewer {
+    zones(filter: { zoneTag: $zoneTag }) {
+      firewallEventsAdaptiveGroups(
+        limit: 576
+        filter: $filter
+        orderBy: [datetimeHour_DESC]
+      ) {
+        count
+        dimensions {
+          action
+          datetimeHour
+        }
+      }
+    }
+  }
+}</code></pre>
+	<p><em>Nota: cada una de nuestras consultas de grupos exige que se determine un límite. Un evento de firewall puede tener una de las 8 acciones posibles y hacemos consultas durante un período de 72 horas. Como máximo, terminaremos con 567 grupos, por lo que podemos establecerlo como el límite para nuestra consulta.</em></p>
+	<p>Esta consulta arrojaría una respuesta en el siguiente formato:</p>
+	<pre><code>{
+  "viewer": {
+    "zones": [
+      {
+        "firewallEventsAdaptiveGroups": [
+          {
+            "count": 5,
+            "dimensions": {
+              "action": "jschallenge",
+              "datetimeHour": "2019-09-12T18:00:00Z"
+            }
+          }
+          ...
+        ]
+      }
+    ]
+  }
+}</code></pre>
+	<p><br>Podemos tomar estos grupos y hacer un esquema de cada uno como un punto en un gráfico de serie temporal. Al diagramar la matrizfirewallEventsAdaptiveGroups, podemos usar la propiedad count de recuento de grupos sobre el eje “y” para nuestro gráfico, luego usar los campos anidados en el objeto dimensions, mediante action como serie única y datetimeHour como la fecha sobre el eje “x”.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/12/image2-16.png" class="kg-image"></figure>
+	<h3 id="principales-registros-ns"><strong>Principales registros NS</strong></h3>
+	<p>Después de identificar un pico de actividad, nuestro siguiente paso es resaltar los eventos con puntos comunes en sus atributos. Por ejemplo, si una determinada dirección IP o un agente de usuario individual genera muchos eventos de firewall, esto podría ser una señal de un atacante individual o podría estar generando un falso positivo.</p>
+	<p>De manera similar a lo anterior, podemos consultar grupos agregados de eventos de firewall mediante el campo firewallEventsAdaptiveGroups. Sin embargo, en este caso, en lugar de proporcionar action y datetimeHour a dimensions del grupo, podemos agregar campos individuales de los que queremos buscar grupos comunes.</p>
+	<p>Al ordenar por recuento descendente, recuperaremos primero los grupos con mayores coincidencias, limitándose a los primeros 5 de cada uno. Podemos agregar un solo campo que anida en dimensions para hacer la agrupación. Por ejemplo, agregar clientIP brindará cinco grupos con las direcciones IP que generan la mayoría de los eventos.</p>
+	<p>También podemos agregar un campo firewallEventsAdaptiveGroupssin dimensions anidadas. Esto creará un solo grupo que nos permite buscar el recuento total de eventos que coinciden con nuestro filtro.</p>
+	<pre><code>query FirewallEventsTopNs($zoneTag: string, $filter: FirewallEventsAdaptiveGroupsFilter_InputObject) {
+  viewer {
+    zones(filter: { zoneTag: $zoneTag }) {
+      topIPs: firewallEventsAdaptiveGroups(
+        limit: 5
+        filter: $filter
+        orderBy: [count_DESC]
+      ) {
+        count
+        dimensions {
+          clientIP
+        }
+      }
+      topUserAgents: firewallEventsAdaptiveGroups(
+        limit: 5
+        filter: $filter
+        orderBy: [count_DESC]
+      ) {
+        count
+        dimensions {
+          userAgent
+        }
+      }
+      total: firewallEventsAdaptiveGroups(
+        limit: 1
+        filter: $filter
+      ) {
+        count
+      }
+    }
+  }
+}</code></pre>
+	<p><em>Nota: podemos agregar el campo firewallEventsAdaptiveGroups varias veces dentro de una sola consulta, cada una con una alias diferente. Esto nos permite encontrar múltiples agrupaciones por diferentes campos, o sin agrupaciones en absoluto. En este caso, obtener una lista de las principales direcciones IP, de los principales agentes de usuario y del total de eventos.</em></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/12/image5-10.png" class="kg-image"></figure>
+	<p>A continuación, podemos hacer referencia a cada uno de estos alias en la interfaz de usuario, diagramando sus respectivos grupos para representar cada fila con su recuento, y una barra que representa la proporción de eventos totales, que muestra la proporción de todos los eventos a los que equivale cada fila.</p>
+	<h3 id="-estos-eventos-de-firewall-son-falsos-positivos"><strong>¿Estos eventos de firewall son falsos positivos?</strong></h3>
+	<p>Una vez que los usuarios han identificado picos, anomalías y atributos comunes, queríamos que surgiera más información para ver si estos habían sido causados por tráfico malicioso o en realidad eran falsos positivos.</p>
+	<p>Para ello, proporcionamos contexto adicional sobre los propios eventos, en lugar de presentar solo recuentos. Podemos hacerlo consultando el campo firewallEventsAdaptivepara estos eventos.</p>
+	<p>Nuestro esquema de GraphQL utiliza el mismo formato de filtro para el campo agregadofirewallEventsAdaptiveGroups y el campo sin procesarfirewallEventsAdaptive. Esto nos permite utilizar los mismos filtros para obtener los eventos individuales que se sumarán a los recuentos y agregados en las visualizaciones anteriores.</p>
+	<pre><code>query FirewallEventsList($zoneTag: string, $filter: FirewallEventsAdaptiveFilter_InputObject) {
+  viewer {
+    zones(filter: { zoneTag: $zoneTag }) {
+      firewallEventsAdaptive(
+        filter: $filter
+        limit: 10
+        orderBy: [datetime_DESC]
+      ) {
+        action
+        clientAsn
+        clientCountryName
+        clientIP
+        clientRequestPath
+        clientRequestQuery
+        datetime
+        rayName
+        source
+        userAgent
+      }
+    }
+  }
+}
+</code></pre>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/12/image4-10.png" class="kg-image"></figure>
+	<p>Una vez que contamos con nuestros eventos individuales, podemos representar todos los campos individuales que hemos solicitado, brindando a los usuarios el contexto adicional en caso de que necesiten determinar si esto es un falso positivo o no.</p>
+	<p>Así es como usamos nuestra nueva API de GraphQL Analytics para crear Firewall Analytics, y ayudamos a resolver algunos de los casos prácticos de flujo de trabajo de seguridad más comunes de nuestros clientes. Nos interesa saber lo que construyes con esta, y los problemas que puedes resolver.</p>
+	<p>Puedes averiguar cómo empezar a consultar nuestra API de GraphQL Analytics a través de GraphiQL en nuestra <a href="https://developers.cloudflare.com/analytics/graphql-api/getting-started/" target="_blank">documentación para desarrolladores</a>, u obtener más información sobre cómo escribir consultas de GraphQL en la <a href="https://graphql.org/learn/queries/" target="_blank">documentación</a> oficial de GraphQL Foundation.<br></p>
+</div>

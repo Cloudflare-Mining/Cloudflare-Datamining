@@ -1,0 +1,55 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/Securing-Cloudflare-with-Cloudflare.png" class="kg-image"></figure>
+	<p>公に悪用される脆弱性（<a href="https://blog.cloudflare.com/ja-jp/">log4j</a>など）や、企業が管理する環境からリモートワークへの移行、潜在的な脅威アクターなど、新しいセキュリティ脅威が生じた場合、Cloudflareのネットワークやお客様、従業員を守るために対応するのがセキュリティチームの仕事です。そして、セキュリティの脅威が進化するにつれ、当社の防御システムも進化すべきです。Cloudflareは、クラス最高のソリューションでセキュリティ体制の強化に全力を注いでいます。そのため、他のCloudflareのお客様と同様に、自社製品に頼ることが多いのです。</p>
+	<p><a href="https://blog.cloudflare.com/dogfooding-from-home/">VPNを置き換えるためにCloudflare Access</a>を、きめの細かいアクセス制御を作成するために<a href="https://blog.cloudflare.com/access-purpose-justification/">Purpose Justification</a>を、また、社内からのラテラルムーブメントを防止するために<a href="https://blog.cloudflare.com/using-cloudflare-one-to-secure-iot-devices/">Magic + Gateway</a>を使用していることについて掲載しています。私たちは、世界中にある企業のセキュリティチームと同じセキュリティのニーズや要望、懸念を経験しています。そのため、セキュリティ、パフォーマンスおよび速度を向上させるためにCloudflareを信頼するフォーチュン500の企業と同じソリューションに依存しています。自社製品を使うことが、チームの文化として根付いているのです。</p>
+	<h3 id="-cloudflare-">セキュリティの課題、Cloudflareのソリューション</h3>
+	<p>当社は、セキュリティの脅威に遭遇したとき、Cloudflareの使用を第一に考える力を鍛えてきました。実際、私たちが遭遇するセキュリティ問題の多くに対抗する Cloudflareのソリューションがあります。</p>
+	<ul>
+		<li><strong>問題点</strong>：リモートワークでは、リモートデバイスやネットワークのセキュリティの死角が生まれる。</li>
+		<li><strong>ソリューション</strong>：Cloudflare GatewayとWARPを導入し、デバイスやネットワーク接続に関係なく、ユーザーとデバイスを脅威から保護する。</li>
+	</ul>
+	<p>当社の検出対応チームは、当社のCloudflare WARPアプリケーションを通じて企業のデバイスをGatewayに接続することで、セキュリティ脅威に対する可視性を取り戻しました。これらのZero Trust製品は、マルウェア、フィッシング、シャドーITなどのセキュリティ脅威からユーザーとデバイスを保護し、従業員がどこにいようとパフォーマンスに影響を与えることなく、セキュリティチームが脅威を即座にブロックして機密データが社外に流出するのを防ぐことを可能にしています。</p>
+	<ul>
+		<li><strong>問題点</strong>：企業のフットプリント（規模や場所）が大きくなると、社内ツールの複雑さが増加する。</li>
+		<li><strong>ソリューション</strong>：ネットワーク管理者に、きめ細かく、状況に応じたアプリケーションのアクセス制御を提供するために、Cloudflare AccessとPurpose Justificationを導入する。</li>
+	</ul>
+	<p>当社のID・アクセス管理チームは、Accessを使用してデータアクセスを最小化するポリシーを作成し、従業員が必要なものにのみアクセスできるようにしています。柔軟性があり、ポリシーを即座に適用できるため、社内のツールやチームが進化しても容易に拡張することができます。また、Purpose Justificationキャプチャにより、従業員は特に機密性の高いデータを含むドメインにアクセスする際のユースケースを正当化する必要があります。これは、Cloudflareの内部ニーズを解決するだけでなく、お客様がデータポリシー要件（GDPRなど）を満たすのにも役立ちます。</p>
+	<ul>
+		<li><strong>問題点</strong> : エンジニアリング製品チームは速いペースで動いている。すべてのプルリクエストを手動でレビューすることは、スケーラブルではない。</li>
+		<li><strong>ソリューション</strong>：Workers の上に構築されたツールで、PR にセキュリティバグがないかスキャンすることが可能。</li>
+	</ul>
+	<p>当社の製品セキュリティエンジニアリングチームは、Cloudflareの開発プラットフォームであるWorkersを使用して、秘密、脆弱性の依存関係、バイナリのセキュリティフラグを立てるコードレビュー支援フレームワークをシームレスに展開しています。Workersの柔軟性により、セキュリティチームはセキュリティの懸念に応じてツールを進化させ、同社が週に生成する数百のPRに拡張することができます。</p>
+	<p>これらは、悪意のあるドメインのブロック、アクセス管理の合理化、脅威の可視化の提供および全体的なセキュリティ態勢の強化のために、セキュリティチームがCloudflareの製品を使用した方法のほんの一部です。私たちがこれらの課題を技術的にどのように考えているかを知っていただくために、Cloudflareを利用したCloudflareのセキュリティの実装について掘り下げていきます。</p>
+	<h3 id="cloudflare-access-web-">Cloudflare Accessを利用したフィッシュ対策Webサイト</h3>
+	<p>二要素認証は、導入可能なセキュリティ制御の中で最も重要なものの一つです。しかし、すべての二要素認証で同じレベルのセキュリティが得られるわけではありません。Google Authenticatorのようなタイムベースワンタイムパスワード（TOTP）アプリは強力な第二要素ですが、中間者攻撃によるフィッシングに弱いという欠点があります。特権的なアクセス権を持つ従業員に対するフィッシング攻撃が成功するのは恐ろしいことであり、私たちが完全に排除したいリスクです。</p>
+	<p><a href="https://fidoalliance.org/specs/fido-v2.0-rd-20161004/fido-client-to-authenticator-protocol-v2.0-rd-20161004.html" target="_blank">FIDO2</a>は、シンプルなUXとフィッシング攻撃に対する完全な防御を提供するために開発されました。私たちは、FIDO2がサポートするセキュリティキーをすべてのコンテキストで完全に受け入れることを決定しましたが、FIDO2サポートはまだユビキタスではなく、多くの困難な互換性の問題があります。Cloudflare Accessにより、Cloudflare Accessで保護されたシステムに到達する際に使用できる第二要素に、FIDO2だけを適用できるようになりました。</p>
+	<p>当社の<a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_policy" target="_blank">Cloudflare Accessポリシー</a>を管理するために、それぞれをTerraformコードとしてソースコントロールにチェックします。アプリケーションにはグループベースのアクセス制御を適用しています。</p>
+	<pre><code>resource "cloudflare_access_policy" "prod_cloudflare_users" {
+  application_id = cloudflare_access_application.prod_sandbox_access_application.id
+  zone_id        = cloudflare_zone.prod_sandbox.id
+  name           = "Allow "
+  decision       = "allow"
+
+  include {
+    email_domain = ["cloudflare.com"]
+    okta {
+      # Require membership in Sandbox group
+      name                 = ["ACL-ACCESS-sandbox"]
+      identity_provider_id = cloudflare_access_identity_provider.okta_prod.id
+    }
+  }
+
+  # Require a security key
+  require {
+    auth_method = "swk"
+  }
+}
+</code></pre>
+	<p><code>require</code>セクションは、Cloudflareの社員がFIDO2対応のセキュリティキーを使用して、Accessで保護されている当社の内部および外部のすべてのアプリケーションにアクセスすることを徹底しています。<a href="https://datatracker.ietf.org/doc/rfc8176/" target="_blank">RFC8176</a>で詳しく説明していますが、auth_methodは、OIDCプロバイダからのログインフローにおいて、<code>amr</code>フィールド内で特定の値が返されることを適用しています。適用される<code>swk</code>は「ソフトウェアで保護される鍵の所持証明」で、セキュリティキーを使ったログインに対応します。</p>
+	<p>社内サイトへのアクセス時にセキュリティキーの使用を適用できるようになったことで、セキュリティ体制が大幅に改善されました。この変更を実施する前は、社内サービスの多くで、当社は依然としてFIDO2をサポートしていないわずかなシステムのために、WebAuthnと併せて、Google AuthenticatorでのTOTPのようなソフトトークンの両方を許可していました。この変更の実施後、ソフトトークンの使用がほぼゼロになったことがおわかりいただけると思います。</p>
+	<figure class="kg-card kg-image-card"><img src="https://lh3.googleusercontent.com/QyHA5DUMOGgeLpD3qvfe-Qr4OnMSMi8n6-hbaeWVvsgZx6ZN0OpDtf72CwAbNY1t1Q1RrRgCdsHuFhJjfkX9WXYr8IM2ctzZPqFVz1o6zGMpCou2bH8l6Ze0ijoXGk0QSNxLapxK" class="kg-image" alt="This image shows webauthn and &quot;soft token&quot; (totp) usage as a second factor, with soft token reaching zero usage when we enforced webauthn only." title="Webauthn usage at Cloudflare"></figure>
+	<h3 id="-">継続的な実践</h3>
+	<p>セキュリティチームは、Cloudflareの製品を展開するだけでなく、最初にテストすることもあります。私たちは製品部と直接連携し、自社製品を最初に「ドッグフーディング（自社使用）」を行っています。より良いインターネットを構築することが私たちの使命であり、それは、毎回発売前に製品をテストし、社内チームから貴重なフィードバックを収集していることを意味します。Cloudflare製品の第一の消費者であるセキュリティチームは、企業をより安全に保つだけでなく、お客様のためにより良い製品を作ることに貢献しています。</p>
+	<p>CloudflareにおけるCloudflare製品の使用例と技術的実装の詳細については、<a href="https://cloudflare.tv/event/3XVzDuzBL7TZ5HMB9Ni4b0" target="_blank">CloudflareをCloudflareで保護</a>に関する最近のCloudflare TVセグメントをご覧ください。</p>
+	<p>また、このドキュメントで紹介した製品の詳細については、当社の営業担当までご連絡いただき、お客様のビジネスやチーム、ユーザーの安全を確保するためにどのような支援ができるかをご確認ください。</p>
+</div>

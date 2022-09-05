@@ -1,0 +1,162 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/Magic-IoT.png" class="kg-image"></figure>
+	<p>ご家庭、オフィス、そしてお子さんの学校にさえも、悪用される可能がある脆弱性を持つ安全でない機器が眠っているはずです。カメラ、プリンター、スピーカー、入退室管理リーダー、サーモスタット、心臓モニターなど、これらのデバイスはすべてInternet of Things（IoT）デバイスであり、またそうなり得るものです。これらのIoTデバイスは、現代の生活にシームレスに統合され、私たちの環境の効率と制御を向上させるものですが、安全でないことで知られています。これは、デバイスのハードウェアの制約と計算能力の限界によるものであり、アクセス制御機能を最小限にしていたり、パスワードがハードコードされていたり、リモートでのパッチ適用ができない場合が多くあります。</p>
+	<p>この脅威の実態は、劇的に展開される可能性があります。例えば、 <a href="https://blog.cloudflare.com/inside-mirai-the-infamous-iot-botnet-a-retrospective-analysis/"> &nbsp;2016年のMiraiボットネット攻撃</a>は、ハッカーが数百万のIoTデバイスを侵害してDDoS攻撃を仕掛けることができる大規模ボットネットネットワークを構築し、Twitter、Guardian、CNNなどインターネットの主要部分をダウンさせました。このような攻撃は、めったに起こるものではありません。Cloudflareは2021年3月、物理セキュリティカメラのベンダー候補の1つであるVerkadaが侵害された際、この現実を身をもって体験しました。このインシデントにより、ハッカーはVerkadaの内部サポートツールにアクセスしてカメラをリモートで管理し、ネットワーク内で他のデバイスへのラテラルムーブメントを試みることを可能になりました。幸運にも、CloudflareのZero Trustモデル<a href="https://blog.cloudflare.com/about-the-march-8-9-2021-verkada-camera-hack/"> を利用することで、ハッカーによるラテラルムーブメントを防止することができました</a>。このインシデントはカメラにのみ影響し、他のものには影響しませんでした。</p>
+	<p>しかし、たとえ影響を受けなかったとしても、セキュリティインシデントについて考えることは、当社のセキュリティ製品を一歩先へと進めるための課題である考えています。そこで私たちは、自社製品を使ってIoTデバイス自体を保護することはできないか、たとえ本番システムと同じネットワーク上にあるとしても、このような悪名高い、安全性に劣るデバイスの侵害を確実に防ぐことはできないか、と自問しました。Cloudflare Oneを使えば、その答えは「イエス」です。</p>
+	<h3 id="-"><strong>今日のソリューション：複雑化するセキュリティ</strong></h3>
+	<h3 id="zero-trust-">Zero Trustモデル</h3>
+	<p>前述の通り、CloudflareはZero Trustモデルを採用しているため、IoTが侵害されたことによる影響を受けることはありませんでした。Cloudflareの社屋など、適切な環境であれば、Zero Trustモデルで企業ネットワークをリングフェンス化することが可能です。ネットワークの他の部分にアクセスするには認証が必要なため、横方向の移動が防止されます。IoTデバイス自体が分離されていないことを考えると、最新の注意を払って他のすべてのネットワーク侵入ポイントをzero trustアクセスの背後に置く必要があります。</p>
+	<p>しかし、すべての環境がこれほどまでに入念な管理が行われているわけではありません。例えば、データセンターがそうです。他のベンダーの存在、古い生産ネットワークの複雑性、マシン・ツー・マシン接続の普及により、IoTデバイス（アクセスリーダーやカメラなど）を設置する際、企業のオフィスと同様のZero Trustの保証をすることはできません。環境が複雑になればなるほど、IoTデバイスからの横方向移動を防止するためにZero Trustモデルを上手にデプロイすることは、ますます難しくなります。</p>
+	<h4 id="vlan">VLAN</h4>
+	<p>多くの企業では、IoTデバイスを本番環境とは完全に分離したネットワークにデプロイし、帯域外ネットワークやVLANを利用しています。VLANはレイヤー2で分離されますが、レイヤー3のトラフィックを制限するために、上流のルーティングされたインタフェースにアクセスリストが必要です。また、多くのネットワーク管理者は、より厳しい保証を得るため、イングレスとエグレスの両方のトラフィックに対するアクセスリストや、接続の成功と拒否の両方のロギングなど、追加の設定を望んでいます。こうしたアクセスリストの管理は急速に複雑化し、新しいネットワークが増えるたびに、保護、パッチ適用、検出のための別の環境が必要になります。</p>
+	<p>VLANは適切に設定されないと、セキュリティの保証が簡単に損なわれてしまいます。2つのVLANを持つネットワークについて考えてみましょう。アクセスリストが2つのスイッチに一貫して適用されない場合、一方のVLANからハッキングされたデバイスは、もう一方のVLANのデバイスに容易に旋回して入り込むことができてしまいます。ネットワーク管理者は、スイッチごとに <a href="https://en.wikipedia.org/wiki/Private_VLAN#:~:text=Private%20VLAN%2C%20also%20known%20as,ports%2C%20and%20a%20single%20uplink." target="_blank">プライベートVLAN</a> を使用することもできますが、この場合もさらに複雑性が増します。</p>
+	<p>VLANをデプロイして横方向の移動を防止するには、アクセスリストのルールから各サイトで使用する機器の種類まで、一貫した設定とアーキテクチャの選択が必要です。サイト数が増え、環境のフットプリントが拡大すればするほど、これはより困難となります。</p>
+	<h3 id="cloudflare-">Cloudflareのソリューション</h3>
+	<p>当社では自社製品を使って、別ネットワークにデプロイすることなく、デバイスを分離しています。これにより、ハードウェアを追加することなく、セキュリティの保証を実現しています。ネットワークを分離するための、サーバーレス、インフラストラクチャレスなソリューションなのです。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/Magic-x-IoT.png" class="kg-image"></figure>
+	<p>その方法はこうです。ハードウェアデバイス（今回のコンセプト実証ではVerkadaカメラ）はPower over Ethernetスイッチに接続され、Anycast GRE経由でCloudflareグローバルネットワークネットワークにトラフィックをトンネルするよう設定されています。そこで、Cloudflareダッシュからエグレスルールを書くように設定し、アウトバウンド・トラフィックが想定される場所にしか行かないようにします。これで横方向の移動が防止されます。</p>
+	<p>このアーキテクチャにより、ネットワーク管理者は、イングレスとエグレスのトラフィックに即座にポリシーを適用し、単一のダッシュボードでレイヤー3以上のトラフィックを制御することができます。このアーキテクチャは、ベンダーにとらわれず、共通の基準を使用し、ログを自動的に収集するなど、環境の変化に対応できるシンプルなセット・イット・アンド・フォーゲットのソリューションです。Cloudflareは、他の横方向移動保護方式と比較して、IoTデバイスに存在するあらゆる環境を安全に管理するために必要な、優れた容易性、適応性、セキュリティ保証を提供します。</p>
+	<!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-ycr8 {
+			background-color: #ffffff;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-v0hj {
+			background-color: #efefef;
+			border-color: inherit;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-dvid {
+			background-color: #efefef;
+			border-color: inherit;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-c6of {
+			background-color: #ffffff;
+			border-color: inherit;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-3xi5 {
+			background-color: #ffffff;
+			border-color: inherit;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-i81m {
+			background-color: #ffffff;
+			text-align: center;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" style="undefined;table-layout: fixed; width: 721px">
+		<colgroup>
+			<col style="width: 340px">
+			<col style="width: 125px">
+			<col style="width: 125px">
+			<col style="width: 125px">
+		</colgroup>
+		<thead>
+			<tr>
+				<th class="tg-dvid"></th>
+				<th class="tg-v0hj">Zero Trust</th>
+				<th class="tg-v0hj">VLAN</th>
+				<th class="tg-v0hj">Cloudflare One</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-c6of"><span style="font-weight:400;font-style:normal">横方向移動を防止（適切に設定した場合）</span></td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">✅</span></td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">✅</span></td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">✅</span></td>
+			</tr>
+			<tr>
+				<td class="tg-c6of">ハードウェア不要</td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">✅</span></td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">❌</span></td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">✅</span></td>
+			</tr>
+			<tr>
+				<td class="tg-c6of">自動ロギング</td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">✅</span></td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">❌</span></td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">✅</span></td>
+			</tr>
+			<tr>
+				<td class="tg-c6of">IoTデバイス自体の分離</td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">❌</span></td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">✅</span></td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">✅</span></td>
+			</tr>
+			<tr>
+				<td class="tg-c6of">シングルポイント設定</td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">❌</span></td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">❌</span></td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">✅</span></td>
+			</tr>
+			<tr>
+				<td class="tg-c6of">デバイス数によって複雑性は増大しない</td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">❌</span></td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">❌</span></td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">✅</span></td>
+			</tr>
+			<tr>
+				<td class="tg-c6of">デバイスアグノスティック</td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">❌</span></td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">❌</span></td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">✅</span></td>
+			</tr>
+			<tr>
+				<td class="tg-ycr8">CFのネットワークによるスピードとパフォーマンスのメリット</td>
+				<td class="tg-i81m"><span style="font-weight:400;font-style:normal">❌</span></td>
+				<td class="tg-i81m"><span style="font-weight:400;font-style:normal">❌</span></td>
+				<td class="tg-i81m"><span style="font-weight:400;font-style:normal">✅</span></td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: html-->
+	<h3 id="--1">今後の展開は？</h3>
+	<p>2021年第4四半期、当社は信頼できるペネトレーションテストパートナーを雇い、Cloudflare Oneアーキテクチャの背後から本番ネットワークにピボットしようとする不正なデバイスを再現して、このセットアップをテストしてもらいました。その結果、横方向に移動することができず、このアーキテクチャが機能していることを示しました。</p>
+	<p>このアーキテクチャのテストを受けて、当社は、最も信頼できる資産を安全に保つための物理的セキュリティの取り組みの一環として、データセンターサイトにおけるCloudflare Oneの社内展開を正式に開始する予定です。</p>
+	<p>Cloudflare Oneの企業での利用について詳しくは、弊社営業担当までお問い合わせください。</p>
+</div>

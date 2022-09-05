@@ -1,0 +1,47 @@
+<div class="post-content lh-copy gray1">
+	<p>The recommendation for social distancing to slow down the spread of COVID-19 has led many companies to adopt a work-from-home policy for their employees in offices around the world, and Cloudflare is <a href="https://blog.cloudflare.com/cloudflare-during-the-coronavirus-emergency/">no exception</a>.</p>
+	<p>As a result, a large portion of Internet access shifted from office-focused areas, like city centers and business parks, towards more residential areas like suburbs and outlying towns. We wanted to find out just precisely how broad this geographical traffic migration was, and how different locations were affected by it.</p>
+	<p>It turns out it is substantial, and the results are quite stunning:</p>
+	<figure class="kg-card kg-image-card"><img src="https://lh6.googleusercontent.com/QW5UOd3lkcFNdLXw_hWA5R7PRwEUohA_aVgZxSPcB2D4RBZfJQ1l6MSwR_I2MDHTdMNnhUY_4G83YoWI2P0pV3VMzTXQDZy7pVXBfoBQ3EUvzC6H4RDGveTOqu55DCBpdCBCi5qD" class="kg-image"></figure>
+	<h2 id="gathering-the-data">Gathering the Data</h2>
+	<p>So how can we determine if Internet usage patterns have changed from a geographical perspective?</p>
+	<p>In each <a href="https://www.cloudflare.com/network/" target="_blank">Cloudflare</a> Point of Presence (in more than 200 cities worldwide) there's an edge router whose responsibility it is to switch Internet traffic to serve the requests of end users in the region.</p>
+	<p>These edge routers are the network's entry point and for monitoring and debugging purposes each router samples IP packet information regarding the traffic that traverses them. This data is collected as flow records and contains layer-3 related information, such as the source and destination IP address, port, packet size etc.</p>
+	<p>These statistical samples allow us to monitor aggregate traffic information, spot unusual activity, and verify that our connections to the greater Internet are working correctly.</p>
+	<p>By using a geolocation database like <a href="https://www.maxmind.com/" target="_blank">Maxmind</a>, we can determine the rough location from which a flow emanates. If the geographic data is too imprecise it is excluded from our set to reduce noise.</p>
+	<p>By merging together information about flows that come from similar areas, we can infer a geospatial distribution of traffic volume across the globe.</p>
+	<h2 id="visual-representation">Visual Representation</h2>
+	<p>This distribution of traffic volume is an indication of Internet usage patterns. By plotting a geospatial heatmap of the Internet traffic in New York City for two separate dates four weeks apart (February 19, 2020 and March 18, 2020), we can already notice an erosion of traffic volume from the city center dissipating into the surrounding areas.</p>
+	<p>All the charts in this blog post show day time traffic in each geography. &nbsp;This is done to show the difference working from home is having on Internet traffic.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/04/new-york-2-2.png" class="kg-image">
+		<figcaption>February 19, 2020</figcaption>
+	</figure>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/04/new-york-1-2.png" class="kg-image">
+		<figcaption>March 18, 2020</figcaption>
+	</figure>
+	<p>But the migration pattern really jumps forward when producing a differential heatmap of these two dates:</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/04/New-york-3.png" class="kg-image"></figure>
+	<p>This chart shows a diff of the “before” and “after” scenarios, highlighting only differences in volume between the two dates. The red color represents areas where Internet usage has <strong>decreased</strong> since February 19, and green where it has <strong>increased</strong>.</p>
+	<p>It strongly suggests a migration of Internet usage towards suburban and residential areas.</p>
+	<p>The data used is comparing working hours periods (1000 to 1600 local time) between two Wednesdays four weeks apart (February 19 and March 18).</p>
+	<h2 id="cities">Cities</h2>
+	<p>We produced &nbsp;similar visual representations for other impacted locations around the world. All exhibit similar migration patterns.</p>
+	<h3 id="seattle-us">Seattle, US</h3>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/04/seattle.png" class="kg-image"></figure>
+	<p>Additional features can be picked out from the chart. The red dot in Silverdale, WA appears to be Internet access from the Kitsap Mall (which is currently closed). And Sea-Tac Airport is seen as a red area between Burien and Renton.</p>
+	<h3 id="san-francisco-bay-area-us">San Francisco Bay Area, US</h3>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/04/bay-area.png" class="kg-image"></figure>
+	<p>Areas where large Silicon Valley businesses have sent employees home are clearly visible.</p>
+	<h3 id="paris-france">Paris, France</h3>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/04/paris.png" class="kg-image"></figure>
+	<p>The red area in north east Paris appears to be the airport at Le Bourget and the surrounding industrial zone. To the west there’s another red area: Le Château de Versailles.</p>
+	<h3 id="berlin-germany">Berlin, Germany</h3>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/04/Berlin.png" class="kg-image"></figure>
+	<p>In Berlin a red dot near the Tegeler See is Flughafen Berlin-Tegel likely resulting from fewer passengers passing through the airport.</p>
+	<h3 id="network-impact">Network Impact</h3>
+	<p>As shown above, geographical Internet usage changes are visible from Internet traffic exchanged between end users and Cloudflare at various locations around the globe.</p>
+	<p>Besides the geographical migration in various metropolitan areas, the overall volume of traffic in these locations has also <a href="https://blog.cloudflare.com/on-the-shoulders-of-giants-recent-changes-in-internet-traffic/">increased between 10% and 40%</a> in just a period of four weeks.</p>
+	<p>It’s interesting to reflect that the Internet was originally conceived as a communications network for humanity during a crisis, and it’s come a long way since then. But in this moment of crisis, it’s being put to use for that original purpose. The Internet was <a href="http://builtforthis.net/" target="_blank">built for this</a>.</p>
+	<p>Cloudflare helps power a substantial portion of Internet traffic. During this time of increased strain on networks around the world, our team is working to ensure our service continues to run smoothly.</p>
+	<p>We are also providing our Cloudflare for Teams products at no cost to companies of any size struggling to support their employees working from home: l<a href="https://teams.cloudflare.com/" target="_blank">earn more</a>.</p>
+</div>

@@ -1,0 +1,66 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/05/Concurrent-Streaming.png" class="kg-image"></figure>
+	<p>Wir freuen uns, heute Concurrent Streaming Acceleration vorzustellen, eine neue Technik zur Reduzierung der End-to-End-Latenz von Live-Videos im Web beim Einsatz von <a href="https://www.cloudflare.com/products/stream-delivery/" target="_blank">Stream Delivery</a>.</p>
+	<p>Lassen Sie uns zunächst einen Blick auf die Latenz bei Live-Streaming werfen: Warum ist sie wichtig und was wurde getan, um sie zu verbessern?</p>
+	<h3 id="wie-live-sind-live-videos"><strong>Wie „live“ sind „Live“-Videos?</strong></h3>
+	<p>Live-Streaming macht einen immer größer werdenden Teil der Videos im Web aus. Egal, ob TV-Übertragung, Live-Show oder Online-Klassenzimmer – die Benutzer erwarten, dass das Video schnell und reibungslos ankommt. Und das Versprechen von „live“ ist, dass der Benutzer Ereignisse sieht, wie sie passieren. Aber wie nah an „Echtzeit“ sind Internetvideos, die „live“ sind?</p>
+	<p>Die Bereitstellung von Live-Videos im Internet ist immer noch <em>schwierig </em>und bringt viel Latenz mit sich:</p>
+	<ol>
+		<li>Die Inhaltsquelle zeichnet das Video auf und sendet es an einen Codierungsserver.</li>
+		<li>Der Ursprungsserver konvertiert dieses Video in ein Format wie DASH, HLS oder CMAF, das effizient an Millionen von Geräten geliefert werden kann.</li>
+		<li>In der Regel wird ein CDN verwendet, um das codierte Video weltweit bereitzustellen.</li>
+		<li>Der Player des Clients dekodiert das Video und rendert es auf dem Bildschirm.</li>
+	</ol>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/Content-Processing.jpg" class="kg-image"></figure>
+	<p>Und das alles unter Zeitdruck – der gesamte Prozess muss in wenigen Sekunden ablaufen, sonst wird das Videoerlebnis beeinträchtigt. Wir bezeichnen die Gesamtverzögerung zwischen dem Zeitpunkt, an dem das Video aufgenommen wurde, und dem Zeitpunkt, an dem es auf dem Gerät eines Endbenutzers betrachtet werden kann, als „End-to-End-Latenz“ (vergleichbar mit der Zeit vom Kameraobjektiv bis zum Bildschirm Ihres Telefons).</p>
+	<h3 id="herk-mmliche-segmentierte-bereitstellung"><strong>Herkömmliche segmentierte Bereitstellung</strong></h3>
+	<p>Videoformate wie DASH, HLS und CMAF funktionieren, indem Sie Videos in kleine Dateien aufteilen, sogenannte „Segmente“. Die typische Segmentdauer beträgt sechs Sekunden.</p>
+	<p>Wenn ein Client-Player warten muss, bis ein ganzes sechssekündiges Segment codiert, über ein CDN gesendet und dann dekodiert wird, kann eine lange Wartezeit entstehen! Es dauert noch länger, wenn der Client einen Puffer aus Segmenten aufbauen soll, um sich vor Lieferunterbrechungen zu schützen. Ein typischer Player-Puffer für HLS besteht aus drei Segmenten:</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/10/Buffering.png" class="kg-image">
+		<figcaption><em><em>Clients müssen möglicherweise drei Sechs-Sekunden-Blöcke puffern, was zu mindestens 18 Sekunden Latenz führt</em></em></figcaption>
+	</figure>
+	<p>Wenn Sie Verzögerungen bei der Codierung berücksichtigen, ist es leicht zu erkennen, warum die Latenzzeit für Live-Streaming im Internet in der Regel etwa 20–30 Sekunden beträgt. Das geht besser.</p>
+	<h3 id="reduzierte-latenz-durch-chunked-transfer-encoding"><strong>Reduzierte Latenz durch Chunked Transfer Encoding</strong></h3>
+	<p>Ein natürlicher Weg, dieses Problem zu lösen, besteht darin, den Client-Playern zu ermöglichen, die Blöcke während des Downloads oder sogar schon während der Erstellung abzuspielen. Um das zu ermöglichen, bedarf es beim Codieren und Ausliefern der Dateien einer klugen Zusammenarbeit, die als „Chunked Encoding“ (aufgeteilte Codierung) bekannt ist. Dabei werden Segmente in kleinere, mundgerechte Happen oder „Chunks“ (Blöcke) aufgeteilt. Chunked Encoding kann die Live-Latenzzeit in der Regel auf fünf oder zehn Sekunden reduzieren.</p>
+	<p>Verwirrenderweise ist das Wort „Chunk“ überladen und bedeutet zwei verschiedene Dinge:</p>
+	<ol>
+		<li>CMAF- oder HLS-Chunks, bei denen es sich um kleine Teile eines Segments (in der Regel 1 s) handelt, die auf Schlüsselbilder ausgerichtet sind</li>
+		<li>HTTP-Chunks, die nur eine Möglichkeit sind, eine beliebige Datei über das Web zu übertragen</li>
+	</ol>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/10/Chunked-Encoding.png" class="kg-image">
+		<figcaption><em><em>Chunked Encoding teilt Segmente in kürzere Blöcke auf</em></em></figcaption>
+	</figure>
+	<p>HTTP-Chunks sind wichtig, da Webclients nur eingeschränkt in der Lage sind, Datenströme zu verarbeiten. Die meisten Clients können erst dann mit Daten arbeiten, wenn sie die vollständige HTTP-Antwort oder zumindest einen kompletten HTTP-Chunk erhalten haben. Durch die Verwendung von HTTP Chunked Transfer Encoding ermöglichen wir Videoplayern, Videos schneller zu parsen und zu decodieren.</p>
+	<p>CMAF-Chunks sind wichtig, damit Decoder die Bit, die sich in den HTTP-Chunks befinden, tatsächlich <em>abspielen</em> können. Ohne eine sorgfältige Codierung des Videos hätten Decoder zufällige Bit einer Videodatei, die nicht wiedergegeben werden können.</p>
+	<h3 id="cdns-k-nnen-zus-tzliche-pufferung-verursachen"><strong>CDNs können zusätzliche Pufferung verursachen</strong></h3>
+	<p>Chunked Encoding mit HLS und CMAF wird heute zunehmend im gesamten Web eingesetzt. Ein Grund, der diese Technik so großartig macht, ist, dass HTTP Chunked Encoding von CDNs breit unterstützt wird – es ist seit 20 Jahren Teil der HTTP-Spezifikation.</p>
+	<p>Die CDN-Unterstützung ist von entscheidender Bedeutung, da sie es ermöglicht, Live-Videos mit niedriger Latenz zu skalieren und ein Publikum von Tausenden oder Millionen Zuschauern gleichzeitig zu erreichen – etwas, das derzeit mit anderen, nicht-HTTP-basierten Protokollen nur sehr schwer zu verwirklichen ist.</p>
+	<p>Aber leider kann Ihr CDN, selbst wenn Sie Chunking zur Optimierung der Lieferung aktivieren, gegen Sie arbeiten, indem es das gesamte Segment puffert. Um zu verstehen, warum, überlegen Sie, was passiert, wenn viele Menschen gleichzeitig ein Live-Segment anfordern:</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/Bulk-Request.jpg" class="kg-image"></figure>
+	<p>Wenn sich die Datei bereits im Cache befindet, großartig! CDNs leisten hervorragende Arbeit bei der Bereitstellung von zwischengespeicherten Dateien für ein großes Publikum. Aber was passiert, wenn sich das Segment noch nicht im Cache befindet? Denken Sie daran – das ist das typische Anforderungsmuster für Live-Videos!</p>
+	<p>In der Regel sind CDNs in der Lage, bei „Cache Miss“ vom Ursprungsserver zu streamen. Das sieht in etwa so aus:</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/Stream-On-Cache-Misse.jpg" class="kg-image"></figure>
+	<p>Aber noch einmal – was passiert, wenn mehrere Personen gleichzeitig die Datei anfordern? CDNs müssen in der Regel die gesamte Datei in den Cache ziehen, bevor sie sie für zusätzliche Benutzer bereitstellen können:</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/10/One-at-a-Time.jpg" class="kg-image">
+		<figcaption><em><em>Nur ein Betrachter kann das Video streamen, während andere Clients darauf warten, dass das Segment beim CDN gepuffert wird.</em></em></figcaption>
+	</figure>
+	<p>Dieses Verhalten ist verständlich. CDN-Rechenzentren bestehen aus vielen Servern. Um eine Überlastung der Ursprünge zu vermeiden, koordinieren sich diese Server in der Regel untereinander mithilfe eines „Cache Lock“ (Mutex), das es nur einem Server gestattet, eine bestimmte Datei zu einem bestimmten Zeitpunkt vom Ursprung anzufordern. Ein Nebeneffekt davon ist, dass eine Datei, während sie in den Cache gezogen wird, nur dem ersten Benutzer, der sie angefordert hat, zur Verfügung gestellt werden kann. Leider macht dieses Cache Lock auch den Zweck der Verwendung von Chunked Encoding zunichte!</p>
+	<p>Um es noch einmal zusammenzufassen:</p>
+	<ul>
+		<li>Chunked Encoding teilt Videosegmente in kleinere Teile auf</li>
+		<li>Dies kann die End-to-End-Latenz reduzieren, indem es ermöglicht, dass Chunks von Playern abgerufen und decodiert werden, während die Segmente noch auf dem Ursprungsserver produziert werden</li>
+		<li>Einige CDNs neutralisieren die Vorteile von Chunked Encoding, indem sie ganze Dateien innerhalb des CDN puffern, bevor sie an Clients ausgeliefert werden können</li>
+	</ul>
+	<h3 id="die-cloudflare-l-sung-concurrent-streaming-acceleration"><strong>Die Cloudflare-Lösung: Concurrent Streaming Acceleration</strong></h3>
+	<p>Wie Sie vielleicht schon erraten haben, denken wir, dass wir es besser machen können. Einfach ausgedrückt, haben wir jetzt die Möglichkeit, nicht zwischengespeicherte Dateien an mehrere Clients gleichzeitig zu liefern, während wir die Datei einmal vom Ursprungsserver abrufen.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/Simultaneously.jpg" class="kg-image"></figure>
+	<p>Das klingt nach einer einfachen Änderung, aber es erfordert viel Raffinesse, dies sicher zu tun. Wir mussten tiefgreifende Änderungen an unserer Caching-Infrastruktur vornehmen, um das Cache Lock zu entfernen und es mehreren Clients gleichzeitig zu ermöglichen, sicher aus einer einzelnen Datei zu lesen, während sie noch geschrieben wird.</p>
+	<p>Das Beste daran ist – ganz Cloudflare funktioniert jetzt so! Es ist nicht erforderlich, sich anzumelden oder eine Konfigurationsänderung vorzunehmen, um den Vorteil zu nutzen.</p>
+	<p>Wir haben diese Funktion vor ein paar Monaten eingeführt und sind mit den bisherigen Ergebnissen sehr zufrieden. Wir messen den Erfolg anhand der „Cache-Lock-Wartezeit“, d. h. wie lange eine Anforderung auf andere Anforderungen warten muss – eine direkte Komponente von Time to First Byte. &nbsp;Ein OTT-Kunde sah einen Rückgang dieses Messwerts von 1,5 s bei P99 auf fast 0, wie wir erwartet hatten:</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/Speed-Improvement.png" class="kg-image"></figure>
+	<p>Das führt direkt zu einer Verbesserung der End-to-End-Latenzzeit um 1,5 Sekunden. Live-Videos sind gerade „liver“ geworden!</p>
+	<h3 id="fazit"><strong>Fazit</strong></h3>
+	<p>Neue Techniken wie Chunked Encoding haben die Live-Bereitstellung revolutioniert und ermöglichen es Inhalteanbietern, Live-Videos mit niedriger Latenz in großem Maßstab zu liefern. Concurrent Streaming Acceleration hilft Ihnen, die Leistungsfähigkeit dieser Technik in Ihrem CDN zu nutzen und potenziell wertvolle Sekunden bei der End-to-End-Latenz zu sparen.</p>
+	<p>Wenn Sie interessiert daran sind, Cloudflare für die Bereitstellung von Live-Videos zu nutzen, <a href="https://www.cloudflare.com/plans/enterprise/contact/" target="_blank">nehmen Sie Kontakt mit unserem Enterprise Sales-Team auf</a>.</p>
+	<p>Und wenn Sie daran interessiert sind, an Projekten wie diesem zu arbeiten und uns dabei zu helfen, die Bereitstellung von Live-Videos für das gesamte Internet zu verbessern, werden Sie Teil unseres<a href="https://www.cloudflare.com/careers/departments/engineering/" target="_blank">Engineering-Teams</a>!</p>
+</div>

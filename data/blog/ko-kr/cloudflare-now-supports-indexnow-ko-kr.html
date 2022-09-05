@@ -1,0 +1,46 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/web-crawling-3.png" class="kg-image"></figure>
+	<p><a href="https://www.nbcnews.com/science/environment/us-just-hottest-summer-record-rcna1957" target="_blank">기록적으로 무더웠던 지난 여름</a>, Cloudflare는 제1회 <a href="https://www.cloudflare.com/impact-week/" target="_blank">Impact Week</a>를 개최했습니다. 이 행사에서 Cloudflare는 인터넷과 지구를 더 나은 곳으로 만들겠다는 사명 아래 환경, 사회 및 거버넌스 프로젝트에 중점을 두고 개발된 다양한 제품과 이니셔티브를 발표했습니다. Impact Week에서 발표되었던 <a href="https://blog.cloudflare.com/crawler-hints-how-cloudflare-is-reducing-the-environmental-impact-of-web-searches/">Crawler Hints</a> 이니셔티브에 대한 최신 소식을 이렇게 공유하게 되어 기쁩니다. Crawler Hints는 웹 크롤러와 봇이 발생시키는 인터넷 트래픽 가운데 약 <a href="https://radar.cloudflare.com/" target="_blank">45%</a>를 대상으로 운영 효율성을 향상시킬 수 있는 서비스입니다.</p>
+	<p>Crawler Hints는 이전에 이미 크롤링했던 웹사이트인지, 이를 다시 크롤링하는 것이 타당한지 크롤러가 파악할 수 있도록 함으로써 효율성을 향상시킵니다.</p>
+	<p>오늘 Crawler Hints에 대한 두 가지 업데이트를 여러분께 소개드립니다.</p>
+	<ol>
+		<li>첫 번째 업데이트로, Crawler Hints가 이제 <a href="https://www.indexnow.org/" target="_blank">IndexNow</a>를 지원합니다. IndexNow는 웹사이트 내부의 콘텐츠가 새로 생성, 업데이트 또는 삭제될 때마다 웹사이트가 이를 검색 엔진에 알리게 하는 새로운 프로토콜입니다. Cloudflare는 <a href="https://blogs.bing.com/webmaster/october-2021/IndexNow-Instantly-Index-your-web-content-in-Search-Engines" target="_blank">Microsoft와 </a>Yandex와의 제휴를 통해 검색 엔진 인프라와 고객 원본 서버를 향상시키고 인터넷의 전반적인 효율성을 개선할 수 있게 되었습니다.</li>
+		<li>두 번째 업데이트로, Crawler Hint는 이제 모든 Cloudflare 고객에게 무료로 제공됩니다. 고객은 버튼 클릭 한 번으로 이러한 크롤링을 통 향상된 효율성을 누릴 수 있습니다. 대시보드의 Cache(캐시) 탭에 가시면 Crawler Hints를 활성화하는 옵션이 있습니다.</li>
+	</ol>
+	<h3 id="crawler-hints-">Crawler Hints는 어디에 도움이 될까요?</h3>
+	<p>인터넷의 작동을 보조하도록 설계된 크롤러는 인터넷을 자동으로 돌아다니며 정보를 수집하는 서비스로, 무엇이든 찾도록 프로그래밍이 가능합니다. 검색 엔진 등의 검색 서비스는 웹 전체에서의 콘텐츠 인덱싱에 의존하는 사용자 경험을 강화하기 위해 봇 네트워크를 대규모로 운영하며, 이 봇들은 인터넷을 크롤링하며 사용자 쿼리와 가장 관련성이 높은 콘텐츠를 식별합니다. 그러나 웹 상의 콘텐츠가 항상 변화하는 반면 그러한 변경이 <em>언제</em> 발생했는지 관리하는 정보 센터는 따로 없기 때문에, 검색 엔진 크롤러는 방대한 작업을 끝없이 수행합니다. 크롤러는 지속적으로 인터넷을 돌아다니면서 특정 사이트의 콘텐츠 업데이트를 확인하려면 얼마나 자주 방문해야 하는지를 추측해야 합니다.</p>
+	<p>검색 엔진을 운영하는 기업은 이러한 프로세스를 최대한 효율적으로 만들기 위해 크롤링 속도와 인프라 효율성 향상에 최첨단 기술을 투입하는 등의 노력을 아끼지 않았습니다. 그러나 낭비에 가까운 영역도 분명히 존재합니다. 바로 과도한 크롤링입니다.</p>
+	<p>모든 주요 검색 크롤러의 트래픽을 모니터링하는 Cloudflare는 이러한 봇이 마지막으로 확인한 이후 변경이 없었던 페이지를 얼마나 자주 재방문하는지 지난 1년간 연구했습니다. 이러한 방문은 모두 낭비에 해당합니다. Cloudflare의 관찰에 따르면 안타깝게도 이 크롤러 트래픽의 53%가 낭비되고 있습니다.</p>
+	<p>Cloudflare는 Crawler Hint가 이러한 크롤러를 실행하는 사람들에게 추가 휴리스틱을 제공하여 크롤링 작업의 추적을 도와줄 것으로 보고 있습니다. 이로써 콘텐츠가 변경되거나 사이트에 추가된 시기를 파악할 수 있게 되며, 사이트의 실제 변경 주기와는 동떨어진 기본 설정이나 이전 변경 사항에 의존하지 않아도 됩니다. Crawler Hint는 연관성 높은 크롤러의 비중을 높이고 새로운 콘텐츠를 찾지 못하는 크롤러를 줄임으로써 고객 경험을 개선하고 반복적인 크롤링의 필요성을 줄여줍니다.</p>
+	<p>인터넷 환경에서 Cloudflare는 크롤러가 특정 사이트를 다시 크롤링해야 하는 시점에 대한 '힌트'를 제공할 수 있는 독특한 위치에 있습니다. Cloudflare가 새롭거나 변경된 콘텐츠를 인덱싱할 최적의 타이밍을 크롤러에게 미리 알려줄 수 있으므로 30초마다 웹 사이트를 드나들면서 새로운 콘텐츠를 확인하지 않아도 됩니다. 그래서 Crawler Hints라고 부르는 것이죠!</p>
+	<p>Crawler Hints에 대한 더 자세한 내용은 <a href="https://blog.cloudflare.com/crawler-hints-how-cloudflare-is-reducing-the-environmental-impact-of-web-searches/">해당 블로그</a>를 참조하세요.</p>
+	<h3 id="indexnow-">IndexNow는 무엇일까요?</h3>
+	<p><a href="https://www.indexnow.org/" target="_blank">IndexNow</a>는 <a href="https://blogs.bing.com/webmaster/october-2021/IndexNow-Instantly-Index-your-web-content-in-Search-Engines" target="_blank">Microsoft</a>와 Yandex 검색 엔진이 마련한 표준입니다. 이 표준은 검색 엔진 및 기타 크롤러가 콘텐츠를 크롤링하는 시기에 대한 효율적인 방식의 신호 제공을 목표로 하고 있습니다. Cloudflare의 Crawler Hint가 이제 IndexNow를 지원합니다.</p>
+	<blockquote><em>​​가장 간단한 형태의 IndexNow는 검색 엔진이 특정 URL 상의 콘텐츠 추가, 업데이트 또는 삭제 여부를 파악하여 이러한 변경 사항을 해당 검색 결과에 신속하게 반영하게 해주는 핑의 역할만을 수행합니다.</em><br>- <a href="https://www.indexnow.org/" target="_blank">www.indexnow.org</a></blockquote>
+	<p>웹사이트에서 Crawler Hint를 활성화하고 버튼을 한 번 클릭하기만 하면, 사이트의 콘텐츠 변경 시 Cloudflare가 IndexNow 프로토콜을 통해 이러한 검색 엔진에 자동으로 신호를 보내게 됩니다. 다른 어떤 작업도 필요없습니다!</p>
+	<p>검색 엔진 운영자에게 이는 무엇을 의미할까요? Crawler Hints를 사용하면 Cloudflare 웹사이트(옵트인 필요) 상의 변경 상황에 대한 푸시 피드를 거의 실시간으로 받아보게 됩니다. 결과적으로 결과의 품질뿐만 아니라 봇 구동과 관련한 에너지 효율성도 크게 향상됩니다.</p>
+	<h3 id="-">업계 리더와의 협력</h3>
+	<p>Cloudflare는 <a href="https://w3techs.com/technologies/overview/proxy" target="_blank">전 세계 인터넷의 상당 부분</a>을 프록시하고 있는 독특한 위치에 있습니다. 그래서 봇이 웹 리소스에 액세스하는 방식의 추세를 관찰할 수 있으며, 이러한 가시성을 통해 어떤 크롤링이 필요하거나 불필요한지 미리 알릴 수 있습니다. Cloudflare는 파트너사와의 제휴를 통해 이러한 인사이트로 고객을 도울 수 있게 되어 기쁘게 생각합니다. 검색 엔진은 이 등식에 핵심적인 요소이므로, 보다 효율적인 인터넷에 대한 이러한 비전을 Microsoft Bing 및 Yandex와 함께 공유하고 협력하게 된 것은 멋진 기회입니다. Cloudflare는 지난 몇 달 간 IndexNow를 통한 상호작용을 Bing 및 Yandex에서 테스트해 왔으며, 초반의 결과는 성공적입니다.</p>
+	<p>이것은 시작일 뿐입니다. Crawler Hints는 점점 더 많은 파트너와 협력을 통해 인터넷 전반의 효율성을 개선해 나가기 위한 지속적인 프로세스입니다. 여기에는 물론 시간이 필요하며 다른 업계 핵심 영역의 참여도 요구되지만, Cloudflare는 사용자 경험의 향상을 위해 크롤링에 의존하는 모든 참가자의 관심과 협력을 환영합니다.</p>
+	<blockquote><em>“CDN(Content Delivery Network)에서의 캐시 데이터는 콘텐츠 신선도에 대한 매우 유용한 신호입니다. 최고의 CDN 중 하나인 Cloudflare는 IndexNow를 채택함으로써 광범위한 인터넷 영역에서 실제로 사용되는 업계 표준으로 정착시키는 데 핵심적인 역할을 하고 있습니다. Cloudflare는 사용자가 즉시 사용을 시작할 수 있도록 간편한 원클릭 버튼을 만들었습니다. 더 나은 인터넷을 구축할 수 있도록 지원한다는 Cloudflare의 사명은 제가 IndexNow를 시작한 이유, 즉 더 효율적이고 효과적인 검색과도 일맥상통합니다."</em><br>- <em>파브리스 카넬(Fabrice Canel), 수석 프로그램 관리자</em></blockquote>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/Screen-Shot-2021-10-18-at-8.25.56-AM-1.png" class="kg-image"></figure>
+	<blockquote><em>"Yandex는 지속가능성에 대한 장기적인 노력의 일환으로 IndexNow에 합류하게 된 것을 기쁘게 생각합니다. 당사는 IndexNow API로 Cloudflare의 캐싱 신호를 Yandex의 크롤링 메커니즘에 통합하기 위해 테스트 초기부터 Cloudflare 팀과 협력해 왔습니다. 지금까지의 결과는 훌륭합니다.”</em><br>- <em>막심 자그레빈(Maxim Zagrebin), Yandex Search 대표</em></blockquote>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/Screen-Shot-2021-10-18-at-8.25.50-AM-1.png" class="kg-image"></figure>
+	<blockquote><em>"DuckDuckGo는 최종 사용자의 프라이버시를 해치지 않으면서도 보다 환경 친화적이고 더 나은 검색을 제공하는 것이라면 무엇이든 지원합니다. 당사는 이 프로젝트와 관련한 Cloudflare와의 협력 기회를 고대하고 있습니다."</em><br>- <em>가브리엘 와인버그(Gabriel Weinberg), CEO 및 창립자</em></blockquote>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/Horizontal_Default--1-.jpeg" class="kg-image"></figure>
+	<h3 id="cloudflare-">Cloudflare 고객에게 돌아올 이점은 무엇인가요?</h3>
+	<p>Crawler Hints은 검색 엔진만 도와주는 것이 아닙니다. Cloudflare 고객 및 오리진 소유자의 경우, Crawler Hint는 검색 엔진 및 기타 봇 기반 경험이 항상 최신 버전의 콘텐츠를 표시하도록 함으로써 사용자 만족도를 높여주고 궁극적으로는 검색 순위에도 영향을 미칠 수 있습니다. Crawler Hint는 또한 오리진에 도달하는 트래픽을 줄임으로써 리소스 소비를 개선시킵니다. 그뿐 아니라 사이트 성능도 향상됩니다. 봇은 언제나 인간 고객의 속도를 앞지를 테니까요!</p>
+	<p>일반 사용자의 이점이라면? 크롤링된 데이터는 사용자가 봇을 이용하게 되는 환경, 즉 우리가 검색 엔진이나 가격 책정 도구 등을 일상적으로 이용할 때 그 이면에서 작동하고 있는 상호작용을 통해 더 유용한 결과를 제공할 수 있습니다. 검색 결과를 업데이트해야 하는 시점에 Cloudflare가 봇 소유자에게 신호를 이미 전달했기 때문이죠.</p>
+	<h3 id="-crawler-hints-">웹사이트에서 Crawler Hints를 활성화하려면 어떻게 해야 하나요?</h3>
+	<p>Crawler Hint는 모든 Cloudflare 고객에게 무료로 제공되며, 이는 웹 효율성의 혁신으로 이어질 것입니다. 세계 최대 검색 엔진들이 귀하의 웹사이트를 인덱싱할 때 Crawler Hints가 어떤 이점을 가져다주는지 궁금하시다면, 언제든지 다음 방법으로 서비스에 옵트인해 보십시오.</p>
+	<ol>
+		<li>Cloudflare 계정에 로그인합니다.</li>
+		<li>대시보드에서 Cache(캐시) 탭으로 이동합니다.</li>
+		<li>Configuration(환경 설정) 섹션을 클릭합니다.</li>
+		<li>Crawler Hint 등록 카드를 찾아 활성화합니다. 그러면 끝입니다!</li>
+	</ol>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/Crawler-1.png" class="kg-image" alt="How to enable crawler hints with one-click"></figure>
+	<p>활성화하고 나면 웹 사이트의 특정 부분을 크롤링해야 하는 시점에 대한 힌트가 검색 엔진에 전송되기 시작합니다. Crawler Hints는 인터넷의 효율성을 향상시킬 야심찬 여정을 시작했습니다.</p>
+	<h3 id="--1">다음은?</h3>
+	<p>Cloudflare는 업계 리더인 Microsoft Bing 및 Yandex와 협력하여 Crawler Hint의 IndexNow 지원을 구현하고 Crawler Hint를 광범위한 이용 계층에 기본 제공할 수 있게 되어 보람을 느낍니다. 인터넷 전체를 위해 이 프로세스를 보다 효율적으로 수행할 수 있도록 크롤러를 활용하는 다른 여러 회사들과의 협력이 이어지기를 기대합니다.<br></p>
+</div>

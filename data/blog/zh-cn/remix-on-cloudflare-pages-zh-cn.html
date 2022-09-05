@@ -1,0 +1,27 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/remix-1.png" class="kg-image" alt="Supporting Remix with full stack Cloudflare Pages"></figure>
+	<p>我们在 11 月宣布了<a href="https://blog.cloudflare.com/zh-cn/cloudflare-pages-goes-full-stack-zh-cn/">全栈 Cloudflare Pages 的公测版</a>，从那时起，希望向其应用程序添加动态功能的开发人员开始广泛使用它。今天，我们很高兴地宣布 Pages 对 Remix 应用程序的支持，该应用程序由我们的全堆栈平台提供支持。</p>
+	<h3 id="-remix">阻止的新功能：Remix</h3>
+	<p><a href="https://remix.run/" target="_blank">Remix</a> 是一个专注于充分利用网络力量的新框架。与 Cloudflare Workers 一样，它使用现代 JavaScript API，并强调 Web 基础知识，例如有意义的 HTTP 状态代码、缓存以及可用性和性能优化。 Remix 的最大功能之一是它的可移植性：Remix 提供了与平台无关的接口和适配器，允许将其部署到越来越多的提供商。 Cloudflare Workers 在 Remix 发布时可用，但在这种情况下，使 Workers 与众不同的是 Workers 可以提供的本机兼容性。</p>
+	<blockquote><em>Remix 的主要灵感之一是 Cloudflare Workers 使用本机 Web API 来处理 HTTP 请求和响应的方式。这是一个绝妙的决定，因为开发人员能够在服务器上重用他们在浏览器中构建应用程序时获得的知识！Remix 在 Cloudflare Workers 上本地运行，到目前为止我们看到的结果非常棒。我们对 Cloudflare Workers 和 Pages 为构建在边缘运行的应用程序所释放的潜力感到无比兴奋！</em><br>- <strong>Michael Jackson</strong>, <a href="https://remix.run/" target="_blank">Remix</a> 首席执行官</blockquote>
+	<p>这种本机兼容性意味着，当您学习如何在 Remix 中编写应用程序时，您也在学习如何编写 Cloudflare Workers（反之亦然）。但这也意味着更好的性能！ 与其让 Node.js 进程在服务器上运行—它可能远离你的用户，在高流量的情况下可能不堪重负，并且必须在 Node.js 的运行时和现代 Fetch API 之间进行映射—你可以部署到 Cloudflare 的网络，请求将被路由到我们 250 多个位置中的任何一个。这意味着为您的用户提供更好的性能，整个互联网连接世界的 <a href="https://blog.cloudflare.com/250-cities-is-just-the-start/">95% 位于 Cloudflare 存在的 50 毫秒内，80% 的互联网连接世界在 20 毫秒内</a>。</p>
+	<h3 id="-cloudflare-">与 Cloudflare 集成</h3>
+	<p>通常情况下，全栈应用程序需要一些地方来存储数据。Cloudflare 在这里提供了三个包罗万象的选项：</p>
+	<ul>
+		<li>KV，我们的高性能和全球复制的键值数据存储。</li>
+		<li>Durable Objects，我们高度一致的协调原语，可以限制在给定的管辖范围内。</li>
+		<li>R2（即将推出！），我们快速可靠的对象存储。</li>
+	</ul>
+	<p>Remix 已经与用于<a href="https://remix.run/docs/en/v1/api/remix#createcloudflarekvsessionstorage-cloudflare-workers" target="_blank">会话存储的 KV</a> 紧密集成，并且 Durable Objects 集成正在进行中。此外，Cloudflare 的其他功能，例如<a href="https://developers.cloudflare.com/workers/runtime-apis/request#incomingrequestcfproperties" target="_blank">地理定位传入请求</a>、<a href="https://developers.cloudflare.com/workers/runtime-apis/html-rewriter" target="_blank">HTMLRewriter</a> 和我们的<a href="https://developers.cloudflare.com/workers/runtime-apis/cache" target="_blank">缓存 API</a>，都可以在您的 Remix 应用程序中使用。</p>
+	<h3 id="-cloudflare-pages">部署到 Cloudflare Pages</h3>
+	<p>Cloudflare Pages 已经能够从 Cloudflare 边缘为静态资产提供服务，但随着 11 月份 Cloudflare Workers 支持的无服务器功能的发布，它已经发展成为一个非常适合托管全栈应用程序的完整平台。</p>
+	<p>要立即开始使用 Remix 和 Cloudflare Pages，请在终端中运行以下命令，并在询问 “您要在哪里部署？” 时选择 “Cloudflare Pages”：</p>
+	<pre><code class="language-sh">npx <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1f7c6d7a7e6b7a326d7a7276675f737e6b7a6c6b">[email&nbsp;protected]</a>
+</code></pre>
+	<p>然后在 <a href="https://developers.cloudflare.com/pages/platform/github-integration" target="_blank">GitHub</a> 或 <a href="https://blog.cloudflare.com/cloudflare-pages-partners-with-gitlab/">GitLab</a> 上创建一个存储库，git 提交，git 推送新创建的文件夹。最后，导航到 Cloudflare Pages，选择您的存储库，然后从框架预设的下拉列表中选择“Remix”。您的新应用程序将在您的 pages.dev 子域上可用，或者您可以<a href="https://developers.cloudflare.com/pages/get-started#adding-a-custom-domain" target="_blank">将其连接到任何自定义域</a>。</p>
+	<p>您的文件夹将有一个 functions/[[path]].ts 文件。这是我们在您网站的所有路径上为您的 Remix 应用程序提供服务的<a href="https://developers.cloudflare.com/pages/platform/functions" target="_blank">功能集成</a>。<a href="https://remix.run/docs/en/v1/api/conventions#file-name-conventions" target="_blank">应用文件夹</a>是 Remix 应用程序的大部分逻辑所在的位置。借助 Pages 对<a href="https://developers.cloudflare.com/pages/platform/rollbacks" target="_blank">回滚</a>和<a href="https://developers.cloudflare.com/pages/platform/preview-deployments" target="_blank">预览部署</a>的支持，您可以安全地测试对应用程序的任何更改，并且使用 <a href="https://blog.cloudflare.com/zh-cn/wrangler-v2-beta-zh-cn/">Wrangler 2.0 beta</a>，本地测试只是 npm run dev 的一个简单案例。</p>
+	<h3 id="cloudflare-pages-">Cloudflare Pages 上框架的未来</h3>
+	<p>Remix 是继 <a href="https://kit.svelte.dev/" target="_blank">SvelteKit</a> 之后第二个与全栈 Cloudflare Pages 原生集成的框架<a href="https://kit.svelte.dev/" target="_blank">，</a>该框架在发布时可用。但这仅仅是开始！ 我们还有很多东西可以与 Remix 和其他框架集成。请继续关注 Pages 的构建时间和开发人员体验的其他方面的改进，以及平台的新功能。</p>
+	<h3 id="-">加入我们的社区！</h3>
+	<p>如果您是 Cloudflare Pages 和 Workers 世界的新手<a href="https://discord.com/invite/cloudflaredev" target="_blank">，请加入我们的 Discord 服务器</a>并向我们展示您正在构建的内容。无论是 Remix 上的新全栈应用程序，还是简单的静态站点，我们都希望收到您的来信。</p>
+</div>

@@ -1,0 +1,57 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/06/45DEDC7B-B31F-461C-B786-12FBAF1A5391.png" class="kg-image"></figure>
+	<p>我们很高兴地宣布，从今天开始，Cloudflare Workers®将拥有一个CLI（命令行界面）、新的且改进过的说明文件、适用于所有人的多个脚本、在worker .dev上运行应用程序而无需自带域的功能，以及一个令试验比以往任何时候都更容易的免费层。我们正在构建未来的无服务器平台，并希望您今天就能在此基础上构建应用程序。在这篇文章中，我们将详细说明未来的无服务器平台是什么样子的，它会如何改变今天的范例，以及我们将致力于在此基础上构建一个很棒的体验。</p>
+	<p>三年前，我参加Cloudflare的面试，应聘解决方案工程师。作为面试任务的一部分，我需要在Cloudflare下建立我自己域名的源网站。我花了一个周末的时间，沮丧而又迷失在了配置中，我试图弄清楚如何设置EC2实例，如何通过IPv6连接到该实例以及如何在Ubuntu 16.4上安装NGINX，以便最终得到<em>一个带有我的猫的照片的静态站点</em>。我拥有计算机科学学位，并且在此之前一直担任软件工程师——但是开发这个简单的应用程序给了我很糟糕的体验。如果用一个周末来写代码，同时又不必担心服务器的问题，我们就可以构建出一个更加丰富的应用程序。</p>
+	<p>这只是阶梯上的其中一步——第一步。尽管源语已经上升了栈，但事实是，开发应用程序、将其放到互联网上、并将其从MVP（最简化可执行产品）扩展到可伸缩的、高性能的产品，这些都是开发过程中必经的不同的步骤。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/10/Workers-diagram-MVP--copy-3@3x-8--1-.png" class="kg-image"></figure>
+	<p></p>
+	<p>这就是“无服务器”承诺要解决的问题。抽象出流程中所有阶段所需的服务器，并允许开发人员做他们最擅长的事情：开发，而不必担心基础设施。</p>
+	<p>然而，今天有许多无服务器产品，他们所做的第一件事就与他们的承诺背道而驰——他们让您考虑服务器的问题。“你想要哪个地区的（服务器）？”（我想到的第一个问题是，你为什么要强迫我去考虑我更关心哪里的客户：东海岸，还是西海岸？）你为什么不能帮我解决这个问题？或者：“你认为你需要多少内存？”（再说一遍：你为什么把这当成我的问题？你自己去想吧！）</p>
+	<p>我们认为它不应该是这样的。</p>
+	<p>我经常回想起三年前我面对的这个问题，并且我知道全世界的开发人员每天都面临着这个问题。开发人员应该只专注于代码。其他的一些人则应该处理所有其他的问题，从建立基础设施到使该基础设施快速且可扩展。尽管我们已经在构建Workers时做出了一些架构方面的决策，这些决策使我们能够比其他任何人都做得更好，但这并不是我们今天要详细讲述的内容（但如果您想了解更多，您可以查看<a href="https://blog.cloudflare.com/cloud-computing-without-containers/">这里的一篇很棒的博客文章，其中详细介绍了其中的一些决策</a>）。今天我们真正要讲的是使Workers适配开发人员的需求。</p>
+	<p>我们希望Workers能够实现无服务器的梦想——让开发人员只需要担心代码中的bug。今天标志着Cloudflare通过Workers朝着建立良好开发体验的方向持续推进的开始。今天我们要宣布一些令人兴奋的事情，但这仅仅是个开始。</p>
+	<h3 id="wrangler-workers-cli-">Wrangler（游牧者）：正式的Workers CLI（命令行界面）</h3>
+	<p>Wrangler最初是开源的，用于Workers的Rust CLI，现已升级为正式的Workers CLI，可满足您所有Workers部署需求。</p>
+	<p>立即开始安装Wrangler</p>
+	<pre><code class="language-sh">npm install -g @cloudflare/wrangler</code></pre>
+	<p>从我们的<a href="https://workers.cloudflare.com/docs/templates" target="_blank">模板</a>库生成您的第一个项目</p>
+	<pre><code>`wrangler generate &lt;name&gt; &lt;template&gt; --type=["webpack", "javascript", "rust"]`</code></pre>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/10/worker_generate.gif" class="kg-image"></figure>
+	<p>Wrangler将负责将您的项目打包，打包到WebAssembly以及将您的项目上传到Workers，这些操作只需一个简单的步骤：</p>
+	<p><code>wrangler publish</code></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/10/wrangler_publish.gif" class="kg-image"></figure>
+	<p>我们很高兴您能够将Wrangler用在其他的一些好东西上：</p>
+	<ul>
+		<li>将Rust、C以及C++编译到WebAssembly</li>
+		<li>创建单/多文件JavaScript应用程序</li>
+		<li>安装NPM依赖项（我们为您处理好webpack）</li>
+		<li>添加KV名称空间并进行绑定</li>
+		<li>开始使用预制<a href="https://workers.cloudflare.com/docs/templates/" target="_blank">模板</a></li>
+	</ul>
+	<h3 id="-">新增和改进过的说明文件</h3>
+	<p>我们已经更新了我们的说明文件（并且是使用Wrangler来更新的！），使您比以往任何时候都能更容易地开始并部署您的第一个应用程序。</p>
+	<p>查看我们的新教程：</p>
+	<ul>
+		<li><a href="https://workers.cloudflare.com/docs/tutorials/build-an-application/" target="_blank">使用Workers部署Slack机器人</a></li>
+		<li><a href="https://workers.cloudflare.com/docs/tutorials/build-a-serverless-function/" target="_blank">构建一个二维码生成器</a></li>
+		<li><a href="https://workers.cloudflare.com/docs/tutorials/configure-your-cdn" target="_blank">提供与缓存来自云存储的文件</a></li>
+	</ul>
+	<h3 id="-multiscript-">适用于所有人的Multiscript（脚本分发工具）</h3>
+	<p>你们要求的，我们听取了。当我们介绍Workers时，我们想让事情尽可能的简单。作为开发人员，您会希望将代码拆分为逻辑组成部分。我们希望能够让您以一种对自己有意义的方式部署代码，而不是使用完全统一的脚本。</p>
+	<h3 id="no-domain-required-workers-dev-">no-domain-required.workers.dev（无需确定域名）</h3>
+	<p>编写软件是一个创造性的过程：一个新项目意味着从无到有。你可能还不完全知道它到底是什么，更不用说给它起什么名字了。</p>
+	<p>我们正在改变您开始使用Workers的方式，允许您将代码部署到a-subdomain-of-your-choice.workers.dev（您自己选择的子域）。</p>
+	<p>您可能在2月份就听说过这个<a href="https://blog.cloudflare.com/announcing-workers-dev/">公告</a>，我们很高兴能够公布这个消息。对于那些预注册的用户，您的子域名就在您注册并单击进入Workers后等着您。</p>
+	<h3 id="--1">免费试用</h3>
+	<p>伟大的产品并不总是来自伟大的想法，它们往往来自于可自由进行修补。当修修补补需要付出成本，即便是5美元，都会让我们意识到我们限制了人们的实验能力。</p>
+	<p>从今天开始，我们宣布提供Workers免费套餐。</p>
+	<p>免费套餐允许您每天在自己的域或workers.dev上使用Workers最多处理100000个请求。您可以点击<a href="https://workers.cloudflare.com/docs/reference/runtime/limits/" target="_blank">此处</a>了解更多使用限制信息。</p>
+	<h3 id="--2">新的以及改进过的用户界面</h3>
+	<p>我们已经打包好UI从而为您提供一个干净，简单的体验，让你可以在2分钟内注册到一个已部署的Worker：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/10/get-started.gif" class="kg-image"></figure>
+	<h3 id="--3">我们的承诺</h3>
+	<p>我们还有很长的路要走。这并不意味着我们完成了改善开发人员体验的任务并将其从任务列表上删除，而是要强调我们对此的承诺。正如我们的联合创始人Michelle喜欢说的：“我们才刚刚开始。”</p>
+	<p>还有很多信息，以及未来将会有更多的内容。加入我们，在<a href="https://workers.cloudflare.com/docs/reference/runtime/limits/" target="_blank">worker.cloudflare.com</a>上查找更多信息，如果您准备试用一下，可以在该网站上注册。</p>
+	<p>我们很高兴能够看到您构建的内容！</p>
+</div>

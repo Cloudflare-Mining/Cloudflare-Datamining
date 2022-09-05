@@ -1,0 +1,51 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/09/amp-real-url-@2x.png" class="kg-image"></figure>
+	<p>AMP（<a href="https://amp.dev/" target="_blank">加速移动页面</a>）项目的承诺是，它将使用户在浏览网站，尤其是移动端网站时，获得更愉悦的浏览体验。AMP HTML架构的设计目的是让网页能够快速加载，而不是用无关的内容分散用户对网页内容的注意力。</p>
+	<p>它特别针对出版商（如新闻机构），这些出版商希望为读者提供最好、最快的网络体验，让他们在旅途中了解新闻故事和深度文章。它后来发展成为对任何重视移动端性能的网站（包括电商商店、招聘板块和媒体网站）都很有价值。</p>
+	<p>除了AMP HTML架构之外，AMP还利用缓存将AMP内容的副本存储在接近终端用户的地方，以便他们能够尽快加载。尽管这种缓存使加载网站页面的速度大大加快，但它们也带来了一个问题：谷歌的缓存中提供的AMP页面的URL以https://google.com/amp/开头。这可能会让最终用户感到非常困惑。</p>
+	<p>用户已经习惯于在Web浏览器中查看导航栏以查看他们正在访问的网站。AMP缓存打破了这种体验。例如，这是一个通过Google的AMP缓存查看的BBC网站新闻报道：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/09/before.png" class="kg-image"></figure>
+	<p></p>
+	<p>注意浏览器显示页面来自google.com。这是因为AMP缓存。这使得页面加载非常快，但也可能令人困惑。为了帮助“修复”这个问题，谷歌在AMP页面顶部显示了实际站点。你可以看到这是bbc.com。点击bbc.com，您会跳转到由BBC网络服务器提供的相同页面，网页浏览器导航栏中显示bbc.com：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/09/after.png" class="kg-image"></figure>
+	<p></p>
+	<p>但是AMP缓存方法的问题不仅仅是引起用户的一些困惑。通过从谷歌的缓存中提供页面，读者就无法检查页面的真实性；例如，当BBC直接提供服务时，用户拥有域名的保证，域名前会有一个绿色锁表示SSL证书是有效的，用户甚至可以单击该锁来获取证书的详细信息。</p>
+	<p>去年11月，我们宣布了一个解决这些问题的技术方案，既允许从缓存中提供AMP页面，同时又保留原始页面URL及其所有优点。Gabbi Fisher和Avery Harnish撰写的<a href="https://blog.cloudflare.com/real-urls-for-amp-cached-content-using-cloudflare-workers/">深入技术博客文章</a>提供了该方案的全部细节。该解决方案利用<a href="https://wicg.github.io/webpackage/draft-yasskin-http-origin-signed-responses.html" target="_blank">Web Packaging</a>（其中包含一些巧妙的加密技术）来允许缓存（由Google，Cloudflare或其他人运行）保留AMP页面的副本并快速提供给最终用户，同时也包含页面最初来自何处的加密证明。</p>
+	<p>与了解网站包装的浏览器合作意味着可以将页面存储在AMP缓存中，并在浏览器的导航栏中显示原始站点URL的同时从AMP缓存中快速提供服务。全面解决问题！</p>
+	<p>我们将这一解决方案称为“AMP真实网址”（AMP Real URL），并且从今日起我们所有的客户都可以免费试用。</p>
+	<h2 id="-">这是如何运作的</h2>
+	<p>谷歌的AMP爬虫程序爬取您的网站内容，并一天内多次将其存储在AMP缓存中。如果您的站点启用了AMP Real URL，Cloudflare将对我们提供给该爬虫的内容进行数字签名，并以密码方式证明它是由您生成的。当访问者从谷歌的搜索结果到达AMP内容时，现代浏览器（目前只有Android上的Chrome）只需要在地址栏中显示正确的URL即可。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/09/image-5.png" class="kg-image"></figure>
+	<p></p>
+	<p>令人讨厌的灰色条已经不见了，所有访问者看到的都是你的确切网址：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/09/image-6.png" class="kg-image"></figure>
+	<p></p>
+	<p>重要的是，您的网站仍然能够像从前一样从Google的AMP缓存中获取服务；所有这一切都没有影响到SEO（搜索引擎优化）或网站性能。</p>
+	<p>自我们最初发布公告以来，我们已经有机会与出版业和电子商务社区的数十名成员进行接触，并分享我们的经验。</p>
+	<h2 id="amp-">AMP的状况</h2>
+	<p>谷歌发起的AMP项目驱动了很大比例的移动流量，极大地改善了在手机上浏览互联网的体验。我们采访过的许多网站通过AMP获得的网络流量均高达总流量的50%，它所提供的速度优势直接变成了更高的转化率。</p>
+	<p>AMP Real URL为使用AMP的网站提供了一些重要的好处：</p>
+	<ul>
+		<li><strong>品牌保护：</strong>网络用户已经习惯于认为：地址栏中的URL具有重要意义。将google.com放在内容页面的顶部会损害出版商在互联网上保持独特地位的能力。</li>
+		<li><strong>更易分析：</strong>AMP Real URL允许所有访客（AMP或其他访客）共存于同一个跟踪域中，大大简化了对他们用户的网站分析。</li>
+		<li><strong>增加屏幕空间利用率：</strong>之前在AMP被使用时，你的网站顶部会有一个“灰色栏”来显示真实的URL。有了AMP Real URL以后，就不必显示这一栏了。</li>
+		<li><strong>降低跳出率：</strong>我们认为，当发布商的实际域名位于地址栏中时，网站访问者不太可能退回到Google或其他网站，但随着AMP Real URL的推出，我们仍将收集更多这方面的数据。</li>
+		<li><strong>内容签名：</strong>通过依赖于加密技术，AMP Real URL可以确保交付给访问者的内容不会被操纵，从而保护其所使用的网站和品牌。现在，任何外部方都不可能添加、删除或修改站点的内容。</li>
+	</ul>
+	<p>我们也与AMP的互联网用户进行了交流，他们当然（在没有AMP Real URL时）遇到了一些困难。有些用户为其复杂性或者网站无法为他们加载而苦恼。其他人则对页面顶部的“灰色条”以及获取页面原始URL所需的操作感到恼火和困惑。最后，有些人希望确保当他们在通过AMP缓存浏览时谷歌不会修改页面的内容。</p>
+	<p>AMP Real URL令人高兴地解决了所有这些问题。它确保站点是<a href="https://blog.cloudflare.com/real-urls-for-amp-cached-content-using-cloudflare-workers/">加密签名</a>的，从而保护它们不被谷歌或任何人修改，即便站点内容是从您无法控制的域进行实际交付的。如果站点以任何方式被更改，浏览器将绝不会显示站点的真实URL。它还大大简化了AMP，解决了人们体验到的许多可靠性问题：AMP Real URL的驱动链接不是使用AMP传统上使用的复杂iframe机制打开的，而是像任意其他网站一样加载的（谷歌使用<a href="https://css-tricks.com/prefetching-preloading-prebrowsing/" target="_blank">rel=”prefetch”</a>来获得大部分相同的性能优势）。最后，“灰色条”的显示不再必要，因为正确的URL已经展现在了页面顶部的地址栏中，复制站点的URL来保存或共享，就像复制非AMP网站的URL一样。</p>
+	<p>我们也借此机会下架了我们多年来建立的其他AMP产品和实验，如<a href="https://blog.cloudflare.com/amp-validator-api/">Ampersand</a>和<a href="https://blog.cloudflare.com/firebolt/">Firebolt</a>。这些产品具有创新性，但我们了解到，发布商认为AMP产品与Google的搜索结果匹配得很好，而不是在搜索结果之外。几周前，这些旧产品的用户被告知所用的产品服务将逐渐被停止，以便他们能够关注AMP Real URL。</p>
+	<p><strong>在您的网站上设置</strong></p>
+	<p>谷歌现在推出了对AMP Real URL的支持（在Cloudflare之外AMP Real URL被称为<a href="https://www.google.com/url?q=https://developers.google.com/web/updates/2018/11/signed-exchanges&amp;sa=D&amp;ust=1555447300613000" target="_blank">签名交付</a>），从主要的谷歌搜索结果开始应用。随着时间的推移，他们希望将其扩展到搜索结果页面的其他区域，包括页面顶部的“头条”新闻区域。这使得对现今AMP流量大部分来自主要的搜索结果的网站（如电子商务，就业委员会，和广告支持）来说，AMP Real URL是最有价值的。新闻出版商可以且应该启用AMP Real URL，但他们现在所体验到的好处将来自“头条新闻”框之外的搜索结果。AMP Real URL目前仅在Chrome浏览器受到支持，但我们乐观地认为，随着它对互联网用户的好处变得越来越明显，它将得到更广泛的支持。</p>
+	<p>在与出版商和互联网用户沟通后，我们决定不对AMP Real URL收费。这并不是因为我们的客户不对此兴奋或不愿意支付它，而是因为AMP是构成许多网站流量的一个巨大组成部分。我们的动机和免费向数百万客户提供CDN或SSL服务是一样的，我们在这里是为了帮助建立一个更好的互联网，而改进AMP是朝着这个方向迈出的一大步。我们相信AMP Real URL技术将从根本上改变移动网络，使其变得更好，它应该被所有支持AMP的网站采用。我们还有另一个动机：我们希望这将激励重视AMP的潜在客户选择Cloudflare。</p>
+	<p>从今天开始，您将在Cloudflare控制面板的“速度”选项卡上找到一个新的部分：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/09/image-7.png" class="kg-image"></figure>
+	<p></p>
+	<p>我们将在接下来的几周内逐步推出对AMP Real URL的支持。立即启用它，当它在您的域名上激活时我们会通知您。如果您是对此感兴趣的企业客户，请联系我们，以便我们加速您的激活。</p>
+	<p>我们将向您展示AMP Real URL的早期用户的一些观点：</p>
+	<blockquote><strong>“AMP的性能优势为我们的业务创造了价值，我们很高兴看到AMP Real URL如何能够让优势更进一步”</strong><br>- Solomon Moskalenko，美国Xpress卡车运输总监，约翰逊集团</blockquote>
+	<p></p>
+	<blockquote><strong>“AMP是帮助我们的业务增长和接触各地消费者的关键部分。通过AMP Real URL，我们现在对我们的品牌有了更多的控制权，可以在我们的商业网站上进行分析。”</strong><br>—Sumantro Das，产品创新和品牌发展总经理，1-800-FLOWERS.COM</blockquote>
+	<p></p>
+	<blockquote><strong>“AMP在帮助我们更有效地接触我们的受众和在发展我们的在线社区方面发挥了关键作用，我们渴望使用AMP Real URL来更好地管理我们的在线表现，让我们的用户在网站上保持活跃。”|</strong><br>—安德鲁·华纳，Genius的首席技术官</blockquote>
+</div>

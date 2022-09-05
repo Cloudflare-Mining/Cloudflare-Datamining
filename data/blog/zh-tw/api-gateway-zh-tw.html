@@ -1,0 +1,71 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image5-4.png" class="kg-image" alt="Announcing the Cloudflare API Gateway"></figure>
+	<p>在過去十年中，網際網路經歷了結構性轉變。雖然網際網路曾經由靜態網站組成，內容含有文字、圖像及偶爾嵌入的影片。但網際網路的發展十分迅速。我們現在生活的幾乎每個方面都要依靠 API 驅動的應用程式的協助。我們不僅可以下載檔案，還可以透過交換豐富的資料來與應用程式<em>互動</em>。我們追蹤健身並將結果傳送到雲端。我們使用智慧鎖和各種 IoT 裝置。我們運用網路與朋友互動。</p>
+	<p>這一切盡如人意，但郤導致後端工作異常複雜。為什麼？開發人員需要管理 API 才能支援此功能，而且需要監視和驗證每個請求。由於這些任務非常困難，因此通常會外包給 API 閘道提供者。</p>
+	<p>遺憾的是，今天的閘道還有很多不足之處，首先是不便宜，然後是影響效能。最後，因為<a href="https://blog.cloudflare.com/landscape-of-api-traffic/">超過 50% 的流量</a>都會到達 API（並且可能透過第三方閘道傳送），所以還存在資料和隱私風險。真是一團糟。</p>
+	<p>今天，我們宣佈推出 Cloudflare API 閘道。<strong>我們將以少許成本完全替換您現有的閘道。</strong>我們的解決方案使用 <a href="https://workers.cloudflare.com/" target="_blank">Workers</a>、<a href="https://www.cloudflare.com/zh-tw/products/bot-management/" target="_blank">Bot Management</a>、<a href="https://www.cloudflare.com/zh-tw/products/zero-trust/access/" target="_blank">Access</a> 及 <a href="https://developers.cloudflare.com/rules/transform/" target="_blank">Transform Rules</a> 所支援的技術，提供市場上最先進的 API 工具集。</p>
+	<h2 id="-api-">什麼是 API 閘道？</h2>
+	<p>簡言之，API 閘道是一個功能套件，可以為您的 API 執行所有操作，這分為三類：</p>
+	<p><strong>安全性</strong><br>這些是我們已經在部落格上討論過的產品。像是<a href="https://developers.cloudflare.com/api-shield/products/api-discovery/" target="_blank">探索</a>、<a href="https://developers.cloudflare.com/api-shield/products/schema-validation/" target="_blank">結構描述驗證</a>、<a href="https://developers.cloudflare.com/api-shield/products/volumetric-abuse-detection/" target="_blank">濫用檢測</a>等工具。我們花了很多時間將我們的網路安全專業知識應用到 API 領域。</p>
+	<p><strong>管理與監控</strong><br>這些是使 API 保持井井有條的基礎工具，例如分析、路由和身分驗證。我們的 <a href="https://www.cloudflare.com/zh-tw/products/zero-trust/access/" target="_blank">Cloudflare Access</a> 等現有產品已可用於實現這些功能，並且有更多功能正在開發中。</p>
+	<p><strong>其他</strong><br>這些是使一切保持運作的小（但至關重要）的項目。Cloudflare 已提供 SSL / TLS 終止、負載平衡和 proxy 服務，可在預設情況下運作。</p>
+	<p>今天的部落格文章將詳細介紹每項功能。我們很高興地宣佈，現已正式發佈<em>所有</em>安全功能，因此讓我們先討論一下這些功能。</p>
+	<h2 id="-">探索</h2>
+	<p>我們的客戶渴望保護他們的 API。遺憾的是，客戶不會總是記錄這些端點，或更糟糕的是，客戶<em>認為</em>已記錄所有內容，但卻在無意中丟失或修改了端點。這些隱藏的端點有時稱為<a href="https://www.bearer.com/resources/shadow-apis-detect-business-risk" target="_blank">影子 API</a>。我們需要從 API 表面區域的詳盡（且準確）概觀開始我們的旅程。<br></p>
+	<p>這就是探索的用武之地。前往 Cloudflare 儀表板，選擇「<strong>安全性</strong>」索引標籤，然後選擇「API Shield」。啟動該功能並告訴我們您希望如何識別您的 API 流量。大多數使用者提供標頭（目前可用），但我們也可以使用請求內文或 Cookie（即將推出）。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/03/image7.jpg" class="kg-image" alt="Cloudflare API Shield 索引標籤，顯示已發現的各種端點和一組建議的速率限制閾值。"></figure>
+	<p>我們提供 API 端點的詳盡清單。Cloudflare 列出每種方法、路徑和其他中繼資料，有助於您瞭解您的表面區域。我們甚至<em>收合</em>包含變數（例如，<em>/account/<strong>217</strong></em>）的端點，使其變得普遍適用（例如，<em>/account/<strong>{var1}</strong></em>）。</p>
+	<p>探索是應對混亂情況的強大工具。我們的客戶通常希望找到 30 個端點，但卻會驚訝地發現他們有超過 <em>100</em> 個活動端點。</p>
+	<h2 id="--1">結構描述驗證</h2>
+	<p>也許您已經擁有 API 端點的結構描述。結構描述類似於範本，可提供您預期 API 請求包含的路徑、方法和其他資料。許多開發人員遵循 <a href="https://swagger.io/specification/" target="_blank">OpenAPI 標準</a>來產生（和維護）結構描述。</p>
+	<p>為了加強您的網路安全，我們可以根據此結構描述<em>驗證</em>傳入流量。這是阻止基本攻擊的好方法。Cloudflare 將拒絕不符合要求的請求、丟棄忽略規範要求的無意義流量。只需將結構描述上傳到儀表板，選擇要執行的操作，然後部署：</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/03/image9.jpg" class="kg-image" alt="在提供結構描述後，結構描述上傳流程中的一個步驟。Cloudflare 列出每個端點，其中包含作為中繼資料提供的路徑、查詢、標頭、Cookie 和內文。"></figure>
+	<p>結構描述驗證已經審查一些世界上最大的加密網站、傳遞服務和支付平台的流量。此功能現已推出，我們將很快推出內文驗證。</p>
+	<h2 id="--2">濫用檢測</h2>
+	<p>可靠的網路安全方法將同時使用結構描述驗證<em>和</em>探索，確保流量與預期格式相符。但是，通過的濫用流量呢？</p>
+	<p>隨著 Cloudflare 探索新的 API 端點，我們實際上建議對每個端點進行<em>速率限制</em>。這就是濫用偵測的作用，並能解決對更複雜的網路安全問題。</p>
+	<p>考慮傳回天氣更新的 API 端點。具體而言，如果下一個小時可能會下雪，端點將傳回「是」，否則將傳回「否」。我們的演算法可能會偵測到普通使用者每 10 分鐘請求一次此資料。但是，一小群組抓取程式每 10 分鐘發出 37 個請求。Cloudflare 會自動建議介於兩者之間的加權閾值，以便為普通使用者提供一些喘息空間。這將防止濫用抓取服務過於頻繁地獲取天氣更新。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image3-18.png" class="kg-image"></figure>
+	<p>我們提供使用新的<a href="https://blog.cloudflare.com/advanced-rate-limiting/">進階速率限制</a>引擎建立規則的選項。您可以使用 Cookie、標頭等來調整閾值。幾個月來，我們一直在使用濫用偵測來保護 <a href="https://api.cloudflare.com/" target="_blank">api.cloudflare.com</a>。</p>
+	<p>此功能我們最喜歡的部分：依賴於我們用於<a href="https://www.cloudflare.com/zh-tw/products/bot-management/" target="_blank">機器人管理</a>的機器學習方法。這是我們的產品相互補充（並從中受益）的另一種方式。</p>
+	<p>濫用偵測現已推出。如果您對<em>循序</em>濫用偵測（我們用其標記異常請求流量）感興趣，請查看我們<a href="https://blog.cloudflare.com/api-abuse-detection/">先前的部落格文章</a>。後續產品處於搶先體驗階段，我們在正式發佈之前將持續調整。</p>
+	<h2 id="mtls">mTLS</h2>
+	<p>雙向 TLS 將網路安全提升到新境界。傳入流量到達 API 時可使用憑證進行驗證，這對於行動和 IoT 裝置特別有用。此外，這是一种極好的積極網路安全模型，可以（並且應該）供大多數裝置生態系統採用。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image1-48.png" class="kg-image"></figure>
+	<p>例如，讓我們回到天氣 API。也許此服務包括從溫度計<em>接收</em>目前溫度的第二個端點。但有一個問題：任何人都可以發出虛假請求，提供不準確的讀數給端點。要防止出現這種情況，請使用 mTLS 在<em>合法的</em>溫度計上安裝用戶端憑證，然後讓 Cloudflare 驗證該憑證。任何其他請求將被拒之門外。問題解決了！</p>
+	<p>我們已經為每個 Cloudflare 客戶提供一組免費憑證且會繼續提供。但從今天開始，API 閘道客戶將預設獲得<em>無限</em>憑證。</p>
+	<h2 id="--3">驗證</h2>
+	<p>許多現代 API 需要進行身分驗證。事實上，身分驗證可以解鎖各種功能，從而允許建立工作階段（透過登入）、交換個人資料和提高基礎結構效率。當然，Cloudflare 會保護通過我們的網路且經過身分驗證的流量。</p>
+	<p>但是，採用 API 閘道，Cloudflare 在身分驗證流量方面發揮著更積極的作用，有助於<strong>發佈</strong>及<strong>驗證</strong>以下項目：</p>
+	<ul>
+		<li>API 金鑰</li>
+		<li>JSON Ｗeb 權杖 (JWT)</li>
+		<li>OAuth 2.0 權杖</li>
+	</ul>
+	<p>我們可以使用存取控制清單，來協助您管理具有不同權限的不同使用者群組。這很重要，因為您目前的提供者正在引入大量的延遲和不必要的資料交換。如果一個請求必須傳送到 Cloudflare 生態系統<em>之外</em>，則傳輸距離會比所需更遠：</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/03/image2-39.png" class="kg-image" alt="從 Cloudflare 網路傳送請求以進行身分驗證會產生額外的延遲。"></figure>
+	<p>Cloudflare 可以在我們的全球網路上進行身分驗證，並在很短的時間內處理請求。這種技術很難實現，但我們覺得這是重要功能，不容忽視。我們如何這麼快就建構了此功能？<a href="https://www.cloudflare.com/zh-tw/products/zero-trust/access/" target="_blank">Cloudflare Access</a>。我們利用與身分識別提供者合作的經驗，再次將其移植到 API 領域。我們的閘道包括無限制的身分驗證和權杖交換。這些功能將很快推出。</p>
+	<h2 id="--4">路由和管理</h2>
+	<p>讓我們簡要介紹<a href="https://www.cloudflare.com/learning/serverless/glossary/serverless-microservice/" target="_blank">微服務</a>。現代應用程式都是龐然大物，因此開發人員將其分解為叫做「微服務」的較小區塊。</p>
+	<p>考慮可以協助您預訂酒店房間的應用程式。這類應用程式可能使用一個微服務來獲取有空房的日期，另一個微服務獲取價格，還有一個微服務來獲取房間類型。也許由不同的團隊管理每個微服務，但都需要從單個公用進入點獲得：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image8.png" class="kg-image" alt="依賴於微服務的架構中的各個步驟。訪客向酒店 API 發出請求，然後請求將路由到有空房的日期、價格或房間類型。"></figure>
+	<p>單一進入點（以往由 API 閘道管理）負責將每個請求<em>路由</em>到正確的微服務。為實現此功能，多年來，我們的許多客戶一直在付費使用獨立的服務。現在無需如此。我們以 <a href="https://blog.cloudflare.com/introducing-transform-rules-with-url-rewriting-at-the-edge/">Transform Rules</a> 產品為基礎，在網路邊緣動態重寫和重新路由，這易於設定、部署快速，並且原生內建於 API 閘道中。Cloudflare 現在可以成為 API 的單一進入點。</p>
+	<p>這隻是冰山一角。API 閘道實際上可以<em>取代</em>您的微服務，方法是與我們的 <a href="https://workers.cloudflare.com/" target="_blank">Workers</a> 產品整合。如何做到？考慮編寫執行某些操作的 Worker；也許傳回酒店價格，這些價格儲存在我們網路上的 <a href="https://blog.cloudflare.com/durable-objects-ga/">Durable Objects</a>。使用 API 閘道，到達我們網路的請求將透過 Transform Rules 路由到正確的微服務，然後使用 Workers（仍在我們的網路上！）完全提供服務。如有必要，這些 Workers 可能會聯絡您的來源以獲取更多資訊。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image4-3.png" class="kg-image" alt="Cloudflare 簡化了 API 結構。透過在網路邊緣處理身分驗證、路由、管理和儲存，可以消除多個躍點。"></figure>
+	<p>與微服務替代方案相比，Workers 更快速、更便宜、更簡單。此整合將很快推出。</p>
+	<h2 id="api-">API 分析</h2>
+	<p>客戶告訴我們，<em>查看</em> API 流量有時甚至比對其採取行動更重要。事實上，這並非 API 特有的趨勢。我們今天發佈了<a href="https://blog.cloudflare.com/envoy-media-machine-learning-bot-management/">另一篇部落格</a>，探討一位客戶如何使用我們的機器人智慧被動地記錄有關威脅的資訊。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image6.png" class="kg-image"></figure>
+	<p>透過 API 分析，我們可以利用其他產品即時顯示有用的資料。您可以查看常用端點、按 ML 驅動的見解進行篩選、查看濫用閾值的直方圖以及捕獲趨勢。</p>
+	<p>API 分析即將推出。發生這種情況時，您還可以匯出自訂報告並在組織內分享見解。</p>
+	<h2 id="--5">日誌記錄、配額管理等</h2>
+	<p>我們的<em>所有</em>既有功能（如快取、負載平衡和記錄整合）都可與 API 閘道原生配合使用。不能因為這些功能是原始閘道功能就忽視它們，其十分必要。由於 Cloudflare 在同一位置執行所有這些功能，因此您無需執行任何操作即可獲得延遲優勢。</p>
+	<p>我們還在擴展 Enterprise 記錄功能以執行即時日誌記錄。如果您選擇在 Cloudflare 的網路上進行身分驗證，則可以查看曾存取 API 的每個使用者的詳細記錄。同樣，我們會在收到、驗證、路由和回應每個請求時追蹤其生命週期。一切都被記錄。</p>
+	<p>最後，我們正在建構配額管理，這項功能可以計算較長時間（如一個月）內的 API 請求，並允許您管理使用者的閾值。我們還推出了<a href="https://blog.cloudflare.com/advanced-rate-limiting/">進階速率限制</a>，有助於處理更複雜的情況（包括 GraphQL 的內文檢查）。</p>
+	<h2 id="--6">結論</h2>
+	<p>我們所有的網路安全功能（探索、結構描述驗證、濫用偵測和 mTLS）現已推出！我們將這些功能稱為 <a href="https://developers.cloudflare.com/api-shield/" target="_blank">API Shield</a>，因為這些功能構成保護其餘閘道功能的屏障。Enterprise 客戶可以立即要求其客戶團隊進行存取。</p>
+	<p>API 閘道的許多其他部分現在處於搶先體驗階段。據 Gartner® 稱，「到 2025 年，將只有不到 50% 的企業 API 能得到管理，因為 API 的爆炸式成長會超越 API 管理工具的能力」。我們的目標是提供經濟實惠的閘道，以對抗此趨勢。如果您有要測試的特定功能，請告知您的客戶團隊，以便我們儘快為您推出相應功能。</p>
+	<!--kg-card-begin: markdown-->
+	<p><small>資料來源：Gartner《2022 年預測：API 需要改進安全性和管理》(Predicts 2022: APIs Demand Improved Security and Management) ，作者：Shameen Pillai、Jeremy D'Hoinne、John Santoro、Mark O'Neill、Sham Gill，2021 年 12 月 6 日。GARTNER 是 Gartner, Inc. 和/或其附屬公司在美國和其他國家/地區的註冊商標和服務標識，在此使用已獲許可。版權所有。</small></p>
+	<!--kg-card-end: markdown-->
+</div>

@@ -1,0 +1,77 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/12/image-92.png" class="kg-image"></figure>
+	<!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 56.25%">
+		<iframe src="https://iframe.videodelivery.net/aa624017cde360c69911ee47d70758d9?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2Faa624017cde360c69911ee47d70758d9%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D247s" style="border: none; position: absolute; top: 0; height: 100%; width: 100%" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+	</div>
+	<p></p>
+	<!--kg-card-end: html-->
+	<p>我们将Cloudflare Access™构建为解决Cloudflare内部问题的工具。我们依靠一组应用程序来管理和监视我们的网络。其中一些是我们自己托管的受欢迎产品，例如Atlassian套件，而另一些则是我们自己构建的工具。我们将这些应用程序部署在专用网络上。要访问它们，您必须通过Cloudflare办公室中的安全WiFi网络进行连接，或者使用VPN。</p>
+	<p>VPN给我们的工作增加了阻力。我们不得不将Cloudflare的部分入门课程专门用于教授用户如何进行连接。如果有人收到PagerDuty警报，他们必须赶到笔记本电脑上坐下来等待VPN连接。团队成员在外工作相当麻烦。新办公室必须回程他们的流量。在2017年和2018年初，我们的IT团队筛选了数百张服务台工单，标题如下：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/12/image-93.png" class="kg-image"></figure>
+	<p>当我们的IT团队还在努力解决可用性问题时，我们的安全团队认为，在我们的专用网络上证明其有漏洞的风险太大，难以维持。一旦进入VPN，用户几乎总是具有过多的访问权限。我们对专用网络上发生的情况的了解有限。我们试图对网络进行分段，但这容易出错。</p>
+	<p>大约在那个时候，谷歌发布了其BeyondCorp论文，概述了一种被称为零信任安全的模型。零信任边界不信任专用网络上的任何用户，而会评估每个请求和连接的用户身份和其他变量。</p>
+	<p>我们决定在Cloudflare之上构建自己的实现。尽管BeyondCorp是一个新概念，但我们在这一领域有经验。近十年来，Cloudflare的全球网络一直像互联网上的应用程序的零信任边界一样运行——我们只是没有这样称呼。例如，诸如我们的WAF之类的产品评估了对面向公众的应用程序的请求。我们可以将身份添加为新的评估层，并使用相同的网络来保护团队内部使用的应用程序。</p>
+	<p>我们开始将自托管应用程序移至该新项目。用户可以从任何网络或位置通过我们的SSO提供程序登录，体验就像任何其他SaaS应用一样。我们的安全团队获得了所需的控制权和可见性，我们的IT团队变得更加高效。具体来说，我们的IT团队<a href="https://www.cloudflare.com/case-studies/how-cloudflare-uses-cloudflare-access-to-secure-our-global-team" target="_blank">在维修与VPN相关的工单上所花费的时间减少了约80％</a>，每年可节省超过10万美元的服务台效率。在2018年晚些时候，我们将该产品作为客户也可以使用的产品推出。</p>
+	<p>通过将安全性转移到Cloudflare的网络，我们还可以使外围更智能。我们可能要求用户<a href="https://blog.cloudflare.com/require-hard-key-auth-with-cloudflare-access/">使用硬键登录</a>，而这是我们的身份提供商不支持的。我们可以限制与<a href="https://blog.cloudflare.com/two-clicks-to-enable-regional-zero-trust-compliance/">特定国家/地区</a>的应用程序的连接。我们添加了<a href="https://blog.cloudflare.com/tanium-cloudflare-teams/">设备状态</a>集成。Cloudflare Access在这种零信任模式下成为了身份信号的聚合器。</p>
+	<p>结果，我们的内部工具突然变得比我们使用的SaaS应用程序更安全。我们只能将规则添加到我们可以放置在Cloudflare反向代理上的应用程序中。当用户连接到流行的SaaS工具时，他们没有通过Cloudflare的网络。我们在所有应用程序中缺乏一致的可见性和安全性。我们的客户也是如此。</p>
+	<p>从今天开始，我们的团队和您的团队都可以解决此问题。我们很高兴地宣布，您现在可以将Cloudflare Access的零信任安全功能引入您的SaaS应用程序。您可以使用Cloudflare Access保护可以与SAML身份提供程序集成的任何SaaS应用程序。</p>
+	<p>即使SaaS应用程序未部署在Cloudflare上，我们仍然可以向每个登录添加安全规则。您可以从今天开始使用此功能，在接下来的几个月中，您将能够确保流向这些SaaS应用程序的所有流量都通过Cloudflare Gateway进行连接。</p>
+	<h3 id="-cloudflare-">在Cloudflare的网络中标准化和聚合身份</h3>
+	<p>Cloudflare Access中对SaaS应用程序的支持始于标准化身份。Cloudflare Access汇总了不同的身份来源：用户名，密码，位置和设备。管理员建立规则来确定用户必须满足哪些条件才能访问应用程序。当用户尝试连接时，Cloudflare会在用户访问应用程序之前强制执行该清单中的所有规则。</p>
+	<p>该清单中的主要规则是用户身份。Cloudflare Access不是身份提供商。相反，我们从Okta，Ping Identity，OneLogin等SSO服务或GitHub等公共应用程序获取身份。当用户尝试访问资源时，我们会提示他们使用配置的提供程序登录。如果成功，则提供程序与Cloudflare Access共享用户的身份和其他元数据。</p>
+	<p>用户名只是零信任决定的一部分。我们考虑其他规则，例如国家/地区限制或通过Tanium等合作伙伴或不久之后将通过其他合作伙伴CrowdStrike和VMware Carbon Black进行的设备配置。如果用户满足所有这些条件，则Cloudflare Access会将这些变量汇总为我们的网络信任的标准身份证明：JSON Web Token（JWT）。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/12/image-94.png" class="kg-image"></figure>
+	<p>JWT是一种安全的，信息密集的共享信息的方式。最重要的是，JWT<a href="https://tools.ietf.org/html/rfc7519" target="_blank">遵循一种标准</a>，以便不同的系统可以相互信任。当用户登录Cloudflare Access时，我们会生成并签署一个JWT，其中包含有关用户的决策和信息。我们将该信息存储在用户的浏览器中，并将其视为会话期间的身份证明。</p>
+	<p>每个JWT必须由三个Base64-URL字符串组成：请求头，有效载荷和签名。</p>
+	<ul>
+		<li><strong>请求头</strong>定义JWT中加密数据的加密操作。</li>
+		<li><strong>有效载荷</strong>包含至少一个且通常是多个的JSON编码的声明（claim）的名称-值对。例如，有效载荷可以包含用户的身份。</li>
+		<li><strong>签名</strong>允许接收方确认有效载荷是真实的。</li>
+	</ul>
+	<p>我们将身份数据存储在有效载荷内部，并包括以下详细信息：</p>
+	<ul>
+		<li><strong>User identity</strong>：通常是从您的身份提供者那里检索到的用户的电子邮件地址。</li>
+		<li><strong>Authentication domain</strong>：token签名的域。对于Access，我们使用“example.cloudflareaccess.com”，其中“example”是您可以配置的子域。</li>
+		<li><strong>amr</strong>：如果可用，则登录使用的多因素身份验证方法，例如硬键或TOTP代码。</li>
+		<li><strong>Country</strong>：连接的用户所在的国家。</li>
+		<li><strong>Audience</strong>：您试图访问的应用程序的域。</li>
+		<li><strong>Expiration</strong>：token失效时间。</li>
+	</ul>
+	<p>某些应用程序本身就为SSO支持JWT。我们可以将token发送到应用程序，并且用户可以登录。在其他情况下，我们已经为<a href="https://blog.cloudflare.com/cloudflare-access-sharing-our-single-sign-on-plugin-for-atlassian/">Atlassian</a>和<a href="https://blog.cloudflare.com/open-sourcing-our-sentry-sso-plugin/">Sentry</a>等受欢迎的提供商发布了插件。但是，大多数应用程序缺少JWT支持，并且依赖于一个不同的标准：SAML。</p>
+	<h3 id="-cloudflare-workers-jwt-saml">使用Cloudflare Workers将JWT转换为SAML</h3>
+	<p>您可以部署Cloudflare的反向代理来保护您托管的应用程序，这使Cloudflare Access可以在这些请求到达边缘时添加身份检查。但是，您使用的SaaS应用程序由供应商自己托管和管理，这是它们提供的价值的一部分。就像我无法决定谁可以走进楼下面包店的前门一样，您也无法为应允许和不应允许的请求制定规则。</p>
+	<p>当这些应用程序支持与您的SSO提供程序集成时，您就可以控制登录流程。许多应用程序依靠流行的标准SAML在两个系统之间安全地交换身份数据和用户属性。SaaS应用程序不需要知道身份提供者的规则的详细信息。</p>
+	<p>Cloudflare Access使用该关系来强制通过Cloudflare的网络进行SaaS登录。应用程序本身将Cloudflare Access视为SAML身份提供者。当用户尝试登录时，应用程序会将用户送往Cloudflare Access登录。</p>
+	<p>也就是说，Cloudflare Access不是身份提供者——它是身份聚合者。当用户访问Access时，我们会将他们重定向到身份提供者，就像现在用户请求使用Cloudflare反向代理的网站时所做的那样。但是，通过添加通过Access的跳转，我们可以分层附加的上下文规则并记录事件。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/12/image-95.png" class="kg-image"></figure>
+	<p>我们仍然为每个登录生成一个JWT，提供身份的标准证明。与SaaS应用程序集成要求我们将该JWT转换为可以发送给SaaS应用程序的SAML断言（assertion）。Cloudflare Access在世界各地的每一个数据中心都可以运行，以提高可用性，避免降低用户速度。我们不想失去这种流的优势。为了解决这个问题，我们求助于Cloudflare Workers。</p>
+	<p>Cloudflare Access的核心登录流程已<a href="https://workers.cloudflare.com/built-with/projects/cloudflare-access" target="_blank">在Cloudflare Workers上运行</a>。通过使用Workers接收JWT并将其内容转换为发送到SaaS应用程序的SAML断言，我们建立了对SaaS应用程序的支持。该应用程序认为Cloudflare Access是身份提供者，即便我们只是将来自您的SSO提供者和其他来源的身份信号聚合到JWT中，并通过SAML将摘要发送给该应用程序。</p>
+	<h3 id="-gateway-">与Gateway集成以进行全面的日志记录（即将推出）</h3>
+	<p>Cloudflare Gateway通过过滤离开笔记本电脑和办公室的联网连接，保护您的用户和数据免受互联网上的威胁。Gateway使管理员能够阻止、允许或记录到SaaS应用程序的每个连接和请求。</p>
+	<p>然而，用户通过个人设备和家庭WiFi网络连接，可能会绕过企业网络上可用的互联网安全过滤。如果用户有密码和MFA token，他们就可以绕过安全需求，从自己家中不受保护的设备进入SaaS应用程序。</p>
+	<p>为了确保流向您的SaaS应用程序的流量仅通过受Gateway保护的设备进行连接，Cloudflare Access将添加一个新的规则类型，用户需要Gateway才能登录到你的SaaS应用。一旦启用，用户将只能在使用Cloudflare Gateway时连接到您的SaaS应用程序。Gateway将记录这些连接，并提供对SaaS应用和互联网内的每一个行动的可见性。</p>
+	<h3 id="-saml-sso">现在，每个身份提供程序都可以使用SAML SSO</h3>
+	<p>身份提供程序有两种类型，您可能每天都要使用它们。一种类型是专门构建为身份提供程序的，而另一种类型则意外地成为了身份提供程序。有了这个版本，Cloudflare Access可以将两者中的任何一个转换为兼容SAML的SSO选项。</p>
+	<p><strong>企业身份提供程序</strong>，如Okta或Azure AD，管理您的企业身份。您的IT部门创建并维护该帐户。他们可以将其与使用SSO的SaaS应用程序集成。</p>
+	<p>第二种类型的登录选项由SaaS提供程序组成，这些提供程序最初是作为消费者应用程序提供的，后来演变为<strong>公共身份提供程序</strong>。LinkedIn，GitHub和Google都要求用户在他们的应用程序中创建账户，用于网络、编码或电子邮件。</p>
+	<p>在过去十年中，其他应用程序开始信任这些公共身份提供者的登录。您可以使用您的谷歌帐户登录到一个新闻阅读器和您的GitHub帐户认证到DigitalOcean。谷歌和Facebook等服务成为每个人的SSO选择。然而，大多数企业应用程序只支持与单一SAML提供者的集成，而公共身份提供程序不提供这一点。要将SSO作为一个团队来依赖，您仍然需要一个企业身份提供程序。</p>
+	<p>Cloudflare Access将用户登录从任何身份提供程序转换为JWT。在这个版本中，我们还生成了一个标准SAML断言。您的团队现在可以与LinkedIn或GitHub等公共提供商一起使用企业身份提供程序的SAML SSO特性。</p>
+	<h3 id="multi-sso-saas-">Multi-SSO迎合SaaS应用</h3>
+	<p>我们<a href="https://blog.cloudflare.com/multi-sso-and-cloudflare-access-adding-linkedin-and-github-teams/">将Cloudflare Access描述为一种Multi-SSO</a>服务，因为您可以将多个身份提供程序及其SSO流集成到Cloudflare的零信任网络中。现在，该功能可以扩展到将多个身份提供程序与单个SaaS应用程序集成在一起。</p>
+	<p>大多数SaaS应用程序仅与单个身份提供程序集成，从而限制了您的团队只有一个选项。我们知道，我们的客户与合作伙伴、承包商或收购方合作，这使得SaaS登录很难标准化单一身份选项。</p>
+	<p>Cloudflare Access可以同时连接多个身份提供程序，包括同一提供程序的多个实例。当用户被提示登录时，他们可以选择其特定团队使用的选项。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/12/image-96.png" class="kg-image"></figure>
+	<p>我们已经采用了该功能，并将其扩展到Access for SaaS功能。Access可以从任意提供程序那里生成一致的身份，我们现在可以将其扩展到SaaS应用程序来用作SSO。即使应用程序仅支持单个身份提供程序，您仍然可以集成Cloudflare Access并跨多个源合并身份。现在，使用Okta实例的团队成员和使用LinkedIn的承包商都可以将SSO都集成到Atlassian套件中。</p>
+	<h3 id="-">一个地方包含您的所有应用</h3>
+	<p>Cloudflare Access发布了<a href="https://blog.cloudflare.com/announcing-the-cloudflare-access-app-launch/">Access App Launch</a>作为您所有内部应用程序的单一目的地。您的团队成员只需访问您组织的唯一URL，App Launch会显示他们可以访问的所有应用。该功能不需要其他管理配置。Cloudflare Access会读取用户的JWT，并仅返回允许他们访问的应用程序。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/12/image-97.png" class="kg-image"></figure>
+	<p>现在，这种经验已扩展到您组织中的所有应用程序。当您将SaaS应用程序与Cloudflare Access集成时，您的用户将能够在App Launch中发现它们。就像内部应用程序的流程一样，这不需要其他配置。</p>
+	<h3 id="--1">如何开始</h3>
+	<p>首先，您需要一个Cloudflare Access帐户和一个支持SAML SSO的SaaS应用程序。导航到Cloudflare for Teams控制面板，然后选择“SaaS”应用程序选项来开始集成您的应用程序。Cloudflare Access将逐步完成配置应用程序的步骤，使其信任Cloudflare Access作为SSO选项。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/12/image-98.png" class="kg-image"></figure>
+	<p>您是否有其他需要额外配置的应用程序？请告诉我们。</p>
+	<h3 id="-cloudflare-for-teams-saas-">立即使用Cloudflare for Teams保护SaaS应用程序</h3>
+	<p>所有Cloudflare for Teams客户（包括免费计划的组织）都可使用Cloudflare Access for SaaS。<a href="https://dash.cloudflare.com/sign-up/teams" target="_blank">注册一个Cloudflare for Teams帐户</a>，然后<a href="https://developers.cloudflare.com/access/setting-up-access/access-applications/connecting-saas-apps/" target="_blank">按照文档中的步骤</a>即可开始使用。</p>
+	<p>我们将在年底之前开始扩展Gateway beta程序，从而将Gateway的日志记录和Web过滤与Access for SaaS功能集成在一起。</p>
+</div>

@@ -1,0 +1,26 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image7--1--1.png" class="kg-image"></figure>
+	<p>网络层 DDoS 攻击<a href="https://blog.cloudflare.com/zh-cn/network-layer-ddos-attack-trends-for-q4-2020-zh-cn/">愈演愈烈</a>，安全团队不得不重新考虑思索其 L3 DDoS 缓解策略，以防业务受到影响。<a href="https://www.cloudflare.com/zh-cn/magic-transit" target="_blank">Magic Transit</a> 将我们的网络置于客户网络的之前，保护客户的整个网络免受 DDoS 攻击，有永远在线或按需使用两种选择。今天，我们推出一项新的功能来改善Magic Transit 中按需使用客户的体验：基于通信流监控。借助基于通信流监控功能，我们能够检测威胁并在客户遭受攻击时通知客户，以便他们激活 Magic Transit 来实现防护。</p>
+	<p>Magic Transit 是 Cloudflare 提供的解决方案，可在 IP 层提供保护并加速您的网络。借助 Magic Transit，您可以从各个 Cloudflare 数据中心获得DDoS 保护服务、流量加速和其他网络功能。凭借 Cloudflare 的全球网络（覆盖 200 多个城市，容量达 59 Tbps）和在边缘节点3 秒内快速缓解攻击，即便是最巨大、最复杂的攻击，您也可以轻松拿下，性能也不会受到影响。如需进一步了解 Magic Transit，请访问<a href="https://blog.cloudflare.com/zh-cn/magic-transit-zh-cn/">此处</a>。</p>
+	<h3 id="-magic-transit">按需使用 Magic Transit</h3>
+	<p>借助 Magic Transit，Cloudflare通过 BGP 向互联网<a href="https://blog.cloudflare.com/bringing-your-own-ips-to-cloudflare-byoip/">广播客户的 IP 前缀</a>，将流量吸引到我们的网络来实施 DDoS 保护。客户可以选择 Magic Transit 的永远在线或按需使用模式。使用永远在线模式时，我们会始终广播其 IP 并缓解攻击；对于按需模式，客户仅在其网络受到主动攻击时才激活广播。不过，按需模式存在一个问题：如果流量路由未通过 Cloudflare 的网络，那么当您发现自己遭受攻击并激活 Magic Transit 进行缓解时，您的业务或许已经受到了影响。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image2--1-.png" class="kg-image"></figure>
+	<h3 id="-">按需模式与基于通信流监控搭配</h3>
+	<p>借助基于通信流的监控，Cloudflare 能够基于源自您的数据中心的通信流来检测攻击并通知您，从而解决与按需模式相关的问题。您可以对路由器进行配置，以持续向 Cloudflare 发送 NetFlow 或 sFlow（即将推出）。我们会获取您的通信流数据，并对其进行大型 DDoS 攻击分析。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image3--1-.png" class="kg-image"></figure>
+	<p>将您的网络通信流数据发送到 Cloudflare 进行分析</p>
+	<p>检测到攻击时，我们会自动（通过电子邮件、webhook 和 PagerDuty）通知您相关攻击的信息。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image4--1-.png" class="kg-image"></figure>
+	<p>Cloudflare 基于您的通信流数据检测攻击</p>
+	<p>您可以选择手动激活 Magic Transit 的 IP 广播（我们支持通过 Cloudflare 仪表板或 API 激活），也可以选择自动激活，以最大程度地缩短缓解时间。一旦激活 Magic Transit，并且您的流量经由 Cloudflare 后，您将仅收到通过 GRE 隧道流回到您网络的干净流量。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image6-7.png" class="kg-image"></figure>
+	<p>激活 Magic Transit 以实施 DDoS 防护</p>
+	<p>将基于通信流监控与 Magic Transit 按需模式搭配使用，您的团队可以安枕无忧。只需完成简单的一次性设置，便可放心 Cloudflare 在您遭受攻击时通知您（自动开始保护您的网络），不会再等到攻击影响您的业务后才做出响应。一旦激活 Magic Transit，您便处于 Cloudflare 全球网络和业界领先 DDoS 保护之中：您的用户可以继续照常开展业务，性能不受任何影响。</p>
+	<h3 id="-acme-corp-">基于通信流监控的工作流程示例：加快 Acme Corp 的缓解时间</h3>
+	<p>我们来通过一个示例，逐步了解 Magic Transit 按需模式和基于通信流监控的部署过程和工作流程。Acme Corp 的网络最近遇到了大规模<a href="https://blog.cloudflare.com/ransom-ddos-attacks-target-a-fortune-global-500-company/">勒索型 DDoS 攻击</a>，导致面向外部和内部的应用程序出现服务中断。为确保它们不会再次受到影响，Acme 网络团队选择设置按需使用 Magic Transit。他们授权 Cloudflare 在攻击发生时将其 IP 前缀广播到互联网，并设置 <a href="https://www.cloudflare.com/zh-cn/learning/network-layer/what-is-gre-tunneling/" target="_blank">Anycast GRE 隧道</a>来接收从 Cloudflare 传回的干净流量。最后，他们对每个数据中心的路由器进行配置，将 NetFlow 数据发送到 Cloudflare Anycast IP。</p>
+	<p>Cloudflare 用靠近发送方的数据中心接收 Acme 的 NetFlow 数据（感谢 Anycast！），并对其进行 DDoS 攻击分析。当流量超过攻击阈值时，Cloudflare 会触发自动 <a href="https://support.cloudflare.com/hc/en-us/articles/360047358211-Connecting-PagerDuty-to-Cloudflare" target="_blank">PagerDuty 事件</a> 以通知 Acme 的 NOC 团队，并开始使用 BGP 将 Acme 的 IP 前缀广播到互联网。短短几分钟后，Acme 的流量（包括攻击）便开始经由 Cloudflare 网络，攻击也在<a href="https://blog.cloudflare.com/rolling-with-the-punches-shifting-attack-tactics-dropping-packets-faster-cheaper-at-the-edge/">Cloudflare边缘被阻止</a>。干净流量通过其 GRE 隧道回到 Acme，对终端用户零干扰，他们甚至永不知道 Acme 受到了攻击。攻击消退之后，Acme 的团队可以一键从 Cloudflare 撤回其前缀，使流量回到正常的路径。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image5-13.png" class="kg-image"></figure>
+	<p>当攻击消退时，将您的前缀从 Cloudflare 撤回以恢复正常</p>
+	<h3 id="--1">开始使用</h3>
+	<p>若要进一步了解 Magic Transit 和基于通信流监控，马上<a href="https://www.cloudflare.com/zh-cn/plans/enterprise/contact/" target="_blank">联系我们</a>。</p>
+</div>

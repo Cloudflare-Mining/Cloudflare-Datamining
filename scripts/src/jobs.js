@@ -71,8 +71,10 @@ await tryAndPush(
 	[
 		'data/jobs/*',
 		'data/jobs/*.json',
+		'data/jobs/*.md',
 		'data/jobs/**/*',
 		'data/jobs/**/*.json',
+		'data/jobs/**/*.md',
 	],
 	`${prefix} - Jobs Data was updated!`,
 	'CFData - Jobs Data Update',

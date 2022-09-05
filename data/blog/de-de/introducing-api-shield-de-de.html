@@ -1,0 +1,294 @@
+<div class="post-content lh-copy gray1">
+	<p>APIs sind das Herzblut moderner internetfähiger Anwendungen. Im Millisekundentakt übermitteln sie Anfragen von mobilen Anwendungen – bestelle dieses Essen, „like“ dieses Bild – und Anweisungen an IoT-Geräte – entriegele die Autotür, starte den Waschgang, mein Mensch hat gerade einen 5-km-Lauf beendet – und vieles mehr.</p>
+	<p>Sie sind aber auch das Ziel weit verbreiteter Angriffe. Mit diesen Angriffen wird versucht, nicht autorisierte Aktionen durchzuführen oder Daten herauszuschleusen. Die Gartner-Daten zeigen: „Bis 2021 werden 90 % der webfähigen Anwendungen mehr Angriffsfläche in Form von ungeschützten APIs bieten als in Form der Benutzeroberfläche. 2019 waren dies noch 40 %.“ Und Gartner prognostizierte, dass der Missbrauch von APIs bis 2022 von einem seltenen zum häufigsten Angriffsvektor werden und zu Datenschutzverletzungen bei Unternehmenswebanwendungen führen wird [1][2]. Von den 18 Millionen Anfragen pro Sekunde, die das Netzwerk von Cloudflare durchlaufen, sind 50 % an APIs gerichtet – wobei die Mehrheit dieser Anfragen als böswillig blockiert wird.</p>
+	<p>Um diese Bedrohungen zu bekämpfen, vereinfacht Cloudflare die Absicherung von APIs durch starke Clientzertifikat-basierte Identität und strenge schemabasierte Überprüfung. Ab heute sind diese Leistungsmerkmale für alle Pläne innerhalb unseres neuen „API Shield“-Angebots kostenlos verfügbar. Und ab heute gelten die Sicherheitsvorteile <a href="https://blog.cloudflare.com/announcing-grpc/">auch für gRPC-basierte APIs</a>, die binäre Formate wie Protokollpuffer anstelle von JSON verwenden und bei unseren Stammkunden immer beliebter werden.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image3.png" class="kg-image"></figure>
+	<p>Lesen Sie weiter, wenn Sie mehr über die neuen Funktionen erfahren möchten, oder springen Sie direkt zum Abschnitt „Demonstration“. Dort finden Sie Beispiele zum Einstieg in die Konfiguration von API-Shield-Regeln.</p>
+	<h3 id="modelle-positiver-sicherheit-und-client-zertifikate">Modelle positiver Sicherheit und Client-Zertifikate</h3>
+	<p>Ein Modell „positiver Sicherheit“ ist ein Modell, das nur bekannte Verhaltensweisen und Identitäten zulässt, alles andere aber ablehnt. Es ist das Gegenteil des traditionellen Modells „negativer Sicherheit“, das durch eine Web Application Firewall (WAF) durchgesetzt wird und alles erlaubt <em>außer</em> Anfragen von problematischen IPs, ASNs, Ländern oder Anfragen mit problematischen Signaturen (SQL-Injektionsversuche usw.).</p>
+	<p>Die Implementierung eines Modells positiver Sicherheit für APIs ist der direkteste Weg, das Rauschen aus Credential-Stuffing-Angriffen und anderen automatisierten Scan-Tools zu beseitigen. Der erste Schritt zu einem positiven Modell ist eine starke Authentifizierung, zum Beispiel gegenseitige TLS-Authentifizierung, die für <a href="https://spycloud.com/2020-annual-credential-exposure-report/" target="_blank">Wiederverwendung oder Weitergabe von Passwörtern</a> nicht anfällig ist.</p>
+	<p>Genauso wie wir 2014 die Ausstellung von Serverzertifikaten mit <a href="https://blog.cloudflare.com/introducing-universal-ssl/">Universal SSL</a> vereinfacht haben, reduziert API Shield den Prozess der Ausstellung von Client-Zertifikaten auf ein paar Klicks im Cloudflare-Dashboard. Durch die Bereitstellung einer vollständig gehosteten privaten Public-Key-Infrastruktur (PKI) können Sie sich auf Ihre Anwendungen und Features konzentrieren&amp;nbsp;– anstatt Ihre eigene Zertifizierungsstelle (Certificate Authority oder CA) betreiben und sichern zu müssen.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/API_Shield_Mutual_TLS.png" class="kg-image"></figure>
+	<h3 id="erzwingen-g-ltiger-anfragen-durch-schemavalidierung">Erzwingen gültiger Anfragen durch Schemavalidierung</h3>
+	<p>Sobald Entwickler sicher sein können, dass nur legitime Clients (mit SSL-Zertifikaten) eine Verbindung zu ihren APIs herstellen, besteht der nächste Schritt bei der Implementierung eines positiven Sicherheitsmodells darin sicherzustellen, dass diese Clients gültige Anfragen stellen. Das Extrahieren eines Clientzertifikats von einem Gerät aus und die Wiederverwendung an einem anderen Ort ist schwierig, aber nicht unmöglich. Daher ist es wichtig, dass die API wie gewünscht aufgerufen wird.</p>
+	<p>Anfragen, die fremde Eingaben enthalten, wurden vom API-Entwickler möglicherweise nicht vorhergesehen und können Probleme verursachen, wenn sie direkt von der Anwendung verarbeitet werden, daher sollten diese nach Möglichkeit an der Edge abgelegt werden. Für die API-Schemavalidierung wird der Inhalt der API-Anfragen (die Abfrageparameter, die nach der URL und dem Inhalt des POST-Texts kommen) mit einem Vertrag oder „Schema“ abgeglichen, das die Regeln für erwartete Anfragen enthält. Wenn die Validierung fehlschlägt, wird der API-Aufruf blockiert, wodurch der Ursprungsserver vor einer ungültigen Anfrage oder einer böswilligen Nutzlast geschützt wird.</p>
+	<p>Die Schemavalidierung befindet sich derzeit in der geschlossenen Beta-Phase für JSON-Nutzlasten, wobei die Unterstützung von gRPC/Protokollpuffern auf dem Plan steht. Wenn Sie am Betatest teilnehmen möchten, legen Sie bitte ein Support-Ticket mit dem Betreff „API-Schemavalidierung Beta“ an. Nach Abschluss der Beta-Phase planen wir, die Schemavalidierung als Teil der API-Shield-Benutzeroberfläche zur Verfügung zu stellen.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/API_Shield_Schema_Protection.png" class="kg-image"></figure>
+	<h3 id="demonstration">Demonstration</h3>
+	<p>Um zu demonstrieren, wie die APIs gesichert werden können, die von IoT-Geräten und mobilen Anwendungen genutzt werden, haben wir eine API-Shield-Demonstration mit Client-Zertifikaten und Schemavalidierung aufgebaut.</p>
+	<p>Temperaturen werden von einem IoT-Gerät erfasst (in der Demo von einem Raspberry Pi 3 Model B+ mit einem externen Infrarot-Temperatursensor dargestellt) und dann über eine POST-Anfrage an eine von Cloudflare geschützte API übertragen. Anschließend werden die Temperaturen mit GET-Anfragen abgerufen und dann in einer mobilen Anwendung angezeigt, die in Swift für iOS entwickelt wurde.</p>
+	<p>In beiden Fällen wurde die API in Wirklichkeit mit Cloudflare Workers® und Workers KV erstellt, lässt sich aber durch jeden internetfähigen Endpunkt ersetzen.</p>
+	<h3 id="1-api-konfiguration">1. API-Konfiguration</h3>
+	<p>Bevor wir das IoT-Gerät und die mobile Anwendung für die sichere Kommunikation mit der API konfigurieren, müssen wir die API-Endpunkte mit einem Bootstrap versehen. Um das Beispiel einfach zu halten und gleichzeitig eine zusätzliche Anpassung zu ermöglichen, haben wir die API als Cloudflare Worker implementiert (Code aus dem <a href="https://developers.cloudflare.com/workers/tutorials/build-a-jamstack-app" target="_blank">Tutorial zur To-Do-Liste</a>).</p>
+	<p>In diesem speziellen Beispiel werden die Temperaturen in Workers KV unter Verwendung der Ursprungs-IP-Adresse als Schlüssel gespeichert, aber diese könnte leicht durch einen <a href="https://developers.cloudflare.com/access/service-auth/mtls-headers/" target="_blank">Wert aus dem Client-Zertifikat</a> ersetzt werden, z.&amp;nbsp;B. den Fingerabdruck. Mit dem untenstehenden Code wird ein Temperatur- und Zeitstempel in KV gespeichert, wenn ein POST durchgeführt wird, und die letzten 5 Temperaturen werden zurückgegeben, wenn eine GET-Anfrage gestellt wird.</p>
+	<pre><code>const defaultData = { temperatures: [] }
+
+const getCache = key =&gt; TEMPERATURES.get(key)
+const setCache = (key, data) =&gt; TEMPERATURES.put(key, data)
+
+async function addTemperature(request) {
+
+    // pull previously recorded temperatures for this client
+    const ip = request.headers.get('CF-Connecting-IP')
+    const cacheKey = `data-${ip}`
+    let data
+    const cache = await getCache(cacheKey)
+    if (!cache) {
+        await setCache(cacheKey, JSON.stringify(defaultData))
+        data = defaultData
+    } else {
+        data = JSON.parse(cache)
+    }
+
+    // append the recorded temperatures with the submitted reading (assuming it has both temperature and a timestamp)
+    try {
+        const body = await request.text()
+        const val = JSON.parse(body)
+
+        if (val.temperature &amp;&amp; val.time) {
+            data.temperatures.push(val)
+            await setCache(cacheKey, JSON.stringify(data))
+            return new Response("", { status: 201 })
+        } else {
+            return new Response("Unable to parse temperature and/or timestamp from JSON POST body", { status: 400 })
+        }
+    } catch (err) {
+        return new Response(err, { status: 500 })
+    }
+}
+
+function compareTimestamps(a,b) {
+    return -1 * (Date.parse(a.time) - Date.parse(b.time))
+}
+
+// return the 5 most recent temperature measurements
+async function getTemperatures(request) {
+    const ip = request.headers.get('CF-Connecting-IP')
+    const cacheKey = `data-${ip}`
+
+    const cache = await getCache(cacheKey)
+    if (!cache) {
+        return new Response(JSON.stringify(defaultData), { status: 200, headers: { 'content-type': 'application/json' } })
+    } else {
+        data = JSON.parse(cache)
+        const retval = JSON.stringify(data.temperatures.sort(compareTimestamps).splice(0,5))
+        return new Response(retval, { status: 200, headers: { 'content-type': 'application/json' } })
+    }
+}
+
+async function handleRequest(request) {
+
+    if (request.method === 'POST') {
+        return addTemperature(request)
+    } else {
+        return getTemperatures(request)
+    }
+
+}
+
+addEventListener('fetch', event =&gt; {
+  event.respondWith(handleRequest(event.request))
+})</code></pre>
+	<p>Bevor wir die gegenseitige TLS-Authentifizierung hinzufügen, testen wir das POSTen einer zufälligen Temperaturmessung:</p>
+	<p>$ TEMPERATURE=$(echo $((361 + RANDOM %11)) | awk '</p>
+	<pre><code>$ TEMPERATURE=$(echo $((361 + RANDOM %11)) | awk '{printf("%.2f",$1/10.0)}')
+$ TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+
+$ echo -e "$TEMPERATURE\n$TIMESTAMP"
+36.30
+2020-09-28T02:57:49Z
+
+$ curl -v -H "Content-Type: application/json" -d '{"temperature":'''$TEMPERATURE''', "time": "'''$TIMESTAMP'''"}' https://shield.upinatoms.com/temps 2&gt;&amp;1 | grep "&lt; HTTP/2"
+&lt; HTTP/2 201 </code></pre>
+	<p>Und hier eine spätere Ablesung dieser Temperatur, zusammen mit den 4 vorher gesendeten:</p>
+	<pre><code>$ curl -s https://shield.upinatoms.com/temps | jq .
+[
+  {
+    "temperature": 36.3,
+    "time": "2020-09-28T02:57:49Z"
+  },
+  {
+    "temperature": 36.7,
+    "time": "2020-09-28T02:54:56Z"
+  },
+  {
+    "temperature": 36.2,
+    "time": "2020-09-28T02:33:08Z"
+  },
+    {
+    "temperature": 36.5,
+    "time": "2020-09-28T02:29:22Z"
+  },
+  {
+    "temperature": 36.9,
+    "time": "2020-09-28T02:27:19Z"
+  } 
+]
+</code></pre>
+	<h3 id="2-client-zertifikatausstellung">2. Client-Zertifikatausstellung</h3>
+	<p>Mit unserer API in der Hand ist es an der Zeit, sie so zu sperren, dass ein gültiges Client-Zertifikat erforderlich ist. Zuvor wollen wir diese Zertifikate generieren. Dazu können Sie entweder die Registerkarte SSL/TLS und dann Client-Zertifikate im Cloudflare-Dashboard aufrufen und auf „Zertifikat erstellen“ klicken oder den Prozess über API-Aufrufe automatisieren.</p>
+	<p>Da die meisten Entwickler bei größeren Projekten ihre eigenen privaten Schlüssel und CSRs generieren und verlangen, dass sie über die API signiert werden, führen wir diesen Prozess hier vor. Mit dem Cloudflare PKI Toolkit <a href="https://github.com/cloudflare/cfssl" target="_blank">CFSSL</a> erstellen wir zunächst ein Bootstrap-Zertifikat für die iOS-Anwendung, dann erstellen wir ein Zertifikat für das IoT-Gerät:</p>
+	<figure class="kg-card kg-code-card">
+		<pre><code>$ cat &lt;&lt;'EOF' | tee -a csr.json
+{
+    "hosts": [
+        "ios-bootstrap.devices.upinatoms.com"
+    ],
+    "CN": "ios-bootstrap.devices.upinatoms.com",
+    "key": {
+        "algo": "rsa",
+        "size": 2048
+    },
+    "names": [{
+        "C": "US",
+        "L": "Austin",
+        "O": "Temperature Testers, Inc.",
+        "OU": "Tech Operations",
+        "ST": "Texas"
+    }]
+}
+EOF
+
+$ cfssl genkey csr.json | cfssljson -bare certificate
+2020/09/27 21:28:46 [INFO] generate received request
+2020/09/27 21:28:46 [INFO] received CSR
+2020/09/27 21:28:46 [INFO] generating key: rsa-2048
+2020/09/27 21:28:47 [INFO] encoded CSR
+
+$ mv certificate-key.pem ios-key.pem
+$ mv certificate.csr ios.csr
+
+// and do the same for the IoT sensor
+$ sed -i.bak 's/ios-bootstrap/sensor-001/g' csr.json
+$ cfssl genkey csr.json | cfssljson -bare certificate
+...
+$ mv certificate-key.pem sensor-key.pem
+$ mv certificate.csr sensor.csr</code></pre>
+		<figcaption>Privaten Schlüssel und CSR für das IoT-Gerät und die iOS-Anwendung generieren</figcaption>
+	</figure>
+	<p></p>
+	<figure class="kg-card kg-code-card">
+		<pre><code>// we need to replace actual newlines in the CSR with ‘\n’ before POST’ing
+$ CSR=$(cat ios.csr | perl -pe 's/\n/\\n/g')
+$ request_body=$(&lt; &lt;(cat &lt;&lt;EOF
+{
+  "validity_days": 3650,
+  "csr":"$CSR"
+}
+EOF
+))
+
+// save the response so we can view it and then extract the certificate
+$ curl -H 'X-Auth-Email: YOUR_EMAIL' -H 'X-Auth-Key: YOUR_API_KEY' -H 'Content-Type: application/json' -d “$request_body” https://api.cloudflare.com/client/v4/zones/YOUR_ZONE_ID/client_certificates &gt; response.json
+
+$ cat response.json | jq .
+{
+  "success": true,
+  "errors": [],
+  "messages": [],
+  "result": {
+    "id": "7bf7f70c-7600-42e1-81c4-e4c0da9aa515",
+    "certificate_authority": {
+      "id": "8f5606d9-5133-4e53-b062-a2e5da51be5e",
+      "name": "Cloudflare Managed CA for account 11cbe197c050c9e422aaa103cfe30ed8"
+    },
+    "certificate": "-----BEGIN CERTIFICATE-----\nMIIEkzCCA...\n-----END CERTIFICATE-----\n",
+    "csr": "-----BEGIN CERTIFICATE REQUEST-----\nMIIDITCCA...\n-----END CERTIFICATE REQUEST-----\n",
+    "ski": "eb2a48a19802a705c0e8a39489a71bd586638fdf",
+    "serial_number": "133270673305904147240315902291726509220894288063",
+    "signature": "SHA256WithRSA",
+    "common_name": "ios-bootstrap.devices.upinatoms.com",
+    "organization": "Temperature Testers, Inc.",
+    "organizational_unit": "Tech Operations",
+    "country": "US",
+    "state": "Texas",
+    "location": "Austin",
+    "expires_on": "2030-09-26T02:41:00Z",
+    "issued_on": "2020-09-28T02:41:00Z",
+    "fingerprint_sha256": "84b045d498f53a59bef53358441a3957de81261211fc9b6d46b0bf5880bdaf25",
+    "validity_days": 3650
+  }
+}
+
+$ cat response.json | jq .result.certificate | perl -npe 's/\\n/\n/g; s/"//g' &gt; ios.pem
+
+// now ask that the second client certificate signing request be signed
+$ CSR=$(cat sensor.csr | perl -pe 's/\n/\\n/g')
+$ request_body=$(&lt; &lt;(cat &lt;&lt;EOF
+{
+  "validity_days": 3650,
+  "csr":"$CSR"
+}
+EOF
+))
+
+$ curl -H 'X-Auth-Email: YOUR_EMAIL' -H 'X-Auth-Key: YOUR_API_KEY' -H 'Content-Type: application/json' -d "$request_body" https://api.cloudflare.com/client/v4/zones/YOUR_ZONE_ID/client_certificates | perl -npe 's/\\n/\n/g; s/"//g' &gt; sensor.pem</code></pre>
+		<figcaption>Cloudflare bitten, die CSRs mit der privaten CA zu signieren, die für Ihre Zone ausgestellt wurde</figcaption>
+	</figure>
+	<p></p>
+	<h3 id="3-api-shield-regeln-erstellen">3. API-Shield-Regeln erstellen</h3>
+	<p>Mit den vorliegenden Zertifikaten können wir nun den API-Endpunkt so konfigurieren, dass die Verwendung der Zertifikate erforderlich ist. Im Folgenden zeigen wir, wie Sie eine solche Regel erstellen können.</p>
+	<p>Zu den Schritten gehört die Angabe der Hostnamen, die zur Anforderung von Zertifikaten aufgefordert werden sollen, z. B. shield.upinatoms.com, und die anschließende Erstellung der API-Shield-Regel.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/API_Shield_demo.gif" class="kg-image"></figure>
+	<h3 id="4-kommunikation-mit-dem-iot-ger-t">4. Kommunikation mit dem IoT-Gerät</h3>
+	<p>Um das IoT-Gerät für die sichere Kommunikation mit unserem API-Endpunkt vorzubereiten, müssen wir das Zertifikat in das Gerät einbetten und dann unsere Anwendung darauf verweisen, damit das Zertifikat bei der POST-Anforderung an den API-Endpunkt verwendet werden kann.</p>
+	<p>Wir haben den privaten Schlüssel und das Zertifikat sicher nach /etc/ssl/private/sensor-key.pem und /etc/ssl/certs/sensor.pem kopiert und dann unser Beispielskript so modifiziert, dass es auf diese Dateien verweist:</p>
+	<pre><code>import requests
+import json
+from datetime import datetime
+
+def readSensor():
+
+    # Takes a reading from a temperature sensor and store it to temp_measurement 
+
+    dateTimeObj = datetime.now()
+    timestampStr = dateTimeObj.strftime(‘%Y-%m-%dT%H:%M:%SZ’)
+
+    measurement = {'temperature':str(36.5),'time':timestampStr}
+    return measurement
+
+def main():
+
+    print("Cloudflare API Shield [IoT device demonstration]")
+
+    temperature = readSensor()
+    payload = json.dumps(temperature)
+    
+    url = 'https://shield.upinatoms.com/temps'
+    json_headers = {'Content-Type': 'application/json'}
+    cert_file = ('/etc/ssl/certs/sensor.pem', '/etc/ssl/private/sensor-key.pem')
+    
+    r = requests.post(url, headers = json_headers, data = payload, cert = cert_file)
+    
+    print("Request body: ", r.request.body)
+    print("Response status code: %d" % r.status_code)
+</code></pre>
+	<p>Wenn das Skript versucht, eine Verbindung mit <a href="https://shield.upinatoms.com/temps" target="_blank">https://shield.upinatoms.com/temps</a> herzustellen, verlangt Cloudflare, dass ein Client-Zertifikat gesendet wird, und unser Skript sendet den Inhalt von sensor.pem und zeigt anschließend, dass es im Besitz von sensor-key.pem ist, soweit dies für den SSL/TLS-Handshake erforderlich ist.</p>
+	<p>Wenn wir es versäumen, das Client-Zertifikat zu senden, oder versuchen, Fremdfelder in die API-Anforderung aufzunehmen, schlägt die Schemavalidierung (Konfiguration nicht angezeigt) fehl und die Anforderung wird abgelehnt:</p>
+	<pre><code>Cloudflare API Shield [IoT device demonstration]
+Request body:  {"temperature": "36.5", "time": "2020-09-28T15:52:19Z"}
+Response status code: 403</code></pre>
+	<p>Wenn stattdessen ein gültiges Zertifikat vorgelegt wird und die Nutzlast dem zuvor hochgeladenen Schema folgt, POSTet unser Skript die neueste Temperaturmessung an die API.</p>
+	<pre><code>Cloudflare API Shield [IoT device demonstration]
+Request body:  {"temperature": "36.5", "time": "2020-09-28T15:56:45Z"}
+Response status code: 201</code></pre>
+	<h3 id="5-kommunikation-mit-mobilen-anwendungen-ios-">5. Kommunikation mit mobilen Anwendungen (iOS)</h3>
+	<p>Jetzt, da Temperaturanfragen an unseren API-Endpunkt gesendet wurden, ist es an der Zeit, sie mit einem der Client-Zertifikate sicher von unserer mobilen Anwendung aus abzulesen.</p>
+	<p>Der Kürze halber werden wir ein „Bootstrap“-Zertifikat und einen Schlüssel als PKCS#12-Datei in das Anwendungspaket einbetten. In einer realen Bereitstellung sollte dieses Bootstrap-Zertifikat nur zusammen mit den Anmeldedaten des Nutzers verwendet werden, um sich an einem API-Endpunkt zu authentifizieren, der ein eindeutiges Nutzerzertifikat zurückgeben kann. Unternehmensnutzer sollten wegen der zusätzlichen Kontroll- und Persistenzoptionen MDM zur Verteilung von Zertifikaten verwenden.</p>
+	<h4 id="zertifikat-und-privaten-schl-ssel-verpacken">Zertifikat und privaten Schlüssel verpacken</h4>
+	<p>Bevor wir das Bootstrap-Zertifikat und den privaten Schlüssel hinzufügen, müssen wir sie in einer binären PKCS#12-Datei kombinieren. Diese Binärdatei wird dann in unser iOS-Anwendungspaket aufgenommen.</p>
+	<pre><code>$ openssl pkcs12 -export -out bootstrap-cert.pfx -inkey ios-key.pem -in ios.pem
+Enter Export Password:
+Verifying - Enter Export Password:</code></pre>
+	<h4 id="das-zertifikatspaket-in-ihre-ios-anwendung-aufnehmen">Das Zertifikatspaket in Ihre iOS-Anwendung aufnehmen</h4>
+	<p>In XCode klicken Sie auf Datei → Dateien zu „[Projekttitel]“ hinzufügen und wählen Sie Ihre .pfx-Datei aus. Vergessen Sie nicht, vor der Bestätigung „Zum Ziel hinzufügen“ anzuklicken.</p>
+	<h4 id="ihren-urlsession-code-so-ndern-dass-das-client-zertifikat-verwendet-wird">Ihren URLSession-Code so ändern, dass das Client-Zertifikat verwendet wird</h4>
+	<p><a href="https://leenarts.net/2020/02/28/client-certificate-with-urlsession-in-swift/" target="_blank">In diesem Artikel</a> erfahren Sie, wie Sie eine Anwendung mit einer PKCS#11-Klasse und <a href="https://developer.apple.com/documentation/foundation/urlsessiondelegate" target="_blank">URLSessionDelegate</a> so modifizieren, dass sie bei der Verbindung mit einer API, die dies erfordert, eine gegenseitige TLS-Authentifizierung durchführt.</p>
+	<h3 id="der-blick-nach-vorn">Der Blick nach vorn</h3>
+	<p>In den kommenden Monaten planen wir, API Shield um eine Reihe zusätzlicher Features zum Schutz des API-Traffics zu erweitern. Für Kunden, die ihre eigene PKI verwenden möchten, werden wir die Möglichkeit bieten, ihre eigenen CAs zu importieren (<a href="https://developers.cloudflare.com/access/service-auth/mtls/" target="_blank">heute ist das im Rahmen von von Cloudflare Access möglich)</a>.</p>
+	<p>Sobald wir Rückmeldungen zu unserer Schemavalidierungs-Beta erhalten, werden wir versuchen, die Funktion für alle Kunden verfügbar zu machen. Wenn Sie die Beta ausprobieren und uns mitteilen möchten, was Sie darüber denken, würden wir uns über Ihr Feedback freuen.</p>
+	<p>Neben Zertifikaten und Schemavalidierung wird es erfreulicherweise auch zusätzliche API-Sicherheitsfunktionen sowie tiefgreifende Analysen geben, mit denen Sie Ihre APIs besser verstehen können. Wenn Sie sich bestimmte Features wünschen, teilen Sie es uns in den Kommentaren unten mit!</p>
+	<p></p>
+	<p><em>1: „By 2021, 90% of web-enabled applications will have more surface area for attack in the form of exposed APIs rather than the UI, up from 40% in 2019.“ Quelle: Gartner „Gartner’s API Strategy Maturity Model“, Saniye Alaybeyi, Mark O'Neill, 21. Oktober 2019. (Gartner-Abonnement erforderlich)</em></p>
+	<p><em>2: „Gartner predicted by 2022, API abuses will move from an infrequent to the most-frequent attack vector, resulting in data breaches for enterprise web applications.“ Quelle: Gartner „Cool Vendors in API Strategy“, Shameen Pillai, Paolo Malinverno, Mark O'Neill, Jeremy D'Hoinne, 18. Mai 2020 (Gartner-Abonnement erforderlich)</em></p>
+</div>

@@ -1,0 +1,358 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/06/complaints-@2x.png" class="kg-image"></figure>
+	<p></p>
+	<p>When I first started at Cloudflare over two years ago, one of the first things I was tasked with was to help evolve our partner platform to support the changes in our service and the expanding needs of our partners and customers. Cloudflare’s existing partner platform was released in 2010. It is a testament to those who built it, that it was, and still is, in use today—but it was also clear that the landscape had substantially changed. </p>
+	<p>Since the launch of the existing partner platform, we had <a href="https://blog.cloudflare.com/introducing-multi-user-organizations-share-an-account-without-sharing-a-login/">built</a> and <a href="https://blog.cloudflare.com/expanding-multi-user-access/">expanded</a> multi-user access, and launched many new products: Argo, Load Balancing, and Cloudflare Workers, to name a few. Retrofitting the existing offering was not practical. Cloudflare needed a new partner platform that could meet the needs of partners and their customers.</p>
+	<p>As the team started to develop a new solution, we needed to find a partner who could keep us on the right path. The number of hypotheticals were infinite and we needed a first customer to ground ourselves. Lo and behold, not long after I had begun putting pen to paper, we found the perfect partner for the new platform.</p>
+	<h3 id="the-ibm-partnership">The IBM Partnership</h3>
+	<p>IBM was looking for a partner to bring various edge services to market quickly, and our suite of capabilities was what they were looking for. If you are not familiar with our partnership with IBM, you can learn a bit more about it in our <a href="https://blog.cloudflare.com/ibm-cloud-and-cloudflare/">blog post</a> and on the <a href="https://www.ibm.com/cloud/cloud-internet-services" target="_blank">IBM Cloud Internet Services landing page</a>. We signed the contract in November 2017, and we had to be ready to launch by IBM Think the following February. Given that IBM’s engineering team needed time to integrate with us, we were on a tight timeline to deliver.</p>
+	<p>A number of team members and I jumped on a plane and flew to Austin, Texas (Hook ‘em!) to work with IBM and determine the minimum viable product (MVP). Over kolaches (for the Czech readers at home: <a href="https://en.wikipedia.org/wiki/Klob%C3%A1sn%C3%ADk" target="_blank">Klobásník</a>), IBM and Cloudflare nailed down the MVP requirements. Briefly, they were as follows:</p>
+	<!--kg-card-begin: html-->
+	<p>
+		<font size="+1">
+		</font>
+	</p>
+	<ol>
+		<font size="+1">
+			<li>Full API integration to provision the building blocks of using Cloudflare.
+				<ul>
+					<li>This included:
+						<ol>
+							<li>Accounts: The container of resources - typically zones
+							</li>
+							<li>Users: The way in which we partition access to accounts
+							</li>
+						</ol>
+					</li>
+				</ul>
+			</li>
+			<li>The ability to sell and provision Cloudflare’s paid services and package them in a way that made sense for IBM’s customers.
+				<ul>
+					<li>Our existing partner platform only supported zone plans and none of our newer offerings, such as Argo or load balancing.
+					</li>
+					<li>IBM had specific requirements around how they could package and sell to customers, so our solution needed to be flexible enough to support that.
+					</li>
+				</ul>
+			</li>
+			<li>Ensure that what we built was re-usable.
+				<ul>
+					<li>Cloudflare makes it a point to solve problems for scale. While we were focused on ensuring our first partner would be successful, we knew that long term we would need to be able to scale this solution to additional partners. Nothing we built could prevent us from doing that.
+					</li>
+				</ul>
+			</li>
+		</font>
+	</ol>
+	<font size="+1">
+	</font>
+	<p></p>
+	<!--kg-card-end: html-->
+	<p>Over the next couple of months, many teams at Cloudflare came together to deliver this solution at breakneck speed. Given that the midpoint of this effort happened over the holiday season, I’m personally proud of our company not sacrificing employee’s time with their friends and families in order to deliver. Even when it feels like a sprint, it is still a marathon.</p>
+	<p>During this time, the engineering team we were working with at IBM felt like another team at Cloudflare. Their ability to move quickly, integrate, and validate our work was critical to the success of the project. At THINK in February 2018, we were able to announce the Beta of IBM CIS (Cloud Internet Services) powered by Cloudflare!</p>
+	<p>Following the initial release, we continued to add functionality to further enrich the IBM CIS offering, while behind the scenes we continued our work to redefine Cloudflare’s partner platform.</p>
+	<h3 id="the-new-partner-platform">The New Partner Platform</h3>
+	<p>Over the past year we have expanded the capabilities and completed the necessary work to enable more partners to be able to use what we initially built for the IBM partnership. Out of that comes our new partner platform we are announcing today. The new partner platform allows partners of Cloudflare to sell and provision Cloudflare for their customers in a scalable fashion.</p>
+	<p>Our new partner platform is the combination of two systems designed to fulfill specific needs:</p>
+	<!--kg-card-begin: html-->
+	<p>
+		1. Tenants: an abstraction on top of our existing accounts and users for easier management<br>
+		2. Subscriptions: a new way of packaging and provisioning services<br>
+	</p>
+	<!--kg-card-end: html-->
+	<h4 id="tenants">Tenants</h4>
+	<p>An absolute necessity for partners is the ability to provision accounts for each of their customers. Normally the only way to get a Cloudflare account is to sign up on the dashboard. We needed a way for partners to be able to create end customer accounts at their discretion to support their specific onboarding needs. This also ensures proper separation of ownership between customers and allows end customers to access the Cloudflare dashboard directly.</p>
+	<p>With the introduction of tenants, our data model now looks like the following:</p>
+	<p></p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/06/Screen-Shot-2019-06-05-at-3.58.15-PM-1.png" class="kg-image">
+		<figcaption>Cloudflare Resource Data Model</figcaption>
+	</figure>
+	<p></p>
+	<p>Tenants provide partners the ability to create and manage the accounts for their customers. Each account created is a separate container of resources (zones, workers, etc) for each of customer. Users can be invited to each account as necessary for self service management, while the partner retains control of the capabilities enabled for each account. How a partner manages those capabilities brings us to the second major system that makes up the new partner platform.</p>
+	<h4 id="subscriptions">Subscriptions</h4>
+	<p>While not as obvious as the need for account provisioning, the ability to package and provision services is critical to providing differentiated offerings for partners of Cloudflare. One drawback of our old partner platform was the difficulty in ensuring new products and services were available to those partners. As Cloudflare grew, it reached the point where new paid services could not be added into the existing partner platform. </p>
+	<p>With subscriptions, this is no longer the case. What started as just a way to provision services for IBM, has now grown into the standard of how all customer services are provisioned at Cloudflare. Whether you purchase services through IBM CIS or buy Cloudflare Workers in our dashboard, behind the scenes, Subscriptions is what ensures you get exactly the right services enabled.</p>
+	<p>Enough talk, let’s show things in action!</p>
+	<h3 id="the-partner-platform-in-action">The Partner Platform in Action</h3>
+	<p>The full details of using the new partner platform can be found in our <a href="https://developers.cloudflare.com/tenant/" target="_blank">Provisioning API docs</a>, but here we provide a walkthrough of a typical use case.</p>
+	<p>Using the new partner platform involves 4 steps:</p>
+	<ol>
+		<li>Provisioning Customer Accounts</li>
+		<li>Granting Customer Access</li>
+		<li>Enabling Services</li>
+		<li>Service Configuration</li>
+	</ol>
+	<h4 id="1-provisioning-customer-accounts">1) Provisioning Customer Accounts</h4>
+	<p>When onboarding customers, you want each to have their own Cloudflare account. This ensures one customer can not affect any resources belonging to another. By making a `POST /accounts` request, you can create an account for an individual customer.</p>
+	<p>Request:</p>
+	<p></p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>curl -X POST \
+    https://api.cloudflare.com/client/v4/accounts \
+    -H 'Content-Type: application/json' \
+    -H 'x-auth-email: &lt;x-auth-email&gt;' \
+    -H 'x-auth-key: &lt;x-auth-key&gt;' \
+    -d '{ "name": "Customer Account", 
+          "type": "standard" 
+        }'
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p></p>
+	<p>Response:</p>
+	<p></p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>{
+    "result": {
+        "id": "2bab6ace8c72ed3f09b9eca6db1396bb",
+        "name": "Customer Account",
+        "type": "standard",
+        "settings": {
+            "enforce_twofactor": false
+        }
+    },
+    "success": true,
+    "errors": [],
+    "messages": []
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p></p>
+	<p>This new account is owned by the partner. It can be managed by API, or in the UI by the partner or any additional administrators that are invited.</p>
+	<h4 id="2-granting-customer-access">2) Granting Customer Access</h4>
+	<p>Now that the customer’s account is created, let’s give them access to it. This step uses existing APIs and if you have shared access to a Cloudflare account before, then you have already done this.</p>
+	<p>Request:</p>
+	<p></p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>curl -X POST \
+    'https://api.cloudflare.com/client/v4/accounts/2bab6ace8c72ed3f09b9eca6db1396bb/members' \
+    -H 'Content-Type: application/json' \
+    -H 'x-auth-email: &lt;x-auth-email&gt;' \
+    -H 'x-auth-key: &lt;x-auth-key&gt;' \
+    -d '{ "email": "<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="9df0e4fee8eee9f2f0f8efdde9f5f8f4effef2f0edfcf3e4b3fef2f0">[email&nbsp;protected]</a>",
+          "roles": ["05784afa30c1afe1440e79d9351c7430"],
+          "status": "accepted" 
+        }'
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p></p>
+	<p>Response:</p>
+	<p></p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>{
+    "result": {
+        "id": "47bd8083af8516a20c410090d2f53655",
+        "user": {
+            "id": "fccad3c46f26dc2d6ba47ad19f639707",
+            "first_name": null,
+            "last_name": null,
+            "email": "<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b4d9cdd7c1c7c0dbd9d1c6f4c0dcd1ddc6d7dbd9c4d5dacd9ad7dbd9">[email&nbsp;protected]</a>",
+            "two_factor_authentication_enabled": false
+        },
+        "status": "pending",
+        "roles": [
+            {
+                "id": "05784afa30c1afe1440e79d9351c7430",
+                "name": "Administrator",
+                "description": "Can access the full account, except for membership management and billing.",
+                "permissions": {
+                    "organization": {
+                        "read": true,
+                        "edit": true
+                    },
+                    "zone": {
+                        "read": true,
+                        "edit": true
+                    },
+                    truncated...
+                }
+            }
+        ]
+    },
+    "success": true,
+    "errors": [],
+    "messages": []
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p></p>
+	<p>Alternatively, you can do this in the UI, from the <a href="https://dash.cloudflare.com/?account=members" target="_blank">Members section</a> for the newly created account.</p>
+	<h4 id="3-enabling-services">3) Enabling Services</h4>
+	<p>Now the fun part! With the ability to provision subscriptions, you can enable paid services for your customers. Before we do that though, we will create a zone so we can attach a zone subscription to it.</p>
+	<p>Adding a zone as a partner is no different than adding a zone as a regular customer. It can also be done by the customer.</p>
+	<p>Request:</p>
+	<p></p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>curl -X POST \
+    https://api.cloudflare.com/client/v4/zones \
+    -H 'Content-Type: application/json' \
+    -H 'x-auth-email: &lt;x-auth-email&gt;' \
+    -H 'x-auth-key: &lt;x-auth-key&gt;' \
+    -d '{ "name": "theircompany.com",
+            "account": { "id": "2bab6ace8c72ed3f09b9eca6db1396bb" }
+        }'
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p></p>
+	<p>Response:</p>
+	<p></p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>{
+    "result": {
+        "id": "cae181e41197e2eb875d9bcb9396abe7",
+        "name": "theircompany.com",
+        "status": "pending",
+        "paused": false,
+        "type": "full",
+        "development_mode": 0,
+        "name_servers": [
+            "lana.ns.cloudflare.com",
+            "lynn.ns.cloudflare.com"
+        ],
+        "original_name_servers": null,
+        "original_registrar": "cloudflare, inc.",
+        "original_dnshost": null,
+        "modified_on": "2019-05-30T17:51:08.510558Z",
+        "created_on": "2019-05-30T17:51:08.510558Z",
+        "activated_on": null,
+        "meta": {
+            "step": 4,
+            "wildcard_proxiable": false,
+            "custom_certificate_quota": 0,
+            "page_rule_quota": 3,
+            "phishing_detected": false,
+            "multiple_railguns_allowed": false
+        },
+        "owner": {
+            "id": null,
+            "type": "user",
+            "email": null
+        },
+        "account": {
+            "id": "2bab6ace8c72ed3f09b9eca6db1396bb",
+            "name": "Customer Account"
+        },
+        "permissions": [
+            "#access:edit",
+            "#access:read",
+            ...truncated
+        ],
+        "plan": {
+            "id": "0feeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+            "name": "Free Website",
+            "price": 0,
+            "currency": "USD",
+            "frequency": "",
+            "is_subscribed": true,
+            "can_subscribe": false,
+            "legacy_id": "free",
+            "legacy_discount": false,
+            "externally_managed": false
+        }
+    },
+    "success": true,
+    "errors": [],
+    "messages": []
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p></p>
+	<p>For this customer we will provision a Pro plan for the newly created zone. If you are not familiar with our zone plans, then you can read about them <a href="https://www.cloudflare.com/plans/" target="_blank">here</a>. For this, we make a call to the subscriptions service.</p>
+	<p>Request:</p>
+	<p></p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>curl -X POST \
+    https://api.cloudflare.com/client/v4/zones/cae181e41197e2eb875d9bcb9396abe7/subscription \
+  -H 'Content-Type: application/json' \
+  -H 'X-Auth-Email: &lt;x-auth-email&gt;' \
+  -H 'X-Auth-Key: &lt;x-auth-key&gt;' \
+  -d '{"rate_plan": {
+          "id": "PARTNERS_PRO"}
+      }'
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p></p>
+	<p>Response:</p>
+	<p></p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>{
+    "success": true,
+    "result": {
+        "id": "ff563a93e11c46e7b278be46f49cdd2f",
+        "product": {
+            "name": "partners_cloudflare_zones",
+            "period": "",
+            "billing": "",
+            "public_name": "CloudFlare Services",
+            "duration": 0
+        },
+        "rate_plan": {
+            "id": "partners_pro",
+            "public_name": "Partners Professional Plan",
+            "currency": "USD",
+            "scope": "zone",
+            "externally_managed": false,
+            "sets": [
+                "zone",
+                "partner"
+            ],
+            "is_contract": true
+        },
+        "component_values": [
+            {
+                "name": "dedicated_certificates",
+                "value": 0,
+                "price": 0
+            },
+            {
+                "name": "dedicated_certificates_custom",
+                "value": 0,
+                "price": 0
+            },
+            {
+                "name": "page_rules",
+                "value": 20,
+                "default": 20,
+                "price": 0
+            },
+            {
+                "name": "zones",
+                "value": 1,
+                "default": 1,
+                "price": 0
+            }
+        ],
+        "zone": {
+            "id": "cae181e41197e2eb875d9bcb9396abe7",
+            "name": "theircompany.com"
+        },
+        "frequency": "monthly",
+        "currency": "USD",
+        "app": {
+            "install_id": null
+        },
+        "entitled": true
+    },
+    "messages": null,
+    "api_version": "2.0.0"
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p></p>
+	<p>Now that the customer is set up with an account, zone, and zone subscription, the only thing left is configuring the resources appropriately.</p>
+	<h4 id="4-service-configuration">4) Service Configuration</h4>
+	<p>Service configuration can be done by either you, the partner, or the end customer. Most commonly, DNS records need to be added, security settings verified and updated, and customizations made. These can all be done either through our <a href="https://api.cloudflare.com" target="_blank">Client v4 APIs</a> or the <a href="https://dash.cloudflare.com" target="_blank">Cloudflare Dashboard</a>.</p>
+	<p>Once that is done, the customer is all set!</p>
+	<h3 id="this-is-just-the-beginning">This is just the beginning</h3>
+	<p>With our announcement today, partners can protect and accelerate their customer’s internet services with Cloudflare’s partner platform. We have battled tested the underlying systems over the last year and are excited to partner with others to help make a better internet. We are not done yet though. We will be continually investing in the tenant and subscription services to expand their capabilities and simplify usage.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/06/Screen-Shot-2019-06-05-at-10.27.26-AM.png" class="kg-image">
+		<figcaption>Some of the latest partners using the new partner platform</figcaption>
+	</figure>
+	<p>If you are interested in partnering with Cloudflare, then reach out to <a href="/cdn-cgi/l/email-protection#41312033352f24333201222d2e3425272d2033246f222e2c"><span class="__cf_email__" data-cfemail="6e1e0f1c1a000b1c1d2e0d02011b0a08020f1c0b400d0103">[email&nbsp;protected]</span></a>. If building the future of how Cloudflare’s partners and customers use our service sounds interesting then take a look at our <a href="https://www.cloudflare.com/careers/departments/" target="_blank">career page</a>.</p>
+	<hr>
+	<p>For more information, see the following resources:</p>
+	<ul>
+		<li><a href="https://cloudflare.com/partners" target="_blank">Partner Program Website</a></li>
+		<li><a href="https://cloudflare.com/partners/services" target="_blank">Partner Services Website</a></li>
+		<li>Announcing the new Cloudflare Partner Platform (you are here)</li>
+		<li><a href="https://blog.cloudflare.com/helping-cloudflare-build-its-partnerships-worldwide/">Building Partnerships Worldwide</a></li>
+		<li><a href="https://blog.cloudflare.com/cloudflare-partners-a-new-program-with-new-partners/">The New Partner Program</a></li>
+	</ul>
+</div>

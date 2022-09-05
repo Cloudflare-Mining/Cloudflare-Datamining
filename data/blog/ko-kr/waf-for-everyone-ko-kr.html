@@ -1,0 +1,40 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image2-26.png" class="kg-image"></figure>
+	<p>Cloudflare에서는 파괴적 아이디어를 좋아합니다. 보안은 모든 사람이 액세스할 수 있는 것이어야 하며 그 결과로 인터넷이 모두를 위해 더 우수하고 안전해진다는 우리의 가장 중요한 믿음과 함께해주십시오.</p>
+	<p>빈말이 아닙니다. 예를 들어, 우리는 2014년에 <a href="https://blog.cloudflare.com/introducing-universal-ssl/">Universal SSL</a>을 발표했습니다. 하룻밤 사이에 백만 개 이상의 인터넷 자산에 SSL/TLS 암호화를 제공했으며, 이는 누군가가 한 푼이라도 결제하거나 인증서를 구성하지 않은 채로 이루어진 것입니다. 이는 고객뿐만 아니라 웹을 이용하는 모든 사람에게도 도움이 되었습니다.</p>
+	<p>2017년에는 <a href="https://blog.cloudflare.com/unmetered-mitigation/">무제한 DDoS 완화</a>를 발표했습니다. 당사는 DDoS 대역폭에 대한 결제가 옳다고 생각하지 않았기 때문에 고객에게 결제를 요구한 적이 없었지만, 유료 고객이든 아니든 모든 사람에게 완전히 무제한 완화를 제공할 수 있는 네트워크 크기에 도달하는 데는 상당한 시간이 걸렸습니다.</p>
+	<p>아직도 종종 다음과 같은 질문을 받습니다. 어떻게 그렇게 할 수 있나요? 정말이지 간단합니다. 우리는 수월하게 확장할 수 있는 훌륭하고 효율적인 기술을 구축하여 이를 수행하므로 비용을 낮게 유지할 수 있습니다.</p>
+	<p><em><strong>오늘날 Cloudflare WAF(웹 애플리케이션 방화벽) 관리 규칙 집합을 모든 Cloudflare 요금제에 무료로 제공함으로써 이를 다시 수행하고 있습니다.</strong></em></p>
+	<h3 id="-">우리가 이런 일을 하는 이유는 뭘까요?</h3>
+	<p>세간의 이목을 끄는 취약성은 인터넷 전반에 걸쳐 중대한 영향을 미치며 모든 규모의 조직에 영향을 줍니다. 당사는 <a href="https://blog.cloudflare.com/tag/log4j/">최근 Log4J에서 이를 확인했지만</a>, 그 이전에도 <a href="https://blog.cloudflare.com/inside-shellshock/">Shellshock</a>과 <a href="https://blog.cloudflare.com/tag/heartbleed/">Heartbleed</a>와 같은 주요 취약성은 인터넷 전반에 걸쳐 피해를 입혔습니다.</p>
+	<p>소규모 응용 프로그램 소유자와 팀은 빠르게 업데이트되는 보안 관련 패치를 적용할 시간이 항상 있지는 않으므로 많은 응용 프로그램이 손상되거나 악의적인 목적으로 사용되는 일이 발생합니다.</p>
+	<p>Cloudflare 프록시 뒤에는 수백만 개의 인터넷 자산이 있으므로 우리는 웹을 안전하게 보호할 의무가 있습니다. 그리고 우리는 모든 트래픽에 대한 <a href="https://blog.cloudflare.com/ko-kr/cve-2021-44228-log4j-rce-0-day-mitigation-ko-kr/">완화 규칙을 배포</a>하여 Log4J로 웹 보호 작업을 수행했으며, 여기에는 FREE 존이 포함됩니다. 당사는 이제 새로운 WAF 엔진을 기반으로 모든 요금제에 Cloudflare 무료 관리 규칙 집합을 제공함으로써 약속을 공식화하고 있습니다.</p>
+	<h3 id="--1">우리가 언제 이것을 하게 될까요?</h3>
+	<p>Free 요금제를 사용하는 고객은 이미 보호를 받고 계십니다. 앞으로 몇 달간 모든 FREE 존 요금제 사용자는 대시보드의 Cloudflare WAF 사용자 인터페이스에 대한 액세스 권한을 부여받게 되며 새 규칙 집합을 배포하고 구성할 수 있습니다. 이 규칙 집합은 Shellshock 및 Log4J와 같이 세간의 이목을 끄는 취약성을 위한 완화 규칙을 제공합니다.</p>
+	<p>고급 WAF 주요 기능과 함께 더 광범위한 WAF 규칙 집합(Cloudflare 관리 규칙, Cloudflare OWASP 핵심 규칙 집합 및 Cloudflare 누출 자격 증명 확인 규칙 세트)에 액세스하려면, 고객은 여전히 PRO 이상의 요금제로 업그레이드해야 합니다.</p>
+	<h3 id="--2">과제</h3>
+	<p>Cloudflare 전역 네트워크에서 초당 3,200만 개 이상의 HTTP 요청을 프록시 처리하므로 모든 단일 요청에 대해 WAF를 실행하는 것은 쉬운 일이 아닙니다.</p>
+	<p>WAF는 본문을 포함한 모든 HTTP 요청 구성 요소를 보호하며, 이는 악의적 페이로드를 나타낼 수 있는 특정 패턴을 찾는 일련의 규칙(때로는 서명이라고도 함)을 실행함으로써 이루어집니다. 이러한 규칙은 복잡성 측면에서 다양하며, 규칙이 많을수록 시스템을 최적화하기가 어렵습니다. 또한 많은 규칙에서 정규식 기능을 활용하여, 작성자는 복잡한 논리 일치 작업을 수행할 수 있습니다.</p>
+	<p>보안에는 성능 저하가 수반되어서는 안 되며 많은 응용 프로그램 소유자가 성능 이점을 위해 Cloudflare를 이용하므로 이 모든 작업을 수행하면서도 지연 시간의 영향을 무시할 수 있어야 합니다.</p>
+	<p>새로운 Edge Rules Engine에는<a href="https://blog.cloudflare.com/new-cloudflare-waf/"> 새로운 WAF가 구축되어 있으며</a>, 이를 활용하여 성능 및 메모리 이정표에 도달하여 편안하게 모든 사람에게 우수한 베이스 라인 WAF 보호를 제공할 수 있었습니다. 그에 따라 새 Cloudflare 무료 관리 규칙 집합이 등장했습니다.</p>
+	<h3 id="-cloudflare-">무료 Cloudflare 관리 규칙 집합</h3>
+	<p>이 규칙 집합은 모든 새로운 Cloudflare 영역에 자동으로 배포되며 매우 광범위한 트래픽 유형에 걸쳐 긍정 오류를 최소로 줄이도록 특별히 설계되었습니다. 고객은 필요한 경우 규칙 집합을 비활성화하거나 트래픽 필터 또는 개별 규칙을 구성할 수 있습니다. 현 시점에서 규칙 집합에는 다음 규칙이 포함됩니다.</p>
+	<ul>
+		<li>URI 및 HTTP 헤더의 페이로드와 일치하는 Log4J 규칙</li>
+		<li>Shellshock 규칙</li>
+		<li>매우 일반적인 WordPress 악용과 일치하는 규칙</li>
+	</ul>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/03/image1-28.png" class="kg-image"></figure>
+	<p>규칙이 일치할 때마다 보안 개요 탭에 이벤트가 생성되므로 요청을 검사할 수 있습니다.</p>
+	<h3 id="--3">배포 및 구성</h3>
+	<p>모든 새로운 FREE 존에 대해 규칙 집합이 자동으로 배포됩니다. 규칙은 Cloudflare 네트워크 전체에 걸쳐 테스트되었으며 대부분의 응용 프로그램에 즉시 배포하는 것이 안전합니다. 고객은 어떤 경우에도 다음을 통해 규칙 집합을 추가로 구성할 수 있습니다.</p>
+	<ul>
+		<li>모든 규칙을 LOG 또는 기타 작업으로 재정의.</li>
+		<li>특정 규칙만을 LOG 또는 기타 작업으로 재정의.</li>
+		<li>규칙 집합 또는 특정 규칙을 완전히 비활성화.</li>
+	</ul>
+	<p>모든 옵션은 대시보드를 통해 쉽게 액세스할 수 있지만, API를 통해 수행할 수도 있습니다. 규칙 집합을 구성하는 방법에 대한 문서는 UI에서 사용할 수 있게 되면 <a href="https://developers.cloudflare.com/waf/managed-rulesets/" target="_blank">개발자 사이트</a>에서 찾을 수 있습니다.</p>
+	<h3 id="--4">다음은?</h3>
+	<p>Cloudflare 무료 관리 규칙 집합은 관련된 다양한 취약성이 발견될 때마다 Cloudflare에 의해 업데이트됩니다. 규칙 집합에 대한 업데이트는 <a href="https://developers.cloudflare.com/waf/change-log" target="_blank">변경 로그</a>에 게시되어 고객이 새로운 규칙을 최신 상태로 유지할 수 있도록 합니다.</p>
+	<p>당사는 멋진 새로운 기술을 만드는 것을 좋아합니다. 하지만 널리 사용할 수 있고 사용하기 쉽게 만드는 것도 좋아합니다. 어떠한 비용도 들지 않는 WAF를 사용하여 모든 사람을 위해 웹을 훨씬 더 안전하게 만들 수 있게 되어 정말 기쁩니다. 시작하는 데 관심이 있으시면, <a href="https://dash.cloudflare.com/sign-up" target="_blank">여기로 오셔서</a> Free 요금제에 가입해보십시오.</p>
+</div>

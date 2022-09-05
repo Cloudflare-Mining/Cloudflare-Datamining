@@ -1,0 +1,76 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image4-48.png" class="kg-image" alt="Preventable hack #6: TLS private key compromises"></figure>
+	<p>Pada tahun 2014, sebuah bug ditemukan di OpenSSL, perpustakaan enkripsi populer yang digunakan untuk mengamankan sebagian besar server di Internet. Bug ini memungkinkan penyerang menyalahgunakan fitur tidak jelas yang disebut detak jantung TLS untuk membaca memori dari server yang terpengaruh. Heartbleed adalah berita besar karena memungkinkan penyerang mengekstrak rahasia terpenting di server: kunci privat sertifikat TLS/SSL-nya. Setelah mengonfirmasikan bahwa bug tersebut <a href="https://blog.cloudflare.com/the-results-of-the-cloudflare-challenge/">mudah dieksploitasi,</a>, kami mencabut dan menerbitkan kembali lebih dari <a href="https://blog.cloudflare.com/the-heartbleed-aftermath-all-cloudflare-certificates-revoked-and-reissued/">100.000 sertifikat</a>, yang menyoroti beberapa masalah utama tentang cara mengamankan Internet.</p>
+	<p>Meskipun Heartbleed dan <a href="https://www.bankinfosecurity.com/private-keys-for-23000-digital-certificates-leaked-a-10689" target="_blank">peristiwa kompromi penting lainnya </a> menyakitkan bagi tim keamanan dan operasi di seluruh dunia, peristiwa itu juga memberikan kesempatan belajar bagi industri. Selama tujuh tahun terakhir, Cloudflare telah mengambil pelajaran dari Heartbleed dan menerapkannya untuk meningkatkan desain sistem dan ketahanan Internet kami secara keseluruhan. Baca terus untuk mengetahui cara menggunakan Cloudflare untuk mengurangi risiko kompromi kunci dan mengurangi biaya pemulihan jika kejadian tersebut terjadi.</p>
+	<h3 id="menjaga-kunci-tetap-aman"><strong>Menjaga kunci tetap aman</strong></h3>
+	<p>Prinsip penting dari desain sistem keamanan adalah pertahanan mendalam. Hal-hal penting harus dilindungi dengan beberapa layer pertahanan. Inilah sebabnya mengapa orang yang sadar akan keamanan menyimpan kunci rumah cadangan di kotak kunci yang aman bukan di bawah keset. Untuk sistem kriptografi yang menghadap ke Internet, pertahanan mendalam berarti merancang sistem Anda sehingga kunci tidak dicuri dengan satu eksploitasi saja. Ini tidak berlaku untuk OpenSSL dan Heartbleed. Kunci privat dimuat ke dalam memori ke dalam proses menghadap ke Internet yang tidak aman untuk memori, jadi hanya satu bug pengungkapan memori yang diperlukan untuk mencurinya.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/03/image6-22.png" class="kg-image" alt="Keyless SSL: keeping the server separate from the key">
+		<figcaption>Keyless SSL: menjaga server tetap terpisah dari kunci</figcaption>
+	</figure>
+	<p>Strategi pertahanan mendalam yang efektif untuk melindungi kunci pribadi TLS/SSL adalah dengan membagi proses menjadi dua bagian: bagian kunci pribadi/autentikasi, dan bagian enkripsi/deskripsi. Inilah tepatnya mengapa kami mengembangkan Keyless SSL, untuk memungkinkan pelanggan tetap mengontrol kunci privat mereka sekaligus memungkinkan Cloudflare menangani detail koneksi lainnya. <a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details/">Keyless SSL</a> menyediakan pemisahan fisik antara tempat kunci yang sedang digunakan dan tempat penyimpanannya. Kami mendukung Keyless SSL baik untuk modul keamanan perangkat lunak maupun perangkat keras (HSM), dan hari ini kami mengumumkan bahwa kami sekarang mendukung <a href="https://blog.cloudflare.com/keyless-ssl-supports-fips-140-2-l3-hsm">beberapa HSM berbasis cloud</a>.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/03/image1-1.gif" class="kg-image" alt="Geo Key Manager: configurable key management by geography">
+		<figcaption>Geo Key Manager: manajemen kunci yang dapat dikonfigurasi berdasarkan geografi</figcaption>
+	</figure>
+	<p>Heartbleed menunjukkan kepada kami bahwa strategi ini juga dapat berguna dalam menambahkan layer keamanan ekstra untuk kunci privat yang kami kelola untuk pelanggan kami. Pada tahun 2017, kami meluncurkan <a href="https://blog.cloudflare.com/geo-key-manager-how-it-works/">Geo Key Manager</a>, sebuah fitur yang memungkinkan pelanggan untuk memilih lokasi mana di dunia yang mereka inginkan untuk menyimpan kunci mereka. Geo Key Manager melindungi kunci dari kompromi fisik server di berbagai geografi. Pada tahun 2019, kami melangkah lebih jauh dengan menerapkan strategi yang disebut <a href="https://blog.cloudflare.com/going-keyless-everywhere/">Keyless Everywhere</a>, yang memindahkan semua kunci terkelola ke sistem yang menyediakan pemisahan logis antara Internet dan kunci privat.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/03/image2-1.jpg" class="kg-image" alt="Delegated Credentials: key separation with no latency">
+		<figcaption>Kredensial yang Didelegasikan: pemisahan kunci tanpa latensi</figcaption>
+	</figure>
+	<p>Keyless SSL adalah solusi keamanan yang hebat, tetapi tergantung di mana kunci disimpan, Keyless SSL dapat menimbulkan beberapa latensi. Karena itu, kami bekerja dengan IETF untuk mengembangkan standar baru yang disebut <a href="https://blog.cloudflare.com/keyless-delegation/">Kredensial yang Didelegasikan</a>, yang memungkinkan koneksi menggunakan kunci berumur pendek yang ditandatangani oleh sertifikat alih-alih sertifikat itu sendiri di TLS. Ini menghilangkan latensi tambahan yang diakibatkan oleh Keyless SSL. Kami mendukung Kredensial yang Didelegasikan untuk semua pelanggan Keyless SSL dan Geo Key Manager; dan Firefox 89 (Mei 2021) akan mengaktifkan dukungan Delegated Credential secara default.</p>
+	<h3 id="membuat-pencabutan-berfungsi"><strong>Membuat pencabutan berfungsi</strong></h3>
+	<p>Ketika Heartbleed terjadi dan ratusan ribu sertifikat dianggap berpotensi disusupi, hal logis yang harus dilakukan adalah mencabut dan menerbitkan kembali sertifikat tersebut. Melakukan hal tersebut dapat menyebabkan beberapa konsekuensi yang tidak terduga.</p>
+	<p>Konsekuensi pertama dari pencabutan adalah lonjakan lalu lintas jaringan yang besar terkait dengan informasi pencabutan. Pada tahun 2014, ada tiga mekanisme utama pencabutan sertifikat:</p>
+	<!--kg-card-begin: markdown-->
+	<ul>
+		<li>Daftar Pencabutan Sertifikat (CRL)
+			<ul>
+				<li>Daftar nomor seri yang dicabut untuk otoritas sertifikat tertentu<br>
+					<img src="https://blog.cloudflare.com/content/images/2021/03/image3.jpg" alt="image3">
+				</li>
+			</ul>
+		</li>
+		<li>Protokol Status Sertifikat Online<br>
+			(OCSP)
+			<ul>
+				<li>Protokol untuk menanyakan otoritas sertifikat tentang status pencabutan sertifikat<br>
+					<img src="https://blog.cloudflare.com/content/images/2021/03/image5.jpg" alt="image5">
+				</li>
+				<li>OCSP dapat ditanyakan oleh browser atau respons dapat dimasukkan oleh server pada waktu koneksi "stapel OCSP"</li>
+			</ul>
+		</li>
+		<li>CRLSets — Sistem pencabutan kustom Chrome
+			<ul>
+				<li>Daftar meta nomor seri yang dicabut, terbatas pada sertifikat yang bernilai tinggi</li>
+			</ul>
+		</li>
+	</ul>
+	<!--kg-card-end: markdown-->
+	<p>Puluhan ribu sertifikat dicabut sekaligus karena potensi kompromi dari Heartbleed. Setelah ini, CRL untuk CA terkemuka, GlobalSign, meningkat dari <a href="https://blog.cloudflare.com/the-hard-costs-of-heartbleed/">22KB menjadi 4,7MB dalam sehari</a>. Ini menyebabkan gangguan besar pada infrastruktur caching internal Cloudflare dan lonjakan bandwidth yang memengaruhi Internet secara luas karena semua klien yang mengandalkan CRL memeriksa validasi sertifikat (sebagian besar Microsoft Windows) mengunduh file.</p>
+	<p>Setelah peristiwa pencabutan ini, menjadi jelas bahwa ada alasan lain mengapa pencabutan bukan merupakan sistem yang fungsional. Di Firefox, jika pengguna membuat koneksi ke situs dan respons OCSP yang distapel tidak disediakan, Firefox akan menanyakan server OCSP untuk mendapatkan respons. Namun, Firefox menerapkan strategi gagal-terbuka: jika respons OCSP terlalu lama, pemeriksaan pencabutan akan dilewati dan halaman dirender. Penyerang dengan posisi jaringan dengan hak istimewa dapat menggunakan sertifikat yang disusupi <em>dan dicabut </em> untuk menyerang pengguna hanya dengan memblokir permintaan OCSP dan membiarkan browser melewati pemeriksaan pencabutan. Staple OCSP adalah cara bagi server untuk mendapatkan respons OCSP ke browser dengan cara yang andal, tetapi karena staple bukan persyaratan untuk klien, penyerang tidak dapat menyertakan staple sehingga browser akan gagal terbuka, yang membuat pengguna rentan untuk diserang. OCSP juga tidak memberikan perlindungan yang kuat terhadap penyusupan kunci dalam mode gagal-terbuka (ditambah, OCSP adalah <a href="https://www.eff.org/deeplinks/2020/11/macos-leaks-application-usage-forces-apple-make-hard-decisions" target="_blank">kebocoran privasi</a>, tapi itu masalah lain).</p>
+	<p>Situasi di Chrome bahkan lebih buruk dari perspektif keamanan. Karena baik OCSP maupun CRL tidak diperiksa untuk sebagian besar sertifikat (CRLSet hanya berisi sertifikat "Validasi Diperluas" yang dicabut), sebagian besar sertifikat dipercaya tanpa memeriksa status pencabutan. Solusi untuk mencabut kumpulan sertifikat yang dikelola Cloudflare di Chrome untuk Heartbleed sebenarnya adalah patch singkat ke basis kode Chromium. Jelas ini bukanlah solusi yang dapat ditingkatkan!</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image7-11.png" class="kg-image"></figure>
+	<p>Pencabutan sertifikat secara massal pada tahun 2014 jelas tidak berhasil. Sebagian sertifikat pada saat itu berlaku hingga lima tahun, jadi kunci yang disusupi menjadi masalah untuk waktu yang lama.</p>
+	<p>Pada tahun 2015, standar baru muncul yang tampaknya memberikan solusi yang masuk akal untuk masalah ini: <a href="https://scotthelme.co.uk/ocsp-must-staple/" target="_blank">OCSP Must-staple</a>. Sertifikat yang diterbitkan dengan fitur must-staple hanya dapat dipercaya jika disertai dengan staple OCSP yang valid. Jika sertifikat must-staple disusupi dan dicabut, maka sertifikat tersebut hanya dapat digunakan untuk menyerang pengguna selama masa pakai OCSP yang diterbitkan terakhir (biasanya 10 hari atau kurang). Ini adalah peningkatan besar dan memungkinkan pemilik sertifikat untuk membatasi risiko mereka secara keseluruhan.</p>
+	<p>Cloudflare telah mendukung staple OCSP dengan upaya yang terbaik <a href="https://blog.cloudflare.com/ocsp-stapling-how-cloudflare-just-made-ssl-30/">sejak 2012</a>. Pada tahun 2017, kami mulai meningkatkan keandalan staple OCSP kami sehingga kami dapat mendukung sertifikat OCSP must-staple. Hasil dari pekerjaan ini adalah <a href="https://blog.cloudflare.com/high-reliability-ocsp-stapling/">staple OCSP dengan keandalan tinggi </a> dan studi penelitian yang diterbitkan <a href="https://dl.acm.org/doi/10.1145/3278532.3278543" target="_blank">di IMC</a> yang menunjukkan kelayakan OCSP must-staple secara lebih luas di Internet. Cloudflare sekarang mendukung sertifikat OCSP must-staple, yang menyediakan jaring pengaman tambahan jika terjadi kompromi kunci di masa mendatang.</p>
+	<h3 id="2014-vs-sekarang"><strong>2014 vs. sekarang</strong></h3>
+	<p>Kami telah membuat banyak kemajuan dalam tujuh tahun. Cloudflare terus berinovasi dalam perlindungan kunci dan ruang keamanan TLS/SSL. Inilah yang berubah selama beberapa tahun terakhir:</p>
+	<p>2014</p>
+	<ul>
+		<li>Sertifikat lima tahun</li>
+		<li>Opportunistic OCSP stapling</li>
+		<li>Tidak ada OCSP must-staple</li>
+		<li>Kunci dalam proses yang menghadap ke Internet</li>
+		<li>Tidak ada Keyless SSL</li>
+		<li>Tidak ada Kredensial yang Didelegasikan</li>
+	</ul>
+	<p>2021</p>
+	<ul>
+		<li>Sertifikat seumur hidup yang dapat dikonfigurasi (dari satu tahun hingga dua minggu dengan <a href="https://blog.cloudflare.com/advanced-certificate-manager">ACM</a>)</li>
+		<li>100% dukungan stapel OCSP</li>
+		<li>Dukungan OCSP Must-staple</li>
+		<li>Keyless di mana saja</li>
+		<li>Dukungan Keyless SSL + Cloud HSM! (baru)</li>
+		<li>Geo Key Manager</li>
+		<li>Dukungan Kredensial yang Didelegasikan</li>
+	</ul>
+	<p>Peningkatan ini dan lebih banyak lagi adalah alasan besar mengapa Cloudflare adalah pemimpin dalam ruang keamanan dan mengapa Heartbleed berikutnya akan lebih baik.</p>
+</div>

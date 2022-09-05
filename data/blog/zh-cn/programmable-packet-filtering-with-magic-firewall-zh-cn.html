@@ -1,0 +1,96 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://lh5.googleusercontent.com/FgvF8-vX8HpqkNa8E4GPasHe8hB3KCwhHNINcnghfnvvPQtInchmOHQtRwpV-row5l5r6fDuFRn1l1DfyOXbLGH1Qu5RzZdaGEWvPyAQ44Gv4TGwFRs5NUxK26LXl_pwvnSq6ZLq" class="kg-image" alt="Programmable Packet Filtering with Magic Firewall"></figure>
+	<p>Cloudflare 日复一日地积极保护服务免受复杂的攻击。对于 Magic Transit 的用户，DDoS 保护能够检测并减少攻击，而 <a href="https://www.cloudflare.com/zh-cn/magic-firewall/" target="_blank">Magic Firewall</a> 则允许自定义包级规则，使客户能够弃用硬件防火墙设备，并阻止 Cloudflare 网络上的恶意流量。攻击的类型和复杂程度在不断演变，例如最近出现的<a href="https://blog.cloudflare.com/update-on-voip-attacks/">针对</a> <a href="https://en.wikipedia.org/wiki/Session_Initiation_Protocol" target="_blank"> Session Initiation Protocol</a> (SIP) 等协议的 VoIP 服务的 DDoS 和反射<a href="https://blog.cloudflare.com/zh-cn/attacks-on-voip-providers-zh-cn/">攻击</a> 。要对抗这些攻击，就需要突破超越传统防火墙能力的数据包过滤的极限。为了做到这一点，我们采用了最先进的技术，并将它们以新的方式结合起来，将 Magic Firewall 变成了一个极速、完全可编程的防火墙，其甚至可以抵抗最复杂的攻击。</p>
+	<h3 id="magical-walls-of-fire"><strong>Magical Walls of Fire</strong></h3>
+	<p><a href="https://blog.cloudflare.com/zh-cn/introducing-magic-firewall-zh-cn/">Magic Firewall</a>是一个构建在 Linux nftables 上的分布式无状态数据包防火墙。它在全世界每一个 Cloudflare 数据中心的每一台服务器上运行。为了提供隔离和灵活性，每个客户的都需要在自己的 Linux 网络命名空间中配置 nftables 规则。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image1-20.png" class="kg-image" alt="This diagram shows how packets are processed by Magic Firewall on a Cloudflare server." title="Magic Firewall Diagram"></figure>
+	<p>这张图显示了内置 Magic Firewall 时，使用 <a href="https://blog.cloudflare.com/zh-cn/magic-transit-network-functions-zh-cn/">Magic Transit</a> 的示例数据包的生命周期。首先，数据包进入服务器并应用 DDoS 保护，可以尽早地减少攻击。接下来，数据包被路由到客户特定网络命名空间，并将 nftables 规则应用于数据包。然后，数据包将通过 GRE 通道返回至源端。Magic Firewall 用户可以使用灵活的 <a href="https://github.com/cloudflare/wirefilter" target="_blank">Wirefilter syntax</a>，利用<a href="https://developers.cloudflare.com/magic-firewall" target="_blank">单个 API</a> 构造防火墙语句。此外，可以使用便捷的 UI 拖放元素，在 Cloudflare 仪表板中配置规则。</p>
+	<p>Magic Firewall 为各种数据包参数的匹配提供了非常强大的句法，但这也仅限于 nftables 提供的匹配。虽然这对于许多用例来说已经足够了，但这并未提供足够的灵活性来实现我们想要的高级帧解析和内容匹配。我们需要更强的能力。</p>
+	<h3 id="-ebpf-nftables-"><strong>您好，eBPF，一起来认识 Nftables！</strong></h3>
+	<p>当您希望为 Linux 网络需求添加更多功能时，扩展 Berkeley Packet Filter (<a href="https://ebpf.io/" target="_blank">eBPF</a>)是自然而然的选择。通过 eBPF，您可以插入<em>在内核中</em>执行的数据包处理程序，为您提供熟悉的编程范例的灵活性和内核内执行的速度。Cloudflare <a href="https://blog.cloudflare.com/tag/ebpf/">钟爱 eBPF</a>，这项技术在实现我们的许多产品中起到了革命性的作用。当然，我们想要找到一种方法来使用 eBPF 以扩展我们在 Magic Firewall 中对 nftables 的使用。这意味着能够匹配，在表和链中使用 eBPF 程序作为规则。通过保持现有的基础结构和代码，并进一步扩展，我们也可以鱼与熊掌兼得。</p>
+	<p>如果 nftables 能够自然运用 eBPF，故事就会简单得多；不过，我们只能继续我们的探索。为了开始我们的搜索，我们知道在 iptables 中已集成了 eBPF。例如，我们可以使用 iptables 和一个固定的 eBPF 程序来删除数据包，命令如下：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>iptables -A INPUT -m bpf --object-pinned /sys/fs/bpf/match -j DROP
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>这有助于我们走上正确的道路。Iptables 使用 <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/net/netfilter/xt_bpf.c#n60" target="_blank">xt_bpf</a> 扩展名来匹配 eBPF 程序。这一扩展使用了 BPF_PROG_TYPE_SOCKET_FILTER eBPF 程序类型，允许我们套接字缓冲区加载数据包信息，并根据我们的代码返回一个值。</p>
+	<p>既然我们知道 iptables 可以使用 eBPF，为什么不直接使用它呢？Magic Firewall 目前使用了 nftables，由于它在句法和可编程接口方面的灵活性，对于我们的用例来说，nftables 是一个很好的选择。因此，我们需要找到一种方法，将 xt_bpf 扩展名应用于 nftables。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image2-13.png" class="kg-image"></figure>
+	<p>这张<a href="https://developers.redhat.com/blog/2020/08/18/iptables-the-two-variants-and-their-relationship-with-nftables#using_iptables_nft" target="_blank">图</a>有助于解释 iptables、nftables 和内核之间的关系。nftables API 可以被 iptables 和 nft 用户空间程序使用，并且可以配置 xtables 匹配（包括 xt_bpf）和普通的 nftables 匹配。</p>
+	<p>这意味着通过正确的 API 调用（netlink/netfilter 消息），我们可以在 nftables 规则中嵌入 xt_bpf 匹配。为了做到这一点，我们需要了解需要发送哪些 netfilter 消息。通过使用诸如 strace、Wireshark 等工具，特别是使用<a href="https://github.com/torvalds/linux/blob/master/net/netfilter/xt_bpf.c" target="_blank">源</a>，我们能够构造一条消息，可以在特定的表和链中添加 eBPF 规则。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>NFTA_RULE_TABLE table
+NFTA_RULE_CHAIN chain
+NFTA_RULE_EXPRESSIONS | NFTA_MATCH_NAME
+	NFTA_LIST_ELEM | NLA_F_NESTED
+	NFTA_EXPR_NAME "match"
+		NLA_F_NESTED | NFTA_EXPR_DATA
+		NFTA_MATCH_NAME "bpf"
+		NFTA_MATCH_REV 1
+		NFTA_MATCH_INFO ebpf_bytes	
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>用于添加 eBPF 匹配的 netlink/netfilter 消息的结构应该类似于上面的示例。当然，这条消息需要被正确地嵌入，并包含一个有条件的步骤，例如匹配时的决定。下一步是解码“ebpf_bytes”的格式，如下例所示。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code> struct xt_bpf_info_v1 {
+	__u16 mode;
+	__u16 bpf_program_num_elem;
+	__s32 fd;
+	union {
+		struct sock_filter bpf_program[XT_BPF_MAX_NUM_INSTR];
+		char path[XT_BPF_PATH_MAX];
+	};
+};
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>字节格式可以在 <a href="https://git.netfilter.org/iptables/tree/include/linux/netfilter/xt_bpf.h#n27" target="_blank">struct xt_bpf_info_v1</a> 的内核数据头部定义中找到。上面的代码示例显示了该结构的相关部分。</p>
+	<p>xt_bpf 模块既支持原始字节码，也支持指向固定 eBPF 程序的路径。后一种模式是我们将 eBPF 程序与 nftables 结合所使用的技术。</p>
+	<p>有了这些信息，我们能够编写代码来创建 netlink 消息，并正确地为任何相关的数据字段排序。这种方法只是第一步，我们也在考虑将其整合到合适的工具中，以替代发送自定义的 netfilter 消息。</p>
+	<h3 id="-ebpf"><strong>只需添加 eBPF</strong></h3>
+	<p>现在，我们需要构建一个 eBPF 程序，并将其加载到现有的 nftables 表和链中。开始使用 eBPF 可能会有点令人生畏。我们需要使用哪些类型的程序？我们该如何编译并加载我们的 eBPF 程序？我们需要通过一些探索和研究来开始这个过程。</p>
+	<p>首先，我们构建了一个示例程序进行尝试。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>SEC("socket")
+int filter(struct __sk_buff *skb) {
+  /* get header */
+  struct iphdr iph;
+  if (bpf_skb_load_bytes(skb, 0, &amp;iph, sizeof(iph))) {
+    return BPF_DROP;
+  }
+
+  /* read last 5 bytes in payload of udp */
+  __u16 pkt_len = bswap_16(iph.tot_len);
+  char data[5];
+  if (bpf_skb_load_bytes(skb, pkt_len - sizeof(data), &amp;data, sizeof(data))) {
+    return BPF_DROP;
+  }
+
+  /* only packets with the magic word at the end of the payload are allowed */
+  const char SECRET_TOKEN[5] = "xyzzy";
+  for (int i = 0; i &lt; sizeof(SECRET_TOKEN); i++) {
+    if (SECRET_TOKEN[i] != data[i]) {
+      return BPF_DROP;
+    }
+  }
+
+  return BPF_OK;
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>上述的摘录是 eBPF 程序的一个示例，它只接受在有效负荷末尾有一个魔术字符串的数据包。这需要检查数据包的总长度，以找到从哪里开始搜索。为了清晰起见，本示例中省略了错误检查和数据头部信息。</p>
+	<p>当我们有了程序后，下一步就是将它集成到我们的工具中。我们尝试了一些诸如 BCC、libbpf 等技术来加载程序，我们甚至创建了一个自定义加载器。最终，我们采用了<a href="https://github.com/cilium/ebpf/" target="_blank">cilium eBPF 库</a>，因为我们使用 Golang 作为我们的控制平面程序，而该库使在生成、嵌入和加载 eBPF 程序中非常编辑。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code># nft list ruleset
+table ip mfw {
+	chain input {
+		#match bpf pinned /sys/fs/bpf/mfw/match drop
+	}
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>一旦程序被编译并固定，我们就可以使用 netlink 命令将在 nftables 中添加匹配。列出规则集显示匹配的存在。这简直太棒了！我们现在可以部署自定义的 C 程序，以便在 Magic Firewall 规则集内提供高级匹配！</p>
+	<h3 id="-magic"><strong>更多 Magic</strong></h3>
+	<p>在我们的工具包中增加 eBPF 后，Magic Firewall 成为了一种更加灵活和强大的方法，能够保护您的网络免受不良行为的伤害。现在，我们能够更深入地研究数据包，并实现比 nftables 单独能够提供的更复杂的匹配逻辑。由于我们的防火墙在所有 Cloudflare 服务器上都以软件的形式运行，所以我们可以快速迭代和更新功能。</p>
+	<p>该项目的一个成果是 SIP 保护，目前正处于测试阶段。而这仅仅是个开始。我们目前正在探索使用 eBPF 进行协议验证、高级字段匹配、查看有效负荷，以及支持更大的 IP 列表集。</p>
+	<p>我们也欢迎您的帮助！如果您有其他用例和想法，请与您的客户团队交谈。如果您觉得这项技术很有趣，快来<a href="https://www.cloudflare.com/zh-cn/careers/?__cf_chl_jschl_tk__=uSO6loXtm4qYeGBAoMYMhWW9vhOHdAiaN_NK9f3eZMY-1640592157-0-gaNycGzND9E" target="_blank">加入我们的团队吧</a>！<br></p>
+</div>

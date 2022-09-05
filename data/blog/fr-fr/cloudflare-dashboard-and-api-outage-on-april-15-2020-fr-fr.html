@@ -1,0 +1,37 @@
+<div class="post-content lh-copy gray1">
+	<p>De 15 h 31 UTC à 19 h 52 UTC, le tableau de bord et l’API de Cloudflare ont été indisponibles en raison de la déconnexion de multiples connexions par fibre optique redondantes de l’un de nos deux principaux datacenters.</p>
+	<p>Cette panne n’était pas le résultat d’une attaque DDoS, ni liée à l’augmentation du trafic causée par la crise de la COVID-19. Elle n’est pas non plus due à un dysfonctionnement logiciel ou matériel, ni à une erreur de configuration.</p>
+	<h3 id="que-s-est-il-pass-">Que s’est-il passé ?</h3>
+	<p>Dans le cadre de la maintenance prévisionnelle de l’un de nos principaux datacenters, nous avons demandé aux techniciens de retirer tous les équipements de l’une de nos armoires. Celle-ci contenait du vieux matériel inutilisé que nous voulions mettre au rebut, et aucun des serveurs qui s’y trouvaient n’était actif ou ne contenait de données. Elle contenait également un panneau de brassage (tableau de câbles) assurant toute la connectivité externe avec les autres datacenters de Cloudflare. En l’espace de trois minutes, le technicien chargé de retirer notre matériel inutilisé a également déconnecté les câbles de ce panneau de brassage.</p>
+	<p>Ce datacenter abrite le principal système de contrôle et la principale base de données de Cloudflare. Ainsi, lorsque la connexion a été coupée, le tableau de bord et l’API sont devenus immédiatement indisponibles. Le réseau de Cloudflare lui-même a continué à fonctionner normalement, et les sites web et applications des clients en proxy ont donc aussi continué à fonctionner. Magic Transit, Cloudflare Access et Cloudflare Spectrum également. Tous les services de sécurité, comme notre pare-feu applicatif web, ont continué à fonctionner normalement.</p>
+	<p>Cependant, il n’était plus possible d’effectuer les opérations suivantes :</p>
+	<ul>
+		<li>Se connecter au tableau de bord</li>
+		<li>Utiliser l’API</li>
+		<li>Modifier la configuration (par exemple, modifier un enregistrement DNS)</li>
+		<li>Purger le cache</li>
+		<li>Effectuer des contrôles d’intégrité automatisés de l’équilibrage de charge</li>
+		<li>Créer ou gérer des connexions Argo Tunnel</li>
+		<li>Créer ou mettre à jour des Workers Cloudflare</li>
+		<li>Transférer des domaines vers Cloudflare Registrar</li>
+		<li>Accéder aux journaux et aux données analytiques de Cloudflare</li>
+		<li>Encoder des vidéos sur Cloudflare Stream</li>
+		<li>Enregistrer des informations provenant de services périphériques (les clients verront un trou dans les données de journalisation)</li>
+	</ul>
+	<p>La panne n’a entraîné la perte d’aucune donnée de configuration. Les données de configuration de nos clients sont à la fois sauvegardées et répliquées hors site, mais ni les sauvegardes ni les répliques n’ont été nécessaires. Toutes les données de configuration sont restées en place.</p>
+	<h3 id="notre-r-action">Notre réaction</h3>
+	<p>Pendant la durée de la panne, nous avons procédé simultanément à la commutation vers notre datacenter de secours et au rétablissement de la connexion.</p>
+	<p>Des dizaines d’ingénieurs ont travaillé au sein de deux cellules de crise virtuelles, car chez Cloudflare le travail se fait principalement à distance en raison de la pandémie de COVID-19. L’une d’elles était consacrée à la restauration de la connexion, l’autre à la reprise après l’incident.</p>
+	<p>Nous avons rapidement fait basculer nos systèmes de surveillance internes afin d’avoir une visibilité sur l’ensemble du réseau Cloudflare. Cela nous a donné un contrôle mondial et la possibilité de détecter les problèmes dans n’importe lequel de nos sites répartis dans plus de 200 villes du monde entier. Cela a permis au service périphérique de Cloudflare de continuer à fonctionner normalement, et à notre équipe d’ingénierie de la fiabilité des sites de régler tous les problèmes que ce service pouvait rencontrer au quotidien.</p>
+	<p>En travaillant sur l’incident, nous nous demandions s’il fallait basculer le tableau de bord et l’API vers le mode de récupération après sinistre ou continuer à essayer de rétablir la connexion. Toutes les 20 minutes nous changions d’avis. Si le datacenter avait subi des dégâts physiques (par exemple, en cas de catastrophe naturelle), la décision de basculer aurait été facile à prendre, mais comme nous avions effectué des tests de basculement, nous savions que la procédure de récupération après sinistre serait très complexe et nous avons donc pesé le pour et le contre au fur et à mesure que l’incident se déroulait.</p>
+	<p>En 19 h 44 UTC, la première liaison du datacenter vers Internet fut rétablie. Il s’agissait d’une liaison de secours offrant une connectivité de 10 Gbps.<br>À 19 h 51 UTC, nous avons restauré la première des quatre principales liaisons avec Internet.<br>À 19 h 52 UTC, le tableau de bord et l’API de Cloudflare sont redevenus opérationnels.<br>À 20 h 16 UTC, la deuxième des quatre liaisons a été rétablie.<br>À 20 h 19 UTC, la troisième des quatre liaisons a été rétablie.<br>À 20 h 31 UTC, la connexion entièrement redondante a été rétablie.</p>
+	<h3 id="perspectives-d-am-lioration">Perspectives d’amélioration</h3>
+	<p>Nous prenons cet incident très au sérieux et nous sommes conscients de ses répercussions considérables. Nous avons identifié plusieurs pistes d’amélioration pour éviter que ce genre de problèmes ne se reproduisent à l’avenir, et nous prévoyons de commencer à travailler immédiatement sur les points suivants :</p>
+	<ul>
+		<li>La conception : Si la liaison avec l’extérieur était assurée par divers fournisseurs et impliquait différents datacenters, toutes les liaisons passaient par un seul panneau de brassage, ce qui créait un point de rupture physique unique. La liaison doit être répartie dans plusieurs zones de notre infrastructure.</li>
+		<li>La documentation : Après avoir retiré les câbles du panneau de brassage, nous avons perdu un temps précieux à identifier les câbles indispensables au rétablissement de la liaison avec l’extérieur pour les techniciens du datacenter. Nous devrions faire le nécessaire pour que les différents câbles et panneaux soient étiquetés afin que toute personne chargée de résoudre les problèmes puisse les identifier rapidement. Cela devrait nous permettre d’accéder plus rapidement aux documents nécessaires.</li>
+		<li>Le processus : En envoyant à nos techniciens des instructions pour la mise au rebut du matériel dans les règles, nous devons indiquer clairement quels sont les câbles auxquels il ne faut pas toucher.</li>
+	</ul>
+	<p>Nous procéderons à une expertise interne complète pour nous assurer de trouver et de faire disparaître les causes profondes de cet incident.</p>
+	<p>Veuillez accepter nos excuses pour ces perturbations.</p>
+</div>

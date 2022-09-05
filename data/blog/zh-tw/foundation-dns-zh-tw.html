@@ -1,0 +1,107 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image4-9.png" class="kg-image" alt="Announcing Foundation DNS - Cloudflare’s new premium DNS offering"></figure>
+	<p>今天，我們將隆重推出 Cloudflare 的全新進階 DNS 產品方案──<strong>Foundation DNS</strong>；此方案提供無可比擬的可靠性與卓越的效能，而且能夠滿足基礎結構團隊多數的複雜要求。</p>
+	<h2 id="-">先談價格</h2>
+	<p>當您簽署企業 DNS 交易時，DNS 提供者通常會要求您提供三項數據以產生報價：</p>
+	<ul>
+		<li>區域的數量</li>
+		<li>每個月的 DNS 查詢總數</li>
+		<li>所有區域間的 DNS 記錄總數</li>
+	</ul>
+	<p>有些提供者更為複雜，而且多數擁有定價計算工具或不透明的「聯絡我們」定價。針對您業務成長的趨勢來規劃預算會產生不必要的複雜性，我們認為，我們可以做得更好。何不簡化流程呢？所以我們決定依據單一數據對企業客戶收取 Foundation DNS 的費用：<strong>每個月的 DNS 查詢總數</strong>。我們仍然在計算每個查詢的最終價格，但是預期能夠減少公司的 DNS 帳單費用（更重要的是，降低複雜度）。</p>
+	<p>而且不用擔心，就像我們其他產品一樣，DDoS 緩解仍然是非計量的。如果您的名稱伺服器遭到 DDoS 攻擊，或是有一兩個月的 DNS 查詢數量超過配額，也不會有任何隱藏的超額費用。</p>
+	<h2 id="-dns-">為什麼 DNS 如此重要？</h2>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image1-27.png" class="kg-image"></figure>
+	<p>網域名稱系統 (DNS) 幾乎和網際網路本身一樣老。它最初是在 1983 年於 <a href="https://datatracker.ietf.org/doc/html/rfc882" target="_blank">RFC882</a> 和 <a href="https://datatracker.ietf.org/doc/html/rfc883" target="_blank">RFC883</a> 中定義，為的是在主機名稱和 IP 位址之間建立對應。當時的作者明智地指出：「<em>[網際網路] 是一個龐大的系統，而且可能會成長得更大。</em>」[<a href="https://datatracker.ietf.org/doc/html/rfc882" target="_blank">RFC882</a>]。如今，僅是在最大的頂層網域 (TLD) 之一的 .com 之下，就有將近 1.6 億個網域名稱 [<a href="https://www.verisign.com/en_US/channel-resources/domain-registry-products/zone-file/index.xhtml" target="_blank">來源</a>]。</p>
+	<p>依照設計，DNS 是階層式且高度分散的系統，但是身為終端使用者，您通常只會與解析程式 (1) 通訊，且解析程式是由您的網際網路服務提供者 (ISP) 指派或運作，或是直接由您的雇主或您自己進行設定。解析程式會與其中一個根伺服器 (2)、負責的 TLD 伺服器 (3) 和相關網域的權威名稱伺服器 (4) 進行通訊。在許多情況下，這四方都是由不同的實體來運作，且位於不同的地區，甚至可能在不同的大陸上。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/12/image6-5.png" class="kg-image"></figure>
+	<p>如同我們在<a href="https://blog.cloudflare.com/zh-tw/october-2021-facebook-outage-zh-tw/">近期</a>看到的，如果您的 DNS 基礎結構發生故障，您的麻煩就大了，而且可能會使您損失大量金錢，甚至傷害您的聲譽。因此，身為網域擁有者的您，會希望對您網域的 DNS 查詢能夠隨時都獲得回應，而且理想情況是越快越好。那麼，您該怎麼做呢？您無法影響使用者所設定的解析程式，無法影響根伺服器，但是可以透過挑選具有相應 TLD 的網域名稱來選擇相關的 TLD 伺服器。不過，如果您因其他原因而受到特定 TLD 限制，這一點也就不是您可以控制的了。您可以輕鬆影響的是您權威名稱伺服器的提供者。因此，我們來更深入瞭解 Cloudflare 的權威 DNS 產品方案吧！</p>
+	<h2 id="cloudflare-dns-">Cloudflare 的權威 DNS 簡介</h2>
+	<p>權威 DNS 是我們<a href="https://blog.cloudflare.com/robust-free-dns/">歷史最悠久的產品</a>之一，我們也花了許多時間來將其最佳化。我們的全球 Anycast 網路遍及超過 250 個城市，因此所有 DNS 查詢都會獲得回應。正因如此，我們在提供卓越效能的同時，也能夠始終保證全球可用性。當然，我們也會運用在緩解 DDoS 攻擊方面的廣泛經驗，防止任何人破壞我們的名稱伺服器以及我們客戶的網域。</p>
+	<p>DNS 對 Cloudflare 而言極度重要，因為在 <a href="https://www.cloudflare.com/magic-transit/" target="_blank">Magic Transit</a> 推出之前，DNS 是系統將網際網路上所有使用者導向 Cloudflare 的方式，以保護和加速客戶應用程式。如果我們的 DNS 回應緩慢，Cloudflare 的速度也會變慢。如果我們的 DNS 回應無法使用，Cloudflare 也會無法使用。我們權威 DNS 的速度與可靠性對於 Cloudflare 而言至關重要，對我們的客戶而言也是如此。客戶與 Cloudflare 一起成長的同時，也推動了我們 DNS 基礎結構的發展。如今，我們最大的客戶區域擁有超過 300 萬筆記錄，前 5 位的記錄總計更是將近 1000 萬筆。這些客戶都仰賴 Cloudflare，才能在數秒內（而非數分鐘內）將新的 DNS 記錄更新推送至我們的邊緣。有鑒於此等重要性以及我們客戶的需求，我們在過去幾年來已發展專屬的 DNS 工程團隊，專注於維持 <a href="https://blog.cloudflare.com/how-we-made-our-dns-stack-3x-faster/">DNS 堆疊的速度與可靠性</a>。</p>
+	<p>DNS 生態系統的安全性也很重要。Cloudflare 一直以來都是 <a href="https://blog.cloudflare.com/dnssec-an-introduction/">DNSSEC</a> 的倡導者。透過 DNSSEC 簽署和驗證 DNS 回應可確保中間人攻擊<a href="https://blog.cloudflare.com/bgp-leaks-and-crypto-currencies/">無法劫持回應和重新導向流量</a>。Cloudflare 一直都為所有方案級別免費提供 DNSSEC，對於 Foundation DNS 也將繼續成為免費選項。對於同時選擇使用 Cloudflare 作為網域名稱註冊商的客戶，<a href="https://blog.cloudflare.com/one-click-dnssec-with-cloudflare-registrar/">DNSSEC 的簡易單鍵部署</a>是另一個關鍵功能，能夠確保我們客戶的網域不會遭到劫持，使用者也會獲得保護。我們支援 <a href="https://datatracker.ietf.org/doc/html/rfc8078" target="_blank">RFC 8078</a> <a href="https://blog.cloudflare.com/automatically-provision-and-maintain-dnssec/">在外部網域名稱註冊商的單鍵部署</a>。</p>
+	<p>但是，還有其他問題可能會導致一部分的網際網路停止運作，而且這些問題大多數不在我們的控制範圍內：<a href="https://blog.cloudflare.com/route-leak-detection/">路由洩露</a>，或是更嚴重的<a href="https://en.wikipedia.org/wiki/BGP_hijacking" target="_blank">路由劫持</a>。雖然 DNSSEC 有助於緩解路由劫持，但遺憾的是，並非所有遞迴解析程式都會<a href="https://stats.labs.apnic.net/dnssec" target="_blank">驗證 DNSSEC</a>。而且，即使解析程式會進行驗證，對您名稱伺服器進行的路由洩露或劫持仍然會造成停機。如果您的所有名稱伺服器 IP 都受到此類事件影響，您的網域就會變得無法解析。</p>
+	<p>在與多數提供者合作時，您的每個名稱伺服器通常只會解析成一個 IPv4 和一個 IPv6 位址。如果該 IP 位址無法連線（例如因為網路壅塞或更嚴重的路由洩露），整個名稱伺服器就會變得無法使用，導致您的網域變得無法解析。更糟的是，部分提供者甚至會對其所有的名稱伺服器使用相同 IP 子網路。因此，如果該子網路發生問題，所有名稱伺服器都會無法使用。</p>
+	<p>我們來看看一個範例：</p>
+	<pre><code>$ dig aws.com ns +short              
+ns-1500.awsdns-59.org.
+ns-164.awsdns-20.com.
+ns-2028.awsdns-61.co.uk.
+ns-917.awsdns-50.net.
+
+$ dig ns-1500.awsdns-59.org. +short
+205.251.197.220
+$ dig ns-164.awsdns-20.com. +short
+205.251.192.164
+$ dig ns-2028.awsdns-61.co.uk. +short
+205.251.199.236
+$ dig ns-917.awsdns-50.net. +short
+205.251.195.149
+</code></pre>
+	<p>所有名稱伺服器 IP 都屬於 <code>205.251.192.0/21</code>。幸好，<a href="https://aws.amazon.com/blogs/networking-and-content-delivery/how-aws-is-helping-to-secure-internet-routing/" target="_blank">AWS 現在是</a>透過 <a href="https://isbgpsafeyet.com/#what-is-rpki" target="_blank">RPKI</a> 來<a href="https://aws.amazon.com/blogs/networking-and-content-delivery/how-aws-is-helping-to-secure-internet-routing/" target="_blank">簽署其範圍</a>，使得洩露的可能性降低了——但前提是解析程式 ISP 會驗證 RPKI。不過，如果解析程式 ISP 不會驗證 RPKI，且此子網路遭到洩露或劫持，解析程式將無法連線到任何一個名稱伺服器，aws.com 也會變得無法解析。</p>
+	<p>毫無疑義的是，Cloudflare 會對我們的所有路由進行簽署，也正在<a href="https://isbgpsafeyet.com/" target="_blank">推動網際網路的其餘部分</a>減少路由洩露的影響，但是在我們等待 RPKI 廣泛部署之前，還能採取哪些動作來確保我們的 DNS 系統保有復原能力來挺過路由洩露的攻擊呢？</p>
+	<p>如今，當您在 Free、Pro、Business 或 Enterprise 方案中使用 Cloudflare DNS 時，您的網域會獲得兩個 <code>&lt;name&gt;.ns.cloudflare.com</code> 結構的名稱伺服器，其中 <code>&lt;name&gt;</code> 是隨機的名稱。</p>
+	<pre><code>$ dig isbgpsafeyet.com ns +short
+tom.ns.cloudflare.com.
+kami.ns.cloudflare.com.
+</code></pre>
+	<p>正如我們先前瞭解的，為了讓網域可用，其名稱伺服器必須為可用。這就是為什麼其中每個名稱伺服器都會解析至 3 個 Anycast IPv4 和 3 個 Anycast IPv6 位址。</p>
+	<pre><code>$ dig tom.ns.cloudflare.com a +short
+173.245.59.147
+108.162.193.147
+172.64.33.147
+
+$ dig tom.ns.cloudflare.com aaaa +short
+2606:4700:58::adf5:3b93
+2803:f800:50::6ca2:c193
+2a06:98c1:50::ac40:2193
+</code></pre>
+	<p>這裡要注意的重要細節是，3 個 IPv4 和 3 個 IPv6 位址中，每一個都是來自不同的 /8 IPv4 區塊（IPv6 則是 /45）。因此，若要讓您的名稱伺服器透過 IPv4 變得無法使用，路由洩露必須準確地影響所有三個 /8 IPv4 區塊間的相應子網路。雖然這種事件在理論上是有可能的，但是在實際上幾乎不可能發生。</p>
+	<h3 id="--1">如何進一步改善此情況？</h3>
+	<p>使用 Foundation DNS 的客戶將獲指派一組新的進階名稱伺服器，且代管於 foundationdns.com 和 foundationdns.net 上。這些名稱伺服器將比預設的 Cloudflare 名稱伺服器更具復原能力。我們將在明年初宣布更多有關如何達到此目標的更多詳情，敬請期待。所有外部 Cloudflare 網域（例如 cloudflare.com）都將在新的一年轉換成這些名稱伺服器。</p>
+	<h2 id="--2">敬請期待更多功能</h2>
+	<p>在此很高興宣布，我們將推出兩個眾人引頸期待的功能：</p>
+	<ul>
+		<li>支援次要 DNS 的傳出區域轉移</li>
+		<li>權威和次要 DNS 查詢的 <a href="https://developers.cloudflare.com/logs/about" target="_blank">Logpush</a></li>
+	</ul>
+	<p>這兩者都將在 Foundation DNS 中提供，也會為 Enterprise 客戶提供，免收任何額外費用。我們來更深入探討一下這兩個功能，並瞭解它們如何讓我們的 DNS 產品方案更為完善。</p>
+	<h3 id="-dns--1">支援次要 DNS 的傳出區域轉移</h3>
+	<p>什麼是次要 DNS，以及它為何如此重要？許多大型企業會要求使用一個以上的 DNS 提供者，以便在其中一個提供者無法使用時作為備援。若要達到此目標，他們可以將其網域的 DNS 記錄新增到兩個獨立的平台上，並手動使區域檔案保持同步；這稱為「多重主要」設定。透過次要 DNS，將提供兩個機制，以透過「主要-次要」設定將此程序自動化：</p>
+	<ul>
+		<li>DNS NOTIFY：主要名稱伺服器會向次要名稱伺服器通知區域的每個變更。一旦次要名稱伺服器收到 NOTIFY，就會向主要名稱伺服器發出區域轉移請求，以便與其進行同步。</li>
+		<li>SOA 查詢：在這裡，次要名稱伺服器會定期查詢區域的 SOA 記錄，並檢查可在 SOA 記錄上找到的序號，是否與次要名稱伺服器儲存在該區域之 SOA 記錄中的最新序號相同。如果有新版本的區域可用，就會向主要名稱伺服器傳送區域轉移請求，以取得這些變更。</li>
+	</ul>
+	<p>如果您想要深入瞭解有關次要 DNS 如何在幕後運作的資訊，Alex Fattouche 撰寫了一篇非常具深度解析的<a href="https://blog.cloudflare.com/secondary-dns-deep-dive/">部落格文章</a>。另一種「主要-次要」設定是隱藏主要名稱伺服器，因此又稱為「隱藏主要」設定。此設定的差別在於，只有次要名稱伺服器是權威。也就是說，只有次要名稱伺服器會在網域的網域名稱註冊商處進行設定。下方圖表展示了不同的設定。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/12/image7-2.png" class="kg-image"></figure>
+	<p>自 2018 年以來，我們就一直支援「主要-次要」設定，Cloudflare 在其中扮演的是次要名稱伺服器的角色。也就是說，從我們的角度而言，我們會接受來自主要名稱伺服器的傳入區域轉移。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/12/image2-15.png" class="kg-image"></figure>
+	<p>今天開始，我們也將支援傳出區域轉移，也就是扮演主要名稱伺服器的角色，且由一個或多個外部次要名稱伺服器接收來自 Cloudflare 的區域轉移。就如傳入轉移一樣，我們會支援</p>
+	<ul>
+		<li>透過 AXFR 和 IXFR 的區域轉移</li>
+		<li>透過 DNS NOTIFY 的自動通知，以便在每次變更時觸發區域轉移</li>
+		<li>使用 TSIG 的簽署轉移，來確保區域檔案在轉移期間經過驗證</li>
+	</ul>
+	<h3 id="-dns-logpush">權威和次要 DNS 的 Logpush</h3>
+	<p>Cloudflare 非常喜愛記錄。在 2021 年第 3 季，我們平均每秒處理 2800 萬個 HTTP 請求和 1360 萬個 DNS 查詢，且每天阻擋了 760 億個威脅。所有這些事件都會以記錄的方式儲存一段時間，以便在儀表板中為使用者提供近乎即時的分析。對於希望（或必須）永久儲存這些記錄的客戶，我們已在 2019 年建置了 <a href="https://blog.cloudflare.com/cloudflare-logpush-the-easy-way-to-get-your-logs-to-your-cloud-storage/">Logpush</a>。Logpush 可讓您以近乎即時的方式將記錄串流到我們的其中一個分析合作夥伴（Microsoft Azure Sentinel、Splunk、Datadog 和 Sumo Logic），或是串流到使用與 <a href="https://blog.cloudflare.com/zh-tw/introducing-r2-object-storage-zh-tw/">R2</a> 相容之 API 的任一雲端儲存目的地。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://lh3.googleusercontent.com/wHYBm0Y8Qwe4CD_N5DTx5nizhz61UjVh82f9V3k58VTSN_Jz73Xb_v_sGA7bTfTvNeqq63gFQN6QJypZP6aJPYDzbN8THBcGV_NWjcgqxpyTigVZAw2hlW5afs_evG816QkTvCS5" class="kg-image"></figure>
+	<p>今天，我們將為 Logpush 新增另一個資料集：<strong>DNS 記錄</strong>。若要設定 Logpush 並串流您網域的 DNS 記錄，只要前往 <a href="https://dash.cloudflare.com/?to=/:account/:zone/analytics/logs" target="_blank">Cloudflare 儀表板</a>、建立新的 Logpush 工作、選取 DNS 記錄，然後設定您感興趣的記錄欄位即可：</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/12/unnamed-8.png" class="kg-image"></figure>
+	<p>請參閱我們的<a href="https://developers.cloudflare.com/logs/reference/log-fields/zone/dns_logs" target="_blank">開發人員文件</a>，獲得如何透過 API 達成此目標的詳細指示，並取得新 DNS 記錄欄位的完整描述。</p>
+	<h2 id="--3">還有……</h2>
+	<p>查看您基礎結構中的 DNS 整體時，請務必檢閱您的流量如何流經系統，以及流量的行為如何。不管怎麼說，可用的處理能力、記憶體、伺服器容量以及整體運算資源就只有這麼多。我們提供的其中一個最佳且重要的工具是<a href="https://www.cloudflare.com/load-balancing/" target="_blank">負載平衡</a>和健康狀況監測。</p>
+	<p>Cloudflare <a href="https://blog.cloudflare.com/cloudflare-traffic/">自 2016 年</a>起就提供負載平衡解決方案，支援客戶以可擴充且智慧的方式運用其現有資源。但是我們的負載平衡器僅限於 A、AAAA 和 CNAME 記錄。這已經涵蓋了客戶所需的大多數使用案例，但是並未涵蓋全部。許多客戶有更多的需求，例如負載平衡 MX（或電子郵件伺服器流量）、SRV 記錄（以宣告特定服務的相應流量應穿越哪些連接埠與權重）、HTTPS 記錄（以確保各流量都使用安全的通訊協定，無論透過何種連接埠）等等。我們希望確保客戶的需求能夠獲得滿足，並支援他們將業務目標與技術實作達成一致。</p>
+	<p>我們很高興地在此宣布，我們已新增額外的健康狀況監測方法來支援負載平衡 MX、SRV、HTTPS 和 TXT 記錄流量，而且不需要額外設定。在 Cloudflare 中建立各自的 DNS 記錄並將負載平衡器設定為目的地……就是這麼簡單！透過運用 ICMP Ping、SMTP 和 UDP-ICMP 方法，客戶將隨時掌握其伺服器的健康狀況，也能夠依據相應的健康資訊來套用智慧的轉向決策。</p>
+	<p>在智慧型轉向方面，並沒有一體適用的答案。不同的企業有不同的需求，將您的伺服器在世界各地的位置以及客戶所在位置列入考量時更是如此。常見的經驗法則是，將伺服器放置在客戶所在的地方。這樣可確保客戶獲得最佳效能與符合當地的體驗。一個常見的情境是依據終端使用者請求來源來引導流量，並建立與最接近該區域之伺服器的對應。Cloudflare 的地理轉向能力可讓客戶實現此目標──只要輕鬆建立對集區的區域對應即可。透過此方式，如果看到來自東歐的請求，就可確保將該請求傳送到適當的伺服器以滿足該請求。但是，有時候區域可能幅員遼闊，因而產生無法將該對應盡可能緊密結合的問題。</p>
+	<p>今天，我們非常高興地宣布，我們將在地理轉向功能中提供國家/地區支援。現在，客戶將能夠從我們十三個地區中選擇，或選擇特定的國家/地區來對應其集區，以便在客戶流量流經其系統時對該流量的行為方式擁有更多資料粒度和控制能力。國家/地區層級的轉向功能，以及我們支援對更多 DNS 記錄進行負載平衡的健康狀況方法，都將在 2022 年 1 月提供！</p>
+	<h2 id="-dns--2">推動 DNS 生態系統的演進</h2>
+	<p>此外，我們也有一些令人期待不已的新消息要分享：我們在 <strong>Multi-Signer DNSSEC</strong> (<a href="https://datatracker.ietf.org/doc/html/rfc8901" target="_blank">RFC8901</a>) 方面的工作即將完成，且計劃在 2022 年第一季推出。為什麼此工作如此重要？因為大型企業的兩個常見需求是：</p>
+	<ul>
+		<li><strong>備援：</strong>擁有多個 DNS 提供者為其網域提供權威回應</li>
+		<li><strong>真實性</strong>：部署 DNSSEC 以確保 DNS 回應能夠適當地經過驗證</li>
+	</ul>
+	<p>這兩個需求都可以透過以下方式滿足：使主要名稱伺服器簽署網域，並將其 DNS 記錄與記錄簽章轉送到次要名稱伺服器（以原本方式為兩者提供服務）。Cloudflare 次要 DNS 現在已支援此設定。轉送預先簽署的區域時，不受支援的是非標準 DNS 功能，比如國家/地區層級的轉向。此時 Multi-Signer DNSSEC 就可以發揮作用了。兩個 DNS 提供者都必須知道另一個提供者的簽署金鑰，並執行其自有的線上（或即時）簽署。如果您想要深入瞭解 Multi-Signer DNSSEC 的運作方式，請參閱這篇由 APNIC 發佈的<a href="https://blog.apnic.net/2021/08/25/multi-signer-dnssec-models/" target="_blank">精彩部落格文章</a>。</p>
+	<p>最後但同樣重要的一點是，Cloudflare 將以黃金會員的身分加入 <a href="https://www.dns-oarc.net/" target="_blank">DNS 運作、分析與研究中心 (DNS-OARC)</a>。我們將與其他研究人員和 DNS 基礎結構運作人員攜手合作，一起解決最具挑戰的問題，並繼續努力實作新的標準與功能。</p>
+	<blockquote><em>「對於在消費者要求效能與可靠性的邊緣，DNS 是管理交付內容的關鍵工具。Cloudflare 是 DNS 社群的重要成員，多年來也定期參與 OARC 研討會，向我們關注 DNS 的群眾展示其創新與營運成果。我們很高興且歡迎他們成為我們社群的正式會員，也期待他們以黃金 OARC 的身分持續做出獨特貢獻。」</em><br><em>- </em>OARC 主席 <strong>Keith Mitchell</strong></blockquote>
+	<p>雖然在創辦 Cloudflare 的第一天就一直將心力投入 DNS，但我們仍在起步階段。我們知道，未來的客戶還會向我們要求更精細且具體的功能，推出 Foundation DNS 是我們的根基，表示我們將持續投資 DNS 的所有層面，同時打造世界上功能最豐富的企業級 DNS 平台。如果您有任何構想，請告訴我們您夢想中的 DNS 提供者能夠提供哪些功能。如果您想要協助打造這些功能，我們正在<a href="https://boards.greenhouse.io/cloudflare/jobs/3262004?gh_jid=3262004" target="_blank">廣招人才</a>。</p>
+</div>

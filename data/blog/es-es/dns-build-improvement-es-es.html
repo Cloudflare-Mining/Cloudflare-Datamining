@@ -1,0 +1,111 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image5-20.png" class="kg-image" alt="How we improved DNS record build speed by more than 4,000x"></figure>
+	<p>Desde mi anterior <a href="https://blog.cloudflare.com/secondary-dns-deep-dive/">blog</a> sobre el DNS secundario, el tráfico de DNS de Cloudflare se ha duplicado con creces, pasando de 15,8 billones de consultas de DNS al mes a 38,7 billones. Nuestra red se extiende ahora por más de 270 ciudades en más de 100 países, y se interconecta con más de 10 000 redes en todo el mundo. Según <a href="https://w3techs.com/technologies/overview/dns_server" target="_blank">w3 stats</a>, "un 15,3 % de todos los sitios web utilizan Cloudflare como proveedor de servidor DNS". Esto significa que tenemos una enorme responsabilidad para entregar el servicio de DNS de la forma más rápida y fiable posible. </p>
+	<p>Si bien el tiempo de respuesta que tenemos en las consultas de DNS es la métrica de rendimiento más importante, hay otra métrica que a veces pasa desapercibida. El tiempo de propagación de los registros DNS es el tiempo que tardan los cambios enviados a nuestra API en reflejarse en las respuestas de nuestras consultas de DNS. Cada milisegundo cuenta, ya que permite a los clientes cambiar rápidamente la configuración, haciendo que sus sistemas sean mucho más ágiles. Aunque ya se sabía que nuestra canalización de propagación de DNS era muy rápida, habíamos identificado varias mejoras que, si se aplicaban, mejorarían enormemente el rendimiento. En esta entrada del blog explicaré cómo hemos conseguido mejorar considerablemente nuestra velocidad de propagación de los registros DNS, y el impacto que tiene en nuestros clientes.</p>
+	<h3 id="c-mo-se-propagan-los-registros-dns">Cómo se propagan los registros DNS</h3>
+	<p>La canalización de varias fases de Cloudflare obtiene los cambios de registro DNS de nuestros clientes y los envía a nuestra red global, para que estén disponibles en todo el mundo.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/05/image3-37.png" class="kg-image"></figure>
+	<p>Este diagrama muestra los siguientes pasos:</p>
+	<ol>
+		<li>El cliente realiza un cambio en un registro a través de nuestra API de registros DNS (o de la interfaz de usuario).</li>
+		<li>El cambio se guarda en la base de datos.</li>
+		<li>El evento de la base de datos envía un mensaje Kafka que usa el creador de zonas.</li>
+		<li>El creador de zonas obtiene el mensaje, recaba el contenido de la zona de la base de datos y lo envía a Quicksilver, nuestro almacén KV distribuido.</li>
+		<li>A continuación, Quicksilver propaga esta información a la red.</li>
+	</ol>
+	<p>Por supuesto, esto es una versión simplificada de lo que ocurre. En realidad, nuestra API recibe miles de solicitudes por segundo. Todas las solicitudes POST/PUT/PATCH/DELETE acaban desencadenando un cambio en el registro DNS. Cada uno de estos cambios se debe ejecutar para que la información que mostramos a través de nuestra API y en el panel de control de Cloudflare sea coherente, en última instancia, con la información que utilizamos para responder a las consultas de DNS.</p>
+	<p>Habitualmente, uno de los mayores obstáculos en el proceso de propagación del DNS era el creador de zonas, mostrado anteriormente en el paso 4. Nuestro creador de zonas, que es responsable de recabar y organizar los registros que se escriben en nuestra red global, a menudo consumía la mayor parte del tiempo de propagación, especialmente en el caso de las zonas más grandes. Conforme seguíamos escalando, era importante eliminar las limitaciones que pudieran existir en nuestros sistemas, y esta se identificó claramente como una de ellas.</p>
+	<h3 id="problemas-de-crecimiento">Problemas de crecimiento</h3>
+	<p>Cuando <a href="https://blog.cloudflare.com/how-we-made-our-dns-stack-3x-faster/">se anunció por primera vez</a> la canalización mostrada anteriormente, el creador de zonas recibía entre 5 y 10 cambios de registro DNS por segundo. Aunque el creador de zonas en aquel momento suponía una gran mejora respecto al sistema anterior, tenía los días contados debido al crecimiento que Cloudflare estaba, y sigue, experimentando. Hoy en día, recibimos una media de 250 cambios de registro DNS por segundo, un crecimiento asombroso que se ha multiplicado por 25 desde que se anunció por primera vez el creador de zonas. </p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/05/image4-30.png" class="kg-image"></figure>
+	<p>La forma en que se diseñó inicialmente el creador de zonas era bastante sencilla. Cuando una zona cambiaba, el creador de zonas obtenía todos los registros de la base de datos para esa zona y los comparaba con los registros almacenados en Quicksilver. Cualquier diferencia se corregía para mantener la coherencia entre la base de datos y Quicksilver.</p>
+	<p>Este proceso se conoce como compilación completa. Las compilaciones completas funcionan muy bien porque cada cambio de registro DNS corresponde a un evento de cambio de zona. Esto significa que se pueden agrupar varios eventos por lotes y posteriormente eliminarlos si es necesario. Por ejemplo, si un usuario realiza 10 cambios en su zona, se desencadenarán 10 eventos. Como el creador de zonas recaba todos los registros de la zona de todas formas, no es necesario crear la zona 10 veces. Solo hay que generarla una vez después de que se haya enviado el último cambio.</p>
+	<p>¿Qué ocurre si la zona contiene 1 millón de registros o 10 millones de registros? Es un problema muy serio porque no solo estamos creciendo nosotros, sino que nuestros clientes lo están haciendo en paralelo. Actualmente, nuestra zona más grande tiene millones de registros. Aunque nuestra base de datos está optimizada para el rendimiento, una compilación completa que contenía un millón de registros tardaba <strong>35 segundos</strong>, en gran parte debido a la latencia de la consulta de la base de datos. Además, cuando el creador de zonas compara el contenido de la zona con los registros almacenados en Quicksilver, tenemos que obtener todos los registros de Quicksilver para la zona, lo que añade tiempo. Sin embargo, el impacto no se limita a un solo cliente. También se consumen más recursos de otros servicios que leen de la base de datos y ralentiza el ritmo al que nuestro creador de zonas puede crear otras zonas.</p>
+	<h3 id="novedad-creaci-n-por-registro">Novedad: creación por registro</h3>
+	<p>Puede que muchos de vosotros ya tengáis la solución a este problema en la cabeza: </p>
+	<p><em>¿Por qué el creador de zonas no se limita a consultar la base de datos en busca del registro que ha cambiado y a propagar solo ese registro?</em></p>
+	<p>Por supuesto, esta es la solución correcta, y a la que finalmente llegamos. Sin embargo, el camino para llegar hasta ahí no fue tan sencillo como podría parecer. </p>
+	<p>En primer lugar, nuestra base de datos utiliza una serie de funciones que, en el momento de alcanzar la zona, crean un evento de espera PostgreSQL (PGQ) que, en última instancia, se convierte en un evento Kafka. Inicialmente, no teníamos ninguna distinción para los eventos de registro individuales, lo que significaba que nuestro creador de zonas no tenía ni idea de lo que había cambiado realmente hasta que consultaba la base de datos.</p>
+	<p>A continuación, el creador de zonas sigue siendo responsable de la configuración de la zona de DNS, además de los registros. Algunos ejemplos de configuraciones de zona de DNS son el control de servidores de nombres personalizados y el control de DNSSEC. Por ello, nuestro creador de zonas debía conocer los tipos de creación específicos para asegurarse de que no se anularan unos a otros. Además, las creaciones por registro no se pueden agrupar por lotes de la misma manera que las creaciones de zona porque cada evento se tiene que ejecutar por separado.</p>
+	<p>Como resultado, hubo que escribir un sistema de programación totalmente nuevo. Por último, hubo que reescribir la interacción con Quicksilver para tener en cuenta los distintos tipos de programadores. Estas cuestiones se pueden desglosar de la siguiente manera:</p>
+	<ol>
+		<li>Crear una nueva canalización de eventos Kafka para los cambios de registro que contengan información sobre el registro modificado.</li>
+		<li>Separar el creador de zonas en un nuevo tipo de programador que implemente alguna interfaz de programador definida.</li>
+		<li>Implementar el programador por registro para leer los eventos uno a uno en el orden correcto.</li>
+		<li>Implementar la nueva interfaz de Quicksilver para el programador por registro.<br></li>
+	</ol>
+	<p>A continuación, se muestra un diagrama de alto nivel del aspecto interno del nuevo creador de zonas con los nuevos tipos de programadores.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image6-20.png" class="kg-image"></figure>
+	<p>Es muy importante que bloqueemos entre estos dos programadores porque, de lo contrario, sería posible que el programador de compilación completa sobrescribiera los cambios del programador por registro con datos obsoletos.</p>
+	<p>Es importante señalar que nada de esta arquitectura por registro sería posible sin el uso del <a href="https://blog.cloudflare.com/black-lies/">enfoque <em>black lie</em></a> de Cloudflare a las respuestas negativas con DNSSEC. Normalmente, para atender correctamente las respuestas negativas con DNSSEC, todos los registros de la zona deben estar ordenados canónicamente. Esto es necesario para mantener una lista de referencias desde el registro apex a través de todos los registros de zona. Con este enfoque normal a las respuestas negativas, un solo registro que se haya añadido a la zona exige recabar todos los registros para determinar su punto de inserción dentro de esta lista ordenada de nombres.</p>
+	<h3 id="errores">Errores</h3>
+	<p>Me encantaría poder escribir un blog de Cloudflare en el que todo fuera como la seda. Sin embargo, nunca es el caso. Los fallos ocurren, pero tenemos que estar preparados para responder y evitar que ese fallo específico se produzca la próxima vez.</p>
+	<p>En este caso, el principal fallo que descubrimos estaba relacionado con la limpieza de registros antiguos en Quicksilver. Con el creador de zonas completo, tenemos el lujo de saber exactamente qué registros existen tanto en la base de datos como en Quicksilver. Esto simplifica bastante las tareas de escribir y limpiar. </p>
+	<p>Cuando se implementaron las creaciones por registro, los eventos de registro, tales como las creaciones, las actualizaciones y las eliminaciones se debían tratar de forma diferente. Las creaciones y las eliminaciones son bastante sencillas, porque añaden o eliminan un registro de Quicksilver. Las actualizaciones plantearon un problema imprevisto debido a la forma en que nuestro PGQ producía los eventos Kafka. Las actualizaciones de registros solo contenían la información del nuevo registro, lo que significaba que cuando se cambiaba el nombre del registro, no teníamos forma de saber qué consultar en Quicksilver para limpiar el registro antiguo. De este modo, cada vez que un cliente cambiaba el nombre de un registro en la API de Registros DNS, el registro antiguo no se eliminaba. Finalmente, se solucionó sustituyendo esos eventos de actualización específicos por un evento de creación y otro de eliminación, de modo que el creador de zonas tuviera la información necesaria para limpiar los registros antiguos.</p>
+	<p>Nada de esto es difícil, pero dedicamos esfuerzos tecnológicos para seguir mejorando nuestro software para que crezca en paralelo con Cloudflare. Y es un reto cambiar una parte de Cloudflare de bajo nivel tan fundamental cuando millones de dominios dependen de nosotros.</p>
+	<h3 id="resultados">Resultados</h3>
+	<p>Actualmente, el creador de zonas procesa todos los cambios de registro de la API de Registros DNS como las creaciones por registro. Como mencioné anteriormente, no hemos podido eliminar &nbsp;por completo las compilaciones completas. Sin embargo, ahora representan alrededor del 13 % del total de creaciones de DNS. Este 13 % corresponde a los cambios realizados en la configuración del DNS que necesitan conocer todo el contenido de la zona.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/05/image1-56.png" class="kg-image"></figure>
+	<p>Si comparamos los dos tipos de creación, como se muestra a continuación, podemos ver que las creaciones por registro son de media <strong>150 veces</strong> más rápidas que las compilaciones completas. El tiempo de creación que se muestra a continuación incluye tanto el tiempo de consulta de la base de datos como el tiempo de escritura de Quicksilver.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/05/image2-51.png" class="kg-image"></figure>
+	<p>Desde ahí, nuestros registros se propagan a nuestra red global a través de Quicksilver. </p>
+	<p>Esta mejora de 150 veces es con respecto a los promedios, pero ¿qué pasa con las 4 000 veces que he mencionado al principio? Como puedes imaginar, a medida que aumenta el tamaño de la zona, también lo hace la diferencia entre el tiempo de compilación completa y el tiempo de creación por registro. Utilicé una zona de prueba de un millón de registros y realicé varias creaciones por registro, seguidas de varias compilaciones completas. Los resultados se muestran en la siguiente tabla:</p>
+	<!--kg-card-begin: markdown-->
+	<table>
+		<thead>
+			<tr>
+				<th style="text-align:center">Tipo de creación</th>
+				<th style="text-align:center">Tiempo de creación (m/s)</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td style="text-align:center">Por registro n.º 1</td>
+				<td style="text-align:center">6</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">Por registro n.º 2</td>
+				<td style="text-align:center">7</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">Por registro n.º 3</td>
+				<td style="text-align:center">6</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">Por registro n.º 4</td>
+				<td style="text-align:center">8</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">Por registro n.º 5</td>
+				<td style="text-align:center">6</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">Completa n.º 1</td>
+				<td style="text-align:center">34032</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">Completa n.º 2</td>
+				<td style="text-align:center">33953</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">Completa n.º 3</td>
+				<td style="text-align:center">34271</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">Completa n.º 4</td>
+				<td style="text-align:center">34121</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">Completa n.º 5</td>
+				<td style="text-align:center">34093</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<p>Podemos observar que, con cinco creaciones por registro, el tiempo de creación no superaba los 8 m/s. Sin embargo, cuando se ejecuta una compilación completa, el tiempo de creación tarda una media de 34 segundos. ¡Esto supone una reducción del tiempo de creación de <strong>4 250 veces</strong>!</p>
+	<p>Teniendo en cuenta los tiempos de creación completa tanto para las zonas de tamaño medio como para las grandes, es evidente que todos los clientes de Cloudflare se benefician de esta mejora del rendimiento, y las ventajas mejoran conforme aumenta el tamaño de la zona. Además, nuestro creador de zonas utiliza menos recursos de la base de datos y de Quicksilver, lo que significa que otros sistemas de Cloudflare pueden funcionar a mayor capacidad.</p>
+	<h3 id="pr-ximos-pasos">Próximos pasos</h3>
+	<p>Los resultados han sido muy impactantes, aunque creemos que podemos hacerlo aún mejor. En el futuro, tenemos previsto eliminar las compilaciones completas y sustituirlas por creaciones de configuración de zona. En lugar de obtener la configuración de la zona además de todos los registros, el creador de configuración de zona solo obtendría la configuración de la zona y la propagaría a nuestra red global a través de Quicksilver. Al igual que las creaciones por registro, es un reto difícil debido a la complejidad de la configuración de zona y al número de usuarios que la manejan. En última instancia, si lo logramos, podremos eliminar oficialmente las compilaciones completas y dejarlas como un recordatorio en nuestro historial de Git de la escala a la que hemos crecido a lo largo de los años. </p>
+	<p>Además, tenemos previsto implementar un sistema de lotes que recabe los cambios de registro en grupos para minimizar el número de consultas que hacemos a nuestra base de datos y a Quicksilver. </p>
+	<p>¿Te entusiasma resolver este tipo de retos técnicos y operativos? Cloudflare siempre está buscando expertos y profesionales con conocimientos generales y talento para nuestro equipo de <a href="https://www.cloudflare.com/en-gb/careers/jobs/?department=Engineering&amp;amp;location=default" target="_blank">Ingeniería</a> y <a href="https://www.cloudflare.com/careers" target="_blank">otros departamentos</a>.</p>
+</div>

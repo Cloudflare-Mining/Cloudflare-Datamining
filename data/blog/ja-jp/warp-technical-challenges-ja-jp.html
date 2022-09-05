@@ -1,0 +1,249 @@
+<div class="post-content lh-copy gray1">
+	<p><a href="https://blog.cloudflare.com/announcing-warp-plus/">別の投稿</a>を既にご覧になった方はご存知のとおり、Cloudflareは本日、利用にお申し込みいただいていたすべての方へWARPをリリースいたしました。WARPは、モバイルデバイスとインターネット間のセキュリティの確保と接続の改善を目的とした製品です。開発途中には、200万人の利用希望者から累積した需要を満足するにあたり、電話とオペレーティングシステムのバージョン、多様なネットワーク、そして自社のインフラストラクチャの問題に直面しました。</p>
+	<p>これらすべての問題と、問題を解決した方法を理解していただくために、まず、Cloudflareのネットワークの仕組みの概要について説明します。</p>
+	<h2 id="-"><strong>当社のネットワークの仕組み</strong></h2>
+	<p>Cloudflareのネットワークは、90を超える国の194の都市に設置されたデータセンターで構成されています。Cloudflareのデータセンターはそれぞれが多数のサーバーで構成されており、このデータセンターでは、絶え間なく受け取る大量の要求を、サーバー間で分散して処理する必要があります。この処理に、ルーター一式を使用しています。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/09/image2.png" class="kg-image"></figure>
+	<p>当社のルーターは、パブリックインターネット経由で広告されるAnycast IPアドレスをリッスンしています。Cloudflareにサイトをお持ちの場合、皆様のサイトはこれらのアドレスのうち2つのアドレスを経由しています。この例では、Cloudflareを利用しているサイト、「workers.dev」のDNSクエリを実行しています。</p>
+	<p>➜ dig workers.dev</p>
+	<pre><code>;; QUESTION SECTION:
+;workers.dev.      IN  A
+
+;; ANSWER SECTION:
+workers.dev.    161  IN  A  198.41.215.162
+workers.dev.    161  IN  A  198.41.214.162
+
+;; SERVER: 1.1.1.1#53(1.1.1.1)
+</code></pre>
+	<p>workers.devは、198.41.215.162、198.41.214.162の 2 つのアドレスで使用できます（その他にAAAA DNSクエリを通して使用可能な2つのIPv6アドレスがあります）。この 2 つのアドレスは、当社の世界各地のすべてのデータセンターから広告されます。誰かがCloudflare上のインターネットプロパティに接続すると、パケットが通過する各ネットワークデバイスは、コンピューターまたは携帯電話から最も近いCloudflareデータセンターへの最短パスを選択します。</p>
+	<p>パケットが当社のデータセンターに到着すると、稼働している多数のサーバーのうちの1台に送信します。従来、この種の複数マシン間へのトラフィックの分散には、ロードバランサーを使用していました。残念ながら、当社の規模のトラフィックを処理するデータセンターすべてに、相応の対応能力を備えたロードバランサーとなると、極めて高額になり、サーバーのように容易には拡張でません。当社ではロードバランサーの代わりに、極めて大容量のトラフィックを処理するよう作られたデバイスを使用しています。ネットワークルーターです。</p>
+	<p>パケットが当社データセンターに到着すると、ルーターがこれを処理します。ルーターは、ECMP（等コストマルチパス）と呼ばれるルーティングストラテジーを用いて、トラフィックを、このアドレスの処理を担当するサーバーのうちの 1 台に送信します。ECMPは、ルーターにおいて複数の経路に明確な「勝者」がなく、良好なネクストホップを複数持っていてそのすべての最終的宛先が同一である状況を指します。この例では、ECMPで複数の仲介的なリンクのバランスを取る代わりに、このコンセプトを流用して、この中間的なリンクのアドレスをトラフィックの最終的な宛先、つまり当社サーバーとします。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/09/image6.png" class="kg-image"></figure>
+	<p>こちらは、当社データセンターに設置しているタイプのJuniper製のルーターの構成で、3つの宛先の間でトラフィックのバランスを取るよう設定されています。</p>
+	<pre><code class="language-ini"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1b6e687e695b7374686f">[email&nbsp;protected]</a># show routing-options
+
+static {
+  route 172.16.1.0/24 next-hop [ 172.16.2.1 172.16.2.2 172.16.2.3 ];
+}
+forwarding-table {
+  export load-balancing-policy;
+}
+</code></pre>
+	<p>「next-hop」は当社のサーバーですから、トラフィックは複数のマシン間に極めて効率的に分散されます。</p>
+	<h2 id="tcp-ip-ecmp"><strong>TCP、IP、およびECMP</strong></h2>
+	<p>IPは、例えば93.184.216.34から208.80.153.224へ（あるいは、IPv6の場合は[2606:2800:220:1:248:1893:25c8:1946]から[2620:0:860:ed1a::1]へ）という形でインターネット上でデータのパケットを送信する役割を担っています。これが、「インターネットプロトコル」です。</p>
+	<p>TCP（伝送制御プロトコル）は、パケットを1つの場所から別の場所に送信するIPのようなプロトコルよりも上位で動作し、データ伝送に信頼性を付与し、一度に複数の処理で使用できるようにします。TCPは、IP等のプロトコルを介して到着する可能性のある、信頼性のない誤った順序のパケットを、信頼できる正しい順序で送達する役割を負っています。また、TCPは、コンピューターや携帯電話上のトラフィックを特定サービス（WebやEメールなど）にルーティングする、1～65535の数字で表される「ポート」の概念にもつながります。各TCP接続には、送信元ポートと宛先ポートがあり、この情報はTCPが各パケットの始まりの部分に付加したヘッダーに含まれています。ポートという考え方がなければ、どのメッセージがどのプログラムに向けられているのか判断するのは、容易ではありません。たとえば、Google ChromeとGoogle Mailの両方が、WiFi接続を介して同時にメッセージを送信しようとするかもしれません、そのため各々が自身のポートを使用するのです。</p>
+	<p>これは、HTTPS:443の既定ポートで、198.41.215.162にあるhttps://cloudflare.com/に要求を送信する例です。私のコンピューターは、ランダムにポート51602を割り当てており、このポートでレスポンスをリッスンして、上手く行けばこのサイトのコンテンツを受け取る、という流れです。</p>
+	<pre><code>Internet Protocol Version 4, Src: 19.5.7.21, Dst: 198.41.215.162
+    Protocol: TCP (6)
+    Source: 19.5.7.21
+    Destination: 198.41.215.162
+Transmission Control Protocol, Src Port: 51602, Dst Port: 443, Seq: 0, Len: 0
+    Source Port: 51602
+    Destination Port: 443
+
+</code></pre>
+	<p>Cloudflare側から同じ要求を見ると、反転した鏡像になり、私の送信元IPアドレスからのポート443宛ての要求になっています（ここではNATを無視していますが、後で詳しく説明します）。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">Internet Protocol Version 4, Src: 198.41.215.16, Dst: 19.5.7.21
+    Protocol: TCP (6)
+    Source: 198.41.215.162
+    Destination: 19.5.7.21
+Transmission Control Protocol, Src Port: 443, Dst Port: 51602, Seq: 0, Len: 0
+    Source Port: 443
+    Destination Port: 51602
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>では、ECMPのお話に戻りましょう。理論上は、ECMPを使用してパケットをランダムにサーバー間でバランシングすることは可能ですが、それはしたくないですよね。インターネット上のメッセージは、通常、複数のTCPパケットで構成されます。各パケットが別のサーバーに送信された場合、元のメッセージを1か所で再構築して実行させることは不可能です。それだけでなく、パフォーマンスにとってもかなりの悪影響があります。Cloudflareは、単一のサーバーへの固定接続を必要とする、長く利用されてきたTCPおよびTLSセッションに依存してきました。この固定した接続を維持するために、当社のルーターはランダムなトラフィックのバランシング（負荷分散）は行わず、4つの値、つまり送信元アドレス、送信元ポート、宛先アドレス、および宛先ポートの組み合わせを使用しています。これら 4 つの値の組み合わせが同じトラフィックは、必ず同じサーバーに向けられます。上記の私の例では、私のすべてのcloudflare.com宛てのメッセージは単一のサーバーに到達し、ここでTCPパケットが私の要求に再構築されて、応答でパケットが返されます。</p>
+	<h2 id="warp-"><strong>WARPへの参加</strong></h2>
+	<p>従来の要求では当社のECMPルーティングにより、すべてのパケットを、要求が継続している間、一貫して同一のサーバーに送信することが非常に重要でした。Web上では、要求の継続時間は通常、10秒未満で、システムは良好に動作します。ところが、我々は間もなくWARPの問題に直面しました。</p>
+	<p>WARPは、パケットをセキュリティ保護するために、公開鍵暗号化方式によりネゴシエートされたセッションキーを使用します。接続を成功させるには、双方が、その特定のクライアントとそれらが相手とする特定のサーバーに対してのみ有効な接続をネゴシエートする必要があります。このネゴシエーションには時間を要し、クライアントが新しいサーバーと対話するたびに、完了する必要があります。さらに悪いことに、あるサーバーに向けたかったパケットが、送信されてから別のサーバーで終端した場合には、復号化ができず、接続が失敗してしまいます。このような失敗したパケットを検出して、接続を最初からやりなおすにはかなりの時間を要し、当社のアルファ版の試験ユーザーはインターネット接続の完全な切断と感じました。ご想像のように試験ユーザーは、インターネットの利用に影響を及ぼすのであればWARPを長期間ONにすることはしません。</p>
+	<p>我々の予想よりもはるかに頻繁に、デバイスがサーバーを切り替えるため、WARPではかなり多くの失敗を経験しました。思い出していただけるでしょうか、当社のECMPルーターの構成では、（送信元IP、送信元ポート、宛先IP、宛先ポート）の組み合わせを使用して、パケットをサーバーに一致させています。宛先IPは基本的に変化しませんが、WARPクライアントは常に同じエニーキャストアドレスに接続しています。同様に、宛先ポートは変化しませんが、WARPトラフィックは常に同じポートでリッスンしています。他の2つの値である、送信元IPと送信元ポートは、我々が予定していたよりもはるかに頻繁に変更されていました。</p>
+	<p>これらの送信元の変化のうち1つは予想されたものでした。WARPは携帯電話上で動作し、携帯電話機の通信接続は一般的に、セルラーとWi-Fi接続間で切り替わります。この切り替えを行うと、突如、携帯電話会社（AT&amp;T や Verizon）のIPアドレス空間を経由したインターネット経由の通信から、Wi-Fi接続で使用しているインターネットサービスプロバイダー（ComcastやGoogle Fiber）を経由した通信に変更されます。接続方式を移動してもIPアドレスが変化しないということは、本質的に不可能です。</p>
+	<p>しかしながら、ポートの変化は、ネットワークの切り替えで説明できるよりももっと頻繁に起こっていました。次に紹介するのが、もう1つ理解していただきたいインターネットの構成要素である、ネットワークアドレス変換です。</p>
+	<h2 id="nat"><strong>NAT</strong></h2>
+	<p>IPv4アドレスは、32ビット（基本、4つの8ビット番号として表記される）で構成されます。使用できない予約済みアドレスを除外すると、<a href="https://stackoverflow.com/questions/2437169/what-is-the-total-amount-of-public-ipv4-addresses" target="_blank">3,706,452,992の利用可能なアドレス</a>が残ります。この数は1983年にARPANETにIPv4が展開されて以来、デバイスの数は爆発的に増加しましたが、一貫して同じでした（まもなく<a href="https://hub.packtpub.com/linux-kernel-announces-a-patch-to-allow-0-0-0-0-8-as-a-valid-address-range/" target="_blank">0.0.0.0/8が利用可能になると</a>、少し増えるかもしれませんが）。このデータは、Gartner Research社の予測と推定値に基づいています。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/09/image3-1.png" class="kg-image"></figure>
+	<p>IPv6は、この問題の決定的な解決策です。IPv6は、アドレス長を32ビットから128ビットに拡張し、現時点で有効なインターネットアドレスで125を使用することができます（すべてのパブリックIPv6アドレスの最初の3ビットは001に設定され、残りの87.5%の IPv6アドレス空間はまだ必要とはみなされていません）。2^125はありえないほど大きな数字であり、地球上のすべてのデバイスが独自のアドレスを持っても十分です。残念ながら、公開されてから21年が経過しても、多くのネットワークで、IPv6はいまだにサポートされていません。インターネットの大部分はまだIPv4に依存しており、先に示したように、すべてのデバイスが独自のIPv4アドレスを持つのに十分なアドレスはありません。</p>
+	<p>この問題を解決するために、多くのデバイスには一般的に単一のインターネットアドレスに対応可能なIPアドレスが付いています。ルーターは、ネットワークアドレス変換を行うために使用するもので、単一のパブリックIPに到着したメッセージを受け取り、ローカルネットワーク上の適切なデバイスに転送します。これは例えばあなたと同じアパートに住む人全員の住所は同じでも、郵便局で働いている人は宛名人ごとに郵便物を仕分けする責任があるのと、同じような話です。</p>
+	<p>ユーザーのデバイスがインターネット宛てのパケットを送信すると、ユーザーのルーターがそれを途中で受領します。次に、ルーターは、送信元アドレスを、ユーザーに割り当てられた単一のパブリックインターネットアドレスに、そして、送信元ポートを、ユーザーのネットワーク上でインターネット接続されたすべてのデバイスに対して送信されるすべてのメッセージに固有のポートに、それぞれリライトします。皆さんがお使いのコンピューターが、メッセージ送信のためにコンピューター内の異なるすべてのプロセスごとに固有の送信元ポートをランダムに選択するのと同様、ルーターも、ネットワーク全体におけるすべてのインターネット接続に固有の送信元ポートをランダムに選択します。ルーターは、自身が選択しているポートを、ユーザーの接続に属するものとして記憶し、メッセージがインターネット上で継続できるようにします。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/09/image4.png" class="kg-image"></figure>
+	<p>ルーターがユーザー向けに割り当てたポートに応答が到着すると、ルーターはこの応答をユーザーの接続とマッチさせて再度リライトし、今度は宛先アドレスをユーザーのローカルネットワーク上のアドレスと置き換え、さらに宛先ポートをユーザーが指定した元の送信元ポートに置き換えます。ルーターは、ユーザーのネットワーク上のすべてのデバイスが、単一のインターネット接続されたIPアドレスを持つ1つの大きなコンピューターのように動作することを、透過的に許可しています。</p>
+	<p>このプロセスは、インターネット経由で一般的な要求の持続時間においては非常にうまく機能します。ですが、ルーターの持つスペースには限りがあるため、新しいポート用に新たにスペースを開けるために、割り当て済みの古いポートを削除してくれます。基本的に、割り当ての削除前に30秒以上メッセージがその接続を経由しないことを確認するため、適切な送信元が不明な応答が到着する可能性は低いです。あいにく、WARPセッションは30秒よりはるかに長く継続する必要があります。</p>
+	<p>NATセッションの有効期間が切れた後でメッセージを送信すると、新しい送信元ポートが与えられます。この新しいポートが、ECMPマッピング（送信元IP、送信元ポート、宛先IP、宛先ポートに基づく）の変更を生じ、Cloudflare側では、ユーザーの要求を、Cloudflareのデータセンター内にある、ユーザーのメッセージの到着先の新しいマシンにルーティングします。これにより、WARPセッションとインターネット接続が切断します。</p>
+	<p>当社は、お客様のNATセッションを最新の状態に保つ手法について、キープアライブメッセージを定期的に送信することでルーターやモバイル通信事業者がマッピングを削除することを阻止する方法を用いて、広範にわたる実験を行いました。残念ながら、30秒ごとにデバイスの無線通信をウェイクアップさせる方法は、バッテリー寿命に影響するほか、ポートやアドレスの変更を防止するという点ではあまり成功しないという結果が出ました。送信元ポート（そして送信元アドレス）が変更された場合でも、必ず同じマシンにセッションをマッピングする方法が必要でした。</p>
+	<p>幸い、Cloudflareには別のところにソリューションがありました。Cloudflareでは、専用のロードバランサーは使用しませんが、当社では多くの同様の問題を、ロードバランサーで解決してきました。これまで長い間、ECMP単独で可能な制御を超えてCloudflareのサーバーにトラフィックをマッピングする必要がありました。ロードバランサーの層を全体に展開するのではなく、当社ネットワーク内のすべてのサーバーをロードバランサーとして使用し、パケットをまず任意のマシンに転送し、その後このマシンから適切なホストへパケットを転送します。このとき消費されるリソースは最小限で、新たにマシンを追加するたびに、負荷分散のためのインフラストラクチャを拡張していくことが可能になります。このインフラストラクチャの機能や、このインフラストラクチャの独自性についてはもっとお伝えしたいことがあります。ブログに登録していただければ、関連記事が投稿された際に通知を受けとれます。</p>
+	<p>ただし、負荷分散技術を機能させるには、復号化する前にWARPパケットが関連付けられたクライアントを識別する方法が必要でした。この方法を理解するには、WARPがどのようにしてメッセージを暗号化するのかを理解することが役に立ちます。デバイスをリモートネットワークに接続する、業界の標準的な方法は、VPNです。VPNは、<a href="https://en.wikipedia.org/wiki/IPsec" target="_blank">IPsec</a>などのプロトコルを使用して、ユーザーのデバイスがリモートネットワークに安全にメッセージを送信できるようにします。ところが、あいにくVPNは一般的にあまり好まれていません。VPNを使用すると接続速度が低下し、バッテリーを消耗し、VPNの複雑さがセキュリティの脆弱性の原因になることがよくあります。VPNが必須の企業ネットワークのユーザーの多くはVPNを嫌っており、当社から数百万の消費者に自主的にVPNをインストールしていただけるよう説得するのは、とんでもないことに思えました。</p>
+	<p>そして、そのほかの最新の選択肢をいくつか検討、テストした後、<a href="https://www.wireguard.com/" target="_blank">WireGuard</a>®に落ち着きました。WireGuardは、同じ問題を解決するためにJason Donenfeldが作った、最新でハイパフォーマンス、そして最も重要なことにシンプルな、プロトコルです。WireGuardの元のコードベースは、一般的なIPsec実装サイズの1%未満であるため、理解しやすく、セキュアです。我々が必要としているパフォーマンスとセキュリティを確保できる可能性が最も高い言語としてRustを選択し、WireGuardを実装すると同時に、コードを大幅に最適化して、ターゲットとなるプラットフォーム上で高速で実行できるようにしました。そして、プロジェクトを<a href="https://github.com/cloudflare/boringtun/tree/master/src" target="_blank">オープンソース化</a>しました。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/09/image-12.png" class="kg-image"></figure>
+	<p>WireGuardは、インターネットを経由して送信されるトラフィックに関する、2つのきわめて重要な変化をもたらします。1つ目は、TCPではなくUDPを使用する点です。2つ目は、公開鍵暗号化とネゴシエートされたセッションキーを使用して、そのUDPパケットのコンテンツをセキュリティ保護する点です。</p>
+	<p>TCPは、インターネット経由でWebサイトを読み込む場合に使用する、従来型のプロトコルです。これは、先にご説明した、ポート宛に送信する機能と、信頼できる配信およびフロー制御の技術を組み合わせたものです。信頼性の高い配信であり、メッセージがドロップされた場合でも、TCPは最終的には欠けたデータを確実に再送信します。フロー制御は、TCPが、容量を超過した同一リンクを共有している多数のクライアントを処理するために必要なツールを提供します。UDPは、このような機能に置き換わる、はるかにシンプルなプロトコルで、ベストエフォート型でメッセージを送信し、メッセージが欠落したりリンクにデータが過剰になったりすると、シンプルにメッセージが失われます。</p>
+	<p>UDPの信頼性の欠如は、通常、インターネットのブラウジングの間は問題になりますが、我々は単にUDPを送信するのではなく、完全なTCPパケットを当社のUDPパケット内で送信しています。</p>
+	<p>WireGuardによって暗号化されたペイロード内に、完全なTCPヘッダーが入っており、ここに信頼できる配信を保証するための必要なすべての情報が含まれています。次に、WireGuardの暗号化によりこの情報を囲み、UDPを使用して（少し信頼性が低い）インターネット経由で送信します。万一ドロップされた場合、TCPは、ネットワークリンクでメッセージが失われた場合と同様にジョブを実行し、再送信します。代わりに、他のプロトコルにあるように、内側の、暗号化されたTCPセッションを別のTCPパケットで囲むと、必要なネットワークメッセージの数が著しく増加し、パフォーマンスが大きく低下します。</p>
+	<p>今日の話に関連する、WireGuardの2つ目の興味深い要素は、<a href="https://www.cloudflare.com/learning/ssl/how-does-public-key-encryption-work/" target="_blank">公開鍵暗号化</a>です。WireGuardを使用すると、特定の送信先のみがメッセージを復号化できるようにして、送信する各メッセージをセキュリティで保護することができます。これは、インターネット閲覧時のセキュリティを確保するための強力な方法ですが、メッセージがセッションを担当するサーバーに到着するまで、暗号化されたペイロード内を読み取ることはできない、ということを意味します。</p>
+	<p>負荷分散の問題に戻ると、メッセージの復号化前にアクセス可能なのが、次の 3 つであることがおわかりかと思います:IPヘッダー、UDPヘッダー、WireGuard ヘッダー。IPヘッダーとUDPヘッダーには必要な情報は含まれていません。4 つの情報 (送信元IP、送信元ポート、宛先IP、宛先ポート) の利用にはすでに失敗しています。そうなると、WireGuardのヘッダーが、メッセージを復号する前にクライアントがだれであるかを追跡するために使用できる識別子を見つけることができる唯一のロケーションとなります。残念ながら、そこにもないんです。これは、接続を開始するために使用するメッセージの形式です。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/09/image7.png" class="kg-image"></figure>
+	<p>送信者はあたかもClientIDのように見えますが、すべてのハンドシェイクにおいてランダムに割り当てられます。ハンドシェイクは、2分ごとに実行してキーを回転させる必要がありますから、持続性が不十分です。プロトコルをフォークすれば任意の数のフィールドを追加することはできますが、他のWireGuard クライアントとのワイヤ互換を維持することが重要になります。幸運にも、WireGuardのヘッダーには現在他のクライアントが使用していない 3 バイトのブロックがあります。当社は、この領域に識別子を配置し、他のWireGuardクライアントからのメッセージも引き続きサポートすることにしました（当社のルーティングに比べ信頼性は落ちます）。この領域が他の目的で使用される場合は、これらのビットを無視するか、WireGuardチームと協力して別の適切な方法でプロトコルを拡張することができます。</p>
+	<p>WireGuardセッションを開始する際に、WARPセッションを開始するために通信する必要がある、当社のClientIDフィールドを、認証サーバーから提供します。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/09/image5-1.png" class="kg-image"></figure>
+	<p>同様に、データメッセージにも同じフィールドが含まれます。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/09/image9.png" class="kg-image"></figure>
+	<p>重要なのは、ClientIDは 24 ビット長しかないことです。つまり、WARPの利用を待っている現在のユーザー数に比べて利用可能なClientID値が少ないということです。ですが、個々のWARPユーザーを追跡する必要もなく、望んでもいませんからこれで十分なのです。ClientIDは負荷分散にのみ必要なもので、その目的を果たしたら、可及的速やかにシステムから消去されます。</p>
+	<p>ここで、負荷分散システムが、Clientのハッシュを使用してパケットのルーティング先のマシンを識別します。つまり、ネットワークを変更したり、WiFiからセルラーに切り替えたとしても、WARPメッセージは常に同じマシンに届くため、問題は解決です。</p>
+	<h2 id="--1"><strong>クライアントソフトウェア</strong></h2>
+	<p>Cloudflareはこれまでクライアントソフトウェアを開発したことがありません。当社は、ハードウェアの購入やインフラストラクチャの立ち上げを必要とせず、誰でも利用できるサービスを販売していることに誇りを持っています。しかし、WARPを機能させるには、地球上で最もユビキタスなハードウェアプラットフォームの1つであるスマートフォンにコードを展開する必要がありました。</p>
+	<p>モバイルデバイス上でのソフトウェアの開発は、過去10年間で着実に容易になってきましたが、残念ながら低レベルのネットワーキングソフトウェアの開発はかなり困難なままです。例を一つ考えて見ましょう。iOS12で導入された<a href="https://developer.apple.com/documentation/network" target="_blank">Network</a>と呼ばれる最新のiOS接続APIを使用してプロジェクトを開始しました。Apple社はNetworkの使用を強く勧めて、「顧客は接続が向上や接続の信頼性の向上を歓迎し、パフォーマンスの向上によってバッテリ寿命が長くなったことを評価するでしょう」と<a href="https://developer.apple.com/videos/play/wwdc2018/715/" target="_blank">述べて</a>います。</p>
+	<p>Networkフレームワークは、iOSに組み込まれているネイティブパフォーマンス機能と上手く融合する、快適な高レベル APIを提供します。UDP接続の作成（接続というのは語弊があります。UDPは接続がなく、パケットのみです）はとてもシンプルです。</p>
+	<p><code>self.connection = NWConnection(host: hostUDP, port: portUDP, using: .udp)</code></p>
+	<p>また、メッセージの送信も非常に簡単です。</p>
+	<p><code>self.connection?.send(content: content)</code></p>
+	<p>残念ながら、ある時点でコードが実際に展開され、バグレポートが流れ始めます。最初の問題は、APIが単純であるがゆえに一度に複数のUDPパケットを処理することが不可能なことでした。通常、最大1500バイトのパケットを使用し、Google Fiber接続で速度テストを実行すると、現在 370 Mbps、つまり毎秒約 3万1000パケットの速度になります。各パケットを個別に処理しようすると接続速度が最大40%も低下していました。<a href="https://forums.developer.apple.com/message/360236#360236" target="_blank">Apple社</a>によると、必要なパフォーマンスを得るための最善の解決策は、iOS9で導入された古いAPI<a href="https://developer.apple.com/documentation/networkextension/nwudpsession" target="_blank">NWUDPSession</a>にフォールバックすることでした。</p>
+	<h2 id="ipv6"><strong>IPv6</strong></h2>
+	<p>NWUDPSessionの作成に必要なコードを前述の例と比較すると、IPv4 または IPv6 のどちらのプロトコルを使っているのかが大きな問題になることがお分かりいただけると思います。</p>
+	<pre><code class="language-swift">let v4Session = NWUDPSession(upgradeFor: self.ipv4Session)
+v4Session.setReadHandler(self.filteringReadHandler, maxDatagrams: 32)
+</code></pre>
+	<p>実際、NWUDPSession では、インターネット経由で接続を作成する際の複雑な要素の多くが処理されません。たとえば、Networkのフレームワークでは、IPv4 と IPv6 のどちらで接続を確立するかを自動的に決定します。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/09/image8.png" class="kg-image"></figure>
+	<p><br></p>
+	<p>NWUDPSession はこれを行わないため、使用する接続タイプを決定するように独自のロジックの作成を開始しました。実験を始めると、接続タイプは平等ではないことがすぐに明らかになりました。同じ宛先へのルーティングが、IPv4 アドレスを使うときとIPv6アドレスを使うときで、パフォーマンスに大きな差が出るのはよくあることです。大抵の場合、これは単純にIPv4アドレスの数が少なく、歴史が長いことからインターネットのインフラがこちらのルーティングにより適しているからです。</p>
+	<p>Cloudflareの全製品は、原則としてIPv6 をサポートしなければなりません。2016年には、当社ネットワークの98%以上、400万以上のサイトでIPv6を<a href="https://blog.cloudflare.com/98-percent-ipv6/">有効</a>にし、<a href="https://www.vyncke.org/ipv6status/plotsite.php?metric=w&amp;global=legacy&amp;pct=y" target="_blank">ウェブ上でのIPv6導入</a>に大きく寄与しました。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/09/image11.png" class="kg-image"></figure>
+	<p>IPv6の支えがなければ、WARPはリリースできませんでした。双方のプロトコルを均等にサポートしながら、常に最速の接続を使用することを確実にする必要がありました。これを解決するために、当社が長年DNSで使用してきた技術に頼りました。それがHappy Eyeballsです。<a href="https://tools.ietf.org/html/rfc6555" target="_blank">RFC 6555</a>で標準化されているように、Happy Eyeballsは、DNSルックアップを実行するときにIPv4アドレスとIPv6 アドレスの両方を探すようにする必要があるという考え方です。先に応答した方が勝ちになります。これにより、IPv6 のWebサイトを完全にサポートしていない世界でもすばやく読み込むことができます。</p>
+	<p>例として、http://zack.is/　というwebサイトを読み込んでみます。私のWebブラウザは、IPv4 アドレス（「A」レコード）と IPv6 アドレス（「AAAA" レコード」）の両方に対して同時に DNS 要求を行います。</p>
+	<pre><code class="language-javascript">Internet Protocol Version 4, Src: 192.168.7.21, Dst: 1.1.1.1
+User Datagram Protocol, Src Port: 47447, Dst Port: 53
+Domain Name System (query)
+    Queries
+        zack.is: type A, class IN
+
+Internet Protocol Version 4, Src: 192.168.7.21, Dst: 1.1.1.1
+User Datagram Protocol, Src Port: 49946, Dst Port: 53
+Domain Name System (query)
+    Queries
+        zack.is: type AAAA, class IN</code></pre>
+	<p>この場合、Aクエリへの応答がより迅速に返され、そのプロトコルを使用して接続が開始されます。</p>
+	<pre><code class="language-javascript">Internet Protocol Version 4, Src: 1.1.1.1, Dst: 192.168.7.21
+User Datagram Protocol, Src Port: 53, Dst Port: 47447
+Domain Name System (response)
+    Queries
+        zack.is: type A, class IN
+    Answers
+        zack.is: type A, class IN, addr 104.24.101.191
+       
+Internet Protocol Version 4, Src: 192.168.7.21, Dst: 104.24.101.191
+Transmission Control Protocol, Src Port: 55244, Dst Port: 80, Seq: 0, Len: 0
+    Source Port: 55244
+    Destination Port: 80
+    Flags: 0x002 (SYN)
+</code></pre>
+	<p>WARP接続を行うためにDNSクエリを実行する必要はありません。データセンターのIPアドレスはすでにわかっていますが、IPv4アドレスとIPv6アドレスのどちらがインターネット上でより速いルーティングが可能なのかを知りたいのです。これを実現するために、ネットワークレベルで同じ手法を実行します。各プロトコルにパケットを送信し、先に応答するプロトコルを後続のメッセージに使用します。エラー処理とログ記録を省略すると、次のように表示されます。</p>
+	<pre><code class="language-swift">let raceFinished = Atomic&lt;Bool&gt;(false)
+
+let happyEyeballsRacer: (NWUDPSession, NWUDPSession, String) -&gt; Void = {
+    (session, otherSession, name) in
+    // Session is the session the racer runs for, otherSession is a session we race against
+
+    let handleMessage: ([Data]) -&gt; Void = { datagrams in
+        // This handler will be executed twice, once for the winner, again for the loser.
+        // It does not matter what reply we received. Any reply means this connection is working.
+
+        if raceFinished.swap(true) {
+            // This racer lost
+            return self.filteringReadHandler(data: datagrams, error: nil)
+        }
+
+        // The winner becomes the current session
+        self.wireguardServerUDPSession = session
+
+        session.setReadHandler(self.readHandler, maxDatagrams: 32)
+        otherSession.setReadHandler(self.filteringReadHandler, maxDatagrams: 32)
+    }
+
+    session.setReadHandler({ (datagrams) in
+        handleMessage(datagrams)
+    }, maxDatagrams: 1)
+
+    if !raceFinished.value {
+        // Send a handshake message
+        session.writeDatagram(onViable())
+    }
+}
+</code></pre>
+	<p>この手法により、IPv6 アドレス指定を正常にサポートできます。実際、WARPを使用するデバイスはすべて、IPv6をサポートしないネットワークでも IPv6 アドレス指定に即座に対応できます。WARPを使用すると、ComcastのネットワークのうちIPv6 をサポートしていない34%、同じくチャーターのネットワークでは69%（2018年時点）において、ユーザーはIPv6サーバーと正常に通信できます。</p>
+	<p>このテストでは、WARPを有効にする前後に携帯電話のIPv6 サポートを示します。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/09/IMG_2029.PNG" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/09/IMG_2028-2.PNG" class="kg-image"></figure>
+	<h2 id="--2"><strong>切れかけた接続</strong></h2>
+	<p>それでも、単純なことというのは存在しないもので、iOS12.2でNWUDPSessionがエラーを引き起こし、接続を切断し始めました。これらのエラーは、コード「55」としてのみ識別されました。少し調査したところ、OS Xの基盤となったFreeBSDオペレーティングシステムが構築されたころから55が同じエラーを指していたようです。FreeBSDでは一般にENOBUFSと呼ばれ、オペレーティングシステムに完了しようとしているオペレーションを処理するための十分なバッファースペース（BUFfer Space）がない場合に戻されます。たとえば、今のFreeBSDのソースを見ると、IPv6実装で<a href="https://github.com/freebsd/freebsd/blob/a6605d2938cce3ab84122eb8f7e12469b7d3356f/sys/netinet6/send.c#L127" target="_blank">このコード</a>が表示されています。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/09/image12.png" class="kg-image"></figure>
+	<p>この例では、IPv6およびICMP6ヘッダーのサイズを収容するのに十分なメモリーを割り振ることができない場合、エラー ENOBUFS (数値 55 に<a href="https://www.freebsd.org/cgi/man.cgi?query=errno&amp;sektion=2&amp;manpath=freebsd-release-ports" target="_blank">マッピング</a>される) が戻されます。残念ながら、AppleのFreeBSDに対する取り組みはオープンソースではありません。つまり、どのように、いつ、なぜエラーを戻すのかは謎です。このエラーの発生は、<a href="https://github.com/passepartoutvpn/tunnelkit/issues/104" target="_blank">他の</a>UDPベースのプロジェクトでも経験しましたが、解決策がなかなか見つかりません。</p>
+	<p>明らかなのは、エラー55が発生し始めると、接続が使えなくなるということです。この問題に対処するために再接続する必要がありますが、最初の接続で行うのと同じHappy Eyeballs メカニックを行うことは、不要（すでに最速の接続について話した通り）なうえに、貴重な時間を消費します。代わりに、すでに動作しているセッションを再作成するためにのみ使用される 2 つ目の接続方法を追加します。</p>
+	<pre><code class="language-swift">/**
+Create a new UDP connection to the server using a Happy Eyeballs like heuristic.
+
+This function should be called when first establishing a connection to the edge server.
+
+It will initiate a new connection over IPv4 and IPv6 in parallel, keeping the connection that receives the first response.
+*/
+
+func connect(onViable: @escaping () -&gt; Data, onReply: @escaping () -&gt; Void, onFailure: @escaping () -&gt; Void, onDisconnect: @escaping () -&gt; Void)
+
+/**
+Recreate the current connections.
+
+This function should be called as a response to error code 55, when a quick connection is required.
+
+Unlike `happyEyeballs`, this function will use viability as its only success criteria.
+*/
+
+func reconnect(onViable: @escaping () -&gt; Void, onFailure: @escaping () -&gt; Void, onDisconnect: @escaping () -&gt; Void)
+</code></pre>
+	<p>再接続を使用すると、コード55エラーによって中断されたセッションを再作成できますが、それでもレイテンシーの影響が生じるため理想的ではありません。ただし、クローズドソースプラットフォーム上のすべてのクライアントソフトウェア開発のように、プラットフォームレベルのバグを特定して修正するのに、プラットフォームに依存しています。</p>
+	<p>正直なところ、これは、WARPの構築において遭遇したプラットフォーム固有のバグの<a href="https://forums.developer.apple.com/thread/121648" target="_blank">長い</a><a href="https://forums.developer.apple.com/thread/95387" target="_blank">リスト</a><a href="https://openradar.appspot.com/39743361" target="_blank">の</a>一つに過ぎません。デバイスベンダーと協力して修正をしていきたいと考えています。デバイスと接続の組み合わせには想像を絶する数があり、それぞれの接続はある瞬間に存在するのではなく、追跡可能な速度を上回るスピードで、接続の中断状態になったり回復したりと常に変化を続けています。今でも、地球上にある全てのデバイスと接続でWARPを動作させるには課題が残っており、当社はトリアージと解決に取り組まなければならないバグ報告を日々受け取っています。</p>
+	<h2 id="warp--1"><strong>WARP+</strong></h2>
+	<p>WARPは、インターネットをより良くする最適化を適用できる場です。当社は、Webサイトのパフォーマンス向上に多くの経験があります。WARPは、すべてのインターネットトラフィックのために同じことができるか試してみる機会です。</p>
+	<p>Cloudflareには、<a href="https://www.cloudflare.com/products/argo-smart-routing/" target="_blank">Argo</a>という製品があります。Argoは、データセンター間のインターネット上にある何千ものルートを継続的に監視することにより、Webサイトの最初のバイトの送信開始までの時間を平均で30%以上加速します。このデータは、あらゆる宛先への最速のルートとすべての IPアドレス範囲をマッピングするデータベースを構築します。パケットが到着するとまずはクライアントに最も近いデータセンターに届き、そのデータセンターはテストのデータを使用して、可能な限り小さいレイテンシーでパケットを宛先に到達するルートを検出します。インターネットの交通認識機能を備えたGPSのようなものです。</p>
+	<p>Argoは従来、HTTPパケットでのみ動作してきました。HTTPは、TCPとIPに加えて Web サイトを読み込むメッセージを送信することができるプロトコルで、ウェブを支えています。たとえば、<a href="http://zack.is/" target="_blank">/ http://zack.is</a>/を読み込むと、HTTPメッセージが TCPパケット内に送信されます。</p>
+	<pre><code class="language-javascript">Internet Protocol Version 4, Src: 192.168.7.21, Dst: 104.24.101.191
+Transmission Control Protocol, Src Port: 55244, Dst Port: 80
+    Source Port: 55244
+    Destination Port: 80
+    TCP payload (414 bytes)
+Hypertext Transfer Protocol
+    GET / HTTP/1.1\r\n
+    Host: zack.is\r\n
+    Connection: keep-alive\r\n
+    Accept-Encoding: gzip, deflate\r\n
+    Accept-Language: en-US,en;q=0.9\r\n
+    \r\n
+</code></pre>
+	<p>しかし、最新の、セキュアなWebも当社の課題になっています。HTTP（<a href="http://zack.is/" target="_blank">http://zack.is</a>）ではなく、HTTPS（<a href="https://zack.is/" target="_blank">https://zack.is</a>）経由で同じ要求を行うと、ネットワーク上で全く違う結果が表示されます。</p>
+	<pre><code class="language-javascript">Internet Protocol Version 4, Src: 192.168.7.21, Dst: 104.25.151.102
+Transmission Control Protocol, Src Port: 55983, Dst Port: 443
+    Source Port: 55983
+    Destination Port: 443
+    Transport Layer Security
+    TCP payload (54 bytes)
+Transport Layer Security
+    TLSv1.2 Record Layer: Application Data Protocol: http-over-tls
+        Encrypted Application Data: 82b6dd7be8c5758ad012649fae4f469c2d9e68fe15c17297…
+</code></pre>
+	<p>私の要求が暗号化されました！WARP（または宛先以外のユーザー）がペイロードの内容を知ることは、もはや不可能です。HTTPの場合もありますが、他のプロトコルのこともあります。私のサイトが、Cloudflareの既存の2000万のユーザーサイトの1つなら、トラフィックを復号して加速することができます（他の多数の最適化も適用します）。しかし、別のソースに向かう暗号化トラフィックに関しては、既存のHTTPのみのArgoテクノロジーは上手くいきませんでした。</p>
+	<p>幸いなことに、今、当社の<a href="https://www.cloudflare.com/products/cloudflare-spectrum/" target="_blank">Spectrum</a>と<a href="https://www.cloudflare.com/magic-transit/" target="_blank">Magic Transit</a>製品を通して、非HTTPトラフィックの利用に関して豊富な経験があります。この問題を解決するために、ArgoチームはCONNECTプロトコルに目を向けました。</p>
+	<p>おわかりのように、WARP要求が行われると、まず WireGuardプロトコルを介して、世界中にある194のデータセンターで実行されているサーバーと通信します。WireGuardメッセージが復号されると、宛先 IPアドレスを調べて、Cloudflareを使って運営されるサイト宛ての HTTP 要求なのか、それとも他の場所に向かう要求なのかを確認します。Cloudflareの場合、当社の標準的なHTTPサービングパスに入ります。たいていの場合、まったく同じデータセンター内のキャッシュから直接要求に応答できます。</p>
+	<p>Cloudflareを利用していないサイト宛ての場合は、各マシンで実行されるプロキシプロセスにパケットを転送します。このプロキシは、当社のArgoデータベースから最速のパスを読み込み、このトラフィックの転送先となるべきデータセンター内のマシンとのHTTPセッションを開始する役割を担います。CONNECTコマンドを使用してメタデータを（ヘッダーとして）送信し、HTTP セッションを給ペイロードのrawバイトを送信できる接続に変換します。</p>
+	<pre><code class="language-http">CONNECT 8.54.232.11:5564 HTTP/1.1\r\n
+Exit-Tcp-Keepalive-Duration: 15\r\n
+Application: warp\r\n
+\r\n
+&lt;data to send to origin&gt;
+</code></pre>
+	<p>メッセージが送信先データセンターに到着すると、別のデータセンターに転送されるか（パフォーマンスに最適な場合）、トラフィックを待機している配信元に直接転送されます。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/09/image1-5.png" class="kg-image"></figure>
+	<p>スマートルーティングは WARP+ の始まりにすぎません。当社はインターネットの高速化を目的としたプロジェクトやプランに関する長いリストがあります。最終的にそれらをテストするためのプラットフォームを持つことに興奮が隠せません。</p>
+	<h2 id="cloudflare-"><strong>Cloudflareの使命</strong></h2>
+	<p>開発から一年以上が経った今日、WARPをみなさまやみなさまのお友達、ご家族のお手元にお届けできることとなりました。しかし、当社にとっては、これはほんの始まりにすぎません。すべてのトラフィックの完全なネットワーク接続を改善する機能により、これまで不可能だった最適化とセキュリティの改善の全く新しい世界を切り開いていきます。当社の新しいWARPとWARP+ のあらゆる機能を実験し、試し、最終的にリリースすることに、この上ない喜びを感じています。</p>
+	<p>Cloudflareの使命は、より良いインターネットの構築を支援することです。難しい技術的な問題を一緒に試して解決する意思があれば、今日のインターネットよりも未来のインターネットをもっと良くすることができると信じています。そして、その一翼を担うことができて光栄に思っています。インターネット接続で当社を信頼していただきありがとうございます。</p>
+	<p><em>WARPは、オースティン、サンフランシスコ、シャンペーン、ロンドン、ワルシャワ、リスボン支社のメンバーの協力の下、Oli Yu、Vlad Krasnov、Chris Branch、Dane Knecht、Naga Tripirineni、Andrew Plunk、Adam Schwartz、IrtefaそしてインターンのMichelle Chenが、構築しました。</em></p>
+</div>

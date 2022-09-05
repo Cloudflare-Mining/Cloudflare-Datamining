@@ -1,0 +1,132 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/08/unnamed-1.png" class="kg-image"></figure>
+	<ul>
+		<li><strong>时间</strong>：一个寒冷的旧金山夏日午后</li>
+		<li><strong>地点</strong>：Cloudflare <a href="https://httpstat.us/305" target="_blank">305</a>室</li>
+		<li><strong>人物</strong>：来自Cloud Flare的2 人+来自Tor项目的9人</li>
+	</ul>
+	<p>怎么就出错了呢？</p>
+	<h2 id="-">一点背景</h2>
+	<p>两年前的这个星期，Cloudflare引入了<a href="https://blog.cloudflare.com/opportunistic-encryption-bringing-http-2-to-the-unencrypted-web/">机会性加密技术</a>，该功能为那些还没有转变为HTTPS的网站提供了额外的安全和性能优势。事实上，在过去，一些网站只使用HTTP ---是不是很奇怪？这里的“机会性”意味着服务器通过<a href="https://tools.ietf.org/html/rfc7838" target="_blank">HTTP Alternative Service</a>请求头宣告了对HTTP / 2的支持，希望任何识别该协议的浏览器都可以在后续的域请求中利用这些优势。</p>
+	<p>大约在同一时间，首席执行官马修·普林斯(Matthew Prince) <a href="https://blog.cloudflare.com/the-trouble-with-tor/">撰写了</a>一篇关于隐私在互联网遇到的挑战以及有关其重要性的文章，并要求我们找到一个提供<strong>便利性</strong>，<strong>安全性</strong>和<strong>匿名性</strong>的解决方案。</p>
+	<p>从抹除指纹识别向量和<a href="https://www.eff.org/privacybadger" target="_blank">Privacy Badger</a>专注阻止日常浏览器跟踪器，到减轻只有大型参与者才能做到的相关性攻击，保证隐私性是一项非常复杂的挑战。幸运的是，<a href="https://www.torproject.org/" target="_blank">Tor项目</a>在Tor浏览器中解决了这个广泛的<a href="https://www.torproject.org/projects/torbrowser/design/#adversary" target="_blank">对手模型</a>。</p>
+	<p>然而，互联网上并不缺少不良行为者，并且当流量匿名时，区分合法流量和恶意流量（这是Cloudflare的核心功能之一）变得更加困难。特别地，Tor的许多特性使得它既成为一个很好的隐私工具，也使得它成为一个隐藏恶意流量源的工具。这就是为什么许多网站使用图灵挑战来增加网络上bot假冒人行为的成本。然而，使用图灵挑战来阻止机器人有一个副作用：人类也需要进行测试。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/08/Captcha-Example.png" class="kg-image"></figure>
+	<p></p>
+	<p>有一种尽可能减少这种情况的方法是使用隐私保护加密签名，也就是盲令牌，例如那些支持<a href="https://blog.cloudflare.com/privacy-pass-the-math/">隐私通行证</a>的令牌。</p>
+	<p>另一种方法是使用洋葱服务器。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/08/Onion-Cloudflare.png" class="kg-image"></figure>
+	<p></p>
+	<h2 id="--1">这就说到洋葱了</h2>
+	<p>现今版本的Crypto Week引入了一个解决这个问题的“投机取巧的”方案，使得在适当的条件下，使用<a href="https://blog.torproject.org/new-release-tor-browser-80" target="_blank">Tor Browser 8.0</a>的任何人都可以在访问Cloudflare网站时获得更高的安全性和性能而无需通过验证码（CAPTCHA）。同时，此功能可以实现更细密的速率限制，阻止恶意流量，并且由于这一构思的机制并非特定于Cloudflare，因此任何人都可以在自己的网站上<a href="https://github.com/mahrud/caddy-altonions" target="_blank">重复使用此方法</a>。</p>
+	<p>在我们继续之前，如果您需要重温一下Tor是什么，或者我们为什么谈论洋葱，请查看<a href="https://www.torproject.org/about/overview.html.en" target="_blank">Tor项目</a>网站或我们自己在6月份发布的<a href="https://blog.cloudflare.com/welcome-hidden-resolver/">DNS解析器洋葱</a>博客文章。</p>
+	<p>正如Matthew在他的博客文章中提到的，筛选Tor流量的一种方法是使用<a href="https://www.torproject.org/docs/onion-services.html.en" target="_blank">洋葱服务</a>协议。洋葱服务是Tor节点，用于宣传其公钥，使用.onion TLD编码为地址，并使用“集合点”在Tor网络内完全建立连接：</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/08/Tor-network-example-1.png" class="kg-image"></figure>
+	<p></p>
+	<p>虽然洋葱服务旨在为内容提供商提供匿名性，但<a href="https://securedrop.org/directory/" target="_blank">媒体组织</a>可以利用洋葱服务让告密者能够与他们进行安全通信，而<a href="https://www.facebook.com/notes/protect-the-graph/making-connections-to-facebook-more-secure/1526085754298237" target="_blank">Facebook</a>则用来区分机器人和Tor用户。</p>
+	<p>其能够起到作用的技术原因是，从洋葱服务的角度来看，每个Tor连接或电路都有一个与之关联的唯一但简短的数字，而从正常服务器的角度来看，通过一个出口节点共享的所有Tor请求都是相同的IP地址。使用此电路号码，洋葱服务可以区分各个电路并终止那些看似恶意行为的电路。澄清一下，这并不意味着洋葱服务可以识别或跟踪Tor用户。</p>
+	<p>虽然破坏者们仍然可以通过重复集合协议来建立一个新的电路，但是这样做需要花费时间和算力的来进行密钥交换。您可以将其视为加密<a href="https://en.wikipedia.org/wiki/File:Dial_up_modem_noises.ogg" target="_blank">拨号</a>序列。垃圾邮件发送者可以反复拨打我们的洋葱服务，但每次他们都必须重复密钥交换的过程。</p>
+	<p>或者说，完成会合协议可以看作是使用Cloudflare Onion服务所需工作的一个小证明。这增加了使用洋葱服务执行拒绝服务攻击的成本。</p>
+	<h2 id="--2">这下问题解决了吧？</h2>
+	<p>不完全是。正如我们在介绍<a href="https://blog.cloudflare.com/welcome-hidden-resolver/">隐藏解析器</a>时所讨论的，确保看似随机的.onion地址正确是可用安全性的一个障碍。在这种情况下，我们的解决方案是购买一个<a href="https://www.digicert.com/extended-validation-ssl.htm" target="_blank">扩展验证</a>(EV)证书，它的成本要高得多。更不用说，这限制了只有少数<a href="https://crt.sh/?Identity=%25.onion" target="_blank">特权用户</a>才能为他们的onion服务购买HTTPS证书。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/08/Address-Bar.png" class="kg-image"></figure>
+	<p></p>
+	<p>有些人<a href="https://cabforum.org/pipermail/public/2017-November/012451.html" target="_blank">不同意</a>。特别是，<a href="https://blog.torproject.org/tors-fall-harvest-next-generation-onion-services" target="_blank">新一代</a>洋葱服务解决了Matthew指出的一个可能的原因，即CA/B论坛<a href="https://cabforum.org/2015/02/18/ballot-144-validation-rules-dot-onion-names/" target="_blank">只允许</a>洋葱服务的EV证书。这意味着可能很快就可以为onion services获得域验证(DV)证书。我们当然希望如此。</p>
+	<p>尽管如此，DV证书缺少出现在地址栏中的组织名称(例如“Cloudflare, Inc.”)，而且对人类来说，密码相关的数字几乎不可能记住或区分。这又把我们带回了可用安全性的问题，所以我们提出了一个不同的想法。</p>
+	<h2 id="--3">以不同的方式看洋葱地址</h2>
+	<p>暂时忘记我们讨论的是匿名。当您在浏览器中键入“cloudflare.com”并按enter键时，您的设备首先将该域名解析为一个IP地址，然后浏览器请求服务器提供一个有效的“cloudflare.com”证书，并尝试与主机建立加密连接。只要证书受到证书颁发机构的信任，就没有理由关心IP地址。</p>
+	<p>粗略地说，这里的想法是用.onion地址简单地切换上面场景中的IP地址。只要证书有效，.onion地址本身就不需要用户手动输入，甚至不需要记住。实际上，证书是有效的这一事实表明.onion地址是正确的。</p>
+	<p>特别是，就像一个IP地址可以服务数百万个域一样，一个.onion地址应该可以服务任意数量的域。</p>
+	<p>但是DNS不是这样运作的。</p>
+	<h2 id="--4">它是如何运作的呢？</h2>
+	<p>就像机会性加密一样，我们可以使用<a href="https://tools.ietf.org/html/rfc7838" target="_blank">HTTP替代服务</a>将用户指向Cloudflare Onion服务，这种机制允许服务器告诉客户端，他们正在访问的服务在另一个网络位置或通过另一个协议可用。例如，当Tor Browser向“cloudflare.com”发出请求时，Cloudflare添加了一个替代的服务请求头，表示可以通过我们的洋葱服务通过HTTP/2访问该站点。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/08/tor-resquest@2x.png" class="kg-image"></figure>
+	<p></p>
+	<p>同样，Cloudflare拥有为客户网站提供服务的IP地址，我们运行10个.onion地址。将它们视为Tor网络中的10个Cloudflare存在点（或PoP）。确切的请求头看起来像这样，除了包含所有10个.onion地址，每个地址以前缀“cflare”开头：</p>
+	<pre><code>alt-svc: h2="cflare2nge4h4yqr3574crrd7k66lil3torzbisz6uciyuzqc2h2ykyd.onion:443"; ma=86400; persist=1</code></pre>
+	<p>这只是表明“cloudflare.com”可以通过洋葱服务“cflare2n [...].onion”使用HTTP / 2（“h2”）通过虚拟端口443进行权威访问。字段“ma”(max –age)表示客户端应该记住备用服务是否存在多长时间，“persist”表示在网络中断时是否应该清除备用服务缓存。</p>
+	<p>一旦浏览器收到此请求头，它就会尝试为alt-svc请求头中公布的洋葱服务创建一个新的Tor电路，并确认侦听虚拟端口443的服务器可以为“cloudflare.com”提供有效的证书——即，原始主机名，而不是.onion地址。</p>
+	<p>然后，洋葱服务将Client Hello数据包中继到本地服务器，该服务器可以为“cloudflare.com”提供证书。这样，Tor守护程序本身可以非常小。以下是一个示例配置文件：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>SocksPort 0
+HiddenServiceNonAnonymousMode 1
+HiddenServiceSingleHopMode 1
+HiddenServiceVersion 3
+HiddenServicePort 443
+SafeLogging 1
+Log notice stdout
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>请注意使用上面的配置，因为它可以为不需要匿名的洋葱服务启用非匿名设置。澄清一下，这不会牺牲Tor用户的隐私或匿名性，只会牺牲服务器的隐私或匿名性。此外，它还可以改善电路的延迟。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/08/Tor-Onion-Service-Cloudflare.png" class="kg-image"></figure>
+	<p></p>
+	<p>如果证书由受信任的证书颁发机构签名，则对于“cloudflare.com”的任何后续请求，浏览器将通过洋葱服务使用HTTP / 2进行连接，从而避免需要通过出口节点。</p>
+	<p>以下是步骤的再次汇总：</p>
+	<ol>
+		<li>建立新的Tor电路;</li>
+		<li>浏览器通过SNI = cloudflare.com向洋葱服务发送客户端Hello;</li>
+		<li>洋葱服务将数据包中继到本地服务器;</li>
+		<li>服务器回复Server Hello for SNI = cloudflare.com;</li>
+		<li>洋葱服务将数据包中继到浏览器;</li>
+		<li>浏览器验证证书是否有效。</li>
+	</ol>
+	<p>重申一下，洋葱服务提供的证书只需要对原始主机名有效，这意味着不需要在证书的任何地方提及洋葱地址。这是一个巨大的好处，因为它允许您为您的.org域提供免费的<a href="https://letsencrypt.org/" target="_blank">Let's加密</a>证书，而不是昂贵的EV证书。</p>
+	<p>便利性，✓</p>
+	<h2 id="--5">区分电路</h2>
+	<p>请记住，虽然一个出口节点可以服务许多不同的客户端，但从Cloudflare的角度来看，所有流量都来自一个IP地址。这个池可以帮助覆盖合法流量之间的恶意流量，但对于Tor的安全性或隐私来说却不是必需的。事实上，它可能会将流量暴露给<a href="https://trac.torproject.org/projects/tor/wiki/doc/ReportingBadRelays" target="_blank">糟糕的出口节点</a>，从而对用户造成潜在的伤害。</p>
+	<p>请记住，洋葱服务的Tor电路带有一个电路号，我们可以用它来限制电路的速率。现在，问题是如何用最少的努力将这个数字通知给nginx这样的服务器。事实证明，只需<a href="https://github.com/torproject/tor/pull/343/" target="_blank">稍微调整</a>Tor二进制文件，我们就可以在转发到服务器的每个包的开头插入<a href="https://www.haproxy.org/download/1.8/doc/proxy-protocol.txt" target="_blank">代理协议</a>头。该协议旨在帮助TCP代理传递在转换过程中可能丢失的参数，如源和目标IP地址，并且已经得到nginx、Apache、Caddy等的支持。</p>
+	<p>对我们来说幸运的是，IPv6空间非常庞大，我们可以将Tor电路编号编码为未使用范围内的IP地址，并使用代理协议将其发送到服务器。以下是我们的Tor守护程序将在连接中插入的标头示例：</p>
+	<pre><code>PROXY TCP6 2405:8100:8000:6366:1234:ABCD ::1 43981 443\r\n</code></pre>
+	<p>在这种情况下，0x1234ABCD对源IP地址的最后32位中的电路编号进行编码。然后，本地Cloudflare服务器可以透明地使用该IP来分配信誉，显示图灵测试或在需要时阻止请求。</p>
+	<p>请注意，即使洋葱服务中继的请求没有携带IP地址，您也会在日志中看到如上所示的IP地址，国家代码为“T1”。此IP仅指定洋葱服务所看到的电路号，而不是实际的用户IP地址。实际上，2405：8100：8000 :: / 48是分配给Cloudflare的未使用的子网，我们没有为此目的进行全局路由。</p>
+	<p>这使客户能够继续使用IP信誉检测机器人，同时避免人们一遍又一遍地点击图灵测试中的街道标志。</p>
+	<p>安全性，✓</p>
+	<h2 id="-cloudflare-">我为什么要信任Cloudflare？</h2>
+	<p>你不需要。Cloudflare洋葱服务提供与我们用于直接请求服务器的完全相同的证书，因此您可以使用证书透明度（包括<a href="https://blog.cloudflare.com/introducing-certificate-transparency-and-nimbus/">Nimbus</a>，我们的证书透明度日志）审核此服务，以揭示任何可能的欺骗行为。</p>
+	<p>此外，由于Tor Browser 8.0在通过.onion替代服务进行连接时为每个主机名创建一个新电路，因此电路编号不能用于将连接连接到两个不同的站点。</p>
+	<p>请注意，所有这些都可以在不运行任何入口，中继或出口节点的情况下工作。因此，我们在此功能中看到的唯一请求是无论如何都要向我们提出的请求。特别是，由于没有引入新的流量，Cloudflare不会获得有关人们在互联网上做什么的更多信息。</p>
+	<p>匿名性，✓</p>
+	<h2 id="--6">它更快吗？</h2>
+	<p>Tor并不以快著称。其中一个原因是，在分散的网络中传输数据包的物理成本很高。通过Cloudflare Onion服务进行的连接不会增加这一成本，因为跳数并不比通常的要多。</p>
+	<p>另一个原因是出口节点操作符的带宽成本。这是我们希望该服务能够提供缓解的一个领域，因为它将流量从出口节点转移到我们自己的服务器，同时降低了出口节点的操作成本。</p>
+	<p>奖励：性能优秀，✓</p>
+	<h2 id="--7">我该如何启用它?</h2>
+	<p>洋葱路由现在可供所有Cloudflare客户使用，默认情况下为Free和Pro计划启用。该选项位于Cloudflare控制面板的加密选项卡中。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/08/Screen-Shot-2018-09-20-at-7.36.11-AM.jpg" class="kg-image"></figure>
+	<p></p>
+	<h2 id="--8">浏览器支持</h2>
+	<p>我们建议使用<a href="https://blog.torproject.org/new-release-tor-browser-80" target="_blank">Tor Browser 8.0</a>，这是第一个基于Firefox 60 ESR的稳定版本，并支持.onion Alt-Svc请求头和HTTP / 2。新的Tor浏览器（Android）也支持此功能。您可以在“网络”选项卡下的“开发人员工具”窗口中检查您的连接是否通过洋葱服务来进行路由。如果您使用Tor浏览器并且在响应标头中没有看到Alt-Svc，则表示您已经在使用.onion路由。在Tor Browser的未来版本中，您将能够<a href="https://trac.torproject.org/projects/tor/ticket/27590" target="_blank">在UI中</a>看到这一点。</p>
+	<figure class="kg-card kg-embed-card">
+		<blockquote class="twitter-tweet">
+			<p lang="en" dir="ltr">We've got BIG NEWS. We gave Tor Browser a UX overhaul. <br><br>Tor Browser 8.0 has a new user onboarding experience, an updated landing page, additional language support, and new behaviors for bridge fetching, displaying a circuit, and visiting .onion sites.<a href="https://t.co/fpCpSTXT2L" target="_blank">https://t.co/fpCpSTXT2L</a> <a href="https://t.co/xbj9lKTApP" target="_blank">pic.twitter.com/xbj9lKTApP</a></p>— The Tor Project (@torproject) <a href="https://twitter.com/torproject/status/1037397236257366017?ref_src=twsrc%5Etfw" target="_blank">September 5, 2018</a>
+		</blockquote>
+		<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+	</figure>
+	<p>其他具有隐私意识的浏览器供应商也对此感兴趣。<a href="https://brave.com/" target="_blank">Brave</a>隐私与安全产品经理Tom Lowenthal 说：</p>
+	<blockquote>自动升级到.onion站点将为Brave的Tor私密浏览提供另一层安全保障。我们很高兴能够实施这一新兴标准。</blockquote>
+	<h2 id="--9">还有什么补充的吗？</h2>
+	<p>与机会加密类似，机会洋葱并不能完全防止可以简单删除备用服务请求头的攻击者。因此，使用<a href="https://www.eff.org/https-everywhere" target="_blank">HTTPS Everywhere</a>来保护第一个请求非常重要。一旦建立了Tor电路，后续请求应该从源到目的地保留在Tor网络中。</p>
+	<p>在我们维护和<a href="https://trac.torproject.org/projects/tor/ticket/27502" target="_blank">改进</a>这项服务时，我们将分享我们所学到的知识。同时，您可以随意在<a href="https://github.com/mahrud/caddy-altonions" target="_blank">Caddy</a>上尝试这个想法，并向我们尽可能提出任何意见或建议。</p>
+	<h2 id="--10">致谢</h2>
+	<p>感谢Mozilla项目的Patrick McManus在Firefox中支持.onion替代服务; Tor项目的Arthur Edelstein在Tor Browser 8.0中审查和启用HTTP / 2和HTTP替代服务; Tor项目的AlexanderFærøy和George Kadianakis在洋葱服务中增加了对代理协议的支持; 整个Tor项目团队提供宝贵的帮助和讨论; 最后，但同样重要的是，Cloudflare的许多人帮助了这个项目。</p>
+	<h3 id="cloudflare-">Cloudflare洋葱服务使用的地址</h3>
+	<pre><code>cflarexljc3rw355ysrkrzwapozws6nre6xsy3n4yrj7taye3uiby3ad.onion
+cflarenuttlfuyn7imozr4atzvfbiw3ezgbdjdldmdx7srterayaozid.onion
+cflares35lvdlczhy3r6qbza5jjxbcplzvdveabhf7bsp7y4nzmn67yd.onion
+cflareusni3s7vwhq2f7gc4opsik7aa4t2ajedhzr42ez6uajaywh3qd.onion
+cflareki4v3lh674hq55k3n7xd4ibkwx3pnw67rr3gkpsonjmxbktxyd.onion
+cflarejlah424meosswvaeqzb54rtdetr4xva6mq2bm2hfcx5isaglid.onion
+cflaresuje2rb7w2u3w43pn4luxdi6o7oatv6r2zrfb5xvsugj35d2qd.onion
+cflareer7qekzp3zeyqvcfktxfrmncse4ilc7trbf6bp6yzdabxuload.onion
+cflareub6dtu7nvs3kqmoigcjdwap2azrkx5zohb2yk7gqjkwoyotwqd.onion
+cflare2nge4h4yqr3574crrd7k66lil3torzbisz6uciyuzqc2h2ykyd.onion</code></pre>
+	<p><a href="https://blog.cloudflare.com/subscribe/"><em>订阅</em></a><em>我们的公告栏中每日更新的博客。</em></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/08/Crypto-Week.png" class="kg-image"></figure>
+</div>

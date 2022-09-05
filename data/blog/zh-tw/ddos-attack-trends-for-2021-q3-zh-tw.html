@@ -1,0 +1,137 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image15-no-text-no-logo-3.png" class="kg-image" alt="2021 年第三季度 DDoS 攻擊趨勢"></figure>
+	<p>2021 年第三季度期間的 DDoS 攻擊者非常活躍。在世界各地，Cloudflare 觀察並緩解了<a href="https://blog.cloudflare.com/zh-tw/cloudflare-thwarts-17-2m-rps-ddos-attack-the-largest-ever-reported-zh-tw/">創紀錄的 HTTP DDoS 攻擊</a>，<a href="https://blog.cloudflare.com/zh-tw/cloudflare-thwarts-17-2m-rps-ddos-attack-the-largest-ever-reported-zh-tw/#:~:text=with%20a%20max%20peak%20of%20approximately%201.2%20Tbps">TB 級網路層攻擊</a>，<a href="https://blog.cloudflare.com/meris-botnet/">歷來最大規模的機器人網路之一（Meris）</a>，還有最近針對 VoIP 服務提供者及其<a href="https://blog.cloudflare.com/zh-tw/attacks-on-voip-providers-zh-tw/">網路基礎結構</a>的勒索 DDoS 攻擊。</p>
+	<p>如下為 2021 年第三季度攻擊趨勢的總結：</p>
+	<p><strong>應用程式層（L7）DDoS 攻擊趨勢：</strong></p>
+	<ul>
+		<li>在 2021 年連續第二個季度，美國公司成為世界上受到最多攻擊的目標。</li>
+		<li>2021 年內首次，針對英國和加拿大公司的攻擊大幅增加，分別成為第二大和第三大目標。</li>
+		<li>針對電腦軟體、遊戲/賭博、IT 和網際網路公司的攻擊比前一季度平均增加了 573%。</li>
+		<li>Meris 是歷史上最強大的機器人網路之一，它帮助在多個行業和國家發起了 DDoS 攻擊活動。<br></li>
+	</ul>
+	<p><strong>網路層（L3/4）DDoS 攻擊趨勢：</strong></p>
+	<ul>
+		<li>與上一季度相比，全球 DDoS 攻擊增加了44%。</li>
+		<li>中東和非洲錄得的攻擊平均增幅最大，達到約 80%。</li>
+		<li>摩洛哥第三季度的 DDoS 攻擊活動居全球最高水準——每 100 個封包中有 3 個是 DDoS 攻擊的一部分。</li>
+		<li>雖然 SYN 和 RST 攻擊依然是攻擊者使用的主要攻擊方法，Cloudflare 觀察到 <a href="https://en.wikipedia.org/wiki/Datagram_Transport_Layer_Security" target="_blank">DTLS </a>放大攻擊顯著增加，環比增長 3,549%。</li>
+		<li>攻擊者對 VoIP 服務提供者發起大規模 DDoS 攻擊，試圖破壞 SIP 基礎結構。（這種情況持續到今年第四季度。）</li>
+	</ul>
+	<p><strong>有關避免資料偏差的說明：</strong>在分析攻擊時，我們會計算「DDoS 活動」率，即攻擊流量占總流量（攻擊 + 乾淨）的百分比。在報告應用程式層和網路層 DDoS 攻擊趨勢時，我們使用這一指標，以便標準化資料點並避免出現偏差。例如，一個較大規模的 Cloudflare 資料中心通常會處理更多流量，因而所遭受的攻擊也多於位於其他地點的 Cloudflare 資料中心。</p>
+	<p><strong>應用程式層 DDoS 攻擊</strong></p>
+	<p><a href="https://www.cloudflare.com/learning/ddos/application-layer-ddos-attack/" target="_blank">應用程式層 DDoS 攻擊</a>，特別是 HTTP DDoS 攻擊，旨在通過使 HTTP 伺服器無法處理合法用戶請求來破壞它。如果伺服器收到的請求數量超過其處理能力，伺服器將丟棄合法請求甚至崩潰，導致對合法使用者的服務效能下降或中斷。</p>
+	<p><strong>2021 年第三季度期間，Meris 活動引人關注，Meris 是史上最強大的機器人網路之一，發動了一些歷來規模最大的 HTTP DDoS 攻擊。</strong></p>
+	<p>在第三季度，我們觀察到<a href="https://blog.cloudflare.com/zh-tw/cloudflare-thwarts-17-2m-rps-ddos-attack-the-largest-ever-reported-zh-tw/">有記錄以來最大的 HTTP 攻擊之一</a>，每秒請求數高達 1720 萬，目標是金融服務行業的客戶。在發動這些攻擊的網路中就部署了 Meris —— 有史以來最強大的機器人網路之一。</p>
+	<p>近期針對世界各地網路和組織的 DDoS 攻擊就是由 Meris（拉脫維亞語，意為「瘟疫」）機器人網路發動的。這個 Meris 機器人網路感染了拉脫維亞公司 MikroTik 生產的路由器和其他網路裝置。根據 MikroTik 的部落格，MikroTik RouterOS 的一個漏洞（在 2018 年發現後已經打了補丁）在未打補丁的裝置中仍被惡意行為者加以利用，並發動了一次協同攻擊。</p>
+	<p>與 2016 年的 <a href="https://www.cloudflare.com/learning/ddos/glossary/mirai-botnet/" target="_blank">Mirai 機器人網路</a>相似，Meris 是有史以來最強大的機器人網路之一。Mirai 感染計算能力較低的物聯網（IoT）裝置（例如智慧攝像頭），而 Meris 感染日益增多的網路基礎結構（如路由器和交換機），這些裝置的處理能力和資料傳輸能力都明顯高於物聯網裝置，因而更有能力造成較大規模傷害。儘管如此，Meris 表明攻擊容量不一定能確保對目標的損害。據我們所知，雖然 Meris 很強大，但未能對網際網路造成重大影響或中斷。另一方面，在 2016 年，通過策略性地瞄準 <a href="https://en.wikipedia.org/wiki/DDoS_attack_on_Dyn" target="_blank">DYN DNS 服務</a>，Mirai 成功導致網際網路的嚴重中斷。</p>
+	<p><strong>應用程式層 DDoS 攻擊：行業分佈</strong></p>
+	<p><strong>科技和遊戲行業是 2021 年第三季度受到最多攻擊的行業。</strong></p>
+	<p>按行業分析應用程式層攻擊時，電腦軟體公司高居榜首。遊戲/賭博行業（線上攻擊的典型目標）緊隨其後，位居第二，網際網路和 IT 行業居第三位。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/12/image6-12.png" class="kg-image" alt="Application-layer DDoS attacks by industry"></figure>
+	<p><strong>應用程式層 DDoS 攻擊：來源國家/地區分佈</strong></p>
+	<p>為瞭解 HTTP 攻擊的來源，我們查看生成攻擊 HTTP 請求的用戶端的 IP 位址源頭。與網路層攻擊不同，HTTP 攻擊中的 IP 源無法<a href="https://www.cloudflare.com/zh-tw/learning/ddos/glossary/ip-spoofing/" target="_blank">假冒</a>。特定國家/地區的高 DDoS 活動率通常表明大型機器人網路在其境內運行。</p>
+	<p>2021 年第三季度期間，大部分攻擊源於中國、美國和印度境內的裝置/伺服器。雖然中國仍然位居榜首，但來自中國 IP 的攻擊數量實際上比上一季度減少了 30%。接近每 200 個來自中國的 HTTP 請求中就有一個是 HTTP DDoS 攻擊的一部分。</p>
+	<p>此外，來自巴西和德國的攻擊較前一季度減少了 38%。源於美國和馬來西亞的攻擊分別減少了 40% 和 45%。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/12/image31-1.png" class="kg-image" alt="Chart, timeline, bar chart
+
+Description automatically generated"></figure>
+	<p><strong>應用程式層 DDoS 攻擊：目標國家/地區分佈</strong></p>
+	<p>為確定哪些國家/地區遭受最多攻擊，我們按客戶的帳單國家/地區細分了 DDoS 攻擊活動。</p>
+	<p>位於美國的企業今年連續第二次成為 L7 DDoS 攻擊的最大目標，其次為英國和加拿大。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/12/image10-1.png" class="kg-image" alt="Chart, bar chart
+
+Description automatically generated"></figure>
+	<p><strong>網路層 DDoS 攻擊</strong></p>
+	<p>應用層攻擊的目標是最終使用者嘗試訪問的服務所在的應用程式（<a href="https://www.cloudflare.com/zh-tw/learning/ddos/glossary/open-systems-interconnection-model-osi/" target="_blank">OSI 模型的第 7 層</a>），而<a href="https://www.cloudflare.com/learning/ddos/layer-3-ddos-attacks/" target="_blank">網路層攻擊</a>以網路基礎結構（例如聯網路由器和伺服器）和網際網路鏈路本身為目標。</p>
+	<p><strong>Mirai 變種機器人網路，峰值流量達到 1.2 Tbps。</strong></p>
+	<p>2021 年第三季度期間，臭名昭著的 Mirai 機器人網路捲土重來。一個 Mirai 變種機器人網路發動了十多次基於 UDP 和 TCP 的DDoS 攻擊，峰值流量多次超過 1.0 Tbps，最大峰值流量達到1.2 Tbps。這些攻擊的目標是 <a href="https://www.cloudflare.com/zh-tw/magic-transit/" target="_blank">Magic Transit</a> 和 <a href="https://www.cloudflare.com/zh-tw/products/cloudflare-spectrum/" target="_blank">Spectrum </a>服務的客戶。目標之一是一家亞太地區的主要網際網路服務、電信和託管服務提供者。另一個是一家遊戲公司。在所有情況下，攻擊都被自動檢測並緩解，無需人工干預。</p>
+	<p><strong>網路層 DDoS 攻擊：月份分佈</strong></p>
+	<p><strong>到目前為止，9 月是今年攻擊最活躍的一個月。</strong></p>
+	<p>2021 年第三季度占今年攻擊總數的 38% 以上。9 月是 2021 年迄今攻擊最多的月份，占全年攻擊總數的 16% 以上。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/12/image20-1.png" class="kg-image" alt="Chart
+
+Description automatically generated"></figure>
+	<p><strong>網路層 DDoS 攻擊：攻擊速度分佈</strong></p>
+	<p><strong>大多數攻擊都是「小」型的，但較大型攻擊的數量繼續增加。</strong></p>
+	<p>衡量 L3/4 DDoS 攻擊規模有不同的方法。一種方法是測量它產生的流量大小，以位元速率為單位（例如，Tbps 或 Gbps）。另一種是測量它產生的資料封包數，以封包速率為單位（例如， Mpps：百萬封包/每秒）。</p>
+	<p>高位元速率的攻擊試圖使網際網路鏈路飽和，而高封包速率的攻擊會使路由器或其他聯網硬體裝置不堪重負。裝置分配一定的記憶體和計算能力來處理每個封包。因此，通過向裝置發送大量封包，該裝置的處理資源就可能被耗盡。在這種情況下，封包就會「被丟棄」，即裝置無法再處理封包。對使用者而言，這會導致服務中斷和拒絕服務。</p>
+	<p>攻擊的規模（位元速率）和月份分佈如下所示。耐人尋味的是，所有超過 400 Gbps 的攻擊都發生在 8 月份，包括我們見過的一些最大型攻擊；多次攻擊峰值都超過 1 Tbps，最高達到 1.2 Tbps。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/12/image8-6.png" class="kg-image" alt="Chart
+
+Description automatically generated"></figure>
+	<p><strong>封包速率</strong><br>和前幾個季度一樣，2021 年第三季度期間觀察到的攻擊大部分規模相對較小——近 89% 的攻擊峰值低於 5000 pps。雖然大多數攻擊規模較小，我們觀察到較大規模攻擊的數量較前一季度有所增加，峰值超過 10 Mpps 的攻擊環比增長 142%。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/12/image16-1.png" class="kg-image" alt="Chart, bar chart
+
+Description automatically generated"></figure>
+	<p>封包速率介於 1-10 Mpps 的攻擊較前一季度增加了 196%。這個趨勢也類似於我們在上一季度所觀察到的情況，表明較大型攻擊正在增加。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/12/image22-1.png" class="kg-image" alt="Chart, bar chart
+
+Description automatically generated"></figure>
+	<p><strong>位元速率</strong><br>從位元速率的角度來看，也可以觀察到類似的趨勢——95.4% 的攻擊峰值在 500 Mbps 以下。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/12/image11-1.png" class="kg-image" alt="Chart, bar chart
+
+Description automatically generated"></figure>
+	<p>季度環比資料顯示，規模介於 500 Mbps 至 10 Gbps 的攻擊數量較前一季度大幅增長 126% 至 289%。超過 100 Gbps 的攻擊減少近 14%。</p>
+	<p>較高位元速率攻擊的數量較上一季度有所增加（唯一例外是超過 100 Gbps 的攻擊，其數量減少近 14%）。具體而言，介於 500 Mbps 和 1 Gbps 的攻擊較前一季度猛增 289%，介於 1 Gbps 至 100 Gbps 的攻擊猛增 126%。</p>
+	<p>這一趨勢再次表明，雖然（總體而言）大多數攻擊確實較小，但「較大」攻擊的數量正在增加。這表明，更多攻擊者控制更多資源來發動較大型的攻擊。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/12/image2-29.png" class="kg-image" alt="Chart, bar chart
+
+Description automatically generated"></figure>
+	<p><strong>網路層 DDoS 攻擊：持續時間分佈</strong></p>
+	<p><strong>大多數攻擊的持續時間都在 1 小時以內，再次表明有必要採取始終啟用的自動 DDoS 緩解解決方案。</strong></p>
+	<p>我們這樣測量攻擊的持續時間：記錄系統首次檢測到攻擊與具備該攻擊特徵的最後一個封包之間的時間差。與前幾個季度一樣，大部分攻擊持續時間很短。具體而言，94.4% 的 DDoS 攻擊持續時間小於 1 小時。另一方面，2021 年第三季度持續 6 小時以上的攻擊占比不到 0.4%，而持續 1-2 個小時的攻擊較前一季度增加了 165%。儘管如此，攻擊持續時間更長不一定就更加危險。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/12/image23-1.png" class="kg-image" alt="Chart, bar chart
+
+Description automatically generated"></figure>
+	<p>短時間的攻擊很可能不被察覺，特別是爆發攻擊，此類攻擊會在幾秒鐘內用大量的封包、位元組或請求轟擊目標。在這種情況下，依賴于安全分析來手動緩解的 DDoS 保護服務沒有機會及時緩解攻擊。此類服務只能從攻擊後分析中吸取教訓，然後部署篩選該攻擊指紋的新規則，期望下次能捕捉到它。同樣，使用「按需」服務（即安全團隊在遭到攻擊時將流量重定向至 DDoS 保護提供商）也無濟於事，因為在流量到達按需 DDoS 保護提供商前，攻擊就已經結束了。</p>
+	<p>Cloudflare 建議企業使用始終啟用的自動 DDoS 保護服務，此類服務能快速分析流量並應用即時指紋識別，因而能及時阻止短時間的攻擊。Cloudflare 在路徑外分析流量，確保 DDoS 緩解不會給合法流量增加延遲。一旦發現攻擊，我們的自治邊緣 DDoS 保護系統（ <a href="https://blog.cloudflare.com/zh-tw/deep-dive-cloudflare-autonomous-edge-ddos-protection-zh-tw/">dosd </a>）就會生成並應用動態製作、帶有即時特徵的規則。預配置的防火牆規則（包括針對已知流量模式的允許/拒絕清單）立即生效。</p>
+	<p><strong>攻擊手段</strong></p>
+	<p><strong>SYN 洪水依然是攻擊者最喜歡使用的攻擊方法，而基於 DTLS 的攻擊激增，較前一季度增加了 3549%。</strong></p>
+	<p>攻擊手段是指攻擊者試圖導致拒絕服務事件所採用的方法。</p>
+	<p>與前幾個季度觀察的一樣，SYN 洪水依然是最常見的攻擊手段。</p>
+	<p><a href="https://www.cloudflare.com/zh-tw/learning/ddos/syn-flood-ddos-attack/" target="_blank">SYN 洪水</a>攻擊是一種 DDoS 攻擊，它利用了 TCP 協定的最基本原理——用戶端與伺服器之間的有狀態 TCP 連接。作為三向握手的一部分，用戶端發送帶有同步標誌（SYN）的初始連接請求封包。伺服器以包含同步確認標誌（SYN-ACK）的封包來回應。最後，用戶端以確認（ACK）封包來回應。此時，連接已經建立並可交換資料，直到連接關閉為止。這個有狀態過程可被攻擊者濫用，以造成拒絕服務事件。</p>
+	<p>通過反復發送 SYN 封包，攻擊者試圖使伺服器或跟蹤 TCP 連接狀態的路由器連接表不堪重負。路由器以 SYN-ACK 封包答覆，為每個給定的連接分配一定數量的記憶體，並錯誤地等待用戶端回復最終 ACK。如果有足夠數量的連接佔用路由器的記憶體，路由器將無法為合法用戶端分配更多記憶體，從而導致路由器崩潰或無力處理合法用戶端連接，從而造成拒絕服務事件。</p>
+	<p>在我們網路上觀察到的所有攻擊中，超過一半是 SYN 洪水攻擊。在我們網路上觀察到的所有攻擊中，超過一半是 SYN 洪水攻擊。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/12/image4-22.png" class="kg-image" alt="Chart
+
+Description automatically generated"></figure>
+	<p><strong>新興威脅</strong></p>
+	<p>雖然 SYN 和 RST 洪水總體而言依然常見，當我們研究新出現的攻擊手段時（這能幫助我們瞭解攻擊者正使用什麼新手段來發動攻擊），我們發現 <a href="https://en.wikipedia.org/wiki/Datagram_Transport_Layer_Security" target="_blank">DTLS</a> 放大攻擊出現激增。DTLS 洪水較前一季度增長了 3549%。</p>
+	<p>Datagram Transport Layer Security （DTLS）是一種類似 Transport Layer Security（<a href="https://www.cloudflare.com/zh-tw/learning/ssl/transport-layer-security-tls/" target="_blank">TLS</a>）的協定，旨在為基於封包的無連接應用程式提供類似的安全保障，以防止消息被偽造、竊聽或篡改。DTLS 是一種不需連線的協定，對於建立 VPN 連接特別有用，不存在 <a href="https://openvpn.net/faq/what-is-tcp-meltdown/" target="_blank">TCP 崩潰</a>的問題。應用程式負責重新排序和其他連接屬性。</p>
+	<p>與大多數基於 UDP 的協定一樣，DTLS 是可偽造的 ，正在被攻擊者用來產生反射放大攻擊，以淹沒網路閘道。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/12/image18-1.png" class="kg-image" alt="Chart, timeline
+
+Description automatically generated"></figure>
+	<p><strong>網路層 DDoS 攻擊：國家/地區分佈</strong></p>
+	<p><strong>從觀察到的網路攻擊速率來看，摩洛哥高居首位，亞洲各國緊隨其後。</strong></p>
+	<p>在分析網路層 DDoS 攻擊時，我們統計流量的依據是接收流量的 Cloudflare 邊緣資料中心位置，而不是 IP 地址源。這樣做的原因在於，攻擊者在發起網路層攻擊時，可以通過<a href="https://www.cloudflare.com/zh-tw/learning/ddos/glossary/ip-spoofing/" target="_blank">偽造</a>源 IP 位址來混淆攻擊來源並在攻擊屬性中引入隨機性，這可能會使簡單的 DDoS 防護系統更難攔截攻擊。因此，如果我們根據偽造的 IP 源推導出源國家/地區，我們將得到一個偽造的國家/地區。</p>
+	<p>Cloudflare 能夠通過根據 Cloudflare 觀察到攻擊的資料中心位置顯示攻擊資料來克服偽造 IP 的挑戰。我們在全球 <a href="https://www.cloudflare.com/zh-tw/network/" target="_blank">250 多個城市</a>擁有資料中心，因而能夠在報告中體現準確的地理位置。</p>
+	<p><strong>全世界</strong></p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/12/image12-1.png" class="kg-image" alt="Chart, bar chart
+
+Description automatically generated"></figure>
+	<p>要查看所有國家和地區，請查看 <a href="https://radar.cloudflare.com/notebooks/ddos-2021-q3#network-layer-ddos-attacks-by-country" target="_blank">Radar DDoS Report 儀表板的交互式地圖</a>。</p>
+	<p><strong>有關近期針對 VoIP 服務提供者的攻擊，以及勒索 DDoS 攻擊的說明</strong></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image25-1.png" class="kg-image"></figure>
+	<p>我們<a href="https://blog.cloudflare.com/zh-tw/attacks-on-voip-providers-zh-tw/">最近報告</a>並<a href="https://blog.cloudflare.com/update-on-voip-attacks/">更新了</a>針對 VoIP 服務提供者的攻擊激增的情況 — 其中一些服務提供者還收到了勒索威脅。截至 2021 年第四季度初，這些攻擊仍在持續進行中。Cloudflare 繼續向 VoIP 服務提供者提供支援，保護其應用程式和網路免受攻擊。</p>
+	<p>攻擊者同時發動針對 API 閘道和提供商企業網站的 HTTP 攻擊，以及針對 VoIP 基礎結構的網路層和傳輸層攻擊。</p>
+	<p>例如：</p>
+	<ol>
+		<li><strong>針對有狀態防火牆的 TCP 洪水：</strong>這些手段被用「試錯」型攻擊中。它們對電話基礎結構並不是特別有效（因為此類設施主要基於 UDP），但對淹沒有狀態防火牆非常有效。</li>
+		<li><strong>針對 SIP 基礎結構的 UDP 洪水：</strong> 向關鍵 VoIP 服務發送大量沒有眾所周知的指紋的 UDP 流量。對於不複雜的篩選系統來說，這種平平無奇的洪水看起來可能如同合法流量。</li>
+		<li><strong>針對 SIP 基礎結構的 UDP 反射：</strong>如果針對 SIP 或 RTP 服務，這些方法可輕易淹沒會話邊界控制器（SBC）和其他電話基礎結構。攻擊者似乎對目標的基礎結構有足夠的瞭解，因而非常精確地攻擊這些服務。</li>
+		<li><strong>針對 SIP 協定的攻擊：</strong>應用層的攻擊尤其值得關注，因為生成應用程式錯誤的資源消耗高於網路裝置上的篩選。</li>
+	</ol>
+	<p>此外，一些企業繼續收到要求支付比特幣以免遭到攻擊的勒索信。<a href="https://www.cloudflare.com/learning/security/ransomware/what-is-ransomware/" target="_blank">勒索軟體</a>和<a href="https://www.cloudflare.com/zh-tw/learning/ddos/ransom-ddos-attack/" target="_blank">勒索 DDoS</a> 攻擊已經連續四個季度對世界各地的企業構成嚴重威脅。</p>
+	<p>Cloudflare 產品杜絕了幾種會導致勒索軟體感染和勒索 DDoS 攻擊的威脅手段：</p>
+	<ul>
+		<li>Cloudflare <a href="https://www.cloudflare.com/zh-tw/learning/access-management/what-is-dns-filtering/" target="_blank">DNS 篩選</a>阻止不安全的網站。</li>
+		<li>Cloudflare <a href="https://www.cloudflare.com/zh-tw/teams/browser-isolation/" target="_blank">瀏覽器隔離</a>預防路過式下載（drive-by download，又稱「掛馬」）和其他基於瀏覽器的攻擊。</li>
+		<li><a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/" target="_blank">Zero Trust </a>架構有助於防止勒索軟體在網路內傳播。</li>
+		<li><a href="https://www.cloudflare.com/zh-tw/magic-transit/" target="_blank">Magic Transit</a> 通過 BGP 路由重分發保護組織網路免受 DDoS 攻擊，而不影響延遲時間。</li>
+	</ul>
+	<p><strong>協助打造更安全的網際網路環境</strong></p>
+	<p>Cloudflare 創立的使命是幫助建設更好的網際網路。這個使命的一部分就是建設一個不再受到 DDoS 攻擊影響的網際網路。過去 10 年來，我們一直堅定不移地努力保護我們客戶的網際網路財產免受任何規模或類型的 DDoS 攻擊。在 <a href="https://blog.cloudflare.com/unmetered-mitigation/">2017 </a>年，我們推出免費的 DDoS 保護——作為 Cloudflare 服務和方案的一部分，包括 Free 方案——以確保每個企業都能得到保護和正常運行。在過去幾年中，各種規模的企業都採用了 Cloudflare 服務，以保護其網站、應用程式和網路免受 DDoS 攻擊，並快速可靠地運行。</p>
+	<p>但網路攻擊有很多不同的形式，而不限於 DDoS 攻擊。惡意機器人、勒索軟體攻擊、電子郵件釣魚和 VPN /遠端存取入侵等攻擊仍在繼續困擾著全球各種規模的企業。這些攻擊的目標是網站、API、應用程式和整個網路——它們構成了任何線上業務的命脈。正因如此，Cloudflare 安全系列產品涵蓋連接到網際網路的一切。</p>
+	<p>如需進一步瞭解 <a href="https://www.cloudflare.com/zh-tw/ddos/" target="_blank">Cloudflare DDoS</a> 或我們的 <a href="https://www.cloudflare.com/zh-tw/network-services/" target="_blank">網路服務</a>，歡迎 <a href="https://dash.cloudflare.com/" target="_blank">註冊帳戶</a>或<a href="https://www.cloudflare.com/zh-tw/enterprise/" target="_blank">聯繫我們</a>。</p>
+</div>

@@ -1,0 +1,59 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image1-14.png" class="kg-image" alt="Introducing Relational Database Connectors"></figure>
+	<p>Cloudflare 正在打造世界上最优秀的计算平台。我们希望使通过 Cloudflare 构建应用的工作变得轻松、无缝和顺理成章。但仅仅打造最优秀的计算平台并不足够——应用的核心在于与其交互的数据。</p>
+	<p>Cloudflare 现已提供多种数据存储解决方案：<a href="https://blog.cloudflare.com/introducing-workers-kv/">Workers KV</a>、<a href="https://blog.cloudflare.com/zh-cn/introducing-r2-object-storage-zh-cn/">R2</a> 和 <a href="https://blog.cloudflare.com/zh-cn/introducing-workers-durable-objects-zh-cn/">Durable Objects</a>。三者均遵循 Cloudflare 针对 Workers 的设计目标：默认全球性，可无限扩展，便于开发人员使用。我们与 Fauna、 MongoDB 和 Prisma 等第三方存储解决方案进行合作，它们都打造了与我们的设计目标完美一致的数据平台，并为已经支持 HTTP 连接的数据库编写了教程。</p>
+	<p>有一个领域被严重忽视：关系数据库。Cloudflare 本身就是运行于关系数据库上的，而我们并非独一无二。今年 4 月，我们曾经问大家希望我们支持<a href="https://workers.cloudflare.com/node" target="_blank">哪些 Node 库</a>，<strong>排名前 5 位的 4 个请求</strong>都与数据库有关。对于这一次 Full Stack Week，我们自问：我们能如何以一种符合我们设计目标的方式来支持关系数据库？</p>
+	<p>今天，我们隆重宣布 Workers 对关系数据库的支持，包括 Postgres 和 MySQL。这是我们向那个领域迈出的第一步。</p>
+	<p>连接到数据库并非易事，如果只是简单地向数据库驱动程序传送连接字符串，我们早就已经这样做了。我们必须克服一些障碍才能达到目前这一点，而且还有几个障碍需要征服。<br><br>我们作出这一宣布的目的是，邀请您与我们的开发人员合作解决从 Workers 内访问数据库带来的独特痛点。如果您希望与我们合作，请填写<a href="https://www.cloudflare.com/zh-cn/database-connectors-early-access/" target="_blank">这个表单</a>或<a href="https://discord.gg/rH4SsffFcc" target="_blank">在 Discord 上</a>加入我们 — 这仅仅是开端。如果您只是想获取代码并尝试一下，请使用这个<a href="https://developers.cloudflare.com/workers/tutorials/query-postgres-from-workers-using-database-connectors" target="_blank">示例</a>开始连接到您自己的数据库，或者查看我们的演示。</p>
+	<h3 id="-database-connectors-">为什么构建 Database Connectors 如此困难？</h3>
+	<p>对无服务器数据库连接的支持之所以富有挑战性，有几个原因。</p>
+	<p>数据库需要长时间连接——它们往往要求 TCP 连接，因为它们要在应用程序服务器和数据库之间保持长时间连接。Workers 运行时目前不支持 TCP 连接，因此我们只能支持基于 HTTP 的数据库或代理。</p>
+	<p>和一段关系一样，只是建立联系是远远不够的。为了方便提交查询和管理响应，开发人员使用数据库的客户端库。由于 Workers 运行时并非完全兼容 Node.js，我们要么推出自己的数据库库，要么找到一个不使用不受支持内建库的数据库。</p>
+	<p>最后，数据库是敏感的。通常需要外部库来管理应用服务器和数据库之间的共享连接，因为建立这些连接的成本往往很高。</p>
+	<h3 id="-">克服挑战</h3>
+	<p>我们今天的方法为我们今后以创造性的方式应对其中每一个挑战奠定了基础。</p>
+	<p>首先，我们利用 <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup" target="_blank">cloudflared </a>在 Cloudflare 和您现有基础设施内的专用网络之间创建一条安全隧道。Cloudflare 已经支持通过 WebSockets 将HTTP 代理到 TCP——我们的挑战是提供一个接口，其看起来像现有库所期望的套接字接口，并重写这些实施来将读写重定向到我们的 websocket。这个方法快速、安全、可靠；但限制在于，我们无法控制最终连接的方向。我们很快就能解决这个问题，但在那以前，我们的处理方式是收集延迟和性能数据，看看我们还需要改进什么。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/unnamed-10.png" class="kg-image" alt="Leveraging Cloudflare Tunnels, we’re able to connect to a relational database"></figure>
+	<p>接下来，我们创建了一个中介层（shim-layer），它从一个流行的运行时来适配套接字 API，以使用 WebSocket 直接连接到数据库。这允许我们按现状捆绑代码，而不需要分叉或对数据库库进行重大更改。作为这次宣布的一部分，我们已经发布了一个<a href="https://developers.cloudflare.com/workers/tutorials/query-postgres-from-workers-using-database-connectors" target="_blank">教程</a>，说明如何通过使用现有 Cloudflare 技术和一个来自不断扩大的 Deno 社区的驱动程度，从Workers 连接并查询 Postgres 数据库。我们将非常希望能与上游维护人员合作，以扩大支持力度。</p>
+	<p>最后，让我们最为兴奋的是，这种方法将让我们能够开始管理连接共用和连接建立的开销。虽然我们目前的技术演示需要在您自己的基础设施上设置 Cloudflare 隧道，但我们正在寻找客户来试验一个由 Cloudflare 托管隧道的模型。</p>
+	<h3 id="--1">后续开发方向</h3>
+	<p>我们才刚开始。我们今天作出这一宣布的目的是，寻找希望构建新应用或将现有应用迁移到 Workers 并使用关系数据库的客户。</p>
+	<p>正如 Cloudflare 最初为客户的网站提供安全、性能和可靠性一样，我们对 Cloudflare 管理数据库连接、处理跨云提供商的数据复制以及在全球范围内提供低延迟数据访问的未来感到非常兴奋。</p>
+	<p>首先，我们希望<a href="https://blog.cloudflare.com/introducing-socket-workers/">在运行时中添加对 TCP 的原生支持</a>。通过原生支持 TCP，我们不仅可以更好地支持数据库，还可以扩展 Workers 运行时，以便使用更广泛的数据基础设施。</p>
+	<p>鉴于我们在堆栈的网络层所处的位置，提供性能、安全优势并极大地降低到全球数据库的出口成本变得有可能成为现实。为做到这一点，我们将调整现有 HTTP 到 TCP 代理服务，将其作为面向开发人员的连接池服务来运行，代其管理数据库连接。</p>
+	<p>最后，我们的网络使得缓存数据并实现全球低延迟访问成为可能。一旦我们实现了对数据库的连接，使其能通过 Cloudflare 实现全球访问，就会解锁一个分布式数据的全新架构。</p>
+	<h3 id="--2">试用我们的连接器</h3>
+	<p>希望试用我们的数据库连接器吗？启动和运行有三个主要步骤：</p>
+	<ol>
+		<li>在您的基础设施内部署 cloudflared。</li>
+		<li>部署一个连接到 cloudflared 的数据库。</li>
+		<li>部署一个附带数据库驱动（用于提交查询）的 Worker。</li>
+	</ol>
+	<p>Postgres 教程在<a href="https://developers.cloudflare.com/workers/tutorials/query-postgres-from-workers-using-database-connectors" target="_blank">这里</a>。</p>
+	<p>全部完成后，类似如下的样子： </p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">import { Client } from './driver/postgres/postgres'
+
+export default {
+  async fetch(request: Request, env, ctx: ExecutionContext) {
+    try {
+      const client = new Client({
+        user: 'postgres',
+        database: 'postgres',
+        hostname: 'https://db.example.com',
+        password: '',
+        port: 5432,
+      })
+      await client.connect()
+      const result = await client.queryArray('SELECT * FROM users WHERE uuid=1;')
+      ctx.waitUntil(client.end())
+      return new Response(JSON.stringify(result.rows[0]))
+    } catch (e) {
+      return new Response((e as Error).message)
+    }
+  },
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>遇到任何困难？请填写<a href="https://www.cloudflare.com/zh-cn/database-connectors-early-access/" target="_blank">这个表单</a>，加入<a href="https://discord.com/invite/rH4SsffFcc" target="_blank">我们的 Discord</a> 或<a href="/cdn-cgi/l/email-protection#3f48504d545a4d4c124f4d505b4a5c4b7f5c53504a5b59535e4d5a115c5052">发送邮件</a>给我们 ，让我们聊一下吧！<br><br><br></p>
+</div>

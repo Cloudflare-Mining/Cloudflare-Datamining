@@ -1,0 +1,93 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/11/new-speed-page@3x.png" class="kg-image"></figure>
+	<p>祝贺您度过了Speed Week。在上周，Cloudflare已经：</p>
+	<ul>
+		<li>描述了<a href="https://blog.cloudflare.com/argo-and-the-cloudflare-global-private-backbone">我们的全球网络</a>如何加快互联网速度；</li>
+		<li>推出了<a href="https://blog.cloudflare.com/better-http-2-prioritization-for-a-faster-web">HTTP / 2优先级排序模型</a>，该模型将改善所有浏览器上的网络体验；</li>
+		<li>启动了一项<a href="https://blog.cloudflare.com/announcing-cloudflare-image-resizing-simplifying-optimal-image-delivery">图像调整服务</a>，该服务将为每个设备提供最佳图像；</li>
+		<li><a href="https://blog.cloudflare.com/introducing-concurrent-streaming-acceleration">优化实时视频交付</a>，详细介绍了如何<a href="https://blog.cloudflare.com/parallel-streaming-of-progressive-images">流传输渐进图像</a>，以使它们以两倍的速度呈现——利用我们新的HTTP / 2优先级排序模型的灵活性；</li>
+		<li>最后我们开发了一种新的<a href="https://blog.cloudflare.com/binary-ast">针对JavaScript的网络格式原型</a>，可以提高应用程序启动性能，尤其是在移动设备上。另外，我们还将推出一项新功能：“TCP Turbo”自动选择TCP设置以进一步加速您的网站。</li>
+	</ul>
+	<p>作为一家公司，我们希望帮助我们的每个客户改善网络体验。Cloudflare的增长以及功能的增加，常常使简单的问题变得难以回答：</p>
+	<ul>
+		<li>我的网站有多快？</li>
+		<li>我应该如何看待性能特性？</li>
+		<li>如果我启用一个特定的功能，这个网站会快多少？</li>
+	</ul>
+	<p>这篇文章将描述我们对Cloudflare控制面板上的“速度页面”进行的激动人心的更改，以便让我们的客户更清楚地了解其网站的运行情况以及如何使其网站更快地运行。新的速度页面包含：</p>
+	<ul>
+		<li>与直接连接到原始站点进行比较，直观地展现您在Cloudflare上加载的网站（启用了缓存）的情况。</li>
+		<li>开启了任意的性能特性后的预期改进程度。</li>
+		<li>一份描述您的网站在台式机和移动设备上运行速度的报告。</li>
+	</ul>
+	<p>我们想要简化网络体验加速的复杂性，并让我们的客户能够自主控制。不妨一起来看看我们做了什么吧，希望您能够喜欢。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/11/SpeedPage--1-.png" class="kg-image"></figure>
+	<p></p>
+	<h2 id="-">为什么快速的网络体验很重要？</h2>
+	<p><strong>客户体验：</strong>没有人喜欢缓慢的服务。想象一下，如果您去到一家餐厅而那里的服务很慢，尤其是在您刚到的时候；您不太可能愿意再次光顾或推荐给您的朋友。事实证明，网络也是以同样的方式工作的，互联网用户的要求甚至更高。对网站性能“不满意”的<a href="https://blog.hubspot.com/marketing/page-load-time-conversion-rates" target="_blank">客户中有79%</a>不太可能再次从该网站购买产品。</p>
+	<p><strong>参与度和收入</strong>：有许多研究解释了速度如何影响客户参与度，跳出率和网站收入。</p>
+	<p><strong>声誉</strong>：当客户将在线体验与品牌联系起来时，还要考虑品牌声誉。一项研究发现，<a href="https://www.singlestoneconsulting.com/articles/patience-is-a-virtue" target="_blank">66%</a>的样本网站性能影响到了客户对公司的印象。</p>
+	<p><strong>多样性</strong>：在过去几年中，移动通信流量已经超过了桌面通信流量。移动客户的期望变得越来越苛刻，并且无论地理位置如何，他们都希望能够无缝地访问互联网。</p>
+	<p>移动设备带来了一系列新的挑战，包括设备规格的多样性。在测试时，要注意一般的移动设备的功能明显不如顶级机型。例如，不同的移动设备运行JavaScript所需的时间可能存在数量级的差异。另一个挑战是移动性能的差异，因为在同一浏览会话中，客户从强大的高质量办公网络转移到了具有不同速度（3G / 5G）和质量的移动网络。</p>
+	<h2 id="--1">新速度页面</h2>
+	<p>有令人信服的证据表明，更快的网络体验对任何在线用户都很重要。大多数主要的研究都涉及到最大的科技公司，这些公司有专门的团队来测量和改善他们自己的服务的网络体验。在Cloudflare，我们的使命是帮助所有人（不仅是少数几个人）建立更好，更快的互联网。</p>
+	<p>交付快速的网络体验不是一件简单的事情。这一点是显而易见的。</p>
+	<p>要知道什么时候发送什么内容，我们需要深入了解堆栈的每一层，从TCP调整、协议层优先级、内容交付格式到复杂的浏览器呈现机制。您还需要一个全球网络，努力保证其能够与每个互联网用户在10毫秒内建立连接。这样的一个网络的内在价值是不言而喻的。Cloudflare<em>拥有</em>这样的一个网络，而它同时也提供了许多额外的性能特性。</p>
+	<p>通过重新设计速度页面，我们正在强调使用Cloudflare的性能优势，以及我们的特性可能带来的额外改进。</p>
+	<p><a href="https://www.webpagetest.org/" target="_blank">WebPageTest</a>是衡量网站性能的实际标准。Cloudflare的创始人鼓励我们将其作为衡量网站性能的基础。那么，了解网页如何加载的最简单方法是什么呢？统计数据列表并不能全面描述实际用户体验。</p>
+	<p>WebPageTest的一个很酷的特性是，它可以生成在网页加载期间拍摄的屏幕快照的幻灯片，使我们能够直观地量化页面的加载方式。通过此视图，我们可以轻松地确定页面空白的时间以及呈现最重要内容的时间。这种查看结果的方式为我们提供了共情用户的能力。</p>
+	<h2 id="cloudflare-">Cloudflare的速度如何？</h2>
+	<p>在将您的网站迁移到Cloudflare之后，您可能会问：这个决定让我的网站多大程度上变快了？那么，我们现在给出的答案是：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/11/OnlyFilmstrip-1.png" class="kg-image"></figure>
+	<p></p>
+	<p>对比使用Cloudflare时的网站性能</p>
+	<p>除了速度的提高，我们还提供了（使用Cloudflare）前后的（网站加载）幻灯片，以便轻松比较和了解用户对网站的体验的不同之处。如果我们的测试无法达到您的要求，并且您已经在Cloudflare上进行了设置，我们将在启用开发模式的情况下进行测试，这将禁用缓存和压缩功能。</p>
+	<p><strong>网站性能表现统计</strong></p>
+	<p>我们如何衡量网站的用户体验？</p>
+	<p>传统上，<em>页面加载</em>是重要的衡量指标。页面加载是浏览器提供商使用的一项技术指标，与页面的显示形式或可用性无关。该指标不仅报告了加载重要内容所需的时间，还报告了加载所有第三方内容（社交网络小部件、广告、跟踪脚本等）所需的时间。在加载完所有页面内容之前，用户很可能什么也看不到，或者他们也可以立即与页面交互，而内容继续加载。</p>
+	<p>用户不会通过单个度量或瞬间来判断页面是否快速。用户会通过以下几个因素来判断网站的速度：</p>
+	<ul>
+		<li>他们<em>看到</em>任意响应的时间点</li>
+		<li>他们看到期望中的<em>内容</em>的时间点</li>
+		<li>他们可以与页面<em>交互</em>的时间点</li>
+		<li>他们完成<em>执行</em>预期任务的时间点</li>
+	</ul>
+	<p>经验表明，如果你专注于改善一个指标，则可能会影响其他指标。</p>
+	<p><strong>视觉反馈的重要性</strong></p>
+	<p>如果一个不耐烦的用户导航到你的网站，几秒钟内没有看到任何内容，或者没有看到有价值的内容，他们可能会感到沮丧并离开。<a href="https://w3c.github.io/paint-timing/" target="_blank">绘制计时说明</a>定义了一组绘制指标，用于在页面上出现内容时度量用户感知网站性能的关键时刻。</p>
+	<p><strong>首次内容绘制</strong>（FCP）是浏览器首次呈现任何DOM（文档对象模型）的时间。</p>
+	<p><strong>首次有效绘制</strong>（FMP）是页面的“主要”内容出现在屏幕上的时间点。此度量标准应与用户到站点查看的内容相关，并被设计为发生最大的可见布局更改的时间点。</p>
+	<p><strong>速度指标</strong>旨在量化幻灯片的数值，而不仅仅使用单纯的绘制时间来展现。<a href="https://sites.google.com/a/webpagetest.org/docs/using-webpagetest/metrics/speed-index" target="_blank">速度指标</a>衡量的是内容显示的速度——基本上是曲线上方的面积。在下面的渐进图像功能图表中，您可以看到并行加载（红色线）比常规加载（蓝色线）更早达到80％。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/11/speedindex-1.png" class="kg-image"></figure>
+	<p><strong>交互的重要性</strong></p>
+	<p>同为不耐烦的用户，他们现在可以很高兴地看到想看的内容了。但如果他们不能与站点交互，他们仍然会感到沮丧。</p>
+	<p><strong>交互时间</strong>是指内容呈现再到页面准备接收用户输入所需的时间。从技术上讲，这被定义为浏览器的主处理线程在首次有效绘制之后空闲的几秒钟。</p>
+	<p>“速度”选项卡显示了这些针对移动设备和台式机的关键指标。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/11/CriticalLoadingTime-5.png" class="kg-image"></figure>
+	<p></p>
+	<h2 id="-cloudflare-">在Cloudflare上快了多少？</h2>
+	<p>Cloudflare控制面板提供了一系列性能功能，诚然，这些功能既令人困惑又令人生畏。开启Rocket Loader的好处是什么？它将对哪些性能指标产生最大的影响？如果升级到Pro计划，改进的HTTP / 2优先级的价值是什么？优化部分回答了这些问题。</p>
+	<p>在运行测试时，我们将打开和关闭每个性能特性。页面将显示相应性能指标的测试值以及改进。您可以从该视图启用或升级该功能。这里有几个例子:</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/11/RocketLoader.png" class="kg-image"></figure>
+	<p></p>
+	<p>如果为该网站启用了Rocket Loader，则阻塞渲染的JavaScript将被推迟，从而使首次绘制时间从1.25s降至0.81s——在台式机上的速度提高了32％。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/11/Mirage.png" class="kg-image"></figure>
+	<p></p>
+	<p>图像量大的站点在移动连接速度慢的情况下表现不佳。如果你启用了Mirage，你的3G用户就能更快地看到有效内容——速度提高29.4%。</p>
+	<p>那么我们的新功能呢？</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/11/H2.png" class="kg-image"></figure>
+	<p></p>
+	<p>我们在台式机的Edge浏览器上测试了改进的HTTP / 2优先级排序功能，发现有效内容显示速度提高了2秒钟——改善了64％。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/11/ProImgStreaming.png" class="kg-image"></figure>
+	<p></p>
+	<p>这是一个更有趣的结果，取自用于说明渐进式图像流的博客示例。乍一看，速度指数提高了29％，差强人意。然而幻灯片显示结果的差异要显著得多。在这一案例中，（开启和未开启新功能的）两个页面尚未显示图片时的内容框架经1.5秒后均已有43%的视觉完成度。在2.5秒时两页面的差距为：启用了新功能的视觉完整度为77%，而未启用新功能的视觉完整度为50%.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/11/filmstrip.png" class="kg-image"></figure>
+	<p></p>
+	<p>这是衡量指标无法说明全部情况的一个很好的例子。我们不能完全用衡量指标替代查看页面加载过程并了解对您的站点而言什么才是重要的。</p>
+	<h2 id="--2">如何试用</h2>
+	<p>这是我们新速度页面的第一次迭代，我们渴望得到您的反馈。我们会将其推广给有兴趣了解自己网站性能表现的测试版客户。若要加入新速度页面的激活队列，请点击总览页面上的横幅，</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/11/BannerOverview.png" class="kg-image"></figure>
+	<p></p>
+	<p>或单击现有速度页面上的横幅。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/11/BannerSpeed.png" class="kg-image"></figure>
+</div>

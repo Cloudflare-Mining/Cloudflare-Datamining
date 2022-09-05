@@ -1,0 +1,76 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/06/1-1.png" class="kg-image"></figure>
+	<p>管理ルールチームには最近、ルールに合うリクエストの箇所をみて、<a href="https://blog.cloudflare.com/encrypt-waf-payloads-hpke/">ファイアウォールルールのデバック</a>をEnterpriseのユーザーに許可するというタスクが与えられました。これにより、ルールが中止している特定の攻撃を特定したり、リクエストが誤検知された理由や、ルールをどのように改良すればこれを改善できるのかがより簡単にわかるようになります。</p>
+	<p>しかし、根本的な問題は、このデバックデータをどのように安全に保存するかということでした。送信データ、Cookie、リクエストの他の部分から、個人を特定できる情報などの機密データが含まれてしまう可能性があるためです。このデータにアクセスを許可された人だけがデータを扱うことができるように、データを保存する必要がありました。当社の哲学である、当社ネットワークを通過する個人を特定できる情報は<a href="https://blog.cloudflare.com/welcome-to-privacy-and-compliance-week/">有害なアセット</a>であるという考え方に従うと、Cloudflareでさえ、このデータを見れる状態であるべきではないのです。</p>
+	<p>つまり、Cloudflareではなく、ユーザーがそれを復号化できるようにデータを暗号化する必要がありました。これは<a href="https://www.cloudflare.com/ja-jp/learning/ssl/how-does-public-key-encryption-work/" target="_blank">公開鍵暗号化</a>を意味しました。</p>
+	<p>今度は、使用する暗号化アルゴリズムを決定する必要がありました。私たちはいくつかの質問をつくり、どのアルゴリズムを使うべきかを決めることにしました。</p>
+	<ul>
+		<li>アルゴリズムにはどのような要件があるか？</li>
+		<li>実装にはどの言語を使うか？</li>
+		<li>ユーザーのために可能な限り安全にこれを行う方法は？</li>
+	</ul>
+	<p>Cloudflareが出した結論を以下に記します。</p>
+	<h3 id="-"><strong>アルゴリズムの要件</strong></h3>
+	<p><a href="https://www.cloudflare.com/ja-jp/learning/ssl/how-does-public-key-encryption-work/" target="_blank">公開鍵暗号化</a>を使用する必要があることはわかっていましたが、パフォーマンスを維持する必要がありました。このため、当社では早い段階で<a href="https://tools.ietf.org/html/draft-irtf-cfrg-hpke-06" target="_blank">ハイブリット公開鍵暗号化</a>（HPKE）を選択することしました。HPKEがパフォーマンス向上のために、対称暗号化と公開鍵暗号化の両方で最良のアプローチを提供していたためです。両方のいい面を提供するというアプローチは、新しいものではありませんが [<a href="https://nacl.cr.yp.to/box.html" target="_blank">1</a>][<a href="https://github.com/google/tink" target="_blank">2</a>][<a href="https://age-encryption.org/" target="_blank">3</a>]、HPKEでは、一般的な鍵カプセル化メカニズムと対称暗号化アルゴリズムを組み合わせた、単一の、将来性もあり、堅牢で、相互運用可能な仕組みを提供することを目指しています。</p>
+	<p>HPKEは、Crypto Forum Research Group (CFRG)という、インターネット標準の開発をサポートする<a href="https://ietf.org/" target="_blank">IETF</a>の研究機関により開発された新しい標準です。CFRGは、RFC（楕円曲線のための<a href="https://tools.ietf.org/html/rfc7748" target="_blank">RFC7748</a>など）と呼ばれる仕様をつくります。RFCは、上位レベルのプロトコルで使用されます。以前のブログ投稿でも2つのプロトコル、<a href="https://blog.cloudflare.com/oblivious-dns/">ODoH</a>と<a href="https://blog.cloudflare.com/encrypted-client-hello/">ECH</a>を取りあげました。Cloudflareもインターネット標準のサポート役として長い間活躍してきたので、この機能のためにHPKEを選んだことは自然な選択でした。さらに、HPKEについて、Cloudflareの同僚の一人は共著を出しています。</p>
+	<h3 id="hpke-"><strong>HPKEの仕組み</strong></h3>
+	<p>HPKEは、<a href="https://en.wikipedia.org/wiki/Elliptic-curve_Diffie%E2%80%93Hellman" target="_blank">ディフィー・ヘルマンの楕円曲線</a>などの非対象アルゴリズムと、AESなどの対称暗号を組み合わせます。HPKEの利点の一つは、実装者はアルゴリズムからの影響を受けないが、それが<a href="https://en.wikipedia.org/wiki/Provable_security#In_cryptography" target="_blank">証明できるほど安全</a>で、開発者の「セキュリティは重要だ」という直感的な概念を満たす点です。開発者が、スキームが何をするのかを十分に理解することなく、スキームを使いはじめ、セキュリティの脆弱性が生じることがあまりにも多すぎます。</p>
+	<p>HPKEは、一般的な方法でハイレベルのセキュリティを提供し、生成したコンテキストにメッセージを結びつけるために必要なフックを提供することで、これらの問題を解決します。これは、正しいセキュリティ概念とスキームの関する数十年の研究を応用したものです。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/06/2-1.png" class="kg-image"></figure>
+	<p>HPKEの構築は数段階に分けられています。まず、ディフィー・ヘルマンのキー合意をキーカプセル化メカニズムに変換します。キーカプセル化メカニズムには、EncapとDecapの2つのアルゴリズムがあります。Encapアルゴリズムは、対称秘密を作成し、パブリックキーで包みます。これにより、プライベートキーの所有者だけがそれを開くことができます。カプセル化が使用されている場合攻撃者は、ランダムキーを修復できません。Decapは、パブリックキーに関連付けられたカプセル化とプライベートキーを受け取り、同じランダムキーを計算します。この変換により、HPKEは、あらゆる種類の公開鍵暗号化または鍵合意アルゴリズムでほとんど動作を変更させることなく、柔軟に対応することができるのです。</p>
+	<p>HPKEは、この鍵にオプションの情報引数と、各側で費用される暗号化パラメータに関する情報とを組み合わせます。これにより、攻撃者はコンテキストから外すことで、メッセージの意味を変更できないようになります。はがきに、「近々お会いできるのを楽しみにしています」と書かれていた場合、送り主が歯科医だったら不吉に感じますが、送り主が自分のおばあさんからだったら愛おしく思いますね。</p>
+	<p>HPKEの仕様は公開されていて、<a href="https://tools.ietf.org/html/draft-irtf-cfrg-hpke-06" target="_blank">IETFのWebサイト</a>で入手することができます。HPKEは、CFRGの暗号の専門家による複数のレビューと分析を経てRFCとして認定される途中です。HPKEは、ODoH、ECH、そして新しい<a href="https://messaginglayersecurity.rocks/" target="_blank">メッセージングレイヤーセキュリティ（MLS）</a>プロトコルなど、IETFプロトコルで既に採用されています。HPKEはまた、<a href="https://blog.cloudflare.com/securing-the-post-quantum-world/">ポスト量子の未来</a>に向けてつくられたものです。これは、ポスト量子公開鍵暗号化の<a href="https://csrc.nist.gov/News/2020/pqc-third-round-candidate-announcement" target="_blank">NISTフィナリストすべて</a>を含むKEMと動作するように設計されているためです。</p>
+	<h3 id="--1"><strong>実装言語</strong></h3>
+	<p>暗号化スキームを選択したら、次は実装について決める必要がありました。HPKEはまだかなり新しいので、ライブラリはそれほど充実していません。<a href="https://github.com/cisco/go-hpke" target="_blank">リファレンス実装</a>はありますが、<a href="https://github.com/cloudflare/circl" target="_blank">CIRCL</a>の一部としてGoで実装を開発している途中です。しかしながら、実装言語については、ベストなものとして認知されていて、明らかに「これだ」というものがなかったので、<a href="https://github.com/rozbb/rust-hpke" target="_blank">実装には</a>CloudflareのEdgeにあるファイアウォールで既に多く使用されている<a href="https://blog.cloudflare.com/building-fast-interpreters-in-rust/">Rust</a>を使うことにしました。</p>
+	<p>これとは別に、Rustという言語にはネイティブプリミティブのような機能と、重要な<a href="https://developer.mozilla.org/en-US/docs/WebAssembly" target="_blank">WebAssembly (WASM)</a>に簡単にコンパイルできるという利点がありました。</p>
+	<p><a href="https://blog.cloudflare.com/encrypt-waf-payloads-hpke/">以前のブログ記事</a>でも述べたように、顧客はキーペアを生成し、ダッシュボードUIまたはCLI からペイロードを復号化できます。これらに対して 2 つの異なるコードベースを作成して維持する代わりに、ペイロードを暗号化するエッジコンポーネントと、それらを復号化するUIとCLI で同じ実装を再利用することを選択しました。これを実現するために、ブラウザで実行されるダッシュボード UI コードで使用できるように、ライブラリをコンパイルしてWASMをターゲットにします。このアプローチでは、JavaScript バンドルのサイズがやや大きくなり、計算オーバーヘッドは比較的小さくなりますが、JavaScript <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Crypto_API" target="_blank">WebCrypto</a>プリミティブを使用して HPKE を安全に再実装するのに多くの時間を費やす方が望ましいと考えました。</p>
+	<p>当社で決定したHPKEの実装には、正式な監査がいまだ行われていないという警告が表示されます。そのため、Cloudflareでは独自の内部セキュリティレビューを行いました。そして、使用されている暗号プリミティブと対応するライブラリを分析しました。上述したプリミティブの構成と、メモリを正しくゼロにしたり、乱数ジェネレーターを使うなど、安全なプログラミングプラクティスとの間にセキュリティ上の問題は見つかりませんでした。</p>
+	<h3 id="--2"><strong>ユーザーの安全性を確保する</strong></h3>
+	<p>ユーザーの代わりに当社が暗号化するには、ユーザーから当社にパブリックキーを提供してもらう必要があります。これをできるだけ簡単にするために、CLIツールと、ブラウザでこれを正しく行う機能を構築しました。どちらのオプションでも、ユーザーはCloudflareサーバーにまったく連絡することなく、パブリックキー/プライベートキーのペアを作成することができます。</p>
+	<p>当社のAPIでは、特にキーペアのプライベートキーを受け付けません。—むしろ受け付けたくない！当社が保存しているデータを復号化できるようにする必要はありませんし、当社としては、そうしたくないでのす。</p>
+	<p>ダッシュボードでは、ユーザーが復号化のためにプライベートキーを提供すると、当該キーは一時的なJavaScript 変数として保存され、ブラウザ内復号化に使用されます。これにより、ファイアウォールイベントログを参照している間、ユーザーは常にキーを提供する必要がありません。また、プライベートキーはいかなる方法でもブラウザに残されることはありません。このため、ページの更新や移動など、ページを更新するアクションでは、ユーザーはもう一度、キーを提供する必要があります。使いやすさの面では少々落ちますが、これはセキュリティ強化のためには必要なことだと考えています。</p>
+	<h3 id="--3"><strong>ペイロード抽出の仕組み</strong></h3>
+	<p>データを暗号化する方法を決定したら、暗号化するデータ、保存および送信方法、ユーザーが復号化できるようにする方法など、残りの機能を決める必要がありました。</p>
+	<p>HTTPリクエストがL7ファイアウォールに到達すると、一連のルールセットを使って評価されます。これらのルールセットは、<a href="https://github.com/cloudflare/wirefilter" target="_blank">wirefilter</a>構文で書かれたいくつかのルールが含まれています。</p>
+	<p>これらのルールの例としては、次のようなものがあります。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>http.request.version eq "HTTP/1.1"
+and
+(
+    http.request.uri.path matches "\n+."
+    or
+    http.request.uri.query matches "\x00+."
+)
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>この式では、1つまたは複数の改行の後にリクエストパスの1文字が続くか、1つまたは複数のNULLバイトの後にクエリ文字で書かれた文字が続くいずれかの形式で表示されるHTTP/1.1リクエストのブール値を「true」と評価します。</p>
+	<p>それでは、上記のルールに一致する次のリクエストがあったとしましょう。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>GET /cms/%0Aadmin?action=%00post HTTP/1.1
+Host: example.com
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>一致したデータログが有効になっている場合、一致したルールは、実行中にアクセスされたすべてのフィールドにタグを付ける特別なコンテキストで再び実行されます。このタグ付けによって計算オーバーヘッドが顕著になり、大多数のリクエストではルールがまったくトリガーされず、各リクエストにオーバーヘッドを不必要に追加するため、この2回目の実行を行います。ルールに一致するリクエストは、いくつかのルールにのみ一致するため、ルールセットの大部分を再実行する必要はありません。</p>
+	<p><code>http.request.uri.query matches "\x00+."</code>は、このリクエストをtrue と評価するのに、実行されないことにお気づきかもしれません。なぜなら、この式は、最初に、もしくは一致するコンディションを使って、ショートカットされるからです。この結果、 <code>http.request.versionとhttp.request.uri.path</code>はアクセス済みであるとタグ付けされます。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>http.request.version -&gt; HTTP/1.1
+http.request.uri.path -&gt; /cms/%0Aadmin
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>アクセスされたフィールドを集めた後、ファイアウォールエンジンは、他のサブセット（クエリ文字列や完全な URI など）であるフィールドの削除、または特定の文字数（長さ）を超えるフィールドの切り捨てなど、いくつかの後処理を行います。</p>
+	<p>最後に、これらはJSONとしてシリアル化され、お客様のパブリックキーで暗号化されます。そして、バイトセットとして再びシリアル化されて、将来的に変更/更新の必要がある場合は、バージョン番号がプレフィックスとして付加されます。これらのブロブの消費を簡素化するために、APIはBase64でエンコードされたバイトのバージョンを表示します。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/06/3.png" class="kg-image"></figure>
+	<p>Edgeでデータを暗号化し、<a href="https://blog.cloudflare.com/tag/clickhouse/">ClickHouse</a>でそれを保存したので、今度はユーザーが復号化できるようにする必要があります。この機能を有効にするセットアップの一環として、ユーザーはキーペアを作成しました。キーペアはペイロードの暗号化に使用されるパブリックキーと、それらを復号化するために使用されるプライベートキーです。復号化は、<a href="https://github.com/cloudflare/matched-data-cli" target="_blank">cloudflare/matched-data-cli</a>を使ったコマンドラインを使用して完全にオフラインで行われるか：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>$ MATCHED_DATA=AkjQDktMX4FudxeQhwa0UPNezhkgLAUbkglNQ8XVCHYqPgAAAAAAAACox6cEwqWQpFVE2gCFyOFsSdm2hCoE0/oWKXZJGa5UPd5mWSRxNctuXNtU32hcYNR/azLjsGO668Jwk+qCdFvmKjEqEMJgI+fvhwLQmm4=
+$ matched-data-cli decrypt -d $MATCHED_DATA -k $PRIVATE_KEY
+{"http.request.version": "HTTP/1.1", "http.request.uri.path": "/cms/%0Aadmin"}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>または、ダッシュボードUIを使用して行われます。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/06/4.png" class="kg-image"></figure>
+	<p>当社のCLIツールはオープンソースであり、HPKEは相互運用性があるため、セキュリティ情報およびイベント管理（SIEM）ソフトウェアなど、ユーザーのロギングパイプラインの一部として、他のツールでも使用できます。</p>
+	<h3 id="--4"><strong>まとめ</strong></h3>
+	<p>これは、プロセス全体を通して、当社の研究チームとセキュリティチームの協力で達成できたことでした。当社は、アルゴリズムを評価するのに最適な方法についての助言や、使用したいライブラリを審査する際に、チームからのサポートを受けました。</p>
+	<p>実装のしやすさとパフォーマンスの観点から、HPKEのこれまでの働きに非常に満足しています。セキュリティの標準化が求められている状況の中で、セキュリティとパフォーマンスの両方の機能を最大限に生かすことを考えると、当社にとっては簡単な選択でした。<br></p>
+</div>

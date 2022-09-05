@@ -1,0 +1,557 @@
+<div class="post-content lh-copy gray1">
+	<!--kg-card-begin: markdown-->
+	<p>When Blackbird Tech, a notorious patent troll, sued us earlier this year for patent infringement, we discovered quickly that the folks at Blackbird were engaged in what appeared to be the broad and unsubstantiated assertion of patents -- filing about 115 lawsuits in less than 3 years, and have not yet won a single one of those cases on the merits in court. Cloudflare felt an appropriate response would be to review all of Blackbird Tech’s patents, not just the one it asserted against Cloudflare, to determine if they are invalid or should be limited in scope. We enlisted your help in this endeavor by placing a $50,000 bounty on prior art that proves the Blackbird Tech patents are invalid or overbroad, an effort we dubbed <a href="https://blog.cloudflare.com/project-jengo/">Project Jengo.</a></p>
+	<p>Since its inception, Project Jengo has <a href="https://blog.cloudflare.com/patent-troll-battle-update-doubling-down-on-project-jengo/">doubled in size</a> and provided us with a good amount of high quality prior art submissions. We have received more than 230 submissions so far, and have only just begun to scratch the surface. We have already come across a number of standouts that appear to be strong contenders for invalidating many of the Blackbird Tech patents. This means it is time for us to launch the first formal challenge against a Blackbird patent (besides our own), AND distribute the first round of the bounty to 15 recipients totaling $7,500.</p>
+	<p>We’re just warming up. We provide information below on how you can identify the next set of patents to challenge, help us find prior art to invalidate those targets, and collect a bit of the bounty for yourselves.</p>
+	<h3 id="iannouncingprojectjengosfirstchallengesandawards">I. Announcing Project Jengo’s First Challenges (and Awards!)</h3>
+	<p>We <a href="https://blog.cloudflare.com/project-jengo-challenges/">wrote previously</a> about the avenues available to challenge patents short of the remarkable cost and delay of federal court litigation; the exact cost and delay that some Blackbird targets are looking to avoid through settlement. Specifically, we explained the process of challenging patents through <strong><em>inter partes</em> review (“IPR”) and ex parte reexamination (“EPR”).</strong></p>
+	<p>Based on the stellar Prior Art submissions, we have identified the first challenge against a Blackbird patent.</p>
+	<p><strong>U.S. Patent <a href="http://patft.uspto.gov/netacgi/nph-Parser?Sect2=PTO1&amp;Sect2=HITOFF&amp;p=1&amp;u=/netahtml/PTO/search-bool.html&amp;r=1&amp;f=G&amp;l=50&amp;d=PALL&amp;RefSrch=yes&amp;Query=PN/7797448" target="_blank">7,797,448</a> (“GPS-internet Linkage”)</strong></p>
+	<p>The patent, which has a priority date of October 28, 1999, describes in broad and generic terms “[a]n integrated system comprising the Global Positioning System and the Internet wherein the integrated system can identify the precise geographic location of both sender and receiver communicating computer terminals.” It is not hard to imagine that such a broadly-worded patent could potentially be applied against a massive range of tech products that involve any GPS functionality. The alarmingly simplistic description of the patented innovation is confirmed by the <a href="http://pdfpiw.uspto.gov/.piw?Docid=07797448&amp;homeurl=http%3A%2F%2Fpatft.uspto.gov%2Fnetacgi%2Fnph-Parser%3FSect2%3DPTO1%2526Sect2%3DHITOFF%2526p%3D1%2526u%3D%2Fnetahtml%2FPTO%2Fsearch-bool.html%2526r%3D1%2526f%3DG%2526l%3D50%2526d%3DPALL%2526S1%3D7797448.PN.%2526OS%3DPN%2F7797448%2526RS%3DPN%2F7797448&amp;PageNum=&amp;Rtype=&amp;SectionNum=&amp;idkey=NONE&amp;Input=View+first+page" target="_blank">only image</a> submitted in support of the patent application, which shows only two desktop computers, a hovering satellite, and a triangle of dotted lines connecting the three items.</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2017/09/patent-diagram.png" alt=""></p>
+	<p>Blackbird filed suit in July 2016 against six companies asserting this ‘448 patent. All of those cases were voluntarily dismissed by Blackbird within three months -- fitting a pattern where Blackbird was only looking for small settlements from defendants who sought to avoid the costs and delays of litigation. A successful challenge that invalidates or limits the scope of this patent could put an end to such practices.</p>
+	<p><strong>Project Jengo’s Discovery</strong> - The patent claims priority to a provisional application filed October 28, 1999, but Project Jengo participants sourced four different submissions that raise serious questions about the novelty of the ‘448 patent when it was filed:</p>
+	<ul>
+		<li>
+			<p>Research literature from April 1999 describing a system utilizing GPS cards for addressing terminals connected to the internet. “<a href="https://dl.acm.org/citation.cfm?id=299176" target="_blank">GPS-Based Geographic Addressing, Routing, and ResourceDiscovery,</a>” Tomasz Imielinski and Julio C. Navos, Vol 42, No. 4 COMMUNICATIONS OF THE ACM (pgs. 86-92).</p>
+		</li>
+		<li>
+			<p>A request for comment from the Internet Engineering Task Force on a draft research paper from November 1996 on “integrating GPS-based geographic information into the Internet Protocol.” <a href="https://tools.ietf.org/html/rfc2009" target="_blank">IETF RFC 2009</a></p>
+		</li>
+		<li>
+			<p><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vS2GW72xOnse5-eoNHl9P6NCYF9wGc9FbyjeqOK1VpHC6UkarkyBoWuplfG6wvFd8SZodecm3_omaJv/pubhtml" target="_blank">One submission</a> included seven patents that all pre-date the priority date of the ‘448 patent (as early as July 1997) and address similar--yet more specific--efforts to use GPS location systems with computer systems.</p>
+		</li>
+		<li>
+			<p>And on a less-specific but still relevant basis, one submitter points to the <a href="https://en.wikipedia.org/wiki/Automatic_Packet_Reporting_System" target="_blank">APRS system</a> that has been used by Ham Radio enthusiasts and has tagged communications with GPS location for decades.</p>
+		</li>
+	</ul>
+	<p><span style="text-decoration: underline;"><strong>Project Jengo participants who provided these submissions will each be given an award of $500!</strong></span></p>
+	<p>What we plan to do -- Because this patent is written (and illustrated) in such broad terms, Blackbird has shown a willingness to sue under this patent, and Project Jengo has uncovered significant prior art, we think this case provides a promising basis to challenge the ‘448 patent. We are preparing an ex parte reexamination of the ‘448 patent, which we expect to file with the US Patent and Trademark Office in October. Again, you can read about an ex parte challenge <a href="https://blog.cloudflare.com/project-jengo-challenges/">here</a>. We expect that after review, the USPTO will invalidate the patent. Although future challenges may be funded through crowdsourcing or other efforts, we will be able to fund this challenge fully through funds already set aside for Project Jengo, even though this patent doesn’t implicate Cloudflare’s services.</p>
+	<p><strong>US Patent <a href="https://www.google.com/patents/US6453335" target="_blank">6,453,335</a> (the one asserted against Cloudflare)</strong></p>
+	<p>Project Jengo participants have also done an incredible job identifying relevant prior art on the patent asserted against Cloudflare by Blackbird Tech. Blackbird claims that the patent describes a system for monitoring an existing data channel and inserting error pages when transmission rates fall below a certain level. We received a great number of submissions on that patent and are continuing our analysis.</p>
+	<p>Cloudflare recently filed a brief with the U.S. District Court in which we pointed to eleven pieces of prior art submitted by Jengo participants that we expect will support invalidity in the litigation:</p>
+	<ul>
+		<li><a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.23.697&amp;rep=rep1&amp;type=pdf" target="_blank">World-Wide Web Proxies</a>, by Ari Loutonen and Kevin Altis;</li>
+		<li><a href="http://www.almaden.ibm.com/cs/wbi/papers/www7/Intermediaries.pdf" target="_blank">Intermediaries</a>: New Places for Producing and Manipulating Web Content, by Rob Barrett and Paul P. Maglio;</li>
+		<li><a href="https://www.google.com/patents/US5933811" target="_blank">U.S. Patent No. 5,933,811</a>, “System and method for delivering customized advertisements within interactive communications systems;”</li>
+		<li><a href="https://www.google.com/patents/US5826025" target="_blank">U.S. Patent No. 5,826,025</a>, “System for annotation overlay proxy configured to retrieve associated overlays associated with a document request from annotation directory created from list of overlay groups;”</li>
+		<li><a href="https://www.google.com/patents/US5937404" target="_blank">U.S. Patent No. 5,937,404</a>, “Apparatus for bleaching a de-activated link in web page of any distinguishing color or feature representing an active link;”</li>
+		<li><a href="https://www.google.com/patents/US6115384" target="_blank">U.S. Patent No. 6,115,384</a>, “Gateway architecture for data communication bandwidth-constrained and charge-by-use networks;”</li>
+		<li><a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.91.5049&amp;rep=rep1&amp;type=pdf" target="_blank">Performance Issues of Enterprise Level Web Proxies</a>, by Carlos Maltzahn, Kathy Richardson, and Dirk Grunwald</li>
+		<li>Microsoft’s Proxy Server 1.0</li>
+		<li><a href="https://www.google.com/patents/US5991306" target="_blank">U.S. Patent No. 5,991,306</a>, “Pull based, intelligent caching system and method for delivering data over a network;”</li>
+		<li>Novell’s BorderManager server</li>
+		<li><a href="https://users.soe.ucsc.edu/~tmk/publications/ideal/ideal.pdf" target="_blank">Exploring the Bounds of Web Latency Reduction from Caching and Prefetching</a>, by Thomas Kroeger, Darrell Long, and Jeffrey Mogul.</li>
+	</ul>
+	<p><em>Bounty hunters who first submitted this prior art that was already used in the case will each receive $500.</em> The Project Jengo Team at Cloudflare is continuing analysis of all the prior art submissions, and we still need your help! The litigation is ongoing and we will continue to provide a bounty to prior art submissions that are used to invalidate the Blackbird patents.</p>
+	<p><strong>The Search Goes On… with new armor</strong></p>
+	<p>These challenges to Blackbird patents are only the start. Later in this blog post, we provide an extensive report on the status of the search for prior art on all the Blackbird patents, and include a number of new patents we’ve uncovered. Keep looking for prior art on the Blackbird patents, we still have plenty of bounties to award and a number of patents ripe for a challenge. You can send us your prior art submissions <a href="https://www.cloudflare.com/priorartsearch/" target="_blank">here</a>.</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2017/09/troll-hunter-shirt-1.png" alt=""></p>
+	<p>Even if you didn’t receive a cash award (yet), our t-shirts are about to hit the streets! Everyone who submitted prior art to Project Jengo will be receiving a t-shirt. If you previously made a submission, we’ve emailed you instructions for ordering your shirt. This offer will remain open for the duration of Project Jengo for anyone that submits new prior art on any of the Blackbird patents. Enjoy your new armor!</p>
+	<h3 id="iielsewhereinprojectjengo">II. Elsewhere in Project Jengo...</h3>
+	<p><strong>Ethics complaint update</strong></p>
+	<p>We know Blackbird’s “new model” is dangerous to innovation and merits scrutiny, so we <a href="https://blog.cloudflare.com/standing-up-to-a-dangerous-new-breed-of-patent-troll/">previously</a> lodged ethics complaints against Blackbird Tech with the bar disciplinary committees in Massachusetts and Illinois. This week, we sent an additional letter to the USPTO’s Office of Enrollment and Discipline asking them to look into possible violations of the <em>USPTO Rules of Professional Conduct</em>. As with the other jurisdictions, the USPTO Rules of Professional Conduct prohibit attorneys from acquiring a proprietary interest in the lawsuit (Rule §11.108(i)), sharing fees or equity with non-lawyers (Rules 11.504(a) and 11.504(d). Blackbird’s “new model” seems to violate these ethical standards.</p>
+	<p><strong>Getting the word out</strong><br><br>
+		Cloudflare’s Project Jengo continues to drive conversation about the corrosive problem of patent trolls. Since our last blog update, our efforts have continued to draw attention in the press. For the latest, you can see...</p>
+	<br>
+	<blockquote>
+		<p>“The hunted becomes the hunter: How Cloudflare’s fight with a ‘patent troll’ could alter the game,” -- <a href="https://techcrunch.com/2017/07/11/the-hunted-becomes-the-hunter-how-cloudflares-fight-with-a-patent-troll-could-alter-the-game/" target="_blank">TechCrunch</a></p>
+	</blockquote>
+	<br>
+	<blockquote>
+		<p>“Cloudflare gets another $50,000, to fight ‘new breed of patent troll,’”<br>
+			-<a href="https://arstechnica.com/tech-policy/2017/05/cloudflare-gets-another-50000-to-fight-new-breed-of-patent-troll/" target="_blank">Ars Technica</a></p>
+	</blockquote>
+	<br>
+	<blockquote>
+		<p>“This 32-year-old state senator is trying to get patent trolls out of Massachusetts,” -- <a href="https://techcrunch.com/2017/07/14/this-32-year-old-state-senator-is-trying-to-get-patent-trolls-out-of-massachusetts/" target="_blank">TechCrunch</a></p>
+	</blockquote>
+	<br>
+	<h4 id="iiiaprogressreportonchallengestotheblackbirdpatents">III. A Progress Report on Challenges to the Blackbird Patents</h4>
+	<p>As you continue your search for prior art as part of Project Jengo, we’ve updated our chart of Blackbird patents, and identified a number of new patents and applications we’ve found that Blackbird has acquired.</p>
+	<p>As reflected on the chart <span style="background-color: #E66665">(in red)</span>, so far 5 of the patents are being challenged or have been invalidated. In addition to our pending challenge of the ‘448 patent:</p>
+	<ul>
+		<li>
+			<p>In June 2016, Blackbird Tech sued software maker kCura LLC and nine of its resellers for allegedly infringing <a href="https://patents.google.com/patent/US7809717B1/en" target="_blank">U.S. Patent 7,809717</a>, which was described as a Method and Apparatus for Concept-based Visual Presentation of Search Results. kCura makes specialized software used by law firms during document review. The judge in kCura’s case <a href="https://www.docketnavigator.com/document/order/6ff7df23-4cf8-5647-8de1-5ee7c2bc8bcc" target="_blank">invalidated every claim in the ‘717 patent</a> because the “abstract idea” of using a computer instead of a lawyer to perform document review cannot be patented.</p>
+		</li>
+		<li>
+			<p><a href="https://www.google.com/patents/US6434212" target="_blank">US Patent 6,434,212</a> -- This patent seeks protection for “a pedometer having improved accuracy by calculating actual stride lengths.” Numerous challenges to this patent have been filed with the Patent Trial and Appeal Board (PTAB), which adjudicates some IPR challenges. There are currently challenges against this “Pedometer” patent that have been filed by Garmin, TomTom and Fitbit.</p>
+		</li>
+		<li>
+			<p><a href="https://www.google.com/patents/US7129931" target="_blank">US Patent 7,129,931</a> -- This patent for a “multipurpose computer display system” is undergoing IPR challenge brought by Lenovo, Inc.</p>
+		</li>
+		<li>
+			<p><a href="https://www.google.com/patents/US7174362" target="_blank">US Patent 7,174,362</a> -- This patent for a “method and system for supplying products from pre-stored digital data in response to demands transmitted via computer network” was <a href="https://ptabdata.blob.core.windows.net/files/2017/IPR2017-01525/v32_Exhibit_1011.PDF" target="_blank">challenged</a> by Unified Patents, Inc.</p>
+		</li>
+	</ul>
+	<p>In the charts below, <strong>we’ve highlighted 11 Blackbird patents</strong> <span style="background-color: #85cba8;">(in green)</span> that seem ripe for challenge -- based on a combination of the fact that they seem broadly applicable to important industries, may have already been the basis of a Blackbird lawsuit, and/or already have some valuable prior art sourced through Project Jengo. We’ll take submissions on any Blackbird patent, but these are the patents we’re focused on and should get extra attention from Project Jengo participants seeking a bounty.</p>
+	<p>After our review is a bit further down the road, we’ll make all the prior art we’ve received on these patents available to the public so that anyone facing a challenge from Blackbird can defend themselves. We hope to have that information posted by the end of October.</p>
+	<p>And finally, Cloudflare is funding the first ex parte challenge fully out of funds it has set aside or had donated to Project Jengo. Should any of these patents hit home for you, and you are interested in supporting this fight financially, please reach out to <a href="/cdn-cgi/l/email-protection#7c3619121b133c1f101309181a101d0e19521f1311"><span class="__cf_email__" data-cfemail="1b517e757c745b7877746e7f7d777a697e35787476">[email&nbsp;protected]</span></a>.</p>
+	<p><em><strong>-Happy Hunting!</strong></em></p>
+	<h3 id="projectjengosubmissionsbr">-Project Jengo Submissions<br></h3>
+	<div id="table2" style="height:600px; overflow:scroll;">
+		<div class="google-visualization-table" style="position: relative; z-index: 0; max-width: 100%; max-height: 100%;">
+			<div style="position: relative; overflow: auto; max-width: 100%; max-height: 100%;">
+				<table class="google-visualization-table-table" cellspacing="0">
+					<thead>
+						<tr class="google-visualization-table-tr-head">
+							<th class="google-visualization-table-th gradient unsorted">Patent<span class="google-visualization-table-sortind"></span></th>
+							<th class="google-visualization-table-th gradient unsorted">Project Jengo Submissions<span class="google-visualization-table-sortind"></span></th>
+							<th class="google-visualization-table-th gradient unsorted">Cases Brought by Blackbird<span class="google-visualization-table-sortind"></span></th>
+							<th class="google-visualization-table-th gradient unsorted">Priority Date (M/D/YR)<span class="google-visualization-table-sortind"></span></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="google-visualization-table-tr-even">
+							<td class="google-visualization-table-td"><a href="https://www.google.com/patents/US6175608" target="_blank">6175608 - - PEDOMETER </a></td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">3</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">1</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">10/28/98</td>
+						</tr>
+						<tr class="google-visualization-table-tr-odd">
+							<td class="google-visualization-table-td"><a href="https://www.google.com/patents/US6188683" target="_blank">6188683 - - SYSTEM AND METHOD FOR ESTABLISHING LONG DISTANCE DISTANCE VOICE COMMUNICATIONS USING THE INTERNET</a></td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">3</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">0</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">2/19/97</td>
+						</tr>
+						<tr class="google-visualization-table-tr-even">
+							<td class="google-visualization-table-td"><a href="https://www.google.com/patents/US6425349" target="_blank"> 6425349 - - BICYCLE PET CARRIER</a></td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">7</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">13</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">6/14/01</td>
+						</tr>
+						<tr class="google-visualization-table-tr-odd" style="background-color: #E66665">
+							<td class="google-visualization-table-td"><a href="https://www.google.com/patents/US6434212" target="_blank">6434212 - - PEDOMETER</a></td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">3</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">7</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">10/28/98</td>
+						</tr>
+						<tr class="google-visualization-table-tr-even">
+							<td class="google-visualization-table-td"><a href="https://www.google.com/patents/US6450222" target="_blank">6450222 - - NON-PNEUMATIC TIRE HAVING AN ELASTOMERIC HOOP</a></td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">1</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">0</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">7/14/99</td>
+						</tr>
+						<tr class="google-visualization-table-tr-odd" style="background-color: #85cba8;">
+							<td class="google-visualization-table-td"><a href="https://www.google.com/patents/US6453303" target="_blank">6453303 - - AUTOMATED ANALYSIS FOR FINANCIAL ASSETS</a></td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">1</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">0</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">8/16/99</td>
+						</tr>
+						<tr class="google-visualization-table-tr-even">
+							<td class="google-visualization-table-td"><a href="https://www.google.com/patents/US6557948" target="_blank">6557948 - - BRAKING APPARATUS FOR A VEHICLE</a></td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">1</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">3</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">12/15/97</td>
+						</tr>
+						<tr class="google-visualization-table-tr-odd" style="background-color: #85cba8;">
+							<td class="google-visualization-table-td"><a href="https://www.google.com/patents/US6816085" target="_blank">6816085 - - METHOD FOR MANAGING A PARKING LOT</a></td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">1</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">1</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">1/14/00</td>
+						</tr>
+						<tr class="google-visualization-table-tr-even">
+							<td class="google-visualization-table-td"><a href="https://www.google.com/patents/US6823036" target="_blank">6823036 - - WRISTWATCH-TYPED PEDOMETER WITH WIRELESS HEARTBEAT SIGNAL RECEIVING DEVICE</a></td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">2</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">0</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">9/24/03</td>
+						</tr>
+						<tr class="google-visualization-table-tr-odd">
+							<td class="google-visualization-table-td"><a href="https://www.google.com/patents/US6956338" target="_blank">6956338 - - ANALOG CONTROL OF LIGHT SOURCES</a></td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">1</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">0</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">8/12/03</td>
+						</tr>
+						<tr class="google-visualization-table-tr-even">
+							<td class="google-visualization-table-td"><a href="https://www.google.com/patents/US7081036" target="_blank">7081036 - - BUTTOCK LIFT SUPPORT</a></td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">1</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">9</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">5/9/03</td>
+						</tr>
+						<tr class="google-visualization-table-tr-odd">
+							<td class="google-visualization-table-td"><a href="https://www.google.com/patents/US6453335" target="_blank">64533335 - - PROVIDING AN INTERNET THIRD PARTY DATA CHANNEL</a></td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">102</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">2</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">7/21/98</td>
+						</tr>
+						<tr class="google-visualization-table-tr-even">
+							<td class="google-visualization-table-td"><a href="https://www.google.com/patents/US7086747" target="_blank">7086747 - - LOW-VOLTAGE LIGHTING APPARATUS FOR SATISFYING AFTER-HOURS LIGHTING REQUIREMENTS, EMERGENCY LIGHTING REQUIREMENTS, AND LOW LIGHT REQUIREMENTS</a></td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">1</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">22</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">12/11/02</td>
+						</tr>
+						<tr class="google-visualization-table-tr-odd">
+							<td class="google-visualization-table-td"><a href="https://www.google.com/patents/US7086751" target="_blank">7086751 - - ILLUMINATED PRODUCT PACKAGING</a></td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">5</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">0</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">6/27/03</td>
+						</tr>
+						<tr class="google-visualization-table-tr-even" style="background-color: #85cba8;">
+							<td class="google-visualization-table-td"><a href="https://www.google.com/patents/US7106183" target="_blank">7106183 - - REARVIEW CAMERA AND SENSOR SYSTEM FOR VEHICLES</a></td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">1</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">5</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">8/26/04</td>
+						</tr>
+						<tr class="google-visualization-table-tr-odd" style="background-color: #85cba8;">
+							<td class="google-visualization-table-td"><a href="https://www.google.com/patents/US7114834" target="_blank">7114834 - - LED LIGHTING APPARATUS</a></td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">5</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">13</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">9/23/02</td>
+						</tr>
+						<tr class="google-visualization-table-tr-even" style="background-color: #E66665">
+							<td class="google-visualization-table-td"><a href="https://www.google.com/patents/US7129931" target="_blank">7129931 - - MULTIPURPOSE COMPUTER DISPLAY SYSTEM</a></td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">1</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">1</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">9/14/01</td>
+						</tr>
+						<tr class="google-visualization-table-tr-odd">
+							<td class="google-visualization-table-td"><a href="https://www.google.com/patents/US7162378" target="_blank">7162378 - - POINT OF PLAY TERMINAL</a></td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">1</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">0</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">3/12/04</td>
+						</tr>
+						<tr class="google-visualization-table-tr-even" style="background-color: #E66665">
+							<td class="google-visualization-table-td"><a href="https://www.google.com/patents/US7174362" target="_blank">7174362 - - METHOD AND SYSTEM FOR SUPPLYING PRODUCTS FROM PRE-STORED DIGITAL DATA IN RESPONSE TO DEMANDS TRANSMITTED VIA COMPUTER NETWORK</a></td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">2</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">6</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">11/21/00</td>
+						</tr>
+						<tr class="google-visualization-table-tr-odd">
+							<td class="google-visualization-table-td"><a href="https://www.google.com/patents/US7230392" target="_blank">7230392 - - ANALOG CONTROL OF LIGHT SOURCES</a></td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">2</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">0</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">8/12/03</td>
+						</tr>
+						<tr class="google-visualization-table-tr-even">
+							<td class="google-visualization-table-td"><a href="https://www.google.com/patents/US7752243" target="_blank">7752243 - - METHOD AND APPARATUS FOR CONSTRUCTION AND USE OF CONCEPT KNOWLEDGE BASE</a></td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">2</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">0</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">6/6/06</td>
+						</tr>
+						<tr class="google-visualization-table-tr-odd">
+							<td class="google-visualization-table-td"><a href="https://www.google.com/patents/US7752557" target="_blank">7752557 - - METHOD AND APPARATUS OF VISUAL REPRESENTATIONS OF SEARCH RESULTS</a></td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">1</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">0</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">8/29/06</td>
+						</tr>
+						<tr class="google-visualization-table-tr-even">
+							<td class="google-visualization-table-td"><a href="https://www.google.com/patents/US7788261" target="_blank">7788261 - - INTERACTIVE WEB INFORMATION RETRIEVAL USING GRAPHICAL WORD INDICATORS</a></td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">2</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">0</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">12/14/06</td>
+						</tr>
+						<tr class="google-visualization-table-tr-odd">
+							<td class="google-visualization-table-td"><a href="https://www.google.com/patents/US7797448" target="_blank">7797448 - - GPS-INTERNET LINKAGE</a></td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">8</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">6</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">10/28/99</td>
+						</tr>
+						<tr class="google-visualization-table-tr-even" style="background-color: #E66665">
+							<td class="google-visualization-table-td"><a href="https://www.google.com/patents/US7809717" target="_blank">7809717 - - METHOD AND APPARATUS FOR CONCEPT-BASED VISUAL PRESENTATION OF SEARCH RESULTS</a></td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">1</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">10</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">6/6/06</td>
+						</tr>
+						<tr class="google-visualization-table-tr-odd">
+							<td class="google-visualization-table-td"><a href="https://www.google.com/patents/US7830245" target="_blank">7830245 - - SYSTEM AND METHOD FOR POSITIONING A VEHICLE OPERATOR</a></td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">1</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">0</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">3/14/05</td>
+						</tr>
+						<tr class="google-visualization-table-tr-even">
+							<td class="google-visualization-table-td"><a href="https://www.google.com/patents/US7867058" target="_blank">7867058 - - SPORTS BRA</a></td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">4</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">5</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">4/17/07</td>
+						</tr>
+						<tr class="google-visualization-table-tr-odd" style="background-color: #85cba8;">
+							<td class="google-visualization-table-td"><a href="https://www.google.com/patents/US8106569" target="_blank">8106569 - - LED RETROFIT FOR MINIATURE BULBS</a></td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">2</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">0</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">5/12/09</td>
+						</tr>
+						<tr class="google-visualization-table-tr-even" style="background-color: #85cba8;">
+							<td class="google-visualization-table-td"><a href="https://www.google.com/patents/US8996546" target="_blank">8996546 - - INTERNET BASED RESOURCE RETRIEVAL SYSTEM</a></td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">1</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">0</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">5/28/04</td>
+						</tr>
+						<tr class="google-visualization-table-tr-odd" style="background-color: #85cba8;">
+							<td class="google-visualization-table-td"><a href="https://www.google.com/patents/US9620989" target="_blank">9620989 - - RECHARGEABLE BATTERY ACCESSORIES</a></td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">5</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">2</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">3/13/13</td>
+						</tr>
+						<tr class="google-visualization-table-tr-even">
+							<td class="google-visualization-table-td"><a href="https://www.google.com/patents/US20130141903" target="_blank"> PUB20130141903 - - LED LIGHTING APPARATUS</a></td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">3</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">0</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">9/23/03</td>
+						</tr>
+						<tr class="google-visualization-table-tr-odd">
+							<td class="google-visualization-table-td"><a href="https://www.google.com/patents/US20130213082" target="_blank">PUB20130213082 - - METHOD AND APPARATUS FOR A DISTRIBUTED COOLING SYSTEM FOR ELECTRONIC EQUIPMENT ENCLOSURES</a></td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">2</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">0</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">12/22/05</td>
+						</tr>
+						<tr class="google-visualization-table-tr-even">
+							<td class="google-visualization-table-td"><a href="https://www.google.com/patents/US20140200078" target="_blank">PUB20140200078 - - VIDEO GAME INCLUDING USER DETERMINED LOCATION INFORMATION</a></td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">34</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">0</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">4/12/11</td>
+						</tr>
+						<tr class="google-visualization-table-tr-odd">
+							<td class="google-visualization-table-td"><a href="https://www.google.com/patents/US6602045" target="_blank">6602045 - - WINGTIP WINDMILL AND METHOD OF USE</a></td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">0</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">0</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">2/5/00</td>
+						</tr>
+						<tr class="google-visualization-table-tr-even">
+							<td class="google-visualization-table-td"><a href="https://www.google.com/patents/US6883927" target="_blank">6883927 - - FRAME ASSEMBLY AND LIGHT FOR AN ELECTRICAL WALL CONDUIT</a></td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">0</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">1</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">1/31/00</td>
+						</tr>
+						<tr class="google-visualization-table-tr-odd">
+							<td class="google-visualization-table-td"><a href="https://www.google.com/patents/US6552888" target="_blank">6552888 - - SAFETY ELECTRICAL OUTLET WITH LOGIC CONTROL CIRCUIT</a></td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">0</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">0</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">1/22/01</td>
+						</tr>
+						<tr class="google-visualization-table-tr-even">
+							<td class="google-visualization-table-td"><a href="https://www.google.com/patents/US6705976" target="_blank">6705976 - - EXERCISE APPARATUS</a></td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">0</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">4</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">8/6/00</td>
+						</tr>
+						<tr class="google-visualization-table-tr-odd">
+							<td class="google-visualization-table-td"><a href="https://www.google.com/patents/US6460940" target="_blank">6460940 - - SUPPLEMENTAL BRAKE SYSTEM</a></td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">0</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">0</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">11/8/94</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<h3 id="newlyuncoveredblackbirdpatentsbr">-Newly Uncovered Blackbird Patents<br></h3>
+	<div id="table1" style="height:600px; overflow:scroll;">
+		<div class="google-visualization-table" style="position: relative; z-index: 0; max-width: 100%; max-height: 100%;">
+			<div style="position: relative; overflow: auto; max-width: 100%; max-height: 100%;">
+				<table class="google-visualization-table-table" cellspacing="0">
+					<thead>
+						<tr class="google-visualization-table-tr-head">
+							<th class="google-visualization-table-th gradient unsorted">Patent<span class="google-visualization-table-sortind"></span></th>
+							<th class="google-visualization-table-th gradient unsorted">Cases Brought by Blackbird<span class="google-visualization-table-sortind"></span></th>
+							<th class="google-visualization-table-th gradient unsorted">Priority Date (M/D/YR)<span class="google-visualization-table-sortind"></span></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="google-visualization-table-tr-even">
+							<td class="google-visualization-table-td"><a href="https://www.google.com/patents/US8478512" target="_blank">8478512 - - REAL-TIME TRAFFIC CONDITION MEASUREMENT USING NETWORK TRANSMISSION DATA</a></td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">0</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">2/5/04</td>
+						</tr>
+						<tr class="google-visualization-table-tr-odd">
+							<td class="google-visualization-table-td"><a href="https://www.google.com/patents/US8489314" target="_blank">8489314 - - REAL-TIME TRAFFIC CONDITION MEASUREMENT AND PRESENTATION OF USER-BASED ROUTE DATA</a></td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">0</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">2/5/04</td>
+						</tr>
+						<tr class="google-visualization-table-tr-even">
+							<td class="google-visualization-table-td"><a href="https://www.google.com/patents/US8542111" target="_blank">8542111 - - PROGRAMMABLE COMMUNICATOR</a></td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">0</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">5/23/00</td>
+						</tr>
+						<tr class="google-visualization-table-tr-odd">
+							<td class="google-visualization-table-td"><a href="https://www.google.com/patents/US8633802" target="_blank">8633802 - - PROGRAMMABLE COMMUNICATOR</a></td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">0</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">5/23/00</td>
+						</tr>
+						<tr class="google-visualization-table-tr-even">
+							<td class="google-visualization-table-td"><a href="https://www.google.com/patents/US8744761" target="_blank">8744761 - - METHOD AND SYSTEM FOR PROVIDING TRAVEL TIME INFORMATION</a></td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">0</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">2/5/04</td>
+						</tr>
+						<tr class="google-visualization-table-tr-odd">
+							<td class="google-visualization-table-td"><a href="https://www.google.com/patents/US8866589" target="_blank">8866589 - - PROGRAMMABLE COMMUNICATOR</a></td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">0</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">5/23/00</td>
+						</tr>
+						<tr class="google-visualization-table-tr-even">
+							<td class="google-visualization-table-td"><a href="https://www.google.com/patents/US8648717" target="_blank">8648717 - - PROGRAMMABLE COMMUNICATOR</a></td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">0</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">5/23/00</td>
+						</tr>
+						<tr class="google-visualization-table-tr-odd">
+							<td class="google-visualization-table-td"><a href="https://www.google.com/patents/US6804225" target="_blank">6804225 - - SYSTEM AND METHOD FOR ESTABLISHING LONG DISTANCE VOICE COMMUNICATIONS USING THE INTERNET</a></td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">0</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">3/3/97</td>
+						</tr>
+						<tr class="google-visualization-table-tr-even">
+							<td class="google-visualization-table-td"><a href="https://www.google.com/patents/US7116657" target="_blank">7116657 - - SYSTEM AND METHOD FOR ESTABLISHING LONG DISTANCE CALL CONNECTIONS USING A DESKTOP APPLICATION</a></td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">0</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">8/22/00</td>
+						</tr>
+						<tr class="google-visualization-table-tr-odd">
+							<td class="google-visualization-table-td"><a href="https://www.google.com/patents/US8094010" target="_blank">8094010 - - PROGRAMMABLE COMMUNICATOR</a></td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">0</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">5/23/00</td>
+						</tr>
+						<tr class="google-visualization-table-tr-even">
+							<td class="google-visualization-table-td"><a href="https://www.google.com/patents/US8548719" target="_blank">8548719 - - REAL-TIME TRAFFIC CONDITION MEASUREMENT</a></td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">0</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">2/5/04</td>
+						</tr>
+						<tr class="google-visualization-table-tr-odd" style="background-color: #85cba8;">
+							<td class="google-visualization-table-td"><a href="https://www.google.com/patents/US9424848" target="_blank">9424848 - - METHOD FOR SECURE TRANSACTIONS UTILIZING PHYSICALLY SEPARATED COMPUTERS</a></td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">0</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">6/9/00</td>
+						</tr>
+						<tr class="google-visualization-table-tr-even">
+							<td class="google-visualization-table-td"><a href="https://www.google.com/patents/US8306746" target="_blank">8306746 - - METHOD AND SYSTEM FOR PROVIDING TRAVEL TIME INFORMATION</a></td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">0</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">2/5/04</td>
+						</tr>
+						<tr class="google-visualization-table-tr-odd">
+							<td class="google-visualization-table-td"><a href="https://www.google.com/patents/US8380429" target="_blank">8380429 - - REAL-TIME TRAFFIC CONDITION MEASUREMENT USING GPS DATA</a></td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">0</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">2/5/04</td>
+						</tr>
+						<tr class="google-visualization-table-tr-even">
+							<td class="google-visualization-table-td"><a href="https://www.google.com/patents/US7740234" target="_blank">7740234 - - METHOD AND APPARATUS FOR A LOW-PROFILE SUSPENSION SYSTEM</a></td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">0</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">12/22/05</td>
+						</tr>
+						<tr class="google-visualization-table-tr-odd">
+							<td class="google-visualization-table-td"><a href="https://www.google.com/patents/US9243927" target="_blank">9243927 - - METHOD AND SYSTEM FOR PROVIDING TRAVEL TIME INFORMATION</a></td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">0</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">2/5/04</td>
+						</tr>
+						<tr class="google-visualization-table-tr-even" style="background-color: #85cba8;">
+							<td class="google-visualization-table-td"><a href="https://www.google.com/patents/US9679286" target="_blank">9679286 - - METHODS AND APPARATUS FOR ENABLING SECURE NETWORK-BASED TRANSACTIONS</a></td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">0</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">9/20/05</td>
+						</tr>
+						<tr class="google-visualization-table-tr-odd">
+							<td class="google-visualization-table-td"><a href="https://www.google.com/patents/US7556271" target="_blank">7556271 - - METHOD AND APPARATUS FOR AN ELETRONIC EQUIPMENT RACK</a></td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">0</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">12/22/05</td>
+						</tr>
+						<tr class="google-visualization-table-tr-even">
+							<td class="google-visualization-table-td"><a href="https://www.google.com/patents/US9400190" target="_blank">9400190 - - REAL-TIME TRAFFIC CONDITION MEASUREMENT USING NETWORK TRANSMISSION DATA</a></td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">1</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">2/5/04</td>
+						</tr>
+						<tr class="google-visualization-table-tr-odd">
+							<td class="google-visualization-table-td"><a href="https://www.google.com/patents/US7636430" target="_blank">7636430 - - TOLL-FREE CALL ORIGINATION USING AN ALPHANUMERIC CALL INITIATOR </a></td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">0</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">11/1/01</td>
+						</tr>
+						<tr class="google-visualization-table-tr-even">
+							<td class="google-visualization-table-td"><a href="https://www.google.com/patents/US7611157" target="_blank">7611157 - - METHOD AND APPARATUS FOR AN ELETRONIC EQUIPMENT RACK</a></td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">0</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">12/22/05</td>
+						</tr>
+						<tr class="google-visualization-table-tr-odd">
+							<td class="google-visualization-table-td"><a href="https://www.google.com/patents/US8855905" target="_blank">8855905 - - REAL-TIME TRAFFIC CONDITION MEASUREMENT USING NETWORK TRANSMISSION DATA </a></td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">0</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">2/5/04</td>
+						</tr>
+						<tr class="google-visualization-table-tr-even">
+							<td class="google-visualization-table-td"><a href="https://www.google.com/patents/US8424885" target="_blank">8424885 - - METHOD AND APPARATUS FOR AN ENVIRONMENTALLY-PROTECTED ELETRONIC EQUIPMENT ENCLOSURE</a></td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">1</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">12/22/05</td>
+						</tr>
+						<tr class="google-visualization-table-tr-odd" style="background-color: #85cba8;">
+							<td class="google-visualization-table-td"><a href="https://www.google.com/patents/US7522995" target="_blank">7522995 - - METHOD AND SYSTEM FOR PROVIDING TRAVEL TIME INFORMATION</a></td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">0</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">2/5/04</td>
+						</tr>
+						<tr class="google-visualization-table-tr-even">
+							<td class="google-visualization-table-td"><a href="https://www.google.com/patents/US7904240" target="_blank">7904240 - - METHOD AND SYSTEM FOR PROVIDING TRAVEL TIME INFORMATION</a></td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">0</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">2/5/04</td>
+						</tr>
+						<tr class="google-visualization-table-tr-odd">
+							<td class="google-visualization-table-td"><a href="https://www.google.com/patents/US7958214" target="_blank">7958214 - - METHOD FOR SECURE TRANSACTIONS UTILIZING PHYSICALLY SEPARATED COMPUTERS</a></td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">0</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">6/9/00</td>
+						</tr>
+						<tr class="google-visualization-table-tr-even">
+							<td class="google-visualization-table-td"><a href="https://www.google.com/patents/US9086295" target="_blank">9086295 - - REAL-TIME TRAFFIC CONDITION MEASUREMENT USING NETWORK TRANSMISSION DATA</a></td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">0</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">2/5/04</td>
+						</tr>
+						<tr class="google-visualization-table-tr-odd">
+							<td class="google-visualization-table-td"><a href="https://www.google.com/patents/US8457871" target="_blank">8457871 - - REAL-TIME TRAFFIC CONDITIONS MEASUREMENT AND PRESENTATION OF SPONSORED CONTENT</a></td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">0</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">2/5/04</td>
+						</tr>
+						<tr class="google-visualization-table-tr-even" style="background-color: #85cba8;">
+							<td class="google-visualization-table-td"><a href="https://www.google.com/patents/US8715087" target="_blank">8715087 - - VIDEO GAME INCLUDING USER DETERMINED LOCATION INFORMATION</a></td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">0</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">4/12/11</td>
+						</tr>
+						<tr class="google-visualization-table-tr-odd">
+							<td class="google-visualization-table-td"><a href="https://www.google.com/patents/US8285832" target="_blank">8285832 - - METHOD FOR SECURE TRANSACTIONS UTILISING PHYSICALLY SEPARATED COMPUTERS</a></td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">0</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">6/9/00</td>
+						</tr>
+						<tr class="google-visualization-table-tr-even">
+							<td class="google-visualization-table-td"><a href="https://www.google.com/patents/US7583197" target="_blank">7583197 - - PROGRAMMABLE COMMUNICATOR</a></td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">0</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">5/23/00</td>
+						</tr>
+						<tr class="google-visualization-table-tr-odd">
+							<td class="google-visualization-table-td"><a href="https://www.google.com/patents/US9014972" target="_blank">9014972 - - METHOD AND SYSTEM FOR PROVIDING TRAVEL TIME INFORMATION</a></td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">0</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">2/5/04</td>
+						</tr>
+						<tr class="google-visualization-table-tr-even">
+							<td class="google-visualization-table-td"><a href="https://www.google.com/patents/US7628409" target="_blank">7628409 - - METHOD AND APPARATUS FOR AN ELETRONIC EQUIPMENT RACK</a></td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">0</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">12/22/05</td>
+						</tr>
+						<tr class="google-visualization-table-tr-odd">
+							<td class="google-visualization-table-td"><a href="https://www.google.com/patents/US7461849" target="_blank">7461849 - - METHOD AND APPARATUS FOR AN ELETRONIC EQUIPMENT RACK</a></td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">0</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">12/22/05</td>
+						</tr>
+						<tr class="google-visualization-table-tr-even">
+							<td class="google-visualization-table-td"><a href="https://www.google.com/patents/US6879678" target="_blank">6879678 - - SYSTEM AND METHOD FOR ESTABLISHING LONG DISTANCE CALL CONNECTIONS USING A PERSONAL COMMUNICATION ASSISTANT</a></td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">0</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">11/13/00</td>
+						</tr>
+						<tr class="google-visualization-table-tr-odd">
+							<td class="google-visualization-table-td"><a href="https://www.google.com/patents/US6694007" target="_blank">6694007 - - SYSTEM AND METHOD FOR ESTABLISHING LONG DISTANCE CALL CONNECTIONS USING ELETRONIC TEXT MESSAGES</a></td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">0</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">3/22/01</td>
+						</tr>
+						<tr class="google-visualization-table-tr-even">
+							<td class="google-visualization-table-td"><a href="https://www.google.com/patents/US20130081778" target="_blank">US20130081778 - - METHOD AND APPARATUS FOR A CLOSE-COUPLED COOLING SYSTEM</a></td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">0</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">10/3/11</td>
+						</tr>
+						<tr class="google-visualization-table-tr-odd">
+							<td class="google-visualization-table-td"><a href="https://www.google.com/patents/US20170194800" target="_blank">US20170194800 - - BATTERY PACK</a></td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">0</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">3/13/13</td>
+						</tr>
+						<tr class="google-visualization-table-tr-even">
+							<td class="google-visualization-table-td"><a href="https://www.google.com/patents/US20160102993" target="_blank">US20160102993 - - METHOD AND SYSTEM FOR PROVIDING TRAVEL TIME INFORMATION</a></td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">0</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">2/5/04</td>
+						</tr>
+						<tr class="google-visualization-table-tr-odd">
+							<td class="google-visualization-table-td"><a href="https://www.google.com/patents/US20150326992" target="_blank">US20150326992 - - PROGRAMMABLE COMMUNICATOR</a></td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">0</td>
+							<td class="google-visualization-table-td google-visualization-table-td-number">5/23/00</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<!--kg-card-end: markdown-->
+</div>

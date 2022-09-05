@@ -1,0 +1,55 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/Securing-Cloudflare-with-Cloudflare.png" class="kg-image"></figure>
+	<p>在出现新的安全威胁时——一个被公开利用的漏洞（例如 <a href="https://blog.cloudflare.com/zh-cn/">log4j</a>），从企业控制的环境转移到远程办公时，或一个潜在的威胁行为者——保护 Cloudflare 网络、客户和员工的职责落在安全团队身上。随着安全威胁演变，我们的防御系统也应该随之发展。Cloudflare 致力于使用一流解决方案来加强我们的安全态势。因此，我们常常会像其他 Cloudflare 客户一样求助于我们自己的产品。</p>
+	<p>我们已经写过，使用 <a href="https://blog.cloudflare.com/dogfooding-from-home/">Cloudflare Access 来替代我们的 VPN</a>，使用 <a href="https://blog.cloudflare.com/access-purpose-justification/">Purpose Justification</a> 来实现细粒度控制，使用 <a href="https://blog.cloudflare.com/using-cloudflare-one-to-secure-iot-devices/">Magic + Gateway</a> 来防范内部的横向移动。和世界各地企业团队一样，我们有相同的安全需求和担忧，因此我们依赖于信任 Cloudflare 的财富 500 强公司所用的相同解决方案，以改善安全、性能和速度。使用自己的产品植根于我们团队的文化中。</p>
+	<h3 id="-cloudflare-">安全挑战，Cloudflare 解决方案</h3>
+	<p>我们形成了一种强大的能力，在遇到安全威胁时会首先考虑 Cloudflare。事实上，我们遇到的很多安全问题都有 Cloudflare 解决方案。</p>
+	<ul>
+		<li><strong>问题</strong>：远程办公造成了远程设备和网络的安全盲点。</li>
+		<li><strong>解决方案</strong>：部署 Cloudflare Gateway 和 WARP 以保护用户和设备免受威胁，无论他们的设备或网络以什么方式连接。</li>
+	</ul>
+	<p>我们的检测和响应团队通过 Cloudflare WARP 应用程序将企业设备连接到 Gateway，从而重新获得对安全威胁的可见性。这些 Zero Trust 产品保护用户和设备免受恶意软件、网络钓鱼、影子 IT 等安全威胁侵害，并使我们的安全团队能够立即拦截威胁并预防敏感数据离开我们的组织——而且不会对员工产生任何性能影响，无论他们身处何地。</p>
+	<ul>
+		<li><strong>问题</strong>：公司足迹（规模和位置）越大，内部工具的复杂性就越高。</li>
+		<li><strong>解决方案</strong>： 部署 Cloudflare Access 和 Purpose Justification，为网络管理员提供精细化的上下文应用程序访问控制。</li>
+	</ul>
+	<p>我们的身份和访问管理团队使用 Access 来创建策略，以最大程度减少数据访问权限，确保我们的员工只能访问所需的数据。随着内部工具和团队发展，策略的灵活性和即时应用简化了可扩展性。通过 Purpose Justification Capture，访问含特别敏感数据的域时，员工也必须证明他们的用例是正当的——不仅解决了 Cloudflare 的一个内部需求，也帮助我们的客户满足数据政策要求（例如 GDPR）。</p>
+	<ul>
+		<li><strong>问题</strong>：工程和产品团队行动迅速。对每一个拉取请求进行人工审查是不可扩展的。</li>
+		<li><strong>解决方案</strong>： 利用 Workers 构建的一个工具，扫描拉取请求以防止安全漏洞。</li>
+	</ul>
+	<p>我们的产品安全工程团队使用 Cloudflare 的开发平台 Workers，无缝部署了一个代码审查辅助框架，以标记机密、漏洞依赖和二进制安全标志。Workers 的灵活性使得安全团队能根据安全问题而发展这一工具，并将其扩展到公司每周产生的数百个拉取请求。</p>
+	<p>这些只是安全团队使用 Cloudflare 产品来阻止恶意域、简化访问管理、提供对威胁的可见性及加强总体安全态势的部分方法。为了让大家了解我们在技术上如何考虑这些挑战，我们将深入介绍一个使用 Cloudflare 来保护 Cloudflare 的实例。</p>
+	<h3 id="-cloudflare--1">使用 Cloudflare 的防钓鱼网站</h3>
+	<p>双因素身份验证是可实施的最重要安全控制之一。然而，并非所有的第二因素都能提供相同级别的安全性。基于时间的一次性密码（TOTP）应用——例如 Google Authenticator——是强大的第二因素，但容易通过中间人攻击的网络钓鱼利用。拥有特殊访问权限的员工遭到一次成功的网络钓鱼攻击，这是一个可怕的情景，我们希望完全消除这种风险。</p>
+	<p><a href="https://fidoalliance.org/specs/fido-v2.0-rd-20161004/fido-client-to-authenticator-protocol-v2.0-rd-20161004.html" target="_blank">FIDO2</a> 旨在提供简单的用户界面和对钓鱼攻击的完全保护。我们决定在所有环境中完全采用 FIDO2 支持的安全密钥，但 FIDO2 还没有普及，而且还有很多具有挑战性的兼容性问题。Cloudflare Access 允许我们强制 FIDO2 成为访问受 Cloudflare Access 保护的系统时唯一可用的第二因素。</p>
+	<p>为了管理我们的 <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_policy" target="_blank">Cloudflare Access 策略</a>，我们将每个策略作为 terraform 代码纳入源代码控制。对我们的应用程序实施基于群组的访问控制。</p>
+	<pre><code>resource "cloudflare_access_policy" "prod_cloudflare_users" {
+  application_id = cloudflare_access_application.prod_sandbox_access_application.id
+  zone_id        = cloudflare_zone.prod_sandbox.id
+  name           = "Allow "
+  decision       = "allow"
+
+  include {
+    email_domain = ["cloudflare.com"]
+    okta {
+      # Require membership in Sandbox group
+      name                 = ["ACL-ACCESS-sandbox"]
+      identity_provider_id = cloudflare_access_identity_provider.okta_prod.id
+    }
+  }
+
+  # Require a security key
+  require {
+    auth_method = "swk"
+  }
+}
+</code></pre>
+	<p><code>require</code> 部分要求 Cloudflare 员工使用他们受 FIDO2 支持的安全密钥来访问我们受 Access 保护的所有内部和外部应用程序。auth_method（在 <a href="https://datatracker.ietf.org/doc/rfc8176/" target="_blank">RFC8176</a> 有更深入描述）要求从我们在 <code>amr</code> 字段内的 OIDC 提供者在登录流中返回特定的值。强制的 <code>swk</code> 是 “持有软件安全密钥的证明” ，对应于使用安全密钥的登录。</p>
+	<p>访问内部站点时强制使用安全密钥的能力显著改善了我们的安全态势。实施这一改变前，对于我们很多内部服务，我们允许同时使用软令牌（例如 Google Authenticator 的 TOTP）和 WebAuthn，因为有一小部分系统依然不支持 FIDO2。在实施以上变化后，您会看到我们的软令牌使用降至接近零。</p>
+	<figure class="kg-card kg-image-card"><img src="https://lh3.googleusercontent.com/QyHA5DUMOGgeLpD3qvfe-Qr4OnMSMi8n6-hbaeWVvsgZx6ZN0OpDtf72CwAbNY1t1Q1RrRgCdsHuFhJjfkX9WXYr8IM2ctzZPqFVz1o6zGMpCou2bH8l6Ze0ijoXGk0QSNxLapxK" class="kg-image" alt="This image shows webauthn and &quot;soft token&quot; (totp) usage as a second factor, with soft token reaching zero usage when we enforced webauthn only." title="Webauthn usage at Cloudflare"></figure>
+	<h3 id="-">持续实践</h3>
+	<p>安全团队不仅部署 Cloudflare 的产品，我们还会首先测试这些产品。我们与产品团队直接合作，首先试用我们自己的产品。帮助构建更好的互联网是我们的使命——那意味着在每次发布前测试我们的产品，并从内部团队收集有价值的反馈。作为 Cloudflare 产品的头号消费者，安全团队不仅帮助公司变得更加安全，还在为我们的客户打造更好的产品方面做出贡献。</p>
+	<p>要进一步了解 Cloudflare 使用自己产品的实例和技术实现，请观看 Cloudflare TV 上最近推出的节目 <a href="https://cloudflare.tv/event/3XVzDuzBL7TZ5HMB9Ni4b0" target="_blank">Securing Cloudflare with Cloudflare</a>。</p>
+	<p>若要进一步了解本文中提及的产品，欢迎联系我们的销售团队，了解我们能如何帮助您保护业务、团队和用户。</p>
+</div>

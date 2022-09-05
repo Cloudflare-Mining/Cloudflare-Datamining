@@ -1,0 +1,45 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/09/HTML-rewrriter-beta@2x-1.png" class="kg-image"></figure>
+	<p>Aujourd'hui, nous avons le plaisir de vous annoncer HTMLRewriter beta, un analyseur HTML en streaming avec un sélecteur facile à utiliser JavaScript API pour la manipulation DOM, disponible dans le temps d'exécution Cloudflare Workers.</p>
+	<p>Pour ceux d'entre vous qui ne connaissent pas <a href="https://workers.cloudflare.com/" target="_blank">Cloudflare Workers</a>, il s'agit d'une plate-forme serverless légère qui permet aux développeurs d'utiliser le réseau Cloudflare pour augmenter leurs applications existantes ou en créer de toutes nouvelles sans configurer ou entretenir leur infrastructure.</p>
+	<h2 id="de-sites-statiques-des-applications-dynamiques"><strong>De sites statiques à des applications dynamiques</strong></h2>
+	<p>Vendredi, nous avons annoncé <a href="https://workers.cloudflare.com/sites" target="_blank">Workers Sites</a> : un workflow statique de déploiement de sites intégré dans l'outil <a href="https://github.com/cloudflare/wrangler" target="_blank"> Wrangler</a> CLI. Désormais, avec l'API HTML Rewriter, vous pouvez effectuer des transformations DOM sur votre HTML statique, directement depuis la périphérie de Cloudflare.</p>
+	<p>Auparavant, il était possible de le faire en intégrant l'intégralité du corps de la réponse dans le Worker, mais cette méthode avait tendance à engendrer quelques problèmes. Tout d'abord, l'analyse d'un fichier volumineux devait obligatoirement pouvoir être exécutée dans les limites de la mémoire ou du processeur. De plus, cela avait un impact sur votre TTFB car le corps de la réponse ne pouvait plus être acheminé en streaming, et le navigateur ne pouvait plus effectuer d'analyse spéculative pour charger les ressources subséquentes.</p>
+	<p>HTMLRewriter était la pièce manquante permettant à votre application de fonctionner pleinement en périphérie. Vous pouvez bâtir<a href="https://developers.cloudflare.com/workers/tutorials/build-a-serverless-function/" target="_blank"> votre API</a> sur Cloudflare Workers en tant que fonction serverless, héberger les éléments statiques de votre front-end sur <a href="https://workers.cloudflare.com/sites" target="_blank"> Workers Sites</a> et les lier dynamiquement entre eux en utilisant l'API HTMLRewriter.</p>
+	<h2 id="entrez-dans-jamstack"><strong>Entrez dans JAMStack</strong></h2>
+	<p>Vous êtes peut-être en train de vous dire que JavaScript et API serverless vous rappellent quelque chose... Nous aussi.</p>
+	<figure class="kg-card kg-embed-card kg-card-hascaption">
+		<blockquote class="twitter-tweet">
+			<p lang="en" dir="ltr">I've ported <a href="https://t.co/2bfz7ph4Ex" target="_blank">https://t.co/2bfz7ph4Ex</a> to <a href="https://twitter.com/Cloudflare?ref_src=twsrc%5Etfw" target="_blank">@Cloudflare</a> Workers Sites and Zola! <a href="https://t.co/wqlZCy83Ze" target="_blank">https://t.co/wqlZCy83Ze</a></p>— steveklabnik (@steveklabnik) <a href="https://twitter.com/steveklabnik/status/1177613915200610309?ref_src=twsrc%5Etfw" target="_blank">September 27, 2019</a>
+		</blockquote>
+		<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+		<figcaption>Est-ce JAMStack ?</figcaption>
+	</figure>
+	<p>Tout d'abord, expliquons ce qu’est JAMStack JAMStack est un terme inventé par Mathias Biilmann, qui signifie JavaScript, API et Markup. Les applications JAMStack sont conçues pour être très faciles à scaler puisqu'elles reposent sur un déploiement statique et simplifié du site. Elles visent également à simplifier le flux de travail lors du développement Web, en particulier pour les développeurs front-end, en permettant une manipulation et un rendu des données qui se faisaient traditionnellement du back-end vers le front-end, et une interaction avec le back-end uniquement via les appels d’API.</p>
+	<p>Donc, dans cette mesure, oui, c'est JAMStack. Cependant, HTMLRewriter va encore plus loin dans cette idée.</p>
+	<h2 id="la-p-riph-rie-pas-tout-fait-client-pas-tout-fait-serveur"><strong>La périphérie : Pas tout à fait client, pas tout à fait serveur</strong></h2>
+	<p>La plupart des applications JAMStack dépendent d'appels côté client vers des API tierces, où le rendu peut être géré côté client en utilisant JavaScript, permettant aux développeurs front-end de travailler avec les chaînes de compilation et les langages qu'ils connaissent déjà. Cependant, cela signifie qu'à chaque chargement de page, le client doit aller à l'origine, attendre HTML et JS, puis après avoir été analysé et chargé, appeler les API à plusieurs reprises. De plus, tout cela a lieu sur des appareils côté client qui sont nécessairement des machines moins puissantes que les serveurs et dont les derniers kilomètres des connexions sont potentiellement incertains.</p>
+	<p>Avec HTMLRewriter dans Workers, vous pouvez effectuer ces appels d'API depuis la périphérie, où les risques d'échec sont bien moindres que sur les connexions de périphériques client, et les résultats peuvent souvent être mis en cache. Mieux encore, vous pouvez écrire les API elles-mêmes dans Workers et intégrer les résultats directement dans le HTML, le tout sur la même machine puissante en périphérie. L'utilisation de ces machines pour effectuer un « rendu côté périphérie » avec HTMLRewriter a toujours lieu aussi près que possible de vos utilisateurs finaux, sans avoir lieu sur l'appareil lui-même, et cela élimine la latence du chemin jusqu'à l'origine.</p>
+	<h2 id="-quoi-ressemble-l-api-htmlrewriter"><strong>À quoi ressemble l'API HTMLRewriter ?</strong></h2>
+	<p>La classe HTMLRewriter est une expérience de type jQuery directement à l'intérieur de votre application Workers, permettant aux développeurs de créer des applications extrêmement fonctionnelles, s'appuyant sur une puissante API JavaScript pour analyser et transformer le HTML.</p>
+	<p>Vous trouverez ci-dessous un exemple d'utilisation de HTMLRewriter pour réécrire les liens d'une page Web de HTTP à HTTPS.</p>
+	<pre><code class="language-javascript">const REWRITER = new HTMLRewriter()
+    .on('a.avatar', { element:  e =&gt; rewriteUrl(e, 'href') })
+    .on('img', { element: e =&gt; rewriteUrl(e, 'src') });
+
+async function handleRequest(req) {
+  const res = await fetch(req);
+  return REWRITER.transform(res);
+}</code></pre>
+	<p>Dans l'exemple ci-dessus, nous créons une nouvelle instance de HTMLRewriter, et utilisons le sélecteur pour trouver toutes les instances des éléments a et img, et appelons la fonction rewriteURL sur les propriétés href et src respectivement.</p>
+	<p>Tutoriel d'internationalisation et de localisation : Si vous souhaitez aller plus loin, nous mettons à votre disposition un <a href="https://developers.cloudflare.com/workers/tutorials/localize-a-website/" target="_blank">tutoriel complet</a> sur la façon de rendre votre application i18n conviviale avec HTMLRewriter.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/09/i18n-htmlrewriter.jpg" class="kg-image"></figure>
+	<h2 id="commencer"><strong>Commencer</strong></h2>
+	<p>Si vous utilisez déjà Cloudflare Workers, vous pouvez simplement commencer à utiliser HTMLRewriter en consultant notre <a href="https://developers.cloudflare.com/workers/reference/apis/html-rewriter/" target="_blank">documentation</a> (pas besoin de vous inscrire ou quoi que ce soit !). Si vous débutez avec Cloudflare Workers, nous vous recommandons de commencer par vous inscrire <a href="https://workers.cloudflare.com/sign-up" target="_blank">ici</a>.</p>
+	<p>Si vous souhaitez en savoir plus sur le fonctionnement précis de HTMLRewriter, et apprendre tout ce que vous avez toujours voulu savoir sur l'analyse de DOM, vous allez être servi(e). Nous aurons le plaisir de vous en dire plus à ce sujet dans un prochain article.</p>
+	<p>Dernière chose : vous n'êtes pas limité(e) uniquement à Workers Sites. Puisqu'il est possible de déployer Cloudflare Workers comme proxy face à n'importe quelle application, vous pouvez utiliser HTMLRewriter comme un moyen ingénieux d'améliorer votre site existant, et ajouter facilement des éléments dynamiques, indépendamment du back-end.</p>
+	<h2 id="votre-avis-nous-est-tr-s-pr-cieux-"><strong>Votre avis nous est très précieux !</strong></h2>
+	<p>Nous travaillons sans cesse à l'amélioration de nos produits en nous basant sur les commentaires de nos clients ! Aidez-nous en <a href="https://docs.google.com/forms/d/e/1FAIpQLSffHlmO_4iyvDU6KbPLpZ820gZBymIlbjq6KL-oZCC97cCnTw/viewform?usp=sf_link" target="_blank">répondant à notre sondage</a> au sujet de votre expérience.</p>
+	<hr>
+	<p><em>Avez-vous créé quelque chose d'intéressant avec Workers ? </em>Dites-le nous<a href="https://twitter.com/CloudflareDev/" target="_blank"><em>@CloudflareDev</em></a><em> !</em></p>
+</div>

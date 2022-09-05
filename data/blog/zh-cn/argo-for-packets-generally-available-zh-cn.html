@@ -1,0 +1,236 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image5-14.png" class="kg-image" alt="Argo for Packets is Generally Available"></figure>
+	<p>如果我们说，您的 IP 网络能提速 10%，而且只需要联系您的帐户团队就能实现，您会怎么说？</p>
+	<p>今天，我们宣布 Argo for Packets 全面上市。该产品可提供 IP 层网络优化，为您的各种 Cloudflare 网络服务产品增光添彩，如 <a href="https://www.cloudflare.com/zh-cn/magic-transit/" target="_blank">Magic Transit</a>（我们的第 3 层 DDoS 保护服务）、<a href="https://www.cloudflare.com/zh-cn/magic-wan/" target="_blank">Magic WAN</a>（让您在 Cloudflare 之上建立自己的 SD-WAN）和 <a href="https://blog.cloudflare.com/zh-cn/cloudflare-for-offices-zh-cn/">Cloudflare for Offices</a>（我们为全球成千上万的办公大楼提供安全、高性能连接的计划）。</p>
+	<p>您可能还不熟悉 Argo，它是 Cloudflare 中一款可提高流量速度的产品。Argo 可为您在互联网上的流量找到最快、最有效的路径。每一天，Cloudflare 都会在我们的网络和互联网上传输数万亿的请求、连接和数据包。由于我们的网络，我们的客户及其终端用户分布在全球各地，针对不同地方在任何特定时间的运行情况，所有经由我们的基础设施的请求都呈现了良好的整体画面。Cloudflare 恰恰利用这个画面，确保您的流量在我们的基础设施中采用最快的路径。</p>
+	<p>之前，Argo 对第 7 层应用程序层和第 4 层协议层的流量进行优化。随着 Argo for Packets 的问世，我们现在可对您的私有网络 IP 层进行优化。在 <a href="https://blog.cloudflare.com/argo-v2/">Speed Week 期间，我们介绍了 </a>Argo for Packets 的早期访问，以及其如何能够减少 10% 的延迟。今天，为了庆祝 Argo for Packets 达到 GA，我们将更深入地研究如何降低延迟，并向您展示相关示例，解释如何实现更大的优化，并讨论 Argo 的安全数据平面如何为您提供额外的加密（甚至在第 3 层）。</p>
+	<p>如果您希望立即使用 Argo for Packets，请联系您的客户团队以启动这一进程！</p>
+	<h3 id="-bgp"><strong>优于 BGP</strong></h3>
+	<p>如上所述，Speed Week 期间，在我们的内部测试中，Argo for Packets 在全球范围内提供了平均 10% 的延迟改善：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image6-14.png" class="kg-image" title="Chart"></figure>
+	<p>当朝向 GA 发展时，我们发现真实世界的数字与我们的内部测试相吻合，且仍有 10% 的改进。但必须要注意到，10% 的延迟减少仅为全球所有路径的平均数。不同的客户，延迟改善也会有所不同，具体取决于设置。</p>
+	<p>Argo for Packets 可在整个网络中动态地选择最佳路径，以此实现所述延迟改善。让我们来谈一谈这意味着什么。</p>
+	<p>网络上的普通数据包通过<a href="https://www.cloudflare.com/zh-cn/learning/security/glossary/what-is-bgp/" target="_blank">边界网关协议 (BGP)</a> 寻找通往其目的地的路径，而该协议允许数据包穿越“最短”路径到达目的地。然而，BGP 术语中的最短路径延迟的关系并不大，而是与网络跃点密切相关。例如，网络中的路径 A 可能有两条路径：12345 - 54321 - 13335，以及 12345 13335。这两个网络都从 12345 网络开始，在 Cloudflare 结束，也就是 AS 13335。BGP 的逻辑决定了流量将总是通过第二条路径。然而，如果第一条路径的网络延迟较低或数据包丢失较少，就算有更好的性能选择，客户也可能毫不知情！</p>
+	<p>有两种方法可进行补救。第一种方式是通过网络 12345 投资建设更多管道，同时扩大该网络，使其紧邻其他所有网络。客户也可以建立自己的网络或购买供应商昂贵的 MPLS 网络。无论使用哪种解决方案，客户都将花费大量的金钱和时间才能达到想要的性能水平。</p>
+	<p>Cloudflare 利用我们现有的全局网络和主干网，以及已接收流量中的网络数据，优化返回给您的路线，进而提高客户的性能。这使我们能够在互联网上发生流量变化和拥堵时，改进对路径的选择。Argo 将检查从每个 Cloudflare 数据中心返回到源站的每条路径，直至单个网络路径。Argo 将在所有这些独特路径中对现有第 4 层流量和网络分析内容进行比较，以确定最快、最有效的路径。</p>
+	<p>为了使 Argo 能够根据您的私有网络进行定制， Cloudflare 使用了我们为 <a href="https://www.cloudflare.com/zh-cn/magic-transit/" target="_blank">Magic Transit</a> 建立的一个数据源。数据源：运行状况检查探测器。Cloudflare 利用现有的运行状况检查探测器，从每个 Cloudflare 数据中心返回到每个客户源站进行探测。这些探测器用于确定从 Cloudflare 返回客户的 Magic Transit 路径的运行状况，以便 Cloudflare 掌握哪些返回源站的路径是正常运行的。这些探测器包含各种可用于提高性能的信息，如数据包丢失和延迟数据。通过检查运行状况检查探测器并将其添加到现有的第 4 层数据中，Cloudflare 可以更好地了解单向延迟并构建一个地图，让我们看到所有相互连接的数据中心以及它们之间的传输速度。然后，Cloudflare 将挑选数据包进入我们网络的入口位置，以及通过 Cloudflare 网络互连直接连接回客户的出口位置，在第 3 层找到回到客户数据中心的最佳路径。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/12/image1-49.png" class="kg-image"></figure>
+	<p>通过这张地图，Cloudflare 可根据每个客户的流量进入 Cloudflare 网络的位置及其所需的目的地，为其构建动态路线。</p>
+	<p>让我们深入研究一些示例，看看延迟减少是如何依据设置得到体现。</p>
+	<h3 id="cloudflare-"><strong>Cloudflare 的网络就是您的网络</strong></h3>
+	<p>在概述 Magic 产品如何提高网络速度的 <a href="https://blog.cloudflare.com/magic-makes-your-network-faster/">Speed Week 博客</a>中，我们简单介绍了几个不同的网络拓扑结构示例，并展示了 Magic Transit 和 Magic WAN 对其网络进行改进。让我们在此基础上使用 Argo for Packets 进行改进，看看我们如何进一步提高性能。</p>
+	<p>博客中的示例介绍了一家在南卡罗来纳州、俄勒冈州和洛杉矶均设有分支机构的公司。在这篇博客中，我们展示了 Magic Transit 如何对一段网络进行延迟改善。该网络如下图所示：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image3-23.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image4-25.png" class="kg-image"></figure>
+	<p>让我们将上图拆分，以展示网络中所有路径之间的延迟。我们假设南卡罗来纳州连接到亚特兰大，俄勒冈州连接到西雅图，这是最可能出现的情况：</p>
+	<!--kg-card-begin: markdown-->
+	<table>
+		<thead>
+			<tr>
+				<th>源位置</th>
+				<th>目标位置</th>
+				<th>Magic WAN 单向延迟</th>
+				<th>Argo for Packets 单向延迟</th>
+				<th>Argo 改善 (ms)</th>
+				<th>延迟改善百分比</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>洛杉矶</td>
+				<td>亚特兰大</td>
+				<td>49.1</td>
+				<td>45</td>
+				<td>4.11</td>
+				<td>8.36</td>
+			</tr>
+			<tr>
+				<td>洛杉矶</td>
+				<td>Seattle</td>
+				<td>32.4</td>
+				<td>27.2</td>
+				<td>5.18</td>
+				<td>16</td>
+			</tr>
+			<tr>
+				<td>亚特兰大</td>
+				<td>洛杉矶</td>
+				<td>49</td>
+				<td>44.9</td>
+				<td>4.09</td>
+				<td>8.35</td>
+			</tr>
+			<tr>
+				<td>亚特兰大</td>
+				<td>Seattle</td>
+				<td>78.1</td>
+				<td>56.9</td>
+				<td>21.2</td>
+				<td>27.1</td>
+			</tr>
+			<tr>
+				<td>Seattle</td>
+				<td>洛杉矶</td>
+				<td>32.2</td>
+				<td>27</td>
+				<td>5.22</td>
+				<td>16.2</td>
+			</tr>
+			<tr>
+				<td>Seattle</td>
+				<td>亚特兰大</td>
+				<td>77.7</td>
+				<td>56.7</td>
+				<td>20.9</td>
+				<td>26.9</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<p>对于这个示例客户网络，Argo for Packets 改善了每个可能路径的延迟。正如您所看到的一样，这个特定网络的平均改进百分比远远高于全球平均百分比 10%。</p>
+	<p>让我们再举一个例子，某个客户在亚洲各地设有分支机构：韩国、菲律宾、新加坡、大阪和香港。对于连接这些地点的网络，Argo for Packets 可在韩国、大阪和菲律宾等通常最难导航的位置之间找到最佳路径，进而减少 17% 的延迟。多地点办公的客户可通过 Argo for Packets 获得巨大优势，因为这款产品能在互联网上优化各种复杂路径，使其与其他路径一样快。该产品可消除最差网络路径所产生的延迟，这不仅使您的平均数据看起来不错，而且还能使第 90 个百分位数的延迟数据看起来更好。</p>
+	<p>降低这些长尾延迟非常重要，特别是在客户回迁到更好的地方并开始返回世界各地的办公室时。</p>
+	<h3 id="-"><strong>下一站：您的办公室</strong></h3>
+	<p>Argo for Packets 可与 Magic WAN 和 Cloudflare for Offices 完美搭配，创建一个超优化、超安全的私有网络并适应您的任何要求。您可能第一次听说<a href="https://blog.cloudflare.com/zh-cn/cloudflare-for-offices-zh-cn/"> Cloudflare for Offices</a>，这是我们的一款新产品，可为世界各地成千上万的新地点提供私有、安全、高性能的连接。这种私有连接可为 Argo for Packets 提供一个很好的基础，进而加快您的网络速度。</p>
+	<p>在上述有关美国的示例中，如果这家公司在波士顿和达拉斯增加两个新地点，则这些地点也可通过 Argo for Packets 大幅降低延迟。现在，其网络如下图所示：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image2-32.png" class="kg-image"></figure>
+	<p>Argo for Packets 还可确保那些刚加入的新办公室能马上发现私有网络在性能上的大幅改进：</p>
+	<!--kg-card-begin: markdown-->
+	<table>
+		<thead>
+			<tr>
+				<th>源位置</th>
+				<th>目标位置</th>
+				<th>Argo 改善 (ms)</th>
+				<th>延迟改善百分比</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>洛杉矶</td>
+				<td>达拉斯</td>
+				<td>9.89</td>
+				<td>23.3</td>
+			</tr>
+			<tr>
+				<td>洛杉矶</td>
+				<td>亚特兰大</td>
+				<td>0.774</td>
+				<td>1.58</td>
+			</tr>
+			<tr>
+				<td>洛杉矶</td>
+				<td>西雅图</td>
+				<td>0.478</td>
+				<td>1.51</td>
+			</tr>
+			<tr>
+				<td>洛杉矶</td>
+				<td>波士顿</td>
+				<td>13.3</td>
+				<td>16.8</td>
+			</tr>
+			<tr>
+				<td>达拉斯</td>
+				<td>洛杉矶</td>
+				<td>9.66</td>
+				<td>23</td>
+			</tr>
+			<tr>
+				<td>达拉斯</td>
+				<td>亚特兰大</td>
+				<td>0</td>
+				<td>0</td>
+			</tr>
+			<tr>
+				<td>达拉斯</td>
+				<td>西雅图</td>
+				<td>2.96</td>
+				<td>5.2</td>
+			</tr>
+			<tr>
+				<td>达拉斯</td>
+				<td>波士顿</td>
+				<td>0.43</td>
+				<td>0.955</td>
+			</tr>
+			<tr>
+				<td>亚特兰大</td>
+				<td>洛杉矶</td>
+				<td>0.687</td>
+				<td>1.4</td>
+			</tr>
+			<tr>
+				<td>亚特兰大</td>
+				<td>达拉斯</td>
+				<td>0</td>
+				<td>0</td>
+			</tr>
+			<tr>
+				<td>亚特兰大</td>
+				<td>西雅图</td>
+				<td>9.7</td>
+				<td>12.4</td>
+			</tr>
+			<tr>
+				<td>亚特兰大</td>
+				<td>波士顿</td>
+				<td>4.39</td>
+				<td>15.2</td>
+			</tr>
+			<tr>
+				<td>西雅图</td>
+				<td>洛杉矶</td>
+				<td>0.322</td>
+				<td>1.02</td>
+			</tr>
+			<tr>
+				<td>西雅图</td>
+				<td>达拉斯</td>
+				<td>3.11</td>
+				<td>5.43</td>
+			</tr>
+			<tr>
+				<td>西雅图</td>
+				<td>亚特兰大</td>
+				<td>9.81</td>
+				<td>12.6</td>
+			</tr>
+			<tr>
+				<td>西雅图</td>
+				<td>波士顿</td>
+				<td>34.7</td>
+				<td>30.3</td>
+			</tr>
+			<tr>
+				<td>波士顿</td>
+				<td>洛杉矶</td>
+				<td>13.3</td>
+				<td>16.8</td>
+			</tr>
+			<tr>
+				<td>波士顿</td>
+				<td>达拉斯</td>
+				<td>0.386</td>
+				<td>0.85</td>
+			</tr>
+			<tr>
+				<td>波士顿</td>
+				<td>亚特兰大</td>
+				<td>4.37</td>
+				<td>15</td>
+			</tr>
+			<tr>
+				<td>波士顿</td>
+				<td>西雅图</td>
+				<td>33.7</td>
+				<td>29.6</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<p>Cloudflare for Offices 可简化办公室设置，客户无需携带外围防火墙、WAN 设备或其他任何设备。他们只需在其建筑中使用 Cloudflare，Cloudflare One 的强大功能使客户能够通过与 Cloudflare 的私有连接获得所有的网络安全服务，并由 Argo for Packets 进行优化。</p>
+	<h3 id="--1"><strong>网络不变，但速度变快</strong></h3>
+	<p>Argo for Packets 可对所有 Cloudflare One 解决方案进行完美补充：在 Cloudflare 基础上，通过您的网络使数据传输速度更快。现在，不管在安全方面还是性能方面，您的 SD-WAN 和 Magic Transit 解决方案都可得到优化。</p>
+	<p>如果您有兴趣使用 Argo for Packets 或为您的办公室使用一个私有和安全的连接解决方案，请与您的客户团队联系，以开始这一进程。<br></p>
+</div>

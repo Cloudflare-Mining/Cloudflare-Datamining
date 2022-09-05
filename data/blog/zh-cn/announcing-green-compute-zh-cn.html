@@ -1,0 +1,20 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/07/Green-Compute-1.png" class="kg-image"></figure>
+	<p>我们经常面临快速行动或负责任地行动的选择。无论主题是安全、安全性，还是在这种情况下的可持续性，我们都被要求权衡停止创新以保护我们自己、我们的用户或地球。但是，如果情况并非总是如此呢？在 Cloudflare，我们的目标是为您带来可持续的计算，而无需任何额外的时间、工作或复杂性。</p>
+	<p>进入 Cloudflare Workers 上的绿色计算。</p>
+	<p>可以为任何<a href="https://blog.cloudflare.com/introducing-cron-triggers-for-cloudflare-workers/">定时任务触发的 Workers</a> 启用绿色计算。概念很简单：开启后，我们将处理您的计算工作负载，并专门在位于由可再生能源供电的设施中的边缘网络部分运行。尽管 Cloudflare 的所有边缘网络都已经由可再生能源供电，但我们的一些数据中心位于并非 100% 由可再生能源供电的第三方设施中。绿色计算通过确保不仅我们的网络设备而且整个建筑设施都由可再生能源供电，使我们对可持续性的承诺更进一步。绝对不需要更改代码。现在，无论您是需要每五分钟更新一次排行榜还是直接在我们的边缘进行 DNA 测序（是的，这是一个真实的用例！），您都可以最大限度地减少任何计划工作的影响，无论多么复杂或多么耗能。</p>
+	<h3 id="-"><strong>工作方式</strong></h3>
+	<p>定时任务触发器允许开发人员为他们的 Workers 设置基于时间的调用。这些 Workers 定期发生，而不是由应用程序用户通过 HTTP 请求触发。开发人员通过 wrangler 或在 Workers 仪表板中以熟悉的定时任务语法指定作业计划。要设置计划作业，首先创建一个执行周期性任务的 Worker，然后导航到“触发器”选项卡以定义定时任务触发器。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/07/image2-1.gif" class="kg-image"></figure>
+	<p>由定时任务触发的 Workers 的伟大之处在于，另一边没有人实时等待响应。没有我们需要接近运行作业的最终用户。相反，这些 Workers 被安排作为（通常计算成本高的）后台作业运行，这使它们成为专门在可持续硬件上运行的不费吹灰之力的候选者，即使该硬件不是最接近您的用户群。</p>
+	<p>Cloudflare 庞大的全局网络在逻辑上是一个分布式系统，所有部分都相互连接、安全且可信。由于我们的网络作为单个系统运行，而不是具有逻辑隔离区域的系统，因此我们可以灵活地在世界各地无缝移动工作负载，同时牢记您的影响目标，而无需为您带来任何额外的管理复杂性。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/07/image1-27.png" class="kg-image"></figure>
+	<p>当您在启用绿色计算的情况下设置定时任务触发器时，Cloudflare 网络将自动将所有计划作业路由到绿色能源硬件，无需任何应用程序更改。要立即启用 Green Compute，<a href="https://www.cloudflare.com/green-compute-cloudflare-workers/" target="_blank">请注册我们的测试版。</a></p>
+	<h3 id="--1"><strong>实际使用</strong></h3>
+	<p>如果您从未有过自己编写定时任务作业的乐趣，您可能想知道 — 无论如何，您将计划计算用于什么？</p>
+	<p>为任何应用程序提供动力所需的定期维护任务范围很广。在我的工作生活中，我建立了一个计划作业，每分钟运行一次，以监控我负责的系统的可用性，如果有任何服务不可用，就会给我发短信。在另一个例子中，每五分钟运行一次作业，通过提取所有新的应用程序数据，转换它，然后插入到搜索数据库中来保持核心数据库和搜索功能同步。在另一个示例中，周期性作业每半小时运行一次，以迭代所有不再处于活动状态的用户会话和清理会话。</p>
+	<p>预定作业是现实世界系统的支柱。现在，有了 Cloudflare Workers 上的绿色计算，所有这些真实世界的系统及其计算成本高昂的后台维护任务，都可以利用专门在由可再生能源驱动的机器上运行计算的优势。</p>
+	<h3 id="--2"><strong>绿色网络</strong></h3>
+	<p>我们在 Cloudflare 的使命是帮助您实现可持续发展目标。今天，随着碳影响报告的发布，我们让您了解您对环境的影响。与 Green Web Foundation 的合作为 Cloudflare Pages 提供了绿色主机认证。我们在 Cloudflare Workers 上推出的 Green Compute 允许您专门在由可再生能源驱动的硬件上运行。最好的部分是？上述任何一项都不需要额外的系统复杂性。</p>
+	<p>Cloudflare 专注于让您轻松实现雄心勃勃的目标。我们才刚开始。</p>
+</div>

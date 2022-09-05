@@ -1,0 +1,148 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image2-1.png" class="kg-image"></figure>
+	<p>Heute präsentieren wir einen neuen Dienst: Automatic Platform Optimization (APO), eine Lösung, die mehr liefert als nur die statischen Inhalte Ihrer Website. APO unterstützt WordPress, die beliebteste Website-Hosting-Lösung, die 38&amp;nbsp;% aller Websites bereitstellt. Unsere Tests (die unten genauer beschrieben sind) zeigten eine Verkürzung der Time to First Byte (TTFB) um 72 %, eine Verkürzung bis zum <a href="https://web.dev/fcp/" target="_blank">First Contentful Paint</a> um 23 % und einen 13 % geringeren <a href="https://web.dev/speed-index/" target="_blank">Speed-Index</a> für Desktop-Nutzer auf dem 90. Perzentil, weil fast der gesamte Inhalt einer Website über das Cloudflare-Netzwerk bereitgestellt wird. Das bedeutet, dass die Besucher Ihrer Website nicht nur die ersten, sondern alle Inhalte schneller sehen.</p>
+	<p>Automatic Platform Optimization für WordPress behebt Geschwindigkeitsprobleme, die durch häufige Probleme wie Shared-Hosting-Überlastung, langsame Datenbank-Lookups oder falsch laufende Plugins verursacht werden. Unser Dienst ist nun für alle WordPress-Nutzer verfügbar.</p>
+	<h3 id="preise-f-r-automatic-platform-optimization">Preise für Automatic Platform Optimization</h3>
+	<p>Kunden, die unseren Free Plan nutzen, zahlen für APO für WordPress monatlich 5&amp;nbsp;$. Bei den Professional-, Business- und Enterprise-Tarifen ist APO bereits enthalten. Keine Nutzungsgebühren, keine Überraschungen, <em>einfach nur Geschwindigkeit</em>.</p>
+	<h4 id="erste-schritte">Erste Schritte</h4>
+	<p>Am einfachsten lässt sich APO von der WordPress-Verwaltungskonsole aus einrichten.</p>
+	<p>1. Installieren Sie zunächst das <a href="https://wordpress.org/plugins/cloudflare/" target="_blank">Cloudflare WordPress-Plugin</a> auf Ihrer WordPress-Website oder aktualisieren Sie es auf die neueste Version (3.8.2 oder höher).</p>
+	<p>2. Geben Sie dem Plugin die Berechtigung, mit Cloudflare Kontakt aufzunehmen (<a href="https://wordpress.org/plugins/cloudflare/#installation" target="_blank">Anleitung hier</a>), falls noch nicht geschehen.</p>
+	<p>3. Aktivieren Sie Automatic Platform Optimization auf dem Startbildschirm des Bereichs „Cloudflare“.</p>
+	<p>Kunden mit Free Plan werden zunächst zum Cloudflare-Dashboard geleitet, um den Dienst zu erwerben.</p>
+	<h3 id="warum-wir-apo-entwickelt-haben">Warum wir APO entwickelt haben</h3>
+	<p>Bei Cloudflare freuen wir uns jedes Mal, wenn wir schwierige Probleme unserer Kunden auf Knopfdruck verschwinden lassen können. Der Betrieb einer konstant schnellen Website ist ein solches schwieriges Problem. Viele Unternehmen haben weder die Zeit noch das Geld dafür, komplizierte und teure Performance-Lösungen für die eigene Website zu entwickeln. Und wenn sie es doch tun, müssen sie tief in die Tasche greifen, um mit aufwendigen Maßnahmen die bestmögliche Performance zu erzielen. Aber es muss gar nicht so kompliziert sein, eine schnelle Website zu haben. Je näher Ihre Inhalte dem Kunden sind, desto besser funktioniert Ihre Website. Statisches Caching von Inhalten erledigt diese Aufgabe für Dateien wie Bilder, CSS und JavaScript, aber das ist nur die halbe Miete. Dynamische Inhalte werden nach wie vor vom Ursprungsserver geholt, was aufwendige Roundtrips und zusätzliche Verarbeitungszeit erfordert. (Weitere Informationen über dynamische und statische Inhalte finden Sie in unserem <a href="https://www.cloudflare.com/learning/cdn/caching-static-and-dynamic-content/" target="_blank">Infocenter</a>.)</p>
+	<p>WordPress ist eine der offensten Plattformen der Welt. Aber das heißt auch, dass viele notwendige Plugins und andere Quellen die Performance Ihrer Website beeinträchtigen können. Diese Fehlerquellen lassen sich oft nur schwer lokalisieren und beheben. Wenn Sie sich für den Dienst der Automatic Platform Optimization entscheiden, nehmen wir Ihre Website in unser Netzwerk auf. Dieses Netzwerk erreicht 99 % der mit dem Internet verbundenen Bevölkerung in der entwickelten Welt innerhalb von 10 Millisekunden, und dafür müssen Sie nicht einmal Ihren Hosting-Provider wechseln. Das bedeutet, dass Ihre Kunden für die meisten Anfragen nicht einmal zu Ihrem Ursprungsserver gehen müssen, was kostspielige Round-Trips und Server-Verarbeitungszeit einspart. Diese Optimierungen laufen außerdem in unserem Edge-Netzwerk. Also wirken sie sich weder auf Darstellung noch auf Interaktivität aus, da auf dem Client kein zusätzliches JavaScript ausgeführt wird.</p>
+	<h3 id="wie-wir-web-performance-messen">Wie wir Web-Performance messen</h3>
+	<p>Die Performance einer Website zu bewerten, ist nicht einfach. Sie können viele verschiedene Kennzahlen aufzeichnen und es ist nicht immer offensichtlich, welche dieser Kennzahlen die Nutzererfahrung am aussagekräftigsten darstellen. Wie wir schon in unserem <a href="https://blog.cloudflare.com/new-speed-page/">Blogbeitrag</a> über unsere neue <a href="https://dash.cloudflare.com/?to=/:account/:zone/speed" target="_blank">Speed-Seite</a> besprochen haben, möchten wir diesen Bewertungsprozess für unsere Kunden vereinfachen. Dafür bieten wir über die Infrastruktur von webpagetest.org automatisierte Tests an und fassen die Ergebnisse grafisch und zahlenmäßig zentral zusammen.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image4-2.png" class="kg-image" alt="Tests your website's performance and provides visual and numerical metrics along with recommended optimizations" title="Cloudflare Dashboard Speed Overview"></figure>
+	<p>Diese Visualisierung verschafft Ihnen eine klare Vorstellung davon, was Kunden auf Ihrer Website vorfinden werden. Die <em>Kritischen Ladezeiten</em> liefern die wichtigsten Kennzahlen zur Beurteilung Ihrer Performance. Neben der bloßen Darstellung der Performance Ihrer Website zeigen wir Ihnen auch, wie Sie die Performance noch weiter steigern können. Wenn Sie mit WordPress arbeiten, testen wir Ihre Website mit der Automatic Platform Optimization, um abzuschätzen, welche Vorteile der Dienst Ihnen bringen wird.</p>
+	<h3 id="die-vorteile-der-automatic-platform-optimization">Die Vorteile der Automatic Platform Optimization</h3>
+	<p>Wir haben APO auf über 500 (auf WordPress laufenden) Websites von Cloudflare-Kunden getestet, um festzustellen, welche Performanceverbesserungen erzielt werden können. Die Ergebnisse sprechen für sich:</p>
+	<p><strong>Testergebnisse</strong></p>
+	<!--kg-card-begin: markdown-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-aa1j {
+			background-color: #c0c0c0;
+			border-color: inherit;
+			font-size: 18px;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: middle
+		}
+
+		.tg .tg-r5qm {
+			border-color: inherit;
+			font-size: 18px;
+			text-align: left;
+			vertical-align: middle
+		}
+	</style>
+	<table class="tg">
+		<thead>
+			<tr>
+				<th class="tg-aa1j">Kennzahl</th>
+				<th class="tg-aa1j">Perzentile</th>
+				<th class="tg-aa1j">Cloudflare-Basiswert</th>
+				<th class="tg-aa1j">APO aktiviert</th>
+				<th class="tg-aa1j">Verbesserung (%)</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-r5qm" rowspan="2"><span style="font-weight:400;font-style:normal;text-decoration:none">Time to First Byte (TTFB)</span></td>
+				<td class="tg-r5qm">90th</td>
+				<td class="tg-r5qm">1252 ms</td>
+				<td class="tg-r5qm">351 ms</td>
+				<td class="tg-r5qm">71.96%</td>
+			</tr>
+			<tr>
+				<td class="tg-r5qm">10th</td>
+				<td class="tg-r5qm">254 ms</td>
+				<td class="tg-r5qm">261 ms</td>
+				<td class="tg-r5qm">-2.76%</td>
+			</tr>
+			<tr>
+				<td class="tg-r5qm" rowspan="2"><a href="https://web.dev/fcp/" target="_blank" rel="noopener noreferrer"><span style="font-weight:400;font-style:normal;text-decoration:underline">First Contentful Paint</span></a><br><a href="https://web.dev/fcp/" target="_blank" rel="noopener noreferrer"><span style="font-weight:400;font-style:normal;text-decoration:underline"> </span></a><span style="font-weight:400;font-style:normal;text-decoration:none">(FCP)</span></td>
+				<td class="tg-r5qm"><span style="font-weight:400;font-style:normal">90th</span></td>
+				<td class="tg-r5qm">2655 ms</td>
+				<td class="tg-r5qm">2056 ms</td>
+				<td class="tg-r5qm">22.55%</td>
+			</tr>
+			<tr>
+				<td class="tg-r5qm"><span style="font-weight:400;font-style:normal">10th</span></td>
+				<td class="tg-r5qm">894 ms</td>
+				<td class="tg-r5qm">783 ms</td>
+				<td class="tg-r5qm">12.46%</td>
+			</tr>
+			<tr>
+				<td class="tg-r5qm" rowspan="2"><a href="https://web.dev/speed-index/" target="_blank" rel="noopener noreferrer"><span style="font-weight:400;font-style:normal;text-decoration:underline">Speed Index</span></a><br><a href="https://web.dev/speed-index/" target="_blank" rel="noopener noreferrer"><span style="font-weight:400;font-style:normal;text-decoration:underline"> </span></a><span style="font-weight:400;font-style:normal;text-decoration:none">(SI)</span></td>
+				<td class="tg-r5qm"><span style="font-weight:400;font-style:normal">90th</span></td>
+				<td class="tg-r5qm">6428</td>
+				<td class="tg-r5qm">5586</td>
+				<td class="tg-r5qm">13.11%</td>
+			</tr>
+			<tr>
+				<td class="tg-r5qm"><span style="font-weight:400;font-style:normal">10th</span></td>
+				<td class="tg-r5qm">1301</td>
+				<td class="tg-r5qm">1242</td>
+				<td class="tg-r5qm">4.52%</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<p><em>Hinweis: Die Ergebnisse basieren auf den Testergebnissen von 505 zufällig ausgewählten Websites, die im Cache von Cloudflare zwischengespeichert wurden. Die Tests wurden von South Carolina (USA) aus mit WebPageTest und der folgenden Umgebung durchgeführt: Chrome, Festnetzgeschwindigkeit.</em></p>
+	<p>Das Wichtigste ist: Mit APO wird die TTFB einer Website kürzer und vor allem konstant. Besucher sehen das erste Byte konstant schnell, weil wir HTML vom Cloudflare-Edge liefern. Am Ursprungsserver fällt keine Verarbeitungszeit an. Unter starker Last kann es bei einem WordPress-Ursprungsserver zu Verzögerungen bei Aufbau und Rückgabe von HTML an die Besucher kommen. APO beseitigt diese durch Last entstehende Varianz, was dazu führt, dass die TTFB konstant bei &lt;400&amp;nbsp;ms liegt.</p>
+	<p>Außerdem beobachten wir bei kürzerer TTFB und zusätzlichem Caching von Drittanbieter-Schriftarten Performanceverbesserungen bei FCP und SI – sowohl für die schnellsten als auch für die langsamsten getesteten Websites. Einige dieser Verbesserungen resultieren aus der Reduzierung der TTFB, da jede Millisekunde gesparte TTFB auch andere Kennzahlen potenziell um Millisekunden verbessert. Durch Caching zusätzlicher Schriftarten von Drittanbietern sparen wir Zeit beim Abrufen dieser Inhalte. Bestimmte Schriftarten führen bei der Textwiedergabe oft dazu, dass Paints blockiert werden, also verbessert das Caching die Geschwindigkeit der Seitendarstellung und den Speed-Index.</p>
+	<p>Wir haben den WordPress-Experten <a href="https://kinsta.com/" target="_blank">Kinsta</a> gebeten, APO auszuprobieren und für uns einzuschätzen. <a href="https://brianli.com/" target="_blank">Brian Li</a>, Website-Content-Manager bei Kinsta, hat auf einer in Tokio gehosteten Website eine Reihe von Tests aus aller Welt durchgeführt. Am besten lassen wir ihn selbst erklären, was Kinsta gemacht hat und mit welchen Ergebnissen:</p>
+	<blockquote>Bei Kinsta liegt uns <a href="https://kinsta.com/blog/fastest-wordpress-hosting/" target="_blank">WordPress-Performance</a> ganz besonders am Herzen. Als Cloudflare uns vorschlug, seinen neuen APO-Dienst (Automatic Platform Optimization) für WordPress zu testen, waren wir also ganz Ohr.<br><br>So haben wir den Dienst getestet:<br><br>1) Wir haben eine Testseite in Tokio eingerichtet&amp;nbsp;– einem der 24 leistungsstarken <a href="https://kinsta.com/knowledgebase/google-cloud-data-center-locations/" target="_blank">Rechenzentrumstandorte</a>, die für Kinsta-Kunden verfügbar sind.<br><br>2) Wir haben von sechs verschiedenen Orten auf der ganzen Welt mit und ohne Cloudflares APO mehrere Geschwindigkeitstests durchgeführt.<br><br>Die Ergebnisse waren unglaublich!<br><br>Durch Caching des <a href="https://kinsta.com/blog/wordpress-vs-static-html/" target="_blank">statischen HTML</a> im Edge-Netzwerk von Cloudflare konnten wir eine Performancesteigerung von 70–300&amp;nbsp;% verzeichnen. Wie erwartet, verzeichneten die am weitesten von Tokio entfernten Teststandorte die größte Verkürzung der <a href="https://kinsta.com/blog/ttfb/" target="_blank">Ladezeit</a>.<br><br>Wenn Sie für Ihre WordPress-Website ein traditionelles <a href="https://kinsta.com/blog/wordpress-cdn/#how-cdn-works" target="_blank">CDN</a> verwenden, das nur CSS, JS und Bilder cacht, ist ein Upgrade auf das WordPress-APO von Cloudflare ein Kinderspiel und hilft Ihnen, mit modernen Jamstack- und statischen Websites mitzuhalten, die sich standardmäßig am Netzwerkrand befinden.</blockquote>
+	<p>Brians Testergebnisse, in einem Bild zusammengefasst:</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/10/image1-7.png" class="kg-image">
+		<figcaption>Seitenladegeschwindigkeiten für das Laden einer in Tokio gehosteten Website von 6 Standorten weltweit – Vergleich von Kinsta, Kinsta mit KeyCDN und Kinsta mit Cloudflare APO.</figcaption>
+	</figure>
+	<p>Einer der eindeutigen Vorteile, der aus den APO-Tests bei Kinsta hervorging, ist die gleichbleibende Performance bei der Bereitstellung Ihrer Website, unabhängig davon, wo auf der Welt sich Ihre Besucher befinden. Mit APO lag die Ladezeit durchgehend unter einer Sekunde (im Vergleich zu Ladezeiten von zwei oder drei Sekunden in anderen Setups). APO bietet also bei einem globalen Kundenstamm eine verbesserte Nutzererfahrung für alle Besucher.</p>
+	<h3 id="so-funktioniert-automatic-platform-optimization">So funktioniert Automatic Platform Optimization</h3>
+	<p>Automatic Platform Optimization nutzt die Leistungsstärke von Cloudflare Workers zum intelligenten Caching dynamischer Inhalte. Dadurch können wir die gesamte Website von unserem Edge-Netzwerk aus bereitstellen. Stellen Sie sich das wie eine statische Website vor, aber ohne den Aufwand, der mit Aufbau und Pflege einer statischen Seite einhergeht. Kunden können die Inhalte ihrer Website weiterhin auf die gleiche Weise verwalten und aktualisieren – während wir uns um die Performance kümmern. Die Bereitstellung sowohl statischer als auch dynamischer Inhalte aus unserem Netzwerk führt im Allgemeinen dazu, dass keine Anfragen an den Ursprungsserver erfolgen und damit keine Bearbeitungszeit am Ursprung anfällt. Die gesamte Kommunikation findet also zwischen dem Gerät des Nutzers und unserem Edge statt. Unser Dienst ist so effektiv, weil er die Roundtrips von unserem Edge zum Ursprung reduziert, die für die Bereitstellung dynamischer Inhalte typischerweise erforderlich sind. Sehen wir uns zunächst einmal an, wie eine WordPress-Seite für einen Besucher normalerweise geladen wird.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/10/image3-3.png" class="kg-image" alt="Ein Ablaufdiagramm für einen typischen Nutzer, der eine Website besucht‌‌">
+		<figcaption>A sequence diagram for a typical user visiting a site<span class="-mobiledoc-kit__atom">‌‌</span></figcaption>
+	</figure>
+	<p>In einer normalen Anfrageabfolge kann Cloudflare einen Teil des Inhalts (wie Bilder, CSS oder JS) cachen, während andere Anfragen entweder an den Ursprung oder an einen Drittanbieterdienst gehen. Die erste Anfrage zum Abrufen des HTML für die Website muss an den Ursprung gesendet werden, eine typische Ursache für lange TTFB, da keine anderen Anfragen gestellt werden können, bis der Client das HTML erhält und auswertet, um nachfolgende Anfragen zu stellen.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/10/image2-2.png" class="kg-image">
+		<figcaption>Ein Besuch auf derselben Seite, aber mit aktiviertem APO.</figcaption>
+	</figure>
+	<p>Sobald APO aktiviert ist, entfallen alle Trips zum Ursprung. Das wirkt sich sehr positiv auf die TTFB aus, weil der erste Hop im Netzwerk von Cloudflare beginnt und dort endet. Dies bedeutet auch, dass der Browser früher mit dem Abrufen und Painting der Webseite beginnt, was wiederum heißt, dass jedes Paint-Event früher eintritt. Außerdem vermeiden wir zusätzliche Anfragen, indem wir Schriften von Drittanbietern cachen. Diese Anfragen müssten sonst das Netzwerk von Cloudflare verlassen, und der Text würde den Nutzern langsamer angezeigt werden. Häufig verwenden Websites Schriften, die auf Domains von Drittanbietern gehostet werden. Dadurch werden zwar Bandbreitenkosten eingespart, die sonst beim Hosting am Ursprungsort anfallen würden. Doch je nachdem, wo sie gehostet werden, kann das Abrufen dieser Schriften aufwendig werden. Indem wir die Schriften rehosten und aus unserem Cache bereitstellen, sparen wir einen der verbleibenden kostspieligen Roundtrips.</p>
+	<p>Mit APO für WordPress können Sie sich von Datenbankengpässen oder unhandlichen Plugins verabschieden, die eine Website für Kunden langsamer machen. Diese Vorteile erhalten Sie zusätzlich zu unseren bereits schnellen TLS-Verbindungen und branchenweit führendem Protokoll-Support wie HTTP/2. Wir nutzen also die effizienteste und schnellste Methode zur Verbindung und Bereitstellung Ihrer Website.</p>
+	<p>Kunden, die WordPress-Websites mit authentifizierten Sitzungen betreiben, müssen sich keine Sorgen machen, dass wir die Inhalte von authentifizierten Nutzern cachen und für andere bereitstellen. Bei authentifizierten Nutzern umgehen wir den Cache für Standard-WordPress- und WooCommerce-Cookies. Dadurch sind Inhalte, die auf einen bestimmten Nutzer angepasst wurden, auf jeden Fall nur für diesen Nutzer sichtbar. Dieses Feature war bisher für unsere Kunden des Business-Level-Diensts verfügbar und ist jetzt für alle WordPress-Kunden zugänglich, die APO aktivieren.</p>
+	<p>Sie fragen sich vielleicht: „Schön und gut, aber was ist, wenn ich den Inhalt meiner Website verändere?“ Da APO mit unserem <a href="https://www.cloudflare.com/integrations/wordpress/" target="_blank">WordPress-Plugin</a> zusammenarbeitet, können wir Änderungen auf der Website erkennen. Die Inhalte werden dann schnell in unserem Edge gelöscht und mit den neuen Inhalten aktualisiert. Wenn das Plugin installiert ist, erkennen wir Inhaltsänderungen und aktualisieren unser weltweites Edge-Netzwerk mit automatischer Cache-Löschung (Purge). Als Teil der APO-Einführung haben wir auch unser WordPress-Plugin aktualisiert. Unabhängig davon, ob Sie APO verwenden oder nicht, sollten Sie noch heute die neueste Version des Plugins einspielen. Wenn Sie unser WordPress-Plugin nicht verwenden wollen oder können, bietet APO weiterhin die gleichen Performance-Vorteile; es kann aber passieren, dass veraltete Inhalte bis zu 30 Minuten lang auch bei erneuter Anfrage bereitgestellt werden.</p>
+	<p>Dieser Dienst baut auf dem Prototyp auf, von dem wir ursprünglich <a href="https://blog.cloudflare.com/improving-html-time-to-first-byte/">in diesem</a> und <a href="https://blog.cloudflare.com/fast-google-fonts-with-cloudflare-workers/">diesem</a> Blogeintrag berichtet haben. Mehr Informationen zur technischen Seite des Dienstes und über Cloudflare Workers als Grundlage für Automatic Platform Optimization finden Sie im <a href="https://blog.cloudflare.com/building-automatic-platform-optimization-for-wordpress-using-cloudflare-workers/">begleitenden Blogbeitrag</a>.</p>
+	<h3 id="heute-wordpress-bald-weitere-plattformen">Heute WordPress, bald weitere Plattformen</h3>
+	<p>Obwohl sich die heutige Produkteinführung auf die Unterstützung von WordPress konzentriert, ist WordPress erst der Anfang. Wir planen, diese Funktionen auch auf andere beliebte Webhosting-Plattformen auszuweiten. Wenn Sie eine Plattform betreiben und an einer Zusammenarbeit interessiert sind, um das Nutzererlebnis für alle Kunden zu verbessern, <a href="https://www.cloudflare.com/partners/" target="_blank">nehmen Sie gerne Kontakt zu uns auf</a>. Wenn Sie eine Website betreiben, teilen Sie uns bitte mit, welche Plattform Sie sich als nächste für APO wünschen.</p>
+</div>

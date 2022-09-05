@@ -1,0 +1,82 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image5-4.png" class="kg-image" alt="Announcing the Cloudflare API Gateway"></figure>
+	<p>この10年間で、インターネットは地殻変動を経験しました。かつては、テキストと画像、そして時折埋め込まれるムービーといった静的なWebサイトで構成されていました。しかし、インターネットは非常に大きな発展を遂げました。私たちは、生活のほぼすべての場面で、API駆動型のアプリケーションに依存しています。単にファイルをダウンロードするだけでなく、リッチデータを交換するアプリケーションを<em>楽しむ</em>ことができるのです。ワークアウトを記録して、その結果をクラウドに送信しています。スマートロックやあらゆる種類のIoTデバイスを使用しています。そして、友人との交流もオンラインで行っています。</p>
+	<p>このことは素晴らしいことではありますが、バックエンドに爆発的な複雑さを生じさせます。それはなぜか？開発者は、この機能をサポートするために、APIを管理する必要があります。彼らは、すべてのリクエストを監視し、認証する必要があります。そして、これらのタスクは非常に難易度が高いため、通常はAPIゲートウェイプロバイダーにアウトソーシングされます。</p>
+	<p>残念ながら、今日のゲートウェイには物足りない点が多々あります。まず、それらは安価ではありません。それから、パフォーマンスへの影響があります。最後に、<a href="https://blog.cloudflare.com/landscape-of-api-traffic/">トラフィックの50％以上</a>がAPIに達し、（それから、おそらくサードパーティのゲートウェイを通して送られる）ので、データとプライバシーのリスクがあります。なんということなのでしょう。</p>
+	<p>本日は、CloudflareAPIゲートウェイを発表します。<strong>既存のゲートウェイをわずかな費用で完全に置き換えることができます。</strong>また、当社のソリューションでは、<a href="https://workers.cloudflare.com/" target="_blank">Workers</a>、<a href="https://www.cloudflare.com/products/bot-management/" target="_blank">ボット管理</a>、<a href="https://www.cloudflare.com/products/zero-trust/access/" target="_blank">Access</a>、および<a href="https://developers.cloudflare.com/rules/transform/" target="_blank">変換ルール</a>の背後にあるテクノロジーを使用した、市場で最も高度なAPIツールセットを提供します。</p>
+	<h2 id="api-gateway-">API Gatewayとは？</h2>
+	<p>簡単に言うと、これはAPIのためのあらゆることを実現する機能のパッケージです。私たちはそれを3つのカテゴリーに分類しています。</p>
+	<p><strong>セキュリティ</strong><br>これらの製品は、すでにブログで紹介しております。<a href="https://developers.cloudflare.com/api-shield/products/api-discovery/" target="_blank"> Discovery</a>、<a href="https://developers.cloudflare.com/api-shield/products/schema-validation/" target="_blank">Schema Validation</a>、<a href="https://developers.cloudflare.com/api-shield/products/volumetric-abuse-detection/" target="_blank"> Abuse Detection</a>などのツールです。当社ではセキュリティの専門知識をAPIの世界に適用することに多くの時間を費やしてきました。</p>
+	<p><strong>管理と監視</strong><br>これらは、APIの秩序を保つための基礎となるツールです。例としては、分析、ルーティング、認証などがあります。これらのことは既存の製品である<a href="https://www.cloudflare.com/products/zero-trust/access/" target="_blank">Cloudflare Access</a>などを使用することで可能でありますが、さらに多くの機能を提供することを予定しています。</p>
+	<p><strong>その他全般</strong><br>これらは、すべてを稼働させるための小さな（しかし重要な）アイテムです。Cloudflareはすでにデフォルトで実行できるSSL/TLSターミネーション、負荷分散、プロキシサービスを提供しています。</p>
+	<p>本日のブログの投稿では、各機能について詳しく説明します。 <em>すべての</em>セキュリティ機能が一般に向けて利用可能になりましたので、まずは、それらについて説明します。</p>
+	<h2 id="-">発見</h2>
+	<p>当社のお客様は、自社のAPIを保護することに意慾的です。残念ながら、これらのエンドポイントが常に文書化されているわけではなく、さらに悪いことにすべてが文書化されていると思っていても、知らないうちにエンドポイントが失われていたり、変更されている場合があります。これらの知られざるエンドポイントは<a href="https://www.bearer.com/resources/shadow-apis-detect-business-risk" target="_blank">シャドーAPI</a>と呼ばれることがあります。私たちは、APIの表面積を網羅的に（そして正確に）把握することから始める必要があります。</p>
+	<p>そこで登場するのが「Discovery」です。Cloudflareダッシュボードに向かい、[<strong>セキュリティ</strong>]タブを選択し、次に「API Shield」を選択します。この機能を有効にし、APIトラフィックをどのように識別したいかを指示してください。ほとんどのユーザーはヘッダーを挙げますが（現在利用可能）、リクエストボディやCookieに利用することもできます（近日利用可能）。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/03/image7.jpg" class="kg-image" alt="The Cloudflare API Shield tab, showing various endpoints that have been discovered and a set of recommended rate limiting thresholds.">
+		<figcaption>Cloudflare API Shieldタブ。検出された様々なエンドポイントと、推奨されるレート制限の閾値のセットが表示されます。</figcaption>
+	</figure>
+	<p>当社ではお客様のAPIエンドポイントの網羅的なリストを提供します。Cloudflareはそれぞれのメソッド、パス、追加のメタデータをリストし、お客様の表面積の理解を助けます。また、変数を含むエンドポイント（例：<em>/account/<strong>217</strong></em>）も、一般的に適用できるように変数化します（例：<em>/account/<strong>{var1}</strong></em>）。</p>
+	<p>Discoveryはエントロピーの強力な対策です。当社のお客様は、多くの場合30個程度のエンドポイントの発見を期待されていますが、<em>100</em>以上ものアクティブなエンドポイントがあることを知りると、驚かれます。</p>
+	<h2 id="--1">スキーマの検証</h2>
+	<p>おそらく、APIエンドポイント用のスキーマをすでにお持ちの場合もあるでしょう。スキーマはテンプレートのようなもので、パスやメソッド、その他APIリクエストに含まれている追加データを提供します。多くの開発者は<a href="https://swagger.io/specification/" target="_blank">OpenAPI標準</a>に従ってスキーマを生成（および維持）しています。</p>
+	<p>セキュリティを強化するために、受信トラフィックをこのスキーマに照らして<em>検証</em>することができます。これは、基本的な攻撃を阻止するための優れた方法です。Cloudflareは、ドレスコードを無視した出来の悪いトラフィックを破棄し、不相応なリクエストを追い払います。スキーマをダッシュボードにアップロードし、実行するアクションを選択し、デプロイするだけで良いのです：<br></p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/03/image9.jpg" class="kg-image" alt="A step in the schema upload process, after a schema has already been provided. Cloudflare lists out each endpoint with path, query, header, cookies, and body provided as metadata.">
+		<figcaption>スキーマがすでに提供された後の、スキーマのアップロードプロセスのステップです。Cloudflareは、メタデータとして提供されたパス、クエリ、ヘッダー、クッキー、ボディを持つ各エンドポイントをリストします</figcaption>
+	</figure>
+	<p>Schema Validationは、すでに世界最大級の暗号サイト、配送サービス、決済プラットフォームのトラフィックを検証しています。現在利用可能であり、近日中にボディ検証機能の追加を予定しています。</p>
+	<h2 id="--2">不正使用の検出</h2>
+	<p>堅牢なセキュリティアプローチでは「Schema Validation」<em>と</em>「Discovery」を併用し、トラフィックが期待される形式に一致していることを確認します。しかし、悪意のあるトラフィックの場合はどうでしょうか？</p>
+	<p>Cloudflareが新しいAPIエンドポイントを発見すると、実際にそれぞれに対する<em>レート制限を提案</em>します。これがAbuse Detectionの役割であり、より洗練されたセキュリティへの第一歩になります。</p>
+	<p>天気予報の更新情報を返すAPIエンドポイントを考えてみましょう。具体的には、このエンドポイントは今後1時間以内に雪が降りそうなら「yes」、そうでないなら「no」を返します。当社のアルゴリズムでは、平均的なユーザーが10分に1回このデータを要求していることを検出します。しかし、小規模のスクレイパーグループは、10分に37回このリクエストを行っています。Cloudflareは自動的にその中間の閾値を推奨し、通常のユーザーにある程度の余裕を持たせるように重み付けをします。これにより、悪質なスクレイピングサービスが頻繁に天気予報を取得することを防ぐことができます。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image3-18.png" class="kg-image"></figure>
+	<p><br>新しい<a href="https://blog.cloudflare.com/advanced-rate-limiting/">Advanced Rate Limiting</a>エンジンを使用したルールを作成できるオプションを提供しています。クッキーやヘッダーなどを使用して、閾値を調整することができます。私たちは<a href="https://api.cloudflare.com/" target="_blank">api.cloudflare.com</a>を保護するために、数ヶ月間Abuse Detectionを使用してきました。</p>
+	<p>この機能で満足している点は、私たちが<a href="https://www.cloudflare.com/products/bot-management/" target="_blank">Bot Management</a>で使用している機械学習アプローチに従っている点です。このように、当社の製品は互いに影響し合いながら（そして恩恵を受けながら）利用することができるのです。</p>
+	<p>Abuse Detectionの利用が可能になりました。当社が異常なリクエストフローにフラグを立てるために使用している<em>Sequential</em> Abuse Detectionに興味をお持ちの方は、当社の<a href="https://blog.cloudflare.com/api-abuse-detection/">以前のブログ記事</a>をご覧ください。シーケンシャルな部分は早期アクセス版であり、正式リリースに向けて調整を続けています。</p>
+	<h2 id="mtls">mTLS</h2>
+	<p>Mutual TLS（TLS相互認証）は、セキュリティを新たなレベルに引き上げます。APIに到達する際に証明書を使用して受信トラフィックを検証することができ、特にモバイル機器やIoT機器に使用できます。さらに、これはほとんどのデバイスのエコシステムに採用できる（そして採用すべき）、優れたポジティブセキュリティモデルです。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image1-48.png" class="kg-image"></figure>
+	<p>例として、天気予報のAPIに話を戻しましょう。おそらくこのサービスには、温度計から現在の気温を<em>受け取る</em>第2のエンドポイントが含まれています。しかし、これには誰でも偽のリクエストをすることができること、エンドポイントに不正確な測定値を提供することができるなどの問題点があります。これを防ぐために、mTLSを使用してクライアント証明書を<em>正当な</em>温度計にインストールし、その証明書をCloudflareに検証させます。それ以外のリクエストは無視されます。問題の解決です！</p>
+	<p>すでにCloudflareのお客様には、無料で証明書一式を提供しています。それは今後も継続されます。しかし本日より、API Gatewayのお客様は、<em>無制限</em>の証明書をデフォルトで使用することができます。</p>
+	<h2 id="--3">認証</h2>
+	<p>最近のAPIの多くは、認証を必要とします。実際、認証行為によってログインによるセッション、個人データの交換、インフラの効率化などのあらゆる種類の機能をユーザーに解放します。もちろん、Cloudflareで認証されたトラフィックは私たちのネットワークを通過する際に保護されます。</p>
+	<p>しかしAPI Gatewayでは、Cloudflareはトラフィックの認証においてより積極的な役割を果たし、以下の<strong>発行</strong>と<strong>検証</strong>を可能にします：</p>
+	<ul>
+		<li>APIキー</li>
+		<li>JSONウェブトークン（JWT）</li>
+		<li>OAuth 2.0トークン</li>
+	</ul>
+	<p>アクセス制御リストを使用することで、さまざまな権限を持つユーザーグループを管理することができます。現在のプロバイダでは、膨大な遅延と不要なデータ交換を発生させているため、これは重要です。リクエストがCloudflareのエコシステムの<em>外部</em>に出る必要がある場合、必要以上に遠くまで移動していることになります。<br></p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/03/image2-39.png" class="kg-image" alt="Additional latency incurred by sending requests out of the Cloudflare network for authentication.">
+		<figcaption>認証のためにCloudflareネットワークからリクエストを送信することで発生する余分な遅延。</figcaption>
+	</figure>
+	<p><br>Cloudflareは、グローバルネットワーク上で認証を行うことで、短時間でのリクエスト処理を実現します。この種の技術の実装は難しいのですが、無視できないほど重要な技術だと感じています。これほど早期に構築できた方法とは？<a href="https://www.cloudflare.com/products/zero-trust/access/" target="_blank">Cloudflare Access</a>。私たちは、IDプロバイダーと協働してきた経験を、再度APIの世界に移植しました。当社のゲートウェイには、無制限の認証とトークン交換が含まれています。これらの機能は近日中の公開を予定しています。</p>
+	<h2 id="--4">ルーティングと管理</h2>
+	<p><a href="https://www.cloudflare.com/learning/serverless/glossary/serverless-microservice/" target="_blank">マイクロサービス</a>について簡単に説明しましょう。最近のアプリケーションは巨大なため、開発者はそれを「マイクロサービス」と呼ばれる小さな塊に分割しています。</p>
+	<p>ホテルの予約を支援するアプリケーションを考えてみましょう。このアプリケーションでは、利用可能な日付を取得するためのマイクロサービス、価格を取得するための別のマイクロサービス、さらに部屋の種類を取得するための別のマイクロサービスを使用することができます。おそらく、それぞれのマイクロサービスの管理は別々のチームで行っていますが、それらはすべて単一の公開エントリーポイントから使えるようにする必要があります。<br></p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/03/image8.png" class="kg-image" alt="Various steps in an architecture that relies on microservices. A visitor makes a request to a hotel API, which is then routed towards available dates, prices, or room types.">
+		<figcaption>マイクロサービスに依存したアーキテクチャの様々なステップ。訪問者はホテルのAPIにリクエストを行い、利用可能な日付、価格、部屋タイプに向かってルーティングされる。</figcaption>
+	</figure>
+	<p>従来はAPIゲートウェイによって管理されていたこの単一のエントリポイントは、各リクエストを適切なマイクロサービスへと<em>ルーティング</em>する役割を担います。当社のお客様の多くは、これを行うために何年もスタンドアローンサービスにお金を払ってきました。しかし、もうその必要はありません。当社の製品である<a href="https://blog.cloudflare.com/introducing-transform-rules-with-url-rewriting-at-the-edge/">「Transform Rules」</a>をベースに、エッジで動的に再書き込みと、再ルーティングを行うようにしたのです。設定も簡単で、導入も早く、API Gatewayにネイティブに組み込まれています。Cloudflareは、お客様のAPIの単一のエントリポイントになることができます。</p>
+	<p>このことは氷山の一角に過ぎません。API Gatewayは当社の製品「<a href="https://workers.cloudflare.com/" target="_blank">Workers</a>」との統合により、実際にマイクロサービスを<em>置き換える</em>ことができます。その方法とは？何らかのアクション、例えば、当社のネットワーク上の<a href="https://blog.cloudflare.com/durable-objects-ga/">Durable Objects</a>に保存されているホテルの価格を返すようなWorkerを書くことを考えてみましょう。API Gatewayでは、リクエストは当社のネットワークに届くとTransform Rulesで適切なマイクロサービスにルーティングされ、Workerで完全な処理が行われます（まだ当社のネットワーク上にあります！）。これらのWorkerは、必要に応じてお客様のオリジンに追加情報を問い合わせることがあります。</p>
+	<p>マイクロサービスに依存したアーキテクチャの様々なステップ。訪問者はホテルのAPIにリクエストを行い、利用可能な日付、価格、部屋タイプに向かってルーティングされる。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/03/image4-3.png" class="kg-image" alt="Cloudflare’s simplified API architecture. With authentication, routing, management, and storage handled at the edge, several hops are eliminated.">
+		<figcaption>Cloudflareの簡素化されたAPIアーキテクチャ。認証、ルーティング、管理、ストレージがエッジで処理されるため、いくつかのホップが不要になります。</figcaption>
+	</figure>
+	<p>Workersは、マイクロサービスの代替品よりも高速で安価、かつシンプルです。この統合は近日中の公開を予定しています。</p>
+	<h2 id="api-">API分析</h2>
+	<p>時にはAPIのトラフィックを<em>確認すること</em>の重要性は行動に勝るというお客様からの声もあります。実際、この傾向はAPIに限ったことではありません。本日私たちは<a href="https://blog.cloudflare.com/envoy-media-machine-learning-bot-management/">別のブログ</a>を公開し、そこではあるお客様が脅威に関する情報を受動的に記録するために、当社のボットインテリジェンスをどのように使用しているかを説明しています。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image6.png" class="kg-image"></figure>
+	<p>API Analyticsでは、当社の他の製品を使用して有用なデータをリアルタイムに表示するようにしました。一般的なエンドポイントの表示、ML駆動型インサイトによるフィルタリング、不正使用閾値のヒストグラムの表示、傾向の把握が可能です。</p>
+	<p>API Analyticsは近日中の公開を予定しています。公開後には、カスタムレポートのエクスポートや、組織内でのインサイトの共有も可能になります。</p>
+	<h2 id="--5">ロギング、クォータ管理、その他の機能</h2>
+	<p>キャッシュ機能、負荷分散、ログ統合などの確立された機能は<em>すべて</em>、API Gatewayでネイティブに動作します。これらは原始的なゲートウェイ機能として必要不可欠であり、見過ごされるべきではありません。Cloudflareはこれらの機能をすべて同一の場所で実行するため、何もしなくても遅延改善の利点を得ることができます。</p>
+	<p>また、Enterprise Logsの機能を拡張してリアルタイムのログ取得を可能にしました。Cloudflareのネットワーク上での認証を選択された場合、APIにアクセスした各ユーザーの詳細なログを閲覧することができます。同様に、それぞれのリクエストに対する受信、検証、ルーティング、レスポンスなどのライフスパンが記録されます。すべてがログに記録されます。</p>
+	<p>最後に、APIリクエストをより長期間（1ヶ月など）にわたってカウントし、ユーザーの閾値を管理する機能であるQuota Managementを構築中であることを最後にお伝えします。また、より高度なケース（GraphQLのボディ検査など）に対応するため、<a href="https://blog.cloudflare.com/advanced-rate-limiting/">Advanced Rate Limiting</a>の提供を開始しました。</p>
+	<h2 id="--6">まとめ</h2>
+	<p>当社のセキュリティ機能のすべて（Discovery、Schema Validation、Abuse Detection、mTLS）が利用可能になりました！これらの機能は残りのゲートウェイ機能を保護するシールドを形成しているため<a href="https://developers.cloudflare.com/api-shield/" target="_blank">API Shield</a>と呼ばれます。企業のお客様はお客様のアカウントチームにご依頼いただきお問合せください。</p>
+	<p>API Gatewayの他の多くの部分は、現在、早期アクセス版で提供しています。Gartner®は、「2025年までに、APIの爆発的な増加がAPI管理ツールの能力を上回るため、企業でのAPIの管理率は50%を下回るだろう」と述べています。当社の目標は、この傾向に対抗できる手頃なゲートウェイを提供することです。もし、テストを要望される特定の機能がありましたら、お客様のアカウントチームにお知らせください。できる限り早く対応させていただきます。</p>
+	<!--kg-card-begin: markdown-->
+	<p><small>出典：Gartner、「Predicts 2022: APIs Demand Improved Security and Management（2022年を予想：APIはセキュリティと管理の強化が必要に）」、Shameen Pillai、Jeremy D'Hoinne、John Santoro、Mark O'Neill、Sham Gill、2021年12月6日GARTNERは、米国内外におけるGartner, Inc.やその関連会社の商標およびサービスマークです。ここでは、許可を取得したうえで使用しています。全権留保。</small></p>
+	<!--kg-card-end: markdown-->
+</div>

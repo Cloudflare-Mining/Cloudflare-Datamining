@@ -1,0 +1,52 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/01/image2-1.png" class="kg-image"></figure>
+	<p>网络性能一直是一场与光速的战斗——从伦敦访问一个从西雅图提供服务的网站，意味着每一个资源请求都要经过7000多英里。web性能之争的第一个突破是HTTP/1.1连接保持在线和浏览器打开多个连接。下一个突破是CDN，通过将静态资源缓存到离终端用户更近的数据中心，使它们更靠近终端用户。今天，有了Workers Sites，我们可以很兴奋地宣布下一个重大突破——将整个网站直接分布在互联网的边缘。</p>
+	<h2 id="-">部署到网络边缘</h2>
+	<p>为什么仅缓存资源还不够？是的，缓存提高了性能，但是显著的性能提升也伴随着一系列令人头痛的问题。CDN可以猜测应该缓存哪些资源，但这只是猜测。配置站点以获得最佳性能一直是一个容易出错的过程，需要大量深奥的规则和请求头。即使在完美配置的情况下，几乎也没有什么东西是永久缓存的，宝贵的请求仍然常常需要一直传送到您的原始地址（无论它在哪里）。毕竟，缓存失效是<a href="https://twitter.com/secretgeek/status/7269997868" target="_blank">计算机科学中最困难的问题</a>之一。</p>
+	<p>这就引出了一个问题：与其笨拙地将字节从原点移动到边缘，为什么不将整个原点推到边缘呢？</p>
+	<h2 id="workers-sites-workers-">Workers Sites：扩展Workers平台</h2>
+	<p>两年前的生日周，我们发布了<a href="https://workers.cloudflare.com/" target="_blank">Cloudflare Workers</a>，这是一种让开发者在全球194个城市的网络上编写和运行JavaScript和WebAssembly的方法。一年后，我们发布了Workers KV，这是我们的分布式键值存储，它让开发者能够在这些城市的边缘存储状态。</p>
+	<p>Workers Sites利用Workers和Workers KV的功能，允许开发者直接将他们的网站上传到边缘，并更接近最终用户。我们认为web上的现代开发应该是这样的：天然安全、快速、可大规模扩展。您花在配置上的时间越少，则花在代码和内容本身上的时间就越多。</p>
+	<h2 id="--1">它如何运作</h2>
+	<p>Workers Sites使用一些终端命令进行部署，可以为任何静态站点生成器（如Hugo、Gatsby或Jekyll）生成的站点提供服务。使用<a href="https://github.com/cloudflare/wrangler" target="_blank">Wrangler</a>（我们的命令行界面），您可以将网站的资源直接上传到KV。当请求到达您的Workers站点时，Wrangler生成的Cloudflare Worker将从KV中读取并提供相应的请求头信息（无需担心Content-Type和Cache-Control；我们帮你搞定了）。</p>
+	<p>你的网站需要变得不那么静态，你的Worker就只是代码，编辑和扩展它，直到你有一个运行在世界各地的动态网站。</p>
+	<h2 id="--2">入门</h2>
+	<p>要开始使用Workers网站，您首先需要<a href="https://dash.cloudflare.com/sign-up" target="_blank">注册Workers</a>。选择好worker.dev子域后，选择“无限制Workers计划”（每月5美元起），以获得访问Workers KV和部署Workers站点的能力。</p>
+	<p>在注册无限制Workers计划后，你需要为Workers安装CLI（命令行界面）——Wrangler，Wrangler可以通过NPM或Cargo安装：</p>
+	<pre><code class="language-bash"># NPM Installation
+npm i @cloudflare/wrangler -g
+# Cargo Installation
+cargo install wrangler</code></pre>
+	<p>安装Wrangler后，你就可以通过以下步骤准备部署静态站点：</p>
+	<ol>
+		<li>在包含您静态站点构建资产的目录中运行wrangler init --site</li>
+		<li>填写新创建的带有您的帐户和项目详情的wrangler.toml文件</li>
+		<li>使用wrangler publish发布您的网站</li>
+	</ol>
+	<p>你也可以查看我们的Workers Sites<a href="https://developers.cloudflare.com/workers/sites" target="_blank">参考文档</a>，或者在文档中阅读关于<a href="https://developers.cloudflare.com/workers/tutorials/deploy-a-react-app" target="_blank">create-react-app</a>的完整教程。</p>
+	<p>如果您想要通过观看视频开始入门，我们可以满足您的需求！<a href="https://watch.cloudflarestream.com/9943b400b59802b77f83a8a57f39d682" target="_blank">该视频</a>将引导您创建和部署第一个Workers网站：</p>
+	<!--kg-card-begin: markdown-->
+	<center>
+		<iframe src="https://watch.cloudflarestream.com/9943b400b59802b77f83a8a57f39d682" frameborder="0" height="337.5" width="600" allowfullscreen="">
+		</iframe>
+	</center>
+	<!--kg-card-end: markdown-->
+	<h2 id="--3">令人瞩目的快：从亚特兰大到萨格勒布</h2>
+	<p>除了改善开发人员的体验外，我们还在幕后做了大量工作，以确保部署和站点本身的速度都非常快——我们很高兴能在我们的<a href="https://blog.cloudflare.com/extending-the-workers-platform">技术博客文章</a>中与您分享如何做到这一点。</p>
+	<p>为了测试Workers Sites的性能，我们使用了一个个人站点并部署它来运行一些基准测试。该测试是针对我们的网站的，但您的结果可能会有所不同。</p>
+	<p>一个常用的衡量你的网站性能的方法是使用<a href="https://developers.google.com/web/tools/lighthouse" target="_blank">Google Lighthouse</a>，您可以直接在Chrome浏览器的“审核”选项中进行此操作。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/01/image1-7.png" class="kg-image"></figure>
+	<p>所以我们以优异的成绩通过了第一次测试——100分！然而，在您自己的计算机上运行基准测试会引入一个偏差：您的用户不一定在您所在的位置。事实上，你的用户离你越来越远。</p>
+	<p>在哪里进行基准测试也很重要：从不同位置运行测试将产生不同的结果。西雅图的基准测试和西海岸的服务器测试并不能说明您的全球性能。</p>
+	<p>我们决定使用一个名为Catchpoint的工具来运行世界各地城市的基准测试。为了进行比对，我们将站点部署到三个不同的静态站点部署平台，包括Workers Sites。</p>
+	<p>由于提供商在美国海岸或中欧提供数据中心区域，因此在北美等地区看到良好的表现是很正常的，我们为您总结的结果如下：</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2020/01/Screen-Shot-2019-09-26-at-10.58.41-PM.png" class="kg-image"></figure>
+	<p>但是你在世界其他地方的用户呢？在这些地区，性能甚至更为关键：第一批用户才不会使用MacBook Pro通过惊人的快速连接访问到您的站点。通过Workers Sites，您可以毫不费力地到达这些地区——每当<a href="https://blog.cloudflare.com/scaling-the-cloudflare-global/">我们的网络地图扩展</a>时，您的全球影响力就会随之增长。</p>
+	<p>我们在世界各地为您运行了一些基准测试，我们很高兴与您分享测试结果：</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2020/01/Screen-Shot-2019-09-26-at-10.58.24-PM.png" class="kg-image"></figure>
+	<h2 id="--4">最后一件事……</h2>
+	<p>使用Workers Sites部署您的下一个站点是很容易的，并且可以为您带来出色的性能，所以我们认为只有使用Workers Sites自己部署站点才是正确的选择。伴随着这一公告，我们还将开放<a href="https://developers.cloudflare.com/workers" target="_blank">Cloudflare Workers文档</a>资源！并且，（这些文档）它们现在正由您附近的Cloudflare数据中心通过Workers Sites提供服务。</p>
+	<p>我们迫不及待地想看到您在<a href="https://workers.cloudflare.com/sites" target="_blank">Workers Sites</a>上部署的内容！</p>
+	<hr>
+	<p><em>您是否已经使用Workers或Workers Sites构建了一些有趣的东西呢？请@CloudflareDev告知我们！</em></p>
+</div>

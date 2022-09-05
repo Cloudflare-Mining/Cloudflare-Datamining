@@ -1,0 +1,184 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/10/Privacy-Pass-@2x-2.png" class="kg-image"></figure>
+	<p>Cloudflareでは、すべてのインターネットユーザーに便益をもたらす新しいプライバシー保護テクノロジーをサポート・開発する事業に取り組んでいます。2017年11月に当社は<a href="https://petsymposium.org/2018/files/papers/issue3/popets-2018-0026.pdf" target="_blank">学術界との共同研究</a>により開発された<a href="https://blog.cloudflare.com/cloudflare-supports-privacy-pass/">プライバシーパスプロトコル</a>のサーバー側サポートを発表いたしました。プライバシーパスとは、要約すると、<a href="https://privacypass.github.io/protocol/" target="_blank">その信用が供与された場所と時期を明らかにすることなく</a>、クライアントが自らの信用証明を提供することを可能にする技術のことです。そのプロトコルの目的は、あるユーザーがあるサーバーによって信用が付与されていることを任意の人に証明することにあります。その際、任意の人がその割り当てられた信用情報を経由して当該サーバーから当該ユーザーを追跡することができないことが要件となります。</p>
+	<p>技術的には、プライバシーパスクライアントはサーバーから将来に引き換え可能な認証トークンを受け取ります。このトークンは、サーバーがクライアントを信用できると判断した場合に提供されます。たとえば、ユーザーがサービスにログインしたときや、固有の特性を証明したときなどです。この引換トークンは、サーバーが最初に提供した認証を暗号技術を使用してリンク不能にするため、クライアントに関する情報は一切晒されることはありません。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/10/imageLikeEmbed--2-.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/10/imageLikeEmbed--1-.png" class="kg-image"></figure>
+	<p>プライバシーパスを使用するために、クライアントは<a href="https://chrome.google.com/webstore/detail/privacy-pass/ajhmfdgkijocedmfjonnpjfojldioehi?hl=en" target="_blank">Chrome</a>または<a href="https://addons.mozilla.org/en-US/firefox/addon/privacy-pass/" target="_blank">Firefox</a>から<a href="https://github.com/privacypass/challenge-bypass-extension" target="_blank">オープンソース</a>ブラウザー拡張機能をインストールする必要があります。プライバシーパスの個別ダウンロード件数は現在世界中で150,000件を超えています。Chromeからは約130,000件、Firefoxからは20,000件超です。この拡張機能はCloudflareによってサポートされており、ウェブサイトへのアクセスをより容易にしています。このことは、Torブラウザーのユーザーのアクセシビリティを向上させるために開発された<a href="https://blog.cloudflare.com/cloudflare-onion-service/">Cloudflareオニオンサービス</a>の投入などを含めたCloudflareが従前から行っているサービスを補完しています。</p>
+	<p>最初のリリースは2年近く前です。そしてそれは<a href="https://www.youtube.com/watch?v=9DsUi-UF2pM&amp;list=PLWSQygNuIsPd6YJmGV9kn1mP2A6-IBCoU&amp;index=10" target="_blank">2018年度プライバシー強化技術シンポジウム</a>(最優秀学生論文賞を受賞)で発表された<a href="https://petsymposium.org/2018/files/papers/issue3/popets-2018-0026.pdf" target="_blank">研究出版</a>により継承されています。以来、Cloudflareはより広範なコミュニティと協働し、初期設計の構築およびプライバシーパスの改善に携わってきました。それではこれよりプロトコル自体の内容はもとより、既に実装済み案件の開発にあたり当社が行ってきた実務作業について説明していきます。</p>
+	<h1 id="-"><strong>最新のニュース</strong></h1>
+	<p>プライバシーパスv2.0ブラウザー拡張機能のサポート状況：</p>
+	<ul>
+		<li>ワークフローの構成が容易になりました。</li>
+		<li>新規サービスプロバイダー（hCaptcha）との統合。</li>
+		<li>hash-to-curveドラフトに準拠。</li>
+		<li>拡張機能リリース以外でもキーローテーションが可能となる。</li>
+		<li><a href="https://chrome.google.com/webstore/detail/privacy-pass/ajhmfdgkijocedmfjonnpjfojldioehi?hl=en" target="_blank">Chrome</a>と<a href="https://addons.mozilla.org/en-US/firefox/addon/privacy-pass/" target="_blank">Firefox</a>で利用可能となる（最新バージョンのブラウザーに最適化）。</li>
+	</ul>
+	<p>Cloudflare Workersプラットフォームを使用した新規サーバーバックエンドの展開を開始：</p>
+	<ul>
+		<li>暗号化操作が内部V8エンジンを使用して稼働する。</li>
+		<li>Cloudflareプライバシーパスv2.0トークン用のパブリック引換APIを提供。</li>
+		<li><a href="https://privacypass.cloudflare.com/api/redeem" target="_blank">https://privacypass.cloudflare.com/api/redeem</a>にPOST要求を行うことで使用可能となる。<a href="https://privacypass.github.io/api-redeem" target="_blank">使用事例</a>のドキュメントをご参照ください。</li>
+		<li>拡張機能v2.0とのみ互換性があります（更新を常に確認してください）。</li>
+	</ul>
+	<p>標準化：</p>
+	<ul>
+		<li><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="9ddedbcfdaddd4cfc9db">[email&nbsp;protected]</a>のprime-order groups関連oblivious pseudorandom functions (OPRFs)<a href="https://datatracker.ietf.org/doc/draft-irtf-cfrg-voprf/" target="_blank">ドラフト</a>の継続的開発。</li>
+		<li>プライバシー パス プロトコルを定義する<a href="https://github.com/alxdavids/draft-privacy-pass" target="_blank">新ドラフト</a>。</li>
+	</ul>
+	<h1 id="-v2-0"><strong>拡張機能v2.0</strong></h1>
+	<p>リリース以来当社は多くの新機能追加に取り組んで参りました。本日は、初期リリース以降初となる拡張機能バージョン2.0のアップデ―トサポートを発表できることを誠にうれしく思います。引き続き、この拡張機能は<a href="https://chrome.google.com/webstore/detail/privacy-pass/ajhmfdgkijocedmfjonnpjfojldioehi?hl=en" target="_blank">Chrome</a>および<a href="https://addons.mozilla.org/en-US/firefox/addon/privacy-pass/" target="_blank">Firefox</a>で使用可能です。ブラウザーが自動更新を無効にしている場合、ウェブストアからv2.0をマニュアルでダウンロードする必要があります。</p>
+	<p>依然としてこの拡張機能は活発に開発中であるため、当社はこれを未だにベータ段階としてサポートを提供しております。またさらに、プロトコルのドラフト仕様が広範なコミュニティとの共同作業で作成されている限り、当社はこれを引き続きベータ段階として取り扱います。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/10/pasted-image-0-2.png" class="kg-image"></figure>
+	<h3 id="--1"><strong>新たな統合</strong></h3>
+	<p>クライアント実装では、<a href="https://developer.chrome.com/extensions/webRequest" target="_blank">WebRequest API</a>を使用し、特定の種類のHTTP要求を検索します。この要求が認められると、プライバシーパスプロトコルが要求する一定の暗号化データを含むように書き換えられます。これにより、このデータを受け取ったプライバシーパスプロバイダーは、当該ユーザーのアクセスを承認することが可能となります。</p>
+	<p>たとえば、ユーザーはある一定のサーバーセキュリティチェックを通過するためにプライバシーパストークンを受け取ることがあります。このトークンはブラウザー拡張機能により格納されます。そして、将来同様のセキュリティクリアランスが必要となる要求が発生したとき、その要求テキスト上に格納されているトークンが追加HTTPヘッダーとして追加記載されます。その後、サーバーはクライアントトークンを検証し、クライアントがこれを実行するための真正な権限を有していることを承認します。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/10/imageLikeEmbed--4-.png" class="kg-image"></figure>
+	<p>Cloudflareは特定の種類の要求フローをサポートしていますが、異なるサービスプロバイダーが完全に合致するインタラクション特性に準拠することはおそらく不可能でしょう。拡張版v2.0の主要変更点の 1 つは、中央コンフィグレーションファイルを使用することなく、技術的書き換えで対処することです。拡張機能の<a href="https://github.com/privacypass/challenge-bypass-extension/blob/master/src/ext/config.js" target="_blank">ソースコード</a>でコンフィグレーションが規定されているため、プライバシーパスアクションを開始する際に要求されるブラウジング特性の変更をより簡易にすることが可能となります。これにより、新規プロバイダー用にこのコンフィグレーションを単に複製して適用することで、まったく異なる新しい要求フローを追加することが可能になりました。</p>
+	<p>Cloudflare以外の他のサービスとの間でこのような統合が可能となったことは、CAPTCHAプロバイダーの<a href="https://www.hcaptcha.com/" target="_blank">hCaptcha</a>によってサポートされるまったく新しいバージョンの拡張機能が間もなく展開されることで明らかになることでしょう。hCaptchaが要求する一時的な課題に対処する際、ユーザーは、他のhCaptchaの顧客サイトで引き換え可能なプライバシー保護トークンを受けとり、それに対処することが可能になります。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/10/image-8-1.png" class="kg-image"></figure>
+	<!--kg-card-begin: markdown-->
+	<p><span style="color:grey"><small><em>“「hCaptchaはユーザーのプライバシーに焦点を当てます。そして、プライバシーパスをサポートすることは当社事業領域の自然な延長線上にあります。当社はCloudflareおよびその他のベンダーとの協働により、これを一般的で広範な業界標準にすることを目標に掲げております。また、当社では現在別のアプリケーション開発にも注力しているところです。グローバルに展開しているサービスにプライバシーパスを実装することは比較的直接的で実直な試みです。当社はCloudflareチームとの充実した協働により、オープンソースのChromeブラウザー拡張機能を改善し、当社のユーザー向けに最高のエクスペリエンスを提供することが可能となりました。」 - エリ＝シャドゥル・ケドゥリ、hCaptcha 創設者”</em></small></span></p><small>
+	</small>
+	<p><small>— <strong>Eli-Shaoul Khedouri</strong>, founder of hCaptcha</small></p>
+	<!--kg-card-end: markdown-->
+	<p>プライバシーパスブラウザー拡張機能をめぐるこのhCaptcha統合の事例は、新規サービスのサポートを確立する際の概念実証事例と言えるでしょう。新規参入のプロバイダーがプライバシーパスブラウザー拡張機能との統合をしたいときも、単に<a href="https://github.com/privacypass/challenge-bypass-extension/" target="_blank">オープンソースリポジトリ</a>にPRを実行することで実現できます。</p>
+	<h2 id="--2"><strong>向上した暗号化機能</strong></h2>
+	<p>拡張版v1.0がリリースされたとき、その時点では実装されていない機能がありました。サーバーが常に同じコミットされたキーを使用していることを検証するために使用する、適切なゼロ知識証明の検証機能もその一つでした。v2.0ではこの機能が完成しました。これにより、悪意のあるサーバーが要求ごとに異なるキーを使用してユーザーを非匿名化しようと試みるとき、確実な防護が可能となりました。</p>
+	<p>プライバシーパスに要求される暗号化操作は、<a href="https://blog.cloudflare.com/a-relatively-easy-to-understand-primer-on-elliptic-curve-cryptography/">楕円曲線暗号化</a>（ECC）を使用して実行します。現在この拡張機能には<a href="https://www.secg.org/SEC2-Ver-1.0.pdf" target="_blank">NIST P-256</a>曲線が使用されています。同拡張機能には当社が一定の最適化プログラムを挿入しています。その一つ目として当社は、楕円曲線点を圧縮データ形式および非圧縮データ形式で格納することを可能にしました。これによりブラウザーのストレージを50%削減でき、また、サーバーの応答容量も縮小することができます。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/10/imageLikeEmbed--5-.png" class="kg-image"></figure>
+	<p>二つ目は、現在進行中の「楕円曲線のハッシュ化のエンコード標準化」ドラフト（<a href="https://tools.ietf.org/html/draft-irtf-cfrg-hash-to-curve-03" target="_blank">https://tools.ietf.org/html/draft-irtf-cfrg-hash-to-curve-03</a>）で指定された 「Simplified Shallue-van de Woestijne-Ulas」（SSWU）方式を使用して、P-256曲線へのハッシュサポートを追加いたしました。この実装にあたっては、同ドラフトが指定する「P256-SHA256-SSWU-」暗号スイート仕様に準拠しております。</p>
+	<p>これらの変更には二重の利点があり、まずP-256 hash-to-curve仕様のドラフト仕様書の準拠を確実にしていることです。もう一つは、この暗号スイートを使用することで<a href="https://tools.ietf.org/html/draft-irtf-cfrg-vrf-05#section-5.4.1.1" target="_blank">hash-and-increment</a>などの確率的方法を使用する必要性を排除できることです。hash-and-increment方式には無視できないほどの失敗の可能性があり、また、実行時間の長短は隠れたクライアント入力に大きく依存することになります。現時点ではタイミング攻撃ベクトルを悪用する方法は明らかではありませんが、SSWU 方式を使用することにより、実装の攻撃可能性とクライアント入力情報の漏洩リスクを軽減することが期待できます。</p>
+	<h2 id="--3"><strong>キーのローテーション</strong></h2>
+	<p>前述のように、サーバーが常に同じキーを使用していることを確認するのは、クライアントのプライバシーを保護する上で重要です。これでサーバーは、インターアクトするクライアントごとに各々異なるシークレットキーを使用することになり、したがいユーザーベースを分離することができず、また、ユーザーのプライバシー漏洩リスクを軽減することが可能になります。サーバーは、クライアントがアクセスできる場所にパブリックキーのコミットメントを告知することで、常に同じキーを使用していることを保証します。</p>
+	<p>また、サーバーがクライアントにプライバシーパストークンを発行するたびに、正しいキーを使用してトークンを作成したことを証明する<a href="https://en.wikipedia.org/wiki/Zero-knowledge_proof" target="_blank">ゼロ知識証明</a>を発行します。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/10/imageLikeEmbed--6-.png" class="kg-image"></figure>
+	<p>拡張機能では、トークンを格納する前に、まず、それが認識しているコミットメントに対する証明を検証します。以前は、このコミットメントは拡張機能のソース コードに直接格納されていました。つまり、サーバーがキーをローテーションする際に常に拡張機能の新しいバージョンをリリースすることが必要となり、それは運用を不必要に困難にしていました。拡張機能にはコミットメントが<a href="https://github.com/privacypass/ec-commitments" target="_blank">信頼できる場所</a>に格納できるように変更が加えられました。その場所はクライアントがサーバーの応答を確認する必要があるときにアクセス可能な場所です。現在この場所は、分離されたプライバシーパス<a href="https://github.com/privacypass/ec-commitments" target="_blank">GitHubリポジトリ</a>です。興味のある方のために、新しいコミットメントフォーマットに係る詳細説明を記載した付録Aをこの記事の末尾に添付いたしました。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/10/imageLikeEmbed--7-.png" class="kg-image"></figure>
+	<h1 id="workers-"><strong>Workersのサーバー側サポートの実装</strong></h1>
+	<p>ここまでは、クライアント側のアップデートについて焦点を当て、説明いたしました。拡張機能v2.0 のサポートの一環として、Cloudflareが使用するサーバー側のサポートに関し、いくつかの大きな変更を展開しています。バージョン1.0では、サーバーサポートに<a href="https://github.com/privacypass/challenge-bypass-server" target="_blank">Go実装</a>を使用しました。v2.0 では、<a href="https://www.cloudflare.com/products/cloudflare-workers/" target="_blank">Cloudflare Workers</a>プラットフォームで実行することが可能な新たなサーバー実装を採用します。このサーバーの実装は、プライバシーパスのv2.0リリースとのみ互換性があるため、ブラウザーで自動更新をオフにしている場合は、拡張機能の更新を手動で行う必要があります。</p>
+	<p>当社のサーバーは<a href="https://privacypass.cloudflare.com/" target="_blank">https://privacypass.cloudflare.com</a>で実行されます。そして、Cloudflareエッジに送信されるすべてのプライバシーパス要求は、このドメインで実行されるWorkerスクリプトによって処理されます。当社の実装はJavascriptを使用して書き換えられます。その際、Cloudflare Workersの動力源である<a href="https://v8.dev/" target="_blank">V8エンジン</a>上で暗号化操作が実行されます。つまり、高度に効率的で定数時間性に優れた暗号化操作を実行することができます。またさらに、コードをWorkersプラットフォームで実行することで得られる高度化されたパフォーマンスをユーザーに最大限近接した場所で発揮するメリットを活かしています。</p>
+	<h2 id="webcrypto-"><strong>WebCryptoのサポート</strong></h2>
+	<p>おそらく、最初にCloudflare Workersがどのようにして暗号化操作を実装するのかという疑問を持つ人がいることでしょう。現状では、暗号化操作実行のサポートは<a href="https://developers.cloudflare.com/workers/reference/apis/web-crypto/" target="_blank">WebCrypto API</a>を介してWorkersプラットフォームで提供されています。このAPIを使用することで、ユーザーはECDSAシグネチャーなどのより複雑な操作と平行して、暗号化ハッシュなどの機能を処理することができます。</p>
+	<p>その詳細はこの後すぐに説明いたしますが、プライバシーパスプロトコルでは、主要な暗号化操作はverifiable oblivious pseudorandom function（VOPRF）として知られる検証可能な擬似ランダム関数によって実行されます。このプロトコルを使用することで、クライアントは、実際の入力内容をサーバーに晒すことなく、サーバーが処理した関数出力を取得することが可能となります。「検証可能」とは、サーバーがユーザーに提出する評価が真正であることを（公的に検証可能な方法で）証明する必要があることを意味します。このような関数は疑似ランダムです。その理由はサーバー出力がランダムなバイトシーケンスと区別がつかないからです。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/10/imageLikeEmbed--8-.png" class="kg-image"></figure>
+	<p>VOPRF機能はその要件として、サーバーが未だ現時点ではWebCrypto API が明確に規定していない低レベルのECC操作を実行することを要求しています。当社はこれに対し、可能な限りこの要件を回避できる方法で対処しました。まず、試験的にWebCrypto APIを標準外の手法で使用することを試みました。このとき、必要となるスカラー乗算を実行する方法としてEC Diffie-Hellmanキー交換を使用しました。また、すべての操作に純粋JavaScriptを使用することを試みました。残念ながら、どちらの方法もそれが大規模な外部暗号化ライブラリとの統合を試行していることを意味している点、あるいは高いパフォーマンスのインターネット設定で使用するには遅延が大きすぎるという点から不適切でした。</p>
+	<p>最終的に当社は、Cloudflare V8 Javascriptエンジンの内部WebCryptoインターフェイスにプライバシーパスに要求される機能を付加するというソリューションに到達しました。このアルゴリズムは、ECDSAなどのシグネチャーアルゴリズムが提供するsign/verifyインターフェースを模倣しています。要約すると、sign() 関数を使用して、クライアントにプライバシーパストークンを発行します。verify()は、クライアントが引き換えたデータをサーバーが検証する際に使用することが可能です。これらの関数はV8層に直接実装されるため、純粋なJS代替関数に比較し、はるかにパフォーマンスとセキュリティに優れます（たとえば、定数時間で実行されます）。</p>
+	<p>このプライバシーパス WebCryptoインターフェイスは、現在一般に公開していません。もし、Workers プラットフォームでこの追加アルゴリズムを使用することに十分な関心が向けられたら、当社はこれを公開することを検討いたします。</p>
+	<h3 id="--4"><strong>アプリケーション</strong></h3>
+	<p>近年、VOWFは多くの暗号化ツールを確立する際に非常に有用な基礎として認知されています。プライバシーパスとは別に、 たとえば<a href="https://datatracker.ietf.org/doc/draft-krawczyk-cfrg-opaque/" target="_blank">OPAQUE</a>などのパスワードで認証されたキー交換プロトコルを構築する際にも不可欠です。また、<a href="https://eprint.iacr.org/2016/799" target="_blank">プライベートセットインターセクション</a>、パスワード保護されたシークレット共有プロトコル<a href="https://eprint.iacr.org/2014/650" target="_blank">、並びに</a><a href="https://medium.com/least-authority/the-path-from-s4-to-privatestorage-ae9d4a10b2ae" target="_blank">プライベートデータストレージ用のプライバシー保護アクセス制御</a><a href="https://eprint.iacr.org/2014/650" target="_blank">の設計にも使用されています。</a></p>
+	<h2 id="-api"><strong>パブリック引換API</strong></h2>
+	<p>Cloudflare Workersでサーバーを作成するということはつまり、当社が<a href="https://privacypass.cloudflare.com/" target="_blank">パブリックドメイン</a>でプライバシーパスのサーバー側サポートを提供することを意味します。当社はトークンを信頼できるクライアントに発行するのみですが、その後、任意の第三者は誰でも、<a href="https://privacypass.cloudflare.com/api/redeem" target="_blank">https://privacypass.cloudflare.com/api/redeem</a>で当社のパブリック引換 API を使用してトークンを引き換えることができます。当社は世界中でサーバー側コンポーネントを展開しているので、世界中の誰しもがこのAPIとインターアクトし、<a href="https://privacypass.github.io/api-redeem" target="_blank">ブラウザー拡張機能に依存せず</a>Cloudflareプライバシーパストークンを検証することが可能です。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/10/imageLikeEmbed--9-.png" class="kg-image"></figure>
+	<p>つまり、すべてのサービスプロバイダーは、Cloudflareがクライアントに発行したプライバシーパストークンを受け入れ、そしてそれをCloudflare引換API経由で検証することが可能です。外部サービスプロバイダーは、APIによって提供された結果を使用し、 Cloudflareが過去にそのユーザーを承認したかどうかを確認することができます。</p>
+	<p>このことにより他のサービスプロバイダーにメリットが生じます。つまり、彼らはCloudflareからの承認の証明を、クライアントのプライバシーを犠牲にすることなく、独自の意思決定プロセスに利用できるようになります。私たちはこのエコシステムがさらに成長し、できる限り多くのサービスが独自のパブリック引換APIを提供することを切に願います。より多様な発行者群が出現することで、この証明メカニズムはより有益なものとなることでしょう。</p>
+	<p>パブリックドメインで当社サーバーを稼働することはすなわち、当社は事実上のCloudflare Workers製品の顧客として位置付けられます。つまり、当社もまた<a href="https://developers.cloudflare.com/workers/reference/storage/" target="_blank">Workers KV</a>を活用することで悪意のあるクライアントから当社を防御することができるわけです。特に、サーバーは、クライアントが引き換え段階にトークンを再利用していないことを確認する必要があります。読み取りデータ分析で発揮されるこの Workers KVの能力は、グローバルな二重支払いリスクを回避するための有効な選択肢となるでしょう。</p>
+	<p>パブリック引換 API の使用をご検討する際には <a href="https://privacypass.github.io/api-redeem" target="_blank">https://privacypass.github.io/api-redeem</a>から使用方法手引き書をご参照ください。また、当記事の末尾に付録B「要求と応答の事例」を添付いたしました。</p>
+	<h1 id="--5"><strong>標準化と新しいアプリケーション</strong></h1>
+	<p>現在当社はプライバシーパスのサポートに係る最近のエンジニアリング活動と並行して、より広範なコミュニティと協働し、 <a href="https://datatracker.ietf.org/doc/draft-irtf-cfrg-voprf/" target="_blank">基礎となるVOPRF機能</a>と<a href="https://github.com/alxdavids/draft-privacy-pass" target="_blank">プロトコル自体</a>の両方の標準化に取り組んでいます。oblivious pseudorandom functions (OPRFs) の標準化プロセスは既に1年以上にわたって実行されていますが、一方でプライバシーパスプロトコルを標準化する取り組みは、ほんの数か月前の非常に最近のアプリケーションによって推進されているのが現状です。</p>
+	<p>プロトコルと機能を標準化することは、インターネット上でプロトコルを実行するために欠かすことのできない相互運用性、セキュリティ、高いパフォーマンスを提供する上で重要な要素です。標準化により、開発者はこの複雑な機能を独自仕様の実装としてより簡易に記述することが可能となります。また、このプロセスは、コミュニティ専門家からの有用なピアレビューが反映され、すべての実装において極力軽減すべき潜在的セキュリティ リスクをより適切に表面化することが可能となります。その他の利点として、すべてのアプリケーション開発において、最も信頼性が高くスケーラブルで高パフォーマンスのプロトコル設計に関するコンセンサスが形成されるということが挙げられます。</p>
+	<h2 id="oblivious-pseudorandom-functions"><strong>Oblivious pseudorandom functions</strong></h2>
+	<p>Oblivious pseudorandom functions（OPRFs）とは、サーバーが機能を正しく評価したことを証明することを要求しないVOPRFsの一般化のことです。当社は2019年7月より、Internet Research Task Force（IRTF）の<a href="https://irtf.org/cfrg" target="_blank">Crypto Forum Research Group（CFRG）</a>と協働し、prime-order groupsで動作するOPRFプロトコル標準化のための<a href="https://datatracker.ietf.org/doc/draft-irtf-cfrg-voprf/" target="_blank">ドラフト作成</a>に取り組んでいます。これは<a href="https://blog.cloudflare.com/tag/elliptic-curves/">楕円曲線</a>によって提供される設定の一般化です。これはプライバシーパスプロトコルによって<a href="https://blog.cloudflare.com/privacy-pass-the-math/">最初に指定</a>されていたものとまったく同じVOPRF構造であり、それはまた、<a href="https://eprint.iacr.org/2014/650.pdf" target="_blank">Jarecki氏、 Kiayias氏、Krawczyk氏らが提出した元のプロトコル設計仕様書</a>に大部分準拠しています。</p>
+	<p>このドラフトに最近加えた変更の 1 つは、サーバー側でOPRF操作を実行することになると想定されるキーのサイズを増やしたことです。既存の調査結果によると、特定のクエリを作成し、少量のキーを漏洩させることが可能であることが報告されています。128ビットのセキュリティのみを提供するキーの場合、このことは問題となる可能性があります。漏洩ビット数があまりにも多いとき、<a href="https://www.keylength.com/en/4/" target="_blank">現在容認されているレベルを逸脱して</a>セキュリティが低下する可能性があるからです。これに対処するために当社は最小キーサイズを192ビットに増やしました。これにより、いかなる実用的な方法を使用しても、この漏洩が攻撃対象とならないように防御できます。この攻撃に関しては、後ほどVOPRF開発の将来計画について説明する際に、さらにその詳細を議論する予定です。</p>
+	<h2 id="--6"><strong>最近のアプリケーションとプロトコルの標準化</strong></h2>
+	<p>最初にプライバシーパスをサポートしたときに示したアプリケーションは、常にプロトコルの概念実証として意図されたものでした。この数ヶ月間に、これまで想定されていた範囲をはるかに超える領域で、多くの新たな可能性が生じています。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/10/imageLikeEmbed--10-.png" class="kg-image"></figure>
+	<p>たとえば、<a href="https://wicg.io/" target="_blank">ウェブインキュベーターコミュニティグループ</a>によって開発された <a href="https://github.com/WICG/trust-token-api" target="_blank">信用トークンAPI</a>は、プライバシーパスを使用するためのインターフェイスとして提案されています。このアプリケーションは、ユーザーが一連の中央発行者から信用証明を受け取っているかどうかをサードパーティベンダーが確認することを可能にします。これにより、ベンダーは、ユーザーのIDに付随したユーザープロファイルを照会することなく、ユーザーの真正さに関する判断を行うことが可能となります。その目的は、中央発行者が信用を供与しないユーザーを特定し、その人が不正行為を働くことを事前に防御することにあります。中央発行者に対し信用の証明を確認する行為は、<a href="https://privacypass.cloudflare.com/" target="_blank">当社が導入</a>した引換APIに類似の方法を使用することで代替が可能です。</p>
+	<p><a href="https://engineering.fb.com/security/partially-blind-signatures/" target="_blank">Facebookが行っている別の手法</a>が不正行為を防御する類似のアプリケーションを詳述しています。また、この手法はプライバシーパスプロトコルとの互換性もあります。最後に、<a href="https://medium.com/least-authority/the-path-from-s4-to-privatestorage-ae9d4a10b2ae" target="_blank">プライベートストレージ</a>へのアクセスを提供するという新領域向けに別のアプリケーションが登場しています。これは<a href="https://github.com/brave/brave-browser/wiki/Security-and-privacy-model-for-ad-confirmations" target="_blank">広告確認という領域におけるセキュリティとプライバシーモデルの確立を志向しています</a>。</p>
+	<h3 id="--7"><strong>新しいドラフト</strong></h3>
+	<p>上記のアプリケーションを念頭に置いて、当社は最近<a href="https://github.com/alxdavids/draft-privacy-pass" target="_blank">新しいIETFドラフト</a>に係る共同作業を開始いたしました。その仕様書には、プライバシーパスプロトコル技術が全体として提供する機能が明確に規定されています。当社の目的は、より広範な産業パートナーや学術コミュニティと共に、プライバシーパスプロトコルの機能仕様を開発することにあります。当社はこれを遂行することにより、何らかの簡易型の承認を必要とする広範なアプリケーションに対し、暗号化プリミティブとして使用可能なベースレイヤ プロトコルを設計することを企図しています。当社の計画では、来月シンガポールで開催される<a href="https://www.ietf.org/how/meetings/106/" target="_blank">IETF 106会議</a>で、このドラフトの最初のバージョンを発表する予定です。</p>
+	<p>このドラフトは未だ開発の初期段階にあります。当社ではプロトコル仕様の策定に関心のある人材を積極的に募集しております。このプロセスに対するご支援ご鞭撻のほど、よろしくお願い申し上げます。ドキュメントの最新バージョンは、<a href="https://github.com/alxdavids/draft-privacy-pass" target="_blank">GitHubリポジトリ</a>をご参照ください。</p>
+	<h1 id="--8"><strong>未来の道程</strong></h1>
+	<p>最後に、当社は現在さまざまな経路から積極的に挑んでいるところですが、このプロジェクトの未来の方向性は依然として未知数です。当社が未だに考えもつかない多くのアプリケーションが、世界のいたるところに存在していると信じています。だからこそ当社はこのプロトコルが将来どこでどのように使用されるかをこの目で確かめる日が来ることを、心から楽しみにしています。ここでは当社が考える将来的に追求する価値があると思われる、新しいアプリケーションやセキュリティプロパティに関するアイデアをいくつかご紹介いたします。</p>
+	<h2 id="--9"><strong>パブリックに検証可能なトークン</strong></h2>
+	<p>VOPRFを使用する際の欠点の1つは、引換トークンが発行元サーバーによってのみ検証可能であることです。仮に引換トークンのパブリック検証を可能にする基礎的プリミティブを使用したならば、誰もが発行元サーバーが特定のトークンを発行したという事実を確認することができるようになります。このようなプロトコルは、<a href="https://en.wikipedia.org/wiki/Blind_signature#Blind_RSA_signatures" target="_blank">Blind RSA</a>などの、いわゆるブラインドシグネチャスキームの上に構築することが可能になります。残念ながら、現在のブラウザー環境下でブラインドシグネチャースキームを使用することには、パフォーマンスとセキュリティ上の懸念が存在しています。既存のスキーム（特にRSAベースのバリアント）を使用した場合、VOPRF プロトコルで使用された構造と比較すると、それははるかに重厚な暗号化計算が要求されることになります。</p>
+	<h2 id="-voprf-"><strong>ポストクォンタムVOPRFの代替</strong></h2>
+	<p>現在のVOPRFの構造は、唯一プリクォンタム設定によります。それは、通常<a href="https://en.wikipedia.org/wiki/Decisional_Diffie%E2%80%93Hellman_assumption" target="_blank">不連続ログ仮定</a>などのグループ設定における既知の問題の難解度に基づいています。VOPRF構造では<a href="https://blog.cloudflare.com/the-quantum-menace/">量子計算アルゴリズム</a>を実行できる敵対者に対して、セキュリティで保護することが不可能であると一般に知られています。つまり、プライバシーパスプロトコルのみが、従来のハードウェア上で実行されている敵対者の攻撃に対して、セキュリティで保護できると考えられています。</p>
+	<p>最近の動向は、量子コンピューティングが<a href="https://www.nature.com/articles/s41586-019-1666-5" target="_blank">以前考えられていたよりも早く</a>実現できることを示唆しています。そのような状況下で、当社は現在の暗号ツールキットに<a href="https://blog.cloudflare.com/introducing-circl/">実用的なポストクォンタム代替を構築する</a>可能性を調査することは、当社自身並びにより広範なコミュニティにとって非常に重要な課題であると考えています。つまり、VOPRF構築に向けた高パフォーマンスのポストクォンタム代替を考案することは重要な理論的進歩に相当します。つまり、最終的に、ポストクォンタムが実現した世界においても、プライバシー パス プロトコル技術が引き続きプライバシー保護承認サービスを牽引していることでしょう。</p>
+	<h2 id="voprf-"><strong>VOPRFセキュリティとより大規模なの暗号スイート</strong></h2>
+	<p>前述のとおり、VOPRF（または単にOPRF）は、キー内での少量のデータ漏洩に対し脆弱であることに言及いたしました。ここでは、実際の攻撃の実態について簡単に説明し、データ漏洩を軽減するためのより高いセキュリティ暗号スイートを実装する計画についてその詳細を説明して参ります。</p>
+	<p>具体的に言うと、悪意のあるクライアントはVOPRFとインターアクトし、<a href="https://eprint.iacr.org/2010/215.pdf" target="_blank">q-Strong-Diffie-Hellman</a>（q-sDH）サンプルと呼ばれるものを作成します。このサンプルは、数学的グループ（通常は楕円曲線設定）で作成されます。どのグループにも、すべての<a href="https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange" target="_blank">Diffie-Hellman</a>タイプオペレーションの中央にパブリックエレメント g と、これとともに、通常同グループからランダムに生成された番号として翻訳されるサーバーキー K が存在します。q-sDH サンプルのフォームは次のとおりです。</p>
+	<p>( g, g^K, g^(K^2), … , g^(K^q) )<br></p>
+	<p>そして、悪意のある敵対者に対し、(g^(1/(s+K)),s)を満足する要素ペア を作成するように要求します。VOPRF プロトコルのクライアントは、以前の VOPRF 評価結果を単にサーバーに提出するだけで q-SDH サンプルを作成することができます。</p>
+	<p>この問題は解決が困難であると考えられていますが、過去の事例の中には、多くのグループの指摘に対抗し、同問題は解決が容易であるとしています(例えば、<a href="https://eprint.iacr.org/2004/306" target="_blank">ここ</a>と<a href="https://www.iacr.org/archive/eurocrypt2006/40040001/40040001.pdf" target="_blank">ここ</a>を参照してください)。具体的に言うと、同グループが示めしたビット セキュリティは、最大log2(q) bitsまで減らすことが可能です。これは128ビットセキュリティのみを提供するグループに対してさえも即刻致命的となるわけではありませんが、それのもかかわらず、それはセキュリティの損壊にほかならず、もはや将来性はありません。結果として、P-256やCurve25519などの楕円曲線を使用してインスタンス化されたVOPRF機能を提供するすべてのグループは、推奨保証値よりも低いセキュリティを提供していることになります。</p>
+	<p>このことを念頭に置いて当社は最近次のような決定を下しました。つまり、当社は、標準として＞128 ビットのセキュリティを提供するOPRFの使用を推奨し、これを提供する暗号スイートのみをアップグレードの対象とするというものです。たとえば、Curve448は192ビットセキュリティを提供します。セキュリティを128ビット未満に抑える攻撃を開始するためには、2^(68) クライアントOPRFクエリを実行する必要があります。このことはすべての攻撃者にとって重要な障壁となります。したがい当社はOPRF機能をインスタンス化する際にこの暗号スイートを使用することは安全であると判断いたしました。</p>
+	<p>近い将来、プライバシーパスブラウザー拡張機能のサポート下で使用されている暗号スイートは、現在のVOPRFドラフトが推奨する仕様に沿ってアップグレードすることが要求されることになります。一般的に、リリースプロセスの頻度は高まり、またそれは標準化プロセスの最中に進化していくことが見込まれるため、当社としては、プライバシーパスの実装は常に最新のドラフト標準に準拠することを目指したいと考えています。</p>
+	<h2 id="--10"><strong>連絡を取り合いましょう。</strong></h2>
+	<p><a href="https://chrome.google.com/webstore/detail/privacy-pass/ajhmfdgkijocedmfjonnpjfojldioehi?hl=en" target="_blank">Chrome</a> または<a href="https://addons.mozilla.org/en-US/firefox/addon/privacy-pass/" target="_blank">Firefox</a>にプライバシー パス拡張機能v2.0 がインストールできるようになりました。</p>
+	<p>この拡張機能の開発に貢献を希望する人は、<a href="https://github.com/privacypass/challenge-bypass-extension" target="_blank">GitHub</a>から実行することができます。あなたは拡張機能のサーバー側サポートを統合するサービスプロバイダーですか？そうであれば、是非あなたのご意見をお聞かせください。</p>
+	<p>当社は常にプロトコルの標準化開発に向けより広範なコミュニティとの協働を模索し続けます。既に開発済の利用可能なアプリケーションに接することで当社のモチベーションは向上します。当社は常に現状の境界を打破し、プライバシーパスエコシステムの発展に寄与する新しいアプリケーションとの連携を模索しています。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/10/tales-from-the-crypto-team@2x--1-.png" class="kg-image"></figure>
+	<h1 id="--11"><strong>付録</strong></h1>
+	<p>ここでは上記で取り上げたトピックに関連する追加情報を記述しています。</p>
+	<h2 id="a-"><strong>A.キーローテーションのコミットメントフォーマット</strong></h2>
+	<p>サーバーがプライバシーパスプロトコルの最中に真正に動作していることを証明するためには、キーコミットメントが必要となります。プライバシーパスがv2.0リリースで使用しているコミットメントフォーマットは、以前のリリースのものとは若干異なります。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-json">"2.00": {
+  "H": "BPivZ+bqrAZzBHZtROY72/E4UGVKAanNoHL1Oteg25oTPRUkrYeVcYGfkOr425NzWOTLRfmB8cgnlUfAeN2Ikmg=",
+  "expiry": "2020-01-11T10:29:10.658286752Z",
+  "sig": "MEUCIQDu9xeF1q89bQuIMtGm0g8KS2srOPv+4hHjMWNVzJ92kAIgYrDKNkg3GRs9Jq5bkE/4mM7/QZInAVvwmIyg6lQZGE0="
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>まず、サーバー キーのバージョンは2.00です。サーバーは発行されたトークンが含まれたクライアントへの応答の中で、使用するバージョン情報をクライアントに通知する必要があります。これは、サーバーが送信するゼロ知識証明を検証する際に、クライアントが常に正しいコミットメントを使用できるようにするためです。</p>
+	<p>メンバー H の値は、サーバーが使用する秘密キーに対応するパブリックキーコミットメントに相当します。これは、H=kG フォームの base64 エンコード楕円曲線ポイントです。このとき、G は曲線の固定ジェネレーター、k はサーバーの秘密キーに相当します。離散対数問題の解決は困難だと言われる理由は、Hからkを導出することが困難だからです。メンバー有効期限の値は、使用されているコミットメントの有効期限に相当します。メンバー sig の値は、サーバーに関連付けられた長期署名キーを使用して評価されたECDSAシグネチャに相当します。そしてそれは、Hと有効期限の値を超過した値です。</p>
+	<p>クライアントがコミットメントを取得するとき、サーバーは有効期限が切れていないことを確認します。そして、これに対応した拡張機能のコンフィグレーションに埋め込まれている検証キーを使用して、シグネチャーが検証を実行します。これらの確認が承認されると、Hを取得し、サーバーが送信した発行応答を検証します。以前のバージョンではこのコミットメントにはシグネチャーは含まれていませんでしたが、このシグネチャーは v2.0 以降は有効化されます。</p>
+	<p>サーバーがキーローテーションを実行するとき、サーバーは単に新しいキーk2を生成し、2.01などの新しい識別子を使用してk2に新しいコミットメントとして追加します。その後、k2はVOPRF操作のシークレットキーとしてを使用され、必要とする計算が実行されます。</p>
+	<h2 id="b-api-"><strong>B.引換 API 要求の事例</strong></h2>
+	<p>引換APIは、HTTPS経由で実行されます。そのときPOSTは<a href="https://privacypass.cloudflare.com/api/redeem" target="_blank">https://privacypass.cloudflare.com/api/redeem</a>に送信されます。このエンドポイントへの要求では、要求の本文に JSON-RPC 2.0 シンタックスを使用してプライバシー パス データを指定する必要があります。要求の事例を見てみましょう。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-json">{
+  "jsonrpc": "2.0",
+  "method": "redeem",
+  "params": {
+    "data": [
+      "lB2ZEtHOK/2auhOySKoxqiHWXYaFlAIbuoHQnlFz57A=",
+      "EoSetsN0eVt6ztbLcqp4Gt634aV73SDPzezpku6ky5w=",
+      "eyJjdXJ2ZSI6InAyNTYiLCJoYXNoIjoic2hhMjU2IiwibWV0aG9kIjoic3d1In0="
+    ],
+    "bindings": [
+      "string1",
+      "string2"
+    ],
+    "compressed":"false"
+  },
+  "id": 1
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>上記の捕捉説明: params.data[0]は、発行段階でトークンを生成するために使用されるクライアント入力データです。params.data[1]は、サーバーが引換を検証するために使用する HMAC タグです。params.data[2] は、クライアントが使用するhash-to-curveのパラメータを指定する、文字列化されたbase64エンコードJSONオブジェクトです。たとえば、配列の最後の要素はオブジェクトに対応します。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-json">{
+    curve: "p256",
+    hash: "sha256",
+    method: "swu",
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>これはクライアントがcurve P-256を使用したことを示しています。このとき、ハッシュ関数はSHA-256であり、SSWU方式はhash to curveを使用しています。これにより、サーバーが真正な暗号スイートを使用し、トランザクションを検証をすることが可能とないります。クライアントは引換要求を一定の固定情報とバインドする必要があります。そこではparams.bindings配列に複数の文字列として格納されます。たとえば、HTTP要求のHostヘッダーと使用されたHTTPパス（これはプライバシーパスブラウザー拡張機能で使用されたもの）を送信することができます 。最後に、params.compressedはオプションのブール値（デフォルトは false）です。その値はHMACタグが圧縮あるいは非圧縮ポイントエンコーディングのどちらで計算されたかを示します。</p>
+	<p>現在サポートされている暗号スイートは上記の事例のみです。または、hash-and-increment方式のインクリメントに等しい方式を除き、hashing to curveと同様の方式もサポートされています。これはプライバシー パスの v1.0で使用された元の方式です。またそれは、後方互換性のためだけにサポートされています。詳細については<a href="https://privacypass.github.io/api-redeem" target="_blank">提供済ドキュメント</a>をご参照ください。</p>
+	<h3 id="--12"><strong>応答の事例</strong></h3>
+	<p>要求が引換 API に送信され、正常に検証された場合、次の応答が返されます。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-json">{
+  "jsonrpc": "2.0",
+  "result": "success",
+  "id": 1
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>エラーが発生すると、次に類似するメッセージが返されます。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-json">{
+  "jsonrpc": "2.0",
+  "error": {
+    "message": &lt;error-message&gt;,
+    "code": &lt;error-code&gt;,
+  },
+  "id": 1
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>ここで提供されているエラー コードはJSON-RPC 2.0コードを使用して指定されています。ここでは当社が<a href="https://privacypass.github.io/api-redeem" target="_blank">API ドキュメント</a>で使用しているエラータイプをドキュメント化しております。</p>
+</div>

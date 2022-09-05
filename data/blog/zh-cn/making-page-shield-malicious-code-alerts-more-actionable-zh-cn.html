@@ -1,0 +1,37 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/Untitled.png" class="kg-image" alt="Page Shield is generally available"></figure>
+	<p>在去年的 CIO Week 期间，我们宣布 <a href="https://blog.cloudflare.com/zh-cn/page-shield-generally-available-zh-cn/">Page Shield 正式发布</a>。今天，我们谈到我们所做的改进，这些改进可帮助 Page Shield 用户专注于影响力最高的脚本，并从产品获得更多价值。在本文中，我们介绍了对脚本状态、元数据和分类的改进。</p>
+	<h3 id="-page-shield-">什么是 Page Shield？</h3>
+	<p><a href="https://www.cloudflare.com/page-shield/" target="_blank">Page Shield</a> 保护网站所有者和访问者免受恶意第三方 JavaScript 攻击。恶意利用 JavaScript 的可能途径有以下几种：浏览器端加密货币采矿、数据外泄和恶意软件注入等。</p>
+	<p>例如，一个被劫持的 JavaScript 就可能将许多网站上数百万用户的信用卡详情公开给恶意的行为者。不良行为者会利用被入侵的 JavaScript 库来抓取详情，盗取表单的输入信息，并将其外泄给受自己控制的第三方终端。</p>
+	<p>如今，Page Shield 部分依赖于<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy" target="_blank">网页安全政策</a> (CSP)，这是一种浏览器原生框架，可用于控制和了解网页上允许加载哪些脚本（同时报告任何违规情况）。我们使用这些违规报告在 Cloudflare 仪表板中提供关于最终用户浏览器加载的脚本的详细信息。</p>
+	<p>Page Shield 用户通过仪表板可以看到哪些脚本在其网站上活跃以及位于哪些网页上。用户可以在脚本执行恶意活动时收到提醒，并监控脚本的代码变化。</p>
+	<h3 id="-">脚本状态</h3>
+	<p>为了帮助识别恶意脚本并方便对实时威胁采取措施，我们引入了状态字段。</p>
+	<p>进入 <a href="https://dash.cloudflare.com/?to=/:account/:zone/security/page-shield" target="_blank">Page Shield 仪表板</a>后，客户目前只会看到状态为 <code>active</code> 的脚本。活跃脚本是指过去七天被发现并且未通过“cdn-cgi”终端（由 Cloudflare 管理）提供的脚本。</p>
+	<p>我们还引入了其他状态：</p>
+	<ul>
+		<li><code>infrequent</code> 脚本是指一段时间内在 CSP 报告中的出现次数极少的脚本。它们通常指示单个用户的浏览器在使用被入侵的浏览器扩展。此状态旨在减少在 HTML 中注入 JavaScript 的浏览器插件带来的干扰。</li>
+		<li><code>inactive</code> 脚本是指在七天内没有被报告因此很可能已经被删除或替换的脚本。</li>
+		<li><code>cdn-cgi</code> 是从 Cloudflare 管理的“/cdn-cgi/”终端提供的脚本。这些脚本与一些 Cloudflare 产品相关，例如我们的分析或机器人管理功能。Cloudflare 会密切监控这些脚本，它们很少会发生变化，应该不需要客户进行密切监控，因此默认情况下是隐藏的，除非我们的检测发现任何可疑情况。</li>
+	</ul>
+	<p>如果客户希望查看脚本的完整列表，包括非活跃脚本，则仍可以点击“所有脚本”进行查看。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/Screenshot-2022-06-28-at-13.30.05.png" class="kg-image" alt="Page Shield dashboard showing detected scripts."></figure>
+	<h3 id="--1">警报中的脚本元数据</h3>
+	<p>选择使用 Page Shield 的 Enterprise 附加组件版本的客户还可以选择设置恶意脚本通知。在上一版本中，我们提供了数据首次发现和最后一次发现的脚本 URL。我们已对这些警报进行改进，以改善安全分析师的体验。我们的目标是提供安全分析师为了验证脚本而需要手动查找的所有数据。这次更新之后，我们通过使用 <a href="https://radar.cloudflare.com/" target="_blank">Cloudflare Radar</a> 提供的见解，朝上述目标迈进了一大步。</p>
+	<p>在电子邮件警报顶部，您现在会发现显示脚本的地方还出现了关于发现脚本的时间以及完整 URL（出于安全考虑，不可点击）的其他信息。</p>
+	<p>作为 Page Shield 的 Enterprise 附加组件版本的一部分，我们通过自定义<a href="https://blog.cloudflare.com/detecting-magecart-style-attacks-for-pageshield/">机器学习分类器</a>以及一系列域名和 URL 威胁源审核了脚本。针对任何机器学习评分系统的一个很常见的问题是“为什么它会采用这种方式评分”。为此，我们现已对系统生成的机器学习评分进行拆分，以显示评分的各个组成部分；目前包括：混淆和数据外泄值。这应该有助于客户在误报的情况下更好地审核脚本。</p>
+	<p>威胁源非常有用，可帮助检测我们的分类器尚未经过训练的新攻击样式。其中一些源为我们提供了一系列恶意终端类别，例如“恶意软件”、“间谍软件”或“网络钓鱼”。我们的 Enterprise 附加组件客户目前能够在警报（如上所示）中和仪表板内看到分类。目标是提供关于脚本之所以被视为恶意脚本的更多背景信息。</p>
+	<p>我们目前还提供关于每个版本的脚本更改以及“恶意代码评分”的信息。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/Issued-certificates.png" class="kg-image" alt="Email alert showing which script was flagged and where it was seen."></figure>
+	<p>就在最基本信息下方，我们添加了关于提供脚本的相关方域名的 WHOIS 信息。在某些情况下，域名注册服务可能会隐藏组织名称等相关信息，但是关于注册日期和到期日期的信息可能非常有用，可帮助检测所有权的意外变化。例如，我们经常发现恶意脚本托管在新注册的域名下。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/Insights.png" class="kg-image" alt="email alert showing WhoIs information of the domain the script was delivered from."></figure>
+	<p>我们目前还提供关于通过证书透明度监控为此域名发放的 SSL 证书的详细信息。这可能有助于检测潜在的接管。例如，如果第三方脚本终端通常使用 Digicert 证书，但最近发放了 Let’s Encrypt 证书，这可能指示另一个相关方在试图接管域名。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/Main.png" class="kg-image" alt="Email alert. Certificate Transparency monitor information of the script:   "></figure>
+	<p>最后，同样重要的是，我们改进了仪表板链接，将用户直接导向 Page Shield UI 提供的特定脚本详情页面。</p>
+	<h3 id="--2">接下来？</h3>
+	<p>有许多途径可通过 JavaScript 执行恶意活动。为此，我们必须构建特定于攻击类型的检测机制，以及将帮助检测异常的总体工具。我们目前在构建新的组件，专门用于利用 <code>connect-src</code> CSP 伪指令寻找数据端点中的恶意企图迹象。目标是提高我们的 Magecart 样式攻击检测的准确性。</p>
+	<p>我们还致力于提供通过 Page Shield 直接生成 CSP 策略的能力，以便轻松执行积极阻止并长久维持秩序。</p>
+	<p>我们还在谋划的另一项功能是提供一种能力来阻止脚本一键访问用户的网络摄像头、麦克风或位置。</p>
+	<p>更多相关详情，敬请关注未来的博客文章。还有许多功能即将推出！</p>
+</div>

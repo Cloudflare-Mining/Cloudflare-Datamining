@@ -1,0 +1,25 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image2-11.png" class="kg-image" alt="Working in public — our docs-as-code approach"></figure>
+	<p><a href="https://www.writethedocs.org/guide/docs-as-code/" target="_blank">文件即程式碼</a>是一種使用開發人員建立程式碼所使用的工具及程序，來編寫和發佈文件的方法。這一理念近年來越來越受歡迎，尤其是在科技公司。自動連結檢查是這個程序的一部分，它可以確保可靠且安全地部署作者的變更。透過採用「文件即程式碼」方法做好準備，技術文件作者可以專注於他們最擅長的工作：確保我們的讀者獲得易於查找的有用且準確的資訊，並且我們的文件使用單一的語言。</p>
+	<p>除了採用「文件即程式碼」方法外，在 Cloudflare，我們還在 <a href="https://github.com/cloudflare/cloudflare-docs" target="_blank"><code>cloudflare-docs</code> GitHub 存放庫</a>中公開處理文件變更。讓我們的文件開放接收外部投稿有助於我們隨著時間的推移改進文件——我們的社群非常善於發現問題！雖然我們需要審查這些投稿內容並確保它們符合我們的樣式指南和內容策略，但 Cloudflare 社群所提供的投稿有助於日益完善我們的文件。Cloudflare 將協助打造更出色的網際網路，而我們的社群將協助構建更完美的文件。</p>
+	<h2 id="cloudflare-">Cloudflare 的文件即程式碼</h2>
+	<p>在 Cloudflare，我們採用「文件即程式碼」方法在<a href="https://developers.cloudflare.com/" target="_blank">開發人員文件</a>中建立及發佈產品文件。</p>
+	<p>這種方法會用到不同的元件。我們將 Git 與<a href="https://github.com/cloudflare/cloudflare-docs" target="_blank">公用 GitHub 存放庫</a>一起使用，來追蹤變更並處理分支及合併。我們依賴 GitHub Actions 及 Cloudflare Pages 進行持續整合與傳遞 (CI/CD)。我們的持續整合管道負責檢查文件是否成功構建，以及是否存在中斷的連結。內外部使用者都可以預覽每個提取要求中的變更，這意味著協作者不必設定本機環境即可預覽他們提出的變更。但是，如果他們希望這樣做，使用者可以使用開放原始碼的工具設定一個本機環境，並建立文件的本機組建。</p>
+	<p>遵循這個「文件即程式碼」策略有幾個優點。我們使用技術人員每天使用的知名工作流程。這樣可以更輕鬆地獲得工程師的意見反應，同時仍然能夠以足夠簡單的方式獲得來自公司中非技術人員和一般 Cloudflare 社群的投稿。在審查並核准一份文件投稿後，我們可以透過按一下按鈕將這些變更部署到即時文件網站。由於<a href="https://blog.cloudflare.com/new-dev-docs/">我們的文件引擎最近進行了變更</a>，部署和本機組建都很快，從而提高了我們團隊的工作速度。此外，您也可以安全地重組部分文件的結構，而不必擔心破壞內容——我們的 CI/CD 管道可確保我們沒有中斷的連結。</p>
+	<h2 id="-">我們的開放原始碼方法</h2>
+	<p>您可以透過使用私有存放庫，在內部使用「文件即程式碼」方法。但是，我們不會將這個方法的某些好處延伸到更大的 Cloudflare 社群所提供的稿件。</p>
+	<p>作為 Cloudflare 的技術文件作者，文件相關工作主要是在我們的公用 GitHub 存放庫中完成的。我可以透過全新或更新的文件將變更推送至 <code>cloudflare-docs</code> GitHub 存放庫，然後由我的 Cloudflare 利害關係人（如產品經理和工程師）對這些文件進行審查。</p>
+	<p>除了與其他 Cloudflare 員工一起完成這項工作外，我還可以解决問題並審查來自外部利害關係人的提取要求，因為我們的文件開放原始碼。例如，來自外部投稿人的提取要求 #4601 修復了文件中不正確的運算式：</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/07/image1-6.png" class="kg-image" alt="A GitHub pull request from an external contributor fixing an example in the documentation."></figure>
+	<p>多虧了這些投稿，我們不僅在文件中，還在我們的產品中發現了許多問題！</p>
+	<p>處理這些投稿就是維護我們自己的<a href="https://blog.cloudflare.com/content-as-a-product/">文件產品</a>工作的一部分，其中包含自己的錯誤和功能要求。問題和提取要求就像內部工單一樣，我們會對其進行指派、排列優先順序、處理及審查——儘管它們並非都位於同一個待處理項目中。</p>
+	<p>對於內部及外部投稿，我們所做的工作都是相似的。我們會審查提議的變更，確保全新或更新的內容符合我們的樣式指南和內容策略。如有必要，我們會要求對內容進行技術驗證。最後，我們在變更獲得核准後將其合併。</p>
+	<p>對於與文件無關的問題，我們在每個文件頁面中都有一個意見反應機制，讓讀者能夠提供關於產品本身的意見反應。然後，適當的團隊會對這些資訊進行內部審查及處理。</p>
+	<p>如需有關如何透過建立問題或提取要求來向文件投稿的詳細資訊，請參閱公用 GitHub 存放庫中的<a href="https://github.com/cloudflare/cloudflare-docs/blob/production/CONTRIBUTING.md" target="_blank">向 Cloudflare 文件投稿</a>頁面。</p>
+	<h3 id="--1">保守秘密</h3>
+	<p>對於暫時無法公開的內容，目前我們根據具體的技術文件作者和涉及的利害關係人，提供了幾種處理方法。</p>
+	<p>在某些情况下，我們在共用文件中接收直接意見反應並進行處理。接近功能發佈日期時，我們會建立相應的 Markdown 版本，並在適當的時間將其推送至公用 GitHub 存放庫。</p>
+	<p>在其他情况下，我們在私人 Git 存放庫中工作，使用為公用存放庫設定的相同程序獲取早期意見反應。在採用「文件即程式碼」方法後，這種處理非公開內容的方法很容易實作。在這種情況下，當時機成熟時，將內容推送至 GitHub 就是一個非常簡單的操作，只需將分支機構推送至另一個遠端並建立一個公用提取要求即可。</p>
+	<h2 id="--2">下一步<strong>行動</strong></h2>
+	<p>我們的許多工作已經公開，但我們仍然可以改進。雖然我們確實提供了<a href="https://github.com/cloudflare/cloudflare-docs/issues/new/choose" target="_blank">問題建立範本</a>以及提取要求指南，但我們最終將公開我們的樣式指南及內容策略。這會讓使用者提前瞭解我們會針對公用文件的每份稿件進行哪些檢查（並強制執行哪些措施），從而進一步提升我們的審查流程的透明度。</p>
+</div>

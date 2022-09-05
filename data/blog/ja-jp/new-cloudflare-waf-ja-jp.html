@@ -1,0 +1,82 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/1-20.png" class="kg-image"></figure>
+	<p>Cloudflareの<a href="https://www.cloudflare.com/ja-jp/waf/" target="_blank">Webアプリケーションファイアウォール（WAF）</a>は、1日あたり570億を超えるサイバー脅威をブロックしています。これは、毎秒650,000件のHTTPリクエストをブロックしている計算です。このトラフィックをフィルタリングするオリジナルコードは、Cloudflareの現在のCTOによって書かれたもので、WAFは<a href="https://www.cloudflare.com/ja-jp/gartner-mq-waf-2020/" target="_blank">2020年 GartnerのWAFのためのマジッククアドラントの実行能力で最高スコア</a>を獲得するなど、これまで多くの称賛をいただいています。</p>
+	<p>Cloudflareでは、コードが保持できなくなったり、パフォーマンスが十分でなくなったり、以前ほどスケーラブルでなくなった場合に、そのコードを置き換えることを重要視しており、Cloudflareスタックの重要な部分を定期的に書き直しています。これは、当社が大きく成長するにつれて、かつてのソリューションが機能しなくなるため、必要なことなのです。かなり長い期間、Cloudflareでは<a href="https://www.youtube.com/watch?v=nlt4XKhucS4" target="_blank">Johnが書いたLunaJITコードを </a>Rustで書かれた新しいコードや改良したUIに書き換えるという作業を行ってきました。</p>
+	<p>この度、新しいCloudflare Webアプリケーションファイアウォールを発表できることとなりました。</p>
+	<p>本日から、Cloudflareで新しく作成されたアカウントの10%は、Proプランのゾーン以上を追加すると、新しいWAFにアクセスできるようになります。この割合は、4月中には新規アカウントの100%まで増加する予定です。その後、既存のお客様の移行作業を開始いたします。Enterpriseプランのお客様は、アカウントチームにご連絡いただければ早期移行が可能です。</p>
+	<h3 id="-">変更される点</h3>
+	<p>Webアプリケーションファイアウォール（WAF）は、Cloudflareプラットフォームのコアコンポーネントです。ポートフォリオで最も使用されることが多い製品の一つとして、WAFを大規模に実行することで、Cloudflareでは多くのフィードバックと経験を得ており、これらがこの大きなイテレーションにおける指針になりました。新しいWAFがもたらすもの：</p>
+	<ul>
+		<li><em><strong>ルールの閲覧と設定の向上</strong> </em> - 高度なフィルタリング、一括編集、ルールタグなど、強力なツールを失うことなく、ワンクリックで簡単にデプロイできます。WordPressのすべてのルールをオンにし、Cloudflareのマネージドルールをすべてログに設定したり、実行されていないルールを特定することが簡単にできるようになりました。</li>
+		<li><em><strong>新しいマッチングエンジン</strong></em><strong> </strong>- Rustで書かれており、 <a href="https://blog.cloudflare.com/how-we-made-firewall-rules/">wirefilter</a>構文（ファイアウォールルールで使われるのと同じ構文）をサポートします。このエンジンにより、より高速なマネージドルール展開が可能となり、さらに多くのトラフィックにWAFを展開して、次のレベルまで拡張できるようになります。さらに、パフォーマンスとセキュリティの向上も同時に実現します。</li>
+		<li><em><strong>更新されたルールセット</strong></em><strong> </strong><em>-</em> 新しいWAFには、ルールステータスをアクションから分離してより優れた制御を提供する、更新されたルールセットが搭載されています。Cloudflare OWASPコアルールセットも、最新バージョンのOWASPコアルールセット (本稿執筆時点でv3.3) に基づいて改良されています。これにより、パラノイアレベルが追加され、現在利用可能なバージョンと比較して誤検知率が改善されています。</li>
+		<li><em><strong>グローバル設定</strong></em> - アカウント全体に同じ設定をデプロイします。ルールをルールセットとしてグループ化し、ネイティブのバージョン管理とロールバック機能を活用します。</li>
+	</ul>
+	<p>上記のリストは、当社が楽しみにしていることのほんの一部分にすぎず、それぞれのポイントが記事一つ分に値するものですが、以下に注目点を挙げてみます。</p>
+	<h3 id="--1">ルールの閲覧と設定の向上</h3>
+	<p>Cloudflare Specials1グループを含むCloudflareマネージドルールセットは、WAFの主要コンポーネントの1つです。これには、Cloudflareによって提供され、保持されている数百のルールが含まれます。デフォルト設定では、あらゆるWebアプリケーションに対して非常に優れたセキュリティベースラインを提供しながら、非常に低い誤検知率を達成することを目指しています。しかし、最高のセキュリティスタンスを得るには、できるだけ多くのルールを有効にする必要があります。つまり、基盤となるアプリケーションに基づいてルールセットの動作を深く掘り下げてカスタマイズすることも時に必要になります。</p>
+	<p>新しいWAFでは、デフォルト設定で、マネージドルールセットをワンクリックで有効にしたいと考えました。一方で、関心のある人に向けては、はるかに優れた設定エクスペリエンスを実現したいと考えました。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/2-10.png" class="kg-image" alt="The new WAF UI. One click to turn on the Cloudflare Managed Ruleset and the Cloudflare OWASP ModSecurity Core Ruleset."></figure>
+	<p>新しいWAF UI。Cloudflare のマネージドルールセットと Cloudflare OWASP ModSecurity コアルールセットをワンクリックでオンにします。</p>
+	<p>現在、Cloudflareマネージドルールセットを有効にするには、グローバルWAFスイッチを有効にし、目的のルールグループを設定する必要があります。WordPress、Joomla、PHP、および類似のシステムを含む10のルールグループは、オン/オフの切り替えで直接ページに表示されます。このUIでは、各ルールを個別にチェックしないでグループ内のルールを簡単にフィルタリングまたは構成することはできません。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/3-6.png" class="kg-image" alt="The current (old) Managed Ruleset WAF UI. Clicking on a group displays a list of rules in each group."></figure>
+	<p>現行の（古い）管理ルールセット WAF UI。グループをクリックすると、各グループのルールのリストを表示します。</p>
+	<p>UIはシンプルでしたが、一般的なタスクを瞬時に実行することはできませんでした。たとえば、<em>オフになっているすべてのルールを表示する、</em>または<em>、XSS攻撃を軽減するすべてのルールを表示する</em>などです。これからは、すべてのルールが1つの表に表示され、ルールのステータス、アクション、タグ別のフィルタリングはワンクリックするだけで実行できます。ルールタグはグループに取って代わり、ルールには1つ以上のタグがつくため、システムの柔軟性が格段に高まります。タグは次の目的で使用されます 。</p>
+	<ul>
+		<li>ルールが特定のソフトウェアコンポーネントに適用可能であるかどうかを識別する</li>
+		<li>攻撃ベクトルを特定する (例：XSS, SQLi, RCE）</li>
+		<li>CVE 固有のルールを識別する</li>
+	</ul>
+	<p>最後に、インラインの単一のルールコントロールに加えて、一括編集コントロールが可能になり、特定のユースケースに基づく設定変更が迅速に行えます。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/4-3.png" class="kg-image" alt="The new WAF ruleset browser. Bulk options, tags and filtering components in one place."></figure>
+	<p>新しいWAFルールセットブラウザ。一括オプション、タグ、フィルタリングコンポーネントを一つの場所に表示。</p>
+	<p>利用可能なルールの数が増えることが予想され、より多くのユーザーがカスタム構成を採用できるように、設定変更をデプロイする際の確認画面を追加しました。ここから、デフォルトからの変更を簡単に確認でき、必要に応じて元に戻すことができます。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/5-3.png" class="kg-image" alt="Ruleset deployment review screen. From here you can review any custom configuration overrides from defaults."></figure>
+	<p>ルールセット展開のレビュー画面。ここから、デフォルトからのカスタム設定のオーバーライドを確認できます。</p>
+	<h3 id="--2">新しいマッチングエンジン</h3>
+	<p>マネージドルールセットの実行を担当する現行のCloudflare WAFは、LuaJITで書かれており、NGINX モジュールとして実装されています。ルール構文は、<a href="https://github.com/SpiderLabs/ModSecurity" target="_blank">ModSecurity</a>で実装された構文のスーパーセットにCloudflareの実装に固有の機能を追加したものに倣っています。</p>
+	<p>新しいエンジンに移行することで、次のことを実現したいと考えました。</p>
+	<ul>
+		<li>Cloudflareで使用される他のテクノロジーとの一貫性がある、より安全で、良質、高性能な環境</li>
+		<li>高性能なフィルタリング機能とマッチング機能により、柔軟性の高い展開と例外処理をより簡単に行う</li>
+		<li>マネージドルールセットの基盤としてwirefilter構文を採用することにより、製品の機能セットを統合</li>
+	</ul>
+	<p>最後の点は、Cloudflareにとってだけでなくユーザーにとっても特に重要なことでした。なぜなら、この構文はカスタム<a href="https://developers.cloudflare.com/firewall/" target="_blank">ファイアウォールルール</a>ですでに使用されていて、同じ基盤となるRustライブラリを使用してフィルタリングを実行することもあるためです！</p>
+	<p>新しいエンジンは<a href="https://www.rust-lang.org/" target="_blank">Rust</a>に実装されています。<a href="https://blog.cloudflare.com/tag/rust/">このブログ</a>では、Cloudflareがどれだけこれを気に入っているか、何回もお伝えしてきました。また、この新しい実装では、安全性の向上だけでなく、速度も向上できるように尽力しているところです。この詳細については、今後のブログ記事で説明する予定です。</p>
+	<h3 id="cloudflare-">Cloudflareルールセットの更新</h3>
+	<p>Cloudflare ルールセットが更新され、新しいWAFへと移行しました。特に、ルールセットはwirefilter構文を使用し、ルールステータスはルールアクションから分離されているため、両方を個別に設定できます。</p>
+	<p>Cloudflare OWASP コアルールセットもエンジンから独立してメジャーアップデートされます。現行のCloudflare WAFは、公式<a href="https://owasp.org/www-project-modsecurity-core-rule-set/" target="_blank">OWASP ModSecurity Core Ruleset</a>の2.xバージョンを実装しています。新しいWAFでは、Cloudflare OWASPコアルールセットは、<a href="https://github.com/SpiderLabs/owasp-modsecurity-crs" target="_blank">GitHubリポジトリ</a>から入手可能な最新の3.3バージョンが直接ベースになったものです。</p>
+	<p>新しいCloudflare OWASPコアルールセットは、追加されたエンジン機能とともに、既存のものにいくつかの改善を加えています。</p>
+	<ul>
+		<li>誤検知の数を減らし、アプリケーション汎用ルールを強化</li>
+		<li>感度スコアをより詳細に制御し、各ルールがスコアにどれくらい貢献しているか、トリガーされたリクエストの合計スコアをわかりやすく表示</li>
+		<li><a href="https://coreruleset.org/faq/#paranoialevel" target="_blank">パラノイアレベル</a>の追加 - 誤検知リスクに基づく含有／除外／ルールグループを容易に実現</li>
+		<li>アプリケーションに基づく適切なルールを使用した展開を可能にするルールタグ</li>
+	</ul>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/4-4.png" class="kg-image" alt="The Cloudflare OWASP Core Ruleset"></figure>
+	<p>Cloudflare OWASP コアルールセット‌‌</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/5-4.png" class="kg-image" alt="The Cloudflare OWASP Core Ruleset review screen"></figure>
+	<p>Cloudflare OWASP コアルールセット確認画面‌‌</p>
+	<p>OWASP ModSecurity コアルールセットの最新バージョンをCloudflare実装に変換する取り組みの一環として、チームはModSecurityからwirefilter構文コンバーターも構築しました。これにより、アップストリームが改善された直後にルールセットを簡単にデプロイや更新ができるようになり、お客様が常に最新バージョンにアクセスできるようになります。また、お客様がModsecurityベースのWAFからCloudflareへと簡単に移行できるように、将来的にはオープンソースでコンバーターをUIに公開する予定です。</p>
+	<h3 id="--3">グローバル設定</h3>
+	<p>Cloudflareは当初からCloudflare WAFのゾーンベースモデルを運用しています。これは、少数のアプリケーション、またはゾーンごとに非常に多様なアプリケーションセットを保護するシンプルなユースケースに適しています。</p>
+	<p>複数のゾーンにまたがる、より複雑で統一されたデプロイメントは通常、<a href="https://api.cloudflare.com/" target="_blank">API</a>や<a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs" target="_blank">Cloudflare Terraform Provider</a>などの自動化ツールを利用して実装されます。</p>
+	<p>新しいWAFでは、単一のアカウントを使って任意のトラフィックフィルターでルールセットの展開を行うことができます。例としては、</p>
+	<ul>
+		<li>Cloudflareの管理ルールセットをすべてのゾーンにデプロイする</li>
+		<li>パスに &nbsp;/api/ * を含まないすべてのトラフィックに Cloudflare OWASP コアルールセットをデプロイする</li>
+		<li>自分が使っているIPから来るトラフィックに対して、自分のアカウント全体でマネージドルールセットを無効にする</li>
+	</ul>
+	<p>これにより、数回のクリックでアカウント全体の強力なWAF設定が可能になります。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/6-3.png" class="kg-image" alt="Three rulesets deployed on arbitrary applications on the account."></figure>
+	<p><em><em>アカウントの任意のアプリケーションにデプロイする3つのルールセット。</em> ‌‌</em></p>
+	<p>これを実現するために、ルールセット（ルールのグループ）はファーストクラスのコンセプトになり、ネイティブのバージョンで、UIで直接ロールバック機能と差分機能の両方を使用できます。この機能は、今後数ヶ月以内に公開される予定です。</p>
+	<p>アカウントベースの構成については、最初に現在アカウントチームに連絡して、早期アクセスをお願いできるEnterpriseプランのお客様に限り、ご利用いただくことになります。カスタムファイアウォールルール自体は間もなく新しいエンジンに移行されるため、お客様は独自のカスタムファイアウォールルールセットを作成し、必要に応じて任意のトラフィックフィルタに展開できます。</p>
+	<h3 id="--4">新機能のための新しいプラットフォーム</h3>
+	<p>WAFには見かけ以上にたくさんの機能がたくさんあり、チームはすでに新しいWAF上に構築された一連の追加機能の完成に向けて鋭意作業中です。これには、エンジン自体の改善や、分析や実用的なイベントの可視性の向上などが含まれます。エンジン全体は、Cloudflareのルールベースの多くの製品基盤になるように設計されており、最終的にCloudflareの構成全体を一連のルールとして表すことを目的としています。</p>
+	<p>完成までの間、皆様のご意見をお待ちしております。どこまで刷新することができるか楽しみにしたいと思います。</p>
+	<p>.......</p>
+	<!--kg-card-begin: markdown-->
+	<p><sup>1</sup>Cloudflare Specialsは、Cloudflareのセキュリティチームによって書かれたルールであり、Cloudflareプラットフォームの背後にある何百万ものWebアプリケーションの監視と保護に基づいて書かれています。</p>
+	<!--kg-card-end: markdown-->
+</div>

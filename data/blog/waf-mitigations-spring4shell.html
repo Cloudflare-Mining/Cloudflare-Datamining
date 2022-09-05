@@ -1,0 +1,44 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image1-113.png" class="kg-image" alt="WAF mitigations for Spring4Shell"></figure>
+	<!--kg-card-begin: markdown-->
+	<p><small>This post was updated on 5th April 2022 to include toggled rules and new rules for CVE-2022-22965</small></p>
+	<!--kg-card-end: markdown-->
+	<p>A set of high profile vulnerabilities have been identified affecting the popular <a href="https://spring.io/" target="_blank">Java Spring Framework</a> and related software components - generally being referred to as Spring4Shell.</p>
+	<p>Four CVEs (Common Vulnerabilities and Exposures) have been released so far and are being actively updated as new information emerges. These vulnerabilities can result, in the worst case, in full remote code execution (RCE) compromise:</p>
+	<ul>
+		<li><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-22947" target="_blank">CVE-2022-22947</a> - [<a href="https://tanzu.vmware.com/security/cve-2022-22947" target="_blank">official VMware post</a>]</li>
+		<li><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-22950" target="_blank">CVE-2022-22950</a> - [<a href="https://tanzu.vmware.com/security/cve-2022-22950" target="_blank">official VMware post</a>]</li>
+		<li><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-22963" target="_blank">CVE-2022-22963</a> - [<a href="https://spring.io/blog/2022/03/29/cve-report-published-for-spring-cloud-function" target="_blank">official Spring project post</a>]</li>
+		<li><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-22965" target="_blank">CVE-2022-22965</a> - [<a href="https://spring.io/blog/2022/03/31/spring-framework-rce-early-announcement" target="_blank">official Spring project post</a>]</li>
+	</ul>
+	<p>Customers using Java Spring and related software components, such as the Spring Cloud Gateway, should immediately review their software and update to the latest versions by following the official Spring project guidance.</p>
+	<p>The <a href="https://www.cloudflare.com/waf/" target="_blank">Cloudflare WAF</a> team is actively monitoring these CVEs and has already deployed a number of new managed mitigation rules. Customers should review the rules listed below to ensure they are enabled while also patching the underlying Java Spring components.</p>
+	<h3 id="cve-2022-22947">CVE-2022-22947</h3>
+	<p>A new rule has been developed and deployed for this CVE with an <a href="https://developers.cloudflare.com/waf/change-log/2022-03-29-emergency-release/" target="_blank">emergency release on March 29,</a> which started blocking the vulnerability since the <a href="https://developers.cloudflare.com/waf/change-log/2022-04-04-emergency-release/" target="_blank">emergency release on the 4th, April &nbsp;2022</a>:</p>
+	<p>Managed Rule <strong><em><strong>Spring - CVE:CVE-2022-22947</strong></em></strong></p>
+	<ul>
+		<li>WAF rule ID: <code>e777f95584ba429796856007fbe6c869</code></li>
+		<li>Legacy rule ID: <code>100522</code></li>
+	</ul>
+	<h3 id="cve-2022-22950-and-cve-2022-22963">CVE-2022-22950 and CVE-2022-22963</h3>
+	<p>Currently, available PoCs are blocked by the following rule:</p>
+	<p>Managed <em>Rule <strong>PHP - Code Injection</strong></em></p>
+	<ul>
+		<li>WAF rule ID: <code>55b100786189495c93744db0e1efdffb</code></li>
+		<li>Legacy rule ID: <code>PHP100011</code></li>
+	</ul>
+	<h3 id="cve-2022-22963-and-cve-2022-22965">CVE-2022-22963 and CVE-2022-22965</h3>
+	<p>Currently, available PoCs are blocked by the following rule:</p>
+	<p>Managed Rule <em><strong>Plone - Dangerous File Extension</strong></em></p>
+	<ul>
+		<li>WAF rule ID: <code>aa3411d5505b4895b547d68950a28587</code></li>
+		<li>Legacy WAF ID: <code>PLONE0001</code></li>
+	</ul>
+	<p>We also deployed a new rule via an <a href="https://developers.cloudflare.com/waf/change-log/2022-03-31-emergency-release/" target="_blank">emergency release on March 31</a> (today at time of writing) to cover additional variations attempting to exploit this vulnerability, which started blocking since the <a href="https://developers.cloudflare.com/waf/change-log/2022-04-04-emergency-release/" target="_blank">emergency release on the 4th, April, 2022</a></p>
+	<p>Managed Rule <em><strong>Spring - Code Injection</strong></em></p>
+	<ul>
+		<li>WAF rule ID: <code>d58ebf5351d843d3a39a4480f2cc4e84</code></li>
+		<li>Legacy WAF ID: <code>100524</code></li>
+	</ul>
+	<p>Additionally, customers can receive protection against this CVE by deploying the Cloudflare OWASP Core Ruleset with default or better settings on our new WAF. Customers using our legacy WAF will have to configure a high OWASP sensitivity level.</p>
+</div>

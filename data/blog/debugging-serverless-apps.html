@@ -1,0 +1,159 @@
+<div class="post-content lh-copy gray1">
+	<!--kg-card-begin: markdown-->
+	<p>The Workers team have already done an amazing job of creating a functional, familiar edit and debug tooling experience in the Workers IDE. It's Chrome Developer Tools fully integrated to Workers.</p>
+	<p><code>console.log</code> in your Worker goes straight to the console, just as if you were debugging locally! Furthermore, errors and even log lines come complete with call-site info, so you click and navigate straight to the relevant line.<br>
+		In this blog post I’m going to show a small and powerful technique I use to make debugging serverless apps simple and quick.</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/06/workers-ide-console.gif" alt="Integrated Chrome Dev Tools"></p>
+	<p>There is a <a href="https://developers.cloudflare.com/workers/writing-workers/debugging-tips/" target="_blank">comprehensive guide</a> to common debugging approaches and I'm going to focus on returning debug information in a header. This is a great tip and one that I use to capture debug information when I'm using curl or Postman, or integration tests. It was a little finicky to get right the first time, so let me save you some trouble.</p>
+	<p>If you've followed <a href="https://blog.cloudflare.com/p/607ad519-5652-4688-9fff-33fbb1fc9d3f/">part 1</a> or <a href="https://blog.cloudflare.com/p/5cd5d990-7b88-4e62-9615-9c51d33daae8/">part 2</a> of my Workers series, you'll know I'm using Typescript, but the approach would equally apply to Javascript. In the rest of this example, I’ll be using the routing framework I created in part 2.</p>
+	<h3 id="requestingdebuginfo">Requesting Debug Info</h3>
+	<p>I want my Worker to return debugging information whenever:</p>
+	<ul>
+		<li>An X-Debug header is present or</li>
+		<li>a ?debug query parameter is present.</li>
+	</ul>
+	<p>Exercise for the reader: You may also like to require a shared secret key (so that you control who can enable debugging information) and pass a log level.</p>
+	<p>I'd like my debug info to be the same that I'd see in the Workers IDE. That is, all the log lines and any exception info from the execution of my Worker.</p>
+	<h3 id="architecture">Architecture</h3>
+	<p>Logging is orthogonal to the main request flow, so let's try keep it abstracted. Different frameworks use different terms for this abstraction. I’ll use the term <a href="https://en.wikipedia.org/wiki/Interceptor_pattern" target="_blank">interceptor</a>.</p>
+	<p>Let's define an interceptor as something that runs pre and/or post the main request flow.</p>
+	<pre><code class="language-Typescript">/**
+ * Intercepts requests before handlers and responses after handlers
+ */
+export interface IInterceptor {
+  preProcess(req: RequestContextBase): void;
+  postProcess(req: RequestContextBase, res: Response): void;
+}
+</code></pre>
+	<p>And then run pre and post processing before and after the handler has executed.</p>
+	<pre><code class="language-Typescript">public async handle(request: Request): Promise&lt;Response&gt; {
+	this.preProcess(req);
+	const handler = this.route(req);
+	const res = await handler.handle(req);
+	this.postProcess(req, res);
+	return res;
+}
+
+private preProcess(req: RequestContextBase) {
+	for (const interceptor of this.interceptors) {
+	  interceptor.preProcess(req);
+	}
+}
+
+private postProcess(req: RequestContextBase, res: Response) {
+	for (const interceptor of this.interceptors) {
+	  interceptor.postProcess(req, res);
+	}
+}
+</code></pre>
+	<p>OK, so with a generalized pattern to execute code before and after a request, let's add our first Interceptor:</p>
+	<h3 id="loginterceptor">LogInterceptor</h3>
+	<p>First we'll need a logger. This logger just redirects to console, but also keeps track of the log lines so the interceptor can retrieve them later.</p>
+	<pre><code class="language-Typescript">export class Logger implements ILogger {
+  public logLines: string[] = [];
+
+  public debug(logLine: string): void {
+    this.log(`DEBUG: ${logLine}`);
+  }
+
+  public info(logLine: string): void {
+    this.log(`INFO: ${logLine}`);
+  }
+
+  public warn(logLine: string): void {
+    this.log(`WARN: ${logLine}`);
+  }
+
+  public error(logLine: string): void {
+    this.log(`ERROR: ${logLine}`);
+  }
+
+  public getLines(): string[] {
+    return this.logLines;
+  }
+
+  public clear(): void {
+    this.logLines = [];
+  }
+
+  private log(logLine: string): void {
+    // tslint:disable-next-line:no-console
+    console.log(logLine);
+    this.logLines.push(logLine);
+  }
+}
+</code></pre>
+	<p>The <code>LogInterceptor</code> is simple enough in post processing, if it detects the X-Debug header or debug query param, it adds all the log lines to the X-Debug response header as a URL-encoded string.</p>
+	<pre><code class="language-Typescript">const logger = new Logger();
+
+export class LogInterceptor implements IInterceptor {
+  public preProcess(req: RequestContextBase) {
+    return;
+  }
+
+  public postProcess(req: RequestContextBase, res: Response) {
+    logger.debug('Evaluating request for logging');
+    const debugHeader = 'X-Debug';
+    if (
+      req.url.searchParams.get('debug') !== 'true' &amp;&amp;
+      req.request.headers.get(debugHeader) !== 'true'
+    ) {
+      return;
+    }
+    logger.debug('Executing log interceptor');
+    const lines = logger.getLines();
+    const logStr = encodeURIComponent(lines.join('\n'));
+
+    logger.debug(`Adding to ${debugHeader} header ${logStr.length} chars`);
+    res.headers.append(debugHeader, logStr);
+  }
+}
+</code></pre>
+	<p>Now it's up to the client to display.</p>
+	<h3 id="decodingtheresult">Decoding the result</h3>
+	<p>urldecode isn't native on most operating systems. There are Perl and Python implementations, but here's a Bash only function:</p>
+	<pre><code class="language-bash">$ urldecode() { : "${*//+/ }"; echo -e "${_//%/\\x}"; }
+</code></pre>
+	<p>Source: <a href="https://stackoverflow.com/questions/6250698/how-to-decode-url-encoded-string-in-shell" target="_blank">StackOverflow</a></p>
+	<p>Using that, we can call curl, extract the headers, grep for our X-Debug header and then invoke the urldecode function.</p>
+	<pre><code class="language-bash">$ urldecode `curl -sD - -o /dev/null https://cryptoserviceworker.com/api/all/spot/btc-usd -H "X-Debug:true" | grep x-debug`
+x-debug: INFO: Handling: https://cryptoserviceworker.com/api/all/spot/btc-usd
+DEBUG: No handlers, getting from factory
+DEBUG: Found handler for /api/all/spot/btc-usd
+DEBUG: ["spot","btc-usd"]
+DEBUG: Getting spot from https://api.gdax.com/products/btc-usd/ticker
+DEBUG: ["spot","btc-usd"]
+DEBUG: Parsing spot...
+INFO: GDAX response {"trade_id":45329353,"price":"6287.01000000","size":"0.03440000","bid":"6287","ask":"6287.01","volume":"9845.51680796","time":"2018-06-25T18:12:48.282000Z"}
+INFO: Bitfinex response {"mid":"6283.45","bid":"6283.4","ask":"6283.5","last_price":"6283.5","low":"6068.5","high":"6341.0","volume":"28642.882017660013","timestamp":"1529950365.0694907"}
+DEBUG: Evaluating request for logging
+DEBUG: Executing log interceptor
+</code></pre>
+	<p>Boom. Decoded debug info right there in the console. Ship it.</p>
+	<p>If you log stack traces in your worker with <code>logger.error(e.stack)</code>, that will also format nicely:</p>
+	<pre><code class="language-Bash">$ urldecode `curl -sD - -o /dev/null https://cryptoserviceworker.com/api/all/spot/btc-usd -H "X-Debug:true" | grep x-debug`
+x-debug: INFO: Handling: https://cryptoserviceworker.com/api/all/spot/btc-usd
+ERROR: Error: boom
+    at Router.&lt;anonymous&gt; (worker.js:118:35)
+    at step (worker.js:32:23)
+    at Object.next (worker.js:13:53)
+    at worker.js:7:71
+    at new Promise (&lt;anonymous&gt;)
+    at __awaiter (worker.js:3:12)
+    at Router.handle (worker.js:111:16)
+    at worker.js:48:42
+    at step (worker.js:32:23)
+    at Object.next (worker.js:13:53)
+DEBUG: Evaluating request for logging
+DEBUG: Executing log interceptor
+</code></pre>
+	<h3 id="summary">Summary</h3>
+	<p>In this post we:</p>
+	<ul>
+		<li>Defined a pre- and post-processing framework using Interceptors</li>
+		<li>Implemented a LogInterceptor to return logs generated as we were processing in the X-Debug header</li>
+		<li>Decoded them in bash</li>
+	</ul>
+	<p>May the logs be with you.</p>
+	<!--kg-card-end: markdown-->
+</div>

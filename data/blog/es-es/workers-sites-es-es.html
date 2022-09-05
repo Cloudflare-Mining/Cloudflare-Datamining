@@ -1,0 +1,50 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/09/image2-1.png" class="kg-image"></figure>
+	<p>El rendimiento en la web siempre ha sido una batalla contra la velocidad de la luz: acceder a un sitio desde Londres que se sirve desde Seattle, WA, significa que cada solicitud de activos tiene que viajar más de once mil kilómetros. El primer avance en la batalla por el rendimiento web fue mantener la conexión HTTP/1.1 y los navegadores que abrían múltiples conexiones. El siguiente avance fue la red CDN, que acercaba sus activos estáticos a sus usuarios finales al almacenarlos en caché en los centros de datos más cercanos a ellos. Hoy, con Workers Sites, nos complace anunciar el próximo gran avance: sitios completos distribuidos directamente en el límite de Internet.</p>
+	<h2 id="implementaci-n-al-l-mite-de-la-red"><strong>Implementación al límite de la red</strong></h2>
+	<p>¿Por qué no es suficiente el almacenamiento de activos en caché? Sí, el almacenamiento en caché mejora el rendimiento, pero una mejora significativa en ese aspecto también trae consigo dolores de cabeza. CDN puede adivinar qué activos debe almacenar en caché, pero solo mediante la suposición. Configurar su sitio para obtener el máximo rendimiento siempre ha sido un proceso propenso a errores que requiere una amplia colección de reglas y encabezados esotéricos. Incluso cuando está todo perfectamente configurado, casi nada se almacena en caché para siempre, y a menudo las preciadas solicitudes siguen teniendo que viajar hasta su origen (donde sea que esté). La invalidación de la memoria caché es, después de todo, uno de los <a href="https://twitter.com/secretgeek/status/7269997868" target="_blank">problemas más difíciles en la ciencia de la computación</a>.</p>
+	<p>Esto genera la pregunta: en lugar de mover bytes desde el origen al límite poco a poco de forma descoordinada, ¿por qué no empujar todo el origen al límite?</p>
+	<h2 id="workers-sites-ampliaci-n-de-la-plataforma-workers"><strong>Workers Sites: Ampliación de la plataforma Workers</strong></h2>
+	<p>Hace dos años, para la Semana de Aniversario, anunciamos <a href="https://workers.cloudflare.com/" target="_blank">Cloudflare Workers</a>, una forma para que los desarrolladores escriban y ejecuten JavaScript y WebAssembly en nuestra red en 194 ciudades de todo el mundo. Un año después, lanzamos Workers KV, nuestra tienda distribuida de clave-valor que proporcionó a los desarrolladores la capacidad de almacenar el estado en el límite en esas mismas ciudades.</p>
+	<p>Workers Sites aprovecha el poder de Workers y Workers KV al permitir que los desarrolladores carguen sus sitios directamente al límite y más cerca de los usuarios finales. Nacido en el límite, Workers Sites es lo que creemos que debería ser el desarrollo moderno en la web, nativamente seguro, rápido y masivamente escalable. Se invierte menos tiempo en la configuración y se invierte más tiempo en el código y en el contenido en sí.</p>
+	<h2 id="c-mo-funciona"><strong>Cómo funciona</strong></h2>
+	<p>Los Workers Sites se implementan con unos pocos comandos de terminal y pueden servir para un sitio generado por cualquier generador de sitios estáticos, como Hugo, Gatsby o Jekyll. Con <a href="https://github.com/cloudflare/wrangler" target="_blank">Wrangler</a> (nuestra CLI), puede subir los activos de su sitio directamente a KV. Cuando llega una solicitud a su sitio Workers, el Cloudflare Worker generado por Wrangler leerá y servirá el activo de KV, con los encabezados apropiados (no es necesario preocuparse por el Content-Type ni por el Cache-Control; de eso nos ocupamos nosotros).</p>
+	<p>Los Workers Sites se pueden usar para implementar cualquier sitio estático, como un blog, sitios de marketing o un portafolio. &nbsp;Si alguna vez decide que su sitio necesita volverse un poco menos estático, su Worker no es más que código; edítelo y extiéndalo hasta que tenga un sitio dinámico funcionando en todo el mundo.</p>
+	<h2 id="c-mo-empezar"><strong>Cómo empezar</strong></h2>
+	<p>Para comenzar a trabajar con los Workers Sites, primero debe <a href="https://dash.cloudflare.com/sign-up" target="_blank">registrarse en Workers</a>. Después de seleccionar su subdominio Workers.dev, elija el plan Workers Unlimited (desde $5/mes) para obtener acceso a Workers KV y tener la posibilidad de implementar los Workers Sites.</p>
+	<p>Después de registrarse en Workers Unlimited, deberá instalar la CLI para Workers: Wrangler. Wrangler se puede instalar desde NPM o Cargo:</p>
+	<pre><code class="language-bash"># NPM Installation
+npm i @cloudflare/wrangler -g
+# Cargo Installation
+cargo install wrangler</code></pre>
+	<p>Una vez que instale Wrangler, estará listo para implementar su sitio estático, con los siguientes pasos:</p>
+	<ol>
+		<li>Ejecute <code>wrangler init --site</code> en el directorio que contiene los activos creados de su sitio estático</li>
+		<li>Complete el archivo <code>wrangler.toml</code> recién creado con su cuenta y los detalles del proyecto</li>
+		<li>Publique su sitio con <code>wrangler publish</code></li>
+	</ol>
+	<p>También puede consultar nuestra <a href="https://developers.cloudflare.com/workers/sites" target="_blank">documentación de referencia</a> de los Workers Sites o seguir el tutorial completo para <a href="https://developers.cloudflare.com/workers/tutorials/deploy-a-react-app" target="_blank">create-react-app</a> en los documentos.</p>
+	<p>Si prefiere empezar con un video, ¡no hay ningún problema! <a href="https://watch.cloudflarestream.com/9943b400b59802b77f83a8a57f39d682" target="_blank">Este video</a> lo guiará a través de la creación e implementación de su primer sitio de Workers:</p>
+	<!--kg-card-begin: html-->
+	<stream src="9943b400b59802b77f83a8a57f39d682" controls=""></stream>
+	<script data-cfasync="false" defer="" type="text/javascript" src="https://embed.videodelivery.net/embed/r4xu.fla9.latest.js?video=9943b400b59802b77f83a8a57f39d682"></script>
+	<!--kg-card-end: html-->
+	<h2 id="incre-blemente-r-pido-de-atlanta-a-zagreb"><strong>Increíblemente rápido: de Atlanta a Zagreb</strong></h2>
+	<p>Además de mejorar la experiencia del desarrollador, trabajamos mucho tras bastidores al asegurarnos de que tanto las implementaciones como los sitios en sí sean increíblemente rápidos: nos complace compartir cómo lo hacemos con usted en nuestra <a href="https://blog.cloudflare.com/extending-the-workers-platform">publicación técnica de blog</a>.</p>
+	<p>Para probar el rendimiento de los Workers Sites tomamos uno de nuestros sitios personales y lo implementamos para ejecutar algunos puntos de referencia. Esta prueba fue hecha para nuestro sitio, pero sus resultados pueden variar.</p>
+	<p>Una forma común de comparar el rendimiento de su sitio es usar <a href="https://developers.google.com/web/tools/lighthouse" target="_blank">Google Lighthouse</a>, que puede hacer directamente desde la pestaña Auditorías de su navegador Chrome.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/09/image1-7.png" class="kg-image"></figure>
+	<p>Así que pasamos la primera prueba con gran éxito: ¡100! Sin embargo, ejecutar un punto de referencia desde su propia computadora presenta un sesgo: sus usuarios no están necesariamente donde usted está. De hecho, cada vez más sus usuarios están donde usted <em>no </em>está.</p>
+	<p>Desde dónde se realiza la evaluación comparativa es realmente importante: realizar pruebas desde diferentes lugares producirá resultados diferentes. La evaluación comparativa desde Seattle y el contacto con un servidor en la costa oeste dice muy poco sobre su rendimiento global.</p>
+	<p>Decidimos usar una herramienta llamada Catchpoint para ejecutar puntos de referencia desde ciudades de todo el mundo. Para ver cómo nos comparamos, implementamos el sitio en tres plataformas de implementación de sitios estáticos diferentes, incluidos Workers Sites.</p>
+	<p>Dado que los proveedores ofrecen regiones de centros de datos en las costas de Estados Unidos o Europa central, es común ver un buen rendimiento en regiones como América del Norte, y en ellas todo funciona perfectamente:</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/09/Screen-Shot-2019-09-26-at-10.58.41-PM.png" class="kg-image"></figure>
+	<p>Pero, ¿qué sucede con sus usuarios del resto del mundo? El rendimiento es aún más crítico en esas regiones: los primeros usuarios no se conectarán a su sitio en una MacBook Pro, cuya conexión es increíblemente rápida. Los Workers Sites le permiten llegar a esas regiones sin ningún esfuerzo adicional de su parte: cada vez que <a href="https://blog.cloudflare.com/scaling-the-cloudflare-global/">nuestro mapa crece</a>, su presencia global aumenta con él.</p>
+	<p>Llevamos a cabo la tarea de ejecutar algunos puntos de referencia desde diferentes partes del mundo para usted, y nos complace compartir los resultados:</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/09/Screen-Shot-2019-09-26-at-10.58.24-PM.png" class="kg-image"></figure>
+	<h2 id="una-ltima-cosa-"><strong>Una última cosa...</strong></h2>
+	<p>Implementar su próximo sitio con los Workers Sites es fácil y conduce a un gran rendimiento, por lo que pensamos que era correcto que implementáramos los Workers Sites nosotros mismos. ¡Con este anuncio, también estamos suministrando los <a href="https://developers.cloudflare.com/workers" target="_blank">documentos de Cloudflare Workers</a>! Y ahora se les brinda servicio desde un centro de datos de Cloudflare cerca de usted usando los Workers Sites.</p>
+	<p>¡Estamos ansiosos por ver qué implementa con los <a href="https://workers.cloudflare.com/sites" target="_blank">Workers Sites</a>!</p>
+	<hr>
+	<p><em>¿Ha creado algo interesante con Workers o Workers Sites? ¡Háganoslo saber @CloudflareDev!</em></p>
+</div>

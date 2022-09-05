@@ -1,0 +1,32 @@
+<div class="post-content lh-copy gray1">
+	<p>今天，我们很高兴宣布，我们的所有第 7 层产品以及 <a href="https://www.cloudflare.com/products/cloudflare-spectrum/" target="_blank">Spectrum</a> 和 <a href="https://www.cloudflare.com/magic-transit/" target="_blank">Magic Transit</a> 服务中将全面可用自带IP（BYOIP）。配置 BYOIP 后，Cloudflare 边缘将公告客户自己的 IP 前缀，并且这些前缀可用于我们的第 7 层服务、Spectrum 或 Magic Transit。如果您不熟悉这个术语，则 IP 前缀指的是一个 IP 地址范围。路由器创建一个可到达的前缀表（称为路由表），以确保数据包在互联网上正确传递。</p>
+	<p>作为本次宣布的一部分，我们会将 BYOIP 列在相关的产品<a href="https://www.cloudflare.com/cdn/" target="_blank">页面</a>、<a href="https://developers.cloudflare.com/byoip/" target="_blank">开发者文档</a>，以及用于控制您的前缀的 UI 支持中。以前的支持仅限于 API。</p>
+	<p>客户选择结合使用 BYOIP 和 Cloudflare 的原因有多种。或许，您的 IP 前缀已在许多重要地方列于白名单中，通过更新防火墙规则来同时允许 Cloudflare 地址空间可能在管理方面有巨大障碍。此外，您可能有数万甚至数百万最终用户通过 DNS 直接指向您的 IP，要让他们全部更新记录以指向 Cloudflare IP 将花费大量时间。</p>
+	<p>过去几个季度中，我们一直在构建工具和流程，以规模化支持客户自带 IP。在撰写本文时，我们已经成功引入了数百个客户 IP 前缀。其中 84％ 用于 Magic Transit 部署，14％ 用于第 7 层部署，另外 2％ 则用于 Spectrum 部署。</p>
+	<p>当您在 Cloudflare 使用 BYOIP 时，我们会在全球 200 多个城市中公告您的 IP 空间，并将您的 IP 前缀与您选择的某个服务（或多个服务！）绑定在一起。您的 IP 空间会像 Cloudflare 自己的 IP 一样得到保护和加速。如果您因为技术和/或法律方面的要求（例如数据主权）而在可公告您前缀的位置上有所限制，我们也支持区域性部署 BYOIP。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/07/IP-at-the-edge@2x.png" class="kg-image"></figure>
+	<p>您只需点击一个按钮，即可开启从 Cloudflare 边缘公告您的 IP，并在几分钟之内发布到全世界。</p>
+	<p>所有 BYOIP 客户会收到关于其前缀的<a href="https://blog.cloudflare.com/announcing-network-analytics/">网络分析</a>。BYOIP 前缀中的所有 IP 也可被视为静态 IP。另外，将您的 IP 前缀用于 Cloudflare 提供的服务有着特定的优势。</p>
+	<h3 id="layer-7-byoip-">Layer 7 + BYOIP：</h3>
+	<p>Cloudflare 具有功能强大的第 7 层产品组合，例如 Bot Management、Rate Limiting、Web Application Firewall 和 Content Delivery 等产品。您可以选择将 BYOIP 与我们的第 7 层产品搭配，获得使用自己 IP 地址的所有好处。</p>
+	<p>对于第 7 层服务，我们可以支持各种 IP 到域的映射请求，包括在域之间共享 IP 或将域置于专门的 IP 上，这可以帮助满足诸如非 SNI 支持之类的要求。</p>
+	<p>如果您也是 SSL for SaaS 客户，那么使用 BYOIP 后，您可以在 IP 因为某种原因而不可用时，灵活地更改 <a href="https://developers.cloudflare.com/ssl/ssl-for-saas/status-codes/custom-hostnames/" target="_blank"><code>custom_hostnames</code></a> 的 IP 地址响应。</p>
+	<h3 id="spectrum-byoip-">Spectrum + BYOIP：</h3>
+	<p>Spectrum 是 Cloudflare 推出的一款解决方案，用于保护和加速运行任何 UDP 或 TCP 协议的应用程序。Spectrum <a href="https://developers.cloudflare.com/spectrum/getting-started/byoip/" target="_blank">API</a> 现已支持 BYOIP。使用 BYOIP 的 Spectrum 客户可以通过 Spectrum 的 API 指定他们希望与 Spectrum 应用程序关联的 IP。</p>
+	<h3 id="magic-transit-byoip-">Magic Transit + BYOIP：</h3>
+	<p>Magic Transit 是第 3 层安全服务，它通过公告您的 IP 地址并将该流量吸引到 Cloudflare 边缘进行处理来处理所有网络流量。Magic Transit 支持复杂的数据包过滤和防火墙配置。BYOIP 是使用 Magic Transit 服务的一项要求。由于 Magic Transit 是 IP 级别的服务，因此 Cloudflare 必须能够公告您的 IP 才能提供此服务。</p>
+	<h3 id="-cloudflare-ip-">在 Cloudflare 自带 IP：有何要求？</h3>
+	<p>在 Cloudflare 可以公告您的前缀之前，我们需要一些文件来着手。首先是称为“授权书”（LOA）的文件，它要详细说明您的前缀的相关信息，以及您希望 Cloudflare 如何公告这个前缀。在置备您的前缀前，我们会将这一文件与我们的 1 级转接服务提供商共享。这个步骤是为了确保 1 级转接服务提供商知道我们有权公告您的前缀。</p>
+	<p>其次，我们需要您的互联网路由注册（IRR）记录是最新的，并在 LOA 中体现该数据。这通常意味着，确保您在地区注册表中的条目已得到更新（即 ARIN、RIPE、APNIC）。</p>
+	<p>文书发出之后，请与您的客户团队联络，了解您的前缀何时能做好公告准备。</p>
+	<p>我们还鼓励客户使用 <a href="https://blog.cloudflare.com/tag/rpki/">RPKI</a> ，也可针对客户前缀提供相应支持。我们已经发表了相关博客文章，也构建了广泛的工具，以方便客户采用这一协议。如果您对 BYOIP 加 RPKI 支持感兴趣，请告诉您的客户团队！</p>
+	<h3 id="-">配置</h3>
+	<p>每个客户前缀都可通过 UI 或 <a href="https://api.cloudflare.com/%23ip-address-management-dynamic-advertisement-properties" target="_blank">API</a> 的“动态广告”切换开关来公告，这将导致 Cloudflare 边缘代表您公告或撤消前缀。只要客户团队告知您前缀已准备就绪，您就可以完成此项操作。</p>
+	<p>在 IP 做好公告准备后，您可能要为您的前缀设置“委派”。委派管理的是如何在多个 Cloudflare 帐户中使用这个前缀，根据前缀绑定到的具体服务，其影响略有不同。一个前缀只能归一个帐户所有，但委派可以将一部分前缀功能扩展到其他帐户。我们的开发者文档中也有相关陈述。如今，委派可以会影响到第 7 层和 Spectrum BYOIP 前缀。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/07/delegation-BYOIP@2x.png" class="kg-image"></figure>
+	<p></p>
+	<p>第 7 层：如果您使用 BYOIP + 第 7 层产品，同时也使用 <a href="https://developers.cloudflare.com/ssl/ssl-for-saas" target="_blank">SSL for SaaS</a> 服务，则委派至另一帐户将允许该帐户也可使用这个前缀来验证自定义主机名（即，不仅是拥有该前缀的原始帐户可以使用）。这意味着，多个帐户可以使用相同的 IP 前缀来提供自定义主机名流量。此外，您所有的 IP 都可以为自定义主机名提供流量；也就是说，如果某个 IP 由于任何原因被阻止，您都可以轻松地更改这些主机名的 IP 地址。</p>
+	<p>Spectrum：如果您通过 <a href="https://developers.cloudflare.com/spectrum/getting-started/byoip/" target="_blank">Spectrum API</a> 使用 BYOIP + Spectrum，则可以在前缀中指定要用来创建 Spectrum 应用程序的 IP。如果您将前缀委派至另一个帐户，那么这个第二帐户也能够指定该前缀中的 IP 来创建应用。</p>
+	<p>如果您有兴趣了解在 Magic Transit、CDN 或 Spectrum 等服务中使用 BYOIP 的更多信息，您可以联系客户团队（现有客户）或 <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1764767b726457747b786273717b7665723974787a">[email&nbsp;protected]</a> （新的潜在客户）。</p>
+</div>

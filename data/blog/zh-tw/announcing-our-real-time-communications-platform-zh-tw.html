@@ -1,0 +1,41 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/1-19.png" class="kg-image"></figure>
+	<p>每一項成功技術的興起都會有一個契機。某一時刻發生一件起催化作用的事，通常是外部的，使它從一個有前途的好點子變成我們生活中一種不可或缺的事物。近期最能體現這點的例子或許就是 2007 年 iPhone 問世，促使了雲端的誕生。智慧型手機為小型開發商開創了龐大的目標市場；即便是大型開發商，他們的客戶群也有了爆炸式增長，惟有使用公共雲端基礎結構才能應對這樣的增長。這兩者都希望能夠專注於開發優秀的應用程式，不必為其基礎結構而操心。</p>
+	<p>去年 COVID-19 爆發期間，即時通訊也同樣迎來爆發。溝通交流是所有組織的命脈。2020 年之前，大多數的溝通發生在世界各地辦公室內的會議室裡。然而在去年三月，出現了翻天覆地的變化。這些會議室突然變得空空如也。往後的 18 個月，這種工作方式的巨變依然持續著。</p>
+	<p>毋庸置疑，許多組織無法離開 Slack、Zoom 和 Teams 這樣的即時協作工具，儘管如此，我們認為如今存在的那些通訊工具仍然只是冰山一角。環顧四周，一種感覺縈繞在心頭：我們即將迎來一場創新風暴，促使組織能夠在遠端環境 (或者至少是混合環境) 中自由地通訊。</p>
+	<p>有鑑於此，我們今天隆重推出 Cloudflare 的即時通訊平台。這是一套全新的產品，旨在幫助您構建下一代即時互動式應用程式。不論是一對一視訊通話、群組語音聊天還是視訊會議，即時通訊的需求只會與日俱增。</p>
+	<p>運行可靠並可擴充的即時通訊平台，需要建設一個規模龐大的網路。您需要在多個地區<a href="https://blog.cloudflare.com/250-cities-is-just-the-start/">讓您的網路邊緣與使用者相隔僅毫秒</a>，確保每個人連線時的體驗始終是低延遲、低丟包率和低斷續的。<a href="https://blog.cloudflare.com/cloudflare-backbone-internet-fast-lane/">設立一個骨幹網路來</a>疏導網際網路流量擁堵。<a href="https://blog.cloudflare.com/designing-edge-servers-with-arm-cpus/">基礎結構要能高效擴充，</a>以同時為數千參與者服務。然後，您還需要部署媒體伺服器，編寫業務邏輯，管理多個用戶端平台，並且讓所有一切順暢運作。我們一定能夠幫助您解決這些需求。</p>
+	<p>今天，我們將推出名為 WebRTC Components 的產品，您將能夠利用 Cloudflare 的邊緣網路來改善基於 WebRTC 的現有視訊和音訊應用程式的連線。這包括擴充到數千 (乃至數萬) 參與者，利用我們的 <a href="https://blog.cloudflare.com/zh-tw/cloudflare-thwarts-17-2m-rps-ddos-attack-the-largest-ever-reported-zh-tw/">DDoS 緩解</a>保護您的服務免受攻擊，以及實施<a href="https://developers.cloudflare.com/spectrum/reference/configuration-options#ip-access-rules" target="_blank">基於 IP 和 ASN 的存取原則</a>，全部只需點擊幾下便可。</p>
+	<h3 id="-">即時為何稱為「即時」？</h3>
+	<p>即時通常指的是 500 毫秒內發生的通訊：也就是說，速度堪比資料包遍歷連線全球的光纖網路。2021 年，大多數即時音訊和視訊應用程式使用<a href="https://webrtcforthecurious.com/docs/01-what-why-and-how/" target="_blank"> WebRTC</a>，這一套開放標準和瀏覽器 API 定義了如何透過 UDP 來連線、保護和傳輸媒體和資料。其設計宗旨是帶來更出色、更靈活的雙向通訊，勝過我們目前主要依賴的基於瀏覽器型通訊協定 HTTP。而且，由於 WebRTC 支持位於瀏覽器內，使用者不需要自訂用戶端，開發人員也不需要構建這些用戶端：唯一需要的是瀏覽器。</p>
+	<p>重要的是，我們發現隨著組織工作方式改變 <a href="https://blog.cloudflare.com/the-future-of-work-at-cloudflare/">(我們也不例外)</a>，對跨越多個時區和地區進行可靠即時通訊的需求有了巨大增長。</p>
+	<p>那麼，在實務上，即時的重要性何在？</p>
+	<ul>
+		<li>一對一通話 (例如 FaceTime)：我們已經習慣透過傳統電話進行幾乎是瞬間的通訊，沒有理由倒退一步。</li>
+		<li>群組通話和會議 (Zoom 或 Google Meet)：即使只有幾秒鐘延遲，也會導致互相搶話的問題。</li>
+		<li>社交視訊、遊戲和體育：您可不想因為串流掉幀或需要緩衝，而比實況落後 10 秒或錯過比賽中的關鍵時刻。</li>
+		<li>互動式應用程式：瀏覽器内 3D 建模、手機上擴增虛擬實境，甚至是遊戲直播，這些全都需要即時進行。</li>
+	</ul>
+	<p>我們認為，對於即時應用程式，如今接觸的都只是皮毛。部分原因在於，將即時應用程式擴充到數千使用者也需要全新的基礎結構範例，對網路的要求也高於傳統的基於 HTTP 型通訊。</p>
+	<h3 id="-webrtc-components">登台亮相：WebRTC Components</h3>
+	<p>我們今天啟動 <em>WebRTC Components</em> 的封閉測試。運行集中式 WebRTC TURN 伺服器的團隊可以利用它將負載卸到 Cloudflare 的分散式全球網路，以提升可靠性，擴充到更多使用者，並且減少花費在基礎結構管理上的時間。</p>
+	<p><a href="https://webrtcforthecurious.com/docs/03-connecting/#turn" target="_blank">TURN</a> 全稱為 Traversal Using Relays Around NAT，旨在解決 WebRTC 的點對點原始伺服器的實行缺點。WebRTC 曾經是 (目前依然是！) 一種點對點技術，但在現實中，由於營運商級 NAT、企業 NAT 和防火牆的原因，建立可靠點對點連線的難度依然較高。另外，每一個對等點都受到本身網路連線的桎梏，在傳統的<a href="https://webrtcforthecurious.com/docs/08-applied-webrtc/#full-mesh" target="_blank">點對點網路</a>中，參與者會很快發現自己的網路連線達到飽和，因為他們必須要從每個其他點接收資料。在包含多種裝置 (行動或桌面裝置) 和網路 (從高延遲 3G 到高速光纖) 的混合環境中，擴展到稍多一些對等點也會變得異常困難。</p>
+	<p>將運行 TURN 服務的位置從自己的基礎結構轉移到網路邊緣，可以帶來更優質的連線。Cloudflare 運行一個覆蓋 <a href="https://blog.cloudflare.com/250-cities-is-just-the-start/">250 多個城市</a>的 Anycast 網路，這意味著我們與您的使用者距離非常近，不管他們身在何方。也就是說，當使用者連線 Cloudflare 的 TURN 服務時，他們可以與 Cloudflare 網路建立非常好的連線。服務部署就位後，我們就能利用自己的網路和<a href="https://blog.cloudflare.com/250-cities-is-just-the-start/">專屬骨幹網</a>為您提供超凡的連線效能，全程貫通至通話的另一方。</p>
+	<p>甚至更好：不必再擔心規模。眾所周知，擴充 WebRTC 基礎結構並非易事：您需要確保在適當位置上擁有恰當的容量。Cloudflare 的 TURN 服務可以自動擴充，當您想要更多端點時，只需調用一個 API 便可。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/2-8.png" class="kg-image" alt="使用者嘗試通過集中式基礎結構，利用 WebRTC 在公共網際網路上啟動媒體工作階段。"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/3-9.png" class="kg-image" alt="使用者透過 Cloudflare 的分散式全球邊緣網路進行連線。"></figure>
+	<p>當然，WebRTC Components 是在 Cloudflare 網路基礎上構建的，可獲得其 100 Tbps 網路提供的 DDoS 保護。從現在開始，您只需調用幾個 API，就能將可擴充並且安全的作業級 WebRTC 中繼器部署到全球各地。</p>
+	<h3 id="--1">以開發人員為先的即時平台</h3>
+	<p>然而，正如 Cloudflare 常說：我們才剛剛開始。若要為一對一和小規模群組通話構建即時服務，託管的可擴充 TURN 基礎結構是一個關鍵構建塊，特別是對於一貫自行管理基礎結構的團隊而言。不過，當您開始添加更多參與者時，事情會迅速變得更加複雜<em>。</em></p>
+	<p>不論是管理每個用戶端都在發送並接收的串流 (用 WebRTC 的說法是「軌」) ，以確保通話品質，或是管理決定誰能在大型活動中發言或廣播的權限系統，以及/或者構建在媒體體驗基礎上、支援聊天和互動的信號基礎結構，有一點非常明確：還有許多問題待解決。 </p>
+	<p>針對這一點，讓我們稍微透露一下未來方向：</p>
+	<ul>
+		<li>優先考量開發人員的 API，不再需要管理和配置低級基礎結構、身分認證、授權和參與者權限。從參與者、聊天室和頻道角度來思考，而不再需要瞭解複雜的 ICE、對等連線和媒體通道。</li>
+		<li>與 <a href="https://www.cloudflare.com/zh-tw/teams/access/" target="_blank">Cloudflare for Teams</a> 整合，以支援組織單位的存取原則：對於如今公司大會需要以遠距方式舉辦的現狀，這一點意義重大。</li>
+		<li>輕鬆連線任何輸入和輸出源，包括廣播到傳統的 HTTP 串流用戶端、透過 [Stream Live] (https://blog.cloudflare.com/stream-live/) 錄影以實現按需求播放，以及利用<a href="https://blog.cloudflare.com/restream-with-stream-connect/"> Stream Connect </a>或未來的通訊協定 (如 <a href="https://datatracker.ietf.org/doc/html/draft-murillo-whip-02" target="_blank">WHIP</a>) 從 RTMP 來源擷取視訊等。</li>
+		<li>透過 <a href="https://workers.cloudflare.com/" target="_blank">Cloudflare Workers</a> 嵌入無伺服器功能：例如讓參與者事件 (如加入或離開) 觸發 Workers，或利用<a href="https://blog.cloudflare.com/introducing-workers-durable-objects/"> Durable Objects </a>和 WebSockets 等建立有狀態聊天和協作工具。</li>
+	</ul>
+	<p>… 這不過是開始。</p>
+	<p>我們也在尋找雄心勃勃、希望發揮長才協助我們構建 RTC 平台的工程師。如果您對構建下一代即時互動應用程式感興趣，<a href="https://boards.greenhouse.io/cloudflare/jobs/3523616?gh_jid=3523616&amp;gh_src=9b769b781us" target="_blank">歡迎加入我們</a>！</p>
+	<p>如果您有興趣與我們一起加強世界各地的聯繫，並且您也在努力擴展現有的一對一即時視訊和音訊平台 (面向幾百或幾千個同步使用者)，歡迎您<a href="https://docs.google.com/forms/d/e/1FAIpQLSeGvMJPTmsdWXq1rSCGHzszce5RdM5iYHxsQQfPk8Kt5rkaKQ/viewform?usp=sf_link" target="_blank">報名參加</a> WebRTC Components 封閉測試。我們特別想跟剛開始使用即時通訊且樂意與我們密切往來的團隊。</p>
+</div>

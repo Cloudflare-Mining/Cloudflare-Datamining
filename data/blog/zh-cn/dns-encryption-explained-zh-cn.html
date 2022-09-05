@@ -1,0 +1,141 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2020/01/DoT-DoH@2x.png" class="kg-image"></figure>
+	<p></p>
+	<p>域名系统（DNS）是互联网的地址簿。当您访问cloudflare.com或任何其他站点时，您的浏览器将向DNS解析器询问可以找到站点的IP地址。不幸的是，这些DNS查询和回应通常是不受保护的。加密DNS将改善用户隐私和安全性。在本文中，我们将研究两种用于加密DNS的机制，称为DNS over TLS（DoT）以及DNS over HTTPS（DoH），并解释它们的工作原理。</p>
+	<p>希望将域名解析为IP地址的应用程序通常都会用到DNS。通常，编写应用程序的程序员不会明确地做到这一点。取而代之的是，程序员编写如fetch("https://example.com/news")的代码，并期望软件库能够处理“example.com”到IP地址的转换。</p>
+	<p>在后台，软件库负责发现并连接到外部<a href="https://www.cloudflare.com/learning/dns/what-is-dns/" target="_blank">递归DNS解析器</a>，使用DNS协议(见下图)解析应用程序请求的名称。外部DNS解析器的选择以及是否提供任何隐私性和安全性都不在应用程序的控制范围内。它取决于所使用的软件库，以及运行该软件的设备的操作系统所提供的策略。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/01/DNS-flow-diagram.png" class="kg-image">
+		<figcaption>DNS查询和响应概述</figcaption>
+	</figure>
+	<p></p>
+	<h2 id="-dns-">外部DNS解析器</h2>
+	<p>操作系统通常使用动态主机配置协议(DHCP)从本地网络学习解析器地址。在家庭和移动网络中，它通常使用来自互联网服务提供商（ISP）的解析器。在公司网络中，所选的解析器通常由网络管理员控制。如有所需，可控制自己设备的用户可以使用特定地址来覆盖解析器，例如Google的8.8.8.8或<a href="https://blog.cloudflare.com/dns-resolver-1-1-1-1/">Cloudflare的1.1.1.1之</a>类的公共解析器的地址，但大多数用户在连接咖啡店或机场的公共Wi-Fi热点时，可能不会费心去更换它。</p>
+	<p>外部解析器的选择直接影响最终用户的体验。大多数用户不会更改其解析器设置，并且很可能最终会使用其网络提供商提供的DNS解析器。最明显的可观察属性是名称解析的速度和准确性。改善隐私性或安全性的功能可能不会立即见效，但将有助于防止其他人分析或干扰您的浏览活动。这在公共Wi-Fi网络上尤其重要，在公共Wi-Fi网络上，任何物理上接近的人都可以捕获和解密无线网络流量。</p>
+	<h2 id="-dns">未加密的DNS</h2>
+	<p>自从1987年DNS诞生以来，它就一直处于未加密状态。您的设备与解析器之间的每个人都可以监听甚至修改您的DNS查询和响应。这包括您本地Wi-Fi网络中的任何人，您的互联网服务提供商（ISP）和传输提供商。这可能会披露您访问的域名从而威胁您的隐私。</p>
+	<p>他们能看到什么？那么，来看一下从连接到家庭网络的笔记本上截取的网络数据包吧：</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2020/01/dns-at-home-marked.png" class="kg-image"></figure>
+	<p></p>
+	<p>我们可以观察到以下几点：</p>
+	<ul>
+		<li>UDP源端口是53，这是未加密DNS的标准端口号。因此，UDP有效负载很可能是一个DNS响应。</li>
+		<li>这表明源IP地址192.168.2.254是DNS解析器，而目标IP 192.168.2.14是DNS客户端。</li>
+		<li>UDP有效负载确实可以解析为DNS响应，并显示用户正试图访问twitter.com。</li>
+		<li>如果将来有连接到104.244.42.129或104.244.42.1的连接，那么很可能是指向“twitter.com”的流量。</li>
+		<li>如果此IP上有进一步加密的HTTPS流量，接下来会有更多DNS查询，这可能表明web浏览器从该页面加载了额外的资源。这可能会泄露用户访问twitter.com时正在查看的页面。</li>
+	</ul>
+	<p>由于DNS消息不受保护，因此可能会发生其他攻击：</p>
+	<ul>
+		<li>查询可以定向到执行<a href="https://en.wikipedia.org/wiki/DNS_hijacking" target="_blank">DNS劫持</a>的解析器。例如，在英国，Virgin Media和<a href="https://bt.custhelp.com/app/answers/detail/a_id/14244/c/402" target="_blank">BT</a>对不存在的域返回假响应，从而将用户重定向到搜索页面。这种重定向是可能的，因为计算机/电话盲目地信任由ISP提供的网关路由器使用DHCP通告的DNS解析器。</li>
+		<li>防火墙可以很容易地拦截、阻止或修改任何基于端口号的未加密DNS流量。值得注意的是，明文检查并不是访问可见性目标的灵丹妙药，因为DNS解析器是可以被绕过的。</li>
+	</ul>
+	<h2 id="-dns-1">加密DNS</h2>
+	<p>对DNS进行加密会使网络窥探者更难以查看您的DNS信息，或在传输过程中破坏它们。就像网络从未加密的HTTP迁移到加密的HTTPS一样，现在也有对DNS本身加密的DNS协议的升级。加密网络使私人和安全的通信与商业得以蓬勃发展。加密DNS将进一步增强用户隐私性。</p>
+	<p>存在两种标准化的机制来保护您和解析器之间的DNS传输，即<a href="https://tools.ietf.org/html/rfc7858" target="_blank">DNS over TLS (2016)</a> 和<a href="https://tools.ietf.org/html/rfc8484" target="_blank">DNS Queries over HTTPS (2018)</a>。两者都基于传输层安全性（TLS），TLS也用于保护您与使用HTTPS的网站之间的通信。在TLS中，服务器（无论是web服务器还是DNS解析器）使用证书向客户端（您的设备）进行身份验证。</p>
+	<p>通过DNS over TLS（DoT），原始的DNS消息被直接嵌入到安全的TLS通道中。从外面看，他人既无法了解正在查询的名称，也无法对其进行修改。预期中的客户端应用程序将能够解密TLS，如下所示：</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2020/01/dns-over-tls13-marked.png" class="kg-image"></figure>
+	<p></p>
+	<p>在对未加密DNS包的跟踪中，很明显，客户端可以直接发送一个DNS请求，然后解析器给出一个DNS响应。然而，在加密的DoT情况下，在发送加密DNS消息之前客户端与服务器会交换一些TLS握手消息：</p>
+	<ul>
+		<li>客户端发送一个Client Hello，通告其支持TLS功能。</li>
+		<li>服务器以服务器Hello响应，并同意将用于保护连接的TLS参数。证书消息包含服务器的身份，而证书验证消息将包含数字签名，客户端可以使用服务器证书对其进行验证。客户端通常会根据其本地受信任的证书颁发机构列表来检查此证书，但是DoT规范提到了<a href="https://tools.ietf.org/html/rfc7858#section-3.2" target="_blank">其他信任机制</a>，例如公钥固定。</li>
+		<li>客户端和服务器都完成TLS握手后，它们终于可以开始交换加密的消息。</li>
+		<li>虽然上面的图片仅包含一个DNS查询和响应，但在实践中，安全TLS连接将保持开放，并将被重新用于以后的DNS查询。</li>
+	</ul>
+	<p>此前已实现通过新端口上非常快的TLS来保护未加密协议：</p>
+	<ul>
+		<li>网络流量：HTTP (tcp/80) -&gt; HTTPS &nbsp; &nbsp; &nbsp;(tcp/443)</li>
+		<li>发送电子邮件：SMTP (tcp/25) -&gt; SMTPS &nbsp; &nbsp; &nbsp;(tcp/465)</li>
+		<li>接收电子邮件：IMAP (tcp/143) -&gt; &nbsp; &nbsp; &nbsp;IMAPS (tcp/993)</li>
+		<li>现在：DNS (tcp/53 or udp/53) &nbsp; &nbsp; &nbsp;-&gt; DoT (tcp/853)</li>
+	</ul>
+	<p>引入新端口的一个问题是现有的防火墙可能会阻止它。因为它们采用了必须明确启用新服务的白名单方法，或者因为采用了网络管理员明确禁止服务的阻止列表方法。如果安全选项（DoT）比不安全选项的可用性更低，那么用户和应用程序可能会试图退回到未加密的DNS。这随后可能允许攻击者强制用户使用不安全的版本。</p>
+	<p>这种回退攻击不是仅存于理论上的。<a href="https://blog.cloudflare.com/performing-preventing-ssl-stripping-a-plain-english-primer/">SSL剥离</a>此前曾被用于将HTTPS网站降级为HTTP，从而允许攻击者窃取密码或劫持账户。</p>
+	<p>另一种方法，NS Queries over HTTPS（DoH），<a href="https://tools.ietf.org/html/rfc8484#section-1" target="_blank">旨在</a>支持两个主要用例：</p>
+	<ul>
+		<li>防止路径上的设备干扰DNS的上述问题。这包括上面的端口阻塞问题。</li>
+		<li>允许web应用程序通过现有的浏览器API访问DNS。<br> &nbsp; &nbsp; DoH本质上是HTTPS，与web使用的加密标准相同，并且重用相同的端口号（tcp/443）。Web浏览器已经<a href="https://blog.mozilla.org/security/2015/04/30/deprecating-non-secure-http/" target="_blank">不支持不安全的HTTP</a>，而支持HTTPS。这使得HTTPS成为安全传输DNS消息的最佳选择。您可以在<a href="https://tools.ietf.org/html/rfc8484#section-4.1.1" target="_blank">这里</a>找到此类DoH的请求示例。</li>
+	</ul>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/01/DoH-flow-diagram.png" class="kg-image">
+		<figcaption>DoH：通过安全的HTTPS流传输DNS查询和响应</figcaption>
+	</figure>
+	<p></p>
+	<p>一些用户担心HTTPS的使用可能会削弱隐私性，因为cookie可能会被用于跟踪目的。DoH协议设计者<a href="https://tools.ietf.org/html/rfc8484#section-8" target="_blank">考虑</a>了各种隐私方面的问题，并明确建议不要使用HTTP cookie以防止跟踪，这一建议已得到广泛遵循。TLS会话恢复可提高TLS 1.2握手性能，但可以被潜在地用于关联TLS连接。幸运的是，使用TLS 1.3可以通过默认情况下减少往返次数来消除TLS会话恢复的需要，从而有效地解决了与之相关的隐私问题。</p>
+	<p>使用HTTPS意味着HTTP协议的改进也可以使DoH受益。例如，基于<a href="https://blog.cloudflare.com/the-road-to-quic/">QUIC</a>的正处于开发之中的<a href="https://blog.cloudflare.com/http3-the-past-present-and-future/">HTTP / 3协议</a>可以提供额外的性能改进，以解决由于缺少前端阻塞而导致的数据包丢失。这意味着当一个数据包丢失时，我们可以通过安全通道同时发送多个DNS查询，而不会互相阻塞。</p>
+	<p>还有一个基于DNS over QUIC（DNS/QUIC）的<a href="https://tools.ietf.org/html/draft-huitema-quic-dnsoquic" target="_blank">草案</a>，类似DoT，但是由于使用了QUIC，因此没有前端阻塞问题。然而，HTTP/3和DNS/QUIC都需要一个UDP端口才能访问。理论上，两者都可以分别通过HTTP/2和DoT退回到DoH。</p>
+	<h2 id="-dot-doh">部署DoT和DoH</h2>
+	<p>由于DoT和DoH都是相对较新的技术，它们还没有得到普遍应用。在服务器端，主要的公共解析器包括Cloudflare的1.1.1.1和谷歌DNS都支持它。然而，许多ISP解决方案仍然缺乏对它的支持。您可以在<a href="https://github.com/DNSCrypt/dnscrypt-proxy/wiki/DNS-server-sources" target="_blank">DNS服务器源</a>上找到支持DoH的一小部分公共解析器，还可以在<a href="https://dnsprivacy.org/wiki/display/DP/DNS+Privacy+Public+Resolvers" target="_blank">DNS隐私公共解析器</a>上找到另一种支持DoT和DoH的<a href="https://dnsprivacy.org/wiki/display/DP/DNS+Privacy+Public+Resolvers" target="_blank">公共解析器</a>。</p>
+	<p>有两种方法可在最终用户设备上启用DoT或DoH：</p>
+	<ul>
+		<li>添加对应用程序的支持，绕过来自操作系统的解析器服务。</li>
+		<li>添加对操作系统的支持，透明地为应用程序提供支持。</li>
+	</ul>
+	<p>在客户端，DoT或DoH通常有三种配置模式：</p>
+	<ul>
+		<li>关闭：DNS将不会被加密。</li>
+		<li>机会模式：尝试为DNS使用安全传输，但如果前者不可用，则退回到未加密的DNS。这种模式容易受到降级攻击，攻击者可以迫使设备使用未加密的DNS。机会模式的目的是在没有活跃的攻击者时提供隐私性。</li>
+		<li>严格模式：尝试通过安全传输使用DNS。如果不可用，则出现严重故障并向用户显示错误。</li>
+	</ul>
+	<!--kg-card-begin: markdown-->
+	<p>通过安全传输进行DNS的系统范围配置的当前状态：</p>
+	<ul>
+		<li>Android 9：通过其“私有DNS”功能<a href="https://android-developers.googleblog.com/2018/04/dns-over-tls-support-in-android-p.html" target="_blank">支持</a> DoT。模式：
+			<ul>
+				<li>默认情况下使用机会模式（“自动”）。将使用网络设置（通常为DHCP）中的解析器。</li>
+				<li>可以通过设置明确的主机名来<a href="https://blog.cloudflare.com/enable-private-dns-with-1-1-1-1-on-android-9-pie/">配置</a>严格模式。不允许使用IP地址，使用默认解析器解析主机名，该主机名还用于验证证书。（<a href="https://github.com/aosp-mirror/platform_frameworks_base/commit/a24d459a5d60c706472f9b620d079cd0a40a7279" target="_blank">相关源代码</a>）</li>
+			</ul>
+		</li>
+		<li>iOS和Android用户还可以安装<a href="https://1.1.1.1/" target="_blank">1.1.1.1应用程序</a>从而在严格模式下启用DoH或DoT支持。在内部，它使用VPN编程接口来启用对未加密DNS流量的拦截，然后再通过安全通道转发。</li>
+		<li>通过systemd 239解析的linux：通过<a href="https://www.freedesktop.org/software/systemd/man/resolved.conf.html#DNSOverTLS=" target="_blank">DNSOverTLS</a>选项启用DoT。
+			<ul>
+				<li>默认为关闭。</li>
+				<li>可以配置机会模式，但不执行证书验证。</li>
+				<li>从systemd 243开始提供严格模式。接受由受信任的证书颁发机构签署的任何证书。但是，GnuTLS后端<a href="https://github.com/systemd/systemd/blob/v243/src/resolve/resolved-dnstls-gnutls.c#L62-L63" target="_blank">没有主机名验证</a>，而OpenSSL后端<a href="https://github.com/systemd/systemd/blob/v243/src/resolve/resolved-dnstls-openssl.c#L86-L87" target="_blank">需要</a>一个IP地址。</li>
+				<li>在任何情况下，都不会发送服务器名称指示（SNI）。证书名称<a href="https://github.com/systemd/systemd/issues/9397" target="_blank">没有经过验证</a>，这使得中间人变得微不足道。</li>
+			</ul>
+		</li>
+		<li>linux、macOS和Windows可以在严格模式下<a href="https://developers.cloudflare.com/1.1.1.1/dns-over-https/cloudflared-proxy/" target="_blank">使用</a>DoH客户端。cloudflared proxy-dns命令默认情况下使用Cloudflare DNS解析器，但用户可以通过proxy-dns-upstream选项覆盖它。</li>
+	</ul>
+	<!--kg-card-end: markdown-->
+	<!--kg-card-begin: markdown-->
+	<p>Web浏览器支持DoH而非DoT：</p>
+	<ul>
+		<li>Firefox 62 <a href="https://support.mozilla.org/en-US/kb/firefox-dns-over-https" target="_blank">支持</a> DoH，并提供了几种<a href="https://wiki.mozilla.org/Trusted_Recursive_Resolver" target="_blank">可信递归解析器（TRR）</a>设置。默认情况下，DoH处于禁用状态，但是Mozilla正在进行一项<a href="https://blog.mozilla.org/futurereleases/2019/09/06/whats-next-in-making-dns-over-https-the-default/" target="_blank">实验</a>，为美国的一些用户启用DoH。这个实验目前使用的是Cloudflare的1.1.1.1解析器，因为我们是目前唯一满足Mozilla所要求的<a href="https://wiki.mozilla.org/Security/DOH-resolver-policy" target="_blank">严格解析器策略</a>的提供商。由于许多DNS解析器仍然不支持加密的DNS传输，Mozilla的方法将确保使用DoH保护更多用户。
+			<ul>
+				<li>当通过实验或网络设置中的“通过HTTPS启用DNS”选项启用时，Firefox将使用机会模式（network.trr.mode=2 at about:config）。</li>
+				<li>可以使用network.trr.mode = 3启用严格模式，但是需要指定一个明确的解析器IP（例如，network.trr.bootstrapAddress = 1.1.1.1）。</li>
+				<li>尽管Firefox会忽略系统中的默认解析器，但可以使用其他解析器进行配置。此外，使用不支持DoH解析器的企业部署可以<a href="https://support.mozilla.org/en-US/kb/configuring-networks-disable-dns-over-https" target="_blank">选择</a>禁用DoH。</li>
+			</ul>
+		</li>
+		<li>如果系统解析器地址与<a href="https://www.chromium.org/developers/dns-over-https" target="_blank">硬编码的DoH提供者之一</a>（<a href="https://chromium.googlesource.com/chromium/src.git/+/f93a48e3720931c25a3abc7848b08afed43e3be2%5E%21/" target="_blank">源代码更改</a>）匹配，Chrome 78就会<a href="https://blog.chromium.org/2019/09/experimenting-with-same-provider-dns.html" target="_blank">启用</a>机会DoH 。除Linux和iOS之外，所有平台均启用了此实验，并且默认情况下不包括企业部署。</li>
+		<li>Opera 65 <a href="https://blogs.opera.com/desktop/2019/09/opera-65-0-3430-0-developer-update/" target="_blank">添加</a>了一个选项，来通过Cloudflare的1.1.1.1解析器启用DoH。默认情况下，此功能是关闭的。启用后，它似乎会使用机会模式：如果1.1.1.1:443（无SNI）可访问，它将被使用。否则，它会退回到默认的解析器（未加密）。</li>
+	</ul>
+	<!--kg-card-end: markdown-->
+	<p>curl项目中的<a href="https://github.com/curl/curl/wiki/DNS-over-HTTPS" target="_blank">DNS over HTTPS</a>页面拥有一个DoH提供程序和其他实现的完整列表。</p>
+	<p>除了加密设备和外部DNS解析器之间的整个网络路径之外，还可以采取一种折衷的方法：在设备和本地网络的网关之间使用未加密的DNS，但是对网关路由器与外部DNS解析器之间的<a href="https://blog.cloudflare.com/dns-over-tls-built-in/">所有DNS通信进行加密</a> 。假设有一个安全的有线或无线网络，这将保护本地网络中的所有设备不受ISP监视或互联网上其他对手的攻击。由于公共Wi-Fi热点被认为是不安全的，这种方法在开放Wi-Fi网络上也不安全。即使它有WPA2-PSK的密码保护，其他人仍然能够窥探和修改未加密的DNS。</p>
+	<h2 id="-">其他安全注意事项</h2>
+	<p>前面几节描述了安全DNS传输、DoH和DoT。这些只能确保您的客户端从DNS解析器收到未经篡改的应答。但是，它不能保护客户端不受解析器返回错误应答的影响（通过DNS劫持或DNS缓存中毒攻击）。“真实”答案由权威名称服务器报告的域或区域的所有者决定。<a href="https://www.cloudflare.com/learning/dns/dns-security/" target="_blank">DNSSEC</a>允许客户端验证返回的DNS答案的完整性，并捕获客户端与权威名称服务器之间路径上的任何未经授权的篡改。</p>
+	<p>但是，<a href="https://labs.ripe.net/Members/willem_toorop/sunrise-dns-over-tls-sunset-dnssec" target="_blank">错误</a>转发DNS消息的中间盒阻碍了DNSSEC的部署，而且即使信息可用，应用程序使用的存根解析器也可能无法验证结果。2016年的一份报告<a href="https://www.internetsociety.org/resources/doc/2016/state-of-dnssec-deployment-2016/" target="_blank">发现</a>，只有26%的用户使用DNSSEC验证解析器。</p>
+	<p>DoH和DoT保护客户端和公共解析器之间的传输。公共解析器可能必须与其他权威名称服务器联系才能解析名称。传统上，任何解析器和权威名称服务器之间的路径都使用未加密的DNS。为了保护这些DNS消息，我们对Facebook进行了实验，在1.1.1.1和Facebook的权威名称服务器之间使用DoT。虽然使用TLS设置安全通道会增加延迟，但它可以分摊到许多查询中。</p>
+	<p>传输加密可确保解析器结果和元数据受到保护。例如，DNS查询中包含的<a href="https://tools.ietf.org/html/rfc7871" target="_blank">EDNS客户端子网（ECS）</a>信息可以显示启动DNS查询的原始客户端地址。沿路径隐藏这些信息可以提高隐私性。它还可以<a href="https://labs.ripe.net/Members/willem_toorop/sunrise-dns-over-tls-sunset-dnssec" target="_blank">防止</a>由于转发DNS中的问题而导致损坏的中间盒破坏DNSSEC。</p>
+	<h2 id="dns-">DNS加密的操作问题</h2>
+	<p>DNS加密可能会给依赖于监视或修改DNS流量的个人或组织带来挑战。依赖被动监视的安全设备监视着计算机或网络边缘上的所有传入和传出网络流量。例如，基于未加密的DNS查询，他们可能识别出被恶意软件感染的机器。如果对DNS查询进行了加密，那么被动监视解决方案将无法监视域名。</p>
+	<p>某些团体期望DNS解析器出于以下目的而应用内容过滤：</p>
+	<ul>
+		<li>阻止用于分发恶意软件的域。</li>
+		<li>屏蔽广告。</li>
+		<li>执行家长控制过滤，阻止与成人内容相关的域。</li>
+		<li>根据当地法规禁止访问提供非法内容的域。</li>
+		<li>提供一个<a href="https://en.wikipedia.org/wiki/Split-horizon_DNS" target="_blank">拆分域DNS</a>，根据源网络提供不同的回应。</li>
+	</ul>
+	<p>阻止通过DNS解析器访问域的一个优点是它可以被集中完成，而不需要在每个应用程序中重新实现它。不幸的是，它也相当粗糙。假设一个网站在example.com/videos/for-kids/和example.com/videos/for-adults/为多个用户托管内容。DNS解析器将只能看到“example.com”，并可以选择是否阻止它。在这种情况下，特定于应用程序的控件（如浏览器扩展）将更有效，因为它们可以实际查看url并有选择地阻止访问内容。</p>
+	<p>DNS监控并不全面。恶意软件可能会跳过DNS和硬编码IP地址，或使用<a href="https://blog.netlab.360.com/an-analysis-of-godlua-backdoor-en/" target="_blank">其他方法</a>来查询IP地址。但是，并非所有恶意软件都这么复杂，因此DNS监控仍可以充当<a href="https://en.wikipedia.org/wiki/Defense_in_depth_%28computing%29" target="_blank">深度防御</a>工具。</p>
+	<p>所有这些非被动监视或DNS阻塞用例都需要DNS解析器的支持。依赖于当前解析器的DoH/DoT机会式升级的部署将保持未加密DNS上通常提供的相同特性集。不幸的是，正如前面提到的，这很容易被降级。为了解决这个问题，系统管理员可以将端点指向严格模式下的DoH/DoT解析器。理想情况下，这可以通过安全的设备管理解决方案（<a href="https://en.wikipedia.org/wiki/Mobile_device_management" target="_blank">MDM</a>，Windows上的<a href="https://en.wikipedia.org/wiki/Group_Policy" target="_blank">组策略</a>等）来实现。</p>
+	<h2 id="--1">结论</h2>
+	<p>互联网的基石之一是使用DNS将名称映射到地址。DNS传统上使用不安全，未加密的传输。过去，这已被ISP滥用于<a href="https://www.icsi.berkeley.edu/pubs/networking/redirectingdnsforads11.pdf" target="_blank">广告</a>注入，但也导致了隐私泄漏。咖啡店里的安管闲事的顾客可以使用未加密的DNS来跟踪您的活动。所有这些问题都可以通过使用DNS over TLS （DoT）或DNS over HTTPS（DoH）来解决。这些保护用户的技术相对较新，而且正在被越来越多的人采用。</p>
+	<p>从技术角度来看，DoH与HTTPS非常相似，并且遵循行业普遍趋势来<a href="https://blog.mozilla.org/security/2015/04/30/deprecating-non-secure-http/" target="_blank">弃用非安全选项</a>。与DoH相比，DoT是一种更简单的传输模式，因为它除去了HTTP层，但是这也使得它更容易被阻塞，不管是故意的还是意外的。</p>
+	<p>选择安全的DNS解析器是启用安全传输的第二要务。一些供应商会使用本地配置的DNS解析器，但会尝试将未加密的传输升级为更安全的传输（DoT或DoH）。不幸的是，DNS解析器通常默认由ISP提供，而ISP可能不支持安全传输。</p>
+	<p>Mozilla采取了不同的方法。它们允许用户明确地选择一个解析器，而不是依赖于甚至可能不支持DoH的本地解析器。Mozilla推荐的解析器必须满足<a href="https://wiki.mozilla.org/Security/DOH-resolver-policy" target="_blank">高标准，</a>以保护用户隐私。为了确保基于DNS的家长控制功能继续发挥作用，并支持分割域用例，Mozilla <a href="https://support.mozilla.org/en-US/kb/configuring-networks-disable-dns-over-https" target="_blank">添加</a>了一种机制，该机制允许私有解析器禁用DoH。</p>
+	<p>DoT和DoH传输协议已经为我们转移到更安全的互联网做好了准备。从前面的数据包跟踪中可以看出，这些协议类似于现有的保护应用程序通信流的机制。当这个安全和隐私漏洞被关闭后，将来还会有<a href="https://arxiv.org/pdf/1906.09682.pdf" target="_blank">更多的问题</a>需要解决。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/01/tales-from-the-crypto-team@2x-5.png" class="kg-image"></figure>
+</div>

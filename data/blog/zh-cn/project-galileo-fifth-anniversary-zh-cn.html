@@ -1,0 +1,78 @@
+<div class="post-content lh-copy gray1">
+	<p>今天是<a href="https://www.cloudflare.com/galileo/" target="_blank">Cloudflare伽利略计划</a>的五周年纪念日。通过该项目，Cloudflare免费保护了全球近600个从事在线上最具政治和艺术意义的工作的组织。由于他们的工作，这些组织经常受到攻击，并且是我们所见过的一些最猛烈的网络攻击。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/06/image1-1.png" class="kg-image"></figure>
+	<p></p>
+	<p>自<a href="https://blog.cloudflare.com/protecting-free-expression-online/">2014年推出</a>以来，我们一直没有在外部过多地讨论伽利略，因为我们担心将更多的注意力吸引到这些组织可能会增加它们的风险。然而，在公司内部，这是我们整个团队的骄傲，也是我们投入大量资源的地方。对我个人而言，许多标志着我最有意义的成就的时刻都是在我们保护伽利略计划受助人的工作中产生的。</p>
+	<p>伽利略计划的承诺很简单：Cloudflare将为任何重要的政治或艺术组织免费提供我们的全套安全服务，只要它们是非营利组织或小型商业实体。每当有人申请加入伽利略计划时，我都会在分发列表中接收到电子邮件，我每天早上最先打开的一直是这些电子邮件。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/06/image3-1.png" class="kg-image"></figure>
+	<p></p>
+	<h2 id="-">伽利略计划的背景故事</h2>
+	<p>五年前，伽利略计划诞生于我们所犯的一个错误。当时，Cloudflare的免费服务不包含DDoS缓解功能。如果一个免费的客户受到攻击，我们的运营团队通常会停止代理他们的流量。我们这样做是为了保护我们自己的网络，当时我们的网络比今天的小得多。</p>
+	<p>通常情况下这不会有什么问题。当时大多数遭受攻击的网站都是能够为我们的服务付费的公司或企业。</p>
+	<p>每天早上我都会收到一份前一天晚上从Cloudflare网络中被踢下线的网站的报告。2014年2月下旬的一个早晨，我一边上班一边看这份报告。其中一个脱机的网站很熟悉，而我无法置之不理。</p>
+	<p>我试着用手机打开这个网站，但该站点处于脱机状态，大概是因为我们不再保护这个网站免受攻击。出于好奇，我快速搜索了一下，找到了描述该站点的维基百科页面。它是乌克兰的一家独立报纸，一直在报道俄罗斯对克里米亚的入侵。</p>
+	<p>我感到很难受。</p>
+	<h2 id="--1">当国家发动（网络）攻击时</h2>
+	<p>我们后来得知，这家出版社遭到了重大攻击，这一攻击很可能是直接来自于俄罗斯政府的。这家报纸转向Cloudflare寻求保护。事实上他们的IT主管也曾试图为我们更高级的服务付费，但该出版社信用卡绑定的银行系统也遭到了网络攻击，导致支付失败。所以他们注册了免费版的Cloudflare，并在一段时间内缓解了攻击。</p>
+	<p>该次攻击的规模很大，足以在我们的网络运营中心（NOC）中触发警报。我们的系统可靠性工程（SRE）团队的一名成员应召进行了调查，并发现一名免费客户在大型攻击下的受到了重创。他遵循我们的运行手册，并触发了FINT（表示“内部故障”），将来自站点的流量直接引回其源头，而不再通过Cloudflare的保护边缘。该网站立即被攻击淹没，并从互联网上离线了。</p>
+	<h2 id="--2">打破规则进程</h2>
+	<p>我应该要声明清楚：该SRE团队并没有做错任何事。那名成员是一位伟大的计算机科学家，但不是政治学家。所以他对这个网站没有很好的认识，也不了解其重要性——当时克里米亚的局势，以及为什么报道它的报纸可能会受到攻击。但是，第二天早上，当我在上班的路上读报告时，我意识到了这些。</p>
+	<p>Cloudflare的使命是帮助建立更好的互联网。那天，我们未能实现这一使命。我知道我们必须做点什么。</p>
+	<h2 id="--3">在政治或艺术上举足轻重？</h2>
+	<p>对我们来说，决定免费向政治上或艺术上重要的非营利组织和小型商业实体提供Cloudflare的安全服务是相对容易的。我们相信，即使面对最大规模的攻击，我们也能挺住。我们缺乏自信的点在于我们确定谁在“政治或艺术上举足轻重”的能力。</p>
+	<p>Cloudflare在世界各地运营基础设施，我们的团队主要分布在旧金山、奥斯汀、伦敦和新加坡。这当然给了我们一个开阔的视角，但它并不是一个特别具有全球代表性的视角。我们也是一个技术性很强的组织。如果我们针对自己的团队进行调查以确定哪些组织应该得到保护，我们无疑会找到一些与我们的利益息息相关的有价值的组织，但我们还会错过其他很多组织。</p>
+	<p>我们还担心，对于Cloudflare这样的基础设施提供商来说，开始决定哪些内容是“好的”是一件危险的事情。这样做本质上就意味着我们可以决定哪些内容是“坏的”。虽然对一些更透明可视的平台来说，管理内容和组织社区是应该的，但随着你对互联网基础设施的了解越深，这些决定就越不透明、越不可靠、越不一致。</p>
+	<h2 id="--4">求助于专家</h2>
+	<p>因此，我们没有自己决定谁在政治上或艺术上是重要的，而是求助于民间社会组织，它们正是这方面的专家。最初，我们与15个组织合作，包括：</p>
+	<ul>
+		<li>立即访问（Access Now）</li>
+		<li>美国公民自由联盟（ACLU，American &nbsp; &nbsp; &nbsp;Civil Liberties Union）</li>
+		<li>民主与技术中心（CDT，Center &nbsp; &nbsp; &nbsp;for Democracy and Technology）</li>
+		<li>政策选择中心（Centre for Policy &nbsp; &nbsp; &nbsp;Alternatives）</li>
+		<li>保护记者委员会（CPJ，Committee &nbsp; &nbsp; &nbsp;to Protect Journalists）</li>
+		<li>电子前沿基金会（EFF，Electronic &nbsp; &nbsp; &nbsp;Frontier Foundation）</li>
+		<li>引擎倡导（Engine Advocacy）</li>
+		<li>新闻自由基金会（Freedom of the Press &nbsp; &nbsp; &nbsp;Foundation）</li>
+		<li>Meedan</li>
+		<li>Mozilla</li>
+		<li>开放技术基金（Open Tech Fund）</li>
+		<li>开放技术研究所（Open Technology Institute）</li>
+	</ul>
+	<p>我们同意，如果任何合作伙伴说申请保护的非营利或小型商业实体“在政治或艺术上具有重要意义”，我们无论如何都会扩大安全服务并保护他们。</p>
+	<p>就这样，伽利略计划诞生了。目前有近600个组织得到了伽利略计划的保护。我们从来没有把一个任何组织从保护计划中移除，尽管偶尔会有政治压力和频繁的特大攻击。</p>
+	<p>组织可以直接通过Cloudflare申请伽利略计划的保护，也可以由合作伙伴推荐。今天，我们将合作伙伴的名单扩大到28个，增加了：</p>
+	<ul>
+		<li>反诽谤联盟（Anti-Defamation League）</li>
+		<li>国际特赦组织（Amnesty International）</li>
+		<li>商业和人权资源中心（Business &amp; Human &nbsp; &nbsp; &nbsp;Rights Resource Centre）</li>
+		<li>欧洲理事会（Council of Europe）</li>
+		<li>Derechos Digitales</li>
+		<li>第四等级（Fourth Estate，记者与新闻界）</li>
+		<li>前线捍卫者（Frontline Defenders）</li>
+		<li>战争与和平报道研究所（IWPR，Institute &nbsp; &nbsp; &nbsp;for War &amp; Peace Reporting）</li>
+		<li>狮子出版社（LION Publishers）</li>
+		<li>国家民主研究所（NDI，National &nbsp; &nbsp; &nbsp;Democratic Institute）</li>
+		<li>记者无国界（Reporters Sans Frontières）</li>
+		<li>社交媒体交流（SMEX，Social &nbsp; &nbsp; &nbsp;Media Exchange）</li>
+		<li>Sontusdatos.org</li>
+		<li>反恐科技（Tech Against Terrorism）</li>
+		<li>万维网基金会（World Wide Web Foundation）</li>
+		<li>X实验室（X-Lab）</li>
+	</ul>
+	<h2 id="cloudflare-">Cloudflare的使命：帮助建立更好的互联网</h2>
+	<p>有些公司因循使命而生，而当时的Cloudflare并非如此。Michelle、Lee和我开始构建Cloudflare，是因为我们认为我们发现了一个重要的商机。说实话，我认为“使命驱动”是一种废话。</p>
+	<p>我清楚地记得改变我的那一天。伽利略计划合作伙伴之一的负责人打电话给我，说他有三名得到伽利略计划保护的记者正在旧金山进行访问，他问我是否可以把他们带到我们的办公室。我说没问题，然后腾出一点时间和他们见面。</p>
+	<p>事实证明，这三名记者都在揭露他们国家涉嫌的政府腐败。一个人来自安哥拉，一个人来自埃塞俄比亚，他们不愿告诉我第三人的名字或国家，因为他“目前正在被敢死队追捕”。他们三个都拥抱了我。其中一个人眼含泪水。然后，他们继续告诉我，如果没有Cloudflare的保护，他们无法完成记者的工作。</p>
+	<p>世界各地都有非常勇敢的人在做着重要的工作，冒着生命危险。他们中的一些人利用互联网来接触他们的受众。不幸的是，无论是报道所谓政府腐败的非洲记者、在中东提供支持的LGBTQ群体，还是压制性政权的人权工作者，他们都面临着这样的风险：反对他们的强大力量将利用网络攻击来压制他们。</p>
+	<p>我为我们在过去五年中通过“伽利略计划”所做的工作感到自豪，我们利用Cloudflare的全部力量来保护这些在政治和艺术上举足轻重的组织。它定义了我们帮助建设一个更好的互联网的使命。</p>
+	<p>尽管我们尊重获得项目支持的组织的机密性，但我很感谢少数的几个组织允许我们讲述他们的故事。我鼓励您阅读有关我们最新的项目受助者的内容：</p>
+	<ul>
+		<li><a href="https://www.cloudflare.com/galileo/case-study/majal" target="_blank">Majal</a></li>
+		<li><a href="https://www.cloudflare.com/galileo/case-study/womens-march-global" target="_blank">Women's March Global</a></li>
+		<li><a href="https://www.cloudflare.com/galileo/case-study/vost-portugal" target="_blank">VOST Portugal</a></li>
+		<li><a href="https://www.cloudflare.com/galileo/case-study/bullyingcanada" target="_blank">BullyingCanada</a></li>
+	</ul>
+	<p>最后，如果您知道某个组织需要伽利略计划的保护，请让他们知悉，我们一直都在并且很乐意提供帮助。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/06/image2-1.png" class="kg-image"></figure>
+	<p></p>
+</div>

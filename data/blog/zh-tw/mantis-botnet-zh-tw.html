@@ -1,0 +1,24 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image5-7.png" class="kg-image" alt="Mantis - the most powerful botnet to date"></figure>
+	<p>2022 年 6 月，我們報告了迄今以來緩解的最大 HTTPS DDoS 攻擊——<a href="https://blog.cloudflare.com/zh-tw/26m-rps-ddos-zh-tw/">每秒 2600 萬個請求的攻擊</a>，這是有記錄以來最大的攻擊。我們的系統自動偵測出並緩解了該攻擊以及許多其他攻擊。從那之後，我們一直在追蹤這個<a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-botnet/" target="_blank">殭屍網路</a>（我們稱之為 <strong>Mantis</strong>），以及它對將近上千 Cloudflare 客戶發起的攻擊。</p>
+	<p>Cloudflare <a href="https://www.cloudflare.com/waf/" target="_blank">WAF</a>/<a href="https://www.cloudflare.com/cdn/" target="_blank">CDN</a> 客戶可防禦 HTTP DDoS 攻擊，Mantis 攻擊也包含在內。請參閱本部落格底部瞭解如何最佳保護您的網際網路設備免受 DDoS 攻擊。</p>
+	<h3 id="-mantis-">您是否遇到過 Mantis？</h3>
+	<p>我們將這個每秒發動 2600 萬個請求之 DDoS 攻擊的殭屍網路命名為「Mantis（螳螂）」，因為它就像 <a href="https://en.wikipedia.org/wiki/Mantis_shrimp" target="_blank">Mantis shrimp（螳螂蝦）</a>一樣，體型小但卻十分強大。螳螂蝦也稱為「拇指切割機」，體型非常小，長度不足 10 cm，但是它們的螯非常強大，可以產生 1,500 <a href="https://en.wikipedia.org/wiki/Newton_(unit)" target="_blank">牛頓</a>力的衝擊波，靜態起跑的速度可達到 83 km/h。與此相似，Mantis 殭屍網路運作大約 5,000 個機器人組成的小隊，但它們卻能產生巨大的力量，是我們曾經觀察到的最大 HTTP DDoS 攻擊的元兇。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/07/image7-3.png" class="kg-image" alt="Image of the Mantis shrimp from Wikipedia">
+		<figcaption>螳螂蝦。來源：<a href="https://en.wikipedia.org/wiki/File:OdontodactylusScyllarus2.jpg" target="_blank">維基百科</a>。</figcaption>
+	</figure>
+	<p>Mantis 殭屍網路<strong>僅</strong>使用 5,000 個機器人，就能產生每秒 2600 萬個 HTTPS 請求的攻擊。我再重複一遍：<strong>僅</strong>使用 5,000 個機器人，就能產生每秒 2600 萬個 HTTPS 請求。也就是說每個機器人平均每秒產生 5,200 個請求。在沒有額外開支來建立安全連線的情況下，產生 2600 萬個 HTTP 請求是很難做到的，但 Mantis 卻透過 <a href="https://www.cloudflare.com/learning/ssl/what-is-https/" target="_blank">HTTPS</a> 做到了。HTTPS DDoS 攻擊在所需運算資源方面更加昂貴，因為建立安全 <a href="https://www.cloudflare.com/learning/ssl/transport-layer-security-tls/" target="_blank">TLS</a> 加密連線的成本更高。這凸顯並強調了這一殭屍網路背後的獨特力量。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image1-5.png" class="kg-image" alt="Graph of the 26 million requests per second DDoS attack"></figure>
+	<p>與 DVR、CC 攝影機或煙霧警報器等<a href="https://www.cloudflare.com/learning/ddos/glossary/internet-of-things-iot/" target="_blank">物聯網 (IoT) 裝置</a>構成的「傳統」殭屍網路不同，Mantis 使用被劫持的虛擬機和強大的伺服器。這意味著每個機器人都有多得多的運算資源，這些運算資源結合起來，就能形成這種切割拇指的力量。</p>
+	<p>Mantis 是 Meris 殭屍網路的下一代演進。Meris 殭屍網路依賴於 MikroTik 裝置，而 Mantis 卻已擴展到包含各種 VM 平台，並支援執行各種 HTTP Proxy 以發起攻擊。選擇「Mantis」這個與「Meris」類似的名稱是為了反映其來源，同時也是為了說明這種演進的攻擊迅捷而有力。過去幾週，Mantis 一直特別活躍，將近 1,000 位 Cloudflare 客戶受到其影響。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image4-6.png" class="kg-image" alt="Graphic design of a botnet"></figure>
+	<h3 id="mantis-">Mantis 攻擊的目標是誰？</h3>
+	<p>在我們最近的 <a href="https://blog.cloudflare.com/zh-tw/ddos-attack-trends-for-2022-q2-zh-tw/">DDoS 攻擊趨勢報告中</a>，我們探討過，HTTP DDoS 攻擊的數量正在增加。在上個季度，HTTP DDoS 攻擊增加了 72%，Mantis 無疑促進了這一增長。在過去一個月，Mantis 對 Cloudflare 客戶發起了超過 3,000 次 HTTP DDoS 攻擊。</p>
+	<p>當我們研究 Mantis 的攻擊目標時，可以發現受攻擊最多的產業為網際網路和電信產業，佔了攻擊份額的 36%。受攻擊第二多的產業是新聞、媒體和出版產業，緊隨其後的是遊戲和金融產業。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image2-7.png" class="kg-image"></figure>
+	<p>當我們研究這些公司的所在地時，可以發現這些 DDoS 攻擊目標的 20% 以上是位於美國的公司，15% 以上是位於俄羅斯的公司，而位於土耳其、法國、波蘭、烏克蘭等國家的公司不足 5%。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image6-4.png" class="kg-image"></figure>
+	<h3 id="-mantis-ddos-">如何防禦 Mantis 和其他 DDoS 攻擊</h3>
+	<p>Cloudflare 的<a href="https://www.cloudflare.com/ddos/" target="_blank">自動化 DDoS 防護</a>系統利用動態特征識別偵測和緩解 DDoS 攻擊。該系統以 <a href="https://blog.cloudflare.com/http-ddos-managed-rules/">HTTP DDoS 受管理規則集</a>的形式向客戶開放。預設情況下，該規則集已啟用，並會套用緩解動作，因此，如果您未做出任何變更，則不需要採取任何動作，就能得到保護。您還可以檢閱我們的指南<a href="https://support.cloudflare.com/hc/en-us/articles/200170166" target="_blank">《最佳做法：DoS 預防性措施》</a>和<a href="https://support.cloudflare.com/hc/en-us/articles/200170196-Responding-to-DDoS-attacks" target="_blank">《應對 DDoS 攻擊》</a>，瞭解更多有關如何最佳化 Cloudflare 設定的貼士和建議。</p>
+	<p>如果您僅使用 Cloudflare <a href="https://www.cloudflare.com/magic-transit/" target="_blank">Magic Transit</a> 或 <a href="https://www.cloudflare.com/products/cloudflare-spectrum/" target="_blank">Spectrum</a>，但還運作未受 Cloudflare 保護的 HTTP 應用程式，則建議<a href="https://developers.cloudflare.com/fundamentals/get-started/setup/add-site/" target="_blank">將它們加入 Cloudflare 的 WAF/CDN 服務</a>以從 L7 保護受益。</p>
+</div>

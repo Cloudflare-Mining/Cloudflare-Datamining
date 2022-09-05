@@ -1,0 +1,209 @@
+<div class="post-content lh-copy gray1">
+	<p>Intern wird unser DDoS-Abwehrteam manchmal „the packet droppers“ („die Paketverwerfer“) genannt. Während andere Teams aufregende Produkte entwickeln, um intelligente Dinge mit dem Datenverkehr zu tun, der durch unser Netzwerk fließt, freuen wir uns, wenn wir neue Wege finden, ihn zu entsorgen.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2018/07/38464589350_d00908ee98_b.jpg" class="kg-image" alt="38464589350_d00908ee98_b">
+		<figcaption><a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/beegee49/38464589350" target="_blank">Foto</a> von <a href="https://www.flickr.com/photos/beegee49" target="_blank">Brian Evans</a></figcaption>
+	</figure>
+	<p>Die Möglichkeit, Pakete schnell zu verwerfen, ist sehr wichtig, um DDoS-Angriffen standzuhalten.</p>
+	<p>Das Verwerfen von Paketen, die auf unsere Server gelangen, kann auf mehreren Ebenen durchgeführt werden. Jede Technik hat ihre Vor- und Nachteile. In diesem Blogbeitrag besprechen wir alle Techniken, die wir bisher ausprobiert haben.</p>
+	<h3 id="pr-fstand"><strong>Prüfstand</strong></h3>
+	<p>Um die relative Leistung der einzelnen Methoden zu veranschaulichen, werden wir einige Zahlen zeigen. Die Benchmarks sind künstlich und daher mit Vorsicht zu genießen. Wir verwenden einen unserer Intel-Server mit einer 10-Gbit/s-Netzwerkkarte. Die Hardwaredetails sind nicht allzu wichtig, da die Tests so ausgerichtet sind, dass sie Einschränkungen des Betriebssystems und nicht die der Hardware aufzeigen.</p>
+	<p>Unser Test-Setup sieht wie folgt aus:</p>
+	<ul>
+		<li>Wir übertragen eine große Anzahl winziger UDP-Pakete und erreichen 14 Mpps (Millionen Pakete pro Sekunde).</li>
+		<li>Dieser Traffic wird auf eine einzelne CPU auf einem Zielserver geleitet.</li>
+		<li>Wir messen die Anzahl der Pakete, die vom Kernel auf dieser einen CPU verarbeitet werden.</li>
+	</ul>
+	<p>Wir versuchen nicht, die Anwendungsgeschwindigkeit des Userspace oder den Paketdurchsatz zu maximieren – stattdessen versuchen wir, gezielt Kernel-Engpässe aufzuzeigen.</p>
+	<p>Der künstliche Traffic ist darauf ausgerichtet, conntrack maximal zu belasten – er verwendet zufällige Quell-IP- und Port-Felder. Tcpdump zeigt das wie folgt an:</p>
+	<pre><code>$ tcpdump -ni vlan100 -c 10 -t udp and dst port 1234
+IP 198.18.40.55.32059 &gt; 198.18.0.12.1234: UDP, length 16
+IP 198.18.51.16.30852 &gt; 198.18.0.12.1234: UDP, length 16
+IP 198.18.35.51.61823 &gt; 198.18.0.12.1234: UDP, length 16
+IP 198.18.44.42.30344 &gt; 198.18.0.12.1234: UDP, length 16
+IP 198.18.106.227.38592 &gt; 198.18.0.12.1234: UDP, length 16
+IP 198.18.48.67.19533 &gt; 198.18.0.12.1234: UDP, length 16
+IP 198.18.49.38.40566 &gt; 198.18.0.12.1234: UDP, length 16
+IP 198.18.50.73.22989 &gt; 198.18.0.12.1234: UDP, length 16
+IP 198.18.43.204.37895 &gt; 198.18.0.12.1234: UDP, length 16
+IP 198.18.104.128.1543 &gt; 198.18.0.12.1234: UDP, length 16</code></pre>
+	<p>Auf der Zielseite werden alle Pakete an genau eine RX-Warteschlange weitergeleitet, also an eine CPU. Wir tun dies mit der Hardware-Flusssteuerung:</p>
+	<p><code>ethtool -N ext0 flow-type udp4 dst-ip 198.18.0.12 dst-port 1234 action 2</code></p>
+	<p>Benchmarking ist immer schwer. Bei der Vorbereitung der Tests haben wir gelernt, dass aktive Raw Sockets die Leistung beeinträchtigen. Im Nachhinein ist das offensichtlich, aber es ist auch leicht zu übersehen. Bevor Sie Tests ausführen, vergewissern Sie sich, dass kein veralteter tcpdump-Prozess ausgeführt wird. So überprüfen Sie es und zeigen einen fehlerhaften Prozess an:</p>
+	<pre><code>$ ss -A raw,packet_raw -l -p|cat
+Netid  State      Recv-Q Send-Q Local Address:Port
+p_raw  UNCONN     525157 0      *:vlan100          users:(("tcpdump",pid=23683,fd=3))</code></pre>
+	<p>Schließlich deaktivieren wir die Intel-Turbo-Boost-Funktion auf dem Rechner:</p>
+	<p><code>echo 1 | sudo tee /sys/devices/system/cpu/intel_pstate/no_turbo</code></p>
+	<p>Obwohl Turbo Boost eine schöne Sache ist und den Durchsatz um mindestens 20 % erhöht, verschlechtert die Funktion aber auch die Standardabweichung in unseren Tests drastisch. Bei aktiviertem Turbo Boost hatten wir eine Abweichung von ±1,5 % in unseren Zahlen. Bei deaktiviertem Turbo Boost sinkt dieser Wert auf überschaubare 0,25 %.<br></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/07/layers.JPG" class="kg-image" alt="layers"></figure>
+	<h4 id="schritt-1-verwerfen-von-paketen-in-der-anwendung"><strong>Schritt 1: Verwerfen von Paketen in der Anwendung</strong></h4>
+	<p>Beginnen wir mit der Idee, Pakete an eine Anwendung zu liefern und sie im Userspace-Code zu ignorieren. Für das Test-Setup stellen wir sicher, dass unsere iptables die Leistung nicht beeinträchtigen:</p>
+	<pre><code>iptables -I PREROUTING -t mangle -d 198.18.0.12 -p udp --dport 1234 -j ACCEPT
+iptables -I PREROUTING -t raw -d 198.18.0.12 -p udp --dport 1234 -j ACCEPT
+iptables -I INPUT -t filter -d 198.18.0.12 -p udp --dport 1234 -j ACCEPT
+</code></pre>
+	<p>Der Anwendungscode ist eine einfache Schleife, die Daten empfängt und sofort im Userspace verwirft:</p>
+	<pre><code>s = socket.socket(AF_INET, SOCK_DGRAM)
+s.bind(("0.0.0.0", 1234))
+while True:
+    s.recvmmsg([...])</code></pre>
+	<p><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-07-dropping-packets/recvmmsg-loop.c" target="_blank">Wir haben den Code vorbereitet</a>, um ihn auszuführen:</p>
+	<pre><code>$ ./dropping-packets/recvmmsg-loop
+packets=171261 bytes=1940176</code></pre>
+	<p>Dieses Setup ermöglicht es dem Kernel, magere 175 kpps aus der Hardware-Empfangsqueue zu erhalten, gemessen mit ethtool und mit unserem einfachen <a href="https://blog.cloudflare.com/three-little-tools-mmsum-mmwatch-mmhistogram/">mmwatch-Tool</a>:</p>
+	<pre><code>$ mmwatch 'ethtool -S ext0|grep rx_2'
+ rx2_packets: 174.0k/s</code></pre>
+	<p>Die Hardware erhält technisch gesehen 14 Mpps übertragen. Aber es ist unmöglich, das alles an eine einzige RX-Warteschlange zu übergeben, die von nur einem CPU-Kern verarbeitet wird, der Kernelarbeit leistet. mpstat bestätigt das:</p>
+	<pre><code>$ watch 'mpstat -u -I SUM -P ALL 1 1|egrep -v Aver'
+01:32:05 PM  CPU    %usr   %nice    %sys %iowait    %irq   %soft  %steal  %guest  %gnice   %idle
+01:32:06 PM    0    0.00    0.00    0.00    2.94    0.00    3.92    0.00    0.00    0.00   93.14
+01:32:06 PM    1    2.17    0.00   27.17    0.00    0.00    0.00    0.00    0.00    0.00   70.65
+01:32:06 PM    2    0.00    0.00    0.00    0.00    0.00  100.00    0.00    0.00    0.00    0.00
+01:32:06 PM    3    0.95    0.00    1.90    0.95    0.00    3.81    0.00    0.00    0.00   92.38
+</code></pre>
+	<p>Wie Sie sehen können, ist der Anwendungscode kein Engpass. Er verwendet 27 % sys + 2 % Userspace auf CPU Nr. 1, während Netzwerk-SOFTIRQ auf CPU Nr. 2 100 % der Ressourcen verwendet.</p>
+	<p>Übrigens, die Verwendung von recvmmsg(2) ist wichtig. In diesen Tagen nach Spectre sind Syscalls teurer geworden und tatsächlich laufen bei uns Kernel 4.14 mit KPTI und Retpolines:</p>
+	<pre><code>$ tail -n +1 /sys/devices/system/cpu/vulnerabilities/*
+==&gt; /sys/devices/system/cpu/vulnerabilities/meltdown &lt;==
+Mitigation: PTI
+
+==&gt; /sys/devices/system/cpu/vulnerabilities/spectre_v1 &lt;==
+Mitigation: __user pointer sanitization
+
+==&gt; /sys/devices/system/cpu/vulnerabilities/spectre_v2 &lt;==
+Mitigation: Full generic retpoline, IBPB, IBRS_FW</code></pre>
+	<h4 id="schritt-2-niederringen-von-conntrack"><strong>Schritt 2: Niederringen von conntrack</strong></h4>
+	<p>Wir haben den Test durch die Wahl zufälliger Quell-IPs und Ports speziell so entwickelt,dass wir den conntrack-Layer belasten. Das kann anhand der Anzahl der conntrack-Einträge überprüft werden, die während des Tests das Maximum erreichen:</p>
+	<pre><code>$ conntrack -C
+2095202
+
+$ sysctl net.netfilter.nf_conntrack_max
+net.netfilter.nf_conntrack_max = 2097152</code></pre>
+	<p>Sie können den Aufschrei von conntrack in dmesg beobachten:</p>
+	<pre><code>[4029612.456673] nf_conntrack: nf_conntrack: table full, dropping packet
+[4029612.465787] nf_conntrack: nf_conntrack: table full, dropping packet
+[4029617.175957] net_ratelimit: 5731 callbacks suppressed
+</code></pre>
+	<p>Um unsere Tests zu beschleunigen, deaktivieren wir es:</p>
+	<p><code>iptables -t raw -I PREROUTING -d 198.18.0.12 -p udp -m udp --dport 1234 -j NOTRACK</code></p>
+	<p>Und führen die Tests erneut aus:</p>
+	<pre><code>$ ./dropping-packets/recvmmsg-loop
+packets=331008 bytes=5296128</code></pre>
+	<p>Dadurch wird die Empfangsleistung der Anwendung sofort auf 333 kpps erhöht. Hurra!</p>
+	<p>PS: Mit <code>SO_BUSY_POLL</code> können wir die Zahlen auf 470 kpps erhöhen, aber das ist ein Thema für ein anderes Mal.</p>
+	<h4 id="schritt-3-verwerfen-in-bpf-auf-einem-socket"><strong>Schritt 3: Verwerfen in BPF auf einem Socket</strong></h4>
+	<p>Warum überhaupt Pakete an die Userspace-Anwendung liefern? Obwohl diese Technik ungewöhnlich ist, können wir mit setsockopt( <code>SO_ATTACH_FILTER</code> ) einen klassischen BPF-Filter an einen <code>SOCK_DGRAM</code>-Socket anfügen und den Filter so programmieren, dass er Pakete im Kernelspace verwirft.</p>
+	<p><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-07-dropping-packets/bpf-drop.c" target="_blank">Hier ist der Code</a> zum Auszuführen:</p>
+	<pre><code>$ ./bpf-drop
+packets=0 bytes=0</code></pre>
+	<p>Beim Verwerfen in BPF (sowohl das klassische BPF als auch das erweiterte eBPF haben eine ähnliche Leistung) verarbeiten wir rund 512 kpps. Sie werden alle im BPF-Filter verworfen, obwohl der noch im Software-Interrupt-Modus ist, was uns CPU einspart, die zum Aufwecken der Userspace-Anwendung benötigt würde.</p>
+	<h4 id="schritt-4-verwerfen-in-iptables-nach-dem-routen"><strong>Schritt 4: VERWERFEN in iptables nach dem Routen</strong></h4>
+	<p>Als nächsten Schritt können wir Pakete einfach in der iptables-Firewall-INPUT-Kette verwerfen, indem wir eine Regel wie diese hinzufügen:</p>
+	<p><code>iptables -I INPUT -d 198.18.0.12 -p udp --dport 1234 -j DROP</code></p>
+	<p>Denken Sie daran, dass wir conntrack bereits mit <code>-j NOTRACK</code> deaktiviert haben. Mit diesen beiden Regeln bekommen wir 608 kpps.</p>
+	<p>Die Zahlen in den Zählern von iptables:</p>
+	<pre><code>$ mmwatch 'iptables -L -v -n -x | head'
+
+Chain INPUT (policy DROP 0 packets, 0 bytes)
+    pkts      bytes target     prot opt in     out     source               destination
+605.9k/s    26.7m/s DROP       udp  --  *      *       0.0.0.0/0            198.18.0.12          udp dpt:1234
+</code></pre>
+	<p>600 kpps sind nicht schlecht, aber es geht noch besser!</p>
+	<h4 id="schritt-5-verweren-in-iptables-beim-prerouting"><strong>Schritt 5: VERWEREN in iptables beim PREROUTING</strong></h4>
+	<p>Eine noch schnellere Technik besteht darin, Pakete zu verwerfen, bevor sie weitergeleitet werden. Diese Regel kann das:</p>
+	<p><code>iptables -I PREROUTING -t raw -d 198.18.0.12 -p udp --dport 1234 -j DROP</code></p>
+	<p>Das produziert satte 1,688 mpps.</p>
+	<p>Das ist ein ziemlich signifikanter Leistungssprung, den ich allerdings nicht ganz verstehe. Entweder ist unser Routing-Layer ungewöhnlich komplex oder es gibt einen Fehler in unserer Serverkonfiguration.</p>
+	<p>In jedem Fall ist die „rohe“ iptables-Tabelle definitiv viel schneller.</p>
+	<h4 id="schritt-6-verwerfen-in-nftables-vor-conntrack"><strong>Schritt 6: VERWERFEN in nftables vor CONNTRACK</strong></h4>
+	<p>Iptables gilt heutzutage als passé. Der neue Stern am Himmel ist nftables. In diesem <a href="https://www.youtube.com/watch?v=9Zr8XqdET1c" target="_blank">Video erhalten Sie eine technische Erklärung, warum</a> nftables überlegen ist. Nftables verspricht aus vielen Gründen, schneller zu sein als ergraute iptables. Es hält sich das Gerücht, dass Retpolines (aka: keine Spekulation auf indirekte Sprünge) iptables ziemlich zugesetzt haben.</p>
+	<p>Da es in diesem Artikel nicht darum geht, die Geschwindigkeit von nftables und iptables zu vergleichen, versuchen wir nur das schnellste Verwerfen, auf das ich gekommen bin:</p>
+	<pre><code>nft add table netdev filter
+nft -- add chain netdev filter input { type filter hook ingress device vlan100 priority -500 \; policy accept \; }
+nft add rule netdev filter input ip daddr 198.18.0.0/24 udp dport 1234 counter drop
+nft add rule netdev filter input ip6 daddr fd00::/64 udp dport 1234 counter drop
+</code></pre>
+	<p>Die Zähler können mit diesem Befehl angesehen werden:</p>
+	<pre><code>$ mmwatch 'nft --handle list chain netdev filter input'
+table netdev filter {
+    chain input {
+        type filter hook ingress device vlan100 priority -500; policy accept;
+        ip daddr 198.18.0.0/24 udp dport 1234 counter packets    1.6m/s bytes    69.6m/s drop # handle 2
+        ip6 daddr fd00::/64 udp dport 1234 counter packets 0 bytes 0 drop # handle 3
+    }
+}</code></pre>
+	<p>Der „ingress“-Hook von nftables liefert etwa 1,53 mpps. Das ist etwas langsamer als iptables im <code>PREROUTING</code>-Layer. Das ist rätselhaft – theoretisch erfolgt „ingress“ vor dem <code>PREROUTING</code>, es sollte also schneller sein.</p>
+	<p>In unserem Test war nftables etwas langsamer als iptables, aber nicht viel. Nftables ist trotzdem besser :P</p>
+	<h4 id="schritt-7-verwerfen-mit-tc-ingress-handler"><strong>Schritt 7: VERWERFEN mit tc Ingress-Handler</strong></h4>
+	<p>Eine etwas überraschende Tatsache ist, dass ein tc (Traffic Control) Ingress-Hook noch vor dem <code>PREROUTING</code> passiert. tc ermöglicht es, Pakete nach grundlegenden Kriterien auszuwählen und in der Tat mit „action drop“ zu verwerfen. Die Syntax ist eher unelegant, daher wird empfohlen, zum Einrichten dieses <a href="https://github.com/netoptimizer/network-testing/blob/master/bin/tc_ingress_drop.sh" target="_blank">Skript zu verwenden</a>. Wir brauchen einen etwas komplexeren tc-Match, hier ist die Befehlszeile:</p>
+	<pre><code>tc qdisc add dev vlan100 ingress
+tc filter add dev vlan100 parent ffff: prio 4 protocol ip u32 match ip protocol 17 0xff match ip dport 1234 0xffff match ip dst 198.18.0.0/24 flowid 1:1 action drop
+tc filter add dev vlan100 parent ffff: protocol ipv6 u32 match ip6 dport 1234 0xffff match ip6 dst fd00::/64 flowid 1:1 action drop
+</code></pre>
+	<p>Wir können es überprüfen:</p>
+	<pre><code>$ mmwatch 'tc -s filter  show dev vlan100  ingress'
+filter parent ffff: protocol ip pref 4 u32 
+filter parent ffff: protocol ip pref 4 u32 fh 800: ht divisor 1 
+filter parent ffff: protocol ip pref 4 u32 fh 800::800 order 2048 key ht 800 bkt 0 flowid 1:1  (rule hit   1.8m/s success   1.8m/s)
+  match 00110000/00ff0000 at 8 (success   1.8m/s ) 
+  match 000004d2/0000ffff at 20 (success   1.8m/s ) 
+  match c612000c/ffffffff at 16 (success   1.8m/s ) 
+        action order 1: gact action drop
+         random type none pass val 0
+         index 1 ref 1 bind 1 installed 1.0/s sec
+        Action statistics:
+        Sent    79.7m/s bytes   1.8m/s pkt (dropped   1.8m/s, overlimits 0 requeues 0) 
+        backlog 0b 0p requeues 0
+</code></pre>
+	<p>Ein tc-Ingress-Hook mit u32-Match ermöglicht es uns, 1,8 mpps auf einer einzelnen CPU zu verwerfen. Das ist genial!</p>
+	<p>Aber wir können noch schneller werden ...</p>
+	<h4 id="schritt-8-xdp_drop"><strong>Schritt 8: XDP_DROP</strong></h4>
+	<p>Zu guter Letzt die ultimative Waffe: XDP – der <a href="https://prototype-kernel.readthedocs.io/en/latest/networking/XDP/" target="_blank">eXpress Data Path</a>. Mit XDP können wir eBPF-Code im Kontext eines Netzwerktreibers ausführen. Am wichtigsten ist, dass dies vor der skbuff-Speicherzuweisung erfolgt, was hohe Geschwindigkeiten ermöglicht.</p>
+	<p>In der Regel bestehen XDP-Projekte aus zwei Teilen:</p>
+	<ul>
+		<li>dem eBPF-Code, der in den Kernelkontext geladen wurde,</li>
+		<li>dem Userspace-Loader, der den Code auf die richtige Netzwerkkarte lädt und verwaltet.</li>
+	</ul>
+	<p>Das Schreiben des Laders ist ziemlich schwierig, sodass wir stattdessen die <a href="https://cilium.readthedocs.io/en/latest/bpf/#iproute2" target="_blank">neue iproute2-Funktion</a> verwenden und den Code mit diesem trivialen Befehl laden können:</p>
+	<pre><code>ip link set dev ext0 xdp obj xdp-drop-ebpf.o
+</code></pre>
+	<p>Bitte sehr!</p>
+	<p>Den Quellcode für<a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-07-dropping-packets/xdp-drop-ebpf.c" target="_blank">das geladene eBPF XDP-Programm finden Sie hier</a>. Das Programm analysiert IP-Pakete und sucht nach den gewünschten Eigenschaften: IP-Transport, UDP-Protokoll, gewünschtes Zielsubnetz und Zielport:</p>
+	<pre><code class="language-python">if (h_proto == htons(ETH_P_IP)) {
+    if (iph-&gt;protocol == IPPROTO_UDP
+        &amp;&amp; (htonl(iph-&gt;daddr) &amp; 0xFFFFFF00) == 0xC6120000 // 198.18.0.0/24
+        &amp;&amp; udph-&gt;dest == htons(1234)) {
+        return XDP_DROP;
+    }
+}</code></pre>
+	<p>Das XDP-Programm muss mit einem modernen <code>Clang</code> kompiliert werden, der BPF-Bytecode ausgeben kann. Danach können wir das ausgeführte XDP-Programm laden und überprüfen:</p>
+	<pre><code>$ ip link show dev ext0
+4: ext0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 xdp qdisc fq state UP mode DEFAULT group default qlen 1000
+    link/ether 24:8a:07:8a:59:8e brd ff:ff:ff:ff:ff:ff
+    prog/xdp id 5 tag aedc195cc0471f51 jited
+</code></pre>
+	<p>Und wir sehen die Zahlen in der <code>ethtool -S</code> -Netzwerkkartenstatistik:</p>
+	<pre><code>$ mmwatch 'ethtool -S ext0|egrep "rx"|egrep -v ": 0"|egrep -v "cache|csum"'
+     rx_out_of_buffer:     4.4m/s
+     rx_xdp_drop:         10.1m/s
+     rx2_xdp_drop:        10.1m/s
+</code></pre>
+	<p>Wow! Mit XDP können wir 10 Millionen Pakete pro Sekunde auf einer einzelnen CPU verwerfen.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/10/image-1.png" class="kg-image">
+		<figcaption><a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/afiler/225821241/" target="_blank">Foto</a> von <a href="https://www.flickr.com/photos/afiler/" target="_blank">Andrew Filer</a></figcaption>
+	</figure>
+	<h3 id="zusammenfassung"><strong>Zusammenfassung</strong></h3>
+	<p>Wir haben das für IPv4 und IPv6 wiederholt und dieses Diagramm erstellt:</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/10/image-2.png" class="kg-image"></figure>
+	<p>Im Allgemeinen hatte IPv6 in unserem Setup eine etwas geringere Leistung. Sie sollten aber daran denken, dass IPv6-Pakete etwas größer sind, sodass ein gewisser Leistungsunterschied unvermeidbar ist.</p>
+	<p>Linux verfügt über zahlreiche Hooks, mit denen Pakete gefiltert werden können und die jeweils unterschiedliche Eigenschaften hinsichtlich Leistung und Benutzerfreundlichkeit aufweisen.</p>
+	<p>Für DDoS-Zwecke kann es durchaus sinnvoll sein, die Pakete einfach in der Anwendung zu empfangen und im Userspace zu verarbeiten. Richtig abgestimmte Anwendungen können ziemlich gute Zahlen erreichen.</p>
+	<p>Bei DDoS-Angriffen mit zufälligen/gefälschten Quell-IPs kann es sich lohnen, conntrack zu deaktivieren, um mehr Geschwindigkeit zu erzielen. Seien Sie jedoch vorsichtig – es gibt Angriffe, bei denen conntrack sehr hilfreich ist.</p>
+	<p>Unter anderen Umständen kann es sinnvoll sein, die Linux-Firewall in die DDoS-Abwehrpipeline zu integrieren. Denken Sie in solchen Fällen daran, die Abwehr in einen „-t raw PREROUTING“-Layer zu legen, weil der deutlich schneller ist als die „filter“-Tabelle.</p>
+	<p>Für noch anspruchsvollere Workloads haben wir immer XDP. Und Junge, ist der stark. Hier ist das gleiche Diagramm wie oben, aber mit XDP:</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/10/image-3.png" class="kg-image"></figure>
+	<p>Wenn Sie diese Zahlen reproduzieren möchten, <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-07-dropping-packets/README.md" target="_blank">lesen Sie die README-Datei, in der wir alles dokumentiert haben</a>.</p>
+	<p>Hier bei Cloudflare verwenden wir ... fast alle diese Techniken. Einige der Userspace-Tricks sind in unsere Anwendungen integriert. Der iptables-Layer wird von <a href="https://blog.cloudflare.com/meet-gatebot-a-bot-that-allows-us-to-sleep/">unserer Gatebot DDoS-Pipeline</a> verwaltet. Außerdem arbeiten wir daran, unsere proprietäre Kernel-Offload-Lösung durch XDP zu ersetzen.</p>
+	<p>Möchten Sie uns helfen, noch mehr Pakete zu verwerfen? Wir stellen für viele Aufgaben ein, darunter Paketverwerfer, Systemingenieure und mehr!</p>
+	<p><em>Ein besonderer Dank für die Unterstützung bei dieser Arbeit geht an</em><a href="https://twitter.com/JesperBrouer" target="_blank"><em>Jesper Dangaard Brouer</em></a><em>.</em></p>
+</div>

@@ -1,0 +1,148 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image2-1.png" class="kg-image"></figure>
+	<p>今日は、Webサイトの静的コンテンツの提供にプラスした新しいサービスであるプラットフォーム自動最適化（APO）サービスをご紹介いたします。このローンチにより、当社はWordPressをサポートします。WordPressは、最も人気のあるWebサイトホスティングソリューションで、Webサイト全体の38％のシェアを誇ります。以下に詳述するとおり、当社のテストでは、最初のバイトまでの時間（TTFB）が72%削減され、<a href="https://web.dev/fcp/" target="_blank">First Contentful Paint</a>が23%削減されており、さらに<a href="https://web.dev/speed-index/" target="_blank">Speed Index</a>が13%削減されました。この結果は、ほぼすべてのWebサイトコンテンツがCloudflareネットワークから提供されたときに、デスクトップユーザーの90%で得られた傾向です。つまり、Webサイトの訪問者にとっては、最初のコンテンツがより早く表示されるだけでなく、すべてのコンテンツの表示時間がより早くなるということです。</p>
+	<p>WordPressのプラットフォーム自動最適化を使用すれば、顧客が、共有ホスティングの輻輳、遅いデータベース検索、プラグインの不具合のような一般的な問題によって引き起こされる遅延に悩まされることはありません。このサービスは、WordPressを使用しているすべての方にご利用いただけるようになりました。</p>
+	<h3 id="-">プラットフォーム自動最適化の価格設定</h3>
+	<p>WordPressのAPOは、Freeプランのお客様は5ドル/月でご利用いただけます。Pofessional、Business、Enterpriseプランのお客様は追加料金なしでご利用いただけます（利用料金なし、予想外の料金なしで、スピートをお楽しみいただけます）。</p>
+	<h3 id="--1">使用開始手順</h3>
+	<p>最も簡単にAPOを始める方法は、WordPressアドミンコンソールからです。</p>
+	<p>1. はじめに、 <a href="https://wordpress.org/plugins/cloudflare/" target="_blank"> &nbsp;WordPressのWebサイトにCloudflare WordPressプラグインをインストールするか </a>、最新バージョン（3.8.2以上）にアップデートしてください。</p>
+	<p>2. まだ実行していない場合は、プラグインを認証して（<a href="https://wordpress.org/plugins/cloudflare/#installation" target="_blank">手順はこちら</a>）、Cloudflareに問い合わせます。</p>
+	<p>3. Cloudflareセクションのホーム画面から、プラットフォーム自動最適化をオンにします。</p>
+	<p>Freeプランのお客様は、最初にCloudflareダッシュボードに移動してサービスをご購入ください。</p>
+	<h3 id="--2">このサービスを構築した理由</h3>
+	<p>Cloudflareは、ボタンをクリックするだけでお客様が抱える難題を解消できる機会を逃しません。常時一貫して高速なWebサイトを運営するのは困難です。多くの企業は、自社サイトのために、複雑で高価なパフォーマンスソリューションに費やす時間もお金もありません。資金と時間があったとしても、可能な限り最高のパフォーマンスを得るためには、特別な注意を払う必要があり、それは非常にコストがかかることもあります。しかし、速いWebサイトを持つために、複雑である必要はありません。コンテンツが顧客に近ければ近いほど、サイトパフォーマンスは向上します。静的コンテンツキャッシュは、画像、CSS、JavaScriptなどのファイルに対してこれを行っていますが、これは一部に過ぎません。動的コンテンツは依然としてオリジンからフェッチされ、コストのかかるラウンドトリップと追加の処理時間が必要です。動的コンテンツと静的コンテンツの詳細については、<a href="https://www.cloudflare.com/learning/cdn/caching-static-and-dynamic-content/" target="_blank">ラーニングセンターをご覧ください</a>。</p>
+	<p>WordPressは、世界で最もオープンなプラットフォームの一つですが、それは、プラグインやその他のソースのために、パフォーマンスを低下させる危険性が常にあることを意味します。必要であっても、その危険性を正確に指摘し、解決することは難しいかもしれません。プラットフォーム自動最適化サービスでは、既存のホスティングプロバイダーを変更することなく、10ミリ秒以内に、インターネットに接続している先進国人口の99％に到達するように、お客様のWebサイトを当社のネットワークに配置します。つまり、ほとんどのリクエストに対して、みなさまのお客様はオリジンにアクセスする必要がなくなるため、コストのかかるラウンドトリップの多くとサーバーの処理時間が短縮されます。これらの最適化はエッジネットワーク上で実行され、クライアント側で追加のJavaScriptが実行されないため、レンダリングや双方向性にも影響しません。</p>
+	<h3 id="web-">Webパフォーマンスの測定方法</h3>
+	<p>Webサイトのパフォーマンスを評価することは困難です。追跡できる指標の種類や数が多く、どの指標が最もユーザー体験を有意義に説明するかについて、いつも明らかであるとは限りません。すでに新しい<a href="https://dash.cloudflare.com/?to=/:account/:zone/speed" target="_blank">Speedページ</a><a href="https://blog.cloudflare.com/new-speed-page/">についてブログでも述べたように </a>、当社では、お客様のために、Webパフォーマンスの測定方法をできるだけシンプルにするために、webpagetest.org のインフラストラクチャを使用してテストを自動化し、視覚的／数値的に結果を一か所に表示するように努めています。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image4-2.png" class="kg-image" alt="Tests your website's performance and provides visual and numerical metrics along with recommended optimizations" title="Cloudflare Dashboard Speed Overview"></figure>
+	<p>可視化することにより、サイトの訪問者が、サイト上で目にするものを明確に把握できます。また、<em>Critical Loading Times</em>は<em> </em>、パフォーマンスを判断するための最も重要な指標を提供します。サイトのパフォーマンスの確認に加えて、当社では、パフォーマンスをさらに高めるための推奨事項が記載されたリストも提供しています。WordPressをご利用のお客様には、プラットフォームの自動最適化を使用してサイトをテストし、サービスを利用することで得られる利点を推定します。</p>
+	<h3 id="--3">プラットフォーム自動最適化のメリット</h3>
+	<p>Cloudflareでは、パフォーマンスの改善とはなにかを調べるために、WordPress上で実行されている500以上のCloudflareのお客様のWebサイトでAPOをテストしました。この結果から次のことが明らかになりました。</p>
+	<p><strong>テスト結果</strong></p>
+	<!--kg-card-begin: markdown-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-aa1j {
+			background-color: #c0c0c0;
+			border-color: inherit;
+			font-size: 18px;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: middle
+		}
+
+		.tg .tg-r5qm {
+			border-color: inherit;
+			font-size: 18px;
+			text-align: left;
+			vertical-align: middle
+		}
+	</style>
+	<table class="tg">
+		<thead>
+			<tr>
+				<th class="tg-aa1j">指標</th>
+				<th class="tg-aa1j">パーセンテージ</th>
+				<th class="tg-aa1j">Cloudflareのベースライン</th>
+				<th class="tg-aa1j">APOの効果</th>
+				<th class="tg-aa1j">改善値（％）</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-r5qm" rowspan="2"><span style="font-weight:400;font-style:normal;text-decoration:none">Time to First Byte (TTFB)</span></td>
+				<td class="tg-r5qm">90th</td>
+				<td class="tg-r5qm">1252 ms</td>
+				<td class="tg-r5qm">351 ms</td>
+				<td class="tg-r5qm">71.96%</td>
+			</tr>
+			<tr>
+				<td class="tg-r5qm">10th</td>
+				<td class="tg-r5qm">254 ms</td>
+				<td class="tg-r5qm">261 ms</td>
+				<td class="tg-r5qm">-2.76%</td>
+			</tr>
+			<tr>
+				<td class="tg-r5qm" rowspan="2"><a href="https://web.dev/fcp/" target="_blank" rel="noopener noreferrer"><span style="font-weight:400;font-style:normal;text-decoration:underline">First Contentful Paint</span></a><br><a href="https://web.dev/fcp/" target="_blank" rel="noopener noreferrer"><span style="font-weight:400;font-style:normal;text-decoration:underline"> </span></a><span style="font-weight:400;font-style:normal;text-decoration:none">(FCP)</span></td>
+				<td class="tg-r5qm"><span style="font-weight:400;font-style:normal">90th</span></td>
+				<td class="tg-r5qm">2655 ms</td>
+				<td class="tg-r5qm">2056 ms</td>
+				<td class="tg-r5qm">22.55%</td>
+			</tr>
+			<tr>
+				<td class="tg-r5qm"><span style="font-weight:400;font-style:normal">10th</span></td>
+				<td class="tg-r5qm">894 ms</td>
+				<td class="tg-r5qm">783 ms</td>
+				<td class="tg-r5qm">12.46%</td>
+			</tr>
+			<tr>
+				<td class="tg-r5qm" rowspan="2"><a href="https://web.dev/speed-index/" target="_blank" rel="noopener noreferrer"><span style="font-weight:400;font-style:normal;text-decoration:underline">Speed Index</span></a><br><a href="https://web.dev/speed-index/" target="_blank" rel="noopener noreferrer"><span style="font-weight:400;font-style:normal;text-decoration:underline"> </span></a><span style="font-weight:400;font-style:normal;text-decoration:none">(SI)</span></td>
+				<td class="tg-r5qm"><span style="font-weight:400;font-style:normal">90th</span></td>
+				<td class="tg-r5qm">6428</td>
+				<td class="tg-r5qm">5586</td>
+				<td class="tg-r5qm">13.11%</td>
+			</tr>
+			<tr>
+				<td class="tg-r5qm"><span style="font-weight:400;font-style:normal">10th</span></td>
+				<td class="tg-r5qm">1301</td>
+				<td class="tg-r5qm">1242</td>
+				<td class="tg-r5qm">4.52%</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<p><em>注：この結果は、ランダムに選択され、Cloudflareによってキャッシュされた、505のWebサイトのテスト結果に基づいています。テストには、米国サウスカロライナ州のWebPageTestと次の環境を使用しました：Chrome、ケーブル接続時の速度。</em></p>
+	<p>最も重要なのは、APOを使用すると、サイトのTTFBが高速かつ一貫性のあるものになるということです。CloudflareのエッジからHTMLをオリジン処理時間ゼロで提供するため、エンドユーザーには、最初のバイトを一貫して高速に提供できるようになります。読み込みが遅い場合、WordPressのオリジンは、HTMLの構築時やこれを訪問者に返す際に、遅延に悩まされることになります。APOは、読み込みで生じる差異を無くし、TTFBを一貫して400ミリ秒未満で提供できるようになります。</p>
+	<p>さらに、TTFBの高速化とサードパーティ製フォントの追加キャッシュの間でも、パフォーマンスの向上がみられました。この結果は、テストしたサイトのFCP（First Contentful Paint）とSI（Speed Index）の両方、そして、最も速いサイトと最も遅いサイトの両方でみられました。パフォーマンスの向上の一因は、TTFBの削減から自然に生じたものです。なぜなら、TTFBから削減したミリ秒単位の時間は、他の指標の数ミリ秒の向上につながるからです。追加のサードパーティフォントをキャッシュすることで、そのコンテンツの取得にかかる時間を短縮できます。フォントがあれば、多くの場合、テキストのレンダリングのための描画（paint）をブロックすることができます。これにより、ページの描画速度を向上させ、Speed Indexを改善することができるのです。</p>
+	<p>当社は、Kinstaのメンバーに依頼して、APOを試してもらいました。KinstaはWordPressの専門知識が豊富なので、感想を聞かせてほしいとお願いしたのです &nbsp;。WebサイトコンテンツマネージャーであるBrian Li氏が、東京でホストされているWebサイトで、世界中から一連のテストを実施しました。Li氏がどんなことをしたのか、その結果について説明してもらいましょう。</p>
+	<blockquote>Kinstaでは、<a href="https://kinsta.com/blog/fastest-wordpress-hosting/" target="_blank">WordPressのパフォーマンスを重視し </a>、大切に考えています。ですから、CloudflareがWordPressの新しい自動プラットフォーム最適化（APO）サービスのテストをはじめようとしたとき、当社は興味津々でした。<br><br>新しいサービスをテストする際に行ったことは以下の通りです。<br><br>東京にテストサイトを設置しました。 東京は、Kinstaのお客様が利用可能な24か所の高性能データセンター拠点のうちの1つです 。<br><br>CloudflareのAPOがある場合とない場合を比較するために、世界中の6つの異なる場所からスピードテストをいくつか実行しました。<br><br>すばらしい結果が得られました！<br><br>Cloudflareのエッジネットワークに、 静的HTML をキャッシュすることで 、パフォーマンスが70～300%向上しました。予想通り、東京から最も離れた試験拠点では、<a href="https://kinsta.com/blog/ttfb/" target="_blank">負荷時間</a>が最も短縮しました。<br><br>WordPressサイトが、CSS、JS、画像のみをキャッシュする従来のCDNを使用している場合、Cloudflareの WordPress APOにとても簡単にアップグレードできます。これにより、お客様はサイトの競争力を維持したまま、現代のJamstackやデフォルトでエッジにある静的サイトとも互角に渡り合えます。</blockquote>
+	<p>ブライアンのテスト結果は次の画像にまとめられています：</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/10/image1-7.png" class="kg-image">
+		<figcaption>ページ読み込み速度の比較：東京でホストされているWebサイトを世界6か所から読み込む際の速度を、Kinsta、KinstaとKeyCDN、KinstaとCloudflare APOとで比較した場合。</figcaption>
+	</figure>
+	<p>KinstaによるAPOテストで示された明確なメリットの1つは、訪問者が世界のどこにいても、サイトには一貫したパフォーマンスが提供されることです。APOでは1秒以内のパフォーマンスが一貫してみられるのに対し、他のセットアップには2～3秒のロード時間を要することから、グローバルな顧客を擁する場合、APOがすべての訪問者の体験を向上させることが明確に示されました。</p>
+	<h3 id="--4">プラットフォーム自動最適化の仕組み</h3>
+	<p>プラットフォーム自動最適化は、Cloudflare Workers の力を利用して動的コンテンツをインテリジェントにキャッシュできるようになったことにより実現したものです。動的コンテンツをキャッシュすることで、エッジネットワークからWebサイト全体にサービスを提供することができます。「静的サイト」のようなものを想像してみてください。ただし、静的サイトを構築または維持する作業は必要ありません。お客様は、同じ方法でWebサイト上のコンテンツを管理／更新し、パフォーマンスのための大仕事は当社に任せることができます。当社のネットワークから静的コンテンツと動的コンテンツの両方を提供できるということは、たいていの場合、オリジンリクエストやオリジンの処理時間がなくなるということです。これは、通信のすべてが、ユーザーデバイスとエッジの間で発生することを意味します。動的コンテンツのために通常必要とされる、エッジからオリジンまでの多数のラウンドトリップを減らすことで、このサービスを非常に効率的なものにできます。まずはじめに、訪問者がWordPressサイトを読み込むと通常はどのような手順を経るのかを見てみましょう。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/01/11.png" class="kg-image">
+		<figcaption>一般的なサイト訪問者のシーケンス図‌‌</figcaption>
+	</figure>
+	<p><em>通常</em>のリクエストフローでは、Cloudflareは、画像、CSS、またはJSなど、コンテンツの一部をキャッシュすることができ、他のリクエストはコンテンツを取得するためにオリジンまたはサードパーティのサービスのいずれかに送信されます。最も重要なのは、サイトのHTMLを取得する最初のリクエストはオリジンに送信する必要があり、これがTTFBの典型的な原因になるということです。これは、クライアントが HTMLを受け取り、それを解析して後続のリクエストを行うまでは、他のリクエストが行われないためです。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/10/image2-2.png" class="kg-image">
+		<figcaption>同じサイトへの訪問で、APOが有効になっている場合。</figcaption>
+	</figure>
+	<p>APOが有効になると、オリジンへのすべての通信が不要になります。TTFBは大きな恩恵を受けます。最初のホップがCloudflareのネットワーク上で開始／終了するためです。これは、ブラウザがWebページの取得と描画の作業をより早く開始することを意味します。つまり、描画の機会が早期に発生します。最後に、サードパーティのフォントをキャッシュすることで、Cloudflareのネットワークを離れ、ユーザーにテキストを表示するための時間を延長する必要があった、追加のリクエストが削除されます。多くの場合、Webサイトはサードパーティのドメインでホストされているフォントを使用します。これにより、オリジンでホストすることで発生する帯域幅の費用が節約されますが、フォントがホストされている場所によっては、フォント取得がコストのかかる作業になります。フォントをホストし直し、当社のキャッシュから提供することで、残りのコストのかかるラウンドトリップの1つを減らすことができます。</p>
+	<p>WordPress用のAPOを使用すると、データベースの輻輳や、顧客の体験を劣化させてしまう扱いにくいプラグインを使用しなくてもよくなります。これらのメリットが、すでに高速なTLS 接続時間、および HTTP/2 などの業界をリードするプロトコルサポートに加わることから、当社が、Webサイトの接続／配信のために、最も効率的で最速の方法をお客様に提供できることがわかります。</p>
+	<p>認証されたセッションをサポートするWordPressサイトをご利用のお客様に対して、当社が認証されたユーザーからコンテンツをキャッシュし、第三者に提供することはありません。ご心配は無用です。当社では、認証されたユーザーには、標準のWordPressとWooCommerce Cookieのキャッシュをバイパスします。これにより、特定のユーザー用にカスタマイズされたコンテンツは、そのユーザーのみに表示されます。このサービスはこれまで、ビジネスレベルのサービスをお申し込みのお客様にご利用いただいておりましたが、APOを有効にするWordPressのお客様にもご利用いただけるようになりました。</p>
+	<p>お客様は疑問に思われるかもしれません：「確かにすばらしそうだが、サイトのコンテンツを変更した場合はどうなるのか」と。このサービスは、当社の<a href="https://www.cloudflare.com/integrations/wordpress/" target="_blank">WordPressプラグイン</a>と連携して作動するため、お客様が変更を行った場合、当社には変更がわかり、Cloudflareのエッジにあるコンテンツを早急にパージし、新しいコンテンツでそれをリフレッシュすることができます。プラグインをインストールすると、コンテンツの変更を検出し、自動キャッシュパージを使用して世界中のエッジネットワークを更新します。このリリースの一環として、WordPressのプラグインを更新しました。そのため、APOの使用の是非に関わらず、お客様はすぐに最新バージョンにアップグレードする必要があります。お客様が、当社のWordPressプラグインを使用されない、または使用できない場合、APOは同じパフォーマンスのメリットを提供しますが、コンテンツが再リクエストされた場合は、最大で30分間古いコンテンツを提供する場合があります。</p>
+	<p>このサービスは、ブログ記事（こちらと<a href="https://blog.cloudflare.com/fast-google-fonts-with-cloudflare-workers/">こちら</a>）に記載したプロトタイプ作品に基づいて構築されました。サービスの技術的な側面と、Cloudflare Workersからプラットフォーム自動最適化サービスを構築した方法についての詳細は、<a href="https://blog.cloudflare.com/building-automatic-platform-optimization-for-wordpress-using-cloudflare-workers/">ブログ記事をご参照ください</a>。</p>
+	<h3 id="wordpress-">WordPress 本日発表、他のプラットフォームは近日公開予定</h3>
+	<p>本日の発表は、WordPressのサポートに焦点を当てていますが、これはスタートに過ぎません。当社は、Webホスティングに使用される他の一般的なプラットフォームに対しても、同じ機能を提供する予定です。お客様がプラットフォームを運営していて、当社と共同して全顧客のために改善をご検討される場合は、<a href="https://www.cloudflare.com/partners/" target="_blank">ぜひお問い合わせください</a>。お客様がWebサイトを運営されている場合は、新しくプラットフォーム自動最適化の適用を希望されるプラットフォームをお知らせください。</p>
+</div>

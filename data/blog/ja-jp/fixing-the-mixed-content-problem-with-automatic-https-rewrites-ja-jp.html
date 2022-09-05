@@ -1,0 +1,70 @@
+<div class="post-content lh-copy gray1">
+	<p>Cloudflareは、暗号化されていないインターネットに終止符を打つことを目指しています。しかし、WebのHTTPSの移行については、ニワトリとタマゴのように、どちらが先かと言う問題があります。</p>
+	<p>昔は、HTTPSケーブルWebサイトをセットアップすることは、困難で、高価で、時間がかかることでした。そこで登場したのが、Cloudflareの<a href="https://blog.cloudflare.com/introducing-universal-ssl/">Universal SSL</a>のような、http://からhttps://への移行を、ボタン1つをクリックするだけで簡単にできるサービスです。ワンクリックで、無料の新しいSSL証明書を発行して、サイトをHTTPSで提供できるようになりました。</p>
+	<p>ここで大きな変化がもたらされます。</p>
+	<p>突然、WebサイトはHTTPS経由で利用可能になり、最新のWebプロトコルである<a href="https://www.cloudflare.com/ja-jp/website-optimization/http2/" target="_blank">HTTP/2</a>を活用することができるようになったことで、Webサイトは高速化しました。</p>
+	<p>しかし、話はここで終わりません。他の面では安全な多くのサイトが、混合コンテンツの問題に頭を悩まされることになりました。また、混合コンテンツは、完全に安全とは言い切れないため、https://サイトに緑色の南京錠が表示されません。</p>
+	<p>そして、問題が起きるのは、https://のWebサイトに http://経由で配信されたサイト（サイト独自のものも含む）コンテンツが含まれている場合です。その場合は、緑色の鍵マークが表示されません。これは、画像、JavaScript、オーディオ、ビデオなどのリソースが http://経由で組み込まれている場合、安全なWebサイトにセキュリティホールを作ってしまうためです。問題の侵入経路（バックドア）になるのです。</p>
+	<p>Webブラウザはこれが問題であることを、実に長い間認識してきました。1997年まで遡ると、Internet Explore 3.0.2は、次のダイアログボックスを使用して、サイトユーザーに混在コンテンツを警告していました。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image2-28.png" class="kg-image"></figure>
+	<p>現在、Google Chromeでは安全でないコンテンツが含まれるhttps: //では、マルで囲んだ「i」が表示されます。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image3-20.png" class="kg-image"></figure>
+	<p>また、Firefoxでは、警告のマークが書かれた南京錠が表示されます。これらのブラウザで緑色の南京錠を表示するには、すべてのサブリソース（ページによって読み込まれるリソース）をHTTPS経由で提供する必要があります。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image4-13.png" class="kg-image"></figure>
+	<p>1997年だったら、「はい」をクリックした場合、Internet Explorerは混合コンテンツの危険性を無視し、平文のHTTPを使用してサブリソースを読み込んでいました。そして、[いいえ] をクリックすると、読み込みを防止しました (多くの場合、破損しているけれども安全なWebページが表示されることになりました)。</p>
+	<h3 id="-">完全に安全なコンテンツへの移行</h3>
+	<p>混合コンテンツの解決策を「https://を使ってすべてを読み込み、Webサイトを修正するだけで」いいと簡単に考えることは、魅力的かもしれませんが、甘い考えです。残念ながら、ファーストパーティやサードパーティのWebサイトから最新のWebサイトに読み込まれた混合コンテンツの変更を「簡単に」行うことは非常に困難なのです。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/04/image5.jpeg" class="kg-image">
+		<figcaption><a href="https://creativecommons.org/licenses/by/2.0/" target="_blank">CC BY 2.0</a> <a href="https://www.flickr.com/photos/jeepersmedia/14127169401/in/photolist-nwnrhe-nwFTKm-nwpaXy-nd8jZZ-nwnqMB-6bsjcC-nwFSD3-aQ5Zk4-c4uV99-6itRSF-6iy17Y-8iDUTL-jb2wag-MvpRU-B61f-B61b-7GcrpR-jCxYo4-bTkuiD-2rLaU-a7VsfV-eyNEd-dUEjYu-4iVNkY-a3Gcnb-nJhD2H-nHasXC-5L7FZy-2i8iQ9-qN5RF-6HHCqb-6HDxai-6HDxnK-6HHCvU-5T9v3L-6ytdUs-6HHCyG-2WZgpg-5XZ5BD-b4SFeF-hNBK9K-8JDyeY-pbysVv-5dkLUi-6iy19o-6HDxiV-4o63bZ-kiN76q-ik1o7a-qkcqbe" target="_blank">の画像</a> 撮影者 <a href="https://www.flickr.com/photos/jeepersmedia/" target="_blank">Mike Mozart</a></figcaption>
+	</figure>
+	<p>Wiredはブログ投稿の中で、https://への移行について取り上げ、すべてをHTTPSに移行することがどれほど大変なことかを<a href="https://www.wired.com/2016/09/now-encrypting-wired-com/" target="_blank">文書にまとめて</a>います。彼らは<a href="https://www.wired.com/2016/04/wired-launching-https-security-upgrade/" target="_blank">4月</a>に開始し、5か月をそのプロセスに費やしました（メインWebサイトをhttps://にするのに、すでに何か月も費やした後の話です）。5月には、<a href="https://www.wired.com/2016/05/wired-first-big-https-rollout-snag/" target="_blank">問題点</a>に関する記事を投稿しています：</p>
+	<p><em>「[...] HTTPSへの移行における最大の課題の1つは、すべてのコンテンツを安全な接続で配信できるように準備することです。ページが HTTPS 経由で読み込まれる場合、他のすべてのアセット (画像やJavascriptファイルなど) も HTTPS 経由で読み込む必要があります。これらの「混在コンテンツ」の問題を報告する大量のレポートや、安全な HTTPS ページのコンテキストに安全ではないHTTPアセットが読み込まれるイベントを目にしています。適切に移行するには、混在したコンテンツの問題がより少なくなるように確認する必要があります。つまり、WIRED.comのコンテンツの多くをできる限り安全な状態で、配信できるようにする必要があるのです。</em></p>
+	<p>2014年に、ニューヨーク・タイムズは、混合コンテンツを安全化への<a href="https://open.blogs.nytimes.com/2014/11/13/embracing-https/" target="_blank">大きな障害</a><em>だと指摘しました。</em></p>
+	<p><em>「HTTPS に正常に移行するには、ページアセットへのすべてのリクエストを安全なチャネル経由で行う必要があります。これは困難な課題であり、可動部分がたくさんあります。JavaScriptから広告アセットまで、安全でないドメインから現在読み込まれているリソースを考慮しなければなりません。」</em></p>
+	<p>W3Cは、これを大きな問題として<a href="https://www.wired.com/2016/09/now-encrypting-wired-com/" target="_blank">認識し</a>、<em>「中でも注目すべきなのは、混合コンテンツの確認は、大量のレガシーコンテンツをHTTPSに移行させるという作業を担当する管理者の頭を悩ませる可能性があることです。特に、古いコンテンツを確認して、リソースURLを手動で書き換えるという作業は、とても大変な作業です。」と述べています。</em>そして、困難な例として、BBCの<a href="https://www.bbc.co.uk/blogs/internet/entries/f7126d19-2afa-3231-9c4e-0f7198c468ab" target="_blank">巨大アーカイブ</a><em>を引用しています。</em></p>
+	<p>しかし、混合コンテンツの問題を抱えているのは、メディアサイトだけではありません。CMSユーザーの多くは、CMSが生成するすべてのリンクを更新することは困難または不可能だと考えています。設定ファイル、ソースコード、またはデータベースにリンクが埋もれている可能性があるためです。さらに、ユーザーが生成したコンテンツを処理する必要があるサイトも、http://URI の問題に直面します。</p>
+	<h3 id="--1">混在コンテンツの危険性</h3>
+	<p>混合コンテンツには、アクティブとパッシブの2種類があります。最新のWebブラウザがどのように危険性に対処するかというと、アクティブ混合コンテンツ（最も危険）は自動的に完全にブロックし、パッシブ混合コンテンツは許可しますが、警告を表示します。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/04/11-1.jpeg" class="kg-image">
+		<figcaption><a href="https://creativecommons.org/licenses/by/2.0/" target="_blank">CC BY 2.0</a> <a href="https://www.flickr.com/photos/99mph/6714200883/in/photolist-bej31c-szQAb-i2swr-fnz3A-avkaMz-SB8LC-4kKK2r-6UFtFq-5EhUFH-i2sBe-dHEMmA-A4cie-aC6Wtc-4ZRUkX-srjkGs-5raEpY-eosHU-Ee7Ye-6vWtxh-6Pd2Nq-5Yz5u2-nU1Pfn-nBPiU4-N6B99-7WL2J9-FEkU5X-dU1PPb-JbHZad-aBEqKL-6w5v1r-65Nths-6DbhPs-nsfgLN-67jbBc-nAxzxi-7krEou-4GxJDe-nUsvgg-9kk75E-8AAsi-jJpNkj-4a5Znf-NQtE-d5xmAL-qiBCh-8cM-qXdkTc-9aLMpU-dWVoe-4A1jyr" target="_blank">の画像</a> 撮影者 <a href="https://www.flickr.com/photos/99mph/" target="_blank">Ben Tilley</a></figcaption>
+	</figure>
+	<p>アクティブコンテンツはDOM（Webページ自体）を変更できるものすべてを指します。リソースは <code>&lt;script&gt;</code>、 <code>&lt;link&gt;</code>、 <code>&lt;iframe&gt;</code>または <code>&lt;object&gt;</code> タグを経由して取り込まれ、CSSは、URLを使用するリソースを優先し、XMLHTTPリクエストを使用している全リクエスト は、ページの変更、Cookieの読み取り、ユーザー資格情報へのアクセスが可能です。</p>
+	<p>パッシブコンテンツはそれ以外のものです：ページには組み込まれているけれども、それ自体でページにアクセスすることはできない画像、オーディオ、ビデオがこれにあたります。</p>
+	<p>アクティブコンテンツは本当の脅威になります。攻撃者が http://URI のリクエストを傍受した場合、コンテンツを独自のコンテンツに置き換えることができるためです。これは理論上の問題ではありません。2015年にGithubは、<a href="https://citizenlab.ca/2015/04/chinas-great-cannon/" target="_blank">Great Cannon</a>と呼ばれるシステムによって攻撃を受けました。Great Cannonは、HTTP経由で一般的なJavaScriptファイルのリクエストを傍受し、JavaScript攻撃スクリプトに置き換えました。TCPを傍受し、http://URI から読み込んだアクティブコンテンツに固有の脆弱性を悪用することで、罪のないユーザーのマシンを武器にしたのです。</p>
+	<p>パッシブコンテンツはタイプの異なる脅威です。パッシブコンテンツに対するリクエストは（暗号化されず）平文で送信されるため、傍受者はリクエストを監視し、情報を抽出することができます。たとえば、傍受者が適切な場所にいれば、Cookie、訪問先のWebページ、さらに、もしかすると認証情報も監視できるかもしれません。</p>
+	<p><a href="http://codebutler.com/firesheep/" target="_blank">Firesheep</a> Firefoxアドオンは、ローカルネットワーク（例えば、コーヒーショップにあるネットワーク）で、リクエストがHTTPで送信されるのを監視し、自動的にCookieを盗み、誰かのIDをワンクリックで乗っ取ることができてしまいます。</p>
+	<p>現在、最新のブラウザでは、安全でない状態で読み込まれているアクティブコンテンツをブロックしますが、パッシブコンテンツは通過させてしまいます。やはり、すべてをhttps://へと移行することが、混在コンテンツに関するすべてのセキュリティ上の問題に対処する唯一の方法なのです。</p>
+	<h3 id="--2">混合コンテンツを自動的に修正する</h3>
+	<p>当社ではWebを完全に暗号化することを目標として掲げているため、長い間、混合コンテンツを適切に修正したいと考えてきました。そして、他のCloudflareサービスと同様に、私たちはこれを「ワンクリック」で実現できる体験にしたいと考えました。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/04/image8.jpeg" class="kg-image">
+		<figcaption><a href="https://creativecommons.org/licenses/by/2.0/" target="_blank">CC BY 2.0</a> <a href="https://www.flickr.com/photos/pinkmoose/1078317132/in/photolist-2DhE7G-pvcxy5-k8yyU-dGahX9-7cRyRV-byeo7f-cNka9m-5VqLgk-byenTE-dG4STe-dGafYU-dG4RnT-tAGvqC-tAGA6u-uxhxfW-4Wrx7L-dGahZQ-dGafW9-dG4QiZ-dGagHY-4K5jAk-dwrgVQ-dGafTE-xyEYA-dG4SYP-9LEfKd-7cRy3F-dGainJ-dGahAN-4LPBp9-bnWEe3-bNknmF-pTFtg2-dG4Ra8-6hZDxR-AobuPS-bM92up-dGafDC-yuJw-q8ZsgV-4GGuAM-4Twy1U-dGaf9s-dG4QfX-52rQZg-dpK5hj-dG4RSz-dpJU8v-4EJ5JP-5pvYKT" target="_blank">の画像</a> 撮影者 <a href="https://www.flickr.com/photos/pinkmoose/" target="_blank">Anthony Easton</a></figcaption>
+	</figure>
+	<p>当社はいくつかのアプローチを検討しました。</p>
+	<p><em>the upgrade-insecure-requests CSPディレクティブを自動的に挿入する</em></p>
+	<p><a href="https://www.w3.org/TR/upgrade-insecure-requests/" target="_blank">upgrade-insecure-requests</a>ディレクティブは<a href="https://www.w3.org/TR/CSP/" target="_blank">Content Security Policy</a>ヘッダーに次のように追加されます。</p>
+	<p><code>Content-Security-Policy：upgrader-insecure-requests</code></p>
+	<p>これは、HTTPリクエストをHTTPSに自動的にアップグレードするようにブラウザに指示します。これは、Webサイトの所有者がすべてのサブリソースが HTTPS 経由で利用可能であることを知っている場合に便利です。Webサイトは実際にWebサイトに埋め込まれているhttp://URIをhttps: //に変更する必要はありません。ブラウザが自動的にこれを処理します。</p>
+	<p>しかしながら、upgrade-insecure-requestsには大きな欠点があります。ブラウザは、結果として得られるURIが実際にページで動作するかどうかなどはお構いなしで、ひたすらすべてのURIをhttps: //にアップグレードするので、ページが<a href="https://www.w3.org/TR/upgrade-insecure-requests/#example-failed" target="_blank">壊れる</a>可能性があるのです。</p>
+	<p><em>https://を使うように全リンクを修正する</em></p>
+	<p>Cloudflare Webサイトの訪問者が使用するすべてのブラウザがupgrade-insecure-requestsをサポートしているわけではないため、Cloudflareでは当社サービスを使って、すべてのhttp://URIを https://にアップグレードすることを検討しました。Webページをリアルタイムで解析して変更することができるので、ブラウザのサポートに依存しない「upgrade-insecure-requests」サービスを作成することができました。</p>
+	<p>残念ながら、このサービスでも、http://URI をhttps://に変換すると、リンクが壊れるという同じ問題が起こりますが、実際にはHTTPSを使用してリソースを読み込むことはできません。</p>
+	<p><em>他のCloudflareサイトを指すリンクを修正する</em></p>
+	<p>Cloudflareでは、400万人のお客様に無料で<a href="https://blog.cloudflare.com/introducing-universal-ssl/">Universal SSL</a>を提供しており、Webトラフィックの大部分をカバーしているため、http://からhttps//に当社が把握しているURIをアップグレードすることは、（URIが当社のサービスを使用しているので）できると考えていました。</p>
+	<p>これは問題の一部を解決しますが、HTTPからHTTPSへのアップグレードに関する一般的問題の解決にはなりません。</p>
+	<p><em>既知のHTTPS対応のURIを書き換えるシステムを作成する</em></p>
+	<p>最終的には、スマートな方法で解決することができました。リソースがHTTPSを使って提供できることがわかっている場合には、URIをhttp://からhttps://にアップグレードしました。どのリンクがアップグレード可能かを把握するために、EFFの優れた<a href="https://www.eff.org/https-Everywhere" target="_blank">HTTPS Everywhere</a>拡張機能とGoogle Chromeの<a href="https://github.com/chromium/hstspreload.appspot.com" target="_blank">HSTS Preload</a>リストを使用して、SSLが有効になっているCloudflareサイトに関する知識を強化しました。</p>
+	<p>EFFがこのプロジェクトを手伝ってくれたことにとても感謝しています。</p>
+	<p>HTTPS Everywhere ルールセットは、http://から https://への切り替えに加えて、非常に特殊なURIをターゲットにできるルール（および除外）が含まれています。たとえば、gstatic.comの実際のHTTP Everywhereルールは次のようになります。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>    &lt;rule from="^http://(csi|encrypted-tbn\d|fonts|g0|[\w-]+\.metric|ssl|t\d)\.
+    gstatic\.com/" to="https://$1.gstatic.com/"/&gt;
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>HTTPS Everywhereは、正規表現を使用して、HTTPSを使用するために安全にアップグレードできるgstatic.comのサブドメインを識別します。完全なルールのセットは<a href="https://www.eff.org/https-everywhere/atlas" target="_blank">こちら</a>で参照できます。</p>
+	<p>Webページに埋め込まれた膨大な数のURIをアップグレードする必要があるため（毎秒500万前後になると見積もっています）、既存のHTMLパーサー（当社独自のものを含む）をベンチマークとし、このタイプの書き換えタスクのために新しいものを書くことにしました。今後のブログ記事では、その設計、テスト、パフォーマンスについての詳細を投稿する予定です。</p>
+	<h3 id="https-">HTTPS の自動リライト</h3>
+	<p>HTTPSの自動リライトは、Cloudflareのお客様にカスタマーダッシュボードからご利用いただけます。現在、この機能はデフォルトで無効になっており、「ワンクリック」で有効にすることができます。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image7-5.png" class="kg-image"></figure>
+	<p>当社ではこの機能のパフォーマンスと有効性をモニタリングし、今年後半にFreeおよびProプランのお客様に向けて、デフォルトでこの機能を有効にする予定です。また、Content Security Policyのレポート機能を使用して、すべての https://への移行ができるだけ簡単に行えるように、アップグレードするURIの自動表示をお客様に提供する予定です。Wiredが<a href="https://www.wired.com/2016/05/wired-first-big-https-rollout-snag/" target="_blank">報告</a>しているように、変更が必要なURIを見つける作業そのものが非常に難しい場合があります。</p>
+	<p>この機能をご利用になったお客様の感想をぜひお聞かせください。</p>
+</div>

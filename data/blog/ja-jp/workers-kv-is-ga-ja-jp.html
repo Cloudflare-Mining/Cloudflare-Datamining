@@ -1,0 +1,292 @@
+<div class="post-content lh-copy gray1">
+	<p>本日、Workers KVの一般利用が開始し、業務目的の利用準備が完了したことをお知らせします！</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/Workers-KV-GA@2x.png" class="kg-image"></figure>
+	<h3 id="workers-kv-"><strong>Workers KVとは？</strong></h3>
+	<p><a href="https://www.cloudflare.com/products/workers-kv/" target="_blank">Workers KV</a>は、Cloudflareのグローバルエッジに拡がる、分散性が高く、結果整合性のあるKey-Valueストアです。これにより、数十億のキーと値のペアを保存し、世界中のどこでも超低レイテンシーでそれらを読み取ることができます。これで、CDN 静的キャッシュのパフォーマンスでアプリケーション全体を構築できるようになりました。</p>
+	<h3 id="workers-kv--1"><strong>Workers KVを構築した理由は？</strong></h3>
+	<p><a href="https://www.cloudflare.com/products/cloudflare-workers/" target="_blank">Workers</a>は、Cloudflareの175以上のデータセンターのグローバルエッジでJavaScriptが実行できるプラットフォームです。ほんの数行のコードで、HTTP要求のルーティング、応答の修正、配信元サーバーなしでも新しい応答を作成することができます。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">// A Worker that handles a single redirect,
+// such a humble beginning...
+addEventListener("fetch", event =&gt; {
+  event.respondWith(handleOneRedirect(event.request))
+})
+
+async function handleOneRedirect(request) {
+  let url = new URL(request.url)
+  let device = request.headers.get("CF-Device-Type")
+  // If the device is mobile, add a prefix to the hostname.
+  // (eg. example.com becomes mobile.example.com)
+  if (device === "mobile") {
+    url.hostname = "mobile." + url.hostname
+    return Response.redirect(url, 302)
+  }
+  // Otherwise, send request to the original hostname.
+  return await fetch(request)
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>すぐに、お客様から、永続的なデータを格納する方法を必要とする利用例が提示されました。上記の例に倣い、リダイレクトが一つなら簡単に処理できますが、数十億のリダイレクトを処理する場合はどうでしょうか？Workersスクリプトにハードコード化して、すべて1MB以下に収まるようにし、変更を加えるたびに再展開する必要があります。面倒くさい！これが、WorkersKVを構築した理由です。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">// A Worker that can handle billions of redirects,
+// now that's more like it!
+addEventListener("fetch", event =&gt; {
+  event.respondWith(handleBillionsOfRedirects(event.request))
+})
+
+async function handleBillionsOfRedirects(request) {
+  let prefix = "/redirect"
+  let url = new URL(request.url)
+  // Check if the URL is a special redirect.
+  // (eg. example.com/redirect/&lt;random-hash&gt;)
+  if (url.pathname.startsWith(prefix)) {
+    // REDIRECTS is a custom variable that you define,
+    // it binds to a Workers KV "namespace." (aka. a storage bucket)
+    let redirect = await REDIRECTS.get(url.pathname.replace(prefix, ""))
+    if (redirect) {
+      url.pathname = redirect
+      return Response.redirect(url, 302)
+    }
+  }
+  // Otherwise, send request to the original path.
+  return await fetch(request)
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>前述の例からほんの少し変更しただけで、リダイレクトが一つから数十億に拡大しました。Workers KVでできることのほんの一部に過ぎません。</p>
+	<h3 id="-"><strong>動作機序</strong></h3>
+	<p>分散型データストアはよく、<a href="https://en.wikipedia.org/wiki/CAP_theorem" target="_blank">CAP Theorem</a>を使用して、形作られます。ここでは、分散型システムは次の3つのうちの2つしか選択することができないと述べられています。</p>
+	<ul>
+		<li>一貫性 - データはどこでも同じですか？</li>
+		<li>可用性 - 常にデータにアクセスできますか？</li>
+		<li>分断耐性 -地域的な停電時にもデータは復元しますか？</li>
+	</ul>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/workers-kv-venn-diagram@2x-1.png" class="kg-image"></figure>
+	<p>Workers KV は、可用性と分断耐性を保証することを選択します。この組み合わせは<a href="https://en.wikipedia.org/wiki/Eventual_consistency" target="_blank">結果整合性</a>と呼ばれ、Workers KVは類似製品に比べて 2 つの点で有利です。</p>
+	<ul>
+		<li>読み取りは、当社のキャッシュ技術が装備されているため、超高速(中央値 12m秒)です。</li>
+		<li>データは175以上のエッジデータセンターで利用でき、地域的な停電時の復元力を備えています。</li>
+	</ul>
+	<p>ただし、結果整合性には代償があります。2 者のクライアントが同じキーに異なる値を同時に書き込む場合、最後に書き込んだクライアントが<em>最終的に </em>「勝ち」、その値はグローバルに一貫性を持ちます。これは、クライアントがキーに書き込み、その同じクライアントが同じキーを読み取った場合でも、値が短時間一致しない可能性があるということです。</p>
+	<p>このシナリオをわかりやすくするために、3 人の友人の間で実際に起きたことを例にします。</p>
+	<ul>
+		<li>マシュー、ミシェル、リーが週一回のランチを計画しているとします。</li>
+		<li>マシューが、お寿司を食べに行くと決めました。</li>
+		<li>ミシェルにお寿司の計画を伝え、ミシェルは同意します。</li>
+		<li>リーは計画を知らないので、ミシェルに実はピザを食べる予定だと話します。</li>
+	</ul>
+	<p>1 時間後、ミシェルとリーはピザ屋で待っていて、マシューは寿司屋で 1 人で座っています。どこで間違ったのでしょうか？私たちは、これを結果整合性であると結論づけることができます。なぜなら、マシューは数分間待った後、更新されたカレンダーを見て、<em>結果的に</em>寿司の代わりに<em>ピザを食べるという</em>新しい真実を見つけるのです。</p>
+	<p>現実世界では数分かかるかもしれませんが、WorkersKVは遥かに高速です。60秒未満でグローバルな一貫性が実現できます。さらに、Worker がキーに書き込み、<em>即座に</em>同じキーを読み取るときに、両方の操作が同じ場所から来た場合は、値の一貫性が期待できます。</p>
+	<h3 id="--1"><strong>どんな時に利用できるか？</strong></h3>
+	<p>結果整合性を使用する利点と代償が理解できました。では、アプリケーションに適したストレージソリューションかどうかを判断するにはどうすればよいでしょうか？簡単に言えば、超高速読み取りでグローバルな可用性をお求めなら、Workers KVが最適です。</p>
+	<p>ただし、アプリケーションが頻繁に同じキーに書き込む場合は、さらに考慮すべきことがあります。私たちはそれを「マシューの疑問」と呼んでいます。世界のマシューたちが<em>たまに</em>間違ったレストランに行っても許容できますか？</p>
+	<p>これにより実質的な違いが生じない利用例 (当社のリダイレクトWorkerの例など) は、想像できます。しかし、ユーザーの銀行口座残高を追跡すると決めた場合、同時に2つの残高が存在する可能性は望まないでしょう。既に使ってしまったお金で何かを購入してしまうかもしれないからです。</p>
+	<h3 id="workers-kv--2"><strong>Workers KVで何を構築することができますか？</strong></h3>
+	<p>KVで構築されたアプリケーションの例を次に示しましょう。</p>
+	<ul>
+		<li>一括リダイレクト - 数十億ものHTTPリダイレクトを処理します。</li>
+		<li>ユーザー認証 - API へのユーザー要求を検証します。</li>
+		<li>翻訳キー - ウェブページを動的にローカライズします。</li>
+		<li>コンフィギュレーションデータ - 配信元にアクセスできるユーザーを管理します。</li>
+		<li>ステップ関数 - 複数の API 関数間で状態データを同期します。</li>
+		<li>エッジファイル格納 - 大量にある小さなファイルをホストします。</li>
+	</ul>
+	<p>当社の以前の<a href="https://blog.cloudflare.com/building-with-workers-kv/">ブログ記事</a>で、これらの利用例のいくつかを取り上げました。また、<a href="https://blog.cloudflare.com/building-a-to-do-list-with-workers-and-kv/">Workers KVを利用したオンラインTo-Doリスト</a>を作成する方法に関する、最近公開されたブログ記事など、より詳細なコードチュートリアルもあります。</p>
+	<figure class="kg-card kg-image-card"><img src="https://i.imgur.com/GQ4hrfQ.png" class="kg-image"></figure>
+	<h3 id="--2"><strong>ベータ版以降の新機能は何ですか？</strong></h3>
+	<p>これまでのところ、最も一般的なリクエストは、Workers KVへのデータの書き込みを容易にすることです。そのため、その体験をさらに向上させる 3 つの新しい方法をリリースします。</p>
+	<h4 id="1-"><strong>1.一括書き込み</strong></h4>
+	<p>既存のデータを Workers KV にインポートする場合は、キーと値のペアすべ<em>て</em>に対してHTTP要求を送信する手間はかけたくありません。だからこそ、Cloudflare API に<a href="https://api.cloudflare.com/#workers-kv-namespace-write-multiple-key-value-pairs" target="_blank">一括エンドポイント</a>を追加したのです。1 回の PUT要求で最大 10,000 組 (最大 100 MB のデータ) がアップロードできるようになりました。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-bash">curl "https://api.cloudflare.com/client/v4/accounts/ \
+     $ACCOUNT_ID/storage/kv/namespaces/$NAMESPACE_ID/bulk" \
+  -X PUT \
+  -H "X-Auth-Key: $CLOUDFLARE_AUTH_KEY" \
+  -H "X-Auth-Email: $CLOUDFLARE_AUTH_EMAIL" \
+  -d '[
+    {"key": "built_by",    value: "kyle, alex, charlie, andrew, and brett"},
+    {"key": "reviewed_by", value: "joaquin"},
+    {"key": "approved_by", value: "steve"}
+  ]'
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>利用例を 1 件ずつ見ていきましょう。Workersへのウェブサイト翻訳負荷軽減をしたいと思っています。翻訳キーを頻繁に読み込んでいるのですが、たまにしかアップデートしないため、このアプリケーションにはWorkers KVの結果整合性モデルが適しています。</p>
+	<p>この例では、翻訳データ管理に人気のプラットフォームである<a href="https://crowdin.com/" target="_blank">Crowdin</a>を結び付けます。このWorkersは/translateエンドポイントに応答し、すべての翻訳キーをダウンロードした後で、当社のエッジで後で読むことができるようにWorkers KVに一括書き込みします。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-js">addEventListener("fetch", event =&gt; {
+  if (event.request.url.pathname === "/translate") {
+    event.respondWith(uploadTranslations())
+  }
+})
+
+async function uploadTranslations() {
+  // Ask crowdin for all of our translations.
+  var response = await fetch(
+    "https://api.crowdin.com/api/project" +
+    "/:ci_project_id/download/all.zip?key=:ci_secret_key")
+  // If crowdin is responding, parse the response into
+  // a single json with all of our translations.
+  if (response.ok) {
+    var translations = await zipToJson(response)
+    return await bulkWrite(translations)
+  }
+  // Return the errored response from crowdin.
+  return response
+}
+
+async function bulkWrite(keyValuePairs) {
+  return fetch(
+    "https://api.cloudflare.com/client/v4/accounts" +
+    "/:cf_account_id/storage/kv/namespaces/:cf_namespace_id/bulk",
+    {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Auth-Key": ":cf_auth_key",
+        "X-Auth-Email": ":cf_email"
+      },
+      body: JSON.stringify(keyValuePairs)
+    }
+  )
+}
+
+async function zipToJson(response) {
+  // ... omitted for brevity ...
+  // (eg. https://stuk.github.io/jszip)
+  return [
+    {key: "hello.EN", value: "Hello World"},
+    {key: "hello.ES", value: "Hola Mundo"}
+  ]
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>これで、ページを翻訳したい場合は、Workers KV から読み取るだけです。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">async function translate(keys, lang) {
+  // You bind your translations namespace to the TRANSLATIONS variable.
+  return Promise.all(keys.map(key =&gt; TRANSLATIONS.get(key + "." + lang)))
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h4 id="2-"><strong>2.期限付きのキー</strong></h4>
+	<p>デフォルトでは、Workers KV に格納されているキーと値のペアは永久に存続します。しかし、一定時間の経過後にデータを自動削除したい場合があります。そのため、書き込み操作の有効期限と有効期限の Ttlオプションを導入しています。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">// Key expires 60 seconds from now.
+NAMESPACE.put("myKey", "myValue", {expirationTtl: 60})
+
+// Key expires if the UNIX epoch is in the past.
+NAMESPACE.put("myKey", "myValue", {expiration: 1247788800})
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p><br></p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-bash"># You can also set keys to expire from the Cloudflare API.
+curl "https://api.cloudflare.com/client/v4/accounts/ \
+     $ACCOUNT_ID/storage/kv/namespaces/$NAMESPACE_ID/ \
+     values/$KEY?expiration_ttl=$EXPIRATION_IN_SECONDS"
+  -X PUT \
+  -H "X-Auth-Key: $CLOUDFLARE_AUTH_KEY" \
+  -H "X-Auth-Email: $CLOUDFLARE_AUTH_EMAIL" \
+  -d "$VALUE"
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>たとえば、不適切だとフラグがついているユーザーをサイトからブロックしたいとします。ただし 1 週間の期限付きです。期限付きのキーを使用すれば、有効期限を設定でき、後で削除する必要もありません。</p>
+	<p>この例では、ユーザーと IP アドレスが同じものであると仮定します。アプリケーションにデータ確認がある場合は、アクセス・トークンをキー識別子として使用できます。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">addEventListener("fetch", event =&gt; {
+  var url = new URL(event.request.url)
+  // An internal API that blocks a new user IP.
+  // (eg. example.com/block/1.2.3.4)
+  if (url.pathname.startsWith("/block")) {
+    var ip = url.pathname.split("/").pop()
+    event.respondWith(blockIp(ip))
+  } else {
+    // Other requests check if the IP is blocked.
+   event.respondWith(handleRequest(event.request))
+  }
+})
+
+async function blockIp(ip) {
+  // Values are allowed to be empty in KV,
+  // we don't need to store any extra information anyway.
+  await BLOCKED.put(ip, "", {expirationTtl: 60*60*24*7})
+  return new Response("ok")
+}
+
+async function handleRequest(request) {
+  var ip = request.headers.get("CF-Connecting-IP")
+  if (ip) {
+    var blocked = await BLOCKED.get(ip)
+    // If we detect an IP and its blocked, respond with a 403 error.
+    if (blocked) {
+      return new Response({status: 403, statusText: "You are blocked!"})
+    }
+  }
+  // Otherwise, passthrough the original request.
+  return fetch(request)
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p><strong>3.大きい値</strong></p>
+	<p>値のサイズ制限を64 kB から2 MBに増やしました。これは、Workers KV にバッファベースまたはファイルデータを格納する必要がある場合に、非常に便利です。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/workers-kc-file-size-update@2x.png" class="kg-image"></figure>
+	<p>こんな場合が考えられます。ユーザーが、プロフィールにお好みのGIFをアップロードできるようにしたい、でも自分のデータベースにバイナリとして格納したり、別<em>の</em>ストレージバケットを管理することは避けたい。</p>
+	<p>Workers KVは、この利用例に最適です！ユーザーのGIF用に Workers KV の名前空間を作成することができ、ユーザーの所在地に関わらず高速で高い信頼性を実現します。</p>
+	<p>この例では、ユーザーがお気に入りの GIFへのリンクをアップロードし、Workersがダウンロードして、Workers KV に格納します。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">addEventListener("fetch", event =&gt; {
+  var url = event.request.url
+  var arg = request.url.split("/").pop()
+  // User sends a URI encoded link to the GIF they wish to upload.
+  // (eg. example.com/api/upload_gif/&lt;encoded-uri&gt;)
+  if (url.pathname.startsWith("/api/upload_gif")) {
+    event.respondWith(uploadGif(arg))
+    // Profile contains link to view the GIF.
+    // (eg. example.com/api/view_gif/&lt;username&gt;)
+  } else if (url.pathname.startsWith("/api/view_gif")) {
+    event.respondWith(getGif(arg))
+  }
+})
+
+async function uploadGif(url) {
+  // Fetch the GIF from the Internet.
+  var gif = await fetch(decodeURIComponent(url))
+  var buffer = await gif.arrayBuffer()
+  // Upload the GIF as a buffer to Workers KV.
+  await GIFS.put(user.name, buffer)
+  return gif
+}
+
+async function getGif(username) {
+  var gif = await GIFS.get(username, "arrayBuffer")
+  // If the user has set one, respond with the GIF.
+  if (gif) {
+    return new Response(gif, {headers: {"Content-Type": "image/gif"}})
+  } else {
+    return new Response({status: 404, statusText: "User has no GIF!"})
+  }
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>最後に、ベータ版をご利用いただいたすべてのお客様に感謝申し上げます。みなさまの貴重なフィードバックがあってこそ、Workers KVの変更を開発することが可能になりました。どうぞこれからもお願いいたします。当社は常にさらに先を見据えており、お客様からのご意見を楽しみにしております！</p>
+	<h3 id="--3"><strong>価格設定</strong></h3>
+	<p>正式版も、価格を発表する準備が整いました。エンタープライズプランのお客様の場合、価格の変更はありません。</p>
+	<ul>
+		<li>最初の1 GBは無料。以後は1 GBごとに$0.50</li>
+		<li>最初の1千万回分の読み取りは無料。以後は百万回ごとに$0.50</li>
+		<li>最初の百万回分の書き込み、リスト、削除操作は無料。以降は百万回ごとに$5</li>
+	</ul>
+	<p>ベータ期間中に判明したことは、当社のエッジで値を読み取るだけではなく、エッジから値の書き込みも必要とされている、ということでした。需要の高いエッジ操作はよりコストがかかるため、読み取り操作以外にも月額の課金を開始しました。</p>
+	<h3 id="--4"><strong>制限</strong></h3>
+	<p>前述のように、値のサイズ制限を 64 kB から 2 MB に拡張しました。また、名前空間ごとのキー数の上限もなくし、無制限としました。正式版の制限は次のとおりです。</p>
+	<ul>
+		<li>アカウントあたり最大 20 個の名前空間(それぞれ無制限のキー付き)</li>
+		<li>最大512バイトのキーと最大2MB の値</li>
+		<li>異なるキーに対する 1 秒あたりの書き込み無制限</li>
+		<li>同じキーに対して1秒あたり 1 回の書き込み</li>
+		<li>キーごとの1秒あたりの読み取り数は無制限</li>
+	</ul>
+	<h3 id="--5"><strong>今すぐお試しください！</strong></h3>
+	<p>すべてのお客様に公開しましたので、<a href="https://www.cloudflare.com/products/workers-kv/" target="_blank">Workers KV</a>は Cloudflare ダッシュボード上で、[Workers] タブから使用開始できます。当社の更新版<a href="https://developers.cloudflare.com/workers/kv/" target="_blank">ドキュメントもご覧ください。</a></p>
+	<p>Workers KVで何が構築できるのか、拝見するのが楽しみです！</p>
+</div>

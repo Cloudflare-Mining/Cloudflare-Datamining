@@ -1,0 +1,328 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image1-57.png" class="kg-image" alt="Live-patching security vulnerabilities inside the Linux kernel with eBPF Linux Security Module"></figure>
+	<p><a href="https://www.kernel.org/doc/html/latest/admin-guide/LSM/index.html" target="_blank">Linux 安全模块</a> (LSM) 是基于 hook 的框架，用于在 Linux 内核中实现安全策略和强制性访问控制。直到前不久，想要实现安全策略的用户还只有两种选项：配置 AppArmor 或 SELinux 等现有 LSM 模块，或编写自定义内核模块。</p>
+	<p><a href="https://cdn.kernel.org/pub/linux/kernel/v5.x/ChangeLog-5.7" target="_blank">Linux 5.7</a> 引入了第三种方式：<a href="https://docs.kernel.org/bpf/prog_lsm.html" target="_blank">LSM 扩充 Berkeley Packet Filter (eBPF)</a>（简称 LSM BPF）。使用 LSM BPF，开发人员能够在无需配置或加载内核模块的情况下编写精细策略。LSM BPF 程序会在加载时进行验证，然后在调用路径中到达 LSM hook 时执行。</p>
+	<h2 id="-">让我们解决现实问题</h2>
+	<p>现代操作系统提供了允许“分割”内核资源的设施。例如，FreeBSD 有“jail”，Solaris 有“区域”。Linux 有所不同，它提供一组看起来独立的设施，每个设施允许隔离特定资源。这些称为“命名空间”，多年来一直在内核中增长。它们是 Docker、lxc 或 firejail 等流行工具的基础。许多命名空间都是无争议的，例如 UTS 命名空间，它允许主机系统隐藏其主机名和时间。其他一些命名空间则比较复杂，但直接明了，例如，NET 和 NS (mount) 命名空间就令人难以理解。最后，还有一个非常特殊且稀奇的 USER 命名空间。</p>
+	<p>USER 命名空间的特殊之处在于，它允许所有者以其中的“根”用户身份操作。具体机制超出了本博客文章的讨论范围，但简单地说，在它的基础上，Docker 等工具才能不以真正的根用户身份操作，并且它还是无根容器等事项的基础。</p>
+	<p>鉴于其性质，允许无特权的用户访问 USER 命名空间始终会带来极大的安全风险。其中一种风险就是特权提升。</p>
+	<p>特权提升是操作系统的常见攻击面。用户可以获取特权的一种方式是通过 unshare <a href="https://en.wikipedia.org/wiki/System_call" target="_blank">syscall</a> 将其命名空间映射到根命名空间，并指定 <em>CLONE_NEWUSER</em> 标志。这会指示 unshare 创建有完整权限的新用户命名空间，并将新用户和组 ID 映射到之前的命名空间。您可以使用 <a href="https://man7.org/linux/man-pages/man1/unshare.1.html" target="_blank">unshare(1)</a> 程序将根映射到我们的原始命名空间：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-sh">$ id
+uid=1000(fred) gid=1000(fred) groups=1000(fred) …
+$ unshare -rU
+# id
+uid=0(root) gid=0(root) groups=0(root),65534(nogroup)
+# cat /proc/self/uid_map
+         0       1000          1
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>在大部分情况下，使用 unshare 没有损害，而且预定以较低特权运行。但是，此 syscall 已被发现用于<a href="https://nvd.nist.gov/vuln/detail/CVE-2022-0492" target="_blank">提升特权</a>。</p>
+	<p>Syscall<em> clone</em> 和 <em>clone3</em> 值得仔细考虑，因为它们还能够 <em>CLONE_NEWUSER</em>。但就本文而言，我们将专注于 unshare。</p>
+	<p>Debian 使用这个<a href="https://sources.debian.org/patches/linux/3.16.56-1+deb8u1/debian/add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by-default.patch/" target="_blank">“add sysctl to disallow unprivileged CLONE_NEWUSER by default”</a>（添加 sysctl 以在默认情况下不允许无特权的 CLONE_NEWUSER）补丁解决了该问题，但这不是主流做法。另一个类似补丁<a href="https://lore.kernel.org/all/1453502345-30416-3-git-send-email-keescook@chromium.org/" target="_blank">“sysctl: allow CLONE_NEWUSER to be disabled”</a>（sysctl：允许禁用 CLONE_NEWUSER）试图成为主流，但遭到了排挤。一种批评意见是针对特定应用程序<a href="https://lore.kernel.org/all/87poq5y0jw.fsf@x220.int.ebiederm.org/" target="_blank">无法切换此功能</a>。在文章<a href="https://lwn.net/Articles/673597/" target="_blank">《控制对用户命名空间的访问》</a>中，作者写道：“...现行补丁似乎很难成为主流。”显然，这些补丁最终并未包含在 vanilla 内核中。</p>
+	<h2 id="-lsm-bpf">我们的解决方案 - LSM BPF</h2>
+	<p>由于限制 USER 命名空间的上游代码似乎行不通，我们决定使用 LSM BPF 来规避这些问题。这样做并不需要修改内核，而且我们可以制定守护访问权限的复杂规则。</p>
+	<h3 id="-hook-">找到合适的 hook 候选项</h3>
+	<p>首先，让我们找到所需的 syscall。我们可以在 <a href="https://elixir.bootlin.com/linux/v5.18/source/include/linux/syscalls.h#L608" target="_blank"><em>include/linux/syscalls.h</em></a> 文件中找到原型。这在其中并不太容易查找到，但以下这行：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-c">/* kernel/fork.c */
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>提供了线索，这样我们就知道接下来要在 <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/fork.c#L3201" target="_blank"><em>kernel/fork.c</em></a> 中的什么地方查找。其中发出了对 <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/fork.c#L3082" target="_blank"><em>ksys_unshare()</em></a> 的调用。在该函数中深入探查，我们找到对 <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/fork.c#L3129" target="_blank"><em>unshare_userns()</em></a> 的调用。此操作有望成功。</p>
+	<p>到目前为止，我们确定了 syscall 实现，但接下来要弄清楚的是，哪些 hook 可供我们使用？因为我们通过<a href="https://man7.org/linux/man-pages/man2/unshare.2.html" target="_blank">手册页</a>可以知道，unshare 用于改变任务，所以我们来看一下 <a href="https://elixir.bootlin.com/linux/v5.18/source/include/linux/lsm_hooks.h#L605" target="_blank"><em>include/linux/lsm_hooks.h</em></a> 中基于任务的 hook。早在函数 <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/user_namespace.c#L171" target="_blank"><em>unshare_userns()</em></a><em> </em> 中，我们就看到对 <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/cred.c#L252" target="_blank"><em>prepare_creds()</em></a> 的调用。这非常类似于 <a href="https://elixir.bootlin.com/linux/v5.18/source/include/linux/lsm_hooks.h#L624" target="_blank"><em>cred_prepare</em></a> hook。为了验证我们是否通过 <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/cred.c#L291" target="_blank"><em>prepare_creds()</em></a> 获得匹配，我们观察对安全性 hook <a href="https://elixir.bootlin.com/linux/v5.18/source/security/security.c#L1706" target="_blank"><em>security_prepare_creds()</em></a><em> </em>的调用，后者最终会调用该 hook：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-c">…
+rc = call_int_hook(cred_prepare, 0, new, old, gfp);
+…
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>不必进一步详细探究细节，我们知道这个 hook 很适合使用，因为 <em>prepare_creds()</em> 刚好就在 <em>create_user_ns()</em>（位于 <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/user_namespace.c#L181" target="_blank"><em>unshare_userns()</em></a> 中）之前调用，后者是我们试图阻止的操作。</p>
+	<h3 id="lsm-bpf-">LSM BPF 解决方案</h3>
+	<p>我们打算使用 <a href="https://nakryiko.com/posts/bpf-core-reference-guide/#defining-own-co-re-relocatable-type-definitions" target="_blank">eBPF compile once-run everywhere (CO-RE)</a> 方法进行编译。这样一来，我们就可以在一个架构上编译，而在另一个架构上加载。但我们打算专门以 x86_64 为目标。适用于 ARM64 的 LSM BPF 仍在开发中，以下代码将无法在该架构上运行。敬请留意 <a href="https://lore.kernel.org/bpf/" target="_blank">BPF 邮寄列表</a>以关注进展。</p>
+	<p>测试该解决方案时采用的内核版本不低于 5.15，且配置了以下内容：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>BPF_EVENTS
+BPF_JIT
+BPF_JIT_ALWAYS_ON
+BPF_LSM
+BPF_SYSCALL
+BPF_UNPRIV_DEFAULT_OFF
+DEBUG_INFO_BTF
+DEBUG_INFO_DWARF_TOOLCHAIN_DEFAULT
+DYNAMIC_FTRACE
+FUNCTION_TRACER
+HAVE_DYNAMIC_FTRACE
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>启动选项 <code>lsm=bpf</code> 在 <code>CONFIG_LSM</code> 未在列表中包含“bpf”时可能是必要的。</p>
+	<p>让我们从序言开始：</p>
+	<p><em>deny_unshare.bpf.c</em>：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-c">#include &lt;linux/bpf.h&gt;
+#include &lt;linux/capability.h&gt;
+#include &lt;linux/errno.h&gt;
+#include &lt;linux/sched.h&gt;
+#include &lt;linux/types.h&gt;
+
+#include &lt;bpf/bpf_tracing.h&gt;
+#include &lt;bpf/bpf_helpers.h&gt;
+#include &lt;bpf/bpf_core_read.h&gt;
+
+#define X86_64_UNSHARE_SYSCALL 272
+#define UNSHARE_SYSCALL X86_64_UNSHARE_SYSCALL
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>接下来，我们通过以下方式为 CO-RE 调整设置我们的必要结构：</p>
+	<p><em>deny_unshare.bpf.c</em>：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-c">…
+
+typedef unsigned int gfp_t;
+
+struct pt_regs {
+	long unsigned int di;
+	long unsigned int orig_ax;
+} __attribute__((preserve_access_index));
+
+typedef struct kernel_cap_struct {
+	__u32 cap[_LINUX_CAPABILITY_U32S_3];
+} __attribute__((preserve_access_index)) kernel_cap_t;
+
+struct cred {
+	kernel_cap_t cap_effective;
+} __attribute__((preserve_access_index));
+
+struct task_struct {
+    unsigned int flags;
+    const struct cred *cred;
+} __attribute__((preserve_access_index));
+
+char LICENSE[] SEC("license") = "GPL";
+
+…
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>我们不需要完全充实 struct 的细节，只需提供程序正常运行所需信息的绝对下限。CO-RE 将执行为内核执行调整所需的任何操作。这样就可以很轻松地编写 LSM BPF 程序！</p>
+	<p><em>deny_unshare.bpf.c</em>：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-c">SEC("lsm/cred_prepare")
+int BPF_PROG(handle_cred_prepare, struct cred *new, const struct cred *old,
+             gfp_t gfp, int ret)
+{
+    struct pt_regs *regs;
+    struct task_struct *task;
+    kernel_cap_t caps;
+    int syscall;
+    unsigned long flags;
+
+    // If previous hooks already denied, go ahead and deny this one
+    if (ret) {
+        return ret;
+    }
+
+    task = bpf_get_current_task_btf();
+    regs = (struct pt_regs *) bpf_task_pt_regs(task);
+    // In x86_64 orig_ax has the syscall interrupt stored here
+    syscall = regs-&gt;orig_ax;
+    caps = task-&gt;cred-&gt;cap_effective;
+
+    // Only process UNSHARE syscall, ignore all others
+    if (syscall != UNSHARE_SYSCALL) {
+        return 0;
+    }
+
+    // PT_REGS_PARM1_CORE pulls the first parameter passed into the unshare syscall
+    flags = PT_REGS_PARM1_CORE(regs);
+
+    // Ignore any unshare that does not have CLONE_NEWUSER
+    if (!(flags &amp; CLONE_NEWUSER)) {
+        return 0;
+    }
+
+    // Allow tasks with CAP_SYS_ADMIN to unshare (already root)
+    if (caps.cap[CAP_TO_INDEX(CAP_SYS_ADMIN)] &amp; CAP_TO_MASK(CAP_SYS_ADMIN)) {
+        return 0;
+    }
+
+    return -EPERM;
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>第一步是创建程序，第二步是加载程序并附加到我们所需的 hook。有几种方式可实现这一目的：<a href="https://github.com/cilium/ebpf" target="_blank">Cilium ebpf</a> 项目，<a href="https://github.com/libbpf/libbpf-rs" target="_blank">Rust 绑定</a>，以及 <a href="https://ebpf.io/projects/" target="_blank">ebpf.io</a> 项目环境页面上的其他几项。我们打算使用原生 libbpf。</p>
+	<p><em>deny_unshare.c</em>：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-c">#include &lt;bpf/libbpf.h&gt;
+#include &lt;unistd.h&gt;
+#include "deny_unshare.skel.h"
+
+static int libbpf_print_fn(enum libbpf_print_level level, const char *format, va_list args)
+{
+    return vfprintf(stderr, format, args);
+}
+
+int main(int argc, char *argv[])
+{
+    struct deny_unshare_bpf *skel;
+    int err;
+
+    libbpf_set_strict_mode(LIBBPF_STRICT_ALL);
+    libbpf_set_print(libbpf_print_fn);
+
+    // Loads and verifies the BPF program
+    skel = deny_unshare_bpf__open_and_load();
+    if (!skel) {
+        fprintf(stderr, "failed to load and verify BPF skeleton\n");
+        goto cleanup;
+    }
+
+    // Attaches the loaded BPF program to the LSM hook
+    err = deny_unshare_bpf__attach(skel);
+    if (err) {
+        fprintf(stderr, "failed to attach BPF skeleton\n");
+        goto cleanup;
+    }
+
+    printf("LSM loaded! ctrl+c to exit.\n");
+
+    // The BPF link is not pinned, therefore exiting will remove program
+    for (;;) {
+        fprintf(stderr, ".");
+        sleep(1);
+    }
+
+cleanup:
+    deny_unshare_bpf__destroy(skel);
+    return err;
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>最后，我们使用以下 Makefile 来编译：</p>
+	<p><em>Makefile</em>：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-makefile">CLANG ?= clang-13
+LLVM_STRIP ?= llvm-strip-13
+ARCH := x86
+INCLUDES := -I/usr/include -I/usr/include/x86_64-linux-gnu
+LIBS_DIR := -L/usr/lib/lib64 -L/usr/lib/x86_64-linux-gnu
+LIBS := -lbpf -lelf
+
+.PHONY: all clean run
+
+all: deny_unshare.skel.h deny_unshare.bpf.o deny_unshare
+
+run: all
+	sudo ./deny_unshare
+
+clean:
+	rm -f *.o
+	rm -f deny_unshare.skel.h
+
+#
+# BPF is kernel code. We need to pass -D__KERNEL__ to refer to fields present
+# in the kernel version of pt_regs struct. uAPI version of pt_regs (from ptrace)
+# has different field naming.
+# See: https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=fd56e0058412fb542db0e9556f425747cf3f8366
+#
+deny_unshare.bpf.o: deny_unshare.bpf.c
+	$(CLANG) -g -O2 -Wall -target bpf -D__KERNEL__ -D__TARGET_ARCH_$(ARCH) $(INCLUDES) -c $&lt; -o <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b89cf8">[email&nbsp;protected]</a>
+	$(LLVM_STRIP) -g <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="ad89ed">[email&nbsp;protected]</a> # Removes debug information
+
+deny_unshare.skel.h: deny_unshare.bpf.o
+	sudo bpftool gen skeleton $&lt; &gt; <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="9db9dd">[email&nbsp;protected]</a>
+
+deny_unshare: deny_unshare.c deny_unshare.skel.h
+	$(CC) -g -Wall -c $&lt; -o <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6044204e0f">[email&nbsp;protected]</a>
+	$(CC) -g -o <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="81a5c1">[email&nbsp;protected]</a> $(LIBS_DIR) <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="aa8eea84c5">[email&nbsp;protected]</a> $(LIBS)
+
+.DELETE_ON_ERROR:
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h3 id="--1">结果</h3>
+	<p>在新的终端窗口中，运行：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-sh">$ make run
+…
+LSM loaded! ctrl+c to exit.
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>在另一个终端窗口中，我们成功被阻止！</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-sh">$ unshare -rU
+unshare: unshare failed: Cannot allocate memory
+$ id
+uid=1000(fred) gid=1000(fred) groups=1000(fred) …
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>策略还有一项始终允许特权通过的功能：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-sh">$ sudo unshare -rU
+# id
+uid=0(root) gid=0(root) groups=0(root)
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>在无特权的情况下，syscall 会及早中止。在有特权的情况下，对性能有何影响？</p>
+	<h3 id="--2">测量性能</h3>
+	<p>我们打算使用单行 unshare 来映射用户命名空间，并在其中执行测量的命令：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-sh">$ unshare -frU --kill-child -- bash -c "exit 0"
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>通过 syscall unshare enter/exit 的 CPU 周期分辨率，我们将以根用户身份测量以下内容：</p>
+	<ol>
+		<li>不带策略运行的命令</li>
+		<li>带策略运行的命令</li>
+	</ol>
+	<p>我们将使用 <a href="https://docs.kernel.org/trace/ftrace.html" target="_blank">ftrace</a> 记录测量：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-sh">$ sudo su
+# cd /sys/kernel/debug/tracing
+# echo 1 &gt; events/syscalls/sys_enter_unshare/enable ; echo 1 &gt; events/syscalls/sys_exit_unshare/enable
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>目前，我们专门为 unshare 的 syscall enter 和 exit 启用了跟踪。现在，我们设置 enter/exit 调用的时间分辨率，计算 CPU 周期数量：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-sh"># echo 'x86-tsc' &gt; trace_clock 
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>接下来，我们开始测量：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-sh"># unshare -frU --kill-child -- bash -c "exit 0" &amp;
+[1] 92014
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>在新的终端窗口中运行策略，然后运行下一个 syscall：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-sh"># unshare -frU --kill-child -- bash -c "exit 0" &amp;
+[2] 92019
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>现在，我们来比较两个调用：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-sh"># cat trace
+# tracer: nop
+#
+# entries-in-buffer/entries-written: 4/4   #P:8
+#
+#                                _-----=&gt; irqs-off
+#                               / _----=&gt; need-resched
+#                              | / _---=&gt; hardirq/softirq
+#                              || / _--=&gt; preempt-depth
+#                              ||| / _-=&gt; migrate-disable
+#                              |||| /     delay
+#           TASK-PID     CPU#  |||||  TIMESTAMP  FUNCTION
+#              | |         |   |||||     |         |
+         unshare-92014   [002] ..... 762950852559027: sys_unshare(unshare_flags: 10000000)
+         unshare-92014   [002] ..... 762950852622321: sys_unshare -&gt; 0x0
+         unshare-92019   [007] ..... 762975980681895: sys_unshare(unshare_flags: 10000000)
+         unshare-92019   [007] ..... 762975980752033: sys_unshare -&gt; 0x0
+
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>unshare-92014 使用了 63294 个周期。</p>
+	<p>unshare-92019 使用了 70138 个周期。</p>
+	<p>这两个测量之间有 6,844 个（大约 10%）周期的差值。结果还不赖！</p>
+	<p>这些数字是针对单个 syscall 的情况，调用代码越频繁，这些数字也会相应累加。Unshare 通常在创建任务时调用，而在程序正常执行期间不会重复调用。需要对您的用例进行仔细考虑和测量。</p>
+	<h2 id="--3">结尾</h2>
+	<p>我们大致了解了 LSM BPF 的基本概念，如何使用 unshare 将用户映射到根，以及如何通过在 eBPF 中实现解决方案来解决现实问题。找到合适的 hook 并不容易，需要开展一些试验，还要编写大量内核代码。幸运的是，其他部分都比较简单。由于策略是采用 C 语言编写的，我们可以通过精细调整策略来解决我们的问题。这意味着，可以使用允许列表扩展该策略，允许特定程序或用户继续使用无特权的 unshare。最后，我们考察了该程序的性能影响，并发现阻止攻击手段所需的开销是值得的。</p>
+	<p>“Cannot allocate memory”（无法分配内存）并不是拒绝权限的明确错误消息。我们提议了一个<a href="https://lore.kernel.org/all/20220608150942.776446-1-fred@cloudflare.com/" target="_blank">补丁</a>，用于在调用堆栈中从 <em>cred_prepare</em> hook 向上传播错误代码。最终，我们得出结论，新的 hook 更适合解决该问题。敬请关注！</p>
+</div>

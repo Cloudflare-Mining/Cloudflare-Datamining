@@ -1,0 +1,47 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/1-5.png" class="kg-image"></figure>
+	<p><a href="https://www.statista.com/statistics/255080/number-of-e-mail-users-worldwide/" target="_blank">40億人</a>以上、つまり世界人口の半分以上が少なくとも1つのメールアドレスを持ち、仕事やプライベートの諸事を把握するための不可欠なツールとしてメールを使っています。毎日3000億以上のメールが送受信されていますが、メールはコミュニケーションツールの役割だけに留まらず、単にメッセージを伝える手段を遥かに超えた影響を私たちの生活に及ぼしています。メールは身元認証の方法としても一般的ですし、他のコミュニケーションプラットフォームへのゲートウェイとしても機能します。</p>
+	<p>現在ではたいていの人が、銀行アカウントへのログインや政府機関との連絡など機密性の高い目的のためにメールを使用しています。一方、同じメールアドレスで、オンラインで見つけた10%オフクーポンの申し込みもし、その後何か月もスパムメールを受信し続けることになります。これらの2つのユースケースは重要度やセキュリティの観点でみれば両極端に位置しますが、人々は通常、単一アカウント管理の利便性のためにそうしたリスクを冒します。</p>
+	<p>企業も同様で、営業やサポートなど問い合わせの種類に応じて異なるメールアドレスを持ちたいと考えながらも、誰がメールを受信するかの管理が面倒と感じることが多いようです。企業の成長に伴って、もともとオーナーが扱っていた事柄を他の人に任すことも頻繁に起こってきます。ただ、小企業にとっては通常、受信箱やメールエイリアスの設定は簡単ではありません。</p>
+	<p>そして、個人や世帯でも、複数の受信箱を設けてさまざまなオンラインプレゼンスを表すインターネットIDを使っているケースが数限りなくあります。</p>
+	<p>当社では、これらの課題を理解したうえで、解決に向けてCloudflare Email Routingを発表しました。この機能を使えばメールアドレスをいくつでも簡単に作成でき、届いたメールをお客様やお客様の家族、チームが既にお使いの受信箱にリダイレクトすることができます。</p>
+	<h2 id="cloudflare-email-routing">Cloudflare Email Routing</h2>
+	<p>Cloudflare Email Routingは、メールアドレスの作成・管理がシンプルになるように設計されており、追加した受信箱を別途監視しておく必要がありません。 </p>
+	<p>プロセスは簡単です：</p>
+	<ol>
+		<li>お客様のドメインに作りたいメールアドレスを入力します。</li>
+		<li>転送先のメールアドレスを入力します。</li>
+	</ol>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/2-1.png" class="kg-image"></figure>
+	<p><em>&lt;代替テキスト：作成するメールアドレスを入力するテキストボックスと転送先のメールアドレスを入力するテキストボックス&gt;</em></p>
+	<p>ご存知の方もおられるように、メールはエンベロープとヘッダーと本文で構成されています。</p>
+	<p>エンベロープはSMTPトランスポートプロトコルの一部で、サーバーにメールの送信元と送信先を伝えます。 </p>
+	<p>ヘッダーは、メッセージが通過したパスと日付、送信者と受信者のアドレス、件名、その他の技術的メタデータ（SPFパスの結果、DKIM署名、スパム対策スコアなど）といった構造化された情報を含んでいます。メッセージが最終的な受信箱に到達するまで、サーバーを通過する度に、新しいヘッダーが追加されるか既存のヘッダーが更新されます。</p>
+	<p>最後に、メッセージ本文があり、ここに実際のコンテンツが含まれます。本文はプレーンテキスト、リッチHTMLにもでき、添付ファイルが含まれていたり、中には署名されていたり、暗号化されているものもあります。</p>
+	<p>下図は、SMTPプロトコルの仕組みとメールメッセージの3ステップの組み合わせを簡略に示しています。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/3-1.png" class="kg-image" alt="<代替テキスト：SMTPプロトコルの仕組みの概略図>"></figure>
+	<p>Cloudflare Email Routingサービスは、トランポートレイヤーでインテリジェントルーターとして機能し、SMTP エンベロープを処理・更新し、最終目的地にメッセージを届けますが、オリジナルヘッダーと本文はそのままの状態に保ちます。このアプローチにより、SPF、DKIM、その他のセキュリティやスパム対策のプロトコルが壊れないようにして、メッセージの受信者を保護します。</p>
+	<p>さらに、他の製品と同様のプライバシー優先のアプローチで、どの時点でもメールをのぞきみたり、キューに入れたり、保存したりすることは決してありません。メッセージを受け取ると、設定されたルールに従って処理し、リアルタイムで最終目的地に届けます。</p>
+	<h2 id="-">プライベートベータ版へのアクセス</h2>
+	<p>Email Forwardingは現在はプライベートベータ版ですが、<a href="https://www.cloudflare.com/ja-jp/email-forwarding-waitlist-sign-up/" target="_blank">こちらのお申し込みフォーム</a>から順番待ちリストにご登録いただけます。</p>
+	<p>そして、Email Routingを使い始めるために必要なのは、お客様のドメインを<a href="https://www.cloudflare.com/ja-jp/dns/" target="_blank">Cloudflare DNS</a>に追加することだけです。</p>
+	<p>現在ドメインをお持ちでない方は、こちらのCloudfare <a href="https://www.cloudflare.com/ja-jp/products/registrar/" target="_blank">Registrar</a>でご購入いただけます。</p>
+	<h2 id="--1">設定の手順</h2>
+	<p>あとは、次の簡単な手順で新しいメールアドレスの作成と転送の設定ができます。</p>
+	<ol>
+		<li><a href="https://dash.cloudflare.com/" target="_blank">Cloudflareダッシュボード</a>にあるemailページに移動します。</li>
+		<li><strong>設定</strong>を選択します。</li>
+		<li>作成したいメールアドレスを入力します （これは <strong>お客様の</strong>ドメインのために作成するものですので、お客様のお好みに合わせて自由に作成できます）。または、<em>catch-all（キャッチオール）</em> を選択して、ドメインにあるすべてのメールアドレスが有効とみなされて転送されるよう設定することもできます。</li>
+		<li>ドメインのために事前に設定したメールがない場合、DNSの設定は自動的に行われます。あるいは、お客様のニーズに合わせたDNSの設定方法について簡潔なガイダンスを提供いたします。</li>
+		<li>最後に、宛先のメールアドレスがご自分のものであることを確認する必要があります。とてもシンプルで、これまで何度も行ってきた方法とまったく同じです。 </li>
+	</ol>
+	<p>最初に言ったとおり、実に簡単です！</p>
+	<!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 68.57541899441341%;"><iframe src="https://iframe.videodelivery.net/436e35ef19226a83471e61e0082d5487?preload=true" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
+	<p></p>
+	<!--kg-card-end: html-->
+	<p>効率性とシンプルさを念頭に、複数のルールとお好みのアップストリーム側受信箱へのメッセージ転送をサポートするEmail Routingを開始します。</p>
+	<p>メールの分野では長らく動きがなかったような印象がありますが、Cloudflareのプラットフォーム、リソース、ノウハウを活かしたエキサイティングな新機能がまもなく登場する予定です。</p>
+	<p>Cloudflareではお客様の声を大切にしています。ご質問、ご提案、新しいアイデア等ございましたら、<a href="https://community.cloudflare.com/" target="_blank">コミュニティフォーラム</a>でお知らせください。当社も投稿に注目しています。</p>
+	<p>Cloudflare Email Routingのご利用を開始するには、<a href="https://www.cloudflare.com/ja-jp/email-forwarding-waitlist-sign-up/" target="_blank">こちらのフォーム</a>で順番待ちリストにご登録ください。Cloudflareでは毎日より多くのユーザーにこのサービスを利用していただけるように努めています。少しお待ちいただきますが、お待ちいただくだけの価値はあります！</p>
+</div>

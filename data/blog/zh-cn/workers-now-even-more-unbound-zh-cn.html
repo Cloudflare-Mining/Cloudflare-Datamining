@@ -1,0 +1,23 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image1-42.png" class="kg-image" alt="Workers, Now Even More Unbound: 15 Minutes, 100 Scripts, and No Egress"></figure>
+	<p>我们的使命是，让开发人员能够在我们的平台上从头到尾地构建他们的应用程序，并彻底消除任何可能的限制。今天，我们很高兴地宣布，您将能在我们的网络上构建大规模、数据密集型的应用程序，而且无需高额费用；从今天开始，我们要把 &nbsp; &nbsp; &nbsp;出口费用降为零。 </p>
+	<h2 id="-">更经济：取消出口费用</h2>
+	<p>一直以来，在任何平台上开发更多内容都会有一个限制——高额的数据传输成本。这些成本往往表现为出口费用。尤其是数据密集型工作负载，视乎提供商，出口数据传输成本有可能达到很高水平。</p>
+	<p>数据出口费用究竟是什么呢？它就是从云提供商检索数据的费用。云基础设施提供商一般会根据容量为带宽付费，但常常会根据数据传输量向客户收费。想知道这对最终用户意味着什么吗？我们最近撰写了一篇有关 <a href="https://blog.cloudflare.com/aws-egregious-egress/">AWS 惊人出口费用</a>的分析，如果您希望进一步了解 AWS 建立起来的‘加州旅馆’模式，那么这篇文章值得一读。数据出口费用实际上将您锁定在他们的平台上，导致您选择提供商并非基于哪家提供商拥有最适合您用例的基础设施，而是您的数据存储在哪里。</p>
+	<p>Cloudflare 正在努力为客户扭转这种局面。我们最近宣布的 <a href="https://blog.cloudflare.com/introducing-r2-object-storage/">R2 Storage</a> 豁免了其他提供商对类似产品收取的数据出口费用。Cloudflare 是 <a href="https://www.cloudflare.com/bandwidth-alliance/" target="_blank">Bandwidth Alliance</a> 的创始成员，旨在帮助我们的共同客户消除这些数据传输费用。</p>
+	<p>我们忠于这一使命，宣布从现在开始免除 <a href="https://developers.cloudflare.com/workers/platform/pricing#pricing-1" target="_blank">Workers Unbound</a> 和 <a href="https://developers.cloudflare.com/workers/learning/using-durable-objects" target="_blank">Durable Objects</a> 的所有出口数据传输费用。如果您正在使用 Workers Unbound，您的下一期账单将不再包含出口传输费用。如果您还没有使用 Unbound，那么这就是开始试验的大好机会了。通过 Workers Unbound，您将获得更长的 CPU 时间上限，并按使用付费，不用担心数据传输成本。与 Bandwidth Alliance 相结合后，对任何数据密集型工作负载而言，这都是一个低本高效的解决方案。</p>
+	<h2 id="-15-">进一步解绑：15 分钟</h2>
+	<p>本周的主题是定义计算的未来。Workers 非常适合延迟敏感的工作负载，提供零毫秒冷启动时间，快速全球部署，以及 Cloudflare 网络的强大能力。但 Workers 并不局限于执行轻量级任务。我希望您也能在我们的平台上运行重量级负载。因此我们宣布，从现在开始您可以在 Workers 上使用长达 15 分钟的 CPU 时间！您可以使用 Cron Triggers 在 Workers 上运行计算密集型的任务。马上使用？前往 Workers 中的 <strong>Settings</strong> 选项卡，选择 ‘Unbound’ 使用模式。</p>
+	<!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 64.3796992481203%;"><iframe src="https://iframe.videodelivery.net/d69dfe0d9d2bac284215c97209543df1?preload=true" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
+	<!--kg-card-end: html-->
+	<p>确认您的使用模式是 Unbound 后，切换到 <strong>Triggers</strong> 选项卡并点击 <strong>Add Cron Trigger</strong>。您会看到其中列有 ‘Maximum Duration’ ，表明您的计划是否具备使用 15 分钟负载的资格。</p>
+	<!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 64.3796992481203%;"><iframe src="https://iframe.videodelivery.net/9b00e3b05dc7c53f0af4a5178f1ca389?preload=true" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
+	<!--kg-card-end: html-->
+	<h2 id="--1">稍等，还有更多（-没忽悠您！）</h2>
+	<p>这还不是全部。作为一个平台，看到客户希望与我们进一步发展证明了我们的价值，因此我们一直致力于解决这些限制。正因为如此，今天开始，所有客户都将可以部署最多 100 个 Worker 脚本。同时，我们推出 <a href="https://blog.cloudflare.com/introducing-worker-services">Services</a>，允许部署多达 100 个环境。更高的上限让我们的客户能将更多用例迁移到 Workers 平台上。</p>
+	<p>与此同时，我们还欣然宣布，Workers 平台将计划支持更大的脚本。此举将允许开发人员使用更多的库构建更大型的 Workers 项目，并带来新的可能性，例如通过 WASM 运行 Golang。查看一个<a href="https://esbuild.developers.workers.dev/" target="_blank">在 Worker 上运行的 esbuild 实例</a>，脚本压缩后仅 2 MB 出头。若有意使用更大的脚本，请在<a href="https://www.cloudflare.com/larger-scripts-on-workers-early-access/" target="_blank">这里</a>注册。</p>
+	<p>云计算的未来已经到来，就在 Cloudflare 上。Workers 一直是<a href="https://developers.cloudflare.com/workers/learning/security-model" target="_blank">安全</a>、<a href="https://blog.cloudflare.com/cloudflare-workers-the-fast-serverless-platform/">快速</a>的无服务器平台，最近已获评为这一领域的<a href="https://blog.cloudflare.com/forrester-wave-edge-development-2021/">领导者</a>。现在，Workers 也变得更经济、更灵活。</p>
+	<p>我们迫不及待要看到客户构建了哪些雄心勃勃的项目。现在，开发人员比以往任何时候都更容易在 Cloudflare 上部署复杂的大型应用。希望使用 Workers 构建应用？想与社区进行互动吗？加入 <a href="https://discord.gg/rH4SsffFcc" target="_blank">我们的 Discord 服务器</a>，了解 Cloudflare Workers 的最新发展吧。</p>
+</div>

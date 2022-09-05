@@ -1,0 +1,56 @@
+<div class="post-content lh-copy gray1">
+	<p>如果您的组织使用SSH公钥，则你完全可能已经遗失一个了。备份文件或前雇员的计算机上有一个文件，该文件允许持有者访问您的基础设施。如果您在员工之间共享SSH密钥，那么很可能只有几个密钥就足以让攻击者访问您的整个系统。如果您不共享它们，很可能您的团队已经生成了太多的密钥，以至于至少有一个是您很长时间都找不到的了。</p>
+	<p>如果攻击者可以破坏您的一个客户端设备，那么很可能存在一个known_hosts文件，其中列出了可以通过计算机已经包含的密钥轻松访问的每个目标。如果有人能够侵入团队成员的笔记本电脑，他们可以使用设备上缺乏密码保护的密钥到达敏感目的地。</p>
+	<p>如果发生了这种情况，您将如何响应并撤销丢失的SSH密钥呢？您是否对生成的密钥有所了解？您是否旋转SSH密钥？您如何在整个组织中管理秘钥，从而使得在忙于为客户提供服务的过程中可以毫不费力地确保安全性？</p>
+	<p>Cloudflare Access去年<a href="https://blog.cloudflare.com/releasing-the-cloudflare-access-feature-that-let-us-smash-a-vpn-on-stage/">推出</a>了对SSH连接的支持，为团队连接基础设施带来了零信任安全。Access与IdP集成在一起，通过在用户每次尝试连接目标资源时强制执行基于身份的规则，将SSO（Single-Sign-On，单点登录）安全性引入SSH连接。</p>
+	<p>但是，一旦Access将用户连接到服务器，他们仍然必须依赖遗留的SSH密钥来授权他们的帐户。从今天开始，我们很高兴能够帮助团队删除该要求，并使用短期证书替换静态SSH密钥。</p>
+	<h2 id="-cloudflare-access-">使用Cloudflare Access替换私有网络</h2>
+	<p>在传统的网络边界模型中，团队使用两个门来保护其基础设施：私有网络和SSH密钥。</p>
+	<p>私有网络要求任何试图连接到服务器的用户必须位于相同的网络上，或者处于相同的位置（例如VPN）。然而，这也带来了一些风险。私有网络默认信任网络上的用户可以访问计算机。管理员必须主动对网络进行分段，或者使用控制列表保护基础设施的每个部分，以便从该默认状态往后工作。</p>
+	<p>Cloudflare Access则从另一个方向开始来保护基础架构的安全：不信任任何用户。相反，用户必须证明，在默认情况下，他们应该能够访问任何唯一的机器或目的地。</p>
+	<p>我们<a href="https://blog.cloudflare.com/releasing-the-cloudflare-access-feature-that-let-us-smash-a-vpn-on-stage/">去年</a>在Cloudflare Access中发布了对SSH连接的支持，以帮助团队离开网络边界模型，并将其替换为评估对服务器的每个用户身份请求的模型。通过与流行的身份提供程序集成，该解决方案还允许团队将其SSO管道引入SSH流中。</p>
+	<h2 id="-ssh-">用短期证书替换静态SSH密钥</h2>
+	<p>一旦用户通过SSH连接到服务器，他们通常需要授权他们的会话。他们尝试访问的计算机将具有一组配置文件，其中包含用户或角色标识。这些配置文件定义了用户可以执行的操作。</p>
+	<p>SSH进程为用户登录配置文件提供了一些选项。在某些情况下，用户可以使用用户名和密码组合登录。然而，大多数团队依赖于公钥——私钥证书来处理登录。要使用该流，管理员和用户需要采取必要的步骤。</p>
+	<p>在连接之前，用户将生成一个证书并将公钥提供给管理员，管理员将配置服务器以信任该证书，并将其与某个用户和一组权限关联起来。用户将该证书存储在其设备上，并在最后一英里内出示该证书。然而，这留下了SSO试图解决的所有问题：</p>
+	<ul>
+		<li>大多数团队从不强迫用户更换证书。如果他们这样做了，可能每年最多需要一次。这使得对应核心基础设施的静态凭证滞留在数千台设备上。</li>
+		<li>用户有责任在他们的设备上保护他们的证书。用户也要对密码负责，但是组织可以集中执行请求和撤销。</li>
+		<li>证书吊销是不易操作的。团队必须管理一个CRL（证书吊销列表）或OCSP（在线证书状态协议）平台，以确保丢失或被盗的证书不会被使用。</li>
+	</ul>
+	<p>借助Cloudflare Access，您可以将SSO帐户带入基础架构中的用户身份验证。不需要静态密钥。</p>
+	<h2 id="-">它是如何工作的？</h2>
+	<p>为了构建这个平台，我们求助于已有的三个工具：Cloudflare Access、Argo Tunnel和Workers。</p>
+	<p>Access是一个策略引擎，它将您的身份提供程序（如Okta或AzureAD）中的员工数据与您制定的策略结合在一起。基于这些策略，Access能够将对内部应用程序的访问限制在您选择的用户范围内。不难看出使用相同的策略概念通过SSH控制对服务器的访问也是可行的。您编写了一项政策，我们将使用它来决定您的哪些雇员应该能够访问哪些资源。然后，我们生成一个短期证书，允许他们仅在最短的时间内访问该资源。如果您从IdP中删除一个用户，他们对您的基础设施的访问权也将被无缝地删除。</p>
+	<p>为了让流量通过我们的网络，我们使用了另一个现有的Cloudflare工具：Argo隧道。Argo隧道颠覆了传统的将服务器连接到互联网的模式。当您在一台机器上启动我们的守护进程时，它会向Cloudflare发出出站连接，然后您的所有流量都将流经这些连接。这允许计算机成为Cloudflare网络的一部分，而不必直接将计算机暴露给互联网。</p>
+	<p>对于HTTP用例，Argo隧道仅需要在服务器上运行。对于Access SSH流，我们在服务器和最终用户笔记本电脑上运行Argo Tunnel客户端——cloudflared，通过Cloudflare代理SSH流量。</p>
+	<p>当用户通过SSH连接到受Access for Infrastructure保护的资源时，他们将使用命令行工具cloudflared。cloudflared接收绑定到该主机名的SSH流量，并根据SSH配置设置通过Cloudflare转发该流量。无需管道或命令包装。cloudflared启动浏览器窗口，并提示用户使用其SSO凭据进行身份验证。</p>
+	<p>一旦通过身份验证，Access将根据您为该应用程序配置的策略检查用户的身份。如果允许用户访问资源，则Access将生成一个JSON Web令牌（JWT），该令牌由Cloudflare签名，作用域为用户和应用程序。Access通过cloudflared将该令牌分发给用户的设备，该工具将其存储在本地。</p>
+	<p>像核心访问身份验证流程一样，令牌验证是通过在我们每个数据中心中运行的Cloudflare Worker构建的，这使得它既快速又高度可用。Worker使我们能够将这种SSH代理部署到Cloudflare的所有194个数据中心，这意味着对基础设施的访问通常会加快SSH会话，而不是减慢它们。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2020/01/Short-lived-Cert-copy@2x-1.png" class="kg-image"></figure>
+	<p></p>
+	<p>启用了短期证书后，在客户端上运行cloudflared实例需要执行一个额外的步骤。cloudflared将该令牌发送到创建临时证书的Cloudflare证书签名端点。然后，用户的SSH流将同时发送令牌（用于通过Access进行身份验证）和短期证书（用于对服务器进行身份验证）。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2020/01/Short-lived-Cert@2x.png" class="kg-image"></figure>
+	<p></p>
+	<p>当服务器接收到请求时，它将根据该公钥验证生存期较短的证书，如果证书是真实的，则将用户标识授权给匹配的Unix用户。证书一旦发出，有效期只有2分钟，但是一旦会话启动，SSH连接可以持续更长时间。</p>
+	<h2 id="--1">最终用户体验如何？</h2>
+	<p>Cloudflare Access的SSH功能对最终用户完全透明，并且不需要任何唯一的SSH命令，包装程序或标志。相反，Access要求您的团队成员采取几个一次性的步骤来开始：</p>
+	<p><strong>1.安装cloudflared守护程序</strong></p>
+	<p>这是在目标服务器上运行的相同的轻量级软件，用于通过Cloudflare代理来自团队成员设备的SSH连接。用户可以使用流行的软件包管理器（例如brew）或通过<a href="https://developers.cloudflare.com/access/cli/installing-cli-tool/" target="_blank">此处</a>的链接进行安装。另外，该软件是开源的，可以由管理员构建和分发。</p>
+	<p><strong>2.打印SSH配置更新并保存</strong></p>
+	<p>最终用户安装后cloudflared，他们需要运行一个命令来生成新的行来添加到其SSH配置文件中：</p>
+	<pre><code class="language-ssh">cloudflared access ssh-config --hostname vm.example.com --short-lived-cert</code></pre>
+	<p>该——hostname字段将包含访问后受保护的资源的主机名或通配符子域。一旦运行，cloudflared将打印以下详细配置信息：</p>
+	<pre><code class="language-ssh">Host vm.example.com
+    ProxyCommand bash -c '/usr/local/bin/cloudflared access ssh-gen --hostname %h; ssh -tt %<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="4133012227312831246c372c6f2439202c312d246f222e2c">[email&nbsp;protected]</a> &gt;&amp;2 &lt;&amp;1'
+    
+Host cfpipe-vm.example.com
+    HostName vm.example.com
+    ProxyCommand /usr/local/bin/cloudflared access ssh --hostname %h
+    IdentityFile ~/.cloudflared/vm.example.com-cf_key
+    CertificateFile ~/.cloudflared/vm.example.com-cf_key-cert.pup</code></pre>
+	<p>用户需要将输出附加到他们的SSH配置文件中。一旦保存，它们就可以通过SSH连接到受保护的资源。Access将提示他们使用浏览器中的SSO凭据进行身份验证，就像他们登录到其他任何基于浏览器的工具一样。如果他们已经使用其凭据进行了有效的浏览器会话，则只会看到成功页面。</p>
+	<p>在他们的终端中，cloudflared将建立会话并颁​​发与其身份相对应的客户端证书。</p>
+	<h2 id="--2">接下来呢？</h2>
+	<p>使用短期证书，Access可以成为您的团队和基础架构在任何环境中的单个SSO集成网关。用户可以直接通过SSH访问给定的机器，管理员可以完全替换其跳转主机，从而消除了这些开销。该功能从今天起对所有Access客户可用。您可以按照<a href="https://developers.cloudflare.com/access/ssh/short-live-cert-server/" target="_blank">此处</a>提供的文档开始使用。<a href="https://blog.cloudflare.com/tag/access/"></a><a href="https://blog.cloudflare.com/tag/product-news/"></a><a href="https://blog.cloudflare.com/tag/security/"></a><a href="https://blog.cloudflare.com/tag/jian-ti-zhong-wen/"></a><a href="https://blog.cloudflare.com/tag/simplified-chinese/">=</a></p>
+</div>

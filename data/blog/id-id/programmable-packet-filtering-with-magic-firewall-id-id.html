@@ -1,0 +1,96 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://lh5.googleusercontent.com/FgvF8-vX8HpqkNa8E4GPasHe8hB3KCwhHNINcnghfnvvPQtInchmOHQtRwpV-row5l5r6fDuFRn1l1DfyOXbLGH1Qu5RzZdaGEWvPyAQ44Gv4TGwFRs5NUxK26LXl_pwvnSq6ZLq" class="kg-image" alt="Programmable Packet Filtering with Magic Firewall"></figure>
+	<p>Cloudflare secara aktif melindungi layanan dari serangan canggih hari demi hari. Untuk pengguna Magic Transit, perlindungan DDoS mendeteksi dan menghentikan serangan, sementara <a href="https://www.cloudflare.com/magic-firewall/" target="_blank">Magic Firewall</a> mengizinkan aturan tingkat paket khusus, memungkinkan pelanggan untuk tidak menggunakan perangkat firewall perangkat keras dan memblokir traffic berbahaya di jaringan Cloudflare. Jenis serangan dan kecanggihan serangan terus berkembang, seperti yang ditunjukkan oleh DDoS dan <a href="https://blog.cloudflare.com/id-id/attacks-on-voip-providers-id-id/">serangan refleksi baru-baru ini</a> <a href="https://blog.cloudflare.com/update-on-voip-attacks/">terhadap</a> layanan VoIP yang menargetkan protokol seperti <a href="https://en.wikipedia.org/wiki/Session_Initiation_Protocol" target="_blank">Session Initiation Protocol</a> (SIP). Melawan serangan ini membutuhkan dorongan batas penyaringan paket di luar kemampuan firewall tradisional. Kami melakukan ini dengan mengambil teknologi kelas terbaik dan menggabungkannya dengan cara baru untuk mengubah Magic Firewall menjadi firewall yang sangat cepat dan dapat diprogram agar dapat bertahan bahkan dari serangan paling canggih sekalipun.</p>
+	<h3 id="magical-walls-of-fire"><strong>Magical Walls of Fire</strong></h3>
+	<p><a href="https://blog.cloudflare.com/introducing-magic-firewall/">Magic Firewall</a> adalah firewall paket stateless terdistribusi yang dibangun di atas nftables Linux. Ini berjalan pada setiap server, di setiap pusat data Cloudflare di seluruh dunia. Untuk memberikan isolasi dan fleksibilitas, aturan nftables setiap pelanggan dikonfigurasi dalam namespace jaringan Linux mereka sendiri.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image2-13.png" class="kg-image"></figure>
+	<p>Diagram ini menunjukkan aktivitas contoh paket saat menggunakan <a href="https://blog.cloudflare.com/magic-transit-network-functions/">Magic Transit</a>, yang memiliki Magic Firewall bawaan. Pertama, paket masuk ke server dan perlindungan DDoS diterapkan, yang menghentikan serangan sedini mungkin. Selanjutnya, paket dirutekan ke namespace jaringan khusus pelanggan, yang menerapkan aturan nftables ke paket. Setelah ini, paket dirutekan kembali ke asal melalui terowongan GRE. Pengguna Magic Firewall dapat membuat pernyataan firewall dari <a href="https://developers.cloudflare.com/magic-firewall" target="_blank">API tunggal</a>, menggunakan <a href="https://github.com/cloudflare/wirefilter" target="_blank">sintaks Wirefilter</a> yang fleksibel. Selain itu, aturan dapat dikonfigurasi melalui dasbor Cloudflare, menggunakan elemen seret dan lepas UI yang ramah.</p>
+	<p>Magic Firewall menyediakan sintaks yang sangat kuat untuk pencocokan pada berbagai parameter paket, tetapi juga terbatas pada kecocokan yang disediakan oleh nftables. Meskipun hal tersebut lebih dari cukup untuk berbagai kasus penggunaan, Magic Firewall tidak memberikan fleksibilitas yang cukup untuk menerapkan penguraian paket lanjutan dan pencocokan konten yang kami inginkan. Kami membutuhkan lebih banyak kekuatan.</p>
+	<h3 id="halo-ebpf-temui-nftables-"><strong>Halo eBPF, temui Nftables!</strong></h3>
+	<p>Saat ingin menambahkan lebih banyak kekuatan untuk kebutuhan jaringan Linux Anda, Extended Berkeley Packet Filter (<a href="https://ebpf.io/" target="_blank">eBPF</a>) adalah pilihan yang tepat. Dengan eBPF, Anda dapat menyisipkan program pemrosesan paket yang dijalankan <em>di kernel</em>, memberi Anda fleksibilitas paradigma pemrograman yang sudah dikenal dengan kecepatan eksekusi di dalam kernel. Cloudflare <a href="https://blog.cloudflare.com/tag/ebpf/">menyukai eBPF</a> dan teknologi ini telah mengubah banyak produk kami. Tentu saja, kami ingin menemukan cara untuk menggunakan eBPF guna memperluas penggunaan nftables di Magic Firewall. Ini berarti dapat mencocokkan dengan menggunakan program eBPF dalam tabel dan rantai sebagai aturan. Dengan melakukan ini, kita dapat memiliki kue dan memakannya juga, dengan menjaga infrastruktur dan kode yang ada, dan memperluasnya lebih jauh.</p>
+	<p>Jika nftables dapat memanfaatkan eBPF secara alami, cerita ini akan jauh lebih pendek; sayangnya, kami harus melanjutkan pencarian kami. Untuk memulai pencarian, kami tahu bahwa iptables terintegrasi dengan eBPF. Misalnya, seseorang dapat menggunakan iptables dan program eBPF yang disematkan untuk menjatuhkan paket dengan perintah berikut:</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>iptables -A INPUT -m bpf --object-pinned /sys/fs/bpf/match -j DROP
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Petunjuk ini membantu menempatkan kami di jalan yang benar. Iptables menggunakan ekstensi <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/net/netfilter/xt_bpf.c#n60" target="_blank">xt_bpf</a> untuk dicocokkan dengan program eBPF. Ekstensi ini menggunakan jenis program eBPF BPF_PROG_TYPE_SOCKET_FILTER, yang memungkinkan kita memuat informasi paket dari buffer soket dan mengembalikan nilai berdasarkan kode kami.</p>
+	<p>Karena kami tahu <em>iptables</em> dapat menggunakan eBPF, mengapa tidak menggunakannya saja? Magic Firewall saat ini memanfaatkan nftables, yang merupakan pilihan tepat untuk kasus penggunaan kami karena fleksibilitasnya dalam sintaks dan antarmuka yang dapat diprogram. Jadi, kita perlu menemukan cara untuk menggunakan ekstensi xt_bpf dengan nftables.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image2-13.png" class="kg-image"></figure>
+	<p>Diagram <a href="https://developers.redhat.com/blog/2020/08/18/iptables-the-two-variants-and-their-relationship-with-nftables#using_iptables_nft" target="_blank">ini</a> membantu menjelaskan hubungan antara iptables, nftables dan kernel. nftables API dapat digunakan oleh program iptables dan nft userspace, dan dapat mengonfigurasi kecocokan xtables (termasuk xt_bpf) dan kecocokan nftables normal.</p>
+	<p>Ini berarti bahwa dengan panggilan API yang tepat (pesan netlink/netfilter), kita dapat menyematkan kecocokan xt_bpf ke dalam aturan nftables. Untuk melakukan ini, kita perlu memahami pesan netfilter mana yang perlu kita kirim. Dengan menggunakan alat seperti strace, Wireshark, dan terutama menggunakan <a href="https://github.com/torvalds/linux/blob/master/net/netfilter/xt_bpf.c" target="_blank">sumber</a> di mana kita dapat membuat pesan yang dapat menambahkan aturan eBPF dengan tabel dan rantai.</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>NFTA_RULE_TABLE table
+NFTA_RULE_CHAIN chain
+NFTA_RULE_EXPRESSIONS | NFTA_MATCH_NAME
+	NFTA_LIST_ELEM | NLA_F_NESTED
+	NFTA_EXPR_NAME "match"
+		NLA_F_NESTED | NFTA_EXPR_DATA
+		NFTA_MATCH_NAME "bpf"
+		NFTA_MATCH_REV 1
+		NFTA_MATCH_INFO ebpf_bytes	
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Struktur pesan netlink/netfilter untuk menambahkan kecocokan eBPF akan terlihat seperti contoh di atas. Tentu saja, pesan ini perlu disematkan dengan benar dan menyertakan langkah bersyarat, seperti putusan, ketika ada kecocokan. Langkah selanjutnya adalah penguraian kode format <code>ebpf_bytes</code> seperti yang ditunjukkan pada contoh di bawah ini.</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code> struct xt_bpf_info_v1 {
+	__u16 mode;
+	__u16 bpf_program_num_elem;
+	__s32 fd;
+	union {
+		struct sock_filter bpf_program[XT_BPF_MAX_NUM_INSTR];
+		char path[XT_BPF_PATH_MAX];
+	};
+};
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Format byte dapat ditemukan dalam definisi header kernel dari <a href="https://git.netfilter.org/iptables/tree/include/linux/netfilter/xt_bpf.h#n27" target="_blank">struct xt_bpf_info_v1</a>. Contoh kode di atas menunjukkan bagian yang relevan dari struktur.</p>
+	<p>Modul xt_bpf mendukung bytecode mentah, serta jalur ke program ebpf yang disematkan. Modus selanjutnya adalah teknik yang kami gunakan untuk menggabungkan program ebpf dengan nftables.</p>
+	<p>Dengan informasi ini kami dapat menulis kode yang dapat membuat pesan netlink dan membuat serial dengan benar dari setiap bidang data yang relevan. Pendekatan ini hanyalah langkah pertama, kami juga sedang mempertimbangkan untuk memasukkan ini ke dalam alat yang tepat daripada mengirim pesan netfilter kustom.</p>
+	<h3 id="cukup-tambahkan-ebpf"><strong>Cukup tambahkan eBPF</strong></h3>
+	<p>Sekarang kami perlu membuat program eBPF dan memuatnya ke dalam tabel dan rantai nftables yang ada. Mulai menggunakan eBPF bisa menjadi sedikit menakutkan. Jenis program mana yang ingin kami gunakan? Bagaimana kami mengkompilasi dan memuat program eBPF kami? Kami memulai proses ini dengan melakukan beberapa eksplorasi dan penelitian.</p>
+	<p>Pertama kami membuat program contoh untuk mencobanya.</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>SEC("socket")
+int filter(struct __sk_buff *skb) {
+  /* get header */
+  struct iphdr iph;
+  if (bpf_skb_load_bytes(skb, 0, &amp;iph, sizeof(iph))) {
+    return BPF_DROP;
+  }
+
+  /* read last 5 bytes in payload of udp */
+  __u16 pkt_len = bswap_16(iph.tot_len);
+  char data[5];
+  if (bpf_skb_load_bytes(skb, pkt_len - sizeof(data), &amp;data, sizeof(data))) {
+    return BPF_DROP;
+  }
+
+  /* only packets with the magic word at the end of the payload are allowed */
+  const char SECRET_TOKEN[5] = "xyzzy";
+  for (int i = 0; i &lt; sizeof(SECRET_TOKEN); i++) {
+    if (SECRET_TOKEN[i] != data[i]) {
+      return BPF_DROP;
+    }
+  }
+
+  return BPF_OK;
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Potongan skrip di atas adalah contoh program eBPF yang hanya menerima paket yang memiliki rangkaian ajaib di akhir payload. Ini memerlukan pemeriksaan total panjang paket untuk menemukan di mana memulai pencarian. Untuk kejelasan, contoh ini menghilangkan pemeriksaan kesalahan dan header.</p>
+	<p>Setelah kami memiliki program, langkah selanjutnya adalah mengintegrasikannya ke dalam alat kami. Kami mencoba beberapa teknologi untuk memuat program, seperti BCC, libbpf, dan kami bahkan membuat pemuat khusus. Pada akhirnya, kami menggunakan <a href="https://github.com/cilium/ebpf/" target="_blank">pustaka ebpf cilium</a>, karena kami menggunakan Golang untuk program bidang kontrol dan pustaka memudahkan untuk menghasilkan, menyematkan, dan memuat program eBPF.</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code># nft list ruleset
+table ip mfw {
+	chain input {
+		#match bpf pinned /sys/fs/bpf/mfw/match drop
+	}
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Setelah program dikompilasi dan disematkan, kami dapat menambahkan kecocokan ke dalam nftables menggunakan perintah netlink. Daftar aturan menunjukkan bahwa terdapat kecocokan. Ini luar biasa! Kami sekarang dapat memberlakukan program C khusus untuk menyediakan pencocokan tingkat lanjut di dalam kumpulan aturan Magic Firewall!</p>
+	<h3 id="lebih-banyak-keajaiban"><strong>Lebih Banyak Keajaiban</strong></h3>
+	<p>Dengan tambahan eBPF ke toolkit kami, Magic Firewall adalah cara yang lebih fleksibel dan kuat untuk melindungi jaringan Anda dari aktor jahat. Kami sekarang dapat melihat lebih dalam ke dalam paket dan menerapkan logika pencocokan yang lebih kompleks daripada yang dapat disediakan oleh nftables saja. Karena firewall kami berjalan sebagai perangkat lunak di semua server Cloudflare, kami dapat dengan cepat mengulangi dan memperbarui fitur.</p>
+	<p>Salah satu hasil dari proyek ini adalah perlindungan SIP, yang saat ini dalam versi beta. Itu hanya permulaan. Kami sedang menjajaki penggunaan eBPF untuk validasi protokol, pencocokan bidang lanjutan, melihat payload, dan mendukung kumpulan daftar IP yang lebih besar.</p>
+	<p>Kami juga menyambut bantuan Anda di sini! Jika Anda memiliki kasus penggunaan dan ide lain, harap diskusikan dengan tim akun Anda. Jika menurut Anda teknologi ini menarik, bergabunglah <a href="https://www.cloudflare.com/careers/" target="_blank">dengan tim kami</a>!<br></p>
+</div>

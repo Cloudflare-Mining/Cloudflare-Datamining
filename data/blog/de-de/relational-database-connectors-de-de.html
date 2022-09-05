@@ -1,0 +1,56 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image1-14-2.png" class="kg-image" alt="Wir präsentieren: Konnektoren für relationale Datenbanken"></figure>
+	<p>Bei Cloudflare entwickeln wir die beste Computing-Plattform der Welt. Wir möchten, dass die Erstellung von Anwendungen mit Cloudflare mühe- und reibungslos funktioniert. Es reicht jedoch nicht aus, einfach nur die beste Computing-Plattform zu entwickeln; das Herzstück Ihrer Anwendungen sind die Daten, mit denen sie interagieren.</p>
+	<p>Cloudflare bietet aktuell mehrere Datenspeicherlösungen an: <a href="https://blog.cloudflare.com/introducing-workers-kv/">Workers KV</a>, <a href="https://blog.cloudflare.com/introducing-r2-object-storage/">R2</a> und <a href="https://blog.cloudflare.com/de-de/introducing-workers-durable-objects-de-de">Durable Objects</a>. Alle drei folgen den Designzielen von Cloudflare für Workers: standardmäßig global, unbeschränkt skalierbar und für Entwickler angenehm zu nutzen. Wir haben uns mit Drittanbietern von Speicherlösungen wie Fauna, MongoDB und Prisma zusammengetan, deren Datenplattformen hervorragend zu unseren Designzielen passen und die Tutorials für Datenbanken verfasst haben, von denen HTTP-Verbindungen bereits unterstützt werden.</p>
+	<p>Ein Bereich wurde bisher jedoch schmerzlich vermisst: relationale Datenbanken. Cloudflare selbst läuft auf relationalen Datenbanken, und wir sind damit nicht allein. Im April haben wir gefragt, <a href="https://workers.cloudflare.com/node" target="_blank">welche Node-Librarys</a> wir unterstützen sollten, und <strong>vier der fünf häufigsten Wünsche</strong> bezogen sich auf Datenbanken. Anlässlich unserer Full Stack Week haben wir uns die Frage gestellt: Wie können wir relationale Datenbanken auf eine Weise unterstützen, die mit unseren Designzielen übereinstimmt?</p>
+	<p>Heute gehen wir dabei einen ersten Schritt, indem wir die Unterstützung für relationale Datenbanken – einschließlich Postgres und MySQL von Workers – bekannt geben.</p>
+	<p>Die Verbindung zu einer Datenbank ist keine einfache Aufgabe – wenn es so einfach wäre wie die Übergabe einer Verbindungszeichenfolge an einen Datenbanktreiber, hätten wir es schon längst getan. Wir mussten mehrere Hürden überwinden, um an diesen Punkt zu gelangen, und haben noch einige Herausforderungen zu meistern.<br><br>Unser Ziel mit dieser Ankündigung ist es, mit Ihnen, unseren Entwicklern, zusammenzuarbeiten, um die einzigartigen Probleme zu lösen, die beim Zugriff auf Datenbanken in Workers auftreten. Wenn Sie daran Interesse haben, füllen Sie bitte <a href="https://www.cloudflare.com/database-connectors-early-access" target="_blank">dieses Formular</a> aus oder nehmen Sie <a href="https://discord.gg/rH4SsffFcc" target="_blank">auf Discord</a> Kontakt mit uns auf – dies ist erst der Anfang. Wenn Sie einfach nur den Code ausprobieren möchten, verwenden Sie dieses <a href="https://developers.cloudflare.com/workers/tutorials/query-postgres-from-workers-using-database-connectors" target="_blank">Beispiel</a>, um eine Verbindung zu Ihrer eigenen Datenbank herzustellen, oder sehen Sie sich unsere Demo an.</p>
+	<h3 id="warum-sind-datenbank-konnektoren-so-schwer-zu-entwickeln">Warum sind Datenbank-Konnektoren so schwer zu entwickeln?</h3>
+	<p>Es ist aus mehreren Gründen schwierig, serverlose Datenbankverbindungen zu unterstützen.</p>
+	<p>Datenbanken sind anspruchsvoll – sie benötigen oft TCP-Verbindungen, da sie langlebige Verbindungen zwischen einem Anwendungsserver und der Datenbank voraussetzen. Die Workers-Laufzeitumgebung unterstützt derzeit keine TCP-Verbindungen, sodass wir bisher nur HTTP-basierte Datenbanken oder Proxys unterstützen konnten.</p>
+	<p>Wie bei einer Beziehung reicht es nicht aus, eine Verbindung herzustellen. Entwickler verwenden Client-Bibliotheken für Datenbanken, um die Übermittlung von Abfragen und die Verwaltung der Antworten zu erleichtern. Da die Workers-Laufzeitumgebung nicht vollständig mit Node.js kompatibel ist, müssen wir entweder unsere eigene Datenbankbibliothek anlegen oder eine finden, die keine nicht unterstützten integrierten Bibliotheken verwendet.<br><br>Last but not least sind Datenbanken heikel. Für die Verwaltung gemeinsamer Verbindungen zwischen einem Anwendungsserver und einer Datenbank sind häufig externe Bibliotheken erforderlich, da der Aufbau dieser Verbindungen in der Regel teuer ist.</p>
+	<h3 id="so-berwinden-wir-diese-herausforderungen">So überwinden wir diese Herausforderungen</h3>
+	<p>Unser heutiger Ansatz bietet uns die Grundlage, um jede dieser Herausforderungen in Zukunft auf kreative Weise anzugehen.<br><br>Zunächst nutzen wir <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup" target="_blank">cloudflared</a>, um einen sicheren Tunnel zwischen Cloudflare und einem privaten Netzwerk innerhalb Ihrer bestehenden Infrastruktur zu schaffen. Cloudflared unterstützt bereits das Proxying von HTTP zu TCP über WebSockets. Für uns besteht die Herausforderung darin, Schnittstellen bereitzustellen, die wie die Socket-Schnittstellen aussehen, die von bestehenden Bibliotheken erwartet werden, während wir die Implementierungen so umgestalten, dass Lese- und Schreibvorgänge auf unseren Websocket umgeleitet werden. Diese Methode ist schnell und sicher, hat aber den Nachteil, dass wir nicht kontrollieren können, wohin die endgültigen Verbindungen geleitet werden. Dieses Problem werden wir bald lösen. Bis dahin ist unser Ansatz aber unerlässlich, um Latenz- und Performancedaten zu sammeln, anhand derer wir sehen können, wo wir uns noch verbessern müssen.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/unnamed-10-1.png" class="kg-image"></figure>
+	<p>Als Nächstes haben wir eine Shim-Schicht erstellt, die die Socket-API einer beliebten Laufzeitumgebung anpasst, um eine direkte Verbindung zu Datenbanken über einen WebSocket herzustellen. Auf diese Weise können wir den Code im Ist-Zustand bündeln, ohne ihn abzuspalten oder anderweitig signifikante Änderungen an der Datenbankbibliothek vorzunehmen. Als Teil dieser Ankündigung haben wir ein <a href="https://developers.cloudflare.com/workers/tutorials/query-postgres-from-workers-using-database-connectors" target="_blank">Tutorial</a> veröffentlicht, das zeigt, wie man eine Verbindung zu einer Postgres-Datenbank von seinen Workers aus herstellt und Abfragen durchführt, indem man die bestehende Cloudflare-Technologie und einen Treiber aus der wachsenden Deno-Community verwendet. Wir freuen uns auf die Zusammenarbeit mit den vorgelagerten Wartungsanbietern zum Ausbau des Supports.</p>
+	<p>Am meisten freut uns jedoch, dass wir mit diesem Ansatz das Verbindungspooling und den Overhead beim Verbindungsaufbau allmählich in den Griff bekommen werden. Während unsere aktuelle Tech-Demo die Einrichtung des Cloudflare-Tunnels auf Ihrer eigenen Infrastruktur erfordert, suchen wir nach Kunden, die ein Modell testen möchten, bei dem Cloudflare den Tunnel für Sie hostet.</p>
+	<h3 id="das-steht-als-n-chstes-auf-dem-programm">Das steht als Nächstes auf dem Programm</h3>
+	<p>Wir fangen gerade erst an. Unser Ziel mit der heutigen Ankündigung ist es, Kunden zu finden, die neue Anwendungen entwickeln oder bestehende Anwendungen auf Workers migrieren wollen und dabei mit Daten arbeiten, die in einer relationalen Datenbank gespeichert sind.</p>
+	<p>So wie Cloudflare mit der Bereitstellung von Sicherheit, Performance und Zuverlässigkeit für Kunden-Websites begonnen hat, freuen wir uns auf eine Zukunft, in der Cloudflare Datenbankverbindungen verwaltet, die Replikation von Daten über Cloud-Anbieter hinweg handhabt und einen globalen Datenzugriff mit niedriger Latenz bietet.</p>
+	<p>Zunächst wollen wir <a href="https://blog.cloudflare.com/introducing-socket-workers/">native TCP-Unterstützung in die Laufzeitumgebung integrieren</a>. Mit der nativen Unterstützung für TCP werden wir nicht nur eine bessere Unterstützung für Datenbanken bieten können, sondern außerdem die Workers-Laufzeitumgebung so erweitern, dass sie in breiterem Umfang mit Dateninfrastrukturen arbeiten kann.</p>
+	<p>Unsere Position in der Netzwerkschicht des Stacks macht die Bereitstellung von Performance, Sicherheitsvorteilen und extrem reduzierten Egress-Gebühren für globale Datenbanken zu einer möglichen Realität. Zu diesem Zweck werden wir den HTTP-zu-TCP-Proxy-Dienst, den wir gerade entwickelt haben, umfunktionieren und ihn für Entwickler als Verbindungspooling-Dienst betreiben, der in ihrem Namen Verbindungen zu ihren Datenbanken verwaltet.<br><br>Zu guter Letzt ermöglicht unser Netzwerk die Zwischenspeicherung von Daten und weltweiten Zugriff auf diese mit geringer Latenz. Sobald wir Verbindungen zu Ihren Daten haben, können wir sie im Cloudflare-Netzwerk global zugänglich machen und so grundlegend neue Architekturen für verteilte Daten schaffen.</p>
+	<h3 id="testen-sie-unsere-konnektoren">Testen Sie unsere Konnektoren</h3>
+	<p>Sie möchten sich selbst ein Bild machen? Kein Problem, im Wesentlichen sind Sie nach drei Schritten startklar:</p>
+	<ol>
+		<li>Implementieren Sie cloudflared in Ihrer Infrastruktur.</li>
+		<li>Stellen Sie eine Datenbank bereit, die eine Verbindung zu cloudflared herstellt.</li>
+		<li>Stellen Sie einen Worker mit dem Datenbanktreiber bereit, der Abfragen stellt.</li>
+	</ol>
+	<p>Das Postgres-Tutorial ist <a href="https://developers.cloudflare.com/workers/tutorials/query-postgres-from-workers-using-database-connectors" target="_blank">hier</a> verfügbar.</p>
+	<p>Wenn Sie fertig sind, wird das Ganze in etwa so aussehen:</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">import { Client } from './driver/postgres/postgres'
+
+export default {
+  async fetch(request: Request, env, ctx: ExecutionContext) {
+    try {
+      const client = new Client({
+        user: 'postgres',
+        database: 'postgres',
+        hostname: 'https://db.example.com',
+        password: '',
+        port: 5432,
+      })
+      await client.connect()
+      const result = await client.queryArray('SELECT * FROM users WHERE uuid=1;')
+      ctx.waitUntil(client.end())
+      return new Response(JSON.stringify(result.rows[0]))
+    } catch (e) {
+      return new Response((e as Error).message)
+    }
+  },
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Sind Sie auf ein Problem gestoßen? Füllen Sie<a href="https://www.cloudflare.com/database-connectors-early-access" target="_blank"> dieses Formular</a> aus, kontaktieren Sie uns über<a href="https://discord.gg/rH4SsffFcc" target="_blank"> Discord</a> oder schreiben Sie uns eine E-Mail, damit wir uns austauschen können!</p>
+</div>

@@ -1,0 +1,34 @@
+<div class="post-content lh-copy gray1">
+	<p>每一个连入互联网的组织都依靠 Web 浏览器来经营业务：接受交易、与客户互动，或处理敏感数据。点击链接这样的操作会触发 Web 浏览器在本地设备上下载并执行一大堆未知代码。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/Browser-Isolation-OG-body-7.png" class="kg-image"></figure>
+	<p>在防御安全威胁时，IT 组织总是处于不利境地。问题不是“会不会”有下一个零日漏洞来破坏 Web 浏览器，而是这将在“何时”发生。IT 组织怎样才能既防止其用户和数据遭受未知威胁，又不会过度阻止所有潜在风险？解决方案是将执行不可信代码的负担从用户设备转移到远程隔离浏览器。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image4-43.png" class="kg-image"></figure>
+	<h3 id="-">为所有规模的团队提供远程浏览器隔离</h3>
+	<p>今天，我们很高兴地宣布 Cloudflare 浏览器隔离正式推出，作为 Cloudflare for Teams 零信任安全性和安全 Web 浏览服务套件的一项附加服务。不论初创公司还是大型企业，任何规模的团队都能从可靠、安全的浏览中受益，不必更改其首选的 Web 浏览器，也不用设置复杂的网络拓扑。</p>
+	<h3 id="--1">远程浏览器必须可靠</h3>
+	<p>在安全环境中运行敏感工作负载并非新鲜事物，远程浏览器隔离（RBI）技术也有多年历史。这引出了一个问题，为什么远程浏览器不是人人都在使用的常用技术？</p>
+	<p>原因是部署这个产品在过去存有瑕疵。大家都依赖 Web 浏览器完成大部分工作，任何对用户体验或性能的影响，最乐观的结果是生产力下降，而最糟糕的则是解决方案完全遭拒。</p>
+	<p>传统浏览器隔离解决方案中渲染不可靠且性能不理想，已经导致 IT 组织只能将增强的安全态势保留给针对性强的用户或活动。如同通过城堡加护城河模式信任网络，假定某些用户或网站不是网络钓鱼或恶意软件的媒介，将为攻击敞开大门。</p>
+	<p>Cloudflare 浏览器隔离建立在 Chromium 的基础上，后者是驱动 Google Chrome、Microsoft Edge 和 Brave Browser 等流行 Web 浏览器的相同引擎。这与我们新颖的<a href="https://blog.cloudflare.com/zh-cn/cloudflare-and-remote-browser-isolation-zh-cn/">网络矢的量渲染</a>（Network Vector Rendering）技术相结合，即使网络技术不断发展并变得更加复杂，也可确保安全、一致地呈现网页。</p>
+	<h3 id="--2">远程浏览器必须快速</h3>
+	<p>传统浏览器隔离解决方案受到其基础技术或所运行网络的桎梏。这些陈旧解决方案依赖于延迟高并占用大量带宽的像素推送，或者脆弱的内容撤防和重建技术，这些技术会降低性能、破坏网站，并可能遗漏过程中的恶意负载。</p>
+	<p>网络矢量渲染使我们能够提供远程网页的安全视图，而不会占用大量带宽或降低图像质量，但这只是解决方案的一部分。通过利用我们的全球网络，我们可以将远程浏览器布置到连入互联网的每一个人的附近。这样一来，无论您身在何处，我们都可以为您交付响应快、延迟低的网页流。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image1-51.png" class="kg-image"></figure>
+	<p>在连入互联网主干并且功能强大的服务器上运行 Web 浏览器，这会带来巨大的性能优势。将最少的绘制命令发送给最后一英里联网用户，即便是低带宽互联网连接，也能带来更加畅快淋漓的互联网体验。</p>
+	<p>将庞大、智能的分布式网络与我们享有专利的超快速轻量型网络矢量渲染技术相结合，带来的结果是摆脱了传统桎梏的远程浏览技术，为从世界上任何位置使用任何设备的任何用户提供清晰的隔离页面。</p>
+	<p>使用浏览器隔离的优点之一是它可以减轻本地 Web 浏览器下载现代网页的负担。根据 FCC 的数据，有近 3000 万美国人未接入宽带互联网（<a href="https://www.fcc.gov/about-fcc/fcc-initiatives/bridging-digital-divide-all-americans" target="_blank">来源</a>）。现代网站并未针对通常需要下载数百个对象的低带宽连接进行优化。Cloudflare 的远程浏览器连接互联网主干，能够以宽带速度持续下载网站，为使用低带宽互联网连接的用户提供了公平的平台。</p>
+	<p>下面的示例展示了在使用和不使用浏览器隔离的情况下，以低速互联网连接加载网页的对比数据。我们很高兴看到浏览器隔离弥合了数字鸿沟，为低速互联网用户提供更快速的互联网连接。</p>
+	<!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 66.66666666666666%;"><iframe src="https://iframe.videodelivery.net/f3b7ffbe1eba370b4ee28d509fef918a?preload=true" style="border: none; position: absolute; top: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
+	<p>注意：时间为从网页开始下载到网页触发其加载完成信号的时间。</p>
+	<!--kg-card-end: html-->
+	<h3 id="--3">远程浏览器必须易用</h3>
+	<p>浏览器隔离产品通常实施为附加网络设备（例如虚拟机或防火墙盒子），或者通过更改用户的首选浏览器来实现。作为附加网络设备，IT 团队需要将多个不同的解决方案组合在一起（即使它们由同一供应商提供）。这会在网络内造成不必要的复杂性，还必须使用不同的界面来控制策略配置和监控威胁。</p>
+	<p>Cloudflare 浏览器隔离原生集成到 Cloudflare for Teams 中，为所有网络和隔离流量提供一个整合的视图。就像使用 Gateway 根据内容类别或安全威胁来允许/阻止流量一样，您也可以定义隔离策略，以根据身份、安全威胁或内容来动态隔离网站。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image2-44.png" class="kg-image"></figure>
+	<h3 id="--4">互联网浏览的未来是远程浏览</h3>
+	<p>本地网页执行对全球的企业和组织构成了巨大威胁。解决方案很简单：将执行不可信代码的负担从用户设备转移到远程隔离浏览器。</p>
+	<p>安全、快速又简单的远程浏览器隔离现已实现。今天，我们很高兴地宣布 Cloudflare 浏览器隔离正式推出，作为 Cloudflare for Teams 的一项附加服务。现在，您无需更改 Web 浏览器或网络，就能保护您的企业免受基于浏览器的安全威胁。若要开始使用，请<a href="https://www.cloudflare.com/zh-cn/teams/browser-isolation/" target="_blank">注册 Cloudflare for Teams 帐户</a>，再将浏览器隔离添加至 Teams Gateway 或 Teams Standard 计划中。签约客户若要将浏览器隔离添加至 Cloudflare for Teams 计划，可以<a href="https://cloudflare.com/zh-cn/teams/plans/enterprise" target="_blank">填写此表来申请访问</a>。</p>
+	<p>自 Cloudflare 成立之日起，我们的使命便是帮助建设更美好的互联网，并使以前仅面向具备复杂网络、专职 IT 团队和支持预算的大公司的技术实现大众化。</p>
+	<p>就像不久之前 HTTPS 加密仅用于“敏感的”登录页面和电子商务结帐一样，我们认为信任任意网站代码就像过去创建新的零信任 Web 浏览范例一样。可靠和快速的远程浏览器隔离技术的兴起就在当下。</p>
+</div>

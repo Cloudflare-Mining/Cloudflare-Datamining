@@ -1,0 +1,31 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/12/image.png" class="kg-image"></figure>
+	<p>6月21日，Cloudflare自动缓解了一次每秒7.54亿封包的高容量DDoS攻击。此次攻击属于6月18日开始到6月21日结束的为期四天的有组织攻击活动的一部分：攻击流量来自于超过316000个IP地址，并发送到了单个Cloudflare IP，被攻击IP主要用于我们的免费计划网站。攻击期间并未报告停机或服务降级，并且由于我们的<a href="https://blog.cloudflare.com/unmetered-mitigation/">不设上限缓解DDoS的保证</a>，客户无需付出任何费用。</p>
+	<p>该攻击是由<a href="https://blog.cloudflare.com/meet-gatebot-a-bot-that-allows-us-to-sleep/">Gatebot</a>（我们的全球DDoS检测和缓解系统）自动检测和处理的，而无需我们的团队进行任何手动干预。值得注意的是，由于我们的自动化系统能够轻松缓解攻击，因此我们的待命团队没有收到警报或提示页面，也没有人员参与其中。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/12/image-1.png" class="kg-image">
+		<figcaption>攻击快照——峰值为754 Mpps。图中两种不同颜色的曲线表示两个独立系统丢弃的数据包。</figcaption>
+	</figure>
+	<p>在这四天中，攻击利用了<a href="https://www.cloudflare.com/learning/ddos/glossary/tcp-ip/" target="_blank">TCP</a>协议上三个攻击向量的组合：<a href="https://www.cloudflare.com/learning/ddos/syn-flood-ddos-attack/" target="_blank">SYN泛洪</a>，<a href="https://www.cloudflare.com/learning/ddos/what-is-an-ack-flood/" target="_blank">ACK泛洪</a>和SYN-ACK泛洪。攻击活动以每秒4亿到6亿封包的速率持续了数个小时，并多次达到700Mpps的高峰，最高峰值为754Mpps。面对持续的高封包速率攻击，我们的边缘仍能在攻击期间持续为客户提供服务，性能完全不受影响。</p>
+	<h3 id="ddos-">DDoS攻击的三种类型：比特，数据包和请求</h3>
+	<p>高比特率的攻击旨在通过每秒发送超过链路处理能力的带宽，使互联网链路饱和。缓解比特密集型洪水就像在容量有限的运河中，用大坝堵住喷涌而出的流水，只允许其中的一部分通过。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/12/image-2.png" class="kg-image">
+		<figcaption>Gatebot阻止如同奔涌河流的比特密集型攻击</figcaption>
+	</figure>
+	<p>在这种情况下，互联网服务提供商可能会阻止或限制超出限额的流量，从而导致试图连接到网站的合法用户被拒绝服务。在其他情况下，链接只是饱和，而该连接后面的所有内容都处于脱机状态。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/12/image-3.png" class="kg-image">
+		<figcaption>数据包密集型DDoS攻击如同成群的蚊子</figcaption>
+	</figure>
+	<p>然而，在此次DDoS攻击活动中，攻击的峰值仅达到250 Gbps（但若没有某些DDoS缓解服务的支持，250Gbps的攻击也足以使许多内容离线），因此攻击者并非旨在饱和我们的互联网链接，也许是因为他们知道我们的全球容量超过了37 Tbps。取而代之的是，攻击者似乎试图（但没能成功）以每秒高达7.54亿个数据包的高数据包速率淹没我们的路由器和数据中心设备。与涌向大坝的洪水不同，大量的数据包可以看作成千上万的蚊子，您需要逐一消灭它们。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/12/image-4.png" class="kg-image">
+		<figcaption>使用Gatebot来“驱蚊”</figcaption>
+	</figure>
+	<p>根据数据中心的“最薄弱环节”，数据包密集型的DDoS攻击可能会影响路由器、交换机、web服务器、防火墙、DDoS缓解设备或联机的任何其他设备。通常，高数据包速率可能会导致内存缓冲区溢出，从而使路由器处理其他数据包的能力失效。这是因为处理每个数据包的固定CPU成本很小，因此，如果您可以发送大量小数据包，无需饱和互联网链路，只需填满处理连接的硬件就可以阻止互联网连接。</p>
+	<p>DDoS攻击的另一种形式是高HTTP请求速率。HTTP请求密集型DDoS攻击旨在以每秒超出服务器处理能力的HTTP请求数量来耗尽Web服务器的资源。每秒请求数很高的DDoS攻击的目标是最大化服务器的CPU和内存使用率，从而使其崩溃或阻止其响应合法请求。相比于带宽密集型DDoS攻击，请求密集DDoS让攻击者能够以较小的带宽来造成拒绝服务事件。</p>
+	<h3 id="-ddos-">自动DDoS检测和缓解</h3>
+	<p>那么，我们是如何处理每秒7.54亿个数据包的呢？首先，Cloudflare的网络利用BGP Anycast将攻击流量分布到了我们全球范围内的数据中心群中。其次，我们建立了自己的DDoS保护系统Gatebot和dosd，它们可以<a href="https://blog.cloudflare.com/l4drop-xdp-ebpf-based-ddos-mitigations/">将数据包丢到Linux内核中</a>，从而以最大效率处理这些数据包。第三，我们构建了自己的L4负载均衡器Unimog，它可以使用设备的运行状况和其他各种指标来智能地平衡数据中心内的流量。</p>
+	<p>2017年，我们发布了一篇博客来介绍Gatebot——我们的两种DDoS防护系统之一。博客的标题为“<a href="https://blog.cloudflare.com/meet-gatebot-a-bot-that-allows-us-to-sleep/">遇见Gatebot——一个能让我们安然入睡的机器人</a>”，在这次攻击中Gatebot确实也做到了这一点。我们通过Anycast网络将攻击面扩散到了全球，然后Gatebot自动检测并缓解了攻击，无需人工干预。每个数据中心内的流量都进行了智能负载均衡，以免压倒任何一台计算机。就像博客标题中所承诺的那样，攻击的高峰确实发生在我们的伦敦安全团队睡着的时候。</p>
+	<p>那么，Gatebot是如何工作的呢？Gatebot从我们全球200多个地方的每个数据中心异步采样流量。它还监控着我们<a href="https://blog.cloudflare.com/rolling-with-the-punches-shifting-attack-tactics-dropping-packets-faster-cheaper-at-the-edge/">客户的原始服务器运行状况</a>。然后，Gatebot可以分析样本以识别出代表着攻击的模式和流量异常。一旦检测到攻击，Gatebot会将缓解指令推送到边缘数据中心。</p>
+	<p>为了补充Gatebot的功能，去年我们发布了一个名为dosd（拒绝服务守护进程）的新系统，它在全球200多个城市的每个数据中心运行。与Gatebot类似，dosd可以自主地检测和缓解攻击，但仅限于单个服务器或数据中心。您可以在我们<a href="https://blog.cloudflare.com/rolling-with-the-punches-shifting-attack-tactics-dropping-packets-faster-cheaper-at-the-edge/">最近的博客</a>中了解更多关于dosd的信息。</p>
+	<h3 id="ddos--1">DDoS的图景</h3>
+	<p>虽然最近几个月我们观察到DDoS攻击的规模和持续时间有所减少，但像这样的高容量和全球分布的DDoS攻击仍然存在。无论攻击的规模、类型或复杂程度如何，Cloudflare都始终如一地向所有客户和计划级别（包括免费计划）提供不设上限的DDoS防护。</p>
+</div>

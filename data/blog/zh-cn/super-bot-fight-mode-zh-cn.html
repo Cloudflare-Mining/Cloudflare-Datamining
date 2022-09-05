@@ -1,0 +1,49 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/Super-Bot-Fight-mode-4.png" class="kg-image"></figure>
+	<p>互联网流量中几乎有一半是机器人驱动的。机器人肆虐网络已有数年，它们无休止地入侵银行帐户，抢购 Bruno Mars 演唱会门票，抓取网站数据。由于机器人泛滥成灾，我们在 2019 年推出了<a href="https://blog.cloudflare.com/zh-cn/cleaning-up-bad-bots-zh-cn/">机器人抵御模式</a>。自那时以来，超过 15 万个人和小型企业使用了此产品，我们也收到无数请求，希望我们增加功能，提供更多分析、更多检测和更多控制。</p>
+	<p>隆重推出超级机器人抵御模式。</p>
+	<p>从即刻起，任何拥有 Pro 或 Business 计划网站的 Cloudflare 用户都可以对机器人采取新的措施。我们在仪表板中新增了高级功能，并对分析功能进行了一些令人兴奋的更新。Free 计划客户将保留“机器人抵御模式”赋予他们的所有权益，我们的“企业级机器人管理”产品也将继续推动创新。</p>
+	<h2 id="-">仪表板内</h2>
+	<p>我们的机器人解决方案有了新家。本文讨论的功能并非一个开关这般简单，所以我们专门为机器人保护创建了一个中心。前往“防火墙”应用并选择“机器人”子选项卡，即可开始使用。</p>
+	<p>新中心已向所有用户启用，包括使用企业级机器人管理的用户。</p>
+	<h2 id="pro-">Pro 计划功能</h2>
+	<p>首先：我们将深受欢迎的“机器人报告”纳入 Pro 计划。在这里，您可以查看机器人流量的细分情况，这些信息会实时更新以帮助您发现攻击。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image3-42.png" class="kg-image"></figure>
+	<p>机器人报告包括三种流量类型：</p>
+	<ol>
+		<li>疑似自动化流量，可能源自恶意机器人。我们使用<a href="https://developers.cloudflare.com/bots/about/plans/biz-and-ent#bot-detection-engines" target="_blank">启发式和机器学习等技术</a>来识别这些请求。在大多数情形中，这种流量会损害您的网站，并不会产生任何有用的回报。</li>
+		<li>疑似人类流量是合法和重要的。理想情况下，您的绝大部分流量属于这个类型。</li>
+		<li>已验证的机器人流量来自互联网上的良性机器人。我们已经验证了谷歌等爬虫和贝宝等支付通知服务。大多用户选择允许这些流量。</li>
+	</ol>
+	<p>所有这些数据也通过 <a href="https://developers.cloudflare.com/analytics/graphql-api" target="_blank">GraphQL</a> 提供。因此，如果您希望定期监控机器人流量，API 可帮您做到。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/Bot-Monitoring-2.png" class="kg-image"></figure>
+	<p>Pro 计划用户还可以采取更多措施来阻止机器人——选择“配置超级机器人抵御模式”来添加保护。要点包括：</p>
+	<ul>
+		<li>可选择质询或阻止来自“绝对自动化”来源的流量。请注意，这只会影响我们最有信心认为是来自机器人的流量。</li>
+		<li>可选择启用 JavaScript 检测，以识别互联网上的无头浏览器和其他行为者。</li>
+		<li>可选择在保护范围中包含或排除经过验证的机器人。</li>
+	</ul>
+	<p>例如，如果您的网站与 Slack 交互，则可以排除经过验证的机器人以帮助 Slackbot 完成其工作。或者，如果您发现广告欺诈有所抬头，可尝试质询自动流量并观察结果。</p>
+	<h2 id="business-">Business 计划功能</h2>
+	<p>Business 计划现在也包含“机器人分析”。</p>
+	<p>我们最初<a href="https://blog.cloudflare.com/introducing-bot-analytics/">推出“机器人分析”</a>是为了赋予我们 Enterprise 计划用户更多可见性。但自发布以来，Business 计划用户已要求我们提供许多相同的洞察。而且，Cloudflare 一直在努力实现技术大众化（就像我们对<a href="https://blog.cloudflare.com/zh-cn/supercharging-firewall-events-for-self-serve-zh-cn/">防火墙事件</a>和其他产品所做的那样），因此这也是势在必行的事情。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image2-42.png" class="kg-image"></figure>
+	<p>Business 计划用户可以访问新版本的“机器人分析”；新版本设计为可与下述缓解工具搭配使用。用户可以按类型查看流量，调整时间范围，并按不同的属性（例如 IP 地址或用户代理）来进行过滤。</p>
+	<p>另一好处：“机器人分析”可显示我们对流量的分类<em>情况</em>。滚动到“不同检测来源的请求”，即可了解哪个引擎标记了特定的请求。如果您想进一步了解我们的检测引擎，请阅读有关此主题的<a href="https://blog.cloudflare.com/cloudflare-bot-management-machine-learning-and-more/">博客文章</a>。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image1-49.png" class="kg-image"></figure>
+	<p>当然，我们也添加了新的缓解功能。Pro 用户可以抵御“绝对自动化”流量，Business 用户也可抵御“疑似自动化”流量。两者有何不同？后者包括由我们的<a href="https://developers.cloudflare.com/bots/about/plans/biz-and-ent#machine-learning" target="_blank">机器学习引擎</a>评分的请求。这些请求通常来自复杂的机器人，此类机器人通过轮换 IP 或令人信服地模拟人类来规避简单的安全工具。</p>
+	<p>您的网站可能会遭受库存囤积攻击。您列出了待售货品，但几乎在瞬间就被机器人抢走。可以理解，您的客户会很沮丧（您也一样！）。马上启用“机器人分析”来甄别攻击者，如果攻击属于“疑似自动化”类别，您可考虑阻止此流量。</p>
+	<p>我们还意识到，不同网站对机器人流量的敏感度可能不同。用户可适当地做出响应，包括发出质询、完全阻止，或什么也不做。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image4-41.png" class="kg-image"></figure>
+	<p>这些功能全部包含在 Cloudflare Pro 计划中。启用缓解之后，您可检查“防火墙事件”选项卡来查看流量遭到了阻止还是质询。</p>
+	<h2 id="--1">企业级机器人管理</h2>
+	<p>对于具有更高级安全需求的用户来说，<a href="https://www.cloudflare.com/zh-cn/products/bot-management" target="_blank">机器人管理</a>依然是首选，而且这个功能将不断升级。</p>
+	<p>与机器人抵御模式不同，“机器人管理”直接构建到“防火墙”之中。这意味着，用户可以将其机器人保护限制到特定的路径（例如 /login 端点）。“机器人管理”还包括细致的机器人评分，用户可以将其<a href="https://developers.cloudflare.com/firewall/recipes/challenge-bad-bots" target="_blank">与其他属性配对</a>，形成更有力度的保护。它甚至包含<a href="https://developers.cloudflare.com/bots/about/plans/bm-subscription#anomaly-detection" target="_blank">异常检测</a>，用于识别网站上的异常模式。</p>
+	<p>我们也继续改良机器人管理。例如，就在不久前，我们宣布了 <a href="https://blog.cloudflare.com/api-abuse-detection/">API 滥用检测的提前开放</a>。这项功能发布前，我们经过了多月的研究和开发。我们使用无监督学习来映射 API、识别合法用户流并将恶意机器人拒之门外。最终结果：Cloudflare 将能保护您的移动应用（无需 SDK）并保护您的 API 端点（无需提供模式）。 <a href="https://blog.cloudflare.com/api-abuse-detection/">进一步了解</a>提前开放期。</p>
+	<p>这些功能（以及其他无数功能）将继续守护互联网最大的网站。如果您认为自己需要机器人管理， <a href="https://www.cloudflare.com/zh-cn/lp/automated-bot-traffic-report/" target="_blank">请与我们联系</a>。</p>
+	<h2 id="-internet">帮助构建更好的 Internet</h2>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/Group-1338-2.png" class="kg-image"></figure>
+	<p>Cloudflare 的使命一贯是帮助建设更美好的互联网。这一使命延伸到互联网的每一个部分，每一位用户。</p>
+	<p>今天推出的超级机器人抵御模式源于这一使命，特别是源自于这样一个想法：形成统一战线能够强强我们对抗机器人的力量。我们保护的每个网站都会成为机器人浪费其资源的地方。Cloudflare 正在积极进行反击，也发起了新的挑战，利用缓送技术（Tarpitting）来挫败机器人的运作。</p>
+	<p>我们鼓励您现在就启用超级机器人抵御模式。Cloudflare 现在为所有计划（包括 Free 计划）提供机器人保护，因此没有借口不尝试一下！请测试新功能，并将您的想法分享给我们。</p>
+</div>

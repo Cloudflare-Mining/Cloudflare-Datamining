@@ -1,0 +1,73 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image1-34.png" class="kg-image" alt="Cloudflare Pages Goes Full-Stack"></figure>
+	<p>今年 4 月，我们宣布 Cloudflare Pages <a href="https://blog.cloudflare.com/cloudflare-pages-ga/#:~:text=In%20December%2C%20we%20announced%20the,powerful%20tool%20in%20developers'%20hands.">全面开放</a>时，我们承诺这只是开始。我们的平台最初支持静态网站，仅有少量动态功能，如设置<a href="https://blog.cloudflare.com/custom-headers-for-pages/">重定向和自定义标头</a>。但我们希望向您和您的团队赋予更多能力，以便构建难以置信的应用。我们对未来的设想是，您的整个应用程序——前端、API、存储、数据——都可以通过一次提交部署，准生产环境中更易测试，一次合并即可部署到生产环境。因此，本着 Full Stack Week 的精神，我们为您带来实现以上这一切的工具。</p>
+	<p>欢迎大家——来到未来。我们要宣布一个激动人心的消息：在 <a href="https://workers.cloudflare.com/?&amp;_bt=521144407143&amp;_bk=&amp;_bm=b&amp;_bn=g&amp;_bg=123914288844&amp;_placement=&amp;_target=&amp;_loc=9067609&amp;_dv=c&amp;awsearchcpc=1&amp;gclid=Cj0KCQiAsqOMBhDFARIsAFBTN3eyQsvbPzy3y3BOeCnYZMDVjSd8QkaoPbOfFiFWxSK8zEm9lSCNAJsaAnfkEALw_wcB&amp;gclsrc=aw.ds" target="_blank">Cloudflare Workers</a>帮助下，Pages 现已成为一个全栈平台！</p>
+	<h2 id="-">但如何操作呢？</h2>
+	<p>其工作方式与 Pages 向来的工作方式完全一样：编写代码， <code>git push</code> &nbsp;到您的 git 提供商（<a href="https://blog.cloudflare.com/cloudflare-pages-partners-with-gitlab/">现已支持</a> <a href="https://blog.cloudflare.com/cloudflare-pages-partners-with-gitlab/">GitLab</a>！），我们就会为您部署整个站点。唯一的区别是，无论是在您的前端，还是后端，都将使用 Cloudflare Workers 来帮助部署无服务器函数。</p>
+	<h3 id="--1">您期待已久的集成</h3>
+	<p>Cloudflare Workers 提供一个无服务器执行环境，允许您创建全新的应用程序或增强现有的应用程序，而无需配置或维护基础设施。 在今天以前，<em>有可能</em>将 Workers 连接到 Pages 项目，做法是安装 Wrangler，并同时在 Pages 和 Workers 中编写代码来手动部署一个 Worker。但我们所要的并不是“可能”，而是某种犹如第二天性的东西，让您在为站点添加动态内容前无需再三考虑。</p>
+	<h2 id="--2">了解详情</h2>
+	<p>通过使用代码库的文件系统约定并导出一个或多个函数处理器，Pages 可以利用 Workers 来代表您部署无服务器函数。要开始，只需在项目的根目录添加一个 <code>./functions</code>目录，并在一个 JavaScript 或 TypeScript 文件中，导出一个函数处理器。例如，假设您的 <code>./functions</code> 下有一个文件 <code>hello.js</code>，其中包含：其中包含：</p>
+	<pre><code class="language-javascript">// GET requests to /filename would return "Hello, world!"
+export const onRequestGet = () =&gt; {
+  return new Response("Hello, world!")
+}
+
+// POST requests to /filename with a JSON-encoded body would return "Hello, &lt;name&gt;!"
+export const onRequestPost = async ({ request }) =&gt; {
+  const { name } = await request.json()
+  return new Response(`Hello, ${name}!`)
+}</code></pre>
+	<p>执行 <code>git commit</code>，就会触发一次新的 Pages 构建来部署您的动态站点！在构建管道期间，Pages 会遍历目录，将文件名映射到相对代码库结构的 URL。</p>
+	<p>Pages 会自动生成 Workers，其中包含来自源代码的所有路由和功能。函数支持深度嵌套路由、通配符匹配、用于身份验证和错误处理等的中间件，等等。为了展示其所有功能，我们撰写了<a href="https://blog.cloudflare.com/building-full-stack-with-pages">一篇博客文章</a>来展示一个示例全栈应用。</p>
+	<h2 id="--3">让您做自己最擅长的工作</h2>
+	<p>借助 Pages 的新全栈功能，即使您的站点越来越复杂，您的开发体验无需同时复杂化。在为站点解锁更强大功能的同时，您可以继续享受熟悉并喜爱的工作流程。</p>
+	<h3 id="--4">无缝构建</h3>
+	<p>我们自动部署函数的方式与处理静态站点的构建和部署一模一样，都是使用 <code>git commit</code> 和 <code>git push</code>。只要您的目录遵循正确的结构，Pages 就会识别您的函数并将其部署您的站点。</p>
+	<h3 id="--5">定义您的绑定</h3>
+	<p>在将 Workers 连接到 Pages 的同时，绑定是使您的应用成为<em><strong>全栈</strong></em>应用的重要部分。我们很高兴能将此前与常规 Workers 一起使用的绑定全部带到 Pages 。</p>
+	<ul>
+		<li><strong>KV 命名空间：</strong>我们的无服务器和全球分布式键值存储解决方案。在 Pages 内，您可以集成在 Workers 仪表板中为 Pages 项目设置的任意 KV 命名空间。</li>
+		<li><strong>Durable Object 命名空间</strong>：我们的强一致性边缘数据库基元，使处理状态和构建完整应用变得轻而易举。与 KV 一样，您可以在 Workers 仪表板内设置您的命名空间，并在 Pages 界面内从该列表中选择。</li>
+		<li><strong>R2 （即将推出！）： </strong>我们的 S3 兼容对象存储解决方案，出口费用全免。 </li>
+		<li><strong><strong><strong>环境变量：</strong>一个注入值，可以被函数访问，并以明文形式存储。您可以在 Pages 界面中直接为生产环境和预览环境设置环境变量。</strong></strong></li>
+		<li><strong><strong><strong>密钥（secret）：</strong>一个加密的环境变量，不能被 Wrangler 或任何仪表板界面查看。密钥非常适用于存放敏感数据，包括密码和 API 令牌。</strong></strong></li>
+	</ul>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image2-15.png" class="kg-image"></figure>
+	<h3 id="--6">预览部署 —— 现在也可用于后端</h3>
+	<p>在部署无服务器函数后，您仍然可以像以前一样享受轻松的协作和测试。在部署到生产环境之前，您可以轻松地将项目部署到预览环境，以测试更改。即使部署了函数，Pages 仍允许您保存每次提交的版本历史，各有一个独特的 URL，以便轻松从其他开发人员、项目经理、设计师或营销人员收集反馈。您也可以享受与静态站点相同的无限准生产部署特权，最新更改均拥有一致的 URL。</p>
+	<h3 id="--7">同时支持本地开发和预览</h3>
+	<p>但我们意识到，在快速迭代的情况下，仅仅为了测试而构建和部署每一个细小更改可能颇为麻烦。现在，您可以使用最新版本的 Wrangler CLI 开发全栈 Pages 应用程序。在 Miniflare 的支持下，您可以在本地运行整个应用程序，并支持模拟密钥、环境变量、KV（ Durable Objects 支持即将推出！）。将 wrangler 指向一个静态资源目录，或无缝连接到您的现有工具：</p>
+	<pre><code class="language-sh"># Install wrangler v2 beta
+npm install <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="97e0e5f6f9f0fbf2e5d7f5f2e3f6">[email&nbsp;protected]</a>
+
+# Serve a folder of static assets
+npx wrangler pages dev ./dist
+
+# Or automatically proxy your existing tools
+npx wrangler pages dev -- npx react-scripts start</code></pre>
+	<p>这只是 Pages 与 Wrangler 集成的开端。我们将继续增强您的开发体验，敬请关注。</p>
+	<h2 id="--8">您还能做什么？</h2>
+	<p>今天可以通过 HTTP Workers 做的一切事情！ </p>
+	<p>在部署带函数的 Pages 应用程序时，Pages 将代表您编译和部署第一类Workers。这意味着在您的 Pages 应用程序中部署 Worker 时不会有任何功能损失——相反，只会获得新的好处！</p>
+	<h3 id="-sveltekit-">整合 SvelteKit —— 开箱即用！</h3>
+	<p><a href="https://github.com/sveltejs/kit" target="_blank">SvelteKit </a>是一个用于构建 Svelte 应用的 web 框架。它是由Svelte 团队构建和维护的，并成为 Svelte 用户所有应用程序需求的首选解决方案。SvelteKit 允许用户使用复杂的 API 后端构建项目，开箱即用。</p>
+	<p>从今天起，SvelteKit 项目可以附加和配置 <a href="https://github.com/sveltejs/kit" target="_blank">' @sveltejs/adapter-cloudflare '</a> 包。之后，项目就可以添加到 Pages 中，并准备好进行第一次部署。通过 Pages，您的 SvelteKit 项目可以使用 API 端点和完整的服务器端渲染支持进行部署。更好的是，整个项目——包括 API 端点——也可以享受到预览部署的好处！对于以前在 Workers 适配器上的开发后期项目来说，即使是这个功能本身就已经是一个巨大的胜利。这个<a href="https://github.com/lukeed/pages-fullstack" target="_blank">示例演示 SvelteKit 的 Pages 适配器</a>实际使用。</p>
+	<h3 id="--9">使用服务器端渲染</h3>
+	<p>现在，您能够拦截任何进入 Pages 项目的请求。也就是说，您能定义接收传入 URL 的 Workers 逻辑，您的 Worker 可以使用动态数据来渲染新的 HTML 响应，而非提供静态 HTML。 </p>
+	<p>例如，一个带有产品页面的应用程序可以定义一个`product/[id].js`文件，该文件将接收' id '参数，从一个 Workers KV 绑定中检索产品信息，然后生成该页面的 HTML 响应。与使用静态站点生成器的方法相比，随着时间的推移，这种做法更简洁，更容易维护，因为您不需要在构建时为<em>每个产品</em>构建一个静态 HTML 页面……而这种页面数量有可能达到成千上万个！</p>
+	<h2 id="-worker-">已经有一个 Worker 项目了？我们已经考虑到这一点了。</h2>
+	<p>如果您已经有一个 Worker 项目并希望将其带到 Pages 中，以便利用我们平台的开发体验好处，我们今天做出的宣布就能帮您做到。您可以在项目的根目录下放置一个名为 ' _worker.js ' 的 ES 模块Worker，执行 git 命令进行部署，剩下的就交给我们吧！如果您是一个框架作者，或者有一个更加复杂的用例，其并不遵循我们所提供的文件结构，那么这会特别有利。</p>
+	<h2 id="--10">欢迎免费试用限时测试</h2>
+	<p>我们很高兴今天能发布公测，供所有人试用，而且不会给您的 Cloudflare 计划增加任何费用。虽然仍有一些<a href="https://developers.cloudflare.com/pages/platform/functions#pricing-and-limits" target="_blank">限制</a>，但我们希望通过公测进一步了解您和您的团队如何在 Pages 项目中部署函数。目前而言，我们鼓励您发挥创造力，创建一个考虑已久的网站，而且无需担心收到账单。</p>
+	<p>在几个月后宣布全面开放时，我们的账单将会显示为 Workers Bundled 计划的费用——毕竟，完成这些工作的就是 Workers。</p>
+	<h2 id="--11">后续预告：</h2>
+	<p>我们目前宣布的只是一个公测版，而在未来几周和几个月内，我们计划进行一些非常令人兴奋的事情。我们将添加集成日志和对部署函数的更多分析，从而使您已经熟悉的 Pages 开发体验变得甚至更快、更容易。 </p>
+	<p>除此之外，我们还将扩展对下一代前端框架的一流支持。正如我们通过SvelteKit 所展示的那样，Pages 能够无缝地同时部署静态和动态代码，实现无与伦比的最终用户性能和开发便利性，我们很高兴能够为更多人解锁这一功能。类似框架和技术的爱好者，如 NextJS、NuxtJS、React Server Components、Remix 和 Hydrogen 等，请继续关注这个博客的后续发布。更好地是，欢迎<a href="https://www.cloudflare.com/zh-cn/careers/" target="_blank">加入我们</a>并帮助实现它！</p>
+	<p>此外，正如我们对 SvelteKit 所做的那样，我们希望包括更多与现有框架的一流集成，以便 Pages 可以成为您首选框架的主要部署目的地。我们正在努力进行有关工作，以便使 NextJS、NuxtJS、React Server Components、Shopify Hydrogen 等框架无缝集成，以更好地帮助您开发全栈应用。 </p>
+	<p>最后，我们正在加速构建时间，以便您能专注于推送更改和快速迭代——无需等待！</p>
+	<h2 id="--12">立即开始</h2>
+	<p>欢迎浏览我们的 <a href="https://developers.cloudflare.com/pages/platform/functions" target="_blank">Pages 文档</a>和<a href="https://blog.cloudflare.com/building-full-stack-with-pages">演示博客</a>，了解如何使用 Cloudflare Workers 将无服务器函数部署到 Pages。</p>
+	<p>当然，我们最喜欢看到的是您构建的应用！欢迎登陆 <a href="https://discord.com/invite/cloudflaredev" target="_blank">我们的 Discord </a>，并向我们展示您如何使用 Pages 来构建您的全栈应用。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image3-21.png" class="kg-image" alt="To get started head over to our Pages docs and check out our demo blog to learn more about how to deploy serverless functions to Pages using Cloudflare Workers."></figure>
+</div>

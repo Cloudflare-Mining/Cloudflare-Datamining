@@ -1,0 +1,99 @@
+<div class="post-content lh-copy gray1">
+	<p>昨年のバースデーウィーク期間中、より高速で信頼性が高く、WebサイトやAPIといったWebエンドポイントへのよりセキュアな接続を実現するWebの新たな標準である、<a href="https://blog.cloudflare.com/the-quicening/">QUICおよびHTTP/3（当時の「HTTP over QUIC」）の暫定サポートを発表しました</a>。また、QUICおよびHTTP/3が提供可能になり次第試用いただけるウェイティングリストに登録いただけるようにしました。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/09/http3-tube@2x.png" class="kg-image"></figure>
+	<p>それ以来、<a href="https://ietf.org/" target="_blank">Internet Engineering Task Force（IETF、インターネット技術標準化委員会）</a>を通じ、Google ChromeやMozilla Firefoxといった業界の同業者と協力して、HTTP/3およびQUICの標準のドキュメント作成作業を重ねてきました。標準が完成に近づくのと並行して、当社ネットワーク関連の<a href="https://blog.cloudflare.com/enjoy-a-slice-of-quic-and-rust/">サポートの向上</a>にも取り組んできました。</p>
+	<p>本日、CloudflareエッジネットワークでQUICとHTTP/3のサポートの提供が可能になったことを発表します。この、すべての人にとって高速で信頼性の高いウェブの実現に向けた取り組みのパートナーであり、ブラウザベンダーとしては上位2位であるGoogle ChromeおよびMozilla Firefoxと共に、今回の発表ができたことを嬉しく思っています。</p>
+	<p>GoogleのスタッフソフトウェアエンジニアであるRyan Hamilton氏は、次のように語っています。「HTTP/3はすべての人にとって、Webを改善します。ChromeとCloudflareのチームは、HTTP/3およびQUICを、まだ新しい標準の段階から、Webの向上のために広く採用されるテクノロジーにまで格上げするために、緊密に協力を続けてきました。このような業界リーダー間の強力なパートナーシップによって、インターネットの標準を革新することが可能となるものであり、我々は今後もこの協力関係が続くことを期待しています。」</p>
+	<p>Cloudflareのサービスとエッジネットワークを利用している、自身のWebの存在感とセキュリティの向上を求める顧客にとって、今回の発表にはどのような意味があるのでしょうか？HTTP/3のサポートを、<a href="https://blog.cloudflare.com/http3-the-past-present-and-future/#how-do-i-enable-http-3-for-my-domain">皆様のドメインのCloudflareダッシュボードで有効にすると</a>、お客様はHTTP/3を使用してWebサイトおよびAPIとやりとりできるようになります。当社では、HTTP/3のウェイティングリストへご登録いただいたお客様に順次、この機能の有効化をご案内しており（当社からのEメールにご注意ください）、今後数週間で、すべての皆様に本機能をご利用いただけるようになる予定です。</p>
+	<p>この記事を読む方が、インターネットの利用者で、ブラウザその他のクライアントを介してサイトやAPIを利用しているユーザーである場合、この発表にはどのような意味があるのでしょう？そのような方々には本日より、Cloudflareおよびその他HTTP/3経由のサーバーを介した<a href="https://blog.cloudflare.com/http3-the-past-present-and-future/#using-google-chrome-as-an-http-3-client">Chrome Canary</a>の利用が可能になります。コマンドラインクライアントを求める方向けには、<a href="https://blog.cloudflare.com/http3-the-past-present-and-future/#using-curl">curlがHTTP/3のサポートを提供</a>しています。HTTP/3でChromeとcurlを使用する手順については、この記事の後半で説明します。</p>
+	<h2 id="-"><strong>ニワトリと卵</strong></h2>
+	<p>インターネット上の標準のイノベーションに関する話題は長年、ニワトリが先か卵が先か、つまり、サーバーサポート（Cloudflareまたは他の応答データの大容量ソース）が先か、クライアントサポート（ブラウザ、オペレーティングシステムなど）が先かという難しい話題でした。新しい通信プロトコルを利用したければ、接続される両側にそのサポートが必要になります。</p>
+	<p>Cloudflareには、<a href="https://blog.cloudflare.com/introducing-http2/">HTTP/2</a>（HTTP/3より前のバージョンのHTTP）から<a href="https://blog.cloudflare.com/introducing-tls-1-3/">TLS 1.3</a>、<a href="https://blog.cloudflare.com/encrypted-sni/">暗号化された SNI</a>にいたるまでの、Web標準の進化を後押ししてきた長年の歴史があります。当社は、より良いインターネットの構築を支援したいという私たちの願いを共有する、志を同じくする組織と共に、標準を前進させてきました。HTTP/3の主流化に向けても、これまでと同様に取り組んでいます。</p>
+	<p>HTTP/3標準の開発プロセスでは、業界パートナーと緊密に連携し、当社のエッジサポートと互換性のあるクライアントHTTP/3サポートの構築および検証を進めてきました。CloudflareエッジにHTTP/3経由でリクエストを送信可能な、Google Chromeとcurlの参加を得られたことについては、たいへん嬉しく思っています。Mozilla Firefoxも、ナイトリーリリースで近日中にサポートを開始すると思われます。</p>
+	<p>このように、今日はインターネットユーザーにとって良い日です。HTTP/3が広範に展開されるということは、すべての人がより高速なWebを体験できることを意味し、今日のサポート発表はそのための大きな一歩となるのです。</p>
+	<p>さらに重要なのは、今日はインターネットにとって良い日であることです。Chrome、curl、Cloudflare、そして間もなくMozillaは、実験的ではありますが機能的なHTTP/3のサポートを続けざまに開始し、これまでのインターネット標準の作成プロセスが功を奏したということが証明されました。Internet Engineering Task Force（IETF、インターネット技術標準化委員会）、業界パートナー、競合他社、およびその他の主要ステークホルダーが協働して標準を作成することで、大手企業等に限定されることなく、インターネット全体が利益を享受することができるのです。</p>
+	<p>FirefoxのCTO、Eric Rescorla（エリック・レススコアラ）は短い言葉でこの現状を上手く言い表しています。「新たなネットワークプロトコルの開発は難しく、適切な開発には、全員の協力が必要です。この数年、当社はCloudflareをはじめとする業界パートナーと協力して、TLS 1.3のテストを行ってきており、現在はHTTP/3とQUICのテストを実施しています。Cloudflareから、これらのプロトコルに対する初期のサーバー側でのサポートを得たことにより、当社クライアント側のFirefoxの実装から相互運用性の問題を解決することができました。インターネットのセキュリティとパフォーマンスを共に進めていけることに期待しています。」</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/09/HTTP3-partnership@2x-1.png" class="kg-image"></figure>
+	<h2 id="--1"><strong>ここまでの道のり</strong></h2>
+	<p>HTTP/3について詳しく説明する前に、HTTP/3が必要な理由をよりよく理解するために、<a href="https://blog.cloudflare.com/http-3-from-root-to-tip/">ここ数年のHTTPの進化</a>について簡単に説明します。</p>
+	<p>すべては1996年、<a href="https://tools.ietf.org/html/rfc1945" target="_blank">HTTP/1.0仕様</a>が公開され、今日我々が知っているHTTPの基本的なテキストのワイヤ形式が定義された時にはじまりました（この記事向けにはHTTP/0.9の存在は無視します）。HTTP/1.0 では、クライアントとサーバー間の要求／応答交換ごとに新しいTCP接続が作成され、各要求の前にTCPとTLSのハンドシェイクを完了していたために、すべての要求についてレイテンシーが発生していました。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/07/http-request-over-tcp-tls@2x.png" class="kg-image"></figure>
+	<p>さらに悪いことに、接続が確立されると、待機中のすべてのデータを可能な限り早く送信する代わりに、TCTが「スロースタート」と呼ばれるウォームアップ期間を強制して、ネットワーク経路上に輻輳を起こすことなく任意の時間内に飛ばせるデータ量をTCPの輻輳制御アルゴリズムに決定させることで、ネットワークが処理不能なパケットで溢れることを回避していました。しかし、新しい接続はスロースタートプロセスを経る必要があるため、すぐに利用可能なすべてのネットワーク帯域幅を使用することはできません。</p>
+	<p>数年後の<a href="https://tools.ietf.org/html/rfc2616" target="_blank">HTTP仕様のリビジョンHTTP/1.1</a>では、クライアントがTCP接続を再利用できるようにする「キープアライブ」接続の概念を導入し、初回の接続確立および複数の要求にわたるスロースタートに要するコストを償却する方法での問題の解決が試みられました。しかし、これは決定打とはなりませんでした。複数の要求が同一の接続を共有することはできても、接続は順に行わなければならず、クライアントとサーバーが任意の瞬間に接続ごとに実行できる要求／応答は、依然として1つに制限されたからです。</p>
+	<p>それから年月を経てWebは進化し、Webサイトで要求されるリソースの数（CSS、JavaScript、画像等）が増加するのに合わせて、ブラウザにはフェッチングとレンダリングの同時実行がさらに要求されるようになりました。しかし、HTTP/1.1ではクライアントは1回に1つのHTTP要求／応答の交換しか許可されないため、ネットワーク層での同時実行を実現する唯一の方法は、同じ送信元に対して複数のTCP接続を並行して使用することであったため、キープアライブ接続のメリットの大部分は失われてしまいました。接続の再利用は一定程度行われますが（ただし頻度は低下）、ここで私たちは振り出しに戻ってしまいました。</p>
+	<p>最終的には10年以上経ってから、SPDYと当時の<a href="https://tools.ietf.org/html/rfc7540" target="_blank">HTTP/2</a>が現れ、なによりもこれらの仕様ではHTTPの「ストリーム」の概念つまり、HTTP実装が異なるHTTP Exhangeを同一のTCP接続で同時に多重化させるという抽象化の概念が導入されたことで、ブラウザでのTCP接続の再利用率が大幅に高まりました。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/09/Screen-Shot-2019-09-25-at-7.43.01-PM.png" class="kg-image"></figure>
+	<p>しかし、この仕様も、決定的な解決策とはならなかったのです。HTTP/2は、複数の要求／応答を同じ接続を介して同時に送信できるようになったため、単一TCP接続の非効率な使用という元の問題を解決します。ただし、失われたデータが1つの要求にしか関係していない場合でも、すべての要求と応答は（ネットワークの輻輳などによる）パケット損失の影響を等しく受けます。これは、HTTP/2層が異なるHTTP Exchangeを別々のストリームに分離できる一方で、TCPはこの抽象化を知らず、特に意味のないバイトのストリームとしか見ないためです。</p>
+	<p>TCPの役割は、バイトのストリーム全体を、正しい順序で、1つのエンドポイントからもう1つのエンドポイントに配信することです。これらのバイトの一部を伝送しているTCPパケットがネットワークパス上で失われると、ストリームにギャップが生じるため、喪失が検知された場合にはTCPが影響を受けたパケットを再送信してそれを埋める必要があります。この間、正しく配信されたバイトのうち失われたビットの後続のバイトは、それ自身は失われておらず完全に独立したHTTP要求に属している場合でも、一切アプリケーション側には配信されません。そして、TCPは失われたビットなしでアプリケーションがバイトを処理できるかどうか知ることができないため、無用な遅延が生じるということになります。この問題は「ヘッドオブラインブロッキング」として知られています。</p>
+	<h2 id="http-3-"><strong>HTTP/3の登場</strong></h2>
+	<p>ここでHTTP/3の登場です。セッションのトランスポート層としてTCPを使用する代わりに、<a href="https://blog.cloudflare.com/the-road-to-quic/">新しいインターネットトランスポートプロトコルであるQUIC</a>を使用します。このプロトコルの第一の特徴は、ストリームをトランスポート層の第一級市民として扱う点です。QUICストリームは、同一のQUIC接続を共有するため、新たなストリームを作成するために追加のハンドシェイクやスロースタートを必要としませんが、QUICストリームは独立して配信されるため、ほとんどの場合、1つのストリームに影響を与えるパケット損失は他のストリームに影響を与えません。これは、QUICパケットがUDPデータグラムの上にカプセル化されるためです。</p>
+	<p>UDPを使用することで、TCPよりも遥かに大きな柔軟性が得られるほか、QUICの実装は完全にユーザー側のスペースで行うことができるため、TCPと異なり、プロトコル実装のアップデートはオペレーティングシステムのアップデートに関連付ける必要がありません。QUICでは、HTTPレベルのストリームを単純にQUICストリーム上にマッピングして、ヘッドオブラインブロッキングなしでHTTP/2 のすべてのメリットを得ることができます。</p>
+	<p>また、QUICは、一般的な3ウェイのTCPハンドシェイクと<a href="https://blog.cloudflare.com/rfc-8446-aka-tls-1-3/">TLS 1.3</a>のハンドシェイクを組み合わせています。これらのステップを組み合わせるということはつまり、暗号化および認証がデフォルトで提供されているということで、接続の確立をより短時間で行うことができます。言い換えれば、HTTPセッションの初回要求で新しいQUIC接続が必要な場合であっても、データフローの開始遅延は、TLSを使用するTCPでの遅延時間よりも短くなります。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/07/http-request-over-quic@2x.png" class="kg-image"></figure>
+	<p>それでは、まったく新しいHTTPリビジョンを作成する代わりに、QUICの上にHTTP/2を使用することをしないのはなぜでしょうか？それはやはり、HTTP/2はストリームの多重化機能も提供するからです。結局、これもやはり幾分複雜になります。</p>
+	<p>HTTP/2の機能には、QUICの上にきわめて容易にマッピングできるものもありますが、すべてで可能というわけではありません。特に、<a href="https://blog.cloudflare.com/hpack-the-silent-killer-feature-of-http-2/">HTTP/2のHPACKと呼ばれるヘッダー圧縮スキーム</a>は、異なるHTTP要求と応答のエンドポイントへの配信順序に大きく依存します。QUICは、単一ストリーム内でのバイトの配信順序を強制しますが、異なるストリーム間の順序付けを保証するものではありません。</p>
+	<p>このような動作には、QPACKと呼ばれる新しいHTTPヘッダー圧縮スキームを作成する必要があり、問題は解決しますが、HTTPマッピングを変更する必要があります。さらに、HTTP/2が提供する機能の一部（ストリームごとのフロー制御など）は既にQUICによって提供されているため、プロトコルから不要な複雑さを取り除くためにHTTP/3からは外されました。</p>
+	<h2 id="http-3-quiche-"><strong>HTTP/3には美味しいquicheを使用</strong></h2>
+	<p>QUICとHTTP/3は素晴らしい標準で、以前の標準の欠点の多くに対応、Webにおけるパフォーマンスに新時代をもたらすものです。では、この素晴らしい標準のドキュメントを、どのようにして実際に機能する実装に落とし込んでいけばいいのでしょうか？</p>
+	<p>CloudflareのQUICとHTTP/3のサポートには、<a href="https://blog.cloudflare.com/enjoy-a-slice-of-quic-and-rust/">Rustで作成された当社独自のオープンソース実装</a>であるquicheを使っています。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/09/Screen-Shot-2019-09-25-at-7.39.59-PM.png" class="kg-image"></figure>
+	<p>詳細は、<a href="https://github.com/cloudflare/quiche" target="_blank">github.com/cloudflare/quiche</a>のGitHubに掲載しています。</p>
+	<p>数か月前にquicheを発表して以来、既存のQUICサポートに、HTTP/3プロトコルのサポートを追加してきました。当社のquicheは、HTTP/3またはプレーンなQUICのクライアントとサーバーの実装に使用できるよう設計されています。</p>
+	<h2 id="-http-3-"><strong>ドメインでHTTP/3を有効にする方法は？</strong></h2>
+	<p>前述したように当社は、ウェイティングリストに登録済みの皆様向けにサービス提供を開始いたしました。ウェイティングリストに登録済みで、Webサイトで機能を有効にできる旨を通知するEメールを受け取られている方は、Cloudflareダッシュボードの「ネットワーク」タブから手動で有効に切り替えていただくことができます。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/07/http3-toggle-1.png" class="kg-image"></figure>
+	<p>近いうちに、すべてのお客様にHTTP/3機能を利用いただけるようになる予定です。</p>
+	<p>HTTP/3を有効にすると、様々な方法で試せるようになります。</p>
+	<h3 id="google-chrome-http-3-"><strong>Google ChromeをHTTP/3クライアントとして使用する</strong></h3>
+	<p>Chromeブラウザを使用してHTTP/3経由でWebサイトに接続するには、まず<a href="https://www.google.com/chrome/canary/" target="_blank">最新ビルドのCanary</a>をダウンロードしてインストールする必要があります。HTTP/3サポートを有効にするために必要な操作は、Chrome Canaryを“--enable-quic”および“--quic-version=h3-23”の<a href="https://www.chromium.org/developers/how-tos/run-chromium-with-flags" target="_blank">コマンドライン引数</a>で開始することです。</p>
+	<p>必要な引数を使用してChromeを起動したら、アドレスバーにドメインを入力して、ドメインがHTTP/3経由で読み込まれることを確認します（Chrome開発者ツールの［ネットワーク］タブから、使用されているプロトコルバージョンを確認できます）。ブラウザとサーバー間でのHTTP/3のネゴシエーション方法が原因で、ドメインへの最初の数回の接続にHTTP/3が使用されない可能性があるため、ページの再読み込みを数回試みてください。</p>
+	<p>複雜な印象を持たれるかもしれませんが、経時的にChromeでのHTTP/3サポートが安定し、HTTP/3を容易に有効にできるようになりますので、心配は無用です。</p>
+	<p>HTTP/3でこのブログを閲覧すると、開発者ツールの[Network]タブには、次のように表示されます。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/09/Screen-Shot-2019-09-20-at-1.27.34-PM.png" class="kg-image" alt="Screen-Shot-2019-09-20-at-1.27.34-PM"></figure>
+	<p>ChromeのHTTP/3サポートの実験的な性質上、プロトコルは開発者ツールで｢http2+quic/99｣として表示されていますが、実際にはHTTP/3ですのでご注意ください。</p>
+	<h3 id="curl-"><strong>curlの使用</strong></h3>
+	<p>curlコマンド ラインツールは、<a href="https://daniel.haxx.se/blog/2019/09/11/curl-7-66-0-the-parallel-http-3-future-is-here/" target="_blank">実験的な機能としてHTTP/3をサポート</a>しています。<a href="https://github.com/curl/curl" target="_blank">gitから最新バージョンをダウンロード</a>して、<a href="https://github.com/curl/curl/blob/master/docs/HTTP3.md#quiche-version" target="_blank">HTTP/3サポートを有効にする手順にしたがってください</a>。</p>
+	<p>macOSを実行している場合も、Homebrew経由でHTTP/3実装バージョンのcurlも容易にインストールできるようになっています。</p>
+	<pre><code class="language-bash"> % brew install --HEAD -s https://raw.githubusercontent.com/cloudflare/homebrew-cloudflare/master/curl.rb
+</code></pre>
+	<p>HTTP/3要求を実行するには、通常のcurlコマンドに"--http3"コマンドラインフラグを追加する必要があります。</p>
+	<pre><code class="language-bash"> % ./curl -I https://blog.cloudflare.com/ --http3
+HTTP/3 200
+date: Tue, 17 Sep 2019 12:27:07 GMT
+content-type: text/html; charset=utf-8
+set-cookie: __cfduid=d3fc7b95edd40bc69c7d894d296564df31568723227; expires=Wed, 16-Sep-20 12:27:07 GMT; path=/; domain=.blog.cloudflare.com; HttpOnly; Secure
+x-powered-by: Express
+cache-control: public, max-age=60
+vary: Accept-Encoding
+cf-cache-status: HIT
+age: 57
+expires: Tue, 17 Sep 2019 12:28:07 GMT
+alt-svc: h3-23=":443"; ma=86400
+expect-ct: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+server: cloudflare
+cf-ray: 517b128df871bfe3-MAN
+</code></pre>
+	<h3 id="quiche-http3-"><strong>quicheのhttp3クライアントの使用</strong></h3>
+	<p>最後に、HTTP/3で試せる、quicheに構築した<a href="https://github.com/cloudflare/quiche/blob/master/examples/http3-client.rs" target="_blank">HTTP/3コマンドラインクライアント</a>（および、コマンドラインサーバー）の例を示します。</p>
+	<p>実行するには、まずquicheのGitHubリポジトリを複製します。</p>
+	<pre><code class="language-javascript">$ git clone --recursive https://github.com/cloudflare/quiche
+</code></pre>
+	<p>続いて、構築します。これを動作させるには、作業用のRustとCargoのインストールが必要です（Rust開発環境を簡単にセットアップする<a href="https://rustup.rs/" target="_blank">rustup</a>を使用した方法をお勧めします）。</p>
+	<pre><code class="language-c">$ cargo build --examples
+</code></pre>
+	<p>これで、HTTP/3要求を実行できます。</p>
+	<pre><code class="language-c">$ RUST_LOG=info target/debug/examples/http3-client https://blog.cloudflare.com/
+</code></pre>
+	<h2 id="--2"><strong>今後の予定</strong></h2>
+	<p>今後数か月をかけて、QUICとHTTP/3の実装の改善と最適化を進め、最終的にはウェイティングリストを介すことなく、どなたでもこの新機能を有効にできるようになります。標準の進化に合わせた実装の更新を継続的に行うため、標準のドラフトバージョン間で変更が発生する可能性があります。</p>
+	<p>以下は、今後期待される当社のロードマップにある新機能です。</p>
+	<h3 id="--3"><strong>接続の移行</strong></h3>
+	<p>QUICで実現する重要な機能の1つは、異なるネットワーク間（個人で契約している自宅のWiFiネットワークやキャリアのモバイルネットワークと職場の間など）の接続の、新しい接続を必要としないシームレスかつ透過的な移行です。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/09/Screen-Shot-2019-09-25-at-7.39.44-PM.png" class="kg-image"></figure>
+	<p>この機能には、当社インフラストラクチャ側に変更を加える必要がありますが、将来的にお客様に提供したいと考えています。</p>
+	<h3 id="--4"><strong>ゼロラウンドトリップタイム再開</strong></h3>
+	<p>QUICはTLS 1.3と同様、<a href="https://blog.cloudflare.com/introducing-0-rtt/">接続ハンドシェイクが完了する前にクライアントがHTTP要求の送信を開始できる動作モード</a>をサポートします。当社のQUICの展開時点では、この機能はまだサポートしておりませんが、TLS 1.3と同様、同機能をご利用いただけるよう作業を進める予定です。</p>
+	<h2 id="http-3--1"><strong>HTTP/3：利用可能になりました</strong></h2>
+	<p>QUICおよびHTTP/3の標準化については未だ進行中ですが、HTTP/3のサポートが可能となり、お客様にHTTP/3をお試しいただけることを嬉しく思っています。今後も、GoogleやMozillaを含む他の組織と協力して、QUICおよびHTTP/3標準を完成させ、幅広い採用を薦めていきたいと考えています。</p>
+	<p>すべての人にとってより高速で、信頼性が高く、より安全な、Web体験のために。</p>
+</div>

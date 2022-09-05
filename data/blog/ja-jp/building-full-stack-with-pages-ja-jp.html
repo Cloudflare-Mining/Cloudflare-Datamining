@@ -1,0 +1,284 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image4-13.png" class="kg-image" alt="Building a full-stack application with Cloudflare Pages"></figure>
+	<p>これは大々的に披露するしかないと思っていたため、私たちは<a href="https://blog.cloudflare.com/ja-jp/cloudflare-pages-goes-full-stack-ja-jp/">Cloudflare Pagesでのフルスタックアプリケーションのサポートを発表</a>できることに興奮していました。Cloudflare Workersの支援を受けてサーバーレス関数をPages内から追加する方法を示すための、実演用の画像共有プラットフォームを構築しました。プロジェクトに1つのファイルを新たに追加するだけで、ダイナミックレンダリング、他のAPIとのやりとり、KVおよびDurable Objectsを使用したpersistデータを追加することができます。フルスタックアプリケーションの可能性とPagesの高速開発サイクルおよび無制限プレビュー環境を組み合わせることで、ほとんどすべてのアプリケーションを作成する能力が得られます。</p>
+	<p>本日は、画面共有プラットフォームの例について説明します。一部の画像は秘密にしたまま、画像を友人たちと共有できるようにしたいと思います。関数を使用してJSON APIを構築(KVおよびDurable Objects上にデータを格納する)して、Cloudflare ImagesおよびCloudflare Accessと統合し、フロントエンドとしてReactを使用します。</p>
+	<p>良質のものをすぐにでも使用したい場合は、<a href="https://images.pages.dev/" target="_blank">こちらにあるデモインスタンス</a>、および<a href="https://github.com/cloudflare/images.pages.dev" target="_blank">GitHub上のコード</a>を利用できますが、ここではゆっくりしたアプローチに拘ります。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/11/image2-17.png" class="kg-image" title="Screenshot of the image sharing platform showcasing seven pictures of puppies"></figure>
+	<h2 id="cloudflare-pages-"><strong>Cloudflare Pagesを使用したサーバーレス関数の構築</strong></h2>
+	<h3 id="-"><strong>ファイル-ベースのルーティング</strong></h3>
+	<p>まだ慣れていない場合、Cloudflare Pagesは<a href="https://developers.cloudflare.com/pages/get-started" target="_blank">gitプロバイダーと接続</a>(GitHubおよび<a href="https://blog.cloudflare.com/ja-jp/cloudflare-pages-partners-with-gitlab-ja-jp/">GitLab</a>)して、Cloudflareのネットワークに対する静的サイトのデプロイを自動化します。関数を使用するとこれらのアプリを動的データに散りばめて拡張することができます。まだお済みでない場合は、<a href="https://dash.cloudflare.com/sign-up/pages" target="_blank">こちらから加入することができます</a>。</p>
+	<p>私たちのプロジェクトで、新しい関数を作成してみましょう。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">// ./functions/time.js
+
+
+export const onRequest = () =&gt; {
+  return new Response(new Date().toISOString())
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>git commitと、このファイルのプッシュにより最初のPages関数の構築とデプロイがトリガーされます。/timeに対するすべてのリクエストはこの関数によって処理され、他のすべてのリクエストはユーザーのプロジェクトのスタティックアセットに戻されます。ディレクトリ内へのFunctionsファイルの配置は予想どおり動作します。./functions/api/time.jsは/api/time、./functions/some_directory/index.jsは/some_directoryで利用可能です。</p>
+	<p>また、TypeScript (./functions/time.tsが同様に動作する)、およびパラメータ化されたファイルもサポートされます</p>
+	<ul>
+		<li>./functions/todos/[id].jsのように単一角括弧を使用すると/todos/123などのすべてのリクエストと一致させられます。</li>
+		<li>そして./functions/todos/[[path]].jsのように二重角括弧を使用すると、任意の数のパスセグメント(例：/todos/123/subtasks)と一致させられます。</li>
+	</ul>
+	<p>PagesFunctionの型は<a href="https://github.com/cloudflare/workers-types" target="_blank">@cloudflare/workers-types</a>ライブラリで宣言しますが、これは関数の型のチェックのために使用することができます。</p>
+	<h3 id="--1"><strong>動的データ</strong></h3>
+	<p>では、私たちの画像共有アプリに戻り、いくつかの画像をアップロード済みであると仮定し、それらをホームページ上に表示したいと思います。そのフロントエンドが呼び出すことができる、これらの画像のリストを返すエンドポイントが必要です。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-typescript">// ./functions/api/images.ts
+
+export const jsonResponse = (value: any, init: ResponseInit = {}) =&gt;
+  new Response(JSON.stringify(value), {
+    headers: { "Content-Type": "application/json", ...init.headers },
+    ...init,
+  });
+
+const generatePreviewURL = ({
+  previewURLBase,
+  imagesKey,
+  isPrivate,
+}: {
+  previewURLBase: string;
+  imagesKey: string;
+  isPrivate: boolean;
+}) =&gt; {
+  // If isPrivate, generates a signed URL for the 'preview' variant
+  // Else, returns the 'blurred' variant URL which never requires signed URLs
+  // https://developers.cloudflare.com/images/cloudflare-images/serve-images/serve-private-images-using-signed-url-tokens
+
+  return "SIGNED_URL";
+};
+
+export const onRequestGet: PagesFunction&lt;{
+  IMAGES: KVNamespace;
+}&gt; = async ({ env }) =&gt; {
+  const { imagesKey } = (await env.IMAGES.get("setup", "json")) as Setup;
+
+  const kvImagesList = await env.IMAGES.list&lt;ImageMetadata&gt;({
+    prefix: `image:uploaded:`,
+  });
+
+  const images = kvImagesList.keys
+    .map((kvImage) =&gt; {
+      try {
+        const { id, previewURLBase, name, alt, uploaded, isPrivate } =
+          kvImage.metadata as ImageMetadata;
+
+        const previewURL = generatePreviewURL({
+          previewURLBase,
+          imagesKey,
+          isPrivate,
+        });
+
+        return {
+          id,
+          previewURL,
+          name,
+          alt,
+          uploaded,
+          isPrivate,
+        };
+      } catch {
+        return undefined;
+      }
+    })
+    .filter((image) =&gt; image !== undefined);
+
+  return jsonResponse({ images });
+};
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>観察力の優れた読者であればonRequestGetをエクスポートしていることに気が付くでしょう。これによりGETリクエストのみに応答することができます。</p>
+	<p>また、KV名前空間(env.IMAGESでアクセス)を使用して、アップロード済みの画像に関する情報を格納します。Pagesプロジェクト内にバインディングを作成するには、[Settings(設定)] タブに移動します。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/unnamed-15.png" class="kg-image" title="Screenshot of the &quot;Functions&quot; page on the Pages project &quot;Settings&quot; tab in the Cloudflare dashboard"></figure>
+	<h3 id="-api-"><strong>他のAPIとのインターフェース</strong></h3>
+	<p>Cloudflare Imagesは画像のホスティングおよび変換のための、低価格で、ハイパフォーマンス、高機能のサービスです。複数のバリアントを作成して、様々な方法で画像をレンダリングして署名付きURLでアクセスを制御することができます。このサービスのAPIを使用するインターフェースに以下の関数を追加して、受信ファイルをCloudflare Imagesにアップロードします。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-typescript">// ./functions/api/admin/upload.ts
+
+export const onRequestPost: PagesFunction&lt;{
+  IMAGES: KVNamespace;
+}&gt; = async ({ request, env }) =&gt; {
+  const { apiToken, accountId } = (await env.IMAGES.get(
+    "setup",
+    "json"
+  )) as Setup;
+
+  // Prepare the Cloudflare Images API request body
+  const formData = await request.formData();
+  formData.set("requireSignedURLs", "true");
+  const alt = formData.get("alt") as string;
+  formData.delete("alt");
+  const isPrivate = formData.get("isPrivate") === "on";
+  formData.delete("isPrivate");
+
+  // Upload the image to Cloudflare Images
+  const response = await fetch(
+    `https://api.cloudflare.com/client/v4/accounts/${accountId}/images/v1`,
+    {
+      method: "POST",
+      body: formData,
+      headers: {
+        Authorization: `Bearer ${apiToken}`,
+      },
+    }
+  );
+
+  // Store the image metadata in KV
+  const {
+    result: {
+      id,
+      filename: name,
+      uploaded,
+      variants: [url],
+    },
+  } = await response.json&lt;{
+    result: {
+      id: string;
+      filename: string;
+      uploaded: string;
+      requireSignedURLs: boolean;
+      variants: string[];
+    };
+  }&gt;();
+
+  const metadata: ImageMetadata = {
+    id,
+    previewURLBase: url.split("/").slice(0, -1).join("/"),
+    name,
+    alt,
+    uploaded,
+    isPrivate,
+  };
+
+  await env.IMAGES.put(
+    `image:uploaded:${uploaded}`,
+    "Values stored in metadata.",
+    { metadata }
+  );
+  await env.IMAGES.put(`image:${id}`, JSON.stringify(metadata));
+
+  return jsonResponse(true);
+};
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h3 id="--2"><strong>永続性データ</strong></h3>
+	<p>頻繁に読み取られてもまれにしか書き込まれない情報を格納するため、既にKVを使用しています。もう少し同機が必要な機能の場合はどうでしょうか。</p>
+	<p>各画像にダウンロードカウンターを追加しましょう。highresバリアントをCloudflare Images内に作成すると、ユーザーがリンクをリクエストするたびにカウンターをインクリメントすることができます。これにはもう少しセットアップが必要ですが、プロジェクト内のDurable Objectsの機能を解き放つだけの価値が絶対にあります。</p>
+	<p>このダウンロードカウントを保持できる、以下のDurable Objectクラスを作成して公開する必要があります。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">// ./durable_objects/downloadCounter.js
+ts#example---counter
+
+export class DownloadCounter {
+  constructor(state) {
+    this.state = state;
+    // `blockConcurrencyWhile()` ensures no requests are delivered until initialization completes.
+    this.state.blockConcurrencyWhile(async () =&gt; {
+      let stored = await this.state.storage.get("value");
+      this.value = stored || 0;
+    });
+  }
+
+  async fetch(request) {
+    const url = new URL(request.url);
+    let currentValue = this.value;
+
+    if (url.pathname === "/increment") {
+      currentValue = ++this.value;
+      await this.state.storage.put("value", currentValue);
+    }
+
+    return jsonResponse(currentValue);
+  }
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h3 id="--3"><strong>ミドルウェア</strong></h3>
+	<p>関数を実行する前に一部のコード(認証またはロギングなど)を実行する必要がある場合のために、Pagesには使いやすいミドルウェアが用意されており、これはファイルベースのルーティングの任意のレベルで適用することができます。ディレクトリに_middleware.tsファイルを作成することで、このファイルが最初に実行され、next()が呼び出されるときにユーザーの関数を実行することがわかります。</p>
+	<p>私たちのアプリケーションでは、未認証ユーザーが画像をアップロード(/api/admin/upload)または画像を削除(/api/admin/delete)できないようにしたいと思います。Cloudflare Accessではすべてまたは一部のアプリケーションに対するロールベースのアクセス制御を適用することができ、ユーザーが必要なのはサーバーレス関数に統合する単一ファイルだけです。私たちは./functions/api/admin/_middleware.tsを作成し、これは/api/admin/*の受信リクエストすべてに適用されます:</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-typescript">// ./functions/api/admin/_middleware.ts
+
+const validateJWT = async (jwtAssertion: string | null, aud: string) =&gt; {
+  // If the JWT is valid, return the JWT payload
+  // Else, return false
+  // https://developers.cloudflare.com/cloudflare-one/identity/users/validating-json
+
+  return jwtPayload;
+};
+
+const cloudflareAccessMiddleware: PagesFunction&lt;{ IMAGES: KVNamespace }&gt; =
+  async ({ request, env, next, data }) =&gt; {
+    const { aud } = (await env.IMAGES.get("setup", "json")) as Setup;
+
+    const jwtPayload = await validateJWT(
+      request.headers.get("CF-Access-JWT-Assertion"),
+      aud
+    );
+
+    if (jwtPayload === false)
+      return new Response("Access denied.", { status: 403 });
+
+    // We could also use the data object to pass information between middlewares
+    data.user = jwtPayload.email;
+
+    return await next();
+  };
+
+export const onRequest = [cloudflareAccessMiddleware];
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>ミドルウェアは自由に使える強力なツールで、Cloudflare Accessを使用するアプリケーションのパーツを容易に保護、またはHoneycombおよびSentryなどの可観測性およびエラーロギングプラットフォームと素早く統合することができます。</p>
+	<h2 id="jamstack-"><strong>Jamstackとしての統合</strong></h2>
+	<p>"Jamstack"の"Jam"はJavaScript、API、Markupを表します。Cloudflare Pagesは以前からこの「J」と「M」を提供していましたが、中間にWorkersがあると、本当にフルスタックのJamstackを使用することができます。</p>
+	<p>取り組みやすい例として、<a href="https://create-react-app.dev/" target="_blank">Create Reactアプリ</a>でこの画像共有プラットフォームのフロントエンドを構築しましたが、<a href="https://developers.cloudflare.com/pages/platform/build-configuration#framework-presets" target="_blank">Cloudflare Pagesは増加の一途をたどるフレームワークと自然に統合し</a>(現在は23)、いつでも<a href="https://developers.cloudflare.com/pages/platform/build-configuration#build-commands-and-directories" target="_blank">独自の完全なカスタムビルドコマンドを構成することができます</a>。</p>
+	<p>ユーザーのフロントエンドは私たちが構成済みの関数を呼び出して、そのデータをレンダリングするだけです。私たちは<a href="https://swr.vercel.app/" target="_blank">SWR</a>を使用して物事を単純化しますが、ユーザーが望めば、全くありきたりなJavaScriptの fetchを使用してこれを実行することができます。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-typescript">// ./src/components/ImageGrid.tsx
+
+export const ImageGrid = () =&gt; {
+  const { data, error } = useSWR&lt;{ images: Image[] }&gt;("/api/images");
+
+  if (error || data === undefined) {
+    return &lt;div&gt;An unexpected error has occurred when fetching the list of images. Please try again.&lt;/div&gt;;
+  }
+
+
+  return (
+    &lt;div&gt;
+      {data.images.map((image) =&gt; (
+        &lt;ImageCard image={image} key={image.id} /&gt;
+      ))}
+    &lt;/div&gt;
+  );
+
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h2 id="--4"><strong>ローカルデプロイ</strong></h2>
+	<p>動作状況をテストするためにすべての変更をプッシュする必要がある場合、それが高速であるとしても、このようなプロジェクト上の反復は手間がかかります。関数、Workers、機密情報、環境変数、KVに対する完全なサポートを含む、Pagesプロジェクトのローカルデプロイのための、Wranglerとの素晴らしい統合がリリースされました。Durable Objectsのサポートは間もなく開始されます。</p>
+	<p>npmからのインストール:</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-sh">npm install <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="87f0f5e6e9e0ebe2f5c7e5e2f3e6">[email&nbsp;protected]</a>
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>静的アセットのフォルダの提供をするか、既存のツールをプロキシします:</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-sh"># Serve a directory
+npx wrangler pages dev ./public
+
+# or integrate with your other tools
+npx wrangler pages dev -- npx react-scripts start
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h2 id="--5"><strong>前進、そして作成！</strong></h2>
+	<p>子犬がお好きでしたら、<a href="https://images.pages.dev/" target="_blank">こちらに画像共有アプリケーションを展開してあります</a>。コードがお好きでしたら、<a href="https://github.com/cloudflare/images.pages.dev" target="_blank">GitHub上に用意されています</a>。ご自分で自由にフォークしてデプロイしてください！ 5分間のセットアップウィザードがありますが、Cloudflare Images、Access、Workers、Durable Objectsが必要になります。</p>
+	<p>私たちはPagesプラットフォームの将来に胸を高鳴らせており、あなたが構築しているものについて聞きたいです！当社のDiscordサーバー上の<a href="https://discord.com/channels/595317990191398933/783765338692386886" target="_blank">#what-i-builtチャンネル</a>であなたのフルスタックアプリケーションを公開するか、<a href="https://discord.com/channels/595317990191398933/789155108529111069" target="_blank">#pages-helpチャンネル</a>でサポートを受けてください。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image1-37.png" class="kg-image"></figure>
+	<!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/828f64562ca22e4c9e0deb17a8a3df22?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2F828f64562ca22e4c9e0deb17a8a3df22%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D0m5s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
+	<!--kg-card-end: html-->
+</div>

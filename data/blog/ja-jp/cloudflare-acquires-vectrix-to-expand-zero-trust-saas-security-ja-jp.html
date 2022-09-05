@@ -1,0 +1,46 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/02/image2-10-4.png" class="kg-image" alt="CloudflareがVectrixを買収し、Zero Trust SaaSセキュリティを拡張します"></figure>
+	<p>CloudflareがVectrix社を買収したことを発表できることを嬉しく思います。</p>
+	<p>Vectrixは、ITおよびセキュリティチームがSaaSアプリケーション全体のセキュリティ問題を検出できるよう支援します。SaaSアプリケーションのデータとユーザーの両方に着目し、不正なユーザーアクセスやファイルの露出、設定ミスやシャドーITに至るまで、さまざまな問題をチームに警告します。</p>
+	<p>Vectrix社は、セキュリティエンジニアである私たち自身が悩んでいた問題（使用しているSaaSアプリケーションが適切に制御されていることをどのように把握するか、自社のデータが保護されているか、など）を解決するために構築しました。SaaSツールは、規模の大小にかかわらず、データの取り扱いや組織内での共同作業を容易にしますが、その反面、脆弱性にもなります。</p>
+	<h3 id="-saas-">拡大するSaaSのセキュリティ問題</h3>
+	<p>この2年間は、誰もが想像していなかったほどの速さでSaaSの導入が進み、この新しいビジネススタックをどのようにセキュリティ保護する方法について、多くの意見が寄せられませんでした。</p>
+	<p>Google Workspaceはコラボレーションを可能にし、コミュニケーションにはMicrosoft Teams、人事部門ではWorkday、顧客管理にはSalesforce、など数えればきりがありません。</p>
+	<p>このようにSaaSに依存するようになると、ITおよびセキュリティチームは、ファイルやフォルダがインターネット上で公開されたり、外部のユーザーがプライベートチャットチャンネルに参加したり、従業員が顧客関係ツールからすべての顧客データをダウンロードしたりといった、新たな問題に直面することになります。</p>
+	<p>わずかな数のアプリケーションであっても、それぞれが独自のセキュリティリスクや独自の保護方法を有する中で、ユーザーやデータをセキュリティ保護するという課題は、ほとんどのITチームやセキュリティチームには手に負えません。どこから手をつければよいのでしょうか。</p>
+	<h3 id="1-">1つのプラットフォームに多くのソリューション</h3>
+	<p>そこで登場するのが、API駆動型のクラウド・アクセス・セキュリティ・ブローカー（CASB）です。API駆動型のCASBとは、Microsoft 365、ServiceNow、Zoom、Oktaなどの、組織が承認し、ITが管理するSaaSアプリケーションにおいて、セキュリティ問題をスキャン、検出、継続的な監視を可能にするソリューションと認識しています。</p>
+	<p>CASBソリューションは、チームに以下をもたらします。</p>
+	<ul>
+		<li><strong>データセキュリティ</strong> - 誤ったファイルやフォルダがDropboxで公に共有されないことを保証する。</li>
+		<li><strong>ユーザーアクティビティ</strong> - Workdayで午前2時に変更された不審なユーザー権限について警告を行う。</li>
+		<li><strong>設定ミス</strong> - Zoomの録画データが公にアクセス可能になるのを妨げる。</li>
+		<li><strong>コンプライアンス</strong> - Bitbucketのブランチ権限を変更した人物を追跡し、報告する。</li>
+		<li><strong>シャドーIT</strong> - 仕事用のメールアドレスで未承認のアプリケーションに登録したユーザーを検出する。</li>
+	</ul>
+	<p>SaaSアプリケーションのセキュリティ保護は、サービス内に存在するユーザーやデータを可視化し、それらがどのように使用されているかを理解することから始まります。その上で、SaaSアプリケーション内およびネットワーク上で、データの安全性を確保するための保護策や予防策を講じることができます。</p>
+	<p>それも極めて複雑なものばかりではありません。良い例が、Vectrix社の初期のお客様から、公開されているGoogleカレンダーを検出できないかという相談を受けたことがあります。このお客様は最近、重要な会議のリンクやパスコードが含まれているカレンダーをチームの誰かが共有したという問題を抱えていました。もしこの問題を事前に検出できていたら、頭痛の種から解放され、さらには数クリックで修正することができたはずです。</p>
+	<p>このSaaSの時代には、カレンダーの招待のような無害なものでも、ITやセキュリティチームが考えなければならないリスクが引き起こされる可能性があります。だからこそ、私たちはCloudflareのさらなる成長を喜ばしく思い、より多くのチームが常に一歩先に行くことができるよう支援しています。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/02/image3-14.png" class="kg-image"></figure>
+	<h3 id="-">驚くほど簡単なセットアップ</h3>
+	<p>APIファーストのアプローチの中核となるのがアクセスシステムであり、OAuth 2.0またはベンダー・マーケットプレイス・アプリケーションを介して統合を推進し、SaaSサービスへの安全なAPIアクセスが承認されます。つまり、API駆動型のCASBは、帯域外つまりダイレクトネットワークパスの外で動作するため、ネットワークの速度低下を引き起こしたり、ネットワーク構成の変更を必要としません。</p>
+	<p>わずか数クリックで、どこからでもSaaSアプリケーションとセキュリティ上安全に統合することができ、エージェントもインストールもダウンロードも必要ありません。</p>
+	<p>ITやセキュリティのシステム管理者は、コーヒーを飲みながら自社の重要なSaaSアプリケーションを接続し、データやユーザーの活動をすぐに可視化することができます。実際、アカウントを作成してから最初の調査結果が報告されるまで、通常、15分以上もかかりません。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/02/image1-11.png" class="kg-image"></figure>
+	<h3 id="--1">多ければ多いほどいい</h3>
+	<p>より多くの組織に承認されたSaaSアプリケーションと統合することで、通常では見えないパターンが浮かび上がってきます。</p>
+	<p>例えば、サムが複数のSaaSアプリケーションで二要素認証を無効にしようとしたことが警告された場合、セキュリティ意識向上のトレーニングが必要であることを示します。また、承認されていないサードパーティ製アプリケーションに機密性の高いアカウント権限を与えているユーザーが多数いることを検出した場合は、フィッシング詐欺の可能性を示唆します。</p>
+	<p>より多くの統合を保護することで、SaaS全体のセキュリティが向上します。</p>
+	<h3 id="zero-trust-">Zero Trustで共に向上</h3>
+	<p>Vectrix社のチーム全員がCloudflareに加わり、API駆動のCASB機能を<a href="https://www.cloudflare.com/ja-jp/products/zero-trust/" target="_blank">Cloudflare Zero Trustプラットフォーム</a>に統合して、今年後半にローンチする予定です。</p>
+	<p>これは、<a href="https://www.cloudflare.com/ja-jp/teams/access/" target="_blank">アクセス（ZTNA）</a>、<a href="https://www.cloudflare.com/ja-jp/teams/gateway/" target="_blank">ゲートウェイ（SWG）</a>、<a href="https://www.cloudflare.com/ja-jp/teams/browser-isolation/" target="_blank">ブラウザ分離</a>など、すでに成長している印象的な製品が、一緒になってさらに良くなることを意味します。さらに喜ばしいことは、これらすべてのサービスを使用することで、統合されたZero Trustプラットフォームとダッシュボードで、シームレスな管理が可能になります。</p>
+	<p>私たちが共に成長することを期待する例をいくつか挙げてみます。</p>
+	<ul>
+		<li><strong>シャドーIT</strong>：<a href="https://www.cloudflare.com/ja-jp/teams/gateway/" target="_blank">ゲートウェイ</a>を使用することで、使用中のすべてのSaaSアプリケーションを検出して、承認されていないアプリケーションをブロックし、CASBを使用することで、承認されたアプリケーションでデータが安全に保たれるようにします。</li>
+		<li><strong>セキュアアクセス</strong>：<a href="https://www.cloudflare.com/ja-jp/teams/access/" target="_blank">Access</a>を使用することで、デバイスポリシーに合致したユーザーのみがSaaSアプリケーションへのアクセスを許可されるようにし、CASBを使用することで、SaaSアプリケーションが承認された認証方法のみで構成され続けるようにします。</li>
+		<li><strong>データ制御</strong>：<a href="https://www.cloudflare.com/ja-jp/teams/browser-isolation/" target="_blank">ブラウザ分離</a>の入力制御を使用することで、ユーザーがデータをコピー／ペーストしたり印刷したりすることを防止し、CASBを使用することで、SaaSアプリケーション自体から公に共有されるようにデータが変更されることがなくなり、完全な制御を実現します。</li>
+	</ul>
+	<h3 id="--2">次は何が起きるでしょう？</h3>
+	<p>Vectrix社は、<a href="https://www.cloudflare.com/ja-jp/products/zero-trust/" target="_blank">Cloudflare Zero Trustプラットフォーム</a>に統合され、Cloudflareのグローバルネットワークのセキュリティを、単一の制御プレーンから、SaaSアプリケーションに保存されているデータにまで拡張します。</p>
+	<p>早期ベータ版へのアクセスをご希望の方は、<a href="https://www.cloudflare.com/ja-jp/products/zero-trust/lp/casb-beta" target="_blank">こちらをクリックして、ウェイティングリストにご登録ください</a>。ご登録いただいた順に、招待状をお送りいたします。買収についての詳細は<a href="https://blog.cloudflare.com/cloudflare-zero-trust-casb/">こちら</a>をご覧ください。</p>
+</div>

@@ -1,0 +1,59 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/BDES-1101_Gateway-Client-App-Blog_2@3x-2.png" class="kg-image"></figure>
+	<p>Cloudflareは、Webと接続するプロパティの安全を攻撃から保護し、訪問者のためにWebを高速化するために、10年前に創設されました。Cloudflareのお客様は、当社のネットワーク上にインターネットプロパティを所有していました。これらのサイトやアプリケーションの訪問者は高速なユーザー体験を享受していましたが、Cloudflareネットワーク外のインターネットプロパティへのアクセスにについてはスピードに一貫性がありませんでした。</p>
+	<p>ここ数年、当社のネットワーク上のサイトへの訪問者だけでなく、すべての人に高速で安全なインターネットを提供するのに役立つ製品を作り始めました。まず、あらゆるWebサイトにアクセスするための最初のステップとして、DNSクエリーを開始し、世界最速のパブリックDNSリゾルバー、1.1.1.1をリリースしました。インターネットユーザーは、リゾルバーを変更するだけで、あらゆるWebサイトに接続する速度を向上させることができます。</p>
+	<p>ユーザーのインターネットを高速化する一方で、インターネットをよりプライベートなものにすることにも焦点を当てました。1.1.1.1は、ユーザーから当社のエッジまたはインターネット上の他の送信先までの接続の最後の行程を高速化するために構築したものです。他のプロバイダーとは違って、当社は広告を販売するために1.1.1.1を構築したのではありません。</p>
+	<p>昨年、当社はさらに前進し、デバイスからの接続全体を高速で安全なものにするために、Cloudflare WARPをローンチしました。ボタンを押すだけで、ユーザーはWireGuardトンネルを使用して、近くのCloudflareデータセンターを経由しながら、モバイル端末をインターネット全体に接続することができます。Cloudflareが保護するサイトへのトラフィックはさらに高速化され、インターネット全体で、ユーザー体験がより安全でプライベートになりました。</p>
+	<p>今年のはじめには、同じユーザー体験をベータ版でデスクトップで提供し、今日デスクトップユーザー向けのCloudflare WARPの一般提供を発表できることを大変うれしく思います。これにより、接続方法に関係なく、インターネット全体をより安全でプライベートなものにすることができます。</p>
+	<h3 id="warp-">WARPの力を世界中のセキュリティチームへ</h3>
+	<p>WARPは、インターネットを高速化し、すべての場所で、個々のユーザーがインターネットをよりプライベートに利用できるように変えました。しかし、企業が大規模にリモートワークモデルを採用している中、セキュリティチームは、オフィスで有効にしたセキュリティ制御機能をリモートワーカーに拡張することに苦労しました。今日では、ユーザーがWARPに期待するすべてのものをセキュリティチームにも提供しています。このリリースでは、<a href="https://blog.cloudflare.com/gateway-swg/"> Cloudflare Gateway 製品</a>の新機能も有効になります。</p>
+	<p>お客様はCloudflare WARPアプリケーションを使用して、企業のデスクトップをCloudflare Gatewayに接続し、高度なWebフィルタリングを行うことができます。Gatewayの機能は、基盤となるWARPテクノロジーと同じパフォーマンスとセキュリティのメリットを利用しており、接続にセキュリティフィルタリングが使用できるようになりました。</p>
+	<p>その結果、企業は、一元化されたセキュリティ境界へのネットワークトラフィックのバックホールを必要とすることなく、ユーザーの居場所を問わず、彼らを簡単に保護できます。代わりに、企業はWARP クライアントアプリケーションを構成して、リモートユーザーのトラフィックを Cloudflare データセンター経由で安全かつプライベートに送信できます。ゲートウェイ管理者は、クライアント経由でプロキシされるアウトバウンドインターネットトラフィックにポリシーを適用することで、企業はインターネット上の脅威からユーザーを保護し、企業データの漏えいを防ぐことができます。</p>
+	<h3 id="-">誰に対しても、プライバシー、セキュリティ、スピードを高める</h3>
+	<p>WARPは、「VPN」<a href="https://www.cloudflare.com/learning/access-management/what-is-a-vpn/" target="_blank">が何を意味するのかを知らないユーザーでも</a>、VPNが提供する保護を簡単に取得できるべきだという理念に基づいて構築されました。しかしながら、旧来の企業VPNに精通している当社では、これよりも優れた何かを必要としていました。<a href="https://blog.cloudflare.com/boringtun-userspace-wireguard-rust/">BoringTun</a>という独自のWireGuard 実装を新たに取り入れることになりました。</p>
+	<p>WARP アプリケーションはBoringTunを使って、お客様のデバイスからのすべてのトラフィックを暗号化したものを、Cloudflare のエッジに直接送信するため、その間、お客様の行動を誰からも覗き見られることはありません。訪問しているサイトがすでにCloudflareのお客様である場合、コンテンツはすぐにデバイスへ送信されます。WARP+では、Argo Smart Routingを使用して、データセンターのグローバルネットワークを通る最短経路を考案し、お客様の接続先に到達します。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image4-17.png" class="kg-image"></figure>
+	<p><a href="http://one.one.one.one/" target="_blank">1.1.1.1</a>（世界最速のパブリック DNS リゾルバー）のパワーと組み合わせることで &nbsp; &nbsp;、WARPはトラフィックを安全で、プライベート、高速に保ちます。インターネット上でお客様が行うほぼすべての動作は、DNSリクエストから始まります。すべてのデバイスで最速の DNS サーバーを選択すると、オンラインで行うほとんどすべての操作が高速化します。しかし、スピードがすべてではありません。アプリケーションとWebサイトの間の接続は暗号化されていても、Webサイトに対するDNSルックアップは暗号化されていないかもしれません。この場合、誰でも、たとえインターネットサービスプロバイダーであっても、お客様のインターネット上の訪問先を覗き見る（および販売する）ことができてしまうのです。</p>
+	<p>Cloudflareではお客様の個人データをスヌープしたり販売することはありません。また、DNS-over-HTTPS または DNS-over-TLSを当社の1.1.1.1リゾルバーにお使いの場合、DNSリクエストはセキュアなチャネルで送信されます。つまり、1.1.1.1リゾルバーを使うと、プライバシー保護に加えて、傍受者がユーザーのDNSリクエストを見ることができなくなるということです。信じられない方もいらっしゃるかもしれませんが、事実です。 今年初めに、<a href="https://blog.cloudflare.com/announcing-the-results-of-the-1-1-1-1-public-dns-resolver-privacy-examination/">当社はサードパーティのプライバシー検査</a>の結果を公表しました。今後もこの種の調査をやり続ける予定ですし、他社にも同じようにやってほしいと考えています。</p>
+	<p>Gatewayのお客様のために、当社ではプライバシーと信頼を確立することに全力を尽くし、お客様の個人情報を第三者に販売することはありません。管理者は、企業のトラフィックを監査したり、データの保持期間に関するルールを作成したり、データを移動できる場所に関する特定のポリシーを作成したりできますが、Cloudflareはお客様をリターゲティング広告の対象にするために個人データを販売したり、個人データを使用したりすることはありません。お客様ご自身で、企業データのプライバシー制御をしていただけます。</p>
+	<h3 id="cloudflare-gateway-">Cloudflare Gatewayと統合</h3>
+	<p>従来、企業は VPNソリューションを使用して企業リソースへのアクセスを制御し、フィルタリングルールを使用してデバイスのセキュリティを維持してきました。オンプレミスサーバーを経由するトラフィックが増加すると、組織が VPN サーバーを管理およびスケールアップする必要があったため、これらの接続はすぐに障害点 (および侵入ベクトル) になりました。エンドユーザーもこの点に不満を抱えていました。VPNサーバーは通常、ピーク時に飽和状態となり、クライアントは扱いにくく、パフォーマンスを念頭に置いて作られることはほとんどありません。そして、悪意をもった行為者がひとたび侵入すると、彼らはすべてにアクセスできるようになってしまいます。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/10/image3-21.png" class="kg-image">
+		<figcaption>従来のVPNアーキテクチャ‌‌</figcaption>
+	</figure>
+	<p><a href="https://blog.cloudflare.com/introducing-cloudflare-for-teams/">2020年1月</a>に、このモデルの代替としてCloudflare for Teamsを発売しました。Cloudflare for Teamsは、2つのコア製品を中心に構築されています。<a href="https://www.cloudflare.com/teams/access/" target="_blank">Cloudflare Access</a>はゼロトラストソリューションであり、これにより、企業はCloudflareの内部（そして現在は、<a href="https://blog.cloudflare.com/cloudflare-access-for-saas/">SaaS</a>）アプリケーションをCloudflareのエッジと接続でき、安全を強化するためのセキュリティルールを構築することができます。VPN が企業への単一のエントリーポイントではなくなりました。ユーザーはどこからでも仕事することができ、引き続きアクセスできます。<a href="https://www.cloudflare.com/teams/gateway/" target="_blank">Cloudflare Gateway</a>の最初の機能は、企業向けに構築されたDNSリゾルバーとポリシーエンジンを使用して、インターネット上の脅威からユーザーを保護することに焦点を当てています。</p>
+	<p>世界中の何百万人ものユーザーによって今日使用されているWARPクライアントの強さと能力は、セキュリティチームから驚異的な新しい使用事例を引き出します。</p>
+	<ul>
+		<li>すべてのユーザトラフィックを暗号化する - ユーザーの居場所を問わず、デバイスからのすべてのトラフィックはWARPで暗号化され、最も近いWARPエンドポイントに非公開のまま送信されます。これにより、ユーザーや企業が、スヌーピングから保護されます。従来のVPNをAccess上で使用してユーザートラフィックを暗号化している場合でも、今後はその必要はありません。</li>
+		<li>WARP+-Cloudflareは、さらに高速化を望むお客様にプレミアムWARP+サービスを提供しています。これは、Teams デプロイメントと一緒に提供されます。Teams クライアントアプリケーションをデプロイする Teams のお客様は、WARP+ のプレミアムスピードサービスが自動的に提供されます。</li>
+		<li>リモートワーカーのためのGateway - これまでは、Gatewayですべてのユーザーの IP アドレスを追跡し、場所ごとにポリシーを構築する必要がありました。そのため、ユーザーがデバイスを新しい場所に移動した際に、ポリシーを適用したり、マルウェア保護対策を提供したりすることが困難でした。クライアントをインストールすると、これらのポリシーをどの場所にも適用できるようになります。</li>
+		<li>L7 ファイアウォールとユーザーベースのポリシー - Cloudflare Gateway SWGとSecure DNSが本日発表され 、企業はTeamsアカウントにデバイス認証を義務付け、ユーザー固有のポリシーを構築できるようになり、すべてのトラフィックがファイアウォールを通過することが義務化されました。</li>
+		<li>デバイスとユーザーの監査 - ユーザーポリシーおよびデバイスポリシーに従って、管理者は特定のユーザーとデバイスのトラフィックを監査することもできます。Logpushと組み合わせて使用すると、違反や監査が発生した場合に、企業側で詳細なレベルまで追跡することができます。</li>
+	</ul>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image5-10.png" class="kg-image"></figure>
+	<h3 id="cloudflare-for-teams-warp-">Cloudflare for TeamsでWARP クライアントを使用するために、企業を登録する</h3>
+	<p>企業で、別のソフトウェアをデプロイすることがどれくらい難しいことか、当社は理解しています。導入を簡単にするために努力を重ねてきました。開始するには、<a href="https://dash.cloudflare.com/sign-up/teams" target="_blank"> サインアップページ</a>に移動してアカウントを作成してください。すでに有効なアカウントをお持ちの場合は、このステップを省略して<a href="https://dash.teams.cloudflare.com/onboarding" target="_blank">Cloudflare for Teams ダッシュボード</a>に直行し、オンボーディングフローに直接アクセスできます。チームのサインアップと設定が完了したら、<a href="https://developers.cloudflare.com/gateway/getting-started-new/onboarding-gateway/" target="_blank">Gatewayポリシーを設定し</a>、 次の3つの方法から、クライアントをインストールしてポリシーを適用する方法を１つ選択します。</p>
+	<h3 id="--1">セルフインストール‌‌</h3>
+	<p>IT部門を持たない小さな企業の場合は、ユーザーに依頼して、クライアントをダウンロードし必要な設定を入力するように求めるのが最速の方法です。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/10/image1-35.png" class="kg-image">
+		<figcaption>手動で企業を追加する</figcaption>
+	</figure>
+	<h3 id="--2">スクリプトインストール‌‌</h3>
+	<p>デスクトップインストーラは、インストールを迅速にスクリプト化する機能をサポートしています。Windowsの場合、これは次のコマンドラインと同じくらい簡単です。</p>
+	<pre><code>Cloudflare_WARP_Release-x64.msi /quiet ORGANIZATION="&lt;insert your org&gt;" SERVICE_MODE="warp" ENABLE="true" GATEWAY_UNIQUE_ID="&lt;insert your gateway DoH domain&gt;" SUPPORT_URL=”&lt;mailto or http of your support person&gt;"</code></pre>
+	<h3 id="--3">マネージドデバイス‌‌</h3>
+	<p>IntuneやJAMFのようなMDM ツールを使用する企業では、1 回の操作で WARPをデバイス全体にデプロイできます。他のすべてのデバイス設定を事前に行うのと同じように、WARPも事前設定ができ、デプロイ後にCloudflare WARPクライアントをクリックして、エンドユーザーがチームのIDプロバイダーにログインするだけで済むように設定することができます。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/10/image2-21.png" class="kg-image">
+		<figcaption>Microsoft Intuneの設定</figcaption>
+	</figure>
+	<p>すべてのプラットフォームのインストールオプション、必須事項、およびステップバイステップの手順の一覧については、WARP Client のドキュメントを参照してください。</p>
+	<h3 id="--4">次は何を？</h3>
+	<p>WARPの一般ユーザーと Cloudflare for Teamsのお客様の両者のために構築したいことは他にもあります。ここでは、当社が最も興奮している（そして共有することが許可されている）もののいくつかをこっそりご紹介いたします。</p>
+	<ul>
+		<li>新パートナーのCrowdStrikeとVMware Carbon Black（Tanium は今日から利用可能）との統合により、ユーザーがアプリケーションに接続する前に、デバイスの健全性をチェックする Cloudflare Access ポリシーをさらに包括的に構築できます。</li>
+		<li>Split Tunnelのサポートにより、WARPから除外するアプリケーション、サイト、または IP アドレスをユーザーまたは企業が指定できます。これにより、ゲーム、ストリーミングサービス、または接続外で作業することを選択したアプリケーションなどのコンテンツを許可します。</li>
+	</ul>
+	<h3 id="--5">今すぐダウンロード</h3>
+	<p>ついに、これらのアプリケーションをお客様と共有できることを嬉しく思います。特に、Cloudflare MVPの、100,000人以上のデスクトップ用ベータ版ユーザー、そしてWARPを今日の機能へと成長させた、何百万人もの既存のモバイルユーザーに感謝したいと思います。</p>
+	<p>このアプリケーションは、今すぐこちらからダウンロードできます<a href="https://one.one.one.one/" target="_blank">https://one.one.one.one </a>。</p>
+</div>

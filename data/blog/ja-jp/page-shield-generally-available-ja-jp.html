@@ -1,0 +1,77 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image1-34.png" class="kg-image" alt="Page Shield is generally available"></figure>
+	<p>サプライチェーン攻撃は、CIOやセキュリティ専門家の間で懸念が高まっています。</p>
+	<p>サプライチェーン攻撃では、攻撃者は、ターゲットアプリケーションで使用されているサードパーティのツールやライブラリを侵害します。この結果、攻撃者は通常、アプリケーションの環境に特権的にアクセスできるようになり、個人データの窃取や後続の攻撃を実行できるようになります。例えば、Magecartは非常に一般的なタイプのサプライチェーン攻撃で、攻撃者が、サイトで用いられるサードパーティライブラリを侵害することによって、電子商取引サイトのチェックアウトフォームからクレジットカードデータをスキミングするものです。</p>
+	<p>Webアプリケーションのコンテキストにおいてサプライチェーン攻撃を識別して軽減できるようにするため、当社は本日、Page Shield in General Availability（GA）をローンチします。</p>
+	<p>Page Shieldを使用すると、アプリケーション上で実行されているスクリプトを可視化し、スクリプトが侵害されたり、ユーザーデータの流出を試みるなど悪意のある動作が見られる場合に通知を受けることができます。</p>
+	<p>Page Shieldを簡単に使えるよう懸命に工夫しました。ファイアウォールタブの下で見つけることができ、ワンクリックするだけでオンにすることができます。追加の設定は必要ありません。アラートは、さまざまなイベントに対して個別に設定することができます。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/12/image2-17.png" class="kg-image" alt="The Page Shield interface showing the list of scripts detected on the zone"></figure>
+	<h2 id="page-shield-"><strong>Page Shieldとは？</strong></h2>
+	<p>今年3月に、ブラウザを標的とした不正利用からエンドユーザーのデータを保護するソリューションである<a href="https://blog.cloudflare.com/ja-jp/introducing-page-shield-ja-jp/">Page Shieldの早期アクセスを発表しました</a>。</p>
+	<p>本日、<a href="https://blog.cloudflare.com/ja-jp/cloudflare-acquires-zaraz-to-enable-cloud-loading-of-third-party-tools-ja-jp/">当社はZarazの買収を発表しました</a>。Workers上に構築されたこのツールにより、お客様はブラウザでJavaScriptコードを読み込む代わりに、Cloudflare UIから直接、即時パフォーマンスとセキュリティの利点を活用して、簡単にサードパーティツールをクラウド上に読み込むことができるようになりました。しかし、すべてのアプリケーションがサードパーティマネージャーを使用しているわけでも、使用を希望しているわけでもありません。それでも、私たちがカバーします。</p>
+	<p>Page Shieldは、リバースプロキシとしてネットワーク上の位置を活用して、どのJavaScriptファイルやモジュールが読み込まれているかについての情報をブラウザから直接受け取ります。そして、JavaScriptファイルが悪意のある動作を示している場合、可視化、分析を提供し、警告を行います。</p>
+	<p>侵害されたJavaScriptファイルの例としては、Magecart攻撃、暗号マイニング、アドウェアなどが挙げられます。SaaSベースのアプリケーションやサービスの人気が高まる中、アプリケーションの所有者が管理できないサードパーティから直接JavaScriptコードを活用したり読み込んだりしていないアプリケーションを見つけることは非常にまれであり、侵害されたファイルの検出と緩和がさらに困難になっています。</p>
+	<h3 id="-"><strong>クライアント側のセキュリティはどの程度難しいのか？</strong></h3>
+	<p>Page Shieldの初期表示によると、ある特定のアプリケーションは平均して8つのサードパーティホストからスクリプトを読み込んでいることが判明しました。これらのホストは、Googleのような大企業から、Webアプリケーションの機能を迅速に拡張する「プラグアンドプレイ」モジュールを提供する中小企業までが所有している可能性があります（チャットシステム、日付ピッカー、チェックアウトプラットフォームなどを想定しています）。これらのサードパーティは、それぞれが潜在的なサプライチェーン攻撃のターゲットとなり得るため、攻撃対象が非常に大きくなり、監視が困難になります。</p>
+	<p>さらに悪いことに、事態は急速に変化します。平均して、毎月約50%のアプリケーションが新しいサードパーティホストからスクリプトを読み込んでいます。このことは、攻撃対象が大きいだけでなく、急速に変化していることを示しています。</p>
+	<h2 id="page-shield--1"><strong>Page Shieldの仕組みとは？</strong></h2>
+	<p>他のセキュリティ製品と同様に、Page Shieldは、可視化、検出、緩和および予防を提供すると考えることができます。最初のステップは可視化です。</p>
+	<h3 id="--1"><strong>可視性</strong></h3>
+	<p>オンにすると、Page Shieldの現在のイテレーションでは、<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP" target="_blank">コンテンツセキュリティポリシー</a>（CSP）が<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy-Report-Only" target="_blank">レポート専用ディレクティブ</a>で展開されて、ブラウザから情報を収集するようになっています。これにより、アプリケーション上で実行されているすべてのスクリプトのリストを提供することができます。</p>
+	<p>HTTPの用語で、オリジンサーバーからブラウザに戻るページレスポンスのサンプルに追加されるHTTP応答ヘッダーのことです。CSPヘッダーは次のようなものです。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>content-security-policy-report-only: script-src 'none'; report-uri /cdn-cgi/script_monitor/report
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>上記のヘッダーは、スクリプトを読み込まないこと <code>（script-src 'none'）</code>と、違反した場合は指定されたエンドポイントに報告することv &nbsp;<code>（report-uri /cdn-cgi/script_monitor/report)</code> &nbsp;をブラウザに指示しています。また、違反レポートのエンドポイントは<a href="https://www.cloudflare.com/ja-jp/network/" target="_blank">Cloudflareネットワーク</a>に解決し、そこで処理されるため、オリジンサーバーに追加のトラフィックが到達しないことにご注意ください。</p>
+	<p>HTTP POSTリクエストとして実装されたブラウザから送信される各違反レポートは、スクリプトに関する情報を提供してくれます。以下はその例です。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>{
+   "csp-report":{
+      "document-uri":"https://www.example.com/",
+      "referrer":"",
+      "violated-directive":"script-src-elem",
+      "effective-directive":"script-src-elem",
+      "original-policy":"script-src 'none'; report-uri /cdn-cgi/script_monitor/report",
+      "Disposition":"report",
+      "blocked-uri":"https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js",
+      "status-code":200,
+      "script-sample":""
+   }
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>このレポートが伝えること：</p>
+	<ul>
+		<li>(document-uri)からスクリプトが読み込まれたページ</li>
+		<li>リファラー（該当する場合）</li>
+		<li>どのCSPディレクティブに違反したのか</li>
+		<li>ディレクティブを含む完全なCSP</li>
+		<li>JavaScriptファイルへのフルリンク</li>
+		<li>ファイルを読み込む際にブラウザが受け取ったレスポンスコード。上記の例では、レスポンスコードが200となっており、ファイルの読み込みに成功したことを示しています。</li>
+	</ul>
+	<p>レポートで提供されるすべての情報を照合し、追加データで強化することで、Cloudflare UI<a href="https://developers.cloudflare.com/page-shield/" target="_blank">とAPI</a>の両方で、アプリケーションで読み込まれているすべてのスクリプトに関する詳細な情報を提供することができます。</p>
+	<p>Cloudflare Proの全ゾーンでは、Page Shieldのスクリプトレポートを利用できます。また、BusinessとEnterpriseのゾーンでは、ページの属性情報にアクセスでき、アプリケーション内のどこからスクリプトが読み込まれているかを素早く特定することができます。BusinessとEnterpriseゾーンでは、多くのスクリプト変更イベントに関するアラートを設定することもできます。</p>
+	<h3 id="--2"><strong>検出</strong></h3>
+	<p>アプリケーションの所有者は、すでにコンテンツセキュリティポリシーを活用して、特定のスクリプトのみが読み込まれるようにしているかもしれません。しかし、CSPは往々にして自由すぎる傾向があり、ブラウザは、JavaScriptファイルが悪意のある動作を示したときにそれを検出するネイティブなメカニズムを提供しません。これには、コンテンツセキュリティポリシーによって読み込みが許可されているJavaScriptコードも含まれるため、その有効性は非常に低くなります。</p>
+	<p>Page Shieldで悪意のある動作を検出し、お客様を支援する真の機会を得たと信じています。</p>
+	<p>システムによってゾーンで見つかったJavaScriptファイルに対して、悪意のある動作の検出を目的としたいくつかのアクションを実行します。</p>
+	<ol>
+		<li>当社の脅威フィードで悪意のあるものとして分類されたホスト名から読み込まれたすべてのJavaScriptファイルは、適切にフラグが立てられます。これには親ドメインも含まれます。</li>
+		<li>同様に、フィードの中で特定のURLが悪意のあるものとして分類された場合にも、フラグが立てられます。後者の場合、正確なファイルが悪意のあるものとして分類されていることから、攻撃が進行中である可能性が高いと考えられます。</li>
+		<li>最後に、ファイルをダウンロードし、分類器にかけます。分類器は、難読化解除、正規化および復号化のステップを実行した後、フォームフィールドのフェッチとデータ流出の呼び出しの相関関係を探します。相関関係が強ければ強いほど、そのスクリプトがMagecartタイプの攻撃を実行している可能性が高くなります。この技術に関する詳細な情報は、追って掲載する予定です。しばらくお待ちください！</li>
+	</ol>
+	<p>当社のEnterpriseプランのお客様は、検出機能を含むPage Shieldの機能一式を購入することができます。アカウントマネージャーまでお問い合わせください。</p>
+	<p>来年にかけてさらに製品を構築していく中で、検出シグナルの追加や分類器の改良を行い、アドウェア、ランサムウェアおよび暗号マイニングなどの追加攻撃タイプを検出していく予定です。</p>
+	<p>JavaScriptファイルに悪意のあるシグナルがトリガーされると、Cloudflareはメール、Webhook、PagerDutyなどのフォーマットで設定可能なアラートで通知することができます。</p>
+	<h3 id="--3"><strong>予防と緩和</strong></h3>
+	<p>大手のお客様の多くはすでにコンテンツセキュリティポリシーをお持ちで、<a href="https://blog.cloudflare.com/ja-jp/transform-http-response-headers-ja-jp/">Cloudflare経由でCSPを実装するHTTP応答ヘッダーを追加する</a>のは簡単ですが、もっと良い方法があります。</p>
+	<p>今回の即時リリースには含まれていませんが、当社はすでに、予防と緩和の両方のオプションをPage Shieldにもたらすために懸命に取り組んでいます。</p>
+	<ul>
+		<li>観測されたアクティブなスクリプトに基づいてCSPを簡単に生成し、ダッシュボード経由またはAPI経由で直接、デプロイメントパイプラインの一部として、必要に応じてポリシーを編集して再デプロイできるようにすることで、予防を行います。</li>
+		<li>当社のプロキシを活用し、HTTP応答本文から悪意のあるスクリプトをインラインで削除できるようにすることでブロックします。</li>
+	</ul>
+	<h2 id="--4"><strong>開始する</strong></h2>
+	<p>すでにCloudflareでWebサイトを運営している場合、当社の有料プランにアップグレードすれば、追加の設定なしで今日からPage Shieldの機能を活用することができます。また、 <a href="https://developers.cloudflare.com/page-shield/" target="_blank">当社のAPIを使用してPage Shieldの機能を使用することができます</a>。</p>
+	<p>まだCloudflareにWebサイトをお持ちでない場合、<a href="https://dash.cloudflare.com/sign-up" target="_blank">サインアップ</a>はわずか5分で完了します！<br></p>
+</div>

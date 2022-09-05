@@ -1,0 +1,70 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/11/image10.png" class="kg-image"></figure>
+	<p>今天，我们将启动<strong>证书透明度监控</strong>（这是我暑期实习时的项目！），用以帮助客户发现恶意的证书。如果您选择使用CT（证书透明度）监控，我们将在您的某个域名获得证书时发送电子邮件给您。我们爬取所有的公共日志从而快速找到这些证书。CT监控现已公测，您可以在Cloudflare控制面板的<a href="https://dash.cloudflare.com/?zone=crypto" target="_blank">Crypto（加密）选项卡</a>中启用。</p>
+	<h2 id="-">背景</h2>
+	<p>大多数网页浏览器在地址栏中都有一个锁的图标。这个图标实际上是一个按钮——如果你是一个安全倡导者或“强迫症”患者，您可能曾经点击过它！让我们来看看当你在谷歌Chrome点击了锁图标以后会发生什么：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/11/image7.png" class="kg-image"></figure>
+	<p></p>
+	<p>显示的结果似乎是个好消息。Cloudflare博客网站提供了一个有效的证书，您的数据是私有的，并且一切都是安全的。但这到底意味着什么呢？</p>
+	<h2 id="--1">证书</h2>
+	<p>您的浏览器正在进行一些幕后工作，来确保您的安全。当您请求访问一个网站（例如cloudflare.com）时，该网站应该提供一个证明其身份的证书。这个证书就像一个准章：它表明您的连接是安全的。换句话说，证书证明了网页内容在传输给您的过程中没有被拦截或篡改。更改后的Cloudflare站点会出现问题，尤其是如果它（伪装后）看起来像实际的Cloudflare站点。证书包含了网站及其所有者的信息，（证明其真实性）从而保护着我们。</p>
+	<p>我们分发这些证书是因为<strong>信誉系统在互联网上不起作用</strong>。如果您想为自己的网站获得证书，请向证书颁发机构（CA）申请证书，或者注册Cloudflare，我们将为您完成这件事！CA颁发证书，就像现实生活中的公证人在法律文件上盖章一样。他们会确认您的身份，查看一些数据，并使用他们的特殊身份为您授予数字证书。流行的CA包括DigiCert、Let 's Encrypt和Sectigo。这个系统很好地服务了我们，因为它遏制了冒名顶替者，而且还促进了域所有者和他们的访问者之间的信任。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/11/image12.png" class="kg-image"></figure>
+	<p></p>
+	<p>不幸的是，没有什么是完美的。</p>
+	<p>事实证明CA也会出错。在极少数情况下，它们会变得比较粗心。当这种情况发生时，就会有<em>非法</em>证书被颁发（即使它们看起来像真实的）。如果CA不小心为您的网站颁发了证书，但是您没有申请证书，那么就说明您遇到问题了。收到证书的人士可能可以：</p>
+	<ol>
+		<li>从您的访问者那里窃取登录凭证。</li>
+		<li>通过提供不同的内容来中断您的日常服务。</li>
+	</ol>
+	<p><a href="https://slate.com/technology/2016/12/how-the-2011-hack-of-diginotar-changed-the-internets-infrastructure.html" target="_blank">这种攻击<em>确实</em>会发生</a>，因此我们有充分的理由关注证书。更常见的情况是，域的所有者在发现意外的证书时不会去跟踪证书来源，并且感到恐慌。我们需要一种方法来防止这些情况破坏整个系统。</p>
+	<h2 id="--2">证书透明度</h2>
+	<p>啊，证书透明度（CT）。CT通过让所有证书公开且易于审核，解决了我刚才描述的问题。当CA颁发证书时，它们必须向至少两个“公共日志”提交证书。这意味着，总的来说，日志携带着关于互联网上所有可信证书的重要数据。现有多家公司提供了CT日志——谷歌也推出了自己的一些。<a href="https://blog.cloudflare.com/introducing-certificate-transparency-and-nimbus/">去年，我们发布了Cloudflare的Nimbus日志</a>。</p>
+	<p>日志非常非常大，通常包含了数亿个证书记录。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/11/image1.png" class="kg-image"></figure>
+	<p></p>
+	<p>日志基础结构可帮助浏览器验证网站身份。当您在Safari或谷歌Chrome中请求访问cloudflare.com时，浏览器实际上需要Cloudflare的证书被注册到一个CT日志中。如果日志中没有这个证书，那么地址栏旁边就不会显示锁图标。相反，浏览器会告诉你，你试图访问的网站是不安全的。你会愿意访问一个有“不安全”标记的网站吗？应该不会吧。</p>
+	<p>有一些系统可以审核CT日志并报告非法证书。因此，如果浏览器在日志中找到同样受信任的有效证书，那么一切都是安全的。</p>
+	<h2 id="--3">我们今天公布的是</h2>
+	<p>Cloudflare一直是CT行业的领导者。除了Nimbus，<a href="https://blog.cloudflare.com/a-tour-through-merkle-town-cloudflares-ct-ecosystem-dashboard/">我们还推出了一个名为Merkle Town的CT控制面板，并说明了我们是如何研发的。</a>今天，我们将发布证书透明度监控的公共测试版。</p>
+	<p>如果您选择使用CT监控，我们将在您的某个域名获得证书时发送电子邮件给您。当你接到警报时，不要惊慌；无论何时，只要发现可能的域名匹配，我们都会发出警告，这是出于谨慎的考虑。有时您可能会注意到可疑的证书。可能您不认识发布方，或者子域名不是您提供的（例如slowinternet.cloudflare.com）。警报很快就会被发送给您，因此如果出现问题，您可以联系CA。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/11/image6.png" class="kg-image"></figure>
+	<p></p>
+	<p>问题来了：如果服务已经审查了公共日志，为什么还需要警报提醒？不是应该能自动发现错误吗？其实不是的，因为审查并不够详尽。审核您的证书的最佳人选是您自己。您知道您的网站。您知道您的个人信息。Cloudflare将把相关证书摆在您面前（审查）。</p>
+	<p>您可以在Cloudflare控制面板上启用CT监控。只需转到<a href="https://dash.cloudflare.com/?zone=crypto" target="_blank">“加密”选项卡</a>，然后找到“证书透明性监控”选项即可。如果您在CT领域非常的有名，也可以随时关闭此功能。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/11/ct-free.png" class="kg-image"></figure>
+	<p></p>
+	<p>如果您使用的是业务或企业计划，您可以告诉我们应该通知谁。我们接受多达10个电子邮件地址作为提醒收件人，而不是只发送电子邮件给专区所有者（这是我们为免费和专业客户提供的服务）。我们这样做是为了避免压垮庞大的团队。这些电子邮箱不必与Cloudflare帐户绑定，可以随时手动添加或删除。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/11/ct-enterprise.png" class="kg-image"></figure>
+	<p></p>
+	<h2 id="--4">实际的工作原理是什么</h2>
+	<p>我们的密码学和SSL团队为此付出了巨大的努力；他们在前面提到的一些聪明工具的基础上创建了这一功能：</p>
+	<ul>
+		<li><a href="https://ct.cloudflare.com/" target="_blank">Merkle Town</a>是CT数据的枢纽。我们处理<em>所有</em>受信任的证书，并在我们的网站上显示相关统计信息。这意味着，Internet上发布的每个证书都将通过Cloudflare，并且所有数据都是公开的（因此此处不涉及隐私问题）。</li>
+		<li>Cloudflare Nimbus是我们自己的CT日志。它包含了4亿多个证书。</li>
+	</ul>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/11/image11.png" class="kg-image">
+		<figcaption>注意：并不是仅有Cloudflare，Google和DigiCert这几家CT日志提供商。</figcaption>
+	</figure>
+	<p></p>
+	<p>那么流程是这样的……在某个时候，您（或者冒名顶替者）会为您的网站申请证书。证书颁发机构批准请求并颁发证书。在24小时内，CA会将此证书发送到一组CT日志。这就是我们的切入点：Cloudflare使用一个名为“The Crawler”的内部进程来查看数百万条证书记录。Merkle Town调配The Crawler来监视CT日志并检查新证书。当The Crawler搜寻到新证书后，它将通过Merkle Town获取整个证书。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/11/image4.png" class="kg-image"></figure>
+	<p></p>
+	<p>当我们在Merkle Town中处理证书时，我们还会根据受监视的域列表对它进行检查。如果您启用了CT监控，我们将立即向您发送警报。得益于Merkle Town现有的基础结构，这才成为可能。并且，The Crawler的搜索速度非常快。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/11/image13.png" class="kg-image"></figure>
+	<p></p>
+	<h2 id="--5">我收到了证书警报。现在该怎么办？</h2>
+	<p>好问题。大多数情况下，证书警报都是常规事件。证书会到期和定期更新，所以收到这些邮件是完全正常的。如果一切看起来都是正确的（发行商，你的域名等等），那就把那封邮件扔进垃圾箱吧。</p>
+	<p>在极少数情况下，您可能会收到一封看起来很可疑的电子邮件。<a href="https://support.cloudflare.com/hc/en-us/articles/360031379012" target="_blank">我们提供了一篇详细的支持文章，这将对您有所帮助</a>。基本的协议（流程）是这样的：</p>
+	<ol>
+		<li>联系CA（在邮件中标注为“发行商”）。</li>
+		<li>解释<em>为什么</em>您认为证书可疑。</li>
+		<li>CA应该撤销证书（如果确实是恶意证书）。</li>
+	</ol>
+	<p>我们还有一支友好的支持团队，您可以在<a href="https://support.cloudflare.com/hc/en-us/articles/200172476" target="_blank">这里</a>联系到他们。尽管Cloudflare不在CA之列且无法吊销证书，但我们的支持团队对证书管理非常了解，并随时准备好为您提供帮助。</p>
+	<h2 id="--6">未来</h2>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/11/image2-1.png" class="kg-image"></figure>
+	<p></p>
+	<p>Cloudflare博客定期就会提到证书透明性。为什么？这是Chrome和Safari所要求的，它们<a href="http://gs.statcounter.com/" target="_blank">主导着浏览器市场</a>，并<a href="https://github.com/chromium/ct-policy" target="_blank">为互联网安全树立了先例</a>。但更重要的是，CT可以帮助我们在恶意证书被用于攻击之前发现它们。这就是为什么我们还将继续完善和改进证书检测的方法。</p>
+	<p>你还在等什么？快来启用<a href="https://dash.cloudflare.com/?zone=crypto" target="_blank">证书透明性监控</a>吧！</p>
+</div>

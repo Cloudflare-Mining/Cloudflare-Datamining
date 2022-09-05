@@ -1,0 +1,53 @@
+<div class="post-content lh-copy gray1">
+	<p>Cloudflareのミッションは、より良いインターネットを構築することです。そして本日、DNSリゾルバー<a href="https://1.1.1.1/" target="_blank">1.1.1.1</a> - 再帰的なDNSサービスをリリースします。このサービスでは、より速く、安全で、プライバシー中心のパブリックDNSリゾルバーを構築することで、インターネットの基盤をより強固なものにしています。DNSリゾルバー、1.1.1.1は、誰もがパブリックで使用することができます。これは、Cloudflareがこれまでコンシューマー向けにリリースしたはじめてのサービスです。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/Screenshot-2021-10-08-at-11.55.05.png" class="kg-image"></figure>
+	<p>リゾルバーには<strong>1.1.1.1</strong>と<strong>1.0.0.1</strong>のIPv4 アドレスを使用しています。覚えやすいですね。これらのアドレスは、共同研究と本サービスの両方のために、APNICからCloudflareに提供されています。APNICの詳細については、<a href="https://labs.apnic.net/?p=1127" target="_blank">APNICブログ</a>をご参照ください。</p>
+	<p>DNSリゾルバー、1.1.1.1はCloudflareのグローバルエニーキャスト<a href="https://www.cloudflare.com/ja-jp/network/" target="_blank">ネットワーク</a>を経由して提供されています。</p>
+	<h3 id="-dns-">背景：DNSにおけるリゾルバーの役割に関する簡単な説明</h3>
+	<p>私たちの<a href="https://dnsimple.com/" target="_blank">DNSimple</a>の友人たちが、<a href="https://howdns.works/" target="_blank">DNSの仕組み</a>についての理解を助けてくれる、この素晴らしいDNSチュートリアルを作成しました。リゾルバー、ルートネームサーバーなどの説明がとてもわかりやすく書かれています。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/06/dnsimple-howdns-works.png" class="kg-image" alt="dnsimple-howdns-works"></figure>
+	<p>ドメイン名を解決する場合、クエリはユーザーのエンドシステム (Webブラウザなど) から再帰的なDNSサービスに送られます。DNSレコードがサービスのローカルキャッシュにない場合、リカーサーは権威DNS階層にクエリして、必要なIPアドレス情報を検索します。リカーサーはDNSリゾルバー、1.1.1.1 が担当する部分です。それは高速である必要がありますし、最近は安全でなければなりません。</p>
+	<h3 id="dns-1-1-1-1-">DNSリゾルバー、1.1.1.1の目標</h3>
+	<p>当社のパブリックリゾルバーの目標はシンプルです。Cloudflareは、ユーザーのプライバシー保護の基準を引き上げながら、地球上で最速のパブリックリゾルバーを提供したいと考えています。インターネットの高速化のために、ユーザーからコンテンツまでの距離（遅延）を短縮することを目的として、当社ではすでに世界中にデータセンターを構築しています。最終的に、誰もが少なくとも1つのCloudflareデータセンターから10ミリ秒以内にいられるようにしたいと考えています。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/06/Cloudflare_and_world-population-map.png" class="kg-image" alt="Cloudflare_and_world-population-map"></figure>
+	<p>3月だけで、Cloudflareでは世界31か所に及ぶ新しいデータセンターを利用できるようになりました (<a href="https://blog.cloudflare.com/istanbul-not-constantinople/">イスタンブール</a>、<a href="https://blog.cloudflare.com/reykjavik-cloudflares-northernmost-location/">レイキャビク</a>、<a href="https://blog.cloudflare.com/riyadh/">リヤド</a>、<a href="https://blog.cloudflare.com/macau/">マカオ</a>、<a href="https://blog.cloudflare.com/baghdad/">バグダッド</a>、<a href="https://blog.cloudflare.com/usa-expansion/">ヒューストン、インディアナポリス、モンゴメリー、ピッツバーグ、サクラメント</a>、<a href="https://blog.cloudflare.com/mexico-city/">メキシコシティ</a>、<a href="https://blog.cloudflare.com/tel-aviv/">テルアビブ</a>、<a href="https://blog.cloudflare.com/durban-and-port-louis/">ダーバン、ポートルイス</a>、<a href="https://blog.cloudflare.com/cebu/">セブシティ</a>、<a href="https://blog.cloudflare.com/edinburgh/">エジンバラ</a>、<a href="https://blog.cloudflare.com/riga-tallinn-vilnius/">リガ、タリン、ビリニュス</a>、<a href="https://blog.cloudflare.com/welcome-calgary-saskatoon-and-winnipeg/">カルガリー、サスカトゥーン、ウィニペグ</a>、<a href="https://blog.cloudflare.com/more-us-data-centers/">ジャクソンビル、メンフィス、タラハシー</a>、<a href="https://blog.cloudflare.com/bogota/">ボゴタ</a>、<a href="https://blog.cloudflare.com/luxembourg-chisinau/">ルクセンブルク、キシナウ</a>)、ネットワークの他のすべての都市と同様に、新しいサイトでは初日からDNSリゾルバー、1.1.1.1をご利用いただけます！</p>
+	<p>当社の高速かつ高度に分散されたネットワークは、あらゆるプロトコルに対応するために構築されており、現在、インターネット上で最速の権威DNSプロバイダーとして、700万を超えるインターネットプロパティにサービスを提供しています。さらに、エニーキャストサービスを、13のルートネームサーバーのうちの2つに提供しています。理論的に考えると、次のステップは、ユーザーに高速な再帰DNSサービスを提供することでした。当社のリカーサーは、当社に併置された権威サーバーを利用できるため、すべてのドメイン名の検索が高速になります。</p>
+	<p>DNSSECでは、リゾルバーと権威サーバー間のデータの整合性を保証しますが、お客様への「ラストマイル」（最終区間）のプライバシーは保護しません。DNSリゾルバー、1.1.1.1は、新しいDNSプライバシー基準（DNS-over-TLS、およびDNS-over-HTTPS）の両方をサポートしています。これらはどちらも最終行程の暗号化を提供し、DNSクエリーのプライバシーを保ち、改ざんされることもありません。</p>
+	<h3 id="-">リゾルバーのプライバシーに向けた取り組み</h3>
+	<p>従来、リカーサーは、ルートまたは権限DNSへ到達する方法を見つけると、完全なドメイン名を任意の仲介者に送信します。これは、<a href="https://www.cloudflare.com/ja-jp/" target="_blank">www.cloudflare.com</a>にアクセスを試みた場合、ルートサーバーと「.com 」サーバーは両方とも完全なドメイン名 (つまり、www、cloudflare、comの部分）についてクエリーされます。ただし、ルートサーバーはリカーシブをドットコムにリダイレクトするだけで済みます（完全修飾ドメイン名の他のものとは無関係です）。このように、DNSを経由して個人のブラウジング情報すべてに容易にアクセスできることに関しては、たくさんの人が深刻なプライバシーの懸念を表明しています。これは、いくつかのリゾルバーのソフトウェアパッケージによって解決されていますが、すべてのソリューションが広く採用またはデプロイされているわけではありません。</p>
+	<p>DNSリゾルバー、1.1.1.1 は、初日からスタブリゾルバーと再帰リゾルバーの間での使用のために、定義／提案されたDNSプライバシー保護メカニズムをすべて提供します。少し解説を加えると、スタブリゾルバーとはお客様がお使いのオペレーティングシステムのコンポーネントで、再帰リゾルバーと通信するものです。<a href="https://tools.ietf.org/html/rfc7816" target="_blank">RFC7816</a>で定義された「DNSクエリ名の最小化（QNAME最小化）」のみを使用すると、DNSリゾルバー、1.1.1.1の働きにより、ルートやTLDなど、中間DNSサーバーに漏洩する情報が減少します。つまり、DNSリゾルバー、1.1.1.1は、リゾルバーに次の質問先を伝えるのに十分な名前しか送信しないことを意味します。</p>
+	<p>DNSリゾルバー、1.1.1.1 は、ポート853（<a href="https://developers.cloudflare.com/1.1.1.1/dns-over-tls/" target="_blank">DNS over TLS</a>）でプライバシー対応のTLSクエリーもサポートしています。このため、Cloudflareではスヌーピングネットワークからクエリーを隠すことができます。さらに、実験的なDoH (<a href="https://developers.cloudflare.com/1.1.1.1/dns-over-https/" target="_blank">DNS over HTTPS</a>) プロトコルを提供することで、ブラウザや他のアプリケーションがDNSとHTTPSトラフィックを 1 つの接続に混在させることができるようになったため、エンドユーザーのプライバシーを高めながら、将来的には高速なサービスを多くの場面で提供できます。</p>
+	<p>DNSアグレッシブネガティブCachingを使うと、<a href="https://tools.ietf.org/html/rfc8198" target="_blank">RFC8198</a>で説明されているように、グローバルDNSシステムの負荷をさらに減らすことができます。この手法は、まず、ネガティブな（または存在しない）情報を一定期間保持する既存のリゾルバーのネガティブキャッシュの使用を試みます。DNSSECで署名されたゾーンと、キャッシュ内のNSECレコードから、リゾルバーは、リクエストされた名前が存在しないかどうかをさらにクエリーを実行せずに把握できます。ですから、たとえば、wwwwwww.クラウド、それから wwww.フレアという文字を打ち込んだとすると、2番目のクエリーには瞬時に「いいえ」（DNSの世界ではNXDOMAIN）という回答が返されます。アグレッシブネガティブCachingは、DNSSEC署名付きゾーンでのみ機能し、ルートと1544件のTLDのうち400件で本日から署名することができます。</p>
+	<p>当社では可能な場合には<a href="https://blog.cloudflare.com/dnssec-an-introduction/">DNSSEC</a>検証を行っています。これにより、回答が正確で改ざんされていないことを確認できます。署名検証のコストは低く、積極的なネガティブキャッシュを行うことでもコストを節約できるため、この節約分でも十分これを賄うことができます。当社では、当社が提供する回答をユーザーのみなさまに信頼していただきたいと考えています。そのため、クライアントに悪い回答を提供することを極力避けるために可能なチェックを全て実行したいと考えています。</p>
+	<p>しかし、<a href="https://blog.cloudflare.com/dnssec-complexities-and-considerations/">DNSSEC</a>はどんなエラーも許容しません。権威DNSオペレーターがDNSSEC構成でミスをすると、DNSSECはエラーを含む構成ドメインを解決できないことがあります。この問題を回避するために、Cloudflareでは「Negative Trust Anchors」をドメインに構成する予定です。DNSSECエラーが検出／検証されたドメインで、権威オペレーターによる設定修正が行われたら、それらを削除します。これにより、特定の誤設定された構成ドメインに対するDNSSEC検証を一時的に無効にして、エンドコンシューマーへのアクセスを復元することで、破損したDNSSECドメインの影響を制限できます。</p>
+	<h3 id="--1">どうやって構築したのか？</h3>
+	<p>当初、当社は独自のリゾルバーを構築することを考えましたが、複雑になることと市場参入を考えてやめることにしました。次に、市場に出回っているすべてのオープンソースリゾルバーを調べました。多くの選択肢の中から、プロジェクトの目標のほとんどを満たすものに、選択肢を2、3に絞りました。結局、<a href="https://www.knot-resolver.cz/" target="_blank">CZ NICのKnot Resolver</a>の周りにシステムを構築することに決めました。これはもともと約2年半前にリリースされた最新のリゾルバーです。Knot Resolverを選択することで、ソフトウェアの多様性も向上します。転換点となったのは、同リゾルバーが<a href="https://openresty.org/" target="_blank">OpenResty</a>に似た、当社が求めていたコア機能の多くを備えていることでした。Knot Resolverは積極的に活用されており、現在も改善が加えられています。</p>
+	<h3 id="--2">他の誰もやらないけれど、当社がやっているおもしろいこと</h3>
+	<p>当社が求めていた高度な最新の機能は次のとおりです。</p>
+	<ul>
+		<li>クエリーの最小化 <a href="https://tools.ietf.org/html/rfc7816" target="_blank">RFC7816</a>、</li>
+		<li>DNS-over-TLS (Transport Layer Security) <a href="https://tools.ietf.org/html/rfc7858" target="_blank">RFC7858</a>、</li>
+		<li>DNS-over-HTTPS プロトコル<a href="https://datatracker.ietf.org/wg/doh/about/" target="_blank">DoH</a>、</li>
+		<li>積極的な否定的回答 <a href="https://tools.ietf.org/html/rfc8198" target="_blank">RFC8198</a>、</li>
+	</ul>
+	<p>小さな免責：Knot Resolverの元々の主要開発者である<a href="https://blog.cloudflare.com/author/marek/">Marek Vavruša</a>は、Cloudflare DNSチームで2年以上にわたり働いていました。</p>
+	<h3 id="cloudflare-">Cloudflareリゾルバーを高速化する方法</h3>
+	<p>リゾルバーの速度に影響する要因はたくさんあります。まず何よりも大切なのは、Cacheに応答できるかどうか、ということです。Cacheへの回答が可能であれば、応答時間は、クライアントからリゾルバへーのパケットのラウンドトリップの時間だけで済みます。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/06/1.1.1.1-dns-resolver-performance.png" class="kg-image" alt="1.1.1.1-dns-resolver-performance"></figure>
+	<p>リゾルバーが認証機関から回答を得る必要がある場合、物事は少し複雑になります。リゾルバーが名前を解決するためには、DNS階層に従う必要があります。つまり、リゾルバーはルートから複数の権威サーバーと通信する必要があるのです。例えば、アルゼンチンのブエノスアイレスのリゾルバーは、ドイツのフランクフルトのリゾルバーよりもDNS階層に従うのに時間がかかります。それは後者の方が権威サーバーに近いためです。この問題を回避するために、当社では一般的な名前のためにキャッシュを帯域外で事前入力します。つまり、実際のクエリーが来たときに、応答をキャッシュからフェッチする方がはるかに高速なのです。今後数週間にわたり、リゾルバーをより速くより良くするために、当社での取り組みを、高速Cachingも含めてブログでご紹介する予定です。</p>
+	<p>当社の広大なネットワークの問題の1つは、キャッシュヒット率が各データセンターで構成されているノード数に反比例することです。データセンターに最も近いノードが 1 つだけ存在する場合は、同じクエリーを2回尋ねると、2回目はキャッシュされた回答を取得するはずです。ただし、各データセンターには数百のノードが存在するため、キャッシュされていない応答が返され、リクエストごとに遅延料金が支払われることがあります。一般的なソリューションの 1 つは、キャッシュロードバランサーをすべてのリゾルバーの前に配置することです。しかし、単一障害点が発生します。当社では単一障害点は発生させません。</p>
+	<p>一元化されたキャッシュに依存する代わりに、DNSリゾルバ、1.1.1.1は革新的な分散キャッシュを使用しています。これについては、ブログの後半で説明します。</p>
+	<h3 id="--3">データポリシー</h3>
+	<p>ポリシーの内容をご紹介します。当社では、クライアントIPアドレスを決して保存しません。DNSリゾルバーのパフォーマンス(リージョン内および/または難読化の後の人気のあるドメインに基づいてすべてのキャッシュを事前入力する、APNICの調査など)を向上させるものにのみ、クエリー名を使用します。</p>
+	<p>Cloudflareは、エンドユーザーを識別する情報は決してログに保存せず、当社のパブリックリゾルバーによって収集されたすべてのログは、24時間以内に削除されます。引き続き、当社では<a href="https://developers.cloudflare.com/1.1.1.1/privacy" target="_blank">プライバシーポリシー</a>に準拠して、ユーザーデーターが広告主に販売したり、コンシューマーをターゲットにしないことを保証します。</p>
+	<h3 id="--4">セットアップする</h3>
+	<p>ぜひ、<a href="https://1.1.1.1/" target="_blank">https://1.1.1.1/</a> をご覧ください。とてもシンプルですから！</p>
+	<h3 id="--5">これらのアドレスについて</h3>
+	<p>当社は、IPv4アドレス、1.0.0.1 と1.1.1.1のパートナーであるAPNICに感謝しています。（このアドレスの覚えやすさは誰もが同意することです）。彼らの長年の研究とテストがなければ、これらのアドレスを製品にすることは不可能でした。しかし、まだ道半ばです。今後のブログで、IPとの冒険についてご紹介するので楽しみにしていてください。</p>
+	<p>IPv6の場合、当社では2606:4700:4700። 1111と2606:4700:4700። 1001をサービスのために選びました。クールなIPv6アドレスを取得するのは簡単ではありません。しかし、数字だけを使用するアドレスを選択しました。</p>
+	<p>でも、覚えやすいアドレスを使うのはなぜでしょうか？パブリックリゾルバーの何が特別なのでしょう？当社では、自分たちの仕事のほとんどすべてを名前で呼びます。しかし、プロセスには最初のステップというものがあり、そこにこれらの数字が関係してきます。そこで、リゾルバーサービスをみつけるためには、当社側ではお客様がお使いのコンピューターや接続デバイスに入力された数字が必要なのです。</p>
+	<p>インターネットに接続する人ならだれでも当社のパブリックリゾルバーを使用することができ、その使用方法は <a href="https://1.1.1.1/" target="_blank">https://1.1.1.1/</a>にアクセスして「<strong>開始</strong>」をクリックすれば参照できます。</p>
+	<h3 id="-4-1-">なぜ4月1日に発表するか？</h3>
+	<p>日曜日は、2018年4月1日です（アメリカでは、4/1/2018と記述します。）<strong>4</strong>と<strong>1</strong>があるのがわかりますか？それで、<strong>1.1.1.1</strong>を今日発表することになったのです。1が4つ、だからです！もし、これで<strong>1.1.1.1</strong>をみなさんに覚えていただけるなら、この名前にして良かったです！</p>
+	<p>そして、今日は<a href="https://en.wikipedia.org/wiki/April_Fools%27_Day" target="_blank">エープリルフール</a>でもあります。多くの人にとって、今日はジョークや、いたずらや、害のない悪ふざけをする日です。この発表は、ジョークでも悪ふざけでも、いたずらでもありません。これは、DNSリゾルバー、 <a href="https://1.1.1.1/" target="_blank">1.1.1.1</a> です! こちらでフォローしてください：<a href="https://twitter.com/hashtag/1dot1dot1dot1" target="_blank">#1dot1dot1dot1</a></p>
+</div>

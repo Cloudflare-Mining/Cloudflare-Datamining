@@ -1,0 +1,35 @@
+<div class="post-content lh-copy gray1">
+	<p>今天，我们宣布从 Cloudflare 边缘节点提供对恶意软件检测和预防的直接支持，为 Gateway 用户提供对抗安全威胁的另一道防线。</p>
+	<p>Cloudflare Gateway保护员工和数据免受来自互联网的威胁，而且不会为了安全而牺牲性能。Gateway 客户连接到 Cloudflare 位于世界各地的 200 多个数据中心之一，由我们的网络应用内容和安全策略来保护其互联网流量，无需将流量回传到中央位置。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/1-2.png" class="kg-image"></figure>
+	<p>去年，Gateway 从一个<a href="https://blog.cloudflare.com/protect-your-team-with-cloudflare-gateway/">安全 DNS 过滤解决方案3</a>扩展为一个完整的<a href="https://blog.cloudflare.com/zh-cn/gateway-swg-zh-cn/">安全 Web 网关（SWG）</a>，也能保护每一个用户的 HTTP 流量。这使管理员不仅能检测和阻止 DNS 层的威胁，还能检测和阻止恶意 URL 和有害的文件类型。此外，管理员现在可以一键创建高影响力、全公司范围的策略来保护所有用户，或者创建更精细的<a href="https://blog.cloudflare.com/gateway-swg-2/">基于用户身份的规则</a>。</p>
+	<p>本月初，我们在 Cloudflare Gateway 中推出了<a href="https://blog.cloudflare.com/gateway-app-policies/">应用程序策略</a>，使管理员能容易阻止特定 Web 应用程序。借助这一功能，管理员能阻止那些常用于分发恶意软件的应用程序，如云文件存储。</p>
+	<p>这些 Gateway 功能实现了安全性的分层策略。借助 Gateway 的 DNS 过滤，客户免受<a href="https://blog.cloudflare.com/a-quirk-in-the-sunburst-dga-algorithm/">滥用 DNS 协议</a>以便与某个 C2 （命令与控制）服务器通讯、下载植入负载或渗漏企业数据的威胁。DNS 过滤适用于所有产生 DNS 查询的应用程序，而 HTTP 流量检查则作为补充，深入到用户浏览互联网时可能遭遇到的威胁。</p>
+	<p>今天，我们很高兴能宣布另一层防御，在 Cloudflare Gateway 中增加防病毒保护。现在管理员能通过 Cloudflare 的边缘节点阻止恶意软件和其他恶意文件，以免其下载到企业设备上。</p>
+	<h3 id="-">阻止恶意软件传播</h3>
+	<p>从一开始就保护公司的基础设施和设备不受恶意软件的感染是 IT 管理员的首要任务之一。恶意软件可造成广泛的破坏：经营活动可能被勒索软件破坏，敏感数据可能被间谍软件窃取，本地 CPU资源可能被加密劫持恶意软件利用以获取经济利益。</p>
+	<p>为了入侵网络，恶意行为者通常试图通过电子邮件发送的附件或恶意链接传播恶意软件。近期，为了避开电子邮件安全检查，攻击者开始利用其他通讯渠道（例如短信、语音和支持工单软件）来传播恶意软件。</p>
+	<p>恶意软件的破坏性影响，加上潜在入侵的庞大攻击面，使得恶意软件预防成为安全团队最关心的问题。</p>
+	<h3 id="--1">纵深防御</h3>
+	<p>没有任何一种工具或方法能提供完美的安全，因此要采取分层防御。并非所有威胁都是已知的，因此在用户连接到含有潜在恶意内容的网站后，管理员就需要借助额外的检查工具。</p>
+	<p>高度复杂的威胁可能成功入侵了用户的网络，这时安全团队的主要任务是快速确定攻击范围。在这些最坏的情况下，用户访问了一个被认定为恶意的域、网站或文件，对安全团队而言，最后一道防线就是清楚了解针对其组织的攻击来自何处以及什么资源受到影响。</p>
+	<h3 id="--2">隆重推出文件扫描</h3>
+	<p>今天，借助 Cloudflare Gateway，您可以增强您的端点保护并防止恶意文件下载到员工的设备。在来自互联网的文件通过最接近的 Cloudflare 边缘数据中心时，Gateway 将对其进行扫描。Cloudflare 为客户提供的这病毒扫描防御，如同 DNS 和 HTTP 流量过滤，管理员不必购买额外的防病毒许可证，也不用考虑更新病毒定义。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/2-1.png" class="kg-image"></figure>
+	<p>当用户发起下载，文件在 Cloudflare 边缘通过 Gateway 时，这个文件会被发送至恶意软件扫描引擎。这个引擎包含了恶意软件样本定义并每日更新。当 Gateway 扫描某个文件并发现存在恶意软件时，其将通过重置连接来阻止文件传输，结果是用户浏览器中会显示下载错误。Gateway 也会记录文件的下载 URL，文件的 SHA-256 哈希，以及该文件因存在恶意软件而被阻止的日志。</p>
+	<p>一种常见的安全方法是“假设入侵”。安全团队假设承认并非所有威胁都是事先已知的，因此需要对快速响应威胁的能力进行优化。借助 Gateway，管理员可以利用 Gateway 的集中日志记录来全面了解威胁对其组织的影响，作为安全事件响应的一部分，为威胁补救提供清晰的步骤。</p>
+	<h3 id="--3">遭入侵后检测恶意软件</h3>
+	<p>在使用“假设入侵”方法时，安全团队依赖于从所有可用的攻击相关信息中获取可据以行动的洞察。一次较复杂的攻击可能会以下方式展开：</p>
+	<ul>
+		<li>在通过各种方式的尝试入侵某个用户的系统后（导致“假设入侵”方法），一个 0 阶段植入工具（或 Dropper）放置于被入侵的设备上。</li>
+		<li>这个文件可能是完整的，也可能是某个大型植入工具的一部分，并向一个域发送 DNS 查询——威胁研究机构此前并不知道该域与攻击行动的 C2 相关。</li>
+		<li>对 C2 服务器查询的响应包含了指示植入工具可在何处下载该植入工具的更多组件的信息。</li>
+		<li>植入工具根据DNS查询结果连接到另一个域（威胁研究机构也未知其为恶意），以下载植入工具的额外组件。</li>
+		<li>完成构建的植入工具执行另一 C2 服务器分配的任意数量任务。其中包括窃取本地文件、在网络中横向移动、加密本地机器上的所有文件，甚至使用本地 CPU 来挖掘加密货币。</li>
+	</ul>
+	<p>Cloudflare Gateway 并非简单地监测和阻止对未知与 C2、DNS 隧道通讯相关或由某个域名生成算法（DGA）创建的域的查询。Gateway 使用启发式威胁研究方法来识别由DGA为上述攻击目的而生成的查询，从组织的日志数据中检测这些之前未知的威胁，并在安全管理员需要手动干预之前主动予以阻止。</p>
+	<p>威胁研究正在不断发展。Cloudflare Gateway 降低了 IT 管理员跟上安全威胁步伐的负担，提供<a href="https://blog.cloudflare.com/solarwinds-orion-compromise-trend-data/">源自 Cloudflare 网络的洞察</a>来保护位于任何地方的大大小小的组织。</p>
+	<h3 id="--4">下一步</h3>
+	<p>我们的目标是向各种规模的组织提供复杂但易于部署的安全能力，以便组织能专注于业务本身发展。我们很高兴能继续扩展 Gateway 的能力来保护用户及其数据。DNS 隧道通讯和 DGA 检测包含于 Gateway DNS 过滤中，对 <a href="https://www.cloudflare.com/zh-cn/teams-pricing/" target="_blank">50 用户以上团队</a>免费提供。Cloudflare 边缘恶意软件内联检测将包含于 Teams Standard 和 Teams Enterprise 计划中。</p>
+	<p>请继续关注网络级别的过滤和与 GRE 隧道的集成 — 我们才刚刚开始。点击<a href="https://www.cloudflare.com/zh-cn/teams/" target="_blank">此链接</a>以马上注册。</p>
+</div>

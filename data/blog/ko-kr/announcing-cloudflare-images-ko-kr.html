@@ -1,0 +1,149 @@
+<div class="post-content lh-copy gray1">
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image3-16-3.png" class="kg-image"></figure>
+	<p>오늘 모든 고객을 위해 Cloudflare Images가 출시됩니다. Images는 이미지를 저장하고, 크기 조정, 최적화 등을 제공하는 올인원 제품입니다. 모든 규모의 고객이 몇 분만에 확장 가능하며 비용 최적화된 &nbsp;이미지 파이프라인을 구축할 수 있도록 Cloudflare Images를 마련했습니다.</p>
+	<h2 id="-"><strong>효율적인 이미지 저장</strong></h2>
+	<p>여러 레거시 이미지 파이프라인은 이미지를 가져와 다양한 크기와 형식을 고려하여 여러 복사본을 생성하도록 설계되어 있습니다. 그다음 이러한 여러 복사본은 스토리지 버킷에 저장되어 CDN을 이용해 전달됩니다. 이 아키텍처는 유지하기 어려울 수 있으며 예상할 수 없는 방식으로 인프라 비용을 높입니다.</p>
+	<p>Cloudflare Images를 이용하면, 동일한 이미지를 다른 크기와 형식으로 <em>생성</em>하고 <em>저장</em>할 경우에도 걱정할 필요가 없습니다. Cloudflare Images는 저장된 이미지와 변형을 명확하게 구분해줍니다. 이미지를 업로드한 다음 업로드한 이미지에 정의된 변형을 적용할 수 있습니다. 변형과 다른 형식은 저장된 이미지 할당량을 차지하는 것으로 계산되지 않습니다.</p>
+	<p>즉, 사용자가 사진을 업로드한 다음 크기를 세 가지로 조정하고 형식을 두 가지로 바꿔야 할 경우, 각기 다른 이미지 일곱 개(원본에 더하여 두 가지 형식의 세 가지 변형)가 아니라 저장한 이미지 <em>하나</em> 에 대해서만 비용을 지불합니다.</p>
+	<h2 id="--1"><strong>빌트인액세스 컨트롤</strong></h2>
+	<p>Cloudflare Images에 업로드되는 모든 이미지는 비공개로 표시되므로 만료 서명된 URL 토큰으로만 액세스할 수 있습니다. 따라서 프리미엄 콘텐츠를 판매하는 멤버십 사이트와 같은 사용 사례에 적합합니다.</p>
+	<p>서명된 URL로 사용자 지정 로직을 사용하여 유료 회원 여부를 확인할 수 있고 결제한 이미지 세트에만 액세스할 수 있게 하는 유연성을 제공합니다.</p>
+	<h2 id="-egress-cost-"><strong>송신 비용 (egress cost) 제거</strong></h2>
+	<p>송신 비용 (egress cost)은 스토리지 공급자에게서 데이터를 가져오는 비용입니다. 가장 일반적인 사례는 스토리지에서 이미지를 제공할 때 전송된 비트에 비용을 지불하는 것입니다. 그러면 같은 이미지가 표시될 때마다 비용을 지급하게 됩니다. 서로 다른 솔루션 사이에서 비용 편익 분석을 수행할 때는 이 비용을 고려하지 않는 게 쉽습니다. 하지만 송신 비용은 빠르게 증가하며 고객이 스토리지 공급자에게 총 송신 스토리지 비용의 <em>몇 배가 되는 거금</em>을 지불하는 것은 흔한 일입니다.</p>
+	<p>이미지 파이프라인에 다양한 공급자 솔루션을 사용하는 경우, 스토리지로는 A 공급자를, 이미지 크기 조정에는 B 공급자를, 이미지 제공에는 C 공급자를 사용할 수 있습니다. “<em>이미지 파이프라인의 각 측면에 가장 저렴한 옵션을 선택했다</em>.” 고 생각하면 겉으로 보기에 이 솔루션이 더 저렴해 보일 수 있습니다. 하지만 이렇게 설정하면 여전히 크기 조정 서비스(B 공급자)와 CDN(C 공급자)가 A 공급자에게 이미지를 요청해야 합니다.</p>
+	<p>Cloudflare Images를 사용하면 이미지가 하나의 제품으로 저장, 최적화, 제공되므로 송신 비용을 걱정할 필요가 없습니다. 그리고 Cloudflare Images 청구서에는 항목이 두 줄만 표시됩니다. 저장 이미지 10만 개당 월 $5, 전송 이미지 10만 개당 $1를 지불하는 것입니다. 추가적인 크기 조정, 컴퓨팅, 송신 등의 비용이 없습니다.</p>
+	<h2 id="--2"><strong>이미지 업로드</strong></h2>
+	<p>Cloudflare Images는 이미지를 업로드할 여러 방법을 제공합니다. JPEG, GIF, WEBP를 포함한 일반적인 파일 형식을 모두 사용할 수 있습니다. Images에는 최대 10MB의 이미지를 업로드할 수 있습니다.</p>
+	<p>이미지가 적거나 제품을 체험만 하려는 경우 Images 대시보드를 사용할 수 있습니다. 하나 이상의 이미지를 드래그 앤 드롭하기만 하면 됩니다.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/03/image1-10-4.png" class="kg-image">
+		<figcaption><em><em>Cloudflare Images 대시보드</em></em></figcaption>
+	</figure>
+	<p>사용자가 이미지를 업로드할 수 있는 앱이 있다면, Cloudflare Images의 크리에이터 직접 업로드 기능을 사용할 수 있습니다.</p>
+	<p>크리에이터 직접 업로드 API로 일회용 토큰을 요청할 수 있습니다. 일회용 업로드 URL은 앱에서 API 키나 토큰을 노출하지 않고 사용자의 제출을 업로드하는 데 사용할 수 있습니다. 다음은 일회용 업로드 URL을 반환하는 예시 cURL입니다.</p>
+	<pre><code>curl --request POST \
+  --url https://api.cloudflare.com/client/v4/accounts/:account_id/images/v1/direct_upload \
+  --header 'Content-Type: application/json' \
+  --header 'Authorization: Bearer :token'
+</code></pre>
+	<p>요청이 성공적이라면 다음과 같은 응답을 받게 됩니다.</p>
+	<pre><code>{
+  "result": {
+    "id": "2cdc28f0-017a-49c4-9ed7-87056c839c2",
+    "uploadURL": "https://upload.imagedelivery.net/2cdc28f0-017a-49c4-9ed7-87056c839c2"
+  },
+  "result_info": null,
+  "success": true,
+  "errors": [],
+  "messages": []
+}
+</code></pre>
+	<p>그러면 클라이언트측 앱은 계정 자격 증명을 클라이언트에 노출하지 않고 uploadURL에 직접 이미지를 업로드할 수 있습니다.</p>
+	<h2 id="--3"><strong>이미지 리사이징</strong></h2>
+	<p>Cloudflare Images로 변형될 이미지 크기를 정의하고 업로드된 이미지에 적용할 수 있습니다. 변형을 최대 20개까지 정의하여 다양한 사용 사례를 지원할 수 있습니다. 각 변형에는 크기를 조정한 이미지의 폭 및 높이와 같은 속성이 있습니다.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/03/image4-11-1.png" class="kg-image">
+		<figcaption><em><em>Cloudflare Images에서 변형 구성</em></em></figcaption>
+	</figure>
+	<p>폭과 높이 치수를 해석할 방법을 나타내도록 적합성 속성을 구성할 수도 있습니다.</p>
+	<!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-c6q4 {
+			font-family: inherit;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-1jcf {
+			font-family: inherit;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg">
+		<thead>
+			<tr>
+				<th class="tg-1jcf"><span style="font-weight:700;font-style:normal;text-decoration:none">적합성 옵션</span></th>
+				<th class="tg-1jcf"><span style="font-weight:700;font-style:normal;text-decoration:none">동작</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-c6q4"><span style="font-weight:400;font-style:normal;text-decoration:none">축소</span></td>
+				<td class="tg-c6q4"><span style="font-weight:400;font-style:normal;text-decoration:none">이미지 크기가 지정된 폭 또는 높이에 맞게 축소되지만 확대되지는 않습니다.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-c6q4"><span style="font-weight:400;font-style:normal;text-decoration:none">포함</span></td>
+				<td class="tg-c6q4"><span style="font-weight:400;font-style:normal;text-decoration:none">이미지 크기가 가로 세로 비율을 유지하면서 지정된 폭 또는 높이 내에서 최대한 크게 조정(축소 또는 확대)됩니다.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-c6q4"><span style="font-weight:400;font-style:normal;text-decoration:none">채우기</span></td>
+				<td class="tg-c6q4"><span style="font-weight:400;font-style:normal;text-decoration:none">이미지 크기가 폭과 높이가 지정된 전체 영역을 정확히 채우도록 조정되며 필요할 경우 잘립니다.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-c6q4"><span style="font-weight:400;font-style:normal;text-decoration:none">자르기</span></td>
+				<td class="tg-c6q4"><span style="font-weight:400;font-style:normal;text-decoration:none">이미지가 폭과 높이가 지정된 전체 영역 내에 맞도록 축소되고 잘립니다. 이미지는 확대되지 않습니다. 주어진 치수보다 작은 이미지의 경우 축소와 같습니다. 주어진 치수보다 큰 이미지의 경우 채우기와 같습니다.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-c6q4"><span style="font-weight:400;font-style:normal;text-decoration:none">여백</span></td>
+				<td class="tg-c6q4"><span style="font-weight:400;font-style:normal;text-decoration:none">이미지 크기가 가로 세로 비율을 유지하면서 지정된 폭 또는 높이 안에서 최대한 크게 조정(축소 또는 확대)되며, 추가 영역은 배경색(기본값 흰색)으로 채워집니다</span></td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: html-->
+	<p>유연성을 최대한으로 제공할 수 있게 더 많은 속성을 추가할 계획입니다. 이용하고 싶은 특정 속성이 있으면 <a href="https://docs.google.com/forms/d/1UmltETYpHIt0C9cZkr607ofcNUt53jgqk18Dh8vHxyU" target="_blank">알려 주세요</a>.</p>
+	<p>변형을 정의하고 나면 모든 이미지에서 이를 사용할 수 있게 됩니다. 대시보드에서 간단히 변형을 클릭하여 각 변형을 사용하면 이미지가 어떻게 렌더링 될지 빠르게 미리 보기 해보세요.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/03/image2-18-1.png" class="kg-image">
+		<figcaption><em><em>Cloudflare Images에서 변형 미리 보기</em></em></figcaption>
+	</figure>
+	<h2 id="--4"><strong>이미지 전송 최적화</strong></h2>
+	<p>첫 번째 이미지를 업로드하면 Images 대시보드에서 이미지 전송 URL을 확인할 수 있습니다.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/03/image5-9-1.png" class="kg-image">
+		<figcaption><em><em>Cloudflare Images로 이미지 제공</em></em></figcaption>
+	</figure>
+	<p>일반적인 이미지 전송 URL은 다음과 같습니다.</p>
+	<p><a href="https://imagedelivery.net/ZWd9g1K7eljCn_KDTu_OWA/:image_id/:variant_name" target="_blank"><code>https://imagedelivery.net/ZWd9g1K7eljCn_KDTu_OWA/:image_id/:variant_name</code></a></p>
+	<p>이 URL 템플릿을 사용하여 이미지와 변형의 조합을 반환하는 최종 URL을 구성할 수 있습니다.</p>
+	<p>클라이언트가 이미지를 요청하면 Cloudflare Images는 WebP, PNG, JPEG, GIF 중에서 최적화된 형식을 선택합니다. 육안으로 보도록 제시되는 형식은 클라이언트 헤더와 이미지 유형으로 결정됩니다. 곧 Cloudflare Images에서 AVIF를 지원해 추가 압축 기능을 제공할 예정입니다. Cloudflare Images를 사용할 때 가장 좋은 점 하나는 AVIF 등 새 포맷에 대한 지원을 추가하면 코드 베이스를 변경할 필요 없이 이점을 누릴 수 있다는 것입니다.</p>
+	<h2 id="--5"><strong>다음 단계</strong></h2>
+	<p>모든 Cloudflare 고객은 이번 주에 가입해서 <a href="https://dash.cloudflare.com/?to=/:account/images" target="_blank">Cloudflare Images를 사용할</a> 수 있습니다. Cloudflare는 개발자를 위해 Cloudflare Images를 구축했습니다. <a href="https://developers.cloudflare.com/images/" target="_blank">Cloudflare Images 개발자 문서</a>에서 사용자가 직접 이미지를 업로드할 수 있게 하거나 액세스 컨트롤을구현하는 데 Signed URL을 사용하는 일반적 사용 사례 구현 예시를 확인하세요.</p>
+	<p>Cloudflare Images 서비스는 이제 막 시작되었습니다. 다음은 곧 지원할 예정인 일부 주요 기능입니다.</p>
+	<ul>
+		<li>더 작은 파일 크기와 더 빠른 로딩 시간을 제공할 AVIF 지원.</li>
+		<li>이미지에 블러 효과를 추가해줄 변형.</li>
+		<li>Images 사용을 더 잘 이해할 수 있게 해줄 분석.</li>
+	</ul>
+	<h3 id="cloudflare-tv-"><strong>Cloudflare TV에서 보기</strong></h3>
+	<!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/ba19e3bc1e7f7446809585e535218f65?preload=true" style="border: none; position: absolute; top: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
+	<!--kg-card-end: html-->
+	<p></p>
+</div>

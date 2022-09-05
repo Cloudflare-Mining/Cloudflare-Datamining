@@ -1,0 +1,35 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/unnamed-14-9.png" class="kg-image" alt="CloudflareのFreeプランをご利用のお客様も、リアルタイムのDDoSアラートの取得が可能に"></figure>
+	<p>Cloudflareによって自動的に検出および軽減されたHTTP DDoS攻撃に関するリアルタイムアラートを受信する機能が、Freeプランをご利用のお客様にご利用いただけるようになったことを発表でき嬉しく思います。このリアルタイムDDoSアラートは、1年以上前に発表されていましたが、Proプラン以上のお客様に限定して提供されていました。今回は、DDoSアラート機能がFreeプランのユーザーにも拡大されたことをお知らせします。発表当初のブログ記事は<a href="https://blog.cloudflare.com/announcing-ddos-alerts/">こちら</a>からご確認いただけます。</p>
+	<h3 id="ddos-">DDoS攻撃とは？</h3>
+	<p><a href="https://www.cloudflare.com/ja-jp/learning/ddos/what-is-a-ddos-attack/" target="_blank">分散サービス妨害（DDoS）攻撃</a>とは、お客様のオンラインビジネスを妨害しようとするサイバー攻撃のことを指します。お客様のビジネスがVoIPサーバー、UDPベースのゲーミングサーバー、HTTPサーバーなどを使用しているかどうかにかかわらず、DDoS攻撃は、あらゆるタイプのインターネットプロパティ、サーバー、ネットワークを混乱させるために使用されます。</p>
+	<p>今回のブログでは、HTTPサーバーを標的としたDDoS攻撃について説明します。モバイルアプリ、EコマースWebサイト、APIゲートウェイなど、HTTPサーバーを使用しているあらゆるアプリケーションは、攻撃者によって処理能力を超えるリクエストが送信されると、サーバーは実際のユーザーにサービスを提供することができなくなります。大量のリクエストにより、サービスが停止したり、サーバー全体がオフラインになったりすることもあります。DDoS攻撃は、お客様の収益や評判に打撃を与えるなど、現実的な影響を及ぼす可能性があります。</p>
+	<h3 id="cloudflare-ddos-">CloudflareがDDoS攻撃を検出し軽減する方法</h3>
+	<p>DDoS攻撃からサーバーを保護するには、主に2つの機能が必要です。</p>
+	<ol>
+		<li>ユーザーのリクエストと攻撃によるリクエストの両方を吸収する帯域幅</li>
+		<li>ユーザーのリクエストと攻撃によるリクエストを区別する能力</li>
+	</ol>
+	<p>自社開発のシステムを使用して、攻撃の規模、頻度、時間に関わらず、まさにこのような保護を実現しています。Freeプランをご利用のお客様を含むすべてのCloudflareのお客様は、当社の<a href="https://blog.cloudflare.com/unmetered-mitigation/">定額制DDoS軽減コミットメント</a>によって保護されています。</p>
+	<p>DDoS攻撃から保護するために、まず、お客様のトラフィックを<a href="https://www.cloudflare.com/ja-jp/network/" target="_blank">当社のデータセンターのネットワーク</a>にルーティングします。当社のネットワークは、世界100カ国以上、250都市以上に広がっています。その容量は100Tbps以上で、これは、<a href="https://blog.cloudflare.com/cloudflare-blocks-an-almost-2-tbps-multi-vector-ddos-attack/">これまでに発生した最大規模の攻撃</a>の50倍に相当します。また、当社は、お客様のユーザーのトラフィックと攻撃のトラフィックの両方を吸収するのに十分すぎるほどの帯域幅を有しています。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/01/image2-18.png" class="kg-image" alt="Cloudflareのグローバルネットワーク">
+		<figcaption>Cloudflareのグローバルネットワーク</figcaption>
+	</figure>
+	<h3 id="cloudflare-">Cloudflareのグローバルネットワーク</h3>
+	<p>2つ目の機能として、お客様のトラフィックが当社のデータセンターに到達すると、DDoS攻撃を常にスキャンする最新の分析メカニズムを通過するようになります。攻撃が検出されると、リアルタイムの軽減ルールが自動的に生成され、攻撃パターンに基づいて攻撃によるリクエストを軽減しますが、ユーザーのリクエストはそのまま残されます。<a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/http" target="_blank">HTTP DDoSマネージドルールセット</a>を使用すると、軽減システムの設定をカスタマイズし、お客様のニーズや特定のトラフィックパターンに合わせて調整することができます。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/01/image1-13.png" class="kg-image" alt="A diagram showing a server unable to respond to legitimate users due to a malicious DDoS attack"></figure>
+	<p>何をすべきかわからないですか？安心してください。ほとんどの場合、お客様は何もする必要はなく、当社のシステムが自動的にお客様のサーバーを保護します。詳しくは、<a href="https://developers.cloudflare.com/ddos-protection/get-started" target="_blank">入門ガイド</a>または、当初の<a href="https://blog.cloudflare.com/http-ddos-managed-rules/">ブログ記事</a>をご覧ください。ご興味がありましたら、技術ブログ記事（<a href="https://blog.cloudflare.com/ja-jp/deep-dive-cloudflare-autonomous-edge-ddos-protection-ja-jp/">Cloudflareの自律的なエッジでのDDoS攻撃対策</a>）で、軽減システムがどのように機能するかについて詳しくご覧いただけます。</p>
+	<h3 id="ddos--1">DDoSアラートの設定</h3>
+	<p>当社のシステムがDDoS攻撃を検出および軽減すると、リアルタイムでアラートが届きます。アラートを受信するには、まず、以下の手順で通知ポリシーを設定する必要があります。</p>
+	<ol>
+		<li><a href="https://www.cloudflare.com/login/" target="_blank">Cloudflareダッシュボード</a>にログインし、アカウントを選択します。</li>
+		<li>ホーム画面で<strong>「通知」</strong>を選択します。</li>
+		<li><strong>「追加」</strong>をクリックし、<strong>HTTP DDoS攻撃アラーター</strong>を選択します。</li>
+		<li>アラートの名前、任意の説明を入力し、受信者のメールアドレスを追加して、<strong>「作成」</strong>をクリックします。</li>
+	</ol>
+	<p>DDoSアラートとサポートされている配信方法についての詳細は、当社のガイド<a href="https://support.cloudflare.com/hc/ja/articles/360053216191-Cloudflare%E3%81%AEDDoS%E3%82%A2%E3%83%A9%E3%83%BC%E3%83%88%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B" target="_blank">CloudflareのDDoSアラートについて理解する</a>をご覧ください。</p>
+	<h3 id="-ddos-">無料のDDoS攻撃対策、制御、および可視性</h3>
+	<p>Cloudflareのミッションは、より良いインターネットの構築を支援することであり、それが私たちの活動のすべての指針となっています。このミッションの一環として、大規模な組織だけでなく、誰もがエンタープライズグレードのDDoS攻撃対策を利用できることがより良いインターネットであると考えています。</p>
+	<p>さらに、当社の<a href="https://blog.cloudflare.com/http-ddos-managed-rules/">DDoSマネージドルールセット</a>を誰でも利用できるようにし、無料のお客様でもDDoS攻撃対策の設定を調整および最適化できるようにしています。さらに一歩進んで、すべてのユーザーが必要なときに可能な限り迅速に対応できるようにしたいと考えています。そのために、リアルタイムアラートを無料で提供しています。情報は力であり、攻撃をリアルタイムで通知することで、ユーザーはWebサイトの安全性、可用性、パフォーマンスを確保することができます。</p>
+	<p>まだCloudflareを使用していませんか？<a href="https://dash.cloudflare.com/sign-up" target="_blank">今すぐ始めてください。</a></p>
+</div>

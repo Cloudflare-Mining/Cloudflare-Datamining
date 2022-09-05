@@ -1,0 +1,88 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/05/lava-lamps.jpg" class="kg-image">
+		<figcaption>Lampes à lave dans le hall de Cloudflare, avec l'aimable autorisation de @mahtin</figcaption>
+	</figure>
+	<h3 id="introduction"><strong>Introduction</strong></h3>
+	<p>Comme certains d'entre vous le savent peut-être, le hall d'entrée de nos bureaux de San Francisco est orné d'un <a href="https://www.fastcodesign.com/90137157/the-hardest-working-office-design-in-america-encrypts-your-data-with-lava-lamps" target="_blank">mur de lampes à lave</a> qui nous sert à renforcer notre système de cryptage. Nous allons voir dans cet article comment il fonctionne. Vous n’avez pas besoin de connaissances techniques pour comprendre ce qui va suivre. Pour plus de détails techniques, voir <a href="https://blog.cloudflare.com/lavarand-in-production-the-nitty-gritty-technical-details">LavaRand en production : détails techniques</a>.</p>
+	<h3 id="historique"><strong>Historique</strong></h3>
+	<h4 id="le-caract-re-al-atoire-de-la-cryptographie"><strong>Le caractère aléatoire de la cryptographie</strong></h4>
+	<p>Comme nous l'avons <a href="https://blog.cloudflare.com/why-randomness-matters/">déjà dit</a>, la cryptographie repose sur le principe de la génération de nombres aléatoires à la fois imprévisibles et dissimulés aux yeux de tout prédateur.</p>
+	<p>Cependant, le mot « aléatoire » est un terme assez délicat. Il est utilisé dans de nombreux domaines pour désigner des choses quelque peu différentes. Et comme dans tous ces domaines, son emploi en cryptographie est très précis. Dans certains domaines, un processus peut être qualifié d'aléatoire pour peu qu'il présente les bonnes caractéristiques statistiques. Par exemple, les décimales de pi sont dites aléatoires parce que toutes les séquences de nombres apparaissent à la même fréquence (« 15 » apparaît autant que « 38 », « 426 » apparaît autant que « 297 », etc.). En cryptographie, cependant, cela ne suffit pas : les nombres aléatoires doivent être <em>imprévisibles</em>.</p>
+	<p>Pour comprendre ce que signifie le terme <em>« imprévisible »</em>, il faut se rappeler que toute cryptographie est basée sur une asymétrie des informations. Si vous essayez d'effectuer une opération cryptographique en toute sécurité, vous craignez que quelqu'un (un <em>adversaire</em>) tente de mettre à mal votre système de sécurité. La seule chose qui vous distingue de votre adversaire, c'est que vous savez certaines choses que ce dernier ne sait pas, et la cryptographie a pour fonction de garantir que cette asymétrie des informations vous protège suffisamment.</p>
+	<p>Prenons un exemple simple. Supposons que vous et un ami vouliez aller au cinéma, mais que vous ne vouliez pas que votre pire ennemie sache quel film vous allez voir (de peur qu'elle ne débarque pour vous gâcher la séance !). Cette semaine, c'est à vous de choisir le film. Une fois votre choix arrêté, vous devrez envoyer un message à votre ami pour lui indiquer le film que vous avez choisi, mais vous devrez faire en sorte que, même si votre pire ennemie intercepte le message, elle ne puisse pas comprendre les informations qu'il contient.</p>
+	<p>Vous imaginez le stratagème suivant : étant donné que seuls deux films sont projetés en ce moment, vous appelez le premier A et le second B. Ensuite, en présence de votre ami, vous lancez une pièce. Vous vous mettez d'accord sur le tableau suivant en indiquant le message que vous allez envoyer en fonction de votre choix de film et selon que la pièce tombe du côté pile (P) ou du côté face (F). Une fois que vous aurez décidé quel film vous voulez voir, vous utiliserez ce tableau pour envoyer un message crypté à votre ami pour le lui faire savoir.</p>
+	<p></p>
+	<!--kg-card-begin: html-->
+	<center>
+		<div style="border: 1px solid black;">
+			<table style="background-color: transparent;">
+				<tbody>
+					<tr>
+						<th>
+							<div style="padding: 5px;"><strong>Film</strong></div>
+						</th>
+						<th>
+							<div style="padding: 5px;"><strong>Pièce de monnaie</strong></div>
+						</th>
+						<th>
+							<div style="padding: 5px;"><strong>Message</strong></div>
+						</th>
+					</tr>
+					<tr>
+						<td>A</td>
+						<td>F</td>
+						<td>« Nancy a le torticolis. »</td>
+					</tr>
+					<tr>
+						<td>A</td>
+						<td>P</td>
+						<td>« Gaby va se coucher dans l’herbe. »</td>
+					</tr>
+					<tr>
+						<td>B</td>
+						<td>F</td>
+						<td>« Gaby va se coucher dans l’herbe. »</td>
+					</tr>
+					<tr>
+						<td>B</td>
+						<td>P</td>
+						<td>« Nancy a le torticolis. »</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</center>
+	<!--kg-card-end: html-->
+	<p></p>
+	<p>Si vous choisissez le film B, et que la pièce tombe du côté face, vous envoyez le message suivant : « Gaby va se coucher dans l’herbe ». Puisque votre ami sait que la pièce de monnaie est tombée du côté face (il était là quand c'est arrivé), il sait que vous avez choisi le film B. Maintenant, mettez-vous à la place de votre pire ennemie. Elle ne sait pas de quel côté est tombée la pièce. Tout ce qu'elle sait, c'est qu'il y a 50 % de chances que la pièce soit tombée du côté pile, et autant qu’elle soit tombée du côté face. Ainsi, le message « Gaby va se coucher dans l’herbe » ne risque pas de lui dévoiler quel film vous avez choisi. Il y a 50 % de chances que la pièce soit tombée du côté face (qui correspond au film B), et 50 % de chances qu'elle soit tombée du côté pile (qui correspond au film A). Elle n’est pas plus avancée !</p>
+	<p>Revenons maintenant à la notion d’<em>imprévisibilité</em>. Imaginez que le résultat du lancer de pièce soit totalement prévisible, parce que votre pire ennemie l'a truquée pour qu'elle tombe toujours du côté face au premier lancer, du côté pile au deuxième lancer, du côté face au troisième, et ainsi de suite. Puisqu'elle saurait qu'il y a 100 % de chances que la pièce tombe du côté pile au premier lancer, elle comprendrait tout de suite quel film vous avez choisi, quel que soit le message envoyé. Bien que la pièce truquée présente encore quelques propriétés « aléatoires » de base, selon l'acception du terme dans le domaine des statistiques (elle tombe autant du côté pile que du côté face), elle est <em>prévisible</em>, et donc inutile en cryptographie. Attention : dans le contexte de la cryptographie, <em>aléatoire</em> est pour nous synonyme d'<em>imprévisible</em>.</p>
+	<h3 id="le-caract-re-al-atoire-en-informatique"><strong>Le caractère aléatoire en informatique</strong></h3>
+	<p>Malheureusement pour les cryptographes, si les ordinateurs sont doués pour une chose, c'est d'être prévisibles. Ils peuvent exécuter le même code un million de fois et, tant qu'on leur donne les mêmes données, ils obtiendront toujours les mêmes résultats. C’est excellent pour la fiabilité, mais beaucoup moins pour la cryptographie, car il <em>faut</em> de l'imprévisibilité !</p>
+	<p>La solution à ce problème est l'utilisation de <em>générateurs de nombres pseudo-aléatoires cryptographiques sécurisés</em> (CSPRNG). Les CSPRNG sont des algorithmes qui, en introduisant des données elles-mêmes imprévisibles, produisent un flux de résultats beaucoup plus abondant qui est également imprévisible. Ce flux peut être prolongé indéfiniment et produire autant de résultats que nécessaire à tout moment. En d'autres termes, si vous deviez lancer une pièce un certain nombre de fois (processus connu pour être imprévisible) et utiliser ensuite le résultat de comme données d'entrée d'un CSPRNG, un adversaire incapable de prévoir le résultat des lancers serait également dans l'incapacité de le prévoir les résultats produits par le CSPRNG, quelle que soit la quantité de résultats qui en est tirée.</p>
+	<p>Toutefois, même si les CSPRNG sont un outil très puissant, ils ne représentent que la moitié de la solution, car ils ont toujours besoin de données imprévisibles pour pouvoir fonctionner. Mais, comme nous l'avons dit, les ordinateurs ne sont pas imprévisibles, alors sommes-nous revenus à la case départ ? Eh bien, pas tout à fait. Les ordinateurs disposent généralement de sources d'imprévisibilité exploitables, mais elles sont assez lentes. Ce que nous pouvons faire, c'est combiner ce lent processus de collecte de données imprévisibles avec un CSPRNG, qui peut se servir de ces données et produire des résultats beaucoup plus rapidement, et nous pouvons satisfaire tous nos besoins en termes de données aléatoires !</p>
+	<p>Mais où un ordinateur peut-il obtenir des données aussi imprévisibles, même lentement ? Réponse : dans le <em>monde réel</em>. Tandis que les ordinateurs facilitent la vie des programmeurs en leur donnant une vision simplifiée du monde, ils existent aussi physiquement dans le monde réel. Et ce monde est imprévisible. Les ordinateurs reçoivent toutes sortes de données provenant du monde réel, par des capteurs de température, des claviers, des interfaces réseau, etc. Toutes ces choses permettent d'effectuer des mesures dans le monde réel, et toutes ces mesures présentent un certain degré d'inexactitude. Comme nous l'expliquerons dans un instant, ces inexactitudes sont synonymes d'imprévisibilité, et on peut les exploiter ! Pour récolter des données précieusement inexactes, on peut par exemple mesurer avec une grande précision la température du processeur ou la durée des frappes sur le clavier, ce qui est une source de données aléatoires et imprévisibles. Pour voir comment utiliser cela pour produire des données aléatoires et imprévisibles, demandez-vous quelle est la température de la pièce dans laquelle vous vous trouvez en ce moment. Vous pouvez probablement donner une estimation à quelques degrés près, disons entre 21 et 24 degrés Celsius. Mais vous ignorez très certainement la température avec une précision de deux décimales : 22,33 degrés ou 22,54 degrés ? En mesurant la température avec une grande précision et en n'utilisant que les chiffres après la virgule, vous pouvez obtenir des données aléatoires très imprévisibles par la simple observation du monde qui vous entoure. C’est pareil pour les ordinateurs.</p>
+	<p>Donc, pour récapituler :</p>
+	<ul>
+		<li>Dans le domaine de la cryptographie, ce qui est aléatoire doit aussi être imprévisible.</li>
+		<li>Les ordinateurs peuvent obtenir lentement une faible quantité de données aléatoires et imprévisibles en analysant leur environnement.</li>
+		<li>Les ordinateurs peuvent considérablement enrichir ces données aléatoires en utilisant un CSPRNG qui peut rapidement les transformer en une grande quantité de données aléatoires imprévisibles.</li>
+	</ul>
+	<h3 id="parer-toute-ventualit-"><strong>Parer à toute éventualité</strong></h3>
+	<p>S'il est une chose que les cryptographes redoutent, c'est la certitude. Il est régulièrement démontré que les systèmes cryptographiques sont moins sûrs qu'on ne le supposait au départ, et nous nous efforçons constamment de comprendre quels algorithmes peuvent être utilisés en toute sécurité et dans quels scénarios.</p>
+	<p>Il n'est donc pas surprenant que les cryptographes préfèrent parer à toute éventualité en sécurisant leurs systèmes plus que nécessaire, au cas où l'une de leurs hypothèses se révélerait fausse. Ils sont en cela comparables à des ingénieurs qui conçoivent des bâtiments offrant une résistance au poids, au vent et à la chaleur bien supérieure à celle requise par les conditions réelles.</p>
+	<p>Dans le domaine des données aléatoires, ce type de protection se traduit souvent par le <em>mélange</em>. Les données aléatoires et imprévisibles peuvent être mélangées judicieusement avec des données aléatoires encore plus imprévisibles, ce qui rend le résultat au moins aussi imprévisible que l'une ou l'autre de ces données. Cela signifie que, si vous mélangez des données aléatoires hautement imprévisibles avec des données aléatoires relativement prévisibles, vous obtenez des données hautement imprévisibles.</p>
+	<p>Cette propension au mélange vous permet de mélanger des données aléatoires et imprévisibles provenant de plusieurs sources et, si vous découvrez plus tard que l'une de ces sources était moins imprévisible que vous ne le pensiez, cela ne pose aucun problème : les autres données sont là pour parer à toute éventualité.</p>
+	<h3 id="lavarand"><strong>LavaRand</strong></h3>
+	<p>Chez Cloudflare, nous disposons de milliers d'ordinateurs répartis dans des centres de traitement de données dans le monde entier, et chacun de ces ordinateurs nécessite un cryptage aléatoire. Ils ont toujours acquis leurs données aléatoires en se servant du mécanisme par défaut dont dispose le système d'exploitation que nous utilisons : Linux.</p>
+	<p>Cependant, en bons cryptographes que nous sommes, nous nous efforçons de parer à toute éventualité. Nous voulions un système qui garantisse que, même en cas de défaillance du mécanisme par défaut d'acquisition de données aléatoires, nous n'aurions rien à craindre. C'est ainsi que nous avons créé LavaRand.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/05/lava-lamps-camera.jpg" class="kg-image">
+		<figcaption>Tout est filmé</figcaption>
+	</figure>
+	<p>LavaRand est un système qui utilise des lampes à lave comme source secondaire de données aléatoires pour nos serveurs de production. Le mur de lampes à lave qui se trouve dans le hall de notre agence de San Francisco sert de source de données imprévisibles qui sont captées par une caméra dirigée vers lui. Le flux vidéo retransmis par la caméra est envoyé dans un CSPRNG, qui produit un flux de données ensuite utilisé par nos serveurs de production comme source supplémentaire de données aléatoires. Puisque le mouvement de la « lave » dans une lampe à lave est totalement imprévisible1, celui-ci, une fois enregistré, constitue une excellente source de données aléatoires et imprévisibles. Les ordinateurs stockent les images sous forme de très grands nombres, de sorte que nous pouvons les utiliser comme données d'entrée dans un CSPRNG comme n'importe quel autre nombre.</p>
+	<p>Nous ne sommes pas les premiers à le faire. Notre système LavaRand est inspiré d'un système similaire initialement <a href="https://en.wikipedia.org/wiki/Lavarand" target="_blank">imaginé et développé</a> par Silicon Graphics et <a href="https://www.google.com/patents/US5732138" target="_blank">breveté</a> en 1996 (le brevet a expiré depuis).</p>
+	<p>Espérons que nous n'en aurons jamais besoin. Espérons que les principales sources de données aléatoires utilisées par nos serveurs de production demeureront sécurisées et que LavaRand servira eu mieux de décoration à notre agence. Mais s'il s'avère que nous avons tort, et que nos sources de données aléatoires sont en fait biaisées, alors LavaRand sera notre rempart contre les pirates ayant décidé de s'attaquer à Cloudflare.</p>
+	<hr>
+	<ol>
+		<li>Noll, L.C., Mende, R.G. et Sisodiya, S., <em>Mise en place d'un générateur de nombres pseudo-aléatoires avec hachage cryptographique de la numérisation d'un système chaotique</em></li>
+	</ol>
+</div>

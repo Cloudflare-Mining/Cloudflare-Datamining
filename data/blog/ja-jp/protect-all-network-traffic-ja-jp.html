@@ -1,0 +1,28 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image1-62.png" class="kg-image" alt="Protect all network traffic on Cloudflare"></figure>
+	<p>Magic Transitは、お客様のネットワーク全体（ポート/プロトコル）をDDoS攻撃から保護し、ビルトインのパフォーマンスと信頼性を提供します。今日、CloudflareがメンテナンスしMagic Transitで保護されたIPスペースをサービスとして (as a service) 提供することで、ホームネットワークからオフィス、大規模クラウドまで、あらゆる規模のネットワークを持つお客様にMagic Transitの機能を拡張できることを嬉しく思っています。</p>
+	<h3 id="magic-transit-">Magic Transitとは？</h3>
+	<p>Magic Transitは、<a href="https://www.cloudflare.com/network/" target="_blank">Cloudflareのグローバルネットワーク</a>の力をお客様に拡張し、お客様のネットワークに向かうすべてのトラフィックを発信地に最も近い拠点で吸収します。トラフィックは、Cloudflareの最も近い拠点に到達すると、業界をリードするDDoS軽減やクラウドファイアウォールなどのセキュリティ保護のスタックを通過して流れます。詳細な<a href="https://support.cloudflare.com/hc/en-us/articles/360038696631-Understanding-Cloudflare-Network-Analytics" target="_blank">ネットワーク分析</a>、アラート、レポートにより、すべてのトラフィックと攻撃パターンを詳細に把握できます。クリーンなトラフィックは、エニーキャスト<a href="https://www.cloudflare.com/learning/network-layer/what-is-gre-tunneling/" target="_blank">GRE</a>または<a href="https://blog.cloudflare.com/ja-jp/anycast-ipsec-ja-jp/">IPsec</a>トンネルまたは<a href="https://blog.cloudflare.com/ja-jp/cloudflare-network-interconnect-ja-jp/">Cloudflareネットワークインターコネクト</a>を使用してお客様のネットワークに転送されます。Magic Transitは、世界中のどこからでも最も健全な経路でトラフィックを誘導できるように、トンネル間の負荷分散と自動フェイルオーバーを備えています。<br></p>
+	<p>「Magic」は、エニーキャストアーキテクチャにあります。ネットワーク上のすべてのサーバーがCloudflareの各サービスを実行しているため、トラフィックはどこに到着しても処理することができます。つまり、この投稿の時点では、ネットワークの全容量である121Tbps以上が、最大規模の攻撃さえもブロックするために利用可能なのです。また、<a href="https://blog.cloudflare.com/magic-makes-your-network-faster/">パフォーマンスの面でも大きなメリット</a>をもたらします。従来の「スクラビングセンター」ソリューションでは、トラフィックを処理するために専門の場所に転送していましたが、Cloudflareを使用すると、ネットワークエンジニアにとって導入が簡単になります。Cloudflareへのトンネル1つで、お客様のインフラストラクチャが世界250都市以上にある当社のネットワーク全体と自動的に接続されます。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/03/image2-54.png" class="kg-image" alt="Magic Transit architecture: Internet BGP advertisement attracts traffic to Cloudflare’s network, where attack mitigation and security policies are applied before clean traffic is forwarded back to customer networks with an Anycast GRE tunnel or Cloudflare Network Interconnect.">
+		<figcaption><em>Magic Transitアーキテクチャ：インターネットBGP広告によりトラフィックはCloudflareのネットワークに引き寄せられ、攻撃緩和とセキュリティポリシーが適用された後、クリーンなトラフィックはエニーキャストGREトンネルまたはCloudflareネットワークインターコネクトでお客様のネットワークに転送されます。</em></figcaption>
+	</figure>
+	<h3 id="-">最新情報</h3>
+	<p>これまでMagic Transitでは、このサービスを利用するために、最低でもクラスCのIPブロック、つまり/24を<a href="https://blog.cloudflare.com/ja-jp/bringing-your-own-ips-to-cloudflare-byoip-ja-jp/">お客様固有のIPアドレスとして持ち込んでいただく</a>ことを要求していました。これは、/24がパブリックインターネット上のBGPで広告できる最小のプレフィックス長であるためで、これがお客様のネットワークのトラフィックを引き寄せる方法となっているためです。</p>
+	<p>しかし、すべてのお客様がこれだけのIPスペースを持っているわけではありません。私たちは、お客様に代わってインターネットに広告することができるよりも小さなネットワークでIPレイヤーの保護を希望する多くのお客様と話をしてきました。本日、Cloudflareが管理するMagic Transitで保護されたIPスペースを提供することにより、小規模なネットワークをお持ちのお客様にもMagic Transitをご利用いただけるよう拡張しました。現在、お客様のネットワークトラフィックを専用の静的IPに誘導し、業界をリードするDDoS防御、可視性、パフォーマンス、回復力などMagic Transitのすべての利点を享受することが可能です。</p>
+	<p>Magic Transitを活用してネットワークを保護し、高速化するための新しい方法について説明します。</p>
+	<h3 id="--1">一貫したクロスクラウドセキュリティ</h3>
+	<p>ハイブリッドまたはポリクラウド戦略を採用する企業は、異なる環境間で一貫したセキュリティ管理を維持するのに苦労しています。従来、これらの企業ではデータセンターで単一のファイアウォール・アプライアンスを管理していましたが、現在では、物理、仮想、クラウドベースなどの様々なプロバイダーにわたり、機能や制御メカニズムが異なる無数の制御が行われています。</p>
+	<p>Cloudflareはハイブリッドクラウドのデプロイ全体の1つのコントロールプレーンであり、セキュリティポリシーを一元管理し、環境全体で統一された保護を実現し、Trafficと攻撃パターンを詳細に把握できます。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/03/image5-12.png" class="kg-image"></figure>
+	<h3 id="--2">規模に関わらず、支社を保護する</h3>
+	<p>DDoS攻撃の頻度と種類が増え続ける中、組織を標的にするための攻撃者の切り口は、より創造的になってきています。過去数年間、社内アプリケーションを含む企業インフラストラクチャを標的とした攻撃が、<a href="https://blog.cloudflare.com/tag/trends/">一貫して増加しています</a>。企業ネットワークがインターネットに依存する割合が増え続ける中、企業はネットワーク全体で一貫した保護を必要としています。</p>
+	<p>Magic Transitで保護されたIPスペースを使用することで、支店、店舗、遠隔地、イベント会場など、あらゆるネットワークロケーションを取り扱うことができるようになりました。また、それらの場所では、<a href="https://blog.cloudflare.com/ja-jp/replace-your-hardware-firewalls-with-cloudflare-one-ja-jp/">レガシーハードウェアファイアウォール</a>を当社の組み込みのクラウドファイアウォールと変更することができます。双方向Trafficをフィルタリングして数秒でグローバルに変更を伝達することができます。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/03/image4-9.png" class="kg-image"></figure>
+	<h3 id="ip-">IP漏えいを気にせずストリームを維持できる</h3>
+	<p>一般に、DDoS攻撃は、インターネットに面したリソースの可用性に影響を与えるために、特定のアプリケーションまたはネットワークをターゲットにします。しかし、多くのゲーマーやストリーマーが不幸にも発見したように、攻撃を受けるためには、 <em> ホスティング</em>を行う必要はないのです。ホームネットワークに関連するパブリックIPは簡単に漏れるため、攻撃者はライブストリームを直接ターゲットにしてダウンさせることができます。</p>
+	<p>しかしながら今後は、ストリーマーとして、ホームネットワークからのトラフィックをMagic Transitで保護されたIPを経由してルーティングできるようになりました。つまり、IP漏えいの心配はもうありません。あなたを狙う攻撃者は、あなたのホームネットワークから遠く離れた、彼らに最も近いのCloudflareのロケーションでトラフィックをブロックされます。また、ゲームへの影響を心配する必要もありません。Cloudflareのグローバルに分散し相互接続されたネットワークを使用することで、パフォーマンスを犠牲にすることなく保護を受けることができます。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/03/image3-25.png" class="kg-image"></figure>
+	<h3 id="--3">今すぐ始めましょう</h3>
+	<p>このソリューションは今すぐご利用いただけます。<a href="https://www.cloudflare.com/magic-transit/" target="_blank">詳細をお知りになりたい場合や</a>、開始したい場合はアカウントチームまでお問い合わせください。</p>
+</div>

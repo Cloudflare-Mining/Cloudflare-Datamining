@@ -1,0 +1,29 @@
+<div class="post-content lh-copy gray1">
+	<p>TLS 프로토콜의 최신판인 <a href="https://blog.cloudflare.com/rfc-8446-aka-tls-1-3/">TLS 1.3</a> 에서 소개된 흥미로운 기능 중에 “왕복 시간 없는 연결 재시작”이라는 기능이 있습니다. 이것은 TLS 핸드셰이크가 완료되기를 기다리지 않고도 클라이언트가 HTTP 요청과 같은 어플리케이션 데이터를 보내기 시작할 수 있는 동작 모드이며, 새 연결을 만들 때 드는 지연 시간을 줄일 수 있습니다.</p>
+	<p>0-RTT 연결 재시작의 기본적인 아이디어는 클라이언트가 이전에 TLS 연결을 맺은 적이 있다면 이전 세션에서 사용했던 정보를 이용해서 처음부터 연결 파라미터를 다시 교환하지 않아도 되도록 하는 것입니다. 중요한 점은 이 경우 서버에 연결하기 이전에 어플리케이션 데이터를 보호하기 위한 개인 암호화 키를 만들어 낼 수 있다는 것입니다.</p>
+	<p>하지만 TLS의 경우 “왕복시간 없음”은 TLS 핸드셰이크 자체만을 의미 합니다: 클라이언트와 서버는 TLS 데이터를 교환하기 위해 여전히 TCP 연결을 만들어야 합니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/11/HTTP-request-over-TCP-@3x.png" class="kg-image"></figure>
+	<h3 id="-">진정한 무왕복 연결</h3>
+	<p><a href="https://blog.cloudflare.com/the-road-to-quic/">QUIC</a>은 여기서 한발 더 나아가 사전에 핸드셰이크를 완료할 필요 없이 연결 시작시에 클라이언트가 바로 어플리케이션 데이터를 보낼 수 있도록 합니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/11/request-over-quic-0-RTT@3x.png" class="kg-image"></figure>
+	<p>QUIC은 이미 <a href="https://blog.cloudflare.com/the-road-to-quic/#builtinsecurityandperformance">전송 계층과 암호화 핸드셰이크를 하나로 통합하여 일반적인 연결에 필요한 핸드셰이크 시간에서 1회 왕복을 줄인 바 있습니다.</a> 핸드셰이크에 드는 추가 왕복 시간을 더 줄임으로 인해 QUIC은 실질적으로 0-RTT 연결 확립을 가능하게 합니다.</p>
+	<p>이제 더 이상 빨라질 수 없습니다!</p>
+	<h3 id="--1">클론의 습격</h3>
+	<p>하지만 0-RTT 연결 재시작은 항상 유익하기만 한 건 아니고 주의할 점과 위험성이 있으므로, <strong>클라우드플레어는 0-RTT 연결 재시작을 기본적으로는 설정하지 않습니다. </strong>사용자는 이 기능을 사용하기를 결정하기 전에 관련된 위험성을 고려해야 합니다.</p>
+	<p>조금 더 자세히 설명하면, 0-RTT 연결 재시작은 순방향 기밀성을 제공하지 않습니다. 이는 연결에 사용되는 비밀 파라미터 값이 노출되면 재시작으로 만들어진 새 연결의 0-RTT 단계에서 보내는 어플리케이션 데이터의 보안도 유지할 수 없다는 것입니다. 0-RTT 단계 이후에 보내는 데이터, 즉 핸드셰이크가 완료된 이후에 보내는 데이터는 여전히 안전한데, TLS 1.3 (그리고 QUIC)은 핸드셰이크 완료 후 보내는 데이터에 대해서는 (순방향 기밀성의) 보통의 키 교환 알고리즘을 수행하기 때문입니다.</p>
+	<p>더 우려스러운 것은 0-RTT 로 보내는 어플리케이션 데이터는 경로에 있는 공격자에게 수집되어서 동일 서버에 몇번이고 다시 보낼 수 있다는 것입니다. 대부분의 경우 공격자는 데이터 해독을 할 수 없으므로 문제가 되지 않으며 이것이 0-RTT 연결 재시작이 유용한 점입니다만, 일부 위험한 경우가 있습니다.</p>
+	<p>예를 들어, 인증된 사용자 (HTTP 쿠키나 다른 HTTP 인증 메커니즘을 사용하는 경우)가 자신의 계정에서 다른 계정으로 송금하기 위해 특정한 API 엔드포인트를 호출하도록 하는 은행 서비스를 가정해 봅시다. 공격자가 0-RTT 연결 재시작이 사용되었을 때의 요청을 가로챌 수 있다면, 암호화에 사용된 비밀 키를 알 수 없으므로 내용을 해독해서 사용자 정보를 얻을 수는 없겠지만, 동일한 요청을 반복적으로 재현하는 것으로 은행 잔고를 바닥나게 할 가능성이 있습니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/11/Bank-API-replay-attack-@3x.png" class="kg-image"></figure>
+	<p>물론 이런 문제는 은행 API에만 해당하는 것은 아닙니다. <a href="https://ko.wikipedia.org/wiki/%EB%A9%B1%EB%93%B1%EB%B2%95%EC%B9%99" target="_blank">멱등성</a>이 없는 요청이라면 단순한 기능 장애부터 심각한 보안 침해까지 원하지 않는 부작용을 일으킬 수 있는 가능성이 있습니다.</p>
+	<p>이런 위험성을 완화할 수 있도록 클라우드플레어는 POST나 PUT과 같은 명백하게 멱등성이 없는 요청에 대해서는 항상 0-RTT 요청을 거부합니다만, 일견 무해해 보이는 요청이라도 오리진 서버에서 알 수 없는 부작용을 일으킬 수 있으므로 최종적으로는 고객의 오리진 서버가 0-RTT 연결 재시작시의 요청을 허가할 지 여부를 결정할 수 있습니다.</p>
+	<p>오리진 서버가 이러한 요청을 탐지하고 허가하지 않을 수 있도록, 클라우드플레어는 <a href="https://tools.ietf.org/html/rfc8470" target="_blank">RFC8470</a>에 있는 기법을 따르고 있습니다. 클라우드플레어는 0-RTT 재시작시에 받은 요청의 경우 오리진 서버로 보낼 때 <code>Early-Data: 1</code> HTTP 헤더를 추가한다는 점을 알아 두세요.</p>
+	<p>오리진 서버는 이 헤더를 보고 <a href="https://tools.ietf.org/html/rfc8470#section-5.2" target="_blank">425 (Too Early)</a> HTTP 상태 코드로 응답할 지 결정할 수 있을 것입니다. 이 응답 코드는 해당 요청을 보낸 클라이언트에게 동일한 요청의 재현에 따른 보안 위험이 없도록 TLS 나 QUIC 핸드셰이크가 완전히 종료된 뒤에 다시 보내도록 지시하는 것입니다. 이는 <a href="https://workers.cloudflare.com/" target="_blank">클라우드플레어 Worker</a> 로도 구현할 수 있을 것입니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/11/425-too-early-@3x.png" class="kg-image"></figure>
+	<p>이 방법을 사용해서 오리진 서버는 브라우저가 연결을 만든 후 일반적으로 가장 먼저 보내는 요청이자 0-RTT가 가장 유용할 웹사이트의 인덱스 페이지와 같이 안전한 요청에 대해서는 응답을 허가 하지만, API나 폼 제출과 같은 다른 엔드포인트는 보호할 수 있습니다. 하지만 오리진이 이러한 멱등성이 없는 엔드포인트를 갖고 있지 않다면 별도로 해야 할 일은 없습니다.</p>
+	<h3 id="-0-rtt-">여러분의 0-RTT를 위한 원스톱 상점</h3>
+	<p>TLS 1.3에 대해서 그랬던 것 처럼 QUIC에서도 이제 0-RTT 재시작을 지원 합니다. 이번에는 클라우드플레어 고객이 자신의 웹사이트에서 해당 기능을 제어할 수 있는 사용자 인터페이스를 정리해서 0-RTT 연결 재시작을 설정할 수 있는 별도의 토글을 제공 합니다. 이 기능은 클라우드플레어 대시보드의 "Network" 탭에서 찾아볼 수 있습니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/11/2019-11-07-133312_3087x508_scrot.png" class="kg-image"></figure>
+	<p>TLS1.3과 QUIC (HTTP/3 토글 이용)이 설정된 경우, 0-RTT 연결 재시작 기능을 설정하면 지원하는 클라이언트에게 자동적으로 제공이 되며, 이 기능을 이용하는 연결에는 앞서 설명한 재현 탐지 기능이 제공 됩니다.</p>
+	<p>추가로, <a href="https://blog.cloudflare.com/experiment-with-http-3-using-nginx-and-quiche-ko">저희의 오픈소스 NGINX HTTP/3 패치</a>를 이용하고 있다면 패치를 최신 버전으로 업데이트한 후에 TLS 1.3 과 QUIC/HTTP3 에서 모두 동작하는 내장 지시어 <a href="https://nginx.org/en/docs/http/ngx_http_ssl_module.html#ssl_early_data" target="_blank">"ssl_early_data" 옵션</a>을 설정하여 여러분의 NGINX 기반 HTTP/3 서버에도 0-RTT 연결 재시작 기능을 설정할 수 있습니다.</p>
+	<p><em>This is a Korean translation of an <a href="https://blog.cloudflare.com/even-faster-connection-establishment-with-quic-0-rtt-resumption/">existing post</a> by <a href="https://blog.cloudflare.com/author/alessandro-ghedini">Alessandro Ghedini</a>, translated by <a href="https://blog.cloudflare.com/author/junho/">Junho Choi</a>.</em></p>
+</div>

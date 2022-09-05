@@ -1,0 +1,59 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image2-20.png" class="kg-image" alt="Extending Cloudflare’s Zero Trust platform to support UDP and Internal DNS"></figure>
+	<p>2020 年末，经 Cloudflare 授权的组织开始在我们的网络上<a href="https://blog.cloudflare.com/build-your-own-private-network-on-cloudflare/">构建私有网络</a>。他们在服务器端使用 Cloudflare Tunnel，并在客户端使用 Cloudflare WARP，以此消除对传统 VPN 的需求。时至今日，已有数千家组织与我们一起踏上了这段旅程—弃用了传统的 VPN 集中器、内部防火墙和负载平衡器。这些组织不再需要维护所有这些传统硬件，并大幅提高了终端用户的速度，且能在整个组织范围内维护 Zero Trust 规则。</p>
+	<p>我们从 TCP 着手，因为该协议非常强大并能实现各种重要用例。然而，要真正取代 VPN，您还需能覆盖 UDP。从今天开始，我们很高兴能在 Cloudflare 的 Zero Trust 平台上提前访问 UDP。更大的一个好处是：由于支持 UDP，我们可提供内部DNS—因此无需手工迁移数以千计的私有主机名，就可覆盖 DNS 规则。今天，您可单击<a href="https://dash.cloudflare.com/sign-up/teams" target="_blank">此处</a>注册，免费获取 Cloudflare for Teams；如果您希望加入提前获取 UDP 和 Internal DNS 的等待名单，请访问<a href="https://cloudflare.com/zero-trust/lp/private-dns-waitlist" target="_blank">此链接</a>。</p>
+	<h2 id="-cloudflare-"><strong>私有网络在 Cloudflare 上的拓扑结构</strong></h2>
+	<p>建立私有网络包含两个主要组成部分：基础设施部分和客户部分。</p>
+	<p>基础设施部分由 Cloudflare Tunnel 提供技术支持，并由其将您的基础设施（无论是单一的应用程序、很多的应用程序，还是整个网段）连接到 Cloudflare。要实现这一点，可在您的环境中运行一个简单的命令行后台程序，以建立到 Cloudflare 的多个安全、仅出站、负载平衡的链接。简单地说，Tunnel 的作用是将您的网络与 Cloudflare 相连。</p>
+	<p>另一方面，我们需要您的终端用户能轻松连接到 Cloudflare，更重要的是连接到您的网络。这种连接由我们强大的设备客户端 <a href="https://blog.cloudflare.com/zh-cn/warp-for-desktop-zh-cn/">Cloudflare WARP</a> 来处理。您的内部 MDM 工具可在几分钟内将该客户端部署到您的整个组织，并在用户设备和 Cloudflare 网络之间建立一个基于 WireGuard 的安全连接。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/12/image1-36.png" class="kg-image"></figure>
+	<p>我们现已将您的基础设施和用户连接到 Cloudflare，因此很容易对您的应用程序进行标记，并在 Zero Trust 安全控制上分层，以验证您网络上每一个请求的身份和以设备为中心的规则。</p>
+	<p>不过，到目前为止，仅支持 TCP。</p>
+	<h2 id="-cloudflare-zero-trust-udp"><strong>扩展 Cloudflare Zero Trust 以支持 UDP</strong></h2>
+	<p>在过去一年中，越来越多的用户开始采用 Cloudflare 的 Zero Trust 平台，我们已经收集了有关确保 VPN 连接的所有用例数据。其中，最常见的需求是对基于 UDP 流量的全面支持。QUIC 等现代协议利用 UDP 的轻量级架构的优势—在 Cloudflare，我们坚信我们的使命就是推进这些新标准以建立一个更好的互联网。</p>
+	<p>今天，我们很高兴能为那些希望提前访问 Cloudflare for Teams（支持 UDP）的团队开放一个官方等待名单。</p>
+	<h3 id="udp-"><strong>UDP 是什么，为什么它那么重要？</strong></h3>
+	<p>UDP 是互联网的一个重要组成部分。如果没有它，很多应用程序就无法满足现代使用的要求。我们需要依赖于近乎实时通信的应用（如视频流或 VoIP 服务），因此我们需要 UDP，以及它在互联网上所扮演的角色。然而，就其核心而言，TCP 和 UDP 可实现相同的结果—只是所用手段大相径庭而已。每种方法都有其独特的优点和缺点，使用这些方法的下游应用总会有所感受。</p>
+	<p>如果您向某人提出类似问题，这里有个简单例子可恰当地比喻这两种方法的工作方式。TCP 看起来应该很熟：您通常会打招呼，等待他们回话，然后问他们最近怎么样，再等待他们回应，然后问他们想要什么。</p>
+	<p>另一方面，UDP 相当于直接走到别人面前，问他们想要什么，而非核实他们是否听见。若采用这种方法，您的一些问题可能会遗漏，但只要您能得到答案，也就无所谓了。</p>
+	<p>就像上面的对话一样，若采用 UDP，很多应用实际上并不在乎是否会丢失一些数据；视频流或游戏服务器就是很好的例子。如果您在流媒体传输时丢失了一个数据包，并且不希望整个流媒体在接收该数据包前停止，那么您最好放弃这个数据包，继续进行操作。应用程序开发人员之所以使用 UDP 的另一个原因是，他们更愿意围绕连接、传输和质量控制开发自己的控件，而不是使用 TCP 的标准化控制。</p>
+	<p>对于 Cloudflare 来说，对 UDP 流量的端到端支持将能够解锁大量新用例。以下就是几个我们认为能让您激动万分的用例。</p>
+	<h3 id="-dns-"><strong>内部 DNS 解析器</strong></h3>
+	<p>大多数企业网络需要使用内部 DNS 解析器来传播对内网资源的访问。您的内联网需要使用内部 DNS 解析器，原因与互联网需要使用公共 DNS 解析器的很多原因相同。简而言之，人类擅长很多事情，但并不擅长记住一长串数字（在本例中是 IP 地址）。公共和内部 DNS 解析器都可帮助我们解决这个问题（<a href="https://www.cloudflare.com/learning/dns/what-is-dns/" target="_blank">或更多其他问题</a>）。</p>
+	<p>在企业界，如果要求内部用户导航到 192.168.0.1 等地址来访问 Sharepoint 或 OneDrive，那将会造成没必要的麻烦。相反，如果为每个资源创建 DNS 条目并让您的内部解析器为您的用户处理所有映射，就会容易得多，因为人类非常擅长这种操作。</p>
+	<p>事实上，DNS 查询通常包含来自客户端的一个 UDP 请求。然后，服务器可向客户端返回一个回复。DNS 请求并不是非常大，因此通常可以放在数据包中发送和接收。这使得 Zero Trust 平台上的 UDP 支持成为了弃用 VPN 的关键因素。</p>
+	<h3 id="-"><strong>胖客户端应用程序</strong></h3>
+	<p>UDP 的另一个常见用例是胖客户端应用程序。到目前为止，我们目前所讨论的 UDP 的其中一个优势就是它是一个精简的协议。它之所以精简，是因为 TCP 的<a href="https://www.cloudflare.com/learning/ddos/glossary/tcp-ip/" target="_blank">三向握手</a>和其他可靠性措施在设计上已剥离了出去。在很多情况下，应用程序开发人员仍然希望有这些可靠性控件，而且他们对自己的应用程序非常熟悉，知道这些控件可以通过针对其应用程序的调整而得到更好的处理。这些胖客户端应用程序通常可执行关键的业务功能，但必须得到端到端的支持才能进行迁移。例如，传统版本的 Outlook 可通过胖客户端实现，其中大部分操作由本地机器执行，而仅与 Exchange 服务器的同步交互通过 UDP 执行。</p>
+	<p>同样，Zero Trust 平台现在对 UDP 的支持意味着这些类型的应用程序没有理由再留在传统的 VPN 上。</p>
+	<h3 id="--1"><strong>更多相关内容......</strong></h3>
+	<p>全球有很大一部分互联网流量通过 UDP 进行传输。通常，人们将对时间敏感型应用程序与 UDP 划等号。在这种情况下，偶尔丢弃数据包会比等待更好—但是，还有很多其他用例，我们很希望能为其提供全面支持。</p>
+	<h2 id="--2"><strong>我现在如何开始？</strong></h2>
+	<p>您现在可根据我们的开发人员文档中的教程和指南，在 Cloudflare 上构建您的私有网络。以下是关键路径。如果您已是我们的客户且有兴趣加入 UDP 和内部 DNS 访问的等待名单，请跳至本篇文章末尾！</p>
+	<h3 id="-cloudflare"><strong>将您的网络连接到 Cloudflare</strong></h3>
+	<p>首先，您需要在您的网络上<a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/installation" target="_blank">安装 cloudflared</a> 并通过以下命令进行认证：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>cloudflared tunnel login
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>其次，您应使用一个用户友好的名称来创建一个隧道，以识别您的网络或环境。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>cloudflared tunnel create acme-network
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>最后，您将需要使用私有网络的 IP/CIDR 范围来配置隧道。借此，您可使 Cloudflare WARP 代理意识到，对这个 IP 范围的任何请求都要路由到我们的新隧道。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>cloudflared tunnel route ip add 192.168.0.1/32
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>然后，您仅需运行您的隧道！</p>
+	<h3 id="--3"><strong>将用户连接到您的网络</strong></h3>
+	<p>要连接您的首位用户，应先在他们要连接的设备上下载 Cloudflare WARP 代理，然后按照安装程序中的步骤进行操作。</p>
+	<p>接下来，您应访问<a href="https://dash.teams.cloudflare.com/" target="_blank">团队仪表板</a>，然后创建一个注册策略来定义哪些人能访问我们的网络。这个策略可以在“设置 &gt; 设备 &gt; 设备注册”下创建。在以下示例中，您可以看到，我们要求用户位于加拿大，并拥有尾缀为 @cloudflare.com 的电子邮件地址。</p>
+	<p>在创建此策略后，您可单击机器上的 WARP 桌面图标，并导航至“首选项 &gt; 账户 &gt; 使用团队登录”，注册您的第一个设备。</p>
+	<p>最后，我们将从“设置 &gt; 网络 &gt; 拆分隧道”的排除列表中删除我们添加到隧道的 IP 范围。事实上，这将确保该流量路由到 Cloudflare，然后按计划发送到我们的私有网络隧道。</p>
+	<p>除了上述教程外，我们的团队仪表板上还配有产品内指南，其中对每个步骤进行了更详细的说明，并提供了整个过程的验证。</p>
+	<p>要创建您的首个隧道，应导航至“<a href="https://dash.teams.cloudflare.com/access/tunnels" target="_blank">访问 &gt; 隧道</a>”。</p>
+	<p>要将您的首个设备注册 WARP，应导航至“<a href="https://dash.teams.cloudflare.com/team/devices" target="_blank">我的团队 &gt; 设备</a>”。</p>
+	<h2 id="--4"><strong>下一步</strong></h2>
+	<p>我们非常高兴能在今天发布我们的<a href="https://cloudflare.com/zero-trust/lp/private-dns-waitlist" target="_blank">等候名单</a> ，而更令我们兴奋的是，我们在未来几周内就能推出这一新功能。我们即将开始使用私有网络隧道，并计划继续为每个内部 DNS 主机名的每个请求增加对 Zero Trust 访问规则的更多支持。我们着手制定各种检测性能的措施，以此确保我们的 Zero Trust 平台仍能保持最快的速度—与使用传统 VPN 带来的不便相比，使用我们的产品能让您的用户喜出望外。<br></p>
+</div>

@@ -1,0 +1,30 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/06/1-6.png" class="kg-image"></figure>
+	<p>ネットワーク層へのDDoS攻撃は<a href="https://blog.cloudflare.com/ja-jp/network-layer-ddos-attack-trends-for-q4-2020-ja-jp/">増加の一途</a>をたどっており、セキュリティチームは、自社のL3 DDoS軽減戦略を再考するようになっています。<a href="https://www.cloudflare.com/ja-jp/magic-transit" target="_blank">Magic Transit</a>は、常時稼働またはオンデマンドのCloudflareネットワークをお客様のネットワークの前に置くことにより、お客様のネットワーク全体をDDoS攻撃から保護します。本日、オンデマンドMagic Transitのお客様の体験を向上させる新機能、フローベースのモニタリングを発表します。フローベースのモニタリングにより、脅威を検出し、攻撃を受けているときにお客様に通知できるため、お客様はMagic Transit を有効にして保護することができます。</p>
+	<p>Magic Transitは、IPレイヤーでネットワークを保護し、高速化するCloudflareのソリューションです。Magic Transitでは、DDoS攻撃対策、トラフィックの高速化、その他のネットワーク機能をCloudflareの全データセンターからサービスとして提供することができます。Cloudflareのグローバルネットワーク（200以上の都市にまたがる59Tbpsの容量）と、エッジでの軽減に要する時間が3秒未満であるおかげで、パフォーマンスを損なうことなく、最大かつ最も高度な攻撃からも保護することができます。Macig Transitについての詳細は<a href="https://blog.cloudflare.com/ja-jp/magic-transit-ja-jp/">こちら</a>をご参照ください。</p>
+	<h3 id="magic-transit-">Magic Transitをオンデマンドで使用する</h3>
+	<p>Magic Transitでは、Cloudflareは<a href="https://blog.cloudflare.com/ja-jp/bringing-your-own-ips-to-cloudflare-byoip-ja-jp/">お客様のIPプレフィックスをBGP経由でインターネットに広報</a>します。これは、トラフィックをDDoS攻撃対策のために、当社のネットワークに引きつけるためです。お客様は、Magic Transitを常時稼働かオンデマンドのいずれかで利用することができます。常時稼働では、お客様のIPを広報し、いつでも攻撃を軽減します。一方、オンデマンドでは、ネットワークが攻撃を受けているときだけ、お客様が広告をオンにします。しかし、オンデマンドには問題があります。お客様のトラフィックがCloudflareのネットワークを経由してルーティングされていない場合に、お客様が攻撃を受けていることに気付いてからMagic Transitを有効にして攻撃を軽減しようとする頃には、攻撃はすでにビジネスに影響を与えている可能性があります。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/06/2-3.png" class="kg-image"></figure>
+	<h3 id="-">オンデマンドのフローベースのモニタリング</h3>
+	<p>フローベースのモニタリングでは、Cloudflareがデータセンターからのトラフィックフローに基づいて攻撃を検出し、お客様に通知できるようにすることで、オンデマンドの問題を解決します。Cloudflareに向けてNetFlowまたはsFlow（近日公開）を継続的に送信するようにルーターを設定できます。Cloudflareではフローデータを取り込み、帯域幅消費型DDoS攻撃のためにこれを分析します。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/06/3-3.png" class="kg-image">
+		<figcaption>分析のために、お客様のネットワークからCloudflareにフローデータを送信する</figcaption>
+	</figure>
+	<p>攻撃を検出すると、攻撃に関する情報を自動的に通知します（メール、Webhook、PagerDuty）。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/06/4-2.png" class="kg-image">
+		<figcaption>Cloudflareはお客様のフローデータに基づいて攻撃を検出する</figcaption>
+	</figure>
+	<p>Magic TransitでIP広告を手動で有効化するか（CloudflareダッシュボードまたはAPIを介して有効化することができます）、または自動で、軽減するまでの時間を最小限に抑えることができます。Magic Transitが有効になり、トラフィックがCloudflareを通過すると、GREトンネルを介してネットワークに戻るクリーンなトラフィックのみをお客様は受け取ります。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/06/5-2.png" class="kg-image">
+		<figcaption>DDoS攻撃対策のためにMagic Transitを有効にする</figcaption>
+	</figure>
+	<p>Magic Transit オンデマンドでフローベースのモニタリングを使用することで、チームに安心感をもたらします。ビジネスに打撃を受けてからはじめて攻撃に応答するのではなく、たった1回の簡単なセットアップを完了しておくだけで、あとは攻撃を受けたときにCloudflareがお客様に通知（そして、ネットワークの保護を自動的に開始）してくれます。Magic Transitを有効化すると、Cloudflareのグローバルネットワークと業界をリードするDDoS軽減策がお客様をカバーします。ユーザーは通常どおりビジネスを継続でき、<a href="https://assets.ctfassets.net/slt3lc6tev37/6tiRCy6p07AlHfUIPkYfpI/b839b8faf3baaa3add6d76436d75eb85/Whitepaper_Magic-Transit_Japanese_210415.pdf" target="_blank">パフォーマンスへの影響はありません</a>。</p>
+	<h3 id="-acme-corp-"><strong>フローベースのモニタリングワークフローの例：Acme Corpでは、軽減するまでの時間が短縮されました</strong></h3>
+	<p>Magic Transit オンデマンドおよびフローベースのモニタリングに関するお客様の導入事例とワークフローについて見てみましょう。Acme Corpのネットワークは、最近、大規模な<a href="https://blog.cloudflare.com/ransom-ddos-attacks-target-a-fortune-global-500-company/">ランサムDDoS 攻撃</a>を受け、外部向けアプリケーションと内部アプリケーションの両方でダウンタイムが発生しました。再び影響を受けることがないように、Acme ネットワークチームはオンデマンドのMagic Transit をセットアップすることにしました。同社は、攻撃が発生した場合にインターネットに自分のIPスペースを広告する権限をCloudflareに付与し、<a href="https://www.cloudflare.com/ja-jp/learning/network-layer/what-is-gre-tunneling/" target="_blank">エニーキャスト GRE トンネル</a>を使用して、Cloudflareからクリーンなトラフィックをネットワークに戻すことができます。最後に、各データセンターでルーターを設定して NetFlow データをCloudflare エニーキャスト IPに送信します。</p>
+	<p>Cloudflareは、送信元のデータセンターに近い場所でAcmeのNetFlowデータを受信し（エニーキャストのおかげです）、DDoS攻撃のために分析します。トラフィックが攻撃のThresholds（しきい値）を超えると、CloudflareはAcmeのNOCチームのために、<a href="https://support.cloudflare.com/hc/en-us/articles/360047358211-Connecting-PagerDuty-to-Cloudflare" target="_blank">PagerDuty incident</a>を自動的にトリガーします。これにより、BGPを使って、AcmeのIPプレフィクスがインターネットに広報されはじめます。攻撃を含むAcmeのトラフィックは、数分以内にCloudflareを通過し始め、攻撃は<a href="https://blog.cloudflare.com/rolling-with-the-punches-shifting-attack-tactics-dropping-packets-faster-cheaper-at-the-edge/">エッジでブロックされます</a>。クリーンなトラフィックは、GREトンネルを介して Acmeにルーティングされ、エンドユーザーがサービス中断を経験することはありません。エンドユーザーは、Acmeが攻撃されたことを知ることさえありません。攻撃が沈静化すると、AcmeのチームはワンクリックでCloudflareからプレフィックスを回収し、トラフィックを通常のパスに戻すことができます。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/06/6.png" class="kg-image">
+		<figcaption>攻撃がおさまったら、Cloudflareからプレフィックスを回収して正常な状態に戻す</figcaption>
+	</figure>
+	<h3 id="--1"><strong>開始する</strong></h3>
+	<p>Magic Transitとフローベースのモニタリングに関する詳細については、今すぐ<a href="https://www.cloudflare.com/ja-jp/plans/enterprise/contact/" target="_blank">当社までお問い合わせください</a>。</p>
+</div>

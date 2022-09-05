@@ -1,0 +1,212 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image3-30.png" class="kg-image"></figure>
+	<p>今天，通过允许将用户访问限定到域的集合，Cloudflare 将使企业客户更容易管理团队对 Cloudflare 的访问。确保用户获得所需的访问权限且没有任何多余，这是至关重要的，Domain Scoped Roles 是向前迈进的一大步。此外，通过引入域群组（Domain Groups），帐户所有者将能按照组而非个人向用户授予对域的访问权限。可从这些群组中增加或移除域，从而自动更新拥有该群组访问权限的用户权限。这降低了管理用户访问权限的难度。</p>
+	<p>Domain Scoped Roles 最常见的一个用例是将对生产域的访问权限限于一小部分团队成员，同时依然允许将开发和预生产域开放给其他团队成员。这样一来，除非被授予权限，否则某人无法对生产域进行任何更改。</p>
+	<h3 id="-domain-scoped-roles">如何使用 Domain Scoped Roles</h3>
+	<p>如果您是 Enterprise 客户，请联系 CSM 以为您和您的团队启用这个功能。请注意，您必须拥有超级管理员权限才能更改帐户成员信息。</p>
+	<p>一旦为您启用了测试版，请按照如下方式开始使用：</p>
+	<!--kg-card-begin: markdown-->
+	<ul>
+		<li>登录到 <a href="https://dash.cloudflare.com" target="_blank">dash.cloudflare.com</a>，选择您的帐户，并进入 <a href="https://dash.cloudflare.com/?account=members" target="_blank">成员页面</a>。
+			<ul>
+				<li>在该页面上，您可以邀请用域范围角色邀请一个新的成员，或修改一个现有用户的权限。在此情况下，我们将邀请新用户。</li>
+			</ul>
+		</li>
+	</ul>
+	<!--kg-card-end: markdown-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image1-72.png" class="kg-image"></figure>
+	<!--kg-card-begin: markdown-->
+	<ul>
+		<li>邀请新成员时，要提供三个信息：
+			<ul>
+				<li>邀请哪些用户。</li>
+				<li>他们将能访问的资源范围：
+					<ul>
+						<li>选择 “所有域” 将允许您选择传统角色。</li>
+					</ul>
+				</li>
+				<li>决定授予什么权限的角色。</li>
+			</ul>
+		</li>
+	</ul>
+	<!--kg-card-end: markdown-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/1a.png" class="kg-image" alt="Membership invitation page with users, scope, and role selection."></figure>
+	<ul></ul>
+	<!--kg-card-begin: markdown-->
+	<ul>
+		<li>在发出邀请前，您将能确认用户、范围和角色。</li>
+	</ul>
+	<!--kg-card-end: markdown-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/1b.png" class="kg-image" alt="Membership invite confirmation screen."></figure>
+	<h3 id="-">域群组</h3>
+	<p>除了手动创建每个用户的包含或排除列表，帐户所有者还可以创建域群组，以便允许授权一个或多个用户访问一组域。域群组可通过成员邀请流程或在帐户配置 -&gt; <a href="https://dash.cloudflare.com/?account=configurations/lists" target="_blank">列表</a>中直接创建。当创建域群组时，用户选择要包含的域，从这个时候开始，该群组可在邀请用户到帐户时使用。</p>
+	<h4 id="--1">域群组创建屏幕</h4>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image4-13.png" class="kg-image" alt="Domain Group creation screen showing two domains selected."></figure>
+	<h4 id="--2">成员邀请时的域群组选择</h4>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image6-4.png" class="kg-image" alt="Member invite screen showing the scope of a user’s access being limited to a domain group named, “Test Domains”."></figure>
+	<h3 id="-bach">介绍 Bach</h3>
+	<p>Domain Scoped Roles 之所以成为可能，是因为一个称为 “Bach” 的新权限系统。Bach 提供一个基于策略的系统，用于定义 Cloudflare 控制面板的授权。授权定义一个用户能在系统中进行什么操作。Bahc 一直在驱动 API 令牌，但将来所有授权都将使用 Bach。这让客户能够定义更细粒度的权限和资源范围。资源可以是用户交互的任何对象，例如帐户、区域、Worker 环境、或 DNS 记录，等等。在过去，Cloudflare 的 RBAC 系统依赖于分配一组角色，其中每个角色定义广泛的权限，应用到这个帐户。与此不同，Bach 的策略允许更深入的权限授予，能将范围定为资源的集合。</p>
+	<p>让我们比较一下传统系统与 Bach 支持的系统有何不同之处。通常，用户的权限是由他们被分配的 “角色” 定义的。角色包括：“超级管理员”、“管理员”、“Cloudflare for Teams”、和 “Cloudflare Workers 管理员” 等。在传统系统中，这些角色中的每一个映射一组简单的权限，例如 ‘workers:read’、‘workers:edit’ 或 ‘zones:edit’。当通过 Cloudflare API 或 Cloudflare 仪表板发出请求时，Cloudflare 的 API 网关会检查针对该请求的端点，行为者是否有正确的权限来执行这个操作。要改变一个区域设置，行为者将需要具有 ‘zone:edit’ 权限——可通过很多角色中的一个授予。如下是传统系统中如何对一个用户仅授予 ‘DNS’ 权限：</p>
+	<h4 id="-dns-">传统 DNS 用户角色权限</h4>
+	<!--kg-card-begin: markdown-->
+	<table>
+		<thead>
+			<tr>
+				<th>权限</th>
+				<th>编辑</th>
+				<th>阅读</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>dns_records</td>
+				<td>✔</td>
+				<td>✔</td>
+			</tr>
+			<tr>
+				<td>法律问题</td>
+				<td></td>
+				<td>✔</td>
+			</tr>
+			<tr>
+				<td>帐户</td>
+				<td></td>
+				<td>✔</td>
+			</tr>
+			<tr>
+				<td>订阅</td>
+				<td></td>
+				<td>✔</td>
+			</tr>
+			<tr>
+				<td>区域</td>
+				<td></td>
+				<td>✔</td>
+			</tr>
+			<tr>
+				<td>zone_settings</td>
+				<td></td>
+				<td>✔</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<p>虽然简单明了，但也有很多缺点。首先，这意味着无法定义对权限所应用到的资源的限制，无论是一组资源还是资源属性。其次，对特定资源的权限只是简单的读取或编辑，而编辑包括创建和删除。这些设定不能完全覆盖可能存在的需求——例如，限制删除但允许编辑。</p>
+	<p>通过 Bach，我们扩大了能力，可以定义细粒度的权限。定义上述 “DNS” 成员访问权限的示例策略如下：</p>
+	<h3 id="bach-dns-">Bach DNS 用户角色策略</h3>
+	<p>（略为修改以便于阅读）</p>
+	<pre><code class="language-yaml">#Legacy DNS Role - applies to all zones
+  policies:
+  - id: 186f95f3bda1443c986aeb78b05eb60b
+    permission_groups:
+    - id: 49ce85367bae433b9f0717ed4fea5c74
+      name: DNS
+      meta:
+        description: Can edit DNS records.
+        editable: 'false'
+        label: dns_admin
+        scopes: com.cloudflare.api.account
+      permissions:
+      - key: com.cloudflare.registrar.domain.read
+      - key: com.cloudflare.registrar.domain.list
+      - key: com.cloudflare.registrar.contact.read
+      - key: com.cloudflare.registrar.contact.list
+      - key: com.cloudflare.api.account.secondary-dns.update
+      - key: com.cloudflare.api.account.secondary-dns.read
+      - key: com.cloudflare.api.account.secondary-dns.delete
+      - key: com.cloudflare.api.account.secondary-dns.create
+      - key: com.cloudflare.api.account.zone.secondary-dns.update
+      - key: com.cloudflare.api.account.zone.secondary-dns.read
+      - key: com.cloudflare.api.account.zone.secondary-dns.delete
+      - key: com.cloudflare.api.account.zone.secondary-dns.create
+      - key: com.cloudflare.api.account.notification.*
+      - key: com.cloudflare.api.account.custom-ns.update
+      - key: com.cloudflare.api.account.custom-ns.list
+      - key: com.cloudflare.api.account.custom-ns.*
+      - key: com.cloudflare.edge.spectrum.app.list
+      - key: com.cloudflare.edge.spectrum.app.read
+      - key: com.cloudflare.api.account.zone.custom-page.read
+      - key: com.cloudflare.api.account.zone.custom-page.list
+      - key: com.cloudflare.api.account.zone.setting.read
+      - key: com.cloudflare.api.account.zone.setting.list
+      - key: com.cloudflare.api.account.zone.dnssec.update
+      - key: com.cloudflare.api.account.zone.dnssec.read
+      - key: com.cloudflare.api.account.dns-firewall.cluster.delete
+      - key: com.cloudflare.api.account.dns-firewall.cluster.update
+      - key: com.cloudflare.api.account.dns-firewall.cluster.read
+      - key: com.cloudflare.api.account.dns-firewall.cluster.create
+      - key: com.cloudflare.api.account.dns-firewall.cluster.list
+      - key: com.cloudflare.api.account.zone.dns-record.delete
+      - key: com.cloudflare.api.account.zone.dns-record.update
+      - key: com.cloudflare.api.account.zone.dns-record.read
+      - key: com.cloudflare.api.account.zone.dns-record.create
+      - key: com.cloudflare.api.account.zone.dns-record.list
+      - key: com.cloudflare.api.account.zone.page-rule.read
+      - key: com.cloudflare.api.account.zone.page-rule.list
+      - key: com.cloudflare.api.account.zone.railgun-connection.read
+      - key: com.cloudflare.api.account.zone.railgun-connection.list
+      - key: com.cloudflare.api.account.zone.subscription.read
+      - key: com.cloudflare.api.account.zone.aml.read
+      - key: com.cloudflare.api.account.zone.read
+      - key: com.cloudflare.api.account.zone.list
+      - key: com.cloudflare.api.account.audit-log.read
+      - key: com.cloudflare.api.account.custom-page.read
+      - key: com.cloudflare.api.account.custom-page.list
+      - key: com.cloudflare.api.account.railgun.read
+      - key: com.cloudflare.api.account.railgun.list
+      - key: com.cloudflare.api.account.dpa.read
+      - key: com.cloudflare.api.account.subscription.read
+      - key: com.cloudflare.api.account.subscription.list
+      - key: com.cloudflare.api.account.read
+      - key: com.cloudflare.api.account.list
+    resource_groups:
+    - id: 2fe938e0a5824128bdc8c42f9339b127
+      name: com.cloudflare.api.account.a67e14daa5f8dceeb91fe5449ba496eb
+      meta:
+        editable: 'false'
+      scope:
+        key: com.cloudflare.api.account.a67e14daa5f8dceeb91fe5449ba496eb
+        objects:
+        - key: "*"
+    access: allow
+</code></pre>
+	<p>您可以在定义的权限中看到更细的粒度。在两种情况下，用户都能执行相同的操作，但这种细粒度意味着我们对能做的事情更加明确。这里是 DNS 记录（在 com.cloudflare.api.account.zone.dns-record 下）有明确的创建、读取、更新、删除和列出权限。在资源组部分，我们可以看到范围部分定义一个帐户。该账户下任何对象（例如域）将匹配 “对象”下的 “*” 值。那意味着，这些权限适用于整个帐户。现在，让我们将这个用户的权限更改为限定于单一域的范围，看看策略如何变化。</p>
+	<h3 id="bach-dns--1">Bach DNS 用户角色（使用域范围限定策略）</h3>
+	<p>（略为修改以便于阅读）</p>
+	<pre><code class="language-yaml"># Zone Scoped DNS role - scoped to 1 zone
+policies:
+- id: 80b25dd735b040708155c85d0ed8a508
+  permission_groups:
+  - id: 132c52e7e6654b999c183cfcbafd37d7
+    name: Zone DNS
+    meta:
+      description: Grants access to edit DNS settings for zones in an account.
+      editable: 'false'
+      label: zone_dns_admin
+      scopes: com.cloudflare.api.account.zone
+    permissions:
+    - key: com.cloudflare.api.account.zone.secondary-dns.*
+    - key: com.cloudflare.api.account.zone.dnssec.*
+    - key: com.cloudflare.api.account.zone.dns-record.*
+    - key: com.cloudflare.api.account.zone.analytics.dns-report.*
+    - key: com.cloudflare.api.account.zone.analytics.dns-bytime.*
+    - key: com.cloudflare.api.account.zone.setting.read
+    - key: com.cloudflare.api.account.zone.setting.list
+    - key: com.cloudflare.api.account.zone.rate-plan.read
+    - key: com.cloudflare.api.account.zone.subscription.read
+    - key: com.cloudflare.api.account.zone.read
+    - key: com.cloudflare.api.account.subscription.read
+    - key: com.cloudflare.api.account.subscription.list
+    - key: com.cloudflare.api.account.read
+  resource_groups:
+  - scope:
+      key: com.cloudflare.api.account.a67e14daa5f8dceeb91fe5449ba496eb
+      objects:
+      - key: com.cloudflare.api.account.zone.b1fbb152bbde3bd28919a7f4bdca841f
+  access: allow
+</code></pre>
+	<p>一旦我们将用户的权限限制到仅包括一个明确的域，我们就能看到两个主要的差异。首先，权限大幅减少了。这是因为我们没有授予该用户读取或列出很多帐户级资源的权限，而这是传统帐户范围角色会授予的。所授予的唯一帐户级权限是 <em>account.read</em>、<em>subscriptions.read</em> 和 <em>subscriptions.list</em>。有这些权限，用户才能使用仪表板。在仪表板中查看该帐户时，显示的唯一帐户级产品将是域。其他产品，如 Cloudflare Workers、Zero Trust 等将被隐藏。</p>
+	<p>其次，在资源组范围部分，我们看到明确提及一个区域（line X: <code>com.cloudflare.api.account.zone.b1fbb152bbde3bd28919a7f4bdca841f</code>）。这意味着，该策略中列出的区域权限仅适用于这个特定的区域。尝试访问该区域的其他特性，或更改任何其他区域的 DNS，都会被 Cloudflare 拒绝。</p>
+	<h2 id="--3">下一步</h2>
+	<p>如果您是 Enterprise 客户并有意使用 Domain Scoped Roles，请联系您的 CSM 以参加提前体验。本公告标志着我们向 Bach 迁移的重大里程碑，而 Bach 是为 Cloudflare 的规模而构建的授权系统。这将允许我们把这些相同的能力在将来扩展到更多产品，创建一个授权系统，让客户就其团队对所有 Cloudflare 服务的访问具备更大的控制权。我们才刚刚开始，敬请关注。</p>
+</div>

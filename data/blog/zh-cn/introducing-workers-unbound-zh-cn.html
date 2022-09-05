@@ -1,0 +1,127 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image3-14-2.png" class="kg-image"></figure>
+	<p>我们于 2017 年发布了 Cloudflare Workers®，目标是打造一个我们曾经梦寐以求的开发平台。我们想要让开发人员能够构建优秀的软件，由 Cloudflare 来管理配置和维护基础设施的开销。从第一行代码，到第一个应用程序，一直到扩展至全球的产品，Workers 一路伴您左右。我们让 Edge 网络具有可编程性，并在全球 200 多个地点部署服务器，为您提供甚至能实现最伟大创意的巨大力量。</p>
+	<p>在 Cloudflare 的幕后，我们一直在稳步致力于开发 Edge 网络，使它变得更加强大和灵活。今天，我们很高兴地宣布进入一个新的阶段：启动我们全新的平台 Workers Unbound，让客户不再受到 CPU 限值的约束。非公开 Beta 测试现已开放，您可在<a href="https://www.cloudflare.com/workers-unbound-beta/" target="_blank">此处</a>注册以了解详细信息。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image2-9-4.png" class="kg-image"></figure>
+	<h3 id="-workers-unbound-cloudflare-workers-">什么是 Workers Unbound？与 Cloudflare Workers 有何区别？</h3>
+	<p>Workers Unbound 与我们经典的 Cloudflare Workers（现在称为 Workers Bundled）类似，但面向的是需要更长执行时间的应用程序。我们正在扩展我们的 CPU 限值，以允许客户将他们的所有工作负载都投向 Workers，无论其密集程度如何。它消除了开发人员经常需要进行的选择：是在边缘网络运行快速、简单的工作，还是在资源无限的集中式云中运行繁重的计算。</p>
+	<p>此平台将解锁一类新的密集型应用程序，例如图像处理或复杂算法等具有重度计算负担的应用程序。实际上，这是一个千呼万唤的功能，我们以前为诸多企业客户解锁过，现在即将向公众广泛提供。</p>
+	<p>Workers Unbound 设计为一个通用计算平台，而不仅仅是利基边缘计算产品的替代品。我们希望变得更快速、更实惠、更灵活，吸引那些您过去认为需要在传统的集中式无服务器平台上运行的工作负载。</p>
+	<h3 id="-">漂亮！如何尝试？</h3>
+	<p>我们很高兴地向一小部分开发人员提供 Workers Unbound 非公开 Beta 测试。请通过此<a href="https://www.cloudflare.com/workers-unbound-beta/" target="_blank">表单</a>联系我们，附上有关您的用例的一些详细信息，然后我们会与您接洽。我们乐意听到您的反馈，也期盼着看到您的开发成果。</p>
+	<h3 id="--1">幕后有什么情况？</h3>
+	<p>众所周知，无服务器如今受到了桎梏，因为它是在旧范式基础上构建的。大多数无服务器平台都从其云计算始祖那里继承了容器。Cloudflare 有机会重新思索了无服务器，通过在边缘网络上开发这一技术，让这项技术能给复杂应用程序带啦更高的规模化性能。</p>
+	<p>我们通过在 <a href="https://v8docs.nodesource.com/node-0.8/d5/dda/classv8_1_1_isolate.html" target="_blank">V8 Isolates</a> 上运行代码来获得性能优势，其设计为以极短的冷启动时间快速启动。Isolates 是 Google Chrome 团队开发的一种技术，用于为浏览器中的 JavaScript 引擎提供动力。他们推出了一种用于运行多租户代码的新模型，提供轻量级上下文，将变量与允许对其进行突变的代码分组在一起。</p>
+	<p>Isolates 比容器轻巧得多，后者是大多数其他无服务器提商架构的中心思想。容器实际上运行虚拟机，与它们相关的开销很大。因此，这使得工作负载极难在集中式环境之外运行。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/isolates-model@2x-1.png" class="kg-image"></figure>
+	<p>此外，Workers 上的单个进程可以运行数百或数千个 Isolate，能够在它们之间无缝切换。也就是说，一个操作系统进程内可以运行来自许多不同客户的代码。如此低的运行时间开销正是 Workers 能够扩展以支持许多租户的一个成功要素。</p>
+	<p>另一个成功要素是代码分布。基于边缘和基于区域的无服务器范式之间有一个关键区别，能够为来自世界上任何位置的客户提供服务，但这需要我们一次性将客户代码发送到每一台服务器。Isolates 再次伸出援手：我们将 V8 与您可在浏览器中找到的相同标准 JavaScript API 集成，让无服务器边缘应用程序能够同时兼顾轻巧和性能。这意味着，我们可以将 Worker 脚本分发到全球每个数据中心中的每一台服务器，以便任何位置的任何服务器都可以为绑定到任何客户的请求提供服务。</p>
+	<h3 id="--2">这对我的账单有何影响？</h3>
+	<p>规模化性能是我们的首要考虑因素，因为提高 Edge 的性能意味着我们可以将省下的成本转送给您。只需支付一次 JavaScript 运行时开销的费用，然后就可以运行基本上无限的脚本，几乎没有个体上的开销。</p>
+	<p>相比于 AWS Lambda，Workers Unbound 是真正具有成本效益的平台。对于无服务器，应当只需要为实际使用量付费，不应有任何隐藏费用。Workers 不会向您收取 API 网关费或 DNS 请求费之类的隐藏附加费用。</p>
+	<p>无服务器定价比较*</p>
+	<!--kg-card-begin: markdown-->
+	<table>
+		<thead>
+			<tr>
+				<th></th>
+				<th style="text-align:center">Workers Unbound</th>
+				<th style="text-align:center">AWS Lambda</th>
+				<th style="text-align:center">AWS Lambda @ Edge</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Requests (per MM requests)</td>
+				<td style="text-align:center">$0.15</td>
+				<td style="text-align:center">$0.20 - $0.28</td>
+				<td style="text-align:center">$0.60</td>
+			</tr>
+			<tr>
+				<td>Duration (per MM GB-sec)</td>
+				<td style="text-align:center">$12.50</td>
+				<td style="text-align:center">$16.67 - $22.92</td>
+				<td style="text-align:center">$50.01</td>
+			</tr>
+			<tr>
+				<td>Data Transfer (per egress GB)</td>
+				<td style="text-align:center">$0.09</td>
+				<td style="text-align:center">$0.09 - $0.16</td>
+				<td style="text-align:center">$0.09 - $0.16</td>
+			</tr>
+			<tr>
+				<td>API Gateway (per MM requests)</td>
+				<td style="text-align:center">$0</td>
+				<td style="text-align:center">$3.50 - $4.68</td>
+				<td style="text-align:center">CloudFront pricing</td>
+			</tr>
+			<tr>
+				<td>DNS Queries (per MM requests)</td>
+				<td style="text-align:center">$0</td>
+				<td style="text-align:center">$0.40</td>
+				<td style="text-align:center">$0.40</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<p><em>* 根据 aws.amazon.com/lambda/pricing 上公布的定价信息，数据截至 2020 年 7 月 24 日。AWS 公布的时长定价基于 1 GB-秒，此表中已乘以 100 万以提高可读性。AWS 价格范围反映了不同的地区定价。所有价格均四舍五入到最接近的两位小数。AWS 的数据传输费基于从 Amazon EC2 传出到互联网的数据传输，价格适用范围是 1 GB/月以上到最多 9.999 TB/月。AWS 的 API 网关费价格基于 Rest API 数，价格适用范围是 1MM/月以上到最多 333MM/月。Workers Unbound 和 AWS Lambda 服务都提供每月 1MM 个免费请求，以及每月 400,000 GB-秒的免费计算时间。AWS 的 DNS 查询费基于最高 10 亿查询/月的公布价格。</em></p>
+	<h3 id="--3">可以省多少钱？</h3>
+	<p>为测试我们的数据，我们将一台 <a href="https://github.com/Electroid/serverless-compare" target="_blank">hello world</a> GraphQL 服务器部署到了 Workers 和 Lambda。Lambda 的执行时间中值为 1.54ms，而相同的工作负载在 Workers 上为 0.90ms。在对数字进行了整理并考虑了 AWS 收取的所有不透明费用（包括用于允许来自互联网的请求的 API 网关）之后，我们发现使用 Workers Unbound 最多可以节省 75％。而这仅仅是 hello world 的情况！想象一下，为数百万个用户运行复杂的工作负载时您能节省多少成本。</p>
+	<p>您可能想知道我们为什么具有如此竞争力。一切都取决于效率。Workers 的轻巧特性使我们能够在执行相同的工作时减少平台开销和资源消耗。下面显示了这个 <a href="https://github.com/Electroid/serverless-compare" target="_blank">GraphQL hello world 测试的执行时间，同时也展示了平台提供商的开销</a>。由于测试是真正的 hello world，其差别可以通过提供商之间的体系结构差异来解释（例如，<a href="https://blog.cloudflare.com/cloud-computing-without-containers/">Isolate 与容器的差异</a>）。</p>
+	<p>GraphQL hello world 在不同服务器平台上的执行时间（ms）*</p>
+	<!--kg-card-begin: markdown-->
+	<table>
+		<thead>
+			<tr>
+				<th></th>
+				<th style="text-align:center">Cloudflare Workers</th>
+				<th style="text-align:center">AWS Lambda</th>
+				<th style="text-align:center">Google Cloud Functions</th>
+				<th style="text-align:center">Azure Functions</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Min</td>
+				<td style="text-align:center">0.58</td>
+				<td style="text-align:center">1.22</td>
+				<td style="text-align:center">6.16</td>
+				<td style="text-align:center">5.00</td>
+			</tr>
+			<tr>
+				<td>p50</td>
+				<td style="text-align:center">0.90</td>
+				<td style="text-align:center">1.54</td>
+				<td style="text-align:center">10.41</td>
+				<td style="text-align:center">21.00</td>
+			</tr>
+			<tr>
+				<td>p90</td>
+				<td style="text-align:center">1.24</td>
+				<td style="text-align:center">7.45</td>
+				<td style="text-align:center">15.93</td>
+				<td style="text-align:center">110.00</td>
+			</tr>
+			<tr>
+				<td>p99</td>
+				<td style="text-align:center">3.32</td>
+				<td style="text-align:center">57.51</td>
+				<td style="text-align:center">20.25</td>
+				<td style="text-align:center">207.96</td>
+			</tr>
+			<tr>
+				<td>Max</td>
+				<td style="text-align:center">16.39</td>
+				<td style="text-align:center">398.54</td>
+				<td style="text-align:center">31933.18</td>
+				<td style="text-align:center">2768.00</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<p><em>* 每一平台都使用了 128MB 内存等级。此测试在 AWS 的 us-east、Google 的 us-central 和 Azure 的 us-west 运行。每一平台测试以每秒 1 个请求的吞吐量运行，持续一个小时。执行时间取自各家提供商的日志系统。</em></p>
+	<p>这些数字本身说明了一切，也凸显了 Workers 架构的效率。在 Workers 上，您不仅可以获得更快的结果，而且还受益于我们为您节省的成本。</p>
+	<h3 id="--4">什么时候可以使用？</h3>
+	<p>Worker Unbound 是我们平台的一项重大更改，因此我们将逐步推出，并且不时对其进行调整。如果您想早日使用或在就绪时获得通知，请在<a href="https://www.cloudflare.com/workers-unbound-beta/" target="_blank">此处</a>注册以了解详细信息！</p>
+	<p>本周我们有一些激动人心的消息要分享。请继续关注无服务器周的其余活动！</p>
+</div>

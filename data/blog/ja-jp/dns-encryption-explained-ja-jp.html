@@ -1,0 +1,123 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/10/DoT-DoH@2x.png" class="kg-image"></figure>
+	<p>ドメインネームシステム（DNS）はインターネットのアドレス帳に相当します。cloudflare.com、あるいはその他のサイトにアクセスする際、ブラウザーは DNSリゾルバーに対しそのウェブサイトの IP アドレスを要求します。この時のDNSクエリと応答は残念なことに通常無防備です。DNSを暗号化することにより、ユーザーのプライバシーとセキュリティは向上します。この記事では、DNS を暗号化する 2 種類の方式、つまり DNS over TLS (DoT) および DNS over HTTPS (DoH) について説明します。また、その仕組みについても説明します。</p>
+	<p>ドメイン名を IP アドレスに変換するアプリケーションでは、通常、DNS を使用します。これは通常、アプリケーションを作成したプログラマーが明示的に実行させるわけではありません。プログラマーは単にフェッチ（たとえば"https://example.com/news"）を書き込むのみで、ソフトウェアライブラリーが "example.com" を IP アドレスに変換することを想定しています。</p>
+	<p>その背後で、ソフトウェアライブラリーが外部の <a href="https://www.cloudflare.com/learning/dns/what-is-dns/" target="_blank">再帰的DNSリゾルバー</a>を検出して接続し、DNSプロトコル（下図を参照）の交換を行い、アプリケーションが要求した名前の変換を実行します。外部DNSリゾルバーの選択と、プライバシーやセキュリティ提供の有無については、アプリケーションではコントロールできません。これらは、使用しているソフトウェアライブラリーとソフトウェアを実行するデバイスのオペレーティングシステムが提供するポリシーに依存します。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/10/DNS-flow-diagram.png" class="kg-image">
+		<figcaption>DNSクエリと応答の概要</figcaption>
+	</figure>
+	<h2 id="-dns-"><strong>外部DNSリゾルバー</strong></h2>
+	<p>オペレーティングシステムは通常、Dynamic Host Configuration Protocol (DHCP) を使用してローカル ネットワークからリゾルバーのアドレスを取得します。ホームネットワークおよびモバイルネットワークでは、通常、インターネットサービスプロバイダー（ISP）のリゾルバーを使用することになります。企業ネットワークでは、リゾルバーの選択は通常、ネットワーク管理者の管理下にあります。必要であれば、そのデバイスを制御できるユーザーは、特定のアドレス、例えばGoogle の 8.8.8.8 や <a href="https://blog.cloudflare.com/dns-resolver-1-1-1-1/">Cloudflare の 1.1.1.1</a>などのパブリックリゾルバーアドレスにオーバーライドすることができますが、ほとんどのユーザーは、コーヒーショップや空港で公共の Wi-Fi ホットスポットに接続する際に、リゾルバーを変更する手間をかけることはありません。</p>
+	<p>外部リゾルバーの選択は、エンドユーザーのエクスペリエンスに直接影響を与えます。ほとんどのユーザーはリゾルバーの設定を変更せず、ネットワークプロバイダーのDNSリゾルバーを使用しています。その相違が最も顕著で明白に現れるプロパティは、名前の変換の速度と精度です。プライバシーやセキュリティを向上する機能は、直ちに目には見えない場合があるでしょうが、他のユーザーがブラウジングアクティビティをプロファイリングしたり妨害したりすることを防御するのに役立っています。このことは、物理的に近接する誰もがワイヤレスネットワークトラフィックを捕捉したり復号化し得る公共Wi-Fiネットワークにおいては特に重要です。</p>
+	<h2 id="-dns"><strong>未暗号化状態のDNS</strong></h2>
+	<p>DNSは1987年に作成されて以来、ほとんどの場合未暗号化状態にありました。デバイスとリゾルバーの間に存在するあらゆる任意の人は、DNSクエリや応答をスヌープしたり、改ざんすることも可能です。これには、ローカルWi-Fiネットワーク内の任意の人、インターネットサービスプロバイダー（ISP）、トランジットプロバイダーが含まれます。その結果、あなたがアクセスしているドメイン名があばかれ、プライバシーが侵害される可能性が生じます。</p>
+	<p>何をのぞき見られるのか？ここで、ホームネットワークから接続しラップトップPCで取得した下記のネットワークパケットキャプチャーを見ていきましょう。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/10/dns-at-home-marked.png" class="kg-image"></figure>
+	<p>次の事項が観測可能です。</p>
+	<ul>
+		<li>UDPソースポートは、未暗号化DNSの標準ポート番号である53です。なので、UDP ペイロードは DNS 応答である可能性が高いでしょう。</li>
+		<li>このことは、ソースIPアドレス192.168.2.254がDNSリゾルバーであり、宛先IPアドレス192.168.2.14がDNSクライアントであることを示唆しています。</li>
+		<li>UDPペイロードは事実上DNS応答として解析でき、ユーザーがtwitter.comにアクセスしようとしていたことがうかがわれます。</li>
+		<li>仮に、後で104.244.42.129または 104.244.42.1への接続があった場合、それは「twitter.com」に向けられたトラフィックである可能性が高いと言えます。</li>
+		<li>仮にこのIPに対する暗号化されたHTTPSトラフィックがDNSクエリによりさらに多く実行された場合、それはWebブラウザーがそのページから追加のリソースを読み込んだ可能性を示唆しています。これで、ユーザーがtwitter.comにアクセスしているときに閲覧していたページをあばける可能性があるということになります。</li>
+	</ul>
+	<p>DNSメッセージは保護されていないため、次のような攻撃が起こり得ます。</p>
+	<ul>
+		<li>クエリが<a href="https://en.wikipedia.org/wiki/DNS_hijacking" target="_blank">DNSハイジャック</a>を実行しうるリゾルバーに送信される可能性があります。たとえば、英国では、Virgin Mediaと<a href="https://bt.custhelp.com/app/answers/detail/a_id/14244/c/402" target="_blank">BT</a>は、存在しないドメインに対して偽の応答を返し、同時にユーザーを検索ページにリダイレクトします。このリダイレクトが可能となる理由は、コンピューター/携帯電話がISP提供のゲートウェイ ルーターによる DHCP を使用して広告されたDNSリゾルバーを盲目的に信頼していることによります。</li>
+		<li>ファイアウォールはポート番号のみを頼りに、暗号化されていないDNSトラフィックを容易に傍受、妨害、改ざんすることが可能です。プレーンテキスト検査は可視性目標を達成するための特効薬ではないことに注意してください。DNSリゾルバーは常にバイパス可能だからです。</li>
+	</ul>
+	<h2 id="dns-"><strong>DNSの暗号化</strong></h2>
+	<p>DNS を暗号化することにより、スヌーパーがDNSメッセージをのぞき見たり、転送中に破損させたりすることは困難になります。Webが未暗号化状態のHTTPから暗号化されたHTTPSに移行したときのように、DNS自体を暗号化する DNSプロトコルへのアップグレードが可能となりました。Webを暗号化したことで、プライベートでセキュリティの高い通信や商取引を活発に行うことが可能になりました。DNS を暗号化することにより、ユーザーのプライバシーはさらに強化されます。</p>
+	<p>ユーザーとリゾルバー間の DNS トランスポートを高いセキュリティで保護する 2 つの標準化されたメカニズムが存在します。一つは<a href="https://tools.ietf.org/html/rfc7858" target="_blank">DNS over TLS（2016年）</a>そしてもう一つは<a href="https://tools.ietf.org/html/rfc8484" target="_blank">DNS Queries over HTTPS（2018年）</a>です。ともにTransport Layer Security（TLS）を基礎としています。TLSはまた、HTTPS を使用し、ユーザーとウェブサイト間の通信を高いセキュリティで保護することにも使用されています。TLSでは、サーバー（ウェブサーバーかDNSリゾルバーかを問わず）が証明書を使用し、クライアント（あなたのデバイス）に対して自身を証明します。これにより、第三者がサーバー（リゾルバー）を偽装することができなくなります。</p>
+	<p>DNS over TLS（DoT）では、元のDNSメッセージは高いセキュリティで保護されたTLSチャネルに直接埋め込まれます。外部からは、問い合わせられた名前を知ることも、それを改ざんすることもできません。専用のクライアントアプリケーションでTLSを復号化することは可能です。それは次のようになります。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/10/dns-over-tls13-marked.png" class="kg-image"></figure>
+	<p>未暗号化状態のDNSのパケットトレースでは、明らかにDNS要求がクライアントから直接送信され、その後にリゾルバーからのDNS応答が続きます。しかしながら、暗号化されたDoTの場合、暗号化されたDNSメッセージを送信する前に、ある一定のTLSハンドシェイクメッセージが交換されます。</p>
+	<ul>
+		<li>クライアントはClient Helloを送信し、サポートされているTLS機能を告知します。</li>
+		<li>サーバーはServer Helloで応答し、接続のセキュリティ保護に使用される TLSパラメータに同意します。証明書メッセージにはサーバーのIDが含まれ、証明書確認メッセージには、クライアントがサーバー証明書を使用して検証可能なデジタル署名が含まれます。通常、クライアントはこの証明書を信頼のおける証明機関のローカル リストと照合します。ただし、DoT仕様書では公開鍵ピンニングなどの<a href="https://tools.ietf.org/html/rfc7858#section-3.2" target="_blank">代替信用メカニズム</a>に触れています。</li>
+		<li>クライアントとサーバーの両方がTLSハンドシェイクを終了した時点をもって、暗号化されたメッセージの交換を開始することができます。</li>
+		<li>上図にはDNSクエリと応答が1つづつ含まれていますが、実際にはセキュリティで保護されたTLS接続はOpenを維持し、未来のDNSクエリで再利用されます。</li>
+	</ul>
+	<p>新しいポートの上にTLSをスラップして未暗号化状態のプロトコルをセキュリティで保護することは、以下のようにすでに実行済みです。</p>
+	<ul>
+		<li>ウェブトラフィック：HTTP（tcp/80） -&gt; HTTPS（TCP/443）</li>
+		<li>電子メールの送信：SMTP（tcp/25） -&gt; SMTPS（tcp/465）</li>
+		<li>電子メールの受信：IMAP（tcp/143） -&gt; IMAPS（tcp/993）</li>
+		<li>現状：DNS（tcp/53 または udp/53） -&gt; DoT（tcp/853）</li>
+	</ul>
+	<p>新しいポートを導入する際の問題は、既存のファイアウォールがそれをブロックする可能性があることです。その理由は、新しいサービスを明示的に有効にするホワイトリストアプローチを採用しているか、あるいはネットワーク管理者がサービスを明示的にブロックするブロックリストアプローチを採用しているためです。高セキュリティオプション（DoT）が低セキュリティオプションに比較し導入される可能性が低い場合、ユーザーあるいはアプリケーションは未暗号化状態のDNSにフォールバックすることを選択する可能性があります。するとこれに引き続き、攻撃者はユーザーを低セキュリティバージョンに強制的に誘導する可能性が生じます。</p>
+	<p>ただし、このようなフォールバック攻撃はあまり理にかなっているとはいえません。最近ではHTTPSウェブサイトをHTTPにダウングレードする<a href="https://blog.cloudflare.com/performing-preventing-ssl-stripping-a-plain-english-primer/">SSL ストリッピング</a>が使用されつつあります。これは攻撃者がパスワードを盗んだり、アカウントをハイジャックすることを可能にします。</p>
+	<p>もう1つのアプローチであるDNS Queries over HTTPS（DoH）は、次の2つの主要なユースケースをサポートするように<a href="https://tools.ietf.org/html/rfc8484#section-1" target="_blank">設計</a>されています。</p>
+	<ul>
+		<li>オンパスデバイスがDNSと干渉を起こす上記の問題を回避する。これには、上記のポートブロックの問題が含まれます。</li>
+		<li>ウェブアプリケーションが既存のブラウザー APIを介してDNSにアクセスできるようにする。<br>DoHは本質的にHTTPSであり、ウェブが使用するものと同様の暗号化標準を採用し、同じポート番号（tcp/443）を再利用します。ウェブブラウザ側ではすでに、HTTPS を支持し、<a href="https://blog.mozilla.org/security/2015/04/30/deprecating-non-secure-http/" target="_blank">非安全保護のHTTPを非難</a>しています。これにより、HTTPSはDNSメッセージを安全に転送するための優れた選択肢となりました。このようなDoH要求の例は、<a href="https://tools.ietf.org/html/rfc8484#section-4.1.1" target="_blank">ここ</a>を参照してください。</li>
+	</ul>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/10/DoH-flow-diagram.png" class="kg-image">
+		<figcaption>DoH：高いセキュリティで保護されたHTTPSストリームを介して転送されるDNSクエリと応答</figcaption>
+	</figure>
+	<p>一部のユーザーは、HTTPS の使用は、それが追跡目的でCookieを使用する可能性があることから、プライバシー保護を弱める可能性があると懸念しています。DoH プロトコルの設計者は、さまざまなプライバシー問題を<a href="https://tools.ietf.org/html/rfc8484#section-8" target="_blank">考慮</a>し、特にトラッキングを避けるためにHTTPクッキーの使用を明示的に非推奨としています。そのことは広く市場から受け入れられています。TLSセッションの再開により、TLS 1.2のハンドシェイクパフォーマンスは向上しました。しかし同時にTLS接続の関連付けに使用される可能性が生じました。幸いにも、TLS 1.3を使用することで、デフォルトでラウンド トリップの数が減ったことにより、関連するプライバシー懸念事項に効果的に対処することが可能となり、TLSセッション再開の必要性を排除することができました。</p>
+	<p>さらに、HTTPSを使用することによりHTTP ロトコルが改善され、そのことがDoHにメリットをもたらす可能性があります。たとえば、開発中の <a href="https://blog.cloudflare.com/http3-the-past-present-and-future/">HTTP/3 プロトコル</a>は、<a href="https://blog.cloudflare.com/the-road-to-quic/">QUIC</a>の上に構築されており、ヘッドオブラインブロックがないために、パケットロスが発生した際のパフォーマンス低下問題を改善する可能性があります。つまり、1つのパケットが失われたときに互いをブロックすることなく、セキュリティで保護されたチャネルを介して複数のDNSクエリを同時に送信することが可能となるのです。</p>
+	<p>また、DNS over QUIC（DNS/QUIC）の<a href="https://tools.ietf.org/html/draft-huitema-quic-dnsoquic" target="_blank">ドラフト</a>も存在します。それは DoT に類似しますが、QUIC の使用によるヘッドオブラインブロックの問題は生じません。ただし、HTTP/3とDNS/QUICの両者は共にアクセス可能なUDPポートを必要とします。理論的には、どちらもそれぞれDoH over HTTP/2かDoTにフォールバックする可能性があります。</p>
+	<h2 id="dot-doh-"><strong>DoTとDoHの展開</strong></h2>
+	<p>DoTとDoHはどちらも比較的新技術であり、まだ汎用化に至っていません。サーバー側では、Cloudflareの1.1.1.1やGoogle DNSなどの主要なパブリックリゾルバーがサポートしています。しかしながら、多くの ISP リゾルバーは未だサポートを提供していません。DoHをサポートするパブリックリゾルバーの一覧表は、<a href="https://github.com/DNSCrypt/dnscrypt-proxy/wiki/DNS-server-sources" target="_blank">DNSサーバーソース</a>を参照してください。DoTとDoHをサポートする別のパブリックリゾルバーの一覧表は<a href="https://dnsprivacy.org/wiki/display/DP/DNS+Privacy+Public+Resolvers" target="_blank">DNSプライバシーパブリックリゾルバー</a>を参照してください。</p>
+	<p>エンドユーザーのデバイス側でDoTまたはDoHを有効にする方法は次の 2 通りの方法があります。</p>
+	<ul>
+		<li>オペレーティング システムからリゾルバー サービスをバイパスし、アプリケーションにサポートを追加する。</li>
+		<li>オペレーティング システムにサポートを追加し、透過的にアプリケーションをサポートする。</li>
+	</ul>
+	<p>通常、クライアント側のDoTまたはDoHには次の3つのコンフィギュレーションモードがあります。</p>
+	<ul>
+		<li>オフ：DNSは暗号化されません。</li>
+		<li>適時モード：DNSにセキュリティで保護されたトランスポートの使用を常に試みますが、これが使用不可の場合は未暗号化状態のDNSにフォールバックします。このモードは、攻撃者がデバイスに未暗号化状態の DNS を強制使用ささせるダウングレード攻撃に対して脆弱です。このモードは、オンパスのアクティブな攻撃者がいないときにプライバシーを提供することを目的としています。</li>
+		<li>厳密モード：常にセキュリティで保護されたトランスポート経由での DNS使用を試行します。これが使用不可の場合は、致命的失敗となり、ユーザーにエラーを表示します。</li>
+	</ul>
+	<p>セキュリティで保護されたトランスポート経由でのDNSに関するシステムワイドコンフィグレーションの現状：</p>
+	<ul>
+		<li>Android 9：自身の「プライベートDNS」機能を介してDoTを<a href="https://android-developers.googleblog.com/2018/04/dns-over-tls-support-in-android-p.html" target="_blank">サポート</a>しています。モード：</li>
+		<li>デフォルトで、適時モード（"自動"）が使用されています。ネットワーク設定（通常は DHCP）からのリゾルバーが使用されています。</li>
+		<li>厳密モードは、明示的なホスト名を設定することにより<a href="https://blog.cloudflare.com/enable-private-dns-with-1-1-1-1-on-android-9-pie/">構成</a>が可能です。IP アドレスは許可されず、ホスト名はデフォルトのリゾルバーを使用して変換され、またそれは証明書の検証にも使用されます。（<a href="https://github.com/aosp-mirror/platform_frameworks_base/commit/a24d459a5d60c706472f9b620d079cd0a40a7279" target="_blank">関連するソース コード</a>）</li>
+		<li>また、iOSおよびAndroidユーザーは、<a href="https://1.1.1.1/" target="_blank">1.1.1.1 アプリ</a>をインストールし、厳密モードでDoHまたはDoTのサポートを有効にすることもできる。内部的には、セキュリティで保護されたチャネルを介して転送される前に、 VPNプログラミング インターフェイスを使用し、未暗号化状態のDNSトラフィックの傍受を有効にする。</li>
+		<li>systemd 239によりsystemd変換されたLinux：<a href="https://www.freedesktop.org/software/systemd/man/resolved.conf.html#DNSOverTLS=" target="_blank">DNSOverTLS</a>オプション経由のDoT。</li>
+		<li>デフォルトはオフです。</li>
+		<li>適時モードは構成できますが、証明書の検証は実行されません。</li>
+		<li>厳密モードはsystemd 243以降で使用可能となりました。信頼された証明機関によって署名された証明書は有効に受け入れられます。ただし、OpenSSLバックエンドがIPアドレスを<a href="https://github.com/systemd/systemd/blob/v243/src/resolve/resolved-dnstls-openssl.c#L86-L87" target="_blank">想定</a>している場合、GnuTLSバックエンドとの間で<a href="https://github.com/systemd/systemd/blob/v243/src/resolve/resolved-dnstls-gnutls.c#L62-L63" target="_blank">ホスト名検証はできません</a>。</li>
+		<li>いずれの場合も、Server Name Indication（SNI）は送信されません。証明書名が<a href="https://github.com/systemd/systemd/issues/9397" target="_blank">検証されない</a>ことで中間攻撃者を弱体化させます。</li>
+		<li>Linux、macOS、Windows は、各々DoHクライアントを厳密モードで<a href="https://developers.cloudflare.com/1.1.1.1/dns-over-https/cloudflared-proxy/" target="_blank">使用</a>することができます。Cloudflared proxy-dnsコマンドはデフォルトでCloudflare DNSリゾルバーを使用します。また、ユーザーはproxy-dns-upstreamオプションを使用して上書きすることができます。</li>
+	</ul>
+	<p>ウェブブラウザがDoTの代替としてDoHをサポートする：</p>
+	<ul>
+		<li>Firefox 62はDoHを<a href="https://support.mozilla.org/en-US/kb/firefox-dns-over-https" target="_blank">サポート</a>します。また、いくつかの<a href="https://wiki.mozilla.org/Trusted_Recursive_Resolver" target="_blank">Trusted Recursive Resolver（TRR）</a>設定を提供しています。デフォルトではDoHは無効になっています。ただし、Mozillaは<a href="https://blog.mozilla.org/futurereleases/2019/09/06/whats-next-in-making-dns-over-https-the-default/" target="_blank">実験</a>として米国の一部のユーザー向けにDoHを有効にしています。この実験では現在、Cloudflareの1.1.1.1リゾルバーを使用しています。当社がMozilla が要求する<a href="https://wiki.mozilla.org/Security/DOH-resolver-policy" target="_blank">厳密リゾルバーポリシー</a>に準拠する唯一のプロバイダーであることがその理由です。多くのDNSリゾルバーが未だに暗号化されたDNSトランスポートをサポートしていないため、このMozillaのアプローチにより、より多くのユーザーがDoHを使用した保護の恩恵を受けることになるでしょう。</li>
+		<li>この実験を介し、あるいはネットワーク設定の「Enable DNS over HTTPS」オプションを経由して有効化すると、Firefoxは適時モード（network.trr.mode=2 at about:config）に切り替わります。</li>
+		<li>厳密モードはnetwork.trr.mode=3で有効化できますが、明示的なリゾルバーIPを指定する必要があります（たとえば、network.trr.bootstrapAddress=1.1.1.1）。</li>
+		<li>Firefoxがシステムのデフォルトリゾルバーを無効化しているとき、代替のリゾルバーを設定することができます。また、DoHをサポートしないリゾルバーを使用したエンタープライズデプロイメントには、DoHを無効化する<a href="https://support.mozilla.org/en-US/kb/configuring-networks-disable-dns-over-https" target="_blank">オプション</a>が与えられます。</li>
+		<li>Chrome 78では、システム リゾルバーアドレスが <a href="https://www.chromium.org/developers/dns-over-https" target="_blank">ハードコーディングされたDoHプロバイダー</a>（<a href="https://chromium.googlesource.com/chromium/src.git/+/f93a48e3720931c25a3abc7848b08afed43e3be2%5E%21/" target="_blank">ソースコード変更</a>）の1つと一致する場合に、適時 DoH を<a href="https://blog.chromium.org/2019/09/experimenting-with-same-provider-dns.html" target="_blank">有効</a>にします。この実験は、LinuxとiOSを除くすべてのプラットフォームで有効化されています。ただし、デフォルトではエンタープライズデプロイメントは除外されています。</li>
+		<li>Opera 65では、Cloudflareの1.1.1.1リゾルバーを介したDoHの有効化がオプションとして<a href="https://blogs.opera.com/desktop/2019/09/opera-65-0-3430-0-developer-update/" target="_blank">追加</a>されています。この機能はデフォルトではオフとなっています。これを有効化したとき、適時モード1.1.1.1:443（SNIなし）が使用可能な場合は、適時モードが使用されます。それ以外の場合は、デフォルトリゾルバーである未暗号化状態にフォールバックします。</li>
+	</ul>
+	<p>カールプロジェクトの<a href="https://github.com/curl/curl/wiki/DNS-over-HTTPS" target="_blank">DNS over HTTPS</a>ページで、DoHプロバイダーと追加実装の包括的一覧を参照できます。</p>
+	<p>デバイスと外部DNSリゾルバー間のネットワーク パスを完全に暗号化する方法の代替策として、次のような中間的方策を取ることが可能です。つまり、デバイスとローカルネットワークゲートウェイの間に未暗号化状態のDNSを使用しつつ、ゲートウェイ ルーターと外部DNSリゾルバー間の<a href="https://blog.cloudflare.com/dns-over-tls-built-in/">すべてのDNSトラフィックを暗号化する</a>という方法です。セキュリティで保護された有線または無線ネットワークの場合、この方法はローカル ネットワーク内のすべてのデバイスをスヌーパーISPやその他のインターネット上の敵対者から保護することを可能にします。公共のWi-Fiホットスポットは安全とは見なされないため、この方法はオープンなWi-Fiネットワークでは安全とは言えません。WPA2-PSKでパスワード保護されている場合でも、依然として他者が未暗号化状態のDNSをスヌープして改ざんすることが可能です。</p>
+	<h2 id="-"><strong>その他のセキュリティに関する考慮事項</strong></h2>
+	<p>前のセクションでは、セキュリティで保護されたDNSトランスポート、DoH、およびDoTについて説明しました。これらの方法によってのみ、クライアントがDNSリゾルバーから改ざんされていない応答を受け取ることを保証できます。しかしながらこれらの方法は、リゾルバーが不正な応答（DNSハイジャック攻撃やDNSキャッシュポイゾニング攻撃を介した応答）をした際に防御することはできません。「真実」の応答は、権限のあるネームサーバーの報告により、ドメインまたはゾーンの所有者によって決定されます。<a href="https://www.cloudflare.com/learning/dns/dns-security/" target="_blank">DNSSEC</a>により、クライアントは返ってきたDNS応答の整合性を確認することができ、また、クライアントと権限のあるネームサーバー間のパスで生じた不正な改ざんを発見することができます。</p>
+	<p>しかしながらDNSSECの導入は、ミドルボックスが<a href="https://labs.ripe.net/Members/willem_toorop/sunrise-dns-over-tls-sunset-dnssec" target="_blank">誤って</a>DNSメッセージを転送することで妨害されることがあります。そしてさらに、情報が使用可能であったとしても、アプリケーションが使用しているスタブリゾルバーがその結果を検証すらしない場合もあります。2016年の<a href="https://www.internetsociety.org/resources/doc/2016/state-of-dnssec-deployment-2016/" target="_blank">報告書</a>によると、DNSSEC検証リゾルバーを使用しているユーザーは 26% に過ぎませんでした。</p>
+	<p>DoHとDoTは、クライアントとパブリックリゾルバー間のトランスポートを保護します。パブリックリゾルバーは、名前を変換するために、追加で権限のあるネーム サーバーに連絡することが必要となる可能性があります。伝統的に、リゾルバーと権限のあるネームサーバーの間のパスは、未暗号化状態のDNSを使用します。これらのDNSメッセージを保護することを目的として、当社はFacebookと共に実験を行いました。1.1.1.1とFacebookが採用している権限のあるネームサーバーとの間にDoTを使用するというものです。TLSを使用してセキュリティで保護されたチャネルを設定することにより遅延が増加しますが、それはクエリ数が増すごとに緩和することが可能です。</p>
+	<p>トランスポートを暗号化することにより、リゾルバーの結果とメタデータが確実に保護されます。たとえば、DNSクエリに含まれる <a href="https://tools.ietf.org/html/rfc7871" target="_blank">EDNS Client Subnet（ECS）</a>情報は、DNSクエリを開始した元のクライアント アドレスを晒してしまう可能性があります。その情報をパスに沿って非表示にできればプライバシーが向上します。また、DNS転送時に発生するDNSSEC無効化の問題から生じるミドル ボックス損壊を<a href="https://labs.ripe.net/Members/willem_toorop/sunrise-dns-over-tls-sunset-dnssec" target="_blank">回避</a>することも可能となります。</p>
+	<h2 id="dns--1"><strong>DNS暗号化に関する運用上の問題</strong></h2>
+	<p>DNS暗号化にあたり、DNSトラフィックの監視または変更に依存する個人や組織は多くの課題に直面することでしょう。受動的監視に依存するセキュリティ 製品は、機械やネットワークの端で発生するすべての送受信ネットワークトラフィックを監視しています。未暗号化状態にあるDNSクエリを頼りにして、たとえばマルウェアに感染している機械を特定できる可能性があります。仮にDNSクエリが暗号化されている場合、受動性監視ソリューションはドメイン名を監視することはできません。</p>
+	<p>一部の人は、DNSリゾルバーが次のような目的でコンテンツ フィルターを適用することを期待しています。</p>
+	<ul>
+		<li>マルウェアディストリビューションに使用されるドメインをブロックする。</li>
+		<li>広告をブロックする。</li>
+		<li>保護者制限フィルター処理を実行し、アダルトコンテンツ関連のドメインをブロックする。</li>
+		<li>地域の規制に違反するコンテンツを提供するドメインへのアクセスをブロックする。</li>
+		<li><a href="https://en.wikipedia.org/wiki/Split-horizon_DNS" target="_blank">スプリット ホライズンDNS</a>を提供して、送信元ネットワークに応じた異なる応答をする。</li>
+	</ul>
+	<p>DNSリゾルバーを介してドメインへのアクセスをブロックする方法の利点は、一つ一つのアプリケーション単位で再実装する必要がなく、すべてを一元的に実行できることにあります。しかしながら残念なことに、それは極めて粗雑です。あるウェブサイトが複数ユーザー向けにexample.com/videos/for-kids/とexample.com/videos/for-adults/を提供しているとします。DNS リゾルバーは唯一「example.com」のみを識別します。そして、それをブロックするかしないかを選択できるのみです。このケースでは、ブラウザー拡張機能などのアプリケーションに固有の管理機能を活用する方法がより効果的でしょう。この方法をとれば、実際に URL全体を識別し、コンテンツへのアクセスを選択的に排除できるからです。</p>
+	<p>DNS監視は包括的ではありません。マルウェアは、DNSアドレスとハードコード IP アドレスをスキップしたり、<a href="https://blog.netlab.360.com/an-analysis-of-godlua-backdoor-en/" target="_blank">代替方法</a>を使用してIPアドレスを照会することができます。ただし、すべてのマルウェアがそれほど複雑なわけではないため、依然としてDNS監視は<a href="https://en.wikipedia.org/wiki/Defense_in_depth_%28computing%29" target="_blank">多層防御</a> ツールとして機能することができます。</p>
+	<p>すべての非受動性監視やDNSブロッキングユースケースは、DNSリゾルバーからのサポートが要求されます。現在のリゾルバーをアップグレード展開する際、適時にDoH/DoTに依存する場合、通常、未暗号化DNSで提供されている機能がそのまま同様に維持されます。残念ながら、これは既に述べた通りダウングレードに対して脆弱です。これを解決するために、システム管理者はエンドポイントに厳密モードでDoH/DoTリゾルバーを指定することにより対処できます。理想的には、これを実行するにあたり、セキュリティで保護されたデバイス管理ソリューション（<a href="https://en.wikipedia.org/wiki/Mobile_device_management" target="_blank">MDM</a>、Windows上の<a href="https://en.wikipedia.org/wiki/Group_Policy" target="_blank">グループポリシー</a>など）を使用することが好ましいでしょう。</p>
+	<h2 id="--1"><strong>結論</strong></h2>
+	<p>DNSを使用して名前をアドレスにマッピングすることは、インターネットの基礎の1つとなっています。DNSは、伝統的に安全性に欠けた未暗号化状態のトランスポートを使用してきました。このことは過去においてISPにより悪用され、<a href="https://www.icsi.berkeley.edu/pubs/networking/redirectingdnsforads11.pdf" target="_blank">広告</a>が挿入されてきました。また、それはプライバシー漏洩の原因にもなってきました。せんさく好きな訪問者は、コーヒーショップで未暗号化状態のDNSを利用しあなたの行動を監視しています。これらの問題はすべて、DNS over TLS（DoT）または DNS over HTTPS（DoH）を使用することで解決することができます。ユーザーを保護するためのこれらの手法は比較的新しくはありますが、その適用は増加傾向にあります。</p>
+	<p>技術的な観点から評価すると、DoHはHTTPSに非常に類似しており、<a href="https://blog.mozilla.org/security/2015/04/30/deprecating-non-secure-http/" target="_blank">セキュリティを尊重しないオプションが廃止に向かう</a>一般的な業界傾向を踏襲しています。DoTはHTTP層を削除していることから、DoHと比較してより単純なトランスポートモードと言えます。しかしながら、だからこそ故意または事故によりブロックされ易い傾向にあります。</p>
+	<p>高いセキュリティで保護されたトランスポートを実現するための2次的要素は、DNSリゾルバーの選択にあります。一部のベンダーは、ローカルに構成されたDNSリゾルバーを使用しますが、未暗号化状態のトランスポートをより安全なトランスポート（DoTまたはDoH）に適時にアップグレードする方式を試行しています。しかしながら残念なことに、多くの場合安全なトランスポートをサポートしないISPが提供するDNSリゾルバーにデフォルト設定されているのが現状です。</p>
+	<p>Mozillaは異なるアプローチを採用しています。DoHすらサポートしていない可能性があるローカルリゾルバーに依存するのではなく、ユーザーが明示的にリゾルバーを選択できるようにしています。Mozilla が推奨するリゾルバーは、ユーザーのプライバシーを保護するための<a href="https://wiki.mozilla.org/Security/DOH-resolver-policy" target="_blank">高い基準</a>を満たすことが要求されています。DNSに基づく保護者管理制御機能の継続を確保し、かつスプリットホライズンユースケースをサポートするために、MozillaはプライベートリゾルバーがDoHを無効化できるメカニズムを<a href="https://support.mozilla.org/en-US/kb/configuring-networks-disable-dns-over-https" target="_blank">追加</a>しました。</p>
+	<p>DoTおよびDoHトランスポートプロトコルにより、私たちはより安全なインターネットに移行する準備を整えました。前述のパケットトレースで見られるように、これらのプロトコルは、アプリケーショントラフィックをセキュリティで保護する既存のメカニズムに類似しています。このセキュリティとプライバシーの課題が解決を見たとき、そこには<a href="https://arxiv.org/pdf/1906.09682.pdf" target="_blank">より</a><a href="https://blog.cloudflare.com/esni/">多くの</a>が取り組むべき課題が出現することでしょう。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/10/tales-from-the-crypto-team@2x-5.png" class="kg-image"></figure>
+</div>

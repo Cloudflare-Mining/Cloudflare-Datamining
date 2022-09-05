@@ -1,0 +1,31 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://lh5.googleusercontent.com/NAX-U-hQMpI182GH6Xa_YfG8cly8-NkwlwClX4K88-5VApdgCVe-vprR_yNdDhGZOmAwXIQIp5bcqygfNohubrPzlxj4pTldqyw7mLL6KBSraqNKV4MhOHy7maJjM4AnydCAVx2i" class="kg-image"></figure>
+	<p>大约一年前，我们宣布了 <a href="https://www.cloudflare.com/zh-cn/teams" target="_blank">Cloudflare for Teams</a>，这是 Cloudflare 用于保护用户，设备和数据的平台。借助 Cloudflare for Teams，我们的全局网络成为您团队的网络，并通过一个更贴近您的用户（无论他们在哪里工作）的解决方案来代替本地设备和安全性订阅。Cloudflare for Teams 围绕两个核心产品：Cloudflare Access 和 Cloudflare Gateway。</p>
+	<p>Cloudflare Gateway 保护员工免受 Internet 上的安全性威胁，并强制实施适当的使用策略。我们构建了 Gateway，以帮助客户通过集中式防火墙消除回程用户 Traffic 带来的麻烦。借助 Gateway，用户可以连接到全球 200 个城市的 Cloudflare 数据中心之一，我们的网络可以在其中为所有 Internet 流量应用一致的安全性策略。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image4-6.png" class="kg-image"></figure>
+	<p>2020 年 3 月，我们推出了 Gateway 的第一个功能，<a href="https://blog.cloudflare.com/protect-your-team-with-cloudflare-gateway/">即安全的 DNS 过滤解决方案。</a>借助 Gateway 的 DNS 过滤，管理员可以单击一个按钮来阻止已知威胁，例如恶意软件或网络钓鱼站点。政策也可以用来阻止特定的风险类别，例如赌博或社交媒体。当用户请求过滤的站点时，Gateway 会停止解析 DNS 查询，并防止设备连接到具有被阻止内容的恶意目标或主机名。</p>
+	<p>最近，我们扩展了 Gateway 的安全性过滤功能，通过一个<a href="https://blog.cloudflare.com/zh-cn/gateway-swg-zh-cn/">云 L7 防火墙</a>。L7 防火墙使管理员可以将安全和内容策略应用于 HTTP Traffic。例如，团队可以停止文件上传到某些应用程序，也可以通过 URL 建立规则。</p>
+	<h3 id="-"><strong>管理云应用程序的防火墙设置的普通任务</strong></h3>
+	<p>只需单击几下即可为单个主机名或 URL 建立这些规则，但是将这些策略应用于整个 “应用程序” 可能很繁琐。我们经常将流行的应用程序（例如 Microsoft Office 365）视为一个实体。但是在幕后，这些服务依赖于数百个主机名和 IP 地址，这些主机名和 IP 地址共同启用了该应用程序。如果您的团队希望建立一个规则以始终允许文件上传到 Office 365，则必须在其更改列表中查找并输入每个目标。</p>
+	<p>例如，<em>Salesforce</em>不仅是 salesforce.com。截止到今天，Salesforce 使用了 11 个唯一的顶点域（例如，forceusercontent.com 或 sfdcstatic.com），并且该列表还在继续增长。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image1-9.png" class="kg-image"></figure>
+	<p>如果 IT 管理员希望确保 Salesforce 在其网络上正常运行，则需要确保 Salesforce 的所有域都在其允许列表中。而且，每当 Salesforce 添加新的网络端点时，他们都需要确保更新此列表。</p>
+	<p>仅针对一个应用程序维护防火墙策略可能会造成很多麻烦。大多数组织需要跟踪要在其网络上管理的数百个云应用程序。这些允许列表可能包含数千个主机名，并且需要花费数小时的时间进行繁琐的审核，以确保它们是最新且全面的。</p>
+	<p>云应用程序的不断发展增加了这种复杂性。为了符合法规要求，IT 管理员可能需要限制对公司设备上所有未批准的文件共享应用程序的 Access。为此，他们将需要跟踪所有文件共享服务以及与每个文件共享服务关联的所有主机名。</p>
+	<h3 id="-gateway-"><strong>具有应用程序和应用程序类型的 Gateway 策略</strong></h3>
+	<p>我们希望减轻 IT 管理员的负担，并简化组织管理云应用程序的防火墙策略的方式。从今天开始，您可以使用 Cloudflare Gateway 跳过繁琐的工作。</p>
+	<p>Cloudflare 会为您进行研究和分组这些应用程序的工作。您的团队可以使用这些集合通过<strong>应用程序</strong>（例如，Salesforce，Microsoft Office 365）和<strong>应用程序类型</strong>（例如，文件共享，社交媒体）来构建单个 Gateway HTTP 规则。</p>
+	<p>应用程序由一组基于它们所属的云应用程序的主机名组成。应用程序类型由一组应用程序组成。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image5-5.png" class="kg-image"></figure>
+	<p>要使用应用程序或应用程序类型创建策略，首先导航到 Teams 仪表板 Gateway 部分的 “策略” 选项卡。然后选择 “HTTP” 选项卡，然后单击右侧的蓝色 “添加规则” 按钮以导航到规则构建器。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image6-3.png" class="kg-image"></figure>
+	<p>例如，让我们创建一个规则以阻止除 Slack 之外的所有协作和在线会议工具。在 “选择器” 下拉菜单中，选择 “应用程序” 选项，然后在其旁边的 “运算符” 下拉菜单中，选择 “输入” 选项。在 “值” 字段中，开始输入 “协作和在线会议”，您将看到应用程序类型的其余部分自动填充。</p>
+	<p>单击 “协作和在线会议” 后，全套应用程序将填充在值字段中。要删除 Slack，请按值 “Slack” 右侧的 “x”。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image3-7.png" class="kg-image"></figure>
+	<p>最后，导航到规则构建器底部的 “操作” 下拉菜单。在这里，选择 “阻止”。不要忘记单击屏幕右上方的蓝色 “保存” 按钮来保存规则。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image7-1.png" class="kg-image"></figure>
+	<p>现在，您已经创建了第一个“应用程序”规则！使用一条规则，您就不必批量上传数百个主机名的列表来获得相同的结果。您也不需要关注这 20 多个应用程序的网络端点更新—我们将为您智能地更新该列表。</p>
+	<h3 id="--1"><strong>下一步</strong></h3>
+	<p>如今，我们支持 17 种类型的 223 个应用程序。要查看受支持的应用程序及其关联的应用程序类型的完整列表，请查看 Gateway 文档。我们将对该列表进行持续更新，以支持其他应用程序和应用程序类型，并为网络上的 Shadow IT 提供其他控件和可见性。</p>
+	<p>今天，Gateway 规则构建器中的应用程序和应用程序类型适用于所有使用 L7 防火墙的客户。L7 防火墙在 Gateway Standalone、Teams Standard 和 Teams Enterprise 计划中可用。如果您不使用 Gateway，你可以开始<a href="https://dash.cloudflare.com/sign-up/teams" target="_blank">注册一个 Gateway 账户</a>按照<a href="https://developers.cloudflare.com/gateway/getting-started" target="_blank">入职说明进行操作</a>。</p>
+</div>

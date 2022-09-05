@@ -1,0 +1,36 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/08/image1-23.png" class="kg-image"></figure>
+	<p>今年早些时候，我们宣布我们致力于为<a href="https://blog.cloudflare.com/zh-cn/introducing-cryptographic-attestation-of-personhood-zh-cn/">全球更多用户提供更轻松的在线人格验证。</a>我们想结束选择公共汽车、交通灯和复杂的单词图的无休止循环。不仅因为<a href="https://blog.cloudflare.com/zh-cn/introducing-cryptographic-attestation-of-personhood-zh-cn/">人类每天浪费 500 年时间</a>来解决其他人的机器学习问题，还因为我们致力于为每个人打造快速、透明且私密的互联网。CAPTCHA 不是很人性化，即使是最专注的互联网用户也很难解决。对于不会说某些语言的人和使用移动设备的人（也就是大多数用户！）来说，这些问题极难解决。</p>
+	<p>今天减，在帮助减少互联网对通过 CAPTCHA 来证明您不是机器人的依赖方面，我们更进了一步。通过增加对更广泛设备的支持，我们进一步扩大了人格加密证明（Cryptographic Attestation of Personhood，缩写为CAP）实验的范围。其中包括生物识别身份验证工具，例如苹果 Face ID、微软 Hello 和安卓生物识别身份验证等。这样一来，您只需轻触手指或进行人脸识别即可在五秒钟内通过质询——无需将此个人生物识别数据发送给任何人。</p>
+	<p>您可以在我们的演示网站“<a href="https://cloudflarechallenge.com/" target="_blank">cloudflarechallenge.com</a> ”上试用，并告诉我们您的反馈。</p>
+	<p>除了支持硬件生物识别验证工具之外，我们今天还宣布在人格加密证明实验中支持更多硬件令牌。我们支持所有已通过 FIDO 联盟认证且没有已知安全问题的 USB 和 NFC 密钥（<a href="https://fidoalliance.org/metadata/" target="_blank">MDS 3.0</a>）。</p>
+	<h3 id="-">隐私至上</h3>
+	<p>保护隐私是人格加密证明的核心。Cloudflare 绝不会分享、传输或处理您的生物识别数据相关信息。实际上，我们根本不会看到这些信息。您的所有敏感生物识别数据都在您的设备上进行处理。虽然每个操作系统制造商的流程略有不同，但它们都依赖于可信执行环境 (TEE) 或可信平台模块 (TPM) 思路。TEE 和 TPM 仅允许您的设备存储和使用您的加密生物识别信息。设备上运行的任何应用程序或软件永远无法访问您的数据，也无法将其传输回它们的系统。如果您有兴趣深入了解每个主要操作系统如何实现其生物识别安全，请阅读我们下面链接的文章：</p>
+	<h3 id="apple-face-id-touch-id-">Apple（Face ID 和 Touch ID）</h3>
+	<p><a href="https://support.apple.com/en-us/HT212036" target="_blank">Face ID 和 Touch ID 隐私</a></p>
+	<p><a href="https://support.apple.com/guide/security/secure-enclave-sec59b0b31ff/web" target="_blank">安全飞地概述</a></p>
+	<h3 id="-windows-hello-">微软 (Windows Hello)</h3>
+	<p><a href="https://support.microsoft.com/en-us/windows/windows-sign-in-options-and-account-protection-7b34d4cf-794f-f6bd-ddcc-e73cdf1a6fbf#ID0EBD=Windows_10" target="_blank">Windows Hello 概述</a></p>
+	<p><a href="https://docs.microsoft.com/en-us/windows/uwp/security/microsoft-passport" target="_blank">Windows Hello 技术深入探讨</a></p>
+	<h3 id="--1">谷歌（安卓生物识别身份验证）</h3>
+	<p><a href="https://source.android.com/security/authentication" target="_blank">生物身份验证</a></p>
+	<p><a href="https://source.android.com/security/biometric/measure#strong-weak-unlocks" target="_blank">衡量生物识别解锁安全性</a></p>
+	<p>我们对隐私的承诺并不局限于设备。所述<a href="https://blog.cloudflare.com/cloudflare-now-supports-security-keys-with-web-authentication-webauthn/"> WebAuthn API </a>还防止生物特征信息的传输。如果用户与生物识别密钥（如 Apple TouchID 或 Windows Hello）交互，任何第三方（例如 Cloudflare）都都不能接收到任何生物识别数据：数据保留在您的设备上，永远不会通过您的浏览器传输。为了更深入地了解人格加密证明如何保护您的隐私信息，欢迎阅读我们<a href="https://blog.cloudflare.com/zh-cn/introducing-cryptographic-attestation-of-personhood-zh-cn/">最初的公告博客文章</a>。</p>
+	<h3 id="--2">为本已强大的隐私保障锦上添花</h3>
+	<p>在构建这项技术时候，我们一直致力于提供最好的隐私保障。现有保障已经非常强大：如我们之前的博客文章所述，在使用 CAP 时，您可能会泄露少量有关您的身份验证硬件的信息——充其量就是设备的品牌和型号。按照设计，这些信息对您来说不是唯一的：底层标准要求这些信息与其他成千上万的信息无法区分，从而将您隐藏在一组相同的硬件中。</p>
+	<p>尽管这是一个很好的开始，但我们希望看看能否更进一步。我们能不能只了解我们需要的一个事实，即您拥有有效的安全密钥，但不获取其他任何信息？</p>
+	<p>我们很高兴地宣布，通过使用一种称为零知识证明 (ZKP)的下一代加密技术，我们在解答这个问题方面取得了巨大进步。通过 ZKP，除了您拥有可以生成经批准的证书以证明您是人类的设备这一事实以外，我们无法获得有关您的任何其他信息。</p>
+	<p>如果您有兴趣了解有关零知识证明的更多信息，<strong>如果您有兴趣了解有关零知识证明的更多信息，<a href="https://blog.cloudflare.com/introducing-zero-knowledge-proofs-for-private-web-attestation-with-cross-multi-vendor-hardware/">我们强烈建议您在此处阅读相关内容</a>。</strong></p>
+	<h3 id="--3">由速度、易用性和机器人防御驱动</h3>
+	<p>在这个项目开始时，我们设定了三个目标：</p>
+	<ol>
+		<li>我们如何才能显著改善证明您是人类的用户体验？</li>
+		<li>我们如何确保我们开发的任何解决方案都以易用性为中心，并提高互联网上的全球可访问性？</li>
+		<li>我们如何开发一个不会损害我们现有机器人管理系统的解决方案？</li>
+	</ol>
+	<p>在部署 CAPTCHA 解决方案的这一新演进之前，我们对一些真实用户进行了概念验证测试，以确认这种方法是否值得采用（仅仅因为理论上听起来很棒并不意味着它在实践中会奏效！ ）。我们的测试小组使用 Face ID 尝试我们的人格加密证明解决方案，并将他们的想法告诉我们。我们了解到，使用 Face ID 和 Touch ID 解决问题的速度明显快于选择图片，而且几乎没有错误。人们非常喜欢使用此种替代方式，并提出了改进用户体验的建议，我们已经将这些建议整合到部署中。</p>
+	<p>这种情况在我们的生产使用数据中更加明显。虽然我们在 CAP 推出的第一阶段没有启用生物识别提供商证明，但我们确实记录了人们尝试使用生物识别验证服务的情况。除了 YubiKeys 之外，记录的最高尝试解决率是 iOS 上的 Face ID 和安卓生物识别认证。我们很高兴能为这些移动用户提供他们证明人格的首选质询方式。</p>
+	<p>我们在测试中听到的一件事就是：对隐私的担忧，这是毫不奇怪的。正如我们在<a href="https://blog.cloudflare.com/introducing-cryptographic-attestation-of-personhood/">首次发布</a>中所解释的，支撑我们解决方案的 WebAuthn 技术提供了高度的隐私保护。 Cloudflare 能够查看由数千台类似设备共享的标识符，该标识符提供一般品牌和型号信息。这些信息不能用于唯一地识别或跟踪您——这正是我们喜欢的方式。</p>
+	<p>现在，我们已经为更多设备类型开放了我们的解决方案，您也可以使用生物识别读取器了。请放心，我们采用同样的隐私保护—— 我们永远不会看到您的生物识别数据：这些数据会保留在您的设备上。一旦您的设备确认匹配，它只会发送一条基本的证明消息，就像任何安全密钥一样。实际上，您的设备会发送一条消息，证明“是的，有人在这个值得信赖的设备上正确输入了指纹”，并且永远不会发送指纹本身。</p>
+	<p>我们还对在我们的演示站点上或通过常规浏览测试 CAP 的人士发出的反馈进行评估。我们感谢您发送的有用评论，我们很乐意听到更多信息，以便我们继续进行改进。我们已在演示站点 &lt;LINK&gt; 上设置了一项调查，您也可以通过 <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="9dfceef6eff8eef8fceffef5ddfef1f2e8f9fbf1fceff8b3fef2f0">[email&nbsp;protected]</a> 与我们联系。您的意见是确保我们获得正确可用性的关键，因此请告诉我们您的想法。</p>
+</div>

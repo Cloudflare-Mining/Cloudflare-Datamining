@@ -1,0 +1,168 @@
+<div class="post-content lh-copy gray1">
+	<p>Cloudflareは本日、<a href="https://blog.cloudflare.com/spectrum/">Spectrumの提供を開始</a>します。Spectrumは、TCPベースのプロトコル向けのCloudflareの新たな機能で、DDoS攻撃に対する防御、ロードバランシング、およびコンテンツ高速化を実現します。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2018/04/13334109713_0b32435032_z.jpg" class="kg-image" alt="13334109713_0b32435032_z">
+		<figcaption><a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/liftarn/13334109713" target="_blank">画像</a>作者<a href="https://www.flickr.com/photos/liftarn" target="_blank">Staffan Vilcans</a></figcaption>
+	</figure>
+	<p>Spectrumの構築を開始した直後、私たちは大きな技術的障害にぶつかりました。Spectrumでは、有効なTCPポート（1～65535）で接続を受け入れる必要があります。当社のLinuxエッジサーバーでは、「<em>任意の</em>ポート番号で着信接続を受け入れる」ことは不可能です。これはLinux固有の制限ではなく、ほとんどのオペレーティングシステムのネットワークアプリケーションの基礎である、BSDソケットAPIの特性です。実は、Spectrumを提供するために解決しなければならなかった、以下の2つの互いに関わりあう問題がありました。</p>
+	<ul>
+		<li>1～65535のすべてのポート番号でTCP接続を受け入れる方法</li>
+		<li>単一Linuxサーバーに、きわめて多数のIPアドレスでの接続を受け入れるよう設定する方法（当社のエニーキャスト範囲内には数千のIPアドレスが存在）</li>
+	</ul>
+	<h3 id="-ip-"><strong>サーバーへの数百万IPの割り当て</strong></h3>
+	<p>Cloudflareでは、すべてのエッジサーバーがほぼ同じ設定になっています。当社の初期の頃には、ループバックネットワークインタフェースに一定の/32（および/128）IPアドレスを割り当てていました<a href="https://blog.cloudflare.com/how-we-built-spectrum/#fn1">[1]</a>。IPアドレスの単位が数十のうちは上手くいきましたが、会社の成長に伴って規模の拡張に失敗しました。</p>
+	<p>同時に<a href="https://blog.widodh.nl/2016/04/anyip-bind-a-whole-subnet-to-your-linux-machine/" target="_blank">「AnyIP」のトリック</a>も問題になりました。AnyIPを使用すると、一定のIPアドレスから拡張し、IPプレフィックス（サブネット）全体のループバックインタフェースへの割り当てが可能になります。すでにAnyIPは広く利用されており、皆さんのコンピューターにはループバックインタフェースに127.0.0.0/8が割り当てられています。ユーザーのコンピューター側から見た場合、127.0.0.1から127.255.255.254までのすべてのIPアドレスはローカルマシンに属しています。</p>
+	<p>このトリックは、127.0.0.1/8ブロック以外にも適用可能です。192.0.2.0/24の範囲全体をローカルに割り当てたものとして扱うには、次を実行します。</p>
+	<p><code>ip route add local 192.0.2.0/24 dev lo</code></p>
+	<p>次に、これらのIPアドレスの1つでポート8080にバインドすることができます。</p>
+	<p><code>nc -l 192.0.2.1 8080</code></p>
+	<p>IPv6を動作させるのは少し難しくなります。</p>
+	<p><code>ip route add local 2001:db8::/64 dev lo</code></p>
+	<p>残念ながら、これらのアタッチされたv6IPアドレスには、v4の例のようにバインドすることはできません。これを機能させるには、さらに上の権限が必要な <code>IP_FREEBIND</code> ソケットオプションを使用する必要があります。完全性を確保するためにsysctl <code>net.ipv6.ip_nonlocal_bind</code>を使う方法もありますが、ここで触れることはお勧めしません。</p>
+	<p>このAnyIPのトリックを使用すると、数百万のIPアドレスを各サーバーにローカルに割り当てることができます。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>$ ip addr show
+1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536
+    inet 1.1.1.0/24 scope global lo
+       valid_lft forever preferred_lft forever
+    inet 104.16.0.0/16 scope global lo
+       valid_lft forever preferred_lft forever
+...
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h3 id="-"><strong>すべてのポートへのバインド</strong></h3>
+	<p>2つ目の大きな問題は、任意のポート番号に対してTCPソケットを開く機能です。Linuxおよび、一般にBSDソケットAPIをサポートしている任意のシステムでは、特定のTCPポート番号へのバインドは、単一のバインドシステム呼び出しでしか行うことができません。単一操作で複数ポートへのバインドは不可能です。</p>
+	<p>単純に考えると、65535のポートに、1回ずつ、65535回バインドすることになります。確かにこのような方法もあったかもしれませんが、これは次のような酷い結果につながります。</p>
+	<ul>
+		<li><a href="https://blog.cloudflare.com/revenge-listening-sockets/">リスニングソケットの復讐</a></li>
+	</ul>
+	<p>内部的には、Linuxカーネルは、正確に32バケットを使用して、ポート番号でインデックスを指定したリスニングソケットをハッシュテーブル<a href="https://elixir.bootlin.com/linux/latest/source/include/net/inet_hashtables.h#L118" target="_blank">LHTABLE</a>に保存します。</p>
+	<p><code>/* はい、本当に、これが必要なすべてです。 */</code></p>
+	<p><code>#define INET_LHTABLE_SIZE &nbsp; &nbsp; &nbsp; 32</code></p>
+	<p>65,000のポートを開いていたら、このテーブルのルックアップには長い長い時間がかかったでしょう。ハッシュテーブルの各バケットには2,000のアイテムが入っているからです。</p>
+	<p>問題を解決するもう1つの方法は、iptablesの豊富なNAT機能の使用です。一部の特定のアドレス／ポートへの着信パケットの宛先を書き換えて、アプリケーションをそれにバインドさせることができます。</p>
+	<p>しかし、これにはiptablesのconntrackモジュールを有効にする必要があるため、この方法は採りませんでした。過去には<a href="https://patchwork.ozlabs.org/cover/810566/" target="_blank">パフォーマンスエッジケース</a>があり、conntrackは当社が被った大規模なDDoS攻撃の一部には対処できませんでした。</p>
+	<p>さらに、NATアプローチでは、宛先IPアドレス情報が失われる可能性があります。これを緩和するためにあまり知られていないSO_ORIGINAL_DSTソケットオプションもありますが、<a href="https://github.com/torvalds/linux/blob/b5dbc28762fd3fd40ba76303be0c7f707826f982/net/ipv4/netfilter/nf_conntrack_l3proto_ipv4.c" target="_blank">あまり使いたくなるようなコードではありません</a>。</p>
+	<p>幸い、65000のポートすべてをバインドするもしくは <code>conntrack</code>を使用する以外の方法で、目標を達成する方法があります。</p>
+	<h3 id="--1"><strong>ファイアウォールで対応</strong></h3>
+	<p>先に進む前に、オペレーティングシステム上でのネットワークパケットの流れについて復習しておきましょう。</p>
+	<p>一般に、受信パケットの経路には次の2つの異なる層があります。</p>
+	<ul>
+		<li>IPファイアウォール</li>
+		<li>ネットワークスタック</li>
+	</ul>
+	<p>これらは概念的に異なるものです。IPファイアウォールは通常、ステートレスなソフトウェアです（ここでは、conntrackとIPフラグメントの再構築は無視します）。ファイアウォールはIPパケットを分析し、それらを受け入れるかドロップするかを決定します。注意：この層では、<em>アプリケーションやソケットではなく、パケットとポート番号</em>を話題にしています。</p>
+	<p>次に、ネットワークスタックがあります。ここには多くの状態が維持されています。ネットワークスタックの主なタスクは、受信するIPパケットを<em>ソケット</em>にディスパッチすることで、パケットはユーザー空間の<em>アプリケーション</em>によって処理されます。ネットワークスタックは、ユーザー空間と共有される抽象化を管理しています。TCPフローを再構成し、ルーティングを処理し、ローカルなIPアドレスを認識します。</p>
+	<h3 id="--2"><strong>魔法の粉</strong></h3>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2018/04/upload-1.jpg" class="kg-image" alt="upload-1">
+		<figcaption>出典：<a href="https://www.youtube.com/watch?v=9CS7j5I6aOc" target="_blank">こちらもYouTube</a></figcaption>
+	</figure>
+	<p>ある時点で、TPROXY iptablesモジュールに偶然行き当たりました。<a href="http://ipset.netfilter.org/iptables-extensions.man.html" target="_blank">公式ドキュメント</a>は見落としてしまいやすいです。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>TPROXY
+このターゲットは、PREROUTINGチェーンおよび
+ここからしか呼び出せないユーザー定義のチェーン内の
+mangleテーブル内でのみ、有効です。 パケットヘッダーを変えることなく、
+パケットをローカルソケットにリダイレクトします。また、
+マーク値を変更して、高度なルーティングルールで
+使用することもできます。
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>カーネルには、別に、次のドキュメントもあります。</p>
+	<ul>
+		<li><a href="https://www.kernel.org/doc/Documentation/networking/tproxy.txt" target="_blank">docs/networking/tproxy.txt</a></li>
+	</ul>
+	<p>考えるほど、もっと知りたくなりました。</p>
+	<p>つまり...TPROXYは実際に何を<em>する</em>のかということです。</p>
+	<h3 id="--3"><strong>魔法のトリックを明らかにする</strong></h3>
+	<p>TPROXYコードは<a href="https://elixir.bootlin.com/linux/v4.16.1/source/net/netfilter/xt_TPROXY.c#L119" target="_blank">驚くほど単純</a>です。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>case NFT_LOOKUP_LISTENER:
+  sk = inet_lookup_listener(net, &amp;tcp_hashinfo, skb,
+				    ip_hdrlen(skb) +
+				      __tcp_hdrlen(tcph),
+				    saddr, sport,
+				    daddr, dport,
+				    in-&gt;ifindex, 0);
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>声に出して読み上げます。ファイアウォールの一部であるiptablesモジュールでは、私たちはinet_lookup_listenerと呼んでいます。この機能はsrc/dst port/IP 4-tupleを使い、接続を受け入れることのできるリスニングソケットを戻します。これは、ネットワークスタックのソケットディスパッチのコア機能です。</p>
+	<p>繰り返します。ファイアウォールコードはソケットディスパッチルーチンを呼び出します。</p>
+	<p>この後、<a href="https://elixir.bootlin.com/linux/v4.16.1/source/net/netfilter/xt_TPROXY.c#L299" target="_blank">TPROXYは実際にソケットディスパッチを<em>行います</em></a>。</p>
+	<p><code>skb-&gt;sk = sk;</code></p>
+	<p>この行は、 socket <code>struct sock</code>をインバウンドパケットに割り当てて、ディスパッチを完了します。</p>
+	<h3 id="--4"><strong>帽子からウサギを取り出す</strong></h3>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2018/04/3649474619_3b800400e9_z-1.jpg" class="kg-image" alt="3649474619_3b800400e9_z-1">
+		<figcaption><a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/angelaboothroyd/3649474619" target="_blank">画像</a>作者<a href="https://www.flickr.com/photos/angelaboothroyd" target="_blank">Angela Boothroyd</a></figcaption>
+	</figure>
+	<p>TPROXYで武装することで、bind-to-all-portsのトリックをきわめて容易に実行することができます。構成を次に示します。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code># AnyIPで192.0.2.0/24をローカルにルーティングされるように設定します。
+# このネットワークに使用される送信元IPを明示的に指定し、
+# ローカルでの接続時は127.0.0.0/8の範囲にする必要があります。
+# それ以外の場合はフォワードとバックワードの両方のトラフィックにTPROXYルールが
+# 一致するため、これが必要です。これで捕捉させたいのは、
+# フォワードトラフィックのみです。
+sudo ip route add local 192.0.2.0/24 dev lo src 127.0.0.1
+
+# 魔法のTPROXYルーティングを設定
+sudo iptables -t mangle -I PREROUTING \
+        -d 192.0.2.0/24 -p tcp \
+        -j TPROXY --on-port=1234 --on-ip=127.0.0.1
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>この設定に加えて、魔法のIP_TRANSPARENTソケットオプションでTCPサーバーを起動する必要があります。次の例は、tcp://127.0.0.1:1234でリッスンする必要があります。<a href="http://man7.org/linux/man-pages/man7/ip.7.html" target="_blank">IP_TRANSPARENTのマニュアルページ</a>には、次のように掲載されています。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>IP_TRANSPARENT（Linux 2.6.24以降)
+このブール値オプションを設定すると、透過プロキシが
+このソケットで有効になります。 このソケットオプションは、呼び出しているアプリ
+ケーションを非ローカルのIPアドレスにバインドして、
+外部アドレスをローカルエンドポイントとして両方を
+クライアントおよびサーバーとして動作させることができます。 注：これには、外部アドレスに向かうパケットを
+TPROXYボックス経由でルーティングする方法でルーティングを
+セットアップする必要があります（つまり、システムが
+IP_TRANSPARENTソケットオプションを採用しているアプリケーションをホストしている）。
+このソケットオプションを有効にするには、スーパーユーザー特権が必要です。
+（CAP_NET_ADMIN機能）。
+
+iptables TPROXYターゲットによるTProxyのリダイレクトにも、
+このオプションをリダイレクトされたソケットに設定しておく必要があります。
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>シンプルなPythonサーバーを次に示します。</p>
+	<pre><code class="language-python">import socket
+
+IP_TRANSPARENT = 19
+
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+s.setsockopt(socket.IPPROTO_IP, IP_TRANSPARENT, 1)
+
+s.bind(('127.0.0.1', 1234))
+s.listen(32)
+print("[+] Bound to tcp://127.0.0.1:1234")
+while True:
+    c, (r_ip, r_port) = s.accept()
+    l_ip, l_port = c.getsockname()
+    print("[ ] Connection from tcp://%s:%d to tcp://%s:%d" % (r_ip, r_port, l_ip, l_port))
+    c.send(b"hello world\n")
+    c.close()</code></pre>
+	<p>サーバーの実行後は、任意のIPアドレスからサーバーに接続できます。</p>
+	<pre><code class="language-python">$ nc -v 192.0.2.1 9999
+Connection to 192.0.2.1 9999 port [tcp/*] succeeded!
+hello world</code></pre>
+	<p>最も重要なのは、サーバーは接続をレポートし、<em>誰もそのIPアドレスおよびポートをリッスンしていないにも関わらず、</em>192.0.2.1ポート9999にダイレクトされたことです。</p>
+	<pre><code class="language-python">$ sudo python3 transparent2.py
+[+] Bound to tcp://127.0.0.1:1234
+[ ] Connection from tcp://127.0.0.1:60036 to tcp://192.0.2.1:9999</code></pre>
+	<p>いかがでしょう！これが、conntrackを使用せずにLinux上の任意のポートに<em>バインドする方法です。</em></p>
+	<h3 id="--5"><strong>これがすべてです</strong></h3>
+	<p>この記事では、元々透過的プロキシ用に設計されたものを少し違う用途で使用するための、目立たないiptablesモジュールの使用方法を説明しました。このモジュールを借りて、標準のBSDソケットAPIを使用して不可能と思われたことを実行することができ、カスタムのカーネルによるパッチを使う必要性も回避することができます。</p>
+	<p>TPROXYモジュールは非常に珍しく、Linuxのファイアウォールの文脈では基本的にLinuxのネットワークスタックが実行することを実行します。公式ドキュメントが幾分不足しており、このモジュールの本当の力を理解しているLinuxユーザーはそれほど多くないと思われます。</p>
+	<p>TPROXYにより、vanillaカーネル上で当社のSpectrum製品がスムーズに動作すると言って良いでしょう。。また、iptablesとネットワークスタックについて理解することが、いかに重要かについても覚えておくとよいでしょう。</p>
+	<hr>
+	<p><em>低レベルのソケットの作業に興味をお持ちですか？ロンドン、オースティン、サンフランシスコの</em><a href="https://boards.greenhouse.io/cloudflare/jobs/589572" target="_blank"><em>世界的に有名なチーム</em></a><em>、ポーランドのワルシャワの精鋭部隊に、ぜひご参加ください。</em></p>
+	<hr>
+	<ol>
+		<li>IPアドレスを、appropriate rp_filterおよびBGP構成でループバックインタフェースに割り当てることで、任意のIP範囲を当社エッジサーバーで処理することができます。<a href="https://blog.cloudflare.com/how-we-built-spectrum/#fnref1">↩︎</a></li>
+	</ol>
+</div>

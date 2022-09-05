@@ -1,0 +1,198 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/05/1.jpg" class="kg-image">
+		<figcaption>Modernes DDR3-SDRAM. Quelle: BY-SA/4.0 von Kjerish</figcaption>
+	</figure>
+	<p></p>
+	<p>Als ich kürzlich das <a href="http://www.computerhistory.org/" target="_blank">Computer History Museum</a> in Mountain View besuchte, stieß ich auf einen alten <a href="https://en.wikipedia.org/wiki/Magnetic-core_memory" target="_blank">Magnetkernspeicher</a>.</p>
+	<p></p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/05/2.jpg" class="kg-image">
+		<figcaption>Quelle: BY-SA/3.0 von Konstantin Lanzet</figcaption>
+	</figure>
+	<p></p>
+	<p>Ich kam ziemlich schnell zu dem Schluss, dass ich keine Ahnung davon hatte, wie diese Dinger je funktionieren konnten. Ich fragte mich, ob die Ringkerne rotieren (sie tun es nicht) und warum durch jeden Ringkern drei Drähte geführt sind (und ich verstehe immer noch nicht genau, wie sie funktionieren). Noch wichtiger ist, dass ich erkannte, dass ich fast nichts darüber weiß, wie der moderne Computerspeicher – dynamisches RAM – funktioniert!</p>
+	<p></p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/05/3.png" class="kg-image">
+		<figcaption>Quelle: Ulrich Dreppers Reihe über Speicher</figcaption>
+	</figure>
+	<p></p>
+	<p>Besonders interessiert hat mich eine der Folgen der Funktionsweise von dynamischem RAM. Denn jedes Bit von Daten wird durch die Ladung (oder deren Fehlen) auf einem kleinen Kondensator im RAM-Chip gespeichert. Aber diese Kondensatoren verlieren mit der Zeit allmählich ihre Ladung. Um den Verlust der gespeicherten Daten zu vermeiden, müssen sie regelmäßig aufgefrischt werden, um die Ladung (falls vorhanden) wieder auf ihr ursprüngliches Niveau zu bringen. Bei diesem <a href="https://en.wikipedia.org/wiki/Memory_refresh" target="_blank">Refresh-Prozess</a> wird der Wert jedes Bits gelesen und dann zurückgeschrieben. Während dieser „Auffrischungs“-Zeit ist der Speicher blockiert und kann keine normalen Operationen wie Laden oder Speichern von Bits ausführen.</p>
+	<p>Das hat mich schon seit geraumer Zeit beschäftigt und ich habe mich gefragt: Ist es möglich, die Verzögerung bei der Wiederauffrischung in der Software zu bemerken?</p>
+	<h2 id="einf-hrung-in-den-refresh-von-dynamischem-ram"><strong>Einführung in den Refresh von dynamischem RAM</strong></h2>
+	<p>Jedes DIMM-Modul besteht aus „cells“ („Zellen“) und „rows“ („Zeilen“), „columns“ („Spalten“), „sides“ („Seiten“) und/oder „ranks“ („Reihen“). In <a href="https://pubweb.eng.utah.edu/~cs7810/pres/11-7810-12.pdf" target="_blank">dieser Präsentation der University of Utah</a> werden die Bezeichnungen erklärt (auf Englisch). Sie können die Konfiguration des Speichers in Ihrem Computer mit dem Befehl decode-dimms überprüfen. Hier ist ein Beispiel:</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>$ decode-dimms
+Size                                       4096 MB
+Banks x Rows x Columns x Bits              8 x 15 x 10 x 64
+Ranks                                      2
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Für heute müssen wir uns nicht mit dem gesamten DDR-DIMM-Aufbau beschäftigen. Wir müssen nur eine einzelne Speicherzelle, die ein Datenbit speichert, verstehen. Konkret geht es uns nur darum, wie der Refresh-Prozess durchgeführt wird.</p>
+	<p>Werfen wir einen Blick auf zwei Quellen:</p>
+	<ul>
+		<li><a href="https://utaharch.blogspot.com/2013/11/a-dram-refresh-tutorial.html" target="_blank">Ein DRAM-Refresh-Tutorial der University of Utah (auf Englisch)</a></li>
+		<li>Und eine fantastische Dokumentation zu 1-Gigabit Zellen von Micron: TN-46-09 Designing for 1Gb DDR SDRAM</li>
+	</ul>
+	<p>Jedes Bit, das im dynamischen Speicher gespeichert ist, muss aufgefrischt werden, normalerweise alle 64 ms (der sogenannte „Static Refresh“). Das ist ein ziemlich aufwendiger Vorgang. Um einen größeren Stillstand alle 64 ms zu vermeiden, ist dieser Prozess in 8192 kleinere Auffrischungsvorgänge unterteilt. Bei jedem Vorgang sendet der Speichercontroller des Computers Refresh-Befehle an die DRAM-Chips. Nach Erhalt der Anweisung frischt ein Chip 1/8192 seiner Zellen auf. Mathematisch ausgedrückt: 64 ms / 8192 = 7812,5 ns oder 7,81 μs. Das bedeutet:</p>
+	<ul>
+		<li>Alle 7812,5 ns wird ein Refresh-Befehl ausgegeben. Dieses Intervall wird als tREFI bezeichnet.</li>
+		<li>Es dauert einige Zeit, bis der Chip den Refresh durchgeführt hat und wieder normale Lese- und Schreibvorgänge ausführen kann. Diese Periode wird als tRFC bezeichnet und dauert entweder 75 ns oder 120 ns (laut dem erwähnten Datenblatt von Micron).</li>
+	</ul>
+	<p>Wenn der Speicher heiß ist (&gt;85 °C), sinkt die Speicherhaltezeit und die statische Refresh-Zeit halbiert sich auf 32 ms. Dabei sinkt tREFI auf 3906,25 ns.</p>
+	<p>Ein typischer Speicherchip ist für einen wesentlichen Teil seiner Laufzeit mit Auffrischungen beschäftigt – zwischen 0,4 % und 5 %. Darüber hinaus sind Speicherchips für einen nicht trivialen Anteil des Stromverbrauchs eines typischen Computers verantwortlich. Ein großer Teil dieses Stroms wird für die Durchführung der Auffrischungen verwendet.</p>
+	<p>Für die Dauer des Refresh-Vorgangs ist der gesamte Speicherchip blockiert. Das bedeutet, dass jedes einzelne Bit im Speicher alle 7812 ns für mehr als 75 ns blockiert ist. Lassen Sie uns das messen.</p>
+	<h2 id="vorbereitung-eines-experiments"><strong>Vorbereitung eines Experiments</strong></h2>
+	<p>Um Vorgänge mit Nanosekunden-Granularität zu messen, müssen wir eine enge Programmschleife schreiben, beispielsweise in C. Sie sieht folgendermaßen aus:</p>
+	<p></p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>  for (i = 0; i &lt; ...; i++) {
+		// Perform memory load. Any load instruction will do
+		*(volatile int *) one_global_var;
+
+		// Flush CPU cache. This is relatively slow
+		_mm_clflush(one_global_var);
+
+		// mfence is needed, otherwise sometimes the loop
+		// takes very short time (25ns instead of like 160). I
+		// blame reordering.
+		asm volatile("mfence");
+
+		// Measure and record time
+		clock_gettime(CLOCK_MONOTONIC, &amp;ts);
+    }
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p></p>
+	<p><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-11-memory-refresh/measure-dram.c" target="_blank">Der vollständige Code steht auf Github zur Verfügung</a>.</p>
+	<p>Der Code ist wirklich unkompliziert: Eine Speicherauslesung durchführen. Die Daten aus CPU-Caches löschen. Die Zeit messen.</p>
+	<p>(Anmerkung: Bei <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-11-memory-refresh/measure-dram-movntdqa.c#L113-L119" target="_blank">einem zweiten Experiment versuchte ich, MOVNTDQA zu verwenden</a>, um die Speicherladung durchzuführen, aber das erfordert eine spezielle, nicht Cache-fähige Speicherseite, für die Root-Zugriff notwendig ist.)</p>
+	<p>Auf meinem Computer erzeugt das Daten wie diese:</p>
+	<p></p>
+	<!--kg-card-begin: markdown-->
+	<pre><code># timestamp, loop duration
+3101895733,     134
+3101895865,     132
+3101896002,     137
+3101896134,     132
+3101896268,     134
+3101896403,     135
+3101896762,     359
+3101896901,     139
+3101897038,     137
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p></p>
+	<p>Normalerweise erhalte ich ~140 ns pro Schleife, aber periodisch steigt die Schleifendauer auf ~360 ns. Manchmal bekomme ich seltsame Messwerte, die höher als 3200 ns sind.</p>
+	<p>Leider erweisen sich die Daten als sehr verrauscht. Es ist sehr schwer zu erkennen, ob es eine spürbare Verzögerung im Zusammenhang mit den Refresh-Zyklen gibt.</p>
+	<h2 id="schnelle-fourier-transformation"><strong>Schnelle Fourier-Transformation</strong></h2>
+	<p>Irgendwann machte es Klick. Da wir ein Ereignis mit festem Intervall finden wollen, können wir die Daten in den FFT-Algorithmus (Fast Fourier Transform – schnelle Fourier-Transformation) einspeisen, der die zugrunde liegenden Frequenzen entschlüsselt.</p>
+	<p>Ich bin nicht der Erste, der diesen Gedanken hatte – der durch Rowhammer bekannte Mark Seaborn hat <a href="https://github.com/google/rowhammer-test/blob/master/refresh_timing/refresh_timing.cc" target="_blank">genau diese Technik bereits 2015 eingesetzt</a>. Aber selbst nachdem ich einen Blick auf Marks Code geworfen hatte, musste ich feststellen, dass es schwieriger als erwartet war, die FFT zum Funktionieren zu bringen. Schließlich gelang es mir jedoch, die Teile des Puzzles zusammenzufügen.</p>
+	<p>Zuerst müssen wir die Daten vorbereiten. Bei der FFT müssen die Eingabedaten mit einem konstanten Abtastintervall abgetastet werden. Außerdem müssen wir die Daten zuschneiden, um das Rauschen zu reduzieren. Durch Herumprobieren fand ich heraus, dass die besten Ergebnisse erzielt werden, wenn die Daten vorverarbeitet werden:</p>
+	<ul>
+		<li>Kleine Werte (kleiner als der Durchschnitt x 1,8) von Schleifeniterationen werden ausgeschnitten, ignoriert und durch den Messwert „0“ ersetzt. Wir wollen das Rauschen nicht in den Algorithmus einspeisen.</li>
+		<li>Alle anderen Werte werden durch „1“ ersetzt, da uns die Amplitude der Verzögerung durch Rauschen wirklich egal ist.</li>
+		<li>Ich habe mich für ein Abtastintervall von 100 ns entschieden, aber jede Zahl bis zu <a href="https://en.wikipedia.org/wiki/Nyquist%E2%80%93Shannon_sampling_theorem" target="_blank">einem Nyquist-Wert (doppelte erwartete Frequenz) funktioniert auch gut</a>.</li>
+		<li>Die Daten müssen mit festen Zeitabständen abgetastet werden, bevor sie in die FFT eingespeist werden. Alle vernünftigen Abtastmethoden funktionieren gut; ich habe am Ende eine einfache lineare Interpolation durchgeführt.</li>
+	</ul>
+	<p>Der Algorithmus sieht ungefähr so aus:</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>UNIT=100ns
+A = [(timestamp, loop_duration),...] 
+p = 1
+for curr_ts in frange(fist_ts, last_ts, UNIT):
+    while not(A[p-1].timestamp &lt;= curr_ts &lt; A[p].timestamp):
+        p += 1
+    v1 = 1 if avg*1.8 &lt;= A[p-1].duration &lt;= avg*4 else 0
+    v2 = 1 if avg*1.8 &lt;= A[p].duration &lt;= avg*4 else 0
+    v = estimate_linear(v1, v2, A[p-1].timestamp, curr_ts, A[p].timestamp)
+    B.append( v )
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p></p>
+	<p>Was mit meinen Daten einen ziemlich langweiligen Vektor wie diesen hier erzeugt:</p>
+	<p></p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>[0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0,
+ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+ 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ...]
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p></p>
+	<p>Der Vektor ist jedoch ziemlich lang, normalerweise etwa ~200.000 Datenpunkte. Wenn die Daten so aufbereitet sind, sind wir bereit, sie in die FFT einzuspeisen!</p>
+	<p></p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>C = numpy.fft.fft(B)
+C = numpy.abs(C)
+F = numpy.fft.fftfreq(len(B)) * (1000000000/UNIT)
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p></p>
+	<p>Ziemlich einfach, oder? Daraus ergeben sich zwei Vektoren:</p>
+	<ul>
+		<li>C enthält komplexe Zahlen der Frequenzkomponenten. Wir sind nicht an komplexen Zahlen interessiert und können sie durch den Aufruf von abs() abflachen.</li>
+		<li>F enthält Kennsätze dafür, welche Frequenzklasse an welcher Stelle im Vektor C liegt. Wir müssen sie auf Hz normieren – durch Multiplikation mit der Abtastfrequenz des Eingabevektors.</li>
+	</ul>
+	<p>Das Ergebnis kann grafisch dargestellt werden:</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/4.png" class="kg-image"></figure>
+	<p></p>
+	<p>Die Y-Achse ist ohne Einheit, da wir die Verzögerungszeiten normiert haben. Dennoch zeigt sie deutliche Spitzen in einigen festen Frequenzintervallen. Zoomen wir rein:</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/5.png" class="kg-image"></figure>
+	<p></p>
+	<p>Wir können die ersten drei Spitzen deutlich sehen. Nach ein wenig Herumrechnen, bei dem Messwerte, die mindestens zehnmal so groß wie der Durchschnitt sind, herausgefiltert werden, können wir die zugrunde liegenden Frequenzen extrahieren:</p>
+	<p></p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>127850.0
+127900.0
+127950.0
+255700.0
+255750.0
+255800.0
+255850.0
+255900.0
+255950.0
+383600.0
+383650.0
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p></p>
+	<p>Mathematisch ausgedrückt: 1000000000 (ns/s) / 127900 (Hz) = 7818,6 ns</p>
+	<p>Hurra! Die erste Frequenzspitze ist in der Tat das, wonach wir gesucht haben, und korreliert tatsächlich mit den Refresh-Zeiten.</p>
+	<p>Die anderen Spitzen bei 256 kHz, 384 kHz, 512 kHz und so weiter sind Multiplikatoren unserer Basisfrequenz von 128 kHz, sogenannte Oberwellen. Dabei handelt es sich um einen zu erwartenden Nebeneffekt <a href="https://en.wikipedia.org/wiki/Square_wave" target="_blank">der Durchführung von FFT bei etwas wie einer Rechteckwelle</a>.</p>
+	<p>Um das Experimentieren zu erleichtern, haben wir <a href="https://github.com/cloudflare/cloudflare-blog/tree/master/2018-11-memory-refresh" target="_blank">eine Kommandozeilenversion dieses Tools erstellt</a>. Sie können den Code selbst ausführen. Hier ist ein Probelauf auf meinem Server:</p>
+	<p></p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>~/2018-11-memory-refresh$ make
+gcc -msse4.1 -ggdb -O3 -Wall -Wextra measure-dram.c -o measure-dram
+./measure-dram | python3 ./analyze-dram.py
+[*] Verifying ASLR: main=0x555555554890 stack=0x7fffffefe2ec
+[ ] Fun fact. I did 40663553 clock_gettime()'s per second
+[*] Measuring MOVQ + CLFLUSH time. Running 131072 iterations.
+[*] Writing out data
+[*] Input data: min=117 avg=176 med=167 max=8172 items=131072
+[*] Cutoff range 212-inf
+[ ] 127849 items below cutoff, 0 items above cutoff, 3223 items non-zero
+[*] Running FFT
+[*] Top frequency above 2kHz below 250kHz has magnitude of 7716
+[+] Top frequency spikes above 2kHZ are at:
+127906Hz    7716
+255813Hz    7947
+383720Hz    7460
+511626Hz    7141
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Ich muss zugeben, dass der Code nicht ganz stabil ist. Falls Probleme auftreten, sollten Sie die Deaktivierung von Turbo Boost, CPU-Frequenzskalierung und Leistungsoptimierung in Betracht ziehen.</p>
+	<h2 id="abschluss"><strong>Abschluss</strong></h2>
+	<p>Es gibt zwei Erkenntnisse aus dieser Arbeit.</p>
+	<p>Wir haben gesehen, dass die Low-Level-Daten ziemlich schwer zu analysieren sind und ziemlich verrauscht zu sein scheinen. Anstatt zu versuchen, etwas mit bloßem Auge zu erkennen, können wir immer auf die gute alte FFT zurückgreifen. Bei der Vorbereitung der Daten ist ein gewisses Wunschdenken erforderlich.</p>
+	<p>Am wichtigsten ist, dass wir gezeigt haben, dass es oft möglich ist, subtiles Hardware-Verhalten anhand eines einfachen Userspace-Prozesses zu messen. Diese Art von Denken führte zur Entdeckung der <a href="https://googleprojectzero.blogspot.com/2015/03/exploiting-dram-rowhammer-bug-to-gain.html" target="_blank">ursprünglichen Rowhammer</a>-Schwachstelle, wurde bei Meltdown/Spectre-Angriffen eingesetzt und zeigte sich erneut beim <a href="https://arstechnica.com/information-technology/2018/11/potentially-disastrous-rowhammer-bitflips-can-bypass-ecc-protections/" target="_blank">jüngsten Einsatz von Rowhammer zur Überwindung von ECC</a>.</p>
+	<p>Es gäbe noch sehr viel zu sagen. Wir haben kaum an der Oberfläche des Innenlebens des Speicher-Subsystems gekratzt. Für die weitere Lektüre empfehle ich:</p>
+	<ul>
+		<li><a href="https://lackingrhoticity.blogspot.com/2015/04/l3-cache-mapping-on-sandy-bridge-cpus.html" target="_blank">L3-Cache-Mapping von Sandy Bridge CPUs (auf Englisch)</a></li>
+		<li><a href="https://lackingrhoticity.blogspot.com/2015/05/how-physical-addresses-map-to-rows-and-banks.html" target="_blank">Wie physische Adressen auf Zeilen und Bänken im DRAM abgebildet werden (auf Englisch)</a></li>
+		<li><a href="https://hannuhartikainen.fi/blog/hacking-ddr3-spd/" target="_blank">Hannu Hartikainen hackt das DDR3 SO-DIMM, damit es ... langsamer wird (auf Englisch)</a></li>
+	</ul>
+	<p>Und schließlich ist hier noch eine gute Lektüre über den alten Magnetkernspeicher:</p>
+	<p><a href="http://www.psych.usyd.edu.au/pdp-11/core.html" target="_blank">Der Kernspeicher der PDP-11, erklärt von der University of Sydney (auf Englisch)</a></p>
+</div>

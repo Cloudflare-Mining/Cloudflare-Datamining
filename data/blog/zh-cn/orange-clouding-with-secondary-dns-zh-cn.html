@@ -1,0 +1,55 @@
+<div class="post-content lh-copy gray1">
+	<h3 id="-dns-">什么是次要 DNS？</h3>
+	<p>在传统意义上，次要 DNS 服务器充当主要权威性 DNS 服务器的备份。主要服务器上的记录发生更改时，将进行区域传送使次要 DNS 服务器与主服务器保持同步。然后，次要服务器可以像主要服务器一样提供记录，但是只能由主要服务器进行更改，次要服务器则不行。这可以在许多不同的服务器之间创造冗余，服务器也可根据需要分散于各处。</p>
+	<p>有许多利用次要 DNS 的常用方法，其中一些有：</p>
+	<ol>
+		<li>次要 DNS 充当被动备份 - 次要 DNS 服务器处于闲置状态，直到主服务器停机，这时可能发生可故障转移，并且次要服务器可以开始提供记录。</li>
+		<li>次要 DNS 充当主动备份 - 次要 DNS 服务器与主服务器一起工作以提供记录。</li>
+		<li>次要 DNS 使用隐藏主模型 - 注册商处的域名服务器记录仅指向次要服务器，实质上将它们视为主要域名服务器。</li>
+	</ol>
+	<h3 id="-secondary-dns-override-">什么是 Secondary DNS Override？</h3>
+	<p>Secondary DNS Override 基于使用隐藏主模型的次要 DNS 而构建，让我们的客户不仅能够按他们告诉我们的方式提供记录，还可以通过 <a href="https://www.cloudflare.com/en-gb/network/" target="_blank">Cloudflare 的网络</a>代理任何 A/AAAA/CNAME 记录。这与 Cloudflare 当前作为主要 DNS 提供商的工作方式类似。</p>
+	<p>请思考以下示例：</p>
+	<p>example.com Cloudflare IP - 192.0.2.0</p>
+	<p>example.com 原始 IP - 203.0.113.0</p>
+	<p>为了利用 Cloudflare 的安全和性能服务，我们需要确保原始 IP 对互联网保持隐藏。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/Orange-Clouding-with-Secondary-DNS1.png" class="kg-image"></figure>
+	<p>图 1：没有隐藏主要域名服务器的次要 DNS</p>
+	<p>图 1 显示，在没有隐藏主要域名服务器时，解析器可以选择查询其中任何一个。这将产生两个问题：</p>
+	<ol>
+		<li>违反 <a href="https://tools.ietf.org/html/rfc1034" target="_blank">RFC 1034</a> 和 <a href="https://tools.ietf.org/html/rfc2182" target="_blank">RFC 2182</a>，因为 Cloudflare 服务器的响应将与主要域名服务器不同。</li>
+		<li>原始 IP 将暴露给互联网。</li>
+	</ol>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/Orange-Clouding-with-Secondary-DNS2.png" class="kg-image"></figure>
+	<p>图 2：有隐藏主要域名服务器的次要 DNS</p>
+	<p>图 2 显示，解析器始终会查询 Cloudflare 次要 DNS 服务器。</p>
+	<h3 id="secondary-dns-override-">Secondary DNS Override 的工作方式</h3>
+	<p>Secondary DNS Override UI 看起来与主 UI 相似，唯一的区别是无法编辑记录。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/Orange-Clouding-with-Secondary-DNS3.png" class="kg-image"></figure>
+	<p>图 3：Secondary DNS Override 仪表板</p>
+	<p>在图 3 中，所有记录均已从主 DNS 服务器传送过来。test-orange 和 test-aaaa-orange 已重写为通过 Cloudflare 网络进行代理，而 test-grey 和 test-mx 则被视为常规 DNS 记录。</p>
+	<p>我们在幕后存储重写记录，这些记录基于名称与传送来的记录配对。对于次要重写，我们在重写记录时不关心其类型，原因有两点：</p>
+	<ol>
+		<li>根据 <a href="https://tools.ietf.org/html/rfc1912#section-2.4" target="_blank">RFC 1912</a>，您无法拥有与任何其他记录同名的 CNAME 记录。（这不适用于某些 DNSSEC 记录，具体参见 <a href="https://tools.ietf.org/html/rfc2181" target="_blank">RFC 2181</a>）</li>
+		<li>A 和 AAAA 记录都是地址类型记录，应在同一名称下全部代理或全部不代理。</li>
+	</ol>
+	<p>这意味着，如果您有几个名称均为“example.com”的 A 和 AAAA 记录，倘若其中之一被代理，则所有记录都将被代理。UI 通过“橙色云”按钮帮助抽象我们要存储其他重写记录的念头，点击这个按钮将创建一个重写记录，并应用到具有该名称的所有 A/AAAA 或 CNAME 记录。</p>
+	<h3 id="-cname">顶端处的 CNAME</h3>
+	<p>通常，不允许将 CNAME 放在区域的顶端。示例：</p>
+	<p>example.com CNAME other-domain.com</p>
+	<p>这是不被允许的，因为这意味着将存在至少一个其他 SOA 记录和另一个同名的 NS 记录，而这与上文提到的 RFC 1912 相悖。Cloudflare 可以通过使用 <a href="https://support.cloudflare.com/hc/en-us/articles/200169056-CNAME-Flattening-RFC-compliant-support-for-CNAME-at-the-root" target="_blank">CNAME 拉平</a>来解决这一问题，这是当今主要 DNS 产品中常用的技术。当查询进入我们的权威服务器时，CNAME 拉平允许我们返回地址记录而不是 CNAME 记录。</p>
+	<p>与上文中有关禁止 Secondary DNS Override UI 编辑记录的说法相反，顶端处的 CNAME 是此规则的一个例外。除了常规的次要 DNS 记录，用户还可以在顶端处创建 CNAME，但这里也适用 RFC 1912 中定义的相同规则。这意味着，顶端处的 CNAME 记录可以视为常规 DNS 记录或代理记录，具体取决于用户的决定。不管顶端记录中 CNAME 的代理状态如何，它都将重写从主要 DNS 服务器传送来的所有其他 A/AAAA 记录。</p>
+	<h3 id="-cname-">合并顶端处的次要、重写和 CNAME 记录</h3>
+	<p>在编辑记录时，我们会在顶端处进行次要、重写和 CNAME 记录的所有合并。这意味着，当 DNS 请求进入边缘的权威服务器时，我们仍然可以在<a href="https://www.dnsperf.com/" target="_blank">极快的时间</a>内返回记录。具体工作流程如图 4 所示。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/Orange-Clouding-with-Secondary-DNS4.png" class="kg-image"></figure>
+	<p>图 4：记录合并过程</p>
+	<p>在区域构建器中执行如下步骤：</p>
+	<ol>
+		<li>检查顶端处是否有任何 CNAME，如果存在，则重写顶端处的所有其他 A/AAAA 次要记录。</li>
+		<li>对于每个次要记录，检查是否存在匹配的重写记录，如果存在，则将重写记录的代理状态应用到具有该名称的所有次要记录。</li>
+		<li>所有其他次要记录保持不变。</li>
+	</ol>
+	<h3 id="-">入门</h3>
+	<p>对于希望利用 Cloudflare 网络的所有用户，Secondary DNS Override 是一个不错的选项，他们无需将其所有区域传送到作为主要提供商的 Cloudflare DNS。安全性和访问控制可以在主要服务器一侧进行管理，不必担心 Cloudflare 一侧对信息进行未经授权的编辑。</p>
+	<p>Secondary DNS Override 目前在 Enterprise 计划中可用，如果您想要利用，请告知您的客户团队。如需关于 Secondary DNS Override 的其他文档，请参阅我们的<a href="https://support.cloudflare.com/hc/en-us/articles/360042169091-Understanding-Secondary-DNS-Override#:~:text=Secondary%20Override%20allows%20customers%20to,record%20at%20the%20root%20domain." target="_blank">支持文章</a>。</p>
+</div>

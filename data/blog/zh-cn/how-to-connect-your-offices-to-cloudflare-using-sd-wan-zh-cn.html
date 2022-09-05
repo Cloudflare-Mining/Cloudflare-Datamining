@@ -1,0 +1,24 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image2-11.png" class="kg-image"></figure>
+	<p>许多办公室将很快重新开放，就像两年前，面向远程工作的转型给 IT 和网络团队带来了社会模式的变化一样，重返办公室也将带来其自身的挑战。两年前，首席信息官们遭遇了一次意外的演练，几乎一夜之间就实现了全面的远程工作。随着公司开始尝试混合工作模式，IT 团队也面临着新的问题。他们不仅要重新开设现有的分支机构，并有可能启用新的分支机构，以便更好地分配更灵活的劳动力，而且还要确保用户无论在哪里连接，都能获得一致的体验。所有这些都是在维持企业网络的可见性和安全性的同时进行，而企业网络的维护也日益变得复杂和难以维护。</p>
+	<p>一些公司已经采用了 SD-WAN 技术来帮助解决这些问题。SD-WAN，即软件定义的广域网络，是一种利用软件覆盖各种硬件平台，连通分支机构和企业总部的灵活方式。通过整合托管任务并摆脱路由器配置的复杂性，部署 SD-WAN 可以让 IT 和网络团队的生活更加轻松。SD-WAN 平台通常包括一个中央“协调器”，其会保存有关连接位置的信息。</p>
+	<h3 id="sd-wan-"><strong>SD-WAN 作为您的公司网络的管理覆盖</strong></h3>
+	<p>传统上，网络团队需要通过复杂且相互关联的架构将分支机构连接到公司网络，该架构涉及到特定的硬件和软件依赖关系，有时甚至是地点之间的专用或租用链接。这种设置既昂贵又复杂，并且使得启动并激活全新和现有的分支机构成为了一个缓慢的过程。Cloudflare One 建立在我们高性能和灵活的全局 Anycast 网络之上，使客户能够利用我们在 250 多个城市的全局网络作为其企业主干。这意味着，您所需要做的就是将您的基础结构从任何你想要的位置连接到 Cloudflare 的全局 Anycast 网络中，并且您可以立即连接到所有其他地点。这很简单。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/12/image3-6.png" class="kg-image" alt="Figure 1. The New Corporate Backbone">
+		<figcaption>图 1.新企业的主干网</figcaption>
+	</figure>
+	<h3 id="-cloudflare-"><strong>但是，如何将您的办公室与 Cloudflare 全局网络连接起来呢？</strong></h3>
+	<p>今天，更先进的接入方式是使用 SD-WAN 配置网络并将其连接到 Cloudflare 网络中，将其用作新的企业主干。这种方式既快速又简便！我们以一种创新的方式应用了行业标准通道协议，您可以在 <a href="https://blog.cloudflare.com/anycast-ipsec/">Anycast IPsec</a> 博客中了解更多信息。</p>
+	<p>有关详细的教程，请查看开发人员文档 <a href="https://developers.cloudflare.com/magic-wan/tutorials/secure-web-gateway" target="_blank">“将 Magic WAN 连接到安全的 Web 网关”</a>。</p>
+	<h3 id="-"><strong>确保事物的性能和安全</strong></h3>
+	<p>在过去，机构必须利用租用线路和 MPLS 将他们的网络连接在一起。其均为专用的路径和链接，为企业流量提供稳定、高效的连接。</p>
+	<p>当使用 Cloudflare 的网络作为主干时，您无需牺牲任何性能，而是得益于<a href="https://blog.cloudflare.com/argo-v2/">全局优化的 WAN</a> <em>，无需承担 </em>MPLS 和租用线路的高昂成本或管理开销。这意味着，其性能和可靠性即使不能更好，亦至少能与您现有的连接相当。</p>
+	<p>尽管高性能连接只是问题的一部分，但无论底层网络是什么，仍然必须保证安全。经过 Cloudflare 网络的流量始终能确保安全，包括您的流量、分支以及办公用户和远程用户的端到端流量。流量通过加密，可以过滤整个网络，形成一个完整的安全 Web 网关和 Zero Trust 防火墙。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/12/unnamed-3.png" class="kg-image" alt="Figure 2. Cloudflare Zero Trust Networking">
+		<figcaption>图 2. Cloudflare Zero Trust 网络</figcaption>
+	</figure>
+	<h3 id="--1"><strong>更简易的管理且更具灵活性</strong></h3>
+	<p>采用标准通道协议，意味着您不仅可以使用 SD-WAN 产品，而且还可以使用任何支持通道协议(GRE 和 IPsec)的路由器或设备来进行连接。如果您正在进行 SD-WAN 转换，或者由于合并和收购而拥有多个平台，亦或是您只是想快速组建小型办公室，那么我们将为您提供帮助！</p>
+	<p>随着所有都连接到 Cloudflare 后，您即可拥有一个中央控制平面来处理您所有的流量，而不仅是站点间的流量，还包括来自互联网的流量。</p>
+	<p>为了让事情变得更简单，我们正在与 SD-WAN 的合作伙伴，如 Aruba Networks、VMware VeloCloud、Infovista 和其他合作伙伴进行合作，使其仅需几次点击，就能更容易从 SD-WAN 平台上导入流量。请关注最新消息。<br></p>
+</div>

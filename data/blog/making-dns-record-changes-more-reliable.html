@@ -1,0 +1,12 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/05/image1-8.png" class="kg-image"></figure>
+	<p>DNS is the very first step in accessing any website, API, or pretty much anything on the Internet, which makes it mission-critical to keeping your site up and running. This week, we are launching two significant changes that allow our customers to better maintain and update their DNS records. For customers who use Cloudflare as their authoritative DNS provider, we’ve added a much asked for feature: confirmation to DNS record edits. For our secondary DNS customers, we’re excited to provide <a href="https://blog.cloudflare.com/secondary-dns-a-faster-more-resilient-way-to-serve-your-dns-records/">a brand new onboarding experience</a>.</p>
+	<h3 id="confirm-and-commit">Confirm and Commit</h3>
+	<p>One of the benefits of using Cloudflare DNS is that changes quickly propagate to our 200+ data centers. And I mean <em>very</em> quickly: DNS propagation typically takes &lt;5 seconds worldwide. Our UI was set up to allow customers to edit records, click out of the input box, and boom! The record has propagated!</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/05/image2-8.png" class="kg-image"></figure>
+	<p>There are a lot of advantages to fast DNS, but there's also one clear downside – it leaves room for fat fingering. What if you accidentally toggle the proxy icon, or mistype the content of your DNS record? This could result in users not being able to access your website or API and could cause a significant outage. To protect customers from these kinds of mistakes, we've added a Save button for DNS record changes.</p>
+	<p>Now editing records in the DNS table allows you to take an extra look before committing the change. </p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/05/image3.gif" class="kg-image"></figure>
+	<p>The new confirmation layout applies to all record types and affects any content, TTL, or proxy status changes.</p>
+	<p>Let us know what you think by filling out the feedback survey linked at the top of the DNS tab in the dashboard.</p>
+</div>

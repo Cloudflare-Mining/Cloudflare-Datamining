@@ -1,0 +1,79 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/09/header-tile-1.1.1.1@2x-1.png" class="kg-image"></figure>
+	<p></p>
+	<p>4月1日对大多数互联网用户来说是一个悲惨的日子。尽管大多数时候互联网充满希望和创新，但在“愚人节”这天，少数几家顶尖科技公司决定浪费数十亿人的时间，讲一些只有他们自己才觉得好笑的幼稚笑话。</p>
+	<p>Cloudflare从未参与传统的愚人节恶作剧。通常我们只是忽略这一天，继续我们的使命，帮助建立一个更好的互联网。去年，我们决定反其道而行，推出一项服务，希望它能惠及每一位互联网用户：1.1.1.1。</p>
+	<p>这项服务的目标很简单——成为互联网上最快、最安全、最尊重隐私的DNS解析器。这是我们第一次尝试消费者服务。虽然我们不想显得很幼稚，但我们心里仍是极客，所以我们无法抗拒在4月1日发布1.1.1.1——尽管这是愚人节、复活节、逾越节以及周日，当时每一次的媒体对话都以不同的形式向我们表达：“你知道，如果你是在和我开玩笑，你就死定了。”</p>
+	<h2 id="-">不是开玩笑</h2>
+	<p>我们不是在开玩笑。在接下来的那一年，我们被回应所淹没了。1.1.1.1的使用量逐月增长700％，似乎很快就能成为全球第二大公共DNS服务——仅次于谷歌（其<a href="https://www.dnsperf.com/#!dns-resolvers" target="_blank">延迟时间是我们的两倍</a>，所以我们相信有一天我们也会赶上它）。我们帮助推出了一些新标准，例如DNS over TLS和DNS over HTTPS，这些标准确保了最基本的互联网请求的隐私性和安全性。我们与Mozilla等伟大的组织合作，使这些新标准易于使用，可以被在任何地方的任何人访问。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/09/1.1.1.1-Screen-Record.gif" class="kg-image"></figure>
+	<p></p>
+	<p>在11月11日——是的，再一次，极客做派的——我们推出了Cloudflare的第一个移动应用程序。1.1.1.1应用程序允许任何人轻松地在其手机上享受1.1.1.1 DNS服务的速度，安全性和隐私性带来的好处。在公司内部，我们曾希望至少有10000人使用该应用程序。但最终有远不止10000人使用。在随后的几个月中，数百万Android和iOS用户安装了这款应用程序，现在他们可以在手机上体验更快，更安全，更私密的互联网。</p>
+	<h2 id="--1">绝密计划</h2>
+	<p>说实话，1.1.1.1应用程序在今天之前实际上只是一个先导。我们计划从根本上改善移动互联网的性能、安全和隐私，而不仅仅是DNS。为了实现这一目标，我们需要了解，当信号减弱，人们尝试在一个强制登录门户网站（captive portal）注册，又或者移动电话在外地遭遇不同的情况时，VPN应用在蜂窝和WiFi之间切换的故障情况。</p>
+	<p>详情我们稍后再讲。首先，让我们都承认移动互联网可以比现在的状况好很多。TCP是互联网的基础协议，它并不是为移动环境设计的。当你尝试用手机上网，而附近有人打开了微波炉（或者别的一些什么事）导致了数据包丢失，互联网实际就与它应做的背道而驰。哪怕我们仅单纯升级移动互联网的底层协议，它就可以变得好很多。5G给了我们很大的希望，但不幸的是，它没有改变移动互联网的运行仍然基于为有线网络设计的传输协议之上的事实。</p>
+	<p>除此之外，我们的手机中有一些最私密的会话。然而，你多大程度上相信他们是安全和私密至极的？虽然有一些移动VPN可以确保从您的手机通过互联网发送的流量是加密的，但坦率地说——vpn很糟糕，尤其是在移动设备上。它们增加了延迟，消耗你的电量，而且，在很多情况下，它们是由公司运行的，其动机与实际保持数据私密和安全是相反的。</p>
+	<h2 id="-warp-1-1-1-1">公布具有Warp的1.1.1.1</h2>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/09/warp-illustration-update@2x.png" class="kg-image"></figure>
+	<p></p>
+	<p>今天我们很高兴能公布我们两年多前开始计划的内容：<a href="https://1.1.1.1/" target="_blank">具有Warp性能和安全技术的1.1.1.1应用程序</a>。在现代移动互联网恶劣的条件下，我们从零开始研发Warp直至其能快速发展。它始于2017年11月我们<a href="https://www.cloudflare.com/press-releases/2017/cloudflare-acquires-neumob-to-supercharge-the-network-experience-end-to-end/" target="_blank">对Neumob的收购</a>。当时，我们的首席技术官John Graham-Cumming撰写了关于Neumob如何参与我们的“ <a href="https://blog.cloudflare.com/neumob-optimizing-mobile/">超级秘密总体规划</a>”的文章。当时他写道：</p>
+	<p>“最终，Neumob软件可轻松扩展为移动设备的‘VPN’，可以保护和加速来自移动设备的所有HTTP流量（包括正常的网页浏览和应用API调用）。坦白地说，坦白地说，大多数VPN软件都很糟糕。使用VPN感觉像是倒退到了拨号时代，有着模糊的错误信息，速度缓慢，软件笨拙。其实事情不一定要这么糟。”</p>
+	<p>这就是我们一直在努力实现的愿景：扩展Cloudflare的全球网络——现在距离全球绝大多数人口只有几毫秒（访问时间）的距离——从而帮助改善移动互联网的性能和安全性。</p>
+	<h2 id="-vpn-vpn">一个适用于不知道VPN是什么的人的VPN</h2>
+	<p>从技术上讲，Warp就是一个VPN。然而，我们认为迄今为止人们想象中的VPN市场实际受到了严重的限制。想象一下，你正要去说服一个非技术领域的朋友，安装一个应用程序，这个应用程序会让他们的网络慢下来，消耗他们的电量，然后他们就可以更安全一点。祝你好运吧。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/09/Warp-On.png" class="kg-image"></figure>
+	<p></p>
+	<p>我们研发Warp，是因为我们也和我们的亲人有过上面那些对话，但劝说进行的并不顺利。所以我们知道我们必须首先将其他VPN解决方案的缺陷变为优势。在后台，Warp充当着VPN。但现在在1.1.1.1应用程序中，如果用户决定启用Warp，而不仅仅是保护和优化DNS查询，那么所有互联网流量都将是安全的和最佳化的。换句话说，Warp是服务于那些不知道<a href="https://www.cloudflare.com/learning/vpn/what-is-a-vpn/" target="_blank">VPN是什么</a>的人的<a href="https://www.cloudflare.com/learning/vpn/what-is-a-vpn/" target="_blank">VPN</a>。</p>
+	<h2 id="--2">保护所有流量安全……</h2>
+	<p>这不仅适用于您的网络浏览器，也适用于手机上运行的<em>所有</em>应用。默认情况下，任何未加密的连接都会自动加密。Warp支持端到端加密，并且不要求您安装根证书，也不会让Cloudflare有机会查看我们还未加密的互联网流量。</p>
+	<p>不幸的是，很多互联网仍然没有被加密。为此，Warp自动将从你的设备到Cloudflare网络的边缘的流量加密——这并不完美，但它是所有其他VPN都在做的，而且它确实解决了典型互联网用户面临的最大威胁。一线希望是，如果您在安全的情况下通过Warp浏览未加密的Internet, Cloudflare的网络可以缓存和压缩内容，从而提高性能，并可能降低数据使用量和移动运营商的账单。如果您通过Warp浏览未加密的互联网，在安全的情况下，Cloudflare的网络可以缓存和压缩内容，从而提高性能，并可能可以降低数据使用量和移动流量账单。</p>
+	<h2 id="--3">……同时也让它更快更可靠</h2>
+	<p>安全性是桌上的赌注。真正区别Warp（与其他VPN）的是它的性能和可靠性。其他VPN会使得互联网速度减慢，而Warp则整合了Neumob团队为提高移动互联网性能所做的所有工作。我们围绕一个基于udp的协议构建了Warp，该协议针对移动互联网进行了优化。我们还利用了Cloudflare庞大的全球网络，支持Warp在几毫秒内与全球大多数互联网用户的服务器连接。通过我们的网络的直接对等连接和无阻塞的路径，我们可以在世界各地提供一个极佳的体验。一般来说，你的网络越差，Warp能带来的性能提升就越好。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/09/cloudflare-network-map-1.png" class="kg-image"></figure>
+	<p></p>
+	<p>并且可靠性也得到了提升。虽然Warp无法消除移动网络的死角，但该协议旨在令网络能更快地从信号丢失中恢复。这样一来，当你下班通勤时，火车上手机失去信号的地方就不那么烦人了。</p>
+	<p>我们也知道确保Warp不会显著增加你的电池使用量是至关重要的。我们围绕WireGuard构建了Warp，这是一个现代高效的VPN协议，比传统的VPN协议要高效得多。我们还通过中继来尽量减少对手机无线电的过度使用。如果你去过手机信号不稳定的地方，你就会知道，在那里使用无线电会让手机变热，很快就会耗尽电池。Warp的设计就是为了尽量减少这种情况。</p>
+	<h2 id="--4">它要多少钱？</h2>
+	<p>最后，我们知道，如果我们真的想让Warp成为我们所有技术水平较低的朋友都能使用的东西，那么价格就不该成为人们使用它的障碍。基本版的Warp作为一个<strong>免费</strong>选项被包含在1.1.1.1应用程序中。</p>
+	<p>我们还在开发高级版本的Warp——我们称之为Warp+ ——通过使用Cloudflare的虚拟私有主干和<a href="https://www.cloudflare.com/products/argo-smart-routing/" target="_blank">Argo技术</a>，它将会更快。我们将对那些想要更快速度的人收取较低的月费，就像许多阅读本博客的人一样。Warp+ 的成本可能会因地区而异，其定价方式会确保尽可能多的人都能负担得起尽可能快的移动体验。</p>
+	<p>两年多以前， John暗示我们想要建立一个没有问题的VPN，这正是我们一直在做的。但问题不仅仅在于技术，也在于我们如何运行网络的政策，以及我们将向谁提供服务。</p>
+	<h2 id="--5">问题是什么？</h2>
+	<p>就让我们承认吧，消费者VPN行业的许多角落确实很糟糕，所以要问我们是否别有用心，这也是很合理的问题。许多VPN公司假装将你的数据保密，然后出售数据来针对你投广告，一句话，这十分恶心。这不是Cloudflare的商业模式，也永远不会是。带有Warp的1.1.1.1的应用程序将继续拥有<a href="https://developers.cloudflare.com/1.1.1.1/commitment-to-privacy/" target="_blank">1.1.1.1发布时提供的所有隐私保护</a>，包括：</p>
+	<ol>
+		<li>我们不会将用户标识的日志数据写入磁盘；</li>
+		<li>我们绝不会出售您的浏览数据或以任何方式使用它来针对您投广告数据；</li>
+		<li>您不需要提供任何个人信息——不用提供您的姓名，电话号码或电子邮件地址就可以使用带有Warp的1.1.1.1应用程序；以及</li>
+		<li>我们会定期聘请外部审计师，以确保我们能够兑现这些承诺。</li>
+	</ol>
+	<h2 id="--6">这听起来太好了以至于让人难以置信</h2>
+	<p>这正是我15年前看到Gmail发布时的想法。当时，人们很难相信电子邮件服务能够在没有存储上限或收费的情况下存在。当时我不明白的是，谷歌在廉价高效地存储数据方面做得如此之好，以至于这在世界的其他地方似乎是不可能的事情，人们连想都不敢想。当然，广告是谷歌的商业模式，而不是Cloudflare的，所以这不是一个完美的类比。</p>
+	<p>很少有公司拥有Cloudflare网络的广度、覆盖范围、规模和灵活性。我们不相信有任何这样的公司不以销售用户数据或广告为主要动机。几年前，我们意识到提供VPN服务不会显著地改变我们已经成功运行的网络的成本。这意味着如果我们能实现这项技术，我们就能提供这项服务。</p>
+	<p>也许这听起来有点假，我们建造Warp的主要原因是我们的任务是帮助建立一个更好的互联网——而移动互联网并没有那么快或者安全，VPN都很糟糕。我们一次又一次地看到人们围坐在一起讨论，如果有人采取行动，互联网会变得更好。我们有能力采取行动，我们已经采取了行动。我们<a href="https://blog.cloudflare.com/introducing-universal-ssl/">为所有客户免费加密</a>，并在此过程中将加密网络的规模扩大了一倍，我们<a href="https://blog.cloudflare.com/always-on-ipv6/">推动了IPv6的采用</a>，我们<a href="https://blog.cloudflare.com/automatically-provision-and-maintain-dnssec/">简化了DNSSEC</a>，我们是第一个<a href="https://blog.cloudflare.com/cloudflares-impact-on-the-http-2-universe/">大规模转向HTTP / 2</a>的公司。</p>
+	<p>这就是我们的本性：在互联网上找到最大的问题，并做正确的事情来解决它们。而且，如果你看看当今互联网上最大的问题，那就是移动网络太不安全、太慢，目前的VPN解决方案带来了巨大的性能损失，更糟的是，它们往往不尊重用户的隐私。</p>
+	<p>一旦我们意识到研发Warp在技术上和经济上都是可行的，这对我们来说就变得很简单了。在Cloudflare，我们努力为整个互联网打造技术，我们不是硅谷那些认为愚人节恶作剧很有趣的少数技术人员。帮助建立一个更好的互联网是我们在Cloudflare雇佣伟大的、有同理心的、有原则的、有好奇心的工程师的动力所在。</p>
+	<h2 id="--7">好吧，当然，但你仍然是一个盈利性公司</h2>
+	<p>这很公平，我们认为带有Warp的1.1.1.1应用程序对我们来说将是一项很好的业务。这在财务上有三种主要意义。第一个，也是最直接的，是前面提到的Warp+高级服务，您可以升级到它以获得更快的性能。Cloudflare推出了免费增值模式的B2B服务，对我们来说这样效果非常好。我们了解免费增值，并且很高兴能将我们的体验扩展到消费领域。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/09/warp-.png" class="kg-image"></figure>
+	<p></p>
+	<p>其次，我们认为企业VPN领域有着令人兴奋的商机。当一家公司要求其员工安装和使用VPN，但即便是下一代云VPN也非常糟糕。他们的客户端软件减慢了一切，并耗尽了电量。我们认为构建最佳企业VPN的最佳方法是首先构建最佳的消费者VPN，让数百万用户来尝试。想一想，如果你真的期待登录你的公司VPN。如果您是一家有兴趣与我们密切合作来实现梦想的公司，<a href="https://www.cloudflare.com/plans/enterprise/contact/" target="_blank">请随时与我们联系，我们会让您加入我们的产品路线图</a>。</p>
+	<p>最后，<a href="https://www.cloudflare.com/" target="_blank">Cloudflare的核心业务</a>是让我们的客户在互联网上快速安全地获取内容和访问应用程序。虽然我们努力使Warp能够使整个互联网变得更快，但由Cloudflare支持的网站和应用程序甚至会更快。通过运行在互联网连接的两端的软件，我们可以进行重要的优化，否则这将是不可能的。展望未来，我们计划添加本地设备差分压缩（在您的手机上使用Railgun），更高级的请求头压缩，智能自适应拥塞控制和多路径路由。当有人通过运行Warp的手机访问Cloudflare的客户网站时，所有这些都更容易被提供。因此，安装Warp的人越多，Cloudflare的核心服务就越有价值。</p>
+	<h2 id="--8">如何注册？</h2>
+	<p>我们原本想在2019年4月1日向整个互联网推出Warp，不带任何附加条件。我们的网站可靠性工程团队否决了这个想法。他们提醒我们，即使是谷歌，当他们推出Gmail时（同样是在4月1日），也有策划谁能进入使用名单。并且听他们说的，这显然是有道理的。我们希望确保人们拥有良好的体验，我们的网络可以随着每个人的加入而扩展。</p>
+	<p>说实话，我们还没准备好。虽然我们的团队已经工作了几个月，以便准备启动Warp的新1.1.1.1应用程序，包括在发布之前的最后几个小时工作内，我们还在打电话说仍有太多边缘情况，我们不能很自豪地开始向用户推广它。没有什么是我们无法解决的，但它需要的时间比我们希望的要长一些。像4月1日这样一个艰难的截止日期的好处在于它激励了一个团队——我们整个团队都在努力做好准备——而挑战在于你无法改变它。</p>
+	<p>所以，从今天开始，你可以做的就是声称你是最先获得Warp的一批人。如果您的手机上已有1.1.1.1应用程序，则可以通过<a href="https://itunes.apple.com/us/app/1-1-1-1-faster-internet/id1423538627?mt=8" target="_blank">Apple App Store</a>或<a href="https://play.google.com/store/apps/details?id=com.cloudflare.onedotonedotonedotone&amp;hl=en_US" target="_blank">Google Play商店进行更新</a>。如果您还没有1.1.1.1应用程序，可以在<a href="https://itunes.apple.com/us/app/1-1-1-1-faster-internet/id1423538627?mt=8" target="_blank">Apple</a>或<a href="https://play.google.com/store/apps/details?id=com.cloudflare.onedotonedotonedotone&amp;hl=en_US" target="_blank">Google</a>免费下载。完成后，您会看到一个选项显示您在等待开启Warp的队列位置。当我们开始着手为人们开启服务时，你的排名将会上升。轮到您时，我们会向您发送通知，您将能够启用Warp来让自己体验更快，更安全，更私密的互联网。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/09/Warp-Queue.png" class="kg-image"></figure>
+	<p></p>
+	<p>并且，不用担心，如果您只想继续使用1.1.1.1应用程序来获得DNS性能和安全性，那么对于已经安装它的人来说，这仍然是免费的默认设置。而且，对于将要安装的人，如果由于某种原因，您不想要Warp的好处，您将始终可以免费降级到该选项（仅提供DNS性能和安全性）。</p>
+	<p>我们希望在未来几周内，我们将开始邀请候补名单上的人尝试使用Warp。并且如果需求量能够保持在我们的预测范围内，我们希望在7月底前能让等待名单上的所有人都用上Warp。</p>
+	<h2 id="--9">帮助建立更好的互联网</h2>
+	<p>在Cloudflare，我们的使命是帮助建立更好的互联网。我们非常认真地对待这项任务，即使是在科技行业里的其他人都在开玩笑的日子里也是如此。对<a href="https://w3techs.com/technologies/history_overview/proxy" target="_blank">世界上很大一部分内容创作者</a>来说，我们实现了这一使命。今天，我们第一次将这一使命的范围有意义地扩大到每天使用互联网的数十亿人，我们整个团队为此感到自豪。</p>
+	<p>点击以获得您在适用于<a href="https://itunes.apple.com/us/app/1-1-1-1-faster-internet/id1423538627?mt=8" target="_blank">Apple的iOS</a>或<a href="https://play.google.com/store/apps/details?id=com.cloudflare.onedotonedotonedotone&amp;hl=en_US" target="_blank">Google的Android</a>的带有Warp的1.1.1.1应用程序中的队列位置。</p>
+	<p><a href="https://www.cloudflare.com/careers/departments/engineering/" target="_blank">点击此处</a>了解Cloudflare的工程项目。</p>
+	<p>还有，如你所想，<strong>桌面版本即将推出</strong>……</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/09/1.1.1.1-fancycolor.gif" class="kg-image"></figure>
+</div>

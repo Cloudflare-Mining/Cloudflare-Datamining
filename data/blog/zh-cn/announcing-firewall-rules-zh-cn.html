@@ -1,0 +1,80 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/08/Firewall-rules-white-back.svg" class="kg-image"></figure>
+	<p>网络威胁的景观每秒钟都在变化。随着攻击者的进步，他们变得更加活跃和狡猾，漏洞出现的速度比工程师修补应用程序的速度还要快。Cloudflare的部分使命就是确保您和您的应用程序的安全。今天，Cloudflare推出了一项新功能，为客户提供他们一直在要求的东西——对他们的传入请求进行细粒度控制。</p>
+	<p>Cloudflare已经提供了许多强大的防火墙工具，如IP规则、CIDR规则、ASN规则、国家规则、HTTP用户代理阻塞、区域锁定(针对只允许来自那些IP的流量的uri)，以及我们在WAF (Web应用程序防火墙)中全面管理的规则。但有时，您需要结合这些功能来完全缓解攻击，并显示一个打破现有工具边界的限制规则，以便能够在请求来自该（攻击者）IP，以及user-agent（用户代理）请求头匹配这些（攻击者）IP中的一个时，阻止流量进入此URI。</p>
+	<h2 id="-">灵活性和控制力</h2>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/08/Stefano-Kocka.jpg" class="kg-image"></figure>
+	<!--kg-card-begin: html-->
+	<p align="right"><small>
+			<font style="vertical-align: inherit;">
+				<font style="vertical-align: inherit;">©Stefano Kocka：源自维基百科</font>
+			</font>
+		</small></p>
+	<!--kg-card-end: html-->
+	<p>当我们与客户讨论他们的需求时，我们发现了一些共同的主题，同时我们也回顾了客户支持团队所看到的功能需求，我们将反馈和功能需求的最重要部分分为三个核心需求:</p>
+	<ol>
+		<li>更灵活地创建防火墙规则，该规则不仅限于匹配单个属性，比如IP地址和用户代理</li>
+		<li>具有灵活性，不仅可以精确匹配属性，还可以通过使用字符串或模式(例如User-Agent: *Firefox*)部分匹配属性</li>
+		<li>通过UI和Cloudflare的公共API完成自助服务控制，即使对于最复杂的防火墙规则也是如此</li>
+	</ol>
+	<p>客户支持团队共同研究了防火墙的新方法，其中一个首要任务是：为我们的客户构建一个“瑞士军刀防火墙”。我们的主要目标是：</p>
+	<ol>
+		<li>提供工具，让客户可以灵活，精细地控制流量</li>
+		<li>保持流畅直观的用户体验，这是我们所擅长的</li>
+		<li>确保所有客户都可以访问和使用它，无论用户技能水平或业务规模如何</li>
+	</ol>
+	<h2 id="--1">防火墙规则</h2>
+	<p>Cloudflare的新功能防火墙规则（Firewall Rules）受广为人知的Wireshark®语言启发，为客户提供了以灵活和直观的方式控制请求的能力。规则的配置不仅可以通过我们的控制面板和API完成，还可以通过Terraform（<a href="https://blog.cloudflare.com/getting-started-with-terraform-and-cloudflare-part-1/">点击此处链接</a>）完成。</p>
+	<p>防火墙规则引擎可以看作是两个组件:</p>
+	<ul>
+		<li>匹配：定义一个全局运行的过滤器，并精确匹配您的流量</li>
+		<li>操作：当过滤器匹配时，声明Cloudflare应该应用的操作</li>
+	</ul>
+	<p>简单地说，当过滤器匹配时，应用该操作。</p>
+	<h2 id="--2">匹配：确定规则的范围</h2>
+	<p>Cloudflare防火墙规则允许客户访问HTTP请求的属性，包括引用者（referer）、用户代理（user-agent）、cookies、Cloudflare威胁评分(IP信誉评分)以及更多。</p>
+	<p>所有受支持的头都可以通过许多操作符匹配，包括部分匹配(包含)、完整字符串或整数匹配(等于)，以及对于我们的业务和企业客户有模式匹配(匹配)。是的，您没有看错，我们现在提供使用正则表达式的模式匹配，直接通过控制面板和API即可完成!</p>
+	<p>防火墙规则最大的优点是Cloudflare可以灵活地选择字段；例如，Cloudflare的威胁情报（负责驱动控制面板上的安全级别）将成为客户可用的字段。Cloudflare引入的最重要的域之一是我们的cf.client.bot段，它通过反向DNS验证已知的好机器人。在我们的最初版本中，我们为客户提供了对“已知的好机器人”的一般分类的访问。这些机器人列表的详细信息可以在<a href="https://developers.cloudflare.com/firewall/known-issues-and-faq/#which-bots-or-crawlers-are-detected-in-firewall-rules" target="_blank">此处</a>找到。Cloudflare过去一直代表我们的客户将谷歌列入白名单，并利用Web应用程序防火墙规则来阻止欺骗的爬虫程序，这些规则只为专业及以上客户可用。有了防火墙规则，所有客户现在都可以得到这些保护。由于Cloudflare已经删除了白名单功能，因此重要的是客户的允许规则里直接包含cf.client.bot段，以避免无意中阻塞良好的网络爬虫，否则这可能会影响您的搜索引擎优化和监测。</p>
+	<h2 id="--3">操作：对请求应用哪些操作</h2>
+	<p>所有标准的Cloudflare操作，如JavaScript Challenge、Challenge和Block都是可用的。</p>
+	<p>标准缓解列表中增加了一个新功能，即允许的操作，它让客户可以去创建规则，以说明“如果匹配此标准，则停止处理进一步的规则”。</p>
+	<h2 id="--4">给我举一些例子吧！</h2>
+	<p>当然可以，这里有四个我们今天看到的很酷的例子。目前可视化规则生成器不支持高级或嵌套规则。这些在每条规则下面都有说明。</p>
+	<p><strong><em>示例1——挑战除GB以外的所有国家/地区</em></strong></p>
+	<p><u>支持平台：Visual Builder, Expression Editor</u></p>
+	<p>这可以利用我们的IP防火墙完成，但需要150+条规则!</p>
+	<pre><code>(ip.geoip.country ne "GB")</code></pre>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/08/1.png" class="kg-image"></figure>
+	<p></p>
+	<p><strong><em>示例2——高级热链接保护</em></strong></p>
+	<p><u>支持平台：Visual Builder, Expression Editor</u></p>
+	<p>Cloudflare内置的热链接保护对一些客户来说可能是有限制作用的，因为它不提供绕过某些路径的功能。这有时也会导致捕获合法的爬虫。</p>
+	<pre><code>(http.request.method eq "GET" and http.referer ne ".example.com" and not http.user_agent matches "(googlebot|facebook)" and http.request.uri.path eq "/content/")</code></pre>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/08/2.png" class="kg-image"></figure>
+	<p></p>
+	<p><strong><em>示例3——阻止威胁分数大于10的客户端或来自滥用网络的客户端（通过AS编号）访问到我的登录页面</em></strong></p>
+	<p><u>支持平台：Expression Editor</u></p>
+	<p>防火墙规则的一大优点是，我们为您提供了访问cf.threat_score的权限，这就是当前控制面板中安全级别的强大功能。</p>
+	<pre><code>(http.request.uri.path eq "/login" and (cf.threat_score &lt; 10 or ip.geoip.asnum eq 12345))</code></pre>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/08/3.png" class="kg-image"></figure>
+	<p></p>
+	<p><strong><em>示例4——类似于区域锁定的用例，使用正则表达式、IP地址CIDRs、国家代码和数字，通过Wordpress网站和API保护身份验证终端。</em></strong></p>
+	<p><u>支持平台：Expression Editor</u></p>
+	<p>区域锁定是一个很好的工具；然而，对于一些关键用例，它的作用是有限的。下面是展示其灵活性的一些非常疯狂的事情：</p>
+	<pre><code>((http.host eq "api.example.com" and http.request.uri.path eq "/api/v2/auth") or (http.host matches "^(www|store|blog)\.example.com" and http.request.uri.path contains "wp-login.php") or ip.geoip.country in {"CN" "TH" "US" "ID" "KR" "MY" "IT" "SG" "GB"} or ip.geoip.asnum in {12345 54321 11111}) and not ip.src in {11.22.33.0/24}
+111</code></pre>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/08/Firewall-Rule-4.png" class="kg-image"></figure>
+	<p><br></p>
+	<h2 id="--5">积极和消极的安全模型</h2>
+	<p>这是对防火墙的一个很好的补充，因为它为我们的客户提供了一种方式，可以在运行积极的安全策略(允许特定的请求并拒绝所有其他请求)和消极的安全策略(阻止特定的请求并允许所有其他请求)之间进行选择。</p>
+	<p>Cloudflare默认的防火墙规则是隐式的允许全部。这种工作方法的好处在于能够阻止坏的东西。虽然这是一种非常有效的运行防火墙的方法，但它也带来了一些挑战。因为如果允许所有流量通过，当问题出现时，您的安全操作都需要是被动。</p>
+	<p>安全行业一直在推行的是“零信任”的概念。就像它听起来的那样，零信任意味着你什么都不相信，所有通过的东西都必须有某种理由。要创建“零信任”安全策略，您必须反转防火墙默认策略的工作方式，即将最后一个操作从允许更改为阻止——也就是说，采用积极的安全政策。在今天之前，这是不可能做到的；但是在使用防火墙规则后，现在可以实现这一点了。</p>
+	<h2 id="--6">可视规则构建器和表达式编辑器</h2>
+	<p>给予客户权限的最大问题之一就是安全有效地进行授权。产品设计和UI工程团队经过多次迭代，创建了一个功能强大但易于使用的规则构建器和编辑器。团队花了几个月的时间，以创建可靠的规则构建器和规则编辑器解决方案，而不会使UI变得混乱或复杂。</p>
+	<p>新防火墙UI的首席设计师Pete Thomas带领我们回到了基础的运用纸张原型设计会话，以测试和发现规则是如何构建和管理的。</p>
+	<p>下面是一张我和伦敦解决方案工程师之一Matthew Bullock的照片，当时我们正在进行测试。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/08/Optimized-WAF-Rules.png" class="kg-image"></figure>
+	<p></p>
+	<p>通过设计的过程，我们想要关注的是客户为什么需要防火墙规则。（基于以上）设计内容的结果很简单，即创建主动防御规则来保护应用程序，创建反应规则来保护受到攻击的应用程序。</p>
+	<p>在可视化规则构建器（Visual Rule Builder）中，我们为客户提供了一种创建防火墙规则的直观方法，同时不限制对核心功能的访问。未来的路线图通过可视化构建器提供了更灵活的分组。但同时，我们也可以选择更复杂的要求或嵌套的防火墙规则。这些都可以在规则编辑器中创建，它基于我们受Wireshark®启发的语言，允许您使用在Wireshark中创建的表达式并创建防火墙规则。负责开发防火墙规则的工程经理David Kitchen将在未来几周内撰写一篇博客，详细说明为什么我们选择了受Wireshark®启发的DSL作为过滤器表达式。有关受支持的字段列表，请参阅我们的<u>文档</u>。</p>
+</div>

@@ -1,0 +1,68 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/1-27.png" class="kg-image" alt="End User Security: Account Takeover Protections with Cloudflare"></figure>
+	<p>最终用户的帐户安全始终是头等大事，但也是难以解决的问题。更糟糕的是，验证用户身份并非易事。鉴于泄漏凭据<a href="https://haveibeenpwned.com/PwnedWebsites" target="_blank">日益泛滥</a>，更先进的自动化爬虫程序在全网发动着凭据填充攻击，保护和监测身份验证端点成为安全团队面临的一个挑战。不但如此，很多身份验证端点依然仅仅依赖于提供正确的用户名和密码，使得恶意攻击者将未被甄别的凭证填充演变为账号盗用。</p>
+	<p>Cloudflare 平台的很多功能可以帮助为帐户盗用提供保护。本文将介绍一些例子和多个新功能。其中包括：</p>
+	<ul>
+		<li><a href="https://blog.cloudflare.com/zh-cn/protecting-apis-from-abuse-and-data-exfiltration-zh-cn/">开放代理托管列表</a>（新）：确保对应用程序的身份验证请求并非来自代理服务；</li>
+		<li><a href="https://blog.cloudflare.com/zh-cn/super-bot-fight-mode-zh-cn/">超级自动程序攻击模式</a>（新）：将自动化流量拒于验证端点门外；</li>
+		<li>暴露凭据检查（新）：在用户使用已泄露凭据登录时得到警告。这可用于启动双重验证流程或密码重置；</li>
+		<li>Cloudflare Access：通过集成第三方 OATH 服务来轻松增加额外验证层，即将推出<a href="https://blog.cloudflare.com/zero-trust-with-managed-devices/">可选的托管服务实施</a>（新）；</li>
+		<li>对失败登录的速率限制：阻止对应用程序的暴力式凭据填充尝试；</li>
+	</ul>
+	<p>以上功能结合使用时，可成为一种强大易用的工具，增加终端用户帐户安全。</p>
+	<h3 id="cloudflare-">Cloudflare 开放代理列表</h3>
+	<p>2020 年 7月，我们推出了 <a href="https://blog.cloudflare.com/introducing-ip-lists/">IP 列表</a> — 一个可重复使用的 IP 列表，用户可在编写自定义防火墙规则时作为基础。虽然这个列表对任何防火墙管理员来说都是一个很棒的工具，但和任何用于访问控制的 IP 列表一样，这个列表很快就会过时。</p>
+	<p>通过我们新推出的 <a href="https://blog.cloudflare.com/zh-cn/protecting-apis-from-abuse-and-data-exfiltration-zh-cn/">Cloudflare 开放代理托管列表</a>，现在您可以根据一个由 Cloudflare 管理和定期更新（每小时）的列表来创建自定义防火墙规则并进行匹配。这个列表是基于观察到的网络流量和对开放端点的主动搜索而生成的。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/04/2-14.png" class="kg-image" alt="The new Open Proxies managed list - can be found under Account Home → Configurations → Lists or used directly in a custom rule">
+		<figcaption>要使用新的开放代理托管列表，请前往 Account Home → Configurations → Lists，或在自定义规则中直接使用</figcaption>
+	</figure>
+	<p>在编写自定义防火墙规则时，将该 IP 列表与额外过滤器结合起来，可降低针对验证端点的恶意登录风险。使用 wirefilter 语法并利用这一新列表编写的规则示例如下：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>http.request.uri.path contains "/login" and (not ip.src in $cf.open_proxies and cf.bot_management.score &lt; 30)
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>这样一来，任何登录尝试将依照规则中所选行动被阻止或质询。</p>
+	<p>该 SOCKs 和 Proxy IP 列表面向所有 Enterprise 客户提供。</p>
+	<h3 id="-api-">超级自动程序攻击模式和 API 滥用检测</h3>
+	<p>登录端点为自动程序提供了机会。恶意自动程序会充分利用时间，短短几秒内就能测试数千甚至数百万个凭据。这些自动程序将持续运行，直至从您的网站获得某种价值为止。</p>
+	<p>幸运地是，我们最近推出了<a href="https://blog.cloudflare.com/zh-cn/super-bot-fight-mode-zh-cn/">超级自动程序攻击模式</a>。这个功能包含于所有 Pro 和 Business 计划中，我们还将其与实时分析结合起来，以便您能实时观察攻击情况。超级自动程序攻击模式旨在阻止凭据填充。在后端，我们运行着很多与 <a href="https://www.cloudflare.com/zh-cn/products/bot-management" target="_blank">Enterprise Bot Management</a> 产品相同的检测引擎。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/04/3-10.png" class="kg-image" alt="Our new Super Bot Fight Mode. Can be found under Firewall → Bots">
+		<figcaption>我们的全新超级自动程序攻击模式。请前往 Firewall → Bots</figcaption>
+	</figure>
+	<p>最棒的是，您可以立即添加保护。Pro 用户可选择对互联网上的“绝对自动程序”予以允许、阻止或质询行动。Business 用户甚至可以瞄准“疑似自动程序”，此类自动程序通常更加复杂，更难检测。Free 用户可继续使用自动程序攻击模式来获得基本保护。</p>
+	<h3 id="-">暴露凭据检查</h3>
+	<p>凭证填充攻击者尝试使用从针对另一个服务的攻击中盗取的某个用户凭据（用户名/密码对）来登录目标帐户。这种方法常常会奏效，因为<a href="https://www.ndss-symposium.org/ndss2014/programme/tangled-web-password-reuse/" target="_blank">超过 50% 的用户在多个帐户中使用相同的密码</a> ——导致大量帐户被泄露。您的终端用户安全不仅依赖于自身系统的安全，还依赖于用户所用的所有其他系统的安全。虽然多因素验证能提供深度防御，很多验证服务和用户尚未加以利用。即使如此，我们也希望能在某个用户名/密码对存在风险时对有关服务和用户发出警告。</p>
+	<p>除了自动程序检测等其他方法之外，一个新的行业最佳实践是让登录服务自己检查用户的凭证是否存在于已知的数据泄露中。这需要有一个有用的已知泄露用户名/密码对列表。诸如 <a href="https://haveibeenpwned.com/" target="_blank">Have I Been Pwned</a> 和 <a href="https://security.googleblog.com/2020/10/new-password-protections-and-more-in.html" target="_blank">Google 的密码泄漏警告</a>服务汇总了庞大的已知泄漏用户名/密码数据库，让企业和终端用户能通过查询来确定是否存在风险。但集成并非易事，理想情况下，组织应当能通过点击一个按钮来启用凭据检查保护。</p>
+	<p>我们正是这样做的。今天，我们发布 <a href="https://www.cloudflare.com/zh-cn/waf/" target="_blank">Web 应用程序防火墙（WAF）</a>的一个新功能：暴露凭据检查。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/04/4-5.png" class="kg-image" alt="Exposed Credential Checks can be easily enabled with our Managed Ruleset. Alternatively, you can write your own custom rules.">
+		<figcaption>通过我们的托管规则及即可轻松启用暴露凭据检查。另外，您也可以编写自定义规则。‌‌</figcaption>
+	</figure>
+	<p>对于任何受 Cloudflare 保护的应用程序，其登录请求都将通过 WAF 路由，这为在“路径上”进行暴露凭据检查提供了机会。启用后，对于任何验证尝试，WAF 将自动根据 Cloudflare 收集和维护的一个泄露凭据数据库来检查最终用户凭据。在找到匹配的情况下，WAF 将向源添加一个标头，您的应用程序将收到有关泄露凭据的警告，并采取有关行动，例如为该用户触发密码重置流程或双重验证质询。</p>
+	<!--kg-card-begin: markdown-->
+	<p>处理用户名和密码至少可以说是高度敏感的，我们设计暴露凭据检查功能是为了保护用户凭据。一个重要的设计原则是，用户名/密码对永远不应该暴露在 WAF 进程的边界之外，从而确保我们可以在不增加任何额外风险的情况下执行检查。这意味着，这个功能绝对不会将用户名和密码发送到 WAF 进程以外或存入日志<sup>1</sup>，因为我们无意知道这些凭据是什么——除非它们对您的网络安全构成威胁。但除此之外，我们还建立了一个保护隐私的加密协议来执行数据库查询。简单地说，我们对 WAF 进程中的用户名/密码对使用一个键控加密哈希函数，并检查生成的哈希值是否与数据库中已知泄露凭证的键控哈希值相匹配。我们将在后续的技术深入探讨中进一步说明这一点。</p>
+	<!--kg-card-end: markdown-->
+	<p>今天开始，Enterprise 用户可在<a href="https://www.cloudflare.com/zh-cn/waf/exposed-credential-checks/" target="_blank">这个页面</a>联系我们团队来使用这个功能。暴露凭据检查作为一种托管规则集提供，对 WordPress、Joomla 等常见系统中“开箱即用”，也可以作为自定义规则的过滤器，以支持任何应用程序。</p>
+	<h3 id="cloudflare-access-">Cloudflare Access 受管设备功能</h3>
+	<p>通过使用 <a href="https://www.cloudflare.com/zh-cn/teams/access/" target="_blank">Cloudflare Access</a>，您可在受 Cloudflare 保护的任何应用程序前添加一个额外的保护层。Access 对每一个请求通过验证用户身份、地点和网络来保护应用程序。这自然会增加终端用户帐户的安全性。</p>
+	<p>然而，用户使用的设备也许仍不够安全。已经遭遇入侵的设备上的有效验证会话可能导致数据渗漏，或更严重的是，该终端用户帐户或应用程序被完全破坏。企业尝试通过管理和发放企业设备来降低这种风险，通过移动设备管理（MDM）解决方案在这些设备上执行安全策略。</p>
+	<p>为了解决这个问题，我们正在改良 Cloudflare Access，以强制要求仅企业设备能访问敏感的应用程序。通过访问规则，现在有可能在允许访问前根据一个受管设备列表来验证某个设备的序列号。即使某个用户的凭据已暴露，由于设备的序列号不在受管设备列表中，任何未授权访问都会被阻止。如需了解更多信息，请查看我们的<a href="https://blog.cloudflare.com/zero-trust-with-managed-devices/">近期公告</a>。</p>
+	<h3 id="--1">失败登录的速率限制</h3>
+	<p>暴力攻击出奇地有效，尤其是在通过循环使用已泄露凭据数据库。为了阻止这些攻击，将其速度降至执行代价太大的程度往往就已经足够。</p>
+	<!--kg-card-begin: markdown-->
+	<p>在发生失败登录尝试时，很多用户名/密码表单会发出一个 HTTP 403 Forbidden 状态码或其他可辨识的错误信息<sup>2</sup>。这可用作发出速率限制响应的一个非常有效的信号，从而避免对合法用户的任何潜在副作用。</p>
+	<!--kg-card-end: markdown-->
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/04/5-5.png" class="kg-image" alt="The rule above rate limits any IP after 5 consecutive failed login attempts in a minute for 1 hour.">
+		<figcaption>以上规则对一分钟内 5 次连续失败登录的 IP 执行持续一个小时的速率限制。</figcaption>
+	</figure>
+	<p>速率限制响应可根据需要自定义，可根据端点同时支持APIs返回JSON或标准的HTML。</p>
+	<p>速率限制是面向所有自助服务客户提供的收费附加功能。</p>
+	<h3 id="--2">未来计划</h3>
+	<p>我们正在花大量时间思考如何通过简单的一键式解决方案来为终端用户帐户提供最佳保护。</p>
+	<p>通过利用我们网络的可见性，我们正在开始获得只有 Cloudflare 的规模才能提供的有价值的信息。我们的托管开放代理列表就是一个这样的例子，但我们已经在试验基于异常的检测，这远远超出简单的设备态势或速率限制。此外，我们也在思考通过用例和情景，如何在我们的全体客户中更广泛地共享已验证的异常，使我们回到最初基于 Cloudflare 所构建的方式的社区保护。</p>
+	<p>.....</p>
+	<!--kg-card-begin: markdown-->
+	<p><sup>1</sup>其他 Cloudflare 功能，例如<a href="https://blog.cloudflare.com/encrypt-waf-payloads-hpke/">加密 WAF 负载记录（Encrypted WAF Payload Logging</a>）, 可记录任何请求的部分，但将使用客户的公钥对其加密。<br>
+		<sup>2</sup>很多渗透测试报告将凸显，针对失败登录尝试的响应上的差异是一种信息披露漏洞。
+	</p>
+	<!--kg-card-end: markdown-->
+</div>

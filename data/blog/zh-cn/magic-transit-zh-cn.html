@@ -1,0 +1,97 @@
+<div class="post-content lh-copy gray1">
+	<p>今天我们很高兴能发布<a href="https://www.cloudflare.com/magic-transit" target="_blank">Cloudflare Magic Transit</a>。Magic Transit为互联网提供安全，高性能和可靠的IP连接。在您的内部网络前部署Magic Transit即可立即进行使用，它可以保护您免受DDoS攻击，并支持配置全套虚拟网络功能，包括高级数据包过滤，负载平衡和流量管理工具。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/09/Magic-Transit-Network-Diagram-3.gif" class="kg-image"></figure>
+	<p></p>
+	<p>Magic Transit建立在您熟悉的标准和网络原语之上，但是是一项从Cloudflare的全球边缘网络提供的服务。Cloudflare Network通过任播和BGP（边界网关协议）来吸收流量，宣布您公司的IP地址空间并在全球范围内扩展您的网络存在。现今，我们的任播边缘网络已遍布全球90多个国家的193个城市。</p>
+	<p>一旦数据包到达我们的网络，流量就会经检查验证是否受到过攻击、过滤、引导转向、加速，并被发送到源。Magic Transit将通过通用路由封装（GRE）隧道，专用网络互连（PNI）或其他形式的对等网络连接回原始基础设施。</p>
+	<p>在部署IP网络服务时，企业往往不得不在性能和安全性之间进行选择。Magic Transit是从头开始设计的，目的是最大限度地减少这些条件的相互制约：使得性能和安全性更好。Magic Transit在我们整个全球网络中部署IP安全服务。<strong>这意味着不再需要将流量转移到少量的远程“清除中心”或依靠内部部署硬件来缓解对您的基础架构的攻击。</strong></p>
+	<p>自2010年Cloudflare问世以来，我们就一直在为Magic Transit奠定基础。Cloudflare所构建的IP网络的扩展和安全需要一些工具，而这些工具是无法购买或过于昂贵的。所以我们自己制造了这些工具！我们成长于<a href="https://en.wikipedia.org/wiki/Software-defined_networking" target="_blank">软件定义网络</a>和<a href="https://en.wikipedia.org/wiki/Network_function_virtualization" target="_blank">网络功能虚拟化</a>的时代，这些现代概念背后的原则贯穿于我们所做的一切。</p>
+	<p>当我们与管理内部网络的客户交谈时，我们总是听到一些事情：构建和管理他们的网络既昂贵又痛苦，而且这些问题不能短时解决。</p>
+	<p>传统上，首席信息官（CIO）尝试将他们的IP网络连接到互联网上需要两个步骤:</p>
+	<ol>
+		<li>从传输提供商（ISP）到Internet的源连接。</li>
+		<li>购买，操作和维护网络功能特定的硬件设备。考虑硬件负载均衡器，防火墙，DDoS缓解设备，WAN优化等。</li>
+	</ol>
+	<p>这些盒子中的每一个都需要花费时间和金钱来维护，更不用说需要熟练的人员、昂贵的人力来正确地运行它们了。链中的每一个额外链接都使网络更难管理。</p>
+	<p>这一切对我们来说都很熟悉。我们有一个灵感迸发的时刻：我们在管理为我们所有产品提供动力的数据中心网络时遇到了同样的问题，我们花费了大量的时间和精力来构建这些问题的解决方案。现在，9年过去了，我们有了一套强大的工具，我们可以为我们自己的客户提供产品。</p>
+	<p>Magic Transit的目标是将传统的数据中心硬件模型引入云中，使用您可能需要的所有网络“硬件”打包传输，这些网络“硬件”可以保持网络的快速，可靠性和安全性。部署完成后，Magic Transit可以无缝地提供虚拟化网络功能，包括路由、DDoS缓解、防火墙、负载平衡和流量加速服务。</p>
+	<h2 id="magic-transit-">Magic Transit是你的网络通往互联网的入口</h2>
+	<p>Magic Transit作为IP网络的“前门”，可提供连接，安全性和性能优势。也即，它接收发往您网络的IP数据包，处理它们，然后将它们输出到您的原始基础设施。</p>
+	<p>通过Cloudflare连接到互联网可以为您带来许多好处。从最基本的说起，Cloudflare是互联网上<a href="https://bgp.he.net/AS13335" target="_blank">连接最广泛的网络</a>之一。我们与世界各地的运营商，互联网交换机和对等网络伙伴合作，确保我们的网络上的比特能够快速可靠地到达目的地，无论目的地如何。</p>
+	<h2 id="-acme-corp-">部署示例：Acme Corp（顶点集团）</h2>
+	<p>让我们来看看客户是如何部署Magic Transit的吧。客户Acme Corp拥有IP前缀203.0.113.0/24，用于定位他们在自己的物理数据中心运行的硬件机架。Acme目前宣布了从他们的客户端设备（CPE，也即数据中心周边的路由器）到互联网的路由，告诉全世界可以从他们的自治系统号AS64512访问203.0.113.0/24。Acme在内部部署了DDoS缓解和防火墙硬件设备。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/09/Legacy-Arch_Diagram@3x--1-.png" class="kg-image"></figure>
+	<p></p>
+	<p>Acme希望连接到Cloudflare网络，以提高自己网络的安全性和性能。具体来说，它们一直是分布式拒绝服务（DDoS）攻击的目标，并且不想依赖内部部署硬件来处理攻击，从而晚上能够睡个安稳觉。这就是Cloudflare的用武之地。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/09/Modern-Arch_Diagram@3x.png" class="kg-image"></figure>
+	<p></p>
+	<p>在他们的网络前部署Magic Transit很简单：</p>
+	<ol>
+		<li>Cloudflare使用边界网关协议（BGP）通过Acme的许可从Cloudflare的边缘宣布Acme的203.0.113.0/24前缀。</li>
+		<li>Cloudflare开始接收发往Acme IP前缀的数据包。</li>
+		<li>Magic Transit将DDoS缓解和防火墙规则应用于网络流量。在Cloudflare网络摄取之后，可以将受益于HTTPS缓存和WAF检查的流量“升级”到我们的第7层HTTPS管道，而不会产生额外的网络跃点。</li>
+		<li>Acme希望Cloudflare使用通用路由封装（GRE）将流量从Cloudflare网络隧道传回Acme的数据中心。GRE隧道从任播端点发起，回到Acme的内网。通过任播的魔力，隧道可以不间断地同时连接到数百个网络位点，确保隧道高度可用并且能够抵御网络故障，从而降低传统形成的GRE隧道。</li>
+		<li>Cloudflare通过这些GRE隧道出口将数据包发送回Acme。</li>
+	</ol>
+	<p>让我们更深入地研究一下Magic Transit中包含的DDoS缓解机制是如何工作的。</p>
+	<h2 id="magic-transit-ddos-">Magic Transit保护网络免受DDoS攻击</h2>
+	<p>部署Cloudflare Magic Transit的客户可以立即访问在过去9年中保护Cloudflare网络的同一IP层DDoS保护系统。这就是那个可以在几秒钟内阻止942Gbps带宽的攻击的缓解系统。在1.3Tbps攻击导致Github瘫痪的几天前，这个缓解系统就<a href="https://blog.cloudflare.com/memcrashed-major-amplification-attacks-from-port-11211/">知道如何阻止memcached amplification攻击</a>，而当时Github并没有Cloudflare在背后监视。这是我们每天信任的保护Cloudflare的相同缓解措施，现在它保护着您的网络。</p>
+	<p>Cloudflare历来保护第7层HTTP和HTTPS应用程序免受OSI（开放式系统互联参考模型）层模型的所有层的攻击。我们的客户已经了解并喜爱的DDoS保护依赖于各种技术组合，但可以拆分为几个互补防御来讲：</p>
+	<ol>
+		<li>任播和遍布全球193个城市的网络使我们的网络能够接近用户和攻击者，使我们能够在靠近源的地方吸收流量而不会产生明显的延迟。</li>
+		<li>30+Tbps的网络容量使我们可以在靠近源的地方吸收大量流量。Cloudflare的网络比Akamai Prolexic，Imperva，Neustar和Radware更有能力阻止DDoS攻击。</li>
+		<li>我们的HTTPS反向代理通过终止并重新建立连接到源，来吸收L3（IP层）和L4（TCP层）攻击。这可以阻止大多数伪包传输接近客户源服务器。</li>
+		<li>第7层缓解和速率限制可以在HTTPS应用程序层阻止洪水攻击。</li>
+	</ol>
+	<p>仔细查看上面的描述，您可能会注意到：我们的反向代理服务器通过终止连接来保护我们的客户，但我们自己的网络和服务器仍然受到我们代表客户停止的L3和L4攻击的冲击。那么我们是如何保护自己的基础设施免受这些攻击的呢？</p>
+	<p><a href="https://blog.cloudflare.com/meet-gatebot-a-bot-that-allows-us-to-sleep/">进入Gatebot</a>！</p>
+	<p>Gatebot是一套软件，在我们运营的193个城市的每个数据中心的每台服务器上运行，它可以不断分析和阻止攻击流量。Gatebot的部分魅力在于其简单的架构；它静静地等待着，在数据包从网卡进入内核并进入用户空间时对它们进行采样。Gatebot没有没有学习或预热阶段。一旦检测到攻击，它就会指示正在运行的计算机的内核丢弃数据包，记录其决策并继续运行。</p>
+	<p>从历史上看，如果您想保护您的网络免受DDoS攻击，您可能要购买一个专门的硬件来安装在网络的外围。这个硬件盒（我们称之为“DDoS保护盒”）本来就非常昂贵，非常好看（就像2U硬件盒一样），并需要大量的重复工作和金钱来支持，使其许可证保持最新，并使其攻击检测系统保持准确性和进行训练。</p>
+	<p>首先，它必须被仔细监控，以确保它在阻止攻击，而不是阻止合法的传输。另一方面，如果攻击者设法产生足够的流量来使您的数据中心到Internet的传输链接饱和，那么您就不走运了。数据中心内没有任何盒子可以保护您免受攻击，这种攻击会生成足够的流量来阻塞从外部世界到数据中心本身的链接。</p>
+	<p>早期，Cloudflare就考虑购买DDoS保护盒（不止一个）来保护我们的各种网络位点，但这个方案很快就被排除在外。购买硬件会产生大量成本和复杂性。此外，购买，装配和管理专用硬件使网络难以扩展。一定有一个更好的方法。我们从基本原理和现代技术出发，着手自己解决这个问题。</p>
+	<p>为了使我们缓解DDoS的现代途径有效，我们必须发明一套工具和技术，使我们能够在运行Linux的通用x86服务器上进行超高性能网络连接。</p>
+	<p>我们的网络数据平面的核心是eXpress数据路径（XDP）和扩展的Berkeley数据包过滤器（eBPF），这是一组API，允许我们在Linux内核中构建超高性能网络应用程序。我的同事们已经写了很多关于我们如何使用XDP和eBPF来阻止DDoS攻击的文章：</p>
+	<ul>
+		<li><a href="https://blog.cloudflare.com/l4drop-xdp-ebpf-based-ddos-mitigations/">L4Drop：XDP DDoS缓解措施</a></li>
+		<li><a href="https://blog.cloudflare.com/xdpcap/">xdpcap：XDP数据包捕获</a></li>
+		<li><a href="https://netdevconf.org/0x13/session.html?talk-XDP-based-DDoS-mitigation" target="_blank">基于XDP的DoS缓解</a>演示</li>
+		<li><a href="https://netdevconf.org/2.1/papers/Gilberto_Bertin_XDP_in_practice.pdf" target="_blank">实践中的XDP：将XDP集成到我们的DDoS缓解管道中</a>（PDF）</li>
+		<li><a href="https://blog.cloudflare.com/cloudflare-architecture-and-how-bpf-eats-the-world/">Cloudflare架构以及BPF如何吞食世界</a></li>
+	</ul>
+	<p>最终，我们得到了一个DDoS缓解系统：</p>
+	<ul>
+		<li>它由我们遍布全球193个城市的整个网络提供。换句话说，我们的网络没有“清除中心”的概念——我们网络中的每一个位点都始终在缓解攻击。这意味着更快的攻击缓解速度和对用户的最小延迟影响。</li>
+		<li>它具有非常快的缓解速度，大多数攻击在10秒或更短时间内可以得到缓解。</li>
+		<li>它在内部构建，使我们能够深入了解其行为，并能够在看到新的攻击类型时快速开发新的缓解措施。</li>
+		<li>它作为服务部署，并且可以横向扩展。将运行我们的DDoS缓解软件堆栈的x86硬件添加到数据中心（或添加另一个网络位置）可立即在线提供更多DDoS缓解容量。</li>
+	</ul>
+	<p>Gatebot旨在保护Cloudflare基础架构免受攻击。今天，作为Magic Transit的一部分，运营自己的IP网络和基础设施的客户可以依靠Gatebot来保护自己的网络。</p>
+	<h2 id="magic-transit--1">Magic Transit将您的网络硬件置于云端</h2>
+	<p>我们已经介绍了Cloudflare Magic Transit如何将您的网络连接到互联网，以及它如何保护您免受DDoS攻击。如果您以传统的方式运行网络，那么在这里，您就可以停止购买防火墙硬件，或者购买另一个机器来进行负载平衡。</p>
+	<p>有了Magic Transit，您就不需要那些盒子了。我们长期以来一直将公共网络功能（防火墙、负载平衡器等）作为服务交付。到目前为止，部署我们服务的客户依靠DNS将流量带到我们的边缘，之后我们的第3层（IP），第4层（TCP和UDP）和第7层（HTTP，HTTPS和DNS）栈将接管并向客户交付网络性能和安全性。</p>
+	<p>Magic Transit旨在处理您的整个网络，但并不强制对应用于您的流量的哪个部分的服务采用一刀切的方法。重新查看我们上面的示例客户Acme，他们将203.0.113.0/24带到了Cloudflare网络。这包含256个IPv4地址，其中一些（例如203.0.113.8/30）可能是前端负载平衡器和HTTP服务器，其他的是邮件服务器，还有一些仍然是基于UDP的自定义应用程序。</p>
+	<p>每个子范围可能有不同的安全性和流量管理要求。Magic Transit允许您使用自己的服务套件配置特定的IP地址，或者将相同的配置应用于您的大部分（或全部）板块。</p>
+	<p>以上面的例子为例，Acme可能希望用包含传统硬件负载均衡器前端的HTTP服务的203.0.113.8/30块代替部署Cloudflare负载均衡器，同时又希望使用Cloudflare的WAF和我们的CDN缓存的内容分析HTTP流量。用了Magic Transit，部署这些网络功能就是直截了当的——只需在我们的控制面板或API调用中单击几下，您的流量就会在更高的网络抽象层得到处理，应用到所有附带的好处，包括应用程序级负载平衡、防火墙和缓存逻辑。</p>
+	<p>这只是客户可能会采用的部署示例。我们已经与几个只想要单纯进行IP穿透的人合作，将DDoS缓解应用于特定的IP地址。心动了吗？我们抓到你了！</p>
+	<h2 id="magic-transit-cloudflare-">Magic Transit在整个Cloudflare全球网络上运行。换句话说，不再需要清除流量了！</h2>
+	<p>当您将您的网络连接到Cloudflare Magic Transit时，您可以访问整个Cloudflare网络。这意味着我们所有的网络位点都将成为您的网络位点。我们的网络容量变成了您的网络容量，您可以使用它来增强您的体验、交付您的内容，并减轻对您基础设施的攻击。</p>
+	<p>Cloudflare网络的规模有多大？我们在全球193个城市拥有超过30Tbps的网络容量。发达国家中98％互联网用户以及全球93％的互联网用户连接Cloudflare的时间仅在100毫秒以内（值得一提，人的眨眼时间为300-400毫秒）。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/09/image1-2-1.png" class="kg-image">
+		<figcaption>全球百毫秒内可达Cloudflare数据中心的地区</figcaption>
+	</figure>
+	<p></p>
+	<p>正如我们在内部构建自己的产品一样，我们也在内部构建了自己的网络。每个产品都在每个数据中心运行，这意味着我们的整个网络都可以提供我们所有的服务。如果我们通过收购零碎地组装我们的产品组合，或者在开始构建我们当前的服务套件时没有完整的愿景，那么情况可能就不是这样了。</p>
+	<p>Magic Transit客户的最终结果是：一旦您加入，就能在全球范围内建立网络。全面访问我们全球范围内的各种服务。所有这些都兼顾了延迟和性能。</p>
+	<p>我们将在未来几周和几个月内分享有关我们如何交付Magic Transit的更多技术细节。</p>
+	<h2 id="magic-transit--2">Magic Transit降低了总体经营成本</h2>
+	<p>传统的网络服务并不便宜；他们需要预先提供高额资本支出，对运营人员的投资以及持续维护合约以保持运作。正如我们的产品旨在颠覆技术一样，我们也希望能够打破传统的网络成本结构。</p>
+	<p>Magic Transit是作为一项服务来进行交付和计费的。您可以为您使用的内容付费，并且可以随时添加服务。您的团队将为便捷的管理而向您表示感激；您的管理层将为简明的账单而向您表示感激。这对我们来说听起来不错！</p>
+	<h2 id="magic-transit--3">Magic Transit现已面市</h2>
+	<p>在过去的九年里，我们一直在努力使我们的网络、管理工具和网络功能以服务的形式进入今天的状态。我们很高兴能把我们每天使用的工具交到客户手中。</p>
+	<p>这就引出了命名。当我们把这个展示给顾客看时，他们最常用的词是“哇”。当我们追问他们的意思时，他们几乎都说：“这比我们以前见过的任何解决方案都要好得多。像魔术一样！”所以，我们把这个产品命名为“Magic Transit（魔术传输）”，虽然有点俗气，但似乎也很自然。</p>
+	<p>我们认为这一切都很神奇，相信你也如此。快来<a href="https://www.cloudflare.com/plans/enterprise/contact/" target="_blank">联系我们的企业销售团队</a>，来获取Magic Transit吧！</p>
+</div>

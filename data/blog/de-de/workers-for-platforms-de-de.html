@@ -1,0 +1,110 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image4-4.png" class="kg-image" alt="Announcing Workers for Platforms: making every application on the Internet more programmable"></figure>
+	<p>Als Unternehmen, ob Startup oder Fortune 500, ist es Ihre oberste Priorität, dass Ihre Kunden zufrieden sind und Ihr Produkt erfolgreich nutzen. Ihre Kunden glauben aber oft, dass Erfolg und Zufriedenheit immer nur ein Feature entfernt ist.</p>
+	<p>„<em>Wenn Sie nur X anpassen könnten, könnten wir Ihr Produkt verwenden“ – </em>der größte Interessent in Ihrer Vertriebskette. <em>„Wenn wir Y machen könnten, würden wir Ihr Produkt 10-mal häufiger nutzen“</em> – Ihr strategischer bestehender Kunde.</p>
+	<p>Ihr Produkt soll alle zufriedenstellen, aber Ihre Entwickler können nicht schnell genug mithalten? Was sollen Sie tun?</p>
+	<p>Heute präsentieren wir die Tool-Reihe Workers for Platforms, die jedes Produkt programmierfähig macht und unseren Kunden hilft, ihren Entwicklern und Endkunden einen sofortigen Mehrwert zu bieten.</p>
+	<h2 id="eine-besser-programmierbare-schnittstelle">Eine besser programmierbare Schnittstelle</h2>
+	<p>Eine Möglichkeit, Ihre Kunden programmatisch mit Ihrem Produkt interagieren zu lassen, besteht darin, ihnen APIs zur Verfügung zu stellen. Nicht zuletzt deshalb sind APIs heute so weit verbreitet – es ist geradezu revolutionär, dem Code (sei es Ihr eigener oder der eines Drittanbieters) die Interaktion mit Ihren Anwendungen zu ermöglichen.</p>
+	<p>Aber es gibt immer noch ein Problem. Zwar erlauben APIs Entwicklern die programmgesteuerte Interaktion mit Ihrer Anwendung, doch sind sie letztlich immer durch die Abstraktionen der API begrenzt. Als Anwendungsbesitzer müssen Sie vorhersehen, wie der Kunde Ihr Produkt verwenden würde, und dann die API so entwickeln, dass sie den Anwendungsfall unterstützt. Wenn ich als Produktmanager eines gelernt habe, dann dass wir praktisch nie vorhersagen können, wie Kunden ein Produkt verwenden werden. Und wenn ich noch etwas gelernt habe, dann, dass man selbst mit vielen technischen Ressourcen kaum alle Funktionen entwickeln kann, die diese Kunden brauchen.</p>
+	<p>Es gibt aber auch einen anderen Weg.</p>
+	<p>Im Gegensatz zu APIs stellen Funktionen die Primitive der untersten Ebene bereit (statt darauf aufbauende Abstraktionen). So können Entwickler von dort aus das richtige Verhalten definieren – und sie können sogar ihre eigenen APIs darauf aufbauen.</p>
+	<p>In diesem Sinne ergänzen sich Funktionen und APIs eigentlich gegenseitig – Sie können sogar eine andere API direkt von Ihrer Funktion aus aufrufen. Wenn Sie beispielsweise ein Ereignis in einem Nachrichtensystem verarbeiten, können Sie Ihr eigenes Feature implementieren, um eine E-Mail zu senden, indem Sie eine E-Mail-API aufrufen, oder ein Ticket in Ihrem Ticketsystem erstellen usw.</p>
+	<p>Darum sind wir von Workers for Platforms so begeistert: Sie ermöglichen es den Entwicklern Ihrer Kunden, ihre eigene Logik in jede Anwendung einzubringen. Wir glauben, dass diese Lösung eine Welle kundenorientierter Innovationen bei den Unternehmen auslösen wird, die sie einsetzen. Sie hat das Potenzial, für die Anwendungsentwicklung im Web genauso wichtig zu werden wie die API es gewesen ist.</p>
+	<h2 id="eine-bessere-erfahrung-f-r-entwickler">Eine bessere Erfahrung für Entwickler</h2>
+	<p>Workers for Platforms bietet nicht nur ein leistungsfähigeres Paradigma für die Programmierung von Produkten, sondern auch eine bessere Erfahrung für Sie als Entwickler.</p>
+	<p>Bevor Sie als Entwickler heute mit der Verwendung von APIs oder Webhooks beginnen können, müssen Sie zunächst eine Reihe mühsamer Aufgaben erledigen. Zunächst müssen Sie einen Ort einrichten, an dem Sie Ihren Code hosten können, sei es ein Server (oder eine serverlose Funktion), und ihn über einen externen Endpunkt zur Verfügung stellen können. Sie müssen sich mit Ops, benutzerdefinierten Token und dem neuen Authentifizierungsschema beschäftigen, und das alles, bevor Sie überhaupt anfangen können. Dann müssen Sie diesen Dienst pflegen und ihn aufrechterhalten, damit die Ereignisse immer ordnungsgemäß verarbeitet werden.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image3-6.png" class="kg-image"></figure>
+	<p>Mit Funktionen, die direkt in die von Ihnen verwendeten Produkte eingebettet sind, können Sie<em> einfach mit dem Schreiben des Codes</em> beginnen.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image1-14.png" class="kg-image"></figure>
+	<h2 id="warum-hat-sich-dieses-modell-bisher-nicht-durchgesetzt">Warum hat sich dieses Modell bisher nicht durchgesetzt?</h2>
+	<p>Entwicklern die Möglichkeit zu geben, die Funktionsweise von Ereignissen zu programmieren, scheint offensichtlich zu sein, aber offensichtlich ist nicht gleich einfach.</p>
+	<p>Bei Cloudflare sind wir vor fünf Jahren auf genau dieses Problem gestoßen. Wir haben immer mehr Kunden in unser Netzwerk aufgenommen, von denen jeder das Schicksal einer Anfrage auf seine eigene Weise bestimmen wollte. Während Page Rules eine Möglichkeit bot, das Verhalten nach URL zu ändern, wollten die Kunden das Verhalten auf der Grundlage von Cookies, Headern, Geolokation und mehr steuern.</p>
+	<p>Uns war klar, dass unser Entwicklerteam nicht mit jeder Anfrage Schritt halten konnte, also sollten unsere Kunden die Möglichkeit bekommen, unser Produkt auf ihre eigenen Bedürfnisse abzustimmen.</p>
+	<p>Die Lösung für dieses Problem sollte die beiden folgenden Anforderungen erfüllen:</p>
+	<ol>
+		<li>Performance-Anforderung: Ein CDN, das Ihre Website schneller machen soll, darf keine Latenz einführen. Wie können wir es so schnell machen, dass Sie es nicht einmal bemerken?</li>
+		<li>Sicherheitsanforderung: Wie können wir nicht vertrauenswürdigen Code sicher ausführen?</li>
+	</ol>
+	<p>Diese Anforderungen sind zwar auch besonders wichtig, wenn Sie Performance- und Sicherheitsprodukte anbieten, aber auch wenn Sie Ihren Kunden die Möglichkeit geben, Ihr Produkt zu programmieren, sind diese Fragen entscheidend. Wenn die Funktion auf dem kritischen Pfad zu Ihrem Nutzer ausgeführt werden muss, ist Latenz ebenfalls inakzeptabel. Und natürlich möchte niemand einen Sicherheitsvorfall riskieren, nur damit seine Nutzer programmieren können.</p>
+	<p>Eine wirklich schnelle und sichere Umgebung mit mehreren Mandanten zu schaffen, ist keine leichte Aufgabe.</p>
+	<p>Bei der Evaluierung unserer Lösungsoptionen für dieses Problem wandten wir uns zunächst den Technologien für Server zu, die bereits existierten. Serverlose Funktionen gab es bereits, aber sie wurden von Containern angetrieben, die einen Kaltstart einführen würden, was, nun ja, ein Fehlstart war. Also <a href="https://blog.cloudflare.com/cloudflare-workers-open-source">wandten wir uns an den Browser</a>, genauer gesagt an Chrome, der von V8 angetrieben wurde, und beschlossen, den gleichen Ansatz zu verfolgen und ihn auf unseren Servern auszuführen.</p>
+	<p>Und obwohl der Ansatz einfach klingt (und vielleicht im Nachhinein offensichtlich ist, wie es bei solchen Dingen oft der Fall ist), ist der Betrieb einer großen, multi-mandantenfähigen Entwicklungsplattform in großem Umfang kein geringer Aufwand. Ihre Kunden sollen Ihr Angebot programmieren können, damit sich die Entwickler auf neue Features konzentrieren können. Der Aufwand für die Wartung und Skalierung einer solchen Entwicklungsplattform kann aber alle Vorteile überwiegen.</p>
+	<p>Vor Kurzem haben wir festgestellt, dass wir mit diesem Problem nicht alleine sind.</p>
+	<p>Unternehmen wie Shopify, die ihr programmierbares Schaufenster der nächsten Generation, Oxygen, entwickelten, versuchten, dasselbe Problem zu lösen. Sie wollten ihren Kunden die Möglichkeit geben, benutzerdefinierte Schaufenster zu betreiben und die bestmögliche Performance bieten, während sie gleichzeitig eine sichere, mandantenfähige Umgebung aufrechterhalten.</p>
+	<blockquote>„Shopify ist die Handelsinfrastruktur des Internets. Wir haben Millionen von Händlern, die die Plattform nutzen“, sagt Zach Koch, Product Director, Custom Storefronts, bei Shopify. „Durch die Partnerschaft mit Cloudflare sind wir in der Lage, Entwicklern die Tools an die Hand zu geben, die sie benötigen, um einzigartige und performante Storefronts zu erstellen. Wir freuen uns, mit Cloudflare zusammenzuarbeiten, um die Komplexität der Entwicklung von E-Commerce-Erlebnissen – wie Skalierbarkeit und globale Verfügbarkeit – zu verringern, so dass sich die Entwickler auf das konzentrieren können, was ihre Marke ausmacht.“</blockquote>
+	<h2 id="wie-k-nnen-sie-ihre-n-chste-plattform-auf-workers-for-platforms-aufbauen">Wie können Sie Ihre nächste Plattform auf Workers for Platforms aufbauen?</h2>
+	<p>Die Zusammenarbeit mit Plattformen wie Shopify und unsere Bemühungen, die Bedürfnisse ihrer Entwickler zu befriedigen, haben uns zu einer weiteren Erkenntnis geführt: Entwicklererfahrung ist keine Einheitsgröße, die für alle passt. Das heißt, während wir unsere Plattform für eine breite Gruppe von Entwicklern aufbauen, haben E-Commerce-Entwickler möglicherweise sehr viel speziellere Bedürfnisse, die am besten durch ein maßgeschneidertes Entwicklererlebnis erfüllt werden. Und obwohl die zugrunde liegende Technologie dieselbe ist, ist es nicht sinnvoll, die Plattformen so zu gestalten, dass sie dieselben Konzepte verwenden, die auch unsere direkten Kunden benötigen.</p>
+	<p>Da niemand Ihre Kunden besser kennt als Sie, möchten wir, dass Sie, der Provider der Plattform, die beste Erfahrung für Ihre Nutzer entwickeln. Workers for Platforms stellt eine Reihe neuer Tools und APIs zur Verfügung, die Sie direkt in den von Ihnen gewünschten Bereitstellungsablauf integrieren können (sehen Sie, was wir da gemacht haben?).</p>
+	<h3 id="tags-api-zur-verwaltung-ihrer-funktionen-im-gro-en-ma-stab">Tags-API zur Verwaltung Ihrer Funktionen im großen Maßstab</h3>
+	<p>Mit unseren APIs können Sie jedes Mal, wenn ein Entwickler ein Skript auf Ihrer Plattform bereitstellen möchte, unsere APIs aufrufen, um einen neuen Worker im Hintergrund bereitzustellen. Im Gegensatz zu unserem traditionellen Workers-Angebot ist Workers for Platforms für den Einsatz in großem Maßstab konzipiert, um Hunderttausende bis Millionen von Cloudflare Workers zu verwalten.</p>
+	<p>Je nachdem, wie Sie Ihre Bereitstellungsdienste oder Nutzer verwalten, bieten wir Ihnen jetzt auch die Möglichkeit, Skriptgruppen mit Tags zu verwalten. Zum Beispiel, wenn ein Nutzer sein Konto löscht und Sie sicherstellen möchten, dass alle seine Workers bereinigt werden. Mit Tags können Sie jetzt beliebige Tags (wie z. B. die Nutzer-ID) pro Skript hinzufügen, um Bulk-Aktionen zu ermöglichen.</p>
+	<h3 id="workers-verfolgen">Workers verfolgen</h3>
+	<p>Wo Rauch ist, da ist auch Feuer, und wo Code ist, da sind auch Fehler vorprogrammiert. Wenn Sie Entwicklern die Tools zum Schreiben und Bereitstellen von Code an die Hand geben, müssen Sie ihnen auch die Mittel zum Debuggen geben.</p>
+	<p>Mit Trace Workers können Sie alle Informationen über eine Anfrage, die von einem Worker bearbeitet wurde, einschließlich aller Protokolle oder Ausnahmen, sammeln und an Ihren Kunden weitergeben. Ein Trace Worker ist ein Worker, der Informationen über die Ausführung anderer Worker empfängt und sie an ein Ziel Ihrer Wahl weiterleiten kann, was Anwendungsfälle wie Live-Protokollierung oder Langzeitspeicherung ermöglicht.</p>
+	<p>Hier ist ein einfacher Trace-Worker, der seine Trace-Daten an einen HTTP-Endpunkt sendet:</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-js">addEventListener("trace", event =&gt; {
+  event.waitUntil(fetch("http://example.com/trace", {
+    method: "POST",
+    body: JSON.stringify(event.traces),
+  }))
+})
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Hier ist ein Beispiel dafür, wie die Daten in &nbsp;event.traces &nbsp;aussehen könnten:</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-js">[
+  {
+    "scriptName": "Example script",
+    "outcome": "exception",
+    "eventTimestamp": 1587058642005,
+    "event": {
+      "request": {
+        "url": "https://example.com/some/requested/url",
+        "method": "GET",
+        "headers": [
+          "cf-ray": "57d55f210d7b95f3",
+          "x-custom-header-name": "my-header-value"
+        ],
+        "cf": {
+          "colo": "SJC"
+        }
+      },
+    },
+    "logs": [
+      {
+        "message": ["string passed to console.log()"],
+        "level": "log",
+        "timestamp": 1587058642005
+      }
+    ],
+    "exceptions": [
+      {
+        "name": "Error",
+        "message": "Threw a sample exception",
+        "timestamp": 1587058642005
+      }
+    ]
+  }
+]
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h3 id="mehrere-worker-mit-dynamic-dispatch-verketten">Mehrere Worker mit Dynamic Dispatch verketten</h3>
+	<p>Bei der Arbeit mit ein paar unserer ersten Kunden haben wir oft von einem weiteren Wunsch gehört: die Möglichkeit, Ihren eigenen Code auszuführen, bevor Sie den Code Ihres Kunden ausführen. Vielleicht möchten Sie eine Ebene der Authentifizierung durchführen, Eingaben oder Ausgaben bereinigen oder sogar nützliche Informationen nachgelagert bereitstellen (wie Nutzer- oder Konto-IDs).</p>
+	<p>Zu diesem Zweck möchten Sie vielleicht Ihren eigenen Worker verwalten. Aber wenn dieser Worker mit der Ausführung fertig ist, möchten Sie den nächsten Worker mit dem Code Ihres <em>Kunden</em> aufrufen können.</p>
+	<p>Beispiel:</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-js">let user_worker = dispatcher.get('customer-worker-123');
+let response = await user_worker.fetch(request);
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h3 id="benutzerdefinierte-domains-und-mehr-">Benutzerdefinierte Domains und mehr!</h3>
+	<p>Die oben genannten Funktionen sind nur die neuen Workers-Funktionen, die wir seit dieser Woche für unsere Kunden aktiviert haben. Unser Ziel ist es jedoch, alle Tools bereitzustellen, die Sie für den Aufbau Ihrer Plattform benötigen. Zum Beispiel können Sie Workers for Platforms mit <a href="https://developers.cloudflare.com/ssl/ssl-for-saas/" target="_blank">Cloudflare for SaaS verwenden, um benutzerdefinierte Domains zu erstellen</a> . (Und bleiben Sie dran für das „und mehr!“).</p>
+	<h2 id="wie-erhalte-ich-zugang">Wie erhalte ich Zugang?</h2>
+	<p>Natürlich können wir, wie bei jedem neuen Produkt, das wir auf den Markt bringen, noch viel von unseren Kunden und ihren Anwendungsfällen lernen. Wir möchten Sie unterstützen und für Ihren Erfolg sorgen. Wenn Sie Interesse haben, würden wir Sie und Ihren Anwendungsfall gerne kennenlernen und Sie mit allen erforderlichen Tools ausstatten. <a href="https://www.cloudflare.com/lp/workers-for-platforms" target="_blank">Füllen Sie einfach unser Formular aus</a> und wir melden uns bei Ihnen.</p>
+	<p>In der Zwischenzeit können Sie sich gerne in unseren Entwicklerdokumenten umsehen oder in unserem Discord vorbeischauen.</p>
+	<h2 id="wir-fangen-gerade-erst-an">Wir fangen gerade erst an</h2>
+	<p>Vor fünf Jahren standen wir selbst vor diesem Problem. Wir mussten unseren Kunden die Möglichkeit geben, unser Angebot auf eine für sie geeignete Weise zu erweitern, und genau das haben wir mit der Einführung von Cloudflare Workers getan. Wir haben es unseren Kunden ermöglicht, unser globales Netzwerk so zu programmieren, dass es ihren Bedürfnissen entspricht. Dadurch konnten wir mehr Kunden auf unserer Entwicklungsplattform unterstützen, während sich unser Entwicklerteam darauf konzentrieren konnte, die am häufigsten gewünschten Anpassungen in Features umzusetzen.</p>
+	<p>Wir sind gespannt darauf, was Ihre Entwickler auf Ihrer Plattform aufbauen (wahrscheinlich werden Sie selbst staunen, welche Anwendungsfälle sich die Entwickler einfallen lassen, auf die Sie selbst nie gekommen wären) und was Ihr Entwicklungsteam parallel dazu in Angriff nehmen kann!</p>
+</div>

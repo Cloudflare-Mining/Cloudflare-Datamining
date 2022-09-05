@@ -1,0 +1,42 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/09/Cloudflare-Registrar5-1.png" class="kg-image"></figure>
+	<p>每个网站，或大或小，都是从一个想法开始，接着就是注册域名。大多数注册商在你首次注册域名时会提供优惠，之后每一次续订的价格会被提高。而他们不会告诉客户，你支付给他们的注册费用是由注册中心规定的。而且我们还发现注册商通常收取的费用是批发价的8倍。</p>
+	<p>今天，我们推出了Cloudflare域名注册服务，这可能是首个你会喜欢的域名注册服务。<strong>Cloudflare注册商绝不收取高于注册商定价的域名注册费用。</strong>没有加价，也没有多余的费用。8年来，Cloudflare一直在开发能够让互联网更快、更安全的产品。是时候让我们开始为你们互联网开始的地方——你的域名，做些什么了。</p>
+	<h2 id="-">域名注册的快速介绍</h2>
+	<p>您注册了一个域名后，您将在一段时间内成为该域名的所有者或注册者。现在您既已成为了注册者，您就可以创建一个权威记录报告，告诉世界您域名的名称服务器。域名系统(<a href="https://www.cloudflare.com/learning/dns/what-is-dns/" target="_blank">DNS</a>)会使用这些名称服务器将流量引导到您服务器的IP地址。</p>
+	<p>您把站点放Cloudflare上就意味着将注册表中的名称服务器<a href="https://support.cloudflare.com/hc/en-us/articles/205195708-Step-3-Change-your-domain-name-servers-to-Cloudflare" target="_blank">更改</a>为我们提供的名称服务器。一旦您的权威DNS由我们负责，我们就可以让您的网站更快，更安全。</p>
+	<p>注册表保存了您名称服务器的权威记录。每个顶级域(TLD)都有一个注册中心负责维护这些记录。例如，.com是一个TLD。Verisign是.com的独家注册中心。作为TLD的注册中心，Verisign存储了世界上每个.com域名的联系信息和域名服务器。作为域名的注册者，您可以告诉您的域名注册中心应该使用哪个域名DNS服务器。</p>
+	<p>那么注册商在这种关系中起到了什么作用呢?域名注册商将您的域名所有权和随后的更改传递给该TLD的注册中心。注册管理中心确信注册商只接受来自域所有者的更改，并准确地传递该信息，以便注册中心更新记录。虽然每个TLD都有一个注册中心，但是可以有数百个注册商在一个域中注册。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/09/Domain-Registry-Process.png" class="kg-image"></figure>
+	<p></p>
+	<h2 id="--1">域名转移时又是怎样的呢？</h2>
+	<p>域名转移相当于告诉注册中心，另一个注册商现在可以为您设置那些权威记录。这种关系建立在信任的基础上。注册中心在任何时候都只信任一个注册商代表您进行更改。</p>
+	<p>将域名转移到新的注册商，注册中心会收到通知，他们应该信任新的注册商来修改你的信息。这个过程需要在您的新注册商和您即将离开的注册商处执行一些步骤。每个注册商处理传输的方式略有不同，但通常他们遵循的模式是基于ICANN设置的规则的，而ICANN是负责管理域名注册的组织。</p>
+	<h3 id="1-">1.告诉您的新注册商您打算开始转移</h3>
+	<p>要转移一个域名，您首先需要选择新的注册商。您将首先输入您计划传输的域名。新的注册商将查询您的域设置，以查看是否可以传输。</p>
+	<p>如果你在过去60天内注册或转移了你的域名，那么你就还不能马上转移。您的新注册商还将检查您的域名是否锁定在您的旧注册商处。</p>
+	<h3 id="2-">2.在旧注册商处解锁您的域名</h3>
+	<p>注册商提供一个轻量级的保护，以防止未经授权的用户启动域名转移：注册锁。您可能还会看到它被编写为域名锁。当域名锁启用时，该锁将阻止任何其他注册商尝试发起转移。</p>
+	<p>只有注册者才可以启用或禁用该锁，通常是通过注册商的管理界面进行操作。如果要继续转移，您需要先禁用此锁（如果是在启用状态下）。</p>
+	<h3 id="3-">3.获取授权码</h3>
+	<p>接下来，您的新注册商需要与您的旧注册商确认转移流程已获得授权。为此，您的旧注册商将向您提供授权码。您需要将此信息发送给新注册商，后者将使用该信息确认转移是否可信。</p>
+	<p>完成上述步骤后，您的新注册商就可以处理转移。ICANN要求任何转移操作都会将域名的到期日期延长至少一年。这是指新到期日期距离您当前的到期日期为一年，而不是自转让之日起一年。例如，如果您在2018年10月10日转移域名，但它本将于2019年3月10日到期，则您的新到期日期将为2020年3月10日。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/09/registrar-hidden-fees@2x-2.png" class="kg-image"></figure>
+	<p></p>
+	<p>就像域名注册一样，域名续订定价由注册中心设定。而一些注册商收取的费用是他们在续订注册时收取费用的30倍。</p>
+	<h2 id="--2">不加价的域名注册服务</h2>
+	<p>许多注册商通过提高续费率或者增加服务费用盈利，而这些服务其实本身应该是免费的。但是，没有哪个注册商有更好的方法去连接到注册中心。它们都遵循二十年前制定的标准。如果一家公司不能在某个领域提供独特的价值，你就不应该为这些服务支付高于市场价格的价格。Cloudflare注册商只会向您收取注册中心向我们收取的费用。在以追加销售和诱饵销售为基础的市场中，我们以批发价出售域名注册。</p>
+	<p>如今有超过一千万个站点使用Cloudflare来提高性能和安全性，其中大多数人享受着我们的免费服务。我们免费将<a href="https://blog.cloudflare.com/introducing-universal-dnssec/">DNSSEC</a>添加到您的网站或为网站<a href="https://blog.cloudflare.com/introducing-universal-ssl/">提供SSL</a>。当我们将有助于互联网运行的功能大众化时，我们可以进一步降低成本并提高对所有用户的服务水平。以批发价出售域名的做法对那些收取高额费用的公司造成了冲击。</p>
+	<p>通过WHOIS服务广播注册人联系信息会招致大量发送到您的个人地址的垃圾邮件。因此Cloudflare注册商将免费提供符合当前ICANN <a href="https://www.icann.org/resources/pages/gtld-registration-data-specs-en" target="_blank">准则</a>的 WHOIS个人数据编辑。保护您隐私的服务不应该是掺有利润的。</p>
+	<p>您可以在<a href="https://www.cloudflare.com/tld-policies/" target="_blank">此处</a>找到Cloudflare Registrar支持的TLD列表。我们正在努力扩大这一选择范围。</p>
+	<h2 id="--3">优先使用计划</h2>
+	<p>我们将根据您成为Cloudflare客户的时间等因素，分阶段推出对Cloudflare注册商的使用权限。如果您想预约，请在<a href="https://dash.cloudflare.com/domains" target="_blank">这里</a>注册early access。我们会告知您的排位，并让您知道何时可以开始转移域名。</p>
+	<p>想要优先试用吗？我们诚挚邀请您向Girls Who Code<a href="https://dash.cloudflare.com/domains" target="_blank">捐赠</a>，这是一个致力于缩小技术行业性别差距的非营利组织。通过early access链接捐赠，您可以支持他们并更早地使用Cloudflare Registrar。</p>
+	<h2 id="--4">下一步是什么？</h2>
+	<p>点击<a href="https://dash.cloudflare.com/domains" target="_blank">链接</a>，确保你仍在排队且有所移动。查看收件箱，查看是否有邀请函。我们会通知你什么时候可以启用这个你可能会喜欢的注册商。</p>
+	<p>启动后，您将能够转移Cloudflare帐户中活动的域名。想要转移您所有的域名吗?快来将它们添加到Cloudflare中吧。</p>
+	<p><a href="https://blog.cloudflare.com/subscribe/"><em>订阅博客，</em></a><em>了解我们生日周公告栏的所有每日更新。</em></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/09/Cloudflare-Birthday-Week-10.png" class="kg-image"></figure>
+</div>

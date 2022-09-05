@@ -1,0 +1,167 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2020/01/Privacy-Pass-@2x-2.png" class="kg-image"></figure>
+	<p>在Cloudflare，我们致力于支持和开发新的隐私保护技术，使所有互联网用户受益。在2017年11月，我们宣布了对<a href="https://blog.cloudflare.com/cloudflare-supports-privacy-pass/">Privacy Pass协议</a>的服务器端支持，这是我们<a href="https://petsymposium.org/2018/files/papers/issue3/popets-2018-0026.pdf" target="_blank">与学术界合作</a>开发的一项工作。简单地说，Privacy Pass允许客户提供信任证明，而<a href="https://privacypass.github.io/protocol/" target="_blank">无需透露提供信任的时间和地点</a>。该协议的目的是让任何人都可以证明自己受到服务器的信任，而该服务器无法通过分配好的信任来跟踪用户。</p>
+	<p>在技术层面上，Privacy Pass客户端从服务器接收认证令牌，这些令牌可以在将来被赎回。这些令牌是在服务器认为客户端可信时提供的——例如，在他们登录服务后或证明他们具有某些特征之后。赎回的令牌在密码上无法链接到服务器最初提供的认证，因此它们不会显示关于客户端的任何信息。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/01/imageLikeEmbed--2-.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/01/imageLikeEmbed--1-.png" class="kg-image"></figure>
+	<p>要使用Privacy Pass，客户可以安装<a href="https://chrome.google.com/webstore/detail/privacy-pass/ajhmfdgkijocedmfjonnpjfojldioehi?hl=en" target="_blank">Chrome</a>和<a href="https://addons.mozilla.org/en-US/firefox/addon/privacy-pass/" target="_blank">Firefox</a>提供的<a href="https://github.com/privacypass/challenge-bypass-extension" target="_blank">开源</a>浏览器扩展。全世界Privacy Pass下载量已经超过15万人次；其中来自Chrome的大约有13万，Firefox超过2万。Cloudflare支持该扩展，以使用户可以更轻松地访问网站。这些都是对之前工作的补充，包括启动<a href="https://blog.cloudflare.com/cloudflare-onion-service/">Cloudflare洋葱服务</a>，以帮助提高Tor浏览器用户的可访问性。</p>
+	<p>最初的Privacy Pass版本大约是在两年前发布的，随后有一份发表于<a href="https://www.youtube.com/watch?v=9DsUi-UF2pM&amp;list=PLWSQygNuIsPd6YJmGV9kn1mP2A6-IBCoU&amp;index=10" target="_blank">2018年隐私增强技术研讨会</a>的<a href="https://petsymposium.org/2018/files/papers/issue3/popets-2018-0026.pdf" target="_blank">研究出版物</a>（获得了最佳学生论文奖）。从那以后，Cloudflare一直在与更广泛的社区合作，以最初的设计为基础，改善Privacy Pass。我们将讨论我们为开发现有实现以及协议本身所做的工作。</p>
+	<h2 id="-">有哪些新内容？</h2>
+	<p><strong>支持Privacy Pass v2.0浏览器扩展：</strong></p>
+	<ul>
+		<li>简化工作流程的配置。</li>
+		<li>集成新服务提供商（hCaptcha）。</li>
+		<li>符合散列到曲线的草案。</li>
+		<li>可以旋转扩展释放以外的密钥。</li>
+		<li>可在<a href="https://chrome.google.com/webstore/detail/privacy-pass/ajhmfdgkijocedmfjonnpjfojldioehi?hl=en" target="_blank">Chrome</a>和<a href="https://addons.mozilla.org/en-US/firefox/addon/privacy-pass/" target="_blank">Firefox</a>中使用（最适合最新的浏览器版本）。</li>
+	</ul>
+	<p><strong>使用Cloudflare Workers平台推出新的服务器后端：</strong></p>
+	<ul>
+		<li>使用内部V8引擎执行加密操作。</li>
+		<li>为Cloudflare Privacy Pass &nbsp; &nbsp; &nbsp;v2.0令牌提供公共赎回API。</li>
+		<li>通过向<a href="https://privacypass.cloudflare.com/api/redeem" target="_blank">https://privacypass.cloudflare.com/api/redeem</a>发出POST请求即可使用。有关<a href="https://privacypass.github.io/api-redeem" target="_blank">用法示例，</a>请参见文档。</li>
+		<li>仅与扩展v2.0兼容（请检查您是否已更新！）。</li>
+	</ul>
+	<p><strong>标准化：</strong></p>
+	<ul>
+		<li>使用CFRG @ IRTF 在素数组中继续开发不经意伪随机函数（OPRF）<a href="https://datatracker.ietf.org/doc/draft-irtf-cfrg-voprf/" target="_blank">草案</a>。</li>
+		<li><a href="https://github.com/alxdavids/draft-privacy-pass" target="_blank">新草案</a>规格化Privacy Pass协议。</li>
+	</ul>
+	<h2 id="-v2-0">扩展v2.0</h2>
+	<p>自发布以来，我们一直在开发一些新特性。今天我们很高兴地宣布对扩展的2.0版本的支持，这是自最初版本发布以来的第一次更新。<a href="https://chrome.google.com/webstore/detail/privacy-pass/ajhmfdgkijocedmfjonnpjfojldioehi?hl=en" target="_blank">Chrome</a>和<a href="https://addons.mozilla.org/en-US/firefox/addon/privacy-pass/" target="_blank">Firefox</a>仍可使用该扩展。如果您在浏览器中禁用了自动更新，您可能需要从商店手动下载v2.0。</p>
+	<p>扩展仍在积极开发中，我们认为我们的支持仍处于测试阶段。随着协议的规范草案继续由更广泛的社区协作编写，这一情况将持续如此。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2020/01/pasted-image-0-2-1.png" class="kg-image"></figure>
+	<h2 id="--1">新的集成</h2>
+	<p>客户端实现使用<a href="https://developer.chrome.com/extensions/webRequest" target="_blank">WebRequest API</a>来查找特定类型的HTTP请求。当这些请求被发现时，它们会被重写，从而包含Privacy Pass协议所需的一些加密数据。这允许接收此数据的Privacy Pass提供商授权用户访问。</p>
+	<p>例如，用户可能会收到用于完成某些服务器安全性检查的Privacy Pass令牌。这些令牌由浏览器扩展存储，任何将来需要类似安全许可的请求都可以被修改，将存储的令牌添加为额外的HTTP请求头。然后，服务器可以检查客户端令牌并验证客户机是否具有正确的授权来继续进行。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/01/imageLikeEmbed--4-.png" class="kg-image"></figure>
+	<p>虽然Cloudflare支持特定类型的请求流，但是不可能期望不同的服务提供商都遵守相同的交互特征。v2.0扩展的主要变化之一是技术上的重写，改为使用中央配置文件。该配置在扩展程序的<a href="https://github.com/privacypass/challenge-bypass-extension/blob/master/src/ext/config.js" target="_blank">源代码</a>中指定，并允许更轻松地修改浏览特性以启动Privacy Pass操作。通过简单地克隆和调整新提供商的配置，就可以添加新的，完全不同的请求流。</p>
+	<p>为了证明Cloudflare之外的其他服务也可以进行这样的集成，CAPTCHA提供商<a href="https://www.hcaptcha.com/" target="_blank">hCaptcha</a>支持的新版本扩展将很快推出。解决hCaptcha提供的短暂挑战的用户将收到可以在其他hCaptcha客户站点上兑换的隐私保护令牌。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/01/image-8-1.png" class="kg-image"></figure>
+	<p><em>“hCaptcha专注于用户隐私，支持Privacy Pass是我们在该领域工作的自然延伸。我们期待与Cloudflare和其他公司合作，以使其成为一个通用且被广泛采用的标准，并且目前正在探索其他应用程序。在我们的全球分布式服务中实施Privacy Pass相对简单，我们很高兴与Cloudflare团队合作改进开放源代码的Chrome浏览器扩展，以便为我们的用户提供最佳体验。”</em></p>
+	<p>——hCaptcha创始人<strong>Eli-Shaoul Khedouri</strong></p>
+	<p>hCaptcha与Privacy Pass浏览器扩展的集成充当了建立对新服务的支持的概念证明。任何想要与Privacy Pass浏览器扩展集成的新提供商都可以简单地通过对<a href="https://github.com/privacypass/challenge-bypass-extension/" target="_blank">开源存储库</a>提交PR（Pull Request，拉取请求）来实现。</p>
+	<h2 id="--2">改进的加密功能</h2>
+	<p>在扩展v1.0发布之后，仍有一些功能尚未实现。其中包括适当的零知识证明验证，用于检查服务器是否总是使用相同的提交密钥。在v2.0中，此功能已完成，可通过对每个请求使用不同的密钥来验证性地防止恶意服务器尝试消除用户匿名。</p>
+	<p>隐私通道所需的密码操作使用<a href="https://blog.cloudflare.com/a-relatively-easy-to-understand-primer-on-elliptic-curve-cryptography/">椭圆曲线加密</a>（ECC）执行。该扩展目前使用<a href="https://www.secg.org/SEC2-Ver-1.0.pdf" target="_blank">NIST P-256</a>曲线，对此我们进行了一些优化。首先，这使得以压缩和未压缩数据格式存储椭圆曲线点成为可能。这意味着浏览器存储空间可以减少50%，服务器响应也可以更小。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2020/01/imageLikeEmbed--5-.png" class="kg-image"></figure>
+	<p>其次，该扩展使用正在进行的草案（<a href="https://tools.ietf.org/html/draft-irtf-cfrg-hash-to-curve-03" target="_blank">https://tools.ietf.org/html/draft- irtf-cfrg-hash-to-curve-03</a>）中指定的“简化的Shallue-van de Woestijne-Ulas”（SSWU）方法，添加了对P-256曲线进行哈希处理的支持，从而标准化椭圆曲线哈希的编码。该实现符合此草案中“P256-SHA256-SSWU-”加密套件的规范。</p>
+	<p>这些更改具有双重优势，首先是确保P-256哈希到曲线规范符合草案规范。其次，该密码套件消除了使用概率方法（如<a href="https://tools.ietf.org/html/draft-irtf-cfrg-vrf-05#section-5.4.1.1" target="_blank">哈希-和-增量</a>）的必要性。<a href="https://tools.ietf.org/html/draft-irtf-cfrg-vrf-05#section-5.4.1.1" target="_blank">哈希-和-增量</a>有不可忽视的失败几率，并且运行时间高度依赖于隐藏的客户端输入。虽然目前还不清楚定时攻击向量可以如何被滥用，但使用SSWU方法应该能减少攻击实现和学习客户端输入的可能性。</p>
+	<h2 id="--3">密钥转动</h2>
+	<p>如上所述，验证服务器始终使用相同的密钥是确保客户端隐私的重要部分。这确保了服务器不能隔离用户群，也不能通过为每个与之交互的客户端使用不同的密钥来减少客户端的隐私性。服务器通过在客户端可以访问的某个位置发布对其公钥的承诺，来确保它始终使用相同的密钥。</p>
+	<p>每次服务器向客户端颁发Privacy Pass令牌时，它还会产生<a href="https://en.wikipedia.org/wiki/Zero-knowledge_proof" target="_blank">零知识证明</a>，表明它已使用正确的密钥生成了这些令牌。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/01/imageLikeEmbed--6-.png" class="kg-image"></figure>
+	<p>在扩展存储任何令牌之前，它首先根据自己知道的承诺来验证。以前，这些承诺直接存储在扩展的源代码中。这意味着如果服务器想要旋转它的密钥，那么它需要发布一个新版本的扩展，这是不必要的困难。扩展已被修改，以便将承诺存储在<a href="https://github.com/privacypass/ec-commitments" target="_blank">受信任的位置</a>，客户端在需要验证服务器响应时可以访问该位置。目前这个位置是一个单独的Privacy Pass <a href="https://github.com/privacypass/ec-commitments" target="_blank">GitHub储存库</a>。如果你对此感兴趣，请查看我们在本文末尾的附录a中对新的承诺格式提供的更详细的描述。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/01/imageLikeEmbed--7-.png" class="kg-image"></figure>
+	<h2 id="-workers-">在Workers中实现服务器端支持</h2>
+	<p>到目前为止，我们专注于客户端更新。作为扩展v2.0支持的一部分，我们正在对Cloudflare使用的服务器端支持进行一些重大更改。对于1.0版，我们使用了服务器的<a href="https://github.com/privacypass/challenge-bypass-server" target="_blank">Go实现</a>。在v2.0中，我们引入了在<a href="https://www.cloudflare.com/products/cloudflare-workers/" target="_blank">Cloudflare Workers</a>平台上运行的新服务器实现。此服务器实现仅与Privacy Pass v2.0版本兼容，因此，如果您在浏览器中关闭了自动更新，您可能需要更新您的扩展。</p>
+	<p>我们的服务器将在<a href="https://privacypass.cloudflare.com/" target="_blank">https://privacypass.cloudflare.com</a>上运行，并且发送到Cloudflare边缘的所有Privacy Pass请求均由在此域上运行的Worker脚本处理。我们的实现已使用Javascript重写，并在驱动Cloudflare Workers的<a href="https://v8.dev/" target="_blank">V8引擎</a>中运行加密操作。这意味着我们能够运行高效且恒定时间的密码操作。最重要的是，我们可以通过在Workers平台上尽可能接近用户的位置运行代码来增强性能。</p>
+	<h2 id="webcrypto-">WebCrypto支持</h2>
+	<p>首先，您可能会问，我们如何在Cloudflare Workers中实现加密操作？目前，Workers平台通过<a href="https://developers.cloudflare.com/workers/reference/apis/web-crypto/" target="_blank">WebCrypto API</a>提供了对执行加密操作的支持。该API允许用户计算功能（如加密哈希）以及更复杂的操作（如ECDSA签名）。</p>
+	<p>在Privacy Pass协议中，正如我们稍后将讨论的那样，主要的加密操作由称为可验证的不经意伪随机函数（VOPRF）的协议执行。这样的协议允许客户端了解服务器计算的函数输出，而不需要向服务器显示它们的实际输入。可验证的方面意味着服务器还必须（以公开可验证的方式）证明它们传递给用户的评估是正确的。这样的功能是伪随机的，因为服务器输出与字节的随机序列是无法区分的。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/01/imageLikeEmbed--8-.png" class="kg-image"></figure>
+	<p>VOPRF功能要求服务器执行当前未在WebCrypto API中公开的低级ECC操作。我们权衡了绕过这一要求的可能方法。首先，我们尝试以非标准的方式使用WebCrypto API，使用EC Diffie-Hellman密钥交换作为执行所需的标量乘法的方法。我们还尝试使用纯JavaScript实现所有操作。不幸的是，这两种方法都不能令人满意，因为它们要么意味着要与大型外部加密库集成，要么速度太慢，无法用于高性能的互联网设置。</p>
+	<p>最终，我们确定了一个解决方案，该解决方案向Cloudflare V8 Javascript引擎的内部WebCrypto接口添加了Privacy Pass所需的功能。该算法模拟了ECDSA等签名算法提供的签名/验证接口。简而言之，我们使用sign()函数向客户端发行Privacy Pass令牌。而verify()可以被服务器用来验证客户端所交换的数据。这些函数是直接在V8层实现的，因此它们的性能和安全性（例如，在恒定时间内运行）要比纯JS替代品高得多。</p>
+	<p>目前，Privacy Pass WebCrypto界面不可供公众使用。如果事实证明人们在Workers平台上有足够的兴趣使用这个额外的算法，那么我们将考虑将其公开。</p>
+	<h2 id="--4">应用</h2>
+	<p>近年来，VOPRF已被证明是建立许多密码工具时非常有用的原语。除了Privacy Pass，它们对于构建经过密码验证的密钥交换协议（例如<a href="https://datatracker.ietf.org/doc/draft-krawczyk-cfrg-opaque/" target="_blank">OPAQUE）</a>也是必不可少的。它们还用于<a href="https://eprint.iacr.org/2016/799" target="_blank">私有集交叉点</a>，<a href="https://eprint.iacr.org/2014/650" target="_blank">密码保护的秘密共享</a>协议以及私有数据存储的<a href="https://medium.com/least-authority/the-path-from-s4-to-privatestorage-ae9d4a10b2ae" target="_blank">隐私保护访问控制</a>的设计中。</p>
+	<h2 id="-api">公共兑换API</h2>
+	<p>在Cloudflare Workers中编写服务器意味着我们将在<a href="https://privacypass.cloudflare.com/" target="_blank">公共域</a>中为Privacy Pass提供服务器端支持！虽然我们仅在确信可以信任客户之后才向他们发行令牌，但是任何人都可以使用我们的公共兑换API（<a href="https://privacypass.cloudflare.com/api/redeem" target="_blank">https://privacypass.cloudflare.com/api/redeem</a>）来兑换令牌。当我们在全球范围内推广服务器端组件时，您将能够与此API进行交互，并可以<a href="https://privacypass.github.io/api-redeem" target="_blank">独立于浏览器扩展</a>验证Cloudflare Privacy Pass令牌。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2020/01/imageLikeEmbed--9-.png" class="kg-image"></figure>
+	<p>这意味着任何服务都可以接受由Cloudflare发行的客户端的Privacy Pass令牌，然后使用Cloudflare兑换API对其进行验证。使用API​​提供的结果，外部服务可以检查Cloudflare过去是否对用户进行了授权。</p>
+	<p>我们认为这将使其他服务提供商受益，因为他们可以在自己的决策过程中使用Cloudflare的授权证明，而不会在任何阶段牺牲客户的隐私。我们希望这个生态系统可以进一步发展，可能会有更多的服务提供自己的公共兑换API。随着发行人的多样化，这些证明将变得更加有用。</p>
+	<p>通过在公共域上运行我们的服务器，我们实际上是Cloudflare Workers产品的客户。这意味着我们也可以利用<a href="https://developers.cloudflare.com/workers/reference/storage/" target="_blank">Workers KV</a>来保护客户端免受恶意攻击。特别是，服务器必须在兑换阶段检查客户端是否重用令牌。Workers KV在分析读值方面的性能使其成为全球范围内提供双重支出保护的明确选择。</p>
+	<p>如果您想使用公共兑换API，我们在<a href="https://privacypass.github.io/api-redeem" target="_blank">https://privacypass.github.io/api-redeem</a>提供了使用它的文档。我们还在帖子末尾的附录B中提供了一些示例请求和响应。</p>
+	<h2 id="--5">标准化&amp;新应用</h2>
+	<p>与我们最近在支持Privacy Pass方面正在进行的工程工作相结合，我们一直在与更广泛的社区进行协作，以尝试对<a href="https://datatracker.ietf.org/doc/draft-irtf-cfrg-voprf/" target="_blank">底层VOPRF功能</a>和<a href="https://github.com/alxdavids/draft-privacy-pass" target="_blank">协议本身</a>进行标准化。尽管不经意伪随机函数（OPRF）的标准化过程已经运行了一年多，但最近的Privacy Pass协议标准化工作是由最近几个月出现的应用程序推动的。</p>
+	<p>对协议和功能进行标准化是为互联网上的协议提供可互操作、安全且高性能的接口的重要方法。这使得开发人员更容易编写自己的复杂功能实现。该过程还提供了来自社区专家的有益同行审查，这可以更好地显示应该在任何实现中减少的潜在安全风险。其他好处包括就适用于所有可能应用的最可靠，可扩展和高性能的协议设计达成共识。</p>
+	<h2 id="--6">不经意伪随机函数</h2>
+	<p>遗忘伪随机函数（OPRF）是VOPRF的一种泛化，它不需要服务器证明它们正确地评估了功能。自2019年7月以来，我们一直在与互联网研究任务组（IRTF）的<a href="https://irtf.org/cfrg" target="_blank">加密论坛研究组</a>（CFRG）协作<a href="https://datatracker.ietf.org/doc/draft-irtf-cfrg-voprf/" target="_blank">草拟一份草案</a>，以标准化一种在优先级组中运行的OPRF协议。这是对<a href="https://blog.cloudflare.com/tag/elliptic-curves/">椭圆曲线</a>所提供的设置的概括。这与Privacy Pass协议<a href="https://blog.cloudflare.com/privacy-pass-the-math/">最初指定</a>的VOPRF结构相同，并且很大程度上是基于<a href="https://eprint.iacr.org/2014/650.pdf" target="_blank">Jarecki，Kiayias和Krawczyk论文</a>的原始协议设计的。</p>
+	<p>我们在草案中进行的最新更改之一是增加了我们考虑在服务器端执行OPRF操作的密钥的大小。现有的研究表明，创建特定的查询是有可能导致少量密钥泄露的。对于只提供128位安全性的密钥，这可能是一个问题，因为泄漏太多的位会降低安全性，使其<a href="https://www.keylength.com/en/4/" target="_blank">超出当前的可接受水平</a>。为了解决这个问题，我们有效地将最小密钥大小增加到192位。这可以防止攻击者使用任何实际方法将泄漏作为攻击媒介。我们将在稍后讨论VOPRF的未来计划时更详细地讨论这些攻击。</p>
+	<h2 id="--7">最近的应用和协议标准化</h2>
+	<p>我们最初支持Privacy Pass时演示的应用程序始终旨在作为协议的概念证明。在过去的几个月中，在一些远远超出原先设想的领域出现了一些新的可能性。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/01/imageLikeEmbed--10-.png" class="kg-image"></figure>
+	<p>例如，由<a href="https://wicg.io/" target="_blank">Web孵化器社区组</a>开发的<a href="https://github.com/WICG/trust-token-api" target="_blank">信任令牌API</a>被建议作为使用Privacy Pass的接口。该应用程序允许第三方供应商检查用户是否收到了来自一组中心发行者的信任认证。这使得供应商可以对客户的诚实度做出决策，而不必将行为配置文件与用户的身份关联起来。其目的是防止那些不受中央发行者集信任的用户的欺诈活动。使用与<a href="https://privacypass.cloudflare.com/" target="_blank">我们介绍的</a>兑换API类似的兑换API，可以与中央发行人一起检查信任证明。</p>
+	<p><a href="https://engineering.fb.com/security/partially-blind-signatures/" target="_blank">Facebook的另一项工作</a>详细介绍了一个类似的应用程序，用于防止欺诈行为，该应用程序也可能与Privacy Pass协议兼容。最后，在提供对<a href="https://medium.com/least-authority/the-path-from-s4-to-privatestorage-ae9d4a10b2ae" target="_blank">私有存储</a>的访问以及<a href="https://github.com/brave/brave-browser/wiki/Security-and-privacy-model-for-ad-confirmations" target="_blank">在广告确认中建立安全和隐私模型</a>方面也出现了其他应用。</p>
+	<h2 id="--8">新草案</h2>
+	<p>考虑到上面的应用程序，我们最近开始了一个<a href="https://github.com/alxdavids/draft-privacy-pass" target="_blank">新的IETF草案</a>的协作工作，该草案专门列出了整个Privacy Pass协议所提供的必要功能。我们的目标是与更广泛的行业伙伴和学术界一起，开发Privacy Pass协议的功能规范。我们希望通过这样做，我们将能够设计一个基本层协议，然后可以在需要某种形式的轻量级授权的更广泛的应用程序中作为密码原语使用。我们的计划是在下个月即将在新加坡举行的<a href="https://www.ietf.org/how/meetings/106/" target="_blank">IETF 106会议</a>上提出这个草案的第一个版本。</p>
+	<p>该草案仍处于开发的早期阶段，我们正在积极寻找对帮助制定协议规范感兴趣的人员。我们将为此过程提供任何帮助，我们将不胜感激。请参阅<a href="https://github.com/alxdavids/draft-privacy-pass" target="_blank">GitHub存储库</a>以获取该文件的当前版本。</p>
+	<h2 id="--9">未来的途径</h2>
+	<p>最后，虽然我们目前正在积极地研究一些不同的途径，但项目的未来方向仍然是开放的。我们相信有许多应用程序我们还没有考虑，我们很高兴看到协议在未来的使用。以下是我们对新应用程序和安全特性的一些其他想法，我们认为这些想法在未来可能值得一试。</p>
+	<h2 id="--10">公开验证令牌</h2>
+	<p>使用VOPRF的缺点之一是兑换令牌只能由原始发行服务器验证。如果我们使用一个允许对兑换令牌进行公开验证的底层原语，那么任何人都可以验证发行服务器是否已经发行了特定的令牌。这样的协议可以建立在所谓的盲签名方案之上，比如<a href="https://en.wikipedia.org/wiki/Blind_signature#Blind_RSA_signatures" target="_blank">盲RSA</a>。不幸的是，在浏览器环境中使用盲签名方案会引起性能和安全问题。现有方案（尤其是基于RSA的变体）需要的密码计算比我们的VOPRF协议中使用的结构繁重得多。</p>
+	<h2 id="-voprf-">后量子VOPRF替代方案</h2>
+	<p>VOPRF的唯一构造存在于前量子设置中，通常基于组设置中众所周知的问题（例如<a href="https://en.wikipedia.org/wiki/Decisional_Diffie%E2%80%93Hellman_assumption" target="_blank">离散对数假设</a>）的难度。目前还不知道VOPRF的结构是否能够针对运行<a href="https://blog.cloudflare.com/the-quantum-menace/">量子计算算法</a>的对手提供安全性。这意味着Privacy Pass协议仅被认为在对抗运行在传统硬件上的对手时是安全的。</p>
+	<p>最近的发展表明，量子计算可能会<a href="https://www.nature.com/articles/s41586-019-1666-5" target="_blank">比之前认为的更早到来</a>。因此，我们认为，研究为我们当前的密码工具箱构建实用的后量子替代方案的可能性，对于我们自己和更广泛的社区来说是一项非常重要的任务。在这种情况下，为VOPRF结构设计高性能的后量子替代方案将是一个重要的理论进步。最终，我们将可以创建一个Privacy Pass协议，该协议仍在后量子世界中仍能够提供保护隐私的授权。</p>
+	<h2 id="voprf-">VOPRF安全性和更大的密码套件</h2>
+	<p>我们之前提到过，VOPRF（或简单地称为OPRF）容易受到密钥中少量可能的泄漏的影响。在这里，我们将简要介绍实际的攻击本身，并进一步详细说明我们实施更高安全性密码套件以减轻泄漏的计划。</p>
+	<p>具体而言，恶意客户端可以与VOPRF交互以创建称为<a href="https://eprint.iacr.org/2010/215.pdf" target="_blank">q-Strong-Diffie-Hellman</a>（q-sDH）样本的内容。此类样本是按数学组创建的（通常是在椭圆曲线设置中）。对于任何组，都有一个公共元素<code>g</code>，它是所有<a href="https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange" target="_blank">Diffie-Hellman</a>类型操作的核心；以及服务器密钥<code>K</code>，通常将其解释为该组中随机生成的数字。q-sDH样本形式如下：</p>
+	<pre><code>( g, g^K, g^(K^2), … , g^(K^q) )</code></pre>
+	<p>以及要求恶意对手创建一对满足(g^(1/(s+K)) s)的元素。VOPRF协议中的客户端可以通过将之前的VOPRF评估结果提交回服务器来创建q-SDH示例。</p>
+	<p>虽然这个问题被认为是很难解决的，但过去的一些研究表明，这个问题在某种程度上比小组成员所建议的要容易一些（例如，请参见<a href="https://eprint.iacr.org/2004/306" target="_blank">此处</a>和<a href="https://www.iacr.org/archive/eurocrypt2006/40040001/40040001.pdf" target="_blank">此处</a>）。具体而言，该组隐含的位安全性最多可降低log 2(q)位。尽管这并不是立即致命的，即使对于应该提供128位安全性的组来说也是如此，但这可能会导致安全性丧失，这意味着该设置不再适用于未来。因此，任何使用P-256或Curve25519等椭圆曲线实例化的提供VOPRF功能的组提供的安全性都比建议的安全性保证要差。</p>
+	<p>考虑到这一点，我们最近决定将我们推荐的用于OPRF的密码套件升级为仅提供&gt;128位安全性的标准密码套件。要发起一个将安全性降低到128位以下的攻击，需要进行2^(68)次客户端OPRF查询。这是任何攻击者进入的重要障碍，因此我们认为这些密码套件对于实例化OPRF功能来说是安全的。</p>
+	<p>在不久的将来，我们将有必要升级用于支持Privacy Pass浏览器扩展的密码套件，以支持当前VOPRF草案中提出的建议。总的来说，我们希望通过一个更多迭代的发布过程，随着Privacy Pass实施在标准化过程中的发展，能够更加紧密地遵循当前的标准草案。</p>
+	<h2 id="--11">保持联系！</h2>
+	<p>现在，您可以在<a href="https://chrome.google.com/webstore/detail/privacy-pass/ajhmfdgkijocedmfjonnpjfojldioehi?hl=en" target="_blank">Chrome</a>或<a href="https://addons.mozilla.org/en-US/firefox/addon/privacy-pass/" target="_blank">Firefox中</a>安装Privacy Pass扩展程序v2.0 。</p>
+	<p>如果您想为该扩展的开发做出贡献，可以在<a href="https://github.com/privacypass/challenge-bypass-extension" target="_blank">GitHub</a>上进行。如果您是一家服务提供商，希望集成该扩展的服务器端支持。那么我们将非常有兴趣<a href="/cdn-cgi/l/email-protection#cebebca7b8afadb7e3beafbdbde3bdbbbebea1bcba8eada2a1bbaaa8a2afbcabe0ada1a3">收到您的来信</a>！</p>
+	<p>我们将继续与更广泛的社区合作，以发展协议的标准化；从已开发的可用应用程序中汲取我们的动力。我们一直在寻找可以帮助将Privacy Pass生态系统扩展到当前范围之外的新应用程序。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/01/tales-from-the-crypto-team@2x--1-.png" class="kg-image"></figure>
+	<h2 id="--12">附录</h2>
+	<p>以下是与我们上面介绍的主题相关的一些额外详细信息。</p>
+	<h2 id="a-">A.密钥转动的承诺格式</h2>
+	<p>服务器必须做出关键承诺，以证明它们在Privacy Pass协议期间表现的诚实性。Privacy Pass用于v2.0版本的承诺格式与以前的版本略有不同。</p>
+	<pre><code class="language-json">"2.00": {
+  "H": "BPivZ+bqrAZzBHZtROY72/E4UGVKAanNoHL1Oteg25oTPRUkrYeVcYGfkOr425NzWOTLRfmB8cgnlUfAeN2Ikmg=",
+  "expiry": "2020-01-11T10:29:10.658286752Z",
+  "sig": "MEUCIQDu9xeF1q89bQuIMtGm0g8KS2srOPv+4hHjMWNVzJ92kAIgYrDKNkg3GRs9Jq5bkE/4mM7/QZInAVvwmIyg6lQZGE0="
+}</code></pre>
+	<p>首先，服务器密钥的版本是2.00，服务器必须在响应包含已发行令牌的客户端时通知客户端打算使用哪个版本。这样，客户端可以在验证服务器发送的零知识证明时始终使用正确的承诺。</p>
+	<p>部件H的密钥是对服务器使用私钥的公钥承诺。这是H=kG形式的base64编码的椭圆曲线点，其中G是曲线的固定生成器，k是服务器的密钥。由于离散对数问题被认为是难以解决的，从H中求k被认为是困难的。部件有效期的值是所使用承诺的有效期。该部件的值sig是使用与所述服务器相关联的长期签名密钥计算的ECDSA签名，并超过H和expire值。</p>
+	<p>当客户检索承诺时，它将检查承诺是否已到期，并且签名将使用嵌入到扩展配置中的相应验证密钥进行验证。如果这些检查通过，它将检索H并验证服务器发送的发行响应。这些承诺的先前版本不包含签名，但是将从v2.0起对这些签名进行验证。</p>
+	<p>当服务器想要旋转密钥时，它只需生成一个新密钥k2并使用一个新的标识符（如2.01）向k2追加一个新的承诺。然后它可以使用k2作为它需要计算的VOPRF操作的密值。</p>
+	<h2 id="b-api-">B.兑换API请求示例</h2>
+	<p>通过将POST请求发送到<a href="https://privacypass.cloudflare.com/api/redeem" target="_blank">https://privacypass.cloudflare.com/api/redeem</a>，可以在HTTPS上使用兑换API。对此端点的请求必须在请求主体中使用JSON-RPC 2.0语法指定Privacy Pass数据。让我们看一个请求示例：</p>
+	<pre><code class="language-json">{
+  "jsonrpc": "2.0",
+  "method": "redeem",
+  "params": {
+    "data": [
+      "lB2ZEtHOK/2auhOySKoxqiHWXYaFlAIbuoHQnlFz57A=",
+      "EoSetsN0eVt6ztbLcqp4Gt634aV73SDPzezpku6ky5w=",
+      "eyJjdXJ2ZSI6InAyNTYiLCJoYXNoIjoic2hhMjU2IiwibWV0aG9kIjoic3d1In0="
+    ],
+    "bindings": [
+      "string1",
+      "string2"
+    ],
+    "compressed":"false"
+  },
+  "id": 1
+}</code></pre>
+	<p>在上图中：params.data[0]是在发行阶段用于生成令牌的客户输入数据；params.data[1] 是服务器用来验证兑换的HMAC标签；并且params.data[2]是使用客户端指定的散列到曲线参数的字符串化，base64编码JSON对象。例如，数组中的最后一个元素对应于对象：</p>
+	<pre><code class="language-json">{
+    curve: "p256",
+    hash: "sha256",
+    method: "swu",
+}</code></pre>
+	<p>其中指定了客户端已经使用了曲线P-256，带有散列函数SHA-256，以及散列到曲线的SSWU方法。这允许服务器使用正确的密码套件来验证事务。客户端必须将兑换请求绑定到一些固定的信息，这些信息以多个字符串的形式存储在parms.binding数组中。例如，它可以发送HTTP请求的主机请求头和使用的HTTP路径（这是Privacy Pass浏览器扩展中使用的路径）。</p>
+	<p>最后，params.compressed是一个可选的布尔值（默认为false），它指示HMAC标签是通过压缩还是未压缩的点编码来计算的。</p>
+	<p>当前，唯一受支持的密码套件是上面的示例，或——与上面的示例相同，但“method”等同于曲线散列的“哈希-和-增量”方法中的增量。这是Privacy Pass v1.0中使用的原始方法，仅支持向后兼容。有关更多详细信息，请参见<a href="https://privacypass.github.io/api-redeem" target="_blank">此文档</a>。</p>
+	<h2 id="--13">响应范例</h2>
+	<p>如果将请求发送到兑换API并已成功验证，则将返回以下响应。</p>
+	<pre><code class="language-json">{
+  "jsonrpc": "2.0",
+  "result": "success",
+  "id": 1
+}</code></pre>
+	<p>当发生错误时，将返回类似下文的内容。</p>
+	<pre><code class="language-json">{
+  "jsonrpc": "2.0",
+  "error": {
+    "message": &lt;error-message&gt;,
+    "code": &lt;error-code&gt;,
+  },
+  "id": 1
+}</code></pre>
+	<p>我们提供的错误代码被指定为JSON-RPC 2.0代码，我们在<a href="https://privacypass.github.io/api-redeem" target="_blank">API文档</a>中记录了我们提供的错误类型。</p>
+</div>

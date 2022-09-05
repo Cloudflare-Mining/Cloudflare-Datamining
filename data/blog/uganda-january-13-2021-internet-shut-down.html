@@ -1,0 +1,27 @@
+<div class="post-content lh-copy gray1">
+	<p>Two days ago, through its communications regulator, Uganda's government ordered the "Suspension Of The Operation Of Internet Gateways" the day before the country's general election. This action was confirmed by several <a href="https://twitter.com/kyleville/status/1349455038310211590" target="_blank">users</a> and <a href="https://twitter.com/samirasawlani/status/1349425885485690886" target="_blank">journalists</a> who got access to the letter sent to Internet providers. In other words, the government effectively cut off Internet access from the population to the rest of the world.</p>
+	<!--kg-card-begin: html-->
+	<blockquote class="twitter-tweet">
+		<p lang="en" dir="ltr">Ahead of tomorrow’s election the Internet has been shutdown in Uganda (confirmed by a few friends in Kampala).<br>Letter from communications commission below: <a href="https://t.co/tRpTIXTPcW" target="_blank">pic.twitter.com/tRpTIXTPcW</a></p>— Samira Sawlani (@samirasawlani) <a href="https://twitter.com/samirasawlani/status/1349425885485690886?ref_src=twsrc%5Etfw" target="_blank">January 13, 2021</a>
+	</blockquote>
+	<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+	<!--kg-card-end: html-->
+	<p>On <a href="https://radar.cloudflare.com/ug" target="_blank">Cloudflare Radar</a>, we want to help anyone understand what happens on the Internet. We are continually monitoring our network and exposing insights, threats, and trends based on the aggregated data that we see.</p>
+	<p>Uganda's unusual traffic patterns quickly popped up in our charts. Our <a href="https://radar.cloudflare.com/ug" target="_blank">7-day change in Internet Traffic chart </a>in Uganda shows a clear drop to near zero starting around 1900 local time, when the providers received the letter.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/01/unnamed.png" class="kg-image" alt="Our 7-day change in Internet Traffic chart in Uganda shows a clear drop to near zero starting around 1900 local time, when the providers received the letter."></figure>
+	<p>This is also obvious in the Application-level Attacks chart.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/01/pasted-image-0.png" class="kg-image" alt="This is also obvious in the Application-level Attacks chart."></figure>
+	<p>The traffic drop was also confirmed by the Uganda Internet eXchange point, a place where <a href="https://uixp.co.ug/networks" target="_blank">many</a> providers exchange their data traffic, on their public <a href="https://portal.uixp.co.ug/public-statistics/public" target="_blank">statistics</a> page.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/01/week-graph-uganda-jan-2021.png" class="kg-image" alt="The traffic drop was also confirmed by the Uganda Internet eXchange point, a place where many providers exchange their data traffic, on their public statistics page."></figure>
+	<p>We keep an eye on traffic levels and BGP routing to our edge network, and are able to see which networks carry traffic to and from Uganda and their relative traffic levels. The cutoff is clear in those statistics also. Each colored line is a different network inside Uganda (such as ISPs, mobile providers, etc.)</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/01/image3-7.png" class="kg-image" alt="We keep an eye on traffic levels and BGP routing to our edge network, and are able to see which networks carry traffic to and from Uganda and their relative traffic levels. The cutoff is clear in those statistics also. Each colored line is a different network inside Uganda (such as ISPs, mobile providers, etc.)"></figure>
+	<p>We will continue to keep an eye on traffic levels from Uganda and update the blog when we see significant changes. At the time of writing, Internet access appears to be still cut off.</p>
+	<h3 id="january-18-update">January 18 update</h3>
+	<p>We see that Uganda appears to have re-established its connections with the outside world around 1100 UTC and is back online. Traffic now appears to be at close to normal levels, but the BBC <a href="https://www.bbc.com/news/world-africa-55705404" target="_blank">reports</a> that social media is still blocked.</p>
+	<p>The shutdown and restart are both visible on <a href="https://radar.cloudflare.com/ug" target="_blank">Cloudflare Radar’s Uganda</a> page:</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/01/pasted-image-0-1.png" class="kg-image"></figure>
+	<p>And on the Uganda Internet <a href="https://portal.uixp.co.ug/public-statistics/public" target="_blank">eXchange</a> Point Public Traffic Statistics:</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/01/pasted-image-0--1-.png" class="kg-image"></figure>
+	<p>The shutdown lasted just under five days, from January 13, 1700 UTC to today.</p>
+	<p>We will continue to keep an eye on Uganda and update the blog if we see something worth reporting.</p>
+</div>

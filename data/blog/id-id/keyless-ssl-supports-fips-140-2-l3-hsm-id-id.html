@@ -1,0 +1,126 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/01/image1-54-2.png" class="kg-image" alt="Keyless SSL now supports FIPS 140-2 L3 hardware security module (HSM) offerings from all major cloud providers"></figure>
+	<p><strong>Kunci enkripsi privat yang disimpan dalam penawaran modul keamanan perangkat keras dari semua penyedia cloud utama kini dapat digunakan untuk mengamankan koneksi HTTPS di tepi jaringan global Cloudflare.</strong></p>
+	<p>Cloudflare membuat, melindungi, dan mengelola mungkin lebih banyak kunci privat SSL/TLS daripada organisasi mana pun di dunia. Kunci privat harus dilindungi dengan hati-hati karena penyerang yang berhasil merebutnya dapat menyamar sebagai situs yang sah dan mendekripsi permintaan HTTPS. Untuk mengurangi risiko ini, Cloudflare memiliki prosedur penanganan kunci yang ketat dan <a href="https://blog.cloudflare.com/going-keyless-everywhere/">layer isolasi</a> di tepi jaringan yang dirancang untuk melindungi kunci dengan segala cara. Tetapi untuk sebagian kecil pelanggan dengan kebijakan keamanan informasi yang menentukan di mana mereka dapat (atau tidak dapat) menyimpan kunci mereka, perlindungan ini tidak memenuhi kebutuhan mereka.</p>
+	<p>Untuk pelanggan inilah kami <a href="https://blog.cloudflare.com/announcing-keyless-ssl-all-the-benefits-of-cloudflare-without-having-to-turn-over-your-private-ssl-keys/">merilis Keyless SSL untuk pertama kalinya pada tahun 2014</a>. Keyless SSL adalah protokol yang kami gunakan secara luas di dalam jaringan kami: semua handshake TLS per hari yang dibuat di tepi jaringan Cloudflare yang berlangsung dalam proses yang tidak memiliki akses ke kunci privat pelanggan kami. Data yang diperlukan untuk membuat sesi justru dikirim ke sistem terpisah, di sistem itu dilakukan operasi penandatanganan kriptografi yang diperlukan. Untuk kunci yang di-upload ke atau dihasilkan oleh Cloudflare, kami mengelolanya dengan sistem lain, tetapi beberapa pelanggan ingin mengelolanya sendiri.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image2-47.png" class="kg-image" alt="[LOGICAL DIAGRAM SHOWING PRIVATE KEYS STORED ON HSMs BEING USED FOR TLS HANDSHAKE]"></figure>
+	<p>Secara historis, kunci ditempatkan di server yang menjalankan <a href="https://github.com/cloudflare/gokeyless" target="_blank">daemon sumber terbuka gokeyless</a> yang kami sediakan untuk memproses handshake, atau diamankan dalam modul keamanan perangkat keras (HSM) di tempat pengguna yang memiliki antarmuka dengan gokeyless menggunakan protokol standar yang disebut PKCS#11. Namun, karena perusahaan layanan keuangan, perawatan kesehatan, mata uang kripto, dan perusahaan lain dengan aturan sangat ketat atau berfokus pada keamanan telah beralih ke cloud, maka berbagai perusahaan ini tidak dapat begitu saja mengirimkan berbagai unit perangkat mahal itu dan meminta Amazon, Google, IBM, atau Microsoft untuk menempatkannya di rak dan menyusunnya.</p>
+	<p>Untuk para pelanggan ini, terutama mereka yang kebijakan keamanan informasinya mengharuskan modul HSM tervalidasi <a href="https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.140-2.pdf" target="_blank">FIPS 140-2 Level 3</a>, kami mengumumkan bahwa Keyless SSL kini mendukung modul HSM yang di-host di cloud berikut: <a href="https://aws.amazon.com/cloudhsm/" target="_blank">Amazon Cloud HSM</a>; <a href="https://cloud.google.com/kms/docs/hsm" target="_blank">Google Cloud HSM</a>; <a href="https://cloud.ibm.com/catalog/infrastructure/hardware-security-module" target="_blank">IBM Cloud HSM</a>; <a href="https://azure.microsoft.com/en-us/services/azure-dedicated-hsm/" target="_blank">Microsoft Azure Dedicated HSM</a> dan <a href="https://azure.microsoft.com/en-us/updates/akv-managed-hsm-public-preview/" target="_blank">Managed HSM</a>. Kami juga mendukung semua HSM lain yang menerapkan standar PKCS#11, termasuk seri seperti <a href="https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modules/ncipher-thales-nshield-connect" target="_blank">nCipher nShield Connect</a> dan Thales Luna.</p>
+	<h3 id="ikhtisar-hsm">Ikhtisar HSM</h3>
+	<p>HSM adalah mesin yang dibangun untuk tujuan khusus yang tahan terhadap upaya perusakan, tahan terhadap kelemahan seperti serangan saluran sisi, dan dioptimalkan untuk melakukan operasi kriptografi seperti penandatanganan dan deskripsi. HSM dapat diterapkan sebagai unit perangkat berdiri sendiri, sebagai kartu ekspansi yang dipasang di dalam server, atau, yang terbaru, sebagai layanan cloud.</p>
+	<p>Sebagai pengganti membuat kunci privat di server dan melakukan upload kunci ke HSM, vendor dan ahli keamanan biasanya menyarankan agar kunci dibuat pada (dan tidak boleh meninggalkan) perangkat itu sendiri. HSM memiliki jaminan keacakan yang lebih baik dibandingkan server serbaguna, dan mengambil tindakan pencegahan khusus untuk melindungi kunci dalam memori sebelum menyinkronkannya ke disk dalam keadaan terenkripsi. Jika diperlukan operasi yang membutuhkan kunci privat, layanan melakukan panggilan API yang diautentikasi ke perangkat menggunakan pustaka yang disediakan oleh vendor HSM.</p>
+	<h3 id="hsm-dan-fips-140-2-level-3">HSM dan FIPS 140-2 level 3</h3>
+	<p>HSM biasanya divalidasi terhadap publikasi Federal Information Process Standard (FIPS) 140-2: <a href="https://csrc.nist.gov/publications/detail/fips/140/2/final" target="_blank">Persyaratan Keamanan untuk Modul Kriptografi</a> Ada empat level — 1 hingga 4 — yang menetapkan persyaratan yang semakin ketat seputar algoritme yang disetujui, fungsi keamanan, kontrol akses berbasis peran, dan perlindungan bukti/ketahanan dari upaya perusakan.</p>
+	<p>The National Institute of Standards and Technology (NIST) menerbitkan garis pedoman ini, mengelola<a href="https://csrc.nist.gov/projects/cryptographic-module-validation-program/validated-modules" target="_blank">Program Validasi Modul Kriptografi</a>, dan menerbitkan <a href="https://csrc.nist.gov/projects/cryptographic-module-validation-program/validated-modules/search" target="_blank">database modul tervalidasi yang dapat dicari</a>, yang mencakup penawaran yang tercantum di bawah ini. Kami telah menyediakan petunjuk tentang cara penggunaannya dengan Cloudflare.</p>
+	<h3 id="memulai-penawaran-cloud">Memulai penawaran cloud</h3>
+	<p>Semua pelanggan yang telah ada dari Keyless SSL dapat segera menggunakan teknologi ini, dan Anda dapat membaca petunjuk untuk melakukannya di <a href="https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modules" target="_blank">https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modules</a>. Kode sumber tersedia di GitHub: <a href="https://github.com/cloudflare/gokeyless" target="_blank">https://github.com/cloudflare/gokeyless</a>.</p>
+	<h3 id="contoh-ujung-ke-ujung-microsoft-azure-managed-hsm">Contoh ujung-ke-ujung: Microsoft Azure Managed HSM</h3>
+	<p>Tim Microsoft Azure Key Vault <a href="https://azure.microsoft.com/en-us/updates/akv-managed-hsm-public-preview/" target="_blank">merilis Managed HSM</a>. Penawaran ini divalidasi FIPS 140-2 Level 3 dan terintegrasi dengan layanan Azure seperti Azure Storage, Azure SQL, dan Azure Information Protection. Managed HSM tersedia di wilayah berikut: AS Timur 2, AS Tengah Selatan, Eropa Utara, dan Eropa Barat.</p>
+	<p>Petunjuk di bawah ini diambil dari <a href="https://docs.microsoft.com/en-us/azure/key-vault/managed-hsm/quick-create-cli" target="_blank">Panduan mulai cepat: Menyediakan dan mengaktifkan HSM terkelola menggunakan Azure CLI</a>, dilanjutkan dengan petunjuk penggunaan Managed HSM dengan Cloudflare. Perintah dijalankan pada VM Ubuntu yang dibuat di wilayah yang sama (AS Tengah Selatan) dengan wilayah HSM; di tempat ini kami juga akan menerapkan daemon Cloudflare Keyless SSL.</p>
+	<h3 id="menyediakan-dan-mengaktifkan-hsm">Menyediakan dan mengaktifkan HSM</h3>
+	<p>Pertama kita login melalui CLI dan membuat grup sumber daya untuk Managed HSM di salah satu wilayah yang didukung. Perhatikan bahwa Anda mungkin mendapatkan peringatan dari berbagai perintah berdasarkan status pratinjau penawaran.</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>$ LOCATION=southcentralus; GROUPNAME=”HSMgroup”; HSMNAME=”KeylessHSM”
+$ az login
+$ az group create --name $GROUPNAME --location $LOCATION
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Berikutnya, kita menyiapkan sumber daya HSM dan mengaktifkannya dengan mengunduh <a href="https://docs.microsoft.com/en-us/azure/key-vault/managed-hsm/security-domain" target="_blank">domain keamanan</a>. Contoh di bawah ini memberikan akses administratif ke pengguna yang login, bersama dengan administrator lain yang OID-nya dapat diambil dengan menjalankan perintah oid=$(...) yang sama dari CLI di tempat pengguna tersebut login.</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>$ MYOID=$(az ad signed-in-user show --query objectId -o tsv)
+$ OTHERADMIN_OID=...
+
+$ az keyvault create --hsm-name $HSMNAME --resource-group $GROUPNAME --location $LOCATION --administrators $MYOID $OTHERADMIN_OID
+
+Argument '--hsm-name' is in preview and under development. Reference and support levels: https://aka.ms/CLI_refstatus
+Argument '--administrators' is in preview and under development. Reference and support levels: https://aka.ms/CLI_refstatus
+{- Finished ..
+  "id": "/subscriptions/.../resourceGroups/HSMgroup/providers/Microsoft.KeyVault/managedHSMs/Keyles
+sHSM",
+  "location": "southcentralus",
+  "name": "KeylessHSM",
+  "properties": {
+    "createMode": null,
+    "enablePurgeProtection": false,
+    "enableSoftDelete": true,
+    "hsmUri": "https://keylesshsm.managedhsm.azure.net/",
+    "initialAdminObjectIds": [
+      "$MYOID",
+      "$OTHERADMIN_OID"
+    ],
+    "provisioningState": "Succeeded",
+    "softDeleteRetentionInDays": 90,
+    "statusMessage": "The Managed HSM is provisioned and ready to use.",
+    "tenantId": "..."
+  },
+  "resourceGroup": "$GROUPNAME",
+  "sku": {
+    "family": "B",
+    "name": "Standard_B1"
+  },
+  "tags": {},
+  "type": "Microsoft.KeyVault/managedHSMs"
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Catat properti <strong>hsmUri </strong>yang dihasilkan dari perintah di atas. Anda akan membutuhkannya segera saat membuat konfigurasi Keyless SSL pada VM Anda.</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>$ HSMURI="https://keylesshsm.managedhsm.azure.net/"
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Sekarang setelah HSM tersedia, Anda harus memberikannya paling sedikit 3 kunci publik RSA. HSM akan mengenkripsi domain keamanan dengan beberapa kunci ini dan mengirimkannya kembali pada Anda; setelah itu, HSM siap digunakan.</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-json">$ openssl req -newkey rsa:2048 -nodes -keyout cert_0.key -x509 -days 365 -out cert_0.cer
+$ openssl req -newkey rsa:2048 -nodes -keyout cert_1.key -x509 -days 365 -out cert_1.cer
+$ openssl req -newkey rsa:2048 -nodes -keyout cert_2.key -x509 -days 365 -out cert_2.cer
+
+$ az keyvault security-domain download --hsm-name $HSMNAME --sd-wrapping-keys ./cert_0.cer ./cert_1.cer ./cert_2.cer --sd-quorum 2 --security-domain-file $HSMNAME-SD.json
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Jika Anda menerima pesan kesalahan "Gagal terhubung ke MSI" dan Anda menggunakan cloud shell dari Portal Azure, jalankan login az lagi karena ini adalah masalah yang sudah diketahui.</p>
+	<p>Setelah HSM Anda tersedia, <a href="https://docs.microsoft.com/en-us/cli/azure/keyvault/key?view=azure-cli-latest#az_keyvault_key_import" target="_blank">tambahkan kunci privat Anda</a> ke keyvault</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>$ az keyvault key import --KeylessHSM
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Perintah itu akan menghasilkan URI yang nantinya akan Anda tambahkan ke file Keyless YAML untuk menunjukkan lokasi penyimpanan kunci privat Anda.</p>
+	<p>Sekarang setelah HSM Anda tersedia dan diaktifkan, Anda perlu membuat sebuah VM yang akan menjadi tempat Anda menerapkan daemon Keyless. Untuk contoh ini, kami akan membuat sebuah VM Ubuntu Xenial di Azure. Pada portal, buka <strong>halaman Mesin virtual</strong> dan <strong>Tambahkan</strong> VM. Di sana Anda dapat menggunakan grup sumber daya yang Anda buat sebelumnya untuk HSM. Untuk hasil terbaik, pilih wilayah yang sama dengan wilayah untuk HSM. Perhatikan IP publik dari VM, Anda akan menggunakannya untuk menyambung ke server dari jarak jauh.</p>
+	<p>Berikutnya, buat konfigurasi pada VM Anda sebagai server kunci. Pertama, Anda perlu menambahkan <a href="https://pkg.cloudflare.com/" target="_blank">Repositori Paket Cloudflare</a>. Kemudian, Anda akan memperbarui daftar paket OS Anda dan menginstal server gokeyless.</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>$ apt-get update
+$ echo 'deb http://pkg.cloudflare.com/ Xenial main' |
+sudo tee /etc/apt/sources.list.d/cloudflare-main.list
+$ curl -C - https://pkg.cloudflare.com/pubkey.gpg | sudo apt-key
+$ apt-get update
+$ apt-get install gokeyless
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Kemudian perbarui file YAML gokeyless. Di sana Anda akan menambahkan nama host server kunci Anda — nama host ini harus memiliki catatan DNS yang mengarah ke VM, zoneID, dan kunci API Origin CA Anda. Tentang zoneID dan kunci API Origin CA dapat ditemukan di dasbor Cloudflare. Selain itu, tunjukkan URI yang mengarah ke direktori dari kunci privat Anda di bawah private_key_stores.</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>$ vim /etc/keyless/gokeyless.yaml
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Terakhir, mulai server keyless.</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>$ service gokeyless start
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Kembali ke portal Azure dan buka port TCP yang diperlukan untuk Azure VM. Buka VM Anda → Networking (Jaringan) → Add inbound port rule (Tambahkan aturan port masuk). Pastikan Anda mengizinkan lalu lintas pada semua port sumber dan menunjukkan Port 2407 sebagai port tujuan.</p>
+	<p>Simpan perubahan itu, lalu buka dasbor Cloudflare untuk meng-upload sertifikat SSL Anda. Anda akan melihat “Upload Keyless SSL Certificate" (Upload Sertifikat SSL Keyless) di bagian Edge Certificate (Sertifikat Tepi Jaringan) pada tab SSL/TLS. Di sana masukkan medan atau field dengan label server kunci, nama host pada file YAML, port server kunci-- 2407 adalah port default, dan tempelkan sertifikat SSL.</p>
+	<p>Berikutnya Anda siap untuk uji coba! Jalankan <code>curl -v https://zone.com</code> dan periksa apakah handshake TLS berhasil diselesaikan.</p>
+	<h3 id="microsoft-azure-dedicated-hsm">Microsoft Azure Dedicated HSM</h3>
+	<p>Selain penawaran Managed HSM yang kini dalam pratinjau publik, pelanggan Azure dapat membuat konfigurasi tepi jaringan Cloudflare untuk memanfaatkan kunci yang disimpan dalam <a href="https://azure.microsoft.com/en-us/services/azure-dedicated-hsm/" target="_blank">penawaran HSM Khusus</a> Microsoft, berdasarkan seri SafeNet Luna Network HSM 7 Model A790.</p>
+	<p>HSM Azure Dedicated divalidasi terhadap FIPS 140-2 Level 3 dan eIDAS Kriteria Umum EAL4+. Setelah mengikuti petunjuk <a href="https://docs.microsoft.com/en-us/azure/dedicated-hsm/tutorial-deploy-hsm-powershell" target="_blank">penerapan HSM</a>, pelanggan harus mengikuti petunjuk Keyless SSL khusus Azure <a href="https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modules/azure-dedicated-hsm" target="_blank">di sini</a>.</p>
+	<h3 id="amazon-web-services-aws-cloud-hsm"><strong>Amazon Web Services (AWS) Cloud HSM</strong></h3>
+	<p><a href="https://aws.amazon.com/cloudhsm/" target="_blank">AWS CloudHSM</a> juga menyediakan HSM tervalidasi FIPS 140-2 Level 3 untuk menyimpan kunci privat Anda.</p>
+	<p>Versi resmi dari <a href="https://registry.terraform.io/providers/hashicorp/aws/latest" target="_blank">Penyedia Terraform AWS</a> kini menyertakan dukungan untuk <a href="https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudhsm_v2_cluster" target="_blank">aws_cloudhsm_v2_cluster</a>, yang adalah versi yang didukung Cloudflare. Setelah <a href="https://docs.aws.amazon.com/cloudhsm/latest/userguide/getting-started.html" target="_blank">menyiapkan klaster AWS CloudHSM</a>, pelanggan harus mengikuti petunjuk Keyless SSL khusus AWS <a href="https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modules/aws-cloud-hsm" target="_blank">di sini</a>.</p>
+	<h3 id="google-cloud-hsm">Google Cloud HSM</h3>
+	<p><a href="https://cloud.google.com/kms/docs/hsm" target="_blank">Google Cloud HSM</a> menggunakan Cloud KMS dari GCP sebagai ujung depannya dan memungkinkan host kunci pada HSM tervalidasi FIPS 140-2 Level 3. Selain itu, Google menawarkan kemampuan untuk host HSM Anda sendiri di ruang yang disediakan Google; sebaiknya menghubungi perwakilan akun GCP Anda untuk informasi lebih lanjut tentang opsi ini.</p>
+	<p>Setelah key ring (ring kunci) dan kunci <a href="https://cloud.google.com/kms/docs/hsm" target="_blank">dibuat</a> di dalam HSM, pelanggan harus mengikuti petunjuk Keyless SSL khusus Google Cloud <a href="https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modules/google-cloud-hsm" target="_blank">di sini</a>. Perincian tambahan tentang penggunaan kunci asimetris dengan GCP KMS dapat ditemukan <a href="https://cloud.google.com/kms/docs/encrypt-decrypt-rsa" target="_blank">di sini</a>.</p>
+	<h3 id="ibm-cloud">IBM Cloud</h3>
+	<p><a href="https://cloud.ibm.com/docs/hardware-security-modules/about.html#about-ibm-cloud-hsm" target="_blank">IBM Cloud HSM</a> 7.0 menyediakan kemampuan HSM tervalidasi FIPS 140-2 Level 3. Penawaran ini didasarkan pada seri SafeNet Luna A750.</p>
+	<p>Setelah <a href="https://cloud.ibm.com/docs/hardware-security-modules?topic=hardware-security-modules-provisioning-ibm-cloud-hsm#provisioning-ibm-cloud-hs" target="_blank">menyiapkan HSM</a>, pelanggan harus merujuk ke petunjuk Keyless SSL khusus IBM <a href="https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modules/ibm-cloud-hsm" target="_blank">di sini</a>.</p>
+	<h3 id="mendapatkan-bantuan-dan-memberi-umpan-balik">Mendapatkan bantuan dan memberi umpan balik</h3>
+	<p>HSM menawarkan kemampuan perlindungan kunci yang kuat tetapi dapat menjadi rumit untuk disiapkan dan diterapkan. Jika Anda perlu bantuan dalam menerapkan HSM di penyedia cloud Anda, kami menyarankan memulai dengan saluran dukungan penyedia itu.</p>
+	<p>Namun, jika Anda perlu bantuan untuk membuat konfigurasi HSM agar berfungsi dengan tepi jaringan Cloudfare, atau Anda ingin memberi umpan balik tentang prosesnya, sebaiknya menghubungi langsung tim Teknik Solusi Anda yang dapat menghubungkan Anda dengan spesialis Keyless SSL di Cloudflare.</p>
+</div>

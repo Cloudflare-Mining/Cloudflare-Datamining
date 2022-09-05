@@ -1,0 +1,31 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/02/image3.png" class="kg-image"></figure>
+	<p>缓存是一个魔术。 Cloudflare 遍布全球的 200 多个数据中心没有以客户的来源来响应每个请求，而是以在地理位置上接近访问者的缓存的内容进行响应。通过让Cloudflare 响应缓存内容的请求，可以显著提高网页的加载性能，同时降低带宽成本。</p>
+	<p>然而，如果内容不在缓存中，则 Cloudflare 数据中心必须联系源服务器以接收内容。这不如从缓存传送内容来得快。它还将负载置于源服务器上，与直接从缓存中提供服务相比，其成本更高。这些问题可能受网站访问者的地理分布、联系来源的数据中心的数量以及可用于响应请求的可用来源资源的影响而会被放大。</p>
+	<p>为了减少我们的数据中心网络与源进行通信的次数，我们将数据中心分为几层，这样只有上层数据中心才能从源请求内容，然后再将内容分发到下层。这意味着内容可以为访问者提供更快的加载，更便宜的服务并减少源资源的消耗。</p>
+	<p>今天，我很高兴地宣布 Argo 分层缓存有了根本性的改进，我们称之为 更智能的分层缓存拓扑。启用后，Argo 分层缓存现在将动态地为您的网站的每个来源选择一个最佳的上层，同时提供分层缓存分析以显示自定义拓扑如何执行。</p>
+	<h3 id="smarter-"><strong><strong>Smarter</strong> <strong>分层缓存拓扑生成</strong></strong></h3>
+	<p>分层缓存是 <a href="https://blog.cloudflare.com/argo/">Argo</a> 产品群的一部分，该产品群通过处理每个 Cloudflare 请求中的信息来确定到源的哪些路由是快速的，哪些是慢速的以及最佳的是哪种，从而实时分析和优化全球互联网上的路由决策, 从访问者到内容的路径是在任何给定时刻。以前，Argo 分层缓存将使用上层数据中心的静态集合与源进行通信。随着我们今天宣布的改进，分层缓存现在可以使用 Argo 性能和路由数据动态地找到源的最佳上层。启用 &nbsp;Argo 并提出对特定内容的请求后，我们将收集每个请求的延迟数据以选择最佳路径。使用此延迟数据，我们可以确定任何上层数据中心与源的连接情况，并可以根据经验选择延迟最小的最佳数据中心作为源的上层。</p>
+	<h3 id="argo-"><strong><strong>Argo</strong> 分层缓存</strong></h3>
+	<p>退一步，分层缓存是一种实践，其中 Cloudflare 的全球数据中心网络被细分为上层和下层的层次结构。为了控制源和 Cloudflare 之间的带宽和连接数量，仅允许上层从源请求内容，并且必须将该信息传播到低层。通过这种方式，Cloudflare 数据中心首先相互对话以查找内容，然后再询问来源。这种做法通过限制可以向源请求内容的数据中心的数量来提高带宽效率，减少源负载，并使网站的运营更具成本效益。 Argo 分层缓存客户仅需为客户端和边缘之间的数据传输付费，其余的将由我们负责。分层缓存还可以提高访问者的性能，因为 Cloudflare 数据中心之间的距离和链接通常比数据中心和源之间的链接更短，更快。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/02/image5-7.png" class="kg-image"></figure>
+	<p>之前，当为网站启用 Argo 分层缓存时，Cloudflare 几个最大连接最紧密的数据中心被确定为上层，可以从 MISS 缓存中的源中提取内容。尽管利用由众多上层数据中心组成的拓扑可能在全球范围内表现出色，但我们发现，对成本敏感的客户通常希望为其来源找到一个最佳的上层，以确保将其内容数据有效地传输到 Cloudflare 的网络。因此，我们构建了智能分层缓存拓扑。</p>
+	<h3 id="-"><strong><strong>如何启用智能分层缓存拓扑</strong></strong></h3>
+	<p>启用 Argo 分层缓存后，Cloudflare 现在默认情况下会集中连接到源服务器，使它们来自单个数据中心。无需与我们的客户成功或解决方案工程部门合作来自定义配置最佳单一上层即可完成此操作。 Argo 客户可以通过以下方式生成此拓扑：</p>
+	<ul>
+		<li>登入到您的 Cloudflare 账户。</li>
+		<li>导航到信息中心 “流量” 标签。</li>
+		<li>确保已启用 Argo。</li>
+		<li>从那里开始，非企业 Argo 客户将自动注册到智能分层缓存拓扑中，而无需进行任何其他更改。</li>
+	</ul>
+	<p>企业客户可以选择他们想要生成的拓扑类型。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/02/image2-14.png" class="kg-image"></figure>
+	<p>自助 Argo 客户自动注册了智能分层缓存拓扑。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/02/image3-9.png" class="kg-image"></figure>
+	<p>企业客户可以确定最适合他们的分层缓存拓扑。</p>
+	<h3 id="--1"><strong>更多数据，更少问题</strong></h3>
+	<p>启用后，除了可以提高性能和降低成本外，智能分层缓存拓扑还可以提供有关上层性能的摘要分析，以便您可以监视网站所获得的成本和性能收益。这些分析在“分层缓存”部分的仪表板的“缓存”选项卡中可用。 “主数据中心”和“辅助数据中心”字段向您显示哪些数据中心被确定为您来源的最佳上层，并为您的源进行故障转移。 “缓存的匹配数”和“命中率”显示了上层服务的请求所占的比例，以及需要将多少转发到源以进行响应。 “已保存的字节数”表示从上层数据中心到下层的总传输量，显示了 &nbsp;Cloudflare 的下层数据中心向上层请求内容而不是源所节省的总带宽。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/02/image4-4.png" class="kg-image"></figure>
+	<p>智能分层缓存拓扑与 Cloudflare 现有产品一起工作，为您提供无缝、简单和高性能的体验，从而节省您的资金，并为您提供有关上层如何与您的源一起工作的有用信息。智能分层缓存拓扑站借 Cloudflare 一些最有弹性及有用的产品之力，为网站管理员提供更多的好处。</p>
+	<p>如果您想了解 Argo 和更智能的分层缓存拓扑如何使您的网站资源受益，请登录您的 Cloudflare 帐户，并在<a href="https://dash.cloudflare.com/traffic" target="_blank">此处</a>的信息中心“流量”标签中找到更多信息。</p>
+</div>

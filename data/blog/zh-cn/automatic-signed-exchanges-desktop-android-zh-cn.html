@@ -1,0 +1,27 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/pasted-image-0--4-.png" class="kg-image" alt="Illustration of sealed envelopes"></figure>
+	<p>自从 <a href="https://blog.cloudflare.com/from-amp-to-signed-exchanges-or-how-innovation-happens-at-cloudflare/">Cloudflare 宣布</a>支持 Signed Exchanges (SXG) 以来，已有九个月了，这是一种<a href="https://wicg.github.io/webpackage/draft-yasskin-http-origin-signed-responses.html" target="_blank">网络平台规范</a>，用于明确验证网站的缓存版本，并启用搜索引擎和新闻聚合商等第三方，以远快于源站的速度提供网站内容。</p>
+	<p>不仅为互联网用户带来很快的加载时间，哪怕是采用世界上偏远地区的缓慢连接，也能够<em>帮助构建更好的互联网</em>（这正是我们的使命！），<a href="https://blog.cloudflare.com/from-amp-to-signed-exchanges-or-how-innovation-happens-at-cloudflare/">我们对 SXG 的潜力很是充满期待</a>。</p>
+	<p>Signed Exchanges 可带来相当大的性能提升。<a href="https://web.dev/signed-exchanges/#impact-of-signed-exchanges" target="_blank">Google 的实验</a>表明，启用 SXG 的预取中的<a href="https://web.dev/i18n/zh/lcp/" target="_blank">最大内容渲染 (LCP)</a> 平均减少了 300 毫秒到 400 毫秒。<strong>加速网站通常会</strong><a href="https://www.thinkwithgoogle.com/marketing-strategies/app-and-mobile/mobile-page-speed-new-industry-benchmarks/" target="_blank"><strong>显著减少跳出率</strong></a><strong>并改进 SEO。</strong></p>
+	<!--kg-card-begin: markdown-->
+	<p><em></em></p>
+	<center><em>更快的网站带来更好的 SEO 和更低的跳出率</em></center>
+	<p></p>
+	<!--kg-card-end: markdown-->
+	<p>如果通过<a href="https://web.dev/signed-exchanges/#tooling" target="_blank">开源工具包</a>设置和维护 SXG 的工作很复杂而又非常有价值，利用 Cloudflare 的 <a href="https://blog.cloudflare.com/automatic-signed-exchanges/">Automatic Signed Exchanges </a> 就会非常容易。只需一键启用，一试便知。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/pasted-image-0--5-.png" class="kg-image"></figure>
+	<h3 id="-">我们自己的测量</h3>
+	<p>Signed Exchanges 在适用于 Android 的 Chromium 上已推出几个月了，我们深入考察了客户在现实世界中体验到的性能变化。</p>
+	<p>我们选取了启用 Automatic Signed Exchanges 的 500 个最热门站点，并发现其中 425 个站点 (85%) 的 <a href="https://web.dev/i18n/zh/lcp/" target="_blank">LCP</a> 得到了改善，因此被广泛视为对 SEO 影响力最大且 SXG 应该会带来最大改变的 Core Web Vital。</p>
+	<p>在这相同的 500 个 Cloudflare 站点中，有 389 个站点 (78%) 的<a href="https://web.dev/i18n/zh/fcp/" target="_blank">首次内容渲染 (FCP)</a> 得到了改善，高达 489 个站点 (98%) 的<a href="https://web.dev/ttfb/" target="_blank">首字节时间 (TTFB)</a> 得到了改善。这里测量到的 TTFB 改善程度比较有意思，因为如果交换已经预取，则当用户点击链接时，资源就已经在客户端浏览器缓存中，并且 TTFB 测量会接近于零。</p>
+	<p><strong>总的来说，客户在这些指标上的改善程度中位数超过 20%。一些客户的改善程度高达 80%。</strong></p>
+	<p>还有一些客户的指标没有得到改善，甚至稍有恶化。</p>
+	<p>其一大原因是，直到现在，SXG 不兼容服务器端个性化（例如，为登录的用户提供不同的 HTML）。为了解决这个问题，Google 添加了“Dynamic SXG”，仅针对来自无 cookie 用户的访问有选择性地启用 SXG（有关 Google 博客文章的更多详情，请点击<a href="https://developer.chrome.com/blog/sxg-desktop/" target="_blank">此处</a>）。Dynamic SXG 现在受支持，您只需将“Vary: Cookie”注释添加到包含服务器端个性化的页面的 HTTP 标题即可。</p>
+	<p><em>注意：Signed Exchanges 兼容客户端个性化（延迟加载）。</em></p>
+	<p>要查看 <a href="https://www.cloudflare.com/learning/performance/what-are-core-web-vitals/" target="_blank">Core Web Vital</a> 向您的全球用户呈现的外观，我们推荐采用 RUM 解决方案，例如我们推出的隐私优先的免费 <a href="https://www.cloudflare.com/web-analytics/" target="_blank">Web Analytics</a>。</p>
+	<h3 id="-android">现已可用于桌面和 Android</h3>
+	<p><strong>从今天开始，Signed Exchanges 还受 Chrome、Edge 和 Opera 等基于 Chromium 的桌面浏览器支持。</strong></p>
+	<p>如果在 Cloudflare 仪表板上启用了 Automatic Signed Exchanges，则无需执行其他操作，因为受支持的桌面浏览器会自动开始接收您站点内容的 SXG 版本。Google 估计此版本大体上将使 SXG 对您站点访问的覆盖范围加倍，从而为更多用户改善加载和性能。</p>
+	<p>如果您尚未启用 SXG，但想知道 SXG 会对您的站点带来什么样的影响，则可通过 Cloudflare 仪表板上的<a href="https://dash.cloudflare.com/?to=/:account/:zone/speed/optimization" target="_blank">速度 &gt; 优化</a>链接访问 Automatic Signed Exchanges（有关更多详情，请点击<a href="https://support.cloudflare.com/hc/en-us/articles/4411075595661-Automatic-Signed-Exchanges-SXGs-" target="_blank">此处</a>）。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image3.png" class="kg-image"></figure>
+</div>

@@ -1,0 +1,47 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/12/image1-19.png" class="kg-image"></figure>
+	<p>每个拥有网站的人都需要了解有关其网站的一些基本事实：人们在访问哪些页面？他们在哪里？还有哪些网站为<em>我的</em>网站带来了流量？</p>
+	<p>市面上有一些“免费”的分析工具，但它们是有代价的：不是金钱，而是用户的隐私。今天，我们宣布向所有人（即使他们还不是Cloudflare客户）开放一个全新的，隐私优先的分析服务。而且，如果您是Cloudflare客户，我们将增强分析功能，使其比以前更强大。</p>
+	<h3 id="-">最重要的分析特性：隐私</h3>
+	<p>目前最流行的分析服务是为了帮助支持广告的网站销售更多的广告。但是，很多网站没有广告。所以，如果使用这些服务来了解你的在线内容的表现，你就是在放弃用户的隐私。</p>
+	<p>Cloudflare的业务从来不是以追踪用户或销售广告为基础的。我们不想知道你在网上做什么——这不是我们的事。所以我们想要建立一个分析服务，使之回到对Web创建者（不一定是营销人员）真正重要的问题，并以一种简单，干净的方式为Web创建者提供所需的信息，而又不牺牲访问者的隐私。并且为网站创建者提供这些分析时，不应依赖他们对Cloudflare基础架构的使用来确保性能和安全性。（这一点稍后再说。）</p>
+	<p>使我们的分析服务“隐私至上”对我们来说意味着什么？最重要的是，这意味着我们不需要为了提供分析服务而长期跟踪单个用户。我们不使用任何客户端状态（如cookie或localStorage）来跟踪用户。而且，我们不会出于显示分析的目的通过IP地址，用户代理字符串或任何其他数据来“指纹化”个人。（我们认为指纹比cookie更具侵入性，因为用户无法选择阻止。）</p>
+	<h3 id="--1">在不跟踪用户的情况下统计访问量</h3>
+	<p>任何网站最重要的统计数据之一就是：“有多少人访问过这个网站？” 分析工具经常显示“独立”访问者的数量，这需要通过cookie或IP地址跟踪单个用户。</p>
+	<p>我们使用<em>访问（visit）</em>的概念：一个隐私友好的衡量人们如何与你的网站互动的方式。访问可简单地定义为一次成功的页面展现，该页面展现具有一个与请求的主机名不匹配的<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referer" target="_blank">HTTP referer</a>。无需跟踪个人，它就可以告诉您有多少人访问了您的网站，并在离开之前四处点击。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/12/image-43.png" class="kg-image"></figure>
+	<p>访问的语义与“独立”的语义稍有不同，因此您可以预想到此数字与其他分析工具有所不同。</p>
+	<h3 id="-bot-">显示所有细节，阻止Bot访问</h3>
+	<p>我们的分析可以提供关于你的网站最重要的指标，比如页面展现量和访问量。但我们也知道，分析的一个基本要求特征是<em>灵活性</em>：可以添加任意过滤器以及按需切片和切块数据的功能。我们的分析可以为您显示排名靠前的主机名，URL，国家和其他关键指标，例如状态码。您可以通过单击来过滤任何这些指标，并查看整个仪表板更新。</p>
+	<p>我对我们的时间序列表中的两个功能感到特别兴奋：能够拖拽放大到更窄的时间范围，以及能够“分组”不同的维度，以不同的方式查看数据。这是一种非常强大的方法，可以深入到异常流量中，并快速查看发生了什么。例如，您可能会注意到一个流量峰值，放大这个峰值，然后尝试不同的分组，看看是什么带来了额外的点击。一张动图胜过千言万语:</p>
+	<!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 72.43133265513734%;"><iframe src="https://iframe.videodelivery.net/a922327eb87d7bedbe067367828cee89?preload=true&amp;loop=true&amp;autoplay=true" style="border: none; position: absolute; top: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
+	<!--kg-card-end: html-->
+	<p>对于<a href="https://www.cloudflare.com/products/bot-management/" target="_blank">Bot Management产品的</a>客户，我们正在努力检测（并删除）自动流量。这一功能即将推出，您将能够看到哪些Bot正在访问您的网站——只需单击一下，<a href="https://developers.cloudflare.com/firewall/cf-dashboard/create-edit-delete-rules/" target="_blank">即可使用防火墙规则阻止它们</a>。</p>
+	<p>这一切都归功于我们的ABR分析技术，该技术使我们能够为大型和小型网站快速提供分析服务。查看我们的<a href="https://blog.cloudflare.com/explaining-cloudflares-abr-analytics">博客文章</a>，以了解有关其工作原理的更多信息。</p>
+	<h3 id="--2">边缘还是浏览器分析？何不兼而得之</h3>
+	<p>有两种收集Web分析数据的方式：在边缘（或在源服务器上），或在客户端中使用JavaScript信标。</p>
+	<p>过去，Cloudflare一直在我们的<em>边缘</em>收集分析数据。与传统的客户端分析方法相比，这具有一些不错的好处：</p>
+	<ul>
+		<li>这样更准确，因为您不会遗漏阻止第三方脚本或JavaScript的用户</li>
+		<li>即使未加载HTML页面，您也可以看到所有返回源服务器的流量</li>
+		<li>我们可以检测（并阻止）僵尸程序，应用防火墙规则并通常清除有害噪声流量</li>
+		<li>您可以衡量源服务器的性能</li>
+	</ul>
+	<p>更常见的是，大多数网络分析提供商都使用客户端评估。这也有一些好处：</p>
+	<ul>
+		<li>您可以在<em>用户</em>看到效果时了解其性能——例如，页面实际渲染多长时间</li>
+		<li>您可以检测客户端JavaScript执行中的错误</li>
+		<li>您可以定义JavaScript框架发出的自定义事件类型</li>
+	</ul>
+	<p>最终，我们希望我们的客户能够两全其美。我们认为直接从边缘获取网络访问量确实非常强大。一年前，我们还<a href="https://blog.cloudflare.com/introducing-browser-insights/">推出了浏览器洞察</a>，从而通过更多性能信息来扩展我们现有的边缘分析，如今，浏览器洞察通过<a href="https://blog.cloudflare.com/start-measuring-web-vitals-with-browser-insights">整合Web Vitals指标</a>向前迈出了一大步。</p>
+	<p>但是，我们知道并不是每个人都可以修改其DNS以利用Cloudflare的边缘服务。因此，今天我们向所有人发布了免费的独立分析产品。</p>
+	<h3 id="--3">在哪里可以使用它？</h3>
+	<p>对于Pro，Biz和Enterprise计划中现有的Cloudflare客户，只需转到“分析”标签！从今天开始，您会看到一条横幅广告，可以选择加入新的分析体验。（我们计划在几周内将其设置为默认功能。）</p>
+	<p>但是，在构建隐私优先的分析时，我们意识到，即使对于今天不使用Cloudflare的人们而言，让他们能够访问这些数据是非常重要的。即使您无法更改DNS服务器，也可以使用Cloudflare的网络分析功能——只需添加我们的JavaScript，您就可以使用了。</p>
+	<p>我们仍在对基于JavaScript的分析进行最后的修饰，但是您可以<a href="https://www.cloudflare.com/web-analytics" target="_blank">点击此处注册</a>，我们会在准备就绪时通知您。</p>
+	<h3 id="cloudflare-">Cloudflare分析的发展</h3>
+	<p>就在一年多以前，Cloudflare的分析包括一组简单的指标：缓存的数据传输与未缓存的数据传输，或者有多少请求被防火墙阻止。今天，我们在所有产品中提供灵活、强大的分析，包括<a href="https://blog.cloudflare.com/updates-to-firewall-analytics/">防火墙</a>、<a href="https://blog.cloudflare.com/introducing-cache-analytics/">缓存</a>、<a href="https://blog.cloudflare.com/introducing-load-balancing-analytics/">负载均衡</a>和<a href="https://blog.cloudflare.com/announcing-network-analytics/">网络流量</a>。</p>
+	<p>虽然我们一直专注于为我们的<em>相关</em>产品建立分析，但我们意识到，作为一个独立的产品，我们的分析也是很强大的。今天只是这个旅程的第一步。我们还有更多计划：从实时分析，到越来越多的性能分析，甚至允许客户添加定制事件。</p>
+	<p>我们想知道您最希望从分析中得到什么——请在评论中留言，让我们知道您接下来想看到什么。</p>
+</div>

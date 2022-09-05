@@ -1,0 +1,45 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image1-8.png" class="kg-image" alt="Welcome to Security Week 2022!"></figure>
+	<p>最近的一些事件使網路安全成為許多對話的熱門主題。</p>
+	<p>在烏克蘭入侵後，<a href="https://www.cisa.gov/shields-up" target="_blank">世界</a><a href="https://www.ncsc.gov.uk/news/organisations-urged-to-bolster-defences" target="_blank">各國</a><a href="https://www.meti.go.jp/press/2021/02/20220221003/20220221003.html" target="_blank">政府</a>都在鼓勵企業「<a href="https://blog.cloudflare.com/shields-up-free-cloudflare-services-to-improve-your-cyber-readiness/">做好防護</a>」。目前的威脅明顯高於以往，任何擁有外部網際網路基礎結構的組織都應將安全作為今年的重中之重。</p>
+	<p>為協助確保服務在線，Cloudflare 也參與了<a href="https://criticalinfrastructuredefense.org/" target="_blank">關鍵基礎結構防禦專案</a>，以確保團隊能夠獲得最佳協助，為更容易受網路威脅的網路和應用程式提供安全保障，例如醫療、水和能源領域的網路與應用程式。</p>
+	<p>再舉一例，就在不久前，影響許多 Java 應用程式的高嚴重性漏洞 <a href="https://www.cloudflare.com/log4j/" target="_blank">Log4J</a> 也強調了良好的網路安全在網際網路上的重要性，因為攻擊者在攻擊手段公開後數小時內，便會立即開始掃描易受攻擊的應用程式。</p>
+	<p>遺憾的是，這些事件幾乎不會是最後的提醒。</p>
+	<p>在接下來的六天裡，我們將探討解決網路安全這個廣泛的話題，並秉承一個簡單的目標：確保網路安全<a href="https://blog.cloudflare.com/zh-tw/welcome-to-security-week-2021-zh-tw/">不再是發生事件後才有的想法</a>。</p>
+	<p>然而，確保網路安全困難重重，您永遠不會知道何時才能「做得夠多」。採用良好的網路安全做法，其重要性絕不容低估。可靠和安全的應用程式可確保網際網路正常運作：從保持網站在線以確保存取基本資訊，到保護使用者資料不被竊取和濫用。</p>
+	<p>但並非人人都是網路安全專家。</p>
+	<p>在這一方面，Cloudflare 一直致力於將技術複雜的解決方案運用於棘手的問題，並使這些解決方案普遍可用。在本週，您還將聽到各種產品增強功能、新產品以及大膽的想法和合作夥伴關係，包括我們將免費向所有 Cloudflare 使用者提供的一些出色的新功能。</p>
+	<p>在我們開始之前，瞭解我們前進方向的最好方法是退後一步，重新審視我們的案例。這就是我希望透過這篇貼文傳達的內容。在您閱讀案例時，我會指出一週中的哪幾天會有相關的公告，以便您知道何時該收聽。</p>
+	<p>歡迎參加安全週活動。</p>
+	<h3 id="-">回到起點：保護網站</h3>
+	<p>七年前我最初加入 Cloudflare 時，我們的網路安全產品主要針對網站擁有者︰<a href="https://www.cloudflare.com/dns/" target="_blank">DNS</a>、<a href="https://www.cloudflare.com/ddos/" target="_blank">DDoS 緩解</a>、Web 應用程式防火牆 (<a href="https://www.cloudflare.com/waf/" target="_blank">WAF</a>) 和 <a href="https://www.cloudflare.com/ssl/" target="_blank">SSL/TLS</a>。作為 HTTP 反向 Proxy，Cloudflare 可以保護流量並阻止惡意承載。同時，我們立即開始竭力讓底層通訊協定更快、更安全。透過一次部署，即可針對大部分網際網路屬性升級 TLS 版本，封鎖對非 HTTP 連接埠的容量 DDoS 攻擊，並撰寫規則來保護數百萬個 WordPress 管理頁面。</p>
+	<blockquote><em>安全週：保護網站仍是我們業務的核心部分。在本週的前半週 (週一至週三)，您將瞭解在瀏覽 Web 時每天所用技術的一些主要增強功能，從 TLS 到我們的 Web 應用程式防火牆 (WAF) 和自訂規則。我們面向所有人 (包括我們的免費方案使用者) 發佈了一些很棒的公告。</em></blockquote>
+	<h3 id="--1"><strong>應用程式 &gt; 網站</strong></h3>
+	<p>很明顯，很大一部分網際網路流量是自動化的。<a href="https://radar.cloudflare.com/" target="_blank">機器人在任何給定時間都佔據總流量的 30% 或更多</a>，峰值時可超過 40%。這促使我們在 Cloudflare 平台上開發更進階的工具，例如<a href="https://www.cloudflare.com/products/bot-management/" target="_blank">機器人管理</a>。</p>
+	<p>其中的許多機器人正在連線並使用並非用於由人類存取的應用程式中的資料，從而相較於標準網站，帶來全新的安全挑戰。API 現在很常見，<a href="https://blog.cloudflare.com/landscape-of-api-traffic/">約佔透過 Cloudflare 網路進行的所有 Web HTTP 請求的 54%</a>。</p>
+	<blockquote><em>安全週︰在協助我們的客戶管理自動化流量和保護 API 端點的</em><a href="https://blog.cloudflare.com/introducing-api-shield/"><em>現有產品</em></a><em>基礎上，我們將在週三分享這一領域的一些重大新進展，因為我們將介紹一系列 Cloudflare 可提供協助的快速增長的 API 安全和管理使用案例。</em></blockquote>
+	<h3 id="--2">涵蓋所有通訊協定</h3>
+	<p>重點始終是不斷擴展網路，同時改善我們核心服務的可靠性。下一個明確的步驟是針對其他通訊協定開放代理。畢竟，HTTP 只是網際網路上使用的眾多通訊協定之一。</p>
+	<p>目前，我們有許多客戶使用我們的 <a href="https://www.cloudflare.com/products/cloudflare-spectrum/" target="_blank">Spectrum</a> 產品保護以 TCP/UDP 為基礎的任意應用程式和端點。我們將更進一步，允許客戶與 Cloudflare 互連並保護<a href="https://www.cloudflare.com/magic-transit/" target="_blank">來自 Cloudflare 邊緣的原始 IP 流量</a>。</p>
+	<p>遊戲伺服器、自訂 IoT 通訊協定、串流服務和金融應用程式現在都能獲得可無限擴展和無縫工作的 DDoS 緩解與 <a href="https://www.cloudflare.com/magic-firewall/" target="_blank">Magic Firewall</a> 篩選功能。</p>
+	<blockquote><em>安全週：我們的團隊一直致力於改善這些產品，因此，如果您透過 Cloudflare 來 Proxy 處理非 HTTP 流量，週四將為您提供一些精彩的更新。</em></blockquote>
+	<p>在這些客戶中，大多數在 <a href="https://en.wikipedia.org/wiki/OSI_model" target="_blank">OSI 模型的第 3-4 層 Proxy 處理流量</a>。但我們現在也在努力備份堆疊。最有效的安全解決方案需要瞭解應用程式層的資料，而 Cloudflare 的一大差距歷來是電子郵件流量，即入侵的第一大載體。</p>
+	<blockquote><em>安全週：您可能聽說過我們近期</em><a href="https://www.cloudflare.com/en-gb/press-releases/2022/cloudflare-to-acquire-area-1-security/" target="_blank"><em>收購 Area 1 的意向</em></a><em>——請繼續關注週一內容，因為我們在這方面有一些令人興奮的訊息要分享。</em></blockquote>
+	<h3 id="-proxy-">翻轉 Proxy，保護使用者</h3>
+	<p>事後看來，我們可以翻轉 Cloudflare Proxy 並將其開放給正向 Proxy 使用案例這一認識似乎很明顯，但情況遠非如此。透過專注於正向 Proxy 安全策略，突然之間，我們可以保護使用者，而不僅僅是應用程式和伺服器。</p>
+	<p>任何連線至網際網路的使用者現在都可以<a href="https://www.cloudflare.com/learning/dns/what-is-1.1.1.1/" target="_blank">將 Cloudflare 設定為其 DNS 解析程式</a>和<a href="https://www.cloudflare.com/products/zero-trust/gateway/" target="_blank">正向 Proxy</a>，讓他們能透過額外的安全防護來體驗網際網路。進入 <a href="https://www.cloudflare.com/products/zero-trust/" target="_blank">Cloudflare Zero Trust</a>。</p>
+	<p>此時，Proxy 不再是一個可清楚表明我們正在建置什麼的術語。網路這一術語才能更好地表達。實際上，運算中的許多事情都會重演，<a href="https://blog.cloudflare.com/the-network-is-the-computer/">網路會再次變成電腦</a>。</p>
+	<p>網路效應 (不是雙關語) 並非立竿見影。假設使用者將 Cloudflare 設定為 DNS 解析程式，存取 Cloudflare 背後的應用程式本身：整個交易可以在離最終使用者最近的資料中心內發生，從 DNS 開始到 HTTP。這也是為什麼我們不會很快停止<a href="https://www.cloudflare.com/press-releases/2021/cloudflare-grows-its-network-to-speed-up-and-secure-the-internet/" target="_blank">擴展我們的網路</a>。優勢無法估量，每一步都融入網路安全，而又不會影響效能。</p>
+	<p>如果該使用者是來自執行該應用程式的同一組織的團隊成員，那麼 Zero Trust 概念將變得便捷可用，且任何人都可以輕鬆部署。由於您不再需要笨重、複雜的基礎結構來保護您的網路，因此 VPN 這類舊系統已經過時，使我們離大眾化網路安全更近一步。</p>
+	<blockquote><em>安全週：如果您正在使用 </em><a href="https://www.cloudflare.com/products/zero-trust/" target="_blank"><em>Cloudflare Zero Trust</em></a><em> 並設法保護內部網路，請在週五收看——我們將分享一些出色的產品改進功能。</em></blockquote>
+	<h3 id="cloudflare-">Cloudflare 是一個智慧型安全網路</h3>
+	<p>這是我們今天的內容。網路安全曾經代表創造安全的環境——城堡加護城河。但是行動和雲端已經破解了這個範式。任何地方都不再被認為是安全的，即使有安全的地方，您的使用者和應用程式也可能不會在那里呆太久。他們…居家辦公？在全國各地？在世界各地？您的應用程式也在不斷變化。</p>
+	<p>在這種範式中，考慮網路安全合乎邏輯的方法是不建立實體聚集地。而是著重於網際網路的一個基本元件——網路，來建立虛擬聚集地。</p>
+	<p>換言之，您需要確保擁有的每部裝置、每間辦公室、每部伺服器都連線至安全網路。在 Cloudflare，我們正在建置這樣一個網路︰將您的使用者與您的應用程式相互連線，無論他們位於何處，同時提供安全和隱私作為核心基礎。</p>
+	<h3 id="--3">為了做得更好，我們還需要牽頭</h3>
+	<p>擁有出色的技術還不夠。簡單易用和創新想法來源於人。正因為如此，我們是第一批使用者，在內部測試我們所有的產品。在 Cloudflare，我們最苛刻的客戶之一是我們的內部網路安全團隊。此外，我們無法單獨完成。對我們所有人來說，齊心協力非常重要，我們一直在竭盡全力與其他網路安全公司合作，分享洞察、資料並整合我們的產品，從而為我們的使用者提供更出色的體驗。</p>
+	<p>我們將在本週結束時分享最佳做法、從保護 Cloudflare 網路的過程以及我們的安全團隊一直在開展的一些專案中獲得深入見解。我們還將攜手該領域其他備受推崇的公司，發佈一些新的合作夥伴關係公告。</p>
+	<blockquote><em>安全週：我們將在本週六分享最佳做法、從保護 Cloudflare 網路的過程以及我們的安全團隊一直在開展的一些專案中獲得深入見解。我們還將攜手該領域其他備受推崇的公司，發佈一些新的合作夥伴關係公告。</em></blockquote>
+	<h3 id="--4"><strong>一週遠遠不夠</strong></h3>
+	<p>我們針對安全週發佈了超過 75 則公告，雖然我們未承諾要在兩週內發佈，但六天內肯定無法全部覆蓋。我們積極樂觀，正在向前邁出一大步，不僅是下週，更是在整個 2022 年。</p>
+</div>

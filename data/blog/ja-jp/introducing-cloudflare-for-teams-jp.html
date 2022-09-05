@@ -1,0 +1,109 @@
+<div class="post-content lh-copy gray1">
+	<p>Cloudflareが創設された10年前には、人々がコンテンツを閲覧する場所はインターネットでした。まだ「ネットサーフィン」という言葉が使われていて、iPhoneが登場して2年も経っていない頃のことです。ところが、2009年7月4日に<a href="https://en.wikipedia.org/wiki/July_2009_cyberattacks" target="_blank">アメリカ合衆国と大韓民国のウェブサイトを狙った大規模なDDoS攻撃が起きました</a>。</p>
+	<p>こうした攻撃により、インターネットがいかに脆弱であるか、生活の一部になるほど人々がいかにインターネットに依存しているかが明らかになりました。</p>
+	<p>10年後の現在に目を向けてみると、仕事とプライベートの両方においてインターネットに依存しているため、インターネットの速度、信頼性、安全性は最重要視されています。</p>
+	<p>「どのようにインターネットに公開されるリソースとインフラストラクチャを攻撃から守り、迅速で信頼性の高いものにするか」という全IT企業が直面する1つ目の課題を解決するために、私たちはCloudflareを設立しました。こうした問題を解決するために、ハードウェアやソフトウェアに縛られない、全世界で使えるスケーラブルなサービスを望んでいることが世界の潮流であることを知りました。</p>
+	<p>それを実現するために、世界最大級のネットワークを構築しました。今日、当社のネットワークは世界200以上の都市にまたがり、誰もが数ミリ秒以内にインターネットに接続できます。Cloudflareは、国家レベルのサイバー攻撃に立ち向かう処理能力を確保して、膨大な量のインターネットトラフィックを用いる脅威インテリジェンスシステムを構築しました。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/01/image2-9.png" class="kg-image"></figure>
+	<p>今日、「従業員やチームが業務を遂行するのに必要なツールにアクセスできるようにして、マルウェアや他のオンライン脅威から保護する」という全IT企業が直面するもう1つの課題を解決するために、Cloudflareの製品ラインアップを<a href="https://teams.cloudflare.com/" target="_blank">拡大</a>しています。</p>
+	<p>公共インフラストラクチャに提供されてきた迅速性、信頼性、保護性を、チームがインターネット上で行うすべてのことに拡大適用します。</p>
+	<p>IT企業は、社内のインフラストラクチャを保護するだけでなく、従業員が必要なツールに安全にアクセスできるようにする責任を負っています。これまで、こうした問題はVPNやファイアウォールなどのハードウェア製品を用いて解決してきました。VPNにより、承認されたユーザーは必要なツールにアクセスすることができ、ファイアウォールにより、マルウェアを排除することができました。</p>
+	<h2 id="-"><strong>城と堀</strong></h2>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/01/image21.png" class="kg-image"></figure>
+	<p>主要なモデルは、城と堀から発想を得ています。貴重な資産はすべて城の中に入れます。悪意のあるものを排除するために城の周りに堀というファイアウォールを作ります。誰かを中に入れる必要があるときは、VPNが堀にかかる跳ね橋の役割を果たします。</p>
+	<p>これは、ほとんどの企業が今でも使用しているモデルですが、時代遅れになりつつあります。1つ目の問題は、攻撃者が堀を超える方法や城に侵入する方法を見つけることができれば、甚大な被害が発生する可能性があるということです。残念ながら、従業員がフィッシングメールに引っかかり重要な社内情報が漏洩した、請負業者から情報が漏洩した、何者かがオフィスに忍び込んで不正なデバイスを接続した、といったことを報じるニュース記事を頻繁に見聞きします。</p>
+	<p>2つ目の問題は、クラウドとSaaSが台頭していることです。企業のリソースは、もはや1つの城だけにあるのではなく、様々なパブリッククラウドやSaaSベンダーに散在しています。</p>
+	<p>たとえばBoxのようなサービスは、ほとんどの企業が自社で構築・管理するものより優れたストレージツールおよびコラボレーションツールを提供します。しかし、SaaSという城の周囲に独自の堀を築くために、文字通りハードウェアボックスをBoxの近くに置くことはできません。Boxは優れたセキュリティツールをいくつか提供しますが、そうしたツールは他のSaaSおよびパブリッククラウドベンダーが提供するツールとは異なります。かつてIT企業は、誰が入城を断られたか、誰が跳ね橋を渡ったかを確認するのに、複雑なハードウェアを備えた「一枚のガラス（一括管理）」を採用しようとしましたが、SaaSとクラウドにより、それがますます困難となりました。</p>
+	<p>従来の「城と堀」戦略が抱える3つ目の問題は、モバイルの台頭です。昔は全従業員が1つの城で仕事をしていましたが、今や従業員は世界各国に散らばっています。限られた数の中央VPNサーバーに全員がログインするよう要求することは、村人が仕事を終えたときに、いつでも、どこからでも、跳ね橋を渡って急いで帰らせるようなものであり、明らかに不合理なことです。VPNサポートが、IT企業にとって最大のコストであり、「城と堀」アプローチを取り続ける企業にとって今後もそうであろうことは少しも不思議ではありません。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/01/image4-6.png" class="kg-image"></figure>
+	<p>しかし、事態はより深刻です。モバイルデバイスの普及により、従業員が各自のデバイスを会社に持ち込むようになりました。あるいは、会社が管理するデバイスであっても、保護された城壁の外で、堀というセキュリティがない、外出先や在宅で仕事をするようになりました。</p>
+	<p>4年前に当社が採用していた自社ITシステムの管理方法を振り返ると、この同じモデルを用いていたことが分かります。ファイアウォールを使用して脅威を防ぎ、すべての従業員にVPN経由でログインして作業することを義務付けていました。個人的には、頻繁に出張しなければならない身としては非常に辛い思いをしました。</p>
+	<p>たびたび、誰かが私の意見を求めて、社内Wikiへのリンクを送ってきます。会議の合間を縫って移動するタクシーの中では、ほぼ確実に携帯電話を使って仕事をします。リンクにアクセスしようとすると、サンフランシスコにある当社のVPNにログインするよう求められます。この時点から苛立ちが募り始めます。</p>
+	<p>私の経験から言えば、法人向けモバイルVPNサービスを利用するクライアントは、たとえて言えば、100面ほどあるサイコロを振って、ホームオフィスからの距離が、出たサイコロの数の25倍未満だった場合にのみ接続できる、という仕組みを使っているようなものです。苛立ちを募らせながら、ITからのサポートと少しの運があれば、接続することができるかもしれません。接続できたとしても、すさまじく速度は遅く、信頼性は低いです。</p>
+	<p>当社が自社システムの監査を行ったところ、プロセスがフラストレーションをもたらすことから、複数のチームが、慎重に構築された堀の上に不正な跳ね橋を架ける効果的な回避策を編み出したことがわかりました。また、SalesforceやWorkdayなどのSaaSツールを採用するようになるにつれて、こうしたツールの使用法の可視性が失われていきました。</p>
+	<p>当社のような組織を持つ企業において、ITセキュリティに対する従来のアプローチでは攻撃を防御できないと認識した頃に、Googleが「<a href="https://research.google/pubs/pub43231/" target="_blank">BeyondCorp：企業セキュリティに対する新しいアプローチ</a>」と題した文書を発表しました。 中核となる概念は、企業のイントラネットはインターネットほど信頼されるべきではないというものでした。そして、1つの堀で周囲を保護するのではなく、各アプリケーションとデータソースがアクセスされるたびに個人とデバイスを認証するべきだというものでした。</p>
+	<p>ITセキュリティで注目されるようになったZeroTrustモデルであるBeyondCorpの概念は、当社のシステムに対する考え方に影響を与えました。Cloudflareは柔軟なグローバルネットワークを持っていたので、チームがツールにアクセスする際のポリシーを施行するためと、仕事をする際にマルウェアから保護するために、このネットワークを利用することができました。</p>
+	<h2 id="cloudflare-for-teams"><strong>Cloudflare for Teams</strong></h2>
+	<p>本日、<a href="https://teams.cloudflare.com/" target="_blank">Cloudflare for Teams</a>™を発表できることを嬉しく思います。元々は当社を守るために構築したツールスイートですが、大小のIT企業を支援する製品として提供することになりました。</p>
+	<p>Cloudflare for Teamsは、2つの補完的な製品であるCloudflare AccessとCloudflare Gatewayを中心に構築されています。<a href="https://teams.cloudflare.com/access/index.html" target="_blank">Cloudflare Access</a>™は、現代版のVPNです。脅威を排除する一方で、チームメンバーが業務を遂行するのに必要なリソースに迅速にアクセスできるようにします。<a href="https://teams.cloudflare.com/gateway/index.html" target="_blank">Cloudflare Gateway</a>™は、現代版のNext Generation Firewallです。チームメンバーをマルウェアから保護し、どこからオンラインへのアクセスを試みても会社のポリシーに従うよう促すことができます。</p>
+	<p>心強いことに、Cloudflare AccessとCloudflare Gatewayの両方は、既存のCloudflareネットワーク上に構築されています。つまり、チームメンバーが現在どこにいても、どこに出張しても、高速性、信頼性、大規模拡張性、DDoS攻撃への優れた耐性などを実現できるということです。ケニアのキリン、ルワンダのゴリラ、マダガスカルのキツネザルを撮影しにサファリ旅行に行く上級幹部がいたとしても心配無用です。それらの国（<a href="https://www.cloudflare.com/network/" target="_blank">およびほかの多くの国</a>）にはCloudflareのデータセンターがありますので、Cloudflare for Teamsをサポートしています。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/01/image5-4.png" class="kg-image"></figure>
+	<p>どのCloudflare for Teams製品も、Cloudflareの全製品に適用されている脅威インテリジェンスを通じて脅威状況を報告します。極めて多様なインターネットトラフィックを監視するため、新しい脅威やマルウェアを他社より先に見つけることができるのです。当社独自のデータを大手セキュリティベンダーからの追加データソースで補完することにより、Cloudflare for Teamsはマルウェアなどのオンライン脅威に対して幅広い保護を提供することができます。</p>
+	<p>また、Cloudflare for Teamsは、当社のインフラストラクチャ保護製品向けに構築した同じネットワーク上で実行されるため、非常に効率的に運用できます。つまり、これらの製品を非常に競争力のある価格でお客様に提供することができます。当社の目標は、Cloudflare for Teamsのすべてのお客様がいとも簡単に投資収益率（ROI）を上げることができるようにすることです。別のソリューションを検討している場合は、<a href="https://teams.cloudflare.com/gateway/index.html#get-notified" target="_blank">決断する前に当社にお問い合わせください</a>。</p>
+	<p>Cloudflare AccessとCloudflare Gatewayはどちらも、ローンチ済みの製品を作り直したものであり、実戦検証済みです。たとえば、Cloudflare Gatewayは、<a href="https://one.one.one.one/" target="_blank">パブリックDNSリゾルバ「1.1.1.1」</a>を部分的に作り直したものです。今日、全世界で4,000万人以上の人々が最速のパブリックDNSリゾルバとして1.1.1.1に信頼を寄せています。マルウェアスキャンを追加することで、エントリーレベルのCloudflare Gateway製品を作成することができました。</p>
+	<p>Cloudflare AccessとCloudflare Gatewayを作り直したものが、WARPおよびWARP+といった製品です。当社があえて消費者向けモバイルVPNサービスを構築したのは、困難な作業であることを知っていたからです。その腕前を試した何百万人ものWARPユーザーとWARP+ユーザーは、企業向けに展開できることを確信しました。iOS版だけで口コミ評価4.5点を20万件以上獲得したことは、基礎となるWARPエンジンとWARP+エンジンの信頼性がどれほど高いかを示しています。他社の法人向けモバイルVPNクライアントの評価と比較すると、驚くほど高い評価であることがわかります。</p>
+	<p>Cloudflare for Teamsを取り巻くエコシステムを構築するのに、いくつかの素晴らしい企業と提携しました。たとえば、VMWare Carbon Black、Malwarebytes、Taniumなどのエンドポイントセキュリティ ソリューションです。SEIMおよびアナリティクスソリューションは、Datadog、Sumo Logic、Splunkなど。ID管理プラットフォームは、Okta、OneLogin、Ping Identityといった具合です。こうしたパートナーからのフィードバックについては、この投稿記事の最後に掲載しました。</p>
+	<p>Cloudflare for Teamsの<a href="https://blog.cloudflare.com/cloudflare-for-teams-products/">技術的な詳細については、Sam Rheaの投稿記事を参照してください。</a></p>
+	<h2 id="--1"><strong>すべての人にサービスを提供する</strong></h2>
+	<p>Cloudflareは常にすべての人にサービスを提供することができると信じてきました。そうした信念に基づいて、2010年の創業以来、Cloudflare for Infrastructureの無償版を提供し続けています。その信念は、Cloudflare for Teamsのローンチ後も変わりません。Cloudflare AccessとCloudflare Gatewayには、個人、ホームネットワーク、スモールビジネスを保護するための無償版があります。当社がスタートアップ企業だった頃を振り返り、予算の大小にかかわらず、誰もが安全なオンライン環境を確保できるべきだと信じています。</p>
+	<p>Cloudflare AccessとCloudflare Gatewayのいずれも、Good（良）、Better（優良）、Best（最優良）のレベルにフレームワークが細分化されています。それぞれのレベルが、Access Basic、Access Pro、Access Enterpriseに対応しています。今後数か月間に展開されるAccess Enterprise機能を含む、各ティアで利用できる機能については以下の表を参照してください。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/01/image6-2.png" class="kg-image"></figure>
+	<p>Cloudflare Gatewayについても、同様のGood（良）、Better（優良）、Best（最優良）のレベルにフレームワークを分けたいと思いました。Gateway Basicは、ネットワークの再帰的DNS設定を少し変更するだけで数分でプロビジョニングできます。ネットワーク管理者は、ネットワーク上でどのドメインを許可するか、どのドメインをフィルタリングするかについてのルールを設定することができます。Cloudflare Gatewayは、グローバルセンサーネットワークから収集したマルウェアのデータと、ドメイン分類のためのコーパスに関するリッチな情報を使用することで、ネットワークオペレーターが理にかなったポリシーを設定できるようにします。Gateway Basicは、きめ細かなネットワーク制御が可能な1.1.1.1の速度を活用します。</p>
+	<p>本日発表のGateway Proについては、<a href="https://teams.cloudflare.com/gateway/index.html#get-notified" target="_blank">ベータテスト版にサインアップ</a>することができます。今後数か月間に様々な機能が展開され、DNSによってプロビジョニングされた保護はフルプロキシに拡大適用されます。Gateway Proは、（iOSおよびAndroidモバイルデバイス以外のWindows、MacOS、Linuxなどにもサポート範囲を拡大適用する）WARPクライアント、MDMによってプロビジョニングされたプロキシ設定、またはオフィスルーターからのGREトンネルなどのネットワークポリシーを介したプロビジョニングが可能です。これにより、ネットワークオペレーターは、ドメインだけでなく、特定のURLでポリシーをフィルタリングできます。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/01/image7-3.png" class="kg-image"></figure>
+	<h2 id="--2"><strong>クラス最高のネットワークゲートウェイの構築</strong></h2>
+	<p>Gateway Basic（DNS経由のプロビジョニング）とGateway Pro（プロキシとしてのプロビジョニング）は理にかなっていますが、最高レベルのパフォーマンスとセキュリティを重視する企業にとって、クラス最高のネットワークゲートウェイがどのようなものかについて考えてみました。そうした企業から話を聞いたところ、「ネットサーフィンするだけでデバイスに脅威を与える不正コードが挿入されるリスクが常に存在する」という懸念を耳にしました。ユーザーが訪問したすべてのページで、サードパーティコード（JavaScriptなど）がデバイス上でダウンロードされ、実行されていました。</p>
+	<p>提案された解決策は、ローカルブラウザーをサードパーティコードから分離し、Webサイトをネットワーク内でレンダリングすることでした。この技術は、ブラウザー分離と呼ばれています。理論上は素晴らしいアイデアです。残念ながら、現在の技術では、実際にはうまく機能しません。ブラウザー分離技術が機能する最も一般的な方法は、ページをサーバー上でレンダリングし、ページのビットマップをブラウザーにプッシュすることです。これはピクセルプッシュと呼ばれています。ここでの課題は、速度が低下し、帯域幅に負荷がかかり、多くの高度なWebアプリケーションを破壊する可能性があることです。</p>
+	<p>ページのレンダリングをエンドユーザーに近いCloudflareのネットワークに移動することで、これらの問題のいくつかを解決できると期待しました。そこで、ブラウザー分離の分野における多くのリーディングカンパニーとの提携の可能性について話し合いました。しかし残念ながら、そうした企業の技術を当社の広大なネットワークを使用して実験したところ、既存のブラウザー分離ソリューションの弱点である反応の遅さを克服できませんでした。</p>
+	<h2 id="s2-systems-"><strong>S2 Systemsの導入</strong></h2>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/01/image8-2.png" class="kg-image"></figure>
+	<p>当社がS2 Systemsを導入したのはその時です。最初にS2のデモを試した時のことを今でもはっきり覚えています。「これが正常な動作のはずがない。あまりにも速すぎる」というのが最初の感想でした。 S2チームは、ブラウザー分離について別のアプローチを取っていました。スクリーンの見た目のビットマップをプッシュダウンするのではなく、ベクトルをプッシュダウンしてスクリーン上の内容を描画するのです。その結果、少なくともローカルでブラウズするのと同程度の速度を実現でき、破損したページはありませんでした。</p>
+	<p>S2の技術と他のブラウザー分離の技術の違いを説明するために思いついた完璧ではないが最も的確と思える例えが、2001年に同時に発表されたWindowsXPとMacOS Xの違いです。WindowsXPの当初のグラフィックスは、ビットマップ画像をベースにしたものでした。MacOS Xはベクトル画像をベースにしたものでした。MacOS Xのドックを出たり入ったりする「genie」アプリケーションを見て魔法のようだと思ったことを覚えていますか？発表時のビデオでチェックしてみてください。</p>
+	<p>ドックを出たり入ったりするウィンドウを見たとき、ビットマップユーザーインタフェースでできることと比べて魔法のようだと思ったものです。「すごい！」というユーザーからの声が今にも聞こえてきそうです。そうした驚きが今日のUIにて当たり前のことになったのはベクター画像のおかげです。また、既存のブラウザー分離技術のピクセルプッシュビットマップを大したことないと思った方は、S2テクノロジーで何ができるのかを見てからにしてください。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/01/image19-1.png" class="kg-image"></figure>
+	<p>当社は、S2のチームとテクノロジーにあまりに感動したので、その会社を買収しました。S2テクノロジーをCloudflare Gateway Enterpriseに統合していきます。ブラウザー分離技術はCloudflareのグローバルネットワーク全体に適用されるので、ほぼすべてのインターネットユーザーに数ミリ秒以内で対応します。このアプローチの詳細については、Darren Remingtonの<a href="https://blog.cloudflare.com/cloudflare-and-remote-browser-isolation">ブログ記事</a>を参照してください。</p>
+	<p>ロールアウトが完了する2020年下半期には、パフォーマンスを犠牲にしない初の完全なブラウザー分離技術を提供できる予定です。それまでの間に、S2テクノロジーのデモを希望される場合は<a href="https://teams.cloudflare.com/gateway/index.html#get-notified" target="_blank">お問い合わせください</a>。</p>
+	<h2 id="--3"><strong>すべての人により速いインターネットを提供する約束</strong></h2>
+	<p>Cloudflareは、より良いインターネット環境の構築をサポートするという目標を掲げています。Cloudflare for Teamsでは、インターネットを使用して業務を行うユーザーや組織を守るために、ネットワークを拡張しました。従来のハードウェアアプライアンスを使用して、モバイルおよびクラウドに対応した近代的なインターネットをより安全かつ迅速に運用できるように支援できることを嬉しく思います。</p>
+	<p>しかし、エンタープライズセキュリティを向上させるために当社が現在展開しているテクノロジーには、さらに期待できることがあります。最も興味深いインターネットアプリケーションは、複雑になる一方で、より多くの帯域幅と処理能力を必要とします。</p>
+	<p>最新のiPhoneを運よく購入できる人々は、ますます強力なインターネット対応ツールのメリットを享受し続けることができます。しかし、数世代前の携帯電話でインターネットを使用してみると、時代遅れのデバイスでは最新のインターネットアプリケーションに対応できないのがわかります。あらたに40億人のインターネット利用者を迎え入れるにあたって、このことは問題になります。</p>
+	<p>アプリケーションの高度化とインタフェースの複雑化が、デバイスの開発スピードと同じペースで進むならば、パラダイムシフトが必要です。すべての人がインターネットを最大限に活用するには、ポケットに入れて持ち歩くエンドデバイスからインターネット作業を切り離し、パワー、帯域幅、CPUが比較的豊富なネットワークに負荷を負わせる必要があるかもしれません。</p>
+	<p>これは、S2のテクノロジーとCloudflareのネットワークの融合により、いつの日か実現することが期待されることです。これまで以上に少ないバッテリー、帯域幅、CPUを使用して、より安価なデバイス上で最新のインターネットアプリケーションを実行できれば、インターネットはより手頃な価格で誰もが利用できるものとなります。</p>
+	<p>当社はCloudflare for Infrastructureからスタートしました。本日、Cloudflare for Teamsを発表します。しかし、私たちの夢は、Cloudflare for Everyoneを立ち上げることにほかなりません。</p>
+	<h2 id="-cloudflare-for-teams-"><strong>お客様と提携先からのCloudflare for Teamsに関する初期のフィードバック</strong></h2>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/01/image10.png" class="kg-image"></figure>
+	<p><em>「Cloudflare Accessにより、Ziff Media Groupは、複雑なネットワークを構成することなく、あらゆるデバイスを利用する世界中の従業員に社内ツール一式をシームレスかつ安全に提供することが可能となりました」とZiff Media Group社、プロダクト&amp;テクノロジー担当SVP、Josh Butts氏は述べています。</em></p>
+	<hr>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/01/image11-1.png" class="kg-image"></figure>
+	<p><em>「VPNはフラストレーションがたまるもので、従業員とサポートするITスタッフは膨大な量の無駄な時間と労力を費やします」とUdaan社、共同創業者兼CTO、Amod Malviya氏は述べています。「また、従来のVPNは、従業員にセキュリティに対する誤った意識を植え付けることがあります。Cloudflare Accessを使用することで、ユーザーベースおよびアクセスベースで動作する、はるかに直感的で信頼性の高い安全なソリューションを提供できます。私はそれをAuthentication 2.0もしくはAuthentication 3.0だととらえています」</em></p>
+	<hr>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/01/image12.jpg" class="kg-image"></figure>
+	<p><em>「Roman Healthでは、ヘルスケアをアクセスしやすい便利なものにしました」とRoman Health社、エンジニアリングディレクター、Ricky Lindenhovius氏は述べています。「そのミッションの一部は、患者と医師をつなぐことです。Cloudflareにより、Roman Healthは医師が当社内で管理されたツールに安全かつ便利にアクセスできるようにすることができます。Cloudflareを使用することで、Roman Healthは、表示速度とユーザー体験を向上させる一方で、内部アプリケーションに対するアクセス許可と本人確認といったすべての要求を評価することができます」</em></p>
+	<hr>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/01/image12-1.png" class="kg-image"></figure>
+	<p><em>「Cloudflareとの提携を通じて、エンドポイント保護とネットワークセキュリティのメリットを組み合わせたエンタープライズセキュリティに対する革新的なアプローチをお客様に提供できることを嬉しく思います」とVMware社、ビジネス開発担当VP、Tom Barsi氏は述べています。「VMware Carbon Blackは、業界をリードするエンドポイント保護プラットフォーム(EPP)であり、ノートパソコン、サーバー、仮想マシン、大規模クラウドインフラストラクチャの優れた可視性と制御を提供します。Cloudflareと提携することで、CloudflareのZero TrustソリューションであるAccessを介したチームの内部管理アプリケーションに対してきめ細かい認証を実行するにあたって、お客様はVMware Carbon Blackのデバイスの健全性を信号として使用することができます。当社の共同ソリューションは、エンドポイント保護のメリットとゼロトラスト認証ソリューションを組み合わせることで、チームがインターネット上でより安全に作業できるようにします」</em></p>
+	<hr>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/01/image13.png" class="kg-image"></figure>
+	<p><em>「Rackspaceは、お客様のデジタルトランスフォーメーションのあらゆる段階でクラウドの価値を加速化するグローバルテクノロジーサービス分野におけるリーディングカンパニーです」とRackspace社、アライアンス&amp;チャネル担当バイスプレジデント、Lisa McLin氏は述べています。「Cloudflareとの提携により、最先端のネットワーキングパフォーマンスをお客様に提供し、ソフトウェア定義ネットワーキングアーキテクチャをクラウド化に利用できるようにします」</em></p>
+	<hr>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/01/image14.png" class="kg-image"></figure>
+	<p><em>「本社オフィス外で働く従業員が増えています。分散ユーザーやリモートユーザーはインターネットに接続する必要がありますが、今日のセキュリティソリューションでは、本社を通じてそうした接続をバックホールという手法を用いて同レベルのセキュリティを確保することが多いです」とMicro Cloud社、ストラテジー&amp;ビジネスデベロップメント担当ヘッド、Michael Kenney氏は述べています。「Cloudflareのグローバルネットワークにより、企業にとって不可欠である、あらゆる規模のチームが社内で管理するアプリケーションにアクセスする、インターネットを安全に使用する、データ、デバイス、チームメンバーを保護する、といったことを実現できます。Cloudflareと恊働できることを嬉しく思います」</em></p>
+	<hr>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/01/image15.png" class="kg-image"></figure>
+	<p><em>「Oktaは、あらゆる企業がテクノロジーを安全に使用できるようにするというミッションを掲げています。企業向けID管理ソリューションのリーディングプロバイダーであるOktaは、企業がすべての接続における企業IDおよびアプリケーションへのユーザーの要求を管理するにあたって生じるストレスを軽減します。Cloudflareとの提携を通じて、あらゆる規模のチームにシームレスな認証と接続を提供できることを嬉しく思います」とOkta社、コーポレート&amp;ビジネスデベロップメント担当VP、Chuck Fontana氏は述べています。</em></p>
+	<hr>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/01/image16.png" class="kg-image"></figure>
+	<p><em>「企業は、1つの統合された場所でエンドポイントを表示、保護、管理する必要があります」とTanium社、プロダクトマネジメント担当シニアディレクター、Matt Hastings氏は述べています。「Cloudflareとの提携を通じて、チームがデータ、オフネットワークデバイス、アプリケーションを保護できるようになり嬉しく思います。Taniumのプラットフォームは、エンドポイントを瞬時に可視化して制御することで、運用とセキュリティに対してリスクベースのアプローチをお客様に提供します。Cloudflareは、デバイスデータを組み込み、保護されたリソースに対するすべての接続にセキュリティを適用することで、保護レベルを高めてくれます」</em></p>
+	<hr>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/01/image17.png" class="kg-image"></figure>
+	<p><em>「OneLoginは、Cloudflareとの提携を通じて、オンプレミスでもクラウドでも、ユーザーのパフォーマンスを阻害することなくセキュリティチームのID管理を向上させることができます」とOneLogin社、プロダクト担当シニアディレクター、Gary Gwin氏は述べています。「OneLoginのID管理プラットフォームとアクセス管理プラットフォームは、すべてのユーザー、すべてのアプリ、すべてのデバイスについて、人とテクノロジーを安全につなげます。OneLoginとCloudflare for Teamsの統合は、あらゆる規模のチームに包括的なID管理ソリューションとネットワーク制御ソリューションを提供します」</em></p>
+	<hr>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/01/image18.png" class="kg-image"></figure>
+	<p><em>「Ping Identityは、企業がデジタルビジネスにおけるセキュリティとユーザー体験を向上させるお手伝いをしています」とPing社、プロダクトマネジメント担当バイスプレジデント、Loren Russon氏は述べています。「Cloudflare for TeamsとPing Identityの統合は、あらゆる規模のチームに包括的なID管理ソリューションおよびネットワーク制御ソリューションを提供し、適切なユーザーのみがアプリケーションにシームレスかつ安全にアクセスできるようにします」</em></p>
+	<hr>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/01/image19-2.png" class="kg-image"></figure>
+	<p><em>「当社のお客様は、運用上とセキュリティ上のユースケースの両方に対応するために、深い観測可能性データをますます利用するようになっています。当社がDatadog Security Monitoringを立ち上げたのはそのためです」とDatadog社、プロダクトマネジメント担当ディレクター、Marc Tremsal氏は述べています。「Cloudflareとの統合により、お客様はWebトラフィックおよびDNSトラフィックをすでに可視化しています。Cloudflare for Teamsを通じて、この可視性を企業環境にも適用できることを嬉しく思います」</em></p>
+	<hr>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/01/image20.png" class="kg-image"></figure>
+	<p><em>「オフィス外から企業のアプリケーションにアクセスして作業をする従業員をサポートする企業が増えるにつれて、各ユーザーの要求内容を理解することが重要です。インシデントに対応して、安全な接続を確認するには、リアルタイムのインサイトとインテリジェンスが必要です」とSumo Logic社、ビジネスデベロップメント担当VP、John Coyle氏は述べています。「Cloudflareとの提携により、お客様は内部アプリケーションに対するすべての要求をログに記録し、保持と分析のためにSumo Logicに自動的に直接プッシュできるようになりました」</em></p>
+	<hr>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/01/image21-1.png" class="kg-image"></figure>
+	<p><em>「Cloudgenixは、Cloudflareと提携し、ブランチからクラウドへのエンドツーエンドのセキュリティソリューションを提供できることを嬉しく思います。企業が高価なレガシーMPLSネットワークから移行し、ブランチからインターネットブレイクアウトへのポリシーを採用するにあたり、CloudGenix CloudBladeプラットフォームとCloudflare for Teamsは、この移行をシームレスかつ安全なものにします。今回の発表と提携によって提供されるCloudflareのロードマップを期待しています」とCloudgenix社、フィールド担当CTO、Aaron Edwards氏は述べています。</em></p>
+	<hr>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/01/image22.png" class="kg-image"></figure>
+	<p><em>「サイバーセキュリティリソースが限られている状況において、企業は今日のサイバーリスクの可能性と影響を軽減するのに役立つ高度に自動化されたソリューションを探しています」とMalwarebytes社、最高製品責任者、Akshay Bhargava氏は述べています。「MalwarebytesとCloudflareを組み合わせることで、企業は20層以上の多層防御によるセキュリティ対策を講じることができます。たった2つのソリューションを使用するだけで、チームは、デバイスからネットワーク、社内外のアプリケーションまで、企業全体を保護できます」</em></p>
+	<hr>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/01/image23.png" class="kg-image"></figure>
+	<p><em>「社内の機密データは、インターネット上での転送時や、パブリッククラウド、SaaSアプリケーション、エンドポイントの宛先での保存時に、攻撃を受けやすい状況となります」とCipherCloud社、CEO、Pravin Kothari氏は述べています。「CipherCloudはCloudflareと提携し、どこにいてもあらゆる段階でデータを保護できることを嬉しく思います。Cloudflareのグローバルネットワークは、パフォーマンスを低下させることなく、転送中のデータを保護します。CipherCloud CASB+は、クラウド環境、SaaSアプリケーション、およびBYODエンドポイント向けのエンドツーエンドのデータ保護と適応制御を備えた強力なクラウドセキュリティプラットフォームを提供します。今回の提携を通じて、チームはCloudflareとCipherCloudの統合ソリューションを使用して、ユーザー体験を損なうことなくデータを常に保護することができます」</em></p>
+	<hr>
+</div>

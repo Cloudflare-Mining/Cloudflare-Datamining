@@ -1,0 +1,186 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/08/unnamed-1.png" class="kg-image" alt="The mechanics of a sophisticated phishing scam and how we stopped it"></figure>
+	<p>2022 年 8 月 9 日，Twilio 宣布 <a href="https://www.twilio.com/blog/august-2022-social-engineering-attack" target="_blank">遭到一次针对性的网络钓鱼攻击</a>。在Twilio 受到攻击的大约同一时间，我们发现了一次针对 Cloudflare 员工的类似攻击。虽然确实有个别员工上当受骗，然而，通过使用我们自己的 <a href="https://www.cloudflare.com/cloudflare-one/" target="_blank">Cloudflare One 产品</a>，以及发放给每位员工的物理安全密钥（用于访问我们的所有应用），我们成功防御了这次攻击。</p>
+	<p>我们确认没有任何 Cloudflare 系统受到入侵。我们的 <a href="https://blog.cloudflare.com/zh-cn/introducing-cloudforce-one-threat-operations-and-threat-research-zh-cn/">Cloudforce One 威胁情报团队</a> 能够执行额外的分析来进一步剖析攻击的机制，并收集关键的证据来协助追踪攻击者。</p>
+	<p>这是一次针对员工和系统的复杂攻击，我们认为大多数组织都有可能遭到入侵。鉴于攻击者以多个组织为目标，我们希望分享我们所看到的详细情况，以帮助其他公司识别和缓解这一攻击。</p>
+	<h2 id="-">针对性的短信</h2>
+	<p>2022 年 7 月 20 日，Cloudflare 安全团队收到员工报告，称收到了看似合法的短信，指向一个似乎是 Cloudflare Okta 登录页面。这些信息开始于 2022 年 7 月 20 日 22:50 UTC。在不到一分钟内，至少 76 位员工在其个人和工作手机上收到了短信。一些信息也发送给了员工的家属。我们还未能确定攻击者如何收集到这些员工的电话号码，但已经检查过我们员工目录服务的访问日志，没有发现任何入侵的迹象。</p>
+	<p>Cloudflare 运营一个全天候的安全事件响应团队（SIRT）。Cloudflare 的每位员工都受过向 SIRT 报告任何可疑情况的训练。SIRT 收到的报告中，超过 90% 被确认并非威胁。员工被鼓励报告任何情况，过度举报也没有关系。然而，这次 SIRT 收到的报告是一次真正的威胁。</p>
+	<p>员工收到的短信如下：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/08/image3-5.png" class="kg-image"></figure>
+	<p>它们来自与 T-Mobile SIM 卡相关的四个电话号码：(754)268-9387、(205)946-7573、(754)364-6683和(561)524-5989。它们指向一个看似官方的域：cloudflare-okta.com。该域是通过域名注册机构 Porkbun 于 2022 年 7 月 20 日 22:13:04 UTC 注册，距离上述网络钓鱼攻击发动不到 40 分钟。</p>
+	<p>Cloudflare 构建自己的<a href="https://www.cloudflare.com/products/registrar/custom-domain-protection/" target="_blank">安全注册产品</a>，部分是为了能够监控使用 Cloudflare 品牌的域名被注册的情况，并及时将其关闭。然而，由于这个域注册时间很短，尚未作为新的 .com 注册发布，以至于我们的系统未能检测到其注册，我们的团队尚未采取行动来将其终止。</p>
+	<p>一旦点击上述链接，就会进入一个网络钓鱼页面。该钓鱼页面托管于 DigitalOcean，看起来是这样的：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/08/image1-13.png" class="kg-image"></figure>
+	<p>Cloudflare 使用 Okta 作为身份提供商。该钓鱼页面设计成与合法的 Okta 登录页面完全相同。该钓鱼页面提示访问页面的人输入用户名和密码。</p>
+	<h2 id="--1">实时网络钓鱼</h2>
+	<p>根据员工收到的内容，以及其他遭攻击公司在 VirusTotal 等服务发布的内容，我们得以分析了这次<a href="https://www.cloudflare.com/learning/email-security/what-is-email-security/" target="_blank">网络钓鱼攻击</a>的有效负载。受害者在钓鱼页面提交后，其凭据被即时通过信息服务 Telegram 转发给攻击者。这种实时转发很重要，因为该钓鱼页面也会提示输入基于时间的一次性密码（TOTP）。</p>
+	<p>估计攻击者会实时收到凭据，并在受害者公司的实际登录页面输入，而对很多组织而言，这一操作会生成一个代码以通过短信发送给员工，或显示在密码生成器上。然后员工将在钓鱼站点上输入 TOTP，后者也会被转发给攻击者。随后攻击者会在 TOTP 代码过期前使用它来登录该公司的实际登录页面，从而击败大多数双因素身份验证措施。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/08/image2-6_1_zh-CN.png" class="kg-image"></figure>
+	<h2 id="--2">尽管不完美，但仍受到保护</h2>
+	<p>我们证实三位 Cloudflare 员工被钓鱼信息骗到并输入了凭据。然而，Cloudflare 并不使用 TOTP 代码。实际上，Cloudflare 的每一位员工从 YubiKey 这样的供应商获发放一个 FIDO2 兼容的安全密钥。由于该硬件密钥与用户关联，并实施<a href="https://www.yubico.com/blog/creating-unphishable-security-key/" target="_blank">源绑定</a>，即使这样复杂的实时钓鱼攻击也无法收集到足够的信息来登录到我们的任何系统。虽然攻击者尝试使用泄露的用户名和密码凭据登录我们的系统，但他们无法通过硬件密钥的要求。</p>
+	<p>但这个钓鱼页面并非只是为了获取登录凭据和 TOTP 代码。如果有人通过了这些步骤，钓鱼页面就会开始下载钓鱼有效负载，其中包括 AnyDesk 的远程访问软件。该软件一旦被安装，攻击者就能远程控制受害者的机器。我们确认，我们没有任何团队成员走到了这一步。然而，如果确实到了这一步，我们的端点安全软件也会阻止该远程访问软件的安装。</p>
+	<h2 id="--3">我们如何响应？</h2>
+	<p>我们对该事件采取的主要响应行动如下：</p>
+	<h3 id="1-cloudflare-gateway-">1. 用 Cloudflare Gateway 阻止该钓鱼域名。</h3>
+	<p>Cloudflare Gateway 是一个<a href="https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway/" target="_blank">安全 Web 网关</a>解决方案，提供威胁和数据保护，兼具 DNS/HTTP 过滤功能，并原生集成 <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/" target="_blank">Zero Trust</a>。我们在内部使用这个解决方案，以主动识别恶意域名并予以阻止。我们的团队将恶意域名加入到 Cloudflare Gateway，以阻止所有员工对其进行访问。</p>
+	<p>Gateway 对恶意域名的自动检测也识别出了该域名并将其屏蔽，但由于该域名注册并发送消息的时间间隔非常短，在一些员工点击这些链接之前，系统尚未自动采取行动。鉴于这次事件，我们正在努力加快识别和阻止恶意域名的速度。我们还实施了对新注册域名的访问控制，这一功能已经向客户提供，但我们内部还没有实施。</p>
+	<h3 id="2-cloudflare-">2. 识别所有受影响的 Cloudflare 员工，并重置被泄露的凭据</h3>
+	<p>我们对网络钓鱼短信的收件人与登录活动进行比对，识别威胁行为者利用我们员工账户登录的尝试。我们识别了因硬件密钥（U2F）要求而被阻止的登录尝试，其表明已输入正确密码但第二因素未通过验证。对于三位员工已泄露的凭据，我们重置了其凭据和任何活动会话，并对其设备进行扫描。</p>
+	<h3 id="3-">3. 识别和下线威胁行为者的基础设施</h3>
+	<p>威胁行为者的网络钓鱼域是通过 Porkbun 新注册的，托管在 DigitalOcean上。针对 Cloudflare 的钓鱼域是在首轮钓鱼攻击发动前不到一小时内设置的。该站点使用 Nuxt.js 前端，Django 后端。我们与 DigitalOcean 合作关闭了攻击者的服务器。我们还与 Porkbun 合作获得了对该恶意域的控制权。</p>
+	<p>从失败的登录尝试中，我们能够确定威胁行为者利用了 Mullvad VPN 软件，且显然是在 Windows 10 机器上使用谷歌 Chrome浏览器进行操作。攻击者使用的 VPN IP 地址为198.54.132.88 和 198.54.135.222。这些 IP 地址被分配给美国专业服务器提供商 Tzulo，该公司网站声称他们的服务器位于洛杉矶和芝加哥。实际上，看起来前者运行于位于多伦多地区的一台服务器上，后者运行在华盛顿特区地区的一台服务器上。我们阻止了这些 IP 地址访问我们的任何服务。</p>
+	<h3 id="4-">4. 更新检测，以识别任何后续的攻击企图</h3>
+	<p>根据从这一攻击中获得的信息，我们将更多信号加入到原有的检测机制中，以专门识别这一攻击行为者。截至本文撰写时，我们还没有发现任何针对我们员工的更多攻击。然而，来自该服务器的情报显示，攻击者当时还对其他组织发动了攻击，包括 Twilio。我们与这些组织取得联系，并分享了有关攻击的情报。</p>
+	<h3 id="5-">5. 审计服务访问日志，以确定是否有其他攻击迹象</h3>
+	<p>以上攻击之后，我们筛查所有系统日志，以寻找来自这个特定攻击者的任何额外指纹。鉴于 Cloudflare Access 是所有Cloudflare 应用的中央控制点，我们可以搜索日志以查找攻击者可能破坏了任何系统的任何迹象。鉴于员工的电话成为了目标，我们也仔细检查了员工目录提供商的日志。我们没有发现任何破坏迹象。</p>
+	<h2 id="--4">吸取的教训及正在采取的额外措施</h2>
+	<p>我们从每一个攻击中学习。即使攻击没有成功，我们也正在根据所了解到的情况进行额外的调整。我们正在调整 Cloudflare Gateway 的设置，以限制或隔离对 24 小时内注册的域上所运行网站的访问。任何包含“cloudflare”、“okta”、“sso”和“2fa”等术语但不在允许列表中的网站，也将通过我们的浏览器隔离技术运行。我们也越来越多地使用 <a href="https://www.cloudflare.com/products/zero-trust/email-security/" target="_blank">Cloudflare Area 1 </a>的网络钓鱼识别技术来扫描 Web，寻找任何针对 Cloudflare 的网页。最后，我们正在加强 Access 实施，以防止来自未知 VPN、民用代理和基础设施提供商的任何登录。这些都是我们提供给客户的相同产品的标准功能。</p>
+	<p>这一攻击还使我们目前做得好的三件事情变得更加重要。第一，要求硬件密钥来访问所有应用。和 <a href="https://krebsonsecurity.com/2018/07/google-security-keys-neutralized-employee-phishing/" target="_blank">Google </a>一样，自从推出硬件密钥以来，我们还没有遭遇任何成功的钓鱼攻击。通过像 Cloudflare Access 这样的工具，即使对传统应用使用硬件密钥也变得简单易行。如果您的组织对我们如何推出硬件密钥感兴趣，请联系<a href="/cdn-cgi/l/email-protection#8be8e7e4feefede4f9e8eee4e5eea6e2f9e3eee7fbcbe8e7e4feefede7eaf9eea5e8e4e6"><span class="__cf_email__" data-cfemail="bdded1d2c8d9dbd2cfded8d2d3d890d4cfd5d8d1cdfdded1d2c8d9dbd1dccfd893ded2d0">[email&nbsp;protected]</span></a>，我们的安全团队将乐于分享我们在此过程中学到的最佳实践。</p>
+	<p>第二，使用 Cloudflare 自身技术来保护我们的员工和系统。Cloudflare One 的 Access 和 Gateway 等解决方案对于在这次攻击中保持领先至关重要。我们实施的 Access 要求对每一个应用使用硬件密钥。它还为所有应用的身份验证创建一个中央日志位置。如有必要，我们还可以在这里终止可能受到入侵的员工的会话。Gateway 让我们能够迅速关闭类似这样的恶意网站，并了解哪些员工可能已被攻击所欺骗。这些都是我们作为 Cloudflare One 套件的一部分向 Cloudflare 客户提供的功能，而这次攻击证明了它们的有效性。</p>
+	<p>第三，拥有多疑但不责难的文化对安全至关重要。落入网络钓鱼骗局的三名员工没有受到训斥。我们都是人，都会犯错。至关重要的是，如果确实犯错了，就要上报而非隐瞒。这起事件再次证明了为什么安全是 Cloudflare 每个团队成员工作的一部分。</p>
+	<h2 id="--5">事件的时间线</h2>
+	<!--kg-card-begin: markdown-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg">
+		<thead>
+			<tr>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2022-07-20 22:49 UTC</span></th>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">攻击者向 Cloudflare 员工及其家人发送了100 多条短信。</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2022-07-20 22:50 UTC</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">员工开始向 Cloudflare 安全团队报告短信。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2022-07-20 22:52 UTC</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">证实攻击者的域在用于企业设备的 Cloudflare Gateway 中被阻止。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2022-07-20 22:58 UTC</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">通过聊天软件和电子邮件向所有员工发送警告信息。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2022-07-20 22:50 UTC 至</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2022-07-20 23:26 UTC</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">监控 Okta 系统日志和 Cloudflare Gateway HTTP 日志中的遥测信息，以定位凭据泄露。在发现后清除登录会话并暂停帐户。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2022-07-20 23:26 UTC</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">钓鱼网站被托管服务商下线。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2022-07-20 23:37 UTC</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">重置泄露的员工凭据。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2022-07-21 00:15 UTC</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">深挖攻击者的基础设施和能力</span></td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<h2 id="--6">破坏的指标</h2>
+	<!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-nr0u {
+			border-color: inherit;
+			font-family: inherit;
+			font-size: 100%;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-0pky {
+			border-color: inherit;
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg">
+		<thead>
+			<tr>
+				<th class="tg-nr0u">值</th>
+				<th class="tg-0pky">类型</th>
+				<th class="tg-0pky">上下文和 MITRE 映射</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0pky">cloudflare-okta[.]com 托管于 147[.]182[.]132[.]52</td>
+				<td class="tg-0pky">网络钓鱼 URL</td>
+				<td class="tg-0pky"><a href="https://attack.mitre.org/techniques/T1566/002/" target="_blank">T1566.002</a>: 网络钓鱼：发送给用户的鱼叉式网络钓鱼链接。</td>
+			</tr>
+			<tr>
+				<td class="tg-0pky">64547b7a4a9de8af79ff0eefadde2aed10c17f9d8f9a2465c0110c848d85317a</td>
+				<td class="tg-0pky">SHA-256</td>
+				<td class="tg-0pky"><a href="https://attack.mitre.org/techniques/T1219/" target="_blank">T1219</a>: 威胁者分发的远程访问软件</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: html-->
+	<h2 id="--7">你可以做什么</h2>
+	<p>如果您的环境遭遇到类似攻击，请随时联系 <a href="/cdn-cgi/l/email-protection#cdaea1a2b8a9aba2bfaea8a2a3a8e0a4bfa5a8a1bd8daea1a2b8a9aba1acbfa8e3aea2a0"><span class="__cf_email__" data-cfemail="88ebe4e7fdeceee7faebede7e6eda5e1fae0ede4f8c8ebe4e7fdeceee4e9faeda6ebe7e5">[email&nbsp;protected]</span></a>，我们乐于分享有关保障企业安全的最佳实践。最后，如果你想和我们一起检测并缓解下一次的攻击，我们的检测和响应团队正在招聘，<a href="https://boards.greenhouse.io/cloudflare/jobs/4364485?gh_jid=4364485" target="_blank">欢迎加入我们</a>！</p>
+</div>

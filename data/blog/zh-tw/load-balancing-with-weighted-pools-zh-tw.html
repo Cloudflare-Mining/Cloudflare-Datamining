@@ -1,0 +1,61 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/08/image1-1.png" class="kg-image" alt="Load Balancing with Weighted Pools"></figure>
+	<p>任何人都可以利用 Cloudflare 覆蓋廣泛的網路來保護和加速線上業務。我們<a href="https://www.cloudflare.com/network/" target="_blank">數量巨大的資料中心</a>以及它們與世界各地網際網路使用者的鄰近性，讓我們能夠保護和加速客戶的網際網路應用程式、API 與網站。即使使用<a href="https://www.cloudflare.com/learning/cdn/glossary/origin-server/" target="_blank">單個原始伺服器</a>的簡單服務，也可充分利用覆蓋 270 多個城市的 Cloudflare 網路的龐大規模。使用 Cloudflare 快取，您無需購買新的伺服器，即可支援更多請求和使用者。</p>
+	<p>無論是透過備援保證高可用性，還是支援更多動態內容，越來越多的服務意味著需要多個原始伺服器。Cloudflare 負載平衡器可讓客戶的服務保持高可用性，並且可以更加簡單地在多個原始伺服器之間分佈請求。今天，我們很高興地推出一個呼聲很高的負載平衡器功能——加權集區！</p>
+	<h2 id="-">什麼是加權集區？</h2>
+	<p>在回答這個問題之前，我們先快速看一下負載平衡器的工作原理，並定義幾個詞彙：</p>
+	<p><strong>原始伺服器</strong> - 位於 Cloudflare 後方的伺服器，通常位於客戶自有的資料中心或公共雲端提供者中。</p>
+	<p><strong>原始集區</strong> - 原始伺服器的邏輯集合。大多數集區的命名可體現資料中心或雲端提供者，例如「us-east」、「las-vegas-bldg1」或「phoenix-bldg2」。建議使用集區來代表同一實體位置的伺服器集合。</p>
+	<p><strong>流量導引原則</strong> - 用來指定負載平衡器如何在原始集區之間導引請求的原則。依據導引原則，請求可能被傳送至由維度和經度定義的最近集區、具有最低等待時間的原始集區，或根據 Cloudflare 資料中心的位置進行傳送。</p>
+	<p><strong>集區權重</strong> - 一個數值，用來描述應傳送至某個集區的請求百分比，該百分比與其他集區相對應。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/08/image6.png" class="kg-image" alt="Diagram showing a request arriving at Cloudflare and two load balancer origin pools with equal weights"></figure>
+	<p>對於附加有負載平衡器的主機名稱，當訪客請求到達 Cloudflare 網路時，負載平衡器必須決定將請求轉發至何處。客戶可以透過流量導引原則設定這一行為。</p>
+	<p>Cloudflare 負載平衡器現已支援<a href="https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/steering-policies/" target="_blank">標準導引、地理導引、動態導引和鄰近性導引</a>。這些流量導引原則中的每一個都能控制請求在原始集區之間的分佈方式。加權集區是我們的標準、隨機導引原則的擴充，可指定應向各個集區傳送多少相對百分比的請求。</p>
+	<p>在上面的範例中，我們的負載平衡器有兩個原始集區，分別是「las-vegas-bldg1」（客戶運作的資料中心）和「us-east-cloud」（具有多個虛擬伺服器的公共雲端提供者）。每個集區的權重是 0.5，因此應分別有 50% 的請求被傳送至每個集區。</p>
+	<h2 id="--1">為何要為原始集區指派權重？</h2>
+	<p>在我們構建加權集區之前，它是客戶呼聲很高的功能。這個功能讓我們如此興奮的部分原因是它可用於解決很多種問題。</p>
+	<h3 id="--2">大小不相等的原始集區</h3>
+	<p>在下面的範例中，由於大型銷售促銷，動態和不可快取流量顯著增加。管理員注意到，他們拉斯維加斯資料中心的負載過高，因此他們選擇動態增加公共雲端提供者內的源站數量。我們的兩個集區「las-vegas-bldg1」和「us-east-cloud」的大小不再相等。現在，代表公共雲端提供者的集區更大，因此管理員變更了集區的權重，使雲端集區接收 0.8 (80%) 的流量，而拉斯維加斯集區接收 0.2 (20%) 的流量。管理員能夠使用集區權重非常快速地調整請求在大小不相等的集區之間的分佈。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/08/image3.png" class="kg-image" alt="Diagram showing a request arriving at Cloudflare, and two load balancer origin pools. One pool is larger and has a weight of 80 percent."></figure>
+	<h3 id="--3">資料中心不再需要交換機</h3>
+	<p>除了平衡大小不相等的集區，加權集區還可用來使資料中心（原始集區）完全停止運轉，只需將集區的權重設定為 0 即可實現。當在疑難排解期間需要快速排除資料中心時，或者在可能無法供電的主動維護期間，該功能特別有用。即使已透過 0 權重停用集區，Cloudflare 也仍會監控集區的健康情況，從而讓管理員能夠評估何時可以安全恢復流量。</p>
+	<h3 id="-a-b-">網路 A/B 測試</h3>
+	<p>一個令我們激動的最終使用案例是，能夠使用權重將非常少量的請求引導至某個集區。團隊是否剛剛建立全新的資料中心？或者，可能將所有伺服器升級至新軟體版本？使用加權集區，管理員可使用負載平衡器對網路進行有效的 A/B 測試。僅傳送 0.05 (5%) 的請求至新集區，驗證源站是否能正常運作，然後再逐漸增加負載。</p>
+	<h2 id="--4">我應如何開始？</h2>
+	<p>設定負載平衡器時，需要設定一個或多個原始集區，然後將源站置於各個集區中。如果您有多個集區，就可使用各個集區的相對權重來分佈請求。</p>
+	<p>若要使用儀表板設定加權集區，請在<strong>流量 &gt; 負載平衡</strong>區域建立負載平衡器。</p>
+	<p>設定負載平衡器後，您將被導覽至<strong>原始集區</strong>設定頁面。在「流量導引原則」下，選取<strong>隨機</strong>，然後為每個集區指派相對權重。</p>
+	<p>權重的和不等於 1.00 (100%) 也沒有問題！我們將在幕後進行運算，確定該集區相對於其他集區應接收多少流量。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/08/image4.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/08/image2.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/08/image5-1.png" class="kg-image"></figure>
+	<p>加權集區還可透過 API 進行設定。我們編輯了一個說明 REST API 相關部分的範例。</p>
+	<ul>
+		<li>負載平衡器應採用隨機「steering_policy」。</li>
+		<li>每個集區都有一個 UUID，然後可以為其指派「pool_weight」。</li>
+	</ul>
+	<!--kg-card-begin: markdown-->
+	<pre><code> {
+    "description": "Load Balancer for www.example.com",
+    "name": "www.example.com",
+    "enabled": true,
+    "proxied": true,
+    "fallback_pool": "9290f38c5d07c2e2f4df57b1f61d4196",
+    "default_pools": [
+        "9290f38c5d07c2e2f4df57b1f61d4196",
+        "17b5962d775c646f3f9725cbc7a53df4"
+    ],
+    "steering_policy": "random",
+    "random_steering": {
+        "pool_weights": {
+            "9290f38c5d07c2e2f4df57b1f61d4196": 0.8
+        },
+        "default_weight": 0.2
+    }
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>我們很高興能夠推出這個簡單但無比強大的功能。客戶可採用大量有創意的新方法來使用加權集區，以解決負載平衡挑戰。今天，有負載平衡器的所有客戶都可使用該功能了！</p>
+	<p>開發人員文件：<br><a href="https://developers.cloudflare.com/load-balancing/how-to/create-load-balancer/#create-a-load-balancer" target="_blank">https://developers.cloudflare.com/load-balancing/how-to/create-load-balancer/#create-a-load-balancer</a></p>
+	<p>API 文件：<br><a href="https://api.cloudflare.com/#load-balancers-create-load-balancer" target="_blank">https://api.cloudflare.com/#load-balancers-create-load-balancer</a></p>
+</div>

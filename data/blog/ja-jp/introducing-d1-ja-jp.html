@@ -1,0 +1,100 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image1-23.png" class="kg-image" alt="Announcing D1: Our first SQL database"></figure>
+	<p>当社は2017年にCloudflare Workersを<a href="https://blog.cloudflare.com/introducing-cloudflare-workers/">発表</a>しました。これは、当社のネットワーク上のコンピューティングへのアクセスを開発者に提供するものです。私たちは、このことによって生まれる可能性に胸を躍らせていましたが、すぐに、現実世界のほとんどのアプリケーションはステートフルであることに気づきました。それ以来、私たちはKV、Durable Objects、R2を提供し、開発者がさまざまなタイプのストレージにアクセスできるようにしました。</p>
+	<p>本日、当社では初のSQLデータベースである「D1」を発表できることを大変嬉しく思います。</p>
+	<p>ベータ版をご利用いただけるまで、あとわずかとなっております。早ければ6月頃から開始する予定で（<a href="https://www.cloudflare.com/lp/d1/" target="_blank">ご登録はこちらから</a>）、今後の詳細について皆さんにお伝えしたいと思います。</p>
+	<h2 id="d1-cloudflare-workers-">D1との出会い、Cloudflare Workers用に設計されたデータベース</h2>
+	<p>D1は、SQLiteをベースに構築されています。SQLiteは世界で最もユビキタスなデータベースで、1日に何十億ものデバイスで使用されているだけでなく、史上初の<em>サーバーレス</em>データベースでもあるのです。驚かれたでしょうか？SQLiteは時代を先駆けており、クラウドサービスの意味合いが強くなる前に自らを「<a href="https://www.sqlite.org/serverless.html" target="_blank"> サーバーレス</a>」と呼びました。もともとは文字通り「サーバーを介さない」ことを意味していたのです。</p>
+	<p>Workers自体がサーバーとクライアントの間で動作し、クライアント用に作られた技術にインスパイアされているため、SQLiteは当社の導入する最初のデータベースとして最適であると考えた結果です。</p>
+	<p>では、D1を使用するとどのようなものが作れるのでしょうか？言ってしまえば「ほとんど何でも！」ですが、それでは想像力をかき立てられないかもしれませんので、ライブデモをご紹介したいと思います。</p>
+	<h2 id="d1-">D1デモ：ノースウィンドトレーダーズ</h2>
+	<p>D1の動作例は、こちらのデモをご試用いただきご確認ください：<a href="https://northwind.d1sql.com/" target="_blank">northwind.d1sql.com</a>。</p>
+	<p>「ノースウィンドトレーダーズって誰？」という方へ説明すると、ノースウィンドトレーダーズとはデータベースの「Hello, World!」と言えばお判りでしょうか。マイクロソフトが自社のチュートリアルとして、Microsoft Accessと一緒に提供するサンプルデータベースです。最初に登場したのは25年前の1997年ですが、インターネット上に数多くの使用例が存在します。</p>
+	<p>これは典型的なビジネスアプリケーションで、現実的なスキーマ、多くの外部キーがあり、それらが多くの異なるテーブルにまたがる、どの時代でも使用するデータ表現です。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image3-13.png" class="kg-image"></figure>
+	<p>「最近注文したケソ・カブラレス・チーズがいつ、どの船で出荷されたのか？」「チャイの注文について問い合わせがあったか？」「エキゾチック・リキッドはまだ39個の在庫があり、それぞれ18ドル。」などの情報を、すぐに知ることができます。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image2-14.png" class="kg-image"></figure>
+	<p>是非遊んでいただき、あらゆる角度から使用してみてください。ノースウインドトレーディングのビジネスに関するあらゆる疑問にお答えします。</p>
+	<p>また、ノースウィンドトレーダーズのデモにはダッシュボードもあり、バックグラウンドで発生しているD1のSQLクエリの詳細や指標を確認することもできます。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image5-5.png" class="kg-image"></figure>
+	<h2 id="d1--1">D1を使用すると何が作れるのか？</h2>
+	<p>デモ前の最初の質問に戻りますが、D1を使用すると何が作れるのでしょうか？</p>
+	<p>あなた自身、ノースウインドトレーディング社を自分で経営しているわけではありませんが、どこかで非常に似たようなソフトウェアを運営している可能性があるのではないでしょうか。Cloudflareのサービスの中核にあるものでさえ、データベースです。数々のテーブル、マテリアライズドビュー、ストアドプロシージャがあふれているSQLデータベースです。お客様が当社のダッシュボードを操作するたびに、そのデータベースの状態は変化します。</p>
+	<p>実世界の中で、データベースはあらゆるところに存在しています。今この記事を読んでいるWebブラウザの中にも、スマートフォンのあらゆるアプリの中にも、銀行取引、旅行予約、業務用アプリケーションのストレージにも、データベースは存在します。D1の目標は、電子商取引サイト、会計ソフト、SaaSソリューション、CRMなど、APIからリッチでパワフルなアプリケーションまで、あらゆるものの構築に貢献することです。</p>
+	<p>D1とCloudflare Accessを組み合わせて、組織内のユーザーだけが利用できる安全にロックされた内部ダッシュボードや管理ツールを作成することもできます。まさに、あなたの可能性は無限大です。</p>
+	<h2 id="d1--2">D1の開発者エクスペリエンス</h2>
+	<p>この記事では、D1が持つ能力と今後の機能について詳しく説明しますが、その中核にあるD1の強みは開発者エクスペリエンスです。D1を使用することで、何もない状態から完全なスタックアプリケーションに瞬時に移行できるのです。魔法のように開発ができるツールを使った時のことを思い出してください。これこそが、まさにWorkersとD1を使った開発で感じてもらいたいことなのです。</p>
+	<p>それを実感していただくために、次にご覧いただくようにD1を始めていきます。</p>
+	<h3 id="-d1-"><strong>最初のD1データベースを作成する</strong></h3>
+	<p>D1では、わずか数回のクリックでデータベースを作成することができ、その内容はテーブルの定義、データの挿入やアップロードを行うのみです。必要な場合以外はコマンドを覚える必要はありません。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image4-10.png" class="kg-image"></figure>
+	<p>もちろん、コマンドラインがお好きな方向けに、今週初めに<a href="https://blog.cloudflare.com/10-things-i-love-about-wrangler/">新しく改良されたWrangler 2</a>を発表しています。これは、Workersのラングリングとデプロイのための最高のツールで、また、すぐにD1のデプロイするためのツールになります。WranglerにはD1のネイティブサポートも含まれ、いくつかの簡単なコマンドでデータベースを作成、管理することができます。</p>
+	<!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 60.42084168336673%;"><iframe src="https://iframe.videodelivery.net/6bc08db0ee3524778effb6af3cbbf90f?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2F6bc08db0ee3524778effb6af3cbbf90f%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D9s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
+	<p></p>
+	<!--kg-card-end: html-->
+	<h3 id="worker-d1-">WorkerからD1にアクセスする</h3>
+	<p>WorkerへのD1の接続は、新しいバインディングを作成するのと同じくらい簡単です。Workerに接続する各D1データベースは、envパラメータに独自のバインディングで接続されます。</p>
+	<pre><code class="language-js">export default {
+  async fetch(request, env, ctx) {
+    const { pathname } = new URL(request.url)
+    if (pathname === '/num-products') {
+      const { result } = await env.DB.get(`SELECT count(*) AS num_products FROM Product;`)
+      return new Response(`There are ${result.num_products} products in the D1 database!`)
+    }
+  }
+}</code></pre>
+	<p>また、もう少し複雑な例では、Routerとパラメータ付きクエリを使用して、URLからデータベースへ安全にパラメータを渡すことができます。</p>
+	<pre><code class="language-js">import { Router } from 'itty-router';
+const router = Router();
+
+router.get('/product/:id', async ({ params }, env) =&gt; {
+  const { result } = await env.DB.get(
+    `SELECT * FROM Product WHERE ID = $id;`,
+    { $id: params.id }
+  )
+  return new Response(JSON.stringify(result), {
+    headers: {
+      'content-type': 'application/json'
+    }
+  })
+})
+
+export default {
+  fetch: router.handle,
+}</code></pre>
+	<h2 id="d1--3">D1に期待できることは？</h2>
+	<p>何よりもまず望むことは、お客様がコストを気にすることなくD1で開発いただくことです。</p>
+	<p>Cloudflareでは、お客様のデータを人質に取るようなことは考えておらず、D1もR2と同様に従量課金はありません。D1の価格は、ストレージ製品の価格と同様に、基本ストレージに加え、データベースの操作に対する課金を予定しています。</p>
+	<p>しかし、繰り返しになりますが、私たちは、お客様がコストを心配したり、ビジネスが軌道に乗って、より多くのストレージやアクティビティが必要になった場合にどうなるかを心配するようなことは望んでいません。私たちは、お客様が思いつく限りのシンプルなアプリケーションも複雑なアプリケーションも構築できるようにしたいと考えています。私たちは、D1が、どの同等の集中型ソリューションよりも低コストかつ優れたパフォーマンスを持つことを保証します。サーバーレスとCloudflareのようなグローバルネットワークが約束するのは、私たちのアーキテクチャによるパフォーマンスと、よりコストを抑えることです。</p>
+	<p>ここでは、D1での機能を少しご紹介します。</p>
+	<h3 id="-">リードレプリケーション</h3>
+	<p>D1では、アプリケーション全体の状態を一箇所に保存して、データセット全体に対して任意のクエリを実行できるようにしたいと考えています。それが、リレーショナルデータベースの強みです。</p>
+	<p>私たちは強力であることが面倒であることと同義であるべきだとは考えていません。ほとんどのリレーショナルデータベースは巨大かつモノリシックであり、レプリケーションの設定も簡単ではないため、一般的にほとんどのシステムは、すべての読み込みと書き込みは単一のインスタンスに戻るように設計されています。D1では、これとは異なるアプローチを採用しています。</p>
+	<p>D1では、お客様の手を煩わせることなく、Cloudflareのグローバルネットワークを活用したいと考えています。D1は、お客様のユーザーの近くにデータの読み取り専用のクローンを作成し、常に変更を反映させた状態で維持します。</p>
+	<h3 id="--1">バッチ処理</h3>
+	<p>アプリケーション内で行われる多くの操作は、単一のクエリを生成するだけではありません。せっかくロジックがお客様のユーザーの近くのWorkerで実行されていても、これらのクエリがそれぞれデータベース上で実行される必要がある場合、わざわざ1つずつ線を伝って送られるのでは非常に非効率的です。</p>
+	<p>D1のAPIにはバッチ処理機能があります。単一のSQL文を送信できる場所ならどこでも、それらを配列で提供することもできます。つまり、1回のHTTPラウンドトリップで複数の処理を実行できるのです。これは、アトミックな実行とコミットを必要とするトランザクションに最適です。</p>
+	<pre><code class="language-js">async function recordPurchase(userId, productId, amount) { 
+  const result = await env.DB.exec([
+    [
+      `UPDATE users SET balance = balance - $amount WHERE user_id = $user_id`,
+      { $amount: amount, $user_id: userId },
+    ],
+    [
+      'UPDATE product SET total_sales = total_sales + $amount WHERE product_id = $product_id',
+      { $amount: amount, $product_id: productId },
+    ],
+  ])
+  return result
+}</code></pre>
+	<h3 id="--2">組み込みコンピューティング</h3>
+	<p>しかし、私たちはさらに前進します。D1では、データベースの隣で直接実行されるWorkerコードの塊を定義することができ、完全な制御と最大のパフォーマンスをお届けします。各リクエストはまずお客様のユーザーの近くのWorkerに到達しますが、処理によっては、レプリカまたはプライマリのD1インスタンスと共にデプロイされた別のWorkerに引き継いで処理を完了させることができます。</p>
+	<h3 id="--3">バックアップと冗長性</h3>
+	<p>メインアプリケーションのデータベースに保存されているデータほど重要なものはありません。そこでD1では、CloudflareのクラウドストレージサービスであるR2にデータベースのスナップショットを定期的に自動保存し、ワンクリックで復元できるようにしています。また、Durable Objectsの冗長化ストレージ上に構築されているため、データベースは必要に応じて物理的に場所を移動することができ、結果的に最も壊滅的な問題からも数秒で自己回復することができるのです。</p>
+	<h3 id="--4">データのインポートとエクスポート</h3>
+	<p>D1は既にSQLite APIをサポートしているため、クエリを簡単に記述することができる一方で、クエリの実行にはデータが必要になる場合もあります。まったく新しいアプリケーションを作るのでなければ、他のソースやデータベースから既存のデータセットをインポートしたいと考えるでしょう。そのため、私たちはお客様自身のデータをD1に取り込めるように取り組んでいます。</p>
+	<p>同様に、SQLiteの利点の1つは移植性です。例えば、アプリケーションに専用のステージング環境があれば、そのデータのスナップショットをローカルマシンに複製し、それに基づいて開発を行うことができます。Pagesプロジェクトの新しいプルリクエストごとに、テストデータ一式と一緒に新しいデータベースを作成する機能など、より柔軟な機能を追加する予定です。</p>
+	<h2 id="--5">今後の展開は？</h2>
+	<p>これは、「we’re just getting started!（まだ始まったばかりです）」で締めなければ、Cloudflareの発表とは言えません。- その通りです！私たちは、当社のグローバルネットワークにあるデータベースが切り開くパワフルな可能性にとても興奮しています。D1とWorkerを使用して何を作るか、もうお考えでしょうか？<a href="https://www.cloudflare.com/lp/d1/" target="_blank">お客様について詳しくお聞かせください</a>。できる限り早急にご連絡させていただきます。早ければ2022年6月からベータ版への招待状をお送りしますので、是非ご覧ください。</p>
+</div>

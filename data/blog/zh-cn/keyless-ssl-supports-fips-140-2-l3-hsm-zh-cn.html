@@ -1,0 +1,126 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/1-4.png" class="kg-image" alt="Keyless SSL now supports FIPS 140-2 L3 hardware security module (HSM) offerings from all major cloud providers"></figure>
+	<p><strong>所有主流云提供商的硬件安全模块产品中储存的私有加密密钥现可用于保护 Cloudflare 全球边缘的 HTTPS 连接。</strong></p>
+	<p>Cloudflare 生成、保护和管理的 SSL/TLS 私钥可能比世界上任何组织都要多。私钥必须小心保护，因为攻击者一旦拥有私钥，便可以冒充合法站点并解密 HTTPS 请求。为了减轻这种风险，Cloudflare 在边缘有严格的密钥处理程序和<a href="https://blog.cloudflare.com/zh-cn/going-keyless-everywhere-zh-cn/">隔离层</a>，旨在不惜一切代价保护密钥。但是对于受到信息安全政策的规定，限定其能（或不能）在何处保管其密钥的少数客户来说，这些保护并不符合他们的要求。</p>
+	<p>正是针对这些客户，我们<a href="https://blog.cloudflare.com/announcing-keyless-ssl-all-the-benefits-of-cloudflare-without-having-to-turn-over-your-private-ssl-keys/">在 2014 年首次发布了无密钥 SSL（Keyless SSL）</a>，一种在我们网络内广泛使用的协议：每天在 Cloudflare 边缘建立的所有 TLS 握手均在一个无权访问客户私钥的过程中发生。取而代之，要求建立会话的数据被发送到另一个系统，在这个系统中执行必要的加密签名操作。对于 Cloudflare 上传或生成的密钥，我们默认会在Cloudflare系统中进行管理，但一些客户希望自行管理密钥。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/2-3.png" class="kg-image" alt="[LOGICAL DIAGRAM SHOWING PRIVATE KEYS STORED ON HSMs BEING USED FOR TLS HANDSHAKE]"></figure>
+	<p>一直以来，密钥放置于运行我们用于处理握手的<a href="https://github.com/cloudflare/gokeyless" target="_blank">开源 gokeyless 后台程序</a>的服务器上，或者安全存放于一个本地硬件安全模块（HSM）中，由 gokeyless 后台程序使用一个名为 PKCS#11 的标准协议与其交互。然而，随着金融服务、医疗保健、加密货币和其他高度监管或注重安全的公司转移到云，这些用户不可能将这些昂贵的硬件迁移到到亚马逊、谷歌、IBM 或微软那里堆叠起来。</p>
+	<p>对于这些客户，尤其是那些信息安全策略要求使用经 <a href="https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.140-2.pdf" target="_blank">FIPS 140-2 级别 3</a> 验证的HSM的客户，我们宣布无密钥 SSL 现在支持以下云托管的HSM：<a href="https://aws.amazon.com/cloudhsm/" target="_blank">Amazon 云 HSM</a>；<a href="https://cloud.google.com/kms/docs/hsm" target="_blank">Google 云 HSM</a>；<a href="https://cloud.ibm.com/catalog/infrastructure/hardware-security-module" target="_blank">IBM 云 HSM</a>；<a href="https://azure.microsoft.com/en-us/services/azure-dedicated-hsm/" target="_blank">Microsoft Azure 专用 HSM</a> 和<a href="https://azure.microsoft.com/en-us/updates/akv-managed-hsm-public-preview/" target="_blank">托管 HSM</a>。我们还支持实施 PKCS＃11 标准的任何其他 HSM，包括如<a href="https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modules/ncipher-thales-nshield-connect" target="_blank"> nCipher nShield Connect</a> 和 Thales Luna 系列这样的产品。</p>
+	<h3 id="hsm-">HSM 概述</h3>
+	<p>HSM 是专门设计的具有抗篡改能力，对一些缺陷（如侧通道攻击）进行了加固，并对加密操作（如签名和解密）进行优化的设备。这些设备可单独、作为扩展卡插入服务器或——在最近期——作为云服务部署。</p>
+	<p>供应商和安全专家通常建议在设备上生成密钥（并且永远不要离开），而不是在服务器上生成密钥并上传到 HSM。与通用服务器相比，HSM 具有更好的随机性保证，并且在以加密状态将密钥同步到磁盘之前，采取特殊的预防措施来保护内存中的密钥。当需要执行使用私钥的操作时，服务会使用 HSM 供应商提供的库对设备进行经验证过的 API 调用。</p>
+	<h3 id="hsm-fips-140-2-3">HSM 与 FIPS 140-2 级别 3</h3>
+	<p>HSM 通常根据联邦信息处理标准（FIPS）出版物 140-2：<a href="https://csrc.nist.gov/publications/detail/fips/140/2/final" target="_blank">加密模块安全要求</a>进行验证。该标准有 4 个级别，从 1 到 4，针对批准算法、安全功能、基于角色的访问控制和篡改检测和防御保护规定越来越严格的要求。</p>
+	<p>美国国家标准与技术研究所（NIST）发布以上方针，管理<a href="https://csrc.nist.gov/projects/cryptographic-module-validation-program/validated-modules" target="_blank">加密模块验证程序</a>，并发布一个<a href="https://csrc.nist.gov/projects/cryptographic-module-validation-program/validated-modules/search" target="_blank">可搜索的已验证模块数据库</a>，其中包括以下列出的产品。我们已经提供有关如何配合 Cloudflare 使用这些产品的说明。</p>
+	<h3 id="-">云产品入门</h3>
+	<p>全部现有无密钥 SSL 客户都可以立即使用此技术，您可以在 <a href="https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modules" target="_blank">https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modules 上</a>阅读有关说明。源代码可在 GitHub上获得： <a href="https://github.com/cloudflare/gokeyless" target="_blank">https://github.com/cloudflare/gokeyless</a> 。</p>
+	<h3 id="-microsoft-azure-hsm">端到端示例：Microsoft Azure 托管 HSM</h3>
+	<p>Microsoft 的 Azure Key Vault 团队于 2020 年 9 月 22 日<a href="https://azure.microsoft.com/en-us/updates/akv-managed-hsm-public-preview/" target="_blank">发布了托管 HSM公共预览版 </a>。该产品已通过 FIPS 140-2 级别 3 验证，并与 Azure 服务（例如 Azure 存储，Azure SQL 和 Azure 信息保护）集成。托管 HSM 的公共预览目前可以在以下地区提供：美国东部 2，美国中南部，北欧和西欧。</p>
+	<p>以下说明来自<a href="https://docs.microsoft.com/en-us/azure/key-vault/managed-hsm/quick-create-cli" target="_blank">快速入门：使用 Azure CLI指南来预配和激活托管 HSM</a>，其后是有关将托管 HSM 与 Cloudflare 结合使用的说明。这些命令在与 HSM 所在同一地区（美国中南部）创建的 Ubuntu VM 上运行；这也是我们将部署 Cloudflare 无密钥 SSL 后台程序的地方。</p>
+	<h3 id="-hsm">预配和激活 HSM</h3>
+	<p>首先，我们通过 CLI 登录，并在其中一个受支持的区域为托管 HSM 创建一个资源组。请注意，根据产品的预览状态，您可能会收到来自各种命令的警告。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>$ LOCATION=southcentralus; GROUPNAME=”HSMgroup”; HSMNAME=”KeylessHSM”
+$ az login
+$ az group create --name $GROUPNAME --location $LOCATION
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>接下来，我们预配 HSM 资源并通过下载<a href="https://docs.microsoft.com/en-us/azure/key-vault/managed-hsm/security-domain" target="_blank">安全域</a>来激活它。如下示例将管理访问权授予已登录用户以及另一个管理员，其 OID 可以通过在该用户登录的 CLI 中执行相同的 odi=$(…) 命令来获取。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>$ MYOID=$(az ad signed-in-user show --query objectId -o tsv)
+$ OTHERADMIN_OID=...
+
+$ az keyvault create --hsm-name $HSMNAME --resource-group $GROUPNAME --location $LOCATION --administrators $MYOID $OTHERADMIN_OID
+
+Argument '--hsm-name' is in preview and under development. Reference and support levels: https://aka.ms/CLI_refstatus
+Argument '--administrators' is in preview and under development. Reference and support levels: https://aka.ms/CLI_refstatus
+{- Finished ..
+  "id": "/subscriptions/.../resourceGroups/HSMgroup/providers/Microsoft.KeyVault/managedHSMs/Keyles
+sHSM",
+  "location": "southcentralus",
+  "name": "KeylessHSM",
+  "properties": {
+    "createMode": null,
+    "enablePurgeProtection": false,
+    "enableSoftDelete": true,
+    "hsmUri": "https://keylesshsm.managedhsm.azure.net/",
+    "initialAdminObjectIds": [
+      "$MYOID",
+      "$OTHERADMIN_OID"
+    ],
+    "provisioningState": "Succeeded",
+    "softDeleteRetentionInDays": 90,
+    "statusMessage": "The Managed HSM is provisioned and ready to use.",
+    "tenantId": "..."
+  },
+  "resourceGroup": "$GROUPNAME",
+  "sku": {
+    "family": "B",
+    "name": "Standard_B1"
+  },
+  "tags": {},
+  "type": "Microsoft.KeyVault/managedHSMs"
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>记录上面的命令返回的 <strong>hsmUri</strong> 属性。稍后在 VM 上配置无密钥 SSL 时将需要这个属性。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>$ HSMURI="https://keylesshsm.managedhsm.azure.net/"
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>预配 HSM 后，您必须向其提供至少 3 个 RSA 公钥。HSM 将使用这些公钥加密安全域并将其发回给您，其后 HSM 即可使用。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-json">$ openssl req -newkey rsa:2048 -nodes -keyout cert_0.key -x509 -days 365 -out cert_0.cer
+$ openssl req -newkey rsa:2048 -nodes -keyout cert_1.key -x509 -days 365 -out cert_1.cer
+$ openssl req -newkey rsa:2048 -nodes -keyout cert_2.key -x509 -days 365 -out cert_2.cer
+
+$ az keyvault security-domain download --hsm-name $HSMNAME --sd-wrapping-keys ./cert_0.cer ./cert_1.cer ./cert_2.cer --sd-quorum 2 --security-domain-file $HSMNAME-SD.json
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>如果收到“无法连接到 MSI” 错误，并且您在使用 Azure 门户的一个 cloud shell，这是一个已知问题，请再次运行 az 登录。</p>
+	<p>在您的 HSM 完成预配后，<a href="https://docs.microsoft.com/en-us/cli/azure/keyvault/key?view=azure-cli-latest#az_keyvault_key_import" target="_blank">将您的私钥添加</a>到密钥库中。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>$ az keyvault key import --KeylessHSM
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>本命令将返回一个 URI，供您稍后添加到无密钥 YAML 文件中，用于指明私钥的存储位置。</p>
+	<p>HSM 现已预配并激活，您需要创建一个 VM 来部署无密钥后台程序。在本例中，我们将在 Azure 中创建一个 Ubuntu Xenial VM。在门户中，前往<strong>虚拟机</strong>页面并<strong>添加</strong>一个 VM。在那里，您可以使用较早前为 HSM 创建的资源组。为获得最佳效果，请选择与 HSM 相同的地区。请注意 VM 的公共 IP，您将使用它来远程连接到服务器。</p>
+	<p>接下来，将您的 VM 配置为密钥服务器。首先，您需要添加 <a href="https://pkg.cloudflare.com/" target="_blank">Cloudflare 包存储库</a>。然后，您将更新操作系统的包清单并安装gokeyless 服务器。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>$ apt-get update
+$ echo 'deb http://pkg.cloudflare.com/ Xenial main' |
+sudo tee /etc/apt/sources.list.d/cloudflare-main.list
+$ curl -C - https://pkg.cloudflare.com/pubkey.gpg | sudo apt-key
+$ apt-get update
+$ apt-get install gokeyless
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>然后，更新 gokeyless YAML 文件。在这里添加密钥服务器的主机名——这个主机名应有一个指向 VM、zoneID 和 Origin CA API 密钥的 DNS 记录。可在 Cloudflare 仪表板中找到 zoneID 和 Origin CA API 密钥。此外，在 private_key_stores 下指定指向私钥目录的 URI。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>$ vim /etc/keyless/gokeyless.yaml
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>最后，启动无密钥服务器。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>$ service gokeyless start
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>返回 Azure 门户并打开 Azure VM 所需的 TCP 端口。前往 VM → 网络 → 添加入站端口规则。确保您允许任何源端口上的流量并为目标端口指定端口 2407.</p>
+	<p>保存更改，然后前往 Cloudflare 仪表板以上传您的 SSL 证书。您应该在 SSL/TLS 选项卡的边缘证书部分看到“上传无密钥 SSL 证书”。在此处输入有密钥服务器标签，YAML 文件中的主机名，密钥服务器端口（默认端口2407）字段，然后粘贴 SSL 证书。</p>
+	<p>接下来，您已经准备好进行测试了！运行 <code>curl -v https://zone.com</code> 并检查 TLS 握手是否成功完成。</p>
+	<h3 id="microsoft-azure-hsm">Microsoft Azure 专用 HSM</h3>
+	<p>除了现在已公开预览的托管 HSM 产品外，Azure 客户还可以配置Cloudflare 边缘，以利用 Microsoft <a href="https://azure.microsoft.com/en-us/services/azure-dedicated-hsm/" target="_blank">专用 HSM 产品</a>（基于 SafeNet Luna Network HSM 7 Model A790 系列）中存储的密钥。</p>
+	<p>Azure 专用 HSM 已同时通过 FIPS 140-2 级别 3 和 eIDAS Common Criteria EAL4+ 验证。按照这些说明<a href="https://docs.microsoft.com/en-us/azure/dedicated-hsm/tutorial-deploy-hsm-powershell" target="_blank">部署 HSM</a> 后， 客户应按照<a href="https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modules/azure-dedicated-hsm" target="_blank">此处</a>针对 Azure 的无密钥 SSL 说明进行操作。</p>
+	<h3 id="amazon-web-services-aws-hsm">Amazon Web Services (AWS) 云 HSM</h3>
+	<p><a href="https://aws.amazon.com/cloudhsm/" target="_blank">AWS CloudHSM</a> 也提供经过 FIPS 140-2 级别 3 验证的HSM 来存储您的私钥。</p>
+	<p>官方 <a href="https://registry.terraform.io/providers/hashicorp/aws/latest" target="_blank">AWS Terraform Provider</a> 现在包括对 <a href="https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudhsm_v2_cluster" target="_blank">aws_cloudhsm_v2_cluster </a>的支持，也就是 Cloudflare 支持的版本。在<a href="https://docs.aws.amazon.com/cloudhsm/latest/userguide/getting-started.html" target="_blank">预配 AWS CloudHSM 集群后</a>，客户应按照<a href="https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modules/aws-cloud-hsm" target="_blank">此处</a>针对 AWS 的无密钥 SSL 说明进行操作。</p>
+	<h3 id="google-hsm">Google 云 HSM</h3>
+	<p><a href="https://cloud.google.com/kms/docs/hsm" target="_blank">Google 云 HSM</a> 使用 GCP 的 Cloud KMS 作为其前端，并允许在经过 FIPS 140-2 级别 3 验证的 HSM 中托管密钥。此外，Google 还提供在 Google 提供的空间中托管自有 HSM 的功能；建议您与 GCP 客户代表––––联系，以获取有关此选项的更多信息。</p>
+	<p>在 HSM 中<a href="https://cloud.google.com/kms/docs/hsm" target="_blank">创建</a>密钥环和密钥后，客户应遵循<a href="https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modules/google-cloud-hsm" target="_blank">此处</a>针对 Google 云的无密钥 SSL 说明来进行操作。有关在 GCP KMS 上使用非对称密钥的其他详细信息，请参见<a href="https://cloud.google.com/kms/docs/encrypt-decrypt-rsa" target="_blank">此处</a>。</p>
+	<h3 id="ibm-">IBM 云</h3>
+	<p><a href="https://cloud.ibm.com/docs/hardware-security-modules/about.html#about-ibm-cloud-hsm" target="_blank">IBM 云 HSM</a> 7.0 提供经 FIPS 140-2 级别 3 验证的 HSM 能力。该产品基于 SafeNet Luna A750 系列。</p>
+	<p>在<a href="https://cloud.ibm.com/docs/hardware-security-modules?topic=hardware-security-modules-provisioning-ibm-cloud-hsm#provisioning-ibm-cloud-hs" target="_blank">预配 HSM</a> 后，客户应参考<a href="https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modules/ibm-cloud-hsm" target="_blank">此处</a>针对 IBM 的无密钥 SSL 说明进行操作。</p>
+	<h3 id="--1">获得帮助及提供反馈</h3>
+	<p>HSM 提供强大的保护能力，但设置和部署可能较为复杂。如果您在云提供商上部署 HSM 时需要协助，建议您使用他们的支持渠道。</p>
+	<p>然而，如果您在配置 HSM 以便与 Cloudflare 边缘协同工作时需要协助，或者希望就这个过程提供反馈，请直接联系您的解决方案工程团队，他们将为您联系 Cloudflare 的无密钥 SSL 专家。</p>
+</div>

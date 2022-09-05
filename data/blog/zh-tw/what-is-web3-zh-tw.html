@@ -1,0 +1,58 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/image1-1.png" class="kg-image"></figure>
+	<p>閱讀本文，證明您就是網路的參與者。我們可以撰寫這個部落格供您閱讀，而不必操作伺服器或撰寫一行程式碼，這真是了不起。一般而言，現今的網路能夠讓我們參與的事情，比以往任何時候都更多。</p>
+	<p>去年，<a href="https://blog.cloudflare.com/internet-privacy/">我們提到了</a>網際網路的下一階段會是永遠連線、永遠安全、永遠私人。今天，我們深入探索網路的類似趨勢，並稱之為 Web3。在此部落格中，我們將會開始在網路演進的脈絡下解釋 Web3，並說明 Cloudflare 將會如何協助提供支援。</p>
+	<h3 id="-1-0-2-0">從網路 1.0 到網路 2.0</h3>
+	<p>當 <a href="https://webfoundation.org/about/vision/history-of-the-web/" target="_blank">Tim Berners-Lee 先生</a> 1989 年撰寫影響深遠的文件 “<a href="https://www.w3.org/History/1989/proposal.html" target="_blank">Information Management: A Proposal</a> (資訊管理：一份提案)” 時，他將「網路」的願景概述為透過超文字互連的資訊系統網路。這通常被理解為網際網路，也就是供網路運作的電腦網。對這種網路的關鍵實際需求，包括能夠以分散方式透過遠端機器存取網路，並允許系統連結在一起，不需要任何集中控制或協調。 </p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/10/image4-3.png" class="kg-image" alt="The original proposal for what we know as the web, fitting in one diagram - Source: w3">
+		<figcaption>對於廣稱為網路之物的原始提案，以一圖表說明 - 來源：<a href="https://www.w3.org/History/1989/proposal.html" target="_blank">w3</a></figcaption>
+	</figure>
+	<p>此願景落實變成網路的初始版本，其中包括透過分散式伺服器網路傳遞，並主要以唯讀方式從用戶端存取的互連靜態資源——也就是「網路 1.0」。根據來自 <a href="https://www.mit.edu/people/mkgray/growth/" target="_blank">World Wide Web Wanderer</a> 的資料，網站數量的增長幅度在 1993 年採用 Mosaic 圖形瀏覽器後 2 年內，超過 1,000%；網路的使用量也隨之攀升。</p>
+	<p>2000 年代早期是網路成長的轉折點，也是發展關鍵期，因為在網際網路泡沫後，對網路的懷疑不斷加深，存活下來的技術公司在這樣的氛圍下，演變為以新的方式向客戶提供價值：</p>
+	<ul>
+		<li>像 Netscape 這類桌面瀏覽器成為商品，為搜尋引擎這類探索內容的網路原生服務鋪路。</li>
+		<li>網路的效應最初是由 Yahoo! 等目錄網站上的超連結驅動，並藉著可讓使用者參與並運用集體智慧的平台而激增，例如評論網站。</li>
+		<li>透過網際網路活動產生了大量資料，人們逐漸意識到其競爭價值，迫使公司成為資料庫管理專家。</li>
+	</ul>
+	<p>O’Reilly Media 打造了<a href="https://www.oreilly.com/pub/a/web2/archive/what-is-web-20.html?page=1" target="_blank">網路 2.0</a> 的概念，嘗試在設計原則中捕捉這樣的轉變，這顛覆了網路的可用性和互動性，並在之後將近二十年中，持續成為網際網路公司的核心建構組塊。</p>
+	<p>不過，在網路 2.0 轉型當中，網路遠離了其初始的核心宗旨之一，也就是分散化。</p>
+	<blockquote>分散化：不需要由中央授權以取得任何權限，即可在網路上發佈任何內容；沒有中央控制節點，因此沒有單一失效點……也沒有「緊急停止開關」！<br><em>— History of the web</em><a href="https://webfoundation.org/about/vision/history-of-the-web/" target="_blank">，<em>Web Foundation </em>著</a></blockquote>
+	<h3 id="-">網際網路的新典範</h3>
+	<p>因此 Web3 應運而生。過去二十年證明了：建立可擴充的系統及分散化的內容是一項挑戰。雖然存在建置這類系統的技術，但沒有任何內容平台可以實現大規模的分散化。</p>
+	<p>有個著名的例外：比特幣。比特幣的概念出現在 2008 <a href="https://bitcoin.org/bitcoin.pdf" target="_blank">年的白皮書</a> (由 <a href="https://en.wikipedia.org/wiki/Satoshi_Nakamoto" target="_blank">Satoshi Nakamoto</a> 撰寫)，是一種分散式總帳，稱為區塊鏈，其設計讓同級間 (P2P) 網路可以透過公開、一致和防篡改的方式交易。</p>
+	<p>這句話涉及的內容很廣。我們一個詞一個詞加以解析：</p>
+	<ul>
+		<li>同級間(P2P) 網路是一種網路架構。這由一組電腦組成，它們稱為節點，可儲存並轉送資訊。每個節點具有同等的權限，防止某個節點成為單一失效點。在比特幣的例子中，節點可以傳送、接收並處理比特幣交易。</li>
+		<li>總帳是記錄交易之帳戶的集合。對於比特幣，總帳會記錄比特幣交易。</li>
+		<li>分散式總帳是在多個電腦之間共用且同步的總帳。這透過共識產生，因此每個電腦都具有類似的總帳複本。在比特幣的案例中，共識流程透過 P2P 網路執行，亦即比特幣網路。</li>
+		<li>區塊鏈是一種分散式總帳，在「區塊」中儲存資料，這些區塊加密連結在一起，成為一個保留其時間順序且不可變的鏈。比特幣運用區塊鏈技術建立共用、單一來源，紀錄交易真相以及其發生順序，藉此避免<a href="https://en.wikipedia.org/wiki/Double-spending" target="_blank">雙重支付的問題</a>。</li>
+	</ul>
+	<p>目前比特幣其網路中有<a href="https://luke.dashjr.org/programs/bitcoin/files/charts/software.html" target="_blank">超過 40,000 個節點</a>，每天處理的交易金額<a href="https://coinmarketcap.com/currencies/bitcoin/" target="_blank">超過 $300 億</a>，顯示透過分散方式大規模執行應用程式是可行的，且不必犧牲網路安全。這啟發了其他區塊鏈專案的開發，例如乙太坊，它除了用來交易，也允許參與者部署證明可以在其中每個節點執行的程式碼。</p>
+	<p>現今，這些可程式化的區塊鏈被視為<a href="https://www.coindesk.com/web3-transform-the-web" target="_blank">理想的開放、去信任平台</a>，可作為分散式網際網路的基礎結構。有<a href="https://dappradar.com/rankings" target="_blank">將近 7,000 個分散式應用程式</a> (亦稱 Dapps) 架構在其上，是正在成長中的豐富生態系，不依賴任何單一實體即可使用。讓這些程式有更大的彈性，可以在所有司法管轄區內為其使用者提供最佳服務。</p>
+	<h3 id="--1">網路是為了終端的使用者</h3>
+	<p>分散式系統本身就與集中式系統不同。不應以相同的方式來思考兩者。分散式系統讓資料及其處理過程不由任一方進行。這提供了耐用性，對公司來說很實用，但對 P2P 網路也很實用，因為資料可以保留在參與者手上。</p>
+	<p>例如，若要依照傳統方式託管部落格，要會放上伺服器，使其曝光於網際網路上 (透過 <a href="https://blog.cloudflare.com/dyi-web-server-raspberry-pi-cloudflare/">Cloudflare :D</a>)，就結束了。如今，您的部落格會託管在平台上，像是 WordPress、Ghost、Notions 甚至是 Twitter。若這些公司服務中斷將會影響更多人。若採用分散方式，例如透過 IPFS，就可以透過不同實體操作、在多個位置託管並提供您的部落格內容。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/10/image5-2.png" class="kg-image" alt="Web 1.0">
+		<figcaption>Web 1.0</figcaption>
+	</figure>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/10/image2-2.png" class="kg-image" alt="Web 2.0">
+		<figcaption>Web 2.0</figcaption>
+	</figure>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/10/image3-1.png" class="kg-image" alt="Web3">
+		<figcaption>Web3</figcaption>
+	</figure>
+	<p>網路中的每個參與者都能選擇要託管/提供什麼，也能成為不同內容的本地。與您的本地網路類似，您可控制共用的內容，而不用分享一切。</p>
+	<p>這是分散式身份識別的核心宗旨。相同的加密原則構成了加密貨幣 (例如比特幣和乙太坊) 的基礎，許多應用程式運用這些加密原則，提供安全的跨平台身分識別服務。這基本上與 OAuth 2.0 等其他認證系統不同，在其他認證系統中，必須聯繫受信任的一方，才能評估身分識別。「登入 &lt;大型雲端供應商&gt; 」的按鈕體現了這種作法。這些雲端供應商是唯一具有足夠資料、資源和技術專業者。</p>
+	<p>在分散式網路中，每個參與者都有一個祕密金鑰。之後他們可以用來識別彼此。您可以在<a href="https://blog.cloudflare.com/introducing-cryptographic-attestation-of-personhood/%23the-technical-explanation">上一篇部落格中</a>瞭解這個加密系統。在的 Web3 設定中，網路參與者擁有自己的資料，他們可以選擇性與互動應用程式分享這些資料。參與者也能利用此系統證明他們彼此之間的互動。例如，若同事發給您<a href="https://www.w3.org/TR/did-core/" target="_blank">分散式身分識別</a> (DID)，則您之後可以證明您已透過此同事註冊，不必再次聯繫該名同事。分散式身分識別也能作為公開設定檔的預留位置，參與者同意使用區塊鏈作為信任來源。這就是 ENS 或 Unlock 等專案提供的內容：一種線上驗證您身分的方式，奠基於您對公用金鑰的控制。</p>
+	<p>這種透過共用的信任來源證明所有權的趨勢，是 NFT 盛行的關鍵。之前我們在部落格裡<a href="https://blog.cloudflare.com/cloudflare-stream-now-supports-nfts/">討論過 NFT</a>。區塊鏈式 NFT 是傳達所有權的媒介。區塊鏈可以公開驗證並更新此資訊。若區塊鏈陳述我所控制的公用金鑰擁有某個 NFT，則我可以在其他平台提及此內容，以證明擁有權。例如，若我在社群媒體上的個人檔案圖片是一隻貓，我可以證明上述的貓與我的公用金鑰相關。其中的意義取決於我想要證明的內容，特別是透過 NFT 合約增生。若您想要瞭解 NFT 合約的運作方式，可以<a href="https://blog.mycrypto.com/so-you-wanna-build-your-own-pfp-nft-project/" target="_blank">自行建置一個</a>。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/image6-1.png" class="kg-image"></figure>
+	<h3 id="cloudflare-web3-">Cloudflare 在 Web3 扮演何種角色？</h3>
+	<p>Cloudflare 迎向分散化和隱私的挑戰，這是我們任務的一部分：協助打造更好的網際網路。</p>
+	<p>在<a href="https://blog.cloudflare.com/next-generation-privacy-protocols/">上一則貼文中</a>，Nick Sullivan 說明了 Cloudflare 對於實現網路隱私的貢獻。我們啟動方案，透過 <a href="https://blog.cloudflare.com/encrypted-client-hello">Encrypted Client Hello (ECH)</a> 修正 HTTPS 中的資訊洩漏，支援 <a href="https://blog.cloudflare.com/oblivious-dns">Oblivious DNS-over-HTTPS (ODoH)</a> 讓 DNS 更具隱私性，並開發 <a href="https://blog.cloudflare.com/opaque-oblivious-passwords">OPAQUE</a>，降低發生密碼外洩的可能性。我們也發佈了<a href="https://blog.cloudflare.com/introducing-the-cloudflare-data-localization-suite/">資料本地化套件</a>，讓企業能夠控制資料儲存位置，而且不犧牲效能和安全性，協助企業掌握不斷演變的<a href="https://blog.cloudflare.com/data-privacy-day-2021-looking-ahead-at-the-always-on-always-secure-always-private-internet/">法規態勢</a>。我們甚至建置了<a href="https://blog.cloudflare.com/introducing-zero-knowledge-proofs-for-private-web-attestation-with-cross-multi-vendor-hardware/">隱私保留證明</a>，基礎是相同的零知識證明技術，這是 <a href="https://electriccoin.co/blog/explaining-halo-2/" target="_blank">ZCash</a> 和 <a href="https://filecoin.io/blog/posts/filecoin-zk-snarks-zero-knowledge-but-a-lot-of-zero-knowledge/" target="_blank">Filecoin</a> 等分散式系統的核心。</p>
+	<p>想到已經有方法可以改變網路，以改善使用者體驗，就讓人覺得興奮。不過，在這令人興奮的基礎結構上建置，還存在一些限制。因此 Ethereum 和 IPFS 等專案建置了自己的架構。它們還是依賴網路，但不是透過我們所知的網路來運作。為了順利轉換，Cloudflare 運營<a href="https://www.cloudflare.com/zh-tw/distributed-web-gateway/" target="_blank">分散式網路閘道</a>。這些閘道味 Web3 通訊協定提供 HTTP 介面：Ethereum 和 IPFS。由於 HTTP 是我們今日所知的網路核心，因此分散式內容可以安全且輕鬆地被存取，使用者不需要操作實驗性軟體。</p>
+	<h3 id="--2">下一步是什麼？</h3>
+	<p>邁向不同的網路的旅程很長，但也令人期待。過去二十年建立的基礎結構真的讓人驚豔。網際網路和網路現在是 46 億人生活的一部分。同時，前 35 名網站的造訪次數，比所有其他網站 (大約 2014 個) 加起來還<a href="https://www.ncta.com/whats-new/the-expanding-consolidation-of-the-consumer-internet-3" target="_blank">多</a>。使用者對於資料的控制程度更低，也更依賴少數幾個大型單位。</p>
+	<p>早期的網路是靜態的。隨著網路 2.0 出現，提供我們日常使用的互動和服務，其代價就是集中化。Web3 的趨勢就是試圖挑戰這種情況。建立在開放通訊協定上的分散式網路，讓網路使用者有權力參與。</p>
+	<p>在 Cloudflare，我們擁抱這樣的分散式未來。運用我們執行最大的邊緣網路之一所得到的知識和經驗，我們能讓使用者和企業更輕鬆地從 Web3 受益。包括運營<a href="https://blog.cloudflare.com/zh-tw/announcing-web3-gateways-zh-tw/">分散式網路產品套件</a>，促成<a href="https://blog.cloudflare.com/cloudflares-approach-to-research/">開放標準</a>並<a href="https://blog.cloudflare.com/internet-privacy/">推動隱私權更上層樓</a>。</p>
+	<p>若您想要和我們一起，協助打造更好的網路，我們正在<a href="https://www.cloudflare.com/zh-tw/careers/jobs/" target="_blank">招募人才</a>。</p>
+</div>

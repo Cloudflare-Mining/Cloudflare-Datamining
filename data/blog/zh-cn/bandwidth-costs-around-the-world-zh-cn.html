@@ -1,0 +1,128 @@
+<div class="post-content lh-copy gray1">
+	<p>CloudFlare利用遍布45个国家86个城市的<a href="https://cloudflare.com/network-map" target="_blank">全球网络</a>保护了400多万个互联网资产。运行这一网络为我们提供了一个独特的优势，即是可以跟踪全球带宽的不断变化的成本。</p>
+	<p>（注：截止至2019年8月，Cloudflare的全球网络已覆盖90多个国家的193个城市；本文后续数据统计于2016年8月前。）</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/08/CoinOperatedInternet.jpg" class="kg-image">
+		<figcaption><a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank">CC BY-SA 2.0 </a><a href="https://www.flickr.com/photos/53326337@N00/4877664667" target="_blank">图片</a>来自<a href="https://www.flickr.com/photos/quinnanya/" target="_blank">Quinn Dombrowski</a></figcaption>
+	</figure>
+	<p></p>
+	<h2 id="-">概述</h2>
+	<p>两年前，我们预览了我们在世界不同地区看到的<a href="https://blog.cloudflare.com/the-relative-cost-of-bandwidth-around-the-world/">相对带宽成本</a>。带宽是我们提供服务的最大经常性成本。与欧洲和北美相比，澳大利亚，亚洲和拉丁美洲的互联网成本要高得多。尽管在竞争和底层硬件成本下降的驱动下，带宽成本<a href="https://www.telegeography.com/press/press-releases/2015/09/09/ip-transit-prices-continue-falling-major-discrepancies-remain/index.html" target="_blank">随着时间的推移呈下降趋势</a>，但我们认为提供一个这方面的更新应该会很有趣。</p>
+	<p>自2014年8月以来，我们的数据中心数量增加了两倍，从28个增加到86个，未来还会继续增加。CloudFlare还在中东和非洲等新地区部署了硬件。我们的网络覆盖了各个大洲里的多个国家，一些国家里还覆盖了多个城市。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/08/Traffic_86_PoPs-1.png" class="kg-image"></figure>
+	<!--kg-card-begin: html-->
+	<div align="center"><em>
+			<font style="vertical-align: inherit;">
+				<font style="vertical-align: inherit;">Cloudflare网络中86个数据中心传输的流量</font>
+			</font>
+		</em></div>
+	<!--kg-card-end: html-->
+	<p>大约有13个网络被称为“一级网络”(例如，Telia、GTT、Tata、Cogent)，它们销售“中转”服务，即利用它们的全球骨干网络(包括非它们客户的网络)访问互联网上成千上万的其他网络。我们通过从全球<a href="http://research.dyn.com/2016/04/a-bakers-dozen-2015-edition/" target="_blank">“一级网络”</a>(或主要区域网络)购买传输流量，或通过使用“对等网络”与运营商或ISP直接交换流量来连接网络。通常，在对等网络之间交换对等流量无需进行结算。</p>
+	<p>我们试图让通过网络与我们互联变得尽可能的容易。CloudFlare有一个“开放对等”的政策，我们参与了近<a href="https://bgp.he.net/report/exchanges#_participants" target="_blank">150个互联网交换</a>，比任何其他公司都多。</p>
+	<p><strong>让我们假设欧洲和北美的传输网络成本是10单位(每Mbps)</strong>，以此作为基准。有了这个基准，在不透露具体价格的情况下，我们可以通过传输成本、对等网络的百分比以及它们的有效混合成本(传输+对等)来比较区域带宽成本。</p>
+	<h2 id="--1">欧洲</h2>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/08/---4.png" class="kg-image"></figure>
+	<!--kg-card-begin: html-->
+	<div align="center"><em>
+			<font style="vertical-align: inherit;">
+				<font style="vertical-align: inherit;">欧洲传输网络 vs 对等网络（过去30天内）</font>
+			</font>
+		</em></div>
+	<!--kg-card-end: html-->
+	<p>根据我们的基准，欧洲传输网络成本是10个单位。由于该地区有大量的互联网交换，通常是非营利性的，我们的流量约有60%是通过对等网络的。这使得我们在这里有效的地区成本仅为4个单位。</p>
+	<p>或许除了德国的现行网络商，许多网络都支持开放互联。CloudFlare已经参与了<a href="https://www.peeringdb.com/net/4224" target="_blank">40家欧洲互联网交换组织</a>，并且现在至少正在加入另外的5家。</p>
+	<h2 id="--2">北美</h2>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/08/---5.png" class="kg-image"></figure>
+	<!--kg-card-begin: html-->
+	<div align="center"><em>
+			<font style="vertical-align: inherit;">
+				<font style="vertical-align: inherit;">北美传输网络 vs 对等网络（过去30天内）</font>
+			</font>
+		</em></div>
+	<!--kg-card-end: html-->
+	<p>北美的传输成本等于欧洲的成本，即10个单位。我们在这里的对等网络约占40％的流量，因此有效的区域成本为6个单位。</p>
+	<p>北美的对等水平低于欧洲，但两年前有了显着改善。预计对等流量的份额将继续增长。北美市场发生了一些重大变化，例如<a href="http://internet.frontier.com/fios-network-acquisition/" target="_blank">Frontier收购</a>了美国三个州的<a href="http://internet.frontier.com/fios-network-acquisition/" target="_blank">Verizon FiOS客户</a>，<a href="http://ir.charter.com/phoenix.zhtml?c=112298&amp;p=irol-newsArticle&amp;ID=2053012" target="_blank">Charter准备与时代华纳有线电视公司合并</a>。我们可以看到这些变化对<a href="https://arstechnica.com/tech-policy/2016/04/doj-fcc-chairman-ok-chartertime-warner-cable-deal-with-a-few-caveats/" target="_blank">区域互联格局</a>产生了影响。</p>
+	<p>值得注意的是，我们的对等网络在更小的区域位置(更接近终端用户)的增长尤为明显，这提高了网络性能。这可以通过私有对等网络来达成，也可以通过互连点，如明尼阿波利斯的<a href="http://www.micemn.net/" target="_blank">中西部互联网合作交换组织(MICE)来实现</a>。</p>
+	<h2 id="--3">非洲</h2>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/08/Africa.jpg" class="kg-image"></figure>
+	<!--kg-card-begin: html-->
+	<div align="center"><em>
+			<font style="vertical-align: inherit;">
+				<font style="vertical-align: inherit;">非洲传输网络 vs 对等网络（过去30天内）</font>
+			</font>
+		</em></div>
+	<!--kg-card-end: html-->
+	<p>非洲的运输价格是世界上最高的，是基准价格的14倍或者说是140个单位，从<a href="https://blog.cloudflare.com/cairo/">开罗</a>到<a href="https://blog.cloudflare.com/mombasa-kenya-cloudflares-43rd-data-center/">蒙巴萨</a>到<a href="https://blog.cloudflare.com/johannesburg-cloudflares-30th-data-center/">约翰内斯堡</a>，整个非洲大陆的差异显着。幸运的是，在我们目前能够在非洲本地提供服务的流量中，我们设法让对等网络达到了90%(包括运营商和互联网服务提供商)，因此我们在非洲的有效带宽成本为14个单位。</p>
+	<p>我们在非洲的建设帮助我们避免了为来自伦敦、巴黎或马赛的网站提供服务时的巨大延迟。我们希望在西非建设CloudFlare数据中心，这是一个特别有希望但又充满挑战的地区，特别是尼日利亚，那里仅有<a href="http://qz.com/658762/there-arent-as-many-nigerians-on-the-mobile-internet-as-we-thought/" target="_blank">不足1亿的互联网用户</a>。</p>
+	<h2 id="--4">中东</h2>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/08/--.jpg" class="kg-image"></figure>
+	<!--kg-card-begin: html-->
+	<div align="center"><em>
+			<font style="vertical-align: inherit;">
+				<font style="vertical-align: inherit;">中东传输网络 vs 对等网络（过去30天内）</font>
+			</font>
+		</em></div>
+	<!--kg-card-end: html-->
+	<p>CloudFlare目前在中东有4个数据中心，每个中心都与<a href="https://blog.cloudflare.com/middle-east-expansion/">战略ISP合作伙伴</a>进行缓存部署，以服务于各自的客户。我们能够对这些数据中心当前提供的所有流量进行对等连接。虽然这些网络都提供了重要的覆盖范围，但我们希望在该地区有地区化的额外流量(到达欧洲)。我们希望其余的ISP，如沙特电信公司，部署类似的缓存，并提高其客户网络的性能。</p>
+	<p>因为我们可以在中东对等100%的流量，所以我们在该地区带宽的有效价格是0单位。当然，除了提供带宽之外，我们的服务还有其他成本。然而，通过提高中东地区的对等网络比例，我们已经能够使我们在中东地区的服务具有极高的成本竞争力。</p>
+	<h2 id="--5">亚洲</h2>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/08/---6.png" class="kg-image"></figure>
+	<!--kg-card-begin: html-->
+	<div align="center"><em>
+			<font style="vertical-align: inherit;">
+				<font style="vertical-align: inherit;">亚洲传输网络 vs 对等网络（过去30天内）</font>
+			</font>
+		</em></div>
+	<!--kg-card-end: html-->
+	<p>在亚洲（不包括中东），传输的成本是基准的7倍，或者说是70个单位。但是，我们对等的流量约占我们总流量的60％，因此有效带宽成本为28个单位。</p>
+	<p>除了香港、新加坡和东京的主要网络交汇点外，我们的大部分互连都是地区化的，以便更接近<a href="https://blog.cloudflare.com/bangkok/">曼谷</a>、<a href="https://blog.cloudflare.com/cloudflare-launches-in-india-with-data-centers-in-mumbai-chennai-and-new-delhi/">金奈</a>、<a href="https://blog.cloudflare.com/kuala-lumpur-malaysia-cloudflares-45th-data-center/">吉隆坡</a>、<a href="https://blog.cloudflare.com/cloudflare-launches-in-india-with-data-centers-in-mumbai-chennai-and-new-delhi/">孟买</a>、<a href="https://blog.cloudflare.com/osaka-data-center/">大阪</a>、<a href="https://blog.cloudflare.com/cloudflare-launches-in-india-with-data-centers-in-mumbai-chennai-and-new-delhi/">新德里</a>、<a href="https://blog.cloudflare.com/seoul-korea-cloudflares-23rd-data-center/">首尔</a>和<a href="https://blog.cloudflare.com/taipei">台北</a>等城市的游客。这些统计数字不包括我们在中国内地的数据中心网络，这些数据中心的地理位置具有战略意义，在<a href="https://www.cloudflare.com/china" target="_blank">中国</a>内地，互联互通的动态是非常独特的。</p>
+	<p>首尔和台北这两个亚洲城市传输成本尤其昂贵。在这些市场中，有着强大的运营商(韩国电信和HiNet)，传输成本是欧洲或北美的15倍，相当于150个单位。</p>
+	<p>韩国可能是世界上唯一带宽成本上升的国家。这可能是由<a href="http://english.msip.go.kr/" target="_blank">科学，信息通信技术和未来规划部</a>(Ministry of Science, ICT and Future Planning)制定的新规定推动的，该规则根据参与网络的预定“层”规定了国内互连的商业条款。这与世界上大多数地区的模式相反，那里的网络是自我调节的，并且往往对等并且无需结算。政府甚至规定了每年价格应该下降的速度（-7.5％），这远远低于世界其他地方单位带宽成本的每年下降的幅度。我们在韩国的对等网络流量只占总流量的2％。</p>
+	<p>如果您在我们的混合带宽定价中考虑了HiNet和韩国电信，并考虑到对等网络，我们的有效带宽价格为28个单位。如果您排除HiNet和韩国电信，我们的有效价格为14个单位。</p>
+	<h2 id="--6">南美</h2>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/08/SAM-1.png" class="kg-image"></figure>
+	<!--kg-card-begin: html-->
+	<div align="center"><em>
+			<font style="vertical-align: inherit;">
+				<font style="vertical-align: inherit;">南美传输网络 vs 对等网络（过去30天内）</font>
+			</font>
+		</em></div>
+	<!--kg-card-end: html-->
+	<p>南美洲的传输成本非常高，是基准价格的17倍，即170个单位。我们在南美的对等流量约占总流量的60%，这使得有效的带宽成本为68单位。</p>
+	<p>过境价格高的原因之一是，作为该地区新进入的一级网络，我们尚未获得显着的市场份额。虽然像巴西这样的市场传输价格较低且对等连接较多，但秘鲁和阿根廷等国家的成本最高，这两个国家各自都有一个现有的提供商，分别是西班牙电信和阿根廷电信，他们控制着向大多数互联网用户交付内容的最后一英里访问权限。</p>
+	<p>当我们试图提高我们的对等流量份额时，我们面临的挑战之一是许多互联网交换组织（例如，NAP哥伦比亚）只允许在国内注册和许可的网络公开对等，或者在另一种情况下，需要所有人在IX一致投票允许新参与者加入，他们在“国际内容”和“国内内容”之间建立了明确地隔离。</p>
+	<p>如果算上阿根廷电信和西班牙电信，我们在南美的混合带宽成本是68个单位。如果你排除这两个供应商，那么我们的混合成本是17个单位。</p>
+	<h2 id="--7">大洋洲</h2>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/08/---.png" class="kg-image"></figure>
+	<!--kg-card-begin: html-->
+	<div align="center"><em>
+			<font style="vertical-align: inherit;">
+				<font style="vertical-align: inherit;">大洋洲传输网络 vs 对等网络（过去30天内）</font>
+			</font>
+		</em></div>
+	<!--kg-card-end: html-->
+	<p>大洋洲（澳大利亚和新西兰）的传输价格已经较过去要低了，但相对来说仍然是非常高的，其成本是欧洲基准的17倍，也即170单位。我们的对等流量占50％，因此有效成本为85个单位。</p>
+	<p>如果你排除澳都斯（澳大利亚电信公司）和澳洲电信，那么价格会下降到17个单位——因为我们几乎与所有其他网络对等。</p>
+	<h2 id="--8">六个昂贵的网络</h2>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/08/CloudFlare_Relative_Cost_of_Bandwidth.png" class="kg-image"></figure>
+	<!--kg-card-begin: html-->
+	<div align="center"><em>
+			<font style="vertical-align: inherit;">
+				<font style="vertical-align: inherit;">相对带宽成本</font>
+			</font>
+		</em></div>
+	<!--kg-card-end: html-->
+	<p>CloudFlare一直在优化一件事情，就是我们为客户提供服务的同时，考虑到我们的有效成本。如果您是一个免费的客户并过多使用了昂贵的传输，我们将从更少的地区为您服务。好消息是，在过去的5年里，我们已经能够与世界上绝大多数的网络公司就合理的传输价格或免结算的对等服务进行谈判。这使得我们能够继续提供免费版本的服务，并使我们所有付费服务保持低价格。</p>
+	<p>然而，现今，有<strong>六个昂贵的网络（HiNet，韩国电信，Optus，Telecom Argentina，Telefonica，Telstra</strong>）他们的价格比全球其他带宽提供商的价格高出一个数量级，并且拒绝讨论本地对等关系。这是什么概念呢，我们在这六个网络的流量占总数的比例不到6％，但带宽成本近乎为总数的50％。</p>
+	<p>尽管我们试图让所有这些提供商参与进来，以降低它们极高的成本，并确保我们的免费客户也能通过它们的网络得到服务，但我们陷入了僵局。不幸的是，为了达到这个目的，我们做出了这样一个决定:唯一能改变这些供应商定价的，就是让它们清楚地认识到，它们与世界其它地区的步调有多么不一致。为了证明这一点，我们已经将我们的免费客户从这六家运输供应商网络中移走。免费客户仍然可以通过我们的网络访问，我们通过另一个区域缓存，以更合理的带宽价格为免费客户提供服务。</p>
+	<p>具有讽刺意味的是，这实际上增加了其中几个提供商的成本，因为他们现在需要将流量回传到另一个CloudFlare数据中心并在此过程中支付更多费用。例如，如果Telstra与CloudFlare对等，那么他们只需要在同一数据中心的相邻网箱之间约30米长的光缆中传输流量。现在，Telstra需要通过昂贵的海底电缆将免费客户的流量回传到洛杉矶或新加坡。他们的行为在任何竞争市场内都是不合理的，这无疑说明了这些供应商中的每一家都是其本土市场的相对垄断者。</p>
+	<p>如果您是一个CloudFlare免费客户，并且有意优化这六家提供商之一能达到的最佳性能，那么我们鼓励您与他们联系，并鼓励他们遵循自由开放的互联网的核心原则，而不是滥用他们的垄断地位。我们致力于通过与我们对等的每一个网络为我们所有的客户提供服务。为此，请通过联系您的网络服务提供商，帮助我们说服这六个网络提供商在自由开放的互联网中站在正确的一边。</p>
+	<ul>
+		<li><a href="http://service.hinet.net/2004/ncsc/index.htm" target="_blank">让HiNet与台北的CloudFlare对等</a></li>
+		<li><a href="http://www.kt.com/eng/etc/contact.jsp" target="_blank">让韩国电信与首尔的CloudFlare对等</a></li>
+		<li><a href="http://www.optus.com.au/shop/support/answer/complaints-compliments?requestType=NormalRequest&amp;id=1409&amp;typeId=5" target="_blank">让Optus与澳大利亚的CloudFlare对等</a></li>
+		<li><a href="http://www.telecom.com.ar/hogares/gestion_libro.htm" target="_blank">让阿根廷电信与布宜诺斯艾利斯的CloudFlare对等</a></li>
+		<li><a href="https://www.telefonica.com/en/web/press-office/contact-us" target="_blank">让Telefonica与南美洲的CloudFlare对等</a></li>
+		<li><a href="https://say.telstra.com.au/customer/general/forms/Email-Complaint" target="_blank">让Telstra与澳大利亚的CloudFlare对等</a></li>
+	</ul>
+	<p>我们将在与这六个网络进行协商时发布更新，并希望我们能够很快为所有与我们互连的网络中的所有客户提供服务。</p>
+</div>

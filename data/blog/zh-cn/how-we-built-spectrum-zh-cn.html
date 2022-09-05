@@ -1,0 +1,155 @@
+<div class="post-content lh-copy gray1">
+	<p>今天，我们将<a href="https://blog.cloudflare.com/spectrum/">介绍Spectrum</a>：一个可为任意基于TCP的协议提供DDoS保护、负载均衡和内容加速的Cloudflare新特性。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/11/13334109713_0b32435032_z.jpg" class="kg-image">
+		<figcaption><a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank">CC BY-SA 2.0 </a><a href="https://www.flickr.com/photos/liftarn/13334109713" target="_blank">图片</a>由<a href="https://www.flickr.com/photos/liftarn" target="_blank">Staffan Vilcans提供</a></figcaption>
+	</figure>
+	<p></p>
+	<p>在开始构建Spectrum之后不久，我们就遇到了一个主要的技术障碍：Spectrum要求我们可以在任何有效的TCP端口（从1到65535）上接受连接。在我们的Linux边缘服务器上，我们不可能实现“在任何端口上接受入站连接”。这不是特定于Linux的限制：这是BSD sockets API的一个特性，它是大多数操作系统上网络应用程序的基础。为了能够交付Spectrum，我们需要解决两个重叠的问题：</p>
+	<ul>
+		<li>如何在1到65535的所有端口号上接受TCP连接</li>
+		<li>如何配置单个Linux服务器以接受大量IP地址上的连接（在我们的任播范围内有数千个IP地址）</li>
+	</ul>
+	<h2 id="-ip">为服务器分配数百万个IP</h2>
+	<p>Cloudflare的边缘服务器拥有几乎相同的配置。在早期，我们通常将特定的/32（和/128）IP地址分配给环回网络接口[1]。当我们有几十个IP地址时，这种方法效果甚好。但随着我们的发展，这种方法却无法扩展。</p>
+	<p>随之而来的是<a href="https://blog.widodh.nl/2016/04/anyip-bind-a-whole-subnet-to-your-linux-machine/" target="_blank">“AnyIP”技巧</a>。AnyIP允许我们将整个IP前缀（子网）分配给环回接口，扩展特定的IP地址。AnyIP的应用已经非常普遍了：您的计算机就已将127.0.0.0/8分配给了环回接口。从您的计算机的角度来看，从127.0.0.1到127.255.255.254的所有IP地址都属于本地计算机。</p>
+	<p>此技巧不仅仅适用于127.0.0.1/8的块。要在本地分配整个192.0.2.0/24范围，只需要运行：</p>
+	<pre><code>ip route add local 192.0.2.0/24 dev lo</code></pre>
+	<p>然后，您可以将以下IP地址之一绑定到端口8080：</p>
+	<pre><code>nc -l 192.0.2.1 8080</code></pre>
+	<p>使IPv6正常工作会更加困难：</p>
+	<pre><code>ip route add local 2001:db8::/64 dev lo</code></pre>
+	<p>遗憾的是，您不能像IPv4示例那样对v6的IP地址进行绑定。要实现这一工作，您必须使用IP_FREEBIND套接字选项，这需要更高级的权限。出于完整性，这里还给出了一个sysctl net.ipv6.ip_nonlocal_bind，但我们不建议您接触它：</p>
+	<p>这个AnyIP技巧使我们能够在本地为每台服务器分配数百万个IP地址：</p>
+	<pre><code>$ ip addr show
+1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536
+    inet 1.1.1.0/24 scope global lo
+       valid_lft forever preferred_lft forever
+    inet 104.16.0.0/16 scope global lo
+       valid_lft forever preferred_lft forever
+...</code></pre>
+	<h2 id="-">绑定到所有端口</h2>
+	<p>第二个主要问题是为任意端口号开启TCP套接字。在Linux中，通常在任意支持BSD sockets API的系统中，您只能通过一个bind系统调用绑定特定的TCP端口号。在一个操作中不可能绑定到多个端口。</p>
+	<p>一个简单的解决方案是绑定65535次，在每个可能的端口都绑定一次。事实上，这可能是一个解决方案，但这会带来可怕的后果：</p>
+	<ul>
+		<li><a href="https://blog.cloudflare.com/revenge-listening-sockets/">监听套接字的“复仇</a>”</li>
+	</ul>
+	<p>在内部，Linux内核将监听套接字存储在一个按端口号LHTABLE索引的哈希表中，使用了32个bucket（存储桶）：</p>
+	<pre><code>/* Yes, really, this is all you need. */
+#define INET_LHTABLE_SIZE       32</code></pre>
+	<p>如果我们打开65k个端口，那么对该表的查找将大大减慢：每个哈希表存储桶将包含2000个项目。</p>
+	<p>解决这个问题的另一种方法是使用iptables丰富的NAT特性：我们可以将入站数据包的目的地重写为某个特定的地址/端口，我们的应用程序将绑定到这个地址/端口。</p>
+	<p>但我们不想这样做，因为这需要启用iptables conntrack模块。从历史上看，我们发现了一些<a href="https://patchwork.ozlabs.org/cover/810566/" target="_blank">性能边缘情况</a>，conntrack无法应对我们遇到的一些大型DDoS攻击。</p>
+	<p>另外，使用NAT方法，我们会丢失目标IP地址信息。为了解决这个问题，还有一个鲜为人知的SO_ORIGINAL_DST套接字选项，但是<a href="https://github.com/torvalds/linux/blob/b5dbc28762fd3fd40ba76303be0c7f707826f982/net/ipv4/netfilter/nf_conntrack_l3proto_ipv4.c" target="_blank">代码看起来并不令人鼓舞</a>。</p>
+	<p>幸运的是，有一种方法可以实现我们的目标，而不涉及绑定到所有65k个端口或使用conntrack。</p>
+	<h2 id="--1">防火墙援助</h2>
+	<p>在进一步讨论之前，让我们先回顾一下操作系统中网络数据包入站的一般流程。</p>
+	<p>通常，入站数据包路径中有两个不同的层：</p>
+	<ul>
+		<li>IP防火墙</li>
+		<li>网络堆栈</li>
+	</ul>
+	<p>它们在概念上是不同的。IP防火墙通常是一个无状态软件（现在让我们忽略conntrack和IP分片重组）。防火墙分析IP数据包并决定是否接受或丢弃它们。请注意：在这一层，我们讨论的是<em>数据包</em>和<em>端口号</em>，而不是<em>应用程序</em>或<em>套接字</em>。</p>
+	<p>然后是网络堆栈。这只“野兽”有着大量的态。它的主要任务是将入站IP数据包分派到套接字中，然后由用户空间应用程序进行处理。网络堆栈管理着（与用户空间共享的）抽象。它负责重组TCP流，处理路由，并了解哪些IP地址是本地的。</p>
+	<h2 id="--2">魔术粉尘</h2>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/11/upload-1.jpg" class="kg-image">
+		<figcaption>资料来源：<a href="https://www.youtube.com/watch?v=9CS7j5I6aOc" target="_blank">YouTube</a></figcaption>
+	</figure>
+	<p></p>
+	<p>在某个时候，我们偶然发现了TPROXY iptables模块。这一<a href="http://ipset.netfilter.org/iptables-extensions.man.html" target="_blank">官方文件</a>很容易被忽视:</p>
+	<pre><code>TPROXY
+This target is only valid in the mangle table, in the 
+PREROUTING chain and user-defined chains which are only 
+called from this chain.  It redirects the packet to a local 
+socket without changing the packet header in any way. It can
+also change the mark value which can then be used in 
+advanced routing rules. </code></pre>
+	<p>我们可以在内核中找到另一篇文档：</p>
+	<ul>
+		<li><a href="https://www.kernel.org/doc/Documentation/networking/tproxy.txt" target="_blank">docs/networking/tproxy.txt</a></li>
+	</ul>
+	<p>我们思考的越多，我们就越好奇……</p>
+	<p>那么……TPROXY<em>实际是做什么的</em>？</p>
+	<h2 id="--3">揭秘魔术</h2>
+	<p>该TPROXY代码<a href="https://elixir.bootlin.com/linux/v4.16.1/source/net/netfilter/xt_TPROXY.c#L119" target="_blank">出人意料的简单</a>：</p>
+	<pre><code>case NFT_LOOKUP_LISTENER:
+  sk = inet_lookup_listener(net, &amp;tcp_hashinfo, skb,
+				    ip_hdrlen(skb) +
+				      __tcp_hdrlen(tcph),
+				    saddr, sport,
+				    daddr, dport,
+				    in-&gt;ifindex, 0);</code></pre>
+	<p>让我为您大声读出来：在iptables模块（这也是防火墙的一部分）中，我们调用inet_lookup_listener。该函数读取src/dst port/IP 4-tuple，并返回能够接受该连接的监听套接字。这是网络堆栈的套接字调度的核心功能。</p>
+	<p>再总结一次：防火墙代码调用套接字分配例程。</p>
+	<p>稍后在<a href="https://elixir.bootlin.com/linux/v4.16.1/source/net/netfilter/xt_TPROXY.c#L299" target="_blank">TPROXY上实际做的套接字调度</a>：</p>
+	<pre><code>skb-&gt;sk = sk;</code></pre>
+	<p>这一行将一个套接字struct sock分配给一个入站包——完成调度。</p>
+	<h2 id="--4">从帽子里变出兔子</h2>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/11/3649474619_3b800400e9_z-1.jpg" class="kg-image">
+		<figcaption><a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank">CC BY-SA 2.0 </a><a href="https://www.flickr.com/photos/angelaboothroyd/3649474619" target="_blank">图片</a>由<a href="https://www.flickr.com/photos/angelaboothroyd" target="_blank">Angela Boothroyd提供</a></figcaption>
+	</figure>
+	<p>有了TPROXY，我们可以非常轻松地执行“绑定到所有端口”的技巧。配置如下：</p>
+	<pre><code># Set 192.0.2.0/24 to be routed locally with AnyIP.
+# Make it explicit that the source IP used for this network
+# when connecting locally should be in 127.0.0.0/8 range.
+# This is needed since otherwise the TPROXY rule would match
+# both forward and backward traffic. We want it to catch 
+# forward traffic only.
+sudo ip route add local 192.0.2.0/24 dev lo src 127.0.0.1
+
+# Set the magical TPROXY routing
+sudo iptables -t mangle -I PREROUTING \
+        -d 192.0.2.0/24 -p tcp \
+        -j TPROXY --on-port=1234 --on-ip=127.0.0.1</code></pre>
+	<p>除了设置这个选项之外，您还需要使用神奇的IP_TRANSPARENT套接字选项启动TCP服务器。下面的示例需要监听tcp://127.0.0.1:1234。<a href="http://man7.org/linux/man-pages/man7/ip.7.html" target="_blank">IP_TRANSPARENT的手册页</a>显示:</p>
+	<pre><code>IP_TRANSPARENT (since Linux 2.6.24)
+Setting this boolean option enables transparent proxying on
+this socket.  This socket option allows the calling applica‐
+tion to bind to a nonlocal IP address and operate both as a
+client and a server with the foreign address as the local
+end‐point.  NOTE: this requires that routing be set up in
+a way that packets going to the foreign address are routed 
+through the TProxy box (i.e., the system hosting the 
+application that employs the IP_TRANSPARENT socket option).
+Enabling this socket option requires superuser privileges
+(the CAP_NET_ADMIN capability).
+
+TProxy redirection with the iptables TPROXY target also
+requires that this option be set on the redirected socket.</code></pre>
+	<p>这是一个简单的Python服务器：</p>
+	<pre><code>import socket
+
+IP_TRANSPARENT = 19
+
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+s.setsockopt(socket.IPPROTO_IP, IP_TRANSPARENT, 1)
+
+s.bind(('127.0.0.1', 1234))
+s.listen(32)
+print("[+] Bound to tcp://127.0.0.1:1234")
+while True:
+    c, (r_ip, r_port) = s.accept()
+    l_ip, l_port = c.getsockname()
+    print("[ ] Connection from tcp://%s:%d to tcp://%s:%d" % (r_ip, r_port, l_ip, l_port))
+    c.send(b"hello world\n")
+    c.close()</code></pre>
+	<p>运行服务器后，您可以从任意IP地址连接到它：</p>
+	<pre><code>$ nc -v 192.0.2.1 9999
+Connection to 192.0.2.1 9999 port [tcp/*] succeeded!
+hello world</code></pre>
+	<p>最重要的是，服务器将报告连接确实指向了192.0.2.1端口9999，<em>即便实际上没有人监听这个IP地址和端口</em>：</p>
+	<pre><code>$ sudo python3 transparent2.py
+[+] Bound to tcp://127.0.0.1:1234
+[ ] Connection from tcp://127.0.0.1:60036 to tcp://192.0.2.1:9999</code></pre>
+	<p>请看！这就是在不使用conntrack的情况下绑定Linux 上任意端口的方法。</p>
+	<h2 id="--5">就是这些</h2>
+	<p>在这篇文章中，我们描述了如何使用一个鲜有人关注的iptables模块，这个模块最初是为了帮助透明代理而设计的。在它的帮助下，我们可以使用标准的BSD sockets API执行我们认为不可能完成的事情，从而避免了任何自定义内核补丁的需要。</p>
+	<p>该TPROXY模块非同寻常——在Linux防火墙的环境中，它执行的事情通常是由Linux网络栈完成的。关于这一模块的官方文档非常之少，我不认为有很多Linux用户可以理解这个模块的全部功能。</p>
+	<p>可以说，TPROXY使我们的Spectrum产品可以在普通内核上平稳运行。这再次提醒我们，理解iptables和网络堆栈有多重要！</p>
+	<hr>
+	<p><em>你是否对底层套接字工作感兴趣呢？快来加入我们在伦敦，奥斯汀，旧金山，尚佩恩（Champaign）的</em><a href="https://boards.greenhouse.io/cloudflare/jobs/589572" target="_blank"><em>世界闻名团队</em></a><em>以及在波兰华沙的精英办公室吧</em>。</p>
+	<hr>
+	<ol>
+		<li>将IP地址分配给环回接口，加上适当的rp_filter和BGP配置，使我们能够在边缘服务器上处理任意的IP范围。 <a href="https://blog.cloudflare.com/how-we-built-spectrum/#fnref1">↩︎</a></li>
+	</ol>
+</div>

@@ -1,0 +1,1253 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/08/Better-Internet-for-Everyone.png" class="kg-image"></figure>
+	<p>2020年3月以降、インターネットは私たちがパンデミックを乗り切るにあたってに頼らないといけない存在になりました。それは、高速で信頼性の高い（そして安い場合がほとんど）インターネットアクセスを持てる立場にある人が思うことでしょう。</p>
+	<p>良好なインターネットアクセスがあって、そしてオンラインでできる仕事についているのであれば仕事も続けられるし、学校や大学にも通えます。映画やテレビのストリーミング、ゲームなどのオンラインエンターテインメントを楽しむことも、最新のニュースや医療情報を調べたり、予防接種のスケジュールの手配したり、普段は一緒に過ごしてい愛する人たちや友人と連絡を取ったりすることもできます。</p>
+	<p>しかし、良いインターネットアクセスがなければ、以上のすべては困難あるいは不可能なものです。</p>
+	<p>残念ながら、インターネットへのアクセスは均一に分散されていません。安価で高速、低遅延、信頼性の高い接続を備えたものもあれば、高価、低速、高遅延、信頼性の低い接続もあります。そして、まったくインターネット接続の設備すら備えていないものもあります。世界中でインターネットにアクセスできる人口は60%で、40%もの人口はインターネットにアクセスすらできません。</p>
+	<p>このインターネットへのアクセスの不平等は、現実世界の結果をもたらします。良いアクセスがなければ、コミュニケーションをとり、重要な情報を入手し、働き、勉強することが非常に困難です。アクセスの格差は技術的な問題ではなく、社会の問題です。</p>
+	<p>今週、Cloudflareは、この格差の軽減を支援することを目標に、<a href="https://www.cloudflare.com/pangea" target="_blank">プロジェクトPangeaを発表します</a>。私たちは、コミュニティネットワークが安く、安全に、そして良好な帯域幅と遅延でインターネットにアクセスできることを支援しています。高速かつ安価なブロードバンドアクセスを誰にでも提供するというすべての課題を解決することはできませんが、サービス不足のコミュニティのISPへの高速で信頼性の高いトランジットを提供して、良い方向に迎うように取り組めます。詳細については、 <a href="https://blog.cloudflare.com/pangea">Pangea の発表</a>を参照してください。</p>
+	<h2 id="-">平均の暴政</h2>
+	<p>Project Pangeaがなぜ重要かを理解する前に、まずはインターネットへのアクセス体験が世界中でどのように異なるかを理解する必要があります。遠くから見ると、世界は青と緑にしか見えません。しかし、私たちの惑星は場所によって大きく異なることは誰もが知っています。青と緑だけではなく、近くで見たら砂漠や熱帯雨林、都会のジャングルや穏やかな田園風景、山、谷、峡谷、火山、塩田、ツンドラ、緑豊かななだらかな丘などもあります。</p>
+	<p>Cloudflareは、この広大な景観におけるインターネットのパフォーマンスとリーチを測定できるユニークな立場にあります。100か国以上に200以上の都市にサーバーがあり、毎月10兆ものインターネットリクエストを処理しています。当社のネットワークと顧客とそのユーザーは、世界中のあらゆるネットワークのすべての国にまたがっています。</p>
+	<p>都市、郡、州、または国のレベルまでズームアウトすると、平均的なインターネットパフォーマンスが良好に見えることがあります。少なくとも許容範囲です。ただし、ズームインすると、不等式が表示され始めます。おそらく、優れたパフォーマンスを発揮するのは郡の一部で、別の郡はほとんどダイヤルアップ速度に近いこともあるでしょう。あるいは、都市には素晴らしいファイバーサービスを提供している地域もあれば、サービスが行き届いておらず、アクセスが不十分な地域もあります。</p>
+	<p>インターネットアクセスの不平等は遠い問題ではありません。発展途上国に限らず、世界で最も裕福な国と最も貧しい国に存在します。Zoom通話を利用するのが難しい、または不可能な地域はまだたくさんあります。そして、これを良好なインターネット接続で読んでいると、インターネットアクセスが不十分またはまったくない場所が身近からそれほど遠くないことを知って驚くかもしれません。</p>
+	<h2 id="8-">8 か国の帯域幅とレイテンシー</h2>
+	<p>Impact Weekでは、米国、ブラジル、イギリス、ドイツ、フランス、南アフリカ、日本、オーストラリアのインターネットデータを分析し、インターネットのパフォーマンスを把握しました。</p>
+	<p>以下には、インターネットが高速と低速（利用可能な帯域幅をメインに）の箇所、そしてエンドユーザーから遠く離れた場所（少なくともクライアントとサーバーの間の遅延に関して）を記したの詳細なマップがあります。単一の指標を使用したかったのですが、地域内の良い、悪い、存在しないインターネットトラフィックの分布を単一の数値で把握することは困難です。そのため、パフォーマンスを表すために「スループット」とも呼ばれる、遅延と帯域幅の2つの指標を使用しました。以下のマップは、帯域幅と遅延の違いを示し、「世界中のさまざまな場所でインターネットの良さ」という質問の一部に答えるために色分けされています。</p>
+	<p>私たちはこれを使い始めたばかりです。近い将来、より多くのデータと分析を利用できるようにするつもりです。その間、コミュニティの相対的なパフォーマンスをよりよく理解したい地元の役人であれば、ぜひ私どもにお声かけください。または、ご自身のインターネットパフォーマンスに興味がある場合は、 <a href="https://speed.cloudflare.com/" target="_blank">speed.cloudflare.com</a> にアクセスして、現在の接続でパーソナライズされたテストを実行することもできます。</p>
+	<h3 id="--1">遅延と帯域幅に関するおさらい</h3>
+	<p>始める前に、いくつかのポイントを簡単にご紹介します。<em>遅延</em>（通常はミリ秒またはミリ秒で測定）は、通信がデバイスからインターネット宛先に到達して戻るまでの時間ですが、<em>帯域幅</em>は、1秒で転送できるデータの量です (通常はメガビット/秒、または Mbps で測定されます)。</p>
+	<p>遅延と帯域幅の両方が、インターネット接続のパフォーマンスに影響します。遅延高いと、サーバーからの迅速な応答が必要なオンラインゲームなどに影響しますが、複雑なWebページの読み込みが遅くなり、ストリーミングビデオを中断することさえあります。帯域幅が低いと、ウェブページの画像、スマートフォンで試してみたい新しいアプリ、最新のムービーなどのダウンロードが遅くなります。</p>
+	<p>まばたきには約100msかかります。ただし、遅延が60ミリ秒前後のパフォーマンスは気づくようになり、30ミリ秒未満は理想的で、ビデオストリーミングやゲーミングでも遅延はほとんどまたはまったく見られません。<br></p>
+	<p><strong>米国</strong><br><em>米国のスループットの中央値:50.27Mbps</em><br><em>米国の遅延の中央値:46.69ミリ秒</em></p>
+	<p>米国政府は、サービス不足のコミュニティのためのインターネットを改善することの重要性を長い間認識してきたが、投資が最も必要な場所を決定する米国の機関である連邦通信委員会（FCC）は全国のインターネットアクセスを正確にマッピングすることに<a href="https://www.cnet.com/features/millions-of-americans-cant-get-broadband-because-of-a-faulty-fcc-map-theres-a-fix/" target="_blank">苦戦している</a>。既存マップの精度を向上させるために<a href="https://www.fcc.gov/BroadbandData" target="_blank">新しいデータ収集の取り組みに着手したが</a>、米国政府は依然としてブロードバンド投資から最も利益を得る分野について包括的な理解を欠いている。</p>
+	<p>Cloudflareのデータは、インターネットへの一貫性のないアクセスに関する全体的な懸念を確認し、現在のギャップを埋めるのに役立ちました。下の米国の2つの地図を見ると、郡レベルまでズームアウトしても、全国的に不平等が存在することがわかります。高い遅延と低帯域幅が赤い領域として際立っています。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/08/1.png" class="kg-image"></figure>
+	<p>遅延が最も低い（最高）と遅延が最も高い（最悪）の米国の場所は次のとおりです。</p>
+	<!--kg-card-begin: markdown-->
+	<table>
+		<thead>
+			<tr>
+				<th style="text-align:center">遅延順での最高のパフォーマンスを誇る地域</th>
+				<th style="text-align:center">遅延順で最悪のパフォーマンスを誇る地域</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td style="text-align:center">ラハブラ (カリフォルニア州)</td>
+				<td style="text-align:center">パロッツビル (テネシー州)</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">ミッドロージアン (テキサス州)</td>
+				<td style="text-align:center">ローガンビル (ウィスコンシン州)</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">ロスアラミトス (カリフォルニア州)</td>
+				<td style="text-align:center">マッキノー・シティ (ミシガン州)</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">セントルイス (ミズーリ州)</td>
+				<td style="text-align:center">リノ (ネバダ州)</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">フォートワース (テキサス州)</td>
+				<td style="text-align:center">エヴァ (テネシー州)</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">シュガーグローブ (ノースカロライナ州)</td>
+				<td style="text-align:center">ミルウォーキー (ウィスコンシン州)</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">ロックウォール (テキサス州)</td>
+				<td style="text-align:center">グローブシティ (ミネソタ州)</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">ジャスティン (テキサス州)</td>
+				<td style="text-align:center">セイクリッドハート (ミネソタ州)</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">デントン (テキサス州)</td>
+				<td style="text-align:center">スコッツボロ (アラバマ州)</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">ハンプトン (ジョージア州)</td>
+				<td style="text-align:center">ベスタ (ミネソタ州)</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<p>帯域幅を考慮とき、ビデオ会議には一般的に5〜10Mbpsで十分ですが、ウルトラHDテレビ視聴は20Mbpsまで簡単に消費される可能性があります。文脈については、連邦通信委員会（FCC）は、 <a href="https://www.fcc.gov/consumers/guides/household-broadband-guide" target="_blank">25Mbpsの</a>「アドバンスドサービス」の最小帯域幅を定義しています。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/08/2.png" class="kg-image"></figure>
+	<p>米国で最高のパフォーマンス（つまり最高の帯域幅）は、面白い事実を明らかにします。ニューヨークシティが最上位に出てくるけど、街をズームインすると格差のある小さなエリアが見つかるだろう。<a href="https://www.nycmesh.net/" target="_blank">NYC Mesh</a> とのパートナーシップの詳細については、Project Pangeaの投稿や、ニューヨーク内のサービス不足の部分にインターネットをより良くするためにどのように役立っているかをご覧ください。 平均の裏に隠された問題に注目してください。</p>
+	<!--kg-card-begin: markdown-->
+	<table>
+		<thead>
+			<tr>
+				<th style="text-align:center">スループット順の最高のパフォーマンスを誇る地域</th>
+				<th style="text-align:center">スループット順の最悪のパフォーマンス地域</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td style="text-align:center">ニューヨーク(ニューヨーク州)</td>
+				<td style="text-align:center">オザーク (ミズーリ州)</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">ハートフォード (コネチカット州)</td>
+				<td style="text-align:center">スタンリー (ノースカロライナ州)</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">エイバリー (ノースカロライナ州)</td>
+				<td style="text-align:center">エリス (カンザス州)</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">レッドウィロー (ネブラスカ州)</td>
+				<td style="text-align:center">マリオン (ウェストバージニア州)</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">マクリーン (ケンタッキー州)</td>
+				<td style="text-align:center">セジウィック (カンザス州)</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">フランクリン (アラバマ州)</td>
+				<td style="text-align:center">カルフーン (ウェストバージニア州)</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">モンゴメリー (ペンシルベニア州)</td>
+				<td style="text-align:center">ジャスパー (ジョージア州)</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">クック (イリノイ州)</td>
+				<td style="text-align:center">ブキャナン (ミズーリ州)</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">モンゴメリー (メリーランド州)</td>
+				<td style="text-align:center">ウェッツェル (ウェストバージニア州)</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">モンロー (ペンシルベニア州)</td>
+				<td style="text-align:center">ノーススロープ（アラスカ州）</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<p>都会と地方の格差から生じるという、インターネットへのアクセスに関する人気の考えとは反対に、パフォーマンスが悪いことは地方に固有のものではなかったことがわかりました。ロサンゼルス、ミルウォーキー、フロリダのオレンジカウンティ、フェアファックス、サンバーナーディーノ、ノックス郡、さらにはサンフランシスコでも、隣接するZIPコードはより強いパフォーマンスを持っています。</p>
+	<p>インターネット接続が優れている地域でも、同じリソースへの同じ接続にはコストが大きく異なる可能性があります。エンドユーザーのインターネット価格は、エリア内のISPの数と相関します。つまり、コンシューマーの選択が大きいほど、価格は高くなります。バイデン大統領の最近の競争のエグゼクティブ・オーダーは、ブロードバンドの選択の欠如を<a href="https://www.whitehouse.gov/briefing-room/statements-releases/2021/07/09/fact-sheet-executive-order-on-promoting-competition-in-the-american-economy/" target="_blank">指摘</a>し、「2億人以上の米国居住者が信頼できる高速インターネットプロバイダが1つか2つの地域に住んでいますが、 <em>これらの市場では、より多くの選択肢がある市場よりも5倍の価格が高くなっている。」と述べました。</em><br></p>
+	<p>次の都市は、インターネットプロバイダの選択肢が最も大きい都市です。</p>
+	<!--kg-card-begin: markdown-->
+	<table>
+		<thead>
+			<tr>
+				<th style="text-align:center">地域</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td style="text-align:center">ニューヨーク(ニューヨーク州)</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">ロサンゼルス (カリフォルニア州)</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">クック (イリノイ州)</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">ダラス (テキサス州)</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">ワシントン (コロンビア特別区)</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">ジャージーシティ (ニュージャージー州)</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">ニューヨーク(ニューヨーク州)</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">セコーカス (ニュージャージー州)</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">コロンバス (オハイオ州)</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<p>人口が少ないエリアでは、パフォーマンスが全体的に低下すると予想されるかもしれません。しかし、ロサンゼルス（カリフォルニア州）、ミルウォーキー（ウィスコンシン州）、オレンジ郡（フロリダ州）、フェアファックス（バージニア州）、サンバーナーディーノ（カリフォルニア）、ノックス郡（テネシー州）、さらにはサンフランシスコ（カリフォルニア）などの人口密度の高い地域でも、パフォーマンスの低いエリアがあります。</p>
+	<p>郵便番号の 9% 以上では、平均の遅延はZoom などのビデオ会議サービスを実行するためのパフォーマンスの許容しきい値である150 ミリ秒を超えています。</p>
+	<p>オーストラリア</p>
+	<p><em>オーストラリアのスループットの中央値:33.34Mbps</em></p>
+	<p><em>オーストラリアの遅延の中央値:42.04ms</em></p>
+	<p>一般的に、オーストラリアは、ビデオストリーミングを見ている世帯を維持することができず、そしておそらく複数のビデオ通話に苦労するスピードを備えた、非常に低いブロードバンド速度を被るようです。問題は地方だからというのものでもありませんでした。FTTB（光ファイバをユーザーの敷地まで直接敷設する）をほとんど使用している都心部では良好なブロードバンド速度を示していましたが、郊外の地域はそうでもありませんでした。イラワラのような大きな郊外地域でも、Wagga Waggaのような地方と同様の速度しかありません。これは単なる都市と地方の違いではないことを示します。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/08/3.png" class="kg-image"></figure>
+	<!--kg-card-begin: markdown-->
+	<table>
+		<thead>
+			<tr>
+				<th style="text-align:center">スループット順の最高のパフォーマンスを誇る地域</th>
+				<th style="text-align:center">スループット順の最悪のパフォーマンス地域</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td style="text-align:center">インナーウエスト・シドニー（ニューサウスウェールズ州）</td>
+				<td style="text-align:center">西タマール (タスマニア)</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">ポートフィリップ (ビクトリア州)</td>
+				<td style="text-align:center">バッセンディーン（西オーストラリア州）</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">ウーララ (ニューサウスウェールズ州)</td>
+				<td style="text-align:center">アレクサンドリーナ（南オーストラリア州）</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">ブリムバンク (ビクトリア州)</td>
+				<td style="text-align:center">ベイズウォーター（西オーストラリア州）</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">マッコーリー湖 (ニューサウスウェールズ州)</td>
+				<td style="text-align:center">オーガスタマーガレット川（西オーストラリア州）</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">ホークスベリー (ニューサウスウェールズ州)</td>
+				<td style="text-align:center">ゴールバーン・マルワリー (ニューサウスウェールズ州)</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">シドニー (ニューサウスウェールズ州)</td>
+				<td style="text-align:center">ゴイダー（南オーストラリア州）</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">ウェントワース (ニューサウスウェールズ州)</td>
+				<td style="text-align:center">キングボロー (タスマニア州)</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">インナーウエスト・シドニー（ニューサウスウェールズ州）</td>
+				<td style="text-align:center">ベイズウォーター（西オーストラリア州）</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">ブラックタウン (ニューサウスウェールズ州)</td>
+				<td style="text-align:center">リスゴー (ニューサウスウェールズ州)</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<p>皮肉なのは、遅延の観点から見ると、オーストラリアは実際にはかなりうまくいっているということです。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/08/4.png" class="kg-image"></figure>
+	<!--kg-card-begin: markdown-->
+	<table>
+		<thead>
+			<tr>
+				<th style="text-align:center">遅延順での最高のパフォーマンスを誇る地域</th>
+				<th style="text-align:center">遅延順で最悪のパフォーマンスを誇る地域</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td style="text-align:center">ポートフィリップ (ビクトリア州)</td>
+				<td style="text-align:center">ナローミン (ニューサウスウェールズ州)</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">モーニントン半島 (ビクトリア州)</td>
+				<td style="text-align:center">ノースシドニー（ニューサウスウェールズ州）</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">ウィットルシー (ビクトリア州)</td>
+				<td style="text-align:center">ノーザン・ミッドランズ (タスマニア州)</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">ペンリス (ニューサウスウェールズ州)</td>
+				<td style="text-align:center">スワン（西オーストラリア州）</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">ミッドコースト (ニューサウスウェールズ州)</td>
+				<td style="text-align:center">ワネルー（西オーストラリア州）</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">キャンベルタウン (ニューサウスウェールズ州)</td>
+				<td style="text-align:center">スノーウィーバレー (ニューサウスウェールズ州)</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">ノーザン・ビーチ (ニューサウスウェールズ州)</td>
+				<td style="text-align:center">パークス (ニューサウスウェールズ州)</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">ストラスフィールド (ニューサウスウェールズ州)</td>
+				<td style="text-align:center">ブルーム (西オーストラリア州)</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">ラトローブ (ビクトリア州)</td>
+				<td style="text-align:center">グリフィス (ニューサウスウェールズ州)</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">サーフ・コースト（ビクトリア州）</td>
+				<td style="text-align:center">スワン（西オーストラリア州）</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<p><strong>日本</strong><br><em>日本のスループットの中央値:61.4Mbps</em><br><em>日本の遅延の中央値:31.89ms</em></p>
+	<p>日本のインターネットは、東京から1,000マイル離れた沖縄県などの遠隔地を含め、一貫して低遅延を誇っています。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/08/5.png" class="kg-image"></figure>
+	<!--kg-card-begin: markdown-->
+	<table>
+		<thead>
+			<tr>
+				<th style="text-align:center">遅延順での最高のパフォーマンスを誇る地域</th>
+				<th style="text-align:center">遅延順で最悪のパフォーマンスを誇る地域</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td style="text-align:center">奈良県</td>
+				<td style="text-align:center">山形県</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">大阪</td>
+				<td style="text-align:center">沖縄県</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">滋賀県</td>
+				<td style="text-align:center">宮崎県</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">高知県</td>
+				<td style="text-align:center">長崎県</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">京都府</td>
+				<td style="text-align:center">大分県</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">栃木県</td>
+				<td style="text-align:center">鹿児島県</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">徳島県</td>
+				<td style="text-align:center">山口県</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">和歌山県</td>
+				<td style="text-align:center">鳥取県</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">神奈川県</td>
+				<td style="text-align:center">佐賀県</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">愛知県</td>
+				<td style="text-align:center">愛媛県</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<p>しかし、帯域幅に関しては別の話です。九州島、沖縄県、本州西部のいくつかの県では、ほかの県よりも低いパフォーマンスになっています。当然のことながら、最高人口密度とデータセンターを備えている東京では、最高のインターネットパフォーマンスが見られました。</p>
+	<figure class="kg-card kg-image-card"><img src="https://lh6.googleusercontent.com/ruJHfKO4WAVIy94O3fXP9HEDHukkFswD0FTtjoOvz3kw6-HyCsYmUeps7rWsZLMLRFOglquvjrThwXyUu-dNgicbVdBt-7wcLqrxzb5I6EtNyy0qv8jIrahjgmmQnhedJOq6h8E" class="kg-image"></figure>
+	<!--kg-card-begin: markdown-->
+	<table>
+		<thead>
+			<tr>
+				<th style="text-align:center">スループット順の最高のパフォーマンスを誇る地域</th>
+				<th style="text-align:center">スループット順の最悪のパフォーマンス地域</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td style="text-align:center">大阪</td>
+				<td style="text-align:center">鳥取県</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">東京</td>
+				<td style="text-align:center">島根県</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">神奈川県</td>
+				<td style="text-align:center">山口県</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">奈良県</td>
+				<td style="text-align:center">沖縄県</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">千葉県</td>
+				<td style="text-align:center">佐賀県</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">青森県</td>
+				<td style="text-align:center">宮崎県</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">兵庫県</td>
+				<td style="text-align:center">鹿児島県</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">京都府</td>
+				<td style="text-align:center">山形県</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">徳島県</td>
+				<td style="text-align:center">長崎県</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">高知県</td>
+				<td style="text-align:center">福井県</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<p><strong>英国</strong><br><em>イギリスのスループットの中央値:53.8Mbps</em><br><em>イギリスの遅延の中央値:34.12ms</em></p>
+	<p>イギリスは国中で良好な遅延を持っていますが、帯域幅はそうでもありません。最高のパフォーマンスは、ロンドン内だけでなく、マンチェスターのような他の大都市でも見られます。ロンドンとマンチェスターは、英国最大のインターネット<a href="https://www.linx.net/" target="_blank">交換</a><a href="https://www.lonap.net/" target="_blank">所</a>を有しています。<a href="https://blog.cloudflare.com/edinburgh/">エジンバラのような他の都市にデータをローカライズするためのさらなる努力は</a>、これらの地域のパフォーマンスを向上させるための重要なステップになります。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/08/7.png" class="kg-image"></figure>
+	<!--kg-card-begin: markdown-->
+	<table>
+		<thead>
+			<tr>
+				<th style="text-align:center">遅延順での最高のパフォーマンスを誇る地域</th>
+				<th style="text-align:center">遅延順で最悪のパフォーマンスを誇る地域</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td style="text-align:center">サットン</td>
+				<td style="text-align:center">ブレント</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">ミルトン・ケインズ</td>
+				<td style="text-align:center">ケレディジョン</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">ランベス</td>
+				<td style="text-align:center">ウェストミンスター</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">カーディフ</td>
+				<td style="text-align:center">スコティッシュボーダー</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">ハーロウ</td>
+				<td style="text-align:center">シェトランド諸島</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">ハックニー</td>
+				<td style="text-align:center">ミドルスブラ</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">イズリントン</td>
+				<td style="text-align:center">ファーマナ・アンド・オマー</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">ケンジントン・アンド・チェルシー区</td>
+				<td style="text-align:center">スラウ</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">サロック</td>
+				<td style="text-align:center">ハイランド</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">キングストン・アポン・テムズ</td>
+				<td style="text-align:center">デンビーシャー</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<figure class="kg-card kg-image-card"><img src="https://lh4.googleusercontent.com/9EHC_CfBXwuE8g6uhSXr6ZT-cdR13j-Z4sPxOefwsQpB6yJNrSViUnE6Hy-BNK2cmEcqWNcWivZvAoHgWXoNwSIeL9McvdCGyRtlEm4G-5JlnNlIetagzkwpI3V2z8hmT8prLCw" class="kg-image"></figure>
+	<!--kg-card-begin: markdown-->
+	<table>
+		<thead>
+			<tr>
+				<th style="text-align:center">スループット順の最高のパフォーマンスを誇る地域</th>
+				<th style="text-align:center">スループット順の最悪のパフォーマンス地域</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td style="text-align:center">シティ・オブ・ロンドン</td>
+				<td style="text-align:center">オークニー諸島</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">スラウ</td>
+				<td style="text-align:center">シェトランド諸島</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">ランベス</td>
+				<td style="text-align:center">ブレノー・グウェント</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">サリー</td>
+				<td style="text-align:center">ケレディジョン</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">タワーハムレット</td>
+				<td style="text-align:center">アングルシー島</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">コベントリー</td>
+				<td style="text-align:center">ファーマナ・アンド・オマー</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">レクサム</td>
+				<td style="text-align:center">スコティッシュボーダー</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">イズリントン</td>
+				<td style="text-align:center">デンビーシャー</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">ヴェール・オブ・グラモーガン</td>
+				<td style="text-align:center">ミッドロージアン</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">レスター</td>
+				<td style="text-align:center">ラトランド</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<p><strong>ドイツ</strong><br><em>ドイツのスループット中央値:48.79Mbps</em><br><em>ドイツの遅延の中央値:42.1ms</em></p>
+	<p>ドイツは、世界の主要なインターネットハブの一つであるフランクフルト・アム・マインを中心に最高のパフォーマンスを発揮している。しかし、旧東ドイツであった地域では遅延が高く、速度が遅く、低いインターネットのパフォーマンスになっています。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/08/9.png" class="kg-image"></figure>
+	<!--kg-card-begin: markdown-->
+	<table>
+		<thead>
+			<tr>
+				<th style="text-align:center">遅延順での最高のパフォーマンスを誇る地域</th>
+				<th style="text-align:center">遅延順で最悪のパフォーマンスを誇る地域</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td style="text-align:center">エアランゲン</td>
+				<td style="text-align:center">ハルツ</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">コエスフェルト</td>
+				<td style="text-align:center">ノルトヴェストメクレンブルク</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">ヴァイセンブルク＝グンツェンハウゼン</td>
+				<td style="text-align:center">ザーレ＝ホルツラント＝クライス</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">ハインズベルク</td>
+				<td style="text-align:center">エルベ＝エルスター</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">マイン＝タウヌス</td>
+				<td style="text-align:center">フォアポンメルン＝グライフスヴァルト</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">マイン＝タウヌス</td>
+				<td style="text-align:center">フォアポンメルン＝リューゲン</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">ダルムシュタット</td>
+				<td style="text-align:center">キーッフホイザークライス</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">パイネ</td>
+				<td style="text-align:center">バーニム</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">ヘルツォクトゥム・ラウエンブルク</td>
+				<td style="text-align:center">ロストック</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">ゼーゲベルク</td>
+				<td style="text-align:center">マイセン</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/08/10.png" class="kg-image"></figure>
+	<!--kg-card-begin: markdown-->
+	<table>
+		<thead>
+			<tr>
+				<th style="text-align:center">スループット順の最高のパフォーマンスを誇る地域</th>
+				<th style="text-align:center">スループット順の最悪のパフォーマンス地域</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td style="text-align:center">ヴァイセンブルク＝グンツェンハウゼン</td>
+				<td style="text-align:center">ザーレ＝ホルツラント＝クライス</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">フランクフルト・アム・マイン</td>
+				<td style="text-align:center">ヴァイマーラー・ラント</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">カッセル</td>
+				<td style="text-align:center">フルカナイフェル</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">コケム・ツェル</td>
+				<td style="text-align:center">クーゼル</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">ディンゴルフィン＝ランダウー</td>
+				<td style="text-align:center">シュプレー＝ネイセ</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">ボーデンゼー</td>
+				<td style="text-align:center">アイゼナハ</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">ザンクト・ヴェンデル</td>
+				<td style="text-align:center">ウンストルート＝ハイニヒ＝クライス</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">ランツフート</td>
+				<td style="text-align:center">ザーレ＝ホルツラント＝クライス</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">ルートヴィヒスブルク</td>
+				<td style="text-align:center">ワイマール</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">シュパイヤー</td>
+				<td style="text-align:center">ズュートリヒェ・ヴァインシュトラーセ</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<p><strong>フランス</strong><br><em>フランスのスループットの中央値:48.51Mbps</em><br><em>フランスの遅延の中央値:54.2ミリ秒</em></p>
+	<p>パリは長い間、フランスのインターネットハブでした。近日では、多数の海底ケーブルが「上陸」する<a href="https://blog.cloudflare.com/marseille/">マルセイユも</a>、ハブとして成長し始めている。リヨンとボルドーの他の相互接続ハブは、インターネットハブとして成長を見始めるところです。これらの4つの都市は、最高速度と最低レイテンシーで最高のパフォーマンスを発揮し、最高のインターネットパフォーマンスを発揮する場所です。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/08/11.png" class="kg-image"></figure>
+	<!--kg-card-begin: markdown-->
+	<table>
+		<thead>
+			<tr>
+				<th style="text-align:center">遅延順での最高のパフォーマンスを誇る地域</th>
+				<th style="text-align:center">遅延順で最悪のパフォーマンスを誇る地域</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td style="text-align:center">アントニー</td>
+				<td style="text-align:center">クラメシー</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">ブローニュ＝ビヤンクール</td>
+				<td style="text-align:center">ボーヌ</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">リヨン</td>
+				<td style="text-align:center">アンバート</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">リール</td>
+				<td style="text-align:center">コマーシー</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">ヴェルサイユ</td>
+				<td style="text-align:center">ヴィトリ＝ル＝フランソワ</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">ノジャン＝シュル＝マルヌ</td>
+				<td style="text-align:center">ヴィルフランシュ＝ド＝ルエルグ</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">ボビニー</td>
+				<td style="text-align:center">リュール</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">マルセイユ</td>
+				<td style="text-align:center">アブランシェ</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">サン＝ジェルマン＝アン＝レー</td>
+				<td style="text-align:center">オロロン＝サント・マリー</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">クレテイユ</td>
+				<td style="text-align:center">プリヴァス</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/08/12.png" class="kg-image"></figure>
+	<!--kg-card-begin: markdown-->
+	<table>
+		<thead>
+			<tr>
+				<th style="text-align:center">スループット順の最高のパフォーマンスを誇る地域</th>
+				<th style="text-align:center">スループット順の最悪のパフォーマンス地域</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td style="text-align:center">ブローニュ＝ビヤンクール</td>
+				<td style="text-align:center">クラメシー</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">アントニー</td>
+				<td style="text-align:center">ベラック</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">マルセイユ</td>
+				<td style="text-align:center">イスーダン</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">リール</td>
+				<td style="text-align:center">ヴィトリ＝ル＝フランソワ</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">ナンテール</td>
+				<td style="text-align:center">サルラ・ラ・カネダ</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">パリ</td>
+				<td style="text-align:center">セグレ</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">リヨン</td>
+				<td style="text-align:center">レセル</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">ボビニー</td>
+				<td style="text-align:center">アヴァロン</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">ヴェルサイユ</td>
+				<td style="text-align:center">プリヴァス</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">サヴェルヌ</td>
+				<td style="text-align:center">サルテーヌ</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<p><strong>ブラジル</strong><br><em>ブラジルのスループットの中央値:26.28Mbps</em><br><em>ブラジルの遅延の中央値:49.25ミリ秒</em></p>
+	<p>ブラジルの多くは、サンパウロとリオデジャネイロの主要なインターネットハブに地理的な近さを考慮して、良い、低遅延のインターネットのパフォーマンスを持っています。アマゾンの実際にインターネットに接続できているエリアでは、大幅なスピードと高い遅延があります。</p>
+	<p>カンパニャは、ブラジル全体で最高のパフォーマンスを発揮するインターネットの1つであり、<a href="https://blog.cloudflare.com/ten-new-cities-four-new-countries/">最近の発表されたCloudflareデータセンターのサイトでもあります</a>。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/08/13.png" class="kg-image"></figure>
+	<!--kg-card-begin: markdown-->
+	<table>
+		<thead>
+			<tr>
+				<th style="text-align:center">遅延順での最高のパフォーマンスを誇る地域</th>
+				<th style="text-align:center">遅延順で最悪のパフォーマンスを誇る地域</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td style="text-align:center">ヴァーレ・ド・パライバ・パウリスタ</td>
+				<td style="text-align:center">ヴァーレ・ド・エーカー</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">アシス</td>
+				<td style="text-align:center">スル・アマゾネンセ</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">スドエステ・アマゾネンセ</td>
+				<td style="text-align:center">マラホ</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">リトラル・スル・パウリスタ</td>
+				<td style="text-align:center">ヴァーレ・ド・ジュルア</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">バイシャダス</td>
+				<td style="text-align:center">スル・デ・ロライマ</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">セントロ・フルミネンセ</td>
+				<td style="text-align:center">セントロ・アマゾネンセ</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">スル・カタリネンセ</td>
+				<td style="text-align:center">マデイラ・グアポア</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">ヴァーレ・ド・パライバ・パウリスタ</td>
+				<td style="text-align:center">スル・ド・アマパ</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">ノロエステ・フルミネンセ</td>
+				<td style="text-align:center">メトロポリターナ・デ・ベレン</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">バウル</td>
+				<td style="text-align:center">バイショ・アマゾナス</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/08/14.png" class="kg-image"></figure>
+	<!--kg-card-begin: markdown-->
+	<table>
+		<thead>
+			<tr>
+				<th style="text-align:center">スループット順の最高のパフォーマンスを誇る地域</th>
+				<th style="text-align:center">スループット順の最悪のパフォーマンス地域</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td style="text-align:center">メトロポリターナ・ド・リオデジャネイロ</td>
+				<td style="text-align:center">スドエステ・アマゾネンセ</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">カンピナス</td>
+				<td style="text-align:center">マラホ</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">メトロポリターナ・デ・サンパウロ</td>
+				<td style="text-align:center">ノルテ・アマゾネンセ</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">オエステカタリネンセ</td>
+				<td style="text-align:center">バイショ・アマゾナス</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">マリリア</td>
+				<td style="text-align:center">スデステリオグランンセ</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">ヴァーレ・ド・イタジャイー</td>
+				<td style="text-align:center">スル・アマゾネンセ</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">スル・カタリネンセ</td>
+				<td style="text-align:center">セントロ・スル・セアーレンス</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">スドエステパラナエンセ</td>
+				<td style="text-align:center">スドエステ・パラエンセ</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">グランデ・フロリアノポリス</td>
+				<td style="text-align:center">セルタン・セルジパノ</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">ノルテカタリネンセ</td>
+				<td style="text-align:center">セルトエス・クラレンセス</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<p><strong>南アフリカ共和国</strong><br><em>南アフリカのスループットの中央値:6.4Mbps</em><br><em>南アフリカの遅延の中央値:59.78ms</em></p>
+	<p>ヨハネスブルグは以前から、南アフリカのインターネットハブとなっています。ここには、多くのインターネット大手企業がデータセンターを置いており、ヨハネスブルグからの距離も遅延として体感できるレベルです。南アフリカは<a href="https://blog.cloudflare.com/cape-town-south-africa/">ケープタウン</a>と<a href="https://blog.cloudflare.com/durban-and-port-louis/">ダーバン</a>にさらに2つのインターネットハブを持つようになりました。インターネットパフォーマンスもこの3都市が上位にあがっています。しかし、南アフリカのインターネットパフォーマンスの多くは、ハイビジョンでのビデオストリーミングやビデオ会議には不足しています。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/08/15.png" class="kg-image"></figure>
+	<!--kg-card-begin: markdown-->
+	<table>
+		<thead>
+			<tr>
+				<th style="text-align:center">遅延順での最高のパフォーマンスを誇る地域</th>
+				<th style="text-align:center">遅延順で最悪のパフォーマンスを誇る地域</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td style="text-align:center">シヤンクマ</td>
+				<td style="text-align:center">ベイヤーズ・ノード</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">uMshwathi</td>
+				<td style="text-align:center">モガラクウェナ</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">ツワネ市</td>
+				<td style="text-align:center">ウルンディ</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">ブリード・バレー</td>
+				<td style="text-align:center">ムークホップフォング / モディモレ</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">ケープタウン市</td>
+				<td style="text-align:center">マルティ ア フォフン</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">オーバーストランド</td>
+				<td style="text-align:center">モハカ</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">マディベンの自治体</td>
+				<td style="text-align:center">ツラメラ</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">メッシマホロ</td>
+				<td style="text-align:center">ウォルター・シスル</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">ステレンボッシュ</td>
+				<td style="text-align:center">Dawid Kruiper</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">エクルヒュレニ</td>
+				<td style="text-align:center">ガ・セゴニャーナ</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/08/16.png" class="kg-image"></figure>
+	<!--kg-card-begin: markdown-->
+	<table>
+		<thead>
+			<tr>
+				<th style="text-align:center">スループット順の最高のパフォーマンスを誇る地域</th>
+				<th style="text-align:center">スループット順の最悪のパフォーマンス地域</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td style="text-align:center">シヤンクマ</td>
+				<td style="text-align:center">ベイヤーズ・ノード</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">ケープタウン市</td>
+				<td style="text-align:center">ウォルター・シスル</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">ヨハネスブルグ市</td>
+				<td style="text-align:center">レクワ・ティーマネ</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">エクルヒュレニ</td>
+				<td style="text-align:center">Nkosazana Dlamini Zuma 博士</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">ドラケンシュタイン</td>
+				<td style="text-align:center">エムタンジェニ</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">eThekwini</td>
+				<td style="text-align:center">Dawid Kruiper</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">バッファロー</td>
+				<td style="text-align:center">スウェレンダム</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">uMhlathuze</td>
+				<td style="text-align:center">メラフォン市</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">ツワネ市</td>
+				<td style="text-align:center">ブルークレーンルート</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">マトロサナ市</td>
+				<td style="text-align:center">ムークホップフォング / モディモレ</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<h2 id="isp-">ISP密度のパフォーマンスへの影響に関するケーススタディ：米国アラバマ州</h2>
+	<p>このデータの見た時に 1 つの質問があがってきました。ISP の密度はインターネットのパフォーマンスに影響しますか。</p>
+	<p>一方で、ISPの競合が増えると、高速ネットワークを構築するのに十分なリソースを投資できる1つベンダーが生まれなくなるという場合もありえます。もう一方、古典的な経済学では独占が良くないとも示唆しています。</p>
+	<p>この質問をさらに調査するために、米国で24番目に人口の多い州である米国のアラバマ州に深く潜り込んだ。65 の郡で 2 つの主要なメトリクスを追跡しました。平均ダウンロード速度によって定義されるインターネットパフォーマンスと、ISP の最大のトラフィックシェアで測定される ISP の密度です。</p>
+	<!--kg-card-begin: markdown-->
+	<table>
+		<thead>
+			<tr>
+				<th style="text-align:center">郡</th>
+				<th style="text-align:right">平均ダウンロード速度</th>
+				<th style="text-align:right">最大手ISP のトラフィックシェア</th>
+				<th style="text-align:center">郡</th>
+				<th style="text-align:right">平均ダウンロード速度</th>
+				<th style="text-align:right">最大手ISP のトラフィックシェア</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td style="text-align:center">マリオン</td>
+				<td style="text-align:right">53.77</td>
+				<td style="text-align:right">41%</td>
+				<td style="text-align:center">フランクリン</td>
+				<td style="text-align:right">32.01</td>
+				<td style="text-align:right">83%</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">エスカンビア</td>
+				<td style="text-align:right">29.14</td>
+				<td style="text-align:right">43%</td>
+				<td style="text-align:center">クーサ</td>
+				<td style="text-align:right">82.15</td>
+				<td style="text-align:right">83%</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">エトワー</td>
+				<td style="text-align:right">56.07</td>
+				<td style="text-align:right">49%</td>
+				<td style="text-align:center">クレンショウ</td>
+				<td style="text-align:right">44.49</td>
+				<td style="text-align:right">84%</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">ジャクソン</td>
+				<td style="text-align:right">37.77</td>
+				<td style="text-align:right">52%</td>
+				<td style="text-align:center">ランドルフ</td>
+				<td style="text-align:right">21.4</td>
+				<td style="text-align:right">86%</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">ウィンストン</td>
+				<td style="text-align:right">59.25</td>
+				<td style="text-align:right">56%</td>
+				<td style="text-align:center">ラマー</td>
+				<td style="text-align:right">33.94</td>
+				<td style="text-align:right">86%</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">モンゴメリー</td>
+				<td style="text-align:right">79.5</td>
+				<td style="text-align:right">58%</td>
+				<td style="text-align:center">オートーガ</td>
+				<td style="text-align:right">65.55</td>
+				<td style="text-align:right">86%</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">ボールドウィン</td>
+				<td style="text-align:right">49.06</td>
+				<td style="text-align:right">58%</td>
+				<td style="text-align:center">チョクトー</td>
+				<td style="text-align:right">23.97</td>
+				<td style="text-align:right">87%</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">ヒューストン</td>
+				<td style="text-align:right">73.73</td>
+				<td style="text-align:right">61%</td>
+				<td style="text-align:center">バトラー</td>
+				<td style="text-align:right">29.86</td>
+				<td style="text-align:right">90%</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">ダラス</td>
+				<td style="text-align:right">86.92</td>
+				<td style="text-align:right">62%</td>
+				<td style="text-align:center">パイク</td>
+				<td style="text-align:right">50.54</td>
+				<td style="text-align:right">92%</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">マーシャル</td>
+				<td style="text-align:right">59.93</td>
+				<td style="text-align:right">62%</td>
+				<td style="text-align:center">サムター</td>
+				<td style="text-align:right">38.52</td>
+				<td style="text-align:right">91%</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">チェンバース</td>
+				<td style="text-align:right">72.05</td>
+				<td style="text-align:right">63%</td>
+				<td style="text-align:center">ピケンズ</td>
+				<td style="text-align:right">43.76</td>
+				<td style="text-align:right">92%</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">ジェファーソン</td>
+				<td style="text-align:right">99.84</td>
+				<td style="text-align:right">64%</td>
+				<td style="text-align:center">マレンゴ</td>
+				<td style="text-align:right">42.89</td>
+				<td style="text-align:right">92%</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">エルモア</td>
+				<td style="text-align:right">71.05</td>
+				<td style="text-align:right">66%</td>
+				<td style="text-align:center">メイコン</td>
+				<td style="text-align:right">12.69</td>
+				<td style="text-align:right">92%</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">ファイエット</td>
+				<td style="text-align:right">41.7</td>
+				<td style="text-align:right">68%</td>
+				<td style="text-align:center">ローレンス</td>
+				<td style="text-align:right">62.87</td>
+				<td style="text-align:right">92%</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">ローダーデール</td>
+				<td style="text-align:right">62.87</td>
+				<td style="text-align:right">69%</td>
+				<td style="text-align:center">バロック</td>
+				<td style="text-align:right">23.89</td>
+				<td style="text-align:right">92%</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">コルバート</td>
+				<td style="text-align:right">47.91</td>
+				<td style="text-align:right">70%</td>
+				<td style="text-align:center">チルトン</td>
+				<td style="text-align:right">17.13</td>
+				<td style="text-align:right">95%</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">デ・カルブ</td>
+				<td style="text-align:right">58.55</td>
+				<td style="text-align:right">70%</td>
+				<td style="text-align:center">ウィルコックス</td>
+				<td style="text-align:right">62.12</td>
+				<td style="text-align:right">93%</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">モーガン</td>
+				<td style="text-align:right">61.78</td>
+				<td style="text-align:right">71%</td>
+				<td style="text-align:center">モンロー</td>
+				<td style="text-align:right">20.74</td>
+				<td style="text-align:right">96%</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">ワシントン</td>
+				<td style="text-align:right">5.14</td>
+				<td style="text-align:right">72%</td>
+				<td style="text-align:center">デール</td>
+				<td style="text-align:right">55.46</td>
+				<td style="text-align:right">97%</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">ジュネーブ</td>
+				<td style="text-align:right">32.01</td>
+				<td style="text-align:right">73%</td>
+				<td style="text-align:center">コーヒー</td>
+				<td style="text-align:right">58.18</td>
+				<td style="text-align:right">97%</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">リー</td>
+				<td style="text-align:right">78.1</td>
+				<td style="text-align:right">73%</td>
+				<td style="text-align:center">カネッカー</td>
+				<td style="text-align:right">34.94</td>
+				<td style="text-align:right">97%</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">タスカルーサ</td>
+				<td style="text-align:right">58.85</td>
+				<td style="text-align:right">76%</td>
+				<td style="text-align:center">クレバーン</td>
+				<td style="text-align:right">38.25</td>
+				<td style="text-align:right">97%</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">カルマン</td>
+				<td style="text-align:right">61.03</td>
+				<td style="text-align:right">77%</td>
+				<td style="text-align:center">クラーク</td>
+				<td style="text-align:right">38.14</td>
+				<td style="text-align:right">97%</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">コビントン</td>
+				<td style="text-align:right">35.48</td>
+				<td style="text-align:right">78%</td>
+				<td style="text-align:center">カルフーン</td>
+				<td style="text-align:right">64.19</td>
+				<td style="text-align:right">97%</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">シェルビー</td>
+				<td style="text-align:right">69.66</td>
+				<td style="text-align:right">79%</td>
+				<td style="text-align:center">ロウンズ</td>
+				<td style="text-align:right">9.91</td>
+				<td style="text-align:right">98%</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">セントクレア</td>
+				<td style="text-align:right">33.05</td>
+				<td style="text-align:right">79%</td>
+				<td style="text-align:center">ラッセル</td>
+				<td style="text-align:right">49.48</td>
+				<td style="text-align:right">98%</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">ブラウント</td>
+				<td style="text-align:right">40.58</td>
+				<td style="text-align:right">80%</td>
+				<td style="text-align:center">ヘンリー</td>
+				<td style="text-align:right">4.69</td>
+				<td style="text-align:right">98%</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">モバイル</td>
+				<td style="text-align:right">68.77</td>
+				<td style="text-align:right">80%</td>
+				<td style="text-align:center">ライムストーン</td>
+				<td style="text-align:right">71.6</td>
+				<td style="text-align:right">98%</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">ウォーカー</td>
+				<td style="text-align:right">39.36</td>
+				<td style="text-align:right">81%</td>
+				<td style="text-align:center">ビブ</td>
+				<td style="text-align:right">70.14</td>
+				<td style="text-align:right">98%</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">バーバー</td>
+				<td style="text-align:right">51.48</td>
+				<td style="text-align:right">82%</td>
+				<td style="text-align:center">チェロキー</td>
+				<td style="text-align:right">17.13</td>
+				<td style="text-align:right">99%</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">タラプーサ</td>
+				<td style="text-align:right">60%</td>
+				<td style="text-align:right">82%</td>
+				<td style="text-align:center">グリーン</td>
+				<td style="text-align:right">4.76</td>
+				<td style="text-align:right">99%</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">マディソン</td>
+				<td style="text-align:right">99</td>
+				<td style="text-align:right">83%</td>
+				<td style="text-align:center">クレイ</td>
+				<td style="text-align:right">3.42</td>
+				<td style="text-align:right">100%</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<p>アラバマ州のほとんどで、ISP密度が非常に高いことがわかります。大多数の郡では、最大のISPのトラフィックシェアは 80%（またはそれ以上）ですが、他のすべてのISPが全部合わせてもかなり小さい規模で運営しています。各ISPは3つの郡（マリオン、エスカンビア、エトワー）のみで、ユーザートラフィックの 50% 未満興味深いことに、エトワは州内で最高のパフォーマンスの1つですが、インターネットトラフィックの 98% を単一のISPが担っているヘンリーは最悪のパフォーマンスです。</p>
+	<p>興味深いのは、データをプロットし、パフォーマンス（ダウンロード速度によって測定される）に対して、トラフィックシェア（支配的なISP のトラフィックシェアを 100% 少なくするだけ）で追跡し、最適な線形ラインを使用して関係を見つけるときです。次の結果が見られます。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/08/17.png" class="kg-image" alt="Chart"></figure>
+	<p>ご覧のとおり、非支配的なISPのトラフィックシェアと平均ダウンロード速度との間には強いポジティブな関係があります。非支配的な ISP がトラフィックシェアを増加させるにつれて、インターネットの速度は向上する傾向があります。結論は明らかです。ある地域のインターネットのパフォーマンスを向上させたい場合は、複数のインターネットサービスプロバイダー間の競争を促進すればいいのです。</p>
+	<h2 id="-isp-">その他のパフォーマンスにおける課題：制限付きISPエクスチェンジとトロンボーニング</h2>
+	<p>しかし、密度以上以外のことも関係してきます。アラバマ州は、ISPがうまく機能しない他の多くの地域と同様に、パフォーマンスの課題に直面しています。「トロンボーニング」とも呼ばれている、悪いルーティングのことです。<br></p>
+	<p>地元の大学があるアラバマ州のタスキーギーを例としよう。</p>
+	<p>Tuskegeeでは、選択肢は限られています。コンシューマーは高速ブロードバンドに対して一つの選択肢しかありません。しかし、学外の学生がインターネットにローカルにアクセスできるようになっても、それは本当にローカルではありません。大学とは別のISPのTuskegeeの学生のトラフィックは、学校から車で2時間ほど離れているアトランタまでルーティングしてから学校に戻ってくることがほとんどです。</p>
+	<p>これは孤立しても起こりません。今日、最大のISPは、一握りの都市、特にシアトル、サンノゼ、ロサンゼルス、ダラス、シカゴ、アトランタ、マイアミ、アシュバーン、ニューヨークシティの一握りの他のネットワークとしか交換していません。<br></p>
+	<p>以上の大都市に居たらトロンボーニングで苦しむことはまずないでしょう。でも、そうじゃないとしたら？多くの場合、インターネットトラフィックは、トロンボーンの形状と同様に、ループバックする前に遠くに移動しなければならないことがあり、これによってインターネットのパフォーマンスが低下します。トロンボーニングは非効率化につながり、インターネットアクセスのコストを上昇させます。データをローカルに保つ代わりに、トラフィック量の増加が遠方の都市に無駄に運ばれます。</p>
+	<p><a href="https://support.cloudflare.com/hc/en-us/articles/203118044-Gathering-information-for-troubleshooting-sites#h_b8cebafd-9243-40e9-9c44-d4b94ccd3a87" target="_blank">traceroute</a> などのツールを使用して、インターネットトラフィックの流れを視覚化できます。</p>
+	<p>例として、<a href="https://atlas.ripe.net/" target="_blank">アラバマ州からFacebookにRIPE Atlasプローブを使用してテストを実行しましたが</a>、残念ながら、トラフィックが時々非常に循環するルートを取ることがある極端な事例（トラフィックが、アラバマに戻る前に、アトランタ、アッシュバーン、パリ、アムステルダムを経由）を発見しました。パスはAT&amp;Tのネットワークから始まり、アトランタに向かい、そこでTelia（IPトランジットプロバイダー）のネットワークに入り、大西洋を横断し、Facebookにたどり着いてから戻ってきます。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/08/18.png" class="kg-image"></figure>
+	<!--kg-card-begin: markdown-->
+	<pre><code>157.240.201.35 (157.240.201.35) にtraceroute、48 バイトパケット
+1-192.168.6.1 1.435ms 0.912ms 0.636ms
+2-99.22.36.1 99-22-36-1.lightspeed.dcttral.sbcglobal.net AS7018 1.26ms 1.134ms 1.107ms
+3-99.173.216.214 AS7018 3.185ms 3.173ms 3.099ms
+4-12.122.140.70 cr84.attga.ip.att.net AS7018 11.572ms 13.552ms 15.038ms
+5-* * *
+6- 192.205.33.42 AS7018 8.695ms 9.185ms 8.703ms
+7-62.115.125.129 ash-Bb2-link.ip.twelve99.net AS1299 23.53ms 22.738ms 23.012ms
+8-  62.115.112.243 prs-bb1-link.ip.twelve99.net AS1299 115.516ms 115.52ms 115.211ms
+9-  62.115.134.96 adm-bb3-link.ip.twelve99.net AS1299 113.487ms 113.405ms 113.25ms
+10-  62.115.136.195 adm-b1-link.ip.twelve99.net AS1299 115.443ms 115.703ms 115.45ms
+11- 62.115.148.231 facebook-ic331939-adm-b1.ip.twelve99-cust.net AS1299 134.149ms 113.885ms 114.246ms
+12- 129.134.51.84 po151.asw02.ams2.tfbnw.net AS32934 113.27ms 113.078ms 113.149ms
+13-  129.134.48.101 po226.psw04.ams4.tfbnw.net AS32934 114.529ms 114.439ms 117.257ms
+14-  157.240.38.227 AS32934 113.281ms 113.365ms 113.448ms
+15- 157.240.201.35 edge-star-mini-shv-01-ams4.facebook.com AS32934 115.013ms 115.223ms 115.112ms
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>ここでの意図は、AT&amp;T、Telia、またはFacebookに恥をかかせることではありません。また、この課題は彼らに限った課題でもありません。Facebookのコンテンツは間違いなくアトランタにキャッシュされており、アラバマ州からのリクエストはそれの先に行かないはずです。これらの3つのネットワーク内およびネットワーク間で発生する可能性のある多くの条件がこの混乱を引き起こした可能性がありますが、最終的に苦しむのはコンシューマーです。</p>
+	<p>解決策：より多くの主要なISPをより多くの都市で、より多くのネットワークと交換するようにすることです。もちろん、長期的にはコストをさらに削減できるとしても、そうすることには初期費用がかかります。</p>
+	<h2 id="--2">まとめ</h2>
+	<p>ウィリアム・ギブソンが残した名言のように、「未来はここにある。それはまだ広くいきわたっていないだけだ。」</p>
+	<p>ここに示されているデータと分析からのわかったことがあるとすれば、それはインターネットアクセスが地域によって大きく異なることです。しかし、それは先進国と発展途上国、あるいは地方と都市の問題だけではありません。先進国には、サービスが十分に行き届いていない都市コミュニティや地域があり、ほとんどの人が思うほど高いスコアは得られていません。</p>
+	<p>さらに、アラバマ州のケーススタディでは、ISP市場の構造はパフォーマンスを促進する上で非常に重要であることが示されています。私たちは、より多くの競争とより速いパフォーマンスとの間に強い正の相関関係を見出しました。同様に、効率の悪いルーティングを避けるために、より多くのネットワークをより多くの場所で相互接続する機会がたくさんあることがわかりました。</p>
+	<p>最後に、世界の他の40％をオンラインにしたい場合、アクセスを促進し、コストを削減するイニシアチブがさらに必要になります。支援できるエリアはたくさんあります。<a href="https://blog.cloudflare.com/pangea">そして私たちも、この課題に取り組むためにProject Pangeaを立ち上げることを嬉しく思っています</a>。</p>
+</div>

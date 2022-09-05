@@ -1,0 +1,67 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/11-2.png" class="kg-image" alt="Introducing: Advanced Certificate Manager"></figure>
+	<p>Cloudflareは、<a href="https://blog.cloudflare.com/dedicated-ssl-certificates/">専用証明書</a>を2016年にリリースしました。本日は専用証明書が刷新され、新たな名前で生まれ変わったAdvanced Certificate Managerを発表します。Advanced Certificate Managerは、Cloudflareで証明書を管理するための柔軟でカスタマイズ可能なツールです。</p>
+	<h3 id="-">アップロード</h3>
+	<p>TLS証明書は、インターネットを安全に閲覧し、オンラインで安全に送金し、パスワードを非公開にできるようにしているものです。証明書自体に暗号的にリンクされている公開鍵暗号を使用して、機密メッセージを暗号化することによってそれを行います。TLS証明書は、IDに関するアサーションを作成するためにも使用されます。つまり、サーバーのすべてのWebサイトで使用されるサーバー証明書には、証明書にWebサイトの名前が含まれており、証明書の情報が正しく正確であることを確認するサードパーティの認証局（CA）によって発行されます。</p>
+	<p>ブラウザでは、サーバーが提示した証明書が正常に検証された後、TLS を使用して暗号化された Web サイトのみにアクセスすることができます。これは、セキュリティが飛行機に乗り込むための ID をチェックする方法と似ています。</p>
+	<p>Cloudflareは、これまで以上にインターネットの保護に注力しており、どのお客様もセキュリティに配慮しやすいようにしたいと考えています。これが、証明書管理システムに移行している理由です。このシステムでは、証明書とTLS設定を簡単にカスタマイズできます。ドメインのセキュリティを積極的に強化するための適切なツールを提供することで、これを実現しています。</p>
+	<p>まず、証明書の有効期間の変更についてお話しましょう。これは大きな違いをもたらす小さな変更です。</p>
+	<h3 id="--1">証明書の有効期間を短くする</h3>
+	<p><a href="https://cabforum.org/" target="_blank">証明機関ブラウザフォーラム</a>（証明書の業界ガイドラインを設定するボランティアグループ）は、過去数年間にわたって公的に信頼された証明書の最大有効期間を短縮しています。以前は3年証明書を取得できましたが、今は1年間の証明書しか取得できません。なぜ彼らはこのように決めたのでしょう？</p>
+	<p>証明書をより頻繁にローテーションすると、プライベートキー（秘密鍵）のローテーションがより頻繁に行われることを意味しますが、必ずしもそうではありません。シークレットをより頻繁に変更するということは、シークレット（この場合はプライベートキー）が侵害された場合、その侵害の最大寿命が短くなることを意味します。これは、より優れたセキュリティ体制と広く見なされており、キーの侵害に関連するリスクを最小限に抑えるのに役立ちます。</p>
+	<p>また、<a href="https://letsencrypt.org/2015/11/09/why-90-days.html" target="_blank">自動化を促すというボーナスもあります</a>。タスクを実行する頻度が高いほど、自動化を進めるべきです。自動化とは、生産時に証明書の有効期限が切れたり、重要な資料にアクセスしたりする可能性が低くなります。</p>
+	<p>Advanced Certificate Managerを使用すると、証明書の有効期間を最短で14 日間まで設定できます。証明書のライフサイクルを短縮することで、セキュリティ体制をプロアクティブに改善できます。更新時に証明書と秘密鍵を更新し続けると、リスクが軽減されます。</p>
+	<p>一部の場合、短い有効期間を設定すると、ダウンタイムのリスクが高くなります。これは、有効期間が短いと証明書を頻繁に発行する必要があり、サーバーが過負荷になる可能性があるためです。</p>
+	<p>Cloudflareでは、それは問題ではありません。有効期間が短いことは、証明書の発行と更新のパイプラインを改善し続けることに繋がりました。1日に約450万の証明書が発行されているため、すべてのお客様が14日間の有効期間を設定でき、それを当社が処理することができると自信を持って言えます。</p>
+	<p>全体として、<a href="https://www.websecurity.digicert.com/blog/cabforum-votes-shorten-certificate-lifetime-validity-periods-impacts#:~:text=This%20topic%20led%20to%20a,also%20had%20an%20unintended%20consequence.&amp;text=However%2C%20effective%20April%2022%2C%202017,unless%20a%20corrective%20ballot%20passes." target="_blank">業界は証明書サイクルの短縮に向けて動いているため</a>、お客様が簡単に利用できる機能として提供できるようになったことは喜ばしいことです。</p>
+	<p>TLSに使用される暗号スイートも制御したいお客様もいることでしょう。ACMがあれば、それが可能です。</p>
+	<h3 id="--2">暗号スイートの設定</h3>
+	<p>暗号スイートは、TLS を使用するネットワーク接続のセキュリティを確保するのに役立つ一連のアルゴリズムです。暗号スイートに含まれるアルゴリズムのセットは次のとおりです。</p>
+	<ul>
+		<li>キー交換アルゴリズム</li>
+		<li>認証アルゴリズム</li>
+		<li>一括暗号化アルゴリズム</li>
+		<li>メッセージ認証コード (MAC) アルゴリズム</li>
+	</ul>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/22.png" class="kg-image"></figure>
+	<p>2 つのサーバーが TLS 経由で相互に安全に通信する際は、TLS ハンドシェイクを開始することから始めます。TLS ハンドシェイクの間、クライアントとサーバーは、使用する暗号化アルゴリズムを確立します。クライアントは、対応している暗号スイート（暗号化アルゴリズム）を示す Client Hello メッセージを使用して、このハンドシェイクを開始します。次に、サーバは Server Hello メッセージで応答します。このメッセージには、クライアントが送信したサポートされている暗号のリストに基づいて暗号の選択が含まれています。</p>
+	<p>ユーザーがCloudflareのネットワーク上のウェブサイトに接続すると、Cloudflareは暗号を選択する責任があります。過去に、 <a href="https://blog.cloudflare.com/staying-on-top-of-tls-attacks/"> &nbsp;</a>Cloudflareのサーバーが特定の暗号をどのように優先するかについてについて<a href="https://blog.cloudflare.com/staying-on-top-of-tls-attacks/">話しました </a> 。たとえば、RSAで始まる暗号よりもECDHEを使用する暗号を優先します。以前のブログ投稿で説明したように、RSAは、特にSSLサーバーの秘密鍵が漏洩した場合に、セキュリティの脆弱性の影響を受けやすくなります。</p>
+	<p>特定の暗号を他の暗号よりも優先することで、より高いレベルのセキュリティが提供されますが、当社はさらに一歩進んで、Cloudflareの<a href="https://support.cloudflare.com/hc/ja-jp/articles/203041594-Cloudflare-SSL-cipher-browser-and-protocol-support" target="_blank">承認済み暗号のリスト</a>からWebサイトでサポートする暗号スイートを選択できるようにしています。弱い暗号を削除し、利用可能な最も強い暗号のみを許可したい場合も、1回のAPI呼び出しで実行できるようになりました。これを行うには、<a href="https://api.cloudflare.com/#zone-settings-change-ciphers-setting" target="_blank">暗号スイート設定エンドポイント</a>を使用して、TLS終了用の暗号の許可リストを示します。</p>
+	<p><a href="https://onetrust.com/" target="_blank">OneTrust</a>や<a href="https://report-uri.com/" target="_blank">Report URI</a>などのお客様は 、この機能でセキュリティ体制を向上させています。</p>
+	<blockquote>Advanced Certificate Managerは、厳格なセキュリティ要件を満たすことを可能にしながら、多くのドメインにわたる証明書の管理方法を簡素化しました。暗号スイートを管理する機能、およびパラメーター内の自動更新により、利用可能で安全な環境が実現します。<br><strong>- OneTrust、情報セキュリティ責任者、Colin Henderson</strong></blockquote>
+	<blockquote>TLS接続で使用される暗号スイートをきめ細かく制御し、ドメインに対して発行される証明書の有効期間を短縮するために、Advanced Certificate Managerをしばらく使用してきました。より強力な暗号スイートとより短い証明書により、サイトへの接続とその中のデータをより適切に保護できるようになりました。<br><strong>- Scott Helme、創設者、レポートURI</strong></blockquote>
+	<h3 id="--3">カスタム署名リクエスト</h3>
+	<p>一部の顧客は、認証局（CA）から独自のSSL証明書を取得したいが、関連する秘密鍵をCloudflareで生成して保存したいと考えています。これらの顧客は、Advanced Certificate Managerを使用して、組織名、場所などを使用して証明書署名要求（CSR）を生成できるようになりました。次に、それを任意のCAに持っていき、証明書を取得して、Cloudflareにアップロードします。Cloudflareは、安全性の高いキー管理ソフトウェアと<a href="https://blog.cloudflare.com/introducing-cloudflare-geo-key-manager/">ハードウェア制御</a>の両方を使用して、キー管理を厳重に行っています。CSRサポートにより、お客様は選択したCAから証明書を取得でき、秘密鍵がネットワークから離れることなく、安全でない取り扱いについて心配する必要がありません。</p>
+	<h3 id="--4">その他の機能</h3>
+	<p>ACMが提供するセキュリティ機能とは別に、使いやすい構成可能な証明書管理ソリューションをお客様に提供できるようになりました。ACMを使用すると、お客様はゾーンごとに最大100のエッジ証明書を発行できるようになります。これには、ゾーンの頂点と最大50のホスト名が含まれます。これは、証明書がマルチレベルでサポートされるようになったため、第2レベルおよび第3レベルのホスト名の証明書を作成できることを意味します。さらに、お客様は、ご希望の検証方法（HTTP、TXT、または電子メール）と認証局（Let’s EncryptまたはDigicert）を選択できます。</p>
+	<blockquote>以前のCDNと比較して、Cloudflareを使用すると、ワイルドカード証明書を作成および維持するという生涯にわたる利点が得られます。ほんの数行のTerraformコードで、Cloudflareがすべての作業を行ってくれます。<br><strong>- Spark NetworksのDevOpsエンジニア、Nikita Ponomarev</strong></blockquote>
+	<p>ACM 設定を構成する方法については、<a href="https://developers.cloudflare.com/ssl/advanced-certificate-manager" target="_blank">開発者向けドキュメント</a>を参照してください 。</p>
+	<h3 id="--5">専用証明書からのアップグレード</h3>
+	<p>専用証明書をご利用いただいているお客様には、来月中にAdvanced Certificate Managerにアップグレードすることをお知らせいたします。</p>
+	<p>これはダウンタイムなしで移行されるため、証明書の種類が [<strong>専用</strong>] から [<strong>Advanced</strong>] に変更されたダッシュボードに表示されるはずです。</p>
+	<p>それに加えて、APIを使用して専用の証明書を発行している場合は、新しいACM証明書の発行<a href="https://api.cloudflare.com/#certificate-packs-order-advanced-certificate-manager-certificate-pack" target="_blank">APIエンドポイント</a>に切り替える必要があります。注意すべき変更の1つは、API応答フィールドで、「タイプ」が「専用」から「Advanced」に変更されることです。4</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>{
+  "success": true,
+  "errors": [],
+  "messages": [],
+  "result": {
+    "id": "3822ff90-ea29-44df-9e55-21300bb9419b",
+    "type": "advanced",
+    "hosts": [
+      "example.com",
+      "*.example.com",
+      "www.example.com"
+    ],
+    "status": "initializing",
+    "validation_method": "txt",
+    "validity_days": 365,
+    "certificate_authority": "digicert",
+    "cloudflare_branding": false
+  }
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>専用証明書をすでに購入しているお客様は、現在の価格に適用除外されます。他のすべてのFree、Pro、およびBusinessプランをご利用のお客様の場合、Advanced Certificate Managerはゾーンごとに月額$10になります。これは、ACMが提供する機能を追加費用なしで、顧客が専用証明書のすべての利点を享受できることを意味します。</p>
+	<p>Advanced Certificate Managerに関するお問い合わせは、Cloudflareまでお気軽にご連絡ください。<br></p>
+</div>

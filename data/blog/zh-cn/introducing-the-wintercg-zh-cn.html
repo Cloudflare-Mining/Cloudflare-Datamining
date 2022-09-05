@@ -1,0 +1,287 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image1-10.png" class="kg-image" alt="A Community Group for Web-interoperable JavaScript runtimes"></figure>
+	<p>如今，Cloudflare 与 Vercel、Shopify 以及 <a href="https://nodejs.org" target="_blank">Node.js</a> 和 <a href="https://deno.land" target="_blank">Deno</a> 的个人核心贡献者合作，宣布成立一个新的<a href="https://www.w3.org/community/wintercg/" target="_blank">社区小组</a>，专注于在基于 JavaScript 的非 Web 浏览器开发环境中实现标准化 Web API 的互操作性实现。</p>
+	<p><a href="https://w3.org" target="_blank">W3C</a> 和 <a href="https://whatwg.org/" target="_blank">Web 超文本应用程序技术工作组</a> (WHATWG) 长期以来一直致力于为作为开发环境的 Web 开发标准化 API 和功能。诸如 <a href="https://fetch.spec.whatwg.org/" target="_blank">fetch()</a>、<a href="https://streams.spec.whatwg.org/" target="_blank">ReadableStream 和 WritableStream</a>、 <a href="https://url.spec.whatwg.org/" target="_blank">URL</a>、<a href="https://wicg.github.io/urlpattern" target="_blank">URLPattern</a>、<a href="https://encoding.spec.whatwg.org/" target="_blank">TextEncoder</a> 等 API 成为现代 Web 开发中无处不在且有价值的组件。然而，这些现有组的章程一直<a href="https://whatwg.org/faq#what-is-the-whatwg-working-on" target="_blank">明确限制为</a>只考虑 Web 浏览器的特定需求，导致开发的标准不会针对不像 Web 浏览器的环境进行优化。有关这方面的一个良好示例是 <a href="https://streams.spec.whatwg.org/" target="_blank">Streams 标准</a>的一些非浏览器实施，与等效的 Node.js 流和 Deno 阅读器实施相比，它的速度<a href="https://github.com/nodejs/undici/issues/1203" target="_blank"><em>慢</em></a>一个数量级，这主要是在该标准中指定 API 的方式造成的。</p>
+	<p>Cloudflare Workers 等无服务器环境或 Node.js 和 Deno 等运行时有广泛的要求、问题和关切，这些要求、问题和关切与网络浏览器根本不相关，反之亦然。这种脱节以及在制定各种规范时缺乏对这些差异的明确考虑，导致非浏览器运行时对实际上在各种环境中通用的功能实施了自己的定制、临时的解决方案。</p>
+	<p>新成立的社区小组正在改变这种状况，它提供了一个场所，来讨论和倡导在整个堆栈的任何地方部署的<em>所有</em> Web 环境的共同要求。</p>
+	<h2 id="-">这对开发人员有什么好处？</h2>
+	<p>开发人员希望他们的代码是可移植的。在他们写好代码后，如果他们选择转移到不同的环境（例如从 Node.js 转移到 Deno），他们不希望为了实现与之前完全相同的功能而不得不完全<em>重写</em>代码。</p>
+	<p>我们从 Cloudflare 用户那里了解到的一个更常见的问题是他们如何利用发布到 <a href="https://npmjs.org" target="_blank">npm</a> 的一些任意模块，这些模块利用了一组特定于 Node.js 或特定于 Deno 的 API。如果要利用这些 API，通常需要引入 polyfill 实现的任意组合。Deno 项目的情况与此类似，该项目选择将完整的 Node.js 核心 API 的 polyfill 直接集成到其标准库中。这些环境越多地实现相同的通用标准，开发人员生态系统就越能依赖他们编写的代码，而不管它在哪里运行。</p>
+	<p>Cloudflare Workers、Node.js、Deno 和网络浏览器彼此之间都有很大不同，但它们有很多共同的功能。例如，它们都提供了生成加密哈希值的 API；它们都以某种方式处理流数据；它们都提供了向某处发送 HTTP 请求的能力。在存在这种重叠的地方，在需求和功能相同的地方，这些环境都应该实现相同的标准化机制。</p>
+	<h2 id="web-">Web 互操作性运行时社区小组</h2>
+	<p>新的<a href="https://github.com/wintercg" target="_blank"> Web 互操作性运行时社区小组</a> (WinterCG) 在<a href="https://www.w3.org/community/about/" target="_blank"> W3C</a> 的既定流程下运作。</p>
+	<p>我们花了一段时间才确定这个小组的名称，因为它对于理解这个小组要实现的目标（以及它<em>不会</em>做什么）至关重要。关键元素是“Web 互操作性”这一短语。</p>
+	<p>我们所用的 “web” 与 W3C 和 WHATWG 社区使用该术语的意义完全相同—准确地说：是<em> Web 浏览器</em>。那么，术语“Web 互操作性”，意味着<em>以与在 Web 浏览器中实现功能的方式完全相同或至少尽可能一致</em>的方式实现功能。例如，new URL() 构造函数在浏览器中的运作方式，与 new URL() 构造函数在 Node.js、Deno 和 Cloudflare Workers 中的运作方式完全一样。</p>
+	<p>然而，必须承认这样一个事实：Node.js、Deno 和 Cloudflare Workers 是明确的<strong>，而不是</strong>网络浏览器。虽然这一点应该是显而易见的，但有必要指出，因为各种 JavaScript 环境之间的差异会大大影响标准化 API 的设计决策。例如，Node.js 和 Deno 各自提供对本地文件系统的完全访问。相比之下，Cloudflare Workers 没有本地文件系统；而网络浏览器必然会限制应用程序对本地文件系统的操作。同样，虽然网络浏览器本身包含一个网站 "源站" 的概念，并实施了诸如 <a href="https://fetch.spec.whatwg.org/#http-cors-protocol" target="_blank">CORS</a> 等机制，以保护用户免受各种安全威胁，但在 Node.js、Deno 和 Cloudflare Workers 运行的服务器端，并没有 "源站" 的同等概念。</p>
+	<p>到目前为止，W3C 和 WHATWG 都严格关注 Web 浏览器的需求。新的 Web 互操作性运行时社区小组明确地表明并倡议其他所有人的需求。</p>
+	<p>WinterCG 并不打算发布自己的一套独立的标准 API。WinterCG 中出现的新规范的想法将首先提交给 W3C 和 WHATWG 中的现有工作流以供考虑，以期获得尽可能广泛的共识。但是，如果很明显 Web 浏览器对其他环境（例如 Cloudflare Workers）需要的功能没有特别的需求或兴趣，WinterCG 将被授权自行发展规范，所受到的限制是不能引入任何有意与已建立的 Web 标准冲突或不兼容的内容。</p>
+	<p>WinterCG 将开放给所有人参与；它将在既定的 W3C 流程和政策下运作；所有的工作都将通过<a href="https://github.com/wintercg" target="_blank">“wintercg”GitHub 组织</a>开放访问；它所做的一切都将以最大限度地提高互操作性为中心目标。</p>
+	<h2 id="--1">正在进行的工作</h2>
+	<p>WinterCG 已经开始开展一些重要的工作项目。</p>
+	<h3 id="-web-api">最小通用 Web API</h3>
+	<p>从目前的<a href="https://github.com/wintercg/proposal-common-minimum-api" target="_blank">规范草案</a>的简介中：</p>
+	<blockquote>“最小通用 Web 平台 API 是标准化 Web 平台 API 的精选子集，旨在定义基于 JavaScript 的浏览器和非浏览器运行时环境通用的最小功能集。”</blockquote>
+	<p>或者换一种说法：它是一组最小的<em>现有</em>网络 API，将在 Node.js、Deno 和 Cloudflare Workers 中得到一致和正确的实现。大多数 API（除了一些例外和细微差别）已经存在于这些环境中，所以剩下的大部分工作是确保这些实现符合它们的相关规范，并可跨环境移植。</p>
+	<p>下表列出了目前包含在该子集中的所有 API（同时说明该 API 是否目前或可能很快会受到 Node.js、Deno 和 Cloudflare Workers支持）。</p>
+	<!--kg-card-begin: markdown-->
+	<table>
+		<thead>
+			<tr>
+				<th></th>
+				<th>Node.js</th>
+				<th>Deno</th>
+				<th>Cloudflare Workers</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><a href="https://dom.spec.whatwg.org/#abortcontroller" target="_blank">AbortController</a></td>
+				<td>✔️</td>
+				<td>✔️</td>
+				<td>✔️</td>
+			</tr>
+			<tr>
+				<td><a href="https://dom.spec.whatwg.org/#abortsignal" target="_blank">AbortSignal</a></td>
+				<td>✔️</td>
+				<td>✔️</td>
+				<td>✔️</td>
+			</tr>
+			<tr>
+				<td><a href="https://streams.spec.whatwg.org/#bytelengthqueuingstrategy" target="_blank">ByteLengthQueueingStrategy</a></td>
+				<td>✔️</td>
+				<td>✔️</td>
+				<td>✔️</td>
+			</tr>
+			<tr>
+				<td><a href="https://wicg.github.io/compression/#compression-stream" target="_blank">CompressionStream</a></td>
+				<td>✔️</td>
+				<td>✔️</td>
+				<td>✔️</td>
+			</tr>
+			<tr>
+				<td><a href="https://streams.spec.whatwg.org/#countqueuingstrategy" target="_blank">CountQueueingStrategy</a></td>
+				<td>✔️</td>
+				<td>✔️</td>
+				<td>✔️</td>
+			</tr>
+			<tr>
+				<td><a href="https://w3c.github.io/webcrypto/#dfn-Crypto" target="_blank">Crypto</a></td>
+				<td>✔️</td>
+				<td>✔️</td>
+				<td>✔️</td>
+			</tr>
+			<tr>
+				<td><a href="https://w3c.github.io/webcrypto/#dfn-CryptoKey" target="_blank">CryptoKey</a></td>
+				<td>✔️</td>
+				<td>✔️</td>
+				<td>✔️</td>
+			</tr>
+			<tr>
+				<td><a href="https://wicg.github.io/compression/#decompression-stream" target="_blank">DecompressionStream</a></td>
+				<td>✔️</td>
+				<td>✔️</td>
+				<td>✔️</td>
+			</tr>
+			<tr>
+				<td><a href="https://webidl.spec.whatwg.org/#idl-DOMException" target="_blank">DOMException</a></td>
+				<td>✔️</td>
+				<td>✔️</td>
+				<td>✔️</td>
+			</tr>
+			<tr>
+				<td><a href="https://dom.spec.whatwg.org/#event" target="_blank">Event</a></td>
+				<td>✔️</td>
+				<td>✔️</td>
+				<td>✔️</td>
+			</tr>
+			<tr>
+				<td><a href="https://dom.spec.whatwg.org/#eventtarget" target="_blank">EventTarget</a></td>
+				<td>✔️</td>
+				<td>✔️</td>
+				<td>✔️</td>
+			</tr>
+			<tr>
+				<td><a href="https://streams.spec.whatwg.org/#readablebytestreamcontroller" target="_blank">ReadableByteStreamController</a></td>
+				<td>✔️</td>
+				<td>✔️</td>
+				<td>✔️</td>
+			</tr>
+			<tr>
+				<td><a href="https://streams.spec.whatwg.org/#readablestream" target="_blank">ReadableStream</a></td>
+				<td>✔️</td>
+				<td>✔️</td>
+				<td>✔️</td>
+			</tr>
+			<tr>
+				<td><a href="https://streams.spec.whatwg.org/#readablestreambyobreader" target="_blank">ReadableStreamBYOBReader</a></td>
+				<td>✔️</td>
+				<td>✔️</td>
+				<td>✔️</td>
+			</tr>
+			<tr>
+				<td><a href="https://streams.spec.whatwg.org/#readablestreambyobrequest" target="_blank">ReadableStreamBYOBRequest</a></td>
+				<td>✔️</td>
+				<td>✔️</td>
+				<td>✔️</td>
+			</tr>
+			<tr>
+				<td><a href="https://streams.spec.whatwg.org/#readablestreamdefaultcontroller" target="_blank">ReadableStreamDefaultController</a></td>
+				<td>✔️</td>
+				<td>✔️</td>
+				<td>✔️</td>
+			</tr>
+			<tr>
+				<td><a href="https://streams.spec.whatwg.org/#readablestreamdefaultreader" target="_blank">ReadableStreamDefaultReader</a></td>
+				<td>✔️</td>
+				<td>✔️</td>
+				<td>✔️</td>
+			</tr>
+			<tr>
+				<td><a href="https://w3c.github.io/webcrypto/#dfn-SubtleCrypto" target="_blank">SubtleCrypto</a></td>
+				<td>✔️</td>
+				<td>✔️</td>
+				<td>✔️</td>
+			</tr>
+			<tr>
+				<td><a href="https://encoding.spec.whatwg.org/#textdecoder" target="_blank">TextDecoder</a></td>
+				<td>✔️</td>
+				<td>✔️</td>
+				<td>✔️</td>
+			</tr>
+			<tr>
+				<td><a href="https://encoding.spec.whatwg.org/#textdecoderstream" target="_blank">TextDecoderStream</a></td>
+				<td>✔️</td>
+				<td>✔️</td>
+				<td>(很快)</td>
+			</tr>
+			<tr>
+				<td><a href="https://encoding.spec.whatwg.org/#textencoder" target="_blank">TextEncoder</a></td>
+				<td>✔️</td>
+				<td>✔️</td>
+				<td>✔️</td>
+			</tr>
+			<tr>
+				<td><a href="https://encoding.spec.whatwg.org/#textencoderstream" target="_blank">TextEncoderStream</a></td>
+				<td>✔️</td>
+				<td>✔️</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td><a href="https://streams.spec.whatwg.org/#transformstream" target="_blank">TransformStream</a></td>
+				<td>✔️</td>
+				<td>✔️</td>
+				<td>✔️</td>
+			</tr>
+			<tr>
+				<td><a href="https://streams.spec.whatwg.org/#transformstreamdefaultcontroller" target="_blank">TransformStreamDefaultController</a></td>
+				<td>✔️</td>
+				<td>✔️</td>
+				<td>(很快)</td>
+			</tr>
+			<tr>
+				<td><a href="https://url.spec.whatwg.org/#url" target="_blank">URL</a></td>
+				<td>✔️</td>
+				<td>✔️</td>
+				<td>✔️</td>
+			</tr>
+			<tr>
+				<td><a href="https://wicg.github.io/urlpattern/#urlpattern-class" target="_blank">URLPattern</a></td>
+				<td>?</td>
+				<td>✔️</td>
+				<td>✔️</td>
+			</tr>
+			<tr>
+				<td><a href="https://url.spec.whatwg.org/#urlsearchparams" target="_blank">URLSearchParams</a></td>
+				<td>✔️</td>
+				<td>✔️</td>
+				<td>✔️</td>
+			</tr>
+			<tr>
+				<td><a href="https://streams.spec.whatwg.org/#writablestream" target="_blank">WritableStream</a></td>
+				<td>✔️</td>
+				<td>✔️</td>
+				<td>✔️</td>
+			</tr>
+			<tr>
+				<td><a href="https://streams.spec.whatwg.org/#writablestreamdefaultcontroller" target="_blank">WritableStreamDefaultController</a></td>
+				<td>✔️</td>
+				<td>✔️</td>
+				<td>✔️</td>
+			</tr>
+			<tr>
+				<td>globalThis.<a href="https://html.spec.whatwg.org/multipage/window-object.html#dom-self" target="_blank">self</a></td>
+				<td>?</td>
+				<td>✔️</td>
+				<td>(很快)</td>
+			</tr>
+			<tr>
+				<td>globalThis.<a href="https://html.spec.whatwg.org/multipage/webappapis.html#dom-atob" target="_blank">atob()</a></td>
+				<td>✔️</td>
+				<td>✔️</td>
+				<td>✔️</td>
+			</tr>
+			<tr>
+				<td>globalThis.<a href="https://html.spec.whatwg.org/multipage/webappapis.html#dom-btoa" target="_blank">btoa()</a></td>
+				<td>✔️</td>
+				<td>✔️</td>
+				<td>✔️</td>
+			</tr>
+			<tr>
+				<td>globalThis.<a href="https://console.spec.whatwg.org/#namespacedef-console" target="_blank">console</a></td>
+				<td>✔️</td>
+				<td>✔️</td>
+				<td>✔️</td>
+			</tr>
+			<tr>
+				<td>globalThis.<a href="https://w3c.github.io/webcrypto/#dom-windoworworkerglobalscope-crypto" target="_blank">crypto</a></td>
+				<td>✔️</td>
+				<td>✔️</td>
+				<td>✔️</td>
+			</tr>
+			<tr>
+				<td>globalThis.navigator.<a href="https://html.spec.whatwg.org/multipage/system-state.html#dom-navigator-useragent" target="_blank">userAgent</a></td>
+				<td>?</td>
+				<td>✔️</td>
+				<td>✔️</td>
+			</tr>
+			<tr>
+				<td>globalThis.<a href="https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html#dom-queuemicrotask" target="_blank">queueMicrotask()</a></td>
+				<td>✔️</td>
+				<td>✔️</td>
+				<td>✔️</td>
+			</tr>
+			<tr>
+				<td>globalThis.<a href="https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html#dom-settimeout" target="_blank">setTimeout()</a> / globalthis.<a href="https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html#dom-cleartimeout" target="_blank">clearTimeout()</a></td>
+				<td>✔️</td>
+				<td>✔️</td>
+				<td>✔️</td>
+			</tr>
+			<tr>
+				<td>globalThis.<a href="https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html#dom-setinterval" target="_blank">setInterval()</a> / globalThis.<a href="https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html#dom-clearinterval" target="_blank">clearInterval()</a></td>
+				<td>✔️</td>
+				<td>✔️</td>
+				<td>✔️</td>
+			</tr>
+			<tr>
+				<td>globalThis.<a href="https://html.spec.whatwg.org/multipage/structured-data.html#dom-structuredclone" target="_blank">structuredClone()</a></td>
+				<td>✔️</td>
+				<td>✔️</td>
+				<td>✔️</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<p>只要其中一个环境与 API 的标准化定义不同（例如 Node.js 对 setTimeout() 和 setInterval() 的实现），就会提供描述差异的清晰文档。仅当为了向后兼容现有代码时，才允许此类差异。</p>
+	<h3 id="web-cryptography-streams">Web Cryptography Streams</h3>
+	<p><a href="https://www.w3.org/TR/WebCryptoAPI/" target="_blank">Web Cryptography API</a> 提供了最少（并且非常<em>有限</em>）API，用于常见的密码学操作。它的一个关键限制是 – 与 Node.js 的<a href="https://nodejs.org/dist/latest-v18.x/docs/api/crypto.html" target="_blank">内置的加密模块不同</a> – 它不支持对称加密算法的流输入和输出。所有的网络加密功能都是对内存中的数据块进行操作，而且是一次性的。这严格限制了加密操作的性能和可扩展性。要在任何非网络浏览器的环境中使用这些 API，并试图使它们表现良好，很快就会变得很痛苦。</p>
+	<p>为了解决这个问题，WinterCG 已经开始<a href="https://github.com/wintercg/proposal-webcrypto-streams" target="_blank">起草一个新的 Web Crypto Streams 规范</a>，该规范将提交给 W3C 以供考虑，并作为 W3C 目前为更新 Web Cryptography 规范而所做的更多工作中的一部分。目标是以符合现有标准的方式将流式加密操作带入整个网络，包括 Web 浏览器。</p>
+	<h3 id="-fetch-">用于服务器的 fetch() 子集</h3>
+	<p>随着最近 18.0.0 版本的发布，<a href="https://nodejs.org/dist/latest-v18.x/docs/api/globals.html#fetch" target="_blank">Node.js 加入了</a> JavaScript 环境的集合，这些环境提供 WHATWG 标准化的 fetch() API 的实现。然而，Node.js、Deno 和 Cloudflare Workers 实现 fetch() 的方式与网络浏览器中的实现方式有许多重要的区别。</p>
+	<p>一方面，服务器环境不像 Web 浏览器那样有“源点”的概念。旨在防御跨站点脚本漏洞的 CORS 等功能与服务器完全无关。同样，Web 浏览器通常一次由一个单独的用户使用，且具有全局范围的 cookie 存储的概念，而服务器和无服务器应用程序可以被数百万用户同时使用，且可能包含会话和身份验证详情的全局范围 cookie 存储既不切实际又危险。</p>
+	<p>由于环境的巨大差异，通常很难对 fetch 标准的拟议更改进行推断并达成共识。例如，一些提议的新 API 可能与在服务器上获取用户非常相关，但对于在 Web 浏览器中获取用户完全没用。一些与浏览器相关的安全问题可能对服务器没有任何影响。</p>
+	<p>为了解决这个问题，并使非网络浏览器环境更容易以一致的方式实现 fetch，WinterCG 正在<a href="https://github.com/wintercg/fetch" target="_blank">致力于记录 fetch</a> 标准的一个子集，专门处理这些不同的要求和约束。 </p>
+	<p>至关重要的是，该子集将与 fetch 标准完全兼容；并且由在 Node.js、Deno 和 Cloudflare Workers 中从事 fetch 工作的同一批人合作开发。这并不是要成为 fetch 标准的竞争定义，而是一组关于如何在这些其他环境中正确实现 fetch 的文档化指南。</p>
+	<h2 id="--2">我们才刚刚开始</h2>
+	<p>可在网络中互操作的运行时社区小组刚刚开始，我们有一些雄心勃勃的目标。每个人都可以参加，所有的工作都将通过 GitHub 公开进行，网址是：<a href="https://github.com/wintercg" target="_blank"> https://github.com/wintercg</a>。我们正在积极寻求与 W3C、WHATWG 和整个 JavaScript 社区的合作，以确保网络功能的可用性、工作的一致性并满足所有在堆栈中工作的网络开发者的要求。</p>
+	<p>关于 WinterCG 的更多信息，请参阅 <a href="https://wintercg.org" target="_blank">https://wintercg.org</a>。关于如何参与的详情，请参阅 <a href="https://github.com/wintercg/admin" target="_blank">https://github.com/wintercg/admin</a>。</p>
+</div>

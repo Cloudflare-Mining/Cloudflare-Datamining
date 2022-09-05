@@ -1,0 +1,32 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://lh3.googleusercontent.com/eUeYHbxXdZj5_thKnPnPGJeOLruLMPGsPtda3N-pyScCsZOpOkhcngSovbDbvYIvzTsWmFoou8f0jv2jDBojmq_7VGqDvWThMeLyVFG-yVi46S0jwu2DOtjw3BRBehVvJMNuTt05" class="kg-image" alt="New Stream Player customizations to boost your video experience"></figure>
+	<p>Streamを立ち上げたとき、当社の目標の1つは、最も高性能のビデオプレイヤーを提供することでした。読み込みが速く、さまざまなブラウザやフレームワークで動作し、エンドユーザーの接続状況に応じて動画の品質レベルをインテリジェントに切り替えるプレイヤーの構築に重点を置いていました。</p>
+	<p>Stream Playerのビジョンを拡張しているため、視聴体験の外観と操作感を制御できます。本日は、最高の動画再生体験を提供するのに役立つ一連の新しいカスタマイズオプションを発表します。</p>
+	<h3 id="-"><strong>自社カラーの追加</strong></h3>
+	<p>当社がお客様から何度も耳にした1つのことは、お客様が自分のブランドをよりよく反映するようにStream Playerをカスタマイズできるようにしたいと思っているということです。Stream Playerは、企業カラーに一致するようにプライマリーカラーの設定がサポートされました。これは、primaryColorプロパティを使用してプライマリーカラーをCloudflare Orangeに設定する例です。</p>
+	<!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/fcfa5c97795ba90251cbbae1880a0e18?primaryColor=%23ffa057" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
+	<!--kg-card-end: html-->
+	<p>primaryColorプロパティを使用するには、iframe URLに追加するだけです。この例では、16進コードは#F48120で、URIエンコードされた値は&amp;23F48120です。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>https://iframe.videodelivery.net/fcfa5c97795ba90251cbbae1880a0e18?primaryColor=%23F48120
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>ReactまたはAngularラッパーを使用している場合は、primaryColorプロップを使用してプレイヤーの色をカスタマイズすることができます。</p>
+	<p>現在、primaryColorプロパティを設定すると、再生ボタンとシークバーの色が指定したプライマリーカラーに変更されます。将来的には、Stream Playerをブランド化するためのより多くの方法を提供する予定です。</p>
+	<h3 id="--1"><strong>動画内へのディープリンク</strong></h3>
+	<p>以前は、特定の地点から動画を開始させたい場合は、Stream Player SDKを使用して、視聴者に正確な開始時間まで早送りさせるカスタムコードを書く必要がありました。Stream PlayerがstartTimeプロパティをサポートするようになったため、ビューを動画の特定の時点にディープリンクするだけなら、SDKをロードしてカスタムコードを作成する必要がなくなりました。</p>
+	<p>たとえば、eラーニングプラットフォームを実行していて、1時間の動画の特定の部分にディープリンクすることで、インストラクターが質問に答えられるようにしたいとします。新しいstartTimeクエリ文字列パラメーターまたはpropを設定すると、Stream Playerでの動画再生は指定されたタイムスタンプの位置で開始されます。</p>
+	<!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/fcfa5c97795ba90251cbbae1880a0e18?startTime=11s" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
+	<!--kg-card-end: html-->
+	<h3 id="--2"><strong>ローカライズされたキャプションをデフォルトで有効にする</strong></h3>
+	<p>Cloudflare Streamは、複数の言語の動画キャプションを長い間サポートしてきました。しかし、お客様からの、「デフォルトでキャプションをオンにして<em>、</em>デフォルトの言語を指定できるようにして欲しい」と言う声を耳にしました。これは現在ネイティブにサポートされており、世界中の視聴者が動画にアクセスできるようにするのが非常に簡単になっています。</p>
+	<p>ローカリゼーションをサポートするWebサイトがある場合は、事前に設定された言語でキャプションをオンにすることをお勧めします。キャプションを自動的に有効にすることで、動画がミュートのまま自動再生される場合に視聴者エクスペリエンスも向上します。これは増える傾向にあり、実際、Facebookは、プラットフォームで視聴された動画の85％以上がサウンドをオフにして再生されていると報告しています。</p>
+	<p>Stream Playerでキャプションを自動的に有効にするのは、iframe URLで言語コードを指定するのと同じくらい簡単です。</p>
+	<h3 id="--3"><strong>刷新された[埋め込み]タブ</strong></h3>
+	<p>最後に、[埋め込み]タブを刷新したため、コードを1行も書き込むことなく、すべてのプレイヤーに対するカスタマイズオプションを試すことができます。[埋め込み]タブから、ポスター画像やプライマリーカラーなどのプロパティを簡単に構成できます。[埋め込み]タブでは、カスタマイズされたプレイヤーのプレビューをすぐに表示でき、アプリやWebサイトに貼り付けることができる埋め込みコードが提供されます。</p>
+	<p>Streamユーザーは、個々の動画に最適なポスター画像を設定するのに苦労することがよくありました。このプロセスには、適切なカバー画像になるまでの動画の視聴、カバー画像として使用する適切なタイムスタンプの検索、APIドキュメントの読み取り、最後にクエリパラメータの手動変更が含まれます。新しい拡張機能を使用すると、動画を適切な位置から再生し、[<strong>プレイヤーからコピー</strong>（<strong>Copy from player</strong>）]をクリックしてポスター画像のタイムスタンプを設定できます。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image1-55.png" class="kg-image"></figure>
+	<p>Stream Playerを高度にカスタマイズできるようにする旅は始まったばかりです。サポートを希望される特定のカスタマイズがある場合は、<a href="https://forms.gle/cquHEXK8St6sVZnx5" target="_blank">ぜひご連絡ください。</a></p>
+</div>

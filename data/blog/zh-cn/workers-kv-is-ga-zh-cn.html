@@ -1,0 +1,263 @@
+<div class="post-content lh-copy gray1">
+	<p>今天，我们很高兴地宣布Workers KV即将普遍可用并为生产使用做好了准备！</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/Workers-KV-GA@2x.png" class="kg-image"></figure>
+	<h2 id="-workers-kv-">什么是Workers KV？</h2>
+	<p><a href="https://www.cloudflare.com/products/workers-kv/" target="_blank">Workers KV</a>是一个高度分布、终极一致的键值存储数据库，跨越Cloudflare的全球边缘网络。它允许您存储数十亿个键值对，并且您在世界各地都能以极低的延迟读取它们。现在，您可以构建整个拥有CDN静态缓存性能的应用程序。</p>
+	<h2 id="-">我们为什么要构建它？</h2>
+	<p><a href="https://www.cloudflare.com/products/cloudflare-workers/" target="_blank">Workers</a>是一个平台，允许您在Cloudflare全球175+个（直至2019年9月已经扩展为193个）数据中心的边缘运行JavaScript。只需几行代码，您就可以路由HTTP请求，更改响应，甚至可以在没有原始服务器的情况下创建新的响应。</p>
+	<pre><code class="language-javascript">// A Worker that handles a single redirect,
+// such a humble beginning...
+addEventListener("fetch", event =&gt; {
+  event.respondWith(handleOneRedirect(event.request))
+})
+
+async function handleOneRedirect(request) {
+  let url = new URL(request.url)
+  let device = request.headers.get("CF-Device-Type")
+  // If the device is mobile, add a prefix to the hostname.
+  // (eg. example.com becomes mobile.example.com)
+  if (device === "mobile") {
+    url.hostname = "mobile." + url.hostname
+    return Response.redirect(url, 302)
+  }
+  // Otherwise, send request to the original hostname.
+  return await fetch(request)
+}</code></pre>
+	<p>客户很快就向我们提供了一些用例，这些用例都需要一种存储持久性数据的方法。按照我们上面的例子，处理一个重定向是非常容易的，但是如果您想处理<strong>数十亿</strong>个重定向呢？您必须将它们硬编码到您的Workers脚本中，将它们都压缩到1MB以下，并在每次需要进行更改时重新部署它们——唉！这就是为什么我们构建了Workers KV。</p>
+	<pre><code class="language-javascript">// A Worker that can handle billions of redirects,
+// now that's more like it!
+addEventListener("fetch", event =&gt; {
+  event.respondWith(handleBillionsOfRedirects(event.request))
+})
+
+async function handleBillionsOfRedirects(request) {
+  let prefix = "/redirect"
+  let url = new URL(request.url)
+  // Check if the URL is a special redirect.
+  // (eg. example.com/redirect/&lt;random-hash&gt;)
+  if (url.pathname.startsWith(prefix)) {
+    // REDIRECTS is a custom variable that you define,
+    // it binds to a Workers KV "namespace." (aka. a storage bucket)
+    let redirect = await REDIRECTS.get(url.pathname.replace(prefix, ""))
+    if (redirect) {
+      url.pathname = redirect
+      return Response.redirect(url, 302)
+    }
+  }
+  // Otherwise, send request to the original path.
+  return await fetch(request)
+}
+</code></pre>
+	<p>只需对我们之前的示例进行一些更改，我们就可以从一个重定向扩展到数十亿个——这就是您可以使用Workers KV构建的内容。</p>
+	<h2 id="--1">它是如何工作的？</h2>
+	<p>分布式数据存储通常使用<a href="https://en.wikipedia.org/wiki/CAP_theorem" target="_blank">CAP定理</a>建模，该定理指出分布式系统只能在以下<strong>3个指标的两两组合</strong>中进行选取：</p>
+	<ul>
+		<li><strong>C</strong>onsistency（一致性）——我的数据是否在各地都一样？</li>
+		<li><strong>A</strong>vailability（可用性）——我是否可以随时访问我的数据？</li>
+		<li><strong>P</strong>artition tolerance（分区容错）——我的数据对区域传输中断有弹性吗？</li>
+	</ul>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/10/workers-kv-venn-diagram@2x-1.png" class="kg-image"></figure>
+	<p>Workers KV选择满足一致性与分区容错。这种组合被称为<a href="https://en.wikipedia.org/wiki/Eventual_consistency" target="_blank">终极一致性</a>，它为Workers KV提供了两个独特的竞争优势：</p>
+	<ul>
+		<li>读取速度非常快（中位数为12毫秒），因为它是由我们的缓存技术支持的。</li>
+		<li>数据在我们175+（现在是193个）边缘数据中心可用，并且对区域中断具有容错性。</li>
+	</ul>
+	<p>不过，终极一致性存在弊端。如果两个客户端同时向同一个键写入不同的值，最后进行写操作的客户端<em>最终</em>会“获胜”，其写入值将变为全局一致的。这也意味着，如果一个客户端对一个键进行写操作，而该客户端又读取了相同的键，那么这些值可能会在短时间内不一致（根据交互延迟与系统负载情况会需要不同时间才能全局统一为新的值）。</p>
+	<p>为了帮助生动具体的展现这个场景，以下我们列举了一个真实案例：</p>
+	<ul>
+		<li>假设Matthew，Michelle和Lee正在计划每周的午餐。</li>
+		<li>Matthew决定出去吃寿司。</li>
+		<li>Matthew告诉了Michelle他们吃寿司的计划，Michelle表示同意。</li>
+		<li>Lee并不知道这个计划，他告诉Michelle他们实际上要吃披萨。</li>
+	</ul>
+	<p>一个小时后，Michelle和Lee在比萨店等着，而Matthew则一个人坐在寿司店——问题出在哪呢？我们可以把这归因于终极一致性，因为在等了几分钟后，Matthew看了看他的更新过的日历，最终发现了新的计划，他们转而去吃披萨了。</p>
+	<p>虽然在现实生活中可能需要几分钟，但Workers KV要快得多。它可以在60秒内实现全局一致性。此外，当Worker写入键值，然后<em>立即</em>读取相同的键值时，如果两个操作来自同一个位置，则可以预期读出的值与写入是一致的。</p>
+	<h2 id="--2">我应该什么时候使用它？</h2>
+	<p>现在您已经了解了使用终极一致性的好处和弊端，您该如何确定它是否适合您的应用程序呢？简而言之，如果您想拥有超快速读取的全球可用性数据，Workers KV就很适合您。</p>
+	<p>但是，如果您的应用程序<strong>经常</strong>对<strong>相同</strong>的键进行写入，那么您就需要另外考虑。我们称之为“Matthews问题”：你能接受世界各地的Matthews偶尔去错餐厅吗？</p>
+	<p>你可以想象一些用例（例如我们的重定向Worker示例），在这些用例中，（Matthews问题）不会产生任何实质性的差异。但是，如果您决定跟踪用户的银行帐户余额，您不会希望一个账户同时存在两个余额，因为这样的话他们就可以用已经花掉的钱再买一些东西。</p>
+	<h2 id="--3">我可以用它构建什么？</h2>
+	<p>以下是使用KV构建的一些应用程序的示例：</p>
+	<ul>
+		<li>批量重定向——处理数十亿个HTTP重定向。</li>
+		<li>用户身份验证——验证用户对API的请求。</li>
+		<li>翻译键值——动态本地化您的网页。</li>
+		<li>配置数据——管理谁可以访问您的源。</li>
+		<li>阶跃函数——在多个API函数之间同步状态数据。</li>
+		<li>边缘文件存储——托管大量小文件。</li>
+	</ul>
+	<p>在之前发布的<a href="https://blog.cloudflare.com/building-with-workers-kv/">博客</a>中，我们已经强调了其中的几个用例。我们还有一些更深入的代码演练，包括最近发布的一篇关于如何<a href="https://blog.cloudflare.com/building-a-to-do-list-with-workers-and-kv/">使用Workers KV构建在线待办事项列表</a>的博客。</p>
+	<h2 id="--4">测试版之后更新了什么新的内容？</h2>
+	<p>到目前为止，我们最常见的需求是使向Workers KV让写入数据变得更容易。这就是为什么我们发布了三种新方法来让这种体验变得更好：</p>
+	<h3 id="1-">1.批量写入</h3>
+	<p>当您想将现有数据导入Workers KV时，您不会想要为每个键值对发送HTTP请求。这就是为什么我们向Cloudflare API添加了一个<a href="https://api.cloudflare.com/#workers-kv-namespace-write-multiple-key-value-pairs" target="_blank">批量端点</a>。现在，您可以在单个PUT请求中上传最多10000对键值（最多100MB的数据）。</p>
+	<pre><code class="language-bash">curl "https://api.cloudflare.com/client/v4/accounts/ \
+     $ACCOUNT_ID/storage/kv/namespaces/$NAMESPACE_ID/bulk" \
+  -X PUT \
+  -H "X-Auth-Key: $CLOUDFLARE_AUTH_KEY" \
+  -H "X-Auth-Email: $CLOUDFLARE_AUTH_EMAIL" \
+  -d '[
+    {"key": "built_by",    value: "kyle, alex, charlie, andrew, and brett"},
+    {"key": "reviewed_by", value: "joaquin"},
+    {"key": "approved_by", value: "steve"}
+  ]'</code></pre>
+	<p>让我们来看一个用例：您希望将网站翻译任务离线到Workers上进行。由于您经常需要读取翻译键，并且只是偶尔更新它们，因此该应用程序与Workers KV的终极一致性模型可以很好地配合。</p>
+	<p>在本例中，我们看到<a href="https://crowdin.com/" target="_blank">Crowdin</a>，这是一个流行的管理翻译数据的平台。这个Worker模型可以对一个/translate端点做出响应，下载你所有的翻译键，并批量写入Workers KV，以便您以后可以在我们的边缘网络读取它：</p>
+	<pre><code class="language-js">addEventListener("fetch", event =&gt; {
+  if (event.request.url.pathname === "/translate") {
+    event.respondWith(uploadTranslations())
+  }
+})
+
+async function uploadTranslations() {
+  // Ask crowdin for all of our translations.
+  var response = await fetch(
+    "https://api.crowdin.com/api/project" +
+    "/:ci_project_id/download/all.zip?key=:ci_secret_key")
+  // If crowdin is responding, parse the response into
+  // a single json with all of our translations.
+  if (response.ok) {
+    var translations = await zipToJson(response)
+    return await bulkWrite(translations)
+  }
+  // Return the errored response from crowdin.
+  return response
+}
+
+async function bulkWrite(keyValuePairs) {
+  return fetch(
+    "https://api.cloudflare.com/client/v4/accounts" +
+    "/:cf_account_id/storage/kv/namespaces/:cf_namespace_id/bulk",
+    {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Auth-Key": ":cf_auth_key",
+        "X-Auth-Email": ":cf_email"
+      },
+      body: JSON.stringify(keyValuePairs)
+    }
+  )
+}
+
+async function zipToJson(response) {
+  // ... omitted for brevity ...
+  // (eg. https://stuk.github.io/jszip)
+  return [
+    {key: "hello.EN", value: "Hello World"},
+    {key: "hello.ES", value: "Hola Mundo"}
+  ]
+}
+</code></pre>
+	<h3 id="2-">2.有限期键值</h3>
+	<p>在默认情况下，储存在Workers KV中的键值对会永久存在。然而，有时候您希望在一段时间后自动删除数据。这就是为什么我们要为写操作引入expiration（有效期）和expirationTtl（截止日期）选项。</p>
+	<pre><code class="language-javascript">// Key expires 60 seconds from now.
+NAMESPACE.put("myKey", "myValue", {expirationTtl: 60})
+
+// Key expires if the UNIX epoch is in the past.
+NAMESPACE.put("myKey", "myValue", {expiration: 1247788800})</code></pre>
+	<pre><code class="language-bash"># You can also set keys to expire from the Cloudflare API.
+curl "https://api.cloudflare.com/client/v4/accounts/ \
+     $ACCOUNT_ID/storage/kv/namespaces/$NAMESPACE_ID/ \
+     values/$KEY?expiration_ttl=$EXPIRATION_IN_SECONDS"
+  -X PUT \
+  -H "X-Auth-Key: $CLOUDFLARE_AUTH_KEY" \
+  -H "X-Auth-Email: $CLOUDFLARE_AUTH_EMAIL" \
+  -d "$VALUE"</code></pre>
+	<p>假设您想要阻止那些被标记为不合适的用户访问您的网站，但是仅仅需要阻止一个星期。使用有期限键值，您就可以设置过期时间，而不必想着稍后再去删除它。</p>
+	<p>在本例中，我们假设用户和IP地址是相同的。如果应用程序具有身份验证，则可以使用访问令牌作为键值标识符。</p>
+	<pre><code class="language-javascript">addEventListener("fetch", event =&gt; {
+  var url = new URL(event.request.url)
+  // An internal API that blocks a new user IP.
+  // (eg. example.com/block/1.2.3.4)
+  if (url.pathname.startsWith("/block")) {
+    var ip = url.pathname.split("/").pop()
+    event.respondWith(blockIp(ip))
+  } else {
+    // Other requests check if the IP is blocked.
+   event.respondWith(handleRequest(event.request))
+  }
+})
+
+async function blockIp(ip) {
+  // Values are allowed to be empty in KV,
+  // we don't need to store any extra information anyway.
+  await BLOCKED.put(ip, "", {expirationTtl: 60*60*24*7})
+  return new Response("ok")
+}
+
+async function handleRequest(request) {
+  var ip = request.headers.get("CF-Connecting-IP")
+  if (ip) {
+    var blocked = await BLOCKED.get(ip)
+    // If we detect an IP and its blocked, respond with a 403 error.
+    if (blocked) {
+      return new Response({status: 403, statusText: "You are blocked!"})
+    }
+  }
+  // Otherwise, passthrough the original request.
+  return fetch(request)
+}
+</code></pre>
+	<h3 id="3-">3.更大的数值</h3>
+	<p>我们已经将值的大小限制从64 kB增加到2MB。如果您需要将基于缓冲区的数据或文件数据存储在Workers KV中，这是非常有用的。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/10/workers-kc-file-size-update@2x.png" class="kg-image"></figure>
+	<p>考虑一下这个场景：您想让您的用户上传他们最喜欢的GIF到他们的个人资料中，而不需要将这些GIF作为二进制文件存储在您的数据库中，或者需要您管理<em>另一个</em>云存储器。</p>
+	<p>Workers KV非常适合这个用例！您可以为用户的GIF创建Workers KV命名空间，无论客户身在何处，都可以快速，可靠地使用它。</p>
+	<p>在这个例子中，用户上传一个他们最喜欢的GIF的链接，然后Worker再将链接下载下来并储存到Workers KV。</p>
+	<pre><code class="language-javascript">addEventListener("fetch", event =&gt; {
+  var url = event.request.url
+  var arg = request.url.split("/").pop()
+  // User sends a URI encoded link to the GIF they wish to upload.
+  // (eg. example.com/api/upload_gif/&lt;encoded-uri&gt;)
+  if (url.pathname.startsWith("/api/upload_gif")) {
+    event.respondWith(uploadGif(arg))
+    // Profile contains link to view the GIF.
+    // (eg. example.com/api/view_gif/&lt;username&gt;)
+  } else if (url.pathname.startsWith("/api/view_gif")) {
+    event.respondWith(getGif(arg))
+  }
+})
+
+async function uploadGif(url) {
+  // Fetch the GIF from the Internet.
+  var gif = await fetch(decodeURIComponent(url))
+  var buffer = await gif.arrayBuffer()
+  // Upload the GIF as a buffer to Workers KV.
+  await GIFS.put(user.name, buffer)
+  return gif
+}
+
+async function getGif(username) {
+  var gif = await GIFS.get(username, "arrayBuffer")
+  // If the user has set one, respond with the GIF.
+  if (gif) {
+    return new Response(gif, {headers: {"Content-Type": "image/gif"}})
+  } else {
+    return new Response({status: 404, statusText: "User has no GIF!"})
+  }
+}
+</code></pre>
+	<p>最后，我们要感谢所有测试版客户。正是您宝贵的反馈意见促使我们对Workers KV进行了这些改进。请务必与我们保持联系，我们始终展望着未来，我们希望听到您的意见！</p>
+	<h2 id="--5">价格</h2>
+	<p>我们也准备宣布我们正式版的定价。如果您是我们的企业客户之一，您的定价显然是保持不变的。</p>
+	<ul>
+		<li>数据储存每GB价格$0.50，包含1GB</li>
+		<li>数据读取每百万次价格$0.50，包含1000万次</li>
+		<li>数据写入，陈列和删除操作每百万次价格$5，包含1百万次</li>
+	</ul>
+	<p>在测试阶段，我们了解到客户不仅想要在我们的边缘网络读取值，他们还想从我们的边缘网络写入值。由于这些边缘操作的需求很高，而且成本更高，所以我们开始每月对非读取操作收费。</p>
+	<h2 id="--6">上限</h2>
+	<p>如前所述，我们将值的大小限制从64 kB增加到了2 MB。我们还删除了每个命名空间的键值数量上限——它现在是无限的。以下是我们正式版的限制：</p>
+	<ul>
+		<li>每个帐户最多20个命名空间，每个命名空间都有无限制的键值</li>
+		<li>键数最大512个字节，键值最大2 MB</li>
+		<li>每秒不同的键可写入无数次</li>
+		<li>每秒相同的键仅能写入一次</li>
+		<li>每个键每秒无限次读取</li>
+	</ul>
+	<h2 id="--7">现在就来试试吧！</h2>
+	<p>Workers KV现在对所有客户开放，您现在可以在Cloudflare控制面板中Workers选项卡下启用<a href="https://www.cloudflare.com/products/workers-kv/" target="_blank">Workers KV</a>。您还可以查看我们的更新<a href="https://developers.cloudflare.com/workers/kv/" target="_blank">文档</a>。</p>
+	<p>看到你们都可以用Workers KV构建应用程序，我们真的很高兴！</p>
+	<p><a href="https://blog.cloudflare.com/tag/serverless/">无服务器</a> <a href="https://blog.cloudflare.com/tag/workers/">Workers</a> <a href="https://blog.cloudflare.com/tag/workers-kv/">Workers KV</a> <a href="https://blog.cloudflare.com/tag/javascript/">JavaScript</a> <a href="https://blog.cloudflare.com/tag/bash/">Bash</a></p>
+</div>

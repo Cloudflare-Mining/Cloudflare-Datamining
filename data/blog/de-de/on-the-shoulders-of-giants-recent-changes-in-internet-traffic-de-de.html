@@ -1,0 +1,31 @@
+<div class="post-content lh-copy gray1">
+	<p>Während der COVID-19-Notstand weiter anhält und immer mehr Städte und Länder Quarantänemaßnahmen verordnen und betroffene Gebiete abriegeln, bleiben Freunde und Familie vor allem über das Internet in Kontakt. Gleichzeitig ist das Internet auch ein wichtiger Motor der globalen Wirtschaft, da viele Angestellte jetzt von zu Hause aus arbeiten.</p>
+	<p>Der Traffic in Richtung Videokonferenzen, Streaming-Diensten, Nachrichten und E-Commerce-Websites hat stark zugenommen. Außerdem geht mehr Traffic von privaten Breitbandnetzen aus und der Traffic von Unternehmen und Universitäten ist gesunken.</p>
+	<p>Das Cloudflare-Team ist voll einsatzbereit, und unser Network Operating Center (NOC) beobachtet die sich ändernden Traffic-Muster in den mehr als 200 Städten, in denen wir Hardware betreiben.</p>
+	<p>Starke Veränderungen im Internet-Traffic sind zunächst nichts Ungewöhnliches. Sie treten häufig um große Sportereignisse herum auf, wie beispielsweise während der Olympischen Spiele und der WM oder bei kulturellen Veranstaltungen wie dem Eurovision Song Contest und sogar bei täglichen Fastenbrechen während des Ramadans.</p>
+	<p>Das Internet wurde gebaut, um wechselhafte Umstände zu bewältigen. Es wurde buchstäblich geschaffen, getestet, debuggt und entwickelt, um mit schwankenden Lastmustern fertig zu werden.</p>
+	<p>In den letzten Wochen sind dem Team des Cloudflare-Netzwerks allerdings einige neue Muster aufgefallen. Diese möchten wir mit Ihnen teilen.</p>
+	<h3 id="ganze-l-nder-beobachten-ihre-regierungschefs">Ganze Länder beobachten ihre Regierungschefs</h3>
+	<p>Am vergangenen Freitagabend hat der US-Präsident den Notstand in den USA ausgerufen. Kurze Zeit später bedienten unsere US-Rechenzentren 20 % mehr Traffic als üblich. Die rote Linie zeigt den Traffic am Freitag, die grauen Linien zum Vergleich die vorangegangenen Tage.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/03/image1-5.png" class="kg-image"></figure>
+	<p>Am Sonntag, dem 15. März, kündigte die niederländische Regierung im Radio um 17:30 Uhr die Schließung aller nicht systemrelevanter Geschäfte an. Es folgte ein starker Einbruch des regulären Sonntag-Traffics:</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/03/image7-1.png" class="kg-image"></figure>
+	<p>Der französische Präsident machte zwei nationale Ankündigungen, am 12. März (rosa Kurve) und am 16. März (rote Kurve) jeweils um 20:00 Uhr. Die Ankündigung des Lockdowns am 16. März führte dazu, dass der Traffic in Frankreich um die Hälfte zurückging – gefolgt von einer Spitze:</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/03/image5-3.png" class="kg-image"></figure>
+	<h3 id="wie-sich-der-traffic-im-lockdown-entwickelt">Wie sich der Traffic im Lockdown entwickelt</h3>
+	<p>In Italien ist der tägliche Traffic seit Beginn des Lockdowns um 20-40 % gestiegen:</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/03/image9-1.png" class="kg-image"></figure>
+	<p>Mit der Schließung der Universitäten bleiben einige nationale Forschungsnetzwerke (fast) so ruhig wie an einem Wochenende (lila). Aktueller Tag in Rot und vorhergehende Tage in Grau (Überschneidungen mit der Vorwoche):</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/03/image8.png" class="kg-image"></figure>
+	<p>Starke Traffic-Spitzen verzeichneten auch die <a href="https://en.wikipedia.org/wiki/Internet_exchange_point" target="_blank">Internet-Knoten</a>, ein wichtiger Teil der Internet-Infrastruktur, in der Internetprovider und Content Provider Daten direkt (und nicht über Dritte) austauschen können. Viele stellen öffentliche Traffic-Grafiken zur Verfügung.</p>
+	<p>In Amsterdam (<a href="https://www.ams-ix.net/ams/documentation/total-stats" target="_blank">AMS-IX</a>), London (<a href="https://portal.linx.net/stats/lans" target="_blank">LINX</a>) und Frankfurt (<a href="https://www.de-cix.net/en/locations/germany/frankfurt/statistics" target="_blank">DE-CIX</a>), ist um den 9. März ein Anstieg von etwa 10-20&amp;nbsp;% zu verzeichnen:</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/03/image2-3.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/03/image6-1.png" class="kg-image"></figure>
+	<p>In Mailand (<a href="https://www.mix-it.net/statistiche/" target="_blank">MXP-IX</a>), zeigt der Knotenpunkt am Mittwoch, dem 9. März 2020, dem Tag des Lockdowns, einen Anstieg um 40&amp;nbsp;%:</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/03/image4-2.png" class="kg-image"></figure>
+	<p>In Asien können wir beispielsweise in Hongkong (<a href="https://www.hkix.net/hkix/stat/aggt/hkix-aggregate.html" target="_blank">HKIX</a>) seit Ende Januar einen steileren Anstieg beobachten, der wahrscheinlich dem Lockdown in der Provinz Hubei am 23. Januar entspricht:</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/03/image3-1.png" class="kg-image"></figure>
+	<p>Der Notstand hat sich auf unser Leben und auf Internetdienste erheblich ausgewirkt. Obwohl es schwierig ist, den Anstieg genau zu quantifizieren, beobachten wir Zahlen zwischen 10 und 40 %, je nach Region und dem Stand der Regierungsmaßnahmen in diesen Regionen.</p>
+	<p>Auch wenn von Zeit zu Zeit einzelne Dienste, wie z. B. eine Website oder eine App, ausfallen, ist der Kern des Internets robust. Der Traffic verlagert sich von Unternehmens- und Universitätsnetzen auf Breitbandnetze für Privathaushalte, aber das Internet wurde für Veränderungen konzipiert.</p>
+	<p>Weitere Updates und Einblicke finden Sie im Cloudflare-Blog.</p>
+</div>

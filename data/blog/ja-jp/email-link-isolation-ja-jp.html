@@ -1,0 +1,58 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image6-8.png" class="kg-image" alt="Introducing browser isolation for email links to stop modern phishing threats"></figure>
+	<p>私たちは、メールによるコミュニケーションに盲目的かつ過分な信頼を寄せています。今年初めに<a href="https://blog.cloudflare.com/ja-jp/why-we-are-acquiring-area-1-ja-jp/">CloudflareがArea 1 Securityを買収</a>しましたが、その原動力となったのは、メールを含まないZero Trustセキュリティ体制はありえないという認識でした。当社は本日、Cloudflare Area 1 を当社の幅広いZero Trustプラットフォームに統合するというエキサイティングな行程の第一歩を踏み出しました。Cloudflare Gatewayをご利用のお客様は、まもなくメールリンクのリモートブラウザ分離（RBI）を有効化して、最新のメールベースのマルチチャネル攻撃に対する比類ないレベルの防御を実現できるようになります。</p>
+	<p>Cloudflare Area 1 のリサーチで、観察された悪意ある攻撃の約10%にクレデンシャルハーベスターが関わっていたことが判明し、脅威アクターの目的がたいてい被害者のアイデンティティの入手であることが明白になりました。コモディティ化したフィッシング攻撃は既存のセキュリティ対策でブロックされますが、最新の攻撃やペイロードは、ブロックや隔離のルールと確実に一致するような決まったパターンがあるわけではありません。さらに、マルチチャネルのフィッシング攻撃が増え、有効なメールセキュリティソリューションには、メールとWeb配信を使ったブレンド攻撃や、配信時は良性なのにクリックすると武器化する遅延攻撃を検出する能力が必要になっています。 </p>
+	<p>「ファジーな」信号が一定量ある場合は、リンク先を分離してエンドユーザーの安全を確保することが最も効果的なソリューションです。このたび<a href="https://www.cloudflare.com/products/zero-trust/browser-isolation/" target="_blank">Cloudflare Browser Isolation</a>をCloudflare Area 1 メールセキュリティに統合したことにより、それらの攻撃を簡単に検出して無力化できるようになりました。</p>
+	<h3 id="-">ヒューマンエラーは人間</h3>
+	<p>人間はなぜ悪意のあるリンクを<a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7005690/" target="_blank">クリック</a>してしまうのでしょうか？それは、トレーニングが足らないわけでもセキュリティ意識が低いからでもありません。受信トレイに未読メールが50通もあったり、Zoomミーティングを控えていたり、4歳児を肩車していたりするからです。みんな最善を尽くしてはいるのです。それでも、<a href="https://blog.google/threat-analysis-group/new-campaign-targeting-security-researchers/" target="_blank">セキュリティ研究者を含めた</a>誰しもが、敵が入念に準備したソーシャルエンジニアリング攻撃に引っ掛かる可能性があります。</p>
+	<p>ヒューマンエラーが今後も続くとすれば、セキュリティワークフローの開発に新たな疑問と目標が生まれます。</p>
+	<ul>
+		<li>ヒューマンエラーを排除できないまでも、減らすことはできるか？</li>
+		<li>ヒューマンエラーが起きるかどうかではなく、起きてしまった場合に、その影響をいかに軽減するか。</li>
+		<li>従業員が日々使っている既存ワークフローに、どうすればセキュリティを埋め込むことができるか？ &nbsp;</li>
+	</ul>
+	<p>これらの疑問から、当社は<a href="https://blog.cloudflare.com/ja-jp/why-we-are-acquiring-area-1-ja-jp/">すべてのZero Trustプラットフォームの基本</a>はメールであるという結論に達しました。人間は、Web閲覧時と同じように、時にはそれ以上に、メールで間違いを犯します。</p>
+	<h3 id="--1">ブロックするべきか、せざるべきか</h3>
+	<p>ITチームは日々、リスク軽減とユーザーの生産性の間でこの問いに頭を悩ませています。SOCチームは有リスクや未知のものはすべてITでブロックしてほしいと思うでしょうし、営業部は明らかに悪性でない限り許可してほしいと考えるでしょう。もしITが有リスクや未知のリンクをブロックすると決め、それが誤検知と判明した場合は、URLを許可リストに手動で追加するという余計な手間がかかります。攻撃者はおそらく、どのみちそのURLを後で悪意のあるコンテンツに変換するでしょう。一方、ITが有リスクや未知のサイトを許可すると決めた場合は、感染したデバイスの再イメージングとログイン資格情報のリセットの手間だけで済めばいいのですが、往々にしてデータ漏えいや<a href="https://blog.cloudflare.com/targeted-ransomware-attack/">ランサムウェア</a>対策のロックダウンによる被害をトリアージする羽目になります。</p>
+	<h3 id="--2">仕組み</h3>
+	<p>Cloudflare Area 1 をご利用のお客様にとっての第一歩は、お客様のポータル内でRBIを有効化することです。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image5-8.png" class="kg-image"></figure>
+	<p>Email Link Isolationを導入すれば、不審なリンクを含むメールは次のように短命に終わります。</p>
+	<p><strong>ステップ1：Cloudflare Area 1</strong> がメールを検査し、メッセージ中の特定リンクが不審ないしはギリギリのものでないか見極めます。</p>
+	<p><strong>ステップ2：</strong>メール中の不審なURLやハイパーリンクは、Cloudflare Area 1 のプレフィックスを持つカスタムURLに書き換えられます。</p>
+	<p><strong>ステップ3：</strong>目的の受信トレイにメールが送信されます。</p>
+	<p><strong>ステップ4：</strong>ユーザーがメール中のリンクをクリックすると、Cloudflareが<code>&lt;authdomain&gt;.cloudflareaccess.com/browser/{{url}}</code>経由でリモートブラウザへリダイレクトします。</p>
+	<p><strong>ステップ5：</strong>リモートブラウザはCloudflareグローバルネットワーク上のサーバーでWebサイトを読み込み、ユーザーのクライアントレスブラウザエンドポイントへZero Trust描画コマンドを送信します。</p>
+	<p>ユーザーのデバイスでなくリモートサーバー上でブラウザコードを実行し、ユーザーインタラクションを制御することによって、マルウェアやフィッシング攻撃をことごとく分離し、デバイスの感染阻止とユーザーアイデンティティの安全確保を行います。これにより、未知のリスクや管理されていないデバイスがあっても、ユーザーとエンドポイントの両方のセキュリティが強化され、ユーザーはVPNへの接続や厳格なファイアウォールポリシーの適用をしなくてもWebサイトにアクセスできます。</p>
+	<p>CloudflareのRBIテクノロジーは、<a href="https://blog.cloudflare.com/ja-jp/cloudflare-and-remote-browser-isolation-ja-jp/">ネットワークベクトルレンダリング（NVR）</a>と呼ばれるユニークな特許技術を使っています。この技術は、クラウド内のChromiumベースのヘッドレスブラウザを使って、描画レイヤーの出力を透過的にインターセプトし、描画コマンドをWebで効率的かつ安全に伝送し、ローカルのHTML5ブラウザのウィンドウ内に再描画します。ピクセルプッシングやDOM再構築に依存する従来のBrowser Isolationテクノロジーと違って、NVRは最適化によってスケーラビリティ、セキュリティ、エンドユーザー透過性を追求し、Webサイトとの互換性を最大限に確保します。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image1-11.png" class="kg-image"></figure>
+	<h3 id="--3">メールリンク分離導入前のフィッシング攻撃 </h3>
+	<p>ここでは、遅延フィッシング攻撃の具体例と、それが従来の防御策をどうすり抜けるか、その脅威にメールリンク分離でどう対抗するかを見ていきましょう。</p>
+	<p>企業が<a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/" target="_blank">Zero Trust</a>のような新しいセキュリティ原則やネットワークアーキテクチャを採用しようとする一方で、敵は、最も多用され最も脆弱なアプリケーションであるメールを悪用して制御を掻い潜る手口を次々に考え出します。メールは普遍性があって、やる気のある攻撃者なら簡単にバイパスできることから、安全を脅かすにはうってつけなのです。</p>
+	<p>それでは、メールリンク分離をしない場合の「遅延フィッシング攻撃」の例を見てみましょう。 </p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image4-9.png" class="kg-image"></figure>
+	<p><strong>攻撃者の準備：開始の数週間前</strong><br>攻撃者は、フィッシングの企てが起こるようにインフラストラクチャを準備します。これには、以下が考えられます。</p>
+	<ul>
+		<li>ドメインの登録</li>
+		<li>SSLでの暗号化</li>
+		<li>適正なメール認証（<a href="https://www.cloudflare.com/learning/dns/dns-records/dns-spf-record/" target="_blank">SPF</a>、<a href="https://www.cloudflare.com/learning/dns/dns-records/dns-dkim-record/" target="_blank">DKIM</a>、<a href="https://www.cloudflare.com/en-gb/learning/dns/dns-records/dns-dmarc-record/" target="_blank">DMARC）</a>の設定</li>
+		<li>無害のWebページの作成</li>
+	</ul>
+	<p>この時点で、セキュアメールゲートウェイ、認証ベースのソリューション、評判に基づく兆候に専ら依存する脅威インテリジェンス、その他の決定性の検出手法で検出できる攻撃の証拠はありません。</p>
+	<p><strong>攻撃「開始」：日曜日の午後</strong><br>攻撃者は、新しく作成したドメインから本物に見えるメールを送信します。このメールには、（まだ無害の）Webページへのリンクが含まれています。メールの中には、不審としてブロックしたりフラグを立てたりする要素はありません。メールは意図した受信トレイに送信されます。</p>
+	<p><strong>攻撃開始：日曜日の夕方</strong><br>攻撃者は、すべてのメールが送信先に到達したことを確認すると、攻撃者が管理するWebページを変更し、おそらく偽のログインページを作成して資格情報を収集することで、悪意のある送信先へのリンクへ切り替えます。 </p>
+	<p><strong>攻撃到達：月曜日の朝</strong><br>一週間の始まりに従業員が受信トレイを一瞥すると、そのメールが目に入ります。全員がリンクをクリックすることはおそらくないでしょうが、クリックする人はいます。クリックした人全員が資格情報を入力することはおそらくないでしょうが、数人は入力します。メールリンク分離がなければ、攻撃は成功してしまうのです。 </p>
+	<p>攻撃の影響はまだ序の口です。ユーザーのログイン資格情報を入手した攻撃者は、<a href="https://www.crn.com/news/security/solarwinds-ceo-confirms-office-365-email-compromise-played-role-in-broad-based-attack" target="_blank">正当なアカウントの安全性を損ない</a>、組織のネットワークにマルウェアを拡散し、機密情報を盗み出して、ずっと下流にまでダメージを与えることができます。</p>
+	<h3 id="--4">メールリンク分離導入後のフィッシング攻撃</h3>
+	<p>Cloudflare Area 1 とCloudflare Browser Isolationの統合によって、先に例として挙げた遅延フィッシングのような攻撃を阻止できる重要な送信後の保護レイヤーができます。</p>
+	<p>攻撃者が上記の通り攻撃を準備して実行した場合、当社のメールリンク分離機能がクリック時にメールリンクを分析し、ユーザーがリンク先までナビゲート可能とすべきか否かについて高レベルの評価を行います。 </p>
+	<p><strong>安全なリンク</strong> - ユーザーはこのサイトへ透過的にリダイレクトされます。</p>
+	<p><strong>悪意のあるリンク</strong> - ユーザーはナビゲートを阻止されます。</p>
+	<p><strong>不審なリンク</strong> - ユーザーはナビゲートしないよう強く促され、分離されたブラウザでリンク先を見るよう勧める警告スプラッシュページが表示されます。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image3-14.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image2-15.png" class="kg-image"></figure>
+	<p>上の例では攻撃軽減策として警告スプラッシュページが表示されましたが、メールリンク分離はセキュリティ管理者にその他のカスタマイズ可能な軽減策も提供します。たとえば、Webページを読み取り専用モードにする、ファイルのダウンロードやアップロードを制限する、Cloudflare Gatewayコンソール内のキーボード入力をすべて無効化するなどです。</p>
+	<p>また、メールリンク分離はユーザーの既存ワークフローに適合し、生産性に影響したりITチケットに時間を取られたりすることはありません。Cloudflare Browser Isolationは、世界270都市に広がるCloudflareネットワーク上に構築・デプロイされているため、 Webブラウジングセッションは可能な限りユーザーの近くで配信され、遅延を最小限に抑えます。さらに、Cloudflare Browser Isolationは、ページスクラビングやピクセルストリーミングをするのではなく、各Webページの最終出力をユーザーに送るため、遅延をさらに短縮し、SaaSなどのブラウザベースのアプリケーションを壊すこともありません。</p>
+	<h3 id="--5">開始方法</h3>
+	<p>現在既にCloudflare Area 1 とCloudflare Gatewayをお使いのお客様は、Email Link Isolationのベータ版リリースの対象となります。詳細な情報をご希望で関心を表明されたい方は、<a href="https://www.cloudflare.com/zero-trust/lp/email-link-isolation" target="_blank">来るベータ版をお申し込みください</a>。<br><br>Cloudflare Area 1 がどんな脅威を検出するかをお客様自身のライブメールトラフィックでご覧になりたい方は、<a href="https://www.cloudflare.com/lp/emailsecurity/" target="_blank">こちら</a>で無料のフィッシングリスク評価をご依頼ください。5分で開始でき、メールのフローを妨げることもありません。</p>
+</div>

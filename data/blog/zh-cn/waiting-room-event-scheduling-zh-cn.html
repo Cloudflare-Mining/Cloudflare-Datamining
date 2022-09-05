@@ -1,0 +1,61 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image4-4.png" class="kg-image" alt="Waiting Room Event Scheduling protects your website during online events"></figure>
+	<p>您通过在线活动的形式为电子商务策略制定了重大计划 — 季节性销售、开放注册期、产品预告、票务销售等。大力宣传之后，您会获得大量站点流量，这是好消息！利用 Waiting Room Event Scheduling，可以在活动期间防止服务器超负荷，同时带来别具一格、符合自身品牌形象的用户体验。Event Scheduling 目前可供订阅了高级 <a href="https://www.cloudflare.com/waiting-room/" target="_blank">Waiting Room</a> 的 Enterprise 客户使用，允许对等候室的设置和自定义排队页面提前规划更改，确保在线活动完美开展。</p>
+	<h2 id="-">不止永远在线保护</h2>
+	<p><a href="https://blog.cloudflare.com/zh-cn/cloudflare-waiting-room-zh-cn/">我们推出了 Waiting Room</a>，用于在流量峰值期间保护客户的服务器。Waiting Room 会在流量激增期间将过多的访问者发往虚拟队列，随着站点上出现更多空位，动态对访问者放行。通过将超出站点容量的流量排队，Waiting Room 可保护您的源服务器和客户体验。此外，还可以自定义 Waiting Room 的排队页面，使之符合您站点的外观，这样您的用户会感觉从未退出您的应用程序，从而保障无缝的客户体验。</p>
+	<p>虽然我们有许多客户将 Waiting Room 用作永远在线的故障安全系统来防备潜在的流量峰值情况，也有一些客户使用 Waiting Room 来管理固定时间的在线活动期间的流量。这些活动无疑会产生 Waiting Room 所防御的流量峰值，因而给我们的客户带来了独特的挑战。</p>
+	<p>在一个在线活动的生命周期内，活动的各个阶段通常需要更新等候室的设置。每个客户的活动要求各有不同，但不妨考虑以下客户用例。为防止许多人一窝蜂访问登录页面，致使站点在活动开始之前就崩溃，一些客户希望在临近活动的几天或几个小时将早到者排队。活动期间，一些客户希望对访问者可以浏览和完成交易的时间施加更严格的限制，确保尽可能多的访问者获得公平的参与机会。活动结束后，许多客户希望转移活动流量，阻止对活动页面的访问，同时通知用户活动已结束。</p>
+	<p>对于上述每种场景，我们的客户都希望将预期传达给用户，并自定义排队页面的外观，确保带来无缝、符合品牌形象的用户体验。将上例的所有用例整合到一个时间表，就得到至少三个活动阶段，它们都需要更新等候室设置和排队页面，并且时间衔接合理有序。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image3-4.png" class="kg-image" alt="Sample timeline of an online event’s Waiting Room requirements."></figure>
+	<p>虽然通过 Waiting Room 实现这些用例在技术上是可行的，但它们需要对其配置设置当场进行更新。如果客户需要严格保证其等候室会与活动的时间表同步更新，这种策略并不理想或切合实际。简而言之，许多客户都需要安排提前更改等候室的行为。我们构建了 Event Scheduling，方便客户灵活掌控其等候室设置更改的时机和方式，确保这些更改按计划自动发生。</p>
+	<h2 id="waiting-room-event-scheduling-">Waiting Room Event Scheduling 简介</h2>
+	<p>使用 Event Scheduling，您可以作为分散活动提前安排对等候室的级联更改。对于每个等候室活动，您可以自定义流量阈值、会话持续时间、排队方法以及排队页面的内容和风格。<a href="https://api.cloudflare.com/#waiting-room-create-event" target="_blank">请参阅 Create Event API 文档</a>，查看可自定义活动设置的完整列表。</p>
+	<h3 id="--1">新的排队方法</h3>
+	<p>让客户能够安排对等候室设置的更改，对 Waiting Room 有着基于活动的要求的客户就能改变格局，但我们所做的工作不止于此。我们还添加了两个新的排队方法，即“拒绝”和“直通”，让客户有更多的选项在其在线活动之前、期间和之后控制用户流。</p>
+	<p>在客户希望在活动之后转移站点流量的例子中，“拒绝”排队方法正是起到了这种作用！配置了“拒绝”排队方法的等候室将从您的站点转移流量，向用户呈现完全可自定义的静态 HTML 页面。相反，“直通”排队方法则允许所有访问者不受限制地访问您的站点。“直通”并不是简单地禁用您的等候室来实现这一目的，其优势在于，可提前安排为开启或关闭，并通过 Waiting Room 状态端点提供用户流量统计信息。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/1.png" class="kg-image" alt="A waiting room with Passthrough queueing method enabled gives you visibility into Total Active Users on your site while in a passive state."></figure>
+	<p>如果您更希望让等候室处于完全被动的状态，开启等候室并配置“直通”排队方法，就能迅速开启“全部排队”。“全部排队”会将所有新站点访问者放入队列中，在站点意外停机或发生其他任何危机的情况下，这种做法可以挽回局面。停用“全部排队”之前，您可以查看有多少用户等待进入您的站点。“全部排队”还会覆盖任何进行中的等候室活动，让您在紧急情况下能够快速采取权威控制措施。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/2.png" class="kg-image" alt="Quickly activate Queue All on a passive waiting room when you need to queue users in a hurry."></figure>
+	<h3 id="--2">活动预排队</h3>
+	<p>在活动的配置中，您还可以针对在活动开始时间之前到达活动页面的访问者启用预排队，这是一种虚拟的暂留区域。预排队针对可能导致您站点崩溃的流量峰值增加了额外的防护。</p>
+	<p>为了演示具体机制，假设您的客户是一位忠实粉丝，想买到自己最喜欢的乐队近期要举行的音乐会的门票。门票销售将在一小时后开放，所以客户在销售开放之前每十分钟左右就访问一次您的销售页面。门票销售页面所在的站点上有一个静态登录页面。这位粉丝在开始时间前的那些时刻不停刷新页面，希望在销售开放后立即登录进去。现在，将这个满怀希望的音乐会常客延伸到成千上万个粉丝，您的销售还没有开始，您的站点就早已门庭若市，被围得水泄不通，面临崩溃的风险。准备好预排队，就能防止这种类型的用户活动在这种攸关品牌声誉的重大时刻拖垮您的站点。您还可以完全自定义预排队页面，这样就能为用户带来与活动登录页面相同的激动体验。</p>
+	<p>此外，您可以选择打乱预队列，在活动开始时为预队列期间到达您应用程序的用户随机分配一个位置。如果您的活动使用了“先进先出”排队方法，随机处理您的预队列有助于提升公平性，尤其是在您的预排队时间段跨越许多时区的情况下。<a href="https://blog.cloudflare.com/waiting-room-random-queueing-and-custom-web-mobile-apps/#:~:text=Random%20queueing%20is,make%20a%20purchase!">就像“随机”排队方法那样</a>，实现随机化的预队列会抵消更早时区的客户在活动开始时间之前抢占排队位置的优势。最终，活动的公平性取决于您和客户的视角和需求。通过对活动期间可用于预队列和溢出排队的入场选项进行排序，您可以根据您的独特需求掌控入场公平性。</p>
+	<h2 id="--3">创建等候室活动</h2>
+	<p>类似于配置等候室，<a href="https://developers.cloudflare.com/waiting-room/additional-options/create-events/" target="_blank">使用 Waiting Room 安排活动</a>极其简单，无需进行编码或应用程序更改。您首先需要<a href="https://developers.cloudflare.com/waiting-room/how-to/create-waiting-room/" target="_blank">配置基线等候室</a>。然后，您可以从 <a href="https://dash.cloudflare.com/?to=/:account/:zone/traffic/waiting-rooms" target="_blank">Waiting Room 仪表板</a>为此等候室安排活动。在活动创建工作流程中，您应注明您希望活动开始和结束的时间，并配置可选的预队列。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/3.png" class="kg-image" alt="The first step in the event creation workflow–set its duration and configure an optional pre-queue."></figure>
+	<p>除非另有说明，否则您的活动将总是继承其关联等候室的配置设置。这样一来，您只需更新您希望在活动持续时间内更改的等候室设置。您可以选择为用户创建活动所特有的排队页面，并预览您的活动排队页面在不同排队状态和浏览器中的外观，确保最终用户的体验不会导致乱码 CSS 或看起来破碎的页面！</p>
+	<p>保存活动之前，您将能够并排查看等候室与活动设置，这样可以轻松验证等候室行为在活动持续时间内将如何更改。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image2-5.png" class="kg-image" alt="Review your event settings against those of your baseline waiting room."></figure>
+	<p>您的活动在创建之后将显示在 Waiting Room 仪表板中，嵌套在其关联等候室之下。每个等候室下一个活动的日期显示在仪表板的默认视图中，这样您可以一眼看清任何等候室的设置是否可能由于即将举行的活动而更改。您可以展开每个等候室所在的行，列出即将举行的活动和关联的持续时间。此外，如果某个活动正在进行，此日期旁边将显示绿点，让人更明白无误地知道活动已开始。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/4.png" class="kg-image" alt="From the Waiting Room dashboard, easily discern which waiting rooms have upcoming or live events."></figure>
+	<h2 id="-event-scheduling">运行中的 Event Scheduling</h2>
+	<p>总结一下，我们来过一遍真实场景，演示一下 Event Scheduling 的广泛用途和实用性。在这个示例中，有一家大型女装零售商，不妨称之为 Shopflare，他们即将举办一场限时抢购。限时抢购是有别于常规销售的一种在线销售活动，持续时间很短，并提供较大折扣或有限库存。通常，零售商在限时抢购前的几天里使用营销推广活动精准定位特定客群。</p>
+	<p>在这个例子中，Shopflare 的营销团队计划向一组目标客户发送营销电子邮件，宣传他们的春季限时抢购，这次活动针对最新出的春季新款提供 40% 的优惠并免邮费，为期仅一天！Shopflare 如何使用 Waiting Room 和 Event Scheduling 助力这场销售活动顺利进行呢？</p>
+	<h3 id="--4">为限时抢购做准备</h3>
+	<p>销售前一周，Shopflare 的网络团队创建了一个登录页面，针对春季限时抢购显示倒计时，网址是 example.com/sales/spring_flash_sale。他们在此 URL 中配置了一个等候室，其中设置了“先进先出”排队方法和所需流量阈值，在允许访问流量的同时，确保站点保持正常运行。然后，他们向目标客群发送营销电子邮件，直接链接到销售的登录页面。设置好基线等候室之后，进入此 URL 的早期流量就不会拖垮站点。Shopflare 的团队还为即将举行的销售活动做了准备，提前安排了两个级联等候室活动。我们来看一下 Shopflare 与 Waiting Room 相关的限时抢购要求，看看他们会通过 Event Scheduling 执行哪些步骤来满足这些要求。</p>
+	<h3 id="--5">预排队与活动溢出排队</h3>
+	<p>销售开始前的几个小时，Shopflare 想允许购物者开始“排队”，抢在活动开始时间之后到达的人之前占位置。他们想让这些早到者碰碰运气，在销售开始时为他们随机分配一个排队位置，抵消更早时区的客户抢占排队位置的优势。为此，他们会为已经配置的等候室创建一个活动。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/5.png" class="kg-image" alt="To create an event, expand the row for the desired waiting room from and click Schedule Event."></figure>
+	<p>活动创建工作流程包含四个主要步骤：详情、设置、自定义和审查。在活动创建工作流程的“详情”页面上，他们会输入销售开始和结束时间，设置预队列的开始时间，并启用“在活动开始时打乱”来创建随机化的预队列。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/10.png" class="kg-image" alt="To start queuing early visitors and randomize their entry at event start time, enable the pre-queue and select Shuffle at Event start."></figure>
+	<p>销售进行时，Shopflare 希望采用溢出队列来保护站点，避免被超出等候室限值的流量拖垮，在站点上出现空位时以“先进先出”的方式对这些用户放行。由于底层等候室已经配置了他们想在活动持续时间内实施的流量阈值，因此他们不会更改活动创建工作流程的“设置”页面，而是继续前往“自定义”。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image13-2.png" class="kg-image" alt="On the Settings page, change traffic thresholds, session settings, and queuing method for your event or choose to keep them the same as the underlying waiting room."></figure>
+	<p>在“自定义”步骤中，Shopflare 会上传一个自定义 HTML 模板，其中包含预排队页面和溢出队列的 HTML，从而为销售活动带来自定义的排队体验。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/6.png" class="kg-image" alt="From the Customization page, you can override your baseline waiting room’s queuing page by importing a new HTML file. You can also preview your event’s queuing page in different states before publishing."></figure>
+	<p>Shopflare 希望预排队页面能让购物者对销售的开始充满期待和兴奋。他们确保页面带有品牌标识以及这次限时抢购的特色，同时为购物者设定明确的预期。对于溢出队列，他们希望采用预排队页面的相同外观，并使用更新的消息传递功能，向购物者显示预估等待时间，并说明排队的原因。查看下面的两个示例排队页面，了解他们如何在预队列和溢出队列中为排队的客户带来消息灵通的独特体验。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/07/unnamed-3.png" class="kg-image" alt="Shopflare’s pre-queuing page is customized for the brand and the flash sale. Shoppers are informed of the time until the event starts as well as are reassured that the page is automatically refreshing.">
+		<figcaption>Shopflare 的预排队页面针对品牌和限时抢购进行了自定义。页面会向购物者显示离活动开始还剩多少时间，并且会自动刷新，这让购物者非常放心。</figcaption>
+	</figure>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/07/unnamed2.png" class="kg-image" alt="Shopflare’s overflow queuing page is also customized for the brand and the flash sale. Shoppers are assured they are in the right place, given an estimated wait time, and an explanation for queuing.">
+		<figcaption>Shopflare 的溢出排队页面也针对品牌和限时抢购进行了自定义。这让购物者感到非常放心，因为他们能看到预估等待时间以及排队原因说明。</figcaption>
+	</figure>
+	<h3 id="--6">销售结束</h3>
+	<p>销售结束之后，Shopflare 希望给积极的购物者五分钟宽限期，好让他们完成购买，在此期间，不会接受更多的新访问者。销售活动完结后的 48 小时内，他们希望向所有访问者呈现一个静态页面，告知销售已结束，同时提供返回主页的重定向链接。为实现这一点，Shopflare 会为基线等候室创建另一个活动，该活动会在之前的活动结束时开始，并且不会启用预队列。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image14-2.png" class="kg-image" alt="To offload post-sale traffic, Shopflare creates another waiting room event that starts right after the previous waiting room event ended."></figure>
+	<p>为了在销售结束后转移所有新站点流量，同时给积极的购物者五分钟宽限期，他们会在活动创建工作流程的“设置”页面中将会话持续时间设置为五分钟，禁用会话更新，并选择“全部拒绝”排队方法。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image12-1.png" class="kg-image" alt="To start blocking traffic that arrives after your event has ended while giving active shoppers a few minutes more to complete their purchases, select the Reject All queuing method and disable session renewal."></figure>
+	<p>同样，在“自定义”选项卡上，他们会选择使用自定义活动模板覆盖底层等候室模板，并上传其自定义“拒绝”页面 HTML。接着，他们会执行“审查”操作，并保存其活动，该活动将与之前创建的活动一起显示在 Waiting Room 仪表板中。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/7.png" class="kg-image" alt="From the Waiting Room Dashboard, both waiting room events related to the Spring Flash Sale are listed along with their start and end times."></figure>
+	<p>大功告成！设置好等候室活动之后，Shopflare 完全可以放心，其站点将受到保护，客户也能在这个重大日子获得聚焦品牌的透明购物体验。每个客户和在线活动都是独特的。但是，您选择为您的在线活动管理用户流量，Event Scheduling for Cloudflare Waiting Rooms 提供了必要的选项，用于带来卓越而公平的用户体验，同时在您的在线活动期间保护您的应用程序。我们十分期待在下一次在线活动中为您提供支持！</p>
+	<p>有关 Event Scheduling 和 Waiting Room 的更多信息，<a href="https://developers.cloudflare.com/waiting-room/additional-options/create-events/" target="_blank">请查看我们的开发人员文档。</a>尚未使用 Cloudflare？请立即开始使用我们的 <a href="https://www.cloudflare.com/plans/business/" target="_blank">Business 计划</a>，其中包含一个基本 Waiting Room，或者<a href="https://www.cloudflare.com/plans/enterprise/discover/contact/" target="_blank">联系我们</a>，了解我们的 <a href="https://www.cloudflare.com/plans/enterprise/" target="_blank">Enterprise 计划</a>中提供的包含 Event Scheduling 的高级 Waiting Room。</p>
+</div>

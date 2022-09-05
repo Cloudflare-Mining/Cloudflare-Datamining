@@ -1,0 +1,44 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/05/BDES-618_Infographic-for-Network-Level-DDoS_BlogHeader-1.png" class="kg-image"></figure>
+	<p>2020年第1四半期の締め括りにあたり、当社は、<a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/" target="_blank">DDoS攻撃</a>の傾向が、未曾有の世界的外出禁止令の中、変わったのかどうか、変わったのであればどのように変わったのかの把握に着手しました。それ以降、トラフィックレベルは多くの国で<a href="https://blog.cloudflare.com/recent-trends-in-internet-traffic/">50%以上も増加</a>していますが、DDoS攻撃も同様に増えているのでしょうか。</p>
+	<p>長期休暇の時期は、トラフィックの増加が見られます。この時期、世の中の人は、オンラインで買い物や食べ物を注文したり、オンラインゲームで遊んだり、その他オンラインでさまざまなことを楽しんでいるものです。使用量の増加は、種々多様なオンラインサービスを提供する企業にとって分刻みの収益増加につながります。</p>
+	<p>こうしたピーク時にダウンタイムやサービス低下が発生すると、あっという間にユーザーの解約や大規模な減収という事態になりかねません。<a href="https://itic-corp.com/blog/2019/05/hourly-downtime-costs-rise-86-of-firms-say-one-hour-of-downtime-costs-300000-34-of-companies-say-one-hour-of-downtime-tops-1million/" target="_blank">ITICの見積もりでは、</a>停止時の損失額は、1分あたり平均5,600ドルとなります。これは1時間あたり30万ドル以上の損失に相当します。したがって、長期休暇時期に攻撃者がDDoS攻撃の数を増やすことで、この機会を利用するのは驚くべきことではありません。</p>
+	<p>現在のコロナ禍は、同じような因果関係を持っています。多くの人が、家にいることを余儀なくされています。日々の仕事をこなすために、オンラインサービスへの依存度を高めている現状が、インターネットトラフィックとDDoS攻撃の急増を引き起こします。</p>
+	<h3 id="-">小規模で短時間の攻撃の台頭</h3>
+	<p>2020年の第1四半期に観測された攻撃のほとんどが、ビットレートで比較的小規模なものでした。次の図で示すように、10Gbps未満の攻撃が起きたのは、2020年第1四半期が92%、一方、2019年の第4四半期は、84%でした。</p>
+	<p>さらに深く掘り下げると、第1四半期の10Gbps未満の攻撃の分布には、前四半期と比較すると興味深い変化が見られます。前年第4四半期では、47%の<a href="https://www.cloudflare.com/learning/ddos/layer-3-ddos-attacks/" target="_blank">ネットワーク層DDoS攻撃</a>の最大値は500Mbps以下であるのに対して、今年の第1四半期では、それが64%まで増加しています。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/05/BDES-618_Infographic-for-Network-Level-DDoS_BlogAsset_01.png" class="kg-image"></figure>
+	<p>パケットレートの観点からは、攻撃の大部分で最大値は100万pps以下でした。ビットレートとともに、このレートは攻撃者が1秒あたり数ビットまたはパケットの高速フラッドを生成するために努力もリソースも集中させていないことを示しています。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/05/BDES-618_Infographic-for-Network-Level-DDoS_BlogAsset_02_V2--1-.png" class="kg-image"></figure>
+	<p>ところが、減少しているのはパケットとビットレートだけでなく、攻撃持続時間も減少しています。下の図を見ると、第1四半期に30~60分間続いたDDoS攻撃は79%で、第4四半期の60%から19%増加したことがわかります。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/05/BDES-618_Infographic-for-Network-Level-DDoS_BlogAsset_03--1-.png" class="kg-image"></figure>
+	<p>この3つの傾向は、次のように説明できます。</p>
+	<ul>
+		<li>DDoS攻撃を始めるのは安価で、技術的な知識はそれほど必要ではありません。DDoS-as-a-service（サービスとしてのDDoS攻撃）ツールは、専門知識を持たない悪者が費用対効果の高い方法で、帯域幅も多く使わずに迅速かつ簡単にDDoS攻撃を仕掛けることを可能にしました。<a href="https://securityaffairs.co/wordpress/57429/cyber-crime/cost-ddos-attack-service.html" target="_blank">Kapersky</a>によると、DDoS攻撃サービスは300秒間（5分間）の攻撃でわずか5ドルです。さらに、アマチュアの攻撃者でも簡単に無料ツールを使って、パケットのフラッドを引き起こすことができてしまいます。次のセクションで説明しますが、第1四半期の全DDoS攻撃のうち4%が一般に公開されている<a href="https://blog.cloudflare.com/inside-mirai-the-infamous-iot-botnet-a-retrospective-analysis/">Mirai</a>コードの変種を使って生成されていました。</li>
+		<li>10Gbps未満の攻撃は小さいように見えるかもしれませんが、未保護のインターネットプロパティに影響を与えるには十分な規模です。より小規模でより速い攻撃は、インターネットプロパティの可用性を妨害しない代わりに、攻撃者が企業から身代金を要求することのROIが高いということになるかもしれません。</li>
+	</ul>
+	<h3 id="--1">大規模な攻撃は少数ながら依然として存在する</h3>
+	<p>攻撃の大部分は10Gbps未満ですが、大規模な攻撃も依然として蔓延しています。以下のグラフでは、2019年第4四半期と2020年第1四半期にCloudflareが観測し、軽減したネットワーク層DDoS攻撃の最大ビットレートの傾向を示しています。今四半期に起きた最大の攻撃は3月に発生し、ピークは550Gbpsをわずかに上回りました。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/05/image-2.png" class="kg-image"></figure>
+	<h3 id="--2">失敗しても諦めず、再試行を繰り返す</h3>
+	<p>しつこい攻撃者は、攻撃に失敗しても諦めないタイプです。何度も仕掛けてきます。ターゲットに向けて複数の攻撃を仕掛け、攻撃ベクトルを複数利用することもあります。2019年第4四半期の年末期間中に、攻撃者は単一のCloudflare IPに対して1日に523件ものDDoS攻撃をしつこく仕掛けてきました。攻撃下にあったCloudflare IPそれぞれが、毎日平均4.6ものDDoS攻撃の標的となりました。</p>
+	<p>各国で新型コロナウイルスによる都市封鎖が始まった第1四半期中、例年の月間平均と比べると、攻撃数に大幅な増加が見られました。このような増加を目の当たりにしたのは、2019年の第4四半期以来です。ただし、そこには興味深い違いがあり、現在の攻撃は年末時期より持続性が低かったように見えました。2020年第1四半期、各Cloudflare IPアドレスへの1日あたりの攻撃の持続率は2.2件まで低下しており、単一IPアドレスへの攻撃の最大数は311件でした。これは前期の年末時期に比べ40%の削減でした。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/05/imageLikeEmbed.png" class="kg-image" title="Chart"></figure>
+	<p>過去２四半期にわたり、1日あたりIPごとのDDoS攻撃で使われた攻撃ベクトルの平均数はほぼ一定して約1.4で、最大数は10でした。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/05/imageLikeEmbed--2-.png" class="kg-image" title="Chart"></figure>
+	<p>この四半期では、第3/4層で34種類の攻撃ベクトルが見られました。<a href="https://www.cloudflare.com/learning/ddos/syn-flood-ddos-attack/" target="_blank">SYN攻撃</a>は第1四半期の最大数（60.1%）を占め、次は<a href="https://www.cloudflare.com/learning/ddos/what-is-an-ack-flood/" target="_blank">ACK攻撃</a>の12.4%でした。SYN攻撃とACK DDoS攻撃（<a href="https://www.cloudflare.com/learning/ddos/glossary/tcp-ip/" target="_blank">TCP</a>）を合わせると、第1四半期の第3/4層への全攻撃ベクトルの72%となります。</p>
+	<h3 id="--3">攻撃ベクトルのトップ</h3>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/08/image.png" class="kg-image" title="Chart"></figure>
+	<h3 id="--4">残念なことに、危機的状況とは時に悪意の好機である</h3>
+	<p>2020年3月のDDoS攻撃数は、1月と2月と比較して増加しました。以下に示されるように、この危機的時期を、攻撃者はDDoS攻撃を増やす絶好の機会であると考えました。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/05/BDES-618_Infographic-for-Network-Level-DDoS_BlogAsset_07.png" class="kg-image"></figure>
+	<p>さらに、各国の政府当局が都市封鎖と一時待機の義務づけを始めたのに合わせて、攻撃者は3月下旬に大規模な攻撃を増加させに至りました。3月の後半（3月16~31日）には、前半（3月1~15日）に比べて検出された攻撃は55％も増加していました。さらに、300-400 Gbpsをピークとする攻撃の94%が3月中に発生したものでした。</p>
+	<h3 id="-ddos-">規模に関わりなく、ソースにより近くでDDoS攻撃を阻止</h3>
+	<p>DDoSの状況は常に変化しており、包括的で適応性の高いDDoS保護ソリューションを備えることが重要です。上記の攻撃への洞察の観点から、ここではCloudflareがお客様を保護するために、こうした変化に対して機先を制していく方法をご紹介しましょう。</p>
+	<ul>
+		<li>攻撃の速度も持続時間も短縮を続け、今までのベンダーが提示してきたような、最大15分の軽減時間のSLAは、実用性がありません。Cloudflareは、多くの場合、ネットワーク層DDoS攻撃を10秒未満で軽減します。これはますます短くなる攻撃に対抗するために重要です。こちらで最新の<a href="https://blog.cloudflare.com/rolling-with-the-punches-shifting-attack-tactics-dropping-packets-faster-cheaper-at-the-edge/">DDoS攻撃検出と軽減システム</a>についてお読みください。このシステムでは、DDoS攻撃の自動検出と軽減を迅速に、かつ大規模に行うことができます。</li>
+		<li>近年より多くの<a href="https://blog.cloudflare.com/rolling-with-the-punches-shifting-attack-tactics-dropping-packets-faster-cheaper-at-the-edge/">DDoS攻撃がローカライズされています。</a>つまり、スクラビングセンターアプローチを採用する従来のDDoSソリューションは、グローバルなカバレッジに制限があると同時に、DDoSトラフィックをセンター経由で動かす必要があるためチョークポイントとなり、実用性が低いということになります。Cloudflare独自の分散型アーキテクチャは、世界200都市に広がり、完全なDDoS対策機能を提供して、データセンター全てを強化します。</li>
+		<li>大規模に分散された帯域幅消費型攻撃はまだ存在し、チャンスが増えたとき、高い処理能力を持った攻撃者に使われてしまいます。1Tbpsを超える攻撃が将来的に予想されるため、大規模なDDoS攻撃を軽減する能力は、今日のDDoSソリューションにとって大切です。Cloudflareは、最大規模のDDoS攻撃でさえも軽減することが可能となる35Tbpsを超える容量を持つ世界で最も相互接続しているネットワークの一つです。この大規模なネットワーク容量と世界的に分散されたアーキテクチャによって、Cloudflareはどのような規模でも、ソースに近いところで攻撃を軽減することができます。</li>
+	</ul>
+	<p>CloudflareのDDoSソリューションの詳細は、<a href="https://www.cloudflare.com/plans/enterprise/contact/" target="_blank">こちらにお問い合わせ</a>いただくか、<a href="https://dash.cloudflare.com/sign-up" target="_blank">今すぐ始めましょう</a>。</p>
+</div>

@@ -1,0 +1,143 @@
+<div class="post-content lh-copy gray1">
+	<p>HTTP是支持Web的应用程序协议。在1991年，它以所谓的HTTP/0.9协议开始，到1999年发展为HTTP/1.1，并在IETF (Internet Engineering Task Force)中标准化。HTTP/1.1在很长一段时间内已经表现得足够好了，但是Web上不断变化的需求使得我们需要一个更适合的协议，于是HTTP/2在2015年出现了。最近又有新闻宣称IETF打算提供一个新版本——HTTP/3。对一些人来说，这是一个惊喜，同时也带来了一些困惑。如果您不密切关注IETF的工作，那么对你来说HTTP/3可能会看起来像是突然出现的。然而，我们可以通过一系列实验和Web协议的发展来追溯它的起源;特别是QUIC传输协议。</p>
+	<p>如果你不熟悉QUIC，那么请允许我介绍我的同事们，他们在处理不同角度的QUIC问题方面做得很好。John的<a href="https://blog.cloudflare.com/the-quicening/">博客</a>描述了当今HTTP的一些现实世界的烦恼，Alessandro的<a href="https://blog.cloudflare.com/the-road-to-quic/">博客</a>解决了传输层的一些细节问题，而Nick的<a href="https://blog.cloudflare.com/head-start-with-quic/">博客</a>讨论了如何开展一些测试。我们已经在<a href="https://cloudflare-quic.com/" target="_blank">https://cloudflare-quic.com</a>收集了这些信息以及更多内容。如果你喜欢的话，一定要看看<a href="https://blog.cloudflare.com/enjoy-a-slice-of-quic-and-rust/">quiche</a>，它是我们用Rust编写的QUIC协议的开源实现。</p>
+	<p>HTTP / 3是映射到QUIC传输层的HTTP应用程序。这个名称是在最近的草案版本17（<a href="https://tools.ietf.org/html/draft-ietf-quic-http-17" target="_blank">draft-ietf-quic-http-17</a>）中正式定义的，该<a href="https://tools.ietf.org/html/draft-ietf-quic-http-17" target="_blank">草案</a>于2018年10月底提出，于11月在曼谷举行的IETF 103会议期间得到了讨论并形成初步共识。HTTP / 3被称为HTTP over QUIC，再这之前又被称为QoS / 2 over QUIC。在那些之前，我们已经有了HTTP/2 over gQUIC，其根源是SPDY over gQUIC。然而事实上，HTTP / 3只是一种新的HTTP语法，适用于IETF QUIC——一种基于UDP的多路复用安全传输。</p>
+	<p>在这篇博文中，我们将探讨一些HTTP / 3以前的名字背后的历史，并介绍其最近更改名称背后的动机。我们将回到HTTP的早期，并讨论此过程中所有的出色工作。如果您希望获得完整的信息，可以跳到文章末尾或点开这个<a href="https://blog.cloudflare.com/content/images/2019/01/web_timeline_large1.svg">非常详细的SVG版本</a>。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/07/http3-stack-1.png" class="kg-image">
+		<figcaption>一个HTTP / 3层蛋糕</figcaption>
+	</figure>
+	<p></p>
+	<h2 id="-">设置场景</h2>
+	<p>在我们关注HTTP之前，有必要提醒一下自己，有两个协议是共享QUIC的名称。<a href="https://blog.cloudflare.com/the-road-to-quic/">如之前所述</a>，gQUIC通常用于标识谷歌QUIC(原始协议)，而QUIC通常用于表示与gQUIC不同的IETF正在开发的标准版本。</p>
+	<p>从90年代初期开始，网络的需求就发生了变化。我们已经有了新版本的HTTP，并以安全传输层协议（TLS）的形式增加了用户安全性。我们只会这篇文章中讨论TLS，如果您想更详细地探索该领域，可以阅读我们的其他<a href="https://blog.cloudflare.com/tag/tls/">博客文章</a>，这些都是很好的资源。</p>
+	<p>为了让我能更好的解释HTTP和TLS的历史，我开始整理协议规范和日期的细节。这些信息内容通常是文本形式的，例如按日期排序的说明文档标题的项目符号点列表。然而，还有一些分支标准，各个标准在时间上重叠，简单的列表无法表达其中关系的真实复杂性。在HTTP中，已经有了一些并行工作，这些工作重构核心协议定义，以便更容易地使用，扩展协议的新用途，并重新定义协议如何在Internet上交换数据以提高性能。当你试图跨越近30年的互联网历史，跨越不同分支的工作流程，将这些点连接起来时，你就需要一个可视化的界面。所以我制作了一个 – Cloudflare安全网络时间线。（注意：从技术上讲，它是一个<a href="https://en.wikipedia.org/wiki/Cladogram" target="_blank">分段图</a>，但术语时间线更广为人知。）</p>
+	<p>我在创建这个应用程序时使用了一些创作者授权，选择将目光放在IETF空间中成功的分支上。还有一些内容没有显示出来，包括W3联合<a href="https://www.w3.org/Protocols/HTTP-NG/" target="_blank">HTTP-NG</a>工作组的努力成果，以及他们的作者热衷于解释如何发音的一些奇特的想法： &nbsp;<a href="https://blog.jgc.org/2012/12/speeding-up-http-with-minimal-protocol.html" target="_blank">HMURR（发音为'hammer'）</a>和<a href="https://github.com/HTTPWorkshop/workshop2017/blob/master/talks/waka.pdf" target="_blank">WAKA（发音为“wah-kah”） ）</a>。</p>
+	<p>在接下来的几节中，我将沿着这个时间线来解释HTTP历史上的关键章节。如果你想要从这篇文章中有所收获，那么了解标准化为什么是有益的以及IETF如何实现标准化将会对你有所帮助。因此，在回到时间线本身之前，我们将从该主题的一个非常简短的概述开始。如果您已经熟悉IETF，请跳过下一节。</p>
+	<h2 id="--1">互联网标准的类型</h2>
+	<p>通常，标准定义了共同的参考术语，范围，约束，适用性和其他考虑因素。标准以多种形式和大小存在，可以是非正式的（也就是事实上的）或正式的（由标准定义组织（例如IETF，ISO或MPEG）商定/发布）。许多领域都有标准存在，甚至还有正式的英国制茶标准 - BS 6008。</p>
+	<p>早期的Web使用发布在IETF之外的HTTP和SSL协议定义，这些定义被标记为安全Web时间线上的<strong>红线</strong>。客户端和服务器对这些协议的采用使它们成为事实上的标准。</p>
+	<p>到了一定程度以后，人们决定正式化这些协议（一些激励原因将在后面的部分中描述）。互联网标准通常在IETF中定义，它遵循“粗略共识和运行代码”的非正式原则。这是基于在Internet上开发和部署内容的经验。这与尝试在真空中开发完美协议的“洁净室”方法有所差异。</p>
+	<p>IETF Internet标准通常称为RFC。这是一个很难解释的复杂区域，因此我建议您阅读由QUIC工作组联合主席Mark Nottingham撰写的博客文章“ <a href="https://www.ietf.org/blog/how-read-rfc/" target="_blank">如何阅读RFC</a> ”。工作组或多或少只是一个邮件列表。</p>
+	<p>ETF每年举行三次会议，为所有工作组提供时间和设施，以便他们按意愿亲自见面。这几周的议程可能会变得非常拥挤，人们只有有限的时间深入讨论高度技术性的领域问题。为了解决这个问题，一些工作组选择在IETF会议之间的几个月内举行临时会议。这有助于保持规范开发的势头。自2017年以来，QUIC WG已举行了几次临时会议，这里的<a href="https://datatracker.ietf.org/wg/quic/meetings/" target="_blank">会议页面</a>上展示了完整的会议列表。</p>
+	<p>这些IETF会议同样为其他与IETF相关的人员提供了见面的机会，例如<a href="https://www.iab.org/" target="_blank">互联网架构委员会</a>或<a href="https://irtf.org/" target="_blank">互联网研究工作组</a>。近年来，在IETF会议之前的周末举行了一场<a href="https://www.ietf.org/how/runningcode/hackathons/" target="_blank">IETF 黑客马拉松</a>。这为社区提供了开发运行代码的机会，更重要的是，人们可以在同一房间与其他人员进行互操作性测试。这有助于发现规范中的问题，这些问题可以在接下来的几天中讨论。</p>
+	<p>出于本博客的目的，需要理解的重要一点是rfc并不是凭空出现的。相反，它们要经历一个过程，通常从提交考虑采用的IETF Internet Draft (I-D)格式开始。在已经发布了规范的情况下，I-D的准备可能只是一个简单的重新格式化练习。I-D从发布之日起有6个月的有效期。要使它们保持活动状态，则需要发布新的版本。在实践中，让I-D消失并没有太大的后果，而且这种事情经常发生。这些文档一直放在<a href="https://datatracker.ietf.org/doc/recent" target="_blank">IETF文档的网站</a>上，供任何想要阅读它们的人使用。</p>
+	<p>I-D在安全Web时间线上以<strong>紫线</strong>表示。每一个都有其唯一的名称，其形式为<em>draft-{author name}-{working group}-{topic}-{version}</em>。工作组字段是可选的，它可能会预测IETF WG将在该文件上工作，以及有时预测即将发生的变化。如果IETF采用了I-D，或者I-D是直接在IETF内启动的，则名称为<em>draft-ietf- {working group} - {topic} - {version}</em>。I-Ds可能会中途产生分支，合并或失效。从版本00开始，每次发布新草稿时版本号增加1。例如，I-D的第4稿将具有版本03。只要I-D更改名称，其版本将重置为00。</p>
+	<p>值得注意的是，任何人都可以向IETF提交I-D; 你不应该把它们当作标准。但是，如果I-D的IETF标准化过程确实达成共识，并且最终文件通过了审核，我们最终会获得RFC。在此阶段，名称再次发生变化。每个RFC都有一个唯一的编号，例如<a href="https://tools.ietf.org/html/rfc7230" target="_blank">RFC 7230</a>。这些在安全Web时间线上以<strong>蓝线</strong>表示。</p>
+	<p>RFC是不可变的文档。这意味着对RFC的更改需要一个全新的编号。更改可能是为了包含对错误(发现并报告的编辑或技术错误)的修复，或者只是重构规范以改进布局。RFC可能会<strong>淘汰</strong>旧版本（完全替换），或者只<strong>更新</strong>它们（实质性更改）。</p>
+	<p>所有IETF文档均可在<a href="https://tools.ietf.org/" target="_blank">http://tools.ietf.org</a>上公开获取。就个人而言，我发现<a href="https://datatracker.ietf.org/" target="_blank">IETF Datatracker</a>对用户更友好，因为它提供了从I-D到RFC的文档进度的可视化进程。</p>
+	<p>下面是一个显示<a href="https://tools.ietf.org/html/rfc1945" target="_blank">RFC 1945</a> - HTTP / 1.0 开发的示例，它是安全 Web时间线的灵感来源。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/07/RFC-1945-datatracker-1.png" class="kg-image">
+		<figcaption>RFC 1945的IETF Datatracker视图</figcaption>
+	</figure>
+	<p></p>
+	<p>有趣的是，在我的工作过程中，我发现上面的视图是不正确的。由于某种原因，它缺少了<a href="https://tools.ietf.org/html/draft-ietf-http-v10-spec-05" target="_blank">draft-ietf-http-v10-spec-05</a>。由于I-D的有效期为6个月，因此在其成为RFC之前似乎有一段空白，而实际上草案05直到1996年8月仍保持有效。</p>
+	<h2 id="-web-">探索安全Web时间线</h2>
+	<p>只要稍微了解一下Internet标准文档是如何实现的，我们就可以开始了解安全Web时间线了。在本节中，有一些摘录图表显示了时间线的重要部分。每个点都代表文档或功能可用的日期。对于IETF文档，为清楚起见，这里省略了草稿编号。但是，如果您想查看所有详细信息，请查看<a href="https://blog.cloudflare.com/content/images/2019/01/web_timeline_large1.svg">完整的时间线</a>。</p>
+	<p>HTTP在1991年开始被使用，称为HTTP / 0.9协议，并且在1994年I-D <a href="https://tools.ietf.org/html/draft-fielding-http-spec-00" target="_blank">draft-fielding-http-spec-00</a>也正式面世。这一ID很快被IETF采用，更名为<a href="https://tools.ietf.org/html/draft-ietf-http-v10-spec-00" target="_blank">draft-ietf-http-v10-spec-00</a>。 在1996年该I-D作为<a href="https://tools.ietf.org/html/rfc1945" target="_blank">RFC 1945</a> - HTTP / 1.0 发布之前已经经历了6个草案版本。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/07/http11-standardisation.png" class="kg-image"></figure>
+	<p></p>
+	<p>然而，即使在HTTP / 1.0工作完成之前，也已经有在HTTP / 1.1上启动的单独活动了。I-D <a href="https://tools.ietf.org/html/draft-ietf-http-v11-spec-00" target="_blank">draft-ietf-http-v11-spec-00</a>于1995年11月发布，并于1997 年正式发布为<a href="https://tools.ietf.org/html/rfc2068" target="_blank">RFC 2068.</a>敏锐的人就会发现安全Web时间线并不能完全捕获该事件序列，这是用于生成视图的工具的一个不幸的副作用。我会尽量使这些问题最小化。</p>
+	<p>HTTP / 1.1的修订工作在1997年中期以<a href="https://tools.ietf.org/html/draft-ietf-http-v11-spec-rev-00" target="_blank">draft-ietf-http-v11-spec-rev-00</a>的形式正式开始。在1999年，随着<a href="https://tools.ietf.org/html/rfc2616" target="_blank">RFC 2616</a>的出版，这项工作才完成。直到2007年，IETF HTTP世界才结束了频繁的修订。我们很快就会讲到这一点。</p>
+	<h2 id="ssl-tls-">SSL和TLS的历史</h2>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/07/ssl-tls-standardisation-1.png" class="kg-image"></figure>
+	<p></p>
+	<p>让我们把话题切换到SSL。我们看到SSL 2.0规范是在1995年左右发布的，SSL 3.0于1996年11月发布。有趣的是，据<a href="https://tools.ietf.org/html/rfc6101" target="_blank">RFC 6101</a>描述，SSL 3.0是于2011年8月发布的。根据<a href="https://www.ietf.org/blog/iesg-statement-designating-rfcs-historic/?primary_topic=7&amp;" target="_blank">IETF</a>的说法，这属于<strong>历史范畴</strong>，“通常用来记录被考虑和抛弃的想法，或者在决定记录它们时已经具有历史意义的协议。”在这种情况下，拥有一个描述SSL 3.0的IETF专属文档是有利的，因为它可以用在其他地方的规范引用。</p>
+	<p>我们更感兴趣的是SSL如何启发了TLS的开发，TLS 于1996年11月以<a href="https://tools.ietf.org/html/draft-ietf-tls-protocol-00" target="_blank">draft-ietf-tls-protocol-00</a>的形式出现。它经历了6个草案版本，并在1999年初发布为<a href="https://tools.ietf.org/html/rfc2246" target="_blank">RFC 2246</a> -TLS 1.0 。</p>
+	<p>1995年至1999年间，SSL和TLS协议被用于保护Internet上的HTTP通信。从事实上的标准来看，它运行的很好。直到1998年1月，随着I-D <a href="https://tools.ietf.org/html/draft-ietf-tls-https-00" target="_blank">draft-ietf-tls-https-00</a>的发布，HTTPS的正式标准化过程才开始。该工作于2000年5月结束，发表了<a href="https://tools.ietf.org/html/rfc2616" target="_blank">RFC 2616</a>-HTTP over TLS。</p>
+	<p>随着TLS 1.1和1.2的标准化，TLS在2000年至2007年间继续发展。间隔7年后TLS的下一版本工作才开始，该版本在2014年4月被采纳为<a href="https://tools.ietf.org/html/draft-ietf-tls-tls13-00" target="_blank">draft-ietf-tls-tls13-00</a>，并且在28次草案之后，在2018年8月作为<a href="https://tools.ietf.org/html/rfc8446" target="_blank">RFC 8446</a> -TLS 1.3完成。</p>
+	<h2 id="--2">互联网标准化进程</h2>
+	<p>在仔细观察时间线后，我希望您能够了解IETF的工作原理。互联网标准形成方式的一个概括是，研究人员或工程师设计适合其特定用例的实验协议。他们在不同规模的公共或私人场合试验协议。这些数据有助于识别改进或问题。这项工作可能被发布出来用以解释实验，从而收集更广泛的意见或帮助找到其他实施者。其他人从事这项早期工作可能会使其成为行业标准; 最终可能有足够的动力使正式标准化。</p>
+	<p>对于正在考虑实施，部署或以某种方式使用协议的组织而言，协议的状态可能是一个重要的考虑因素。一个正式的标准化过程可以使事实标准更具吸引力，因为它往往具有稳定性。管理和指导的过程由IETF等组织进行，这背后是更广泛的经验支撑。但是，值得强调的是，并非所有正式标准都能成功。</p>
+	<p>创建最终标准的过程几乎与标准本身一样重要。从具有更广泛的知识、经验和用例的人那里获取最初的想法并邀请他们做出贡献，可以帮助产生对更广泛的人群更有用的东西。然而，标准化过程并不总是那么容易。这其中存在陷阱与障碍。有时，该过程花费了太多的时间以至于产出与目的不再相关。</p>
+	<p>每个标准定义组织都倾向于拥有自己的流程，该流程针对其领域和参与者。解释有关IETF如何工作的所有细节远远超出了本博客的范围。如果你想了解这些细节，那么IETF的“ <a href="https://www.ietf.org/how/" target="_blank">我们如何工作</a> ”页面会是一个很好的着手点，其中涵盖了许多方面的内容。像往常一样，形成理解的最佳方法就是参与其中。这可以像加入电子邮件列表或在相关GitHub存储库中添加讨论一样简单。</p>
+	<h2 id="cloudflare-">Cloudflare的运行代码</h2>
+	<p>Cloudflare很自豪能够成为新的和不断发展的协议的早期采用者。我们有一个早期采用新标准的很长的记录，例如<a href="https://blog.cloudflare.com/introducing-http2/">HTTP / 2</a>。我们还测试了一些尚处于试验阶段的或尚未完成的功能特性，如<a href="https://blog.cloudflare.com/introducing-tls-1-3/">TLS 1.3</a>和<a href="https://blog.cloudflare.com/introducing-spdy/">SPDY</a>。</p>
+	<p>在IETF标准化过程中，将这些运行中的代码部署到不同站点的真实网络上，可以帮助我们了解协议在实践中的运作情况。我们将现有的专业知识与实验信息相结合，以帮助改进运行代码，并在有意义的情况下，对正在进行标准化协议的工作组进行反馈和改进。</p>
+	<p>测试新事物不是唯一的优先事项。 成为创新者的一部分要领是知道什么时候该向前推进并将老的创新放在身后。这有时会涉及面向安全的协议，例如，由于POODLE漏洞，Cloudflare <a href="https://blog.cloudflare.com/sslv3-support-disabled-by-default-due-to-vulnerability/">默认禁用SSLv3</a>。在其他情况下，协议会被技术更先进的协议取代; Cloudflare <a href="https://blog.cloudflare.com/deprecating-spdy/">不赞成使用SPDY</a>支持HTTP / 2。</p>
+	<p>相关协议的引入和弃用在Secure Web时间线上表示为<strong>橙线</strong>。垂直虚线线有助于将Cloudflare事件与相关的IETF文档相关联。例如，Cloudflare在2016年9月引入了TLS 1.3支持，在两年后的2018年8月发布了最终文档<a href="https://tools.ietf.org/html/rfc8446" target="_blank">RFC 8446</a>。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/07/cf-events-1.png" class="kg-image"></figure>
+	<p></p>
+	<h2 id="-httpbis-">在HTTPbis中重构</h2>
+	<p>HTTP / 1.1是一个非常成功的协议，时间线显示1999年之后IETF没有太多活动。然而，真实的反映是多年的积极使用提供了实施经验，让人们发现了<a href="https://tools.ietf.org/html/rfc2616" target="_blank">RFC 2616</a>的潜在问题，并引发了一些互操作性问题。此外，该协议还被其他RFC（如2817和2818）扩展。2007年，一项新活动被决定启动，用以改进HTTP协议规范。这被称为HTTPbis（其中“bis”源于拉丁语意为“两个”，“两次”或“重复”）， 并以新的工作组的形式出现。这里的原始<a href="https://tools.ietf.org/wg/httpbis/charters?item=charter-httpbis-2007-10-23.txt" target="_blank">章程</a>很好地描述了人们试图解决这个问题的过程。</p>
+	<p>简而言之，HTTPbis决定重构<a href="https://tools.ietf.org/html/rfc2616" target="_blank">RFC 2616</a>。它将包含勘误修复，并补进在此期间发布的其他规范的某些方面。文档被分成了几部分。这是2007年12月发布的6个I-D的来源：</p>
+	<ul>
+		<li>draft-ietf-httpbis-p1-messaging</li>
+		<li>draft-ietf-httpbis-p2-semantics</li>
+		<li>draft-ietf-httpbis-p4-conditional</li>
+		<li>draft-ietf-httpbis-p5-range</li>
+		<li>draft-ietf-httpbis-p6-cache</li>
+		<li>draft-ietf-httpbis-p7-auth</li>
+	</ul>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/07/http11-refactor-1.png" class="kg-image"></figure>
+	<p></p>
+	<p>该图显示了这项工作是如何通过长达7年的起草过程进行的，在最终标准化之前有27个草案版本被发布。2014年6月，所谓的RFC 723x系列（其中x的范围从0到5）发布。HTTPbis 工作组的主席用“ <a href="https://www.mnot.net/blog/2014/06/07/rfc2616_is_dead" target="_blank">RFC2616已死</a> ”来庆祝这一成就。如果还不清楚，可以看下这些废弃旧的<a href="https://tools.ietf.org/html/rfc2616" target="_blank">RFC 2616</a>的新文件。</p>
+	<h2 id="-http-3-">这与HTTP / 3有什么关系？</h2>
+	<p>虽然IETF正忙着研究RFC 723x系列，但世界并未停止。人们继续在互联网上增强，扩展和试验HTTP。其中包括谷歌，谷歌已经开始试验一种名为SPDY（发音为speedy）的协议。该协议被吹捧可以提高Web浏览的性能，这是HTTP的一个主要用例。在2009年底，SPDY v1被宣布，紧接着2010年SPDY v2又很快被推出。</p>
+	<p>我想避免讨论SPDY的技术细节。这是另一个很大的话题。重要的是，要了解SPDY采用HTTP的核心范例并稍微修改交换格式以获得改进。事后看来，我们可以看到HTTP已经明确划分了语义和语法。语义描述了请求和响应交换的概念，包括：方法，状态代码，头字段（元数据）和主体（有效负载）。语法描述了如何将语义映射到线路上的字节。</p>
+	<p>HTTP / 0.9,1.0和1.1共享许多语义。它们还共享通过TCP连接发送的字符串形式的语法。SPDY采用HTTP / 1.1语义并将语法从字符串更改为二进制。这是一个非常有趣的话题，但我们今天不会深入讨论这个问题。</p>
+	<p>Google对SPDY的实验表明，改变HTTP语法是有希望的，并且保留现有HTTP语义是有价值的。例如，保持URL的格式来使用https：//可以避免许多可能影响采用的问题。</p>
+	<p>看到一些积极的结果后，IETF决定是时候考虑HTTP / 2.0的样子了。2012年3月IETF 83期间举行的HTTPbis会议的<a href="https://github.com/httpwg/wg-materials/blob/gh-pages/ietf83/HTTP2.pdf" target="_blank">幻灯片</a>显示了展示了制定的需求、目标和成功的度量。它还明确指出“HTTP / 2.0仅意味着连接格式与HTTP / 1.x的格式不兼容”。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/07/http2-standardisation.png" class="kg-image"></figure>
+	<p></p>
+	<p>在那次会议期间，社区被邀请分享提案。提交审议的I-D包括<a href="https://tools.ietf.org/html/draft-mbelshe-httpbis-spdy-00" target="_blank">draft-mbelshe-httpbis-spdy-00</a>，<a href="https://tools.ietf.org/html/draft-montenegro-httpbis-speed-mobility-00" target="_blank">draft-montenegro-httpbis-speed-mobility-00</a>和<a href="https://tools.ietf.org/html/draft-tarreau-httpbis-network-friendly-00" target="_blank">draft-tarreau-httpbis-network-friendly-00</a>。最终，SPDY草案获得通过，并且人们从2012年11月起开始<a href="https://tools.ietf.org/html/draft-ietf-httpbis-http2-00" target="_blank">草案-ietf-httpbis-http2-00</a>的工作。在短短两年多的时间内，<a href="https://tools.ietf.org/html/rfc7540" target="_blank">RFC 7540</a> -HTTP / 2经过了18次草案，最终于2015年发布。在此规范期间，HTTP / 2的精确语法分歧，足以使HTTP / 2和SPDY不兼容。</p>
+	<p>这些年来，IETF的HTTP相关工作非常繁忙，HTTP/1.1重构和HTTP/2标准化同时进行。这与21世纪初多年的平静形成鲜明对比。请务必查看完整的时间线，以真正欣赏人们在其中所做的工作。</p>
+	<p>尽管HTTP / 2正处于标准化阶段，但使用和试验SPDY仍然有好处。Cloudflare 在2012年8月<a href="https://blog.cloudflare.com/spdy-now-one-click-simple-for-any-website/">引入了对SPDY的支持，</a>并且仅在2018年2月弃用它，因为当时我们的统计数据显示不到4％的Web客户继续想要SPDY。同时，我们在2015年12月<a href="https://blog.cloudflare.com/introducing-http2/">推出HTTP / 2</a>支持，就在RFC发布后不久，我们的分析表明，相当一部分Web客户端可以利用它。</p>
+	<p>支持SPDY和HTTP/2协议的Web客户端首选使用TLS的安全选项。2014年9月<a href="https://blog.cloudflare.com/introducing-universal-ssl/">通用SSL</a>的引入有助于确保所有在Cloudflare注册的网站都能够在我们引入这些新协议时利用它们。</p>
+	<h2 id="gquic">gQUIC</h2>
+	<p>谷歌在2012年至2015年期间继续进行实验，他们发布了SPDY v3和v3.1。他们也开始研究gQUIC（当时读作quick），并于2012年初发布了最初的公开规范。</p>
+	<p>gQUIC的早期版本使用了SPDY v3形式的HTTP语法。这个选择很有意义，因为HTTP / 2还没有完成。SPDY二进制语法被打包成可以在UDP数据报中发送的Q​​UIC数据包。这与HTTP传统上依赖的TCP传输有所不同。当把所有这些放在一起，这看起来就像是：</p>
+	<p></p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/07/gquic-stack.png" class="kg-image">
+		<figcaption>SPDY over gQUIC层蛋糕</figcaption>
+	</figure>
+	<p></p>
+	<p>gQUIC使用巧妙的技巧来达到一定的性能。其中之一是打破应用程序和传输之间的明确分层。这在实际中意味着gQUIC只支持HTTP。因此，当时被称为“QUIC”的gQUIC成为了HTTP的下一个候选版本的同义词。尽管QUIC在过去几年中不断发生变化，我们稍后会讲到，直到今天，人们仍然将QUIC这个术语视为最初的HTTP-only变体。不幸的是，这在讨论协议时经常会引起混淆。</p>
+	<p>gQUIC继续进行实验并最终切换到更接近HTTP / 2的语法。事实上这是如此接近以至于大多数人简称它为“HTTP / 2 over QUIC”。然而，由于技术限制，它们之间还存在一些非常微妙的差异。其中一个例子便是与HTTP头文件的序列化和交换有关的。虽然是一个微小的差异，但这实际上意味着gQUIC上的HTTP / 2与IETF的HTTP / 2不兼容。</p>
+	<p>最后但同样重要的是，我们总是要考虑互联网协议的安全性方面。gQUIC选择不使用TLS来提供安全性。相反，Google开发了一种名为QUIC Crypto（QUIC加密）的不同方法。其中一个有趣的方面是它加速了安全握手。先前与服务器建立安全会话的客户端可以重用信息来执行“零往返时间”或0-RTT握手。0-RTT后来被合并到TLS 1.3中。</p>
+	<h2 id="-http-3--1">我们现在可以说出HTTP / 3是什么了吗？</h2>
+	<p>几乎可以了。</p>
+	<p>到目前为止，您应该熟悉标准化的工作原理，而gQUIC并没有太大的不同。人们有足够的兴趣将Google规范编写成I-D格式。2015年6月，题为“QUIC：基于UDP的HTTP / 2安全可靠传输”的<a href="https://tools.ietf.org/html/draft-tsvwg-quic-protocol-00" target="_blank">draft-tsvwg-quic-protocol-00</a>被呈报出来。请记住我之前的声明的语法几乎是HTTP / 2。</p>
+	<p>谷歌<a href="https://groups.google.com/a/chromium.org/forum/#!topic/proto-quic/otGKB4ytAyc" target="_blank">宣布</a>将在布拉格的IETF 93举行Bar BoF。对于那些好奇“Bar BoF”是什么的人，请参阅<a href="https://tools.ietf.org/html/rfc6771" target="_blank">RFC 6771</a>。提示：BoF代表同一类人（Birds of a Feather，俗语：物以类聚）。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/07/quic-standardisation.png" class="kg-image"></figure>
+	<p></p>
+	<p>简而言之，与IETF合作的结果是，QUIC似乎在传输层提供了许多优势，并且它应该与HTTP分离。应该重新引入层之间的明确分离。此外，有人倾向于返回基于TLS的握手（由于TLS 1.3正在此阶段中进行，并且包含了0-RTT握手，因此这并没有那么糟糕）。</p>
+	<p>大约一年后，在2016年，一套新的I-D被呈交：</p>
+	<ul>
+		<li><a href="https://tools.ietf.org/html/draft-hamilton-quic-transport-protocol-00" target="_blank">draft-hamilton-quic-transport-protocol-00</a></li>
+		<li><a href="https://tools.ietf.org/html/draft-thomson-quic-tls-00" target="_blank">draft-thomson-quic-tls-00</a></li>
+		<li><a href="https://tools.ietf.org/html/draft-iyengar-quic-loss-recovery-00" target="_blank">draft-iyengar-quic-loss-recovery-00</a></li>
+		<li><a href="https://tools.ietf.org/html/draft-shade-quic-http2-mapping-00" target="_blank">draft-shade-quic-http2-mapping-00</a></li>
+	</ul>
+	<p>这里是关于HTTP和QUIC的另一个困惑之处。<a href="https://tools.ietf.org/html/draft-shade-quic-http2-mapping-00" target="_blank">draft-shade-quic-http2-mapping-00</a>的标题是“使用QUIC传输协议的HTTP / 2语义”，它将自己描述为“HTTP / 2语义在QUIC上的映射”。然而，这样的用词是不恰当的。HTTP / 2是关于在保持语义的同时改变语法的。此外，由于我之前概述的原因，“HTTP / 2 over gQUIC”从未对语法进行准确描述。对此保留个人意见吧。</p>
+	<p>这个IETF版本的QUIC是一个全新的传输协议。这是一项艰巨的任务，在一头栽进此类任务之前，IETF喜欢评估其成员的实际兴趣。为此，2016年在柏林举行的IETF 96会议上，IETF举行了正式的<a href="https://www.ietf.org/how/bofs/" target="_blank">Birds of a Feather（同类之人）</a>会议。我很幸运能够亲自参加会议但<a href="https://datatracker.ietf.org/meeting/96/materials/slides-96-quic-0" target="_blank">幻灯片</a>不能说明问题。如Adam Roach的<a href="https://www.flickr.com/photos/adam-roach/28343796722/in/photostream/" target="_blank">照片</a>所示，数百人参加了会议。在会议结束时我们达成了共识; QUIC将被IETF采用并标准化。</p>
+	<p>第一个用于将HTTP映射到QUIC的IETF QUIC I-D，<a href="https://tools.ietf.org/html/draft-ietf-quic-http-00" target="_blank">draft-ietf-quic-http-00</a>，采用Ronseal方法并将其名称简化为“HTTP over QUIC”。不幸的是，它没有完全完成这项工作，而且在整个主体中有许多HTTP/2术语的实例。I-Ds新编辑Mike Bishop发现了这一点并开始修复HTTP / 2的错误名称。在01草案中，前面的描述改为“基于QUIC的HTTP语义映射”。</p>
+	<p>随着时间推移和版本增加，术语“HTTP / 2”的使用逐渐减少了，实例仅仅是对<a href="https://tools.ietf.org/html/rfc7540" target="_blank">RFC 7540</a>部分的引用。时间推移两年到2018年10月，I-D现在是第16版。虽然QUIC上的HTTP与HTTP / 2相似，但它终究是一个独立的，非向后兼容的HTTP语法。然而，对于那些没有非常密切关注IETF发展的人（地球人口的很大一部分），文档名称并没有捕捉到这种差异。标准化的一个要点是帮助沟通和互操作。然而，命名这种简单的事情是造成社区混乱的主要原因。</p>
+	<p>回想一下在2012年的内容里所说的，“HTTP / 2.0仅表示连接格式与HTTP / 1.x不兼容”。IETF遵循现有的提示。在经过IETF 103之前和期间进行了大量的讨论后，人们一致同意将“HTTP over QUIC”重命名为HTTP / 3。世界现在变得更好了，我们可以继续进行更重要的讨论。</p>
+	<h2 id="-rfc-7230-7231-">但RFC 7230和7231不同意您对语义和语法的定义！</h2>
+	<p>有时文档标题可能会令人困惑。当前描述语法和语义的HTTP文档是：</p>
+	<ul>
+		<li><a href="https://tools.ietf.org/html/rfc7230" target="_blank">RFC 7230</a> - 超文本传输​​协议（HTTP / 1.1）：消息语法和路由</li>
+		<li><a href="https://tools.ietf.org/html/rfc7231" target="_blank">RFC 7231</a> - 超文本传输​​协议（HTTP / 1.1）：语义和内容</li>
+	</ul>
+	<p>人们有可能对这些名称进行过度的解读，并认为基本HTTP语义是特定于HTTP版本的，即HTTP / 1.1。但是，这是HTTP家族树的意外副作用。好消息是HTTPbis工作组正在努力解决这个问题。</p>
+	<p>一些勇敢的成员正在进行另一轮文件的修订，正如Roy Fielding所说，“再来一次！”。这项工作正在进行中，被称为HTTP核心活动（您可能也听说过HTTPtre或HTTPter这个名称;命名事物是困难的）。这将把六个草案缩减为三个：</p>
+	<ul>
+		<li>HTTP语义（draft-ietf-httpbis-semantics）</li>
+		<li>HTTP缓存（draft-ietf-httpbis-caching）</li>
+		<li>HTTP / 1.1消息语法和路由（draft-ietf-httpbis-messaging）</li>
+	</ul>
+	<p>在这种新结构下，HTTP / 2和HTTP / 3显然是通用HTTP语义的语法定义。这并不意味着它们除了语法之外没有自己的特性，但它应该有助于构建讨论的框架。</p>
+	<h2 id="--3">把它们放到一起</h2>
+	<p>本文简要介绍了过去三十年IETF中HTTP的标准化过程。在没有触及很多技术细节的情况下，我试图解释我们今天是如何使用HTTP/3的。如果您跳过中间的好位并且正在寻找一句概括性的话，那么它是：HTTP / 3只是一种新的HTTP语法，适用于IETF QUIC，这是一种基于UDP的多路复用和安全传输。有许多有趣的技术领域需要我们进一步去探索，但这不是一天就能完成的。</p>
+	<p>在这篇文章中，我们探讨了HTTP和TLS开发中的重要章节，但这些章节是独立的。我们通过将它们全部整合到下面提供的完整安全Web时间线中来作为这篇博客的结尾。您可以使用它来自行调查详细的历史记录。对于超级侦探们，请务必查看<a href="https://blog.cloudflare.com/content/images/2019/01/web_timeline_large1.svg">完整版本，包括草案编号</a>。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/07/cf-secure-web-timeline-1-1.png" class="kg-image"></figure>
+</div>

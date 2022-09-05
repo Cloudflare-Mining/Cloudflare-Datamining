@@ -1,0 +1,55 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/06/45DEDC7B-B31F-461C-B786-12FBAF1A5391.png" class="kg-image"></figure>
+	<p>本日、Cloudflare Workers®で、CLI、新しく改良されたドキュメント、すべての人が使える複数のスクリプト、ならびにご自身のドメインを使用せずにworkers.dev上でアプリケーションを実行可能な無料利用枠の提供が開始し、過去になかったほどに実験が容易になりましたことを発表します。弊社で構築を進めている未来のサーバーレスプラットフォーム上で、皆様にも今日、アプリケーションの構築を行っていただけます。この記事では、未来のサーバーレスプラットフォームの概要について、また、今日のパラダイムがいかに変わるのか、そしてこのプラットフォーム上で素晴らしい体験を構築するための弊社の取り組みについて説明します。</p>
+	<p>3年前、私はソリューションエンジニアリングの役割に応募し、Cloudflareの面接を受けました。面接には、Cloudflareに自分のドメインをセットアップする課題も含まれていました。週末を使って課題に取り組みましたが、あせったり設定で迷ったり、EC2のインスタンスのセットアップに悩み、IPv6経由での接続、Ubuntu 16.4へのNGINXのインストール方法などを考えながら進め、最後に<em>自分のネコの写真を置いた静的サイトを仕上げました</em>。私はコンピュータサイエンスを専攻し、それまでソフトウェアエンジニアとして働いてきましたが、このシンプルなアプリの構築はひどい経験でした。サーバーのことを考えずに週末をコーディングに費やしたら、もっと内容の濃いアプリケーションが出来上がったと思います。</p>
+	<p>ですが、このことはまだ、梯子の一段目にすぎなかったのです。プリミティブを上のスタックに移動するなか、実際、アプリケーションの開発や、それをインターネットに載せること、そしてMVPから拡張性ある高性能な製品に育てるには、まだまだ開発プロセスには明らかに手順が残っていました。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/05/Workers-diagram-MVP--copy-3@3x-8--1-.png" class="kg-image"></figure>
+	<p>これが、「サーバーレス」によって必ず解決できる部分です。プロセスのすべての段階でサーバーを抽象化し、開発者が最も得意な部分つまり開発を、インフラストラクチャに対する不安なく行えるようにすることです。</p>
+	<p>ですが、現在の多くのサーバーレス製品では、開発者はまず、自身の担当ではないサーバーの心配をしなければならないのです。「あなたはどの地域が好きですか？」（私の頭の中に最初に浮かんだ質問：なぜ、東海岸と西海岸のどちらの顧客を最も心配しているのかについて考えざるを得なくさせるのですか。私の代わりに解決してくれないのですか？）あるいは、「どのくらいのメモリが必要だと思いますか？（再度：どうしてこれが私の問題になるのですか？！あなたが解決してください！）</p>
+	<p>このようなことになってはならないと思います。</p>
+	<p>私は、3年前に自身が直面していた問題、そして世界中の開発者が直面している問題を、よく思い出します。開発者は、コードに集中できる状態でなければなりません。インフラストラクチャのセットアップから、そのインフラストラクチャを高速に動作させ拡張性を持たせるまでの部分は、すべて誰か他の人が対処するべきです。私たちはWorkersの構築において、このような、より良いアーキテクチャを作るためのいくつかの決定にも関わりましたが、今日は、その説明をする機会ではありません（この部分について、詳しくは<a href="https://blog.cloudflare.com/cloud-computing-without-containers/">ここに良く書かれた投稿があります</a>のでご覧ください）。今日は、Workersの機能を開発者向けに向上させていくことについてお話します。</p>
+	<p>私たちは、Workersを、開発者がコードのバグだけに集中できるようなサーバーレス、という夢を実現する製品にしたいと考えています。今日は、Workersで開発者に素晴らしい体験を実現するという目標達成のためのCloudflareにとってのスタートの日です。今日も素晴らしい発表がいくつかありますが、これはまだ始まりに過ぎません。</p>
+	<h3 id="wrangler-workers-cli"><strong>Wrangler：Workersの公式CLI</strong></h3>
+	<p>Wranglerは、もともとWorkers用のオープンソースのRust CLIだったものを正式なWokers CLIに格上げし、現在Workersの展開に関わるすべてのニーズに対応しています。</p>
+	<p>Wranglerをインストールして開始</p>
+	<p><code>npm install -g @cloudflare/wrangler</code><br></p>
+	<p><a href="https://workers.cloudflare.com/docs/templates" target="_blank">テンプレート</a>ギャラリーから、最初のプロジェクトを生成します</p>
+	<p><code>wrangler generate &lt;name&gt; &lt;template&gt; --type=["webpack", "javascript", "rust"]</code></p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/05/worker_generate.gif" class="kg-image"></figure>
+	<p>Wranglerは、プロジェクトのウェブパック、WebAssemblyへのコンパイル、プロジェクトのWorkersへのアップロードを、1つのシンプルな手順で行います。</p>
+	<p><code>Wranglerの公開</code></p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://lh5.googleusercontent.com/utFG7RmahwQuXvQ9cuwDYZYK8WtxJDarspvCrbidSrT1OKxPlZhgcJURcBjFcDmpf22v5WPEebq-SPeoAmgjKIfUx9u805Dsd3P8ZMhvkDmFp-tesh5WVOwcoscvWZ3lGUqSWLqI" class="kg-image"></figure>
+	<p>Wranglerを使用する嬉しいその他のメリット：</p>
+	<ul>
+		<li>Rust、C、およびC++を、WebAssemblyにコンパイルする</li>
+		<li>単一ファイルまたは複数ファイルのJavaScriptアプリケーションを作成する</li>
+		<li>NPM依存関係をインストールする（webpackは弊社で行います）</li>
+		<li>KV名前空間とバインディングを追加する</li>
+		<li>あらかじめ作成済みの<a href="https://workers.cloudflare.com/docs/templates/" target="_blank">テンプレート</a>で開始する</li>
+	</ul>
+	<h3 id="-"><strong>新しいドキュメントと改良されたドキュメント</strong></h3>
+	<p>ドキュメントを更新し（Wranglerを使用）、Workersでの最初のアプリケーションの展開開始がこれまでになく容易になりました。</p>
+	<p>新しいチュートリアルをご確認ください。</p>
+	<ul>
+		<li><a href="https://workers.cloudflare.com/docs/tutorials/build-an-application/" target="_blank">Workersを使用したSlackボットの展開</a></li>
+		<li><a href="https://workers.cloudflare.com/docs/tutorials/build-a-serverless-function/" target="_blank">QRコードジェネレータの構築</a></li>
+		<li><a href="https://workers.cloudflare.com/docs/tutorials/configure-your-cdn" target="_blank">クラウドストレージからのファイルの提供とキャッシュ</a></li>
+	</ul>
+	<h3 id="--1"><strong>誰でも使えるマルチスクリプト</strong></h3>
+	<p>皆様から寄せられる質問にも耳を傾けました。Workers導入時、なるべくシンプルなものを作ろうと考えました。開発者は、コードを論理的なコンポーネントに分割したいのです。モノリシックなスクリプトを1つ用意するのではなく、使う方にとって意味ある方法でコードを配置できるようにしたいと考えています。</p>
+	<h3 id="no-domain-required-workers-dev"><strong>no-domain-required.workers.dev</strong></h3>
+	<p>ソフトウェアを書くことはクリエイティブなプロセスです。新しいプロジェクトとは、ゼロからなにかを創造することです。何が出来上がるか、どのような名前を付けるかもまったくわからないこともあります。</p>
+	<p>Workersでは、(お客様のサブドメイン).workers.dev上での展開を可能にすることで、このスタートの部分を変えます。</p>
+	<p>2月にご覧になられたでしょうか、<a href="https://blog.cloudflare.com/announcing-workers-dev/">この発表</a>を、ついに提供できることになりました。事前登録された皆様は、用意されているサブドメインにサインアップしてWorkersをクリックすることで、これをご利用いただくことができます。</p>
+	<h3 id="--2"><strong>実験に使える無料利用枠</strong></h3>
+	<p>素晴らしい製品が常に素晴らしいアイデアから生まれるとは限らず、いろいろやってみる自由があるために生まれることも多くあります。私たちは、ちょっとした作業にでも値段が付けば、たとえ5ドルでも、皆さんの実験の自由を制限してしまうことに気がついたのです。</p>
+	<p>そこで本日より、Workersに無料利用枠を設定することを発表します。</p>
+	<p>無料利用枠では、ご自身のドメインでもworkers.devでも、1日あたり最大100,000リクエストまで使用することができます。詳しい制限については、<a href="https://workers.cloudflare.com/docs/reference/runtime/limits/" target="_blank">こちら</a>からご覧ください。</p>
+	<h3 id="-ui"><strong>新たに機能向上したUI</strong></h3>
+	<p>Workersへのサインアップから展開までが2分以内の、クリーンで使いやすいパッケージを作りました。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/05/get-started.gif" class="kg-image"></figure>
+	<h3 id="cloudflare-"><strong>Cloudflareのコミットメント</strong></h3>
+	<p>まだまだこの先には長い道のりがあります。開発者にとっての使いやすさについては、現段階に留まることなく、さらに私たちの使命を果たしていきたいと考えています。共同創業者であるMichelleがよく言うように、「私たちはまだ始まったばかり」です。</p>
+	<p>目の前にはすることがたくさんあるし、この先ももっと色々なことが待っています。<a href="https://workers.cloudflare.com/" target="_blank">workers.cloudflare.com</a>にアクセスすると詳細情報をご覧いただけるほか、実際に使用される場合には同じページからサインアップすることができます。</p>
+	<p>皆様の積極的なご利用をお待ちしています。</p>
+</div>

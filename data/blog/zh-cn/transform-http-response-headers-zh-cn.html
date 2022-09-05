@@ -1,0 +1,54 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image2-77.png" class="kg-image" alt="Modifying HTTP response headers with Transform Rules"></figure>
+	<p>HTTP 标头对于 Web 的运作至关重要。它们用于在客户端和服务器之间传递额外信息，例如要应用的安全权限，以及有关客户端的信息，以允许提供正确的内容。</p>
+	<p>今天，我们宣布转换规则中的第三个操作“HTTP 响应标头修改”即刻推出，适用于所有 Cloudflare 服务套餐。利用这个新功能，Cloudflare 用户能够在流量通过 Cloudflare 返回到客户端时设置或删除 HTTP 响应标头。这样一来，客户可以在响应中扩充有关其请求处理方式的信息、调试信息，甚至是<a href="https://frenxi.com/http-headers-you-dont-expect/" target="_blank">招聘消息</a>。</p>
+	<p>之前，HTTP 响应标头修改是使用 <a href="https://workers.cloudflare.com/" target="_blank">Cloudflare Worker</a> 执行的。现在我们引入了更轻松的做法，无需编写哪怕一行代码。</p>
+	<h3 id="-">万维网的行李标签</h3>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image4-43.png" class="kg-image" alt="Image of baggage check-in at an airport."></figure>
+	<p>可以将 HTTP 标头视为您在机场办理登机手续时贴到提包上的“行李标签”。</p>
+	<p>一般来说，您无需知道这些数字和词语的含义。您只需知道，要将您的手提箱从登机台运送到正确的飞机，再运送到目的地的正确行李传送带，这些信息非常重要。</p>
+	<p>这些标签包含有关手提箱重量、目的地机场代码、行李标签号、航空公司、海关处理信息等的信息。这些属性都至关重要，不仅可确保行李到达正确的目的地，而且能以最安全、最高效的方式完成此过程。</p>
+	<p>HTTP 标头是互联网的行李标签。它们非常重要，可确保来自您浏览器的请求到达正确的目的地，并且该流量使用正确的设置以最安全、最高效的方式返回到您的浏览器。</p>
+	<h3 id="http-">HTTP 响应标头的使用方式是怎样的？</h3>
+	<p>HTTP 标头在“request”和“response”交互中设置；“request”是指客户端要求提供文件，“response”是指服务器作为结果返回的内容。今天宣布的功能专门与 HTTP <em>response</em> 标头相关。</p>
+	<p>HTTP 响应标头用于确保向浏览器返回正确的数据，以及帮助浏览器正确处理数据的信息。常见响应标头包括“Content-Type”，用于告知浏览器所返回内容的类型，例如“Content-Type: text/html” or “Content-Type: image/png”。另一个常见标头是“Server:”，其中包含有关用于处理 HTTP 请求的软件的信息，例如“Server: cloudflare”。</p>
+	<p>在基本 HTTP 流量处理之外，这些响应标头还有其他许多用途。一个此类示例是提高<em>安全性</em>。内容安全策略 (CSP)、跨域资源共享 (CORS) 和 HTTP 严格传输安全 (HSTS) 等安全机制全部实现为响应标头，以便为网站访问者提高并加强安全性。</p>
+	<p>例如，CSP 的主要目标是缓解和报告跨站点脚本 (XSS) 攻击。XSS 攻击是指在可信网站中注入了恶意脚本的情况，此时攻击者可以使用应用程序将浏览器端脚本之类的恶意代码发送给其他最终用户。接着，该脚本可以用于泄露最终用户与网站或应用程序的交互，将密码等敏感信息透露给第三方。</p>
+	<p>为防止这种情况，网站管理员将 CSP 添加为 HTTP 响应标头。CSP 响应标头指定了浏览器应该视为可执行脚本的有效源的域。然后，<a href="https://content-security-policy.com/" target="_blank">兼容 CSP 的浏览器</a>将仅执行从这些允许的域接收的文件中加载的脚本，而忽略其他所有脚本。</p>
+	<p>通过设置“Content-Security-Policy”标头以及值中包含的策略，将 CSP 添加到 HTTP 响应。例如，使用 NGINX 这一<a href="https://w3techs.com/technologies/overview/web_server" target="_blank">热门</a>的 Web 服务器时，管理员会在配置中包含类似于以下内容的一行代码：</p>
+	<p><code>add_header Content-Security-Policy "default-src 'self';" always;</code></p>
+	<p>使用 <a href="https://workers.cloudflare.com/" target="_blank">Cloudflare Workers</a> 时，代码会类似于：</p>
+	<p><code>response.headers.set("Content-Security-Policy":"default-src 'self' example.com *.example.com",)</code></p>
+	<p>现在，当浏览器收到 HTTP 响应时，会检测是否存在 Content-Security-Policy 标头，并相应采取行动。</p>
+	<h2 id="-http-">动态修改 HTTP 响应标头</h2>
+	<p>负责确保 HTTP 响应中存在这些标头的通常是反向代理， 这是位于客户端和服务器之间的一种服务器，其职责之一是扩充返回给客户端的 HTTP 响应数据。</p>
+	<p>“HTTP 响应标头修改”现在可在所有 Cloudflare 服务套餐的转换规则中使用。它可用于修改 HTTP 响应标头，然后将其返回给访问者，这一切都在 Cloudflare 中进行。当响应来自管理员没有完全控制的源（例如 SaaS 提供商或其他第三方服务）时，这尤其重要。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image7-16.png" class="kg-image" alt="Screenshot of &quot;Transform Rules&quot;"></figure>
+	<p>转换规则允许用户使用以下三个选项之一，针对每个规则修改最多 10 个 HTTP 响应标头：</p>
+	<!--kg-card-begin: html--><img src="https://blog.cloudflare.com/content/images/2021/11/image5-8.png">
+	<!--kg-card-end: html-->
+	<p>当需要对每个 HTTP 响应动态填充 HTTP 响应标头的值时，应该使用“Set dynamic”。示例包括将 Cloudflare Bot Management“bot score”添加到每个 HTTP 响应，或访问者的国家/地区：</p>
+	<!--kg-card-begin: html--><img src="https://blog.cloudflare.com/content/images/2021/11/image3-26.png">
+	<!--kg-card-end: html-->
+	<p>注意：这些值是使用相应 HTTP 请求计算的，意味着响应标头中返回的机器人分数将基于 HTTP 请求来计算。类似地，ip.src.country 值将为网站访问者的国家/地区，而不是从中发送响应的源。</p>
+	<p>“Set static”应该用于使用静态文本字符串填充标头的值。该选项应该用于简单的标头创建，例如设置 CORS 或 CSP 策略：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image1-107.png" class="kg-image" alt="Screenshot showing Transform Rules actions being used to statically set HTTP response headers."></figure>
+	<p>在两种“set”示例中，如果 HTTP 响应中已存在具有指定名称的标头 ，其值将被删除并替换为给定值。</p>
+	<p>“Remove”是最后的选项，应该用于删除具有指定名称的所有 HTTP 响应标头。例如，如果您想确保删除了“Link”HTTP 响应标头，您可使用类似于以下内容的规则：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image6-28.png" class="kg-image" alt="Transform Rule showing the header 'link' being removed from the HTTP response."></figure>
+	<p>Cloudflare <a href="https://developers.cloudflare.com/firewall/cf-firewall-language/functions" target="_blank">函数</a>可以在“set dynamic”标头修改中使用。这些函数包括：</p>
+	<ul>
+		<li>concat()</li>
+		<li>regex_replace()</li>
+		<li>to_string()</li>
+		<li>lower()</li>
+	</ul>
+	<p>通常使用函数的示例是，使用 concat() 和 to_string() 来接收不同数据类型的列表并连接在一起以构成单个标头值。例如，`concat(“score=”,to_string(cf.bot_management.score))`会生成 `score=85` 这样的标头值。</p>
+	<p>注意：正则表达式函数仅可用于使用 Business 和 Enterprise 服务套餐的客户。</p>
+	<h2 id="--1">针对您的网站进行优化</h2>
+	<p>将 HTTP 响应标头修改移入 Cloudflare 中的另一个巨大优势是规则构建器中提供的过滤级别。通常，CORS 和 CSP 等技术在整个网站上（或最佳情况下）会被逐个目录设置为响应标头。</p>
+	<p>利用转换规则，管理员可以基于一些参数设置标头，包括访问者的所在国家/地区、机器人分数、用户代理、请求的文件名/文件扩展名、请求方法，<a href="https://developers.cloudflare.com/firewall/cf-firewall-language/fields" target="_blank">等等</a>。</p>
+	<p>这样一来，管理员能够实施一些设置，例如，相比未验证的机器人/低机器人分数流量，对<a href="https://developers.cloudflare.com/bots/get-started/bm-subscription#verified-bots" target="_blank">已验证</a>的机器人设置更严格的内容安全策略。</p>
+	<h2 id="--2">马上试试吧</h2>
+	<p>HTTP 响应标头修改可用于改进操作、删除敏感数据、提高安全性，以及其他许多用例。立即亲自试用最新的<a href="https://dash.cloudflare.com/" target="_blank">转换规则</a>。</p>
+</div>

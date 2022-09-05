@@ -1,0 +1,168 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/unnamed--1--1.png" class="kg-image" alt="Internet disruptions overview for Q2 2022"></figure>
+	<p>Cloudflare 在 <a href="https://www.cloudflare.com/network/" target="_blank">100 多个国家/地区的 270 多个城市运营</a>，与上万个网络提供商互连，旨在为数以百万计的客户提供广泛的服务。网络和客户群的广度为我们提供了对互联网韧性的独特视角，使我们能够观察到互联网中断的影响。在很多情况下，这些中断可归因于物理事件，但在其他情况下，中断源于政府指示的故意关闭。本文中，我们回顾 Cloudflare 在 2022 年第二季度期间观察到的部分互联网中断，以来自 <a href="https://radar.cloudflare.com/" target="_blank">Cloudflare Radar</a> 和其他 Cloudflare 内部工具的流量图表作为佐证，并按照相关原因或相同地理位置对其进行分类。</p>
+	<h2 id="-">光纤中断</h2>
+	<p>这个季度，我们发现对陆地和海底光纤电缆的惯常全面破坏，其中一项破坏影响多个国家/地区、波及几千英里范围，另一个中断是某个啮齿动物乱咬电缆导致的，影响范围仅限当地。</p>
+	<h3 id="comcast">Comcast</h3>
+	<p>4 月 25 日，佛罗里达州西南部近 20 个城市的 Comcast 订阅者<a href="https://twitter.com/CloudflareRadar/status/1518705241801338881" target="_blank">遭遇中断</a>，<a href="https://web.archive.org/web/20220427120613/https://capecorallocalnews.com/2022/04/news/fiber-cut-causes-major-southwest-florida-xfinity-outage/" target="_blank">据说</a>是因为光纤被切断。下图中清楚显示了此次光纤切断事故造成的流量影响，即这些城市的 Cloudflare 流量在 19:15–20:50 UTC（当地时间 15:15–18:50）降为零。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/07/image19.jpg" class="kg-image"></figure>
+	<p>此次光纤切断事故不仅迫使大量 Comcast 订阅者离线，还影响了 Comcast 总体观察到的流量类型。下图比较说明了移动与桌面客户端的情况，以及 Comcast 的主要自治系统 <a href="https://radar.cloudflare.com/asn/7922" target="_blank">AS7922</a> 中的 IPv4 与 IPv6 请求数量。在这次短暂的中断期间，来自移动设备的 Comcast 流量百分比提高了，而来自桌面设备的百分比则降低了，IPv4 流量百分比降低了，而 IPv6 流量比例则有相应提高。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image18.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image26.png" class="kg-image"></figure>
+	<h3 id="--1">南非</h3>
+	<p>5 月 17 日上午，南非电信提供商 Telkom SA <a href="https://twitter.com/TelkomZA/status/1526496275750866945" target="_blank">在推特上向客户发布了“重要通知”</a>，声称“<em>2022 年 5 月 17 日星期二上午 8:00 左右在 Telkom 网络上检测到光纤电缆破坏</em>”，并概述了受影响的服务和地理位置。下图显示了 Telkom 自治系统在南非三个省份的 Cloudflare 流量受到的影响。顶部的图显示了对豪登省流量的影响，底部的图则显示了对林波波省和西北省流量的影响。在这三个省中，流量全部在 06:00 UTC（当地时间 08:00）骤降，并在 13:00 UTC（当地时间 15:00）左右恢复。Telkom SA 并未详细说明发生此次光纤切断事故的地点和原因。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/07/image29.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/07/image35.png" class="kg-image"></figure>
+	<h3 id="--2">委内瑞拉</h3>
+	<p>尽管未经证实，但<a href="https://eldiario.com/2022/05/19/cantv-reportan-caida-de-internet-en-venezuela/" target="_blank">疑似有光纤切断</a>导致委内瑞拉的 <a href="https://radar.cloudflare.com/asn/8048?date_filter=last_7_days" target="_blank">CANTV</a> 订阅者在 5 月 19 日遭遇互联网中断，此前该提供商已遇到多起类似事故。虽然此次光纤切断事故据说影响了多个州的订阅者，但受影响最严重的州是法尔孔州，如下图所示。该州的流量在 18:00 UTC（当地时间 14:00）陡降，最终在大约 24 小时后恢复。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/07/image20.png" class="kg-image"></figure>
+	<h3 id="aae-1-smw-5">AAE-1 和 SMW-5</h3>
+	<p>6 月 7 日星期二 12:00 UTC 刚过，<a href="https://www.submarinecablemap.com/submarine-cable/asia-africa-europe-1-aae-1" target="_blank">Africa-Asia-Europe-1 (AAE-1)</a> 和 <a href="https://www.submarinecablemap.com/submarine-cable/seamewe-5" target="_blank">SEA-ME-WE-5 (SMW-5)</a> 海底电缆被切断，影响了中东和非洲多个国家/地区的数百万互联网用户，还影响了远在几千英里之外的亚洲。尽管具体细节尚不清楚，但据说电缆破坏发生在埃及 – 受影响的两条电缆位于<a href="https://www.submarinecablemap.com/landing-point/abu-talat-egypt" target="_blank">阿布塔拉特</a>和<a href="https://www.submarinecablemap.com/landing-point/zafarana-egypt" target="_blank">扎法拉纳</a>，这两个地方还是其他多条海底电缆的登陆点。</p>
+	<p>下面的 <a href="https://radar.cloudflare.com/" target="_blank">Cloudflare Radar</a> 图说明了这些电缆切断事故在非洲、亚洲和中东造成的影响。鉴于相关的流量中断仅持续了几个小时，这些电缆很可能是登陆之后在陆地遭到破坏的。关于该事件的更多详情可在<a href="https://blog.cloudflare.com/aae-1-smw5-cable-cuts/"><em>“AAE-1 &amp; SMW5 cable cuts impact millions of users across multiple countries</em>”（AAE-1 和 SMW5 电缆切断事故影响了多个国家/地区的数百万用户）这篇博客文章</a>中找到。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image1-1.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image30.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image23.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image2.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image11.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image8.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image37.png" class="kg-image"></figure>
+	<h3 id="--3">美洲河狸</h3>
+	<p>6 月 13 日，人们最终发现影响加拿大不列颠哥伦比亚省互联网用户的中断是一只河狸造成的。据<a href="https://www.datacenterdynamics.com/en/news/british-columbia-internet-outage-caused-by-beaver/" target="_blank">发布的报告</a>称，一棵树被一只河狸啃咬后倒下，压到了两条输电线和一条 Telus 光纤电缆。该光纤电缆遭到破坏后，影响了不列颠哥伦比亚省十多个社区的客户的网络连接，包括使用 <a href="https://radar.cloudflare.com/asn/18988" target="_blank">CityWest (AS18988)</a> 服务的客户，这家公用事业公司使用的是 Telus 电缆。下图中清楚显示了该光纤电缆遭到破坏后造成的影响，即 6 月 7 日 18:00 UTC 到 6 月 8 日 03:10 UTC（当地时间 11:00–20:10），来自不列颠哥伦比亚省 CityWest 订阅者的 Cloudflare 流量为零。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/07/image34.png" class="kg-image"></figure>
+	<h2 id="--4">学校要考试，互联网中断</h2>
+	<p>遗憾的是，过去六年来，专制政权常常采用全国范围的断网来防止中学考试作弊。这种粗暴的做法能否有效防止作弊尚不清楚，但据估算，<a href="https://smex.org/the-cost-of-internet-shutdowns/" target="_blank">这对全国经济带来的相应损失</a>达到数千万至数亿美元，具体视断网的持续时间和频率而定。</p>
+	<p>今年，苏丹和叙利亚政府从 5 月底到 6 月多次实施了长达数小时的断网措施，而阿尔及利亚政府似乎采取了更具针对性的内容阻止。关于这些断网事件的更多详情可在最近的<a href="https://blog.cloudflare.com/syria-sudan-algeria-exam-internet-shutdown/"><em>“Exam time means Internet disruptions in Syria, Sudan and Algeria”</em>（叙利亚、苏丹和阿尔及利亚在考试期间断网）这篇博客文章</a>中找到。</p>
+	<p>从 5 月 30 日开始，叙利亚首次实施了全国范围的断网，一共四次，最后一次是在 6 月 12 日，如下图所示。有意思的是，我们观察到，这些断网的性质往往是“<a href="https://twitter.com/CloudflareRadar/status/1532349153090600961" target="_blank">非对称的</a>”— 也就是说，入站流量（入境）被禁用，但出口流量（出境）予以保留。从下面 DNS 图中的激增情况可以清楚看到这种做法的一种影响。在这四次断网中的三次断网期间，来自叙利亚的客户端对 Cloudflare <a href="https://1.1.1.1/dns/" target="_blank">1.1.1.1</a> 解析器的请求增加了，因为 DNS 查询能够出境，但响应无法入境，导致重试请求泛滥。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/07/image33.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/07/image9.png" class="kg-image"></figure>
+	<p>苏丹在 6 月 11 日到 6 月 22 日（6 月 17 日除外）期间每天 05:30-08:30 UTC（当地时间 07:30–10:30）都实施了断网（17 日未断网的原因不明）。下图显示，这些断网是全国范围的但并不全面，因为该国的流量并未降至零。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/07/image4.png" class="kg-image"></figure>
+	<p>阿尔及利亚于 6 月 12 日到 6 月 16 日期间举行了考试。在<a href="https://www.bbc.com/news/world-africa-44557028" target="_blank">过去</a>，该国实施过全国范围的断网，但在认识到<a href="https://dig.watch/updates/internet-restriction-during-exam-algeria-cost-nearly-us388-million" target="_blank">对经济带来的巨大影响</a>之后，政府今年显然<a href="https://twitter.com/TheAlgiersPost/status/1535917324485656576" target="_blank">选择了新的手段</a>。下图显示，在每天举行考试的两个时间段 — 07:30–10:00 UTC（当地时间 08:30–11:00）和 13:30–16:00 UTC（当地时间 14:30–17:00），全国范围的流量有小幅下降。这些流量下降情况更有可能是采取内容阻止方法造成的，而不是大面积的断网。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/07/image40.png" class="kg-image"></figure>
+	<p>6 月 27 日，伊拉克的库尔德斯坦地区政府实施了每周两次（星期一和星期四）、长达数小时的地区性断网，预计持续四周时间。据<a href="https://www.kurdistan24.net/en/story/28797-KRG-will-implement-short-internet-blackouts-to-prevent-exam-cheating%C2%A0" target="_blank">发布的报告</a>称，断网措施旨在防止高中毕业考试作弊，并且安排在上午 06:30–10:30 (03:30–0730 UTC)。下图显示了对库尔德斯坦三个省的流量的影响，这三个区域的流量在断网期间全部降至接近零。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/07/image7.png" class="kg-image"></figure>
+	<h2 id="--5">政府主导</h2>
+	<p>政府不仅通过断网来防止考试作弊，还将断网用作限制或控制针对选举、集会、抗议等活动进行通信的一种手段。在第二季度，我们观察到这种重大断网情况发生了多次。</p>
+	<p>4 月 10 日，土库曼斯坦政府在阻止社交网络、VPN 提供商和云平台之后，从 14:00 UTC 开始实施了一项<a href="https://twitter.com/CloudflareRadar/status/1513510448762695687" target="_blank">近乎全面的断网措施</a>。这次中断显然与<a href="https://www.scoop.co.nz/stories/WO2204/S00107/keepiton-turkmenistan-rips-a-page-from-the-authoritarian-playbook-digitally-disconnects-the-nation.htm" target="_blank">就最近总统选举发表的批判意见</a>有关，持续了接近 40 个小时，到 4 月 12 日 07:00 UTC 左右，<a href="https://twitter.com/CloudflareRadar/status/1513907409579876360" target="_blank">流量才开始恢复</a>。下图显示了此次断网在全国范围内造成的影响，以及对国内两家主要网络提供商 <a href="https://radar.cloudflare.com/asn/51495" target="_blank">Telephone Network of Ashgabat CJSC (AS51495)</a> 和 <a href="https://radar.cloudflare.com/asn/20661" target="_blank">TurkmenTelecom (AS20661)</a> 的影响。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image28.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image15.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image25.png" class="kg-image"></figure>
+	<p>一个半月后即 5 月 25 日，<a href="https://twitter.com/CloudflareRadar/status/1529485504349093888" target="_blank">巴基斯坦出现断网</a>，期间该国前总理领导了抗议活动。此次中断仅持续了两个小时，并且范围不大 — 这并不是一次全国范围的断网（电信提供商<a href="https://www.datacenterdynamics.com/en/news/pakistan-disrupts-internet-amid-protests-over-prime-ministers-ousting/" target="_blank">声称</a>事故原因是 Web 过滤系统出了问题）。在全国范围内，此次中断的影响表现为流量稍有下降。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image2-1.png" class="kg-image"></figure>
+	<p>在拉合尔与卡拉奇市，中断情况更显著一些，但随后流量恢复也很迅速。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/07/image24.png" class="kg-image"></figure>
+	<p>此次中断的影响在网络层面最为显著，如下图所示。<a href="https://radar.cloudflare.com/asn/9541" target="_blank">Cyber Internet Services (AS9541)</a> 的流量适度下降，而 <a href="https://radar.cloudflare.com/asn/45669" target="_blank">Mobilink (AS45669)</a> 则几乎完全中断。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image17.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image22.png" class="kg-image"></figure>
+	<p>在该季度末即 6 月 30 日，<a href="https://www.reuters.com/world/africa/internet-cut-sudans-capital-ahead-pro-democracy-protests-2022-06-30/" target="_blank">苏丹遭遇</a>了包括断网在内的通信中断，与此同时，抗议者举行了抗议该国军事政府的集会。此次中断之前<a href="https://www.reuters.com/world/africa/internet-services-interrupted-sudanese-capital-khartoum-reuters-witness-2021-10-25/" target="_blank">曾在 2021 年 10 月发生过类似的中断情况</a>，当时军方推翻了过渡政府并企图遏制抗议；此外，6 月早些时候，政府企图防止考试作弊时也出现了中断。下图显示，此次中断开始于 06:00 UTC（当地时间 08:00），最初结束于大约 12 小时之后的 17:40 UTC（当地时间 19:40）。大约三个小时之后，网络连接恢复，随后在 20:40 UTC（当地时间 22:40）左右，流量再次降至接近零的水平。第二次中断一直延续到当天结束。</p>
+	<p>作为全国范围的全面中断，其影响还表现为 <a href="https://radar.cloudflare.com/asn/36972" target="_blank">MTN</a>、<a href="https://radar.cloudflare.com/asn/15706" target="_blank">Sudatel</a>、<a href="https://radar.cloudflare.com/asn/33788" target="_blank">Kanartel</a> 和 <a href="https://radar.cloudflare.com/asn/36998" target="_blank">Sudanese Mobile Telephone (SDN Mobitel/ZAIN)</a> 等当地主要互联网提供商发生流量损失。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image16.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image31.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image3-1.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image21.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image13.png" class="kg-image"></figure>
+	<h2 id="--6">基础设施问题</h2>
+	<p>除了前述光纤/电缆切断事故之外，无论是由于光纤、电气问题还是维护导致的其他基础设施问题，也都有可能中断互联网服务。</p>
+	<p>当地时间 4 月 6 日 20:30（4 月 7 日 00:30 UTC）左右，<a href="https://apnews.com/article/business-caribbean-puerto-rico-san-juan-power-outages-58b8a7a059b3a1f0c65fe25083d949cd" target="_blank">科斯塔索尔发电厂（波多黎各最大的发电厂之一）突发火灾</a>，导致该岛国发生大面积停电。这次全岛范围的停电致使互联网服务严重中断，Cloudflare 流量数据清楚显示了相应影响。下图显示，停电之后，波多黎各的流量立即下降了一半以上。常规日间模式在接下来三天保持基本稳定，只是水平有所降低，流量在三天后恢复“正常水平”。到 4 月 10 日，Luma Energy 声称<a href="https://twitter.com/CloudflareRadar/status/1513318978717982730" target="_blank">已向 150 万客户恢复 99.7% 供电</a>。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image36.png" class="kg-image"></figure>
+	<p>此次互联网服务中断的影响从网络层面来看也相当严重。下图显示了 <a href="https://radar.cloudflare.com/asn/10396" target="_blank">Datacom Caribe/Claro (AS10396)</a> 和 <a href="https://radar.cloudflare.com/asn/14638" target="_blank">Liberty Cablevision of Puerto Rico (AS14638)</a> 的流量。Datacom Caribe/Claro 的流量立即下降了一半以上，而 Liberty Cablevision 的流量下滑了大约 85%。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image39.jpg" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image38.jpg" class="kg-image"></figure>
+	<p>5 月 3 日晚间，瑞士电信提供商 Swisscom <a href="https://twitter.com/Swisscom/status/1521622474504511489" target="_blank">发表推文</a>称，维护工作之后发生了互联网服务中断。据<a href="https://lenews.ch/2022/05/06/swisscom-fixed-and-mobile-networks-out-on-tuesday/" target="_blank">发布的报告</a>称，此次中断发生在当地时间 22:23–22:53 (20:23–20:53 UTC)，下图显示在此 30 分钟内，流量先是完全丧失，但随后很快恢复。除了提到维护工作之外，Swisscom 并未就此次互联网中断提供更多细节。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image32.png" class="kg-image"></figure>
+	<h2 id="--7">伊朗</h2>
+	<p>伊朗在过去发生过<a href="https://en.wikipedia.org/wiki/2019_Internet_blackout_in_Iran" target="_blank">全国范围</a>和<a href="https://freedomhouse.org/country/iran/freedom-net/2021" target="_blank">地区性</a>的断网，以及<a href="https://twitter.com/CloudflareRadar/status/1499733340760559620" target="_blank">基础设施损坏</a>造成的网络连接中断。</p>
+	<p>5 月 6 日，政府中断了<a href="https://twitter.com/CloudflareRadar/status/1523051860265148418" target="_blank">胡泽斯坦</a>省的互联网连接，据说是为了应对面包和饮用水短缺引起的大规模抗议。<a href="http://may/" target="_blank">据称</a>，手机流量在当地被切断，固定连接速度也大幅降低。据此，我们观察到 <a href="https://radar.cloudflare.com/asn/44244" target="_blank">Irancell (AS44244)</a>（一家移动网络提供商）在胡泽斯坦的流量从 10:00 UTC 开始下降，如下图所示。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/07/image27.jpg" class="kg-image"></figure>
+	<p>随着该国持续发生抗议，5 月 12 日发生了<a href="https://twitter.com/CloudflareRadar/status/1525120285107703812" target="_blank">一次影响 Irancell 的类似中断</a>，日间流量峰值更低，并于 18:00 UTC 左右进一步下降。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/07/image5-1.png" class="kg-image"></figure>
+	<p>5 月 9 日 13:00–14:40 UTC（当地时间 17:30–19:10），伊朗多家网络提供商发生接近全面的互联网中断，如下图所示。受影响的提供商包括 <a href="https://radar.cloudflare.com/asn/39650" target="_blank">Atrin Information &amp; Communications Technology Company (AS39650)</a>、<a href="https://radar.cloudflare.com/asn/43343" target="_blank">AryaSat (AS43343)</a>、<a href="https://radar.cloudflare.com/asn/48309" target="_blank">Ariana Gostar Spadana (AS48309)</a> 和 <a href="https://radar.cloudflare.com/asn/51759" target="_blank">Pirooz Leen (AS51759)</a>。所有这些网络都采用 <a href="https://radar.cloudflare.com/asn/24631" target="_blank">Fanaptelecom (AS24631)</a> 作为上游提供商（如图所示），该提供商也遭遇中断。Fanaptelecom 中断的根本原因不明。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/07/image12.jpg" class="kg-image"></figure>
+	<p>移动提供商 <a href="https://radar.cloudflare.com/asn/50810" target="_blank">Mobinnet (AS50810)</a> 在 5 月 14 日 12:30–15:30 UTC（当地时间 17:00–20:00）期间遭遇持续数小时的互联网中断。按照 Mobinnet 发布的<a href="https://twitter.com/Mobinnet/status/1525744287446712320" target="_blank">推文</a>的说法，此次中断的原因是“国外发起的范围广泛的网络攻击”。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image6.png" class="kg-image"></figure>
+	<h2 id="--8">乌克兰</h2>
+	<p>虽然乌克兰战争爆发已超过四个月，但互联网仍是活跃的战场，多个城市和多个网络出现持续的互联网中断。但是，本文仅着重提一提第二季度期间观察到的两个类似事件。</p>
+	<p>被俄罗斯占领的赫尔松市在 4 月 30 日 16:00 UTC（当地时间 19:00）到 5 月 4 日 04:30 UTC（当地时间 07:30）期间遭遇接近全面的互联网中断。按照<a href="https://twitter.com/FedorovMykhailo/status/1521798960003825664" target="_blank">乌克兰副总理 Mykhailo Fedorov</a> 以及<a href="https://www.facebook.com/dsszzi/posts/306820328295777" target="_blank">国家特别通信和信息保护署</a>的说法，此次中断的原因是“光纤干线中断以及该地区运营商设备供电中断”。下图显示赫尔松市在此次中断开始后大约 24 小时内基本上没有流量，接下来几天的流量也很小。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/07/image41.png" class="kg-image"></figure>
+	<p>大约在恢复少量流量的时候，我们还观察到某个 <a href="https://bgpview.io/prefix/91.206.110.0/23" target="_blank">IPv4 前缀</a>的路由切换，这一信息由 <a href="https://radar.cloudflare.com/asn/47598" target="_blank">AS47598</a> (Khersontelecom) 公布。如下表所示，中断之前，它通过其他多家乌克兰网络提供商访问互联网，包括 <a href="https://radar.cloudflare.com/asn/12883" target="_blank">AS12883</a>、<a href="https://radar.cloudflare.com/asn/3326" target="_blank">AS3326</a> 和 <a href="https://radar.cloudflare.com/asn/35213" target="_blank">AS35213</a>。但是，随着流量的恢复，其路由路径显示俄罗斯网络 <a href="https://radar.cloudflare.com/asn/201776" target="_blank">AS201776</a> (Miranda) 成为上游提供商。流经 Miranda 的路径还包括 <a href="https://radar.cloudflare.com/asn/12389" target="_blank">AS12389</a> (Rostelecom)，后者宣称自己是“<a href="https://www.company.rt.ru/en/" target="_blank">俄罗斯最大的数字服务提供商</a>”。</p>
+	<!--kg-card-begin: markdown-->
+	<table>
+		<thead>
+			<tr>
+				<th>对等 AS</th>
+				<th style="text-align:center">上次更新时间</th>
+				<th style="text-align:right">AS 路径</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>AS1299 (TWELVE99 Arelion, fka Telia Carrier)</td>
+				<td style="text-align:center">5/1/2022 16:02:26</td>
+				<td style="text-align:right">1299 12389 201776 47598</td>
+			</tr>
+			<tr>
+				<td>AS6777 (AMS-IX-RS)</td>
+				<td style="text-align:center">4/28/2022 11:23:33</td>
+				<td style="text-align:right">12883 47598</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<p>随着此次中断于 5 月 4 日结束，我们观察到 Khersontelecom 的路由路径发生更新，使其能够通过非俄罗斯的上游提供商访问全球互联网。</p>
+	<!--kg-card-begin: markdown-->
+	<table>
+		<thead>
+			<tr>
+				<th>对等 AS</th>
+				<th style="text-align:center">上次更新时间</th>
+				<th style="text-align:right">AS 路径</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>AS174 (COGENT-174)</td>
+				<td style="text-align:center">5/4/2022 05:56:27</td>
+				<td style="text-align:right">174 3326 3326 3326 47598</td>
+			</tr>
+			<tr>
+				<td>AS1273 (CW Vodafone Group PLC)</td>
+				<td style="text-align:center">5/4/2022 03:11:25</td>
+				<td style="text-align:right">1273 12389 201776 47598</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<p>关于此次中断和重新路由事件的更多详情可在<a href="https://blog.cloudflare.com/tracking-shifts-in-internet-connectivity-in-kherson-ukraine/"><em>“Tracking shifts in Internet connectivity in Kherson, Ukraine”</em>（跟踪乌克兰赫尔松市的互联网连接切换情况）这篇博客文章</a>中找到。</p>
+	<p>一个月后即 <a href="https://twitter.com/CloudflareRadar/status/1531380535922200579" target="_blank">5 月 30 日</a>，我们再次观察到赫尔松市于 14:35 UTC（当地时间 17:35）开始出现严重互联网中断。同样，我们也观察到 Khersontelecom 的路由发生更新，从乌克兰上游提供商切换到俄罗斯提供商。截至 6 月底，赫尔松市的互联网中断以及通过俄罗斯上游提供商进行的路由都得以稳定维持，但流量丧失情况远不如 4 月/5 月中断情况那么严重。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/07/image14.png" class="kg-image"></figure>
+	<!--kg-card-begin: markdown-->
+	<table>
+		<thead>
+			<tr>
+				<th>对等 AS</th>
+				<th style="text-align:center">上次更新时间</th>
+				<th style="text-align:right">AS 路径</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>AS4775 (Globe Telecoms)</td>
+				<td style="text-align:center">5/30/2022 13:56:22</td>
+				<td style="text-align:right">4775 1273 12389 201776 47598</td>
+			</tr>
+			<tr>
+				<td>AS9002 (RETN-AS)</td>
+				<td style="text-align:center">5/30/2022 09:58:16</td>
+				<td style="text-align:right">9002 3326 47598</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<h2 id="--9">总结</h2>
+	<p>本文并未详尽说明整个第二季度发生的所有互联网中断、断网和中断情况。有些情况极其短暂或范围不广，而另一些情况虽然被观察到，但其根本原因不明或无法通过公开信息推测。话虽如此，但有必要更多地公开报道这些事件，这样社区就能分享关于所发生的事件、发生原因及其影响（对人类、经济或其他方面的影响）的信息。</p>
+	<p>欢迎在推特上关注 <a href="https://twitter.com/CloudflareRadar" target="_blank">@CloudflareRadar</a>，以获得有关互联网中断的最新动态，并使用 <a href="https://radar.cloudflare.com/" target="_blank">Cloudflare Radar</a> 来获得有关互联网趋势的最新信息。</p>
+	<h3 id="-cloudflare-tv-">在 Cloudflare TV 上观看</h3>
+	<!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/b53925dccd2f091abded0974401c30f1?poster=https%3A%2F%2Fcloudflarestream.com%2Fb53925dccd2f091abded0974401c30f1%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
+	<!--kg-card-end: html-->
+</div>

@@ -1,0 +1,62 @@
+<div class="post-content lh-copy gray1">
+	<!--kg-card-begin: markdown-->
+	<p>A recent blog post posed the question <a href="http://jvns.ca/blog/2016/06/30/why-do-we-use-the-linux-kernels-tcp-stack/" target="_blank">Why do we use the Linux kernel's TCP stack?</a>. It triggered a very interesting <a href="https://news.ycombinator.com/item?id=12021195" target="_blank">discussion on Hacker News</a>.</p>
+	<p>I've also thought about this question while working at CloudFlare. My experience mostly comes from working with thousands of production machines here and I can try to answer the question from that perspective.</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2016/07/225724064_46fec2a98c_b.jpg" alt=""><small><a href="https://creativecommons.org/licenses/by/2.0/" target="_blank">CC BY 2.0</a> <a href="https://www.flickr.com/photos/jvetterli/225724064/" target="_blank">image</a> by <a href="https://www.flickr.com/photos/jvetterli" target="_blank">John Vetterli</a></small></p>
+	<p>Let's start with a broader question - what is the point of running an operating system at all? If you planned on running a single application, having to use a kernel consisting of multiple million lines of code may sound like a burden.</p>
+	<p>But in fact most of us decide to run some kind of OS and we do that for two reasons. Firstly, the OS layer adds hardware independence and easy to use APIs. With these we can focus on writing the code for any machine - not only the specialized hardware we have at the moment. Secondly, the OS adds a time sharing layer. This allows us to run more than one application at a time. Whether it's a second HTTP server or just a bash session, this ability to share resources between multiple processes is critical. All of the resources exposed by the kernel can be shared between multiple processes!</p>
+	<h3 id="userspacenetworking">Userspace Networking</h3>
+	<p>This is no different for the networking stack. By using the general purpose operating system network stack we gain the ability to run multiple network applications. This is lost if we dedicate the network card hardware to a single application in order to run a userspace network stack. By claiming the network card from one process you lose the ability to run, say an SSH session, concurrently with your servers.</p>
+	<p>As crazy as it sounds, this is exactly what most off the shelf userspace network stack technologies propose. The common term for this is "full kernel bypass". The idea is to bypass the kernel and use network hardware directly from userspace process.</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2016/07/18174650566_bb7caa8a17_z.jpg" alt=""><br>
+		<small><a href="https://creativecommons.org/licenses/by/2.0/" target="_blank">CC BY 2.0</a> <a href="https://www.flickr.com/photos/audiotecna/18174650566/in/photolist-tG2Qqf-doZFcH-5dUQtz-9TLCRR-5dUEPB-7KN1DT-5ZfUg4-39Fax6-5dUJot-5dUGxP-5dZ53w-5PA2W1-7A1AjN-km3MZn-ddgZzC-km5vtd-dHCLzh-7jVVb3-GwBUem-9TPrad-aWf6UZ-7yJAxD-c7YYMY-aMEM2V-4FLyP-a2UGuD-a2UFck-a2XwUQ-bgVJ9H-a2UGm6-a2Xx9C-a2UFyP-a2XwGf-a2XxS1-a2UGC2-a2UGQD-a2XxEm-a2UGap-5dUGiK-a2UFDp-7KRXV3-5dUGMP-a2UF9t-a2UFNg-4aBxT-fVMCS1-6CZhV1-a2Xydw-a2XxnC-a2UG2x" target="_blank">image</a> by <a href="https://www.flickr.com/photos/audiotecna/" target="_blank">Audiotecna Música</a></small>
+	</p>
+	<p>In the Linux ecosystem there are a few available technologies. Not all are open source:</p>
+	<ul>
+		<li><a href="http://www.ntop.org/products/packet-capture/pf_ring/" target="_blank">PF_RING</a></li>
+		<li><a href="https://github.com/snabbco/snabb" target="_blank">Snabbswitch</a></li>
+		<li><a href="http://dpdk.org/" target="_blank">DPDK</a></li>
+		<li><a href="http://info.iet.unipi.it/~luigi/netmap/" target="_blank">Netmap</a></li>
+	</ul>
+	<p>I've written about these in <a href="https://blog.cloudflare.com/kernel-bypass/">a previous post</a>. All of these technologies require handing over the full network card to a single process. In other words: it's totally possible to write your own network stack, make it brilliant, focusing on super features, and optimize for performance. But there is a big cost incurred - you will be restricted to running at most one process for each network card.</p>
+	<p>There is a small twist about virtualized network cards (VFs), but let's cut it here - it doesn't work. I talked about this in <a href="https://blog.cloudflare.com/kernel-bypass/#virtualizationapproach">the "Virtualization approach" paragraph</a>.</p>
+	<p>But even with all these road blocks, I can't just dismiss the benefits of kernel bypass. Many people do run custom network stacks and they do it for one of two reasons:</p>
+	<ul>
+		<li>latency</li>
+		<li>performance (lower CPU cost, better throughput)</li>
+	</ul>
+	<p>The latency is very important for the HFT (high frequency trading) folks. Traders can afford custom hardware and fancy proprietary network stacks. I would feel very uncomfortable running a closed source TCP stack.</p>
+	<h3 id="kernelbypassatcloudflare">Kernel bypass at CloudFlare</h3>
+	<p>Having said that, at CloudFlare we do use kernel bypass. We are in the second group - we care about performance. More specifically we suffer from IRQ storms. The Linux networking stack has a limit on how many packets per second it can handle. When the limit is reached all CPUs become busy just receiving packets. In that case either the packets are dropped or the applications are starved of CPU. While we don't have to deal with IRQ storms during our normal operation, this does happen when we are the target of an L3 (layer 3 OSI) DDoS attack. This is a type of attack where the target is flooded with arbitrary packets not belonging to valid connections - typically spoofed packets.</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2016/07/5939812628_7f22121e62_z.jpg" alt=""><br>
+		<small><a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/howardlake/5939812628/in/photolist-a3T6my-mvx2SL-mvx9GN-mvvYag-X6CLx-Xb9mh-bmjkSU-amciaJ-4MpEAP-4Vgs6Q-6cRVcG-c9FET9-e2Gx4d-4VcdZV-65y4Bs-GRMfH-6Vd9JY-92mK5y-92mJP3-dyhTr2-9grVVr-34A4qk-352xtB-7h1LK3-6daUPd-4UmGDb-4MtQh9-dUMgRP-7jMHn4-92iD1a-352xFk-4MpDUx-3577LS-352xzz-3577Ff-4pZZiN-bH5CK-3577rA-3577dN-aK4MAg-7jMGnT-352xiF-3577Vh-92i9MD-352xmi-6z6jjL-34EAF3-3577yW-34EAzq-2iCSpN" target="_blank">image</a> by <a href="https://www.flickr.com/photos/howardlake/" target="_blank">Howard Lake</a></small>
+	</p>
+	<p>During some attacks we are flooded with up to 3M packets per second (pps) per server. A general rule is that Linux iptables can handle about 1Mpps on a decent server, while still having enough CPU for applications. This number can be increased by proper tuning.</p>
+	<p>With this scale of attack the Linux kernel is not enough for us. We must work around it. We don't use the previously mentioned "full kernel bypass", but instead we run what we call a "partial kernel bypass". With this the kernel retains the ownership of the network card, and allows us to perform a bypass only on a single "RX queue". We use <a href="https://www.solarflare.com/" target="_blank">Solarflare</a>'s EFVI API on Solarflare NICs. To support Intel NICs we added a partial kernel bypass feature to Netmap: that's described <a href="https://blog.cloudflare.com/single-rx-queue-kernel-bypass-with-netmap/">in this blog post</a>. With this technique we can offload our anti-DDoS iptables to a very fast userspace process. This saves Linux from processing attack packets, therefore avoiding IRQ storms situations.</p>
+	<h3 id="whataboutafulluserspacetcpstack">What about a full userspace TCP stack?</h3>
+	<p>My colleagues regularly ask me about: <em>Why don't we just run our NGINX with Solarflare <a href="http://www.openonload.org/" target="_blank">OpenOnload</a> framework, using a super fast userspace TCP?</em></p>
+	<p>Yes, it would be faster, but there is no evidence it will actually make much of a practical difference. Most of the CPU used on our servers goes to the userspace NGINX processes and not to the operating system. The CPU is mostly spent on usual NGINX bookkeeping and our Lua application logic, not on network handling. I estimate with bypass we could save about 5-10% CPU, which is (currently) not worth the effort.</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2016/07/8239882623_e54c104393_z.jpg" alt=""><br>
+		<small><a href="https://creativecommons.org/licenses/by/2.0/" target="_blank">CC BY 2.0</a> <a href="https://www.flickr.com/photos/bakaotaku/8239882623/in/photolist-dy8y2M-5agSvS-HDgU1f-dye34N-ByBo-5QRSqj-4tw51P-g21SvY-7HotRb-7mUrEM-8CYXCb-pK97Yk-dT1LP2-dQU7DB-ocj55o-aT9gyV-oSXTr1-8JKS8q-9uaRmj-nGYc4N-Mh7K-bPdqrz-qfYS3U-ByBi-dVREbd-ByBy-A4vY2-HyXi7f-4aMV1X-4D8agk-p2upRe-ByBL-dWeHpZ-ByBr-58UcmL-pTHFMp-9u7QJK-9u7QMn-dSg4wP-dT7tjG-7FEZv8-7FEZuP-p4thUV-e7ZWar-ByBG-qnQuCg-5kmcHN-cXGcRA-a4K5t6-guWTgr" target="_blank">image</a> by <a href="https://www.flickr.com/photos/bakaotaku/" target="_blank">Charlie</a></small>
+	</p>
+	<p>Next, using kernel bypass for NGINX would interfere with our usual debugging tools. <a href="https://github.com/openresty/nginx-systemtap-toolkit" target="_blank">Our systemtap scripts</a> would become useless. Linux netstat statistics will stop recording critical events and tcpdump won't work anymore.</p>
+	<p>Then there is the issue of our DDoS mitigation stack. We are heavy users of iptables, as I documented in <a href="https://www.youtube.com/watch?v=pCVTEx1ouyk" target="_blank">this BlackHat presentation</a>. Custom TCP stacks just don't have things like "hashlimits" and "ipsets".</p>
+	<p>But not only firewall features. The Linux TCP stack has some extremely useful non-trivial support for things like <a href="https://www.ietf.org/rfc/rfc4821.txt" target="_blank">RFC4821</a> with the <code>sys.net.ipv4.tcp_mtu_probing</code> sysctl. Support for this is critical when a user is behind an ICMP black hole. Read more <a href="https://blog.cloudflare.com/path-mtu-discovery-in-practice/">in this blog posts about PMTU</a>.</p>
+	<p>Finally, each TCP stack comes with its own set of bugs and quirks. We've documented three non-obvious quirks in the Linux TCP stack:</p>
+	<ul>
+		<li><a href="https://blog.cloudflare.com/the-story-of-one-latency-spike/">Garbage collector kicking in on a read buffer</a>;</li>
+		<li>Problems with too many <a href="https://blog.cloudflare.com/revenge-listening-sockets/">listening sockets</a>;</li>
+		<li><a href="https://blog.cloudflare.com/the-curious-case-of-slow-downloads/">What it means for a socket to be writeable</a>.</li>
+	</ul>
+	<p>Imagine debugging issues like that in a closed source or a young TCP stack (or both!).</p>
+	<h3 id="conclusion">Conclusion</h3>
+	<p>There are two general themes: first, there is no stable open-source partial kernel bypass technology yet. We hope Netmap will occupy this niche, and <a href="https://blog.cloudflare.com/partial-kernel-bypass-merged-netmap/">we are actively supporting it with our patches</a>. Second, the Linux TCP stack has many critical features and very good debugging capabilities. It will take years to compete with this rich ecosystem.</p>
+	<p>For these reasons it's unlikely userspace networking will become mainstream. In practice I can think only of a few reasonable applications of kernel bypass techniques:</p>
+	<ul>
+		<li>Software switches or routers. Here you want to hand over network cards to the application, deal with raw packets and skip the kernel altogether.</li>
+		<li>Dedicated loadbalancers. Similarly, if the machine is only doing packet shuffling skipping the kernel makes sense.</li>
+		<li>Partial bypass for selected high throughput / low latency applications. This is the setup we use for our DDoS mitigations. Unfortunately I'm not aware of a stable open source TCP stack that fits this category.</li>
+	</ul>
+	<p>For the general user the Linux network stack is the right choice. Although it's less exciting than rewriting TCP stacks, we should focus on <a href="https://blog.cloudflare.com/how-to-achieve-low-latency/">understanding the Linux stack performance</a> and fixing its problems. There are some <a href="http://lists.openwall.net/netdev/2016/01/15/51" target="_blank">serious initiatives underway</a> to improve the performance of the good old Linux TCP stack.</p>
+	<!--kg-card-end: markdown-->
+</div>

@@ -1,0 +1,50 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image2-35.png" class="kg-image" alt="Cloudflare announces integrations with MDM companies"></figure>
+	<p>Cloudflareでは、使用者やあらゆる規模の企業にとって、インターネットをより安全で、より信頼性が高く、よりパフォーマンスが高いものにする方法を常に考え続けています。デバイスをアプリケーションに安全に接続することは、エンタープライズアプリケーションの安全性とCIOの安心にとって非常に重要です。</p>
+	<p>昨年1月、当社は <a href="https://blog.cloudflare.com/introducing-cloudflare-for-teams/">Zero Trustプラットフォーム、Cloudflare for Teams</a>を発売しました。これは、従来のセキュリティ境界線をCloudflareのグローバルエッジネットワークに置き換えることによって、ユーザー、そのデバイス、データを保護します。Cloudflare for Teamsにより、Zero TrustネットワークアクセスやセキュアWebゲートウェイなどのセキュリティソリューションが、規模やリソースに関係なく、すべての企業にとってより利用しやすいものになります。これは、よりユーザーフレンドリーでデプロイしやすく、管理の手間がかからない製品を構築することを意味します。</p>
+	<p>Cloudflare WARPエージェントは、デバイスからCloudflareのネットワークへのトラフィックを暗号化するため、多くのお客様が、デフォルト拒否の制御をユーザーの場所まで拡張するための重要なコンポーネントとしてこれを使用しています。本日、Cloudflareは、これらのパートナーと共にWARPをデプロイする方法について、より充実したドキュメントを展開します。これにより、管理者は、デバイス全体を登録するための合理的で簡単なプロセスを手に入れることができます。</p>
+	<p>また、モバイルデバイス管理ベンダーのMicrosoft Intune、Ivanti、JumpCloud、Kandji、Hexnodeと新たに統合し、Cloudflare WARPのデプロイとインストールをさらに容易にすることを発表します。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image1-54.png" class="kg-image"></figure>
+	<h3 id="mdm-"><strong>MDMとは</strong></h3>
+	<p>モバイルデバイス管理（MDM）では、統一エンドポイント管理（UEM）ツールとも呼ばれ、分散型勤務の時代にますます困難になっている問題、つまり組織のすべてのデバイスを単一のプラットフォームで管理するというシンプルなソリューションを提供します。</p>
+	<p>例として架空の医療コンサルティング会社を取り上げます。CEOは会社を設立する際、地元コロラド州を中心に雇用し、従業員が私物の携帯電話やノートパソコンを使ってメールやその他のデータにアクセスすることを許可していたとします。このデバイス持ち込み（BYOD）ポリシーは、会社を軌道に乗せるためには都合のよいものでした。</p>
+	<p>その後、この会社は、より大規模なプロジェクトでより有名なクライアントを獲得し始め、この需要の増加に対応するために、CEOは全米で採用を開始し、企業用デバイスを使用し始めました。さらに、これらのクライアントは、患者の機密データを扱う上で、より厳格な基準を設けています。</p>
+	<p>コンサルティング会社は、セキュリティのレベルアップを迫られています。しかし、デバイスが混在し、全国に散らばっている状況で、CEOはどのようにして管理対象デバイスと非管理対象デバイスの可視性を向上させ、適切にアップデートされているか、安全性が損なわれたり紛失したりしていないかをチェックできるでしょうか。また、紛失したり安全性が損なわれていたりした場合、クライアントや企業の情報が漏洩しないように、それらのデバイスをどのようにリモートでワイプすればよいのでしょうか。</p>
+	<p>MDMソリューションは、このような疑問に答えることができます。MDMソリューションは、ユーザーがデバイス上でできることのポリシーを設定し、オペレーティングシステムの更新を行い、新しいソフトウェアをインストールすることに特化して作られており、ITチームがデバイスを統一的に把握することができるようになっています。これらの問題は、以前はITデスクに立ち寄ることで解決されていましたが、現在ではリモートで大規模に対処できるようになっています。</p>
+	<h3 id="-"><strong>デバイスクライアントのデプロイメントの効率化</strong></h3>
+	<p>Cloudflareは、上記の医療コンサルタント会社のような組織が、分散するユーザー全体のセキュリティと可視性を強化することを求めていることを認識しています。当社のデバイスクライアントであるWARPは、エンドポイントでIDとデバイスポスチャーを考慮したポリシーの施行を可能にすることで、これを支援します。</p>
+	<p>当社は、多様なデプロイメントアプローチを可能にするためにクライアントを最適化しました。そのため、組織はCloudflare for TeamsのZero Trust機能を簡単に展開するために必要な柔軟性を備えています。たとえば、WARPはすべての主要なオペレーティングシステム（Windows、MacOS、Linux、chrome OS、iOS、Androidなど）で動作します。また、デプロイメントのメカニズムに関係なく、WARPは <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/deployment/parameters" target="_blank">共通のパラメータ</a>を使用するので、管理者は一貫した作業をすることができます。</p>
+	<p>この合理化されたデプロイメントを実際に行うために、ここでは、コマンドラインを微調整するだけで、Windows上に当社のクライアントをデプロイできる一般的なシナリオをいくつか紹介します。</p>
+	<p>1. HTTPフィルタリングルール、ブラウザ分離、デバイスポスチャーを使用する場合、最も重要なことは、ユーザーをTeams Organizationに認証し、そのトラフィックをWARP経由で送信することです。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>Cloudflare_WARP_Release-x64.msi /quiet ORGANIZATION="exampleorg" SERVICE_MODE="warp"
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>2. IDを気にせず、上記と同じシナリオでサイレントインストールしたい場合は、<a href="https://developers.cloudflare.com/cloudflare-one/identity/service-auth/service-tokens" target="_blank">サービストークン</a>を使い、初期クライアントUIを無効にします。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>Cloudflare_WARP_Release-x64.msi /quiet ORGANIZATION="exampleorg" SERVICE_MODE="warp” AUTH_CLIENT_ID=”” AUTH_CLIENT_SECRET=”” ONBOARDING=”false” 
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>3. 従業員は、トンネルでのトラフィックの暗号化が許可されていない国や場所に出張することがありますか？会社のDNSルールに引き続き従いながら、WARPをオフにさせることができます。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>Cloudflare_WARP_Release-x64.msi /quiet ORGANIZATION="exampleorg" SERVICE_MODE="warp” MODE_SWITCH=”true”
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h3 id="cloudflare-"><strong>Cloudflareのパートナーシップ</strong></h3>
+	<p>Cloudflareは、多くの組織が当社のクライアントのようなソフトウェアをデプロイするためにMDMソリューションを使用しており、デプロイする際には、生活をよりシンプルにするプロセスが必要であることを認識しています。そのため、お客様がすでに使用している主要なMDM組織と提携し、当社のソフトウェアに互換性があり、お客様のユーザーを保護するための目的別ドキュメントが付属されていることを保証しています。</p>
+	<blockquote>「CloudflareとMicrosoftの緊密な連携と深い統合により、両社のお客様のセキュリティ体制が強化され、Zero Trustがすべての組織のリーダーにとって最優先事項であるため、ユーザーの生産性が維持されます。」<br><strong><em>- </em>Ann Johnson氏、Microsoft社のセキュリティ、コンプライアンス、アイデンティティ、および管理、事業開発担当コーポレートバイスプレジデント</strong></blockquote>
+	<blockquote><em>「ZTNAは、もはや企業にとって迫り来る選択肢ではなく、必要不可欠なものとなっています。企業のエンドポイント管理のグローバルソリューションとして、Hexnodeは今回のCloudflareとの提携を未来に向けた大きな一歩と捉えています。」</em><br><em><strong>- Sahad M氏、Hexnode社CTO</strong></em></blockquote>
+	<blockquote><em>「Zero Trustは、すべての組織が採用するだけでなく、従業員が企業のデータやシステムにアクセスするために使用するさまざまなデバイスで加速させる必要がある考え方と文化です。Cloudflareとのパートナーシップは、ITチームだけでなく、世界中の仕事場における従業員の体験も向上させるでしょう。このパートナーシップは、ユーザーの保護とデバイスの管理に対するIvantiのコミットメントを示すもう1つの証拠となります。」</em><br><em><strong>- Nayaki Nayyar氏、Ivanti社、社長兼最高製品責任者</strong></em></blockquote>
+	<blockquote><em>「Zero Trustアプローチの基盤は、ID、デバイス、ネットワークのセキュリティを保護することの組み合わせです。Cloudflareと提携することで、今日の近代的な組織を保護するためのクラス最高のアプローチを作り出しています。」</em><br><em><strong>- Chase Doelling氏、JumpCloud社、プリンシパルストラテジスト</strong></em></blockquote>
+	<blockquote><em>「KandjiとCloudflareのパートナーシップにより、ITチームはCloudflareのネットワークセキュリティソリューションをApple製品全体に迅速にデプロイすることができます。Kandjiのようなデバイス管理ソフトウェアを使用してCloudflare for Teamsをインストール、有効化、実施することで、ITチームはあらゆる規模でセキュリティ体制を管理できるようになります。」</em><br><em>- <strong>Weldon Dodd氏、Kandji社、製品戦略担当SVP</strong></em></blockquote>
+	<h3 id="--1"><strong>次は何が起きるでしょう？</strong></h3>
+	<p>Cloudflare for Teamsのデプロイを開始するには、以下をクリックしてください。</p>
+	<ul>
+		<li><a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/deployment/mdm-deployment/partners/intune" target="_blank">Microsoft Intuneを使用したデプロイ</a></li>
+		<li><a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/deployment/mdm-deployment/partners/kandji" target="_blank">Kandjiを使用したデプロイ</a></li>
+		<li><a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/deployment/mdm-deployment/partners/jumpcloud" target="_blank">JumpCloudを使用したデプロイ</a></li>
+		<li><a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/deployment/mdm-deployment/partners/hexnode" target="_blank">Hexnodeを使用したデプロイ</a></li>
+		<li>Ivantiを使用したデプロイ - 近日公開</li>
+	</ul>
+	<p>現在お使いのMDMツールや、相互のお客様がすぐに全力で取り組めるように、当社との提携に興味があるMDMツールをご覧になりませんか？<a href="https://www.cloudflare.com/partners/mdm/" target="_blank">MDMパートナーシップのページ</a>にあるお問い合わせフォームにご記入ください。<br></p>
+</div>

@@ -1,0 +1,84 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image1-56.png" class="kg-image" alt="Cloudflare Workersで、StripeのJavaScript SDKをネイティブサポート"></figure>
+	<p>アプリの中で支払いを処理することは、オンラインビジネスを構築する上で非常に重要です。多くの開発者が決済のプラットフォームに選ぶのが<a href="https://stripe.com/" target="_blank">Stripe</a>です。私が初めてStripeに出会ったのは約7年前ですが、このサービスは単純な支払い処理をはるかに超えて進化しています。<a href="https://blog.cloudflare.com/building-black-friday-e-commerce-experiences-with-jamstack-and-cloudflare-workers/">昨年紹介したeコマースのサンプルアプリケーション</a>では、Stripeは<a href="https://stripe.com/connect" target="_blank">Connect</a>製品を使って完全な販売者のマーケットプレイスを管理していました。単に支払いを受け取るだけでなく、それ以上のことをしたいと考えている開発者にとって、Stripeの製品スイートは素晴らしいものです。</p>
+	<p>StripeのSDKの初期バージョンは、多くの人気JavaScriptパッケージと同様に、コアとなるNode.jsに依存していました。Stripeの場合は、HTTPインタラクションを処理するために、`net/http`のようなNode.jsのコアライブラリと直接やりとりしていました。V8ベースのランタイムであるCloudflare Workersの場合、これは公式のStripe JSライブラリが動作しないことを意味し、Stripeの（ドキュメントが充実した）REST APIを使用するようにフォールバックする必要がありました。そうすると、StripeのネイティブJSライブラリを使用するメリットが失われてしまいます。例えば、エディタでの自動タイプチェックや、Stripeの様々な機能を操作するためのHTTPリクエストを手動で作成する代わりに、 <code>stripe.customers.create()</code> &nbsp;のようなシンプルな関数呼び出しができるというメリットです。</p>
+	<p>4月には、<a href="https://workers.cloudflare.com/works" target="_blank">Workersと互換性</a>のある<a href="https://blog.cloudflare.com/node-js-support-cloudflare-workers/">JavaScriptパッケージ</a>の数をと書きました。</p>
+	<p>＞ユーザーが人気のあるNode.jsライブラリをシームレスにインポートできるようになるまで、私たちは努力を止めません。この取り組みは大規模かつ継続的なものですが、その価値は十分にあると当社では考えています。</p>
+	<p>Cloudflare Workers用 <code>stripe</code> JSパッケージの一般提供を発表できて嬉しく思います。お客様のプロジェクトにネイティブのStripe SDKを直接使用いただけるようになります。まずは、プロジェクトに 'stripe' をインストールしてください（ <code>npm i stripe</code> ）。</p>
+	<p>また、Cloudflare Pagesにサイトをデプロイしている開発者の方は、アプリケーションと共にStripeを使い始めることができるようになりました。今週発表されたCloudflare Pagesでのサーバーレス関数サポートにより、Pagesプロジェクトに数行のJavaScriptを追加するだけで、デジタル製品の支払いを受け付けたり、会員制サイトの購読を処理することができます。追加の設置は必要なく、Pagesサイトと同様に自動的に拡張も行われます。</p>
+	<p>この機能を紹介するために、オープンソースのリポジトリに <a href="https://stripe.com/payments/checkout" target="_blank">Stripe Checkout</a> をPagesアプリケーションに統合する方法の例を用意しました。昨日お知らせした通り、Pagesの新しいWorkers Functions機能では、プロジェクトに新しい <code>functions</code> フォルダを追加するだけで、無限に拡張可能な関数を展開することができます。 この機能は、 <a href="https://stripe.pages.dev" target="_blank">stripe.pages.dev</a>でご覧いただけます。 また、 <a href="https://github.com/cloudflare/stripe.pages.dev" target="_blank">GitHubのオープンソースリポジトリ</a>もご覧ください。</p>
+	<p>このSDKをインストールすれば、アプリケーションで直接支払いを受け付けることができます。以下の例では、<a href="https://stripe.com/docs/payments/accept-a-payment?integration=checkout" target="_blank">新しいCheckout（支払い）セッションを開始して、</a>ホストされたStripe支払いペー[1] ジへリダイレクトする方法を示しています。</p>
+	<pre><code class="language-js">const Stripe = require("stripe");
+
+const stripe = Stripe(STRIPE_API_KEY, {
+  httpClient: Stripe.createFetchHttpClient()
+});
+
+export default {
+  async fetch(request) {
+    const session = await stripe.checkout.sessions.create({
+      line_items: [{
+        price_data: {
+          currency: 'usd',
+          product_data: {
+            name: 'T-shirt',
+          },
+          unit_amount: 2000,
+        },
+        quantity: 1,
+      }],
+      payment_method_types: [
+        'card',
+      ],
+      mode: 'payment',
+      success_url: `${YOUR_DOMAIN}/success.html`,
+      cancel_url: `${YOUR_DOMAIN}/cancel.html`,
+    });
+
+    return Response.redirect(session.url)
+  }
+}
+</code></pre>
+	<p>Cloudflare WorkersではStripe SDKをネイティブにサポートしているため、決済処理だけでなく、様々な機能を利用することができます。<a href="https://stripe.com/docs/api?lang=node" target="_blank">Stripeの豊富なドキュメント</a>に掲載されているJavaScriptのサンプルは、何の変更も必要なくWorkersで直接動作します。</p>
+	<p>特に、StripeのwebhookをWorkersで処理することで、新しいインフラを構築することなく、既存のプロジェクトがどのように機能しているかをよりよく把握することができます。以下の例では、Workers関数に送られてくるwebhookリクエストを安全に検証し、そのWebhook内のデータを解析してビジネスロジックを実行する方法を示しています。</p>
+	<pre><code class="language-js">const Stripe = require("stripe");
+
+const stripe = Stripe(STRIPE_API_KEY, {
+  httpClient: Stripe.createFetchHttpClient()
+});
+
+export default {
+  async fetch(request) {
+    const body = await request.text()
+    const sig = request.headers.get('stripe-signature')
+    const event = stripe.webhooks.constructEvent(body, sig, secret)
+
+    // Handle the event
+    switch (event.type) {
+      case 'payment_intent.succeeded':
+        const paymentIntent = event.data.object;
+        // Then define and call a method to handle the successful payment intent.
+        // handlePaymentIntentSucceeded(paymentIntent);
+        break;
+      case 'payment_method.attached':
+        const paymentMethod = event.data.object;
+        // Then define and call a method to handle the successful attachment of a PaymentMethod.
+        // handlePaymentMethodAttached(paymentMethod);
+        break;
+      // ... handle other event types
+      default:
+        console.log(`Unhandled event type ${event.type}`);
+    }
+
+    // Return a response to acknowledge receipt of the event
+    return new Response(JSON.stringify({ received: true }), {
+      headers: { 'Content-type': 'application/json' }
+    })
+  }
+}
+</code></pre>
+	<p>当社はまた、Stripeとのパートナーシップにより、<a href="https://github.com/stripe-samples/stripe-node-cloudflare-worker-template" target="_blank">新しいWorkersのテンプレート</a>を発表します。このテンプレートにより、StripeとWorkersを使って、ベスト・プラクティスを活用しながら、すぐに使い始めることができます。</p>
+	<p>5分以内に、次のデジタル製品や会員制ビジネスのための決済を開始することができます。また、単一のコードベースで、受信したWebhookをエッジで処理し、検証することができます。これには、初期費用やサーバーのプロビジョニングなど、スケーリングに関する標準的な問題は一切ありません。サーバーレス機能をCloudflareのエッジにデプロイして、お金儲けを始めましょう！</p>
+	<blockquote><em>＞StripeではCloudflare Workersの大ファンです。エッジでの強力なパフォーマンスと素晴らしいサーバーレス開発エクスペリエンスの中で、皆様がStripeを使ってどんな斬新な方法で素敵なアプリを作るのかか、見るのが楽しみです。<br>— <strong>Stripe、Brian Holt氏</strong></em></blockquote>
+	<p>StripeのJavaScript SDKにこのような素晴らしいアップデートが加えられたことを、大変嬉しく思います。WorkersでStripeをネイティブにサポートすることで、皆様がどのようなアプリを作ってくれるのか期待しています。当社のDiscordサーバーに参加して、#what-i-built チャンネルで成果を共有してください。 — <a href="https://cloudflare.community/" target="_blank">招待リンクはこちらから</a>。</p>
+</div>

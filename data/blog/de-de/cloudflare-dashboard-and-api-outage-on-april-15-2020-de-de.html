@@ -1,0 +1,37 @@
+<div class="post-content lh-copy gray1">
+	<p>Von 15:31 UTC bis 19:52 UTC waren das Cloudflare Dashboard und die API nicht verfügbar, da mehrere redundante Glasfaserverbindungen von einem unserer beiden Hauptrechenzentren getrennt wurden.</p>
+	<p>Dieser Ausfall wurde nicht durch einen DDoS-Angriff verursacht und steht in keinem Zusammenhang mit dem Traffic-Anstieg aufgrund der COVID-19-Krise. Er entstand auch nicht durch eine Fehlfunktion von Software oder Hardware und durch keine Fehlkonfiguration.</p>
+	<h3 id="was-ist-passiert">Was ist passiert?</h3>
+	<p>Im Rahmen der geplanten Wartung in einem unserer Hauptrechenzentren wiesen wir Techniker an, alle Geräte in einem unserer Schränke zu entfernen. Dieser Schrank enthielt alte, inaktive Geräte, die wir in den Ruhestand schicken wollten. In dem Schrank gab keinen aktiven Traffic und keine Daten auf einem der Server. Der Schrank enthielt jedoch auch ein Patchpanel (Schalttafel mit Kabeln), das die gesamte externe Konnektivität zu anderen Cloudflare-Rechenzentren bereitstellte. Innerhalb von drei Minuten trennte der Techniker, der unsere ungenutzte Hardware außer Betrieb genommen hat, auch die Kabel in diesem Patchpanel.</p>
+	<p>Dieses Rechenzentrum beherbergt die Hauptsteuerungsebene und die Datenbank von Cloudflare. Als wir die Verbindung verloren, waren das Dashboard und die API sofort nicht mehr verfügbar. Das Cloudflare-Netzwerk selbst funktionierte weiterhin normal, und die Proxys von Kunden-Websites und -Anwendungen liefen weiter. Ebenso wie Magic Transit, Cloudflare Access und Cloudflare Spectrum. Alle Sicherheitsservices, wie z. B. unsere Web Application Firewall, funktionierten weiterhin wie gewöhnlich.</p>
+	<p>Aber Folgendes war nicht möglich:</p>
+	<ul>
+		<li>Anmelden am Dashboard</li>
+		<li>Verwendung der API</li>
+		<li>Vornahme beliebiger Konfigurationsänderungen (z. B. Änderung eines DNS-Eintrags)</li>
+		<li>Cache leeren</li>
+		<li>Ausführen automatisierter Lastverteilungs-Health checks</li>
+		<li>Erstellen oder Aufrechterhalten von Argo Tunnel-Verbindungen</li>
+		<li>Erstellen oder Aktualisieren von Cloudflare Workers</li>
+		<li>Übertragen von Domains zu Cloudflare Registrar</li>
+		<li>Zugriff auf Cloudflare-Protokolle und Analytics</li>
+		<li>Kodierung von Videos auf Cloudflare Stream</li>
+		<li>Protokollierung von Informationen von Edge-Services (Kunden werden eine Lücke in den Protokolldaten sehen)</li>
+	</ul>
+	<p>Infolge des Ausfalls gingen keine Konfigurationsdaten verloren. Die Konfigurationsdaten unserer Kunden werden sowohl gesichert als auch extern repliziert, aber es wurden weder Backups noch Replikate benötigt. Alle Konfigurationsdaten blieben an Ort und Stelle.</p>
+	<h3 id="unsere-reaktion">Unsere Reaktion</h3>
+	<p>Während der Ausfallzeit arbeiteten wir zeitgleich daran, auf unser Hauptrechenzentrum für Notfallwiederherstellung umzuschalten sowie daran, die Konnektivität wiederherzustellen.</p>
+	<p>Dutzende von Entwicklern arbeiteten in zwei virtuellen Einsatzzentralen, da Cloudflare wegen der COVID-19-Krise hauptsächlich remote arbeitet. Eine Einsatzzentrale widmete sich der Wiederherstellung der Konnektivität, die andere dem Failover zur Notfallwiederherstellung.</p>
+	<p>Wir führten schnell ein Failover für unser internes Überwachungssystemen aus, sodass wir einen Überblick über das gesamte Cloudflare-Netzwerk erhielten. Dies gab uns globale Kontrolle und die Möglichkeit, Probleme an jedem unserer Netzwerkstandorte in mehr als 200 Städten weltweit zu sehen. Dieser Cutover bedeutete, dass der Edge-Service von Cloudflare normal weiterlaufen konnte und das SRE-Team sich um alle Probleme kümmern konnte, die im täglichen Betrieb des Dienstes auftraten.</p>
+	<p>Während wir den Vorfall bearbeiteten, trafen wir alle 20 Minuten eine Entscheidung darüber, ob wir über ein Failover zur Notfallwiederherstellung für das Dashboard und die API durchführen oder weiterhin versuchen sollten, die Konnektivität wiederherzustellen. Hätte es einen physischen Schaden am Rechenzentrum gegeben (z. B. wenn es sich um eine Naturkatastrophe gehandelt hätte), wäre die Entscheidung für ein Failover einfach gewesen, aber da wir Tests für den Failover durchgeführt hatten, wussten wir, dass der Failback von der Notfallwiederherstellung sehr komplex sein würde, und so wogen wir die beste Vorgehensweise im Verlauf des Vorfalls immer wieder neu ab.</p>
+	<p>Um 19:44 UTC wurde die erste Verbindung vom Rechenzentrum zum Internet wieder hergestellt. Es handelte sich um einen Backup-Link mit 10 Gbit/s Konnektivität.<br>Um 19:51 UTC stellten wir die erste von vier großen Verbindungen zum Internet wieder her.<br>Um 19:52 UTC wurden das Cloudflare Dashboard und die API verfügbar.<br>Um 20:16 UTC wurde die zweite von vier Verbindungen wiederhergestellt.<br>Um 20:19 UTC wurde die dritte von vier Verbindungen wiederhergestellt.<br>Um 20:31 UTC wurde die vollständig redundante Konnektivität wiederhergestellt.</p>
+	<h3 id="wie-es-weiter-geht">Wie es weiter geht</h3>
+	<p>Wir nehmen diesen Vorfall sehr ernst und sind uns bewusst, in welchem Ausmaß er sich auswirkte. Wir haben mehrere Schritte identifiziert, die wir unternehmen können, um das Risiko eines solchen Vorfalls zu reduzieren. Und wir planen, unverzüglich mit der Arbeit an diesen Themen zu beginnen:</p>
+	<ul>
+		<li>Konstruktion: Während die externe Konnektivität verschiedene Provider nutzt und zu verschiedenen Rechenzentren führt, liefen alle Verbindungen über nur ein Patchpanel, wodurch ein einziger physischer Fehlerpunkt entstand. Dies sollte stattdessen auf mehrere Teile unserer Einrichtung verteilt werden.</li>
+		<li>Dokumentation: Nachdem die Kabel aus dem Patchpanel entfernt worden waren, verloren wir wertvolle Zeit, in der die Techniker des Rechenzentrums die kritischen Kabel identifizieren mussten, die die externe Konnektivität wiederherstellen sollten. Wir sollten Maßnahmen ergreifen, um sicherzustellen, dass die verschiedenen Kabel und Tafeln zur schnellen Identifizierung durch jeden, der an der Behebung des Problems arbeitet, gekennzeichnet sind. Dies sollte uns den Zugang zu der erforderlichen Dokumentation erleichtern.</li>
+		<li>Prozess: Während wir unseren Technikern Anweisungen zur Außerbetriebnahme von Hardware schicken, sollten wir die Verkabelung, die nicht entfernt werden sollte, deutlich benennen.</li>
+	</ul>
+	<p>Wir werden einen vollständigen internen Post Mortem durchführen, um sicherzustellen, dass die Ursachen dieses Vorfalls gefunden und angegangen werden.</p>
+	<p>Wir möchten uns bei unseren Kunden vielmals für die Unterbrechung entschuldigen.</p>
+</div>

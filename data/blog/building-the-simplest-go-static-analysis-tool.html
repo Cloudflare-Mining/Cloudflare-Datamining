@@ -1,0 +1,71 @@
+<div class="post-content lh-copy gray1">
+	<!--kg-card-begin: markdown-->
+	<p><a href="https://docs.google.com/document/d/1Bz5-UB7g2uPBdOx-rw5t9MxJwkfpx90cqG9AFL0JAYo/edit" target="_blank">Go native vendoring</a> (a.k.a. GO15VENDOREXPERIMENT) allows you to freeze dependencies by putting them in a <code>vendor</code> folder in your project. The compiler will then look there before searching the GOPATH.</p>
+	<p>The only annoyance compared to using a per-project GOPATH, which is what we used to do, is that you might forget to vendor a package that you have in your GOPATH. The program will build for you, but it won't for anyone else. Back to the <a href="https://www.urbandictionary.com/define.php?term=wfm" target="_blank">WFM</a> times!</p>
+	<p>I decided I wanted something, a tool, to check that all my (non-stdlib) dependencies were vendored.</p>
+	<p>At first I thought of using <a href="https://golang.org/cmd/go/#hdr-List_packages" target="_blank"><code>go list</code></a>, which Dave Cheney appropriately called a <a href="http://dave.cheney.net/2014/09/14/go-list-your-swiss-army-knife" target="_blank">swiss army knife</a>, but while it can show the entire recursive dependency tree (format <code>.Deps</code>), there's no way to know from the templating engine if a dependency is in the standard library.</p>
+	<p>We could just pass each output back into <code>go list</code> to check for <code>.Standard</code>, but I thought this would be a good occasion to build a very simple static analysis tool. Go's simplicity and libraries make it a very easy task, as you will see.</p>
+	<h3 id="firstloadingtheprogram">First, loading the program</h3>
+	<p>We use <a href="https://godoc.org/golang.org/x/tools/go/loader" target="_blank"><code>golang.org/x/tools/go/loader</code></a> to load the packages passed as arguments on the command line, including the test files based on a flag.</p>
+	<pre><code class="language-go">var conf loader.Config
+for _, p := range flag.Args() {
+    if *tests {
+        conf.ImportWithTests(p)
+    } else {
+        conf.Import(p)
+    }
+}
+prog, err := conf.Load()
+if err != nil {
+    log.Fatal(err)
+}
+for p := range prog.AllPackages {
+    fmt.Println(p.Path())
+}
+</code></pre>
+	<p>With these few lines we already replicated <code>go list -f {{ .Deps }}</code>!</p>
+	<p>The only missing loading feature here is wildcard (<code>./...</code>) support. That code <a href="https://github.com/golang/go/blob/87bca88c703c1f14fe8473dc2f07dc521cf2b989/src/cmd/go/main.go#L365" target="_blank">is in the go tool source</a> and it's unexported. There's an <a href="https://github.com/golang/go/issues/8768" target="_blank">issue</a> about exposing it, but for now packages <a href="https://github.com/golang/lint/blob/58f662d2fc0598c6c36a92ae29af1caa6ec89d7a/golint/import.go" target="_blank">are just copy-pasting it</a>. We'll use a packaged version of that code, <a href="https://github.com/kisielk/gotool" target="_blank"><code>github.com/kisielk/gotool</code></a>:</p>
+	<pre><code class="language-go">for _, p := range gotool.ImportPaths(flag.Args()) {
+</code></pre>
+	<p>Finally, since we are only interested in the dependency tree today we instruct the parser to only go as far as the imports statements and we ignore the resulting "not used" errors:</p>
+	<pre><code class="language-go">conf.ParserMode = parser.ImportsOnly
+conf.AllowErrors = true
+conf.TypeChecker.Error = func(error) {}
+</code></pre>
+	<h3 id="thentheactuallogic">Then, the actual logic</h3>
+	<p>We now have a <code>loader.Program</code> object, which holds references to various <code>loader.PackageInfo</code> objects, which in turn are a combination of package, AST and types information. All you need to perform any kind of complex analysis. Not that we are going to do that today :)</p>
+	<p>We'll just replicate <a href="https://github.com/golang/go/blob/87bca88c703c1f14fe8473dc2f07dc521cf2b989/src/cmd/go/pkg.go#L183-L194" target="_blank">the <code>go list</code> logic to recognize stdlib packages</a> and remove the packages passed on the command line from the list:</p>
+	<pre><code class="language-go">initial := make(map[*loader.PackageInfo]bool)
+for _, pi := range prog.InitialPackages() {
+    initial[pi] = true
+}
+
+var packages []*loader.PackageInfo
+for _, pi := range prog.AllPackages {
+    if initial[pi] {
+        continue
+    }
+    if len(pi.Files) == 0 {
+        continue // virtual stdlib package
+    }
+    filename := prog.Fset.File(pi.Files[0].Pos()).Name()
+    if !strings.HasPrefix(filename, build.Default.GOROOT) ||
+        !isStandardImportPath(pi.Pkg.Path()) {
+        packages = append(packages, pi)
+    }
+}
+</code></pre>
+	<p>Then we just have to print a warning if any remaining package is not in a <code>/vendor/</code> folder:</p>
+	<pre><code class="language-go">for _, pi := range packages {
+    if strings.Index(pi.Pkg.Path(), "/vendor/") == -1 {
+        fmt.Println("[!] dependency not vendored:", pi.Pkg.Path())
+    }
+}
+</code></pre>
+	<p>Done! You can find the tool here: <a href="https://github.com/FiloSottile/vendorcheck" target="_blank">https://github.com/FiloSottile/vendorcheck</a></p>
+	<h3 id="furtherreading">Further reading</h3>
+	<p><a href="https://github.com/golang/example/tree/master/gotypes#gotypes-the-go-type-checker" target="_blank">This document</a> maintained by Alan Donovan will tell you more than I'll ever know about the static analysis tooling.</p>
+	<p>Note that you might be tempted to use <code>go/importer</code> and <code>types.Importer[From]</code> instead of <code>x/go/loader</code>. Don't do that. That doesn't load the source but reads compiled <code>.a</code> files, which <strong>can be stale or missing</strong>. Static analysis tools that spit out "package not found" for existing packages or, worse, incorrect results because of this are a pet peeve of mine.</p>
+	<p><em>If you now feel the urge to write static analysis tools, know that the CloudFlare Go team <a href="https://www.cloudflare.com/join-our-team/" target="_blank">is hiring in London, San Francisco and Singapore</a>!</em></p>
+	<!--kg-card-end: markdown-->
+</div>

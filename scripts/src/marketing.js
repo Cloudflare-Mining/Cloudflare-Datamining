@@ -4,10 +4,9 @@ import fs from 'fs-extra';
 import fetch from 'node-fetch';
 import dateFormat from 'dateformat';
 import {XMLParser} from 'fast-xml-parser';
-import puppeteer from 'puppeteer';
 
 
-import {tryAndPush, getHttpsAgent} from './utils.js';
+import {tryAndPush, getHttpsAgent, getBMCookie} from './utils.js';
 const agent = getHttpsAgent();
 
 const dir = path.resolve(`../data/marketing`);
@@ -226,22 +225,7 @@ async function run(){
 		return;
 	}
 
-	// launch a browser, get a bot management token. Helps to work around bot management restrictions
-	const browser = await puppeteer.launch({
-		defaultViewport: {
-			width: 1920,
-			height: 1080,
-		},
-	});
-	const page = await browser.newPage();
-	await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36');
-	await page.goto('https://www.cloudflare.com', {
-		waitUntil: 'networkidle2',
-	});
-	const cookies = await page.cookies();
-	const bmCookie = cookies.find(cookie => cookie.name === '__cf_bm');
-	await browser.close();
-
+	const bmCookie = await getBMCookie();
 	// then fetch everything from the sitemap
 	const sitemap = await fetch('https://www.cloudflare.com/sitemap.xml').then(res => res.text());
 	const sitemapXml = parser.parse(sitemap);

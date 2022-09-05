@@ -1,0 +1,87 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/03/image21-3.png" class="kg-image"></figure>
+	<p>2020 年第四季度的 DDoS 攻击趋势在许多方面一反常态。Cloudflare 观察到大型 DDoS 攻击数量增加，为 2020 年期间首次。具体而言，超过 500Mbps 和 50K pps 的攻击数量大幅上升。</p>
+	<p>此外，攻击手段也在不断变化，基于协议的攻击相当于上一季度的 3-10 倍。攻击时间也比以往更长，在 10 月至 12 月期间观察到的所有攻击中，近 9% 的攻击持续时间超过 24 小时。</p>
+	<p>以下是 2020 年第四季度其他值得注意的观察结果，下文将进行更详细的探讨。</p>
+	<ul>
+		<li>攻击数量：第四季度观察到的攻击总数与上一季度相比有所下降，这是 2020 年的第一次。</li>
+		<li>攻击持续时间：在观察到的所有攻击中，73% 的攻击持续时间不到 1 小时，这与第三季度的 88％ 相比有所下降。</li>
+		<li>攻击手段：尽管 SYN、ACK 和 RST 洪水仍然是主要的攻击手段，但基于 NetBIOS 的攻击增长了惊人的 5400％，其次是基于 ISAKMP 和 SPSS 的攻击。</li>
+		<li>全球 DDoS 活动：我们位于毛里求斯、罗马尼亚和文莱的数据中心记录的 DDoS 活动（相对于非攻击流量）的百分比最高。</li>
+		<li>其他攻击策略：<a href="https://blog.cloudflare.com/ransom-ddos-attacks-target-a-fortune-global-500-company/">DDoS 勒索（RDDoS）</a>攻击继续瞄准世界各地的组织，犯罪团伙尝试通过 DDoS 攻击威胁来获得比特币形式的赎金。</li>
+	</ul>
+	<h2 id="-">攻击数量</h2>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/03/1-1.png" class="kg-image"></figure>
+	<p>我们观察到网络层 DDoS 攻击总数与上一季度相比有所下降，这是 2020 年的第一次。2020 年第四季度的攻击数量占全年的 15%，相比之下，第三季度占 48%。实际上，仅与 9 月相比，第四季度的攻击总数就锐减了 60％。按月来看，12 月是第四季度中攻击者最活跃的月份。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/03/2-1.png" class="kg-image"></figure>
+	<h2 id="--1"><strong>攻击速率</strong></h2>
+	<p>衡量 L3/4 DDoS 攻击规模有不同的方法。一种方法是攻击产生的流量大小，即比特率（以每秒千兆比特 Gbps 为单位）。另一种是攻击产生的数据包数，即数据包速率（以每秒数据包数 pps 为单位）。高比特率的攻击试图使目标的最后一英里网络链接饱和，而高数据包速率的攻击则试图使路由器或其他内联硬件<a href="https://blog.cloudflare.com/network-layer-ddos-attack-trends-for-q3-2020/#blog-1-ddos">设备</a>不堪重负。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/03/3-1.png" class="kg-image"></figure>
+	<p>在第四季度，与前几个季度一样，大多数攻击的规模都很小。具体而言，大多低于 1 Gbps 和 1 Mpps。这种趋势并不奇怪，因为大多数攻击都是由业余攻击者发起的，他们使用的工具都很简单，最多只需要几美元。另外，小规模攻击也可能作为烟幕，用于分散安全团队对其他类型网络攻击的注意，或者用于测试网络的现有防御机制。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/03/4-1.png" class="kg-image"></figure>
+	<p>然而，小规模攻击总体上常见并未反映第四季度的全部情况。与前几个季度相比，超过 500 Mbps 和 50 K pps 的攻击占总攻击数的比例更高。实际上，与第三季度相比，超过 100 Gbps 的攻击数量增加了 9倍，超过 10 Mpps 的攻击数量增加了 2.6 倍。</p>
+	<p>Cloudflare 观察到一次独特的大型攻击是 ACK 洪水 DoS 攻击，我们的系统自动检测并缓解了这次攻击。这次攻击的独特之处不在于数据包速率最大，而是其攻击方式似乎借鉴于声学领域。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/03/5-1.png" class="kg-image"></figure>
+	<p>从上图中可以看出，攻击的数据包速率在超过 19 个小时的时间内呈波浪形。攻击者似乎受到了<a href="https://en.wikipedia.org/wiki/Beat_%28acoustics%29" target="_blank">拍频（beat）</a>这一声学概念的启发。因此，我们将此类攻击命名为“拍频”攻击。在声学领域，拍频是用于描述两个不同波频之间干扰的术语。您可以在我们的以下博客文章中了解有关“拍频”攻击的更多信息： <a href="https://blog.cloudflare.com/beat-an-acoustics-inspired-ddos-attack/">拍频 - 为 DDoS 攻击提供灵感的声学概念</a></p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/03/6-1.png" class="kg-image"></figure>
+	<p>无论是数据包密集型攻击还是比特密集型攻击，大型 DDoS 攻击数量的增加都是令人不安的趋势。这表明攻击者变得愈加肆无忌惮，并在使用让他们可以发起更大型攻击的工具。更糟糕的是，较大型攻击往往不仅影响到目标网络，还会影响为目标网络下游提供服务的中间服务提供商。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/03/7-1.png" class="kg-image"></figure>
+	<h2 id="--2"><strong>攻击持续时间</strong></h2>
+	<p>在 2020 年第四季度，73％ 的攻击持续时间不到 1 小时。另一方面，近 9％ 的攻击持续时间超过 24 小时，相比之下，2020 年第三季度仅为 1.5%。这种增长使得更有必要采用实时和始终开启的防御系统，以防止各种规模和持续时间的攻击。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/03/8-1.png" class="kg-image"></figure>
+	<h2 id="--3"><strong>攻击手段</strong></h2>
+	<p>攻击手段是用于描述攻击方式的术语。最常见的方式是 SYN 洪水攻击，占第三季度观察到的所有攻击的近 42％，其次是 ACK、RST 和基于 UDP 的 DDoS 攻击。这与前几个季度观察到的情况相对一致。但是，ACK 攻击数量从第三季度时的第 9 位跃升至第 2 位，比上一季度增加了 12 倍，取代了 RST 攻击的第 2 位。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/03/9-1.png" class="kg-image"></figure>
+	<h2 id="--4"><strong>主要新型威胁</strong></h2>
+	<p>尽管 SYN 和 RST 洪水等基于 TCP 的攻击仍然流行，但针对特定 UDP 协议的攻击（如基于 NetBIOS 和 ISAKMP 的 DDoS 攻击）与上一季度相比呈爆发式增长。</p>
+	<p>NetBIOS 是一种协议，允许不同计算机上的应用程序通过局域网进行通信和访问共享资源；ISAKMP 也是一种协议，用于在设置 <a href="https://www.cloudflare.com/learning/network-layer/what-is-ipsec/" target="_blank">IPsec</a> VPN 连接时建立安全关联（SA）和加密密钥（IPsec 使用互联网密钥交换（IKE）协议确保安全连接，并对通过互联网协议（IP）网络发送的数据包进行身份验证和加密）。</p>
+	<p>Cloudflare 继续观察到攻击者采用基于协议的攻击，甚至是多手段攻击来尝试使网络瘫痪。随着攻击复杂性不断提高，我们需要采取足够的 DDoS 保护措施，以确保组织始终保持安全和在线状态。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/03/10-1.png" class="kg-image"></figure>
+	<h2 id="-ddos-"><strong>全球 DDoS 攻击活动</strong></h2>
+	<p>为了了解这些攻击的来源，我们查看接收这些流量的 Cloudflare 边缘网络数据中心，而不是源 IP 的地址。原因何在？在发动 L3/4 攻击时，攻击者可以伪造源 IP 地址，以掩盖攻击来源。</p>
+	<p>在本报告中，我们还将某个 Cloudflare 数据中心观察到的攻击流量与同一数据中心观察到的非攻击流量进行对比，以了解地域分布情况。这使我们能够更准确地确定那些观察到更多威胁的地理位置。由于在全球 100 多个国家/地区的 200 多个城市设有数据中心，我们能够在报告中提供准确的地理位置信息。</p>
+	<p>在第四季度的指标中，有一些耐人寻味之处：在我们位于毛里求斯、罗马尼亚和文莱的数据中心，所记录的攻击流量相对于非攻击流量的百分比最高。具体而言，在这些国家/地区的所有流量中，有 4.4％ 至 4.9％ 来自 DDoS 攻击。换句话说，每 100 字节中有近 5 字节属于攻击流量。这些观察结果表明，以上国家/地区的僵尸网络活动有所增加。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/03/11-1.png" class="kg-image"></figure>
+	<p>这些国家/地区 DDoS 攻击发生率相对较高的可能原因是什么呢？虽然不可能确定，但对于上述两个攻击流量占比最高的国家/地区来说，原因可能如下：<a href="https://en.wikipedia.org/wiki/Mauritius" target="_blank">毛里求斯</a>：2020 年 8 月，<a href="https://news.sky.com/story/mauritius-declares-environmental-emergency-after-mass-oil-spill-from-grounded-tanker-12044845" target="_blank">一艘载有近 4,000 吨燃油的货船船体破裂后</a>，毛里求斯宣布进入环境紧急状态。漏油事件引发了<a href="https://en.wikipedia.org/wiki/MV_Wakashio_oil_spill#Anti-government_protests" target="_blank">反政府抗议活动</a>，民众强烈要求总理辞职。在那之后，政府两次暂停举行议会，还被指压制报道此事的当地媒体和独立人士。即使到了 5 个月后，随着一系列人权丑闻曝光，<a href="https://www.forbes.com/sites/nishandegnarain/2021/12/30/protests-continue-in-mauritius-five-months-after-oil-spill/" target="_blank">抗议活动仍在继续</a>。毛里求斯以上事件可能与 DDoS 活动的增加有关。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/03/12-1.png" class="kg-image">
+		<figcaption>来源：wikipedia</figcaption>
+	</figure>
+	<p><a href="https://en.wikipedia.org/wiki/Romania" target="_blank">罗马尼亚</a>：罗马尼亚境内 DDoS 攻击活动的增加可能源于两起事件。第一起事件是，罗马尼亚最近举行了议会选举，选举已于 2020 年 12 月 6 日结束。第二起事件是，欧盟于 12 月 9 日宣布，<a href="https://www.zdnet.com/article/romania-to-host-the-eus-new-cybersecurity-research-hub/" target="_blank">罗马尼亚将设立新的网络安全研究中心</a>，即欧洲网络安全工业、技术和研究能力中心（ECCC）。另一个可能的解释是，罗马尼亚是<a href="https://www.romania-insider.com/romania-cheapest-fast-internet-december-2019#:~:text=The%20price%20of%20super%2Dfast,and%20discounts%20platform%20Picodi.com." target="_blank">拥有世界上最便宜的超高速宽带网络</a>，使攻击者更容易从罗马尼亚境内发动容量耗尽攻击。</p>
+	<h2 id="-ddos--1">各地区的 DDoS 活动</h2>
+	<h3 id="--5">非洲</h3>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/03/13-1.png" class="kg-image"></figure>
+	<h3 id="--6"><strong>亚太地区和大洋洲</strong></h3>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/03/14-1.png" class="kg-image"></figure>
+	<h3 id="--7"><strong>欧洲</strong></h3>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/03/15-1.png" class="kg-image"></figure>
+	<h3 id="--8"><strong>中东</strong></h3>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/03/16-1.png" class="kg-image"></figure>
+	<h3 id="--9"><strong>北美</strong></h3>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/03/17-1.png" class="kg-image"></figure>
+	<h3 id="--10"><strong>南美</strong></h3>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/03/18-1.png" class="kg-image"></figure>
+	<h3 id="--11"><strong>美国</strong></h3>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/03/19-1.png" class="kg-image"></figure>
+	<h2 id="--12"><strong>勒索攻击继续困扰着各种组织</strong></h2>
+	<p>在<a href="https://blog.cloudflare.com/network-layer-ddos-attack-trends-for-q3-2020/">我们上一份季度 DDoS 报告</a>中，我们指出全球敲诈勒索 DDoS（RDDoS）攻击有所增加。在 RDDoS 攻击中，恶意攻击者向个人或组织发出威胁，除非他们支付赎金，否则就会发动网络攻击来使其网络、网站或应用程序断线一定时间。您可以从<a href="https://www.cloudflare.com/learning/ddos/ransom-ddos-attack/" target="_blank">此处</a>阅读有关 RDDoS 攻击的更多内容。</p>
+	<p>在 2020 年第四季度，这种令人不安的趋势依然存在。各种规模的组织向 Cloudflare 寻求帮助，让我们在他们考虑如何回应勒索信的同时，使其网络基础设施保持在线。<a href="https://blog.cloudflare.com/ransom-ddos-attacks-target-a-fortune-global-500-company/">阅读本文</a>，了解一家《财富》世界 500 强公司在收到勒索信时如何应对，以及该公司给其他组织的建议。</p>
+	<p>Cloudflare 继续密切关注这一趋势。当您收到威胁时：</p>
+	<ol>
+		<li>不要惊慌失措。建议您不要支付赎金：支付赎金只会助长不良行为者的气焰，并且为不法活动提供资金。而且，无法保证攻击者不会依然攻击您的网络。</li>
+		<li>通知当地执法机构：他们也可能会要求您提供所收到的勒索信。</li>
+		<li>联系 Cloudflare：我们可以帮助您的网站和网络基础设施防范这些勒索攻击。</li>
+	</ol>
+	<h2 id="cloudflare-ddos-"><strong>Cloudflare DDoS 防护</strong></h2>
+	<p>Cloudflare 提供全面的 L3-L7 DDoS 保护。2017 年，我们率先取消了针对 DDoS 攻击的行业标准激增定价，为客户提供不计量和无限的 DDoS 保护。自那时以来，我们吸引了数以千计各种规模的客户，其中包括 <a href="https://www.cloudflare.com/case-studies/wikimedia-foundation" target="_blank">Wikimedia</a>、<a href="https://www.cloudflare.com/case-studies/panasonic" target="_blank">Panasonic</a> 和 <a href="https://www.cloudflare.com/case-studies/discord" target="_blank">Discord</a>，这些组织都依赖 Cloudflare 保护并加速其互联网资产。他们选择 Cloudflare 的三大原因：</p>
+	<p>1.不设清洗中心</p>
+	<p>Cloudflare 并不运营清洗中心，因为我们认为<a href="https://blog.cloudflare.com/no-scrubs-architecture-unmetered-mitigation/">清洗中心模式是一种有缺陷的 DDoS 保护措施</a>。清洗中心的构建和运行成本高昂，并导致延迟。而且，DDoS 攻击是非对称的，攻击者的可用带宽远远超过单个清洗中心的处理能力。</p>
+	<p>Cloudflare 的网络架构使每个数据中心的每台机器都可以执行 DDoS 缓解。在边缘进行缓解是在不影响性能的前提下实现大规模防护的唯一方法。基于 Anycast 的架构使我们的容量等同于我们的 DDoS 清洗能力，达到 51 Tbps，在市场中居第一位。这意味着 Cloudflare 在接近源头的位置检测并缓解 DDoS 攻击。锦上添花的是，Cloudflare 的全球威胁情报就如同互联网的免疫系统一样，利用我们的机器学习模型，在针对任何客户发动的攻击中学习并进行缓解，从而保护所有客户。</p>
+	<p>2. 速度至关重要</p>
+	<p>大多数组织都处于从本地迁移到云端的某个阶段。威胁环境、功能需求和业务应用程序的规模正在以前所未有的速度发展，而即使是最先进的企业，网络攻击的数量和复杂性也已经使其防御能力倍感压力。在采用云服务时，许多企业所关心的一个问题是应用程序延迟增加。大多数基于云的 DDoS 保护服务都依赖专门的数据中心（即“清洗中心”）来缓解 DDoS 攻击。视乎与目标服务器的相对位置，将流量回传到这些数据中心可能会大幅增加延迟。</p>
+	<p>组织对不同网络功能使用不同供应商时，问题会更为严重。如果流量必须在提供商之间跳跃，延迟可能达到数百毫秒。</p>
+	<p>Cloudflare <a href="https://www.cloudflare.com/network" target="_blank">地理分布式网络</a>确保全球范围内检测和缓解攻击的平均时间不超过 3 秒，在业界处于领先地位。</p>
+	<p>3. 不止于 DDoS 攻击</p>
+	<p>DDoS 攻击只是各种组织目前所面临的诸多网络威胁之一。随着企业转向<a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/" target="_blank">零信任</a>方式，网络和安全性买家将面临更大规模的网络访问相关威胁，机器人攻击的频率和复杂性也会持续激增。</p>
+	<p>Cloudflare 构建产品时的一个关键设计原则是集成。<a href="https://blog.cloudflare.com/introducing-cloudflare-one/">Cloudflare One</a> 解决方案采用零信任安全模型，为公司提供保护设备、数据和应用程序的更佳手段，并与我们现有的安全性平台和 DDoS 解决方案深度集成。</p>
+	<p>如需进一步了解 Cloudflare 的 DDoS 解决方案，请<a href="https://www.cloudflare.com/plans/enterprise/" target="_blank">联系我们</a>。您也可以马上注册并在仪表板上<a href="https://dash.cloudflare.com/" target="_blank">开始使用</a>。</p>
+</div>

@@ -1,0 +1,80 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/11/API-tokens@2x.png" class="kg-image"></figure>
+	<h2 id="cloudflare-api">Cloudflare的API</h2>
+	<p>今天，我们宣布我们的API Token普遍可用了——这是一种可扩展的，更安全的与Cloudflare API交互的方式。作为致力于让互联网变得更好的一份子，Cloudflare努力简化客户在边缘的可管理性。我们做到这一点的方法之一是确保我们所有的产品和服务都可以通过API进行配置。从合作伙伴到企业再到开发人员，客户都希望实现Cloudflare的自动化管理。有时候这（自动化管理）可以通过我们的<a href="https://api.cloudflare.com/" target="_blank">API直接完成</a>，有时是通过我们帮助维护的开源软件完成的，比如我们的<a href="https://www.terraform.io/docs/providers/cloudflare/" target="_blank">Terraform提供程序</a>或<a href="https://github.com/cloudflare/cloudflare-go" target="_blank">Cloudflare-Go库</a>。自动化Cloudflare管理的客户必须保持其Cloudflare服务尽可能安全，这一点至关重要。</p>
+	<h2 id="-">最小权限及其重要性</h2>
+	<p>保护软件系统很难。限制软件的功能是一种很好的防御措施，可以防止错误或恶意行为造成的影响超出其范围。<a href="https://en.wikipedia.org/wiki/Principle_of_least_privilege" target="_blank">最小权限原则</a>有助于指导给定系统应该具有多少访问权限才能执行操作。这一原则最初由Jerome Saltzer提出，“系统的每个程序和每个特权用户都应该使用最少的权限来完成工作。” 就Cloudflare而言，许多客户拥有利用各种服务来路由流量的不同域。如果一个不良行为者获得了对系统未经授权的访问权，他们就可以使用该系统拥有的任何权限来造成进一步的破坏或窃取额外的信息。</p>
+	<p>让我们看看API Token的功能如何适应最小特权原则。</p>
+	<h2 id="-api-token">关于API Token</h2>
+	<p>API Token提供三种主要权限：</p>
+	<ol>
+		<li>根据Cloudflare资源界定API Token的作用域</li>
+		<li>根据权限界定API Token的作用域</li>
+		<li>规定多个API Token</li>
+	</ol>
+	<p>让我们来逐个分解一下这些功能。</p>
+	<h2 id="-cloudflare-cloudflare-resource-api-token-">通过Cloudflare资源（Cloudflare Resource）界定API Token的作用域</h2>
+	<p>Cloudflare按照区域划分服务配置，等同于通过域名划分。此外，一些客户有多个账户，每个账户又有多个区域。重要的是，当API被授予访问服务的权限时，它应当只能访问与当前任务相关的账户资源和区域。API Token的作用域可以被限定为只覆盖特定账户和特定区域。一个常见的用例是，如果您有一个暂存区和生产区，那么API Token可以被限制为仅能影响暂存区，而不能访问生产区。</p>
+	<h2 id="-api-token-">按权限界定API Token的作用域</h2>
+	<p>能够将API Token限定在特定区域内是很好的，但是在一个区域内可以配置许多不同的服务：防火墙规则、页面规则和负载平衡器（仅仅举几个例子）。如果客户的服务只能创建新的防火墙规则来响应流量模式，那么允许该服务更改DNS记录也是对最低权限的侵犯。API Token可以让您将每个token的作用域设置为特定权限。您可以组合多个权限来创建自定义Token，从而适应特定的用例。</p>
+	<h2 id="-api-token-1">多个API Token</h2>
+	<p>如果您使用Cloudflare来保护和加速多个服务，这可能会从多个地方（不同的服务器、虚拟机、容器或Workers）对Cloudflare更改API。能够为每个服务创建API Token意味着每个服务都与来自其他服务的更改隔离。如果一个API Token泄漏或需要轮转，其他服务的API Token不会受到任何影响。此外，前面提到的功能还意味着可以将每个服务的范围界定为所需的操作和资源。这使得客户可以更好地在通过API访问Cloudflare时实现最小权限原则。</p>
+	<p>现在，让我们逐步介绍如何创建和使用一个API Token。</p>
+	<h2 id="-api-token-2">使用API Token</h2>
+	<p>要创建您的第一个API Token，您需要转到用户个人资料的“API Tokens”部分，您可以通过以下网址找到该部分：<a href="https://dash.cloudflare.com/profile/api-tokens" target="_blank">dash.cloudflare.com/profile/api-tokens</a></p>
+	<p>1. 在这个页面上，除了全局API秘钥和原始CA秘钥之外，您还可以找到所有API Token的列表。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/11/api_1_delay.gif" class="kg-image">
+		<figcaption>API Token入门——创建Token</figcaption>
+	</figure>
+	<p></p>
+	<p>要创建您的第一个API Token，请点击“创建令牌（Create Token）”</p>
+	<hr>
+	<p>2. 在创建屏幕上，有两种创建Token的方法。你可以通过“自定义（Custom）”选项从头开始创建，也可以通过选择“从模板开始（Start with a template）”来使用预定义的模板。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/11/api_2_delay.gif" class="kg-image">
+		<figcaption>API Token模板选择</figcaption>
+	</figure>
+	<p></p>
+	<p>在这一案例中，我们将使用“编辑区域DNS（Edit zone DNS）”模板来创建API Token，该Token可以编辑单个区域的DNS记录。</p>
+	<hr>
+	<p>3. 选择了模板以后，我们需要为API Token选择一个区域。注意，DNS编辑权限已被预先选择。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/11/api_3_delay.gif" class="kg-image">
+		<figcaption>指定API Token可以控制的DNS区域</figcaption>
+	</figure>
+	<p></p>
+	<p>在这一例中，我们选择“garrettgalow.com”作为其DNS记录将能被API Token编辑的区域。</p>
+	<hr>
+	<p>4. 选择了continue to summary（继续操作，汇总选择）以后，我就可以查看我的选择。在本例中，资源和权限都非常简单，但在这里您还有更改的机会，以确保在创建API Token之前赋予它正确的权限。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/11/api_4_delay.gif" class="kg-image">
+		<figcaption>Token选项汇总——确认</figcaption>
+	</figure>
+	<p></p>
+	<hr>
+	<p>5. 创建好后，我们将看到该API Token。这一页面是唯一一次向您显示秘钥的机会，所以请您确保将它存放在安全的地方。拥有这些秘钥的人都可以在指定的资源上执行授权操作，因此您要像保护密码一样保护它。在下面的截图中，我用黑框盖出了这个秘钥，原因显然。如果您碰巧丢失了这个秘钥，您总是可以从API Token表重新生成它，这样您就不必重新配置所有权限。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/11/api_5_success.png" class="kg-image">
+		<figcaption>具有Token秘钥的Token创建完成页面</figcaption>
+	</figure>
+	<p></p>
+	<p>除了秘钥本身以外，这一页面还提供了一个curl请求示例，可用于验证Token是否已经创建成功。它还提供了一个示例，说明如何将Token用于任何直接HTTP请求。对于API Token，我们现在遵循的是<a href="https://tools.ietf.org/html/rfc6750#section-2.1" target="_blank">RFC授权承载标准</a>。调用该API，我们会看到一个成功的响应，告诉我们该令牌有效且可用。</p>
+	<pre><code class="language-js">~$ curl -X GET "https://api.cloudflare.com/client/v4/user/tokens/verify" \
+&gt;      -H "Authorization: Bearer vh9awGupxxxxxxxxxxxxxxxxxxx" \
+&gt;      -H "Content-Type:application/json" | jq
+
+{
+  "result": {
+    "id": "ad599f2b67cdccf24a160f5dcd7bc57b",
+    "status": "active"
+  },
+  "success": true,
+  "errors": [],
+  "messages": [
+    {
+      "code": 10000,
+      "message": "This API Token is valid and active",
+      "type": null
+    }
+  ]
+}</code></pre>
+	<h2 id="--1">接下来还有什么？</h2>
+	<p>对于使用Cloudflare API的每个人，我们建议从先前使用的API秘钥转到使用API Token。随着这一公告的发出，我们的<a href="https://www.terraform.io/docs/providers/cloudflare/" target="_blank">Terraform provider</a>，<a href="https://github.com/cloudflare/cloudflare-go" target="_blank">Cloudflare-Go library</a>以及<a href="https://github.com/cloudflare/Cloudflare-WordPress" target="_blank">WordPress plugin</a>均已更新，以实现API Token的兼容性。其他的函数库也将很快更新。API Token以及API秘钥都将暂时被支持，以便客户能够安全地进行迁移。我们还有更多API Token的计划功能，以进一步保护token的使用，敬请期待将来的公告吧！</p>
+	<p>请让我们知悉您在<a href="https://community.cloudflare.com/" target="_blank">Cloudflare社区</a>中对API安全的想法以及接下来您想看到的内容。</p>
+</div>

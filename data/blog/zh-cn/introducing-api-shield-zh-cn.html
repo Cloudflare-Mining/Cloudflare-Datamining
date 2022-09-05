@@ -1,0 +1,292 @@
+<div class="post-content lh-copy gray1">
+	<p>API 是连入互联网的现代应用程序的命脉。它们每分每秒都在执行来自移动应用程序的请求：下达这份外卖订单、“点赞”这张图片、发送命令到 IoT 设备、解锁车门、启动洗涤周期，通知有人刚跑完五千米，以及不计其数的其他指令。</p>
+	<p>意图执行未经授权操作或泄露数据的攻击四处蔓延，也将这些 API 作为攻击目标。正如 Gartner 数据所示，“到 2021 年，90％ 支持 Web 的应用程序因为开放 API 而非 UI 而具有更大的攻击表面，2019 年的比例为 40％”，并且“Gartner 预计到 2022 年，API 滥用将从不常见的攻击手段转变为最频繁的攻击手段，导致企业 Web 应用程序发生数据泄露”[1][2]。在每秒穿越 Cloudflare 网络的 1800 万个请求中，50％ 是针对 API 的，其中大多数请求因为恶意而被阻止。</p>
+	<p>为了应对这些威胁，Cloudflare 通过使用强大的基于客户端证书的身份识别和严格的基于模式的验证，来简化 API 的安全保护。截至今天，这些功能已在新发产品“API Shield”中面向我们的所有计划免费提供给客户。安全性优势目前也已<a href="https://blog.cloudflare.com/announcing-grpc/">扩展到基于 gRPC 的 API </a>，这类 API 使用二进制格式（例如协议缓冲区）而非 JSON，在我们客户群中也越来越受到欢迎。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image3.png" class="kg-image"></figure>
+	<p>继续阅读可进一步了解新功能的更多信息；或者，直接跳转至“演示”段落，获取有关如何开始配置第一条 API Shield 规则的示例。</p>
+	<h3 id="-">正向安全模型和客户端证书</h3>
+	<p>所谓“正向安全”模型，指的是仅允许已知行为和身份而拒绝其他一切的模型。它与 Web 应用程序防火墙（WAF）实施的传统“负向安全性”模型相反，后者允许除了源自有问题的 IP、ASN、国家或地区的请求或具有问题签名（SQL 注入行为等）的请求以外的所有内容。</p>
+	<p>为 API 实施正向安全模型是消除证书填充攻击和其他自动扫描工具的噪声的最直接方法。若要采用正向模型，第一步是部署强大的身份验证，例如双向 TLS 身份验证，这种身份验证不易受到<a href="https://spycloud.com/2020-annual-credential-exposure-report/" target="_blank">重用或共用密码</a>的影响。</p>
+	<p>我们在 2014 年通过推出 <a href="https://blog.cloudflare.com/introducing-universal-ssl/">Universal SSL</a> 来简化服务器证书的颁发，与之类似，API Shield 可将颁发客户端证书的过程缩减为只需点击 Cloudflare 仪表板中的几个按钮。通过提供完全托管的私有公钥基础结构（PKI），您可以专注于开发应用程序和功能，而不必操作和保护自己的证书颁发机构（CA）。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/API_Shield_Mutual_TLS.png" class="kg-image"></figure>
+	<h3 id="--1">使用模式验证执行有效的请求</h3>
+	<p>一旦开发人员能够确信只有合法客户端（持有 SSL 证书）才可连接他们的 API，那么实施正向安全模型的下一步就是确保这些客户端发出有效的请求。从设备提取客户端证书并在其他地方重用比较困难，但也并非毫无可能，因此确保 API 调用符合预期也很重要。</p>
+	<p>API 开发人员可能没有预料到含有无关输入的请求，如果应用程序直接处理这些请求，那么可能会导致问题。因此，应尽可能在边缘丢弃这些请求。在 API 模式验证工作时，它会将 API 请求的内容（URL 后面的查询参数和 POST 正文的内容）与包含用来规定预期内容的规则的协定或“模式”进行匹配。如果验证失败，则阻止 API 调用，以保护源站免受无效请求或恶意有效载荷的侵害。</p>
+	<p>模式验证当前处于 JSON 有效载荷封闭测试中，gRPC/协议缓冲区则已在路线图中有相应计划。如果您想参加测试，请打开主题为“API Schema Validation Beta”的支持票证。测试结束后，我们计划将模式验证作为 API Shield 用户界面的一部分提供。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/API_Shield_Schema_Protection.png" class="kg-image"></figure>
+	<h3 id="--2">演示</h3>
+	<p>为演示如何保护为 IoT 设备和移动应用程序提供支持的 API，我们制作了一个使用客户端证书和模式验证的 API Shield 演示。</p>
+	<p>由 IoT 设备（演示中为带有外置红外温度传感器的 Raspberry Pi 3 Model B+）采集温度，然后通过 POST 请求传输到受 Cloudflare 保护的 API。随后通过 GET 请求检索温度，再将其显示在用 Swift for iOS 开发的移动应用程序中。</p>
+	<p>在这两个情形中，API 实际上都是使用 Cloudflare Workers® 和 Workers KV 构建的，但可以被任何可通过互联网访问的端点所代替。</p>
+	<h3 id="1-api-">1. API 配置</h3>
+	<p>在将 IoT 设备和移动应用程序配置为与 API 安全通信之前，我们需要引导 API 端点。为了简化示例，同时允许进行其他自定义，我们将 API 实施为 Cloudflare Worker（借用来自 <a href="https://developers.cloudflare.com/workers/tutorials/build-a-jamstack-app" target="_blank">To-Do List 教程</a>的代码）。</p>
+	<p>在这个特定示例中，通过将源 IP 地址作为密钥将温度存储在 Workers KV 中，但这可以轻松地用<a href="https://developers.cloudflare.com/access/service-auth/mtls-headers/" target="_blank">客户端证书的值</a>（例如，指纹）来取代。以下代码在发出 POST 后将温度和时间戳存储到 KV 中，并在发出 GET 请求时返回最近的 5 个温度。</p>
+	<pre><code>const defaultData = { temperatures: [] }
+
+const getCache = key =&gt; TEMPERATURES.get(key)
+const setCache = (key, data) =&gt; TEMPERATURES.put(key, data)
+
+async function addTemperature(request) {
+
+    // pull previously recorded temperatures for this client
+    const ip = request.headers.get('CF-Connecting-IP')
+    const cacheKey = `data-${ip}`
+    let data
+    const cache = await getCache(cacheKey)
+    if (!cache) {
+        await setCache(cacheKey, JSON.stringify(defaultData))
+        data = defaultData
+    } else {
+        data = JSON.parse(cache)
+    }
+
+    // append the recorded temperatures with the submitted reading (assuming it has both temperature and a timestamp)
+    try {
+        const body = await request.text()
+        const val = JSON.parse(body)
+
+        if (val.temperature &amp;&amp; val.time) {
+            data.temperatures.push(val)
+            await setCache(cacheKey, JSON.stringify(data))
+            return new Response("", { status: 201 })
+        } else {
+            return new Response("Unable to parse temperature and/or timestamp from JSON POST body", { status: 400 })
+        }
+    } catch (err) {
+        return new Response(err, { status: 500 })
+    }
+}
+
+function compareTimestamps(a,b) {
+    return -1 * (Date.parse(a.time) - Date.parse(b.time))
+}
+
+// return the 5 most recent temperature measurements
+async function getTemperatures(request) {
+    const ip = request.headers.get('CF-Connecting-IP')
+    const cacheKey = `data-${ip}`
+
+    const cache = await getCache(cacheKey)
+    if (!cache) {
+        return new Response(JSON.stringify(defaultData), { status: 200, headers: { 'content-type': 'application/json' } })
+    } else {
+        data = JSON.parse(cache)
+        const retval = JSON.stringify(data.temperatures.sort(compareTimestamps).splice(0,5))
+        return new Response(retval, { status: 200, headers: { 'content-type': 'application/json' } })
+    }
+}
+
+async function handleRequest(request) {
+
+    if (request.method === 'POST') {
+        return addTemperature(request)
+    } else {
+        return getTemperatures(request)
+    }
+
+}
+
+addEventListener('fetch', event =&gt; {
+  event.respondWith(handleRequest(event.request))
+})</code></pre>
+	<p>在添加双向 TLS 身份验证之前，我们先测试 POST 随机温度读数：</p>
+	<pre><code>$ TEMPERATURE=$(echo $((361 + RANDOM %11)) | awk '{printf("%.2f",$1/10.0)}')
+$ TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+
+$ echo -e "$TEMPERATURE\n$TIMESTAMP"
+36.30
+2020-09-28T02:57:49Z
+
+$ curl -v -H "Content-Type: application/json" -d '{"temperature":'''$TEMPERATURE''', "time": "'''$TIMESTAMP'''"}' https://shield.upinatoms.com/temps 2&gt;&amp;1 | grep "&lt; HTTP/2"
+&lt; HTTP/2 201 </code></pre>
+	<p>以下是这个温度的后续读数，以及之前提交的 4 个读数：</p>
+	<pre><code>$ curl -s https://shield.upinatoms.com/temps | jq .
+[
+  {
+    "temperature": 36.3,
+    "time": "2020-09-28T02:57:49Z"
+  },
+  {
+    "temperature": 36.7,
+    "time": "2020-09-28T02:54:56Z"
+  },
+  {
+    "temperature": 36.2,
+    "time": "2020-09-28T02:33:08Z"
+  },
+    {
+    "temperature": 36.5,
+    "time": "2020-09-28T02:29:22Z"
+  },
+  {
+    "temperature": 36.9,
+    "time": "2020-09-28T02:27:19Z"
+  } 
+]
+</code></pre>
+	<h3 id="2-">2. 颁发客户端证书</h3>
+	<p>有了我们的 API 后，便可将其锁定，以请求有效客户端证书。在这样做之前，首先要生成这些证书。为此，可以转到 Cloudflare 仪表板的 SSL/TLS → Client Certificates 选项卡，再单击“Create Certificate”，或者可以通过调用 API 来自动执行此过程。</p>
+	<p>由于大多数开发人员会生成自己的私钥和 CSR，并要求通过 API 对其进行签名，因此这里将演示这个过程。使用 Cloudflare 的 PKI 工具包 <a href="https://github.com/cloudflare/cfssl" target="_blank">CFSSL，</a>，先为 iOS 应用程序创建引导证书，再为 IoT 设备创建证书：</p>
+	<figure class="kg-card kg-code-card">
+		<pre><code>$ cat &lt;&lt;'EOF' | tee -a csr.json
+{
+    "hosts": [
+        "ios-bootstrap.devices.upinatoms.com"
+    ],
+    "CN": "ios-bootstrap.devices.upinatoms.com",
+    "key": {
+        "algo": "rsa",
+        "size": 2048
+    },
+    "names": [{
+        "C": "US",
+        "L": "Austin",
+        "O": "Temperature Testers, Inc.",
+        "OU": "Tech Operations",
+        "ST": "Texas"
+    }]
+}
+EOF
+
+$ cfssl genkey csr.json | cfssljson -bare certificate
+2020/09/27 21:28:46 [INFO] generate received request
+2020/09/27 21:28:46 [INFO] received CSR
+2020/09/27 21:28:46 [INFO] generating key: rsa-2048
+2020/09/27 21:28:47 [INFO] encoded CSR
+
+$ mv certificate-key.pem ios-key.pem
+$ mv certificate.csr ios.csr
+
+// and do the same for the IoT sensor
+$ sed -i.bak 's/ios-bootstrap/sensor-001/g' csr.json
+$ cfssl genkey csr.json | cfssljson -bare certificate
+...
+$ mv certificate-key.pem sensor-key.pem
+$ mv certificate.csr sensor.csr</code></pre>
+		<figcaption>为 IoT 设备和 iOS 应用程序生成私钥及 CSR</figcaption>
+	</figure>
+	<p></p>
+	<figure class="kg-card kg-code-card">
+		<pre><code>// we need to replace actual newlines in the CSR with ‘\n’ before POST’ing
+$ CSR=$(cat ios.csr | perl -pe 's/\n/\\n/g')
+$ request_body=$(&lt; &lt;(cat &lt;&lt;EOF
+{
+  "validity_days": 3650,
+  "csr":"$CSR"
+}
+EOF
+))
+
+// save the response so we can view it and then extract the certificate
+$ curl -H 'X-Auth-Email: YOUR_EMAIL' -H 'X-Auth-Key: YOUR_API_KEY' -H 'Content-Type: application/json' -d “$request_body” https://api.cloudflare.com/client/v4/zones/YOUR_ZONE_ID/client_certificates &gt; response.json
+
+$ cat response.json | jq .
+{
+  "success": true,
+  "errors": [],
+  "messages": [],
+  "result": {
+    "id": "7bf7f70c-7600-42e1-81c4-e4c0da9aa515",
+    "certificate_authority": {
+      "id": "8f5606d9-5133-4e53-b062-a2e5da51be5e",
+      "name": "Cloudflare Managed CA for account 11cbe197c050c9e422aaa103cfe30ed8"
+    },
+    "certificate": "-----BEGIN CERTIFICATE-----\nMIIEkzCCA...\n-----END CERTIFICATE-----\n",
+    "csr": "-----BEGIN CERTIFICATE REQUEST-----\nMIIDITCCA...\n-----END CERTIFICATE REQUEST-----\n",
+    "ski": "eb2a48a19802a705c0e8a39489a71bd586638fdf",
+    "serial_number": "133270673305904147240315902291726509220894288063",
+    "signature": "SHA256WithRSA",
+    "common_name": "ios-bootstrap.devices.upinatoms.com",
+    "organization": "Temperature Testers, Inc.",
+    "organizational_unit": "Tech Operations",
+    "country": "US",
+    "state": "Texas",
+    "location": "Austin",
+    "expires_on": "2030-09-26T02:41:00Z",
+    "issued_on": "2020-09-28T02:41:00Z",
+    "fingerprint_sha256": "84b045d498f53a59bef53358441a3957de81261211fc9b6d46b0bf5880bdaf25",
+    "validity_days": 3650
+  }
+}
+
+$ cat response.json | jq .result.certificate | perl -npe 's/\\n/\n/g; s/"//g' &gt; ios.pem
+
+// now ask that the second client certificate signing request be signed
+$ CSR=$(cat sensor.csr | perl -pe 's/\n/\\n/g')
+$ request_body=$(&lt; &lt;(cat &lt;&lt;EOF
+{
+  "validity_days": 3650,
+  "csr":"$CSR"
+}
+EOF
+))
+
+$ curl -H 'X-Auth-Email: YOUR_EMAIL' -H 'X-Auth-Key: YOUR_API_KEY' -H 'Content-Type: application/json' -d "$request_body" https://api.cloudflare.com/client/v4/zones/YOUR_ZONE_ID/client_certificates | perl -npe 's/\\n/\n/g; s/"//g' &gt; sensor.pem</code></pre>
+		<figcaption>请 Cloudflare 使用为您的区域颁发的私有 CA 签署CSR</figcaption>
+	</figure>
+	<h3 id="3-api-shield-">3. 创建 API Shield 规则</h3>
+	<p>有了证书后，便可配置 API 端点以要求使用证书。下方显示了如何创建这样的规则。</p>
+	<p>这些步骤包括指定要提示提供证书的主机名，例如 shield.upinatoms.com，然后创建 API Shield 规则。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/API_Shield_demo.gif" class="kg-image"></figure>
+	<h3 id="4-iot-">4. IoT 设备通信</h3>
+	<p>为了使 IoT 设备准备好与我们的 API 端点进行安全通信，需要将证书嵌入到设备上，然后使我们的应用程序指向这一证书，以便在向 API 端点发出 POST 请求时可以使用它。</p>
+	<p>将私钥和证书安全复制到 /etc/ssl/private/sensor-key.pem 和 /etc/ssl/certs/sensor.pem 中，然后修改示例脚本以指向这些文件：</p>
+	<pre><code>import requests
+import json
+from datetime import datetime
+
+def readSensor():
+
+    # Takes a reading from a temperature sensor and store it to temp_measurement 
+
+    dateTimeObj = datetime.now()
+    timestampStr = dateTimeObj.strftime(‘%Y-%m-%dT%H:%M:%SZ’)
+
+    measurement = {'temperature':str(36.5),'time':timestampStr}
+    return measurement
+
+def main():
+
+    print("Cloudflare API Shield [IoT device demonstration]")
+
+    temperature = readSensor()
+    payload = json.dumps(temperature)
+    
+    url = 'https://shield.upinatoms.com/temps'
+    json_headers = {'Content-Type': 'application/json'}
+    cert_file = ('/etc/ssl/certs/sensor.pem', '/etc/ssl/private/sensor-key.pem')
+    
+    r = requests.post(url, headers = json_headers, data = payload, cert = cert_file)
+    
+    print("Request body: ", r.request.body)
+    print("Response status code: %d" % r.status_code)
+</code></pre>
+	<p>当脚本尝试连接 <a href="https://shield.upinatoms.com/temps" target="_blank">https://shield.upinatoms.com/temps</a> 时，Cloudflare 会请求发送 ClientCertificate，我们的脚本也会发送 sensor.pem 的内容，再表明其持有完成 SSL/TLS 握手所需的 sensor-key.pem。</p>
+	<p>如果未能成功发送客户端证书，或者试图在 API 请求中包含无关的字段，则模式验证（配置未显示）将失败，而请求也会被拒绝：</p>
+	<pre><code>Cloudflare API Shield [IoT device demonstration]
+Request body:  {"temperature": "36.5", "time": "2020-09-28T15:52:19Z"}
+Response status code: 403</code></pre>
+	<p>相反，如果出示的证书有效，并且有效载荷遵循先前上传的模式，那么我们的脚本会通过 POST 将最新的温度读数发布到 API。</p>
+	<pre><code>Cloudflare API Shield [IoT device demonstration]
+Request body:  {"temperature": "36.5", "time": "2020-09-28T15:56:45Z"}
+Response status code: 201</code></pre>
+	<h3 id="5-ios-">5. 移动应用程序（iOS）通信</h3>
+	<p>现在，温度请求已发送到我们的 API 端点，是时候使用其中一个客户端证书从我们的移动应用程序安全读取它们了。</p>
+	<p>为了简洁起见，我们将以 PKCS#12 文件形式在应用程序捆绑包中嵌入“引导”证书和密钥。在实际部署中，此引导证书应当仅与用户凭据一起使用，向可以返回唯一用户证书的 API 端点进行身份验证。企业用户应使用 MDM 来分发证书，以获得其他控制和持久选项。</p>
+	<h4 id="--3">封装证书和私钥</h4>
+	<p>在添加引导证书和私钥之前，我们需要把它们组合成二进制 PKCS#12 文件。这个二进制文件而后会添加到我们的 iOS 应用程序捆绑包中。</p>
+	<pre><code>$ openssl pkcs12 -export -out bootstrap-cert.pfx -inkey ios-key.pem -in ios.pem
+Enter Export Password:
+Verifying - Enter Export Password:</code></pre>
+	<h4 id="-ios-">将证书捆绑包添加到您的 iOS 应用程序</h4>
+	<p>在 XCode 中，点击 File → Add Files To "[项目名称]"，再选择您的 .pfx文件。在确认之前，请确保选中“Add to target”。</p>
+	<h4 id="-urlsession-">修改 URLSession 代码以使用客户端证书</h4>
+	<p><a href="https://leenarts.net/2020/02/28/client-certificate-with-urlsession-in-swift/" target="_blank">本文</a>提供了一个不错的演练，使用 PKCS#11 类和 <a href="https://developer.apple.com/documentation/foundation/urlsessiondelegate" target="_blank">URLSessionDelegate</a> 来修改您的应用程序，使其在连接需要的 API 时完成双向 TLS 身份验证。</p>
+	<h3 id="--4">展望未来</h3>
+	<p>在未来几个月中，我们计划扩展 API Shield，添加一些旨在保护 API 流量的其他功能。如果客户想要使用自己的 PKI，我们也提供了导入自有 CA 的功能，这些功能目前已作为 Cloudflare Access 的一部分<a href="https://developers.cloudflare.com/access/service-auth/mtls/" target="_blank">提供</a>。</p>
+	<p>收到有关 Beta 版模式验证的反馈后，我们会设法面向所有客户提供这个功能。如果您正在试用 Beta 版并想分享自己的想法，欢迎您提供反馈。</p>
+	<p>除了证书和模式验证外，我们也将布置其他 API 安全功能和深度分析功能，以帮助您更好地了解 API。如果有您期待获得的功能，请在下方评论中告诉我们！</p>
+	<p></p>
+	<p><em>1</em>：<em>“</em>到<em> 2021 </em>年，<em>90</em>％<em> </em>支持<em> Web </em>的应用程序因为开放<em> API </em>而非<em> UI </em>而具有更大的攻击表面，<em>2019 </em>年的比例为<em> 40</em>％<em>”</em>。资料来源：<em>Gartner“Gartner </em>的<em> API </em>战略成熟度模型<em>”</em>，<em>Saniye Alaybeyi </em>和<em> Mark O'Neill</em>，<em>2019 </em>年<em> 10 </em>月<em> 21 </em>日。（需要订阅<em> Gartner</em>）</p>
+	<p><em>2</em>：<em>“Gartner </em>预计到<em> 2022 </em>年，<em>API </em>滥用将从不常见的攻击手段转变为最频繁的攻击手段，导致企业<em> Web </em>应用程序发生数据泄露<em>”</em>。资料来源：<em>Gartner</em>，<em>“API </em>战略中的冷静供应商<em>”</em>，<em>Shameen Pillai</em>、<em>Paolo Malinverno</em>、<em>Mark O'Neill </em>和<em> Jeremy D'Hoinne</em>，<em>2020 </em>年<em> 5 </em>月<em> 18 </em>日（需要订阅<em> Gartner</em>）</p>
+</div>

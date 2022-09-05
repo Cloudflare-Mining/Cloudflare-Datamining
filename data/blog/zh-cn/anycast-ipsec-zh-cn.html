@@ -1,0 +1,25 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image2-9.png" class="kg-image" alt="Announcing Anycast IPsec: a new on-ramp to Cloudflare One"></figure>
+	<p>今天，我们欣然宣布支持 IPsec 作为 Cloudflare One 的入口。作为客户，您应该能够根据需要使用任意方法将流量传输到 Cloudflare 的网络。我们听您说 IPsec 是您选择用于在网络层与我们连接的方法，因为它受到几乎所有供应商的支持，并且在所有流量中都会进行一层全面的加密。所以我们为它构建了支持！继续阅读，以了解我们的 IPsec 实施为何相比于传统 IPsec 连接更快、更易于使用，以及它如何与我们的 Cloudflare One 套件深度集成以在您的所有流量中提供统一的安全性、高性能和可靠性。</p>
+	<h3 id="-"><strong>将互联网用作企业网络</strong></h3>
+	<p>利用 <a href="https://www.cloudflare.com/zh-cn/cloudflare-one/" target="_blank">Cloudflare One</a>，客户可以将任何流量来源或目的地 — 分支机构、数据中心、云资产、用户设备 — 连接到我们的网络。流量会路由到离得最近的 Cloudflare 位置，其中会应用安全策略，然后我们会将流量沿优化路径发送到其目的地 — 无论是在您的专用网络中还是在互联网上。最好在应用程序级别加密任何敏感流量，但对于从多协议标签交换（MPLS）等专用连接形式过渡的客户来说，这通常不现实。许多客户在其 MPLS 电路中以未加密方式运行旧版文件传输和其他应用程序，并依靠这些电路的“专用”性质来提供安全性，我们与这些客户进行了交流。为了开始通过互联网发送此流量，客户需要在所有这一切中进行一层全面的加密；IPsec 隧道在传统上是实现这一点的比较容易的方式。</p>
+	<h3 id="-ipsec-"><strong>传统的 IPsec 实施</strong></h3>
+	<p>IPsec 作为一项技术自 1995 年以来就一直存在，并且在许多硬件和软件平台得到广泛实施。许多公司采用 IPsec VPN 来安全地通过互联网传输企业流量。这些 VPN 往往采用以下两种主要架构之一：轴辐式或网格。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image1-22.png" class="kg-image" alt="Hub and spoke architecture"></figure>
+	<p>在轴辐式模型中，每个“辐条”节点建立连回核心“轴”（通常是总部或数据中心位置）的 IPsec 隧道。辐条之间的流量通过轴流动以进行路由，以及应用安全策略（比如通过内部防火墙）。此架构很简单，因为每个节点只需要维护一个隧道来连接到其他位置，但由此可能造成性能显著下降。假设有一个全球网络，它在印度和新加坡各有一个“辐条”，但“轴”位于美国 — 流量需要来回地往返传送上千英里，才能到达目的地。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image3-9.png" class="kg-image" alt="Mesh architecture"></figure>
+	<p>在网格模型中，每个节点使用一个专用 IPsec 隧道连接到其他每个节点。这可提高性能，因为流量可以采取更直接的路径，但在实践中，这意味着添加少数几个位置之后，隧道数量就会庞大得无法管理。</p>
+	<p>我们就 IPsec 与之交流的客户知道自己需要它来实现这层全面的加密和广泛的供应商支持，但他们对此并不是特别<em>热衷</em>，因为现有架构模型存在问题。我们知道，我们需要开发更容易使用的东西，摆脱过去那些问题，好让客户乐意在 Cloudflare 上构建其下一代网络。那么我们如何让 IPsec 从上世纪 90 年代跨入新时代呢？方法就是在我们的全球 Anycast 网络上进行交付：客户向我们建立一个 IPsec 隧道，并自动获得与 250 多个位置的连接。<strong>这在概念上类似于轴辐式模型，但这里的“轴”无处不在、速度超快且易于管理</strong>。</p>
+	<h3 id="-ipsec--1"><strong>那么 IPsec 实际如何运作呢？</strong></h3>
+	<p><a href="https://www.cloudflare.com/learning/network-layer/what-is-ipsec/" target="_blank">IPsec</a> 早在 1995 年设计为针对 IP 数据包提供身份验证、完整性和保密性。其中一种做法是在两个主机之间创建隧道，加密 IP 数据包，并将新的 IP 标头添加到加密的数据包。为实现这一点，IPsec 有两个组件协同工作：一个用户空间互联网密钥交换 (IKE) 后台程序，以及内核空间中的一个 IPsec 堆栈。IKE 是为 IPsec 创建安全性关联 (SA) 的协议。SA 是建立 IPsec 隧道所需的所有安全性参数（例如用于身份验证和加密的参数）的集合。</p>
+	<p>当需要设置新的 IPsec 隧道时，一个 IKE 后台程序将与另一个后台程序发起会话，并创建 SA。配置、密钥协商和密钥生成的所有复杂细节只需采用少数几个数据包，即可在用户空间中两个 IKE 后台程序之间安全地进行。IKE 后台程序启动其会话之后，就会将其整齐的 SA 转交给内核空间中的 IPsec 堆栈，该堆栈中现在包含拦截正确的数据包进行加密和解密所需的所有信息。</p>
+	<p>有大量开源 IKE 后台程序（包括 strongSwan、Libreswan 和 Openswan），我们考虑将它们用于 IPsec 实施。这些“swan”都将采用 IKE 协议与配置 IPsec 堆栈紧密结合在一起。这非常适合用于建立点到点隧道 — 您只需安装一个“swan”，就能采用 IKE 并配置加密隧道。但我们要构建利用 Cloudflare 的整个全球 Anycast 边缘的下一代网络。那么我们要怎么做，才能让客户设置与 Cloudflare 的一个隧道，使每一个边缘服务器都能够在该隧道上交换数据？</p>
+	<h3 id="anycast-ipsec-"><strong>Anycast IPsec：下一代网络的实施</strong></h3>
+	<p>阻碍 Anycast IPsec 的根本问题是，SA 需要转交给每个 Cloudflare 边缘服务器上的内核空间 IPsec 堆栈，但 SA 仅在一个服务器上创建 — 该服务器运行的是客户的 IKE 后台程序所连接到的 IKE 后台程序。我们如何解决该问题？首先需要满足的是，每个服务器都需要能够创建该 SA。</p>
+	<p>每个 Cloudflare 服务器现在都运行一个 IKE 后台程序，因此客户可以拥有快速可靠的连接，以在全世界任何地方启动隧道。我们考虑过使用某个现有“swan”，但其中 IKE 与 IPsec 堆栈的紧耦合意味着 SA 很难从配置数据平面中抽身出来。我们需要 SA 完全独立并可从创建它的服务器整齐地共享到我们的边缘上的其他每一个服务器。我们构建了自己的“swan”，自然是为了实现这一点。</p>
+	<p>为了将我们的 SA 发送到世界各地，我们采用新方式来展现旧技巧。利用 <a href="https://blog.cloudflare.com/argo-tunnels-that-live-forever/">Cloudflare Tunnel</a>，客户的 Cloudflare 化隧道流程可创建与几个附近 Cloudflare 边缘服务器的连接。但发往该隧道的流量可能到达<em>任意</em>边缘服务器，该服务器需要知道如何通过代理将流量传输到连接隧道的边缘服务器。因此，我们构建了相应技术来支持边缘服务器将有关其 Cloudflare Tunnel 连接的信息迅速分发到其他所有边缘服务器。</p>
+	<p>从根本上说，SA 分发的问题很类似 -- 客户的 IKE 后台程序连接到单个 Cloudflare 边缘服务器的 IKE 后台程序，并且有关该连接的信息相应分发到其他每个边缘服务器。因此，我们升级了 Cloudflare Tunnel 技术，使其更加通用，现在我们将其用于分发 SA 以作为 Anycast IPsec 支持的一部分。在创建 SA 后的几秒之内，它就分发到每个 Cloudflare 边缘服务器，其中流式传输协议将配置应用于内核空间 IPsec 堆栈。Cloudflare 的 Anycast IPsec 受益于我们在 Cloudflare Tunnel 中构建的可靠性和弹性，并将我们的网络转变为与您网络之间的一个可大规模扩展的弹性 IPsec 隧道。</p>
+	<h3 id="-ipsec-cloudflare-one"><strong>使用 IPsec 作为入口，访问全部 Cloudflare One</strong></h3>
+	<p>我们基于现有全球系统架构，构建了 IPsec 作为 Cloudflare One 的入口，并优先考虑客户关心的原则。您关心部署容易度，所以我们让您能够使用单个 IPsec 隧道在 Cloudflare One 上连接到您的整个虚拟网络。您关心性能，所以我们构建了相应技术来将您的 IPsec 隧道连接到每个 Cloudflare 位置，消除了<a href="https://blog.cloudflare.com/magic-makes-your-network-faster/">轴辐式模型的性能下降问题</a>。您关心在各种来源的所有流量中实施安全策略，所以我们将 IPsec 与整个 Cloudflare One 套件集成，包括 Magic Transit、Magic Firewall、Zero Trust，等等。</p>
+	<p>对于 Cloudflare One 客户，IPsec 处于早期访问阶段。如果您有意向进行试用，请立即联系客户团队！<br></p>
+</div>

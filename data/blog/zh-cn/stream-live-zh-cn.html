@@ -1,0 +1,43 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/1-4.png" class="kg-image"></figure>
+	<p>我们很高兴能推出 Stream Live 公开测试版，这是一款可扩展的端对端实时串流平台，让您专注于开发实时视频应用，而不是代码库。</p>
+	<p>有了 Stream Live，您可以无忧发展串流应用，拓展到数以百万计的主播和并发用户。开始使用业界标准 RTMPS 协议从移动或桌面设备发送实时视频，即时传播给数以百万计的观众。Stream Live 支持您已在使用的最流行实时视频广播软件，包括 ffmpeg 和 <a href="https://obsproject.com/" target="_blank">OBS</a> 等。您的广播内容会自动录制、优化并通过 Stream 播放器交付。</p>
+	<p>如果您从头开始打造实时基础设施，就必须回答以下几个关键问题：</p>
+	<ol>
+		<li>“<em>准备使用哪一个/些编解码器对视频进行编码？”</em></li>
+		<li><em><em><em>“准备使用哪些协议来摄取和交付视频？”</em></em></em></li>
+		<li><em><em><em>“不同组件对延迟有怎样的影响？”</em></em></em></li>
+	</ol>
+	<p>我们开发了 Stream Live，所以您不必费心思索并花费宝贵精力来回答这些问题。Stream Live 可以自动选取与客户端设备兼容性最好的编解码器和流传输协议，将这些烦人却重要的实施细节抽离出来。使用 Stream Live 时，对您可以开始的直播数量和能够拥有的观众人数均无限制。无论是要制作下一波热门视频分享应用，还是向公司安全广播全体会议，Stream 都能根据您的需求轻松扩展，不需要您花费数月时间去构建和维护视频基础设施。</p>
+	<h3 id="-">内置播放器和访问控制</h3>
+	<!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 56.25%;margin-bottom:40px;"><iframe src="https://iframe.videodelivery.net/e25a1cf46c9cd7764f1b26127fa9344f" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
+	<!--kg-card-end: html-->
+	<p>每一个实时视频都有可配合您的网站的嵌入代码。您也可以使用自己的播放器，因为它随附对两种主流 HTTP 串流格式（HLS 和 DASH）的支持，能够精细地控制用户体验。</p>
+	<p>您可以给每位观众提供自动失效的令牌化链接，以此控制哪些人可以观看您的实时视频。在生成令牌化链接时，您可以定义各种约束条件，<a href="https://developers.cloudflare.com/stream/viewing-videos/securing-your-stream" target="_blank">如基于时间失效、地理围栏和 IP 限制等</a>。在打造在线学习网站或视频分享应用时，您可以将视频置于身份验证后方，仅允许登录的用户观看您的视频。或者，如果您在建设一个演唱会直播平台，您可以规定仅允许来自特定国家或地区的观众。Stream 的签名令牌可以帮助您遵循复杂的自定义规则集。</p>
+	<h3 id="--1">即时录制</h3>
+	<p>有了 Stream Live，实时广播结束后您无需等待就能提供录像。实时视频会自动转换为录像，用时不到一秒。观众可以即时访问录像来弥补遗漏之处。</p>
+	<h3 id="--2">即时扩展</h3>
+	<p>不论您的平台拥有一名还是一万名活跃主播，Stream Live 都可以根据您的用例来扩展。您不必为添加新计算实例、设置可用区域或协商额外软件许可而操心。</p>
+	<p>内部构建的传统实时视频管道通常在单一位置上摄取和编码实时视频，而且距离十分遥远。视频摄取位置遥远会导致视频串流变得不可靠，特别是观众分散于全球各地时。所有 Cloudflare 地点都运行必要的软件，能够将实时视频摄取<em>进来</em>并传送<em>出去</em>。一旦您的视频广播处于 Cloudflare 网络内，Stream Live 就会利用 <a href="https://blog.cloudflare.com/250-cities-is-just-the-start/">Cloudflare 主干网</a>和 <a href="https://www.cloudflare.com/zh-cn/products/argo-smart-routing/" target="_blank">Argo</a> 来传输您的实时视频，加强其可靠性。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/10/2-2.png" class="kg-image"></figure>
+	<h3 id="--3">延迟低至十秒</h3>
+	<p>根据您的视频编码器设置，使用 Stream Live 可将视频广播和显示于观众屏幕两者相隔的时间缩短到十秒。由于延迟很低，您可以在应用程序中构建聊天和问答等互动功能。这种延迟非常适合会议、运动会、音乐会和礼拜等场景，但我们清楚这不能覆盖实时视频的所有用例。 </p>
+	<p>我们正在奋力将 Stream Live 延迟增加值缩短到接近于零。Cloudflare 网络现在与 <a href="https://blog.cloudflare.com/250-cities-is-just-the-start/">95% 的世界人口相隔 50 毫秒内</a>。我们相信能够在未来数月内大幅缩短从主播到观众的延迟。最后，在实时串流领域中，只有您能落实可靠性，延迟才有意义。Cloudflare 网络横跨 250 多个地点，您可以获得对实时事件至关重要的顶级可靠性。</p>
+	<h3 id="--4">简单并可预测的定价</h3>
+	<p>Stream Live 一项随用随付服务，计费依据是视频录制时长和视频观看时长。</p>
+	<ul>
+		<li>每月每 1000 分钟视频存储容量费用为 5 美元。所有实时串流视频都会自动录制。无需额外支付实时串流摄取费用。</li>
+		<li>每 1000 分钟视频观看费用为 1 美元。</li>
+		<li>不会有任何。您绝不用支付隐藏费用，例如传统视频管道中可见的视频摄取、计算（编码）、出口或存储等费用。</li>
+		<li>您可以利用账单提醒来控制 Stream 相关开支，也可通过创建仅可供授权观众使用的签名令牌来限制观看。</li>
+	</ul>
+	<p>Cloudflare Stream 以多种质量等级对实时串流进行编码，没有额外费用。这可确保观众在各种互联网速度下皆能享受畅快的播放体验。观众从 Wi-Fi 切换到移动数据网络时，视频可以继续播放，不会有间断。提供实时串流基础设施的其他平台为满足全球观众需求而添加质量等级时，往往会收取额外费用。</p>
+	<p>如果您的用例包含数千名并发主播或数百万名同步观众，请<a href="https://www.cloudflare.com/zh-cn/plans/enterprise/contact/" target="_blank">联系</a>我们洽询批量定价。</p>
+	<h3 id="-stream-">利用 Stream 来直播</h3>
+	<p>Stream 的运作独立于 Cloudflare 上的任何域。如果您已拥有 Cloudflare 帐户并且订阅了 Stream，只需点击 <a href="https://dash.cloudflare.com/?to=/:account/stream" target="_blank">Stream 仪表板</a>上的“Live Input”并创建新的输入源，即可开始使用 Stream Live：</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/10/3-2.png" class="kg-image" alt="开始使用 Stream Live">
+		<figcaption>开始使用 Stream Live</figcaption>
+	</figure>
+	<p>如果还不是 Cloudflare 的用户，欢迎<a href="https://dash.cloudflare.com/sign-up/stream" target="_blank">注册以使用 Cloudflare Stream。</a></p>
+</div>

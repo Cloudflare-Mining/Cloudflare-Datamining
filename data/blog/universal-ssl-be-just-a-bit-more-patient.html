@@ -1,0 +1,25 @@
+<div class="post-content lh-copy gray1">
+	<!--kg-card-begin: markdown-->
+	<p><img src="https://blog.cloudflare.com/content/images/2014/09/cloudflare-illustration-universal-ssl-1.png" alt="Universal SSL"></p>
+	<p>It turns out it takes a while to deploy SSL certificates for 2 million websites. :-) Even longer when you get a flood of new sign ups. While we'd hoped to have the deployment complete within 24 hours of the announcement, it now looks like it's going to take a bit longer. We now expect that the full deployment will be complete about 48 hours from now (0700 UTC). Beyond that, nothing about the plan for Universal SSL has changed and hundreds of thousands of sites are already active.</p>
+	<h3 id="errorsyoumaysee">Errors you may see</h3>
+	<p>In order to get through the highest priority sites first, we've prioritized provisioning the sites with the most traffic.</p>
+	<p>While you wait for your site to get provisioned, you may see a certificate mismatch error if you try and visit it over HTTPS. (Rest assured, there are no errors if you visit over HTTP.) The errors over HTTPS are expected and normal during the provisioning process. Examples of what these error looks like in various browsers (Chrome, Safari, Firefox, and Internet Explorer) are below:</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2014/09/chrome_alert.png" alt="Chrome"></p>
+	<p><img src="https://blog.cloudflare.com/content/images/2014/09/safari_alert.png" alt="Safari"></p>
+	<p><img src="https://blog.cloudflare.com/content/images/2014/09/firefox_alert.png" alt="Firefox"></p>
+	<p><img src="https://blog.cloudflare.com/content/images/2014/09/ie_error_page.png" alt="Internet Explorer"></p>
+	<h3 id="trackingourprogress">Tracking our progress</h3>
+	<p>To give you a sense of our progress provisioning Universal SSL for your sites, we've updated the alert that you see when you login to CloudFlare to show what sites have been enabled and what sites are still pending. It now looks like this:</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2014/09/free_ssl_alert.png" alt="Login alert"></p>
+	<p>When the Universal SSL provisioning process is complete, we will also email all our customers. Again, at the current rate, we expect to be finished by Thursday, October 2 at 0700 UTC.</p>
+	<h3 id="whenitsworking">When it's working…</h3>
+	<p>We apologize for the delay. We're getting new sites provisioned as quickly as we can. If you want to see what it looks like when it's working correctly, check out one of the following:</p>
+	<ul>
+		<li><a href="https://ciaranmcnulty.com/" target="_blank">https://ciaranmcnulty.com/</a></li>
+		<li><a href="https://samsclass.info/" target="_blank">https://samsclass.info/</a></li>
+	</ul>
+	<p>Note that on the latter of these examples you may see a mixed content warning. We expect site owners will clean these issues up by using protocol-relative URLs now that they have HTTPs support. Going forward, we also have some ideas about how we can help automatically resolve mixed content issues.</p>
+	<p>Thank you for your patience.</p>
+	<!--kg-card-end: markdown-->
+</div>

@@ -1,0 +1,111 @@
+<div class="post-content lh-copy gray1">
+	<!--kg-card-begin: markdown-->
+	<p><img src="https://blog.cloudflare.com/content/images/2018/03/workers-social.png" alt="Edge computing for everyone."></p>
+	<p>ちょうど1年前の今日、Cloudflareは私にあるミッションを与えました。ユーザーがCloudflareのエッジ環境でコードを実行できるようにすることです。当時、私たちにはそれが何を意味するのかわかりませんでした。コンテナベースになるのか？新しいチューリング完全な領域の固有の言語か？Lua？「Functions」？たくさんのアイデアがありました。</p>
+	<p>最終的には、今では当たり前のように思える選択に落ち着きました。JavaScriptです。標準的なService Workers APIを使用してV8で構築された新しい環境で実行します。5ヶ月前、私たちは当社が構築しているものを<a href="https://blog.cloudflare.com/introducing-cloudflare-workers/">お客様にプレビューで提供</a>し、ベータ版を開始しました。</p>
+	<p>現在では、Cloudflare Workersは何千ものスクリプトがデプロイされ、何十億ものリクエストが処理されているような、誰でも利用できるものになっています。</p>
+	<div style="padding: 1.5em; background-color: rgb(243, 243, 243); margin: 1em 0;">
+		<p style="font-size: 150%; font-style: italic; margin-bottom: 0.5em">「VCLから離れ、Cloudflare Workersを採用することによって、創造的なルーティングができるようになるでしょう。そうすることで、NPMの数百万ユーザーに現在よりももっと高速にJavaScriptを提供できるようになります。 当社の次世代サービスはCloudflareのプラットフォーム上に構築するつもりです。もちろんJavaScriptでです!」</p>
+		<p style="font-size: 120%; text-align: right; font-style: italic; margin-top: 0.5em">— CJ Silverio, CTO, npm, Inc.</p>
+	</div>
+	<h3 id="">そもそもクラウドとは？</h3>
+	<p>歴史的に見ても、Webアプリケーションのコードは、サーバー側とブラウザ側で分離されてきました。両者の間にはダムネットワークがあり、広大ではあるものの基本的には単にデータを点から点へと渡しているだけです。</p>
+	<p>これでは、「クラウド」のうたい文句を実現しているとは思えません。</p>
+	<p>私たちは、クラウドコンピューティングの真の夢は、お客様のコードがネットワーク自体の中に存在することだと考えています。お客様のコードは、「アメリカ西部4州」や「南中央アジア （ムンバイ）」などで実行されるものではなく、あらゆる場所で実行されるのです 。</p>
+	<p>より具体的に言うと、コードは最も必要とされる場所で実行されるべきです。例えば、ニュージーランドのユーザーに対応する場合、コードはニュージーランドで実行されるべきです。データベースでデータを処理するとき、コードはデータを保存するマシン上で実行されるべきです。サードパーティのAPIとやりとりする場合、コードはそのAPIがホストされている場所で実行されるべきです。人類の探検家が火星に到着したとき、お客様のアプリケーションの応答に30分も待つことに彼らは満足しないでしょう -- お客様のコードは火星で実行されるべきです。</p>
+	<p>Cloudflare Workerは、このビジョンに対する当社の第一歩です。Workerをデプロイすると、30秒以内に世界中の100以上のロケーションからなるCloudflareのエッジネットワーク全体にデプロイされます。お客様のドメインへの各リクエストは、エンドユーザーに近いCloudflareのロケーションにあるWorkerによって処理され、お客様が個々のロケーションについて考える必要はありません。より多くの場所をオンライン化すればするほど、お客様のコードは「どこでも実行できる」ようになります。</p>
+	<p>まあ、いいでしょう。火星では実行しません。まだね。イーロンさん、そこにいますか？</p>
+	<h3 id="worker">Workerとは？</h3>
+	<p>Cloudflare Workersの名前はWeb Workersに由来しており、より具体的には、Webブラウザのバックグラウンドで動作してHTTPリクエストをインターセプトするスクリプトのW3C標準APIであるService Workersに由来しています。Cloudflare Workersは同じ標準APIに対して書かれていますが、ブラウザではなく、Cloudflareのサーバー上で実行されます。</p>
+	<p>ここでは、そのツールをご紹介します。</p>
+	<ul>
+		<li>最新の標準的な言語機能を使用して、任意のJavaScriptコードを実行する。</li>
+		<li>HTTPリクエストとレスポンスのURL、ステータス、ヘッダー、ボディの内容をインターセプトして変更する。</li>
+		<li>お客様のWorkerからのリクエストに直接対応、または他の場所に転送する。</li>
+		<li>サードパーティのサーバーにHTTPリクエストを送信する。</li>
+		<li>複数のリクエストをシリアルまたはパラレルで送信し、そのレスポンスを使用して元のリクエストに対する最終的なレスポンスを作成する。</li>
+		<li>レスポンスがすでにクライアントに返された後に非同期のリクエストを送信する（例：ロギングや分析）。</li>
+		<li>キャッシングの動作など、Cloudflareの他の機能を制御する。</li>
+	</ul>
+	<p>Workersの使い方は無限にあり、お客様からどのようなアイデアが出てくるか楽しみです。ここでは、ベータ版で見られたアイデアをいくつか紹介します。</p>
+	<ul>
+		<li>異なるタイプのリクエストを異なるオリジンサーバーにルーティングする。</li>
+		<li>HTMLテンプレートをエッジで展開し、オリジンでの帯域幅の費用を削減する。</li>
+		<li>キャッシュされたコンテンツにアクセス制御を適用する。</li>
+		<li>一部のユーザーをステージングサーバーにリダイレクトする。</li>
+		<li>全く異なる2つのバックエンド間でA/Bテストを実施する。</li>
+		<li>Web APIに完全に依存する「サーバーレス」アプリケーションを構築する。</li>
+		<li>カスタムセキュリティフィルターを作成し、アプリに固有の不要なトラフィックをブロックする。</li>
+		<li>キャッシュヒット率を向上させるためにリクエストを書き換える。</li>
+		<li>カスタムの負荷分散とフェイルオーバーロジックを実装する</li>
+		<li>本番サーバーを更新することなく、アプリケーションに迅速に修正を適用する。</li>
+		<li>ユーザーのブラウザでコードを実行することなく、分析結果を収集する。</li>
+		<li>その他多数</li>
+	</ul>
+	<p>ここで例を紹介します。</p>
+	<pre><code class="language-javascript">// A Worker which:
+// 1. Redirects visitors to the home page ("/") to a
+//    country-specific page (e.g. "/US/").
+// 2. Blocks hotlinks.
+// 3. Serves images directly from Google Cloud Storage.
+addEventListener('fetch', event =&gt; {
+  event.respondWith(handle(event.request))
+})
+
+async function handle(request) {
+  let url = new URL(request.url)
+  if (url.pathname == "/") {
+    // This is a request for the home page ("/").
+    // Redirect to country-specific path.
+    // E.g. users in the US will be sent to "/US/".
+    let country = request.headers.get("CF-IpCountry")
+    url.pathname = "/" + country + "/"
+    return Response.redirect(url, 302)
+
+  } else if (url.pathname.startsWith("/images/")) {
+    // This is a request for an image (under "/images").
+    // First, block third-party referrers to discourage
+    // hotlinking.
+    let referer = request.headers.get("Referer")
+    if (referer &amp;&amp;
+        new URL(referer).hostname != url.hostname) {
+      return new Response(
+          "Hotlinking not allowed.",
+          { status: 403 })
+    }
+
+    // Hotlink check passed. Serve the image directly
+    // from Google Cloud Storage, to save serving
+    // costs. The image will be cached at Cloudflare's
+    // edge according to its Cache-Control header.
+    url.hostname = "example-bucket.storage.googleapis.com"
+    return fetch(url, request)
+  } else {
+    // Regular request. Forward to origin server.
+    return fetch(request)
+  }
+}
+</code></pre>
+	<br>
+	<h3 id="">本当に高速</h3>
+	<p>時々、ユーザーからJavaScriptは「遅い」という声を聞きます。これほど事実とかけ離れたことはないでしょう。</p>
+	<p>Workersは、GoogleがChrome用に開発したV8 JavaScriptエンジンを使用しています。V8はJavaScriptの最も高速な実装の1つであるだけでなく、動的型付けの言語の最も高速な実装の1つでもあります。V8の最適化には膨大な作業が費やされているため、C/C++、Rust、Goを除く、一般的なサーバープログラミング言語を凌駕しています。（ちなみに、これらの言語はWebAssemblyによって近々サポートされる予定です）。</p>
+	<p>結論として、<strong>典型的なWorkerスクリプトは1ミリ秒以下で実行されます。</strong> ほとんどのユーザーはWorkerを有効にしても遅延の差を測定することはできません。もちろん、Workerが実際にエッジ環境から直接応答することで遅延を改善する場合は例外です。</p>
+	<p>もう一つ、スピードに関して言うと、Workerのデプロイも高速です。Workerはスクリプトを保存して有効にしてから<strong>30秒以内にグローバルにデプロイされます。</strong></p>
+	<h3 id="">料金設定</h3>
+	<p>Workersは、Cloudflareの有料アドオンです。価格はできるだけシンプルにしたかったので、以下のようにしました。</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/03/workers-pricing-text@4x.png" alt="$0.50 per million requests, with a $5 monthly minimum (covers your first 10 million requests)"></p>
+	<h3 id="">開始する</h3>
+	<ul style="font-size: 140%; margin-top: 1em; margin-bottom: 1em">
+		<li><a href="https://www.cloudflare.com/a/overview" target="_blank">Cloudflareのアカウントにログイン</a>して、「Workers」セクションにアクセスしてWorkersを設定します。</li>
+		<li><a href="https://cloudflareworkers.com/" target="_blank">PlaygroundでのWorkersの実験</a>に、アカウントは必要ありません。</li>
+		<li><a href="https://developers.cloudflare.com/workers/" target="_blank">ドキュメントをお読みいただき</a>、Workersの記述方法についてご確認ください。</li>
+		<li><a href="https://blog.cloudflare.com/introducing-cloudflare-workers/">発表当初のブログ記事を参照して</a>、技術の詳細についてご確認ください。</li>
+		<li><a href="https://community.cloudflare.com/c/developers/workers" target="_blank">CloudflareコミュニティでWorkersについて議論する。</a></li>
+	</ul>
+	<div style="padding: 1.5em; background-color: rgb(243, 243, 243); margin: 1em 0;">
+		<p style="font-size: 150%; font-style: italic; margin-bottom: 0.5em">「Cloudflare Workersのおかげで非常に時間を節約できています。 Workersなしでボットトラフィックを管理しようとすると、別の有意義な目的に利用できるはずの貴重な開発リソースやサーバーリソースを浪費してしまいます。」</p>
+		<p style="font-size: 120%; text-align: right; font-style: italic; margin-top: 0.5em">— MaxMind社、シニアシステムアドミニストレーター、John Thompson氏</p>
+	</div>
+	<!--kg-card-end: markdown-->
+</div>

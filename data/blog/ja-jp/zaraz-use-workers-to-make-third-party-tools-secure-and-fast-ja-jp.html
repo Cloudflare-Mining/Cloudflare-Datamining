@@ -1,0 +1,126 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image4-14.png" class="kg-image" alt="Zaraz use Workers to make third-party tools secure and fast"></figure>
+	<p>Zarazを作ろうと考えたのは、2020年3月末頃です。別の製品に取り組んでいた際、誰もが自分のWebサイトに多くのサードパーティがあることのパフォーマンスへの影響について質問していることに気付きました。サードパーティ製コンテンツは、今日のWebサイトの大部分において重要な役割を担っており、アナリティクス、チャットボット、コンバージョンピクセル、ウィジェットなど、あらゆるものを動かしています。<a href="https://blog.cloudflare.com/ja-jp/cloudflare-acquires-zaraz-to-enable-cloud-loading-of-third-party-tools-ja-jp/">Yairは、これらのサードパーティ製ツールの影響を測定するプロセスや、当社がどのようにスタートアップをピボットしたかについて詳しく書いています</a>。しかし私は、当社がどのようにZarazを構築し、舞台裏で実際に何を行っているかについて記したいと考えました。</p>
+	<p>サードパーティは、すでに作られたソリューションを自分のWebサイトに統合することができ、コーディングはほとんど必要ないという点で優れています。分析？このコードスニペットをドロップするだけです。チャットウィジェット？こちらを追加するだけです。サードパーティベンダーは通常、ツールの追加方法を示し、その時点から物事が動くようになります。いかがでしょうか？しかし、サードパーティのコードを追加すると、通常、リモートソースからさらに多くのコードを取得することになり、訪問者のブラウザで起こっていることを制御することが難しくなります。あなたのWebサイトにある多数のサードパーティがハッキングされ、<a href="https://www.theregister.com/2018/12/12/ticketmaster_denies_fault_website_magecart_infection/" target="_blank">情報を盗んだり</a>、<a href="https://www.wired.co.uk/article/browsealoud-ico-texthelp-cryptomining-how-cryptomining-work" target="_blank">暗号通貨を採掘したり</a>、訪問者のコンピューターのキー入力を記録しないことを、どのように保証できるでしょうか？</p>
+	<p>意図的なハッキングである必要さえないのです。サードパーティ製ツールをどんどん調査していくうちに、あるパターンに気付きました。サードパーティベンダーにとっては、選択的に、あるいは慎重になるよりも、すべてを収集する方が簡単な場合があるのです。多くの場合、ユーザーの電子メールはサードパーティ製ツールに入り込み、GDPRやCCPAなどのためにWebサイトオーナーを非常に簡単に窮地に追い込むことになります。</p>
+	<h2 id="-"><strong>今日のサードパーティツールの仕組み</strong></h2>
+	<p>通常、サードパーティをページに追加する場合、HTMLの &nbsp;&lt; head&gt;にJavaScriptのコードの一部を追加するよう求められます。Google Analyticsは圧倒的に人気のあるサードパーティなので、そこでどのように行われるかを確認してみましょう。</p>
+	<pre><code class="language-HTML">&lt;!-- Google Analytics --&gt;
+&lt;script&gt;
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-XXXXX-Y', 'auto');
+ga('send', 'pageview');
+&lt;/script&gt;
+&lt;!-- End Google Analytics --&gt;</code></pre>
+	<p>この場合も、他のほとんどの場合も、貼り付けているスニペットは実際には実行されるJavaScriptコードをさらに呼び出しています。上記のスニペットは、新しい&lt;script&gt;要素を作成し、 &nbsp;<code>https://www.google-analytics.com/analytics.js src</code>属性を与え、DOMに追加しています。ブラウザは <code>analytics.js</code>スクリプトを読み込みます。このスクリプトにはスニペット自体よりも多くのJavaScriptコードが含まれており、時にはブラウザにさらに多くのスクリプトをダウンロードするように要求します。中には &nbsp; <code>analytics.js</code>自身よりも大きなスクリプトも含まれています。しかし、これまでのところ、そもそもGoogle Analyticsを追加した理由ですが、解析データは全く取得されていません。</p>
+	<p>スニペットの最後の行、 <code>ga('send', 'pageview');</code>では、 <code>analytics.js</code>ファイルで定義された関数を使用して、最終的にページビューを送信しています。この関数が必要な理由は、ブラウザの種類、画面解像度、言語などの分析データを取得するためです。そして、すべてのデータを含むURLを作成し、そのURLに対してリクエストを送信します。このステップを経て初めて、分析情報が取得されます。Google Analyticsを使って記録したユーザーの行動イベントは、すべて別のリクエストになります。</p>
+	<p>実際のところ、大半のツールは複数のリソースファイルで構成されており、Webサイトでテストしない限り、ツールの読み込み状況を事前に把握することは実質的に不可能です。<a href="https://requestmap.webperf.tools/" target="_blank">Request Map Generator</a>を使用すると、Webサイトに読み込まれているすべてのリソースを、それらがどのようにお互いを呼び出しているかを含めて視覚的に表示することができます。以下は、当社が作成したデモの電子商取引のWebサイトに関するリクエストマップです。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/12/image6-6.png" class="kg-image" alt="a chart showing all the resources fetched when downloading an example website. The map shows how one resource can end up in a chain of other external resources, that are often coming from untrusted servers and responding with very large payloads."></figure>
+	<p>青い大きな円は当社のWebサイトのリソースで、それ以外の円はすべてサードパーティ製ツールです。大きな緑の円は、実はメインのFacebookピクセル（fbevents.js）のサブリクエストであり、右上のLinkedInなど多くのツールが、ブラウザに多くのネットワークリクエストをさせることを犠牲にして、いくつかのデータを同期するためにリダイレクトチェーンを作っていることが確認できます。</p>
+	<h2 id="--1"><strong>タグマネージャーを動かす新しい場所 - エッジ</strong></h2>
+	<p>サードパーティをより速く、より安全に、そしてプライベートなものにしたいので、サードパーティに対する根本的な新しい考え方と、その実行方法の新しいシステムを開発する必要がありました。サードパーティがブラウザの外でコードを実行しながらも、必要な情報にアクセスでき、必要に応じてDOMと対話できるようなプラットフォームを構築する、という計画を思いつきました。サードパーティが悪者だとは思っていません。彼らは決して皆さんのためにインターネットを遅くするつもりはなく、ただ他に選択肢がなかっただけなのです。エッジでコードを高速に実行できるようになったことで、新しい可能性が開かれ、すべてが変わりましたが、その移行は大変なことです。</p>
+	<p>サードパーティのコードをブラウザの外で実行するようにすることで、複数のメリットを得ることができます。</p>
+	<ul>
+		<li>ウェブサイトの読み込みが速くなり、よりインタラクティブになります。あなたのウェブサイトをレンダリングするブラウザは、最も重要なこと、つまりあなたのウェブサイトに集中することができます。すべてのサードパーティスクリプトのダウンロード、解析、実行は、もはやあなたのウェブサイトのレンダリングとインタラクティブ性を妨げたり、競合したりすることはありません。</li>
+		<li>サードパーティに送信されるデータの制御。サードパーティのツールは、サイトの動作や使用状況を測定するためなどに、ページやブラウザから情報を自動的に収集することがよくあります。多くの場合、<a href="https://www.backblaze.com/blog/privacy-update-third-party-tracking/" target="_blank">この情報は非公開にする必要があります</a>、例えば、ほとんどのツールはdocument.locationを収集しますが、「パスワードのリセット」ページのURLにユーザーの電子メールが含まれているのをよく見かけます。つまり、電子メールは知らず知らずのうちに、通常は同意なしにサードパーティプロバイダーによって送信、保存されているのです。サードパーティの実行をエッジに移すということは、何が送信されているかを完全に可視化することを意味します。つまり、ツールが個人を特定できる情報を収集しようとしたり、サードパーティのサーバーに到達する前にデータのプライベートな部分を隠そうとしたりする場合に、アラートやフィルターを提供することができるのです。この機能は、現在パブリックベータ版では利用できませんが、今日から利用を開始したい場合は、当社にご連絡ください。</li>
+		<li>ブラウザで実行されるコードの量を減らし、その中で実行されるすべてのコードをスキャンすることで、コードが改ざんされていないこと、意図したことだけを実行していることを継続的に検証することができます。Zarazと <a href="https://www.cloudflare.com/ja-jp/page-shield/" target="_blank">Cloudflare Page Shield</a>を接続し、これを自動で行うよう取り組んでいます。</li>
+	</ul>
+	<p>通常のタグマネージャーでサードパーティ製ツールを設定する場合、訪問者のブラウザーの中で、自分では制御できないことがたくさん起こります。タグマネージャーは、どのツールを読み込むかを決定するために、すべてのトリガールールを読み込み、評価します。そして、通常、これらのツールのスクリプトタグをページのDOMに追加し、ブラウザにスクリプトを取得させ、実行させます。これらのスクリプトは、信頼されていない、あるいは起源が不明なものであり、ブラウザで悪意のあるコードが実行される危険性が高くなります。また、スクリプトが完全に実行されるまで、ブラウザがインタラクティブに動作しなくなる可能性もあります。これらのスクリプトは通常、ブラウザ上で自由に動作しますが、最も一般的なのは、その後、何らかの情報を収集し、サードパーティのサーバー上の何らかのエンドポイントに送信することです。Zarazの場合、ブラウザは基本的にそのようなことはしません。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/BLOG-713---Pageload.png" class="kg-image"></figure>
+	<h2 id="cloudflare-workers-"><strong>Cloudflare Workersの選択</strong></h2>
+	<p>Zarazを作るにあたって、インフラストラクチャをどうするかでサービスに大きな影響が出ることはすぐに理解できました。実は、その選択を誤ると、サービスが全く提供されなくなる可能性があるのです。Zarazに代わる最も一般的な選択肢は、従来のタグ管理ソフトウェアです。ユーザーが設定を「公開」するたびに、JavaScriptファイルがレンダリングされ、CDN上の静的アセットとしてホスティングされます。Zarazでは、コードの評価のほとんどをブラウザから排除し、毎回動的に生成されるJavaScriptコードで対応することを目的としています。サーバーサイドのコンポーネントを持ちながら、CDN並みに高速なソリューションを見つける必要がありました。そうでなければ、Webサイトを高速化する代わりに、速度を低下させてしまう恐れがありました。</p>
+	<p>Zarazは、訪問するユーザーの近くにある場所からサービスを提供する必要がありました。世界中にサーバーを設置するのは、まだ若いスタートアップ企業にとってあまりにも大きなタスクに思えたので、いくつかの分散型サーバーレスプラットフォームを検討しました。当社は、この検索に小さな要件リストで取り組みました。</p>
+	<ul>
+		<li><strong>JavaScriptの実行：</strong>サードパーティ製ツールは、すべてJavaScriptを使用しています。それらをクラウド環境で動作するように移植する場合、最も簡単な方法は、JavaScriptも使えるようにするということです。</li>
+		<li><strong>安全性：</strong>当社は機密データを処理しています。EC2インスタンスにハッキングされるリスクは許されません。HTTPレスポンスを送信した後、データがどこかのサーバーに残らないようにすることを望みました。</li>
+		<li><strong>完全にプログラム可能：</strong>CDNの中には、リクエストを処理するための複雑なルールを設定できるものもありますが、HTTPヘッダーの変更、リダイレクトやHTTPレスポンスコードの設定だけでは十分ではありません。当社は、オンザフライでJavaScriptのコードを生成する必要があり、つまり、レスポンスを完全に制御する必要があります。また、外部のJavaScriptライブラリを使用する必要があります。</li>
+		<li><strong>極めて高速でグローバルに展開：</strong>創業間もない頃、すでにアメリカ、ヨーロッパ、インド、イスラエルにお客様がいました。概念実証をお見せする準備をしていたため、どこにいても高速であることを確認する必要がありました。タグマネージャーや顧客データプラットフォームは、応答時間がかなり速いので、CDNで静的にホストされているコンテンツと同じか、それ以上のスピードでレスポンスできる必要がありました。</li>
+	</ul>
+	<p>当初は、世界中で動作するDockerコンテナを作成し、独自のHTTPサーバーを使用する必要があると考えていました。しかし、Y Combinatorのバッチの友人から、Cloudflare Workersをチェックするように言われました。</p>
+	<p>WorkersはNode.jsアプリケーションのようには動かないので、その制限によって当社が望むものが作れないと考えたのです。ユーザーのブラウザからのリクエストは Workers で処理し、実際にデータを処理してサードパーティベンダーに送るという重労働はAWS Lambdaを使って行う予定でした。</p>
+	<p>Workersの最初の試みは非常にシンプルで、オンザフライで生成される動的なブラウザサイドのJavaScriptを実際に返すために使用できることを確認したのみでした。</p>
+	<pre><code class="language-JavaScript">addEventListener('fetch', (event) =&gt; {
+ event.respondWith(handleRequest(event.request))
+})
+ 
+async function handleRequest(request) {
+   let code = '(function() {'
+  
+   if (request.headers.get('user-agent').includes('Firefox')) {
+     code += `console.log('Hello Firefox!');`
+   } else {
+     code += `console.log('Hey other browsers...');`
+   }
+  
+   code += '})();'
+  
+   return new Response(code, {
+     headers: { 'content-type': 'text/javascript' }
+   });
+}
+</code></pre>
+	<p>小さな例でしたが、その後Yairに電話して、「これなら実際に使える！」と話したのを覚えています。Workersの柔軟性を証明したのです。JavaScriptファイルを提供するエンドポイントを作成しただけで、このJavaScriptファイルは動的に生成され、応答時間は10ms未満でした。 <code>&lt; script src="path/to/worker.js"</code> &nbsp;&gt;をHTMLに記述して、このWorkerを通常のJavaScriptファイルのように扱えるようになりました。</p>
+	<p>さらに詳しく見ていくと、Workerがリストからの要求に次々と答えていることがわかり、Workerの中で最も複雑なことを行うこともできることが判明しました。Lambda関数の役割はどんどん小さくなり、最終的には削除されました。当社の小さなNode.jsの概念実証は、簡単にWorkersに変換されました。</p>
+	<h2 id="cloudflare-workers--1"><strong>Cloudflare Workersのプラットフォームを使って「巨人の肩の上に立つ」</strong></h2>
+	<p>シードラウンドを調達した際、「これがうまくいくなら、なぜ今まで作られなかったのか？」といった質問を多く耳にしました。当社ではよく、この問題は長年の課題である一方、アクセス可能なエッジコンピューティングは新しい可能性である、と述べました。その後、プロトタイプの完成後、初めて投資家に報告した際に、信じられないほど高速な応答時間を実現したことを伝えると、「巨人の肩の上に立っているようだ」と多くの賞賛をいただきました。Workersは、当社が求めるすべての条件を満たしていたのです。ブラウザと同じV8エンジンでJavaScriptが動作することで、クラウド上にツールを移植する際にも同じ環境を維持できます（採用にも有利です）。また、将来的に特定のタスクにWebAssemblyを使用する可能性も出てきました。Workersがデフォルトでサーバーレス、ステートレスであることは、私たち自身の信頼性を高めるセールスポイントとなりました。お客様に、間違ってでも個人データを保存することはないとお伝えしましたが、それは本当でした。WebpackとWranglerの統合により、モジュールや外部依存を含む本格的なアプリケーションを記述して、ロジックの100%をWorkerに移行することができました。そして、そのパフォーマンスのおかげで、すべてのデモを成功させることができました。</p>
+	<p>Zarazを作る中で、Workersのプラットフォームはより高度になっていきました。最終的には、ユーザーの設定を保存するためにWorkers KVを、Workers間の通信にDurable Objectsを使うようになりました。メインのWorkerには、50以上の有名なサードパーティ製ツールのサーバーサイド実装が格納されており、従来ブラウザ内で実行されていた数十万行のJavaScriptコードを置き換えています。このリストは増え続けており、最近、サードパーティベンダーが自社ツールのサポートを自分で構築できるようにするための SDK も公開しました。このSDKにより、サードパーティベンダーは、自分たちのツールのサポートを自分たちで構築できるようになりました。</p>
+	<h2 id="--2"><strong>サードパーティーの新しい構築方法</strong></h2>
+	<p>ほとんどのサードパーティ製ツールは、基本的に2つのことを行います。まず、画面の解像度、現在のURL、ページタイトル、cookieの内容など、ブラウザから何らかの情報を収集します。2つ目は、その情報をサーバーに送信することです。単純なことですが、Webサイトにこれらのツールが何十個もあり、それぞれが必要な情報を照会してリクエストを送信する場合、実際の速度低下を引き起こす可能性があります。Zarazでは、これは非常に異なって見えます。すべてのツールは、run関数を提供し、Zarazがユーザーリクエストを評価してツールをロードすることを決定すると、この run関数を実行する。このようにして、当社は50以上の異なるカテゴリーのツールの統合を構築し、サードパーティベンダーがZarazに独自の統合を書き込むことを招待しています。</p>
+	<pre><code class="language-JavaScript">run({system, utils}) { 
+  // The `system` object includes information about the current page, browser, and more 
+  const { device, page, cookies } = system
+  // The `utils` are a set of functions we found useful across multiple tools
+  const { getCookieString, waitUntil } = utils
+
+  // Get the existing cookie content, or create a new UUID instead
+  const cookieName = 'visitor-identifier'
+  const sessionCookie = cookies[cookieName] || crypto.randomUUID()
+
+  // Build the payload
+  const payload = {
+    session: sessionCookie,
+    ip: device.ip,
+    resolution: device.resolution,
+    ua: device.userAgent,
+    url: page.url.href,
+    title: page.title,
+  }
+
+  // Construct the URL
+  const baseURL = 'https://example.com/collect?'
+  const params = new URLSearchParams(payload)
+  const finalURL = baseURL + params
+
+  // Send a request to the third-party server from the edge
+  waitUntil(fetch(finalURL))
+  
+  // Save or update the cookie in the browser
+  return getCookieString(cookieName, sessionCookie)
+}
+</code></pre>
+	<p>上記のコードは、ブラウザではなく、当社のCloudflare Workerで実行されます。以前は、10倍のツールを持つことは、あなたのWebサイトをレンダリングするブラウザが行う必要のある10倍のリクエストと、彼らが評価する必要のある10倍のJavaScriptコードを意味しました。例えば、このコードはほとんどすべてのツールが独自の「cookieの取得」関数を実装しているように繰り返されることがよくあります。また、この10倍以上のコードは、誰も改ざんしていないことを信頼しなければなりません。エッジでツールを実行する場合、これはブラウザにまったく影響しません。好きなだけツールを追加できますが、それらはブラウザで読み込まれないので、何の影響も及ぼしません。</p>
+	<p>この例では、まず「visitor-identifier」というセッションを識別するためのcookieの存在を確認します。それが存在する場合、その値を読み取ります。存在しない場合、それのために新しいUUIDを生成します。 <code>crypto.randomUUID()</code>他のWorkersの機能を使うのと同じように、ここでWorkersの力をすべて利用できることに注意してください。次に、この例のツールが必要とするすべての情報、つまりユーザーエージェント、現在のURL、ページタイトル、画面解像度、クライアントのIPアドレス、そして「訪問者識別」cookieの内容を収集します。Workerがリクエストを送る必要のある最終的なURLを作成し、waitUntilを使って、リクエストがそこに到達することを確認します。Zarazのfetchのバージョンは、当社のツールに自動的なログ記録、データ損失防止、再試行の機能を与えます。</p>
+	<p>最後に、 <code>getCookieString</code> 関数の値を返します。run関数で返された文字列は、ブラウザサイドのJavaScriptとして訪問者に渡されます。この場合、getCookieStringは、 <code>document.cookie = 'visitor-identifier=5006e6fa-7ce6-45ef-8724-c846f1953369; Path=/; Max-age=31536000';</code>、ブラウザにファーストパーティーのcookieを作成させることになる。次にユーザがページをロードする時、 <code>visitor-identifiercooki</code> が存在するはずで、Zarazは新しいものを作る代わりにUUIDを再利用するようになります。</p>
+	<p>このrun機能のシステムにより、各ツールを分離・隔離して他のシステムから独立して動作させながら、ブラウザから来る必要なコンテキストとデータ、そしてWorkersの機能をすべて提供することができるのです。当社は、サードパーティベンダーに、安全でプライベートかつ高速なサードパーティ製ツールの未来を築くために、当社と一緒に働いてくれるよう呼びかけています。</p>
+	<h2 id="--3"><strong>新しいイベントシステム</strong></h2>
+	<p>多くのサードパーティ製ツールは、ユーザーの訪問中に行動情報を収集する必要があります。例えば、ユーザーがクレジットカードのフォームで「送信」をクリックした直後に、会話ピクセルを配置したい場合があります。ツールをクラウドに移行したため、ブラウザのコンテキストからそのライブラリにアクセスすることができなくなりました。そのため、 <code>zaraz.track()</code> のプログラムでツールを呼び出し、オプションでより多くの情報を提供することができるメソッドを作成しました。</p>
+	<pre><code class="language-JavaScript">document.getElementById("credit-card-form").addEventListener("submit", () =&gt; {
+  zaraz.track("card-submission", {
+    value: document.getElementById("total").innerHTML,
+    transaction: "X-98765",
+  });
+});</code></pre>
+	<p>この例では、Zarazに「card-submission」というトリガーを知らせ、いくつかのデータをそれに関連付けます。ID <code>total</code>を持つ要素から取得するトランザクションのvalue、そしてハードコードされてバックエンドから直接出力されるトランザクションコードです。</p>
+	<p>Zarazのインターフェースでは、設定されたツールは異なる複数のトリガーにサブスクライブすることができます。上のコードがトリガーされると、Zarazは、どのツールがカード送信トリガーに登録されているかをエッジでチェックし、適切な追加データを供給してそれらのツールを呼び出し、トランザクションコードとその値でリクエストに入力します。</p>
+	<p>これは、従来のタグマネージャーの仕組みとは異なります。GTMのdataLayer.pushは同様の目的を果たしますが、クライアントサイドで評価されます。その結果、GTM自体を集中的に使用すると、スクリプトが大きくなり、Webサイトが読み込む最も重いツールになる可能性があります。dataLayer.pushを使って送られる各イベントは、ブラウザでコードの評価を繰り返し、評価に合致する各ツールはブラウザでコードを実行し、さらに外部アセットを再度呼び出すかもしれません。これらのイベントは通常、ユーザーのインタラクションに連動しているため、ツールの実行がメインスレッドを占有してしまい、Webサイトとのインタラクションが遅く感じられることがよくあります。Zarazでは、これらのツールはエッジにのみ存在し評価されるため、Webサイトの速度とセキュリティが向上します。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/unnamed-7.png" class="kg-image"></figure>
+	<p>コーダーでなくても、トリガーを使うことはできます。Zarazのダッシュボードでは、クリックリスナーやスクロールイベントなど、定義済みのテンプレートから選んで、コードを触らずにWebサイトのあらゆる要素にアタッチすることが可能です。zaraz.track()と独自のツールをプログラムする機能を組み合わせると、基本的にはワンライナーでWorkersをWebサイトに統合することができるようになります。あなたは好きなバックエンドのコードを書くことができ、Zarazはそれを適切なタイミングで適切なパラメータで呼び出すことを引き受けます。</p>
+	<h2 id="cloudflare-"><strong>Cloudflareへの参加</strong></h2>
+	<p>新しいお客様がZarazを使い始める際、当社はあるパターンに気付きました。当社が一緒に仕事をした最高のチームはCloudflareを選び、バックエンドのインフラストラクチャの一部をWorkersに移行しているチームもありました。当社は、Cloudflareを利用している企業に対しても、パフォーマンスと統合性をさらに向上させられると考えたのです。ページ内のコードの一部をインライン化し、ネットワークリクエストの量をさらに減らすことができるのです。また、Workersを利用してZarazをお客様のドメインにプロキシすることができるため、スクリプトのDNS解決にかかる時間を短縮することができました。Cloudflareとの統合により、当社のサービスはさらに魅力的になりました。</p>
+	<p>2020年の冬にY Combinatorに参加し、サードパーティがWebサイトのパフォーマンスにどれだけ影響を与えるかを理解した時、当社は、サードパーティの肥大化を抑えることで、より速く、プライベートで、安全なWebを作るという大きなミッションを目の前にしていました。このミッションは、今日まで変わりません。Cloudflareとの対話が深まるにつれ、同じビジョンを共有する人々と話していることに気付き、興奮を覚えました。私たちは、インターネット上の何百万ものWebサイトに私たちのソリューションを拡大し、より速く、より安全に、さらには二酸化炭素の排出を削減する機会を得ることができ、感激しています。</p>
+	<p>無料のベータ版を試されたい方は、<a href="https://dash.cloudflare.com/?to=/:account/:zone/zaraz" target="_blank">こちらをクリック</a>してください。追加要件やカスタム要件がおありの企業の方は、<a href="https://www.cloudflare.com/ja-jp/cloudflare-zaraz-third-party-tool-manager-waitlist/" target="_blank">こちらをクリック</a>して順番待ちリストにご登録ください。当社のDiscordチャンネルへのご登録は、<a href="https://discord.gg/cGDT6PdVyd" target="_blank">こちらをクリック</a>してください。<br></p>
+</div>

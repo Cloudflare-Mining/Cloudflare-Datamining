@@ -1,0 +1,27 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/04/image1-24.png" class="kg-image"></figure>
+	<p>各種規模、持續時間和持久性的 DDoS 攻擊不斷激增，使 DDoS 保護成為每個企業和組織線上業務的基礎部分。但是，在選擇 DDoS 保護解決方案時，安全性和風險管理技術專業人員需要評估包括網路容量、管理功能、全域分佈、警報、報告和支援在內的關鍵考慮因素。</p>
+	<h3 id="gartner-ddos-cloudflare-"><strong>Gartner 對 DDoS 解決方案的看法；Cloudflare 的表現如何？</strong></h3>
+	<p>Gartner 最近發表了由 Thomas Lintemuth、Patrick Hevesi 和 Sushil Aryal 撰寫的報告《DDoS 雲端清理中心解決方案的對比》(ID G00467346)。客戶可以查看根據通用評估標準衡量的不同 DDoS 雲端清理中心的並行解決方案比較結果。如果您訂閱了 Gartner，則可以在<a href="https://www.gartner.com/document/3983636" target="_blank">這裡</a>查看報告。報告比較了 Cloudflare 和其他 6 個 DDoS 供應商，共 23 個評估標準，Cloudflare 獲得了最多的「高」評等。</p>
+	<h3 id="ddos-"><strong>DDoS 攻擊的廣泛情況</strong></h3>
+	<p>從我們觀點來看，DDoS 攻擊的性質已經發生了變化，因為發起 DDoS 攻擊的經濟性和易用性已經發生了巨大變化。隨著發動 DDoS 攻擊的成本效益能力逐漸提高，我們發現 10 Gbp s以下的 DDoS 網路級攻擊的數量有所增加，如下圖所示。儘管從攻擊規模的角度來看，10 Gbps 似乎並不大，但已經足以顯著影響現存的大多數網站。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/04/image3-17.png" class="kg-image" alt="Chart"></figure>
+	<p>同時，大型 DDoS 攻擊仍然很普遍，並且能夠削弱組織基礎結構可用性。2020 年 3 月，Cloudflare 觀察到多次 300 Gbps 以上的攻擊，最大的攻擊為 550 Gbps。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/04/image2-22.png" class="kg-image" title="Chart"></figure>
+	<p>在報告中，Gartner 也觀察到了類似的趨勢：<em>「在就此研究與供應商進行交流時，Gartner 發現了一個一致的主題：與較大的巨流量攻擊相比，客戶遭遇較小攻擊的頻率更高。」</em>此外，他們還發現，<em>「對於 Internet 連線速度高達 10 Gbps 或更高的企業，如果沒有 DDoS 保護，則頻繁但短暫的 10 Gbps 攻擊仍然具有破壞性。並不是說大型攻擊已經消失。自 2018 年春季以來，我們再也沒有看到過 1Tbps 以上的攻擊，但是超過 500 Gbps 的攻擊仍然很常見。」</em></p>
+	<p>Gartner 在報告中建議<em>「選擇提供者時，其清理能力要達到您所在洲所記錄的最大巨流量攻擊的三倍。」</em></p>
+	<p>從應用程式級 DDoS 攻擊的角度來看，Cloudflare 去年觀察到並緩解了一種值得深思的 DDoS 攻擊，如下所示。此 HTTP DDoS 攻擊的峰值為每秒 140 萬個請求，這並不是高速率密集型攻擊。但是，發起攻擊的 110 萬個 IP 是唯一的而不是偽造的，這使攻擊十分耐人尋味。唯一的 IP 位址是能夠完成 TCP 和 HTTPS 交握的實際用戶端。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/12/image5.png" class="kg-image"></figure>
+	<h3 id="-cloudflare-ddos-"><strong>利用 Cloudflare 的 DDoS 保護的全部功能</strong></h3>
+	<p>Cloudflare 的雲端交付的 DDoS 解決方案提供了關鍵功能，使安全性專業人員能夠保護其組織和客戶免受最複雜的 DDoS 攻擊。一些主要功能和優點包括：</p>
+	<ul>
+		<li>龐大的網路容量：憑藉超過 35 Tbps 的網路容量，Cloudflare 可以確保您安然挺過最複雜和最大的 DDoS 攻擊。Cloudflare 的網路容量幾乎與其他 6 家領先 DDoS 供應商的總淨化能力相等。</li>
+		<li>全球分佈的體系結構：在全球設置幾個清理中心來緩解 DDoS 攻擊是一種過時的方法。隨著 DDoS 攻擊規模擴大，以及單個攻擊涉及全球範圍內數以百萬計的唯一 IP，DDoS 解決方案就需要從源頭緩解攻擊而不是將流量發送到專用的清理中心。我們在全球 200 個城市的每個資料中心都具有完整的 DDoS 緩解功能，Cloudflare 的網路連接點數量超過 6 家領先 DDoS 供應商的總和。</li>
+		<li>快速的緩解時間：自動化的邊緣分析和邊緣強制 DDoS 緩解功能使我們能夠以前所未有的速度緩解攻擊。緩解 DDoS 攻擊的時間普遍少於 10 秒。</li>
+		<li>整合式安全性：Cloudflare 構建產品時的一大關鍵設計原則是整合。我們的 DDoS 解決方案與 WAF、傀儡程式管理、CDN 等其他產品無縫整合。全面的整合式安全性解決方案可在支援效能的同時增強安全性狀態。同時確保安全性和效能，絕不折衷！</li>
+		<li>無限和非計量的緩解：Cloudflare 提供無限和非計量的 DDoS 緩解。這消除了傳統的「暴增定價」概念，當一家企業受到脅迫並遭受 DDoS 攻擊時，這一概念尤其令人痛苦。這使您能夠避免因流量而帶來不可預測的成本。</li>
+	</ul>
+	<p>無論您是屬於大型跨國企業，還是將 Cloudflare 用於您的個人網站，我們都希望確保您受到保護並具有所需的可見性。DDoS 保護包含在每個 Cloudflare 服務中。企業級計畫包括進階緩解措施、詳細報告、豐富的日誌、生產率提升和細微性控制。Enterprise Plan 客戶還可以存取專門的 Customer Success 和解決方案設計。要瞭解有關 Cloudflare 的 DDoS 解決方案的更多資訊，請<a href="https://www.cloudflare.com/plans/enterprise/contact/" target="_blank">與我們聯繫</a>或<a href="https://dash.cloudflare.com/sign-up" target="_blank">開始使用</a>。</p>
+	<p></p>
+	<p>* Gartner「DDoS 雲端清理中心解決方案比較」，由 Thomas Lintemuth、Patrick Hevesi 和 Sushil Aryal 撰寫，2020 年 4 月 16 日</p>
+</div>

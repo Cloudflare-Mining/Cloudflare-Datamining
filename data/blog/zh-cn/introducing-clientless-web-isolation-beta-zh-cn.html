@@ -1,0 +1,25 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image1-38.png" class="kg-image" alt="Introducing Clientless Web Isolation"></figure>
+	<p>今天，我们隆重宣布推出 Cloudflare 的无客户端 web 隔离测试版。这是一款用于浏览器隔离的新入口，原生集成了 Zero Trust Network Access (ZTNA) 与零日攻击、钓鱼和数据丢失保护的优点，用户可以在任何设备上远程浏览任何网站、内部应用程序或 SaaS 应用程序。所有这些都无需在端点设备上安装任何软件或配置任何证书。</p>
+	<h3 id="-"><strong>安全访问托管和非托管设备</strong></h3>
+	<p>2021 年初，Cloudflare 宣布全面推出浏览器隔离(Browser Isolation)，这是一款快速、安全的远程浏览器，原生集成了 Cloudflare 的 Zero Trust 平台。该平台 — 也被称为 <a href="https://www.cloudflare.com/zh-cn/teams/" target="_blank">Cloudflare for Teams</a> — 其综合了安全的互联网接入与我们的安全 Web 网关解决方案，（<a href="https://www.cloudflare.com/zh-cn/teams/gateway/" target="_blank">网关</a>） 同时使用了 ZTNA 解决方案进行应用程序的安全访问（<a href="https://www.cloudflare.com/zh-cn/teams/access/" target="_blank">Access</a>）。</p>
+	<p>通常，管理员会通过在端点上推出 Cloudflare 的设备客户端来部署浏览器隔离，这样 Cloudflare 就可以成为一个安全的 DNS 和 HTTPS 互联网代理。当管理员管理其团队的设备时，这种模式即可保护用户和敏感的应用程序。对于终端用户来说，这种体验就像使用本地浏览器一样顺畅：他们几乎意识不到，自己实际上是在 Cloudflare 数据中心附近的安全机器上浏览。</p>
+	<p>浏览器隔离与安全互联网访问的端到端集成，使得管理员可以很容易地在其团队中部署浏览器隔离，而用户不会意识到他们实际上是在 Cloudflare 数据中心附近的的安全机器上浏览。然而，管理端点客户端可能会增加非托管设备上的用户或第三方机构管理设备的承包商的配置开销。</p>
+	<p>Cloudflare 的无客户端 web 隔离功能通过一个超链接简化了与远程浏览器的连接（例如： <em>https://&lt;your-auth-domain&gt;.cloudflareaccess.com/browser</em>）。只要用户通过 Cloudflare Access 支持的任何<a href="https://developers.cloudflare.com/cloudflare-one/identity" target="_blank">身份验证供应商</a>进行身份验证，则用户无需安装任何软件，即可在其浏览器使用 HTML5 与附近的 Cloudflare 数据中心的远程浏览器，来建立低延迟连接。无需进行服务器管理和扩展，也无需进行区域配置。</p>
+	<h3 id="--1"><strong>安全浏览高危链接</strong></h3>
+	<p>只需点击电子邮件或网站中的链接，您的浏览器就会下载并执行活动 web 内容的有效负载，这些内容可能会利用未知的零日威胁并破坏端点。</p>
+	<p>Cloudflare 的无客户端 web 隔离可以通过一个前缀 URL 发起（例如：<em>https://&lt;your-auth-domain&gt;.cloudflareaccess.com/browser/https://www.example.com</em>）。只需将您的自定义阻止页、电子邮件网关或工单工具配置为使用浏览器隔离为高风险链接添加前缀，就会自动将高风险点击发送到远程浏览器，保护端点免受可能存在于目标链接上的恶意代码的影响。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image2-21.png" class="kg-image" alt="Screenshot of clientless web isolation homepage"></figure>
+	<p>在 Cloudflare 中，我们使用 Cloudflare 的产品来保护 Cloudflare。而事实上，我们在自己的安全性调查活动中也会使用这种无客户端 web 隔离方法。通过对我们认证域名中的高风险链接添加前缀，我们的安全团队能够安全地调查潜在的恶意网站和钓鱼网站。</p>
+	<p>任何危险代码都无法到达员工设备，同时在他们的调查结束时，远程浏览器被终止，并重置为已知的干净状态，以便他们进行下一次调查。</p>
+	<h3 id="-zero-trust-"><strong>集成 Zero Trust 访问和远程浏览</strong></h3>
+	<p>企业数据只能从托管设备、内部受控网络中访问的时代早已过去。只有当托管设备仅有极少工具来支持承包商或 BYOD 员工时，企业才会依靠严格的设备态势控制验证其应用程序的访问。过去，管理员需要通过部署成本高昂的、资源密集型的虚拟桌面基础结构(Virtual Desktop Infrastructure, VDI)环境来解决这一问题。</p>
+	<p>此外，当涉及到保护应用程序访问时，Cloudflare Access 在不需要在用户设备上安装任何客户端软件的情况下，能够将最低权限、默认拒绝策略出色地应用到基于 web 的应用程序上。</p>
+	<p>Cloudflare 无客户端 web 隔离增加了 ZTNA 用例，允许受 <a href="https://developers.cloudflare.com/cloudflare-one/tutorials/require-swg#build-a-gateway-rule-in-access" target="_blank">Access 和网关</a>保护的应用程序利用浏览器隔离进行<a href="https://docs.google.com/document/d/1YzcoC5WVxCYtVSriZW0ETeTzX9HEVxjKXdAEGeND3l8/edit" target="_blank">数据保护控制</a>，如本地打印控制，剪贴板和文件上传/下载限制，以防止敏感数据传输至非托管设备。</p>
+	<p>隔离链接可以作为<a href="https://developers.cloudflare.com/cloudflare-one/applications/bookmarks" target="_blank">书签</a>很容易地添加到 Access <a href="https://developers.cloudflare.com/cloudflare-one/applications/app-launcher" target="_blank">应用启动器</a>，只需点击一下，即可让您的团队和承包商轻松地访问任何站点。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image3-13.png" class="kg-image" alt="Screenshot of Access App Launcher bookmark linking to Browser Isolation"></figure>
+	<p>最后，仅仅因为远程浏览器减少了破坏的影响，并不意味着浏览器可以不受管控地访问互联网。Cloudflare 的 SWG 解决方案（网关）能够保护、检查和记录从远程浏览器到目标网站的所有流量，确保通过 HTTP 策略和<a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering/http-policies/antivirus-scanning" target="_blank">反病毒扫描对已知威胁进行过滤</a>。</p>
+	<h3 id="-web-"><strong>加入无客户端 web 隔离测试版</strong></h3>
+	<p>对于已经将浏览器隔离添加到其计划中的 Cloudflare for Teams 用户，Cloudflare 将提供无客户端 web 隔离功能。我们将很快开放 Cloudflare 无客户端 web 隔离测试访问。如果您有兴趣参加， <a href="https://www.cloudflare.com/zh-cn/zero-trust/lp/clientless-web-isolation-beta/" target="_blank">请在此注册</a>，优先接收我们的消息。</p>
+	<p>我们很高兴能看到无客户端 web 隔离模式保护浏览和应用程序的访问的使用案例。如今，任何规模的团队都可以向世界上任何地方的非托管设备提供无缝的 Zero Trust 连接。<br></p>
+</div>

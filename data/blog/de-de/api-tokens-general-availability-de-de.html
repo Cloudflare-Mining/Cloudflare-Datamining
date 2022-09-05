@@ -1,0 +1,75 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/08/API-tokens@2x.png" class="kg-image"></figure>
+	<h2 id="apis-bei-cloudflare"><strong>APIs bei Cloudflare</strong></h2>
+	<p>Heute kündigen wir die allgemeine Verfügbarkeit von API-Token an – eine skalierbare und sicherere Möglichkeit für die Arbeit mit der Cloudflare-API. Um ein besseres Internet zu schaffen, ist Cloudflare bestrebt, die Verwaltung der Webpräsenz eines Kunden an der Edge zu vereinfachen. Zum Teil tun wir das dadurch, dass alle unsere Produkte und Dienste per API konfigurierbar sind. Ob Partner, Unternehmen oder Entwickler, alle Kunden möchten die Cloudflare-Verwaltung automatisieren. Manchmal geschieht dies <a href="https://api.cloudflare.com/" target="_blank">direkt über unsere API</a> und manchmal über Open-Source-Software, die wir mitpflegen, zum Beispiel unser <a href="https://www.terraform.io/docs/providers/cloudflare/" target="_blank">Terraform-Provider</a> oder die <a href="https://github.com/cloudflare/cloudflare-go" target="_blank">Cloudflare-Go-Bibliothek</a>. Dabei ist entscheidend, dass Kunden bei der Automatisierung der Cloudflare-Verwaltung keine Kompromisse bei der Sicherheit der Cloudflare-Dienste eingehen müssen.</p>
+	<h2 id="minimale-rechte-least-privilege-warum-eigentlich"><strong>Minimale Rechte (</strong><em><strong>least privilege</strong></em><strong>) – warum eigentlich?</strong></h2>
+	<p>Das Absichern von Softwaresystemen ist schwierig. Damit Fehler oder böswillige Aktionen möglichst wenig Auswirkungen haben, kann man die Handlungsmöglichkeiten eines einzelnen Softwareelements einschränken. Das <a href="https://en.wikipedia.org/wiki/Principle_of_least_privilege" target="_blank">Prinzip der minimalen Rechte (<em>least privilege</em>)</a> dient dazu, festzulegen, welche Zugriffsrechte ein bestimmtes System haben sollte, um Aktionen auszuführen. In der ursprünglichen Formulierung von Jerome Saltzer lautet es: „Jedes Programm und jeder berechtigte Benutzer des Systems sollte mit den geringstmöglichen Rechten ausgestattet sein, die notwendig sind, um die Aufgabe zu erfüllen.“ Bei Cloudflare haben viele Kunden verschiedene Domains, die Traffic routen und dazu verschiedene Dienste nutzen. Wenn ein böswilliger Akteur unbefugten Zugriff auf ein System erhält, kann er den Zugriff dieses Systems nutzen, um weiteren Schaden anzurichten oder weitere Daten zu stehlen.</p>
+	<p>Sehen wir uns an, wie die Leistungsmerkmale von API-Token zum Prinzip der minimalen Rechte passen.</p>
+	<h2 id="-ber-api-token"><strong>Über API-Token</strong></h2>
+	<p>API-Token haben drei wesentliche Leistungsmerkmale:</p>
+	<ol>
+		<li>Beschränkung von API-Token nach Cloudflare-Ressource</li>
+		<li>Beschränkung von API-Token nach Berechtigung</li>
+		<li>Die Möglichkeit, mehrere API-Token bereitzustellen</li>
+	</ol>
+	<p>Schauen wir uns jedes dieser Merkmale im einzelnen an:</p>
+	<h3 id="beschr-nkung-von-api-token-nach-cloudflare-ressource"><strong>Beschränkung von API-Token nach Cloudflare-Ressource</strong></h3>
+	<p>Cloudflare trennt die Dienstkonfigurationen nach Zone, die in der Regel einer Domain entspricht. Darüber hinaus haben einige Kunden mehrere Konten mit jeweils vielen Zonen. Es ist wichtig, dass ein Dienst, der API-Zugriff bekommt, nur Zugriff auf die Kontenressourcen und Zonen hat, die für die betreffende Aufgabe relevant sind. API-Token können auf bestimmte Konten und Zonen eingeschränkt werden. Ein häufiger Anwendungsfall ist dieser: Nehmen wir an, Sie haben eine Staging-Zone und eine Produktionszone. Ein API-Token kann so eingeschränkt werden, dass nur die Staging-Zone beeinflusst werden kann und kein Zugriff auf die Produktionszone möglich ist.</p>
+	<h3 id="beschr-nkung-von-api-token-nach-berechtigung"><strong>Beschränkung von API-Token nach Berechtigung</strong></h3>
+	<p>Es ist sehr praktisch, dass man ein API-Token auf eine bestimmte Zone einschränken kann, aber in einer Zone gibt es viele verschiedene Dienste, die konfiguriert werden können: Firewall-Regeln, Seitenregeln und Load Balancer, um nur einige zu nennen. Wenn ein Dienst bei einem Kunden nur die Aufgabe hat, als Reaktion auf Traffic-Muster neue Firewall-Regeln zu erstellen, man diesem Dienst aber auch das Ändern von DNS-Einträgen gestattet, dann ist dies eine Verletzung des Prinzips der minimalen Rechte. Mit API-Token können Sie jedes Token auf bestimmte Berechtigungen einschränken. Mehrere Berechtigungen können kombiniert werden, um benutzerdefinierte Token für bestimmte Anwendungsfälle zu erstellen.</p>
+	<h3 id="mehrere-api-token"><strong>Mehrere API-Token</strong></h3>
+	<p>Wenn Sie Cloudflare zum Schutz und zur Beschleunigung mehrerer Dienste verwenden, nehmen Sie möglicherweise von mehreren Standorten aus API-Änderungen an Cloudflare vor, zum Beispiel über verschiedene Server, VMs, Container oder Worker. Die Möglichkeit, pro Dienst ein API-Token zu erstellen, bedeutet, dass jeder Dienst von Änderungen durch einen anderen isoliert ist. Wenn ein API-Token geleakt wurde oder „gerollt“ werden muss, hat dies keine Auswirkungen auf die API-Token der anderen Dienste. Die zuvor genannten Leistungsmerkmale bedeuten auch, dass jeder Dienst genau auf die erforderlichen Aktionen und Ressourcen eingeschränkt werden kann. Auf diese Weise können Kunden das Prinzip der minimalen Rechte für den Zugriff auf Cloudflare per API besser umsetzen.</p>
+	<p>Gehen wir nun einmal durch, wie man ein API-Token erstellt und verwendet.</p>
+	<h2 id="api-token-verwenden"><strong>API-Token verwenden</strong></h2>
+	<p>Um Ihr erstes API-Token zu erstellen, gehen Sie in Ihrem Benutzerprofil zum Abschnitt „API-Token“. Sie finden ihn hier: <a href="https://dash.cloudflare.com/profile/api-tokens" target="_blank">dash.cloudflare.com/profile/api-tokens</a></p>
+	<p>1. Auf dieser Seite finden Sie neben dem globalen API-Schlüssel (Global API Key) und dem Schlüssel der Ursprungs-Zertifizierungsstelle (Origin CA Key) eine Liste aller API-Token.</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/08/api_1_delay.gif" class="kg-image">
+		<figcaption>Einstieg in API-Token – Token erstellen</figcaption>
+	</figure>
+	<p>Um Ihr erstes API-Token zu erstellen, wählen Sie „Token erstellen“.</p>
+	<hr>
+	<p>2. Auf dem Erstellungsbildschirm gibt es zwei Möglichkeiten, das Token zu erstellen. Sie können es über die Option „Benutzerdefiniert“ ganz von vorn erstellen oder mit einer vordefinierten Vorlage beginnen; für Letzteres wählen Sie „Mit einer Vorlage starten“ aus.</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/08/api_2_delay.gif" class="kg-image">
+		<figcaption>Auswahl einer Vorlage für ein API-Token</figcaption>
+	</figure>
+	<p>In diesem Fall verwenden wir die Vorlage „Zonen-DNS bearbeiten“, um ein API-Token zu erstellen, das die DNS-Einträge einer einzelnen Zone bearbeiten kann.</p>
+	<hr>
+	<p>3. Nach der Auswahl der Vorlage müssen wir eine Zone auswählen, auf die das API-Token eingeschränkt werden soll. Beachten Sie, dass die Berechtigung zur DNS-Bearbeitung bereits voreingestellt war.</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/08/api_2_delay.gif" class="kg-image">
+		<figcaption>Angabe der Zone, für die das Token DNS steuern kann</figcaption>
+	</figure>
+	<p>In diesem Fall wird „garrettgalow.com“ als die Cloudflare-Zone ausgewählt, für die das API-Token DNS-Einträge bearbeiten kann.</p>
+	<hr>
+	<p>4. Sobald ich „Weiter zur Zusammenfassung“ ausgewählt habe, kann ich meine Auswahl noch einmal überprüfen. In diesem Fall sind die Ressourcen und Berechtigungen recht einfach, aber hier haben Sie noch einmal die Chance, sich zu vergewissern, dass das API-Token genau den richtigen Umfang an Berechtigungen bekommt, bevor Sie es erstellen.</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/08/api_4_delay.gif" class="kg-image">
+		<figcaption>Token-Zusammenfassung – Bestätigung</figcaption>
+	</figure>
+	<hr>
+	<p>5. Nach der Erstellung wird uns das API-Token angezeigt. Dieser Bildschirm ist die einzige Gelegenheit, bei der Sie den Geheimschlüssel (<em>secret</em>) zu sehen bekommen. Bewahren Sie diesen Geheimschlüssel also unbedingt sicher auf! Jeder, der diesen Geheimschlüssel kennt, kann die Aktionen für die angegebenen Ressourcen ausführen, zu denen es berechtigt. Schützen Sie ihn also wie ein Kennwort. Im folgenden Screenshot habe ich den Geheimschlüssel natürlich geschwärzt. Wenn Sie den Geheimschlüssel verlieren sollten, können Sie ihn immer aus der API-Token-Tabelle wiederherstellen, sodass Sie nicht alle Berechtigungen erneut konfigurieren müssen.</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/08/api_5_success.png" class="kg-image">
+		<figcaption>Bildschirm „Tokenerstellung, Abschluss“ mit dem Geheimschlüssel des Tokens</figcaption>
+	</figure>
+	<p>Zusätzlich zum Geheimschlüssel wird auf diesem Bildschirm eine Muster-Anfrage für curl angezeigt. Hiermit kann man überprüfen, ob das Token erfolgreich erstellt wurde. Außerdem liefert er ein Beispiel dafür, wie das Token bei allen direkten HTTP-Anforderungen verwendet werden muss. Mit API-Token halten wir nun den <a href="https://tools.ietf.org/html/rfc6750#section-2.1" target="_blank">Standard für RFC Authorization Bearer</a> ein. Wenn wir diese API aufrufen, bekommen wir eine Antwort, die aussagt, dass das Token gültig und aktiv ist:</p>
+	<pre><code class="language-js">~$ curl -X GET "https://api.cloudflare.com/client/v4/user/tokens/verify" \
+&gt;      -H "Authorization: Bearer vh9awGupxxxxxxxxxxxxxxxxxxx" \
+&gt;      -H "Content-Type:application/json" | jq
+
+{
+  "result": {
+    "id": "ad599f2b67cdccf24a160f5dcd7bc57b",
+    "status": "active"
+  },
+  "success": true,
+  "errors": [],
+  "messages": [
+    {
+      "code": 10000,
+      "message": "This API Token is valid and active",
+      "type": null
+    }
+  ]
+}</code></pre>
+	<h2 id="wie-geht-es-weiter"><strong>Wie geht es weiter?</strong></h2>
+	<p>Allen Anwendern der Cloudflare-API empfehlen wir, ab sofort API-Token statt der bisherigen API-Schlüssel zu verwenden. Gleichzeitig mit dieser Bekanntmachung werden unser <a href="https://www.terraform.io/docs/providers/cloudflare/" target="_blank">Terraform-Provider</a>, die <a href="https://github.com/cloudflare/cloudflare-go" target="_blank">Cloudflare-Go-Bibliothek</a> und das <a href="https://github.com/cloudflare/Cloudflare-WordPress" target="_blank">WordPress-Plugin</a> auf API-Token-Kompatibilität aktualisiert. Andere Bibliotheken werden in Kürze ebenfalls aktualisiert. Vorerst werden sowohl API-Token als auch API-Schlüssel unterstützt, um eine sichere Migration zu gewährleisten. Wir haben noch mehr Funktionen für API-Token geplant, mit denen wir noch besser absichern wollen, wie und wann Token verwendet werden, achten Sie also auf weitere Ankündigungen!</p>
+	<p>Sagen Sie uns in der <a href="https://community.cloudflare.com/" target="_blank">Cloudflare Community</a>, was Sie denken und was Sie sich in Bezug auf API-Sicherheit als Nächstes wünschen würden.</p>
+</div>

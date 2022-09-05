@@ -1,0 +1,86 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/12/image4-26.png" class="kg-image"></figure>
+	<p>Aujourd'hui, nous sommes heureux d'annoncer une nouvelle façon puissante et flexible d'explorer vos métriques et journaux Cloudflare, avec une API conforme à la <a href="https://graphql.org/" target="_blank">spécification GraphQL</a> standard de l'industrie. Avec notre nouvelle API GraphQL Analytics, toutes vos données de performance, de sécurité et de fiabilité sont disponibles en un même point. Vous pouvez sélectionner exactement ce dont vous avez besoin, qu'il s'agisse d'une métrique pour un domaine ou de plusieurs métriques agrégées pour tous vos domaines. Vous pouvez poser des questions comme <em>« Combien d'octets mis en cache ont été retournés pour ces trois domaines? »</em> Ou, <em>« Combien de demandes tous les domaines de mon compte ont-ils reçu ? »</em> Ou même, <em>« Quel effet a eu la modification de ma règle de pare-feu il y a une heure sur les réponses que mes utilisateurs voyaient »</em></p>
+	<p>Le standard GraphQL dispose également de solides <a href="https://graphql.org/community/" target="_blank">ressources communautaires</a>, depuis la documentation étendue jusqu’aux clients frontaux, ce qui facilite la création de requêtes simples et votre travail de création de tableaux de bord d’analyse sophistiqués.</p>
+	<h3 id="de-plusieurs-api-"><strong>De plusieurs API...</strong></h3>
+	<p>Fournir des informations a toujours été une partie essentielle de l'offre de Cloudflare. Après tout, en utilisant Cloudflare, vous comptez sur nous pour les éléments clés de votre infrastructure, et nous devons donc nous assurer que vous disposez des données nécessaires pour gérer, surveiller et dépanner votre site Web, votre application ou votre service. Au fil du temps, nous avons développé quelques API de données clés, notamment celles qui fournissent des informations sur le trafic de votre domaine, les requêtes DNS et les événements de pare-feu. Cette approche avec plusieurs API était acceptable alors que nous n'avions que quelques produits, mais nous avons commencé à rencontrer quelques difficultés à mesure que nous ajoutions plus de produits et d’analyses. Nous ne pouvions pas nous attendre à ce que les utilisateurs adoptent une nouvelle API d'analyse chaque fois qu'ils commencent à utiliser un nouveau produit. En fait, certains clients et partenaires qui comptaient sur plusieurs de nos produits commençaient déjà à être déconcertés par les différentes API.<br></p>
+	<p>L'approche à plusieurs API a également affecté la rapidité avec laquelle nous pouvions développer de nouvelles analyses dans le tableau de bord Cloudflare, qui est utilisé par plus de personnes pour l'exploration des données que nos API. Chaque fois que nous construisions un nouveau produit, nos équipes d'ingénierie produit devaient implémenter une API d'analyse correspondante, que notre équipe d'ingénierie d'interface utilisateur devait ensuite apprendre à utiliser. Ce processus pourrait prendre jusqu'à plusieurs mois pour chaque nouvel ensemble de tableaux de bord analytiques.</p>
+	<h3 id="-une-seule"><strong>... à une seule</strong></h3>
+	<p>Notre nouvelle API GraphQL Analytics résout ces problèmes en donnant accès à toutes les analyses Cloudflare. Elle offre une syntaxe standard et flexible pour décrire exactement les données dont vous avez besoin et fournit des réponses prévisibles et cohérentes. Cette approche en fait un outil idéal pour :</p>
+	<ol>
+		<li>L’exploration des données. Vous pouvez y penser comme un moyen d'interroger votre propre entrepôt de données virtuel, rempli de métriques et de journaux sur la performance, la sécurité et la fiabilité de votre propriété Internet.</li>
+		<li>Construire des tableaux de bord étonnants, qui permettent de filtrer, trier, explorer ou cumuler de manière souple. La création de ce type de tableaux de bord nécessiterait normalement de payer des milliers de dollars pour un outil d'analyse spécialisé. Vous en bénéficiez directement comme une partie de notre produit et vous pouvez les personnaliser pour vous-même en utilisant l'API.</li>
+	</ol>
+	<p>Dans un post complémentaire qui a également été publié aujourd'hui, mon collègue Nick parle de l'utilisation de l'API GraphQL Analytics pour créer des tableaux de bord. Par conséquent, je me concentrerai dans ce poste sur des exemples d’utilisation de l'API pour explorer vos données. Pour faire les requêtes, je vais utiliser <a href="https://electronjs.org/apps/graphiql" target="_blank"><em>GraphiQL</em></a>, un outil de requête open-source populaire qui tire profit des capacités de GraphQL.</p>
+	<h3 id="introspection-quelles-sont-les-donn-es-disponibles"><strong>Introspection : quelles sont les données disponibles ?</strong></h3>
+	<p>La première chose que vous vous demandez peut-être est la suivante : si l'API GraphQL Analytics offre un accès à autant de données, comment puis-je savoir les données qui sont effectivement disponibles, et comment puis-je le demander ? GraphQL rend cette tâche facile en offrant « l’introspection», c'est-à-dire que vous pouvez interroger l'API elle-même pour voir les ensembles de données disponibles, les champs et leurs types, ainsi que les opérations que vous pouvez effectuer. <em>GraphiQL </em>utilise cette fonctionnalité pour fournir un « Explorateur de documentation », l’autocomplétion des requêtes et la validation de la syntaxe. Par exemple, voici comment je peux voir tous les ensembles de données disponibles pour une zone (domaine) :</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/12/image7-3.gif" class="kg-image"></figure>
+	<p>Si je suis en train d'écrire une requête et que je suis intéressé par des données sur des événements de pare-feu, l’autocomplétion m'aidera à trouver rapidement les ensembles de données et les champs pertinents :</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/12/image6-3.gif" class="kg-image"></figure>
+	<h3 id="requ-tes-exemples-de-questions-que-vous-pouvez-poser"><strong>Requêtes : exemples de questions que vous pouvez poser</strong></h3>
+	<p>Disons que vous avez fait une annonce importante sur un produit et que vous vous attendez à un afflux de demandes sur votre blog, votre application et plusieurs autres zones (domaines) de votre compte. Vous pouvez vérifier si cet afflux se matérialise en demandant les requêtes agrégées sur votre compte, dans les 30 minutes qui suivent votre annonce, réparties par les minutes :</p>
+	<pre><code class="language-json">{
+ viewer { 
+   accounts (filter: {accountTag: $accountTag}) {
+     httpRequests1mGroups(limit: 30, filter: {datetime_geq: "2019-09-16T20:00:00Z", datetime_lt: "2019-09-16T20:30:00Z"}, orderBy: [datetimeMinute_ASC]) {
+	  dimensions {
+		datetimeMinute
+	  }
+	  sum {
+		requests
+	  }
+	}
+   }
+ }
+}</code></pre>
+	<p>Voici la première partie de la réponse, indiquant les demandes pour votre compte, par les minutes :</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/12/Screen-Shot-2019-09-17-at-2.21.41-PM-2.png" class="kg-image"></figure>
+	<p>Maintenant, disons que vous voulez comparer le trafic arrivant à votre blog par rapport à votre site de marketing au cours de la dernière heure. Vous pouvez le faire en une seule requête, en demandant le nombre de requêtes pour chaque zone :</p>
+	<pre><code class="language-json">{
+ viewer {
+   zones(filter: {zoneTag_in: [$zoneTag1, $zoneTag2]}) {
+     httpRequests1hGroups(limit: 2, filter: {datetime_geq: "2019-09-16T20:00:00Z",
+datetime_lt: "2019-09-16T21:00:00Z"}) {
+       sum {
+         requests
+       }
+     }
+   }
+ }
+}</code></pre>
+	<p>Voici la réponse :</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/12/image5-20.png" class="kg-image"></figure>
+	<p>Enfin, disons que vous constatez une augmentation des réponses d'erreur. Cela pourrait-il être lié à une attaque ? Vous pouvez consulter les codes d'erreur et les événements de pare-feu des 15 dernières minutes, par exemple :</p>
+	<pre><code class="language-json">{
+ viewer {
+   zones(filter: {zoneTag: $zoneTag}) {
+     httpRequests1mGroups (limit: 100,
+filter: {datetime_geq: "2019-09-16T21:00:00Z",
+datetime_lt: "2019-09-16T21:15:00Z"}) {
+       sum {
+         responseStatusMap {
+           edgeResponseStatus
+           requests
+         }
+       }
+     }
+    firewallEventsAdaptiveGroups (limit: 100,
+filter: {datetime_geq: "2019-09-16T21:00:00Z",
+datetime_lt: "2019-09-16T21:15:00Z"}) {
+       dimensions {
+         action
+       }
+       count
+     }
+    }
+  }
+}</code></pre>
+	<p>Notez que, dans cette requête, nous examinons plusieurs ensembles de données à la fois, en utilisant un identificateur de zone commun pour les « unir ». Voici les résultats :</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/12/image3-29.png" class="kg-image"></figure>
+	<p>En examinant les deux ensembles de données en parallèle, nous pouvons voir une corrélation: 31 demandes ont été « abandonnées » ou bloquées par le pare-feu, exactement comme le nombre de réponses « 403 ». Ainsi, les 403 réponses résultaient des actions du pare-feu.</p>
+	<h3 id="essayez-d-s-aujourd-hui"><strong>Essayez dès aujourd'hui</strong></h3>
+	<p>Pour en savoir plus sur l'API GraphQL Analytics et commencer à explorer vos données Cloudflare, suivez le guide <em>« </em>Getting started <em>» </em>(Démarrer) dans notre <a href="https://developers.cloudflare.com/analytics/graphql-api/getting-started/" target="_blank">documentation pour développeurs</a>, qui contient également des détails sur les ensembles de données actuels et les périodes disponibles. Nous allons ajouter d'autres ensembles de données au fil du temps, vous pouvez donc profiter de la fonction d'introspection pour voir les dernières données disponibles.<br></p>
+	<p>Enfin, pour faire place à la nouvelle API, l'API d'analyse de zone est maintenant obsolète et sera supprimée le 31 mai 2020. Les données fournies par Zone Analytics sont disponibles à partir de l'API GraphQL Analytics. Si vous utilisez actuellement l'API directement, veuillez suivre notre <a href="https://developers.cloudflare.com/analytics/migration-guides/zone-analytics/" target="_blank">guide de migration</a> pour modifier vos appels API. Si vous obtenez vos analyses à l'aide du tableau de bord Cloudflare ou de notre <a href="https://docs.datadoghq.com/integrations/cloudflare/" target="_blank">intégration Datadog</a>, vous n'avez rien à faire.</p>
+	<h3 id="une-derni-re-chose-"><strong>Une dernière chose...</strong></h3>
+	<p>Dans les exemples d'API ci-dessus, si vous trouvez utile d'obtenir des analyses agrégées pour tous les domaines de votre compte, nous avons autre chose qui pourrait vous intéresser : un tout nouveau <a href="https://dash.cloudflare.com/?account=analytics" target="_blank">tableau de bord d'analyses</a> (en version bêta) qui fournit ces mêmes informations. Si votre compte comporte de nombreuses zones, le tableau de bord est utile pour connaître les informations récapitulatives sur les paramètres tels que les requêtes, la bande passante, le taux de cache et le taux d'erreur. Essayez-le et faites-nous savoir ce que vous en pensez en utilisant le lien « feedback » au-dessus du nouveau tableau de bord.<br><br></p>
+</div>

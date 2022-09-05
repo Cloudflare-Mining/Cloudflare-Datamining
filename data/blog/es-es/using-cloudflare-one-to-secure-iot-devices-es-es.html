@@ -1,0 +1,162 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/Magic-IoT.png" class="kg-image"></figure>
+	<p>Es posible que tengas un dispositivo poco seguro con una vulnerabilidad explotable en tu casa, en la oficina y probablemente también en el colegio de tus hijos. Las cámaras, las impresoras, los altavoces, los lectores de control de acceso, los termostatos, incluso los monitores cardíacos son, o pueden ser, dispositivos IoT (Internet de las cosas). Se integran de manera eficaz en nuestra vida diaria para mejorar la eficiencia y el control de nuestros entornos, pero es bien sabido que son poco seguros. Ello se debe a la naturaleza limitada del hardware de dispositivos y su escasa capacidad de cálculo, que a menudo se ha traducido en la reducción de los controles de acceso, el codificado de contraseñas de forma rígida y la incapacidad de aplicar parches de forma remota.</p>
+	<p>La realidad de esta amenaza puede ser dramática. Pensemos, por ejemplo, en el <a href="https://blog.cloudflare.com/inside-mirai-the-infamous-iot-botnet-a-retrospective-analysis/">ataque de la botnet Mirai en 2016</a>, en el que los <em>hackers</em> explotaron millones de dispositivos IoT hasta volverse una botnet a gran escala capaz de lanzar ataques DDoS que interrumpieron servicios importantes de Internet, como Twitter, The Guardian y CNN. Este tipo de ataques no es algo infrecuente. Cloudflare sufrió esta realidad de primera mano en marzo de 2021, cuando uno de nuestros proveedores potenciales de cámaras de seguridad física, Verkada, quedó expuesto. El incidente permitió a un <em>hacker</em> acceder a las herramientas de soporte interno de Verkada para gestionar las cámaras de forma remota, lo que le permitió intentar desplazarse lateralmente a otros dispositivos de la red. Por suerte, nuestro modelo de seguridad Zero Trust <a href="https://blog.cloudflare.com/about-the-march-8-9-2021-verkada-camera-hack/">evitó que los hackers se desplazaran lateralmente</a>. El incidente solo afectó a las cámaras, nada más.</p>
+	<p>Sin embargo, pese a no resultar afectados, consideramos este tipo de incidentes como un reto para seguir perfeccionando nuestros productos de seguridad. Así que nos preguntamos: ¿podemos utilizar nuestros productos para proteger los propios dispositivos IoT, incluso en la misma red que los sistemas de producción, y garantizar así el aislamiento de cualquier riesgo de estos dispositivos claramente poco seguros? Con Cloudflare One, la respuesta es sí.</p>
+	<h3 id="soluciones-actuales-seguridad-con-cierto-grado-de-complejidad"><strong>Soluciones actuales: seguridad con cierto grado de complejidad</strong></h3>
+	<h3 id="modelo-zero-trust">Modelo Zero Trust</h3>
+	<p>Como ya se ha mencionado, Cloudflare no se vio afectado por el riesgo al que quedaron expuestos los dispositivos IoT porque utilizamos un modelo de seguridad Zero Trust. Si las consideraciones del entorno son adecuadas, como en las oficinas corporativas de Cloudflare, la red empresarial se puede proteger con una arquitectura Zero Trust. Se evita el movimiento lateral porque para atacar cualquier otra parte de la red se requiere autenticación para el acceso. Dado que el propio dispositivo IoT no está aislado, hay que prestar mucha atención para que el resto de puntos de entrada a la red queden detrás de un acceso Zero Trust.</p>
+	<p>Sin embargo, no todos los entornos se pueden controlar de manera tan minuciosa. Véase, por ejemplo, los centros de datos. La presencia de otros proveedores, la complejidad de las antiguas redes de producción y la prevalencia de las conexiones entre dispositivos impiden que al instalar un dispositivo IoT (como un lector de acceso o una cámara) podamos ofrecer las mismas garantías de Zero Trust que en nuestras oficinas corporativas. Conforme aumenta la complejidad del entorno, resulta más difícil implementar con éxito un modelo Zero Trust para evitar el movimiento lateral de los dispositivos IoT.</p>
+	<h3 id="vlan">VLAN</h3>
+	<p>Muchas empresas implementan sus dispositivos IoT en una red completamente independiente del sistema de producción, utilizando una red fuera de banda o VLAN. Si bien las VLAN aislan la capa 2, requieren listas de acceso en su interfaz del enrutador ascendente para restringir el tráfico de la capa 3. Además, muchos administradores de red quieren configuraciones adicionales para obtener garantías más estrictas, como listas de acceso tanto para el tráfico de entrada como de salida, y registros tanto de las conexiones correctas como denegadas. La gestión de estas listas de acceso puede aumentar rápidamente en complejidad. Cada nueva red es otro entorno que proteger, parchear y detectar.</p>
+	<p>Si no se configuran de forma adecuada, las garantías de seguridad de las VLAN se pueden ver fácilmente socavadas. Tomemos como ejemplo una red con dos VLAN independientes. Si las listas de acceso no se aplican de forma coherente a los dos conmutadores respectivos, un dispositivo de una VLAN pirateado podría pasar con facilidad a un dispositivo de la otra VLAN. Un administrador de red podría utilizar <a href="https://en.wikipedia.org/wiki/Private_VLAN#:~:text=Private%20VLAN%2C%20also%20known%20as,ports%2C%20and%20a%20single%20uplink." target="_blank">VLAN privadas</a> por cada conmutador pero, de nuevo, esto añade una mayor complejidad.</p>
+	<p>Para implementar con éxito las VLAN y evitar el movimiento lateral se requieren configuraciones y elecciones arquitectónicas coherentes, desde reglas para listas de acceso hasta el tipo de equipo utilizado en cada sitio. Esta complicación se agrava conforme aumenta el número de sitios y se amplía la huella de un entorno.</p>
+	<h3 id="la-soluci-n-de-cloudflare">La solución de Cloudflare</h3>
+	<p>Utilizamos nuestros propios productos para aislar los dispositivos sin necesidad de implementación en una red independiente. De este modo, ofrecemos garantías de seguridad sin hardware adicional. Se trata de una solución sin servidor y sin infraestructura para aislar una red.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/Magic-x-IoT.png" class="kg-image"></figure>
+	<p>¿Cómo se hace? El dispositivo de hardware (para nuestra prueba de concepto, una cámara Verkada) se conecta a un conmutador PoE (Power over Ethernet), que se configura para crear un túnel que dirija tu tráfico hasta la red global de Cloudflare a través de Anycast GRE. Allí, podemos configurar reglas desde el panel de control de Cloudflare para escribir reglas de salida que garanticen que el tráfico saliente solo va a donde se supone que debe ir. De esta manera, se evita el movimiento lateral.</p>
+	<p>Esta arquitectura permite a un administrador de red controlar el tráfico de la capa 3 y superiores desde un único panel de control, aplicando políticas al tráfico de entrada y salida de forma instantánea. Además, ofrece una solución sencilla "sin supervisión" que se puede adaptar a un entorno cambiante. La protección es independiente del proveedor, utiliza estándares comunes y la recopilación de registros es automática. En comparación con otros métodos de protección contra el movimiento lateral, Cloudflare ofrece mayor facilidad, adaptabilidad y garantías de seguridad de primer nivel necesarias para gestionar de forma segura cualquier entorno con dispositivos IoT.</p>
+	<!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-ycr8 {
+			background-color: #ffffff;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-v0hj {
+			background-color: #efefef;
+			border-color: inherit;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-dvid {
+			background-color: #efefef;
+			border-color: inherit;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-c6of {
+			background-color: #ffffff;
+			border-color: inherit;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-3xi5 {
+			background-color: #ffffff;
+			border-color: inherit;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-i81m {
+			background-color: #ffffff;
+			text-align: center;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" style="undefined;table-layout: fixed; width: 721px">
+		<colgroup>
+			<col style="width: 340px">
+			<col style="width: 125px">
+			<col style="width: 125px">
+			<col style="width: 125px">
+		</colgroup>
+		<thead>
+			<tr>
+				<th class="tg-dvid"></th>
+				<th class="tg-v0hj">Zero Trust</th>
+				<th class="tg-v0hj">VLAN</th>
+				<th class="tg-v0hj">Cloudflare One</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-c6of"><span style="font-weight:400;font-style:normal">Evita el movimiento lateral con una configuración adecuada</span></td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">✅</span></td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">✅</span></td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">✅</span></td>
+			</tr>
+			<tr>
+				<td class="tg-c6of">Sin hardware</td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">✅</span></td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">❌</span></td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">✅</span></td>
+			</tr>
+			<tr>
+				<td class="tg-c6of">Registro automático</td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">✅</span></td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">❌</span></td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">✅</span></td>
+			</tr>
+			<tr>
+				<td class="tg-c6of">Aislamiento del propio dispositivo IoT</td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">❌</span></td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">✅</span></td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">✅</span></td>
+			</tr>
+			<tr>
+				<td class="tg-c6of">Único punto de configuración</td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">❌</span></td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">❌</span></td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">✅</span></td>
+			</tr>
+			<tr>
+				<td class="tg-c6of">La complejidad no aumenta con el número de dispositivos</td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">❌</span></td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">❌</span></td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">✅</span></td>
+			</tr>
+			<tr>
+				<td class="tg-c6of">Independiente del dispositivo</td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">❌</span></td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">❌</span></td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">✅</span></td>
+			</tr>
+			<tr>
+				<td class="tg-ycr8">Las ventajas de velocidad y rendimiento de la red de Cloudflare</td>
+				<td class="tg-i81m"><span style="font-weight:400;font-style:normal">❌</span></td>
+				<td class="tg-i81m"><span style="font-weight:400;font-style:normal">❌</span></td>
+				<td class="tg-i81m"><span style="font-weight:400;font-style:normal">✅</span></td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: html-->
+	<h3 id="-y-ahora-qu-">¿Y ahora qué?</h3>
+	<p>En el cuarto trimestre de 2021, contratamos a un socio de pruebas de penetración de confianza, para probar esta configuración replicando un dispositivo no autorizado que intentaba desplazarse a las redes de producción desde detrás de la arquitectura de Cloudflare One. No pudieron moverse lateralmente, lo que demuestra que nuestra arquitectura funciona.</p>
+	<p>Ahora que la hemos probado, comenzaremos a formalizar la implementación de Cloudflare One internamente en los sitios de nuestros centros de datos como parte de una iniciativa de seguridad física para garantizar la seguridad de nuestros activos más fiables.</p>
+	<p>Para obtener más información sobre el uso de Cloudflare One en tu empresa, ponte en contacto con nuestro equipo de ventas.</p>
+</div>

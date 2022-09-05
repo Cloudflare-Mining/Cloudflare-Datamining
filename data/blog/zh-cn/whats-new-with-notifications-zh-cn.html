@@ -1,0 +1,21 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image1-64.png" class="kg-image" alt="What’s new with Cloudflare Notifications?"></figure>
+	<p>早在 2019 年，我们就在<a href="https://blog.cloudflare.com/new-tools-to-monitor-your-server-and-avoid-downtime/">博文中介绍了我们全新的通知中心</a>。该通知中心可作为配置账户通知的集中中心。从那时起，我们已经讨论了很多关于可设置的新型通知，但并没有过多地讨论通知平台本身的更新。那么，通知有什么新功能呢？</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/12/image3-31.png" class="kg-image"></figure>
+	<h3 id="-"><strong>我们关心通知的原因</strong></h3>
+	<p>我们了解通知对客户非常重要。Cloudflare 是您的互联网资产和外界的纽带。您希望在出现问题时立即知悉，因为它可能对您的最终用户产生巨大影响。然而，您不希望整天查看 Cloudflare 仪表板，一遍又一遍地按下分析页面的刷新键，以确保不会错过任何重要内容。这就是通知的作用。您无需主动监控 Internet 属性，在可能出现问题时，Cloudflare 能直接通知您。</p>
+	<p>Cloudflare 有很多不同的通知类型，可确保您不会错过任何重要信息。我们用通知来告知<a href="https://blog.cloudflare.com/zh-cn/announcing-ddos-alerts-zh-cn/">您已遭受 DDoS 攻击</a>，或<a href="https://blog.cloudflare.com/zh-cn/get-notified-when-your-site-is-under-attack-zh-cn/">防火墙阻止了比正常情况下更多的请求</a>，或<a href="https://blog.cloudflare.com/smarter-origin-service-level-monitoring/">源站出现了高级别的 5xx 错误</a>，或 <a href="https://blog.cloudflare.com/introducing-workers-usage-notifications/">Workers 脚本的使用率高于平均水平</a>。我们正在不断增加新的通知，所以请务必查看我们的 <a href="https://developers.cloudflare.com/fundamentals/notifications/notification-available" target="_blank">Cloudflare Development Docs </a>，以掌握最新的相关信息！</p>
+	<h3 id="-webhooks-"><strong>电子邮件已过时，webhooks 正是当下潮流</strong></h3>
+	<p>就算我们有很多有用的通知，又<em>如何</em>通知您相关事件呢？经典的答案是“我们给您发电子邮件”。我们所有的客户都有能力配置通知，将其发送至其所选的电子邮件地址。</p>
+	<p>然而，电子邮件并不总是最佳的选择。当电子邮件发送到垃圾箱中，或被过滤到另一个您很少检查的文件夹中，会发生什么？如果您从来不清理收件箱，那么新收到的重要邮件被四千封未读邮件淹没怎么办？您想让通知直接进入您最常查看的信息平台，无论是 Slack、Microsoft Teams，还是 Discord 或其他完全不同的平台。我们 Professional、Business 和 Enterprise 计划的客户都会使用 webhooks。</p>
+	<p>Webhook 的功能非常强大！该工具是一种采用标准化简单行为的 API。其允许一个服务 (Cloudflare) 直接向另一个服务发送事件。此目标服务几乎可是任何东西：信息传递平台、数据管理系统、工作流自动化系统，甚至是您自己的内部 API。</p>
+	<p>Cloudflare 对 webhook 内置于 Slack、Microsoft Teams、Google Chat 和客户自己的 API 提供了一流的支持，而且我们最近还增加了对 DataDog、Discord、OpsGenie 和 Splunk 的支持。您可在我们的 <a href="https://developers.cloudflare.com/fundamentals/notifications/configure-webhooks" target="_blank">Cloudflare 开发文档</a>中了解如何设置这些类型的 webhook。</p>
+	<p>webhook 的用途非常广泛，使用的客户也日益增多！在 Cloudflare 的通知系统内，配置 webhook 的数量平均每三个月翻一番。客户可在仪表板的“通知”选项卡中配置 webhook。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/12/image2-47.png" class="kg-image"></figure>
+	<h3 id="--1"><strong>忘记历史的人注定要重蹈覆辙</strong></h3>
+	<p>Webhook 确实很棒，但仍有可能出错。如果您收到一个通知，但不小心将其删除，会发生什么？或者如果您的公司有新员工入职，但您忘记更新要发送给新员工的通知设置，会发生什么？</p>
+	<p>在此之前，Cloudflare 的通知非常准时。我们通过您首选的方法向您发送了通知，但我们不再对该通知有任何可见性。如果该通知在您那边丢失了，我们没有任何办法帮助恢复其中的信息。</p>
+	<p>通知历史记录正好解决了这个问题。用户能看到一个日志，其中包括已发送的通知、发送时间和发送对象。Free、Professional 和 Business 计划的客户能查看过去 30 日内的通知历史记录。Enterprise 计划的客户能查看过去 90 日内的通知历史记录。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/12/image4-27.png" class="kg-image"></figure>
+	<p>目前，只能通过 <a href="https://api.cloudflare.com/#notification-history-properties" target="_blank">API</a> 获得通知历史记录，但请继续关注有关在 Cloudflare 仪表板中直接查看的更新内容！</p>
+</div>

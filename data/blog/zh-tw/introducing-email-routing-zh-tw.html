@@ -1,0 +1,45 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/image2-35.png" class="kg-image"></figure>
+	<p>超過<a href="https://www.statista.com/statistics/255080/number-of-e-mail-users-worldwide/" target="_blank">四十億人</a>（也就是世界人口的一半）至少擁有一個電子郵寄地址，其中許多人將它當成處理個人和職業事務的重要工具。每天收發的電子郵件數量超過 3000 億封，但若只將電子郵件視為通信工具對它來說並不公平。它在我們生活當中的作用遠遠不止於消息傳輸工具，其用途也包括作為線上驗證個人身份的一個常用途徑，以及充當其他通信平台的閘道。</p>
+	<p>如今，大多數人將電子郵件用於敏感的用途，例如登錄銀行帳戶或與政府機關通信等。與此同時，他們也將同樣的電子郵件用於申領網上找到的九折優惠券，而這必然會導致未來數月被垃圾郵件侵擾。儘管這兩種用途在重要性和安全性方面截然相反，人們仍會為了管理一個帳戶的便利而甘冒風險。</p>
+	<p>對企業而言情況基本相同，它們希望將不同的電子郵件用於不同類型的查詢，例如銷售和支援，但往往發現控制誰接收這些郵件非常繁瑣。隨著企業發展，原先由所有者處理的事務通常需要委派給其他人。但對小型企業來說，配置郵箱和別名通常不那麼簡單明瞭。</p>
+	<p>另外，還有無數的個人和家庭利用多個郵箱來處理所用的網際網路身份，以代表他們各種線上身份。</p>
+	<p>我們瞭解這些挑戰，因此推出了 Cloudflare 電子郵件轉發，這是創建任意數量電子郵寄地址的最直接方式，以便將郵件轉發到您自己、家人或團隊已在使用的郵箱。</p>
+	<h2 id="cloudflare-">Cloudflare 電子郵件路由</h2>
+	<p>Cloudflare 電子郵件路由旨在簡化創建和管理電子郵寄地址的方式，不需要您去監控其他郵箱。 </p>
+	<p>過程非常簡單：</p>
+	<ol>
+		<li>輸入您想要在自己的網域上創建的電子郵箱地址</li>
+		<li>輸入您想要將郵件轉發到的電子郵箱地址</li>
+	</ol>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/image1-33.png" class="kg-image" alt="替代文字: 鍵入要創建的地址和要轉發到的地址的文字方塊。"></figure>
+	<p>如某些人已經知道的那樣，電子郵件由信封、頭部和主體組成。</p>
+	<p>信封是 SMTP 傳輸協定的一部分，告訴伺服器這封電子郵件來自哪裡，應該發送到哪裡。 </p>
+	<p>郵件的頭部包括結構性的資訊，例如消息經過的路徑、日期、發送者和接收者的位址、主題，以及其他技術中繼資料，如 SPF 通過結果、DKIM 簽名和反垃圾郵件得分。郵件每次通過一個伺服器時，它都會添加新的頭部或修改原有頭部，直至到達最終收件箱。</p>
+	<p>最後就是郵件的主體，其中包含了實際的內容。主體可以是純文字、富 HTML，可以包含檔案附件，在某些情況下，還可以簽名甚至加密。</p>
+	<p>如下是一個簡單示意圖，顯示 SMTP 協定如何工作，以及電子郵件消息的三個部分是如何組合在一起的：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/unnamed.png" class="kg-image" alt="替代文本：SMTP 協議工作原理示意圖"></figure>
+	<p>Cloudflare 電子郵件路由服務充當傳輸層的智慧路由器，處理並修改 SMTP 信封並將消息發送到其最終目的地，但保留原始頭部並保持主體的完整性。這種方法確保 SPF、DKIM和其他安全或反垃圾郵件協議不會被破壞，收件人繼續受到保護。</p>
+	<p>此外，和我們在其他產品中所用的隱私優先方式一樣，我們不會在任何節點查看、排隊或存儲電子郵件。消息將根據配置的規則接收、處理並即時發送到最終目的地。</p>
+	<h2 id="-">封閉測試申請</h2>
+	<p>電子郵件轉發現在進行封閉測試，請填寫<a href="https://www.cloudflare.com/zh-tw/email-forwarding-waitlist-sign-up/" target="_blank">報名表</a>以加入等候名單。</p>
+	<p>要開始使用電子郵件路由，只需將您的網域名稱添加到 <a href="https://www.cloudflare.com/zh-tw/dns/" target="_blank">Cloudflare DNS</a> 中。如果目前沒有擁有網域名稱，可通過我們的 <a href="https://www.cloudflare.com/zh-tw/products/registrar/" target="_blank">registrar</a> 立即購買一個。</p>
+	<h2 id="--1">分步配置</h2>
+	<p>接下來，只需完成幾個步驟即可創建新的電子郵寄地址和設置轉發：</p>
+	<ol>
+		<li>前往 <a href="https://dash.cloudflare.com/" target="_blank">Cloudflare 儀表板</a>的電子郵件頁面。</li>
+		<li>選取 <strong>Configure。</strong></li>
+		<li>輸入您想要創建的電子郵箱地址 (記住，這是針對<strong>您的</strong>網域名稱的地址，因此可以任意選取)。另外，也可選擇使用 <em>通配符</em>，以便您網域上的所有電子郵箱地址都被視為有效並予以轉發。</li>
+		<li>如果還沒有為您的網域配置電子郵件，那麼 DNS 配置步驟會自動完成。否則，請參考我們的簡明指引，瞭解如何根據您的需求來進行最佳配置。</li>
+		<li>最後，只需驗證目標電子郵件歸您所有便可。非常之簡單，就跟您以前做過千萬次的完全一樣。 <br></li>
+	</ol>
+	<p>我們說過，它的設計宗旨就是簡單易用！</p>
+	<!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 68.57541899441341%;"><iframe src="https://iframe.videodelivery.net/436e35ef19226a83471e61e0082d5487?preload=true" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
+	<p></p>
+	<!--kg-card-end: html-->
+	<p>以效率和簡單性為原則，我們正隆重推出電子郵件路由服務，支援多規則及將消息轉發到您選擇的收件匣。</p>
+	<p>然而，我們覺得電子郵件領域已經沉寂了很長時間，我們很快就會推出令人興奮的新功能，以充分利用 Cloudflare 的平台、資源和技術優勢。</p>
+	<p>我們也在聆聽。如果您有任何問題、建議或新的想法，歡迎在<a href="https://community.cloudflare.com/" target="_blank">社區論壇</a>分享。我們就在附近。</p>
+	<p>要開始使用 Cloudflare 電子郵件轉發，只需填寫<a href="https://www.cloudflare.com/zh-tw/email-forwarding-waitlist-sign-up/" target="_blank">報名表</a>加入等候名單即可。我們每天都會向更多使用者開放此服務，也向您保證片刻的等待是值得的！</p>
+</div>

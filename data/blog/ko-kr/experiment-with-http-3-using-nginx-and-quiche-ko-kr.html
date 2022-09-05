@@ -1,0 +1,61 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/10/HTTP3-portal@3x.png" class="kg-image"></figure>
+	<p></p>
+	<p>얼마 전에 저희 엣지 네트워크에서 HTTP/3 가 이용 가능 하다고 <a href="https://blog.cloudflare.com/http3-the-past-present-and-future-ko/">발표</a>한 바 있습니다. HTTP/3은 인터넷의 보안과 성능을 향상시키도록 만들어진 HTTP의 새로운 버전입니다. 이제 여러분의 클라우드플레어 존에서 HTTP/3 을 켜 두고 <a href="https://blog.cloudflare.com/ko/http3-the-past-present-and-future-ko/#google-chrome-http-3-">Chrome Canary</a>나 <a href="https://blog.cloudflare.com/ko/http3-the-past-present-and-future-ko/#curl-">curl</a> 과 같은 클라이언트를 사용하여 시험해 볼 수 있습니다.</p>
+	<p>예전부터 프로토콜을 시험하고자 하는 사람들을 위해 <a href="https://github.com/cloudflare/quiche/blob/master/examples/http3-server.rs" target="_blank">quiche 프로젝트의 일부로 HTTP/3 예제 서버</a>를 제공하고 있습니다만, 기능이 제한적인 관계로 범용 웹 서버를 대체할 수 있는 정도는 아니었습니다.</p>
+	<p>이번에는 여러분의 NGINX 에 <a href="https://blog.cloudflare.com/enjoy-a-slice-of-quic-and-rust/">우리의 HTTP/3과 QUIC 구현</a>을 통합할 수 있음을 발표하게 되어 기쁩니다. 이것은 NGINX의 <a href="https://github.com/cloudflare/quiche/tree/master/extras/nginx" target="_blank">패치</a> 형태로 제공되며 업스트림의 NGINX 코드베이스에 적용하여 직접 빌드할 수 있습니다.<br></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/10/quiche-banner-copy@2x.png" class="kg-image"></figure>
+	<p>주의할 점은 이것은 <strong>NGINX 프로젝트에서 공식적으로 지원되거나 승인받은 것이 아니며</strong>, 단지 저희 클라우드플레어가 QUIC과 HTTP/3의 도입을 더 많은 커뮤니티에게 촉진하기 위한 목적으로 제공하는 것이라는 점입니다.</p>
+	<h3 id="-">빌드하기<br></h3>
+	<p>첫번째로 <a href="https://nginx.org/en/download.html" target="_blank">NGINX 소스 코드를 다운로드받아서 압축을 풀어 둡니다.</a> HTTP/3 과 QUIC 패치는 1.16.x 릴리즈 브랜치에만 적용 가능하다는 점에 주의해 주세요 (최신 안정 버전은 1.16.1 입니다).</p>
+	<pre><code> % curl -O https://nginx.org/download/nginx-1.16.1.tar.gz
+ % tar xvzf nginx-1.16.1.tar.gz
+</code></pre>
+	<p>HTTP/3 과 QUIC의 기반 구현인 quiche도 받아 놓습니다:</p>
+	<pre><code> % git clone --recursive https://github.com/cloudflare/quiche</code></pre>
+	<p>이제 패치를 NGINX에 적용 합니다:</p>
+	<pre><code> % cd nginx-1.16.1
+ % patch -p01 &lt; ../quiche/extras/nginx/nginx-1.16.patch
+</code></pre>
+	<p>마지막으로 NGINX에 HTTP/3 지원을 추가하여 빌드 합니다:</p>
+	<pre><code> % ./configure                          	\
+   	--prefix=$PWD                       	\
+   	--with-http_ssl_module              	\
+   	--with-http_v2_module               	\
+   	--with-http_v3_module               	\
+   	--with-openssl=../quiche/deps/boringssl \
+   	--with-quiche=../quiche
+ % make</code></pre>
+	<p>위 명령은 NGINX 빌드 시스템에게 HTTP/3 지원을 추가하고 ( <code>--with-http_v3_module</code> ) 다운로드받아 놓은 quiche 라이브러리를 해당 경로에서 찾아서 사용하라는 의미( <code>--with-quiche=../quiche</code> ) 이며, TLS와 HTTP/2 옵션을 추가 합니다. 추가 옵션이 필요하면 더 설정하면 됩니다.</p>
+	<p>상세한 방법에 대해서는 <a href="https://github.com/cloudflare/quiche/tree/master/extras/nginx#readme" target="_blank">여기</a>를 참조해 주세요.</p>
+	<h3 id="--1">실행하기</h3>
+	<p>빌드가 완료 되면 <a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#listen" target="_blank">listen</a> 지시어에 <code>quic</code> 과 <code>reuseport</code> 옵션을 추가하여 HTTP/3 연결을 받아들일 수 있도록 설정 합니다.</p>
+	<p>다음은 바로 시작해 볼 수 있는 최소한의 설정 입니다:</p>
+	<pre><code>events {
+    worker_connections  1024;
+}
+
+http {
+    server {
+        # QUIC과 HTTP/3 을 설정.
+        listen 443 quic reuseport;
+
+        # HTTP/2 설정 (옵션).
+        listen 443 ssl http2;
+
+        ssl_certificate      cert.crt;
+        ssl_certificate_key  cert.key;
+
+        # 모든 TLS 버전을 설정 (TLSv1.3은 QUIC에서 필요함)
+        ssl_protocols TLSv1 TLSv1.1 TLSv1.2 TLSv1.3;
+        
+        # HTTP/3 프로토콜 협상을 위해 Alt-Svc 헤더를 추가.
+        add_header alt-svc 'h3-24=":443"; ma=86400';
+    }
+}
+</code></pre>
+	<p>위 설정은 각각 TCP/443 포트에서 HTTP/2, UDP/443 포트에서 HTTP/3을 서비스할 수 있도록 합니다.</p>
+	<p>이제 이용 가능한 HTTP/3 클라이언트 ( <a href="https://blog.cloudflare.com/ko/http3-the-past-present-and-future-ko/#google-chrome-http-3-">Chrome Canary</a>, <a href="https://blog.cloudflare.com/ko/http3-the-past-present-and-future-ko/#curl-">curl</a>, &nbsp;<a href="https://blog.cloudflare.com/http3-the-past-present-and-future-ko/#quiche-http3-client-">quiche의 예제로 제공되는 HTTP/3 클라이언트</a> 등) 를 사용하여 여러분의 NGINX에 HTTP/3으로 연결할 수 있습니다.</p>
+	<p>여러분이 직접 HTTP/3을 시험해 볼 수 있도록 이 패치를 제공해 드리게 되어서 기쁩니다. 하지만 <strong>이 구현은 아직 실험적이며</strong> 기능에 제약 및 버그가 존재할 수 있습니다. 만약 여러분이 사용 중에 문제나 버그를 발견하면 <a href="https://github.com/cloudflare/quiche" target="_blank">quiche 프로젝트</a>에 티켓을 제출해 주세요.</p>
+	<p><em>This is a Korean translation of an <a href="https://blog.cloudflare.com/experiment-with-http-3-using-nginx-and-quiche/">existing post</a> by <a href="https://blog.cloudflare.com/author/alessandro-ghedini">Alessandro Ghedini</a>, translated by <a href="https://blog.cloudflare.com/author/junho/">Junho Choi</a>.</em></p>
+</div>

@@ -1,0 +1,17 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://lh3.googleusercontent.com/wquTgdlhBHsbaIK8TN2eUkzbK0rpMy9ooj1-26Cym2ONr8zkDq-nIza4tToroP29dbAx6fgXjEvvNzffboF_HJwp4rou7uqv8gsivOQz1sO7N3p6tUMGjSslfm29IsSex8hhZZhB" class="kg-image"></figure>
+	<p>SSH（Secure Shell 协议）是一种用于管理远程计算机的重要协议。基础设施团队可以使用它从远程安全地管理其计算机群。SSH 的安全性比 telnet 之类的其他协议更胜一筹。它可确保流量得到加密，并针对每个用户对特定计算机的访问强制实施控制措施。但是，它仍可能带来重大的安全风险。SSH，尤其是根访问，一旦落入歹人之手（考虑一下 <code>rm -r *</code>），将带来毁灭性的后果，而且很难跟踪。记录和保护通过 SSH 执行的用户操作通常需要自定义开发或限制性软件部署。我们很高兴地宣布推出 SSH 命令日志记录作为 Cloudflare Zero Trust 的一部分。</p>
+	<h3 id="-ssh-">保护 SSH 访问</h3>
+	<p>安全团队花很大力气在整个组织中保护 SSH，因为 SSH 一旦落入歹人之手，将带来很大的负面影响。传统的 SSH 安全性包括高强度身份验证（比如基于证书的身份验证）以及针对谁拥有“根”访问权限的严格控制措施。此外，还使用了 VPN 和 IP 允许列表来进一步保护计算机，防止其在互联网上被公开访问。剩下的安全性挑战还包括可见性以及<a href="https://www.cloudflare.com/learning/security/glossary/what-is-lateral-movement/" target="_blank">横向移动的潜在可能</a>。</p>
+	<p>发往远程计算机的 SSH 命令将进行端到端加密，这意味着无法看到特定用户在特定计算机上运行了什么。通常，日志只能在该计算机本身的日志文件中捕获，而恶意用户可以轻松删除日志文件，正如他们能够轻松运行其他任何命令来掩盖行踪一样。存在相应解决方案，可将这些日志发送到外部日志记录服务，但这需要在可使用 SSH 访问的每台计算机上安装额外的软件。<a href="https://man.openbsd.org/ssh_config#ProxyJump" target="_blank">ProxyJump</a> 是用于部署 JumpHost 模型的一种常见方式，它进一步加剧了这一问题，因为用户一旦进入本地网络中的某台计算机，就能轻松遍历整个网络的计算机。</p>
+	<h3 id="-ssh--1">隆重推出 SSH 命令日志</h3>
+	<p>我们将 SSH 命令日志记录纳入 Cloudflare Zero Trust，目的是在网络层提供 SSH 可见性，而不是依赖于每台机器上的软件。这一功能的首位客户是 Cloudflare 安全团队。SSH 命令日志记录可完整回放 SSH 会话期间运行的所有命令，包括跨多个 jump-host 或堡垒主机的命令。这样就可清晰了解在发生事故、可疑违规或攻击时的具体情况。</p>
+	<p>SSH 命令日志记录是作为 Cloudflare 安全 Web 网关的扩展而构建的。安全 Web 网关已经会对来自用户设备的所有流量执行安全 TLS 检查。现在，它还支持通过在建立新连接时引导代理服务器来执行 SSH 检查。管理员能够配置<em>网络策略</em>以允许 SSH 访问并审核特定的命令运行。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image1-75.png" class="kg-image" alt="Command logging configuration"></figure>
+	<p>这将公开该计算机进行 SSH 访问，并通过 Cloudflare 的全球边缘网络来代理所有 SSH 命令。所有命令都会自动进行捕获，而不用在该计算机以及所有主机中安装复杂的日志记录软件。还可以记录 TTY 流量，供以后进行完整会话回放。</p>
+	<p>作为额外的安全举措，Cloudflare 捕获的所有日志会立即通过每个客户提供的公钥进行加密，以确保只有授权安全用户才能检查 SSH 命令。此外，我们为此功能推出了选择加入的 FIPS 140-2 模式，以支持遵循 FedRAMP 的用户。</p>
+	<p>所有用户身份验证将通过 <a href="https://developers.cloudflare.com/cloudflare-one/identity/users/short-lived-certificates/" target="_blank">Cloudflare 短时证书</a>执行。客户端证书加载到用户计算机后，其 SSH 设置即完成并受到保护。这样就无需进行繁琐而麻烦的 SSH 密钥对管理。这意味着，最终用户设备上不再需要进行密钥管理，只需有 Cloudflare 根 CA 即可访问有权访问的任何计算机，包括使用 ProxyJump 进行访问。</p>
+	<h3 id="-">下一步</h3>
+	<p>这只是 Cloudflare Zero Trust 中 SSH 安全性的开端。未来，我们将与流行的 SIEM 工具集成，并针对具体的命令和风险行为提供警报。</p>
+	<p>SSH 命令日志记录处于封闭测试阶段，我们将在接下来的几周向用户开放此功能。我们宣布全面开放时将有更多更新，敬请期待！</p>
+</div>

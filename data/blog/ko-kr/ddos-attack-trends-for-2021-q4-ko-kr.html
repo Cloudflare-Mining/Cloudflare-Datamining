@@ -1,0 +1,105 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/01/image3-21.png" class="kg-image" alt="2021년 4분기 DDoS 공격 동향"></figure>
+	<p>2021년 전반기에는 대대적인 랜섬웨어 및 랜섬 DDoS 공격 캠페인이 전세계 주요 인프라(미국 내 최대 송유관 시스템 운영업체의 인프라도 포함)를 공격했고 <a href="https://csirt.divd.nl/2021/07/03/Kaseya-Case-Update/" target="_blank">IT 관리 소프트웨어의 취약점을 노려</a> 학교, 공공기관, 여행업체, 신용조합 등을 공격한 사례들도 잇따랐습니다. </p>
+	<p>또한, 그 후반기에는 지금까지 가장 강력한 봇넷 중 하나(<a href="https://blog.cloudflare.com/meris-botnet/">Meris</a>)가 크게 배포되었고, <a href="https://blog.cloudflare.com/ko-kr/cloudflare-thwarts-17-2m-rps-ddos-attack-the-largest-ever-reported-ko-kr/">기록적인 HTTP DDoS 공격</a> 및 <a href="https://blog.cloudflare.com/cloudflare-blocks-an-almost-2-tbps-multi-vector-ddos-attack/">네트워크 계층 공격이</a> Cloudflare 네트워크에서 관찰되었습니다. 게다가 12월에는 공격자가 원격 서버에서 코드를 실행할 수 있도록 하는 <a href="https://blog.cloudflare.com/ko-kr/inside-the-log4j2-vulnerability-cve-2021-44228-ko-kr/">Log4j2 취약점</a>(CVE-2021-44228)이 발견되었습니다. 이 취약점은 <a href="https://blog.cloudflare.com/tag/heartbleed/">Heartbleed</a> 및 <a href="https://blog.cloudflare.com/inside-shellshock/">Shellshock</a> 이후로 가장 심각한 인터넷 취약점 중 하나로 손꼽힙니다.</p>
+	<p>위에 언급한 것 같은 두드러진 공격들은 단지 점점 심각해지는 사이버 위험의 동향을 보여주는 몇 가지 예일 뿐입니다. 기술 기업과 정부 조직에서부터 와이너리와 육류 가공 공장에 이르기까지 모두에게 영향을 미칠 수 있는 위험인 공격이죠.</p>
+	<p>2021년 전체, 구체적으로 2021년 4분기의 <a href="https://www.cloudflare.com/ko-kr/learning/ddos/what-is-a-ddos-attack/" target="_blank">DDoS 공격</a> 동향과 주요 정보를 구체적으로 살펴보면 다음과 같습니다.</p>
+	<h3 id="-ddos-">랜섬 DDoS 공격</h3>
+	<ul>
+		<li>4분기 <a href="https://www.cloudflare.com/ko-kr/learning/ddos/ransom-ddos-attack/" target="_blank">랜섬 DDoS 공격</a>이 전년 대비 29%, 전 분기 대비 175% 증가했습니다.</li>
+		<li>12월 한 달에만 설문 응답자 세 명 중 한 명이 랜섬 DDoS 공격의 목표가 되었거나 공격자로부터 위협을 받았다고 답했습니다.</li>
+	</ul>
+	<h3 id="-ddos--1">응용 프로그램 계층 DDoS 공격</h3>
+	<ul>
+		<li>2021년 4분기 가장 많은 공격을 받은 곳은 제조업계로 공격 횟수가 전 분기 대비 무려 641% 증가한 것으로 기록되었습니다. 응용 프로그램 계층 DDoS 공격을 두 번째와 세 번째로 많이 받은 곳은 비즈니스 서비스와 게임/도박 업계였습니다.</li>
+		<li>올해에만 4분기 연속으로 중국이 공격 트래픽을 가장 많이 발생시킨 네트워크 출처로 이름을 올렸습니다.</li>
+		<li><a href="https://blog.cloudflare.com/meris-botnet/">Meris 봇넷</a>이라고 하는 새로운 봇넷이 2021년 중반 등장했고, 이후 지속적으로 전 세계 조직들을 공격했으며, 기록상 최대 규모의 HTTP 공격을 실행했습니다. 여기에는 <a href="https://blog.cloudflare.com/ko-kr/cloudflare-thwarts-17-2m-rps-ddos-attack-the-largest-ever-reported-ko-kr/">Cloudflare가 자동으로 완화한 17.2M rps 공격</a>도 포함됩니다.</li>
+	</ul>
+	<h3 id="-ddos--2">네트워크 계층 DDoS 공격</h3>
+	<ul>
+		<li>2021년 4분기는 공격자들의 활동이 가장 활발했던 분기였습니다. 2021년 12월 한 달에만 2021년 1분기와 2분기에 관찰된 모든 공격보다 많은 공격이 이루어졌습니다.</li>
+		<li>대부분의 공격이 그 규모는 작았지만 2021년 후반기에는 테라비트급 공격들이 기본이 되었습니다. Cloudflare는 1 Tbps를 넘어서는 수십 가지 공격을 자동으로 완화하였으며, 이중에는 <a href="https://blog.cloudflare.com/cloudflare-blocks-an-almost-2-tbps-multi-vector-ddos-attack/">지금까지 목격한 것 중 가장 컸던, 거의 2 Tbps에 육박하는 최대 규모의 공격</a>도 있었습니다.</li>
+		<li>2021년 4분기, 특히 11월에는 전 세계 <a href="https://blog.cloudflare.com/update-on-voip-attacks/">VoIP 업체들을 노린 지속적인 랜섬 DDoS 캠페인</a>이 기록되었습니다.</li>
+		<li>2021년 4분기에는 몰도바에서 기원한 공격이 전 분기 대비 네 배까지 증가하면서 몰도바는 네트워크 계층 DDoS 활동이 가장 높게 이루어진 국가로 기록되었습니다.</li>
+		<li><a href="https://www.cloudflare.com/ko-kr/learning/ddos/syn-flood-ddos-attack/" target="_blank">SYN 폭주</a> 및 <a href="https://www.cloudflare.com/ko-kr/learning/ddos/udp-flood-ddos-attack/" target="_blank">UDP 폭주</a>가 가장 빈번하게 발생한 공격 벡터였으며, SNMP 공격 같은 신흥 위협들도 전 분기대비 거의 5,800% 증가했습니다.</li>
+	</ul>
+	<p>이 보고서는 Cloudflare의 DDoS 방어 시스템에서 자동으로 감지되어 완화된 DDoS 공격을 기반으로 한 것입니다. 이 시스템의 원리에 대해 자세히 알아보려면 <a href="https://blog.cloudflare.com/deep-dive-cloudflare-autonomous-edge-ddos-protection/">이 심층 블로그 게시물</a>을 참고하세요.</p>
+	<h3 id="-ddos--3">우리가 네트워크에서 관찰된 DDoS 공격을 측정하는 방식</h3>
+	<p>우리는 공격 동향을 분석하기 위해 “DDoS 활동” 비율을 측정합니다. 이는 우리의 전역 네트워크에서 관찰된 총 트래픽(공격 트래픽 + 정상 트래픽) 중 공격 트래픽의 비율을 의미합니다. 관찰된 총 트래픽 대비 비율로 공격 횟수를 측정하면 데이터 포인트를 정규화하면서, 예를 들어 더 많은 총 트래픽을 수신하면서 자연스레 더 많은 공격을 받게 되는 Cloudflare 데이터 센터에 대한 절대 수치에 편향이 반영되지 않도록 할 수 있습니다. </p>
+	<p>이 보고서의 인터랙티브 버전을 <a href="https://radar.cloudflare.com/notebooks/ddos-2021-q4" target="_blank">Cloudflare Radar</a>에서 이용할 수 있습니다.</p>
+	<h2 id="-">랜섬 공격</h2>
+	<p>우리의 시스템은 지속해서 트래픽을 분석하면서 DDoS 공격이 감지되면 자동으로 완화 조치를 적용합니다. DDoS 공격을 당한 각 고객에게는 자동 설문이 표시되어 당사에서 공격의 특성을 보다 자세히 파악하고 완화에 성공하는 데 도움이 됩니다. </p>
+	<p>현재 2년 여에 걸쳐 Cloudflare는 공격을 받은 고객들에게 설문을 진행하고 있습니다. DDoS 공격을 멈추는 대가로 돈을 요구하는 랜섬 노트를 받았는지 여부를 묻는 질문도 포함되어 있습니다. 2021년 4분기에는 랜섬 위협을 받았다는 설문 응답이 그 어느 때보다 높았습니다. 랜섬 공격이 전년 대비 29%, 전 분기대비 175%나 증가했죠. 보다 구체적으로 보면, 응답자 4.5명 중 한 명꼴로(22%) 공격자로부터 돈을 요구하는 랜섬 노트를 받았다고 응답했습니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/01/image2-13.png" class="kg-image">
+		<figcaption>랜섬 DDoS 공격을 받았거나 공격에 앞서 위협을 받았다고 답한 응답자의 비율.</figcaption>
+	</figure>
+	<p>이를 월 단위로 분석해 보면 2021년 12월이 가장 심했는데, 랜섬 노트를 받았다고 답한 응답자가 32%, 즉 설문 응답자 세 명 중 한 명에 육박했습니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/01/unnamed--1-.png" class="kg-image" alt="Chart"></figure>
+	<h2 id="-ddos--4">응용 프로그램 계층 DDoS 공격</h2>
+	<p><a href="https://www.cloudflare.com/ko-kr/learning/ddos/application-layer-ddos-attack/" target="_blank">응용 프로그램 계층 DDoS 공격</a> 중 특히 HTTP DDoS 공격은 주로 웹 서버가 합법적인 사용자 요청을 처리할 수 없도록 하여 웹 서버를 사용 불가능하게 만드는 것을 목표로 합니다. 서버가 처리할 수 있는 양보다 많은 요청이 쏟아질 경우, 해당 서버는 합법적인 요청의 처리를 중단하게 되고, 경우에 따라서는 충돌을 일으켜 성능이 저하되거나 합법적인 사용자의 서비스도 거부하게 됩니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/01/image1-10.png" class="kg-image"></figure>
+	<h3 id="-ddos--5">산업별 응용 프로그램 계층 DDoS 공격</h3>
+	<p><strong>4분기에는 제조업체를 향한 DDoS 공격이 전 분기대비 641%나 급증했고, 비즈니스 서비스 업계를 향한 DDoS 공격 역시 97% 증가했습니다.</strong></p>
+	<p>응용 프로그램 계층 공격을 업계별로 세분해보면 제조, 비즈니스 서비스, 게임/도박 업계가 2021년 4분기 가장 많은 공격을 받은 업계였습니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/01/image3-22.png" class="kg-image"></figure>
+	<h2 id="-ddos--6">공격 출발 국가별 응용 프로그램 계층 DDoS 공격</h2>
+	<p>HTTP 공격의 출처를 파악하기 위해서는 공격 HTTP 요청을 생성한 클라이언트가 가진 소스 IP 주소의 지리적 위치를 살펴보아야 합니다. 네트워크 계층 공격에서와는 달리 HTTP 공격 시에는 소스 IP의 <a href="https://www.cloudflare.com/ko-kr/learning/ddos/glossary/ip-spoofing/" target="_blank">스푸핑</a>이 불가능합니다. 특정 국가에서 DDoS 활동 비율이 높다는 것은 대개 해당 국가 내에서 봇넷이 작동 중임을 의미합니다.</p>
+	<p>중국은 4분기 연속으로 DDoS 공격이 가장 많이 발생한 출처 국가로 밝혀졌습니다. 중국 IP 주소가 출처인 HTTP 요청 1,000건마다 3건 이상이 HTTP DDoS 공격의 일부였습니다. 미국이 2위이고, 브라질과 인도가 그 뒤를 이었습니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/01/image8-18.png" class="kg-image"></figure>
+	<h3 id="-ddos--7">대상 국가별 응용 프로그램 계층 DDoS 공격</h3>
+	<p><strong>어느 국가가 가장 많은 HTTP DDoS 공격을 받았는지 파악하기 위해 우리는 고객의 청구 국가별로 DDoS 공격을 분류해, 이를 모든 DDoS 공격 대비 비율로 분석합니다.</strong></p>
+	<p>올해는 3분기 연속으로 미국 내 조직들이 가장 많은 HTTP DDoS 공격의 타겟이 되었고, 캐나다와 독일이 뒤를 이었습니다. </p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/01/image7-9.png" class="kg-image"></figure>
+	<h2 id="-ddos--8">네트워크 계층 DDoS 공격</h2>
+	<p>응용 프로그램 계층 공격이 최종 사용자가 액세스하려는 서비스를 구동하는 응용 프로그램(<a href="https://www.cloudflare.com/ko-kr/learning/ddos/glossary/open-systems-interconnection-model-osi/" target="_blank">OSI 모델</a>의 계층 7)을 대상으로 하는 반면, <a href="https://www.cloudflare.com/ko-kr/learning/ddos/layer-3-ddos-attacks/" target="_blank">네트워크 계층 공격</a>은 네트워크 인프라(예: 인라인 라우터 및 서버)와 인터넷 링크 자체를 마비시키는 것을 목표로 합니다.</p>
+	<h3 id="cloudflare-2tbps-">Cloudflare는 거의 2Tbps에 육박하는 공격을 막아냅니다</h3>
+	<p>11월, 클라우드플레어는 <a href="https://blog.cloudflare.com/cloudflare-blocks-an-almost-2-tbps-multi-vector-ddos-attack/">거의 2Tbps급 DDoS 공격</a>을 자동으로 감지해 완화시켰습니다. 이는 <a href="https://www.cloudflare.com/ko-kr/learning/ddos/dns-amplification-ddos-attack/" target="_blank">DNS 증폭 </a>공격과 <a href="https://www.cloudflare.com/ko-kr/learning/ddos/udp-flood-ddos-attack/" target="_blank">UDP 폭주</a> 공격을 조합한 멀티 벡터 공격이었으며, 전체 공격은 거의 1분이나 지속되었습니다. 이 공격은 IoT 디바이스에서 오리지널 Mirai 코드의 변형을 실행하는 약 15,000개 봇을 통해 이루어졌으며, <a href="https://www.rapid7.com/blog/post/2021/11/01/gitlab-unauthenticated-remote-code-execution-cve-2021-22205-exploited-in-the-wild/" target="_blank">GitLab 인스턴스를 언패치했습니다</a>.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/01/image4-2.jpeg" class="kg-image" alt="Cloudflare blocks an almost 2 Tbps multi-vector DDoS attack"></figure>
+	<h3 id="-ddos--9">월별 네트워크 계층 DDoS 공격</h3>
+	<p><strong>12월은 2021년 중 공격자들의 활동이 가장 활발했던 달이었습니다.</strong></p>
+	<p>2021년 4분기는 공격자들의 활동이 가장 활발했던 분기였습니다. 모든 네트워크 계층 DDoS 공격 중 43% 이상이 2021년 4분기에 발생했죠. 10월은 상대적으로 조용했지만 중국의 광군절, 미국의 추수감사절, 블랙 프라이데이, 사이버 먼데이 등이 몰려 있는 11월에는 네트워크 계층 DDoS 공격 횟수가 거의 두 배로 치솟았습니다. 관찰된 공격 횟수는 세계가 한 해의 마무리를 준비하던 2021년 12월 마지막 날까지 계속 증가했습니다. 실제로 12월 한 달 동안 발생한 총 공격 횟수만 따져도 2021년 2분기 동안 발생한 총 공격보다 많고, 2021년 1분기의 총 횟수와도 비슷합니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/01/image18-11.png" class="kg-image"></figure>
+	<h3 id="-ddos--10">공격 비율별 네트워크 계층 DDoS 공격</h3>
+	<p><strong>공격의 대부분은 여전히 그 규모가 상대적으로 '작지만' 테라비트급 공격이 점점 기본이 되어가는 추세입니다.</strong></p>
+	<p>L3/4 DDoS 공격의 규모를 측정하는 방법은 여러 가지입니다. 하나는 공격 트래픽의 양을 비트 전송률(초당 테라비트 또는 초당 기가비트 수)로 측정하는 방법입니다. 또 다른 방법은 총 패킷의 개수를 패킷 전송률(수백만 단위의 초당 패킷 수)로 측정하는 것입니다. </p>
+	<p>비트 전송률이 높은 공격은 인터넷 링크를 포화시킴으로써 서비스 거부 이벤트를 발생시키려는 시도이며, 패킷 전송률이 높은 공격은 서버, 라우터, 기타 인라인 장비를 마비시키려는 시도입니다. 이러한 장비는 각각의 패킷을 처리하기 위해 일정량의 메모리와 연산 능력을 할당합니다. 따라서 장비에 많은 패킷을 퍼부으면 처리를 위한 리소스를 완전히 고갈시키는 것이 가능합니다. 이러한 경우에는 패킷의 "드롭(drop)", 즉 해당 장비가 패킷을 처리할 수 없는 상황이 발생합니다. 그 결과 사용자는 서비스 중단 및 서비스 거부를 경험하게 됩니다. </p>
+	<p>규모별(비트 속도 단위) 및 월별 공격 분포를 아래에서 볼 수 있습니다. 위의 그래프에 나와 있는 것처럼 대부분의 공격은 12월에 발생했습니다. 하지만 아래의 그래프는 300Gbps 이상의 좀 더 규모가 큰 공격들은 11월에 발생했고, 5~20Gbps 규모의 공격은 대부분 12월에 발생했음을 보여줍니다. </p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/01/image14-10.png" class="kg-image"></figure>
+	<p><strong>패킷 전송률별 분포</strong><br>Cloudflare가 관찰한 흥미로운 상관관계는 공격 횟수가 증가하면 그 규모와 지속 시간은 감소한다는 것입니다. 2021년 첫 3분의 2 기간 동안 공격 횟수는 상대적으로 적었지만, 그 전송률은 증가했습니다. 2021년 3분기를 예로 들면, 초당 백만에서 천만 패킷(mpps) 규모의 공격이 196% 증가했습니다. 2021년 4분기에는 공격 횟수가 증가했고, Cloudflare가 관찰한 바에 따르면 공격 규모는 감소했습니다. 모든 공격 중 91%가 초당 50,000패킷(pps) 이하의 규모였습니다. 하지만 이 정도만으로도 보호되지 않는 인터넷 자산을 무력화시키는 건 쉬운 일입니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/01/image11-10.png" class="kg-image"></figure>
+	<p>1mpps 이상의 대규모 공격은 전 분기 대비 48%에서 28%로 감소한 반면, 50K pps 이하의 공격은 전 분기 대비 2.36% 증가했습니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/01/image9-10.png" class="kg-image"></figure>
+	<p><strong>비트 전송률별 분포</strong><br>패킷 방식 공격에서 관찰된 동향과 유사하게 비트 방식 공격도 그 횟수는 감소했습니다. 우리가 관찰한 역대 최대 규모의 공격이 2Tbps에 육박했으며 1Tbps 이상의 공격이 기본이 되어 가고는 있지만, 대부분의 공격은 여전히 500Mbps 이하로 규모가 작습니다 (97.2%).</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/01/image6-14.png" class="kg-image"></figure>
+	<p>2021년 4분기에는 500Mbps 이상의 모든 범위에 대한 대규모 공격이 크게 감소했으며 100Gbps 이상에 대한 대규모 공격의 범위는 35%~57%였습니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/01/image10-8.png" class="kg-image"></figure>
+	<h3 id="-ddos--11">지속 시간별 네트워크 계층 DDoS 공격</h3>
+	<p><strong>대부분의 공격은 지속 시간이 1시간 미만이므로, 자동화된 상시 가동 DDoS 완화 솔루션의 필요성이 다시 한번 강조됩니다.</strong></p>
+	<p>Cloudflare에서는 시스템에서 공격이 처음으로 감지 및 확인된 시점과 해당 공격 서명이 관찰된 마지막 패킷 사이의 간격을 기록하여 특정 타겟을 노리는 공격의 지속 시간을 측정합니다. 2021년 마지막 분기에는 전체 네트워크 계층 공격의 98%가 1시간 미만 지속되었습니다. 대부분의 공격이 단기적으로 지속된다는 건 매우 공통적인 현상입니다. 특히 우리가 관찰한 동향으로는 이번 분기에서처럼 공격 횟수가 증가하면 전송률과 지속 시간은 감소합니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/01/image12-8.png" class="kg-image"></figure>
+	<p>짧은 공격은 감지되지 않은 채 지나칠 수 있으며, 막대한 수의 패킷, 바이트 또는 요청을 몇 초 안에 집중시켜 대상을 공격하는 버스트 공격은 특히 감지가 어렵습니다. 이 경우, 보안 분석을 통한 수동 완화에 의존하는 DDoS 방어 서비스로는 적시에 공격을 완화할 방법이 없습니다. 단지 공격 후 분석에서 이를 확인한 다음 해당 공격 지문을 필터링하는 새로운 규칙을 배포하고 다음을 기약할 수 있을 뿐입니다. 마찬가지로, 보안팀이 공격 진행 도중에 트래픽을 DDoS 공급자에게 리디렉션하는 "주문형" 서비스도 해당 트래픽이 주문형 DDoS 공급자에게 라우팅되기 전에 이미 공격이 끝나버리기 때문에 비효율적입니다. </p>
+	<p>기업들에게는 트래픽을 분석하여 실시간 핑거프린팅을 빠르게 적용함으로써 단기 공격을 막아낼 수 있는 자동화된 상시 가동 DDoS 방어 서비스를 사용하는 것을 권장합니다.</p>
+	<h3 id="--1">공격 벡터</h3>
+	<p><strong>공격자들이 SYN 폭주를 여전히 애용하고 있는 한편, SNMP를 이용한 공격이 전 분기 대비 거의 5,800%까지 급증했습니다.</strong></p>
+	<p>공격 벡터는 공격자가 DDoS 공격을 실행하기 위해 사용하는 방법, 즉 IP 프로토콜, TCP 플래그 같은 패킷 속성, 폭주, 기타 방법들을 설명하는 용어입니다.</p>
+	<p>2021년에는 처음으로 <a href="https://www.cloudflare.com/ko-kr/learning/ddos/syn-flood-ddos-attack/" target="_blank">SYN 폭주</a> 공격의 비율이 크게 감소했습니다. 2021년 동안, SYN 폭주는 전체 네트워크 계층 공격 중 평균 54%를 차지했습니다. 물론 여전히 가장 빈번한 벡터 1위를 차지하고 있지만 그 비율은 전 분기 대비 38%에서 34%로 감소했습니다. </p>
+	<p>하지만 SYN 공격과 UDP 공격의 비율은 아주 근소한 차이를 보였습니다. <a href="https://www.cloudflare.com/ko-kr/learning/ddos/udp-flood-ddos-attack/" target="_blank">UDP 폭주</a>는 타겟 서버로 대규모의 사용자 데이터그램 프로토콜(UDP) 패킷을 전송해 해당 장비의 처리 및 응답 기능을 장악하려는 서비스 거부 공격의 일종입니다. 종종 타겟 서버를 보호하는 방화벽 역시 UDP 폭주로 인해 마비됨으로써 서비스 거부 공격을 합법적인 트래픽으로 인식하게 될 수 있습니다. UDP 공격은 2021년 3분기 4위에서 2021년 4분기에는 2위까지 뛰어 올랐습니다. 전체 네트워크 계층 공격 중 32%의 비중을 차지하면서 전 분기 대비 1,198%나 급증했습니다. </p>
+	<p>3위는 SNMP가 차지했는데, 비율이 크게 증가하면서 2021년 처음으로 주요 공격 벡터 중 하나로 등장했습니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/01/image16-8.png" class="kg-image"></figure>
+	<h2 id="--2">새롭게 부상하는 위협</h2>
+	<p>공격자가 공격 시작 시 어떤 벡터를 새로이 배포하는지 이해하기 위해 최근 유행하는 공격 벡터를 살펴본 결과, SNMP, MSSQL, 일반 UDP 기반 DDoS 공격이 급증한 것으로 확인되었습니다. </p>
+	<p>SNMP 공격과 MSSQL 공격 모두 공격을 트리거하는 데 사용된 패킷에서 타겟의 IP 주소를 소스 IP로 스푸핑하여 트래픽을 반사시키고 타겟에서 증폭시키는 데 사용됩니다.</p>
+	<p>간이 네트워크 관리 프로토콜(SNMP)은 UDP 기반 프로토콜로, 대개 잘 알려진 UDP 포트 161에서 가정 또는 기업 네트워크의 프린터, 스위치, 라우터, 방화벽 같은 네트워크 장비를 감지하고 관리하는 데 사용됩니다. SNMP 반사 공격에서 공격자는 패킷의 소스 IP 주소를 타겟 주소로 스푸핑하는 동시에 네트워크상 장비로 대량의 SNMP 쿼리를 전송하고, 결국 타겟의 주소로 응답을 보내도록 합니다. 이렇게 네트워크상 장비로부터 대량의 응답이 전송되면 타겟 네트워크가 DDoS 상태에 빠지게 됩니다.</p>
+	<p>SNMP 증폭 공격과 마찬가지로 Microsoft SQL(MSSQL) 공격도 Microsoft SQL Server Resolution Protocol을 반사 기반 DDoS 공격을 실행할 목적으로 오용하는 기술을 이용합니다. 이 공격은 <a href="https://en.wikipedia.org/wiki/Microsoft_SQL_Server" target="_blank">Microsoft SQL Server</a>가 클라이언트 쿼리 또는 요청에 응답하여 UDP 포트 1434를 수신하는 Microsoft SQL Server Resolution Protocol(MC-SQLR)을 악용하려고 할 때 발생합니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/01/unnamed-6--1-.png" class="kg-image"></figure>
+	<h3 id="-ddos--12">국가별 네트워크 계층 DDoS 공격</h3>
+	<p><strong>몰도바에서 기원한 공격이 네 배로 증가하면서 몰도바는 네트워크 계층 DDoS 활동이 가장 높게 이루어진 국가로 기록되었습니다. </strong></p>
+	<p>네트워크 계층 DDoS 공격을 분석할 때는 소스 IP의 위치가 아닌 트래픽이 유입되는 Cloudflare 에지 데이터 센터의 위치를 기준으로 트래픽을 구분합니다. 이는 공격자가 네트워크 계층 공격을 시작할 때 공격의 출발지를 숨기고 공격 속성에 무작위성을 부여하기 위해 소스 IP 주소를 <a href="https://www.cloudflare.com/ko-kr/learning/ddos/glossary/ip-spoofing/" target="_blank">스푸핑</a>할 수 있기 때문이며, 이 경우 단순한 DDoS 방어 시스템으로는 공격을 차단하기가 어렵습니다. 따라서 스푸핑된 소스 IP를 기반으로 공격 출발 국가를 파악할 경우에는 결국 스푸핑된 국가를 지목하게 됩니다.</p>
+	<p>Cloudflare는 공격이 관찰된 Cloudflare 데이터 센터의 위치별로 공격 데이터를 표시함으로써 스푸핑된 IP 문제를 극복할 수 있습니다. Cloudflare는 전 세계 <a href="https://www.cloudflare.com/ko-kr/network" target="_blank">250개 이상의 도시</a>에 데이터 센터를 확보하고 있기 때문에 보고서 작성 시 지리적 정확도가 보장됩니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/01/image15-9.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/01/image13-10.png" class="kg-image"></figure>
+	<p>모든 지역 및 국가를 보려면 <a href="https://radar.cloudflare.com/notebooks/ddos-2021-q4#network-layer-ddos-attacks-by-country" target="_blank">인터랙티브 지도</a>를 참고하세요.</p>
+	<h2 id="--3">요약</h2>
+	<p>Cloudflare의 사명은 더 나은 인터넷 환경을 구축하는 데 힘을 보태는 것입니다. 더 나은 인터넷이란 더 안전하고 빠르며 믿을 수 있는 인터넷입니다. DDoS 공격이 발생하더라도 말입니다. 이 사명의 일환으로 2017년부터 우리는 모든 고객에게 무료로 <a href="https://blog.cloudflare.com/unmetered-mitigation/">무제한 DDoS 방어</a> 기능을 제공하고 있습니다. 여러 해가 지나면서 공격자들이 DDoS 공격을 실행하기가 점점 더 쉬워지고 있습니다. 공격자의 이점에 대응하기 위해 우리는 모든 조직 역시 그 규모와 상관없이 모든 종류의 DDoS 공격에 맞서 스스로를 더 쉽게 무료로 보호할 수 있도록 하려 합니다.</p>
+	<p>Cloudflare를 아직 사용하고 있지 않나요? <a href="https://dash.cloudflare.com/sign-up" target="_blank">지금 사용해 보십시오</a>.</p>
+</div>

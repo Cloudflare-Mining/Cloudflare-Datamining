@@ -1,0 +1,19 @@
+<div class="post-content lh-copy gray1">
+	<!--kg-card-begin: markdown-->
+	<p>Yesterday, Syria's Internet connectivity was <a href="https://blog.cloudflare.com/how-syria-turned-off-the-internet-again">cut off from the rest of the world</a>. At 14:12 UTC, approximately 19 hours and 30 minutes after it had been shut down, connectivity was returned. Here's a BGPlay video of routes being restored within the country.</p>
+	<iframe width="560" height="315" src="https://www.youtube.com/embed/2CS3jlIBsbM?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen=""></iframe>
+	<p>Two interesting points. First, the government has stated that the outage was the result of a cable cut. Based on what we've seen, we believe this is highly unlikely. Syria's network connects to the rest of the Internet at four distinct points that are geographically separated. For traffic to be terminated entirely, all four connection points would need to be severed simultaneously.</p>
+	<p>Moreover, the video of the outage, as well as the video of the routes being restored, show the systematic withdrawl of BGP routes across all of Syria's providers. This is not the signature we see when there is an actual cable cut.</p>
+	<p>Second, while most of the Internet was cut off in Syria, it appears there was a small portion of Syrian IP space that continued to have connectivity. Specifically, the following IP ranges behind AS29256:</p>
+	<ul>
+		<li>46.53.0.0/17</li>
+		<li>78.110.96.0/20</li>
+		<li>94.141.192.0/19</li>
+	</ul>
+	<p>Those prefixes continued to be announced to Deutche Telecom which means they would have continued to have access to the Internet.</p>
+	<p>We don't know who is behind that IP space. We're still investigating whether we saw any Internet traffic coming from that IP space. The fact that they were still available, however, further discredits the assertation that this was a cable cut.</p>
+	<p>Here is a graph showing the last 24 hours of Syrian traffic to the CloudFlare network.</p>
+	<p><img alt="Syrian Internet access restored" src="https://blog.cloudflare.com/content/images/syrian_internet_restored.png" title="Syrian Internet Restored"><noscript><img alt="Syrian Internet access restored" src="http://blog.cloudflare.com/content/images/syrian_internet_restored.png" title="Syrian Internet Restored"></noscript></p>
+	<p></p>
+	<!--kg-card-end: markdown-->
+</div>

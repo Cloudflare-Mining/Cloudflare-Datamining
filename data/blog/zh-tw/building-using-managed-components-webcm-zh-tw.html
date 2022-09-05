@@ -1,0 +1,180 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/08/image1-6.png" class="kg-image" alt="Building and using Managed Components with WebCM"></figure>
+	<p>受管理元件的推出旨在徹底改變第三方工具與網站整合的方式。兩個月前，我們宣佈，<a href="https://blog.cloudflare.com/zaraz-open-source-managed-components-and-webcm/">我們將開放 Cloudflare Zaraz 背後最具創新性的部分技術的原始碼</a>，讓每個人都可以線上存取及使用這些技術。從那以後，我們一直在努力工作，以確保程式碼記錄準確完整，並且所有程式碼片段既有趣又易於使用。在本文中，我想向您展示，如果您正在管理網站或建置第三方工具，受管理元件對您有何幫助。但在開始之前，我們先談談過去的情況。</p>
+	<h3 id="-"><strong>第三方指令碼對您的網站構成威脅</strong></h3>
+	<p>數十年來，如果您想在網站上新增分析工具、聊天小工具、轉換像素或任何其他類型的工具，您都需要包含一個外部指令碼。這通常意味著在您的網站上新增如下的程式碼：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-html">&lt;script src=”https://example.com/script.js”&gt;&lt;/script&gt;
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>如果仔細想想，這是一個非常糟糕的想法。您現在的做法，不僅是要求瀏覽器連線到<em>另一台</em>伺服器，擷取並執行<em>更多的</em> JavaScript 程式碼，您還完全放弃了對網站的控制。您到底有多相信這個指令碼？您有多相信指令碼的伺服器未遭駭客入侵，或者將來永遠不會遭到駭客入侵？在上一篇部落格貼文中，我們展示了<a href="https://blog.cloudflare.com/zaraz-use-workers-to-make-third-party-tools-secure-and-fast/#how-third-party-tools-work-today">包含一段指令碼通常如何導致更多的網路呼叫</a>，佔用瀏覽器並讓一切速度减慢。但這些指令碼最糟糕的地方在於它們完全不受限制：在瀏覽器中執行的 JavaScript 程式碼可能劫持使用者，竊取其認證或信用卡資訊，使用其裝置挖掘加密貨幣，操縱您的網站，洩露 PII 等等。由於這些指令碼中的程式碼通常是縮小的，因此您幾乎不可能讀取它並弄清楚它在做什麼。</p>
+	<p>受管理元件將改變這一切。就像手機上的應用程式一樣，它們是圍繞權限系統構建的。您將决定是否允許元件連線到遠端伺服器，是否允許元件使用 Cookie、執行程式碼、將小工具插入頁面等等。與縮小的外部指令碼世界不同，它是一個能夠提升透明度的架構。網站擁有者可以開啟和關閉權限，若未授與受管理元件權限，它將無法存取相關 API。</p>
+	<p>但受管理元件不僅僅是用權限包圍目前系統，它們還提供了前從未有的功能：建立伺服器端連線、快取資訊、使用索引鍵/值儲存、在將回應提交給瀏覽器之前操作回應等等。此功能的核心來自於在瀏覽器之外執行程式碼的能力。讓瀏覽器免於執行以前在瀏覽器中執行的程式碼，這意味著<a href="https://blog.cloudflare.com/cloudflare-acquires-zaraz-to-enable-cloud-loading-of-third-party-tools/">您的網站可以提速約 40%</a>。在您的工具廠商遭到駭客攻擊時，它產生的攻擊面也會更小一些。</p>
+	<p>多虧了全新的<a href="https://managedcomponents.dev/" target="_blank">受管理元件 API</a>，這一切才成為可能。我們與廠商一起設計，以確保您可以使用它們來撰寫任何工具，同時將效能、安全性和私密性放在首位。其核心在於一個受管理元件就是一個 JavaScript 模組，因此每個 JavaScript 開發人員在構建時都應該感到得心應手。請查看我們上一篇部落格貼文中的<a href="https://blog.cloudflare.com/zaraz-open-source-managed-components-and-webcm/#introducing-managed-components">兩個範例</a>，看看它們的實際外觀，也可以查看一些<a href="https://github.com/managed-components/" target="_blank">我們已經在 GitHub 上開放原始碼的受管理元件</a>。</p>
+	<h3 id="webcm-">WebCM 是開放原始碼元件管理器</h3>
+	<p>當透過 <code>&lt;script&gt;</code> 標記載入工具時，其程式碼由瀏覽器執行。由於受管理元件不在瀏覽器中執行，因此其程式碼需要在其他地方執行。這個地方就是元件管理器。我們特意圍繞受管理元件設計了 API，以避免與特定的元件管理器繫結，事實上，世界上已經有兩個 API 了：Cloudflare Zaraz 和 WebCM。</p>
+	<p><a href="https://webcm.dev/" target="_blank">WebCM（基於 Web 的元件管理器）</a>是我們的元件管理器的開放原始碼參考實作。如果您執行一個網站，即使您不是 Cloudflare 使用者，現在也可以使用 WebCM 在您的網站上執行受管理元件。若要建立受管理元件，則可以像 SDK 一樣使用它。</p>
+	<p>在過去幾個月內，我們一直在幫助廠商編寫他們自己的受管理元件，而且我們還將繼續這樣做。我們開放了 WebCM 原始碼，以確保受管理元件是整個 Web 的一項技術。每個人都應該能够使用 WebCM 來載入及建立受管理元件。我們來看看如何使用吧！</p>
+	<h3 id="5-webcm-"><strong>5 分鐘完成 WebCM 入門</strong></h3>
+	<p>WebCM 入門比您想的要容易一些。WebCM 的運作方式類似於代理，因此無論您的網站如何構建，您都可以使用它。在新資料夾中，建立一個簡單的 HTML 檔案並將其命名為 <code>index.html</code>：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=”en”&gt;
+  &lt;head&gt;
+	&lt;meta charset="UTF-8"&gt;
+	&lt;title&gt;My Website&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    	&lt;h1&gt;WebCM test website&lt;/h1&gt;  
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>讓我們透過在同一資料夾中啟動 HTTP 伺服器來提供此檔案：</p>
+	<p>您可以使用 Node.js：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>npx http-server -p 8000
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>可以使用 Python：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>python3 -m http.server
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>或者任何其他會在 <a href="http://localhost:8000/index.html" target="_blank">http://localhost:8000/index.html</a> 上提供我們的 HTML 檔案的語言。</p>
+	<p>接下來，為 WebCM 建立一個設定檔。在新目錄中，建立一個名為 <code>webcm.config.ts</code> 的檔案。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-js">export default {
+  components: [
+    {
+      name: 'demo',
+      permissions: [
+        'access_client_kv',
+        'provide_server_functionality',
+        'provide_widget',
+        'serve_static_files',
+        'client_network_requests',
+      ],
+    },
+  ],
+  target: 'http://127.0.0.1:8000',
+  hostname: 'localhost',
+  trackPath: '/webcm/track',
+  ecommerceEventsPath: '/webcm/ecommerce',
+  clientEventsPath: '/webcm/system',
+  port: 8080
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>我們來看一下這個設定檔：</p>
+	<ul>
+		<li><code>components</code> 是一個陣列，其中列出了要載入的所有受管理元件。現在，我們將載入示範元件。請注意，我們只需要指定「demo」即可，WebCM 將為我們從 NPM 中獲取它。其他受管理元件也<a href="https://www.npmjs.com/org/managed-components" target="_blank">在 NPM 上提供</a>，您也可以從其他來源安裝元件。對於每個元件，我們都會定義要授予它哪些 <code>permissions</code>。您可以在<a href="https://managedcomponents.dev/specs/manifest/permissions" target="_blank">規格</a>中瞭解更多有關權限的資訊。如果我們嘗試新增元件而不授予其必需的權限，WebCM 會向我們發出警示。</li>
+		<li><code>target</code> 是我們的原始 HTTP 伺服器執行所在的位置。在上一步中，我們將其設定為在連接埠 8000 上執行。</li>
+		<li><code>port</code> 是 WebCM 提供我們的網站所使用的連接埠。</li>
+		<li><code>hostname</code> 是 WebCM 將繫結到的主機。</li>
+		<li><code>trackPath</code>、<code>clientEventsPath</code>、<code>ecommerceEventsPath</code> 是 WebCM 用於將事件從瀏覽器傳送至其後端的路徑。我們可以暫時保留這些路徑不變，稍後再去瞭解如何使用它們。</li>
+	</ul>
+	<p>！注意：下一節需要節點版本為 17 或更高版本</p>
+	<p>在保持 HTTP 伺服器執行時，在 <code>webcm.config.ts</code> 所在的目錄中，執行 <code>npx webcm</code>。節點將擷取 WebCM 並為您啟動它，然後 WebCM 將讀取設定。首先，它會將所需的元件擷取到 <code>components</code> 資料夾。完成後，它會啟動另一台伺服器來代理您的原始伺服器。</p>
+	<p>如果您現在在瀏覽器中開啟<a href="http://localhost:8080/index.html" target="_blank"> http://localhost:8080/index.html</a>，則會看到與在 <a href="http://localhost:8000/index.html" target="_blank">http://localhost:8000/index.html</a> 所見相同的頁面。這些頁面可能外觀相似，但在連接埠 <code>8080</code> 上執行的那個頁面正在執行我們的示範受管理元件。移動滑鼠並在頁面上按一下，會導致在 WebCM 終端機上列印訊息，顯示元件已載入且正在接收資料。您還會注意到，現在頁面會顯示一個簡單的天氣小工具——這是一個附加到頁面的<a href="https://managedcomponents.dev/specs/embed-and-widgets/widgets" target="_blank">受管理元件小工具</a>。瀏覽器無需連絡任何其他伺服器即可擷取天氣資訊，而 WebCM 可以快取該資訊，以確保快速提供。最後，如果您前往 <a href="http://localhost:8080/webcm/demo/cheese" target="_blank">http://localhost:8080/webcm/demo/cheese</a>，則會看到該元件提供了一張起司的靜態影像。這是一個範例，它說明了在您允許的情況下，受管理元件如何在伺服器上公開新端點。</p>
+	<p>示範元件，顧名思義，就是一個示範。我們用它來展示和測試受管理元件 API。如果我們想在網站中新增一個真正的受管理元件，該怎麼辦呢？<a href="https://w3techs.com/technologies/details/ta-googleanalytics" target="_blank">網際網路上有超過一半的網站使用</a> Google Analytics，因此我們來看看如何編輯 <code>webcm.config.ts</code> 檔案來載入它。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-js">export default {
+  components: [
+    {
+      name: 'demo',
+      permissions: [
+        'access_client_kv',
+        'provide_server_functionality',
+        'provide_widget',
+        'serve_static_files',
+        'client_network_requests',
+      ],
+    },
+    {
+      name: 'google-analytics',
+      settings: { 'tid': 'UA-XXXXXX' },
+      permissions: [
+        'access_client_kv',
+      ],
+    },
+  ],
+  target: 'http://127.0.0.1:8000',
+  hostname: 'localhost',
+  trackPath: '/webcm/track',
+  ecommerceEventsPath: '/webcm/ecommerce',
+  clientEventsPath: '/webcm/system',
+  port: 8080
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>在上面的範例中，我們只是用 Google Analytics 受管理元件取代了示範元件。請注意，此元件執行所需的權限要少得多——這是因為它完全在伺服器端執行。請記得使用您的 Google Universal Analytics（版本 3）真實帳戶識別碼取代 <code>UA-XXXXXX</code>。</p>
+	<p>現在，重新執行 `npx webcm` 將擷取 <a href="https://www.npmjs.com/package/@managed-components/google-analytics" target="_blank">google-analytics 受管理元件</a>，並使用您提供的設定執行它。如果現在前往代理網站，您不會看到任何變化。但如果轉至 Google Analytics 儀表板，則將開始看到頁面檢視出現在即時檢視上。WebCM 已載入該元件，且正在將資訊從伺服器端傳送至 Google Analytics。</p>
+	<p>還有許多其他元件可以嘗試，我們一直在新增更多元件。請查看<a href="https://www.npmjs.com/org/managed-components" target="_blank"> NPM 上</a>或<a href="https://github.com/managed-components" target="_blank"> GitHub 上的受管理元件組織</a>以瞭解完整清單。</p>
+	<h3 id="--1">構建您自己的受管理元件</h3>
+	<p>受管理元件不是供人們使用的封閉工具庫。如前所述，我們正在逐步從 GitHub 上的程式庫中開放更多工具原始碼。如果您認為我們的元件行為有異常，請提出問題或者提出 PR 讓我們知道。我們希望每個人都能從受管理元件中獲益。在過去的幾個月內，Discord 及 Cloudflare 社群論壇上的 Cloudflare Zaraz 社群因積極報告問題而提供了很大的幫助，因此我們很高興讓他們可以選擇更靠近 Cloudflare Zaraz 背後的內部結構。</p>
+	<p>改進現有的受管理元件是一件很棒的事情，但最令我們激動的是，您現在也可以構建自己的受管理元件了。如果您是第三方工具廠商，則可以透過這種方式建立一個安全且高效能的工具版本，這樣客戶便能輕鬆地探索並採用您的工具。如果您是一名網站開發人員，則可以調整受管理元件，看看哪些內容可以輕鬆地從瀏覽器中移除，從而提高效能。</p>
+	<p>讓我們看看建立一個受管理元件來接聽網站上的每個頁面檢視有多麼輕鬆吧。執行 <code>npm init managed-component</code>（位於 WebCM 建立的 <code>components</code> 目錄中），<a href="https://github.com/managed-components/create-managed-component" target="_blank">create-managed-component</a> 將帶您完成建立元件檔案結構的過程。一開始，我們的元件不會使用任何特殊權限，因此您可以什麼都不選。</p>
+	<p>依照精靈完成操作後，我們可以開啟 <code>src/index.ts</code> 檔案。預設情况下，我們的元件將為所有頁面檢視新增一個接聽程式：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-typescript">import { ComponentSettings, Manager } from '@managed-components/types'
+
+export default async function (manager: Manager, settings: ComponentSettings) {
+  manager.addEventListener('pageview', event =&gt; {
+    // do the things
+  })
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>我們來編輯一下註解行，這樣無論何時發生頁面檢視我們都可以看到。請注意，我們還在 <code>settings</code> 前面加了一個首碼 <code>_</code> ，因為我們現在不使用它：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-typescript">import { ComponentSettings, Manager } from '@managed-components/types'
+
+export default async function (manager: Manager, _settings: ComponentSettings) {
+  manager.addEventListener('pageview', event =&gt; {
+    console.log(`New pageview at ${event.client.url}`)
+  })
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>透過這些變更，無論何時在網站上檢視頁面，元件都會列印目前的 URL。在試用之前，我們需要構建自己的元件。在元件的資料夾中，執行 <code>npm i &amp;&amp; npm run build</code>。然後，使用元件的命名空間將其新增至 webcm.config.ts 檔案並重新啟動 WebCM：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-js">export default {
+  components: [
+    {
+      name: 'demo',
+      permissions: [
+        'access_client_kv',
+        'provide_server_functionality',
+        'provide_widget',
+        'serve_static_files',
+        'client_network_requests',
+      ],
+    },
+    {
+      name: 'google-analytics',
+      settings: { 'tid': 'UA-123456' },
+      permissions: [
+        'access_client_kv',
+      ],
+    },
+    {
+      name: 'your-component-namespace',
+      settings: {},
+      permissions: [],
+    },
+  ],
+  target: 'http://127.0.0.1:8000',
+  hostname: 'localhost',
+  trackPath: '/webcm/track',
+  ecommerceEventsPath: '/webcm/ecommerce',
+  clientEventsPath: '/webcm/system',
+  port: 8080
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>這是一個非常簡單的元件，但它顯示了構建之前僅在瀏覽器中可用的功能有多麼輕鬆。您可以輕鬆地延伸自己的元件：使用 <code>fetch</code>（在 <code>console.log</code> 聲明旁邊），並在網站上發生頁面檢視時將資訊傳送至自己的分析倉庫。瞭解所有其他受管理元件 API，以<a href="https://managedcomponents.dev/specs/category/embeds-and-widgets" target="_blank">建立小工具</a>、<a href="https://managedcomponents.dev/specs/client-events/mousedown" target="_blank">接聽點擊</a>、<a href="https://managedcomponents.dev/specs/client/set" target="_blank">儲存 Cookie</a>、<a href="https://managedcomponents.dev/specs/cache/useCache" target="_blank">使用快取</a>等等。透過這些 API，您可以構建比以前更豐富的工具。</p>
+	<h3 id="--2">您的工具作為受管理元件會更好</h3>
+	<p>當我們開始研究受管理元件時，許多人都在問工具廠商構建受管理元件的動機是什麼。在過去的幾個月內，我們瞭解到，各廠商對受管理元件感到興奮的原因與我們如出一轍——它不僅提供了一種安全的方式來使用工具，還提供了一種簡化的方式來整合網站中的工具。客戶非常喜歡這些東西，因此擁有受管理元件就意味著客戶更有可能去試用您的技術。各廠商還將獲得巨大的可探索性好處，因為他們的工具可以作為精選項目在 Cloudflare Zaraz 儀表板中顯示，從而在數萬個啟用 Zaraz 的網站上公開。主要廠商對構建受管理元件表現出了很大的興趣，我們將在這個過程中盡最大努力積極地為他們提供支援。如果您的公司對擁有受管理元件感興趣，請聯絡我們。</p>
+	<p>我們堅信，受管理元件會改變線上使用第三方工具的方式。而這僅僅是個開始，以後會更快速、更安全、更私密。我們將與使用者和廠商攜手，構建一個社群，共同致力於不斷提高受管理元件的功能，以造福於全球資訊網的每一位使用者。若要開始構建受管理元件，請前往 <a href="https://managedcomponents.dev/" target="_blank">managedcomponents.dev</a>，然後開始構建。我們的團隊將透過 <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d4b9b5bab5b3b1b0b7bbb9a4bbbab1baa0a794b7b8bba1b0b2b8b5a6b1fab7bbb9">[email&nbsp;protected]</a> 為您提供幫助。</p>
+</div>

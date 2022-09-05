@@ -1,0 +1,62 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/06/45DEDC7B-B31F-461C-B786-12FBAF1A5391.png" class="kg-image"></figure>
+	<p>Nous sommes ravis de vous annoncer que dès aujourd'hui, Cloudflare Workers® disposera d'une CLI, de documents nouveaux et améliorés, de plusieurs scripts pour tout le monde, de la possibilité d'exécuter des applications sur workers.dev sans apporter votre propre domaine ainsi que d’un niveau gratuit pour rendre l'expérimentation plus facile que jamais. Nous construisons la plateforme sans serveur du futur et souhaitons que vous y construisiez votre application dès aujourd'hui. Dans cet article, nous expliquerons à quoi une plateforme du futur sans serveur ressemblera, comment elle changera les paradigmes d’aujourd’hui et notre engagement à la rendre formidable pour les utilisateurs.</p>
+	<p>Il y a trois ans, je passais un entretien chez Cloudflare pour un poste dans le domaine de solutions d'ingénierie. Dans le cadre d'une mission d'entretien, j'ai dû créer une source derrière Cloudflare sur mon propre domaine. J'ai passé mon week-end, frustré et perdu dans les configurations, à essayer de comprendre comment configurer une instance EC2, me connecter à elle via IPv6 et installer NGINX sur Ubuntu 16.4 afin d’obtenir un <em>site statique qui porte une image de mon chat.</em> J'ai un diplôme en informatique et je n’ai travaillé jusqu’ici qu’en tant qu’ingénieur logiciel. La construction de cette application simple a été une expérience horrible. Sans avoir à se soucier des serveurs, passer un week-end à coder aurait donné une application beaucoup plus riche.</p>
+	<p>Et ce n’est qu’un seul échelon de l'échelle, le premier. Alors que les primitives ont grimpé en flèche, le problème est de développer une application, de la placer sur Internet et de la faire passer de MVP à un produit évolutif et performant. Tous restent des étapes différentes dans le processus de développement.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/Workers-diagram-MVP--copy-3@3x-8--1-.png" class="kg-image"></figure>
+	<p>Voici le problème que le réseau « sans serveur » a promis de résoudre. Supprimer les serveurs à toutes les étapes du processus et permettre aux développeurs de faire ce qu'ils font le mieux : développer, sans avoir à se soucier de l'infrastructure.</p>
+	<p>Et, pourtant, avec de nombreuses offres sans serveur aujourd’hui, la première chose qu’ils font est ce qu’ils vous ont promis de ne pas faire : ils vous font penser aux serveurs. « Quelle région aimeriez-vous ? » (La première question qui me vient à l'esprit : pourquoi me forcez-vous à penser aux clients qui me tiennent le plus à cœur : Côte est ou côte ouest ? Pourquoi ne pouvez-vous pas résoudre cela pour moi ?). Ou : « De quelle taille de mémoire pensez-vous avoir besoin ? » (encore une fois : pourquoi faites-vous de cela mon problème ? ! C’est à vous de le savoir !).</p>
+	<p>Nous ne pensons pas que cela devrait fonctionner de cette manière.</p>
+	<p>Je repense souvent à ce problème auquel je me trouvais confronté il y a trois ans et dont je sais que les développeurs du monde entier rencontrent chaque jour. Les développeurs devraient pouvoir se concentrer uniquement sur le code. Cela devrait être à quelqu'un d’autre de s'occuper de tout le reste, de la mise en place d'une infrastructure à la rendre rapide et évolutive. Bien que nous ayons pris quelques décisions architecturales en développant Workers qui nous permet de le faire mieux que quiconque, nous n’allons pas en parler aujourd'hui (mais si vous souhaitez en savoir plus, <a href="https://blog.cloudflare.com/cloud-computing-without-containers/">voici un excellent article de blog détaillant certains d'entre eux</a>). Il s’agit aujourd’hui de mieux affiner Workers pour les besoins des développeurs.</p>
+	<p>Nous voulons que Workers donne vie au rêve de réseau sans serveur et de laisser les développeurs se soucier uniquement des bogues dans leur code. Aujourd’hui marque le début d’un effort soutenu de la part de Cloudflare en vue de rendre le travail des développeurs plus agréable grâce à Workers. Nous avons des choses passionnantes à annoncer aujourd'hui mais ce n'est que le début.</p>
+	<h3 id="wrangler-le-cli-officiel-de-workers"><strong>Wrangler : le CLI officiel de Workers</strong></h3>
+	<p>Wrangler, qui était à l'origine <em>open sourced</em> comme le CLI de Rust pour Workers, est devenu le CLI officiel de Workers, répondant à tous vos besoins en matière de déploiement de Workers.</p>
+	<p>Commencez dès maintenant en installant Wrangler</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-sh">npm install -g @cloudflare/wrangler
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Générez votre premier projet à partir de notre galerie de <a href="https://workers.cloudflare.com/docs/templates" target="_blank">modèles</a></p>
+	<!--kg-card-begin: markdown-->
+	<p><code>wrangler generate &lt;name&gt; &lt;template&gt; --type=["webpack", "javascript", "rust"]</code></p>
+	<!--kg-card-end: markdown-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/worker_generate.gif" class="kg-image"></figure>
+	<p>Wrangler se chargera de l’emballage Web de votre projet, de la compilation dans l’assemblage Web et du chargement de votre projet sur Workers, le tout en une étape simple :</p>
+	<!--kg-card-begin: markdown-->
+	<p><code>wrangler publish</code></p>
+	<!--kg-card-end: markdown-->
+	<figure class="kg-card kg-image-card"><img src="https://lh5.googleusercontent.com/utFG7RmahwQuXvQ9cuwDYZYK8WtxJDarspvCrbidSrT1OKxPlZhgcJURcBjFcDmpf22v5WPEebq-SPeoAmgjKIfUx9u805Dsd3P8ZMhvkDmFp-tesh5WVOwcoscvWZ3lGUqSWLqI" class="kg-image"></figure>
+	<p>Nous sommes ravis que vous utilisiez Wrangler pour :</p>
+	<ul>
+		<li>Compiler Rust, C et C ++ dans l’assemblage Web</li>
+		<li>Créer des applications JavaScript simples ou multiples</li>
+		<li>Installez les dépendances NPM (nous nous occupons de l’emballage Web pour vous)</li>
+		<li>Ajoutez des espaces de noms KV et des liaisons</li>
+		<li>Démarrez avec des <a href="https://workers.cloudflare.com/docs/templates/" target="_blank"> modèles préfabriqués</a></li>
+	</ul>
+	<h3 id="documents-nouveaux-et-am-lior-s"><strong>Documents nouveaux et améliorés</strong></h3>
+	<p>Nous avons mis à jour notre documentation (et nous avons utilisé Wrangler à cet effet !), afin que vous puissiez plus facilement que jamais démarrer et déployer votre première application avec Workers.</p>
+	<p>Découvrez nos nouveaux tutoriels :</p>
+	<ul>
+		<li><a href="https://workers.cloudflare.com/docs/tutorials/build-an-application/" target="_blank">Déployer un robot Slack avec Workers</a></li>
+		<li><a href="https://workers.cloudflare.com/docs/tutorials/build-a-serverless-function/" target="_blank">Construire un générateur de code QR</a></li>
+		<li><a href="https://workers.cloudflare.com/docs/tutorials/configure-your-cdn" target="_blank">Servir et mettre en cache des fichiers du stockage cloud</a></li>
+	</ul>
+	<h3 id="multiscript-pour-tous"><strong>Multiscript pour tous</strong></h3>
+	<p>Vous avez demandé, nous avons écouté. Lorsque nous avons présenté Workers, nous voulions garder les choses aussi simples que possible. En tant que développeur, vous souhaitez diviser votre code en composants logiques. Plutôt que d'avoir un seul script monolithique, nous souhaitons vous permettre de déployer votre code d'une manière qui ait du sens pour vous.</p>
+	<h3 id="no-domain-required-workers-dev"><strong>no-domain-required.workers.dev</strong></h3>
+	<p>L'écriture d'un logiciel est un processus créatif : un nouveau projet signifie créer quelque chose à partir de rien. Vous ne savez peut-être pas encore exactement ce que cela va être, sans parler de son nom.</p>
+	<p>Nous changeons la façon dont vous commencez sur Workers, en vous permettant de vous déployer dans a-subdomain-of-your-choice.workers.dev.</p>
+	<p>Vous avez peut-être entendu parler de <a href="https://blog.cloudflare.com/announcing-workers-dev/">cette annonce</a> en février et nous sommes ravis de la concrétiser. Pour ceux d'entre vous qui se sont pré-inscrits, vos sous-domaines vous attendront lors de votre inscription et de votre clic sur Workers.</p>
+	<h3 id="un-niveau-gratuit-exp-rimenter"><strong>Un niveau gratuit à expérimenter</strong></h3>
+	<p>Les bons produits ne viennent pas toujours des bonnes idées, ils viennent souvent de la liberté du bricoleur. Quand le bricolage a un prix (même si c’est 5 dollars), nous avons réalisé que cela limitait la capacité des gens à essayer quelque chose.</p>
+	<p>À partir d’aujourd’hui, nous annonçons un niveau gratuit pour Workers.</p>
+	<p>Le niveau gratuit vous permettra d’utiliser Workers pour jusqu’à 100 000 requêtes par jour, sur votre propre domaine ou workers.dev. Vous pouvez en apprendre plus sur les limites <a href="https://workers.cloudflare.com/docs/reference/runtime/limits/" target="_blank">ici</a>.</p>
+	<h3 id="interface-utilisateur-nouvelle-et-am-lior-e"><strong>Interface utilisateur nouvelle et améliorée</strong></h3>
+	<p>Nous avons intégré cela dans une expérience simple et agréable qui vous permet vous inscrire à un Worker déployé en moins de 2 minutes :</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/get-started.gif" class="kg-image"></figure>
+	<h3 id="notre-engagement"><strong>Notre engagement</strong></h3>
+	<p>Nous avons un long chemin à parcourir. Il ne s’agit pas de supprimer l’expérience des développeurs de notre liste, mais bien de souligner notre engagement à l’égard de celle-ci. Comme le dit notre cofondatrice, Michelle, « nous ne faisons que commencer ».</p>
+	<p>Il y a beaucoup de choses ici et beaucoup plus à venir. Rejoignez-nous à <a href="https://workers.cloudflare.com/" target="_blank">workers.cloudflare.com</a> pour en savoir plus, et si vous êtes prêt à tenter votre chance, vous pouvez vous y inscrire.</p>
+	<p>Nous avons hâte de voir vos créations !</p>
+</div>

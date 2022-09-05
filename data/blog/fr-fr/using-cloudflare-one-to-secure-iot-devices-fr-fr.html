@@ -1,0 +1,162 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/Magic-IoT.png" class="kg-image"></figure>
+	<p>Vous trouverez probablement un appareil non sécurisé présentant une vulnérabilité exploitable quelque part chez vous. Ainsi que dans votre bureau. Et probablement aussi dans l'école de votre enfant. Caméras, imprimantes, enceintes, lecteurs de moyens d'accès, thermostats, même votre capteur de fréquence cardiaque… tous ces appareils sont, ou peuvent être, des appareils liés à l'Internet des objets (IdO). Les appareils IdO s'intègrent en toute fluidité à nos vies modernes afin d'améliorer notre efficacité et le contrôle dont nous disposons sur notre environnement. Pourtant, ils sont notoirement connus pour être peu sécurisés. Ce constat découle de la nature restreinte des équipements physiques et de leur capacité de calcul limitée, qui conduisent souvent à la minimisation des mesures de contrôle des accès, à la mise en place de mots de passe codés en dur, ainsi qu'à l'impossibilité de déployer des correctifs à distance.</p>
+	<p>La réalité de cette menace peut se révéler de manière spectaculaire. Prenons, par exemple, le cas de <a href="https://blog.cloudflare.com/inside-mirai-the-infamous-iot-botnet-a-retrospective-analysis/">l'attaque liée au botnet Mirai de 2016</a>. Lors de cette dernière, des acteurs malveillants ont exploité des millions d'appareils IdO afin de constituer un vaste botnet capable de lancer des attaques DDoS, qui ont ensuite conduit à la mise hors ligne de larges pans d'Internet, dont Twitter, le Guardian et CNN. Ce type d'attaque n'est pas si rare et survient à intervalles plus ou moins réguliers. Cloudflare en a fait l'expérience par elle-même en mars 2021, lorsque l'un de nos potentiels fournisseurs de caméras de sécurité physiques, Verkada, s'est retrouvé compromis. L'incident a permis aux pirates à l'origine de l'attaque d'accéder aux outils de support interne de Verkada, utilisés pour gérer les caméras à distance. Cette manœuvre leur a permis de tenter des mouvements latéraux vers d'autres appareils situés sur le réseau. Heureusement, la mise en œuvre du modèle Zero Trust chez Cloudflare <a href="https://blog.cloudflare.com/about-the-march-8-9-2021-verkada-camera-hack/">a empêché les pirates d'effectuer ces mouvements transversaux</a>. En définitive, l'incident n'a touché que les caméras.</p>
+	<p>Toutefois, et ce même lorsqu'ils ne nous affectent pas ou pas directement, nous considérons ces incidents comme un défi permettant d'améliorer encore un peu plus nos produits de sécurité. Nous nous sommes donc posé la question suivante : pouvons-nous utiliser nos propres produits pour sécuriser les appareils IdO (même si ces derniers se situent sur le même réseau que les systèmes de production) afin de nous assurer d'isoler toute compromission de ces appareils, notoirement connus pour être peu sécurisés ? Grâce à Cloudflare One, la réponse est oui !</p>
+	<h3 id="les-solutions-d-aujourd-hui-la-s-curit-au-prix-de-la-complexit-"><strong>Les solutions d'aujourd'hui : la sécurité au prix de la complexité</strong></h3>
+	<h3 id="mod-le-zero-trust">Modèle Zero Trust</h3>
+	<p>Comme nous l'avons mentionné plus haut, Cloudflare n'a pas été affectée par les appareils IdO compromis, car nous utilisons un modèle Zero Trust. Si les considérations environnementales se révèlent adéquates, comme dans les bureaux de Cloudflare, le réseau d'entreprise peut être cloisonné au moyen d'un modèle Zero Trust. Ce dernier permet d'empêcher les mouvements latéraux, car une authentification se révèle alors nécessaire pour se connecter à toute autre partie du réseau. Comme l'appareil IdO lui-même n'est pas isolé, une attention toute particulière doit être accordée au fait de placer les autres points d'entrée du réseau derrière la protection d'un accès Zero Trust.</p>
+	<p>Tous les environnements ne peuvent cependant pas être contrôlés de manière aussi consciencieuse. Prenons le cas des datacenters, par exemple. La présence d'autres fournisseurs, la complexité des anciens réseaux de production et la prévalence des connexions de machine à machine impliquent que, lors de l'installation d'un appareil IdO (comme un lecteur de moyens d'accès ou une caméra), nous ne pouvons pas proposer les mêmes garanties Zero Trust que celles que nous pouvons offrir au sein de nos bureaux. Dans un contexte d'accroissement de la complexité des environnements, le déploiement réussi d'un modèle Zero Trust (afin d'empêcher l'exécution de mouvements latéraux entre appareils IdO) devient toujours plus difficile.</p>
+	<h3 id="r-seau-vlan">Réseau VLAN</h3>
+	<p>De nombreuses entreprises déploient leurs appareils IdO au sein d'un réseau complètement distinct du réseau de production, en faisant appel à un réseau hors bande ou un VLAN. Si les VLAN isolent effectivement la couche 2, ils nécessitent la mise en place de listes d'autorisation d'accès à leur interface routée en amont pour restreindre le trafic de couche 3. En outre, de nombreux administrateurs souhaitent ajouter des configurations supplémentaires pour les garanties les plus strictes, comme la mise sur liste d'accès à la fois pour le trafic entrant et le trafic sortant, ou encore la journalisation des connexions réussies, mais aussi des connexions refusées. La gestion de ces listes d'autorisation d'accès peut vite augmenter en complexité, car chaque nouveau réseau constitue un autre panorama à protéger, corriger et détecter.</p>
+	<p>Incorrectement configurées, les garanties de sécurité des VLAN peuvent être mises en échec avec la plus grande facilité. Prenons l'exemple d'un réseau disposant de deux VLAN distincts. Si les listes d'autorisation d'accès ne sont pas appliquées de manière cohérente aux deux switches respectifs, un appareil piraté provenant d'un des VLAN pourrait facilement se faire passer pour un appareil situé sur l'autre VLAN. Un administrateur réseau pourrait utiliser des <a href="https://en.wikipedia.org/wiki/Private_VLAN#:~:text=Private%20VLAN%2C%20also%20known%20as,ports%2C%20and%20a%20single%20uplink." target="_blank">VLAN privés</a> en fonction de chaque switch, mais cette approche ajoute, là encore, de la complexité.</p>
+	<p>La mise en place de configurations cohérentes et de choix architecturaux, mais aussi de règles régissant les listes d'autorisation d'accès au type d'équipement utilisé dans chaque site, s'avère nécessaire pour déployer efficacement des VLAN de manière à empêcher les mouvements latéraux. Dans un contexte d'accroissement du nombre de sites et d'expansion de l'empreinte d'un environnement, l'opération devient de plus en plus difficile à mettre en œuvre.</p>
+	<h3 id="la-solution-cloudflare">La solution Cloudflare</h3>
+	<p>Nous nous appuyons sur nos propres produits pour isoler les appareils sans les déployer sur un réseau distinct. Cette approche permet de bénéficier de garanties de sécurité, sans recourir à l'installation d'équipements physiques supplémentaires. Il s'agit donc d'un moyen sans serveur et sans infrastructure d'isoler un réseau.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/Magic-x-IoT.png" class="kg-image"></figure>
+	<p>Comment y parvenons-nous ? L'appareil physique (pour notre démonstration de faisabilité, il s'agira d'une caméra Verkada) est connecté à un switch Power over Ethernet (alimentation par Ethernet), lui-même configuré pour transmettre, via un tunnel Anycast GRE, son trafic au réseau mondial de Cloudflare. Nous pouvons alors configurer des règles sur le tableau de bord Cloudflare afin de régir le trafic sortant et de nous assurer que ce dernier ne soit acheminé qu'à l'endroit où il est censé l'être. Les mouvements latéraux sont ainsi rendus impossibles.</p>
+	<p>Cette architecture permet à un administrateur réseau de contrôler le trafic de la couche 3 (et supérieures) depuis un tableau de bord unique, en appliquant instantanément des politiques au trafic entrant et sortant. Elle constitue ainsi une solution simple de type « set-and-forget » (définir et oublier), capable de s'adapter à un environnement évolutif. En effet, la protection est agnostique vis-à-vis des fournisseurs, s'appuie sur des normes courantes et la collecte des journaux s'effectue automatiquement. Comparativement à d'autres méthodes de prévention des mouvements latéraux, Cloudflare propose la simplicité d'utilisation, l'adaptabilité et les garanties de sécurité nécessaires à la gestion sécurisée de n'importe quel environnement doté d'appareils IdO.</p>
+	<!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-ycr8 {
+			background-color: #ffffff;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-v0hj {
+			background-color: #efefef;
+			border-color: inherit;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-dvid {
+			background-color: #efefef;
+			border-color: inherit;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-c6of {
+			background-color: #ffffff;
+			border-color: inherit;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-3xi5 {
+			background-color: #ffffff;
+			border-color: inherit;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-i81m {
+			background-color: #ffffff;
+			text-align: center;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" style="undefined;table-layout: fixed; width: 721px">
+		<colgroup>
+			<col style="width: 340px">
+			<col style="width: 125px">
+			<col style="width: 125px">
+			<col style="width: 125px">
+		</colgroup>
+		<thead>
+			<tr>
+				<th class="tg-dvid"></th>
+				<th class="tg-v0hj">Zero Trust</th>
+				<th class="tg-v0hj">VLAN</th>
+				<th class="tg-v0hj">Cloudflare One</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-c6of"><span style="font-weight:400;font-style:normal">Empêche les mouvements latéraux avec la configuration appropriée</span></td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">✅</span></td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">✅</span></td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">✅</span></td>
+			</tr>
+			<tr>
+				<td class="tg-c6of">Équipements physiques non nécessaires</td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">✅</span></td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">❌</span></td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">✅</span></td>
+			</tr>
+			<tr>
+				<td class="tg-c6of">Journalisation automatique</td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">✅</span></td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">❌</span></td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">✅</span></td>
+			</tr>
+			<tr>
+				<td class="tg-c6of">Isolement de l'appareil IdO lui-même</td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">❌</span></td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">✅</span></td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">✅</span></td>
+			</tr>
+			<tr>
+				<td class="tg-c6of">Point de configuration unique</td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">❌</span></td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">❌</span></td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">✅</span></td>
+			</tr>
+			<tr>
+				<td class="tg-c6of">La complexité n'augmente pas avec le nombre d'appareils</td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">❌</span></td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">❌</span></td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">✅</span></td>
+			</tr>
+			<tr>
+				<td class="tg-c6of">Solution agnostique vis-à-vis de l'appareil</td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">❌</span></td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">❌</span></td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">✅</span></td>
+			</tr>
+			<tr>
+				<td class="tg-ycr8">Avantages du réseau Cloudflare en termes de vitesse et de performances</td>
+				<td class="tg-i81m"><span style="font-weight:400;font-style:normal">❌</span></td>
+				<td class="tg-i81m"><span style="font-weight:400;font-style:normal">❌</span></td>
+				<td class="tg-i81m"><span style="font-weight:400;font-style:normal">✅</span></td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: html-->
+	<h3 id="et-ensuite">Et ensuite ?</h3>
+	<p>Au quatrième trimestre 2021, nous avons conclu un accord avec un partenaire spécialisé dans les tests de pénétration afin qu'il teste cette configuration en répliquant la tentative par un appareil compromis de passer sur des réseaux de production situés derrière l'architecture Cloudflare One. Notre partenaire s'est trouvé dans l'incapacité de procéder à des mouvements latéraux. Ce résultat prouve ainsi l'efficacité de notre architecture.</p>
+	<p>Compte tenu des tests réalisés sur cette dernière, nous allons donc commencer à formaliser le déploiement de Cloudflare One en interne dans nos datacenters, dans le cadre d'une initiative de sécurité physique, afin de préserver la sécurité de nos ressources les plus fiables.</p>
+	<p>Pour plus d'informations sur l'utilisation de Cloudflare One au sein de votre entreprise, n'hésitez pas à contacter notre équipe de vente.</p>
+</div>

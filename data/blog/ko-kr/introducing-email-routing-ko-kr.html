@@ -1,0 +1,45 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/1-3.png" class="kg-image"></figure>
+	<p>세계 인구의 절반에 해당하는 <a href="https://www.statista.com/statistics/255080/number-of-e-mail-users-worldwide/" target="_blank">40억 명 이상의 사람들</a>이 현재 한 가지 이상의 이메일 주소를 보유하고 있으며 이 가운데 상당수는 이메일을 개인적인 일이나 직업과 관련한 업무를 처리하는 수단을 넘어서는 필수적인 도구로 사용하고 있습니다. 매일 3,000억 통이 넘는 이메일이 누군가에게 발송되고 수신되고 있지만 이메일을 단순히 통신 수단으로만 생각한다면 이메일을 제대로 활용하는 것으로 보기 어렵습니다. 이메일이 인류의 삶에 미치는 영향은 메시지 전달 수단이라는 차원을 훨씬 뛰어넘습니다. 온라인으로 개인의 신원을 확인하는 수단으로 널리 쓰이고 있고 의사소통을 위한 여러 플랫폼들로 연결되는 관문의 역할도 하고 있습니다.</p>
+	<p>오늘날의 이메일 사용자들은 대부분 은행 계좌를 들여다보기 위해 로그인하거나 정부 기관과 연락을 주고받는 등 민감한 정보와 관련된 업무에도 이메일을 사용합니다. 아울러 온라인에서 발견한 10% 할인 쿠폰을 신청하는 과정에서도 이메일을 사용하는 경우도 있는데 이 때문에 몇 달 동안 스팸 메일에 시달리는 경우도 있습니다. 이 두 사례는 업무의 중요도와 보안성이라는 측면에서 이메일을 정반대의 용도로 쓰는 경우에 속하지만 이메일 사용자들은 한 가지 계정으로 편리하게 업무를 보는 게 편리하다는 이유로 위험을 감수하는 경우가 흔합니다.</p>
+	<p>사정은 기업의 경우도 많이 비슷해 기업들은 예를 들어 영업부서용 이메일 주소와 지원부서용 이메일 주소를 따로 두고 업무를 처리하는 것이 좋다고 생각하면서도 여러 가지의 이메일 주소를 관리하는 것이 번거롭다고 느끼는 경우가 많습니다. 그리고 회사가 커지면서 전에는 오너 차원에서 처리하던 업무를 다른 직원들에게 맡겨야 하는 경우도 종종 발생하게 됩니다. 하지만 중소기업 같은 경우에는 메일함과 다양한 도메인으로 이메일을 쓸 수 있게 별칭을 설정하고 관리하는 일이 간단하지 않은 경우가 다반사이기도 합니다.</p>
+	<p>또한 인터넷 상에서 자신의 존재를 다양화하기 위해 여러 개의 신원을 사용하면서 여러 개의 메일함을 만들어 관리해야 하는 개인이나 가정도 헤아릴 수 없이 많습니다.</p>
+	<p>Cloudflare는 이메일과 관련한 이 같은 어려움을 잘 이해하고 있으며 여러분이나 여러분 가족이나 여러분 부서에서 이미 사용 중인 메일함으로 다시 연결되는 이메일 주소를 손쉽게 무제한으로 만들어내는 Cloudflare Email Routing 서비스를 출시하게 된 것도 이 때문입니다.</p>
+	<h2 id="cloudflare-email-routing">Cloudflare Email Routing</h2>
+	<p>Cloudflare Email Routing은 추가로 만든 메일함에 대한 신경을 지속적으로 기울일 필요 없이 이메일 주소를 생성하고 관리하는 과정을 단순화시킬 수 있도록 설계된 서비스입니다. </p>
+	<p>그 과정은 간단합니다.</p>
+	<ol>
+		<li>자신의 도메인용으로 사용할 이메일 주소를 입력합니다.</li>
+		<li>포워딩을 받을 이메일 주소를 입력합니다.</li>
+	</ol>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/2-2.png" class="kg-image"></figure>
+	<p>이미 아는 분도 있을 수 있겠으나 이메일은 봉투, 헤더(상단), 본문으로 구성돼 있습니다.</p>
+	<p>봉투는 SMTP 전송 프로토콜의 일부로 이메일 서버에 이메일 발신자와 수신자가 누구인지에 관한 정보를 전달하는 역할을 합니다. </p>
+	<p>헤더에는 메시지가 이동한 경로, 메시지가 이동한 날짜, 메시지를 보낸 사람과 받은 사람의 주소, 메시지 제목, 그밖에 SPF 검사 결과, DKIM 서명, 스팸 방지 점수 같은 기술적 메타데이터를 비롯해 구조화된 정보가 담겨 있습니다. 이메일 메시지가 최종적인 받은메일함에 도착하기 전까지는 이메일 메시지가 서버를 경유할 때마다 새로운 헤더가 추가되거나 기존 헤더의 내용이 변경될 수 있습니다.</p>
+	<p>마지막 절차는 이메일 메시지의 본문으로 여기에 실제 메시지 내용이 들어갑니다. 본문의 형태는 일반 텍스트이거나 서식 있는 HTML일 수 있고 첨부 파일이 들어있을 수도 있는데 경우에 따라 첨부 파일은 서명되거나 암호화되기도 합니다.</p>
+	<p>아래는 SMTP 프로토콜이 어떻게 작동하는지와 이메일 메시지 전송의 3단계가 진행되는지를 단순화해 보여주는 도표입니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/3-2.png" class="kg-image"></figure>
+	<p>Cloudflare Email Routing 서비스는 전송 계층 위에서 지능형 라우터의 역할을 제공하는 것으로 이메일 메시지가 최종 목적지에 전달될 수 있도록 SMTP 봉투를 관리하고 수정해주면서도 원래의 헤더와 본문을 원본 그대로 유지하는 역할을 수행합니다. 이 같은 방식을 통해 SPF, DKIM, 그밖의 보안 또는 스팸 방지 프로토콜이 깨지지 않고 이메일 수신자도 안전히 보호받는 것이 가능해집니다.</p>
+	<p>더 나아가 Cloudflare는 다른 제품에 대해서도 똑같이 개인 정보 보호 원칙을 최우선으로 적용하므로 어떤 경로에서든 이메일을 들여다보거나 메일 큐에 쌓아두거나 저장하지 않습니다. 설정된 규칙에 따라 처리 과정을 거친 이메일 메시지가 수신되고 나면 메시지의 최종 목적지로 실시간으로 전달됩니다.</p>
+	<h2 id="-">비공개 베타 액세스</h2>
+	<p>Email Forwarding은 현재 비공개 베타로 제공되고 있으며 이 <a href="https://www.cloudflare.com/ko-kr/email-forwarding-waitlist-sign-up/" target="_blank">가입신청 양식</a>으로 신청하면 기다리는 시간을 절약할 수 있습니다.</p>
+	<p>그리고 나서 Email Routing을 사용할 수 있으려면 자신의 도메인을 <a href="https://www.cloudflare.com/ko-kr/dns/" target="_blank">Cloudflare DNS</a>에 등록하기만 하면 됩니다. 현재 보유하고 있는 도메인이 없을 경우에는 Cloudflare의 이 <a href="https://www.cloudflare.com/ko-kr/products/registrar/" target="_blank">registrar</a>를 통해 구매할 수 있습니다.</p>
+	<h2 id="--1">단계별 구성</h2>
+	<p>그 다음으로는 새로운 이메일 주소를 만들고 포워딩 설정을 하는데 필요한 몇 가지 단계만 거치면 됩니다.</p>
+	<ol>
+		<li><a href="https://dash.cloudflare.com/" target="_blank">Cloudflare dashboard</a>에서 이메일 페이지로 들어갑니다.</li>
+		<li><strong>구성</strong>을 선택합니다.</li>
+		<li>새로 생성할 이메일 주소를 입력합니다(이 때 주소는 <strong>자신의</strong> 도메인용으로 사용할 주소이므로 어떤 것을 선택하든 상관 없습니다). 자신의 도메인용 이메일 주소가 가능한 한 모두 유효하고 포워딩까지 되려면 도메인으로 들어오는 모든 메일을 처리하는 <em>catch-all</em>을 선택하는 방법도 있습니다.</li>
+		<li>자신의 도메인용 이메일이 없는 경우 DNS 구성 과정은 자동으로 진행됩니다. 그렇지 않은 경우에는 저희가 제공하는 간단한 내용의 지침을 이용해 스스로 필요한 정도에 따라 최적의 상태를 구성할 수 있습니다.</li>
+		<li>마지막으로 메시지가 최종적으로 도달하는 이메일이 본인 소유라는 것을 인증하면 됩니다. 이 과정은 매우 간단하며 지금까지 수없이 해본 것과 전혀 다를 것이 없습니다.</li>
+	</ol>
+	<p>누구나 손쉽게 이용할 수 있도록 만들었습니다!</p>
+	<!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 68.57541899441341%;"><iframe src="https://iframe.videodelivery.net/436e35ef19226a83471e61e0082d5487?preload=true" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
+	<p></p>
+	<!--kg-card-end: html-->
+	<p>Cloudflare는 효율적이고 단순한 서비스를 염두에 두고 다수의 라우팅 규칙을 지원하며 고객이 원하는 모든 업스트림(서버 측) 수신함으로 메시지를 전달해주는 Email Routing을 출시합니다.</p>
+	<p>저희는 이메일 서비스 업계가 오랜 기간 정체 상태에 있었다는 판단 아래 Cloudflare가 보유하고 있는 플랫폼, 자원, 노하우의 이점을 살려 흥미롭고 참신한 기능들을 금명간 새롭게 선보일 예정입니다.</p>
+	<p>저희는 고객의 목소리도 경청하고 있습니다. 질문이나 제안이나 새로운 아이디어가 있으면 저희 <a href="https://community.cloudflare.com/" target="_blank">커뮤니티 포럼</a>에 올려주시기 바랍니다. 항상 고객 곁에 있겠습니다.</p>
+	<p>Cloudflare Email Forwarding 서비스를 처음 이용하려면 지금 바로 <a href="https://www.cloudflare.com/ko-kr/email-forwarding-waitlist-sign-up/" target="_blank">이 양식</a>을 통해 대기 목록에 등록만 하면 됩니다. 저희는 더 많은 사용자들을 위해 매일같이 이 서비스를 선보일 예정이며 짧은 시간 기다린 보람을 느끼게 해드릴 것임을 약속드립니다.</p>
+</div>

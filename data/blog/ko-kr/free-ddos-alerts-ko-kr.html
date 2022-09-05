@@ -1,0 +1,35 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/unnamed-14-8.png" class="kg-image" alt="Cloudflare Free 요금제 고객, 이제 DDoS 경보를 실시간으로 받을 수 있어"></figure>
+	<p>Cloudflare의 Free 요금제를 이용하는 고객에게 Cloudflare에서 자동으로 감지하고 완화했던 HTTP DDoS 공격에 대한 경보를 실시간으로 제공하게 되었음을 기쁜 마음으로 발표합니다. 실시간 DDoS 경보는 원래 1년 전에 발표되었지만, Pro 요금제 이상을 이용하는 고객에게 제공되었습니다. 이번 발표로 DDoS 경보 기능이 Free 무료 요금제 사용자에게까지 확대 제공됩니다. 발표 원문 블로그 포스트는 <a href="https://blog.cloudflare.com/announcing-ddos-alerts/">여기</a>에서 확인할 수 있습니다.</p>
+	<h3 id="ddos-">DDoS 공격이란?</h3>
+	<p><a href="https://www.cloudflare.com/ko-kr/learning/ddos/what-is-a-ddos-attack/" target="_blank">분산 서비스 거부(DDoS) 공격</a>은 온라인 비즈니스 중단을 시도하는 사이버 공격입니다. 비즈니스가 VoIP 서버, UDP 기반 게임 서버, HTTP 서버 중 어느 것에 의존하든 상관없이, DDoS 공격은 모든 유형의 인터넷 자산, 서버, 네트워크를 중단시키는 데 사용될 수 있습니다.</p>
+	<p>이 블로그 포스트에서는 HTTP 서버를 대상으로 하는 DDoS 공격에 대해 중점적으로 살펴봅니다. HTTP 서버에서 모바일 앱이나 전자 상거래 웹 사이트, API 게이트웨이, 다른 HTTP 응용프로그램 중 무엇을 운영하든 관계없이, 공격자가 서버에서 처리할 수 있는 것보다 더 많은 요청을 보낼 경우 서버는 실제 사용자에게 서비스를 제공할 수 없습니다. 요청이 폭주하면 서비스가 중단되거나 전체 서버가 오프라인 상태가 될 수 있습니다. DDoS 공격은 매출과 평판에 타격을 주는 등 실질적인 결과를 초래할 수 있습니다.</p>
+	<h3 id="cloudflare-ddos-">Cloudflare에서 DDoS 공격을 감지하고 완화하는 방법</h3>
+	<p>DDoS 공격으로부터 서버를 보호하려면 다음과 같은 두 가지 주요 역량이 필요합니다.</p>
+	<ol>
+		<li>사용자의 요청과 공격 요청 모두를 흡수하는 대역폭</li>
+		<li>사용자의 요청과 공격 요청을 구분하는 능력</li>
+	</ol>
+	<p>Cloudflare에서는 자체 개발한 시스템을 사용하여 공격 규모, 빈도, 지속 시간과 관계없이 이러한 작업을 수행합니다. Free 요금제를 이용하는 고객을 포함하여 모든 Cloudflare 고객은 Cloudflare의 <a href="https://blog.cloudflare.com/unmetered-mitigation/">무제한 DDoS 완화 노력</a>을 통해 보호됩니다.</p>
+	<p>DDoS 공격으로부터 보호하려면 우선 트래픽을 <a href="https://www.cloudflare.com/ko-kr/network/" target="_blank">Cloudflare의 데이터 센터 네트워크</a>로 라우팅합니다. Cloudflare의 네트워크는 전 세계 100여 개 국가의 250여 개 도시에 걸쳐 있습니다. 네트워크 용량은 100Tbps로 <a href="https://blog.cloudflare.com/cloudflare-blocks-an-almost-2-tbps-multi-vector-ddos-attack/">지금까지 관측된 가장 큰 규모의 공격</a>보다 50배 더 큽니다. Cloudflare의 대역폭은 사용자 트래픽과 공격 트래픽을 모두 흡수하기에 충분합니다.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/01/image2-18.png" class="kg-image" alt="Cloudflare 的全球網路">
+		<figcaption>Cloudflare 的全球網路</figcaption>
+	</figure>
+	<h3 id="cloudflare-">Cloudflare의 전역 네트워크</h3>
+	<p>그런 다음, 트래픽이 Cloudflare 데이터 센터에 도달하면 DDoS 공격을 지속해서 스캔하는 최신 분석 메커니즘을 거칩니다. 공격이 감지되면 실시간 완화 규칙이 자동으로 생성되어 공격 패턴을 기반으로 수술하듯 공격 요청을 완화하고 사용자의 요청은 그대로 둡니다. <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/http" target="_blank">HTTP DDoS 관리 룰셋</a>을 사용하면 여러분의 니즈와 특정한 트래픽 패턴에 맞추어 완화 시스템 설정을 커스터마이즈할 수 있습니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/01/image1-13.png" class="kg-image" alt="A diagram showing a server unable to respond to legitimate users due to a malicious DDoS attack"></figure>
+	<p>어떻게 해야 할지 모르시겠다고요? 괜찮습니다. 대부분의 경우 아무것도 할 필요가 없으며 Cloudflare 시스템에서 자동으로 서버를 보호합니다. 자세한 내용은 Cloudflare의 <a href="https://developers.cloudflare.com/ddos-protection/get-started" target="_blank">시작을 위한 안내서</a> 또는 원문 <a href="https://blog.cloudflare.com/http-ddos-managed-rules/">블로그 포스트</a>에서 읽어보실 수 있습니다. 관심이 있으면, 이 기술 블로그 포스트 <a href="https://blog.cloudflare.com/deep-dive-cloudflare-autonomous-edge-ddos-protection/">Cloudflare의 자율적 에지 DDoS 방어에 대한 심층 분석</a>에서 완화 시스템이 작동하는 방식에 대해 더 자세히 읽어보실 수 있습니다.</p>
+	<h3 id="ddos--1">DDoS 경보 구성하기</h3>
+	<p>Cloudflare 시스템에서 DDoS 공격을 감지하고 완화하면 실시간 경보 메시지를 받게 됩니다. 경보 메시지를 받으려면 먼저 다음 단계를 따라 알림 정책을 구성해야 합니다.</p>
+	<ol>
+		<li><a href="https://www.cloudflare.com/login/" target="_blank">Cloudflare dashboard</a>에 로그인하고 계정을 선택합니다.</li>
+		<li>홈 화면에서 <strong>알림(Notifications)</strong>으로 이동합니다.</li>
+		<li><strong>추가(Add)</strong>를 클릭하고 <strong>HTTP DDoS Attack Alerter</strong>를 선택합니다.</li>
+		<li>경보에 이름과 설명(선택 사항)을 지정하고 수신 이메일 주소를 추가한 뒤 <strong>만들기(Create)</strong>를 클릭합니다.</li>
+	</ol>
+	<p>DDoS 경보와 지원되는 전달 방법에 대한 자세한 내용을 알아보려면 Cloudflare 가이드 <a href="https://support.cloudflare.com/hc/ko/articles/360053216191-Cloudflare-DDoS-%EA%B2%BD%EB%B3%B4%EC%9D%98-%EC%9D%B4%ED%95%B4" target="_blank">Cloudflare DDoS 경보 이해하기</a>를 참고하세요.</p>
+	<h3 id="free-ddos-">Free DDoS 방어, 제어, 가시성</h3>
+	<p>Cloudflare의 사명은 더 나은 인터넷을 구축하도록 돕는 것이며, 이것이 우리가 하는 모든 일의 지침이 됩니다. 이러한 사명의 일환으로, Cloudflare에서는 더 나은 인터넷이란 대기업뿐만 아니라 모든 사람이 엔터프라이즈급의 DDoS 방어를 이용할 수 있는 것이라고 믿습니다.</p>
+	<p>또한, 무료 고객도 DDoS 방어 설정을 맞춤 조정하고 최적화할 수 있도록 모든 이에게 Cloudflare의 <a href="https://blog.cloudflare.com/http-ddos-managed-rules/">DDoS 관리 룰셋</a>을 제공합니다. 한 걸음 더 나아가, Cloudflare는 모든 사용자가 필요할 때 최대한 빨리 대응할 수 있기를 바랍니다. 이것이 바로 Cloudflare에서 실시간 경보를 무료로 제공하는 이유입니다. 아는 것이 힘이므로, Cloudflare 사용자에게 공격을 실시간으로 알려서 웹 사이트의 안전, 가용성, 성능을 보장하도록 지원할 수 있습니다.</p>
+	<p>Cloudflare를 아직 사용하고 있지 않나요? <a href="https://dash.cloudflare.com/sign-up" target="_blank">지금 사용해 보십시오</a>.</p>
+</div>

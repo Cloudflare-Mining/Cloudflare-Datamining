@@ -1,0 +1,35 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image2-27.png" class="kg-image" alt="Today, we are excited to announce new integrations with CrowdStrike, SentinelOne, and VMware Carbon Black to pair with our existing Tanium integration. "></figure>
+	<p>去年十月，我们发布了 <a href="https://www.cloudflare.com/zh-cn/cloudflare-one/" target="_blank">Cloudflare One</a>，这款综合的云端网络即服务解决方案，不仅安全、快速、可靠，还定义了企业网络的未来。Cloudflare One 由两个组件构成：一是 Magic WAN 和 Magic Transit 等网络服务，用来保护数据中心和分支机构并将其连接到互联网；二是 Cloudflare for Teams，用来保护公司应用程序和设备，并在用户通过互联网工作时为其保驾护航。今天，我们很高兴公布我们与 VMware Carbon Black、CrowdStrike 和 SentinelOne 的全新集成，配合我们现有的 Tanium 集成。CloudFlare for Teams 客户现在可以利用这些集成，根据其设备发出的安全信号来限制对其应用程序的访问。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image5-26.png" class="kg-image" alt="Today, we are excited to announce new integrations with CrowdStrike, SentinelOne, and VMware Carbon Black to pair with our existing Tanium integration. "></figure>
+	<h2 id="-cloudflare-for-teams-">使用 Cloudflare for Teams 保护应用程序</h2>
+	<p>COVID-19 疫情爆发以来，许多人开始远程工作。员工离开了办公室，但他们所使用的网络和应用程序却没有离开。很快，VPN 因为要回传流量而开始不堪重负，重新配置防火墙也成为 IT 的通宵梦魇。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image3-24.png" class="kg-image" alt="Protecting applications with Cloudflare for Teams"></figure>
+	<p>这种情况加快了许多组织采用基于<a href="https://www.cloudflare.com/zh-cn/learning/security/glossary/what-is-zero-trust/" target="_blank">零信任</a>的网络架构的步伐。零信任意味着不信任对公司资源的各个连接请求，对其进行拦截，并且仅在满足管理员定义的条件时才授予访问权限。<a href="https://www.cloudflare.com/zh-cn/teams/" target="_blank">Cloudflare for Teams</a> 正是这样做的。用运行于全球 200 多个地点的网络取代传统 VPN，并且通过身份提供商验证用户的身份并交叉检查对所请求应用程序的权限。只有当用户成功通过身份验证并具有足够特权时，才会被授予访问权限。结果：应用性能因为我们的全球网络而得到提升，而且安全模型仰仗的是身份验证而非盲目信任。</p>
+	<h2 id="byod-bring-your-own-destruction">BYOD — Bring Your Own Destruction</h2>
+	<p>远程办公给公司出了又一个难题。工作与休闲时间之间的界限越来越模糊，用户开始将各种各样的设备用于工作，包括他们的个人设备。个人设备或不安全的设备通常更容易面临恶意软件之类的威胁，原因很简单，它们不在反恶意软件或更精良的终端安全提供商的保护范围内。使用不安全的设备访问公司电子邮件、将代码部署到生产系统或访问含有敏感信息的应用程序会带来风险，并可能导致违反公司的合规性准则，或者更加糟糕，一旦受感染设备传播恶意软件，就会危及整个系统的安全。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image4-25.png" class="kg-image"></figure>
+	<h2 id="-">基于设备安全的新策略</h2>
+	<p>即日起，Cloudflare for Teams 客户可以配置新的策略，根据终端安全供应商提供的设备安全指令，允许或拒绝与其应用程序的连接。终端安全、设备安全、设备运行状况或设备状态这类词语本意相同，通常可以互换——它们是指有助于确定特定设备（例如笔记本电脑或手机）是否安全的一组指令。其中包括各种指令和属性，例如操作系统版本、上次修补日期、磁盘加密状态、已安装应用程序清单、反恶意软件或端点安全提供商的状态以及上次扫描恶意软件的日期。</p>
+	<p>了解这些指令，尤其是所有公司发放设备（也称为设备群）所发出的这些指令非常重要，它可以帮助安全和 IT 团队查找过时且需要修补的设备，或者在发生恶意软件感染并需要补救时进行查找。使用 Cloudflare for Teams，这些指令也可以用于制定网络访问决策。例如，要限制非公司发放设备访问敏感应用程序，可以创建一个访问策略，将设备序列号与公司设备清单进行比较。只有当序列号匹配时，才授予用户访问权限。</p>
+	<p>我们的 WARP 客户端已经可以检查其中某些属性，例如序列号和设备位置，并确保使用 WARP 对流量进行加密。利用我们的全新集成，客户可以先要求设备运行 CrowdStrike 或 VMware Carbon Black 代理等终端保护平台，然后再允许该设备访问受 Cloudflare 保护的资源，这样就增加了一道安全屏障。将 WARP 发出的指令与我们合作伙伴的终端安全平台发出的指令结合在一起，我们就可以确保设备受到公司许可并且没有恶意软件，进而达到安全设备的标准。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image6-13.png" class="kg-image"></figure>
+	<blockquote>在当今随处办公的企业文化中，员工及其设备始终被办公室墙壁外的潜在威胁环境所包围，遭受侵害的风险因此大大增加。借助我们与 Cloudflare 的集成，组织可以利用 CrowdStrike Falcon 平台的功能来准确地允许有条件地动态访问应用程序，在终端、负载和应用程序之间提供端到端零信任保护，以实时阻止攻击。<br><strong>— Patrick McCormack，CrowdStrike 云工程高级副总裁</strong></blockquote>
+	<blockquote>VMware Carbon Black Cloud 将多款终端与工作负载安全产品整合成一个单一云原生平台。借助 VMware Carbon Black Cloud，Cloudflare 可以帮助客户保护并管理连接到他们的云和零信任网络的设备。<br><strong>— Tom Corn，VMware 安全业务部门高级副总裁</strong></blockquote>
+	<blockquote>企业已经接受传统边界正在瓦解的概念。如今的边界是分布式和动态的，在安全方面需要一种全新的方法。通过与 Cloudflare 合作，我们基于 AI 的网络安全平台为现代企业提供更强大的零信任安全解决方案，涵盖企业所依赖的设备、网络和任务关键型应用程序。<br><strong>— Chuck Fontana，SentinelOne 业务与企业发展高级副总裁</strong></blockquote>
+	<blockquote>零信任安全架构始于网络层的分段和强制实施，但随着公司资源和数据越来越多地存在于终端上，零信任架构必须同时将终端和网络纳入考量。清楚终端的身份，并知道它是最新状态、能够抵御安全威胁并且没有受到破坏，这对于确保安全访问组织的资源而言至关重要。<br><strong>— Pete Constantine，Tanium 首席产品官</strong></blockquote>
+	<h2 id="--1">如何工作？</h2>
+	<p>我们的集成非常简单。第一步是用 <a href="https://developers.cloudflare.com/cloudflare-one/applications/configure-apps" target="_blank">Cloudflare Access</a> 保护您的应用程序。根据您的供应商不同，Access 与终端安全提供商之间的集成会稍有差异。</p>
+	<h3 id="tanium"><strong>Tanium</strong></h3>
+	<p>Tanium 不需要在用户计算机上安装任何额外软件。您只需在 Cloudflare for Teams 仪表板中输入 Tanium 证书，并在 Tanium 实例中启用 <a href="https://docs.tanium.com/pdf/endpoint_identity/Tanium_Endpoint_Identity_1.0.0_ug.pdf" target="_blank">Endpoint Identity </a>。然后，您可以在 Teams 仪表板中将 Tanium 添加为任何应用程序的策略检查，以确保用户的设备获得公司批准并且没有恶意软件。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image--2-.png" class="kg-image"></figure>
+	<h3 id="vmware-carbon-black-crowdstrike-sentinelone">VMware Carbon Black、CrowdStrike 和 SentinelOne</h3>
+	<p>与 Tanium 不同，这些供应商要求在设备上部署 WARP 客户端。在 Teams 仪表板中配置这些提供商之前，建议您先通过 <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/deployment" target="_blank">MDM 解决方案</a>部署 WARP。另外，用户也可直接下载 <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/download-warp" target="_blank">WARP 客户端</a>。</p>
+	<p>为团队部署 WARP 客户端后，便可在 Teams 仪表板中配置终端安全提供商了。首先，登录您的 Teams 仪表板并导航到“我的团队”-&gt;“设备”，然后单击新选项卡“设备状态”。我们已为合作伙伴预配置了设置，它们适用于大多数安装环境。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image1-33.png" class="kg-image"></figure>
+	<p>配置完毕后，您可以根据选择的提供商构建各种规则，并像应用任何其他 Access 策略一样，将它们应用到您的应用程序。规则部署到位后，WARP 就会检查设备上是否正在运行终端安全软件，并将状态传达给 Access。然后，Access 会使用设备的终端安全软件状态来允许或拒绝对受保护应用程序的访问。如果设备正在运行贵组织的终端安全软件，则授予访问权限。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image7-5.png" class="kg-image"></figure>
+	<p>这些零信任检查可以跟 MFA 和“用户身份”等功能一起布置，以阻止使用被盗的凭据或其他恶意访问行为。</p>
+	<h2 id="--2">下一步是什么？</h2>
+	<p>在未来的版本中，我们将集成来自新合作伙伴的更多安全指令，例如 <a href="https://www.crowdstrike.com/resources/white-papers/falcon-zero-trust-risk-score/" target="_blank">CrowdStrike</a> 和 <a href="https://www.carbonblack.com/resources/understanding-the-kenna-security-vulnerability-risk-score/" target="_blank">VMware Carbon Black </a> 的风险评分，目的是能够更精细地控制哪些设备可以访问受保护的应用程序。我们还将继续与更多的供应商建立合作，使我们的客户可以灵活选用心仪的供应商。如果您目前正在使用 Cloudflare for Teams 并有意使用我们的集成，请访问<a href="https://developers.cloudflare.com/cloudflare-one/identity/devices" target="_blank">开发人员文档</a>以了解如何启用。如果您想了解更多信息或有其他疑问，请在<a href="https://www.cloudflare.com/zh-cn/endpoint-partners/" target="_blank">终端安全合作伙伴</a>页面上填写表单，我们会尽快与您联系。</p>
+</div>

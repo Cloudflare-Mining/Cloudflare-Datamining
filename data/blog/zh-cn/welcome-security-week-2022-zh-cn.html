@@ -1,0 +1,43 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image1-22.png" class="kg-image"></figure>
+	<p>近期发生的一系列事件使网络安全成为许多讨论的焦点。</p>
+	<p>在俄罗斯入侵乌克兰后，<a href="https://www.meti.go.jp/press/2021/02/20220221003/20220221003.html" target="_blank">世界</a><a href="https://www.cisa.gov/shields-up" target="_blank">各国</a>政府正在鼓励企业<a href="https://blog.cloudflare.com/shields-up-free-cloudflare-services-to-improve-your-cyber-readiness/">增强安全防御</a>。目前的威胁比以往严重得多，任何组织如果拥有面向互联网的基础设施，都要将安全作为今年的头等大事。</p>
+	<p>为了使服务保持在线，Cloudflare 也在参与<a href="https://criticalinfrastructuredefense.org/" target="_blank">关键基础设施防御项目</a>，确保团队能获得最佳的帮助，以保护易受网络威胁破坏的网络和应用程序，例如医疗、供水和能源领域。</p>
+	<p>作为另一个例子，不久前 <a href="https://www.cloudflare.com/log4j/" target="_blank">Log4J</a> 爆出一个高危漏洞，影响了很多基于 Java 的应用程序，而在这一攻击途径公诸于众仅几个小时后，攻击者就已经开始扫描存在漏洞的应用程序了，这也凸显了良好的安全性在互联网上有多重要。</p>
+	<p>不幸的是，这些事件几乎肯定不会成为给我们的最后提醒。在接下来的六天里，我们打算以一个简单的目标来解决网络安全这个宽泛的话题：确保安全<a href="https://blog.cloudflare.com/welcome-to-security-week-2021/">不再是事后才想到的事情</a>。</p>
+	<p>然而，安全也是很难的，而且您永远不知道“是否已经做得足够”。良好安全措施的重要性绝不应被低估。可靠、安全的应用程序确保互联网正常运行：从保持网站在线以确保对重要信息的访问，到保护用户数据免被窃取和滥用。</p>
+	<p>但并非每个人都是安全专家。</p>
+	<p>因此，Cloudflare 一直致力于为棘手的问题提供技术复杂的解决方案，并使这些解决方案普遍可用。本周内，我们将宣布一系列产品改进、新产品、大胆的想法以及合作关系，其中包括我们将向所有 Cloudflare 用户免费提供的一些新功能。</p>
+	<p>开始前，我们希望先退后一步，回顾一下我们过去走过的路，这是了解我们未来目标的最佳方式。这就是我希望在本文要做的事情。我将在本文中列出本周哪些天将做出相关宣布，以便您适时查看。</p>
+	<p>欢迎来到 Security Week。</p>
+	<h3 id="-">回到最初：保护网站</h3>
+	<p>七年前我加入 Cloudflare 时，我们的安全产品主要面向网站所有者：<a href="https://www.cloudflare.com/dns/" target="_blank">DNS</a>、 <a href="https://www.cloudflare.com/ddos/" target="_blank">DDoS 缓解</a>、 <a href="https://www.cloudflare.com/waf/" target="_blank">Web 应用程序防火墙（WAF）</a> 和 <a href="https://www.cloudflare.com/ssl/" target="_blank">SSL/TLS</a>。作为 HTTP 反向安全代理，我们可以保护流量并阻止恶意负载。同时，我们立即开始致力于使底层协议更快、更安全。通过一次部署，我们可以升级数百万个互联网资产的 TLS 版本，拦截非 HTTP 端口上的容量耗尽型 DDoS 攻击，并编写规则来保护数以百万计的 WordPress 管理页面。</p>
+	<blockquote><em>Security Week：保护网站依然是我们业务的一个核心部分。本周前三天（周一到周三），您将会了解到一系列重要的改进，涉及我们每天浏览 web 都会使用到的技术，从 TLS 到我们的 web 应用程序防火墙（WAF）和自定义规则。我们向发布一些激动人心的公告，涉及所有人，包括我们的免费计划用户。</em></blockquote>
+	<h3 id="--1">应用程序 &gt; 网站</h3>
+	<p>显而易见，互联网上很大一部分流量是自动化的。在任何时候，<a href="https://radar.cloudflare.com/" target="_blank">机器人都占总流量的 30% 或更多</a>，峰值超过 40%。有鉴于此，我们在 Cloudflare 平台上开发了更多先进的工具，例如<a href="https://www.cloudflare.com/products/bot-management/" target="_blank">机器人管理（Bot Management）</a>。</p>
+	<p>很多机器人连接到并非为人类访问而设计的应用程序并使用其数据，带来有别于标准网站的全新安全挑战。API 现已非常普遍，<a href="https://blog.cloudflare.com/landscape-of-api-traffic/">在通过 Cloudflare 代理的所有 web HTTP 请求中，占大约 54%</a>。</p>
+	<blockquote><em>Security Week：在我们帮助客户管理自动化流量和保护 API 端点的</em><a href="https://blog.cloudflare.com/introducing-api-shield/"><em>现有产品</em></a><em>基础上，我们做了一些很棒的改进，并希望在周三通过这里与大家分享。同时，Cloudflare 能提供帮助的 API 安全用例和管理用例正在迅速增多。</em></blockquote>
+	<h3 id="--2">覆盖所有协议</h3>
+	<p>我们的重点始终是不断扩大网络，同时提高 DNS 和 HTTP 服务的可靠性。显然，下一步就是开放对其他协议的代理。毕竟，HTTP 只是互联网上使用的众多协议之一。</p>
+	<p>目前，已经有很多企业客户使用我们的 <a href="https://www.cloudflare.com/products/cloudflare-spectrum/" target="_blank">Spectrum</a> 产品保护任意基于 TCP/UDP 的应用程序和端点。我们已更进一步，允许客户与 Cloudflare 互联并保护来自 <a href="https://www.cloudflare.com/magic-transit/" target="_blank">Cloudflare 边缘</a>的原始 IP 流量。</p>
+	<p>游戏服务器、自定义物联网协议、串流服务等现在均能获得无限扩展并无缝工作的 DDoS 缓解和 <a href="https://www.cloudflare.com/magic-firewall/" target="_blank">Magic Firewall </a>过滤能力。</p>
+	<blockquote><em>Security Week：我们的团队一直努力改进这些产品，如果您正在通过 Cloudflare 代理非 HTTP 流量，那么您将会在周四听到一些令人兴奋的消息。</em></blockquote>
+	<p>这些客户大多数代理 <a href="https://en.wikipedia.org/wiki/OSI_model" target="_blank">OSI 模型 3-4 层的流量</a>。但我们也在努力将代理范围扩大到堆栈的更高层。最高效的安全解决方案需要了解应用层的数据，而一直以来 Cloudflare 的巨大缺口就是电子邮件流量 —— 网络攻击的头号手段。</p>
+	<blockquote><em>Security Week：您可能已经听说我们最近</em><a href="https://www.cloudflare.com/en-gb/press-releases/2022/cloudflare-to-acquire-area-1-security/" target="_blank"><em>收购 Area 1 的意图 </em></a><em> 对此，我们将在周一宣布令人兴奋的消息，敬请关注。</em></blockquote>
+	<h3 id="--3">反转代理，保护用户</h3>
+	<p>我们能反转 Cloudflare 代理本身并将其开放给一个正向代理用例，事后来看这一意识似乎十分显然，但远非如此。通过专注于正向代理安全策略，我们突然之间就能保护用户了，而不仅仅是应用和服务器。</p>
+	<p>连接到互联网的任何用户现在都能将 <a href="https://www.cloudflare.com/learning/dns/what-is-1.1.1.1/" target="_blank">Cloudflare 配置为 DNS 解析器</a>和<a href="https://www.cloudflare.com/products/zero-trust/gateway/" target="_blank">正向代理</a>，从而获得更安全的互联网体验。这就是 <a href="https://www.cloudflare.com/products/zero-trust/" target="_blank">Cloudflare Zero Trust</a>。</p>
+	<p>在这一刻，“代理”不再能够清晰定义我们正在构建的东西，而“网络”是一个合适得多的术语。事实上，正如计算中很多东西不断自己重复那样，<a href="https://blog.cloudflare.com/the-network-is-the-computer/">网络再一次成为了计算机</a>。</p>
+	<p>网络效应（无双关意思）并非马上就显而易见的。假设一个用户使用 Cloudflare 作为 DNS 解析器来访问位于 Cloudflare 后的一个应用程序：从 DNS 到 HTTP 的整个过程都会在最靠近该最终用户的入网点发生。因此，我们将不断<a href="https://www.cloudflare.com/press-releases/2021/cloudflare-grows-its-network-to-speed-up-and-secure-the-internet/" target="_blank">扩大我们的网络</a>。个中好处不可估量，安全深植于每一个步骤，而且性能毫发无损。</p>
+	<p>如果上述用户隶属于运营该应用程序的组织，那么 Zero Trust 概念对任何人都变得可用且能轻松部署。VPN 等老旧的系统成为昨日黄花，您不再需要笨拙复杂的基础设施来保护网络，让我们距离安全大众化更近一步。</p>
+	<blockquote><em>Security Week：如果您正在使用 </em><a href="https://www.cloudflare.com/products/zero-trust/" target="_blank"><em>Cloudflare Zero Trust</em></a><em>，并在尝试保护内部网络，我们将分享一些重大的产品改进。</em></blockquote>
+	<h3 id="cloudflare-">Cloudflare 是一个智能安全网络。</h3>
+	<p>这把我们带到了今天。曾几何时，安全性就是指创建安全的环境——城堡加护城河。但移动和云计算打破了这种范式。没有任何地方是安全的，即使有安全的地方，您的用户和应用程序也不会在那里逗留太长时间。他们正在哪里工作呢？在家里？在国外？在世界各地？您的应用程序也在不断移动。</p>
+	<p>在这种范式中，思考安全性的合理方式不是创建一个物理的飞地。取而代之，您需要通过专注于互联网的一个基本组成部分——网络——来创建一个虚拟的飞地。</p>
+	<p>换句话说，您需要确保您的每一个设备、每一个办公室、每一台服务器都连接到一个安全的网络。这就是 Cloudflare 正在打造的东西：一个将您的用户和您的应用程序连接起来的网络，无论他们位于何处，并将安全和隐私作为核心基础来提供。</p>
+	<h3 id="--4">为了做得更好，我们需要成为领导者</h3>
+	<p>拥有优秀技术并不足够。易于使用和创新的想法来自人。这也是为什么我们是自己的首批用户，使用我们所有的产品。而我们要求最高的客户之一就是我们的内部安全团队。我们也不能单枪匹马就做到这一切。我们所有人同心协力非常重要，我们已经付出了很多努力，与其他网络安全公司进行合作，分享洞察和数据，并整合我们的产品，以提供更好的体验。</p>
+	<blockquote>本周结束时，我们将分享最佳实践，从保护 Cloudflare 网络所获得的洞察，以及 Cloudflare 安全团队正在努力开发的一些项目。我们也将宣布一些与该领域其他知名公司达成的新合作关系。</blockquote>
+	<h3 id="--5">一周时间仍不足够。</h3>
+	<p>我们为这个 Security Week 准备了 75 项公告，尽管还没有打算占用两周时间，但 6 日之内肯定无法全部容纳。我们正在大踏步向前迈进，不仅在下一周内，也在 2022 年全年，我们对此充满信心。<br></p>
+</div>

@@ -1,0 +1,101 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image1-23.png" class="kg-image" alt="Announcing D1: Our first SQL database"></figure>
+	<p>我們在 2017 年<a href="https://blog.cloudflare.com/introducing-cloudflare-workers/">推出了</a> Cloudflare Workers，為開發人員提供在我們網路上運算的存取權限。我們當時非常期待解鎖此功能所帶來的可能性，但是我們很快就發現——大部分真實世界應用程式是具有狀態的。在那之後，我們提供了 KV、Durable Objects 和 R2，為開發人員提供多種儲存空間的存取權限。</p>
+	<p>今天，我們很高興推出我們的第一款 SQL 資料庫——D1。</p>
+	<p>雖然不久後我們就會推出測試版存取權限（最快將於 6 月開始供各位使用——<a href="https://www.cloudflare.com/lp/d1/" target="_blank">請到這裡註冊</a>），在此還是很高興分享一些令人期待的詳情。</p>
+	<h2 id="-d1-cloudflare-workers-">鄭重介紹 D1——專為 Cloudflare Workers 設計的資料庫</h2>
+	<p>D1 建置在 SQLite 之上。SQLite 不僅是全世界最普遍的資料庫（每天由數十億個裝置使用），也是史上第一個<em>無伺服器</em>資料庫。很驚訝嗎？SQLite 走在時代的尖端，在「<a href="https://www.sqlite.org/serverless.html" target="_blank">無伺服器</a>」一詞獲得雲端服務的涵義之前，就為自己授予了該稱號，其原始的字面意義是「與伺服器無關」。</p>
+	<p>因為 Workers 本身是在伺服器與用戶端之間執行，而且受到專為用戶端打造的技術激勵，SQLite 似乎成了我們首次進入資料庫世界的完美選擇。</p>
+	<p>那麼，您可以運用 D1 建置什麼內容呢？真正的答案是「幾乎所有內容！」，但此答案對於激發想像力可能沒有太大幫助，那就來個實況示範吧？</p>
+	<h2 id="d1-northwind-traders">D1 示範：Northwind Traders</h2>
+	<p>您可以到以下網址試用所執行的示範，看看運作中的 D1 範例：<a href="https://northwind.d1sql.com/" target="_blank">northwind.d1sql.com</a>。</p>
+	<p>如果您好奇「Northwind Traders 是誰」，Northwind Traders 是資料庫的「Hello, World!」。這是一個範例資料庫，Microsoft 將其與 Microsoft Access 一起提供，作為其自有的教學課程使用。它是在 25 年前（1997 年）首次亮相，您也可以在網際網路上找到它的許多使用範例。</p>
+	<p>它是一種典型商業應用程式，採用了真實的結構、具備多個外部索引鍵，且遍及多個不同的表格，是真正恆久的資料表示法。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image3-13.png" class="kg-image"></figure>
+	<p>Queso Cabrales 的最新訂單何時出貨？貨品又在哪艘船上？您可以快速找到答案。有人來電表示想要訂購一些茶？沒問題，Exotic Liquids 的庫存還有 39 個單位，且每個單位售價僅有 18 美元。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image2-14.png" class="kg-image"></figure>
+	<p>歡迎您來試用和到處瀏覽，並尋找您對 Northwind Trading 任何業務相關問題的解答。</p>
+	<p>Northwind Traders 示範也有一個儀表板，您可在其中找到與幕後發生之 D1 SQL 查詢相關的詳細資料與指標。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image5-5.png" class="kg-image"></figure>
+	<h2 id="-d1-">您可以運用 D1 建置什麼內容呢？</h2>
+	<p>回到示範之前的原始問題：您可以運用 D1 建置什麼內容呢？</p>
+	<p>雖然您本身可能未執行 Northwind Traders，但您可能在某處執行了某個非常類似的軟體。甚至 Cloudflare 的服務核心也是一個資料庫——一個充滿表格、具體化檢視和大量儲存程序的 SQL 資料庫。每次有客戶與您的儀表板互動時，最後都會變更該資料庫的狀態。</p>
+	<p>現實情況是：資料庫無所不在。它們存在於您閱讀這篇文章所在的 Web 瀏覽器中、您手機的每個 App 內，以及您的銀行交易、行程預約、商務應用程式等的儲存空間中。我們推出 D1 的目標是協助您建置任何內容，從 API 到豐富且功能強大的應用程式等包羅萬象，包括電子商務網站、會計軟體、SaaS 解決方案和 CRM。</p>
+	<p>您甚至可以將 D1 與 Cloudflare Access 結合在一起，並建立僅對您組織內部人員安全開放的儀表板和管理員工具。世界盡在您的掌握之中。</p>
+	<h2 id="d1-">D1 開發人員體驗</h2>
+	<p>在文章接下來的部分，我們將討論功能和即將推出的功能。但其核心是，D1 的強項在於開發人員體驗：讓您瞬間從零打造出完整堆疊應用程式。回想一下您過去使用過讓開發變得神奇無比的工具，那就是我們希望使用 Workers 和 D1 進行開發作業時的感覺。</p>
+	<p>為了讓您有些概念，以下是開始使用 D1 時的樣貌。</p>
+	<h3 id="-d1--1"><strong>建立您的第一個 D1 資料庫</strong></h3>
+	<p>使用 D1，只要輕鬆按幾下，定義表格、插入或上傳一些資料，就能夠建立資料庫，而且不需要記住任何命令（除非有需要）。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image4-10.png" class="kg-image"></figure>
+	<p>當然，如果命令列是您的難點，在本週稍早時，我們推出了<a href="https://blog.cloudflare.com/10-things-i-love-about-wrangler/">新的和改進的 Wrangler 2</a>，它是管理和部署 Workers 的最佳工具，也很快將成為您部署 D1 的工具。Wrangler 也將隨附原生 D1 支援，因此您可以使用幾個簡單的命令來建立和管理資料庫：</p>
+	<!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 60.42084168336673%;"><iframe src="https://iframe.videodelivery.net/6bc08db0ee3524778effb6af3cbbf90f?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2F6bc08db0ee3524778effb6af3cbbf90f%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D9s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
+	<p></p>
+	<!--kg-card-end: html-->
+	<h3 id="-worker-d1">從 Worker 存取 D1</h3>
+	<p>將 D1 附加到您的 Worker 就像建立新的繫結一樣輕鬆。您附加到 Workers 的每個 D1 資料庫都會在 env 參數上附加其自有的繫結：</p>
+	<pre><code class="language-js">export default {
+  async fetch(request, env, ctx) {
+    const { pathname } = new URL(request.url)
+    if (pathname === '/num-products') {
+      const { result } = await env.DB.get(`SELECT count(*) AS num_products FROM Product;`)
+      return new Response(`There are ${result.num_products} products in the D1 database!`)
+    }
+  }
+}</code></pre>
+	<p>或者，如果是較為複雜的範例，您可以使用路由器和參數化的查詢，安全地將參數從 URL 傳送到資料庫：</p>
+	<pre><code class="language-js">import { Router } from 'itty-router';
+const router = Router();
+
+router.get('/product/:id', async ({ params }, env) =&gt; {
+  const { result } = await env.DB.get(
+    `SELECT * FROM Product WHERE ID = $id;`,
+    { $id: params.id }
+  )
+  return new Response(JSON.stringify(result), {
+    headers: {
+      'content-type': 'application/json'
+    }
+  })
+})
+
+export default {
+  fetch: router.handle,
+}</code></pre>
+	<h2></h2>
+	<h2 id="-d1--2">所以您可以對 D1 抱有哪些期待呢？</h2>
+	<p>首先，我們希望您能夠使用 D1 開發，而且不必擔心成本。</p>
+	<p>在 Cloudflare，我們不會將您的資料當作抵押品，因此 D1 和 R2 一樣，都不會有輸出費用。我們定價 D1 的計畫與我們的儲存空間產品定價類似，也就是對基本儲存空間以及所執行的資料庫操作進行收費。</p>
+	<p>但是，同樣地，我們不希望客戶擔心成本，或擔心當業務量急劇上升且他們需要更多儲存空間或有更多活動時會發生什麼情況。我們希望您能夠建置如構想中一般簡單或複雜的應用程式。我們將確保 D1 成本更低，且效能比同類集中式解決方案更好。無伺服器和 Cloudflare 這樣的全球網路，確保能夠提供由我們基礎結構所驅動的效能和更低的成本。</p>
+	<p>以下是 D1 功能的簡短預覽。</p>
+	<h3 id="-">讀取複製內容</h3>
+	<p>透過 D1，我們希望讓您輕鬆將整個應用程式的狀態儲存在單一位置，以便您跨整個資料集執行任意查詢。這就是關聯式資料庫如此強大的原因。</p>
+	<p>但是，我們不認為功能強大就應等同於繁瑣。大部分的關聯式資料庫是龐大、整體的內容，而且設定複製內容並不容易。因此，一般而言，大部分的系統會為此設計，以便讓所有讀取和寫入程序都流回單一執行個體。D1 採取的方法與此不同。</p>
+	<p>透過 D1，我們希望讓您能夠擺脫設定，並善加運用 Cloudflare 的全球網路。D1 會在您使用者所在的位置建立您資料的唯讀複製品，並在資料有變更時持續加以更新。</p>
+	<h3 id="--1">批次處理</h3>
+	<p>應用程式中有許多操作不會僅產生單一查詢。如果您的邏輯是在使用者附近的 Worker 中執行，但是其中的每個查詢都需要在資料庫上執行，那麼逐一透過線路來傳送這些查詢的效能就極為不彰。</p>
+	<p>D1 的 API 包括批次處理：在能夠傳送單一 SQL 陳述句的任一處，您也可以提供其陣列；這代表您僅需要單次 HTTP 往返就能夠執行多個操作。這對於需要以原子方式執行和認可的交易而言非常適用：</p>
+	<pre><code class="language-js">async function recordPurchase(userId, productId, amount) { 
+  const result = await env.DB.exec([
+    [
+      `UPDATE users SET balance = balance - $amount WHERE user_id = $user_id`,
+      { $amount: amount, $user_id: userId },
+    ],
+    [
+      'UPDATE product SET total_sales = total_sales + $amount WHERE product_id = $product_id',
+      { $amount: amount, $product_id: productId },
+    ],
+  ])
+  return result
+}</code></pre>
+	<h3 id="--2">嵌入式運算</h3>
+	<p>但是，我們並未止步於此。透過 D1，您將可以定義一段直接在資料庫旁邊執行的 Worker 程式碼，讓您擁有完整的控制權和最大的效能——每個請求都會先送達您使用者附近的 Worker，但是會視操作內容移交給與複本或主要 D1 執行個體一起部署的另一個 Worker，以便完成其工作。</p>
+	<h3 id="--3">備份和備援</h3>
+	<p>其他內容的重要性幾乎都比不上您主要應用程式的資料庫中儲存的資料，因此 D1 會透過單鍵復原程序，定期自動將您資料庫的快照儲存到 Cloudflare 的雲端儲存服務 R2 中。此外，因為我們是在 Durable Objects 的備援儲存空間上建置，您的資料庫可以在需要時實際移動位置，因此即使發生最具毀滅性的問題，也能夠在幾秒鐘內自我修復。</p>
+	<h3 id="--4">匯入和匯出資料</h3>
+	<p>雖然 D1 已經支援 SQLite API，讓您能夠輕鬆寫入查詢，但您可能也需要資料才能在其中執行。如果您不是建立全新的應用程式，則可能需要從其他來源或資料庫匯入現有的資料集。正因如此，我們會努力讓您能夠將自有的資料導入 D1。</p>
+	<p>同樣地，SQLite 的優勢之一就是其可攜性。如果您的應用程式有專屬的暫存環境，您就能夠將該資料的快照複製到您的本機機器上，以便對其進行開發。我們也會加上更多彈性，例如能夠為 Pages 專案的每個新 pull 請求，建立一個含有測試資料集的新資料庫。</p>
+	<h2 id="--5">接下來呢？</h2>
+	<p>幾乎在所有 Cloudflare 公告事項中，我們都會得出「我們才剛剛開始！」的結論，而事實也的確如此！對於我們全球網路的開放能夠為資料庫帶來的所有強大可能性，我們非常期待。您是否已經在考慮使用 D1 和 Workers 建置哪些內容了呢？我們也是。<a href="https://www.cloudflare.com/lp/d1/" target="_blank">請提供您的詳細資料</a>，我們將盡快為您提供存取權限。請密切注意我們的邀請，最快將在 2022 年 6 月展開！</p>
+</div>

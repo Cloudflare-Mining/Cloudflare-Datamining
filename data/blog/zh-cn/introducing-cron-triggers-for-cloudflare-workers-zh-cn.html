@@ -1,0 +1,25 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/12/image-37.png" class="kg-image"></figure>
+	<p>今天，Cloudflare Workers团队无比激动地宣布了Cron Triggers的推出。在此之前，Worker纯粹是由传入的HTTP请求触发的，但是从今天开始，您将能够设置调度程序以按一定的时间间隔运行Worker。这是一个非常受人欢迎的功能，我们知道很多开发人员会发现它很有用，我们已在无服务器周后听到了大家的反馈。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/12/image-38.png" class="kg-image"></figure>
+	<p>我们很高兴能够免费提供此功能，并且该功能将在Workers免费版和付费版（现在称为Workers捆绑包）上可用。由于Cron触发器将Worker划分到哪个城市并不重要，因此我们能够最大化Cloudflare的分布式系统，并将计划好的任务发送到未充分利用的机器上。在这些安静的机器上运行作业既高效又具有成本效益，我们在节省成本的同时也为您节省了成本。</p>
+	<h3 id="-cron-">什么是Cron触发器以及我可以如何使用这一功能？</h3>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/12/image-39.png" class="kg-image"></figure>
+	<p>关于Unix系统的补充，cron模式允许您安排作业以固定的间隔或计划的时间定期运行。Workers上下文中的Cron触发器允许用户为作业设置基于时间的调用。这些Worker定期执行，与传统Worker的不同之处在于它们不是由HTTP请求触发的。</p>
+	<p>大多数开发人员都熟悉cron模式及其在各种应用程序中的用途。常见的示例由从API提取最新数据或按预设时间表运行常规集成测试。</p>
+	<blockquote>“我们对Cron触发器感到很兴奋。Workers对我们的堆栈至关重要，因此，使用此功能进行实时集成测试将提高开发人员的体验。”——Bazaarvoice的软件工程师Brian Marks</blockquote>
+	<h3 id="-cron--1">使用Cron触发器需要多少费用？</h3>
+	<p>触发器无需额外费用！对于免费计划和使用Workers捆绑包的客户，Worker计划任务均计入您的请求上限，但是请放心，不会有任何隐藏费用或额外费用。我们的竞争对手会为cron事件收取额外费用，或者在某些情况下会提供非常有限的免费套餐。我们希望使此功能可广泛使用，并决定不按每次触发收费。尽管您在一个帐户中可以拥有的触发器数量没有限制，但是请注意，此功能下每个Worker脚本只能使用3个触发器。您可以在此<a href="https://developers.cloudflare.com/workers/platform/limits" target="_blank">文档</a>中阅读有关Workers计划限制的更多信息。</p>
+	<h3 id="-">你们是如何在不增加成本的情况下提供这个功能的？</h3>
+	<p>Cloudflare支持着遍布全球200多个城市的大规模分布式系统。我们的节点以最接近的IATA机场代码命名。大多数时候，出于性能的原因，我们都在接近请求源的地方运行Workers（即如果你在海湾地区，最近的节点就是SJC，如果你幸运地身处巴黎🥐🍷🧀，附近节点就是CDG）。在一个典型的HTTP Worker中，我们这样做是因为我们知道，对于正在等待响应的人来说，性能至关重要。</p>
+	<p>在Cron触发器的情况下，用户按时运行任务，这些性能需求是不同的。当用户无需积极等待响应，几毫秒的额外延迟就无关紧要。该功能的性质让我们能够更灵活地分配运行作业的地点，因为它无需运行在靠近最终用户的城市中。</p>
+	<p>Cron触发器在未充分利用的机器上运行，以最大限度地利用我们的容量和有效地路由流量。例如，一个从旧金山发出的计划于太平洋时间下午7点运行的Worker可能会被发送到巴黎，因为那里是凌晨4点，整个欧洲的通信量都很低。在安静的时间把流量发送到这些机器上是非常高效的，我们很高兴能与您共享节省成本的优势。除了这种调度优化之外，由Cron触发器调用的Workers行为与典型HTTP Workers类似，并且具有与典型HTTP Workers相同的性能和安全性优势。</p>
+	<h3 id="--1">幕后发生了什么？</h3>
+	<p>在较高的层上，通过我们的API创建的计划会在数据库中创建记录。这些记录包含在给定的cron时间表上执行Worker所必需的信息。然后，这些记录将由另一服务获取，该服务将不断评估我们的边缘状态并在城市之间分配计划表。一旦计划已分发到边缘，运行在节点中的服务就会轮询对计划的更改，并确保它们在适当的时间被发送到我们的内存管理。</p>
+	<p>如果您想了解有关我们如何实现此功能的更多详细信息，请参阅此<a href="https://blog.cloudflare.com/cron-triggers-for-scheduled-workers/">技术博客</a>。</p>
+	<h3 id="--2">下一步是什么？</h3>
+	<p>通过此功能，我们扩展了使用Workers进行构建的可能性，并进一步简化了开发人员的体验。虽然Workers以前仅根据Web请求运行，但我们认为边缘计算的未来并不严格与HTTP请求和响应联系在一起。我们希望将来引入更多类型的Workers。</p>
+	<p>我们计划扩展触发器以包含不同类型，比如基于数据的触发器或基于事件的触发器。我们的目标是为用户提供更大的灵活性，让他们能够控制Workers的运行时间。Cron触发器是我们在这个方向上的第一步。此外，我们计划不断迭代Cron触发器，使边缘基础架构的选择更加复杂和优化——例如，我们可能会考虑开发让用户能在最节能的数据中心内运行的触发器。</p>
+	<h3 id="-cron--2">如何试用Cron触发器</h3>
+	<p>Cron触发器现在就可以使用！您可以尝试在Workers控制面板中创建一个新的Worker，并设置一个Cron触发器。</p>
+</div>

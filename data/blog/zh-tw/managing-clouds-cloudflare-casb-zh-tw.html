@@ -1,0 +1,24 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image1-70.png" class="kg-image" alt="Managing Clouds - Cloudflare CASB and our not so secret plan for what’s next"></figure>
+	<p>上個月，我們介紹了 Cloudflare 透過收購 Vectrix 而推出之全新 API 驅動的<a href="https://blog.cloudflare.com/cloudflare-zero-trust-casb/">雲端存取安全性代理程式（CASB）</a>。讓我們快速回顧一下：Cloudflare 的 CASB 幫助 IT 和安全團隊偵測其 SaaS 應用程式中的安全性問題。我們會關注 SaaS 應用程式中的資料和使用者，提示相關團隊各種問題，包括未經授權的使用者存取和檔案暴露，以及設定錯誤和影子 IT。<br></p>
+	<p>我很高興在此分享我們宣佈將 CASB 功能引進 Cloudflare Zero Trust 之後的兩個新消息。首先，我們得知 Cloudflare 客戶已迫不及待部署 CASB，而且想要更深入加以使用。今天，我們將概述接下來會依據意見回饋建置哪些內容，讓您先對可期待的內容有些瞭解。其次，我們將開放測試版的申請，我也將逐一介紹新使用者從等候名單中受邀時可使用哪些內容。</p>
+	<h2 id="cloudflare-casb-">Cloudflare CASB 的後續計畫為何？</h2>
+	<p>Cloudflare 的 API 驅動 CASB 將為 IT 和網路安全擁有者提供易於使用的一站式服務，能夠在其 SaaS 工具群中保護其資料和使用者的安全。我們的目標是確保任何 IT 或網路安全管理員都能夠從首次<a href="https://dash.cloudflare.com/sign-up/teams" target="_blank">建立 Zero Trust 帳戶</a>進展為在幾分鐘內保護最關鍵的事物。</p>
+	<p>除了這種立即見效的能見度等級以外，我們知道 IT 和網路安全管理員所發現的問題仍然需要時間來尋找、瞭解和解決。我們將在接下來的幾個月內將三種新功能引進核心 CASB 平台，以分別因應這些挑戰。</p>
+	<h2 id="-">新整合（還有更多內容即將推出）</h2>
+	<p>首先，什麼是整合？授予權限並將 SaaS 應用程式（透過 API）連結到 CASB 以進行網路安全掃描與管理的方式，我們就將其稱為整合。一般來說，整合是在 OAuth 2.0 流程之後完成，但是在第三方 SaaS 應用程式之間會有所不同。為了符合我們的目標，我們將一律確保整合設定流程簡易，而且能夠在數分鐘內完成。</p>
+	<p>就多數安全策略而言，優先保護最關鍵的資產已成為首要考量。測試版（<a href="https://www.cloudflare.com/products/zero-trust/lp/casb-beta/" target="_blank">請到這裡申請使用</a>）中將提供與 Google Workspace 和 GitHub 的整合。我們也將推出與 Zoom、Slack 及 Okta 的整合，然後在今年稍後新增 Microsoft 365 及 Salesforce 等服務。與客戶密切合作將帶動我們日後會整合哪些應用程式。</p>
+	<h3 id="saas-">SaaS 資產管理</h3>
+	<p>除了整合以外，在服務間管理多種資產，或是使用者、資料、資料夾、存放庫、會議、行事曆、檔案、設定、錄製內容等「數位名詞」，至少可以說相當棘手。試算表的管理相當困難，難以追蹤和者擁有哪些內容的存取權限，或是哪些檔案已與哪些人員共用。</p>
+	<p>這樣不但效率不彰，還很容易發生人為錯誤。CASB SaaS 資產管理可讓 IT 與網路安全團隊從單一儀表板來檢視相關資料之所有資料設定和使用者活動。很快地，回答「我們是否已停用某個使用者在這六個服務間的帳戶？」這類問題的能力，將變成不需要登入各個服務並個別解決就能快速完成的工作。</p>
+	<h3 id="--1">補救指南 + 自動化工作流程</h3>
+	<p>偵測、預防並修復。有了詳細的 SaaS 補救指南，IT 管理員就能夠運用適當的團隊來指派和處理問題。為團隊提供在關聯內容中需要瞭解的工具後，就能夠順暢地防止問題再度發生。如果發生必須立即採取動作的情況，自動化 SaaS 工作流程讓您輕鬆點擊一下就能夠解決 SaaS 安全問題。必須在 OneDrive 中才能從檔案本身移除共用權限嗎？補救按鈕可讓您隨時隨地採取動作。</p>
+	<h3 id="cloudflare-gateway-casb">Cloudflare Gateway + CASB</h3>
+	<p>在 Zero Trust 平台間結合各種產品，代表著透過單一順暢的體驗就能夠解決複雜的問題。從 <a href="https://www.cloudflare.com/products/zero-trust/gateway/" target="_blank">Gateway</a> 和 CASB 的強大功能開始，客戶將能夠在<a href="https://blog.cloudflare.com/introducing-shadow-it-discovery/">影子 IT</a> 中立即採取行動加以管理。輕鬆點擊幾下，就可以將 Gateway 影子 IT 報告中偵測到的未授權 SaaS 應用程式從不受管理設定為未批准，並透過 CASB 整合來管理其他 SaaS 應用程式。對於我們期待透過 Zero Trust 平台解決問題的眾多解決方案而言，這只是其中一個用來凸顯的例子。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image2-63.png" class="kg-image"></figure>
+	<h2 id="-cloudflare-casb-">啟動 Cloudflare CASB 測試版以及您可以期待那些內容</h2>
+	<p>在 CASB 測試版中，您可以在第一天就部署 Google Workspace 這類的熱門整合。您也將能夠直接聯繫我們的產品團隊，以協助後續發展的規劃。我們非常期待與廣大早期客戶緊密合作，以瞭解哪些整合與功能對他們最為重要。</p>
+	<h2 id="-cloudflare-casb--1">請立即開始使用 Cloudflare CASB 測試版</h2>
+	<p>我們目前正在努力使頻外 CASB 產品完美融入 Zero Trust 平台。我們將在下個月初發出第一波測試版邀請，您可以<a href="https://www.cloudflare.com/products/zero-trust/lp/casb-beta/" target="_blank">到這裡申請使用</a>。</p>
+	<p>我們對於 CASB 產品的功能與未來發展有一些遠大的構想。這篇文章重點說明了一些令人引頸期盼的功能，您也可以<a href="https://dash.cloudflare.com/sign-up/teams" target="_blank">到這裡註冊</a>以立即開始使用 Cloudflare 的 Zero Trust 平台。</p>
+</div>

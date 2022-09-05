@@ -1,0 +1,48 @@
+<div class="post-content lh-copy gray1">
+	<p><em><em><em><em>This is a guest post b</em></em>y <a href="https://www.linkedin.com/in/hajacobs/" target="_blank">Hank Jacobs</a>,<em><em> who is </em></em></em>the<em><em><em> </em></em>Lead Software Engineer for Platform Services &amp; Tools at <a href="https://www.dollarshaveclub.com/" target="_blank">Dollar Shave Club</a>. This post originally appeared on the <a href="https://engineering.dollarshaveclub.com/cloudworker-a-local-cloudflare-worker-runner-5a04e48731a5" target="_blank">DSC Engineering blog</a><em><em>.</em></em></em></em></p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/12/local-worker@2x-1.png" class="kg-image"></figure>
+	<p></p>
+	<p>At Dollar Shave Club, we continuously look for ways to improve how we build and ship code. Improving the time it takes for engineers to ship code is key. Providing engineers with a development environment that closely mirrors production really helps.</p>
+	<p>Earlier this year, we began evaluating Cloudflare Workers as a replacement for our legacy edge routing and caching layers. Cloudflare Workers brings the power of Javascript to Cloudflare’s Edge. Developers can write and deploy Javacript that gets executed for every HTTP request that passes through Cloudflare. This capability excited us but a critical thing was missing — a way to run Worker code locally. We couldn’t find a suitable solution, so we started to build our own. Luckily, Workers uses the open <a href="https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API" rel="noopener" target="_blank">Service Workers API</a> so we had documentation to consult. Within a few weeks, <a href="https://github.com/dollarshaveclub/cloudworker" rel="noopener" target="_blank">Cloudworker</a> was born.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/12/1_YEL9Jja5BmeS0mUrQyzsEQ.png" class="kg-image"></figure>
+	<h3 id="cloudworker">Cloudworker</h3>
+	<p><a href="https://github.com/dollarshaveclub/cloudworker" rel="noopener" target="_blank">Cloudworker</a> is a local Cloudflare Worker runtime. With it, you can run Cloudflare Worker scripts locally (or anywhere you can run a Docker image). Our primary goal with Cloudworker is to be as compatible with Cloudflare Workers as possible, simulating features where we can and stubbing out features otherwise.</p>
+	<h4 id="getting-started">Getting Started</h4>
+	<p>To use Cloudworker, install it using npm.</p>
+	<pre><code>npm install -g @dollarshaveclub/cloudworker
+</code></pre>
+	<p>Using it is straightfoward.</p>
+	<pre><code>cloudworker &lt;worker script&gt;
+</code></pre>
+	<p>See the <a href="https://github.com/dollarshaveclub/cloudworker#usage" rel="noopener" target="_blank">readme</a> for a complete list of supported flags.</p>
+	<h4 id="webassembly">WebAssembly</h4>
+	<p>Cloudflare Workers supports the direct execution of WebAssembly, and so does Cloudworker.</p>
+	<p>To start using WebAssembly, run Cloudworker with the <code>--wasm</code> flag to bind a Javascript variable to your <code>.wasm</code> file:</p>
+	<pre><code>cloudworker --wasm Wasm=module.wasm worker.js</code></pre>
+	<p>From within your worker script, you can now create a new WebAssembly Instance with the bound variable.</p>
+	<pre><code>addEventListener('fetch', event =&gt; {
+  const instance = new WebAssembly.Instance(Wasm)
+  instance.exports.exported_func()
+  event.respondWith(new Response('Success!'))
+})</code></pre>
+	<p>See the <a href="https://github.com/dollarshaveclub/cloudworker#webassembly" rel="noopener" target="_blank">WebAssembly</a> section of the <a href="https://github.com/dollarshaveclub/cloudworker" rel="noopener" target="_blank">readme</a> for more examples.</p>
+	<h4 id="workers-kv">Workers KV</h4>
+	<p>Cloudworker also supports an in-memory version of the beta <a href="https://developers.cloudflare.com/workers/kv/" rel="noopener" target="_blank">Workers KV</a>feature of Cloudflare Workers. Workers KV is key-value store that can be accessed by Worker scripts.</p>
+	<p>Key-value pairs can be bound to a variable using the <code>--set</code> flag.</p>
+	<pre><code>cloudworker --set Store.hello=world worker.js</code></pre>
+	<p>Those key-value pairs can then be used within the worker script.</p>
+	<pre><code>addEventListener('fetch', async event =&gt; {  
+  const value = await Store.get('hello')    
+  event.respondWith(new Response(value)) // Responds with 'world'
+})</code></pre>
+	<h3 id="closing-thoughts">Closing Thoughts</h3>
+	<p>Since its initial release, Cloudworker has become an integral part of our Cloudflare Worker development workflow. We use it to develop our edge router locally as well as use it within our <a href="https://engineering.dollarshaveclub.com/qa-environments-on-demand-with-kubernetes-5a571b4e273c" target="_blank">on-demand QA environments</a>. Additionally, we’ve used Cloudworker as a platform for an internal proxy used to reduce the footprint of our QA environments. We’re truly excited about Cloudworker and hope you find it as useful as we have!</p>
+	<hr>
+	<p><em>Cloudflare editor's note: We love seeing all of the projects the Cloudflare Workers community creates! While we can't post about everything on the blog, it helps others out when you share what you've built on <a href="https://community.cloudflare.com" target="_blank">community.cloudflare.com</a> and Twitter. Some examples of other community projects are:</em></p>
+	<ul>
+		<li><em><a href="https://github.com/gja/cloudflare-worker-local" target="_blank">Cloudflare Worker Local</a> (another approach to testing Workers locally)</em></li>
+		<li><em><a href="https://twitter.com/bcnzer/status/1069895077844017153" target="_blank">Cloudflare Workers KV UI Explorer</a></em></li>
+	</ul>
+	<p></p>
+</div>

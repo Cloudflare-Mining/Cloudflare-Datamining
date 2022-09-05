@@ -1,0 +1,163 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/07/640px-2013_Transcend_TS512MLK72V6N--straightened-.jpg" class="kg-image">
+		<figcaption>现代 DDR3 SDRAM. 资料来源: <a href="https://en.wikipedia.org/wiki/DDR3_SDRAM#/media/File:2013_Transcend_TS512MLK72V6N-(straightened).jpg" target="_blank">BY-SA/4.0 by Kjerish</a></figcaption>
+	</figure>
+	<p></p>
+	<p>最近，在访问山景城的<a href="http://www.computerhistory.org/" target="_blank">计算机历史博物馆</a><u>的</u>时，我深深地被过去的一些<a href="https://en.wikipedia.org/wiki/Magnetic-core_memory" target="_blank">磁芯内存</a>所吸引。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/07/240px-KL_CoreMemory.jpg" class="kg-image">
+		<figcaption>资料来源: <a href="https://en.wikipedia.org/wiki/File:KL_CoreMemory.jpg" target="_blank">BY-SA/3.0 by Konstantin Lanzet</a></figcaption>
+	</figure>
+	<p></p>
+	<p>我发现我完全不知道这些东西曾经是如何运作的。我想知道环是否旋转（它们没有），以及为什么每个环都有三根电线穿过（我仍然不明白它们是如何工作的）。更重要的是，我意识到我对现代计算机内存——动态RAM的工作方式知之甚少！</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/07/cpumemory.8.png" class="kg-image">
+		<figcaption>资料来源: <a href="https://lwn.net/Articles/250967/" target="_blank">Ulrich Drepper's series about memory</a></figcaption>
+	</figure>
+	<p></p>
+	<p>我对动态RAM工作原理的结果之一特别感兴趣。如你所见，每一位数据都是通过RAM芯片内的一个小电容充电（或低电平）存储的。但随着时间的推移，这些电容逐渐失去电荷。为避免丢失存储的数据，必须定期刷新以将电荷（如果存在）恢复到其原始级别。此<a href="https://en.wikipedia.org/wiki/Memory_refresh" target="_blank">刷新过程</a>包括读取每个位的值，然后将其写回。在此“刷新”期间，内存被占用，无法执行加载或存储位等正常操作。</p>
+	<p>这困扰了我很长一段时间，我想知道......我们有没有捕捉到软件中刷新带来的延迟？</p>
+	<h2 id="-ram-">动态RAM刷新入门</h2>
+	<p>每个DIMM模块由“单元(cells)”和“行(rows)”，“列(columns)”，“面(sides)”和/或“模组(ranks)”组成。<a href="https://pubweb.eng.utah.edu/~cs7810/pres/11-7810-12.pdf" target="_blank">犹他大学的这个演讲诠释了命名法</a>。您可以使用 <code>decode-dimms</code>命令检查计算机中的内存配置。举例如下：</p>
+	<pre><code>$ decode-dimms
+Size                                       4096 MB
+Banks x Rows x Columns x Bits              8 x 15 x 10 x 64
+Ranks                                      2</code></pre>
+	<p>如今我们不需要进入整个DDR DIMM布局，我们只需要知道单个存储单元（存储一位信息）。具体来说，我们只关心储存单元如何执行刷新过程。</p>
+	<p>我们来看两份文档：</p>
+	<ul>
+		<li><a href="https://utaharch.blogspot.com/2013/11/a-dram-refresh-tutorial.html" target="_blank">来自犹他大学的DRAM刷新课程</a></li>
+		<li>一个来自Micron的1千兆位单元的精彩文档：<a href="https://www.micron.com/~/media/documents/products/technical-note/dram/tn4609.pdf" target="_blank">TN-46-09设计用于1Gb DDR SDRAM</a></li>
+	</ul>
+	<p>存储在动态存储器中的每个位都必须经过刷新，通常为每64ms一次（称为静态刷新）。这是一项相当耗时的操作。为避免每64ms出现一次大的停顿，这一过程被分为8192个较小的刷新操作。在每个操作中，计算机的存储器控​​制器向DRAM芯片发送刷新命令。在接收到指令后，芯片将刷新其单元总数的1/8192。计算一下： 64ms / 8192 = 7812.5 ns或7.81μs。</p>
+	<p>这意味着：</p>
+	<ul>
+		<li>每7812.5 ns有一次刷新命令，称为tREFI。</li>
+		<li>芯片执行刷新和恢复需要一些时间，因此它可以再次执行正常的读写操作。这一次称为tRFC，为75ns或120ns（参考提到的Micron数据表）。</li>
+	</ul>
+	<p>当存储器很热（&gt; 85C）时，存储器单元电荷保持时间下降，静态刷新时间减半到32ms，tREFI下降到3906.25 ns。</p>
+	<p>典型的内存芯片用于刷新的时间占其运行时间的很大一部分——介于0.4％到5％之间。此外，存储器芯片功耗是典型计算机功耗中的一大部分，并且大部分功率都用于执行刷新。</p>
+	<p>在刷新动作的持续时间内，整个存储器芯片被封锁。这意味着每过7812ns，内存中的每个位都被封锁超过75ns。让我们来测量一下吧。</p>
+	<h2 id="-">准备实验</h2>
+	<p>要以纳秒级间隔测量操作，我们必须编写一个紧密循环（也许用C语言编写）。它看起来是这样的：</p>
+	<pre><code>for (i = 0; i &lt; ...; i++) {
+		// Perform memory load. Any load instruction will do
+		*(volatile int *) one_global_var;
+
+		// Flush CPU cache. This is relatively slow
+		_mm_clflush(one_global_var);
+
+		// mfence is needed, otherwise sometimes the loop
+		// takes very short time (25ns instead of like 160). I
+		// blame reordering.
+		asm volatile("mfence");
+
+		// Measure and record time
+		clock_gettime(CLOCK_MONOTONIC, &amp;ts);
+    }</code></pre>
+	<p><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-11-memory-refresh/measure-dram.c" target="_blank">Github上提供了完整代码</a>。</p>
+	<p>代码非常简单直接：执行内存读取， CPU刷新缓存数据，测量时间。</p>
+	<p>（注：在<a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-11-memory-refresh/measure-dram-movntdqa.c#L113-L119" target="_blank">第二个实验中，我尝试使用MOVNTDQA</a>来执行数据加载，但这需要特殊的不可缓存的内存页面，这种页面需要root访问权限。）</p>
+	<p>在我的计算机上，它生成的数据是这样的：</p>
+	<pre><code># timestamp, loop duration
+3101895733,     134
+3101895865,     132
+3101896002,     137
+3101896134,     132
+3101896268,     134
+3101896403,     135
+3101896762,     359
+3101896901,     139
+3101897038,     137</code></pre>
+	<p>通常我每循环得到~140ns，循环持续时间周期性地跳到~360ns。有时我会得到超过3200ns的奇数读数。</p>
+	<p>不幸的是，数据结果非常杂乱，很难看出是否存在由刷新周期导致的明显延迟。</p>
+	<h2 id="--1">快速傅里叶变换</h2>
+	<p>从某种程度上来说是可以计算到的。由于我们想要找到一个固定时间间隔事件，我们可以将数据输入FFT（快速傅立叶变换）算法，该算法能够揭示频率域的结果。</p>
+	<p>我并不是第一个想到这一点的人——以Rohamham成名的Mark Seaborn 在2015年<a href="https://github.com/google/rowhammer-test/blob/master/refresh_timing/refresh_timing.cc" target="_blank">就采用了这项技术</a>。即使在看过了Mark的代码之后，利用快速傅里叶变换计算也比我预想的更难。但最后我完成了这一工作。</p>
+	<p>首先，我们需要准备数据。快速傅里叶计算要求对输入数据进行恒定的采样间隔采样。我们还需过滤数据以减少噪音。通过反复试验，我发现数据被预处理后的计算效果最好：</p>
+	<ul>
+		<li>忽略循环迭代的小值（小于平均值* 1.8），并用“0”读数替换。我们不希望将噪音输入算法。</li>
+		<li>所有剩余的读数都替换为“1”，因为我们不需要考虑由某些噪声引起的延迟幅度。</li>
+		<li>我设定的采样间隔为100ns，但实际设置为任意达到<a href="https://en.wikipedia.org/wiki/Nyquist%E2%80%93Shannon_sampling_theorem" target="_blank">奈奎斯特值（双倍预期频率）的数字也能正常计算</a>。</li>
+		<li>在数据输入FFT之前，我们需要使用固定的时序对数据进行采样。所有合理的采样方法都可以正常计算，我最终选择了基本的线性插值。</li>
+	</ul>
+	<p>该算法大致是：</p>
+	<pre><code>UNIT=100ns
+A = [(timestamp, loop_duration),...] 
+p = 1
+for curr_ts in frange(fist_ts, last_ts, UNIT):
+    while not(A[p-1].timestamp &lt;= curr_ts &lt; A[p].timestamp):
+        p += 1
+    v1 = 1 if avg*1.8 &lt;= A[p-1].duration &lt;= avg*4 else 0
+    v2 = 1 if avg*1.8 &lt;= A[p].duration &lt;= avg*4 else 0
+    v = estimate_linear(v1, v2, A[p-1].timestamp, curr_ts, A[p].timestamp)
+    B.append( v )</code></pre>
+	<p>结果会在我的数据中产生相当单调的矢量，如下所示：</p>
+	<pre><code>[0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0,
+ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+ 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ...]</code></pre>
+	<p>矢量很长，通常约为20万个数据点。通过这样的数据准备，我们准备将其输入FFT！</p>
+	<pre><code>C = numpy.fft.fft(B)
+C = numpy.abs(C)
+F = numpy.fft.fftfreq(len(B)) * (1000000000/UNIT)</code></pre>
+	<p>很简单吧？结果将会产生两个向量：</p>
+	<ul>
+		<li>C中包含复杂的频率分量。我们对复杂的数字不感兴趣，我们可以通过调用 <code>abs()</code>函数将它们处理成单调的分量。</li>
+		<li>F中包含各频率采样率（采样点数）对应的矢量C中位置的标签。我们需要将其标准化为Hz单位——通过将其乘以输入矢量采样频率。</li>
+	</ul>
+	<p>结果可以绘制成下图：</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/07/fft1a.png" class="kg-image"></figure>
+	<p></p>
+	<p>由于我们将延迟时间归一化，因此Y轴是无单位的。尽管如此，它仍然清楚地显示了某些固定频率间隔的峰值。让我们放大来看：</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/07/fft2a.png" class="kg-image"></figure>
+	<p></p>
+	<p>我们可以清楚地看到前三个峰值。经过一些无意义的算术，包括将读数至少是平均值10倍的滤除，我们可以提取出基础频率：</p>
+	<pre><code>127850.0
+127900.0
+127950.0
+255700.0
+255750.0
+255800.0
+255850.0
+255900.0
+255950.0
+383600.0
+383650.0</code></pre>
+	<p>计算：1000000000（ns / s）/ 127900（Hz）= 7818.6 ns</p>
+	<p>太棒了！第一个频率尖峰确实是我们正在寻找的，并且确实与刷新时间相关。</p>
+	<p>256kHz，384kHz，512kHz等的其他尖峰是我们128kHz基频的倍数（称为谐波）。这些是预期之内<a href="https://en.wikipedia.org/wiki/Square_wave" target="_blank">对像方波这样的东西进行快速傅里叶变换</a>的副产物。</p>
+	<p>为了便于实验，我们<a href="https://github.com/cloudflare/cloudflare-blog/tree/master/2018-11-memory-refresh" target="_blank">准备了此工具的命令行版本</a>。您可以自己运行代码。这是在我的服务器上运行的示例：</p>
+	<pre><code>~/2018-11-memory-refresh$ make
+gcc -msse4.1 -ggdb -O3 -Wall -Wextra measure-dram.c -o measure-dram
+./measure-dram | python3 ./analyze-dram.py
+[*] Verifying ASLR: main=0x555555554890 stack=0x7fffffefe2ec
+[ ] Fun fact. I did 40663553 clock_gettime()'s per second
+[*] Measuring MOVQ + CLFLUSH time. Running 131072 iterations.
+[*] Writing out data
+[*] Input data: min=117 avg=176 med=167 max=8172 items=131072
+[*] Cutoff range 212-inf
+[ ] 127849 items below cutoff, 0 items above cutoff, 3223 items non-zero
+[*] Running FFT
+[*] Top frequency above 2kHz below 250kHz has magnitude of 7716
+[+] Top frequency spikes above 2kHZ are at:
+127906Hz    7716
+255813Hz    7947
+383720Hz    7460
+511626Hz    7141</code></pre>
+	<p>我必须承认代码并不完全稳定。如果出现问题，请考虑禁用Turbo Boost，或进行CPU频率调整和性能调整。</p>
+	<h2 id="--2">最后</h2>
+	<p>这项工作有两个主要的要点。</p>
+	<p>我们已经看到低电平数据很难分析，而且看起来很杂乱。但是我们可以采用良好而久经考验的快速傅里叶变换，而不是试图用肉眼看出来。在准备数据时我们需要按照一些主观的想法来处理。</p>
+	<p>最重要的是，我们发现通常情况下，从简单的用户空间流程中测量细微的硬件行为是可行的。这种想法促成了<a href="https://googleprojectzero.blogspot.com/2015/03/exploiting-dram-rowhammer-bug-to-gain.html" target="_blank">原始的Rowhammer</a>漏洞的发现，被用于Meltdown / Spectre攻击，并在<a href="https://arstechnica.com/information-technology/2018/11/potentially-disastrous-rowhammer-bitflips-can-bypass-ecc-protections/" target="_blank">最近的ECC击败Rowhammer再生中再次出现</a>。</p>
+	<p>还有很多话题还可以聊。我们现在仅仅是了解到内存子系统内部工作的表面。我建议阅读以下内容来进一步了解：</p>
+	<ul>
+		<li><a href="https://lackingrhoticity.blogspot.com/2015/04/l3-cache-mapping-on-sandy-bridge-cpus.html" target="_blank">Sandy Bridge CPU上的L3缓存映射</a></li>
+		<li><a href="https://lackingrhoticity.blogspot.com/2015/05/how-physical-addresses-map-to-rows-and-banks.html" target="_blank">物理地址如何映射到DRAM中的行和存储区</a></li>
+		<li><a href="https://hannuhartikainen.fi/blog/hacking-ddr3-spd/" target="_blank">Hannu Hartikainen攻击DDR3 SO-DIMM工作......慢</a></li>
+	</ul>
+	<p>最后，这里有一个关于旧磁芯存储器的好读物：</p>
+	<ul>
+		<li><a href="http://www.psych.usyd.edu.au/pdp-11/core.html" target="_blank">由悉尼大学解释的PDP-11核心存储器</a></li>
+	</ul>
+</div>

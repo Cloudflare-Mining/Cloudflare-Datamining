@@ -1,0 +1,287 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image1-10.png" class="kg-image" alt="A Community Group for Web-interoperable JavaScript runtimes"></figure>
+	<p>Aujourd'hui, Cloudflare, en partenariat avec Vercel, Shopify et les principaux contributeurs individuels de <a href="https://nodejs.org" target="_blank"> Node.js</a> et <a href="https://deno.land" target="_blank"> Deno</a> , annonce la création d'un nouveau <a href="https://www.w3.org/community/wintercg/" target="_blank">groupe communautaire</a> <a href="https://www.w3.org/community/wintercg/" target="_blank"> &nbsp; </a> &nbsp;axé sur la mise en œuvre interopérable d'API Web normalisées dans des environnements de développement JavaScript autres que les navigateurs Web.</p>
+	<p>Le <a href="https://w3.org" target="_blank">W3C</a> et le <a href="https://whatwg.org/" target="_blank">Web Hypertext Application Technology Working Group</a> (ou WHATWG) ont longtemps été les pionniers des efforts visant à développer des API et des fonctionnalités standardisées pour le Web en tant qu’environnement de développement. Les API telles que <a href="https://fetch.spec.whatwg.org/" target="_blank">fetch()</a>, <a href="https://streams.spec.whatwg.org/" target="_blank">ReadableStream et WritableStream</a>, <a href="https://url.spec.whatwg.org/" target="_blank">URL</a>, <a href="https://wicg.github.io/urlpattern" target="_blank">URLPattern</a>, <a href="https://encoding.spec.whatwg.org/" target="_blank">TextEncoder</a>, etc. sont devenues des composants omniprésents et précieux du développement Web moderne. Cependant, les chartes de ces groupes existants ont toujours été <a href="https://whatwg.org/faq#what-is-the-whatwg-working-on" target="_blank">explicitement limitées à</a> ne prendre en compte que les besoins spécifiques des navigateurs Web, ce qui a entraîné l’élaboration de normes qui ne sont pas facilement optimisées pour tout environnement qui ne ressemble pas exactement à un navigateur Web. Un bon exemple de cet effet est que certaines implémentations non navigateur de la <a href="https://streams.spec.whatwg.org/" target="_blank">norme Streams</a> sont un ordre de grandeur <a href="https://github.com/nodejs/undici/issues/1203" target="_blank"><em>plus lent</em></a> que les implémentations équivalentes de Node.js streams et de lecteur Deno en grande partie en raison de la façon dont l’API est spécifiée dans la norme.</p>
+	<p>Les environnements sans serveur tels que Cloudflare Workers, ou les moteurs d'exécution tels que Node.js et Deno, ont un large éventail d'exigences, de problèmes et de préoccupations qui ne sont tout simplement pas pertinents pour les navigateurs web, et vice versa. Cette déconnexion et l'absence de prise en compte claire de ces différences lors de l'élaboration des diverses spécifications ont conduit à une situation où les moteurs d'exécution sans navigateur ont mis en œuvre leurs propres solutions sur mesure et ad hoc pour des fonctionnalités qui sont en fait communes à tous les environnements.</p>
+	<p>Ce nouvel effort change la donne en offrant un lieu de discussion et de défense des exigences communes de <em> tous les environnements web</em>, déployés partout dans la pile.</p>
+	<h2 id="quels-sont-les-avantages-pour-les-d-veloppeurs">Quels sont les avantages pour les développeurs ?</h2>
+	<p>Les développeurs veulent que leur code soit portable. Une fois qu'ils l'ont écrit, s'ils choisissent de passer à un autre environnement (de Node.js à Deno, par exemple), ils ne veulent pas avoir à le <em>réécrire</em> complètement juste pour qu'il continue à faire exactement la même chose qu'avant.</p>
+	<p>L'une des questions les plus courantes que nous posent les utilisateurs de Cloudflare est de savoir comment ils peuvent utiliser un module arbitraire publié sur<a href="https://npmjs.org" target="_blank"> npm</a> qui fait appel à un ensemble d'API spécifiques à Node.js ou à Deno. La réponse implique généralement l'utilisation d'une combinaison arbitraire d'implémentations polyfill. La situation est similaire avec le projet Deno, qui a choisi d'intégrer un polyfill de l'API principale de Node.js directement dans sa bibliothèque standard. Plus ces environnements mettent en œuvre les mêmes normes communes, plus l'écosystème des développeurs peut compter sur le fait que le code qu'ils écrivent fonctionne, quel que soit l'endroit où il est exécuté.</p>
+	<p>Cloudflare Workers, Node.js, Deno et les navigateurs Web sont tous très différents les uns des autres, mais ils partagent un bon nombre de fonctions communes. Par exemple, ils fournissent tous des API pour générer des hachages cryptographiques, ils traitent tous d'une manière ou d'une autre des données en continu et ils offrent tous la possibilité d'envoyer une requête HTTP quelque part. Lorsque ce chevauchement existe, et lorsque les exigences et les fonctionnalités sont les mêmes, les environnements devraient tous mettre en œuvre les mêmes mécanismes normalisés.</p>
+	<h2 id="groupe-communautaire-sur-les-moteurs-d-ex-cution-interop-rables-sur-le-web">Groupe communautaire sur les moteurs d'exécution interopérables sur le Web</h2>
+	<p>Le nouveau groupe communautaire<a href="https://github.com/wintercg" target="_blank"> Web-interoperable Runtimes</a> (ou « WinterCG ») fonctionne selon les processus établis du <a href="https://www.w3.org/community/about/" target="_blank">W3C</a>.</p>
+	<p>Nous avons mis du temps à nous mettre d'accord sur le nom de ce groupe, car il est essentiel pour comprendre les objectifs que le groupe tente d'atteindre (et ce qu'il n'est <em>pas</em>). L'élément clé est l'expression « web-interoperable ».</p>
+	<p>Nous utilisons &nbsp;« web»» exactement dans le même sens que les communautés W3C et WHATWG utilisent ce terme - précisément : <em> navigateurs web</em>. Le terme « web-interoperable » signifie donc que les fonctionnalités sont implémentées d'une manière qui est <em>identique ou au moins aussi cohérente que possible</em> avec la manière dont ces fonctionnalités sont implémentées dans les navigateurs web. Par exemple, la manière dont le constructeur &nbsp;new URL() fonctionne dans les navigateurs est exactement la manière dont le constructeur &nbsp;new URL() devrait fonctionner dans Node.js, dans Deno et dans Cloudflare Workers.</p>
+	<p>Il est toutefois important de reconnaître le fait que Node.js, Deno et Cloudflare Workers ne sont pas explicitement des navigateurs Web. Bien que ce point devrait être évident, il est important de le souligner car les différences entre les divers environnements JavaScript peuvent avoir un impact considérable sur les décisions de conception des API normalisées. Node.js et Deno, par exemple, offrent chacun un accès complet au système de fichiers local. Cloudflare Workers, en revanche, n'a pas de système de fichiers local, et les navigateurs Web empêchent nécessairement les applications de manipuler le système de fichiers local. De même, alors que les navigateurs Web intègrent intrinsèquement le concept de l'« origine » d'un site Web et mettent en œuvre des mécanismes tels que <a href="https://fetch.spec.whatwg.org/#http-cors-protocol" target="_blank">CORS</a> pour protéger les utilisateurs contre toute une série de menaces pour la sécurité, il n'existe aucun concept équivalent d'« origines » du côté serveur où fonctionnent Node.js, Deno et Cloudflare Workers.</p>
+	<p>Jusqu'à présent, le W3C et le WHATWG se sont strictement préoccupés des besoins des navigateurs web. Le nouveau Web-interoperable Runtimes Community Group s'intéresse explicitement aux besoins de tous les autres et les défend.</p>
+	<p>Il n'est pas prévu que WinterCG publie son propre ensemble d'API standard indépendantes. Les idées de nouvelles spécifications issues de WinterCG seront d'abord soumises à l'examen des groupes de travail existants du W3C et du WHATWG, dans le but d'obtenir le plus large consensus possible. Toutefois, s'il s'avère que les navigateurs Web n'ont pas de besoin particulier ou d'intérêt pour une fonctionnalité dont les autres environnements (tels que Cloudflare Workers) ont besoin, WinterCG sera habilité à aller de l'avant avec une spécification qui lui est propre - avec la contrainte de ne rien introduire qui soit intentionnellement en conflit ou incompatible avec les normes Web établies.</p>
+	<p>WinterCG sera ouvert à la participation de tous ; il fonctionnera selon les processus et les politiques établis du W3C ; tous les travaux seront librement accessibles via <a href="https://github.com/wintercg" target="_blank">l'organisation GitHub « wintercg » </a>; et tout ce qu'il fera sera centré sur l'objectif de maximiser l'interopérabilité.</p>
+	<h2 id="travaux-en-cours">Travaux en cours</h2>
+	<p>WinterCG a déjà commencé à travailler sur un certain nombre de points importants.</p>
+	<h3 id="l-api-web-minimale-commune">L'API Web minimale commune</h3>
+	<p>Extrait de l'introduction de l'actuel projet de spécification <a href="https://github.com/wintercg/proposal-common-minimum-api" target="_blank">https://github.com/wintercg/proposal-common-minimum-api</a> :</p>
+	<blockquote>« L'API minimale commune de plate-forme Web est un sous-ensemble sélectionné d'API de plate-formes Web normalisées, destiné à définir un ensemble minimal de capacités communes aux environnements d'exécution JavaScript basés sur un navigateur ou non. »</blockquote>
+	<p>Ou dit autrement : il s'agit d'un ensemble minimal d'API Web existantes qui seront mises en œuvre de manière cohérente et correcte dans Node.js, Deno et Cloudflare Workers. La plupart des API, à quelques exceptions et nuances près, existent déjà dans ces environnements. Le gros du travail restant consiste donc à s'assurer que ces implémentations sont conformes à leurs spécifications respectives et portables d'un environnement à l'autre.</p>
+	<p>Le tableau ci-dessous répertorie toutes les API actuellement incluses dans ce sous-ensemble (et indique si l'API est actuellement ou probablement bientôt prise en charge par Node.js, Deno et Cloudflare Workers) :</p>
+	<!--kg-card-begin: markdown-->
+	<table>
+		<thead>
+			<tr>
+				<th></th>
+				<th>Node.js</th>
+				<th>Deno</th>
+				<th>Cloudflare Workers</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><a href="https://dom.spec.whatwg.org/#abortcontroller" target="_blank">AbortController</a></td>
+				<td>✔️</td>
+				<td>✔️</td>
+				<td>✔️</td>
+			</tr>
+			<tr>
+				<td><a href="https://dom.spec.whatwg.org/#abortsignal" target="_blank">AbortSignal</a></td>
+				<td>✔️</td>
+				<td>✔️</td>
+				<td>✔️</td>
+			</tr>
+			<tr>
+				<td><a href="https://streams.spec.whatwg.org/#bytelengthqueuingstrategy" target="_blank">ByteLengthQueueingStrategy</a></td>
+				<td>✔️</td>
+				<td>✔️</td>
+				<td>✔️</td>
+			</tr>
+			<tr>
+				<td><a href="https://wicg.github.io/compression/#compression-stream" target="_blank">CompressionStream</a></td>
+				<td>✔️</td>
+				<td>✔️</td>
+				<td>✔️</td>
+			</tr>
+			<tr>
+				<td><a href="https://streams.spec.whatwg.org/#countqueuingstrategy" target="_blank">CountQueueingStrategy</a></td>
+				<td>✔️</td>
+				<td>✔️</td>
+				<td>✔️</td>
+			</tr>
+			<tr>
+				<td><a href="https://w3c.github.io/webcrypto/#dfn-Crypto" target="_blank">Crypto</a></td>
+				<td>✔️</td>
+				<td>✔️</td>
+				<td>✔️</td>
+			</tr>
+			<tr>
+				<td><a href="https://w3c.github.io/webcrypto/#dfn-CryptoKey" target="_blank">CryptoKey</a></td>
+				<td>✔️</td>
+				<td>✔️</td>
+				<td>✔️</td>
+			</tr>
+			<tr>
+				<td><a href="https://wicg.github.io/compression/#decompression-stream" target="_blank">DecompressionStream</a></td>
+				<td>✔️</td>
+				<td>✔️</td>
+				<td>✔️</td>
+			</tr>
+			<tr>
+				<td><a href="https://webidl.spec.whatwg.org/#idl-DOMException" target="_blank">DOMException</a></td>
+				<td>✔️</td>
+				<td>✔️</td>
+				<td>✔️</td>
+			</tr>
+			<tr>
+				<td><a href="https://dom.spec.whatwg.org/#event" target="_blank">Event</a></td>
+				<td>✔️</td>
+				<td>✔️</td>
+				<td>✔️</td>
+			</tr>
+			<tr>
+				<td><a href="https://dom.spec.whatwg.org/#eventtarget" target="_blank">EventTarget</a></td>
+				<td>✔️</td>
+				<td>✔️</td>
+				<td>✔️</td>
+			</tr>
+			<tr>
+				<td><a href="https://streams.spec.whatwg.org/#readablebytestreamcontroller" target="_blank">ReadableByteStreamController</a></td>
+				<td>✔️</td>
+				<td>✔️</td>
+				<td>✔️</td>
+			</tr>
+			<tr>
+				<td><a href="https://streams.spec.whatwg.org/#readablestream" target="_blank">ReadableStream</a></td>
+				<td>✔️</td>
+				<td>✔️</td>
+				<td>✔️</td>
+			</tr>
+			<tr>
+				<td><a href="https://streams.spec.whatwg.org/#readablestreambyobreader" target="_blank">ReadableStreamBYOBReader</a></td>
+				<td>✔️</td>
+				<td>✔️</td>
+				<td>✔️</td>
+			</tr>
+			<tr>
+				<td><a href="https://streams.spec.whatwg.org/#readablestreambyobrequest" target="_blank">ReadableStreamBYOBRequest</a></td>
+				<td>✔️</td>
+				<td>✔️</td>
+				<td>✔️</td>
+			</tr>
+			<tr>
+				<td><a href="https://streams.spec.whatwg.org/#readablestreamdefaultcontroller" target="_blank">ReadableStreamDefaultController</a></td>
+				<td>✔️</td>
+				<td>✔️</td>
+				<td>✔️</td>
+			</tr>
+			<tr>
+				<td><a href="https://streams.spec.whatwg.org/#readablestreamdefaultreader" target="_blank">ReadableStreamDefaultReader</a></td>
+				<td>✔️</td>
+				<td>✔️</td>
+				<td>✔️</td>
+			</tr>
+			<tr>
+				<td><a href="https://w3c.github.io/webcrypto/#dfn-SubtleCrypto" target="_blank">SubtleCrypto</a></td>
+				<td>✔️</td>
+				<td>✔️</td>
+				<td>✔️</td>
+			</tr>
+			<tr>
+				<td><a href="https://encoding.spec.whatwg.org/#textdecoder" target="_blank">TextDecoder</a></td>
+				<td>✔️</td>
+				<td>✔️</td>
+				<td>✔️</td>
+			</tr>
+			<tr>
+				<td><a href="https://encoding.spec.whatwg.org/#textdecoderstream" target="_blank">TextDecoderStream</a></td>
+				<td>✔️</td>
+				<td>✔️</td>
+				<td>(bientôt)</td>
+			</tr>
+			<tr>
+				<td><a href="https://encoding.spec.whatwg.org/#textencoder" target="_blank">TextEncoder</a></td>
+				<td>✔️</td>
+				<td>✔️</td>
+				<td>✔️</td>
+			</tr>
+			<tr>
+				<td><a href="https://encoding.spec.whatwg.org/#textencoderstream" target="_blank">TextEncoderStream</a></td>
+				<td>✔️</td>
+				<td>✔️</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td><a href="https://streams.spec.whatwg.org/#transformstream" target="_blank">TransformStream</a></td>
+				<td>✔️</td>
+				<td>✔️</td>
+				<td>✔️</td>
+			</tr>
+			<tr>
+				<td><a href="https://streams.spec.whatwg.org/#transformstreamdefaultcontroller" target="_blank">TransformStreamDefaultController</a></td>
+				<td>✔️</td>
+				<td>✔️</td>
+				<td>(bientôt)</td>
+			</tr>
+			<tr>
+				<td><a href="https://url.spec.whatwg.org/#url" target="_blank">URL</a></td>
+				<td>✔️</td>
+				<td>✔️</td>
+				<td>✔️</td>
+			</tr>
+			<tr>
+				<td><a href="https://wicg.github.io/urlpattern/#urlpattern-class" target="_blank">URLPattern</a></td>
+				<td>?</td>
+				<td>✔️</td>
+				<td>✔️</td>
+			</tr>
+			<tr>
+				<td><a href="https://url.spec.whatwg.org/#urlsearchparams" target="_blank">URLSearchParams</a></td>
+				<td>✔️</td>
+				<td>✔️</td>
+				<td>✔️</td>
+			</tr>
+			<tr>
+				<td><a href="https://streams.spec.whatwg.org/#writablestream" target="_blank">WritableStream</a></td>
+				<td>✔️</td>
+				<td>✔️</td>
+				<td>✔️</td>
+			</tr>
+			<tr>
+				<td><a href="https://streams.spec.whatwg.org/#writablestreamdefaultcontroller" target="_blank">WritableStreamDefaultController</a></td>
+				<td>✔️</td>
+				<td>✔️</td>
+				<td>✔️</td>
+			</tr>
+			<tr>
+				<td>globalThis.<a href="https://html.spec.whatwg.org/multipage/window-object.html#dom-self" target="_blank">self</a></td>
+				<td>?</td>
+				<td>✔️</td>
+				<td>(bientôt)</td>
+			</tr>
+			<tr>
+				<td>globalThis.<a href="https://html.spec.whatwg.org/multipage/webappapis.html#dom-atob" target="_blank">atob()</a></td>
+				<td>✔️</td>
+				<td>✔️</td>
+				<td>✔️</td>
+			</tr>
+			<tr>
+				<td>globalThis.<a href="https://html.spec.whatwg.org/multipage/webappapis.html#dom-btoa" target="_blank">btoa()</a></td>
+				<td>✔️</td>
+				<td>✔️</td>
+				<td>✔️</td>
+			</tr>
+			<tr>
+				<td>globalThis.<a href="https://console.spec.whatwg.org/#namespacedef-console" target="_blank">console</a></td>
+				<td>✔️</td>
+				<td>✔️</td>
+				<td>✔️</td>
+			</tr>
+			<tr>
+				<td>globalThis.<a href="https://w3c.github.io/webcrypto/#dom-windoworworkerglobalscope-crypto" target="_blank">crypto</a></td>
+				<td>✔️</td>
+				<td>✔️</td>
+				<td>✔️</td>
+			</tr>
+			<tr>
+				<td>globalThis.navigator.<a href="https://html.spec.whatwg.org/multipage/system-state.html#dom-navigator-useragent" target="_blank">userAgent</a></td>
+				<td>?</td>
+				<td>✔️</td>
+				<td>✔️</td>
+			</tr>
+			<tr>
+				<td>globalThis.<a href="https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html#dom-queuemicrotask" target="_blank">queueMicrotask()</a></td>
+				<td>✔️</td>
+				<td>✔️</td>
+				<td>✔️</td>
+			</tr>
+			<tr>
+				<td>globalThis.<a href="https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html#dom-settimeout" target="_blank">setTimeout()</a> / globalthis.<a href="https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html#dom-cleartimeout" target="_blank">clearTimeout()</a></td>
+				<td>✔️</td>
+				<td>✔️</td>
+				<td>✔️</td>
+			</tr>
+			<tr>
+				<td>globalThis.<a href="https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html#dom-setinterval" target="_blank">setInterval()</a> / globalThis.<a href="https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html#dom-clearinterval" target="_blank">clearInterval()</a></td>
+				<td>✔️</td>
+				<td>✔️</td>
+				<td>✔️</td>
+			</tr>
+			<tr>
+				<td>globalThis.<a href="https://html.spec.whatwg.org/multipage/structured-data.html#dom-structuredclone" target="_blank">structuredClone()</a></td>
+				<td>✔️</td>
+				<td>✔️</td>
+				<td>✔️</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<p>Si l'un des environnements s'écarte de la définition normalisée de l'API (comme la mise en œuvre par Node.js de setTimeout() et setInterval() ), une documentation claire décrivant les différences sera mise à disposition. De telles différences ne devraient exister que pour la compatibilité ascendante avec le code existant.</p>
+	<h3 id="flux-de-cryptographie-sur-le-web">Flux de cryptographie sur le Web</h3>
+	<p><a href="https://www.w3.org/TR/WebCryptoAPI/" target="_blank">L'API de cryptographie Web</a> fournit une API &nbsp;minimale (et très <em>limitée</em>) pour les opérations de cryptographie courantes. L'une de ses principales limitations est le fait que - contrairement <a href="https://nodejs.org/dist/latest-v18.x/docs/api/crypto.html" target="_blank">au module cryptographique intégré</a> de Node.js - il ne prend pas en charge le streaming des entrées et des sorties des algorithmes cryptographiques symétriques. Toutes les fonctions de cryptographie Web fonctionnent sur des blocs de données conservés en mémoire, en une seule fois. Cela limite strictement les performances et l'évolutivité des opérations cryptographiques. L'utilisation de ces API dans un environnement qui n'est pas un navigateur Web, et la tentative de les rendre performantes, deviennent rapidement pénibles.</p>
+	<p>Pour résoudre ce problème, le WinterCG a commencé à rédiger, à l'adresse, une nouvelle spécification <a href="https://github.com/wintercg/proposal-webcrypto-streams" target="_blank">pour les flux cryptographiques Web</a> qui sera soumise au W3C pour examen dans le cadre d'un effort plus important actuellement déployé par le W3C pour mettre à jour la spécification de la cryptographie Web. L'objectif est d'apporter les opérations de crypto streaming à l'ensemble du We, y compris les navigateurs Web, d'une manière conforme aux normes existantes.</p>
+	<h3 id="un-sous-ensemble-de-fetch-pour-les-serveurs">Un sous-ensemble de fetch() pour les serveurs</h3>
+	<p>Avec la récente publication de la version 18.0.0, <a href="https://nodejs.org/dist/latest-v18.x/docs/api/globals.html#fetch" target="_blank">Node.js a rejoint</a> la collection d'environnements JavaScript qui fournissent une implémentation de l'API normalisée WHATWG &nbsp;fetch(). Il existe toutefois un certain nombre de différences importantes entre la manière dont Node.js, Deno et Cloudflare Workers mettent en œuvre fetch() et la manière dont elle est mise en œuvre dans les navigateurs Web.</p>
+	<p>Tout d'abord, les environnements de serveur n'ont pas le concept d'« origine » comme le fait un navigateur web. Des fonctionnalités telles que CORS, destinées à protéger contre les vulnérabilités de script de site à site, ne sont tout simplement pas pertinentes sur le serveur. De même, alors que les navigateurs web sont généralement utilisés par un utilisateur individuel à la fois et ont un concept de magasin de cookies à portée globale, les applications serveur et sans serveur peuvent être utilisées par des millions d'utilisateurs simultanément et un magasin de cookies à portée globale qui contient potentiellement des détails de session et d'authentification serait à la fois peu pratique et dangereux.</p>
+	<p>En raison des différences marquées entre les environnements, il est souvent difficile de raisonner et d'obtenir un consensus sur les changements proposés dans la norme fetch. Une nouvelle API proposée, par exemple, pourrait être fantastiquement pertinente pour les utilisateurs de fetch sur un serveur mais complètement inutile pour les utilisateurs de fetch dans un navigateur web. Un ensemble de problèmes de sécurité pertinents pour le navigateur pourrait n'avoir aucun impact sur le serveur.</p>
+	<p>Pour résoudre ce problème et faciliter l'implémentation de fetch de manière cohérente dans les environnements autres que les navigateurs Web, le WinterCG<a href="https://github.com/wintercg/fetch" target="_blank"> travaille à la documentation d'un sous-ensemble de la norme fetch</a> qui traite spécifiquement de ces différentes exigences et contraintes. </p>
+	<p>Ce sous-ensemble sera entièrement compatible avec la norme fetch et est développé en coopération par les mêmes personnes qui ont travaillé sur fetch dans Node.js, Deno et Cloudflare Workers. Il n'est pas prévu que cela devienne une définition concurrente de la norme fetch, mais plutôt un ensemble de directives documentées sur la façon d'implémenter correctement fetch dans ces autres environnements.</p>
+	<h2 id="nous-ne-faisons-que-commencer">Nous ne faisons que commencer</h2>
+	<p>Le groupe communautaire « Runtimes interopérables sur le Web » vient juste de démarrer et nous avons un certain nombre d'objectifs ambitieux. La participation est ouverte à tous, et tous les travaux seront réalisés en toute transparence via GitHub à l'adresse <a href="https://github.com/wintercg" target="_blank">https://github.com/wintercg</a>. Nous cherchons activement à collaborer avec le W3C, le WHATWG et la communauté JavaScript dans son ensemble pour faire en sorte que les fonctionnalités Web soient disponibles, fonctionnent de manière cohérente et répondent aux exigences de tous les développeurs Web travaillant n'importe où dans la pile.</p>
+	<p>Pour plus d'informations sur le WinterCG, consultez le site <a href="https://wintercg.org" target="_blank">https://wintercg.org</a>. Pour plus de détails sur la façon de participer, consultez <a href="https://github.com/wintercg/admin" target="_blank">https://github.com/wintercg/admin</a>.</p>
+</div>

@@ -1,0 +1,43 @@
+<div class="post-content lh-copy gray1">
+	<p><em>本文客座作者为来自</em><a href="https://www.latentai.com/" target="_blank"><em>Latent AI</em></a><em>的Videet Parekh，Abelardo Lopez-Lagunas和Sek Chai。</em></p>
+	<p>边缘网络为人工智能（AI）的性能和适用性提供了重要的机会。人工智能技术使得运行引人入胜的应用程序成为了可能，例如对象和语音识别，导航，还有推荐（recommendations）。</p>
+	<p><a href="https://latentai.com/scaling-edge-ai-in-a-data-driven-world-part-2/" target="_blank">边缘的AI</a>带来诸多好处。一个是可扩展性——将所有数据发送到集中式云是不切实际的。事实上，<a href="https://www.seagate.com/files/www-content/our-story/trends/files/idc-seagate-dataage-whitepaper.pdf" target="_blank">一项研究</a>预测，到2025年，全球数十亿物联网设备产生的数据将达到90兆字节。另一个是隐私性——许多用户不愿意将个人数据转移到云上，然而在边缘处理数据会更迅捷。</p>
+	<p>当AI服务的分布远离集中式数据中心，而更靠近服务边缘时，就可以在不移动不必要的数据的前提下提高整体应用程序速度。然而，要使深云（deep-cloud）中的AI在边缘硬件上高效运行仍然存在挑战。在这里，我们使用术语“深云”来指代高度集中的大型数据中心。部署边缘AI服务可能很困难，因为AI需要占用大量计算空间和内存带宽。我们需要调整AI模型，以便从根本上减少边缘的计算延迟和带宽。</p>
+	<h3 id="-ai-">分布式AI服务案例</h3>
+	<p>分布式AI的边缘网络基础设施已经广泛可用。诸如Cloudflare之类的边缘网络可服务于当今很大一部分的互联网流量，并可充当设备与集中式云之间的桥梁。高性能AI服务之所以成为可能，是因为分布式处理与边缘数据具有极佳的空间接近性。</p>
+	<p>在Latent AI，我们正在探索将人工智能部署在边缘的方法，使用的技术为人工智能模型转换和压缩到边缘。边缘AI模型的大小比传感器数据小了很多个数量级（例如，边缘AI模型的大小是千字节或兆字节，而边缘数据是千兆字节）。我们正在探索在Cloudflare Workers环境中使用WebAssembly（WASM）。我们希望通过在可用的边缘基础设施上探索可实现的性能来为分布式人工智能服务确定可能的操作点。</p>
+	<h3 id="-">探索架构方法</h3>
+	<p><a href="https://webassembly.org/" target="_blank">WebAssembly</a>（WASM）是一种新的开放标准格式，用于运行在Web上的程序。它是一种支持基于web的高性能应用程序的流行方式。WASM更接近机器代码，因此比JavaScript（JS）或JIT<a href="https://hacks.mozilla.org/2017/02/what-makes-webassembly-fast/" target="_blank">更快</a>。已提前完成的编译器优化减少了获取和解析应用程序代码的开销。如今，WASM具备JS的灵活性和可移植性，并且有着几乎最佳的已编译机器代码的性能。</p>
+	<p>众所周知，AI模型具有很大的内存使用需求，因为配置它们需要大量的参数。Cloudflare已经使用其<a href="https://developers.cloudflare.com/workers/quickstart" target="_blank">Wrangler CLI</a>扩展了对WASM的支持，我们选择将其用于我们的探索。<a href="https://blog.cloudflare.com/improving-the-wrangler-startup-experience/">Wrangler</a>是用于管理Workers的开源CLI工具，旨在为开发者提供流畅的体验。</p>
+	<h3 id="latent-ai-ai-">Latent AI如何加速分布式AI服务</h3>
+	<p><a href="https://latentai.com/" target="_blank">Latent AI</a>的使命是使环境计算成为可能，不受任何资源限制。我们开发了开发人员工具，这些工具大大减少了在边缘上处理AI所需的计算资源，同时完全不依赖硬件。</p>
+	<p>Latent AI的工具可显著压缩人工智能模型，以减少它们的内存大小。我们在最先进的模型上展示了高达10倍的压缩率。此功能解决了许多边缘网络部署面临的加载时间延迟问题。我们还提供了一个优化的运行时（runtime），可以本地执行神经网络。其结果是，在没有任何特定于硬件的加速器的情况下，运行时的速度提高了2-3倍。这种显著的性能提升为边缘提供了快速而有效的推理。</p>
+	<p>我们的压缩使用量化算法将AI模型的参数从32位浮点数转换为16位或8位模型，并且最小化精度损失。降低比特精度的主要好处是获得更高的功率效率和更少的存储需求。现在，人工智能推理（inference）可以在分布式边缘使用连续平台上的更高效的并行处理器硬件进行处理。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/12/image-67.png" class="kg-image">
+		<figcaption>优化的AI服务可以处理最靠近源的数据，并在分布式边缘运行推理。</figcaption>
+	</figure>
+	<h3 id="-wasm-">选择真实的WASM神经网络示例</h3>
+	<p>为了进行探索，我们使用了称为MobileNet的最先进的深度神经网络。MobileNets专为智能手机等嵌入式平台而设计，可以在视觉目标检测中实现较高的识别精度。我们将MobileNets AI模型压缩得很快，以代表可以部署为分布式AI服务的各种用例。请参阅此<a href="https://towardsdatascience.com/review-mobilenetv2-light-weight-model-image-classification-8febb490e61c" target="_blank">博客</a>以获取有关AI模型架构的更多详细信息。</p>
+	<p>我们使用MobileNetV2模型变体进行探索。使用可检测的不同视觉对象训练模型：（1）具有10个来自<a href="https://qz.com/1034972/the-data-that-changed-the-direction-of-ai-research-and-possibly-the-world/" target="_blank">ImageNet</a>数据集的对象的大型模型，以及；（2）一个较小的版本，只有两个来自COCO数据集的类。COCO数据集是公共开源图像数据库，被用作AI模型的基准。图像上标有检测对象，如人、车辆、自行车、交通灯等。使用Latent AI的<a href="https://latentai.com/how-latent-ais-leip-sdk-improves-deep-learning-inference-efficiency/" target="_blank">压缩工具</a>，我们能够将MobileNetV2模型压缩并编译为WASM程序。以WASM形式，我们可以用较小的存储空间快速有效地处理AI模型。</p>
+	<p>我们希望WASM神经网络尽可能快和高效。我们运行了一个Workers应用程序以接受来自客户端的图像，将图像转换并预处理为清理后的数据数组，在模型中运行它，然后返回该图像的类。对于大型和小型的MobileNetv2模型，我们创建了三种不同位精度的变体（32位浮点数、16位整数和8位整数）。大型AI模型的平均内存和推理时间分别为110ms和189ms；对于较小的AI模型，时间分别为159ms和15ms。</p>
+	<p>我们的分析表明，可以通过减少内存操作的开销来改善整体处理。对于大型模型，将位精度降低到8位会使内存操作从48％减少到26％。对于小型模型，内存加载时间在推理计算中占主导地位，内存操作中的延迟超过90％。</p>
+	<p>值得注意的是，我们的结果是基于我们的初步探索的，我们更关注功能而不是优化。我们通过在50-100次迭代中平均测量结果来确保结果的一致性。我们承认，与网络和系统相关的一些延迟仍可以进一步优化，但我们相信，此处描述的早期结果显示了分布式边缘上的AI模型推理具有一定的前景。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/12/image-68.png" class="kg-image">
+		<figcaption>比较大型和小型DNN的内存和推理处理时间</figcaption>
+	</figure>
+	<h3 id="-wasm--1">从真实的WASM神经网络示例中学习</h3>
+	<p>我们可以从示例用例中学到什么？</p>
+	<p>首先，我们建议对部署在网络边缘的AI模型使用最小的计算和内存占用。小的内存占用允许WASM AI模型更好地排列数据类型，从而减少内存负载开销。WASM从业者都知道，WASM的加速来自于JavaScript API和本地机器码之间的API的紧密耦合。因为WASM代码不需要推测数据类型，所以WASM的并行编译可以实现更好的优化。</p>
+	<p>此外，我们鼓励使用运行8位精度的AI模型来减少总体大小。这些8位AI模型易于针对目标硬件进行压缩和编译，从而大大减少承载模型进行推理的开销。此外，对于视频图像，可以省去将数字化的原始数据（例如，数字化并存储为整数的图像文件）转换为浮点值以供浮点AI模型使用的开销。</p>
+	<p>最后，我们建议对人工智能模型使用智能缓存，这样Workers就可以从根本上减少内存加载时间，并在运行时只专注于神经网络推理。同样，8位模型允许托管更多AI模型，并为推理做好准备。根据我们的探索结果，托管的小型AI模型可以在大约15毫秒的推理时间内提供服务，具有低延迟和本地处理般的特点，提供了非常引人注目的用户体验。与诸如Tensorflow.js的纯JS工具链相比，WASM API显着提高了性能。例如，对比WASM上189ms的大型AI模型的推理时间，我们观察到Tensorflow.js工作流的范围是1500ms，也即8倍的计算延迟。</p>
+	<h3 id="--1">解锁分布式边缘的未来</h3>
+	<p>分布式边缘网络通过优化WASM神经网络，可以使推理更接近用户，提供更接近数据源的新边缘AI服务。利用Latent AI技术来压缩和编译WASM神经网络，分布式边缘网络可以（1）托管更多模型，（2）提供较低的延迟响应，以及（3）降低功耗的同时提供更高效的计算。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/12/image-69.png" class="kg-image">
+		<figcaption>使用小型AI模型检测示例人员，10倍压缩至150KB</figcaption>
+	</figure>
+	<p>例如，想象一下，前面描述的小型AI模型可以区分人是否在视频源中。数字系统，如门铃和门口入口摄像头可以与Cloudflare Workers连接，以验证摄像头视场中是否有人。同样，其他AI服务也可以进行声音分析，以检查破窗和漏水。借助这些分布式AI服务，应用程序无需访问深云服务即可运行。此外，传感器平台可以采用超低成本，低功耗，并且尺寸非常紧凑的硬件。</p>
+	<p>应用程序开发人员现在可以通过神经网络训练、压缩和本地编译为WASM神经网络来提供人工智能服务。Latent AI开发人员工具可以压缩WASM神经网络并提供WASM运行时，从而为设备和基础架构边缘提供惊人的快速推理。有了规模和速度的优势，开发人员可以轻松地为他们的用户创建高性能的体验，无论他们身在何处，以及规模如何。更重要的是，我们可以在边缘上扩展企业应用程序，提供使用边缘网络的投资回报。</p>
+	<h3 id="-latent-ai">关于Latent AI</h3>
+	<p>Latent AI是SRI International的一个早期风险投资项目。我们的使命是赋能开发人员并改变我们构建边缘AI的思考方式。我们开发的软件工具旨在帮助公司将AI添加到边缘设备，并为用户提供新的智能IoT应用程序。获取有关LEIP SDK可用性的更多信息，请随时通过<a href="/cdn-cgi/l/email-protection#bad3d4dcd5fad6dbcedfd4cedbd394d9d5d7"><span class="__cf_email__" data-cfemail="e28b8c848da28e8396878c96838bcc818d8f">[email&nbsp;protected]</span></a>与我们联系或访问我们的<a href="https://latentai.com/" target="_blank">网站</a>。</p>
+	<p><a href="https://blog.cloudflare.com/tag/workers/">Cloudflare Workers</a> &nbsp;<a href="https://blog.cloudflare.com/tag/guest-post/">客座文章</a> &nbsp;<a href="https://blog.cloudflare.com/tag/ai/">AI</a> &nbsp;<a href="https://blog.cloudflare.com/tag/serverless/">无服务器</a></p>
+</div>

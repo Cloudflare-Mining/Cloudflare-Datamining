@@ -1,0 +1,30 @@
+<div class="post-content lh-copy gray1">
+	<p>几天前，谷歌<a href="https://support.google.com/a/answer/60217" target="_blank">宣布</a> “G Suite 旧版免费版” 的用户需要在 2022 年 5 月 1 日之前切换到付费版，以维持其服务和帐户的正常运行。因为这个原因，许多人员现在正在考虑替代方案。</p>
+	<p>G Suite 旧版的一个用例是处理自定义域的电子邮件。</p>
+	<p>9 月，在生日周期间，我们<a href="https://blog.cloudflare.com/zh-cn/introducing-email-routing-zh-cn/">宣布</a>了 Cloudflare 电子邮件路由。此服务允许您在 Cloudflare 已有的域之上创建任意数量的自定义电子邮件地址，并自动将传入流量转发到您希望的任何目标收件箱。</p>
+	<p>电子邮件路由被设计为隐私优先、安全、强大且非常易于使用。此外，重要的是，我们所有的客户都可以免费使用它。</p>
+	<p>封闭测试版使我们能够不断改进服务，使其更加强大，符合电子邮件的所有技术细微差别，并且可扩展。今天，我们很高兴地报告，我们有超过 20 万个区域在生产环境中测试电子邮件路由，并且我们开始了公测和全球可用性的倒计时。</p>
+	<p>使用电子邮件路由，您可以有效地开始在您的任何域中接收您想要的任意数量的自定义地址的电子邮件，并将邮件转发到任何现有的目标邮箱。我们将自动为您设置好一切，您今天可以在几分钟内免费运行它。</p>
+	<p>这是关于如何开始接收到 <strong>example.com </strong>的电子邮件、将它们转发到<strong><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a6d3d5c3d4c8c7cbc39795959593e6c1cbc7cfca88c5c9cb">[email&nbsp;protected]</a></strong> 的 Gmail（或任何其他电子邮件提供商）的分步教程。</p>
+	<h3 id="-cloudflare-gmail-"><strong>将 Cloudflare 电子邮件路由与 Gmail 结合使用</strong></h3>
+	<p>首先，登录您的 Cloudflare Dashboard 并选择您的 <strong>example.com </strong>区域。单击左侧导航面板中的“电子邮件（测试版）”，并请求加入测试版计划。</p>
+	<p>今天，仍然需要几天时间才能获得测试版的批准，但如果您迫不及待，<a href="https://discord.com/invite/cloudflaredev" target="_blank">请随时在 Discord 服务器</a>或<a href="https://community.cloudflare.com/new-topic?category=Feedback/Previews%20%26%20Betas&amp;tags=email" target="_blank">社区论坛上</a>联系我们。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/01/image2-25.png" class="kg-image"></figure>
+	<p>一旦您被邀请加入电子邮件路由，我们将带您进入我们的三步简单配置向导。第一步是定义自定义地址 <strong><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="aec3cbeecbd6cfc3dec2cb80cdc1c3">[email&nbsp;protected]</a> </strong>和目标地址 <strong><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="9ce9eff9eef2fdf1f9adafafafa9dcfbf1fdf5f0b2fff3f1">[email&nbsp;protected]</a>。</strong>不要太担心，您可以稍后修改或添加其他人。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/01/image5-17.png" class="kg-image"></figure>
+	<p>此步骤将触发向 <strong><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f0858395829e919d95c1c3c3c3c5b0979d91999cde939f9d">[email&nbsp;protected]</a> </strong>发送确认电子邮件，以便我们证明目标收件箱是您的。您需要打开 Gmail 并按验证链接。</p>
+	<p>然后，在最后一步，您需要配置您的区域 MX 和 SPF DNS 记录。我们会自动为您执行此操作。只需按 <strong>“自动添加记录”。</strong>如果您已经配置了 MX 或 SPF，我们将指导您解决我们发现的冲突并帮助您解决它们。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/01/image4-17.png" class="kg-image"></figure>
+	<p>就是这样，现在已配置电子邮件路由，您可以开始向<strong><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="8ce1e9cce9f4ede1fce0e9a2efe3e1">[email&nbsp;protected]</a> </strong>发送电子邮件并在 Gmail 中的 <strong><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="75000610071b1418104446464640351218141c195b161a18">[email&nbsp;protected]</a> </strong>处阅读它们。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/01/image4-17.png" class="kg-image"></figure>
+	<h3 id="gmail-"><strong>Gmail 地址协定</strong></h3>
+	<p>Gmail 和 G Suite（现为 Google Workspace）支持两种电子邮件地址约定，可帮助您整理邮件并打击垃圾邮件。</p>
+	<p>第一个是加号（“+”）。如果您在电子邮件地址后附加“+”号和任何单词组合，它仍会发送到您的收件箱。例如，您可以使用 <strong><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d4a1a7b1a6bab5b9b1e5e7e7e7e1ffb2bdbab5bab7b194b3b9b5bdb8fab7bbb9">[email&nbsp;protected]</a></strong>，它会发送到 <strong><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f98c8a9c8b9798949cc8cacacaccb99e94989095d79a9694">[email&nbsp;protected]</a></strong> 并自动标记为“财务”。然后，您可以使用它在 Gmail 中设置过滤器。</p>
+	<p>第二个是 Gmail 完全忽略地址中的点（“.”）。例如，向 <strong><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c4b1b7a1b6aaa5a9a1eaf5f7f7f7f184a3a9a5ada8eaa7aba9">[email&nbsp;protected]</a></strong>、<strong><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="4e3b3d2b3c60202f232b607f7d7d7d7b0e29232f2722602d2123">[email&nbsp;protected]</a> </strong>或<strong><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f4818791869a959991c5c7c7c7c1b49399959d98da979b99">[email&nbsp;protected]</a></strong> 发送电子邮件都是一样的。</p>
+	<p>如果您想在 Cloudflare 电子邮件路由中使用这些约定，您可以做到。启用 “Catch-all address” 功能并将没有配置其他规则的每个传入地址转发到您选择的已验证目标地址（本示例中为<strong> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a5d0d6c0d7cbc4c8c09496969690e5c2c8c4ccc98bc6cac8">[email&nbsp;protected]</a></strong>）。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/01/PastedGraphic-6.png" class="kg-image"></figure>
+	<h3 id="-"><strong>总结</strong></h3>
+	<p>这只是您今天可以使用电子邮件路由做什么的一个小例子。如果您正在为您的电子邮件寻找新家，我们希望它对您有所帮助。有关更多信息，请参阅我们的<a href="https://developers.cloudflare.com/email-routing/" target="_blank">文档页面</a>。</p>
+	<p>电子邮件需要更多创新。我们对电子邮件路由以及我们在路线图中的想法感到非常兴奋。期待在不久的将来我们的规则引擎中改进的指标和高级路由选项。</p>
+	<p>如果您迫不及待，请立即加入测试版并在我们的 <a href="https://discord.com/invite/cloudflaredev" target="_blank">Discord 服务器</a>或<a href="https://community.cloudflare.com/new-topic?category=Feedback/Previews%20%26%20Betas&amp;tags=email" target="_blank">社区论坛</a>中联系我们<a href="https://community.cloudflare.com/new-topic?category=Feedback/Previews%20%26%20Betas&amp;tags=email" target="_blank">； </a>在我们开放服务之前，我们将尽最大努力优先考虑社区请求。</p>
+</div>

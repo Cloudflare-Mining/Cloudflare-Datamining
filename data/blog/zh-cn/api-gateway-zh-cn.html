@@ -1,0 +1,80 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image5-4.png" class="kg-image" alt="Announcing the Cloudflare API Gateway"></figure>
+	<p>过去的十年来，互联网经历了一次结构性的转变。它过去是由静态网站组成的：带有文本、图像，偶尔嵌入视频。但是互联网的发展非常迅速。我们现在依赖于 API 驱动的应用程序来帮助生活的几乎每一个方面。我们不仅可以下载文件，还可以通过交换丰富的数据与应用程序<em>进行交互</em>。我们跟踪锻炼并将结果发送到云端。我们使用智能锁和各种物联网设备。我们和朋友在线互动。</p>
+	<p>这一切都非常美好，但在后端，复杂性出现了爆炸式增长。为什么呢？开发人员需要管理 API 以支持这些功能。他们需要监控和验证每一个请求。由于这些任务非常困难，它们通常被外包给某个 API 网关提供商。</p>
+	<p>不幸的是，今天的网关还有很多需要改进之处。首先：它们并不便宜。其次是性能影响。最后则是数据和隐私风险，因为<a href="https://blog.cloudflare.com/landscape-of-api-traffic/">超过 50% 的流量</a>达到 API（并被认为通过第三方网关发送）。真是一团糟。</p>
+	<p>今天我们隆重推出 Cloudflare API Gateway。<strong>我们将以很小比例的成本取代您的现有网关。</strong>我们的解决方案使用 <a href="https://workers.cloudflare.com/" target="_blank">Workers</a>、<a href="https://www.cloudflare.com/products/bot-management/" target="_blank">Bot Management</a>、 <a href="https://www.cloudflare.com/products/zero-trust/access/" target="_blank">Access</a>和 <a href="https://developers.cloudflare.com/rules/transform/" target="_blank">Transform Rules</a> 背后的技术，提供市场上最先进的 API 工具集。</p>
+	<h2 id="-api-gateway-">什么是 API Gateway？</h2>
+	<p>简而言之，这是一个功能包，完成所有 API 相关工作。我们将有关工作分成三个类别：</p>
+	<p><strong>安全</strong><br>我们已经在博客中介绍过这些产品，例如 <a href="https://developers.cloudflare.com/api-shield/products/api-discovery/" target="_blank">Discovery（发现）</a>、 <a href="https://developers.cloudflare.com/api-shield/products/schema-validation/" target="_blank">Schema Validation（模式验证）</a>、 <a href="https://developers.cloudflare.com/api-shield/products/volumetric-abuse-detection/" target="_blank">Abuse Detection（滥用检测）</a>等工具。我们花费了大量时间来将我们的安全专长应用到 API 领域。</p>
+	<p><strong>管理与监控</strong><br>这些是使 API 有序运行的基本工具。例如：分析、路由和验证。我们已经能通过 <a href="https://www.cloudflare.com/products/zero-trust/access/" target="_blank">Cloudflare Access</a> 等现有产品中做这些事情，更多功能正在开发中。</p>
+	<p><strong>其他</strong><br>这些是使一切正常运行的小（而关键）项目。Cloudflare 已经提供默认运行的 SSL/TLS 终止、负载平衡和代理服务。</p>
+	<p>今天的博文详细说明每一个功能。我们很高兴能宣布，以上<em>所有</em>安全功能现已正式发布。现在让我们从这些功能开始讨论。</p>
+	<h2 id="discovery">Discovery</h2>
+	<p>我们的客户渴望保护他们的 API。不幸的是，他们并没有始终将这些端点文档化——甚至更糟的是，他们<em>认为</em>一切都已经文档化，但是在不知不觉中丢失或修改了端点。这些隐藏的端点有时被称为<a href="https://www.bearer.com/resources/shadow-apis-detect-business-risk" target="_blank">影子 API</a>。我们需要从一张详尽（且准确的）API 表面图开始我们的旅程。</p>
+	<p>这就是 Discovery 的作用所在。进入 Cloudflare 仪表板，选择 <strong>安全</strong> 选项卡，然后选择 “API Shield”。激活该功能，并告诉我们如何识别您的 API 流量。大多用户提供一个标头（今天推出），但我们也能使用请求正文或 cookie（即将推出）。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/03/image7.jpg" class="kg-image" alt="The Cloudflare API Shield tab, showing various endpoints that have been discovered and a set of recommended rate limiting thresholds.">
+		<figcaption>Cloudflare API Shield 选项卡，, 显示已发现的各种端点和一组推荐的速率限制阈值。</figcaption>
+	</figure>
+	<p>我们为您的 API 端点提供一份详细的清单。Cloudflare 列出每一个方法、路径和其他元数据，以帮助您了解自己的表面大小。我们甚至能<em>折叠</em>包含变量（例如 <em>/account/<strong>217</strong></em>）的端点来使其普遍适用（例如 <em>/account/<strong>{var1}</strong></em>）。</p>
+	<p>Discovery 是针对熵的一个强有力对策。我们的客户常常预期会找到 30 个端点，但意外地发现实际拥有 <em>100</em> 个活动端点。</p>
+	<h2 id="schema-validation">Schema Validation</h2>
+	<p>也许您已经有一个针对 API 端点的模式（schema ）。模式就像一个模板：提供预计 API 请求将包含的路径、方法和其他数据。很多开发人员参照 <a href="https://swagger.io/specification/" target="_blank">OpenAPI 标准</a>来生成（和维护）模式。</p>
+	<p>为了加强您的安全，我们可以根据这个模式来<em>验证</em>传入的流量。这是阻止基本攻击的好方法。Cloudflare 将拒绝不符合的请求，丢弃忽略要求的无意义流量。只需将您的模式上传到仪表板，选择要采取的操作，并部署：<br></p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/03/image9.jpg" class="kg-image" alt="A step in the schema upload process, after a schema has already been provided. Cloudflare lists out each endpoint with path, query, header, cookies, and body provided as metadata.">
+		<figcaption>模式上传中已经提供模式后的一步。Cloudflare 列出每个端点的路径、查询、标头、cookie 和作为元数据提供的正文。</figcaption>
+	</figure>
+	<p>Schema Validation 已经为一些世界最大的加密网站、快递服务和支付平台审查流量。该功能现已推出，我们将在不久后增加正文验证。</p>
+	<h2 id="abuse-detection">Abuse Detection</h2>
+	<p>一种安全的方法将同时使用 Schema Validation <em>和</em> Discovery，确保流量匹配预期格式。但成功通过的滥用流量如何处理呢？</p>
+	<p>随着 Cloudflare 发现新的 API 端点，我们建议为每一个<em>设定速率限制</em>。这就是滥用检测的作用，它为更复杂的安全打开了大门。</p>
+	<p>考虑一个返回天气更新的 API 端点。具体而言，如果未来一小时有可能下雨，该端点将返回“yes”，否则返回“no”。我们的算法可能会检测到一般用户平均每 10 分钟请求一次该数据。但是，一小组爬虫每 10 分钟发出 37 次请求。Cloudflare 自动推荐一个介于两者的阈值，旨在为正常用户提供一些余地。这将能防止滥用爬取服务过于频繁地获取天气数据。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image3-18.png" class="kg-image"></figure>
+	<p>我们提供一个选项，创建一个规则来使用我们新推出的<a href="https://blog.cloudflare.com/advanced-rate-limiting/">高级速率限制</a>引擎。您可以使用 cookie、标头等来调优阈值。我们使用 Abuse Detection 保护 <a href="https://api.cloudflare.com/" target="_blank">api.cloudflare.com</a> 已有数月时间。</p>
+	<p>这个功能中我们最喜欢的部分：它依赖于我们为 <a href="https://www.cloudflare.com/products/bot-management/" target="_blank">Bot Management </a>使用的机器学习。这是我们的产品相互补充（并从中受益）的另一种方式。</p>
+	<p>Abuse Detection 现已可用。如果您我们用于标记异常请求流的 <em>Sequential</em> Abuse Detection（连续滥用检测） 感兴趣，请查看我们<a href="https://blog.cloudflare.com/api-abuse-detection/">此前的博文</a>。该功能正处于提前体验阶段，我们将在正式发布前继续进行调优。</p>
+	<h2 id="mtls">mTLS</h2>
+	<p>双向 TLS（mTLS）将安全带到一个新的水平。您可以使用证书来验证到达 API 的传入流量——对移动和物联网设备而言特别有用。此外，这是一个优秀的积极安全模型，能够（并应该）对大多设备生态系统采用。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image1-48.png" class="kg-image"></figure>
+	<p>我们还是以上面的天气 API 为例。也许这个服务包含第二个端点，从某个温度计<em>接收</em>当前温度。但有一个问题：任何人都能发出虚假的请求，向该端点提供不准确的读数。为预防这个问题，使用 mTLS 在<em>合法的</em>温度计上安装一个客户端证书，然后让 Cloudflare 验证该证书。任何其他请求都会被拒绝。问题迎刃而解！</p>
+	<p>我们已经向每一位 Cloudflare 客户提供一套免费证书。我们将继续这样做，但今天开始，API Gateway 客户默认获得<em>无限的</em>证书。</p>
+	<h2 id="-">身份验证</h2>
+	<p>很多现代 API 要求身份验证。事实上，身份验证解锁了各种各样的功能——实现会话（登录）、个人数据交换和基础设施效率。当然，Cloudflare 还在经验证的流量通过我们的网络时提供保护。</p>
+	<p>但通过 API Gateway，Cloudflare 在经验证流量方面发挥更积极的作用，帮助<strong>颁发</strong>和<strong>验证</strong>以下项目：</p>
+	<ul>
+		<li>API 密钥</li>
+		<li>JSON web 令牌（JWT）</li>
+		<li>OAuth 2.0 令牌</li>
+	</ul>
+	<p>通过使用访问控制列表，我们帮助您管理具有不同权限的用户组。这一点很重要，因为您的当前提供商正在引入大量的延迟和不必要的数据交换。如果某个请求必须前往 Cloudflare 生态系统<em>以外的</em>某个地方，它的传输距离就会不必要地加大。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/03/image2-39.png" class="kg-image" alt="Additional latency incurred by sending requests out of the Cloudflare network for authentication.">
+		<figcaption>将请求发送到 Cloudflare 网络以外进行身份验证增加的延迟。</figcaption>
+	</figure>
+	<p>Cloudflare 能以很小比例的时间在我们的全球网络上进行身份验证并处理请求。这种技术难以实施，但我们感觉其非常重要而无法忽视。我们是如何这么迅速地做到的呢？<a href="https://www.cloudflare.com/products/zero-trust/access/" target="_blank">Cloudflare Access</a>。我们利用与身份提供商合作的经验，再次将其移植到 API 领域。我们的网关包括无限的身份验证和令牌交换。这些功能即将推出。</p>
+	<h2 id="--1">路由与管理</h2>
+	<p>我们简单谈一下<a href="https://www.cloudflare.com/learning/serverless/glossary/serverless-microservice/" target="_blank">微服务</a>。现代应用程序都是庞然大物，因此开发人员将其分成较小的部分，称之为“微服务”。</p>
+	<p>例如一个帮助您预订酒店房间的应用。它可能会使用一个微服务来获得可用的日期，另一个来获取价格，还有另一个来获取房间类型。也许每个微服务由不同的团队管理，但它们都需要从单一公共入口提供：</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/03/image8.png" class="kg-image" alt="Various steps in an architecture that relies on microservices. A visitor makes a request to a hotel API, which is then routed towards available dates, prices, or room types.">
+		<figcaption>依赖于微服务的架构中的各个步骤。访问者向酒店 API 发出请求，后者将请求路由到可用的日期、价格或房间类型。</figcaption>
+	</figure>
+	<p>这个单一入口——传统上由 API 网关管理——负责将每个请求<em>路由</em> 到正确的微服务。多年来，我们的客户一直为这项服务单独付费。以后再也不必了。我们打造了 <a href="https://blog.cloudflare.com/introducing-transform-rules-with-url-rewriting-at-the-edge/">Transform Rules</a> 产品，在我们的边缘进行动态重写和重路由。它易于配置、部署快速，并原生内置在 API Gateway 中。Cloudflare 现可成为您的单一入口。</p>
+	<p>那只是冰山一角。通过与我们的 <a href="https://workers.cloudflare.com/" target="_blank">Workers</a> 产品集成，API Gateway 实际上可以<em>取代</em>您的微服务。如何做到？考虑写一个执行某个操作的 Worker；也许返回酒店价格，该数据通过 <a href="https://blog.cloudflare.com/durable-objects-ga/">Durable Objects</a> 储存在我们的网络上。通过 API Gateway，请求到达我们的网络，使用 Transform Rules 路由到正确的微服务，然后完全通过 Workers 服务（依然在我们的网络上！）。必要时，这些 Workers 可能会联系您的源服务器以获取更多信息。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/03/image4-3.png" class="kg-image" alt="Cloudflare’s simplified API architecture. With authentication, routing, management, and storage handled at the edge, several hops are eliminated.">
+		<figcaption>Cloudflare 经过简化的 API 架构。身份验证、路由、管理和储存全部在边缘处理，消除了若干跃点。</figcaption>
+	</figure>
+	<p>相比微服务替代产品，Workers 更快、更便宜、更简单。这些集成即将推出。</p>
+	<h2 id="api-analytics">API Analytics</h2>
+	<p>客户告诉我们，<em>看到</em> API 流量有时比对其采取行动更加重要。事实上，这个趋势并不局限于 API。我们今天发布了<a href="https://blog.cloudflare.com/envoy-media-machine-learning-bot-management/">另一篇博文</a>，探讨一位客户如何使用我们的机器人情报来被动地记录有关威胁的信息。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image6.png" class="kg-image"></figure>
+	<p>借助 API Analytics，我们可以利用我们的其他产品来实时显示有用的数据。您可以查看受欢迎的端点，按照机器学习驱动的洞察进行过滤，查看滥用阈值的直方图，并捕捉趋势。</p>
+	<p>API Analytics 即将推出。同时，您也将能导出自定义报告并在组织内分享洞察。</p>
+	<h2 id="--2">日志记录、配额管理等</h2>
+	<p><em>我们所有</em>的现有功能，如缓存、负载平衡和日志集成，将原生与 API Gateway 协同工作。这些不应该被当成原始的网关功能而被忽视；它们都是至关重要的。而且，由于 Cloudflare 在同一地方执行所有这些功能，您将能坐享延迟效益。</p>
+	<p>我们已经在扩展 Enterprise 功能以执行实时日志记录。如果您选择在 Cloudflare 网络上执行身份验证，您将能查看详细的日志，显示访问某个 API 的每个用户。同样，我们跟踪每一个请求的全生命周期，从被接收、验证、路由到响应。一切都被记录下来。</p>
+	<p>最后，我们正在打造配额管理（Quota Management），它用于计算较长时间段（如一个月）内的 API 请求，并允许您管理用户的阈值。我们还发布了<a href="https://blog.cloudflare.com/advanced-rate-limiting/">高级速率限制</a>，帮助处理更复杂的用例（包括适用于 GraphQL 的正文检查）。</p>
+	<h2 id="--3">总结</h2>
+	<p>所有的安全功能——Discovery, Schema Validation, Abuse Detection 和 mTLS——现已可用！我们将这些功能称为 <a href="https://developers.cloudflare.com/api-shield/" target="_blank">API Shield</a>，因为它们组成保护其余网关功能的盾。Enterprise 客户都能立即向其帐户团队申请开通。<br>API Gateway 的很多其他功能目前处于提前体验阶段。根据 Gartner® 表示，“到 2025年，由于 API 的爆炸式增长超过 API 管理工具的能力，将有不到 50% 的企业 API 得到管理。” 我们的目标是提供一个经济的网关来对抗这一趋势。如果您想测试特定功能，请告知您的账户团队，我们将尽快为您开通。</p>
+	<!--kg-card-begin: markdown-->
+	<p><small>来源：Gartner，“2022 年预测：API 需求改善安全与管理（Predicts 2022: APIs Demand Improved Security and Management）”，Shameen Pillai, Jeremy D'Hoinne, John Santoro, Mark O'Neill, Sham Gill, 2021 年 12 月 6 日。GARTNER 是 Gartner, Inc. 和/或其附属公司在美国和国际上的注册商标和服务标志，在此经许可使用。保留一切权利。</small></p>
+	<!--kg-card-end: markdown-->
+</div>

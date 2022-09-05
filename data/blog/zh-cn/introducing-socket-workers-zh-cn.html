@@ -1,0 +1,98 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/unnamed--1--4.png" class="kg-image" alt="Making connections with TCP and Sockets for Workers"></figure>
+	<p>今天，我们很高兴地宣布，我们正在开发 API 和基础结构以在 Cloudflare Workers 中支持更多基于 TCP、UDP 和 QUIC 的协议。一旦发布，这些新功能有可能实现使用非 HTTP 套接字与 Worker 或 Durable Object 互相连接，就像我们如今使用 HTTP 和 WebSockets 一样简单。</p>
+	<p>目前，<a href="https://workers.cloudflare.com/?&amp;_bt=521144407143&amp;_bk=&amp;_bm=b&amp;_bn=g&amp;_bg=123914288844&amp;_placement=&amp;_target=&amp;_loc=1013686&amp;_dv=c&amp;awsearchcpc=1&amp;gclid=Cj0KCQiAsqOMBhDFARIsAFBTN3eXuRcLLiS_c0CtV8uR9xVVQhymoIrK5uHE_yReRLtVkHkekfCWprUaAtoyEALw_wcB&amp;gclsrc=aw.ds" target="_blank">Cloudflare Workers</a> 支持使用标准化的 <a href="https://developers.cloudflare.com/workers/runtime-apis/fetch" target="_blank">fetch</a> 和 <a href="https://developers.cloudflare.com/workers/runtime-apis/websockets" target="_blank">WebSocket API</a> 打开 HTTP 和 WebSocket 连接的功能。通过在内部进行一些更改使其可在 Workers 中运作，我们制作了一个<a href="https://blog.cloudflare.com/zh-cn/relational-database-connectors-zh-cn/">示例</a>，使用现有的驱动程序（在本示例中，是基于 Deno 的 <a href="https://deno.land/x/postgres@v0.13.0" target="_blank">Postgres 客户端驱动程序</a>）通过 WebSocket（通过安全的 <a href="https://www.cloudflare.com/zh-cn/products/tunnel/?__cf_chl_jschl_tk__=hSSZUgE_wLre_ZMmmjp7BHSk0FzjuImB3NQjIKUhD0Q-1640589499-0-gaNycGzNDyU" target="_blank">Cloudflare Tunnel</a>）与远程 Postgres 服务器通信。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-typescript">import { Client } from './driver/postgres/postgres'
+
+export default {
+  async fetch(request: Request, env, ctx: ExecutionContext) {
+    try {
+      const client = new Client({
+        user: 'postgres',
+        database: 'postgres',
+        hostname: 'https://db.example.com',
+        password: '',
+        port: 5432,
+      })
+      await client.connect()
+      const result = await client.queryArray('SELECT * FROM users WHERE uuid=1;')
+      ctx.waitUntil(client.end())
+      return new Response(JSON.stringify(result.rows[0]))
+    } catch (e) {
+      return new Response((e as Error).message)
+    }
+  },
+}
+
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>此示例的工作方式是，使用标准 fetch 和 WebSockets API 替换使用 Deno 特定 TCP 套接字 API 的 Postgres 客户端驱动程序的位数。然后，我们建立了与一个远程 Cloudflare Tunnel 守护程序的 WebSocket 连接（该守护程序在 Postgres 服务器附近运行），从而建立有效的 TCP-over-WebSockets。<br></p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/11/image1-17.png" class="kg-image" alt="Connecting to a backend data center via a Cloudflare Tunnel"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://lh3.googleusercontent.com/spcEympnkPORaGL_-u4cP5pahHP9SCPv_4J1l0rp9pC_7hN-Aj0fnzSjl-ZhXW9CAfYJJ_An-bwFwYBeDJ23614MJQvduha6rGCOymUxxeBW0b-Bum4gZRYn2h8K6XlgxL4Jnw9R" class="kg-image" alt="Connecting to a backend data center via a Cloudflare Tunnel"></figure>
+	<p>尽管在无需对 Cloudflare Workers 运行时进行任何更改的情况下，我们能够构建出该示例并和 Postgres 服务器有效且高效地通信这一事实令人印象深刻，但这一方法存在许多限制。第一点是，该解决方案需要额外的基础结构来建立和维护 WebSocket 通道，在本示例中，是在 Postgres 服务器附近运行的 Cloudflare Tunnel 守护程序的实例。当然，我们很乐意向客户提供该守护程序，但如果根本不需要该组件，那自然更好。第二点是，通过 WebSockets 隧道传输 TCP，其本身是通过 HTTP over TCP 进行隧道传输，这并非最优解。这可以运作，但我们可以做得更好。</p>
+	<h3 id="-cloudflare-workers-"><strong>从 Cloudflare Workers 进行连接</strong></h3>
+	<p>目前，没有标准 API 用于 JavaScript 中的套接字连接。我们想要改变此状况。</p>
+	<p>如果您之前使用过 Node.js，那么您极有可能熟悉 <a href="https://nodejs.org/dist/latest-v17.x/docs/api/net.html#class-netsocket" target="_blank">net.Socket</a> 和 <a href="https://nodejs.org/dist/latest-v17.x/docs/api/tls.html#class-tlstlssocket" target="_blank">net.TLSSocket</a> 对象。如果您使用 Deno，那么您可能知道他们最近引入了 <a href="https://doc.deno.land/builtin/stable#Deno.connect" target="_blank">Deno.connect()</a> 和 <a href="https://doc.deno.land/builtin/stable#Deno.connectTls" target="_blank">Deno.connectTLS()</a> API。当您查看这些 API，立即就能发现它们彼此之间的差别有多大，尽管它们都是用来做完全相同的事情。</p>
+	<p>当我们决定添加从 Workers 中打开和使用套接字连接的功能时，我们也一致认为，我们的确没有兴趣开发另一个特定于平台且与其他平台所提供之 API 不同的非标准 API。因此，我们将邀请扩展到需要套接字功能的所有 JavaScript 运行时平台，以合作开发新的（且最终标准化的）API，无论您选择在哪个运行时上进行开发，该 API 都可以运作。</p>
+	<p>下面是我们构想用于从单个 TCP 客户端连接打开和读取内容的大致示例：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">const socket = new Socket({
+  remote: { address: '123.123.123.123', port: 1234 },
+})
+for await (const chunk of socket.readable)
+  console.log(chunk)
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>或者，此示例使用 UDP 发送一个简单的“hello world”数据包：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">const socket = new Socket({
+  type: 'udp',
+  remote: { address: '123.123.123.123', port: 1234 },
+});
+const enc = new TextEncoder();
+const writer = socket.writable.getWriter();
+await writer.write(enc.encode('hello world'));
+await writer.close();
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>该 API 将设计得足够通用，能够与客户端和服务器端合作；可用于 TCP、UDP 和 QUIC；具有或不具有 TLS，且不会依赖于特定于任何单一 JavaScript 运行时的任何机制。它将在现有广泛支持的 Web 平台标准基础上构建，例如 <a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget" target="_blank">EventTarget</a>、<a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream" target="_blank">ReadableStream</a>、<a href="https://developer.mozilla.org/en-US/docs/Web/API/WritableStream" target="_blank">WritableStream</a>、<a href="https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal" target="_blank">AbortSignal</a> 和 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises" target="_blank">promises</a>。原本熟悉 fetch() API、service workers 和使用 async/await 的 promises 的开发人员都会熟悉该新 API。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>interface Socket : EventTarget {
+  constructor(object SocketInit);
+
+  Promise&lt;undefined&gt; update(object SocketInit);
+
+  readonly attribute ReadableStream readable;
+  readonly attribute WritableStream writable;
+  
+  readonly attribute Promise&lt;undefined&gt; ready;
+  readonly attribute Promise&lt;undefined&gt; closed;
+
+  Promise&lt;undefined&gt; abort(optional any reason);
+  readonly attribute AbortSignal signal;
+ 
+  readonly attribute SocketStats stats;
+  readonly attribute SocketInfo info;
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>这目前还只是一个提议，在 Workers 中实际交付该功能时，详细信息很可能会与上述示例有所不同。我们希望其他平台能够加入我们，共同开发和支持这一新 API，以便开发人员拥有一个一致的构建基础，而不论其在哪里运行其代码。</p>
+	<h3 id="-socket-workers"><strong>引入 Socket Workers</strong></h3>
+	<p>打开套接字<em>客户端</em>连接的功能只是这个构想的一半。</p>
+	<p>当我们第一次谈论添加这些功能时，就提出了一个明显的问题：使用非 HTTP 协议连接<em>到</em> Workers 会怎么样？如果不只是能够将一个 Worker 连接到一些其他后端数据库，还可以在边缘、Worker 内部实施整个数据库，并让非 HTTP 客户端连接到它，会怎么样？对于这种情况，如果我们可以在 Workers 中实施一个 SMTP 服务器，会怎么样？或者是一个 MQTT 信息队列？一个完整的 VoIP 平台？或者是实施数据包筛选器、转换、检查器或协议转码器？</p>
+	<p>Workers 十分强大，绝不仅仅限于 HTTP 和 WebSockets，因此我们很快将引入 Socket Workers——也就是说，可以使用原始 TCP、UDP 或 QUIC 协议直接连接到 Workers，而无需使用 HTTP。</p>
+	<p>这种新的 Workers 功能会是什么样？许多细节仍在进行开发，但想法是部署一个 Worker 脚本，采用与如今“fetch”事件差不多的运作方式了解和响应“connect”事件。重要的是，这将建立在开发用于客户端连接的相同通用套接字 API 上：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">addEventListener('connect', (event) =&gt; {
+  const enc = new TextEncoder();
+  const writer = event.socket.writable.getWriter();
+  writer.write(enc.encode('Hello World'));
+  writer.close();
+});
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h3 id="-"><strong>后续步骤（以及行动呼吁）</strong></h3>
+	<p>用于 JavaScript 和 Socket Workers 的新套接字 API 正在积极开发中，最初的重点是提供更好更有效的方法让 Workers 连接到后端的数据库。您可以在<a href="https://www.cloudflare.com/zh-cn/database-connectors-early-access/" target="_blank">此处</a>注册以加入访问 Database Connectors 和 Socket Workers 的等待名单。我们很期待与早期用户以及我们的技术合作伙伴合作，以开发、优化和测试这些新功能。</p>
+	<p>一旦发布后，我们希望 Socket Workers 能够为可部署到 Cloudflare 网络边缘的智能分布式应用程序类型敞开大门，很期待看到大家使用这些功能构建应用程序的成果。</p>
+</div>

@@ -1,0 +1,60 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/08/image10.png" class="kg-image"></figure>
+	<p>本日Cloudflareは、お客様が悪意のある証明書を見つけるのに役立つ、Certificate Transparency Monitoring（証明書の透明性監視、CTモニタリング）（インターンとしての私の夏のプロジェクト）を開始します。CTモニタリングにオプトインしている場合そのユーザーのドメインに対して証明書が発行されると、Cloudflareからメールを送信します。当社ですべての公開ログをクロールして、迅速に証明書を見つけます。CTモニタリングは現在パブリックベータ版で利用可能で、Cloudflare ダッシュボードの<a href="https://dash.cloudflare.com/?zone=crypto" target="_blank">Cryptoタブ</a>で有効にすることができます。</p>
+	<h2 id="-"><strong>背景</strong></h2>
+	<p>ほとんどのWebブラウザには、アドレスバーにロックアイコンが表示されます。このアイコンは実際はボタンで、あなたがセキュリティに敏感な人または何でもクリックしてみたい人（私は両方です）なら、たぶん以前にクリックしてみたことがあるでしょう。Google Chromeでこの操作を行うと、次のように表示されます。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/08/image7.png" class="kg-image"></figure>
+	<p>これは良いお知らせに見えます。Cloudflareブログは有効な証明書を提示しており、利用者のデータの機密は守られ、すべてがセキュアです。しかし本当のところは何を意味するのでしょうか？</p>
+	<h2 id="--1"><strong>証明書</strong></h2>
+	<p>お使いのブラウザは、セキュリティ維持のために、見えないところでなんらかの動作をしています。Webサイト（cloudflare.comなど）を要求すると、WebサイトはIDを証明する証明書を提示します。この証明書は承認印に似ていて、接続がセキュアであることを示しています。つまり、証明書は、コンテンツがユーザーへの転送中に傍受または変更されていないことを証明しています。改変されたCloudflareサイトは、特に外観が本物のCloudflareサイトと同じに見える場合には問題になります。Webサイトとその所有者に関する情報を証明書に含めることで、私たちは保護されます。</p>
+	<p>インターネット上では世間のような信用の仕組みは機能しないため、このような証明書を利用しています。ご自身のWebサイトの証明書が必要な場合は、認証機関（CA）に申請するか、Cloudflareにサインアップしていただければ当社が代理で行います。CAは、一般の公証人が法律文書にスタンプを押すのと同様に、証明書を発行します。CAでユーザーの身元を確認し、データを確認し、CAの特別な立場を利用してデジタル証明書を付与するのです。一般的なCAには、DigiCert、Let’s Encrypt、Sectigoなどがあります。このシステムは、詐欺師を一貫してチェックしながら、ドメイン所有者と訪問者間の信頼を促進しているという点では良く機能しています。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/08/image12.png" class="kg-image"></figure>
+	<p>しかし残念ながら、完璧なものはありません。</p>
+	<p>CAも間違いを犯すことがあります。まれなケースですが、無謀な動きをすることがあるのです。その時、（本物のように見える）<em>不正な</em>証明書が発行されます。CAがうっかりWebサイトの証明書を発行し、その証明書をあなたが要求して<em>いなかった</em>場合は問題です。証明書を受け取ったユーザーは、次の行為を行うことができます。</p>
+	<ol>
+		<li>あなたのサイトへの訪問者からログイン資格情報を盗む。</li>
+		<li>異なるコンテンツを提供して、あなたの通常のサービスを中断する。</li>
+	</ol>
+	<p><a href="https://slate.com/technology/2016/12/how-the-2011-hack-of-diginotar-changed-the-internets-infrastructure.html" target="_blank">このような攻撃</a>は<a href="https://slate.com/technology/2016/12/how-the-2011-hack-of-diginotar-changed-the-internets-infrastructure.html" target="_blank"><em>実際に</em>発生します</a>ので、証明書については注意を払うに越したことはありません。よくあるのが、ドメイン所有者が証明書の追跡に失敗して、予期しない証明書を見つけた際にパニックになってしまうことです。このような状況によりシステム全体が台無しになるのを防ぐ方法が必要です。</p>
+	<h2 id="--2"><strong>証明書の透明性</strong></h2>
+	<p>証明書の透明性（Certificate Transparency：CT）について説明します。CTは、すべての証明書を公開して監査しやすいようにすることで、先に説明したような問題を解決します。CAが証明書を発行する際、CAは少なくとも2つの「パブリックログ」に証明書を送信する必要があります。 つまり、ログは全体として、インターネット上のすべての信頼できる証明書に関する重要なデータを含んでいます。いくつかの企業がCTログを提供しており、Googleも独自のCTログを開始しています。<a href="https://blog.cloudflare.com/introducing-certificate-transparency-and-nimbus/">当社はCloudflareのNimbusログを昨年発表しました</a>。</p>
+	<p>ログは本当に大きなもので、数億の証明書レコードを保持しているものも多いです。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/08/image1.png" class="kg-image"></figure>
+	<p>ログインフラストラクチャは、ブラウザでのWebサイトのID検証に役立っています。SafariやGoogle Chromeでcloudflare.comをリクエストする際、ブラウザは実際はCloudflareの証明書がCTログに登録されていることを要求しています。ログに証明書が見つからなければ、アドレスバーにロックアイコンは表示されません。代わりに、アクセスしようとしているWebサイトがセキュアでないことがブラウザに表示されます。「NOT SECURE」と記されたウェブサイトにアクセスしようと思いますか？おそらくそうは思わないでしょう。</p>
+	<p>CTログを監査して不正な証明書を報告するシステムがあります。したがって、ブラウザがログでも信頼されている有効な証明書を見つければ、すべてが安全です。</p>
+	<h2 id="--3"><strong>本日の発表内容</strong></h2>
+	<p>CloudflareはCT業界をリードしてきました。当社はNimbusに加え、<a href="https://blog.cloudflare.com/a-tour-through-merkle-town-cloudflares-ct-ecosystem-dashboard/">Merkle Townと呼ぶCTダッシュボードを開始し、その開発過程について説明しました。</a> Cloudflareは本日、証明書の透明性監視のパブリックベータ版をリリースします。</p>
+	<p>CTモニタリングにオプトインしている場合そのユーザーのドメインに対して証明書が発行されると、Cloudflareからメールを送信します。アラートが表示されても慌てないでください。当社はドメイン一致が検出された際に、慎重には慎重を期するという意味でアラートを送信しています。不審な証明書に気付かれる場合もあるでしょう。発行者を確認できないとか、サブドメインが自身が提供しているものではない（例：slowinternet.cloudflare.com）場合も考えられます。アラートは即座に送信されるため、なにか問題が疑われる場合にはCAに連絡を取ることができます。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/08/image6.png" class="kg-image"></figure>
+	<p>ここで疑問が出てきます。サービスで既にパブリックログを監査済みなら、なぜアラートが必要なのか？自動的にエラーを検出できないのか？それができないのです。監査は完璧ではありません。証明書の監査の最適任者は、<em>ユーザー自身</em>なのです。ユーザーは自分のWebbサイトを知っています。ユーザーは自分の個人情報を知っています。Cloudflareからは、必要な証明書をわかりやすく提供します。</p>
+	<p>Cloudflareダッシュボード上でCT Monitoringを有効にしてください。<a href="https://dash.cloudflare.com/?zone=crypto" target="_blank">Cryptoタブ</a>に“Certificate Transparency Monitoring”カードが表示されています。CTで公開しすぎた場合には、この機能をいつでも無効にすることができます。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/08/ct-free.png" class="kg-image"></figure>
+	<p>BusinessプランまたはEnterpriseプランをご利用の場合は、アラート通知対象者をお知らせください。アラートメールは、ゾーンの所有者（無料およびProのお客様向け）ではなく最大10のEメールアドレスに送信することができます。これは大規模なチームでご利用の場合の、通知にかかる負担を低減するためのサービスです。送信先EメールアドレスはCloudflareアカウントに紐付ける必要はなく、いつでも手作業での追加または削除が可能です。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/08/ct-enterprise.png" class="kg-image"></figure>
+	<h2 id="--4"><strong>実際の動作</strong></h2>
+	<p>暗号化チームとSSLチームは懸命な努力によりこれを実現させました。先に述べた優秀なツールをもとにしてさらに発展させました。</p>
+	<ul>
+		<li><a href="https://ct.cloudflare.com/" target="_blank">Markle Town</a>はCTデータのハブデス。当社で信頼できる<em>すべての</em>証明書を処理し、関連する統計データを当社Webbサイトに掲載します。つまり、インターネット上で発行された1つひとつの証明書はCloudflareを経由し、すべてのデータは公開となります（ここではプライバシーの不安はなし）。</li>
+		<li>Cloudflare Nimbusは、完全に当社独自のCTログです。4億以上の証明書が含まれています。</li>
+	</ul>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/08/image11.png" class="kg-image">
+		<figcaption>メモ：Cloudflare、Google、DigiCertは、唯一のCTログプロバイダではありません。</figcaption>
+	</figure>
+	<p>発行手順は次のようになります。ある任意の時点で、お客様（または詐欺師）がお客様のWebサイトの証明書を要求します。証明機関（CA）が要求を承認し、証明書を発行します。24時間以内に、CAはこの証明書をCTログ一式に向けて送信します。ここからがCloudflareの担当です。Cloudflareは「クローラー」と呼ばれる内部プロセスを使用して、何百万個の証明書レコードを調べます。Merkle TownはCTログを監視するためのクローラーをディスパッチし、新規証明書を確認します。クローラーは、新しい証明書を見つけると、Merkle Townを通じて証明書全体を取得します。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/08/image4.png" class="kg-image"></figure>
+	<p>Merkle Townで証明書を処理する場合は、監視対象ドメインのリストとの照合も行います。CTモニタリングを有効にしている場合は、すぐにアラートが送信されます。これは、Merkle Townの既存のインフラストラクチャなしでは機能しません。また、クローラーは信じられないほど高速です。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/08/image13.png" class="kg-image"></figure>
+	<h2 id="--5"><strong>証明書アラートを受け取った場合、どうしたらよいですか。</strong></h2>
+	<p>いい質問です。ほとんどの場合、証明書のアラートはルーチンです。証明書は定期的に有効期限が切れて更新されるため、アラートメールの送信は正常な流れです。すべてが正しい（発行元、ドメイン名など）場合は、そのままアラートメールをゴミ箱に捨ててもかまいません。</p>
+	<p>まれにですが、疑わしいメールが届く場合もあります。<a href="https://support.cloudflare.com/hc/en-us/articles/360031379012" target="_blank">そのような場合の詳細サポートをこちらに掲載しています</a>。基本的なプロトコルは以下のとおりです。</p>
+	<ol>
+		<li>CAに問い合わせる（CAは電子メールに"Issuer"として記載されています）。</li>
+		<li>証明書を疑わしいと思う<em>理由</em>を説明する。</li>
+		<li>CAは証明書を失効させます（本当に悪意のある場合）。</li>
+	</ol>
+	<p>Cloudflareには<a href="https://support.cloudflare.com/hc/en-us/articles/200172476" target="_blank">こちら</a>にフレンドリーなサポートチームも用意しています。CloudflareはCAに登録しておらず、証明書を失効させることはできませんが、証明書管理の知識が豊富なサポートチームがお客様をしっかりサポートします。</p>
+	<h2 id="--6"><strong>将来の見通し</strong></h2>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/08/image2.png" class="kg-image"></figure>
+	<p>証明書の透過性の話題については、定期的にCloudflareブログに投稿しています。その理由は、<a href="http://gs.statcounter.com/" target="_blank">ブラウザ市場を支配する</a>ChromeとSafariで要求されていることと、<a href="https://github.com/chromium/ct-policy" target="_blank">インターネットセキュリティで先例となる</a>ためです。しかしもっと重要なのは、CTは悪意ある証明書が攻撃に利用される<em>前に</em>特定するのに役立つことです。そのため当社では、自社の証明書検知方法の高機能化および改善を進めていく予定です。</p>
+	<p>迷うことはありません。今すぐ<a href="https://dash.cloudflare.com/?zone=crypto" target="_blank">Certificate Transparency Monitoring</a>を有効にしてください。</p>
+</div>

@@ -1,0 +1,63 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image2-28.png" class="kg-image" alt="How to customize your layer 3/4 DDoS protection settings"></figure>
+	<p><a href="https://blog.cloudflare.com/http-ddos-managed-rules/">今年初めにお客様にHTTPレイヤーのDDoS攻撃対策設定の制御を</a>提供した後、お客様の制御をパケットレイヤーにまで拡張できることを嬉しく思います。これらの新しいコントロールを使用し、<a href="https://www.cloudflare.com/ja-jp/magic-transit/" target="_blank">Magic Transit</a>と<a href="https://www.cloudflare.com/ja-jp/products/cloudflare-spectrum/" target="_blank">Spectrum</a>サービスを利用するCloudflare Enterpriseのお客様は、現在CloudFlareダッシュボードまたはCloudFlareのAPIを介して、直接自分のL3/4のDDoS攻撃対策設定をチューニングして微調整することができます。</p>
+	<p>この新機能により、お客様は2つの主要なDDoSルールセットを制御することができます。</p>
+	<ol>
+		<li><strong>ネットワークレイヤーDDoS攻撃対策ルールセット</strong>ーこのルールセットには、UDP flood、SYN-ACKリフレクション攻撃、SYNフラッド、DNSフラッドなどの<a href="https://www.cloudflare.com/en-gb/learning/ddos/glossary/open-systems-interconnection-model-osi/" target="_blank">OSI参照モデル</a>のレイヤー3/4のDDoS攻撃を検出し、軽減するためのルールが含まれています。このルールセットは、SpectrumとMagic TransitのEnterpriseプランのお客様が利用できます。</li>
+		<li><strong>アドバンストTCP攻撃対策ルールセット</strong>ーこのルールセットには、偽装ACKフラッド、ランダムSYNフラッド、分散SYN-ACKリフレクション攻撃などの高度な州外TCP攻撃を検出および軽減するためのルールが含まれています。このルールセットは、Magic Transitのお客様のみご利用いただけます。</li>
+	</ol>
+	<p>詳細については、<a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets" target="_blank">『DDoS Managed Ruleset開発者向けドキュメント』</a>をご覧ください。いくつかのガイドをまとめましたので、ご参考になれば幸いです。</p>
+	<ol>
+		<li><a href="https://developers.cloudflare.com/ddos-protection/get-started" target="_blank">Cloudflare DDoS攻撃対策機能のオンボーディングと使用開始</a></li>
+		<li><a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/adjust-rules/false-negative" target="_blank">偽陰性への対応</a></li>
+		<li><a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/adjust-rules/false-positive" target="_blank">誤検知への対応</a></li>
+		<li><a href="https://developers.cloudflare.com/ddos-protection/best-practices/third-party" target="_blank">VPN、VoIP、その他のサードパーティサービスを使用する際のベストプラクティス</a></li>
+		<li><a href="https://developers.cloudflare.com/ddos-protection/reference/simulate-ddos-attack" target="_blank">DDoS攻撃のシミュレーション方法</a></li>
+	</ol>
+	<h2 id="cloudflare-ddos-"><strong>CloudflareのDDoS保護</strong></h2>
+	<p><a href="https://www.cloudflare.com/ja-jp/learning/ddos/what-is-a-ddos-attack/" target="_blank"> &nbsp;分散サービス妨害（DDoS）攻撃</a>は、被害者のインターネットサービスを妨害することを目的としたサイバー攻撃の一種です。DDoS攻撃には多くの種類があり、インターネットのさまざまなレイヤーで攻撃者が発生させることができます。たとえば、<a href="https://www.cloudflare.com/learning/ddos/http-flood-ddos-attack/" target="_blank">HTTPフラッド</a> があります。この攻撃は、モバイルアプリやWebサイトを動かしているHTTPアプリケーションサーバーを混乱させることを目的としています。また、<a href="https://www.cloudflare.com/en-gb/learning/ddos/udp-flood-ddos-attack/" target="_blank">UDPフラッド</a>もあります。このタイプの攻撃は、HTTPサーバーを混乱させるために使用されることがありますが、非HTTPアプリケーションを混乱させる試みにも使用されることがあります。このようなアプリケーションには、TCPベースやUDPベースのアプリケーション、 <a href="https://blog.cloudflare.com/update-on-voip-attacks/">VoIPサービス</a>などのネットワークサービス、ゲームサーバー、暗号通貨、その他があります。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image5-12.png" class="kg-image" alt="An illustration of a DDoS attack"></figure>
+	<p>DDoS攻撃から組織を守るために、当社は自律的に動作するソフトウェア定義システムを構築し、運用しています。このシステムは、当社のネットワーク全体でDDoS攻撃を自動的に検出し、軽減します。当社の自律型DDoS攻撃対策システムとその仕組みについては、<a href="https://blog.cloudflare.com/ja-jp/deep-dive-cloudflare-autonomous-edge-ddos-protection-ja-jp/">技術に関する詳細なブログの記事</a>で詳しくご紹介しています。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/12/unnamed-33.png" class="kg-image" alt="A diagram of Cloudflare’s DDoS protection system"></figure>
+	<h2 id="-ddos-"><strong>定額制、無制限のDDoS攻撃対策</strong></h2>
+	<p>私たちが提供する保護レベルは、<a href="https://blog.cloudflare.com/unmetered-mitigation/"> アンメタードで無制限</a> ― 攻撃の規模、攻撃回数、攻撃時間によって制限されるものではありません。最近、特に重要なのは、最近見てきたように、攻撃がより大規模になり、より頻繁に行われるようになっていることです。その結果、第3四半期には、ネットワークレイヤーへの攻撃が前四半期に比べて44%も増加しました。さらに、つい最近、当社のシステムは、 DDoS攻撃を自動的に検出し、軽減しました。<a href="https://blog.cloudflare.com/cloudflare-blocks-an-almost-2-tbps-multi-vector-ddos-attack/">この攻撃は、ピークで2 Tbpsをわずかに下回り</a>、これまで見た中で最大でした。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/12/image4.jpg" class="kg-image" alt="Graph of an almost 2 Tbps DDoS attack launched by a Mirari-variant botnet">
+		<figcaption>Miraiボットネットが約2TbpsのDDoS攻撃を実施</figcaption>
+	</figure>
+	<p><a href="https://radar.cloudflare.com/notebooks/ddos-2021-q3" target="_blank">最近のDDosの傾向については</a>、こちらをご参照ください。</p>
+	<h2 id="-"><strong>管理されたルールセット</strong></h2>
+	<p>当社の自律型DDoS攻撃対策システムは、インテリジェントなルールのグループ（ルールセット）であると考えることができます。HTTP DDoS攻撃対策ルール、ネットワークレイヤーDDoS攻撃対策ルール、アドバンストTCP攻撃対策ルールのルールセットが存在します。このブログ記事では、後者の2つのルールセットについて説明します。前者については、ブログ記事<a href="https://blog.cloudflare.com/http-ddos-managed-rules/">HTTP DDoS攻撃対策設定をカスタマイズする方法</a>で既に取り上げています。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/12/image7-6.png" class="kg-image" alt="A screenshot of the DDoS Protection Managed Rulesets in the Cloudflare dashboard">
+		<figcaption>Cloudflare L3/4 DDoSマネージドルール</figcaption>
+	</figure>
+	<p><strong>ネットワークレイヤーDDoS攻撃対策ルールセット</strong>では、各ルールは条件付きフィンガープリント、動的フィールドマスキング、活性化閾値、および軽減アクションのユニークなセットを持っています。これらのルールは（Cloudflareが）管理しています。つまり、各ルールの詳細は、当社のDDoSエキスパートが社内で管理しています。新しいルールを導入する前に、まず厳格なテストを行い、軽減の精度と効率性を当社のグローバルネットワーク全体で最適化します。</p>
+	<p><strong>アドバンストTCP攻撃対策ルールセット</strong>では、TCPフローの状態を特定するために、新しいTCP状態分類エンジンを使用しています。このルールセットを動かすエンジンは、<em>flowtrackd</em>です。詳しくは、<a href="https://blog.cloudflare.com/announcing-flowtrackd/">発表のブログ記事</a>でご覧いただけます。このシステムのユニークな特徴のひとつは、イングレス（受信）パケットフローのみを使用して動作することができることです。このシステムは、イングレストラフィックのみを認識し、その正当性に基づいてパケットをドロップ、チャレンジ、または許可することができます。たとえば、開いているTCP接続に対応しないACKパケットのフラッドはドロップされます。</p>
+	<h2 id="--1"><strong>攻撃はどのように検知され、軽減されるのか</strong></h2>
+	<h3 id="--2"><strong>サンプリング</strong></h3>
+	<p>最初は、トラフィックは<a href="https://www.cloudflare.com/en-gb/learning/cdn/glossary/anycast-network/" target="_blank">BGP Anycast</a> を通じてインターネットを経由し、最も近いCloudflareエッジデータセンターまでルーティングされます。トラフィックが当社のデータセンターに到達すると、当社のDDoSシステムはそれを非同期にサンプリングし、遅延ペナルティを発生させずにトラフィックのアウトオブパスの分析を可能にします。アドバンストTCP攻撃対策ルールセットはパケットフロー全体を表示する必要があるため、Magic Transitのお客様のみインラインに配置されます。これもまた、遅延ペナルティーは発生しません。</p>
+	<h3 id="--3"><strong>分析と軽減</strong></h3>
+	<p><strong>アドバンストTCP攻撃対策ルールセット</strong>の解析は、わかりやすく効率的です。このシステムは、TCPフローを修飾し、その状態を追跡します。このようにして、正当な接続とその状態に対応しないパケットは、ドロップされるか、チャレンジされます。軽減は、お客様が定義できる特定の閾値を超えた場合にのみ作動します。</p>
+	<p><strong>ネットワークレイヤーDDoS攻撃対策ルールセット</strong>の解析は、データストリーミングアルゴリズムを使用して行われます。パケットサンプルは条件付きフィンガープリントと比較され、動的マスキングに基づいて複数のリアルタイムの署名が作成されます。別のパケットがシグネチャの 1 つに一致するたびに、カウンタが増加します。あるシグネチャが活性化閾値に達すると、軽減ルールがコンパイルされ、インラインでプッシュされます。軽減ルールには、リアルタイムシグネチャと軽減アクション（ドロップなど）が含 まれます。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image9-1.png" class="kg-image"></figure>
+	<h3 id="--4"><strong>​​​​例</strong></h3>
+	<p>簡単な例として、1つのフィンガープリントには、送信元IP、送信元ポート、送信先IP、およびTCPシーケンス番号というフィールドを含めることができます。固定シーケンス番号によるパケットフラッド攻撃はフィンガープリントにマッチし、カウンターは活性化閾値を超えるまでパケットマッチごとに増加します。その後、軽減アクションが適用されます。</p>
+	<p>しかし、送信元IPアドレスとポートがランダム化されている<a href="https://www.cloudflare.com/ja-jp/learning/ddos/glossary/ip-spoofing/" target="_blank">なりすまし</a>攻撃の場合、送信元IPとポートの組み合わせごとに複数のシグネチャが存在することになります。十分にランダム化/分散化された攻撃を想定した場合、活性化閾値を満たせず、軽減が発生しません。このため、当社は動的マスキングを使用しており、シグネチャの強力な指標とならない可能性のあるフィールドが無視されます。送信元IPとポートをマスキング（無視）することで、攻撃がどの程度ランダム化/分散化されていても、一意のTCPシーケンス番号に基づいてすべての攻撃パケットを照合することができます。</p>
+	<h3 id="ddos-"><strong>DDoS攻撃対策の設定を行う</strong></h3>
+	<p>現時点では、ネットワークレイヤーのDDoS攻撃対策ルールのうち、最もカスタマイズされやすいと判断された一握りのルールのみを公開しています。今後、より多くのルールを定期的に公開する予定です。これは、お客様のトラフィックに影響を与えるものではありません。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/12/image8-4.png" class="kg-image" alt="Overriding the sensitivity level and mitigation action">
+		<figcaption>感度レベルおよび軽減措置の無効化</figcaption>
+	</figure>
+	<p><strong>ネットワークレイヤーのDDoS攻撃対策ルールセットの場合は</strong>、利用可能なルールごとに、<a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/override-parameters#sensitivity-level" target="_blank">感度レベル</a>（活性化閾値を）を無効にしたり、<a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/override-parameters#action" target="_blank">軽減アクション</a>をカスタマイズしたり、<a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/fields" target="_blank">式フィルタ</a>を適用して様々なパケットフィールドに基づいたDDoS攻撃対策システムからのトラフィックを含める/除外することができます。複数のオーバーライドを作成して、ネットワークとさまざまなアプリケーションの保護をカスタマイズできます。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/12/image3-22.png" class="kg-image" alt="Configuring expression fields for the DDoS Managed Rules to match on">
+		<figcaption>DDoSマネージドルールのマッチング対象となる式フィールドの設定</figcaption>
+	</figure>
+	<p>従来は、ルールのカスタマイズを行うために、当社のサポートチャネルを経由する必要がありました。場合によっては、解決に時間がかかることもありました。本日の発表により、お客様自身で自律型エッジシステムの設定を調整し、微調整することで、特定のネットワークニーズに対する保護の精度を迅速に向上させることができるようになりました。</p>
+	<p><strong>アドバンストTCP攻撃対策ルールセット</strong> については、今のところ、ダッシュボードで全体として有効または無効にする機能のみを公開しています。IPプレフィックスごとにルールセットを有効または無効にするには、<a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/configure-api" target="_blank">API</a>を使用する必要があります。現時点では、Cloudflareへの最初のオンボーディング時に、Cloudflareチームはまずあなたのためにポリシーを作成する必要があります。オンボーディングの後、感度の閾値の変更、モニターモードの使用、フィルター式の追加などが必要な場合は、Cloudflareサポートに連絡する必要があります。今後のリリースでは、これもダッシュボードとAPIを通じて、サポートチームの助けを必要とせずに利用できるようになる予定です。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image1-45.png" class="kg-image"></figure>
+	<h2 id="--5"><strong>既存のカスタマイズ</strong></h2>
+	<p>以前Cloudflareサポートに連絡してカスタマイズを適用した場合、カスタマイズは維持されていますので、ダッシュボードにアクセスしてネットワークレイヤーDDoS攻撃対策ルールセットの設定を確認し、必要であれば変更することが可能です。アドバンストTCP攻撃対策のカスタマイズを変更する必要がある場合は、Cloudflareサポートにご連絡ください。</p>
+	<p>これまでのところ、この保護をカスタマイズする必要がなかった場合は、ユーザー側でアクションを実行する必要はありませんでした。ただし、DDoS攻撃対策設定を表示およびカスタマイズする場合は、<a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/configure-dashboard" target="_blank">このダッシュボードガイド</a>に従うか、<a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/configure-api" target="_blank">APIドキュメント</a>を確認してDDoS攻撃対策定をプログラムで構成してください。</p>
+	<h2 id="--6"><strong>より良いインターネット構築をお手伝い</strong></h2>
+	<p>Cloudflareでは、より良いインターネットの構築を支援するというミッションの下、すべての業務を行っています。DDoSチームのビジョンはこのミッションから導き出されたものです。私たちの目標は、DDoS攻撃の影響を過去のものにすることです。私たちの最初のステップは、攻撃を独自に検出して軽減する自律的なシステムを構築することでした。それは完了しました。第二のステップは、これらのシステム上のコントロールプレーンをお客様に公開することでした（本日発表）。これも完了しました。次のステップは、オートパイロット機能によって設定を完全に自動化することです。つまり、お客様の特定のトラフィックパターンを学習して、DDoS攻撃対策設定を自動的に最適化するようにシステムを訓練することです。お客様のインターネットプロパティを安全、可用性、パフォーマンス高く維持するために、さらに多くの改善、自動化、新機能を期待することができます。</p>
+	<p>まだCloudflareを使用していませんか？<a href="https://dash.cloudflare.com/sign-up" target="_blank">今すぐ始めてください。</a><br></p>
+</div>

@@ -1,0 +1,41 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/1-2.png" class="kg-image"></figure>
+	<p>每一项成功技术的兴起都会有一个契机。某一时刻发生一件起催化作用的事，通常是外部的，使它从一个有前途的好点子变成我们生活中一种不可或缺的事物。近期最能体现这点的例子或许就是 2007 年 iPhone 问世促使了云的诞生。智能手机为小型开发商开创了庞大的目标市场；即便是大型开发商，他们的客户群也有了爆炸式增长，惟有使用公共云基础设施才能应对这样的增长。这两个群体都希望能够专注于开发优秀的应用程序，不必为其基础设施而操心。</p>
+	<p>去年 COVID-19 爆发期间，实时通信迎来类似的机遇。沟通交流是所有组织的命脉。2020 年之前，沟通交流主要发生在位于世界各地的办公楼的会议室里。而在去年三月，情况出现翻天覆地的变化。会议室突然变得空空如也。往后推进 18 个月，这种工作方式的巨变依然在延续。</p>
+	<p>毋庸置疑，许多组织离开不 Slack、Zoom 和 Teams 这样的实时协作工具，尽管如此，我们认为如今存在的那些通信工具仍然只是冰山一角。环顾四周，一种感觉萦绕在心头，我们即将迎来一场创新风暴，促使组织能够在远程环境（或者至少是混合环境）中自由通信。</p>
+	<p>有鉴于此，我们今天隆重推出 Cloudflare 的实时通信平台。这是一套全新的产品，旨在帮助您构建下一代实时交互式应用程序。不论是一对一视频通话、群组语音聊天还是视频会议，实时通信的需求只会与日俱增。</p>
+	<p>运行可靠并可扩展的实时通信平台需要建设一个规模庞大的网络。您需要在多个地区<a href="https://blog.cloudflare.com/250-cities-is-just-the-start/">让您的网络边缘与用户相隔毫秒级的距离</a>，确保每个人连接时始终拥有低延迟、低丢包率和低抖动的体验。<a href="https://blog.cloudflare.com/cloudflare-backbone-internet-fast-lane/">设立一个主干网络来疏导</a>互联网流量拥堵。<a href="https://blog.cloudflare.com/designing-edge-servers-with-arm-cpus/">基础设施要能高效扩展</a>，以同时为数千参与者服务。然后，您还需要部署媒体服务器，编写业务逻辑，管理多个客户端平台，并且让所有一切顺畅运作。我们一定能够帮助您解决这些需求。</p>
+	<p>今天，我们将推出名为 WebRTC Components 的产品，您将能够利用 Cloudflare 的边缘网络来改善基于 WebRTC 的现有视频和音频应用程序的连接。这包括扩展到数千（乃至数万）参与者，利用我们的 <a href="https://blog.cloudflare.com/zh-cn/cloudflare-thwarts-17-2m-rps-ddos-attack-the-largest-ever-reported-zh-cn/">DDoS 缓解</a>保护您的服务免受攻击，以及实施<a href="https://developers.cloudflare.com/spectrum/reference/configuration-options#ip-access-rules" target="_blank">基于 IP 和 ASN 的访问策略</a>，全部只需点击几下便可。</p>
+	<h3 id="-">实时为何称为“实时”？</h3>
+	<p>实时通常指的是 500 毫秒内发生的通信：也就是说，速度堪比数据包遍历连接全球的光纤网络。2021 年，大多数实时音频和视频应用程序使用 <a href="https://webrtcforthecurious.com/docs/01-what-why-and-how/" target="_blank">WebRTC</a>，这一套开放标准和浏览器 API 定义了如何通过 UDP 连接、保护和传输媒体和数据。其设计宗旨是带来更出色、更灵活的双向通信，胜过我们目前主要依赖的基于浏览器型协议 HTTP。而且，由于 WebRTC 支持位于浏览器内，用户不需要自定义客户端，开发人员也不需要构建这些客户端：唯一需要的是浏览器。</p>
+	<p>重要的是，我们发现随着组织改变工作方式（<a href="https://blog.cloudflare.com/the-future-of-work-at-cloudflare/">我们也不例外</a>），对跨越多个时区和地区进行可靠实时通信的需求有了巨大增长。</p>
+	<p>那么，在实践中实时的重要性体现在哪里？</p>
+	<ul>
+		<li>一对一通话（例如 FaceTime）。我们已经习惯于通过传统电话线进行几乎瞬时的通信，没有理由倒退一步。</li>
+		<li>群组通话和会议（Zoom 或 Google Meet）。即使只有几秒钟的延迟，也会导致互相抢话的问题。</li>
+		<li>社交视频、游戏和体育。您不希望因为串流掉帧或需要缓冲，而比实况落后 10 秒或错过比赛中的关键时刻。</li>
+		<li>交互式应用程序：浏览器内的 3D 建模、手机上的增强现实，甚至是游戏直播，全都需要实时进行。</li>
+	</ul>
+	<p>我们认为，对于实时应用程序，如今接触的都只是皮毛。部分原因在于，将实时应用程序扩展到数千用户也需要全新的基础设施范式，对网络的要求也高于传统基于 HTTP 的通信。</p>
+	<h3 id="-webrtc-components">隆重推出：WebRTC Components</h3>
+	<p>我们今天启动 <em>WebRTC Components</em> 的封闭测试。运行集中式 WebRTC TURN 服务器的团队可以利用它将负载转移到 Cloudflare 的分布式全球网络中，从而提升可靠性，扩展到更多用户，并且减少花费在基础设施管理上的时间。</p>
+	<p><a href="https://webrtcforthecurious.com/docs/03-connecting/#turn" target="_blank">TURN</a> 全称 Traversal Using Relays Around NAT，旨在解决 WebRTC 点对点连接源服务器的实际缺点。WebRTC 曾经是（目前依然是！）一种点对点技术，但在现实中，由于运营商级 NAT、企业级 NAT 和防火墙的原因，建立可靠点对点连接依然并非易事。另外，每一个对等点都受到本身网络连接性的桎梏，在传统的<a href="https://webrtcforthecurious.com/docs/08-applied-webrtc/#full-mesh" target="_blank">点对点网络</a>中，参与者会很快发现自己的网络连接达到饱和，因为他们必须要从每个其他点接收数据。在包含多种设备（移动或桌面设备）和网络（从高延迟 3G 到高速光纤）的混合环境中，扩展到稍多一些对等点也会变得异常困难。</p>
+	<p>将运行 TURN 服务的位置从自己的基础设施转移到网络边缘，可以带来更优质的连接。Cloudflare 运行一个覆盖 <a href="https://blog.cloudflare.com/250-cities-is-just-the-start/">250 多个城市</a>的 Anycast 网络，这意味着我们与您的用户距离非常近，不管他们身在何方。也就是说，当用户连接 Cloudflare 的 TURN 服务时，他们可以与 Cloudflare 网络建立非常良好的连接。服务部署就位后，我们就能利用自己的网络和<a href="https://blog.cloudflare.com/250-cities-is-just-the-start/">专用主干网</a>为您提供超凡的连接性能，全程贯通至通话的另一方。</p>
+	<p>但甚至更好的是：不用再担忧规模。众所周知，扩展 WebRTC 基础设施并非易事：您需要确保在适当位置上拥有恰当的容量。Cloudflare 的 TURN 服务可以自动扩展，当您想要更多端点时，只需调用一个 API 便可。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/2-1.png" class="kg-image" alt="用户尝试通过集中式基础设施利用 WebRTC 在公共互联网上启动媒体会话。"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/3-1.png" class="kg-image" alt="用户通过 Cloudflare 的分布式全球边缘网络进行连接。"></figure>
+	<p>显然，WebRTC Components 是在 Cloudflare 网络基础上构建的，可受益于后者 100 Tbps 网络提供的 DDoS 保护。从现在开始，您只需调用几个 API，就能将可扩展并且安全的生产级 WebRTC 中继部署到全球各地。</p>
+	<h3 id="--1">以开发人员为先的实时平台</h3>
+	<p>不过，正如 Cloudflare 常说的那样：我们才刚刚开始。若要为一对一和小规模群组通话构建实时服务，托管的可扩展 TURN 基础设施是一个关键组成部分，特别是对于一贯自行管理基础设施的团队而言。不过，当您开始添加更多参与者时，事情会迅速变得更加复杂。</p>
+	<p>不论是管理每个客户端用于收发数据以确保通话品质的数据流（WebRTC 语言中的“通道”）的质量，还是管理用于决定谁能在大型活动中发言或广播的权限系统，以及/或者构建在媒体体验基础上支持聊天和互动的信号基础设施，有一点非常明确：许多问题有待解决。 </p>
+	<p>有鉴于此，透露一下我们的开发方向:</p>
+	<ul>
+		<li>以开发人员为先的 API，抽离了对管理和配置低级基础设施、身份验证、授权和参与者权限的需求。从参与者、聊天室和频道角度来看，不再需要了解 ICE、对等连接和媒体通道的细枝末节。</li>
+		<li>与 <a href="https://www.cloudflare.com/zh-cn/teams/access/" target="_blank">Cloudflare for Teams</a> 集成以支持组织访问策略：非常适用于目前公司需要以远程方式举行员工大会的现状。</li>
+		<li>轻松连接任何输入和输出源，包括广播到传统的 HTTP 串流客户端、通过 <a href="https://blog.cloudflare.com/stream-live/">Stream Live</a> 录制以供按需回放，以及利用 <a href="https://blog.cloudflare.com/restream-with-stream-connect/">Stream Connect</a> 或未来的协议（如 <a href="https://datatracker.ietf.org/doc/html/draft-murillo-whip-02" target="_blank">WHIP</a>）从 RTMP 来源摄取视频等。</li>
+		<li>通过 <a href="https://workers.cloudflare.com/" target="_blank">Cloudflare Workers</a> 嵌入无服务器功能，例如对参与者事件（如加入或离开）触发 Workers，以及利用 <a href="https://blog.cloudflare.com/zh-cn/introducing-workers-durable-objects-zh-cn/">Durable Objects</a> 和 WebSockets 等构建有状态聊天和协作工具。</li>
+	</ul>
+	<p>…… 这仅仅是开始。</p>
+	<p>我们也在寻找胸怀抱负并希望在我们的 RTC 平台建设中发挥作用工程师。如果你是工程师，并对构建下一代实时、交互式应用程序感兴趣，欢迎<a href="https://boards.greenhouse.io/cloudflare/jobs/3523616?gh_jid=3523616&amp;gh_src=9b769b781us" target="_blank">加入</a><a href="https://boards.greenhouse.io/cloudflare/jobs/3523626?gh_jid=3523626&amp;gh_src=4bdb03661us" target="_blank">我们</a>！</p>
+	<p>如果您有兴趣与我们一起帮助加强整个世界的联系，并且正在努力将现有一对一实时视频和音频平台扩展到数百或数千并发用户以上规模，欢迎您<a href="https://docs.google.com/forms/d/e/1FAIpQLSeGvMJPTmsdWXq1rSCGHzszce5RdM5iYHxsQQfPk8Kt5rkaKQ/viewform?usp=sf_link" target="_blank">报名</a>参加 WebRTC Components 封闭测试。我们尤其有兴趣与那些刚踏上实时通信之旅并希望与我们同步发展的团队开展合作。</p>
+</div>

@@ -1,0 +1,80 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image1-32.png" class="kg-image" alt="Security for SaaS Providers"></figure>
+	<p>Alcuni dei più grandi fornitori di Software-as-a-Service (SaaS) utilizzano Cloudflare come infrastruttura sottostante per fornire ai propri clienti tempi di caricamento rapidi, ridondanza senza precedenti e la massima sicurezza tutto attraverso il nostro <a href="https://blog.cloudflare.com/cloudflare-for-saas/">Cloudflare per SaaS</a>. Oggi siamo lieti di offrire ai nostri provider SaaS nuovi strumenti che li aiuteranno a migliorare la sicurezza delle applicazioni dei loro clienti. </p>
+	<p>Per i nostri clienti Enterprise, siamo lieti di annunciare WAF per SaaS: la possibilità per i provider SaaS di creare e distribuire facilmente diversi set di regole WAF per i propri clienti. Ciò offre ai provider SaaS la possibilità di segmentare i clienti in diversi gruppi in base ai loro requisiti di sicurezza. </p>
+	<p>Per gli sviluppatori che stanno avviando la loro applicazione, siamo lieti di annunciare un livello gratuito di Cloudflare per SaaS per i piani Free, Pro e Biz che offre ai nostri clienti 100 nomi host personalizzati gratuiti per il provisioning e il test sul loro account. In aggiunta a ciò, vogliamo rendere più facile per gli sviluppatori il ridimensionamento delle loro applicazioni, quindi siamo felici di annunciare che stiamo abbassando il prezzo del nostro nome host personalizzato da \$ 2 a \$ 0,10 al mese. </p>
+	<p>Ma non è tutto! Noi di Cloudflare crediamo che la sicurezza dovrebbe essere disponibile per tutti. Ecco perché siamo entusiasti di estendere una nuova selezione di <a href="https://blog.cloudflare.com/it-it/waf-for-everyone-it-it/">regole WAF ai clienti del piano Free</a>, dando a tutti i clienti la possibilità di proteggere sia le loro applicazioni che quelle dei loro clienti.</p>
+	<h2 id="l-infrastruttura-saas-a-disposizione-di-tutti">L'infrastruttura SaaS a disposizione di tutti</h2>
+	<p>In Cloudflare, siamo orgogliosi del nostro livello gratuito che offre a qualsiasi cliente la possibilità di utilizzare la nostra rete per rimanere al sicuro e online. Oggi estendiamo tale supporto ai clienti che desiderano creare una nuova offerta SaaS, offrendo loro un livello gratuito di Cloudflare per SaaS che consente loro di integrare gratuitamente 100 nomi host personalizzati. I 100 nomi host personalizzati verranno assegnati automaticamente ai nuovi clienti Cloudflare per SaaS. Oltre a ciò, stiamo anche abbassando il prezzo del nome host personalizzato da \$ 2 a \$ 0,10 al mese, offrendo ai provider SaaS la possibilità di integrare e scalare la propria applicazione. I clienti Cloudflare per SaaS esistenti vedranno il prezzo del nome host personalizzato aggiornato già nel successivo ciclo di fatturazione. </p>
+	<p>Cloudflare per SaaS ha cominciato come prodotto di emissione di certificati TLS per provider SaaS. Oggi aiuta i nostri clienti a fare un ulteriore passo avanti nel mantenere i loro clienti al sicuro.</p>
+	<h2 id="presentazione-di-waf-per-saas">Presentazione di WAF per SaaS</h2>
+	<p>I provider SaaS possono avere basi di clienti diverse, dai negozi per le famiglie alle banche affermate. Indipendentemente dalla tipologia di cliente, è importante che come provider SaaS tu sia in grado di estendere la migliore protezione per i tuoi clienti, a prescindere dalle loro dimensioni. </p>
+	<p>In Cloudflare, abbiamo trascorso anni a creare il miglior Web Application Firewall per i nostri clienti. Dalle regole gestite che offrono protezioni avanzate dalla vulnerabilità zero-day alle regole OWASP che bloccano le tecniche di attacco più diffuse, abbiamo fornito ai nostri clienti gli strumenti migliori per proteggersi. Ora, vogliamo fornire gli stessi strumenti ai nostri provider SaaS che hanno la responsabilità di mantenere la loro base di clienti sicura e protetta. </p>
+	<p>Uno dei vantaggi di Cloudflare per SaaS è che i provider SaaS possono configurare regole e impostazioni di sicurezza nella loro zona SaaS che i loro clienti ereditano automaticamente. Ma una sola soluzione non va bene per tutti, motivo per cui ora possiamo offrire ai clienti Enterprise la possibilità di creare vari set di regole WAF che possono poi essere estese come pacchetti di sicurezza diversi ai loro clienti, offrendo agli utenti finali diversi livelli di protezione a seconda delle loro necessità.</p>
+	<h2 id="introduzione">Introduzione</h2>
+	<p>WAF per SaaS può essere configurato facilmente. Di seguito è riportato un esempio che mostra come configurare diversi bucket di regole WAF per i vari clienti. </p>
+	<p>Non c'è limite al numero di set di regole che possono essere creati, quindi sentiti libero di creare più configurazioni per i tuoi clienti o di implementare un set di regole diverso per ogni cliente: scegli il metodo che è più adatto a te! </p>
+	<h2 id="esempio-end-to-end">Esempio end-to-end</h2>
+	<h3 id="fase-1-definizione-del-nome-host-personalizzato">Fase 1: Definizione del nome host personalizzato</h3>
+	<p>I clienti Cloudflare per SaaS definiscono i domini dei propri clienti creando nomi host personalizzati. I nomi host personalizzati indicano quali domini devono essere instradati all'origine del provider SaaS. I nomi host personalizzati possono definire domini specifici, come <code>example.com</code>, oppure possono utilizzare un carattere jolly, come <code>*.example.com</code> che consente l'instradamento di tutti i sottodomini in example.com al servizio SaaS. WAF per SaaS supporta entrambi i tipi di nomi host personalizzati, in modo che i provider SaaS abbiano flessibilità nella scelta dell'ambito della loro protezione.</p>
+	<p>Il primo passo consiste nel creare un nome host personalizzato per definire il dominio del tuo cliente. Ciò può essere fatto tramite il dashboard o l'API. </p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>curl -X POST "https://api.cloudflare.com/client/v4/zones/{zone:id}/custom_hostnames" \
+     -H "X-Auth-Email: {email}" -H "X-Auth-Key: {key}"\
+     -H "Content-Type: application/json" \
+     --data '{
+
+"Hostname":{“example.com”},
+"Ssl":{wildcard: true}
+}'
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h3 id="fase-2-associazione-dei-metadati-personalizzati-a-un-nome-host-personalizzato">Fase 2: Associazione dei metadati personalizzati a un nome host personalizzato</h3>
+	<p>Successivamente, è necessario creare un'associazione tra i nomi host personalizzati (il dominio del cliente) e il set di regole del firewall che vorresti allegare. </p>
+	<p>Questo viene fatto associando un blob JSON a un nome host personalizzato. Il nostro prodotto, <a href="https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-metadata/" target="_blank">Custom Metadata</a> consente ai clienti di completare facilmente questa operazione tramite un'API. </p>
+	<p>Nell'esempio seguente, un blob JSON con due campi ("customer_id" e "security_level") verrà associato a ogni richiesta per <code>*.example.com</code> e <code>example.com</code>.</p>
+	<p>Non esiste uno schema predeterminato per i metadati personalizzati. I nomi e la struttura dei campi sono completamente personalizzabili in base alle esigenze dei nostri clienti. In questo esempio abbiamo scelto il tag "security_level" a cui ci aspettiamo di assegnare tre valori (basso, medio o alto). Questi valori, a loro volta, attiveranno tre diversi set di regole.</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>curl -sXPATCH "https://api.cloudflare.com/client/v4/zones/{zone:id}/custom_hostnames/{custom_hostname:id}"\
+    -H "X-Auth-Email: {email}" -H "X-Auth-Key: {key}"\
+    -H "Content-Type: application/json"\
+    -d '{
+"Custom_metadata":{
+"customer_id":"12345",
+“security_level”: “low”
+}
+}'
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h3 id="fase-3-attivazione-dei-prodotti-di-sicurezza-in-base-ai-tag">Fase 3: Attivazione dei prodotti di sicurezza in base ai tag</h3>
+	<p>Infine, puoi attivare una regola basata sul nome host personalizzato. Il campo dei metadati personalizzati, ad esempio "security_level" è disponibile nel motore del set di regole in cui viene eseguito il WAF. Nel nostro esempio, "security_level" può essere utilizzato per attivare diverse configurazioni di prodotti come WAF, Firewall Rules, Advanced Rate Limiting e Transform Rules.</p>
+	<p>Le regole possono essere create tramite il dashboard o tramite l'API, come mostrato di seguito. Qui, una regola di limitazione della velocità viene attivata sul traffico con "security_level" impostato su <em>low</em>.</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>curl -X PUT "https://api.cloudflare.com/client/v4/zones/{zone:id}/rulesets/phases/http_ratelimit/entrypoint" \
+    -H "X-Auth-Email: {email}" -H "X-Auth-Key: {key}"\
+    -H "Content-Type: application/json"\
+    -d '{
+
+"rules": [
+              {
+                "action": "block",
+                "ratelimit": {
+                  "characteristics": [
+                    "cf.colo.id",
+                    "ip.src"
+                  ],
+                  "period": 10,
+                  "requests_per_period": 2,
+                  "mitigation_timeout": 60
+                },
+                "expression": "lookup_json_string(cf.hostname.metadata, \"security_level\") eq \"low\" and http.request.uri contains \"login\""
+              }
+            ]
+          }}'
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Per ulteriori informazioni sulla limitazione della frequenza avanzata, consulta la <a href="https://developers.cloudflare.com/waf/custom-rules/rate-limiting/" target="_blank">documentazione</a> Cloudflare.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image2-30.png" class="kg-image"></figure>
+	<h2 id="conclusioni">Conclusioni</h2>
+	<p>Siamo lieti di essere il fornitore per le esigenze di infrastruttura dei nostri clienti SaaS. Dai domini personalizzati ai certificati TLS al Web Application Firewall, siamo qui per aiutarti. Inizia oggi stesso con Cloudflare per SaaS oppure, se sei un cliente Enterprise, contatta l'account team per iniziare a utilizzare WAF per SaaS.</p>
+</div>

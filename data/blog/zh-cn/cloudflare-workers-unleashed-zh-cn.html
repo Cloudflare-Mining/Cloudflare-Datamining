@@ -1,0 +1,130 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/07/workers-social.png" class="kg-image"></figure>
+	<p></p>
+	<p>就在一年前的今天，Cloudflare给了我一个使命：允许人们在Cloudflare的网路运行代码。当时，我们还不知道这意味着什么。它会以容器为基础吗？一种新的图灵不完全的领域特定语言？Lua语言？“函数”？我的脑中涌出很多想法。</p>
+	<p>最终，我们做出了现在看似理所当然的选择：JavaScript，使用标准的Service Workers API，在基于V8构建的新环境中运行。五个月前，我们<a href="https://blog.cloudflare.com/introducing-cloudflare-workers/">向您预览</a>了我们正在构建的内容，并开始了测试。</p>
+	<p>如今，部署了数千个脚本，又处理了数十亿的请求之后，Cloudflare Workers已经为所有人做好了准备。</p>
+	<!--kg-card-begin: html-->
+	<div style="padding: 1.5em; background-color: rgb(243, 243, 243); margin: 1em 0;">
+		<p style="font-size: 150%; font-style: italic; margin-bottom: 0.5em">
+			<font style="vertical-align: inherit;">
+				<font style="vertical-align: inherit;">“脱离可视化组件库（Visual Component Library，VCL）并采用Cloudflare Workers将允许我们做一些创意路由，这将让我们以比现在更快的速度向npm的数百万用户提供JavaScript。我们将在Cloudflare平台上构建我们的下一代服务，我们将用JavaScript来完成这一点！”</font>
+			</font>
+		</p>
+		<p style="font-size: 120%; text-align: right; font-style: italic; margin-top: 0.5em">
+			<font style="vertical-align: inherit;">
+				<font style="vertical-align: inherit;">- CJ Silverio，首席技术官，npm，Inc。</font>
+			</font>
+		</p>
+	</div>
+	<!--kg-card-end: html-->
+	<h2 id="-">云到底是什么？</h2>
+	<p>从历史上看，Web应用程序代码已在服务器和浏览器之间分配。它们之间存在着一个巨大的但本质上很简单的网络——点到点传送数据的网络。</p>
+	<p>我们认为这并不是“云计算”目的。</p>
+	<p>云计算的真正目的是使得您的代码在它本身的网络中运行。您的代码并非运行在“us-west-4”或“South China Asia（Mumbai）”中，而是<em>无处不在</em>。</p>
+	<p>更具体地说，它应该在最需要的地方运行。在向新西兰的用户响应时，您的代码应该在新西兰运行。在数据库中处理数据时，代码应该在存储数据的计算机上运行。在与第三方API交互时，您的代码应该在托管API的任何位置运行。当人类探险家到达火星时，他们不会乐意用半个小时等待您的应用程序响应——您的代码也需要在火星上运行。</p>
+	<p>Cloudflare Workers是迈向这一愿景的第一步。当您部署Worker时，它将在30秒内部署到Cloudflare遍布全球100多个地点的整个边缘网络。您的域名的每个请求都将由您的工作人员在靠近最终用户的Cloudflare位置处理，您无需考虑个别位置。我们在线提供的位置越多，您的代码就越“无处不在”。</p>
+	<h2 id="-worker-">什么是Worker？</h2>
+	<p>Cloudflare Workers的名称来自Web Workers，更具体地说是Service Workers，一个用于在web浏览器后台运行并拦截HTTP请求的脚本的W3C标准API。Cloudflare Workers是针对相同的标准API编写的，但是是在Cloudflare的服务器上运行，而不是在浏览器中运行。</p>
+	<p>以下是您可以使用的工具：</p>
+	<ul>
+		<li>使用最新的标准语言功能执行任意JavaScript代码。</li>
+		<li>拦截和修改HTTP请求和响应URL，状态，标头和正文内容。</li>
+		<li>直接从您的Worker响应请求，或将其转发到其他地方。</li>
+		<li>将HTTP请求发送到第三方服务器。</li>
+		<li>以串行或并行方式发送多个请求，并使用响应组成对原始请求的最终响应。</li>
+		<li>在响应已经返回到客户端之后发送异步请求（例如，用于记录或分析）。</li>
+		<li>控制其他Cloudflare功能，例如缓存行为。</li>
+	</ul>
+	<p>Workers的用途是无限的，我们很高兴能看到我们的客户提议了什么。以下是我们在测试版中看到的一些想法：</p>
+	<ul>
+		<li>将不同类型的请求按路线发送到不同的源服务器。</li>
+		<li>在边缘网络展开HTML模板，以降低原始带宽成本。</li>
+		<li>将访问控制应用于缓存的内容。</li>
+		<li>将一小部分用户重定向到开发用服务器。</li>
+		<li>在两个完全不同的后端之间执行A / B测试。</li>
+		<li>构建完全依赖Web API的“无服务器”应用程序。</li>
+		<li>创建自定义安全过滤器以阻挡应用程序独有的不需要的流量</li>
+		<li>重写请求以提高缓存命中率。</li>
+		<li>实现自定义负载均衡和容错逻辑。</li>
+		<li>无需更新生产服务器即可快速修复应用程序。</li>
+		<li>无需在用户的浏览器中运行代码即可收集分析。</li>
+		<li>还有很多。</li>
+	</ul>
+	<p>以下是一个例子。</p>
+	<pre><code class="language-javascript">// A Worker which:
+// 1. Redirects visitors to the home page ("/") to a
+//    country-specific page (e.g. "/US/").
+// 2. Blocks hotlinks.
+// 3. Serves images directly from Google Cloud Storage.
+addEventListener('fetch', event =&gt; {
+  event.respondWith(handle(event.request))
+})
+
+async function handle(request) {
+  let url = new URL(request.url)
+  if (url.pathname == "/") {
+    // This is a request for the home page ("/").
+    // Redirect to country-specific path.
+    // E.g. users in the US will be sent to "/US/".
+    let country = request.headers.get("CF-IpCountry")
+    url.pathname = "/" + country + "/"
+    return Response.redirect(url, 302)
+
+  } else if (url.pathname.startsWith("/images/")) {
+    // This is a request for an image (under "/images").
+    // First, block third-party referrers to discourage
+    // hotlinking.
+    let referer = request.headers.get("Referer")
+    if (referer &amp;&amp;
+        new URL(referer).hostname != url.hostname) {
+      return new Response(
+          "Hotlinking not allowed.",
+          { status: 403 })
+    }
+
+    // Hotlink check passed. Serve the image directly
+    // from Google Cloud Storage, to save serving
+    // costs. The image will be cached at Cloudflare's
+    // edge according to its Cache-Control header.
+    url.hostname = "example-bucket.storage.googleapis.com"
+    return fetch(url, request)
+  } else {
+    // Regular request. Forward to origin server.
+    return fetch(request)
+  }
+}</code></pre>
+	<h2 id="--1">这真的很快</h2>
+	<p>有时人们问我们JavaScript是否“很慢”，事实远非如此！</p>
+	<p>Workers使用Google为Chrome构建的V8 JavaScript引擎。V8不仅最快实现了JavaScript，同时最快实现了动态类型语言。由于对V8进行了大量优化工作，它的性能几乎胜过任何流行的服务器编程语言，除了C / C ++，Rust和Go。（顺便说一句，我们很快就会通过WebAssembly允许使用这些语言。）</p>
+	<p>起步效率：<strong>典型的Worker脚本可以在不到一毫秒的时间内执行。</strong>大多数用户在启用Workers时无法测量到任何延迟差异——当然，除非他们的worker通过直接从边缘响应来改善延迟。</p>
+	<p>在另一个速度相关的说明中，Worker也实现了快速部署。从保存和启用脚本开始，<strong>Workers在30秒内便完成了全局部署</strong>。</p>
+	<h2 id="--2">定价</h2>
+	<p>Workers是Cloudflare的付费附加组件。我们希望尽可能简化定价，所以定价是这样：</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/07/workers-pricing-text@4x.png" class="kg-image"></figure>
+	<p></p>
+	<h2 id="--3">启用</h2>
+	<ul>
+		<li><a href="https://www.cloudflare.com/a/overview" target="_blank">登录您的Cloudflare帐户</a>并访问“Workers”部分以配置Workers。</li>
+		<li><a href="https://cloudflareworkers.com/" target="_blank">在游乐场试验Workers</a>，无需帐户。</li>
+		<li><a href="https://developers.cloudflare.com/workers/" target="_blank">阅读文档</a>以了解Worker是如何编写的。</li>
+		<li><a href="https://blog.cloudflare.com/introducing-cloudflare-workers/">查看原始公告博客文章</a>了解更多技术细节。</li>
+		<li><a href="https://community.cloudflare.com/c/developers/workers" target="_blank">在Cloudflare社区讨论Workers。</a></li>
+	</ul>
+	<!--kg-card-begin: html-->
+	<div style="padding: 1.5em; background-color: rgb(243, 243, 243); margin: 1em 0;">
+		<p style="font-size: 150%; font-style: italic; margin-bottom: 0.5em">
+			<font style="vertical-align: inherit;">
+				<font style="vertical-align: inherit;">“Cloudflare Workers为我们节省了大量时间。在没有工作人员的情况下管理僵尸网络流量会消耗宝贵的开发和服务器资源，而这些资源最好花在别处。”</font>
+			</font>
+		</p>
+		<p style="font-size: 120%; text-align: right; font-style: italic; margin-top: 0.5em">
+			<font style="vertical-align: inherit;">
+				<font style="vertical-align: inherit;">- MaxMind高级系统管理员John Thompson</font>
+			</font>
+		</p>
+	</div>
+	<!--kg-card-end: html-->
+	<p>关键词：<a href="https://blog.cloudflare.com/tag/product-news/">产品新闻</a>，<a href="https://blog.cloudflare.com/tag/workers/">Workers</a>，<a href="https://blog.cloudflare.com/tag/javascript/">JavaScript</a>，<a href="https://blog.cloudflare.com/tag/performance/">性能</a>，<a href="https://blog.cloudflare.com/tag/compression/">压缩</a>，<a href="https://blog.cloudflare.com/tag/developers/">开发人员</a>，<a href="https://blog.cloudflare.com/tag/serverless/">无服务器</a></p>
+</div>

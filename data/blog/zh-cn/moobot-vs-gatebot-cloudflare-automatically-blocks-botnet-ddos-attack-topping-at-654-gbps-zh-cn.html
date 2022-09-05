@@ -1,0 +1,62 @@
+<div class="post-content lh-copy gray1">
+	<p>7月3日，Cloudflare的全球DDoS保护系统<a href="https://blog.cloudflare.com/meet-gatebot-a-bot-that-allows-us-to-sleep/">Gatebot</a>自动检测并缓解了<a href="https://www.cloudflare.com/learning/ddos/udp-flood-ddos-attack/" target="_blank">一次基于UDP的DDoS攻击</a>，攻击的峰值达到了654 Gbps。该攻击属于针对<a href="https://www.cloudflare.com/magic-transit/" target="_blank">Magic Transit</a>客户的为期十天的多媒介DDoS活动的一部分，在无任何人工干预的情况下即被缓解。据信，此次DDoS活动是由基于<a href="https://blog.cloudflare.com/inside-mirai-the-infamous-iot-botnet-a-retrospective-analysis/">Mirai</a>的僵尸网络Moobot发起的。客户未报告停机，服务降级或误报。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/12/image-22.png" class="kg-image">
+		<figcaption><strong>Moobot针对一名Magic Transit客户发起654 Gbps攻击</strong></figcaption>
+	</figure>
+	<p>在这10天里，我们的系统自动检测并缓解了针对这个客户的超过5000次DDoS攻击，主要是UDP泛洪、SYN泛洪、ACK泛洪和GRE泛洪。其中最大的一次DDoS攻击是UDP泛洪，仅持续了2分钟。该攻击仅针对一个IP地址，但攻击了多个端口。这次攻击来源于18705个独立IP地址，每个IP地址都可以被看作是Moobot感染的物联网设备。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/12/image-23.png" class="kg-image">
+		<figcaption><strong>攻击的国家（地区）分布 – 来源于100个国家</strong></figcaption>
+	</figure>
+	<p>Cloudflare在全球100个国家的数据中心均检测到了此次攻击。大约有89%的攻击流量集中来源于10个国家，其中美国占41%，其次是韩国和日本（各占12%）和印度（10%）。这可能意味着该恶意软件至少已经感染了全球100个国家的18705台设备。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/12/image-24.png" class="kg-image">
+		<figcaption><strong>按国家/地区划分的攻击分布-前10名</strong></figcaption>
+	</figure>
+	<h3 id="moobot-">Moobot - 自传播的恶意软件</h3>
+	<p>“Moobot”这个名字听起来很可爱，但其实一点都不可爱。根据<a href="https://blog.netlab.360.com/ddos-botnet-moobot-en/" target="_blank">360Netlab</a>的解释，Moobot是一个基于Mirai的自传播<a href="https://www.cloudflare.com/learning/ddos/glossary/malware/" target="_blank">恶意软件</a>的代号，该恶意软件在2019年首次被发现。它使用可远程利用的漏洞或弱默认密码感染IoT（物联网）设备。IoT是一个术语，用于描述智能设备，比如安全中心、摄像机、智能电视、智能音箱、智能灯、传感器，甚至包括了联网冰箱。</p>
+	<p>一旦Moobot成功感染设备，该设备的控制权就会被转移到命令和控制（C2）服务器的操作员手中，操作员可以远程发布指令，例如攻击目标，定位其他易受攻击的物联网设备并进行感染（自传播）。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/12/image-25.png" class="kg-image"></figure>
+	<p>Moobot是基于Mirai的僵尸网络，并具有<a href="https://blog.cloudflare.com/inside-mirai-the-infamous-iot-botnet-a-retrospective-analysis/">与Mirai类似的功能（模块）</a>：</p>
+	<ol>
+		<li><strong>自传播</strong> - 自传播模块负责扩展僵尸网络。IoT设备被感染后，它会随机扫描互联网以查找开放的telnet端口，并报告给C2服务器。一旦C2服务器获取了世界各地的开放telnet端口的信息，它就会尝试利用已知的漏洞或使用通用/默认凭据强行入侵IoT设备。</li>
+	</ol>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/12/image-26.png" class="kg-image">
+		<figcaption>自传播</figcaption>
+	</figure>
+	<p><strong>2. 同步攻击</strong> - C2服务器可以协调数据包或HTTP请求泛洪，造成目标网站或服务器的拒绝服务事件。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/12/image-27.png" class="kg-image">
+		<figcaption>同步攻击</figcaption>
+	</figure>
+	<p>僵尸网络操作员可能在世界各地使用多个C2服务器，以降低暴露的风险。受感染的设备可能被分配给不同区域和模块的C2服务器；一个服务器用于自传播，另一个用于发起攻击。因此，即便某个C2服务器被攻破并被执法当局关闭，也只有部分僵尸网络被停用。</p>
+	<h3 id="-">为什么这次攻击没有成功</h3>
+	<p>这是我们过去几个月在Cloudflare的网络上观察到的第二次大规模攻击。前一个攻击的峰值达到了<a href="https://blog.cloudflare.com/mitigating-a-754-million-pps-ddos-attack-automatically/">754Mpps</a>，并试图以高数据包速率瘫痪我们的路由器。尽管该攻击的数据包速率很高（达到了754Mpps），但其峰值带宽仅为253Gbps。</p>
+	<p>与高数据包速率攻击相反，此次攻击是高比特率攻击，峰值为654 Gbps。鉴于此攻击的高比特率峰值，攻击者似乎试图（但并未成功）通过饱和我们的互联网链接容量来导致拒绝服务事件。那么，让我们来探讨一下这次攻击为什么没有成功。</p>
+	<h3 id="--1">避免链路饱和并维持设备运行</h3>
+	<p>Cloudflare的全球<a href="https://www.cloudflare.com/network/" target="_blank">网络</a>容量超过42 Tbps，并且还在不断增长。我们的网络覆盖100多个国家/地区的200多个城市，其中包括位于中国大陆的17个城市。它与全球8800多个网络互连，包括主要的ISP，云服务和企业。高度的互连性以及对<a href="https://www.cloudflare.com/learning/cdn/glossary/anycast-network/" target="_blank">Anycast</a>的使用确保了我们的网络可以轻松吸收最大的攻击。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/12/image-28.png" class="kg-image">
+		<figcaption>Cloudflare网络</figcaption>
+	</figure>
+	<p>流量到达边缘数据中心后，Cloudflare网络将通过我们自己构建的第4层负载均衡器<a href="https://blog.cloudflare.com/unimog-cloudflares-edge-load-balancer/">Unimog</a>进行有效的负载均衡。Unimog利用我们的设备运行状况和其他指标来智能地在数据中心内实现负载均衡，从而避免任何一台服务器过载。</p>
+	<p>除了使用Anycast实现数据中心间的负载均衡和使用Unimog实现数据中心内的负载均衡外，我们还利用各种形式的流量工程来应对网络中流量负载的突然变化。我们的24/7/365站点可靠性工程（SRE）团队同时实施自动和手动的流量工程。</p>
+	<p>这些综合因素显著降低了由于链路饱和或设备过载而导致拒绝服务事件的可能性——正如在这次攻击中所看到的，没有发生链路饱和。</p>
+	<h3 id="-ddos-">检测和缓解DDoS攻击</h3>
+	<p>流量一旦到达我们的边缘，就会遇到我们的三个软件定义DDoS防护系统：</p>
+	<ol>
+		<li><a href="https://blog.cloudflare.com/meet-gatebot-a-bot-that-allows-us-to-sleep/">Gatebot</a> - Cloudflare的集中式DDoS防护系统，用于检测和缓解全球分布的容量DDoS攻击。Gatebot在我们网络的核心数据中心内运行。它从我们的每个边缘数据中心接收样本，进行分析，并在检测到攻击时自动推送缓解指令。Gatebot还与我们每个客户的web服务器同步，以识别其运行状况并相应地触发缓解措施。</li>
+		<li><a href="https://blog.cloudflare.com/rolling-with-the-punches-shifting-attack-tactics-dropping-packets-faster-cheaper-at-the-edge/">dosd</a>（拒绝服务守护程序） - Cloudflare的分布式DDoS保护系统。dosd在全球每个Cloudflare数据中心的每台服务器上自动运行，在需要时分析流量并应用本地缓解规则。dosd能够以超快的速度检测和缓解攻击，并且通过将检测和缓解功能委托给边缘，dosd还显著提高了我们网络的弹性。</li>
+		<li><a href="https://blog.cloudflare.com/announcing-flowtrackd/">flowtrackd</a>（流跟踪守护程序） - Cloudflare的TCP状态跟踪机，可用于检测和缓解单向路由拓扑中最随机、最复杂的基于TCP的DDoS攻击（例如<a href="https://www.cloudflare.com/magic-transit/" target="_blank">Magic Transit</a>的案例）。flowtrackd能够识别TCP连接的状态，然后对不属于合法连接的数据包进行丢弃，发起人机验证挑战或限制速率。</li>
+	</ol>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/12/image-29.png" class="kg-image">
+		<figcaption>Cloudflare DDoS防护周期</figcaption>
+	</figure>
+	<p>这三个DDoS防护系统通过收集流量样本来检测DDoS攻击。其采样的流量数据类型包括：</p>
+	<ol>
+		<li><strong>数据包字段</strong>，例如源IP、源端口、目标IP、目标端口、协议、TCP标识、序列号、选项和包速率。</li>
+		<li><strong>HTTP请求元数据</strong>，例如HTTP请求头、用户代理、查询字符串、路径、主机、HTTP方法、HTTP版本、TLS密码版本和请求速率。</li>
+		<li><strong>HTTP响应指标</strong>，例如客户源服务器返回的错误代码及其比率。</li>
+	</ol>
+	<p>然后，我们的系统会将这些样本数据点集中在一起，以实时查看我们网络的安全状况和客户的源服务器运行状况。它们将找寻其中的攻击模式和流量异常，找到后，则实时生成带有动态制作的攻击签名的缓解规则。这些规则会传播到最优的位置，以降低缓解成本。例如，我们可以在L4处丢弃L7 HTTP泛洪以减少CPU的消耗。</p>
+	<p>由dosd和flowtrackd生成的规则将在单个数据中心内传播，以便快速缓解。Gatebot的规则被传播到所有边缘数据中心，这些规则将优先于dosd的规则，从而实现均匀的、最优的缓解。即使Gatebot仅在边缘数据中心的一个子集中检测到攻击，它也会将缓解指令传播到Cloudflare的所有边缘数据中心，从而以主动保护的形式在我们的网络中有效地共享威胁情报。</p>
+	<p>在本次攻击中，dosd在每个边缘数据中心内生成了规则，以迅速进行缓解。随后，Gatebot从边缘接收并分析了样本，确定了这是一起全球分布式攻击。Gatebot将统一的缓解指令传播到边缘，这使我们的200多个数据中心都做好了应对攻击的准备，因为攻击流量可能由于Anycast或流量工程而转移到不同的数据中心。</p>
+	<h3 id="--2">无高昂账单</h3>
+	<p>DDoS攻击显然会带来停机和服务中断的风险。但还有另一个风险需要考虑——缓解成本。在这十天中，僵尸网络产生了超过65 TB的攻击流量。但是，遵循着Cloudflare的<a href="https://blog.cloudflare.com/unmetered-mitigation/">无限制DDoS防护</a>保障，Cloudflare缓解并吸收了攻击流量，而没有向客户收费。客户不需要提交追溯信用申请。攻击流量被自动被排除在我们的计费系统以外。我们消除了财务上的风险。</p>
+</div>

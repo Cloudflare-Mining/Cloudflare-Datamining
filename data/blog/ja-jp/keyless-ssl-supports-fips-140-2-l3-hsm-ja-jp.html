@@ -1,0 +1,126 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/1-11.png" class="kg-image" alt="Keyless SSL now supports FIPS 140-2 L3 hardware security module (HSM) offerings from all major cloud providers"></figure>
+	<p><strong>すべての主要なクラウドプロバイダーのハードウェアセキュリティモジュールに保存されたプライベートキー暗号化が、CloudflareのグローバルエッジでHTTPS接続を保護するために使用できるようになりました。</strong></p>
+	<p>Cloudflareは、おそらく世界のどの企業よりも多くのSSL/TLSプライベートキーを生成、保護、管理しています。プライベートキーは慎重に保護する必要があります。これが攻撃者の手に渡ると、正当なサイトになりすまし、HTTPSリクエストを復号化する可能性があるためです。このリスクを軽減するために、Cloudflareでは厳格な鍵処理手順とエッジでの<a href="https://blog.cloudflare.com/ja-jp/going-keyless-everywhere-ja-jp/">レイヤー化されたソリューション</a>を備えており、エッジはあらゆる方法で鍵を保護するように設計されています。しかし、鍵を保管できる（またはできない）場所を指定する情報セキュリティポリシーを持つ少数のお客様にとっては、これらの保護は要件を満たしていません。</p>
+	<p>こうしたお客様のために、<a href="https://blog.cloudflare.com/announcing-keyless-ssl-all-the-benefits-of-cloudflare-without-having-to-turn-over-your-private-ssl-keys/">Cloudflareでは2014年に初めてKeyless SSLをリリースしました </a>。このプロトコルは、当社のネットワーク内で広く使用されているものです。Cloudflareのエッジで1日に確立されるすべてのTLSハンドシェイクが、その過程でお客様のプライベートキーにアクセスするわけではありません。その代わりに、セッションの確立に必要なデータが、別のシステムに送信され、そこで必要な署名の暗号化操作が行われます。Cloudflareがアップロード、そして生成したキーについては、この別のシステムで管理していますが、お客様の中には、このキーをご自身で管理したいと考える方もいらっしゃいます。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/2-6.png" class="kg-image" alt="[LOGICAL DIAGRAM SHOWING PRIVATE KEYS STORED ON HSMs BEING USED FOR TLS HANDSHAKE]"></figure>
+	<p>従来、キーはハンドシェイクを処理するために提供している<a href="https://github.com/cloudflare/gokeyless" target="_blank">オープンソースのgokeylessデーモン</a>を実行するサーバーに置かれたり、gokeylessがPKCS#11という標準プロトコルを使って連動するオンプレミスのハードウェアセキュリティモジュール (HSM) で保護されていました。しかし、金融サービス、医療、暗号通貨、その他の規制やセキュリティ重視の企業がクラウドに移行するにともない、Amazonや、Google、IBM、Microsoftに、これらの高価な箱を出荷して在庫を抱えるようにお願いするわけにはいかなくなりました。</p>
+	<p>こういったお客様の中でも特に、情報セキュリティポリシーで<a href="https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.140-2.pdf" target="_blank">FIPS 140-2 レベル3</a>検証済みのHSMが必須のお客様に向けて、Keyless SSLでクラウドホスト型HSMがサポートされるようになったことをお知らせします。サポートされるのは、<a href="https://aws.amazon.com/cloudhsm/" target="_blank">Amazon Cloud HSM</a>、<a href="https://cloud.google.com/kms/docs/hsm" target="_blank">Google Cloud HSM</a>、<a href="https://cloud.ibm.com/catalog/infrastructure/hardware-security-module" target="_blank">IBM Cloud HSM</a>、<a href="https://azure.microsoft.com/en-us/services/azure-dedicated-hsm/" target="_blank">Microsoft Azure 専用 HSM</a>および<a href="https://azure.microsoft.com/en-us/updates/akv-managed-hsm-public-preview/" target="_blank">マネージドHSM</a>です。CloudflareではPKCS #11 標準を実装する他のHSMもサポートしています。これには <a href="https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modules/ncipher-thales-nshield-connect" target="_blank">nCipher nShield Connect</a>やThales Lunaなどのシリーズが含まれます。</p>
+	<h3 id="hsm-">HSMの概要</h3>
+	<p>HSMは、改ざんしにくく、サイドチャネル攻撃などの弱点を強化し、署名や復号化などの暗号化操作を実行するために最適化された専用のマシンです。スタンドアロンのボックスとして、サーバー挿入の拡張カードとして、または最近ではクラウドサービスとしてもデプロイできます。</p>
+	<p>ベンダーやセキュリティの専門家は、サーバー上でプライベートキーを作成した上でHSMにアップロードするのではなく、通常はキーをデバイス自体で作成する（そして決してデバイスから離さない）ことを推奨しています。HSMは、汎用サーバーよりもランダム性が保証されており、暗号化された状態でディスクに同期する前に、メモリ内のキーを保護するための特別な予防措置を講じます。プライベートキーを必要とする操作が必要な場合、サービスはHSM ベンダーが提供するライブラリを使用して、認証済みのAPI呼び出しをデバイスに発信します。</p>
+	<h3 id="hsm-fips-140-2-3">HSMとFIPS 140-2 レベル3</h3>
+	<p>HSMは通常、連邦情報処理標準（FIPS）規格140-2：<a href="https://csrc.nist.gov/publications/detail/fips/140/2/final" target="_blank">暗号化モジュールのセキュリティ要件</a>と照合し、検証されます。規格には、1から4までの4つのレベルがあり、近年ますます要件が厳しくなっている承認済みのアルゴリズム、セキュリティ機能、ロールベースのアクセス制御、改ざん証拠や耐性保護に沿ってレベルを特定します。</p>
+	<p>米国国立標準技術研究所（NIST）は、これらのガイドラインを公開し、<a href="https://csrc.nist.gov/projects/cryptographic-module-validation-program/validated-modules" target="_blank">暗号モジュール検証プログラム</a>を管理し、<a href="https://csrc.nist.gov/projects/cryptographic-module-validation-program/validated-modules/search" target="_blank">検証済みモジュールが検索可能なデーターベース</a>を提供しています。これには、以下に示すサービスが含まれています。当社では、Cloudflareでそれらを使用する方法をお知らせしています。</p>
+	<h3 id="-">クラウドサービスの開始</h3>
+	<p>既存のKeyless SSLのお客様は、このテクノロジーをすぐにご利用いただけます。そのための手順は<a href="https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modules" target="_blank"> https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modules </a>をご参照ください。ソースコードはGitHub: <a href="https://github.com/cloudflare/gokeyless" target="_blank"> https://github.com/cloudflare/gokeyless</a>で入手できます。</p>
+	<h3 id="-microsoft-azure-hsm">エンドツーエンドの例：Microsoft AzureマネージドHSM</h3>
+	<p>MicrosoftのAzure Key Vaultチームは、2020年9月22日に<a href="https://azure.microsoft.com/en-us/updates/akv-managed-hsm-public-preview/" target="_blank">マネージドHSMをパブリックプレビューでリリースし</a>ました。このサービスは、FIPS140-2 レベル3で検証済みで、Azureストレージ、Azure SQL、Azur情報保護などのAzureサービスと統合されています。マネージドHSMのパブリックプレビューは、East Us 2(米国東部）、south Central US(米国中南部)、North Europe(北ヨーロッパ)、West Europe（西ヨーロッパ）の各リージョンでご利用いただけます。</p>
+	<p>以下の手順は、クイックスタートから取得したものです。<a href="https://docs.microsoft.com/en-us/azure/key-vault/managed-hsm/quick-create-cli" target="_blank">クイックスタート：Azure CLIを使ってマネージドHSMのプロビジョニングとアクティブ化</a>の後に、CloudflareのマネージドHSMの使用に関する手順が記載されています。コマンドは、HSMと同じリージョン (米国中南部) で作成されたUbuntu VM上で実行されています。同じ場所でCloudflare Keyless SSLデーモンもデプロイする予定です。</p>
+	<h3 id="hsm--1">HSMのプロビジョニングとアクティブ化</h3>
+	<p>まず、CLIを経由してログインし、サポートされているリージョンの1つで、マネージドHSMのリソースグループを作成します。サービスのプレビューステータスに基づいて、さまざまなコマンドから警告が表示される場合があります。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>$ LOCATION=southcentralus; GROUPNAME=”HSMgroup”; HSMNAME=”KeylessHSM”
+$ az login
+$ az group create --name $GROUPNAME --location $LOCATION
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>次に、HSMリソースをプロビジョニングし、<a href="https://docs.microsoft.com/en-us/azure/key-vault/managed-hsm/security-domain" target="_blank">セキュリティードメイン</a>をダウンロードして有効化します。次の例では、ログインしたユーザーに管理者アクセス権を付与しており、別の管理者はそのユーザーがログインしているCLIから同じ oid=$ (...) コマンドを実行することでOIDを取得できます。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>$ MYOID=$(az ad signed-in-user show --query objectId -o tsv)
+$ OTHERADMIN_OID=...
+
+$ az keyvault create --hsm-name $HSMNAME --resource-group $GROUPNAME --location $LOCATION --administrators $MYOID $OTHERADMIN_OID
+
+Argument '--hsm-name' is in preview and under development. Reference and support levels: https://aka.ms/CLI_refstatus
+Argument '--administrators' is in preview and under development. Reference and support levels: https://aka.ms/CLI_refstatus
+{- Finished ..
+  "id": "/subscriptions/.../resourceGroups/HSMgroup/providers/Microsoft.KeyVault/managedHSMs/Keyles
+sHSM",
+  "location": "southcentralus",
+  "name": "KeylessHSM",
+  "properties": {
+    "createMode": null,
+    "enablePurgeProtection": false,
+    "enableSoftDelete": true,
+    "hsmUri": "https://keylesshsm.managedhsm.azure.net/",
+    "initialAdminObjectIds": [
+      "$MYOID",
+      "$OTHERADMIN_OID"
+    ],
+    "provisioningState": "Succeeded",
+    "softDeleteRetentionInDays": 90,
+    "statusMessage": "The Managed HSM is provisioned and ready to use.",
+    "tenantId": "..."
+  },
+  "resourceGroup": "$GROUPNAME",
+  "sku": {
+    "family": "B",
+    "name": "Standard_B1"
+  },
+  "tags": {},
+  "type": "Microsoft.KeyVault/managedHSMs"
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>上記のコマンドから返される<strong>hsmUri</strong>プロパティを記録しておきます。これは、仮想マシンでKeyless SSLを設定するときにすぐに必要になります。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>$ HSMURI="https://keylesshsm.managedhsm.azure.net/"
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>HSMがプロビジョニングされたので、少なくとも3つのRSAパブリックキーを指定する必要があります。HSMは、これらのキーを使用してセキュリティードメインを暗号化し、ユーザーに返します。その後、HSMが使用できるようになります。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>$ openssl req -newkey rsa:2048 -nodes -keyout cert_0.key -x509 -days 365 -out cert_0.cer
+$ openssl req -newkey rsa:2048 -nodes -keyout cert_1.key -x509 -days 365 -out cert_1.cer
+$ openssl req -newkey rsa:2048 -nodes -keyout cert_2.key -x509 -days 365 -out cert_2.cer
+$ az keyvault security-domain download --hsm-name $HSMNAME --sd-wrapping-keys ./cert_0.cer ./cert_1.cer ./cert_2.cer --sd-quorum 2 --security-domain-file $HSMNAME-SD.json
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>「MSIへの接続に失敗しました」というエラーが表示され、Azureポータルからクラウドシェルを使用している場合は、既知の問題であるため、azログインを再試行します。</p>
+	<p>HSMをプロビジョニングしたら、keyvaultに<a href="https://docs.microsoft.com/en-us/cli/azure/keyvault/key?view=azure-cli-latest#az_keyvault_key_import" target="_blank">プライベートキーを追加</a>します。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>$ az keyvault key import --KeylessHSM
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>これにより、後でKeyless YAMLファイルに追加するURIが返され、プライベートキーが保存されている場所が示されます。</p>
+	<p>HSMのプロビジョニングとアクティブ化が完了したら、Keylessデーモンをデプロイする仮想マシン（VM）を作成する必要があります。この例では、AzureでUbuntu Xenial仮想マシンを作成します。ポータルで、「仮想マシン」ページに移動し、VMを追加します。そこでは、HSM用に以前に作成したリソースグループを使用できます。最適な結果を得るには、HSM用のリージョンと同じリージョンを選択します。仮想マシンのパブリック IPを書き留めます。これを使用してサーバーにリモート接続します。</p>
+	<p>次に、仮想マシンをキーサーバーに設定します。最初に、<a href="https://pkg.cloudflare.com/" target="_blank">Cloudflareパッケージリポジトリ</a>を追加する必要があります。次に、OSのパッケージリストを更新し、gokeylessサーバーをインストールします。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>$ apt-get update
+$ echo 'deb http://pkg.cloudflare.com/Xenial main' |
+sudo tee /etc/apt/sources.list.d/cloudflare-main.list
+$ curl -C - https://pkg.cloudflare.com/pubkey.gpg | sudo apt-key
+$ apt-get update
+$ apt-get install gokeyless
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>続いて、gokeyless YAMLファイルを更新します。ここでは、キーサーバーのホスト名を追加します。このホスト名には、VM、ゾーンID、オリジンCA APIキーを指すDNSレコードが必要です。ゾーンIDとオリジンCA APIキーは、Cloudflareダッシュボードで見つけられます。さらに、private_key_storesの下にあるプライベートキーのディレクトリを指すURIを指定します。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>$ vim /etc/keyless/gokeyless.yaml
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>最後に、keylessサーバーを起動します。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>$ service gokeyless start
+
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Azureポータルに戻り、Azure VMに必要なTCPポートを開きます。VM → ネットワーキング → に移動し、インバウンドポートルールを追加します。どの送信元ポートから来るトラフィックも許可するように設定し、宛先ポートにポート2407 を指定します。</p>
+	<p>変更を保存し、Cloudflareダッシュボードに移動し、SSL証明書をアップロードします。「SSL/TLS」タブの「エッジ証明書」セクションに「Keyless SSL証明書のアップロード」が表示されます。そこで、フィールドにキーサーバーラベル、YAMLファイルのホスト名、キーサーバーポート（2407 がデフォルトポート）を入力し、SSL証明書を貼り付けます。</p>
+	<p>これでテストする準備ができました！ <code>curl-v https://zone.com</code> を実行し、TLSハンドシェイクが正常に完了することを確認します。</p>
+	<h3 id="microsoft-azure-hsm">Microsoft Azure専用HSM</h3>
+	<p>パブリックプレビューに現在公開されているマネージドHSMサービスに加えて、Azureのお客様は、SafeNet Lunaネットワーク HSM 7 モデル A790シリーズに基づき、Microsoftの<a href="https://azure.microsoft.com/en-us/services/azure-dedicated-hsm/" target="_blank">専用HSMサービス</a>に保管されたキーを利用するよう、Cloudflareのエッジを構成できます。</p>
+	<p>Azure専用HSMは、FIPS 140-2 レベル3およびeIDAS Common Criteria EAL4+ の両方に照らし合わせて検証されます。手順に従って、<a href="https://docs.microsoft.com/en-us/azure/dedicated-hsm/tutorial-deploy-hsm-powershell" target="_blank">HSMをデプロイ</a>した後、Azure固有のKeyless SSL手順（<a href="https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modules/azure-dedicated-hsm" target="_blank">こちら</a>）に従う必要があります。</p>
+	<h3 id="amazon-web-aws-cloud-hsm">Amazon Web サービス (AWS) Cloud HSM</h3>
+	<p><a href="https://aws.amazon.com/cloudhsm/" target="_blank">AWS Cloud HSM</a>でも、プライベートキーを保存するためのFIPS 140-2 レベル3検証済みのHSMを提供しています。</p>
+	<p>公式の<a href="https://registry.terraform.io/providers/hashicorp/aws/latest" target="_blank">AWS Terraform Provider</a>では、<a href="https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudhsm_v2_cluster" target="_blank">aws_cloudhsm_v2_cluster</a>がサポートされるようになりました。これは、Cloudflare がサポートしているバージョンです。<a href="https://docs.aws.amazon.com/cloudhsm/latest/userguide/getting-started.html" target="_blank">AWS CloudHSM クラスターをプロビジョニング</a>した後、お客様はAWS固有のKeyless SSLの手順（<a href="https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modules/aws-cloud-hsm" target="_blank">こちら</a>）に従う必要があります。</p>
+	<h3 id="google-cloud-hsm">Google Cloud HSM</h3>
+	<p><a href="https://cloud.google.com/kms/docs/hsm" target="_blank">Google Cloud HSM</a>は、GCPのCloud KMSをフロントエンドとして使用し、FIPS 140-2 レベル 3検証済みのHSMでのキーのホスティングが可能です。さらに、Googleでは、Googleが提供するスペースでお客様自身のHSMをホストする機能を提供しています。このオプションの詳細については、GCPアカウント担当者にお問い合わせください。</p>
+	<p>HSM内でキーリングとキーを<a href="https://cloud.google.com/kms/docs/hsm" target="_blank">作成</a>したら、Google Cloud固有のKeyless SSLの手順（<a href="https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modules/google-cloud-hsm" target="_blank">こちら</a>）に従う必要があります。GCP KMSで非対称キーを使用する方法の詳細については、<a href="https://cloud.google.com/kms/docs/encrypt-decrypt-rsa" target="_blank">こちら</a>をご覧ください。</p>
+	<h3 id="ibm-cloud">IBM Cloud</h3>
+	<p><a href="https://cloud.ibm.com/docs/hardware-security-modules/about.html#about-ibm-cloud-hsm" target="_blank">IBM Cloud HSM </a>7.0は、FIPS 140-2 レベル3検証済みのHSM機能を提供します。このサービスは、SafeNet Luna A750シリーズに基づいています。</p>
+	<p><a href="https://cloud.ibm.com/docs/hardware-security-modules?topic=hardware-security-modules-provisioning-ibm-cloud-hsm#provisioning-ibm-cloud-hs" target="_blank">HSMのプロビジョニング</a>後、お客様はIBM固有のKeyless SSL手順（<a href="https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modules/ibm-cloud-hsm" target="_blank">こちら</a>）に従う必要があります。</p>
+	<h3 id="--1">サポートの相談とフィードバックの提供</h3>
+	<p>HSMは強力なキー保護機能を提供しますが、セットアップとデプロイが複雑になることがあります。HSMをクラウドプロバイダーにデプロイする際にサポートが必要な場合は、サポートチャネルから始めることをお勧めします。</p>
+	<p>ただし、Cloudfareのエッジと連携するHSMを構成するためのサポートが必要な場合やプロセスに関するフィードバックの提供を希望される場合は、ソリューションエンジニアリングチームに直接お問い合わせください。CloudflareのKeyless SSLスペシャリストにおつなぎいたします。</p>
+</div>

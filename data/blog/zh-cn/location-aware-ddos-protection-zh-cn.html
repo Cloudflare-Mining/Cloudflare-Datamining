@@ -1,0 +1,19 @@
+<div class="post-content lh-copy gray1">
+	<p>我们非常激动地推出 Cloudflare 位置感知 DDoS 防护。</p>
+	<p><a href="https://www.cloudflare.com/en-gb/learning/ddos/what-is-a-ddos-attack/" target="_blank">分布式拒绝服务 (DDoS) 攻击</a>是一种网络攻击，旨在使用超出您的互联网资产处理能力的大量流量，使该资产疲于应付，无法正常提供服务。为此，攻击者通常会致力于从尽可能多的位置生成尽可能多的攻击流量。通过位置感知 DDoS 防护，我们利用攻击的这种<em>分布式</em>特征，以其人之道还治其人之身，将它从攻击者的优势变成劣势。</p>
+	<p>位置感知 DDoS 防护现在为订阅高级 DDoS 服务的 Cloudflare Enterprise 客户提供了测试版。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image4-2.png" class="kg-image" alt="A diagram of a DDoS attack denying service to legitimate users"></figure>
+	<h3 id="-">分布式攻击失去了优势</h3>
+	<p>Cloudflare 位置感知 DDoS 防护利用攻击者的优势转而对付攻击者。系统知道了流量来自哪里，就能感知地理位置，并在遇到新流量时不断询问“这些流量对于<em>您的</em>网站是否合理？”。</p>
+	<p>例如，如果您运营一个主要服务于德国消费者的电子商务网站，那么您的大部分流量很可能源自德国境内，有一部分流量会来自欧洲邻国，而来自世界上其他国家/地区和地理区域的流量则很少。如果在主要地理区域之外的意外地理位置突然流量激增，系统会对无用的流量做出标记并采取缓解措施。</p>
+	<p>位置感知 DDoS 防护还利用 Cloudflare 的<a href="https://developers.cloudflare.com/bots/concepts/bot-score/#machine-learning" target="_blank">机器学习模型</a>来识别很可能是自动化的流量。这用作额外的信号来提供更准确的保护。</p>
+	<h3 id="-ddos-">启用位置感知 DDoS 防护</h3>
+	<p>订阅高级 DDoS 服务的 Enterprise 客户可以自定义并启用位置感知 DDoS 防护系统。默认情况下，系统仅显示根据最近 7 天 P95 比率判断为可疑的流量，并按客户端国家和地区分类（每 24 小时重新计算一次）。</p>
+	<p>客户可以在 <a href="https://dash.cloudflare.com/?to=/:account/:zone/security" target="_blank">“<strong>安全性概述</strong>” 仪表板</a>中查看系统标记的内容。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image1-4.png" class="kg-image" alt="Screenshot of Cloudflare’s Security Overview analytics dashboard showing the traffic that was flagged by the Location-Aware DDoS Protection rule"></figure>
+	<p>位置感知 DDoS 防护作为现有规则集内的新 HTTP DDoS 托管规则公开给客户。若要将其启用，请将操作更改为<em>托管质询</em>或<em>阻止</em>。客户可以调整其敏感度水平，定义您针对偏离正常地理区域的流量允许的容忍度。敏感度越低，容忍度越高。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image5-3.png" class="kg-image" alt="Screenshot of Cloudflare’s dashboard showing the Location-Aware DDoS Protection rule"></figure>
+	<p>如需了解如何查看标记的流量以及如何配置位置感知 DDoS 防护，请访问我们的<a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/http/location-aware-protection/" target="_blank">开发人员文档站点</a>。</p>
+	<h3 id="-ddos--1">使 DDoS 攻击的影响成为历史</h3>
+	<p>Cloudflare 的使命是帮助建设更加美好的互联网。DDoS 团队的愿景源于此使命：我们的目标是让 DDos 攻击的影响成为历史。要让 Cloudflare 的 DDoS 保护更加智能、精密并能够迎合个性化需求，位置感知保护仅仅是第一步。还没有使用 Cloudflare？<a href="https://dash.cloudflare.com/sign-up" target="_blank">立即开始</a>使用我们的 Free 和 Pro <a href="https://www.cloudflare.com/plans/" target="_blank">方案</a>来保护您的网站，也可以<a href="https://www.cloudflare.com/magic-transit/" target="_blank">联系我们</a>，详细了解 Enterprise 高级 DDoS 防护套件。</p>
+</div>

@@ -1,0 +1,63 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image3-28.png" class="kg-image" alt="Packet captures at the edge"></figure>
+	<p>数据包捕获是网络和安全工程师每天都是用的重要工具。随着越来越多网络功能从旧式内部部署的硬件迁移到云原生服务，团队可能无法再像过去那样，通过数据中心机架中的单个设备捕获全部流量来获得可见性。我们知道，能够轻松访问所有网络流量中的数据包捕获对于故障排除和深入了解流量模式非常重要，因此今天，我们很高兴地宣布 Cloudflare 全球网络中的按需数据包捕获功能将全面可用。</p>
+	<h3 id="-">数据包捕获是什么？如何使用它们？</h3>
+	<p>数据包捕获是一个文件，它包含特定网络盒（通常是防火墙或路由器）在特定时间段内看到的所有数据包。数据包捕获是一种功能强大的常用工具，用于调试网络问题或更好地了解攻击流量以加强安全性（例如，通过添加防火墙规则来阻止特定的攻击模式）。</p>
+	<p>网络工程师可能会将 pcap 文件与其他工具（如 <a href="https://www.cloudflare.com/zh-cn/learning/network-layer/what-is-mtr/" target="_blank">mtr</a>）结合使用，以解决网络可达性问题。例如，如果最终用户报告与特定应用程序的连接时断时续，工程师可以设置过滤出用户源 IP 地址的数据包捕获，以记录从用户设备接收到的所有数据包。然后，工程师可以分析该数据包捕获，并将其与其他信息源（例如，来自网络路径最终用户端的 pcap 以及流量日志和分析）进行比较，以了解问题的严重程度并找出问题的根源。</p>
+	<p>安全工程师还可以使用数据包捕获来更好地了解潜在的恶意流量。比如说，工程师发现了一次意外的流量激增，他们怀疑这可能是一次未遂的攻击。他们可以抓取一个数据包捕获来记录到达网络的流量并对其进行分析，以确定数据包是否有效。如果无效（例如，如果数据包负载是随机生成的无用数据），安全工程师可以创建一个防火墙规则来阻止类似这样的流量进入他们的网络。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/03/image1-65.png" class="kg-image" alt="Example of a packet capture from a recent DDoS attack targeted at Cloudflare infrastructure. The contents of this pcap can be used to create a “signature” to block the attack.">
+		<figcaption><em><em>针对 Cloudflare 基础设施的最近 DDoS 攻击的数据包捕获示例。此 pcap 的内容可用于创建</em> <em>“攻击特征”</em> <em>以阻止该攻击。</em></em></figcaption>
+	</figure>
+	<h3 id="--1">碎片化的流量导致可见性缺口</h3>
+	<p>传统上，用户通过登录路由器或防火墙并启动 <a href="https://www.tcpdump.org/" target="_blank">tcpdump</a> 之类的进程来捕获数据包。他们会设置一个过滤器，只匹配特定的数据包并获取文件。但随着网络变得更加碎片化，用户将安全功能转移到边缘，收集相关流量的数据包捕获变得越来越困难。不是所有流量都流过一个设备（就好比 “<a href="https://www.cloudflare.com/learning/access-management/castle-and-moat-network-security/" target="_blank">城堡和护城河</a>” 模式中的吊桥），工程师可能必须捕获分布在不同位置的许多不同物理和虚拟设备上的数据包。其中许多数据包可能根本不允许获取 pcap，然后用户必须尝试将它们重新拼合在一起，以创建其网络流量的完整图像。如今，这几乎是不可能完成的任务，而且随着网络变得更加碎片化且更加复杂，这项任务变得越来越困难。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/03/image2-56.png" class="kg-image"></figure>
+	<h3 id="cloudflare-">Cloudflare 全球网络提供的按需数据包捕获</h3>
+	<p>在 Cloudflare 的帮助下，您可以重新获得这种可见性。借助 <a href="https://www.cloudflare.com/zh-cn/magic-transit/" target="_blank">Magic Transit</a> 和 <a href="https://www.cloudflare.com/zh-cn/magic-wan/" target="_blank">Magic WAN</a>，客户通过 Cloudflare 的网络路由其所有公共和私有 IP 流量，以使其更安全、更快速、更可靠，同时也提高了可见性。您可以把 Cloudflare 想象成我们旧类比中一个遍布全球的巨大吊桥版本：因为我们在您所有的流量中充当一个单一的基于云的路由器和防火墙，所以我们可以在您的整个网络中捕获数据包，并在一个地方将它们返回给您。</p>
+	<h3 id="--2">工作原理</h3>
+	<p>客户可以使用我们的 <a href="https://developers.cloudflare.com/magic-firewall/how-to/collect-pcaps/" target="_blank">Packet Captures API</a> 请求数据包捕获。要获取您要寻找的数据包，您可以提供一个过滤器，其中包含您想要的数据包的 IP 地址、端口和协议。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>curl -X POST https://api.cloudflare.com/client/v4/accounts/${account_id}/pcaps \
+-H 'Content-Type: application/json' \
+-H 'X-Auth-Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="087d7b6d7a486d70696578646d266b6765">[email&nbsp;protected]</a>' \
+-H 'X-Auth-Key: 00000000000' \
+--data '{
+        "filter_v1": {
+               "source_address": "1.2.3.4",
+               "protocol": 6
+        },
+        "time_limit": 300,
+        "byte_limit": "10mb",
+        "packet_limit": 10000,
+        "type": "simple",
+        "system": "magic-transit"
+}'
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<!--kg-card-begin: markdown-->
+	<p><small>使用我们的 API 请求数据包捕获的示例。</small></p>
+	<!--kg-card-end: markdown-->
+	<p>我们利用 <a href="https://netfilter.org/projects/nftables/" target="_blank">nftables</a> 将过滤器应用于客户的传入数据包，并使用 <a href="https://www.netfilter.org/projects/libnetfilter_log/index.html" target="_blank">nflog</a> 来记录这些数据包：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>table inet pcaps_1 {
+    chain pcap_1 {
+        ip protocol 6 ip saddr 1.2.3.4 log group 1 comment “packet capture”
+    }
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<!--kg-card-begin: markdown-->
+	<p><small>用于过滤客户数据包日志的示例 nftables 配置</small></p>
+	<!--kg-card-end: markdown-->
+	<p>nflog 创建一个 netfilter 套接字，通过它将数据包的日志从 Linux 内核发送到用户空间。在用户空间中，我们使用 tcpdump 从 netfilter 套接字读取数据包，并生成数据包捕获文件：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>tcpdump -i nflog:1 -w pcap_1.pcap
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<!--kg-card-begin: markdown-->
+	<p><small>用于创建数据包捕获文件的示例 tcpdump 命令。</small></p>
+	<!--kg-card-end: markdown-->
+	<p>tcpdump 通常用于侦听网络接口上的传入数据包，但在我们的例子中，我们将它配置为从 nflog 组读取数据包日志。tcpdump 将数据包日志转换为数据包捕获文件。</p>
+	<p>我们得到数据包捕获文件后，就需要将它递交给客户。因为数据包捕获文件可能很大，并可能包含敏感信息（例如数据包负载），我们将它们交付给客户的方式是直接从我们的机器上传到客户选择的云存储服务。这意味着我们绝对不会存储敏感数据，并且客户可以轻松管理和存储这些大文件。</p>
+	<h3 id="--3">立即开始使用</h3>
+	<p>现在，购买了 Magic Firewall 高级功能的客户已全部可以使用按需数据包捕获。<a href="https://developers.cloudflare.com/magic-firewall/how-to/collect-pcaps/" target="_blank">数据包捕获 API</a> 允许客户捕获数据包的前 160 个字节，默认采样率为 1/100。在接下来的几周里，Cloudflare Dashboard 中将推出更多功能，包括完整数据包捕获和按需数据包捕获控制。请联系您的客户团队，了解最新消息！</p>
+</div>

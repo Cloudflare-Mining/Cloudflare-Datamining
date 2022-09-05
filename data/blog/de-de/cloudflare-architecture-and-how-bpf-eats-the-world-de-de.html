@@ -1,0 +1,111 @@
+<div class="post-content lh-copy gray1">
+	<p>Vor Kurzem hielt ich bei der <a href="https://www.netdevconf.org/0x13/schedule.html" target="_blank">Netdev 0x13 </a>, der Konferenz über Linux-Netzwerke in Prag, <a href="https://netdevconf.org/0x13/session.html?panel-industry-perspectives" target="_blank">einen kurzen Vortrag mit dem Titel „Linux bei Cloudflare“</a>. In diesem <a href="https://speakerdeck.com/majek04/linux-at-cloudflare" target="_blank">Vortrag</a> ging es vor allem um BPF. Egal, was die Frage ist – die Antwort scheint BPF zu sein.</p>
+	<p>Hier ist die Abschrift einer leicht veränderten Version des Vortrags.</p>
+	<hr>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/01_edge-network-locations-100.jpg" class="kg-image"></figure>
+	<p>Auf den Servern von Cloudflare läuft Linux. Wir betreiben zwei Kategorien von Rechenzentren: große „Core“-Rechenzentren, die Protokolle verarbeiten, Angriffe analysieren und Datenanalysen erstellen, sowie die „Edge“-Serverflotte, die an weltweit 180 Standorten Kundeninhalte bereitstellt.</p>
+	<p>In diesem Vortrag konzentriere ich mich auf die „Edge“-Server. Hier nutzen wir die neuesten Linux-Funktionen, optimieren die Leistung und behalten die DoS-Belastbarkeit immer im Auge..</p>
+	<hr>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/image-9.png" class="kg-image"></figure>
+	<p>Unser Edge-Dienst zeichnet sich durch unsere Netzwerkkonfiguration aus – wir nutzen ausgiebig Anycast-Routing. Anycast bedeutet, dass derselbe Satz von IP-Adressen von allen unseren Rechenzentren bekannt gegeben wird.</p>
+	<p>Dieses Design hat große Vorteile. Erstens garantiert es die optimale Geschwindigkeit für Endnutzer. Egal, wo Sie sich befinden, Sie erreichen immer das nächstgelegene Rechenzentrum. Außerdem hilft uns Anycast, den DoS-Traffic zu verteilen. Bei Angriffen erhält jeder Standort einen kleinen Teil des gesamten Datenverkehrs, was das Aufnehmen und Herausfiltern unerwünschten Traffics vereinfacht.</p>
+	<hr>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/03_edge-network-uniform-software-100-1.jpg" class="kg-image"></figure>
+	<p>Anycast ermöglicht es uns, die Netzwerkkonfiguration über alle Edge-Rechenzentren hinweg einheitlich zu gestalten. Wir haben in all unseren Rechenzentren das gleiche Design – unser Software-Stack ist auf allen Edge-Servern einheitlich. Jede Software läuft auf allen Servern.</p>
+	<p>Grundsätzlich kann jeder Rechner jede Aufgabe bewältigen – und wir lassen viele unterschiedliche und anspruchsvolle Aufgaben durchführen. Wir haben einen vollständigen HTTP-Stack, das magische Cloudflare Workers, zwei Gruppen von DNS-Servern – autoritative DNS und Resolver – sowie viele weitere öffentlich zugängliche Anwendungen wie Spectrum und Warp.</p>
+	<p>Obwohl auf jedem Server die gesamte Software läuft, werden Anfragen in der Regel auf ihrem Weg durch den Stapel von vielen Rechnern bearbeitet. Beispielsweise wird eine HTTP-Anfrage möglicherweise in jeder der fünf Phasen der Verarbeitung von einem anderen Rechner bearbeitet.</p>
+	<hr>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/image-23.png" class="kg-image"></figure>
+	<p>Lassen Sie mich Sie durch die ersten Stadien der Verarbeitung eingehender Pakete führen:</p>
+	<p>(1) Zuerst treffen die Pakete auf unseren Router. Der Router führt ECMP aus und leitet die Pakete zu unseren Linux-Servern. Wir nutzen ECMP, um jede Ziel-IP auf mehrere, mindestens aber auf 16 Maschinen zu verteilen. Das wird als rudimentäre Lastverteilungstechnik verwendet.</p>
+	<p>(2) Auf den Servern nehmen wir Pakete mit XDP eBPF auf. In XDP führen wir zwei Stufen aus. Zuerst führen wir eine volumetrische DoS-Abwehr aus und löschen Pakete, die zu sehr großen Layer-3-Angriffen gehören.</p>
+	<p>(3) Dann, weiterhin in XDP, führen wir eine Layer-4-Lastverteilung aus. Alle Pakete, die nicht zu Angriffen gehören, werden über die Rechner umgeleitet. Das dient dazu, die ECMP-Probleme zu umgehen, gibt uns eine feingranulare Lastverteilung und ermöglicht es uns, Server problemlos aus dem Betrieb zu nehmen.</p>
+	<p>(4) Nach der Umleitung erreichen die Pakete einen festgelegten Rechner. An diesem Punkt werden sie vom normalen Linux-Netzwerk-Stack aufgenommen, durchlaufen die übliche iptables-Firewall und werden an einen geeigneten Netzwerk-Socket weitergeleitet.</p>
+	<p>(5) Schließlich werden Pakete von einer Anwendung empfangen. Beispielsweise werden HTTP-Verbindungen von einem „Protokoll“-Server abgewickelt, der für die TLS-Verschlüsselung und die Verarbeitung von HTTP-, HTTP/2- und QUIC-Protokollen zuständig ist.</p>
+	<p>In diesen frühen Phasen der Anfragebearbeitung nutzen wir die coolsten neuen Linux-Funktionen. Wir können die modernen Funktionalitäten sinnvoll in drei Kategorien einteilen:</p>
+	<ul>
+		<li>DoS-Handhabung</li>
+		<li>Lastverteilung</li>
+		<li>Socket-Dispatch</li>
+	</ul>
+	<hr>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/image-25.png" class="kg-image"></figure>
+	<p>Lassen Sie uns die Handhabung von DoS im Detail ansehen. Wie bereits erwähnt, ist der erste Schritt nach dem ECMP-Routing der XDP-Stack von Linux, wo wir unter anderem die DoS-Abwehr ausführen.</p>
+	<p>In der Vergangenheit war unsere Abwehr volumetrischer Angriffe in klassischer BPF- und iptables-Grammatik formuliert. Kürzlich haben wir sie für die Ausführung im XDP eBPF-Kontext angepasst, was sich als überraschend schwierig herausstellte. Hier können Sie mehr über unsere Abenteuer lesen:</p>
+	<ul>
+		<li><a href="https://blog.cloudflare.com/l4drop-xdp-ebpf-based-ddos-mitigations/">L4Drop: XDP DDoS-Abwehr</a></li>
+		<li><a href="https://blog.cloudflare.com/xdpcap/">xdpcap: XDP-Paketerfassung</a></li>
+		<li><a href="https://netdevconf.org/0x13/session.html?talk-XDP-based-DDoS-mitigation" target="_blank">XDP-basierte DoS-Abwehr</a> (Vortrag von Arthur Fabre)</li>
+		<li><a href="https://netdevconf.org/2.1/papers/Gilberto_Bertin_XDP_in_practice.pdf" target="_blank">XDP in der Praxis: Integration von XDP in unsere DDoS-Abwehr-Pipeline</a>(PDF)</li>
+	</ul>
+	<p>Im Verlauf des Projekts sind wir auf eine Reihe von Beschränkungen bei eBPF/XDP gestoßen. Eine davon war das Fehlen von Concurrency-Primitiven. Es war sehr schwierig, Dinge wie Token-Buckets ohne kritischen Wettlauf zu implementieren. Später stellten wir fest, dass die <a href="http://vger.kernel.org/lpc-bpf2018.html#session-9" target="_blank">Facebook-Entwicklerin Julia Kartseva</a> die gleichen Probleme hatte. Im Februar wurde das Problem mit der Einführung des Helfers bpf_spin_lock behoben.</p>
+	<hr>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/image-26.png" class="kg-image"></figure>
+	<p>Obwohl unsere moderne volumetrische DoS-Abwehr im XDP-Layer erfolgt, verlassen wir uns bei der Abwehr auf Application-Layer 7 immer noch auf iptables. Hier sind die Funktionen einer Firewall auf höherer Ebene nützlich: connlimit, hashlimits und ipsets. Wir verwenden auch das iptables-Modul xt_bpf zum Ausführen von cBPF in iptables, um Packet-Nutzlasten anzupassen. Darüber haben wir in der Vergangenheit schon gesprochen:</p>
+	<ul>
+		<li><a href="https://speakerdeck.com/majek04/lessons-from-defending-the-indefensible" target="_blank">Erkenntnisse aus der Verteidigung des Nicht-zu-Verteidigenden</a> (PPT)</li>
+		<li><a href="https://blog.cloudflare.com/introducing-the-bpf-tools/">Einführung der BPF-Tools</a></li>
+	</ul>
+	<hr>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/image-34.png" class="kg-image"></figure>
+	<p>Nach XDP und iptables haben wir eine letzte kernelseitige DoS-Abwehrschicht.</p>
+	<p>Stellen Sie sich eine Situation vor, in der unsere UDP-Abwehr fehlschlägt. In einem solchen Fall könnten wir uns einer Flut von Paketen ausgesetzt sehen, die auf unseren Anwendungs-UDP-Socket treffen. Dies könnte den Socket zum Überlaufen bringen und so zu Paketverlusten führen. Das wäre problematisch, denn sowohl gute als auch schlechte Pakete würden wahllos gelöscht. Für Anwendungen wie DNS ist das katastrophal. In der Vergangenheit haben wir einen UDP-Socket pro IP-Adresse ausgeführt, um den Schaden abzumildern. Eine ungemilderte Flut war schlimm, aber zumindest hatte sie keine Auswirkungen auf den Datenverkehr zu anderen Server-IP-Adressen.</p>
+	<p>Heutzutage ist diese Architektur nicht mehr geeignet. Wir haben mehr als 30.000 DNS-IPs und die Ausführung dieser Anzahl von UDP-Sockets ist nicht gerade optimal. Unsere moderne Lösung besteht darin, einen einzelnen UDP-Socket mit einem komplexen eBPF-Socket-Filter auszuführen und dabei die Socket-Option SO_ATTACH_BPF einzusetzen. In früheren Blogbeiträgen haben wir das Ausführen von eBPF auf Netzwerk-Sockets behandelt:</p>
+	<ul>
+		<li><a href="https://blog.cloudflare.com/epbf_sockets_hop_distance/">eBPF, Sockets, Hop Distance und manuelles Schreiben der eBPF-Assembly</a></li>
+		<li><a href="https://blog.cloudflare.com/sockmap-tcp-splicing-of-the-future/">SOCKMAP – TCP-Splicing der Zukunft</a></li>
+	</ul>
+	<p>Die erwähnte eBPF begrenzt die Rate der Pakete. Sie hält den Status – die Paketanzahl – innerhalb einer eBPF-Map. Wir können sicher sein, dass eine einzelne überflutete IP den übrigen Traffic nicht beeinflusst. Das funktioniert gut, obwohl wir während der Arbeit an diesem Projekt einen ziemlich beunruhigenden Fehler im eBPF-Verifier gefunden haben:</p>
+	<ul>
+		<li><a href="https://blog.cloudflare.com/ebpf-cant-count/">eBPF kann nicht zählen?!</a></li>
+	</ul>
+	<p>Ich vermute, dass das Ausführen von eBPF auf einem UDP-Socket nicht gerade üblich ist.</p>
+	<hr>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/image-27.png" class="kg-image"></figure>
+	<p>Neben dem DoS führen wir in XDP auch einen Layer 4 Load-Balancer-Layer aus. Das ist ein neues Projekt, über das wir noch nicht viel gesprochen haben. Ohne zu sehr ins Details zu gehen: In bestimmten Situationen müssen wir ein Socket-Lookup von XDP aus durchführen.</p>
+	<p>Das Problem ist relativ einfach – unser Code muss die „Socket“-Kernelstruktur nach einem 5-Tupel durchsuchen, der aus einem Paket extrahiert wurde. Das klappt ist in der Regel gut, denn es gibt dafür den Helfer bpf_sk_lookup. Wenig überraschend gab es jedoch einige Komplikationen. Ein Problem war die Unfähigkeit zu überprüfen, ob ein empfangenes ACK-Paket ein gültiger Teil eines Drei-Wege-Handshakes ist, wenn SYN-Cookies aktiviert sind. Mein Kollege Lorenz Bauer arbeitet daran, Unterstützung für diesen Spezialfall hinzuzufügen.</p>
+	<hr>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/image-28.png" class="kg-image"></figure>
+	<p>Nach DoS und den Lastverteilungs-Layern werden die Pakete an den üblichen Linux-TCP/UDP-Stack übergeben. Hier führen wir einen Socket-Dispatch durch – zum Beispiel werden Pakete, die an Port 53 gehen, an einen Socket unseres DNS-Servers weitergeleitet.</p>
+	<p>Wir tun unser Bestes, um Vanilla-Linux-Funktionen zu verwenden, aber die Dinge werden komplex, wenn man Tausende von IP-Adressen auf den Servern verwendet.</p>
+	<p>Linux davon zu überzeugen, Pakete korrekt weiterzuleiten, ist mit <a href="https://blog.cloudflare.com/how-we-built-spectrum">dem „AnyIP“-Trick</a> relativ einfach. Sicherzustellen, dass die Pakete an die richtige Anwendung gesendet werden, ist eine andere Sache. Leider ist die standardmäßige Linux-Socket-Dispatch-Logik für unsere Zwecke nicht flexibel genug. Für beliebte Ports wie TCP/80 wollen wir den Port zwischen mehreren Anwendungen aufteilen, die ihn jeweils in einem anderen IP-Bereich verarbeiten. Linux unterstützt das von sich aus nicht. Man kann bind() entweder auf einer bestimmten IP-Adresse oder auf allen IP-Adressen (mit 0.0.0.0) aufrufen.</p>
+	<hr>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/image-29.png" class="kg-image"></figure>
+	<p>Als Abhilfe haben wir einen benutzerdefinierten Kernel-Patch entwickelt, der <a href="https://patchwork.ozlabs.org/patch/602916/" target="_blank">eine SO_BINDTOPREFIX-Socket-Option</a> hinzufügt. Wie der Name schon sagt, erlaubt uns das, bind() auf einem ausgewählten IP-Präfix aufzurufen. Das löst das Problem,mit mehreren Anwendungen beliebte Ports wie 53 oder 80 gemeinsam zu nutzen.</p>
+	<p>Dann stoßen wir auf ein weiteres Problem. Für unser Produkt Spectrum müssen wir alle 65535 Ports abhören. So viele Listen-Sockets laufen zu lassen, ist keine gute Idee (siehe <a href="https://blog.cloudflare.com/revenge-listening-sockets/">unser Blogbeitrag zu diesem Abenteuer</a>), also mussten wir einen anderen Weg finden. Nach einigen Experimenten lernten wir, ein obskures iptables-Modul – TPROXY – für diesen Zweck zu verwenden. Lesen Sie mehr dazu hier:</p>
+	<ul>
+		<li><a href="https://blog.cloudflare.com/how-we-built-spectrum/">Wie wir die Linux-Firewall missbrauchten, um Spectrum zu bauen</a></li>
+	</ul>
+	<p>Dieses Setup funktioniert, aber wir mögen die zusätzlichen Firewall-Regeln nicht. Wir arbeiten daran, dieses Problem richtig zu lösen – indem wir die Socket-Dispatch-Logik erweitern. Sie haben es erraten: Wir wollen die Socket-Dispatch-Logik durch den Einsatz von eBPF erweitern. Sie dürfen einige Patches von uns erwarten.</p>
+	<hr>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/image-32.png" class="kg-image"></figure>
+	<p>Dann gibt es eine Möglichkeit, Anwendungen mithilfe von eBPF zu verbessern. Vor Kurzem versetzte uns das TCP-Splicing mit SOCKMAP in Entzückung:</p>
+	<ul>
+		<li><a href="https://blog.cloudflare.com/sockmap-tcp-splicing-of-the-future/">SOCKMAP – TCP-Splicing der Zukunft</a></li>
+	</ul>
+	<p>Diese Technik hat ein großes Potenzial zur Verbesserung der Tail-Latenzzeit für viele Teile unseres Software-Stacks. Die aktuelle SOCKMAP-Implementierung ist noch nicht ganz bereit für den großen Auftritt, aber das Potenzial ist riesig.</p>
+	<p>In ähnlicher Weise bieten die neuen <a href="https://netdevconf.org/2.2/papers/brakmo-tcpbpf-talk.pdf" target="_blank">TCP-BPF aka BPF_SOCK_OPS</a>-Hooks eine hervorragende Möglichkeit, Leistungsparameter von TCP-Flows zu überprüfen. Diese Funktionalität ist für unser Performance-Team sehr nützlich.</p>
+	<hr>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/12_prometheus-ebpf_exporter-100.jpg" class="kg-image"></figure>
+	<p>Einige Linux-Funktionen sind nicht mehr auf dem neuesten Stand und wir müssen sie umgehen. So stoßen wir beispielsweise an Grenzen bei den Netzwerkmetriken. Verstehen Sie mich nicht falsch – die Netzwerkmetriken sind fantastisch, aber leider sind sie nicht granular genug. Dinge wie TcpExtListenDrops und TcpExtListenOverflows werden als globale Zähler gemeldet, während wir sie auf Anwendungsbasis kennen müssen.</p>
+	<p>Unsere Lösung besteht darin, eBPF-Statusprüfungen zu verwenden, um die Zahlen direkt aus dem Kernel zu extrahieren. Mein Kollege Ivan Babrou hat einen Prometheus-Metrik-Exporteur namens „ebpf_exporter“ geschrieben, um das zu vereinfachen. Lesen Sie mehr:</p>
+	<ul>
+		<li><a href="https://blog.cloudflare.com/introducing-ebpf_exporter/">Einführung von ebpf_exporter</a></li>
+		<li><a href="https://github.com/cloudflare/ebpf_exporter" target="_blank">https://github.com/cloudflare/ebpf_exporter</a></li>
+	</ul>
+	<p>Mit dem „ebpf_exporter“ können wir viele Arten von detaillierten Metriken generieren. Er ist sehr leistungsfähig und hat uns bei vielen Gelegenheiten gerettet.</p>
+	<hr>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/image-33.png" class="kg-image"></figure>
+	<p>In diesem Vortrag haben wir 6 BPF-Layer diskutiert, die auf unseren Edge-Servern ausgeführt werden:</p>
+	<ul>
+		<li>Volumetrische DoS-Abwehr, die auf XDP eBPF ausgeführt wird</li>
+		<li>Iptables xt_bpf cBPF für Angriffe auf Anwendungsebene</li>
+		<li>SO_ATTACH_BPF für Ratenbegrenzung auf UDP-Sockets</li>
+		<li>Load Balancer, ausgeführt auf XDP</li>
+		<li>eBPFs, die Anwendungshilfsprogramme wie SOCKMAP zum TCP-Socket-Splicing und TCP-BPF für TCP-Messungen ausführen</li>
+		<li>„ebpf_exporter“ für granulare Metriken</li>
+	</ul>
+	<p>Und das ist erst der Anfang! Bald werden wir mehr mit eBPF-basiertem Socket-Dispatch, eBPF auf dem <a href="https://linux.die.net/man/8/tc" target="_blank">Linux TC (Traffic Control)</a>-Layer und stärkerer Integration von cgroup-eBPF-Hooks arbeiten. Außerdem führt unser SRE-Team eine ständig wachsende Liste mit <a href="https://github.com/iovisor/bcc" target="_blank">BCC-Skripten,</a>, die beim Debuggen nützlich sind.</p>
+	<p>Es scheint, als hätte Linux aufgehört, neue APIs zu entwickeln, und alle neuen Funktionen werden als eBPF-Hooks und Helfer implementiert. Das ist in Ordnung und hat große Vorteile. Es ist einfacher und sicherer, ein eBPF-Programm zu aktualisieren, als ein Kernelmodul neu kompilieren zu müssen. Einige Dinge wie TCP-BPF, das die Bereitstellung großer Datenmengen zur Leistungsverfolgung ermöglicht, wären ohne eBPF wahrscheinlich nicht möglich.</p>
+	<p>Einige Leute behaupten „Software frisst die Welt“, ich würde sagen: „BPF frisst die Software“.</p>
+</div>

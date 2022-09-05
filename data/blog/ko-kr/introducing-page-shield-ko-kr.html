@@ -1,0 +1,35 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image3-31.png" class="kg-image"></figure>
+	<p>오늘, 최종 사용자 브라우저에서의 공격을 감지하는 데 이용할 수 있는 클라이언트측 보안 제품인 Page Shield를 출시하게 되어 기쁘게 생각합니다.</p>
+	<p>2015년부터 해커 집단 <a href="https://sansec.io/what-is-magecart" target="_blank">Magecart</a>는 악성 코드로 제3자 종속성을 감염시켜 온라인 상점에서 결제 자격 증명을 탈취했습니다. 감염 코드는 최종 사용자 브라우저에서 요청되며 그곳에서 웹 페이지의 사용자 정보를 실행 및 액세스하게 됩니다. 감염 코드는 정보를 입수한 후 해커들에게 보내게 되고, 해커들은 정보를 재판매하거나 신용 카드 사기 및 ID 도용 등의 추가 공격에 이용합니다.</p>
+	<p>그 이후로 이루어진 <a href="https://en.wikipedia.org/wiki/Supply_chain_attack" target="_blank">공급망 공격</a>의 대상으로는 Ticketmaster, Newegg, British Airways 등이 있었습니다. British Airways 공격은 자체 호스팅 JavaScript 파일 중 하나가 손상된 것에서 비롯되어 500,000건에 이르는 고객 데이터가 해커에게 노출되고 말았습니다. 이 공격의 결과로 GDPR 벌금이 부과되었으며 <a href="https://www.bloomberg.com/news/articles/2021-01-12/british-airways-faces-biggest-class-action-suit-over-data-breach" target="_blank">영국 역사상 가장 큰 규모의 개인정보 집단 소송이 이루어졌습니다</a>. 총 수백만 명의 사용자가 이 공격으로 영향을 받았습니다.</p>
+	<p>조직 내에서 보안 코드를 작성한다는 것은 타사 공급자를 생각하지 않더라도 쉽지 않은 일입니다. 많은 SaaS 플랫폼에서 수백만 개의 사이트로 제3자 코드를 제공하기 때문에 단 하나의 손상만으로도 엄청난 결과가 초래될 수 있습니다. Page Shield는 고객이 이러한 잠재적 공격 벡터를 모니터링하는 것을 지원하고 기밀인 사용자 정보가 해커의 손에 들어가는 것을 방지합니다.</p>
+	<p>이번 주 초에 <a href="https://blog.cloudflare.com/browser-isolation-for-teams-of-all-sizes/">우리는 모두를 위한 원격 브라우저 격리 서비스를 발표했습니다</a>. 이는 직원들의 브라우저에서 이루어지는 클라이언트 측 공격을 완화하기 위함입니다. Page Shield는 클라이언트 측 보안을 위한 Cloudflare의 노력을 계속하여 여러분의 고객을 겨냥한 공격의 완화를 돕고 있습니다.</p>
+	<h3 id="-">배경</h3>
+	<p>Magecart 스타일 공격은 사용자의 브라우저에서 수행되는 공급망 공격의 한 가지 유형입니다. 공격자는 제3자 JavaScript 종속성의 호스트를 겨냥하고 브라우저에 제공되는 소스 코드에 대한 제어권을 확보합니다. 감염된 코드가 실행될 때는 결제 단계에서 입력하는 신용 카드 정보처럼 최종 사용자가 사이트에 입력하는 중요한 데이터를 탈취하려고 하는 경우가 많습니다.</p>
+	<p>이러한 공격을 감지하기가 쉽지 않은 것은 많은 응용 프로그램 소유자가 제3자 JavaScript가 의도대로 작동할 것으로 신뢰하기 때문입니다. 이러한 신뢰 때문에 응용 프로그램 소유자는 제3자 코드를 거의 감사하지 않습니다. Magecart 공격은 감지되기까지 몇 개월이나 걸린 경우가 많았습니다.</p>
+	<p>소프트웨어 공급망에서 비롯된 위험은 데이터 유출만이 아닙니다. 최근 몇 년 동안에는 해커가 제3자 코드를 수정하여 사용자에게 사기성 광고를 보여주는 경우도 볼 수 있었습니다. 사용자가 이러한 광고를 클릭했다가 피싱 사이트로 이동되면 그곳에서 해커가 개인정보를 탈취합니다. 다른 JavaScript 맬웨어는 최종 사용자의 리소스를 이용해 공격자를 위해 암호화폐를 채굴함으로써 사이트의 성능을 손상시킵니다.</p>
+	<p>그렇다면 응용 프로그램 소유자는 어떻게 스스로를 보호할 수 있을까요? 콘텐츠 보안 정책(CSP)이나 하위 리소스 무결성(SRI) 등 기존의 브라우저 기술도 위협으로부터 어느 정도 보호해줄 수 있지만, 몇 가지 단점이 있습니다.</p>
+	<p>CSP를 사용하면 응용 프로그램 소유자가 브라우저에 허용 목록을 보내 해당 목록 외의 리소스가 실행되는 것을 방지할 수 있습니다. 이렇게 하면 특정 교차 사이트 스크립팅(XSS) 공격은 막을 수 있겠지만, 기존 리소스가 양성에서 악성 상태로 바뀌는 경우에는 감지하지 못합니다. 또한 CSP 관리는 운영 측면에서 쉽지 않습니다. 개발자가 새로운 스크립트를 사이트에 추가할 때마다 허용 목록을 업데이트해야 하기 때문입니다.</p>
+	<p>SRI를 사용하면 응용 프로그램 소유자가 JavaScript 및 기타 리소스에 대해 예상되는 파일 해시를 지정할 수 있습니다. 가져온 파일이 해시와 일치하지 않으면 실행이 차단됩니다. SRI를 사용할 때 어려운 점은 공급자가 코드를 자주 업데이트하며 경우에 따라 다른 최종 사용자에게 다른 파일을 제공한다는 것입니다. 또한 때로 JavaScript 공급자가 띄어쓰기와 같은 사소한 차이에 따라 최종 사용자에게 다른 해시의 버전 지정 파일을 제공하기도 합니다. 이 때문에 응용 프로그램 소유자가 잘못한 것도 없는데 SRI가 정상적인 파일을 차단하게 될 수 있습니다.</p>
+	<h3 id="-page-shield-">스크립트 모니터는 Page Shield의 첫 번째 주요 기능임</h3>
+	<p>스크립트 모니터는 Cloudflare가 Page Shield를 통해 선보이는 첫 번째 야심작입니다. 이 기능을 켜면 Page Shield는 시간 경과에 따른 사이트의 JavaScript 종속성을 기록합니다. 새로운 JavaScript 종속성이 나타나면 경보가 가게 되어 그것이 사이트에서 예상된 변경 사항인지를 조사할 수 있습니다. 이를 통해 악성 사용자가 응용 프로그램을 수정하여 새로운 악의적 JavaScript 파일을 요청했는지 여부를 식별할 수 있습니다. 베타 서비스가 완료되면 이러한 초기 기능 세트가 Business 및 Enterprise 고객에게 추가 요금 없이 제공될 것입니다.</p>
+	<h3 id="--1">스크립트 모니터는 어떻게 작동할까요?</h3>
+	<p>Cloudflare는 응용 프로그램 원본 서버와 최종 사용자 사이에서 독특한 위치를 점하고 있기 때문에 응답이 최종 사용자에게 이르기 전에 그 응답을 수정할 수 있습니다. 이 경우 Cloudflare는 페이지가 에지를 통과할 때 CSP 보고 전용이라는 헤더를 추가합니다. JavaScript 파일이 해당 페이지에서 실행되려 하면 브라우저가 다시 Cloudflare에 보고합니다. 보고 전용 헤더를 사용하기 때문에 응용 프로그램 소유자가 관련 인사이트에 대하여 허용 목록을 관리할 필요가 없습니다.</p>
+	<p>Cloudflare에서는 각각의 보고를 검토하면서 JavaScript 파일을 해당 영역의 기록된 종속성과 비교하여 새로운 파일인지 여부를 확인합니다. 새로운 파일인 경우 경보를 발동하여 해당 변화가 예상된 것인지 여부를 조사하여 판단할 수 있도록 합니다.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/03/image1-40.png" class="kg-image" alt="The Script Monitor UI located under Firewall -> Page Shield">
+		<figcaption>방화벽 아래 위치한 Script Monitor UI -&gt; Page Shield</figcaption>
+	</figure>
+	<p>베타 서비스 참여자는 영역 대시보드의 방화벽 섹션 아래 Page Shield 탭을 볼 수 있습니다. 그곳에서 자기 영역의 JavaScript 종속성을 추적하는 스크립트 모니터 테이블을 찾을 수 있습니다. 각각의 종속성에 대하여 처음 발견된 날짜, 마지막으로 발견된 날짜, 감지된 호스트 도메인을 볼 수 있습니다.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/03/image2-34.png" class="kg-image" alt="Email notification example for new JavaScript dependencies found">
+		<figcaption>발견된 새 JavaScript 종속성에 대한 이메일 알림 예시</figcaption>
+	</figure>
+	<p>또한 대시보드에서 스크립트 모니터 알림을 구성할 수도 있습니다. 이 알림은 사이트에서 새로운 JavaScript 파일을 요청할 때마다 이메일이나 PagerDuty로 경보를 보냅니다.</p>
+	<h3 id="--2">앞으로의 전망</h3>
+	<p>Cloudflare의 사명은 더 나은 인터넷 환경 구축을 지원하는 것입니다. 이러한 지원은 지난 몇 년 사이에 공격이 엄청나게 증가하고 있는 최종 사용자 브라우저에까지 확장됩니다. 우리는 Page Shield를 이용하여 응용 프로그램이 이와 같은 교묘한 공격을 감지하고 완화하여 사용자의 중요한 정보를 안전하게 지킬 수 있도록 돕겠습니다.</p>
+	<p>Script Monitor에는 이미 코드 변화 감지 기능이 구축되고 있습니다. 코드 변화 감지 기능은 정기적으로 응용 프로그램의 JavaScript 종속성을 가져와서 그 행동을 분석할 것입니다. 기존 파일에 대하여 새로운 코드 행동이 발생한 것으로 감지되면 Cloudflare에서는 경보를 보내 고객이 해당 변화를 검토하고 새 코드가 양성 업데이트인지 감염된 코드 조각인지를 판단할 수 있도록 합니다.</p>
+	<p>코드 변화 감지 기능 다음으로는 JavaScript 파일에 대한 지능형 분석 기능을 선보일 것입니다. 물론 종속성에 변화가 생길 때 응용 프로그램 소유자에게 경보를 보냄으로써 관심 파일에 대한 인사이트를 제공할 수 있기는 하지만, 더 좋은 기능도 가능합니다. Cloudflare는 보안 파트너와 협업하여 Magecart JavaScript의 샘플을 얻었고 악의적 JavaScript 샘플을 정확히 분류할 수 있음을 입증했습니다. 이러한 기술을 더욱 개선하여 Page Shield 고객의 종속성이 악성이라는 판단이 들 때 경보를 보낼 수 있는 수준까지 올릴 계획입니다.</p>
+	<p>Cloudflare는 고객과의 대화를 통해 CSP 허용 목록 관리가 운영 측면에서 쉽지 않다는 사실을 이해하고 있습니다. 새로운 클라이언트 측 JavaScript가 허용 목록에 추가되지 않은 채로 배포될 경우 해당 새 코드는 브라우저에 의해 차단됩니다. 그래서 Cloudflare는 역방향 프록시로서의 위치를 활용하여 부정적 보안 모델 차단 기능을 배포하려 합니다. 이를 통해 응용 프로그램 소유자는 허용 목록을 관리하지 않고도 개별 스크립트를 차단할 수 있으며, 고객은 번거로운 간접비용 없이 새 코드를 배포할 수 있습니다.</p>
+	<h3 id="--3">베타 버전 등록</h3>
+	<p>오늘부터 모든 Business 및 Enterprise 요금제 고객은 <a href="https://www.cloudflare.com/waf/page-shield/" target="_blank">여기</a>에서 등록하여 Page Shield의 비공개 베타 서비스에 참여할 수 있습니다. 베타 서비스에 참여함으로써 고객은 스크립트 모니터 기능을 활성화하고 사이트의 JavaScript 모니터링을 시작할 수 있습니다.</p>
+</div>

@@ -1,0 +1,56 @@
+<div class="post-content lh-copy gray1">
+	<p>Wenn ein Nutzer über einen Enterprise-VPN-Client eine Verbindung mit einem Unternehmensnetzwerk herstellt, protokolliert das VPN folgende Informationen:</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/12/image2-21.png" class="kg-image"></figure>
+	<p>Der Administrator dieses privaten Netzwerks weiß, dass der Nutzer die Tür um 12:15:05 geöffnet hat, kann aber meist nicht sehen, was er als nächstes getan hat. Wenn sich Nutzer erst einmal innerhalb des privaten Netzwerks befinden, können sie auf interne Tools, vertrauliche Daten und Produktionsumgebungen zugreifen. Wenn man dies verhindern möchte, ist man auf komplizierte Netzwerksegmentierung und oft auch auf serverseitige Anwendungsänderungen angewiesen. Noch schwieriger ist es, die Schritte zu protokollieren, die eine Person <em>innerhalb</em> des Netzwerks unternimmt.</p>
+	<p>Cloudflare Access verbessert die VPN-Protokollierung nicht, sondern ersetzt dieses Modell ganz. Cloudflare Access schützt interne Websites. Dazu wird jede Anfrage, nicht nur die erstmalige Anmeldung, auf Identität und Berechtigung ausgewertet. Anstelle eines privaten Netzwerks nutzen Administratoren unser autoritatives DNS für die Bereitstellung von Unternehmensanwendungen hinter Cloudflare. Administratoren können dann das SSO ihres Teams integrieren und benutzer- und gruppenspezifische Regeln erstellen, mit denen gesteuert wird, wer Anwendungen hinter dem Access Gateway erreichen kann.</p>
+	<p>Bei einer Anfrage an eine Website hinter Access fordert Cloudflare den Besucher auf, sich über einen Identitätsanbieter anzumelden. Access überprüft dann die Identität dieses Nutzers anhand der konfigurierten Regeln und lässt die Anfrage zu, wenn sie nach den Regeln erlaubt ist. Access führt diese Prüfungen für jede Anfrage eines Nutzers durch. Die Prüfung ist für den Endnutzer völlig transparent und nahtlos.</p>
+	<p>Seit der Einführung von Access sieht unsere Protokollierung jedoch ungefähr so aus wie im Screenshot oben. Wir haben festgehalten, wann ein Nutzer sich zum ersten Mal über das Gateway authentifiziert hat, aber an diesem Punkt aufgehört. Ab heute können wir Ihrem Team nun für jede Anfrage an jede Anwendung ein vollständiges Bild verschaffen.</p>
+	<p>Sie können jetzt Protokolle für jede Anfrage erfassen, die ein Nutzer an eine Ressource hinter Cloudflare Access stellt. In Notfällen, zum Beispiel wenn ein Laptop gestohlen wurde, können Sie jetzt jede URL überprüfen, die während einer Sitzung angefordert wurde. Protokolle werden an einem Ort standardisiert, unabhängig davon, ob Sie mit mehreren SSO-Anbietern arbeiten oder mehrere Anwendungen schützen, und die Cloudflare Logpush-Plattform kann sie zur Aufbewahrung und Analyse an Ihr SIEM senden.</p>
+	<h2 id="jede-anmeldung-berpr-fen"><strong>Jede Anmeldung überprüfen</strong></h2>
+	<p>Cloudflare Access bietet die gleiche Geschwindigkeit und Sicherheit, die Cloudflare auch öffentlich zugänglichen Websites bietet, und nutzt unsere Erfahrungen für die internen Anwendungen Ihres Teams. Bei den meisten Teams existierten diese Anwendungen traditionell hinter einem Unternehmens-VPN. Sobald ein Nutzer in dieses VPN eintrat, befand er sich innerhalb des privaten Netzwerks und Administratoren mussten zusätzliche Maßnahmen ergreifen, damit Nutzer nur die Dinge erreichen, auf die sie Zugriff haben sollten.</p>
+	<p>Access kehrt dieses Modell um. Es geht davon aus, dass standardmäßig kein Nutzer Zugriff auf irgendetwas haben sollte. Die Zero-Trust-Lösung wird also auf die internen Tools Ihres Teams angewendet. Wenn ein Nutzer bei Access den Hostnamen einer Anwendung anfordert, trifft die Anfrage zuerst bei Cloudflare ein. Wir überprüfen, ob der Nutzer authentifiziert ist, und verweisen ihn andernfalls an Ihren Identitätsanbieter wie Okta oder Azure ActiveDirectory. Der Nutzer wird zur Anmeldung aufgefordert und Cloudflare ermittelt dann, ob er die angeforderte Anwendung erreichen darf. All dies geschieht am Rande unseres Netzwerks, bevor eine Anfrage Ihren Ursprungsserver erreicht, und für den Nutzer wirkt es wie der reibungslose SSO-Ablauf, den er von SaaS-Apps kennt.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/12/image3-30.png" class="kg-image"></figure>
+	<p>Wenn sich ein Nutzer bei Ihrem Identitätsanbieter authentifiziert, überprüfen wir dieses Ereignis wie eine Anmeldung und stellen diese in unserer API zur Verfügung. Wir erfassen die E-Mail des Nutzers, seine IP-Adresse, die Uhrzeit der Authentifizierung, die Methode (in diesem Fall einen Google-SSO-Ablauf) und die Anwendung, die er erreichen konnte.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/12/image4-28.png" class="kg-image"></figure>
+	<p>Mit diesen Protokollen können Sie jeden Nutzer verfolgen, der eine Verbindung zu einer internen Anwendung hergestellt hat. Das gilt auch für Subunternehmer und Partner, die möglicherweise andere Identitätsanbieter verwenden. Diese Protokollierung wurde jedoch bislang bei der Authentifizierung beendet. Access hat die nächsten Schritte eines bestimmten Nutzers nicht erfasst.</p>
+	<h2 id="jede-anfrage-berpr-fen"><strong>Jede Anfrage überprüfen</strong></h2>
+	<p>Cloudflare schützt sowohl Websites, auf die extern zugegriffen werden kann, als auch interne Ressourcen. Dazu wird bei jeder Anfrage eine Triage durchgeführt, bevor wir sie an Ihren Ursprungsserver senden. Produkte wie unser WAF setzen bestimmte Regeln durch, um Ihre Website vor Angriffen wie SQL-Injection oder Cross-Site Scripting zu schützen. Ebenso identifiziert Access den Auftraggeber hinter jeder Anfrage. Dazu wird jede Verbindung ausgewertet, die das Gateway durchläuft.</p>
+	<p>Sobald sich ein Mitglied Ihres Teams authentifiziert, um eine Ressource hinter Access zu erreichen, erzeugen wir ein Token für diesen Nutzer, das seine SSO-Identität enthält. Das Token hat die Struktur eines JSON Web Token (JWT). JWT-Sicherheit ist ein offener Standard zum Signieren und Verschlüsseln sensibler Informationen. Diese Token stellen einen sicheren Mechanismus mit hoher Informationsdichte dar, mit dem Access einzelne Nutzer überprüfen kann. Cloudflare signiert das JWT mit einem öffentlichen und privaten Schlüsselpaar, das wir kontrollieren. Wir nutzen für diese Signierung eine RSA-Signatur mit SHA-256 oder RS256, einem asymmetrischen Algorithmus. Wir stellen den öffentlichen Schlüssel zur Verfügung, damit auch Sie seine Authentizität überprüfen können.</p>
+	<p>Wenn ein Nutzer eine bestimmte URL anfordert, hängt Access die Nutzeridentität aus diesem Token als Header der Anfrage an. Dies protokollieren wir, sobald die Anfrage über unser Netzwerk geht. Ihr Team kann diese Protokolle mithilfe der <a href="https://developers.cloudflare.com/logs/logpush/" target="_blank">Logpush</a>-Plattform von Cloudflare in Ihrem bevorzugten Drittanbieter-SIEM oder Speichermedium festhalten.</p>
+	<p>Mit Cloudflare Logpush sind Sie in der Lage, spezifische Anfrage-Header aus den Anfragen an Websites hinter Access zu sammeln und zu versenden. Nach der Aktivierung können Sie dann das Ziel konfigurieren, an das Cloudflare diese Protokolle senden soll. Wenn dies mit dem Feld „Access-Nutzeridentität“ aktiviert wird, werden die Protokolle als JSON auf Ihre Systeme exportiert, ähnlich wie die folgenden.</p>
+	<pre><code class="language-json">{
+   "ClientIP": "198.51.100.206",
+   "ClientRequestHost": "jira.widgetcorp.tech",
+   "ClientRequestMethod": "GET",
+   "ClientRequestURI": "/secure/Dashboard/jspa",
+   "ClientRequestUserAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.87 Safari/537.36",
+   "EdgeEndTimestamp": "2019-11-10T09:51:07Z",
+   "EdgeResponseBytes": 4600,
+   "EdgeResponseStatus": 200,
+   "EdgeStartTimestamp": "2019-11-10T09:51:07Z",
+   "RayID": "5y1250bcjd621y99"
+   "RequestHeaders":{"cf-access-user":"srhea"},
+}
+ 
+{
+   "ClientIP": "198.51.100.206",
+   "ClientRequestHost": "jira.widgetcorp.tech",
+   "ClientRequestMethod": "GET",
+   "ClientRequestURI": "/browse/EXP-12",
+   "ClientRequestUserAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.87 Safari/537.36",
+   "EdgeEndTimestamp": "2019-11-10T09:51:27Z",
+   "EdgeResponseBytes": 4570,
+   "EdgeResponseStatus": 200,
+   "EdgeStartTimestamp": "2019-11-10T09:51:27Z",
+   "RayID": "yzrCqUhRd6DVz72a"
+   "RequestHeaders":{"cf-access-user":"srhea"},
+}</code></pre>
+	<p><br></p>
+	<p>Im obigen Beispiel hat der Nutzer zunächst die Begrüßungsseite für eine Jira-Beispielinstanz aufgerufen. Die nächste Anfrage bezog sich auf ein bestimmtes Jira-Ticket namens EXP-12 und wurde etwa eine Minute nach der ersten Anfrage gestellt. Wenn alle Anfragen protokolliert werden, können Access-Administratoren jede Anfrage überprüfen, die ein Nutzer nach der Authentifizierung gestellt hat, falls etwa ein Konto kompromittiert oder ein Gerät gestohlen wurde.</p>
+	<p>Die Protokolle sind für alle Anwendungen und Identitätsanbieter einheitlich. Es werden dieselben Standardfelder erfasst, wenn sich Subunternehmer mit ihrer AzureAD-Instanz bei Ihrem Lieferketten-Tool anmelden oder wenn sich Ihre internen Nutzer über Okta bei Ihrem Jira authentifizieren. Sie können die obigen Daten auch um andere Anfragedetails wie verwendeter TLS-Chiffre und WAF-Ergebnisse erweitern.</p>
+	<h2 id="wie-k-nnen-diese-daten-verwendet-werden"><strong>Wie können diese Daten verwendet werden?</strong></h2>
+	<p>Die nativen Protokollfunktionen gehosteter Anwendungen sind sehr unterschiedlich. Einige Tools liefern robustere Datensätze über die Nutzeraktivität, andere erfordern jedoch serverseitige Codeänderungen oder Hilfskonstruktionen für diese zusätzliche Protokollebene. Cloudflare Access kann Ihrem Team diese zusätzlichen Arbeiten ersparen und die Protokollierung über ein einziges Gateway einführen, das für alle dahinter geschützten Ressourcen gilt.</p>
+	<p>Die Überwachungsprotokolle können zur Analyse und Erkennung von Anomalien in SIEM-Tools oder S3-Buckets von Drittanbietern exportiert werden. Die Daten können auch für Auditzwecke verwendet werden, wenn ein Unternehmensgerät verloren geht oder gestohlen wurde. Sicherheitsteams können hiermit dann für ihre Untersuchungen Nutzersitzungen aus Protokollen nachverfolgen.</p>
+	<h2 id="wie-geht-es-weiter"><strong>Wie geht es weiter?</strong></h2>
+	<p>Jeder Enterprise-Kunde, für den Logpush aktiviert ist, kann diese Funktion jetzt ohne zusätzliche Kosten nutzen. Eine Anleitung für die Logpush-Konfiguration <a href="https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/" target="_blank">finden Sie hier</a>, eine zusätzliche Dokumentation für die Aktivierung der Access-Protokolle pro Anfrage <a href="https://developers.cloudflare.com/access/setting-up-access/audit-logs/" target="_blank">hier</a>.</p>
+</div>

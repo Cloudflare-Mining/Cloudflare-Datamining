@@ -1,0 +1,82 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/05/1-7.png" class="kg-image"></figure>
+	<p>Cloudflare 在上周举办了<a href="https://blog.cloudflare.com/developers-developers-developers/">开发人员周</a>，我们的团队发布了一系列新产品，其中包括对 <a href="https://blog.cloudflare.com/location-based-personalization-using-workers/">Workers</a> 的增强产品。不仅是客户喜爱使用 Workers 开发应用，我们的工程团队也不例外。Workers 还是我们在 <a href="https://radar.cloudflare.com/" target="_blank">Cloudflare Radar</a> 上发布的互联网流量与攻击趋势的驱动力量。今天，与这篇深度解析博客文章一同面世的还有全新的 <a href="https://radar.cloudflare.com/notebooks/ddos" target="_blank">Radar DDoS Report</a> 页面，这是我们在 <a href="https://jupyter.org/" target="_blank">Jupyter</a>、<a href="https://blog.cloudflare.com/explaining-cloudflares-abr-analytics/">Clickhouse</a> 和 <a href="https://workers.cloudflare.com/" target="_blank">Workers</a> 基础上打造的第一个全面自动化数据笔记本。</p>
+	<p>上个月，我们推出了<a href="https://blog.cloudflare.com/zh-cn/deep-dive-cloudflare-autonomous-edge-ddos-protection-zh-cn/">自主边缘 DDoS（分布式拒绝服务）保护系统</a>，也阐释了它如何做到既能迅速阻止攻击又不影响性能。该系统运行于我们网络的边缘，异步分析流量以免影响性能，并在检测到攻击时立即推送内嵌的缓解规则。一切都自主完成，无需中心化策略的介入。</p>
+	<p>今天，我们将分享最新的 DDoS 洞察和趋势，它们源自于我们系统在 2021 年第一季度所缓解的攻击。在分析攻击时，我们会计算“DDoS 活动”比率，即攻击流量占总流量（攻击 + 干净）的百分比。这样，我们能够规范化数据点，并避免出现偏颇，例如，偏向于看到更多流量（因而发现更多攻击）的数据中心。</p>
+	<h2 id="-">要点</h2>
+	<h4 id="-ddos-"><strong>应用层 DDoS 攻击</strong></h4>
+	<ul>
+		<li>2021 年第一季度，HTTP 攻击流量百分比最高的国家是中国。紧随其后的是美国、马来西亚和印度。</li>
+		<li>第一季度遭受攻击最多的是电信行业，其次是消费者服务、安全与调查、互联网以及加密货币。</li>
+		<li>遭受攻击最多的互联网资产来自中国、美国和摩洛哥的公司。</li>
+	</ul>
+	<h4 id="-ddos--1"><strong>网络层 DDoS 攻击</strong></h4>
+	<ul>
+		<li>在 Cloudflare 网络上，我们位于卢旺达、中国和文莱的数据中心中观察到了最高的 DDoS 活动。</li>
+		<li>第一季度的所有攻击中将近 44％ 发生在 1 月份。</li>
+		<li>主要新型威胁包括针对 Jenkins 和 TeamSpeak3 服务器的攻击，与前一季度相比分别增长了 940% 和 203%。</li>
+		<li>其他新型威胁包括 QUIC 版本协商数据包洪水，或许意在破坏 Cloudflare 的基础设施。</li>
+	</ul>
+	<h2 id="-ddos--2">应用层 DDoS 攻击</h2>
+	<p><a href="https://www.cloudflare.com/zh-cn/learning/ddos/application-layer-ddos-attack/" target="_blank">应用层 DDoS 攻击</a>或 HTTP DDoS 攻击旨在通过使 HTTP 服务器无法处理请求来摧毁 HTTP 服务器。如果服务器受到数量超出其处理能力的请求轰炸，该服务器会丢弃合法的请求，甚至会崩溃。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/07/0---DDoS_Diagram_zhCN.png" class="kg-image"></figure>
+	<h3 id="ddos-">DDoS 攻击活动行业分布</h3>
+	<p>如果按照客户所属市场行业对 DDoS 活动进行细分，可以发现电信是第一季度遭受攻击最多的行业。与 2020 年第四季度排名第六相比，这一次飞跃了一大步。其次是消费者服务行业，安全与调查行业则排名第三。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/07/1---Industry_V2_zhCN.png" class="kg-image"></figure>
+	<h3 id="ddos--1">DDoS 活动来源国家/地区分布</h3>
+	<p>与网络层攻击不同，HTTP 攻击中不能<a href="https://www.cloudflare.com/zh-cn/learning/ddos/glossary/ip-spoofing/" target="_blank">假冒</a>源 IP。建立双向连接是一定会发生的。通过查询客户端源 IP 的位置，就能确定其来源国家/地区。如果某一个国家/地区中 DDoS 活动比率较高，这表示有大型僵尸网络在这个国家/地区运行。2020 年第四季度和 2021 年第一季度，中国均位居榜首，美国则紧随其后。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/07/2---Client_V2_zhCN.png" class="kg-image"></figure>
+	<h3 id="ddos--2">DDoS 活动目标国家/地区分布</h3>
+	<p>为确定哪些国家/地区遭受攻击最多，我们按客户的账单国家/地区细分了 DDoS 活动。与攻击来源细分类似，中国和美国分别排名第一和第二。有趣的是，印度在上个季度将中国从第一位挤下，原因或许是<a href="https://en.wikipedia.org/wiki/2020_elections_in_India" target="_blank">印度大选</a>同样也在 2020 年第四季度举行。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/07/3---Billing_V2_zhCN.png" class="kg-image"></figure>
+	<h3 id="--1">勒索攻击</h3>
+	<p>如大家所见，我们的非 Enterprise 计划客户是 DDoS 攻击的最大目标。然而，不仅是攻击的数量较高，这些客户还报告了最高数量的 <a href="https://www.cloudflare.com/zh-cn/learning/ddos/ransom-ddos-attack/" target="_blank">DDoS 勒索攻击</a>（RDDoS）。2021 年第一季度，遭受 DDoS 攻击的被调查 Cloudflare 客户中有 13％ 报告称他们要么被 RDDoS 攻击勒索，要么提前收到了威胁。在这些客户当中，62％ 是 Pro 计划客户，33％ 是 Business 计划客户。这是 2020 年第四季度起趋势的延续，当时被勒索客户的数量为 17％，其中包括<a href="https://blog.cloudflare.com/ransom-ddos-attacks-target-a-fortune-global-500-company/">自称 Lazarus Group 的团伙攻击了一家财富 500 强公司</a>，这家公司被我们吸纳到保护范围之中。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/07/5---Ransom_V2_zhCN.png" class="kg-image"></figure>
+	<h2 id="-ddos--3">网络层 DDoS 攻击</h2>
+	<p>应用层攻击的目标是运行最终用户尝试访问的服务的应用程序（<a href="https://www.cloudflare.com/zh-cn/learning/ddos/glossary/open-systems-interconnection-model-osi/" target="_blank">OSI 模型</a>的第 7 层），<a href="https://www.cloudflare.com/zh-cn/learning/ddos/layer-3-ddos-attacks/" target="_blank">网络层攻击</a>则以暴露的网络基础结构（例如，嵌入式路由器和其他网络服务器）和互联网链路本身为目标。</p>
+	<h3 id="--2">攻击次数</h3>
+	<p>从月份来看，1 月是第一季度中攻击者最忙碌的月份，占该季度观察到的攻击总数的 42％。位列其后的是 3 月（34.2％）和 2 月（23.8％）。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/07/dist-by-month_zhCN.png" class="kg-image"></figure>
+	<p>不过，我们确实发现第一季度最大攻击的峰值（300-400 Gbps）发生在 2 月。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/07/dist-by-size_zhCN.png" class="kg-image"></figure>
+	<h3 id="--3">攻击规模</h3>
+	<p>衡量 L3/4 DDoS 攻击规模有不同的方法。一种方法是测量它产生的流量大小，以比特率为单位（即每秒千兆比特 Gbps）。另一种是测量它产生的数据包数，以数据包速率为单位（即每秒数据包数 pps）。高比特率的攻击试图使互联网链路饱和，而高数据包速率的攻击则会使路由器或其他联网硬件设备不堪重负。</p>
+	<p>2021 年第一季度观察到的 L3/4 攻击中，绝大多数（超过 97％）小于 1 mpps 和 500 Mbps。</p>
+	<p>这是我们去年一整年观察到的趋势的延续。但是，这并不意味着这些攻击没有危害。</p>
+	<p>500 Mbps 以下的攻击通常足以对没有云端 DDoS 保护服务的互联网资产造成重大破坏。许多组织从服务提供商那里获得的上行链路带宽容量小于 1 Gbps。假设他们对外公开的网络接口也会传输合法流量，您可以看到，即使是 500 Mbps 以下的 DDoS 攻击也能轻松摧毁互联网资产。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/07/8---Packet_V2_zhCN.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/07/9---Bit_V2_zhCN.png" class="kg-image"></figure>
+	<h3 id="--4">攻击持续时间</h3>
+	<p>超过 90％ 的攻击持续时间不到一小时。短暂爆发攻击可能企图在不被 DDoS 检测系统检测到的前提下造成破坏。依靠手动分析和缓解的 DDoS 服务可能对这些类型的攻击毫无用处，因为在分析人员识别攻击流量前攻击便已结束。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/07/10---Attack-dur_V2_zhCN.png" class="kg-image"></figure>
+	<p>短时间攻击通常还被用来刺探攻击目标的网络防御。暗网中广泛提供的负载测试工具和自动 DDoS 工具可以生成短暂的爆发攻击（如 SYN 洪水），然后使用其他攻击手段发动另一波短时间攻击。这样，攻击者便可了解其攻击目标的安全防御态势，然后决定是否发动更高速率和更长持续时间的攻击。</p>
+	<h3 id="--5">攻击手段</h3>
+	<p>攻击手段是攻击者利用的攻击方法。2021 年第一季度，SYN 攻击依然是最常见的攻击手段，排在其后的是 RST、UDP 和 DNS 放大攻击。</p>
+	<p>什么是 <a href="https://www.cloudflare.com/zh-cn/learning/ddos/syn-flood-ddos-attack/" target="_blank">SYN 洪水</a>攻击？这是一种利用 TCP 连接基础的 DDoS 攻击。客户端与服务器之间的有状态 TCP 连接始于 <a href="https://www.cloudflare.com/zh-cn/learning/ddos/glossary/tcp-ip/" target="_blank">3 向 TCP 握手</a>。客户端发送带有同步标志（SYN）的初始连接请求数据包。服务器以包含同步确认标志（SYN-ACK）的数据包来响应。最后，客户端以确认（ACK）数据包来回应。此时连接已经建立并可交换数据，直到连接关闭为止。这个有状态过程可被攻击者滥用，以造成拒绝服务事件。</p>
+	<p>攻击者通过反复发送 SYN 数据包，试图淹没服务器或跟踪 TCP 连接状态的路由器连接表。路由器以 SYN-ACK 数据包答复，为每个给定的连接分配一定数量的内存，并错误地等待客户端回复最终 ACK。如果有足够数量的连接占用路由器的内存，路由器将无法为合法客户端分配更多内存，从而导致路由器崩溃或无力处理合法客户端连接，这便造成了拒绝服务事件。</p>
+	<p>同样，RST 放大洪水攻击会消耗目标服务器用于查找当前会话传入数据包的系统资源，从而导致目标服务器资源耗尽。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/07/11---Top-Attack-Vectors_V2_zhCN.png" class="kg-image"></figure>
+	<h3 id="--6">新兴威胁</h3>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/07/12---Top-Emerg-Threats_V2_zhCN.png" class="kg-image"></figure>
+	<p>尽管 SYN 攻击仍然猖獗，但本季度我们发现针对 <a href="https://en.wikipedia.org/wiki/Jenkins_(software)" target="_blank">Jenkins</a> 服务器的攻击激增了 940％。Jenkins 是一种免费开源自动化服务器。它能帮助工程团队促进软件开发。此服务器的较旧版本（<a href="https://nvd.nist.gov/vuln/detail/CVE-2020-2100" target="_blank">Jenkins 2.218 及更早</a>）存在一个漏洞，为发动 DDoS 攻击开启了方便之门。Jenkins 2.219 中已通过默认禁用 UDP 多播/广播消息修复了此漏洞。但是，仍然有许多存在漏洞并且暴露的设备运行基于 UDP 的服务，而被用来发动容量耗尽型放大攻击。</p>
+	<p>Cloudflare 还发现，通过 <a href="https://blog.cloudflare.com/the-road-to-quic/">QUIC 协议</a>发动的 L3/4 DDoS 攻击增加了 433％。QUIC 协议是一种通过 UDP 运行的新型默认加密互联网传输协议。服务器向客户端发送版本协商数据包，以便服务器向客户端指示其支持的 QUIC 版本。由于 UDP 是无状态的，因此攻击者可以通过假冒源 IP 地址并淹没客户端来模仿版本协商数据包。</p>
+	<p>以 Cloudflare 为目标的攻击可能意在影响 Cloudflare 的基础设施，或许是通过降级使用的版本，而不是针对特定的客户。您可以从<a href="https://www.cloudflare.com/zh-cn/learning/ddos/what-is-a-quic-flood/" target="_blank">这里</a>进一步了解 QUIC 放大攻击。</p>
+	<p>第三种新近冒出的威胁途径是 <a href="https://en.wikipedia.org/wiki/TeamSpeak" target="_blank">TeamSpeak</a>，这是一种通过 UDP 运行的专有<a href="https://en.wikipedia.org/wiki/Voice_over_IP" target="_blank">互联网语音协议（VoIP）</a>，可以帮助游戏玩家与其他玩家实时对话。这种新兴威胁比上一季度增加了 203％。玩家之间进行对话而不只是聊天，可以大大提高游戏团队的效率并帮助他们取得胜利。竞争对手团体可能发起针对 TeamSpeak 服务器的 DDoS 攻击，以试图破坏他们在实时多人游戏中的通信路径，从而影响其团队的表现。</p>
+	<h3 id="ddos-cloudflare-">DDoS 活动 Cloudflare 数据中心国家/地区分布</h3>
+	<p>纵观网络层 DDoS 攻击的国家分布，卢旺达、中国和文莱观察到最多的 L3/4 DDoS 攻击。与应用程序层 DDoS 攻击不同，攻击者可以（并且通常是）假冒源 IP 地址来掩盖 DDoS 攻击的来源位置。因此，在分析 L3/4 DDoS 攻击时，我们按照接收流量的 Cloudflare 边缘数据中心位置（而不是源 IP 位置）对流量进行分类。Cloudflare 能够通过在观察到攻击的 Cloudflare 数据中心的位置显示攻击数据来克服 IP 欺骗的难题。<a href="https://www.cloudflare.com/zh-cn/network/" target="_blank">我们的数据中心遍布全球 200 多个城市</a>，因此能够在报告中实现地理准确性。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/07/worldwide-country-map_zhCN.png" class="kg-image"></figure>
+	<p>要查看所有国家和地区，请查看 <a href="https://radar.cloudflare.com/notebooks/ddos#ddos-activity-by-cloudflare-data-center-country" target="_blank">Radar DDoS Report 仪表板的交互式地图</a>。</p>
+	<h3 id="--7">帮助构建更好的互联网</h3>
+	<p>Cloudflare 从成立之时起便以建设更加美好的互联网为己任，让 DDoS 攻击的影响不再存在于世。过去十年来，我们一直坚定不移地保护客户的互联网资产，使其免受各种规模或种类的 DDoS 攻击的影响。<a href="https://www.cloudflare.com/zh-cn/case-studies/ccp-games/" target="_blank">CCP Games</a> 和 <a href="https://www.cloudflare.com/zh-cn/case-studies/panasonic" target="_blank">Panasonic</a> 是得益于 Cloudflare DDoS 保护的众多公司中的两个例子。</p>
+	<p>Cloudflare 近期还在“The Forrester WaveTM：DDoS 缓解解决方案，2021 年第一季度”中被评为“领导者”。您可以从<a href="https://www.cloudflare.com/zh-cn/forrester-wave-ddos-mitigation-2021/" target="_blank">这里</a>免费下载这份报告的副本。</p>
+	<p>Forrester 公司安全与风险高级分析师 David Holmes 撰写的这份报告称，“Cloudflare 从边缘防护 DDoS 攻击，而且反应迅速…… 客户荐言将 Cloudflare 的边缘网络视为保护和交付应用程序方面一种令人叹服的方式。”</p>
+	<p>Cloudflare DDoS 保护受到客户和行业分析师认可的三个主要原因：</p>
+	<ol>
+		<li>Cloudflare 的网络架构：Cloudflare <a href="https://blog.cloudflare.com/no-scrubs-architecture-unmetered-mitigation/">不运营任何清理中心</a>，因为我们认为，清洗中心模式是一种存在瑕疵的 DDoS 保护方式。清洗中心不仅会导致延迟，其构建和运行成本也过于高昂。与之相反，我们通过自己网络中每一数据中心的每一台服务器运行 DDoS 保护。基于 Anycast 的架构使我们的容量与我们的 DDoS 清理容量相当，达到了 59 Tbps，在市场中独占鳌头。这意味着，Cloudflare 能够在最接近源头的位置检测和缓解 DDoS 攻击。锦上添花的是，Cloudflare 的全球威胁情报就如同互联网的免疫系统一样，用于部署我们的机器学习模型以缓解针对任何客户发动的攻击并从中学习，让客户免受所有攻击的危害。</li>
+		<li>快速的性能：我们的客户不断告诉我们，他们需要强大的安全性，但不能以牺牲性能为代价。从一开始，Cloudflare 就经过精心设计，让客户不会因为受到攻击而面临延迟损失。我们的 Anycast 架构使我们能够从最接近源头的位置缓解攻击，并分析路径外的流量，确保我们的 DDoS 缓解解决方案不会给合法流量带来额外延迟。在 Linux 堆栈中的最佳位置上应用规则，以实现最具成本效益的缓解，从而确保没有性能损失。对 Cloudflare 网络进行的<a href="https://assets.ctfassets.net/slt3lc6tev37/6tiRCy6p07AlHfUIPkYfpI/a7ef977a7dcad5d2dbbcb696c8e014d1/Whitepaper_Magic-Transit_Simplified-Chinese.pdf" target="_blank">性能测试</a>表明，当流量通过 <a href="https://www.cloudflare.com/zh-cn/magic-transit/" target="_blank">Cloudflare Magic Transit</a> 路由时，延迟仅增加 3 毫秒，并且丢包率几乎为零。</li>
+		<li>Cloudflare 的支持：每个 Cloudflare 企业客户帐户都会分配到一个团队（包括客户经理、解决方案工程师和 Customer Success 经理），该团队通过入门培训等服务为客户提供支持，帮助他们确定其配置中需要优化的方面。</li>
+	</ol>
+	<p>当我们的企业客户需要紧急支持时，Cloudflare 的 24x7x365 全球支持团队全天候待命，随时接听电话并提供即时人工响应。</p>
+	<p>引述在 Wikimedia Foundation 担任 CTO 的 Grant Ingersoll 的原话，“Cloudflare 拥有可靠的基础结构和一支非常称职且反应迅速的团队。Cloudflare DDoS 保护能够阻止最大规模的攻击。”</p>
+	<p>要了解有关 Cloudflare DDoS 解决方案的更多信息，请<a href="https://www.cloudflare.com/zh-cn/plans/enterprise/" target="_blank">联系我们</a>或<a href="https://dash.cloudflare.com/" target="_blank">开始使用</a>。</p>
+</div>

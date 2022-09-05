@@ -1,0 +1,66 @@
+<div class="post-content lh-copy gray1">
+	<p><em>以下是 Labyrinth Labs 的 DevOps 工程师 Martin Hauskrecht 的客帖。</em></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/05/image1-7.png" class="kg-image"></figure>
+	<p>在 Labyrinth Labs，我们非常重视监控。拥有有效的监控设置是我们为客户所做工作的关键部分。</p>
+	<p>Cloudflare 的 Analytics 仪表板为我们的客户 Pixel Federation 提供了许多用于调试和分析目的的有用信息。但是，它不会自动与现有的监控工具（例如 Grafana 和 Prometheus）集成，我们的 DevOps 工程师每天都使用它们来监控我们的基础结构。</p>
+	<p>Cloudflare 提供了一个日志 API，但我们需要分析的日志数量非常庞大，这样做效率低下且成本太高。幸运的是，Cloudflare 已经完成了每秒聚合数千个事件并将它们公开在<a href="https://developers.cloudflare.com/analytics/graphql-api/" target="_blank">易于使用的 API 中</a>的艰巨工作。</p>
+	<p>将来自我们区域的 Cloudflare 数据与其他系统的指标相结合将使我们更好地了解我们的系统，并能够关联指标并创建更有用的警报，从而使我们的第 2 天操作（例如调试事件或分析我们系统的使用情况） 更高效。</p>
+	<p>由于我们的监控堆栈主要基于 Prometheus 和 Grafana，因此我们决定实施我们自己的 Prometheus 导出器，从 Cloudflare 的 GraphQL Analytics API 中提取数据。</p>
+	<h3 id="-"><strong>设计</strong></h3>
+	<p>根据当前的云趋势以及我们在 Kubernetes 中使用导出器的意图，用 Go 编写代码是显而易见的选择。Cloudflare <a href="https://github.com/cloudflare/cloudflare-go" target="_blank">为 Golang 提供了一个 API SDK</a>，因此可以轻松开始常见的 API 任务。</p>
+	<p>我们利用 Cloudflare 的 GraphQL API 来获取有关我们每个区域的 Analytics 数据，并将它们转换为 Prometheus 指标，然后在指标端点上公开。</p>
+	<p>我们能够获取有关请求总数和速率、带宽、Cache 利用率、威胁、SSL 使用情况和 HTTP 响应代码的数据。此外，我们还能够监控正在传输的内容类型以及请求来自哪些国家和地区。</p>
+	<p>所有这些信息都是通过 Cloudflare 的 GraphQL API 中的 <em>http1mGroups </em>节点提供的。如果您想查看哪些数据集可用，可以在<a href="https://developers.cloudflare.com/analytics/graphql-api/features/data-sets" target="_blank">https://developers.cloudflare.com/analytics/graphql-api/features/data-sets</a> <a href="https://developers.cloudflare.com/analytics/graphql-api/features/data-sets" target="_blank">中找到简要说明</a>。</p>
+	<p>除此之外，我们还可以获得 Cloudflare 数据中心的数据。我们的图表可以轻松显示它们之间的流量分布，进一步帮助我们进行评估。数据是从GraphQL 的 <em>httpRequestsAdaptiveGroups </em>中的节点获取的。</p>
+	<p>在针对 GraphQL API 运行查询后，我们只需将结果格式化为遵循 Prometheus 指标格式并将它们公开在 /metrics 端点上。为了使事情更快，我们使用 Goroutines 并并行发出请求。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/05/image4-9.png" class="kg-image" title="Architecture overview"></figure>
+	<h3 id="--1"><strong>部署</strong></h3>
+	<p>我们的首选目的是在 Kubernetes 中使用导出器。因此，它带有一个<a href="https://hub.docker.com/repository/docker/lablabs/cloudflare_exporter" target="_blank">Docker 镜像</a>和 <a href="https://github.com/lablabs/cloudflare-exporter/tree/master/charts/cloudflare-exporter" target="_blank">Helm 图表</a>，这使部署更容易。您可能需要调整服务注释以匹配您的 Prometheus 配置。</p>
+	<p>导出器本身在 /metrics 端点上公开收集的指标。因此，在 pod 或 Kubernetes 服务上设置 Prometheus 注释将完成这项工作。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-YAML">apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    prometheus.io/path: /metrics
+    prometheus.io/scrape: "true"
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>我们计划在 Helm 图表中添加一个 Prometheus ServiceMonitor，让那些在 Kubernetes 中使用 Prometheus operator 的人更容易抓取导出器。</p>
+	<p>配置非常简单，您只需提供您的 API 电子邮件和密钥。您可以将抓取仅限于选定的区域。请参阅我们<a href="https://github.com/lablabs/cloudflare-exporter" target="_blank">在GitHub 存储库</a>中的文档或查看下面的示例。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-YAML"> env:
+   - name: CF_API_EMAIL
+     value: &lt;YOUR_API_EMAIL&gt;
+   - name: CF_API_KEY
+     value: &lt;YOUR_API_KEY&gt;
+
+  # Optionally, you can filter zones by adding IDs following the example below.
+  # - name: ZONE_XYZ
+  #   value: &lt;zone_id&gt;
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>要使用 Helm 部署导出器，您只需运行：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-YAML">helm repo add lablabs-cloudflare-exporter https://lablabs.github.io/cloudflare-exporter
+helm repo update
+
+helm install cloudflare-exporter lablabs-cloudflare-exporter/cloudflare-exporter \
+--set env[0].CF_API_EMAIL=&lt;API_EMAIL&gt; \
+--set env[1].CF_API_KEY=&lt;API_KEY&gt;
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>我们还在我们的 repo 中提供了一个 <a href="https://github.com/lablabs/cloudflare-exporter/blob/master/examples/helmfile/cloudflare-exporter.yaml" target="_blank">Helmfile</a> 以使部署更容易，您只需要添加您的凭据即可使其工作。</p>
+	<h3 id="--2"><strong>可视化数据</strong></h3>
+	<p>我已经解释了导出器的工作原理以及如何让它运行。正如我之前提到的，我们使用 Grafana 来可视化来自 Prometheus 的指标。我们创建了<a href="https://grafana.com/grafana/dashboards/13133" target="_blank">一个仪表板</a>，可以从 Prometheus 获取数据并将其投入使用。</p>
+	<p>仪表板分为几行，将各个面板分组以便于导航。它允许您针对指标可视化的各个区域。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/05/image2-5.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/05/image3-6.png" class="kg-image"></figure>
+	<p>为了让运营团队更加受益，您可以使用收集的指标来创建警报。这些可以直接在 Grafana 中创建，也可以使用 Prometheus 警报规则创建。</p>
+	<p>此外，如果您将 <a href="https://github.com/thanos-io/thanos" target="_blank">Thanos</a> 或 <a href="https://grafana.com/oss/cortex/" target="_blank">Cortex</a> 集成到您的监控设置中，您可以无限期地存储这些指标。</p>
+	<h3 id="--3"><strong>未来的工作</strong></h3>
+	<p>我们希望将更多的 Analytics 数据集成到我们的导出器中，最终达到 Cloudflare 的 GraphQL 可以提供的每一个指标。我们计划很快为 Firewall Analytics、DoS Analytics 和网络Analytics 创建新的指标。</p>
+	<p>如果您有任何疑问、问题或建议，请随时创建 GitHub 问题。非常感谢任何拉取请求。</p>
+	<h3 id="--4"><strong>关于我们</strong></h3>
+	<p><a href="https://lablabs.io/" target="_blank">Labyrinth Labs</a> 通过采用正确的技术和原则，帮助公司构建、运行、部署和扩展软件和基础结构。<a href="https://blog.cloudflare.com/tag/analytics/">Analytics</a> <a href="https://blog.cloudflare.com/tag/customers/">顾客</a> <a href="https://blog.cloudflare.com/tag/prometheus/">Prometheus</a> <a href="https://blog.cloudflare.com/tag/grafana/">Grafana</a> <a href="https://blog.cloudflare.com/tag/monitoring/">监控</a></p>
+</div>

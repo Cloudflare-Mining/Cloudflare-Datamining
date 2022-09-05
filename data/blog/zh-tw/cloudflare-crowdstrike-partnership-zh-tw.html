@@ -1,0 +1,31 @@
+<div class="post-content lh-copy gray1">
+	<p>今天，我們很高興地宣佈推出與 CrowdStrike 的幾項新整合。這些整合會將 Cloudflare 遼闊網路和 Zero Trust 套件的強大功能，與 CrowdStrike 的端點偵測和回應 (EDR) 及事件補救產品結合在一起。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/Crowdstrike-Partnership.png" class="kg-image" alt="Graphic depicting CrowdStrike and Cloudflare partnership"></figure>
+	<p>在 Cloudflare，我們的信念是讓解決方案能夠與客戶的現有技術堆疊輕鬆整合。透過我們的合作與整合，客戶能夠輕鬆地結合使用 Cloudflare 的解決方案與合作夥伴的解決方案，進一步強化安全狀態並釋放更多價值。我們與 CrowdStrike 的合作就是此類成就的貼切例子。</p>
+	<p>Cloudflare 和 CrowdStrike 攜手合作，努力為 IT 和網路安全團隊簡化 Zero Trust 的採用工作。有了這次的擴大合作，共同客戶能夠透過多項整合，更快地識別、調查威脅並加以補救：</p>
+	<p><strong>首先，</strong>藉由將 Cloudflare 的 Zero Trust 服務與持續提供即時裝置狀態評估的 CrowdStrike Falcon Zero Trust Assessment (ZTA) 整合在一起，我們的客戶就能夠在授予使用者裝置對內外部應用程式的存取權限之前，先確認其裝置狀態。</p>
+	<p><strong>其次，</strong>我們在 2021 年 12 月加入了 <a href="https://www.crowdstrike.com/press-releases/crowdstrike-adds-new-strategic-partners-to-groundbreaking-crowdxdr-alliance/#:~:text=Cloudflare%2C%20Armis%20and%20ThreatWarrior%20are,%2C%20Mimecast%2C%20Claroty%20and%20Corelight." target="_blank">CrowdXDR 聯盟</a>，並與 CrowdStrike 攜手合作，以共享網路安全遙測和其他深入解析，讓客戶更輕鬆地識別及緩解威脅。Cloudflare 的全球網路遍及超過 100 個國家、250 多座城市，平均每天阻擋 76 億個網路威脅，讓客戶擁有無可匹敵的深入解析，有助於網路安全團隊更完善地保護其組織。透過加入 CrowdXDR 聯盟，我們將能夠運用來自 Cloudflare 全球網路的網路安全訊號以及 CrowdStrike 的頂尖端點防護，協助共同客戶隨時都能在其網路中阻擋網路攻擊。</p>
+	<p><strong>第三，</strong>CrowdStrike 是 Cloudflare 的事件回應合作夥伴之一，能夠提供迅速且有效的支援。CrowdStrike 的事件回應團隊日復一日地處理現有遭受攻擊的情況，協助客戶緩解攻擊並讓其 Web 資產及網路恢復上線。我們與 CrowdStrike 的合作能夠快速補救遭受攻擊的情況，保護組織不受對手攻擊。</p>
+	<blockquote><em>「公司能夠識別、調查和補救威脅的速度在很大程度上決定了事情的最終發展。我們與 Cloudflare 合作，讓各家企業在面臨攻擊時能夠迅速採取動作並遏制暴露，使公司營運能迅速恢復常態。」</em><br>- CrowdStrike Services 資深副總裁 <strong>Thomas Etheridge</strong></blockquote>
+	<h2 id="crowdstrike-cloudflare-zero-trust-">CrowdStrike 的端點網路安全結合 Cloudflare 的 Zero Trust 服務</h2>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/pasted-image-0--1--1.png" class="kg-image" alt="Graphic depicting CrowdStrike and Cloudflare partnership."></figure>
+	<p>在深入探討這項整合如何運作之前，我們先回顧一下 Cloudflare 的 Zero Trust 服務。</p>
+	<h3 id="cloudflare-access-gateway">Cloudflare Access 與 Gateway</h3>
+	<p><a href="https://www.cloudflare.com/products/zero-trust/access/" target="_blank">Cloudflare Access</a> 會判斷使用者是否應獲得應用程式的存取權。並且會運用我們的全球網路來檢查所有要求或連線的身分識別、裝置狀態、地點、多重要素方法以及其他屬性。Access 也會記錄所有要求與連線，為管理員提供高可見度。綜合以上各點的結論：可促進客戶停用舊式 VPN。</p>
+	<p><a href="https://www.cloudflare.com/products/zero-trust/gateway/" target="_blank">Cloudflare Gateway</a> 會在使用者連線到網際網路時提供保護。使用者不會將流量回傳至集中地點，而是連線到附近的 Cloudflare 資料中心；而我們會在其中套用一或多層的網路安全、篩選和記錄，之後才會使其流量快速傳至最終目的地。</p>
+	<h3 id="-crowdstrike-zero-trust-">與 CrowdStrike 的 Zero Trust 整合</h3>
+	<p>Cloudflare 的客戶現在可以依據端點的 CrowdStrike 代理程式狀態來建置 Access 和 Gateway 原則了。結合我們的 Zero Trust 用戶端之後，我們就能夠運用 CrowdStrike 在使用者裝置周圍提供的強化遙測。</p>
+	<p>無論地點、網路或使用者為何，CrowdStrike 的 Zero Trust 評估 (ZTA) 都能夠持續提供組織中所有端點的即時網路安全狀態評估。ZTA 分數可依據裝置運作狀況以及合規性檢查來促進條件式原則的執行，藉此緩解風險。每次進行連線要求時都會評估這些原則，使條件式存取權限能夠適應不斷演變的裝置條件。</p>
+	<p>透過這項整合，組織能夠在其現有 Cloudflare Access 和 Gateway 原則之上建構，確保在使用者獲得存取權之前符合最低的 ZTA 分數或版本。因為這些原則是在我們整個 Zero Trust 平台間運作，所以組織可以運用這些原則來建立功能強大的規則，以叫用瀏覽器隔離、<a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering/http-policies/tenant-control/" target="_blank">租戶控制</a>、防毒或其 Cloudflare 部署的任何部分。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/pasted-image-0--2--1.png" class="kg-image" alt="Diagram showing how a request can come from a device and Cloudflare Zero Trust will allow you to build policies to protects your applications"></figure>
+	<blockquote><em>「CrowdStrike Falcon 平台會透過已驗證的存取控制來保護客戶安全，協助客戶縮減其攻擊表面，並簡化、支援和加速其 Zero Trust 旅程。透過擴大我們與 Cloudflare 的合作，共同客戶能夠更輕鬆地強化在所有端點以及整個企業網路間的 Zero Trust 安全狀態。」</em><br>- CrowdStrike 技術長 <strong>Michael Sentonas</strong></blockquote>
+	<h3 id="-">這項整合的運作方式</h3>
+	<p>使用我們 Zero Trust 套件的客戶可以在 Cloudflare Zero Trust 儀表板的 [設定] → [裝置] → [裝置狀態提供者] 下方將 CrowdStrike 新增為裝置狀態提供者。必須提供的 CrowdStrike 儀表板詳細資訊包括：用戶端 ID、用戶端密鑰、REST API URL 和客戶 ID。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/pasted-image-0--3--1.png" class="kg-image" alt="Setup screen showing required fields to establish connection between CrowdStrike and Cloudflare Zero Trust"></figure>
+	<p>建立 CrowdStrike 狀態提供者之後，客戶可以建立特定裝置狀態檢查，要求使用者的裝置必須符合特定的 <a href="https://falcon.us-2.crowdstrike.com/documentation/156/zero-trust-assessment-apis" target="_blank">ZTA 分數</a>閾值。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/Screen-Shot-2022-03-16-at-4.48.42-PM.png" class="kg-image" alt="Dropdown showing possible CrowdStrike fields to build rules on. List includes OS, Overall, Sensor Config, Version"></figure>
+	<p>這些規則現在可以用來建立條件式 <a href="https://developers.cloudflare.com/cloudflare-one/policies/zero-trust/" target="_blank">Access</a> 和 <a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering/" target="_blank">Gateway</a> 原則，以允許或拒絕對應用程式、網路或網站的存取。管理員可以選擇封鎖或隔離使用惡意或不安全裝置的使用者或使用者群組。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/pasted-image-0--5-.png" class="kg-image" alt="Example Gateway Network policy showing use of ZTA score to allow access to 10.0.0.0/8 cidr"></figure>
+	<h2 id="--1">接下來呢？</h2>
+	<p>接下來的幾個月內，我們將允許客戶將其 Cloudflare 記錄與 Falcon 遙測建立關聯，以及時偵測和緩解複雜的威脅，藉此進一步強化與 CrowdStrike 的整合。如果您現在正在使用 Cloudflare Zero Trust 產品，而且對於運用這些與 CrowdStrike 的整合感興趣，請造訪我們的<a href="https://developers.cloudflare.com/cloudflare-one/identity/devices/crowdstrike/" target="_blank">文件</a>以瞭解如何啟用。如果您想要深入瞭解或有其他疑問，請填寫<a href="https://www.cloudflare.com/partners/technology-partners/crowdstrike/" target="_blank">表單</a>或聯絡您的 Cloudflare CSM 或 AE，我們非常樂意為您提供協助。</p>
+</div>

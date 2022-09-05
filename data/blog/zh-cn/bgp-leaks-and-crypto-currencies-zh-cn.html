@@ -1,0 +1,113 @@
+<div class="post-content lh-copy gray1">
+	<p>在过去的几个小时里，<u>已经有</u><a href="https://www.forbes.com/sites/thomasbrewster/2018/04/24/a-160000-ether-theft-just-exploited-a-massive-blind-spot-in-internet-security/" target="_blank">十几个新闻报道揭露</a>了有攻击者企图（<a href="https://twitter.com/killeswagon/status/988795209361252357" target="_blank">也许已经完成了</a>）使用BGP泄漏来窃取加密货币。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/07/6818192898_c132e81824_z.jpg" class="kg-image">
+		<figcaption>由<a href="https://www.flickr.com/photos/77519207@N02/" target="_blank">elhombredenegro提供的</a><a href="https://creativecommons.org/licenses/by/2.0/" target="_blank">CC BY 2.0 </a><a href="https://www.flickr.com/photos/77519207@N02/6818192898/in/photolist-EGDA1W-Ga795-6yLrTS-22PPou3-gi3qi-8S6vb4-bov2cY-dgBNxk-ba28ar-ebQUDY-acXCjq-zZppue-j8nDM9-78GCT9-zFTmT1-zFT1ME-a8iKNR-6Hbzuk-bmMV3X-6Hbt1t-HkBYhJ-h7mEUc-8kza6J-inYagg-PUtWHj-cMHLr-g1zfvy-emgRCp-262Z5jD-CLumQP-M13Veh-ur2aSQ-68UJQ1" target="_blank">图像</a></figcaption>
+	</figure>
+	<p></p>
+	<h3 id="-bgp-">什么是BGP？</h3>
+	<p>互联网由路由组成。关于我们的DNS解析器<strong><a href="https://cloudflare-dns.com/" target="_blank">1.1.1.1</a></strong>，我们告知外界所有属于 <code>1.1.1.0</code>到 <code>1.1.1.255</code>范围内的IP地址均可通过CloudFlare的任一网路连接点 (Point of Presence，PoP)进行访问。</p>
+	<p>对于没有<a href="https://blog.cloudflare.com/think-global-peer-local-peer-with-cloudflare-at-100-internet-exchange-points/">直接连接我们路由器</a>的人，他们从传输供应商得到路由，传输供应商会将数据包传送到这些与Cloudflare和其他互联网连接的路由地址。</p>
+	<p>这是互联网正常的运作方式。</p>
+	<p>IP地址是由权威机构（地区互联网注册机构，RIR）负责分发的，以避免人们使用相同的地址空间。这些机构分别是<a href="https://www.iana.org/" target="_blank">IANA</a>，<a href="https://www.ripe.net/" target="_blank">RIPE</a>，<a href="https://www.arin.net/" target="_blank">ARIN</a>，<a href="https://www.lacnic.net/" target="_blank">LACNIC</a>，<a href="https://www.apnic.net/" target="_blank">APNIC</a>和<a href="https://www.afrinic.net/" target="_blank">AFRINIC</a>。</p>
+	<h3 id="-bgp--1">什么是BGP泄漏？</h3>
+	<p></p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/07/6385512087_802c680220_z.jpg" class="kg-image">
+		<figcaption>由<a href="https://www.flickr.com/photos/magnus_d/" target="_blank">马格努斯d</a>提供的<a href="https://creativecommons.org/licenses/by/2.0/" target="_blank">CC BY 2.0 </a><a href="https://www.flickr.com/photos/magnus_d/6385512087/" target="_blank">图像</a></figcaption>
+	</figure>
+	<p></p>
+	<p>BGP泄漏被广义定义为某IP空间的非法占有者对外通报了该空间。当一家传输提供商收到Cloudflare的公告 <code>1.1.1.0/24</code>并将其向互联网通报时，这是受到我们允许的。他们还使用了RIR信息进行验证，因此只有Cloudflare可以向他们通报。</p>
+	<p>虽然检查所有公告可能会很棘手，而且互联网上有<strong>700,000多</strong>个路由和供应商链彼此之间交换流量。</p>
+	<p>就其性质而言，路由泄漏是本地化的。您的本地连接数越多，遭受路由泄露的风险就越小。<br>为了使访问请求经过合法的路由被接收，路由必须满足：</p>
+	<ul>
+		<li>较小的IP前缀（ <code>10.0.0.1/32</code>= 1 IP vs <code>10.0.0.0/24</code>= 256 IP）</li>
+		<li>在相同长度前缀下具有更好的度量（路径更短）</li>
+	</ul>
+	<p>BGP泄漏的原因通常是<strong>配置错误</strong>：要么是路由器突然通告它获知的IP，要么是内部用于传输工程的较小前缀突然变为公共的前缀。</p>
+	<p>但有时配置错误是因为<strong>他人恶意为之</strong>。前缀被路由重定向从而被动地分析数据。或者有人设置了非法响应服务。这些<a href="https://blog.cloudflare.com/why-google-went-offline-today-and-a-bit-about/">以前都发生过</a>。</p>
+	<h3 id="-">如今发生了什么改变？</h3>
+	<p>Cloudflare维护着一系列BGP收集器，这些收集器从全球数百个路由器收集BGP信息。</p>
+	<p>在大约<strong>今天11:05:00 UTC到12:55:00 UTC之间，</strong>我们看到以下公告：</p>
+	<pre><code>BGP4MP|04/24/18 11:05:42|A|205.251.199.0/24|10297
+BGP4MP|04/24/18 11:05:42|A|205.251.197.0/24|10297
+BGP4MP|04/24/18 11:05:42|A|205.251.195.0/24|10297
+BGP4MP|04/24/18 11:05:42|A|205.251.193.0/24|10297
+BGP4MP|04/24/18 11:05:42|A|205.251.192.0/24|10297
+...
+BGP4MP|04/24/18 11:05:54|A|205.251.197.0/24|4826,6939,10297</code></pre>
+	<p>这些是更具体的范围公告：</p>
+	<ul>
+		<li><code>205.251.192.0/23</code></li>
+		<li><code>205.251.194.0/23</code></li>
+		<li><code>205.251.196.0/23</code></li>
+		<li><code>205.251.198.0/23</code></li>
+	</ul>
+	<p>此IP空间是分配给<strong>Amazon</strong>（AS16509）的，但是却由<strong>eNet Inc</strong>（AS10297）的访问堆栈结点（ASN）向其他结点宣布这是分配给它的IP空间并将此讯息转发给<strong>Hurricane Electric</strong>（AS6939）。</p>
+	<p>这些IP地址属于<a href="https://ip-ranges.amazonaws.com/ip-ranges.json" target="_blank">Route53 Amazon DNS服务器</a>。当您查询其中一个客户端区域时，这些服务器将向您做出响应。</p>
+	<p>在两小时的泄漏期间，该IP域内的服务器仅响应对<strong>myetherwallet.com</strong>的请求。有些人注意到<a href="https://puck.nether.net/pipermail/outages/2018-April/011257.html" target="_blank">服务器故障</a>。</p>
+	<p>任何DNS解析器（被询问由Route53管理的名称）都会请求通过BGP泄漏被接管的权威服务器。这个中毒的DNS解析器的路由器已被该路由接管。</p>
+	<p>这其中也包括<a href="https://cloudflare-dns.com/" target="_blank">Cloudflare DNS解析器1.1.1.1</a>。我们在芝加哥，悉尼，墨尔本，珀斯，布里斯班，宿雾，曼谷，奥克兰，马斯喀特，吉布提和马尼拉的解析器1.1.1.1均受到影响。在世界的其他地方，1.1.1.1仍然能正常工作。</p>
+	<p></p>
+	<figure class="kg-card kg-embed-card">
+		<blockquote class="twitter-tweet">
+			<p lang="en" dir="ltr">BGP hijack this morning affected Amazon DNS. eNet (AS10297) of Columbus, OH announced the following more-specifics of Amazon routes from 11:05 to 13:03 UTC today:<br>205.251.192.0/24<br>205.251.193.0/24<br>205.251.195.0/24<br>205.251.197.0/24<br>205.251.199.0/24</p>— InternetIntelligence (@InternetIntel) <a href="https://twitter.com/InternetIntel/status/988792927068610561?ref_src=twsrc%5Etfw" target="_blank">April 24, 2018</a>
+		</blockquote>
+		<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+	</figure>
+	<figure class="kg-card kg-embed-card">
+		<blockquote class="twitter-tweet">
+			<p lang="en" dir="ltr">Correction: the BGP hijack this morning was against AWS DNS not Google DNS. <a href="https://t.co/gp3VLbImpX" target="_blank">https://t.co/gp3VLbImpX</a></p>— InternetIntelligence (@InternetIntel) <a href="https://twitter.com/InternetIntel/status/988841601400270848?ref_src=twsrc%5Etfw" target="_blank">April 24, 2018</a>
+		</blockquote>
+		<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+	</figure>
+	<p></p>
+	<p>例如，以下查询应该返回合法的Amazon IP：</p>
+	<pre><code>$ dig +short myetherwallet.com @205.251.195.239
+54.192.146.xx</code></pre>
+	<p>但在劫持期间，它返回了与<strong>俄罗斯供应商</strong>（AS48693和AS41995）相关的IP 。就算你没有接受被劫持的路由，只要你使用已经中毒的DNS解析器，你就成为了攻击的受害者。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/07/Screen-Shot-2018-04-24-at-1.55.12-PM.png" class="kg-image"></figure>
+	<p></p>
+	<p>如果您使用的是HTTPS，假网站将显示由未知权限署名的TLS证书（证书中列出的域名是正确的，但它是自署名的）。此攻击生效的唯一途径是继续访问并接收错误的证书。从那时起，您发送的所有内容都将被加密，但攻击者拥有密钥。</p>
+	<p>如果您已登录，则浏览器将发送在cookie中的登录信息。换句话说，如果您在登录页面上输入了用户名和密码，则您的用户名和密码会被发送出去。</p>
+	<p>一旦攻击者获得了登录信息，他就会在合法网站上使用它们来转移和窃取以太币。</p>
+	<h3 id="--1">图片摘要</h3>
+	<p>正常情况</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/07/Slide1.png" class="kg-image"></figure>
+	<p></p>
+	<p>BGP路由泄漏后</p>
+	<p><br></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/07/Slide2.png" class="kg-image"></figure>
+	<p></p>
+	<h3 id="--2">受影响的地区</h3>
+	<p>如前所述，<strong>AS10279</strong>宣布了这一路由。但只有一些地区受到影响。Hurricane Electric受到的影响在<strong>澳大利亚</strong>非常显著，这主要源于互联网的成本。<strong>芝加哥</strong>地区受到影响，因为AS10279实际就在该处，这是直接的结果。</p>
+	<p>下图显示受影响区域和未受影响区域中接收的数据包数（Y轴归一化）。数据包丢失是由于权威服务器不再响应我们的请求（它只响应一个网站而忽略所有其他Amazon域）。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/07/Screen-Shot-2018-04-24-at-1.38.03-PM.png" class="kg-image"></figure>
+	<p>eNet（CenturyLink，Cogent和NTT）使用的其他传输线似乎没有接收这条路由：原因可能是他们有筛选程序和/或有亚马逊作为客户。</p>
+	<p>eNet提供IP服务，因此他们的一个客户可能已经声明了它。</p>
+	<h3 id="--3">找到涉事人员了吗？</h3>
+	<p>由于其中涉及许多参与者，很难确定是谁的过错。参与者有：</p>
+	<ul>
+		<li>ISP声明了一个它没有拥有的子网。</li>
+		<li>在转发之前未检查声明的传输供应商。</li>
+		<li>接收该路由的ISP。</li>
+		<li>缺乏保护的DNS解析器和权威机构。</li>
+		<li>托管在俄罗斯供应商的网络钓鱼网站。</li>
+		<li>未强制执行合法TLS证书的网站。</li>
+		<li>即使TLS证书无效也继续点击访问的用户们。</li>
+	</ul>
+	<p>就像<strong>区块链一样</strong>，网络变更通常是可见的和已存档的。RIPE正维护一个<a href="https://ripe.net/ris/" target="_blank">用于此用途</a><u>的</u><a href="https://ripe.net/ris/" target="_blank">数据库</a>。</p>
+	<h3 id="--4">我们能解决这个问题吗？</h3>
+	<p>这是一个难以回答的问题。我们对受到保护的BGP建议：<br>可以将一些条款添加到RIR数据库中，由此可以生成允许的源列表：</p>
+	<pre><code>$ whois -h whois.radb.net ' -M 205.251.192.0/21' | egrep '^route:|^origin:|source:' | paste - - - | sort
+route:      205.251.192.0/23	origin:     AS16509	source:     RADB
+route:      205.251.192.0/23	origin:     AS16509	source:     REACH</code></pre>
+	<p>使用RIR设置RPKI / ROA记录作为路由路径的真实来源，尽管不是每个人都由创建这些记录或去验证它们。IP和BGP是几十年前创建的，在完整性和可靠性方面有不同的要求（更少的路由）。</p>
+	<p>我们在网络堆栈的上层也可以做一些事情。</p>
+	<p>在<strong>DNS上</strong>，您可以使用<a href="https://en.wikipedia.org/wiki/Domain_Name_System_Security_Extensions" target="_blank">DNSSEC</a>对记录进行署名。伪DNS返回的IP不会被署名，因为它们没有私钥。</p>
+	<p>如果您将Cloudflare用作DNS，则<a href="https://cloudflare.com/a/dns" target="_blank">只需在面板中单击几下即可</a>启用DNSSEC 。</p>
+	<p>在<strong>HTTPS上</strong>，您的浏览器将检查网站提供的TLS证书。如果启用了<a href="https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security" target="_blank">HSTS</a>，浏览器将始终需要有效证书。为域生成合法TLS证书的唯一方法是病毒入侵证书颁发机构的非DNSSEC DNS解析器的缓存。</p>
+	<p><a href="https://en.wikipedia.org/wiki/DNS-based_Authentication_of_Named_Entities" target="_blank">DANE</a>让用户可以使用DNS将证书固定到域名。</p>
+	<p><a href="https://developers.cloudflare.com/1.1.1.1/dns-over-https/" target="_blank">通过HTTPS的DNS</a>还可以验证是否正在与正确的解析器通信，以防在DNS解析器而非DNS权威上发生泄漏。</p>
+	<p>没有完美且唯一的解决方案。但只要防护措施越多，恶意攻击者就越难以进行此类攻击。</p>
+	<p>关键词：<a href="https://blog.cloudflare.com/tag/bgp/">BGP</a>，<a href="https://blog.cloudflare.com/tag/crypto/">加密</a>，<a href="https://blog.cloudflare.com/tag/tls/">TLS</a>，<a href="https://blog.cloudflare.com/tag/https/">HTTPS</a>，<a href="https://blog.cloudflare.com/tag/security/">安全性</a>，<a href="https://blog.cloudflare.com/tag/vulnerabilities/">漏洞</a></p>
+</div>

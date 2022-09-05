@@ -1,0 +1,27 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/04/image1-24.png" class="kg-image"></figure>
+	<p>規模、期間、持続性が異なるDDoS攻撃が急増したことにより、あらゆる企業や団体にとってDDoS攻撃対策はオンラインプレゼンスの土台となっています。しかし、セキュリティ／リスク管理のテクニカル担当者がDDoS保護ソリューションを選ぶにあたっては、ネットワーク容量、管理機能、グローバル配信、アラート通知、レポート、サポートといった、重要な考慮事項があります。</p>
+	<h3 id="ddos-gartner-cloudflare-">DDoSソリューションについてのGartnerの見解：Cloudflareの評価は？</h3>
+	<p>Gartnerが発行した『Solution Comparison for DDoS Cloud Scrubbing Centers（DDoSクラウドスクラビングセンターのソリューションの比較）（ID G00467346）』レポート（作成者：Thomas Lintemuth、Patrick Hevesi、Sushil Aryal）を利用すると、共通の評価基準に照らし合わせて測定したさまざまなDDoSクラウドスクラビングセンターのソリューションを比較することができます。Gartnerレポートを購読されている方は、<a href="https://www.gartner.com/document/3983636" target="_blank">こちら</a>からレポートを参照することができます。Cloudflareは、レポートの23の評価基準で、DDoSベンダー他社6社と比べて、「高」の評価を最も多く獲得しています。</p>
+	<h3 id="ddos-">DDoS攻撃の状況</h3>
+	<p>Cloudflareは、DDoS攻撃の経済的側面と仕掛けやすさが大きく変わったため、DDoS攻撃の本質が変化したと考えます。DDos攻撃を低コストで展開できる方法が増えたことにより、以下の図に示されているように、10 Gbps未満のネットワーク層のDDos攻撃の数が増えています。攻撃の規模で言えば10 Gbpsはさほど大きいようには思えませんが、現存するWebサイトの大半に大きな影響を与えるには十分な規模です。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/04/image3-17.png" class="kg-image" alt="Chart"></figure>
+	<p>同時に、大規模なDDos攻撃も依然として蔓延していて、企業のインフラストラクチャを麻痺させることができます。2020年3月、Cloudflareはピークが550 Gbpsを上回る300 Gbps以上の多数の攻撃を観測しました。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/04/image2-22.png" class="kg-image" title="Chart"></figure>
+	<p>Gartnerはレポートの中で同様の傾向を観測したと述べています。「このリサーチのベンダーと話をしたところ、<em>Gartner</em>は次のような共通点を発見しました：大規模な帯域幅消費型攻撃ではなく小規模の攻撃をより頻繁に受けている」。また、次のようなことも観測しています。「インターネット接続が<em>10 Gbps</em>以下の企業は、短期攻撃を頻繁に受けていますが、<em>DDoS</em>攻撃対策がなければ破壊的な影響になります。大規模な攻撃がなくなったわけではありません。<em>2018</em>年春以来、<em>1 Tbps</em>を超える攻撃は発生していませんが、<em>500 Gbps</em>を超える攻撃は依然として頻繁に発生しています」</p>
+	<p>Gartnerはレポートの中で次のように推奨しています。「各大陸において過去最大の帯域幅消費型攻撃の<em>3</em>倍に対応できるスクラビング機能を提供するプロバイダーを選んでください」。</p>
+	<p>以下の図に示されているのは、昨年Cloudflareが観測して軽減したDDoS攻撃です。アプリケーション層のDDoS攻撃の観点からすると興味深いものです。このHTTP DDoS攻撃は、ピークに1秒に140万件のリクエストがあり、レートが極めて高いものではありません。しかし、攻撃が発信された110万のIPは一意なものであることと、スプーフィングされていないことは非常に興味深いです。そうした一意のIPアドレスは、TCPとHTTPSのハンドシェイクを完結することができた実在のクライアントでした。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/04/image4-14.png" class="kg-image"></figure>
+	<h3 id="cloudflare-ddos-">CloudflareのDDoS攻撃対策ソリューションをフルに活用する</h3>
+	<p>Cloudflareのクラウド型DDoS攻撃対策ソリューションは、セキュリティ担当者が最も高度なDDoS攻撃から組織や顧客を保護できるようにする重要な機能を提供します。次のような機能とメリットがあります。</p>
+	<ul>
+		<li>大規模なネットワーク容量：35 Tbpsを超えるネットワーク容量を備えたCloudflareは、最も高度な最大規模のDDoS攻撃であってもお客様をしっかりと保護します。Cloudflareのネットワーク容量は、大手DDoSベンダー他社6社の合計スクラビング容量とほぼ同じです。</li>
+		<li>グローバルに分散したアーキテクチャ：DDoS攻撃を軽減するために世界にスクラビングセンターをいくつか設置するのは時代遅れのアプローチです。DDoS攻撃の規模が大きくなり、個々の攻撃が世界中に散らばる数百万もの一意のIPから発信されるようになると、専用のスクラビングセンターにトラフィックを搬送するのではなく、ソースIPでの攻撃を軽減するDDoS攻撃対策ソリューションを持つことが重要になります。200都市に広がるCloudflareのデータセンターはどれも、DDoS軽減機能をフルに活用できるので、Cloudflareは大手DDoSベンダー他社6社の合計よりも多いポイントオブプレゼンスを持ちます。</li>
+		<li>迅速な軽減対策：自動的にエッジで分析および適用されるDDoS軽減機能により、Cloudflareはかつてない速さで攻撃を軽減できます。通常、10秒未満でDDoS攻撃を軽減できます。</li>
+		<li>統合されたセキュリティ：Cloudflareでプロダクトを構築する際の重要な設計原則は統合です。CloudflareのDDoS攻撃対策ソリューションは、WAF、ボット管理、CDNなどを含む、さまざまなプロダクト／サービスとシームレスに統合します。包括的な統合セキュリティソリューションが、パフォーマンスを向上させると同時にセキュリティを強化します。セキュリティとパフォーマンスの間で妥協を図ることはしません。</li>
+		<li>定額無制限の軽減サービス：Cloudflareは定額無制限のDDoS攻撃対策を提供します。これにより、特に企業が切迫した状況でDDoS攻撃を受けているときに痛みを伴う従来の概念である「サージプライシング（ピーク時料金）」を排除できます。トラフィック増加による予測不可能なコスト上昇を回避できます。</li>
+	</ul>
+	<p>大規模なグローバル企業に属している場合であっても、個人のサイトにCloudflareを使用する場合であっても、お客様を確実に保護して、お客様に必要な可視性を提供したいとCloudflareは考えています。DDoS攻撃対策は、すべてのCloudflareサービスの一部として含まれています。Enterpriseプランには、高度な軽減対策、詳細なレポート、強化されたログ、生産性向上ソリューション、きめ細かな制御が含まれます。Enterpriseプランのお客様は、専任のカスタマーサクセスエンジニアおよびソリューションエンジニアからのサポートを受けることができます。</p>
+	<p>CloudflareのDDoSソリューションの詳細は、<a href="https://www.cloudflare.com/plans/enterprise/contact/" target="_blank">こちらにお問い合わせ</a>いただくか、<a href="https://dash.cloudflare.com/sign-up" target="_blank">今すぐ始めましょう</a>。</p>
+	<p>*Gartnerのレポート「Solution Comparison for DDoS Cloud Scrubbing Centers（DDoSクラウドスクラビングセンターのソリューションの比較）」、作成者：Thomas Lintemuth、Patrick Hevesi、Sushil Aryal、2020年4月16日</p>
+</div>

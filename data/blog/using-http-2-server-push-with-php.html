@@ -1,0 +1,149 @@
+<div class="post-content lh-copy gray1">
+	<!--kg-card-begin: markdown-->
+	<p>Two weeks ago CloudFlare announced that it was supporting <a href="https://blog.cloudflare.com/announcing-support-for-http-2-server-push-2/">HTTP/2 Server</a> Push for all our customers. By simply adding a <code>Link</code> header to an HTTP response specifying <code>preload</code> CloudFlare would automatically push items to web browsers that support Server Push.</p>
+	<p>To illustrate how easy this is I create a small PHP page that uses the PHP <a href="https://secure.php.net/manual/en/function.header.php" target="_blank"><code>header</code></a> function to insert appropriate <code>Link</code> headers to push images to the web browser via CloudFlare. The web page looks like this when loaded:</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2016/05/Screen-Shot-2016-05-13-at-11-50-00-AM.png" alt=""></p>
+	<p>There are two images loaded from the same server both of which are pushed if the web browser supports Server Push. This is achieved by inserting two <code>Link</code> headers in the HTTP response. The response looks like:</p>
+	<pre><code>HTTP/1.1 200 OK
+Server: nginx/1.9.15
+Date: Fri, 13 May 2016 10:52:13 GMT
+Content-Type: text/html
+Transfer-Encoding: chunked
+Connection: keep-alive
+Link: &lt;/images/drucken.jpg&gt;; rel=preload; as=image
+Link: &lt;/images/empire.jpg&gt;; rel=preload; as=image
+</code></pre>
+	<p>At the bottom are the two <code>Link</code> headers corresponding to the two images on the page with the <code>rel=preload</code> directive as specified in W3C <a href="https://www.w3.org/TR/preload/#server-push-http-2" target="_blank">preload draft</a>.</p>
+	<p>The complete code can be found in this <a href="https://gist.github.com/jgrahamc/df91229381366105c7ff0f88c8c38485" target="_blank">gist</a> but the core of the code looks like this:</p>
+	<pre><code class="language-php">    &lt;?php
+    function pushImage($uri) {
+        header("Link: &lt;{$uri}&gt;; rel=preload; as=image", false);
+        return &lt;&lt;&lt;HTML
+    &lt;img src="{$uri}"&gt;
+    HTML;
+    }
+
+    $image1 = pushImage("/images/drucken.jpg");
+    $image2 = pushImage("/images/empire.jpg");
+    ?&gt;
+
+    &lt;html&gt;
+
+    &lt;head&gt;&lt;title&gt;PHP Server Push&lt;/title&gt;&lt;/head&gt;
+    &lt;body&gt;
+
+    &lt;h1&gt;PHP Server Push&lt;/h1&gt;
+
+    &lt;?php
+    echo ccbysa($image1, "https://bit.ly/1Wu5bYx",
+       "https://www.flickr.com/photos/hiperactivo/", "Javier Candeira");
+
+    echo ccbynd($image2, "https://bit.ly/24PHue3",
+        "https://www.flickr.com/photos/bobsfever/", "Robert McGoldrick");
+    ?&gt;
+
+    &lt;/body&gt;
+    &lt;/html&gt;
+</code></pre>
+	<p>Since you have to call the PHP <code>header</code> function before any output (such as HTML) has occurred the code makes two calls to a helper function called <code>pushImage</code> first. <code>pushImage</code> adds the appropriate <code>Link</code> header and returns the HTML needed to insert the actual image in the page.</p>
+	<p>Later the variables <code>$image1</code> and <code>$image2</code> (which contain the HTML needed to display the images) is inserted use two other helper functions (<code>ccbysa</code> and <code>ccbynd</code>) that add captions. Those two helper functions don't play any part in the Server Push, they just ensure that the HTML is placed correctly on the page with a caption.</p>
+	<p>Notice that the <code>Link</code> header is added as follows:</p>
+	<pre><code>header("Link: &lt;{$uri}&gt;; rel=preload; as=image", false);
+</code></pre>
+	<p>The <code>false</code> second parameter tells <code>header</code> to <em>not</em> override an existing <code>Link</code> header. With that option specified multiple <code>Link</code> headers can be added. Without it the last call to <code>pushImage</code> would win.</p>
+	<h2 id="effectofserverpush">Effect of Server Push</h2>
+	<p>To understand the effect of Server Push on the example I used Google Chrome Canary and loaded the page twice (once without the <code>Link</code> headers so that no push would occur and once with).</p>
+	<p>Here's the simple waterfall over HTTP/2 with no Server Push:</p>
+	<p><a href="https://blog.cloudflare.com/content/images/2016/05/Screen-Shot-2016-05-13-at-12-22-24-PM.png"><img src="https://blog.cloudflare.com/content/images/2016/05/Screen-Shot-2016-05-13-at-12-22-24-PM.png" alt=""></a></p>
+	<p>The page load time was 651ms. You can see the initial page HTML load in 175ms followed by the two images.</p>
+	<p>How here's the waterfall with HTTP/2 Server Push:</p>
+	<p><a href="https://blog.cloudflare.com/content/images/2016/05/Screen-Shot-2016-05-13-at-12-20-58-PM.png"><img src="https://blog.cloudflare.com/content/images/2016/05/Screen-Shot-2016-05-13-at-12-20-58-PM.png" alt=""></a></p>
+	<p>The page load time was 251ms (the HTML loaded in 168ms) and Chrome is showing that the two images were pushed (see the Initiator column).</p>
+	<p>It's not 100% obvious what happened there but digging into chrome://net-internals/ it's possible to see a detailed HTTP/2 timeline. I've edited out a few details of the protocol (such as the window size changes) to focus in on the requests and responses.</p>
+	<p>The <code>t</code> value gives the tick time (1ms per tick).</p>
+	<pre><code>t=910212 [st=   1]    HTTP2_SESSION_SEND_HEADERS
+                      --&gt; exclusive = true
+                      --&gt; fin = true
+                      --&gt; has_priority = true
+                      --&gt; :method: GET
+                          :scheme: https
+                          :path: /index.php
+                          pragma: no-cache
+                          cache-control: no-cache
+                          upgrade-insecure-requests: 1
+                          accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+                          accept-encoding: gzip, deflate, sdch, br
+                          accept-language: en-US,en;q=0.8
+                          cookie: [52 bytes were stripped]
+                      --&gt; parent_stream_id = 0
+                      --&gt; priority = 0
+                      --&gt; stream_id = 1
+
+[...]
+
+t=910404 [st= 193]    HTTP2_SESSION_RECV_HEADERS
+                      --&gt; fin = false
+                      --&gt; :status: 200
+                          date: Fri, 13 May 2016 11:28:16 GMT
+                          content-type: text/html
+                          content-encoding: gzip
+                      --&gt; stream_id = 1
+t=910405 [st= 194]    HTTP2_SESSION_RECV_PUSH_PROMISE
+                      --&gt; :method: GET
+                          :path: /images/drucken.jpg
+                          :scheme: https
+                          accept-encoding: gzip, deflate, sdch, br
+                      --&gt; id = 1
+                      --&gt; promised_stream_id = 2
+t=910405 [st= 194]    HTTP2_SESSION_RECV_PUSH_PROMISE
+                      --&gt; :method: GET
+                          :path: /images/empire.jpg
+                          :scheme: https
+                          accept-encoding: gzip, deflate, sdch, br
+                      --&gt; id = 1
+                      --&gt; promised_stream_id = 4
+t=910405 [st= 194]    HTTP2_SESSION_RECV_DATA
+                      --&gt; fin = false
+                      --&gt; size = 298
+                      --&gt; stream_id = 1
+t=910405 [st= 194]    HTTP2_SESSION_RECV_DATA
+                      --&gt; fin = true
+                      --&gt; size = 0
+                      --&gt; stream_id = 1
+t=910409 [st= 198]    HTTP2_SESSION_RECV_HEADERS
+                      --&gt; fin = false
+                      --&gt; :status: 200
+                          date: Fri, 13 May 2016 11:28:16 GMT
+                          content-type: image/jpeg
+                          content-length: 49852
+                          set-cookie: [124 bytes were stripped]
+                          etag: "5735aac0-12f99"
+                          last-modified: Fri, 13 May 2016 10:21:52 GMT
+                          cf-cache-status: HIT
+                          vary: Accept-Encoding
+                          expires: Fri, 13 May 2016 15:28:16 GMT
+                          cache-control: public, max-age=14400
+                          accept-ranges: bytes
+                          server: cloudflare-nginx
+                      --&gt; stream_id = 2
+t=910409 [st= 198]    HTTP2_SESSION_RECV_DATA
+                      --&gt; fin = false
+                      --&gt; size = 987
+                      --&gt; stream_id = 2
+t=910409 [st= 198]    HTTP2_SESSION_RECV_DATA
+                      --&gt; fin = false
+                      --&gt; size = 1369
+                      --&gt; stream_id = 2
+t=910410 [st= 199]    HTTP2_SESSION_RECV_DATA
+                      --&gt; fin = false
+                      --&gt; size = 1369
+                      --&gt; stream_id = 2
+</code></pre>
+	<p>The web browser sends an <code>HTTP2_SESSION_SEND_HEADERS</code> request asking for the web page (that's the first item above) and subsequently receives the response headers and page followed immediately by two push promises for the two images. It then immediately starts receiving image data (see the <code>stream_id</code> 2).</p>
+	<p>CloudFlare's web server is pushing the image contents before the browser asked for them. When CloudFlare pushes an item specified in a <code>Link</code> header the header itself is stripped (to prevent the browser from re-requesting the resource).</p>
+	<h2 id="thefuturestartshere">The Future Starts Here</h2>
+	<p>We released HTTP/2 Server Push support to help kick start innovative use of this critical feature of HTTP/2. We would love people to start experimenting with it to see how much of a speed improvement is possible with their specific websites.</p>
+	<p>As can be seen from this blog post making use of Server Push in a web application is easy: just insert <code>Link</code> headers with the appropriate format. Server Push will be particularly fast if the items being pushed are also stored in CloudFlare's cache (as was the case with the examples above).</p>
+	<p>Please let us know how you use Server Push. We're particularly interested in experiences with pushing different types of resources (images vs. styles vs. scripts) and working out the optimal number of items to push (we currently allow up to 50 resources per page).</p>
+	<!--kg-card-end: markdown-->
+</div>

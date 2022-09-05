@@ -1,0 +1,185 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image22-2.png" class="kg-image" alt="DDoS attack trends for 2022 Q2"></figure>
+	<p>2022年第2四半期DDoSレポートへようこそ。このレポートには、グローバルなCloudflareネットワークで観測されたDDoS脅威の状況についてのインサイトと動向が含まれています。また、本レポートのインタラクティブ版は<a href="https://radar.cloudflare.com/notebooks/ddos-2022-q2" target="_blank">Radar</a>でご覧いただけます。</p>
+	<p><a href="https://blog.cloudflare.com/ja-jp/26m-rps-ddos-ja-jp/">毎秒2600万件のリクエストのHTTPS DDoS攻撃</a>をCloudflareが自動的に検出して軽減するなど、第2四半期には、これまでにない大規模な攻撃が発生しています。さらに、ウクライナとロシアに対する攻撃は続いており、新しい<a href="https://www.cloudflare.com/en-gb/learning/ddos/ransom-ddos-attack/" target="_blank">ランサムDDoS攻撃</a>キャンペーンも出現しています。</p>
+	<h2 id="-">ハイライト</h2>
+	<h3 id="--1">ウクライナおよびロシアのインターネット</h3>
+	<ul>
+		<li>地上での戦争は、情報の拡散を狙った攻撃を伴います。</li>
+		<li>第2四半期に主なDDoS攻撃の標的となったのは、ウクライナの放送メディア企業でした。実際、最も攻撃されている上位5業種は、すべてオンライン/インターネットメディア、出版、放送のものです。</li>
+		<li>一方、ロシアでは、オンラインメディアが最も攻撃されている業界として第3位に転落しました。トップに向かって進んでいる企業であるため、第2四半期に最も標的とされたのは、ロシアの銀行、金融サービス、保険（BFSI）企業で、アプリケーション層DDoS攻撃全体の約45%がBFSIセクターを標的としていました。ロシアの暗号通貨関連企業は2番目に最も攻撃されました。</li>
+	</ul>
+	<p><a href="https://blog.cloudflare.com/what-cloudflare-is-doing-to-keep-the-open-internet-flowing-into-russia-and-keep-attacks-from-getting-out/">オープンインターネットのロシアへの流入を続けるため、攻撃を防ぐためにCloudflareが行っていること</a>をご覧ください。</p>
+	<h3 id="-ddos-">ランサムDDoS攻撃</h3>
+	<ul>
+		<li>Fancy Lazarusを名乗るエンティティによる<a href="https://www.cloudflare.com/en-gb/learning/ddos/ransom-ddos-attack/" target="_blank">ランサムDDoS攻撃</a>の新たな波が来ています。</li>
+		<li>2022年6月にはランサム攻撃がピークに達し、これまでの1年間で最高となりました。DDoS攻撃を経験した調査回答者の5人に1人が、ランサムDDoS攻撃などの脅威を受けたと回答しています。</li>
+		<li>第2四半期全体では、ランサムDDoS攻撃の割合が前四半期比で11%増となりました。</li>
+	</ul>
+	<h3 id="-ddos--1">アプリケーション層DDoS攻撃</h3>
+	<ul>
+		<li>2022年第2四半期、アプリケーション層DDoS攻撃は前年比で72％増となりました。</li>
+		<li>米国の組織が最も狙われ、次いでキプロス、香港、中国と続きます。キプロスにおける組織への攻撃は前四半期比で166%増となりました。</li>
+		<li>第2四半期に最も標的にされたのは航空・宇宙業界、次いでインターネット業界、銀行・金融サービスおよび保険、そして4位はゲーミング/ギャンブルとなっています。</li>
+	</ul>
+	<h3 id="-ddos--2">ネットワーク層DDoS攻撃</h3>
+	<ul>
+		<li>2022年第2四半期、ネットワーク層DDoS攻撃は前年比で109％増となりました。100Gbps以上の攻撃は前四半期比で8%増、3時間以上継続する攻撃は前四半期比で12%増となりました。</li>
+		<li>攻撃された上位の業種は、電気通信、ゲーミング/ギャンブル、情報技術およびサービス業界でした。</li>
+		<li>米国の組織が最も標的にされ、次いで中国、シンガポール、ドイツと続いています。</li>
+	</ul>
+	<p>本レポートは、CloudflareのDDoS Protectionシステムによって自動的に検知・軽減されたDDoS攻撃に基づいています。この仕組みの詳細については、<a href="https://blog.cloudflare.com/deep-dive-cloudflare-autonomous-edge-ddos-protection/">詳しく書かれたこちらのブログ記事</a>をご覧ください。</p>
+	<p><strong>当社ネットワークで観測されたDDoS攻撃の測定方法についての特記事項</strong></p>
+	<p>攻撃の傾向を分析するために、当社のグローバルネットワーク、特定の場所、または特定のカテゴリ（業界や請求先の国など）で観測された総トラフィック（攻撃＋クリーン）に占める攻撃トラフィックの割合である「DDosの活動」レートを計算します。割合を測定することで、データポイントを正規化し、例えば総トラフィックが多く、攻撃回数も多いと思われるCloudflareデータセンターに対する絶対数に反映される数値の偏りを回避することができます。</p>
+	<h2 id="--2">ランサム攻撃</h2>
+	<p>当社のシステムはトラフィックを常時分析し、DDoS攻撃を検知すると自動的に被害軽減措置を適用するシステムです。DDoSの被害に遭われたお客様には、攻撃の性質や軽減措置の効果をよりよく理解するために、自動化されたアンケートをお願いしています。 </p>
+	<p>Cloudflareは2年以上前から、攻撃を受けたお客様を対象にアンケートを実施しています。アンケート項目の1つに、DDoS攻撃を中止する代わりに脅威や支払いを要求する身代金請求書を受け取ったかどうかというものがあります。 </p>
+	<p>第2四半期に脅威や身代金要求メッセージがあったという回答は、前四半期比、前年比ともに11％増となりました。当四半期は、高度で継続的な脅威（APT）グループ、「Fancy Lazarus」を名乗るエンティティが仕掛けたランサムDDoS攻撃を軽減しています。金融機関や暗号通貨企業などを中心にキャンペーンを展開しています。 &nbsp;</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/07/image15-1.png" class="kg-image" alt="ランサムDDoS攻撃の四半期別推移グラフ">
+		<figcaption><strong>ランサムDDoS攻撃の標的にされた、または事前に脅迫を受けたと回答した割合。</strong></figcaption>
+	</figure>
+	<p>第2四半期に掘り下げると、6月には回答者の5人に1人がランサムDDoS攻撃や脅威を受けたと報告しています。これは2022年で最も高い月で、2021年12月以降最高となりました。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/07/image6-1.png" class="kg-image" alt="ランサムDDoS攻撃の月別推移グラフ">
+		<figcaption><em>ランサムDDoS攻撃の月別推移グラフ</em></figcaption>
+	</figure>
+	<h2 id="-ddos--3">アプリケーション層DDoS攻撃</h2>
+	<p><a href="https://www.cloudflare.com/learning/ddos/application-layer-ddos-attack/" target="_blank">アプリケーション層DDoS攻撃</a>（具体的にはHTTP DDoS攻撃）は通常、正当なユーザーリクエストを処理できないようにしてWebサーバーを停止させることを目的とします。処理能力を超えるリクエストが殺到すると、サーバーは正当なリクエストをドロップするか、場合によってはクラッシュし、その結果、正当なユーザーに対するパフォーマンスの低下や障害がに繋がります。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/07/image3-2.png" class="kg-image" alt="正規なユーザーへのサービスを拒否するDDoS攻撃の図">
+		<figcaption><em>正規なユーザーへのサービスを拒否するDDoS攻撃の図</em></figcaption>
+	</figure>
+	<h3 id="-ddos--4">アプリケーション層DDoS攻撃の月別推移</h3>
+	<p><strong><strong>第2四半期のアプリケーション層DDoS攻撃は、前年比で72％増となりました。</strong></strong></p>
+	<p>全体として、第2四半期のアプリケーション層DDoS攻撃の量は、前年比で72%増となりましたが、前四半期比では5%減となりました。5月は当四半期で最も忙しい月でした。アプリケーション層DDoS攻撃は、全体の約41%が5月に発生したのに対し、6月に起きた攻撃数は最も少ないものでした（28%）。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/07/image20-1.png" class="kg-image" alt="過去12ヶ月のアプリケーション層DDoS攻撃の月別年間分布のグラフ">
+		<figcaption><em>過去12ヶ月のアプリケーション層DDoS攻撃の月別年間分布のグラフ</em></figcaption>
+	</figure>
+	<h3 id="-ddos--5">アプリケーション層DDoS攻撃＜業界別＞</h3>
+	<p><strong><strong>航空・宇宙業界への攻撃は前四半期比で493％増となりました。</strong></strong></p>
+	<p>第2四半期では、アプリケーション層DDoS攻撃で最も標的とされたのは航空・宇宙業界でした。以下、インターネット業界、銀行・金融機関・保険（BFSI）業界と続き、第4位はゲーミング/ギャンブル業界でした。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/07/image9-2.png" class="kg-image" alt="2022年第2四半期におけるHTTP DDoS攻撃の業種別分布グラフ">
+		<figcaption><em>2022年第2四半期におけるHTTP DDoS攻撃の業種別分布グラフ</em></figcaption>
+	</figure>
+	<h3 id="--3">ウクライナおよびロシアのサイバースペース</h3>
+	<p><strong><strong>ウクライナで最も狙われているのはメディア企業と出版社です。</strong></strong></p>
+	<p>ウクライナでの戦争が地上、空中、水上で続いているように、サイバースペースでも戦争が続いています。ウクライナ企業を標的にするエンティティは、情報を封じ込めようとしているようです。ウクライナで最も攻撃された上位5業種は、すべて放送、インターネット、オンラインメディア、出版のもので、これはウクライナを標的とするDDoS攻撃全体のほぼ80%に相当します。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/07/image1-2.png" class="kg-image" alt="2022年第2四半期におけるウクライナ産業界へのHTTP DDoS攻撃の発信国別分布グラフ">
+		<figcaption><em>2022年第2四半期におけるウクライナ産業界へのHTTP DDoS攻撃の発信国別分布グラフ</em></figcaption>
+	</figure>
+	<p>もう一方の側は、ロシアの銀行、金融機関、保険（BFSI）の企業が最も多くの攻撃を受けました。DDoS攻撃全体のほぼ45%がBFSIセクターを標的としました。2番目に最も標的となったのは暗号通貨業界、次いでオンラインメディアでした。 </p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/07/image10.png" class="kg-image" alt="2022年第2四半期におけるロシア産業界へのHTTP DDoS攻撃の発信国別分布グラフ">
+		<figcaption><em>2022年第2四半期におけるロシア産業界へのHTTP DDoS攻撃の発信国別分布グラフ</em></figcaption>
+	</figure>
+	<p>戦争の両側で、攻撃は高度に分散化され、世界中に分散されたボットネットが使用されていることが分かります。</p>
+	<h3 id="-ddos--6">アプリケーション層DDoS攻撃＜攻撃元の国別＞</h3>
+	<p><strong><strong>第2四半期には、中国からの攻撃が78%、米国からの攻撃が43%減少しています。</strong></strong></p>
+	<p>HTTP攻撃の発信元を理解するため、当社は攻撃のHTTPリクエストを生成したクライアントに属する送信元IPアドレスのジオロケーションを調べました。ネットワーク層の攻撃とは異なり、HTTP攻撃ではソースIPアドレスを<a href="https://www.cloudflare.com/learning/ddos/glossary/ip-spoofing/" target="_blank">スプーフィング</a>することはできません。ある国でのDDoS活動の割合が高いということは、その特定の国が攻撃を仕掛けているということではなく、その国の国境内から活動するボットネットが存在することを示しています。</p>
+	<p>HTTP DDoS攻撃の主な発生源として、第2四半期連続で米国がトップとなりました。米国に続く2位は中国、3位と4位はインドとドイツです。米国が1位を維持しているにもかかわらず、米国発の攻撃が前四半期比で48%減少した一方で、インドからが87%、ドイツからが33%、そしてブラジルからが67%と、他の地域からの攻撃は増加しています。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/07/image16-1.png" class="kg-image" alt="2022年第2四半期におけるHTTP DDoS攻撃の発信国別分布のグラフ">
+		<figcaption><em>2022年第2四半期におけるHTTP DDoS攻撃の発信国別分布のグラフ</em></figcaption>
+	</figure>
+	<h3 id="-ddos--7">アプリケーション層DDoS攻撃＜標的国別＞</h3>
+	<p><strong>どの国が最もHTTP DDoS攻撃の標的になっているかを特定するため、お客様の請求先国別にDDoS攻撃を分類し、全DDoS攻撃に対する割合で表現しています。</strong> </p>
+	<p>米国を拠点とする国へのHTTP DDoS攻撃は前四半期比で67%増となり、アプリケーション層DDoS攻撃の主な標的として米国が1位に返り咲きました。中国企業への攻撃は前四半期比で80％減となり、1位から4位に下がりました。キプロスへの攻撃は167％増加し、第2四半期に最も攻撃された国第2位となりました。キプロスに続いて、香港、中国、オランダが続いています。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/07/image8-1.png" class="kg-image" alt="2022年第2四半期におけるHTTP DDoS攻撃の対象国別分布のグラフ">
+		<figcaption><em>2022年第2四半期におけるHTTP DDoS攻撃の対象国別分布のグラフ</em></figcaption>
+	</figure>
+	<h2 id="-ddos--8">ネットワーク層DDoS攻撃</h2>
+	<p>アプリケーション層攻撃は、エンドユーザーがアクセスしようとしているサービスを実行するアプリケーション（<a href="https://www.cloudflare.com/learning/ddos/glossary/open-systems-interconnection-model-osi/" target="_blank">OSI参照モデル</a>のレイヤー7）を狙うのに対し、<a href="https://www.cloudflare.com/learning/ddos/layer-3-ddos-attacks/" target="_blank">ネットワーク層攻撃</a>はネットワークインフラ（インラインルーターやサーバーなど）とインターネットリンクそのものを圧倒しようとします。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image23-1.png" class="kg-image"></figure>
+	<h3 id="-ddos--9">ネットワーク層DDoS攻撃＜月別＞</h3>
+	<p><strong><strong>第2四半期のネットワーク層DDoS攻撃は前年比で109%増、100Gbps以上の帯域幅消費型攻撃は前四半期比で8%増となりました。</strong> </strong></p>
+	<p>第2四半期は、ネットワーク層DDoS攻撃の総量が前年比で109％増、前四半期比で15％増となりました。6月は、攻撃の約36％が発生し、四半期で最も忙しい月となりました。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/07/image12.png" class="kg-image" alt="過去12ヶ月のネットワーク層DDoS攻撃の月別年間分布のグラフ">
+		<figcaption><em>過去12ヶ月のネットワーク層DDoS攻撃の月別年間分布のグラフ</em></figcaption>
+	</figure>
+	<h3 id="-ddos--10">業種別ネットワーク層DDoS攻撃</h3>
+	<p><strong><strong>第2四半期の通信会社への攻撃は、前四半期比で66％増となりました。</strong></strong></p>
+	<p>ネットワーク層DDoS攻撃は、2四半期連続で通信業界が最も多く標的となりました。さらに、通信会社への攻撃は前四半期比で66％増となりました。2位はゲーミング業界、続いて情報技術・サービス企業でした。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/07/image2-2.png" class="kg-image" alt="2022年2四半期におけるネットワーク層DDoS攻撃バイト数の業界別分布のグラフ">
+		<figcaption><em>2022年2四半期におけるネットワーク層DDoS攻撃バイト数の業界別分布のグラフ</em></figcaption>
+	</figure>
+	<h3 id="-ddos--11">ネットワーク層DDoS攻撃＜標的国別＞</h3>
+	<p><strong><strong>米国ネットワークへの攻撃は前四半期比で95％増となりました。</strong></strong></p>
+	<p><strong>第2四半期においても、米国は最も攻撃された国です。アメリカの後に中国、シンガポール、ドイツが続きます。</strong></p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/07/image17-1.png" class="kg-image" alt="2022年2四半期におけるネットワーク層DDoS攻撃バイト数の標的国別分布のグラフ">
+		<figcaption><em>2022年2四半期におけるネットワーク層DDoS攻撃バイト数の標的国別分布のグラフ</em></figcaption>
+	</figure>
+	<h3 id="-ddos--12">流入国別ネットワーク層DDoS攻撃</h3>
+	<p><strong><strong>第2四半期にCloudflareがパレスチナで観測したトラフィックの約3分の1とアゼルバイジャンで観測したトラフィックの約4分の1は、ネットワーク層DDoS攻撃の一部でした。</strong></strong></p>
+	<p>ネットワーク層DDoS攻撃の発生源を把握しようとする場合、アプリケーション層の攻撃解析と同じ方法は使えません。アプリケーション層DDoS攻撃を仕掛けるには、HTTP/S接続を確立するために、クライアントとサーバーの間で<a href="https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake/" target="_blank">ハンドシェイクを成功させる</a>必要があります。ハンドシェイクを成功させるため、攻撃者はその送信元IPアドレスを<a href="https://www.cloudflare.com/learning/ddos/glossary/ip-spoofing/" target="_blank">偽装</a>することができません。そのため攻撃者はボットネット、プロキシ、およびその他の方法を使用して身元を難読化させることができますが、攻撃側クライアントの送信元IPは偽装できないため、そのIPはアプリケーション層DDoS攻撃の発信源を正しく示しています。</p>
+	<p>一方、ネットワーク層DDoS攻撃を仕掛けるには、ほとんどの場合ハンドシェイクは必要ありません。攻撃者は攻撃元を難読化し、攻撃特性にランダム性を導入して単純なDDoS防御システムでは攻撃をブロックすることを困難にするために、ソースIPアドレスを<a href="https://www.cloudflare.com/learning/ddos/glossary/ip-spoofing/" target="_blank">偽装</a>することができます。そのため、偽装された送信元IPに基づいて発信源の国を導き出した場合、「偽装された国」を得ることになります。</p>
+	<p>このため、ネットワーク層DDoS攻撃の発信源を分析する際には、攻撃の発信源を把握するためにスプーフィングされた（可能性のある）ソースIPではなく、トラフィックが取り込まれたCloudflareエッジデータセンターのロケーション別にバケットを構成します。世界<a href="https://www.cloudflare.com/network" target="_blank">270以上の都市</a>にデータセンターがあるため、レポートで地理的な精度を実現できます。ただし、コスト削減から輻輳や障害管理まで、さまざまな理由でトラフィックがバックホールされ、さまざまなインターネットサービスプロバイダや国を経由してルーティングされる可能性があるため、この方法でも100%正確ではありません。</p>
+	<p>ネットワーク層DDoS攻撃の割合が最も高いCloudflareのロケーションとして、パレスチナが2位から1位に跳ね上がりました。パレスチナに続いて、アゼルバイジャン、韓国、アンゴラと続きます。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/07/image21-1.png" class="kg-image" alt="2022年第2四半期におけるネットワーク層DDoS攻撃の発信国別分布のグラフ">
+		<figcaption><em>2022年第2四半期におけるネットワーク層DDoS攻撃の発信国別分布のグラフ</em></figcaption>
+	</figure>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/07/image7-1.png" class="kg-image" alt="2022年第2四半期におけるネットワーク層DDoS攻撃の発信国別分布のグラフ">
+		<figcaption><em>2022年第2四半期におけるネットワーク層DDoS攻撃の発信国別分布のグラフ</em></figcaption>
+	</figure>
+	<p>すべての地域と国を表示するには、<a href="https://radar.cloudflare.com/notebooks/ddos-2021-q4#network-layer-ddos-attacks-by-country" target="_blank">インタラクティブマップ</a>をご覧ください。</p>
+	<h3 id="--4">攻撃ベクトル</h3>
+	<p><strong><strong>第2四半期では、DNS攻撃が増加し、2番目に多い攻撃ベクトルとなりました。</strong></strong></p>
+	<p>攻撃ベクトルとは、攻撃者がDDoS攻撃を行う際に用いる手法のことで、IPプロトコル、TCPフラグなどのパケット属性、フラッディング方法などの基準を示す言葉です。</p>
+	<p>第2四半期において、ネットワーク層に対する全攻撃の53%は、<a href="https://www.cloudflare.com/en-gb/learning/ddos/syn-flood-ddos-attack/" target="_blank">SYNフラッド</a> でした。SYNフラッドは、依然として最も一般的な攻撃ベクトルです。この攻撃は、ステートフルな<a href="https://www.cloudflare.com/en-gb/learning/ddos/glossary/tcp-ip/" target="_blank">TCP</a>ハンドシェイクの最初の接続リクエストを悪用します。この最初の接続リクエストの間、サーバーは新しいTCP接続に関するコンテキストを持たず、適切な保護がなければ、最初の接続リクエストのフラッドを軽減することが困難であることが分かるかもしれません。このため、攻撃者は保護されていないサーバーのリソースを容易に消費することができます。</p>
+	<p>SYNフラッドの次は、DNSインフラストラクチャを狙った攻撃、再びTCP接続フローを悪用するRSTフラッド、UDPを使った一般的な攻撃です。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/07/image13-1.png" class="kg-image" alt="2022年第2四半期のネットワーク層DDoS攻撃ベクトル上位のグラフ">
+		<figcaption><em>2022年第2四半期のネットワーク層DDoS攻撃ベクトル上位のグラフ</em></figcaption>
+	</figure>
+	<h3 id="--5">新たな脅威</h3>
+	<p><strong><strong>第2四半期における、新たな上位の脅威にはCHARGEN、Ubiquiti、Memcachedを狙った攻撃があります。</strong> </strong></p>
+	<p>上位の攻撃ベクトルを特定することは、組織が脅威の状況を理解するのに役立ちます。そうすることで、これらの脅威から身を守るためにセキュリティ体制を強化することができます。同様に、まだ攻撃の大部分を占めていない新たな脅威について知ることは、それらが大きな力となる前に軽減するのに役立ちます。 &nbsp; </p>
+	<p>第2四半期には、Character Generatorプロトコル（CHARGEN）を悪用した増幅攻撃、露出したUbiquitiデバイスのトラフィックを反映した増幅攻撃、悪名高いMemcached攻撃が新たな脅威の上位にランクインしています。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/07/image5-2.png" class="kg-image" alt="2022年第2四半期におけるネットワーク層への新たなトップDDoS攻撃脅威グラフ">
+		<figcaption><em>2022年第2四半期におけるネットワーク層への新たなトップDDoS攻撃脅威グラフ</em>]</figcaption>
+	</figure>
+	<h3 id="chargen-">CHARGENプロトコルを悪用した増幅攻撃の開始</h3>
+	<p><strong><strong>第2四半期には、CHARGENプロトコルを悪用した攻撃が前四半期比で378%増となりました</strong>。</strong></p>
+	<p><a href="https://datatracker.ietf.org/doc/html/rfc864" target="_blank">RFC 864</a>（1983）で最初に定義されたCharacter Generator（CHARGEN）プロトコルは、<a href="https://en.wikipedia.org/wiki/Internet_protocol_suite" target="_blank">インターネットプロトコルスイート</a>のサービスで、その名の通り、文字を任意に生成し、クライアントが接続を閉じるまでクライアントへの送信を停止しません。その当初の目的は、テストとデバッグでした。しかし、増幅/リフレクション攻撃を生成するために非常に簡単に悪用される可能性があるため、めったに使用されません。</p>
+	<p>攻撃者は、被害者のソースIPを<a href="https://www.cloudflare.com/learning/ddos/glossary/ip-spoofing/" target="_blank">スプーフィング</a>することができ、世界中のサポートサーバーを騙して、任意の文字のストリームを被害者のサーバーに「戻す」ことができます。この種の攻撃は、増幅/リフレクションです。十分な数のCHARGENストリームが同時に発生すると、被害者のサーバーは、保護されていない場合、殺到して正当なトラフィックに対処できなくなり、結果としてサービス拒否が発生することになります。</p>
+	<h3 id="ubiquiti-discovery-">Ubiquiti Discoveryプロトコルを不正利用した増幅攻撃</h3>
+	<p><strong><strong>第2四半期には、ユビキティに対する攻撃が前四半期比で327％増となりました。</strong></strong></p>
+	<p><a href="https://www.ui.com/" target="_blank">Ubiquiti</a>は、米国に拠点を置く企業で、消費者や企業向けにInternet of Things（IoT）デバイスを提供しています。Ubiquitiのデバイスは、UDP/TCPポート10001の<a href="https://help.ui.com/hc/en-us/articles/204976244-EdgeRouter-Ubiquiti-Device-Discovery" target="_blank">Ubiquiti Discoveryプロトコル</a>を使用してネットワーク上で見つけることができます。</p>
+	<p>CHARGEN攻撃ベクトルと同様に、ここでも攻撃者はソースIPを被害者のIPアドレスに偽装し、10001番ポートを開放しているIPアドレスに吹き付けることができます。そして、それらは被害者に対応し、量が十分であれば実質的に殺到することになります。</p>
+	<h3 id="memchached-ddos-">memchachedを利用したDDoS攻撃</h3>
+	<p><strong><strong>第2四半期には、Memcached DDoS攻撃は前四半期比で287%増となりました。</strong></strong></p>
+	<p><a href="https://www.cloudflare.com/en-gb/learning/ddos/memcached-ddos-attack/" target="_blank">Memcached</a>は、Webサイトやネットワークを高速化するためのデータベースキャッシュシステムです。CHARGENやUbiquitiと同様に、UDPをサポートするMemcachedサーバーは、増幅/リフレクション型DDoS攻撃を仕掛けるために悪用される可能性があります。この場合、攻撃者はキャッシュシステムからコンテンツをリクエストし、UDPパケットのソースIPとして被害者のIPアドレスをスプーフィングします。被害者には、最大51,200倍に増幅されたMemcacheのレスポンスが殺到することになります。</p>
+	<h2 id="-ddos--13">ネットワーク層DDoS攻撃＜攻撃レート別＞</h2>
+	<p><strong><strong>100Gbpsを超える帯域幅消費型攻撃は前四半期比で8%増となりました。</strong></strong></p>
+	<p>L3/4 DDoS攻撃の規模の測定には、さまざまな方法があります。1つは送信するトラフィックの量で、ビットレート（具体的にはテラビット/秒またはギガビット/秒）を使用して測定するものです。もう1つは送信するパケットの数で、パケットレート（具体的には、何百万パケット/秒）を使用して測定するものです。 </p>
+	<p>ビットレートの高い攻撃は、インターネットリンクの閉塞を発生させることによってサービス妨害を起こそうとし、パケットレートの高い攻撃はサーバーやルーター、その他のインラインハードウェア機器を過負荷状態に陥れようとします。これらの機器は各パケットの処理に特定量のメモリと計算能力を割きます。多数のパケットが送り付けられると機器の処理リソースが枯渇してしまう可能性があります。その場合はパケットが「ドロップ」されます。つまり、機器がそれらを処理できない状態となるのです。ユーザーに対しては、サービスの中断や拒否になります。</p>
+	<h3 id="--6">パケットレート別分布</h3>
+	<p>ネットワーク層DDoS攻撃の大半は、毎秒5万パケット以下にとどまっています。50kppsはCloudflareの規模では低い方ですが、それでも保護されていないインターネットのプロパティを簡単にダウンさせ、標準的なギガビットイーサネット接続でさえも輻湊させることができます。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/07/image4-1.png" class="kg-image" alt="2022年第2四半期におけるネットワーク層DDoS攻撃のパケットレート別分布のグラフ">
+		<figcaption><em>2022年第2四半期におけるネットワーク層DDoS攻撃のパケットレート別分布のグラフ</em></figcaption>
+	</figure>
+	<p>攻撃規模の変化を見ると、50 kppsを超えるパケット集中型の攻撃が第2四半期に減少し、その結果、小規模な攻撃が4％増加したことがわかります。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/07/image11-1.png" class="kg-image" alt="2022年第2四半期におけるネットワーク層DDoS攻撃のパケットレート別分布の前四半期比の変化グラフ">
+		<figcaption><em>2022年第2四半期におけるネットワーク層DDoS攻撃のパケットレート別分布の前四半期比の変化グラフ</em></figcaption>
+	</figure>
+	<h3 id="--7">ビットレート別分布</h3>
+	<p>第2四半期は、ネットワーク層DDoS攻撃の大半が500Mbps未満にとどまっています。これも<a href="https://www.cloudflare.com/network/" target="_blank">Cloudflareの規模</a>ではわずかな減少ですが、保護されていないインターネットのプロパティを即座に停止させ、また少なくとも標準的なギガビットイーサネット接続でさえも輻湊を引き起こすことができます。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/07/image18-1.png" class="kg-image" alt="2022年第2四半期におけるネットワーク層DDoS攻撃のビットレート別分布のグラフ">
+		<figcaption><em>2022年第2四半期におけるネットワーク層DDoS攻撃のビットレート別分布のグラフ</em></figcaption>
+	</figure>
+	<p>興味深いことに、500Mbpsから100Gbpsの間の大規模な攻撃は前四半期比で20～40%減少しましたが、100Gbps以上の帯域幅消費型攻撃は8%増加しました。 </p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/07/image24-1.png" class="kg-image" alt=" 2022年第2四半期におけるネットワーク層DDoS攻撃のビットレート別分布の前四半期比の変化グラフ">
+		<figcaption><em>2022年第2四半期におけるネットワーク層DDoS攻撃のビットレート別分布の前四半期比の変化グラフ</em></figcaption>
+	</figure>
+	<h3 id="-ddos--14">ネットワーク層DDoS攻撃＜継続時間別＞</h3>
+	<p><strong><strong>第2四半期では、3時間以上の攻撃は9%増となりました。</strong></strong></p>
+	<p>当社では、攻撃が当社のシステムによって最初に検出されたときと、特定のターゲットに向けた攻撃シグネチャを持つ最後のパケットを確認したときの差を記録することによって、攻撃の持続時間を測定しています。 </p>
+	<p>第2四半期では、ネットワーク層DDoS攻撃の52%が10分未満で終了しました。さらに40％は10〜20分でした。残りの8％は、20分から3時間以上にわたる攻撃です。 </p>
+	<p>留意すべき重要な点は、たとえ数分間の攻撃であっても、それが成功すれば、その影響は最初の攻撃時間をはるかに超えて続く可能性があるということです。攻撃が成功した場合、対応するIT担当者はサービスの復旧に数時間から数日を費やすことがあります。 </p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/07/image19-2.png" class="kg-image" alt="2022年第2四半期におけるネットワーク層DDoS攻撃の期間別分布グラフ">
+		<figcaption><em>2022年第2四半期におけるネットワーク層DDoS攻撃の期間別分布グラフ</em></figcaption>
+	</figure>
+	<p>ほとんどの攻撃が短時間になっているものの、20分〜60分の攻撃が15％以上、3時間以上の攻撃が12％増となっていることがわかります。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/07/image14-1.png" class="kg-image" alt="2022年第2四半期におけるネットワーク層DDoS攻撃の期間別分布の前四半期比の変化グラフ">
+		<figcaption><em>2022年第2四半期におけるネットワーク層DDoS攻撃の期間別分布の前四半期比の変化グラフ</em></figcaption>
+	</figure>
+	<p>短時間の攻撃は検出されない可能性があり、特に標的に対して数秒以内に大量のパケットやバイト、リクエストを送りつけるバースト攻撃は見逃されがちです。この場合、セキュリティ分析に基づく手作業の軽減措置に依存するDDoS攻撃対策では、攻撃への被害軽減措置がとても間に合いません。攻撃について事後の分析を通して学び、その攻撃固有のフィンガープリントでフィルタリングする新たなルールをデプロイして、次回の攻撃は検知できるよう願うしかありません。同様に、「オンデマンド」サービスを利用してセキュリティチームが攻撃中にDDoS対策サービスのプロバイダーへトラフィックをリダイレクトする場合も、オンデマンドDDoS対策のプロバイダーへトラフィックがルーティングされる前に攻撃が済んでしまうため非効率です。 </p>
+	<p>これらの企業では、トラフィックを分析し、短時間の攻撃をブロックするのに十分な速さでリアルタイムのフィンガープリンティングを適用する、自動化された常時稼働型のDDoS攻撃対策サービスを使用することが推奨されます。</p>
+	<h2 id="--8">まとめ</h2>
+	<p>Cloudflareのミッションは、より良いインターネットの構築を支援することです。より良いインターネットとは、たとえDDoS攻撃に直面しても、誰にとっても、より安全で、より速く、より信頼できるインターネットです。ミッションの一環として、2017年以降、すべてのお客様に<a href="https://blog.cloudflare.com/unmetered-mitigation/">定額制で無制限のDDoS攻撃対策</a>を無償で提供しています。ここ数年、攻撃者がDDoS攻撃を仕掛けることはますます容易になってきています。しかし、このように簡単になったからこそ、あらゆる規模の組織があらゆる種類のDDoS攻撃から身を守ることも、これまで以上に簡単かつ無料でできるようにしたいと考えています。</p>
+	<p>まだCloudflareをお使いでない方は、当社のFreeまたはProプランを使用したWebサイトの保護を<a href="https://dash.cloudflare.com/sign-up" target="_blank">今すぐ始める</a>か、Magic Transitを使用したネットワーク全体の包括的なDDos攻撃対策に関して<a href="https://www.cloudflare.com/magic-transit/" target="_blank">お問い合わせ</a>ください。</p>
+</div>

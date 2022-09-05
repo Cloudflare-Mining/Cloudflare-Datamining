@@ -1,0 +1,66 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/1-31.png" class="kg-image" alt="End User Security: Account Takeover Protections with Cloudflare"></figure>
+	<p>エンドユーザーアカウントのセキュリティは常に最優先事項ですが、解決するのは難しい問題です。さらに厄介なことに、ユーザーの認証は困難です。 <a href="https://haveibeenpwned.com/PwnedWebsites" target="_blank">認証情報のデータセットの流出が一般的になり</a>、Webをクローリングする高度なボットがクレデンシャルスタッフィング攻撃が仕掛けられる中で、認証エンドポイントの保護や監視をすることは、セキュリティに重点を置いたチームにとって課題となります。これに加えて、多くの認証エンドポイントは依然として正しいユーザー名とパスワードを提供することだけに依存しているため、検出されないクレデンシャルスタッフィングが、悪意のある行為者によるアカウントの乗っ取りにもつながります。</p>
+	<p>Cloudflareプラットフォームの多くの機能は、アカウント乗っ取り対策を実装するのに役立ちます。この記事ではいくつか例を挙げながら、多くの新機能をご紹介します。これには次のものが含まれます。</p>
+	<ul>
+		<li><a href="https://blog.cloudflare.com/ja-jp/protecting-apis-from-abuse-and-data-exfiltration-ja-jp/">オープンプロキシ管理リスト</a>（NEW）：アプリの認証がプロキシサービスから来ていないことを確認します。</li>
+		<li><a href="https://blog.cloudflare.com/ja-jp/super-bot-fight-mode-ja-jp/">スーパーボットファイトモード</a>（NEW）：自動トラフィックを認証エンドポイントから遠ざけます。</li>
+		<li>資格情報の流出チェック（NEW）：ユーザーが安全性が損なわれた資格情報でログインするたびに警告を表示します。これは、二要素認証フローまたはパスワードのリセットを開始するために使用できます。</li>
+		<li>Cloudflare Access：サードパーティのOATHサービスと簡単に統合することで、追加の認証レイヤーを加えます。間もなく<a href="https://blog.cloudflare.com/zero-trust-with-managed-devices/">管理対象デバイスのオプションの適用が可能になります</a> （NEW）。</li>
+		<li>失敗したログインに対するレート制限：アプリケーションへのブルートフォースクレデンシャルスタッフィングの試行を中止します。</li>
+	</ul>
+	<p>これらの機能を組み合わせることで、エンドユーザーアカウントのセキュリティを向上させる強力で簡単なツールとしてデプロイできます。</p>
+	<h3 id="cloudflare-">Cloudflare オープンプロキシリスト</h3>
+	<p>2020年7月、Cloudflareでは<a href="https://blog.cloudflare.com/introducing-ip-lists/">IP リスト</a>を導入しました。これは、カスタムファイアウォールルールを作成する際に、ユーザーがプリミティブとして作成し維持できるIPの再利用可能なリストです。これは、アクセス制御に使用されるIPリストと同様に、ファイアウォール管理者にとって優れたツールですが、すぐに時代遅れになります。</p>
+	<p>新しい<a href="https://blog.cloudflare.com/ja-jp/protecting-apis-from-abuse-and-data-exfiltration-ja-jp/">Cloudflareのオープンプロキシ管理リスト</a>を使用すると、カスタムファイアウォールルールを作成し、Cloudflareによって完全に管理され、定期的に（毎時間）更新されるリストと照合することができます。このリストは、監視されたネットワークトラフィックとオープンプロキシエンドポイントの予防的検索に基づいてつくられます。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/04/2-16.png" class="kg-image" alt="The new Open Proxies managed list - can be found under Account Home → Configurations → Lists or used directly in a custom rule">
+		<figcaption>新しいオープンプロキシ管理リストは、アカウントホーム → 設定 → リストまたはカスタムルールで直接使用、の下にあります。<span class="-mobiledoc-kit__atom">‌‌</span></figcaption>
+	</figure>
+	<p>カスタムファイアウォールルールを記述する際に、IPリストを追加のフィルターと組み合わせることで、認証エンドポイントへの悪意のあるログイン試行のリスクを減らすことができます。Wirefilter構文を使用して、新しいリストを活用したルールを記述すると、次のようになります。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>http.request.uri.path contains "/login" and (not ip.src in $cf.open_proxies and cf.bot_management.score &lt; 30)
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>その後、ルールで選択したアクションに従って、認証の試行が「ブロック」または、「チャレンジ」されます。</p>
+	<p>SOCKSおよびプロキシIPリストは、すべてのEnterpriseプランのお客様にご利用いただけます。</p>
+	<h3 id="-api-">スーパーボットファイトモードとAPIの乱用検出</h3>
+	<p>ログインエンドポイントはボットにとって、好機になります。そして悪性ボットは、時間を本当にうまく活用し、わずか数秒で数百万ではないにしても、数千のクレデンシャルをテストします。これらのボットは、サイトから何か値を抽出するまで活動を続けます。</p>
+	<p>幸いなことに、Cloudflareでは最近、<a href="https://blog.cloudflare.com/ja-jp/super-bot-fight-mode-ja-jp/">スーパーボットファイトモードをリリースしました</a>。この機能は、すべてのProプランとBusinessプランに含まれており、リアルタイム分析と組み合わせて、攻撃発生時に監視することができます。スーパーボットファイトモードは、クレデンシャルスタッフィングを中止するために構築されました。社内では、<a href="https://www.cloudflare.com/ja-jp/products/bot-management" target="_blank">Enterpriseボット管理</a>製品を稼働するのと同じ検出エンジンを多く稼働させています。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/04/3-12.png" class="kg-image" alt="Our new Super Bot Fight Mode. Can be found under Firewall → Bots">
+		<figcaption>Cloudflareの新しいスーパーボットファイトモードは、ファイアウォール→ ボットの下にあります。<span class="-mobiledoc-kit__atom">‌‌</span></figcaption>
+	</figure>
+	<p>最大のメリット：すぐに保護を追加することができます。Proプランのユーザーは、インターネット上の「明確なボット」を許可、ブロック、チャレンジすることができます。Businessプランのユーザーは、高度で見つけにくい「ボットの可能性が高い」ものもターゲットにすることができます。Freeプランのユーザーは、基本的な保護のためにボットファイトモードトグルを引き続き利用できます。</p>
+	<h3 id="-">資格情報の流出チェック</h3>
+	<p>クレデンシャルスタッフィング攻撃者は、以前に他のサービスの漏えいで盗まれたユーザー名/パスワードのペア（ユーザーの資格情報）を使用してターゲットアカウントにログインしようとします。これは多くの場合、うまく機能してしまいます、残念ですが。というのも、<a href="https://www.ndss-symposium.org/ndss2014/programme/tangled-web-password-reuse/" target="_blank">50％以上のユーザーが複数のアカウントで同じパスワードを再利用し</a>、その結果、多数のアカウントが流出しています。したがって、ひとつのエンドユーザーアカウントのセキュリティは、そのシステムのセキュリティだけでなく、ユーザーが使用する他のすべてのシステムのセキュリティにも依存します。また、多要素認証では多層防御が可能ですが、多くの認証サービスやユーザーはこれを採用していません。それでも、Cloudflareではユーザー名とパスワードペアが脆弱である場合に、サービスとそのユーザーに警告できるようにしたいと考えています。</p>
+	<p>ボット検出などの他のアプローチに加えて、業界の新しいベストプラクティスは、ログインサービス自体で、ユーザーの認証情報の1つが既知のデータ漏えいにあるかどうかをチェックすることです。これには、既知の漏えいしたユーザー名/パスワードの適切なセットが必要です。<a href="https://haveibeenpwned.com/" target="_blank">Have I Been Pwned </a>や<a href="https://security.googleblog.com/2020/10/new-password-protections-and-more-in.html" target="_blank">Googleのパスワード漏えいアラート</a>などのサービスは、既知のユーザー名とパスワードのペアの大規模なデータベースを集約し、企業やエンドユーザーが脆弱性を判断するための検索を可能にします。しかし、統合は困難であり、組織はボタンを押すだけで認証情報チェック保護を有効にできることが理想的です。</p>
+	<p>Cloudflareはまさにこれを行っています。本日、<a href="https://www.cloudflare.com/ja-jp/waf/" target="_blank">Web アプリケーション ファイアウォール (WAF)</a>の新しい機能を発表いたします： 資格情報の流出チェック。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/04/4-8.png" class="kg-image" alt="Exposed Credential Checks can be easily enabled with our Managed Ruleset. Alternatively, you can write your own custom rules.">
+		<figcaption>「資格情報の流出チェック」は、管理ルールセットで簡単に有効化できます。または、独自のカスタムルールを記述することもできます。‌‌<span class="-mobiledoc-kit__atom">‌‌</span></figcaption>
+	</figure>
+	<p>Cloudflareによって保護されているアプリケーションのログインリクエストは、WAFを介してルーティングされ、これにより「中間者」に流出している認証情報を確認することができます。有効にすると、認証の試行時にWAFがCloudflareによって収集され、保持されている漏えいした認証情報のデータベースに対してエンドユーザーの資格情報を自動的にチェックします。一致が見つかると、WAFはオリジンにヘッダーを追加します。これにより、脆弱な認証情報についてアプリケーションに警告し、たとえば、そのユーザーのパスワードリセットフローや2番目の要素認証チャレンジをトリガーできます。</p>
+	<p>ユーザー名とパスワードの処理は、控えめに言っても、最も機密性が高いものであり、Cloudflareではユーザー資格情報を保護するために、資格情報の流出チェック機能を構築しました。重要な設計の原理は、ユーザ名とパスワードのペアがWAFプロセスの境界の外側に決して流出すべきではないというこでした。これにより、リスクを加えることなくチェックを実行できるようになります。つまり、この機能では、ユーザ名またはパスワードをWAFプロセスの外部に送信したりログに記録 1 したりすることはありません。これは、これらの資格情報がネットワークのセキュリティにリスクをもたらす場合を除いては、この資格情報について知ることに、Cloudflareは関心がないからです。しかし、当社はそれでも、データベースルックアップを実行するためにプライバシー保護暗号化プロトコルを構築しました。大まかに言えば、WAFプロセス内のユーザー名とパスワードのペアにキー付き暗号化ハッシュ関数を適用し、結果のハッシュ値が、既知の流出した資格情報データベースからのキー付きペアのハッシュと一致するかどうかをチェックします。これについては、フォローアップの技術的な詳細情報で詳しく説明します。</p>
+	<p>本日から、Enterpriseプランのお客様は、<a href="https://www.cloudflare.com/ja-jp/waf/exposed-credential-checks/" target="_blank">こちらのページ</a>から当社チームにお問い合わせいただければ、この機能へのアクセスをリクエストできます。資格情報の流出チェックは、WordPress、Joomlaなどの一般的なシステムで、事前設定なしで動作する管理ルールセットやカスタムルールのフィルタとして提供され、任意のアプリケーションをサポートできます。</p>
+	<h3 id="cloudflare-access-">Cloudflare Accessとマネージドデバイス</h3>
+	<p><a href="https://www.cloudflare.com/ja-jp/teams/access/" target="_blank">Cloudflare Access</a>を使用すると、Cloudflareによって保護された任意のアプリケーションの前に追加の認証レイヤーを加えることができます。Accessは、リクエストごとにユーザーID、場所、ネットワークを確認することで、アプリケーションを保護します。これにより、エンドユーザアカウントのセキュリティが向上します。</p>
+	<p>ただし、ユーザーが使用しているデバイスはいまだに安全でない可能性があります。侵害されたデバイスとの有効な認証セッションは、データ漏えいにつながる上に、エンドユーザーアカウントまたはアプリケーションが完全に侵害されてしまうこともあります。企業は、モバイル端末管理（MDM）ソリューションを介してセキュリティポリシーを適用できる企業のデバイスを管理および提供することで、このリスクを軽減しようとします。</p>
+	<p>この問題を解決するために、Cloudflare Accessを改善し、企業デバイスだけが機密アプリケーションにアクセスするようにしています。アクセスルールを使用して、アクセスを許可する前に、管理対象デバイスのリストに対してデバイスのシリアル番号を確認できるようになりました。ユーザーの資格情報が流出している場合でも、管理対象デバイスのリスト以外のシリアル番号を持つデバイスを不許可にすることで、不正アクセスはブロックされます。詳細については、当社の<a href="https://blog.cloudflare.com/zero-trust-with-managed-devices/">最近の発表</a>をご覧ください。</p>
+	<h3 id="--1">ログインに失敗した場合のレート制限</h3>
+	<p>ブルートフォース攻撃は流出した資格情報のデータベースを繰り返し攻撃する場合に、特に驚くほど効果的になります。これらの攻撃を阻止するには、多くの場合、実行するには費用が高すぎるポイントまで攻撃の速度を落とすだけで十分です。</p>
+	<!--kg-card-begin: markdown-->
+	<p>ログインに失敗すると、多くのユーザー名/パスワードフォームが HTTP 403 Forbidden ステータスコードまたはその他の認識可能なエラーメッセージを発します<sup>2</sup>。これは、レート制限応答を発するための非常に効果的な信号として使用できるため、正当なユーザーへの潜在的な副作用を回避することができます。</p>
+	<!--kg-card-end: markdown-->
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/04/5-7.png" class="kg-image" alt="The rule above rate limits any IP after 5 consecutive failed login attempts in a minute for 1 hour.">
+		<figcaption>上記のルールは、5 回連続してログイン試行が失敗したあと、当該IPを1時間レート制限します。</figcaption>
+	</figure>
+	<p>レート制限応答は、JSONペイロードのAPIまたは標準のHTMLベースのエンドポイントの両方をサポートするために、必要に応じてカスタマイズできます。</p>
+	<p>レート制限は、すべてのセルフサービスのお客様に有料アドオンとしてご利用いただけます。</p>
+	<h3 id="--2">今後の計画</h3>
+	<p>Cloudflareでは多くの時間をかけて、簡単なワンクリックソリューションでエンドユーザーアカウントを最高のセキュリティで保護する方法について考えてきました。</p>
+	<p>当社のネットワークの可視性を活用することで、Cloudflareのスケールだからこそ実現可能な貴重な洞察を得られ始めています。マネージドオープンプロキシリストはその一例ですが、シンプルなデバイスポスチャーやレート制限をはるかに超えた異常ベースの検出についてすでに実験を開始しています。さらに、当社ではユースケースとシナリオを通じて、検証された異常を顧客ベース全体でより広く共有する方法について考えており、これは、もともとCloudflareが構築したオリジナルなコミュニティ保護ベースのアプローチに戻るものです。</p>
+	<p>.....</p>
+	<!--kg-card-begin: markdown-->
+	<p><sup>1</sup><a href="https://blog.cloudflare.com/encrypt-waf-payloads-hpke/">暗号化されたWAFペイロードロギングなど</a>のCloudflareの他の機能は、リクエストコンポーネントを記録できますが、お客様が提供されたパブリックキーで暗号化されます。<br>
+		<sup>2</sup>多くの侵入テストレポートでは、ログイン試行が失敗した場合の応答の違いが、情報漏えいの脆弱性として強調されています。
+	</p>
+	<!--kg-card-end: markdown-->
+</div>

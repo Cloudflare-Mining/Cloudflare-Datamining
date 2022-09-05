@@ -1,0 +1,120 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2020/01/http2prioritization-copy@2x-4.png" class="kg-image"></figure>
+	<p></p>
+	<h2 id="-">介绍</h2>
+	<p>我的团队：Cloudflare PROTOCOLS（协议）团队负责终止Cloudflare网络边缘的HTTP流量。我们处理与以下内容相关的特性：TCP、QUIC、TLS和安全证书管理、HTTP/1和HTTP/2。在第一季度，我们负责实现Cloudflare在速度周期间发布的<a href="https://blog.cloudflare.com/better-http-2-prioritization-for-a-faster-web/">增强型HTTP/2优先级</a>产品。</p>
+	<p>这是一个非常令人兴奋的项目的一部分，更令人兴奋的是看到其结果，但在这个项目的过程中，我们对NGINX有很多有趣的认识：HTTP面向Cloudflare目前部署其软件基础架构的服务器。我们很快就确定，如果不改变NGINX的内部工作方式，我们的增强型HTTP/2优先级项目就完全谈不上成功。</p>
+	<p>由于这些认识，与核心优先级产品的工作并行，我们对NGINX的内部结构进行了许多重大更改。这篇博客文章描述了结构性变化背后的动机，我们如何应对这些变化以及它们产生了什么影响。我们还确定了计划添加到路线图中的其他更改，我们希望这些更改将进一步提高性能。</p>
+	<h2 id="--1">背景</h2>
+	<p>增强的HTTP/2优先级旨在对客户端和服务器之间的web流量做一件事：它提供了一种方法来将许多HTTP/2流从上游（服务器端或源端）流到下游（客户端）的单个HTTP/2连接中。</p>
+	<p>增强的HTTP/2优先级设置允许站点所有者和Cloudflare边缘系统规定有关如何将各种对象组合到单个HTTP/2连接中的规则：特定对象是否应具有优先级和主导该连接并尽快到达客户端，或者一组对象是否应平均共享连接的容量，并更加强调并行性。</p>
+	<p>结果，增强的HTTP/2优先级允许站点所有者解决客户端和服务器之间存在的两个问题：如何控制优先级和排序的对象，以及如何充分利用有限的资源连接，这可能在连接路径上的各个阶段受到许多因素的限制，例如带宽，流量和CPU工作量。</p>
+	<h2 id="--2">我们发现了什么？</h2>
+	<p>进行优先级排序的关键是能够比较两个或多个HTTP/2流，以确定下一个将使用哪个帧。增强的HTTP/2优先级项目必然将我们引入到核心NGINX代码库中，因为我们的意图是在将HTTP/2数据帧写入客户端时，从根本上改变NGINX比较和排队的方式。</p>
+	<p>在分析阶段的早期，我们翻遍了通过NGINX内部调查提出的网站功能，我们注意到NGINX本身的结构存在许多缺陷，特别是：Nginx如何将数据从上游（服务器端）转移到下游（客户端），以及如何在各个内部阶段临时存储（缓冲）该数据。我们对NGINX的早期分析的主要结论是，它在很大程度上没有给流数据帧任何“接近机会”。要么在NGINX HTTP / 2层中连续地处理流，要么不同流的帧在同一位置花费很少的时间：例如共享队列。最终结果是减少了进行有用比较的机会。</p>
+	<p>我们创造了一个新的、几乎不科学但很有用的度量方法：<strong>Potential</strong>，用来描述增强的HTTP / 2优先级策略（甚至是默认的NGINX优先级）应用于排队数据流的有效程度。Potential本身并不是衡量优先级排序有效性的一种度量，而是对算法应用过程中参与程度的度量。简单地说，它考虑优先级迭代中包含的流和帧的数量，更多的流和帧带来了更高的潜力（Potential）。</p>
+	<p>从早期我们可以看到的是，默认情况下，NGINX显示出了较低的潜力：无论是在传统的HTTP/2优先级模型中，还是在我们的增强型HTTP/2优先级产品中，从浏览器中呈现优先级指令都是毫无用处的。</p>
+	<h2 id="--3">我们做了什么？</h2>
+	<p>为了改善与潜力相关的特定问题，以及提高系统的总体吞吐量，我们确定了NGINX中的一些关键痛点。我们将在下文对这些点进行描述，他们作为我们增强的HTTP / 2优先级的初始版本的一部分已经得到了处理和改进，或者现在已经扩展到它们自己的有意义的项目中，在接下来的几个月，我们将致力于这些项目工程。</p>
+	<h2 id="http-2-">HTTP/2帧写队列回收</h2>
+	<p>通过我们的增强型HTTP/2优先级，写队列回收功能得以成功交付，具有讽刺意味的是，这并不是对原始NGINX所做的更改，实际上，这是我们在项目进行到一半时对增强的HTTP/2优先级实现所做的一个更改。这是一个可能叫做“数据保护”的很好的示例，这是一个增加Potential（潜力）的好方法。</p>
+	<p>与原始NGINX类似，我们的增强的HTTP/2优先排序算法将把HTTP/2数据帧的队列放入写队列中，这是对它们应用优先排序策略的迭代的结果。写队列的内容将被写入下游的TLS层。同样类似于原始NGINX，由于来自网络连接的背压暂时达到了写入容量上限，因此写入队列只能部分写入TLS层。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2020/01/Write-Queue-Construction-Without-Reclamation.png" class="kg-image"></figure>
+	<p></p>
+	<p>在我们的项目早期，如果写队列只有部分写入TLS层，我们只会把帧留在写队列中，直到清空backlog，然后我们将在之后的写入迭代中再次尝试将该数据写到网络，就像原始NGINX一样。</p>
+	<p>原始NGINX采用这种方法，因为写队列是存储等待数据帧的唯一位置。然而在我们为增强HTTP/2优先级而修改的NGINX中，我们有一个原始NGINX所没有的独特结构：每一流的数据帧队列，在我们的优先级算法应用到数据帧之前，我们在其中临时存储数据帧。</p>
+	<p>我们意识到，在进行部分写操作时，我们能够将未写的帧恢复到它们的流队列中。如果后续的数据队列落后于部分未写的队列，那么之前未写的帧可以参与另一轮优先级比较，从而提高我们算法的潜力。</p>
+	<p>下图说明了此过程：</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2020/01/Write-Queue-Construction-With-Reclamation.png" class="kg-image"></figure>
+	<p></p>
+	<p>我们非常高兴能发布带有回收功能的增强型HTTP / 2优先级，因为该增强功能极大地提高了潜力，并弥补了由于其微妙性而使我们不得不在速度周保留下一个增强功能这一事实。</p>
+	<h2 id="http-2--1">HTTP/2帧写事件重排</h2>
+	<p>在Cloudflare基础架构中，我们将单个HTTP/2连接的许多流从eyeball映射到到上游Cloudflare控制平面的多个HTTP/1.1连接。</p>
+	<p>需要注意的是：我们对这样的协议进行降级似乎违反直觉，而当我表明我们也禁用这些上游连接上的HTTP keepalive时，这似乎又一次违反了直觉，这导致每一链接只有一个事务，但是这种安排提供了许多优势，尤其是改进的CPU工作负载分配的形式。</p>
+	<p>当NGINX为读活动监视其上游HTTP/1.1连接时，它可能会检测许多这些连接的可读性，并批量处理它们。然而，在该批处理中，每个上游连接从头到尾依次处理一次，一次一个：从HTTP/1.1连接读取到在HTTP/2流中分帧，再到将HTTP 2连接写入TLS层。</p>
+	<p>下图说明了现有NGINX的工作流程：</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2020/01/Upstream-Read-Event.png" class="kg-image"></figure>
+	<p></p>
+	<p>通过一次将每个流的帧提交到TLS层的一个流，许多帧可以在下游连接上的背压允许帧队列建立之前完全通过NGINX系统，为这些帧提供接近的机会，并允许应用优先级逻辑。这会对潜力产生负面影响，并降低了优先排序的效率。</p>
+	<p>经过Cloudflare增强的HTTP / 2优先级修改的NGINX旨在将上述内部工作流程重排为以下模型：</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2020/01/Upstream-Read-Reordered.png" class="kg-image"></figure>
+	<p></p>
+	<p>尽管我们持续在每个上游连接的单独迭代中将上游数据构建为HTTP/2数据帧，但我们不再将这些帧提交到每个迭代中的单个写队列中，而是将这些帧安排到前面描述的每个流队列中。然后，我们将单个事件发布到每个连接迭代的末尾，并在单个事件中对所有流的HTTP/2数据帧执行优先级划分、排队和写入。</p>
+	<p>这个单一事件发现数据队列可以方便地存储在它们各自的流队列中，它们都非常接近，这极大地增加了边缘优先级算法的潜力。</p>
+	<p>通过一种更接近实际代码的形式，此修改的核心看起来像这样：</p>
+	<pre><code class="language-c">ngx_http_v2_process_data(ngx_http_v2_connection *h2_conn,
+                         ngx_http_v2_stream *h2_stream,
+                         ngx_buffer *buffer)
+{
+    while ( ! ngx_buffer_empty(buffer) {
+        ngx_http_v2_frame_data(h2_conn,
+                               h2_stream-&gt;frames,
+                               buffer);
+    }
+
+    ngx_http_v2_prioritise(h2_conn-&gt;queue,
+                           h2_stream-&gt;frames);
+
+    ngx_http_v2_write_queue(h2_conn-&gt;queue);
+}</code></pre>
+	<p>对此：</p>
+	<pre><code class="language-c">ngx_http_v2_process_data(ngx_http_v2_connection *h2_conn,
+                         ngx_http_v2_stream *h2_stream,
+                         ngx_buffer *buffer)
+{
+    while ( ! ngx_buffer_empty(buffer) {
+        ngx_http_v2_frame_data(h2_conn,
+                               h2_stream-&gt;frames,
+                               buffer);
+    }
+
+    ngx_list_add(h2_conn-&gt;active_streams, h2_stream);
+
+    ngx_call_once_async(ngx_http_v2_write_streams, h2_conn);
+}</code></pre>
+	<pre><code class="language-c">ngx_http_v2_write_streams(ngx_http_v2_connection *h2_conn)
+{
+    ngx_http_v2_stream *h2_stream;
+
+    while ( ! ngx_list_empty(h2_conn-&gt;active_streams)) {
+        h2_stream = ngx_list_pop(h2_conn-&gt;active_streams);
+
+        ngx_http_v2_prioritise(h2_conn-&gt;queue,
+                               h2_stream-&gt;frames);
+    }
+
+    ngx_http_v2_write_queue(h2_conn-&gt;queue);
+}</code></pre>
+	<p>这种修改存在着很高的风险，因为即使修改非常小，我们也会将NGINX中已经建立好的和调试过的事件流进行很大程度的转换。就像从叠叠乐塔中抽出一些积木并放在另一个位置一样，我们冒着这样的风险：条件竞争，事件哑火，事件黑洞在处理期间导致的锁定。</p>
+	<p>考虑到这一风险级别，我们<strong>没有</strong>在速度周中完整地发布这个变更，但是我们将继续测试和完善它，以便在将来发布。</p>
+	<h2 id="--4">上游缓冲区部分重用</h2>
+	<p>Nginx有一个内部缓冲区来存储它从上游读取的连接数据。首先，该缓冲区<strong>全部准备就绪</strong>。当数据从上游被读取到已就绪缓冲区时，缓冲区中保存数据的部分将被传递到下游的HTTP/2层。由于HTTP/2负责处理该数据，因此缓冲区的该部分被标记为：<strong>忙</strong>，并且只要HTTP/2层将数据写入TLS层，它就会保持忙状态。（HTTP/2层将数据写入TLS层）这是一个过程，需要（在计算机上）花费一段时间。</p>
+	<p>在这段时间里，上游层可以继续将更多数据读入缓冲区的其余Ready节中，并继续将该增量数据传递到HTTP/2层，直到没有Ready节可用为止。</p>
+	<p>当忙数据最终完成在HTTP / 2层中的过程时，包含该数据的缓冲区空间将标记为：<strong>空闲</strong></p>
+	<p>下图说明了该过程：</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2020/01/Upstream-Buffer-Current-1.png" class="kg-image"></figure>
+	<p></p>
+	<p>您可能会问：当上游缓冲区的前半部分被标记为空闲时（图中蓝色部分），即使上游缓冲区的后半部分仍然处于繁忙状态，是否可以重用空闲部分来从上游读取更多数据?</p>
+	<p>该问题的答案是：<strong>否</strong></p>
+	<p>哪怕只有一小部分缓冲区仍然处于繁忙状态，NGINX也将因此拒绝把整个缓冲区空间中的任何一部分重新用于读取。只有当整个缓冲区空闲时，才能将缓冲区返回到就绪状态，并用于上游读取的另一次迭代。总之，数据可以从上游读取到缓冲区尾部的就绪空间，但不能读取到缓冲区顶部的空闲空间。</p>
+	<p>这是NGINX的一个缺点，显然是不可取的，因为它中断了系统中的数据流。我们不禁问道：如果我们可以在这个缓冲区中循环，并在头部重复使用空闲的部分，会发生什么呢？我们力求在不久的将来通过测试以下NGINX的缓冲模型来回答这个问题：</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2020/01/Upstream-Buffer-Improved.png" class="kg-image"></figure>
+	<p></p>
+	<h2 id="tls-">TLS层缓冲</h2>
+	<p>在上文的许多场合，我多次提到了TLS层，以及HTTP/2层如何将数据写入TLS层。在OSI（开放式系统互联通信）网络模型中，TLS位于协议(HTTP/2)层之下，在许多有意设计的网络软件系统（例如NGINX）中，软件接口以模仿该分层的方式分开。</p>
+	<p>NGINX HTTP/2层将收集当前的数据帧队列，并将它们按优先级顺序放入一个输出队列，然后将这个队列提交给TLS层。TLS层使用每个连接缓冲区来收集HTTP/2层数据，然后再对该数据执行实际的加密转换。</p>
+	<p>缓冲区的目的是使TLS层有更多有意义的数据得到加密，因为如果缓冲区太小，或者TLS层仅依赖于HTTP / 2层的数据单元，则加密和传输大量小块的开销可能会对系统吞吐量产生负面影响。</p>
+	<p>下图说明了这种缓冲区不足的情况：</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2020/01/TLS-Layer-Buffering-Undersize.png" class="kg-image"></figure>
+	<p></p>
+	<p>如果TLS缓冲区太大，则会提交过多的HTTP / 2数据来加密，并且如果由于背压而无法将其写入网络，那么数据就会被锁定在TLS层中，无法返回到HTTP/2层进行回收处理，从而降低了回收的效率。下图说明了这种超大缓冲区的情况：</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2020/01/TLS-Layer-Buffering-Oversize.png" class="kg-image"></figure>
+	<p></p>
+	<p>在接下来的几个月中，我们将着手尝试寻找TLS缓冲区的“最适”点：调整TLS缓冲区的大小，使其足够大以保持加密和网络写入的效率，但又不会太大以至于减少对不完整网络写入的响应能力和回收效率。</p>
+	<h2 id="--5">谢谢——接下来！</h2>
+	<p>增强的HTTP/2优先级项目有一个宏伟的目标，那就是从根本上重新塑造我们从Cloudflare边缘向客户发送流量的方式，从我们的测试结果和一些客户的反馈来看，我们已经实现了这个目标！但是，我们从项目中脱颖而出的最重要的一个方面是，NGINX软件基础架构中的内部数据流在最终用户观察到的流量方面起着至关重要的作用。我们发现，更改几行（固然很关键）代码可能会对我们的优先级算法的有效性和性能产生重大影响。另一个积极的结果是，除了改进HTTP/2，我们还期待着将我们新获得的技能和经验应用到QUIC上的HTTP/3。</p>
+	<p>我们渴望与社区分享我们对NGINX的修改，因此我们已打开<a href="https://trac.nginx.org/nginx/ticket/1763" target="_blank">此</a>工单，通过此工单，我们将与NGINX团队讨论上游事件重排序更改和缓冲区部分重用更改。</p>
+	<p>随着Cloudflare的持续增长，我们对软件基础架构的需求也在发生变化。Cloudflare已经超越了HTTP/1 over TCP代理以支持终端和对任意UDP及TCP流量的第3、4层保护。现在，我们正在转向其他技术和协议，例如QUIC和HTTP / 3，以及对各种其他协议（例如消息传递和流媒体）的完全代理。</p>
+	<p>对于这些努力，我们正在寻找新的方法来回答有关以下主题的问题：可扩展性、局部性能、大范围性能、自省和可调试性、释放敏捷性、可维护性。</p>
+	<p>如果你乐于帮助我们回答这些问题，并了解一些：硬件和软件的可扩展性，网络编程，异步事件和基于未来的软件设计，TCP，TLS，QUIC，HTTP，RPC协议，Rust或其他的一些内容，请到<a href="https://www.cloudflare.com/careers/" target="_blank">这里</a>看看。</p>
+</div>

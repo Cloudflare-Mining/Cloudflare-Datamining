@@ -1,0 +1,59 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/07/ipfs-gateway-header@3.5x-1-1.png" class="kg-image"></figure>
+	<p></p>
+	<p>今天，我们很高兴能够介绍Cloudflare的IPFS网关，这是一种从InterPlanetary文件系统（IPFS）访问内容的简便方法，不需要在您的计算机上安装和运行任何特殊软件就可以访问内容。我们希望我们在<a href="https://cloudflare-ipfs.com/" target="_blank">cloudflare-ipfs.com</a>上托管的网关能够为许多新的可靠性和安全性高的Web应用程序服务。IPFS网关是第一个作为我们<a href="https://www.cloudflare.com/distributed-web-gateway" target="_blank">分布式Web网关</a>项目的一部分而发布的产品，它是我们为新的分布式Web技术所作出的所有努力的成果。</p>
+	<p>本文将简要介绍IPFS。在另一篇附带的博客文章上，我们还<a href="https://blog.cloudflare.com/e2e-integrity">介绍了我们在网关上所构建的内容</a>，并且附上<a href="https://developers.cloudflare.com/distributed-web/" target="_blank">文档</a>让您了解如何通过我们的网关来使用您自己的自定义主机名上传自己的内容。</p>
+	<h2 id="ipfs-">IPFS快速入门</h2>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/07/spaaaace-ipfs@3.5x-1.png" class="kg-image"></figure>
+	<p></p>
+	<p>通常，当您从浏览器访问网站时，浏览器会跟踪原始服务器（或多个服务器），这些服务器是网站内容的最终集中存储库。然后，浏览器会将您计算机的请求发送到对应的源服务器，无论它在世界的哪个位置，该服务器都会将内容发送回您的计算机。这个系统已经服务于互联网长达几十年了，但是它仍存在一个非常大的缺点：集中化使得令内容保持在线状态的时间无法超过原始服务器托管它的时间。如果该原始服务器被自然灾害黑客入侵或劫持，则该内容将变得不可用。如果网站所有者决定将其删除，则内容将会消失。简而言之，内容备份对于大多数平台来说都不是第一流的概念（<a href="https://www.cloudflare.com/always-online/" target="_blank">Cloudflare的Always Online</a>是一个值得注意的例外）。</p>
+	<p>IPFS旨在改变这种状况。IPFS是一个点对点文件系统，由全世界数以千计的计算机组成，每个计算机都存储着网络文件。这些文件可以是任何东西：猫的图片，3D模型，甚至整个网站。目前已经有超过5,000,000,000个文件上传到<a href="https://cloudflare-ipfs.com/ipfs/QmWimYyZHzChb35EYojGduWHBdhf9SD5NHqf8MjZ4n3Qrr/Filecoin-Primer.7-25.pdf" target="_blank">IPFS</a>。</p>
+	<h2 id="ipfs-web">IPFS与传统Web</h2>
+	<p>如今，IPFS与网络之间存在两个主要差异。</p>
+	<p>首先，任何人都可以免费缓存和上传任何内容到IPFS上。而目前，使用传统的网络缓存或上传内容通常要依靠远程位置的大型托管服务供应商来存储内容并将其上传至网络的其余部分。如果您想建立一个网站，您必须购买这些主要服务之一来为您执行此操作。然而使用IPFS，任何人都可以将其计算机注册为系统中的节点，并开始上传数据。无论您是运行的是Raspberry Pi又或是世界上最大的服务器，这都没关系，您仍然可以成为系统中的高效节点。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/07/Decentralized-Network-1.png" class="kg-image"></figure>
+	<p></p>
+	<p>第二个关键区别是数据是内容定址的，而不是单元编址的。这是一个微妙的差异，但影响是巨大的，因此我们将具体讲解一下。</p>
+	<p>目前，当您打开浏览器并导航到example.com时，您就相当于告诉浏览器“获取存储在example.com的IP地址中的数据”（IP是93.184.216.34）。该IP地址标记了您想要的内容存储在网络中的位置。然后，您向拥有该IP地址的服务器发送“example.com”内容的请求，服务器发回相关信息。因此，在最基本的层面上，您可以告诉网络在哪个IP查看，网络会发回它找到的内容。</p>
+	<p>IPFS将内容转变为首要的。</p>
+	<p>使用IPFS，系统中存储的每个数据块都通过其内容的加密哈希值来寻址，即，该区块特有且唯一的长串字母和数字。当您想要IPFS中的一段数据时，您可以通过其哈希值来请求它。因此你不需要请求网络“让我得到存储在93.184.216.34的内容”，你只需要请求 “给我一个哈希值为 &nbsp;<code>QmXnnyufdzAWL5CqZ2RnSNgPbvCc1ALT73s6epPrRnZ1Xy</code>。的内容。”（ <code>QmXnnyufdzAWL5CqZ2RnSNgPbvCc1ALT73s6epPrRnZ1Xy</code>恰好是包含字符串“I’m trying out IPFS”的.txt文件的哈希值）。</p>
+	<h2 id="-">这有什么不同？</h2>
+	<p>请记住，使用IPFS时，您可以告诉网络要查找的内容，并且网络会指出要查找的位置。</p>
+	<h2 id="--1">为什么这很重要？</h2>
+	<p>首先，它使网络更具弹性。具有哈希值的内容 <code>QmXnnyufdzAWL5CqZ2RnSNgPbvCc1ALT73s6epPrRnZ1Xy</code>可以存储在几十个节点上，因此如果缓存该内容的一个节点发生故障，则网络仅需查找另一节点上的内容。</p>
+	<p>其次，它引入了自动安全级别。假设您知道所需文件的哈希值。所以你问网络，“给我带哈希值为 <code>QmXnnyufdzAWL5CqZ2RnSNgPbvCc1ALT73s6epPrRnZ1Xy</code>的文件”（上面的example.txt文件）。网络响应并发送数据。当您收到所有数据时，您可以重新进行更新。如果数据在传输过程中完全更改，则您获得的哈希值将与您请求的哈希值不同。您可以将哈希值视为文件的唯一指纹。如果发回给您的文件不同于您预期收到的文件，则它们会有不同的指纹。这意味着系统具有内置的方式来知道内容是否已被篡改。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/07/ipfs-blog-post-image-1-copy@3.5x.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/07/ipfs-blog-post-image-2-copy@3.5x.png" class="kg-image"></figure>
+	<p></p>
+	<h2 id="-ipfs-">关于IPFS地址和加密哈希的注释</h2>
+	<p>我们花了一些时间来讨论为什么这个内容定址系统如此特殊，因此如何构建IPFS地址是非常值得一谈的。IPFS中的每个地址都是一个<a href="https://github.com/multiformats/multihash" target="_blank">多重哈希值</a>，这意味着该地址将有关所使用的散列算法和散列输出的信息组合成了一个字符串。IPFS多重哈希值有三个不同的部分：多重哈希值的第一个字节表示已使用哪个哈希算法来生成哈希值; 第二个字节表示哈希值的长度; 其余字节是哈希函数输出的值。默认情况下，IPFS使用<a href="https://en.wikipedia.org/wiki/SHA-2" target="_blank">SHA-256</a>算法，该算法产生32字节的哈希值。这由<a href="https://en.wikipedia.org/wiki/Base58" target="_blank">Base58中</a>的字符串“Qm” <a href="https://en.wikipedia.org/wiki/Base58" target="_blank">表示</a>（IPFS地址的默认编码），这就是这篇文章中的所有示例IPFS地址都是“Qm ...”形式的原因。</p>
+	<p>虽然SHA-256是目前使用的标准算法，但这种多重哈希格式其实允许IPFS协议支持其他哈希算法产生的地址。如果在未来的某个时间SHA-256的缺陷被发现，这允许IPFS网络转移到不同的算法。如果有人用另一种算法哈希文件，该文件的地址将启动“Qm”以外的某些字符。</p>
+	<p>好消息是，至少就目前而言，SHA-256被认为具有许多特性，使其成为一种强大的加密哈希算法。其中最重要的是SHA-256具有抗冲击性。当有两个不同的文件在通过SHA-256算法运行时产生相同的哈希时发生冲突。要了解防止冲突的重要性，请考虑这个简短的情况。想象一下，一些IPFS用户，例如Alice，上传了一个带有一些哈希的文件，另一个用户Bob上传了一个恰好产生完全相同哈希的不同文件。如果发生这种情况，网络中将有两个不同的文件具有完全相同的地址。因此，如果某个第三人Carol向该地址发出IPFS请求内容，她不一定知道她是否会收到Bob的文件或Alice的文件。</p>
+	<p>SHA-256使碰撞极不可能发生。因为SHA-256计算256位哈希值，所以算法可以生成2 ^ 256个可能的IPFS地址。因此，IPFS中存在两个产生冲突的文件的可能性很低。非常低。如果你对更多的细节感兴趣，在维基百科讲述<a href="https://en.wikipedia.org/wiki/Birthday_attack#Mathematics" target="_blank">生日攻击</a>的页面有一个很酷的表格，显示了在足够强大的哈希算法下发生碰撞的可能性。</p>
+	<h2 id="-ipfs--1">您如何访问IPFS上的内容？</h2>
+	<p>我们已经了解了IPFS的所有细节，现在您可能想知道如何使用它。有许多方法可以访问存储在IPFS网络中的内容，但我们将介绍两个比较常见的办法。第一种方法是将IPFS下载到您的计算机上，使计算机变成IPFS网络的节点。如果您想要方便快捷一些，这便是与网络交互的最佳方式。如果您对使用IPFS感兴趣，可以在<a href="https://ipfs.io/docs/install/" target="_blank">此处</a>下载Go安装启用。</p>
+	<p>但是，如果您不想在计算机上运行节点，那该怎么办？这就是IPFS网关的作用所在。IPFS网关是第三方节点，它从IPFS网络获取内容并通过HTTPS为您提供服务。要使用网关，您无需下载任何软件或键入任何代码。您只需打开浏览器并输入网关的名称和您要查找的内容的哈希值，网关就会在您的浏览器中提供内容。</p>
+	<p>假设您知道要从之前访问example.txt文件，该文件具有哈希值 <code>QmXnnyufdzAWL5CqZ2RnSNgPbvCc1ALT73s6epPrRnZ1Xy</code>，并且有一个可在以下位置访问的公共网关 <code>https://example-gateway.com</code></p>
+	<p>要访问该内容，您只需打开浏览器并输入以下内容</p>
+	<p></p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-code">https://example-gateway.com/ipfs/QmXnnyufdzAWL5CqZ2RnSNgPbvCc1ALT73s6epPrRnZ1Xy
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p></p>
+	<p>然后你将获得存储在该哈希中的数据。/ ipfs /前缀和哈希值的组合称为文件路径。您始终需要提供完整的文件路径来访问存储在IPFS中的内容。</p>
+	<h2 id="-cloudflare-">您可以使用Cloudflare的网关做些什么？</h2>
+	<p>最基本的级别是，您可以从浏览器访问存储在IPFS上的任何数十亿个文件。但这不是你唯一能做的很酷的事情。使用Cloudflare的网关，您还可以构建一个完全托管在IPFS上的网站，并可通过自定义域名向您的用户提供内容。此外，我们将向连接到我们网关的任何网站发布免费SSL证书，确保连接到Cloudflare网关的每个网站都不会受到窥探和操纵。有关Cloudflare的网关可以做什么的更多信息，请查看<a href="https://developers.cloudflare.com/distributed-web/" target="_blank">Distributed Web Gateway开发人员文档</a>。</p>
+	<p>我们将所有不同StackExchange网站的<a href="http://www.kiwix.org/" target="_blank">Kiwix</a>存档放在一起，并在此基础上仅使用IPFS构建分布式搜索引擎，这是一个有趣的例子。<a href="https://ipfs-sec.stackexchange.cloudflare-ipfs.com/" target="_blank">点击这里</a>查看。</p>
+	<h2 id="--2">处理滥用问题</h2>
+	<p>IPFS是一个点对点网络，因此用户可能共享到被滥用的内容。这不是我们愿意看到的。然而，就像Cloudflare与更传统客户的合作模式一样，Cloudflare的IPFS网关只是IPFS前面的缓存。Cloudflare无法修改或删除IPFS网络中的内容。如果您发现Cloudflare IPFS网关提供的任何被滥用的内容，您可以点击<a href="https://www.cloudflare.com/abuse/" target="_blank">此处</a>描述的标准滥用报告机制。</p>
+	<h2 id="--3">迎接分布式的未来</h2>
+	<p>IPFS只是使得网络走向全新且去中心化的未来的一系列技术之一。Cloudflare很期待这些新技术即将带来的网络的发展，同时我们认为我们的网关将缩小传统网络与IPFS带来的新一代分布式网络技术之间的差距。我们帮助用户在浏览器中浏览IPFS的内容，这将让这个生态系统更加强大并将有助于它的发展。就像Cloudflare在2010年刚成立时那样，我们打破了网络的局限，向当时的网络所有者提供从前只有互联网巨头才能做到的安全性、性能和可用性，现在我们也认为IPFS网关能够推动分布式网络上传内容的发展！</p>
+	<p>Dapper Labs首席技术官兼CryptoKitties联合创始人Dieter Shirley说：</p>
+	<blockquote>自从我们推出IPFS以来，我们就想在IPFS上存储CryptoKitty艺术，但这项技术还没有准备好。Cloudflare的声明将IPFS从一个充满希望的实验转变为一个强大的商业部署工具。这无疑是个好东西！</blockquote>
+	<p>IPFS网关的推出是令人兴奋的，但它并不止于此。Cloudflare庞大的全球网络还将走向其他同样有趣的分布式Web技术，我们仍在探索中。如果您有兴趣跟Cloudflare一起建立更好的互联网，<a href="https://www.cloudflare.com/careers/" target="_blank"><strong>请加入我们，我们正在招聘中！</strong></a></p>
+	<p><em>点击订阅我们的</em><a href="https://blog.cloudflare.com/subscribe/"><em>博客</em></a><em><u>，</u>获得每日最新消息。</em></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/07/Crypto-Week-1-1.png" class="kg-image"></figure>
+</div>

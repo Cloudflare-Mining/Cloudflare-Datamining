@@ -1,0 +1,35 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/unnamed-14-7.png" class="kg-image" alt="使用免費方案的 Cloudflare 客戶現在也可獲得即時 DDoS 警示"></figure>
+	<p>我們很高興地宣佈，使用免費方案的客戶現在也可獲得 HTTP DDoS 攻擊的即時警示。Cloudflare 可自動偵測並緩解此類攻擊。即時 DDoS 警示在一年多前初始發佈，但先前只提供給使用 Pro 方案或更高級別方案的客戶。本公告將 DDoS 警示功能拓展到免費方案使用者。您可按一下<a href="https://blog.cloudflare.com/announcing-ddos-alerts/">此處</a>，閱讀原版公告部落格貼文。</p>
+	<h3 id="-ddos-">什麼是 DDoS 攻擊？</h3>
+	<p><a href="https://www.cloudflare.com/zh-tw/learning/ddos/what-is-a-ddos-attack/" target="_blank">分散式阻斷服務 (DDoS) 攻擊</a>是一種試圖中斷線上業務的網路攻擊。無論您的業務是依賴於 VoIP 伺服器、基於 UDP 的遊戲伺服器，還是 HTTP 伺服器，DDoS 攻擊均可用於破壞任何類型的網際網路設備、伺服器或網路。</p>
+	<p>在這篇部落格貼文中，我們將重點關注以 HTTP 伺服器為目標的 DDoS 攻擊。無論您的 HTTP 伺服器支援的對像是行動應用程式、電子商務網站、API 閘道，還是任何其他 HTTP 應用程式，只要攻擊者向您傳送的請求超過其處理能力，伺服器就無法為您的真正使用者提供服務。大量請求會導致服務中斷，甚至導致整個伺服器離線。DDoS 攻擊會對現實世界產生嚴重後果，比如影響您的收入和聲譽。</p>
+	<h3 id="cloudflare-ddos-">Cloudflare 如何偵測和緩解 DDoS 攻擊</h3>
+	<p>要保護您的伺服器免受 DDoS 攻擊，需要兩種主要能力：</p>
+	<ol>
+		<li>能夠同時承擔使用者請求與攻擊請求的頻寬</li>
+		<li>區分使用者請求與攻擊請求的能力</li>
+	</ol>
+	<p>無論攻擊的規模、頻率和持續時間如何，我們都可以使用自己開發的系統實現上述功能。所有 Cloudflare 客戶，包括使用免費方案的客戶，均受到我們的<a href="https://blog.cloudflare.com/unmetered-mitigation/">非計量 DDoS 緩解承諾</a>的保護。</p>
+	<p>為防禦 DDoS 攻擊，首先，我們將您的流量路由至<a href="https://www.cloudflare.com/zh-tw/network/" target="_blank">我們的資料中心網路</a>。我們的網路覆蓋全球 100 多個國家和地區的超過 250 個城市。處理能力超過 100 Tbps，比<a href="https://blog.cloudflare.com/cloudflare-blocks-an-almost-2-tbps-multi-vector-ddos-attack/">迄今為止規模最大的攻擊</a>要大五十倍。我們的頻寬足以吸收您使用者的流量和攻擊流量。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/01/image2-18.png" class="kg-image" alt="Cloudflare 的全球網路">
+		<figcaption>Cloudflare 的全球網路</figcaption>
+	</figure>
+	<h3 id="cloudflare-">Cloudflare 的全球網路</h3>
+	<p>其次，您的流量到達我們的資料中心後，將立即透過先進的分析機制對其進行掃描，檢查是否存在 DDoS 攻擊。一旦偵測到攻擊，將自動產生即時緩解規則，並根據攻擊模式精確地緩解攻擊請求。如果是使用者的請求，則不進行任何操作。使用 <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/http" target="_blank">HTTP DDoS 託管規則集</a>，您可根據需要和特定的流量模式來自訂緩解系統的設定。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/01/image1-13.png" class="kg-image" alt="A diagram showing a server unable to respond to legitimate users due to a malicious DDoS attack"></figure>
+	<p>不知道該怎麼做？沒關係。在大多數情況下，您無需執行任何操作，我們的系統會自動保護您的伺服器。請閱讀我們的<a href="https://developers.cloudflare.com/ddos-protection/get-started" target="_blank">入門指南</a>或原版<a href="https://blog.cloudflare.com/http-ddos-managed-rules/">部落格貼文</a>，瞭解更多資訊。如果您有興趣，也可閱讀這篇技術方面的部落格貼文，進一步瞭解我們的緩解系統的運作方式：<a href="https://blog.cloudflare.com/zh-tw/deep-dive-cloudflare-autonomous-edge-ddos-protection-zh-tw/">Cloudflare 自發邊緣 DDoS 保護之剖析</a></p>
+	<h3 id="-ddos--1">設定 DDoS 警示</h3>
+	<p>在我們的系統偵測到並緩解 DDoS 攻擊後，您將收到即時警示。若要接收警示，請首先確保按照以下步驟設定通知原則：</p>
+	<ol>
+		<li>登入至 <a href="https://www.cloudflare.com/login/" target="_blank">Cloudflare 儀表板</a>並選取您的帳戶。</li>
+		<li>在主畫面上，前往<strong>通知</strong>。</li>
+		<li>按一下<strong>新增</strong>並選擇 <strong>HTTP DDoS 攻擊警示器</strong>。</li>
+		<li>為警示輸入名稱、描述（選用），並新增收件人的電子郵件地址，然後按一下<strong>建立</strong>。</li>
+	</ol>
+	<p>若要深入瞭解 DDoS 警示及支援的傳遞方法，請查看以下指南：<a href="https://support.cloudflare.com/hc/en-us/articles/360053216191-Understanding-Cloudflare-DDoS-alerts" target="_blank">瞭解 Cloudflare DDoS 警示</a>。</p>
+	<h3 id="-ddos--2">免費 DDoS 防護、控制和可見度</h3>
+	<p>Cloudflare 的使命是幫助構建更好的網際網路，這一使命為我們的一切行動提供指導。作為踐行這一使命的一部分，我們認為，更好的網際網路能為所有人提供企業級 DDoS 防護，而不僅僅是為大型組織提供。</p>
+	<p>此外，我們還為所有人提供 <a href="https://blog.cloudflare.com/http-ddos-managed-rules/">DDoS 託管規則集</a>，確保即便是非付費客戶，也能定製和最佳化其 DDoS 防護設定。更進一步，我們希望所有使用者都能在必要時儘快做出反應。這便是我們免費提供即時警示的原因。知識就是力量，在發生攻擊時即時通知使用者有助於其確保網站安全、可用、高效。</p>
+	<p>尚未使用 Cloudflare？<a href="https://dash.cloudflare.com/sign-up" target="_blank">立即開始</a>。</p>
+</div>

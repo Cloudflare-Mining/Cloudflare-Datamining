@@ -1,0 +1,54 @@
+<div class="post-content lh-copy gray1">
+	<p>NOTE: <em>This feature is no longer available. Please see the <a href="https://blog.cloudflare.com/announcing-amp-real-url/">AMP Real URL post</a>. </em></p>
+	<hr>
+	<!--kg-card-begin: markdown-->
+	<p>Cloudflare has been a long time supporter of <a href="https://www.ampproject.org/" target="_blank">AMP</a>, an open-source markup language 1.5 billion web pages are using to accelerate their mobile web performance. Cloudflare runs <a href="https://www.cloudflare.com/website-optimization/ampersand/" target="_blank">Ampersand</a>, the only alternative to Google’s AMP cache, and earlier this year we launched <a href="https://blog.cloudflare.com/accelerated-mobile/">Accelerated Mobile Links</a>, a way for sites on Cloudflare to open external links on their site in AMP format, as well as <a href="https://www.cloudflare.com/website-optimization/firebolt/" target="_blank">Firebolt</a>, leveraging AMP to speed up ad performance.</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2017/03/icon_mobile-interface-1.png" alt=""></p>
+	<p>One of the biggest challenges developers face in converting their web pages to AMP is testing their AMP pages for valid AMP syntax before deploying. It's not enough to make the templates work at dev time, you also need to validate individual pages before they’re published. Imagine, for example, a publishing company where content creators who are unfamiliar with AMP are modifying pages. Because the AMP markup language is so strict, one person adding an interactive element to a page can all of a sudden break the AMP formatting and stop the page from validating.</p>
+	<p>We wanted to make it as easy as possible to move webpages and sites to AMP so we built an AMP linter API for developers to check that their AMP pages are formatted correctly, even before they are deployed.</p>
+	<p>To check if a webpage’s AMP markup is correct, just send the AMP page to the endpoint <code><a href="https://amp.cloudflare.com/q/" target="_blank">https://amp.cloudflare.com/q/</a></code> like this:</p>
+	<pre><code>curl https://amp.cloudflare.com/q/amp.usatoday.com/story/82055560/
+{
+  "source": "http://amp.usatoday.com/story/82055560/", 
+  "valid": true, 
+  "version": "1488238516283"
+}
+</code></pre>
+	<p>The API has options to send just the markup content, or point the linter to the live site. To send a file, add the <code>--data-binary</code> flag:</p>
+	<pre><code>curl -X POST --data-binary @amp_page.html -H 'Content-Type: text/html; charset=UTF-8' https://amp.cloudflare.com/q/
+</code></pre>
+	<p>If you send an AMP page with invalid AMP syntax, the message returned will tell you exactly what breaks your AMP page, and will point you to the specific place in the AMP reference where you can see the implementation guide for the broken element.</p>
+	<pre><code>curl -X POST --data-binary @invalid_amp.html -H 'Content-Type: text/html; charset=UTF-8' https://amp.cloudflare.com/q/
+{
+  "errors": [
+    {
+      "code": "MANDATORY_TAG_MISSING", 
+      "col": 7, 
+      "error": "The mandatory tag 'link rel=canonical' is missing or incorrect.", 
+      "help": "https://www.ampproject.org/docs/reference/spec.html#required-markup", 
+      "line": 13
+    }
+  ], 
+  "source": "POST", 
+  "valid": false, 
+  "version": "1485227592804"
+}
+
+
+</code></pre>
+	<p>Here’s a reference in python, and if you want to send html directly instead of a live webpage, replace line two with <code>r = requests.post("<a href="https://amp.cloudflare.com/q" target="_blank">https://amp.cloudflare.com/q</a>', data=html)</code></p>
+	<pre><code>import requests
+
+u = 'www.bbc.co.uk/news/amp/39192025'
+r = requests.get('https://amp.cloudflare.com/q/' + u)
+validation = r.json()
+if validation['valid']:
+  print u, 'is valid'
+else:
+  print u, 'failed!'
+  for e in validation['errors']: 
+    print e
+</code></pre>
+	<p>Let us know what you think - you can send us feedback at <a href="/cdn-cgi/l/email-protection#e5848895c8959087898c968d8097a586898a90818389849780cb868a88"><span class="__cf_email__" data-cfemail="20414d500d5055424c495348455260434c4f5544464c4152450e434f4d">[email&nbsp;protected]</span></a>. Whether you embed this tool into your build and continuous integration processes, or into your CMS workflows, we’re excited to hear how you use it.</p>
+	<!--kg-card-end: markdown-->
+</div>

@@ -1,0 +1,58 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/image1-1.png" class="kg-image"></figure>
+	<p>이 글을 읽고 있는 여러분은 웹의 참여자입니다. 서버를 운영하거나 코드를 작성하지 않고도 이러한 블로그를 작성하여 여러분에게 보여드릴 수 있다는 것은 놀라운 일입니다. 오늘날의 웹은 과거의 그 어느 때보다도 많은 사용자 참여를 가능하게 합니다.</p>
+	<p>작년에 저희는 인터넷의 다음 단계는 항상 켜져 있고 항상 안전하며 항상 비공개인 환경이 될 것이라고 <a href="https://blog.cloudflare.com/internet-privacy/">언급</a>했습니다. 이번에는 그와 유사한 형태의 Web3라고 불리는 웹 트렌드에 대해 알아보겠습니다. 이 블로그를 통해 먼저 Web3를 웹 진화의 맥락에서 이해하고, Cloudflare가 이를 어떻게 지원할 수 있는지 살펴봅시다.</p>
+	<h3 id="-1-0-2-0-">웹 1.0에서 웹 2.0으로의 진화</h3>
+	<p><a href="https://webfoundation.org/about/vision/history-of-the-web/" target="_blank">팀 버너스-리(Tim Berners-Lee)</a> 경은 1989년의 유명한 '<a href="https://www.w3.org/History/1989/proposal.html" target="_blank">정보 관리: 제언(Information Management: A Proposal)</a>’을 통해 하이퍼텍스트 링크로 상호 연결되어 있는 정보 시스템 네트워크로서의 '웹'이라는 비전을 제시했습니다. 웹은 종종 작동 기반으로서의 컴퓨터 네트워크인 인터넷과 동일시됩니다. 웹에 실제로 요구되는 주요 조건에는 원격 시스템을 통해 분산된 방식으로 네트워크에 액세스할 수 있어야 하고 중앙 제어 또는 조정 없이도 시스템을 상호 연결할 수 있어야 한다는 원칙이 포함되었습니다.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/10/image4-3.png" class="kg-image" alt="The original proposal for what we know as the web, fitting in one diagram - Source: w3">
+		<figcaption>한 눈에 보는 오늘날의 웹의 시초가 된 제안서 - 출처: <a href="https://www.w3.org/History/1989/proposal.html" target="_blank">w3</a></figcaption>
+	</figure>
+	<p>이러한 비전은 상호 연결된 정적 리소스로 구성되어 분산된 서버 네트워크를 통해 전달되고 주로 클라이언트 측에서 읽기 전용으로만 액세스 가능한 형태였던 웹의 초기 버전, 즉 '웹 1.0'으로 구체화되었습니다. <a href="https://www.mit.edu/people/mkgray/growth/" target="_blank">World Wide Web Wanderer</a>의 자료에 따르면, 1993년에 Mosaic 그래픽 브라우저가 도입된 후 2년에 걸쳐 웹사이트 수가 1,000% 넘게 늘어나면서 웹 사용량도 급증했습니다.</p>
+	<p>웹 성장의 변곡점이었던 2000년대 초반은 닷컴 버블의 붕괴에서 살아남은 기술 회사들이 웹에 대한 회의론이 고조되는 가운데서도 고객에게 새로운 방식으로 가치를 제공하도록 진화하는 등, 웹 개발에 있어 핵심적인 시기였습니다.</p>
+	<ul>
+		<li>Netscape 같은 데스크탑 브라우저는 필수품이 되었고, 검색 엔진 등의 콘텐츠 사용을 위한 기본 웹 서비스의 토대를 닦았습니다.</li>
+		<li>Yahoo!와 같은 웹 디렉토리의 하이퍼링크가 주도했던 초기의 네트워크 효과는 사용자 참여를 지원하고 리뷰 사이트 같은 집단 지성의 힘을 활용하는 각종 플랫폼에 의해 대폭 확대되었습니다.</li>
+		<li>엄청난 양의 데이터가 인터넷 활동의 결과로 생성되고 그 경쟁적 가치에 대한 인식이 자리잡게 되면서 기업은 데이터베이스 관리의 전문가가 되었습니다.</li>
+	</ul>
+	<p>웹의 사용성과 상호작용성을 비약적으로 개선시킨 것은 물론 거의 20년이 지난 후에도 인터넷 회사의 핵심 요소로 남아있는 이러한 디자인 원칙의 변화를 담아내기 위해 O'Reilly Media는 <a href="https://www.oreilly.com/pub/a/web2/archive/what-is-web-20.html?page=1" target="_blank">웹 2.0</a>이라는 개념을 제안했습니다.</p>
+	<p>그러나 웹 환경이 웹 2.0으로 진화해가는 과정에서 초기의 핵심 신조 중 하나였던 '탈중앙화'라는 원칙과는 멀어지게 되었습니다.</p>
+	<blockquote>탈중앙화된 환경에서는 웹에 무엇을 게시하든 중앙 관리자의 허가가 필요하지 않으며, 중앙 컨트롤 노드가 없으므로 단일 실패 지점이나 '킬 스위치'도 존재하지 않습니다.<br>— 웹의 역사, <a href="https://webfoundation.org/about/vision/history-of-the-web/" target="_blank"><em>Web Foundation</em></a></blockquote>
+	<h3 id="-">인터넷의 새로운 패러다임</h3>
+	<p>Web3가 등장한 것은 이러한 상황에서입니다. 콘텐츠의 탈중앙화가 가능하면서 확장도 가능한 시스템을 구축하는 것이 어렵다는 것이 지난 20년 동안 입증되었습니다. 이러한 시스템을 구축하는 기술은 존재하지만, 대규모 분산화에 성공한 콘텐츠 플랫폼은 없었습니다.</p>
+	<p>비트코인만이 유일한 예외로서 주목받았습니다. <a href="https://en.wikipedia.org/wiki/Satoshi_Nakamoto" target="_blank">사토시 나카모토(Satoshi Nakamoto)</a>가 2008년 <a href="https://bitcoin.org/bitcoin.pdf" target="_blank">백서</a>에서 블록체인이라는 일종의 분산 원장으로서 개념화했던 비트코인은 P2P(Peer-to-Peer) 네트워크 상에서 공개적이고 일관되며 위·변조를 방지할 수 있는 거래가 가능하도록 설계되었습니다.</p>
+	<p>한 문장에 담긴 개념이 너무 많으니 하나씩 자세히 살펴봅시다.</p>
+	<ul>
+		<li>피어 투 피어(P2P) 네트워크는 일종의 네트워크 아키텍처입니다. 이는 정보를 저장 및 중계하는 컴퓨터들, 즉 '노드'의 집합으로 구성됩니다. 각각의 노드는 동일한 권한을 가지므로, 하나의 노드가 단일 실패 지점이 되는 상황이 방지됩니다. 비트코인에서의 노드는 비트코인 트랜잭션을 전송, 수신, 처리할 수 있습니다.</li>
+		<li>원장은 거래가 기록되는 회계의 모음입니다. 비트코인에서 원장은 비트코인 트랜잭션을 기록합니다.</li>
+		<li>분산원장은 여러 컴퓨터 간에 공유되고 동기화되는 원장입니다. 이 과정은 합의를 통해 이루어지므로 각 컴퓨터는 원장의 유사한 복제본을 보유하게 됩니다. 비트코인에서는 P2P 네트워크에 해당하는 비트코인 네트워크를 통해 합의 프로세스가 수행됩니다.</li>
+		<li>블록체인은 시간 순서를 뒤바꿀 수 없도록 기록이 유지되는 체인의 형태로 암호화를 통한 상호 연결이 이루어진 '블록'에 데이터를 저장하는 일종의 분산원장을 말하며, 비트코인은 트랜잭션의 내역 및 발생 순서가 공유되는 단일 소스를 설정함으로써 <a href="https://en.wikipedia.org/wiki/Double-spending" target="_blank">이중 지출 문제</a>를 해결하는 블록체인 기술을 활용합니다.</li>
+	</ul>
+	<p>현재 네트워크에 <a href="https://luke.dashjr.org/programs/bitcoin/files/charts/software.html" target="_blank">40,000개 이상</a>의 노드를 가지고 있으며 매일 <a href="https://coinmarketcap.com/currencies/bitcoin/" target="_blank">미화 300억 달러 이상</a>의 거래를 처리하는 비트코인은, 응용 프로그램이 보안의 손상 없이도 대규모 분산 방식으로 실행 가능하다는 점을 실제로 보여줍니다. 이는 트랜잭션 기능 외에도 참여자가 각 노드에 검증 가능한 형태로 실행되는 코드를 배포할 수 있게 해주는 이더리움과 같은 다른 블록체인 프로젝트의 개발에 영감을 주었습니다.</p>
+	<p>이렇게 프로그래밍이 가능한 블록체인은 현재 분산 인터넷의 인프라 역할을 담당하기에 <a href="https://www.coindesk.com/web3-transform-the-web" target="_blank">이상적인 개방형 무신뢰 플랫폼</a>이라고 간주되고 있습니다. 이 플랫폼은 특정 엔티티의 가용성에 의존하지 않는 <a href="https://dappradar.com/rankings" target="_blank">거의 7,000개의 분산형 응용 프로그램</a>(Decentralized APPlication, "Dapp")으로 구성된 에코시스템을 형성하여 무럭무럭 성장 중입니다. 이는 모든 사법권에서 사용자에게 최상의 서비스를 제공할 수 있도록 해주는 향상된 유연성을 제공합니다.</p>
+	<h3 id="--1">최종 사용자가 주인인 웹</h3>
+	<p>분산형 시스템은 중앙 집중식 시스템과는 본질적으로 다릅니다. 둘 다 같은 방식으로 접근해서는 안 됩니다. 분산형 시스템을 사용하면 데이터와 데이터의 처리가 한 특정 당사자에게 집중될 수 없습니다. 이는 기업이 탄력성을 제공하는 데 유용하지만, 데이터가 참여자의 소유로 남아있을 수 있는 P2P 기반 네트워크에도 유용합니다.</p>
+	<p>예를 들어, 과거와 같은 방식으로 블로그를 호스팅하려면 먼저 서버를 마련하고 인터넷에 (<a href="https://blog.cloudflare.com/dyi-web-server-raspberry-pi-cloudflare/">Cloudflare :D</a>를 통해) 노출시키는 등의 작업이 필요할 것입니다.<em> </em> 요즘에는 블로그가 WordPress, Ghost, Notions 또는 Twitter와 같은 플랫폼에서 호스팅됩니다. 이러한 회사들에 중단이 발생하면 수많은 사람들이 영향을 받게 됩니다. 하지만 예를 들어 IPFS를 통해 분산된 방식으로 블로그를 호스팅하면 서로 다른 엔터티들이 운영하는 여러 위치에서 콘텐츠를 제공할 수 있게 됩니다.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/10/image5-2.png" class="kg-image" alt="Web 1.0">
+		<figcaption>Web 1.0</figcaption>
+	</figure>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/10/image2-2.png" class="kg-image" alt="Web 2.0">
+		<figcaption>Web 2.0</figcaption>
+	</figure>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/10/image3-1.png" class="kg-image" alt="Web3">
+		<figcaption>Web3</figcaption>
+	</figure>
+	<p>네트워크의 각 참가자는 호스팅/제공할 대상을 선택할 수 있으며 서로 다른 콘텐츠의 소스가 될 수 있습니다. 일반적인 홈 네트워크와 마찬가지로 공유 대상의 제어가 가능하며 일부는 비공개로 남아있게 됩니다.</p>
+	<p>이것이 탈중앙화된 ID의 핵심 원리입니다. 안전한 크로스플랫폼 ID 서비스를 제공하기 위해 비트코인과 이더리움 같은 암호 화폐에서 쓰이는 것과 동일한 암호 원칙이 응용 프로그램에서도 활용되고 있습니다. 이는 누군가의 ID를 평가하기 위해 신뢰할 수 있는 당사자에 의존하는 OAuth 2.0 같은 다른 인증 시스템과는 근본적으로 다릅니다. 이는 '&lt;대규모 클라우드 공급자&gt;로 로그인' 버튼과 같은 형태로 구현됩니다. 이러한 클라우드 공급자들만이 충분한 데이터, 리소스 및 기술적 전문성을 갖추고 있습니다.</p>
+	<p>탈중앙화된 웹의 참여자 각각은 비밀 키를 보유하며, 이를 사용하여 서로를 식별할 수 있습니다. 이 암호화 시스템에 관한 내용은 <a href="https://blog.cloudflare.com/introducing-cryptographic-attestation-of-personhood/%23the-technical-explanation">이전 블로그</a>에서 확인하실 수 있습니다. 웹 참여자가 자신의 데이터를 소유하는 Web3 환경에서는 본인이 상호 작용하는 응용 프로그램마다 이러한 데이터를 선택적으로 공유할 수 있습니다. 이 시스템을 활용하여 서로 간의 상호 작용을 검증하는 것도 가능합니다. 예를 들어, 대학에서 <a href="https://www.w3.org/TR/did-core/" target="_blank">탈중앙화 신원증명</a>(Decentralized Identifier, DID)을 발급받았다면 나중에 다시 해당 대학에 연락하지 않고도 이 대학에 등록된 사실을 증명할 수 있게 됩니다. 참여자가 블록체인을 신뢰의 소스(source of trust)로 사용하는 데 동의할 경우, 탈중앙화 ID는 공개 프로필의 자리표시자로서도 활용이 가능합니다. 이렇게 공개 키에 대한 컨트롤 여부를 기준으로 온라인에서 사용자의 신원을 확인하는 것이 ENS나 Unlock과 같은 프로젝트가 제공하고자 하는 목표입니다.</p>
+	<p>공유된 신뢰의 소스를 통해 소유권을 증명하는 이러한 추세는 NFT 열풍의 핵심입니다. 이전에도 이 블로그에서 <a href="https://blog.cloudflare.com/cloudflare-stream-now-supports-nfts/">NFT에 대해 다룬 적</a>이 있습니다. 블록체인 기반의 NFT는 소유권을 전달하는 매개체 역할을 합니다. 이 정보는 블록체인을 통해 공개적으로 확인 및 업데이트할 수 있습니다. 내가 컨트롤하는 공개 키가 특정 NFT의 소유자라고 블록체인에 명시되어 있으면 다른 플랫폼에서도 이를 참조한 소유권의 증명이 가능합니다. 예를 들어, 내 소셜 미디어의 프로필 사진이 고양이라면 그 고양이가 내 공개 키와 연결되어 있음을 증명할 수 있습니다. 특히 NFT 계약이 확산됨에 따라, 이것이 의미하는 바는 내가 증명하고자 하는 대상에 따라 달라지게 됩니다. NFT 계약의 작용 방식을 파악하고 싶다면 <a href="https://blog.mycrypto.com/so-you-wanna-build-your-own-pfp-nft-project/" target="_blank">직접 구축</a>하는 방법도 있습니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/image6-1.png" class="kg-image"></figure>
+	<h3 id="cloudflare-web3-">Cloudflare는 Web3에 어떻게 대응하나요?</h3>
+	<p>탈중앙화 및 개인정보 보호는 Cloudflare가 더 나은 인터넷을 구축하려는 사명의 일환으로서 해결에 나선 과제입니다.</p>
+	<p><a href="https://blog.cloudflare.com/next-generation-privacy-protocols/">이전 게시물</a>에서는 닉 설리반(Nick Sullivan)이 Cloudflare가 웹에서의 개인 정보 보호를 위해 어떤 기여를 했는지 설명했습니다. Cloudflare는 <a href="https://blog.cloudflare.com/encrypted-client-hello">암호화된 클라이언트 헬로(Encrypted Client Hello, ECH)</a>를 통해 HTTPS에서의 정보 누출을 수정하고, <a href="https://blog.cloudflare.com/oblivious-dns">Oblivious DNS-over-HTTPS(ODoH)</a> 지원을 통해 DNS를 더욱 비공개로 만드는 한편, 암호 유출의 발생 가능성을 줄이는 <a href="https://blog.cloudflare.com/opaque-oblivious-passwords">OPAQUE</a>를 개발했습니다. 또한 <a href="https://blog.cloudflare.com/introducing-the-cloudflare-data-localization-suite/">데이터 현지화 제품군</a>을 출시함으로써 기업이 성능과 보안을 희생하지 않으면서도 자사 데이터가 저장되는 위치를 컨트롤하고 끊임없이 바뀌어가는 <a href="https://blog.cloudflare.com/data-privacy-day-2021-looking-ahead-at-the-always-on-always-secure-always-private-internet/">규제 환경</a>을 탐색할 수 있도록 했습니다. 그뿐 아니라, <a href="https://electriccoin.co/blog/explaining-halo-2/" target="_blank">ZCash</a>나 <a href="https://filecoin.io/blog/posts/filecoin-zk-snarks-zero-knowledge-but-a-lot-of-zero-knowledge/" target="_blank">Filecoin</a>과 같은 분산형 시스템의 핵심을 이루는 것과 동일한 영지식 증명 기술에 기반한 <a href="https://blog.cloudflare.com/introducing-zero-knowledge-proofs-for-private-web-attestation-with-cross-multi-vendor-hardware/">프라이버시 보존 증명</a>도 구축했습니다.</p>
+	<p>웹 환경을 사용자 경험을 개선하는 방향으로 바꿀 수 있는 방법이 이미 존재한다는 것은 반가운 사실입니다. 하지만 그러한 기존 인프라에서 출발하기에는 몇 가지 제약이 따릅니다. 이더리움과 IPFS 같은 프로젝트가 자체 아키텍처를 기반으로 하는 이유 역시 이것입니다. 이러한 프로젝트는 여전히 인터넷에 의존하지만 기성 웹에서와 같은 환경에서 운영되지는 않습니다. Cloudflare는 이러한 전환 과정을 용이하게 하기 위해 <a href="https://www.cloudflare.com/en-gb/distributed-web-gateway/" target="_blank">분산형 웹 게이트웨이</a>를 운영하고 있습니다. 이러한 게이트웨이는 이더리움 및 IPFS와 같은 Web3 프로토콜과 관련한 HTTP 인터페이스를 제공합니다. HTTP는 오늘날 널리 사용되는 웹의 핵심이므로, 사용자는 실험적인 소프트웨어를 실행하지 않고도 안전하고 쉽게 분산된 콘텐츠에 액세스할 수 있게 됩니다.</p>
+	<h3 id="--2">다음 목표는 무엇인가요?</h3>
+	<p>또 다른 웹을 향한 여정은 길지만 흥미진진합니다. 지난 20년 동안 구축된 인프라는 정말 놀라운 성과이며, 인터넷과 웹은 이제 46억 사용자에게 삶의 일부로서 자리잡았습니다. 한편, 상위 35개 웹사이트는 다른 모든 웹사이트보다도 <a href="https://www.ncta.com/whats-new/the-expanding-consolidation-of-the-consumer-internet-3" target="_blank">많은 방문자</a>를 기록했으며(2014년경) 사용자는 자신의 데이터에 통제권을 갖지 못하고 소수의 회사에 더 의존하기도 했습니다.</p>
+	<p>초기의 웹은 정적이었습니다. 웹 2.0의 등장으로 우리가 매일 사용하는 상호작용성과 서비스가 가능해졌지만, 결과적으로 중앙집중화가 일어났습니다. Web3는 이를 정면으로 거스르는 트렌드입니다. 개방형 프로토콜을 기반으로 구축된 분산형 네트워크는 웹 사용자의 참여 역량을 강화해줍니다.</p>
+	<p>Cloudflare는 이러한 분산형 환경이 미래의 모습이라고 생각합니다. Cloudflare는 <a href="https://blog.cloudflare.com/ko-kr/announcing-web3-gateways-ko-kr/">분산형 웹 제품군</a>을 운영하고, <a href="https://blog.cloudflare.com/cloudflares-approach-to-research/">개방형 표준</a>에 기여하며, <a href="https://blog.cloudflare.com/internet-privacy/">개인정보 보호</a>에 앞장서는 등, 현존하는 최대 규모의 엣지 네트워크를 운영하면서 얻은 지식과 경험을 통해 사용자와 기업이 Web3의 이점에 더 쉽게 접근할 수 있도록 돕고 있습니다.</p>
+	<p>Cloudflare는 함께 더 나은 웹을 구축하고자 나설 <a href="https://www.cloudflare.com/ko-kr/careers/jobs/" target="_blank">인재를 모집</a>하고 있습니다.</p>
+</div>

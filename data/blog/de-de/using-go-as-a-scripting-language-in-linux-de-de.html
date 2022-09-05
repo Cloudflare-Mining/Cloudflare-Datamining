@@ -1,0 +1,94 @@
+<div class="post-content lh-copy gray1">
+	<p>Wir bei Cloudflare mögen Go. Wir setzen es bei vielen <a href="https://blog.cloudflare.com/what-weve-been-doing-with-go/">internen Softwareprojekten</a> sowie als Teil <a href="https://blog.cloudflare.com/meet-gatebot-a-bot-that-allows-us-to-sleep/">größerer Pipelinesysteme</a> ein. Aber können wir noch einen Schritt weiter gehen und Go als Skriptsprache für unser Lieblingsbetriebssystem Linux verwenden?</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2018/02/gopher-tux-1.png" class="kg-image" alt="gopher-tux-1">
+		<figcaption><a href="https://golang.org/doc/gopher/gophercolor.png" target="_blank">Gopher-Bild</a> <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank">CC BY 3.0</a> <a href="https://reneefrench.blogspot.com/" target="_blank">Renee French</a> <a href="https://pixabay.com/en/linux-penguin-tux-2025536/" target="_blank">Tux-Bild</a> <a href="https://creativecommons.org/publicdomain/zero/1.0/deed.en" target="_blank">CC0 BY</a> <a href="https://pixabay.com/en/users/OpenClipart-Vectors-30363/" target="_blank">OpenClipart-Vectors</a></figcaption>
+	</figure>
+	<h3 id="warum-sollte-man-go-als-skriptsprache-in-betracht-ziehen"><strong>Warum sollte man Go als Skriptsprache in Betracht ziehen?</strong></h3>
+	<p>Die kurze Antwort lautet: warum nicht? Go ist ziemlich einfach zu lernen, nicht zu wortreich, und es gibt ein riesiges Ökosystem an Bibliotheken, die verwendet werden können, damit nicht der gesamte Code komplett neu geschrieben werden muss. Hier sind noch einige andere potentielle Vorteile:</p>
+	<ul>
+		<li>Ein Go-basiertes Build-System für Ihr Go-Projekt: Der go build-Befehl ist am besten für kleine, in sich geschlossene Projekte geeignet. Bei komplexeren Projekten wird gewöhnlich ein Build-System bzw. eine Gruppe von Skripten übernommen. Warum sollten dieses Skripte dann nicht ebenfalls in Go geschrieben sein?</li>
+		<li>Einfache, nicht privilegierte Paketverwaltung, die sofort einsatzbereit ist: Wenn Sie eine Bibliothek von Drittanbietern in Ihrem Skript verwenden möchten, können Sie sie einfach mit go get einbinden. Und da der Code in Ihrem GOPATH installiert wird, brauchen Sie für eine Drittanbieter-Bibliothek keine Administratorrechte im System (anders als bei einigen anderen Skriptsprachen). Dies ist besonders nützlich in großen Unternehmensumgebungen.</li>
+		<li>Schnelles Code-Prototypen in frühen Projektphasen: Wenn Sie die erste Iteration des Codes schreiben, sind gewöhnlich viele Bearbeitungen nötig, bis er kompiliert werden kann, und Sie müssen viele Tasten drücken, um den Zyklus von<em> „Bearbeiten-&gt;Erstellen-&gt;Überprüfen“</em> immer wieder neu zu durchlaufen. Stattdessen können Sie den „Erstellen“-Teil überspringen und Ihre Quelldatei unmittelbar ausführen.</li>
+		<li>Stark typisierte Skriptsprache: Wenn Sie sich irgendwo in der Mitte Ihres Skripts verschreiben, führen die meisten Skripte alle Anweisungen bis zu diesem Punkt aus und brechen dann am Fehler ab. Das kann dazu führen, dass Ihr System in einem inkonsistenten Zustand bleibt. Bei stark typisierten Sprachen können viele Tippfehler zum Zeitpunkt der Kompilierung erkannt werden, damit das fehlerhafte Skript gar nicht erst ausgeführt wird.</li>
+	</ul>
+	<h3 id="aktueller-stand-der-skripterstellung-mit-go"><strong>Aktueller Stand der Skripterstellung mit Go</strong></h3>
+	<p>Auf den ersten Blick scheinen Go-Skripte dank der Unix-Unterstützung von <a href="https://en.wikipedia.org/wiki/Shebang_(Unix)" target="_blank">Shebang-Zeilen</a> für Skripte einfach zu implementieren sein. Eine Shebang-Zeile ist die erste Zeile des Skripts, die mit #! beginnt und die den Skript-Interpreter spezifiziert, der zur Ausführung des Skripts verwendet werden soll (z. B. #!/bin/bash oder #!/usr/bin/env python), damit das System unabhängig von der verwendeten Programmiersprache genau weiß, wie das Skript auszuführen ist. Go unterstützt bereits einen Interpreter-ähnlichen Aufruf für.go-Dateien mit dem go run-Befehl. Also müsste zu einer beliebigen .go-Datei nur noch die richtige Shebang-Zeile hinzugefügt zu werden, z. B. #!/usr/bin/env go run, um das ausführbare Bit zu setzen, und es kann losgehen.</p>
+	<p>Allerdings gibt es bei der direkten Verwendung von go run Probleme. <a href="https://gist.github.com/posener/73ffd326d88483df6b1cb66e8ed1e0bd" target="_blank">In diesem ausgezeichneten Artikel</a> werden alle Probleme im Zusammenhang mit go run sowie mögliche Abhilfen im Detail beschrieben, aber im Wesentlichen geht es um Folgendes:</p>
+	<ul>
+		<li>go run gibt den Skriptfehlercode nicht richtig an das Betriebssystem zurück. Dieser ist jedoch wichtig für Skripte, weil Fehlercodes eine der üblichsten Methoden darstellen, mit der mehrere Skripts untereinander und mit der Betriebssystemumgebung interagieren.</li>
+		<li>Zulässige .go-Dateien dürfen keine Shebang-Zeile enthalten, weil Go nicht weiß, wie Zeilen verarbeitet werden sollen, die mit # beginnen. Bei anderen Skriptsprachen gibt es dieses Problem nicht, weil # bei den meisten von ihnen eine Methode zur Kennzeichnung von Kommentaren ist. Der endgültige Interpreter ignoriert also einfach die Shebang-Zeile. Go-Kommentare beginnen jedoch mit //, und go run erzeugt beim Aufruf einen Fehler wie:</li>
+	</ul>
+	<pre><code class="language-bash">package main:
+helloscript.go:1:1: illegal character U+0023 '#'</code></pre>
+	<p><a href="https://gist.github.com/posener/73ffd326d88483df6b1cb66e8ed1e0bd" target="_blank">In dem Artikel</a> werden mehrere Abhilfen für die obigen Probleme beschrieben – u. a. ein spezielles Wrapper-Programm <a href="https://github.com/erning/gorun" target="_blank">gorun</a> als Interpreter –, die jedoch alle keine ideale Lösung darstellen. Sie müssen entweder:</p>
+	<ul>
+		<li>eine nicht standardmäßige Shebang-Zeile verwenden, die mit // beginnt. Das ist eigentlich gar keine Shebang-Zeile, sondern die Methode, mit der die Bash-Shell ausführbare Textdateien verarbeitet, weswegen diese Lösung Bash-spezifisch ist. Wegen des spezifischen Verhaltens von go run ist diese Zeile außerdem ziemlich komplex und nicht offensichtlich (siehe den <a href="https://gist.github.com/posener/73ffd326d88483df6b1cb66e8ed1e0bd" target="_blank">Originalartikel</a> für Beispiele).</li>
+		<li>oder ein spezielles Wrapper-Programm <a href="https://github.com/erning/gorun" target="_blank">gorun</a> in der Shebang-Zeile verwenden, das zwar gut funktioniert, mit dem Sie aber .go-Dateien erzeugen, die mit dem go build-Standardbefehl wegen des unzulässigen #-Zeichens nicht kompilierbar sind.</li>
+	</ul>
+	<h3 id="wie-linux-dateien-ausf-hrt"><strong>Wie Linux Dateien ausführt</strong></h3>
+	<p>Okay, es scheint, dass uns der Shebang-Ansatz keine Allround-Lösung bietet. Gibt es sonst noch etwas, auf das wir zurückgreifen könnten? Sehen wir uns einmal genauer an, wie der Linux-Kernel überhaupt Binärdateien ausführt. Wenn Sie versuchen, eine Binärdatei/ein Skript (oder eine beliebige Datei mit ausführbarem Bit-Set) auszuführen, wird Ihre Shell letztendlich einfach den execve-<a href="https://en.wikipedia.org/wiki/System_call" target="_blank">Systemaufruf</a> von Linux einsetzen und dabei den Dateisystempfad der jeweiligen Binärdatei, die Befehlszeilenparameter und die gegenwärtig definierten Umgebungsvariablen übergeben. Dann ist der Kernel für das korrekte Parsen der Datei und die Erstellung eines neuen Prozesses mit dem Code aus der Datei verantwortlich. Die meisten unter uns wissen, dass Linux (und viele andere Unix-ähnlichen Betriebssysteme) das <a href="https://en.wikipedia.org/wiki/Executable_and_Linkable_Format" target="_blank">ELF-Binärformat</a> für seine ausführbaren Dateien verwendet.</p>
+	<p>Eines der Grundprinzipien der Linux-Kernelentwicklung besteht jedoch darin, eine „Anbieter-/Format-Sperre“ für alle Subsysteme zu vermeiden, die Teil des Kernels sind. Daher implementiert Linux ein „austauschbares“ System, das die Unterstützung jedes Binärformats durch den Kernel zulässt – Sie müssen nur ein korrektes Modul schreiben, das Ihr gewähltes Format parsen kann. Und wenn Sie einen genaueren Blick auf den Kernel-Quellcode werfen, werden Sie sehen, dass Linux von mehrere binäre Formate unterstützt. Beim aktuellen Linux-Kernel 4.14 <a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git/tree/fs?h=linux-4.14.y" target="_blank">können wir zum Beispiel sehen</a>, dass er mindestens sieben Binärformate unterstützt (Strukturmodelle für unterschiedliche Binärformate haben gewöhnlich das Präfix binfmt_ im Namen). Es lohnt sich, einen Blick auf das <a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git/tree/fs/binfmt_script.c?h=linux-4.14.y" target="_blank">binfmt_script</a>-Modul zu werfen, das für das Parsen der oben genannten Shebang-Zeilen und die Ausführung von Skripten im Zielsystem verantwortlich ist (nicht jeder weiß, dass die Shebang-Unterstützung tatsächlich im Kernel selbst implementiert wird und nicht in der Shell oder einem anderen Daemon/Prozess).</p>
+	<h3 id="ausweitung-unterst-tzter-bin-rformate-aus-dem-userspace"><strong>Ausweitung unterstützter Binärformate aus dem Userspace</strong></h3>
+	<p>Aber da wir zu dem Schluss kamen, dass Shebang nicht die beste Option für die Skripterstellung mit Go ist, scheinen wir etwas anderes zu brauchen. Überraschenderweise hat der Linux-Kernel bereits ein <a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git/tree/fs/binfmt_misc.c?h=linux-4.14.y" target="_blank">Binär-Unterstützungsmodul für „etwas anderes“</a> mit dem passenden Namen binfmt_misc. Das Modul ermöglicht es einem Administrator, Unterstützung für verschiedene ausführbare Formate direkt aus dem Userspace über eine gut definierte procfs-Schnittstelle dynamisch hinzuzufügen, und es ist <a href="https://www.kernel.org/doc/html/v4.14/admin-guide/binfmt-misc.html" target="_blank">gut dokumentiert</a>.</p>
+	<p>Folgen wir <a href="https://www.kernel.org/doc/html/v4.14/admin-guide/binfmt-misc.html" target="_blank">der Dokumentation</a> und versuchen wir, eine Binärformat-Beschreibung für .go-Dateien einzurichten. Zuerst werden wir aufgefordert, das spezielle binfmt_misc-Dateisystem in /proc/sys/fs/binfmt_misc einzubinden. Wenn man die relativ neue systemd-basierte Linux-Distribution verwendet, ist es sehr wahrscheinlich, dass das Dateisystem bereits eingebunden ist, weil systemd für diesen Zweck standardmäßig spezielle <a href="https://github.com/systemd/systemd/blob/master/units/proc-sys-fs-binfmt_misc.mount" target="_blank">Mount</a>- und <a href="https://github.com/systemd/systemd/blob/master/units/proc-sys-fs-binfmt_misc.automount" target="_blank">Automount</a>-Einheiten installiert. Um sicherzugehen, führen wir Folgendes aus:</p>
+	<pre><code class="language-bash">$ mount | grep binfmt_misc
+systemd-1 on /proc/sys/fs/binfmt_misc type autofs (rw,relatime,fd=27,pgrp=1,timeout=0,minproto=5,maxproto=5,direct)
+</code></pre>
+	<p>Eine andere Möglichkeit besteht darin, zu überprüfen, ob in <code>/proc/sys/fs/binfmt_misc</code> Dateien vorhanden sind: Ein richtig eingebundenes <code>binfmt_misc</code>-Dateisystem erstellt mindestens zwei spezielle Dateien mit den Namen <code>register</code> und <code>status</code> in diesem Verzeichnis.</p>
+	<p>Da wir möchten, dass unsere <code>.go</code>-Skripte den Exitcode richtig an das Betriebssystem weitergeben können, brauchen wir als Nächstes den speziellen <a href="https://github.com/erning/gorun" target="_blank">gorun</a>-Wrapper als unseren „Interpreter“:</p>
+	<pre><code class="language-bash">$ go get github.com/erning/gorun
+$ sudo mv ~/go/bin/gorun /usr/local/bin/</code></pre>
+	<p>Im Prinzip müssen wir gorun nicht zu /usr/local/bin oder einem anderen Systempfad verschieben, weil binfmt_misc sowieso den vollständigen Pfad zum Interpreter braucht. Da das System diese ausführbare Datei aber mit beliebigen Berechtigungen laufen lassen kann, ist es eine gute Idee, den Zugriff auf die Datei aus Sicherheitsgründen einzuschränken.</p>
+	<p>An diesem Punkt erstellen wir ein einfaches Probelauf-Go-Skript helloscript.go, um zu überprüfen, ob wir es erfolgreich „interpretieren“ können. Das Skript:</p>
+	<pre><code class="language-go">package main
+
+import (
+	"fmt"
+	"os"
+)
+
+func main() {
+	s := "world"
+
+	if len(os.Args) &gt; 1 {
+		s = os.Args[1]
+	}
+
+	fmt.Printf("Hello, %v!", s)
+	fmt.Println("")
+
+	if s == "fail" {
+		os.Exit(30)
+	}
+}</code></pre>
+	<p>Überprüfen wir, ob die Parameterübergabe und Fehlerbehandlung wie vorgesehen funktionieren:</p>
+	<pre><code class="language-bash">$ gorun helloscript.go
+Hello, world!
+$ echo $?
+0
+$ gorun helloscript.go gopher
+Hello, gopher!
+$ echo $?
+0
+$ gorun helloscript.go fail
+Hello, fail!
+$ echo $?
+30</code></pre>
+	<p>Jetzt müssen wir dem <code>binfmt_misc</code>-Modul sagen, wie unsere .go-Dateien mit gorun ausgeführt werden sollen. Laut <a href="https://www.kernel.org/doc/html/v4.14/admin-guide/binfmt-misc.html" target="_blank">Dokumentation</a> brauchen wir diesen Konfigurations-String: :golang:E::go:: <code>/usr/local/bin/gorun:OC</code>. Er teilt dem System im Prinzip Folgendes mit: „Wenn du auf eine ausführbare Datei mit der Erweiterung .go triffst, führe sie bitte mit dem /usr/local/bin/gorun-Interpreter aus.“ Die <code>OC</code>-Flags am Ende des Strings sorgen dafür, dass das Skript entsprechend den Besitzerinformationen und den im Skript selbst festgelegten Berechtigungsbits ausgeführt wird, und nicht entsprechend denjenigen, die in der Interpreter-Binärdatei festgelegt sind. So passt sich das Ausführungsverhalten von Go-Skripten an die übrigen ausführbaren Dateien und Skripte unter Linux an.</p>
+	<p>Jetzt wollen wir unser neues Go-Skript-Binärformat registrieren:</p>
+	<pre><code class="language-bash">$ echo ':golang:E::go::/usr/local/bin/gorun:OC' | sudo tee /proc/sys/fs/binfmt_misc/register
+:golang:E::go::/usr/local/bin/gorun:OC</code></pre>
+	<p>Wenn das System das Format erfolgreich registriert hat, sollte eine neue <code>golang</code>-Datei im Verzeichnis <code>/proc/sys/fs/binfmt_misc</code> erscheinen. Nun können wir unsere <code>.go</code>-Dateien systemintern ausführen:</p>
+	<pre><code class="language-bash">$ chmod u+x helloscript.go
+$ ./helloscript.go
+Hello, world!
+$ ./helloscript.go gopher
+Hello, gopher!
+$ ./helloscript.go fail
+Hello, fail!
+$ echo $?
+30</code></pre>
+	<p>Das warʼs! Jetzt können wir helloscript.go nach Belieben bearbeiten und sehen, dass die Änderungen sofort sichtbar sind, wenn die Datei das nächste Mal ausgeführt wird. Außerdem können wir diese Datei im Unterschied zum vorherigen Shebang-Ansatz jederzeit mit go build in eine echte ausführbare Datei kompilieren.</p>
+	<hr>
+	<p><em>Wenn Sie Go mögen oder gerne in den Tiefen von Linux herumgraben – wir haben eine Stelle für Sie, egal ob Sie sich für einen dieser beiden Aspekte oder sogar für beide interessieren. Sehen Sie sich </em><a href="https://www.cloudflare.com/careers/" target="_blank"><em>unsere Seite mit Stellenangeboten an.</em></a></p>
+</div>

@@ -1,0 +1,54 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image8-2.png" class="kg-image"></figure>
+	<p><a href="https://blog.cloudflare.com/announcing-cloudflare-images-beta/">Cloudflare Imagesを世界に</a>発表したとき、製品内に画像を保存する方法を紹介しました。そして、Cloudflare経由で配信するにあたってリモートソースを使用する際に発生するエグレス料金から、お客様が脱却できるよう支援しました。</p>
+	<p>Cloudflareに画像を保存するには、<a href="https://developers.cloudflare.com/images/cloudflare-images/upload-images/dashboard-upload/" target="_blank">UIを介して</a>簡単なドラッグアンドドロップでアップロードできます。もしくは、多数のオブジェクトがありアップロードプロセスをスクリプトで実行する場合は、<a href="https://developers.cloudflare.com/images/cloudflare-images/api-request/" target="_blank">APIを介して</a>アップロードできます。</p>
+	<p>画像のインポート方法に柔軟性を持たせるために、<a href="https://developers.cloudflare.com/images/cloudflare-images/upload-images/upload-via-url/" target="_blank">URL経由でアップロード</a>、または<a href="https://developers.cloudflare.com/images/cloudflare-images/upload-images/custom-id/" target="_blank">画像のカスタム名やパスを定義</a>して、お客様のリポジトリとCloudflareのオブジェクト間の簡単なマッピングを可能にする機能も追加されました。また、<a href="https://developers.cloudflare.com/images/cloudflare-images/serve-images/#serving-images-from-custom-domains" target="_blank">カスタムホスト名から配信する</a>ことで、エンドユーザーがどのようにパスを見ているかを柔軟に設定したり、TLSネゴシエーションの必要性をなくして配信パフォーマンスを向上させたり、URLに一貫性を持たせてブランド認知を向上させたりすることも可能です。</p>
+	<p>それでも、これが私たちの製品を伝えるシンプルな言葉です：<em>「このリポジトリURLには何千万枚もの画像があります。アクセスして私から全部取っていってください。」</em></p>
+	<p>ある状況はお客様がで、Cloudflare Imagesにアップロードする何百万もの画像を含むバケットを持っていることがあります。彼らの目標は、1回のプロセスですべてのオブジェクトをCloudflareに移行し、外部ストレージを完全に削除できるようにすることです。</p>
+	<p>もう一つのよくある状況は、大企業の異なる部署が、様々なストレージリポジトリで構成された独立したシステムを使用しており、それらのすべてが、特定の時間に不均一なアップロード量を送り込むことです。そして、Cloudflareで新しい画像を取得するために定義を再利用できれば、ポートフォリオを最新に保つことができ、複数のストレージプロバイダからパブリックにむけて直接提供することで、膨大なエグレス料金を支払う必要がありません。</p>
+	<p>これらの状況から、Cloudflare Imagesへのアップロード作業には、ロジスティックな調整やスクリプトの知識などが必要でした。しかしそれは、これまでの話です。</p>
+	<h3 id="cloudflare-images-sourcing-kit-">Cloudflare Images Sourcing Kitの発表</h3>
+	<p>本日は、Cloudflare Imagesに移行したいオブジェクトを含む1つ以上のソースを定義できるSourcing Kitをご紹介します。</p>
+	<p>しかし、Sourcingとはいったい何なのでしょうか？製造業のような業界では、サプライヤーの選定から原材料の吟味、プロセスオーナーへの報告まで、さまざまな業務を意味します。 </p>
+	<p>そこで、私たちはこの定義を取り入れ、Cloudflare Imagesの一連の機能に変換することで、次のことを可能にしました：</p>
+	<ol>
+		<li>一括インポートする画像のリポジトリを、1つまたは複数定義します</li>
+		<li>これらのソースを再利用し、新しい画像のみをインポートします</li>
+		<li>実際に使用できる画像のみがインポートされ、そのソースに存在する他のオブジェクトやファイルタイプはインポートされないことを確認します</li>
+		<li>インポートする画像のターゲットパスとファイル名を定義します</li>
+		<li>一括操作のログを取得します</li>
+	</ol>
+	<p>新しいキットには、そのすべてが詰まっています。それでは見ていきましょう。</p>
+	<h3 id="cloudflare-images-sourcing-kit--1">Cloudflare Images Sourcing Kitの仕組み</h3>
+	<p>Cloudflareダッシュボードでは、Imagesの下にあるSourcing Kitをすぐに見つけることができます。</p>
+	<p>その中では、新しいソース定義の作成、既存のソースの閲覧、前回の操作のステータスを確認することができます。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image5-12.png" class="kg-image" alt="the new Cloudflare Images Sourcing Kit home screen"></figure>
+	<p>作成ボタンをクリックすると、ウィザードが起動し、定義したソースからの最初の一括インポートを案内します。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image2-32.png" class="kg-image" alt="creating a source definition"></figure>
+	<p>まず、ソース名とアクセスするURLを入力する必要があります。この定義を保存しておくと、いつでもソースを再利用できます。<br>必要な検証を実行した後、インポート処理のルールを定義することができます。</p>
+	<p>最初のオプションは、オプションのプレフィックスパスです。プレフィックスを定義すると、この特定のソースからアップロードされた画像に一意の識別子を付けることができ、このソースからインポートされた画像を区別できます。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image4-19.png" class="kg-image" alt="define a path prefix to easily identify all images imported from this source"></figure>
+	<p>設置されたネーミングルールは、ソース画像名とパスをすでに考慮しており、そのためここで取得する子犬の画像があると仮定します。</p>
+	<p><code><a href="https://my-bucket.s3.us-west-2.amazonaws.com/folderA/puppy.png" target="_blank">https://my-bucket.s3.us-west-2.amazonaws.com/folderA/puppy.png</a></code></p>
+	<p>パスプレフィックスを付けずにインポートした場合、画像の場所は次のように表示されます：</p>
+	<p><code><a href="https://imagedelivery.net/<AccountId>/folderA/puppy.png" target="_blank">https://imagedelivery.net/&lt;AccountId&gt;/folderA/puppy.png</a></code></p>
+	<p>ここで、例えばこのバケットがTechnical Writing部門のものであることを示すなど、ソースを識別するためのパスプレフィックスを追加で作成したい場合があります。この子犬の場合、結果は次のようになります。</p>
+	<p><code><a href="https://imagedelivery.net/<AccountId>/techwriting/folderA/puppy.png" target="_blank">https://imagedelivery.net/&lt;AccountId&gt;/<strong>techwriting</strong>/folderA/puppy.png</a></code></p>
+	<p>カスタムパスプレフィックスは、他のソースから来る名前の衝突を防止するための手段でもあります。</p>
+	<p>それでも、お客様が利用したくないと思うことはあるでしょう。そうすると、ソースを再利用して画像をインポートする場合、同じパス＋ファイル名の宛先が衝突することがあります。 </p>
+	<p>デフォルトでは既存の画像を上書きしませんが、そのオプションを選択して、Cloudflareパイプラインに存在するカタログを更新することができます。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image6-12.png" class="kg-image" alt="refreshing an images catalog or just uploading new images with one simple choice"></figure>
+	<p>これらの入力を定義した後、下部にある「Create and start migration（移行の作成と開始）」ボタンをクリックすると、アップロード処理が開始されます。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image10.png" class="kg-image" alt="the final look before starting the migration process"></figure>
+	<p>この操作により最終的なウィザード画面が表示され、移行状況が表示されます。進行状況ログは、アップロード中に得られたエラーを報告し、ダウンロードすることも可能です。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image7-6.png" class="kg-image" alt="Images migration status"></figure>
+	<p>操作が実行されていないときに、ソース定義を再利用、編集、削除できます。また、キットのホームページから、いつでもステータスにアクセスし、進行中または最後の移行レポートに戻ることが可能です。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image3-24.png" class="kg-image" alt="Images migration status and edit source definitions access"></figure>
+	<h3 id="-">今後の展開は？</h3>
+	<p>Cloudflare Images Sourcing Kitのベータ版では、インポートのソースとしてAWS S3バケットを定義できるようにします。次のバージョンでは、Azure Storage AccountsやGoogle Cloud Storageなど、他の一般的なリポジトリも定義できるようにする予定です。</p>
+	<p>また、シンプルなUIを目指しており、リポジトリのURLの定義からアップロード処理の開始、最終レポートの取得まで、すべてCLIで利用できるようにする予定です。</p>
+	<h3 id="--1">ベータ版を申し込む</h3>
+	<p>サードパーティのリポジトリからCloudflareに画像を提供できるように、このキットのベータ版を数週間のうちにリリースする予定です。</p>
+	<p>最初に使用したい場合は、ベータ版のキャンセル待ちリストに参加できるよう、こちらの<a href="https://dash.cloudflare.com/login" target="_blank">Cloudflare Images dashboard</a>からリクエストしてください。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image1-39.png" class="kg-image"></figure>
+</div>

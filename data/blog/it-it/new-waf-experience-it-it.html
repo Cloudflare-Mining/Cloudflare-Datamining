@@ -1,0 +1,52 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image2-47.png" class="kg-image"></figure>
+	<p>Circa tre anni fa, abbiamo introdotto diverse funzionalità nella <a href="https://blog.cloudflare.com/new-firewall-tab-and-analytics/">scheda Firewall</a> nella navigazione del dashboard , con la motivazione "rendere intuitivi i nostri prodotti e servizi". Con il nostro duro lavoro per <a href="https://blog.cloudflare.com/tag/waf/">espandere le offerte di capacità</a>, vogliamo cogliere un'altra occasione per valutare l'intuitività di Cloudflare WAF (Web Application Firewall).</p>
+	<h2 id="i-nostri-clienti-aprono-la-strada-al-nuovo-waf">I nostri clienti aprono la strada al nuovo WAF</h2>
+	<p>Il panorama della sicurezza si sta muovendo rapidamente; i tipi di applicazioni Web stanno crescendo rapidamente e all'interno del settore ci sono vari approcci a ciò che un WAF include e può offrire. Cloudflare non solo esegue il proxy delle applicazioni aziendali, ma anche di milioni di blog personali, siti di community e negozi di piccole imprese. La diversità dei casi d'uso è coperta dai vari prodotti che offriamo; tuttavia, questi prodotti sono attualmente dispersi e ciò rende poco chiara la visibilità delle regole di protezione attiva. Questo ci ha spinto a riflettere su come possiamo supportare al meglio i nostri clienti nell'ottenere il massimo valore da WAF fornendo un'offerta più chiara che soddisfi le aspettative.</p>
+	<p>Alcuni mesi fa, abbiamo contattato i nostri clienti per rispondere a una semplice domanda: cosa ritieni faccia parte di WAF? Abbiamo utilizzato una gamma di metodi di ricerca utente che ci facilitasse, tra cui card sorting, test ad albero, valutazione del progetto e sondaggi. I risultati di questa ricerca hanno illustrato come i nostri clienti pensano a WAF, cosa significa per loro e come supporta i loro casi d'uso. Ciò ha ispirato il team del prodotto ad ampliare l'ambito e a riflettere sul significato di sicurezza nell'ambito Web delle applicazioni, al di là del semplice WAF.</p>
+	<p>Sulla base di ciò che ci hanno detto centinaia di clienti, i nostri team di ricerca utenti e di progettazione dei prodotti hanno collaborato con il reparto di gestione prodotti per ripensare l'intera esperienza di sicurezza. Abbiamo esaminato le nostre ipotesi e valutato l'efficacia dei concetti di progettazione per creare una struttura (o architettura delle informazioni) che riflettesse i modelli mentali dei nostri clienti.</p>
+	<p>Questa nuova struttura consolida le regole del firewall, le regole gestite e le regole di limitazione della velocità in modo da diventare parte di WAF. Il nuovo WAF si sforza di essere lo sportello unico per la sicurezza delle applicazioni Web in quanto riguarda la differenziazione del traffico dannoso da quello pulito.</p>
+	<p>Ad oggi, vedrai le seguenti modifiche al riquadro di navigazione:</p>
+	<ol>
+		<li><strong>Firewall</strong> è stato ridenominato in <strong>Sicurezza.</strong></li>
+		<li>In <strong>Sicurezza,</strong> ora è presente la sezione <strong>WAF.</strong></li>
+		<li>Regole del firewall, Regole gestite e Regole della limitazione della frequenza ora appaiono nella sezione <strong>WAF</strong>.</li>
+	</ol>
+	<blockquote>Da adesso in poi, quando parleremo di <strong>WAF,</strong> faremo riferimento a questi tre componenti.</blockquote>
+	<p>Inoltre, sono in arrivo alcuni importanti aggiornamenti per questi componenti. Le regole avanzate di limitazione delle tariffe verranno lanciate nell'ambito della Security Week e ogni cliente riceverà anche un set gratuito di regole gestite per <a href="https://jira.cfops.it/browse/BLOG-946" target="_blank">proteggere tutto il traffico da vulnerabilità di alto profilo</a>. Infine, nei prossimi mesi, le regole del firewall passeranno al <a href="https://developers.cloudflare.com/ruleset-engine/" target="_blank">motore del set di regole</a>, aggiungendo funzionalità più potenti grazie alla nuova API del set di regole. È vero che non vedete l'ora?</p>
+	<h2 id="come-i-clienti-hanno-plasmato-il-futuro-di-waf">Come i clienti hanno plasmato il futuro di WAF</h2>
+	<p>Quasi 500 clienti hanno partecipato a questo studio di ricerca utente che ci ha aiutato a conoscere le loro esigenze e il contesto di utilizzo. Abbiamo impiegato quattro metodi di ricerca, tutti condotti in modo non moderato; ciò significava che persone in tutto il mondo potevano partecipare da remoto in un momento e in un luogo a loro scelta.</p>
+	<ul>
+		<li>Il card sorting ha coinvolto i partecipanti nell'operazione di raggruppamento degli elementi di navigazione in categorie che avevano senso per loro.</li>
+		<li>Il test ad albero ha valutato quanto bene o male una struttura di navigazione proposta ha funzionato per il nostro pubblico di destinazione.</li>
+		<li>La valutazione del progetto prevedeva un approccio basato su attività per misurare l'efficacia e l'utilità dei concetti di progettazione.</li>
+		<li>Le domande dei sondaggi ci hanno aiutato ad approfondire i risultati e ad avere una idea dei partecipanti.</li>
+	</ul>
+	<p>I risultati di questo studio su quattro fronti ci hanno informato sulle modifiche al WAF e alla sicurezza, descritte in dettaglio di seguito.</p>
+	<h2 id="la-nuova-esperienza-waf">La nuova esperienza WAF</h2>
+	<p>Il risultato finale rivela il WAF come parte di una categoria di sicurezza più ampia, che include anche Bot, DDoS, API Shield e Page Shield. Questa destinazione ti consente di creare le tue regole (dette anche regole del firewall), distribuire regole gestite da Cloudflare e impostare condizioni di limite di frequenza e include strumenti utili per proteggere le tue applicazioni Web.</p>
+	<p>Tutti i clienti di tutti i piani ora vedranno i prodotti WAF organizzati come di seguito:</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image1-57.png" class="kg-image"></figure>
+	<ol>
+		<li>Le <strong>regole del firewall</strong> consentono di creare logiche personalizzate e definite dall'utente bloccando o consentendo il traffico che sfrutta tutti i componenti delle richieste HTTP e i campi dinamici calcolati da Cloudflare, come il punteggio Bot.</li>
+		<li>Le <strong>regole di limitazione della frequenza</strong> includono il tradizionale prodotto basato su IP che abbiamo lanciato nel 2018 e la più recente limitazione della frequenza avanzata per i clienti ORL con il piano Advanced (disponibile a breve).</li>
+		<li>Le <strong>regole gestite</strong> consentono ai clienti di distribuire set di regole gestiti dal team di analisti di Cloudflare. Questi set di regole includono un "set di regole gestito gratuito di Cloudflare" attualmente in fase di implementazione <a href="https://jira.cfops.it/browse/BLOG-946" target="_blank">per tutti i piani</a> compreso il piano FREE, così come Cloudflare Managed, implementazione di OWASP e Exposed Credentials Check per tutti i piani di pagamento.</li>
+		<li>La sezione <strong>Strumenti</strong> consente l'accesso a Regole Access dell'IP, a Zone Lockdown e a User Agent Blocking. Sebbene siano ancora attivamente supportati, questi prodotti coprono casi d'uso specifici che possono essere coperti utilizzando le regole del firewall. Tuttavia, rimangono parte degli strumenti WAF per comodità.</li>
+	</ol>
+	<h2 id="riprogettazione-dell-esperienza-waf">Riprogettazione dell'esperienza WAF</h2>
+	<p>I principi di progettazione della Gestalt suggeriscono che "gli elementi che sono vicini tra loro sono percepiti per condividere funzionalità o tratti simili". Questo principio, oltre al contributo dei nostri clienti, ci ha chiarito le idee sulle decisioni di progettazione.</p>
+	<p>Dopo aver esaminato le risposte dello studio, abbiamo compreso l'importanza di semplificare l'individuazione dei prodotti di sicurezza nel dashboard e la necessità di chiarire in che modo determinati prodotti erano correlati o funzionavano insieme tra loro.</p>
+	<p>Fondamentalmente, la pagina doveva:</p>
+	<ul>
+		<li>Visualizzare ogni tipo di regola che supportiamo, ad esempio regole del firewall, regole di limitazione della velocità e regole gestite</li>
+		<li>Mostrare la quantità di utilizzo di ciascun tipo</li>
+		<li>Offrire al cliente la possibilità di aggiungere una nuova regola e gestire le regole esistenti</li>
+		<li>Consentire al cliente di ridefinire la priorità delle regole utilizzando la funzionalità di trascinamento e rilascio esistente</li>
+		<li>Essere sufficientemente flessibile per accogliere eventuali aggiunte e consolidamenti delle funzionalità WAF</li>
+	</ul>
+	<p>Abbiamo ripetuto più opzioni, inclusi layout di pagina prevalentemente verticali, layout di pagina basati su tabelle e persino layout di pagina a fisarmonica. Ognuna di queste opzioni, tuttavia, ci costringerebbe a replicare pulsanti con funzionalità simili sulla pagina. Con il rischio di creare ulteriore confusione, abbiamo abbandonato queste opzioni a favore di un layout di pagina orizzontale a schede.</p>
+	<h2 id="come-visualizzarlo">Come visualizzarlo?</h2>
+	<p>Da oggi lanciamo questo nuovo design di WAF per tutti! Nel frattempo, stiamo aggiornando la documentazione per guidarti su come massimizzare la potenza di Cloudflare WAF.</p>
+	<h2 id="cosa-ci-aspetta">Cosa ci aspetta</h2>
+	<p>Questo è un punto di partenza del nostro viaggio per rendere Cloudflare WAF non solo potente ma anche facile da adattare alle tue esigenze. Stiamo valutando approcci per potenziare il tuo processo decisionale per la protezione delle tue applicazioni Web. Tra informazioni in crescita e ulteriori possibilità di creazione di regole, vogliamo abbreviare il tuo percorso da un possibile rilevamento di minacce (ad esempio tramite una panoramica della sicurezza) all'impostazione della regola giusta per mitigare tale minaccia. Resta sintonizzato!<br></p>
+</div>

@@ -1,0 +1,49 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image5.png" class="kg-image"></figure>
+	<p>インターネットのトラフィックのほぼ半分はボットによって動かされています。ボットは、何年もかけてネットを徹底的に調べ上げ、執拗に銀行口座をハッキングしたり、アーティストのブルーノ・マーズのライブチケットの価格を釣り上げたり、データのためにWebサイトをスクレイピングしたりしてきました。ボットの問題があまりにも広がりすぎたため、当社は<a href="https://blog.cloudflare.com/ja-jp/cleaning-up-bad-bots-ja-jp/">ボットファイトモード</a>を2019年に立ち上げ、反撃を始めました。以降、150,000もの個人や小規模企業のお客様にこの製品をお使いいただいていますが、分析、検出、コントロールなど、機能性の向上や追加を望むたくさんの声をお寄せいただいています。</p>
+	<p>スーパーボットファイトモードのご紹介</p>
+	<p>CloudflareのPro、またはBuisnessプランをご利用のユーザーは、使用を開始してすぐにボットに対して新しい対策を講じることができます。すでに、ダッシュボードには、高度な機能と分析に関するエキサイティングなアップデートが追加されています。無料プランのお客様にはボットファイトモードの全機能を引き続きご利用いただき、Enterprise ボット管理製品はイノベーションのレベルをさらに高めていきます。</p>
+	<h2 id="-">ダッシュボード上で</h2>
+	<p>ボットソリューションのために新しい場所をご用意しました。このブログ記事で説明する機能が単一のトグルを超えるものなので、当社はボット保護のハブを作成しました。ファイアウォールアプリに移動して、「ボット」のサブタブを選択すると開始できます。</p>
+	<p>新しいハブは、Enterpriseボット管理を利用するユーザーを含め、全ユーザーにお使いいただけます。</p>
+	<h2 id="pro-">Proプランの機能</h2>
+	<p>最初に、当社で人気のボットレポートを、Proプランのみなさまにもお届けします。ここでは、ボットトラフィックの内訳を見ることができ、リアルタイムの更新が攻撃を特定するのに役立ちます。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image4.png" class="kg-image"></figure>
+	<p>ボットレポートには3つのトラフィックタイプがあります。</p>
+	<ol>
+		<li>自動化の可能性が高いトラフィックは悪いボットから来ている可能性があります。Cloudflareは、<a href="https://developers.cloudflare.com/bots/about/plans/biz-and-ent#bot-detection-engines" target="_blank">ヒューリスティック、機械学習、その他のテクニック</a>を用いて、こうしたリクエストを特定します。多くの場合、このタイプのトラフィックが、サイトに役立つことはなく、被害だけをもたらします。</li>
+		<li>人の可能性が高いトラフィックは正当性があり重要です。トラフィックの大部分がこれに当てはまることが理想的です。</li>
+		<li>検証済みのボットによるトラフィックは、インターネット上の良いボットから来ています。当社では、Googleのような検索クローラー、Paypalのような支払い通知サービスを検証しています。ほとんどのユーザーがこのトラフィックを許可することを選んでいます。</li>
+	</ol>
+	<p>このデータ全てを<a href="https://developers.cloudflare.com/analytics/graphql-api" target="_blank">GraphQL</a>でもご覧になれます。定期的に悪いボットトラフィックを監視したいとお考えの場合は、APIが役に立つはずです。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image3.png" class="kg-image"></figure>
+	<p>Proプランのユーザーは、「Configure Super Bot Fight Mode （スーパーボットファイトモードを設定する）」を選択して、保護を追加することで、ボットを阻止するための選択肢が広がります。注目点となるオプション：</p>
+	<ul>
+		<li>最初のオプションは、「間違いなく自動化」されているソースからのトラフィックをチャレンジしたり、ブロックしたりします。ここで留意すべき点は、当社がボットから来ると確信を持つトラフィックしか影響がないことです。</li>
+		<li>次のオプションは、JavaScript検出を有効にし、ヘッドレスブラウザやインターネット上のその他のアクターを識別します。</li>
+		<li>最後のオプションは、保護機能で検証されたボットを含めるか、除外するものです。</li>
+	</ul>
+	<p>サイトでSlackをご利用の場合、Slackbotが作業を行えるように、検証済みのボットを除外することができます。または、アドフラウド（ad fraud）の増加が顕著な場合、自動化されたトラフィックにチャレンジして、結果を見ることもできます。</p>
+	<h2 id="business-">Businessプランの機能</h2>
+	<p>ボット分析がBusinessプランでもご利用いただけるようになりました。</p>
+	<p>もともとCloudflareが<a href="https://blog.cloudflare.com/introducing-bot-analytics/">ボット分析</a>を開始したのは、Enterpriseプランのユーザーにさらなる可視性を提供するためでした。しかし、サービス開始以来、Businessプランのユーザーからも同様のインサイトを求める声が上がっていました。Cloudflareは常に技術の民主化に尽力しているため（<a href="https://blog.cloudflare.com/ja-jp/supercharging-firewall-events-for-self-serve-ja-jp/">ファイアウォール イベント</a>とその他の製品でこれまでやってきたように）、これは当社がやらなければならないことでした。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image8.png" class="kg-image"></figure>
+	<p>Businessプランのユーザーは、ボット分析の新バージョンにアクセスできるようになりました。ボット分析は、次で説明する軽減ツールと連携するようにデザインされています。ユーザーは、タイプ別にトラフィックを表示したり、時間枠を調整したり、またはIP アドレスやユーザーエージェントなど様々な属性によってフィルタリングすることができます。</p>
+	<p>その他のメリット：ボット分析では<em>どのように</em>当社がトラフィックを分類するかが示されます。「Request by detection source (検出ソース別のリクエスト)」までスクロールすると、どのエンジンが特定のリクエストにフラグを付けているかを把握できます。検出エンジンについての詳細情報については、このトピックに関する当社の<a href="https://blog.cloudflare.com/ja-jp/cloudflare-bot-management-machine-learning-and-more-ja-jp/">ブログ記事</a>をご覧ください。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image1.png" class="kg-image"></figure>
+	<p>もちろん、新しい軽減機能も追加しています。Proプランのユーザーは「間違いなく自動化」されているトラフィックから防御することもできますが、Businessプランのユーザーも「自動化の可能性が高い」トラフィックをターゲットにすることができます。では、この違いはなんでしょうか？Businessプランのユーザーは、当社の<a href="https://developers.cloudflare.com/bots/about/plans/biz-and-ent#machine-learning" target="_blank">機械学習のエンジン</a>によって、スコア付けされるリクエストを含めることができます。こうしたリクエストは、高度なボットから来ることもよくあります。こうしたボットはIPをローテーションしたり、人間のふりをしたりして、シンプルなセキュリティツールを回避します。</p>
+	<p>例えば、ご自身のWebサイトが買占めの被害を被っているとしたらと仮定します。販売商品をリスト化しても、あっという間にボットによって買い占められてしまいます。もちろんのこと、本来のお客様（利用客）は憤ることでしょう（もちろんサイトオーナーであるご自身も！）ここでボット分析の出番です。ボット分析を使って攻撃者を特定してください。攻撃が「自動化の可能性が高い」に入ったら、このトラフィックをブロックすることを検討してください。</p>
+	<p>また、Cloudflareは、サイトによってボットトラフィックに対する感度が異なることを認識しています。ユーザーは有効にする、完全にブロックする、または何もしないという方法で適切に対処することができます。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image7.png" class="kg-image"></figure>
+	<p>こうした機能がすべて、Cloudflare Businessプランには含まれています。軽減機能を有効にしたら、ファイアウォール イベントタブを確認し、トラフィックがブロックされているか、有効にされているかを確認します。</p>
+	<h2 id="enterprise-">Enterpriseのボット管理</h2>
+	<p>さらに高度なセキュリティが必要な方のために、<a href="https://www.cloudflare.com/ja-jp/products/bot-management" target="_blank">ボット管理</a>は業界最高基準であるべきと考えいます。また、その基準は高まる一方です。</p>
+	<p>ボットファイトモードとは違い、ボット管理は、直接ファイアウォールに構築されます。つまり、ユーザーはボット保護を特定のパス（ログインエンドポイントなど）に制限できるということです。ボット管理は、きめ細かいボットスコアも含めます。このスコアはユーザーが<a href="https://developers.cloudflare.com/firewall/recipes/challenge-bad-bots" target="_blank">他の属性とペアリング</a>できて、さらに強力な保護力を生み出すことができます。もちろん、これには<a href="https://developers.cloudflare.com/bots/about/plans/bm-subscription#anomaly-detection" target="_blank">異常検出</a>も含まれていて、当社はサイト上の外れ値のパターンを把握するためにこれを利用します。</p>
+	<p>また、ボット管理の改善も続けています。たとえば、少し前に、<a href="https://blog.cloudflare.com/api-abuse-detection/">API不正行為検出</a>機能への早期アクセスを発表したばかりですが、この発表の前に何か月もリサーチと開発を行いました。APIを緻密に計画し、正当なユーザーフローの特定や悪いボットの除外をするために教師なし学習を使っています。最終的に、Cloudflareはお客様のモバイル アプリ（SDKなし）を保護する能力を持っていて、API エンドポイントの安全を確保できる（スキーマの提供なし）という結果が出ました。<a href="https://blog.cloudflare.com/api-abuse-detection/">こちら</a>で、早期アクセス期間について詳しく説明しています。ぜひご一読ください。</p>
+	<p>こうした機能（とその他無数の機能）がインターネット最大のサイトを守り続けます。ボット管理が必要だとお考えでしたら、<a href="https://www.cloudflare.com/ja-jp/lp/automated-bot-traffic-report/" target="_blank">お気軽にCloudflareまでお問い合わせください</a>。</p>
+	<h2 id="--1">より良いインターネット構築をお手伝い</h2>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image2.png" class="kg-image"></figure>
+	<p>Cloudflareの目標はいつも、より良いインターネットを構築することです。この使命は、インターネットのあらゆる部分、インターネットを利用するすべての方に向けられています。</p>
+	<p>本日ご紹介するスーパーボットファイトモードは、この使命、特に、対ボット共同戦線としてさらに強力になるというアイディアから生まれています。当社が保護するWebサイトはすべて、ボットがリソースを台無しにしてしまうサイトです。Cloudflareでは、積極的な反撃を行い、タールピッティング（タールの穴）でボットの動きを防ぐ新たなチャレンジを繰り出しています。</p>
+	<p>すぐにスーパーボットファイトモードのご利用を開始されることを強くお勧めします。Cloudflareでは現在、ボット攻撃対策を（Free プランも含め）すべてのプランでご提供しておりますので、ぜひお試しください！新機能をテストしたら、ぜひご感想をお寄せください。</p>
+</div>

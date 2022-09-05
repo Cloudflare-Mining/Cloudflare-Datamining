@@ -1,0 +1,20 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image2-14.png" class="kg-image"></figure>
+	<p>Nodecraft 允许玩家为他们最喜欢的游戏提供专用服务器。James Ross 是 Nodecraft 的首席技术官，他在公司内部提倡使用 Cloudflare，特别是 Cloudflare Workers。</p>
+	<blockquote><em>“我们使用 Workers 做各种事情。我们使用 Workers 来优化网站、处理重定向以及处理主要网站的图像内容谈判。我们非常幸运，我们的大部分用户都使用现代 Web 浏览器，因此我们可以通过 Workers 脚本向用户提供 JPEG XL 和 AVIF 等格式的图像。”</em></blockquote>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image3-20.png" class="kg-image"></figure>
+	<p>Nodecraft 还维护了一些微型网站和 API，游戏社区依赖这些微型网站和 API 来检索游戏信息。 <a href="https://playerdb.co/" target="_blank">PlayerDB</a> 提供一个 JSON API 来查找一些游戏服务的用户档案信息，且 <a href="https://mcuuid.net/" target="_blank">MCUUID</a> 和 <a href="https://steamid.net/" target="_blank">SteamID</a> 是封装前端，供这些服务的用户与该 API 交互。所有这些都作为 Cloudflare Worker 来编写和部署：</p>
+	<blockquote><em>“每当有玩家加入 Minecraft 服务器时，我们会想要获取其信息（如名称和玩家头像）并将其显示给我们的用户。该 API 每个月收到一亿个请求。我们针对向用户显示该数据的其他三个网站使用相同的 API 端点。”</em></blockquote>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image1-30.png" class="kg-image"></figure>
+	<p>我们很喜欢 Workers 和开发人员现有基础结构之间的此类集成，因为这是引导团队进入 Workers 平台的好方法。您可以查找基础结构中可能占用资源、缓慢或昂贵的现有部分，并将它们移植到 Workers。在 Nodecraft 的案例中，这让他们免于管理令人难以置信的高额维护成本，简单来说，最终结果让他们能够高枕无忧：</p>
+	<blockquote><em>“在我们自己的基础结构中，每个月处理三亿个请求是一件十分艰难的事情，但如果把所有请求都抛给 Worker，我们就不需要担心规模。偶尔有人能编写出一个 Worker，能在一个小时内服务三千万个请求... 在查看 Cloudflare Dashboard 中的统计数据前，我们甚至都没有注意到。”</em></blockquote>
+	<p>Nodecraft 已使用 Cloudflare 将近十年。他们最初利用 Workers 来简化其应用程序的外部图像资产。他们的第一个 Worker 取代了他们之前托管在基础结构中的图像代理，从那时起，Worker 改变了他们思考构建应用程序的方式。</p>
+	<blockquote><em>“随着 Jamstack 的出现，我们开始使用 Workers Sites，并开始向静态架构转变。但我们的许多 Workers Sites 项目都有数量无限的页面。例如，Minecraft 有 1500 万（且还在增长）个用户档案，为每个用户档案都构建一个静态页面十分困难。现在，我们使用 HTMLRewriter 来注入包含动态用户内容的静态页面。”</em></blockquote>
+	<p>对于 James 来说，Workers 就是他了解 Web 应用程序未来的催化剂。Cloudflare 和 Workers 开发环境让他的团队无需再担忧规模和基础结构，这意味着 Nodecraft <em>默认</em>构建在 Cloudflare 上：</p>
+	<blockquote><em>“毫无疑问，Workers 改变了我们思考构建应用程序的方式。如今，我们考虑如何构建应用程序以直接部署到 Cloudflare 的边缘。”</em></blockquote>
+	<p>作为社区主持人以及我们 Discord 社区的活跃成员，James 对 Cloudflare 堆栈的未来感到十分期待。正如我们在过去几个月里一直调侃的那样，James一直期待着将 Workers 功能与 Nodecraft 的 Pages 应用程序集成。该功能的发布让 Nodecraft 能够将其网站整个转移到 Pages 驱动的部署中。他还期待着我们推出存储产品 Cloudflare R2，因为 Nodecraft 大量使用相似的存储产品，如有可能，他希望完全转移到 Cloudflare 的工具中。</p>
+	<p>如果您想要了解有关 Cloudflare Workers 的更多信息以及将您自己的无服务器功能部署到 Cloudflare 的网络，请访问 <a href="https://workers.cloudflare.com/" target="_blank">workers.cloudflare.com</a>！</p>
+	<!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/07356fcb9d66ada45f8dcc2217b8c1d7?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2F07356fcb9d66ada45f8dcc2217b8c1d7%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D0m4s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
+	<!--kg-card-end: html-->
+</div>

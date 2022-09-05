@@ -1,0 +1,165 @@
+<div class="post-content lh-copy gray1">
+	<!--kg-card-begin: markdown-->
+	<p><small><em>This is a Korean translation of a <a href="https://blog.cloudflare.com/syn-packet-handling-in-the-wild/">existing post</a> by <a href="https://blog.cloudflare.com/author/marek-majkowski/">Marek Majkowski</a>, translated by <a href="https://blog.cloudflare.com/author/junho/">Junho Choi</a>.</em></small></p>
+	<p>우리 Cloudflare는 실제 인터넷상의 서버 운영 경험이 많지만 이런 흑마술 수련도 게을리하지 않습니다. 이 블로그에서는 인터넷 프로토콜의 여러 어두운 부분을 다룬 적이 있습니다: <a href="https://blog.cloudflare.com/this-is-strictly-a-violation-of-the-tcp-specification/">understanding FIN-WAIT-2</a> 나 <a href="https://blog.cloudflare.com/the-story-of-one-latency-spike/">receive buffer tuning</a>과 같은 것들입니다.</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/01/1471936772_652043cb6c_b.jpg" alt=""><br>
+		<small><a href="https://creativecommons.org/licenses/by/2.0/" target="_blank">CC BY 2.0</a> <a href="https://www.flickr.com/photos/isaimoreno/1471936772/in/photolist-3f54wd-6mweJG-maUn5T-2tgqad-6YuCuM-pZ7r8T-Sa3LQ9-adTFS2-qSLQzk-sJ66Lq-71cJPS-oFU9rf-mbom12-23fVpJW-71ciCN-718DHR-j4VCQQ-71chKo-5DMBr4-5DLQFK-71cG4s-qQFjhZ-2RMBP6-718KWR-71cAFA-fAr8Ri-pe5zev-8TtDbQ-b6p5gk-qAdMqQ-qSBvUZ-qyg7oz-o5yof6-adTGvc-718xp4-5XQgJZ-bgGiwk-kf7aMc-qAjY14-718uti-smXfxF-8Kdnpx-nVVy8a-cmMJGb-puizaG-qP18i9-71cu1E-nYNfjq-718CjH-qyQM72" target="_blank">image</a> by <a href="https://www.flickr.com/photos/isaimoreno/" target="_blank">Isaí Moreno</a></small>
+	</p>
+	<p>사람들이 충분히 신경쓰지 않는 주제가 하나 있는데, 바로 SYN 홍수(SYN floods) 입니다. 우리는 리눅스를 사용하고 있는데 리눅스에서 SYN 패킷 처리는 매우 복잡하다는 것을 알게 되었습니다. 이 글에서는 이에 대해 좀 더 알아 보도록 하겠습니다.</p>
+	<h3 id="">두개의 큐의 이야기</h3>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/01/all-1.jpeg" alt=""></p>
+	<p>일단 만들어진 소켓에 대해 "LISTENING" TCP 상태에는 두개의 분리된 큐가 존재 합니다:</p>
+	<ul>
+		<li>SYN 큐</li>
+		<li>Accept 큐</li>
+	</ul>
+	<p>일반적으로 이 큐에는 여러가지 다른 이름이 붙어 있는데, "reqsk_queue", "ACK backlog", "listen backlog", "TCP backlog" 등이 있습니다만 혼란을 피하기 위해 위의 이름을 사용하도록 하겠습니다.</p>
+	<h3 id="syn">SYN 큐</h3>
+	<p>SYN 큐는 수신 SYN 패킷<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup> (구체적으로는 <code>struct inet_request_sock</code>)을 저장합니다. 이는 SYN+ACK 패킷을 보내고 타임아웃시에 재시도하는 역할을 합니다. 리눅스에서 재시도 값은 다음과 같이 설정됩니다:</p>
+	<pre><code>$ sysctl net.ipv4.tcp_synack_retries
+net.ipv4.tcp_synack_retries = 5
+</code></pre>
+	<p><a href="https://www.kernel.org/doc/Documentation/networking/ip-sysctl.txt" target="_blank">문서</a>를 보면 다음과 같습니다:</p>
+	<pre><code>tcp_synack_retries - 정수
+
+    수동 TCP 연결 시도에 대해서 SYNACK를 몇번 다시 보낼지를 지정한다.
+    이 값은 255 이하이어야 한다. 기본값은 5이며, 1초의 초기 RTO값을 감안하면
+    마지막 재전송은 31초 후에 일어난다. 이는 수동 TCP 연결의 최종 타임아웃은
+    63초 이후에 일어난다는 것을 의미한다. 
+</code></pre>
+	<p>SYN+ACK을 전송한 뒤에 SYN 큐는 3방향 핸드쉐이크의 마지막 단계인 클라이언트로부터의 ACK패킷을 기다립니다. 수신된 ACK 패킷은 모두 완전히 수립된 연결 테이블에서 찾을 수 있어야 하며 관련된 SYN 큐에는 없어야 합니다. SYN 큐에서 찾을 수 있다면, 커널은 해당 연결을 SYN 큐에서 제거하고 완전히 수립된 연결을 만들어 (구체적으로는 <code>struct inet_sock</code>) Accept 큐에 추가합니다.</p>
+	<h3 id="accept">Accept 큐</h3>
+	<p>Accept 큐는 어플리케이션이 언제라도 가져갈 수 있도록 완전히 수립된 연결을 저장하고 있습니다. 프로세스가 <code>accept()</code>를 부르게 되면 이 큐에서 소켓을 제거하여 어플리케이션에게 전달 합니다.</p>
+	<p>이는 리눅스에의 SYN 패킷 처리를 매우 간략화한 것인데, <code>TCP_DEFER_ACCEPT</code><sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup> 나 <code>TCP_FASTOPEN</code> 의 경우에는 약간 다르게 동작 합니다.</p>
+	<h3 id="">큐 크기 제한</h3>
+	<p>Accept 와 SYN 큐의 최대 크기는 어플리케이션이 호출하는 <code>listen(2)</code> 시스템 콜의 <code>backlog</code> 파라미터로 전달되는 값으로 설정됩니다. 예를 들어 다음은 Accept 와 SYN 큐 크기를 1024로 지정합니다:</p>
+	<pre><code>listen(sfd, 1024)
+</code></pre>
+	<p>참고로 커널 4.3 이전에는 SYN 큐 크기가 다르게 설정되었습니다.</p>
+	<p>SYN 큐의 최대 크기는 <code>net.ipv4.tcp_max_syn_backlog</code> 에 의해 지정되었지만 더 이상은 그렇지 않습니다. 최근에는 <code>net.core.somaxconn</code> 이 두개의 큐의 최대 크기를 지정합니다. 우리 서버는 16k로 지정하고 있습니다:</p>
+	<pre><code>$ sysctl net.core.somaxconn
+net.core.somaxconn = 16384
+</code></pre>
+	<h3 id="backlog">적절한 backlog 값</h3>
+	<p>위의 내용을 알고 있다면, 다음과 같은 질문을 할 수 있습니다: 이상적인 <code>backlog</code> 파라미터 값은 얼마인가요?</p>
+	<p>답은 "그때그때 달라요"입니다. 대부분의 소규모 TCP 서버의 경우 이 값은 그리 중요하지 않습니다. 예를 들어 <a href="https://github.com/golang/go/issues/6079" target="_blank">Go언어는 backlog 값 변경을 지원하지 않고</a> 128로 고정해 놓았습니다. 하지만 이 값을 더 크게 지정해야 할 이유들이 있습니다:</p>
+	<ul>
+		<li>초당 들어오는 연결 수가 매우 많다면 잘 동작하는 어플리케이션이라도 SYN 큐는 많은 패킷을 저장해야 할 수 있습니다.</li>
+		<li><code>backlog</code> 값은 SYN 큐 크기를 지정합니다. 달리 말하자면 이 값은 "아직 처리되지 않은 ACK 패킷의 수" 이기도 합니다. 클라이언트와의 평균 왕복 시간이 크다면, 더 많은 패킷을 저장할 수 있어야 합니다. 많은 클라이언트가 서버에서 멀리 떨어진 곳에 있다면 (수백밀리초 이상) 이 값을 늘리는 편이 좋을 것입니다.</li>
+		<li><code>TCP_DEFER_ACCEPT</code> 옵션은 소켓을 SYN-RECV 상태로 더 오래 둘 수 있고 큐 크기에 영향을 미칩니다.</li>
+	</ul>
+	<p><code>backlog</code> 를 지나치게 크게 지정하는 것도 안좋긴 합니다:</p>
+	<ul>
+		<li>SYN 큐는 메모리를 소비 합니다. SYN 홍수시에는 공격 패킷을 저장하기 위해 리소스를 낭비할 필요가 없습니다. SYN 큐의 각각의 <code>struct inet_request_sock</code> 엔트리는 커널 4.14에서 256 바이트의 메모리를 차지 합니다.</li>
+	</ul>
+	<p>리눅스에서 SYN 큐를 들여다보기 위해서는 <code>ss</code> 명령을 이용하여 <code>SYN-RECV</code> 소켓을 살펴 보면 됩니다. 예를 들어 Cloudflare 의 서버 중 하나에서는 다음과 같이 tcp/80 SYN 큐에 119개가, tcp/443에 78개가 쌓여 있음을 알 수 있습니다.</p>
+	<pre><code>$ ss -n state syn-recv sport = :80 | wc -l
+119
+$ ss -n state syn-recv sport = :443 | wc -l
+78
+</code></pre>
+	<p>유사한 데이터를 <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-01-syn-floods/resq.stp" target="_blank">SystemTap 스크립트 resq.stp</a>를 통해서도 볼 수 있습니다.</p>
+	<h3 id="">느린 어플리케이션</h3>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/01/full-accept-1.jpeg" alt=""></p>
+	<p>어플리케이션이 <code>accept()</code>를 충분히 빠르게 부르지 못하면 어떻게 될까요?</p>
+	<p>이때가 바로 마법이 시작될 때입니다! Accept 큐가 꽉 차게 되면 (<code>backlog</code> + 1 크기) 다음과 같은 일이 일어 납니다:</p>
+	<ul>
+		<li>SYN 큐로 추가될 수신 SYN 패킷이 버려짐</li>
+		<li>SYN 큐로 추가될 수신 ACK 패킷이 버려짐</li>
+		<li>TcpExtListenOverflows / <code>LINUX_MIB_LISTENOVERFLOWS</code> 카운터가 증가</li>
+		<li>TcpExtListenDrops / <code>LINUX_MIB_LISTENDROPS</code> 카운터가 증가</li>
+	</ul>
+	<p><em>수신</em> 패킷을 버려도 되는 주된 이유는 이것이 반작용 메카니즘이기 때문입니다. 다시 말하면 상대방은 느린 어플리케이션이 이미 복구되어 있기를 기대하며 SYN이나 ACK 패킷을 언젠가 다시 보내기 때문입니다.</p>
+	<p>이것은 대부분의 서버에서 바람직한 행동 입니다. 추가로 <code>net.ipv4.tcp_abort_on_overflow</code> 를 지정할 수 있습니다만 바꾸지 않는 편이 좋습니다.</p>
+	<p>만약 여러분의 서버가 많은 연결을 처리해야 하고 <code>accept()</code> 성능 문제를 겪고 있다면, <a href="https://blog.cloudflare.com/the-sad-state-of-linux-socket-balancing/">Nginx tuning / Epoll work distribution</a> 과 <a href="https://blog.cloudflare.com/perfect-locality-and-three-epic-systemtap-scripts/">a follow up showing useful SystemTap scripts</a> 을 읽어 보세요.</p>
+	<p>Accept 큐가 넘쳤는지의 통계는 <code>nstat</code> 카운터를 보면 알 수 있습니다.</p>
+	<pre><code>$ nstat -az TcpExtListenDrops
+TcpExtListenDrops     49199     0.0
+</code></pre>
+	<p>이 값은 전체 카운터입니다. 모든 어플리케이션이 별 문제 없어 보이는데도 이 값이 증가하는걸 종종 볼 수 있다면 이상적인 상황은 아닐 겁니다. 가장 먼저 할 일은 <code>ss</code> 로 Accept 큐 크기를 살펴보는 겁니다:</p>
+	<pre><code>$ ss -plnt sport = :6443|cat
+State   Recv-Q Send-Q  Local Address:Port  Peer Address:Port
+LISTEN  0      1024                *:6443             *:*
+</code></pre>
+	<p><code>Recv-Q</code> 컬럼은 Accept 큐의 소켓 숫자, <code>Send-Q</code>는 backlog 값입니다. 이 경우에는 <code>accept()</code>가 안된 소켓은 아직 없다는 걸 볼 수 있는데, 그래도 ListenDrops 카운터가 증가할 수 있습니다.</p>
+	<p>우리의 경우 어플리케이션이 아주 잠깐동안만 멈춘 것으로 보입니다. 아주 짧은 시간이라도 멈추기만 한다면 Accept 큐가 넘칠 충분한 이유가 될 겁니다. 바로 뒤에는 복구가 되었을 수 있습니다. 이런 경우라면 <code>ss</code> 로 디버깅하는 건 어렵습니다. 이런 경우를 위해서 <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-01-syn-floods/acceptq.stp" target="_blank">acceptq.stp SystemTap 스크립트</a>를 작성하였는데, 커널을 후킹해서 버려지는 SYN 패킷을 출력 합니다:</p>
+	<pre><code>$ sudo stap -v acceptq.stp
+time (us)        acceptq qmax  local addr    remote_addr
+1495634198449075  1025   1024  0.0.0.0:6443  10.0.1.92:28585
+1495634198449253  1025   1024  0.0.0.0:6443  10.0.1.92:50500
+1495634198450062  1025   1024  0.0.0.0:6443  10.0.1.92:65434
+...
+</code></pre>
+	<p>이제 ListenDrops 에 영향을 미치는 SYN 패킷을 정확하게 알 수 있습니다. 이 스크립트를 통해서 어떤 어플리케이션이 연결을 버리고 있는지 쉽게 알 수 있습니다.</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/01/3713965419_20388fb368_b.jpg" alt=""><br>
+		<small><a href="https://creativecommons.org/licenses/by/2.0/" target="_blank">CC BY 2.0</a> <a href="https://www.flickr.com/photos/16339684@N00/3713965419/in/photolist-6Ec3wx-5jhnwn-bfyTRX-5jhnCa-phYcey-dxZ95n-egkTN-kwT1YH-k22LWZ-5jBUiy-bzvDWx-5jBV31-5jhnr8-5jBTkq-5jxzHk-4K3cbP-9EePyg-4e5XNt-4e5XNn-dxZ8Tn-dy5A89-dxZ6GH-cztXcJ-gF7oY-dxZ9jv-dxZ7qM-ZvSPCv-dxZ6YV-5jBTqs-5jxzaP-MvuyK-nmVwP1-5jBRhY-dxZ7YF-5jxAc2-5jBU9U-5jBTEy-ejbWe6-5jxBc6-99ENZW-99KUsi-9bWScw-5jBRow-5jxzmx-5jBTfw-r6HcW-dy5zXE-5jxzg4-5jxBYR-5jxA2B" target="_blank">image</a> by <a href="https://www.flickr.com/photos/16339684@N00/" target="_blank">internets_dairy</a></small>
+	</p>
+	<h3 id="syn">SYN 홍수</h3>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/01/full-syn-1.jpeg" alt=""><br>
+		Accept 큐를 넘치게 하는게 가능하다면, SYN 큐를 넘치게 하는 것도 가능하겠지요. 어떤 경우일까요?</p>
+	<p>바로 <a href="https://en.wikipedia.org/wiki/SYN_flood" target="_blank">SYN 홍수 공격</a> 입니다. 예전에는 SYN 큐를 위조된 SYN패킷로 넘치게 하는 것은 큰 문제였습니다. 1996년 이전에는 SYN 큐를 채우는 것 만으로 대부분의 TCP 서버를 매우 적은 대역폭만으로 서비스 불능으로 만들 수 있었습니다.</p>
+	<p>해결책은 <a href="https://lwn.net/Articles/277146/" target="_blank">SYN 쿠키</a>입니다. SYN 쿠키는 수신 SYN을 저장하지 않고 메모리 소비 없이 SYN+ACK를 만들 수 있는 방법입니다. SYN 쿠키는 정상적인 트래픽을 방해하지 않습니다. 상대방이 실제 있다면 암호학적으로 확인 가능한 시퀸스 번호를 포함한 정상적인 ACK 패킷을 응답할 것입니다.</p>
+	<p>기본적으로 SYN 쿠키는 필요할 때 - SYN 큐가 꽉 차 있는 소켓 - 만 사용해야 합니다. 리눅스는 SYN 쿠키에 관련된 몇가지의 카운터를 갖고 있습니다. SYN 쿠키가 발송되는 경우에는:</p>
+	<ul>
+		<li>TcpExtTCPReqQFullDoCookies / <code>LINUX_MIB_TCPREQQFULLDOCOOKIES</code> 카운터 증가</li>
+		<li>TcpExtSyncookiesSent / <code>LINUX_MIB_SYNCOOKIESSENT</code> 카운터 증가</li>
+		<li>리눅스에서는 <code>TcpExtListenDrops</code> 를 증가시켰지만 <a href="https://github.com/torvalds/linux/commit/9caad864151e525929d323de96cad382da49c3b2" target="_blank">커널 4.7부터는 아닙니다.</a></li>
+	</ul>
+	<p>SYN 쿠키가 켜진 상태에서 수신 ACK가 SYN 큐로 들어오게 되면:</p>
+	<ul>
+		<li>ACK가 정상적인 값이라면 TcpExtSyncookiesRecv / <code>LINUX_MIB_SYNCOOKIESRECV</code> 카운터 증가</li>
+		<li>비정상인 경우 TcpExtSyncookiesFailed / <code>LINUX_MIB_SYNCOOKIESFAILED</code> 카운터 증가</li>
+	</ul>
+	<p><code>net.ipv4.tcp_syncookies</code> sysctl을 통해서 SYN 쿠키를 끄거나 강제로 켜놓을 수 있습니다만 기본 값으로 충분하므로 바꾸지 마세요.</p>
+	<h3 id="syntcp">SYN 쿠키와 TCP 타임스탬프</h3>
+	<p>SYN 쿠키 마법은 잘 됩니다만 부작용이 없는 것은 아닙니다. 주된 문제는 SYN 쿠키에 저장할 수 있는 데이터 크기가 작다는 겁니다. 구체적으로는 시퀀스 번호 32비트만이 ACK에 들어 있는데 다음과 같이 나누어서 사용 됩니다:</p>
+	<pre><code>+----------+--------+-------------------+
+|  6 bits  | 2 bits |     24 bits       |
+| t mod 32 |  MSS   | hash(ip, port, t) |
++----------+--------+-------------------+
+</code></pre>
+	<p>MSS 값을 <a href="https://github.com/torvalds/linux/blob/5bbcc0f595fadb4cac0eddc4401035ec0bd95b09/net/ipv4/syncookies.c#L142" target="_blank">4가지만 정할 수 있게</a> 되면서 리눅스는 상대방의 다른 TCP 옵션 파라미터를 알 수 없습니다. 타임스탬프, ECN, 선택적인 ACK (SACK), 윈도우 크기 변경 정보를 잃게 되어 TCP 세션 성능을 저하하는 요인이 됩니다.</p>
+	<p>다행히 리눅스에는 대책이 있습니다. 만약 TCP 타임스탬프가 켜져 있다면, 타임스탬프 필드의 32비트를 다은 용도로 재사용할 수 있습니다. 여기에는 다음 정보가 보관됩니다:</p>
+	<pre><code>+-----------+-------+-------+--------+
+|  26 bits  | 1 bit | 1 bit | 4 bits |
+| Timestamp |  ECN  | SACK  | WScale |
++-----------+-------+-------+--------+
+</code></pre>
+	<p>TCP 타임스탬프는 기본적으로 켜져 있을 것입니다. 확인해 보기 위해 sysctl을 봅시다:</p>
+	<pre><code>$ sysctl net.ipv4.tcp_timestamps
+net.ipv4.tcp_timestamps = 1 
+</code></pre>
+	<p>예전부터 TCP 타임스탬프의 유용성에 대해 많은 논의가 있었습니다.</p>
+	<ul>
+		<li>과거에 타임스탬프가 서버 가동 시간을 유출하는 경우가 있었습니다 (얼마나 이것이 중요한지는 다른 문제입니다만) 이것은 <a href="https://github.com/torvalds/linux/commit/95a22caee396cef0bb2ca8fafdd82966a49367bb" target="_blank">8개월 전에 수정</a>되었습니다.</li>
+		<li>TCP 타임스탬프는 <a href="http://highscalability.com/blog/2015/10/14/save-some-bandwidth-by-turning-off-tcp-timestamps.html" target="_blank">대역폭을 꽤 소모</a>합니다 - 패킷당 12 바이트</li>
+		<li>패킷 체크섬에 일정부분 임의의 데이터를 추가하게 되어 <a href="https://www.snellman.net/blog/archive/2017-07-20-s3-mystery/" target="_blank">일부 잘못된 하드웨어에 도움</a>이 됩니다.</li>
+		<li>위에서 이야기한 것 처럼 SYN 쿠키가 동작하는 경우 TCP 타임스탬프는 TCP 연결의 성능 향상에 도움이 됩니다.</li>
+	</ul>
+	<p>현재 Cloudflare 에서는 TCP 타임스탬프를 꺼두고 있습니다.</p>
+	<p>마지막으로 SYN 쿠키가 동작하는 경우 <code>TCP_SAVED_SYN</code>, <code>TCP_DEFER_ACCEPT</code>, <code>TCP_FAST_OPEN</code>과 같은 멋진 기능이 동작하지 않습니다.</p>
+	<h3 id="cloudflaresyn">Cloudflare 스케일의 SYN 홍수</h3>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/01/Screen-Shot-2016-12-02-at-10.53.27-1.png" alt=""></p>
+	<p>SYN 쿠키는 위대한 발명이고 소규모의 SYN 홍수의 문제를 해결해 줍니다. 하지만 Cloudflare 에서는 이를 최대한 사용하지 않으려 합니다. 초당 암호학적으로 확인 가능한 수천의 SYN+ACK를 보내는 것은 괜찮지만, 우리는 <a href="https://blog.cloudflare.com/the-daily-ddos-ten-days-of-massive-attacks/">초당 2억 패킷 이상의 공격</a>을 받고 있습니다. 이런 규모의 경우 SYN+ACK 응답은 쓸모 없는 패킷만 양산할 뿐 대부분 의미가 없습니다.</p>
+	<p>대신 우리는 파이어월 단에서 악의적인 SYN 패킷을 차단하려 하고 있으며 현재 BPF에 컴파일된 <code>p0f</code> SYN 지문을 이용하고 있습니다. 자세한 내용은 <a href="https://blog.cloudflare.com/introducing-the-p0f-bpf-compiler/">Introducing the p0f BPF compiler</a>를 읽어 보기 바랍니다. 이런 공격을 찾아내고 방어하기 위해 우리는 "Gatebot"이라 불리는 자동화 시스템을 개발하였습니다. 이에 대해서는 다음 글을 읽어 보세요: <a href="https://blog.cloudflare.com/meet-gatebot-a-bot-that-allows-us-to-sleep/">Meet Gatebot - the bot that allows us to sleep</a></p>
+	<h3 id="">발전하는 환경</h3>
+	<p>약간 오래 되었지만 관련된 주제에 대한 상세한 내용은 <a href="https://veithen.github.io/2014/01/01/how-tcp-backlog-works-in-linux.html" target="_blank">2015년 Andreas Veithen의 훌륭한 설명</a>과 <a href="https://www.giac.org/paper/gsec/2013/syn-cookies-exploration/103486" target="_blank">2013년 Gerald W. Gordon의 상세한 논문</a>을 참조 하세요.</p>
+	<p>리눅스 SYN 패킷 처리 환경은 계속 발전하고 있습니다. 최근까지만 해도 SYN 쿠키는 커널의 오래된 잠금 때문에 느렸습니다. 이 문제는 4.4에서 수정되었고 이제 커널은 초당 수백만의 SYN 쿠키를 보낼 수 있어서 대부분의 경우 SYN 홍수 문제는 실질적으로 해결되었습니다. 적절한 튜닝을 통해 정상적인 연결의 성능을 방해하지 않고 아주 귀찮은 SYN 홍수를 방어할 수 있습니다.</p>
+	<p>어플리케이션 성능도 많은 관심을 끌고 있습니다. <code>SO_ATTACH_REUSEPORT_EBPF</code> 과 같은 아이디어는 네트워크 스택을 프로그래밍할 수 있는 새로운 계층을 제공합니다.</p>
+	<p>운영체제의 잘 바뀌지 않던 부분인 네트워킹 스택에 혁신과 새로운 아이디어가 들어가고 있다는 것은 좋은 일입니다.</p>
+	<p><em>이 글에 도움을 준 Binh Le에게 감사드립니다.</em></p>
+	<hr>
+	<p><em>리눅스와 NGINX 내부에 흥미가 있는지요? 런던, 오스틴, 샌프란시스코 및 폴란드 바르샤바의 <a href="https://boards.greenhouse.io/cloudflare/jobs/589572" target="_blank">세계 최고 수준의 팀</a>에 합류 하세요.</em></p>
+	<hr class="footnotes-sep">
+	<section class="footnotes">
+		<ol class="footnotes-list">
+			<li id="fn1" class="footnote-item">
+				<p>단순하게 이야기하였지만 SYN 큐는 아직 성립되지 않은 연결을 저장하지 SYN 패킷 자체를 저장하는게 아닙니다.<code>TCP_SAVE_SYN</code>이라면 비슷하겠지만. <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+			</li>
+			<li id="fn2" class="footnote-item">
+				<p><code>TCP_DEFER_ACCEPT</code> 를 처음 접한다면 FreeBSD의 <a href="https://www.freebsd.org/cgi/man.cgi?query=accf_http&amp;sektion=9" target="_blank">accept filters</a>를 알아 보세요. <a href="#fnref2" class="footnote-backref">↩︎</a></p>
+			</li>
+		</ol>
+	</section>
+	<!--kg-card-end: markdown-->
+</div>

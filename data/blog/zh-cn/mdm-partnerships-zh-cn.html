@@ -1,0 +1,50 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image2-35.png" class="kg-image" alt="Cloudflare announces integrations with MDM companies"></figure>
+	<p>在 Cloudflare，我们会不断思考如何让互联网对于消费者和各种规模的企业更安全、更可靠、性能更高。要确保企业应用程序的安全并让 CIO 高枕无忧，将设备安全地连接到应用程序至关重要。</p>
+	<p>今年 1 月，我们<a href="https://blog.cloudflare.com/zh-cn/introducing-cloudflare-for-teams-zh-cn/">发布了我们的 Zero Trust 平台、Cloudflare for Teams</a>，它通过将旧版安全外围设备替换为 Cloudflare 的全球边缘网络，保护用户及其设备和数据。Cloudflare for Teams 使 Zero Trust 网络访问和安全 Web 网关对于所有公司都更容易访问，无论其大小、规模或资源如何。这意味着可构建对用户更友好、更易于部署和管理的产品。</p>
+	<p>Cloudflare WARP 代理会加密从设备到 Cloudflare 的网络的流量，并且许多客户将其用作关键组件来将默认拒绝控制扩展到其用户所在的位置。今天，Cloudflare 推出了更丰富的文档，说明如何与这些合作伙伴一起部署 WARP，以便您的管理员可使用简化的、易于执行的流程来注册整个设备群。</p>
+	<p>此外，我们很高兴地宣布新集成了移动设备管理供应商 Microsoft Intune、Ivanti、JumpCloud、Kandji 和 Hexnode，以便更轻松地部署和安装 Cloudflare WARP。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image1-54.png" class="kg-image"></figure>
+	<h3 id="-mdm-"><strong>什么是 MDM？</strong></h3>
+	<p>移动设备管理 (MDM)，有时也称为统一端点管理 (UEM) 工具，它提供了简单的解决方案来解决分布式工作时代日益具有挑战性的问题 — 从单一平台管理组织的所有设备。</p>
+	<p>以一家虚构的医疗保健咨询公司为例。假设首席执行官在创立这家公司时主要从她的家乡科罗拉多州招聘员工，并允许员工使用自己的个人手机和笔记本电脑访问电子邮件和其他数据。这种自带设备 (BYOD) 策略很方便，可以让公司顺利起步。</p>
+	<p>然后，她的公司开始获得更高规格的客户，揽接更大规模的项目，为了满足这种日益增长的需求，这位首席执行官开始在全美国招聘员工，并布局企业设备。此外，这些客户在处理机密患者数据方面有着更严格的标准。</p>
+	<p>这家咨询公司感到提升安全性档次的压力。但由于公司拥有遍布全国的混合设备群，首席执行官如何在受管和不受管设备中改善可见性；检查它们是否正确进行了更新，而不是遭到破坏或已丢失？如果已丢失或遭到破坏，如何远程擦除这些设备，以便不会泄露客户或公司信息？</p>
+	<p>MDM 解决方案可以帮助回答这些问题。毛笔你你们内部它们专门用于配置规定用户可以在设备上执行哪些操作的策略，应用操作系统更新，并安装新软件，同时为 IT 团队提供设备群的统一视图。虽然这些问题过去是登门拜访 IT 办公室的工作人员来解决的，现在可以远程大规模加以解决。</p>
+	<h3 id="-"><strong>简化设备客户端的部署</strong></h3>
+	<p>Cloudflare 意识到，类似上述医疗保健咨询公司这样的组织将寻求在其分散的用户中增强安全性和可见性。我们的设备客户端 WARP 有助于实现这一点，方法是在端点启用能感知身份和设备状态的策略实施。</p>
+	<p>我们优化了客户端，以支持各种部署方法，这样组织可以根据需要灵活地轻松应用 Cloudflare for Teams 的 Zero Trust 功能。例如，WARP 适用于所有主流操作系统（Windows、MacOS、Linux、Chrome OS、iOS 和 Android）。而且无论部署机制如何，WARP 都使用<a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/deployment/parameters" target="_blank">一组通用的参数</a>，这样您的管理员可获得一致的体验。</p>
+	<p>为了展示运行中的这一简化部署，下面列出了一些关于如何在 Windows 上部署我们客户端的常见场景，只通过命令行进行了一些细微调整：</p>
+	<p>1.如果您想使用 HTTP 过滤规则、浏览器隔离，或对设备状态执行任何操作，最重要的事情是让您的用户向 Teams 组织进行身份验证，并通过 WARP 发送其流量：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>Cloudflare_WARP_Release-x64.msi /quiet ORGANIZATION="exampleorg" SERVICE_MODE="warp"
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>2. 如果您不关心身份，只想使用上述相同场景进行静默安装，请使用<a href="https://developers.cloudflare.com/cloudflare-one/identity/service-auth/service-tokens" target="_blank">服务令牌</a>并禁用初始客户端 UI：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>Cloudflare_WARP_Release-x64.msi /quiet ORGANIZATION="exampleorg" SERVICE_MODE="warp” AUTH_CLIENT_ID=”” AUTH_CLIENT_SECRET=”” ONBOARDING=”false” 
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>3. 您的员工是否有时会出差到不允许加密隧道中流量的国家/地区或位置？您可以让他们关闭 WARP，同时仍遵守您公司的 DNS 规则：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>Cloudflare_WARP_Release-x64.msi /quiet ORGANIZATION="exampleorg" SERVICE_MODE="warp” MODE_SWITCH=”true”
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h3 id="--1"><strong>我们的合作伙伴关系</strong></h3>
+	<p>Cloudflare 意识到，许多组织依赖 MDM 解决方案来部署诸如我们的客户端之类的软件，当他们进行部署时，他们值得拥有一个简化操作的流程。为此，我们与您已经在依赖的领先 MDM 组织建立合作伙伴关系，确保我们的软件具备兼容性，并包含专门构建的文档来保护您的用户。</p>
+	<blockquote>“<em>Cloudflare 与 Microsoft 之间的密切协作和深度集成，有助于增强我们的共同客户的安全态势，并确保在 Zero Trust 保持为每个组织领导者的首要考虑事项的同时，人们能够保持高效工作状态。</em>”<br><em><strong>– Microsoft 安全性、合规性、身份和管理、业务发展部企业副总裁 Ann Johnson。</strong></em></blockquote>
+	<blockquote><em>“ZTNA 不再是企业可以斟酌的选项，而是已然成为必需品。作为企业端点管理的全球解决方案，Hexnode 将与 Cloudflare 的这一合作伙伴关系视为迈向未来的关键一步。”</em><br><em><strong>– Hexnode 首席技术官 Sahad M</strong></em></blockquote>
+	<blockquote><em>“Zero Trust 是一种意识和文化，每个组织不仅需要加以采纳，而且需要针对员工用于访问企业数据和系统的各种设备加速推进。我们与 Cloudflare 的合作伙伴关系不仅会改善 IT 团队的体验，还会改善无处不在工作场所的员工体验。这一合作伙伴关系进一步证明了 Ivanti 致力于保护用户和管理设备的决心。”</em><br><em><strong>– Ivanti 总裁和首席产品官 Nayaki Nayyar</strong></em></blockquote>
+	<blockquote><em>“Zero Trust 方法的根基是同时保护身份、设备和网络。通过与 Cloudflare 建立合作伙伴关系，我们将创建一流的方法来保护当今的现代组织。”</em><br><em><strong>– JumpCloud 的首席策略师 Chase Doelling</strong></em></blockquote>
+	<blockquote><em>“Kandji 和 Cloudflare 的合作伙伴关系将有助于 IT 团队在其整个 Apple 群中快速部署 Cloudflare 的网络安全解决方案。使用诸如 Kandji 之类的设备管理软件来安装、启用和实施 Cloudflare for Teams，IT 团队将能够管理任何规模的安全状态。”</em><br><em><strong>– Kandji 产品策略部高级副总裁 Weldon Dodd</strong></em></blockquote>
+	<h3 id="--2"><strong>接下来？</strong></h3>
+	<p>在下方点击以开始部署 Cloudflare for Teams：</p>
+	<ul>
+		<li><a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/deployment/mdm-deployment/partners/intune" target="_blank">使用 Microsoft Intune 部署</a></li>
+		<li><a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/deployment/mdm-deployment/partners/kandji" target="_blank">使用 Kandji 部署</a></li>
+		<li><a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/deployment/mdm-deployment/partners/jumpcloud" target="_blank">使用 JumpCloud 部署</a></li>
+		<li><a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/deployment/mdm-deployment/partners/hexnode" target="_blank">使用 Hexnode 部署</a></li>
+		<li>使用 Ivanti 部署 — 即将推出！</li>
+	</ul>
+	<p>看不到您现在使用的 MDM 工具，或者有意向与我们建立合作伙伴关系以确保我们的共同客户顺利开展业务？请在我们的 <a href="https://www.cloudflare.com/partners/mdm/" target="_blank">MDM 合作伙伴关系页面</a>上填写联系表单。<br></p>
+</div>

@@ -1,0 +1,34 @@
+<div class="post-content lh-copy gray1">
+	<p>Cloudflareで働く私達の多くは、どうしたらWebサイトをより速くできるかについて常に考えています。しかし、パフォーマンスを向上させるには、まずそれを測定する必要があります。昨年は、お客様がエンドユーザーの視点からWebパフォーマンスを測定できるように、Browser Insightsの提供を開始しました。</p>
+	<p>本日、Google Chromeチームと提携し、<a href="https://web.dev/vitals/" target="_blank">Web Vitals</a>という測定方法をBrowser Insightsに取り入れることになりました。Web Vitals は、Web開発者および Webサイトの所有者が、ロード時間、応答性、および視覚的な安定性を、測定/理解するのに役立つ一連の新しい指標です。CloudflareのBrowser Insightsを使用すると、これらを今まで以上に簡単に測定でき、誰でもWeb全体からデータを無料で収集できます。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/09/pasted-image-0-1.png" class="kg-image"></figure>
+	<h3 id="web-vitals-">Web Vitalsが必要な理由</h3>
+	<p>パフォーマンスを理解しようとするとき、ともすれば、最初のバイトまでの時間（TTFB）など、測定が容易な指標に集中しがちになります。TTFB や同様の指標を理解することは重要ですが、それらの指標が必ずしも全体像を伝えるとは限らないことを私達は学びました。</p>
+	<p>パートナーであるGoogle Chromeチームは、ユーザー体験を次の3つの要素に分解することで、この問題を解決しようとしています。</p>
+	<ul>
+		<li>読み込み : コンテンツが使用可能になるまでにどれくらいの時間が必要か</li>
+		<li>インタラクティビティ： ユーザーがWebサイトを操作する際に、どれくらい応答性がよいか？</li>
+		<li>視覚的な安定性<em> </em> ：読み込み中にどれくらいページが移動するか？（筆者自身は、これは「欠陥があること」の逆だと考えています）</li>
+	</ul>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/09/pasted-image-0--1-.png" class="kg-image">
+		<figcaption>この<a href="https://web.dev/vitals/" target="_blank">画像は</a> Googleが作成し共有した画像の複製で 、 <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">クリエイティブ·コモンズ表示4.0 ライセンス</a>に記載された規定に従って使用されます 。</figcaption>
+	</figure>
+	<p>これらの高レベルのコンポーネントをとらえる、ひとつの指標を作成することは困難です。ありがたいことに、Google Chromeチームの人々はこのことを考慮して、今年の初めに3つの「コア」なWeb Vitals 指標を導入しました：<a href="https://web.dev/lcp/" target="_blank">Largest Contentful Paint</a>、<a href="https://web.dev/fid/" target="_blank">First Input Delay</a>、そして<a href="https://web.dev/cls/" target="_blank">Comulative Layout Shift</a>です。</p>
+	<h3 id="web-vitals-web-">Web VitalsはWebサイトの高速化にどのように貢献するか？</h3>
+	<p>Core Web Vitalsを測定すれば、話がお終いになるということではありません。むしろ、これらの指標は、Webサイトパフォーマンスにどのような要因が影響するかを理解するためのとっかかりにすぎません。Web Vitalsは、高いレベルで何が起こっているかを伝え、その他のより詳細な指標により、なぜ、ユーザー体験が遅くなるのかが理解できます。</p>
+	<p>たとえば、ロード時間について考えてみましょう。あなたが、Largest Contentful Paintスコアが「改善が必要」であることに気づいたら、何の読み込みにそれほど時間がかかっているのかを、さらに掘り下げたいと思うはずです！Browser Insightsは、DNS ルックアップ時間や TTFBなどのナビゲーションタイミング指標を測定します。これらの指標を順番に分析することで、<a href="https://blog.cloudflare.com/introducing-cache-analytics/">キャッシュヒット率の最適化値</a>、オリジンサーバーのパフォーマンスの調整、JavaScriptやCSS などのリソースの読み込み順序の調整についてさらに掘り下げることができます。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/09/pasted-image-0--2-.png" class="kg-image"></figure>
+	<p>Webパフォーマンスの向上に関する詳細については、LCP、<a href="https://web.dev/optimize-fid/" target="_blank">FID</a>、<a href="https://web.dev/optimize-cls/" target="_blank">CLS</a>の改善に関するGoogleガイドをご覧ください 。</p>
+	<h3 id="cloudflare-web-vitals-">CloudflareでWeb Vitalsを測定する理由</h3>
+	<p>まず、当社では、RUM（Real User Measurement）は統合的な測定（Synthetic Measurement）の重要な構成要素だと考えています。ノートパソコンでいつでも数ページ読み込んでみて、結果を確認できますが、実際のデバイスパフォーマンスとネットワークの状態を確認する唯一の方法は、実際のユーザーからデータを収集することです。</p>
+	<p>RUMツールに関してはこの他にもすばらしいツールがあります。Googleの <a href="https://developers.google.com/web/tools/chrome-user-experience-report" target="_blank">Chrome User Experience Report</a> (CrUX)は、Web全体のデータを収集し、<a href="https://developers.google.com/speed/pagespeed/insights/" target="_blank">Page Speed Insights</a> (PSI)（RUMの結果を組み合わせて統合し、有用な診断情報にする）などのツールを使用してデータを利用可能なものにします。</p>
+	<p>Cloudflare Browser Insights の主な利点の1つは、絶えず更新されることです。新しいデータポイントは、エンドユーザーから送られたリクエストを見た直後に利用可能です。Chrome UX レポートのデータは、集計指標の28日間の平均であるため、変更がデータに反映されるまで待つ必要があります。</p>
+	<p>Browser Insightsのもう1つの利点は、Chromeだけでなく、あらゆるブラウザを測定できることです。この記事の執筆時点では、Web Vitalsのレポートに必要なAPIは<a href="https://en.wikipedia.org/wiki/Chromium_(web_browser)" target="_blank">Chromium ブラウザ</a>でのみサポートされていますが 、これらのAPIを実装する際には、当社はSafariとFirefox をサポートする予定です。</p>
+	<p>最後に、Brower Insightsは無料で使用できます！あらゆるトラフィック量のWebサイトで分析を高速化するために、当社は尽力してきました。URL、ブラウザ、OS、国別に分類/グループ化して分析をサポートできることをうれしく思っています。また、間もなくいくつかの他の分析観点をサポートする予定です。</p>
+	<h3 id="-">ボタンを押せば測定が始まります</h3>
+	<p>ブラウザーインサイトの使用を開始するには、ダッシュボードの [Speed]タブに移動します。今日から、Web Vitalsの指標はすべての人にご利用いただけるようになりました！</p>
+	<p>バックグラウンドでは、Browser Insightsは、HTML ページに JavaScript「ビーコン」を挿入することによって機能します。特定のページまたはホスト名のみを測定したい場合は、ビーコンがロードされる場所を制御できます。CSP バージョン 3 を使用している場合は、nonce (存在する場合) を自動的に検出してスクリプトに追加します。</p>
+	<h3 id="--1">これまでとこれから</h3>
+	<p>当社は、Browser Insightsの成功を本当に誇りに思っています。昨年、努力を重ね、多くの改善を加えました。たとえば、<a href="https://blog.cloudflare.com/explaining-cloudflares-abr-analytics/">最大級のWebサイトに対しても、ダッシュボードを高速にし、応答性を高めました（そして今でも無料です！）</a>。</p>
+	<p>近日中に、Web Analyticsのすべてのお客様、つまり現在Cloudflareをご利用されていないお客様にも、この機能を提供できることを嬉しく思います &nbsp;。また、クライアント側のエラー報告や診断ツールなど、リクエストの多かった機能を追加することで、改善すべき点がわかりやすくなっています。</p>
+</div>

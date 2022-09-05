@@ -1,0 +1,146 @@
+<div class="post-content lh-copy gray1">
+	<p>在过去的几天里，我们观察到隐蔽的放大攻击向量的频次大幅增加，这些放大攻击使用了来自UDP端口11211 的<a href="https://github.com/memcached/memcached/blob/master/doc/protocol.txt" target="_blank">memcached协议</a>。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/07/3829936641_f112ed1665_b-1.jpg" class="kg-image">
+		<figcaption><a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank">CC BY-SA 2.0</a><a href="https://www.flickr.com/photos/trawin/3829936641/" target="_blank">图片</a>来自<a href="https://www.flickr.com/photos/trawin/" target="_blank">David Trawin</a></figcaption>
+	</figure>
+	<p>之前我们已经谈论过很多关于互联网上放大攻击的话题。我们最近关于这个主题的两篇博文是：</p>
+	<ul>
+		<li><a href="https://blog.cloudflare.com/ssdp-100gbps/">SSDP放大超过100Gbps</a>。有趣的是，从那以后我们成为了196Gbps SSDP攻击的目标。</li>
+		<li><a href="https://blog.cloudflare.com/reflections-on-reflections/">关于各种放大攻击的一般统计数据</a>。</li>
+	</ul>
+	<p>所有放大攻击背后的思路都是一样的。 有一定能力的<a href="https://idea.popcount.org/2016-09-20-strange-loop---ip-spoofing/" target="_blank">IP欺骗式攻击者</a>将虚假请求发送到易受攻击的UDP服务器。对虚假请求不知情的UDP服务器礼貌地准备响应。当成千上万的响应传递到毫无筛选能力的目标主机时，目标主机网络将因超出承载限度而崩溃。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/07/spoofing-1-1.png" class="kg-image"></figure>
+	<p>放大攻击的效果很明显，因为响应数据包通常比请求数据包大得多。这种技术使得具有有限IP欺骗容量（例如1Gbps）的攻击者能够发起非常大的攻击（达到100s Gbps），从而“放大”攻击者的带宽。</p>
+	<h2 id="memcrashed">Memcrashed</h2>
+	<p>隐蔽的放大攻击一直在发生。我们经常看到“chargen”或“call of duty”数据包袭击我们的服务器。</p>
+	<p>目前很少有新的放大攻击向量能够实现巨大的放大效应，而memcached UDP DDoS就是其中之一。</p>
+	<p><a href="https://ddosmon.net/insight/" target="_blank">Qihoo 360</a>的<a href="https://ddosmon.net/insight/" target="_blank">DDosMon</a>监控着放大攻击向量，此图表展示了最近的memcached / 11211攻击情况：</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/07/memcached-ddosmon-1.png" class="kg-image"></figure>
+	<p></p>
+	<p>memcached攻击的数量一开始相对平缓，但几天前它开始飙升。我们的图表也证实了这一点，这是过去四天内每秒的攻击数据包数：</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/07/memcached-pps-1.png" class="kg-image"></figure>
+	<p></p>
+	<p>虽然每秒的数据包数量并不突出，但生成的带宽是这样的：</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/07/memcached-gpb-1.png" class="kg-image"></figure>
+	<p></p>
+	<p>我们可以看到，入站UDP memcached流量最高已经达到260Gbps。这对于新的放大向量来说是非常巨大的。但数字不会说谎。这是有可能发生的，因为所有反射的数据包都非常大。这是它在tcpdump中的样子：</p>
+	<p></p>
+	<pre><code>$ tcpdump -n -t -r memcrashed.pcap udp and port 11211 -c 10
+IP 87.98.205.10.11211 &gt; 104.28.1.1.1635: UDP, length 13
+IP 87.98.244.20.11211 &gt; 104.28.1.1.41281: UDP, length 1400
+IP 87.98.244.20.11211 &gt; 104.28.1.1.41281: UDP, length 1400
+IP 188.138.125.254.11211 &gt; 104.28.1.1.41281: UDP, length 1400
+IP 188.138.125.254.11211 &gt; 104.28.1.1.41281: UDP, length 1400
+IP 188.138.125.254.11211 &gt; 104.28.1.1.41281: UDP, length 1400
+IP 188.138.125.254.11211 &gt; 104.28.1.1.41281: UDP, length 1400
+IP 188.138.125.254.11211 &gt; 104.28.1.1.41281: UDP, length 1400
+IP 5.196.85.159.11211 &gt; 104.28.1.1.1635: UDP, length 1400
+IP 46.31.44.199.11211 &gt; 104.28.1.1.6358: UDP, length 13</code></pre>
+	<p>大多数数据包的大小为1400字节。计算得出23Mpps x 1400字节可以提供257Gbps的带宽，正如图表所示。</p>
+	<h2 id="memcached-udp-">Memcached做UDP？</h2>
+	<p>得知memcached做了UDP，我很惊讶！从它的<a href="https://github.com/memcached/memcached/blob/master/doc/protocol.txt" target="_blank">协议说明</a>看来，它是有史以来用于放大的最好的协议！绝对的零检查将使得数据能够以惊人的速度传送到客户端！不仅如此，极小的请求（最多1MB）就可以获得极大的响应。</p>
+	<p>发起这样的攻击非常简单。首先，攻击者在暴露的memcached服务器上植入大量有效负载。接着，攻击者利用目标源IP欺骗“获取”请求消息。</p>
+	<p>Tcpdump合成运行流量显示：</p>
+	<pre><code>$ sudo tcpdump -ni eth0 port 11211 -t
+IP 172.16.170.135.39396 &gt; 192.168.2.1.11211: UDP, length 15
+IP 192.168.2.1.11211 &gt; 172.16.170.135.39396: UDP, length 1400
+IP 192.168.2.1.11211 &gt; 172.16.170.135.39396: UDP, length 1400
+...(repeated hundreds times)...</code></pre>
+	<p>可见15个字节的请求触发了134KB的响应。这是10,000倍的放大系数！实际上，我们还观察到一个15字节的请求触发了750kB的响应（放大率为51,200倍）。</p>
+	<h2 id="ip-">IP来源</h2>
+	<p>易受攻击的memcached服务器遍布全球，其中北美和欧洲的服务器集中度更高。这是我们在120多个IP源的地图：</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/07/memcached-map2-1.png" class="kg-image"></figure>
+	<p></p>
+	<p>有趣的是，我们在EWR，HAM和HKG的数据中心看到了异常多的攻击性IP。这是因为大多数易受攻击的服务器都位于主要的主机提供商中。以下为我们看到的IP的AS号码：</p>
+	<p></p>
+	<pre><code>┌─ips─┬─srcASN──┬─ASName───────────────────────────────────────┐
+│ 578 │ AS16276 │ OVH                                          │
+│ 468 │ AS14061 │ DIGITALOCEAN-ASN - DigitalOcean, LLC         │
+│ 231 │ AS7684  │ SAKURA-A SAKURA Internet Inc.                │
+│ 199 │ AS9370  │ SAKURA-B SAKURA Internet Inc.                │
+│ 165 │ AS12876 │ AS12876                                      │
+│ 119 │ AS9371  │ SAKURA-C SAKURA Internet Inc.                │
+│ 104 │ AS16509 │ AMAZON-02 - Amazon.com, Inc.                 │
+│ 102 │ AS24940 │ HETZNER-AS                                   │
+│  81 │ AS26496 │ AS-26496-GO-DADDY-COM-LLC - GoDaddy.com, LLC │
+│  74 │ AS36351 │ SOFTLAYER - SoftLayer Technologies Inc.      │
+│  65 │ AS20473 │ AS-CHOOPA - Choopa, LLC                      │
+│  49 │ AS49981 │ WORLDSTREAM                                  │
+│  48 │ AS51167 │ CONTABO                                      │
+│  48 │ AS33070 │ RMH-14 - Rackspace Hosting                   │
+│  45 │ AS19994 │ RACKSPACE - Rackspace Hosting                │
+│  44 │ AS60781 │ LEASEWEB-NL-AMS-01 Netherlands               │
+│  42 │ AS45899 │ VNPT-AS-VN VNPT Corp                         │
+│  41 │ AS2510  │ INFOWEB FUJITSU LIMITED                      │
+│  40 │ AS7506  │ INTERQ GMO Internet,Inc                      │
+│  35 │ AS62567 │ DIGITALOCEAN-ASN-NY2 - DigitalOcean, LLC     │
+│  31 │ AS8100  │ ASN-QUADRANET-GLOBAL - QuadraNet, Inc        │
+│  30 │ AS14618 │ AMAZON-AES - Amazon.com, Inc.                │
+│  30 │ AS31034 │ ARUBA-ASN                                    │
+└─────┴─────────┴──────────────────────────────────────────────┘</code></pre>
+	<p></p>
+	<p>我们见到的大多数memcached服务器都来自AS16276 - OVH，AS14061 - Digital Ocean和AS7684 - Sakura。</p>
+	<p>我们总共只看到了5,729个memcached服务器的单一IP源。可以预计我们将在未来看到更大量的攻击，因为<a href="https://www.shodan.io/" target="_blank">Shodan</a>报告了88,000个开放的memcached服务器有：</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/07/memcached-shodan.png" class="kg-image"></figure>
+	<p></p>
+	<h2 id="-">让我们来解决它</h2>
+	<p>解决这个问题并防止进一步的攻击发生是非常有必要的。以下我们列出了所有要做的事。</p>
+	<h4 id="memcached-">Memcached的用户</h4>
+	<p>如果您使用的是memcached，请在不使用时禁用UDP支持。在memcached启动时，您可以设置 <code>--listen 127.0.0.1</code>为仅监听localhost，并设置 <code>-U 0</code>完全禁用UDP。 默认情况下，memcached监听INADDR_ANY并以UDP支持ENABLED运行。参考文档：</p>
+	<ul>
+		<li><a href="https://github.com/memcached/memcached/wiki/ConfiguringServer#udp" target="_blank"> https://github.com/memcached/memcached/wiki/ConfiguringServer#udp</a></li>
+	</ul>
+	<p>您可以通过运行以下命令来测试服务器是否易受攻击：</p>
+	<pre><code>$ echo -en "\x00\x00\x00\x00\x00\x01\x00\x00stats\r\n" | nc -q1 -u 127.0.0.1 11211
+STAT pid 21357
+STAT uptime 41557034
+STAT time 1519734962
+...</code></pre>
+	<p>如果您看到非空响应（如上所示），则说明您的服务器容易受到攻击。</p>
+	<h4 id="--1">系统管理员</h4>
+	<p>请确保您的memcached服务器是在互联网上受防火墙保护！要测试是否可以使用UDP访问它，我建议使用 <code>nc</code>上面的示例来验证TCP是否已关闭运行 <code>nmap</code>：</p>
+	<pre><code>$ nmap TARGET -p 11211 -sU -sS --script memcached-info
+Starting Nmap 7.30 ( https://nmap.org ) at 2018-02-27 12:44 UTC
+Nmap scan report for xxxx
+Host is up (0.011s latency).
+PORT      STATE         SERVICE
+11211/tcp open          memcache
+| memcached-info:
+|   Process ID           21357
+|   Uptime               41557524 seconds
+|   Server time          2018-02-27T12:44:12
+|   Architecture         64 bit
+|   Used CPU (user)      36235.480390
+|   Used CPU (system)    285883.194512
+|   Current connections  11
+|   Total connections    107986559
+|   Maximum connections  1024
+|   TCP Port             11211
+|   UDP Port             11211
+|_  Authentication       no
+11211/udp open|filtered memcache</code></pre>
+	<h4 id="--2">互联网服务提供商</h4>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/07/memcached-reflector-1.png" class="kg-image"></figure>
+	<p></p>
+	<p>为了在将来消除此类攻击，我们需要解决易受攻击的协议以及IP欺骗的问题。只要互联网允许IP欺骗的存在，我们就会陷入困境。</p>
+	<p>互联网服务提供商还可以帮助我们追踪这些攻击背后的人。我们必须知道谁首先发送了查询，而不是谁的memcached服务器有问题。只有你们可以帮助我们解决这个问题。</p>
+	<h4 id="--3">开发商</h4>
+	<p>再三请求开发商们：停止使用UDP。如果必须使用，请不要默认启用它。如果您不知道放大攻击是什么，我特此提醒您，请不要在编辑器输入 <code>SOCK_DGRAM</code>。</p>
+	<p>我们见过太多这样的情况了。DNS，NTP，Chargen，SSDP和现在的memcached。如果使用UDP，则必须始终以较小的数据包来响应请求。否则你的协议将被滥用。要知道总有人会忘记设置防火墙。做个好公民。不要发明不需要任何类型身份验证的UDP协议。</p>
+	<h2 id="--4">以上</h2>
+	<p>在我们清理易受攻击的服务器之前，任何人都无法预测memcached攻击的规模会有多大。在过去几天里已经有传言称会出现0.5Tbps的放大攻击，而这仅仅只是一个开始。</p>
+	<p>最后，如果您是Cloudflare客户，那么您就可以放心了。Cloudflare的任播架构可以很好地分配负载以防范大型放大攻击。Cloudflare可以很好地保护您，除非您的原始IP被暴露。</p>
+	<h2 id="--5">序言</h2>
+	<p>有评论（如下）指出，使用memcached进行DDoS的可能性在<a href="http://powerofcommunity.net/poc2017/shengbao.pdf" target="_blank">2017年的演示文稿</a>中就已经讨论过了。</p>
+	<h4 id="--6">更新</h4>
+	<p>我们收到Digital Ocean，OVH，Linode和Amazon的消息，声称他们已经解决了memcached问题，他们的网络将不会成为攻击目标。可喜可贺！</p>
+	<hr>
+	<p>处理DDoS攻击听起来有趣吗？快加入我们在伦敦，奥斯汀，旧金山的<a href="https://boards.greenhouse.io/cloudflare/jobs/589572" target="_blank">世界著名团队</a>以及我们在波兰华沙的精英办公室吧。</p>
+	<p><br></p>
+</div>

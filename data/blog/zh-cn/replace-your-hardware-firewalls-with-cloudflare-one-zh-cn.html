@@ -1,0 +1,59 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image2-41.png" class="kg-image" alt="告别硬件防火墙，拥抱Cloudflare One！"></figure>
+	<p>今天，我们隆重推出新功能，以帮助客户淘汰硬件防火墙设备，迁移到为下一代网络构建的真正云原生防火墙。Cloudflare One 提供一个安全、高性能并支持 Zero Trust 的平台，让管理员可以对所有用户和资源应用一致的安全策略。最重要的是，这个平台建在我们的全球网络之上，您永远不用费心扩展、部署或维护您的边缘安全硬件。</p>
+	<p>作为本次宣告的一部分，Cloudflare 今日推出旨在帮助客户淘汰传统硬件的 <a href="https://cloudflare.com/oahu" target="_blank">Oahu</a> 项目；本文将详细介绍有关新功能如何解决传统防火墙的问题并为 IT 团队节省时间和成本。</p>
+	<h2 id="-">我们是如何实现这一切的？</h2>
+	<p>为了理解我们今天所在的位置，我们应该从 IP 防火墙的简史开始说起。</p>
+	<h3 id="--1">专用网络的无状态数据包过滤</h3>
+	<p>第一代网络防火墙是主要是为了满足专用网络的安全要求，而专用网络最初采取城堡加护城河的架构，这在我们<a href="https://blog.cloudflare.com/welcome-to-cio-week/">昨日的博客文章</a>中定义为第一代。防火墙管理员可围绕 <a href="https://www.cloudflare.com/zh-cn/learning/ddos/glossary/open-systems-interconnection-model-osi/" target="_blank">OSI </a>模型第 3 层和第 4 层（主要是 IP 和端口）上的可用信号构建策略，这种做法非常适用于（例如）让身处办公楼某个楼层的一群员工通过局域网访问另一个办公室的服务器。</p>
+	<p>在网络变得更加复杂（包括连接到互联网）以前，这种包过滤能力是足够的。现在，IT 团队开始需要保护他们的企业网络不受外部不良行为者的侵害，这需要更复杂的策略。</p>
+	<h3 id="--2">通过有状态及深度包检查提供更佳保护</h3>
+	<p>防火墙硬件发展到包括有状态包检查及早期的深度包检查，通过跟踪通过防火墙的连接的状态来扩展基本的防火墙概念。这使管理员能够（例如）阻止所有未与已存在的传出连接绑定的传入数据包。</p>
+	<p>这些新的能力为防御攻击者提供了更复杂的保护。但这种进步是有代价的：支持更高级别的安全性需要更多计算和内存资源。这种需求意味着，安全和网络团队必须更好地规划每个新设备的容量，并在网络的成本和冗余之间进行权衡。</p>
+	<p>除了成本权衡外，这些新防火墙仅就网络的使用提供了部分洞察。您可以发现用户在 80 端口访问 198.51.100.10，但是，若要进一步调查这些用户访问什么内容，您将需要对该 IP 地址执行反向查询。这样做也只能将您带到提供者的首页，但无法了解所访问的内容、该域/主机的声誉、或任何其他信息，无助于您决定是否进一步调查这个安全事件。这种情况下，确定来源也并非易事，这需要将通过 DHCP 分配的某个专用 IP 地址与某个设备、进而某个用户关联起来（前提是您记得设定长租期并从不共享设备）。</p>
+	<h3 id="--3">下一代防火墙的应用感知</h3>
+	<p>为了应对这些挑战，业界引入了下一代防火墙（Next Generation Firewall，NGFW）。这类防火墙长期统治市场，部分情况依然是行业标准的企业边缘安全设备。它们继承了前几代防火墙的所有能力，并增加应用感知能力，以帮助管理员更好地控制通过其安全边界的内容。NGFW 引入了一个概念：厂商提供或外部提供的应用情报，即根据流量特征识别具体应用。这些情报可被输入到策略中，针对特定应用定义用户可执行和不可执行的操作。</p>
+	<p>随着更多应用迁移到云，NGFW 厂商开始提供其设备的虚拟版本。这样一来，管理员不再需要担心下一个硬件版本的交付时间，并在部署到多个地点时拥有更大的灵活性。</p>
+	<p>多年来，随着威胁格局持续发展，网络日益复杂，NGFW 开始构建更多安全能力，其中一些功能有助于整合多个设备。这些新增能力包括 VPN 网关、IDS/IPS、Web 应用防火墙，甚至包括机器人管理和 DDoS 保护等，因厂商而异。然而，即使有了这些功能，NGFW 依然存在缺点——管理员依然需要花时间设计和配置冗余（至少主/从）设备，还需要选择哪些地点拥有防火墙，并因从其他地点回传流量而导致性能损失。更甚者，在创建应用伪标识的策略时，需要小心管理 IP 地址。</p>
+	<h3 id="-zero-trust">增加用户级控制以迈向 Zero Trust</h3>
+	<p>防火墙厂商增加越来越多控制的同时，网络架构的范式开始发生变化，以便解决应用和用户离开组织的“城堡”并进入互联网带来的安全问题。Zero Trust 安全意味着，在默认情况下，无论是在网络内部还是外部，任何人都不被信任，每个尝试访问网络资源的用户都需要经过验证。防火墙开始通过集成身份提供者（IdP）来整合 Zero Trust 原则，允许围绕用户组构建策略，例如，“仅财务和人力资源能访问工资系统”，从而实现更精细化的管控，减少依赖于 IP 地址来估计身份的需要。</p>
+	<p>这些策略有助组织保障网络安全并更接近 Zero Trust，但 CIO 们仍有需要解决的问题：如果需要集成另一个组织的身份提供者，应该怎么做？他们如何能安全地为承包商授予访问企业资源的权限？而且，这些新的管控措施并未解决管理硬件的根本问题，硬件依然存在，随着企业业务发生变化，例如增加或减少地点，或采用混合工作形式时，硬件变得越来越复杂。CIO 们需要一个适合未来企业网络的解决方案，而非只是将各种解决方案拼凑起来，并且只能解决部分需求。</p>
+	<h2 id="--4">适用于下一代网络的云原生防火墙</h2>
+	<p>Cloudflare 正在将网络连接性与 Zero Trust 安全性统一起来，帮助客户构建企业网络的未来。采用 Cloudflare One 平台的客户可淘汰硬件防火墙并采用云原生方法，一举解决前几代防火墙的问题，从而减轻 IT 团队的负担。</p>
+	<h3 id="--5">通过灵活的接入方式连接任何源或目的地</h3>
+	<p>无需为不同用例管理不同的设备，网络上的所有流量——无论来自数据中心、办公室、云资产还是用户设备——都能流经单一全球防火墙。Cloudflare One 让您能否通过多种灵活的接入方式连接到 Cloudflare 网络，包括网络层（GRE 或 <a href="https://blog.cloudflare.com/anycast-ipsec/">IPsec</a> 隧道）或<a href="https://www.cloudflare.com/zh-cn/products/tunnel/" target="_blank">应用层</a>隧道，<a href="https://www.cloudflare.com/zh-cn/network-interconnect/" target="_blank">直接连接</a>，<a href="https://blog.cloudflare.com/bringing-your-own-ips-to-cloudflare-byoip/">BYOIP</a>，和<a href="https://blog.cloudflare.com/zh-cn/warp-for-desktop-zh-cn/">设备客户端</a>。连接到 Cloudflare 意味着接入我们的整个全球网络，消除了使用物理或虚拟化硬件带来的众多挑战：</p>
+	<ul>
+		<li>不再需要规划容量：防火墙的容量等同于 Cloudflare 全球网络的容量（目前已超过 100 Tbps，并在不断增长）。</li>
+		<li>不再需要规划地点：Cloudflare 的 Anycast 网络架构使流量能自动连接到最接近其来源的地点。不再需要选择地区或担心主/备设备放置在何处，默认内置冗余和故障转移功能。</li>
+		<li>不再有维护停机：和我们所有产品一样，对 Cloudflare 防火墙能力的升级在我们的全球边缘持续部署。</li>
+		<li>内置DDoS 保护：不需担心 DoS 攻击压垮防火墙；Cloudflare 的网络自动在最接近来源的地方阻止攻击，仅将干净流量发送到目的地。</li>
+	</ul>
+	<h3 id="-zero-trust-">配置从包过滤到 Zero Trust 的全面策略。</h3>
+	<p>Cloudflare One 策略可在所有流量入口保护和路由企业流量。这些策略可围绕传统 NGFW 提供的所有相同属性创建，同时扩展到包括 <a href="https://developers.cloudflare.com/cloudflare-one/identity" target="_blank">Zero Trust 属性</a>。这些 Zero Trust 属性可包括一个或多个 IdP 或端点提供商。</p>
+	<p>在严格考虑 OSI 模型的第 3 层至第 5 层时，策略可基于 IP、端口、协议和其他属性，包括<a href="https://developers.cloudflare.com/magic-firewall/reference/magic-firewall-fields" target="_blank">无状态</a>和<a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering/network-policies#expressions" target="_blank">有状态</a>两种方式。结合任何身份属性和 Cloudflare 设备客户端，这些属性也可用于在 Cloudflare 上构建您的专用网络。</p>
+	<p>此外，为了帮助减轻管理 IP 允许/阻止列表的负担，Cloudflare 提供一组托管列表，同时适用于无状态和有状态策略。在更复杂的情况下，您也可以执行<a href="https://developers.cloudflare.com/magic-firewall/reference/magic-firewall-functions" target="_blank">深度包检查</a>和<a href="https://blog.cloudflare.com/programmable-packet-filtering-with-magic-firewall/">编写可编程包过滤器</a>，以实施积极安全模型，挫败最大规模的攻击。</p>
+	<p>Cloudflare 的情报帮助驱动我们第 7 层策略的应用和内容类别，这些策略可用于保护用户免受安全威胁，防止数据外泄，并审计公司企业的使用情况。这始于我们受保护的 DNS 解析器，它是在我们业内领先的高性能消费者 1.1.1.1 服务基础上建立起来的。受保护的 DNS 允许管理员保护用户，避免用户浏览或解析任何已知或潜在的<a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering/dns-policies-builder/dns-categories" target="_blank">安全风险</a>。一旦某个域得到解析，管理员就能应用 HTTP 策略来拦截、检查和过滤用户的流量。如果是自托管的 web 应用或受支持的 SaaS，您甚至能够使用 Cloudflare 访问策略来保护它们，将其用作一种基于 web 的身份代理。</p>
+	<p>最后但同样重要的是，为帮助预防数据泄露，管理员可使用<a href="https://developers.cloudflare.com/cloudflare-one/policies/browser-isolation" target="_blank">远程浏览器隔离</a>来锁定对外部 HTTP 应用的访问。不久后，管理员就能记录和过滤用户能在 SSH 会话中执行的命令。</p>
+	<h3 id="--6">简化策略管理：一键将规则传播到所有位置</h3>
+	<p>传统防火墙要求在每个设备上部署策略，或配置和维护一个编排工具来协助这个过程。相反，Cloudflare 让您从简单的仪表板或 API 管理分布在我们整个网络上的策略，或使用 Terraform 来部署基础设施即代码。得益于我们的 <a href="https://blog.cloudflare.com/introducing-quicksilver-configuration-distribution-at-internet-scale/">Quicksilver</a> 技术，更改在数秒内传播到整个边缘。对于通过防火墙的流量，用户可使用日志（现可<a href="https://blog.cloudflare.com/pii-and-selective-logging-controls-for-cloudflares-zero-trust-platform/">配置</a>）来获得可见性。</p>
+	<h2 id="--7">一个平台整合多个防火墙用例</h2>
+	<p>防火墙需要覆盖巨大流量以满足各种安全要求，包括阻止恶意的传入流量，过滤传出连接以确保员工和应用仅访问安全的资源，以及检查内部（“东部/西部”）流量以实施 Zero Trust。不同硬件往往覆盖一个或位于不同地点的多个不同用例；我们认为，应该尽可能整合这些，以提高易用性并建立防火墙策略的单一可信源。让我们看一些传统上由硬件满足的用例，并解释 IT 团队能如何使用 Cloudflare One 来满足这些用例。</p>
+	<h3 id="--8">保护分支办公室</h3>
+	<p>传统上，IT 团队需要为每个办公室地点配置至少一套硬件防火墙（冗余则需要多套）。这项工作包括预测特定分支办公室的流量水平，并订购、安装和维护这些设备。如今，客户能从已有的任何硬件将分支机构的流量连接到 Cloudflare，任何支持 GRE 或 IPsec 的标准路由器均可，并从 Cloudflare 仪表板控制所有流量的过滤策略。</p>
+	<p>步骤 1：建立 GRE 或 IPsec 隧道</p>
+	<p>大多数主流硬件供应商都支持 GRE 和/或 IPsec 创建隧道。Cloudflare 将提供一个 Anycast IP 地址，用作我们这一侧的隧道端点，不需额外步骤，即可配置一个标准的 GRE 或 IPsec 隧道，该 Anycast IP 提供对任何 Cloudflare 数据中心的自动连接性。</p>
+	<p>步骤 2：配置网络层防火墙规则</p>
+	<p>所有 IP 流量都可通过 Magic Firewall 进行过滤，后者具备基于任何数据包特征构建策略的能力——例如：来源或目的 IP、端口、协议、国家/地区或位域匹配。Magic Firewall 也集成了 <a href="https://blog.cloudflare.com/introducing-ip-lists/">IP 列表</a>，并包含<a href="https://blog.cloudflare.com/programmable-packet-filtering-with-magic-firewall/">可编程包过滤</a>等高级功能。</p>
+	<p>步骤 4：针对应用层防火墙规则升级流量</p>
+	<p>在流经 Magic Firewall 后，TCP 和 UDP 流量可被“升级”，通过 Cloudflare Gateway 进行精细化的过滤。这一升级解锁了一整套过滤能力，包括应用和内容感知、身份强制、SSH/HTTP 代理及 DLP。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/unnamed-12.png" class="kg-image" alt="Before: deploying hardware firewalls at every branch; managing different models and sometimes different vendors. After: traffic connected to global Anycast network; firewall policies deployed in one place propagate globally"></figure>
+	<h3 id="-vpc">保护高流量数据中心或 VPC</h3>
+	<p>在高流量总部或数据中心位置用于处理数据的防火墙可能是 IT 团队预算中最大的开支之一。传统上，数据中心由强大的设备保护，这些设备能够优雅地处理巨大的流量，但成本较高。在 Cloudflare 的架构中，由于我们网络中的每一台服务器都能分担处理客户流量的责任，任一设备都不会构成瓶颈，也不需要昂贵的专用组件。客户可通过 BYOIP、一种标准隧道机制或 Cloudflare Network Interconnect 将流量接入 Cloudflare，并流畅地处理通过防火墙规则的 Tbps 级流量。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/unnamed--1--8.png" class="kg-image" alt="Before: traffic through the data center needed to flow through expensive appliance(s) that could keep up with volume. After: traffic balanced across thousands of commodity servers; malicious traffic blocked close to its source"></figure>
+	<h3 id="--9">保护移动或混合员工队伍</h3>
+	<p>传统网络架构中，为连接到企业资源或保护对互联网的访问，用户从他们的设备到防火墙所在的中央位置建立一个 VPN 连接。他们的流量在该中央位置进行处理，然后才允许发送到目的地。这种架构带来性能损失，虽然现代防火墙启用了用户级控制，它们不一定能实现 Zero Trust。Cloudflare 允许客户使用一个设备客户端作为到 Zero Trust 策略的入口。本周晚些时候，我们将进一步介绍如何顺利地大规模部署该客户端。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/unnamed--2--5.png" class="kg-image" alt="Before: user traffic backhauled to firewall device over VPN; after: policy enforced at the edge location closest to the user."></figure>
+	<h2 id="--10">下一步</h2>
+	<p>我们迫不及待要继续发展这个平台，以服务新的用例。我们已经听到客户对如下用例和功能的兴趣：通过 Cloudflare One 扩大 NAT Gatway 功能；针对我们所有防火墙能力提供更丰富的分析、报告和用户体验监测；对其流经 Cloudflare 网络的所有流量采用整套 DLP 功能。相关更新及其他内容即将发布，敬请关注。</p>
+	<p>Cloudflare 的新防火墙能力今日向企业用户开放。如需进一步了解，请点击<a href="https://www.cloudflare.com/zh-cn/magic-firewall/" target="_blank">这里</a>；查看 <a href="https://cloudflare.com/oahu" target="_blank">Oahu 项目</a> ，了解如何从硬件防火墙迁移到 Zero Trust。欢迎联系您的帐户团队并立即开始使用。</p>
+</div>

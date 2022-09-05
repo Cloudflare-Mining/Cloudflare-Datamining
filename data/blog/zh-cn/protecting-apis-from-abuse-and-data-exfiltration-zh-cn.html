@@ -1,0 +1,47 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/Announcing-Cloudflare-s-Data-Loss-Prevention-platform-OG-blog-body-2.png" class="kg-image"></figure>
+	<p>API 流量正在迅速增长。仅在去年，我们边缘节点的 API 流量增长比 Web 流量快 300%。API 驱动移动和 Web 应用程序，传输各种各样的指令，例如“使用这张信用卡从我最喜欢的餐厅点一个披萨“，或者“进行一笔加密货币交易，这是我的个人信息”等等，因此 API 很容易成为数据盗窃和滥用的目标。（<a href="https://owasp.org/www-project-api-security/" target="_blank">2019 年十大 API 安全威胁</a>）。API 流量增长和数据攻击更趋频繁，要求新的安全解决方案。</p>
+	<p>Cloudflare 的安全工具箱始终旨在保护 Web 和 API 流量。然而，经过与数百位客户交谈后，我们意识到需要在单一界面中提供一个易于部署和配置的 API 安全工具。为满足这一需求，我们在 2020 年 10 月发布了 <a href="https://blog.cloudflare.com/zh-cn/introducing-api-shield-zh-cn/">API ShieldTM</a>，这个新产品旨在将为 API 流量设计的所有安全解决方案整合在一起。我们首先向所有 Cloudflare 用户免费提供 mTLS 身份验证，gRPC 支持和模式验证（beta 版）。我们也计划在未来发布具备更高安全功能的新版本。如今，我们很高兴能扩展我们的产品，提供旨在保护您的 API 以免暴露敏感数据的新功能。</p>
+	<p>今天，我们发布帮助减少渗漏攻击影响的四个功能：面向所有 Enterprise 客户的模式验证，允许您阻止开放代理流量的托管 IP 列表，对证书生命周期的更多控制，以及一个数据丢失防护解决方案。本周后期，我们也将宣布一些功能和方法，帮助发现在您网络上运行但您不一定知晓的 API，以及识别偏离预定用途的异常请求。</p>
+	<h3 id="-"><strong>模式验证全面开放</strong></h3>
+	<p>在发布 API Shield 时，我们引入了模式验证，仅向少数客户提供。过去几个月来，我们一直与这些早期使用者合作以增加更多功能，并将一个易用的界面直接构建到仪表板中。现在您可以导航到 “API Shield” 选项卡，通过 UI 直接部署 API 安全产品。部署流将很快扩大到包括位于仪表板中其他地方的更多功能，例如 mTLS 和速率限制。我们也将整合 API 异常检测等新功能，以便于反馈循环。</p>
+	<p>模式验证通过创建一个基于 API “模式”的正面安全模型来工作。API 模式用于定义其使用方式，指导开发者将 API 集成到其系统中。不同于负面安全模型（其规则定义某个请求必须触发一种行动的特征），模式验证旨在允许已被认证为符合要求的请求，并对其他一切请求采取行动。模式验证接受遵守 OpenAPI v3 规范 （也称为 Swagger 规范，是定义 RESTful 接口的一种标准）的模式（<a href="https://swagger.io/solutions/getting-started-with-oas/" target="_blank">在此页进一步了解</a>）。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/04/image2-32.png" class="kg-image">
+		<figcaption>模式验证根据 API 模式对每个请求进行评估，记录或阻止不符合的请求。</figcaption>
+	</figure>
+	<p>API Shield 提供易用的用户界面（UI），供用户将其模式上传到防火墙，并自动创建根据 API 定义来验证每个请求的规则。符合要求的请求会被转发到源服务器。相反，如果请求的格式或数据内容不匹配 API Shield 的预期，则该调用要么被记入日志，要么被丢弃，以保护源服务器不受无效请求或恶意负载的影响。带有外部输入的请求可能并非 API 开发人员所预料的，并可能触发不可预见的应用程序行为，例如数据泄漏。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/04/image6.gif" class="kg-image">
+		<figcaption>使用 Cloudflare 规则集 OpenAPI 部署带模式验证的 API Shield ‌‌</figcaption>
+	</figure>
+	<p>用户可根据UI的指引完成配置步骤，包括指定 API Shield 部署和上传模式文件的主机名和基本路径。在部署了带模式验证的 API Shield 后，就可以看到防护了哪些端点以及提供什么级别的保护。在页面中可以看到有两组端点：受保护的和不受保护的。前者列出其模式受支持的所有端点和方法，后者指出其定义不受支持或不明确的任何端点。为避免拆分指向模式文件中未列出的端点的流量，我们包含一个最终规则，以匹配指向任何未受保护端点的流量。</p>
+	<p>每当模式验证识别出不符合要求的请求，并采取阻止或记录之类的操作时，就会创建一个带有源 “API Shield” 标记的新事件，并将其添加到防火墙日志中。用户可前往概述页查看分析和日志，GraphQL 驱动的仪表板提供的灵活性允许用户向下钻取数据。</p>
+	<p>模式验证对路径、路径变量、查询参数、标头和 cookie 执行检查，并允许记录不符合规则的流量。模式规则 Beta 版现已向所有 Enterprise 客户开放 — <a href="https://www.cloudflare.com/zh-cn/waf/api-shield" target="_blank">请填写本表单</a>以开始使用。</p>
+	<h3 id="--1"><strong>数据丢失防护</strong></h3>
+	<p>数据丢失是影响大大小小组织的最大安全问题之一，也影响到个人及其隐私。敏感数据的丢失会对公司产生巨大影响，包括财务冲击、品牌价值侵蚀和最新数据保护法律遵守。最后，个人的敏感数据丢失也会造成金钱损失和隐私问题。</p>
+	<p>今日早些时候，我们推出了数据丢失（DLP）产品套件；我们正在对其进行扩展，以识别在某个 HTTP 或 API 请求的响应阶段离开源服务器的敏感数据。该解决方案评估出口流量，根据敏感数据的常见模式检查负载。其中包括个人身份信息，如社保号码和金融信息，包括信用卡号码、银行信息等。在第一版本中，用户将能记录 DLP 触发的任何匹配。我们计划增加其他行动，例如模糊化和阻止敏感数据离开 Cloudflare 后的源服务器。接下来，我们计划让客户自定义规则来识别其应用程序的特定敏感数据。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/DLP-Diagram.png" class="kg-image"></figure>
+	<p>我们开发 DLP 时考虑到了简单性，以便每一个客户都无需复杂耗时的设置就能得到保护。我们将 DLP 作为托管规则集的方式发布，可通过防火墙托管规则集（Firewall Managed Rules）选项卡开启。DLP 可以作为某个反向代理 WAF 的一部分，也可作为零信任配置中集成数据保护的 Cloudflare for Teams 的一部分使用。这种紧密的集成可以更好地控制谁能访问贵组织内部的敏感数据。</p>
+	<p>DLP 处于 beta 阶段，目前向部分早期采用者客户开放。请<a href="https://www.cloudflare.com/zh-cn/waf/api-shield" target="_blank">填写本表单</a>以加入等候名单。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image22-1.png" class="kg-image"></figure>
+	<p>数据丢失防护可作为托管数据集开启。</p>
+	<h3 id="-ip-cloudflare-"><strong>托管 IP 列表：Cloudflare 的威胁情报</strong></h3>
+	<p>我们正在推出我们首个托管 IP 列表，将可在防火墙规则内使用。在 2020 年 7月，<a href="https://blog.cloudflare.com/introducing-ip-lists/">我们发布了 IP 列表</a>，让客户能够上传大型 IP 列表，供编写防火墙规则时使用。今天我们发布一个由 Cloudflare 管理的列表，供客户在其规则中使用，和他们使用自定义上传列表的方法完全一样。</p>
+	<p>“Cloudflare 开放代理” 包含Cloudflare 通过对其边缘的流量进行分析而确定的 Open SOCKS 和 HTTP 代理 IP 地址。这不限于 API 请求；规则可应用于防火墙所评估的所有类型的流量。</p>
+	<p>这一列表是我们首个公开的基于 Cloudflare 威胁情报的信息源。Cloudflare 利用其网络的规模和覆盖范围来获得这些威胁情报。这个列表是如何生成的？我们观察到来自互联网上每个公开可路由 IP 地址的请求。Cloudflare 将开放源代码列表与其大型网络结合起来，以便识别开放代理。对这些代理进行验证后，Cloudflare 确定出口 IP 并创建列表。然后，我们将这些信誉数据反馈到我们的安全系统中，并以托管 IP 列表的形式提供给我们的客户。</p>
+	<p>这个列表面向所有 Enterprise 计划提供，可在收集所有可用 IP 列表的下拉菜单中选择 “Cloudflare 开放代理” 来使用（见下图）。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/04/image3-29.png" class="kg-image">
+		<figcaption>Cloudflare 开放代理托管列表可在防火墙规则构建器中直接使用。</figcaption>
+	</figure>
+	<h3 id="--2"><strong>对客户端证书的更多控制</strong></h3>
+	<p>我们发布 mTLS 时就已经将移动应用和 IoT 设备的首个 API Shield 版本考虑在内。是通过客户端证书执行强验证保护流量的一种非常有效的手段，可防止数据渗漏和一般滥用。然而，在 IoT 设备或移动电话被盗、丢失或被恶意行为者控制的情况下，Cloudflare 需要一种方法来撤销被认为存在潜在安全风险的证书。永久排除受攻击设备流量的能力，是防止数据丢失和恶意攻击的有效方法。</p>
+	<p>我们的许多客户已经开始在他们的应用程序中嵌入 API Shield 证书，并实施了一个使用 Workers with Workers KV 的撤销解决方案。尽管这个解决方案允许对证书进行精细化控制，但其需要我们的客户进行大量开发工作，而且不容易扩展。</p>
+	<p>在安全周期间，我们将发布一个全托管解决方案来撤销（或恢复）证书，无需编写一行代码。我们构建了一个简单的界面，用于管理您的证书在我们边缘上从发行到撤销的整个生命周期。我们会代您管理这一切，以便您能专注于打造自己的应用程序，无需担心如何设立复杂和昂贵的公钥基础设施（PKI）及管理潜在风险设备的撤销。客户接触点是“客户端证书”选项卡中的一个新的“撤销”和“恢复”按钮，其支持 API 调用和一个新的防火墙规则字段。</p>
+	<p>向 Cloudflare 边缘提供证书的每个请求将有两个防火墙字段被设置：cf.tls_client_auth.cert_verified和 cf.tls_client_auth.cert_revoked。防火墙对请求进行处理，在此用户可将这些字段与其他防火墙功能结合起来。这允许客户根据证书是否已验证或已验证但被撤销来设置不同的行为。这也允许您实施所需的安全策略，同时为最终用户提供良好的体验。一个经典的配置是只允许带有已验证证书的请求，同时将来自已撤销证书的请求转发到不同的页面或端点，以根据用户历程的需要处理异常。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image5-28.png" class="kg-image"></figure>
+	<p>用户可访问客户端证书选项卡来撤销证书。</p>
+	<h3 id="--3"><strong>酝酿中的功能</strong></h3>
+	<p>Cloudflare 团队正在努力为 API Shield 推出更多功能。我们与使用 Cloudflare 处理 API 流量的几百位客户交谈过，最优先考虑的三个功能是：深入 API 分析，更灵活的速率限制工具，以及集成 API 异常检测。</p>
+	<p>模式验证和数据丢失防护于今日发布，完全集成于我们的日志和分析引擎中。展望未来，我们计划将扩展这种能力以分析流量，并为客户提供工具，用于识别和管理专门针对 API 端点的攻击。</p>
+	<p>Cloudflare 的速率限制设计为最适用于 Web 流量，对此情况您可以编写基于 URL 和请求方法的规则。我们现正努力将防火墙规则的强大功能与速率限制提供的控制集成在一起。这将允许客户利用防火墙中强大的逻辑来分割流量。我们也在扩展计数机制，以包括根据 API 密钥和用户 ID 限制速率的能力。</p>
+	<p>在以 API 流量为目标时，攻击模式可能存在很大差异，导致传统的自动程序管理（Bot Management）解决方案并非识别可疑行为的最理想候选方案。在周五，我们将宣布两个着眼于进一步保护应用程序的主要功能：API 发现（API Discovery）和异常检测（Anomaly Detection）。API 发现允许客户映射其端点并获得对 API 表面的可见性。异常检测是 Cloudflare 提供的一种解决方案，可大规模地自动将良性 API 流量从恶意活动中可靠地分离出来。客户将能其与 mTLS、模式验证和速率限制同时设置，以便提供最高级别的保护。请在周五查看我们的博客，进一步了解这些新产品。<br></p>
+</div>

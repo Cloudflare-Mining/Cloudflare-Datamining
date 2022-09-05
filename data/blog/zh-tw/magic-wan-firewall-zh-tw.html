@@ -1,0 +1,46 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/Magic-WAN-blog-preview-4.png" class="kg-image"></figure>
+	<p>早在 2020 年 10 月，我們就推出了 <a href="https://blog.cloudflare.com/cloudflare-one/">Cloudflare One</a>，這是我們對未來企業網路和安全的憧憬。自那時以來，我們一直專注於提供這個平台的更多組成部份，今天我們欣然推出該平台上兩個最基本的組件：Magic WAN 和 Magic Firewal。Magic WAN 為您的整個企業網路提供安全、高效能的連線和路由，降低成本和營運複雜性。Magic Firewall 與 Magic WAN 無縫整合，使您能在邊緣執行網路防火牆原則，涵蓋來自貴組織網路內部任何實體的流量。</p>
+	<h3 id="-">傳統的網路架構無法解決當今的問題</h3>
+	<p>企業網路向來採用了少數幾種模型之一，這些模型的設計是為了確保辦公室與資料中心之間有安全的資訊流通，鎖定對網際網路的存取並在辦公室邊界進行管理。隨著應用程式遷到雲端和員工走出辦公室，這些設計不再發揮作用，而類似 VPN 盒子這樣的臨時解決方案不能解決企業網路架構的核心問題。 </p>
+	<p>在連線方面，全網狀 MPLS (多通訊協定標籤交換) 網路的部署昂貴費時，維護不易又擴展極難，而且往往在可見度方面有巨大缺口。其他架構需要將流量回傳到中央位置後再發回到原點，導致不可接受的延遲，還必須購置成本高昂的中樞硬體來獲得最大處理能力，而不是按實際使用量進行部署。我們接觸的大多數客戶都在與兩個世界最糟糕的情況作鬥爭：多年甚至數十年來拼湊起來的各種架構的組合，根本無法管理。安全架構師也在與這些模型作鬥爭；隨著網路規模擴大，他們不得不應對來自不同廠商的一大堆安全硬體盒子，並在成本、效能和安全之間進行權衡。</p>
+	<h3 id="--1">將網路邊界移到邊緣並以服務形式確保其安全</h3>
+	<p>透過 Magic WAN，您可安全地將任何流量來源 (資料中心、辦公室、裝置和雲端資產) 連到 Cloudflare 網路，並設定路由原則來將資料傳輸到所需的目的地，這全部都能在一個 SaaS 解決方案中實現。不再需要投資購置 MPLS 並等待部署，不再有任何流量長號效應帶來的效能損失，不再經歷管理一堆過時解決方案的噩夢：取而代之，使用 Cloudflare 的全球 Anycast 網路來延伸您的網路，獲得更佳的效能和內建的可見度。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image4-23.png" class="kg-image"></figure>
+	<p>在流量連線到 Cloudflare 後，如何控制您的網路中哪些實體可以彼此互動或與網際網路互動？這正是 Magic Firewall 的用武之地。Magic Firewall 允許您集中管理整個網路中的原則，全部以服務的形式在邊緣執行。Magic Firewall 讓您精細地控制哪些資料可以進出您的網路，或在您的網路内部傳輸。更棒的是，能夠透過單一儀表板瞭解流量如何流經您的網路。</p>
+	<p>Magic WAN 為 Cloudflare One 所包含的一整套功能元件奠定了基礎，這些功能元件都是在軟體中從頭建構，可以無縫擴展和整合。Magic Firewall 隨時可供 Magic WAN 調用，客戶能輕鬆啟用額外的零信任安全和效能功能，例如我們包含遠端瀏覽器隔離的 <a href="https://www.cloudflare.com/zh-tw/teams/" target="_blank">SWG</a> (安全 Web 閘道)、<a href="https://blog.cloudflare.com/one-more-zero-trust-thing-cloudflare-intrusion-detection/">IDS</a> 和 Smart Routing 等。</p>
+	<blockquote>雲採用日漸興盛，加上人們最近向遠距工作轉移，導致網際網路、SaaS 和 IaaS 流量增多，給 MPLS 等傳統網路架構造成巨大壓力。對於希望提高運營敏捷性和降低總體擁有成本的組織而言，提供全球規模的 WAN 架構、整合的企業網路安全功能以及與遠端使用者的直接安全連線，這一切至關重要。<br>— Ghassan Abdo，IDC Research 全球電訊、虛擬化和 CDN 副縂裁</blockquote>
+	<p>具體是什麼樣子？我們以客戶 Acme Corp 為例，探索如何使用 Magic WAN 和 Magic Firewall 來解決企業網路和安全方面的問題。</p>
+	<h3 id="-mpls">取代分支機構與資料中心之間的 MPLS</h3>
+	<p>ACME Corp 目前在世界各地設有辦公室，與區域資料中心的連線以及彼此之間的連線都是透過 MPLS 進行。每個資料中心都執行企業應用程式，透過一堆硬體盒子來保障其安全性，同時租用了專線與至少一個其他資料中心相連。另外，Acme 也在向雲端遷移部份應用程式，並且計劃建立從資料中心到雲端提供者的直接連線，以便提高安全性和可靠性。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image6-10.png" class="kg-image"></figure>
+	<p>在 Acme 的發展過程中，其網路團隊一貫有一個痛點：管理和維護其 MPLS 連線。MPLS 不僅成本高昂、部署費時，而且限制了 Acme 擴張到新地點 (尤其是國際擴張) 或為收購的新辦公室提供支援的速度。員工在 Acme 辦公室連線到雲端提供者和 SaaS 應用程式時會面臨令人沮喪的延遲，因為流量必須先擠過 Acme 資料中心由一堆硬體盒子執行的安全性原則，然後才能傳送到目的地。辦公室之間的流量，例如 IP 電話和視訊會議，沒有套用任何安全性原則，顯露出 Acme 安全狀態中的一個缺口。</p>
+	<p>就在 Acme 努力遷移到雲端以進行運算與儲存之際，該公司希望擺脫這些私有連結，改為以安全的方式利用網際網路來建立連線。他們考慮在網際網路上建立全網狀點對點 IPSec VPN 通道，但其複雜性使其網路團隊和異構路由器部署均捉襟見肘。Magic WAN 已經準備好滿足他們今天的需求，簡化網路管理並立即帶來效能裨益，並且使 Acme 能夠逐步擺脫 MPLS。</p>
+	<p>在這個 Magic WAN 範例部署中，Acme 透過 Anycast GRE 通道將每個辦公室和 VPC 連線到 Cloudflare。藉由這個架構，Acme 只需要為各個網站/網際網路連線建立單一通道，就能自動獲得對 Cloudflare 整個全球網路 (遍佈全球 100 多個國家的 200 多個城市) 的連線。如同輪輻式架構一樣，只是其中心點無處不在。Acme 也選擇使用 <a href="https://www.cloudflare.com/zh-tw/network-interconnect/" target="_blank">Cloudflare Network Interconnect</a> 從其資料中心建立私人連線，透過 Cloudflare <a href="https://www.peeringdb.com/net/4224" target="_blank">高度互連的</a>的網路實現更加安全和可靠的流量傳遞，並更順利地連線至其他網路/雲端提供者。</p>
+	<p>建立了這些通道後，Acme 就能為其私有網路 (RFC 1918 空間) 中的流量設定允許的路線，Cloudflare 將流量引導至所需的目的地，提供彈性和流量最佳化。設定很簡單，只需幾個小時 Acme Corp 就能開始從 MPLS 遷移出來。隨著 QoS 和 Argo for Networks 等 Cloudflare One 新功能的採用，Acme 的網路效能和可靠性將繼續提高。</p>
+	<h3 id="--2">保護遠距員工對私有網路的存取</h3>
+	<p>去年，Acme Corp 的員工因 COVID-19 疫情而突然轉為遠距工作，Acme 的 IT 部門匆忙尋找短期解決辦法來維持員工對內部資源的存取。他們的傳統 VPN 不堪使用，由於設備負荷超過設計極限，居家辦公的 Acme 員工遭遇了連線、可靠性和效能問題。</p>
+	<p>值得慶幸的是，有一個更好的解決方案！Acme Corp 可以使用 Cloudflare for Teams 和 Magic WAN，為員工提供一種安全的方式，不論他們在何處工作，都能便捷地存取私有網路內部的資源。Acme 員工在其裝置上安裝 WARP 用戶端，以便將流量傳送到 Cloudflare 網路，在此經過驗證後路由到透過 GRE 通道 (如上例所示)、Argo Tunnel、Cloudflare Network Interconnect 或 IPSec (即將推出) 連到 Cloudflare 的資料中心或 VPC 上的私有資源。這一架構解決了 Acme 使用其傳統 VPN 遭遇的效能和處理能力容量問題。這並非透過單一壅塞點傳送所有流量，而是將流量路由到距離最近的 Cloudflare 節點，在邊緣套用原則後透過一條最佳化路徑傳送到目的地。</p>
+	<p>來自 Acme Corp 員工裝置、資料中心和辦公室的流量也將能由 Magic Firewall 套用原則，對所有「入口」執行強大、精細的原則控制。因此，無論員工從其行動電話或筆記型電腦連線，還是在 Acme 辦公室工作，都可在相同的地方套用相同的原則。這簡化了設定，並為 Acme IT 和安全團隊改善了可見度，他們可以登入 Cloudflare 儀表板並從一個地方查看和控制原則。與管理各種 VPN、防火牆和雲端服務上的員工存取相比，這是翻天覆地的變化。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image2-24.png" class="kg-image"></figure>
+	<p>這一解決方案使 Acme 可以告別其 VPN、防火牆和安全 Web 閘道設備，提高效能並簡化對員工流量的原則管理，不論他們從哪裡工作，都能做到。</p>
+	<h3 id="--3">將網路和安全功能遷移到邊緣</h3>
+	<p>在過去，Acme 依靠實體辦公室和資料中心内的硬體設備堆疊來增強網路安全性並瞭解網路中發生的情況：專用防火牆 (檢查入站或出站流量)、入侵偵測系統和 SIEM。隨著組織轉向雲端和重新思索遠距工作之未來，Acme 安全團隊正在尋覓能夠改善安全性的永續性解決方案，甚至是要超越傳統的「城堡加護城河」架構所能提供的解決方案。</p>
+	<p>在前面，我們介紹了 Acme 如何設定 Magic WAN 來從辦公室、資料中心、雲端資產和裝置向 Cloudflare 的網路傳送流量。一旦這些流量經由 Cloudflare 傳輸，就能輕鬆地新增存取控制和篩選功能，以便增強或替代内部部署安全硬體，這一切都可以透過單一控制台來實現和管理。</p>
+	<p>有了 Magic Firewall，客戶可獲得在邊緣執行的單一防火牆即服務，替代在分支機構或資料中心安裝的笨重硬體。Magic Firewall 不僅讓他們能夠輕鬆地管理設定，也能簡化合規稽核過程。 </p>
+	<p>若要控制存取，客戶可以部署原則，來確定具體允許哪些流量傳輸到何處。例如，Acme 希望流量透過連接埠 80 和 443 從網際網路流向資料中心內的網頁伺服器，但希望鎖定 SSH 存取僅限於分支機構內的特定私有網路。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image1-31.png" class="kg-image"></figure>
+	<p>如果 Acme 希望進一步鎖定網路，他們可採用一種零信任存取模型，使用 <a href="https://www.cloudflare.com/zh-tw/teams/access/" target="_blank">Access</a> 和 <a href="https://www.cloudflare.com/zh-tw/teams/gateway/" target="_blank">Gateway</a> 對經由 Cloudflare 傳輸的所有流量控制誰能夠以何種方式存取什麽内容。隨著 Cloudflare 推出新的篩選和控制功能，例如我們即將發佈的 IDS/IPS 和 DLP 解決方案，Acme 只需要按幾下滑鼠，就能進一步增強安全性。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image5-24.png" class="kg-image"></figure>
+	<p>Acme 的長遠目標是將所有安全與效能功能轉移到雲端，作為服務來使用。Magic WAN 為這一遷移鋪好了道路，讓他們能夠在淘汰傳統硬體的同時逐步深化其安全狀態。</p>
+	<blockquote>數位化轉型向傳統網路架構發起了挑戰，導致笨拙的「附帶式」安全實踐全然不適用於當今的全球企業。隨著越來越多智慧移向邊緣，企業必須利用現代 WAN 技術來提供廣泛的、以雲提供的内建安全服務。如今，企業真正需要的是具有強大安全性的快速邊緣全域連線。<br>— Christopher Rodriguez，IDC Research 網路安全產品經理</blockquote>
+	<h3 id="cloudflare-">Cloudflare 網路成為貴組織網路的擴展</h3>
+	<p>和我們的許多產品一樣，Cloudflare One 最初是我們為解決在擴大和保護自身網路時所遭遇問題而開發的一套解決方案。Magic WAN 和 Magic Firewall 讓我們能夠將過去 10 年細心架構決策的益處帶給客戶：</p>
+	<ul>
+		<li><strong><strong><strong>全球規模和貼近終端：</strong>無論您的辦公室、資料中心和使用者位於何方，我們都與您相隔甚近。藉由我們的 CDN 業務，我們一直努力建立與終端網路的良好連線，為遠距工作者帶來好處，讓他們能夠在其住宅與您的網路之間建立通暢的連線。同時也意味著，我們可以在靠近源頭的邊緣網路封鎖威脅，而不是冒著惡意流量壓垮内部設備有限處理能力的風險。</strong></strong></li>
+		<li><strong><strong><strong>與硬體和營運商無關：</strong>使用您現有的任何硬體與我們連線，從我們的多樣化營運商連線所提供的彈性中獲益。</strong></strong></li>
+		<li><strong><strong><strong>從頭建構，協同工作：</strong>我們的產品是在軟體中從零開發，整合起來很輕鬆。在產品建構和發展過程中，我們不斷思考它們能如何彼此整合以互相提升。</strong></strong></li>
+	</ul>
+	<h3 id="--4">立即開始使用</h3>
+	<p>Magic WAN 目前作為限量測試版提供，Magic Firewall 則適用於所有 <a href="https://www.cloudflare.com/zh-tw/magic-transit" target="_blank">Magic Transit</a> 客戶 (並且隨附於 Magic WAN，可開箱即用)。如果您有興趣試用 Magic WAN，或想進一步瞭解 Cloudflare 能如何幫助貴組織替代傳統 MPLS 架構、保障遠距員工的安全存取並深化您的安全狀態，同時降低整體持有成本，請與我們聯絡 <a href="https://forms.gle/jh47DMukPq4kexue7" target="_blank">注冊表連結</a>！</p>
+</div>

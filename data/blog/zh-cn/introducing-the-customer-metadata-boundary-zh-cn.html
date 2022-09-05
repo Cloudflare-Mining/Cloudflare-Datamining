@@ -1,0 +1,42 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image1-24.png" class="kg-image" alt="Cloudflare’s Data Localisation Suite now helps customers localise metadata about their HTTP traffic."></figure>
+	<p>数据本地化近年来得到了更多关注，因为许多国家将其视为控制或保护公民数据的一种方式。澳大利亚、中国、印度、巴西和韩国等国已经或目前正在考虑制定规定，以某种方式维护本国公民的个人数据的法律主权 - 医疗保健数据必须存储在本地、公共机构只能与当地服务提供商等签订合同等。</p>
+	<p>在欧盟，最近的“Schrems II”决定对在欧盟以外转移个人数据的公司提出了额外的要求。许多受到高度监管的行业要求特定类型的个人数据只能保留在欧盟境内。</p>
+	<p>Cloudflare 致力于帮助我们的客户将个人数据保存在欧盟。去年，我们推出了<a href="https://blog.cloudflare.com/zh-cn/introducing-the-cloudflare-data-localization-suite-zh-cn/">数据本地化套件</a>，让客户能够控制他们的数据的检查和存储地点。</p>
+	<p>今天，我们隆重推出客户元数据边界，它扩展了数据本地化套件，以确保客户的终端用户流量元数据能够留在欧盟。</p>
+	<h3 id="-"><strong>元数据：基础</strong></h3>
+	<p>“元数据”可能是一个可怕的术语，但概念极为简单 - 它是指“关于数据的数据”。换句话说，它是对我们发生在网络上活动的描述。互联网上的每一项服务都会以某种形式收集元数据，这对用户安全和网络可用性至关重要。</p>
+	<p>在 Cloudflare，我们收集关于我们产品使用情况的元数据有以下几个目的：</p>
+	<ul>
+		<li>通过仪表板和 API 提供分析服务</li>
+		<li>与客户共享日志</li>
+		<li>阻止安全性威胁，如自动程序攻击或 DDoS 攻击</li>
+		<li>改善我们网络的性能</li>
+		<li>维持我们网络的可靠性和灵活性</li>
+	</ul>
+	<p>在 Cloudflare 的实践中，我们是如何收集的呢？我们的网络由数十个服务组成：我们的防火墙、Cache、DNS 解析器、DDoS 保护系统、Workers 运行时等。每一项服务都会发出结构化的日志消息，其中包含时间戳、URL、Cloudflare 功能的使用情况以及客户帐户和区域的标识符等字段。</p>
+	<p>这些消息不包含客户流量的<em>内容</em>，因此，它们不包含用户名、密码、个人信息和客户终端用户的其他私人详细信息。但是，这些日志可能包含终端用户的 IP 地址，这在欧盟被视为个人数据。</p>
+	<h3 id="--1"><strong>欧盟的数据本地化</strong></h3>
+	<p>欧盟的《通用数据保护条例》（General Data Protection Regulation，简称 GDPR）是世界上最全面（也是最知名）的数据隐私法之一。然而，GDPR 并<em>不</em>坚持个人数据必须留在欧洲。相反，它提供了一系列法律机制，以确保欧盟个人数据在转移到欧盟以外的第三国，如美国时，能够得到 GDPR 级别的保护。直到最近，欧盟和美国之间的数据传输在 <a href="https://www.privacyshield.gov/welcome" target="_blank">《欧盟-美国隐私保护框架》</a>的协议下得到允许。</p>
+	<p>GDPR生效后不久，一位名为 <a href="https://en.wikipedia.org/wiki/Max_Schrems" target="_blank">Max Schrems</a> 的隐私维权人士对 Facebook 的数据收集行为提起诉讼。2020 年 7 月，欧盟法院发布了“Schrems II”裁决，除其他事项外，该裁决判定 Privacy Shield 框架无效。然而，法院支持其他有效的转移机制，以确保美国政府当局不会以违反 GDPR 的方式访问欧盟的个人数据。</p>
+	<p>自“Schrems II”裁决发布以来，许多客户询问我们该如何保护欧盟公民的数据。庆幸的是， Cloudflare 早在“Schrems II”案之前就已经采取了 <a href="https://www.cloudflare.com/zh-cn/gdpr/introduction/?__cf_chl_jschl_tk__=F3qtQDUkNSZ6md71qVbHLM.aKxpuXt8Fhndc.A8DfJs-1640590293-0-gaNycGzNDyU" target="_blank">数据保护措施</a>，比如我们对政府数据请求的<a href="https://assets.ctfassets.net/slt3lc6tev37/2RM2ZAb5XJiudjz4QHvth4/b3df347d8a7a629ccd5cadd4f7cfd2f3/BDES-1406_Privacy_Day_Whitepaper_2021.pdf" target="_blank">行业领先承诺</a>。尤其是针对“Schrems II”，我们更新了我们的客户 <a href="https://www.cloudflare.com/cloudflare-customer-dpa/" target="_blank">《数据处理补遗》</a> (DPA)。我们纳入了最新的<a href="https://www.cloudflare.com/cloudflare-customer-scc/" target="_blank">《标准合同条款》</a>，这是经欧盟委员会批准允许的数据传输法律协议。我们还根据 <a href="https://edpb.europa.eu/news/news/2021/edpb-adopts-final-version-recommendations-supplementary-measures-letter-eu_en" target="_blank">EDPB 2021 年 6 月的《补充措施建议》增加了额外的保障措施</a>。最后，Cloudflare 的服务通过了 ISO 27701 标准认证，该标准符合 GDPR 的要求。</p>
+	<p>鉴于这些措施，我们相信，我们的欧盟客户能够以符合 GDPR 和“Schrems II”裁决的方式使用 Cloudflare 的服务。但是，我们注意到，我们的许多客户希望能将他们的欧盟个人数据留在欧盟。例如，我们在医疗保健、法律和金融等行业的一些客户可能有额外的要求。因此，我们开发了一套选装服务来满足这些需求。我们称之为数据本地化套件。</p>
+	<h3 id="--2"><strong>数据本地化套件对今天有何帮助</strong></h3>
+	<p>数据本地化对于客户来说是一项挑战，因为他们要处理的数据量和数据种类繁多。当谈到他们的 Cloudflare Traffic 时，我们发现，客户主要关注以下三个方面：</p>
+	<ol>
+		<li>我该如何确保我的加密私钥留在欧盟？</li>
+		<li>我个如何确保像 Caching 和 WAF 这样的服务只在欧盟运行？</li>
+		<li>如何确保元数据永远不会转移到欧盟之外？</li>
+	</ol>
+	<p>为了解决第一个问题，Cloudflare 长期以来一直提供 <a href="https://www.cloudflare.com/zh-cn/ssl/keyless-ssl/" target="_blank">Keyless SSL</a> 和 <a href="https://blog.cloudflare.com/introducing-cloudflare-geo-key-manager/">Geo Key Manager</a>，以确保私有 SSL/TLS 私钥资料永远不会离开欧盟。Keyless SSL 确保 Cloudflare 永远不会拥有私钥资料；Geo Key Manager 会在后台使用 Keyless SSL 以确保私钥永远不会离开指定的区域。</p>
+	<p>去年，我们通过 <a href="https://blog.cloudflare.com/introducing-regional-services/">Regional Services</a> 解决了第二个疑难问题，确保了 Cloudflare 只能解密和检查欧盟内部流量中的 HTTP 通信内容。换句话说，SSL 连接只能在欧盟终止，我们所有的第 7 层安全性和性能服务将仅在我们的欧盟数据中心运行。</p>
+	<p>今天，我们正在帮助客户解决第三个也是最后一个问题，并将元数据保留在本地。</p>
+	<h3 id="--3"><strong>元数据边界是如何工作的</strong></h3>
+	<p>简单的说，就是客户的元数据边界能够确保，将用于识别客户的终端用户流量元数据留在欧盟。这包括客户看到的所有日志和分析。</p>
+	<p>我们是怎么做到的？所有能够识别客户的元数据在被转发到我们的核心数据中心之前，都将通过我们的边缘层单一服务。</p>
+	<p>当元数据边界被客户启用时，我们的边缘层能够确保任何能够识别该客户的日志消息（即，包含该客户的帐户 ID）不会被发送到欧盟之外。其只会被发送到我们在欧盟的核心数据中心，而非我们在美国的核心数据中心。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image2-14.png" class="kg-image" alt="The Metadata Boundary ensures that a customer’s end user traffic metadata stays in the EU"></figure>
+	<h3 id="--4"><strong>下一步</strong></h3>
+	<p>今天，我们的数据本地化套件专注于帮助我们在欧盟的客户将他们的入站 HTTP 流量数据进行本地化。这包括我们的 Cache、防火墙、DDoS 保护和自动程序管理产品。</p>
+	<p>我们收到了客户的来信，他们想要实现更多产品和地区的数据本地化。这意味着要让我们所有的数据本地化产品，包括 Geo Key Manager 和 Regional Services，可以在全球范围内工作。我们还在努力扩展元数据边界，将我们的 Zero Trust 产品纳入其中，比如 Cloudflare for Teams。敬请关注！<br></p>
+</div>

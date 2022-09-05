@@ -1,0 +1,86 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/10/Firewall-rules-white-back.svg" class="kg-image"></figure>
+	<p>Die Bedrohungslandschaft verändert sich ständig. Weil sich Angreifer weiterentwickeln, dynamischer und heimtückischer werden, entstehen Schwachstellen schneller, als Entwickler ihre Anwendungen patchen können. Ein Teil der Mission von Cloudflare besteht darin, Sie und Ihre Anwendungen zu schützen. Heute startet Cloudflare eine neue Funktion, die den Kunden das bietet, was sie sich gewünscht haben – eine fein abgestufte Kontrolle über die eingehenden Anfragen.</p>
+	<p>Cloudflare bietet bereits eine Reihe leistungsstarker Firewall-Tools wie IP-Regeln, CIDR-Regeln, ASN-Regeln, Länderregeln, HTTP User-Agent Blocking, Zone Lockdown (für diese URIs nur Zugriffe von jenen IPs zulassen) und unsere umfassenden verwalteten Regeln innerhalb unserer WAF (Web Application Firewall). Aber manchmal muss man die Leistung dieser Elemente kombinieren, um einen Angriff vollständig zu entschärfen, und eine Blockierungsregel einsetzen, die die Grenzen der vorhandenen Tools überschreitet, um „die Zugriffe zu diesem URI blockieren zu können, wenn die Anfrage von jener IP kommt und der User-Agent einer von diesen ist“.</p>
+	<h3 id="flexibilit-t-und-kontrolle"><strong>Flexibilität und Kontrolle</strong></h3>
+	<p></p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2018/10/Stefano-Kocka.jpg" class="kg-image">
+		<figcaption>© Stefano Kocka: Quelle Wikipedia</figcaption>
+	</figure>
+	<p></p>
+	<p>Als wir mit unseren Kunden über ihre Bedürfnisse sprachen und auch Funktionsanfragen durchgingen, die unser Kundensupportteam gesammelt hatte, kristallisierten sich gemeinsame Themen heraus. Wir ordneten die wichtigsten Feedbacks und Feature-Anfragen drei Kernbedürfnissen zu:</p>
+	<ol>
+		<li>Mehr Flexibilität, um Firewall-Regeln erstellen zu können, die mehr als nur ein einzelnes Attribut abgleichen, wie beispielsweise eine IP-Adresse und einen User-Agent</li>
+		<li>Flexibilität, ein Attribut nicht nur exakt abzugleichen, sondern es auch teilweise abzugleichen, durch die Verwendung einer Zeichenkette oder eines Musters, z. B. User-Agent: *Firefox*</li>
+		<li>Vollständige selbstverwaltete Kontrolle mittels der Benutzeroberfläche und der öffentlichen API von Cloudflare, selbst für die komplexesten Firewall-Regeln</li>
+	</ol>
+	<p>Das Team untersuchte gemeinsam, wie ein neuer Ansatz für unsere Firewall aussehen könnte, wobei eine übergeordnete Aufgabe im Vordergrund stand: das Schweizer Taschenmesser unter den Firewalls für unsere Kunden zu bauen. Unsere Hauptziele waren:</p>
+	<ol>
+		<li>Ein Werkzeug bereitzustellen, das Kunden eine flexible und detaillierte Kontrolle über ihren Traffic ermöglicht</li>
+		<li>Eine reibungslose und intuitive Benutzererfahrung zu bieten, was uns überhaupt sehr am Herzen liegt</li>
+		<li>Sicherzustellen, dass das Werkzeug für alle unsere Kunden zugänglich und nutzbar ist, unabhängig von den Fähigkeiten der Benutzer und der Unternehmensgröße</li>
+	</ol>
+	<h3 id="firewall-regeln"><strong>Firewall-Regeln</strong></h3>
+	<p>Cloudflares neue Funktion, Firewall-Regeln, bietet Kunden die Möglichkeit, Anfragen flexibel und intuitiv zu kontrollieren, inspiriert von der bekannten Wireshark®-Sprache. Die Konfiguration der Regeln kann nicht nur über unser Dashboard und unsere API, sondern auch über Terraform (<a href="https://blog.cloudflare.com/getting-started-with-terraform-and-cloudflare-part-1/">Link hier</a>) erfolgen.</p>
+	<p>Man kann sich die Firewall-Regel-Engine so vorstellen, dass sie aus zwei Komponenten besteht:</p>
+	<ul>
+		<li>Abgleich: Definieren Sie einen Filter, der global läuft und Ihren Traffic genau abgleicht</li>
+		<li>Aktion: Legen Sie die Aktion fest, die Cloudflare durchführen soll, wenn eine Übereinstimmung mit dem Filter vorliegt</li>
+	</ul>
+	<p>Einfach ausgedrückt: Wenn der Filter übereinstimmt, die Aktion ausführen.</p>
+	<h3 id="abgleich-umfang-der-regel"><strong>Abgleich: Umfang der Regel</strong></h3>
+	<p>Cloudflare Firewall-Regeln gibt Kunden Zugriff auf die Eigenschaften der HTTP-Anfrage, einschließlich Referrer, User-Agent, Cookies, Cloudflare Threat Score (IP-Reputationswert) und mehr.</p>
+	<p>Alle unterstützten Header können von vielen Operatoren abgeglichen werden, einschließlich einer Teilübereinstimmung (contains), einer vollständigen Zeichenketten- oder einer ganzzahligen Übereinstimmung (equals) und, für unsere Business- und Enterprise-Kunden, einer Musterübereinstimmung (matches). Ja, Sie haben richtig gelesen, wir bieten jetzt Musterabgleich mit regulären Ausdrücken an, direkt über das Dashboard und die API!</p>
+	<p>Das Großartige an Firewall-Regeln ist die Flexibilität für Cloudflare, Optionen anzubieten; so werden beispielsweise die Bedrohungsinformationen von Cloudflare, die unsere Sicherheitsstufenfunktionalität im Dashboard steuern, ein für Kunden verfügbares Feld sein. Eines der wichtigsten Felder, das Cloudflare einführt, ist unser Feld cf.client.bot, das bekanntermaßen gute Bots über Reverse DNS verifiziert. In unserer ersten Version bieten wir unseren Kunden Zugang zur allgemeinen Klassifizierung von „bekanntermaßen guten Bots“. Details zur Liste dieser Bots finden Sie <a href="https://developers.cloudflare.com/firewall/known-issues-and-faq/#which-bots-or-crawlers-are-detected-in-firewall-rules" target="_blank">hier</a>. Cloudflare hat Google in der Vergangenheit für unsere Kunden auf die weiße Liste gesetzt und Regeln für die Web Application Firewall eingesetzt, die nur für Pro-Kunden und höher verfügbar sind, um gefälschte Crawler zu blockieren. Mit Firewall-Regeln haben nun alle Kunden Zugriff auf diese Schutzmaßnahmen. Da Cloudflare die Allowlist-Funktion entfernt hat, ist es wichtig, dass Kunden einfach cf.client.bot in eine Erlaubt-Regel aufnehmen, um zu vermeiden, dass versehentlich gute Crawler blockiert werden, was Ihre SEO und Überwachung beeinträchtigen könnten.</p>
+	<h3 id="aktion-welche-aktion-auf-die-anfrage-angewendet-wird"><strong>Aktion: welche Aktion auf die Anfrage angewendet wird</strong></h3>
+	<p>Alle gängigen Cloudflare-Aktionen wie JavaScript Challenge, Challenge und Block sind verfügbar.</p>
+	<p>Es gibt eine Neuerung in der standardmäßigen-Entschärfungsliste, nämlich die Aktion allow, mit der ein Kunde eine Regel der Form „Wenn diese Kriterien erfüllt sind, die Anwendung weiterer Regeln stoppen“ erstellen kann.</p>
+	<h3 id="nennen-sie-mir-einige-beispiele-"><strong>Nennen Sie mir einige Beispiele!</strong></h3>
+	<p>Kien Problem, hier sind vier coole Beispiele, die wir bereits heute im Einsatz sehen. Erweiterte oder verschachtelte Regeln werden heute im Visual Rule Builder nicht unterstützt. Diese sind unter jeder Regel vermerkt.</p>
+	<p><em><strong>Beispiel 1 – Challenge für alle Länder außer GB</strong></em></p>
+	<p>Unterstützt: Visual Builder, Expression Editor</p>
+	<p>Dies kann mit unserer IP-Firewall erfolgen, erfordert aber mehr als 150 Regeln!</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>(ip.geoip.country ne "GB")
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/10/image.png" class="kg-image"></figure>
+	<p><em><strong>Beispiel 2 – Erweiterter Hotlink-Schutz</strong></em></p>
+	<p>Unterstützt: Visual Builder, Expression Editor</p>
+	<p>Der integrierte Hotlink-Schutz von Cloudflare kann für einige Kunden restriktiv sein, da er keine Möglichkeiten bietet, bestimmte Pfade auszusparen. Dadurch kann er manchmal auch legitime Crawler erwischen.</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>(http.request.method eq "GET" and http.referer ne ".example.com" and not http.user_agent matches "(googlebot|facebook)" and http.request.uri.path eq "/content/")
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/10/Firewall-Rule-2.png" class="kg-image"></figure>
+	<p><em><strong>Beispiel 3 – Blockieren von Clients mit einem Threat Score höher als 10 oder von Clients, die aus einem missbräuchlichen Netzwerk stammen, nach AS-Nummer, für meine Login-Seite</strong></em></p>
+	<p>Unterstützt: Expression Editor</p>
+	<p>Einer der großartigen Aspekte von Firewall-Regeln ist, dass wir Ihnen Zugriff auf cf.threat_score verschafft haben. Dies steuert heute die Sicherheitsstufe im Dashboard.</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>(http.request.uri.path eq "/login" and (cf.threat_score &lt; 10 or ip.geoip.asnum eq 12345))
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/10/Firewall-Rule-3.png" class="kg-image"></figure>
+	<p><em><strong>Beispiel 4 – Fall von Zone-Lockdown-ähnlichem Einsatz mit regulärem Ausdruck, IP-Adressen-CIDRs, Ländercode und AS-Nummern zum Schutz von Authentifizierungs-Endpunkten sowohl über eine Wordpress-Website als auch über eine API.</strong></em></p>
+	<p>Unterstützt: Expression Editor</p>
+	<p>Zone Lockdown ist ein großartiges Werkzeug, es ist aber für einige kritische Anwendungsfälle zu beschränkt. Hier ist etwas ziemlich Verrücktes, um die Flexibilität zu demonstrieren:</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>((http.host eq "api.example.com" and http.request.uri.path eq "/api/v2/auth") or (http.host matches "^(www|store|blog)\.example.com" and http.request.uri.path contains "wp-login.php") or ip.geoip.country in {"CN" "TH" "US" "ID" "KR" "MY" "IT" "SG" "GB"} or ip.geoip.asnum in {12345 54321 11111}) and not ip.src in {11.22.33.0/24}
+111</code></pre>
+	<!--kg-card-end: markdown-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/10/Firewall-Rule-4.png" class="kg-image"></figure>
+	<h3 id="positive-und-negative-sicherheitsmodelle"><strong>Positive und negative Sicherheitsmodelle</strong></h3>
+	<p>Dies ist eine großartige Ergänzung zur Firewall, da es unseren Kunden die Möglichkeit bietet, zwischen der Ausführung einer positiven Sicherheitsstrategie (spezifische Anfragen zulassen und alles andere blockieren) und einer negativen Sicherheitsstrategie (spezifische Anfragen blockieren und alles andere zulassen) zu wählen.</p>
+	<p>Cloudflares standardmäßige Einstellung für Firewall-Regeln ist ein implizites Alles erlauben. Das Großartige an dieser Arbeitsmethode ist, dass man in der Lage ist, nur die bösen Dinge zu blockieren. Dies ist zwar eine sehr effektive und effiziente Art, eine Firewall zu betreiben, sie bietet aber auch eine Reihe von Herausforderungen. Wenn Sie den gesamten Traffic durchlassen, müssen Ihre Sicherheitsmaßnahmen bei auftretenden Problemen reagieren.<br></p>
+	<p>Was von der Sicherheitsbranche gefördert wird, ist ein Konzept des „Zero Trust“. Genau so wie es sich anhört, bedeutet Zero Trust, dass man nichts und niemandem vertraut und alles, was durchkommt, eine Art Rechtfertigung besitzen muss. Um eine „Zero Trust“-Sicherheitsstrategie anzuwenden, müssen Sie die Funktionsweise Ihrer Firewall-Standardstrategie umkehren, d. h. die letzte Aktion von Erlauben zu Blockieren ändern und so eine positive Sicherheitsstrategie implementieren. Bis heute war dies nicht möglich, aber mit Firewall-Regeln können Sie es jetzt tun.</p>
+	<h3 id="der-visual-rule-builder-und-der-expression-editor"><strong>Der Visual Rule Builder und der Expression Editor</strong></h3>
+	<p>Eines der größten Probleme dabei, Kunden Macht zu geben, ist die sichere und effektive Bereitstellung dieser Macht. Das Produktdesign- und UI-Engineering-Team arbeitete mehrere Varianten durch, um leistungsstarke, aber benutzerfreundliche Rule Builder und Editor zu erstellen. Das Team verbrachte mehrere Monate damit, eine Reihe von Variationen durchzugehen, um solide Rule-Builder- und Rule-Editor-Lösungen zu erstellen, ohne die Benutzeroberfläche zu überladen oder zu verkomplizieren.</p>
+	<p>Pete Thomas, unser Lead Designer für die neue Firewall-Benutzeroberfläche, führte uns mit Paper-Prototyping-Sitzungen zurück zu den Grundlagen, um zu testen und zu entdecken, wie Regeln erstellt und verwaltet werden.</p>
+	<p>Unten sehen Sie ein Foto, das mich und Matthew Bullock, einen unserer Londoner Solutions Engineers, während des Testprozesses zeigt.</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/12/Optimized-WAF-Rules.png" class="kg-image"></figure>
+	<p>Während des Designprozesses konzentrierten wir uns bewusst darauf, warum Kunden Firewall-Regeln benötigen. Das Ergebnis war einfach: Erstellen von proaktiven, defensiven Regeln, um eine Anwendung zu sichern, und reaktiven Regeln, um Anwendungen zu schützen, die angegriffen werden.</p>
+	<p>Innerhalb des Visual Rule Builder haben wir unseren Kunden eine intuitive Möglichkeit gegeben, Firewall-Regeln zu erstellen, ohne den Zugriff auf die Kernfunktionen einzuschränken. Die Roadmap für die Zukunft bietet eine flexiblere Gruppierung durch den Visual Builder. Wir bieten jedoch auch eine Option für komplexere Anforderungen und verschachtelte Firewall-Regeln. Diese können im Rule Editor erstellt werden. Der Rule Editor basiert auf unserer von Wireshark® inspirierten Sprache, mit der Sie in Wireshark erstellte Ausdrücke übernehmen und damit Firewall-Regeln erstellen können. David Kitchen, der für die Entwicklung von Firewall-Regeln verantwortliche Engineering Manager, wird in den kommenden Wochen einen Blogbeitrag schreiben, in dem er darlegt, warum wir uns für unsere Filterausdrücke für eine von Wireshark® inspirierte DSL entschieden haben. Eine Liste der unterstützten Felder finden Sie in unserer <a href="https://developers.cloudflare.com/firewall/cf-firewall-rules/fields-and-expressions/" target="_blank">Dokumentation</a>.</p>
+	<p>Tags: <a href="https://blog.cloudflare.com/tag/security/">Sicherheit</a>, <a href="https://blog.cloudflare.com/tag/reliability/">Zuverlässigkeit</a>, <a href="https://blog.cloudflare.com/tag/firewall/">Firewall</a>, <a href="https://blog.cloudflare.com/tag/waf-rule/">WAF-Regel</a>, Produkt-Neuigkeiten<br></p>
+</div>

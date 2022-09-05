@@ -1,0 +1,73 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/06/image7-2.png" class="kg-image"></figure>
+	<p><a href="https://blog.cloudflare.com/welcome-to-crypto-week-2019/">暗号ウィーク2019</a>の幕開けとして、暗号化に関して長く続いた問題に対応する新たなソリューションを発表できることを、嬉しく思っています。この問題の背景にある技術面の理解を深めるには、詳細情報が記載された次の<a href="https://blog.cloudflare.com/inside-the-entropy">記事</a>をご覧ください。</p>
+	<p>暗号から一攫千金の宝くじ、<a href="https://arxiv.org/pdf/1611.02176.pdf" target="_blank">量子力学</a>にいたるまで、あらゆるものが何らかのランダム性を必要としています。しかし、数値がランダムに生成されるとはどういう意味で、ランダム性はどこから来るのでしょうか?</p>
+	<p>ランダム性が生まれたのは、古代人が「骨」を転がして運命を占った3000年前にさかのぼります。宝くじを考えてみてください。シンプルに見えますよね？皆がチケットを購入して6つの数字を選択し、主催者がバスケットからランダムに数字を抽選するのを待つのです。単純な方法のように思えます。ですが、1980年に、ペンシルベニア州の宝くじの抽選会で、当選番号の抽出用に<a href="https://www.nytimes.com/1981/05/21/us/2-guilty-of-bid-to-rig-pennsylvania-lottery.html" target="_blank">重りを入れた玉を使ったとして</a>主催者が逮捕されました。この事件からの教訓と、乱数の生成に別の複雜なシステムが必要とされたことが、乱数ジェネレーターの製作につながりました。</p>
+	<p>宝くじのゲームが予測不可能な乱数を選択するのと同様に、乱数ジェネレーターは、予測不可能な方法で数字のシーケンスを生成するデバイスまたはソフトウェアです。ランダム性の必要性が高まるのに伴い、予測不可能な数字を大量に安定して生成する必要性も高まっています。これが、組織で<a href="https://csrc.nist.gov/Projects/Interoperable-Randomness-Beacons" target="_blank">公開された形で利用可能なランダムネスビーコン</a>、つまり完全に予測不可能な512ビットの文字列（約155桁の数字）を定間隔で生成するサーバーが開発された理由です。</p>
+	<p>さて、宝くじの選択に必要となるようなランダム性の生成プロセスに、ランダムネスビーコンを使用すれば、プロセスが敵対者の操作に対する耐性を持つようになると思うかもしれませんが、そうではありません。単一ソースのランダム性は、偏りのある結果の生成に悪用されてきました。</p>
+	<p>今日、ランダムネスビーコンは宝くじや選挙監査用の数字を生成し、何百万人もの人々の生活と運命に影響を与えています。残念ながら、これらのビーコンの単一ソースが悪用されることで、1人の<a href="https://www.nytimes.com/interactive/2018/05/03/magazine/money-issue-iowa-lottery-fraud-mystery.html" target="_blank">内部にいる悪人</a>が利益を得る不正が生まれてしまいました。悪用の画策を阻止するため、Cloudflareおよび他のランダムネスビーコンのプロバイダーは、ユーザーのための十分な数の非集中型のランダムネスビーコンの実現に向けて協力してきました。その結果、グローバルに分散された8つのビーコンの方が、1つのビーコンよりもはるかに信頼性が高いという結論に至りました。</p>
+	<p>ではご紹介します...</p>
+	<p>リーグ ….オブ….エントロピー ！！！！！！</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/06/image8-1.png" class="kg-image"></figure>
+	<h3 id="-"><strong>ランダムネスビーコンとは何か？</strong></h3>
+	<p>ランダムネスビーコンとは、一定の間隔で予測不可能な乱数を提供する公開サービスです。</p>
+	<p><a href="https://github.com/dedis/drand" target="_blank">drand</a>（読み：ディーランド）は、<a href="https://twitter.com/nikkolasg1" target="_blank">Nicolas Gailly</a>が<a href="https://twitter.com/daeinar" target="_blank">Philipp Jovanovic</a>と<a href="https://github.com/PizzaWhisperer" target="_blank">Mathilde Raynal</a>の協力を得て開発した、<em>分散型のランダムネス</em>ビーコンです。このdrandプロジェクトは、<a href="https://ieeexplore.ieee.org/abstract/document/7958592" target="_blank">2017年のIEEEセキュリティおよびプライバシーに関するシンポジウム</a>で発表された研究論文、<a href="https://www.ieee-security.org/TC/SP2017/papers/413.pdf" target="_blank">Scalable Bias-Resistant Distributed Randomness</a>を基に、<a href="https://www.epfl.ch/" target="_blank">EPFL</a>の<a href="https://dedis.epfl.ch/" target="_blank">非集中型/分散型システム（Decentralized/Distributed Systems: DEDIS）ラボ</a>、<a href="https://www.yale.edu/" target="_blank">イェール大学</a>、<a href="https://www.trincoll.edu/" target="_blank">トリニティ・カレッジ・ハートフォード・</a>の<a href="http://ewa.syta.us/" target="_blank">Ewa Syta</a>、<a href="https://philipp.jovanovic.io/" target="_blank">Philipp Jovanovic</a>、<a href="https://lefteriskk.github.io/" target="_blank">Eleftherios Kokoris Kogias</a>、<a href="https://github.com/nikkolasg/" target="_blank"> Nicolas Gailly</a>、<a href="https://people.epfl.ch/linus.gasser" target="_blank"> Linus Gasser</a>、<a href="https://ismailkhoffi.com/" target="_blank">Ismail Khoffi</a>、<a href="http://www.cs.yale.edu/homes/fischer/" target="_blank">Michael J. Fischer</a>、<a href="https://bford.info/" target="_blank"> Bryan Ford</a>らが、<a href="https://researchinstitute.io/" target="_blank">リサーチ・インスティテュート</a>の支援を受けて開始したものです。</p>
+	<p>ランダム性の生成ラウンドごとに、drandは、<a href="https://www.ieee-security.org/TC/SP2017/papers/413.pdf" target="_blank">研究論文</a>で述べられている次の特性を提供します。</p>
+	<ul>
+		<li>可用性 - 分散型のランダム性生成は、高確率で成功します。</li>
+		<li>予測不能性 - 現在のラウンドのランダムな出力について、無視できる確率を除いて、十分な数のdrandノードがランダム性生成プロトコルでコントリビューションを示すまで、誰も何も学習しません。</li>
+		<li>普遍性 - ランダム出力は、無視できる確率を除いて、偏りがなく均一にランダムな値を表します。</li>
+		<li>検証可能性 - ランダム出力は、drandのセットアップ中に計算された公開鍵の集合に対する第三者による検証が可能です。これは、文書化されたdrandノードのセットがプロトコルを実行して、無視できる確率を除いた唯一のランダム出力を生成した、失効しない構成証明として機能します。</li>
+	</ul>
+	<p><em>エントロピー</em>は、数値の予測不可能な性質を測定します。ランダム性にとってはエントロピーが高い方が良いということから、私たちはリーグオブエントロピー（エントロピーの同盟）という名前を取りました。</p>
+	<p>創設メンバーは、公開された検証可能なランダム値を60秒間隔で生成する、よりランダムで予測不可能なビーコンを提供するために、各自が高エントロピーのソースで貢献しています。drandビーコンが非集中型であり、適切かつ、おそらくセキュアな暗号プリミティブを使用して構築されたという事実から、このビーコンは前述のすべての特徴を備えるものだという我々の確信は高まりました。</p>
+	<p>ランダム性を生成するグローバルなサーバーネットワークのおかげで、少数のサーバーがオフラインの場合でも、ビーコンは残りのオンラインサーバーを使用して新しい数字を生成し続けることができます。 1～2台のサーバーまたはエントロピーソースがセキュリティ侵害を受けた場合でも、残りのサーバーが合同で完全に予測不可能で偏りのないエントロピーを生成します。</p>
+	<p>では、実際に誰がこのビーコンを実行しているのでしょうか？現在、リーグオブエントロピーは、グローバルな組織や個人の貢献者からなるコンソーシアムであり、Cloudflare、プロトコルラボの研究者Nicolas Gailly、チリ大学、エコールポリテクニック・フェデラル・デ・ローザンヌ（EPFL）、クデルスキー・セキュリティ、およびEPFLの研究者であるPhilipp JovanovicとLudovic Barmanらが参加しています。</p>
+	<h3 id="--1"><strong>リーグオブエントロピーのご紹介</strong></h3>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/06/image4-3.png" class="kg-image"></figure>
+	<p>CloudflareのLavaRand：<a href="https://blog.cloudflare.com/lavarand-in-production-the-nitty-gritty-technical-details/">LavaRand</a>は、Cloudflareのサンフランシスコ本社にあるラバライトの壁から、高エントロピーを供給しています。ランプ内の「溶岩」の予測不可能な流れは、ランダム値を生成するCSPRNG（暗号的に安全な擬似乱数発生器）のカメラのフィードへの入力として使用しています。</p>
+	<figure class="kg-card kg-image-card"><img src="https://lh4.googleusercontent.com/3R-uEem_pwlr_yfXEVJJiub0eiVTPEX01rBof0SB1xopcgbzgfOFsH4BLRXKfdnwqpAkXlJbBFG6PUQRBK-UJBqTEGIFKQxQaRaq-5FoZG8ny6WhkahwAMjSTD9XWFtSo5TFWxiK" class="kg-image"></figure>
+	<p><a href="https://www.epfl.ch/" target="_blank">EPFL</a>のURand：URandのパワーは、/dev/urandomのすべてのコンピューターにある、ローカルのランダムネスジェネレーターから発生しています。ランダムネスの入力は、キーボードの押し下げやマウスのクリック、ネットワークトラフィックといった入力から収集します。URandはこれらのランダム入力をバンドルして、連続したランダムネスの流れを作り出しています。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/06/image5-2.png" class="kg-image"></figure>
+	<p><a href="https://random.uchile.cl/en/" target="_blank">UChile</a>の地震ガール：地震ガールは、毎分5つのソースにクエリを実行して、超検証可能なランダムネスを抽出しています。ソースには、チリの地震の震度測定値や地震、地元ラジオ局のストリーム、Twitterの投稿、Ethereumブロックチェーンからのデータとその市販のRNGカード、といったものがあります。</p>
+	<figure class="kg-card kg-image-card"><img src="https://lh4.googleusercontent.com/Sg4AYv1L_bjeQyXri7ksWM9w13hQrghD-seBI2ErHx_k4XL5Cm0f2xXZsvDRNEu3ZQCX0klZevk8Y6U3BdS_XU7AaC1VWYeL34ZSjSa1fZXKYg1I7AP6IaxkmAOHNYj38w2dIrRV" class="kg-image"></figure>
+	<p><a href="https://www.kudelskisecurity.com/" target="_blank">Kudelski Security</a>のChaChaRand：ChaChaRand は、<a href="https://tools.ietf.org/html/rfc7539" target="_blank">ChaCha20</a>ストリーム暗号に基づくCRNG（暗号乱数ジェネレーター）を使用します。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/06/image3-3.png" class="kg-image"></figure>
+	<p><a href="https://protocol.ai/" target="_blank">Protocol Labs</a>のInterplanetaryRand：InterplanetaryRandは、エントロピーの力を使用して、環境ノイズおよびLinux PRINGをCPUからのランダムネスで補ったもの（<a href="https://blog.cloudflare.com/ensuring-randomness-with-linuxs-random-number-generator/">RdRand</a>）を使用して、空間および時間全体のプロトコルの安全性を確保しています。</p>
+	<p>このように力強いヒーローたちが、各自のランダムネスを組み合わせてグローバルに分散した暗号的に検証可能なランダムネスビーコンを形成するため、#savetheinternetの下、努力を続けています。</p>
+	<figure class="kg-card kg-image-card"><img src="https://lh4.googleusercontent.com/pTiFdLtxsabqbVpczCBKVT4dzbP9e9WxeU4lOPbiUIecOR5ER9QlRZG196PfYvJvF_Sbm-DTlUphCBWBMIOtqiTTKmTmRDumoCUlges8uEmNxJh75unUdnP2xobXT3tM2hc3oYKe" class="kg-image"></figure>
+	<h3 id="--2"><strong>パブリック対プライベートのランダムネス</strong></h3>
+	<p>アプリケーションのタイプが異なれば、ランダムネスも異なったタイプが必要です。</p>
+	<p>セキュリティで保護された暗号鍵を生成するコツは、ほかの誰もが予測できないような、大きな、プライベートに生成された乱数を使用することです。ランダムネスビーコンが乱数の生成とアナウンスを公開する場合、この乱数は誰でもアクセス可能になるため、ユーザーはランダムネスビーコンからの出力を秘密鍵に使用すべきでは<strong>ありません</strong>。攻撃者が、ユーザーのプライベート暗号鍵の抽出元の乱数を予想できれば、攻撃者はユーザーのシステムを突破して秘密情報を解読できてしまいます。これは単純に、公開ビーコンで生成された乱数を暗号鍵に使用することは安全ではない、ということを意味します。ランダムネスに問題があったのではなく、単にランダムネスが公開されたのが悪かったのです。</p>
+	<p>drandビーコンを使用しているクライアントは、アナウンスが公開されないランダム値を生成したい場合、一部または全部のdrandノードからプライベートなランダムネスをリクエストできます。 この手順については、<a href="https://developers.cloudflare.com/randomness-beacon/" target="_blank">開発者向けドキュメント</a>を参照してください。</p>
+	<p>一方で、公開されたランダム性は、秘密であることは必須ではないがその生成は透明で、公正で、偏りがあってはならないようなランダム値を必要とするユーザーが、頻繁に使用するものです。このようなランダム性は、ゲーム、宝くじ、選挙監査など、監査人や一般大衆が、そのランダム値がいつ、どのような方法で、いかに公正に生成されたかについて、透明性が要求されるような多くの目的に適しています。</p>
+	<p>リーグオブエントロピーでは、<a href="https://leagueofentropy.com/" target="_blank">leagueofentropy.com</a>で、誰でも取得できる公開されたランダムネスを提供しています。ユーザーは、60秒ごとに生成される512ビットの文字列値を閲覧することができます。なぜ60秒なのでしょうか？特に理由はありません。理論的には、ランダムネスの生成は、ハードウェアが許す限り高速に実行できますが、ほとんどのユースケースではそこまでは必要とされません。60秒ごとに値が生成された場合、ユーザーは24時間内に1440の乱数を得ることができます。</p>
+	<p>*念のため：このランダムネスは公開されています。秘密暗号鍵には使用しないでください*</p>
+	<h3 id="--3"><strong>公開ランダムネスが重要な理由は？</strong></h3>
+	<h4 id="--4"><strong>選挙監査</strong></h4>
+	<p>米国では、ほとんどの選挙の後に、選挙の公平性を確認するための監査が実施されます。監査システムが堅牢であれば、選挙管理者が効率的に詐欺の疑いに対応する能力やシステムのバグを検出する能力が向上し、投票者からの信頼性を高めることができます。</p>
+	<p>現在、ほとんどの選挙の投票と投票区は、選挙管理者によりランダムに選出されています。この手法では、悪意のある内部者が特定の投票区を選んで希望の結果を与えるというような偏りに対して、脆弱となる可能性があります。すべての投票区が改ざんされた場合でさえ、堅牢で、分散型で、そして最も重要なことに、<em>予測不能で偏りのない</em>ビーコンを使用することで、攻撃者が投票区の選出を予測できない限り、選挙監査人は、投票区から得た少数サンプルが監査に十分な数であると確信することができます。</p>
+	<p>チリでは、得票数の集計に携わる人は、適格とされる多数の有権者の中からランダムに選定されています。チリ大学のRandom UChile <a href="https://random.uchile.cl/en/" target="_blank">プロジェクト</a>では、このプロセス用に、ランダムネスビーコンを使用したプロトタイプを立ち上げてきました。Random UChileのリーダーであるAlejandro Hevia氏は、選挙の監査で透明性を実現するためには公開されたランダムネスが重要であり、分散型のランダム性であれば、人々は、単一の主体よりも、ビーコンへの<em>複数の</em>コントリビューターが共謀している可能性のなさの方を信用できる、と考えています。</p>
+	<h4 id="--5"><strong>宝くじ</strong></h4>
+	<p>2005年から2014年にかけて、全米宝くじ協会のEddie Tiptonは、<a href="https://www.nytimes.com/interactive/2018/05/03/magazine/money-issue-iowa-lottery-fraud-mystery.html" target="_blank">乱数ジェネレーターを操作</a>して、宝くじに6回当選しました。</p>
+	<p>Tiptonは、標準的なランダムなシーディングプロセスをスキップする方法で、当選番号を予測しました。彼は乱数発生器の関数に、日付、曜日、時刻をチェックするコードを挿入することができました。これら3つの変数が整合しない場合、乱数発生器に放射性物質とガイガーカウンターを使用してランダムにシードを生成します。これは通常1年に1度しか生じませんが、もしこの変数が不正なプログラミングにより整合した場合は、<em>pseudo</em>型乱数生成器である<a href="https://en.wikipedia.org/wiki/Mersenne_Twister" target="_blank">メルセンヌ・ツイスタ</a>に7元方程式を流し込んだものを使用して、シードを生成します。</p>
+	<p>ティプトンはこれらの7つの変数を知っていました。彼は、シードになる可能性のある少数の数値の集合を知っていたのです。この知識を持っていたために、メルセンヌ・ツイスタの結果を予測することができたのです。これは、ランダムネスビーコンによって、不可能ではないにせよ、大幅に難易度を上げることができる詐欺の事例です。</p>
+	<p>元アイオワ州司法長官で現アイオワ州監査役である、ティプトンの事件を起訴したRob Sand氏も、管理の強化を主張しました。サンド氏は、次のように語っています。</p>
+	<!--kg-card-begin: markdown-->
+	<p><span style="color:grey"><small>*「年間売上高が800億ドルにもなる業界が、完全性を確保するために利用できる最も高度な、真にランダムな手段を使用しないことに、弁解の余地はありません。」 *</small></span></p><small>
+		<!--kg-card-end: markdown-->
+		<h4 id="--6"><strong>分散型台帳プラットフォーム</strong></h4>
+		<p><a href="https://en.wikipedia.org/wiki/Ethereum" target="_blank">イーサリアム</a>など、多くの暗号通貨やブロックチェーンベースの分散コンピューティングプラットフォームでは、アプリケーション層でのランダムな選択が必要になることが多くあります。このようなランダム選択の偏りを防ぐ1つの解決策は、drandのような分散ランダムネスビーコンを使用してランダム値を生成することです。<a href="https://www.ethereum.org/" target="_blank">イーサリアム財団</a>のJustin Drake研究員は、「drandタイプのフェデレーションからのランダムネスは、ライブゲームやギャンブルなどのイーサリアム上のリアルタイム分散アプリケーションに特に適している可能性がある」と考えています。これは、公開されたランダム性が必要な広範なアプリケーションに適用可能な、超低遅延のランダム性が実現する可能性があるためです。</p>
+		<figure class="kg-card kg-image-card"><img src="https://lh6.googleusercontent.com/IzxDdb91VENIgVK05HqMqA6u2mwL-pMx3GLBdxJQjCeaPSD1bGTjE3mnOyInEOgq0lyovRBghGCcDbPpWSPO4ToT2tR4aftwcLdQNVwCKn3Lghh2FkK8UbEkC63JTgk40QBn5LCR" class="kg-image"></figure>
+		<h3 id="drand-"><strong>drandにご参加ください</strong></h3>
+		<p>リーグオブエントロピーと分散ランダムネスビーコンの使用方法の詳細については、<a href="https://leagueofentropy.com/" target="_blank">https://leagueofentropy.com</a>を参照してください。Webサイトには、ネットワークによって生成されたランダムネスが定期的に表示され、以前に生成された値を見ることもできます。どうぞお試しください。</p>
+		<figure class="kg-card kg-image-card"><img src="https://lh3.googleusercontent.com/30p6dmRd2omn-YRzrY7oPmYEVUwRFOo7izqymD6xvYQ9txl6hzOwachb_AkrHilkBKEr2kZu_lCGSXhJQrubJ_q1gPbf-NYu4V3o98cvIfa_bq2Ug1MLk6PrSysLfUhfrk33VwQb" class="kg-image"></figure>
+		<h3 id="--7"><strong>リーグへの参加方法：</strong></h3>
+		<p>私たちは、皆さんのリーグへの参加を歓迎します。</p>
+		<p>drandビーコンへの貢献を希望される組織または個人の方は、<a href="https://developers.cloudflare.com/randomness-beacon/" target="_blank">開発者ドキュメント</a>で、サーバーのセットアップの要件および既存グループへの参加に関する詳細情報を確認してください。drandは現在ベータリリースフェーズにあり、貢献サーバーとしての承認を得るには、承認リクエストを<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="bdd1d8dcdac8d8d2dbd8d3c9cfd2cdc4fddad2d2dad1d8dacfd2c8cdce93ded2d0">[email&nbsp;protected]</a>まで送信していただく必要があります。</p>
+		<h3 id="--8"><strong>未来を見据える</strong></h3>
+		<p>将来のインターネットでは、予測不可能なランダムネスビーコンが要求されると考えることは、理にかなっています。現在活動中のリーグオブエントロピーでは、信頼できる公開ランダムネスを活用するための将来のシステムの基礎作りを行っています。私たちの目標は、ユーザーからの信頼を高め、一か所ですべての公開されたエントロピーのニーズに応えることです。どうぞ、ご参加ください。<br></p>
+		<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/06/image2-4.png" class="kg-image"></figure>
+	</small>
+</div><small>
+</small>

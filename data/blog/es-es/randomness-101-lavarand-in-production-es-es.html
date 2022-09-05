@@ -1,0 +1,91 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/05/lava-lamps.jpg" class="kg-image">
+		<figcaption>Lámparas de lava en el vestíbulo de Cloudflare, cortesía de @mahtin</figcaption>
+	</figure>
+	<p></p>
+	<h3 id="introducci-n"><strong>Introducción</strong></h3>
+	<p>Como algunos quizás ya sabéis, en el vestíbulo de nuestra oficina de San Francisco <a href="https://www.fastcodesign.com/90137157/the-hardest-working-office-design-in-america-encrypts-your-data-with-lava-lamps" target="_blank">hay una pared con lámparas de lava</a> que usamos para la criptografía. En esta publicación, vamos a explorar cómo funciona. Para entenderla no se requiere ninguna experiencia técnica. Si quieres profundizar en los detalles técnicos, consulta <a href="https://blog.cloudflare.com/lavarand-in-production-the-nitty-gritty-technical-details">LavaRand en producción: detalles técnicos esenciales</a>.</p>
+	<h3 id="antecedentes"><strong>Antecedentes</strong></h3>
+	<h4 id="aleatoriedad-en-criptograf-a"><strong>Aleatoriedad en criptografía</strong></h4>
+	<p>Como hemos <a href="https://blog.cloudflare.com/why-randomness-matters/">comentado en el pasado</a>, la criptografía se basa en la capacidad de generar números aleatorios que son impredecibles y se mantienen en secreto ante cualquier adversario.</p>
+	<p>Pero "aleatorio" es un término bastante complicado; se utiliza en muchas áreas diferentes con significados ligeramente diferentes. Y como en todas las áreas, su uso en criptografía es muy preciso. En algunas áreas, un proceso es aleatorio solo si tiene las propiedades estadísticas correctas. Por ejemplo, se dicen que los dígitos de pi son aleatorios porque todas las secuencias de números aparecen con igual frecuencia ("15" aparece con la misma frecuencia que "38", "426" aparece con la misma frecuencia que "297", etc.). Pero para la criptografía, esto no es suficiente: los números aleatorios deben ser <em>impredecibles</em>.</p>
+	<p>Para entender lo que significa <em>impredecibles</em>, ayuda tener en cuenta que toda la criptografía se basa en una asimetría de la información. Si quieres realizar una operación criptográfica de manera segura, entonces lo que te preocupa es que alguien, un <em>adversario</em>, intente quebrantar tu seguridad. Lo único que te distingue del adversario es que sabes algunas cosas que el adversario no sabe, y el objetivo de la criptografía es garantizar que esta asimetría de la información sea suficiente para mantenerte seguro.</p>
+	<p>Consideremos un sencillo ejemplo. Imagina que un amigo y tú queréis ir a ver una película, pero no quieres que tu enemigo averigüe a qué película iréis (por si aparece y os estropea la película). Esta semana, es tu turno para elegir película. Una vez que has hecho tu elección, tendrás que enviar un mensaje a tu amigo diciéndole qué película has elegido, pero necesitarás asegurarte de que, incluso si tu enemigo intercepta el mensaje, no sea capaz de averiguar lo que dice.</p>
+	<p>Diseñas el siguiente plan: puesto que ahora mismo hay solamente dos películas disponibles para ver, se etiqueta una con A y la otra con B. Entonces, en presencia de tu amigo, lanzas una moneda. Os ponéis de acuerdo en la siguiente tabla que define el mensaje que enviarás dependiendo de la película que elijas y de si la moneda cae en cara (C) o cruz (Z). Más tarde, una vez que hayas decidido qué película ver, usarás esta tabla para enviar un mensaje cifrado a tu amigo diciéndole qué película has elegido.</p>
+	<p></p>
+	<!--kg-card-begin: html-->
+	<center>
+		<div style="border: 1px solid black;">
+			<table style="background-color: transparent;">
+				<tbody>
+					<tr>
+						<th>
+							<div style="padding: 5px;"><strong>Pelicula</strong></div>
+						</th>
+						<th>
+							<div style="padding: 5px;"><strong>Moneda</strong></div>
+						</th>
+						<th>
+							<div style="padding: 5px;"><strong>Mensaje</strong></div>
+						</th>
+					</tr>
+					<tr>
+						<td>A</td>
+						<td>C</td>
+						<td>"La lluvia en Sevilla es una pura maravilla".</td>
+					</tr>
+					<tr>
+						<td>A</td>
+						<td>Z</td>
+						<td>"En Jalapa, Jamaica y Java ájanse en junio enebros y jaras".</td>
+					</tr>
+					<tr>
+						<td>B</td>
+						<td>C</td>
+						<td>"En Jalapa, Jamaica y Java ájanse en junio enebros y jaras".</td>
+					</tr>
+					<tr>
+						<td>B</td>
+						<td>Z</td>
+						<td>"La lluvia en Sevilla es una pura maravilla".</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</center>
+	<!--kg-card-end: html-->
+	<p></p>
+	<p>Si te hubieras decidido por la película B y la moneda hubiera caído en cara, enviarías el mensaje, "En Jalapa, Jamaica y Java ájanse en junio enebros y jaras". Puesto que tu amigo sabe que la moneda cayó en cara (estaba allí cuando pasó) él sabe que debes haberte decidido por la película B. Pero considéralo desde la perspectiva de tu enemigo. No sabe el resultado del sorteo; solo sabe que hay un 50 % de probabilidad de que la moneda cayera en cara y un 50 % de probabilidad de que cayera en cruz. Por lo tanto, ver el mensaje "En Jalapa, Jamaica y Java ájanse en junio enebros y jaras" no le sirve para nada. Hay una probabilidad del 50 % de que la moneda cayera en cara (lo que implica la película B) y un 50 % de que cayera en cruz (lo que implica la película A). ¡Sigue sin saber nada más que antes!</p>
+	<p>Volvamos ahora al concepto de <em>impredecibilidad</em>. Imagina que el resultado del sorteo fuera completamente predecible: pongamos que tu enemigo hubiera puesto una moneda trucada que siempre diera cara en la primera tirada, cruz en la segunda, cara en la tercera y así sucesivamente. Como sabría que había una probabilidad del 100 % de que la primera tirada diera cara, entonces independientemente del mensaje que hubieras enviado, sabría qué película vais a ver. Mientras que la moneda trucada todavía tiene algunas propiedades básicas de la "aleatoriedad" según se entiende el término en el área de la estadística (cae en cara con tanta frecuencia como en cruz), es <em>predecible</em>, lo que la hace inútil para la criptografía. La lección: cuando hablamos de <em>aleatorio</em> en el contexto de la criptografía, significa <em>impredecible</em>.</p>
+	<h3 id="aleatoriedad-en-inform-tica"><strong>Aleatoriedad en informática</strong></h3>
+	<p>Desafortunadamente para los criptógrafos, si hay una cosa que se les da bien a los ordenadores, es ser predecibles. Pueden ejecutar el mismo código un millón de veces, y cada vez que reciban las mismas entradas darán siempre los mismos resultados. Es algo muy positivo para la fiabilidad, pero se complica cuando se trata de la criptografía; al fin y al cabo, <em>necesitamos</em> la impredecibilidad.</p>
+	<p>La solución a este problema son los <em>generadores de números pseudoaleatorios criptográficamente seguros</em> (cryptographically-secure pseudorandom number generators o CSPRNG por sus siglas en inglés). Los CSPRNG son algoritmos que, dada una entrada impredecible en sí misma, producen un flujo de salida mucho mayor y que también es impredecible. Ese flujo puede extenderse indefinidamente, produciendo tantas salidas como sea necesario en cualquier momento del futuro. En otras palabras, si lanzaras una moneda varias veces (un proceso que es conocido por ser impredecible) y luego usaras los resultados de haber tirado la moneda como entrada para un CSPRNG, un adversario que no pudiera predecir los resultados de las monedas tampoco podría predecir la salida del CSPRNG, sin importar cuántos resultados del CSPRNG haya consumido.</p>
+	<p>A pesar de que los CSPRNG son una herramienta muy poderosa, solo constituyen la mitad de la ecuación: necesitan una entrada impredecible para operar. Pero como hemos dicho, los ordenadores no son impredecibles. ¿No nos lleva esto al inicio de la cuestión? Bueno, no del todo. Resulta que los ordenadores generalmente tienen fuentes de impredecibilidad que pueden usar, pero son bastante lentas. Lo que podemos hacer es combinar ese proceso lento de recolección de entradas impredecibles con un CSPRNG, que toma esas entradas y produce una cantidad mucho mayor de entradas más rápido. ¡Y podremos satisfacer todas nuestras necesidades de aleatoriedad!</p>
+	<p>¿Pero de dónde saca un ordenador tantas entradas impredecibles, incluso lentamente? La respuesta es <em>del mundo real</em>. Mientras que los ordenadores proporcionan una buena simplificación del mundo de la que viven los programadores, todavía existen ordenadores reales y físicos en el mundo real y físico. Y ese mundo es impredecible. Los ordenadores tienen todo tipo de formas de tomar entradas del mundo real: sensores de temperatura, teclados, interfaces de red, etc. Todos ellos ofrecen la posibilidad de tomar mediciones del mundo real y todas las mediciones tienen algún grado de inexactitud inherente. Como explicaremos en un momento, esa inexactitud es lo mismo que la impredecibilidad y puede utilizarse. Algunas fuentes de aleatoriedad impredecibles comunes incluyen medir la temperatura de la CPU con precisión alta y por lo tanto inexacta, medir el ritmo de las pulsaciones en un teclado de alta precisión, etc. Para ver cómo puede usarse esto para producir aleatoriedad impredecible, considera la pregunta: "¿Cuál es la temperatura de la habitación donde estoy ahora mismo?". Probablemente puedas estimarla con un par de grados de aproximación, pongamos entre 21 y 23 grados. Pero probablemente no tengas ni idea de qué temperatura hace con dos decimales de exactitud. ¿Son 21,77 o 23,85 grados? Midiendo la temperatura con precisión alta y usando después solo los dígitos de orden inferior del valor medido, obtienes aleatoriedad altamente impredecible, simplemente al observar el mundo que te rodea. Y los ordenadores también pueden.</p>
+	<p>En resumen:</p>
+	<ul>
+		<li>La aleatoriedad utilizada en criptografía debe ser impredecible.</li>
+		<li>Los ordenadores pueden obtener lentamente una pequeña cantidad de aleatoriedad impredecible midiendo su entorno.</li>
+		<li>Los ordenadores pueden ampliar considerablemente esta aleatoriedad usando un CSPRNG que la convierte rápidamente en una gran cantidad de aleatoriedad impredecible.</li>
+	</ul>
+	<h3 id="cubrirse-las-espaldas"><strong>Cubrirse las espaldas</strong></h3>
+	<p>Si hay una cosa sobre la que los criptógrafos son cautelosos, es la certeza. Los sistemas criptográficos parecen normalmente menos seguros de lo que se pensaba inicialmente y constantemente actualizamos nuestra comprensión de qué algoritmos son seguros de usar según qué situaciones.</p>
+	<p>Así que no debe sorprender que a los criptógrafos les guste cubrirse las espaldas usando más seguridad de la que creen necesaria, por si resulta que se equivocaban en alguna de sus suposiciones. Es algo así como la versión del criptógrafo de la práctica de la ingeniería de diseñar edificios que resistan mucho más peso, viento o calor de lo que se piensa que tendrán que soportar en la práctica.</p>
+	<p>En el caso de la aleatoriedad, esta cobertura a menudo se hace mediante la <em>mezcla</em>. Los valores aleatorios impredecibles tienen la estupenda propiedad de que si se mezclan correctamente con más valores aleatorios impredecibles, entonces el resultado es, al menos, tan impredecible como cualquiera de las entradas. Eso significa que si se mezcla un valor aleatorio que es altamente impredecible con un valor aleatorio que es algo predecible, el resultado será un valor altamente impredecible.</p>
+	<p>Esta propiedad de la mezcla es útil, porque permite mezclar valores aleatorios impredecibles de muchas fuentes. Y si más tarde descubres que una de esas fuentes era menos impredecible de lo que pensabas inicialmente, no importa; las otras fuentes vienen al rescate.</p>
+	<h3 id="lavarand"><strong>LavaRand</strong></h3>
+	<p>En Cloudflare, tenemos miles de ordenadores en los centros de datos de todo el mundo y cada uno de estos equipos necesita aleatoriedad criptográfica. Históricamente, consiguieron esa aleatoriedad usando el mecanismo predeterminado por el sistema operativo que se ejecuta en ellos, Linux.</p>
+	<p>Pero como buenos criptógrafos, siempre estamos tratando de cubrirnos las espaldas. Queríamos un sistema que garantizara que incluso si el mecanismo predeterminado para obtener aleatoriedad tuviera algún defecto, todavía estaríamos seguros. Así se nos ocurrió LavaRand.</p>
+	<p></p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/05/lava-lamps-camera.jpg" class="kg-image">
+		<figcaption>Vista desde la cámara</figcaption>
+	</figure>
+	<p></p>
+	<p>LavaRand es un sistema que utiliza lámparas de lava como fuente secundaria de aleatoriedad para nuestros servidores de producción. Una pared de lámparas de lava en el vestíbulo de nuestra oficina de San Francisco proporciona una entrada impredecible a una cámara que enfoca la pared. Una retransmisión del vídeo de la cámara se envía al CSPRNG, que proporciona un flujo de valores aleatorios que pueden utilizarse como fuente adicional de aleatoriedad para nuestros servidores de producción. Puesto que el flujo de la "lava" de las lámparas es altamente impredecible,1 "medir" las lámparas tomando imágenes de ellas es una buena manera de obtener aleatoriedad impredecible. Los ordenadores almacenan imágenes como números muy largos para que los usemos como entrada a un CSPRNG, al igual que cualquier otro número.</p>
+	<p>No somos los primeros que han hecho esto. Nuestro sistema LavaRand se inspira en un sistema similar anterior <a href="https://en.wikipedia.org/wiki/Lavarand" target="_blank">propuesto y construido</a> por Silicon Graphics y <a href="https://www.google.com/patents/US5732138" target="_blank">patentado</a> en 1996 (la patente ya ha caducado).</p>
+	<p>Ojalá no lo necesitemos nunca. Esperamos que las fuentes primarias de aleatoriedad usadas por nuestros servidores de producción se mantengan seguras y LavaRand sirva poco más que para darle estilo a nuestra oficina. Pero si resulta que nos equivocamos y que nuestras fuentes de aleatoriedad en producción tienen algún defecto, entonces LavaRand nos cubre, haciendo que Cloudflare sea un poco más difícil de hackear.</p>
+	<hr>
+	<ol>
+		<li>Noll, L.C., Mende, R.G. y Sisodiya, S., <em>Method for seeding a pseudo-random number generator with a cryptographic hash of a digitization of a chaotic system</em><br></li>
+	</ol>
+</div>

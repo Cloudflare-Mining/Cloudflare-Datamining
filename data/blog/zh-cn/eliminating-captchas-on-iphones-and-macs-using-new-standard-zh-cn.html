@@ -1,0 +1,71 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/Private-Authentication-Token-open-source-standard-to-eliminate-CAPTCHAs.png" class="kg-image"></figure>
+	<p>今天我们隆重推出 Private Attestation Token（PAT），这是一种完全无形和隐私的方式，用于验证访问网站的是真实的用户。如果访问者使用支持这些工具的操作系统，包括即将发布的 <a href="https://developer.apple.com/wwdc22/10077" target="_blank">macOS 和 iOS 版本</a>，现在能够证明他/她们是人类，而无需填写验证码（CAPTCHA ）或提供个人信息。对这些用户而言，验证码将几乎完全消失。</p>
+	<p>这对您有何意义？ <br></p>
+	<p>如果您是互联网用户：</p>
+	<ul>
+		<li>我们将使您的移动 Web 体验比其他网络更愉快、更私密。</li>
+		<li>在受支持的 iOs 或 Mac 设备（其他设备即将提供支持！）访问 Cloudflare 网络时，您不会看到验证码。<br></li>
+	</ul>
+	<p>如果您是 Web 或应用程序开发人员：</p>
+	<ul>
+		<li>知道您的用户来自真实的设备和已签名的应用，由设备提供商直接验证。</li>
+		<li>无需维护繁琐的 SDK 即可验证用户。<br></li>
+	</ul>
+	<p>如果您是 Cloudflare 客户：</p>
+	<ul>
+		<li>您什么都不用做！Cloudflare 将自动请求并使用 Private Attestation Token。</li>
+		<li>您的访问者不会看到验证码，我们将从他/她们的设备要求提供更少数据。</li>
+	</ul>
+	<h3 id="-private-attestation-token">隆重推出 Private Attestation Token </h3>
+	<p>过去一年来，Cloudflare 与 Apple、Google 等行业领军企业合作扩大了 <a href="https://www.ietf.org/archive/id/draft-ietf-privacypass-auth-scheme-01.html" target="_blank">Privacy Pass 协议</a>，以支持一种新的加密令牌。这些令牌为开发人员和安全团队简化了应用程序安全性，淘汰了传统上基于第三方 SDK、用于确定使用设备者为人类的方法。它们适用于浏览器、浏览器调用的 API 以及应用内部调用的 API。我们将这些新的令牌称为 Private Attestation Token （PAT）。今天上午，<a href="https://developer.apple.com/wwdc22/10077" target="_blank">Apple 公司宣 PAT 将被集成</a>到 iOS 16、iPad 16 和 macOS 13 中，我们期待在不久的将来会有更多的供应商宣布支持这些令牌。</p>
+	<p>Cloudflare 已将 PAT 集成到自己的 <a href="https://blog.cloudflare.com/end-cloudflare-captcha/">Managed Challenge 平台</a>中，使用这一功能的任何客户都会利用这种新技术，改善受支持设备的浏览体验。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image2-4.png" class="kg-image"></figure>
+	<h3 id="-pat-">验证码在移动环境中无法工作，PAT 淘汰了验证码</h3>
+	<p>我们已经<a href="https://blog.cloudflare.com/zh-cn/introducing-cryptographic-attestation-of-personhood-zh-cn/">多</a><a href="https://blog.cloudflare.com/moving-from-recaptcha-to-hcaptcha/">次</a><a href="https://blog.cloudflare.com/end-cloudflare-captcha/">写到</a>，验证码是一种非常糟糕的用户体验。然而，我们并没有专门讨论过，在移动设备上的体验如何变得更加糟糕。验证码是为基于浏览器的环境构建和优化的技术，并通过小部件或千篇一律的内联框架部署，导致渲染问题，或输入窗口在设备上无法完整显示。移动设备的屏幕较小，使这种技术更难使用，解决验证码更加困难。同时，渲染 JavaScript 和图像文件减慢图像加载速度，并消耗过多的客户带宽。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image5-2.png" class="kg-image"></figure>
+	<p>除了可用性外，移动环境也带来另一个挑战，因其越来越多地由 API 驱动。在 JavaScript 无法渲染或 WebView 无法调用的 API 环境中，验证码不能工作。因此，在需要质询用户的时候，移动应用开发人员往往没有一个简单的选项。他们有时会使用笨拙的 SDK 来将验证码直接嵌入到应用中。这样做需要嵌入和定制验证码，持续维护和监控，导致更高的放弃率。出于这些原因，当我们的客户今天选择显示验证码的时候，仅 20% 的时间在移动设备上显示。</p>
+	<p>我们最近发文介绍了如何使用我们的 Managed Challenge 平台来<a href="https://blog.cloudflare.com/end-cloudflare-captcha/">将验证码使用减少了 91%</a>。但由于移动设备上的验证码体验要差得多，我们一直另外研究如何进一步削减移动设备上的验证码使用。</p>
+	<h3 id="-">当站点不能质询访问者时，就会收集更多数据</h3>
+	<p>因此，您要么不能使用验证码来保护 API，要么用户体验太糟糕，以至于无法在移动设备上使用。还有什么选项可以用来确认访问者是真实的呢？一个常见的方法是查看特定于客户端的数据，这通常称为指纹识别。 </p>
+	<p>您可以要求提供设备 IMEI 和安全补丁版本，查看屏幕大小或字体，检查是否存在指示人类行为的 API（如交互式触摸屏事件），并将其与所声称的客户端的预期结果进行比较。然而，收集以上所有数据成本都很高，而且归根到底也不尊重最终用户。作为一家非常关心隐私并帮助改善互联网的公司，我们希望在不影响我们所提供服务的安全性的前提下，尽可能少地使用数据。</p>
+	<p>另一种选择是使用提供设备验证检查的系统级 API。其中包括 Apple 平台上的<a href="https://developer.apple.com/documentation/devicecheck" target="_blank">DeviceCheck</a> 和 Android 上的 <a href="https://developer.android.com/training/safetynet/attestation" target="_blank">SafetyNet</a>。应用程序服务可将这些客户端 API 与其自己的服务一起使用，以确定正在与其通信的客户端是有效的设备。然而，采用这些 API 要求同时更改应用程序和服务器，而且维护难度不亚于 SDK。</p>
+	<h3 id="private-access-token-">Private Access Token（私有访问令牌）不使用指纹识别方法来进行验证，从而显著加强了隐私保护</h3>
+	<p>这是 PAT 最强大的一面。通过与第三方合作（例如设备制造商，它们已经拥有能帮助我们验证某个设备的数据），我们将能抽象出验证过程的部分并确认数据，而<em><strong>不用实际收集</strong>、<strong>接触或存储数据</strong></em>。我们并不直接质询设备，而是要求设备提供商为我们这样做。</p>
+	<p>在传统网站设置中，使用最常见的验证码提供者：</p>
+	<ul>
+		<li>您访问的网站知道 URL、您的 IP 和一些额外的用户代理数据。</li>
+		<li>验证码提供者知道您访问的网站、您的 IP、您的设备信息，收集页面上的交互数据，并将这些数据与 Google 看到过你的其他网站联系起来。这将为您建立一个档案，包括两个网站和设备上的所有浏览活动，以及您个人与某个页面进行的互动。</li>
+	</ul>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/Screen-Shot-2022-06-07-at-10.24.12-AM.png" class="kg-image"></figure>
+	<p>在使用 PAT 时，设备数据是隔离的，并明确地不在相关方（制造商和 Cloudflare）之间进行交换。</p>
+	<ul>
+		<li>网站只知道您的 URL 和 IP，这是建立连接所必须知道的信息。</li>
+		<li>设备制造商（验证者）仅知道验证您的设备所需的数据，但不会得知您访问什么网站，也不知道您的 IP。</li>
+		<li>Cloudflare 知道您访问的网站，但不知道您的任何设备或互动信息。<br></li>
+	</ul>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image3-2.png" class="kg-image"></figure>
+	<p>我们实际上不需要也不想要为此过程收集的数据，我们只想验证访问者是否伪造其设备或用户代理。Private Attestation Token 允许我们直接获取验证状态，而不需要任何底层数据。这允许我们对重要信号的真实性更有信心，而不需要我们自己直接查看这些信号。<br></p>
+	<h3 id="private-access-token--1">Private Access Token 如何分隔数据</h3>
+	<p>通过使用 <a href="https://www.ietf.org/archive/id/draft-ietf-privacypass-auth-scheme-01.html#name-security-considerations" target="_blank">Private Access Token</a>，四方同意在一个共同的框架内工作，以生成和交换匿名、不可伪造的令牌。如果没有这四方的参与，PAT 将无法工作。</p>
+	<ol>
+		<li><strong>源</strong>。一个从客户端接受请求的的网站、应用或 API。当网站接收到发送到其源的请求时，该源必须知道从发出请求的客户端寻找和请求令牌。对 Cloudflare 客户而言，Cloudflare 充当源（代表客户）并处理令牌的请求和处理。</li>
+		<li><strong>客户端</strong>。访问者用于访问源的任何工具，通常是 Web 浏览器或移动应用。在我们的示例中，客户端是一个<a href="https://developer.apple.com/wwdc22/10077" target="_blank">移动版 Safari 浏览器</a>。</li>
+		<li><strong>验证者</strong>。验证者是客户端要求在颁发令牌之前证明某些内容（即移动设备具有有效的IMEI）的一方。在下面的示例中，验证者是设备提供商 Apple。</li>
+		<li><strong>发行者</strong>。发行者是这个流程中唯一实际生成或发行令牌的一方。证明者对源选择信任的发行者进行 API 调用，指示发行者生成一个令牌。在我们的案例中，Cloudflare 也将是发行者。<br></li>
+	</ol>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/Screen-Shot-2022-06-07-at-2.01.38-PM.png" class="kg-image"></figure>
+	<p>在如下示例中，一个访问者打开其 iPhone 上的 Safari 浏览器并尝试访问 example.com。</p>
+	<ol>
+		<li>由于 Example 使用 Cloudflare 托管它的源，Cloudflare 将要求浏览器提供令牌。</li>
+		<li>Safari 支持 PAT，因此它将向 Apple 的证明者进行 API 调用，要求后者提供证明。</li>
+		<li>Apple 证明者将检查各种设备组件，确认它们是有效的，然后向 Cloudflare 发行者进行 API 调用（因为作为源的 Cloudflare 选择使用 Cloudflare发行者）。</li>
+		<li>Cloudflare 发行者生成一个令牌，将其发送给浏览器，后者将其发送到源。</li>
+		<li>Cloudflare 接收到令牌，使用它确定我们不需要向这个用户显示验证码。</li>
+	</ol>
+	<p>这听起来可能有点复杂，但最妙的一点是，在这个过程中，<em><strong>网站没有采取任何行动</strong></em>。请求令牌、验证、令牌生成、传递，所有这些都是由用户和网站都不可见的第三方在幕后完成的。Apple 和 Cloudflare 合作提高了这一请求的安全性，减少了来回传递的数据，并消除用户看到验证码的必要性。我们通过收集和交换比过去更少的用户数据来做到这一点。<br></p>
+	<h3 id="-private-access-token-">大多客户不需要做任何事情，就可以使用 Private Access Token。</h3>
+	<p>要利用 PAT，您要做的就是在 Firewall 规则中选择 Managed Challenge 而非 Legacy CAPTCHA 作为响应选项。超过 65% 的 Cloudflare 客户已经在这样做。我们的 Managed Challenge 平台将自动要求每个请求提供令牌，如果客户端兼容 Private Access Token，我们就会收到一个令牌。如果您的访问者使用 iOS 或 macOS 设备，只要他们升级了操作系统，就会自动看到更少的验证码。 </p>
+	<p>对我们来说，这只是第一步。我们正在积极努力使其他客户端和设备制造商也能利用 PAT 框架。只要一个新的客户端开始使用 PAT 框架，从该客户端到您的网站的所有流量将自动开始要求提供令牌，您的访问者将自动看到更少的验证码。 </p>
+	<p>我们很快就会将 PAT 集成到其他安全产品中。敬请关注近期公告。</p>
+</div>

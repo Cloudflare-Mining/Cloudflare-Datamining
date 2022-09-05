@@ -1,0 +1,41 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/image-2-1.png" class="kg-image"></figure>
+	<p>过去一个月内，多家 VoIP（基于 IP 的语音通话）提供商遭受到自称 <a href="https://en.wikipedia.org/wiki/REvil" target="_blank">REvil</a> 的实体发动的<a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/" target="_blank">分布式拒绝服务</a>（DDoS）攻击。这些多手段攻击同时使用针对关键 HTTP 网站和 API 端点的 L7 攻击，以及针对 VoIP 服务器基础设施的 L3/4 攻击。在某些情况下，这些攻击对目标的 VoIP 服务和网站/API 可用性造成重大影响。</p>
+	<p>Cloudflare 的网络覆盖全球，拥有复杂的流量过滤套件，以及对攻击模式和威胁情报的独特视角，能够有效地保护和加速语音和视频基础设施。</p>
+	<p>如果您或您的组织已成为 DDoS 攻击、赎金攻击和/或勒索企图的目标，立即寻求帮助来保护您的互联网资产。我们建议不要支付赎金，并<a href="https://www.cloudflare.com/learning/ddos/ransom-ddos-attack/" target="_blank">向当地执法机构报告</a>。</p>
+	<h3 id="-ip-">基于 IP 的语音（和视频、表情符号、会议、猫表情包和远程教学）</h3>
+	<p>基于 IP 的语音（VoIP）用于描述一组实现通过互联网进行多媒体通信的技术。这些技术让您通过 Facetime 与朋友通话，通过 Zoom 参加远程学习，甚至<a href="https://en.wikipedia.org/wiki/Voice_over_LTE" target="_blank">从您的手机拨打一些“常规”电话</a>。</p>
+	<figure class="kg-card kg-image-card"><img src="https://lh5.googleusercontent.com/fBF3R0cMoiiEcrbpmZOCBTNJj2hyTWnxNDcKQGJFragPFf1vf-9sIlPrYOYtHo4r3pJqTqCiVJCG6bSb0vQ4-EcsUJRpwd2tacBhHsHAXN5TMv8CUQKxeXibq4dBYnnMKCPLnf6N=s0" class="kg-image" alt="Child on a video conference all"></figure>
+	<p>VoIP 背后的原理类似于电路交换网络上的传统数字电话呼叫。主要区别在于，编码后的媒体（如语音或视频）被分割成小的比特单位，按照特别定义的媒体协议，作为 IP 数据包的有效负载通过互联网传输。</p>
+	<p>这种语音数据的“分组交换”，与传统的“电路交换”相比，可以更有效地利用网络资源。因此，通过 VoIP 呼叫的成本效益远远高于普通老式电话业务（POTS）。切换到 VoIP 能为企业<a href="https://telzio.com/blog/cost-benefits-switching-voip-service/#:~:text=Companies%20can%20reduce%20monthly%20telecom%20costs%20by%20over%2050%25%20by%20switching%20to%20VoIP." target="_blank">减少 50% 以上的电信成本</a>，因此三分之一的企业已经<a href="https://hostingtribunal.com/blog/voip-stats/#:~:text=61%25%20of%20businesses%20switch%20to%20a%20VoIP%20system" target="_blank">采用了 VoIP 技术</a>。VoIP 灵活且可扩展，对于在疫情期间让人们远程聚集在一起，这种技术特别有用。</p>
+	<p>大多数 VoIP 呼叫幕后的一个重要协议是<a href="https://en.wikipedia.org/wiki/Session_Initiation_Protocol" target="_blank">会话初始协议</a> （SIP）。SIP 最初在 <a href="https://datatracker.ietf.org/doc/html/rfc2543" target="_blank">RFC-2543</a> （1999）中定义，旨在作为在两方或多方之间发起语音或视频呼叫（“会话”）的一种灵活的模块化协议。</p>
+	<h3 id="-voip-">速度是 VoIP 的关键</h3>
+	<p>人与人之间的实时通信需要让人感觉自然、即时和反应迅速。因此，作为一个优秀的 VoIP 服务，最重要的功能之一就是速度。用户体验到的是自然的音频和高分辨率的视频，没有任何延迟或卡顿。用户对通话质量的感受通常可以使用各种指标来密切衡量和跟踪，例如<a href="https://en.wikipedia.org/wiki/Perceptual_Evaluation_of_Speech_Quality" target="_blank">语音质量的感知评估（PESQ）</a>和<a href="https://en.wikipedia.org/wiki/Mean_opinion_score" target="_blank">平均主观得分（MOS）</a>。虽然 SIP 和其他 VoIP 协议可使用 <a href="https://www.cloudflare.com/learning/ddos/glossary/tcp-ip/" target="_blank">TCP</a> 或 <a href="https://www.cloudflare.com/learning/ddos/glossary/user-datagram-protocol-udp/" target="_blank">UDP</a> 作为底层协议来实施， 因路由器和服务器处理 UDP 的速度更快，一般会选择 UDP。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/pasted-image-0--1-.png" class="kg-image"></figure>
+	<p>UDP 是一种不可靠的、无状态的、没有服务质量 (QoS) 保证的协议。这意味着路由器和服务器通常使用更少的内存和计算能力来处理 UDP 包，因此每秒可处理更多的包。处理数据包速度越快，数据包有效负载（编码媒体）的组装就越快，因此通话质量就越好。</p>
+	<p>按照<em>越快越好</em>的原则，VoIP 服务器将尝试按照先来先服务原则尽快处理数据包。由于 UDP 是无状态的，服务器不知道哪些包属于当前通话，哪些包尝试发起新的通话。那些细节以请求和响应的形式存在 SIP 标头中，直至网络堆栈的更高层级才会被处理。</p>
+	<p>当数据包的秒速率超过路由器或服务器的处理能力时，<em>越快越好</em>的原则实际上变成了一个缺点。传统电路交换网络系统会在达到容量时拒绝新的连接并尝试在不损害质量的情况下维持原有连接。但对 VoIP 服务器而言，为了处理尽可能多的数据包，在超过其容量时将无法处理所有包或通话。这就会导致进行中的通话发生延迟和中断，以及发起或接受新呼叫失败。</p>
+	<p>在没有部署适当保护措施的情况下，提供卓越通话体验的竞赛是以牺牲安全为代价的，给攻击者提供了可乘之机。</p>
+	<h3 id="-voip-ddos-">对 VoIP 服务器发动 DDoS 攻击</h3>
+	<p>攻击者可利用 UDP 和 SIP 协议，发送大量特制的 UDP 包来压垮未受保护的 VoIP 服务器。攻击者压垮 VoIP 服务器的一种方法是假装发起呼叫。每次收到恶意的呼叫发起请求时，服务器就会使用计算能力和内存来验证请求。如果攻击者能产生足够多的呼叫发起请求，目标服务器就会被压垮，无法处理合法呼叫。这是应用到 SIP 的典型 DDoS 技术。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/image-3-1.png" class="kg-image" alt="Illustration of a DDoS attack preventing access to legitimate clients"></figure>
+	<p>这一技术的一种变体是 SIP 反射攻击。和前一种技术一样，攻击者也是使用恶意呼叫发起请求。但在这种变体中，攻击者不是向目标直接发送恶意流量。取而代之，攻击者将恶意流量随机发送到互联网中成千上万毫无警觉的 SIP 服务器，并将恶意流量的来源伪装成目标受害者的来源。这导致数以千计的 SIP 服务器开始向受害者发送不请自来的回应，后者必须使用其计算资源来识别这些回应是否合法。这个过程也会严重消耗受害服务器处理合法通话所需的资源，导致广泛的拒绝服务事件。如果缺乏适当的保护措施，VoIP 服务极易受到 DDoS 攻击。</p>
+	<p>下图显示最近发生的一次多手段 UDP DDoS 攻击，目标是受 Cloudflare <a href="https://www.cloudflare.com/magic-transit/" target="_blank">Magic Transit</a> 服务保护的 VoIP 基础设施。攻击峰值略高于 70 Gbps 和 1600 万个数据包/秒。虽然这不是我们见过的最大型攻击，如此规模的攻击可对未受保护的基础设施产生巨大影响。这次攻击持续了 10 个多小时，被自动检测到并予以缓解。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/1.png" class="kg-image" alt="Graph of a 70 Gbps DDoS attack against a VoIP provider"></figure>
+	<p>下面的两张图显示上周另外两次针对 SIP 基础设施的类似攻击。在第一张图中，我们看到攻击使用了多种协议，大部分流量来自（欺骗）DNS 反射和其他常见的放大和反射手段。这些攻击的峰值超过 130 Gbps 和 1740 万 pps。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/2.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/3.png" class="kg-image" alt="Graph of a 130 Gbps DDoS attack against a different VoIP provider"></figure>
+	<h3 id="-voip--1">保护 VoIP 服务，性能毫发无损</h3>
+	<p>提供高质量 VoIP 服务最重要的因素之一是速度。延迟越低越好。Cloudflare <a href="https://www.cloudflare.com/de-de/magic-transit/" target="_blank">Magic Transit</a> 服务可帮助保护关键 VoIP 基础设施，但不会影响延迟和通话质量。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/4.png" class="kg-image" alt="Diagram of Cloudflare Magic Transit routing"></figure>
+	<p>Cloudflare 的 Anycast 架构与网络的庞大规模相结合，可最大程度降低甚至改善通过 Cloudflare 路由的流量的延迟。欢迎查看 Cloudflare 最近在 Speed Week 期间发布的<a href="https://blog.cloudflare.com/magic-makes-your-network-faster/">博文</a> ，其中详细介绍了工作原理，还包含测试结果，显示一个真实客户的网络使用 Magic Transit 时，全球性能改善了 36%。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/5.png" class="kg-image" alt="World map of Cloudflare locations"></figure>
+	<p>此外，对接收的每一个数据包，Cloudflare 数据中心都会使用多层路径外检测来分析是否存在 DDoS 攻击，从而避免了延迟。一旦检测到攻击，边缘就会产生一个匹配该攻击数据包特性的实时指纹。然后，Linux 内核 eXpress Data Path (XDP) 会利用该指纹来匹配并瞬间丢弃攻击数据包，但不会对合法数据包产生任何影响。我们最近还部署了额外的特定缓解规则来检测 UDP 流量，以确定是否为有效的 SIP 流量。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/6.png" class="kg-image" alt="Conceptual diagram of Cloudflare’s DDoS mitigation systems"></figure>
+	<p>检测和缓解是在 Cloudflare 的每一台边缘服务器上自主进行的——不存在容量有限、部署范围有限的“清洗中心”。此外，威胁情报会自动在我们的网络上实时共享，将有关该攻击的信息“教给”其他边缘服务器。</p>
+	<p>边缘监测也是完全可配置的。Cloudflare <a href="https://www.cloudflare.com/de-de/magic-transit/" target="_blank">Magic Transit</a> 客户可使用 <a href="https://developers.cloudflare.com/waf/ddos-l34-mitigation" target="_blank">L3/4 DDoS 托管规则集</a> 来微调和优化其 DDoS 保护设定，也可使用 <a href="https://developers.cloudflare.com/magic-firewall/" target="_blank">Magic Firewall</a> 来定制数据包级别（包括深度包检测）防火墙规则，从而实施积极的安全模型。</p>
+	<h3 id="-">将人们远程聚集在一起</h3>
+	<p>Cloudflare 的使命是帮助建立一个更好的互联网。这个使命的一个重要部分就是，确保世界各地的人们能不受干扰地与朋友、家人和同事沟通——尤其是疫情当下。我们的网络处于帮助世界保持联系的有利位置，不管是<a href="https://blog.cloudflare.com/announcing-our-real-time-communications-platform/">帮助开发者构建实时通信系统</a>，还是帮助 VoIP 提供商保持在线。</p>
+	<p>我们的网络速度，加上我们始终启用的自主 DDoS 保护技术，能帮助 VoIP 提供商继续服务其客户，无需牺牲性能或不得不屈服于赎金 DDoS 或勒索者。</p>
+	<p>与 Cloudflare 专家交谈以<a href="https://www.cloudflare.com/lp/voip-ddos-protection/" target="_blank">了解更多信息</a>。<strong>受到攻击？</strong>立即拨打我们的<a href="https://www.cloudflare.com/under-attack-hotline/" target="_blank">热线</a>。</p>
+</div>

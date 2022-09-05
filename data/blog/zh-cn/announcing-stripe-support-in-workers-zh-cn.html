@@ -1,0 +1,89 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image1-57.png" class="kg-image"></figure>
+	<p>在应用中处理支付是建立在线业务的关键。对于许多开发者来说，处理支付的主要选择是 <a href="https://stripe.com/" target="_blank">Stripe</a>。自从大约七年前我第一次接触 Stripe 以来，这项服务的发展已经远远超出了简单的支付处理。在<a href="https://blog.cloudflare.com/building-black-friday-e-commerce-experiences-with-jamstack-and-cloudflare-workers/">我去年分享的电子商务示例应用程序</a>中，Stripe使用 <a href="https://stripe.com/connect" target="_blank">Connect </a>产品管理了一个完整的卖家市场。对于那些不满足于接受支付功能的开发者来说，Stripe 的产品套件非常适用。</p>
+	<p>与许多流行的 JavaScript 包一样，早期版本的 Stripe SDK 有核心的 Node.js 依赖项。就 Stripe 而言，它直接与核心 Node.js 库（比如 'net/http'） 交互，以处理 HTTP 交互。对 Cloudflare Workers 这个基于 V8 的运行时来说，这意味着官方 Stripe JS 库无法工作；您必须回退以使用 Stripe （有非常完善的文档说明）的 REST API。如此以来，你会失去使用 Stripe 原生 JS 库的好处——比如编辑器中的自动类型检查，以及'Stripe .customers.create()' 等函数调用的简单性，因而必须手动构建 HTTP 请求并与 Stripe 的各种功能交互。</p>
+	<p>今年 4 月，我们说过我们<a href="https://blog.cloudflare.com/node-js-support-cloudflare-workers/">正专注于增加</a><a href="https://workers.cloudflare.com/works" target="_blank"> Workers 所兼容的</a> JavaScript 包数量：</p>
+	<p>我们将不断努力，直至用户能无缝导入流行 Node.js 库为止。这是一项规模宏大且持续进行的工作，但我们认为非常值得。<br></p>
+	<p>今天，我很高兴能宣布 <a href="https://github.com/stripe/stripe-node" target="_blank"><code>stripe</code></a> JS 包对 Cloudflare Workers 的普遍可用。您现在可在项目中直接使用原生 Stripe SDK 了！想要立刻开始使用，请在您的项目中安装 <code>stripe</code>：`npm i stripe`。</p>
+	<p>对于已经将站点部署到 Cloudflare Pages 的开发人员来说，这也会提供一个绝佳的机会，可在其应用程序中直接使用 Stripe。本周我们宣布了 Cloudflare Pages 对无服务器函数的支持，因此，只需在您的 Pages 项目增加几行 JavaScript 代码，就能为您的数字产品接受付款，或为您的会员网站处理订阅。不需额外配置，而且会自动扩展，一如您的 Pages 站点。</p>
+	<p>我们准备了一个示例开源代码库，展示如何将 <a href="https://stripe.com/payments/checkout" target="_blank">Stripe Checkout</a> 集成到 Pages 应用中。不需要额外配置——正如我们昨日所宣布的那样，Pages 的新 Workers 函数功能允许您部署可无限扩展的函数，只需在您的项目文件中添加一个新的`functions`文件夹。请在 <a href="https://stripe.pages.dev" target="_blank">stripe.pages.dev</a> 查看实例演示，或<a href="https://github.com/cloudflare/stripe.pages.dev" target="_blank">浏览 Github 上的开源代码库</a>。</p>
+	<p>安装 SDK 后，您就可以开始在应用程序中直接接受支付。下面的例子展示了如何启动一个新的 <a href="https://stripe.com/docs/payments/accept-a-payment?integration=checkout" target="_blank">Checkout 会话</a>，并重定向到 Stripe 托管的 Checkout 页面：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-js">const Stripe = require("stripe");
+
+const stripe = Stripe(STRIPE_API_KEY, {
+  httpClient: Stripe.createFetchHttpClient()
+});
+
+export default {
+  async fetch(request) {
+    const session = await stripe.checkout.sessions.create({
+      line_items: [{
+        price_data: {
+          currency: 'usd',
+          product_data: {
+            name: 'T-shirt',
+          },
+          unit_amount: 2000,
+        },
+        quantity: 1,
+      }],
+      payment_method_types: [
+        'card',
+      ],
+      mode: 'payment',
+      success_url: `${YOUR_DOMAIN}/success.html`,
+      cancel_url: `${YOUR_DOMAIN}/cancel.html`,
+    });
+
+    return Response.redirect(session.url)
+  }
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>在 Cloudflare Workers 中原生支持 Stripe SDK，您可以利用的将不限于支付处理。<a href="https://stripe.com/docs/api?lang=node" target="_blank">Stripe 丰富文档</a>中的任何 JavaScript 示例在 Workers 中可直接运行，无需任何更改。</p>
+	<p>具体而言，通过使用 Workers 来处理大量可用的 Stripe webhook，您可以更好地掌握现有系统的运行情况，无需启动任何新的基础设施。下面的例子展示了如何安全地验证对 Worker 函数的传入 webhook 请求，并通过解析webhook 中的数据来执行业务逻辑：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-js">const Stripe = require("stripe");
+
+const stripe = Stripe(STRIPE_API_KEY, {
+  httpClient: Stripe.createFetchHttpClient()
+});
+
+export default {
+  async fetch(request) {
+    const body = await request.text()
+    const sig = request.headers.get('stripe-signature')
+    const event = stripe.webhooks.constructEvent(body, sig, secret)
+
+    // Handle the event
+    switch (event.type) {
+      case 'payment_intent.succeeded':
+        const paymentIntent = event.data.object;
+        // Then define and call a method to handle the successful payment intent.
+        // handlePaymentIntentSucceeded(paymentIntent);
+        break;
+      case 'payment_method.attached':
+        const paymentMethod = event.data.object;
+        // Then define and call a method to handle the successful attachment of a PaymentMethod.
+        // handlePaymentMethodAttached(paymentMethod);
+        break;
+      // ... handle other event types
+      default:
+        console.log(`Unhandled event type ${event.type}`);
+    }
+
+    // Return a response to acknowledge receipt of the event
+    return new Response(JSON.stringify({ received: true }), {
+      headers: { 'Content-type': 'application/json' }
+    })
+  }
+}
+
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>我们同时宣布一个与 Stripe 合作的<a href="https://github.com/stripe-samples/stripe-node-cloudflare-worker-template" target="_blank">新 Workers 模板</a>。该模板将帮助您使用我们的最佳实践来启动使用 Stripe 的 Workers 项目。</p>
+	<p>不到 5 分钟，您就能开始为您的下一个数字产品或会员业务接受支付了。您也能通过单一代码库在边缘处理和验证传入 webhook 。这一切无需前期成本和服务器配置，也不用考虑任何标准扩展问题。把您的无服务器函数部署到 Cloudflare 边缘，就可以开始赚钱了！</p>
+	<blockquote>我们 Stripe 是 Cloudflare Workers 的忠实粉丝。借助边缘上的杰出性能和超棒的无服务器开发体验，我们都很想看到你们能以怎样的新方式来使用 Stripe 创建精彩应用。<br>— Brian Holt，Stripe</blockquote>
+	<p>这个针对 Stripe JavaScript SDK 的更新令人难以置信，我们都兴奋不已。我们也很想知道您会利用 Workers 对 Stripe 的原生支持创造出怎样的应用。欢迎登录我们的 Discord 服务器，并在 #what-i-built 频道分享您的作品——<a href="https://cloudflare.community/" target="_blank">在此获得邀请</a>。</p>
+</div>

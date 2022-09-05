@@ -1,0 +1,80 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image1-32.png" class="kg-image" alt="Security for SaaS Providers"></figure>
+	<p>「サービスとしてのソフトウェア（SaaS）」の最大手プロバイダー数社が、Cloudflareを基礎インフラとして使用し、高速の読み込み、比類ない冗長性、最強のセキュリティを実現しています。その根底にあるのが、当社の<a href="https://blog.cloudflare.com/cloudflare-for-saas/">Cloudflare for SaaS</a> 製品です。本日、Cloudflareをご利用いただいているSaaSプロバイダーに、顧客アプリケーションのセキュリティ強化に役立つ新ツールをご提供します。</p>
+	<p>Enterpriseプランのお客様には、顧客ごとのニーズに応じた、WAFルールセットを簡単に作成してデプロイできるWAF for SaaSをご提供します。これにより、SaaSプロバイダーは、セキュリティ要件に応じ、さまざまな形で顧客をグループ分けできます。 </p>
+	<p>また、開発中のアプリケーションがリリース間近な開発者向けとして、Freeプラン、Proプラン、Businessプランのお客様に、Cloudflare for SaaS製品の無料枠をご用意しました。この新たなサービスにより、ご利用のアカウントでカスタムホスト名を100個、無料で取得できるようになり、プロビジョニングやテストにご利用いただけます。さらに、アプリケーションをスケールしやすいよう、カスタムホスト名の使用料金を月額2ドルから10セントへ引き下げます。 </p>
+	<p>しかし、それだけではありません。Cloudflareでは、セキュリティはすべての人が利用できるものであるべきだと考えています。そこで、新しい<a href="https://blog.cloudflare.com/ja-jp/waf-for-everyone-ja-jp/">WAFルールセットをFreeプランのお客様</a>にも拡大適用し、すべてのお客様がご自身のアプリケーションと顧客アプリケーションの両方を保護できるようにします。</p>
+	<h2 id="saas-">SaaSインフラを誰でも利用可能に</h2>
+	<p>Cloudflareにとって、無料枠の設定はこだわりのひとつでもあります。すべてのお客様が安全にオンラインの環境を確保できるよう、すべてのお客様に当社ネットワークを活用していただくことがその根底にあります。当社では本日から、新たなSaaSサービスの構築を目指すお客様にもこのサポートを拡大し、Cloudflare for SaaSの無料枠をご利用いただけるようにします。これにより、ご利用開始時点から100個のカスタムホスト名を無料で利用可能になります。この100個のカスタムホスト名は、Cloudflare for SaaSの新規および既存のお客様に自動で割り当てられます。さらに、カスタムホスト名の使用料も月額2ドルから10セントへと引き下げることで、アプリケーションのリリースやスケールに尽力するSaaSプロバイダーを支援します。Cloudflare for SaaSをすでにお使いのお客様については、次回のご請求サイクルからカスタムホスト名の新料金が反映されます。 </p>
+	<p>Cloudflare for SaaSは、SaaSプロバイダー向けのTLS証明書発行製品として始まりました。現在は、お客様が顧客の安全性とセキュリティを維持するために一層のセキュリティを提供できるよう支援しています。</p>
+	<h2 id="waf-for-saas-">WAF for SaaSの紹介</h2>
+	<p>SaaSプロバイダーの顧客層は、家族経営のスモールビジネスから老舗銀行まで多様です。規模を問わずどのような顧客に対しても、SaaSプロバイダーとして最高の保護を提供できることが重要です。 </p>
+	<p>Cloudflareでは最高のWebアプリケーションファイアウォールを作り上げるため、長年にわたり尽力してきました。高度なゼロデイ脆弱性保護を提供するマネージドルールから、一般的な手口の攻撃をブロックするOWASPルールまで、当社はお客様がご自身を保護するための最善のツールを提供してきました。そして今度は、顧客の安全とセキュリティの確保に責任を負うSaaSプロバイダーにも同じツールを提供したいと考えています。 </p>
+	<p>Cloudflare for SaaSのメリットの一つは、SaaSプロバイダーが自身のSaaSゾーンでセキュリティルールの作成や設定を行い、それをそのプロバイダーの顧客が自動的に引き継げることです。そうとはいうものの、一つのルールですべてをカバーできるわけではありません。そこで当社は、Enterpriseプランのお客様がさまざまなWAFルールセットを作成し、それを顧客向けに拡張して個別のセキュリティパッケージとして提供できるようにします。それにより、エンドユーザーのニーズに合わせて、レベルの異なる保護を提供できるようになります。</p>
+	<h2 id="-">利用開始</h2>
+	<p>WAF for SaaSの設定は簡単です。以下に、さまざまな顧客に合わせて多様なバケットのWAFルールを設定する方法を例示します。 </p>
+	<p>作成できるルールセットの数に制限はありませんので、顧客向けの設定をいくつか作成することも、顧客ごとに個別のルールセットをデプロイすることもできます。お客様の用途に合わせて、ご自由にお使いください。 </p>
+	<h2 id="--1">エンドツーエンドの例</h2>
+	<h3 id="-1-">ステップ1 - カスタムホスト名の定義</h3>
+	<p>Cloudflare for SaaSのお客様は、カスタムホスト名を作成することで、顧客のドメインを定義します。カスタムホスト名は、どのドメインをSaaSプロバイダーのオリジンにルーティングする必要があるかを示します。カスタムホスト名は、<code>example.com</code>のように特定のドメインを定義することも、<code>*.example.com</code>のようにワイルドカードに拡張して、example.comのサブドメインがSaaSサービスにルーティングされるようにすることもできます。WAF for SaaSは、両タイプのカスタムホスト名をサポートしているため、SaaSプロバイダーは保護範囲を柔軟に選択することができます。</p>
+	<p>最初のステップは、カスタムホスト名を作成して顧客ドメインを定義することです。これはダッシュボードかAPIを通じて行います。 </p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>curl -X POST "https://api.cloudflare.com/client/v4/zones/{zone:id}/custom_hostnames" \
+     -H "X-Auth-Email: {email}" -H "X-Auth-Key: {key}"\
+     -H "Content-Type: application/json" \
+     --data '{
+
+"Hostname":{“example.com”},
+"Ssl":{wildcard: true}
+}'
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h3 id="-2-">ステップ2 - カスタムメタデータをカスタムホスト名に関連付ける</h3>
+	<p>次に、カスタムホスト名（顧客ドメイン）と、それに付けるファイアウォールルールセットの関連付けを行います。 </p>
+	<p>これは、JSON blobをカスタムホスト名に関連付けることで行います。当社製品の<a href="https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-metadata/" target="_blank">Custom Metadata</a>であれば、API を介して簡単に関連付けることができます。</p>
+	<p>以下の例では、2つのフィールド（「customer_id」と「security_level」）を持つJSON blobが、<code>*.example.com</code>と<code>example.com</code>の各リクエストに関連付けられます。</p>
+	<p>カスタムメタデータには、あらかじめ決められたスキーマはありません。フィールド名や構造は、お客様のニーズに合わせて自由にカスタマイズすることができます。この例では、「security_level」というタグを選択し、3つの値（低、中、高）を割り当てることを想定しています。これによって、3つの異なるルールセットが起動されます。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>curl -sXPATCH "https://api.cloudflare.com/client/v4/zones/{zone:id}/custom_hostnames/{custom_hostname:id}"\
+    -H "X-Auth-Email: {email}" -H "X-Auth-Key: {key}"\
+    -H "Content-Type: application/json"\
+    -d '{
+"Custom_metadata":{
+"customer_id":"12345",
+“security_level”: “low”
+}
+}'
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h3 id="-3-">ステップ3 - タグに基づいてセキュリティ製品を起動</h3>
+	<p>最後に、カスタムホスト名に基づいてルールを起動します。カスタムメタデータのフィールド、たとえば「security_level」は、WAFが稼働するルールセットエンジンにあります。この例では、「security_level」を使って、WAF、Firewall Rules、Advanced Rate Limiting、Transform Rulesなどの製品のさまざまな設定を起動することが可能です。</p>
+	<p>ルールは、以下のようにダッシュボードまたはAPIを介して作成できます。ここでは、「security_level」を<em>低</em>に設定し、トラフィックに対するレート制限ルールを起動します。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>curl -X PUT "https://api.cloudflare.com/client/v4/zones/{zone:id}/rulesets/phases/http_ratelimit/entrypoint" \
+    -H "X-Auth-Email: {email}" -H "X-Auth-Key: {key}"\
+    -H "Content-Type: application/json"\
+    -d '{
+
+"rules": [
+              {
+                "action": "block",
+                "ratelimit": {
+                  "characteristics": [
+                    "cf.colo.id",
+                    "ip.src"
+                  ],
+                  "period": 10,
+                  "requests_per_period": 2,
+                  "mitigation_timeout": 60
+                },
+                "expression": "lookup_json_string(cf.hostname.metadata, \"security_level\") eq \"low\" and http.request.uri contains \"login\""
+              }
+            ]
+          }}'
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Advanced Rate Limitingについては、Cloudflareの<a href="https://developers.cloudflare.com/waf/rate-limiting-rules/" target="_blank">ドキュメン</a>トに詳細を記載しています。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image2-30.png" class="kg-image"></figure>
+	<h2 id="--2">まとめ</h2>
+	<p>当社は、SaaSを提供するお客様のインフラニーズを満たすプロバイダーであることを嬉しく思います。カスタムドメインからTLS証明書、Webアプリケーションファイアウォールまで、当社でお手伝いできます。Cloudflare for SaaSを今すぐ使い始めましょう。Enterpriseを既にお使いのお客様であれば、担当のアカウントチームに連絡してWAF for SaaSの利用を開始してください。</p>
+</div>

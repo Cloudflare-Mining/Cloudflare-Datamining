@@ -1,0 +1,34 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/01/image3-38.png" class="kg-image" alt="Cloudflare 等待室"></figure>
+	<p>今天，我們很高興地宣佈 Cloudflare 等待室上線！該服務將首先通過名為 Fair Shot 項目的新計畫提供給指定客戶，該計畫旨在解決因 COVID-19 疫苗接種需求爆增而造成預約登記網站癱瘓的問題。該服務不久後還將在商業和企業方案中全面推出。 </p>
+	<h3 id="-">等一下......等待室怎麼會令人期待？</h3>
+	<p>我們大多都很熟悉等待室這個概念，但一想到要待在等待室裡，恐怕沒有多少人會感到興奮。通常，我們第一次體驗等待室是在醫生的辦公室裡——是的，您預約了，但有時醫生會遲到 (或其中一位患者遲到了)。鑒於醫生一次只能給一個病人看診......於是便有了等待室，這是一種讓病人排隊就診的機制。</p>
+	<p>儘管伺服器可以處理的同時請求比醫生多，但也會不堪重負。在以前沒有 COVID 的日子裡，如果您嘗試過購買流行音樂會或活動的門票，那麼您很可能已經體驗過線上等待室。這限制傳入應用程式的請求數量，並將這些請求放入一個虛擬佇列中。一旦進入應用程式的使用者數量減少，就可以讓新的使用者進入，但數量限制在事先定義好的應用程式可以處理的閾值內。這樣可以防止為應用程式提供支援的伺服器被過多的請求淹沒，同時還可以確保公平 (從使用者角度看) ——系統過載時嘗試存取資源的使用者不會被有失公平地踢出隊伍，被迫重新連線，只能碰運氣看能不能排上隊。</p>
+	<h3 id="--1">為什麼現在要推出這項服務？</h3>
+	<p>既然我們當中沒有多少人近期會去欣賞現場音樂會，為什麼 Cloudflare 現在要推出這項服務？</p>
+	<p>好吧，也許我們不打算去聽音樂會，但是 COVID-19 的連帶影響已經催生了對等待室的巨大需求。首先，鑑於社交距離的要求以及許多營業場所停業和政府機構關門，客戶和市民已經紛紛轉入線上管道，這讓企業和政府基礎結構承受了更大的壓力。 </p>
+	<p>其次，疫情及其連帶後果意味著，一年前人們不需要的資源如今受到了世界各地許多人的依賴。具體而言，這些資源通常是與衛生或政府相關的資源，例如失業保險網站。現有的線上基礎結構已準備好應對尖峰負載，但並沒有預見到 COVID-19 的影響。與疫苗相關的網站也出現了類似的情形。</p>
+	<p>需要設立等待室的組織曾經寥寥無幾。大多數線上業務的本質決定了其涉及的使用者負載通常更為一致，而不是大量人員一次性湧入。這些組織構建了專門的等待室，並深度整合到購票等應用程式中。利用 Cloudflare 的等待室，無需對應用程式變更任何程式碼，並且無需編寫任何程式碼即可在幾分鐘內為任何網站建立一個等待室。</p>
+	<p>無論您是工程架構師還是業務營運分析師，設定等待室都很簡單。我們可以快速輕鬆地做到這一點，確保您的應用程式可靠執行並免受意外流量激增的影響。其他我們認為重要的功能包括等待室自動啟用以及人員動態流出。換句話說，當超過閾值時，等待室應自動開啟；當使用者完成應用程式中的任務時，應動態放掉一定數量的使用者，並將已經在佇列中的新使用者放進來。這種方案的效果非常好。最後，我們看到 COVID-19 對使用者和線上業務都造成了重大影響，尤其是<a href="https://blog.cloudflare.com/project-fair-shot">衛生和政府部門</a>。我們希望提供新的方式來確保這些應用程式繼續正常執行，使所有使用者都能獲得所需的照顧，而不是一用瀏覽器就出錯。</p>
+	<p>Cloudflare 等待室的工作原理是什麼？我們基於邊緣網路和 Workers 產品構建了等待室。我們充分利用 Workers 和全新的 <a href="https://blog.cloudflare.com/introducing-workers-durable-objects/">Durable Objects</a> 產品，得以消除客戶編碼需求，並提供可以「正常工作」的開箱即用的無縫產品。除此之外，我們發揮了 Workers 產品的規模和效能優勢，確保我們的等待時間開銷極低，並使最終使用者能夠看到盡可能準確的預估時間，不會讓任何使用者增加不必要的排隊時間。然而，在分散的網路中建立集中式系統絕非易事。當來自世界各地的請求進入應用程式時，我們需要獲得視野廣闊的精準視圖，能夠看到該負載傳入和傳出應用程式時的實際情況。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/01/image7-13.png" class="kg-image" alt="通過 Cloudflare 的請求 (不設等待室)">
+		<figcaption>通過 Cloudflare 的請求 (不設等待室)<span class="-mobiledoc-kit__atom">‌‌</span></figcaption>
+	</figure>
+	<p>這些請求雖然速度很快，但仍要一段時間才能穿越地球。這樣就產生了一個獨特的極端案例。如果一個網站來自北美洲和歐洲的流量屬於正常合理範圍，但來自南美洲的流量突然急劇增加，那麼，我們怎麼知道何時應該繼續放使用者進入應用程式、何時應該啟用等待室以保護原始伺服器避免過載呢？ </p>
+	<p>得益於一些智慧化工程技術和我們的 Workers 產品，我們建立了一個系統，幾乎可以立即與某個應用程式的全球需求保持同步，這使得我們獲得了必要的洞見，知道何時應該讓使用者進入等待室排隊、何時不應這樣做。我們充分利用全球 Anycast 網路和 200 多個資料中心，消除了任何單點故障，既可以保護客戶的基礎結構，也讓最終使用者能夠獲得極佳體驗——即使他們在高負荷情況下需要等待少量時間才能進入應用程式。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/01/image-13.png" class="kg-image" alt="透過 Cloudflare 的請求 (設有等待室)">
+		<figcaption>透過 Cloudflare 的請求 (設有等待室)</figcaption>
+	</figure>
+	<h3 id="--2">如何設定等待室</h3>
+	<p>設定等待室無比簡單，而且非常快捷！在最簡單的情況下，使用者只需要填寫五個欄位：1) 等待室的名稱，2) 主機名稱 (已經在其設定的區域中預先填入了主機名稱)，3) 應用程式在任何既定時間裡可擁有的活躍使用者總數；4) 每分鐘允許進入該應用程式的新使用者數量；5) 任何既定使用者的工作階段持續時間。無需編碼或對應用程式進行任何更改</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/01/image2-23.png" class="kg-image"></figure>
+	<p>對於不希望添加額外品牌資訊的客戶，我們提供了使用預設等待室範本的選項。這簡化了啟動和執行等待室的過程。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/01/image4-24.png" class="kg-image"></figure>
+	<p>大功告成！按一下儲存，等待室就可以使用了！</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/01/image1-40.png" class="kg-image"></figure>
+	<p>對於有時間並且技術能力強的客戶而言，他們也需要經歷相同的過程，但我們為這些使用者提供了完全的自訂功能，以便他們可以為等待室添加品牌元素，確保該等待室與其整體產品的外觀和風格相符。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/01/image8-15.png" class="kg-image"></figure>
+	<p>最後，管理多個不同的等待室也十分輕鬆。查閱我們的「管理等待室」表格，哪些房間排隊人多、哪些房間沒人排隊和/或已停用，全都一目了然。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/01/image5-15.png" class="kg-image"></figure>
+	<p>我們非常高興能將功能強大的<a href="https://www.cloudflare.com/waiting-room/" target="_blank">等待室</a>交到客戶手中，以確保他們繼續專注於自身的業務和客戶。請留意我們即將發布的另一篇部落格文章，其中介紹了企業版等待室產品的重大更新！</p>
+</div>

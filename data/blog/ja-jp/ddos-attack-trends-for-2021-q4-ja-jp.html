@@ -1,0 +1,107 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/01/image3-12.png" class="kg-image" alt="2021年第4四半期におけるDDoS攻撃の傾向"></figure>
+	<p>2021年上半期には、世界中の重要なインフラストラクチャの複数の側面（米国最大の石油パイプラインシステム運営会社の1つを含む）を妨害する大規模なランサムウェアとランサムDDoS攻撃キャンペーンや、学校、公共機関、旅行団体、信用金庫などを対象とした<a href="https://csirt.divd.nl/2021/07/03/Kaseya-Case-Update/" target="_blank">IT管理ソフトの脆弱性</a>などの問題が発生しました。</p>
+	<p>この年の後半には、最も強力なボットネットの1つ（<a href="https://blog.cloudflare.com/meris-botnet/">Meris</a>）が展開され、Cloudflareネットワーク上で<a href="https://blog.cloudflare.com/ja-jp/cloudflare-thwarts-17-2m-rps-ddos-attack-the-largest-ever-reported-ja-jp/">記録的なHTTP DDoS攻撃</a>と<a href="https://blog.cloudflare.com/cloudflare-blocks-an-almost-2-tbps-multi-vector-ddos-attack/">ネットワーク層攻撃</a>が観測されました。これは、12月に発見された<a href="https://blog.cloudflare.com/ja-jp/inside-the-log4j2-vulnerability-cve-2021-44228-ja-jp/">Log4j2の脆弱性</a>（CVE-2021-44228）に加えて、攻撃者がリモートサーバー上でコードを実行できるようにするもので、インターネット上で<a href="https://blog.cloudflare.com/tag/heartbleed/">Heartbleed</a>と<a href="https://blog.cloudflare.com/inside-shellshock/">Shellshock</a>以来最も深刻な脆弱性の1つであると言えるでしょう。</p>
+	<p>上記のような著名な攻撃は、ハイテク企業や政府組織、ワイナリーや食肉加工工場に至るまで、すべての人に影響を与えたサイバーセキュリティの強化傾向を示すほんの一例に過ぎません。</p>
+	<p>2021年と2021年第4四半期に特化した<a href="https://www.cloudflare.com/ja-jp/learning/ddos/what-is-a-ddos-attack/" target="_blank">DDoS攻撃</a>の傾向と要点を紹介します。</p>
+	<h3 id="-ddos-">ランサムDDoS攻撃</h3>
+	<ul>
+		<li>第4四半期、<a href="https://www.cloudflare.com/ja-jp/learning/ddos/ransom-ddos-attack/" target="_blank">ランサムDDoS攻撃</a>が前年比29%増、前四半期比175%増となりました。</li>
+		<li>12月だけで、調査回答者の3人に1人が、ランサムDDoS攻撃の標的にされた、または攻撃者から脅迫されたと報告しています。</li>
+	</ul>
+	<h3 id="-ddos--1">アプリケーション層DDoS攻撃</h3>
+	<ul>
+		<li><strong><strong>2021年第4四半期に最も攻撃を受けたのは製造業で、前四半期比641％増という驚異的な伸びを記録しています。アプリケーション層へのDDoS攻撃では、ビジネスサービス業界とゲーミング/ギャンブル業界が2番目および3番目に標的とされた業界となりました。</strong></strong></li>
+		<li>この年に入ってから4回連続で、中国のネットワークから発信された攻撃のトラフィックの割合が最も高くなり、トップとなりました。</li>
+		<li><strong><strong>2021年半ばに出現した<a href="https://blog.cloudflare.com/meris-botnet/">Merisボットネット</a>と呼ばれる新しいボットネットは、世界中の組織に攻撃を仕掛け続け、<a href="https://blog.cloudflare.com/ja-jp/cloudflare-thwarts-17-2m-rps-ddos-attack-the-largest-ever-reported-ja-jp/">Cloudflareが自動的に軽減した1720万リクエスト/秒（RPS）の攻撃</a>を含む、過去最大のHTTP攻撃を仕掛けました。</strong></strong></li>
+	</ul>
+	<h3 id="-ddos--2">ネットワーク層DDoS攻撃</h3>
+	<ul>
+		<li>2021年第4四半期は、2021年において攻撃者にとって最も活動が活発な四半期となりました。2021年12月だけで、2021年第1四半期と第2四半期を個別に観測した場合のすべての攻撃よりも多くなっています。</li>
+		<li>大半は攻撃規模の小さいものでしたが、2021年後半にはテラビット級の攻撃が新たな基準となりました。Cloudflareは、1Tbpsを超える数十の攻撃を自動的に軽減し、最大のものは<a href="https://blog.cloudflare.com/cloudflare-blocks-an-almost-2-tbps-multi-vector-ddos-attack/">2Tbps弱と、これまでで最大のピークを記録しました</a>。</li>
+		<li>2021年第1四半期、特に11月には、世界中の<a href="https://blog.cloudflare.com/update-on-voip-attacks/">VoIPプロバイダーに対する執拗なランサムDDoSキャンペーン</a>が記録されました。</li>
+		<li>モルドバを発生源とする攻撃は、2021年第4四半期に前四半期比4倍に増加し、ネットワーク層のDDoS活動の割合が最も高い国となっています。</li>
+		<li><a href="https://www.cloudflare.com/ja-jp/learning/ddos/syn-flood-ddos-attack/" target="_blank">SYNフラッド</a>と<a href="https://www.cloudflare.com/ja-jp/learning/ddos/udp-flood-ddos-attack/" target="_blank">UDPフラッド</a>が最も頻繁に発生する攻撃ベクトルであり、SNMP攻撃などの新たな脅威は前四半期比約5,800%増加しました。</li>
+	</ul>
+	<p>本レポートは、CloudflareのDDoS Protectionシステムによって自動的に検知・軽減されたDDoS攻撃に基づいています。この仕組みの詳細については、<a href="https://blog.cloudflare.com/ja-jp/deep-dive-cloudflare-autonomous-edge-ddos-protection-ja-jp/">詳しく書かれたこちらのブログ記事</a>をご覧ください。</p>
+	<h3 id="-ddos--3">私たちのネットワークで観測されたDDoS攻撃の測定方法についての特記事項</h3>
+	<p>攻撃の傾向を分析するために、当社のグローバルネットワークで観測された全トラフィック（攻撃＋クリーン）のうち、攻撃のトラフィックが占める割合を「DDoS活動率」として算出しています。攻撃回数を観測された総トラフィックに対する割合で測定することで、データポイントを正規化し、例えば総トラフィックが多く、攻撃回数も多いと思われるCloudflareデータセンターに対する絶対的な数値の偏りを回避することができます。 </p>
+	<p>本レポートのインタラクティブ版は<a href="https://radar.cloudflare.com/notebooks/ddos-2021-q4" target="_blank">Cloudflare Radar</a>でご覧いただけます。</p>
+	<h2 id="-">ランサム攻撃</h2>
+	<p>当社のシステムはトラフィックを常時分析し、DDoS攻撃を検知すると自動的に被害軽減措置を適用するシステムです。DDoSの被害に遭われたお客様には、攻撃の性質や軽減措置の効果をよりよく理解するために、自動化されたアンケートをお願いしています。 </p>
+	<p>Cloudflareは2年以上前から、攻撃を受けたお客様を対象にアンケートを実施しています。アンケート項目の1つに、DDoS攻撃を中止する代わりに支払いを要求する身代金請求書を受け取ったかどうかというものがあります。2021年第4四半期は、身代金要求の脅威を示す調査回答が過去最高を記録し、ランサム攻撃は前年同期比29％増、前四半期比175％増となりました。具体的には、回答者の4.5人に1人（22％）が、攻撃者から支払いを要求する身代金請求書を受け取ったと回答しています。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/01/image1--1-.png" class="kg-image" alt="ランサムDDoS攻撃の四半期別推移グラフ">
+		<figcaption><strong>ランサムDDoS攻撃の標的にされた、または事前に脅迫を受けたと回答した割合です。</strong></figcaption>
+	</figure>
+	<p>月別に見ると、2021年12月がトップで、回答者の32％が身代金要求の手紙を受け取ったと回答しており、これは調査対象者のほぼ3人に1人の割合に相当することがわかります。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/01/unnamed-1.png" class="kg-image" alt="ランサムDDoS攻撃の月別推移グラフ"></figure>
+	<h2 id="-ddos--4">アプリケーション層DDoS攻撃</h2>
+	<p><a href="https://www.cloudflare.com/ja-jp/learning/ddos/application-layer-ddos-attack/" target="_blank">アプリケーション層DDoS攻撃</a>、中でもHTTP DDoS攻撃は通常、正当なユーザーリクエストを処理できないようにしてWebサーバーを停止させることを目的とします。処理能力を超えるリクエストが殺到すると、サーバーは正当なリクエストをドロップするか、場合によってはクラッシュし、その結果、正当なユーザーに対するパフォーマンスの低下や障害が起こります。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/01/0---DDoS_Diagram_jaJP-1.png" class="kg-image"></figure>
+	<h3 id="-ddos--5">アプリケーション層DDoS攻撃＜業界別＞</h3>
+	<p><strong>第4四半期には、製造業へのDDoS攻撃が前四半期比で641%増加し、ビジネスサービス業へのDDoS攻撃は97%増加しました。</strong></p>
+	<p>アプリケーション層への攻撃を業種別に分類すると、2021年第4四半期は、製造業、ビジネスサービス業、ゲーミング/ギャンブル業が最も標的とされた業種となりました。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/01/image4-11.png" class="kg-image" alt="第4四半期におけるHTTP DDoS攻撃の業種別分布グラフ"></figure>
+	<h3 id="-ddos--6">アプリケーション層DDoS攻撃＜攻撃元の国別＞</h3>
+	<p>HTTP攻撃の発信元を理解するために、攻撃HTTPリクエストを生成したクライアントに属する送信元IPアドレスのジオロケーションを調べます。ネットワーク層の攻撃とは異なり、HTTP攻撃では送信元IPアドレスを<a href="https://www.cloudflare.com/ja-jp/learning/ddos/glossary/ip-spoofing/" target="_blank">詐称</a>することはできません。ある国でのDDoS活動の割合が高い場合、通常、その国の国境内で活動するボットネットが存在することを示しています。</p>
+	<p>中国は、4四半期連続で、国内から発信されたDDoS攻撃の割合が最も高い国となっています。中国のIPアドレスから発信されたHTTPリクエストの1000件に3件以上が、HTTP DDoS攻撃の一部でした。2位は引き続き米国、3位はブラジル、4位はインドとなりました。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/01/image5-9.png" class="kg-image" alt="第4四半期におけるHTTP DDoS攻撃の発信国別分布のグラフ"></figure>
+	<h3 id="-ddos--7">アプリケーション層DDoS攻撃＜標的国別＞</h3>
+	<p>どの国が最もHTTP DDoS攻撃の標的になっているかを特定するため、お客様の請求先国別にDDoS攻撃を分類し、全DDoS攻撃に対する割合で表現しています。</p>
+	<p>この年、最も多くのHTTP DDoS攻撃の標的となったのは3年連続で米国の組織で、次いでカナダ、ドイツとなりました。 </p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/01/image11-6.png" class="kg-image" alt="第4四半期におけるHTTP DDoS攻撃の対象国別分布のグラフ"></figure>
+	<h2 id="-ddos--8">ネットワーク層DDoS攻撃</h2>
+	<p>アプリケーション層攻撃は、エンドユーザーがアクセスしようとしているサービスを実行するアプリケーション（<a href="https://www.cloudflare.com/ja-jp/learning/ddos/glossary/open-systems-interconnection-model-osi/" target="_blank">OSI参照モデル</a>の第７層）を狙うのに対し、<a href="https://www.cloudflare.com/ja-jp/learning/ddos/layer-3-ddos-attacks/" target="_blank">ネットワーク層攻撃</a>はネットワークインフラ（インラインルーターやサーバーなど）とインターネットリンクそのものを圧倒しようとします。</p>
+	<h3 id="cloudflare-2tbps-">Cloudflare、約2Tbpsの攻撃を阻止</h3>
+	<p>11月、当社のシステムは<a href="https://blog.cloudflare.com/cloudflare-blocks-an-almost-2-tbps-multi-vector-ddos-attack/">約2TbpsのDDoS攻撃</a>を自動的に検知し、軽減措置を適用しました。この攻撃は、<a href="https://www.cloudflare.com/ja-jp/learning/ddos/dns-amplification-ddos-attack/" target="_blank">DNSアンプリフィケーション</a>攻撃と<a href="https://www.cloudflare.com/ja-jp/learning/ddos/udp-flood-ddos-attack/" target="_blank">UDPフラッド</a>を組み合わせたマルチベクター攻撃でした。攻撃全体の時間は、わずか1分でした。IoTデバイスや<a href="https://www.rapid7.com/blog/post/2021/11/01/gitlab-unauthenticated-remote-code-execution-cve-2021-22205-exploited-in-the-wild/" target="_blank">パッチが適用されていないGitLabインスタンス</a>上でオリジナルのMiraiコードの亜種を実行する約15000のボットから攻撃が行われました。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/01/image3.jpeg" class="kg-image" alt="ピーク時に約2Tbpsを記録したネットワーク層DDoS攻撃のグラフ"></figure>
+	<h3 id="-ddos--9">ネットワーク層DDoS攻撃＜月別＞</h3>
+	<p><strong>2021年において、12月は攻撃者の活動が最も活発な月となりました。</strong></p>
+	<p>第4四半期は、2021年において攻撃者にとって最も活動が活発な四半期となりました。ネットワーク層DDoS攻撃全体の43%以上が2021年第4四半期に発生しました。10月は比較的穏やかな月でしたが、中国の光棍節、アメリカの感謝祭、ブラックフライデー、サイバーマンデーがあった11月は、ネットワーク層のDDoS攻撃数がほぼ倍増しました。12月21日、年末を迎えるにあたり、観測された攻撃の件数は増加しました。実際、12月だけで、2021年第2四半期に発生した全攻撃数を上回っており、2021年第1四半期の全攻撃数にほぼ匹敵する数になっています。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/01/image6-10.png" class="kg-image" alt="2021年のネットワーク層DDoS攻撃の月別分布グラフ"></figure>
+	<h3 id="-ddos--10">ネットワーク層DDoS攻撃＜攻撃レート別＞</h3>
+	<p><strong>ほとんどの攻撃は比較的「小」規模ですが、テラビット級の攻撃も標準的になってきています。</strong></p>
+	<p>L3/4 DDoS攻撃の規模の測定には、さまざまな方法があります。1つは送信するトラフィックの量で、ビットレート（具体的にはテラビット/秒またはギガビット/秒）を使用して測定します。もう1つは送信するパケットの数で、パケットレート（具体的には、何百万パケット/秒）を使用して測定します。</p>
+	<p>ビットレートの高い攻撃は、インターネットリンクの閉塞を発生させることによってサービス妨害を起こそうとし、パケットレートの高い攻撃はサーバーやルーター、その他のインラインハードウェア機器を過負荷状態に陥れようとします。これらの機器は各パケットの処理に特定量のメモリと計算能力を割きます。多数のパケットが送り付けられると機器の処理リソースが枯渇してしまう可能性があります。その場合はパケットが「ドロップ」されます。つまり、機器がそれらを処理できない状態となるのです。ユーザーに対しては、サービスの中断や拒否になります。 </p>
+	<p>攻撃の規模（ビットレート）と月別の分布は以下のとおりです。上のグラフに見られるように、攻撃の大部分は12月に行われました。しかし、下のグラフを見ると、300Gbpsを超えるような大規模な攻撃は、11月に発生していることがわかります。また、5～20Gbpsの攻撃は12月に多く発生しています。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/01/image8-14.png" class="kg-image" alt="第4四半期におけるネットワーク層DDoS攻撃の規模別月別分布グラフ"></figure>
+	<p><strong>パケットレート別分布</strong></p>
+	<p>Cloudflareが観測した興味深い相関関係は、攻撃の数が増加すると、そのサイズと期間が減少することです。2021年の最初の3分の2では、攻撃の数は比較的少なく、それに応じてその比率も上昇し、例えば21年第3四半期には、1秒あたり100万〜1000万パケット（mpps）の範囲の攻撃が196％増加しました。21年第4四半期には、攻撃回数が増加したことで、Cloudflareは攻撃規模の減少を観測しました。全攻撃の91%はピーク時で5万パケット/秒（pps）以下であり、これは無防備なインターネット資産を容易にダウンさせることが可能です。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/01/image9-6.png" class="kg-image" alt="第4四半期におけるネットワーク層DDoS攻撃のパケットレート別分布のグラフ"></figure>
+	<p>1mpps以上の大規模な攻撃は前四半期比48％減の28％、5万pps以下のピーク時の攻撃は前四半期比2.36％増となりました。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/01/image12-6.png" class="kg-image" alt="ネットワーク層DDoS攻撃のパケットレート別分布の前四半期比の変化のグラフ"></figure>
+	<p><strong>ビットレート別分布</strong></p>
+	<p>パケット集中型攻撃で見られる傾向と同様に、ビット集中型の攻撃も縮小しています。1Tbpsを超える攻撃が基準化し、過去最大のものはピークが2Tbpsを下回ったものの、大半の攻撃はまだ小規模でピークが500Mbps未満（97.2%）であることがわかりました。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/01/image18-7.png" class="kg-image" alt="第4四半期におけるネットワーク層DDoS攻撃のビットレート別分布のグラフ"></figure>
+	<p>2021年第4四半期には、500Mbpsを超えるすべての範囲の大規模な攻撃が、100Gbps以上の大規模な攻撃で35%から57%という大幅な減少を記録しました。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/01/image7-5.png" class="kg-image" alt="ネットワーク層DDoS攻撃のビットレート別分布の前四半期比の変化のグラフ"></figure>
+	<h3 id="-ddos--11">ネットワーク層DDoS攻撃＜継続時間別＞</h3>
+	<p><strong>ほとんどの攻撃は従来と同じく継続時間が1時間未満であり、自動化されたDDoS軽減ソリューションを常にオンにしておく必要性を改めて感じます。</strong></p>
+	<p>当社では、攻撃が私たちのシステムによって最初に検出されたときと、特定のターゲットに向けた攻撃シグネチャを持つ最後のパケットを確認したときの差を記録することによって、攻撃の持続時間を測定しています。2021年の最終四半期には、ネットワーク層への攻撃の98％が1時間以内に終了しています。ほとんどの攻撃が短時間で終わるため、これは非常によくあることです。さらに言えば、今期のように攻撃回数が増えると、その割合と時間が減少するという傾向も見られます。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/01/image14-6.png" class="kg-image" alt="第4四半期におけるネットワーク層DDoS攻撃の期間別分布グラフ"></figure>
+	<p>短時間の攻撃は検出されない可能性があり、特に標的に対して数秒以内に大量のパケットやバイト、リクエストを送りつけるバースト攻撃は見逃されがちです。この場合、セキュリティ分析に基づく手作業の軽減措置に依存するDDoS攻撃対策では、攻撃への被害軽減措置がとても間に合いません。攻撃について事後の分析を通して学び、その攻撃固有のフィンガープリントでフィルタリングする新たなルールをデプロイして、次は検知できるよう願うしかありません。同様に、「オンデマンド」サービスを利用してセキュリティチームが攻撃中にDDoS対策サービスのプロバイダーへトラフィックをリダイレクトする場合も、オンデマンドDDoS対策のプロバイダーへトラフィックがルーティングされる前に攻撃が済んでしまうため非効率です。 </p>
+	<p>これらの企業では、トラフィックを分析し、短時間の攻撃をブロックするのに十分な速さでリアルタイムのフィンガープリンティングを適用する、自動化された常時稼働型のDDoS攻撃対策サービスを使用することが推奨されます。</p>
+	<h2 id="--1">攻撃ベクトル</h2>
+	<p><strong>SYNフラッドは、依然として攻撃者が最も好む手口で、SNMPの攻撃は前四半期比約5,800%という大幅な伸びを記録しています。</strong></p>
+	<p>攻撃ベクトルとは、攻撃者がDDoS攻撃を行う際に用いる手法のことで、IPプロトコル、TCPフラグなどのパケット属性、フラッディング方法などの基準を示す言葉です。</p>
+	<p>2021年に初めて、<a href="https://www.cloudflare.com/ja-jp/learning/ddos/syn-flood-ddos-attack/" target="_blank">SYNフラッド</a>攻撃の割合が大幅に減少しました。2021年を通して、SYNフラッドは平均して全ネットワーク層攻撃の54%を占めていました。最も頻度の高いベクターとして依然として1位を獲得しているものの、そのシェアは前四半期比38%減の34%に留まりました。</p>
+	<p>しかし、SYN攻撃とUDP攻撃の差は僅かでした。<a href="https://www.cloudflare.com/ja-jp/learning/ddos/udp-flood-ddos-attack/" target="_blank">UDPフラッド</a>とは、サービス拒否攻撃の一種で、標的となるサーバーに大量のUDP（ユーザーデータグラムプロトコル）パケットを送信し、サーバーの処理能力や応答能力を圧倒することを目的とした攻撃です。UDPフラッディングの結果、標的となるサーバーを保護するファイアウォールが疲弊し、正当なトラフィックに対するサービス拒否が発生することが頻繁に起きます。UDPを使った攻撃は、2021年第3四半期の4位から、2021年第4四半期には2位に急上昇し、ネットワーク層への攻撃全体に占める割合は32％で、前四半期比では1,198％増となりました。</p>
+	<p>3位には、攻撃ベクトルの上位に初めて2021年に登場し、大躍進を遂げたSNMPがランクインしています。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/01/image13-6.png" class="kg-image" alt="第4四半期のネットワーク層DDoS攻撃ベクトル上位のグラフ"></figure>
+	<h2 id="--2">新たな脅威</h2>
+	<p>攻撃者がどのような新しいベクトルで攻撃を仕掛けているかを理解するために、新たな攻撃ベクトルに目を向けます。そうすると、SNMP、MSSQL、一般的なUDPベースのDDoS攻撃が急増していることがわかります。 </p>
+	<p>SNMP攻撃、MSSQL攻撃ともに、攻撃のきっかけとなるパケットに標的のIPアドレスを送信元IPとして偽装し、標的のトラフィックを反映・増幅させるというものです。</p>
+	<p>SNMP（簡易ネットワーク管理プロトコル）は、UDPベースのプロトコルであり、家庭や企業ネットワークのプリンター、スイッチ、ルーター、ファイアウォールなどのネットワーク機器をUDPウェルノウンポート161で検出・管理するためによく使用されます。SNMPリフレクション攻撃では、攻撃者は、パケット内の送信元IPアドレスを標的としてネットワーク上の機器になりすまし、その標的のアドレスに返信しながら、大量のSNMPクエリーを送信します。ネットワーク上の機器から大量の応答があると、対象のネットワークはDDoS攻撃を受けることになります。</p>
+	<p>SNMPアンプリフィケーション攻撃と同様に、Microsoft SQL（MSSQL）攻撃は、リフレクションベースのDDoS攻撃を仕掛ける目的で、Microsoft SQL Server Resolution Protocolを悪用する手法に基づくものです。この攻撃は、<a href="https://en.wikipedia.org/wiki/Microsoft_SQL_Server" target="_blank">Microsoft SQL サーバー</a>がクライアントのクエリやリクエストに応答する際に、UDPポート1434で待ち受けるMicrosoft SQL Server Resolution Protocol (MC-SQLR)を悪用しようとすることで発生します。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/01/unnamed-7.png" class="kg-image" alt="第4四半期におけるネットワーク層への新たなトップDDoS攻撃脅威グラフ"></figure>
+	<h3 id="-ddos--12">ネットワーク層DDoS攻撃＜国別＞</h3>
+	<p><strong>モルドバを発生源とする攻撃は、4倍に増加し、ネットワーク層のDDoS活動の割合が最も高い国となっています。 </strong></p>
+	<p>当社はネットワーク層DDoS攻撃を分析する際、トラフィックを、送信元IPではなくトラフィックが取り込まれたCloudflareエッジデータセンターのロケーションによって集めます。その理由は、攻撃者がネットワーク層攻撃を仕掛ける際、攻撃元をわかりにくくし攻撃特性に無作為性を加えるために送信元IP アドレスを<a href="https://www.cloudflare.com/ja-jp/learning/ddos/glossary/ip-spoofing/" target="_blank">スプーフィング</a>でき、それによって単純なDDoS攻撃対策システムでは攻撃をブロックすることが難しくなる可能性があるからです。すなわち、スプーフィングされた送信元IPをもとに攻撃元の国を割り出そうとすれば、事実と異なる結果が出てしまうのです。</p>
+	<p>Cloudflareは、攻撃が観測されたCloudflareデータセンターのロケーションによって攻撃データを表示することにより、このIPスプーフィングの問題を克服することができます。データセンターを世界<a href="https://www.cloudflare.com/ja-jp/network" target="_blank">250都市以上</a>に持つCloudflareだからこそ、地理的に正確なデータを報告できるのです。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/01/image16-4.png" class="kg-image" alt="第4四半期におけるネットワーク層DDoS攻撃の発信国別分布のグラフ"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/01/image17-7.png" class="kg-image" alt="第4四半期におけるネットワーク層DDoS攻撃の発信国別分布のグラフ"></figure>
+	<p>すべての地域と国を表示するには、<a href="https://radar.cloudflare.com/notebooks/ddos-2021-q4#network-layer-ddos-attacks-by-country" target="_blank">インタラクティブマップ</a>をご覧ください。</p>
+	<h2 id="--3">まとめ</h2>
+	<p>Cloudflareのミッションは、より良いインターネットの構築を支援することです。より良いインターネットとは、たとえDDoS攻撃に直面しても、誰にとっても、より安全で、より速く、より信頼できるインターネットです。ミッションの一環として、2017年以降、すべてのお客様に<a href="https://blog.cloudflare.com/unmetered-mitigation/">定額制で無制限のDDoS攻撃対策</a>を無償で提供しています。ここ数年、攻撃者がDDoS攻撃を仕掛けることはますます容易になってきています。攻撃者の優位性に対抗するため、あらゆる規模の組織があらゆる種類のDDoS攻撃から身を守ることも簡単かつ無料でできるようにしたいと考えています。</p>
+	<p>まだCloudflareを使用していませんか？<a href="https://dash.cloudflare.com/sign-up" target="_blank">今すぐ始めてください。</a></p>
+</div>

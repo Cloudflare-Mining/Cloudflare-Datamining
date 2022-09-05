@@ -1,0 +1,186 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/08/unnamed-1.png" class="kg-image" alt="The mechanics of a sophisticated phishing scam and how we stopped it"></figure>
+	<p>Ayer, 8 de agosto de 2022, Twilio anunció que había sido <a href="https://www.twilio.com/blog/august-2022-social-engineering-attack" target="_blank">víctima de un ataque de phishing selectivo</a>. Más o menos al mismo tiempo de ese ataque, observamos otro con características muy similares dirigido también a los empleados de Cloudflare. Si bien algunos empleados cayeron en la trampa de los mensajes de phishing, pudimos frenar el ataque con nuestro <a href="https://www.cloudflare.com/cloudflare-one/" target="_blank">paquete de productos Cloudflare One</a>, y a las claves de seguridad físicas que facilitamos a todos los empleados para que puedan acceder a todas nuestras aplicaciones.</p>
+	<p>Hemos confirmado que ningún sistema de Cloudflare se vio expuesto. Nuestro <a href="https://blog.cloudflare.com/es-es/introducing-cloudforce-one-threat-operations-and-threat-research-es-es/">Cloudflare One, nuestro equipo de información sobre amenazas</a>, pudo realizar un análisis adicional para examinar el mecanismo del ataque y recabar pruebas críticas para ayudar a localizar al ciberdelincuente.</p>
+	<p>Fue un ataque sofisticado contra empleados y sistemas de tal manera que creemos que la mayoría de las organizaciones podrían verse vulneradas. Puesto que el ciberdelincuente se dirige a varias organizaciones, queríamos compartir en esta publicación un resumen de lo que vimos exactamente para ayudar a otras empresas a reconocer y mitigar este ataque.</p>
+	<h2 id="smishing">Smishing</h2>
+	<p>El 20 de julio de 2022, empleados de Cloudflare informaron a nuestro equipo de seguridad sobre los mensajes de aspecto legítimo que estaban recibiendo y que apuntaban a lo que parecía ser una página de inicio de sesión de Cloudflare-Okta. Los mensajes comenzaron el 20 de julio de 2022 a las 22:50 horas (UTC). En el transcurso de menos de 1 minuto, al menos 76 empleados recibieron mensajes de texto en sus teléfonos móviles personales y corporativos. Los familiares de los empleados también recibieron algunos mensajes. Todavía no hemos podido averiguar cómo el ciberdelincuente recopiló la lista de números de teléfono de los empleados, pero hemos revisado los registros de acceso a nuestros servicios de directorio de empleados y no hemos encontrado ningún indicio de riesgo.</p>
+	<p>Cloudflare cuenta con un equipo de Respuesta a Incidentes de Seguridad (SIRT) que trabaja las 24 horas al día. Todos los empleados de Cloudflare saben que tienen que informar de cualquier evento sospechoso al SIRT. Más del 90 % de las denuncias al SIRT no son amenazas, pero se insta a los empleados a que informen de cualquier situación inusual y nunca se les disuade de enviar demasiadas denuncias. Sin embargo, en este caso, las denuncias eran una amenaza real.</p>
+	<p>Los mensajes de texto que recibieron los empleados tenían este aspecto:</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/08/image3-5.png" class="kg-image"></figure>
+	<p>Procedían de cuatro números de teléfono asociados a tarjetas SIM de T-Mobile: (754) 268-9387, (205) 946-7573, (754) 364-6683 y (561) 524-5989, y apuntaban a un dominio aparentemente oficial: cloudflare-okta.com. Ese dominio se registró a través de Porkbun, un registrador de dominios, el 20 de julio de 2022 a las 22:13:04 (hora UTC), menos de 40 minutos antes de que comenzara la campaña de phishing.</p>
+	<p>Cloudflare creó nuestro <a href="https://www.cloudflare.com/products/registrar/custom-domain-protection/" target="_blank">registrador seguro</a> en parte para poder controlar cuándo se registraban dominios que utilizaban la marca Cloudflare y cerrarlos. Sin embargo, debido a que este dominio se había registrado recientemente, aún no se había publicado como un nuevo registro ".com", por lo que nuestros sistemas no detectaron su registro y nuestro equipo aún no lo había cerrado.</p>
+	<p>Si hiciste clic en el enlace, te llevó a una página de phishing, que estaba alojada en DigitalOcean y tenía el siguiente aspecto:</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/08/image1-13.png" class="kg-image"></figure>
+	<p>Cloudflare utiliza Okta como nuestro proveedor de identidad. La página de phishing estaba diseñada para parecer idéntica a una página legítima de inicio de sesión de Okta. La página de phishing solicitaba a cualquier visitante su nombre de usuario y contraseña.</p>
+	<h2 id="phishing-en-tiempo-real">Phishing en tiempo real</h2>
+	<p>Pudimos analizar la carga útil del <a href="https://www.cloudflare.com/learning/email-security/what-is-email-security/" target="_blank">ataque de phishing</a> basándonos en lo que recibieron nuestros usuarios, así como en el contenido que otras empresas víctimas habían publicado en servicios como VirusTotal. Cuando la víctima completaba los datos en la página de phishing, las credenciales se transmitían inmediatamente al atacante a través del servicio de mensajería Telegram. Esta transmisión en tiempo real era importante porque la página de phishing también solicitaba un código de contraseña de un solo uso de duración definida (TOTP).</p>
+	<p>Supuestamente, el ciberdelincuente recibía las credenciales en tiempo real, las escribía en la página de inicio de sesión auténtica de la empresa afectada y, en el caso de muchas organizaciones, eso generaba un código que se enviaba al empleado por SMS o se mostraba en un generador de contraseñas. A continuación, el empleado escribía el código TOTP en el sitio de phishing, y también se transmitía al atacante. Este podía entonces, antes de que el código TOTP caducara, utilizarlo para acceder a la página de inicio de sesión real de la empresa, anulando así la mayoría de las implementaciones de autenticación en dos fases.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/08/image2-6_1_es-ES-1.png" class="kg-image"></figure>
+	<h2 id="protecci-n-aunque-no-sea-perfecta">Protección, aunque no sea perfecta</h2>
+	<p>Confirmamos que tres empleados de Cloudflare cayeron en la trampa del mensaje de phishing y escribieron sus credenciales. Sin embargo, Cloudflare no utiliza códigos TOTP. En su lugar, cada usuario recibe una clave de seguridad compatible con FIDO2 de un proveedor como YubiKey. Dado que las claves de seguridad están vinculadas a los usuarios e implementan el <a href="https://www.yubico.com/blog/creating-unphishable-security-key/" target="_blank">enlace al origen</a>, incluso una actividad de phishing sofisticada en tiempo real como esta no puede recopilar la información necesaria para iniciar sesión en cualquiera de nuestros sistemas. Aunque el ciberdelincuente intentó iniciar sesión en nuestros sistemas con las credenciales de nombre de usuario y contraseña en riesgo, no pudo superar el requisito de la clave de seguridad.</p>
+	<p>Sin embargo, esta página de phishing no buscaba simplemente credenciales y códigos TOTP. Si alguien lograba superar esas medidas, la página de phishing iniciaba la descarga de una carga útil de phishing que incluía el software de acceso remoto de AnyDesk. Ese software, si se instalaba, permitía al atacante controlar el equipo de la víctima de forma remota. Confirmamos que ninguno de los miembros de nuestro equipo llegó hasta ahí. Sin embargo, si lo hubieran hecho, nuestra seguridad de puntos finales habría detenido la instalación del software de acceso remoto.</p>
+	<h2 id="-c-mo-respondimos">¿Cómo respondimos?</h2>
+	<p>Las principales acciones de respuesta que tomamos para este incidente fueron:</p>
+	<h3 id="1-bloquear-el-dominio-de-phishing-mediante-cloudflare-gateway">1. Bloquear el dominio de phishing mediante Cloudflare Gateway</h3>
+	<p>Cloudflare Gateway es una solución de <a href="https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway/" target="_blank">puerta de enlace web segura</a> que salvaguarda los datos y protege frente a ataques con filtrado DNS/HTTP y <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/" target="_blank">Zero Trust</a> integrado de forma nativa. Utilizamos esta solución internamente para identificar de manera proactiva los dominios maliciosos y bloquearlos. Nuestro equipo añadió el dominio malicioso a Cloudflare Gateway para bloquear el acceso de todos los empleados.</p>
+	<p>La detección automática de dominios maliciosos de Gateway también identificó el dominio y lo bloqueó, pero el hecho de que se registrara y se enviaran mensajes en un intervalo de tiempo tan corto significaba que el sistema no había actuado automáticamente antes de que algunos usuarios hicieran clic en los enlaces. A raíz de este incidente, estamos trabajando para acelerar la rapidez con la que se identifican y bloquean los dominios maliciosos. También estamos implementando controles sobre el acceso a los dominios recién registrados que ofrecemos a los clientes, pero que no implementamos nosotros.</p>
+	<h3 id="2-identificar-a-todos-los-usuarios-de-cloudflare-afectados-y-restablecer-las-credenciales-en-riesgo">2. Identificar a todos los usuarios de Cloudflare afectados y restablecer las credenciales en riesgo</h3>
+	<p>Pudimos comparar los destinatarios de los mensajes de phishing con la actividad de inicio de sesión e identificar los intentos del ciberdelincuente de autenticarse en las cuentas de nuestros usuarios. Identificamos los intentos de inicio de sesión bloqueados debido a los requisitos de la clave de seguridad (U2F) que indicaban que se había utilizado la contraseña correcta, pero no se había podido verificar el segundo factor. Para los tres empleados cuyas credenciales se filtraron, restablecimos sus credenciales y cualquier sesión activa y analizamos sus dispositivos.</p>
+	<h3 id="3-identificar-y-eliminar-la-infraestructura-del-ciberdelincuente">3. Identificar y eliminar la infraestructura del ciberdelincuente</h3>
+	<p>El dominio de phishing del ciberdelincuente se había registrado hace poco a través de Porkbun y se alojaba en DigitalOcean. El dominio de phishing utilizado para atacar a Cloudflare se creó menos de una hora antes de la primera oleada de phishing. El sitio tenía un frontend Nuxt.js y un backend Django. Trabajamos con DigitalOcean para cerrar el servidor del ciberdelincuente. También trabajamos con Porkbun para hacernos con el control del dominio malicioso.</p>
+	<p>A partir de los intentos fallidos de inicio de sesión, pudimos comprobar que el ciberdelincuente estaba aprovechando el software de VPN Mullvad y utilizando específicamente el navegador Google Chrome en un equipo Windows 10. Las direcciones IP de la VPN utilizadas por el atacante eran 198.54.132.88 y 198.54.135.222. Esas direcciones IP están asignadas a Tzulo, un proveedor de servidores dedicados con sede en Estados Unidos cuyo sitio web afirma tener servidores en Los Ángeles y Chicago. En realidad, parece que el primero estaba funcionando en un servidor de la zona de Toronto y el segundo en un servidor de la zona de Washington, DC. Bloqueamos estas direcciones IP para que no pudieran acceder a ninguno de nuestros servicios.</p>
+	<h3 id="4-actualizar-las-detecciones-para-identificar-cualquier-intento-de-ataque-posterior">4. Actualizar las detecciones para identificar cualquier intento de ataque posterior</h3>
+	<p>Con lo que pudimos descubrir sobre este ataque, incorporamos señales adicionales a nuestras detecciones existentes para identificar específicamente a este ciberdelincuente. En el momento de escribir esta publicación, no hemos observado ninguna otra oleada de ataques dirigida a nuestros usuarios. Sin embargo, la información del servidor indicaba que el ciberdelincuente se dirigía a otras organizaciones, incluida Twilio. Nos pusimos en contacto con estas otras organizaciones y compartimos la información sobre el ataque.</p>
+	<h3 id="5-verificar-los-registros-de-acceso-al-servicio-para-detectar-cualquier-indicaci-n-adicional-de-ataque">5. Verificar los registros de acceso al servicio para detectar cualquier indicación adicional de ataque</h3>
+	<p>Tras el ataque, revisamos todos los registros de nuestro sistema en busca de cualquier otra huella digital de este ciberdelincuente en particular. Cloudflare Access sirve como punto de control central para todas las aplicaciones de Cloudflare, de ahí que podamos buscar en los registros cualquier indicio de que el atacante haya vulnerado algún sistema. Dado que los teléfonos de los empleados fueron el objetivo, también revisamos minuciosamente los registros de nuestros proveedores de directorios de empleados. No hemos encontrado ninguna prueba de riesgo.</p>
+	<h2 id="lecciones-aprendidas-y-medidas-adicionales-que-estamos-adoptando">Lecciones aprendidas y medidas adicionales que estamos adoptando</h2>
+	<p>Aprendemos de cada ataque. Si bien el ciberdelincuente no logró su objetivo, estamos haciendo ajustes adicionales con lo que hemos aprendido. Estamos ajustando la configuración de Cloudflare Gateway para restringir o bloquear el acceso a los sitios que se ejecutan en los dominios que se registraron en las últimas 24 horas. También ejecutaremos cualquier sitio no incluido en la lista de permitidos que contenga términos como "cloudflare" "okta" "sso" y "2fa" a través de nuestra tecnología de aislamiento del navegador. Además, estamos utilizando cada vez más la <a href="https://www.cloudflare.com/products/zero-trust/email-security/" target="_blank">tecnología de identificación de phishing de Cloudflare Area 1</a> para analizar la web y buscar cualquier página que esté diseñada para atacar a Cloudflare. Por último, estamos reforzando nuestra implementación de Access para evitar cualquier inicio de sesión desde VPN, proxies domésticos y proveedores de infraestructura desconocidos. Todas estas son funciones estándar de los mismos productos que ofrecemos a los clientes.</p>
+	<p>El ataque también reafirmó la importancia de tres cosas que estamos haciendo bien. En primer lugar, solicitar claves de seguridad para el acceso a todas las aplicaciones. <a href="https://krebsonsecurity.com/2018/07/google-security-keys-neutralized-employee-phishing/" target="_blank">Al igual que Google</a>, no hemos visto ningún ataque de phishing que se haya materializado con éxito desde la implantación de las claves de seguridad. Herramientas como Cloudflare Access han facilitado la compatibilidad con las claves de seguridad incluso en las aplicaciones heredadas. Si te interesa saber cómo hemos implantado las claves de seguridad, ponte en contacto con <a href="/cdn-cgi/l/email-protection#086b64677d6c6e677a6b6d67666d25617a606d6478486b64677d6c6e64697a6d266b6765"><span class="__cf_email__" data-cfemail="4e2d22213b2a28213c2d2b21202b63273c262b223e0e2d22213b2a28222f3c2b602d2123">[email&nbsp;protected]</span></a> y nuestro equipo de seguridad estará encantado de compartir las prácticas recomendadas que hemos aprendido durante el proceso.</p>
+	<p>En segundo lugar, utilizar nuestra propia tecnología para proteger a nuestros usuarios y sistemas. Las soluciones de Cloudflare One, como Access y Gateway, fueron fundamentales para anticiparnos al ataque. Configuramos nuestra implementación de Access para solicitar claves de seguridad para cada aplicación. También crea una ubicación de registro central para todas las autenticaciones de aplicaciones, y, en caso de ser necesario, un lugar desde el que podemos eliminar las sesiones de un usuario potencialmente en riesgo. Gateway nos permite cerrar rápidamente los sitios maliciosos como este y entender qué usuarios podrían haber caído en la trampa del ataque. Todas estas son funciones que ponemos a disposición de los clientes de Cloudflare como parte de nuestro conjunto de productos Cloudflare One, y este ataque demuestra lo eficaces que pueden ser.</p>
+	<p>En tercer lugar, la seguridad exige pecar de prudencia, pero no se trata de buscar culpables. No se amonestó a los tres empleados que cayeron en la estafa de phishing. Todos somos humanos y cometemos errores. Es muy importante que, cuando lo hagamos, denunciemos y no lo encubramos. Este incidente es otro ejemplo de por qué la seguridad es un trabajo conjunto de todos los miembros del equipo de Cloudflare.</p>
+	<h2 id="cronolog-a-detallada-de-los-acontecimientos">Cronología detallada de los acontecimientos</h2>
+	<!--kg-card-begin: markdown-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg">
+		<thead>
+			<tr>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2022-07-20 22:49 UTC</span></th>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">El ciberdelincuente envía más de 100 SMS a los empleados de Cloudflare y sus familias.</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2022-07-20 22:50 UTC</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Los empleados empiezan a informar de los mensajes SMS al equipo de seguridad de Cloudflare.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2022-07-20 22:52 UTC</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Se comprueba que el dominio del ciberdelincuente está bloqueado en Cloudflare Gateway para los dispositivos corporativos.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2022-07-20 22:58 UTC</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Comunicación de advertencia enviada a todos los empleados a través del chat y el correo electrónico.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2022-07-20 22:50 UTC ~ </span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2022-07-20 23:26 UTC</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Supervisión de la telemetría en el registro del sistema de Okta y los registros HTTP de Cloudflare Gateway para localizar las credenciales en riesgo. Eliminación de las sesiones de inicio de sesión y suspensión de las cuentas en riesgo.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2022-07-20 23:26 UTC</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">El proveedor de alojamiento suspende el sitio de phishing.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2022-07-20 23:37 UTC</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Se restablecen las credenciales filtradas de los empleados.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2022-07-21 00:15 UTC</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Análisis exhaustivo de la infraestructura y capacidades del atacante.</span></td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<h2 id="indicadores-del-riesgo">Indicadores del riesgo</h2>
+	<!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-nr0u {
+			border-color: inherit;
+			font-family: inherit;
+			font-size: 100%;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-0pky {
+			border-color: inherit;
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg">
+		<thead>
+			<tr>
+				<th class="tg-nr0u">Valor</th>
+				<th class="tg-0pky">Tipo</th>
+				<th class="tg-0pky">Contexto y evaluación MITRE</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0pky">cloudflare-okta[.]com alojado en 147[.]182[.]132[.]52</td>
+				<td class="tg-0pky">URL de Phishing</td>
+				<td class="tg-0pky"><a href="https://attack.mitre.org/techniques/T1566/002/" target="_blank">T1566.002</a>: Phishing: Enlace de phishing de objetivo definido enviado a los usuarios.</td>
+			</tr>
+			<tr>
+				<td class="tg-0pky">64547b7a4a9de8af79ff0eefadde2aed10c17f9d8f9a2465c0110c848d85317a</td>
+				<td class="tg-0pky">SHA-256</td>
+				<td class="tg-0pky"><a href="https://attack.mitre.org/techniques/T1219/" target="_blank">T1219</a>: Software de acceso remoto distribuido por el ciberdelincuente</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: html-->
+	<h2 id="-qu-medidas-puedes-implementar">¿Qué medidas puedes implementar?</h2>
+	<p>Si eres blanco de ataques similares en tu entorno, no dudes en ponerte en contacto con <a href="/cdn-cgi/l/email-protection#0b6867647e6f6d6479686e64656e266279636e677b4b6867647e6f6d676a796e25686466"><span class="__cf_email__" data-cfemail="2f4c43405a4b49405d4c4a40414a02465d474a435f6f4c43405a4b49434e5d4a014c4042">[email&nbsp;protected]</span></a>, estaremos encantados de compartir las prácticas recomendadas sobre cómo mantener la seguridad de tu empresa. Por último, ¿te gustaría participar en la detección y mitigación de los próximos ataques? Estamos buscando gente para nuestro equipo de Detección y Respuesta <a href="https://boards.greenhouse.io/cloudflare/jobs/4364485?gh_jid=4364485" target="_blank">¡Únete a nuestro equipo</a>!</p>
+</div>

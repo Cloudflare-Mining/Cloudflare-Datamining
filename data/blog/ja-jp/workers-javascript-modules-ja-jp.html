@@ -1,0 +1,183 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image1-27.png" class="kg-image"></figure>
+	<p>Cloudflare WorkersでJavaScriptモジュールのサポートを開始します。JavaScriptで記述されたWorkerの例を見れば、過去数年間にインターネット上で出現するようになった次のコードスニペットに気付くかもしれません:</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">addEventListener("fetch", (event) =&gt; {
+  event.respondWith(new Response("Hello Worker!"));
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>上記の構文は「<a href="https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API" target="_blank">Service Worker</a>」APIとして知られており、Webブラウザで使用するために標準化することが提案されました。JavaScriptファイルをWebページにアタッチして、そのHTTP要求と応答を変更し、仮想エンドポイントのように動作させることができます。それはまさにWorkersにとって必要なものであり、 <a href="https://developers.cloudflare.com/workers/runtime-apis/fetch" target="_blank"><code>fetch()</code></a>や <a href="https://developers.cloudflare.com/workers/runtime-apis/cache" target="_blank"><code>caches</code></a>などの標準的なWeb APIともうまく統合されていました。</p>
+	<p>モジュールを導入する前に、サービスWorker APIが引き続きサポートされることを明確にしておきましょう。 「APIまたは機能が非推奨になっているため、<em>あなたの</em>書いたコードを<em>あなた自身で</em>書き直す必要がります」というメールを受け取りたりたい開発者は居ません。あなたは私たちからそれを知らされることはありません。私たちがこの決定を下した理由を知りたい場合は、Workersに向けた<a href="https://blog.cloudflare.com/backwards-compatibility-in-cloudflare-workers/">下位互換性</a>への取り組みについてご確認ください。</p>
+	<h3 id="javascript-"><strong>JavaScriptモジュールとは</strong></h3>
+	<p>ECMAScript（略称「ES」）モジュールとも呼ばれるJavaScriptモジュールは、JavaScriptでコードをインポートおよびエクスポートするための標準APIです。これは、JavaScriptの「ES6」言語仕様によって導入され、ほとんどのWebブラウザ、Node.js、Deno、そして現在はCloudflare Workersによって実装されています。以下は、これがどのように機能するかを示す例です：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">// filename: ./src/util.js
+export function getDate(time) {
+  return new Date(time).toISOString().split("T")[0]; // "YYYY-MM-DD"
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>「export」キーワードは、「getDate」関数を現在のモジュールからエクスポートすることを示します。次に、別のモジュールから「import」を使用して、その機能を使用できます。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">// filename: ./src/index.js
+import { getDate } from "./util.js"
+
+console.log("Today’s date:", getDate());
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>以上は基本ですが、モジュールでできることは他にもたくさんあります。これにより、格調高い方法でコードの整理、保守、再利用を、簡単に行うことができます。ここでは、モジュールの<em>すべて</em> の側面について説明することはできませんが、詳細については、モジュールに関する <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules" target="_blank">MDNガイド</a> またはLin Clarkによる<a href="https://hacks.mozilla.org/2018/03/es-modules-a-cartoon-deep-dive/" target="_blank">技術的な詳細</a>をご覧になることをお勧めします。</p>
+	<h3 id="workers-"><strong>Workersでモジュールを使用するにはどうすればよいですか？</strong></h3>
+	<p>Workerを表すデフォルトのモジュールをエクスポートできます。「addEventListener」を使用する代わりに、各イベントハンドラーはそのモジュールの関数として定義されます。現在、cronトリガーでは、HTTPおよびWebSocketリクエストの「<a href="https://developers.cloudflare.com/workers/runtime-apis/fetch-event#syntax-module-worker" target="_blank">fetch</a>」と、「<a href="https://developers.cloudflare.com/workers/runtime-apis/scheduled-event#syntax-module-worker" target="_blank">scheduled</a>」をサポートしています。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">export default {
+  async fetch(request, environment, context) {
+    return new Response("I’m a module!");
+  },
+  async scheduled(controller, environment, context) {
+    // await doATask();
+  }
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>また、各イベントハンドラーのパラメーターなど、他のいくつかの違いにも気付くかもしれません。単一の「イベント」オブジェクトの代わりに、必要とされるパラメータ群はそれぞれ分散されています。最初のパラメータはイベントタイプに固有です。「fetch」の場合は <a href="https://developers.cloudflare.com/workers/runtime-apis/request" target="_blank">リクエスト</a> オブジェクトであり、「scheduled」の場合はcronスケジュールを含む <a href="https://developers.cloudflare.com/workers/runtime-apis/scheduled-event#properties-1" target="_blank">コントーラー</a> です。</p>
+	<p>2番目のパラメータは、環境変数を含むオブジェクトです（「<a href="https://developers.cloudflare.com/workers/platform/environment-variables" target="_blank">バインディング</a>」とも呼ばれます）。以前は、各変数はWorkerのグローバルスコープに挿入されていました。単純なソリューションではありますが、コードに変数を魔法のように表示させるのは混乱を招きます。これで、環境オブジェクトを使用して、環境変数にアクセスするモジュールとライブラリを制御できます。このメカニズムは、欠陥のある、または不要な挙動をするサードパーティライブラリがすべての変数または機密を列挙するのを防止することができるため、より安全です。</p>
+	<p>3番目のパラメータはコンテキストオブジェクトであり、 &nbsp;<a href="https://developers.cloudflare.com/workers/runtime-apis/fetch-event#waituntil" target="_blank"><code>waitUntil()</code></a> を使用してバックグラウンドタスクを登録できます。これは、イベントの実行をブロックしてはならないロギングやエラーレポートなどのタスクに役立ちます。</p>
+	<p>これらをすべてまとめると、複数のモジュールをインポートおよびエクスポートしたり、新しいイベントハンドラー構文を使用したりできます。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">// filename: ./src/error.js
+export async function logError(url, error) {
+  await fetch(url, {
+     method: "POST",
+     body: error.stack
+  })
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">// filename: ./src/worker.js
+import { logError } from "./error.js"
+
+export default {
+  async fetch(request, environment, context) {
+    try {
+       return await fetch(request);
+    } catch (error) {
+       context.waitUntil(logError(environment.ERROR_URL, error));
+       return new Response("Oops!", { status: 500 });
+    }
+  }
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>今週初めに<a href="https://blog.cloudflare.com/ja-jp/durable-objects-ga-ja-jp/">一般提供</a>された、クラスもエクスポートできるDurable Objectsをお忘れなく！Durable Objectクラスを定義する方法です。これは増加された値を返す「Counter」Durable Objectの別の例です。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">// filename: ./src/counter.js
+export class Counter {
+  value = 0;
+  fetch() {
+    this.value++;
+    return new Response(this.value.toString());
+  }
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">// filename: ./src/worker.js
+// We need to re-export the Durable Object class in the Worker module.
+export { Counter } from "./counter.js"
+
+export default {
+  async fetch(request, environment) {
+    const clientId = request.headers.get("cf-connecting-ip");
+    const counterId = environment.Counter.idFromName(clientId);
+    // Each IP address gets its own Counter.
+    const counter = environment.Counter.get(counterId);
+    return counter.fetch("https://counter.object/increment");
+  }
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h3 id="javascript--1"><strong>JavaScript以外のモジュールはありますか？</strong></h3>
+	<p>はい！モジュールは主にJavaScript用ですが、他のモジュールタイプもサポートしています。ただし、一部はまだ標準化されていません。</p>
+	<p>たとえば、 <a href="https://developer.mozilla.org/en-US/docs/WebAssembly" target="_blank">WebAssembly</a>を<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/Module/Module#synchronously_compiling_a_webassembly_module" target="_blank">モジュール</a>としてインポートできます。以前、サービスWorker APIには、WebAssemblyがバインディングとして含まれていました。 WebAssemblyは外部リソースではなくコードとして表現する必要があるため、これは間違いだったと思います。モジュールを使用して、WebAssemblyをインポートする新しい方法は次のとおりです：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">import module from "./lib/hello.wasm"
+
+export default {
+  async fetch(request) {
+    const instance = await WebAssembly.instantiate(module);
+    const result = instance.exports.hello();
+    return new Response(result);
+  }
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>現在はサポートされていませんが、この <a href="https://github.com/WebAssembly/esm-integration/tree/main/proposals/esm-integration#webassemblyes-module-integration" target="_blank">提案</a>で概説されているように、将来はWebAssemblyモジュールとJavaScriptモジュールをより緊密に統合できることを楽しみにしています。以下に示す人間工学的な改善は、WebAssemblyをJavaScriptエコシステムにさらに組み込むために大いに役立つ可能性があります。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">import module from "./lib/hello.wasm"
+
+export default {
+  async fetch(request) {
+    const instance = await WebAssembly.instantiate(module);
+    const result = instance.exports.hello();
+    return new Response(result);
+  }
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>テキストモジュールとバイナリモジュールのサポートも追加しました。これにより、Stringと ArrayBufferをインポートできるようになりました。標準化されていませんが、HTMLファイルや画像などのリソースを簡単にインポートできるようになりました。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-html">&lt;!-- filename: ./public/index.html --&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;&lt;body&gt;
+&lt;p&gt;Hello!&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">import html from "../public/index.html"
+
+export default {
+  fetch(request) {
+    if (request.url.endsWith("/index.html") {
+       return new Response(html, {
+          headers: { "Content-Type": "text/html" }
+       });
+    }
+    return fetch(request);
+  }
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h3 id="-"><strong>開始方法</strong></h3>
+	<p>モジュールを使い始めるには多くの方法があります。</p>
+	<p>まず、 <a href="https://cloudflareworkers.com/#a47f44190209e87bc95d5127ae0b2c84:https://welcome.developers.workers.dev" target="_blank">プレイグラウンド</a> （アカウントは不要）またはダッシュボードの <a href="https://workers.new/" target="_blank">クイックエディタ</a>を使用して、ブラウザでモジュールを試すことができます。ブラウザは、モジュールを使用していることを自動的に検出しサービスWorker APIからシームレスに切り替えることができます。現在のところ、ブラウザで作成できるJavaScriptモジュールは1つだけですが、間もなく複数のモジュールの作成が可能になる予定です。</p>
+	<p>冒険心があり、モジュールを使用して<em>新しい</em> プロジェクトを始めてみたい方は、Workers向けの次世代コマンドラインインターフェイス（CLI）である<a href="https://blog.cloudflare.com/ja-jp/wrangler-v2-beta-ja-jp/">wrangler 2.0</a>のベータリリースをお試しいただけます。</p>
+	<p>既存のプロジェクトでは、<a href="https://github.com/cloudflare/wrangler" target="_blank">wrangler 1.0</a> （リリース1.17以降）を使用することをお勧めします。モジュールを有効にするには、「<a href="https://developers.cloudflare.com/workers/cli-wrangler/configuration#modules" target="_blank">wrangler.toml</a>」構成を次の例に合わせます：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-toml">name = "my-worker"
+type = "javascript"
+workers_dev = true
+
+[build.upload]
+format = "modules"
+dir = "./src"
+main = "./worker.js" # becomes "./src/worker.js"
+
+[[build.upload.rules]]
+type = "ESModule"
+globs = ["**/*.js"]
+
+# Uncomment if you have a build script.
+# [build]
+# command = "npm run build"
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p><a href="https://developers.cloudflare.com/workers/runtime-apis/fetch-event#syntax-module-worker" target="_blank">モジュール</a>の詳細を説明するために<a href="https://developers.cloudflare.com/workers/" target="_blank">ドキュメント</a>を更新しました。ただし、両方の形式を紹介するように移行するため、一部では引き続きサービスWorker APIを使用します。（おまけとしてTypeScriptもあります！）</p>
+	<p>モジュールで何か問題が発生したり、お気づきの点がある場合は、私たちにお知らせください。確認させていただきます。コーディングをお楽しみいただき、あなたがモジュールを使用して作成されるものを楽しみにしています！</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image2-11.png" class="kg-image"></figure>
+	<!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/07356fcb9d66ada45f8dcc2217b8c1d7?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2F07356fcb9d66ada45f8dcc2217b8c1d7%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D0m4s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
+	<!--kg-card-end: html-->
+</div>

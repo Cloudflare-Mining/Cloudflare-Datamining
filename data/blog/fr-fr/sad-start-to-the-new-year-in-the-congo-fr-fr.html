@@ -1,0 +1,32 @@
+<div class="post-content lh-copy gray1">
+	<p>À peine la page du calendrier tournée que nous constatons plus de troubles sur Internet. </p>
+	<p>Aujourd’hui, Cloudflare peut confirmer, chiffres à l’appui, qu’Internet a été coupé en République Démocratique du Congo, information précédemment révélée par de <a href="https://www.cnn.com/2019/01/02/africa/congo-internet-shutdown-china-intl/index.html" target="_blank">multiples</a> <a href="https://www.bbc.co.uk/news/world-africa-46721168" target="_blank">organes</a> <a href="https://www.france24.com/en/20190101-western-powers-urge-dr-congo-restore-internet-access" target="_blank">de presse</a>. Cette coupure a eu lieu alors que se déroulait l’élection présidentielle le 30 Décembre dernier, et perdure pendant la publication des résultats.</p>
+	<p>Tristement, cette situation est loin d’être une nouveauté. Nous avons fait état d'événements similaires par le passé, y compris lors d’une autre <a href="https://blog.cloudflare.com/large-drop-in-traffic-from-the-democratic-republic-of-congo/">coupure d’Internet</a> en RDC il y a moins d’un an. Une courbe malheureusement bien familière est aujourd’hui visible sur notre plateforme de gestion du réseau, montrant que le trafic dans le pays atteint péniblement un quart de son niveau habituel.</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/01/Typical-Level-1.png" class="kg-image"></figure>
+	<p></p>
+	<p>Notez que le diagramme est gradué en temps UTC, et que la capitale de la RDC Kinshasa est dans le fuseau horaire GMT+1.</p>
+	<p>La chute du trafic a démarré en milieu de journée le 31 Décembre 2018 (à environ 10h30 UTC, soit 11h30 heure locale à Kinshasa). Celà est d’autant plus frappant quand sont superposées toutes les courbes quotidiennes:</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/01/Day-over-Day-Comparison-1-1.png" class="kg-image"></figure>
+	<p></p>
+	<p>Ci-dessus, la courbe rouge représente le trafic du 31 Décembre, et les courbes grises celui des 8 jours précédents. Au regard de la même analyse avec la bande passante aujourd’hui, nous pouvons confirmer que la situation continue d’être anormale:</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/01/Day-over-Day-Comparison-2-1.png" class="kg-image"></figure>
+	<p></p>
+	<p>D’autres acteurs d’Internet <a href="https://twitter.com/InternetIntel/status/1080465195024158720" target="_blank">ont fait la même constatation</a>. Nous espérons pouvoir informer nos lecteurs le plus tôt possible d’un retour du pays à une connection à Internet normale.</p>
+	<p>Alors que 85 millions de personnes vivent dans le pays, très peu d’entre eux ont accès à Internet (6.21% d’entre eux, selon Wikipedia et sa <a href="https://en.wikipedia.org/wiki/List_of_countries_by_number_of_Internet_users" target="_blank">liste</a> des pays ordonnée par nombre d’utilisateurs d’Internet). Le pays est par ailleurs très vaste (2 344 858 km2), le 11ème plus grand du monde, représentant un quart de la surface des États-Unis, et près de deux fois plus grand que l’Afrique du Sud. Ces éléments se combinent, et à cause d’un déploiement limité de la fibre dans le pays, il existe encore beaucoup d’endroit qui accèdent à Internet à travers un lien satellite cher et limité. Nous constatons d’ailleurs via nos mesures de trafic que ces zones n’ont pas subi la même coupure:</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/01/Bandwidth-Levels-1.png" class="kg-image"></figure>
+	<p></p>
+	<p>Notez à quel point la bande passante est faible et représente une part infime de l’ensemble du trafic à destination de la RDC. En comparant cela au diagramme de l’un des plus larges opérateurs Internet mobile du pays, nous voyons clairement la coupure:</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/01/Distinct-Cutoff-1.png" class="kg-image"></figure>
+	<p></p>
+	<h3 id="une-situation-r-p-tition-de-part-le-monde">Une situation à répétition de part le monde</h3>
+	<p>Il y a de cela 15 mois, nous écrivions au sujet d’une coupure au Togo, et ajoutions ce pays à la liste incluant la Syrie (deux fois), l’Irak, la Turquie, la Libye, la Tunisie… des pays qui ont restreint ou coupé l’accès à Internet à leur population. Nous avons également écrit au sujet des troubles au Gabon (en 2016) et en Gambie (la même année). Dans ce dernier cas, le président en place a perdu l’élection. De fait nous écrivions: “Plutôt que de museler l’opposition, il est bien possible que bloquer l’accès à Internet mette les électeurs en colère et attise un vote protestataire”. Nous attendons de voir ce qui se passera en République Démocratique du Congo.</p>
+	<p>Nous mettrons ce billet de blog à jour dès la constatation de changement dans le trafic. Le gouvernement congolais a déclaré qu’il rétablira l’accès à Internet après la publication des résultats, le 6 Janvier, dans quatre jours.</p>
+	<h3 id="les-projets-galileo-et-athenia">Les projets Galileo et Athenia</h3>
+	<p>À Cloudflare, nous continuerons de faire notre travail pour assurer à toutes les voix vulnérables un accès à Internet. Nos projets Galileo et Athenia aident les sites à risque (tel que ceux des ONG de défense des droits de l’Homme, des journalistes, et des institutions gouvernementales publiant les résultats électoraux) à résister aux attaques qui menacent de les mettre hors ligne.</p>
+	<p>Nous soutenons également les principes d’un Contrat pour le web, qui incite les gouvernements à s’engager à maintenir en permanence un accès à tout Internet. Nous espérons seulement voir plus de résultats en cette faveur pendant l’année 2019.</p>
+</div>
