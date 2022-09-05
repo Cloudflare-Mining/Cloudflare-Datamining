@@ -16,7 +16,7 @@
 	<h3 id="-cloudflare-pages">部署到 Cloudflare Pages</h3>
 	<p>Cloudflare Pages 已经能够从 Cloudflare 边缘为静态资产提供服务，但随着 11 月份 Cloudflare Workers 支持的无服务器功能的发布，它已经发展成为一个非常适合托管全栈应用程序的完整平台。</p>
 	<p>要立即开始使用 Remix 和 Cloudflare Pages，请在终端中运行以下命令，并在询问 “您要在哪里部署？” 时选择 “Cloudflare Pages”：</p>
-	<pre><code class="language-sh">npx <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1f7c6d7a7e6b7a326d7a7276675f737e6b7a6c6b">[email&nbsp;protected]</a>
+	<pre><code class="language-sh">npx <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e7849582869382ca95828a8e9fa78b8693829493">[email&nbsp;protected]</a>
 </code></pre>
 	<p>然后在 <a href="https://developers.cloudflare.com/pages/platform/github-integration" target="_blank">GitHub</a> 或 <a href="https://blog.cloudflare.com/cloudflare-pages-partners-with-gitlab/">GitLab</a> 上创建一个存储库，git 提交，git 推送新创建的文件夹。最后，导航到 Cloudflare Pages，选择您的存储库，然后从框架预设的下拉列表中选择“Remix”。您的新应用程序将在您的 pages.dev 子域上可用，或者您可以<a href="https://developers.cloudflare.com/pages/get-started#adding-a-custom-domain" target="_blank">将其连接到任何自定义域</a>。</p>
 	<p>您的文件夹将有一个 functions/[[path]].ts 文件。这是我们在您网站的所有路径上为您的 Remix 应用程序提供服务的<a href="https://developers.cloudflare.com/pages/platform/functions" target="_blank">功能集成</a>。<a href="https://remix.run/docs/en/v1/api/conventions#file-name-conventions" target="_blank">应用文件夹</a>是 Remix 应用程序的大部分逻辑所在的位置。借助 Pages 对<a href="https://developers.cloudflare.com/pages/platform/rollbacks" target="_blank">回滚</a>和<a href="https://developers.cloudflare.com/pages/platform/preview-deployments" target="_blank">预览部署</a>的支持，您可以安全地测试对应用程序的任何更改，并且使用 <a href="https://blog.cloudflare.com/zh-cn/wrangler-v2-beta-zh-cn/">Wrangler 2.0 beta</a>，本地测试只是 npm run dev 的一个简单案例。</p>

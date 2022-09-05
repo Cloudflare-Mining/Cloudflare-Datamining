@@ -23,9 +23,9 @@
 	<pre><code>foo:~$ ssh-keygen -t ed25519
 </code></pre>
 	<p>and then follow the instructions. They will of course <em>provide a non-empty passphrase</em>. Then they send us (or whoever administers the zone file for <code>example.com</code>) the public key file, which may look like this:</p>
-	<pre><code>ssh-ed25519 AAAAC3N...VY4A= <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3b5a5752585e7b5d5454">[email&nbsp;protected]</a>
+	<pre><code>ssh-ed25519 AAAAC3N...VY4A= <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="60010c09030520060f0f">[email&nbsp;protected]</a>
 </code></pre>
-	<p>We can strip the comment <code><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="30515c59535570565f5f">[email&nbsp;protected]</a></code> out of that file, and use the rest as the value to create a TXT record with the name <code>alice_pubkey</code> in the domain <code>example.com</code>. Then, retrieving the key is as easy as this:</p>
+	<p>We can strip the comment <code><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="5534393c363015333a3a">[email&nbsp;protected]</a></code> out of that file, and use the rest as the value to create a TXT record with the name <code>alice_pubkey</code> in the domain <code>example.com</code>. Then, retrieving the key is as easy as this:</p>
 	<pre><code> foo:~$ unbound-host -t TXT alice_pubkey.example.com
  alice_pubkey.example.com has TXT record “ssh-ed25519 AAAAC3N…”
 </code></pre>

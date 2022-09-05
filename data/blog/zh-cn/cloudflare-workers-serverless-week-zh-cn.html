@@ -32,7 +32,7 @@
 	<p>然而，再提一下，在马修的开发者需求层次结构中，虽然一致性比速度重要，但在选择计算平台时，还有其他因素的重要性甚至要高于一致性。</p>
 	<h3 id="--5">费用</h3>
 	<p>如果必须从一个快速平台和一个便宜平台中取舍，在其他条件相同的情况下，大多数开发人员会选择便宜的那一个。只有在看到用户体验受损造成的代价超过速度升级所需的成本时，开发人员才会愿意为速度支付更多费用。在那之前，便宜胜过快速。</p>
-	<p>在大多数情况下，边缘计算平台会为提高速度收取额外费用。例如，通过 AWS 的 <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="327e535f5056537277565557">[email&nbsp;protected]</a> 处理请求的成本大约是<a href="https://medium.com/@zackbloom/serverless-pricing-and-costs-aws-lambda-and-lambda-edge-169bfb58db75" target="_blank">通过 AWS Lambda 处理的三倍</a>；而基础版 Lambda 已经非常昂贵了。从某些方面来看，这似乎情有可原。我们都认为需要付出更多才能变得更快，但这是一种定价原理，它总会让边缘计算成为一种利基产品，仅为那些对网络延迟极为敏感的有限应用程序提供服务。</p>
+	<p>在大多数情况下，边缘计算平台会为提高速度收取额外费用。例如，通过 AWS 的 <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="80cce1ede2e4e1c0c5e4e7e5">[email&nbsp;protected]</a> 处理请求的成本大约是<a href="https://medium.com/@zackbloom/serverless-pricing-and-costs-aws-lambda-and-lambda-edge-169bfb58db75" target="_blank">通过 AWS Lambda 处理的三倍</a>；而基础版 Lambda 已经非常昂贵了。从某些方面来看，这似乎情有可原。我们都认为需要付出更多才能变得更快，但这是一种定价原理，它总会让边缘计算成为一种利基产品，仅为那些对网络延迟极为敏感的有限应用程序提供服务。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image-38.png" class="kg-image"></figure>
 	<p>然而，边缘计算并不一定需要变得昂贵。实际上，它可以变得便宜。要理解这一点，可以看看从边缘提供服务的成本。如果您与 Cloudflare 的网络一样有合作良好的本地 ISP，那么与穿越全球回传相比，在本地提供带宽的开销可能会较低。在边缘运行时，还可以节省更多的能源和场地成本。这些节省有助于我们让 Cloudflare Workers 平台价格保持低廉。</p>
 	<h3 id="--6">更高效的架构意味着更低的成本</h3>
@@ -40,7 +40,7 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image-39.png" class="kg-image"></figure>
 	<p>虚拟机造就了第一批公共云。但是，云提供商很快就去寻求进一步降低开销的方法。容器提供了更加轻巧的选择，可以在同一台机器上运行多个客户的工作负载。使用的是 dotCloud，它后来<a href="https://www.infoq.com/news/2013/10/dotcloud-renamed-docker/" target="_blank">变成了 Docker</a>，而且一路领先，最终被几乎所有其他人效仿。再一次，容器胜过虚拟机的原因也是减少了每个应用程序的开销。</p>
 	<p>在 Cloudflare，我们知道历史不会停下脚步，所以在开始打造Workers 时，我们问自己：容器之后是什么？<a href="https://blog.cloudflare.com/cloud-computing-without-containers/">答案是隔离（Isolates）</a>。隔离是浏览器用来使进程相互隔开的沙盒技术。它们非常快速，轻巧。这就是为什么当您访问网站时，浏览器可以获取以前从未见过的代码并几乎立即执行它的原因。</p>
-	<p>通过使用隔离而不是容器或虚拟机，我们能够使计算开销远低于传统的无服务器平台。如此，我们就能更高效地处理计算工作负载。反过来，我们可以这种效率中节省下来的转送给我们的客户。我们的目标不是比 <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="206c414d4244416065444745">[email&nbsp;protected]</a> 便宜，而是要比 Lambda 便宜，而且便宜得多。</p>
+	<p>通过使用隔离而不是容器或虚拟机，我们能够使计算开销远低于传统的无服务器平台。如此，我们就能更高效地处理计算工作负载。反过来，我们可以这种效率中节省下来的转送给我们的客户。我们的目标不是比 <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e2ae838f808683a2a7868587">[email&nbsp;protected]</a> 便宜，而是要比 Lambda 便宜，而且便宜得多。</p>
 	<h3 id="--7">从极限到无限</h3>
 	<p>最初，我们希望 Workers 的定价非常简单且具有成本效益。与其他无服务器提供商不同，我们没有同时基于请求、CPU 时间<em>和</em>带宽收费，而是仅基于请求收费。简简单单。折衷是我们不得不施加最大 CPU、内存和应用程序大小限制。在过去三年中，我们了解到开发人员希望使用 Workers 构建更复杂、更精良的应用程序，其中一些突破了这些极限。因此，本周我们将剔除限制。</p>
 	<p>明天我们将公布一个新的 Workers 选项。借助这个选项，您可以按照其他无服务器提供商使用的相同定价模型来运行更复杂的计算机工作负载，但价格却更具吸引力。对于能够接受以前限制范围的用户，我们将继续支持简化选项。我特别期待开发人员能够驾驭我们的技术来开发新的应用程序，以付出比其他传统中央化无服务器平台更低的代价，得到比这些平台更高的性能。</p>
@@ -50,7 +50,7 @@
 	<p>因此对于 Cloudflare Workers，我们知道我们需要在开发人员已经很熟悉的环境中与他们交流。而这始于支持开发人员知道并喜爱的语言。我们之前已宣布支持 JavaScript、C、C++、Rust、Go，<a href="https://blog.cloudflare.com/cloudflare-workers-now-support-cobol/">甚至 COBOL</a>。本周，我们将宣布支持 Python、Scala 和 Kotlin。我们希望确保一点，您不必学习新语言和新平台就能从 Cloudflare Workers 获益。（我仍在推动对 Perl 的支持。）</p>
 	<p>易用性还意味着减少在技术运维等事务上花费的时间。那就是无服务器平台出众之处。能够简单地部署代码并允许平台随负载扩展和缩小是有魔力的。我们已经在 Cloudflare Workers 的长期用户上看到了这一点，比如 <a href="https://www.cloudflare.com/case-studies/discord/" target="_blank">Discord </a>，其使用量在过去三年增长了百分之几千，而 Workers 平台通过自动扩展满足了他们的需求。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image-40.png" class="kg-image"></figure>
-	<p>但是，无服务器平台的一个挑战是调试。作为开发人员，您很难在本地复制整个无服务器平台，因此调试应用程序或许更加困难。更加糟糕的是，将代码部署到平台<a href="https://aws.amazon.com/blogs/networking-and-content-delivery/slashing-cloudfront-change-propagation-times-in-2020-recent-changes-and-looking-forward/" target="_blank">需要长达 5 分钟时间，AWS 的 <span class="__cf_email__" data-cfemail="064a676b62674643626163">[email&nbsp;protected]</span> 便是这样</a>。如果您是一名开发人员，就会知道等待代码部署和测试的痛苦。这就是为什么我们必须要做到，让代码更改能够在不到 15 秒内部署到覆盖全球 200 多个城市的整个网络中。</p>
+	<p>但是，无服务器平台的一个挑战是调试。作为开发人员，您很难在本地复制整个无服务器平台，因此调试应用程序或许更加困难。更加糟糕的是，将代码部署到平台<a href="https://aws.amazon.com/blogs/networking-and-content-delivery/slashing-cloudfront-change-propagation-times-in-2020-recent-changes-and-looking-forward/" target="_blank">需要长达 5 分钟时间，AWS 的 <span class="__cf_email__" data-cfemail="a4e8c5c9c0c5e4e1c0c3c1">[email&nbsp;protected]</span> 便是这样</a>。如果您是一名开发人员，就会知道等待代码部署和测试的痛苦。这就是为什么我们必须要做到，让代码更改能够在不到 15 秒内部署到覆盖全球 200 多个城市的整个网络中。</p>
 	<h3 id="--9">贝佐斯法则</h3>
 	<p>我们内部做出的一个最重要决定是实施所谓的贝佐斯法则。它有两个要求：1) Cloudflare 工程师为自己开发的新功能必须尽可能使用 Workers 开发；2) 我们为自己开发的任何 API 或工具都必须提供给第三方 Workers 开发人员。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image-41.png" class="kg-image"></figure>

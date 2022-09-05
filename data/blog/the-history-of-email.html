@@ -32,7 +32,7 @@ write: mark is logged in more than once; writing to ttys002
 Hi, wanna grab lunch?
 </code></pre>
 		<p>He will see:</p>
-		<pre><code>Message from <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="89f3e8eae2c9c8feecfae6e4eca4c4e8e0e7effbe8e4eca7e5e6eae8e5">[email&nbsp;protected]</a> on ttys003 at 10:36 ...
+		<pre><code>Message from <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="96ecf7f5fdd6d7e1f3e5f9fbf3bbdbf7fff8f0e4f7fbf3b8faf9f5f7fa">[email&nbsp;protected]</a> on ttys003 at 10:36 ...
 Hi, wanna grab lunch?
 </code></pre>
 		<p>This is absolutely hilarious if your coworker happens to be using a graphical tool like vim which will not take kindly to random output on the screen.</p>
@@ -62,7 +62,7 @@ chmod 0442 ~/messages
 		<h3 id="arpanet">ARPANET</h3>
 		<p>In 1971, the Tenex team had just gotten access to the ARPANET, the network of computers which was a main precursor to the Internet. The team quickly created a program called CPYNET which could be used to send files to remote computers, similar to FTP today.</p>
 		<p>One of these engineers, Ray Tomlinson, had the idea to combine the message files with <a href="https://tools.ietf.org/html/rfc310" target="_blank">CPYNET</a>. He added a command which allowed you to append to a file. He also wired things up such that you could add an <code>@</code> symbol and a remote machine name to your messages and the machine would automatically connect to that host and append to the right file. In other words, running:</p>
-		<pre><code>SNDMSG <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="314b50525a71525d5e4455575d504354">[email&nbsp;protected]</a>
+		<pre><code>SNDMSG <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="601a01030b20030c0f1504060c011205">[email&nbsp;protected]</a>
 </code></pre>
 		<p>Would append to the <code>/Users/zack/messages</code> file on the host <code>cloudflare</code>. And email was born!</p>
 		<h3 id="ftp">FTP</h3>
@@ -96,15 +96,15 @@ There’s no way this is ever going anywhere...
 		<p>Note that at this time the ‘at’ word could be used rather than the ‘@’ symbol. Also note that this use of headers before the message predates HTTP by almost fifteen years. This format remains nearly identical today.</p>
 		<p>The Fifth Edition of Unix used a very similar <a href="https://en.wikipedia.org/wiki/Mbox" target="_blank">format</a> for storing a users email messages on disk. Each user would have a file which contained their messages:</p>
 		<pre><code>From MAILER-DAEMON Fri Jul  8 12:08:34 1974
-From: Author &lt;<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="543521203c3b2614312c35392438317a373b39">[email&nbsp;protected]</a>&gt;
-To: Recipient &lt;<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e69483858f968f838892a6839e878b968a83c885898b">[email&nbsp;protected]</a>&gt;
+From: Author &lt;<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="18796d6c70776a587d60797568747d367b7775">[email&nbsp;protected]</a>&gt;
+To: Recipient &lt;<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1c6e797f756c757972685c79647d716c7079327f7371">[email&nbsp;protected]</a>&gt;
 Subject: Save $100 on floppy disks
 
 They’re never gonna go out of style!
 
 From MAILER-DAEMON Fri Jul  8 12:08:34 1974
-From: Author &lt;<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="462733322e293406233e272b362a236825292b">[email&nbsp;protected]</a>&gt;
-To: Recipient &lt;<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2a584f49435a434f445e6a4f524b475a464f04494547">[email&nbsp;protected]</a>&gt;
+From: Author &lt;<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a5c4d0d1cdcad7e5c0ddc4c8d5c9c08bc6cac8">[email&nbsp;protected]</a>&gt;
+To: Recipient &lt;<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="631106000a130a060d1723061b020e130f064d000c0e">[email&nbsp;protected]</a>&gt;
 Subject: Seriously, buy AAPL
 
 You’ve never heard of it, you’ve never heard of me, but when you see
@@ -114,8 +114,8 @@ that stock symbol appear.  Buy it.
 </code></pre>
 		<p>Each message began with the word ‘From’, meaning if a message happened to contain From at the beginning of a line it needed to be escaped lest the system think that’s the start of a new message:</p>
 		<pre><code>From MAILER-DAEMON Fri Jul  8 12:08:34 2011
-From: Author &lt;<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a0c1d5d4c8cfd2e0c5d8c1cdd0ccc58ec3cfcd">[email&nbsp;protected]</a>&gt;
-To: Recipient &lt;<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="daa8bfb9b3aab3bfb4ae9abfa2bbb7aab6bff4b9b5b7">[email&nbsp;protected]</a>&gt;
+From: Author &lt;<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="4b2a3e3f2324390b2e332a263b272e65282426">[email&nbsp;protected]</a>&gt;
+To: Recipient &lt;<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="196b7c7a7069707c776d597c61787469757c377a7674">[email&nbsp;protected]</a>&gt;
 Subject: Sample message 1
 
 This is the body.
@@ -146,7 +146,7 @@ There are 3 lines.
 Return-Path: joed
 Received: by mysun.xyz.edu (5.54/ACS)
         id AA08581; Mon, 09 Jan 1995 16:56:39 EST
-Message-Id: &lt;<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b28b878283828b808387849cf3f3828a878a83f2dfcbc1c7dc9ccacbc89cd7d6c7">[email&nbsp;protected]</a>&gt;
+Message-Id: &lt;<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7f464a4f4e4f464d4e4a49513e3e4f474a474e3f12060c0a1151070605511a1b0a">[email&nbsp;protected]</a>&gt;
 To: angelac
 Subject: Here’s the first message you asked for
 Date: Mon, 09 Jan 1995 16:56:37 -0600
@@ -165,7 +165,7 @@ To: "Joe Doe" &lt;joed&gt;
 cc: angelac
 Subject: Re: Here’s the first message you asked for
 In-reply-to: Your message of "Mon, 09 Jan 1995 16:56:37 -0600."
-        &lt;<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="dbe2eeebeaebe2e9eaeeedf59a9aebe3eee3ea9bb6a2a8aeb5f5a3a2a1f5bebfae">[email&nbsp;protected]</a>&gt;
+        &lt;<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="fec7cbcecfcec7cccfcbc8d0bfbfcec6cbc6cfbe93878d8b90d0868784d09b9a8b">[email&nbsp;protected]</a>&gt;
 -------
 
 % edit vi

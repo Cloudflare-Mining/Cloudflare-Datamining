@@ -9,8 +9,8 @@
 	<p><strong>이메일 스푸핑</strong>도 있습니다. 이메일 스푸핑이 어떻게 작동하는지 이해를 돕기 위해 제가 개인 이메일 주소로 받은 Cloudflare 제품 업데이트 이메일을 살펴보겠습니다. 대부분의 이메일 공급자와 마찬가지로 이메일 전체 소스를 보면 다수의 헤더가 있고 이메일 본문이 있습니다.</p>
 	<!--kg-card-begin: markdown-->
 	<pre><code>Date: Thu, 23 Sep 2021 10:30:02 -0500 (CDT)
-From: Cloudflare &lt;<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3a4a48555e4f594e174f4a5e5b4e5f497a5956554f5e5c565b485f14595557">[email&nbsp;protected]</a>&gt;
-Reply-To: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="aadad8c5cedfc9de87dfdacecbdecfd9eac9c6c5dfceccc6cbd8cf84c9c5c7">[email&nbsp;protected]</a>
+From: Cloudflare &lt;<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7b0b09141f0e180f560e0b1f1a0f1e083b1817140e1f1d171a091e55181416">[email&nbsp;protected]</a>&gt;
+Reply-To: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="06767469627365722b7376626772637546656a697362606a6774632865696b">[email&nbsp;protected]</a>
 To: &lt;my_personal_email_address&gt;
 </code></pre>
 	<!--kg-card-end: markdown-->
@@ -43,7 +43,7 @@ To: &lt;my_personal_email_address&gt;
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/09/image12-7.png" class="kg-image"></figure>
 	<p>위 그림에는 수신된 이메일이 SPF를 준수하는지 확인하는 절차가 표시되어 있습니다.</p>
 	<ol>
-		<li>IP 주소 203.0.113.10에서 이메일을 보내는데, From 헤더 값은 <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c1a9a0afafa4b281acb8a2aeaeadb6a4a3b1a0a6a4efb9b8bb">[email&nbsp;protected]</a>입니다.</li>
+		<li>IP 주소 203.0.113.10에서 이메일을 보내는데, From 헤더 값은 <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f199909f9f9482b19c88929e9e9d86949381909694df89888b">[email&nbsp;protected]</a>입니다.</li>
 		<li>수신자는 이메일을 받으면 해당 도메인의 SPF 정책을 얻기 위해 mycoolwebpage.xyz에 SPF 레코드를 쿼리합니다.</li>
 		<li>수신자는 보내는 IP 주소 203.0.113.10이 SPF 레코드에 포함되어 있는지 검사합니다. 포함되어 있다면 해당 이메일은 SPF 검사를 통과한 것입니다. 포함되어 있지 않다면 all 메커니즘의 한정자에 따라 결과가 결정됩니다.</li>
 	</ol>
@@ -71,7 +71,7 @@ To: &lt;my_personal_email_address&gt;
 	<p>도메인 기반 메시지 인증 보고 및 일치라는 말은 길고 복잡합니다. 중요한 것은 <em>보고</em>와 <em>일치</em>이며 DMARC는 바로 이 기능을 제공합니다. 이메일 발신자는 정규 보고서를 통해 얼마나 많은 이메일이 일치하지 않아 스푸핑되었을 가능성이 있는지 알 수 있습니다. 일치는 이메일 수신자에게 일치하는 않는 이메일을 어떻게 처리해야 할지 명확한 신호를 제공합니다. 이메일 수신자는 DMARC 레코드가 없이도 SPF나 DKIM 검사를 통과하지 못한 이메일에 대해 자체적인 정책을 설정할 수 있습니다. 하지만 DMARC 레코드는 이메일 발신자가 보낸 명시적 지침이므로 일치하지 않는 이메일을 어떻게 처리할지에 대해 이메일 수신자의 확신 정도가 높아집니다.</p>
 	<p>다음은 cloudflare.com의 DMARC 레코드입니다.</p>
 	<!--kg-card-begin: markdown-->
-	<pre><code>_dmarc.cloudflare.com.   TXT   "v=DMARC1; p=reject; pct=100; rua=mailto:<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="90e2e5f1d0f3fcffe5f4f6fcf1e2f5bef3fffd">[email&nbsp;protected]</a>"
+	<pre><code>_dmarc.cloudflare.com.   TXT   "v=DMARC1; p=reject; pct=100; rua=mailto:<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="9ae8effbdaf9f6f5effefcf6fbe8ffb4f9f5f7">[email&nbsp;protected]</a>"
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>DMARC TXT 레코드는 항상 이메일 도메인의 _dmarc 하위 도메인에서 설정되며 SPF 및 DKIM과 마찬가지로 내용은 v=DMARC1로 시작됩니다. 또한 세 가지 태그가 추가됩니다.</p>
@@ -81,7 +81,7 @@ To: &lt;my_personal_email_address&gt;
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/09/unnamed3.png" class="kg-image"></figure>
 	<p>위에 DMARC의 단계별 작동 방식이 표시되어 있습니다.</p>
 	<ol>
-		<li>From 헤더에 <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="452d242b2b203605283c262a2a29322027352422206b3d3c3f">[email&nbsp;protected]</a>가 포함된 이메일이 발송됩니다.</li>
+		<li>From 헤더에 <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="59313837373c2a1934203a3636352e3c3b29383e3c77212023">[email&nbsp;protected]</a>가 포함된 이메일이 발송됩니다.</li>
 		<li>수신자는 필요 정책과 DKIM 공개 키를 얻기 위해 mycoolwebpage.xyz 도메인에 SPF, DKIM, DMARC 레코드를 쿼리합니다.</li>
 		<li>수신자는 위에서 설명된 것처럼 SPF 및 DKIM 검사를 수행합니다. 두 검사 모두 통과하면 이메일을 수락하고 수신함으로 전달합니다. SPF와 DKIM 중 하나를 통과하지 못하면 DMARC 정책을 따라 해당 이메일을 그래도 수락할지, 수락하지 않을지, 스팸 폴더로 전달할지 결정합니다.</li>
 		<li>마지막으로 수신자는 총합 보고서를 돌려 보냅니다. 이 보고서의 rua 태그에 지정된 이메일에 따라 이 보고서는 해당 이메일 주소를 담당하는 다른 이메일 서버로도 발송될 수 있습니다.</li>

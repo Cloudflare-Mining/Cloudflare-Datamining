@@ -3,13 +3,13 @@
 	<p>It's particularly interesting when basic things used everywhere fail. Recently we've reached such a breaking point in a ubiquitous part of Linux networking: establishing a network connection using the <code>connect()</code> system call.</p>
 	<p>Since we are not doing anything special, just establishing TCP and UDP connections, how could anything go wrong? Here's one example: we noticed alerts from a misbehaving server, logged in to check it out and saw:</p>
 	<!--kg-card-begin: markdown-->
-	<pre><code><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="ed808c9f8886ad">[email&nbsp;protected]</a>:~# ssh 127.0.0.1
+	<pre><code><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b6dbd7c4d3ddf6">[email&nbsp;protected]</a>:~# ssh 127.0.0.1
 ssh: connect to host 127.0.0.1 port 22: Cannot assign requested address
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>You can imagine the face of my colleague who saw that. SSH to localhost refuses to work, while she was already using SSH to connect to that server! On another occasion:</p>
 	<!--kg-card-begin: markdown-->
-	<pre><code><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b5d8d4c7d0def5">[email&nbsp;protected]</a>:~# dig cloudflare.com @1.1.1.1
+	<pre><code><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="5c313d2e39371c">[email&nbsp;protected]</a>:~# dig cloudflare.com @1.1.1.1
 dig: isc_socket_bind: address in use
 </code></pre>
 	<!--kg-card-end: markdown-->
