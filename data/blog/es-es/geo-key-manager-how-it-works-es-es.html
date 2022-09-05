@@ -1,0 +1,114 @@
+<div class="post-content lh-copy gray1">
+	<p>Hoy hemos anunciado <a href="https://blog.cloudflare.com/introducing-cloudflare-geo-key-manager">Geo Key Manager</a>, una función que ofrece a los clientes un control sin precedentes sobre dónde se almacenan sus claves privadas cuando se cargan en Cloudflare. Esta función se basa en una innovación anterior de Cloudflare llamada SSL sin clave y en un novedoso mecanismo de control de acceso criptográfico basado tanto en el cifrado basado en la identidad como en el cifrado de difusión. En este post explicaremos los detalles técnicos de esta función, la primera de este tipo en la industria, y cómo Cloudflare aprovechó su red y tecnologías existentes para construirla.</p>
+	<h3 id="claves-en-diferentes-c-digos-de-rea"><strong>Claves en diferentes códigos de área</strong></h3>
+	<p>Cloudflare lanzó <a href="https://blog.cloudflare.com/announcing-keyless-ssl-all-the-benefits-of-cloudflare-without-having-to-turn-over-your-private-ssl-keys/">SSL sin clave</a> hace tres años con gran éxito. Con SSL sin clave, los clientes pueden aprovechar todas las ventajas de la red de Cloudflare y mantener sus claves privadas HTTPS dentro de su propia infraestructura. SSL sin clave ha sido muy popular entre los clientes de sectores con regulaciones sobre el control del acceso a las claves privadas, como el sector financiero. La adopción de SSL sin llave ha sido más lenta fuera de estos sectores regulados, en parte porque requiere que los clientes ejecuten software personalizado (el servidor de claves) dentro de su infraestructura.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/11/1-2.png" class="kg-image" alt="Standard Configuration">
+		<figcaption>Configuración estándar</figcaption>
+	</figure>
+	<p></p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/11/2-1.png" class="kg-image" alt="Keyless SSL">
+		<figcaption>SSL sin clave</figcaption>
+	</figure>
+	<p></p>
+	<p>Uno de los casos de uso que motivaron la creación de SSL sin clave fue la expectativa de que los clientes no confiaran sus claves privadas a un tercero como Cloudflare. Hemos comprobado que esto es muy poco común; la mayoría de los clientes realmente confían en Cloudflare con sus claves privadas. Pero nos hemos dado cuenta de que a veces los clientes desean una forma de reducir el riesgo asociado a tener sus claves en algunos lugares físicos del mundo.</p>
+	<p>Aquí es donde resulta útil Geo Key Manager: permite a los clientes limitar la exposición de sus claves privadas a determinados lugares. Es similar a la SSL sin clave, pero en lugar de tener que ejecutar un servidor de claves dentro de tu infraestructura, Cloudflare aloja servidores de claves en las ubicaciones de su elección. Esto reduce la complejidad de la implantación de SSL sin clave y proporciona el control que le interesa a la gente. Geo Key Manager "simplemente funciona" sin necesidad de software.</p>
+	<h3 id="un-repaso-al-ssl-sin-clave"><strong>Un repaso al SSL sin clave</strong></h3>
+	<p>SSL sin clave fue desarrollado en Cloudflare para hacer más seguro el HTTPS. El contenido servido a través de HTTPS está encriptado y autentificado para que los espías o atacantes no puedan leerlo o modificarlo. HTTPS utiliza un protocolo llamado Seguridad de la Capa de Transporte (TLS) para mantener estos datos seguros.</p>
+	<p>TLS tiene dos fases: una fase del handshake y una fase de intercambio de datos. En la fase del handshake, se intercambian claves criptográficas y se establece un secreto compartido. Como parte de este intercambio, el servidor demuestra su identidad al cliente mediante un certificado y una clave privada. En la fase de intercambio de datos, las claves compartidas del handshake utilizan para cifrar y autenticar los datos.</p>
+	<p>Un handshake TLS puede dividirse naturalmente en dos componentes:</p>
+	<ol>
+		<li>La operación de la clave privada</li>
+	</ol>
+	<ul>
+		<li>Todo lo demás</li>
+	</ul>
+	<p>La operación de la clave privada es fundamental para el handshake de TLS: permite al servidor demostrar que es propietario de un determinado certificado. Sin esta operación de clave privada, el cliente no tiene forma de saber si el servidor es auténtico o no. En el SSL sin clave, la operación de la clave privada se separa del resto del handshake. En un handshake SSL sin clave, en lugar de realizar la operación de clave privada localmente, el servidor realiza una llamada de procedimiento remoto a otro servidor (llamado servidor de claves) que controla la clave privada.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/3-1.png" class="kg-image"></figure>
+	<p>El SSL sin clave le permite separar lógicamente las preocupaciones para que un compromiso del servidor web no resulte en un compromiso de la clave privada. Esta seguridad adicional tiene un coste. La llamada a procedimiento remoto desde el servidor al servidor de claves puede añadir latencia al handshake, ralentizando el establecimiento de la conexión. El coste de latencia adicional corresponde al tiempo de ida y vuelta del servidor al servidor de claves, que puede ser de hasta un segundo si el servidor de claves está en el otro lado del mundo.</p>
+	<p>Por suerte, este coste de latencia solo se aplica a la primera vez que se conecte a un servidor. Una vez completado el handshake, el servidor de claves no interviene. Además, si se vuelve a conectar a un sitio tampoco tiene que pagar el coste de latencia porque reanudar una conexión con <a href="https://blog.cloudflare.com/tls-session-resumption-full-speed-and-secure/">TLS Session Resumption </a>no requiere la clave privada.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/11/4-1.png" class="kg-image">
+		<figcaption>La latencia solo se añade para la conexión inicial.</figcaption>
+	</figure>
+	<p>Para profundizar en este tema, lea <a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details/">este post que escribí</a> en 2014.</p>
+	<p>Con el SSL sin llave como elemento básico, nos propusimos diseñar el Geo Key Manager.</p>
+	<h3 id="geo-key-manager-dise-o-de-la-arquitectura"><strong>Geo Key Manager: diseño de la arquitectura</strong></h3>
+	<p>Cloudflare tiene una base de clientes internacional y hemos aprendido que los clientes de todo el mundo tienen diferentes requisitos normativos y legales, además de diferentes perfiles de riesgo, con respecto a la colocación de sus claves privadas. No hay una solución única para todo el planeta. Con esa filosofía en mente, nos propusimos diseñar un sistema muy flexible para decidir dónde se pueden guardar las claves.</p>
+	<p>El primer problema a resolver era el control de acceso. ¿Cómo podríamos limitar el número de ubicaciones a las que se envía una clave privada? Cloudflare tiene una base de datos que toma las configuraciones de los usuarios y las distribuye a todas las ubicaciones de borde de forma <a href="https://blog.cloudflare.com/kyoto-tycoon-secure-replication/">segura y muy rápida</a>. Sin embargo, este sistema está optimizado para sincronizar toda una base de datos en todo el mundo; modificarlo para distribuir selectivamente las claves a diferentes lugares era un cambio arquitectónico demasiado grande para Cloudflare. En su lugar, decidimos explorar la idea de un sistema de control de acceso criptográfico (CAC).</p>
+	<p>En un sistema CAC, los datos se cifran y se distribuyen por todas partes. Solo se puede acceder a un dato si se tiene la clave de descifrado. Al enviar solo las claves de descifrado a determinados lugares, podemos limitar eficazmente quién tiene acceso a los datos. Por ejemplo, podríamos cifrar las claves privadas de los clientes una vez—justo después de cargarlas—y enviar las claves cifradas a todas las ubicaciones utilizando el sistema de replicación de bases de datos existente.</p>
+	<p>Ya hemos experimentado con sistemas CAC, sobre todo con el proyecto <a href="https://github.com/cloudflare/redoctober" target="_blank">Red October</a> project. Con Red October, puede encriptar un dato para que varias personas tengan que desencriptarlo. Así es como funciona <a href="https://blog.cloudflare.com/pal-a-container-identity-bootstrapping-tool/">PAL</a>, nuestra solución Docker Secrets. Sin embargo, el sistema de Red October no es adecuado para Geo Key Manager por varias razones:</p>
+	<ol>
+		<li>Cuantas más ubicaciones se cifren, mayor será la clave cifrada</li>
+	</ol>
+	<ul>
+		<li>No hay manera de cifrar una clave para "todas partes excepto una ubicación determinada" sin tener que volver a cifrar cuando se añaden nuevas ubicaciones (lo que hacemos <a href="https://blog.cloudflare.com/portland/">con frecuencia</a>)</li>
+		<li>Tiene que haber un registro seguro de la clave pública de cada centro de datos</li>
+	</ul>
+	<p>Para Geo Key Manager queríamos algo que proporcionara a los usuarios un control granular y que pudiera escalar con la creciente red de Cloudflare. Se nos ocurrieron los siguientes requisitos:</p>
+	<ul>
+		<li>Los usuarios pueden seleccionar entre un conjunto de regiones predefinidas en las que desean que se encuentren sus claves (UE, EE.UU., máxima seguridad, etc.)<br>Los usuarios pueden añadir ubicaciones específicas de centros de datos fuera de las regiones elegidas (por ejemplo, todas las ubicaciones de EE. UU. más Toronto)</li>
+		<li>Los usuarios pueden elegir las ubicaciones de los centros de datos dentro de las regiones elegidas para no enviar claves (por ejemplo, todas las ubicaciones de la UE excepto Londres)</li>
+		<li>Debe ser rápido descifrar una clave y fácil almacenarla, sin importar lo complicado de la configuración</li>
+	</ul>
+	<p>Construir un sistema que satisfaga estos requisitos ofrece a los clientes la libertad de decidir dónde se guardan sus claves y la escalabilidad necesaria para ser útil con una red en crecimiento.</p>
+	<h3 id="cifrado-basado-en-la-identidad"><strong>Cifrado basado en la identidad</strong></h3>
+	<p>La herramienta criptográfica que nos permite satisfacer estos requisitos se denomina cifrado basado en la identidad.</p>
+	<p>A diferencia de la criptografía de clave pública tradicional, en la que cada parte tiene una clave pública y una clave privada, en el cifrado basado en la identidad, su identidad <em>es</em> su clave pública. Se trata de un concepto muy potente, ya que permite cifrar datos a una persona sin tener que obtener su clave pública de antemano.En lugar de un gran número de aspecto aleatorio, una clave pública puede ser literalmente cualquier cadena, como "<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d6b4b9b496b3aeb7bba6bab3f8b5b9bb">[email&nbsp;protected]</a>" o "beebob". El cifrado basado en la identidad es útil para el correo electrónico, donde se puede imaginar el cifrado de un mensaje utilizando la dirección de correo electrónico de la persona como clave pública. Compárelo con la complejidad de usar PGP, donde tiene que encontrar la clave pública de alguien y validarla antes de enviar un mensaje. Con el cifrado basado en la identidad, incluso se pueden cifrar los datos a alguien antes de que tenga la clave privada asociada a su identidad (que es gestionada por una autoridad central de generación de claves).</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/11/5-1.png" class="kg-image">
+		<figcaption>Criptografía de clave pública (PGP, etc.)</figcaption>
+	</figure>
+	<p></p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/11/6-1.png" class="kg-image">
+		<figcaption>Cifrado basado en la identidad</figcaption>
+	</figure>
+	<p></p>
+	<p>El cifrado basado en la identificación fue propuesto por <a href="https://discovery.csc.ncsu.edu/Courses/csc774-S08/reading-assignments/shamir84.pdf" target="_blank">Shamir en los años 80</a>, pero no fue totalmente práctico hasta <a href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.66.1131" target="_blank">la propuesta de Boneh y Franklin</a> en 2001. Desde entonces, se han descubierto y puesto en práctica diversos esquemas interesantes. La primitiva criptográfica subyacente que hace posible el cifrado eficiente basado en la identificación se llama <a href="https://www.math.uwaterloo.ca/~ajmeneze/publications/pairings.pdf" target="_blank">Pares de Curva Elíptica</a>, un tema que merece su propia entrada en el blog.</p>
+	<p>Nuestro esquema se basa en la combinación de dos primitivas:</p>
+	<p>Cifrado de difusión basado en la identidad (IBBE)</p>
+	<p>Revocación basada en la identidad (IBR)</p>
+	<p><em>Cifrado de difusión basado en la identidad</em> (IBBE) es como una lista de permitidos. Permite tomar un dato y cifrarlo a un conjunto de destinatarios. La construcción específica que utilizamos procede de un artículo de 2007 de <a href="https://link.springer.com/content/pdf/10.1007/978-3-540-76900-2_12.pdf" target="_blank">Delerablee</a>. Lo más importante es que el tamaño del texto cifrado no depende del número de destinatarios. Esto significa que podemos cifrar los datos de forma eficiente sin que aumenten de tamaño, independientemente del número de destinatarios (o PdP en nuestro caso).</p>
+	<p><em>Revocación basada en la identidad</em> (IBR) es como una lista de bloqueo. Te permite encriptar una pieza de datos para que todos los destinatarios puedan desencriptarla, excepto un conjunto predefinido de destinatarios que están excluidos. La implementación que utilizamos fue la de la sección 4 de un artículo de <a href="https://pdfs.semanticscholar.org/5da9/eaa24ba749f1ae193800b6961a37b88da1de.pdf" target="_blank">Attrapadung et al. de 2011</a>. De nuevo, el tamaño del texto cifrado no depende del número de identidades excluidas.</p>
+	<p>Estas dos primitivas pueden combinarse para crear un esquema de control de acceso criptográfico muy flexible. Para ello, cree dos conjuntos de identidades: una identidad para cada región y una identidad para cada ubicación del centro de datos. Una vez decididos estos conjuntos, se proporciona a cada servidor la clave privada de cifrado basada en la identidad para su región y su ubicación.</p>
+	<p>Una vez hecho esto, se puede configurar el acceso a la llave en términos de los siguientes conjuntos:</p>
+	<ul>
+		<li>Conjunto de regiones a encriptar</li>
+		<li>Conjunto de lugares dentro de la región a excluir</li>
+		<li>Conjunto de lugares fuera de la región para incluir</li>
+	</ul>
+	<p>Así es como se puede cifrar una clave de cliente para que se pueda aplicar una determinada política de control de acceso (regiones, lista de bloqueo, lista de permitidos):</p>
+	<ol>
+		<li>Crear una clave de encriptación KEK</li>
+	</ol>
+	<ul>
+		<li>Dividirlo en dos mitades KEK1, KEK2</li>
+		<li>Cifrar KEK1 con IBBE para incluir el conjunto de regiones (regiones de la lista de permitidos)</li>
+		<li>Cifrar KEK2 con IBR para excluir las ubicaciones en las regiones definidas en 3 (colocación de la lista de bloqueos)</li>
+		<li>Cifrar la KEK con el IBBE para incluir los lugares que no están en las regiones definidas en 3 (colocación de la lista de permitidos)</li>
+		<li>Envíe las tres claves encriptadas (KEK1)región, (KEK2)excluir, (KEK)incluir a todos los lugares</li>
+	</ul>
+	<p>Esto se puede visualizar de la siguiente manera con</p>
+	<ul>
+		<li>Regiones: EE. UU. y la UE.</li>
+		<li>Colocación de la lista de bloqueos: Dallas y Londres</li>
+		<li>Colocación de la lista de permitidos: Sidney y Tokio</li>
+	</ul>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/7.png" class="kg-image" alt="1"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image3.jpeg" class="kg-image" alt="2"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/9.png" class="kg-image"></figure>
+	<p>Las ubicaciones dentro de la lista de regiones permitidas pueden descifrar la mitad de la clave (KEK1), y necesitan estar también fuera de la lista de bloqueos para descifrar la otra mitad de la clave (KEK2). En el ejemplo, Londres y Dallas solo tienen acceso a KEK1 porque no pueden desencriptar KEK2. Estos lugares no pueden reconstruir la KEK y, por tanto, no pueden descifrar la clave privada. Todos los demás lugares de la UE y los EE.UU. pueden descifrar la KEK1 y la KEK2, por lo que pueden construir la KEK para descifrar la clave privada. Tokio y Sydney pueden descifrar la KEK de la lista de permisos y utilizarla para descifrar la clave privada.</p>
+	<p>De este modo, la clave TLS privada estará disponible en toda la UE y EE. UU., excepto en Dallas y Londres, y también en Tokio y Sydney. El resultado es el siguiente mapa:</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/10.png" class="kg-image"></figure>
+	<p>Este diseño permite a los clientes elegir con granularidad por centro de datos dónde se puede acceder a sus claves privadas. Si alguien se conecta a un centro de datos que no puede descifrar la clave privada, esa conexión SSL se gestiona mediante SSL sin clave, donde el servidor de claves se encuentra en una ubicación con acceso a la clave. El código Geo Key encuentra automáticamente el centro de datos más cercano que puede acceder a la clave privada TLS correspondiente y utiliza SSL sin clave para gestionar el handshake TLS con el cliente.</p>
+	<h3 id="creaci-n-de-una-red-de-servidores-de-claves"><strong>Creación de una red de servidores de claves</strong></h3>
+	<p>Cada vez que utilice SSL sin clave para una nueva conexión, habrá un coste de latencia para conectar con el servidor de claves. Con Geo Key Manager, hemos querido reducir al máximo este coste de latencia. En términos prácticos, esto significa que necesitamos saber qué servidor de claves responderá más rápido.</p>
+	<p>Para solucionarlo, hemos creado una red superpuesta entre todos nuestros centros de datos para medir la latencia. Cada centro de datos tiene una conexión de salida con todos los demás centros de datos. Cada pocos segundos, enviamos un "ping" (un <a href="https://github.com/cloudflare/gokeyless/blob/d129f600f7c60cc36d9da9ef99eefe430b05a3c4/protocol/protocol.go#L95" target="_blank">mensaje en el protocolo de SSL sin clave</a>, no un <a href="https://en.wikipedia.org/wiki/Ping_(networking_utility)" target="_blank">mensaje ICMP</a>) y medimos cuánto tiempo tarda el servidor en enviar un "pong" correspondiente.</p>
+	<p>Cuando un cliente se conecta a un sitio detrás de Cloudflare en un centro de datos que no puede descifrar la clave privada de ese sitio, utilizamos metadatos para averiguar qué centros de datos tienen acceso a la clave. A continuación, elegimos el centro de datos que tiene la menor latencia según nuestras mediciones y utilizamos el servidor de claves de ese centro de datos para SSL sin clave. Si la ubicación con menor latencia está sobrecargada, podemos elegir otra ubicación con mayor latencia pero más capacidad.</p>
+	<p>Los datos de estas mediciones se utilizaron para construir el siguiente mapa, en el que se destaca la latencia adicional añadida para los visitantes de todo el mundo para la configuración exclusiva de EE. UU.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/11.png" class="kg-image"></figure>
+	<!--kg-card-begin: markdown-->
+	<p><small>La latencia se añade cuando las llaves están en EE.UU. únicamente. Verde: sin coste de latencia,<br>
+			Amarillo: &lt; 50ms,<br>
+			Rojo: &gt; 100ms</small></p>
+	<!--kg-card-end: markdown-->
+	<h3 id="en-definitiva"><strong>En definitiva</strong></h3>
+	<p>Innovamos constantemente para ofrecer a nuestros clientes funciones potentes y fáciles de usar. Con Geo Key Manager, estamos aprovechando el SSL sin llave y la criptografía del siglo XXI para mejorar la seguridad de las claves privadas en un clima geopolítico cada vez más complicado.</p>
+</div>

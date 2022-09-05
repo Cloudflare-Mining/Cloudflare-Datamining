@@ -1,0 +1,93 @@
+<div class="post-content lh-copy gray1">
+	<p><a href="https://blog.cloudflare.com/http-3-vs-http-2/">Comparing HTTP/3 vs. HTTP/2 Performance</a> 에서도 이야기한 적 있지만 Cloudflare 의 IETF QUIC 구현인 <a href="https://github.com/cloudflare/quiche" target="_blank">quiche</a>는 저희의 실 서비스 환경에서 <a href="https://tools.ietf.org/html/rfc8312" target="_blank">CUBIC 혼잡 제어 알고리즘</a>을 적용하고 있습니다. 최근에는 추가적인 개선인 <a href="https://tools.ietf.org/html/draft-balasubramanian-tcpm-hystartplusplus-03" target="_blank">HyStart++</a> 을 혼잡 제어 모듈에 추가하였습니다.</p>
+	<p>이 글에서는 QUIC의 혼잡 제어와 손실 복구에 대해서 간단히 이야기하고 quiche 혼잡 제어 모듈의 CUBIC와 HyStart++에 대해서 다루도록 하겠습니다. 그리고 테스트 환경에서의 결과와 함께 quiche 라이브러리에 최근 추가된 <a href="https://tools.ietf.org/html/draft-marx-qlog-event-definitions-quic-h3-01" target="_blank">qlog</a> 를 사용하여 이를 어떻게 시각화할지에 대해서도 알아보도록 하겠습니다.</p>
+	<h3 id="quic-">QUIC의 혼잡 제어와 손실 복구</h3>
+	<p>네트워크 전송 프로토콜에서 혼잡 제어란 해당 네트워크에 현재의 연결이 얼마나 많은 데이터를 보낼지를 결정하는 것입니다. 현재 링크에 너무 많은 데이터를 보내 넘치지 않도록 함과 동시에 같은 네트워크의 다른 연결과도 대역폭을 공유하도록 하여 인터넷의 혼잡 붕괴를 방지하는 중요한 역할을 합니다. 기본적으로 혼잡 제어는 현재 링크의 용량을 측정해서 실시간으로 최적화하는 것이며 인터넷을 운영하기 위한 핵심 알고리즘 중 하나 입니다.</p>
+	<p>QUIC 혼잡 제어는 TCP 의 다년간의 경험을 기반으로 작성되어 있기 때문에 둘 사이에 닮은 점이 많은 것은 우연이 아닙니다. 기본적으로는 CWND (혼잡 윈도우. 현재 네트워크에 보낼 수 있는 데이터 바이트 크기)와 SSTHRESH (슬로 스타트 한계치. 슬로 스타트가 멈추는 한계치)로 구성되어 있습니다. 혼잡 제어 알고리즘은 복잡한 예외 경우가 있어서 잘 조절하는 것이 쉽지 않습니다. QUIC은 보통 새로 구현되는 프로토콜이기 때문에 현재의 초안은 처음 접하는 사람들을 위해서 비교적 간단한 Reno 알고리즘을 추천하고 있습니다. 하지만 이것은 알려져 있는 한계점이 있으며, QUIC에서 혼잡 제어의 추가 구현이 가능합니다. 구현하는 쪽에서는 여러가지 더 나은 알고리즘 중 하나를 고를 수 있습니다.</p>
+	<p>Reno 가 TCP 혼잡 제어의 표준이 된 이래 학계와 산업계에서 많은 혼잡 제어 알고리즘이 제안되어 왔습니다. 크게 두가지로 나눌 수 있는데 Reno 와 CUBIC과 같은 손실 기반 혼잡 제어 알고리즘은 패킷 손실시에 반응하는 것입니다. 또 다른 하나는 <a href="https://www.cs.princeton.edu/courses/archive/fall06/cos561/papers/vegas.pdf" target="_blank">Vegas</a> 나 <a href="https://queue.acm.org/detail.cfm?id=3022184" target="_blank">BBR</a>과 같은 지연 기반 혼잡 제어인데, 이 알고리즘은 대역폭과 RTT 증가 사이에서 균형을 찾으려 하여 패킷의 송신율을 조절 합니다.</p>
+	<p>몇가지 함수를 구현하는 것으로 TCP 기반 혼잡 제어 알고리즘은 QUIC에 큰 변경 없이 포팅할 수 있습니다. quiche는 새 혼잡 제어 모듈을 쉽게 추가할 수 있도록 모듈화된 API를 제공 합니다.</p>
+	<p>손실 복구는 송신측에서 패킷 손실을 어떻게 탐지하고 복구할지에 대한 것입니다. 일반적으로는 혼잡 제어 알고리즘과 분리되어 있지만 혼잡 제어가 혼잡시에 빠르게 반응할 수 있도록 도와 주는 역할을 합니다. 패킷 손실은 링크가 혼잡할 때 나타나기도 하지만 링크 계층은 혼잡이 아니라도 와이파이나 모바일 네트워크와 같이 물리 계층의 특성에 의해서도 패킷이 손실될 수 있습니다.</p>
+	<p>일반적으로 TCP는 ACK 기반의 손실 탐지를 위해서 3개의 중복 ACK 탐지를 사용 하지만 <a href="https://tools.ietf.org/html/draft-ietf-tcpm-rack-08" target="_blank">RACK</a>와 같은 지연 시간 기반의 손실 탐지 알고리즘도 최근에 사용되고 있습니다. QUIC은 이러한 TCP에서의 경험을 살려서 <a href="https://tools.ietf.org/html/draft-ietf-quic-recovery-27#section-5" target="_blank">두가지 방법을 사용</a>합니다. 하나는 (3개의 중복 ACK 탐지와 유사한) 패킷 손실 한계치 기반이고 다른 하나는 (RACK와 유사한) 시간 한계치 기반입니다. QUIC은 TCP SACK과 유사하게 수신 버퍼에 누락된 데이터가 있는지 알려주기 위해 <a href="https://tools.ietf.org/html/draft-ietf-quic-recovery-27#section-3.1.5" target="_blank">ACK Ranges</a>를 제공하는데, ACK Ranges는 TCP SACK에서 제공할 수 있는 정보보다 더 많은 수신 버퍼 정보를 전달할 수 있습니다. 이러한 특성은 구현은 더 쉽게 할 뿐 아니라 패킷 손실이 여러개 있을 때 빠른 복구를 도와 줍니다.</p>
+	<h3 id="reno">Reno</h3>
+	<p>Reno (NewReno라고도 많이 불립니다)는 <a href="https://tools.ietf.org/html/rfc5681" target="_blank">TCP</a>와 <a href="https://tools.ietf.org/id/draft-ietf-quic-recovery-27.html#section-6" target="_blank">QUIC</a>의 표준 혼잡 제어 알고리즘입니다.</p>
+	<p>Reno는 이해하기 쉽고 상태를 저장하기 위해 추가적인 메모리를 사용하지 않으므로 저사양의 하드웨어에서도 구현될 수 있습니다. 하지만 슬로 스타트 알고리즘은 매우 공격적인데 혼잡을 탐지할 때 까지 CWND를 빠르게 증가시키기 때문입니다. 달리 말하면 패킷 손실을 볼 때 까지 멈추지 않습니다.</p>
+	<p>Reno에는 여러가지 상태가 있습니다. Reno는 “슬로 스타트”라고 하는 CWND를 빠르게 증가시키는 모드로 시작 하는데 패킷 손실을 탐지 하거나 CWND 가 SSTHRESH보다 클 때 까지 매 RTT마다 CWND를 두배씩 늘려 갑니다. 패킷 손실이 탐지 되면 손실이 복구될 때 까지 “복구” 모드에 들어 갑니다.</p>
+	<p>복구가 종료 되고 (복구할 패킷이 없으면) CWND가 SSTHRESH보다 큰 동안 “혼잡 회피” 모드에 들어 갑니다. 여기서는 CWND가 느리게 증가 하고 (대략 RTT당 최대 패킷 크기 만큼) 안정적인 CWND를 찾아 가려 합니다. 그 결과, CWND를 시간 대비 그래프를 그려 보면 아래와 같이 “톱니 이빨”과 같은 패턴을 보게 됩니다.</p>
+	<p>다음은 Reno 혼잡 제어의 CWND 그래프의 예제 입니다. “Congestion Window”로 표시된 선을 보면 됩니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/05/reno-nohs.png" class="kg-image"></figure>
+	<h3 id="cubic">CUBIC</h3>
+	<p>CUBIC은 2008년에 발표 되어 리눅스 커널의 기본 혼잡 제어 알고리즘이 되었습니다. 현재는 <a href="https://tools.ietf.org/html/rfc8312" target="_blank">RFC8312</a> 에 정의되어 있으며 리눅스, BSD, 윈도우 등 여러 운영체제에서 구현되어 있습니다. quiche 의 CUBIC 구현은 RFC8312를 따르고 있으며 <a href="https://github.com/torvalds/linux/commit/30927520dbae297182990bb21d08762bcc35ce1d" target="_blank">구글의 버그 수정</a>도 포함하고 있습니다.</p>
+	<p>Reno와 다른 점은 혼잡 회피모드에 CWND 의 증가는 다음과 같은 삼차 함수를 따른다는 점에 있습니다:</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://lh6.googleusercontent.com/1J22foaznVbLs-waPSxKZusUf88svZfepM2QeTeDGe3kvjnkYKN73L861cTQu2eaxLBNtQhW-WEvmlqv3YWf_tRdfTLFXMcWDmUuNzSFanrz53N-9c4insL5kXnjZAkh1qxxk0MK" class="kg-image">
+		<figcaption>(CUBIC 논문에서: <a href="https://www.cs.princeton.edu/courses/archive/fall16/cos561/papers/Cubic08.pdf" target="_blank">https://www.cs.princeton.edu/courses/archive/fall16/cos561/papers/Cubic08.pdf</a>)</figcaption>
+	</figure>
+	<p><em>Wmax</em>는 혼잡이 검출되었을 때의 CWND 값입니다. 혼잡시에는 CWND를 30% 감소 시키고 그래프에서처럼 삼차 함수를 사용하여 CWND가 다시 증가 하기 시작 하는데 전반부에는 빠르게 <em>Wmax</em>를 향해서 증가 하지만 이후 천천히 <em>Wmax</em>에 수렴하게 됩니다. 이러한 동작은 CWND 의 증가가 이전 값으로 천천히 수렴하도록 하며 일단 <em>Wmax</em>를 지나게 되면 일정 시간 뒤에 새로운 CWND값을 찾기 위해 빠르게 증가하기 시작 합니다 (“Max Probing” 이라고 합니다).</p>
+	<p>또한 “TCP-friendly” (실제는 Reno에 해를 끼치지 않는다는 의미) 모드가 있어서 CWND 증가가 Reno 보다 느리지 않도록 보장 합니다. 혼잡이 일어날 때, CUBIC은 CWND를 30% 로 줄이지만 Reno는 50%를 줄입니다. 이것은 CUBIC이 패킷 손실시에 조금 더 공격적이도록 합니다.</p>
+	<p>CUBIC 자체는 혼잡 회피시의 CWND 변화만을 정의하고 있다는 점에 유의하기 바랍니다. 슬로 스타트 모드는 Reno 와 동일 합니다.</p>
+	<h3 id="hystart-">HyStart++</h3>
+	<p>CUBIC은 혼잡 회피 중의 CWND 증가만을 변경 하였으므로 CUBIC의 저자들은 슬로 스타트를 개선하기 위해 별도의 작업을 하였습니다. 그 결과가 <a href="https://www.sciencedirect.com/science/article/abs/pii/S1389128611000363" target="_blank">HyStart</a> 입니다.</p>
+	<p>HyStart는 다음 두가지 아이디어에 기반하고 있으며 기본적으로 슬로 스타트시의 CWND 업데이트 방법을 변경 합니다.</p>
+	<ul>
+		<li>RTT 지연 샘플링: RTT의 증가가 슬로 스타트 구간에서 일정 수치를 초과하면 슬로 스타트에서 일찍 벗어나 혼잡 회피 모드로 변경.</li>
+		<li>ACK 행렬: ACK의 도착 시간 간격이 점점 길어지고 일정 수치를 초과하면 슬로 스타트에서 일찍 벗어나 혼잡 회피 모드로 변경.</li>
+	</ul>
+	<p>하지만 실제로는 ACK 행렬 기법은 ACK 압축 (여러 ACK를 하나로 병합) 때문에 유용하지 않을 수 있습니다. 또한 RTT 지연 샘플링도 네트워크가 불안정하면 잘 동작하지 않을 수 있습니다.</p>
+	<p>이런 상황을 개선하고자 <a href="https://tools.ietf.org/html/draft-balasubramanian-tcpm-hystartplusplus-03" target="_blank">HyStart++</a> 이라는 이름으로 마이크로소프트의 엔지니어들이 IETF에 새로운 초안을 제안 하였습니다. HyStart++은 현재 윈도우 10 TCP 스택에 CUBIC과 같이 포함되어 있습니다.</p>
+	<p>이는 다음과 같은 점에서 원래의 HyStart 와 약간 다릅니다.</p>
+	<ul>
+		<li>ACK 행렬 기법은 없고 RTT 샘플링만 존재.</li>
+		<li>슬로 스타트를 빠져나올 때 LSS (Limited Slow Start) 모드로 변경. LSS는 Reno 슬로 스타트보다는 느리지만 혼잡 회피 모드보다는 빠르게 CWND를 증가 시킵니다. 혼잡 회피 모드에 바로 들어가는 대신 슬로 스타트에서 LSS모드로 변경 되고 패킷 손실이 발생 하면 혼잡 회피 모드로 들어 갑니다.</li>
+		<li>구현이 단순화.</li>
+	</ul>
+	<p>quiche 에서 HyStart++은 기본적으로 켜져 있고 Reno 와 CUBIC 혼잡 제어서 모두 이용 가능하며 API를 통해 제어가 가능 합니다.</p>
+	<h3 id="-">실험실 테스트</h3>
+	<p>다음은 <a href="https://blog.cloudflare.com/a-cost-effective-and-extensible-testbed-for-transport-protocol-development/">테스트 환경</a>에서의 테스트 결과 입니다. 테스트 조건은 다음과 같습니다.</p>
+	<ul>
+		<li>5Mbps 대역폭, 60ms RTT, 패킷 손실율을 0%에서 8%까지 변경</li>
+		<li>8MB 크기 파일 다운로드 시간 측정</li>
+		<li>NGINX 1.16.1 과 <a href="https://github.com/cloudflare/quiche/tree/master/extras/nginx" target="_blank">HTTP3 패치</a> 사용</li>
+		<li>TCP: 리눅스 커널 4.14의 CUBIC</li>
+		<li>QUIC: Cloudflare quiche</li>
+		<li>20번 다운로드의 중간값</li>
+	</ul>
+	<p>다음 조합으로 테스트를 실행 하였습니다:</p>
+	<ul>
+		<li>TCP CUBIC (TCP-CUBIC)</li>
+		<li>QUIC Reno (QUIC-RENO)</li>
+		<li>QUIC Reno 와 Hystart++ (QUIC-RENO-HS)</li>
+		<li>QUIC CUBIC (QUIC-CUBIC)</li>
+		<li>QUIC CUBIC 와 Hystart++ (QUIC-CUBIC-HS)</li>
+	</ul>
+	<h3 id="--1">전체 테스트 결과</h3>
+	<p>다음은 전체 테스트 결과의 차트 입니다:</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/05/image6-2.png" class="kg-image"></figure>
+	<p>이 테스트에서 TCP-CUBIC (파란색)은 QUC 혼잡 제어의 여러 종류와 성능 비교를 할 때 기준선이 됩니다. QUIC-RENO (빨간색과 노란색)은 QUIC의 기준선이 되므로 포함 하였습니다. Reno는 단순하므로 TCP-CUBIC보다도 느릴 것이라 예상할 수 있습니다. QUIC-CUBIC (녹색과 오렌지 색)은 TCP-CUBIC와 유사하거나 더 나을 것입니다.</p>
+	<p>0% 손실율의 경우 TCP와 QUIC은 거의 유사하게 동작 합니다 (QUIC이 약간 느립니다). 패킷 손실율이 증가하면 QUIC CUBIC은 TCP CUBIC보다 더 좋습니다. 이는 QUIC 손실 복구가 잘 동작하는 것으로 보이기 때문이며, 패킷 손실을 실제 보게 되는 인터넷에서 더 좋은 소식입니다.</p>
+	<p>HyStart++에서는 전반적인 성능 향상은 없지만 예상하던 바인데 HyStart++의 주 목적은 네트워크 혼잡을 줄이기 위한 것이기 때문입니다. 아래에서 더 자세히 보도록 하겠습니다.</p>
+	<h3 id="hystart--1">HyStart++의 영향</h3>
+	<p>HyStart++에서는 다운로드 시간이 향상되지 않을 수 있습니다만 유사한 성능을 유지 하면서 패킷 손실을 줄일 수 있습니다. 슬로 스타트는 패킷 손실이 발견되면 혼잡 회피 모드로 변경 되기 때문에 네트워크 혼잡만이 패킷 손실의 원인이 되는 0% 패킷 손실율의 경우만을 살펴 보도록 하겠습니다.</p>
+	<h3 id="--2">패킷 손실</h3>
+	<p>각 테스트에서 패킷 손실로 판정된 갯수 (재전송 숫자는 아닙니다)는 다음 차트에서 볼 수 있습니다. 패킷 손실 수는 각 테스트를 20회 수행하였을 때의 평균입니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/05/lost_pkt_hs.png" class="kg-image"></figure>
+	<p>위 차트에서 볼 수 있듯이 HyStart++은 패킷 손실을 많이 줄여 줍니다.</p>
+	<p>Reno와 비교시에 CUBIC은 패킷 손실을 더 많이 발생시킨다는 점을 유의하기 바랍니다. 이것은 혼잡 회피 구간에서 CUBIC의 CWND가 Reno 보다 더 빠르게 증가하고 패킷 손실이 발생할 경우 Reno(50%)보다 CWND를 덜 (30%) 줄이기 때문입니다.</p>
+	<h3 id="qlog-qvis-">qlog와 qvis를 이용한 시각화</h3>
+	<p><a href="https://qvis.edm.uhasselt.be/" target="_blank">qvis</a>는 <a href="https://tools.ietf.org/html/draft-marx-qlog-event-definitions-quic-h3-01" target="_blank">qlog</a> 기반의 시각화 도구 입니다. quiche 에 <a href="https://github.com/cloudflare/quiche/pull/379" target="_blank">qlog 지원</a>이 포함되어 있기 때문에 QUIC 연결에서 qlog 를 얻어 내어 qvis 도구를 사용하여 연결 통계를 시각화할 수 있습니다. 이것은 프로토콜 개발에 있어서 매우 유용한 도구 입니다. 앞에서 qvis 를 이용하여 Reno 그래프를 이미 보여드린 바 있지만 HyStart++이 어떻게 동작하는지 이해하기 위해 몇가지 예를 더 보고자 합니다.</p>
+	<h3 id="hystart-cubic">HyStart++ 없는 CUBIC</h3>
+	<p>다음은 위와 동일한 실험 조건과 0% 손실율에서의 16MB 파일 전송의 qvis 혼잡 그래프입니다. 초기 슬로 스타트 구간 동안 CWND의 큰 봉우리를 볼 수 있습니다. 일정 시간 뒤에 CUBIC 고유의 CWND 성장 패턴 (오목 함수)를 볼 수 있습니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/05/cubic-nohs.png" class="kg-image"></figure>
+	<p>슬로 스타트 부분만을 확대해서 보면 (초기 0.7초 구간) 슬로 스타트시 CWND가 선형으로 증가하는 것을 볼 수 있습니다. 이는 500ms 부근에서 패킷 손실이 탐지될 때 까지 계속되며 이후 혼잡 회피 구간에 들어가는 것을 볼 수 있습니다:</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/05/cubic-nohs-zoom-legend.png" class="kg-image"></figure>
+	<h3 id="hystart-cubic-1">HyStart++ 있는 CUBIC</h3>
+	<p>HyStart++이 동작할 때 동일한 조건의 그래프를 보도록 합시다. HyStart++이 사용되지 않았을 때 보다 슬로 스타트의 봉우리가 낮음을 알 수 있는데 이것은 네트워크 혼잡을 덜 일으키고 패킷 손실을 줄여 줍니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/05/cubic-hs.png" class="kg-image"></figure>
+	<p>다시 슬로 스타트 구간을 확대하여 보면 슬로 스타트가 390ms 부근에서 LSS로 바뀌고 다시 500ms 부근에서의 패킷 손실 탐지로 인해 혼잡 회피로 들어감을 알 수 있습니다.</p>
+	<p>결과적으로 혼잡이 검출될 때 까지의 CWND의 증가량이 더 낮아짐을 볼 수 있습니다. 이렇게 되면 네트워크의 혼잡이 덜 하기 때문에 패킷 손실이 줄게 되며 안정적인 CWND를 더 빠르게 찾을 수 있도록 해 줍니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/05/cubic-hs-zoom-legend.png" class="kg-image"></figure>
+	<h3 id="--3">결론과 향후 과제</h3>
+	<p>QUIC 초안 명세는 TCP의 혼잡 제어와 손실 복구의 경험을 많이 포함하고 있습니다. 프로토콜 구현을 시작하는 사람들을 위해서 단순한 Reno 알고리즘을 추천합니다만 더 좋은 알고리즘이 있는 것도 사실입니다. 따라서 QUIC은 최신의 TCP 구현에서 사용되고 있는 방법을 도입할 수 있도록 새로운 알고리즘을 쉽게 구현할 수 있도록 설계되어 있습니다.</p>
+	<p>CUBIC과 HyStart++은 TCP 에서는 잘 알려진 구현이며 Reno 보다 더 나은 성능 (빠른 다운로드 속도와 낮은 패킷 손실율)을 제공 합니다. quiche에는 혼잡 제어 모듈을 추가하는 것이 가능하며 CUBIC과 HyStart++이 포함되어 있습니다. 테스트 환경에서 QUIC은 손실이 있는 네트워크 환경에서 더 좋은 성능을 보여 주며 이것은 원래의 설계 목표에 부합하고 있음을 알 수 있습니다.</p>
+	<p>향후에 quiche에는 패킷 송신율 조정, 향상된 복구 기법및 BBR 혼잡 제어 알고리즘과 같은 다른 고급 기능을 구현하여 QUIC 성능을 더 높일 예정입니다. quiche 에서 제공되는 설정 API를 사용하여 연결 수준에서 여러 혼잡 제어 알고리즘 중 하나를 고를 수 있으므로 직접 사용해 보고 여러분의 필요에 맞는 최적의 설정을 찾아 보세요. qlog 엔드포인트 로깅은 QUIC의 상세 동작에 정보를 시각화하는데 이용할 수 있어서 프로토콜의 이해와 개발에 큰 도움이 됩니다.</p>
+	<p>CUBIC과 HyStart++ 은 <a href="https://github.com/cloudflare/quiche" target="_blank">quiche 마스터 브랜치</a>에 포함되어 있습니다. 직접 해 보세요!</p>
+	<p><em>This is a Korean translation of an <a href="https://blog.cloudflare.com/cubic-and-hystart-support-in-quiche/">existing post</a> by <a href="https://blog.cloudflare.com/author/junho/">Junho Choi</a>.</em></p>
+</div>

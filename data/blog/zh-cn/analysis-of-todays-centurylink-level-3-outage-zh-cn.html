@@ -1,0 +1,61 @@
+<div class="post-content lh-copy gray1">
+	<p>今天，主要互联网服务提供商（ISP）和带宽提供商 CenturyLink/Level(3) 遭受严重中断，不仅影响了 Cloudflare 的一些客户，还影响到互联网上的许多其他服务和提供商。CenturyLink/Level(3) 的事后调查报告尚未发布，但我想列出所见事件的时间线，说明 Cloudflare 的系统如何绕过这个问题，讨论为什么尽管我们采取了一些缓解措施，我们的一些客户仍然受到影响，以及造成此问题的根本原因可能是什么。</p>
+	<h3 id="b-">b错误增加</h3>
+	<p>在世界标准时间 10:03，我们的监测系统开始发现到达客户源站的错误数量有所增加。这些错误显示为“522 错误”，表明 Cloudflare 网络与我们客户的应用程序托管位置之间存在连接问题。</p>
+	<p>Cloudflare 连接到众多不同的网络提供商，其一为 CenturyLink/Level(3)。当我们发现来自某家网络提供商的错误增加时，我们的系统会自动尝试通过其他提供商访问客户的应用程序。由于我们可用的提供商数量众多，即使有一家提供商出现问题，我们通常可以继续路由流量。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/09/1-3-1.png" class="kg-image">
+		<figcaption>Cloudflare 连接到各种网络提供商。来源：<a href="https://bgp.he.net/AS13335%23_asinfo" target="_blank">https://bgp.he.net/AS13335#_asinfo</a>‌‌</figcaption>
+	</figure>
+	<h3 id="-">自动缓解</h3>
+	<p>在这种情况下，从 522 错误出现增加后的几秒钟开始，我们的系统便自动将流量从 CenturyLink/Level(3) 重新路由到我们连接的其他网络提供商，包括 Cogent、NTT、GTT、Telia 和 Tata。</p>
+	<p>我们的网络运营中心也收到了警报，我们的团队在世界标准时间 10:09 开始采取其他措施来缓解我们的自动化系统无法自动解决的任何问题。即使在网络提供商之一 CenturyLink/Level(3) 未能正常运行的情况下，我们仍然成功地为大多数客户和最终用户确保了流量在网络中正常通过。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/09/2-1-1.png" class="kg-image">
+		<figcaption>仪表板显示 Cloudflare 的自动化系统识别 CenturyLink/Level(3) 故障对互联网造成的损害，并自动绕过。</figcaption>
+	</figure>
+	<p>下图显示了 Cloudflare 的网络与我们连接到的网络提供商中六个主要一级网络之间的流量。红色部分表示 CenturyLink/Level(3) 流量，其在事件期间降至接近零。您还可以看到，在事件发生期间，我们如何自动将流量转移到其他网络提供商，以减轻影响并确保流量继续流动。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/08/3-2.png" class="kg-image">
+		<figcaption>Cloudflare 所连接的网络提供商中六个主要一级网络上的流量。CenturyLink/Level(3) 的流量为红色。</figcaption>
+	</figure>
+	<p>下图显示事件发生期间我们网络上的 522 错误（表明我们无法到达客户的应用程序）。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/08/4-2.png" class="kg-image"></figure>
+	<p>世界标准时间 10:03 时的激增对应 CenturyLink/Level(3) 的网络故障。我们的自动化系统立即启动，试图重新路由和重新平衡其他网络提供商之间的流量，立即使错误减少了一半，随着这些路径得到自动优化，错误数降低到峰值的 25%。</p>
+	<p>在世界标准时间 10:03 到 10:11 之间，我们的系统在连接到CenturyLink/Level(3) 的48个城市自动禁用其连接，并通过其他网络提供商重新路由流量。为了防止级联故障，我们的系统在转移流量之前会考虑其他提供商的容量。这就是为什么故障转移（虽然是自动的）并不是即时在所有位置发生。我们的团队得以能够应用其他手动缓解措施，将错误数量进一步减少了 5%。</p>
+	<h3 id="--1">为什么错误没有降到零？</h3>
+	<p>不幸的是，在采取这些措施之后，仍然存在大量错误，表明我们无法到达某些客户。CenturyLink/Level(3) 是世界上最大的网络提供商之一。因此，许多托管服务提供商仅通过该公司的网络连接到互联网。</p>
+	<p>如果沿用<a href="https://www.theverge.com/2014/8/20/6046003/a-history-of-metaphors-for-the-internet" target="_blank">互联网就像“高速公路”这个比喻</a>，这种情况就好像只有一条出口匝道通往某个小镇。如果出口匝道被阻塞，那么就无法到达这个小镇。有时情况更为严重，因为 CenturyLink/Level(3) 的网络不遵守路由撤销，而且甚至在路由被撤销后仍继续向 Cloudflare 等网络发布路由。如果 CenturyLink/Level(3) 是客户的唯一互联网连接，或者 CenturyLink/Level(3) 在不良路由被撤销后继续发布这些路由，我们就无法到达他们的应用程序，导致其继续发生 522 错误，直到 CenturyLink/Level(3) 在世界标准时间 14:30 左右解决这个问题为止。</p>
+	<p>网络的另一侧——最终用户端存在同样问题。个人需要入口匝道才能进入互联网的高速公路，ISP 实质上就是提供互联网的入口匝道，而 CenturyLink 是美国最大的 ISP 之一。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/08/image-3.png" class="kg-image">
+		<figcaption>来源：<a href="https://broadbandnow.com/CenturyLink" target="_blank">https://broadbandnow.com/CenturyLink</a></figcaption>
+	</figure>
+	<p>由于这次中断似乎使整个 CenturyLink/Level(3) 网络下线，在故障修复以前，作为 CenturyLink 客户的个人无法连接到 Cloudflare 或任何其他互联网提供商。在全球范围内，我们发现停机期间全球流量减少了 3.5%，几乎都是 CenturyLink 在美国各地的 ISP 服务几乎完全中断所导致。</p>
+	<p><strong>可能是什么问题？</strong></p>
+	<p>尽管在 CenturyLink/Level(3) 发布事后调查报告之前，我们都没法确切知道发生了什么情况，但我们可以从 BGP 公告及其于中断期间如何在互联网上传播看到一些端倪。BGP 是边界网关协议的缩写。互联网上的路由器通过 BGP 相互通告位于其后的 IP 以及它们应接收什么流量。</p>
+	<p>世界标准时间 10:04 开始出现大量 BGP 更新。BGP 更新是路由器发出的信号，表示路由已更改或不再可用。在正常情况下，互联网上每 15 分钟发生约 1.5MB-2MB 的 BGP 更新。在本次事件开始时，BGP 更新数量激增至每 15 分钟超过 26MB，并在整个事件中保持较高水平。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/08/6-1.png" class="kg-image">
+		<figcaption>来源：<a href="http://archive.routeviews.org/bgpdata/2020.08/UPDATES/" target="_blank">http://archive.routeviews.org/bgpdata/2020.08/UPDATES/</a></figcaption>
+	</figure>
+	<p>这些更新表明 CenturyLink/Level(3) 主干内部的 BGP 路由不稳定。问题是什么导致了这种不稳定。CenturyLink/Level(3) 状态更新提供了一些线索，指出根源是一个 Flowspec 更新。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/08/7-1.png" class="kg-image"></figure>
+	<h3 id="flowspec-">Flowspec 是什么？</h3>
+	<p>CenturyLink/Level(3) 的更新中提到，一条不良 Flowspec 规则导致了此问题。那么，Flowspec 是什么呢？Flowspec 是 BGP 的一个扩展，它允许防火墙规则使用 BGP 在一个网络中甚至多个网络之间轻松分发。Flowspec 是一个功能强大的工具，几乎可以即时在整个网络上有效地推送规则。在您尝试快速响应诸如攻击之类的事件时，这很有帮助，但是如果您犯了错误，就有可能带来危险。</p>
+	<p>Cloudflare 运营初期曾使用 Flowspec 来推送防火墙规则，以减轻例如大型网络层 DDoS 攻击。我们<a href="https://blog.cloudflare.com/todays-outage-post-mortem-82515/">自己在 7 年前遭受过 Flowspec 造成的中断</a>。我们已经不再使用 Flowspec，但它仍然是用于推送网络防火墙规则的通用协议。</p>
+	<p>我们只能推测 CenturyLink/Level(3) 发生了什么，但一个可能的情况是，他们发出了一个 Flowspec 指令来尝试阻止针对其网络的攻击或其他滥用。状态报告显示该 Flowspec 规则阻止了 BGP 自身的宣告。我们无法知道该 Flowspec 规则的具体内容，但下面是一个会阻止其网络上所有 BGP 通信的瞻博（Juniper）格式规则。</p>
+	<pre><code>route DISCARD-BGP {
+   match {
+      protocol tcp;
+      destination-port 179;
+   }
+ then discard;
+}
+</code></pre>
+	<h3 id="--2">为什么会有这么多更新？</h3>
+	<p>但是，为什么在整个事件中，全球 BGP 更新一直保持较高水平，仍是一个谜。如果该规则阻止了 BGP，那么应该看到 BGP 宣告先增加，然后恢复正常。</p>
+	<p>一种可能的解释是，造成问题的 Flowspec 规则在一长串 BGP 更新接近结尾时发出。如果是这样，可能发生的情况是 CenturyLink/Level(3) 网络中的每个路由器都将收到该 Flowspec 规则。然后，它们将阻断 BGP，导致它们停止接收规则。它们将重新启动，遍历所有 BGP 规则，直到再次到达有问题的 Flowspec 规则为止。BGP 将再次被阻断。该 Flowspec 规则将不再被接收。然后，循环将一遍又一遍地继续。</p>
+	<p>这种情况的挑战是，在每个循环中，CenturyLink/Level(3) 网络中的 BGP 更新队列将继续增加。这可能达到了某个程度，导致路由器的内存和 CPU 过载，给他们恢复网络带来了一系列额外的挑战。</p>
+	<h3 id="--3">为什么花了这么长时间修复？</h3>
+	<p>这是一次重大的全球互联网中断，CenturyLink/Level(3) 团队无疑立即收到了警报。他们一家非常成熟的网络运营商，拥有世界一流的网络运营中心 (NOC) 。那么，为什么花了四个多小时才解决这个问题？</p>
+	<p>同样，我们只能推测其中原因。首先，可能是由于该 Flowspec 规则和大量 BGP 更新对其路由器上造成巨大负载，使他们难以登录自己的接口。另外几家一级提供商似乎按照 CenturyLink/Level(3) 请求采取了行动，取消了网络对等连接。此举应会限制 CenturyLink/Level(3) 网络接收到的 BGP 宣告数量，帮助其争取到一些时间来解决问题。</p>
+	<p>其次，该 Flowspec 规则可能不是由 CenturyLink/Level(3) 自己发布的，而是来自他们的某个客户。许多网络提供商都允许 Flowspec 对等互连。对于希望阻止攻击流量的下游客户来说，这可能是一个强大的工具，但是在出现问题时，要追踪违规的 Flowspec 规则将变得更加困难。</p>
+	<p>最后，这些问题发生于周日的早上，更加令人措手不及。CenturyLink/Level(3) 网络的大小和规模极为复杂，难免发生意外事件。他们的团队让我们了解整个事件的进展情况，对此我们非常感激。#hugops</p>
+	<p><a href="https://blog.cloudflare.com/tag/outage/">中断</a><a href="https://blog.cloudflare.com/tag/postmortem/">事后调查</a></p>
+</div>

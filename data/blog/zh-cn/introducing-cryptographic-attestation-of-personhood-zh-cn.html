@@ -1,0 +1,150 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image2-36.png" class="kg-image"></figure>
+	<p>请选择所有巴士。请点击自行车。这张照片中有交通信号灯吗？类似于这样荒谬的问题，您最近几乎肯定遇见过。这是在线服务用来区分人类和自动程序的一种方法，称为 <a href="https://en.wikipedia.org/wiki/CAPTCHA" target="_blank">CAPTCHA</a>。CAPTCHA 可增强在线服务的安全性。然而，尽管的确有此功用，它们却伴有一个非常现实的代价。</p>
+	<p>我们的数据表明，用户完成 CAPTCHA 质询的平均用时为 32 秒。全球互联网用户多达 46 亿。假设一个典型的互联网用户大约每 10 天看到一次 CAPTCHA。</p>
+	<p>简单估算一下，相当于每一天都要浪费 500 年时间，而这只是为了证明我们是人类而已。</p>
+	<p>我们目前正在启动一项实验，以求结束这样的蠢事。我们希望彻底摆脱 CAPTCHA。想法很简单：真人应该能够通过触摸或查看其设备来证明自己是人类，而无需透露自己的身份。我们希望您能够证明自己是人，但不必透露具体是哪一个人！您可能会问，这有可能吗？答案是肯定的！我们先从受信任 USB 密钥（如 <a href="https://www.yubico.com/" target="_blank">YubiKey</a> ）着手，这种设备已存在了一些时日，而且越来越多的手机和电脑也默认配备这种功能。</p>
+	<p>今天标志着互联网上消防栓、人行横道和交通信号灯的开始消亡。</p>
+	<h3 id="-captcha-">为什么使用 CAPTCHA？</h3>
+	<p>许多时候，企业需要一种方法来判断在线用户是不是人类，原因通常与安全性或在线服务被滥用有关。CAPTCHA 于世纪之交应运而生。第一个 CAPTCHA <a href="https://en.wikipedia.org/wiki/CAPTCHA#:~:text=The%2520term%2520was%2520coined%2520in,two%2520groups%2520working%2520in%2520parallel." target="_blank">诞生于 1997 年</a>，其术语（“Completely Automated Public Turing test to tell Computers and Humans Apart”，全自动区分计算机与人类的图灵测试）则是 2003 年由 Luis von Ahn、Manuel Blum、Nicholas J. Hopper 和 John Langford 创造的。</p>
+	<p>就其本质而言，CAPTCHA 质询-响应必须是自动化的：这样，它们可以在需要捕获的人类和自动程序之间进行扩展。</p>
+	<h3 id="-captcha--1">为什么弃用 CAPTCHA？</h3>
+	<p>一言以蔽之，没人喜欢它们。</p>
+	<p>迄今为止，我们能够做到最好的就是最大程度减少它们。例如，Cloudflare 正在不断<a href="https://blog.cloudflare.com/cloudflare-bot-management-machine-learning-and-more/">改进自动程序管理解决方案</a>，尽可能智能地决定何时向用户提供 CAPTCHA。但多年来，随着人工智能发展，CAPTCHA 已从简单地从背景中识别文字，变成对旧书执行 OCR，到识别图片中的物体（请参阅 <a href="https://arxiv.org/abs/1312.6082" target="_blank">Google 关于门牌号码的论文</a>）。这给互联网上的人类用户带来一些现实问题：</p>
+	<ol>
+		<li>生产力：浪费时间 — 不能专注于手头的任务 — 常常引起一些挫败感。</li>
+		<li>辅助功能：用户被假定具有解决测试题所需的肢体和认知能力，但并非总是如此。比如，视觉障碍者可能无法完成 CAPTCHA 解题任务。</li>
+		<li>文化知识：地球上见过美国消防栓的人属于少数，正如讲英语的人并非多数一样。出租车在纽约是黄色的，在伦敦则是黑色的。糟糕的是，只有少数地方将出租车称为“Cab”，其他地方都叫做“Taxi”！</li>
+		<li>移动设备上的交互：在世界上大部分地区，手机和移动设备是主要的互联网访问方式，通常也是唯一的方式。除了在小屏幕设备上难度增大外，CAPTCHA 还给用户的数据流量和电池消耗造成压力。</li>
+	</ol>
+	<p>实际上，万维网联盟（W3C）早在 2003 年就研究了多个草案，指出了 <a href="https://www.w3.org/TR/turingtest/" target="_blank">CAPTCHA 的不便性</a>。</p>
+	<p>而且，这只是用户角度的考量。除了给用户造成这些代价外，对于企业来说也有非常现实的成本。企业因为各种原因，花费许多时间去优化其网站和应用程序的性能和布局。这些工作为的是避免用户在您希望他们注册时跳出网站，防止用户在您希望他们结账时丢弃购物车。通常而言，您希望留住客户，让他们不会因为感觉沮丧而一去不回。</p>
+	<p>CAPTCHA 实际上迫使企业将摩擦送到用户面前；正如管理高业绩在线业务的人会告诉您的那样，这是别无选择时的无奈之举。</p>
+	<p>当初<a href="https://blog.cloudflare.com/moving-from-recaptcha-to-hcaptcha/">从 Google reCAPTCHA 转向 hCAPTCHA</a>，意味着我们开始踏上解决这些问题的征程。如今，我们将更进一步。</p>
+	<h3 id="-captcha-cryptographic-attestation-of-personhood">无图 CAPTCHA：Cryptographic Attestation of Personhood</h3>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/05/image4-4.png" class="kg-image">
+		<figcaption>硬件安全密钥是具有嵌入式密钥的设备，可以连接到电脑或手机上</figcaption>
+	</figure>
+	<p>从用户角度来看，Cryptographic Attestation of Personhood 的工作方式如下：</p>
+	<ol>
+		<li>用户访问受 Cryptographic Attestation of Personhood 保护的网站，例如 <a href="http://cloudflarechallenge.com/" target="_blank">cloudflarechallenge.com</a>。</li>
+		<li>Cloudflare 提供质询。</li>
+		<li>用户点击“I am human (beta)”，并看到要求插上安全设备的提示。</li>
+		<li>用户决定使用硬件安全密钥。</li>
+		<li>用户将设备插到电脑，或将其贴靠手机来进行无线签名（使用 NFC）。</li>
+		<li>加密认证发送到 Cloudflare，在验证<a href="https://w3c.github.io/webauthn/#test-of-user-presence" target="_blank">用户存在测试</a>后授予用户操作权限。</li>
+	</ol>
+	<p>完成这个流程需要五秒钟。更重要的是，鉴于该认证并非唯一关联至用户设备，因此这种质询可以保护用户的隐私。Cloudflare 信任的所有设备制造商都是 FIDO 联盟的一份子。这样，每个硬件密钥与同一批次中制造的其他密钥共享其标识符（请参见<a href="https://fidoalliance.org/specs/fido-u2f-overview-ps-20150514.pdf" target="_blank">“通用第二因素概述”的第 8 节</a>）。从 Cloudflare 角度来看，您的密钥与这个批次中的所有其他密钥别无二致。</p>
+	<p>完成 Cryptographic Attestation of Personhood 最多需要点击三下。不会出现用户被迫连续点击巴士十次那样的循环动作。</p>
+	<p>虽然有多种多样的硬件安全密钥，但我们在初期推出时仅支持几种设备：YubiKey，我们已有机会使用和测试；HyperFIDO 密钥；以及 Thetis FIDO U2F 密钥。</p>
+	<blockquote>Yubico 首席技术官 Christopher Harrell 表示，“像 WebAuthn 这样的开放式身份验证标准一直是 Yubico 践行其使命的核心：提供令人愉悦的用户体验以及强大的安全性。通过提供由 YubiKey 硬件和公钥加密支持的一步式 CAPTCHA 替代方案，Cloudflare 的 Cryptographic Attestation of Personhood 实验有助于进一步减轻用户与承受压力或遭受攻击的站点进行交互时面临的认知负担。我希望这个实验能够让人们在实现自己目标时面临最小的摩擦，并享受强大的隐私保护。同时也希望，实验结果会表明其他网站也值得考虑采用硬件安全性，而且不仅限于身份验证。”</blockquote>
+	<h3 id="-">工作原理</h3>
+	<p>Cryptographic Attestation of Personhood 依赖于 <a href="https://www.w3.org/TR/webauthn-2/#sctn-attestation" target="_blank">Web 身份验证（WebAuthn）证明</a>。这个 API 已在 W3C 得到标准化，并已实施到大多数现代 Web 浏览器和操作系统中。它旨在提供一个标准接口，对 Web 用户进行身份验证，并使用其设备的加密能力。</p>
+	<p>随着对更强安全性和更高可用性的需求不断增加，我们预见 WebAuthn 的部署实例也会增多。</p>
+	<!--kg-card-begin: markdown-->
+	<table>
+		<thead>
+			<tr>
+				<th style="text-align:center">平台</th>
+				<th style="text-align:center">兼容的浏览器</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td style="text-align:center">iOS 14.5</td>
+				<td style="text-align:center">所有浏览器</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">Android 10 和更高版本</td>
+				<td style="text-align:center">Chrome</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">Windows</td>
+				<td style="text-align:center">所有浏览器</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">macOS</td>
+				<td style="text-align:center">所有浏览器</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">Ubuntu</td>
+				<td style="text-align:center">所有浏览器</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<p>假设您使用具有兼容配置的硬件设备，您可能想知道幕后发生的事情。</p>
+	<h3 id="--1">简要推介</h3>
+	<p>简单说来，您的设备具有嵌入式安全模块，其包含由制造商封装的唯一密钥。安全模块能够证明它拥有这样一个密钥，而不必泄漏密钥。Cloudflare 要求您提供证据，并检查您的制造商是否合法。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/05/image7.png" class="kg-image"></figure>
+	<h3 id="--2">技术说明</h3>
+	<p>仔细说来，这样的验证涉及公钥加密和数字证书。</p>
+	<p>公钥加密提供一种生成防伪数字签名的方法。用户生成可以对消息进行签名的签名密钥，以及可被任何人用来验证消息是否真实的验证密钥。这类似于<a href="https://en.wikipedia.org/wiki/Seal_(emblem)#Signet_rings" target="_blank">图章戒指</a>，其中戒指印记是签名，而戒指本身是签名密钥。</p>
+	<p>签名方案被广泛用于证明真实性。现在，您的浏览器验证由持有与“blog.cloudflare.com”相关联的签名密钥的某人所做的签名，以此验证声称是“blog.cloudflare.com”的服务器的合法性。为了显示验证密钥是合法的，服务器提供一个证书，该证书将验证密钥链接到“blog.cloudflare.com”，其本身由另一个证书中的另一个验证密钥签名。这个链一直延伸到来自您的浏览器中内置的证书颁发机构的根证书。</p>
+	<p>我们再举一个例子。爱丽丝的笔记本电脑上嵌入了一个安全模块。这个模块包含一个签名密钥，sk_a。爱丽丝说她昨天给鲍勃发了一封情书。但是，鲍勃表示怀疑。尽管信中写着“嗨，鲍勃，我是爱丽丝”，但鲍勃还是想确保这封信来自爱丽丝。为此，鲍勃请爱丽丝针对消息“music-laboratory-ground”提供她的签名。由于这条消息是由鲍勃选择，只要爱丽丝能够提供与其验证密钥（pk_a）关联的签名，那么鲍勃就会相信这封情书来自爱丽丝。爱丽丝提供了签名，sk_a(“musical-laboratory-ground”)。鲍勃确认 sk_a(“musical-laboratory-ground”) 与 pk_a 关联。他现在可以安全地进行他们的秘密交往了。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/05/image1-4.png" class="kg-image"></figure>
+	<p>回到之前的 Cryptographic Attestation of Personhood，您现在知道硬件密钥嵌入了签名密钥。但是，Cloudflare 不知道互联网上任何用户的签名密钥，也无法得知这一信息。为了缓解这一问题，Cloudflare 要求您提供另一种证明。当被询问您是不是人类时，我们要求您证明自己掌控了由受信任制造商签名的公钥。在配有安全模块的设备出货时，<a href="https://fidoalliance.org/specs/fido-security-requirements/fido-authenticator-security-requirements-v1.4-fd-20201102.html" target="_blank">制造商</a>会使用数字证书对相关的认证公钥签名。</p>
+	<p>数字证书通常包含公钥、目标组织信息、有效期、许可用途，以及来自证书颁发机构的签名，以确保证书的合法性。它们允许将元数据与公钥关联，因此会提供有关签名颁发者的信息。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/05/image6-1.png" class="kg-image"></figure>
+	<p>当 Cloudflare 要求您提供签名时，它会验证您的公钥是否已由制造商的公钥签名。由于制造商具有多个级别的证书，您的设备提供 Cloudflare 能够验证的一连串证书。证书链中的每个链接均由其上级签名，并对其下级签名。Cloudflare 信任制造商的根证书。由于其数量有限，因此我们有能力手动验证它们。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/05/image5-3.png" class="kg-image"></figure>
+	<h3 id="--3">隐私至上</h3>
+	<p>]设计一个质询要求用户证明自己掌控来自某个制造商的密钥，这带来了隐私和安全方面的挑战。</p>
+	<p>下表归纳了 Cryptographic Attestation of Personhood 的隐私属性。</p>
+	<!--kg-card-begin: markdown-->
+	<table>
+		<thead>
+			<tr>
+				<th>属性</th>
+				<th>Cloudflare 能够做到</th>
+				<th>Cloudflare 确实做到</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>获取您的指纹或面容</td>
+				<td>否</td>
+				<td>不适用</td>
+			</tr>
+			<tr>
+				<td>知道您的密钥的制造商</td>
+				<td>是 - 仅限于您批次中的密钥数量*</td>
+				<td>是</td>
+			</tr>
+			<tr>
+				<td>为您的密钥关联唯一 ID</td>
+				<td>是**</td>
+				<td>否</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<p><em>* 每批必须有 100,000 个或更多密钥（<a href="https://fidoalliance.org/specs/fido-uaf-v1.1-ps-20170202/fido-uaf-protocol-v1.1-ps-20170202.html#full-basic-attestation" target="_blank">FIDO UAF 协议规范 ＃4.1.2.1.1</a> ）。但是，已发现自签名密钥和来自某些制造商的密钥<a href="https://www.chromium.org/security-keys" target="_blank">不符合此要求</a>。</em></p>
+	<p><em>** 这要求我们单独设置一个不同的 Cookie 来跟踪您的密钥。这背离了互联网上的隐私要求，也有悖于这个项目的宗旨。您可以从<a href="https://blog.cloudflare.com/deprecating-cfduid-cookie/">此处</a>进一步了解我们如何正在移除 __cfduid 等 Cookie。</em></p>
+	<h3 id="--4">无需收集生物特征的认证</h3>
+	<p>项目宗旨：我们想要知道您是人，但不关心您是具体哪一个人。</p>
+	<p>令人高兴的是，WebAuthn API 在很大程度上帮我们解决了这个麻烦。这并不是我们想要的，但 WebAuthn API 会阻止收集生物特征，例如指纹。当您的设备要求进行生物识别身份验证时，例如通过指纹传感器，一切都在本地进行。验证旨在解锁设备的安全模块，该模块提供与您的平台关联的签名。</p>
+	<p>对于我们的质询，我们利用了 <a href="https://w3c.github.io/webauthn/#sctn-sample-registration" target="_blank">WebAuthn 注册</a>过程。它被设计为执行多种身份验证，我们没有用到这些。所以，我们将相同的常量值分配给必需的用户名字段。它可以防止用户被去匿名化。</p>
+	<h3 id="--5">没有隐蔽工作</h3>
+	<p>CAPTCHA 的一个常见用途是标记 AI 难以识别的数据集。这可以是图书、门牌号码或消防栓。尽管这对科学很有用，但也被公司用作一种手段，在用户不知情的前提下利用人类识别能力获取商业利益。</p>
+	<p>使用 Cryptographic Attestation of Personhood 时，这样的事不会发生。由于不再受到 CAPTCHA 质询模式的桎梏，我们在设计用户流程方面具有更大的灵活性。</p>
+	<h3 id="cloudflare-">Cloudflare 正在做什么工作来进一步推动隐私保护</h3>
+	<p>虽然 Cryptographic Attestation of Personhood 在隐私保护方面有诸多好处，但其并不完美。Cloudflare 仍然需要知道您的制造商才会授予您权限。由于 WebAuthn 可与任何证书搭配，我们需要确保 Cloudflare 从未经篡改的硬件密钥接收证书。我们希望不必获得这一信息，从而进一步保护您的隐私。</p>
+	<p>过去，我们一直致力于制定隐私标准，例如主导了 Privacy Pass 相关的工作。<a href="https://privacypass.cloudflare.com/" target="_blank">Privacy Pass</a> 允许您一次解决质询并提供已通过质询的证明；也就是说，您不需要解决多个 CAPTCHA。这极大改善了 VPN 用户的用户体验，这些用户比其他互联网用户面临更多的质询。</p>
+	<p>对于 Cryptographic Attestation of Personhood，我们深入挖掘了加密中的一个新兴领域，称为<a href="https://en.wikipedia.org/wiki/Zero-knowledge_proof" target="_blank">零知识证明</a>（ZK 证明）。它使我们的用户能够证明其制造商是 Cloudflare 信任制造商中的一员。使用 ZK 证明时，来自单个制造商的多个设备之间无法彼此区分，也不能与其他制造商的设备区别开来。这一新系统需要更多技术细节，值得专门写一篇博客文章。敬请关注。</p>
+	<h3 id="--6">追求永无止境</h3>
+	<p>设计旨在保护数百万互联网资产的质询绝非易事。在当前环境中，我们认为与传统的 CAPTCHA 质询相比，Cryptographic Attestation of Personhood 可提供强大的安全性和可用性保障。在初步的用户研调中，用户表示触碰硬件按键比点击图片更受他们喜爱。虽说如此，我们知道这是新系统，还有提升的空间。</p>
+	<p>这项实验将面向英语地区限量提供。这样，我们能够在用户群体上实现多样性，并在不同的位置测试这个流程。不过，我们意识到覆盖范围并不足够，因此打算开展进一步测试。如果您有特定的需求，欢迎与我们联络。</p>
+	<p>我们密切关注的另一个问题是安全性。这种质询的安全性取决于可信制造商提供的底层硬件。我们相信它们是安全的。如果发生任何泄漏，我们将能够在不同层次快速取消对制造商公钥的授权。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/05/image3-3.png" class="kg-image"></figure>
+	<p>我们还必须考虑面对自动按键系统的可能性。能够按动电容式触控传感器的<a href="https://en.wikipedia.org/wiki/Drinking_bird" target="_blank">饮水鸟</a>可以通过 Cryptographic Attestation of Personhood 的验证。在最佳情况下，鸟类解题率与硬件生成证明所需的时间相匹配。对于我们当前的受信任制造商集合，其慢于专业 CAPTCHA 解题服务的速度，同时也一定能让合法用户通过认证。此外，现有的 Cloudflare 缓解措施将保留不变，从而有效保护互联网资产。</p>
+	<h3 id="--7">结语</h3>
+	<p>对于 Cloudflare 来说，一切归于帮助建设更加美好的互联网这个使命上。互联网上每天都要浪费 500 年时间，自世纪之交以来没有人重新审视过 CAPTCHA 的基本假设，这对我们来说是荒谬的。</p>
+	<p>对于为发布 Cryptographic Attestation of Personhood 而做的工作，我们倍感自豪。在设计这一质询时，我们采用了以用户为先的方法，确保用户在访问 Cloudflare 全球网络背后的互联网资产时享有高水准的安全性。我们正在借助 Cryptographic Attestation of Personhood 加强我们现有的人类质询。随着时间推移，您应该会更加频繁地看到它。目前，您可以访问 <a href="https://cloudflarechallenge.com/" target="_blank">cloudflarechallenge.com</a> 进行试用。</p>
+	<p>我们想要感谢 Cloudflare 其他团队的付出。这项工作是由研究团队主导的，但我们也非常荣幸获得了公司全体成员的支持。如果您想帮助我们建设更加美好的互联网，欢迎您<a href="https://www.cloudflare.com/en-gb/careers/jobs/?department=Technology%2520Research&amp;location=default" target="_blank">加入我们</a>。</p>
+	<p>最后：我们很高兴能够迎来互联网上消防栓的消亡。没人再需要它了。</p>
+	<h3 id="--8">反馈和常见错误</h3>
+	<p>由于这是 Cloudflare 研究小组的一项实验性项目，因此目前只有 USB 或 NFC 安全密钥方可使用。我们欢迎您提供反馈，也会尽快添加其他身份验证器。如果您使用不受支持的设备，那么浏览器可能会显示一些难以理解的错误消息。在 Google Chrome 中，您会看到：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/05/Chrome-WebAuth-Fail-Screenshot.png" class="kg-image"></figure>
+	<p>如果想要就 Cryptographic Attestation of Personhood 提供反馈，请填写我们的 Google 表单：<a href="https://forms.gle/HQxJtXgryg4oRL3e8" target="_blank">https://forms.gle/HQxJtXgryg4oRL3e8</a></p>
+</div>

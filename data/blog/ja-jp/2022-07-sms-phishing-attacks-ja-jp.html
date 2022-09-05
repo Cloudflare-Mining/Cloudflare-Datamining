@@ -1,0 +1,186 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/08/unnamed-1.png" class="kg-image" alt="The mechanics of a sophisticated phishing scam and how we stopped it"></figure>
+	<p>昨日（2022年8月8日）、Twilioが<a href="https://www.twilio.com/blog/august-2022-social-engineering-attack" target="_blank">標的型フィッシング攻撃による侵害を受けた</a>と発表しました。同じ頃、Cloudflareの従業員を標的とする、よく似た特性の攻撃がありました。従業員個人はフィッシングメッセージに引っ掛かりましたが、当社は自社の<a href="https://www.cloudflare.com/cloudflare-one/" target="_blank">Cloudflare One製品</a>を使用し、各従業員に支給した物理的セキュリティキー（ハードキー）を使わなければアプリケーションにアクセスできないようにしていたため、攻撃を阻止することができました。</p>
+	<p>Cloudflareシステムのセキュリティ侵害は一切なかったことを確認しました。当社の<a href="https://blog.cloudflare.com/ja-jp/introducing-cloudforce-one-threat-operations-and-threat-research-ja-jp/">Cloudflare One脅威インテリジェンスチーム</a>は、攻撃のからくりを調べて攻撃者追跡に役立つ重要証拠を集めるため、更なる分析を行いました。</p>
+	<p>それは従業員とシステムを標的とし、たいていの企業が侵入されてしまうと思われるような高度な攻撃でした。攻撃者が複数企業を狙っていることから、他社がこの攻撃を認識して軽減できるように、今回の事件の概略をここで説明したいと思います。</p>
+	<h2 id="-">標的型テキストメッセージ</h2>
+	<p>2022年7月20日、Cloudflare Securityチームに、Cloudflare Oktaのログインページらしきページに誘導する正当そうなテキストメッセージを従業員が受け取ったという通報がありました。このメッセージの受信は2022-07-20 22:50 UTCに始まり、それから1分も経たないうちに、少なくとも76名の従業員の私用電話と業務用電話にテキストメッセージが届きました。いくつかのメッセージは従業員の家族にも送られました。攻撃者がどのようにして従業員の電話番号リストを集めたのかはまだ判明していませんが、従業員のディレクトリサービスのアクセスログを確認したところ、侵害の兆候は見られませんでした。</p>
+	<p>Cloudflareには年中無休体制のセキュリティインシデント対応チーム（SIRT）があり、Cloudflareの各従業員は不審なことがあれば必ずSIRTへ通報するよう訓練されています。SIRTへの通報の90%以上は脅威でないことが判明していますが、従業員はどんなことでも通報し、通報しすぎになることを恐れないよう指導されています。しかし、今回SIRTへ通報されたのは真の脅威でした。</p>
+	<p>従業員が受信したテキストメッセージは次のようなものでした。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/08/image3-5.png" class="kg-image"></figure>
+	<p>送信元はT-MobileのSIMカードに関係する4つの電話番号（ (754) 268-9387、(205) 946-7573、(754) 364-6683、(561) 524-5989）で、公式に見えるドメインcloudflare-okta.comへのリンクが貼られていました。このドメインはドメインレジストラのPorkbun経由で2022-07-20 22:13:04 UTCに登録されており、それから40分も経たないうちに大規模フィッシング攻撃が始まっています。</p>
+	<p>Cloudflareは<a href="https://www.cloudflare.com/products/registrar/custom-domain-protection/" target="_blank">安全なレジストラ製品</a>を構築しましたが、その目的の1つはCloudflareブランドを使用するドメインが登録された時に検知して停止できるようにするためでした。しかし、このドメインは攻撃直前に登録されたため、新規の「.com」登録としてまだ公表されておらず、当社システムによる登録検知と当社チームによるドメイン停止要請が間に合わなかったのです。</p>
+	<p>リンクをクリックすると、フィッシングページへ誘導されるようになっていました。DigitalOceanがホストするフィッシングページは、下のようなものでした。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/08/image1-13.png" class="kg-image"></figure>
+	<p>CloudflareはIDプロバイダーとしてOktaを使っています。フィッシングページは正当なOktaログインページと瓜二つのデザインで、訪問者すべてにユーザー名とパスワードを入力するよう促しました。</p>
+	<h2 id="--1">リアルタイムフィッシング</h2>
+	<p>従業員が受信したテキストとそのコンテンツを、既に攻撃された他社がVirusTotalなどのサービスに投稿していたことから、当社でこの<a href="https://www.cloudflare.com/learning/email-security/what-is-email-security/" target="_blank">フィッシング攻撃</a>のペイロードを分析することができました。被害者がフィッシングページの入力を完了すると、資格情報がメッセージングサービスのTelegramで攻撃者へ即時転送されました。このページではタイムベースワンタイムパスワード（TOTP）コードの入力も促されるため、こうしたリアルタイム転送は重大問題でした。</p>
+	<p>おそらくは、攻撃者が資格情報をリアルタイムで受け取り、それを被害企業の実際のログインページに入力します。すると、多くの企業がコードを生成してSMSで従業員へ送信するか、パスワードジェネレーターで表示します。従業員はそのTOTPコードをフィッシングサイトで入力し、その情報もまた、攻撃者へ転送されます。そのTOTPコードが無効になる前に、攻撃者がそれを使って被害企業の実際のログインページにアクセスして、たいていの二要素認証の実装を突破してしまいます。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/08/image2-6_1_ja-JP.png" class="kg-image"></figure>
+	<h2 id="--2">完璧でなくても保護されている</h2>
+	<p>当社で確認したところ、Cloudflareの従業員3名がフィッシングメッセージに引っ掛かって資格情報を入力していました。ただ、CloudflareではTOTPコードは使わず、各従業員にはYubiKeyなどのベンダーが発行するFIDO2準拠のセキュリティキーを支給しています。ハードキーはユーザーに紐づけて<a href="https://www.yubico.com/blog/creating-unphishable-security-key/" target="_blank">オリジンバインディング</a>を実装しているため、今回のような高度なリアルタイムフィッシング攻撃でも当社システムへのログインに必要な情報を集めることはできません。攻撃者は不正入手したユーザー名とパスワードを使ってシステムにログインしようと試みましたが、ハードキーの要件を掻い潜ることができませんでした。</p>
+	<p>しかし、このフィッシングページは単に資格情報とTOTPコードを狙うだけではありませんでした。上述の段階を経てしまうと、続いてAnyDeskのリモートアクセスソフトウェアを含んだフィッシングペイロードのダウンロードが始まるようになっていたのです。このソフトウェアがインストールされると、攻撃者は被害者の端末をリモート操作できるようになります。この段階まで達した当社チームメンバーはいなかったことが確認されていますが、仮にいたとしても、当社のエンドポイントセキュリティがリモートアクセスソフトウェアのインストールを阻止していたことでしょう。</p>
+	<h2 id="--3">当社の対応は？</h2>
+	<p>このインシデントに関して当社がとった主な対応は、以下の通りです。</p>
+	<h3 id="1-cloudflare-gateway-">1. Cloudflare Gatewayを使ってフィッシングドメインをブロック</h3>
+	<p>Cloudflare Gatewayは、DNS/HTTPフィルタリングとネイティブ統合されたZero Trust機能によって脅威に対する防御とデータ保護を実現する<a href="https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway/" target="_blank">セキュアWebゲートウェイ</a>ソリューションです。当社は社内でこのソリューションを使い、悪意のあるドメインを事前予防的に検出してブロックしています。従業員が悪意あるドメインに決してアクセスしないように、当社のチームがそのドメインをCloudflare Gatewayに追加し、ブロックします。</p>
+	<p>Gatewayが備える悪性ドメイン自動検知機能は、ドメインの検出とブロックも行います。しかし、今回はドメイン登録からメッセージ送信までの時間が短かったために、システムの自動対策機能が発動する前に従業員の誰かがリンクをクリックしてしまったのです。このインシデントの発生を受け、当社は悪意あるドメインの検出・ブロックの迅速化に取り組んでいます。また、お客様には提供していましたが自社では実装していなかった新規登録ドメインへのアクセス制御も実装しています。</p>
+	<h3 id="2-cloudflare-">2. 影響を受けたCloudflare従業員をすべて特定して、安全性が損なわれた資格情報をリセット</h3>
+	<p>当社は、フィッシングテキストの受信者とログインアクティビティを照らし合わせ、認証を得て従業員のアカウントにアクセスしようとした脅威アクターの試みを特定することができました。ハードキー（U2F）の要件があったために、正しいパスワードが使われていても第二の要素の確認ができないためにログインがブロックされたケースを特定しました。資格情報が漏えいした従業員3名については、資格情報とアクティブセッションをリセットし、デバイスのスキャンを開始しました。</p>
+	<h3 id="3-">3. 脅威アクターのインフラストラクチャを特定して削除</h3>
+	<p>脅威アクターのフィッシングドメインはPorkbunで新規登録されたもので、DigitalOceanがホストしていました。Cloudflareを標的とした攻撃で使われたフィッシングドメインは、セットアップされてからフィッシングの第一波が放たれるまで1時間足らずでした。サイトのフロントエンドはNuxt.js、バックエンドはDjangoを使っていました。当社はDigitalOceanと協力して、攻撃者のサーバーをシャットダウンしました。さらに、Porkbunとも協力して、この悪意あるドメインの制御を獲得しました。</p>
+	<p>失敗したサインインの試みから、脅威アクターがMullvad VPNソフトウェアを利用し、明らかにWindows 10搭載機のGoogle Chromeブラウザを使っていたことを突き止めることができました。攻撃者が使ったVPN IPアドレスは、198.54.132.88と198.54.135.222です。これらのIPは、米国に本拠を置き、Webサイトによるとロサンゼルスとシカゴにサーバーを有する専用サーバープロバーダー、Tzuloに割り当てられています。実際は、198.54.132.88はトロント地域のサーバー、198.54.135.222はワシントンDC地域のサーバーで運用していたようです。当社は、これらのIPから当社サービスに一切アクセスできないようにブロックしました。</p>
+	<h3 id="4-">4. 後続の攻撃を特定するために検出機能をアップデート</h3>
+	<p>当社は今回の攻撃についてわかったことを基に、既存の検出機能に追加シグナルを組み込み、この脅威アクターを特定できるようにしました。このブログを書いている時点で、当社従業員を標的とした攻撃の後続波は観測されていません。しかし、サーバーからのインテリジェンスによれば、この攻撃者はTwilioなど他の企業を標的にしたようです。当社はそれらの企業に手を差し伸べ、攻撃に関するインテリジェンスを共有しました。</p>
+	<h3 id="5-">5. サービスアクセスログの監査を行い、攻撃を表すその他の兆候がないか確認</h3>
+	<p>攻撃の後、当社はすべてのシステムログを精査し、今回の攻撃者のフィンガープリントが他にないか確認しました。Cloudflare AccessがすべてのCloudflareアプリケーションの中央制御ポイントになっているため、当社はログを見て、攻撃者がシステムに侵入した痕跡を探すことができました。従業員の電話が狙われたため、従業員のディレクトリプロバイダーのログも精査しましたが、安全性が損なわれた証拠は一切見つかりませんでした。</p>
+	<h2 id="--4">学んだ教訓と追加措置</h2>
+	<p>私たちは攻撃があるたびに学びます。今回の攻撃は成功しませんでしたが、学んだことを基に調整を加えています。登録後24時間以内のドメインで運営されるサイトへのアクセスは、制限するかサンドボックスモードで実行するようにCloudflare Gatewayの設定を調整します。また、“cloudflare”、“okta”、“sso”、“2fa”といった語を含むホワイトリスト非掲載サイトは、当社のブラウザ分離技術を使って運営します。さらに、<a href="https://www.cloudflare.com/products/zero-trust/email-security/" target="_blank">Cloudflare Area 1 のフィッシュ識別技術</a>を活用し、Webをスキャンして、Cloudflareを標的とすべく設計されたページをことごとく検出します。最後に、Accessの実装を厳格化して、未知のVPNや住宅用プロキシ、インフラプロバイダーからのログインをすべて阻止します。これらはすべて、お客様に提供する同製品の標準的な機能です。</p>
+	<p>今回の攻撃は、当社で成功している3点の重要性を改めて感じさせるものでした。第一に、すべてのアプリケーションへのアクセスにハードキーを要件とすること。<a href="https://krebsonsecurity.com/2018/07/google-security-keys-neutralized-employee-phishing/" target="_blank">Googleと同様</a>、当社でもハードキーの導入以来、フィッシング攻撃が成功した例はありません。Cloudflare Accessのようなツールで、レガシーアプリケーションでもハードキーをサポートしやすくなっています。当社がどのようにハードキーを導入したかに関心をお持ちの企業は、<a href="/cdn-cgi/l/email-protection#2a4946455f4e4c4558494f45444f074358424f465a6a4946455f4e4c464b584f04494547"><span class="__cf_email__" data-cfemail="82e1eeedf7e6e4edf0e1e7edece7afebf0eae7eef2c2e1eeedf7e6e4eee3f0e7ace1edef">[email&nbsp;protected]</span></a>へご連絡ください。当社のセキュリティチームが、導入プロセスで学んだベストプラクティスを喜んで共有させていただきます。</p>
+	<p>第二に、従業員とシステムの保護にCloudflareの独自技術を使っていること。常に攻撃者より優位に立つには、AccessやGatewayといったCloudflare Oneのソリューションが必須です。当社はAccessの実装を、すべてのアプリケーションにハードキーが必要となるように構成しました。Accessは、すべてのアプリケーション認証を扱う中央ロギングロケーションにもなりますし、必要に応じて、侵害された可能性がある従業員のセッションを終了させられる場所にもなります。Gatewayは、今回のような悪性サイトをすばやくシャットダウンし、どの従業員が攻撃に引っ掛かったかを把握できるようにします。これらはすべて、Cloudflare Oneスイートの一環としてCloudflareのお客様に提供している機能であり、今回の攻撃でその有効性が実証されました。</p>
+	<p>第三に、セキュリティには、偏執的な用心深さを備えつつ人を責めない企業文化が極めて重要だということ。フィッシング詐欺に引っ掛かった3名の従業員は処分されませんでした。私たちはみな人間であり、過ちを犯します。重要なのは、過ちを犯した時にそれを報告し、決してごまかさないことです。今回のインシデントは、Cloudflareの各チームメンバーにとってセキュリティが仕事の一部になっている理由を示す1つの例となりました。</p>
+	<h2 id="--5">イベントの詳細タイムライン</h2>
+	<!--kg-card-begin: markdown-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg">
+		<thead>
+			<tr>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2022-07-20 22:49 UTC</span></th>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">攻撃者が、Cloudflareの従業員とその家族に100通以上のSMSメッセージを送信する。</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2022-07-20 22:50 UTC</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">従業員がSMSメッセージについてCloudflare Securityチームへ通報し始める。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2022-07-20 22:52 UTC</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">社内デバイスのCloudflare Gatewayで攻撃者のドメインがブロックされていることを確認する。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2022-07-20 22:58 UTC</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">全従業員に対し、チャットとメールで警告を送る。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2022-07-20 22:50 UTC ～ </span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2022-07-20 23:26 UTC</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Okta SystemのログとCloudflare GatewayのHTTPログでテレメトリを監視し、資格情報の漏えい元を突き止める。ログインセッションをクリアし、ディスカバリーのアカウントを一時停止する。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2022-07-20 23:26 UTC</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ホスティングプロバイダーがフィッシングサイトを削除する。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2022-07-20 23:37 UTC</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">漏えいした従業員の資格情報をリセットする。</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2022-07-21 00:15 UTC</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">攻撃者のインフラストラクチャと能力について深掘りする。</span></td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<h2 id="--6">安全性が損なわれたことを示す兆候</h2>
+	<!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-nr0u {
+			border-color: inherit;
+			font-family: inherit;
+			font-size: 100%;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-0pky {
+			border-color: inherit;
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg">
+		<thead>
+			<tr>
+				<th class="tg-nr0u">価値</th>
+				<th class="tg-0pky">種類</th>
+				<th class="tg-0pky">コンテキストとMITREマッピング</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0pky">147[.]182[.]132[.]52でホストされるcloudflare-okta[.]com</td>
+				<td class="tg-0pky">フィッシングURL</td>
+				<td class="tg-0pky"><a href="https://attack.mitre.org/techniques/T1566/002/" target="_blank">T1566.002</a>: フィッシング：標的型フィッシングのリンクをユーザーに送信</td>
+			</tr>
+			<tr>
+				<td class="tg-0pky">64547b7a4a9de8af79ff0eefadde2aed10c17f9d8f9a2465c0110c848d85317a</td>
+				<td class="tg-0pky">SHA-256</td>
+				<td class="tg-0pky"><a href="https://attack.mitre.org/techniques/T1219/" target="_blank">T1219</a>: 脅威アクターがリモートアクセスソフトウェアを配信</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: html-->
+	<h2 id="--7">可能な対策</h2>
+	<p>お客様の環境で同様の攻撃がありましたら、<a href="/cdn-cgi/l/email-protection#81e2edeef4e5e7eef3e2e4eeefe4ace8f3e9e4edf1c1e2edeef4e5e7ede0f3e4afe2eeec"><span class="__cf_email__" data-cfemail="ceada2a1bbaaa8a1bcadaba1a0abe3a7bca6aba2be8eada2a1bbaaa8a2afbcabe0ada1a3">[email&nbsp;protected]</span></a>へお気軽にご相談ください。ビジネスの安全を常に確保するためのベストプラクティスを喜んで共有させていただきます。最後に、当社は現在、Detection and Responseのチームメンバーを募集しています。私たちと一緒に今後の攻撃を検出・軽減したいという方は、<a href="https://boards.greenhouse.io/cloudflare/jobs/4364485?gh_jid=4364485" target="_blank">ご応募ください</a>。</p>
+</div>

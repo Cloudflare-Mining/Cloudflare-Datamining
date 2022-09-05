@@ -1,0 +1,153 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/07/lava-lamps.jpg" class="kg-image">
+		<figcaption>Cloudflare大堂的熔岩灯 图片来源<a href="https://twitter.com/mahtin/status/888251632550424577" target="_blank">@mahtin</a></figcaption>
+	</figure>
+	<p></p>
+	<h2 id="-">介绍</h2>
+	<p>你们当中的一些人应该知道，我们旧金山办公室的大厅里<a href="https://www.fastcodesign.com/90137157/the-hardest-working-office-design-in-america-encrypts-your-data-with-lava-lamps" target="_blank">有一堵用于密码学的熔岩灯墙</a>。在这篇文章中，我们将探讨它是如何工作的。本文不涉及技术背景知识。如果你想对有关技术细节做更深入的了解，请参阅 <a href="https://blog.cloudflare.com/lavarand-in-production-the-nitty-gritty-technical-details">LavaRand in Production: The Nitty-Gritty Technical Details</a>。</p>
+	<h2 id="--1">背景</h2>
+	<h3 id="--2">密码学中的随机性</h3>
+	<p>正如我们<a href="https://blog.cloudflare.com/why-randomness-matters/">过去</a>讨论过的，密码学依赖于随机数的生成能力，这些随机数既不可预测又对任何对手保密。</p>
+	<p>但“随机”是一个相当难以捉摸的术语；在不同的领域，它的意思略有不同。和所有这些领域一样，它在密码学中的应用非常精准。在某些领域，如果一个过程具有正确的统计特性，那么它就是随机的。例如，圆周率的数字被认为是随机的，因为所有的数字序列都以相同的频率出现(“15”出现的频率与“38”相同，“426”出现的频率与“297”相同，等等)。但对于加密工作来说，这还不够——随机数必须是不可预测的。</p>
+	<p>要了解不可预测的含义，就有必要知道所有加密都是基于信息的不对称性。如果您正在尝试安全地执行某些加密操作，那么您需要关心的是某个人——如一个对手——会试图破坏您的安全性。唯一能让你与对手区别开来的是你知道对手不知道的东西，加密的工作就是确保信息的这种不对称性足以让你保持安全。</p>
+	<p>举一个简单的例子。想象一下，你和朋友正准备去看电影，但你不希望你的对手知道你们要去看哪部电影（以免他出现并阻挠你观看！）。就在这周，轮到你选择电影了。一旦你做出了选择，你将需要向你的朋友发送一条信息，告诉他你选择了哪部电影，但是你需要确保即使你的对手拦截了这个信息，她也无法弄清楚信息内容。</p>
+	<p>你设计了以下方案:由于目前只有两部电影可供观看，你给其中一部贴上A的标签，另一部贴上b的标签。然后，当你的朋友在场时，你会抛硬币。你们遵循下表列出的纲领，因此您要发送取的信息内容将取决于你选择看什么电影和硬币是否出现正面(H)或反面(T)。之后一旦你做出决定看哪部电影,您将使用此表向你的朋友发送一个加密的消息，告诉他你所选择的电影。</p>
+	<!--kg-card-begin: html-->
+	<table style="background-color: transparent;">
+		<tbody>
+			<tr>
+				<th>
+					<div style="padding: 5px;"><b>
+							<font style="vertical-align: inherit;">
+								<font style="vertical-align: inherit;">电影</font>
+							</font>
+						</b></div>
+				</th>
+				<th>
+					<div style="padding: 5px;"><b>
+							<font style="vertical-align: inherit;">
+								<font style="vertical-align: inherit;">硬币</font>
+							</font>
+						</b></div>
+				</th>
+				<th>
+					<div style="padding: 5px;"><b>
+							<font style="vertical-align: inherit;">
+								<font style="vertical-align: inherit;">信息</font>
+							</font>
+						</b></div>
+				</th>
+			</tr>
+			<tr>
+				<td>
+					<font style="vertical-align: inherit;">
+						<font style="vertical-align: inherit;">A</font>
+					</font>
+				</td>
+				<td>
+					<font style="vertical-align: inherit;">
+						<font style="vertical-align: inherit;">H</font>
+					</font>
+				</td>
+				<td>
+					<font style="vertical-align: inherit;">
+						<font style="vertical-align: inherit;">“西班牙的降雨主要停留在平原上。”</font>
+					</font>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<font style="vertical-align: inherit;">
+						<font style="vertical-align: inherit;">A</font>
+					</font>
+				</td>
+				<td>
+					<font style="vertical-align: inherit;">
+						<font style="vertical-align: inherit;">Ť</font>
+					</font>
+				</td>
+				<td>
+					<font style="vertical-align: inherit;">
+						<font style="vertical-align: inherit;">“在赫特福德，赫里福德和汉普郡，飓风几乎没有发生过。”</font>
+					</font>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<font style="vertical-align: inherit;">
+						<font style="vertical-align: inherit;">B</font>
+					</font>
+				</td>
+				<td>
+					<font style="vertical-align: inherit;">
+						<font style="vertical-align: inherit;">H</font>
+					</font>
+				</td>
+				<td>
+					<font style="vertical-align: inherit;">
+						<font style="vertical-align: inherit;">“在赫特福德，赫里福德和汉普郡，飓风几乎没有发生过。”</font>
+					</font>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<font style="vertical-align: inherit;">
+						<font style="vertical-align: inherit;">B</font>
+					</font>
+				</td>
+				<td>
+					<font style="vertical-align: inherit;">
+						<font style="vertical-align: inherit;">Ť</font>
+					</font>
+				</td>
+				<td>
+					<font style="vertical-align: inherit;">
+						<font style="vertical-align: inherit;">“西班牙的降雨主要停留在平原上。”</font>
+					</font>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: html-->
+	<p>如果你决定选B片，硬币正面朝上，你就会发出这样的信息：“在赫特福德、赫里福德和汉普郡，飓风很少发生。”因为你的朋友知道硬币是正面朝上的——抛硬币时他在场——所以他知道你一定是选了B电影。但如果从你的敌人的角度考虑这个问题。她不知道抛硬币的结果，她只知道硬币正面向上的概率是50%反面向上的概率是50%。因此，看到“在赫特福德、赫里福德和汉普郡，飓风几乎从未发生过”的信息对她一点帮助都没有!硬币正面朝上的概率是50%(暗示电影B)反面朝上的概率是50%(暗示电影A)，她知道的并不比以前多!</p>
+	<p>现在让我们回到不可预测性的概念。假设抛硬币的结果是完全可以预测的——假设你的对手布下了一枚把戏硬币，第一次总是正面朝上，第二次总是反面朝上，第三次总是正面朝上，以此类推。因为她知道第一次抛硬币出现正面的概率是100%，所以不管你发的是哪条信息，她都知道你要去看哪部电影。尽管“硬币戏法”在统计学领域仍然表现出一些“随机性”的基本特性——出现正面和反面的次数一样多——但它是可预测的，这使得它对密码学毫无用处。结论:当我们在密码学中说随机时，我们的意思是“它是不可预测的”。</p>
+	<h2 id="--3">计算中的随机性</h2>
+	<p>不幸的是，对于密码学家来说，如果计算机擅长一件事，它就是可以预测的。它们可以执行相同的代码一百万次，并且只要每次给它们相同的输入，它们总是会得到相同的输出。这对可靠性非常有利，但在加密方面却很棘手 - 毕竟，我们需要的是不可预测性！</p>
+	<p>该问题的解决方案是加密安全的伪随机数发生器（CSPRNG）。CSPRNG是一种算法，它提供了一个本身不可预测的输入，产生了更大的输出流，这也是不可预测的。该流可以无限期地扩展，在将来的任何时候产生尽可能多的输出。换句话说，如果你要多次翻转一个硬币（一个已知不可预测的过程），然后使用这些硬币翻转的输出作为CSPRNG的输入，对手不能预测投掷硬币结果，就也不能预测CSPRNG的输出——无论CSPRNG消耗了多少输出。</p>
+	<p>但即使CSPRNG是一个非常强大的工具，它们也仅仅完成了方程式的一半——它们仍需要一个不可预测的输入才能运行。但正如我们所说的，计算机并非不可预测，所以我们不是又回到原点了吗？嗯，这样不太好。事实证明，计算机通常具有可以使用的不可预测性的来源，但它们非常慢。我们可以做的是将收集不可预测输入的缓慢过程与CSPRNG相结合，CSPRNG可以更快地获取输入并产生更大量的输入，同时实现了随机性！</p>
+	<p>但是即使在速度很慢的情况下，计算机可以从哪里得到这样不可预测的输入呢？答案是在现实世界。虽然计算机为程序员提供了一个很好的简化的方法，但真实的物理计算机仍然存在于真实的物理世界中。这个世界是不可预测的。计算机有从现实世界中获取输入的各种方法——温度传感器、键盘、网络接口等等。所有方法都能够对现实世界进行测量，而所有这些测量都有一定程度的固有不准确性。我们一会儿会解释，不准确性和不可预测性是一样的，而且是可用的!不可预测的随机性的常见来源包括用高精度测量CPU温度(因此精度不准确)、用高精度测量键盘上击键的时间等。要了解如何使用这个方法来产生不可预测的随机性，可以考虑这样一个问题:“我现在所在的房间的温度是多少?”他说:“你大概可以估计到几摄氏度以内，比如说，在70到75华氏度之间。但是你可能不知道精确到小数点后两位的温度是多少——是73。42度还是73。47度?通过高精度测量温度，然后只使用测量值的低阶数字，通过观察你周围的世界，你就可以得到高度不可预测的随机性。电脑也可以这样做。</p>
+	<p>所以，回顾一下：</p>
+	<ul>
+		<li>密码学中使用的随机性需要是不可预测的。</li>
+		<li>通过测量环境，计算机可以慢慢地获得少量不可预测的随机性。</li>
+		<li>计算机可以通过使用CSPRNG大大扩展这种随机性，CSPRNG可以迅速将其转换为大量不可预测的随机性。</li>
+	</ul>
+	<h2 id="--4">对冲</h2>
+	<p>密码学家对一件事心存警惕，这是理所当然的。密码系统的安全性通常比最初认为的要低，在什么场景下使用什么算法是安全的，我们对此的理解也在不断地更新。</p>
+	<p>因此，密码学家通常利用非常多的安全措施来对冲风险，以防他们的其中一个假设被证明是错误的。这有点像密码学家版本的工程实践，设计能够承受比他们想象中要多得多的重量、风或热的建筑物。</p>
+	<p>随机性的风险对冲通常采取混合的形式。不可预测的随机值有一个很好的特性，如果它们以正确的方式与更不可预测的随机值混合，那么结果至少与任何一个输入一样不可预测。这意味着如果你把一个高度不可预测的随机值和一个稍微可预测的随机值混合，结果将是一个高度不可预测的值。</p>
+	<p>这种混合很有用，因为你可以混合来自许多源的不可预测的随机值，如果您后来发现其中一个源的不可预测性比您最初认为的要低，那么它仍然是可用的——依托于其他源的帮助。</p>
+	<h2 id="lavarand">LavaRand</h2>
+	<p>Cloudflare在全球数据中心拥有数千台计算机，这些计算机都需要随机性加密。过去这些计算机都是使用我们运行的操作系统Linux的默认机制来获得随机性。</p>
+	<p>但作为优秀的密码学家，我们总是试着去对冲。我们希望我们的系统可以确保，即使获得随机性的默认机制存在缺陷，我们仍然是安全的。我们就是这样设计出LavaRand的。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/07/lava-lamps-camera.jpg" class="kg-image">
+		<figcaption>来自监控相机的视图</figcaption>
+	</figure>
+	<p>LavaRand是一个使用熔岩灯作为生产服务器辅助随机源的系统。旧金山办公室大厅的一盏熔岩灯墙为瞄准墙壁的摄像机提供了不可预测的输入。来自摄像机的视频馈送到CSPRNG，CSPRNG提供的随机值流可以作为我们的生产服务器的额外随机源。由于在熔岩灯内 “熔岩”的流动是非常难以预测的<sup>1</sup>，­因此通过取它们的镜头“测量”灯是一种获得不可预测的随机性的好方法。计算机将图像存储为非常大的数字，因此我们可以将它们用作CSPRNG的输入，就像任何其他数字一样。</p>
+	<p>我们不是第一个这样做的人。我们的LavaRand系统的灵感来自Silicon Graphics 首先<a href="https://en.wikipedia.org/wiki/Lavarand" target="_blank">提出并建立</a>的类似系统，该系统于1996年<a href="https://www.google.com/patents/US5732138" target="_blank">获得专利</a>（专利现已过期）。</p>
+	<p>希望我们永远不需要用到它。希望我们的生产服务器使用的随机性的主要来源仍然是安全的，而LavaRand除了为我们的办公室增添一些花样之外几乎没有用处。但如果事实证明我们错了，而且我们生产中的随机源实际上存在缺陷，那么LavaRand将成为我们的对冲工具，让攻击Cloudflare变得更加困难。</p>
+	<hr>
+	<!--kg-card-begin: html-->
+	<ol>
+		<li>
+			<font style="vertical-align: inherit;">
+				<font style="vertical-align: inherit;">Noll, L.C. and Mende, R.G. and Sisodiya, S.,</font>
+			</font><a href="https://www.google.com/patents/US5732138" target="_blank"><em>
+					<font style="vertical-align: inherit;">
+						<font style="vertical-align: inherit;">一种用混沌系统数字化的密码散列对接伪随机数生成器的方法</font>
+					</font>
+				</em></a>
+		</li>
+	</ol>
+	<!--kg-card-end: html-->
+</div>

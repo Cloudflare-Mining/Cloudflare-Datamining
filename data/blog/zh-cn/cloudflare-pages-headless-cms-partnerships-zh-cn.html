@@ -1,0 +1,30 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image3-53.png" class="kg-image" alt="Cloudflare Pages Partners Up Contentful, Sanity and Strapi"></figure>
+	<p>过去几年，无头 CMS 受到的关注激增，许多企业都在考虑采用该工具。随着受众通过采用不同形式的新界面（智能手机、可穿戴设备、个人设备）使用内容，将内容与其后端解耦的想法开始为开发团队和最终用户带来更好的体验。有鉴于此，我们相信在未来会有更多的机会来利用无头CMS，这就是为什么今天我们很高兴地宣布我们与 <a href="https://sanity.io/" target="_blank">Sanity</a> 和 <a href="https://strapi.io/" target="_blank">Strapi</a> 的合作关系，并分享与你喜欢的CMS供应商：<a href="https://www.contentful.com/" target="_blank">Contentful</a> 和 <a href="https://wordpress.org/" target="_blank">WordPress</a> 的现有集成。</p>
+	<h3 id="-cms-">无头 CMS 概览</h3>
+	<p>无头 CMS 是我们迄今在您和您的团队之中发现的最常用 API 集成，无论是用于您的营销站点、博客还是电子商务站点。它为您的团队提供了通过友好的用户界面输入网站内容并将其存储在数据库中的能力，这样就可以在不触及代码库的情况下轻松对网站进行更新。作为 Jamstack 平台，我们的路线图的很大一部分是了解我们如何构建自己的工具或为工具提供适合您的开发生态系统和 Pages 的集成。因此，我们在今年 8 月<a href="https://blog.cloudflare.com/introducing-deploy-hooks-for-cloudflare-pages/">宣布 Pages 支持 Deploy Hook</a>。</p>
+	<h3 id="-hook-">这与 hook 有什么关系？</h3>
+	<p>Deploy Hook 非常重要，允许您通过无头 CMS 中进行的更新，连接并触发 Pages 中的部署。作为开发人员，不用每天多次收到 ping 操作即可对站点进行内容更新，您的营销团队可以通过 Deploy Hook 直接在无头 CMS 的界面中更新站点。这是 Pages 上创建的 URL，它接受 HTTP POST 请求，以在您的 git 命令范围之外触发新部署。您可以在 CMS 中配置设置以接受 Deploy Hook，这样只要在 CMS 中更新了内容，就会自动在 Pages 仪表板中启动新部署，整个过程就是如此简单！</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image2-73.png" class="kg-image"></figure>
+	<h3 id="-deploy-hook-">我如何创建 Deploy Hook？</h3>
+	<p>在 Pages 界面中，您需要做两件事来创建 Deploy Hook：</p>
+	<ol>
+		<li>选择 Deploy Hook 名称：您可以将 Deploy Hook 命名为任意内容</li>
+		<li>选择要构建的分支：您可以指定在使用 Deploy Hook 请求 URL 时要构建并部署的分支。</li>
+	</ol>
+	<!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 75%;"><iframe src="https://iframe.videodelivery.net/a4fabda318990fa7b1bb8e9e2f5d3542?preload=true" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
+	<!--kg-card-end: html-->
+	<p>在您获得 Deploy Hook 后，就已准备就绪，可以在所选 CMS 中设置 webhook，您将在其中粘贴您的 Deploy Hook。</p>
+	<p>就是这样！现在，就让您的营销团队来更新丰富的内容，并看着构件自动触发以更新您的站点！</p>
+	<h3 id="-">我们的合作伙伴</h3>
+	<p>当然，在将所选无头 CMS 用于 Pages 站点时，我们可以为您的团队提供更好开发体验的方法有很多，Deploy Hook 只是一个开端。但我们的集成故事不会止步于此。介绍一下我们的 CMS 合作伙伴和集成：<a href="https://sanity.io/" target="_blank">Sanity</a>、<a href="https://strapi.io/" target="_blank">Strapi</a>、<a href="https://www.contentful.com/" target="_blank">Contentful</a> 和 <a href="https://wordpress.org/" target="_blank">WordPress</a>！</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image1-103.png" class="kg-image"></figure>
+	<p>我们观察到，在您和您的团队之中，这四个 CMS 在 Pages 上的使用率最高，在未来几个月，我们将与合作伙伴密切合作，为您构建更多精彩内容。</p>
+	<blockquote><em>我们很高兴能与 Cloudflare 成为合作伙伴，Cloudflare Pages 的这个新发布令我们感到很兴奋。在 Sanity，我们十分关心我们平台上的使用体验，希望人们能用得开心。Cloudflare 的新 Deploy Hook 允许开发人员基于内容更改为静态站点自动执行构建，这对于内容创建者而言是巨大的改进。将这些与结构化内容和我们由 GROQ 驱动的 Webhook 相结合，我们的客户可以针对这些构建应何时发生而做出战略性安排。我们非常高兴能够参与此发布，迫不及待想要看看整个社区使用 Sanity 和 Cloudflare 会构建出什么成果！</em><br>- Even Westvang，Sanity.io 的联合创始人</blockquote>
+	<p>查看 <a href="https://www.sanity.io/blog/deploying-a-next-js-site-on-cloudflare-pages-with-webhooks" target="_blank">Sanity 的视频教程</a>，了解如何使用 Pages 和 Sanity 构建您的站点！</p>
+	<blockquote><em>Strapi 非常高兴能够与 Cloudflare 建立合作伙伴关系，因为开发人员能够摆脱为内容团队将更改部署到生产的复杂过程。通过将 Deploy Hook 用于 Strapi，大家都可以快速、自主推送新内容和更新。</em><br>- Pierre Burgy，Strapi.io 的首席执行官</blockquote>
+	<blockquote>利用该集成，我们的客户可以更高效地与其团队进行跨职能合作。营销团队可以直接更新 Contentful 以自动触发部署，而不依赖于开发人员更新任何代码库，从而为所有相关团队带来更好、更有成效的体验。<br>- Jeff Blattel，Contentful 的技术合作伙伴主管</blockquote>
+	<h3 id="--1">立刻开始</h3>
+	<p>现在，要了解有关如何将 Pages 项目连接到我们的某个合作伙伴 CMS 的更多信息，请查看<a href="https://developers.cloudflare.com/pages/platform/deploy-hooks" target="_blank"> Deploy Hooks 文档</a>，立即部署您的第一个项目！</p>
+</div>

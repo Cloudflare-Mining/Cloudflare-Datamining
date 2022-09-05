@@ -1,0 +1,42 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image1-24.png" class="kg-image" alt="Cloudflare’s Data Localisation Suite now helps customers localise metadata about their HTTP traffic."></figure>
+	<p>近年、データのローカライゼーションが注目されているのは、多くの国が自国民のデータを管理・保護する方法としてローカライゼーションを捉えているためです。オーストラリア、中国、インド、ブラジル、韓国などの国々では、医療データは現地で保存しなければならない、公的機関は現地のサービスプロバイダーとしか契約できないなど、何らかの形で国民の個人データに対する法的主権を主張する規制を設けているか、現在検討中です。</p>
+	<p>EUでは、最近の「Schrems II」決定により、個人データをEU域外に移転する企業に対する要件が追加されました。また、規制の厳しい業界では、特定の種類の個人データをEU圏内に留めることを要求しているところも少なくありません。</p>
+	<p>Cloudflareは、お客様が個人データをEU域内で保管できるよう支援することをお約束します。昨年、<a href="https://blog.cloudflare.com/ja-jp/introducing-the-cloudflare-data-localization-suite-ja-jp/"> Data Localisation Suite</a>を導入し、お客様がデータを検査・保存する場所をコントロールできるようにしました。</p>
+	<p>本日、Data Localisation Suiteを拡張し、お客様のエンドユーザートラフィックのメタデータがEU圏内に留まることを保証するCustomer Metadata Boundaryを発表します。</p>
+	<h3 id="-"><strong>メタデータ：入門編</strong></h3>
+	<p>"メタデータ "というと怖いイメージがありますが、これは単純な概念で、"データについてのデータ "という意味です。言い換えれば、私たちのネットワーク上で起こったアクティビティの説明です。インターネット上のすべてのサービスは、何らかの形でメタデータを収集しており、ユーザーの安全とネットワークの可用性にとって不可欠なものです。</p>
+	<p>Cloudflareでは、以下のような目的のために、製品の使用状況に関するメタデータを収集しています。</p>
+	<ul>
+		<li>ダッシュボードやAPIを利用した分析サービスの提供</li>
+		<li>お客様とのログの共有</li>
+		<li>ボットやDDoS攻撃などのセキュリティ脅威の阻止</li>
+		<li>ネットワークのパフォーマンス向上</li>
+		<li>ネットワークの信頼性と耐障害性の維持</li>
+	</ul>
+	<p>そのコレクションは、実際にCloudflareではどのようなものなのでしょうか。私たちのネットワークは、ファイアウォール、キャッシュ、DNSリゾルバ、DDoS攻撃対策、Workersランタイムなど、数十のサービスから構成されています。各サービスは、タイムスタンプ、URL、Cloudflareの機能の使用状況、お客様のアカウントやゾーンの識別子などのフィールドを含む構造化ログメッセージを送信します。</p>
+	<p>これらのメッセージには、お客様のトラフィックの <em> 内容</em>は含まれないため、お客様のエンドユーザーのユーザー名、パスワード、個人情報、その他の個人情報は含まれません。ただし、これらのログには、EUで個人データとみなされるエンドユーザーのIPアドレスが含まれる場合があります。</p>
+	<h3 id="eu-"><strong>EUにおけるデータのローカライズ</strong></h3>
+	<p>EU一般データ保護規則（GDPR）は、世界で最も包括的な（そしてよく知られた）データプライバシー法の一つです。しかし、GDPRは、<em> </em>個人データはヨーロッパに留まらなければならないと主張しているわけではありません。その代わりに、EUの個人データがEU圏外から米国などの第三国に転送される場合にも、GDPRレベルの保護が受けられるようにするための法的メカニズムを数多く提供しています。EUから米国へのデータ転送は、最近まで<a href="https://www.privacyshield.gov/welcome" target="_blank">EU-U.S. Privacy Shield Framework</a>と呼ばれる協定に基づき許可されていました。</p>
+	<p>GDPRが施行された直後、 <a href="https://en.wikipedia.org/wiki/Max_Schrems" target="_blank">Max Schrems</a>というプライバシー活動家が、Facebookに対してデータ収集の慣行を理由に訴訟を起こしました。2020年7月、EU司法裁判所は「Schrems II」判決を下し、とりわけ、プライバシーシールドの枠組みを無効としました。しかし、裁判所は、EUの個人データがGDPRに違反する方法で米国政府当局によってアクセスされないことを保証する他の有効な移転メカニズムを支持しました。</p>
+	<p>Schrems IIの決定以来、多くのお客様から、EU市民のデータをどのように保護しているかについて質問が寄せられています。幸いなことに、CloudFlareには、政府のデータ要求に対する<a href="https://assets.ctfassets.net/slt3lc6tev37/2RM2ZAb5XJiudjz4QHvth4/b3df347d8a7a629ccd5cadd4f7cfd2f3/BDES-1406_Privacy_Day_Whitepaper_2021.pdf" target="_blank">業界屈指の取り組み</a>など、Schrems II訴訟以前から<a href="https://www.cloudflare.com/ja-jp/gdpr/introduction/" target="_blank">データ保護セーフガード</a>が備わっていました。特にSchrems IIに対応して、私たちは、当社の顧客の<a href="https://www.cloudflare.com/cloudflare-customer-dpa/" target="_blank">データ処理補遺条項</a>（DPA）を更新しました。私たちは、データ転送を可能にEU委員会によって承認された法的な契約書である、最新の<a href="https://www.cloudflare.com/cloudflare-customer-scc/" target="_blank">標準契約条項</a>を採用しました。また、<a href="https://edpb.europa.eu/news/news/2021/edpb-adopts-final-version-recommendations-supplementary-measures-letter-eu_en" target="_blank">補足措置に関するEDPBの2021年6月の提言</a>に概説されているとおり、保護措置を追加しました。最後に、Cloudflareのサービスは、GDPRの要件に対応するISO27701標準の下で認定されています。</p>
+	<p>これらの措置により、EU圏のお客様は、GDPRおよびSchrems IIの判決に沿った形でCloudflareのサービスを利用することができると考えています。それでも、多くのお客様がEUの個人データをEUに残しておくことを望んでいることを認識しています。例えば、医療、法律、金融などの業界のお客様の中には、追加的な要件をお持ちの方もいらっしゃるでしょう。そのため、これらの要件に対応するためのオプションのサービス群を開発しました。これを「Data Localisation Suite」と呼びます。</p>
+	<h3 id="data-localisation-suite-"><strong>Data Localisation Suiteはどのように役立つのでしょうか？</strong></h3>
+	<p>お客様が扱うデータが大量かつ多様であるため、データのローカライズは困難な課題となっています。Cloudflareのトラフィックに関して言えば、お客様は主に次の3つの領域について懸念を持っていることがわかりました。</p>
+	<ol>
+		<li>暗号化キーがEU圏内に留まるようにするにはどうしたらいいか？</li>
+		<li>キャッシュやWAFなどのサービスをEU圏内だけで動作させるにはどうしたらいいか？</li>
+		<li>メタデータがEU圏外に転送されないようにするにはどうしたらいいか？</li>
+	</ol>
+	<p>最初の懸念に対処するために、Cloudflareは以前から<a href="https://www.cloudflare.com/ja-jp/ssl/keyless-ssl/" target="_blank">Keyless SSL</a>と<a href="https://blog.cloudflare.com/introducing-cloudflare-geo-key-manager/">Geo Key Manager</a>を提供することで、プライベートSSL/TLSキー素材がEUから決して出ないように保証してきました。Keyless SSLは、Cloudflareが秘密鍵の素材をまったく所有しないことを保証します。Geo Key Managerは、Keyless SSLを隠れて使用し、鍵が特定の地域から離れることがないように保証します。</p>
+	<p>昨年、私たちは2つ目の懸念に対処するために、<a href="https://blog.cloudflare.com/introducing-regional-services/">地域サービス</a>を導入し、CloudflareがEU域内のHTTPトラフィックのコンテンツのみを解読・検査することを保証しています。つまり、SSL接続はEU域内のみで終了し、レイヤー7のセキュリティとパフォーマンスサービスはすべてEUデータセンターでのみ実行されます。</p>
+	<p>現在、私たちは、お客様が3つ目の、そして最後の懸念に対処し、メタデータをローカルに保てるようにしています。</p>
+	<h3 id="metadata-boundary-"><strong>Metadata Boundaryのしくみ</strong></h3>
+	<p>Customer Metadata Boundaryは、簡単に言えば、顧客を特定できるエンドユーザーのトラフィックのメタデータがEU圏内に留まることを保証するものです。これには、顧客が閲覧するすべてのログと分析が含まれます。</p>
+	<p>なぜ、このようなことができるのでしょうか。お客様を特定できるすべてのメタデータは、当社のエッジの単一サービスを経由して、コアデータセンターの一つに転送されます。</p>
+	<p>あるお客様に対してMetadata Boundaryを有効にすると、当社のエッジは、そのお客様を特定する（つまり、そのお客様のアカウントIDを含む）すべてのログメッセージがEU圏外に送信されないようにします。ログメッセージは、EUにある当社のコアデータセンターにのみ送信され、米国にある当社のコアデータセンターには送信されません。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image2-14.png" class="kg-image" alt="The Metadata Boundary ensures that a customer’s end user traffic metadata stays in the EU"></figure>
+	<h3 id="--1"><strong>今後の展開</strong></h3>
+	<p>現在、当社のData Localisation Suiteは、EU圏のお客様のインバウンドHTTPトラフィックのデータローカリゼーションを支援することに重点を置いています。これには、キャッシュ、ファイアウォール、DDoS攻撃対策、ボット管理の各製品が含まれます。</p>
+	<p>お客様から、より多くの製品、より多くの地域でのデータローカライズを望む声をお聞きしました。これは、Geo Key Managerやリージョナルサービスを含む、すべてのデータローカリゼーション製品をグローバルに作動させることを意味します。また、Cloudflare for TeamsのようなZero Trust製品を含むMetadata Boundaryの拡張にも取り組んでいます。ご期待ください。<br></p>
+</div>

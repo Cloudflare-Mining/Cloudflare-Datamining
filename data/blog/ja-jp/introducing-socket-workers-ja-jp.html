@@ -1,0 +1,97 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/unnamed--1--4.png" class="kg-image" alt="Making connections with TCP and Sockets for Workers"></figure>
+	<p>本日、さらに多くのTCP、UDP、QUIC-ベースのプロトコルをCloudflare Workersでサポートするための、APIおよびインフラストラクチャの開発について発表できることを非常に喜ばしく思います。リリース後、これらの新しい機能を使用すると、WorkerまたはDurable Objectに対する非-HTTPソケット接続を、HTTPおよびWebSocketsを使用するのと同じように簡単に使用することができるようになります。</p>
+	<p>難しい設定をせずに、<a href="https://workers.cloudflare.com/?&amp;_bt=521144407143&amp;_bk=&amp;_bm=b&amp;_bn=g&amp;_bg=123914288844&amp;_placement=&amp;_target=&amp;_loc=1013686&amp;_dv=c&amp;awsearchcpc=1&amp;gclid=Cj0KCQiAsqOMBhDFARIsAFBTN3eXuRcLLiS_c0CtV8uR9xVVQhymoIrK5uHE_yReRLtVkHkekfCWprUaAtoyEALw_wcB&amp;gclsrc=aw.ds" target="_blank">Cloudflare Workers</a>では標準<a href="https://developers.cloudflare.com/workers/runtime-apis/fetch" target="_blank">fetch</a>および<a href="https://developers.cloudflare.com/workers/runtime-apis/websockets" target="_blank">WebSocket API</a>の使用によってHTTPとWebSocket接続を開く機能がサポートされます。Workersで動作させるためにわずかに内部を変更した、1つの<a href="https://blog.cloudflare.com/ja-jp/relational-database-connectors-ja-jp/">例</a>を開発しました。これは市販のドライバ(この例では、Deno-ベースの<a href="https://deno.land/x/postgres@v0.13.0" target="_blank">Postgresクライアントドライバ</a>)を使用して、セキュアな<a href="https://www.cloudflare.com/ja-jp/products/tunnel/" target="_blank">Cloudflare Tunnel</a>全体でWebSocketを介しリモートPostgresサーバーと通信します。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-typescript">import { Client } from './driver/postgres/postgres'
+
+export default {
+  async fetch(request: Request, env, ctx: ExecutionContext) {
+    try {
+      const client = new Client({
+        user: 'postgres',
+        database: 'postgres',
+        hostname: 'https://db.example.com',
+        password: '',
+        port: 5432,
+      })
+      await client.connect()
+      const result = await client.queryArray('SELECT * FROM users WHERE uuid=1;')
+      ctx.waitUntil(client.end())
+      return new Response(JSON.stringify(result.rows[0]))
+    } catch (e) {
+      return new Response((e as Error).message)
+    }
+  },
+}
+
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>この例は、Deno-固有のTCPソケットAPIを使用するPostgresクライアントドライバのビットを、標準fetceおよびWebSocket APIに置換することによって動作します。次に、Postgresサーバーに隣接して実行されるリモートCloudflare TunnelデーモンとのWebSocket接続を確立し、事実上のTCP-over-WebSocketsを確立しました。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/11/image1-17.png" class="kg-image" alt="Connecting to a backend data center via a Cloudflare Tunnel"></figure>
+	<p>この例を作成して (Cloudflare Workersのランタイムを全く変更せずに) Postgresサーバーと効果的かつ効率的に通信できたという事実は印象的なことですが、そのアプローチには制限があります。1つ目の制限は、そのソリューションでは、WebSocketトンネルを確立して維持するために追加のインフラストラクチャ (この場合は、Postgresサーバーに隣接して実行されるCloudflare Tunnelデーモンのインスタンス) が必要なことです。そのデーモンをお客様に提供できることは確かに喜ばしいことですが、そのコンポーネントを全く必要としないならもっと良いでしょう。2つ目は、自身がTCP上でHTTPを介してトンネリングする、WebSockets上でのTCPのトンネリングは、あまり最適とは言えないことです。動作はするものの、もっと良い方法があります。</p>
+	<h3 id="cloudflare-workers-"><strong>Cloudflare Workersから接続する</strong></h3>
+	<p>現在、JavaScriptにはソケット接続のための標準APIがありません。それを変えたいと思います。</p>
+	<p>Node.jsを使用したことがある方は、<a href="https://nodejs.org/dist/latest-v17.x/docs/api/net.html#class-netsocket" target="_blank">net.Socket</a>と<a href="https://nodejs.org/dist/latest-v17.x/docs/api/tls.html#class-tlstlssocket" target="_blank">net.TLSSocket</a>オブジェクトについて良く知っているでしょう。Denoを使用しているのであれば最近、<a href="https://doc.deno.land/builtin/stable#Deno.connect" target="_blank">Deno.connect()</a>と<a href="https://doc.deno.land/builtin/stable#Deno.connectTls" target="_blank">Deno.connectTLS()</a> APIが導入されたことについてご存じかも知れません。これらのAPIを見るとすぐにわかりますが、全く同じことを実行しているにも関わらず、それらは互いに大きく異なっています。</p>
+	<p>Workers内からソケット接続を開いて使用する機能を追加することに決めたとき、私たちの総意として他のプラットフォームで提供されるAPIと異なる、他の非標準のプラットフォーム固有のAPIをそれ以上開発することには全く興味がありませんでした。そのため、開発するランタイムに関係なく動作する、新しい(そして最終的には標準化される) APIと連携するため、ソケット機能を必要とするすべてのJavaScriptランタイムにまで範囲を広げます。</p>
+	<p>次のものは、単純なTCPクライアント接続から開いて読み取ることを念頭に置いた荒削りの例です。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">const socket = new Socket({
+  remote: { address: '123.123.123.123', port: 1234 },
+})
+for await (const chunk of socket.readable)
+  console.log(chunk)
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>または、この例では、UDPを使用して単純な「hello world」パケットを送信します。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">const socket = new Socket({
+  type: 'udp',
+  remote: { address: '123.123.123.123', port: 1234 },
+});
+const enc = new TextEncoder();
+const writer = socket.writable.getWriter();
+await writer.write(enc.encode('hello world'));
+await writer.close();
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>APIは一般的に、TLSの有無にかかわらず、TCP、UDP、QUICに対して、クライアントおよびサーバー側の両方で十分動作するように設計されており、単一のJavaScriptランタイム固有のどのメカニズムにも依存しません。それは<a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget" target="_blank">EventTarget</a>、<a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream" target="_blank">ReadableStream</a>、<a href="https://developer.mozilla.org/en-US/docs/Web/API/WritableStream" target="_blank">WritableStream</a>、<a href="https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal" target="_blank">AbortSignal</a>、<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises" target="_blank">promises</a>など、既存の広くサポートされるWebプラットフォーム標準を基準にしています。既にfetch() API、サービスWorkers、およびasync/awitを使用するpromisesに精通した開発者に、良く知られたものとなるでしょう。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>interface Socket : EventTarget {
+  constructor(object SocketInit);
+
+  Promise&lt;undefined&gt; update(object SocketInit);
+
+  readonly attribute ReadableStream readable;
+  readonly attribute WritableStream writable;
+  
+  readonly attribute Promise&lt;undefined&gt; ready;
+  readonly attribute Promise&lt;undefined&gt; closed;
+
+  Promise&lt;undefined&gt; abort(optional any reason);
+  readonly attribute AbortSignal signal;
+ 
+  readonly attribute SocketStats stats;
+  readonly attribute SocketInfo info;
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>これは現時点では単なる提案に過ぎず、機能がWorkersで提供される頃には詳細が上記の例から変更される可能性があります。開発者がコードを実行する場所に関係なく構築するための一貫した基盤を持つことができるように、他のプラットフォームがこの新しいAPIの開発とサポートの取り組みに加わることを願っています。</p>
+	<h3 id="socket-workers-"><strong>Socket Workersの導入</strong></h3>
+	<p>ソケット<em>クライアント</em>接続の機能についてはまだこのストーリーの中間地点にすぎません。</p>
+	<p>最初にこれらの機能を追加することについて話し始めたとき、以下のような明確な質問が寄せられました。非HTTPプロトコルを使用したWorkersへの接続はどうですか? Workerをいくつかの他のバックエンドデータベースに接続する機能を持つようにするだけでなく、データベース全体をedge上に実装する場合は、Workers内部に、それに接続する非HTTPクライアントを配置することはできますか? さらに言えば、SMTPサーバーをWorkers内に実装することはできますか? または、MQTTメッセージキューはどうですか? または完全なVoIPプラットフォームはどうですか? またはパケットフィルタ、変換、インスペクタ、またはプロトコルトランスコーダの実装はどうですか?</p>
+	<p>WorkersはHTTPとWebSocketsだけに留めておくにはあまりにも強力なので、まもなくSocket Workersを導入します。これは、HTTPを使用せず、未加工のTCP、UDP、またはQUICプロトコルを直接使用して接続することができるWorkersです。</p>
+	<p>この新しいWorkers機能はどのようなものですか?多くの詳細はまだ未定ですが、その発想は現在"fetch"イベントが動作するのとほぼ同じ方法で"connect"イベントを理解し応答するWorkersスクリプトをデプロイすることです。重要なこととして、これは以下のようにクライアント接続に対して開発されたものと同じ共通ソケットAPI上に基づいて構築されます。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">addEventListener('connect', (event) =&gt; {
+  const enc = new TextEncoder();
+  const writer = event.socket.writable.getWriter();
+  writer.write(enc.encode('Hello World'));
+  writer.close();
+});
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h3 id="-"><strong>次の手順(および実施要請)</strong></h3>
+	<p>JavaScriptおよびSocket Workers用の新しいソケットAPIの開発は活発に進められており、まずWorkersがバックエンド上のデータベースにさらに効率的な方法で接続できるようにすることに焦点が当てられています — ユーザーは<a href="https://www.cloudflare.com/ja-jp/database-connectors-early-access/" target="_blank">こちら</a>からサインアップしてDatabase ConnectorsとSocket Workersへのアクセスの待機リストに参加することができます。初期からのユーザー、および技術パートナーと共に作業して、これらの新しい機能を開発、修正、およびテストできることを嬉しく思います。</p>
+	<p>リリース後は、Socket Workersによって、Cloudflareネットワークエッジにデプロイ可能なタイプのインテリジェントな分散アプリケーションの門が広く開かれることを期待しており、あなたがそれを使って作成するものを見ることを楽しみにしています。<br></p>
+</div>

@@ -1,0 +1,23 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image1-70.png" class="kg-image" alt="Managing Clouds - Cloudflare CASB and our not so secret plan for what’s next"></figure>
+	<p>先月、Vectrix社を買収したことにより登場した、Cloudflareの新しいAPI駆動型の<a href="https://blog.cloudflare.com/cloudflare-zero-trust-casb/">Cloud Access Security Broker（CASB）</a>を紹介しました。簡単にまとめると、CloudflareのCASBは、IT部門とセキュリティチームがSaaSアプリケーションのセキュリティ上の問題を検出することを支援するものです。当社ではSaaSアプリケーションのデータとユーザーの両方を調査して、不正なユーザーアクセスやファイルの暴露から、設定ミスやシャドーITに至るまで、さまざまな問題をチームに警告します。</p>
+	<p>Cloudflare Zero TrustにCASB機能を取り入れることを発表してから、2つのアップデートがありましたのでご紹介します。まず、Cloudflareのお客様から、「CASBの導入が待ちきれない」、「もっと細部まで使ってみたい」という声をいただいています。本日は、そのフィードバックに基づき、次に向けた構築の概要を説明し、お客様にご期待いただける予告内容をお見せします。次に、現在ベータ版への登録を開始しており、順番待ちリストから招待された新しいユーザーが利用できるようになる内容を順を追って説明していきます。</p>
+	<h2 id="cloudflare-casb-">Cloudflare CASBの次の展開は？</h2>
+	<p>CloudflareのAPI駆動型CASBの展望は、IT部門やセキュリティ担当者に、SaaSツールのフリート全体のデータとユーザーのセキュリティを保護する、使いやすいワンストップショップを提供することです。当社の目標は、IT部門やセキュリティの管理者が、初めて<a href="https://dash.cloudflare.com/sign-up/teams" target="_blank">Zero Trustアカウントを作成</a>してから数分で、最も重要なものを保護できるようにすることです。</p>
+	<p>しかし、このような即時の可視化レベルを超えて、IT部門やセキュリティ管理者が発見した問題は依然として、回復し、理解し、解決するための時間が必要であることを知っています。私たちは、これらの課題に対応するため、今後数カ月の間にCASBのコア・プラットフォームに3つの新機能を取り入れます。</p>
+	<h3 id="-">新しい連携（今後さらに追加予定）</h3>
+	<p>まず、連携とは何でしょうか。連携とは、セキュリティスキャンや管理を行うための権限を与えたり、SaaSアプリケーションを（APIを介して）CASBに接続したりする手法のことを呼びます。一般的に連携はOAuth2.0のフローに従って行われますが、これはサードパーティのSaaSアプリケーションによって異なります。当社の目標に沿って、連携の設定のフローが、数分でいつでも簡単にできるようにします。</p>
+	<p>多くのセキュリティ対策と同様に、まず最も重要な資産を保護することが優先されます。Google WorkspaceとGitHubとの連携機能は、ベータ版（<a href="https://www.cloudflare.com/products/zero-trust/lp/casb-beta/" target="_blank">リクエストアクセスはこちら</a>）で提供されます。その後、Zoom、Slack、Oktaとの連携機能を提供し、今年後半にはMicrosoft 365やSalesforceなどのサービスについても追加を予定しています。次にどのアプリケーションとの連携を実現するかについては、お客様との親密に接することにより決定していきます。</p>
+	<h3 id="saas-">SaaS型の資産管理</h3>
+	<p>連携に加えて、ユーザー、データ、フォルダー、リポジトリ、会議、カレンダー、ファイル、設定、記録などのさまざまな資産（いわゆる「デジタル名詞」）をサービス間で管理することは、控えめに言っても厄介です。誰が何にアクセスしているか、どのファイルを誰と共有したかを追跡するためにスプレッドシートを管理するのは困難です。</p>
+	<p>これは効率が悪く、人為的なミスが発生しやすいやり方です。CASBのSaaS資産管理なら、IT部門とセキュリティチームが単一のダッシュボードからすべてのデータ設定とそのデータに関するユーザーの行動を閲覧することができます。「この6つのサービスで、あるユーザーのアカウントを無効にしただろうか」といった質問に対して各サービスにログインして個別に対応する代わりに、すばやく答えられるようになります。</p>
+	<h3 id="--1">改善ガイド＋自動ワークフロー</h3>
+	<p>検出、防止、修正。SaaSの詳細な改善ガイドを使用することで、IT管理者は適切なチームを割り当て、問題に対処することができます。チームが経緯の中で知るべきことを把握しておくことで、問題の再発防止をシームレスに行うことができます。すぐに行動を起こすべき状況では、自動化されたSaaSワークフローを使用して、ワンクリックでSaaSのセキュリティ上の問題を解決することができます。OneDriveのファイルから共有権限を削除する必要がありますか？改善ボタンがあれば、いつでも、どこからでも対応できます。</p>
+	<h3 id="cloudflare-casb">Cloudflareゲートウェイ＋CASB</h3>
+	<p>Zero Trustプラットフォーム全体で製品を組み合わせることは、複雑な問題を一つのシームレスな体験で解決することを意味します。<a href="https://www.cloudflare.com/products/zero-trust/gateway/" target="_blank">Gateway</a>とCASBの力を始めとして、お客様は<a href="https://blog.cloudflare.com/introducing-shadow-it-discovery/">Shadow IT</a>に即座に対処することができるようになります。CASBとの統合により、Gatewayのシャドー ITレポートから検出された不正なSaaSアプリケーションをわずか数回のクリックで、荒くれ者から公認済の安全なアプリケーションに入れ替えることができるのです。これはほんの一例ですが、私たちはZero Trustプラットフォームで解決できる多くのソリューションに興奮しています。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image2-63.png" class="kg-image"></figure>
+	<h2 id="cloudflare-casb--1">Cloudflare CASBベータ版の公開と期待されること</h2>
+	<p>CASBベータ版では、Google Workspaceのような人気の高い製品との連携機能を初日から導入することができます。また、製品チームに直接連絡することができ、次に何をするかを決めるお手伝いをすることもできます。私たちは、早期使用された多くのお客様と密接に連携し、お客様にとってどの製品との連携や機能が最も重要であるかを調整することを楽しみにしています。</p>
+	<h2 id="cloudflare-casb--2">Cloudflare CASBベータ版を今日から始める</h2>
+	<p>現在、Cloudflareでは、帯域外のCASB製品をZero Trustプラットフォームへシームレスに統合するための取り組みを行っています。来月初旬にベータ版の第一弾の招待状の発送を予定しています – <a href="https://www.cloudflare.com/products/zero-trust/lp/casb-beta/" target="_blank">リクエストはこちらから</a>。<br>私たちには、CASB製品でできること、できるようになることについて、いくつかの大きなアイデアがあります。この記事では、これから起こるエキサイティングなことをいくつかご紹介しています。CloudflareのZero Trustプラットフォームを今すぐ始めたい方は、<a href="https://dash.cloudflare.com/sign-up/teams" target="_blank">こちらからご登録ください</a>。</p>
+</div>

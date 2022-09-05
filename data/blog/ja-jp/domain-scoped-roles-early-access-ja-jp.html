@@ -1,0 +1,212 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image3-30.png" class="kg-image"></figure>
+	<p>本日、Cloudflareは、ドメイン群へのユーザーアクセスのスコープ設定を可能にすることで、Enterpriseアカウントをお持ちのお客様へチCloudflareに対するチームのアクセス管理を容易にします。ユーザーのアクセス権を必要な分にとどめることは非常に重要であり、ドメインスコープ指定ロールは大きな前進をもたらします。さらに、ドメイングループの導入により、アカウント所有者はユーザーにドメインへのアクセス権を個別ではなくグループ単位で付与することができます。これらのグループにドメインを追加または削除することができ、グループへのアクセス権を持つ人のアクセスは自動的に更新されます。これにより、ユーザーアクセス管理の手間が軽減されます。</p>
+	<p>ドメインスコープ指定ロールの最も一般的な使い方の1つは、一部のメンバーに限定して本番用ドメインへのアクセス権を開放し、その他のメンバーに開発用ドメインとステージング用のドメインを開放することです。この方法では、アクセス権が与えられていない限り、誰かが本番用ドメインに変更を加えることはできません。</p>
+	<h3 id="-">ドメインスコープ指定ロールの使い方</h3>
+	<p>企業のお客様は、CSMにご相談の上、ご登録をお願いします。なお、アカウントメンバーシップを変更するには、スーパーアドミニストレーターの権限が必要です。</p>
+	<p>ベータ版の利用が可能になった後の利用開始方法はこちらから：</p>
+	<!--kg-card-begin: markdown-->
+	<ul>
+		<li><a href="https://dash.cloudflare.com" target="_blank">dash.cloudflare.com</a>にログインしてアカウントを選択し、<a href="https://dash.cloudflare.com/?account=members" target="_blank">メンバーページ</a>に移動してください。
+			<ul>
+				<li>ここから、ドメインスコープ指定ロールを持つ新しいメンバーを招待するか、既存のユーザーの権限を変更することができます。今回は、新規ユーザーを招待することにします。</li>
+			</ul>
+		</li>
+	</ul>
+	<!--kg-card-end: markdown-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image1-72.png" class="kg-image"></figure>
+	<!--kg-card-begin: markdown-->
+	<ul>
+		<li>新メンバーを招待する場合、提供するものは3つあります：
+			<ul>
+				<li>どのユーザーを招待するか。</li>
+				<li>どのリソースにアクセスできるようになるかのスコープ。
+					<ul>
+						<li>「すべてのドメイン」を選択すると、従来のロールを選択することができます。</li>
+					</ul>
+				</li>
+				<li>どのような権限を付与するかを決定するロール（複数可）。</li>
+			</ul>
+		</li>
+	</ul>
+	<!--kg-card-end: markdown-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/1a.png" class="kg-image" alt="Membership invitation page with users, scope, and role selection."></figure>
+	<ul></ul>
+	<!--kg-card-begin: markdown-->
+	<ul>
+		<li>招待を送る前に、ユーザーやスコープ、ロールを確認することができます。</li>
+	</ul>
+	<!--kg-card-end: markdown-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/1b.png" class="kg-image" alt="Membership invite confirmation screen."></figure>
+	<h3 id="--1">ドメイングループ</h3>
+	<p>アカウント所有者は、ユーザーごとに手動で包含リストや除外リストを作成するだけでなく、ドメイングループを作成して、1人または複数のユーザーをドメインのグループに許可することもできます。ドメイングループは、メンバー招待フローから、またはアカウント設定 -&gt; <a href="https://dash.cloudflare.com/?account=configurations/lists" target="_blank">リスト</a>から直接作成できます。ドメイングループを作成する際、ユーザーは含めるドメインを選択し、その時点から、アカウントにユーザーを招待する際にそのグループを使用することができます。</p>
+	<h4 id="--2">ドメイングループ作成画面</h4>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image4-13.png" class="kg-image" alt="Domain Group creation screen showing two domains selected."></figure>
+	<h4 id="--3">メンバー招待時のドメイングループ選択</h4>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image6-4.png" class="kg-image" alt="Member invite screen showing the scope of a user’s access being limited to a domain group named, “Test Domains”."></figure>
+	<h3 id="bach-">Bachの紹介</h3>
+	<p>ドメインスコープ指定ロールが可能になったのは、Bachと呼ばれる新しい権限システムがあるからです。Bachは、Cloudflareのコントロールプレーンに対する承認を定義するための、ポリシーベースのシステムを提供します。承認とは、誰かがシステムで何ができるかを定義するものです。BachはこれまでAPI Tokensを支えてきましたが、今後はすべての承認にBachが使われるようになります。これにより、お客様はより詳細な権限とリソースのスコープ指定を定義することができるようになります。リソースとは、アカウント、ゾーン、ワーカー環境、DNSレコードなど、ユーザーが操作するあらゆるオブジェクトのことです。以前のCloudflareのRBACシステムは、各ロールがアカウント全体に適用される広範な権限を定義するロールのセットを割り当てることに依存していましたが、Bachのポリシーでは、リソースのセットにスコープすることができる、より深い権限付与を可能にします。</p>
+	<p>従来のシステムと、Bachがサポートするものを比較してみましょう。一般的に、ユーザーの権限は、割り当てられた「ロール」によって定義されます。これには、例えば「スーパーアドミニストレーター」、「アドミニストレーター」、「Cloudflare for Teams」および「Cloudflare Workers Admin」などが挙げられます。従来のシステムでは、これらはそれぞれ「workers:read」、「workers:edit」または「zones:edit」といった明示的で単純な権限のセットにマッピングされています。Cloudflare APIやCloudflareダッシュボードからリクエストがあると、CloudflareのAPI Gatewayは、リクエストされたエンドポイントに対して、アクターがそのアクションを実行するのに適切な権限を持っているかどうかを確認します。ゾーン設定を変更するためには、アクターは、多くのロールのうちの1つから付与できる「zone:edit」権限を持つ必要があります。以下は、従来のシステムで「DNS」権限のみを持つユーザーに付与されるものです：</p>
+	<h4 id="-dns-">従来のDNSのユーザーロール権限</h4>
+	<!--kg-card-begin: markdown-->
+	<table>
+		<thead>
+			<tr>
+				<th>権限</th>
+				<th>編集</th>
+				<th>読み取り</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>DNSレコード</td>
+				<td>✔</td>
+				<td>✔</td>
+			</tr>
+			<tr>
+				<td>法務関連</td>
+				<td></td>
+				<td>✔</td>
+			</tr>
+			<tr>
+				<td>アカウント</td>
+				<td></td>
+				<td>✔</td>
+			</tr>
+			<tr>
+				<td>サブスクリプション</td>
+				<td></td>
+				<td>✔</td>
+			</tr>
+			<tr>
+				<td>ゾーン</td>
+				<td></td>
+				<td>✔</td>
+			</tr>
+			<tr>
+				<td>ゾーン設定</td>
+				<td></td>
+				<td>✔</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<p>分かりやすい反面、多くの欠点がありました。まず、リソースのセットであれ、リソースの属性であれ、権限が適用されるリソースの制限を定義できないことです。次に、特定の「リソース」に対する権限は、読み取りまたは編集のみで、編集には作成と削除が含まれます。これでは、例えば、編集を許可しながら削除を制限するというような、存在し得るニーズを完全に把握することはできません。</p>
+	<p>Bachでは、承認のためのきめ細かい権限を定義する機能が拡張されています。前述の「DNS」メンバーのアクセス権を定義するポリシーの例は、次のようになります：</p>
+	<h3 id="bach-dns-">Bach DNSユーザーロールポリシー</h3>
+	<p>（読みやすいように若干の修正を加えています）</p>
+	<pre><code class="language-yaml">#Legacy DNS Role - applies to all zones
+  policies:
+  - id: 186f95f3bda1443c986aeb78b05eb60b
+    permission_groups:
+    - id: 49ce85367bae433b9f0717ed4fea5c74
+      name: DNS
+      meta:
+        description: Can edit DNS records.
+        editable: 'false'
+        label: dns_admin
+        scopes: com.cloudflare.api.account
+      permissions:
+      - key: com.cloudflare.registrar.domain.read
+      - key: com.cloudflare.registrar.domain.list
+      - key: com.cloudflare.registrar.contact.read
+      - key: com.cloudflare.registrar.contact.list
+      - key: com.cloudflare.api.account.secondary-dns.update
+      - key: com.cloudflare.api.account.secondary-dns.read
+      - key: com.cloudflare.api.account.secondary-dns.delete
+      - key: com.cloudflare.api.account.secondary-dns.create
+      - key: com.cloudflare.api.account.zone.secondary-dns.update
+      - key: com.cloudflare.api.account.zone.secondary-dns.read
+      - key: com.cloudflare.api.account.zone.secondary-dns.delete
+      - key: com.cloudflare.api.account.zone.secondary-dns.create
+      - key: com.cloudflare.api.account.notification.*
+      - key: com.cloudflare.api.account.custom-ns.update
+      - key: com.cloudflare.api.account.custom-ns.list
+      - key: com.cloudflare.api.account.custom-ns.*
+      - key: com.cloudflare.edge.spectrum.app.list
+      - key: com.cloudflare.edge.spectrum.app.read
+      - key: com.cloudflare.api.account.zone.custom-page.read
+      - key: com.cloudflare.api.account.zone.custom-page.list
+      - key: com.cloudflare.api.account.zone.setting.read
+      - key: com.cloudflare.api.account.zone.setting.list
+      - key: com.cloudflare.api.account.zone.dnssec.update
+      - key: com.cloudflare.api.account.zone.dnssec.read
+      - key: com.cloudflare.api.account.dns-firewall.cluster.delete
+      - key: com.cloudflare.api.account.dns-firewall.cluster.update
+      - key: com.cloudflare.api.account.dns-firewall.cluster.read
+      - key: com.cloudflare.api.account.dns-firewall.cluster.create
+      - key: com.cloudflare.api.account.dns-firewall.cluster.list
+      - key: com.cloudflare.api.account.zone.dns-record.delete
+      - key: com.cloudflare.api.account.zone.dns-record.update
+      - key: com.cloudflare.api.account.zone.dns-record.read
+      - key: com.cloudflare.api.account.zone.dns-record.create
+      - key: com.cloudflare.api.account.zone.dns-record.list
+      - key: com.cloudflare.api.account.zone.page-rule.read
+      - key: com.cloudflare.api.account.zone.page-rule.list
+      - key: com.cloudflare.api.account.zone.railgun-connection.read
+      - key: com.cloudflare.api.account.zone.railgun-connection.list
+      - key: com.cloudflare.api.account.zone.subscription.read
+      - key: com.cloudflare.api.account.zone.aml.read
+      - key: com.cloudflare.api.account.zone.read
+      - key: com.cloudflare.api.account.zone.list
+      - key: com.cloudflare.api.account.audit-log.read
+      - key: com.cloudflare.api.account.custom-page.read
+      - key: com.cloudflare.api.account.custom-page.list
+      - key: com.cloudflare.api.account.railgun.read
+      - key: com.cloudflare.api.account.railgun.list
+      - key: com.cloudflare.api.account.dpa.read
+      - key: com.cloudflare.api.account.subscription.read
+      - key: com.cloudflare.api.account.subscription.list
+      - key: com.cloudflare.api.account.read
+      - key: com.cloudflare.api.account.list
+    resource_groups:
+    - id: 2fe938e0a5824128bdc8c42f9339b127
+      name: com.cloudflare.api.account.a67e14daa5f8dceeb91fe5449ba496eb
+      meta:
+        editable: 'false'
+      scope:
+        key: com.cloudflare.api.account.a67e14daa5f8dceeb91fe5449ba496eb
+        objects:
+        - key: "*"
+    access: allow
+</code></pre>
+	<p>定義される権限の粒度が高くなっているのがわかると思います。どちらの場合も、ユーザーは同じアクションを実行できますが、粒度が高いということは、何ができるかをより明確にしているということです。ここではDNSレコード（com.cloudflare.api.account.zone.dns-record以下）に対して、作成、読み取り、更新、削除およびリストの権限が明示的に設定されていることがわかります。リソースグループセクションでは、スコープセクションがアカウントを定義していることがわかります。そのアカウントにあるドメインのようなオブジェクトは、「objects」の「*」の値にマッチします。これは、これらの権限がアカウント全体に適用されることを意味します。では、このユーザーの権限を単一のドメインにスコープされるように変更し、ポリシーがどのように変更されるかを見てみましょう。</p>
+	<h3 id="-bach-dns-">ドメインスコープ指定ポリシーのあるBach DNSユーザーロール</h3>
+	<p>(読みやすいように若干の修正を加えています）</p>
+	<pre><code class="language-yaml"># Zone Scoped DNS role - scoped to 1 zone
+policies:
+- id: 80b25dd735b040708155c85d0ed8a508
+  permission_groups:
+  - id: 132c52e7e6654b999c183cfcbafd37d7
+    name: Zone DNS
+    meta:
+      description: Grants access to edit DNS settings for zones in an account.
+      editable: 'false'
+      label: zone_dns_admin
+      scopes: com.cloudflare.api.account.zone
+    permissions:
+    - key: com.cloudflare.api.account.zone.secondary-dns.*
+    - key: com.cloudflare.api.account.zone.dnssec.*
+    - key: com.cloudflare.api.account.zone.dns-record.*
+    - key: com.cloudflare.api.account.zone.analytics.dns-report.*
+    - key: com.cloudflare.api.account.zone.analytics.dns-bytime.*
+    - key: com.cloudflare.api.account.zone.setting.read
+    - key: com.cloudflare.api.account.zone.setting.list
+    - key: com.cloudflare.api.account.zone.rate-plan.read
+    - key: com.cloudflare.api.account.zone.subscription.read
+    - key: com.cloudflare.api.account.zone.read
+    - key: com.cloudflare.api.account.subscription.read
+    - key: com.cloudflare.api.account.subscription.list
+    - key: com.cloudflare.api.account.read
+  resource_groups:
+  - scope:
+      key: com.cloudflare.api.account.a67e14daa5f8dceeb91fe5449ba496eb
+      objects:
+      - key: com.cloudflare.api.account.zone.b1fbb152bbde3bd28919a7f4bdca841f
+  access: allow
+</code></pre>
+	<p>ユーザーの権限を1つの明示的なゾーンのみに限定すると、主に2つの違いが見られます。まず、権限が大幅に削減されます。これは、従来のアカウントをスコープしたロールが付与する、多くのアカウントレベルのリソースの読み取りや一覧表示へのアクセスをユーザーに与えないためです。付与されるアカウントレベルの権限は、<em>account.read</em>、<em>subscriptions.read</em>および<em>subscriptions.list</em>だけです。これらの権限は、ユーザーがダッシュボードを使用できるようにするために必要です。ダッシュボードでアカウントを表示する場合、表示されるアカウントレベルの製品はドメインのみです。Cloudflare WorkersやZero Trustなど、その他の製品は非表示になります。</p>
+	<p>次に、リソースグループのスコープセクションで、ゾーンについて明示的に言及されているのが見受けられます（行X： &nbsp;<code>com.cloudflare.api.account.zone.b1fbb152bbde3bd28919a7f4bdca841f</code>）。これは、ポリシーに記載されたゾーン権限が、その特定のゾーンにのみ適用されることを意味します。そのゾーンの他の機能にアクセスしようとしたり、他のゾーンのDNSを変更しようとしたりすると、Cloudflareによって拒否されます。</p>
+	<h2 id="--4">次は何を？</h2>
+	<p>企業のお客様で、ドメインスコープ指定ロールの使用の開始に興味がある場合は、CSMに連絡して、早期アクセス期間を有効にしてください。今回の発表は、Coudflareの規模に合わせて構築された承認システムであるBachへの移行における重要なマイルストーンとなります。これにより、将来的には同じ機能をより多くの製品に拡大し、Cloudflareのすべてのサービスにおいて、お客様がチームのアクセスをよりコントロールしやすい承認システムを構築することができます。まだ始まったばかりですので、ご期待ください！</p>
+</div>

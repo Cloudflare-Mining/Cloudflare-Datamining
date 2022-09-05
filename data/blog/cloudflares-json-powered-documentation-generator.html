@@ -1,0 +1,134 @@
+<div class="post-content lh-copy gray1">
+	<!--kg-card-begin: markdown-->
+	<p>Everything that it's possible to do in the CloudFlare Dashboard is also possible through our <a href="https://api.cloudflare.com/" target="_blank">RESTful API</a>. We use the same API to power the dashboard itself.</p>
+	<p>In order to keep track of all our endpoints, we use a rich notation called <a href="https://json-schema.org/" target="_blank">JSON Hyper-Schema</a>. These schemas are used to generate the complete HTML documentation that you can see at <a href="https://api.cloudflare.com" target="_blank">https://api.cloudflare.com</a>. Today, we want to share a set of tools that we use in this process.</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2016/08/6958818812_8331f1d4bb_z.jpg" alt=""><br>
+		<small><a href="https://creativecommons.org/licenses/by/2.0/" target="_blank">CC BY 2.0</a> <a href="https://www.flickr.com/photos/bevrichardmartin/6958818812/in/photolist-bAVLoG-dZkRa-6oG7DU-aAeaJK-6dpnNT-9zZaWW-aB2QwA-8itsnP-3mCTJi-5e7V72-6UJiQ8-dZkDA-dSLMm6-urUYS-9kzL5y-ds3U9a-dZkyv-azQKum-dZkQe-9URudj-4Anhwd-oWfUsx-dZkKJ-93ifzr-am61PB-azK1kb-oCxxwy-azKje8-6wQeTG-avwMcD-6DisSN-zovQbm-8ZxtNc-dZkCB-dZkH3-8qkKDo-9kqMrP-dZkLt-AQqNy-9A2a8R-5sr3DS-8LiD8F-8ZAxUj-dZkB2-bubYjp-5vGe5m-7XQ1wY-DoA4q-4bbw9s-aQsVjr" target="_blank">image</a> by <a href="https://www.flickr.com/photos/bevrichardmartin/" target="_blank">Richard Martin</a></small>
+	</p>
+	<h3 id="jsonschema">JSON Schema</h3>
+	<p>JSON Schema is a powerful way to describe your JSON data format. It provides <strong>complete structural validation</strong> and can be used for things like validation of incoming requests. JSON Hyper-Schema further extends this format with links and gives you a way describe your API.</p>
+	<h4 id="jsonschemaexample">JSON Schema Example</h4>
+	<pre><code class="language-json">{
+  "type": "object",
+  "properties": {
+    "name": { "type": "string" },
+    "age": { "type": "number" },
+    "address": {
+      "type": "object",
+      "properties": {
+        "street_address": { "type": "string" },
+        "city": { "type": "string" },
+        "state": { "type": "string" },
+        "country": { "type" : "string" }
+      }
+    }
+  }
+}
+</code></pre>
+	<h4 id="matchingjson">Matching JSON</h4>
+	<pre><code class="language-json">{
+  "name": "John Doe",
+  "age": 45,
+  "address": {
+    "street_address": "12433 State St NW",
+    "city": "Atlanta",
+    "state": "Georgia",
+    "country": "United States"
+  }
+}
+</code></pre>
+	<p>JSON Schema supports all simple data types. It also defines some special meta properties including <code>title</code>, <code>description</code>, <code>default</code>, <code>enum</code>, <code>id</code>, <code>$ref</code>, <code>$schema</code>, <code>allOf</code>, <code>anyOf</code>, <code>oneOf</code>, and more. The most powerful construct is <code>$ref</code>. It provides similar functionality to hypertext links. You can reference external schemas (external reference) or a fragment inside the current schema (internal reference). This way you can easily compose and combine multiple schemas together without repeating yourself.</p>
+	<p>JSON Hyper-Schema introduces another property called <strong>links</strong> where you define your API links, methods, request and response formats, etc. The best way to learn more about JSON Schemas is to visit <a href="https://spacetelescope.github.io/understanding-json-schema/" target="_blank">Understanding JSON Schema</a>. You can also visit the official <a href="https://json-schema.org/" target="_blank">specification website</a> or <a href="https://github.com/json-schema/json-schema/wiki" target="_blank">wiki</a>. If you want to jump straight into examples, try <a href="https://github.com/cloudflare/doca/tree/master/example" target="_blank">this</a>.</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2016/08/6825340663_f67969a7aa_z.jpg" alt=""><br>
+		<small><a href="https://creativecommons.org/licenses/by/2.0/" target="_blank">CC BY 2.0</a> <a href="https://www.flickr.com/photos/twalmsley/6825340663/in/photolist-bp8DZi-9pvEMm-fnCNLh-6t59b-aiJwYD-76pUCy-76pUcm-76pPCC-bkAcgF-9mrgnw-gG1f-6q4NgW-9mrgw7-ta4a-52Yp1-7Z7Z56-8mM1qQ-5pJv9j-6bpLQw-8qaRq-dZXYpi-5nPGJe-8UqDp-8ZSb3r-4n8Lvx-47d3Bj-8qaR4-KCEiz-47d3xA-6fpSGM-478Y7R-a7siMj-7U6zet-478Y8T-7Y3UXm-478Y4D-o5vmz-47d3yG-47d3cA-ofkBv8-47d3D7-9rPdZg-4BvPB5-SbdQQ-6SVtrJ-478XYZ-qVHyFt-4dvxiv-7W2Uo-6BSdd3" target="_blank">image</a> by <a href="https://www.flickr.com/photos/twalmsley/" target="_blank">Tony Walmsley</a></small>
+	</p>
+	<h3 id="generatingdocumentationtools">Generating Documentation: Tools</h3>
+	<p>We already have an open source library that can generate complete HTML documentation from JSON Schema files and <a href="http://handlebarsjs.com/" target="_blank">Handlebars.js</a> templates. It's called <a href="https://github.com/cloudflare/json-schema-docs-generator" target="_blank">JSON Schema Docs Generator (JSDC)</a>. However, it has some drawbacks that make it hard to use for other teams:</p>
+	<ul>
+		<li>Complicated configuration</li>
+		<li>It's necessary to rebuild everything with every change (slow)</li>
+		<li>Templates cannot have their own dependencies</li>
+		<li>All additional scripting must be in a different place</li>
+		<li>It is hard to further customize it (splitting into sections, pages)</li>
+	</ul>
+	<p>We wanted something more modular and extensible that addresses the above issues, while still getting ready-to-go output just with a few commands. So, we created a toolchain based on JSDC and modern JavaScript libraries. This article is not just a description for how to use these tools, but also an explanation of our design decisions. <strong>It is described in a bottom-up manner.</strong> You can skip to the bottom if you are not interested in the technical discussion and just want to get started using the tools.</p>
+	<h4 id="jsonschemaloader"><a href="https://github.com/cloudflare/json-schema-loader" target="_blank">json-schema-loader</a></h4>
+	<p>JSON Schema files need to be preprocessed first. <strong>The first thing we have to do is to resolve their references (<code>$ref</code>).</strong> This can be quite a complex task since every schema can have multiple references, some of which are external (referencing even more schemas). Also, when we make a change, we want to only resolve schemas that need to be resolved. We decided to use <a href="https://webpack.github.io/" target="_blank">Webpack</a> for this task because a webpack loader has some great properties:</p>
+	<ul>
+		<li>It's a simple function that transforms input into output</li>
+		<li>It can <strong>maintain and track additional file dependencies</strong></li>
+		<li>It can cache the output</li>
+		<li>It can be chained</li>
+		<li>Webpack watches all changes in required modules and their dependencies</li>
+	</ul>
+	<p>Our loader uses the 3rd party <a href="https://github.com/BigstickCarpet/json-schema-ref-parser" target="_blank">JSON Schema Ref Parser</a> library. It does not adhere to the JSON Schema specification related to <code>id</code> properties and their ability to change reference scope since it is <a href="https://github.com/json-schema/json-schema/wiki/The-%22id%22-conundrum" target="_blank">ambiguous</a>. However, it does implement the <a href="https://tools.ietf.org/html/rfc6901" target="_blank">JSON Pointer</a> and <a href="https://tools.ietf.org/html/draft-pbryan-zyp-json-ref-03" target="_blank">JSON Reference</a> specifications. What does this mean? You can still combine relative (or absolute) paths with JSON Pointers and use references like:</p>
+	<pre><code> "$ref": "./product.json#/definitions/identifier"
+</code></pre>
+	<p>but <code>id</code>s are simply ignored and the scope is always relative to the root. That makes reasoning about our schemas easier. That being said, a unique root id is still expected for other purposes.</p>
+	<h4 id="jsonschemaexampleloader"><a href="https://github.com/cloudflare/json-schema-example-loader" target="_blank">json-schema-example-loader</a></h4>
+	<p>Finally, we have resolved schemas. Unfortunately, their structure doesn't really match our final HTML documentation. It can be deeply nested, and we want to present our users with nice examples of API requests and responses. We need to do further transformations. We must remove some original properties and precompute new ones. <strong>The goal is to create a data structure that will better fit our UI components.</strong> Please check out the <a href="https://github.com/cloudflare/json-schema-example-loader" target="_blank">project page</a> for more details.</p>
+	<p>You might be asking why we use another webpack loader and why this isn't part of our web application instead. The main reason is performance. We do not want to bog down browsers by doing these transformations repeatedly since JSON Schemas can be arbitrarily nested and very complex and the output can be precomputed.</p>
+	<h4 id="docabootstraptheme"><a href="https://github.com/cloudflare/doca-bootstrap-theme" target="_blank">doca-bootstrap-theme</a></h4>
+	<p>With both of these webpack loaders, you can easily use your favorite JavaScript framework to build your own application. However, we want to make doc generation accessible even to people who don't have time to build their own app. So, we created a set of templates that match the output of <a href="https://github.com/cloudflare/json-schema-example-loader" target="_blank">json-schema-example-loader</a>. These templates use the popular library <a href="https://facebook.github.io/react/" target="_blank">React</a>. Why React?</p>
+	<ul>
+		<li>It can be used and rendered server-side</li>
+		<li>We can now bake additional features into components (e.g., show/hide...)</li>
+		<li>It is easily composable</li>
+		<li>We really really like it :)</li>
+	</ul>
+	<p><a href="https://github.com/cloudflare/doca-bootstrap-theme" target="_blank">doca-bootstrap-theme</a> is a generic theme based on <a href="https://getbootstrap.com/" target="_blank">Twitter Bootstrap v3</a>. We also have our private doca-cf-theme used by <a href="https://api.cloudflare.com" target="_blank">https://api.cloudflare.com</a>. We encourage you to fork it and create your own awesome themes!</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2016/08/2318887095_065ee2b724_o.jpg" alt="Doca de Faro"><br>
+		<small><a href="https://creativecommons.org/licenses/by/2.0/" target="_blank">CC BY 2.0</a> <a href="https://www.flickr.com/photos/maiacoimbra/2318887095/in/photolist-4wUUkZ-jcJ3Zi-2LP5F-6un93i-4rStsx-58wwkE-58swNn-2p9jr4-58shYz-58sjBg-6hh87g-58wDBG-8Q1NSg-5Yua6y-58wqyC-aonbLU-58wHGC-4xUiGv-4S3m1W-5YpQ9n-58tcTV-5YpQSF-9Kv4KE-58thdg-58wNey-9AuY4n-58tfoH-9B1XdE-9U5eSJ-4wV1zV-4sfeTf-58tF8R-58tizR-58x1Fq-4qhVKn-5Yu43U-4xYvCq-4bDKSq-58tbuP-nqcLsb-e1HCp9-danScf-7cx2Zc-vDYJPz-fpe9K-4qa4Cz-74nRWk-58tNyB-58sL3x-8Q1NZc" target="_blank">image</a> by <a href="https://www.flickr.com/photos/maiacoimbra/" target="_blank">Maia Coimbra</a></small>
+	</p>
+	<h4 id="doca"><a href="https://github.com/cloudflare/doca" target="_blank">doca</a></h4>
+	<p>So, we have loaders and nice UI components. Now, it's time to put it all together. We have something that can do just that! We call it <code>doca</code>. doca is a command-line tool written in Node.js that scaffolds the whole application for you. It is actually pretty simple. It takes fine-tuned webpack/redux/babel based <a href="https://github.com/cloudflare/doca/tree/master/app" target="_blank">application</a>, copies it into a destination of your choice, and does a few simple replacements.</p>
+	<p>Since all hard work is done by webpack loaders and all UI components live in a different theme package, the final app can be pretty minimal. It's not intended to be updated by the <code>doca</code> tool. <strong>You should only use <code>doca</code> once.</strong> Otherwise, it would just rewrite your application, which is not desirable if you made some custom modifications. For example, you might want to add <a href="https://github.com/reactjs/react-router" target="_blank">React Router</a> to create multi-page documentation.</p>
+	<p><code>doca</code> contains webpack configs for development and production modes. You can build a completely static version with no JavaScript. It transforms the output of <a href="https://github.com/cloudflare/json-schema-example-loader" target="_blank">json-schema-example-loader</a> into an immutable data structure (using <a href="https://facebook.github.io/immutable-js/" target="_blank">Immutable.js</a>). This brings some nice performance optimizations. This immutable structure is then passed to <a href="https://github.com/cloudflare/doca-bootstrap-theme" target="_blank">doca-bootstrap-theme</a> (the default option). That's it.</p>
+	<p>This is a good compromise between ease of setup and future customization. Do you have a folder with JSON Schema files and want to quickly get <code>index.html</code>? Install <code>doca</code> and use a few commands. Do you need your own look? Fork and update <a href="https://github.com/cloudflare/doca-bootstrap-theme" target="_blank">doca-bootstrap-theme</a>. Do you need to create more pages, sections, or use a different framework? Just modify the app that was scaffolded by <code>doca</code>.</p>
+	<p>One of the coolest features of webpack is <a href="https://webpack.github.io/docs/hot-module-replacement.html" target="_blank">hot module replacement</a>. Once you save a file, you can immediately see the result in your browser. No waiting, refreshing, scrolling or lost state. It's mostly used in <a href="https://github.com/gaearon/react-hot-loader" target="_blank">combination with React</a>; however, <strong>we use it for JSON Schemas, too</strong>. Here's a demo:</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2016/08/hot-reload.gif" alt="JSON Schema Hot Reloading"></p>
+	<p><strong>It gets even better.</strong> It is easy to make a mistake in your schemas. No worries! You will be immediately prompted with a descriptive error message. Once it's fixed, you can continue with your work. No need to leave your editor. Refreshing is so yesterday!</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2016/08/hot-reload-error.gif" alt="JSON Schema Hot Reloading Error"></p>
+	<h3 id="generatingdocumentationusage">Generating Documentation: Usage</h3>
+	<p>The only prerequisite is to have Node.js v4+ on your system. Then, you can install <code>doca</code> with:</p>
+	<pre><code>npm install doca -g
+</code></pre>
+	<p><strong>There are just two simple commands.</strong> The first one is <code>doca init</code>:</p>
+	<pre><code>doca init [-i schema_folder] [-o project_folder] [-t theme_name]
+</code></pre>
+	<p>It goes through the current dir (or <code>schema_folder</code>), looks for <code>**/*.json</code> files, and generates <code>/documentation</code> (or <code>/project_folder</code>). This command should be used only once when you need to bootstrap your project.</p>
+	<p>The second one is <code>doca theme</code>:</p>
+	<pre><code>doca theme newTheme project
+</code></pre>
+	<p>This gives a different theme (<code>newTheme</code>) to the <code>project</code>. It has two steps:</p>
+	<ul>
+		<li>It calls <code>npm install newTheme --save</code> inside of <code>project</code></li>
+		<li>It renames all <code>doca-xxx-theme</code> references to <code>doca-newTheme-theme</code></li>
+	</ul>
+	<p><strong>This can make destructive changes in your project.</strong> Always use version control!</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2016/08/15551695380_624f6d63a0_z.jpg" alt=""><small><a href="https://creativecommons.org/licenses/by/2.0/" target="_blank">CC BY 2.0</a> <a href="https://www.flickr.com/photos/29233640@N07/15551695380/in/photolist-pGfvdY-6vJiUQ-gcbx2-gcbAN-gcbtS-gcbqv-nMSXLP-3cFn8d-aAHLji-8qrbWP-nMXwba-qjNLUc-sHC6yq-ixZsvd-qitLjM-ytLaZ-mHXYrK-7jbGNc-a5Rqgb-7ANSGi-o3j7oU-J72L-7TxmXk-eSegHr-5m5Ezm-oTPimo-yabKR-9GBrGo-y5G1x-y5G76-y5GmQ-8DkkKh-y5Ged-cC7bYU-eaRLKr-cyo7c7-7NuihW-9GBqvW-9GBrKb-67Xu2w-9GBqJA-eaRHDe-7hbE7h-rpx2x7-bnz5ki-8N8Q1T-azZwBp-azZCZe-5oS1A8-8RqKno" target="_blank">image</a> by <a href="https://www.flickr.com/photos/29233640@N07/" target="_blank">Robert Couse-Baker</a></small></p>
+	<h4 id="gettingstarted">Getting started</h4>
+	<p>The best way how to start is to try our example. It includes two JSON Schemas.</p>
+	<pre><code>git clone <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="dbbcb2af9bbcb2afb3aeb9f5b8b4b6">[email&nbsp;protected]</a>:cloudflare/doca.git
+cd doca/example
+doca init
+cd documentation
+npm install
+npm start
+open http://localhost:8000
+</code></pre>
+	<p><strong>That's it!</strong> This results in a development environment where you can make quick changes in your schemas and see the effects immediately because of mighty hot reloading.</p>
+	<p>You can build a static <strong>production ready app</strong> with:</p>
+	<pre><code>npm run build
+open build/index.html
+</code></pre>
+	<p>Or you can build it with <strong>no JavaScript</strong> using:</p>
+	<pre><code>npm run build:nojs
+open build/index.html
+</code></pre>
+	<p>Do you need to <strong>add more schemas</strong> or change their order? Edit the file <code>/schema.js</code>.<br>
+		Do you want to change the generic page title or make <code>curl</code> examples nicer? Edit the file <code>/config.js</code>.</p>
+	<h3 id="conclusion">Conclusion</h3>
+	<p>We're open sourcing a set of libraries that can help you develop and ship a rich RESTful API documentation. We are happy for any feedback and can't wait to see new themes created by the open source community. Please, gives us a <a href="https://github.com/cloudflare/doca" target="_blank">star on GitHub</a>. Also, if this work interests you, then you should come <a href="https://careers.jobscore.com/careers/cloudflare/jobs/senior-front-end-engineer-cI9kn86-ir4z5yiGakhP3Q" target="_blank">join our team</a>!</p>
+	<!--kg-card-end: markdown-->
+</div>

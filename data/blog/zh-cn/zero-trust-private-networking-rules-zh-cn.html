@@ -1,0 +1,26 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image3-12.png" class="kg-image" alt="Zero Trust Private Networking Rules"></figure>
+	<p>我们年初<a href="https://blog.cloudflare.com/private-networking/">宣布了</a>一种新功能，其可通过身份驱动的访问控制在 Cloudflare 网络上构建一个专用网络。很高兴地告诉大家，这种访问控制很快就能扩展到会话和登录间隔了。</p>
+	<h3 id="-"><strong>专用网络无法适应</strong></h3>
+	<p>多年来，专用网络一直是企业应用程序的支柱。安全团队用其围绕应用程序建立严格的安全边界。为了访问敏感数据，用户必须身处网络之中。这意味着他们必须在办公室里，通过公司管理的设备进行连接。这并不完美 — 网络访问可能由于物理连接或 Wi-Fi 等方面而遭到破坏，但证书和物理防火墙等工具可防止这些威胁。</p>
+	<p>由于工作变得日益远程化，这些边界受到了挑战。分支机构、数据中心和远程员工都需要访问应用程序，因此组织开始依赖虚拟专用网络 (VPN) 将远程用户置于其应用程序所在的相同网络上。</p>
+	<p>连接各地用户无疑是一个难题，而专用网络的安全模型则成了更棘手的挑战。一旦进入专用网络，用户在默认情况下可以访问网络上的任何资源，除非明确加以禁止。实施基于身份的控制和日志很难，甚至无法实施。</p>
+	<p>此外，专用网络也伴随着运行开销。专用网络按照 RFC 1918 保留 IP 空间进行路由，该空间有限，并且可能导致 IP 地址重叠和冲突。管理员还需要考虑他们的专用网络可以承受的总负载，如果 VPN 上的员工在下班时间进行视频通话甚至观看视频，还会进一步加重负载。</p>
+	<h3 id="--1"><strong>现代替代方案并未解决所有用例</strong></h3>
+	<p>SaaS 解决方案和 Zero Trust 网络解决方案（如 <a href="https://www.cloudflare.com/zh-cn/teams/access/" target="_blank">Cloudflare Access</a>）可以更轻松地提供没有 VPN 的安全体验。管理员能够为每个应用程序配置控制措施，如多因素身份验证，以及针对异常登录的日志记录警报。面向公众的应用程序的安全控制措施远远超过了专用网络上的应用程序。</p>
+	<p>但是，一些应用程序仍需要更传统的专用网络。涉及浏览器外部的胖客户端或者任意 TCP 或 UDP 协议的用例仍然更适合位于浏览器外部的连接模型。</p>
+	<p>我们听说一些客户很兴奋地采用 Zero Trust 模型，但仍需要支持更为经典的专用网络用例。为了解决这种情况，我们宣布支持在我们的全局网络上构建专用网络。管理员可以围绕谁可以访问特定 IP 和目的地构建 Zero Trust 规则。最终用户从驱动其入口的相同 Cloudflare 代理连接到互联网的其余部分。但是，还缺少一条规则。</p>
+	<h3 id="-cloudflare-"><strong>将会话控制引入 Cloudflare 的专用网络</strong></h3>
+	<p>Cloudflare 的全局网络使其成为可能并实现超快速度。第一步是将任何专用网络安全地连接到 Cloudflare。做法可以是使用 Cloudflare Tunnel 建立安全的仅限出站的隧道，或者采用更传统的连接方法，如 GRE 或 IPSec 隧道。</p>
+	<p>建立隧道连接之后，特定专用 IP 范围可以在 Cloudflare 实例上公告。做法是使用一组命令将隧道映射到 IP 地址的 CIDR 块。在下面的屏幕截图中，CIDR 范围映射到唯一的 Cloudflare 隧道，每个隧道有自己的唯一标识和分配的名称。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/12/image2-18.png" class="kg-image"></figure>
+	<p>一旦应用程序可通过 Cloudflare 的网络进行寻址，用户就需要一种方式来访问这些专用 IP 范围。这时，传统做法是使用 VPN 将用户置于应用程序所在的相同网络上。我们改用 Cloudflare 的 WARP 客户端将用户的互联网流量连接到 Cloudflare 的网络。</p>
+	<p>然后，管理员可以控制来自用户的设备客户端的流量。他们可以创建基于身份的精细化策略，以控制哪些用户可以访问特定专用 IP 地址或（很快可实现）主机名上的特定应用程序。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image1-35.png" class="kg-image"></figure>
+	<p>这对于 IT 和安全团队来说，是向前的很大一步，因为它消除了 VPN 造成的痛苦的延迟、管理和回传问题。但是，用户进行一次身份验证之后，就可以无限期保持连接，除非被完全撤销。我们知道某些客户需要每 24 小时强制登录一次，或者设置一周之后的超时，等等。我们很高兴为客户提供了这样做的能力。</p>
+	<p>发布到测试版时，管理员可以将会话规则添加到此专用网络模型中提供的资源。管理员将能够为其策略配置特定会话持续时间，并要求用户使用多因素身份验证重新进行身份验证。</p>
+	<h3 id="--2"><strong>接下来？</strong></h3>
+	<p>此处宣布的内容仅仅是使 Cloudflare 的 Zero Trust 专用网络对于贵公司更有效的其中一个组件。本周还会宣布的是此模型中的 UDP 支持。团队将能够使用现有专用 DNS 名称服务器来映射本地域上的应用程序主机名。这可防止应用程序发生冲突或短暂的专用 IP 地址的问题。</p>
+	<p>我们很高兴为这两个功能提供测试版。如果您想要在新年之前试用这些功能，请使用此<a href="https://www.cloudflare.com/zh-cn/zero-trust/lp/private-dns-waitlist" target="_blank">注册链接</a>以在测试版可用时收到提醒。</p>
+	<p>如果您想要开始将 Zero Trust 控制用于您的专用网络，请赶快加入吧！Cloudflare 的解决方案针对前 50 个用户免费。跳转到 dash.teams.cloudflare.com 网址开始吧！<br></p>
+</div>

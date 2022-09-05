@@ -1,0 +1,28 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image1-12.png" class="kg-image" alt="Investigating threats using the Cloudflare Security Center"></figure>
+	<p>Cloudflare 阻擋<em>許多</em>各式各樣的安全威脅，其中有一些較為有趣的攻擊是鎖定我們保護之數百萬網際網路設備的「長尾」部分。我們從這些攻擊收集而來的資料會訓練我們的機器學習模型，並提升我們網路和應用程式安全產品的效用，但是以往一直都無法直接查詢。這一週，我們即將改變此情況。</p>
+	<p>所有客戶很快都會獲得我們在 Cloudflare 安全中心（於 2021 年 12 月首次推出）的全新威脅調查入口網站 <em>Investigate</em> 的存取權限。此外，我們還會運用此情報在分析平台中標註威脅，以簡化安全工作流程並縮小回饋迴圈。</p>
+	<!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 55%;"><iframe src="https://iframe.videodelivery.net/89d7bdad3765f4d0bf7977b13b56aef2?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2F89d7bdad3765f4d0bf7977b13b56aef2%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
+	<p></p>
+	<!--kg-card-end: html-->
+	<p>您可能想要在這裡查詢何種資料呢？假設您在記錄中看到一個 IP 位址，而且想要瞭解哪些主機名稱透過 DNS 指向它；或是您看到一個叢集的攻擊是來自您不熟悉的自發系統（AS）。或者，您可能想要調查某個網域名稱，從威脅的觀點來瞭解它的類別。只要將其中任一項目輸入全方位搜尋方塊，我們就會將已知的所有情報告訴您。</p>
+	<p>在 AS 詳細資料之後，本週將提供 IP 和主機名稱來查詢，讓您深入瞭解與您的 Cloudflare 帳戶通訊的網路。下個月我們會進展到一般可用性，屆時將新增資料類型與屬性。與合作夥伴的整合將可讓您使用現有的授權金鑰，再單一整合的介面中查看所有威脅。我們也計劃顯示您的基礎結構和企業員工與您查詢之任一物件的互動情形，例如您可以查看某個 IP 觸發 WAF 或 API Shield 規則幾次，或是您的員工嘗試解析某個已知會提供惡意軟體的網域幾次。</p>
+	<h2 id="-">儀表板中的註釋：可在環境中採取行動的情報</h2>
+	<p>在臨機操作基礎上查詢威脅資料是很棒的功能，但是如果在記錄和分析中直接註釋該資料就會更完善。本週起，我們將開始在與您工作流程相關的儀表板中推出 <em>Investigate</em> 提供的情報。我們將從您在 Cloudflare 背後之網站的網頁應用程式防火牆分析開始推出。</p>
+	<p>假設您要針對某個網頁應用程式防火牆規則封鎖的大量要求來調查安全警報。您可能會看到該警示是某個 IP 位址刺探您網站是否有常遭到濫用的軟體漏洞所造成。如果發生問題的 IP 是雲端 IP 或已標記為匿名程式，則內容相關的情報就會直接在分析頁面上顯示該資訊。</p>
+	<p>此相關內容可協助您瞭解模式。攻擊是來自匿名程式或 Tor 網路？它們是否來自雲端虛擬機器？IP 就只是 IP。但是，看到來自匿名程式的憑證填充攻擊，就是一種會啟用「我的機器人管理設定是否為最新狀態」主動回應的模式。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image2-11.png" class="kg-image" alt="Analytics view of top events showing requests coming from anonymizer"></figure>
+	<h2 id="cloudflare-">Cloudflare 的網路優勢以及此優勢如何讓我們的資料取得資訊</h2>
+	<p>各個產品套件在 Cloudflare 運作的規模相當驚人。在最高峰時，Cloudflare 每秒能夠處理來自超過 <strong>100 個國家/地區</strong>、超過 <strong>250 個城市</strong>的 4400 萬個 HTTP 要求。Cloudflare 網路每天會回應超過<strong> 1.2 萬一次 DNS 查詢</strong>，而且具備 <strong>121 Tbps 的網路處理能力</strong>，能夠在所有產品間提供流量並緩解阻斷服務攻擊。但是，除了這種巨大的規模以外，Cloudflare 的架構還能夠精簡原始資料並結合來自我們所有產品的情報，以勾勒出安全局勢的整體樣貌。</p>
+	<p>我們能夠汲取從各個產品產生之原始資料中精簡的訊號，並將它們與其他產品及功能的訊號結合在一起，以強化我們的網路和威脅資料處理能力。建立網路安全產品以在產品使用者之間擁有正面的飛輪效應是常見的範例。如果某個客戶發現新的惡意軟體，端點保護廠商就能夠部署更新，為所有其他客戶偵測和封鎖該惡意軟體。如果機器人網路攻擊某位客戶，所提供的資訊就可用來找出該機器人網路的特徵並保護其他客戶。如果有裝置參與 DDoS（分散式阻斷服務攻擊），該資訊就可以用來使網路具備日後更快偵測和緩解 DDoS 攻擊的能力。Cloudflare 的產品方案廣度代表的是，為使用者帶來的飛輪效應優勢不僅是在使用者之間累積，也會<em>在產品之間累積</em>。</p>
+	<p>我們來看看一些範例：</p>
+	<h3 id="dns-">DNS 解析和憑證透明度</h3>
+	<p>首先，Cloudflare 運作的是 1.1.1.1，也就是世界上最大的遞迴 DNS 解析程式之一。我們是以向前保密的方式運作，因此在 Cloudflare 不會知道執行查詢的人員身分或 IP 為何，也無法將查詢與不同的匿名使用者建立關聯。但是，透過解析程式處理，Cloudflare 會看到新註冊和新發現的網域。此外，Cloudflare 擁有市面上最先進的 SSL/TLS 加密產品之一，也因此是協助維護憑證透明度記錄的成員組織。這些是 Web 瀏覽器所信任的根憑證授權單位核發之所有 TLS 憑證的公開記錄。在這兩種產品之間，Cloudflare 對於網際網路上有那些網域以及他們何時啟用等方面，有著無可匹敵的觀點。我們不僅會運用此資訊為 Gateway 產品填入全新和新發現的網域類別，也會將這些網域饋送到機器學習模型中，以便在其生命週期中盡早標示可疑或可能惡意的網域。</p>
+	<h3 id="--1">電子郵件安全</h3>
+	<p>另一個範例是，透過收購 Area 1，Cloudflare 即將為期產品方案帶來全新的相互強化能力組合。我們從 1.1.1.1 解析程式針對某個網域產生的所有訊號，都將提供來協助識別惡意電子郵件，而 Area 1 在識別惡意電子郵件方面的多年專業知識，則能夠饋送回 Cloudflare 的 Gateway 產品以及 1.1.1.1 for Families DNS 解析程式。在過去，這類的資料整合可能是由 IT 或網路安全團隊所執行。但是，現在資料將能夠在您組織攻擊表面的各個點之間順暢地流動，藉此相互強化分析和分類的品質。我們將提供整個 Cloudflare Zero Trust 工具組（包括要求記錄、封鎖和遠端瀏覽器隔離），以運用其他安全風險既有的相同原則來處理透過電子郵件傳送的可能惡意連結。</p>
+	<p>過去幾年來，Cloudflare 在許多產品方案中整合了機器學習的使用，但是今天我們推出的新工具讓客戶也能夠掌握強化網路安全的資料和訊號。無論是回應安全事件、威脅搜捕或主動設定安全原則來保護您的組織，身為人類的您現在都也能夠成為 Cloudflare 的一部分了。Cloudflare 在網路中擁有的獨特優勢，代表著您的深入解析能夠饋送回網路，不僅在您組織使用的所有 Cloudflare 產品間保護您的組織，也能夠參與所有 Cloudflare 客戶之間的相互深入解析與防禦。</p>
+	<h2 id="--2">期待</h2>
+	<p>Cloudflare 能夠涵蓋您組織的整個攻擊表面：為網站提供防禦、透過 Cloudflare Zero Trust 保護裝置和 SaaS 應用程式、透過 Magic Transit 保護您的所在地點與辦公室，以及保護您的電子郵件通訊。所提供的安全中心會確保您擁有所有所需資訊來瞭解現今存在的網路安全風險，並透過 Cloudflare 協助保護您的組織。</p>
+	<p>「什麼是我在新聞上聽到資料抹除惡意軟體？如何保護我的公司以避免這種惡意軟體的入侵？」我們已聽到您的問題，而且我們即將為您提供解答。我們提供的不只是原始資訊，而與您和您使用網際網路方式息息相關的資訊。我們對於安全中心有相當遠大的計畫。檔案掃描入口網站將為您提供有關 Page Shield 發現之 JavaScript 檔案的資訊、Gateway 掃描的可執行檔，以及上傳和掃描檔案的功能。IP 位址和網域等入侵指標將連結到相關威脅執行者（如果已知）的相關資訊，為您提供更多有關所面臨之技巧和手法的資訊，以及 Cloudflare 產品如何用來抵禦它們的資訊。CVE 搜尋可讓您找出有關軟體漏洞的資訊，並提供與您習慣在此部落格上閱讀之同樣易懂的 Cloudflare 觀點，以協助解釋行話和技術用語。透過今天的發佈內容，我們才剛剛開始。</p>
+</div>

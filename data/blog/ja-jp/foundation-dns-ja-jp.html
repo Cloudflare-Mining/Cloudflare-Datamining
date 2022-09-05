@@ -1,0 +1,113 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://lh6.googleusercontent.com/3nK3W9J2ko3MCbcpHMUHyp5TlJ1S6_g5OHCH9-rJ9cLibKCLcZp-lnVzRKoJSWIkULTLjkcRkPCtq0c6_7FluQMgtpzZG9v_t-iOifTnHJLUmF-otIn9J7PV0ity54N5EewZkIyM" class="kg-image" alt="Announcing Foundation DNS - Cloudflare’s new premium DNS offering"></figure>
+	<p>Cloudflareは本日、新しいプレミアムDNSサービス「Foundation DNS」を発表しました。このサービスは、比類ない信頼性と最高のパフォーマンスを提供し、インフラチームの最も複雑な要件を満たすことができます。</p>
+	<h2 id="-">まずはお金の話から</h2>
+	<p>エンタープライズDNSの契約を結ぶ際は通常、DNSプロバイダーが見積もりを作成するために3項目の入力を要求します。</p>
+	<ul>
+		<li>ゾーンの数</li>
+		<li>月間の総DNSクエリー数</li>
+		<li>全ゾーンの総DNSレコード数</li>
+	</ul>
+	<p>この手のサービスはもっと複雑なものもあり、価格計算式が組み込まれていたり、「お問い合わせいただければ見積もりをお送りします」的な不透明な価格設定をしているものも少なくありません。私たちはもっと良い方法があると考えています。もっとシンプルにできないか？ということで、Foundation DNSの料金は、企業のお客様向けに1つの入力項目に基づいて決定されます。それは、1ヶ月あたりのDNSクエリーの合計です。この方法で、企業のDNSの費用を節約でき、さらに重要なことに、請求書の内容がシンプルになります。</p>
+	<p>ご安心ください。当社の他の製品と同様、DDoS軽減が定額制であることに変わりはありません。ネームサーバーがDDoS攻撃を受けたり、DNSクエリーの数が1～2か月間クォータを超えたりしても、隠れた超過料金は発生しません。</p>
+	<h2 id="-dns-">なぜDNSが重要なのか？</h2>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image1-90.png" class="kg-image"></figure>
+	<p>DNS（Domain Name System）は、インターネットと同じくらい古いシステムです。もともとはホスト名とIPアドレスの間のマッピングを作成する必要性から1983年に<a href="https://datatracker.ietf.org/doc/html/rfc882" target="_blank">RFC882</a>と<a href="https://datatracker.ietf.org/doc/html/rfc883" target="_blank">RFC883</a>で定義されたものです。RFCの著者は当時、賢明にも次のように述べました。「<em>[The Internet] is a large system and is likely to grow much larger.（インターネットは巨大なシステムであり、今後さらに巨大化する可能性がある）</em>" [<a href="https://datatracker.ietf.org/doc/html/rfc882" target="_blank">RFC882</a> ]。現在、最大のトップレベルドメイン（TLD）のひとつである.comの下には、約1億6000万のドメイン名が存在しています[<a href="https://www.verisign.com/en_US/channel-resources/domain-registry-products/zone-file/index.xhtml" target="_blank">ソース</a>]。</p>
+	<p>DNSは設計上、階層的で高度に分散されたシステムですが、エンドユーザーとしては通常、ご利用のインターネットサービスプロバイダー（ISP）が割り当てや運用を行うか、お客様の従業員やご自身が直接設定したリゾルバー（1）としか通信しません。リゾルバーは、ルートサーバー（2）、対応するTLDサーバー（3）、当該ドメインの権威ネームサーバー（4）のいずれかと通信します。多くの場合、これらの4者はすべて別の企業によって運営され、異なる地域（場合によっては大陸）にあります。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/12/image6-23.png" class="kg-image"></figure>
+	<p><a href="https://blog.cloudflare.com/ja-jp/october-2021-facebook-outage-ja-jp/">最近</a>見られるのように、DNSインフラがダウンすると深刻な問題となり、多額の費用と評判の低下を招く可能性があります。そのため、ドメインの所有者としては、自分のドメインに対するDNSルックアップに100%の確率で応答したいし、できるだけ早く応答することが理想的です。では、どうすればいいのでしょうか？ユーザーがどのリゾルバーを設定したかに関しては影響を与えることはできません。ルートサーバーに影響を与えることもできません。それぞれTLDを持つドメイン名を選択することで、どのTLDサーバーが関係するかを選ぶことはできます。しかしそれも、他の理由で特定のTLDに縛られている場合は制御の範疇外になります。簡単に変えられるのは権威ネームサーバーのプロバイダーです。そこで、Cloudflareの権威DNSサービスについて詳しく見てみましょう。</p>
+	<h2 id="cloudflare-dns">Cloudflareの権威DNS</h2>
+	<p>権威DNSは当社の<a href="https://blog.cloudflare.com/robust-free-dns/">最も古い製品の1つであり、</a>この製品を素晴らしくするために多くの時間を費やしてきました。すべてのDNSクエリーに対し、250以上の都市に展開する当社のグローバル エニーキャスト ネットワークから応答します。そのため、常にグローバルな可用性を保証しながら、最高のパフォーマンスを提供することができるのです。もちろん、DDoS攻撃軽減の豊富な経験を活かし、当社のネームサーバーと、ひいてはお客様のドメインがダウンするのを防いでいます。</p>
+	<p>DNSはCloudflareにとって非常に重要です。というのは、<a href="https://www.cloudflare.com/ja-jp/magic-transit/" target="_blank">Magic Transit</a>がリリースされるまでは、お客様のアプリケーションを保護し高速化するために、インターネット上のすべてのユーザーをDNS経由でCloudflareへ向けていたからです。当社のDNSの応答が遅ければCloudflareも遅くなり、DNSが応答しなければCloudflareは利用できなくなりました。当社の権威DNSのスピードと信頼性は、Cloudflareのスピードと信頼性を確保する上で最も重要であり、お客様にとっても同様でした。Cloudflareと共に成長されたお客様には、当社のDNSインフラを後押ししていただきました。現在、当社最大の顧客ゾーンには300万以上のレコードがあり、上位5ゾーンを合わせると1000万近くのレコードに達しています。これらのお客様は、新しいDNSレコードの更新を数分ではなく数秒でエッジにプッシュするCloudflareに依存しています。このような重要性とお客様のニーズを背景に、当社は長年にわたって、<a href="https://blog.cloudflare.com/how-we-made-our-dns-stack-3x-faster/">DNSスタックの高速性と信頼性を維持することに焦点を当てた、専門のDNSエンジニアリングチームを成長させてきました</a>。</p>
+	<p>DNSエコシステムのセキュリティも重要です。Cloudflareは常に<a href="https://blog.cloudflare.com/dnssec-an-introduction/">DNSSEC</a>を支持してきました。DNSSECを通じてDNSの応答に署名・検証することで、オンパス攻撃者は<a href="https://blog.cloudflare.com/bgp-leaks-and-crypto-currencies/"> 応答をハイジャックしてトラフィックをリダイレクトできなくなります</a> 。Cloudflareは、これまでもすべてのプランレベルでDNSSECを無料で提供しており、今後もFoundation DNSの無料オプションとして提供されます。Cloudflareをレジストラとしてもお使いのお客様は、<a href="https://blog.cloudflare.com/one-click-dnssec-with-cloudflare-registrar/">DNSSECをワンクリックで簡単にデプロイできます。</a>お客様のドメインがハイジャックされず、ユーザーが保護されることを保証するもう一つの重要機能です。当社は、<a href="https://blog.cloudflare.com/automatically-provision-and-maintain-dnssec/">外部レジストラへのワンクリックデプロイメント</a> に関する<a href="https://datatracker.ietf.org/doc/html/rfc8078" target="_blank">RFC 8078</a>もサポートしています。</p>
+	<p>しかし、インターネットの一部を停止させてしまう問題は他にもあり、これらはほとんど制御不能です。<a href="https://blog.cloudflare.com/ja-jp/route-leak-detection-ja-jp/">ルートリーク</a>や、さらに質の悪い<a href="https://isbgpsafeyet.com/#whats-a-bgp-hijack" target="_blank">ルートハイジャック</a>です。DNSSECはルートハイジャックの軽減には役立ちますが、残念ながらすべての再帰リゾルバーが<a href="https://stats.labs.apnic.net/dnssec" target="_blank">DNSSECを検証するわけではありません</a> 。また、リゾルバーが検証したとしても、ネームサーバーへのルートリークやハイジャックは、やはりダウンタイムの原因となります。すべてのネームサーバーのIPがこのようなイベントの影響を受けると、ドメインは解決できなくなります。</p>
+	<p>多くのプロバイダーでは、各ネームサーバーは通常、1つのIPv4アドレスと1つのIPv6アドレスにしか解決しません。ネットワークの輻輳やさらに深刻なルートリークなどの理由で、そのIPアドレスに到達できない場合、ネームサーバー全体が利用できなくなり、ドメインが解決できなくなります。さらに悪いことに、プロバイダーによっては、すべてのネームサーバーに同じIPサブネットを使用している場合もあります。そのため、そのサブネットに問題があると、すべてのネームサーバーがダウンしてしまいます。</p>
+	<p>一例を見てみましょう。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>$ dig aws.com ns +short              
+ns-1500.awsdns-59.org.
+ns-164.awsdns-20.com.
+ns-2028.awsdns-61.co.uk.
+ns-917.awsdns-50.net.
+
+$ dig ns-1500.awsdns-59.org. +short
+205.251.197.220
+$ dig ns-164.awsdns-20.com. +short
+205.251.192.164
+$ dig ns-2028.awsdns-61.co.uk. +short
+205.251.199.236
+$ dig ns-917.awsdns-50.net. +short
+205.251.195.149
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>ネームサーバーのIPアドレスはすべて、205.251.192.0/21の一部です。ありがたいことに、<a href="https://aws.amazon.com/blogs/networking-and-content-delivery/how-aws-is-helping-to-secure-internet-routing/" target="_blank">AWSは現在、</a><a href="https://isbgpsafeyet.com/#what-is-rpki" target="_blank">RPKI</a>を介してそのアドレス範囲に署名しています。おかげでリークの可能性は低くなりますが、これはリゾルバーのISPがRPKIを検証している場合に限ります。しかし、もしリゾルバーのISPがRPKIを検証しておらず、万一このサブネットがリークやハイジャックに遭った場合、リゾルバーはどのネームサーバーにも到達できず、aws.com は解決不能になってしまいます。</p>
+	<p>Cloudflareがすべてのルートに署名を付し、<a href="https://isbgpsafeyet.com/" target="_blank">ルートリークの影響を最小限に抑えるためにインターネットの他の部分に働きかけていることは言うまでもありません。</a>しかし、RPKIがユビキタスに展開されるのを待つ間に、ルートリークがあっても耐障害性が保たれるようにするために、他にできることは何でしょうか？</p>
+	<p>現在、Free、Pro、Business、またはEnterpriseプランでCloudflare DNSを使用している場合、ドメインには<code>&lt;name&gt; .ns.cloudflare.com</code>の構造を持つ2つのネームサーバーが割り当てられます。&lt;name&gt; はランダムな名前です。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>$ dig isbgpsafeyet.com ns +short
+tom.ns.cloudflare.com.
+kami.ns.cloudflare.com.
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>さて、前に学んだように、ドメインが利用可能であるためには、そのネームサーバーが利用可能でなければなりません。そのため、これらのネームサーバーはそれぞれ3つのエニーキャストIPv4アドレスと3つのエニーキャストIPv6アドレスに解決します。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>$ dig tom.ns.cloudflare.com a +short
+173.245.59.147
+108.162.193.147
+172.64.33.147
+
+$ dig tom.ns.cloudflare.com aaaa +short
+2606:4700:58::adf5:3b93
+2803:f800:50::6ca2:c193
+2a06:98c1:50::ac40:2193
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>ここで注目すべき重要な点は、3つのIPv4アドレスと3つのIPv6アドレスのそれぞれが、異なる/8 IPv4（IPv6では/45）ブロックからのものであるということです。したがって、ネームサーバーがIPv4経由で利用できなくなるには、3つの/8 IPv4ブロックすべてについて各々対応するサブネットにルートリークが正確に影響を与える必要があります。このようなイベントは理論的には可能ですが、現実的にはほぼ不可能です。</p>
+	<h3 id="--1">これをさらに改善するにはどうすればよいか？</h3>
+	<p>Foundation DNSをご利用のお客様には、foundationdns.comおよびfoundationdns.netでホストされる高度なネームサーバーが新たに割り当てられます。これらのネームサーバーは、Cloudflareのデフォルトのネームサーバーよりもさらに耐障害性の高いものになります。この実現方法については、来年初頭に詳細を発表する予定ですので、ご期待ください。Cloudflareの外部ドメイン（cloudflare.comなど）は、年明けにこれらのネームサーバーに移行します。</p>
+	<h2 id="--2">その他の新機能もリリース</h2>
+	<p>ご要望の多かった2つの機能をリリースすることになりました。</p>
+	<ul>
+		<li>セカンダリDNSの発信ゾーン転送のサポート</li>
+		<li><a href="https://developers.cloudflare.com/logs/about" target="_blank">Logpush</a>：権威DNSおよびセカンダリDNSへのクエリー用</li>
+	</ul>
+	<p>どちらもFoundation DNSの一部として、企業のお客様に追加費用なしで提供されます。それぞれの内容と、当社のDNSサービスがどう改善されるかを詳しく見ていきましょう。</p>
+	<h3 id="-dns--1">セカンダリDNSの発信ゾーン転送のサポート</h3>
+	<p>セカンダリDNSとは何でしょうか、なぜ重要なのでしょうか？多くの大企業では、1つのDNSプロバイダーが利用できなくなった場合に備えて、複数のDNSプロバイダーを使用して冗長性を確保する必要があります。これを実現するには、2つの独立したプラットフォームにドメインのDNSレコードを追加し、ゾーンファイルを手動で同期させる必要がありますが、これは「マルチプライマリ」セットアップと呼ばれています。セカンダリDNSでは、「プライマリ-セカンダリ」セットアップを使用してこの作業を自動化する方法が2つあります。</p>
+	<ul>
+		<li>DNS NOTIFY：ゾーンに変更があるたびに、プライマリネームサーバーがセカンダリに通知します。セカンダリはNOTIFYを受け取ると、プライマリに同期するためにゾーン転送リクエストを送信します。</li>
+		<li>SOAクエリー：こちらでは、セカンダリネームサーバーがゾーンのSOAレコードに定期的に問い合わせ、SOAレコードにあるシリアル番号が、セカンダリがゾーンのSOAレコードに保存している最新のシリアル番号と同じかどうかをチェックします。もしゾーンの新バージョンがあれば、プライマリにゾーン転送リクエストを送って変更を取得します。</li>
+	</ul>
+	<p>セカンダリDNSが舞台裏でどのように機能しているかについて、Alex Fattoucheが洞察に富んだ<a href="https://blog.cloudflare.com/secondary-dns-deep-dive/">ブログ記事</a>を書いていますので、詳しく知りたい方はご覧ください。もう1つ、趣きの異なるプライマリ-セカンダリセットアップがプライマリを隠すもので、「隠れプライマリ」と呼ばれます。この設定の違いは、セカンダリのネームサーバーのみが権威を持つこと。つまり、ドメインのレジストラで設定されることです。以下の図は、それぞれの設定を示しています。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image7-13.png" class="kg-image"></figure>
+	<p>2018年より、Cloudflareがセカンダリネームサーバーの役割を担うプライマリ-セカンダリのセットアップをサポートしています。つまり、プライマリネームサーバーからの着信ゾーン転送を受け入れる立場です。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image2-63.png" class="kg-image"></figure>
+	<p>本日より、発信ゾーンの転送もサポートします。つまり、Cloudflareがプライマリネームサーバーの役割を担い、1台または複数の外部セカンダリネームサーバーがCloudflareからのゾーン転送を受け取ることになります。着信転送と同じように、以下をサポートしています。</p>
+	<ul>
+		<li>AXFR、IXFRを介したゾーン転送</li>
+		<li>DNS NOTIFYによる自動通知で、変更のたびにゾーン転送をトリガー</li>
+		<li>TSIGを使った署名付き転送で、ゾーンファイルを転送中に認証</li>
+	</ul>
+	<h3 id="-dns-dns-logpush">権威DNSとセカンダリDNSのためのLogpush</h3>
+	<p>Cloudflareはログが大好きです。2021年第3四半期には、平均して毎秒2800万件のHTTPリクエストと毎秒1360万件のDNSクエリーを処理し、毎日760億の脅威をブロックしました。これらのイベントはすべて、ログとして一定期間保存され、ダッシュボードでユーザーにほぼリアルタイムの分析結果を提供します。これらのログを恒久的に保存したい、または保存しなければならないお客様のために、2019年に<a href="https://blog.cloudflare.com/cloudflare-logpush-the-easy-way-to-get-your-logs-to-your-cloud-storage/">Logpush</a>を開発しました。Logpushを使って、分析パートナーであるMicrosoft Azure Sentinel、Splunk、Datadog、Sumo Logicのいずれか、もしくは<a href="https://blog.cloudflare.com/ja-jp/introducing-r2-object-storage-ja-jp/">R2</a>と互換性のあるAPIを持つ任意のクラウドストレージへ、ほぼリアルタイムでログをストリーミングできます。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image3-44.png" class="kg-image"></figure>
+	<p>今日は、Logpushのデータセットを1つ追加します。DNSログです。Logpushを設定してドメインのDNSログをストリーミングするには、<a href="https://dash.cloudflare.com/?to=/:account/:zone/analytics/logs" target="_blank">Cloudflareダッシュボード</a>にアクセスして、Logpushジョブを新規作成し、DNSログを選択して、興味のあるログフィールドを設定してください。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/unnamed-32.png" class="kg-image"></figure>
+	<p><a href="https://developers.cloudflare.com/logs/reference/log-fields/zone/dns_logs" target="_blank">開発者向けドキュメント</a>には、APIを使う方法や、新しいDNSログフィールドの詳細な説明が記載されていますのでご覧ください。</p>
+	<h2 id="-1-2-">もう1つ（あるいは2つ...）</h2>
+	<p>お客様のインフラにおけるDNSの全体像を把握する際には、お客様のシステムにどのようにトラフィックが流れているか、そのトラフィックがどのような挙動をしているかを確認することが重要です。ただ、利用可能な処理能力、メモリ、サーバー容量、計算リソース全般は所詮、有限です。当社で提供している最良かつ重要なツールは、<a href="https://www.cloudflare.com/ja-jp/load-balancing/" target="_blank">負荷分散（ロードバランシング）</a>と正常性監視（ヘルスモニタリング）です。</p>
+	<p>Cloudflareは、2016年から負荷分散のソリューション<a href="https://blog.cloudflare.com/cloudflare-traffic/">http://blog.cloudflare.com/cloudflare-traffic/</a>を提供し、お客様が既存のリソースをスケーラブルかつインテリジェントに活用できるようサポートしてきました。しかし、当社のロードバランサーは、A、AAAA、CNAMEレコードに限定されていました。これは、お客様が必要とする多くの主要なユースケースをカバーしていましたが、すべてをカバーするものではありませんでした。多くのお客様には、他のニーズもあります。MXやEメールサーバーのトラフィック負荷分散、特定サービスのトラフィックがどのポートをどのウェイトで通過するかを宣言するSRVレコード、ポートに関係なくそれぞれのトラフィックが安全なプロトコルを使用することを保証するHTTPSレコードなどです。当社は、お客様のニーズを確実にカバーして、ビジネス目標と技術的な実装を一致させていただけるようサポートしたいと考えています。</p>
+	<p>Cloudflareでは、MX、SRV、HTTPS、TXTレコードのトラフィック負荷分散をサポートするために、追加設定が不要な正常性監視の方法を追加しました。CloudflareでそれぞれのDNSレコードを作成し、ロードバランサーを送信先に設定するだけですので、とても簡単です。お客様は、ICMP Ping、SMTP、UDP-ICMPを使う方法で常にサーバーの健全性を把握し、それぞれの健全性情報に基づいてインテリジェントなステアリング決定を行うことができます。</p>
+	<p>インテリジェントなステアリングといっても、答えはひとつではありません。ビジネスによってニーズは異なり、特に、サーバーが世界のどこにあるか、顧客がどこにいるかによって変わってきます。一般的な経験則から言えば、顧客のいる場所にサーバーを設置することです。これにより、可能な限りパフォーマンスが高く、ローカライズされたサービスを保証できます。一般的なシナリオとしては、エンドユーザーのリクエストが発生する場所を基準にトラフィックを誘導し、その地域に最も近いサーバーへのマッピングを作成します。Cloudflareのジオステアリング機能により、お客様はまさにこれを行うことができます。地域とプールのマッピングを簡単に作成して、たとえば東欧からリクエストが発信されれば、それを適切なサーバーに送り、そのリクエストに対応できるようにします。しかし、地域がかなり大きいと、マッピングを今ひとつ緊密に結びつけることができないという問題が発生することがあります。</p>
+	<p>本日、ジオステアリング機能の国対応を発表しました。これにより、お客様は13地域のいずれか、または特定の国を選択してプールにマッピングすることができ、お客様のシステムを通過するトラフィックの挙動をさらにきめ細かく制御することが可能になります。国レベルのステアリングと、より多くのDNSレコードの負荷分散をサポートする新しい正常性監視方法は、2022年1月に提供を開始する予定です。</p>
+	<h2 id="dns-">DNSエコシステムの進化</h2>
+	<p>他にもエキサイティングなニュースがあります。当社はマルチサイナーDNSSEC（<a href="https://datatracker.ietf.org/doc/html/rfc8901" target="_blank">RFC8901</a>）の作業を終え、2022年第1四半期に運用を開始する予定です。なぜこれが重要かというと、大企業には共通する2つの要件があるのです。</p>
+	<ul>
+		<li>冗長性：複数のDNSプロバイダーがそれぞれのドメインに対して権威ある応答をする</li>
+		<li>認証能力：DNSSECを導入し、DNSレスポンスが適切に認証されるようにする</li>
+	</ul>
+	<p>両方を実現するには、プライマリネームサーバーがドメインに署名し、そのDNSレコードとレコード署名をセカンダリネームサーバーに転送し、セカンダリがそれらをそのまま提供します。この設定は現在、Cloudflare Secondary DNSでサポートしています。事前署名されたゾーンを転送する際にサポートされないのが、国レベルのステアリングのような非標準的なDNS機能で、ここがマルチサイナーDNSSECの出番です。両DNSプロバイダーは、互いの署名キーを知り、各自でオンライン（またはオンザフライ）署名を実行する必要があります。マルチサイナーDNSSECの仕組みについて詳しく知りたい方は、APNICが公開しているこの<a href="https://blog.apnic.net/2021/08/25/multi-signer-dnssec-models/" target="_blank">素晴らしいブログ記事</a>をご覧ください。</p>
+	<p>最後になりますが、Cloudflareは<a href="https://www.dns-oarc.net/" target="_blank"> DNS Operations Analysis and Research Center（DNS-OARC）</a>にゴールドメンバーとして参加します。他のDNSインフラ研究者や運用者とともに、最も困難な問題に取り組み、新しい標準や機能の実装に継続的に取り組んでいきたいと考えています。</p>
+	<blockquote><em>「DNSは、消費者がパフォーマンスと信頼性を求めるエッジにおいて、コンテンツの管理と配信を行うための重要なツールです。CloudflareはDNSコミュニティの重要なメンバーです。長年にわたりOARCワークショップの常連で、DNSに強い関心を持つ聴衆にイノベーションや運用上の知見を紹介してきました。今回、Cloudflareをコミュニティの正式メンバーとして迎えることができたのは喜ばしいことです。今後はゴールドOARCメンバーとしてCloudflareならでは貢献をしてくれることを期待しています。」</em><br><em>- </em>Keith Mitchell（OARC所長）</blockquote>
+	<p>私たちはCloudflare創業当初からDNSに取り組んできましたが、まだまだこれからです。お客様は将来、一層きめ細かな特化した機能をお求めになるはずです。Foundation DNSのローンチは、今後も引き続きDNSの全レベルに投資し、世界で最も機能豊富なエンタープライズDNSプラットフォームを構築していくことを示すものです。DNSプロバイダーから期待する機能があれば、アイデアをお聞かせください。また、新機能の構築に関わりたい方は、<a href="https://boards.greenhouse.io/cloudflare/jobs/3262004?gh_jid=3262004" target="_blank">採用</a>していますのでご応募ください。</p>
+</div>

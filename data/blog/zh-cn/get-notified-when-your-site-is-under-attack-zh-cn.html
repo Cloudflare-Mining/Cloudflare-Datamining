@@ -1,0 +1,31 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image1-99.png" class="kg-image" alt="当您的站点受到攻击时获得通知"></figure>
+	<p>我们的核心应用程序安全性功能（例如 WAF、防火墙规则和速率限制）有助于确保数百万互联网资产的安全。当攻击流量被阻止时，它们都会安静地执行此操作，而不会产生任何通知，因为我们的重点始终是首先停止恶意请求。</p>
+	<p>今天，我们很高兴地宣布朝着这个方向迈出了一大步。每当我们观察到防火墙相关事件的激增，表明可能正在进行攻击时，Business 和 Enterprise 客户现在都可以设置主动警报。</p>
+	<p>警报可以通过电子邮件、PagerDuty 或 webhooks 进行配置，从而允许跨多个系统进行灵活的集成。</p>
+	<p>您可以在 Cloudflare 帐户的通知选项卡下找到并设置<a href="https://developers.cloudflare.com/fundamentals/notifications" target="_blank">新的警报类型</a>。</p>
+	<h2 id="-">有哪些通知可用？</h2>
+	<p>平台中添加了两种新的通知类型。</p>
+	<h3 id="--1">安全性事件警报</h3>
+	<p>此通知可设置在 Business 和 Enterprise 区域，并会在所有产品和服务中出现任何与防火墙相关的事件激增时发出警报。您将在攻击缓解后的两小时内收到警报。</p>
+	<h3 id="--2">高级安全性事件警报</h3>
+	<p>此通知只能在 Enterprise 区域上设置。它允许您筛选您感兴趣监视的确切安全服务，并且可以根据需要为不同的服务设置不同的通知。警报将在攻击缓解后的五分钟内触发。</p>
+	<h2 id="--3">应用程序安全性异常警报</h2>
+	<p>我们以前<a href="https://blog.cloudflare.com/smarter-origin-service-level-monitoring/">在博客上写过，</a>精确计算时间序列数据集中的异常是多么困难。简单的阈值警报—“如果有超过X个事件，请通知我”—无法正常工作。调整特定阈值以使其准确需要大量工作，即使如此，最终仍可能出现误报或遗漏事件。</p>
+	<p>对于源错误率通知，我们依靠 <a href="https://sre.google/workbook/alerting-on-slos/" target="_blank">Google SRE 手册中</a>概述的方法来根据服务级别目标 (SLO) 发出警报。但是，SLO 警报假定已存在建立的基线。我们确切地知道在出现问题之前“允许”来自您的来源的响应中有多少百分比是错误的。我们不知道防火墙事件的百分比是多少。例如，与防火墙规则较少的互联网资产相比，具有许多防火墙规则的互联网资产更有可能具有更多的防火墙事件。</p>
+	<p>我们不使用基于 SLO 的安全性事件通知警报，而是使用 <a href="https://en.wikipedia.org/wiki/Standard_score" target="_blank">Z 分数计算</a>。 z 分数方法计算某个数据点与平均值相差多少标准差。对于安全性事件通知，我们可以将每个不同互联网资产的平均防火墙事件数作为有效“基线”，并比较当前的防火墙事件数以查看是否存在显著的激增。</p>
+	<p>在第一次迭代中，系统中配置了 3.5 的 z 分数阈值，并将根据客户反馈进行调整。您可以在我们的 <a href="https://developers.cloudflare.com/waf/alerts" target="_blank">WAF 开发人员文档</a>中阅读有关该系统的更多信息。。</p>
+	<h2 id="--4">应用程序安全性事件通知入门</h2>
+	<p>要配置这些通知，请导航到仪表板的“通知”选项卡，然后单击“添加”。选择安全性事件警报或高级安全性事件警报。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/12/image4-42.png" class="kg-image" alt="notification tab showing the new alert types available"></figure>
+	<p>与所有 Cloudflare 通知一样，您可以命名和描述通知，并选择您想要接收通知的方式。从那里，您可以选择要监控的域。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image1-100.png" class="kg-image" alt="alert zone selection screen"></figure>
+	<p>对于高级安全性事件通知，您还可以选择通知应监控的服务。如果您直接与 <a href="https://developers.cloudflare.com/logs/reference/log-fields/zone/firewall_events" target="_blank">Cloudflare 日志集成</a>并希望过滤现有 SIEM 中的相关事件，则每个相关服务的防火墙事件日志中的日志值也会显示。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image3-52.png" class="kg-image" alt="alert service filter selection screen"></figure>
+	<p>一旦设置通知后，您可以依靠 Cloudflare 在检测到异常时向您发出警告。示例电子邮件通知如下所示：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image5-36.png" class="kg-image" alt="sample email notification for the Advanced Security Alert"></figure>
+	<p>警报提供有关检测事件（在本例中为 WAF）、时间戳和受影响区域的服务的详细信息。提供了一个链接，可将您引导至根据正确服务和时间范围过滤的防火墙事件仪表板。</p>
+	<h2 id="--5">许多警报中的第一个！</h2>
+	<p>我们期待客户设置他们的通知，以便他们能够掌握影响其应用程序的任何恶意活动。</p>
+	<p>这只是构建直接嵌入 Cloudflare 仪表板的更全面的通知和事件管理系统套件的第一步。我们期待在不久的将来发布对我们的应用程序安全性警报系统的功能改进。</p>
+</div>

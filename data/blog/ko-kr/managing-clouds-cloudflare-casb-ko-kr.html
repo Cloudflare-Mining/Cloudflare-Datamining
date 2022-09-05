@@ -1,0 +1,24 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image1-70.png" class="kg-image" alt="Managing Clouds - Cloudflare CASB and our not so secret plan for what’s next"></figure>
+	<p>지난달 Vectrix 인수를 통해 Cloudflare의 새로운 API 기반 <a href="https://blog.cloudflare.com/cloudflare-zero-trust-casb/">클라우드 액세스 보안 브로커(CASB)</a>를 도입했습니다. 요약하자면, Cloudflare의 CASB는 IT팀과 보안팀이 SaaS 응용 프로그램 내부 및 전체에 걸쳐 보안 문제를 감지하는 데 도움이 됩니다. 당사는 SaaS 앱의 데이터와 사용자를 모두 살펴보고 무단 사용자 액세스와 파일 노출에서부터 잘못된 구성 및 섀도 IT에 이르기까지 다양한 문제를 팀에 경고합니다.</p>
+	<p>Cloudflare Zero Trust에 대한 CASB 기능 도입을 발표한 이후로 두 업데이트를 공유하게 되어 기쁩니다. 먼저 Cloudflare 고객의 이야기를 들었는데, 이들은 CASB를 배포하기를 기다릴 수 없고 더 깊이 사용하기를 원합니다. 오늘은 그 피드백을 기반으로 다음에 구축할 내용을 간략하게 설명하여 여러분이 기대할 수 있는 사항을 미리 알려드리겠습니다. 두 번째, 당사는 베타 등록을 시작하며, 대기자 명단에서 초대받은 새 사용자가 사용할 수 있는 항목을 안내해드리겠습니다.</p>
+	<h2 id="cloudflare-casb-">Cloudflare CASB에서 다음은 무엇일까요?</h2>
+	<p>Cloudflare의 API 기반 CASB에 대한 비전은 IT와 보안 소유자에게 사용하기 쉬운 원스톱 상점을 제공하여 SaaS 도구 제품군 전체에서 데이터와 사용자의 보안을 보호하는 것입니다. 당사의 목표는 모든 IT 또는 보안 관리자가 최초 <a href="https://dash.cloudflare.com/sign-up/teams" target="_blank">Zero Trust 계정 생성</a>부터 가장 중요한 것의 보호까지 몇 분 이내에 도달할 수 있도록 하는 것입니다. </p>
+	<p>이러한 즉각적 가시성 수준을 넘어 IT와 보안 관리자가 발견한 문제를 찾고, 이해하며, 해결하려면 아직 시간이 필요하다는 것을 알고 있습니다. 앞으로 몇 달 안에 핵심 CASB 플랫폼에 세 가지 새 주요 기능을 도입하여 이러한 각 과제를 해결할 예정입니다.</p>
+	<h2 id="-">새로운 통합(더 많은 기능 포함 예정)</h2>
+	<p>첫째, 통합이란 무엇일까요? 통합은 보안 스캐닝과 관리를 위해 권한을 부여하고(API를 통해) SaaS 응용 프로그램을 CASB에 연결하는 방법입니다. 일반적으로 통합은 OAuth 2.0 흐름에 따라 이루어지지만, 이는 타사 SaaS 앱마다 다릅니다. 목표에 맞춰 항상 통합 설정 흐름이 간단하게 유지되고 몇 분 이내에 완료될 수 있도록 할 예정입니다.</p>
+	<p>보안 전략 대부분과 마찬가지로 가장 중요한 자산을 먼저 보호하는 것이 우선입니다. Google Workspace 및 GitHub와의 통합은 베타 버전으로 제공됩니다(<a href="https://www.cloudflare.com/products/zero-trust/lp/casb-beta/" target="_blank">여기에서 액세스 요청</a>). 올해 말 Zoom, Slack, Okta에 대한 통합을 곧 이어갈 것이며, 이는 Microsoft 365와 Salesforce 같은 서비스를 추가하기 전에 이루어질 것입니다. 고객과의 긴밀한 협력을 통해 다음에 통합할 응용 프로그램을 결정하게 됩니다.</p>
+	<h3 id="saas-">SaaS 자산 관리</h3>
+	<p>통합 외에도 서비스 전반에 걸쳐 사용자, 데이터, 폴더, 저장소, 회의, 캘린더, 파일, 설정, 기록 등과 같은 다양한 자산 또는 "디지털 명사"를 관리하는 것은 사실 까다롭습니다. 스프레드시트로 누가 어디에 액세스하고 어떤 파일이 누구와 공유됐는지 추적하는 것을 관리하는 것은 어렵습니다.</p>
+	<p>비효율적이며 인간의 실수가 발생하기 쉽습니다. CASB SaaS 자산 관리를 통해 IT팀과 보안팀은 단일 대시보드에서 해당 데이터에 대한 모든 데이터 설정과 사용자 활동을 볼 수 있습니다. "이러한 6가지 서비스에서 사용자의 계정을 비활성화했습니까?" 같은 질문에 신속하게 답변할 수 있게 되면, 이는 각 서비스에 로그인하고 개별적으로 해결하는 대신 신속한 작업이 됩니다.</p>
+	<h3 id="--1">교정 가이드 + 자동화된 워크플로</h3>
+	<p>감지, 방지, 수정. 자세한 SaaS 교정 가이드를 통해 IT 관리자가 적절한 팀에 문제를 할당하고 해결할 수 있습니다. 상황에 따라 알아야 할 사항을 팀에 제공함으로써 문제가 다시 발생하지 않도록 방지합니다. 즉시 조처해야 하는 상황에서 자동화된 SaaS 워크플로를 통해 클릭 한 번으로 SaaS 보안 문제를 해결할 수 있는 기능을 제공합니다. OneDrive에 있는 해당 파일에서 공유 권한을 제거해야 합니까? 교정 버튼을 사용하면 언제 어디서나 조처할 수 있습니다.</p>
+	<h3 id="cloudflare-gateway-casb">Cloudflare Gateway + CASB</h3>
+	<p>Zero Trust 플랫폼에서 제품을 결합한다는 것은 하나의 원활한 경험을 통해 복잡한 문제를 해결함을 의미합니다. <a href="https://www.cloudflare.com/products/zero-trust/gateway/" target="_blank">Gateway</a>와 CASB에 힘입어, 고객은 즉각적으로 조처하여 <a href="https://blog.cloudflare.com/introducing-shadow-it-discovery/">섀도 IT</a>에서 논의를 진행할 수 있습니다. 몇 번의 클릭만으로, 게이트웨이 섀도 IT 보고서에서 감지된 미승인 SaaS 응용 프로그램은 CASB 통합을 통해 승인되고 안전한 응용 프로그램으로 전환될 수 있습니다. 이는 많은 솔루션을 강조하는 한 가지 예일 뿐이며, 이러한 솔루션이 Zero Trust 플랫폼으로 해결될 수 있어 기쁩니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image2-63.png" class="kg-image"></figure>
+	<h2 id="cloudflare-casb--1">Cloudflare CASB 베타 출시와 예상할 수 있는 사항</h2>
+	<p>CASB 베타에서는 첫날 Google Workspace처럼 인기 있는 통합을 배포할 수 있습니다. 또한 제품팀에 직접 액세스하여 다음에는 어떤 제품이 나오는지 도움말을 들을 수 있습니다. 초기 고객 다수와 긴밀히 협력하여 가장 중요한 통합과 주요 기능을 조정하게 되어 기쁩니다.</p>
+	<h2 id="-cloudflare-casb-">오늘 Cloudflare CASB 베타 시작하기</h2>
+	<p>당사는 바로 지금 대역 외 CASB 제품을 Zero Trust 플랫폼의 원활한 일부로 만들기 위해 노력하고 있습니다. 다음 달 초 첫 번째 베타 초대장을 발송할 예정이며, <a href="https://www.cloudflare.com/products/zero-trust/lp/casb-beta/" target="_blank">여기에서 액세스를 요청</a>할 수 있습니다. </p>
+	<p>CASB 제품을 통해 현재와 미래에 할 수 있는 일에 관한 멋진 아이디어가 몇 가지 있습니다. 이 게시물에서는 앞으로 있을 흥미로운 일 몇 가지를 강조하고 있지만, <a href="https://dash.cloudflare.com/sign-up/teams" target="_blank">여기에서 가입</a>하고 Cloudflare의 Zero Trust 플랫폼을 지금 바로 시작할 수 있습니다.</p>
+</div>

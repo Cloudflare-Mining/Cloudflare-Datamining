@@ -1,0 +1,49 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/Super-Bot-Fight-mode-3.png" class="kg-image"></figure>
+	<p>網際網路流量中幾乎有一半由機器人驅動。機器人橫行於網路已有數年，這無休止地入侵銀行帳戶，搶購 Bruno Mars 演唱會門票，以及抓取網站資料。由於機器人氾濫成災，我們在 2019 年推出了<a href="https://blog.cloudflare.com/cleaning-up-bad-bots/">機器人防禦模式</a>。自那時以來，超過 15 萬個人和小型企業使用了此產品，我們也收到無數請求，希望我們增添功能，提供更多分析、更多偵測和更多控制。</p>
+	<p>隆重推出超級機器人防禦模式。</p>
+	<p>從即刻起，任何擁有 Pro 或 Business 網站的 Cloudflare 使用者都可以對機器人採取新的措施。我們在儀表板中新增了進階功能，並對分析功能進行了一些令人振奮的更新。Free 方案客戶將保留「機器人防禦模式」賦予他們的所有權益，我們的「企業級機器人管理」產品也將繼續推動創新。</p>
+	<h2 id="-">儀表板内</h2>
+	<p>我們的機器人解決方案有了新家。本部落格中討論的功能並非一個開關這般簡單，所以我們專門為機器人保護建立了一個中心。前往 [防火牆] 應用並選擇 [機器人] 子標籤，即可開始使用。</p>
+	<p>新中心已對所有使用者啓用，包括使用企業級機器人管理的使用者。</p>
+	<h2 id="pro-">Pro 方案功能</h2>
+	<p>首先：我們將深受歡迎的「機器人報告」納入 Pro 方案。在這裡，您可以查看機器人流量的細分情況，這會即時更新以幫助您發現攻擊。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image3-41.png" class="kg-image"></figure>
+	<p>機器人報告包括三種流量類型：</p>
+	<ol>
+		<li>疑似自動化流量，可能源自惡意機器人。我們使用<a href="https://developers.cloudflare.com/bots/about/plans/biz-and-ent#bot-detection-engines" target="_blank">啟發式和機器學習等技術</a>來甄別這些請求。在大多數情形中，這種流量會損害您的網站，而不會產生任何有用的回報。</li>
+		<li>疑似人類流量是合法和重要的。理想情況下，您的絕大部分流量屬於這個類型。</li>
+		<li>已驗證的機器人流量來自互聯網上的良性機器人。我們已經驗證了 Google 等爬蟲和貝寶等支付通知服務。大多用戶選擇允許這些流量。</li>
+	</ol>
+	<p>所有這些資料也透過<a href="https://developers.cloudflare.com/analytics/graphql-api" target="_blank"> GraphQL </a>提供。因此，如果您希望定期監控機器人流量，API 可幫您做到。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/Bot-Monitoring-1.png" class="kg-image"></figure>
+	<p>Pro 使用者還可以採取更多措施來阻止機器人——選擇「設定機器人防禦模式」來新增保護。要點包括：</p>
+	<ul>
+		<li>可選擇挑戰或阻止來自「絕對自動化」來源的流量。請注意，這只會影響我們最有信心認為是來自機器人的流量。</li>
+		<li>可選擇啟用 JavaScript 偵測，以識別網際網路上的無頭瀏覽器和其他行為者。</li>
+		<li>可以選擇在保護範圍中包含或排除經過驗證的機器人。</li>
+	</ul>
+	<p>例如，如果您的網站與 Slack 交互，則可以排除經過驗證的機器人以幫助 Slackbot 完成其工作。或者，如果您發現廣告欺詐有所增加，可嘗試質詢自動流量並觀察結果。</p>
+	<h2 id="business-">Business 方案功能</h2>
+	<p>Business 方案現在也包含「機器人分析」。</p>
+	<p>我們最初<a href="https://blog.cloudflare.com/introducing-bot-analytics/">推出「機器人分析」</a>是為了賦予我們的 Enterprise 使用者更多可見性。但自發佈以來，Business 使用者已要求我們提供許多相同的見解。而且，Cloudflare 一直在努力實現技術大眾化（就像我們對<a href="https://blog.cloudflare.com/supercharging-firewall-events-for-self-serve/">防火牆事件</a>和其他產品所做的那樣），因此這也是勢在必行的事。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image2-41.png" class="kg-image"></figure>
+	<p>Business 使用者可以使用新版本的「機器人分析」；新版本在設計上可與下述緩解工具配合使用。使用者可以按類型檢視流量，調整時間範圍，並按不同的屬性（例如 IP 位址或使用者代理程式）來進行篩選。</p>
+	<p>另一好處：「機器人分析」可顯示我們對流量的分類<em>情況</em>。捲動到 [不同偵測來源的請求]，即可瞭解哪個引擎標記了特定的請求。如果您想進一步瞭解我們的偵測引擎，請閱讀有關此主題的<a href="https://blog.cloudflare.com/cloudflare-bot-management-machine-learning-and-more/">部落格文章</a>。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image1-48.png" class="kg-image"></figure>
+	<p>當然，我們也新增了緩解功能。Pro 使用者可以防禦「絕對自動化」流量，Business 使用者則也可防禦「疑似自動化」流量。兩者有何區別？後者包括由我們的<a href="https://developers.cloudflare.com/bots/about/plans/biz-and-ent#machine-learning" target="_blank">機器學習引擎</a>評分的請求。這些請求通常來自複雜的機器人，此類機器人透過循環 IP 或令人信服地模擬人類來規避簡單的安全工具。</p>
+	<p>您的網站可能會遭受庫存囤積攻擊。您列出了待售貨品，但幾乎在瞬間就被機器人搶走。可以理解，您的客戶會很沮喪（您也一樣！）。馬上啟用「機器人分析」來甄別攻擊者，如果攻擊屬於「疑似自動化」類別，您可考慮阻止此流量。</p>
+	<p>我們還意識到，不同網站對機器人流量的敏感度可能不同。使用者可適當地做出回應，可以是發起挑戰、完全封鎖，或什麼也不做。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image4-40.png" class="kg-image"></figure>
+	<p>這些功能全部包含在 Cloudflare Pro 方案中。啟用緩解之後，您可檢查 [防火牆事件] 標籤來查看流量遭到了封鎖還是挑戰。</p>
+	<h2 id="--1">企業級機器人管理</h2>
+	<p>對於具有更進階安全需求的使用者來說，<a href="https://www.cloudflare.com/zh-tw/products/bot-management" target="_blank">機器人管理</a>依然是最佳選擇，而且功能將不斷改良。</p>
+	<p>與機器人防禦模式不同，「機器人管理」直接構建到「防火牆」之中。這表示，使用者可以將其機器人保護限制為特定的路徑（例如 /login 端點）。「機器人管理」還包括細緻的機器人評分，使用者可以將其<a href="https://developers.cloudflare.com/firewall/recipes/challenge-bad-bots" target="_blank">與其他屬性配對</a>，形成更有力度的保護。當然，這包含<a href="https://developers.cloudflare.com/bots/about/plans/bm-subscription#anomaly-detection" target="_blank">異常偵測</a>，可用來識別網站上的異常模式。</p>
+	<p>我們也繼續改良機器人管理。例如，就在不久前，我們宣佈了 <a href="https://blog.cloudflare.com/api-abuse-detection/">API 濫用檢測的提前開放</a>。這項功能發佈前，我們經過了多月的研究和開發。我們使用無監督學習來映射 API、識別合法用戶流並將惡意機器人拒之門外。最終結果：Cloudflare 將能保護您的移動應用（無需 SDK）並保護您的 API 端點（無需提供模式）。<a href="https://blog.cloudflare.com/api-abuse-detection/">進一步瞭解</a>提前開放期。</p>
+	<p>這些功能（以及其他無數功能）將繼續守護互聯網最大的網站。如果您認為自己需要機器人管理，<a href="https://www.cloudflare.com/zh-tw/lp/automated-bot-traffic-report/" target="_blank">請與我們聯繫</a>。</p>
+	<h2 id="--2">有助於打造更安全的網際網路環境</h2>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/Group-1338-1.png" class="kg-image"></figure>
+	<p>Cloudflare 的使命一向是幫助建設更美好的網際網路。這一使命延伸到網際網路的每一個部份，每一位使用者。</p>
+	<p>今天推出的超級機器人防禦模式源於這一使命，特別是源自於這樣一個想法：形成統一戰線能夠加大我們對抗機器人的力量。我們保護的每個網站都會成為機器人浪費其資源的地方。Cloudflare 正在積極進行反擊，也發起了新的挑戰，利用緩送技術 (Tarpitting) 來挫敗機器人的運作。</p>
+	<p>我們鼓勵您現在就啟用超級機器人防禦模式。Cloudflare 現在為所有方案（包括 Free 方案）提供機器人保護，因此沒有藉口不嘗試一下！請測試新功能，並將您的想法分享給我們。</p>
+</div>

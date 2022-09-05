@@ -1,0 +1,34 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/11/multicloud-bandwidth-.png" class="kg-image"></figure>
+	<p>We are tremendously excited about the value our Bandwidth Alliance partner ecosystem adds to our customers. We’re on a mission to help make the internet a better place; and ensuring everyone can access cloud resources at zero-egress rates supports that mission in many ways. It’s an easy way for our clients to build modern, cloud-centric applications without the design constraint and financial burden of egress fees.</p>
+	<p>The cloudflare bandwidth alliance partner landscape continues to grow, and incorporate a diverse group of partners, with today’s second wave announcement. &nbsp;With over a dozen different partners, the range of choices can quickly become overwhelming. And, while these are all high-quality platforms which we are happy to recommend to our clients - their important differences will help determine the best fit for you, the customer.</p>
+	<p>In this post, I’ll lay out some of Cloudflare’s approach to this solution design question through the lens of a large client we recently worked with. We apply this approach across our full range of products and services, including many use cases far different from the Storage need we’ll dig into in this post. I hope that this can help all of our clients, or anyone else interested, mirror a similar approach. </p>
+	<h3 id="storage-looking-at-the-client-s-needs">Storage: Looking at the client’s needs</h3>
+	<p>The first step to solution design, whether on a technical issue or a business process, is a clear understanding of the needs. In this case, we identified a few key needs from our new client:</p>
+	<ul>
+		<li>Zero-egress storage option: required to manage costs</li>
+		<li>Costs: low cost storage given likelihood of high volume growth</li>
+		<li>Read requests: ability to support thousands of read requests per second</li>
+		<li>Write requests: less concern about rate of write requests</li>
+		<li>Volume: fairly high volume of storage; 500 TB +</li>
+		<li>Size: 10’s of millions of small objects in storage</li>
+		<li>API: compatible with the familiar S3 API</li>
+		<li>Security: authentication between the storage and Cloudflare </li>
+	</ul>
+	<p>These needs were specific to this large client but the factors of consideration are likely similar for any customer looking to store data on a host and deliver it through Cloudflare. The relative weight to each of these factors will depend on your particular application. </p>
+	<h3 id="looking-at-the-provider-landscape">Looking at the provider landscape</h3>
+	<p>With the client’s needs in mind, we were able to start filtering out some providers which did not align well to these needs. I generally find it useful to sort the options into three buckets:</p>
+	<!--kg-card-begin: markdown-->
+	<ol>
+		<li>Checks all the boxes</li>
+		<li>Soft no (fails to check a few boxes, but we may be able to find a middle ground)</li>
+		<li>Hard no (fails crucial boxes)</li>
+	</ol>
+	<!--kg-card-end: markdown-->
+	<p>First, several providers use a custom API instead of S3. This can have many advantages including cost and performance in some cases; but was not aligned with this client’s request given their development plans. We put all of those into ‘Soft No’ right away.</p>
+	<p>Then, we dug into each provider’s performance and economic model around read vs write requests; storage volume; and read object size. A few had economics or rate limits which were very challenging for the client’s use case, which put them into ‘Hard No’ category. For example; some providers charge a fee based on the number of Reads from storage. This client wanted to perform 10’s of millions of reads per day on average, across their many stored objects, so any pricing based on this would quickly break their economics. For other use cases, when a low number of large objects are stored, this would not be as much of a factor. </p>
+	<p>At this point, we had identified a partner which was a very good fit for our client. We introduced the teams, and began implementation. This customer is currently ramping up storage and delivery of their content based on this joint solution and we expect to be serving 100TB’s of their stored data over the next year or so. </p>
+	<h3 id="final-thoughts">Final thoughts</h3>
+	<p>In any technology implementation; and especially a complex engagement in Cloudflare’s ever-expanding ecosystem, it is important for us to keep the customer’s goals and use case first in mind. By building close partnerships with our clients, we are able to arrive at a clear understanding of these needs and design the best solution.</p>
+	<p>We’re excited to work with clients of any scale on Storage, Edge Compute, Security, and many technologies; and leverage our ever growing network to help them succeed.</p>
+</div>

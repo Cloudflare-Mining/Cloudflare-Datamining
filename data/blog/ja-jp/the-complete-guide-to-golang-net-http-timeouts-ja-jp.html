@@ -1,0 +1,142 @@
+<div class="post-content lh-copy gray1">
+	<p>GoでHTTPサーバーまたはクライアントを書くとき、タイムアウトは、最も間違えやすく、そして最も軽微な間違えです。選択する対象が数多くあり、間違えても、ネットワークの不具合やプロセスがハングアップするまで、長い間、何の影響もありません。</p>
+	<p>HTTPは複雑な多段階プロトコルであるため、タイムアウトには万能な解決策はありません。ストリーミングエンドポイントと JSON API と<a href="https://en.wikipedia.org/wiki/Comet_%28programming%29" target="_blank">Comet</a>エンドポイントを考えてみてください。確かに、デフォルトは多くの場合、あなたが望むものではありません。</p>
+	<p>この記事では、お客様がタイムアウトを適用する必要があるかもしれないさまざまな段階を取り出し、サーバーとクライアント側の両方で、これを行う色々な方法を見ていきます。</p>
+	<h3 id="setdeadline">SetDeadline</h3>
+	<p>まず、タイムアウトを実装するためにGoが公開するネットワークプリミティブの「期限」について知る必要があります。</p>
+	<p><a href="https://golang.org/pkg/net/#Conn" target="_blank">net.Conn</a>のSet[Read|Write]Deadline(time.Time)メソッドで公開されているように、期限は絶対時間で、期限に達するとすべてのI/O操作がタイムアウトエラーで失敗します。</p>
+	<p><strong>期限はタイムアウトではありません。</strong>一度セットされると、ずっと機能したままになります（または SetDeadlineに次の呼び出しがくるまで)、その間接続が使用されているか、どのように使用されているかは関係ありません。ですから、 SetDeadlineを使ってタイムアウトを構築するには、<em>すべての</em>読み/書き操作の前にそれを呼び出す必要があります。</p>
+	<p>お客様は、おそらく自らSetDeadlineを呼び出したいとは考えないはずです。代わりにnet/httpに、より高いレベルのタイムアウトを使って呼び出してもらうことになるでしょう。しかし、すべてのタイムアウトは期限付きで実装され、データが送受信されるたびにリセットわけではないことに注意してください。</p>
+	<h3 id="-">サーバーのタイムアウト</h3>
+	<p><em>ブログ記事</em><a href="https://blog.cloudflare.com/exposing-go-on-the-internet/"><em>「So you want to expose Go on the Internet」（Goをインターネットで公開する） </em></a><em>では、サーバータイムアウトに関する情報を多く扱っており、特に、HTTP/2 とGo 1.7のバグについての詳細な説明をしています。</em></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/06/Timeouts-001.png" class="kg-image" alt="HTTP server phases"></figure>
+	<p>インターネットに公開されるHTTP サーバーが、クライアント接続でタイムアウトを実行することは重要です。タイムアウトが実行されなければ、クライアントが非常に遅かったり消えたりして、ファイル記述子の漏えいにつながる可能性があり、最終的に次のようなエラーが生じることになります。</p>
+	<p><code>http: Accept error: accept tcp [::]:80: accept4: too many open files; retrying in 5ms</code></p>
+	<p><code>http.Server</code>では、 <code>ReadTimeout</code>と <code>WriteTimeout</code>の2つのタイムアウトが公開されています。この二つを設定するには、サーバーを明示的に使用して行います。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-go">srv := &amp;http.Server{
+    ReadTimeout: 5 * time.Second,
+    WriteTimeout: 10 * time.Second,
+}
+log.Println(srv.ListenAndServe())
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p><code>ReadTimeout</code>は、接続が許可されてからリクエスト本文が完全に読まれるまでの時間をカバーします（本文を読む場合、読まない場合はヘッダーの終わりまで）。これは<a href="https://github.com/golang/go/blob/3ba31558d1bca8ae6d2f03209b4cae55381175b3/src/net/http/server.go#L750" target="_blank">「許可」した直後に</a> <code>SetReadDedline</code>を呼び出すことで <code>net/http</code>で実装されます。</p>
+	<p><code>WriteTimeout</code>は、通常、リクエストヘッダーの読み込みが完了した後から応答書き込みの最後（ServeHttpの有効期間）までの時間をカバーします。 <code>readRequest</code>の最後に <code>SetWriteDeadline</code>を呼び出すことでこれを行います。</p>
+	<p>ただし、接続がHTTPSの場合、<a href="https://github.com/golang/go/blob/3ba31558d1bca8ae6d2f03209b4cae55381175b3/src/net/http/server.go#L1477-L1483" target="_blank">「許可」の直後に</a> <code>SetWriteDeadline</code>が呼び出されます。これは、TLSハンドシェイクの一部として書かれたパケットをカバーするためです。やっかいなことに、これは（この場合のみ） <code>WriteTimeout</code>に最終的にヘッダーの読み込みと最初のバイトの待ち時間が含まれることを意味します。</p>
+	<p>信頼できないクライアントやネットワークを処理する場合は、両方のタイムアウトを設定する必要があります。これにより、書き込みや読み取りが遅くなることでクライアントの接続が断たれないようにするのです。</p>
+	<p>最後に、 <a href="https://golang.org/pkg/net/http/#TimeoutHandler" target="_blank"><code>http.TimeoutHandler</code></a>があります。これは、サーバーパラメーターではなく、ハンドラーラッパーで、 &nbsp;<code>ServeHTTP</code>の呼び出しの最大時間を制限するものです。これは、応答をバッファリングし、期限を超えた場合は、<em>504 Gateway Timeout</em>を送信します。1.6では壊れていましたが、1.6.2では修正されたことに注意してください。</p>
+	<h4 id="http-listenandserve-">http.ListenAndServeのやり方は間違っている</h4>
+	<p>ちなみに、これは <code>http.Server</code>を <code>http.ListenAndServe</code>、 &nbsp;<code>http.ListenAndServeTLS</code>、 &nbsp;<code>http.Serve</code>のようにバイパスさせるパッケージレベルの利便性はパブリックインターネットサーバーには適さないという意味です。</p>
+	<p>これらの機能は、デフォルトでタイムアウト値をオフのままにし、これを有効にする方法もないため、これらの機能を使用すると、すぐに接続がリークし、ファイル記述子が不足します。私自身、少なくとも6回はこのミスを経験しました。</p>
+	<p>その代わりに、数段落前で示したように、 <code>ReadTimeout</code>と <code>WriteTimeout</code>でhttp.Serverインスタンスを作って、その対応するメソッドを使用します。</p>
+	<h4 id="--1"><strong>ストリーミングについて</strong></h4>
+	<p>非常にやっかいなことに、 <code>ServeHTTP</code>から <code>net.Conn</code>の基盤となるものにアクセスする方法がないため、応答をストリームしようとするサーバーが、 <code>WriteTimeout</code>を取り消さざるを得なくなります（これが、デフォルトで0になっている理由とも関係しているかもしれません）。その理由は、 <code>net.Conn</code>アクセスがなければ、各「Write（書き込み）」が、適切なアイドル（完全ではない）タイムアウトを実装する前に、 <code>SetWriteDeadline</code>を呼び出す方法がないためです。</p>
+	<p>また、ブロックされた <code>ResponseWriter.Write</code>をキャンセルする方法もありません。それは、 <code>ResponseWriter.Close</code> （インターフェイスのアップグレードを介してアクセス可能）が、同時書き込みを解除するように文書化されていないためです。したがって、 <code>Timer</code>を使って手動でタイムアウトを構築する方法もないのです。</p>
+	<p>残念ながら、これはストリーミングサーバーが低速なクライアントから身を守ることができないことを意味します。</p>
+	<p>私は<a href="https://github.com/golang/go/issues/16100" target="_blank">問題とともにいくつかの提案をあげておりますので</a>、そちらで、ぜひフィードバックをお願いします。</p>
+	<h3 id="--2">クライアントのタイムアウト</h3>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/06/Timeouts-002-1.png" class="kg-image" alt="HTTP Client phases"></figure>
+	<p>クライアント側のタイムアウトは、使用するタイムアウトによって、より簡単になる場合もあれば、はるかに複雑になる場合もありますが、リソースの漏えいやフリーズを防止するためにも同様に重要です。</p>
+	<p>最も使いやすいのは、<a href="https://golang.org/pkg/net/http/#Client" target="_blank">http.Client</a>の <code>Timeout</code>フィールドです。これはダイアルから（接続が再利用されていない場合）本文の読み込みまで、交換（exchange）全体をカバーするものです。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-go">c := &amp;http.Client{
+    Timeout: 15 * time.Second,
+}
+resp, err := c.Get("https://blog.filippo.io/")
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>上記のサーバー側のケースと同様に、 <code>http.Get</code>のようなパッケージレベルの機能は<a href="https://golang.org/pkg/net/http/#DefaultClient" target="_blank">クライアントをタイムアウトなしで使用するため</a>、オープンなインターネットでの使用は危険です。</p>
+	<p>他にもきめ細かな制御があり、お客様側で設定できるタイムアウトは他にも多くあります。</p>
+	<ul>
+		<li>net.Dialer.Timeoutは、TCP接続の確立に要する時間を制限します (新しい接続が必要な場合)。</li>
+		<li>http.Transport.TLSHandshakeTimeoutは、TLSハンドシェイクの実行に要する時間を制限します。</li>
+		<li>http.Transport.ResponseHeaderTimeoutは、レスポンスのヘッダーを読み取る時間を制限します。</li>
+		<li>HTTP.Transport.ExpectContinueTimeoutは、「<em>Expect:100-continue」を含む</em>リクエストヘッダーを送信してから本文を送信する許可を受けるまでの間、クライアントが待機する時間を制限します。1.6でこれを設定すると、<a href="https://github.com/golang/go/issues/14391" target="_blank">HTTP/2が無効になる</a>こと注意してください。(DefaultTransport<a href="https://github.com/golang/go/commit/406752b640fcc56a9287b8454564cffe2f0021c1#diff-6951e7593bfb1e773c9121df44df1c36R179" target="_blank">は、1.6.2から特別なケースになっています</a>)。</li>
+	</ul>
+	<!--kg-card-begin: markdown-->
+	<pre><code>c := &amp;http.Client{
+    Transport: &amp;http.Transport{
+        Dial: (&amp;net.Dialer{
+                Timeout:   30 * time.Second,
+                KeepAlive: 30 * time.Second,
+        }).Dial,
+        TLSHandshakeTimeout:   10 * time.Second,
+        ResponseHeaderTimeout: 10 * time.Second,
+        ExpectContinueTimeout: 1 * time.Second,
+    }
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>私が知る限り、リクエストを送信するのにかかる時間を具体的に制限する方法はありません。リクエスト本文の読み取りにかかる時間は、time.Timerで手動でコントロールすることができます。これは、クライアントメソッドが返された後の出来事だからです（リクエストをキャンセルする方法については、以下を参照してください）。</p>
+	<p>最後に、新しい1.7にはhttp.Transport.IdleConnTimeoutがあります。これは、クライアントリクエストのブロッキングフェーズを制御するものではありませんが、アイドル接続が、接続プールで待機する時間を制御します。</p>
+	<p>デフォルトでは、クライアントはリダイレクトに従うことに留意してください。 &nbsp;<code>http.Client.Timeout</code>には、リダイレクト後に費やされるすべての時間が含まれますが、詳細なタイムアウトはリクエストごとに固有です。これは、 http.Transport がリダイレクトの概念をもたない下位レベルのシステムのためです。</p>
+	<h4 id="--3"><strong>キャンセルとコンテキスト</strong></h4>
+	<p> <code>net/http</code>では、クライアントリクエストを取り消す方法が2つあります。 Request.Cancelと、1.7の新機能、Contextです。</p>
+	<p>Request.Cancelはオプショナルなチャネルで、設定してから閉じると、まるで Request.Timeout が選択されたように、リクエストが停止されます。（これらは実際に同じメカニズムで実装されますが、この記事を書いている間に、1.7で <a href="https://github.com/golang/go/issues/16094" target="_blank">バグを1つみつけました</a>。そのバグでは、すべてのキャンセルがタイムアウトエラーとして返されます。）</p>
+	<p>より細かいタイムアウトの設定を行うには、 <code>Request.Cancel</code>と <code>time.Timer</code>を使用することができます。これならストリーミングが許可され、本文からデータを読み込むたびに、期限が引き伸ばされます。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-go">package main
+
+import (
+	"io"
+	"io/ioutil"
+	"log"
+	"net/http"
+	"time"
+)
+
+func main() {
+	c := make(chan struct{})
+	timer := time.AfterFunc(5*time.Second, func() {
+		close(c)
+	})
+
+        // Serve 256 bytes every second.
+	req, err := http.NewRequest("GET", "http://httpbin.org/range/2048?duration=8&amp;chunk_size=256", nil)
+	if err != nil {
+		log.Fatal(err)
+	}
+	req.Cancel = c
+
+	log.Println("Sending request...")
+	resp, err := http.DefaultClient.Do(req)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer resp.Body.Close()
+
+	log.Println("Reading body...")
+	for {
+		timer.Reset(2 * time.Second)
+                // Try instead: timer.Reset(50 * time.Millisecond)
+		_, err = io.CopyN(ioutil.Discard, resp.Body, 256)
+		if err == io.EOF {
+			break
+		} else if err != nil {
+			log.Fatal(err)
+		}
+	}
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>上記の例では、5秒のタイムアウトをリクエストを実行するフェーズに設定していますが、8ラウンドで本文を読み取るのに少なくとも8秒間を費やし、そのたびに2秒のタイムアウトが必要になります。このようにしながら、途切れることなく、ストリーミングを永久に続けることができます。本文のデータの受信に2秒以上かかる場合は、io.CopyNが「 <code>net/http: request canceled</code>」を返します。</p>
+	<p>1.7では、contextパッケージはスタンダードライブラリに進化しています。そこでは <a href="https://blog.golang.org/context" target="_blank">コンテキストに関する情報がたくさんあります</a>が、ここでコンテキストは、Request.Cancelに代わるもので、非推奨であることを理解してください。</p>
+	<p>コンテキストを使ってリクエストをキャンセルするには、 <code>context.WithCancel</code>で、新しいコンテキストと <code>cancel()</code>機能を入手して、 <code>Request.WithContext</code>と結び付けられているリクエストを作成します。リクエストをキャンセルしたい場合には、 &nbsp;<code>cancel()</code>を呼び出すことで、コンテキストをキャンセルします。 （キャンセルチャネルを閉じる代わりにこれを行います）。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-go">ctx, cancel := context.WithCancel(context.TODO())
+timer := time.AfterFunc(5*time.Second, func() {
+	cancel()
+})
+
+req, err := http.NewRequest("GET", "http://httpbin.org/range/2048?duration=8&amp;chunk_size=256", nil)
+if err != nil {
+	log.Fatal(err)
+}
+req = req.WithContext(ctx)
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>コンテキストには利点があり、親コンテキスト（我々が<code>context.WithCancel</code>に送信したもの）がキャンセルされると、我々の分もキャンセルされ、コマンドがパイプライン全体に伝達されます。</p>
+	<p>これでおしまいです。読者のみなさまの<code>ReadDeadline</code>を超過していないといいのですが!</p>
+	<p>もし、Goスタンダードライブラリに関する詳細情報などにご関心がおありでしたら、<a href="https://www.cloudflare.com/ja-jp/careers/" target="_blank">当社では新しい人材を、ロンドン、オースティン（TX）、シャンペーン（IL）、サンフランシスコ、シンガポールで募集中です。</a></p>
+</div>

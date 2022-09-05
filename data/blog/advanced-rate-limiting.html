@@ -1,0 +1,80 @@
+<div class="post-content lh-copy gray1">
+	<!--kg-card-begin: markdown-->
+	<p><em><small>This post is also available in <a href="https://blog.cloudflare.com/zh-cn/advanced-rate-limiting-zh-cn/">简体中文</a> and <a href="https://blog.cloudflare.com/ja-jp/advanced-rate-limiting-ja-jp/">日本語</a>.</small></em></p>
+	<!--kg-card-end: markdown-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image1-51.png" class="kg-image" alt="Introducing Advanced Rate Limiting"></figure>
+	<p>Still relying solely on IP firewalling? It’s time to change that.</p>
+	<p>While the IP address might still be one of the core technologies allowing networks to function, its value for security is long gone. IPs are rarely static; nowadays, mobile operators use carrier-grade network address translation (CGNAT) to share the same IP amongst thousands of individual devices or users. Bots then carry out distributed attacks with low request volume from different IPs to elude throttling. Furthermore, many countries consider IP addresses to be personal data, and it would be a great advancement for privacy if a replacement could be found for elements of security that currently rely on IP addresses to function. A product that is affected by this trend is rate limiting.</p>
+	<p>Rate limiting is designed to stop requests from overloading a server. It relies on rules. A rate limiting rule is defined by a filter (which typically is a path, like <code>/login</code>) and the maximum number of requests allowed from each user over a period of time. When this threshold is exceeded, an action is triggered (usually a block) for subsequent requests from the same user for a period of time (known as a timeout). Traditional throttling solutions bucket together requests with the same IP since they follow the logic “requests from the same IP equals requests from the same user”. However, we hear from customers how not effective it is to use IP-based rate limiting to protect traffic, especially for authenticated APIs.</p>
+	<p>We are excited to launch Advanced Rate Limiting, a leap forward for throttling technologies. It allows counting requests based on virtually any characteristics of the HTTP request, regardless of its source IP. Rate Limiting is a great defense against brute force, scraping, or targeted DDoS attacks. Consequences of these attacks include leaking of sensitive data, account takeover or exhausting back-end resources. Keeping the rate of requests under control is especially crucial for APIs where each call can trigger costly computation on the server origin.</p>
+	<h2 id="a-step-change-innovation-for-throttling">A step-change innovation for throttling</h2>
+	<p>Advanced Rate Limiting is now part of the <a href="https://blog.cloudflare.com/new-waf-experience/">Web Application Firewall</a> (WAF). It’s integrated with Firewall Rules and allows counting requests based on characteristics other than IP.</p>
+	<p>With Advanced Rate Limiting, you can:</p>
+	<ol>
+		<li>Define the rule filter using all HTTP request characteristics, such as URI, method, headers, cookies and body fields. Customers on a Bot Management plan get access to the bot score dynamic field too. You can also use two characteristics of the HTTP response to trigger rate limiting: status code and response headers.</li>
+		<li>Choose to count requests based on: IP, country, header, cookie, AS Number (ASN), value of a query parameter, or bots fingerprint (JA3). You can use any of these fields individually or by combining them, so that requests are bucketed when these values are the same. It can also set the threshold as the maximum complexity your origin can handle, rather than the maximum number of requests you want to allow.</li>
+		<li>Use it on all your traffic. As an Enterprise customer, Rate Limiting could be bought on a portion of your total traffic. With Advanced Rate Limiting, you can use the product on all of your traffic without having to worry about caps. Finally, Advanced Rate Limiting is available on the entire Cloudflare network, including in China.</li>
+	</ol>
+	<h2 id="designed-to-integrate-with-your-application">Designed to integrate with your application</h2>
+	<p>In this section, we discuss a few common use cases for using Advanced Rate Limiting to protect your web or API traffic. You can mix and match all these configurations to better suit your security needs and your application. All these use cases can be achieved via dashboard, API and Terraform.</p>
+	<h3 id="use-case-protect-web-traffic-with-more-granular-rules">Use case - Protect web traffic with more granular rules</h3>
+	<p><strong>Flexible filters.</strong> You can now write rate limiting rules using all the fields of the HTTP request. For example, you can trigger a rule for requests with specific headers (such as User Agent) or throttle traffic from bots sharing the same ASN.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image3-19.png" class="kg-image" alt="With Advanced Rate Limiting you get access to all HTTP request fields available in the rule builder."></figure>
+	<p><strong>Separate mitigation expression. </strong>You can now separate the mitigation expression from the counting expression. This allows you to define on what part of your website you want to block users once the threshold is reached, and what conditions the request (and response) needs to meet in order to increase the counter. For example, you can count requests to your <code>/login</code> endpoint and then block the same user on the whole site. This is especially useful when you want to include response fields in your counting expression, for example, by counting only requests that return a specific response code but then block a larger portion of traffic.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image2-40.png" class="kg-image" alt="With Advanced Rate Limiting you can count on a path and block across your whole website."></figure>
+	<p><strong>Use dynamic fields. </strong>Customers can now combine Rate Limiting with rules detecting known vulnerabilities, such as <a href="https://blog.cloudflare.com/waf-ml/">WAF machine learning score</a>. For example, you can block eyeballs after a number of consecutive requests flagged as SQLi have hit your site. Another use case is to trigger a throttling rule only for requests likely originated from bots (by using the bot score in the rule filter) or after a number of login attempts with stolen credentials have been performed (<a href="https://developers.cloudflare.com/waf/managed-rulesets/exposed-credentials-check" target="_blank">link</a>). You can also use the JA3 fingerprint as a counting dimension, so that you leverage our Bot Machine Learning algorithm to bucket traffic from bots with the same fingerprint.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image4-4.png" class="kg-image" alt="With Advanced Rate Limiting you can use dynamic fields in the rule filter."></figure>
+	<h3 id="use-case-protect-apis-by-integrating-rate-limiting-with-your-application">Use case - Protect APIs by integrating Rate Limiting with your application</h3>
+	<p><strong>Count requests based on session ID. </strong>API traffic is often authenticated, and the session can be tracked with a cookie, header (such as <code>x-api-key</code>) or query value. Advanced Rate Limiting allows you to define where the ID is in the request and track the number of requests relative to the same session, regardless of the IP. This can be an effective way to fend off distributed bot attacks that scrape sensitive data, such as product prices or airline passenger data.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image5-5.png" class="kg-image" alt="You can group requests based on cookie, header, query and other characteristics."></figure>
+	<p><strong>Trigger rule based on a request body content. </strong>The rule filter gives access to the raw body and the JSON-parsed body. You can count requests where a body JSON field has a specific value using the function <code>lookup_json_field()</code> available in the rule filter. This can be useful for GraphQL APIs, where different calls (or mutations) can be performed through the same endpoint but specifying different operations in the request body.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image6-1.png" class="kg-image" alt="You can trigger rules based on request body content."></figure>
+	<!--kg-card-begin: markdown-->
+	<p><strong>Rate Limiting based on complexity (<strike>coming soon in beta</strike> available now via API)</strong>. Some API calls are more complex to serve than others, so counting on the number of requests doesn’t really reflect the actual cost to serve. GraphQL APIs are an example: each call complexity can vary widely based on how much processing the server needs to carry out to serve the request. Your origin can estimate the complexity of each request and return it along with the response, and rate limiting can increment the counter by the complexity estimate provided by the origin. You can then set a complexity threshold in the rule and, when it’s exceeded, subsequent requests will trigger an action, such as block.</p>
+	<!--kg-card-end: markdown-->
+	<h2 id="packaging">Packaging</h2>
+	<p>Advanced Rate Limiting is generally available for Enterprise customers on the new Advanced plan. See below for more details on what’s included in each plan. Reach out to your Cloudflare account team or Customer Success Manager (CSM) to learn more. If you are a Pro or Biz customer, you won’t be able to use Advanced Rate Limiting, but we are planning to give some advantages to Pro and Biz plans as well.</p>
+	<!--kg-card-begin: markdown-->
+	<table>
+		<thead>
+			<tr>
+				<th></th>
+				<th>Enterprise Core</th>
+				<th>Enterprise Advanced</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Available request fields in filter</td>
+				<td>Selected standard fields:<br>URL<br>Method<br>Headers<br>Source IP</td>
+				<td>All standard fields<br>Body fields<br>Account takeover fields<br>Dynamic fields (including Bot Score*)</td>
+			</tr>
+			<tr>
+				<td>Available response fields in counting filter</td>
+				<td>Response code<br>Response Headers</td>
+				<td>Response code<br>Response Headers</td>
+			</tr>
+			<tr>
+				<td>Counting characteristics</td>
+				<td>IP</td>
+				<td>IP<br>IP with NAT awareness<br>ASN<br>Country<br>Headers<br>Cookie<br>Query<br>JA3*</td>
+			</tr>
+			<tr>
+				<td>Complexity</td>
+				<td>No</td>
+				<td>Yes</td>
+			</tr>
+			<tr>
+				<td>Maximum sampling period</td>
+				<td>10 minutes</td>
+				<td>1 hour</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<!--kg-card-begin: markdown-->
+	<p><small><sup>*</sup>requires Bot Management plan</small></p>
+	<!--kg-card-end: markdown-->
+	<h2 id="what-s-next-for-rate-limiting">What’s next for Rate Limiting</h2>
+	<p>In the coming months, we are going to collect feedback from our customers to decide what additional features we should include in Advanced Rate Limiting. We have already a few ideas we are exploring, including automatically profiling your traffic and recommending thresholds for your rules.</p>
+</div>

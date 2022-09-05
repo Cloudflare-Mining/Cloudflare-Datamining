@@ -1,0 +1,20 @@
+<div class="post-content lh-copy gray1">
+	<p><em><strong>更新自 2022 年 6 月 24 日</strong>：我們已將每秒發動 2600 個請求之 DDoS 攻擊的機器人網路命名為<strong>「螳螂」</strong>，因為它就像</em><a href="https://en.wikipedia.org/wiki/Mantis_shrimp" target="_blank"><em>螳螂蝦</em></a><em>一樣小，但卻非常強大。「螳螂」在過去一週特別活躍，透過規模達每秒 900 萬個請求的 HTTP DDoS 攻擊，來鎖定 VoIP 和加密貨幣網際網路設備。</em></p>
+	<p>在上週，Cloudflare 自動偵測並緩解了一場每秒 2600 萬個請求的 <a href="https://www.cloudflare.com/en-gb/learning/ddos/what-is-a-ddos-attack/" target="_blank">DDoS 攻擊</a>，這是有記錄以來最大規模的 HTTPS DDoS 攻擊。</p>
+	<p>該攻擊目標是使用 Cloudflare 免費方案的客戶網站。與先前<a href="https://blog.cloudflare.com/15m-rps-ddos-attack/">每秒 1500 萬個請求的攻擊</a>類似，這種攻擊大部分也是源自雲端服務提供者，而不是住宅網際網路服務提供者。這表示他們使用遭劫持的虛擬機器和功能強大的伺服器來發動攻擊，而不是利用較弱的物聯網 (IoT) 裝置。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/06/image1-7.png" class="kg-image" alt="Graph of the 26 million request per second DDoS attack"></figure>
+	<h3 id="-">破紀錄的攻擊</h3>
+	<p>過去一年來，我們見證了一個又一個的破紀錄攻擊。2021 年 8 月時，我們揭露了一個<a href="https://blog.cloudflare.com/zh-tw/cloudflare-thwarts-17-2m-rps-ddos-attack-the-largest-ever-reported-zh-tw/">每秒 1720 萬個請求的 HTTP DDoS 攻擊</a>，最近則是 4 月的<a href="https://blog.cloudflare.com/15m-rps-ddos-attack/">每秒 1500 萬個請求的 HTTPS DDoS 攻擊</a>。所有攻擊都由我們採用<a href="https://blog.cloudflare.com/zh-tw/deep-dive-cloudflare-autonomous-edge-ddos-protection-zh-tw/">自發邊緣 DDoS 保護系統</a>的 <a href="https://blog.cloudflare.com/http-ddos-managed-rules/">HTTP DDoS 受管規則集</a>來自動偵測。</p>
+	<p>每秒 2600 萬個請求的 DDoS 攻擊源自小型但強大，由 5067 個裝置組成的機器人網路。一般而言，每個節點每秒最多產生約 5,200 個請求。為了與這種機器人網路的規模作對比，我們一直在追蹤另一個更大但不太強大，由超過 730,000 個裝置組成的機器人網路。後者雖然是更大的機器人網路，但每秒產生的請求無法超過一百萬個；亦即每個裝置平均每秒約產生 1.3 個請求。顯然，由於使用虛擬機器和伺服器，這個機器人網路平均而言強上 4,000 倍。</p>
+	<p>此外值得注意的是，此攻擊透過 <a href="https://www.cloudflare.com/learning/ssl/what-is-https/" target="_blank">HTTPS</a> 進行。HTTPS DDoS 攻擊在所需運算資源方面較為昂貴，因為建立安全的 <a href="https://www.cloudflare.com/learning/ssl/transport-layer-security-tls/" target="_blank">TLS</a> 加密連線的費用較高。因此，攻擊者發動攻擊所需的花費更多，而受害者要對攻擊進行緩解也是如此。我們過去看過非常大型的攻擊是透過（未加密的）HTTP，但這種攻擊因其規模所需的資源而與眾不同。</p>
+	<p>在不到 30 秒內，這個機器人網路從 121 個國家/地區超過 1,500 個網路產生了超過 2 億 1200 萬個 HTTPS 請求。主要的國家/地區包括印尼、美國、巴西和俄羅斯。約有 3% 的攻擊是透過 Tor 節點。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/06/image3-9.png" class="kg-image" alt="Chart of the top source countries of the attack" title="Chart"></figure>
+	<p>主要的來源網路是位於法國的 OVH（自主系統碼 16276）、印尼的 Telkomnet (ASN 7713)、美國的 iboss (ASN 137922) 和利比亞的 Ajeel (ASN 37284)。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/06/image3-8.png" class="kg-image" alt="Chart of the top source networks of the attack" title="Chart"></figure>
+	<h3 id="ddos-">DDoS 威脅情勢</h3>
+	<p>在考量 DDoS 保護時，務必要瞭解攻擊情勢。檢視我們最新的 <a href="https://blog.cloudflare.com/zh-tw/ddos-attack-trends-for-2022-q1-zh-tw/">DDoS 趨勢報告</a>時，我們可以看到大部分攻擊都是小型的，例如網路破壞，但即使是小型的攻擊，也可能會嚴重影響未受保護的網際網路設備。另一方面，大型攻擊的規模和頻率不斷增長，但時間仍是短且快速。攻擊者將機器人網路的力量集中在以單一、快速毀滅性打擊的方式來嘗試和大肆破壞，藉此避免偵測。</p>
+	<p>DDoS 攻擊可能是由人為發起，但卻是由機器產生。等到人類能夠回應攻擊時，可能為時已晚。此外，即使攻擊相當快速，網路和應用程式的故障事件也可能會在攻擊結束之後延續很長一段時間，而這會使您的營收和聲譽有所損失。為此，建議透過永遠開啟的自動化保護服務，來保護您的網際網路設備，這樣就不需要仰賴人類來偵測和緩解攻擊。</p>
+	<h3 id="--1">協助打造更安全的網際網路環境</h3>
+	<p>在 Cloudflare，我們的一切工作由我們的使命引導，以協助打造更美好的網際網路。DDoS 團隊的遠見衍生自此使命：我們的目標是讓 DDoS 攻擊成為明日黃花。我們提供的保護層級是<a href="https://blog.cloudflare.com/unmetered-mitigation/">非計量且無限制的</a>。此層級不會受攻擊規模、攻擊數量或攻擊持續時間所限制。這一點在現今尤其重要，因為我們最近看到攻擊變得<a href="https://blog.cloudflare.com/zh-tw/ddos-attack-trends-for-2022-q1-zh-tw/">越來越大且更為頻繁</a>。</p>
+	<p>尚未使用 Cloudflare？<a href="https://dash.cloudflare.com/sign-up" target="_blank">立即開始使用</a>，您可使用我們的 Free 和 Pro 方案保護您的網站，或<a href="https://www.cloudflare.com/magic-transit/" target="_blank">聯絡我們</a>獲得全面的 DDoS 保護，使用 Magic Transit 保護您的整個網路。</p>
+</div>

@@ -1,0 +1,41 @@
+<div class="post-content lh-copy gray1">
+	<p>BGP leaks and hijacks have been accepted as an unavoidable part of the Internet for far too long. We relied on protection at the upper layers like TLS and DNSSEC to ensure an untampered delivery of packets, but a hijacked route often results in an unreachable IP address. Which results in an Internet outage. </p>
+	<p>The Internet is too vital to allow this known problem to continue any longer. It's time networks prevented leaks and hijacks from having any impact. It's time to make BGP safe. No more excuses.</p>
+	<p>Border Gateway Protocol (BGP), a protocol to exchange routes has existed and evolved since the 1980s. Over the years it has had security features. The most notable security addition is Resource Public Key Infrastructure (RPKI), a security framework for routing. It has been the subject of <a href="https://blog.cloudflare.com/tag/rpki/">a few blog posts</a> following our deployment in mid-2018.</p>
+	<p>Today, the industry considers RPKI mature enough for widespread use, with a sufficient ecosystem of <a href="https://github.com/cloudflare/gortr" target="_blank">software</a> and <a href="https://rpki.cloudflare.com" target="_blank">tools</a>, including tools we've written and open sourced. We have fully deployed Origin Validation on all our BGP sessions with our peers and signed our prefixes.</p>
+	<p>However, the Internet can only be safe if the major network operators <a href="https://www.ndss-symposium.org/wp-content/uploads/2017/09/ndss2017_06A-3_Gilad_paper.pdf" target="_blank">deploy RPKI</a>. Those networks have the ability to spread a leak or hijack far and wide and it's vital that they take a part in stamping out the scourge of BGP problems whether inadvertent or deliberate.</p>
+	<p>Many like AT&amp;T and Telia pioneered global deployments of RPKI in 2019. They were successfully followed by Cogent and NTT in 2020. Hundreds networks of all sizes have done a tremendous job over the last few years but there is still work to be done.</p>
+	<p>If we observe the customer-cones of the networks that have deployed RPKI, we see around 50% of the Internet is more protected against route leaks. That's great, but it's nothing like enough.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/04/isbgpsafeyet.png" class="kg-image"></figure>
+	<p>Today, we are releasing <a href="https://isbgpsafeyet.com/" target="_blank">isBGPSafeYet.com</a>, a website to track deployments and filtering of invalid routes by the major networks.</p>
+	<p>We are hoping this will help the community and we will crowdsource the information on the website. The source code is available on <a href="https://github.com/cloudflare/isbgpsafeyet.com" target="_blank">GitHub</a>, we welcome suggestions and contributions.</p>
+	<p>We expect this initiative will make RPKI more accessible to everyone and ultimately will reduce the impact of route leaks. Share the message with your Internet Service Providers (ISP), hosting providers, transit networks to build a safer Internet.</p>
+	<p>Additionally, to monitor and test deployments, we decided to announce two bad prefixes from our 200+ data centers and via the 233+ Internet Exchange Points (IXPs) we are connected to:</p>
+	<ul>
+		<li>103.21.244.0/24</li>
+		<li>2606:4700:7000::/48</li>
+	</ul>
+	<p>Both these prefixes should be considered <em>invalid</em> and should not be routed by your provider if RPKI is implemented within their network. This makes it easy to demonstrate how far a bad route can go, and test whether RPKI is working in the real world.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/04/Screen-Shot-2020-04-16-at-6.36.48-PM.png" class="kg-image">
+		<figcaption><a href="https://rpki.cloudflare.com/?validateRoute=13335_103.21.244.0%2F24" target="_blank">A Route Origin Authorization for 103.21.244.0/24 on rpki.cloudflare.com</a></figcaption>
+	</figure>
+	<p>In the test you can run on <a href="https://isBGPSafeYet.com" target="_blank">isBGPSafeYet.com</a>, your browser will attempt to fetch two pages: the first one valid.rpki.cloudflare.com, is behind an RPKI-valid prefix and the second one, invalid.rpki.cloudflare.com, is behind the RPKI-invalid prefix.</p>
+	<p>The test has two outcomes:</p>
+	<ul>
+		<li>If both pages were correctly fetched, your ISP accepted the invalid route. It does not implement RPKI.</li>
+		<li>If only valid.rpki.cloudflare.com was fetched, your ISP implements RPKI. You will be less sensitive to route-leaks.</li>
+	</ul>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/04/blogpost2-01.png" class="kg-image" alt="diagram showing a simple test of RPKI invalid reachability">
+		<figcaption>a simple test of RPKI invalid reachability</figcaption>
+	</figure>
+	<p>We will be performing tests using those prefixes to check for propagation. <a href="https://en.wikipedia.org/wiki/Traceroute" target="_blank">Traceroutes</a> and probing helped us in the past by creating visualizations of deployment.</p>
+	<p>A simple indicator is the number of networks sending the accepted route to their peers and collectors:</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/04/invalid-prefixes-reachability.png" class="kg-image" alt="RIPE">
+		<figcaption>Routing status from online route collection tool <a href="https://stat.ripe.net/widget/routing-status#w.resource=103.21.244.0/24&amp;w.min_peers_seeing=0" target="_blank">RIPE Stat</a></figcaption>
+	</figure>
+	<p>In December 2019, we released a <a href="https://xkcd.com/195/" target="_blank">Hilbert curve</a> map of the IPv4 address space. Every pixel represents a /20 prefix. If a dot is yellow, the prefix responded only to the probe from a RPKI-valid IP space. If it is blue, the prefix responded to probes from both RPKI valid and invalid IP space.<br><br>To summarize, the yellow areas are IP space behind networks that drop RPKI invalid prefixes. The Internet isn't safe until the blue becomes yellow.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/04/blogpost-hilbert-01.png" class="kg-image">
+		<figcaption>Hilbert Curve Map of IP address space behind networks filtering RPKI invalid prefixes</figcaption>
+	</figure>
+	<p>Last but not least, we would like to thank every network that has already deployed RPKI and every developer that contributed to validator-software code bases. The last two years have shown that the Internet can become safer and we are looking forward to the day where we can call route leaks and hijacks an incident of the past.</p>
+</div>

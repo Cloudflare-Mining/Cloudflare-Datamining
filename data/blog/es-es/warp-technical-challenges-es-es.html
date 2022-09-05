@@ -1,0 +1,248 @@
+<div class="post-content lh-copy gray1">
+	<p>Si vio <a href="https://blog.cloudflare.com/announcing-warp-plus/">la otra publicación que hicimos</a>, sabe que lanzamos WARP para los últimos miembros de nuestra lista de espera hoy. Con WARP, nuestro objetivo fue asegurar y mejorar la conexión entre sus dispositivos móviles e Internet. En el camino encontramos problemas con las versiones de teléfonos y sistemas operativos, las diversas redes y nuestra propia infraestructura, todo mientras trabajábamos para satisfacer la demanda acumulada de una lista en espera de casi dos millones de personas.</p>
+	<p>Para comprender todos estos problemas y cómo solucionarlos, primero debemos mostrarle algunos antecedentes sobre cómo funciona la red de Cloudflare:</p>
+	<h2 id="c-mo-funciona-nuestra-red"><strong>Cómo funciona nuestra red</strong></h2>
+	<p>La red de Cloudflare está compuesta por centros de datos ubicados en 194 ciudades y más de 90 países. Cada centro de datos de Cloudflare está compuesto por muchos servidores que reciben un flujo continuo de solicitudes y tiene que distribuir esas solicitudes entre los servidores que las manejan. Para realizar esa operación, utilizamos un conjunto de enrutadores:</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/09/image2.png" class="kg-image"></figure>
+	<p>Nuestros enrutadores escuchan en las direcciones IP de Anycast que se anuncian a través de la Internet pública. Si tiene un sitio en Cloudflare, este está disponible mediante dos de estas direcciones. En este caso, estoy haciendo una consulta de DNS para "workers.dev", un sitio desarrollado por Cloudflare:</p>
+	<p>➜ dig workers.dev</p>
+	<pre><code>;; QUESTION SECTION:
+;workers.dev.      IN  A
+
+;; ANSWER SECTION:
+workers.dev.    161  IN  A  198.41.215.162
+workers.dev.    161  IN  A  198.41.214.162
+
+;; SERVER: 1.1.1.1#53(1.1.1.1)
+</code></pre>
+	<p>workers.dev está disponible en dos direcciones: 198.41.215.162 y 198.41.214.162 (junto con dos direcciones IPv6 disponibles a través de la consulta DNS AAAA). Esas dos direcciones se anuncian en todos nuestros centros de datos en todo el mundo. Cuando alguien se conecta a una propiedad de Internet en Cloudflare, cada dispositivo de red por el que pasan sus paquetes elegirá la ruta más corta al centro de datos de Cloudflare más cercano desde su computadora o teléfono.</p>
+	<p>Una vez que los paquetes llegan al centro de datos, los enviamos a uno de los tantos servidores que operan allí. Usualmente, uno podría utilizar un equilibrador de carga para realizar ese tipo de distribución de tráfico entre varias máquinas. Desafortunadamente, poner un conjunto de equilibradores de carga capaces de manejar nuestro volumen de tráfico en cada centro de datos sería demasiado costoso y no se escalaría tan fácilmente como lo hacen nuestros servidores. En cambio, usamos dispositivos creados para operar en volúmenes excepcionales de tráfico: enrutadores de red.</p>
+	<p>Una vez que un paquete llega a nuestro centro de datos, este se procesa en un enrutador. Ese enrutador envía el tráfico a uno de un conjunto de servidores responsables de manejar esa dirección usando una estrategia de enrutamiento llamada Equal-Cost Multi-Path (ECMP, siglas para “múltiples rutas y un mismo costo”). ECMP se refiere a la situación en la que el enrutador no tiene un claro "ganador" entre las diferentes rutas; tiene múltiples próximos saltos buenos, todos al mismo destino final. En nuestro caso, cambiamos un poco ese concepto. En lugar de utilizar ECMP para equilibrar varios enlaces intermediarios, hacemos que el enlace intermediario se dirija al destino final de nuestro tráfico: nuestros servidores.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/09/image6.png" class="kg-image"></figure>
+	<p>Esta es la configuración de un enrutador de marca Juniper, del tipo que podría estar en uno de nuestros centros de datos, y que está configurado para equilibrar el tráfico en tres destinos:</p>
+	<pre><code class="language-ini"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="5326203621133b3c2027">[email&nbsp;protected]</a># show routing-options
+
+static {
+  route 172.16.1.0/24 next-hop [ 172.16.2.1 172.16.2.2 172.16.2.3 ];
+}
+forwarding-table {
+  export load-balancing-policy;
+}
+</code></pre>
+	<p>Dado que el "próximo salto" es nuestro servidor, el tráfico se dividirá en varias máquinas de forma altamente eficiente.</p>
+	<h2 id="tcp-ip-y-ecmp"><strong>TCP, IP y ECMP</strong></h2>
+	<p>La IP es responsable de enviar paquetes de datos desde direcciones como 93.184.216.34 a 208.80.153.224 (o [2606: 2800:220:1:248:1893:25c8:1946] a [2620:0:860:ed1a::1] en el caso de IPv6) mediante Internet. Es el "Protocolo de Internet".</p>
+	<p>El TCP (Protocolo de control de transmisión) opera sobre un protocolo como IP que puede enviar un paquete de un lugar a otro y hace que la transmisión de datos sea confiable y útil para más de un proceso a la vez. Es responsable de tomar los paquetes poco confiables y mal ordenados que podrían llegar a través de un protocolo como IP y entregarlos de manera confiable, en el orden correcto. También presenta el concepto de "puerto", un número de 1-65535 que ayuda a enrutar el tráfico en una computadora o un teléfono a un servicio específico (como la web o el correo electrónico). Cada conexión TCP tiene un puerto de origen y destino que se incluye en el encabezado que el TCP agrega al principio de cada paquete. Sin el uso de los puertos, no sería fácil determinar qué mensajes estaban destinados a qué programa. Por ejemplo, tanto Google Chrome como Mail pueden querer enviar mensajes a través de su conexión WiFi al mismo tiempo, y para ello cada uno utilizará su propio puerto.</p>
+	<p>Este es un ejemplo de cómo hacer una solicitud para https://cloudflare.com/ en 198.41.215.162, en el puerto predeterminado para HTTPS: 443. Mi computadora me ha asignado el puerto 51602 al azar, que escuchará para una respuesta y que (con suerte) recibirá el contenido del sitio:</p>
+	<pre><code>Internet Protocol Version 4, Src: 19.5.7.21, Dst: 198.41.215.162
+    Protocol: TCP (6)
+    Source: 19.5.7.21
+    Destination: 198.41.215.162
+Transmission Control Protocol, Src Port: 51602, Dst Port: 443, Seq: 0, Len: 0
+    Source Port: 51602
+    Destination Port: 443
+
+</code></pre>
+	<p>Mirando la misma solicitud desde el lado de Cloudflare habrá una imagen espejo, una solicitud de mi dirección IP pública que se origina en mi puerto de origen, destinada al puerto 443 (estoy dejando de lado NAT por el momento y lo abordaré más adelante):</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">Internet Protocol Version 4, Src: 198.41.215.16, Dst: 19.5.7.21
+    Protocol: TCP (6)
+    Source: 198.41.215.162
+    Destination: 19.5.7.21
+Transmission Control Protocol, Src Port: 443, Dst Port: 51602, Seq: 0, Len: 0
+    Source Port: 443
+    Destination Port: 51602
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Ahora podemos volver a ECMP. Teóricamente, podría ser posible utilizar ECMP para equilibrar los paquetes entre servidores al azar, pero casi nunca será algo conveniente. Un mensaje a través de Internet generalmente se compone de múltiples paquetes de TCP. Si cada paquete se enviara a un servidor diferente, sería imposible reconstruir el mensaje original en cualquier lugar y actuar según corresponda. Incluso más allá de eso, sería terrible para el rendimiento: confiamos en poder mantener sesiones de TCP y TLS de larga duración que requieran una conexión constante a un solo servidor. Para lograr esa persistencia, nuestros enrutadores no equilibran el tráfico al azar, sino que utilizan una combinación de cuatro valores: la dirección de origen, el puerto de origen, la dirección de destino y el puerto de destino. El tráfico, con la misma combinación de esos cuatro valores, siempre llegará al mismo servidor. En el caso de mi ejemplo anterior, todos mis mensajes destinados a cloudflare.com llegarán a un único servidor que puede reconstruir los paquetes de TCP en mi solicitud y devolver los paquetes en una respuesta.</p>
+	<h2 id="entrar-en-warp"><strong>Entrar en WARP</strong></h2>
+	<p>Para una solicitud convencional, es muy importante que nuestro enrutamiento ECMP envíe todos sus paquetes al mismo servidor mientras dure su solicitud. En la web, una solicitud suele durar menos de diez segundos y el sistema funciona bien. Desafortunadamente, no tardaron en llegar los problemas con WARP.</p>
+	<p>WARP utiliza una clave de sesión negociada con un cifrado de clave pública para proteger los paquetes. Para que la conexión se realice correctamente, ambas partes deben negociar una conexión que solo sea válida para ese cliente en particular y el servidor específico con el que se están comunicando. Esta negociación lleva tiempo y se debe completar cada vez que un cliente se comunica con un nuevo servidor. Peor aún, si se envían paquetes que esperan un servidor y terminan en otro, estos no se podrían descifrar y se interrumpiría la conexión. Detectar esos paquetes fallidos y reiniciar la conexión desde cero lleva tanto tiempo al grado que nuestros evaluadores alfa observaron una pérdida completa de su conexión a Internet. Como puede imaginar, los evaluadores no dejan WARP encendido por mucho tiempo cuando les impide usar Internet.</p>
+	<p>WARP estaba experimentando demasiadas fallas porque los dispositivos estaban cambiando servidores con mucha más frecuencia de la que esperábamos. Si recuerda, la configuración de nuestro enrutador ECMP utiliza una combinación de (IP de origen, puerto de origen, IP de destino, puerto de destino) para hacer coincidir un paquete con un servidor. Por lo general, la IP de destino no cambia, y los clientes de WARP siempre se conectan a las mismas direcciones Anycast. Del mismo modo, el puerto de destino no cambia y siempre escuchamos el tráfico WARP en el mismo puerto. Los otros dos valores, IP de origen y Puerto de origen, cambiaban con mucha más frecuencia de lo que habíamos programado.</p>
+	<p>Se esperaba una fuente de estos cambios. WARP se ejecuta en teléfonos celulares, y los teléfonos celulares por lo general cambian de conexiones celulares a conexiones Wi-Fi. Cuando hace ese cambio, de pronto pasa de comunicarse por Internet a través del espacio de dirección IP de su operador de telefonía móvil (como AT&amp;T o Verizon) al del proveedor de servicios de Internet que utiliza su conexión Wi-Fi (como Comcast o Google Fiber). Es esencialmente imposible que su dirección IP no cambie cuando se desplaza entre conexiones.</p>
+	<p>Sin embargo, los cambios de puerto se produjeron con mayor frecuencia de la que podrían explicar los interruptores de red. Para comprender por qué necesitamos introducir un componente más de la historia de Internet: Traducción de direcciones de red.</p>
+	<h2 id="nat"><strong>NAT</strong></h2>
+	<p>Una dirección IPv4 está compuesta por 32 bits (a menudo escritos como cuatro números de ocho bits). Si se excluyen las direcciones reservadas que no se pueden utilizar, se queda con <a href="https://stackoverflow.com/questions/2437169/what-is-the-total-amount-of-public-ipv4-addresses" target="_blank">3,706,452,992 direcciones posibles</a>. Este número se ha mantenido constante desde que IPv4 se implementó en ARPANET en 1983, incluso cuando la cantidad de dispositivos ha explotado (aunque pronto podría aumentar un poco <a href="https://hub.packtpub.com/linux-kernel-announces-a-patch-to-allow-0-0-0-0-8-as-a-valid-address-range/" target="_blank">si el 0.0.0.0/8 está disponible</a>). Estos datos se basan en las predicciones y estimaciones de la investigación de Gartner:</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/09/image3-1.png" class="kg-image"></figure>
+	<p>IPv6 es la solución definitiva a este problema. Expande la longitud de una dirección de 32 a 128 bits, con 125 disponibles en una dirección de Internet válida en este momento (todas las direcciones IPv6 públicas tienen los primeros tres bits establecidos en 001, el 87,5 % restante del espacio de direcciones IPv6 aún no se considera necesario). 2^125 es un número imposiblemente grande y sería más que suficiente para que cada dispositivo en la tierra tenga su propia dirección. Desafortunadamente, 21 años después de su publicación, IPv6 aún no es compatible con muchas redes. Gran parte de Internet todavía depende de IPv4, y, como se vio anteriormente, no hay suficientes direcciones IPv4 para que cada dispositivo tenga la suya.</p>
+	<p>Para resolver este problema, muchos dispositivos por lo general se ubican detrás de una dirección IP única direccionable a Internet. Se utiliza un enrutador para realizar la traducción de direcciones de red para tomar los mensajes que llegan a esa IP pública única y reenviarlos al dispositivo apropiado en su red local. En efecto, es como si todos en su edificio de apartamentos tuvieran la misma dirección postal y el empleado de correos fuera responsable de resolver qué correo estaba destinado a qué persona.</p>
+	<p>Cuando sus dispositivos envían un paquete que está destinado a Internet, su enrutador lo intercepta. Luego, el enrutador reescribe la dirección de origen en la única dirección de Internet pública asignada para usted y el puerto de origen a un puerto que es único para todos los mensajes que se envían a través de todos los dispositivos conectados a Internet en su red. Al igual que su computadora elige un puerto de origen aleatorio para sus mensajes que fue único entre todos los diferentes procesos en su computadora, su enrutador elige un puerto de origen aleatorio que es único para todas las conexiones a Internet en toda su red. Recuerda el puerto que está seleccionando para usted como parte de su conexión y permite que el mensaje continúe a través de Internet.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/09/image4.png" class="kg-image"></figure>
+	<p>Cuando llega una respuesta destinada al puerto que le ha asignado, la hace coincidir con su conexión y la vuelve a reescribir, esta vez reemplazando la dirección de destino con su dirección en la red local y el puerto de destino con el puerto de origen original que usted especificó. Con total transparencia ha permitido que todos los dispositivos en su red actúen como si fueran una computadora grande con una sola dirección IP conectada a Internet.</p>
+	<p>Este proceso funciona muy bien durante el tiempo requerido de una solicitud común a través de Internet. Sin embargo, su enrutador solo tiene espacio suficiente, por lo que de manera útil eliminará las asignaciones de puertos anteriores, liberando espacio para las nuevas. Generalmente, espera que la conexión no tenga ningún mensaje durante treinta segundos o más antes de eliminar una asignación, por lo que es poco probable que llegue una respuesta que ya no puede dirigir a la fuente adecuada. Desafortunadamente, las sesiones de WARP deben durar mucho más de treinta segundos.</p>
+	<p>La próxima vez que envíe un mensaje después de que su sesión NAT haya vencido, se le dará un nuevo puerto de origen. Ese nuevo puerto hace que su mapeo ECMP (basado en IP de origen, puerto de origen, IP de destino, puerto de destino) cambie, y de esta forma nos obliga a enrutar sus solicitudes a una nueva máquina dentro del centro de datos Cloudflare al que llegan sus mensajes. Esto interrumpe su sesión WARP y su conexión a Internet.</p>
+	<p>Hemos experimentado bastante con métodos para mantener su sesión NAT sin problemas al enviar periódicamente mensajes de mantenimiento que evitarían que los enrutadores y los operadores móviles desalojen los mapeos. Lamentablemente, activar la radio de su dispositivo cada treinta segundos tiene consecuencias desafortunadas para la duración de la batería, y no fue del todo exitoso para evitar cambios en los puertos y direcciones. Necesitábamos una forma de asignar siempre las sesiones a la misma máquina, incluso cuando haya cambiado su puerto de origen (e incluso la dirección de origen).</p>
+	<p>Afortunadamente, encontramos una solución en otras partes de Cloudflare. No utilizamos equilibradores de carga dedicados, pero tenemos muchos de los problemas que resuelven los equilibradores de carga. Durante mucho tiempo hemos tenido la necesidad de asignar el tráfico a los servidores de Cloudflare con más control del que ECMP permite por sí solo. En lugar de implementar un nivel completo de equilibradores de carga, utilizamos cada servidor de nuestra red como equilibrador de carga, reenviando los paquetes primero a una máquina arbitraria y luego confiando en esa máquina para reenviar el paquete al host apropiado. Esto consume recursos mínimos y nos permite escalar nuestra infraestructura de equilibrio de carga con cada nueva máquina que agreguemos. Tenemos mucho más que compartir sobre cómo funciona esta infraestructura y qué la hace única. Suscríbase a este blog para recibir una notificación cuando se publique esa publicación.</p>
+	<p>Sin embargo, para que nuestra técnica de equilibrio de carga funcione, necesitábamos una forma de identificar con qué cliente estaba asociado un paquete WARP antes de que pudiera descifrarse. Para entender cómo lo hicimos, es útil comprender cómo WARP cifra sus mensajes. La forma estándar de la industria de conectar un dispositivo a una red remota es una VPN. Las VPN utilizan un protocolo como <a href="https://en.wikipedia.org/wiki/IPsec" target="_blank">IPsec</a> para permitir que su dispositivo envíe mensajes de forma segura a una red remota. Desafortunadamente, las VPN generalmente no son de agrado. Disminuyen la velocidad de las conexiones, consumen batería y su complejidad las convierte con frecuencia en la fuente de vulnerabilidades de seguridad. Los usuarios de redes corporativas que obligan a las VPN a menudo las odian y la idea de convencer a millones de consumidores para que instalen una voluntariamente parecía ridícula.</p>
+	<p>Después de considerar y probar varias opciones más modernas, se nos ocurrió <a href="https://www.wireguard.com/" target="_blank">WireGuard</a>®. WireGuard es un protocolo moderno, de alto rendimiento y, lo más importante, simple, creado por Jason Donenfeld para resolver el mismo problema. Su base de código original tiene menos del 1 % del tamaño de una implementación de IPsec popular, lo que nos facilita su comprensión y seguridad. Elegimos Rust como el lenguaje con mayor probabilidad de brindarnos el rendimiento y la seguridad que necesitábamos e implementamos WireGuard al tiempo que optimizamos en gran medida el código para que se ejecute rápidamente en las plataformas a las que apuntamos. Luego <a href="https://github.com/cloudflare/boringtun/tree/master/src" target="_blank">abrimos el proyecto</a> de origen.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/09/image-12.png" class="kg-image"></figure>
+	<p>WireGuard cambia dos cosas muy relevantes sobre el tráfico que envía a través de Internet. La primera es que utiliza UDP no TCP. La segunda es que usa una clave de sesión negociada con cifrado de clave pública para asegurar el contenido de ese paquete UDP.</p>
+	<p>TCP es el protocolo convencional utilizado para cargar un sitio web a través de Internet. Combina la capacidad de direccionar puertos (de los que hablamos anteriormente) con entrega confiable y control de flujo. La entrega confiable garantiza que si se descarta un mensaje, TCP eventualmente reenviará los datos faltantes. El control de flujo le da a TCP las herramientas que necesita para manejar a muchos clientes que comparten el mismo enlace y que exceden su capacidad. UDP es un protocolo mucho más simple que intercambia estas capacidades por simplicidad, hace el mejor esfuerzo para enviar un mensaje y si el mensaje falta o hay demasiados datos para los enlaces, los mensajes simplemente nunca más volverán a aparecer.</p>
+	<p>La falta de confiabilidad de UDP normalmente sería un problema al navegar por Internet, pero no estamos simplemente enviando UDP, estamos enviando un paquete TCP completo dentro de nuestros paquetes UDP.</p>
+	<p>Dentro de la carga útil cifrada por WireGuard, tenemos un encabezado TCP completo que contiene toda la información necesaria para garantizar una entrega confiable. Luego lo envolvemos con el cifrado de WireGuard y utilizamos UDP para enviarlo (de manera poco confiable) a través de Internet. Si se descarta, TCP hará su trabajo como si un enlace de red perdiera el mensaje y lo reenviara. En cambio, si envolviéramos nuestra sesión TCP interna, cifrada, en otro paquete TCP como lo hacen algunos otros protocolos, aumentaríamos drásticamente la cantidad de mensajes de red requeridos, destruyendo el rendimiento.</p>
+	<p>El segundo componente interesante de WireGuard relevante para nuestra discusión es el <a href="https://www.cloudflare.com/learning/ssl/how-does-public-key-encryption-work/" target="_blank">cifrado de clave pública</a>. WireGuard le permite proteger cada mensaje que envía de modo que solo el destino específico al que lo envía pueda descifrarlo. Esa es una forma poderosa de garantizar su seguridad mientras navega por Internet, pero significa que es imposible leer cualquier cosa dentro de la carga útil cifrada hasta que el mensaje haya llegado al servidor responsable de su sesión.</p>
+	<p>Volviendo a nuestro problema de equilibrio de carga, puede ver que solo tenemos acceso a tres cosas antes de que podamos descifrar el mensaje: El encabezado IP, el encabezado UDP y el encabezado WireGuard. Ni el encabezado de IP ni el encabezado de UDP incluyen la información que necesitamos, dado que ya hemos fallado con las cuatro piezas de información que contienen (IP de origen, puerto de origen, IP de destino, puerto de destino). Eso deja el encabezado de WireGuard como la única ubicación donde podemos encontrar un identificador que se puede utilizar para realizar un seguimiento de quién era el cliente antes de descifrar el mensaje. Lamentablemente, no hay ninguno. Este es el formato del mensaje utilizado para iniciar una conexión:</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/09/image7.png" class="kg-image"></figure>
+	<p>el remitente se ve tentadoramente como una identificación de cliente, pero se asigna aleatoriamente cada protocolo de enlace. Los protocolos de enlace se deben realizar cada dos minutos para rotar las teclas y hacerlas insuficientemente persistentes. Podríamos haber bifurcado el protocolo para agregar cualquier número de campos adicionales, pero para nosotros es importante seguir siendo compatibles con otros clientes de WireGuard. Afortunadamente, WireGuard tiene un bloque de tres bytes en su encabezado que actualmente no usan otros clientes. Decidimos poner nuestro identificador en esta región y aún admitir mensajes de otros clientes de WireGuard (aunque con un enrutamiento menos confiable que el que podemos ofrecer). Si esta sección reservada se usa para otros fines, podemos ignorar esos bits o trabajar con el equipo de WireGuard para extender el protocolo de otra manera adecuada.</p>
+	<p>Cuando comenzamos una sesión de WireGuard, incluimos nuestro campo clientid que es proporcionado por nuestro servidor de autenticación con el que se debe comunicar para iniciar una sesión WARP:</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/09/image5-1.png" class="kg-image"></figure>
+	<p>Los mensajes de datos también incluyen el mismo campo:</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/09/image9.png" class="kg-image"></figure>
+	<p>Es importante tomar en cuenta que el clientid solo tiene 24 bits de longitud. Eso significa que hay menos valores de clientid posibles que el número actual de usuarios que esperan usar WARP. Esto nos queda bien, ya que no necesitamos o queremos la capacidad de rastrear a los usuarios individuales de WARP. El clientid solo es necesario para el equilibrio de carga, una vez que cumple su propósito lo eliminamos de nuestros sistemas lo más rápido posible.</p>
+	<p>El sistema de equilibrio de carga ahora utiliza un hash del clientid para identificar a qué máquina se debe enrutar un paquete, lo que significa que los mensajes WARP siempre llegan a la misma máquina incluso cuando cambia de red o pasa de Wi-Fi a celular, y el problema se eliminó.</p>
+	<h2 id="software-del-cliente"><strong>Software del cliente</strong></h2>
+	<p>Cloudflare nunca ha desarrollado software de cliente anteriormente. Nos enorgullece vender un servicio que cualquiera puede usar sin necesidad de comprar hardware o infraestructura de aprovisionamiento. Sin embargo, para que WARP funcionara, necesitábamos implementar nuestro código en una de las plataformas de hardware con mayor omnipresencia en la tierra: los teléfonos inteligentes.</p>
+	<p>Si bien el desarrollo de software en dispositivos móviles se ha vuelto cada vez más sencillo en la última década, desafortunadamente, el desarrollo de software de redes de bajo nivel sigue siendo bastante complicado. Pongamos un ejemplo: comenzamos el proyecto utilizando la última API de conexión de iOS, llamada <a href="https://developer.apple.com/documentation/network" target="_blank">Red</a>, que salió en iOS 12. Apple recomienda muchísimo el uso de la red. Puntualmente, <a href="https://developer.apple.com/videos/play/wwdc2018/715/" target="_blank">dijeron que</a> "sus clientes apreciarán las mejoras en sus conexiones, el aumento de confiabilidad que presentan y la mayor duración de la batería, que mejora el rendimiento".</p>
+	<p>El marco de red proporciona una excelente API de alto nivel que, como anda diciendo, se integra bien con las características de rendimiento nativas integradas en iOS. Crear una conexión UDP (conexión es un nombre poco apropiado, pues no hay conexiones en UDP, solo paquetes) es tan simple como esto:</p>
+	<p><code>self.connection = NWConnection(host: hostUDP, port: portUDP, using: .udp)</code></p>
+	<p>Y enviar un mensaje puede ser tan fácil como esto:</p>
+	<p><code>self.connection?.send(content: content)</code></p>
+	<p>Desafortunadamente, en cierto punto, el código termina implementándose y comienzan a aparecer informes de errores. El primer problema fue que la simplicidad de la API hizo que nos fuera imposible procesar más de un paquete UDP a la vez. Comúnmente usamos paquetes de hasta 1500 bytes; actualmente, al ejecutar una prueba de velocidad en mi conexión de Google Fiber, se obtiene una velocidad de 370 Mbps, o casi treinta y un mil paquetes por segundo. Al intentar procesar cada paquete de manera individual, se ralentizaban las conexiones hasta en un 40 %. Según <a href="https://forums.developer.apple.com/message/360236#360236" target="_blank">Apple</a>, la mejor solución para obtener el rendimiento que necesitábamos era recurrir a la antigua API <a href="https://developer.apple.com/documentation/networkextension/nwudpsession" target="_blank">NWUDPSession</a>, que salió en iOS 9.</p>
+	<h2 id="ipv6"><strong>IPv6</strong></h2>
+	<p>Si comparamos el código requerido para crear una NWUDPSession con el ejemplo anterior, podrá observar que de repente nos interesa saber qué protocolo, IPv4 o IPv6, estamos usando:</p>
+	<pre><code class="language-swift">let v4Session = NWUDPSession(upgradeFor: self.ipv4Session)
+v4Session.setReadHandler(self.filteringReadHandler, maxDatagrams: 32)
+</code></pre>
+	<p>De hecho, NWUDPSession no maneja muchos de los elementos más difíciles en la creación de conexiones a través de Internet. Por ejemplo, el marco de red determinará automáticamente si se debe hacer una conexión a través de IPv4 o 6:</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/09/image8.png" class="kg-image"></figure>
+	<p><br>NWUDPSession no hace esto por el usuario, por lo que empezamos a crear nuestra propia lógica para determinar qué tipo de conexión debería usarse. Una vez que empezamos a experimentar, rápidamente se hizo evidente que no se crean de la misma manera. Es bastante común que una ruta al mismo destino tenga un rendimiento muy diferente en función de si usa su dirección IPv4 o IPv6. A menudo, esto se debe a que simplemente hay menos direcciones IPv4 que han existido por más tiempo, lo que hace posible que esas rutas sean optimizadas mejor por la infraestructura de Internet.</p>
+	<p>Todos los productos Cloudflare deben admitir IPv6 como norma. En 2016, <a href="https://blog.cloudflare.com/98-percent-ipv6/">habilitamos</a> IPv6 para más del 98 % de nuestra red, más de cuatro millones de sitios, y tuvimos un gran impacto en la <a href="https://www.vyncke.org/ipv6status/plotsite.php?metric=w&amp;global=legacy&amp;pct=y" target="_blank">adopción de IPv6 en la web</a>:</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/09/image11.png" class="kg-image"></figure>
+	<p>No nos sería posible lanzar WARP sin el soporte de IPv6. Necesitábamos asegurarnos de que siempre estuviéramos usando la conexión más rápida posible mientras seguíamos soportando ambos protocolos con la misma medida. Para resolver eso, recurrimos a una tecnología que hemos usado con DNS durante años: Happy Eyeballs. Según lo codificado en <a href="https://tools.ietf.org/html/rfc6555" target="_blank">RFC 6555</a> Happy Eyeballs es la idea de que usted debe intentar buscar una dirección IPv4 e IPv6 al realizar una búsqueda de DNS. Cualquiera que regrese primero, gana. De esa manera, puede permitir que los sitios web de IPv6 se carguen rápidamente incluso en un mundo que no lo admite por completo.</p>
+	<p>Como ejemplo, estoy cargando el sitio web http://zack.is/. Mi navegador web realiza una solicitud de DNS para la dirección IPv4 (un registro "A") y la dirección IPv6 (un registro "AAAA") al mismo tiempo:</p>
+	<pre><code class="language-javascript">Internet Protocol Version 4, Src: 192.168.7.21, Dst: 1.1.1.1
+User Datagram Protocol, Src Port: 47447, Dst Port: 53
+Domain Name System (query)
+    Queries
+        zack.is: type A, class IN
+
+Internet Protocol Version 4, Src: 192.168.7.21, Dst: 1.1.1.1
+User Datagram Protocol, Src Port: 49946, Dst Port: 53
+Domain Name System (query)
+    Queries
+        zack.is: type AAAA, class IN</code></pre>
+	<p>En este caso, la respuesta a la consulta A regresó más rápidamente y la conexión se inicia usando ese protocolo:</p>
+	<pre><code class="language-javascript">Internet Protocol Version 4, Src: 1.1.1.1, Dst: 192.168.7.21
+User Datagram Protocol, Src Port: 53, Dst Port: 47447
+Domain Name System (response)
+    Queries
+        zack.is: type A, class IN
+    Answers
+        zack.is: type A, class IN, addr 104.24.101.191
+       
+Internet Protocol Version 4, Src: 192.168.7.21, Dst: 104.24.101.191
+Transmission Control Protocol, Src Port: 55244, Dst Port: 80, Seq: 0, Len: 0
+    Source Port: 55244
+    Destination Port: 80
+    Flags: 0x002 (SYN)
+</code></pre>
+	<p>No necesitamos hacer consultas DNS para hacer conexiones de WARP, ya conocemos las direcciones IP de nuestros centros de datos, pero queremos saber cuál de las direcciones IPv4 e IPv6 conducirá a una ruta más rápida a través de Internet. Para lograrlo, realizamos la misma técnica, pero a nivel de red: enviamos un paquete sobre cada protocolo y usamos el protocolo que regresa primero para los mensajes subsiguientes. Con algunos errores de manejo y el registro eliminado por razones de brevedad, aparece como:</p>
+	<pre><code class="language-swift">let raceFinished = Atomic&lt;Bool&gt;(false)
+
+let happyEyeballsRacer: (NWUDPSession, NWUDPSession, String) -&gt; Void = {
+    (session, otherSession, name) in
+    // Session is the session the racer runs for, otherSession is a session we race against
+
+    let handleMessage: ([Data]) -&gt; Void = { datagrams in
+        // This handler will be executed twice, once for the winner, again for the loser.
+        // It does not matter what reply we received. Any reply means this connection is working.
+
+        if raceFinished.swap(true) {
+            // This racer lost
+            return self.filteringReadHandler(data: datagrams, error: nil)
+        }
+
+        // The winner becomes the current session
+        self.wireguardServerUDPSession = session
+
+        session.setReadHandler(self.readHandler, maxDatagrams: 32)
+        otherSession.setReadHandler(self.filteringReadHandler, maxDatagrams: 32)
+    }
+
+    session.setReadHandler({ (datagrams) in
+        handleMessage(datagrams)
+    }, maxDatagrams: 1)
+
+    if !raceFinished.value {
+        // Send a handshake message
+        session.writeDatagram(onViable())
+    }
+}
+</code></pre>
+	<p>Esta técnica nos permite admitir con éxito el direccionamiento de IPv6. De hecho, todos los dispositivos que usan WARP admiten instantáneamente el direccionamiento de IPv6, incluso en redes que no tienen soporte. El uso de WARP toma el 34 % de la red de Comcast que no admite IPv6 o el 69 % de la red de Charter que no lo hace (a partir de 2018) y permite a esos usuarios comunicarse con éxito a los servidores de IPv6.</p>
+	<p>Esta prueba muestra la compatibilidad con IPv6 de mi teléfono, antes y después de habilitar WARP:</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/09/IMG_2029.PNG" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/09/IMG_2028-2.PNG" class="kg-image"></figure>
+	<h2 id="conexiones-moribundas"><strong>Conexiones moribundas</strong></h2>
+	<p>Sin embargo, nada es simple. Con iOS 12.2, NWUDPSession comenzó a desencadenar errores que acabaron con las conexiones. Estos errores solo se identificaron con un código “55”. Después de algunas investigaciones, parece que 55 se ha referido al mismo error desde los primeros cimientos del sistema operativo FreeBSD, en el que se basó originalmente OS X. En FreeBSD se le conoce comúnmente como ENOBUFS y se devuelve cuando el sistema operativo no tiene suficiente espacio BUFfer para manejar la operación que se está completando. Por ejemplo, si observa la fuente de FreeBSD hoy, verá <a href="https://github.com/freebsd/freebsd/blob/a6605d2938cce3ab84122eb8f7e12469b7d3356f/sys/netinet6/send.c#L127" target="_blank">este código</a> en su implementación de IPv6:</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/09/image12.png" class="kg-image"></figure>
+	<p>En este ejemplo, si no se puede asignar suficiente memoria para acomodar el tamaño de un encabezado IPv6 e ICMP6, se devolverá el error ENOBUFS (que se <a href="https://www.freebsd.org/cgi/man.cgi?query=errno&amp;sektion=2&amp;manpath=freebsd-release-ports" target="_blank">asigna</a> al número 55). Desafortunadamente, la versión de Apple de FreeBSD no es de código abierto: cómo, cuándo y por qué podrían devolver el error es un misterio. Este error ha sido experimentado por <a href="https://github.com/passepartoutvpn/tunnelkit/issues/104" target="_blank">otros</a> proyectos basados en UDP, pero no se llega a una resolución próxima.</p>
+	<p>Lo que está claro es que una vez que comienza a producirse un error 55, la conexión ya no se puede utilizar. Para manejar este caso, necesitamos volver a conectarnos, pero hacer la misma mecánica de Happy Eyeballs que hacemos en la conexión no inicial es necesario (como ya estábamos hablando sobre la conexión más rápida) y consumirá un tiempo valioso. En su lugar, agregamos un segundo método de conexión que solo se usa para recrear una sesión de trabajo:</p>
+	<pre><code class="language-swift">/**
+Create a new UDP connection to the server using a Happy Eyeballs like heuristic.
+
+This function should be called when first establishing a connection to the edge server.
+
+It will initiate a new connection over IPv4 and IPv6 in parallel, keeping the connection that receives the first response.
+*/
+
+func connect(onViable: @escaping () -&gt; Data, onReply: @escaping () -&gt; Void, onFailure: @escaping () -&gt; Void, onDisconnect: @escaping () -&gt; Void)
+
+/**
+Recreate the current connections.
+
+This function should be called as a response to error code 55, when a quick connection is required.
+
+Unlike `happyEyeballs`, this function will use viability as its only success criteria.
+*/
+
+func reconnect(onViable: @escaping () -&gt; Void, onFailure: @escaping () -&gt; Void, onDisconnect: @escaping () -&gt; Void)
+</code></pre>
+	<p>Al usar la reconexión podemos recrear sesiones interrumpidas por errores del código 55, pero aún agrega un golpe de latencia que no es ideal. Sin embargo, al igual que con todo el desarrollo de software del cliente en una plataforma de código cerrado, dependemos de la plataforma para identificar y corregir errores a nivel de plataforma.</p>
+	<p>A decir verdad, esta es solo una de una <a href="https://forums.developer.apple.com/thread/121648" target="_blank">larga</a> <a href="https://forums.developer.apple.com/thread/95387" target="_blank">lista</a> <a href="https://openradar.appspot.com/39743361" target="_blank">de</a> errores específicos de plataforma que encontramos en la construcción de WARP. Esperamos seguir trabajando con los proveedores de dispositivos para repararlos. Hay una cantidad inimaginable de combinaciones de dispositivos y conexiones, y cada conexión no solo existe en un momento dado, siempre están cambiando, entrando y saliendo de estados de interrumpción casi más rápido de lo que podemos rastrear. Incluso ahora, hacer que WARP funcione en todos los dispositivos y conexiones en la tierra no es un problema resuelto, todavía recibimos informes diarios de errores en los que trabajamos para evaluar y resolver.</p>
+	<h2 id="warp-"><strong>WARP+</strong></h2>
+	<p>WARP está destinado a ser un lugar donde podemos aplicar optimizaciones que mejoren Internet. Tenemos mucha experiencia en hacer que los sitios web sean más eficaces. WARP es nuestra oportunidad de experimentar haciendo lo mismo con todo el tráfico de Internet.</p>
+	<p>En Cloudflare tenemos un producto llamado <a href="https://www.cloudflare.com/products/argo-smart-routing/" target="_blank">Argo</a>. Argo hace que el tiempo de los sitios web al primer byte sea un 30 % más rápido en promedio al supervisar continuamente miles de rutas por Internet entre nuestros centros de datos. Esos datos crean una base de datos que mapea cada rango de direcciones IP con la ruta más rápida posible a cada destino. Cuando llega un paquete, primero llega al centro de datos más cercano al cliente, luego ese centro de datos utiliza los datos de nuestras pruebas para descubrir la ruta que llevará el paquete a su destino con la latencia más baja posible. Se puede pensar en ello como un GPS para Internet que detecta el tráfico.</p>
+	<p>Históricamente, Argo solo ha operado en paquetes de HTTP. HTTP es el protocolo que alimenta la web al enviar mensajes que cargan sitios web sobre TCP e IP. Por ejemplo, si cargo <a href="http://zack.is/" target="_blank">http://zack.is</a>/, se envía un mensaje HTTP dentro de un paquete TCP:</p>
+	<pre><code class="language-javascript">Internet Protocol Version 4, Src: 192.168.7.21, Dst: 104.24.101.191
+Transmission Control Protocol, Src Port: 55244, Dst Port: 80
+    Source Port: 55244
+    Destination Port: 80
+    TCP payload (414 bytes)
+Hypertext Transfer Protocol
+    GET / HTTP/1.1\r\n
+    Host: zack.is\r\n
+    Connection: keep-alive\r\n
+    Accept-Encoding: gzip, deflate\r\n
+    Accept-Language: en-US,en;q=0.9\r\n
+    \r\n
+</code></pre>
+	<p>The modern and secure web presents a problem for us however: When I make the same request over HTTPS (<a href="https://zack.is/" target="_blank">https://zack.is</a>) rather than just HTTP (<a href="http://zack.is/" target="_blank">http://zack.is</a>), I see a very different result over the wire:</p>
+	<pre><code class="language-javascript">Internet Protocol Version 4, Src: 192.168.7.21, Dst: 104.25.151.102
+Transmission Control Protocol, Src Port: 55983, Dst Port: 443
+    Source Port: 55983
+    Destination Port: 443
+    Transport Layer Security
+    TCP payload (54 bytes)
+Transport Layer Security
+    TLSv1.2 Record Layer: Application Data Protocol: http-over-tls
+        Encrypted Application Data: 82b6dd7be8c5758ad012649fae4f469c2d9e68fe15c17297…
+</code></pre>
+	<p>¡Mi solicitud se ha encriptado! Ya no es posible que WARP (ni nadie más que el destino) indique qué hay en la carga útil. Puede ser HTTP, pero también puede ser cualquier otro protocolo. Si mi sitio es uno de los veinte millones que ya utilizan Cloudflare, podemos descifrar el tráfico y acelerarlo (junto con una larga lista de otras optimizaciones). Pero para el tráfico cifrado destinado a otra fuente, la tecnología Argo solo HTTP existente no iba a funcionar.</p>
+	<p>Afortunadamente, ahora tenemos una buena cantidad de experiencia trabajando con tráfico no HTTP a través de nuestros productos <a href="https://www.cloudflare.com/products/cloudflare-spectrum/" target="_blank">Spectrum</a> y <a href="https://www.cloudflare.com/magic-transit/" target="_blank">Magic Transit</a>. Para resolver este problema, el equipo de Argo recurrió al protocolo CONNECT.</p>
+	<p>Como ahora sabemos, cuando se realiza una solicitud WARP, primero se comunica a través del protocolo WireGuard a un servidor que se ejecuta en uno de nuestros 194 centros de datos en todo el mundo. Una vez que se ha descifrado el mensaje de WireGuard, examinamos la dirección IP de destino para ver si se trata de una solicitud HTTP destinada a un sitio con tecnología Cloudflare o una solicitud destinada a otro lugar. Si está destinado a nosotros, ingresa a nuestra ruta de servicio HTTP estándar; a menudo podemos responder la solicitud directamente desde nuestra memoria caché en el mismo centro de datos.</p>
+	<p>Si no está destinado a un sitio con tecnología Cloudflare, reenviamos el paquete a un proceso proxy que se ejecuta en cada máquina. Este proxy es responsable de cargar la ruta más rápida desde nuestra base de datos Argo y comenzar una sesión HTTP con una máquina en el centro de datos a la que debe enviarse este tráfico. Utiliza el comando CONECTAR para transmitir metadatos (como encabezados) y convertir la sesión HTTP en una conexión que puede transmitir los bytes sin procesar de la carga útil:</p>
+	<pre><code class="language-http">CONNECT 8.54.232.11:5564 HTTP/1.1\r\n
+Exit-Tcp-Keepalive-Duration: 15\r\n
+Application: warp\r\n
+\r\n
+&lt;data to send to origin&gt;
+</code></pre>
+	<p>Una vez que el mensaje llega al centro de datos de destino, se reenvía a otro centro de datos (si eso es mejor para el rendimiento) o se dirige directamente al origen que está esperando el tráfico.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/09/image1-5.png" class="kg-image"></figure>
+	<p>El enrutamiento inteligente es solo el comienzo de WARP +. Tenemos una larga lista de proyectos y planes que tienen como objetivo hacer que su Internet sea más rápido, y no podría estar más emocionado de tener finalmente una plataforma para probarlos.</p>
+	<h2 id="nuestra-misi-n"><strong>Nuestra misión</strong></h2>
+	<p>Hoy, después de más de un año de desarrollo, WARP está disponible para usted y sus amigos y familiares. Para nosotros, sin embargo, esto es solo el inicio. Con la capacidad de mejorar la conexión de red completa para todo el tráfico, desbloqueamos un mundo completamente nuevo de optimizaciones y mejoras de seguridad que antes simplemente eran imposibles. No podríamos estar más emocionados de experimentar, jugar y, finalmente, lanzar, todo tipo de nuevas características WARP y WARP+.</p>
+	<p>La misión de Cloudflare es ayudar a crear un mejor Internet. Si estamos dispuestos a experimentar y resolver problemas técnicos difíciles juntos, creemos que podemos ayudar a hacer que el futuro de Internet sea mejor que el de hoy en día, y todos estamos agradecidos de participar en eso. Gracias por confiar en nosotros con su conexión a Internet.</p>
+	<p><em>WARP fue creado por Oli Yu, Vlad Krasnov, Chris Branch, Dane Knecht, Naga Tripirineni, Andrew Plunk, Adam Schwartz, Irtefa, y la pasante Michelle Chen con el apoyo de miembros de nuestras oficinas de Austin, San Francisco, Champaign, Londres, Varsovia y Lisboa.</em></p>
+</div>

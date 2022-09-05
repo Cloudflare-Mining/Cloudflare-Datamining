@@ -1,0 +1,79 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/05/new-speed-page@3x.png" class="kg-image"></figure>
+	<p>スピードウィークも無事に過ぎました。Cloudflareは先週、<a href="https://blog.cloudflare.com/argo-and-the-cloudflare-global-private-backbone">弊社のグローバルなネットワーク</a>がインターネットを高速化することについて説明し、すべてのブラウザでWeb体験を向上する<a href="https://blog.cloudflare.com/better-http-2-prioritization-for-a-faster-web">HTTP/2優先度制御モデル</a>を提供開始し、最適な画像をすべてのデバイスに提供する<a href="https://blog.cloudflare.com/announcing-cloudflare-image-resizing-simplifying-optimal-image-delivery">画像サイズ変更サービス</a>を開始し、<a href="https://blog.cloudflare.com/introducing-concurrent-streaming-acceleration">ライブビデオ配信を最適化</a>し、弊社の新しいHTTP/2優先度制御モデルを使用することで2倍速でのレンダリングを可能にした<a href="https://blog.cloudflare.com/parallel-streaming-of-progressive-images">プログレッシブイメージのストリーミング</a>方法の詳細を説明し、最後に、特にモバイルデバイス上でのアプリケーションの起動時のパフォーマンスを改善する新しい<a href="https://blog.cloudflare.com/binary-ast">有線版JavaScript</a>のプロトタイプを紹介しました。おまけとして、新たな機能を展開します。自動的にTCP設定を選択してWebサイトの処理をさらに高速化する、「TCPターボ」です。</p>
+	<p>企業として、私たちはすべてのお客様のWeb体験の向上に寄与したいと考えています。Cloudflareの成長と機能の増加により、個々のお客様からの次のようなシンプルな質問に答えることが難しくなってきています。</p>
+	<ul>
+		<li>私のWebサイトの速度はどのくらい？</li>
+		<li>パフォーマンス機能について、どのように考えるべきですか？</li>
+		<li>特定の機能を有効にした場合、サイトはどのくらい速くなりますか？</li>
+	</ul>
+	<p>この記事では、お客様のWebサイトのパフォーマンスおよびさらなる高速化について、もっとクリアに理解していただくために、CloudflareダッシュボードでSpeed Pageに対して実施した新たな変更内容について説明しています。新しいSpeed Pageは次の内容で構成しています。</p>
+	<ul>
+		<li>Cloudflareで、キャッシュを有効にした状態で読み込んだお客様のWebサイトと、配信元に直接接続した場合の視覚的比較。</li>
+		<li>任意のパフォーマンス機能を有効にした場合の、改善の程度を値で表示。</li>
+		<li>Webサイトのデスクトップ上とモバイル上での速度を説明したレポート。</li>
+	</ul>
+	<p>私たちは、Web高速化の複雜さをシンプルに伝え、お客様自身で管理できる状態にすることを目指しています。 以下をご覧ください。気に入っていただけると幸いです。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/SpeedPage--1-.png" class="kg-image"></figure>
+	<h3 id="web-"><strong>Webの高速化が重要な理由は？</strong></h3>
+	<p>カスタマーエクスペリエンス：遅いサービスが好きな人はいません。レストランでの場面を想像してみてください。特に入店時の対応が遅いと、再訪したり友人に薦めたりしたいとは思わないでしょう。Webも同様で、インターネットの顧客の方が要求が高いのです。<a href="https://blog.hubspot.com/marketing/page-load-time-conversion-rates" target="_blank">79%ものカスタマー</a>が、パフォーマンスに「不満」を覚えたWebサイトで再び買い物をしたいとは思わないと答えています。</p>
+	<p>エンゲージメントと売上：多くの調査から、速度はカスタマーエンゲージメントや直帰率、売上に影響をおよぼすことがわかっています。</p>
+	<p>評判：顧客のオンライン体験が、ブランドの評判にも関係してくることを考慮しなければなりません。ある調査によると、調査対象となったWebサイトのうち、<a href="https://www.singlestoneconsulting.com/articles/patience-is-a-virtue" target="_blank">66%</a>で、サイトのパフォーマンスがその企業の印象に影響を与えていました。</p>
+	<p>多様性：モバイル経由のトラフィックは、ここ数年でデスクトップ経由のトラフィックを超えました。モバイル経由の顧客の要求レベルはますます高まり、使用場所の違いに左右されないシームレスなアクセスが求められています。</p>
+	<p>モバイル機器は仕様が多様であることに関連して、新たな課題が出てきています。テストでは、平均的なモバイルデバイスは、トップレンジのデバイスよりもはるかに能力が低いということを念頭に置かなければなりません。たとえば、異なるモバイルデバイス間では、JavaScriptの実行時間に桁違いの差があります。もう1つの課題は、ユーザーが強力で高品質のオフィスネットワークから速度の異なる（3G/5G）に移動した際に、モバイルネットワークモバイル機器で体感される性能の差と、同一のブラウジングセッションで体感される品質の差です。</p>
+	<h3 id="-speed-page"><strong>新しいSpeed Page</strong></h3>
+	<p>インターネット上の誰にとっても、より高速なWeb体験が重要であるという説得力のある証拠があります。主要な調査のほとんどが、自社サービスに関してWeb体験の測定および改善を行う専任チームを擁する、テック系の大企業によって行われています。Cloudflareは、一部の選ばれた人ではなく、すべての人にとって、より良い、より高速のインターネットの構築を支援することを使命としています。</p>
+	<p>高速のWeb体験を実現することは、単純な問題ではありません。これだけは明らかです。</p>
+	<p>何をいつ送信するかを理解するには、TCPのチューニング、プロトコルレベルの優先順位付け、コンテンツ配信形式からブラウザのレンダリングの複雑な仕組みにいたるまでの、すべてのプロトコル層に関する深い知識が必要です。 また、すべてのインターネットユーザーに10ms以内の速度を提供できる、グローバルなネットワークも必要です。このようなネットワークの本質的な価値は、誰にとっても明らかなはずです。Cloudflareはこのようなネットワークを<em>持っており</em>、さらにその他多くのパフォーマンス機能も提供しています。</p>
+	<p>弊社はSpeed Pageを再設計し、Cloudflare使用によるパフォーマンス面のメリット、さらに各機能を活用して可能な改善をお届けできます。</p>
+	<p>Webサイトのパフォーマンス測定のデファクトスタンダードは、<a href="https://www.webpagetest.org/" target="_blank">WebPageTest</a>です。Cloudflare社内にWebPageTest作成者がいるため、安心してWebサイトのパフォーマンス測定の基準にこのWebPageTestを利用しています。では、Webページの読み込みについて最も簡単に理解する方法は何でしょうか？統計データのリストでは、実際のユーザー体験の全体像を描くことはできません。WebPageTestのすばらしい機能の1つは、Webページ読込中に取得した画面のスナップショットからフィルムストリップを作成できることで、これを元にページ読み込みを定量化して、可視化することができます。このビューを利用することで、ページの空白状態の継続時間の測定や、最も重要なコンテンツの表示にかかった時間の測定が、格段に容易になります。このように結果を表示できれば、ユーザーの体感を共有することができます。</p>
+	<h3 id="cloudflare-"><strong>Cloudflareでの速度は？</strong></h3>
+	<p>ウェブサイトをCloudflareに移した後で、移行によって自身のサイトはどのくらい高速化したのだろう、と思われたかもしれません。この疑問への答えを提供できるようになったのです。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/05/OnlyFilmstrip-1.png" class="kg-image">
+		<figcaption>Comparison of website performance using Cloudflare.&nbsp;</figcaption>
+	</figure>
+	<p>Cloudflareを使用したウェブサイトのパフォーマンスの比較。</p>
+	<p>移行により速度が向上するほか、移行前後のフィルムストリップを提示することで、Webサイト上でのユーザーの体感の違いの比較と理解が容易になっています。弊社のテストで配信元に到達できずお客様側で既にCloudflareを設定済みの場合には、開発モードを有効にしてキャシュとミニファイを無効にした状態でテストを行います。</p>
+	<p>サイトパフォーマンスの統計情報</p>
+	<p>Webサイトのユーザーエクスペリエンスは、どのようにして測定するか。</p>
+	<p><em>従来は、ページ読み込みが重要な指標でした。</em>ページの読み込みはブラウザベンダーが使用する技術的な測定で、ページの表示や使用感には関係ありません。この指標は、重要なコンテンツの読み込みにかかった時間だけではなく、すべてのサードパーティコンテンツ（ソーシャルネットワークのウィジェット、広告、トラッキングスクリプトなど）も報告します。ユーザー側ではページのすべてのコンテンツが読み込まれるまで何も見えないか、まだページの読み込みが継続している間でもページに対してなんらかの操作をおこなえる場合があります。</p>
+	<p>ユーザーは、単一の測定法や一瞬の間では、このページが高速かどうかを判断しません。ユーザーは、Webサイトの速度を、次のような要素の組み合わせによって体感します。</p>
+	<ul>
+		<li>なにか反応を<em>見たとき</em></li>
+		<li>期待している<em>コンテンツ</em>が表示されたとき</li>
+		<li>ページになんらかの<em>操作を行える</em>とき</li>
+		<li>意図したタスクを<em>実行できた</em>とき</li>
+	</ul>
+	<p>1つの測定値に注目すると、他の測定値は見えなくなることが経験的にわかっています。</p>
+	<p>視覚的な応答の重要性</p>
+	<p>せっかちなユーザーがあなたのサイトに移動してきて、数秒間何のコンテンツも見えなかったり、価値あるコンテンツが見つからなかった場合には、フラストレーションを感じてサイトを去っていく可能性が高いです。<a href="https://w3c.github.io/paint-timing/" target="_blank">ペイントタイミング仕様</a>は、<a href="https://docs.google.com/document/d/1BR94tJdZLsin5poeet0XoTW60M0SjvOJQttKT-JK8HI/view" target="_blank">ペイントのメトリック</a>一式を定義したもので、コンテンツがページに表示された時にユーザーがパフォーマンスをどのように認識するかについて、主要なタイミングを測定します。</p>
+	<p>First Contentful Paint（FCP）は、ブラウザが最初にDOMコンテンツをレンダリングする時間です。</p>
+	<p>First Meaningful Paint（FMP）は、ページの「主な」コンテンツが画面に表示された瞬間です。この指標は、ユーザーが何を見るためにこのサイトに来たのかということに関連するもので、視認可能な最大のレイアウト変更が発生した時点として設計されています。</p>
+	<p>速度指数は、単一のペイントタイミングを使用するのではなく、フィルムストリップの価値を定量化します。<a href="https://sites.google.com/a/webpagetest.org/docs/using-webpagetest/metrics/speed-index" target="_blank">速度指数</a>は、コンテンツが表示された瞬間の、基本的に曲線の上の領域の速度の測定値です。弊社のプログレッシブ画像機能のチャートでは、レギュラー（青色）よりも並列（赤色）読み込みの方が、かなり早く80%に到達するのがわかります。</p>
+	<!--kg-card-begin: html--><img alt="Image Description" src="https://blog.cloudflare.com/content/images/2019/05/speedindex-1.png" style="width:40%">
+	<!--kg-card-end: html-->
+	<h3 id="-">操作性の重要性</h3>
+	<p>前述のせっかちなユーザーは、見たいコンテンツが表示されたので満足しています。しかし、サイト上で操作ができなければ、依然としてフラストレーションを感じるでしょう。</p>
+	<p>Time to Interactiveは、コンテンツがレンダリングされてから、ページがユーザーからの入力を受け取る準備が整うまでの時間です。技術的には、これは、First Meaningful Paint後にブラウザのメインの処理スレッドが数秒間アイドル状態になった時、と定義されます。</p>
+	<p>[Speed]タブには、モバイルとデスクトップについて、これらの主要な指標が表示されています。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/CriticalLoadingTime-5.png" class="kg-image"></figure>
+	<h3 id="cloudflare--1"><strong>Cloudflareでどのくらい速くなるか？</strong></h3>
+	<p>Cloudflareダッシュボードには、パフォーマンス機能のリストがありますが、これは確かに混乱の元であり威圧的とも言えるリストです。Rocket Loaderをオンにするメリットは何で、また、これはどのパフォーマンス指標に最も影響するのか？Proプランにアップグレードした場合の、拡張されたHTTP/2の優先度制御の価値は何でしょうか？最適化のセクションで、これらの問に答えます。</p>
+	<p>テストは、各パフォーマンス機能をオンまたはオフにして実行します。該当するパフォーマンス指標のテストの値が、改善と共に表示されます。このビューから、機能を有効にしたりアップグレードしたりできます。いくつかの例を次に示します。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/RocketLoader.png" class="kg-image"></figure>
+	<p>このWebサイトでRocket Loaderを有効にした場合、レンダリングをブロックしているJavaScriptは遅延し、ファーストペイントタイムが1.25sから0.81sに低下し、デスクトップでは32%の改善になります。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/Mirage.png" class="kg-image"></figure>
+	<p>画像で重いサイトは、低速のモバイル接続では適切に動作しません。Mirageを有効にすると、3G接続の顧客にとっては意味あるコンテンツが1秒早く表示され、29.4%の改善になります。</p>
+	<p>では、当社の新機能はいかがでしょうか？</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/H2.png" class="kg-image"></figure>
+	<p>デスクトップ上のEdgeブラウザで拡張されたHTTP/2優先度制御機能をテストしたところ、表示が2秒速くなり、64%の改善となりました。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/ProImgStreaming.png" class="kg-image"></figure>
+	<p>これは、プログレッシブ画像ストリーミングについて示したブログの例よりも興味深い結果です。一見すると、速度指数の29%改善は良好な値です。フィルムストリップの比較では、より有意な差が見られます。この場合、画像が表示されないページは、1.5秒後、両シナリオで視覚的には43%完了しています。2.5秒の時点では、差は50%対77%です。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/filmstrip.png" class="kg-image"></figure>
+	<p>これは、いかに指標では完全に事実を伝えきれないかを示す好例です。指標は、ページの読み込みの流れの表示と、サイトにとって何が重要なのかについての理解を、完全に置き換えることはできません。</p>
+	<h3 id="--1"><strong>試し方</strong></h3>
+	<p>これは、まだ初版のSpeed Pageですので、是非皆さんのフィードバックをお待ちしています。ご自身のサイトのパフォーマンスの表示に関心をお持ちの、ベータカスタマー向けのロールアウトを予定しています。新しいSpeed Pageの始動をお待ちいただくには、概要ページのバナーをクリックするか、</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/BannerOverview.png" class="kg-image"></figure>
+	<p>既存のSpeed Pageのバナーをクリックしてください。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/BannerSpeed.png" class="kg-image"></figure>
+</div>

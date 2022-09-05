@@ -1,0 +1,18 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://lh4.googleusercontent.com/5Gr3J3wD_NLdfl7WVDi8lQbNkkmeR-G5bpoxEdhygGLMQXMG3PUx3Oxh9NUe5w_JxtldZVMRPGnykqk0Fodx5seH4SC7Br0l_xLAx-LRKwobvRkp_pnnjJWWYqBoC8ny6ePIdYPy" class="kg-image" alt="Developer Spotlight: Chris Coyier, CodePen"></figure>
+	<p><a href="https://twitter.com/chriscoyier" target="_blank">Chris Coyier</a> 在 Web 上构建已超过 15 年。2007 年，Chris 通过 <a href="https://css-tricks.com/" target="_blank">CSS-Tricks</a> 在 Web 开发世界一举成名，这是 Web 的主要出版物，适用于前端和全栈开发人员。</p>
+	<p>2012 年，Chris 协同创立了 <a href="https://codepen.io/" target="_blank">CodePen</a>，这是一个活跃于浏览器中的在线代码编辑器，允许开发人员合作并分享以 HTML、CSS 和 JavaScript 编写的代理示例。</p>
+	<p>CodePen 的本质是，托管代码和一个非常流行的嵌入功能，允许开发人员在世界各地共享他们的 CodePen “笔”，因此任何类型的优化都可能对 CodePen 的业务产生巨大的影响。作为这些优化的第一站，CodePen 越来越依赖于在 Cloudflare 网络中执行代码和存储资料的功能。正如 Chris 所说，CodePen 使用 Cloudflare Workers 来完成“那么多事情”：</p>
+	<blockquote><em>“我们从外部 CMS 抽取内容，使用 Workers 处理 HTML，再将它送达用户的浏览器。例如，我们提取原始页面，提取内容，然后将其整合在一起以获取完整响应。”</em></blockquote>
+	<p>Workers 让您能够使用原生 Request/Response 类直接处理响应，加上我们的流式处理 HTMLRewriter 引擎，您可以修改、组合和解析 HTML，而不会损失任何性能。由于 Workers 功能部署到 Cloudflare 的网络，CodePen 能够在其原始服务器和客户端之间即时部署高智能中间件，无需启动任何额外基础结构。</p>
+	<p>在 Chris Coyier 的 YouTube 频道的一个热门 YouTube 视频中，他和 CodePen 的一个前端工程师一起，介绍了他们如何使用 Cloudflare Workers 来构建关键的 CodePen 功能。下面转述 Chris 原话：</p>
+	<blockquote><em>“Cloudflare Workers 就像始终在边缘运行的无服务器功能，因此它们速度极快。除此之外，它们周围的工具也非常棒。它们可以在您的自有网站上以特定路由运行，解决任何难以应付的 CORS 麻烦，并帮助您制作干净的 API。它们还拥有一些特殊的超能力，如访问 KV 存储（也是在边缘）、图像处理和优化以及 HTML 重写。”</em></blockquote>
+	<figure class="kg-card kg-embed-card"><iframe width="200" height="113" src="https://www.youtube.com/embed/NGk2HxV0Xkg?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></figure>
+	<p>CodePen 还利用 Workers KV 来存储数据。这让他们能够缓存结果，并将其放置在 Cloudflare 网络中地理上靠近用户的位置以供访问，从而避免大量重复处理工作：</p>
+	<blockquote><em>“我们结合使用 Workers 和 KV Store 来运行昂贵的作业。例如，我们查看 KV Store，来了解我们是需要进行一些处理工作，还是这些工作已经完成。如果需要进行工作，那么我们就将工作完成，然后更新 KV，告知工作已经完成以及工作结果在何处。”</em></blockquote>
+	<p>在 Chris 的 YouTube 频道的后续视频中，他深入剖析了 Workers KV，并展示您可以如何构建带存储的简单无服务器功能，并将其部署到 Cloudflare。加上 Workers KV，您可以同时拥有复杂的数据结构和 Workers 功能，而不会影响性能或可扩展性。</p>
+	<figure class="kg-card kg-embed-card"><iframe width="200" height="113" src="https://www.youtube.com/embed/vrrOVbj9TNs?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></figure>
+	<p>Chris 和 CodePen 团队投资了 Workers，更重要的是，他们<em>享受</em>使用 Cloudflare 的开发人员工具进行开发的过程。“它们周围的 DX 棒极了。这些工具来自其他云功能服务，工具的数量似乎是刚刚好的，正好足够让我们做要做的事情。”</p>
+	<p>当您将 Cloudflare Workers 开发人员环境集成到您的堆栈中会产生什么结果？CodePen 就是一个很好的示例。在企业的各个部分中，利用 Worker 以及 Workers KV 和 HTMLRewriter 等工具，CodePen 能够构建面向未来的高性能应用程序。</p>
+	<p>如果您想要了解有关 Cloudflare Workers 的更多信息以及将您自己的无服务器功能部署到 Cloudflare 的网络，请访问 <a href="https://workers.cloudflare.com/" target="_blank">workers.cloudflare.com</a>！</p>
+</div>

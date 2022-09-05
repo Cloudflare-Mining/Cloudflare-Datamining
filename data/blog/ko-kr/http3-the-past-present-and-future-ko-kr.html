@@ -1,0 +1,100 @@
+<div class="post-content lh-copy gray1">
+	<p><em>This is a Korean translation of a <a href="https://blog.cloudflare.com/http3-the-past-present-and-future/">existing post</a> by <a href="https://blog.cloudflare.com/author/alessandro-ghedini">Alessandro Ghedini</a> and <a href="https://blog.cloudflare.com/author/rustam-lalkaka">Rustam Lalkaka</a>, translated by <a href="https://blog.cloudflare.com/author/junho/">Junho Choi</a>.</em></p>
+	<p>작년 창립 기념일 주간에 저희는 웹사이트와 API와 같은 웹 엔드포인트에 더 빠르고 신뢰성 있으며 안전한 연결을 가능하게 해 주는 웹의 새로운 표준인(예전에는 "QUIC 상의 HTTP"라고 알려졌던) <a href="https://blog.cloudflare.com/the-quicening/">QUIC과 HTTP/3의 기초적인 지원을 발표</a>하였습니다. 또한 이용 가능하게 되면 QUIC를 테스트해 볼 수 있도록 대기 목록에 등록 가능하도록 하였습니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/09/http3-tube@2x.png" class="kg-image"></figure>
+	<p>이후 우리는 <a href="https://ietf.org" target="_blank">국제 인터넷 표준화 기구(IETF)</a>를 통해 Google Chrome과 Mozilla Firefox를 포함하는 산업계와 협력하여 HTTP/3와 QUIC 표준 문서를 반복하여 개선하여 나갔습니다. 표준이 발전되어 감에 따라 <a href="https://blog.cloudflare.com/enjoy-a-slice-of-quic-and-rust/">우리 네트워크에서의 지원도 개선</a> 하였습니다.</p>
+	<p><strong>오늘 QUIC와 HTTP/3의 엣지 네트워크 지원을 발표하게 되어 기쁘게 생각합니다.</strong> 또한 모두를 위해 웹을 빠르고 더 신뢰성 있게 만들고자 하는 우리의 노력에 있어 Google Chrome과 Mozilla Firefox라는 선도적인 두 브라우저 제조사와 이 발표를 함께 하게 되어 기쁩니다.</p>
+	<p>Google의 스탭 소프트웨어 엔지니어인 Ryan Hamilton씨는 다음과 같이 말했습니다: "HTTP/3은 모두를 위해 웹을 빠르게 만들 것입니다. Chrome과 클라우드플레어 팀은 웹을 더 좋게 만들기 위해 HTTP/3과 QUIC을 초기 표준에서 폭넓게 받아들여지는 기술로 만들어지도록 긴밀하게 협력하고 있습니다. 산업계 리더간의 강한 협력 관계는 인터넷 표준 혁신을 가능케 하고 있으며 앞으로도 같이 협력해 나갈 것을 기대하고 있습니다"</p>
+	<p>웹 사이트를 빠르고 안전하게 만드는 클라우드플레어 서비스와 엣지 네트워크를 사용한다는 것은 클라우드플레어 고객에게 무엇을 의미 할까요? <a href="#http-3--1">클라우드플레어 대시 보드에서 여러분의 도메인에 HTTP/3 지원을 설정</a>하게 되면 사용자 들이 여러분의 웹사이트와 API를 HTTP/3을 통해서 통신할 수 있게 됩니다. 먼저 HTTP/3 대기 목록에 들어 있는 고객부터 점진적으로 초대하고 있으며 (저희가 보내는 메일을 잘 봐 주세요) 추후에 이 기능은 모두에게 이용 가능할 것입니다.</p>
+	<p>브라우저와 다른 클라이언트를 사용해서 웹사이트와 API에 접근하는 인터넷 사용자에게 이번 발표는 무엇을 의미 할까요? 오늘 바로 <a href="#google-chrome-http-3-">Chrome Canary 브라우저를 사용</a>하여 클라우드플레어나 다른 서비스와 HTTP/3으로 통신할 수 있습니다. 명령행 클라이언트를 사용하는 사람들에게 <a href="#curl-">curl은 HTTP/3 지원을 제공</a>하고 있습니다. Chrome과 curl 로 HTTP/3 통신하는 방법에 대해서는 이 글 후반부에서 다루도록 하겠습니다.</p>
+	<h2 id="-">닭과 달걀의 문제</h2>
+	<p>인터넷 표준의 혁신은 역사적으로 볼 때 닭과 달걀의 문제처럼 어려웠습니다. 서버 지원 (클라우드플레어와 같이 응답 데이터를 많이 갖고 있는)이 먼저가 되어야 할까요 클라이언트 지원 (브라우저, 운영체제 등등)이 먼저가 되어야 할까요? 실제 사람들이 사용하려면 양쪽 연결에서 모두 새 통신 프로토콜을 지원해야 합니다.</p>
+	<p>클라우드플레어는 HTTP/2 (HTTP/3 이전 버전의 HTTP), TLS 1.3, 암호화된 SNI와 같은 웹 표준을 선도해 온 긴 역사를 갖고 있습니다. 우리는 더 나은 인터넷을 만드는 일은 돕고자 하는 우리의 의지를 공유하는 유사한 생각을 하는 조직과 함께 파트너를 맺어 표준을 밀어 왔습니다. HTTP/3 을 주류로 만들고자 하는 우리의 노력 또한 다르지 않습니다.</p>
+	<p>HTTP/3 표준 개발 프로세스에 있어 HTTP/3 의 클라이언트 지원을 우리의 엣지 서버 지원과 호환 되도록 만들고 검증하는 작업을 산업계 협력사와 함께 밀접하게 해 왔습니다. 오늘 HTTP/3으로 클라우드플레어 엣지 서버와 통신을 지원하는 Google Chrome, curl 과 이러한 노력을 함께 하게 되어 기쁩니다. Mozilla Firefox 도 나이틀리 릴리즈에서 곧 지원할 것을 기대하고 있습니다.</p>
+	<p>요약하자면, 오늘은 인터넷 사용자에게 좋은 날입니다. HTTP/3를 폭 넓게 지원하는 것은 모두에게 더 빠른 웹 경험을 의미하며 오늘의 지원 시작은 그 첫걸음입니다.</p>
+	<p>더 중요한 것은, 오늘은 인터넷에게 좋은 날입니다. Chrome, curl, 클라우드플레어에 이어 곧 Mozilla가 실험적이지만 동작하는 HTTP/3 지원을 발표하는 것은 인터넷 표준 생성 프로세스가 동작하고 있다는 것을 의미합니다. IETF의 조율을 바탕으로 산업계 협력사, 경쟁사 등 중요 관계자가 대기업만이 아닌 전체 인터넷에게 이익을 주는 표준을 만들어 내기 위해 같이 협력할 수 있는 것입니다.</p>
+	<p>Firefox의 CTO인 Eric Rescorla 씨는 다음과 같이 훌륭히 정리 했습니다: "새 네트워크 프로토콜을 개발하는 것은 어렵고, 제대로 하기 위해서는 모두의 협력이 필요 합니다. 최근 몇년 간 우리는 클라우드플레어와 다른 산업계 협력사와 같이 TLS 1.3을 테스트해 왔고 지금은 HTTP/3과 QUIC을 테스트하고 있습니다. 클라우드플레어의 이러한 프로토콜을 서버측에서 초기 지원하는 것은 우리의 클라이언트 측 Firefox 구현의 상호 테스트상의 문제점들을 수정할 수 있도록 도와 주었습니다. 인터넷의 보안과 성능을 개선할 수 있도록 앞으로도 같이 협력하기를 기대하고 있습니다"</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/09/HTTP3-partnership@2x-1.png" class="kg-image"></figure>
+	<h2 id="--1"><strong>지금까지의 경과</strong></h2>
+	<p>HTTP/3을 더 살펴 보기 전에 왜 HTTP/3 이 필요한지에 대해서 더 잘 이해할 수 있도록 <a href="https://blog.cloudflare.com/http-3-from-root-to-tip/">HTTP의 발전 과정</a>에 대해서 간략히 살펴 보도록 하겠습니다.</p>
+	<p>1996년에 지금 알려진 형태의 기본적인 HTTP의 텍스트 형식의 전송 포맷이 정의된 <a href="https://tools.ietf.org/html/rfc1945" target="_blank">HTTP 1.0 명세서</a>가 발표 됩니다 (편의상 HTTP/0.9 는 없던 것 처럼 생각해 주세요). HTTP/1.0 에서는 클라이언트와 서버 간의 요청/응답 교환을 위해서 하나의 TCP 연결이 새로 만들어 지는데, 요청을 보내기 전에 TCP와 TLS 핸드쉐이크가 완료되어야 하므로 모든 요청에 대해서 지연 패널티가 발생하게 됩니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/07/http-request-over-tcp-tls@2x.png" class="kg-image"></figure>
+	<p>더 안좋은 것은 일단 연결이 만들어지면 보낼 데이터를 최대한 빠르게 보내는 것 대신 TCP는 "슬로우 스타트"라는 준비 기간을 강제하는데, 이는 TCP 혼잡 제어 알고리즘이 네트워크 경로 상에서 혼잡이 일어나기 전에 데이터를 얼마나 보내야 하는지를 결정하고, 처리할 수 없는 패킷이 네트워크에 넘치지 못하도록 해 줍니다. 하지만 새 연결은 슬로우 스타트 과정을 꼭 거쳐야 하므로 이용 가능한 네트워크 대역폭을 바로 모두 이용할 수는 없습니다.</p>
+	<p>몇년 뒤 <a href="https://tools.ietf.org/html/rfc2616" target="_blank">HTTP 명세서의 HTTP/1.1 개정판</a>은 "킵얼라이브" 연결의 개념을 도입하는 것으로 이 문제를 해결하려 하였는데, 클라이언트가 TCP 연결을 재사용하는 것을 허용하여 복수의 요청에서 발생할 수 있는 초기 연결 확립과 슬로우 스타트에 드는 비용을 줄여 줍니다. 하지만 이것도 만능은 아닙니다. 복수의 요청이 같은 연결을 공유할 수 있는 반면에 하나씩 순서대로 보내야 하므로 각 연결에서는 한번에 하나의 요청/응답 교환만을 처리할 수 있습니다.</p>
+	<p>웹이 진화하면서, 각 웹 사이트에서 필요한 자원 (CSS, 자바스크립트, 이미지 등등)의 양이 해가 갈수록 증가함에 따라 웹 페이지를 다운로드받고 렌더링하기 위해 브라우저는 더 많은 동시성을 필요로 하게 되었습니다. 하지만 HTTP/1.1에서는 클라이언트가 한번에 하나의 HTTP 응답/요청만을 해야 하므로, 네트워크 계층에서 동시성을 높일 수 있는 유일한 방법은 동일 오리진에 대해 복수의 TCP 연결을 병렬로 만드는 것인데, 이 경우 킵얼라이브 연결의 장점을 많이 잃게 됩니다. 일정 수준 (하지만 낮은 쪽)으로 연결은 재사용 되지만, 다시 처음 문제로 돌아가게 되는 것입니다.</p>
+	<p>십여년 뒤 SPDY, 그리고 <a href="https://tools.ietf.org/html/rfc7540" target="_blank">HTTP/2</a> 가 발표 되는데, 여러가지 개선이 있습니다만 그중에서 HTTP "스트림"의 개념이 소개 되었습니다. 이는 HTTP 구현이 동일한 TCP 연결에 복수의 HTTP 응답/요청 교환을 동시 다중 송신할 수 있도록 하는 추상 개념으로, 브라우저가 TCP 연결을 더 효율적으로 재사용할 수 있도록 하였습니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/09/Screen-Shot-2019-09-25-at-7.43.01-PM.png" class="kg-image"></figure>
+	<p>그렇지만 아직 이것도 만능은 아닙니다! HTTP/2는 복수의 요청/응답이 동시에 같은 연결 위에서 전송될 수 있도록 하여 단일 TCP 연결의 사용의 비효율성이라는 최초의 문제를 해결 하였습니다. 하지만 모든 응답과 요청은 패킷 손실에 대해서 하나의 요청에만 관계된 것이라도 동등하게 같은 영향을 받습니다(네트워크 혼잡 상황). 이것은 HTTP/2 계층이 서로 다른 HTTP 응답/요청 교환을 별개의 스트림으로 분리 하였지만 TCP는 그러한 추상화에 대해 알지 못하므로 특별한 의미가 없는 바이트 열로만 보기 때문입니다.</p>
+	<p>TCP의 역할은 전체 데이터를 순서대로 한 곳에서 다른 곳으로 전달하는 것입니다. 데이터 일부를 담고 있는 TCP 패킷이 네트워크 경로 상에서 손실 되면 데이터 스트림에 누락 구간이 생기고 TCP는 손실이 탐지 되었을 때 영향받은 패킷만을 재전송하려 합니다. 그렇게 하는 동안 분실과 관계 없는 완전히 독립된 HTTP 요청에 속하는 경우에도, 분실된 데이터 이후 성공적으로 받은 데이터는 어플리케이션으로 전달되지 못합니다. TCP는 잃어버린 데이터 없이 어플리케이션이 진행 가능한 지 알지 못하므로 불필요한 지연이 발생하게 됩니다. 이는 "HoLB" (head-of-line blocking)이라고 알려진 문제 입니다.</p>
+	<h2 id="http-3-">HTTP/3의 시작</h2>
+	<p>여기서 HTTP/3의 역할이 있습니다. TCP를 세션 전송 계층으로 사용하는 대신, HTTP/3은 여러가지 특징 중 전송 계층에 스트림을 기본 구조로 도입하는 <a href="https://blog.cloudflare.com/the-road-to-quic/">새 인터넷 전송 프로토콜인 QUIC</a>을 사용합니다. QUIC 스트림은 동일 QUIC 연결을 공유 하므로 새 스트림을 만들 때 추가적인 핸드쉐이크나 슬로우 스타트가 필요하지 않습니다. QUIC 스트림은 독립적으로 전달되어 어떤 스트림에 패킷 손실이 있는 경우에도 다른 스트림에는 영향이 없습니다. 이는 QUIC 패킷이 UDP 데이터그램 위에 캡슐화되어 있기 때문 입니다.</p>
+	<p>UDP를 사용하는 것은 TCP 보다 더 유연 하며 QUIC 구현을 완전히 사용자 수준 구현으로 할 수 있게 합니다. 프로토콜의 구현의 업데이트는 TCP의 경우처럼 운영체제 업데이트에 묶여 있지 않습니다. QUIC에서 HTTP 수준 스트림은 QUIC 스트림에 단순 매핑되어 있으므로 HoLB없이 HTTP/2 의 모든 장점을 누릴 수 있습니다.</p>
+	<p>또한 QUIC은 TCP의 전형적인 3방향 핸드셰이크와 TLS 1.3의 핸드셰이크를 결합 합니다. 이런 결합은 암호화와 인증이 기본으로 제공되고 연결을 더 빨리 만들 수 있게 합니다. 달리 말하면 HTTP의 첫 요청에 필요한 QUIC 연결을 새로 만들 때에도 데이터 전송 시작까지 걸리는 지연 시간은 TCP 상의 TLS보다 작습니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/07/http-request-over-quic@2x.png" class="kg-image"></figure>
+	<p>하지만 왜 QUIC상에서 그냥 HTTP/2를 이용하지 않고 새 HTTP 버전을 만들었을까요? HTTP/2는 스트림 다중 전송이라는 특징을 갖고 있습니다만 사실 그렇게 단순하지만은 않습니다.</p>
+	<p>일부의 HTTP/2 기능이 QUIC위에 쉽게 구현 가능한 것은 사실이지만 모두 그렇지는 않습니다. 그 중 <a href="https://blog.cloudflare.com/hpack-the-silent-killer-feature-of-http-2/">HPACK이라고 하는 HTTP/2의 헤더 압축 기법</a>이 그러한데, 이는 전송 중의 서로 다른 HTTP 요청과 응답의 순서에 크게 의존 합니다. QUIC은 단일 스트림 내에서는 데이터가 순서대로 도착 하도록 보장 하지만 서로 다른 스트림에 대해서는 그렇지 않습니다.</p>
+	<p>이러한 동작 방식은 QPACK이라고 하는 문제를 해결 하지만 HTTP 매핑의 변경이 필요한 새로운 HTTP 헤더 압축 기법을 필요로 하게 되었습니다. 추가적으로 (스트림별 흐름 제어와 같은) 일부 HTTP/2에서 제공하는 기능은 이미 QUIC 자체로 지원 되므로 프로토의 불필요한 복잡성을 줄이기 위해서 HTTP/3에서는 제거 되었습니다.</p>
+	<h2 id="-http-3">맛있는 키슈와 함께 하는 HTTP/3</h2>
+	<p>QUIC과 HTTP/3은 기존 표준의 많은 단점을 극복하고 웹 성능의 새 시대를 여는 매우 흥미로운 표준입니다. 이런 흥미로운 표준 문서에서 실제 동작하는 구현을 얻기 위해 어떻게 하였을까요?</p>
+	<p>클라우드플레어의 QUIC과 HTTP/3 지원은 <a href="https://blog.cloudflare.com/enjoy-a-slice-of-quic-and-rust/">Rust로 작성된 자체 오픈 소스 구현인 quiche</a>를 사용하고 있습니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/09/Screen-Shot-2019-09-25-at-7.39.59-PM.png" class="kg-image"></figure>
+	<p>이 프로젝트는 GitHub의 <a href="https://github.com/cloudflare/quiche" target="_blank">github.com/cloudflare/quiche</a> 에서 찾아볼 수 있습니다.</p>
+	<p>몇달 전 quiche를 발표한 이래 기존의 QUIC 지원 위에 HTTP/3 프로토콜 지원을 추가 하였습니다. quiche는 HTTP/3 서버와 클라이언트를 구현하기 위해서 사용할 수도 있고 QUIC만을 이용할 수도 있도록 설계 되었습니다.</p>
+	<h2 id="http-3--1"><strong>HTTP/3을 내 도메인에서 설정하기</strong></h2>
+	<p>앞서 이야기한 것 처럼 대기 목록의 고객을 처리하고 있습니다. 대기 목록에 가입한 적이 있고 여러분의 웹사이트에 이제 설정 가능하다는 내용의 메일을 받았다면, 클라우드플레어 대시보드에 가서 "Network" 탭의 다음 스위치를 켜 주기만 하면 됩니다:</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/07/http3-toggle-1.png" class="kg-image"></figure>
+	<p>조만간 모든 고객에게 HTTP/3 기능이 이용 가능하도록 할 것입니다.</p>
+	<p>설정이 되었다면, 몇가지 방법으로 HTTP/3을 테스트해 볼 수 있습니다.</p>
+	<h3 id="google-chrome-http-3-">Google Chrome을 HTTP/3 클라이언트로 사용시</h3>
+	<p>Chrome 브라우저를 사용하여 HTTP/3로 웹사이트 접속을 하기 위해서는 먼저 <a href="https://blog.cloudflare.com/ko/http3-the-past-present-and-future-ko/Chrome%20%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80%EB%A5%BC%20%EC%82%AC%EC%9A%A9%ED%95%98%EC%97%AC%20HTTP/3%EB%A1%9C%20%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8%20%EC%A0%91%EC%86%8D%EC%9D%84%20%ED%95%98%EA%B8%B0%20%EC%9C%84%ED%95%B4%EC%84%9C%EB%8A%94%20%EB%A8%BC%EC%A0%80%20%EC%B5%9C%EC%8B%A0%EC%9D%98%20Canary%20%EB%B9%8C%EB%93%9C%EB%A5%BC%20%EC%84%A4%EC%B9%98%ED%95%B4%EC%95%BC%20%ED%95%A9%EB%8B%88%EB%8B%A4.%20%EA%B7%B8%EB%A6%AC%EA%B3%A0%20%E2%80%9C--enable-quic%E2%80%9D%EA%B3%BC%20%E2%80%9C--quic-version=h3-23%E2%80%9D%20%EB%AA%85%EB%A0%B9%ED%96%89%20%EC%9D%B8%EC%88%98%EB%A5%BC%20%EC%A3%BC%EC%96%B4%20HTTP/3%20%EC%A7%80%EC%9B%90%EC%9D%84%20%EC%BC%9C%EA%B3%A0%20Chrome%20Canary%EB%A5%BC%20%EC%8B%A4%ED%96%89%ED%95%B4%EC%95%BC%20%ED%95%A9%EB%8B%88%EB%8B%A4.">최신의 Canary 빌드</a>를 설치해야 합니다. 그리고 “--enable-quic”과 “--quic-version=h3-23” <a href="https://www.chromium.org/developers/how-tos/run-chromium-with-flags" target="_blank">명령행 인수를 주어</a> HTTP/3 지원을 켜고 Chrome Canary를 실행해야 합니다.</p>
+	<p>Chrome 이 위와 같은 설정으로 실행이 되면 주소 창에 여러분의 도메인을 입력하고 HTTP/3로 로딩이 되는지 봅니다 (Chrome Developer Tools 의 Network 탭을 이용하여 사용되고 있는 버전을 확인할 수 있습니다). HTTP/3 사용을 브라우저와 서버 간에 협상하는 방식 때문에 처음의 연결 몇번에서는 HTTP/3이 바로 사용되지 않을 수 있으므로 페이지를 몇번 다시 읽어 보기 바랍니다.</p>
+	<p>너무 복잡해 보여도 걱정하실 필요 없습니다. Chrome 의 HTTP/3 지원이 더 안정적이 되면 HTTP/3 설정은 더 편해질 것입니다.</p>
+	<p>이 블로그를 HTTP/3으로 접속해 본다면 Developer Tools 의 Network 탭에서는 다음과 같이 보입니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/09/Screen-Shot-2019-09-20-at-1.27.34-PM.png" class="kg-image" alt="Screen-Shot-2019-09-20-at-1.27.34-PM"></figure>
+	<p>Chrome의 HTTP/3 지원은 아직 실험적이므로, 프로토콜은 Developer Tools 에서는 "http2+quic/99"로 표시 됩니다. 하지만 속지 마세요, 이것은 실제로는 HTTP/3 입니다.</p>
+	<h3 id="curl-">curl 사용시</h3>
+	<p>curl 명령행 도구도 <a href="https://daniel.haxx.se/blog/2019/09/11/curl-7-66-0-the-parallel-http-3-future-is-here/" target="_blank">HTTP/3을 실험적 기능으로 지원</a>하고 있습니다. <a href="https://github.com/curl/curl" target="_blank">최신 버전을 git</a> 에서 받아서 <a href="https://github.com/curl/curl/blob/master/docs/HTTP3.md#quiche-version" target="_blank">HTTP/3 지원을 설정하도록 하는 빌드 순서</a>를 따라 하면 됩니다.</p>
+	<p>MacOS를 사용 한다면 Homebrew 를 통해서 HTTP/3을 지원하는 curl 버전을 설치하기 쉽도록 하였습니다:</p>
+	<pre><code class="language-bash"> % brew install --HEAD -s https://raw.githubusercontent.com/cloudflare/homebrew-cloudflare/master/curl.rb
+</code></pre>
+	<p>HTTP/3 요청을 보내기 위해서 필요한 것은 curl 명령에 "--http3" 명령행 인수를 주는 것으로 충분합니다:</p>
+	<pre><code class="language-bash"> % ./curl -I https://blog.cloudflare.com/ --http3
+HTTP/3 200
+date: Tue, 17 Sep 2019 12:27:07 GMT
+content-type: text/html; charset=utf-8
+set-cookie: __cfduid=d3fc7b95edd40bc69c7d894d296564df31568723227; expires=Wed, 16-Sep-20 12:27:07 GMT; path=/; domain=.blog.cloudflare.com; HttpOnly; Secure
+x-powered-by: Express
+cache-control: public, max-age=60
+vary: Accept-Encoding
+cf-cache-status: HIT
+age: 57
+expires: Tue, 17 Sep 2019 12:28:07 GMT
+alt-svc: h3-23=":443"; ma=86400
+expect-ct: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+server: cloudflare
+cf-ray: 517b128df871bfe3-MAN
+</code></pre>
+	<h3 id="quiche-http3-client-">quiche의 http3-client 사용시</h3>
+	<p>마지막으로, HTTP/3를 테스트해 볼 때 사용할 수 있도록 quiche에서도 <a href="https://github.com/cloudflare/quiche/blob/master/examples/http3-client.rs" target="_blank">HTTP/3 명령행 클라이언트</a> (명령행 서버도 있음) 예제를 제공 합니다.</p>
+	<p>테스트해 보기 위해서는 먼저 quiche 의 Github 리포지토리를 복제 합니다:</p>
+	<pre><code class="language-bash">$ git clone --recursive https://github.com/cloudflare/quiche
+</code></pre>
+	<p>그리고 빌드해 주세요. 빌드를 위해서는 Rust와 Cargo 를 설치해야 합니다 (Rust 개발 환경을 쉽게 설치하기 위해서는 <a href="https://rustup.rs/" target="_blank">rustup</a> 을 사용하기를 권장 합니다).</p>
+	<pre><code class="language-bash">$ cargo build --examples
+</code></pre>
+	<p>이제 HTTP/3 요청을 다음과 같이 해 볼 수 있습니다:</p>
+	<pre><code class="language-bash">$ RUST_LOG=info target/debug/examples/http3-client https://blog.cloudflare.com/
+</code></pre>
+	<h2 id="--2">남은 과제</h2>
+	<p>추후 저희는 현재의 QUIC과 HTTP/3 구현을 최적화하고 개선하는 작업을 계속할 것이며, 최종적으로 모든 사람이 대기 목록에 등록할 필요 없이 바로 이 새로운 기능을 이용할 수 있도록 할 것입니다. 표준이 발전해 감에 따라 구현 내용도 계속 갱신할 예정이라, 표준 초안의 갱신에 따라 <strong>하위 호환을 보장되지 않을 수 있습니다</strong>.</p>
+	<p>다음은 로드맵에 있는 몇가지 흥미로운 기능 들입니다:</p>
+	<h3 id="--3">연결 이전</h3>
+	<p>QUIC의 중요한 기능 중 하나는 서로 다른 네트워크 간에(가정의 와이파이 네트워크에 연결되어 있다 출근할 때 집에서 나서면 휴대폰 모바일 네트워크로 연결되는 경우 등) 새로 연결을 만들지 않고 끊김 없이 투명하게 기존의 연결이 이전되는 것입니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/09/Screen-Shot-2019-09-25-at-7.39.44-PM.png" class="kg-image"></figure>
+	<p>이 기능은 저희 인프라스트럭처에도 일부 변경을 필요하지만, 추후 고객에게 제공하고자 하는 흥미로운 기능 중 하나 입니다.</p>
+	<h3 id="0-rtt-">0-RTT 연결 재개</h3>
+	<p>TLS 1.3과 같이 QUIC은 <a href="https://blog.cloudflare.com/introducing-0-rtt/">연결 핸드셰이크가 완료되기 이전에 HTTP 요청을 보내기 시작할 수 있는 동작 모드</a>를 지원 합니다. 현재 저희의 QUIC 구현에서는 아직 지원하지 않습니다만 이미 기존의 TLS 1.3 지원에서 하고 있는 것 처럼 QUIC에서도 지원 가능하도록 할 것입니다.</p>
+	<h2 id="http-3--2">HTTP/3: 이제 시작입니다!</h2>
+	<p>QUIC과 HTTP/3의 표준화 작업은 아직 진행 중 입니다만 고객이 직접 테스트해 볼 수 있도록 HTTP/3을 지원하게 되어 기쁩니다. Google 과 Mozilla를 포함하는 여러 조직과 협력해 가며 QUIC과 HTTP/3 표준을 완료하고 더 많은 사람들이 이용하도록 노력할 것입니다.</p>
+	<p>바로 모두를 위한 더 빠르고 더 신뢰할 수 있고 더 안전한 웹 사용 경험을 위한 것입니다.</p>
+</div>

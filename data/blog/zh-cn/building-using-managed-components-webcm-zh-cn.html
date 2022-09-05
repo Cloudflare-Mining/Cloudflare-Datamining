@@ -1,0 +1,179 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/08/image1-6.png" class="kg-image" alt="Building and using Managed Components with WebCM"></figure>
+	<p>托管组件能够颠覆第三方工具与网站的集成方式。两个月前，我们宣布<a href="https://blog.cloudflare.com/zaraz-open-source-managed-components-and-webcm/">对 Cloudflare Zaraz 背后最具创新性的一部分技术进行开源</a>，使其可供所有人在线访问和使用。自那以后，我们一直竭力确保为代码配套良好的文档，并且所有片段都富有乐趣、易于使用。在本文中，我准备展示托管组件可以怎样立即帮助您管理网站或构建第三方工具。但是，在深入探索之前，我们先谈谈过去的情况吧。</p>
+	<h3 id="-">第三方脚本对您的网站构成威胁</h3>
+	<p>几十年来，如果要将分析工具添加到您的站点，无论是聊天小部件、转换像素还是其他任何种类的工具，都需要包含一个外部脚本。这通常意味着将类似于以下内容的代码添加到网站中：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-html">&lt;script src=”https://example.com/script.js”&gt;&lt;/script&gt;
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>好好想一想，这其实是个糟糕的想法。这样做不仅要求浏览器连接到<em>另一个</em>服务器，获取并执行<em>更多</em> JavaScript 代码，还得完全放弃对网站的控制权。这个脚本到底有多值得信任？又如何确保脚本的服务器没有被入侵，或者将来绝不会被入侵？在之前的博客文章中，我们展示了<a href="https://blog.cloudflare.com/zh-cn/zaraz-use-workers-to-make-third-party-tools-secure-and-fast-zh-cn/">包含一个脚本通常会导致更多网络调用</a>，从而独占浏览器，拖慢一切。但这些脚本最糟糕的地方在于，它们完全不受限制：浏览器中运行的 JavaScript 代码可能会劫持用户，盗取其凭据或信用卡信息，使用其设备来进行加密货币采矿，操控您的网站，泄露 PII 等。由于这些脚本中的代码通常缩小了，基本上不可能加以阅读并搞清楚其细节。</p>
+	<p>托管组件改变了这一局面。它们就像手机里的应用一样，是围绕一种权限系统而构建的。您可以决定是否允许某个组件连接到远程服务器，是否允许它执行使用 Cookie、运行代码或将小部件注入页面中等操作。不同于缩小的外部脚本，它是一种提升透明度的框架。网站所有者可以将权限切换为开或关，未获权限的托管组件无法访问相关 API。</p>
+	<p>但托管组件所能做的远不止为当前系统配上权限，它们还提供了前所未有的功能：建立服务器端连接，缓存信息，使用键值存储，操控响应之后将其交由浏览器处理等。此功能的核心在于，能够在浏览器外部执行代码。将浏览器解放出来，不再运行过去在浏览器中执行的代码，意味着<a href="https://blog.cloudflare.com/zh-cn/cloudflare-acquires-zaraz-to-enable-cloud-loading-of-third-party-tools-zh-cn/">您的网站运行速度可以提高大约 40%</a>，同时还可以在您的工具供应商受到入侵时缩小攻击面。</p>
+	<p>借助新的<a href="https://managedcomponents.dev/" target="_blank">托管组件 API</a>，所有这一切都可以实现。我们与供应商一起设计了这个 API，确保您可以用其编写任何工具，同时将性能、安全性和隐私作为首要任务。托管组件的核心只是一个 JavaScript 模块，因此每个 JavaScript 开发人员在构建托管组件时应该会感到如鱼得水。请查看我们上一篇博客文章中的<a href="https://blog.cloudflare.com/zaraz-open-source-managed-components-and-webcm/#introducing-managed-components">两个示例</a>，了解其实际情况，或者查看<a href="https://github.com/managed-components/" target="_blank">我们已经在 GitHub 上开源的一些托管组件</a>。</p>
+	<h3 id="webcm-">WebCM 是开源组件管理器</h3>
+	<p>工具加载了 <code>&lt;script&gt;</code> Tag 标记之后，其代码由浏览器执行。由于托管组件不在浏览器中运行，其代码需要在别处执行。这就是组件管理器。我们有意围绕托管组件设计了 API，就是为了不绑定到特定组件管理器，事实上，如今已经诞生了两个管理器：Cloudflare Zaraz 和 WebCM。</p>
+	<p><a href="https://webcm.dev/" target="_blank">WebCM 是基于 Web 的组件管理器</a>，是我们对组件管理器的开源参考实现。如果您运行一个网站，即使您不是 Cloudflare 用户，也可以立即使用 WebCM 在您的网站上运行托管组件。如果您想创建托管组件，则可以像使用 SDK 一样使用它。</p>
+	<p>过去几个月来，我们一直在帮助供应商编写其自己的托管组件，并会继续这一工作。我们将 WebCM 开源，以确保托管组件成为整个 Web 界的技术。所有人都应该能够使用 WebCM 加载和创建托管组件。下面就来看一看怎么使用吧！</p>
+	<h3 id="webcm-5-">WebCM 5 分钟入门</h3>
+	<p>WebCM 入门其实比想象的简单。因为 WebCM 工作原理类似于代理，无论您的网站是如何构建的，都可以使用它。在新的文件夹中，创建简单的 HTML 文件并将其命名为 <code>index.html</code>：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=”en”&gt;
+  &lt;head&gt;
+	&lt;meta charset="UTF-8"&gt;
+	&lt;title&gt;My Website&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    	&lt;h1&gt;WebCM test website&lt;/h1&gt;  
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>在相同文件夹中启动一个 HTTP 服务器来提供此文件：</p>
+	<p>您可以使用 Node.js：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>npx http-server -p 8000
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>您可以使用 Python：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>python3 -m http.server
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>或将在 <a href="http://localhost:8000/index.html" target="_blank">http://localhost:8000/index.html</a> 上提供我们的 HTML 文件的其他任何语言。</p>
+	<p>接下来，为 WebCM 创建配置文件。在新目录中，创建名为 <code>webcm.config.ts</code> 的文件。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-js">export default {
+  components: [
+    {
+      name: 'demo',
+      permissions: [
+        'access_client_kv',
+        'provide_server_functionality',
+        'provide_widget',
+        'serve_static_files',
+        'client_network_requests',
+      ],
+    },
+  ],
+  target: 'http://127.0.0.1:8000',
+  hostname: 'localhost',
+  trackPath: '/webcm/track',
+  ecommerceEventsPath: '/webcm/ecommerce',
+  clientEventsPath: '/webcm/system',
+  port: 8080
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>我们来详细考察一下这个配置文件：</p>
+	<ul>
+		<li><code>components</code> 是一个数组，列出了您想加载的所有托管组件。目前，我们将加载 demo 组件。请注意，我们只需要指定 “demo”，WebCM 就会从 NPM 获取它。其他托管组件也<a href="https://www.npmjs.com/org/managed-components" target="_blank">可从 NPM 获取</a>，您也可以安装其他来源的组件。对于每个组件，我们会定义为其提供的 <code>permissions</code>。您可以在<a href="https://managedcomponents.dev/specs/manifest/permissions" target="_blank">规范</a>中阅读有关权限的更多信息。如果我们不对组件授予必需的权限就添加该组件，WebCM 会提醒我们。</li>
+		<li><code>target</code> 是源 HTTP 服务器运行的位置。在上一步，我们将其设置为在端口 8000 上运行。</li>
+		<li><code>port</code> 是 WebCM 提供我们的网站时所采用的端口。</li>
+		<li><code>hostname</code> 是 WebCM 将绑定到的主机。</li>
+		<li><code>trackPath</code>、<code>clientEventsPath</code>、<code>ecommerceEventsPath</code> 是 WebCM 用于将事件从浏览器发送到其后端的路径。我们可以暂时不改动这些路径，后面再看看其用法。</li>
+	</ul>
+	<p>！注意：下一部分需要 Node 版本 17 或更高版本</p>
+	<p>使 HTTP 服务器保持运行的同时，在与 <code>webcm.config.ts</code> 相同的目录中，运行 <code>npx webcm</code>。Node 将获取并启动 WebCM，然后 WebCM 将读取配置。首先，它将获取所需组件以将其放入 <code>components</code> 文件夹中。完成后，它会启动另一个服务器来代理您的源。</p>
+	<p>如果您立即在浏览器中打开 <a href="http://localhost:8080/index.html" target="_blank"> http://localhost:8080/index.html</a>，您会看到 <a href="http://localhost:8000/index.html" target="_blank">http://localhost:8000/index.html</a> 中所显示的相同页面。虽然这些页面可能相似，但端口 <code>8080</code> 上运行的页面才运行着我们的 demo 托管组件。移动鼠标并在页面中单击应该会导致在 WebCM 终端打印消息，显示组件已加载且正在接收数据。您还会注意到，页面现在显示了简单的天气小部件，即附加到您页面的<a href="https://managedcomponents.dev/specs/embed-and-widgets/widgets" target="_blank">托管组件小部件</a>。获取天气信息时，浏览器无需联系任何额外服务器，WebCM 可以缓存该信息，确保快速提供该信息。最后，如果您转至 <a href="http://localhost:8080/webcm/demo/cheese" target="_blank">http://localhost:8080/webcm/demo/cheese</a>，就会看到该组件在提供一块奶酪的静态图片。此示例展示了在您允许的情况下，托管组件如何在服务器上公开新端点。</p>
+	<p>顾名思义，demo 组件就只是一个演示。我们使用它来展示并测试托管组件 API。要是我们想将真正的托管组件添加到站点该怎么办？Google Analytics <a href="https://w3techs.com/technologies/details/ta-googleanalytics" target="_blank">被互联网上超过半数的网站使用</a>，因此我们看一下如何编辑 <code>webcm.config.ts</code> 文件来加载它。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-js">export default {
+  components: [
+    {
+      name: 'demo',
+      permissions: [
+        'access_client_kv',
+        'provide_server_functionality',
+        'provide_widget',
+        'serve_static_files',
+        'client_network_requests',
+      ],
+    },
+    {
+      name: 'google-analytics',
+      settings: { 'tid': 'UA-XXXXXX' },
+      permissions: [
+        'access_client_kv',
+      ],
+    },
+  ],
+  target: 'http://127.0.0.1:8000',
+  hostname: 'localhost',
+  trackPath: '/webcm/track',
+  ecommerceEventsPath: '/webcm/ecommerce',
+  clientEventsPath: '/webcm/system',
+  port: 8080
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>在以上示例中，我们只是将 demo 组件替换为 Google Analytics 托管组件。请注意，该组件运行所需的权限少得多，因为它在 100% 的服务器端运行。别忘了将 <code>UA-XXXXXX</code> 替换为真正的 Google Universal Analytics（版本 3）帐户标识符。</p>
+	<p>重新运行“npx webcm”将立即获取 <a href="https://www.npmjs.com/package/@managed-components/google-analytics" target="_blank">Google Analytics 托管组件</a>并使用您提供的设置运行它。如果您现在转至代理网站，则不会看到任何变化。但如果转至 Google Analytics 仪表板，则会逐渐看到“实时”视图上显示的页面浏览量。WebCM 加载了该组件，且正在将服务器端信息发送到 Google Analytics。</p>
+	<p>您可以试用其他许多组件，我们还在不断添加更多组件。请查看 <a href="https://www.npmjs.com/org/managed-components" target="_blank">NPM </a>或 <a href="https://github.com/managed-components" target="_blank">GitHub 上的托管组件组织</a>，了解完整列表。</p>
+	<h3 id="--1">构建您自己的托管组件</h3>
+	<p>托管组件并不是您可以使用的工具的封闭库。如前所述，我们正在逐渐对 GitHub 上我们库中的更多工具开源。如果您认为我们的组件表现怪异，请向我们提交问题，甚至可以提交 PR。托管组件可以惠及所有人。过去几个月来，Discord 和 Cloudflare 社区论坛上的 Cloudflare Zaraz 社区对于积极报告问题十分有用，因此我们很高兴为其提供一个选项，进一步了解 Cloudflare Zaraz 背后的内幕。</p>
+	<p>能改进现有托管组件固然是好，但我们认为更重要的是，您现在也可以构建自己的托管组件了。如果您是第三方工具供应商，您可以通过这种方式创建工具的安全高效版本，方便客户轻松发现和采用您的工具。如果您是网站开发人员，您可能想对托管组件进行一些改动，看看可以轻松从浏览器中移除哪些内容，从而提高性能。</p>
+	<p>我们来看一个非常简单的例子，创建一个托管组件来侦听我们网站上的每个页面浏览。运行 <code>npm init managed-component</code>（位于 WebCM 创建的 <code>components</code> 目录中），<a href="https://github.com/managed-components/create-managed-component" target="_blank">create-managed-component</a> 将引导您完成搭建组件文件的过程。首先，我们的组件不会使用任何特殊权限，因此您可以选择“无”。</p>
+	<p>完成向导后，可以打开 <code>src/index.ts</code> 文件。默认情况下，组件会将侦听器添加到所有页面浏览：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-typescript">import { ComponentSettings, Manager } from '@managed-components/types'
+
+export default async function (manager: Manager, settings: ComponentSettings) {
+  manager.addEventListener('pageview', event =&gt; {
+    // do the things
+  })
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>现在来编辑注释行，以便每次发生页面浏览时都能看到。请注意，我们还为 <code>settings</code> 加了前缀 <code>_</code> ，因为我们暂时不使用它：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-typescript">import { ComponentSettings, Manager } from '@managed-components/types'
+
+export default async function (manager: Manager, _settings: ComponentSettings) {
+  manager.addEventListener('pageview', event =&gt; {
+    console.log(`New pageview at ${event.client.url}`)
+  })
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>进行这些更改后，每次网站上的页面被浏览时，组件都会打印当前 URL。在尝试之前，我们需要构建组件。在组件所处的文件夹中，运行 <code>npm i &amp;&amp; npm run build</code>。然后，使用组件的命名空间，将其添加到 webcm.config.ts 文件并重启 WebCM：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-js">export default {
+  components: [
+    {
+      name: 'demo',
+      permissions: [
+        'access_client_kv',
+        'provide_server_functionality',
+        'provide_widget',
+        'serve_static_files',
+        'client_network_requests',
+      ],
+    },
+    {
+      name: 'google-analytics',
+      settings: { 'tid': 'UA-123456' },
+      permissions: [
+        'access_client_kv',
+      ],
+    },
+    {
+      name: 'your-component-namespace',
+      settings: {},
+      permissions: [],
+    },
+  ],
+  target: 'http://127.0.0.1:8000',
+  hostname: 'localhost',
+  trackPath: '/webcm/track',
+  ecommerceEventsPath: '/webcm/ecommerce',
+  clientEventsPath: '/webcm/system',
+  port: 8080
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>这是一个非常简单的组件，但它可以展示构建之前仅在浏览器中可用的功能有多么容易。您可以轻松扩展组件：使用 <code>fetch</code>（位于 console.log 语句旁边）并在站点上每次发生页面浏览时向您自己的分析仓库发送信息。阅读用于<a href="https://managedcomponents.dev/specs/category/embeds-and-widgets" target="_blank">创建小部件</a>、<a href="https://managedcomponents.dev/specs/client-events/mousedown" target="_blank">侦听单击</a>、<a href="https://managedcomponents.dev/specs/client/set" target="_blank">存储 Cookie</a>、<a href="https://managedcomponents.dev/specs/cache/useCache" target="_blank">使用缓存</a>等用途的所有其他托管组件 API。这些 API 允许您构建达到前所未有丰富程度的工具。</p>
+	<h3 id="--2"><strong>工具采用托管组件的形式会更好</strong></h3>
+	<p>我们开始开发托管组件时，很多人都感到不解：工具供应商有什么动力去构建托管组件？在过去几个月，我们发现，供应商常常热衷于托管组件的理由跟我们一样：能够安全地使用其工具，且能够以简化方式将其工具集成到网站中。客户特别在乎这几点，所以采用托管组件时，客户更有可能尝试您的技术。供应商还将获得巨大的可发现性优势，因为其工具可以集成到 Cloudflare Zaraz 仪表板中，公开给上万个启用 Zaraz 的网站。很多主流供应商向我们表达了构建托管组件的意向，我们也竭尽所能，积极支持他们完成这个过程。如果贵公司有意向构建托管组件，请联系我们。我们坚信托管组件能够改变在线使用第三方工具的方式。要让这些工具更快速、安全、私密，这仅仅是开端。我们将与用户和供应商合作，持续不断地改进托管组件的功能，惠及万维网的所有用户。要开始构建您的托管组件，请前往 <a href="https://managedcomponents.dev/" target="_blank">managedcomponents.dev</a> 并开始构建。我们的团队随时为您效劳，请访问 <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="0e636f606f696b6a6d61637e61606b607a7d4e6d62617b6a68626f7c6b206d6163">[email&nbsp;protected]</a> 获取相关服务。</p>
+</div>

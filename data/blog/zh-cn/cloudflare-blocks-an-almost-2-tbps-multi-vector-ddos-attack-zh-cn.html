@@ -1,0 +1,21 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image2-2.jpg" class="kg-image" alt="Cloudflare blocks an almost 2 Tbps multi-vector DDoS attack"></figure>
+	<p>本周初，Cloudflare 自动检测并缓解了一次峰值接近 2 Tbps 的 <a href="https://www.cloudflare.com/en-gb/learning/ddos/what-is-a-ddos-attack/" target="_blank">DDoS 攻击</a>，这是我们迄今为止看到的最大攻击。该攻击使用了多种手段，包括 <a href="https://www.cloudflare.com/en-gb/learning/ddos/dns-amplification-ddos-attack/" target="_blank">DNS 放大</a>攻击和 <a href="https://www.cloudflare.com/en-gb/learning/ddos/syn-flood-ddos-attack/" target="_blank">UDP 洪水</a>攻击。整个攻击仅持续了一分钟。这次攻击由大约 1.5 万个机器人发动，这些机器人在物联网设备和<a href="https://www.rapid7.com/blog/post/2021/11/01/gitlab-unauthenticated-remote-code-execution-cve-2021-22205-exploited-in-the-wild/" target="_blank">未打补丁的 GitLab 实例</a>上运行原始 Mirai 代码的一个变种。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/08/image4-11.png" class="kg-image">
+		<figcaption>峰值接近 2 Tbps 的 DDoS 攻击‌‌</figcaption>
+	</figure>
+	<h3 id="-44-">网络层攻击增长 44%</h3>
+	<p>上季度，我们观察到多次 TB 级 DDoS 攻击，上述攻击延续了这一攻击趋势不断增强的趋势。在我们的<a href="https://blog.cloudflare.com/zh-cn/ddos-attack-trends-for-2021-q3-zh-cn/">第三季度 DDoS 趋势报告</a>中，另一个关键发现是，网络层 DDoS 攻击较前一个季度增加了 44%。虽然第四季度尚未结束，我们已经再次看到多次针对 Cloudflare 客户的 TB 级攻击。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/11/image1-21.png" class="kg-image" alt="DDoS attacks peaking at 1-1.4 Tbps">
+		<figcaption>峰值达到 1-1.4 Tbps 的 DDoS 攻击</figcaption>
+	</figure>
+	<h3 id="cloudflare-">Cloudflare 如何缓解这次攻击？</h3>
+	<p>首先，我们的系统持续“在路径外”分析流量样本，这允许我们异步检测 DDoS 攻击，而不会导致延迟或影响性能。一旦检测到攻击流量（亚秒级），我们的系统就会生成精准匹配攻击模式的实时特征，在不影响合法流量的情况下缓解攻击。</p>
+	<p>指纹一旦生成，就会被作为一个临时缓解规则传播到 Cloudflare 边缘上的最优位置，以实现最具成本效益的缓解。在这个特定案例中，与大多 L3/4 DDoS 攻击一样，规则被内联推送到 Linux 内核 <a href="https://blog.cloudflare.com/l4drop-xdp-ebpf-based-ddos-mitigations/">eXpress Data Path</a> (XDP)中，以线速丢弃攻击数据包。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/11/image3-17.png" class="kg-image" alt="Conceptual diagram of Cloudflare’s DDoS mitigation systems">
+		<figcaption>Cloudflare DDoS 保护系统的概念图</figcaption>
+	</figure>
+	<p>进一步了解 <a href="https://developers.cloudflare.com/ddos-protection/" target="_blank">Cloudflare 的 DDoS 保护系统</a>。</p>
+	<h3 id="-">帮助构建更好的互联网</h3>
+	<p>Cloudflare 的使命是帮助构建更好的互联网——对每个人都更安全、更快、更可靠。 DDoS 团队的愿景源于这个使命：我们的目标是让 DDoS 攻击的影响成为历史。无论是 <a href="https://blog.cloudflare.com/meris-botnet/">Meris 僵尸网络</a>（曾发动一些史上<a href="https://blog.cloudflare.com/zh-cn/cloudflare-thwarts-17-2m-rps-ddos-attack-the-largest-ever-reported-zh-cn/">最大规模的 HTTP DDoS 攻击</a>），近期针对 <a href="https://blog.cloudflare.com/update-on-voip-attacks/">VoIP 提供商的攻击</a>，还是这种正在对互联网资产发动 DDoS 攻击的 Mirai 变种, Cloudflare 的网络都能自动检测并缓解 DDoS 攻击。 Cloudflare 为各种互联网资产提供一个安全、可靠、高性能且<a href="https://blog.cloudflare.com/http-ddos-managed-rules/">可定制的</a>平台。要进一步了解 Cloudflare 的 DDoS 保护，<a href="https://www.cloudflare.com/enterprise" target="_blank">请联系我们</a>或在<a href="https://dash.cloudflare.com/sign-up" target="_blank">这里</a>试用 Cloudflare 的 Free 计划。</p>
+</div>

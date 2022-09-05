@@ -1,0 +1,35 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image5-1.png" class="kg-image" alt="Improving the WAF with Machine Learning"></figure>
+	<p>Cloudflare는 초당 3,200만 개의 HTTP 요청을 처리하며 <a href="https://w3techs.com/technologies/details/ws-cloudflare" target="_blank">W3Techs</a>로 알려진 웹 서버를 사용하는 모든 웹 사이트의 22% 이상이 Cloudflare를 사용하고 있습니다. Cloudflare는 5개의 인터넷 자산 중 1개의 트래픽을 보호하는 독보적인 위치를 차지하고 있습니다. 이를 통해 위협이 발생하는 즉시 식별하고 이러한 위협의 진화 및 변화를 추적할 수 있습니다. </p>
+	<p>웹 애플리케이션 방화벽(WAF)은 Cloudflare의 보안 도구 상자의 핵심이며 관리 규칙은 <a href="https://www.cloudflare.com/en-gb/learning/ddos/glossary/web-application-firewall-waf/" target="_blank">WAF</a>의 주요 기능입니다. 이는 Cloudflare 분석가 팀이 생성한 요청이 알려진 공격의 패턴을 보일 때 차단하는 규칙의 집합입니다. 이러한 관리 규칙은 확립된 공격 벡터의 패턴에 매우 효과적으로 작동합니다. 관리 규칙이 부정 오류(공격 놓침) 및 긍정 오류(공격이 아닌 것을 찾음) 모두를 최소화하기 위해 광범위하게 테스트되었기 때문입니다. 부정적인 측면에서 관리 규칙은 종종 공격 변형(우회로도 알려짐)을 놓칩니다. 정적 정규식 기반 규칙이 본질적으로 도입된 시그니처 변형(예: 퍼징 기술 사용)에 민감하기 때문입니다. </p>
+	<p>Cloudflare에서는 이러한 문제를 <a href="https://blog.cloudflare.com/ko-kr/exploitation-of-cve-2021-44228-before-public-disclosure-and-evolution-of-waf-evasion-patterns-ko-kr/">log4j에 대한 보호</a>를 출시했을 때 목격했습니다. 취약점이 공표된 후 며칠간 공격자들이 WAF를 우회하려고 시도함에 따라 변형과 변화에 발맞추기 위해 규칙을 지속적으로 업데이트해야 했습니다. 또한 규칙을 최적화하려면 사람이 많이 개입해야 하며 이는 일반적으로 우회를 식별했거나 악용된 후에나 작동합니다. 따라서 보호는 능동적이기보다는 대응에 치중합니다.</p>
+	<p>오늘, 사람의 개입 없이 악용되기 전에 바이패스 및 악의적 페이로드를 식별하기 위한 새로운 도구를 통해 관리 규칙 집합(OWASP, Cloudflare Managed 등)을 보완하게 되어 기쁩니다. 고객은 이제 기계 학습으로부터의 신호에 액세스할 수 있습니다. 기계 학습 모델은 더욱 광범위한 기존 및 신규 공격에 걸쳐 개선된 방어를 제공하기 위해 관리 규칙 및 강화 데이터로 분류된 대로 양호/불량 트래픽에 대해 학습되었습니다. </p>
+	<p>새로운 머신 러닝 WAF 감지에 오신 것을 환영합니다. </p>
+	<p>새로운 감지는 Enterprise, Pro, Biz 요금제 고객을 위한 Early Access에서 제공됩니다. 이를 사용해보고 싶으시다면 <a href="https://www.cloudflare.com/lp/waf-ml/" target="_blank">대기 명단에 이름을 추가해주시기 바랍니다.</a> 장기적으로 이는 상위 등급의 고객에게 제공될 예정입니다.</p>
+	<h3 id="-waf">첫 자가 학습 WAF</h3>
+	<p>새로운 감지 시스템은 다음과 같은 3가지 주요 장점을 제공하여 기존 관리 규칙 집합을 보완합니다.</p>
+	<ol>
+		<li>모든 트래픽에서 실행됩니다. 각 요청은 예를 들어 SQLi 또는 XSS 공격을 포함할 확률에 따라 점수가 매겨집니다. 이를 통해 새로운 WAF 분석 경험으로 여러분이 전체 트래픽에서 동향과 패턴을 탐색할 수 있도록 합니다.</li>
+		<li>감지율은 이전 트래픽과 피드백에 따라 개선됩니다. 모델은 모든 Cloudflare 트래픽에 걸쳐 관리 규칙에 따라 범주화된 대로 양호 및 불량 트래픽에 대해 학습됩니다. 이를 통해 소규모 사이트도 최대 규모의 인터넷 자산과 동일한 수준의 보호를 받을 수 있습니다.</li>
+		<li>성능이 새롭게 정의됩니다. 기계 학습 엔진은 우회와 이상이 악용되거나 인간 연구원이 식별하기 전에 이들을 식별합니다. </li>
+	</ol>
+	<p>그 비결은 혁신적인 기계 학습 모델링, 매일 Cloudflare에서 차단하는 공격과 데이터 강화 기술을 기반으로 구축된 광범위한 교육 데이터세트, 각 요청을 아주 짧은 대기 시간으로 평가할 수 있도록 하는 행동 테스트 원칙과 최첨단 엔지니어링을 기반으로 한 올바른 평가 및 테스트 프레임워크의 조합에 있습니다.</p>
+	<h3 id="-waf-">새로운 WAF 경험</h3>
+	<p>새로운 감지는 <a href="https://blog.cloudflare.com/introducing-bot-analytics/">Bot Analytics</a>와 함께 출시된 패러다임을 기반으로 합니다. 이러한 접근 방식에 따라 각 요청은 조치 여부와 관계없이 평가되며 점수가 할당됩니다. 모든 요청에 점수를 매기므로 사용자는 자신의 서버로 연결된 전체 트래픽의 점수가 시간이 지남에 따라 어떻게 진화했는지 시각화할 수 있습니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image3-11.png" class="kg-image" alt="고객은 기계 학습 범주화 엔진을 사용하여 트래픽에서의 동향을 식별할 수 있습니다."></figure>
+	<p>또한 사용자는 특정 공격 벡터(예: SQLi)에 대한 요청의 점수가 어떻게 매겨졌는지에 대한 히스토그램을 시각화할 수 있으며 양호한 트래픽과 불량 트래픽을 구분하기 위해 어떤 점수가 양호한 값인지를 찾을 수 있습니다. </p>
+	<p>실제 완화는 어떤 요청이 차단되어야 하는지를 결정하기 위해 점수를 사용하는 사용자 지정 WAF 규칙을 통해 수행됩니다. 이를 통해 고객은 HTTP 요청의 모든 매개변수를 포함하는 로직의 규칙을 생성할 수 있습니다. 여기에는 봇 점수와 같이 Cloudflare로 채워지는 동적 필드가 포함됩니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image2-29.png" class="kg-image" alt="WAF ML 점수를 기반으로 구축된 방화벽 규칙."></figure>
+	<p>Cloudflare는 이제 이러한 접근 방식을 관리 규칙(OWASP 및 Cloudflare Managed)에 사용하기 위해 확장하고자 합니다. 고객은 전체 트래픽을 확인했을 때 보이는 패턴에 따라 동향을 식별하고 규칙을 생성할 수 있을 것입니다. 시행착오를 통해 규칙을 생성하는 대신 규칙을 검증하고 최종적으로 방어를 적용하기 위해 트래픽을 기록합니다.</p>
+	<h3 id="-">어떻게 작동합니까?</h3>
+	<p>기계 학습 기반 감지는 기존의 관리 규칙 집합(예: OWASP 및 Cloudflare Managed)을 보완합니다. 시스템은 리서치 도구나 최종 사용자의 직접적인 감독 없이 공격 패턴과 이상의 변형을 식별하기 위해 설계된 모델을 기반으로 합니다. </p>
+	<p>현재 Cloudflare는 SQL 삽입 및 교차 사이트 스크립팅과 같은 2가지 공격 벡터를 위한 점수를 선보입니다. 사용자는 전체 점수(<code>cf.waf.ml.score</code>), SQLi용 점수, XSS용 점수(각각 <code>cf.waf.ml.score.sqli</code> 및 <code>cf.waf.ml.score.xss</code>cf.waf.ml.score.sqli)등 3가지의 개별 점수를 사용하여 사용자 지정 WAF/방화벽 규칙을 생성할 수 있습니다. 점수는 1부터 99 사이이며 1은 확실히 위험하다는 것을 나타내고 99는 유효한 트래픽을 나타냅니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image4-1.png" class="kg-image" alt="응용 프로그램에 도달하는 전체 트래픽에 걸친 점수의 히스토그램."></figure>
+	<p>그런 다음 모델은 기존의 WAF 규칙에 따라 분류된 트래픽에 따라 학습됩니다. 또한 기존 요청의 변환된 버전에서 작동하므로 공격의 지문 식별이 훨씬 더 쉬워집니다. </p>
+	<p>각 요청에 대하여 모델은 요청의 각 부분에 독립적으로 점수를 매깁니다. 이를 통해 어디에서 악의적인 페이로드를 식별했는지를 찾을 수 있습니다(예: 요청 본문, URI, 헤더).</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image1-30.png" class="kg-image" alt="감지 엔진은 위협을 찾은 장소에 대한 분석을 제공합니다(예: 본문, URI, 헤더)."></figure>
+	<p>글을 읽어보면 쉬워 보이지만, 이러한 단계에 도달하기까지 Cloudflare 엔지니어가 해결해야 했던 몇 가지 문제가 있었습니다. 이러한 문제에는 신뢰할 수 있는 데이터세트 구축 방법, 확장 가능한 데이터 라벨링, 올바른 모델 아키텍처 선택, Cloudflare의 전역 네트워크(예: 초당 3,200만 회)에서 처리하는 <em>모든</em> 요청에서 범주화를 실행하는 데 필요한 요구 사항 등이 포함됩니다. </p>
+	<p>다음 몇 주간 엔지니어링 팀은 내부에서 솔루션이 어떻게 작동하는지를 더욱 잘 이해할 수 있도록 하는 일련의 블로그 포스트를 게시할 예정입니다.</p>
+	<h3 id="--1">앞으로의 전망</h3>
+	<p>다음 몇 달간 Cloudflare는 고객을 대상으로 새로운 감지 엔진을 출시하고 성능에 대한 피드백을 수집할 예정입니다. 장기적으로 관리 규칙에 따라 이미 식별된 모든 공격 벡터를 다룰 수 있도록 감지 엔진을 확장하고 추가적으로 관리 규칙 집합을 개선하기 위해 기계 학습 모델에 의해 차단된 공격을 사용할 계획입니다.</p>
+</div>

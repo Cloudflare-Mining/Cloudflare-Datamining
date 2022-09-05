@@ -1,0 +1,74 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/02/image6-4-4.png" class="kg-image"></figure>
+	<p>DDoS 攻擊在頻率和複雜度上愈演愈烈。自第二季比第一季翻了一倍後，第三季觀察到的網路層攻擊總數再次翻倍，達到了第一季 COVID 疫情前水準的 4 倍。Cloudflare 還觀察到，實施攻擊的手段數量也達到歷史新高。實際上，儘管 SYN、RST 和 UDP 洪水攻擊繼續佔主導地位，但特定於通訊協定的攻擊也呈爆發式增長，例如 mDNS、Memcached 和 Jenkins DoS 攻擊等。</p>
+	<p>下方總結了我們在第三季觀察到的網路層 DDoS 攻擊的其他趨勢：</p>
+	<ul>
+		<li>大多數攻擊低於 500 Mbps 和 1 Mpps，但這兩類攻擊都足以引發服務中斷</li>
+		<li>大部分攻擊的持續時間在 1 小時以內</li>
+		<li>DDoS 勒索攻擊 (RDDoS) 呈上升趨勢，自稱 Fancy Bear、Cozy Bear 和 Lazarus Group 的團夥向世界各地的組織發起勒索。在本文撰寫之時，勒索攻擊活動依然猖獗。具體見下文中的特別備註。</li>
+	</ul>
+	<h3 id="-"><strong>攻擊數量</strong></h3>
+	<p>在我們網路上觀察到的第 3/4 層 DDoS 攻擊總數繼續大幅增加，如下圖所示。總的說來，今年所有攻擊的 56％ 以上發生在第三季，數量是第二季的兩倍，第一季的四倍。另外，月平均攻擊數量在整季呈增長趨勢。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/02/image12-1-1.png" class="kg-image" alt="Chart"></figure>
+	<p>總體攻擊數量在 9 月份最高，但 8 月份的大型攻擊 (500Mbps 以上) 數量最多。第三季的大型攻擊中有 91% 發生在這個月，而其他規模的攻擊在各個月份的分佈要均勻得多。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/02/image9-1-2.png" class="kg-image" alt="Chart"></figure>
+	<p>雖然 9 月份 200-300 Gbps 範圍的攻擊總數有所下降，我們網路在第三季遭遇了較多的全球攻擊。這表示，使用分散式機器人網路發動攻擊的苗頭有所增長。實際上，Cloudflare 在 7 月初見證了<a href="https://blog.cloudflare.com/moobot-vs-gatebot-cloudflare-automatically-blocks-botnet-ddos-attack-topping-at-654-gbps/">有史以來對我們網路發動的最大攻擊之一</a>。這次攻擊由基於 <a href="https://blog.cloudflare.com/inside-mirai-the-infamous-iot-botnet-a-retrospective-analysis/">Mirai</a> 的機器人網路 Moobot 產生，攻擊高峰達到 654 Gbps，源自於 18,705 個單一獨立 IP 位址，這些位址皆被認為是感染了 Moobot 的 IoT 裝置。攻擊活動持續了將近 10 天，但由於客戶受到 Cloudflare 的保護，因此沒有遭遇停機或服務降級狀況。</p>
+	<h3 id="--1"><strong>攻擊規模 (位元速率和封包速率)</strong></h3>
+	<p>衡量第 3/4 層 DDoS 攻擊規模有多種不同的方法。一種方法是測量傳送的流量大小，以位元速率為單位 (即，每秒千兆位元)。另一種是測量傳送的封包數，以封包速率為單位 (即，每秒封包數)。高位元速率的攻擊會嘗試使網際網路連結飽和，而高封包速率的攻擊則會使路由器或其他嵌入式硬體裝置不堪負荷。</p>
+	<p>第三季觀察到的攻擊大多規模較小。實際上，所有攻擊中 87% 以上都不到 1 Gbps。相較於第二季約佔 52％，小型攻擊所佔比例有顯著增加。需要注意的是，即使是 500 Mbps 以下的「小型」攻擊也足以對不受雲端 DDoS 保護服務保護的網際網路資產造成重大破壞。許多組織從 ISP 獲得的對外網路頻寬遠遠不到 1 Gbps。假設他們對外網路還要服務一般正常的流量，您可以看到，即使這些封包速率「較小」的 DDoS 攻擊也能輕鬆摧毀網際網路資產。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/02/image10-2-2.png" class="kg-image" alt="Chart"></figure>
+	<p>對於攻擊封包速率，這種趨勢同樣適用。在第三季，47％ 的攻擊低於 50k pps，第二季則僅為 19％。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/02/image8-1-2.png" class="kg-image" alt="Chart"></figure>
+	<p>較小的攻擊或許表明業餘攻擊者是幕後黑手，他們使用易於獲得的工具對公開的 IP/網路發動攻擊。另外，小規模攻擊也可能是障眼法，用來掩蓋或許在同時進行的其他類型的網路攻擊。</p>
+	<h3 id="--2"><strong>攻擊持續時間</strong></h3>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/02/image5-3-2.png" class="kg-image" alt="Chart"></figure>
+	<p>在持續時間方面，非常短的攻擊是第三季最常觀察到的攻擊類型，在所有攻擊中的比例將近 88%。這一觀察結果與我們之前的報告一致。總體而言，第 3/4 層 DDoS 攻擊的持續時間越來越短。</p>
+	<p>短暫爆發攻擊可能企圖在不被 DDoS 偵測系統偵測到的前提下造成破壞。依靠手動分析和緩解的 DDoS 服務可能對這些類型的攻擊毫無用處，因為在分析人員識別攻擊流量前攻擊便已結束。</p>
+	<p>或者，短時間攻擊也可能被用來刺探攻擊目標的網路防禦現況。暗網 (Dark Web) 中廣泛提供的負載測試工具和自動 DDoS 工具可以產生短暫的爆發攻擊 (如 SYN 洪水)，然後使用其他攻擊手段發動另一波短時間攻擊。這樣，攻擊者便可瞭解其攻擊目標的安全狀態，然後決定是否發動以更高速率和更長時間，並有一定成本的更大攻擊。</p>
+	<p>在其他情形中，攻擊者發動小型 DDoS 攻擊，以此為證明來警告目標組織，他們有能力在稍後造成真正的破壞。通常會隨後向目標發送勒索信，要求其透過支付贖金來避免遭受可能更徹底破壞網路基礎結構的攻擊。</p>
+	<p>無論動機是什麼，任何規模或持續時間的 DDoS 攻擊都不會很快消失。DDoS 攻擊時間再短也會造成危害，因此對於任何線上業務來說，落實自動即時防禦機制至關重要。</p>
+	<h3 id="--3"><strong>攻擊手段</strong></h3>
+	<p><a href="https://www.cloudflare.com/learning/ddos/syn-flood-ddos-attack/" target="_blank">SYN 洪水攻擊</a>在第三季觀察到的所有攻擊中佔了將近 65%，RST 洪水攻擊和 UDP 洪水攻擊分別名列第二和第三位。這與前幾季的觀察結果相對一致，凸顯了攻擊者在 DDoS 攻擊手段方面的偏好。</p>
+	<p>儘管 SYN 和 RST 洪水等基於 TCP 的攻擊仍然流行，但特定於 UDP 通訊協定的攻擊 (如 mDNS、Memcached 和 Jenkins) 與上一季相比呈爆發式增長。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/02/image-5-1.png" class="kg-image" alt="Chart"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/02/image13-1-1.png" class="kg-image" alt="Chart"></figure>
+	<p>多播型 DNS (mDNS) 是基於 UDP 的通訊協定，在當地型網路中用於服務/裝置搜索。易受攻擊的 mDNS 伺服器回應源自當地型網路外的單點傳播查詢，這些查詢「偽裝」(篡改) 成受害者的來源位址，造成 DNS 放大攻擊。在第三季，我們注意到 mDNS 攻擊出現激增，具體比上一季增長了 2,680％。</p>
+	<p>位列其後的是 <a href="https://www.cloudflare.com/learning/ddos/memcached-ddos-attack" target="_blank">Memcached</a> 和 Jenkins 攻擊。Memcached 是一種鍵值資料庫。攻擊者可以假冒攻擊目標的來源位址透過 UDP 協議發出請求。請求的鍵中儲存的值大小影響放大係數，可造成 DDoS 放大攻擊。類似地，由於 UDP 具有無狀態性質，基於 Jenkins、NTP、Ubiquity 和其他 UDP 型通訊協定的攻擊在本季大幅增加。舊版本 (<a href="https://nvd.nist.gov/vuln/detail/CVE-2020-2100" target="_blank">Jenkins 2.218</a> 及更早版本) 中的一個漏洞被用來發動 DDoS 攻擊。Jenkins 2.219 中透過預設停用 UDP 多播/廣播修復了這個漏洞。但是，仍然有許多存在漏洞並且暴露的裝置執行基於 UDP 的服務，而被用來發動巨流量放大攻擊。</p>
+	<h3 id="--4"><strong>攻擊的國家/地區分佈情況</strong></h3>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/02/image2-9-3.png" class="kg-image" alt="Chart"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/02/image4-8-1.png" class="kg-image" alt="Chart"></figure>
+	<p>在國家/地區分佈方面，美國遭遇了數量最多的第 3/4 層 DDoS 攻擊，其次是德國和澳大利亞。注意在分析第 3/4 層 DDoS 攻擊時，我們流量分類的依據是吸收流量的 Cloudflare 邊緣資料中心位置，而不是來源 IP 的位置。理由是，在發動第 3/4 層攻擊時，攻擊者可以偽造來源 IP 位址，以掩蓋攻擊來源。如果基於偽造的來源 IP 追溯國家/地區，我們會獲得虛假的國家/地區結果。Cloudflare 能夠按觀察到攻擊的 Cloudflare 資料中心的位置顯示攻擊資料，以克服僞造 IP 帶來的挑戰。由於在全球 200 多個城市設有資料中心，因此我們能夠在報告中實現地理準確性。</p>
+	<h3 id="--5"><strong>非洲</strong></h3>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/02/BDES-1247_DDoS_Trends_Report_Q32020-10-1.png" class="kg-image" alt="Chart"></figure>
+	<h3 id="--6"><strong>亞太地區和大洋洲</strong></h3>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/02/BDES-1247_DDoS_Trends_Report_Q32020-11-1.png" class="kg-image" alt="Chart"></figure>
+	<h3 id="--7"><strong>歐洲</strong></h3>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/02/BDES-1247_DDoS_Trends_Report_Q32020-12-1.png" class="kg-image" alt="Chart"></figure>
+	<h3 id="--8"><strong>中東</strong></h3>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/02/Middle-East@3x-2.png" class="kg-image" alt="Chart"></figure>
+	<h3 id="--9"><strong>北美洲</strong></h3>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/02/North-America@3x-1.png" class="kg-image" alt="Chart"></figure>
+	<h3 id="--10"><strong>南美洲</strong></h3>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/02/BDES-1247_DDoS_Trends_Report_Q32020-15-1.png" class="kg-image" alt="Chart"></figure>
+	<h3 id="--11"><strong>美國</strong></h3>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/02/BDES-1247_DDoS_Trends_Report_Q32020-16-1.png" class="kg-image" alt="Chart"></figure>
+	<h3 id="-ddos-"><strong>有關近期 DDoS 勒索攻擊的備註</strong></h3>
+	<p>過去幾個月，Cloudflare 觀察到又一種令人不安的趨勢：越來越多的 DDoS 勒索攻擊 (RDDoS) 將世界各地的組織作為攻擊目標。雖然 RDDoS 威脅並不一定會真正發動攻擊，但近幾個月的案例顯示，攻擊者集團們樂意來真的，發動大規模 DDoS 攻擊來摧毀缺乏妥善防護的組織。在一些攻擊中，最初的預告攻擊有可能足以對沒有雲端DDoS 防護的組織造成不利影響。</p>
+	<p>在 RDDoS 攻擊中，惡意方向個人或組織發出威脅，除非他們支付贖金，否則會發動網路攻擊來使其網路、網站或應用程式斷線一定時間。您可以從<a href="https://www.cloudflare.com/learning/ddos/ransom-ddos-attack/" target="_blank">此處</a>閲讀有關 RDDoS 攻擊的更多内容。</p>
+	<p>自稱 Fancy Bear、Cozy Bear 和 Lazarus 的集團威脅要對各個組織的網站和網路基礎建設發動 DDoS 攻擊，除非在截止日期前收到贖金。此外，勒索電子郵件常常伴有最初的「預告」DDoS 攻擊，以此作為一種演示。演示攻擊通常是 UDP 反射攻擊，利用各種不同的通訊協定，持續時間為大約 30 分鐘 (或以下)。</p>
+	<p>收到威脅時應怎麼做：</p>
+	<ol>
+		<li>不要驚慌失措，而且建議您不要支付贖金：支付贖金只會助長不良行為者的氣焰，並且為不法活動提供資金。而且，無法保證他們現在或將來一定不會攻擊您的網路。</li>
+		<li>通知當地執法機構：他們也可能會要求您提供收到的勒索信的副本。</li>
+		<li>聯繫 Cloudflare：我們可以幫助確保您的網站和網路基礎建設防範這些勒索攻擊。</li>
+	</ol>
+	<h3 id="cloudflare-ddos-"><strong>Cloudflare DDoS 保護另闢蹊徑</strong></h3>
+	<p>地端硬體/雲端清洗中心無力應對現代巨量 DDoS 攻擊的挑戰。設備容易被大型 DDoS 攻擊壓垮，網際網路連結很快飽和，若流量重新路由到雲端清理中心，代價就是造成無法接受的延遲。我們提供永遠在線並且自動化的雲端原生 DDoS 防護方法，能夠解決傳統雲端方法在設計上無法克服的問題。</p>
+	<p>Cloudflare 的使命是幫助建設更加美好的網際網路，這是我們 DDoS 防護方法的基礎，也是我們在 2017 年對於所有方案 (包括免費方案) 為所有客戶率先推出<a href="https://blog.cloudflare.com/unmetered-mitigation/">無限高防 DDoS</a>的原因。之所以有能力提供這種級別的保護，是因為我們網路上的每台伺服器都可以偵測和封鎖威脅，從而能夠吸收任何大小/種類的攻擊，不會造成延遲影響。與任何其他廠商相比，這種架構給予我們無與倫比的優勢。</p>
+	<ul>
+		<li>51 Tbps DDoS 緩解處理能力和 3 秒以內 TTM：Cloudflare 網路中的每一個資料中心都可以偵測和緩解 DDoS 攻擊。識別出攻擊後，Cloudflare 的本機資料中心緩解系統 (dosd) 會動態產生並套用具有即時簽名的規則，並在全球範圍內實現平均 3 秒內的緩解攻擊。3 秒緩解時間 (TTM) 是業界速度最快的時間之一。防火牆規則和「主動」/靜態設定會立即生效。</li>
+		<li>附帶快速效能：Cloudflare 經過精心架構，客戶不會因為遭受攻擊而有延遲損害。我們從各個 Cloudflare 資料中心 (而不是傳統的清理中心或內部硬體設備) 提供 DDoS 保護，因而能夠在最靠近源頭的位置緩解攻擊。Cloudflare 分析偏離路徑的流量，確保我們的 DDoS 緩解解決方案不會對合法流量增加任何延遲。在 Linux 堆疊中效果最佳的位置套用規則，實施具有成本效益的緩解措施，確保不會有效能損失。</li>
+		<li>全球威脅情報：如同免疫系統一樣，我們的網路緩解針對任何客戶發動的攻擊並從中學習，讓客戶免受所有攻擊的危害。借助威脅情報 (TI)，自動封鎖攻擊並部署到面對客戶的功能 (「機器人抵禦」模式、防火牆規則和安全級別)。使用者建立自訂規則，基於流量屬性篩選器以及利用 ML 模型產生的威脅和機器人分數緩解攻擊，防範機器人/機器人網路/DDoS。</li>
+	</ul>
+	<p>要瞭解有關 Cloudflare 的 DDoS 解決方案的更多資訊，請<a href="https://www.cloudflare.com/plans/enterprise/" target="_blank">與我們聯繫</a>或<a href="https://dash.cloudflare.com/" target="_blank">開始使用</a>。</p>
+</div>

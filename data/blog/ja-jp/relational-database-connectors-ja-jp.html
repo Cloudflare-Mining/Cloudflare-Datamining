@@ -1,0 +1,57 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image1-14.png" class="kg-image" alt="Introducing Relational Database Connectors"></figure>
+	<p>Cloudflareでは、世界最高のコンピュートプラットフォームを構築しています。私たちは、お客様のアプリケーションを簡単に、シームレスに、そして明白に構築できるようにしたいと考えています。しかし、最高のコンピュートプラットフォームを作るだけでは十分ではありません。アプリケーションの核心は、それらがやり取りするデータです。</p>
+	<p>Cloudflareでは現在、複数のデータストレージソリューションを用意しています。<a href="https://blog.cloudflare.com/introducing-workers-kv/">Workers KV</a>、<a href="https://blog.cloudflare.com/ja-jp/introducing-r2-object-storage-ja-jp/">R2</a>、<a href="https://blog.cloudflare.com/ja-jp/introducing-workers-durable-objects-ja-jp/">Durable Objects</a>の3種です。これらはすべてCloudflareのWorkerの設計目標である、「デフォルトでグローバル、無限のスケーラビリティ、開発者にとっての使いやすさ」に沿って作られています。Cloudflareは、この設計目標にぴったり合ったデータプラットフォームを構築したFauna、MongoDB、Prismaといったサードパーティのストレージソリューションと提携し、既にHTTP接続をサポートしているデータベース用のチュートリアルを書いています。</p>
+	<p>しかし残念なことに、これまで1つの分野が欠如していました。リレーショナルデータベースのサポートです。Cloudflare自身もリレーショナルデータベースで動作していますが、それは私たちだけではありません。4月に、どのNodeライブラリをサポートしてほしいかを尋ねたところ、トップ5のうち4つがデータベースに関するものでした。今回のフルスタック・ウィークでは、「どうすれば設計目標に沿った形でリレーショナル・データベースをサポートできるか」を自問しました。</p>
+	<p>Cloudflareは本日、そのための第一歩として、PostgresやMySQLを含む関係データベースをWorkersからサポートすることを発表します。</p>
+	<p>データベースへの接続は簡単な作業ではありません。データベースドライバに接続文字列を渡すだけの簡単な作業であれば、すでに実現していたでしょう。ここにたどり着くまでにいくつかのハードルを乗り越えて現在に至っていますが、まだ克服すべき課題がいくつかあります。<br><br>今回の発表の目的は、Workers内でデータベースにアクセスする際に生じるユニークな問題を、開発者である皆さんと一緒に解決することです。私たちと一緒に働きたい方は、この<a href="https://www.cloudflare.com/ja-jp/database-connectors-early-access/" target="_blank">フォーム</a>に記入するか<a href="https://discord.gg/rH4SsffFcc" target="_blank">Discord上で</a>ご参加ください。 — 取り組みはまだ始まったばかりです。これは始まりに過ぎません。コードを手にして遊びたい方は、こちらの<a href="https://developers.cloudflare.com/workers/tutorials/query-postgres-from-workers-using-database-connectors" target="_blank">サンプル</a>を使って自分のデータベースに接続してみてください。また、私たちのデモもご覧ください。</p>
+	<h2 id="database-connectors-">Database Connectorsは難しいのか？</h2>
+	<p>サーバーレスのデータベース接続は、いくつかの理由でサポートするのが困難です。</p>
+	<p>データベースは、アプリケーションサーバーとデータベースの間の長期的な接続を前提としているため、TCP接続を必要とすることがよくあります。Workersのランタイムは現在TCP接続をサポートしていないため、HTTPベースのデータベースやプロキシをサポートすることしかできませんでした。</p>
+	<p>人間関係のように、接続を確立するだけでは十分ではありません。開発者は、データベース用のクライアントライブラリを使用して、クエリの送信やレスポンスの管理を容易にしています。Workersのランタイムは完全にNode.jsと互換性があるわけではないので、独自のデータベースライブラリを作成するか、サポートされていないビルトインライブラリを使用しないライブラリを見つける必要があります。<br><br>最後に、データベースは繊細です。アプリケーションサーバとデータベースの間の共有接続を管理するには、外部ライブラリが必要になることがあります。</p>
+	<h2 id="-">これらの課題を克服するために</h2>
+	<p>現在とっているアプローチは、今後クリエイティブな方法でこれらの課題を一つ一つ解決していくための基盤となるものです。<br><br>まず、<a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup" target="_blank">cloudflared</a>を利用して、クラウドフレアとお客様の既存インフラ内のプライベートネットワークとの間に安全なトンネルを構築します。私たちの課題は、既存のライブラリが期待するソケットインターフェースのようなインターフェースを提供することと、読み取りと書き込みを私たちのウェブソケットにリダイレクトするように実装を再配線することです。この方法は、高速かつ安全でセキュアですが、最終的な接続先を制御できないという制限があります。これは近いうちに解決する予定ですが、それまでは、レイテンシーとパフォーマンスのデータを収集し、どこを改善すべきかを検討するために、この方法が不可欠です。。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/unnamed-10.png" class="kg-image" alt="Leveraging Cloudflare Tunnels, we’re able to connect to a relational database"></figure>
+	<p>次に、WebSocket を使用してデータベースに直接接続するために、一般的なランタイムのソケット API を適応させる shim-layer を作成しました。これにより、データベースライブラリをフォークしたり、大幅に変更したりすることなく、コードをそのままバンドルすることができます。今回の発表の一環として、既存のCloudflareテクノロジーと、成長中のDenoコミュニティのドライバを使用して、WorkerからPostgresデータベースに接続してクエリを実行する方法の<a href="https://developers.cloudflare.com/workers/tutorials/query-postgres-from-workers-using-database-connectors" target="_blank">チュートリアル</a>を公開しました。アップストリームのメンテイナーと協力してサポートを拡大していくのを楽しみにしています。</p>
+	<p>最後に、私たちが最も期待しているのは、このアプローチによってコネクションプーリングと接続確立のオーバーヘッドを管理できるようになることです。現在の技術デモでは、お客様自身のインフラでCloudflare Tunnelをセットアップする必要がありますが、Cloudflareがお客様のためにトンネルをホストするモデルを試験的に導入したいお客様を募集しています。</p>
+	<h2 id="--1">今後の予定</h2>
+	<p>私たちはまだ始まったばかりです。本日の発表では、リレーショナルデータベースに保存されているデータを扱いながら、新しいアプリケーションの構築や既存のアプリケーションのWorkerへの移行を検討しているお客様を探しています。</p>
+	<p>Cloudflareがお客様のWebサイトにセキュリティ、パフォーマンス、信頼性を提供することから始まったように、Cloudflareがデータベースの接続を管理し、クラウドプロバイダー間のデータのレプリケーションを処理し、グローバルにデータへの低レイテンシーアクセスを提供する未来に期待しています。</p>
+	<p>まず、<a href="https://blog.cloudflare.com/introducing-socket-workers/">TCPのサポートをランタイムにネイティブに追加すること</a> を考えています。TCPをネイティブにサポートすることで、データベースのサポートが強化されるだけでなく、Workerのランタイムを拡張して、より広範なデータインフラを扱うことができるようになります。</p>
+	<p>私たちは、ネットワーク層に位置することで、グローバルなデータベースに対して、パフォーマンス、セキュリティ、そして非常に低いエグレスコストを提供することが可能になります。そのためには、現在構築しているHTTPからTCPへのプロキシサービスを再利用し、開発者に代わってデータベースへの接続を管理するコネクションプーリングサービスとして実行します。</p>
+	<p>最後に、私たちのネットワークは、データをキャッシングし、低遅延でグローバルにアクセスできるようにします。お客様のデータをクラウドフレアのネットワークでグローバルにアクセスできるようにすることで、分散データのための根本的に新しいアーキテクチャを実現することができます。</p>
+	<h2 id="--2">当社のコネクターをお試しください</h2>
+	<p>試してみたいですか？稼働開始まで3つのステップがあります。</p>
+	<ol>
+		<li>お客様のインフラにcloudflaredを導入します</li>
+		<li>cloudflaredに接続するデータベースをデプロイします</li>
+		<li>クエリーを送信するデータベースドライバーを備えたWorkersをデプロイします</li>
+	</ol>
+	<p>Postgresに関するチュートリアルは<a href="https://developers.cloudflare.com/workers/tutorials/query-postgres-from-workers-using-database-connectors" target="_blank">こちら</a>。</p>
+	<p>完了時は以下のようになります。 </p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">import { Client } from './driver/postgres/postgres'
+
+export default {
+  async fetch(request: Request, env, ctx: ExecutionContext) {
+    try {
+      const client = new Client({
+        user: 'postgres',
+        database: 'postgres',
+        hostname: 'https://db.example.com',
+        password: '',
+        port: 5432,
+      })
+      await client.connect()
+      const result = await client.queryArray('SELECT * FROM users WHERE uuid=1;')
+      ctx.waitUntil(client.end())
+      return new Response(JSON.stringify(result.rows[0]))
+    } catch (e) {
+      return new Response((e as Error).message)
+    }
+  },
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>何か問題がありましたら、<a href="https://www.cloudflare.com/ja-jp/database-connectors-early-access/" target="_blank"> このフォーム</a>、<a href="https://discord.gg/rH4SsffFcc" target="_blank"> Discord</a>、または<a href="/cdn-cgi/l/email-protection#11667e637a7463623c61637e7564726551727d7e6475777d7063743f727e7c">メール</a>にてご相談ください。</p>
+</div>

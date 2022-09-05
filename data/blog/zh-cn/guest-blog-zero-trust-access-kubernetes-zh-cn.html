@@ -1,0 +1,57 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image4-12.png" class="kg-image" alt="Guest Blog: k8s tunnels with kudelski security"></figure>
+	<p><em>今天，我们很高兴地发表一篇由来自托管安全服务提供商 Kudelski Security 的朋友们撰写的博客文章。几周以前，Kudelski Security 的首席云和安全工程师 Romain Aviolat 向我们的 Zero Trust 团队提出了一个独特的解决方案，解决了一个由 Cloudflare 的身份感知代理所带来的问题，我们称之为 Cloudflare Tunnel，以确保在远程工作环境中安全访问应用程序。</em></p>
+	<p><em>我们非常喜欢学习他们的解决方案，所以我们想推广他们的故事。尤其值得赞赏的是，Kudelski Security 的工程师充分利用了我们技术的灵活性和可扩展性，为他们的终端用户实现了自动化工作流。如果您有兴趣了解更多关于 Kudelski Security 的信息，请在下方查看他们的工作或他们的</em><a href="https://research.kudelskisecurity.com/" target="_blank"><em>研究博客</em></a><em>。</em></p>
+	<h3 id="-zero-trust-access-kubernetes"><strong>从 Zero Trust Access 到 Kubernetes</strong></h3>
+	<p>在过去的几年里，Kudelski Security 的工程团队已经将我们的基础结构迁移到多云环境中。我们的内部云迁移反映了我们的终端客户的追求，并为我们提供了专业知识和工具，以增强我们对其的服务。此外，这种转型让我们有机会重新构想我们自己的安全方式，并借助 Zero Trust 实现最佳的实践。</p>
+	<p>截至目前，我们在采用 Zero Trust 中遇到的最大困难在于，确保能够通过多种云环境访问我们不同的 Kubernetes（K8s）网络层（API）。在开始时，我们的基础结构团队很难清晰看到不同 K8s 集群的各种 API，并采取稳定、基于身份的控制。另外，当与这些 API 交互时，我们的开发人员经常对他们需要访问哪些集群以及如何访问这些集群一无所知。</p>
+	<p>为了解决这些摩擦，我们设计了一种内部解决方案，利用 Cloudflare 帮助开发人员在如何安全地验证位于公共云和内部环境中的 k8s 集群方面实现自动化。具体来说，对于特定开发人员来说，我们现在可以在给定的云环境中显示他们可以访问的所有 K8s 服务，使用 Cloudflare 的 Zero Trust 规则验证访问请求，并通过 Cloudflare 的身份感知代理 Cloudflare Tunnel 建立起到该集群的连接。</p>
+	<p>最重要的是，这个自动化工具能将 Kudelski Security 作为一个组织增强我们的安全态势，同时改善我们的开发人员体验。我们估计，该工具为新开发人员节省了至少两个小时，节省了本应花费在阅读文档、提交 IT 服务工单以及手动部署和配置访问不同 K8s 集群所需的不同工具上的时间。</p>
+	<p>在这篇博客中，我们详细介绍了我们解决的具体痛点，我们如何设计自动化工具，以及 Cloudflare 是如何帮助我们以一种在家办公的友好方式在 Zero Trust 中进步。</p>
+	<h3 id="-"><strong>保护多云环境所面临的挑战</strong></h3>
+	<p>随着 Kudelski Security 扩展了我们的客户服务和内部开发团队，我们在多个 K8s 集群和多个云提供商中扩展了应用程序的范围。对于我们的基础结构工程师和开发人员来说，K8s 集群 API 是故障排除的关键切入点。我们利用 GitOps 工作，我们所有的应用程序部署均为自动化，但我们仍然经常需要连接到集群来调取日志或调试问题。</p>
+	<p>然而，保持这种多样性会给基础结构管理员带来复杂性和压力。对于终端用户而言，庞大的基础结构意味着不同的身份认证、针对每个集群的不同访问工具以及需要跟踪的不同配置文件。</p>
+	<p>这种复杂的访问体验会使实时故障排除尤其困难。例如，待命的工程师在试图理解一个不熟悉的 K8s 环境时，他们可能需要深入挖掘密集的文档，或者被迫唤醒其他同事而向其询问一个简单的问题。所有这些都很容易出错，并且会浪费宝贵的时间。</p>
+	<p>通常，在保护访问 K8s API 中产生的挑战，是我们一直希望能够避免的。例如，我们认为将 API 暴露在公共互联网上必然会增加我们受到攻击的可能性，这是我们无法承受的风险。此外，我们不想通过内部网络提供对集群 API 的大范围访问，并容忍内网漫游的风险。随着 Kudelski 的持续增长，在我们的工作人员和不同的云环境中部署 VPN 的运营成本和复杂性也会造成扩容方面的挑战。</p>
+	<p>相反，我们希望能够有方法允许我们维护小、微型划分的环境、小故障域，以及不超过一种方法来访问服务。</p>
+	<h3 id="-cloudflare-zero-trust-"><strong>利用 Cloudflare 的身份感知代理完成 Zero Trust 访问</strong></h3>
+	<p>为此，Kudelski Security 的工程团队选择了一种更时尚的方法：通过身份感知代理(IAP)在用户和每个 K8 集群之间创建连接。通过在发出访问请求时验证用户的身份，IAP 可以灵活地部署，并在应用程序前增加额外的安全层。此外，它们通过创建从用户到单个应用程序（而不是整个网络）的连接来支持我们的 Zero Trust。</p>
+	<p>每个集群都有自己的 IAP 和自有的策略集，其会检查身份（通过我们的企业 SSO）和其他情境因素，如开发者笔记本电脑的设备姿势。IAP 并不会取代 K8s 集群身份验证机制，而是在其之上添加了一个新的身份验证机制，并且得益于身份联邦和 SSO，这个过程对我们的最终用户是完全透明的。</p>
+	<p>在我们的设置中，Kudelski Security 正在使用 Cloudflare 的 IAP 作为 Cloudflare Access 的组件 - 一个 ZTNA 解决方案，也是 Cloudflare 的 Zero Trust 平台统一的几个安全服务之一。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image1-39.png" class="kg-image"></figure>
+	<p>对于许多基于 web 的应用程序来说，IAP 有助于为通过浏览器请求访问的终端用户创造一种无障碍体验。在到达安全应用之前，用户通过他们的企业 SSO 或标识提供程序进行身份验证，而 IAP 则是在后台工作。</p>
+	<p>这个用户流有异于基于 CLI 的应用程序，因为我们不能像在浏览器中那样重定向 CLI 网络流。在我们的示例中，我们的工程师希望使用他们青睐的基于 CLI 的 K8s 客户端，比如 <a href="https://kubernetes.io/docs/reference/kubectl/overview/" target="_blank">kubectl</a> 或 <a href="https://github.com/derailed/k9s" target="_blank">k9s</a>。这意味着我们的 Cloudflare IAP 需要在 CLI 客户端和每个 K8s 集群之间充当 SOCKS5 代理。</p>
+	<p>为了创建此 IAP 连接，Cloudflare 提供了一个轻量级的服务器端后台程序，名为<em>cloudflared</em>，用于连接基础结构和应用程序。该加密连接将在 Cloudflare 的全局网络上运行，并对单次通过检查应用 Zero Trust 策略。</p>
+	<p>然而，如果没有任何自动化，Kudelski Security 的基础结构团队将需要将后台程序分发到终端用户设备上，提供关于如何设置这些加密连接的指导，并采取其他手动、实际配置步骤，并不断对它们进行维护。另外，开发人员仍然缺乏跨不同 K8s 集群的单一可见窗格，这在日常工作中经常需要访问。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image3-14.png" class="kg-image"></figure>
+	<h3 id="-k8s-tunnels-"><strong>我们的自动化解决方案：k8s-tunnels！</strong></h3>
+	<p>为了解决这些挑战，我们的基础结构工程团队开发了一种名为“K8s-tunnels”的内部工具 - 其嵌入了复杂的配置步骤，让我们开发人员的工作更加轻松。此外，该工具会根据创建的 Zero Trust 策略自动发现特定用户可以访问的所有 K8s 集群。为了实现这一功能，我们嵌入了 Kudelski Security 使用的一些主要公共云提供商的 SDKs。该工具还嵌入了<em> cloudflared </em>后台程序<em>，</em>这意味着我们只需向我们的客户分配一个单一的工具。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image7-3.png" class="kg-image"></figure>
+	<p>总的来说，启动该工具的开发人员需要完成以下工作流程：（我们假设用户已经拥有有效的证书，否则该工具将在我们的 IDP 上打开浏览器以获取证书）</p>
+	<p>1.用户选择一个或多个集群</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image2-22.png" class="kg-image"></figure>
+	<p>2. k8s-tunnel 将自动打开与 Cloudflare 的连接，并在开发人员机器上公开一个本地 SOCKS5 代理</p>
+	<p>3. k8s-tunnel 通过本地的 SOCKS5 代理推送必要信息，来修改用户本地 Kubernetes 客户端配置</p>
+	<p>4. k8s-tunnel 将 Kubernetes 客户端环境切换到当前连接</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image6-8.png" class="kg-image"></figure>
+	<p>5. 用户现在可以使用他/她喜欢的 CLI 客户端来访问 K8s 集群</p>
+	<p>整个过程非常简单直接，我们的工程团队每天都在使用。当然，所有这些魔法般的过程都是通过我们在 k8s-tunnels 中建立的自动发现机制实现的。每当有新工程师加入我们的团队时，我们只需让他们启动自动发现流程并开始。</p>
+	<p>下面就是自动发现过程的实际示例。</p>
+	<ol>
+		<li>k8s-tunnels 将连接到我们不同的云提供商 API，并列出用户可以访问的 K8s 集群</li>
+		<li>k8-tunnels 会在这些集群的用户机上保存一个本地配置文件，因此该过程不会多次运行</li>
+	</ol>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image5-6.png" class="kg-image"></figure>
+	<h3 id="--1"><strong>自动化改进</strong></h3>
+	<p>对于本地部署来说，这有点棘手，因为我们没有一种简单的方法来存储 K8s 集群元数据，就像我们使用公共云提供商的资源标签那样。我们决定使用 <a href="https://www.vaultproject.io/" target="_blank">Vault</a> 作为键值存储，用于模拟本地公共云资源标签。通过这种方式，我们可以按照与公共云提供商相同的过程实现自动搜索本地集群。</p>
+	<p>也许您在之前的 CLI 截图中看到过，用户可以同时选择多个集群！我们很快意识到，我们的开发人员经常需要同时访问多个环境，以比较在生产环境和分阶段中运行的工作负荷。因此，我们设计了这种工具，他们现在可以简单地在单个 K8s-tunnels 实例中并行地打开多个通道，并在笔记本电脑上切换目的地 K8s 集群，而无需每次在切换集群时打开或关闭通道。</p>
+	<p>最后，我们还在 Cloudflare Workers 的新版本中添加了对收藏夹和通知的支持，不过这是另一篇博客文章要谈的内容了。</p>
+	<h3 id="--2"><strong>下一步</strong></h3>
+	<p>在设计这个工具时，我们发现 Kubernetes 客户端库在与 SOCKS5 代理一起使用时存在的一些问题，我们正在与<a href="https://github.com/kubernetes/kubernetes/pull/105632" target="_blank"> Kubernetes 社区合作</a>解决这些问题，这样，每个人都能在后期的补丁中受益。</p>
+	<p>在这篇博客文章中，我们想强调的是如何将 Zero Trust 安全性应用于在多云环境中运行的复杂工作负荷，同时改善最终用户体验。</p>
+	<p>尽管今天我们的“k8s-tunnels”代码对 Kudelski Security 来说过于具体，但我们的目标是与 Kubernetes 社区分享我们所创建的代码，以便其他组织和 Cloudflare 客户可以从中受益。</p>
+	<p><a href="https://twitter.com/intent/tweet?in_reply_to=1468601766224797700" target="_blank"><strong>在 Twitter 上讨论</strong></a><a href="https://news.ycombinator.com/submitlink?u=https://blog.cloudflare.com/guest-blog-zero-trust-access-kubernetes/" target="_blank"><strong> 在 Hacker News 上讨论</strong></a><a href="https://reddit.com/r/CloudFlare/comments/rbsdqa/guest_blog_k8s_tunnels_with_kudelski_security/" target="_blank"><strong> 在 Reddit 上讨论</strong></a></p>
+	<p><a href="https://blog.cloudflare.com/tag/cio-week/">CIO Week</a> <a href="https://blog.cloudflare.com/tag/cloudflare-tunnel/">Cloudflare Tunnel</a> <a href="https://blog.cloudflare.com/tag/access/">Cloudflare Access</a> <a href="https://blog.cloudflare.com/tag/zero-trust/">Zero Trust</a></p>
+	<p>在 Twitter 上关注 Cloudflare</p>
+	<p>Cloudflare 丨<a href="https://twitter.com/Cloudflare" target="_blank">Cloudflare</a><br></p>
+</div>

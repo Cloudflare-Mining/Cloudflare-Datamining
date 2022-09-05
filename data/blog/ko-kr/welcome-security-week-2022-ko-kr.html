@@ -1,0 +1,45 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image1-8.png" class="kg-image" alt="Welcome to Security Week 2022!"></figure>
+	<p>최근의 여러 사건으로 인해 사이버 보안이 많은 대화에서 주된 관심사로 대두되고 있습니다.</p>
+	<p><a href="https://www.cisa.gov/shields-up" target="_blank">전</a> <a href="https://www.ncsc.gov.uk/news/organisations-urged-to-bolster-defences" target="_blank">세</a><a href="https://www.meti.go.jp/press/2021/02/20220221003/20220221003.html" target="_blank">계</a> 여러 정부는 기업들이 우크라이나 침공 이후 “<a href="https://blog.cloudflare.com/shields-up-free-cloudflare-services-to-improve-your-cyber-readiness/">방어 태세를 강화</a>”하도록 장려하고 있습니다. 현재 위협은 이전보다 훨씬 더 심각하며 인터넷 연결 인프라를 갖춘 조직은 보안을 올해의 최우선 순위에 두어야 합니다.</p>
+	<p>서비스를 온라인 상태로 유지하기 위해 Cloudflare는 <a href="https://criticalinfrastructuredefense.org/" target="_blank">핵심 인프라 방어 프로젝트</a>에도 참여하여 담당 팀이 의료, 물, 에너지 등 사이버 위협에 더 취약한 부문의 네트워크 및 응용 프로그램을 보호하는 데 최선의 도움을 받을 수 있도록 하고 있습니다.</p>
+	<p>또 다른 예를 보면, 얼마 전 많은 Java 기반 응용 프로그램에 영향을 미치는 심각도가 높은 취약점인 <a href="https://www.cloudflare.com/log4j/" target="_blank">Log4J</a>의 경우에는 공격 벡터가 공개된 후 몇 시간 내에 공격자가 즉시 취약한 응용 프로그램을 스캐닝하기 시작했습니다. 그 결과로 인터넷에서 우수한 보안이 얼마나 중요한지가 다시 한 번 강조되었습니다.</p>
+	<p>불행히도 이러한 이벤트가 마지막 경고가 되지는 않을 것이라는 점은 거의 확실합니다.</p>
+	<p>앞으로 6일간 '보안 대책을 <a href="https://blog.cloudflare.com/welcome-to-security-week-2021/">더 이상 사후에 강구해서는 안 된다'</a>는 단순한 목표를 통해 사이버 보안이라는 광범위한 주제를 다룰 예정입니다.</p>
+	<p>그러나 보안은 또한 어려우며 "충분한 조처를 했는지"를 알 수 없습니다. 우수한 보안 관행의 중요성은 결코 과소평가해서는 안 됩니다. 신뢰할 수 있고 안전한 응용 프로그램은 인터넷이 올바르게 작동하도록 합니다. 여기에는 필수 정보에 대한 액세스를 보장하기 위해 사이트를 온라인 상태로 유지하는 것부터 도난 및 오용으로부터 사용자 데이터를 보호하는 것까지가 포함됩니다.</p>
+	<p>하지만 모든 사람이 보안 전문가는 아닙니다.</p>
+	<p>그러한 측면에서 Cloudflare는 항상 까다로운 문제에 기술적으로 정교한 솔루션을 적용하고 이러한 솔루션을 일반적으로 액세스할 수 있도록 해왔습니다. 이번 주에는 제품 개선 사항, 새로운 제안, 대담한 아이디어와 파트너십에 대해 설명하게 되며, 여기에는 모든 Cloudflare 사용자에게 무료로 제공할 몇 가지 멋지고 새로운 주요 기능이 포함됩니다.</p>
+	<p>시작하기 전에, 우리가 어떤 방향으로 가고 있는지 이해하는 가장 좋은 방법은 한 발 물러서서 우리의 발자취를 다시 살펴보는 것입니다. 그리고 그 작업을 이 게시물에서 하려고 합니다. 이야기를 읽으면서 관련 공지가 있는 요일을 알려드릴 것이므로 언제 들어야 하는지 알 수 있을 것입니다.</p>
+	<p>보안 주간에 오신 것을 환영합니다.</p>
+	<h3 id="-">초창기로 돌아가기: 웹 사이트 보안</h3>
+	<p>7년 전 처음 Cloudflare에 합류했을 때 <a href="https://www.cloudflare.com/dns/" target="_blank">DNS</a>, <a href="https://www.cloudflare.com/ddos/" target="_blank">DDoS 완화</a>, 웹 애플리케이션 방화벽(<a href="https://www.cloudflare.com/waf/" target="_blank">WAF</a>) 및 <a href="https://www.cloudflare.com/ssl/" target="_blank">SSL/TLS</a>와 같은 보안 오퍼링은 주로 웹 사이트 소유자를 대상으로 했습니다. HTTP 역방향 프록시인 Cloudflare는 트래픽을 보호하고 악의적 페이로드를 저지할 수 있습니다. 동시에 기본 프로토콜을 더 빠르고 안전하게 만드는 작업을 즉시 시작했습니다. 한 번의 배포로 인터넷 자산의 많은 부분에 대해 TLS 버전을 업그레이드하고, 비HTTP 포트에 대한 볼류메트릭 DDoS 공격을 차단하며, 규칙을 작성하여 수백만 개의 WordPress 관리자 페이지를 보호할 수 있습니다.</p>
+	<blockquote><em>보안 주간: 웹 사이트 보호는 여전히 당사 비즈니스의 핵심 부분입니다. 이번 주 전반부(월요일~수요일) 동안 TLS에서 WAF(웹 애플리케이션 방화벽) 및 사용자 설정 규칙에 이르기까지 웹을 검색할 때 우리 모두가 매일 사용하는 기술의 여러 주요 개선 사항에 대해 학습합니다. Free 요금제 사용자를 포함하여 모두를 위한 몇 가지 흥미로운 발표가 있습니다.</em></blockquote>
+	<h3 id="--1">응용 프로그램 &gt; 웹 사이트</h3>
+	<p>인터넷 트래픽의 상당 부분이 자동화되었다는 사실은 꽤 빠르게 분명해졌습니다. <a href="https://radar.cloudflare.com/" target="_blank">봇은 주어진 시간에 전체 트래픽의 30% 이상을 차지하며</a>, 피크는 40% 이상입니다. 따라서 우리는 Cloudflare 플랫폼에서 <a href="https://www.cloudflare.com/products/bot-management/" target="_blank">Bot Management</a>와 같은 더욱 발전된 도구를 개발했습니다.</p>
+	<p>이러한 봇 중 다수가 사람이 액세스하도록 설계되지 않은 응용 프로그램에 연결되고 여기에서 데이터를 소모하므로 표준 웹 사이트에 비해 완전히 새로운 보안 문제가 발생합니다. API는 이제 아주 흔하며 <a href="https://blog.cloudflare.com/landscape-of-api-traffic/">Cloudflare 네트워크를 통한 모든 웹 HTTP 요청의 약 54%를 차지합니다</a>.</p>
+	<blockquote><em>보안 주간: 고객이 자동화된 트래픽을 관리하고 API 엔드포인트를 보호하는 데 도움이 되는 </em><a href="https://blog.cloudflare.com/introducing-api-shield/"><em>기존 제품</em></a><em>을 기반으로, Cloudflare가 도움이 될 수 있는 빠르게 성장하는 API 보안 및 관리 사용 사례 세트를 다루므로, 수요일에 이 공간에서 공유할 몇 가지 새로운 개선 사항이 있습니다.</em></blockquote>
+	<h3 id="--2">모든 프로토콜 커버</h3>
+	<p>핵심 서비스에 대한 안정성을 향상하면서 네트워크를 계속 확장하는 데 항상 중점을 두었습니다. 분명한 다음 단계는 다른 프로토콜에 대한 프록시를 개방하는 것이었습니다. 결국 HTTP는 인터넷에서 사용되는 많은 프로토콜 중 하나일 뿐입니다.</p>
+	<p>당사는 현재 <a href="https://www.cloudflare.com/products/cloudflare-spectrum/" target="_blank">Spectrum</a> 제품을 사용하여 임의의 TCP/UDP 기반 응용 프로그램 및 엔드포인트를 보호하는 많은 고객을 보유하고 있습니다. 당사는 고객이 Cloudflare와 상호 연결하고 <a href="https://www.cloudflare.com/magic-transit/" target="_blank">Cloudflare 에지에서 원시 IP 트래픽</a>을 확보할 수 있도록 함으로써 한 단계 더 나아갔습니다.</p>
+	<p>게임 서버, 맞춤형 IoT 프로토콜, 스트리밍 서비스, 금융 응용 프로그램은 이제 모두 무제한으로 확장되고 원활하게 작동하는 DDoS 완화와 <a href="https://www.cloudflare.com/magic-firewall/" target="_blank">Magic Firewall</a> 필터링 기능을 수신할 수 있습니다.</p>
+	<blockquote><em>보안 주간: 우리 팀에서 이러한 제품을 개선하기 위해 열심히 노력하고 있으므로 귀하께서 Cloudflare를 통해 비HTTP 트래픽을 프록시하고 있는 경우 목요일에 흥미로운 업데이트가 있을 것입니다.</em></blockquote>
+	<p>이러한 고객의 대부분은 <a href="https://en.wikipedia.org/wiki/OSI_model" target="_blank">OSI 모델의 계층 3~4</a>에서 트래픽을 프록시 처리하고 있습니다. 하지만 당사는 이제 스택을 백업하는 작업도 하고 있습니다. 가장 효과적인 보안 솔루션은 응용 프로그램 계층의 데이터를 이해해야 하며, Cloudflare의 큰 차이 중 하나는 역사적으로, 손상을 위한 최고의 벡터인 이메일 트래픽이었습니다.</p>
+	<blockquote><em>보안 주간: 최근 당사에서 </em><a href="https://www.cloudflare.com/en-gb/press-releases/2022/cloudflare-to-acquire-area-1-security/" target="_blank"><em>Area 1을 인수하려는 계획</em></a><em>에 대해 들어보셨을 것입니다. 이와 관련하여 공유할 흥미로운 소식이 몇 가지 있으므로 월요일에도 계속 관심을 가져주시기 바랍니다.</em></blockquote>
+	<h3 id="--3">프록시 플리핑, 사용자 보호</h3>
+	<p>Cloudflare 프록시를 자체적으로 플리핑하고 포워드 프록시 사용 사례에 개방할 수 있다는 인식은 돌이켜 보면 분명해 보이지만, 당시에는 전혀 그렇지 않았습니다. 포워드 프록시 보안 전략에 집중함으로써 갑작스럽게 응용 프로그램과 서버뿐만 아니라 사용자까지 보호할 수 있었습니다.</p>
+	<p>인터넷에 연결하는 모든 사용자는 이제 <a href="https://www.cloudflare.com/learning/dns/what-is-1.1.1.1/" target="_blank">Cloudflare를 DNS 리졸버</a>와 <a href="https://www.cloudflare.com/products/zero-trust/gateway/" target="_blank">포워드 프록시</a>로 구성하고, 추가 안전 보호막을 사용하여 인터넷을 경험할 수 있습니다. <a href="https://www.cloudflare.com/products/zero-trust/" target="_blank">Cloudflare Zero Trust</a>가 등장합니다.</p>
+	<p>바로 이 순간에 프록시는 더 이상 우리가 구축하고 있는 것을 명확하게 식별하는 용어가 아니게 되었습니다. 네트워크가 훨씬 더 나은 용어였습니다. 사실 컴퓨팅의 많은 것들이 반복되면서, <a href="https://blog.cloudflare.com/the-network-is-the-computer/">네트워크가 다시 컴퓨터가 되었습니다</a>.</p>
+	<p>네트워크 효과(언어유희의 의도는 없음)는 즉시 명확해지지 않습니다. 사용자가 Cloudflare를 Cloudflare 뒤에서 응용 프로그램 자체에 액세스하는 DNS 리졸버로 설정하는 것을 생각해보십시오. 전체 트랜잭션은 최종 사용자에게 가장 가까운 데이터 센터에서 발생할 수 있으며, 이는 DNS에서 시작해서 HTTP에 이릅니다. 이는 조만간 <a href="https://www.cloudflare.com/press-releases/2021/cloudflare-grows-its-network-to-speed-up-and-secure-the-internet/" target="_blank">네트워크 확장</a>을 멈추지 않을 이유이기도 합니다. 그 이점은 측정할 수 없으며, 보안은 성능 저하 없이 모든 단계에서 구현됩니다.</p>
+	<p>해당 사용자가 응용 프로그램을 실행하는 동일한 조직의 팀원인 경우 Zero Trust 개념에 액세스할 수 있고 누구에게나 쉽게 배포할 수 있습니다. VPN과 같이 오래된 시스템은 네트워크를 보호하기 위해 더 이상 투박하고 복잡한 인프라가 필요하지 않게 됨에 따라 쓸모가 없어졌고, 보안 민주화에 한 걸음 더 다가서게 되었습니다.</p>
+	<blockquote><em>보안 주간: </em><a href="https://www.cloudflare.com/products/zero-trust/" target="_blank"><em>Cloudflare Zero Trust</em></a><em>를 사용 중이고 내부 네트워크를 보호하려는 경우 금요일에 관심을 가져주시기 바랍니다. 공유할 몇 가지 훌륭한 제품 개선 사항이 있습니다.</em></blockquote>
+	<h3 id="cloudflare-">Cloudflare는 스마트 보안 네트워크입니다</h3>
+	<p>이를 통해 오늘날에 이르렀습니다. 보안은 안전한 환경(성과 해자)을 만드는 것에 관한 것이었습니다. 하지만 모바일과 클라우드가 패러다임을 부수었습니다. 더 이상 안전한 곳은 없으며, 안전한 곳이 있더라도 사용자와 응용 프로그램은 아마도 오랫동안 머물지 못할 것입니다. 그들은 어디에서 일할까요... 집에서요? 전국에 걸쳐서요? 전 세계에서요? 귀하의 응용 프로그램도 지속해서 움직이고 있습니다.</p>
+	<p>이 패러다임에서 보안을 논리적으로 생각하는 방식은 물리적으로 고립된 영역을 생성하지 않는 것입니다. 대신 인터넷의 기본 구성 요소인 네트워크에 집중함으로써 가상 영역을 만들어야 합니다.</p>
+	<p>즉, 모든 장치, 모든 사무실, 보유한 모든 서버가 안전한 네트워크에 연결되어 있는지 확인해야 합니다. Cloudflare에서 구축하고 있는 것이 바로 그것입니다. 이는 사용자가 어디에 있든 이들을 응용 프로그램에 연결하고 그 반대로도 연결하는 네트워크이며 핵심 기초로서 보안과 프라이버시를 제공합니다.</p>
+	<h3 id="--4">개선하려면 앞장서서 이끌어야 합니다</h3>
+	<p>훌륭한 기술을 보유하는 것만으로 충분하지 않습니다. 사용하기 쉽고 혁신적인 아이디어는 사람들에게서 나옵니다. 당사가 첫 번째 사용자로서 모든 제품을 시험 사용하는 이유이기도 합니다. Cloudflare에서 가장 까다로운 고객 중 하나는 내부 보안 팀입니다. 우리 혼자서는 할 수 없습니다. 모두 함께 일하는 것은 매우 중요합니다. 당사는 사용자에게 더 나은 경험을 제공하기 위해 통찰력, 데이터를 공유하고 제품을 통합하기 위해 다른 사이버 보안 회사와 파트너 관계를 맺기 위해 열심히 노력하고 있습니다.</p>
+	<p>모범 사례, Cloudflare 네트워크 보안에서 얻은 통찰력, 보안팀에서 작업한 여러 프로젝트를 공유하면서 이번 주간을 마치겠습니다. 또한 이 분야에서 높이 평가되는 다른 회사들과의 새로운 파트너십을 발표할 것입니다.</p>
+	<blockquote><em>보안 주간: 모범 사례, Cloudflare 네트워크 보안에서 얻은 통찰력, 보안팀에서 작업한 여러 프로젝트를 공유하면서, 토요일에 이번 주간을 마치겠습니다. 또한 이 분야에서 높이 평가되는 다른 회사들과의 새로운 파트너십을 발표할 것입니다.</em></blockquote>
+	<h3 id="--5">일주일은 여전히 충분하지 않습니다</h3>
+	<p>보안 주간에 75개 이상의 발표를 내놓았습니다. 아직 2주를 약속하지는 않았지만, 6일 만에 모든 것을 다룰 수는 없었습니다. 우리는 다음 주뿐만 아니라 2022년 내내 큰 진전을 이루게 될 것으로 낙관합니다.</p>
+</div>

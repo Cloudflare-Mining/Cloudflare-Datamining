@@ -1,0 +1,79 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image1-20.png" class="kg-image" alt="A New Hope for Object Storage: R2 enters open beta"></figure>
+	<p>Au mois de septembre, nous avons <a href="https://blog.cloudflare.com/introducing-r2-object-storage/">annoncé</a> que nous étions en train de développer notre propre solution de stockage d'objets : Cloudflare R2. Le service R2 constitue notre réponse aux frais de trafic sortant exorbitants imposés par les fournisseurs de cloud actuels. Il permet aux développeurs de stocker autant de données qu'ils le souhaitent, sans se soucier des coûts liés à l'accès à ces dernières.</p>
+	<p>Les réactions à cette annonce se sont avérées extrêmement positives.</p>
+	<ul>
+		<li>Les factures de cloud des <strong>développeurs indépendants</strong> se révélaient trop modestes pour leur permettre de négocier des frais de trafic sortant équitables auprès des fournisseurs. Ces frais constituaient le poste le plus élevé sur leurs factures et étranglaient ainsi les projets annexes des développeurs, de même que les nouvelles entreprises qu'ils tentaient de bâtir.</li>
+		<li><strong>Les grandes entreprises</strong> avaient relégué le stockage multicloud (et, par extension, le multicloud lui-même) au rang de chimère. Elles se sont adressées à nous avec enthousiasme, afin de nous présenter de nouveaux produits intégrant les données aux entreprises partenaires.</li>
+		<li><strong>Les organisations de recherche à but non lucratif</strong> dépensaient des fortunes en frais de trafic sortant dans le seul but de partager des données d'expérimentation les unes avec les autres. Ces frais avaient des répercussions réelles sur leur capacité à collaborer. Ils encourageaient ainsi le cloisonnement des recherches, tout en limitant les expériences et les analyses que les organisations pouvaient réaliser.</li>
+	</ul>
+	<p>Cloudflare a pour objectif de contribuer à bâtir un Internet meilleur. Le réseau Internet bénéficie aujourd'hui d'un outil bien mérité, car la solution R2 est désormais en <a href="https://developers.cloudflare.com/r2/get-started/" target="_blank">bêta ouverte</a>.</p>
+	<p>Les clients en libre-service peuvent activer le service R2 dans le tableau de bord Cloudflare. Les titulaires de comptes Enterprise, quant à eux, peuvent contacter leur CSM afin de procéder à leur intégration.</p>
+	<h2 id="api-internes-et-externes">API internes et externes</h2>
+	<p>La solution R2 dispose de deux API : une API uniquement accessible depuis Workers, que nous appelons l'API In-Worker (intra-Worker), et une API compatible S3, qui expose votre compartiment au sein d'une URL se présentant sous la forme <a href="http://account.r2.cloudflarestorage.com/bucket" target="_blank">compartiment.compte.r2storage.com</a>. Vous devrez en outre vous authentifier avant d'effectuer des requêtes au service R2. En effet, les compartiments R2 sont privés par défaut.</p>
+	<h3 id="api-in-worker">API In-Worker</h3>
+	<p>Dans le cadre de l'API In-Worker, un compartiment est « lié » à un Worker spécifique, qui peut alors exécuter des opérations PUT, GET, DELETE et LIST sur ce dernier.</p>
+	<h3 id="api-compatible-s3">API compatible S3</h3>
+	<p>Pour l'API compatible S3, l'authentification s'effectue de la même manière que sur S3 : en analysant une URL R2 selon le processus SigV4. Le processus SigV4 signe les requêtes à l'aide d'une clé secrète afin de les authentifier auprès du service R2. Cette opération implique que l'accès public à la solution R2 par Internet n'est aujourd'hui possible qu'en hébergeant un Worker, en le connectant à R2 et en routant les requêtes via ce dernier.</p>
+	<p>Le moyen le plus simple de tester l'API compatible S3 consiste à utiliser un client S3. Le SDK <a href="https://boto3.amazonaws.com/v1/documentation/api/latest/index.html" target="_blank">boto3</a> constitue l'un des clients S3 les plus populaires.</p>
+	<p>Dans Python, copiez le script suivant et renseignez les <code>account_id</code>, <code>access_key</code>, et <code>secret_access_key</code> avec les identifiants de votre compte R2.</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>main.py
+import boto3
+
+s3 = boto3.resource('s3',
+  endpoint_url = 'https://&lt;accountid&gt;.r2.cloudflarestorage.com',
+  aws_access_key_id = '&lt;access_key_id&gt;',
+  aws_secret_access_key = '&lt;access_key_secret&gt;'
+)
+
+print('Buckets:')
+for bucket in s3.buckets.all():
+  print(' - ', bucket.name)
+
+bucket = s3.Bucket('my-bucket-name')
+
+print('Objects:')
+for item in bucket.objects.all():
+  print(' - ', item.key)
+
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h3 id="fonctionnalit-s">Fonctionnalités</h3>
+	<p>La solution R2 prend en charge l'ensemble des fonctionnalités de base de S3 (créer/lire/mettre à jour/supprimer) par l'intermédiaire de ses deux API.</p>
+	<p>Pendant la période de la bêta ouverte, nous prévoyons que le service R2 soutienne 1 000 opérations GET par seconde et 100 opérations PUT par seconde, pour chaque compartiment. Le service R2 prend en charge les objets jusqu'à une taille d'environ 5 To, avec des éléments individuels limités à 5 Go de données.</p>
+	<p>La solution R2 assure un accès fortement cohérent aux données. Une fois une opération PUT confirmée par le service R2, les opérations GET à venir reflètent toujours la nouvelle paire clé/valeur. La suppression d'un compartiment constitue l'unique exception à ce schéma. En effet, le compartiment peut continuer à exister pendant une brève période après la suppression et ainsi permettre les opérations de lecture/écriture.</p>
+	<h2 id="tarification">Tarification</h2>
+	<p>L'annonce initiale de la solution R2 mentionnait des tarifs préliminaires. L'un de nos objectifs principaux concernant R2 consistait à proposer un service aux développeurs qui ne pouvaient pas négocier de réductions notables auprès des fournisseurs de cloud. À cette fin, nous annonçons également un niveau de tarification perpétuellement gratuit, qui permettra aux développeurs de commencer à travailler sur R2 sans débourser un centime.</p>
+	<p>La facturation du service R2 dépend du volume total de données stockées et du type d'opérations exécutées sur ces dernières :</p>
+	<ul>
+		<li>Le stockage est proposé au prix de 0,015 USD par Go et par mois.</li>
+		<li>Les opérations de classe A (dont les opérations de lecture/écriture) coûtent 4,50 USD par million.</li>
+		<li>Les opérations de classe B sont facturées 0,36 USD par million.</li>
+	</ul>
+	<p>Les opérations de classe A ont tendance à impliquer une mutation d'état, comme la création d'un compartiment, l'énumération des objets au sein d'un compartiment ou l'écriture d'un objet. Les opérations de classe B, quant à elles, tendent à lire un état existant (par exemple, la lecture d'un objet depuis un compartiment). Vous trouverez plus d'informations sur la tarification, ainsi qu'une liste complète des types d'opérations, dans les <a href="https://developers.cloudflare.com/r2/platform/pricing/" target="_blank">documents</a>.</p>
+	<p>Bien entendu, la solution R2 ne facture aucuns frais de bande passante sortante. Vous pouvez accéder à votre compartiment autant que vous le souhaitez.</p>
+	<p>Le niveau de tarification perpétuellement gratuit inclut ce qui suit :</p>
+	<ul>
+		<li>10 Go/mois de données stockées.</li>
+		<li>1 000 000 d'opérations de classe A par mois.</li>
+		<li>1 000 000 d'opérations de classe B par mois.</li>
+	</ul>
+	<p>L'utilisation du service R2 dans le cadre du niveau gratuit se réinitialise chaque mois. Elle sera néanmoins facturée pendant la phase de bêta ouverte.</p>
+	<h2 id="d-veloppements-venir">Développements à venir</h2>
+	<p>Nous avons passé les six derniers mois en bêta fermée, à développer notre solution de stockage avec un certain nombre de partenaires de conception. Soutenue par la fonctionnalité Durable Objects, l'architecture novatrice du service R2 propose à la fois une disponibilité élevée et des performances cohérentes.</p>
+	<p>Nous avons déjà effectué de gros progrès sur la solution R2, mais il nous reste encore beaucoup à bâtir ces prochains mois.</p>
+	<h3 id="am-lioration-des-performances">Amélioration des performances</h3>
+	<p>Notre priorité principale consiste à <strong>améliorer les performances et la fiabilité</strong>. Nous avons redirigé notre utilisation interne et les demandes de nos partenaires de conception vers la solution R2, mais rien ne remplace le trafic de production réel.</p>
+	<p>Pendant la période de la bêta ouverte, le service R2 pourra soutenir 1 000 opérations GET par seconde et 100 opérations PUT par seconde, pour chaque compartiment. Nous envisagerons de relever ces limites lorsque nous nous serons familiarisés avec le fonctionnement du système. N'hésitez pas à nous contacter si vous avez des besoins plus élevés en la matière !</p>
+	<p>Vous ne verrez pas de sélecteur de région lors de la création d'un compartiment. Notre vision pour la solution R2 s'articule autour d'un stockage automatiquement distribué à l'échelle mondiale, dans le cadre duquel le service R2 place, en toute fluidité, chaque objet au sein de la région de stockage la plus proche de l'origine de la requête. À l'heure actuelle, R2 stocke principalement les données en Amérique du Nord. Ce mode opératoire pourrait cependant entraîner des latences élevées lors de l'accès au contenu depuis d'autres régions. Avant d'ajouter une fonctionnalité de migration automatique des objets existants entre les régions, nous chercherons tout d'abord à répondre à ce problème en ajoutant des régions supplémentaires au sein desquelles les objets pourront être créés. Sur le même principe que ce que nous avons conçu avec les <a href="https://blog.cloudflare.com/supporting-jurisdictional-restrictions-for-durable-objects/">restrictions de juridiction pour Durable Objects</a>, nous établirons des limitations quant à l'endroit où un compartiment R2 place les données afin de respecter les diverses législations en matière de confidentialité.</p>
+	<h3 id="-largissement-de-l-ensemble-de-fonctionnalit-s-de-la-solution-r2">Élargissement de l'ensemble de fonctionnalités de la solution R2</h3>
+	<p>Nous nous attellerons ensuite à l'extension des capacités du service R2, au-delà des fonctionnalités de base de l'API S3. À court terme, nous nous concentrerons sur les points suivants :</p>
+	<ul>
+		<li>Prise en charge des TTL (durées de vie), afin que les données puissent être automatiquement supprimées des compartiments au fil du temps.</li>
+		<li>Prise en charge des compartiments publics, afin qu'un compartiment puisse être exposé à Internet sans nécessité de rédiger un Worker.</li>
+		<li>Prise en charge des URL présignées, afin de déléguer les accès en lecture/écriture d'une clé spécifique à un jeton.</li>
+		<li>Intégration au cache de Cloudflare, afin d'assurer la mise à l'échelle des requêtes de lecture et la distribution mondiale des données.</li>
+	</ul>
+	<p>Si vous avez d'autres requêtes de fonctionnalités supplémentaires à formuler que celles qui figurent dans la liste ci-dessus, n'hésitez pas à nous en faire part ! Rejoignez notre <a href="https://discord.gg/Z29YjNjxhQ" target="_blank">Discord</a> et partagez avec nous (sur le canal r2-open-beta) ce dont vous avez besoin pour faire du service R2 votre nouvelle solution de stockage d'objets sans frais de trafic sortant.</p>
+</div>

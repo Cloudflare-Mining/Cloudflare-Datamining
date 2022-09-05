@@ -1,0 +1,66 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/11/Concurrent-Streaming.png" class="kg-image"></figure>
+	<p>今天，我们很高兴在此推出并行流加速技术，这是一种减少人们使用<a href="https://www.cloudflare.com/products/stream-delivery/" target="_blank">Stream Delivery</a>时网络上实时视频的端到端延迟的新技术。</p>
+	<p>让我们来深入探讨一下实时流延迟，为什么它很重要，以及人们做了什么来改善它。</p>
+	<h2 id="-">视频“直播”的效果如何</h2>
+	<p>直播在网络视频中所占的份额越来越大。无论是电视直播，游戏直播，还是在线课堂，用户都希望视频能够快速流畅地到达。“实时”的承诺即是，事件发生的同时用户也能看到。但是“实时”网络视频到底有多接近“实时”呢?</p>
+	<p>在互联网上发布实时视频仍然很<em>困难</em>并且会增加很多延迟：</p>
+	<ol>
+		<li>内容源记录视频并将其发送到编码服务器；</li>
+		<li>源服务器将视频转换为DASH，HLS或CMAF之类的格式，可以有效地交付给数百万个设备；</li>
+		<li>通常使用CDN在全球范围内传输编码视频；</li>
+		<li>客户端播放器将视频解码并呈现到屏幕上。</li>
+	</ol>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/11/Content-Processing.jpg" class="kg-image"></figure>
+	<p>所有的这些都受到时间的限制——如果整个过程无法在几秒内完成，那么观看视频的体验就会受到影响。我们把从视频拍摄到可以在终端用户设备上观看之间的总延迟称为“端到端延迟”（你可以想成是从相机镜头到手机屏幕的时间）。</p>
+	<h2 id="--1">传统分段交付</h2>
+	<p>像DASH、HLS和CMAF这样的视频格式都是将视频分割成了小文件（称为“段”）。一个典型的片段持续时间是6秒。</p>
+	<p>如果客户端播放器需要等待整个6s段被编码，通过CDN发送，然后解码，这可能是一个漫长的过程！如果您想让客户端建立一个段的缓冲区来防止交付中的任何中断，则需要花费更长的时间。一个典型的HLS播放器缓冲区分为3个部分：</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/11/Buffering.png" class="kg-image">
+		<figcaption><em>客户端可能需要缓冲3个6秒的块，而这会带来至少18秒延迟</em></figcaption>
+	</figure>
+	<p>考虑到编码延迟，我们很容易就可以理解为什么互联网上的实时流延迟通常是20-30秒。我们还可以做得更好。</p>
+	<h2 id="--2">通过分块传输编码减少延迟</h2>
+	<p>解决这个问题的一种自然的方法是让客户端播放器在下载数据块甚至在数据块还在被创建时就开始播放它们。这一目标的实现需要一点聪明的协作，以一种名为“分块编码”的特殊方式对文件进行编码和交付。这涉及到将片段分割成更小的、比特位大小的片段或“块”。分块编码通常可以将实时延迟降低到5或10秒。</p>
+	<p>令人困惑的是，“块”这个字承载着两重不同的含义：</p>
+	<ol>
+		<li>CMAF或HLS块，是在关键帧上对齐的一小段（通常是1s）</li>
+		<li>HTTP块，它只是在web上传递任何文件的一种方式</li>
+	</ol>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/11/Chunked-Encoding.png" class="kg-image">
+		<figcaption><em>分块编码将片段分割成更短的块</em></figcaption>
+	</figure>
+	<p>HTTP块很重要，因为web客户端处理数据流的能力有限。大多数客户端只有在收到完整的HTTP响应，或者至少是完整的HTTP块之后，才能处理数据。通过使用HTTP分块传输编码，我们可以使视频播放器更快地开始解析和解码视频。</p>
+	<p>CMAF块很重要，解码器由此可以<em>播放</em>HTTP块中的比特位。如果没有小心地编码视频，解码器就会遇到无法播放的视频文件中的随机比特位。</p>
+	<h2 id="cdn-">CDN会带来额外的缓冲</h2>
+	<p>如今在web上使用HLS和CMAF进行分块编码变得越来越普遍了。这项技术之所以伟大，部分原因在于CDN广泛支持HTTP分块编码——20年来，它一直是HTTP规范的一部分。</p>
+	<p>CDN的支持是至关重要的，因为它使得低延迟的实时视频可以扩展并传输到数千或数百万并发的观众——这是目前使用其他非基于http的协议很难做到的。</p>
+	<p>不幸的是，即使您开启分块优化传输，您的CDN也可能因为要缓冲整个段而对您不利。要理解为什么会这样，您需要考虑当许多人同时请求一个直播片段时会发生什么：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/11/Bulk-Request.jpg" class="kg-image"></figure>
+	<p>如果这一文件已经在缓存中了，那么很好！CDN在将缓存文件传输给大量受众方面做得很好。但是，如果分段还没有进入缓存呢？要记得——这是直播视频的典型请求模式！</p>
+	<p>通常，CDN可以通过源“在缓存未命中时传输”。它看起来是这样的：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/11/Stream-On-Cache-Misse.jpg" class="kg-image"></figure>
+	<p>但是，当多个人同时请求文件时会发生什么？CDN通常需要<strong>先将整个文件拉入缓存，然后再为其他查看设备提供服务</strong>：</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/11/One-at-a-Time.jpg" class="kg-image">
+		<figcaption><em>只有一个查看设备可以串流视频，而其他的客户端则在CDN上等待分段缓冲</em></figcaption>
+	</figure>
+	<p>这种行为是可以理解的。CDN数据中心由许多服务器组成。为了避免使源服务器超载，这些服务器通常使用“缓存锁”（互斥锁）进行相互协调，该互斥锁仅允许一台服务器在给定时间从源头请求特定文件。这样做的一个副作用是，当一个文件被拉入缓存时，除了第一个请求它的用户之外，该文件无法被提供给任何其他用户。不幸的是，这个缓存锁也违背了使用分块编码的目的！</p>
+	<p>总结一下：</p>
+	<ul>
+		<li>分块编码将视频片段分割成更小的块</li>
+		<li>这可以通过允许播放器同时获取和解码数据块来减少端到端延迟，即使在原始服务器上生成数据块时也是如此（同时编码和传输）</li>
+		<li>一些CDN由于需要在将分块交付给客户端前<strong>缓冲CDN中的整个文件</strong>，反而抵消分块编码的好处</li>
+	</ul>
+	<h2 id="cloudflare-">Cloudflare的解决方案：并行流加速</h2>
+	<p>你可能已经猜到了，我们认为我们可以做得更好。简而言之，当我们从源服务器中提取出文件时，我们现在能够<strong>同时</strong>将未缓存的文件传送到<strong>多个客户端</strong>。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/11/Simultaneously.jpg" class="kg-image"></figure>
+	<p>这听起来像是一个简单的改变，但是安全地执行此操作存在着很多微妙之处。实际上，我们已经对缓存基础结构进行了深入的更改，以删除缓存锁，并使多个客户端能够在一个文件还在写的时候安全地从该文件中读取数据。</p>
+	<p>最棒的是——Cloudflare现在就是以这种方式运作的！无需选择选项，无需更改配置，我们就可以受益于此。</p>
+	<p>我们在几个月前推出了这个功能，到目前为止，我们对结果非常满意。我们通过“缓存锁等待时间”（即一个请求必须为其他请求等待多长时间）来衡量是否成功——这也是“第一个字节到达的时间”的直接组成部分。一位OTT（Over The Top，通过互联网向用户提供各种应用服务）客户看到P99（过去的10秒内最慢的1%请求的平均延时）从1.5秒降到接近0，正如预期的那样：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/11/Speed-Improvement.png" class="kg-image"></figure>
+	<p>这直接转化成了1.5秒的端到端延迟改进。直播视频更具实时性了！</p>
+	<h2 id="--3">总结</h2>
+	<p>分块编码等新技术彻底改变了实时交付，使发布者可以大规模交付低延迟的实时视频。并发流加速可以帮助您在CDN上充分发挥这种技术的作用，潜在地节省了宝贵的端到端延迟时间。</p>
+	<p>如果您想要使用Cloudflare进行实时视频交付，请<a href="https://www.cloudflare.com/plans/enterprise/contact/" target="_blank">联系我们的企业销售团队</a>。</p>
+	<p>如果您有意向从事此类项目并帮助我们改善整个互联网的直播视频交付，请加入我们的<a href="https://www.cloudflare.com/careers/departments/engineering/" target="_blank">工程团队</a>！</p>
+</div>

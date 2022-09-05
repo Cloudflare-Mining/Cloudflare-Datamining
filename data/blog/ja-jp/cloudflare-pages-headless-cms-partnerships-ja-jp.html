@@ -1,0 +1,30 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image3-57.png" class="kg-image" alt="Cloudflare Pagesがあなたのお気に入りのCMSと提携するようになりました"></figure>
+	<p>ヘッドレスCMSへの関心は、過去数年間で目覚ましい成長を遂げており、多くの企業がツールの採用を検討しています。視聴者は、スマートフォン、ウェアラブル、パーソナルデバイスなど、さまざまな形式の新しいインターフェースを介してコンテンツを消費するため、コンテンツをバックエンドと切り離すというアイデアは、開発チームとエンドユーザー双方により良いエクスペリエンスを提供します。ヘッドレスCMSを利用する機会は、今後さらに増えるでしょう。こうしたことから、本日、<a href="https://sanity.io/" target="_blank">Sanity</a>と<a href="https://strapi.io/" target="_blank">Strapi</a>とのパートナーシップを発表できること、また、すべての人にとってお気に入りのCMSプロバイダーである<a href="https://www.contentful.com/" target="_blank">Contentful</a>と<a href="https://wordpress.org/" target="_blank">WordPress</a> との既存の統合を共有することを嬉しく思います。</p>
+	<h3 id="-cms-">ヘッドレスCMSについて</h3>
+	<p>ヘッドレスCMSは、マーケティングサイト、ブログ、電子商取引サイトのいずれにおいても、これまでで最も一般的なAPI統合の1つです。チームはユーザーフレンドリーなインターフェイスを介してサイトのコンテンツを入力し、データベースに保存できるため、コードベースに触れることなくサイトを簡単に更新できます。Jamstackのプラットフォームとして、私たちのロードマップの大きな部分は、私たち自身のツールを構築したり、お客様の開発エコシステムとPagesに適合するツールの統合を提供したりする方法を理解することです。こうしたことから、今年の8月には、<a href="https://blog.cloudflare.com/introducing-deploy-hooks-for-cloudflare-pages/">Deploy Hooks のPagesによるサポートを発表しました</a>。</p>
+	<h3 id="deploy-hook-">Deploy Hook はどう連携するの？</h3>
+	<p>Deploy Hooksは、ヘッドレスCMSで行われた更新を経由してPagesに接続し、デプロイを起動させるためのキーとなるものです。開発者がサイトのコンテンツ更新のために1日に数回pingを実行する代わりに、マーケティングチームは、Deploy Hookを介してヘッドレスCMSのインターフェイス内で直接サイトを更新できます。これは、gitコマンドの領域外で新しいデプロイをトリガーするHTTP POSTリクエストを受け入れる、Pagesで作成されたURLです。CMS 内で Deploy Hook を受け入れるように設定すれば、CMS 内でコンテンツが更新されるたびに、Pages ダッシュボードで新しいデプロイが自動的に開始されるようになります。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image2-83.png" class="kg-image"></figure>
+	<h3 id="deploy-hook--1">Deploy Hookはどうすれば作成できますか？</h3>
+	<p>Deploy Hookを作成するために、Pagesインターフェース内で2つのことを行う必要があります：</p>
+	<ol>
+		<li>Deploy Hookの名前を選択する：Deploy Hookには任意の名前を付けることができます</li>
+		<li>構築するブランチの選択：Deploy Hookを使用してURLがリクエストされたときに、ビルドおよびデプロイされるブランチを指定できます</li>
+	</ol>
+	<!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 75%;"><iframe src="https://iframe.videodelivery.net/a4fabda318990fa7b1bb8e9e2f5d3542?preload=true" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
+	<!--kg-card-end: html-->
+	<p>Deploy Hookが提供されると、選択したCMS内にウェブフックを設定してDeploy Hookを貼り付ける準備が整います。</p>
+	<p>これで終了です！あとはマーケティングチームにお任せです。リッチコンテンツを更新し、ビルドが自動的にトリガーされて、サイトが更新されます！</p>
+	<h3 id="-">当社のパートナー</h3>
+	<p>もちろん、Deploy Hooksは、Pagesサイトで選択したヘッドレスCMSを使用して、チームにより良い開発エクスペリエンスを提供するための出発点にすぎません。統合はまだまだ続きます。当社はCMSパートナーの<a href="https://sanity.io/" target="_blank">Sanity</a>、<a href="https://strapi.io/" target="_blank">Strapi</a>、<a href="https://www.contentful.com/" target="_blank">Contentful</a>、<a href="https://wordpress.org/" target="_blank">WordPress</a>とも統合します！</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image1-109.png" class="kg-image"></figure>
+	<p>Pagesでは、これら4つのCMSが最も多く利用されています。今後数か月以内に、パートナーと緊密に協力して、さらに関係性を構築していきます。</p>
+	<blockquote><em>Cloudflareと提携できることを、またCloudflare Pagesからこのことを新たに発表できることを喜ばしく思います。Sanityでは、プラットフォームでコンテンツを操作するユーザーに深い関心を持っています。Cloudflareの新しいDeploy Hooksを使用すると、開発者はコンテンツの変更に基づき、静的サイトのビルドの自動化を許可されます。これは、コンテンツ作成者にとって大きな改善です。これらを構造化コンテンツおよびGROQを利用したWebhookと組み合わせることで、お客様はこれらのビルドを行う時期について、戦略的に取り組むことができます。このリリースに参加できることをうれしく思います。コミュニティがSanityとCloudflareを使って何をビルドするのか、楽しみにしています。</em><br><em>- </em>Sanity.ioの共同創設者、Even Westvang</blockquote>
+	<p>PagesとSanityを使用してサイトを構築する方法については、<a href="https://www.sanity.io/blog/deploying-a-next-js-site-on-cloudflare-pages-with-webhooks" target="_blank">Sanityのビデオチュートリアル</a>をご覧ください！</p>
+	<blockquote><em>Strapiでは、Cloudflareとのパートナーシップにエキサイトしています。これにより開発者は、コンテンツチームの本番環境に変更をデプロイする際の複雑性を抽象化できます。StrapiのDeploy Hookなら、誰もが新しいコンテンツと更新を迅速かつ自律的に進められます。</em><br>- Strapi.ioのCEO、Pierre Burgy</blockquote>
+	<blockquote>この統合により、お客様はチームとより効率的かつ機能横断的に作業できます。マーケティングチームは、Contentfulを直接更新して、開発者がコードベースを更新することに依存することなく、デプロイを自動的にトリガーできます。だからこそ関係するすべてのチームのエクスペリエンスが向上し、生産性が向上します。<br>- Contentfulのテクニカルパートナーシップディレクター、Jeff Blattel</blockquote>
+	<h3 id="--1">開始する</h3>
+	<p>PagesプロジェクトをパートナーCMSに接続する方法の詳細については、<a href="https://developers.cloudflare.com/pages/platform/deploy-hooks" target="_blank"> Deploy Hooksのドキュメント</a>をご確認ください。今すぐ最初のプロジェクトをデプロイしましょう！</p>
+</div>

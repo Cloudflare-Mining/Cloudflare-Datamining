@@ -1,0 +1,66 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/05/Concurrent-Streaming.png" class="kg-image"></figure>
+	<p>Hoy nos complace presentar la aceleración simultánea de streaming, una nueva técnica para reducir la latencia de un extremo a otro del video en vivo en la web cuando se usa <a href="https://www.cloudflare.com/products/stream-delivery/" target="_blank">Stream Delivery</a>.</p>
+	<p>Examinemos en profundidad la latencia de streaming en vivo, por qué es importante y qué se ha hecho para optimizarla.</p>
+	<h3 id="-hasta-qu-punto-un-video-en-vivo-es-en-vivo-"><strong>¿Hasta qué punto un video “en vivo” es “en vivo”?</strong></h3>
+	<p>El streaming en vivo constituye una parte cada vez mayor de los videos en la web. Ya sea una transmisión de televisión, un programa de juegos en vivo o un aula en línea, los usuarios esperan que el video llegue de manera rápida y sin inconvenientes. Y la promesa de todo lo que es “en vivo” tiene que ver con la idea de que el usuario está mirando los eventos al mismo tiempo en que estos ocurren. Pero, ¿hasta qué punto se puede decir que un video de internet es “en tiempo real”?</p>
+	<p>La transmisión de un video en<em> </em>vivo en internet sigue siendo <em>difícil </em>y tiene mucha latencia:</p>
+	<ol>
+		<li>El origen de contenido graba el video y lo envía a un servidor de codificación;</li>
+		<li>El servidor de origen transforma este vídeo en un formato DASH, HLS o CMAF que se puede enviar a millones de dispositivos de manera eficiente;</li>
+		<li>Una CDN se utiliza, por lo general, para transmitir un video codificado a todo el mundo</li>
+		<li>Los reproductores del cliente decodifican el video y lo representan en la pantalla</li>
+	</ol>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/Content-Processing.jpg" class="kg-image"></figure>
+	<p>Y todo este proceso tiene una restricción de tiempo, ya que debe llevarse a cabo en pocos segundos, de lo contrario, la experiencia de video se verá afectada. El retraso total entre el momento en que se graba el video y el que se puede ver en el dispositivo de un usuario final se conoce como “latencia de extremo a extremo” (piense en ello como el tiempo que transcurre desde la lente de la cámara hasta la pantalla de su teléfono).</p>
+	<h3 id="env-o-segmentado-tradicional"><strong>Envío segmentado tradicional</strong></h3>
+	<p>Los formatos de video como DASH, HLS y CMAF dividen el video en archivos pequeños que se llaman “segmentos”. Por lo general, el segmento dura 6 segundos.</p>
+	<p>Si el reproductor de un cliente debe esperar 6 s para que se codifique un segmento completo, se envíe a través de una CDN y luego se decodifique, ¡la espera puede ser larga! Si usted quiere que el cliente cree un búfer de segmentos para proteger el envío contra interrupciones, lleva aún más tiempo. Un búfer de reproductor común para HLS es de 3 segmentos:</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/10/Buffering.png" class="kg-image">
+		<figcaption><em><em>Es posible que los clientes tengan que almacenar en búfer tres fragmentos de 6 segundos, introduciendo al menos 18 s de latencia</em></em></figcaption>
+	</figure>
+	<p>Al considerar los retrasos de codificación, resulta fácil ver por qué la latencia de streaming en vivo en internet ha sido, por lo general, de unos 20-30 segundos. Podemos hacerlo mejor.</p>
+	<h3 id="latencia-reducida-con-codificaci-n-de-transferencia-fragmentada"><strong>Latencia reducida con codificación de transferencia fragmentada</strong></h3>
+	<p>Una forma natural de resolver este problema es permitir que los reproductores del cliente comiencen a reproducir los fragmentos mientras se están descargando, o incluso mientras se están creando. Para que esto sea posible, se requiere una cooperación inteligente para codificar y enviar los archivos de una manera determinada que se conoce como “codificación fragmentada”. Esto implica la división de los segmentos en trozos más pequeños que se denominan “fragmentos”. La codificación fragmentada, por lo general, reduce la latencia en vivo a 5 o 10 segundos.</p>
+	<p>Esto puede resultar algo confuso, ya que la palabra “fragmento” puede significar dos cosas diferentes:</p>
+	<ol>
+		<li>Fragmentos CMAF o HLS, que son pequeños trozos de un segmento (por lo general de 1 s) que están alineados en fotogramas clave</li>
+		<li>Fragmentos HTTP, que son solo una forma de enviar cualquier tipo de archivo en la web</li>
+	</ol>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/10/Chunked-Encoding.png" class="kg-image">
+		<figcaption><em><em>La codificación fragmentada divide los segmentos en fragmentos más cortos</em></em></figcaption>
+	</figure>
+	<p>Los fragmentos HTTP son importantes porque los clientes web tienen una capacidad limitada para procesar flujos de datos. La mayoría de los clientes solo pueden trabajar con datos una vez que han recibido la respuesta HTTP completa, o al menos un fragmento HTTP completo. Mediante la codificación de transferencia fragmentada HTTP, permitimos que los reproductores de video comiencen a analizar y decodificar antes el video.</p>
+	<p>Los fragmentos del formato común de aplicaciones multimedia (CMAF) son importantes para que los decodificadores puedan <em>reproducir </em>los bits que realmente se encuentran en los fragmentos HTTP. Si el video no se codifica con cuidado, los decodificadores tendrían bits aleatorios de un archivo de vídeo que no se puede reproducir.</p>
+	<h3 id="las-cdn-pueden-introducir-almacenamiento-en-b-fer-adicional"><strong>Las CDN pueden introducir almacenamiento en búfer adicional</strong></h3>
+	<p>Hoy, el uso de la codificación fragmentada con HLS y CMAF está creciendo en toda la web. Parte de la excelencia de esta técnica se debe a que la codificación fragmentada HTTP es ampliamente compatible con la CDN: ha formado parte de la especificación HTTP durante 20 años.</p>
+	<p>La compatibilidad con la CDN es fundamental, ya que permite que el video en vivo de baja latencia se escale y llegue a audiencias de miles o millones de espectadores simultáneos, algo que actualmente es muy difícil de lograr con otros protocolos no basados en HTTP.</p>
+	<p>Lamentablemente, incluso si usted activa la fragmentación para optimizar el envío, su CDN puede estar contrarrestando la tarea con el almacenamiento en búfer de todo el segmento. Para entender el por qué, considere lo que sucede cuando muchas personas solicitan un segmento en vivo al mismo tiempo:</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/Bulk-Request.jpg" class="kg-image"></figure>
+	<p>Si el archivo ya está en caché, ¡excelente! Las CDN son excelentes para enviar archivos almacenados en caché a grandes audiencias. Pero, ¿qué sucede cuando el segmento aún no está almacenado en caché? Recuerde, este es el patrón de solicitud típico para el video en vivo.</p>
+	<p>Por lo general, las CDN pueden “transmitir con error de caché” desde el origen. Eso se parece a lo que se muestra a continuación:</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/Stream-On-Cache-Misse.jpg" class="kg-image"></figure>
+	<p>Pero una vez más, ¿qué sucede cuando varias personas solicitan el archivo al mismo tiempo? Las CDN, por lo general, necesitan llevar todo el archivo a la memoria caché antes de brindar servicio a más usuarios de visualizaciones:</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/10/One-at-a-Time.jpg" class="kg-image">
+		<figcaption><em><em>Solo un usuario de visualizaciones puede transmitir el video, mientras que el resto de los clientes esperan que el segmento se almacene en el búfer en la CDN</em></em></figcaption>
+	</figure>
+	<p>Este comportamiento es comprensible. Los centros de datos de la CDN están formados por muchos servidores. Para evitar la sobrecarga de los orígenes, estos servidores, por lo general, se coordinan entre sí mediante un “bloqueo de caché” (mutex) que permite que solo un servidor solicite un archivo determinado desde el origen en un momento determinado. Esto genera un efecto secundario: mientras un archivo se lleva a la memoria caché, no se puede brindar servicio a ningún usuario que no sea el primero que emitió la solicitud. Lamentablemente, este bloqueo de caché también contrarresta el objetivo de usar codificación fragmentada.</p>
+	<p>Resumen de lo analizado hasta ahora:</p>
+	<ul>
+		<li>La codificación fragmentada divide los segmentos de video en partes más pequeñas</li>
+		<li>Esto puede reducir la latencia de extremo a extremo, ya que permite que los reproductores obtengan y descodifiquen los fragmentos, incluso mientras los segmentos se generan en el servidor de origen</li>
+		<li>Algunas CDN neutralizan las ventajas de la codificación fragmentada mediante el almacenamiento en búfer de archivos completos en CDN antes de que se envíen a los clientes</li>
+	</ul>
+	<h3 id="soluci-n-de-cloudflare-aceleraci-n-simult-nea-de-streaming"><strong>Solución de Cloudflare: Aceleración simultánea de streaming</strong></h3>
+	<p>Como seguramente ha adivinado, creemos que podemos hacer mejor las cosas. En pocas palabras, ahora podemos enviar archivos sin almacenar en caché a varios clientes de manera simultánea cuando extraemos el archivo una vez desde el servidor de origen.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/Simultaneously.jpg" class="kg-image"></figure>
+	<p>Aparentemente, esto es un simple cambio, sin embargo, se deben tener en cuenta muchas sutilezas para hacerlo de manera segura. Hemos realizado cambios profundos en nuestra infraestructura de almacenamiento en caché para eliminar el bloqueo de caché y permitir que varios clientes puedan hacer una lectura segura desde un único archivo mientras este se sigue escribiendo.</p>
+	<p>Y lo mejor es que ¡ahora todo Cloudflare funciona de esta manera! No es necesario adherirse ni hacer un cambio de configuración para obtener el beneficio.</p>
+	<p>Hemos lanzado esta función hace un par de meses y hasta ahora estamos muy satisfechos con los resultados. Medimos el éxito mediante el “tiempo de espera de bloqueo de caché”, es decir, cuánto tiempo debe esperar una solicitud para otras solicitudes, un componente directo del tiempo hasta el primer byte. &nbsp;Un cliente de OTT observó que esta métrica cae de 1.5 s en P99 a casi 0, tal como se esperaba:</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/Speed-Improvement.png" class="kg-image"></figure>
+	<p>Esto se traduce directamente en una mejora de 1.5 segundos en la latencia de extremo a extremo. ¡El video en vivo ahora es más directo!</p>
+	<h3 id="conclusi-n"><strong>Conclusión</strong></h3>
+	<p>Las nuevas técnicas, como la codificación fragmentada, han revolucionado el envío en vivo, lo que permite a los editores ofrecer el envío de videos en vivo de baja latencia en proporción a la necesidad. La aceleración simultánea de streaming ayuda a desbloquear la potencia de esta técnica en su CDN, lo que podría ahorrar segundos valiosos de latencia de extremo a extremo.</p>
+	<p>Si le interesa usar Cloudflare para la transmisión de videos en vivo, <a href="https://www.cloudflare.com/plans/enterprise/contact/" target="_blank">comuníquese con nuestro equipo de ventas empresariales</a>.</p>
+	<p>Y si le interesa trabajar en proyectos como este y ayudarnos a mejorar la transmisión de videos en vivo para toda la internet, únase a nuestro <a href="https://www.cloudflare.com/careers/departments/engineering/" target="_blank">equipo de ingeniería</a>.</p>
+</div>

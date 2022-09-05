@@ -1,0 +1,162 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/Magic-IoT.png" class="kg-image"></figure>
+	<p>악용 가능한 취약점이 있는 안전하지 않은 장치가 집에 있을 수 있습니다. 사무실도 마찬가지입니다. 아마 자녀의 학교도 마찬가지일 것입니다. 카메라, 프린터, 스피커, 액세스 제어 리더, 온도 조절 장치, 심장 모니터까지... 이러한 모든 장치는 사물 인터넷(IoT) 장치이거나 그러한 장치일 수 있습니다. 이러한 IoT 장치는 현대 생활의 필수품이 되어 편리하게 사용할 수 있고 환경을 관리하는 데 도움이 되지만, 안전하지 않은 것으로 악명이 높습니다. 안전 문제는 장치 하드웨어에 제약이 있고 계산 용량이 제한되어 있기 때문이며, 종종 액세스 제어 최소화, 하드 코딩된 비밀번호, 원격 패치 불가능 등으로 이어집니다.</p>
+	<p>이 위협의 현실은 극적으로 펼쳐질 수 있습니다. 예를 들어 <a href="https://blog.cloudflare.com/inside-mirai-the-infamous-iot-botnet-a-retrospective-analysis/">2016년 Mirai 봇넷 공격 당시</a>, 해커는 수백만 개의 IoT 장치를 악용하여 Twitter, Guardian, CNN을 포함한 인터넷의 상당 부분을 다운시킨 DDoS 공격을 실행할 수 있는 대규모 봇넷 네트워크로 만들었습니다. 이러한 유형의 공격은 드문 것이 아닙니다. Cloudflare는 2021년 3월 이러한 현실을 직접 경험했는데, 이때 물리적 보안 카메라에 대한 잠재적인 벤더 중 하나인 Verkada가 손상을 입었습니다. 이 사건 당시 해커는 Verkada의 내부 지원 도구에 액세스하여 카메라를 원격으로 관리할 수 있었고, 이를 통해 네트워크의 다른 장치로의 내부망 이동을 시도할 수 있었습니다. 다행히도 Cloudflare에서 Zero Trust 모델을 사용하여 <a href="https://blog.cloudflare.com/about-the-march-8-9-2021-verkada-camera-hack/">해커의 내부망 이동을 방지했고</a>, 이 사건은 카메라에만 영향을 미쳤습니다.</p>
+	<p>하지만 영향을 받지 않더라도, 우리는 보안 사고를 보안 제품을 한 단계 더 발전시키기 위한 과제로 간주합니다. 그래서 자체적으로 질문을 제기했습니다. 생산 시스템과 동일한 네트워크에서도 IoT 장치 자체를 보호하기 위해 자체 제품을 사용하여 안전하지 않은 것으로 악명 높은 이러한 장치의 손상을 격리할 수 있을까? Cloudflare One을 사용할 경우 그 대답은 '그렇다'입니다.</p>
+	<h3 id="-"><strong>현재의 솔루션: 복잡성이 있는 보안</strong></h3>
+	<h3 id="zero-trust-">Zero Trust 모델</h3>
+	<p>앞서 언급했듯이 Cloudflare는 Zero Trust 모델을 사용하므로 IoT 손상의 영향을 받지 않았습니다. Cloudflare의 회사 사무실과 같이 환경적 고려 사항이 적합한 경우 기업 네트워크는 Zero Trust 모델을 통해 보호될 수 있습니다. 네트워크의 다른 부분을 공격하려면 액세스 인증이 필요하므로 내부망 이동이 방지됩니다. IoT 장치 자체가 격리되어 있지 않다는 점을 감안하는 경우 세심한 주의를 기울여 다른 모든 네트워크 진입점을 Zero Trust Access 뒤에 두어야 합니다.</p>
+	<p>그렇지만 모든 환경을 그렇게 부지런히 제어할 수 있는 것은 아닙니다. 데이터 센터를 예로 들어 보겠습니다. 다른 벤더의 존재, 오래된 생산 네트워크의 복잡성, 기계 간 연결의 보급은 (액세스 리더 또는 카메라와 같은) IoT 장치를 설치할 때 우리 회사 사무실에서 우리가 할 수 있는 것과 동일한 Zero Trust 보증을 제공할 수 없음을 의미합니다. 환경이 점점 더 복잡해짐에 따라 IoT 장치에서 성공적인 내부망 이동을 방지하기 위해 Zero Trust 모델을 성공적으로 배포하는 것은 더욱 어려워질 뿐입니다.</p>
+	<h3 id="vlan">VLAN</h3>
+	<p>많은 기업이 생산과 완전히 분리된 네트워크에 IoT 장치를 배포하며, 이때 대역 외 네트워크 또는 VLAN을 활용합니다. VLAN은 계층 2에서 격리를 생성하지만 계층 3 트래픽을 제한하기 위해 업스트림 라우팅 인터페이스에 액세스 목록이 필요합니다. 또한 네트워크 관리자 다수는 수신 및 송신 트래픽에 대한 액세스 목록과 성공한 연결과 거부된 연결 모두에 대한 로깅과 같은 보다 엄격한 보장을 위한 추가 구성을 원합니다. 이러한 액세스 목록의 관리는 빠르게 복잡해질 수 있습니다. 각각의 새로운 네트워크는 보호, 패치, 감지해야 하는 또 다른 환경입니다.</p>
+	<p>적절하게 구성되지 않는 경우 VLAN의 보안 보장이 쉽게 약화될 수 있습니다. 두 개의 개별 VLAN을 갖춘 네트워크를 살펴보겠습니다. 액세스 목록이 두 개의 스위치 각각에 일관되게 적용되지 않는 경우 하나의 VLAN에서 해킹된 장치가 다른 VLAN 아래의 장치로 쉽게 전환될 수 있습니다. 네트워크 관리자는 스위치별로 <a href="https://en.wikipedia.org/wiki/Private_VLAN#:~:text=Private%20VLAN%2C%20also%20known%20as,ports%2C%20and%20a%20single%20uplink." target="_blank">사설 VLAN</a>을 사용할 수 있지만, 이는 다시 복잡성을 추가할 뿐입니다.</p>
+	<p>액세스 목록 규칙에서 각 사이트에서 사용되는 장비 유형에 이르기까지의 일관된 구성과 아키텍처 선택은 VLAN을 성공적으로 배포하여 내부망 이동을 방지하는 데 필요합니다. 사이트 수가 증가하고 환경의 풋프린트가 확장됨에 따라 이는 더욱 까다로워질 뿐입니다.</p>
+	<h3 id="cloudflare-">Cloudflare 솔루션</h3>
+	<p>당사는 자체 제품을 사용하여 별도 네트워크에 배포하지 않고 장치를 격리합니다. 따라서 추가 하드웨어 없이 보안을 보장합니다. 이는 네트워크 격리에 대한 서버리스 및 인프라리스 솔루션입니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/Magic-x-IoT.png" class="kg-image"></figure>
+	<p>이러한 일이 어떻게 이루어질까요? 하드웨어 장치(개념 증명의 경우 Verkada 카메라)는 PoE(Power over Ethernet) 스위치에 연결되며, 이는 Anycast GRE를 통해 Cloudflare 전역 네트워크로 트래픽을 터널링하도록 구성됩니다. 거기에서 Cloudflare 대시로부터 규칙을 구성하여 송신 규칙을 작성하며, 이로써 아웃바운드 트래픽이 원래 있어야 할 곳으로만 가도록 합니다. 따라서 내부망 이동이 방지됩니다.</p>
+	<p>이 아키텍처를 통해 네트워크 관리자는 정책을 수신 및 송신 트래픽에 즉시 적용하여 단일 대시보드에서 계층 3 이상의 트래픽을 제어할 수 있습니다. 이 아키텍처는 변화하는 환경에 적응할 수 있는 간단한 ‘설정하고 잊어버리기(set-it-and-forget-it)’ 솔루션을 제공합니다. 보호는 벤더를 불문하고, 공통 표준을 사용하며, 로그 수집은 자동입니다. 다른 내부망 이동 보호 방법과 비교할 때, Cloudflare는 IoT 장치로 모든 환경을 안전하게 관리하는 데 필요한 뛰어난 용이성, 적응성, 보안 보장을 제공합니다.</p>
+	<!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-ycr8 {
+			background-color: #ffffff;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-v0hj {
+			background-color: #efefef;
+			border-color: inherit;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-dvid {
+			background-color: #efefef;
+			border-color: inherit;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-c6of {
+			background-color: #ffffff;
+			border-color: inherit;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-3xi5 {
+			background-color: #ffffff;
+			border-color: inherit;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-i81m {
+			background-color: #ffffff;
+			text-align: center;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" style="undefined;table-layout: fixed; width: 721px">
+		<colgroup>
+			<col style="width: 340px">
+			<col style="width: 125px">
+			<col style="width: 125px">
+			<col style="width: 125px">
+		</colgroup>
+		<thead>
+			<tr>
+				<th class="tg-dvid"></th>
+				<th class="tg-v0hj">Zero Trust</th>
+				<th class="tg-v0hj">VLAN</th>
+				<th class="tg-v0hj">Cloudflare One</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-c6of"><span style="font-weight:400;font-style:normal">적절한 구성으로 내부망 이동 방지</span></td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">✅</span></td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">✅</span></td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">✅</span></td>
+			</tr>
+			<tr>
+				<td class="tg-c6of">하드웨어 필요 없음</td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">✅</span></td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">❌</span></td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">✅</span></td>
+			</tr>
+			<tr>
+				<td class="tg-c6of">자동 로깅</td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">✅</span></td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">❌</span></td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">✅</span></td>
+			</tr>
+			<tr>
+				<td class="tg-c6of">IoT 장치 자체를 격리</td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">❌</span></td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">✅</span></td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">✅</span></td>
+			</tr>
+			<tr>
+				<td class="tg-c6of">단일 구성 지점</td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">❌</span></td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">❌</span></td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">✅</span></td>
+			</tr>
+			<tr>
+				<td class="tg-c6of">장치의 수에 따라 복잡성이 증가하지 않음</td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">❌</span></td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">❌</span></td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">✅</span></td>
+			</tr>
+			<tr>
+				<td class="tg-c6of">장치 불문</td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">❌</span></td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">❌</span></td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">✅</span></td>
+			</tr>
+			<tr>
+				<td class="tg-ycr8">CF 네트워크에서의 속도 및 성능 이점</td>
+				<td class="tg-i81m"><span style="font-weight:400;font-style:normal">❌</span></td>
+				<td class="tg-i81m"><span style="font-weight:400;font-style:normal">❌</span></td>
+				<td class="tg-i81m"><span style="font-weight:400;font-style:normal">✅</span></td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: html-->
+	<h3 id="--1">다음은 무엇일까요?</h3>
+	<p>2021년 4분기에 우리는 Cloudflare One 아키텍처 뒤에서 생산 네트워크로의 전환을 시도하는 악성 장치를 복제하여 이 설정을 테스트하기 위해 신뢰할 수 있는 침투 테스트 파트너를 고용했습니다. 그들은 내부망 이동을 할 수 없었고, 이 아키텍처는 작동했습니다.</p>
+	<p>이 아키텍처가 테스트되었으므로, 우리는 가장 신뢰하는 자산을 안전하게 유지하기 위한 물리적 보안 이니셔티브의 일부로 데이터 센터 사이트에서 내부적으로 Cloudflare One의 롤아웃 공식화를 시작할 예정입니다.</p>
+	<p>기업에서 Cloudflare One을 사용하는 방법에 대한 자세한 정보는 영업 팀에 문의하십시오.</p>
+</div>

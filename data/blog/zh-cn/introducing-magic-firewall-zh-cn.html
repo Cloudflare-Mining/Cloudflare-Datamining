@@ -1,0 +1,97 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/Image_20201016_072224.jpeg" class="kg-image"></figure>
+	<p>今天，我们很高兴地发布 Magic Firewall™，这款通过 Cloudflare 提供的网络级防火墙能够保护您的企业安全。Magic Firewall 为您的远程用户、分支机构、数据中心和云基础结构提供安全保障。最重要的是，它与 Cloudflare One™ 深度集成，让您在一个一站式视图中洞悉网络中的所有情况。</p>
+	<p>Cloudflare Magic Transit™ 采用与我们用来保障自有全球网络安全的相同 DDoS 保护技术，为 IP 子网提供保护。这有助于确保您的网络免受攻击并保持可用，而且还能用 Cloudflare 网络来取代存在限制的物理设备。</p>
+	<p>不过，企业内部仍然遗留了一些硬件来承担其职能：防火墙。网络需要的不仅仅是防御 DDoS 攻击。管理员需要一种方式，为所有进出网络的流量设置策略。我们希望，Magic Firewall 能帮助您的团队淘汰那些网络防火墙设备，并将这些负担转移到 Cloudflare 全球网络。</p>
+	<h3 id="-">防火墙设备管理令人痛苦</h3>
+	<p>网络防火墙一直都笨手笨脚。不仅成本高昂，而且受到自身硬件限制的桎梏。如果需要更多 CPU 或内存，您必须添置更多设备。如果容量不足，整个网络都会受苦，直接影响力图完成工作的员工。为进行弥补，网络运营和安全团队不得不购买超出需求的容量，被迫支付多余的费用。</p>
+	<p>我们从持续遇到容量挑战的 Magic Transit 客户那里听到了这个问题：</p>
+	<blockquote><em>“</em>我们不断地耗尽内存，并达到防火墙连接限制。这是一个巨大的问题。<em>”</em></blockquote>
+	<p>网络运维人员将来自不同供应商的解决方案拼凑在一起，混合和搭配不同的功能，而且还要努力使策略在整个网络中保持同步。结果是烦恼变得更多，成本也更高。</p>
+	<h3 id="--1">解决方案不是添加硬件</h3>
+	<p>后来，一些组织转向更多供应商购买额外的硬件，以管理他们拼凑在一起的防火墙硬件。这样一来，团队必须在更多平台之间平衡硬件的换代、更新和退役管理。这些创可贴式解决方案无法解决根本的问题：如何创建整个网络的单一视图，以便洞悉正在发生的情况（不论好坏）并在全局范围内即时应用策略？</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/10/image2-18.png" class="kg-image">
+		<figcaption>传统防火墙架构</figcaption>
+	</figure>
+	<h3 id="magic-firewall-">Magic Firewall 简介</h3>
+	<p>我们推出的 Magic Firewall 不是创可贴式解决方案，而是一套综合的网络过滤解决方案。与旧式设备不同，Magic Firewall 在 Cloudflare 网络中运行。这个网络可以随时根据客户需求变化而扩展或收缩。</p>
+	<p>在我们的网络中运行还可带来更多好处。为执行防火墙操作，许多客户将网络流量回传到单个阻塞点，从而增加了延迟。Cloudflare 在全球 200 个城市运营数据中心，每个入网点都能提供相同的解决方案。这使得 Cloudflare Magic Firewall 引擎在距离客户 100 毫秒以内的位置运行，成为区域办事处和数据中心的依靠。</p>
+	<h3 id="-cloudflare-one-">与 Cloudflare One 集成</h3>
+	<p>Cloudflare One 包含多种产品，让您可以将具有一致安全性控制的单个过滤引擎应用于网络的全部，而不是局部。组织希望对离开网络的流量应用某些类型的控制，同样的控制也应该应用到离开您的设备的流量。</p>
+	<p>Magic Firewall 将与您已在使用的 Cloudflare 功能集成。例如，离开网络外部端点的流量通过 Cloudflare WARP客户端到达 Cloudflare，并在那里由 Gateway 应用您的团队为网络级过滤配置的相同规则。分支机构和数据中心可以通过 Magic Transit 使用相同的规则集进行连接。这样，您便能获得整个网络的一站式概览，不必在多个设备和供应商之间搜寻信息。</p>
+	<h3 id="--2">如何工作？</h3>
+	<p>那么，什么是<em> </em>Magic Firewall？Magic Firewall 是一种通过服务式解决方案替换过时的本地网络防火墙的方法，将您的边界推向边缘。我们已通过 Magic Transit 让您在我们的边缘应用防火墙规则，但在以前，添加或更改规则的过程会涉及与您的客户团队或 Cloudflare 支持人员合作。Magic Firewall 的第一个版本将在几个月后面向公众提供，届时所有的 Magic Transit 客户都能以 Cloudflare 的规模完全自助地应用静态 OSI 第 3 层和第 4 层缓解措施。</p>
+	<!--kg-card-begin: markdown-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+			margin: 0px auto;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-afol {
+			background-color: #FFF;
+			color: #36393A;
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg">
+		<thead>
+			<tr>
+				<th class="tg-0lax"><img src="https://blog.cloudflare.com/content/images/2020/10/image1-23.png" alt="Cloudflare applies firewall policies at every data center" width="340" height="213"></th>
+				<th class="tg-0lax"><img src="https://blog.cloudflare.com/content/images/2020/10/image3-18.png" alt="Meaning you have firewalls applying policies across the globe" width="340" height="213"></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-afol">Cloudflare 在每个数据中心应用防火墙策略</td>
+				<td class="tg-afol">意味着您拥有在全球范围内应用策略的防火墙</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<p></p>
+	<p>Magic Firewall 的第一个版本将着重于静态缓解措施，允许您设置一组标准的规则并应用到整个网络，不论是云端的设备或应用程序，还是分支机构内的员工设备。您将能够基于以下条件表达允许或阻止规则：</p>
+	<ul>
+		<li>协议</li>
+		<li>来源或目的地 IP 及端口</li>
+		<li>数据包长度</li>
+		<li>位域匹配</li>
+	</ul>
+	<p>规则可以用 <a href="https://www.wireshark.org/docs/wsug_html_chunked/ChWorkBuildDisplayFilterSection.html" target="_blank">Wireshark 语法</a>编写，这是网络世界中常用的域特定语言，也是我们在其他产品中使用的相同语法。使用这种语法，您可以轻松地制定极其强大的规则，精确地允许或拒绝任何流量进出您的网络。如果您怀疑网络边界内部或外部有不良行为者，只需登录仪表板并阻止其流量便可。几秒钟后，便可将规则推送到全球，从而在边缘阻止威胁。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image4-13.png" class="kg-image"></figure>
+	<p>防火墙配置应该简便，并且功能强大。使用 Magic Firewall 时，您可以通过便捷的 UI 来配置规则，实现复杂的逻辑。或者，只需使用 Wireshark 过滤器语法手动键入过滤规则并进行配置。不想操作 UI？您可以通过 API 轻松添加规则。</p>
+	<h3 id="--3">下一步是什么？</h3>
+	<p>查看数据包还不足够… 即使有了防火墙规则，团队仍需要了解网络中 实际发生的情况：这些数据流内部发生了什么？这是合法的流量，还是有恶意行为者在我们网络内部或外部干坏事？将 Cloudflare 部署到与您的任何资产进行交互的任何两个行为者之间（不论员工设备还是对互联网公开的服务），可以使我们在任何地方执行任何策略，无论流量来自何处或其内部包含什么。基于流量类型应用策略指日可待，而且我们也计划在不久之后增加其他功能，以基于数据流内部的情况自动检测入侵事件。</p>
+	<p>我们为这一新旅程感到兴奋。借助 Cloudflare One，我们正在重塑企业网络的新面貌。我们全面集成了访问管理、安全功能和性能：同时面向网络的访问者，以及网络内部的所有人。所有这些都建立在 <a href="https://blog.cloudflare.com/our-network-cloudflare-one">#BuiltForThis</a> 的网络之上。</p>
+	<p>我们将从现有的 Magic Transit 客户开始，限量开放 Magic Firewall 的 Beta 版测试。如果您有兴趣，请<a href="https://www.cloudflare.com/lp/magic-firewall-beta/" target="_blank">告诉我们</a>。</p>
+</div>

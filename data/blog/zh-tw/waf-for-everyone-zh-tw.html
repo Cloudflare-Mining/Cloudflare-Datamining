@@ -1,0 +1,39 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image2-26.png" class="kg-image"></figure>
+	<p>在 Cloudflare，我們喜歡顛覆性想法。這些想法與我們的核心理念相輔相成，即安全應人人參與，從而實現更好、更安全的網際網路。</p>
+	<p>這不是空話。例如，早在 2014 年，我們就宣佈推出 <a href="https://blog.cloudflare.com/introducing-universal-ssl/">Universal SSL</a>。一夜之間，我們為超過 100 萬個網際網路資產提供 SSL/TLS 加密，未收取任何費用，也無需設定憑證。這不僅對我們的客戶有好處，還能讓使用網路的每個人都受益。</p>
+	<p>2017 年，我們宣佈推出<a href="https://blog.cloudflare.com/unmetered-mitigation/">非計量 DDoS 緩解</a>。我們從未要求客戶為 DDoS 頻寬付費，因為我們認為這不對，但我們花費了一些時間才實現可為所有人（無論是否為付費客戶）提供完全非計量緩解的網路規模。</p>
+	<p>不過，我經常思考這樣一個問題：我們是如何做到這一點的？答案真的很簡單。為實現此目標，我們開發了出色、高效、可擴展的技術，這讓我們能夠保持較低的成本。</p>
+	<p><em><strong>今天，我們同樣對所有 Cloudflare 方案免費提供 Cloudflare WAF (Web 應用程式防火牆) 受管規則集。</strong></em></p>
+	<h3 id="-">為什麼這樣做呢？</h3>
+	<p>備受矚目的漏洞對整個網際網路具有重大影響，影響著各種規模的組織。我們<a href="https://blog.cloudflare.com/tag/log4j/">最近在 Log4J 上見證了這一點</a>，但在此之前，<a href="https://blog.cloudflare.com/inside-shellshock/">Shellshock</a> 和 <a href="https://blog.cloudflare.com/tag/heartbleed/">Heartbleed</a> 等漏洞也在網際網路上留下了傷痕。</p>
+	<p>小型應用程式擁有者和團隊並非總是有時間更新快速發展的安全相關修補程式，導致許多應用程式遭受入侵及/或用於惡意用途。</p>
+	<p>在 Cloudflare 代理背後有數百萬網際網路資產，我們有責任協助確保網路安全。我們在對待 Log4J 時正是這樣做的，我們針對所有流量<a href="https://blog.cloudflare.com/zh-tw/cve-2021-44228-log4j-rce-0-day-mitigation-zh-tw/">部署緩解規則</a>，包括免費區域在內。現在，我們透過在新的 WAF 引擎之上對所有方案提供 Cloudflare 免費受管規則集，來正式履行我們的承諾。</p>
+	<h3 id="--1">什麼時候開始這樣做呢？</h3>
+	<p>如果您使用的是免費方案，那麼您已經受到保護。在接下來的幾個月中，我們所有的免費區域方案使用者還可以存取儀表板中的 Cloudflare WAF 使用者介面，並能夠部署和設定新規則集。此規則集將為 Shellshock 和 Log4J 等備受矚目的漏洞提供緩解規則。</p>
+	<p>若要存取我們更廣泛的 WAF 規則集 (Cloudflare 受管規則、Cloudflare OWASP 核心規則集和 Cloudflare 洩露憑證檢查規則集) 以及進階 WAF 功能，客戶仍需升級至 PRO 或更高版本的方案。</p>
+	<h3 id="--2">挑戰</h3>
+	<p>Cloudflare 全球網路每秒可代理超過 3200 萬個 HTTP 請求，因此對每個請求執行 WAF 並非易事。</p>
+	<p>WAF 透過執行規則集 (有時稱為簽章) 來保護所有 HTTP 請求元件，包括正文，這些規則會尋找可能代表惡意負載的特定模式。這些規則的複雜程度各不相同，您擁有的規則越多，系統就越難最佳化。此外，許多規則將利用 Regex 功能，讓撰寫者執行複雜的比對邏輯。</p>
+	<p>所有這一切都需要在延遲影響可以忽略不計的情況下發生，因為安全性不應伴隨效能損失，許多應用程式擁有者選擇 Cloudflare 正是為了獲得效能優勢。</p>
+	<p>透過充分利用我們新的邊緣規則引擎，並在此基礎之上<a href="https://blog.cloudflare.com/zh-tw/new-cloudflare-waf-zh-tw/">建置全新的 WAF</a>，我們已經能夠達到令人滿意的效能和記憶體里程碑，並讓我們能夠為大眾提供良好的基準 WAF 保護。進入新的 Cloudflare 免費受管規則集。</p>
+	<h3 id="-cloudflare-">免費 Cloudflare 受管規則集</h3>
+	<p>此規則集會自動部署在任何新的 Cloudflare 區域，並且經過專門設計，可在非常廣泛的流量類型中將誤報率降至最低。如有必要，客戶將能夠停用規則集，或設定流量篩選或個別規則。截至今天，規則集包含以下規則：</p>
+	<ul>
+		<li>與 URI 和 HTTP 標頭中的承載相符的 Log4J 規則；</li>
+		<li>Shellshock 規則；</li>
+		<li>與非常常見的 WordPress 漏洞相符的規則；</li>
+	</ul>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/03/image1-28.png" class="kg-image"></figure>
+	<p>每當規則相符時，將在「安全概觀」索引標籤中產生一個事件，允許您檢查請求。</p>
+	<h3 id="--3">部署與設定</h3>
+	<p>對於所有新的免費區域，將會自動部署規則集。這些規則在 Cloudflare 網路中經過實戰測試，可以安全地部署在大多數開箱即用的應用程式上。在任何情況下，客戶都可以透過以下方式進一步設定規則集：</p>
+	<ul>
+		<li>將所有規則覆寫至 LOG 或其他動作。</li>
+		<li>僅將特定規則覆寫至 LOG 或其他動作。</li>
+		<li>完全停用規則集或任何特定規則。</li>
+	</ul>
+	<p>所有選項都可以透過儀表板輕鬆存取，但也可以透過 API 執行。關於如何設定規則集的文件，一旦在 UI 中可用，即可在我們的<a href="https://developers.cloudflare.com/waf/managed-rulesets/" target="_blank">開發人員站點</a>上找到。</p>
+	<h3 id="--4">接下來呢？</h3>
+	<p>只要發現相關的廣泛漏洞，Cloudflare 即會更新 Cloudflare 免費受管規則集。規則集的更新會發佈在我們的<a href="https://developers.cloudflare.com/waf/change-log" target="_blank">變更記錄</a>上，以便客戶可以隨時瞭解任何新規則。<br>我們喜歡開發炫酷的新技術，但我們也喜歡使其廣泛可用且簡單易用。能透過 WAF 讓每個人的網路更安全，我們欣喜不已，且不會收取您一分錢。如果您有興趣開始使用，<a href="https://dash.cloudflare.com/sign-up" target="_blank">只需前往這裡</a>，即可註冊我們的免費方案。</p>
+</div>

@@ -1,0 +1,84 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/1-14.png" class="kg-image"></figure>
+	<p>Cloudflare <a href="https://www.cloudflare.com/zh-tw/waf/" target="_blank">Web Application Firewall (WAF) </a>每天封鎖 570 多億次網路威脅，相當於每秒封鎖 65 萬個 HTTP 請求。用來篩選這些流量的原始程式碼是由 Cloudflare 現任技術長編寫的。WAF 迄今已獲無數好評，包括<a href="https://www.cloudflare.com/zh-tw/gartner-mq-waf-2020/" target="_blank">在 2020 年度 Gartner Magic Quadrant WAF 評測中獲得「執行能力」最高分</a>。</p>
+	<p>由於我們非常重視在程式碼不再便於維護、效能下降或無法擴展時替換程式碼，我們經常重寫 Cloudflare 堆疊的關鍵部份。這樣做很有必要，因為我們的極速發展使得過去的解決方案逐漸失去效用。一段時間以來，我們努力將 <a href="https://www.youtube.com/watch?v=nlt4XKhucS4" target="_blank">John 編寫的原始 LuaJIT 程式碼</a>替換為用 Rust 編寫的新程式碼，並對使用者介面進行改進。</p>
+	<p>我們很高興推出全新的 Cloudflare Web Application Firewall。</p>
+	<p>自即日起，Cloudflare 上 10% 的新建帳戶在開通 Pro 或以上方案時即可使用全新 WAF。這個比例將於四月份增加到 100%，然後啟動現有客戶的遷移工作。Enterprise 客戶可以聯繫其客戶團隊來提前遷移。</p>
+	<h3 id="-">有何變化</h3>
+	<p>Web Application Firewall (WAF) 是 Cloudflare 平台的核心組成部份。作為組合中最常用的一款產品，我們從大規模執行中得到了許多意見反應和經驗教訓，在這次重大反覆項目中給我們提供了指引。新版 WAF 提供：</p>
+	<ul>
+		<li><em><strong>更佳的規則瀏覽和設定</strong> </em>- 一鍵輕鬆部署但不失強大功能的工具：進階篩選、大量編輯、規則標記等。打開所有 Wordpress 規則、將所有 Cloudflare 託管規則設為 LOG 或找出哪些規則未在運作，如今都易如反掌。</li>
+		<li><em><strong>全新比對引擎</strong></em> - 用 Rust 語言編寫，支援 <a href="https://blog.cloudflare.com/how-we-made-firewall-rules/">wirefilter</a> 語法，這也是自訂防火牆規則所用的語法。這個引擎讓我們能夠更快部署託管規則，並且可以對更多流量部署 WAF，進而擴展到下一個級別。與此同時，效能和安全性也得以改善。</li>
+		<li><em><strong>更新的規則集</strong> - </em>新版 WAF 隨附更新的規則集，將規則狀態與操作分離，提供更佳的控制。Cloudflare OWASP 核心規則集也基於 OWASP 核心規則集最新版本（截至撰寫時為 v3.3）進行了改進，與目前版本相比，增加了 Paranoia Level 並改善了誤判率。</li>
+		<li><em><strong>全域設定</strong> -</em> 在您的整個帳戶部署相同的設定。以規則集的形式對規則進行分組，並使用原生版本控制和復原能力。</li>
+	</ul>
+	<p>新版 WAF 有很多讓我們感到興奮的特徵，以上只是一小部份，每一條都值得另文詳述，這裡先介紹一些亮點。</p>
+	<h3 id="--1">更好的規則瀏覽與設定</h3>
+	<!--kg-card-begin: markdown-->
+	<p>Cloudflare 託管規則集（包括 Cloudflare Specials<sup>1</sup> 群組）是 WAF 的重要組成部份之一。其中包括數百條 Cloudflare 提供和維護的規則。預設設定旨在實現極低誤判率，同時為所有 Web 應用程式提供極佳的安全基線。不過，為獲得最佳的安全狀態，您應該啟用盡可能多的規則。也就是說，有時候必須深入研究並根據基礎應用程式來自訂規則集行為。</p>
+	<!--kg-card-end: markdown-->
+	<p>對於新版 WAF，我們希望能借助預設設定來一鍵啟用託管規則集，同時為感興趣的使用者提供更佳的設定體驗。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/2-8.png" class="kg-image" alt="The new WAF UI. One click to turn on the Cloudflare Managed Ruleset and the Cloudflare OWASP ModSecurity Core Ruleset."></figure>
+	<p>新版 WAF 使用者介面。一鍵開啟 Cloudflare 託管規則集和 Cloudflare OWASP ModSecurity 核心規則集。</p>
+	<p>目前，若要啟用 Cloudflare 託管規則集，您需要開啟全域 WAF 開關並設定任何感興趣的規則群組。頁面上會直接顯示包括 WordPress、Joomla、PHP 等在内的 10 個規則群組，並附有切換開/關。在這個使用者介面中，您要分別檢查具體的規則，否則無法輕鬆篩選或設定各個規則群組中的規則。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/3-4.png" class="kg-image" alt="The current (old) Managed Ruleset WAF UI. Clicking on a group displays a list of rules in each group."></figure>
+	<p>目前（舊版）託管規則集 WAF 使用者介面。點選一個分組可顯示這個群組中規則的清單。</p>
+	<p>儘管使用者介面使用簡單，但無法快速執行常見的任務。例如，<em>顯示所有關閉的規則</em>，或者<em>顯示所有緩解 XSS 攻擊的規則</em>。現在，所有規則都顯示在一個表格中，而按照規則狀態、動作和標記進行篩選只要按一下即可達成。規則標記也代替了分組，一條規則可有一個或多個標記，大大提高了系統的靈活性。標記將用於：</p>
+	<ul>
+		<li>標識某條規則是否適用於特定軟體元件</li>
+		<li>標識攻擊向量（例如 XSS、SQLi、RCE）</li>
+		<li>標識特定於 CVE 的規則</li>
+	</ul>
+	<p>最後，除了單規則內聯控制項外，我們還允許大量編輯控制項，藉此更快地根據特定使用案例來調整設定。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/4-1.png" class="kg-image" alt="The new WAF ruleset browser. Bulk options, tags and filtering components in one place."></figure>
+	<p>新版 WAF 規則集瀏覽器。大量選項、標記和篩選元件彙集於一處。‌‌</p>
+	<p>我們預計可用規則數量將增加，並且為了讓更多使用者採用自訂設定，我們新增了一個部署設定變更時的檢閲螢幕。在這個螢幕中，您可以輕鬆查看相對預設值的任何變化，並可選擇復原。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/5-1.png" class="kg-image" alt="Ruleset deployment review screen. From here you can review any custom configuration overrides from defaults."></figure>
+	<p>規則集部署檢閱螢幕。在此，可以檢閱自訂設定相對於預設值的修改。</p>
+	<h3 id="--2">全新比對引擎</h3>
+	<p>目前負責執行託管規則集的 Cloudflare WAF 是以 LuaJIT 編寫，並作為一個 NGINX 模組部署。規則語法採用 <a href="https://github.com/SpiderLabs/ModSecurity" target="_blank">ModSecurity</a> 所實現語法的一個超集合，增加了特定於 Cloudflare 實作的功能。</p>
+	<p>我們希望透過遷移到新引擎來實現以下目的：</p>
+	<ul>
+		<li>更安全、更有利和更高效能的環境，與 Cloudflare 採用的其他技術保持一致</li>
+		<li>更出色的篩選和比對能力，提升部署靈活性並簡化異常處理</li>
+		<li>統一的產品功能集，採用 wirefilter 語法作為託管規則集的基礎</li>
+	</ul>
+	<p>最後一點對我們和使用者而言都特別重要，因為這種語法已經在我們的自訂<a href="https://developers.cloudflare.com/firewall/" target="_blank">防火牆規則</a>中使用，後者甚至使用同樣的基礎 Rust 程式庫來執行篩選器。</p>
+	<p>新引擎在 <a href="https://www.rust-lang.org/" target="_blank">Rust</a> 中實施，<a href="https://blog.cloudflare.com/tag/rust/">此篇部落格貼文</a>已多次提到我們對這種語言的熱愛。我們也在努力確保新的實施不僅增強安全性，也能提高速度，相關細節將在後續部落格貼文中詳細介紹。</p>
+	<h3 id="-cloudflare-">更新的 Cloudflare 規則集</h3>
+	<p>Cloudflare 規則集已更新並移植到新版 WAF。值得注意的是，規則集現在使用 wirefilter 語法，而且規則狀態也與規則動作分離，讓您能夠分別設定這兩者。</p>
+	<p>Cloudflare OWASP 核心規則集也獲得了獨立於引擎的一次重大更新。目前的 Cloudflare WAF 實施官方 <a href="https://owasp.org/www-project-modsecurity-core-rule-set/" target="_blank">OWASP ModSecurity 核心規則集</a>的 2.x 版。在新版 WAF 中，Cloudflare OWASP 核心規則集直接基於<a href="https://github.com/SpiderLabs/owasp-modsecurity-crs" target="_blank">GitHub 存放庫</a>上提供的最新 3.3 版。</p>
+	<p>與現有系統相比，新版 Cloudflare OWASP 核心規則集以及新增的引擎功能將帶來一些改進：</p>
+	<ul>
+		<li>誤判更少，應用程式通用規則更爲強大</li>
+		<li>敏感度分數的掌控力度更大，清晰顯示每條規則對分數的貢獻度以及被觸發請求的總分數是多少</li>
+		<li>增加了 <a href="https://coreruleset.org/faq/#paranoialevel" target="_blank">Paranoia Level</a> - 可基於誤判風險輕鬆包含或排除規則群組</li>
+		<li>規則標記，藉此使用基於應用程式的相關規則來進行部署</li>
+	</ul>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/6-1.png" class="kg-image" alt="The Cloudflare OWASP Core Ruleset"></figure>
+	<p>Cloudflare OWASP 核心規則集‌‌</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/7-1.png" class="kg-image" alt="The Cloudflare OWASP Core Ruleset review screen"></figure>
+	<p>Cloudflare OWASP 核心規則集檢閲螢幕‌‌</p>
+	<p>為了協助將最新版本的 OWASP ModSecurity 核心規則集轉換為 Cloudflare 實施，我們的團隊還建構了一個 ModSecurity 至 wirefilter 語法轉換器。這樣一來，我們能夠在上游發佈任何改進後不久，輕鬆地部署和更新規則集，確保客戶始終獲得最新的版本。我們也計畫日後開放原始碼並將轉換器部署到使用者介面中，以方便客戶從基於 ModSecurity 的 WAF 遷移到 Cloudflare。</p>
+	<h3 id="--3">全域設定</h3>
+	<p>從一開始，Cloudflare 一直在基於區域的模型上操作 Cloudflare WAF。這種方式非常適用於簡單的使用案例，即客戶保護少量應用程式，或者在單個區域中保護非常多樣化的應用程式。</p>
+	<p>更為複雜或統一的跨區域部署通常藉由 <a href="https://api.cloudflare.com/" target="_blank">API</a> 或自動化工具來實現，例如我們的 <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs" target="_blank">Cloudflare Terraform Provider</a>。</p>
+	<p>有了新版 WAF，可以對單一帳戶下的任意流量進行篩檢並部署規則集。例如：</p>
+	<ul>
+		<li>在我的所有區域部署 Cloudflare 託管規則集。</li>
+		<li>對路徑中不包含 /api/* 的所有流量部署 Cloudflare OWASP 核心規則集。</li>
+		<li>對來自我的 IP 的流量，停用我帳戶中的所有託管規則集。</li>
+	</ul>
+	<p>這實現了一個強大的功能，只需按幾下滑鼠就能完成整個帳戶的 WAF 設定。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/8.png" class="kg-image" alt="Three rulesets deployed on arbitrary applications on the account."></figure>
+	<p><em><em>對帳戶下任意應用程式部署 3 個規則集。</em>‌‌</em></p>
+	<p>為實現這一點，規則集（一組規則）成為頭等概念，並具備原生版本控制，在使用者介面中直接提供復原和差異功能。我們計畫在未來幾個月內開始公佈這些功能。</p>
+	<p>基於帳戶的設定最初僅向 Enterprise 客戶開放，這些客戶現在就能聯繫客戶團隊來申請提前使用。自訂防火牆規則本身會在不久後遷移到新引擎，讓客戶也能自行建立自訂防火牆規則集，並按需部署到任何流量篩選。</p>
+	<h3 id="--4">新平台提供新功能</h3>
+	<p>WAF 還有許多奧妙等待我們去發掘。我們的團隊已在奮力完善基於新版 WAF 打造的一套新功能，包括對引擎本身的改進、更出色的分析功能，以及對可採取行動之事件的可見度。實際上，整個引擎設計為 Cloudflare 許多基於規則型產品的基礎，最終目標是將整個 Cloudflare 設定呈現為一套規則。</p>
+	<p>與此同時，我們期待您的意見反應，也希望再接再厲，在創新之路上繼續前行。</p>
+	<p>.......</p>
+	<!--kg-card-begin: markdown-->
+	<p><sup>1</sup>Cloudflare Specials 是 Cloudflare 安全團隊根據對 Cloudflare 平台背後數百萬個 Web 應用程式的觀察和保護而編寫的規則。</p>
+	<!--kg-card-end: markdown-->
+</div>

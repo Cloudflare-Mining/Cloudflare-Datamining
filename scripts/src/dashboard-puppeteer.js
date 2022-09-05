@@ -15,7 +15,7 @@ import {parse} from 'acorn';
 import {fullAncestor} from 'acorn-walk';
 import filenamify from 'filenamify';
 
-import {tryAndPush} from './utils.js';
+import {tryAndPush, userAgent} from './utils.js';
 
 const TRANSLATIONS_SNIPPET = 'dash/intl/intl-translations/src/locale/en-US/';
 const ROOT_URL = 'https://dash.cloudflare.com/';
@@ -44,7 +44,7 @@ async function run(){
 			scripts[response.url()] = await response.text();
 		}
 	});
-	await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36');
+	await page.setUserAgent(userAgent);
 	// load cloudflare dash
 	console.log(`Opening ${ROOT_URL}...`);
 	await page.goto(ROOT_URL, {

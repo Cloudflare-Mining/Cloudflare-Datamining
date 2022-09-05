@@ -1,0 +1,247 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/06/image21.png" class="kg-image"></figure>
+	<p>The Internet is an extraordinarily complex and evolving ecosystem. Its constituent protocols range from the ancient and archaic (hello <a href="https://developers.cloudflare.com/spectrum/getting-started/ftp/" target="_blank">FTP</a>) to the modern and sleek (meet <a href="https://blog.cloudflare.com/boringtun-userspace-wireguard-rust/">WireGuard</a>), with a fair bit of everything in between. This evolution is ongoing, and as one of the <a href="https://bgp.he.net/report/exchanges#_participants" target="_blank">most connected</a> networks on the Internet, Cloudflare has a duty to be a good steward of this ecosystem. We take this responsibility to heart: Cloudflare’s mission is to help build a better Internet. In this spirit, we are very proud to announce Crypto Week 2019.</p>
+	<p>Every day this week we’ll announce a new project or service that uses modern cryptography to build a more secure, trustworthy Internet. Everything we release this week will be free and immediately useful. This blog is a fun exploration of the themes of the week.</p>
+	<ul>
+		<li>Monday: <strong><a href="https://blog.cloudflare.com/league-of-entropy/">The League of Entropy</a>, <a href="https://blog.cloudflare.com/inside-the-entropy/">Inside the Entropy</a></strong></li>
+		<li>Tuesday: <strong><a href="https://blog.cloudflare.com/secure-certificate-issuance/">Securing Certificate Issuance using Multipath Domain Control Validation</a></strong></li>
+		<li>Wednesday: <strong><a href="https://blog.cloudflare.com/cloudflare-ethereum-gateway/">Cloudflare's Ethereum Gateway</a>, <a href="https://blog.cloudflare.com/continuing-to-improve-our-ipfs-gateway/">Continuing to Improve our IPFS Gateway</a></strong></li>
+		<li>Thursday: <strong><a href="https://blog.cloudflare.com/the-quantum-menace/">The Quantum Menace</a></strong>, <strong><a href="https://blog.cloudflare.com/towards-post-quantum-cryptography-in-tls/">Towards Post-Quantum Cryptography in TLS</a></strong>, <strong><a href="https://blog.cloudflare.com/introducing-circl/">Introducing CIRCL: An Advanced Cryptographic Library</a></strong></li>
+		<li>Friday: <strong><a href="https://blog.cloudflare.com/secure-time/">Introducing time.cloudflare.com</a></strong></li>
+	</ul>
+	<h3 id="the-internet-of-the-future">The Internet of the Future</h3>
+	<p>Many pieces of the Internet in use today were designed in a different era with different assumptions. The Internet’s success is based on strong foundations that support constant reassessment and improvement. Sometimes these improvements require deploying new protocols.</p>
+	<p>Performing an upgrade on a system as large and decentralized as the Internet can’t be done by decree;</p>
+	<ul>
+		<li>There are too many economic, cultural, political, and technological factors at play.</li>
+		<li>Changes must be compatible with existing systems and protocols to even be considered for adoption.</li>
+		<li>To gain traction, new protocols must provide tangible improvements for users. Nobody wants to install an update that doesn’t improve their experience!</li>
+	</ul>
+	<p><strong>The last time the Internet had a complete reboot and upgrade</strong> was during <a href="https://www.internetsociety.org/blog/2016/09/final-report-on-tcpip-migration-in-1983/" target="_blank">TCP/IP flag day</a> <strong>in 1983</strong>. Back then, the Internet (called ARPANET) had fewer than ten thousand hosts! To have an Internet-wide flag day today to switch over to a core new protocol is inconceivable; the scale and diversity of the components involved is way too massive. Too much would break. It’s challenging enough to deprecate <a href="https://dnsflagday.net/2019/" target="_blank">outmoded functionality</a>. In some ways, the open Internet is a victim of its own success. The bigger a system grows and the longer it stays the same, the <a href="https://blog.cloudflare.com/why-tls-1-3-isnt-in-browsers-yet/">harder it is to change</a>. The Internet is like a massive barge: it takes forever to steer in a different direction and it’s carrying a lot of garbage.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/06/image16.jpg" class="kg-image">
+		<figcaption>ARPANET, 1983 (<a href="https://www.computerhistory.org/internethistory/1980s/" target="_blank">Computer History Museum</a>)</figcaption>
+	</figure>
+	<p>As you would expect, many of the warts of the early Internet still remain. Both academic security researchers and real-life adversaries are still finding and exploiting vulnerabilities in the system. Many vulnerabilities are due to the fact that most of the protocols in use on the Internet have a weak notion of trust inherited from the early days. With 50 hosts online, it’s relatively easy to trust everyone, but in a world-scale system, that trust breaks down in fascinating ways. The primary tool to scale trust is cryptography, which helps provide some measure of accountability, though it has its own complexities.</p>
+	<p>In an ideal world, the Internet would provide a trustworthy substrate for human communication and commerce. Some people naïvely assume that this is the natural direction the evolution of the Internet will follow. However, constant improvement is not a given. <strong>It’s possible that the Internet of the future will actually be </strong><em><strong>worse</strong></em><strong> than the Internet today: less open, less secure, less private, less </strong><em><strong>trustworthy</strong></em><strong>. </strong>There are strong incentives to weaken the Internet on a fundamental level by <a href="https://www.ispreview.co.uk/index.php/2019/04/google-uk-isps-and-gov-battle-over-encrypted-dns-and-censorship.html" target="_blank">Governments</a>, by businesses <a href="https://www.theatlantic.com/technology/archive/2017/03/encryption-wont-stop-your-internet-provider-from-spying-on-you/521208/" target="_blank">such as ISPs</a>, and even by the <a href="https://www.cyberscoop.com/tls-1-3-weakness-financial-industry-ietf/" target="_blank">financial institutions</a> entrusted with our personal data.</p>
+	<p>In a system with as many stakeholders as the Internet, <strong>real change requires principled commitment from all invested parties.</strong> At Cloudflare, we believe everyone is entitled to an Internet built on a solid foundation of trust. <strong>Crypto Week</strong> is our way of helping nudge the Internet’s evolution in a more trust-oriented direction. Each announcement this week helps bring the Internet of the future to the present in a tangible way.</p>
+	<h3 id="ongoing-internet-upgrades">Ongoing Internet Upgrades</h3>
+	<p>Before we explore the Internet of the future, let’s explore some of the previous and ongoing attempts to upgrade the Internet’s fundamental protocols.</p>
+	<h4 id="routing-security">Routing Security</h4>
+	<p>As we highlighted in <a href="https://blog.cloudflare.com/crypto-week-2018/">last year’s Crypto Week</a> <strong>one of the weak links on the Internet is routing</strong>. Not all networks are directly connected. </p>
+	<p>To send data from one place to another, <strong>you might have to rely on intermediary networks to pass your data along. </strong>A packet sent from one host to another <strong>may have to be passed through up to a dozen of these intermediary networks.</strong> <em>No single network knows the full path the data will have to take to get to its destination, it only knows which network to pass it to next.</em> &nbsp;<strong>The protocol that determines how packets are routed is called the </strong><a href="https://www.cloudflare.com/learning/security/glossary/what-is-bgp/" target="_blank"><strong>Border Gateway Protocol (BGP.)</strong></a> Generally speaking, networks use BGP to announce to each other which addresses they know how to route packets for and (dependent on a set of complex rules) these networks share what they learn with their neighbors.</p>
+	<p>Unfortunately, <strong>BGP is completely insecure:</strong></p>
+	<ul>
+		<li><strong>Any network can announce any set of addresses to any other network,</strong> even addresses they don’t control. This leads to a phenomenon called <em>BGP hijacking</em>, where networks are tricked into sending data to the wrong network.</li>
+		<li><strong>A BGP hijack </strong>is<strong> </strong>most often caused by accidental misconfiguration, but <strong>can also be the result of malice on the network operator’s part</strong>.</li>
+		<li><strong>During a BGP hijack, a network inappropriately announces a set of addresses to other networks</strong>, which results in packets destined for the announced addresses to be routed through the illegitimate network.</li>
+	</ul>
+	<h4 id="understanding-the-risk">Understanding the risk</h4>
+	<p>If the packets represent unencrypted data, this can be a big problem<strong> </strong>as it<strong> allows the hijacker to read or even change the data:</strong></p>
+	<ul>
+		<li>In 2018, a rogue network <a href="https://blog.cloudflare.com/bgp-leaks-and-crypto-currencies/">hijacked the addresses of a service called MyEtherWallet</a>, financial transactions were routed through the attacker network, which the attacker modified, <strong>resulting in the theft of over a hundred thousand dollars of cryptocurrency.</strong></li>
+	</ul>
+	<h4 id="mitigating-the-risk">Mitigating the risk</h4>
+	<p>The <a href="https://blog.cloudflare.com/tag/rpki/">Resource Public Key Infrastructure (RPKI)</a> system helps bring some trust to BGP by <strong>enabling networks to utilize cryptography to digitally sign network routes with certificates, making BGP hijacking much more difficult.</strong></p>
+	<ul>
+		<li>This enables participants of the network to gain assurances about the authenticity of route advertisements. <a href="https://blog.cloudflare.com/introducing-certificate-transparency-and-nimbus/">Certificate Transparency</a> (CT) is a tool that enables additional trust for certificate-based systems. Cloudflare operates the <a href="https://ct.cloudflare.com/logs/cirrus" target="_blank">Cirrus CT log</a> to support RPKI.</li>
+	</ul>
+	<p>Since we announced our support of RPKI last year, routing security has made big strides. More routes are signed, more networks validate RPKI, and the <a href="https://github.com/cloudflare/cfrpki" target="_blank">software ecosystem has matured</a>, but this work is not complete. Most networks are still vulnerable to BGP hijacking. For example, <a href="https://www.cnet.com/news/how-pakistan-knocked-youtube-offline-and-how-to-make-sure-it-never-happens-again/" target="_blank">Pakistan knocked YouTube offline with a BGP hijack</a> back in 2008, and could likely do the same today. Adoption here is driven less by providing a benefit to users, but rather by reducing systemic risk, which is not the strongest motivating factor for adopting a complex new technology. Full routing security on the Internet could take decades.</p>
+	<h3 id="dns-security">DNS Security</h3>
+	<p>The Domain Name System (DNS) is the phone book of the Internet. Or, for anyone under 25 who doesn’t remember phone books, it’s the system that takes hostnames (like cloudflare.com or facebook.com) and returns the Internet address where that host can be found. For example, as of this publication, www.cloudflare.com is 104.17.209.9 and 104.17.210.9 (IPv4) and 2606:4700::c629:d7a2, 2606:4700::c629:d6a2 (IPv6). Like BGP, <strong>DNS is completely insecure. Queries and responses sent unencrypted over the Internet are modifiable by anyone on the path.</strong></p>
+	<p>There are many ongoing attempts to add security to DNS, such as:</p>
+	<ul>
+		<li>DNSSEC that <strong>adds a chain of digital signatures to DNS responses</strong></li>
+		<li>DoT/DoH that <strong>wraps DNS queries in the TLS encryption protocol</strong> (more on that later)</li>
+	</ul>
+	<p>Both technologies are slowly gaining adoption, but have a long way to go.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/06/DNSSEC-adoption-over-time-1.png" class="kg-image">
+		<figcaption>DNSSEC-signed responses served by Cloudflare</figcaption>
+	</figure>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/06/DoT_DoH.png" class="kg-image">
+		<figcaption>Cloudflare’s 1.1.1.1 resolver queries are already over 5% DoT/DoH</figcaption>
+	</figure>
+	<p></p>
+	<p>Just like RPKI, <strong>securing DNS comes with a performance cost,</strong> making it less attractive to users. However,</p>
+	<ul>
+		<li><strong>Services like 1.1.1.1 provide </strong><a href="https://www.dnsperf.com/dns-provider/cloudflare" target="_blank"><strong>extremely fast DNS</strong></a>, which means that for many users, <a href="https://blog.mozilla.org/futurereleases/2019/04/02/dns-over-https-doh-update-recent-testing-results-and-next-steps/" target="_blank">encrypted DNS is faster than the unencrypted DNS</a> from their ISP.</li>
+		<li>This<strong> performance improvement makes it appealing for customers</strong> of privacy-conscious applications, like Firefox and Cloudflare’s 1.1.1.1 app, to adopt secure DNS.</li>
+	</ul>
+	<h3 id="the-web">The Web</h3>
+	<p><strong>Transport Layer Security (TLS)</strong> is a cryptographic protocol that gives two parties the ability to communicate over an encrypted and authenticated channel<strong>.</strong> <strong>TLS protects communications from eavesdroppers even in the event of a BGP hijack.</strong> TLS is what puts the “S” in <strong>HTTPS</strong>. TLS protects web browsing against multiple types of network adversaries.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/06/past-connection-1.png" class="kg-image">
+		<figcaption>Requests hop from network to network over the Internet</figcaption>
+	</figure>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/06/MITM-past-copy-2.png" class="kg-image">
+		<figcaption>For unauthenticated protocols, an attacker on the path can impersonate the server</figcaption>
+	</figure>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/06/BGP-hijack-past-1.png" class="kg-image">
+		<figcaption>Attackers can use BGP hijacking to change the path so that communication can be intercepted</figcaption>
+	</figure>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/06/PKI-validated-connectio-1.png" class="kg-image">
+		<figcaption>Authenticated protocols are protected from interception attacks</figcaption>
+	</figure>
+	<p></p>
+	<p>The adoption of TLS on the web is partially driven by the fact that:</p>
+	<ul>
+		<li><strong>It’s easy and free for websites to get an authentication certificate</strong> (via <a href="https://letsencrypt.org/" target="_blank">Let’s Encrypt</a>, <a href="https://blog.cloudflare.com/introducing-universal-ssl/">Universal SSL</a>, etc.)</li>
+		<li>Browsers make TLS adoption appealing to website operators by <strong>only supporting new web features such as HTTP/2 over HTTPS.</strong></li>
+	</ul>
+	<p>This has led to the rapid adoption of HTTPS over the last five years.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/06/image12.jpg" class="kg-image">
+		<figcaption>HTTPS adoption curve (<a href="https://transparencyreport.google.com/https/overview" target="_blank">from Google Chrome</a>)<span class="-mobiledoc-kit__atom">‌‌</span></figcaption>
+	</figure>
+	<p></p>
+	<p>To further that adoption, TLS recently got an upgrade in TLS 1.3, <strong>making it faster <em>and</em> more secure (a combination we love)</strong>. It’s taking over the Internet!</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/06/tls.13-adoption-1.png" class="kg-image">
+		<figcaption>TLS 1.3 adoption over the last 12 months (from Cloudflare's perspective)</figcaption>
+	</figure>
+	<p></p>
+	<p>Despite this fantastic progress in the adoption of security for routing, DNS, and the web, <strong>there are still gaps in the trust model of the Internet.</strong> There are other things needed to help build the Internet of the future. To find and identify these gaps, we lean on research experts.</p>
+	<h3 id="research-farm-to-table">Research Farm to Table</h3>
+	<p>Cryptographic security on the Internet is a hot topic and there have been many flaws and issues recently pointed out in academic journals. Researchers often <strong>study the vulnerabilities of the past and ask:</strong></p>
+	<ul>
+		<li>What other critical components of the Internet have the same flaws?</li>
+		<li>What underlying assumptions can subvert trust in these existing systems?</li>
+	</ul>
+	<p>The answers to these questions help us decide what to tackle next. Some recent research &nbsp;topics we’ve learned about include:</p>
+	<ul>
+		<li>Quantum Computing</li>
+		<li>Attacks on Time Synchronization</li>
+		<li>DNS attacks affecting Certificate issuance</li>
+		<li>Scaling distributed trust </li>
+	</ul>
+	<p>Cloudflare keeps abreast of these developments and we do what we can to bring these new ideas to the Internet at large. In this respect, we’re truly standing on the shoulders of giants.</p>
+	<h3 id="future-proofing-internet-cryptography">Future-proofing Internet Cryptography</h3>
+	<p>The new protocols we are currently deploying (RPKI, DNSSEC, DoT/DoH, TLS 1.3) use relatively modern cryptographic algorithms published in the 1970s and 1980s.</p>
+	<ul>
+		<li>The security of these algorithms is based on hard mathematical problems in the field of number theory, such as <a href="https://en.wikipedia.org/wiki/RSA_(cryptosystem)" target="_blank">factoring</a> and the <a href="https://blog.cloudflare.com/a-relatively-easy-to-understand-primer-on-elliptic-curve-cryptography/">elliptic curve discrete logarithm</a> problem.</li>
+		<li>If you can solve the hard problem, you can crack the code. <strong>Using a bigger key makes the problem harder, </strong>making it more difficult to break, <strong>but also slows performance. </strong></li>
+	</ul>
+	<p>Modern Internet protocols typically pick keys large enough to make it infeasible to break with <a href="https://whatis.techtarget.com/definition/classical-computing" target="_blank">classical computers</a>, but no larger. <strong>The sweet spot is around 128-bits of security;</strong> <strong>meaning a computer has to do approximately 2</strong>¹²⁸<strong> operations to break it.</strong> </p>
+	<p><a href="https://eprint.iacr.org/2013/635.pdf" target="_blank">Arjen Lenstra and others</a> created a useful measure of security levels by<strong> comparing the amount of energy it takes to break a key to the amount of water you can boil </strong>using that much energy. You can think of this as the electric bill you’d get if you run a computer long enough to crack the key.</p>
+	<ul>
+		<li><strong>35-bit security</strong> <strong>is “Teaspoon security”</strong> -- It takes about the same amount of energy to break a 35-bit key as it does to boil a teaspoon of water (pretty easy).</li>
+	</ul>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/06/image20.png" class="kg-image"></figure>
+	<ul>
+		<li><strong><strong>65 bits gets you up to “Pool security” –</strong></strong> The energy needed to boil the average amount of water in a swimming pool.</li>
+	</ul>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/06/image8.png" class="kg-image"></figure>
+	<p></p>
+	<ul>
+		<li><strong>105 bits is “Sea Security”</strong> – The energy needed to boil the Mediterranean Sea.</li>
+	</ul>
+	<figure class="kg-card kg-image-card"><img src="https://lh4.googleusercontent.com/8reIkbszxaKMxOsDDEzOB4ljqnVtQdJBQsYEz-uL-AZnNL0jUKSd4CbSAz-yS9tvpi_ki1JoYZ_-ZktMSbqRtDSVFMjHvsyBtgmc2rPuiDr9b-Fj6DvEJvLF7tWPrM-XprZsZK1a" class="kg-image"></figure>
+	<p></p>
+	<ul>
+		<li><strong><strong>114-bits is “Global Security” </strong> – &nbsp;</strong>The energy needed to boil all water on Earth.</li>
+	</ul>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/06/image14.png" class="kg-image"></figure>
+	<p></p>
+	<ul>
+		<li><strong>128-bit security is safely beyond that</strong> <strong>of Global Security</strong> – Anything larger is excessive.</li>
+		<li><strong>256-bit security corresponds to “Universal Security”</strong> – The estimated mass-energy of the observable universe. So, if you ever hear someone suggest 256-bit AES, you know they mean business.</li>
+	</ul>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/06/image18.png" class="kg-image"></figure>
+	<p></p>
+	<h3 id="post-quantum-of-solace">Post-Quantum of Solace</h3>
+	<p>As far as we know,<strong> the algorithms we use for cryptography are functionally uncrackable </strong>with all known algorithms that classical computers can run. <strong>Quantum computers change this calculus.</strong> Instead of transistors and bits, a quantum computer uses the effects of <a href="https://en.wikipedia.org/wiki/Quantum_entanglement" target="_blank">quantum mechanics</a> to perform calculations that just aren’t possible with classical computers. As you can imagine, quantum computers are very difficult to build. However, despite large-scale quantum computers not existing quite yet, computer scientists have already developed algorithms that can only run efficiently on quantum computers. Surprisingly, it turns out that <strong>with a sufficiently powerful quantum computer, most of the hard mathematical problems we rely on for Internet security become easy! </strong></p>
+	<p>Although there are still <a href="https://www.quantamagazine.org/gil-kalais-argument-against-quantum-computers-20180207/" target="_blank">quantum-skeptics</a> out there, <a href="http://fortune.com/2018/12/15/quantum-computer-security-encryption/" target="_blank">some experts</a> <strong>estimate that within 15-30 years these large quantum computers will exist, which poses a risk to every security protocol online.</strong> Progress is moving quickly; every few months a more powerful quantum computer <a href="https://en.wikipedia.org/wiki/Timeline_of_quantum_computing" target="_blank">is announced</a>.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/06/image1-2.png" class="kg-image"></figure>
+	<p>Luckily, there are cryptography algorithms that rely on different hard math problems that seem to be resistant to attack from quantum computers. These math problems form the basis of so-called <em>quantum-resistant</em> (or <em>post-quantum</em>) cryptography algorithms that can run on classical computers. These algorithms can be used as substitutes for most of our current quantum-vulnerable algorithms.</p>
+	<ul>
+		<li>Some quantum-resistant algorithms (such as <a href="https://en.wikipedia.org/wiki/McEliece_cryptosystem" target="_blank">McEliece</a> and <a href="https://en.wikipedia.org/wiki/Lamport_signature" target="_blank">Lamport Signatures</a>) were invented decades ago, but there’s a reason they aren’t in common use: they <strong>lack some of the nice properties of the algorithms we’re currently using, such as key size and efficiency.</strong></li>
+		<li>Some quantum-resistant algorithms <strong>require much larger keys to provide 128-bit security</strong></li>
+		<li>Some are very <strong>CPU intensive</strong>,</li>
+		<li>And some just <strong>haven’t been studied enough to know if they’re secure.</strong></li>
+	</ul>
+	<p>It is possible to swap our current set of quantum-vulnerable algorithms with new quantum-resistant algorithms, but it’s a daunting engineering task. With widely deployed <a href="https://en.wikipedia.org/wiki/IPsec" target="_blank">protocols</a>, it is hard to make the transition from something fast and small to something slower, bigger or more complicated without providing concrete user benefits. <strong>When exploring new quantum-resistant algorithms, minimizing user impact is of utmost importance</strong> to encourage adoption. This is a big deal, because almost all the protocols we use to protect the Internet are vulnerable to quantum computers.</p>
+	<p>Cryptography-breaking quantum computing is still in the distant future, but we must start the transition to ensure that today’s secure communications are safe from tomorrow’s quantum-powered onlookers; however, that’s not the most <em>timely</em> problem with the Internet. We haven’t addressed that...yet.</p>
+	<h3 id="attacking-time">Attacking time</h3>
+	<p>Just like DNS, BGP, and HTTP, <strong>the Network Time Protocol (NTP) is fundamental to how the Internet works</strong>. And like these other protocols, it is <strong>completely insecure</strong>.</p>
+	<ul>
+		<li>Last year, <strong>Cloudflare introduced </strong><a href="https://blog.cloudflare.com/roughtime/"><strong>Roughtime</strong></a> support as a mechanism for computers to access the current time from a trusted server in an authenticated way.</li>
+		<li>Roughtime is powerful because it <strong>provides a way to distribute trust among multiple time servers</strong> so that if one server attempts to lie about the time, it will be caught.</li>
+	</ul>
+	<p>However, Roughtime is not exactly a secure drop-in replacement for NTP.</p>
+	<ul>
+		<li><strong>Roughtime lacks the complex mechanisms of NTP</strong> that allow it to compensate for network latency and yet maintain precise time, especially if the time servers are remote. This leads to <strong>imprecise time</strong>.</li>
+		<li>Roughtime also <strong>involves expensive cryptography that can further reduce precision</strong>. This lack of precision makes Roughtime useful for browsers and other systems that need coarse time to validate certificates (most certificates are valid for 3 months or more), but some systems (such as those used for financial trading) require precision to the millisecond or below.</li>
+	</ul>
+	<p>With Roughtime we supported the time protocol of the future, but there are things we can do to help improve the health of security online <em>today</em>.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/06/image2-3.png" class="kg-image"></figure>
+	<p>Some academic researchers, including Aanchal Malhotra of Boston University, have <a href="https://www.cs.bu.edu/~goldbe/NTPattack.html" target="_blank">demonstrated</a> a variety of attacks against NTP, including <strong>BGP hijacking and off-path User Datagram Protocol (UDP) attacks.</strong></p>
+	<ul>
+		<li>Some of these attacks can be avoided by connecting to an NTP server that is close to you on the Internet.</li>
+		<li>However, to bring cryptographic trust to time while maintaining precision, we need something in between NTP and Roughtime.</li>
+		<li>To solve this, it’s natural to turn to the same system of trust that enabled us to patch HTTP and DNS: Web PKI.</li>
+	</ul>
+	<h3 id="attacking-the-web-pki">Attacking the Web PKI</h3>
+	<p>The Web PKI is similar to the RPKI, but is more widely visible since it relates to websites rather than routing tables.</p>
+	<ul>
+		<li>If you’ve ever clicked the lock icon on your browser’s address bar, you’ve interacted with it.</li>
+		<li>The PKI relies on a set of trusted organizations called Certificate Authorities (CAs) to issue certificates to websites and web services.</li>
+		<li>Websites use these certificates to authenticate themselves to clients as <a href="https://www.cloudflare.com/learning/ssl/transport-layer-security-tls/" target="_blank">part of the TLS protocol</a> in HTTPS.</li>
+	</ul>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/06/pki-validated.png" class="kg-image">
+		<figcaption>TLS provides encryption and integrity from the client to the server with the help of a digital certificate&nbsp;</figcaption>
+	</figure>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/06/attack-against-PKI-validated-connectio-2.png" class="kg-image">
+		<figcaption>TLS connections are safe against MITM, because the client doesn’t trust the attacker’s certificate</figcaption>
+	</figure>
+	<p></p>
+	<p>While we were all patting ourselves on the back for moving the web to HTTPS, <a href="https://dl.acm.org/citation.cfm?id=3243790" target="_blank">some</a> <a href="https://www.princeton.edu/~pmittal/publications/bgp-tls-usenix18.pdf" target="_blank">researchers</a> managed to find and exploit <strong>a weakness in the system: the process for getting HTTPS certificates.</strong></p>
+	<p>Certificate Authorities (CAs) use a process called <strong>domain control validation (DCV) to ensure that they only issue certificates <strong>to websites owners who legitimately request them</strong>.</strong></p>
+	<ul>
+		<li>Some CAs do this validation manually, which is secure, but <strong>can’t scale to the total number of websites deployed today.</strong></li>
+		<li>More progressive CAs have <strong>automated this validation process, but rely on insecure methods</strong> (HTTP and DNS) to validate domain ownership.</li>
+	</ul>
+	<p>Without ubiquitous cryptography in place (DNSSEC may never reach 100% deployment), there is <strong>no completely secure way to bootstrap this system</strong>. So, let’s look at how to distribute trust using other methods.</p>
+	<p><strong>One tool at our disposal is the distributed nature of the Cloudflare network.</strong></p>
+	<p>Cloudflare is global. We have locations all over the world connected to dozens of networks. That means we have different <em>vantage points</em>, resulting in different ways to traverse networks. This diversity can prove an advantage when dealing with BGP hijacking, since <strong>an attacker would have to hijack multiple routes from multiple locations to affect all the traffic between Cloudflare and other distributed parts of the Internet. </strong>The natural diversity of the network raises the cost of the attacks.</p>
+	<p>A distributed set of connections to the Internet and using them as a quorum is a mighty paradigm to distribute trust, with or without cryptography.</p>
+	<h3 id="distributed-trust">Distributed Trust</h3>
+	<p>This idea of distributing the source of trust is powerful. Last year we announced the <strong>Distributed Web Gateway</strong> that</p>
+	<ul>
+		<li>Enables users to access content on the InterPlanetary File System (IPFS), a network structured to<strong> reduce the trust placed in any single party.</strong></li>
+		<li>Even if a participant of the network is compromised, <strong>it can’t be used to distribute <strong>compromised</strong> content</strong> because the network is content-addressed.</li>
+		<li>However, using content-based addressing is <strong>not the only way to distribute trust between multiple independent parties.</strong></li>
+	</ul>
+	<p>Another way to distribute trust is to literally <strong>split authority between multiple independent parties</strong>. <a href="https://blog.cloudflare.com/red-october-cloudflares-open-source-implementation-of-the-two-man-rule/">We’ve explored this topic before.</a> In the context of Internet services, this means ensuring that no single server can authenticate itself to a client on its own. For example,</p>
+	<ul>
+		<li>In HTTPS the server’s private key is the lynchpin of its security. Compromising the owner of the private key (by <a href="https://www.theguardian.com/world/2013/oct/03/lavabit-ladar-levison-fbi-encryption-keys-snowden" target="_blank">hook</a> or by <a href="https://www.symantec.com/connect/blogs/how-attackers-steal-private-keys-digital-certificates" target="_blank">crook</a>) <strong>gives an attacker the ability to impersonate (spoof) that service</strong>. This single point of failure <strong>puts services at risk.</strong> You can mitigate this risk by distributing the authority to authenticate the service between multiple independently-operated services.</li>
+	</ul>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/06/TLS-server-compromise-1.png" class="kg-image">
+		<figcaption>TLS doesn’t protect against server compromise</figcaption>
+	</figure>
+	<p></p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/06/future-distributed-trust-copy-2-1.png" class="kg-image">
+		<figcaption>With distributed trust, multiple parties combine to protect the connection</figcaption>
+	</figure>
+	<p></p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/06/future-distributed-trust.png" class="kg-image">
+		<figcaption>An attacker that has compromised one of the servers cannot break the security of the system<span class="-mobiledoc-kit__atom">‌‌</span></figcaption>
+	</figure>
+	<p></p>
+	<p>The Internet barge is old and slow, and we’ve only been able to improve it through the meticulous process of patching it piece by piece. Another option is to build new secure systems on top of this insecure foundation. IPFS is doing this, and IPFS is not alone in its design. <strong>There has been more research into secure systems with decentralized trust in the last ten years than ever before</strong>. </p>
+	<p>The result is radical new protocols and designs that use exotic new algorithms. These protocols do not supplant those at the core of the Internet (like TCP/IP), but instead, they sit on top of the existing Internet infrastructure, enabling new applications, much like HTTP did for the web.</p>
+	<h3 id="gaining-traction">Gaining Traction</h3>
+	<p>Some of the most innovative technical projects were considered failures because <strong>they couldn’t attract users.</strong> New technology has to bring tangible benefits to users to sustain it: useful functionality, content, and a decent user experience. Distributed projects, such as IPFS and others, are gaining popularity, but have not found mass adoption. This is a chicken-and-egg problem. New protocols have a high barrier to entry<strong>—</strong>users have to install new software<strong>—</strong>and because of the small audience, there is less incentive to create compelling content. <strong>Decentralization and distributed trust are nice security features to have, but they are not products</strong>. Users still need to get some benefit out of using the platform.</p>
+	<p>An example of a system to break this cycle is the web. In 1992 the web was hardly a cornucopia of awesomeness. <strong>What helped drive the dominance of the web was its users.</strong></p>
+	<ul>
+		<li>The growth of the user base meant <strong>more incentive for people to build services</strong>, and the availability of more services attracted more users. It was a virtuous cycle.</li>
+		<li>It’s hard for a platform to gain momentum, but once the cycle starts, a flywheel effect kicks in to help the platform grow.</li>
+	</ul>
+	<p>The <a href="https://www.cloudflare.com/distributed-web-gateway/" target="_blank">Distributed Web Gateway</a> project Cloudflare launched last year in Crypto Week is our way of exploring what happens if we try to kickstart that flywheel. By providing a secure, reliable, and fast interface from the classic web with its two billion users to the content on the distributed web, we give the fledgling ecosystem an audience.</p>
+	<ul>
+		<li><strong>If the advantages provided by building on the distributed web are appealing to users, then the larger audience will help these services grow in popularity</strong>.</li>
+		<li>This is somewhat reminiscent of how IPv6 gained adoption. It started as a niche technology only accessible using IPv4-to-IPv6 translation services.</li>
+		<li>IPv6 adoption has now <a href="https://www.internetsociety.org/resources/2018/state-of-ipv6-deployment-2018/" target="_blank">grown so much</a> that it is becoming a requirement for new services. For example,<strong> <strong>Apple</strong> is </strong><a href="https://developer.apple.com/support/ipv6/" target="_blank"><strong>requiring</strong></a><strong> that all apps work in IPv6-only contexts.</strong></li>
+	</ul>
+	<p>Eventually, as user-side implementations of distributed web technologies improve, people may move to using the distributed web natively rather than through an HTTP gateway. Or they may not! By leveraging Cloudflare’s global network to <strong>give users access to new technologies based on distributed trust, we give these technologies a better chance at gaining adoption.</strong></p>
+	<h3 id="happy-crypto-week">Happy Crypto Week</h3>
+	<p>At Cloudflare, we always support new technologies that help make the Internet better. Part of helping make a better Internet is scaling the systems of trust that underpin web browsing and protect them from attack. We provide the tools to create better systems of assurance with fewer points of vulnerability. We work with academic researchers of security to get a vision of the future and engineer away vulnerabilities before they can become widespread. It’s a constant journey.</p>
+	<p>Cloudflare knows that none of this is possible without the work of researchers. From award-winning researcher publishing papers in top journals to the blog posts of clever hobbyists, dedicated and curious people are moving the state of knowledge of the world forward. However, the push to publish new and novel research sometimes holds researchers back from committing enough time and resources to fully realize their ideas. Great research can be powerful on its own, but it can have an even broader impact when combined with practical applications. We relish the opportunity to stand on the shoulders of these giants and use our engineering know-how and global reach to expand on their work to help build a better Internet.</p>
+	<p>So, to all of you dedicated researchers, <strong>thank you for your work!</strong> Crypto Week is yours as much as ours. If you’re working on something interesting and you want help to bring the results of your research to the broader Internet, please contact us at <a href="/cdn-cgi/l/email-protection#384a5d4b5d594a5b50785b54574d5c5e54594a5d165b5755"><span class="__cf_email__" data-cfemail="4726342c6a352234222635242f07242b283223212b2635226924282a">[email&nbsp;protected]</span></a>. We want to help you realize your dream of making the Internet safe and trustworthy.</p>
+	<p>If you're a research-oriented <a href="https://boards.greenhouse.io/cloudflare/jobs/1346216" target="_blank">engineering manager</a> or student, we're also hiring in <a href="https://boards.greenhouse.io/cloudflare/jobs/1025810" target="_blank">London</a> and <a href="https://boards.greenhouse.io/cloudflare/jobs/608495" target="_blank">San Francisco</a>!</p>
+</div>

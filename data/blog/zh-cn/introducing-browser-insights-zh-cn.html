@@ -1,0 +1,54 @@
+<div class="post-content lh-copy gray1">
+	<p>速度至关重要。我们知道，当你的网站或应用程序变得更快时，用户会有更好的体验，你会获得更多的转化率和更多的收益。在Cloudflare，我们整天都在纠结于速度和构建新功能，以尽可能地提高性能。</p>
+	<p>但是为了提高速度，你首先需要测量它。这就是我们推出<a href="https://www.cloudflare.com/website-optimization/" target="_blank">浏览器洞察</a>的原因：一个从用户角度衡量网站性能的新工具。浏览器洞察让您深入了解web页面在何处、何时以及为什么会变慢。今天，你只需轻轻一点，就可以免费使用它。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/12/insights-option-1-1.png" class="kg-image"></figure>
+	<h2 id="-">我们为什么要建立浏览器洞察？</h2>
+	<p>假设你运营一个电子商务网站，你想让你的转化率更好。你已经注意到有很多来自秘鲁的访客流量，但是他们的转化率比北美的用户要差。也许你认为原因在于（秘鲁访问者）加载结帐页面需要很长时间，这导致顾客在结账前离开。您如何验证事实是否如此？</p>
+	<p>有几种方法可以做到这一点:您可以检查服务器日志以查看时间信息，或者您可以在浏览器中加载几次页面来查看什么环节速度缓慢。</p>
+	<p>这些方法有一些缺点：</p>
+	<ul>
+		<li>如果只看服务器端数据，就会忽略影响最终用户体验的因素——web浏览器加载所有必要的脚本、执行脚本和绘制页面需要多长时间？</li>
+		<li>如果你只从一台电脑（或一小部分电脑）上进行衡量，你就无法计算多人口间的差异性——例如，“这在3G连接的手机上是如何工作的？”</li>
+	</ul>
+	<p>为了解决这些问题，我们使用<em>Real User Monitoring（真实用户监控）</em>。这给了我们两大好处：我们可以在真正的Web浏览器中运行计时器。该计时器从实际用户处获取网页加载所需的时间。</p>
+	<h2 id="--1">它是如何工作的？</h2>
+	<p>您可以通过在控制面板的“速度”选项卡部分点击一个开关来启用浏览器洞察：</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/12/pasted-image-0--3-.png" class="kg-image"></figure>
+	<p>启用该功能后，我们会为每个HTML页面加载添加一小段JavaScript代码，这些代码使用标准<a href="https://developer.mozilla.org/en-US/docs/Web/API/Performance" target="_blank">Performance API</a>收集计时信息。然后我们就可以开始向您展示您的网页在现实世界中的性能表现：</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/12/pasted-image-0--2-.png" class="kg-image">
+		<figcaption>\</figcaption>
+	</figure>
+	<p>这张图里有很多信息！概括而言，有两种主要的衡量指标：</p>
+	<ul>
+		<li><strong>请求级</strong>指标，如TCP连接时间或请求时间。这些指标是根据每个页面的负载来计算的，并且受到互联网基础设施的影响，比如终端用户的移动网络或服务器的速度。</li>
+		<li><strong>页面层</strong>指标，如页面加载时间，它考虑了加载web页面所需的许多请求，以及解析HTML和执行JavaScript所需的时间。</li>
+	</ul>
+	<p>有关这些时间的含义以及我们如何选择它们的更多信息，请参见<a href="https://blog.cloudflare.com/browser-performance-api">我们的配套博客文章</a>。</p>
+	<h2 id="--2">挖掘数据</h2>
+	<p>除了查看有关web页面性能的几个指标外，深入研究URL和国家等影响性能的维度也很有帮助。这意味着您可以过滤到特定页面的性能（比如您的主页或结帐页面），您可以看到站点加载最快和最慢的位置。</p>
+	<p>回到上面的示例，我们想看看秘鲁的业绩与北美相比如何：</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/12/pasted-image-0--1--1.png" class="kg-image"></figure>
+	<p>当然，我们可以确定来自秘鲁的流量很大，但网页平均加载时间约为13秒，而美国用户只需4.2秒。此前的理论被证实了！现在我们可以将所有的指标过滤到秘鲁，以更好地理解正在发生的事情：</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/12/pasted-image-0-1-2.png" class="kg-image"></figure>
+	<p>注意到，“加工处理”环节耗费的时间增加的最多，一直到12秒。请求时间也更长，这可能是因为我们要连接到美国的原始服务器。网页是由许多单独的请求组成的，因此将它们组合在一起可以降低加载时间。在本例中，缓存更快的内容明显能加快页面加载速度。</p>
+	<h2 id="--3">接下来会发生什么？</h2>
+	<p>我们今天的发布只是关于浏览器的冰山一角。在不久的将来，我们希望添加更多信息，帮助您准确地理解是什么使您的网站变慢，以及您可以做什么来使它更快。我们计划增加：</p>
+	<ul>
+		<li><strong>更多指标和维度</strong>，包括页面级指标（如首次绘制时间）和更多维度（如浏览器和网络类型）</li>
+		<li><strong>子资源分析</strong>。平均每个web页面要加载100多个子资源，我们可以提供一个瀑布图来精确地显示哪个是慢的。</li>
+		<li><strong>A / B测试，向您展示潜在的配置更改将如何影响您自己的流量性能</strong></li>
+		<li><strong>错误收集</strong>，以监视网络层，JavaScript等问题</li>
+		<li><strong>发出警报</strong>，以便您知道何时性能低于预先定义的阈值</li>
+		<li><strong>Cloudflare提供的洞察</strong>，告诉你为什么有些东西可能会变慢——例如，你的缓存命中率如何影响页面加载时间</li>
+	</ul>
+	<h2 id="--4">保护用户隐私</h2>
+	<p>Cloudflare帮助构建更好的互联网的使命是基于我们对建立与客户、客户的最终用户和全球互联网社区之间的信任的重视。我们有一个透明的、符合客户利益的商业模式——我们通过保护和加速客户的互联网资产来赚钱。我们不出售客户（或其最终用户）的数据。</p>
+	<p>浏览器洞察要求终端用户的浏览器向Cloudflare报告时间信息。我们设计了浏览器洞察，使它只报告最基本的信息，以向我们的客户展示他们的网站是如何运行的。浏览器收集的唯一指标是时间。我们不跟踪个别终端用户的互联网财产。我们鼓励您打开您最喜欢的web浏览器中的检查器来查看我们发送回的内容！</p>
+	<h2 id="--5">立即试用浏览器洞察</h2>
+	<p>去年五月，我们发布了全新的<a href="https://blog.cloudflare.com/new-speed-page/">Speed Page</a>。我们“速度”页面的任务是向您显示您的网站有多快，以及如何使它更快。今天，我们很高兴地宣布，所有人都可以使用新的“速度页面”！</p>
+	<p>浏览器洞察将提供在early access的Speed页面上，我们将努力在未来几周内尽快将其带给每个人。注意这个空间的更新！</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/12/Birthday-week-2019-header@2x-1.png" class="kg-image"></figure>
+	<p></p>
+	<hr>
+	<p><a href="https://blog.cloudflare.com/subscribe/"><em>订阅此博客，</em></a><em>了解我们所有生日周公告的每日更新。</em></p>
+</div>

@@ -1,0 +1,52 @@
+<div class="post-content lh-copy gray1">
+	<h3 id="-cloudflare-">大规模路由泄漏影响包括 Cloudflare 在内的主要互联网服务</h3>
+	<h4 id="-">事件经过</h4>
+	<p>在 UTC 时间今天（ 2019年6月24号）10 点 30 分，互联网遭受了一场不小的冲击。通过主要互联网转接服务提供供应商 Verizon (AS701) 转接的许多互联网路由，都被先导至宾夕法尼亚北部的一家小型公司。这相当于 &nbsp;滴滴错误地将整条高速公路导航至某小巷 – 导致大部分互联网用户无法访问 Cloudflare 上的许多网站和许多其他供应商的服务。这本不应该发生，因为 Verizon 不应将这些路径转送到互联网的其余部分。要理解事件发生原因，请继续阅读。</p>
+	<p><a href="https://blog.cloudflare.com/bgp-leaks-and-crypto-currencies/">此类不幸事件</a>并不罕见，我们以前曾发布相关博文。这一次，全世界都再次见证了它所带来的严重损害。而<a href="https://www.noction.com/" target="_blank">Noction</a> “BGP 优化器”产品的涉及，则让今天的事件进一步恶化。这个产品有一个功能：可将接收到的 IP 前缀拆分为更小的组成部分（称为更具体前缀）。例如，我们自己的 IPv4 路由 104.20.0.0/20 被转换为 104.20.0.0/21 和 104.20.8.0/21。就好像通往 ”北京”的路标被两个路标取代，一个是 ”北京东”，另一个是 ”北京西”。通过将这些主要 IP 块拆分为更小的部分，网络可引导其内部的流量，但这种拆分原本不允许向全球互联网广播。正是这方面的原因导致了今天的网络中断。</p>
+	<p>为了解释后续发生的事情，我们先快速回顾一下互联网基础“地图”的工作原理。“Internet”的字面意思是网络互联，它由叫做自治系统（AS）的网络组成，每个网络都有唯一的标识符，即 AS 编号。所有这些网络都使用边界网关协议（BGP）来进行互连。BGP 将这些网络连接在一起，并构建互联网“地图”，使通信得以一个地方（例如，您的 ISP）传播到地球另一端的热门网站。</p>
+	<p>通过 BGP，各大网络可以交换路由信息：如何从您所在的地址访问它们。这些路由可能很具体，类似于在 GPS 上查找特定城市，也可能非常宽泛，就如同让 GPS 指向某个省。这就是今天的问题所在。</p>
+	<p>宾夕法尼亚州的互联网服务供应商（<a href="https://bgp.he.net/AS33154" target="_blank">AS33154</a> - DQE Communications）在其网络中使用了 BGP 优化器，这意味着其网络中有很多更具体的路由。具体路由优先于更一般的路由（类似于在滴滴 中，前往北京火车站的路线比前往北京的路线更具体)。</p>
+	<p>DQE 向其客户（<a href="https://bgp.he.net/AS396531" target="_blank">AS396531</a> - Allegheny）公布了这些具体路由。然后，所有这些路由信息被转送到他们的另一个转接服务供应商 (<a href="https://bgp.he.net/AS701" target="_blank">AS701</a> - Verizon)，后者则将这些"更好"的路线泄露给整个互联网。由于这些路由更精细、更具体，因此被误认为是“更好”的路由。</p>
+	<p>泄漏本应止于 Verizon。然而，Verizon 违背了以下所述的众多最佳做法，因缺乏过滤机制而导致此次泄露变成重大事件，影响到众多互联网服务，如<a href="https://twitter.com/atoonk/status/1143143943531454464" target="_blank">亚马逊、Linode 和 Cloudflare</a>。</p>
+	<p>这意味着，Verizon、Allegheny 和 DQE 突然之间必须应对大量试图通过其网络访问这些服务的互联网用户。由于这些网络没有适当的设备来应对流量的急剧增长，导致服务中断。即便他们有足够的能力来应对流量剧增，DQE、Allegheny 和 Verizon 也<strong>不应该被允许</strong>宣称他们拥有访问 Cloudflare、亚马逊、Linode 等服务的最佳路由...</p>
+	<p></p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/07/1.png" class="kg-image">
+		<figcaption>涉及 BGP 优化器的 BGP 泄漏过程</figcaption>
+	</figure>
+	<p></p>
+	<p>在事件中，我们观察到，在最严重的时段，我们损失了大约 15% 的全球流量。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/07/2.png" class="kg-image">
+		<figcaption>事件中 Cloudflare 的流量水平。</figcaption>
+	</figure>
+	<p></p>
+	<h4 id="--1"><strong>如何防止此类泄漏？</strong></h4>
+	<p>有多种方法可以避免此类泄漏：</p>
+	<p>一，在配置 BGP 会话的时候，可以对其接收的路由网段的数量设置硬性限制。这意味着，如果接收到的路由网段数超过阈值，路由器可以决定关闭会话。如果 Verizon 有这样的前缀限制，这次事件就不会发生。设置前缀数量限制是最佳做法。像 Verizon 这样的供应商可以无需付出任何成本便可以设置。没有任何合理的理由可以解释为什么他们没有设置这种限制的原因，只能归咎为草率或懒惰可能就是因为草率或懒惰。</p>
+	<p>二，网络运营商防止类似泄漏的另外一种方法是：实施基于 IRR （Internet Routing Registry）的筛选。IRR 是因特网路由注册表，各网络所有者可以将自己的网段条目添加到这些分布式数据库中。然后，其他网络运营商可以使用这些 IRR 记录，在与同类运营商产生BGP 会话时，生成特定的前缀列表。如果使用了 IRR 过滤，所涉及的任何网络都不会接受更具体的网段前缀。非常令人震惊的是，尽管 IRR 过滤已经存在了 24 年（并且有详细记录），Verizon 没有在其与 Allegheny的 BGP 会话中实施任何此类过滤。IRR 过滤不会增加 Verizon 的任何成本或限制其服务。再次，我们唯一能想到的原因是草率或懒惰。</p>
+	<p>三，我们去年在全球实施和部署的 RPKI 框架旨在防止此类泄漏。它支持对源网络和网段大小进行过滤。Cloudflare 发布的网段最长不超过 20 位。然后，RPKI 会指示无论路径是什么，都不应接受任何更具体网段前缀。要使此机制发挥作用，网络需要启用 BGP 源验证。<a href="https://twitter.com/jobsnijders/status/1094976832267522048" target="_blank">AT&amp;T 等许多供应商已在其网络中成功启用此功能</a>。</p>
+	<p>如果 Verizon 使用了 RPKI，他们就会发现播发的路由无效，路由器就能自动丢弃这些路由。</p>
+	<p>Cloudflare 建议所有网络运营商立即<a href="https://blog.cloudflare.com/rpki-details/">部署 RPKI</a>！</p>
+	<p></p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/07/3.png" class="kg-image">
+		<figcaption>使用 IRR、RPKI 和前缀限制预防路由泄漏</figcaption>
+	</figure>
+	<p></p>
+	<p>上述所有建议经充分浓缩后已纳入 MANRS（<a href="https://www.manrs.org/" target="_blank">共同协议路由安全规范</a>）</p>
+	<h4 id="--2"><strong>事件解决</strong></h4>
+	<p>Cloudflare 的网络团队联系了涉事网络：AS33154 (DQE Communications) 和 AS701 (Verizon)。联系过程并不顺畅，这可能是由于路由泄露发生在美国东海岸凌晨时间。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/07/4.png" class="kg-image">
+		<figcaption>发送给 Verizon 的电子邮件截图</figcaption>
+	</figure>
+	<p></p>
+	<p>我们的一位网络工程师迅速联系了 DQE Communications，稍有耽搁之后，他们帮助我们与解决该问题的相关人员取得了联系。DQE 与我们通过电话合作，停止向 Allegheny 播发这些“优化”路线路由。我们对他们的帮助表示感谢。采取此措施后，互联网变回稳定，事态恢复正常。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/07/5.png" class="kg-image">
+		<figcaption>尝试与 DQE 和 Verizon 客服进行沟通的截图</figcaption>
+	</figure>
+	<p></p>
+	<p>很遗憾，我们尝试通过电子邮件和电话联系 Verizon，但直到撰写本文时（事件发生后超过 8 小时），尚未收到他们的回复，我们也不清楚他们是否正在采取行动以解决问题。</p>
+	<p>Cloudflare 希望此类事件永不发生，但很遗憾，当前的互联网环境在预防防止此类事件方面作出的努力甚微。现在，业界都应该通过 RPKI 等系统部署更好，更安全的路由的时候。我们希望主要供应商能效仿 Cloudflare、亚马逊和 AT&amp;T，开始<a href="https://blog.cloudflare.com/cloudflares-rpki-toolkit/">验证路由</a>。尤其并且，我们正密切关注 Verizon 并仍在等候其回复。</p>
+	<p>尽管导致此次服务中断的事件并非我们所能控制，但我们仍对此感到抱歉。我们的团队非常关注我们的服务，在发现此问题几分钟后，即已安排美国、英国、澳大利亚和新加坡的工程师上线解决问题。</p>
+</div>

@@ -15,6 +15,7 @@ You can join the Discord at https://discord.gg/Z94Hn6qVDm for notifications of c
 - `account`: Tracks a free account's entitlements and flags
 - `api-schemas`: This extracts the API schemas from `api.cloudflare.com`, and tracks their changes over time.
 - `billing-rate-plans`: This tracks billing rate plans and their changes over time.
+- `blog`: This tracks blog post content over time.
 - `cdn-cgi`: This tracks various changes to `cdn-cgi` endpoints on Cloudflare's CDN, as well as `request.cf` keys for any additions or changes. This also tracks component changes throughout Cloudflare's network and their different datacenters.
 - `coveo`: This tracks updates to the Coveo Cloudflare indexes, which are used for searching the blog, learning center, etc.
 - `dashboard-subroutes`: This extracts subroutes from the dashboard which can be useful for determining undocumented APIs.
@@ -24,6 +25,7 @@ You can join the Discord at https://discord.gg/Z94Hn6qVDm for notifications of c
 - `entitlements`: This isn't automated, but tracks a list of all known entitlements for accounts and zones.
 - `gates`: This tracks the active gates used for A/B experiments on the dash, etc.
 - `github-repos`: This tracks updates, additions, etc. to all GitHub repos under the Cloudflare org.
+- `jobs`: This tracks Cloudflare job post listings, which can reveal upcoming projects.
 - `marketing`: This extracts the raw JSON data for the marketing site, cloudflare.com.
 - `other`: This tracks some other miscellaneous data (like IPs), not tracked by other scripts.
 - `packages`: This tracks updates and any new packages owned by Cloudflare.

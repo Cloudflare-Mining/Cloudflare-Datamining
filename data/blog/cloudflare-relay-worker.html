@@ -1,0 +1,95 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/04/image5-13.png" class="kg-image"></figure>
+	<p>Our <a href="https://blog.cloudflare.com/new-tools-to-monitor-your-server-and-avoid-downtime/">Notification Center</a> offers first class support for a variety of popular services (a list of which are available <a href="https://developers.cloudflare.com/fundamentals/notifications/create-notifications/configure-webhooks" target="_blank">here</a>). However, even with such extensive support, you may use a tool that isn’t on that list. In that case, it is possible to leverage <a href="https://workers.cloudflare.com" target="_blank">Cloudflare Workers</a> in combination with a generic webhook to deliver notifications to <em>any</em> service that accepts webhooks.</p>
+	<p>Today, we are excited to announce that we are open sourcing a Cloudflare Worker that will make it as easy as possible for you to transform our generic webhook response into any format you require. Here’s how to do it.</p>
+	<p>For this example, we are going to write a Cloudflare Worker that takes a generic webhook response, transforms it into the correct format and delivers it to Rocket Chat, a popular customer service messaging platform. &nbsp;When Cloudflare sends you a generic webhook, it will have the following schema, where “text” and “data” will vary depending on the alert that has fired: </p>
+	<pre><code class="language-json">{
+   "name": "Your custom webhook",
+   "text": "The alert text",
+   "data": {
+       "some": "further",
+       "info": [
+           "about",
+           "your",
+           "alert",
+           "in"
+       ],
+       "json": "format"
+   },
+   "ts": 123456789
+}</code></pre>
+	<p>Whereas Rocket Chat is looking for this format:</p>
+	<pre><code class="language-json">{
+   "text": "Example message",
+   "attachments": [
+       {
+           "title": "Rocket Chat",
+           "title_link": "https://rocket.chat",
+           "text": "Rocket.Chat, the best open source chat",
+           "image_url": "/images/integration-attachment-example.png",
+           "color": "#764FA5"
+       }
+   ]
+}</code></pre>
+	<h2 id="getting-started">Getting Started</h2>
+	<p>Firstly, you’ll need to ensure you are ready to develop on the Cloudflare Workers platform. You can find more information on how to do that <a href="https://developers.cloudflare.com/workers/" target="_blank">here</a>. For the purpose of this example, we will assume you have a Cloudflare account and Wrangler, the Workers CLI, setup. </p>
+	<p>Next, let us see the steps to extend the notifications system in detail.</p>
+	<p><strong>Step 1</strong><br>Clone the webhook relay worker GitHub repository: <code>git clone https://github.com/cloudflare/cf-webhook-relay.git</code></p>
+	<p><strong>Step 2</strong><br>Check the webhook payload format required by your communication tool. In this specific case, it would look like the Rocket Chat example payload shared above.</p>
+	<p><strong>Step 3</strong><br>Sign up for Rocket Chat and add a webhook integration to accept incoming webhook notifications.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/04/image2-15.png" class="kg-image" alt="Example configuration of incoming webhook integration in Rocket Chat"></figure>
+	<p><strong>Step 4<br></strong>Configure an encrypted wrangler secret for request authentication and the Rocket Chat URL for sending requests in your Worker: <a href="https://developers.cloudflare.com/workers/platform/environment-variables/#adding-secrets-via-wrangler" target="_blank">Environment variables · Cloudflare Workers docs</a> (for this example, the secret is not encrypted.)</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/04/image3-15.png" class="kg-image" alt="Workers environment variables configuration in Cloudflare dashboard"></figure>
+	<p><strong>Step 5</strong><br>Modify your worker to accept POST webhook requests with the secret configured as a query param for authentication.</p>
+	<pre><code class="language-json">if (headers.get("cf-webhook-auth") !== WEBHOOK_SECRET) {
+    return new Response(":(", {
+        headers: {'content-type': 'text/plain'},
+            status: 401
+    })
+}</code></pre>
+	<p><strong>Step 6</strong><br>Convert the incoming request payload from the notification system (like in the example shared above) to the Rocket Chat format in the worker.</p>
+	<pre><code class="language-json">let incReq = await request.json()
+let msg = incReq.text
+let webhookName = incReq.name
+let rocketBody = {
+    "text": webhookName,
+    "attachments": [
+        {
+            "title": "Cloudflare Webhook",
+            "text": msg,
+            "title_link": "https://cloudflare.com",
+            "color": "#764FA5"
+        }
+    ]
+}</code></pre>
+	<p><strong>Step 7</strong><br>Configure the Worker to send POST requests to the Rocket Chat webhook with the converted payload.</p>
+	<pre><code class="language-json">const rocketReq = {
+    headers: {
+        'content-type': 'application/json',
+    },
+    method: 'POST',
+    body: JSON.stringify(rocketBody),
+}
+const response = await fetch(
+    ROCKET_CHAT_URL,
+    rocketReq,
+)
+const res = await response.json()
+console.log(res)
+return new Response(":)", {
+    headers: {'content-type': 'text/plain'},
+})</code></pre>
+	<p><strong>Step 8</strong><br>Set up deployment configuration in your wrangler.toml file and publish your Worker. You can now see the Worker in the Cloudflare dashboard.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/04/image1-20.png" class="kg-image" alt="View and Manage workers in Cloudflare dashboard"></figure>
+	<p><strong>Step 9</strong><br>You can manage and monitor the Worker with a variety of available tools.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/04/image9-8.png" class="kg-image" alt="Monitoring workers in Cloudflare dashboard"></figure>
+	<p><strong>Step 10</strong><br>Add the Worker URL as a generic webhook to the notification destinations in the Cloudflare dashboard: <a href="https://developers.cloudflare.com/fundamentals/notifications/create-notifications/configure-webhooks/#generic-webhooks" target="_blank">Configure webhooks · Cloudflare Fundamentals docs</a>.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/04/image6-7.png" class="kg-image" alt="Webhooks destination under Destinations in Notifications tab"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/04/image7-6.png" class="kg-image" alt="Workers URL as a generic webhook in Cloudflare dashboard example"></figure>
+	<p><strong>Step 11</strong><br>Create a notification with the destination as the configured generic webhook: <a href="https://developers.cloudflare.com/fundamentals/notifications/create-notifications/" target="_blank">Create a Notification · Cloudflare Fundamentals docs</a>.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/04/image8-6.png" class="kg-image" alt="Example of notification creation"></figure>
+	<p><strong>Step 12</strong><br>Tada! With your Cloudflare Worker running, you can now receive all notifications to Rocket Chat. We can configure in the same way for any communication tool.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/04/image4-9.png" class="kg-image" alt="Sample webhook notification in Rocket Chat"></figure>
+	<p>We know that a notification system is essential to proactively monitor any issues that may arise within a project. We are excited with this announcement to make notifications available to any communication service without having to worry too much about the system's compatibility to them. We have lots of updates planned, like adding more alertable events to choose from and extending our support to a wide range of webhook services to receive them.</p>
+	<p><em>If you're interested in building scalable services and solving interesting technical problems, we are hiring engineers on our team in </em><a href="https://boards.greenhouse.io/cloudflare/jobs/3252504?gh_jid=3252504" target="_blank"><em>Austin</em></a><em> &amp; </em><a href="https://boards.greenhouse.io/cloudflare/jobs/3231716?gh_jid=3231716" target="_blank"><em>Lisbon</em></a>.</p>
+</div>

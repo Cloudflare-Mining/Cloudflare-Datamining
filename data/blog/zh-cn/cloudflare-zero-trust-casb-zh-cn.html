@@ -1,0 +1,43 @@
+<div class="post-content lh-copy gray1">
+	<p>早些时候，Cloudflare <a href="https://www.cloudflare.com/press-releases/2022/cloudflare-acquires-vectrix/" target="_blank">宣布</a>我们收购了云访问安全代理 (CASB) 公司 Vectrix，该公司专注于解决团队使用的 SaaS 应用程序和公共云提供商的控制和可见性问题。</p>
+	<p>我们很高兴欢迎 Vectrix 团队及其技术加入 Cloudflare Zero Trust 产品组。我们认为 CASB 不应该是一个单点解决方案。相反，CASB 的功能应该是全面 Zero Trust 部署的一个组成部分。包括 CASB 在内的每一项技术都应该比作为独立产品更好地协同工作。</p>
+	<p>我们知道，对于大多数客户来说，这种迁移是一段旅程。对于我们自己在 Cloudflare 的团队也是如此。我们已经建立了自己的 Zero Trust 平台，可以在这个过程的任何阶段为客户解决问题。</p>
+	<h2 id="-">首先，保护您控制的资源</h2>
+	<p>几年前，我们通过使用硬件设备创建专用网络来保护 Cloudflare 员工所需的内部资源。我们在数据中心内部署了应用程序，并使其可用于该网络。旧金山办公室内的用户连接到一个安全的 Wi-Fi 网络，从而进入该网络。</p>
+	<p>对于其他人，我们在专用网络上开了一个入口，员工们通过在他们设备上使用虚拟专用网络 (VPN) 客户端来假装自己在办公室。我们通过将旧金山办公室的墙壁延伸到世界其他地方，从而创造了一座城堡和护城河。</p>
+	<p>我们的安全性团队讨厌这一点。一旦通过 VPN 客户端的身份验证，用户通常可以连接到我们专用网络上的任何目的地——网络默认信任他们。我们缺乏对谁可以获得什么资源的细分。同样可怕的是，我们几乎看不到网络内部发生的事情。</p>
+	<p>一种选择是构建一个带有内部防火墙的传统分段网络，以及保持 VPN 设备、防火墙和服务器同步的配置噩梦。但我们知道，有更好、更灵活、更现代的方式。</p>
+	<p>为了解决这些问题，我们在 Cloudflare One 中<a href="https://blog.cloudflare.com/cloudflare-access-now-teams-of-any-size-can-turn-off-their-vpn/">构建了第一个产品</a> Cloudflare Access。Cloudflare Access 使用我们的全球网络检查每个请求或连接的身份、组成员身份、设备状态、多因素方法等，以确定是否应允许。组织可以在 Cloudflare 上运行的专用网络上构建<a href="https://blog.cloudflare.com/zh-cn/cloudflare-access-for-saas-zh-cn/">特定于应用程序</a>或 <a href="https://blog.cloudflare.com/zh-cn/zero-trust-private-networking-rules-zh-cn/">IP 地址的规则</a>。Cloudflare Access 还记录每个请求和连接，以低工作量提供高可见性。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/02/image2-9.png" class="kg-image"></figure>
+	<p>这次迁移<a href="https://blog.cloudflare.com/dogfooding-from-home/">改变了 Cloudflare 的安全性模型</a>。得益于 Cloudflare 的全球网络和<a href="https://www.cloudflare.com/zh-tw/performance/accelerate-internet-applications/" target="_blank">应用程序性能</a>产品，我们也<a href="https://blog.cloudflare.com/the-zero-trust-platform-built-for-speed/">不用再被迫接受性能降级</a>。在全球 250 多个城市的数据中心中，用户只需几毫秒就可以决定谁被允许。对于 web 应用程序，Cloudflare Access 与我们的 WAF 内联运行，同时可立即与我们的负载平衡器一起搭配使用。Cloudflare 的网络加速了请求和数据包，让用户更快地连接到他们需要的工具。</p>
+	<p>Cloudflare Access 让我们和数以千计的其他团队弃用了传统的 VPN 安全性模型，但互联网的其余部分带来了不同类型的挑战——我们应如何保护我们的用户及其设备和数据免受攻击？</p>
+	<h2 id="--1">接下来，保护您的团队免受互联网其余部分的影响</h2>
+	<p>公共互联网几乎允许任何人以用户或主机的身份进行连接。这种开放性既强大又可怕。当公司设备上的员工需要使用互联网的其余部分时，他们可能会遇到网络钓鱼网站、恶意软件主机以及其他窃取数据和破坏业务的尝试。</p>
+	<p>从历史上来看，组织依赖于类似的城堡和护城河方法。他们通过集中式数据中心将用户流量回传到互联网上的任何目的地。在该数据中心内，IT 部门安装和监控物理设备以提供网络防火墙、代理和安全 web 网关等安全性。</p>
+	<p>当员工仅需要偶尔连接到公共互联网时，这种模式就可以正常工作。大多数工作都是在用户面前的桌面上执行的。当公司开始转向由其他团队托管的 SaaS 应用程序，并且员工将大部分时间都花在互联网上时，这个安全性框架就崩溃了。</p>
+	<p>当所有流量都必须首先到达远程安全性设备时，用户体验会受到影响。IT 和安全性团队不得不在努力扩大或缩小规模的同时维护和修补设备。通过 MPLS 链路回传流量的成本抵消了迁移到互联网上的 SaaS 应用程序所节省的资金。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/02/image1-10.png" class="kg-image"></figure>
+	<p><a href="https://www.cloudflare.com/products/zero-trust/gateway/" target="_blank">Cloudflare Gateway</a> 将 Cloudflare 的网络转向另一个方向，以在用户连接到互联网的其余部分时保护他们。用户不是将流量回传到一个集中位置，而是连接到附近的 Cloudflare 数据中心，我们在该数据中心应用一层或多层安全性过滤和日志记录，然后将他们的流量加速传输到最终目的地。</p>
+	<p>客户可以选择他们希望如何开始这一旅程。Cloudflare 运营着世界上最快的 DNS 解析器，在此基础上，<a href="https://blog.cloudflare.com/helping-keep-governments-safe-and-secure/">我们构建了 DNS 过滤</a>，由我们每天处理大量互联网所收集的情报提供支持。其他客户决定首先拆除他们的网络防火墙设备，然后通过将漫游用户或整个办公室和数据中心连接到 Cloudflare 来将该功能转移到 Cloudflare 的网络中。</p>
+	<p>随着威胁不断演进，Cloudflare 的 Secure Web Gateway 会检查 HTTPS 流量中是否存在隐藏在文件下载中的恶意软件或未经批准的 SaaS 服务意外丢失数据的情况。Cloudflare 的<a href="https://blog.cloudflare.com/zh-cn/phishing-protection-browser-zh-cn/">浏览器隔离服务</a>通过在我们的网络中而不是在用户设备上运行浏览器来增加另一层威胁防护。借助 Cloudflare 网关和浏览器隔离，安全性团队还可以对流经我们网络的流量应用精细的数据丢失控制，包括停止文件上传到阻止网页本身的复制和粘贴。</p>
+	<h2 id="-saas-">现在，控制 SaaS 应用程序中的数据和配置</h2>
+	<p>在 Zero Trust 之旅的这一点上，您的团队可以控制用户如何访问关键资源，以及如何保护这些用户及其数据免受外部攻击。这两者都需要控制网络——在流量离开您组织中的设备或到达您的基础结构时检查流量。这样的话，就遗漏了一件事情。随着越来越多的数据存在于您无法控制的 SaaS 应用程序中，您将如何保持一致的过滤、日志记录和审计级别？</p>
+	<p>Cloudflare Zero Trust 平台在去年发布了许多功能来帮助客户解决这个问题以及更广泛的 “CASB” 挑战。首先，我们构建了一项功能，允许您的团队通过 Cloudflare 的 Secure Web Gateway <a href="https://blog.cloudflare.com/zh-cn/cloudflare-access-for-saas-zh-cn/">强制登录到您的 SaaS 应用程序</a>，您可以在其中控制规则和可见性。接下来，我们使用来自 Secure Web Gateway 的数据为您的团队提供<a href="https://blog.cloudflare.com/introducing-shadow-it-discovery/">全面的影子 IT 报告</a>，以了解您的团队正在使用哪些应用程序以及他们应该使用哪些应用程序。</p>
+	<p>尤其是，客户使用影子 IT 报告开始构建<a href="https://blog.cloudflare.com/gateway-app-policies/">规则以阻止访问未经批准的 SaaS 应用程序</a>，或阻止将文件上传到特定未经批准的 SaaS 应用程序等操作，但这些工具中可用的协作对您的组织构成风险。</p>
+	<p>只需单击一下即可轻松避免数据泄露。我们可能会和公共互联网而不是我们的团队共享文档。我们可能会让 S3 存储桶不受保护。我们可能会邀请错误的用户访问私有 GitHub 存储库或在我们的电子邮件系统中安装恶意插件。这些 SaaS 应用程序中的静态数据容易受到新型攻击。</p>
+	<p>其中一些应用程序试图在自己的空间中解决这个问题，但是 SaaS 应用程序的快速采用以及单独配置每个应用程序的困难导致安全性团队浪费了数千小时。Vectrix 的创始人与一些团队进行了交谈，这些团队曾经不得不专门聘请全职员工来手动配置和检查权限设置和日志。所以他们得到了一个更好的答案。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/02/image3-13.png" class="kg-image"></figure>
+	<p>Vectrix 扫描您的团队用来检测配置、权限和共享异常的 SaaS 应用程序。每个 SaaS 应用程序都是不同的，可能面临的风险包括公开的 Google 表格到 GitHub 中泄露的机密等等，而 Vectrix 为客户提供了一个单一的地方来控制和审计这些类型的事件。</p>
+	<h2 id="-vectrix-">为什么选择 Vectrix？</h2>
+	<p>为了帮助我们的客户解决这个问题，我们评估了一些选项，包括构建我们自己的 API 驱动的 CASB 解决方案以及与该领域的其他公司进行交流。在根据我们对这组产品的优先级进行评估后，Vectrix 成为不二之选。</p>
+	<h3 id="vectrix-">Vectrix 团队以客户至上</h3>
+	<p>Vectrix 的使命是专注于为任何规模的组织（包括没有大型安全性团队的组织）提供“任何人都可以使用的简单、直接的安全扫描……”。通过使解决方案易于访问和使用，Vectrix 减少了安全性障碍。</p>
+	<p>我们有着同样的目标。Cloudflare 的存在是为了帮助构建更好的互联网。首先是让任何人都可以访问安全性工具，从而使互联网变得更安全。从免费向任何客户提供 SSL 证书，到向多达 50 名用户的团队免费提供 Zero Trust 产品组，我们一直致力于帮助我们的客户解决以前无法解决的问题。</p>
+	<h3 id="--2">他们的技术更快地创造价值</h3>
+	<p>Cloudflare 的应用程序安全性和性能产品的最初宣传之一是在五分钟之内即可完成设置。我们知道，部署新服务的成本，尤其是对于小型团队而言，可能意味着组织延迟进行安全性和性能改进。</p>
+	<p>我们认为客户不应该妥协，Vectrix 也同样如此。Vectrix 产品专注于在不到五分钟的时间内提供即时价值，客户只需在配置 SaaS 应用程序的第一次扫描后点击两三下即可。客户可以在几分钟内开始标记其组织中的风险，而无需进行复杂的部署。</p>
+	<h3 id="-zero-trust-1-1-3">与我们现有的 Zero Trust 产品一起使用时，我们为客户带来的价值为 1+1=3</h3>
+	<p>Vectrix 产品不会作为单点解决方案插件插入。我们将其作为我们 Zero Trust 捆绑包的核心部分，因为集成来自 Secure Web Gateway 等产品的功能为客户提供了一个可以更好地协同工作的综合解决方案。</p>
+	<h2 id="--3">后续计划</h2>
+	<p>我们很高兴欢迎 Vectrix 加入 Cloudflare 团队。您可以在今天发布的<a href="https://blog.cloudflare.com/zh-cn/cloudflare-acquires-vectrix-to-expand-zero-trust-saas-security-zh-cn/">这篇博客</a>中详细了解他们决定加入 Cloudflare 的原因。我们已经开始将他们的服务迁移到 Cloudflare 全球网络，并计划在未来几个月内开放注册测试版。如果您有兴趣，请<a href="https://www.cloudflare.com/products/zero-trust/lp/casb-beta/" target="_blank">在此处注册</a>。不要让测试版延迟您开始使用这些产品的旅程——我们将根据用户首次开始部署 Cloudflare Zero Trust 产品的时间来邀请他们从候补名单走向实际使用。</p>
+</div>

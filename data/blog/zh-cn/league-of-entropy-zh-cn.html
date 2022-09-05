@@ -1,0 +1,84 @@
+<div class="post-content lh-copy gray1">
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/09/image7-2.png" class="kg-image"></figure>
+	<p>在2019年加密周（<a href="https://blog.cloudflare.com/welcome-to-crypto-week-2019/">Crypto Week 2019</a>）开幕之际，我们非常激动能够宣布一个新的解决方案，用以解决密码学中一个长期存在的问题。要更好地理解此问题背后的技术，请参阅下一篇<a href="https://blog.cloudflare.com/inside-the-entropy">文章</a>以获得更深入的了解。</p>
+	<p>从密码学到大额彩票再到<a href="https://arxiv.org/pdf/1611.02176.pdf" target="_blank">量子力学</a>，一切都需要某种形式的随机性。但究竟随机生成一个数字是什么意思呢？随机性又从何而来呢？</p>
+	<p>随机性产生可以追溯到三千年前，当时的古人用滚动“骨头”来决定他们的命运。联想一下彩票——问题就变得简单了，对吧？每个人各自买了彩票，选择了6位数字，然后等待官方人员从一个篮子里随机抽取数字。这听起来像是万无一失的。然后在1980年，宾夕法尼亚州彩票抽奖的主持人<a href="https://www.nytimes.com/1981/05/21/us/2-guilty-of-bid-to-rig-pennsylvania-lottery.html" target="_blank">因为使用加重的球来选择中奖号码而被逮捕</a>。这一次教训，以及其他复杂系统产生随机数的需要，刺激了随机数生成器的产生。</p>
+	<p>就像彩票游戏中不可预测的随机数选取一样，随机数生成器是一种负责以不可预测的方式生成数字序列的设备或软件。随着对随机性的需求增加，对不断生成大量不可预测的数字的需求也在增加。这就是为什么很多组织开发了<a href="https://csrc.nist.gov/Projects/Interoperable-Randomness-Beacons" target="_blank">公共可用的随机信标</a>——由服务器定期生成完全不可预测的512位字符串（大约155位数字）。</p>
+	<p>现在，您可能会认为使用随机性信标进行随机生成过程（例如抽奖选择随机数所需的）会使该过程具有抵御对抗性操纵的能力，但事实并非如此。已经有人在利用单源随机性来生成有偏差的结果了。</p>
+	<p>现如今，随机信标为彩票和选举审计生成数字——这两者都影响着数百万人的生活和财富。不幸的是，有人利用了这些信标的单一随机源来产生不诚实的结果，使一名<a href="https://www.nytimes.com/interactive/2018/05/03/magazine/money-issue-iowa-lottery-fraud-mystery.html" target="_blank">腐败的内部人员</a>受益。为了阻止这种恶意的随机源利用，Cloudflare和其他随机信标提供商联合起来，为用户带来了<strong>法定数量的分散随机信标</strong>。毕竟，八个独立的全球分布式信标比一个信标更值得信任！</p>
+	<p>我们很高兴地向您介绍……</p>
+	<p>熵……联……盟！！！！！！</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/09/image8-1.png" class="kg-image"></figure>
+	<p></p>
+	<h2 id="-">什么是随机信标？</h2>
+	<p>随机信标是一种公共服务，它以固定的间隔提供不可预测的随机数。</p>
+	<p><a href="https://github.com/dedis/drand" target="_blank">drand</a>（发音为dee-rand）是由<a href="https://twitter.com/nikkolasg1" target="_blank">Nicolas Gailly</a>开发的<em>分布式随机</em>信标; 在<a href="https://twitter.com/daeinar" target="_blank">Philipp Jovanovic</a>和<a href="https://github.com/PizzaWhisperer" target="_blank">Mathilde Raynal</a>的帮助下。该项目起源于<a href="https://ieeexplore.ieee.org/abstract/document/7958592" target="_blank">2017年IEEE安全与隐私研讨会上</a>发表的研究论文：<a href="https://www.ieee-security.org/TC/SP2017/papers/413.pdf" target="_blank">可扩展抗偏分布随机性</a>，由来自<a href="https://dedis.epfl.ch/" target="_blank">分散式/分布式系统（DEDIS）实验室</a>在<a href="https://www.epfl.ch/" target="_blank">洛桑联邦理工大学</a>，<a href="https://www.yale.edu/" target="_blank">耶鲁大学</a>和<a href="https://www.trincoll.edu/" target="_blank">圣三一学院哈特福德</a>的<a href="http://ewa.syta.us/" target="_blank">Ewa Syta</a>，<a href="https://philipp.jovanovic.io/" target="_blank">Philipp Jovanovic</a>，<a href="https://lefteriskk.github.io/" target="_blank">Eleftherios Kokoris Kogias</a>，<a href="https://github.com/nikkolasg/" target="_blank">Nicolas Gailly</a>，<a href="https://people.epfl.ch/linus.gasser" target="_blank">Linus Gasser</a>，<a href="https://ismailkhoffi.com/" target="_blank">Ismail Khoffi</a>，<a href="http://www.cs.yale.edu/homes/fischer/" target="_blank">Michael J. Fischer</a>，<a href="https://bford.info/" target="_blank"> Bryan Ford</a>，在<a href="https://researchinstitute.io/" target="_blank">研究机构</a>的支持下共同完成。</p>
+	<p>对于每一轮随机生成，drand提供以下属性，如<a href="https://www.ieee-security.org/TC/SP2017/papers/413.pdf" target="_blank">研究论文中所述</a>：</p>
+	<ul>
+		<li><strong>可用性</strong>——以较高的概率成功完成分布式随机生成。</li>
+		<li><strong>不可预测性</strong>——除非有足够数量的drand节点在随机生成协议中发挥作用，否则没有任何一方可以得知该轮的随机输出（除去极少数情况）。</li>
+		<li><strong>不可偏移性</strong>——随机输出的结果是无偏，均匀随机的值（除去极少数情况）。</li>
+		<li><strong>可验证性</strong>——随机输出是第三方可验证的，以drand设置期间计算的集体公钥为参照。备有证明文件的drand节点集通过运行协议来生成唯一的随机输出（除去极少数情况），这是一个需要谨记的鉴证。</li>
+	</ul>
+	<p><em>熵</em>可以度量一个数字的不可预测性。对于随机性来说，熵越大越好，所以自然而然地我们的名字也叫做：熵联盟。</p>
+	<p>我们的创始成员正在贡献他们各自的高熵源，用于提供一个更随机、更不可预测的信标，以每60秒生成可公开验证的随机值。drand信标是分散的，并且是使用适当、可证明是安全的密码原语构建的，这一事实增强了我们对它拥有上述所有属性的信心。</p>
+	<p>这种产生随机性的全球服务器网络确保了，即使有少数服务器离线，信标仍然可以使用剩余的在线服务器生成新的数字。即使一台或两台服务器（或它们的熵源）受到破坏，其余的服务器仍将确保共同产生的熵是完全不可预测和不可偏倚的。</p>
+	<p>到底是谁在运行这个信标？目前，熵联盟是一个全球组织和个人贡献者的联盟，成员包括：Cloudflare、协议实验室研究员Nicolas Gailly、智利大学、洛桑联邦理工学院（École polytechnique fédérale de Lausanne，EPFL）、Kudelski Security和EPFL研究员Philipp Jovanovic和Ludovic Barman。</p>
+	<h2 id="--1">认识熵联盟</h2>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/09/image4-3.png" class="kg-image"></figure>
+	<p>Cloudflare的<strong>LavaRand</strong>：<a href="https://blog.cloudflare.com/lavarand-in-production-the-nitty-gritty-technical-details/">LavaRand</a>从我们位于旧金山总部的Cloudflare熔岩灯墙中获取高熵。灯内“熔岩”的不可预测的流动状态被摄像机捕捉为输入信号，该摄像机将输入反馈到产生随机值的CSPRNG（加密安全伪随机数生成器）中。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/09/epfl.png" class="kg-image"></figure>
+	<p><a href="https://www.epfl.ch/" target="_blank">EPFL</a>的<strong>URand</strong>：URand的力量来自/dev/urandom上每台计算机上的本地随机生成器。随机输入是从诸如键盘按键，鼠标点击，网络流量等输入中收集的。URand将这些随机输入捆绑在一起，从而产生连续的随机流。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/09/image5-2.png" class="kg-image"></figure>
+	<p><a href="https://random.uchile.cl/en/" target="_blank">UChile</a>的<strong>Seismic Girl</strong>：Seismic Girl（地震女孩）每分钟从五个被查询的信息源中提取超级可验证的随机性。这些来源包括：智利震动和震动的测量； 来自当地广播电台的信号流； 精选的Twitter帖子；来自以太坊区块链的数据；和他们自己现成的RNG（随机数发生器）卡。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/09/pasted-image-0.png" class="kg-image"></figure>
+	<p><a href="https://www.kudelskisecurity.com/" target="_blank">Kudelski Security</a>的<strong>ChaChaRand</strong>：ChaChaRand使用基于<a href="https://tools.ietf.org/html/rfc7539" target="_blank">ChaCha20</a>流密码的CRNG（加密随机数生成器）。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/09/image3-3.png" class="kg-image"></figure>
+	<p><a href="https://protocol.ai/" target="_blank">Protocol Labs</a>的<strong>InterplanetaryRand</strong>：InterplanetaryRand利用熵的力量，通过使用环境噪声和Linux PRNG并辅以cpu来源的随机性(<a href="https://blog.cloudflare.com/ensuring-randomness-with-linuxs-random-number-generator/">RdRand</a>)，确保协议在时空上的安全性。</p>
+	<p>我们的英雄们共同致力于#拯救互联网，将他们的随机性结合起来，形成一个全球分布的、密码可验证的随机性信标。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/09/pasted-image-0--1-.png" class="kg-image"></figure>
+	<p></p>
+	<h2 id="--2">公共与私人随机性</h2>
+	<p>不同类型的应用需要不同类型的随机性。</p>
+	<p>生成安全加密密钥的关键是使用无人能预测的私人生成的大随机数。随着随机信标公开生成和宣布随机数，<strong>用户不应该使用随机信标的输出作为其密钥</strong>，因为任何人都可以看到这些数字。如果攻击者能够猜出用户的私钥来自哪个随机数，那么他们就可以破解用户的系统并解密机密信息。这仅仅意味着公共信标生成的随机数不安全，不能用于加密密钥：不是因为随机性本身有什么问题，而是因为这里的随机性是公开的。</p>
+	<p>使用drand信标的客户端如果希望生成一个不会公开宣布的随机值，可以向部分或所有drand节点请求私有随机性。有关如何做到这一点的更多信息，请查看<a href="https://developers.cloudflare.com/randomness-beacon/" target="_blank">开发人员文档</a>。</p>
+	<p>另一方面，公共随机性经常被用户使用，他们需要一个不应该是秘密的随机性值，但是它的生成必须是透明的、公平的和公正的。这对于诸如游戏，彩票和选举审计等许多目的而言都是完美的，审计人员和公众需要透明地了解何时、如何以及如何公平地生成随机值。</p>
+	<p>熵联盟提供了任何用户都可以从<a href="https://leagueofentropy.com/" target="_blank">leagueofentropy.com</a>检索到的<strong>公共随机性</strong>。用户将能够查看每60秒生成的512位字符串值。为什么是60秒？没有特别的理由。从理论上讲，随机性的生成可以在硬件允许的范围内尽可能地快，但这对于大多数用例来说并不是必需的。每60秒生成一个值相当于在24小时内为用户提供了1440个随机值。</p>
+	<p>*友情提醒：这个随机性是公共的。请勿将其用于私人密钥*</p>
+	<h2 id="--3">为什么公共随机性很重要？</h2>
+	<h4 id="--4">选举审计</h4>
+	<p>在美国，大多数选举在之后都会进行审计，以核实选举是否公正、是否公平。健全的审计系统提高了选举官员对舞弊指控作出有效反应的能力，并且可以发现系统中的漏洞，从而增强选民的信心。</p>
+	<p>目前，大部分选票和选区都是由选举官员随机选择的。这种方法可能容易受腐败内部人士左右，他们可能会选择某些选区来得到自己喜欢的结果。即使在每个选区都被篡改的情况下，通过使用一个强有力的、分布式的、最重要的是不可预测的和不偏倚的信标，选举审计员就可以确信，只要攻击者不能预测选区的选择，仅用一小部分选区就足以进行审计。</p>
+	<p>在智利，选举投票工作人员是从合格选民群中随机选出的。智利大学的Random UChile <a href="https://random.uchile.cl/en/" target="_blank">项目</a>一直致力于开发一个使用随机信标进行此过程的原型。Random UChile的领导人Alejandro Hevia认为，对于选举审计，公共随机性对于透明度很重要，分布式随机性使人们能够相信，信标的<em>多个</em>贡献者不可能相互勾结，他们信任的不是单个实体。</p>
+	<h4 id="--5">彩票</h4>
+	<p>从2005年到2014年，多州彩票协会的信息安全主管Eddie Tipton <a href="https://www.nytimes.com/interactive/2018/05/03/magazine/money-issue-iowa-lottery-fraud-mystery.html" target="_blank">操纵了一个随机数发生器</a>并<strong>六次获得中奖！</strong></p>
+	<p>Tipton可以通过跳过标准随机播种过程来预测中奖号码。他能够在随机数生成器代码的函数中插入代码来检查日期、星期几和时间。如果这三个变量不对齐，随机数发生器就会使用放射性物质和盖革计数器生成随机种子。如果这些变量的排列被秘密编程，通常每年只发生一次，那么它将使用一个7变量公式来生成种子，并将其输入<a href="https://en.wikipedia.org/wiki/Mersenne_Twister" target="_blank">Mersenne Twister</a>（一个<em>伪</em>随机数发生器）中。</p>
+	<p>Tipton知道这7个变量。他知道种子可能是一个小数字池中的一个数。这些认识使他能够预测Mersenne Twister的结果。<strong>分布式随机信标</strong>可以使这样骗局更难发生，即使它仍有可能发生。</p>
+	<p>前爱荷华州助理司法部长、现任爱荷华州审计员Rob Sand曾起诉了Tipton的案件，他同时也是改善控制权的倡导者。他说：</p>
+	<p><em>“一个年收入高达800亿美元的行业，没有理由不使用最复杂、真正随机的手段来保证诚信。”</em></p>
+	<h4 id="--6">分布式总账平台</h4>
+	<p>许多加密货币和基于区块链的分布式计算平台（如<a href="https://en.wikipedia.org/wiki/Ethereum" target="_blank">Ethereum</a>），常常需要在应用层进行随机选择。防止这种随机选择产生偏差的一种解决方案是使用分布式随机信标（如drand）生成随机值。以太坊基金会（<a href="https://www.ethereum.org/" target="_blank">Ethereum Foundation</a>）研究员Justin Drake认为，“drand-type联合的随机性可能特别适合实时分散的以太坊应用程序，比如实时游戏和赌博”。这是因为它可以提供超低延迟的随机性，适用于需要公共随机性的广泛应用程序。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/09/The-whole-league-copy.png" class="kg-image"></figure>
+	<p></p>
+	<h2 id="-drand-">让我们开始使用drand吧！</h2>
+	<p>要了解有关熵联盟以及如何使用分布式随机信标的更多信息，请访问<a href="https://leagueofentropy.com/" target="_blank">https://leagueofentropy.com</a>。该网站定期显示网络生成的随机性，您甚至可以看到以前生成的值。来试一试吧！</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/09/league-of-entropy-map-copy@2x--1-.png" class="kg-image"></figure>
+	<p></p>
+	<h2 id="--7">如何加入联盟：</h2>
+	<p>想要加入联盟吗？？我们并不是独占的！</p>
+	<p>如果您是有兴趣为drand信标做出贡献的组织或个人，请查看<a href="https://developers.cloudflare.com/randomness-beacon/" target="_blank">开发人员文档</a>，以获取有关设置服务器和加入现有组的需求的更多信息。drand目前处于测试版发布阶段，您必须将批准请求发送至<a href="/cdn-cgi/l/email-protection#d1bdb4b0b6a4b4beb7b4bfa5a3bea1a891b6bebeb6bdb4b6a3bea4a1a2ffb2bebc"><span class="__cf_email__" data-cfemail="5c30393d3b2939333a3932282e332c251c3b33333b30393b2e33292c2f723f3331">[email&nbsp;protected]</span></a>，才能被批准成为贡献服务器。</p>
+	<h2 id="--8">展望未来</h2>
+	<p>未来的互联网需要不可预测的随机信标，只有这样才有意义。熵联盟现在就在为未来的系统利用可信的公共随机性奠定基础。我们的目标是增加用户的信任度，并为您的所有公共熵需求提供一站式服务。来吧，加入我们！</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/09/image2-4.png" class="kg-image"></figure>
+	<p><br><a href="https://blog.cloudflare.com/tag/crypto-week/">加密周</a> <a href="https://blog.cloudflare.com/tag/security/">安全性</a> <a href="https://blog.cloudflare.com/tag/crypto/">加密</a> <a href="https://blog.cloudflare.com/tag/cryptography/">密码学</a> <a href="https://blog.cloudflare.com/tag/entropy/">熵</a></p>
+</div>

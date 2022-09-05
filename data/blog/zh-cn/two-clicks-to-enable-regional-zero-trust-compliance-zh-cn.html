@@ -1,0 +1,40 @@
+<div class="post-content lh-copy gray1">
+	<p>您的团队成员可能不仅是在家办公——他们可能来自不同的地区或国家。远程办公的灵活性使员工有机会在他们长大的城镇或一直想去的国家/地区工作。但是，这种分布方式也带来了合规性方面的挑战。</p>
+	<p>根据行业的不同，将数据保存在特定区域内可能是合规性或监管需求。您可能需要员工从某些国家/地区进行连接，或将整个国家/地区完全排除在您的公司系统之外。</p>
+	<p>当我们在实体办公室工作时，将数据保存在一个国家内部是很容易的。当然，连接到该办公室的应用程序的所有用户都需要处在那个国家内部。远程办公改变了这一点，团队不得不努力寻找一种方法来保持人们在任何地方的工作效率，这常常导致在合规性方面的牺牲。从今天开始，您只需单击两次即可在Cloudflare Access中轻松实现基于地理位置的合规性。</p>
+	<p>现在，您可以建立规则，要求员工从某些国家/地区进行连接。您还可以添加阻止团队成员从其他国家连接的规则。此功能可与配置的任何身份提供程序一起使用，并且不需要用户或管理员进行其他更改。</p>
+	<h3 id="-cloudflare-access-">什么是Cloudflare Access？</h3>
+	<p>Cloudflare Access通过对每个请求应用零信任实施来保护应用程序的安全。Access不会信任私有网络上的任何人，而是在有人尝试访问应用程序时检查其身份。借助Cloudflare的全球网络，这项检查将在全球200多个城市的数据中心进行，以免影响性能。</p>
+	<p>在幕后，管理员可以建立规则来决定谁能够使用Access保护的工具。反过来，当用户需要连接到这些工具时，系统会提示他们使用其中一个身份提供程序选项进行身份验证。Cloudflare Access将根据允许的用户列表检查其登录名，如果允许，则放行该请求。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/12/image-16.png" class="kg-image"></figure>
+	<p>Cloudflare Access可以检查的不仅仅是用户名。作为一个零信任平台，Access汇总了有关用户的多个标识来源，并将它们呈现给管理员。这些标识包括了用户是否使用相互TLS客户端证书或硬键进行身份验证。然而，除了多因素身份验证之外，一些组织还有围绕区域的合规性要求。</p>
+	<h3 id="-">允许某些国家的访问，排除其他国家的连接</h3>
+	<p>您可以构建尽可能简单的Cloudflare Access规则，例如“只允许邮箱地址为@team.com的团队成员访问”。但是仅有用户名和密码还不够。根据您的所处位置或需要在何处进行操作，您可以使用Cloudflare Access在身份提供商的工作流之上对特定国家的规则进行分级。</p>
+	<p>在此版本中，您现在可以添加规则，要求用户从某些国家连接或限制从其他国家登录。例如，您可以要求用户仅从葡萄牙连接。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/12/image-17.png" class="kg-image"></figure>
+	<p>您也可以完全排除特定国家/地区。Cloudflare在哥斯达黎加并没有办事处，据我所知，我们的很多成员都想去那里。如果团队成员在那里的海滩度假，而我希望确保他们真的放下工作，我们可以添加一个规则来阻止成员从哥斯达黎加登录我们的应用程序。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/12/image-18.png" class="kg-image"></figure>
+	<p>某些应用程序可能不需要特定于国家的要求。可以对每个应用程序逐一配置Cloudflare Access的规则。您可以将有关国家/地区连接的规则添加到包含敏感信息的特定应用程序中，而仅将其他应用程序的访问规则限制为身份验证。</p>
+	<h3 id="--1">按国家和用户审核登录</h3>
+	<p>Cloudflare Access可以捕获用户对内部应用程序的每个请求，而<a href="https://blog.cloudflare.com/log-every-request-to-corporate-apps-no-code-changes-required/">无需修改任何代码</a>。您的组织可以将这些日志导出到第三方存储或SIEM解决方案，以审核每个用户请求的来源国家。利用这些数据，您的合规性和安全团队可以快速审核公司设备的运行位置，而无需部署其他客户端软件。</p>
+	<h3 id="--2">与其他零信任规则<strong>叠加</strong></h3>
+	<p><a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/" target="_blank">零信任安全性</a>始于用户名。管理员建立规则来确定哪些用户可以访问特定的应用程序。Cloudflare Access与您团队的身份提供商甚至<a href="https://blog.cloudflare.com/multi-sso-and-cloudflare-access-adding-linkedin-and-github-teams/">多个身份提供商</a>集成在一起，从而在我们网络的边缘做出基于用户名的决策。</p>
+	<p>然而，用户名不是身份的唯一象征。Cloudflare Access可以在Cloudflare的网络中整合多种标识源。Access可以使用这些信息在我们的网络中对身份做出决策——远早于该请求到达您的基础设施之前。</p>
+	<p>您可以结合使用用户规则与双向TLS请求或<a href="https://blog.cloudflare.com/tanium-cloudflare-teams/">设备状态检查</a>，甚至可以强制用户<a href="https://blog.cloudflare.com/require-hard-key-auth-with-cloudflare-access/">始终使用硬键</a>进行登录。所有这些零信任规则都与Cloudflare的现有安全功能（如我们的WAF和DDoS缓解）内联运行，从而为每个请求添加安全级别。Cloudflare网络为您的团队提供了一个零信任的平台，可以应用我们收集到的有关请求的所有数据，以决定是否允许该请求。</p>
+	<p>我们今天推出的国家/地区规则成为了该零信任模型的又一层。与其他标识源一样，您可以组合这些规则来构建适合您的组织的合规性或安全性需求的综合策略。例如，您可以构建一个规则，只允许用户在德国连接并使用硬键登录到您的应用程序。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/12/image-19.png" class="kg-image"></figure>
+	<h3 id="--3">如何开始</h3>
+	<p>首先，导航到您已添加到Cloudflare Access的应用程序或创建一个新应用程序。Cloudflare Access策略包括基于定义准则的允许、阻止或绕过请求的操作。Access按照用户界面中从上到下的优先级顺序执行策略。</p>
+	<p>在策略内部，您可以使用三种类型的运算符来定义准则：</p>
+	<ul>
+		<li><strong>Include</strong>：Include规则功能，例如OR运算符。用户必须满足Include规则中的至少一条准则。例如，可以构造一个Include规则，来允许具有@cloudflare.com或<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="acd9dfc9deecd8c9cdc182cfc3c1">[email&nbsp;protected]</a>电子邮件域的任何人进行连接。</li>
+		<li><strong>Require</strong>：Require规则功能类似于AND运算符。用户必须满足所有Require规则中的准则。</li>
+		<li><strong>Exclude</strong>：Exclusion规则的功能类似于NOT运算符。用户必须不符合Exclusion规则中的准则。</li>
+	</ul>
+	<p>若要要求用户从特定国家连接，请创建一个包含您的用户电子邮件或身份提供商组合的Allow策略。在该策略中，添加一个Require规则并选择所需的国家。如果要创建多个国家/地区的Require规则，可以将它们添加到Access Group中。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/12/image-20.png" class="kg-image"></figure>
+	<p>然后，您可以将该组添加到Require规则中。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/12/image-21.png" class="kg-image"></figure>
+	<h3 id="--4">下一步是什么？</h3>
+	<p>Cloudflare Access是Cloudflare for Teams的一部分——现已正式推出。国家/地区请求规则在所有计划中均可使用。</p>
+</div>

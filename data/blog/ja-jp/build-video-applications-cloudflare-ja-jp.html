@@ -1,0 +1,166 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://lh6.googleusercontent.com/rtr3vWNrtk3X2HSUuSSIHvNud8K6WeNHokdbx231vi9-TIC87GeD6QJ6dMR0vlSJF4qFzv-heJHGXFzhVDygIdHsm3Jh0kGw47QyVx8vtmxPVShb8YsE7CqBRaWJpIivB2kiGX03" class="kg-image" alt="Build your next video application on Cloudflare"></figure>
+	<p>歴史的に、動画アプリケーションの構築は非常に難しいものでした。動画の録画、エンコード、そして再生の裏には多くの複雑な技術があります。幸いなことに、<a href="https://www.cloudflare.com/ja-jp/products/cloudflare-stream/" target="_blank">Cloudflare Stream</a>ではすべての難しい部分を取り除くことで、カスタム動画やストリーミングアプリケーションを簡単に構築できます。Cloudflare Stream、Access、Pages、Workersを組み合わせた、非常に少ないコードで高性能の動画アプリケーションを作成する方法を見てみましょう。</p>
+	<p>本日は、<a href="https://cloudflare.tv/live" target="_blank">Cloudflare TV</a>で放映された動画アプリケーションを構築していきます。ユーザー認証機能のほか、管理者が制作済みの動画をアップロードしたり、新しいコンテンツをライブ配信する機能を盛り込みます。Cloudflareサービスを使用して、YouTubeやTwitch用に自分のコンテンツを制作できることを想像してみてく</p>
+	<p>ださい！</p>
+	<!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 36.09550561797753%;"><iframe src="https://iframe.videodelivery.net/116d621e621e7884791a88307c8bcc7e?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2F116d621e621e7884791a88307c8bcc7e%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
+	<p></p>
+	<!--kg-card-end: html-->
+	<h3 id="-"><strong>動画のリストを取得する</strong></h3>
+	<p>アプリケーションのメインページに、すべての動画のリストを表示したいと思います。動画はCloudflare Streamでアップロードと保存を実現しますが、それについては後で詳しく説明します！このコードは、「傾向」動画やユーザーごとに選択された動画のみを表示するように変更できます。今のところ、検索APIを使用し、空の文字列を渡してすべてを返します。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">import { getSignedStreamId } from "../../src/cfStream"
+
+export async function onRequestGet(context) {
+    const {
+        request,
+        env,
+        params,
+    } = context
+
+    const { id } = params
+
+    if (id) {
+        const res = await fetch(`https://api.cloudflare.com/client/v4/accounts/${env.CF_ACCOUNT_ID}/stream/${id}`, {
+            method: "GET",
+            headers: {
+                "Authorization": `Bearer ${env.CF_API_TOKEN_STREAM}`
+            }
+        })
+
+        const video = (await res.json()).result
+
+        if (video.meta.visibility !== "public") {
+            return new Response(null, {status: 401})
+        }
+
+        const signedId = await getSignedStreamId(id, env.CF_STREAM_SIGNING_KEY)
+
+        return new Response(JSON.stringify({
+            signedId: `${signedId}`
+        }), {
+            headers: {
+                "content-type": "application/json"
+            }
+        })
+    } else {
+        const url = new URL(request.url)
+        const res = await (await fetch(`https://api.cloudflare.com/client/v4/accounts/${env.CF_ACCOUNT_ID}/stream?search=${url.searchParams.get("search") || ""}`, {
+            headers: {
+                "Authorization": `Bearer ${env.CF_API_TOKEN_STREAM}`
+            }
+        })).json()
+
+        const filteredVideos = res.result.filter(x =&gt; x.meta.visibility === "public") 
+        const videos = await Promise.all(filteredVideos.map(async x =&gt; {
+            const signedId = await getSignedStreamId(x.uid, env.CF_STREAM_SIGNING_KEY)
+            return {
+                uid: x.uid,
+                status: x.status,
+                thumbnail: `https://videodelivery.net/${signedId}/thumbnails/thumbnail.jpg`,
+                meta: {
+                    name: x.meta.name
+                },
+                created: x.created,
+                modified: x.modified,
+                duration: x.duration,
+            }
+        }))
+        return new Response(JSON.stringify(videos), {headers: {"content-type": "application/json"}})
+    }
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>各動画を確認し、非公開の動画を除外して、サムネイルのURL、ID、作成日など、必要なメタデータを抽出します。</p>
+	<h3 id="--1"><strong>動画の再生</strong></h3>
+	<p>ユーザーがアプリケーションから動画を再生できるようにするには、動画を公開にするか、リクエストごとに署名する必要があります。動画を公開としてマークすると、このプロセスが簡単になります。しかし、動画へのアクセスを制御したい理由はたくさんあります。再生する前にユーザーにログインさせたり、何らかの方法でアクセスを制限する場合は、動画をプライベートとしてマークし、署名付きURLを使用してアクセスを制御します。動画の保護に関する詳細については、<a href="https://developers.cloudflare.com/stream/viewing-videos/securing-your-stream" target="_blank">こちら</a>をご覧ください。</p>
+	<p>アプリケーションをローカルでテストしている場合、または1日あたりのリクエストの予測数が10,000未満の場合は、/tokenエンドポイントを呼び出して署名付きトークンを生成します。1日あたりのリクエスト予測数が10,000以上の場合は、ここで行うように、<a href="https://jwt.io/" target="_blank">JSON Webトークン</a>を使用して自分のトークンに署名してください。</p>
+	<h3 id="--2"><strong>ユーザーが動画をアップロードできるようにする</strong></h3>
+	<p>次のステップは、ユーザーが動画をアップロードできる管理ページを作成することです。ユーザーによるアップロードを可能にするためのドキュメントは、 <a href="https://developers.cloudflare.com/stream/uploading-videos/direct-creator-uploads" target="_blank">こちら</a>にあります。</p>
+	<p>このプロセスは、Cloudflare Stream APIを使用すると簡単になります。<a href="https://developers.cloudflare.com/api/tokens/create" target="_blank">APIトークン</a>とアカウントIDを使用して、一意の1回限りのアップロード用のURLを生成します。トークンにStream:Edit権限があることを確認してください。アプリケーションからのすべてのPOSTリクエストをフックし、生成されたアップロード用URLを返します。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">export const cfTeamsAccessAuthMiddleware = async ({request, data, env, next}) =&gt; {
+    try {
+        const userEmail = request.headers.get("cf-access-authenticated-user-email")
+
+        if (!userEmail) {
+            throw new Error("User not found, make sure application is behind Cloudflare Access")
+        }
+  
+        // Pass user info to next handlers
+        data.user = {
+            email: userEmail
+        }
+  
+        return next()
+    } catch (e) {
+        return new Response(e.toString(), {status: 401})
+    }
+}
+
+export const onRequest = [
+    cfTeamsAccessAuthMiddleware
+]
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>管理ページには、ユーザーが自分のコンピュータから動画をドラッグアンドドロップまたはアップロードできるフォームが含まれています。ログインしたユーザーがアップロードのフォームで[送信]を押すと、アプリケーションは一意のURLを生成し、そこに<a href="https://developer.mozilla.org/en-US/docs/Web/API/FormData" target="_blank">FormData</a>を投稿します。このコードは、動画共有サイトの構築や、ユーザー生成コンテンツを可能にするアプリケーションとうまく機能します。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">async function getOneTimeUploadUrl() {
+    const res = await fetch('/api/admin/videos', {method: 'POST', headers: {'accept': 'application/json'}})
+    const upload = await res.json()
+    return upload.uploadURL
+}
+
+async function uploadVideo() {
+    const videoInput = document.getElementById("video");
+
+    const oneTimeUploadUrl = await getOneTimeUploadUrl();
+    const video = videoInput.files[0];
+    const formData = new FormData();
+    formData.append("file", video);
+
+    const uploadResult = await fetch(oneTimeUploadUrl, {
+        method: "POST",
+        body: formData,
+    })
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h3 id="stream-live-"><strong>Stream Liveを使ったリアルタイム動画の追加</strong></h3>
+	<p><a href="https://blog.cloudflare.com/ja-jp/stream-live-ja-jp/">Stream Live</a>をすでにご紹介した手法と組み合わせて使用して、アプリケーションにライブストリーミングセクションを追加することもできます。ログインしたユーザーが配信を開始し、他のログインしたユーザー、さらには一般のユーザーがリアルタイムでそれを視聴できるようにすることができます！配信内容は自動的にアカウントに保存されるため、アプリケーションのメインセクションで配信が終了した直後に表示されます。</p>
+	<h3 id="--3"><strong>ミドルウェアを使用してアプリを保護する</strong></h3>
+	<p>認証されたすべてのページをこのミドルウェア関数の背後に配置します。リクエストヘッダーをチェックして、ユーザーが有効な認証済みユーザーのEメールを送信していることを確認します。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">export const cfTeamsAccessAuthMiddleware = async ({request, data, env, next}) =&gt; {
+    try {
+        const userEmail = request.headers.get("cf-access-authenticated-user-email")
+
+        if (!userEmail) {
+            throw new Error("User not found, make sure application is behind Cloudflare Access")
+        }
+  
+        // Pass user info to next handlers
+        data.user = {
+            email: userEmail
+        }
+  
+        return next()
+    } catch (e) {
+        return new Response(e.toString(), {status: 401})
+    }
+}
+
+export const onRequest = [
+    cfTeamsAccessAuthMiddleware
+]
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h3 id="-pages-"><strong>すべてをPagesと一緒にまとめる</strong></h3>
+	<p>私たちにはログインフローを制御するCloudflare Accessがあります。Stream APIを使用して、動画のアップロード、表示、視聴を管理します。フェッチリクエストの管理とAPI呼び出しの処理には、<a href="https://workers.cloudflare.com/" target="_blank">Workers</a>を使用します。今度は、<a href="https://pages.cloudflare.com/" target="_blank">Cloudflare Pages</a>使用してすべてを結び付ける番です！</p>
+	<p>Pagesは、静的Webサイトをデプロイしてホストする簡単な方法を提供します。しかし今では、PagesはWorkersプラットフォームとシームレスに統合されています (発表記事へのリンク)。この新しい統合により、このアプリケーション全体を単一の読み取り可能なリポジトリにデプロイできます。</p>
+	<h3 id="--4"><strong>アクセスを制御する</strong></h3>
+	<p>アプリケーションによっては公開した方がよいもの、機密データが含まれているため特定のユーザーに制限する必要があるものがあります。メインページはこのアプリケーション用に公開になっており、管理ページを従業員に制限するために<a href="https://www.cloudflare.com/ja-jp/teams/access/" target="_blank">Cloudflare Access</a>を使用しました。内部学習サービスを構築している場合、または新しいサイトをベータ版で立ち上げたい場合でも、Accessを使用してアプリケーション全体を簡単に保護できます。</p>
+	<p>ユーザーが<a href="https://cf-pages-stream.pages.dev/" target="_blank">デモサイト</a>の管理リンクをクリックすると、メールアドレスの入力を求められます。有効なCloudflareメールを入力すると、アプリケーションはアクセスコードを送信します。入力しない場合、そのページにアクセスできなくなります。</p>
+	<p><a href="https://github.com/cloudflare/pages-stream-demo" target="_blank">ソースコード</a>を確認して、今すぐ動画アプリケーションの構築を始めましょう！</p>
+</div>

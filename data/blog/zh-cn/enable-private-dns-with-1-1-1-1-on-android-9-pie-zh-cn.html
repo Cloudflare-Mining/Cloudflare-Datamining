@@ -1,0 +1,36 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/2-18.png" class="kg-image" alt="image2-1"></figure>
+	<p>最近，Google 正式发布了 <a href="https://www.android.com/versions/pie-9-0/" target="_blank">Android 9 Pie</a>，其包含与数字健康、安全性和隐私相关的一系列新功能。如果您在测试版或更新后的版本中使用过网络设置，可能会注意到Android 现在支持一种新的<a href="https://android-developers.googleblog.com/2018/04/dns-over-tls-support-in-android-p.html" target="_blank">私人 DNS 模式。</a></p>
+	<p>这项新功能简化了在 Android 上配置自定义安全 DNS 解析器的过程。设备与您访问的网站之间的所有人都无法窥探您的 DNS 查询，因为它们将会被加密。为之提供支持的协议是 TLS，正如您通过 HTTPS 访问网站时在地址栏中看到绿色小锁图标。同样的技术也被用来加密 DNS 查询，确保它们不会被篡改，也无法被 ISP、移动运营商以及您与 DNS 解析器之间网络路径上的任何其他人所看到。这些新型安全协议称为 <a href="https://developers.cloudflare.com/1.1.1.1/dns-over-https/" target="_blank">DNS over HTTPS</a> 和 <a href="https://developers.cloudflare.com/1.1.1.1/dns-over-tls/" target="_blank">DNS over TLS</a>。</p>
+	<h3 id="-1-1-1-1">配置 1.1.1.1</h3>
+	<p>Android Pie 仅支持 DNS over TLS。在设备上启用此功能：</p>
+	<ol>
+		<li>前往 “设置” → “网络和互联网” → “高级” → “私人 DNS”。</li>
+		<li>选择 “私人 DNS 提供商主机名” 选项。</li>
+		<li>输入 1dot1dot1dot1.cloudflare-dns.com，再点击 “保存”。</li>
+		<li>访问 <a href="https://1.1.1.1/help" target="_blank">1.1.1.1/help</a>（或 <a href="https://1.0.0.1/help" target="_blank">1.0.0.1/help</a>），以验证“使用 DNS over TLS（DoT）”显示为“是”。</li>
+	</ol>
+	<p>大功告成！</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/3-14.png" class="kg-image" alt="Android Pie Private DNS Mode screenshot"></figure>
+	<h3 id="-dns-">为什么要使用私人 DNS？</h3>
+	<p><a href="https://developers.cloudflare.com/1.1.1.1/dns-over-https/" target="_blank">DNS over HTTPS</a> 和 <a href="https://developers.cloudflare.com/1.1.1.1/dns-over-tls/" target="_blank">DNS over TLS</a> 如何融入于如今的互联网隐私格局？</p>
+	<p><a href="https://en.wikipedia.org/wiki/Transport_Layer_Security" target="_blank">TLS</a> 协议可以加密通过不受信任的通信渠道传输的流量，例如当您在咖啡馆的无线网络上浏览电子邮件时。即便使用 TLS，也仍然无法知道您与 DNS 服务器的连接是否已被劫持或遭到第三方窥探。这一点很重要，因为恶意行为者可能会对公共场所的开放 WiFi 热点进行配置，使它们用伪造的记录响应 DNS 查询，从而劫持与常用电子邮件提供商和网上银行的连接。<a href="https://www.cloudflare.com/zh-cn/dns/dnssec/how-dnssec-works/" target="_blank">DNSSEC</a> 通过对响应进行签名来解决保真问题，这样篡改可以被检测到，但消息的正文仍可被线路上的其他人读取。</p>
+	<p>DNS over HTTPS / TLS 解决了这个问题。这两种新协议能确保设备与解析器之前的通信得到加密，与我们对 HTTPS 流量的期望别无二致。</p>
+	<p>然而，这一连串的事件当中还有最后一个不安全的步骤：设备与服务器上的特定主机名之间进行初始 TLS 协商期间会显露 SNI（服务器名称指示）。请求的主机名未得到加密，因此第三方仍然能够看到您访问的网站。为了彻底保护网络浏览活动，最后一步是<a href="https://tools.ietf.org/html/draft-ietf-tls-sni-encryption-03" target="_blank">对 SNI 进行加密</a>，这也是 Cloudflare 正在联合其他组织一起制定和推广的一项标准。</p>
+	<h3 id="ipv6-dns">IPv6 世界中的 DNS</h3>
+	<p>您或许已发现，私人 DNS 字段不接受 IP 地址（例如 1.1.1.1），必须在其中输入主机名（例如 1dot1dot1dot1.cloudflare-dns.com）。所以我们正在研究为解析器部署一个方便记忆的地址，同时也将继续支持 1.1.1.1、1.0.0.1 和 1dot1dot1dot1.cloudflare-dns.com。</p>
+	<p>Google 之所以要求在这个字段中提供主机名，是因为移动运营商正在适应 IPv4 与 IPv6 共存的双栈世界。公司采用 IPv6 的速度<a href="https://www.internetsociety.org/resources/doc/2017/state-of-ipv6-deployment-2017/" target="_blank">远比普遍预期的快</a>，美国的所有主要移动运营商都已<a href="http://www.worldipv6launch.org/major-mobile-us-networks-pass-50-ipv6-threshold/" target="_blank">支持</a>，包括已经<a href="https://www.internetsociety.org/resources/deploy360/2014/case-study-t-mobile-us-goes-ipv6-only-using-464xlat/" target="_blank">彻底采用 IPv6</a> 的 T-Mobile。对于拥有 <a href="https://www.statista.com/statistics/471264/iot-number-of-connected-devices-worldwide/" target="_blank">大约 260 亿</a>台连入互联网的设备（远超 43 亿个 IPv4 地址）的世界来说，这算是一个好消息。而且，高瞻远瞩的 Apple 已采取行动，要求所有新 iOS 应用<a href="https://blog.cloudflare.com/supporting-the-transition-to-ipv6-only-networking-services-for-ios/">必须支持</a>单堆栈 IPv6 网络。</p>
+	<p>不过，我们生活的世界中仍然存在 IPv4 地址，因此手机制造商和运营商必须在架构其系统时考虑向后兼容性。目前，iOS 和 Android 都同时请求 <a href="https://www.cloudflare.com/learning/dns/dns-records/dns-a-record/" target="_blank">A</a> 和 AAAA DNS 记录，这两种记录分别包含与版本 4 和版本 6 格式的域名相对应的 IP 地址。自己试一下：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>$ dig A +short 1dot1dot1dot1.cloudflare-dns.com
+1.0.0.1
+1.1.1.1
+
+$ dig AAAA +short 1dot1dot1dot1.cloudflare-dns.com
+2606:4700:4700::1001
+2606:4700:4700::1111
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>若要通过仅限 IPv6 的网络与只有 IPv4 地址的设备进行通信，DNS 解析器必须使用 <a href="https://en.wikipedia.org/wiki/IPv6_transition_mechanism#DNS64" target="_blank">DNS64</a> 将 IPv4 地址转换为 IPv6 地址。这样一来，对转换后 IP 地址的请求将经由网络运营商提供的 NAT64 转换服务，而这对于设备和 Web 服务器都是完全透明的。</p>
+	<p>若要进一步了解此过程，请<a href="https://blog.apnic.net/2016/06/09/lets-talk-ipv6-dns64-dnssec/" target="_blank">访问 APNIC</a>。</p>
+</div>

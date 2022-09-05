@@ -1,0 +1,26 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image2-14.png" class="kg-image" alt="Announcing the new New Relic and Cloudflare direct log integration"></figure>
+	<p>優れたカスタマーエクスペリエンスの構築は、あらゆるビジネスの根幹をなすものです。このことに挑む上での半分を占めるのは耐障害性のある製品を開発することであり、同時にチームはスタック全体で実行されているアプリケーションとサービスに対する可観測性(オブザーバビリティ)も必要としています。</p>
+	<p>Cloudflareはお客様の洞察を引き出すために、当社製品の分析とログを提供して可視性を提供してます。当社のお客様の多くは、Cloudflareを他のアプリケーションやネットワークサービスとともに使用しており、それらすべてのシステムを通じてデータを関連付けることを望んでいます。</p>
+	<p>正常なトラフィックパターン、遅延やエラーの原因を把握することは、パフォーマンスの向上、ひいてはカスタマーエクスペリエンスの向上に役立てることができます。例えば、Cloudflareを利用しているWebサイトでは、アプリケーションのログやオリジンサーバーのログをCloudflareのHTTPリクエストのログと一緒に分析することで、リクエストの流れに関するエンドツーエンドの可視性をお客様に提供することができます。</p>
+	<p>このような可視性を提供する直接的な連携を実現するために、New Relic社との提携が実現できたことを嬉しく思います。当社のロギング製品であるLogpushと直接連携することで、お客様はCloudflareのデータをNew Relicに取り込むためのミドルウェアにコストをかける必要がなくなります。その結果、ログ配信の高速化と両社共通のお客様のコスト削減を実現することができました。</p>
+	<p>当社ではNew Relic社のチームを招き、Cloudflareに関するインサイトを提供するためにNew Relic Oneをどのように使用できるかを探りました。</p>
+	<h3 id="new-relic-">New Relicのログ管理</h3>
+	<p>New Relic社では、お客様のスタック全体の可視化が可能な、オープンで拡張性の高いクラウドベースの可観測性を有するプラットフォームを提供しています。ログ、メトリクス、イベント、トレースを自動的に関連付けることで、お客様のユーザーエクスペリエンスを向上し、市場投入までの時間の短縮、MTTRの短縮の実現に向けた支援を行います。</p>
+	<p>コンテキストと規模に応じた<a href="https://newrelic.com/products/log-management" target="_blank">ログ管理</a>のデプロイが、かつてないほど速く、簡単に、より実現可能になりました。New Relic Oneを使用することで、アプリケーション、インフラストラクチャ、ネットワークデバイスなどからログやその他のテレメトリーデータを収集、検索、関連付けして、トラブルシューティングや調査を迅速に行うことができるようになります。</p>
+	<p>New Relicでは、お客様のアプリケーション、インフラストラクチャ、サーバーレス環境からのイベントと、モバイルエラー、トレース、スパンがログに関連付されるため、より少ない労力で必要な情報を正確に見つけることができます。すべてのログはワンクリックで処理されるため、別のeツールでログを調べたり、エラーやトレースと手動で関連付けたりする必要はありません。</p>
+	<p>お客様により良いサービスを提供するために、エンジニアがどのようにNew Relicのログを利用するかを、以下の短い動画でご覧ください。</p>
+	<figure class="kg-card kg-embed-card"><iframe width="200" height="113" src="https://www.youtube.com/embed/MMH3gVW16yk?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></figure>
+	<h3 id="cloudflare-logpush-new-relic-">Cloudflare LogpushとNew Relicのクイックスタート</h3>
+	<p>New Relicと連携した新しいLogpushを最大限に活用していただくために、<a href="https://onenr.io/0EjOePam5w6" target="_blank">Cloudflare Logpush quickstart for New Relic</a> を作成しました。Cloudflareクイックスタートを使用すると、事前に構築された単一のダッシュボード上でWebトラフィックメトリクスを監視および分析し、New Relicのデータベースと連携して、Webサイトやアプリケーションからの最も重要なログやメトリクスを一目で把握できるようになります。</p>
+	<p>始め方は簡単です。</p>
+	<ul>
+		<li>まず、ドキュメント<a href="https://developers.cloudflare.com/logs/get-started/enable-destinations/new-relic/" target="_blank">「Enable Logpush to New Relic」</a>に従って、New Relicへのログの直接プッシュが有効であることを確認します。</li>
+		<li>また、New Relicのアカウントも必要です。まだお持ちでない方は、<a href="https://newrelic.com/signup?utm_source=external_partners&amp;utm_medium=content&amp;utm_campaign=global-fy22-q4-io-partner-cloudflare" target="_blank">こちら</a>から無料の永続アカウントを取得してください。</li>
+		<li>次に、<a href="https://onenr.io/0EjOePam5w6" target="_blank">New RelicのCloudflare クイックスタート</a>にアクセスし、「Install quickstart（クイックスタートをインストール）」をクリックし、ガイドのクリックスルーに従ってください。</li>
+	</ul>
+	<p>統合のセットアップとクイックスタートの完全な手順については、<a href="https://newrelic.com/blog/how-to-relic/cloudflare-log-integration" target="_blank">New Relicブログの投稿</a>をご覧ください。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/03/image1-16.png" class="kg-image" alt="New Relic quickstart dashboard"></figure>
+	<p>完了すると、Cloudflareのログに関する主要なメトリクスを含む豊富な既成のダッシュボードを手に入れることができます！</p>
+	<p>New Relic Oneでスタック全体のCloudflareログを関連付けることは、サービスの安全性と信頼性を維持するためのモニタリングやデバッグに威力を発揮します。Cloudflareのお客様は Enterpriseアカウントの一部としてログにアクセスすることができます。Cloudflare Enterpriseをご利用でない場合は<a href="https://www.cloudflare.com/ja-jp/plans/enterprise/contact/" target="_blank">当社までお問い合わせください</a>。まだNew Relicのユーザーでない方は<a href="https://newrelic.com/signup" target="_blank">New Relicにご登録</a>いただき、この新しい体験とすべての製品機能を含む無料のアカウントを取得してください。</p>
+</div>

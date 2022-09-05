@@ -1,0 +1,149 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image3-29.png" class="kg-image" alt="Store, resize and deliver images with Cloudflare Images"></figure>
+	<p>两个月前，我们全面<a href="https://blog.cloudflare.com/announcing-cloudflare-images/">推出</a>了 Cloudflare Images，采用情况和我们收到的反馈令人感到惊讶。</p>
+	<p>让我们先看一些数据：</p>
+	<p>在 11 月 5 日至 12 日这一周内，平均每天传送了超过 <strong>7000 万</strong>张图像。</p>
+	<p>至今为止上传了超过 <strong>150 万</strong>张图像，且上传数量每天都在增加。</p>
+	<p>但我们才刚刚开始，且很开心地宣布推出大家最为渴望的功能。首先我们将谈论对 Images 的 AVIF 支持，使用 <strong>AVIF</strong> 转换尽可能多的图像，从而在不影响质量的情况下生成高度压缩、快速交付的图像。</p>
+	<p>其次，我们引入了“<strong>模糊</strong>”。通过模糊图像，并结合原本已经支持的通过<a href="https://developers.cloudflare.com/images/cloudflare-images/serve-images/serve-private-images-using-signed-url-tokens" target="_blank">签名 URL</a> 保护私人图像的功能，Cloudflare Images 已成功提供付费内容预览的最佳解决方案。</p>
+	<p>对于许多客户来说，能够从他们<strong>自己的域</strong>而不是仅通过 imagedelivery.net 来服务 Images 十分重要。下面，我们将展示使用自定义 Worker 或特殊 URL 实现此目的的一个简单解决方案。</p>
+	<p>最后一件同样重要的事情是，我们宣布为 Cloudflare Images 和 Stream 推出有吸引力的新价格<strong>套餐</strong>。</p>
+	<h3 id="images-avif"><strong>Images 支持 AVIF</strong></h3>
+	<p>去年，我们已经宣布在 Image Resizing 产品中<a href="https://blog.cloudflare.com/generate-avif-images-with-image-resizing/">支持</a>新的 AVIF 图像格式。</p>
+	<p>上个月，我们在 Cloudflare Images 中添加了 AVIF 支持。它压缩图像的效果比 WebP 和 JPEG 之类的旧版格式要好得多。如今，Chrome 和 Firefox 中都已支持 AVIF 图像格式。<a href="https://caniuse.com/avif" target="_blank">在全球范围内，将近 70%</a> 的用户拥有支持 AVIF 的 Web 浏览器。</p>
+	<h3 id="avif-"><strong>AVIF 是什么</strong></h3>
+	<p>正如我们<a href="https://blog.cloudflare.com/generate-avif-images-with-image-resizing/#what-is-avif">之前所解释</a>的那样，AVIF 是 HEIF ISO 标准以及 <a href="https://aomedia.org/" target="_blank">Mozilla、Xiph、Google、Cisco 和许多其他公司</a>的免版税 AV1 编码解码器的组合。</p>
+	<p>“目前，JPEG 是 Web 上最常用的图像格式。就它的使用时长而言，它做得非常好，而且由于其出色的兼容性，它在未来几年内极有可能保持常用。在取代 JPEG 方面曾做过许多尝试，例如 JPEG 2000、JPEG XR 和 WebP。然而，这些格式仅提供少量的压缩改进，且在图像质量上始终比不上 JPEG。<a href="https://netflixtechblog.com/avif-for-next-generation-image-coding-b1d75675fe4" target="_blank">AVIF 的压缩和图像质量都远远高于所有这些格式</a>。”1</p>
+	<h3 id="cloudflare-images-avif"><strong>Cloudflare Images 如何支持 AVIF</strong></h3>
+	<p>提醒一下，<a href="https://blog.cloudflare.com/building-cloudflare-images-in-rust-and-cloudflare-workers/#image-delivery">图像交付</a>通过 Cloudflare 管理的 imagedelivery.net 域来完成。它由 Cloudflare Workers 提供支持。我们使用以下逻辑来请求基于 Accept HTTP 请求标头的 AVIF 格式：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">const WEBP_ACCEPT_HEADER = /image\/webp/i;
+const AVIF_ACCEPT_HEADER = /image\/avif/i;
+
+addEventListener("fetch", (event) =&gt; {
+  event.respondWith(handleRequest(event));
+});
+
+async function handleRequest(event) {
+  const request = event.request;
+  const url = new URL(request.url);
+  
+  const headers = new Headers(request.headers);
+
+  const accept = headers.get("accept");
+
+  let format = undefined;
+
+  if (WEBP_ACCEPT_HEADER.test(accept)) {
+    format = "webp";
+  }
+
+  if (AVIF_ACCEPT_HEADER.test(accept)) {
+    format = "avif";
+  }
+
+  const resizingReq = new Request(url, {
+    headers,
+    cf: {
+      image: { ..., format },
+    },
+  });
+
+  return fetch(resizingReq);
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>基于 Accept 标头，Worker 中的逻辑会检测是否可提供 WebP 或 AVIF 格式。请求会传递到 Image Resizing。如果图像在 Cloudflare 缓存中可用，则会立即提供图像，否则会重新调整图像大小、转换图像并缓存。此方法可确保为不支持 AVIF 格式的客户端提供 WebP 或 JPEG 格式的图像。</p>
+	<p>Cloudflare Images 产品的好处是，我们添加了 AVIF 支持，而客户方无需更改哪怕一行代码。</p>
+	<p>将图像转换为 AVIF 是计算密集型，但在文件大小方面会带来显著的好处。在决定提供哪种格式时，我们始终会权衡成本和利益。</p>
+	<p>值得注意的是，目前所有的 WebP 和 AVIF 格式转换都在图像交付的请求阶段发生。未来我们将添加在上传阶段转换图像的功能。</p>
+	<h3 id="-"><strong>引入模糊</strong></h3>
+	<p>对于 Images 和 Image Resizing，呼声最高的一个功能就是添加模糊支持。我们最近通过 <a href="https://developers.cloudflare.com/images/image-resizing/url-format" target="_blank">URL 格式</a>和<a href="https://developers.cloudflare.com/images/image-resizing/resize-with-workers" target="_blank"> Cloudflare Workers</a> 添加了模糊支持。</p>
+	<p>Cloudflare Images 使用变体。当您创建一个变体时，您可以定义属性，包括变体名称、宽度、高度以及该变体是否可公开访问。模糊将通过 <a href="https://api.cloudflare.com/#cloudflare-images-variants-create-a-variant" target="_blank">variant API</a> 作为变体的新选项提供：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>curl -X POST "https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/images/v1/variants" \
+     -H "Authorization: Bearer &lt;api_token&gt;" \
+     -H "Content-Type: application/json" \
+     --data '{"id":"blur","options":{"metadata":"none","blur":20},"neverRequireSignedURLs":true}'
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>在 Cloudflare Images 中使用模糊功能的一个使用案例是控制对高级内容的访问。</p>
+	<p>客户将上传需要访问令牌的图像：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>curl -X POST "https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/images/v1" \
+     -H "Authorization: Bearer &lt;api_token&gt;"
+     --form '<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="4b2d22272e760b65">[email&nbsp;protected]</a>/&lt;file_name&gt;' \
+     --form 'requireSignedURLs=true'
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>使用我们通过 API 定义的变体，我们可以提取图像而无需提供签名：</p>
+	<!--kg-card-begin: html--><img src="https://imagedelivery.net/r1xBEzoDl4p34DP7QLrECw/dfc72df8-863f-46e3-7bba-a21f9795e401/blur20" alt="Blurred example picture of lava lamps">
+	<!--kg-card-end: html-->
+	<p>要访问受保护的图像，将需要<a href="https://developers.cloudflare.com/images/cloudflare-images/serve-images/serve-private-images-using-signed-url-tokens" target="_blank">有效的签名 URL</a>：</p>
+	<!--kg-card-begin: html--><img src="https://imagedelivery.net/r1xBEzoDl4p34DP7QLrECw/dfc72df8-863f-46e3-7bba-a21f9795e401/public?sig=d67d49055d652b8fb2575b3ec11f0e1a8fae3932d3e516d381e49e498dd4a96e" alt="Unblurred example picture of lava lamps">
+	Cloudflare 大厅中的熔岩灯。由 @mahtin 免费提供
+	<br>
+	<!--kg-card-end: html-->
+	<p>图像模糊和限制访问图像的组合可以集成到许多场景中，为内容发布者提供强大的工具集。</p>
+	<p>Cloudflare 仪表板中很快将提供定义变体的功能和模糊选项。</p>
+	<h3 id="--1"><strong>从自定义域提供图像</strong></h3>
+	<p>Cloudflare Images 客户的一个重要使用案例是从自定义域提供图像。它可以改善延迟和加载性能，而无需在客户端进行额外的 TLS 协商。使用 Cloudflare Workers，客户可以根据以下示例立即添加此功能：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>const IMAGE_DELIVERY_HOST = "https://imagedelivery.net";
+
+addEventListener("fetch", async (event) =&gt; {
+  event.respondWith(handleRequest(event.request));
+});
+
+async function handleRequest(request) {
+  const url = new URL(request.url);
+  const { pathname, search } = url;
+
+  const destinationURL = IMAGE_DELIVERY_HOST + pathname + search;
+  return fetch(new Request(destinationURL));
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>为简单起见，Workers 脚本从其部署的域重定向到 imagedelivery.net。我们假设格式与用于 Cloudflare Images URL 的格式相同：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>https://&lt;customdomain.net&gt;/&lt;encoded account id&gt;/&lt;image id&gt;/&lt;variant name&gt;
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>可以调整 Worker 以满足客户需求，例如：</p>
+	<ul>
+		<li>从特定的域路径提供图像（如/images/）</li>
+		<li>自动填入帐户 ID 或变体名称</li>
+		<li>将 Cloudflare Images 完全映射到自定义 URL</li>
+	</ul>
+	<p>对于仅想要在 Cloudflare 上从他们的域提供 Cloudflare Images 的客户，我们将添加使用以下格式提供 Cloudflare Images 的功能：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>https://&lt;customdomain.net&gt;/cdn-cgi/imagedelivery/&lt;encrypted_account_id&gt;/&lt;_image_id&gt;/&lt;variant_name&gt;
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>对于激活 Cloudflare Images 订阅的 Cloudflare 帐户，其下所有客户域都将支持图像交付。此功能将在假日之前对所有 Cloudflare Images 客户可用。</p>
+	<h3 id="images-stream-"><strong>Images 和 Stream 捆绑</strong></h3>
+	<p>Creator 平台、电子商务和许多其他产品都有一个共同之处：拥有简单且可访问的方式，以最佳且最实惠的方式上传、存储和交付图像和视频是至关重要的。</p>
+	<p>我们与 Stream 团队合作，创建一组捆绑包，让客户可超级轻松地开始使用您的产品。</p>
+	<p>Starter 捆绑包是完美的试验品，也是第一个 MVP。每个月仅需 $10，比未捆绑的选项便宜 50%，同时包含足以入门的使用量：</p>
+	<ul>
+		<li>Stream：可存储 1,000 分钟并提供 5,000 分钟</li>
+		<li>Images：可存储 100,000 张图像，并提供 500,000 张图像</li>
+	</ul>
+	<p>对于更大且快速扩展的应用程序，我们提供 $50 一个月的 Creator 捆绑包，相比未捆绑的产品可节省超过 60%。它包括开始扩展所需的全部内容：</p>
+	<ul>
+		<li>Stream：可存储 10,000 分钟并提供 50,000 分钟</li>
+		<li>Images：可存储 500,000 张图像，并提供 1,000,000 张图像</li>
+	</ul>
+	<!--kg-card-begin: html--><img src="https://imagedelivery.net/r1xBEzoDl4p34DP7QLrECw/fb149b8a-8d93-494d-74da-0a88b8ffd600/public" alt="Screenshot of the bundle selection UI, mentioning the price and what's included">
+	<!--kg-card-end: html-->
+	<p>这些新捆绑包将从 11 月底向所有客户提供。</p>
+	<h3 id="--2"><strong>下一步</strong></h3>
+	<p>我们不会止步于此，接下来将为 Images 推出的功能已经在准备之中。其中一个就是 Images Analytics。拥有卓越的分析对产品十分关键，因此我们将为 Cloudflare Images 的所有客户引入分析功能，以便保持跟踪所有图像和使用情况。</p>
+	<!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/e5726d54ab932f49c1431963272e3222?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2Fe5726d54ab932f49c1431963272e3222%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D0m4s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
+	<p></p>
+	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/e7e82657a9463b085dcb6f2ee2142c94?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2Fe7e82657a9463b085dcb6f2ee2142c94%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D0m4s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
+	<!--kg-card-end: html-->
+	<hr>
+	<p>1<a href="https://blog.cloudflare.com/generate-avif-images-with-image-resizing/#what-is-avif">/generate-avif-images-with-image-resizing/#what-is-avif</a></p>
+</div>

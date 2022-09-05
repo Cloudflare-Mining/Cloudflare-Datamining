@@ -1,0 +1,187 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/07/image_0.png" class="kg-image"></figure>
+	<p>如果您还没有听说过，那么我来为你介绍：Cloudflare 在4月1日<a href="https://blog.cloudflare.com/dns-resolver-1-1-1-1/">推出</a>了隐私优先的<a href="https://www.cloudflare.com/learning/dns/what-is-dns/" target="_blank">DNS</a>解析器服务。这不是开玩笑！该服务是我们的第一个以消费者为中心的服务，支持新兴的DNS标准，例如DNS over HTTPS：443和TLS：853以及UDP：53和TCP：53上的传统协议，所有的这些都在一个容易记住的地址中：<a href="https://1.1.1.1/" target="_blank">1.1.1.1</a>。</p>
+	<p>正如在最初的博客文章中提到的那样，我们的政策是永远不要将客户端IP地址写入磁盘并在24小时内擦除所有日志。然而，特别注重隐私的人可能根本不想向解析器透露他们的IP地址，我们对此表示尊重。这就是为什么我们在<a href="https://dns4torpnlfs2ifuz2s2yf3fc7rdmsbhm6rw75euj35pac6ap25zgqad.onion/" target="_blank">dns4torpnlfs2ifuz2s2yf3fc7rdmsbhm6rw75euj35pac6ap25zgqad.onion</a>上为我们的解析器启动Tor洋葱服务，并可通过<a href="https://tor.cloudflare-dns.com/" target="_blank">tor.cloudflare-dns.com</a>访问。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/07/tor.gif" class="kg-image"></figure>
+	<p><strong>注意：</strong>隐藏的解析器仍然是一种实验性服务，在进行大量的测试之前，我们不会将它用于生产或其他关键用途。</p>
+	<h2 id="tor-">Tor的速成课程</h2>
+	<h3 id="-tor-">什么是<a href="https://www.torproject.org/" target="_blank">Tor</a>？</h3>
+	<p>想象一下另一种互联网，为了连接到www.cloudflare.com，您必须通过以下步骤才能连接到Cloudflare，而不是将寻找到我们服务器路径的任务委托给您的Internet提供商:</p>
+	<!--kg-card-begin: html-->
+	<ol>
+		<li>
+			<p>
+				<font style="vertical-align: inherit;">
+					<font style="vertical-align: inherit;">计算到目的地的路径，如下所示：</font>
+				</font>
+			</p>
+			<pre><code> You -&gt; Your ISP -&gt; X -&gt; Y -&gt; Z -&gt; www.cloudflare.com.
+</code></pre>
+		</li>
+		<li>
+			<p>
+				<font style="vertical-align: inherit;">
+					<font style="vertical-align: inherit;">您使用Z的公钥加密数据包，然后使用Y加密，最后使用X加密。</font>
+				</font>
+			</p>
+		</li>
+		<li>
+			<p>
+				<font style="vertical-align: inherit;">
+					<font style="vertical-align: inherit;">您将结果提交给X，X用他们的私钥解密;</font>
+				</font>
+			</p>
+		</li>
+		<li>
+			<p>
+				<font style="vertical-align: inherit;">
+					<font style="vertical-align: inherit;">X将结果提交给Y，Y用他们的私钥解密;</font>
+				</font>
+			</p>
+		</li>
+		<li>
+			<p>
+				<font style="vertical-align: inherit;">
+					<font style="vertical-align: inherit;">Y将结果提交给Z，Z用其私钥解密以获取原始数据包;</font>
+				</font>
+			</p>
+		</li>
+		<li>
+			<p>
+				<font style="vertical-align: inherit;">
+					<font style="vertical-align: inherit;">Z将数据包提交给</font>
+				</font><a href="https://blog.cloudflare.com/zh-cn/welcome-hidden-resolver-zh-cn/www.cloudflare.com">
+					<font style="vertical-align: inherit;">
+						<font style="vertical-align: inherit;">www.cloudflare.com</font>
+					</font>
+				</a>
+				<font style="vertical-align: inherit;">
+					<font style="vertical-align: inherit;">。</font>
+				</font>
+			</p>
+		</li>
+	</ol>
+	<!--kg-card-end: html-->
+	<p>如果每个人都能够正确地扮演他们的角色，就可以确保只有入境中继X知道你的IP地址，只有出口中继Z知道你正在连接你的网站，从而为你提供隐私和匿名形式。这是Tor的一个简化版本：一个由世界各地的志愿者运行的计算机和服务器组成的集合，充当一个建立在Internet之上的巨大网络的中继器，在这个网络中，从一个中继器到下一个中继器的每一次跳转都会剥去一层加密，因此得名:洋葱路由器。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/07/exit-node.png" class="kg-image"></figure>
+	<h2 id="-tor--1">什么是Tor洋葱服务？</h2>
+	<p>保持互联网用户匿名并不是Tor网络的唯一功能。主要是，上述过程的一个警告是，出口中继以及位于该中继和目的地之间的任何人，包括网络提供者，仍然可以访问该连接。为解决此问题，同时也为内容发布者提供匿名性，Tor允许使用洋葱服务。洋葱服务是Tor节点，它们公开自己的公钥，用.onion TLD编码作为地址，并完全在Tor网络中建立连接：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/07/image_3.png" class="kg-image"></figure>
+	<h2 id="-tor--2">如何在使用Tor时解析域名？</h2>
+	<p>返回给定域名的IP地址的过程称为<em>DNS解析</em>。由于Tor仍然使用IP地址，您仍然需要进行DNS解析才能通过Tor浏览Web。使用Tor时，有两种常用的方法可以解析域名：</p>
+	<ol>
+		<li>直接解析名称，然后通过Tor与IP地址通信;</li>
+		<li>请求Tor出口中继公开解析名称并连接到IP。</li>
+	</ol>
+	<p>显然，第一个选项会将您的IP泄露给您的DNS解析器，除非您的客户端使用DNS-over-HTTPS或DNS-over-TLS，否则它会将您的目标名称泄露给您的ISP。风险小一点的是，第二个选项可能会使您面临操纵<a href="https://arstechnica.com/information-technology/2014/01/scientists-detect-spoiled-onions-trying-to-sabotage-tor-privacy-network/" target="_blank">攻击</a>，如DNS中毒或<a href="https://trac.torproject.org/projects/tor/wiki/doc/ReportingBadRelays" target="_blank">中继损坏</a>的sslstrip 。这为我们的新服务提供了用武之地：</p>
+	<!--kg-card-begin: html-->
+	<ol start="3">
+		<li>
+			<font style="vertical-align: inherit;">
+				<font style="vertical-align: inherit;">询问一个基于.onion的解析器服务！</font>
+			</font>
+		</li>
+	</ol>
+	<!--kg-card-end: html-->
+	<h2 id="cloudflare-">Cloudflare的隐藏解析器是如何工作的？</h2>
+	<p>简而言之，我们基于.onion的解析器服务是Tor洋葱服务，它将DNS端口上的所有通信转发到1.1.1.1上的相应端口，因此表面上的客户端IP是一个内部IP而不是您的IP。然而，事情并没有表面看上去的那么简单。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/07/image_4.png" class="kg-image"></figure>
+	<h2 id="-">隐藏解析器是安全的吗？</h2>
+	<p>使用1.1.1.1和此服务之间的一个明显区别是.onion地址是“dns4tor”加上49个看似随机的字母数字字符。事实上，这个56个字符的长字符串包含一个完整的Ed25519公钥，用于与洋葱服务器进行安全通信。这对可用的安全性提出了许多挑战：</p>
+	<ol>
+		<li>用户如何确保地址正确？</li>
+	</ol>
+	<p>我们只是以tor.cloudflare-dns.com为主题名称购买<a href="https://crt.sh/?id=439705277" target="_blank">证书</a>，并以.onion地址作为主题替代名称。这样，如果你的连接地址无误，你应该看到：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/07/image_5.png" class="kg-image"></figure>
+	<!--kg-card-begin: html-->
+	<ol start="2">
+		<li>
+			<font style="vertical-align: inherit;">
+				<font style="vertical-align: inherit;">用户如何记住这个地址？</font>
+			</font>
+		</li>
+	</ol>
+	<!--kg-card-end: html-->
+	<p>我们认为你不需要记住这个地址。理想的情况下，您需要做的就是访问<a href="https://tor.cloudflare-dns.com/" target="_blank">https://tor.cloudflare-dns.com</a>，并让浏览器将您的请求路由到.onion地址。这可以使用“ <a href="https://tools.ietf.org/html/rfc7838" target="_blank">Alt-Svc</a> ”HTTP请求头，它是一个可选的请求头，通知浏览器可以从其他备用网络位置访问资源，可能使用不同的协议。多亏了<a href="https://hacks.mozilla.org/2018/05/a-cartoon-intro-to-dns-over-https/" target="_blank">Mozilla</a>，现在可以在<a href="https://nightly.mozilla.org/" target="_blank">Firefox Nightly</a>中使用.onion地址作为替代服务。</p>
+	<p>想一下像<a href="https://blog.cloudflare.com/opportunistic-encryption-bringing-http-2-to-the-unencrypted-web/">机会性加密</a>这样的功能：一旦你的浏览器收到一个Alt-Svc请求头，表明.onion地址可以为tor.cloudflare-dns.com，如果它知道可以访问.onion地址（例如通过SOCKS）代理），它会试图检查替代服务是否具有相同或更高级别的安全性。这包括确保可以使用相同的证书和<a href="https://tools.ietf.org/html/rfc6066#section-3" target="_blank">服务器名称</a>来连接到洋葱服务器。如果是这种情况，则浏览器将使用替代服务器，从而确保您未来的请求不会离开Tor网络。</p>
+	<h2 id="--1">隐藏解析器快吗？</h2>
+	<p>这是一个思想实验：假设地球上每两个点之间有一根光纤电缆，能够以光速无损传输数据包。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/07/image_6.png" class="kg-image"></figure>
+	<p>使用一个粗略的计算，可以很容易看出，平均来讲，每个数据包在大约<strong>33 毫秒内</strong>经过相当于地球周长<strong>四分之一</strong>的距离，而每个Tor数据包在到达洋葱服务器之前需要大约<strong>200毫秒</strong>来完成坏绕地球<strong>一个半圈</strong>; 这包括了三个回合的往返，以确保双方的匿名性。</p>
+	<p>然而，Cloudflare不要求其服务器进行匿名，这就是为什么我们可以通过为洋葱服务启用<a href="https://trac.torproject.org/projects/tor/ticket/17178" target="_blank">可选</a> <a href="https://gitweb.torproject.org/torspec.git/tree/proposals/260-rend-single-onion.txt" target="_blank">设置</a>，优先考虑延迟而不是服务器位置的匿名性，从而将中继数量减少到三个。有一点要强调的是，这不会影响客户的隐私或匿名性。事实上，正如您可能已经注意到的那样，在第一个洋葱服务图像中，原点距离会合点有三个跳跃，而我们的洋葱服务只有一个跳跃。</p>
+	<p>我们正在积极研究如何使这项服务更快，并确保达到尽可能小的停机时间。</p>
+	<h2 id="-cloudflare-">我为什么要使用Cloudflare隐藏解析器？</h2>
+	<p>首先最重要的事情是，通过Tor网络解析DNS，例如通过连接到Google的8.8.8.8解析器，可以保证拥有一个更高级别的匿名性，这个是比直接发出请求更高级别的。这样做不仅可以防止解析器看到您的IP地址，甚至您的ISP也不会知道您正在尝试解析域名。</p>
+	<p>尽管如此，除非目标是洋葱服务，否则被动攻击者还是可以捕获离开Tor网络的数据包，恶意出口节点可以通过<a href="https://moxie.org/software/sslstrip/" target="_blank">sslstripping</a> 致使DNS查询中毒或降级加密。即使您将浏览限制为<a href="https://www.eff.org/pages/tor-and-https" target="_blank">仅限HTTPS</a>站点，被动攻击者也可以找出您已连接到的地址。更糟糕的是，能够在流量进入Tor网络之前和流量离开网络之后进行比较的参与者，可能会使用元数据(大小、时间等)对客户端进行<a href="https://nymity.ch/tor-dns/" target="_blank">去匿名</a>。因此，唯一的解决方案是通过使用洋葱服务器来消除对退出节点的需求。这就是我们基于.onion的解析器提供的功能。</p>
+	<p>此外，如果您的客户端不支持加密的DNS查询，那么你可以使用基于.onion的解析器，它可以保护连接免受路径攻击，包括BGP劫持攻击。这意味着对DNS-over-UDP和DNS-over-TCP提供的安全性与DNS-over-HTTPS和DNS-over-TLS提供的级别是相同的。</p>
+	<p>然而，您的个人匿名需求并不应该是您使用此服务的唯一原因。Tor确保每个人匿名的能力取决于使用它的人数。例如，如果只有告密者使用Tor网络，那么任何连接到Tor网络的人都会自动被怀疑是告密者。因此，在互联网上浏览表情包或观看猫咪视频的人越多，那些真正需要匿名的人就越容易融入流量。</p>
+	<p>对许多用户来说，使用Tor的一个障碍是它速度很慢，所以我会去关心那些不愿意牺牲快速网站加载时间来帮助活跃分子和持异议者保持匿名的人。也就是说，DNS请求的规模很小，并且由于大多数浏览器和操作系统都会缓存DNS结果，因此总流量并不大。所以，使用基于.onion的解析器只会稍微降低您的初始DNS请求速度，而不会降低其他任何速度，同时仍然有助于Tor网络及其用户的总体匿名性。</p>
+	<h2 id="-cloudflare--1">我为什么要相信Cloudflare隐藏解析器？</h2>
+	<p>使用基于.onion的解析器可确保您的ISP永远不会发现您正在解析一个域，出口节点没有机会操纵DNS回复，并且解析器永远不会找到您的IP地址。但是，使用基于Cloudflare .onion的解析器的独特优势，它是将Tor的强大功能与1.1.1.1解析器的所有隐私保护功能（例如查询名称最小化）相结合。同时有一个工程师团队致力于在每个层面上对它进行改进，包括DNS-over-HTTPS和DNS-over-TLS等标准。</p>
+	<p>正如首席执行官马修·普林斯（Matthew Prince）<a href="https://blog.cloudflare.com/the-trouble-with-tor/">两年前</a>所说，在Cloudflare，匿名是我们重视的一项事业。此外，当我们推出1.1.1.1解析器时，我们<a href="https://developers.cloudflare.com/1.1.1.1/commitment-to-privacy/" target="_blank">承诺</a>采取一切技术措施，以确保我们无法知道您在互联网上做了什么。提供一种通过Tor网络使用解析器，并使它尽快朝这个方向迈出的一大步。</p>
+	<h2 id="--2">如何设置？</h2>
+	<p>基于.onion的解析器支持1.1.1.1支持的每个DNS协议，仅在Tor网络上支持。然而，由于并非每个DNS客户端都能够连接到Tor网络，因此我们需要进行一些黑客攻击才能使其正常工作。在这里，我们将解释如何设置基于.onion的解析器提供的DNS-over-HTTPS，但是对于所有其他情况，请访问我们的<a href="https://developers.cloudflare.com/1.1.1.1/fun-stuff/dns-over-tor/" target="_blank">开发人员页面</a>以获取有关如何使用基于.onion的解析器的详细信息。</p>
+	<h2 id="-cloudflared-">还记得cloudflared吗？</h2>
+	<p>以下讲述了如何设置<code>cloudflared</code>启用DNS over HTTPS的DNS客户端，并路由通过Tor网络：</p>
+	<ol>
+		<li>首先， 按照<a href="https://developers.cloudflare.com/1.1.1.1/dns-over-https/cloudflared-proxy/" target="_blank">通过HTTPS客户端运行DNS</a>的常规指南开始下载<code>cloudflared</code> 。</li>
+	</ol>
+	<!--kg-card-begin: html-->
+	<ol start="2">
+		<li>
+			<p>
+				<font style="vertical-align: inherit;">
+					<font style="vertical-align: inherit;">启动Tor SOCKS代理并使用</font>
+				</font><code>socat</code>
+				<font style="vertical-align: inherit;">
+					<font style="vertical-align: inherit;">将端口TCP：443转发到localhost：</font>
+				</font>
+			</p>
+			<pre><code> socat TCP4-LISTEN:443,reuseaddr,fork SOCKS4A:127.0.0.1:dns4torpnlfs2ifuz2s2yf3fc7rdmsbhm6rw75euj35pac6ap25zgqad.onion:443,socksport=9150
+</code></pre>
+		</li>
+	</ol>
+	<!--kg-card-end: html-->
+	<!--kg-card-begin: html-->
+	<ol start="3">
+		<li>
+			<p>
+				<font style="vertical-align: inherit;">
+					<font style="vertical-align: inherit;">指示您的计算机将.onion地址视为本地地址：</font>
+				</font>
+			</p>
+			<pre><code> cat &lt;&lt; EOF &gt;&gt; /etc/hosts<font></font>
+ 127.0.0.1 dns4torpnlfs2ifuz2s2yf3fc7rdmsbhm6rw75euj35pac6ap25zgqad.onion<font></font>
+ EOF<font></font>
+</code></pre>
+		</li>
+	</ol>
+	<!--kg-card-end: html-->
+	<!--kg-card-begin: html-->
+	<ol start="4">
+		<li>
+			<p>
+				<font style="vertical-align: inherit;">
+					<font style="vertical-align: inherit;">最后，通过UDP守护程序启动本地DNS：</font>
+				</font>
+			</p>
+			<pre><code> cloudflared proxy-dns --upstream "https://dns4torpnlfs2ifuz2s2yf3fc7rdmsbhm6rw75euj35pac6ap25zgqad.onion/dns-query"<font></font>
+ INFO[0000] Adding DNS upstream                           url="https://dns4torpnlfs2ifuz2s2yf3fc7rdmsbhm6rw75euj35pac6ap25zgqad.onion/dns-query"<font></font>
+ INFO[0000] Starting DNS over HTTPS proxy server          addr="dns://localhost:53"<font></font>
+ INFO[0000] Starting metrics server                       addr="127.0.0.1:35659"<font></font>
+</code></pre>
+		</li>
+	</ol>
+	<!--kg-card-end: html-->
+	<!--kg-card-begin: html-->
+	<ol start="5">
+		<li>
+			<p>
+				<font style="vertical-align: inherit;">
+					<font style="vertical-align: inherit;">从中获益吧！</font>
+				</font>
+			</p>
+		</li>
+	</ol>
+	<!--kg-card-end: html-->
+</div>

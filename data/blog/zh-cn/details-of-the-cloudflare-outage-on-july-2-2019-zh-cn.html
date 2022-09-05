@@ -1,0 +1,229 @@
+<div class="post-content lh-copy gray1">
+	<p>大约九年前，Cloudflare 还是一家小公司，我也还是一名客户，而不是员工。当时，Cloudflare 在一个月前刚成立，有一天警报消息显示，我的小网站 <a href="http://jgc.org/" rel="noopener nofollow noreferrer" target="_blank">j</a><a href="http://jgc.org/" rel="noopener nofollow noreferrer" target="_blank">gc.org</a>的DNS不再正常运行。原来是Cloudflare针对Protocol Buffers刚推送了一个更新，而这个更新弄坏了DNS。</p>
+	<p>我直接给 Matthew Prince 写了一封题为“我的 DNS 在哪儿？”的邮件，他回复了一封篇幅很长、内容详实的技术性解答邮件（<a href="https://gist.github.com/jgrahamc/6bb02a6f7c3799a1590b3cdb901f8e08" target="_blank">您可以点击此</a>处查看往来邮件的全部内容），我对该邮件的回复是：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>发件人：John Graham-Cumming
+日期：2010 年 10 月 7 日星期四上午 9:14
+主题：回复：我的 DNS 在哪儿？
+收件人：Matthew Prince
+
+谢谢，这是一篇很棒的报告。如果有问题，我一定会去电
+问询。 就某种程度而言，在掌握了所有技术细节后，
+将它们撰写为一篇博客文章可能会更好，因为我认为
+读者会非常感谢博主对这些信息的坦诚公开。
+这一点在您看到文章发布后流量增加的图表时，
+会感触更深。
+
+我在密切监控着网站，以便在出现任何故障时能够
+收到短信通知。 监控显示，我的网站在 13:03:07 至
+14:04:12 期间流量下降。 我会每五分钟测试一次。
+
+这只是个小插曲，我相信您会解决这个问题。 但您确定您不需要
+有人在欧洲为您分忧吗？:-)
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>他的回复是：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>发件人：Matthew Prince
+日期：2010 年 10 月 7 日星期四上午 9:57
+主题：回复：我的 DNS 在哪儿？
+收件人：John Graham-Cumming
+
+谢谢。我们已经回复了所有来信。我现在要去办公室，
+我们会在博客上发布些信息，或在我们的公告栏系统中
+置顶一篇官方帖文。我同意 100%
+透明度是最好的。
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>因此，今天，作为规模远胜以往的 Cloudflare 公司的一员，我要写一篇文章，清楚讲述我们所犯的错误、它的影响以及我们正在为此采取的行动。</p>
+	<h3 id="7-2-">7 月 2 日事件</h3>
+	<p>7 月 2 日，我们在 WAF 托管规则中部署了一项新规则，导致全球 Cloudflare 网络上负责处理 HTTP/HTTPS 流量的各 CPU 核心上的 CPU 耗尽。我们在不断改进 WAF 托管规则，以应对新的漏洞和威胁。例如，我们在 5 月份以更新 WAF 的速度出台了一项规则，以防范严重的 SharePoint 漏洞。能够快速地全局部署规则是 WAF 的一个重要特征。</p>
+	<p>遗憾的是，上周二的更新中包含了一个规则表达式，它在极大程度上回溯并耗尽了用于 HTTP/HTTPS 服务的 CPU。这降低了 Cloudflare 的核心代理、CDN 和 WAF 功能。下图显示了专用于服务 HTTP/HTTPS 流量的 CPU，在我们网络中的服务器上，这些 CPU 的使用率几乎达到了 100%。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/07/cpu-goes-boom.png" class="kg-image">
+		<figcaption>事件发生期间某个 PoP 的 CPU 利用率</figcaption>
+	</figure>
+	<p></p>
+	<p>这导致我们的客户（以及他们的客户）在访问任何 Cloudflare 域时都会看到 502 错误页面。502 错误是由前端 Cloudflare Web 服务器生成的，这些服务器仍有可用的 CPU 内核，但无法访问服务 HTTP/HTTPS 流量的进程。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/07/502-bad-gateway.png" class="kg-image"></figure>
+	<p>我们知道这对我们的客户造成了多大的伤害。我们为发生这种事件感到羞耻。在我们处理这一事件时，它也对我们自身的运营产生了负面影响。</p>
+	<p>如果您是我们的客户，您也一定感受到了难以置信的压力、沮丧和恐惧。更令人懊恼的是，我们的六年零全球中断记录也就此打破。</p>
+	<p>CPU 耗尽是由一个 WAF 规则引起的，该规则里包含不严谨的正则表达式，最终导致了过多的回溯。作为中断核心诱因的正则表达式是 <code>(?:(?:\"|'|\]|\}|\\|\d|(?:nan|infinity|true|false|null|undefined|symbol|math)|\`|\-|\+)+[)]*;?((?:\s|-|~|!|{}|\|\||\+)*.*(?:.*=.*)))</code></p>
+	<p>尽管正则表达式本身成为很多人关注的焦点（下文将进行详细讨论），但 Cloudflare 服务中断 27 分钟的真实情况要比“正则表达式出错”复杂得多。我们已经花时间写下了导致中断并使我们无法快速响应的一系列事件。如果您想了解更多关于正则表达式回溯以及如何处理该问题的信息，可在本文末尾的附录中查找。</p>
+	<h3 id="-">发生了什么情况</h3>
+	<p>我们按事情发生的先后次序讲述。本博客中的所有时间均为协调世界时 (UTC)。</p>
+	<p>在 13:42，防火墙团队的一名工程师通过一个自动过程对 <a href="https://www.cloudflare.com/learning/security/threats/cross-site-scripting/" target="_blank">XSS</a> 检测规则进行了微小改动。这生成了变更请求票证。我们使用 Jira 管理这些票证，下面是截图。</p>
+	<p>三分钟后，第一个 PagerDuty 页面出现，显示 WAF 故障。这是一项综合测试，从 Cloudflare 外部检查 WAF 的功能（我们会进行数百个此类测试），以确保其正常工作。紧接着出现了多个页面，显示许多其他的 Cloudflare 服务端到端测试失败、全球流量下降警报、众多的 502 错误，之后便是我们在全球各城市的网点 (PoP) 发来的大量指示 CPU 耗尽的报告。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/07/pager-duty-1345.png" class="kg-image"></figure>
+	<p><br></p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/07/pager-duty-1346.jpg" class="kg-image"></figure>
+	<p><br></p>
+	<p>我收到了其中部分警告并立马起身走出会议室，而正在我回到办公桌的途中，解决方案工程师团队的一名负责人告诉我，我们的流量已经减少了 80%。我跑向 SRE 团队，他们正在排除故障。在中断的最初时刻，有人猜测这是某种我们从未见过的攻击。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/07/pager-duty-1348.jpg" class="kg-image"></figure>
+	<p></p>
+	<p>Cloudflare 的 SRE 团队成员分布在世界各地，他们全天持续监控着网络。绝大多数此类警报都指出了局部区域有限范围内的非常具体的问题，这些警报均在内部仪表板中监控，并且每天会进行多次处理。但这种页面和警报模式表明发生了严重问题，SRE 立即宣布发生 P0 事件，并上报给工程领导层和系统工程部门。</p>
+	<p>当时，伦敦工程团队正在我们的主要活动场地听取一场内部技术讲座。讲座被打断，所有人都聚集在大型会议室中，商讨问题或是接打电话。这不是 SRE 能够独立处理的一般问题，它需要所有相关团队立即在线联合处理。</p>
+	<p>在 14:00，WAF 被确定为导致问题的部分原因，并排除了攻击的可能性。性能团队从一台清楚表明 WAF 为罪魁祸首的机器中获取了实时 CPU 数据。另一名团队成员用 strace 进行了确认。还有一个团队找到了指示 WAF 出现问题的错误日志。在 14:02，有人提议使用“全球终止”，这是 Cloudflare 的一种内置机制，可以在全球范围内禁用单个组件，整个团队都在等我做决定。</p>
+	<p>但进行全球 WAF 终止是另一回事。我们陷入了两难境地。我们使用自己的产品，并且由于我们的 Access 服务停机，我们无法向内部控制面板进行身份验证（而一旦我们返回，就会发现由于安全功能 - 如果不经常使用内部控制面板就会禁用凭据，团队中的一些成员失去了访问权限）。</p>
+	<p>此外，我们也无法使用其他内部服务，如 Jira 或构建系统。如果要使用这些服务，我们就必须使用一种不常用的旁路机制（在事件发生后继续钻研）。最终，一名团队成员在 14:07 执行了全球 WAF 终止，到 14:09，流量渐趋平缓，CPU 恢复到全球预期水平。Cloudflare 的其他保护机制继续运行。</p>
+	<p>之后，我们继续恢复 WAF 功能。由于情况的敏感性，我们在将付费客户的流量从该位置移除后，使用一部分流量在单个城市中执行了负面测试（扪心自问“真的是那个改动导致了问题？”）和正面测试（验证回滚是否正常工作）。</p>
+	<p>在 14:52，我们心中的大石终于落地，我们找出了根由并进行了修复，WAF 在全球重新启用。</p>
+	<h3 id="cloudflare-">Cloudflare 的运行原理</h3>
+	<p>Cloudflare 拥有一支工程师团队，负责我们的 WAF 托管规则产品；他们不断努力提高检出率，降低误报率，并对新出现的威胁迅速做出反应。在过去的 60 天里，他们已经为 WAF 托管规则处理了 476 个更改请求（平均每 3 小时处理一个）。</p>
+	<p>这项特定更改将部署在“模拟”模式中，而在这一模式下，真实的客户流量将通过规则输送，但不会阻止任何内容。我们使用该模型测试规则的有效性，并测量其误报率和漏报率。但即使在模拟模式下，也需要实际执行规则，而在此情况中，规则会包含消耗过多 CPU 的正则表达式。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/07/change-request.png" class="kg-image"></figure>
+	<p></p>
+	<p>从上面的变更请求中可以看出，对于这种类型的部署，我们提供了部署计划、回滚计划以及内部标准操作程序 (SOP) 的链接。规则更改的 SOP 特别允许将其推向全球。这与我们在 Cloudflare 发布的所有软件都非常不同，在Cloudflare，SOP 首先将软件推送到内部测试网点 (PoP)（我们的员工会通过这个网点），然后推送到隔离区的少量用户，之后再推送到大量客户，最终推向全球。</p>
+	<p>软件发布的过程就好比：我们通过 BitBucket 在内部使用 git。处理更改的工程师推送由 TeamCity 构建的代码，当构建通过时，将分配审阅者。在拉取请求获得批准后，代码即构建完成，测试套件（再次）运行。</p>
+	<p>如果构建和测试通过，则生成变更请求 Jira，并且变更必须得到相关经理或技术主管的批准。批准后，即发生向我们所谓的“动物 PoP”的部署：DOG、PIG 和 Canaries。</p>
+	<p>DOG PoP 是 Cloudflare PoP（就像我们在全球的任何城市一样），但它只供 Cloudflare 员工使用。这种内部测试 PoP 使我们能够在任何客户流量接触代码之前及早发现问题。而且这种情况经常发生。</p>
+	<p>如果 DOG 测试成功通过，代码将转到 PIG（如同在“Guinea Pig”中）。这是 Cloudflare PoP，其中非付费客户的一小部分客户流量通过新代码。</p>
+	<p>如果成功，代码将移动到 Canaries。我们在全球分布有三个 Canary PoP，它们在新代码上运行付费和非付费客户流量，以作为对错误的最终检查。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/07/animal-deploy-1.png" class="kg-image">
+		<figcaption>Cloudflare 软件发布流程</figcaption>
+	</figure>
+	<p></p>
+	<p>一旦在 Canary 中成功，代码即可上线。根据代码更改的类型，整个 DOG、PIG、Canary、全球流程可能需要数小时或数天才能完成。Cloudflare 网络和客户的多样性使我们能够在向全球所有客户发布软件之前彻底测试代码。但根据设计，WAF 没有使用此流程，因为需要对威胁做出快速响应。</p>
+	<h3 id="waf-">WAF 威胁</h3>
+	<p>在过去几年中，我们看到常见应用程序中的漏洞急剧增加。这是因为软件测试工具的可用性增加了，例如模糊测试（点击此处查看我们刚刚发布的关于模糊测试的新博文）。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/07/Number-of-CVEs-per-year.png" class="kg-image">
+		<figcaption>资料来源：https://cvedetails.com/</figcaption>
+	</figure>
+	<p></p>
+	<p>常见的是创建概念证明 (PoC)，并经常在 Github 上快速发布，这样运行和维护应用程序的团队就可以进行测试，以确保它们有足够的保护。正因为如此，Cloudflare 必须能够尽快对新的攻击做出响应，以便让我们的客户有机会修补其软件。</p>
+	<p>Cloudflare 在 5 月份部署了针对 SharePoint 漏洞的保护措施就是 Cloudflare 主动提供此类保护的很好示例（点击此处查看博客）。在发布公告后的短时间内，我们看到，利用客户的 Sharepoint 安装的企图激增。我们的团队持续监控新威胁，并代表客户编写规则以缓解威胁。</p>
+	<p>导致上周二中断的具体规则是针对跨站点脚本 (XSS) 攻击的规则。近年来，这些攻击也急剧增多。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/07/Number-of-XSS-CVEs-by-year.png" class="kg-image">
+		<figcaption>资料来源：https://cvedetails.com/</figcaption>
+	</figure>
+	<p></p>
+	<p>WAF 托管规则更改的标准程序表明，在全局部署之前必须通过持续集成 (CI) 测试。上周二，这种情况正常发生，规则也得以实施。在 13:31，团队中的一名工程师在获得批准后合并了一个包含更改的拉取请求。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/07/change-details.png" class="kg-image"></figure>
+	<p><br></p>
+	<p>在 13:37，TeamCity 制定了规则并运行测试，最终允许合并。WAF 测试套件测试 WAF 的核心功能是否有效，其中包含大量针对单个匹配功能的单元测试。在运行单元测试后，通过对 WAF 执行大量 HTTP 请求以测试各个 WAF 规则。这些 HTTP 请求旨在测试应被 WAF 阻止的请求（以确保捕获攻击）和应被允许通过的请求（以确保不会过度阻止并产生误报）。它们无法做到的是测试 WAF 的失控 CPU 利用率以及检查之前 WAF 版本中的日志文件，结果显示使用最终导致 CPU 耗尽的规则，并未使测试套件运行时间增加。</p>
+	<p>测试通过后，TeamCity 在 13:42 自动开始部署更改。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/07/build-process.png" class="kg-image"></figure>
+	<p></p>
+	<h3 id="quicksilver">Quicksilver</h3>
+	<p>由于需要 WAF 规则以处理紧急威胁，因此我们使用 Quicksilver 分布式键值 (KV) 存储来部署规则，从而能够在几秒钟内向全球推送更改。我们的所有客户在仪表板中或通过 API 进行配置更改时都会用到这项技术，而它也是我们的服务能够非常快速地响应变更的有力支撑。</p>
+	<p>我们还没有详细探讨过 Quicksilver。我们之前使用 Kyoto Tycoon 作为全球分布式键值存储，但在使用它时遇到了操作问题，随后，我们编写了自己的 KV 存储并在 180 多个城市进行复制。我们通过 Quicksilver 向客户配置推送更改、更新 WAF 规则并分发客户使用 Cloudflare Workers 编写的 JavaScript 代码。</p>
+	<p>从单击仪表板上的按钮或调用 API 以更改配置，到该更改在全球范围内生效，只需要几秒钟。客户已经开始喜欢这种高速可配置性。而借助 Workers，客户有望实现近乎即时的全球软件部署。Quicksilver 平均每秒可分发约 350 个更改。</p>
+	<p>Quicksilver 的速度非常快。 平均而言，我们将一项更改发布到全球每台机器的 p99 达到了 2.29 秒。通常情况下，这种速度代表着极大的突破。这意味着，当您启用某项功能或清除缓存时，它会立刻在全球同步执行。而在您使用 Cloudflare Workers 推送代码时，它会以同样的速度推送出去。这是 Cloudflare 的承诺 - 在您需要时快速执行更新。</p>
+	<p>然而，在此情况下，这种速度意味着对规则的更改在几秒钟内就会传遍全球。您可能会注意到 WAF 代码使用的是 Lua。Cloudflare 在生产中广泛使用 Lua，之前我们已经讨论过 WAF 中 Lua 的相关详情。Lua WAF 在内部使用 PCRE，它使用回溯进行匹配，并且无任何机制来防范失控表达式。我们将在下文就此点以及我们采取的措施做更多介绍。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/07/rule-deployment.png" class="kg-image"></figure>
+	<p><br></p>
+	<p>在部署规则之前发生的一切都是“正确的”：提出拉取请求，请求获得批准，CI/CD 构建代码并对其进行测试，提交带有 SOP 推广和回滚详情的变更请求，以及执行推广。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/07/WAF-deploy-1.png" class="kg-image">
+		<figcaption>Cloudflare WAF 部署流程</figcaption>
+	</figure>
+	<h3 id="--1"><br><br>问题出在哪里</h3>
+	<p>如前所述，我们每周都会向 WAF 部署几十条新规则，并且我们有大量系统可以防止此类部署产生任何负面影响。因此，在出现错误时，通常不会是多个原因导致。虽然大家都会满足于找出一个根本原因，但这可能会掩盖真相。以下是导致用于 HTTP/HTTPS 的 Cloudflare 服务离线的多个漏洞。</p>
+	<ul>
+		<li>工程师写下极易引起大量回溯的正则表达式。</li>
+		<li>在几周前对 WAF 进行重构（旨在使 WAF 使用更少的 CPU）时，一个有助于防止正则表达式过度使用 CPU 的保护被错误地删除。</li>
+		<li>正在使用的正则表达式引擎没有复杂性保证。</li>
+		<li>测试套件没有办法识别过多的 CPU 消耗。</li>
+		<li>SOP 允许非紧急规则变更在全球投入生产，而无需分阶段部署。</li>
+		<li>回滚计划要求运行完整的 WAF 构建两次，耗时太长。</li>
+		<li>第一个全球流量下降警报花了很长时间才发出。</li>
+		<li>我们更新状态页面的速度不够快。</li>
+		<li>由于未经过充分的中断和旁路程序培训，我们很难访问自己的系统。</li>
+		<li>SRE 失去了对部分系统的访问权限，原因是出于安全考虑，他们的凭据已超时。</li>
+		<li>我们的客户无法访问 Cloudflare 仪表板或 API，因为他们要通过 Cloudflare edge。</li>
+	</ul>
+	<h3 id="--2">自上周二以来发生了什么</h3>
+	<p>首先，我们全面停止了对 WAF 的所有发布工作并着手：</p>
+	<ul>
+		<li>重新引入已删除的过度 CPU 使用保护。（完成）</li>
+		<li>手动检查 WAF 托管规则中的所有 3,868 条规则，以发现并纠正任何其他可能过度回溯的实例。（检查完毕）</li>
+		<li>在测试套件中引入对所有规则的性能分析。（预计完成时间： 7 月 19 日）</li>
+		<li>切换到具有运行时保证的 re2 或 Rust 正则表达式引擎。（预计完成时间：7 月 31 日）</li>
+		<li>更改 SOP 以与 Cloudflare 的其他软件相同的方式执行规则的阶段性推出，同时保留对主动攻击执行紧急全局部署的能力。</li>
+		<li>建立应急功能，使 Cloudflare 仪表板和 API 脱离Cloudflare edge。</li>
+		<li>自动更新 Cloudflare 状态页面。</li>
+	</ul>
+	<p>从长远来看，我们正在远离我多年前编写的 Lua WAF，并在移植 WAF 以使用新的防火墙引擎。这将使 WAF 速度更快，并为其添加另一层保护。</p>
+	<h3 id="--3">总结</h3>
+	<p>这对我们的客户和团队来说都是一次令人不安的中断。我们迅速做出反应，纠正了导致中断的流程缺陷，并通过替换所使用的底层技术，进一步防止正则表达式的使用方式出现任何可能的问题。</p>
+	<p>我们为这次中断感到惭愧，并为对客户造成的影响深感抱歉。我们相信，我们做出的改变将使此类中断永远不会再次发生。</p>
+	<h3 id="--4">附录：关于正则表达式回溯</h3>
+	<p>若要充分理解 &nbsp;<code>(?:(?:\"|'|\]|\}|\\|\d|(?:nan|infinity|true|false|null|undefined|symbol|math)|\`|\-|\+)+[)]*;?((?:\s|-|~|!|{}|\|\||\+)*.*(?:.*=.*)))</code> 如何导致 CPU 耗尽，您需要先了解一些标准正则表达式引擎的工作原理。关键部分是 <code>.*(?:.*=.*)</code>。<code>(?:</code> and matching ) 是非捕获组（也就是说，括号内的表达式被组合成一个单独的表达式）。</p>
+	<p>为方便讨论这种模式为何会导致 CPU 耗尽，我们完全可以忽略它，并将该模式视为 <code>.*.*=.*</code>。在将这部分减去之后，此模式明显看起来过于复杂；但重要的是，任何要求引擎“匹配 xx 后接 xx”的“真实世界”表达式（就像 WAF 规则中的复杂表达式一样）都可能导致灾难性的回溯。这就是原因。</p>
+	<p><br></p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/07/regex.png" class="kg-image"></figure>
+	<p></p>
+	<p>在正则表达式中，<code>.</code> 表示匹配单个字符，<code>.*</code> &nbsp;表示可贪婪匹配零个或多个字符（即尽可能匹配），因此 <code>.*.*=.*</code> 表示匹配零个或多个字符，之后匹配零个或多个字符，再之后找到文本 <code>=</code> 符号，然后再匹配零个或多个字符。</p>
+	<p>考虑测试字符串 <code>x=x</code>。这将匹配表达式 <code>.*.*=.*</code>。等号前的 <code>.*.*</code> 可匹配第一个 <code>x</code>（其中一个 <code>.*</code> 匹配 <code>x</code>，另一个匹配零个字符）。<code>=</code> 后的 .* 匹配最后的 <code>x</code>。</p>
+	<p>该匹配需要 23 步才能完成。<code>.*.*=.*</code> 中的第一个 <code>.*</code> 执行贪婪匹配，匹配整个 <code>x=x</code>字符串。引擎继续考虑下一个 <code>.*</code>。现在没有可供匹配的字符了，因此第二个 <code>.*</code> 匹配零个字符（这是允许的）。之后，引擎转移到 =。由于已经没有可供匹配的字符串（第一个 <code>.*</code> 消耗了所有 <code>x=x</code>），匹配失败。</p>
+	<p>此时，正则表达式引擎将回溯。引擎回到第一个 <code>.*</code>，将其与 <code>x=</code>（而不是 <code>x=x</code>）匹配，然后移到第二个 <code>.*</code>。该 <code>.*</code> 匹配第二个 <code>x</code>，现在没有可供匹配的字符了。因此，引擎尝试匹配 <code>.*.*=.*</code> 中的 <code>=</code>，匹配失败。引擎再次回溯。</p>
+	<p>这次引擎回溯使第一个 <code>.*</code> 仍匹配 <code>x=</code>，但第二个 <code>.*</code> 不再匹配 <code>x</code>，而是匹配零个字符。然后，引擎继续尝试寻找 <code>.*.*=.*</code> 模式中的文本 &nbsp;<code>=</code>，但失败（因为它已经与第一个 <code>.*</code> 匹配）。引擎再次回溯。</p>
+	<p>这次第一个 <code>.*</code> 只匹配第一个 <code>x</code>。但第二个 <code>.*</code> 执行贪婪匹配，匹配 <code>=x</code>。您可以看到接下来会发生什么。引擎尝试匹配文本 = 时失败，再次回溯。</p>
+	<p>第一个 <code>.*</code> 依旧只匹配第一个 <code>x</code>。现在，第二个 <code>.*</code> 只匹配 <code>=</code>。但您猜对了，引擎无法匹配文本 <code>=</code>，因为第二个 <code>.*</code> 已经与它匹配。因此，引擎再次回溯。请记住，这一切都是为了匹配一个拥有三个字符的字符串。</p>
+	<p>最后，只有第一个 <code>.*</code> 仅匹配第一个 <code>x</code>，第二个 .* 匹配零个字符，引擎才能将表达式中的文本 <code>=</code> 与字符串中的 <code>=</code> 匹配。引擎继续，最末的 <code>.*</code> 匹配最后的 <code>x</code>。</p>
+	<p>综上，通过这 23 步完成了 <code>x=x</code> 匹配。下面是一段使用 Perl <a href="https://metacpan.org/pod/Regexp::Debugger" target="_blank">Regexp::Debugger</a> 的短视频，展示了这些步骤以及步骤发生时的回溯。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/07/23-steps-1.gif" class="kg-image"></figure>
+	<p><br></p>
+	<p>这会产生大量工作，但如果将字符串从 <code>x=x</code> 更改为 <code>x=xx</code> 又会发生什么？这会需要 33 步才能完成匹配。而且如果更改为 <code>x=xxx</code>，步骤数会增加到 45。这并不是线性的。下面的图表显示了从 <code>x=x</code> 到 &nbsp;<code>x=xxxxxxxxxxxxxxxxxxxx</code> （<code>=</code>后面有 20 个 <code>x</code>）的匹配步骤数变化。如果 <code>=</code> 后是 20 个 <code>x</code>，引擎需要执行 555 步才能完成匹配！（更糟的是，如果 <code>x=</code> 缺失，那么字符串就只有 20 个 <code>x</code>，引擎需要执行 4,067 步才能发现模式不匹配）。</p>
+	<p><br></p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/07/matching-x-x.png" class="kg-image"></figure>
+	<p><br></p>
+	<p>此视频显示了匹配 <code>x=xxxxxxxxxxxxxxxxxxxx</code> 所需的所有回溯：</p>
+	<p><br></p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/07/555-steps.gif" class="kg-image"></figure>
+	<p><br></p>
+	<p>这很糟糕，因为随着输入大小的增加，匹配时间会呈超线性增长。但如果使用稍微不同的正则表达式，情况可能会更糟。假设表达式为 <code>.*.*=.*;</code>（即模式的末尾有一个分号）。这很容易编写，以尝试匹配类似 <code>foo=bar;</code> 的表达式。</p>
+	<p>而这次，回溯将是灾难性的。匹配 <code>x=x</code> 需要 90 步，而不是 23 步。步骤数增长得非常快。匹配 <code>x=</code> 后跟 20 个 <code>x</code>，需要 5,353 步。下面是相应的图表。仔细看 Y 轴的数值，与前一个图表进行比较。</p>
+	<p><br></p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/07/failing-x-x.png" class="kg-image"></figure>
+	<p></p>
+	<p>以下是图中没有显示的将 <code>x=xxxxxxxxxxxxxxxxxxxx</code> 与 <code>.*.*=.*;</code> 匹配失败的所有 5,353 步。</p>
+	<p><br></p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/07/5353.gif" class="kg-image"></figure>
+	<p></p>
+	<p><br>在这种情况下，使用惰性匹配而不是贪婪匹配有助于控制回溯的数量。如果将原始表达式更改为 <code>.*?.*?=.*?</code>，则匹配 <code>x=x</code> 需要 11 步（而不是 23 步），匹配 <code>x=xxxxxxxxxxxxxxxxxxxx</code> 也是如此。这是因为 <code>.*</code> 后的 <code>?</code> 指示引擎在继续之前首先匹配最小的字符数。</p>
+	<p>但惰性匹配并不是这种回溯行为的全面解决方案。将灾难性实例 <code>.*.*=.*;</code> 更改为 <code>.*?.*?=.*?;</code> 根本不会改变它的运行时间。匹配 <code>x=x</code> 仍需要 555 步，匹配 <code>x=</code> 后跟 20 个 <code>x</code> 也仍需要 5,353 步。</p>
+	<p>唯一真正的解决方案（除非完全重写模式以使其更具体）是使用这种回溯机制摆脱正则表达式引擎。这将是我们在未来几周的工作内容。</p>
+	<p>自 1968 年 Ken Thompson 写了一篇名为“编程技术：正则表达式搜索算法”(<a href="https://dl.acm.org/citation.cfm?doid=363347.363387" target="_blank">Programming Techniques:Regular expression search algorithm</a>) 的论文以来，这一问题的解决方案早就广为人知。这篇论文介绍了一种机制，它可以将正则表达式转换为非确定性有限状态自动机 (NFA)，然后使用一种按匹配字符串大小的时间线性执行的算法，跟踪 NFA 中的状态转换。</p>
+	<p><br></p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/07/thompson-1968.png" class="kg-image"></figure>
+	<p></p>
+	<p>Thompson 的论文实际上没有讨论 NFA，但明确解释了线性时间算法，并且提出了为 IBM 7094 生成汇编语言代码的 ALGOL-60 程序。具体的实施步骤可能晦涩难解，但其中呈现的思路却清晰明了。</p>
+	<p><br></p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/07/nfa.png" class="kg-image"></figure>
+	<p></p>
+	<p>下面是以类似于 Thompson 论文中图片的方式用图解法表示的 <code>.*.*=.*</code> 正则表达式。</p>
+	<p><br></p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/07/figure-0@1.5x.png" class="kg-image"></figure>
+	<p><br></p>
+	<p>图 0 有五种从 0 开始的状态。其中有三个循环以状态 1、2 和 3 开始。这三个循环对应正则表达式中的三个 <code>.*</code>。三个带点的菱形匹配一个字符。带有 = 符号的菱形与文本 <code>=</code> 符号匹配。状态 4 是结束状态，如果到达此状态，则表示正则表达式已匹配。</p>
+	<p>若要了解如何使用此类状态图以匹配正则表达式 <code>.*.*=.*</code>，我们需要检查匹配字符串 <code>x=x</code>。程序从状态 0 开始，如图 1 所示。</p>
+	<p><br></p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/07/figure-1@1.5x.png" class="kg-image"></figure>
+	<p><br></p>
+	<p>使这种算法有效的关键是状态机同时处于多个状态。NFA 将同时进行每个转换。</p>
+	<p>甚至在读取任何输入之前，它就会立即同时转换到状态 1 和状态 2，如图 2 所示。</p>
+	<p><br></p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/07/figure-2@1.5x.png" class="kg-image"></figure>
+	<p><br></p>
+	<p>在图 2 中，我们可以看到当 NFA 考虑 <code>x=x</code> 中的第一个 <code>x</code> 时会发生什么。<code>x</code> 可以通过在状态 1 中来回转换以匹配顶点。或者 <code>x</code> 可以通过在状态 2 中来回转换以匹配其下面的点。</p>
+	<p>因此，在匹配了 <code>x=x</code> 中的第一个 <code>x</code> 后，状态仍是 1 和 2。由于需要文本 <code>=</code> 符号，因而不可能到达状态 3 或 4。</p>
+	<p>接下来，算法考虑 <code>x=x</code> 中的 <code>=</code>。与它前面的 x 非常相似，它可以通过顶部的两个循环在状态 1 或状态 2 中来回转换以进行匹配；此外，文本 <code>=</code> 也可以匹配并且算法可以将状态 2 转换到状态 3（并立即转换到状态 4）。如图 3 所示。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/07/figure-3@1.5x.png" class="kg-image"></figure>
+	<p><br></p>
+	<p>接下来，算法到达 <code>x=x</code> 中的最后一个 <code>x</code> 。从状态 1 和状态 2，同样可以转换回状态 1 和状态 2。从状态 3，<code>x</code> 可以匹配右边的点并转换回状态 3。</p>
+	<p>此时，已经考虑了 <code>x=x</code> 的每个字符，并且因为已到达状态 4，所以正则表达式匹配该字符串。每个字符都经过了一次处理，因此算法在输入字符串的长度上是线性的。并且不需要回溯。</p>
+	<p>同样显而易见的是，一旦到达状态 4（在匹配了 <code>x=</code> 之后），正则表达式便已匹配，并且算法可以在完全不考虑最末 <code>x</code> 的情况下终止。</p>
+	<p>此算法在输入大小上是线性的。<br></p>
+</div>

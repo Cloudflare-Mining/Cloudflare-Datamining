@@ -1,0 +1,42 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image1-67.png" class="kg-image" alt="All the Platform Improvements We’ve Made in 2021 to Make CIOs Lives Easier"></figure>
+	<p>CIO Weekは、CIOがネットワークを安全に保護し、高速化するために必要なツールを提供する新製品のイノベーションが目白押しでした。Cloudflareでは、CIOにとって重要なことの多くは、新製品の発表だけではなく、プラットフォーム自体のセキュリティや使い勝手の改善であることを理解しています。これらはあまり目立ちませんが、当社が提供する一連のサービスをお客様が標準的かつ安全に利用できるようにするために重要であることに変わりはありません。ベストプラクティスや技術は時代とともに変化しますが、プラットフォームは、お客様が必要とするセキュリティニーズや制御の深さを確実に満たすことを目指しています。この精神に基づき、昨年は、プラットフォームサービスの多くに重要なアップデートを提供することに取り組んできました。</p>
+	<h3 id="sso-"><strong>SSOの導入の改善</strong></h3>
+	<p>お客様は、従業員がアクセスできるアプリケーションを安全に制御するために、SSOを必要としています。当社のオリジナルバージョンのSSOは手動であったため、お客様がセットアップするのに時間がかかったり、エラーが発生したりする可能性がありました。Cloudflare AccessのSaaSアプリケーションを活用し、お客様がSSOセットアップを<a href="https://dash.teams.cloudflare.com/" target="_blank">Cloudflare for Teamsダッシュボード</a>内で管理できるようにすることで、<a href="https://developers.cloudflare.com/cloudflare-one/applications/configure-apps/dash-sso-apps" target="_blank">セットアッププロセスを合理化</a>しました。企業のお客様で、まだSSOのメリットを享受していない場合は、アカウントチームにご連絡いただければ、お客様のセットアップを対応できます。来年は、SSOを使用したユーザー管理の制御をさらに深くするので、楽しみにしていてください。</p>
+	<h3 id="-"><strong>ゾーンスコープ付きロールのベータ版</strong></h3>
+	<p>多くのお客様は、本番ゾーンとテスト/ステージングゾーンの両方を1つのアカウントで管理しています。これは、すべてが1つのアカウントの範囲内にあるため、設定を管理する上で利点があります。しかし、お客様は、重要な本番用ゾーンへのアクセスを他のゾーンとは別に処理したいという、共通の問題に直面しました。そこで、このアカウントのメンバーにゾーンスコープ付きのロールを設定するベータプログラムを用意し、お客様に試していただいています。ゾーンスコープ付きロールを使用すると、ユーザーはアカウント内のゾーンのサブセットへのアクセス権を享受することができます。つまり、本番ゾーンへの編集アクセスは、本当に必要な人だけに制限することができるのです。同時に、それ以外の人は読み取り専用のアクセス権を保持できるので、調査へのアクセスをブロックされることはありません。ゾーンスコープ付きロールを試してみたいお客様は、アカウントチームに連絡してベータ版へのアクセス権を入手してください。</p>
+	<h3 id="terraform-"><strong>Terraformの改善</strong></h3>
+	<p>お客様は、Cloudflareをはじめとするプロバイダーの管理を効率化するために、自動化への投資を続けています。多くの人にとって、Terraformは毎日使う複数のサービスを単一の方法で管理できるようにするためのソリューションとなっています。Cloudflareはお客様の成功を保証するために、当社のサービスに対するTerraformのサポートに投資を続けています。</p>
+	<ul>
+		<li>2021年、新たに10件のリソースを追加し、リストは<a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs" target="_blank">51件のリソース</a>に拡大されました。</li>
+		<li>これには、<a href="https://developers.cloudflare.com/rules/transform" target="_blank">変換ルール、管理WAFルールセット</a><a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets" target="_blank">、管理DDoSルールセット</a>などの機能を強化する<a href="https://developers.cloudflare.com/ruleset-engine/" target="_blank">ルールセットエンジン</a>などのプラットフォームへの主要な追加が含まれています。</li>
+		<li><a href="https://github.com/cloudflare/cf-terraforming" target="_blank">cf-terraforming</a>に対する<a href="https://blog.cloudflare.com/cloudflares-partnership-with-hashicorp-and-bootstrapping-terraform-with-cf-terraforming/">主要なアップデート</a>をリリースしました。cf-terraformingとは、Terraformから始めたCloudflareの既存のお客様向けにTerraformの設定と状態を素早く生成するためのライブラリです。</li>
+		<li>より多くのリソースに対応し、より使いやすいインターフェースに生まれ変わりました。</li>
+	</ul>
+	<h3 id="--1"><strong>通知とアラート</strong></h3>
+	<p>Cloudflareは、Cloudflareの背後にあるサービスで何が起きているのかを、お客様がすぐに正確に知ることができるようにするために、多大な投資を続けています。改良点については、<a href="https://blog.cloudflare.com/p/994d43fd-0267-4d17-a0e9-dc9ddcb356b2/blog.cloudflare.com/whats-new-with-notifications/">本日</a>詳しく説明していますが、ここでは改良点を簡単にリストアップしています。</p>
+	<ul>
+		<li>新しい通知タイプ</li>
+		<li>DDoSアラート</li>
+		<li>ファイアウォールアラート</li>
+		<li>Workers CPU</li>
+		<li>オリジン5XXエラー</li>
+		<li>新しいWebhookの送信先</li>
+		<li>DataDog、Discord、OpsGenie、Splunk</li>
+		<li>これに加えて、Slack、Microsoft Teams、Google Chat、およびカスタム送信先があります。</li>
+		<li><a href="https://api.cloudflare.com/#notification-history-properties" target="_blank">アラート履歴</a>は、API経由で利用可能になり、UIサポートも近日中に提供される予定です。</li>
+	</ul>
+	<p>繰り返しになりますが、今回の改良点の詳細をすべてご覧になりたい方は、<a href="https://blog.cloudflare.com/p/994d43fd-0267-4d17-a0e9-dc9ddcb356b2/blog.cloudflare.com/whats-new-with-notifications/">こちら</a>に移動してください。</p>
+	<h3 id="--2"><strong>データ保護と場所</strong></h3>
+	<p>お客様にとって、データのローカリティに関する要件に対応することはますます重要になってきています。<a href="https://blog.cloudflare.com/ja-jp/introducing-the-cloudflare-data-localization-suite-ja-jp/">Data Localization Suite</a>を通して、データが処理および保存される場所をお客様が管理できるような機能を構築しました。</p>
+	<p>EUでは、最近の「Schrems II」決定により、個人データをEU域外に移転する企業に対する要件が追加されました。また、規制の厳しい業界では、特定の種類の個人データをEU圏内に留めることを要求しているところも少なくありません。</p>
+	<p>Cloudflareは、お客様が個人データをEU圏内に留めることができるよう支援することをお約束します。今週、<a href="https://blog.cloudflare.com/introducing-the-customer-metadata-boundary/">Customer Metadata Boundary</a>を導入しました。これはData Localisation Suiteを拡張し、お客様のエンドユーザートラフィックのメタデータがEU圏内に留まることを保証します。</p>
+	<h3 id="--3"><strong>ログ</strong></h3>
+	<p>Cloudflareのログは、お客様のネットワークを可視化するものです。この1年、当社はより多くの製品のログを拡張し、お客様がログの送信先をより自由に管理できるようにしました。</p>
+	<p>ファイアウォールイベント、ゲートウェイ、Spectrumなどが、ログの拡張を受け付けています。最新のものは、監査ログです。</p>
+	<p>お客様がS3互換APIを持つあらゆるプラットフォームにログを保存するオプションを追加し、主要な分析プロバイダーと提携して統合を作成しました。これにより、多くのお客様が選択したログ送信先と直接統合することが可能になりました。当社がサポートする新しい製品と送信先についての詳細は、<a href="https://blog.cloudflare.com/logpush-ui-update/">こちら</a>をご覧ください。今週、当社は別のログ保存先である<a href="https://blog.cloudflare.com/ja-jp/store-your-cloudflare-logs-on-r2-ja-jp/">R2</a>のサポートを構築していることを発表しました。</p>
+	<h3 id="--4"><strong>ドッグフードの優位性</strong></h3>
+	<p>お客様のために作った製品は、機会があればいつでも自分たちで最初に使いたいと考えています。もし、当社のソリューションにギャップがあれば、CIO、CISO、エンジニアリングチームが首を絞めることになりますから、私たちは誠実であり続けます。</p>
+	<p>当社の公開サイト（現在読んでいるブログも含む）は、Cloudflareで保護されています。Zone Scoped Rolesによって提供される追加セキュリティには、お客様と同じように当社も期待しています。当社のセキュリティとIT組織は、大規模な内部アプリケーションのセキュリティとアクセス制御を管理するためにTerraformを採用し、同時に開発者がセルフサービスで変更をリクエストできるようにしました。また、Cloudflareのセキュリティチームは、Cloudflareの背後にあるサービスからのログを使用して、悪意のある行動を監視および検知しています。</p>
+	<p>お客様と同じことをすることで、お客様がサービスを利用する際に直面する可能性のある同じ種類の問題に対して共感を築きます。今後も、お客様独自の問題を解決するためのイノベーションに加え、プラットフォームをより使いやすくするための製品づくりにも注力していきます。<br></p>
+</div>

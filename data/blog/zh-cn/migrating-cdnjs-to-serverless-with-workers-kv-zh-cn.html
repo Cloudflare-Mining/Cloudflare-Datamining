@@ -1,0 +1,63 @@
+<div class="post-content lh-copy gray1">
+	<p>Cloudflare 为 <a href="https://cdnjs.com/" target="_blank">cdnjs</a> 提供支持，这个开源项目通过利用 <a href="https://www.cloudflare.com/cdn/" target="_blank">Cloudflare 的网络</a>提供流行的 JavaScript 库和资源，从而给网站加速。自 <a href="https://blog.cloudflare.com/an-update-on-cdnjs/">12 月发布重要更新</a>以来，我们专注于改造 cdnjs 以实现可扩展性和弹性。今天，我们很高兴宣布 Cloudflare 如何利用 <a href="https://developers.cloudflare.com/workers/" target="_blank">Cloudflare Workers</a> 以及它的键值存储 <a href="https://developers.cloudflare.com/workers/reference/storage" target="_blank">Workers KV</a> 来交付 cdnjs（迁移到无服务器基础架构）！</p>
+	<p>什么是 cdnjs？</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/imagesmall-1.png" class="kg-image"></figure>
+	<p>对于感觉陌生的人来说，cdnjs 是一个描述面向 JavaScript（JS）的内容交付网络（CDN）的首字母缩写词。<a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn/" target="_blank">CDN</a> 是一个由地理上分散的服务器构成的网络，主要用于提供互联网内容，不论这些内容是回忆、小猫视频还是 HTML 网页。而本文所说的 CDN 是指 Cloudflare 那个由 200 多个分布于全球的数据中心构成并且<a href="https://blog.cloudflare.com/cloudflare-network-expands-to-more-than-100-countries/">依然在不断壮大的网络</a>。</p>
+	<p>这与您相关的原因在于：它使页面加载时间快如闪电。您访问的每个网站基本上都需要获取 JS 库才能加载，也包括本网站。假设您要一个位于悉尼的网站，它包含一个来自 jQuery 的本地文件。jQuery 是一个流行的库，可见于 <a href="https://w3techs.com/technologies/details/js-jquery" target="_blank">76.2%</a> 的网站。如果您位于纽约，那么可能会注意到一个延迟，因为获取这个文件所需的时间轻易会超过 300ms，更不用说 <a href="https://blog.cloudflare.com/tls-1-3-overview-and-q-and-a/">TLS 握手</a>涉及的往返时间了。不过，如果该网站使用 <a href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" target="_blank">cdnjs.cloudflare.com</a> 来引用 jQuery，您可以从 Cloudflare 距您最近的布法罗数据中心检索这个文件，将延迟缩短到闪电般的 20ms。</p>
+	<p>尽管 cdnjs 在幕后运作，但有<a href="https://w3techs.com/technologies/overview/content_delivery" target="_blank">超过 11%</a> 的网站使用它，使互联网变得更加快速、更加可靠。在 7 月份，cdnjs 服务了将近 <a href="https://github.com/cdnjs/cf-stats/blob/master/2020/cdnjs_July_2020.md" target="_blank">1900 亿个请求</a>，涉及的数据量达到了 3.46PB。</p>
+	<h3 id="-">文件存储在哪里？</h3>
+	<!--kg-card-begin: html-->
+	<p><img style="border-width: 0px;" src="https://blog.cloudflare.com/content/images/2020/09/image5-2.png" alt="" width="400" height="333"></p>
+	<!--kg-card-end: html-->
+	<p>cdnjs 加快了互联网速度，凭借的当然不是魔法！</p>
+	<p>在过去，Cloudflare 某个核心数据中心的若干<a href="https://www.cloudflare.com/load-balancing/" target="_blank">负载均衡</a>服务器会定期从后备存储中提取 cdnjs 文件，充当 cdnjs.cloudflare.com 的源站。有人请求了新文件时，Cloudflare 会将它<a href="https://www.cloudflare.com/learning/cdn/what-is-caching/" target="_blank">缓存</a> ，从而能够从我们的任何数据中心快速获取到这个文件。</p>
+	<p>后备存储是 JS、CSS 和其他 Web 库的目录，采用开源 <a href="https://github.com/" target="_blank">GitHub</a> 存储库的形式。这意味着，包括您在内的任何人都可以出力贡献，但要经过审核和其他流程。</p>
+	<p>然而，到最近为止，这些现有操作还是劳动密集型的，并且比较脆弱。</p>
+	<p>这篇博客帖子将解释为什么我们改变 cdnjs 背后的基础架构，以使其更快速、更可靠，并且更容易维护。首先，我们将讨论社区过去如何为 cdnjs 做出贡献，同时概述旧系统的痛处和问题。接着，我们将探讨迁移到 Workers KV 的好处。然后，我们将深入解析新架构，以及对网站和 cdnjs API 的升级。最后，我们将回顾 cdnjs 的历史，并且展望它的未来。</p>
+	<h3 id="-pr-">如果认为自己知道如何提交 PR，请再思考</h3>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image1-1-3.png" class="kg-image"></figure>
+	<p>对于非技术读者，拉取请求（PR）是一种用来合并您对存储库所做更改的请求。往常的话，如果您想将自己的 JavaScript 库包含到 cdnjs 中，首先要在 GitHub 上创建对 <a href="https://github.com/cdnjs/cdnjs" target="_blank">cdnjs/cdnjs</a> 的 PR，附上一个描述您的程序包的 JSON 文件以及您想包括的任何版本的其他文件。在您的 PR 获得我们<a href="https://github.com/PeterBot" target="_blank">旧版机器人</a>的批准，通过了人工审核，并且被维护人员合并后，您的程序包就与 cdnjs 集成在一起了。</p>
+	<p>貌似很简单，对吧？只要复刻存储库，克隆一下并复制粘贴几个文件，不是吗？</p>
+	<p>没错。如果您有几个小时的时间来刻录一个区分大小写的文件系统，并且有几百 GB 的可用磁盘空间来 <a href="https://git-scm.com/docs/git-clone" target="_blank">git clone</a> 300GB 的存储库，那么贡献很简单。时间不够也没问题，您随时可以利用高阶的 <a href="https://git-scm.com/docs/git-sparse-checkout" target="_blank">git sparse-checkout</a> 知识来完成这项工作。不懂 git？只需通过 GitHub 的 UI 逐个添加文件便可。</p>
+	<p>我猜您想到点上了。我当然知道，我可是天真地花了 10 个小时克隆存储库，结果却发现 macOS 默认为不区分大小写。</p>
+	<p>但是，更新 cdnjs 不仅对贡献者来说很困难，对维护人员来说也不容易。在过去，社区能够直接贡献版本文件，这些文件有可能是恶意的。这给维护人员带来许多工作，他们需要手动检视每个文件，与官方库源文件进行<a href="https://man7.org/linux/man-pages/man1/diff.1.html" target="_blank">比较</a>，并运行恶意软件检查。</p>
+	<p>那么，程序包在 cdnjs 中后如何更新？在描述每个程序包的 JSON 文件中，有一个可选的自动更新定义，它会告诉机器人在哪里寻找库的新版本。如果存在这个定义，那么您的程序包从 npm 或 GitHub 发布新版本时，机器人会下载新版文件，并推送至 <a href="https://github.com/cdnjs/cdnjs" target="_blank">cdnjs/cdnjs</a>，同时将计算的<a href="https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity" target="_blank">子资源完整性</a>（SRI）哈希推送到 <a href="https://github.com/cdnjs/SRIs" target="_blank">cdnjs/SRIs</a>。如果缺少自动更新属性，那么您要负责手动提交 PR，从而用任何新的版本更新 cdnjs。</p>
+	<h3 id="cdnjs-">cdnjs 的警示</h3>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image6-1-3.png" class="kg-image"></figure>
+	<p>今年 4 月，在维护我们一个核心数据中心的过程中，技术人员不慎断开了一些电缆，它们提供了连到我们其他数据中心的所有外部连接，因此导致该数据中心离线约四个小时。<a href="https://blog.cloudflare.com/cloudflare-dashboard-and-api-outage-on-april-15-2020/">这个事故</a>是向 cdnjs 发出的第一个警示，特别是因为受影响的数据中心承载了主要的 cdnjs 源站 Web 服务器。在这一事件中，我们确实有在外部提供商那里运行的备份，但真正救了我们的是 Cloudflare 的全球缓存，它最大程度地减少了停机的影响，只有未缓存的资产才无法加载。</p>
+	<p>我们开始思考如何才能改进 cdnjs 服务的可靠性和性能。目光直接投向了 <a href="https://workers.cloudflare.com/" target="_blank">Cloudflare Workers</a> 这个我们自己为<a href="https://www.cloudflare.com/learning/cdn/glossary/edge-server/" target="_blank">边缘网络</a>上开发提供的平台。Workers 内置了功能强大的工具 <a href="https://developers.cloudflare.com/workers/reference/storage" target="_blank">Workers KV</a>，它是一个针对高读取应用程序进行了优化的低延迟、全球分布的键值存储。</p>
+	<p>我们通过推理发现，不用拉取 <a href="https://github.com/cdnjs/cdnjs" target="_blank">cdnjs/cdnjs</a> 存储库并从磁盘提供文件，而可以彻底告别物理服务器，将数据分布到全球并直接从边缘提供文件。这样，cdnjs 将能够从任何原始数据中心故障中恢复，同时还可以提高其可扩展性。</p>
+	<h3 id="workers-kv-">Workers KV 前来拯救</h3>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image3-3-2.png" class="kg-image"></figure>
+	<p>乍一看，决定使用 Workers KV 是件明摆着的事。既然 cdnjs 中的文件永不更改，但需要频繁读取，那么 Workers KV 就非常适合。</p>
+	<p>但是，在计划迁移时我们开始担心，cdnjs 中的资产数量有 700 万多，无疑会存在超过 <a href="https://developers.cloudflare.com/workers/about/limits/" target="_blank">Workers KV 10MiB 限值</a>的文件。经过调查，我们发现数百个 cdnjs 文件大小超限，其中大多数是 <a href="https://developer.mozilla.org/en-US/docs/Tools/Debugger/How_to/Use_a_source_map" target="_blank">JavaScript 源映射</a>。</p>
+	<p>后来，我们想到了一个主意。将 Cdnjs 文件的压缩版本存储在 Workers KV 中，这不仅能解决文件大小超限问题，还可优化文件的服务方式。</p>
+	<p>如果您支付过互联网账单，就会知道<a href="https://blog.cloudflare.com/the-relative-cost-of-bandwidth-around-the-world/">带宽有多么昂贵</a>！因此，所有现代浏览器都会尽可能<a href="https://blog.cloudflare.com/efficiently-compressing-dynamically-generated-53805/">获取压缩的 Web 内容</a>。同样在 Cloudflare，我们经常试验通过<a href="https://blog.cloudflare.com/results-experimenting-brotli/">即时压缩</a>来减小我们的带宽，只要被接受，我们就将压缩后的内容提供给浏览者。结果，我们决定提前压缩所有 cdnjs 文件，并将它们以最佳的 <a href="https://github.com/google/brotli" target="_blank">Brotli</a> 和 <a href="https://www.gzip.org/" target="_blank">gzip</a> 形式写入 Workers KV。这样，我们可以使用比即时压缩时更高的压缩级别，因为不再有延迟方面的要求。</p>
+	<p>如此一来，我们可以更快的速度提供更小的 cdnjs 文件！</p>
+	<h3 id="-cdnjs">全面改造 cdnjs</h3>
+	<!--kg-card-begin: html-->
+	<p><a href="https://blog.cloudflare.com/content/images/2020/09/image7-1.png" target="_blank" rel="noopener"><img style="border-width: 0px;" src="https://blog.cloudflare.com/content/images/2020/09/image7-1.png" width="800" height="498"></a></p>
+	<!--kg-card-end: html-->
+	<p>现在，如果您要将自己的 JavaScript 库包含在 cdnjs 中，首先在 GitHub 上创建一个对我们新存储库 <a href="https://github.com/cdnjs/packages" target="_blank">cdnjs/packages</a> 的 PR。这个存储库很容易克隆，大小仅为 50MB，由数千个 JSON 文件构成，各自描述一个 cdnjs 程序包并说明如何从 npm 或 git 自动更新。当您的文件获得我们新版自动 CI 的验证（由<a href="https://github.com/cdnjs/tools" target="_blank">新版机器人</a>提供支持），并由维护人员进行合并后，您的程序包就会自动登记到我们的自动更新服务中。</p>
+	<p>新系统优先考虑了安全性和可维护性。首先，cdnjs 版本文件由我们的机器人创建，最大程度降低了合并新版本时出现人为错误的可能。虽然 JSON 文件是由易错的人类添加到 <a href="https://github.com/cdnjs/packages" target="_blank">cdnjs/packages</a> 中的，但会经过机器人的检查，然后再由维护人员审批。每个文件都会对照 <a href="https://github.com/cdnjs/tools/blob/master/schema_human.json" target="_blank">JSON 架构</a>自动验证，另外也会检查在 npm 或 GitHub 上流行程度。</p>
+	<p>当机器人发现新版本时，它会将文件的 Brotli 和 gzip 压缩版本推送到 Workers KV 中的文件命名空间。对于每个条目，机器人会在 <a href="https://blog.cloudflare.com/catching-up-with-workers-kv/">Workers KV 中写入一些元数据</a>，用于 <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETag" target="_blank">ETag</a> 和 <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Last-Modified" target="_blank">Last-Modified</a> HTTP 标头。与之前类似，机器人也会计算未压缩文件的<a href="https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity" target="_blank">子资源完整性</a>（SRI）哈希，但现在将它们推送到 Workers KV 中的 SRI 命名空间。</p>
+	<p>然后，有人从 cdnjs.cloudflare.com 请求新文件时，<a href="https://developers.cloudflare.com/workers/" target="_blank">Cloudflare Worker</a> 会检查客户端的 <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Encoding" target="_blank">Accept-Encoding</a> 标头，并从 Workers KV 中获取 Brotli 或 gzip 压缩版本及其 ETag 和 Last-Modified 元数据。当压缩文件通过 Cloudflare 返回时，它将缓存下来以备日后请求时使用，同时也根据需要即时解压缩。</p>
+	<p>目前，仍有少数文件超过了 Workers KV 的大小限制。因此，如果 Cloudflare Worker 未能从 Workers KV 检索到文件，它会从原始 git 存储库支持的源站中获取文件。在接下来几个月中，我们计划逐步移除此基础架构。</p>
+	<h3 id="-api">扩展网站和 API</h3>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image2-2.gif" class="kg-image"></figure>
+	<p>除了核心 cdnjs 基础架构之外，它的许多其他组件也得到了升级！</p>
+	<p>在 cdnjs 项目的<a href="https://cdnjs.com/" target="_blank">主页</a>上，您会看到一个漂亮的<a href="https://github.com/cdnjs/static-website" target="_blank">新 Beta 网站</a>。这个 Beta 网站由 <a href="https://github.com/mattipv4" target="_blank">Matt</a> 开发，采用了 <a href="https://vuejs.org/" target="_blank">Vue</a> 和 <a href="https://nuxtjs.org/" target="_blank">Nuxt</a>，全部通过 <a href="https://cdnjs.com/api" target="_blank">cdnjs API</a> 提供支持。因此，它始终会更新最新的程序包信息，而且为网站服务时需要使用的资源也较少（加载第一页之后完全在客户端一侧运行），这有助于我们随着 cdnjs 的不断成长而扩展。</p>
+	<p>实际上，cdnjs API 也从采用无服务器架构中获益，加强了可扩展性，这个架构与我们在 cdnjs 和 Workers KV 中看到的非常接近。</p>
+	<p>在迁移到 Workers KV 之前，cdnjs API 依赖于一个定期计划的流程，这个流程会生成大约 300MB 元数据。然后，cdnjs API 的后端会将这个巨大的 “package.min.js”文件提取到内存中，并使用它来运行该 API。如果您好奇的话，该文件仍托管在<a href="https://storage.googleapis.com/cdnjs-assets/package.min.js" target="_blank">此处</a>，但请注意，它可能会拖累您的浏览器！同样，文件 SRI 推送到了 <a href="https://github.com/cdnjs/SRIs" target="_blank">cdnjs/SRIs</a>，由 API 在本地克隆以服务 SRI 响应。</p>
+	<p>在所有 cdnjs 文件（在允许的大小限制内）转移到 Workers KV 之后，这些旧流程变得不可持续，因为需要数百万次读取和不合理的时间。因此，我们决定将找到的所有元数据上传到 Workers KV 中。我们将元数据分拆到四个名称空间中：一个用于程序包级元数据，一个用于版本特定元数据，一个包含聚合元数据，另一个则用于文件 SRI。</p>
+	<p>与 cdnjs 的无服务器设计类似，Cloudflare Worker 驻留在 <a href="http://metadata.speedcdnjs.com/packages" target="_blank">metadata.speedcdnjs.com</a> 上，使用多个公共端点来提供 Workers KV 中的数据。目前，cdnjs API 已经和这些端点完全集成，能够随着 cdnjs 的继续扩展而提供优雅的解决方案。</p>
+	<h3 id="-cdnjs-">公开透明和 cdnjs 的未来</h3>
+	<p>自 2011 年 1 月诞生以来，cdnjs 一直深深扎根于公开透明，从社区汲取力量。即使 cdnjs 在规模上暴增，并且其创始人 Ryan Kirkman 和 Thomas Davis <a href="https://blog.cloudflare.com/cdnjs-community-moderated-javascript-librarie/">与我们在 2011 年 6 月确立合作关系</a>后，这个项目依然在 <a href="https://github.com/cdnjs/" target="_blank">GitHub</a> 保持完全开源。</p>
+	<p>随着时间流逝，创始人越来越难以保持活跃，因此这个项目重度依赖于社区的支持。由于几乎没有任何预算，对存储库的访问也极少，核心 cdnjs 维护人员每天都面临着项目存续的挑战。</p>
+	<p>去年，这样的局面促使我们联系了创始人，<a href="https://news.ycombinator.com/item?id=21416614" target="_blank">他们愉快地接受了我们对项目的协助</a>。随着 Cloudflare 发挥更大的作用，cdnjs 变得与往常一样稳定，拥有来自 Cloudflare 和社区的多位<a href="https://cdnjs.com/about" target="_blank">活跃成员</a>。</p>
+	<p>但是，由于我们不再依赖旧系统，而且也将文件存储到了 Workers KV 中，人们开始担心 cdnjs 日后会转变为专有性质。不用担心，我们正在努力确保 cdnjs 保持尽可能透明和开源。为了帮助社区审核对 Workers KV 的更新，我们建立了一个新的存储库 <a href="https://github.com/cdnjs/logs" target="_blank">cdnjs/logs</a>，供机器人用于记录所有与 Worker KV 相关的事件。此外，任何人都可通过从 cdnjs API 提取 SRI 来验证 cdnjs 文件的完整性。</p>
+	<h3 id="--1">结论</h3>
+	<p>总体而言，去年对 cdnjs 来说是一个动荡的时期，但所有缺点成为了帮助我们构建更好系统的警示信号。最近，我们将 cdnjs 迁移到了无服务器基础架构，并将它的文件存储在 <a href="https://developers.cloudflare.com/workers/reference/storage" target="_blank">Workers KV</a> 中，缓解了依赖于单一位置上物理服务器的风险。</p>
+	<p>今天，cdnjs 运作良好，不会在短期内消失。在此，我们向维护人员 <a href="https://github.com/xtuc" target="_blank">Sven</a> 和 <a href="https://github.com/mattipv4" target="_blank">Matt</a> 表示感谢，谢谢他们给予这个项目巨大的力量，处理从扩展 cdnjs 到编辑这篇帖文等一切工作。</p>
+	<p>展望未来，我们会致力于使 cdnjs 尽可能公开透明。在继续改进 cdnjs 的过程中，我们也会发表更多帖文，让社区掌握最新的消息。如果您有兴趣，请订阅我们的博客。毕竟，是社区造就了 cdnjs！特别感谢我们活跃的 GitHub 贡献者和 <a href="https://github.com/cdnjs/cdnjs/discussions/" target="_blank">cdnjs 社区论坛成员</a>，感谢你们一直与我们同甘共苦！</p>
+</div>

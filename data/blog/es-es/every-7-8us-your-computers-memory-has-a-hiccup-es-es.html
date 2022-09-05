@@ -1,0 +1,210 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/05/1.jpg" class="kg-image">
+		<figcaption>DDR3 SDRAM moderna. Fuente: BY-SA/4.0 por Kjerish</figcaption>
+	</figure>
+	<p></p>
+	<p>Durante mi reciente visita al <a href="http://www.computerhistory.org/" target="_blank">Computer History Museum (Museo de historia de los ordenadores)</a> en Mountain View, me detuve a contemplar una antigua <a href="https://en.wikipedia.org/wiki/Magnetic-core_memory" target="_blank">memoria de núcleos magnéticos</a>.</p>
+	<p></p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/05/2.jpg" class="kg-image">
+		<figcaption>Fuente: BY-SA/3.0 por Konstantin Lanzet</figcaption>
+	</figure>
+	<p></p>
+	<p>Inmediatamente llegué a la conclusión de que no tenía ni idea de cómo funcionaban estas cosas. Me pregunté si los anillos rotaban (no lo hacen) y por qué cada anillo tenía tres cables entrelazados (y todavía no entiendo cómo funcionaban exactamente). Y lo que es más importante, me di cuenta de que apenas entendía el funcionamiento de la memoria moderna - RAM dinámica.</p>
+	<p></p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/05/3.png" class="kg-image">
+		<figcaption>Fuente: Serie de Ulrich Drepper sobre la memoria</figcaption>
+	</figure>
+	<p></p>
+	<p>Particularmente, me interesaba una de las consecuencias del funcionamiento de la RAM dinámica. Verás, cada bit de datos se almacena por la carga (o falta de ella) en un pequeño condensador dentro del chip de la RAM. Pero estos condensadores pierden gradualmente su carga con el tiempo. Para evitar perder los datos almacenados, deben actualizarse regularmente para restaurar la carga (si existe) a su nivel original. Este <a href="https://en.wikipedia.org/wiki/Memory_refresh" target="_blank">proceso de actualización</a> implica leer el valor de cada bit y luego reescribirlo. Durante este tiempo de "actualización", la memoria está ocupada y no puede realizar operaciones normales como cargar o almacenar bits.</p>
+	<p>Esto es algo que me ha preocupado durante cierto tiempo y me pregunté... ¿se puede percibir el retraso de la actualización en el software?</p>
+	<h2 id="manual-b-sico-de-actualizaci-n-de-la-ram-din-mica"><strong>Manual básico de actualización de la RAM dinámica</strong></h2>
+	<p>Cada módulo DIMM está compuesto por «celdas» y «filas», «columnas», «lados» y/o «rangos». En esta presentación de <a href="https://pubweb.eng.utah.edu/~cs7810/pres/11-7810-12.pdf" target="_blank">la Universidad de Utah se explica la nomenclatura</a>. Puede comprobar la configuración de la memoria en su ordenador con el comando decode-dimms. A continuación, un ejemplo:</p>
+	<p></p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>$ decode-dimms
+Size                                       4096 MB
+Banks x Rows x Columns x Bits              8 x 15 x 10 x 64
+Ranks                                      2
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p></p>
+	<p>No vamos a entrar hoy en el formato completo de la DDR DIMM, solo necesitamos entender una sola celda de memoria, que almacena un bit de información. Específicamente, solo nos interesa cómo se realiza el proceso de actualización.</p>
+	<p>Vamos a revisar dos fuentes:</p>
+	<ul>
+		<li><a href="https://utaharch.blogspot.com/2013/11/a-dram-refresh-tutorial.html" target="_blank">Un Tutorial de actualización de DRAM, de la Universidad de Utah</a></li>
+		<li>Y una impresionante documentación de una celda de 1 gigabit de micron: Diseño de TN-46-09 para DDR SDRAM de 1 GB</li>
+	</ul>
+	<p>Cada bit almacenado en la memoria dinámica debe actualizarse, por lo general, cada 64 ms (lo que se conoce como actualización estática). Esta es una operación bastante costosa. Para evitar una paralización importante cada 64 ms, este proceso se divide en 8192 operaciones de actualización más pequeñas. En cada operación, el controlador de memoria del ordenador envía comandos de actualización a los chips de la DRAM. Después de recibir la instrucción, un chip actualizará 1/8192 de sus celdas. Si se hace el cálculo: 64 ms / 8192 = 7812,5 ns o 7,81 μs. Esto significa:</p>
+	<ul>
+		<li>Se emite un comando de actualización cada 7812,5 ns. Esto se llama tREFI.</li>
+		<li>El chip necesita algo de tiempo para realizar la actualización y la recuperación, de modo que pueda realizar operaciones normales de lectura y escritura de nuevo. Este tiempo, llamado tRFC, es de 75 ns o 120 ns (según la hoja de datos mencionada de Micron).</li>
+	</ul>
+	<p>Cuando la memoria está caliente (&gt; 85° C), el tiempo de retención de memoria disminuye y el tiempo de actualización estática se reduce a la mitad, hasta 32 ms, y el tREFI desciende a 3906,25 ns.</p>
+	<p>Un chip de memoria típico está ocupado con actualizaciones durante una fracción significativa de su tiempo de ejecución: entre 0,4 % y 5 %. Además, los chips de memoria son responsables de una parte no menor del consumo de potencia típico de un ordenador, y gran parte de esa energía se emplea en la aplicación de las actualizaciones.</p>
+	<p>Durante la acción de actualización, se bloquea el chip de memoria completo. Esto significa que cada uno de los bits en la memoria se bloquea por más de 75 ns cada 7812 ns. Midámoslo.</p>
+	<h2 id="preparaci-n-de-un-experimento"><strong>Preparación de un experimento</strong></h2>
+	<p>Para medir las operaciones con una granularidad a nanosegundo, tenemos que escribir un bucle ajustado, tal vez en C. Se ve así:</p>
+	<p></p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>  for (i = 0; i &lt; ...; i++) {
+		// Perform memory load. Any load instruction will do
+		*(volatile int *) one_global_var;
+
+		// Flush CPU cache. This is relatively slow
+		_mm_clflush(one_global_var);
+
+		// mfence is needed, otherwise sometimes the loop
+		// takes very short time (25ns instead of like 160). I
+		// blame reordering.
+		asm volatile("mfence");
+
+		// Measure and record time
+		clock_gettime(CLOCK_MONOTONIC, &amp;ts);
+    }
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p></p>
+	<p><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-11-memory-refresh/measure-dram.c" target="_blank">El código completo está disponible en Github</a>.</p>
+	<p>El código es realmente sencillo. Realizar una lectura de memoria. Limpiar datos de las memorias caché de la CPU. Medir tiempo.</p>
+	<p>(Nota: en <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-11-memory-refresh/measure-dram-movntdqa.c#L113-L119" target="_blank">el segundo experimento, intenté usar MOVNTDQA</a> para realizar la carga de datos, pero esto requiere una página especial que no se pueda guardar en caché, y para ello se necesita acceso de administrador.)</p>
+	<p>En mi ordenador, genera datos como estos:</p>
+	<p></p>
+	<!--kg-card-begin: markdown-->
+	<pre><code># timestamp, loop duration
+3101895733,     134
+3101895865,     132
+3101896002,     137
+3101896134,     132
+3101896268,     134
+3101896403,     135
+3101896762,     359
+3101896901,     139
+3101897038,     137
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p></p>
+	<p>Por lo general, obtengo ~ 140 ns por bucle, y la duración del bucle salta periódicamente a ~ 360 ns. A veces, obtengo extrañas lecturas superiores a 3200 ns.</p>
+	<p>Desafortunadamente, los datos resultan ser muy ruidosos. Es muy difícil ver si hay un retraso notable relacionado con los ciclos de actualización.</p>
+	<h2 id="transformada-r-pida-de-fourier"><strong>Transformada rápida de Fourier</strong></h2>
+	<p>En algún momento, tuve una idea. Ya que queremos encontrar un evento de intervalo fijo, podemos añadir los datos en el algoritmo FFT (transformada rápida de Fourier), que descifra las frecuencias subyacentes.</p>
+	<p>No soy el primero que pensó en esto. Mark Seaborn de Rowhammer <a href="https://github.com/google/rowhammer-test/blob/master/refresh_timing/refresh_timing.cc" target="_blank">implementó con notoriedad esta técnica</a> en 2015. Incluso después de echarle un vistazo al código de Mark, conseguir que FFT funcionara resultó ser más difícil de lo esperado. Pero finalmente conseguí reunir todas las piezas.</p>
+	<p>Primero, tenemos que preparar los datos. FFT requiere que los datos de entrada se muestreen con un intervalo de muestreo constante. También queremos recortar los datos para reducir el ruido. Con el método de prueba y error, descubrí que los mejores resultados se producen cuando los datos están preprocesados:</p>
+	<ul>
+		<li>Los valores pequeños (menores que el promedio * 1,8) de iteraciones de bucle se eliminan, ignoran y sustituyen por lecturas de "0". No queremos incluir el ruido en el algoritmo.</li>
+		<li>Todas las lecturas restantes se reemplazan por "1", ya que realmente no nos importa la amplitud del retraso que provoca el ruido.</li>
+		<li>Fijé un intervalo de muestro de 100 ns, pero cualquier número hasta <a href="https://en.wikipedia.org/wiki/Nyquist%E2%80%93Shannon_sampling_theorem" target="_blank">un valor de Nyquist (frecuencia doble esperada) también funciona bien</a>.</li>
+		<li>Los datos se deben muestrear con tiempos fijos antes de introducirlos en la FFT. Todos los métodos de muestreo razonables funcionan adecuadamente, y terminé realizando una interpolación lineal básica.</li>
+	</ul>
+	<p>El algoritmo es parecido al siguiente:</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>$ decode-dimms
+Size                                       4096 MB
+Banks x Rows x Columns x Bits              8 x 15 x 10 x 64
+Ranks                                      2
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<!--kg-card-begin: markdown-->
+	<pre><code>UNIT=100ns
+A = [(timestamp, loop_duration),...] 
+p = 1
+for curr_ts in frange(fist_ts, last_ts, UNIT):
+    while not(A[p-1].timestamp &lt;= curr_ts &lt; A[p].timestamp):
+        p += 1
+    v1 = 1 if avg*1.8 &lt;= A[p-1].duration &lt;= avg*4 else 0
+    v2 = 1 if avg*1.8 &lt;= A[p].duration &lt;= avg*4 else 0
+    v = estimate_linear(v1, v2, A[p-1].timestamp, curr_ts, A[p].timestamp)
+    B.append( v )
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p></p>
+	<p>Que en mis datos produce un vector bastante aburrido como este:</p>
+	<p></p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>[0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0,
+ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+ 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ...]
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p></p>
+	<p>Sin embargo, el vector es bastante largo, normalmente con alrededor de 200 000 puntos de datos. Los datos preparados así ya están listos para introducirse en FFT.</p>
+	<p></p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>C = numpy.fft.fft(B)
+C = numpy.abs(C)
+F = numpy.fft.fftfreq(len(B)) * (1000000000/UNIT)
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p></p>
+	<p>Bastante simple, ¿verdad? Esto produce dos vectores:</p>
+	<ul>
+		<li>C contiene números complejos de los componentes de frecuencia. No nos interesan los números complejos, así que podemos aplanarlos al llamar a abs().</li>
+		<li>F contiene las etiquetas de qué contenedor de frecuencia radica en qué lugar en el vector C. Tenemos que normalizarlo a Hz, multiplicándolo por la frecuencia de muestreo de los vectores de entrada.</li>
+	</ul>
+	<p>El resultado se puede mostrar en un gráfico:</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/4.png" class="kg-image"></figure>
+	<p></p>
+	<p>El eje Y no tiene unidad, ya que normalizamos los tiempos de retraso. Sin embargo, muestra picos claros en algunos intervalos de frecuencia fija. Ampliemos:</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/5.png" class="kg-image"></figure>
+	<p></p>
+	<p>Primero, podemos ver tres picos claros. Después de un poco de insípida aritmética, con un filtrado de la lectura de al menos 10 veces el tamaño de la media, podemos extraer las frecuencias subyacentes:</p>
+	<p></p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>127850.0
+127900.0
+127950.0
+255700.0
+255750.0
+255800.0
+255850.0
+255900.0
+255950.0
+383600.0
+383650.0
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p></p>
+	<p>Si se hace el cálculo: 1000000000 (ns/s) / 127900 (Hz) = 7818,6 ns</p>
+	<p>¡Hurra! El primer pico de frecuencia es ciertamente lo que estábamos buscando y, de hecho, se correlaciona con los tiempos de actualización.</p>
+	<p>Los otros picos a 256 kHz, 384 kHz, 512 kHz, etc., son multiplicaciones de nuestra frecuencia base de 128 kHz, llamada armonía. Estos son un efecto secundario de <a href="https://en.wikipedia.org/wiki/Square_wave" target="_blank">realizar la FFT sobre algo parecido a una onda cuadrada</a>, y es algo totalmente esperado.</p>
+	<p>Para una experimentación más sencilla, <a href="https://github.com/cloudflare/cloudflare-blog/tree/master/2018-11-memory-refresh" target="_blank">preparamos una versión de la línea de comando de esta herramienta</a>. Usted mismo puede ejecutar el código. A continuación, una ejecución de muestra en mi servidor:</p>
+	<p></p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>~/2018-11-memory-refresh$ make
+gcc -msse4.1 -ggdb -O3 -Wall -Wextra measure-dram.c -o measure-dram
+./measure-dram | python3 ./analyze-dram.py
+[*] Verifying ASLR: main=0x555555554890 stack=0x7fffffefe2ec
+[ ] Fun fact. I did 40663553 clock_gettime()'s per second
+[*] Measuring MOVQ + CLFLUSH time. Running 131072 iterations.
+[*] Writing out data
+[*] Input data: min=117 avg=176 med=167 max=8172 items=131072
+[*] Cutoff range 212-inf
+[ ] 127849 items below cutoff, 0 items above cutoff, 3223 items non-zero
+[*] Running FFT
+[*] Top frequency above 2kHz below 250kHz has magnitude of 7716
+[+] Top frequency spikes above 2kHZ are at:
+127906Hz    7716
+255813Hz    7947
+383720Hz    7460
+511626Hz    7141
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p></p>
+	<p>Tengo que admitir que el código no es perfectamente estable. En caso de problemas, considere deshabilitar Turbo Boost, el escalado de frecuencia de la CPU y el ajuste para rendimiento.</p>
+	<h2 id="final"><strong>Final</strong></h2>
+	<p>Se pueden sacar dos importantes conclusiones de este trabajo.</p>
+	<p>Hemos visto que los datos de nivel bajo son bastante difíciles de analizar y parecen ser bastante ruidosos. En lugar de tratar de averiguar algo a simple vista, siempre podemos emplear FFT. Se necesita algo de optimismo al preparar los datos.</p>
+	<p>Y lo que es más importante, mostramos que a menudo es posible medir los comportamientos sutiles de hardware de un proceso de espacio de usuario simple. Este tipo de pensamiento condujo al descubrimiento de la vulnerabilidad del <a href="https://googleprojectzero.blogspot.com/2015/03/exploiting-dram-rowhammer-bug-to-gain.html" target="_blank">Rowhammer original</a>, se utilizó en ataques Meltdown/Spectre y se mostró de nuevo en la <a href="https://arstechnica.com/information-technology/2018/11/potentially-disastrous-rowhammer-bitflips-can-bypass-ecc-protections/" target="_blank">reciente reencarnación de la derrota de ECC de Rowhammer</a>.</p>
+	<p>Queda tanto más por decir. Apenas hemos arañado la superficie del funcionamiento interno del subsistema de la memoria. Recomiendo lecturas adicionales:</p>
+	<ul>
+		<li><a href="https://lackingrhoticity.blogspot.com/2015/04/l3-cache-mapping-on-sandy-bridge-cpus.html" target="_blank">L3 cache mapping on Sandy Bridge CPUs</a></li>
+		<li><a href="https://lackingrhoticity.blogspot.com/2015/05/how-physical-addresses-map-to-rows-and-banks.html" target="_blank">How physical address maps to rows and banks in DRAM</a></li>
+		<li><a href="https://hannuhartikainen.fi/blog/hacking-ddr3-spd/" target="_blank">Hannu Hartikainen hacking DDR3 SO-DIMM to work... slower</a></li>
+	</ul>
+	<p>Finalmente, aquí hay una buena lectura sobre la vieja memoria de núcleo magnético:</p>
+	<ul>
+		<li><a href="http://www.psych.usyd.edu.au/pdp-11/core.html" target="_blank">PDP-11 core memory explained by University of Sydney</a><br></li>
+	</ul>
+</div>

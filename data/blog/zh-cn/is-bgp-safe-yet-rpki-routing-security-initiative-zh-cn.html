@@ -1,0 +1,42 @@
+<div class="post-content lh-copy gray1">
+	<p>许久以来，人们已经接受 BGP 泄漏与劫持是互联网不可避免的一个部分。我们依靠 TLS 和 DNSSEC 等上层保护来确保数据包传送不受篡改，但路由被劫持常常导致 IP 地址不可达，致使互联网服务中断。</p>
+	<p>互联网举足轻重，不容许这个已知问题继续存在。是时候防止网络泄漏和劫持产生任何影响。让 BGP 变得安全已经刻不容缓。别再找借口了。</p>
+	<p>边界网关协议（BGP）是一种交换路由的协议，自上世纪 80 年代起就已存在并演进。经过多年发展，它具备了安全功能。最值得注意的安全性增强是资源公钥基础架构（RPKI），这是一种面向路由的安全框架。自2018 年中我们部署以来，它已成为<a href="https://blog.cloudflare.com/tag/rpki/">数篇博客文章</a>的主题。</p>
+	<p>如今，业界认为 RPKI 已经足够成熟，可以广泛使用，因为拥有由丰富的<a href="https://github.com/cloudflare/gortr" target="_blank">软件</a>和<a href="https://rpki.cloudflare.com/" target="_blank">工具</a>构成的生态系统，包括我们编写和来自开源途径的工具。我们已经对我们与对等方的所有 BGP 会话全面部署了来源验证，也给我们的前缀签了名。</p>
+	<p>不过，只有主流网络运营商<a href="https://www.ndss-symposium.org/wp-content/uploads/2017/09/ndss2017_06A-3_Gilad_paper.pdf" target="_blank">部署 RPKI</a>，互联网才会变得安全。这些网络能够将泄漏或劫持传播到更远更广的地方，因此必须要参与到杜绝无意或蓄意祸害 BGP 的行动中。</p>
+	<p>AT＆T 和Telia 等多家公司在 2019 年率先在全球部署了 RPKI。Cogent 和 NTT 紧随其后，在 2020 年进行了部署。数百个规模不等的网络在过去几年做了大量工作，但依然还要努力。</p>
+	<p>通过观察部署了 RPKI 的网络的客户锥体，我们发现大约 50％ 的互联网受到了防止路由泄漏的保护。这非常好，但还不够。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/isbgpsafeyet.png" class="kg-image"></figure>
+	<p>今天，我们发布了 <a href="https://isbgpsafeyet.com/" target="_blank">isBGPSafeYet.com</a>，这个网站可以跟踪主流网络的部署和无效路由过滤。</p>
+	<p>我们希望这对社区有所帮助，我们也会在网站上众包信息。其源代码可从 <a href="https://github.com/cloudflare/isbgpsafeyet.com" target="_blank">GitHub</a> 获取，我们也欢迎大家建言献策。</p>
+	<p>我们希望这一举措将使所有人都能更容易使用 RPKI，最终减轻路由泄漏的影响。请将这个消息分享给您的互联网服务提供商（ISP）、托管服务提供商和传输网络，共同建设一个更加安全的互联网。</p>
+	<p>此外，为了监控和测试部署，我们决定公布来自我们 200 多个数据中心并经由我们所连的超过 233 个互联网交换点（IXP）的两个不良前缀：</p>
+	<ul>
+		<li>103.21.244.0/24</li>
+		<li>2606:4700:7000::/48</li>
+	</ul>
+	<p>这两个前缀都应视为<em>无效</em>，如果您的提供商在其网络内部署了 RPKI，则不应路由这两个前缀。这样，我们可以轻松地展示一个不良路由可以走多远，还能测试 RPKI 在现实世界中是否有效。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/11/Screen-Shot-2020-04-16-at-6.36.48-PM.png" class="kg-image">
+		<figcaption><a href="https://rpki.cloudflare.com/?validateRoute=13335_103.21.244.0%2F24" target="_blank">103.21.244.0/24 在 rpki.cloudflare.com 上的路由来源授权</a></figcaption>
+	</figure>
+	<p>您可以在 <a href="https://isbgpsafeyet.com/" target="_blank">isBGPSafeYet.com</a>上运行测试，浏览器将尝试获取两个页面：其一，valid.rpki.cloudflare.com 位于 RPKI 有效前缀的后方，其二，invalid.rpki.cloudflare.com 则外位于 RPKI 无效前缀的后方。</p>
+	<p>测试有两个结果：</p>
+	<ul>
+		<li>如果两个页面都能正确获取，这表示您的 ISP 接受了无效路由，因此没有实施 RPKI。</li>
+		<li>如果只获取了 valid.rpki.cloudflare.com，则表示您的 ISP 实施了 RPKI。您将对路由泄漏不太敏感。</li>
+	</ul>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/11/blogpost2-01.png" class="kg-image">
+		<figcaption>RPKI 无效路由连通性的简单测试</figcaption>
+	</figure>
+	<p>我们将使用这些前缀执行测试以检查传播情况。<a href="https://en.wikipedia.org/wiki/Traceroute" target="_blank">Traceroutes</a> 和探测可以创建部署的可视化呈现，为我们提供了帮助。</p>
+	<p>一个简单的指标是将接受的路由发送到其对等方和收集方的网络数量：</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/11/invalid-prefixes-reachability.png" class="kg-image">
+		<figcaption>在线路由收集工具 <a href="https://stat.ripe.net/widget/routing-status#w.resource=103.21.244.0/24&amp;w.min_peers_seeing=0" target="_blank">RIPE Stat</a> 的路由状态</figcaption>
+	</figure>
+	<p>2019 年 12 月，我们发布了 IPv4 地址空间的<a href="https://xkcd.com/195/" target="_blank">希尔伯特</a>曲线图。每个像素代表一个 /20 前缀。如果是黄色，则前缀仅响应来自 RPKI 有效 IP 空间的探测。如果是蓝色，则前缀同时响应来自 RPKI 有效和无效 IP 空间的探测。</p>
+	<p>总之，黄色区域是位于丢弃 RPKI 无效前缀的网络后方的 IP 空间。只有蓝色变成黄色后，互联网才安全。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/11/blogpost-hilbert-01.png" class="kg-image">
+		<figcaption>位于过滤 RPKI 无效前缀的网络后面的 IP 地址空间的希尔伯特曲线图</figcaption>
+	</figure>
+	<p>最后但同样重要的是，我们要感谢已经部署 RPKI 的每个网络，以及为验证器软件代码库做出贡献的所有开发人员。最近两年表明互联网可以变得更加安全，我们也期待着将路由泄漏和劫持称为历史的那一天。</p>
+</div>

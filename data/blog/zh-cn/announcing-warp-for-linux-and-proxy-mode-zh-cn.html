@@ -1,0 +1,170 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/05/image4-6.png" class="kg-image"></figure>
+	<p>去年 10 月，我们发布了<a href="https://blog.cloudflare.com/zh-cn/warp-for-desktop-zh-cn/">桌面版 WARP</a>，为数十亿台设备免费提供更安全、更快捷的互联网使用方式。同时，我们让企业客户能够将 WARP 与 Cloudflare for Teams 相结合使用。通过 WARP 路由来自地球上任何地方的设备的所有企业流量，我们都能够无缝地支持高级功能，例如<a href="https://www.cloudflare.com/zh-cn/teams/gateway/" target="_blank">安全 Web 网关</a>和<a href="https://blog.cloudflare.com/zh-cn/browser-isolation-for-teams-of-all-sizes-zh-cn/">浏览器隔离</a>，以及未来的<a href="https://blog.cloudflare.com/zh-cn/data-loss-prevention-zh-cn/">数据丢失防护</a>平台。</p>
+	<p>今天，我们很高兴地宣布 Cloudflare WARP for Linux，以及在所有桌面平台上，能够将 WARP 用于单个应用程序而不是整个设备。</p>
+	<h3 id="-warp-">什么是 WARP？</h3>
+	<p>WARP 的理念是，即使不知道 <a href="https://www.cloudflare.com/zh-cn/learning/access-management/what-is-a-vpn/" target="_blank">“VPN” 代表什么</a>的人员也应该能够轻松获得 VPN 提供的保护。不幸的是，它也是为我们这些对传统企业 VPN 太熟悉的人而构建的，他们需要创新的无缝解决方案来应对始终连接的世界的挑战。</p>
+	<p>输入我们自己的名为 <a href="https://blog.cloudflare.com/boringtun-userspace-wireguard-rust/">BoringTun</a> 的 WireGuard 实现。</p>
+	<p>WARP 应用程序使用 BoringTun 来加密来自您设备的流量并将其直接发送到 Cloudflare 的边缘，确保中间没有人窥探您正在做的事情。如果您正在访问的站点已经是 Cloudflare 客户，则内容会立即发送到您的设备。借助 WARP+，我们使用 Argo Smart Routing 可以通过我们的全局网络数据中心使用最短路径到达您要连接的任何人。</p>
+	<p>结合 <a href="https://one.one.one.one/" target="_blank">1.1.1.1</a><a href="https://www.dnsperf.com/#!dns-resolvers" target="_blank">（世界上最快的</a>公共 DNS 解析器）的强大功能，WARP 可确保您的流量安全、私密且快速。由于您在 Internet 上所做的几乎所有事情都是从 DNS 请求开始的，因此在您的所有设备上选择最快的 DNS 服务器几乎可以加速您在网上所做的一切。</p>
+	<h2 id="-warp-linux"><strong>将 WARP 引入 Linux</strong></h2>
+	<p>去年，当我们构建桌面客户端的基础时，我们知道我们将交付 Linux 客户端。如果您曾经发布过这种规模的软件，您就会知道在所有主要操作系统上维护客户端是一项艰巨（且容易出错）的任务。为了避免这些陷阱，我们用 Rust 编写了产品的核心，它允许跨平台共享 95% 的代码。</p>
+	<p>在内部，我们将此公共代码称为共享后台程序（或服务，对于 Windows 熟人），它允许我们的工程师可以花更少的时间跨多个平台复制代码，同时确保大多数质量改进同时惠及每个人。真正酷的是，数百万现有的 WARP 用户已经帮助我们巩固了 Linux 的代码库！</p>
+	<p>另外 5% 的代码分为两个主要部分：操作系统的用户界面和特点。目前，我们放弃了 Linux 上的 UI，而是努力支持三个发行版：</p>
+	<ul>
+		<li>Ubuntu</li>
+		<li>红帽企业 Linux</li>
+		<li>CentOS</li>
+	</ul>
+	<p>我们希望在未来添加更多发行版支持，所以如果你最喜欢的发行版本不存在，请不要绝望—客户端实际上可能已经与其他基于 Debian 和 Redhat 的发行版一起使用，所以请试一试。如果我们错过了您最喜欢的发行版本，我们很乐意在我们的<a href="https://community.cloudflare.com/" target="_blank">社区论坛</a>中收到您的来信。</p>
+	<p>那么如果没有 UI—控制 WARP 的机制是什么？当然是命令行！敏锐的观察者可能已经注意到，每个客户端都附带了一个名为 warp-cli 的可执行文件。这个与平台无关的接口已经是我们的一些工程师与后台程序交互的首选机制，并且是您在 Linux 上与 WARP 交互的主要方式。</p>
+	<h3 id="-linux-cloudflare-warp">为 Linux 安装 Cloudflare WARP</h3>
+	<p>经验丰富的 Linux 开发人员可以直接跳转到<a href="https://pkg.cloudflareclient.com/install" target="_blank">https://pkg.cloudflareclient.com/install</a>。链接我们的存储库后，根据您的发行版，使用 <code>sudo apt install cloudflare-warp</code> 或开始 <code>sudo yum install cloudflare-warp</code>。</p>
+	<p>有关更详细的安装说明，请访问我们的 <a href="https://developers.cloudflare.com/warp-client/setting-up/linux/" target="_blank">WARP 客户端文档</a>。</p>
+	<h3 id="-">使用命令行界面</h3>
+	<p>一旦您安装 WARP 后，您可以通过一个命令开始使用 CLI：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>warp-cli --help
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>CLI 将显示以下输出。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>~$ warp-cli --help
+WARP 0.2.0
+Cloudflare
+CLI to the WARP service daemon
+ 
+USAGE:
+    warp-cli [FLAGS] [SUBCOMMAND]
+ 
+FLAGS:
+        --accept-tos    Accept the Terms of Service agreement
+    -h, --help          Prints help information
+    -l                  Stay connected to the daemon and listen for status changes and DNS logs (if enabled)
+    -V, --version       Prints version information
+ 
+SUBCOMMANDS:
+    register                    Registers with the WARP API, will replace any existing registration (must be run
+                                before first connection)
+    teams-enroll                Enroll with Cloudflare for Teams
+    delete                      Deletes current registration
+    rotate-keys                 Generates a new key-pair, keeping the current registration
+    status                      Asks the daemon to send the current status
+    warp-stats                  Retrieves the stats for the current WARP connection
+    settings                    Retrieves the current application settings
+    connect                     Asks the daemon to start a connection, connection progress should be monitored with
+                                -l
+    disconnect                  Asks the daemon to stop a connection
+    enable-always-on            Enables always on mode for the daemon (i.e. reconnect automatically whenever
+                                possible)
+    disable-always-on           Disables always on mode
+    disable-wifi                Pauses service on WiFi networks
+    enable-wifi                 Re-enables service on WiFi networks
+    disable-ethernet            Pauses service on ethernet networks
+    enable-ethernet             Re-enables service on ethernet networks
+    add-trusted-ssid            Adds a trusted WiFi network, for which the daemon will be disabled
+    del-trusted-ssid            Removes a trusted WiFi network
+    allow-private-ips           Exclude private IP ranges from tunnel
+    enable-dns-log              Enables DNS logging, use with the -l option
+    disable-dns-log             Disables DNS logging
+    account                     Retrieves the account associated with the current registration
+    devices                     Retrieves the list of devices associated with the current registration
+    network                     Retrieves the current network information as collected by the daemon
+    set-mode                    
+    set-families-mode           
+    set-license                 Attaches the current registration to a different account using a license key
+    set-gateway                 Forces the app to use the specified Gateway ID for DNS queries
+    clear-gateway               Clear the Gateway ID
+    set-custom-endpoint         Forces the client to connect to the specified IP:PORT endpoint
+    clear-custom-endpoint       Remove the custom endpoint setting
+    add-excluded-route          Adds an excluded IP
+    remove-excluded-route       Removes an excluded IP
+    get-excluded-routes         Get the list of excluded routes
+    add-fallback-domain         Adds a fallback domain
+    remove-fallback-domain      Removes a fallback domain
+    get-fallback-domains        Get the list of fallback domains
+    restore-fallback-domains    Restore the fallback domains
+    get-device-posture          Get the current device posture
+    override                    Temporarily override MDM policies that require the client to stay enabled
+    set-proxy-port              Set the listening port for WARP proxy (127.0.0.1:{port})
+    help                        Prints this message or the help of the given subcommand(s)
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p><br>您只需使用两个命令即可开始连接到 Cloudflare 的网络。第一个命令 ，register 将提示您进行身份验证。第二个命令 ，connect 将启用客户端，创建从您的设备到 Cloudflare 网络的 WireGuard 隧道。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>~$ warp-cli register
+Success
+~$ warp-cli connect
+Success
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>连接客户端后，验证它是否正常工作的最佳方法是运行我们的 trace 命令：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>~$ curl https://www.cloudflare.com/cdn-cgi/trace/
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>并寻找以下输出：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>warp=on
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>想要从加密 WARP 中的所有流量切换到只使用我们的 <a href="https://developers.cloudflare.com/1.1.1.1/" target="_blank">1.1.1.1 DNS 解析器吗</a>？使用 warp-cli set-mode 命令：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>~$ warp-cli help set-mode
+warp-cli-set-mode 
+ 
+USAGE:
+    warp-cli set-mode [mode]
+ 
+FLAGS:
+    -h, --help       Prints help information
+    -V, --version    Prints version information
+ 
+ARGS:
+    &lt;mode&gt;     [possible values: warp, doh, warp+doh, dot, warp+dot, proxy]
+~$ warp-cli set-mode doh
+Success
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>使用 <a href="https://blog.cloudflare.com/zh-cn/introducing-1-1-1-1-for-families-zh-cn/">1.1.1.1 for Families 保护自己免受恶意软件的侵害</a>同样简单，它可以在启用 WARP 或直接 DNS 模式下使用：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>~$ warp-cli set-families-mode --help
+warp-cli-set-families-mode 
+ 
+USAGE:
+    warp-cli set-families-mode [mode]
+ 
+FLAGS:
+    -h, --help       Prints help information
+    -V, --version    Prints version information
+ 
+ARGS:
+    &lt;mode&gt;     [possible values: off, malware, full]
+~$ warp-cli set-families-mode malware
+Success
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h3 id="-cloudflare-for-teams-">关于 Cloudflare for Teams 支持的说明</h3>
+	<p>Cloudflare for Teams 支持正在进行中，就像我们的其他客户一样，它将在相同的包裹中提供。请继续关注应用内更新，或联系您的客户经理以在测试版可用时收到通知。</p>
+	<h3 id="--1">我们需要反馈</h3>
+	<p>如果您遇到错误，请使用以下 sudo warp-diag feedback 命令向我们发送反馈：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>~$ sudo warp-diag feedback
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>对于所有其他功能，warp-cli --help 请在此处查看或<a href="https://developers.cloudflare.com/warp-client/" target="_blank">查看我们的文档</a>。</p>
+	<h3 id="warp-">WARP 作为本地代理</h3>
+	<p>当 WARP 于 2019 年推出时，我们的首选目标之一是易于使用。您打开 WARP，来自您设备的所有流量都被加密到我们的边缘。在客户端的所有版本中，我们一直将其作为重点。打开一个大开关，您就受到保护。</p>
+	<p>然而，随着我们的成长，所以对我们的客户有要求。今年早些时候，我们发布<a href="https://developers.cloudflare.com/cloudflare-one/tutorials/split-tunnel" target="_blank">了拆分隧道和本地域回退，</a>作为 Cloudflare for Teams 客户从 WARP 中排除某些路由的一种方式。我们的消费者客户可能已经注意到，在上一个版本中也悄悄添加了这一点。我们从希望以一种附加模式部署 WARP 的客户那里听说：单一应用程序。今天，我们还宣布我们的客户能够在所有桌面客户端中以本地代理模式运行 WARP。</p>
+	<p>当 WARP 配置为本地代理时，只有您配置为使用代理（HTTPS 或 SOCKS5）的应用程序将通过 WARP 发送其流量。这允许您选择加密的流量（例如，您的网络浏览器或特定应用程序），而其他所有内容都将通过 Internet 保持打开状态。</p>
+	<p>由于此功能将 WARP 限制为仅配置为使用本地代理的应用程序，默认情况下不会对 Internet 上的所有其他流量进行加密，因此我们将其隐藏在高级菜单中。打开它：</p>
+	<p>1. 导航至 Preferences （首选项） -&gt; Advanced （高级）并单击 Configure Proxy （配置代理）按钮。</p>
+	<p>2. 在打开的对话框中，选中该框并配置要侦听的端口。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/05/image3-4.png" class="kg-image"></figure>
+	<p>3. 这将启用您可以选择的新模式：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/05/image1-5.png" class="kg-image"></figure>
+	<p>要将应用程序配置为使用代理，您需要为地址指定 127.0.0.1，并为端口指定值（默认为 40000）。例如，如果您使用 Firefox，配置将如下所示：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/05/image2-3.png" class="kg-image"></figure>
+	<h3 id="--2">立即下载</h3>
+	<p>您可以通过访问 <a href="https://one.one.one.one/" target="_blank">https://one.one.one.one</a> 立即开始使用这些功能。我们非常高兴听到您的反馈。<a href="https://blog.cloudflare.com/tag/warp/">Warp</a> <a href="https://blog.cloudflare.com/tag/product-news/">产品新闻</a> <a href="https://blog.cloudflare.com/tag/cloudflare-for-teams/">Cloudflare for Teams</a> <a href="https://blog.cloudflare.com/tag/1-1-1-1/">1.1.1.1</a> <a href="https://blog.cloudflare.com/tag/gateway/">Cloudflare 网关</a></p>
+</div>

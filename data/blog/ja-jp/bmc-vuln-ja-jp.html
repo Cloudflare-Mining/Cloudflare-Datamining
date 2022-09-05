@@ -1,0 +1,61 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image3-43.png" class="kg-image" alt="Cloudflare’s approach to handling BMC vulnerabilities."></figure>
+	<p>近年、ベースボード管理コントローラー(BMC)などのサーバー上の管理インターフェースが、ランサムウェアやインプラント、動作妨害などのサイバー攻撃のターゲットになっています。<a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-6260" target="_blank">Pantsdown</a>や<a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-16649" target="_blank">USBAnywhere</a>といったBMCに共通する脆弱性が、ファームウェアの更新頻度の低さと相まって、サーバーに脆弱性を残しているのです。</p>
+	<p>最近、信頼できるベンダーから、弊社が使用している一般的なBMCソフトウェアに <a href="https://eclypsium.com/2022/05/26/quanta-servers-still-vulnerable-to-pantsdown/" target="_blank">新しい、重大な脆弱性</a>があるとの情報を得ました。以下は、発見された内容、影響を緩和した方法、そしてこの種の脆弱性がCloudflareと当社の顧客に影響を与えることを防ぐための方法についてまとめたものです。</p>
+	<h2 id="-">背景</h2>
+	<p>ベースボード管理コントローラーは、ホストシステムのリモート監視と管理に使用される小型の専用プロセッサーです。このプロセッサーは、ホストシステムとの複数の接続を持ち、ハードウェアの監視、BIOSファームウェアの更新、ホストのパワーサイクルなど、その他さまざまな機能を提供します。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image1-63.png" class="kg-image"></figure>
+	<p>BMCへのアクセスは、ローカルでも可能ですが、場合によっては、リモートでも可能です。リモートベクトルの場合、ローカルホストからPCI ExpressまたはLow Pin Count (LPC)インターフェースを介してマルウェアがBMCにインストールされる可能性があります。BMC上のソフトウェアの安全性が損なわれた場合、マルウェアやスパイウェアがサーバー上で持続的に動作する可能性があります。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image2-2.gif" class="kg-image"></figure>
+	<p><a href="https://nvd.nist.gov/vuln/detail/CVE-2019-6260" target="_blank">国家脆弱性データベース</a>によると、2つのBMCチップ(<a href="https://www.aspeedtech.com/" target="_blank">ASPEED</a>AST2400とAST2500)には、高度なハイパフォーマンスバス(AHB)ブリッジが実装されていて、ホストからBMCの物理アドレス空間への任意の読み出しと書き込みアクセスができるようになっているとのことです。このため、サーバー上で動作するマルウェアもBMCのRAMにアクセスすることが可能です。</p>
+	<p>これらのBMCの脆弱性は、ランサムウェアの増殖、サーバーのブリック、データの盗難を可能にするのに十分なものです。</p>
+	<h2 id="--1">影響を受けたバージョン</h2>
+	<p><a href="https://www.qct.io/product/index/Server/rackmount-server/1U-Rackmount-Server/QuantaGrid-D52B-1U" target="_blank">QuantaGrid D52B</a>クラウドサーバーに、BMCで見つかった脆弱なソフトウェアが原因で影響を与える多数の脆弱性が存在することが判明しました。これらの脆弱性は、AST2400およびAST2500で公開されている特定のインターフェースに関連するもので、<a href="https://nvd.nist.gov/vuln/detail/CVE-2019-6260" target="_blank">CVE-2019-6260</a>で説明されています。問題の脆弱なインターフェースは以下の通りです。</p>
+	<ul>
+		<li>iLPC2AHBブリッジPt I</li>
+		<li>iLPC2AHBブリッジPt II</li>
+		<li>PCIe VGA P2Aブリッジ</li>
+		<li><a href="https://en.wikipedia.org/wiki/Direct_memory_access" target="_blank">DMA</a> X-DMAを介した任意のBMCメモリから/に</li>
+		<li><a href="https://en.wikipedia.org/wiki/Universal_asynchronous_receiver-transmitter" target="_blank">UART</a>ベースのSoC Debugインターフェース</li>
+		<li>LPC2AHBブリッジ</li>
+		<li>PCIe BMC P2Aブリッジ</li>
+		<li>ウォッチドッグのセットアップ</li>
+	</ul>
+	<p>攻撃者は、インバンドLPCまたはBMCデバッグ汎用非同期送受信機(UART)シリアルコンソールを介してSoCFlashで直接BMCを更新できる可能性があります。これは、完全に破損した場合の通常のパスと考えられるかもしれませんが、実際には、フラッシュ用の任意のオープンインタフェースを使用することで、SoCFlash内で悪用されます。</p>
+	<h2 id="--2">軽減策と対応</h2>
+	<h3 id="--3">ファームウェアのアップデート</h3>
+	<p>弊社メーカーのひとつであるQuantaに連絡を取り、システムのサブセット内の既存のファームウェアが、実際にこれらの脆弱性に対してパッチを適用しているかどうかを検証してもらいました。ファームウェアのバージョンによっては、脆弱性がないものもありましたが、そうでないものもありました。パッチはリリースされ、テストされ、弊社のフリート内の影響を受けたBMCに展開されました。</p>
+	<p>また、Cloudflareのセキュリティおよびインフラストラクチャチームは、他のメーカーと積極的に協力し、BMCパッチがこれらのファームウェアの脆弱性やインターフェースに対して明示的に脆弱でないことを検証しました。</p>
+	<h3 id="bmc-">BMCリモートインターフェースの露出を低減</h3>
+	<p>弊社のデータセンターでは、異なるトラフィックのプレーンを分離するために、ネットワークのセグメント化を実装することが標準的な慣行となっています。帯域外のネットワークは外部に公開されず、それぞれのデータセンター内でのみアクセス可能です。管理ネットワークへのアクセスは、多層防御アプローチにより、踏み台への接続を制限し、弊社のZero Trust <a href="https://www.cloudflare.com/cloudflare-one/" target="_blank">Cloudflare One</a>サービスを通じて認証/認可を行います。</p>
+	<h3 id="bmc--1">BMCローカルインターフェースの露出を低減</h3>
+	<p>ホスト内のアプリケーションは、BMCに呼び出すことができるものが制限されています。これは、ホストからBMCにできることを制限し、安全なインバンド更新とユーザースペースのロギングと監視を可能にするために行われます。</p>
+	<h3 id="--4">デフォルトのパスワードは使用しないでください</h3>
+	<p>これは多くの企業にとって常識のように聞こえますが、弊社はBMCソフトウェアに付属するデフォルトのユーザー名とパスワードを変更するだけでなく、デフォルトのアカウントが使用されないように無効化する標準プロセスを今でも続けています。静的なアカウントは、定期的なパスワードのローテーションに従っています。</p>
+	<h3 id="bmc--2">BMCのロギングと監査</h3>
+	<p>弊社のBMCでは、デフォルトですべてのアクティビティをログに記録しています。取得されるログは以下を含みます。</p>
+	<ul>
+		<li>認証(成功、失敗)</li>
+		<li>認可(ユーザー/サービス)</li>
+		<li>インターフェース(SOL、CLI、UI)</li>
+		<li>システムの状態(電源のオン/オフ、リブート)</li>
+		<li>システム変更(ファームウェアの更新、フラッシュ方式)</li>
+	</ul>
+	<p>悪意のある行為が検出されないことを検証できました。</p>
+	<h2 id="bmc--3">BMCの次なる展開</h2>
+	<p>Cloudflareは、弊社独自の仕様に基づき、最高のパフォーマンス、効率性および安全性を備えたコンピューティングシステムを製造するために、複数の相手先ブランド設計製造業者(ODM)と定期的に協働しています。弊社のベースボード管理コントローラーに使用されている標準プロセッサーは、弊社とODMにとって透明性が低く、保守が面倒な独自のファームウェアとともに出荷されることがよくあります。弊社は、世界270以上の都市で運用されているシステムのすべてのコンポーネントを改善することが重要だと考えています。</p>
+	<h3 id="openbmc">OpenBMC</h3>
+	<p>弊社がサポートするベースボード管理コントローラー用のオープンソースファームウェア、<a href="https://github.com/openbmc/openbmc" target="_blank">OpenBMC</a>を進めています。OpenBMCは、組込みシステムにおける LinuxのためのツールチェーンであるYocto Projectに基づいており、物理的なハードウェアやODMと同様に、最新のLinuxカーネル機能セットに基づいた独自のファームウェアを、弊社の仕様に合わせて指定、構築および設定できるようになります。</p>
+	<p>OpenBMCファームウェアが有効になります。</p>
+	<ul>
+		<li>最新の安定版およびパッチ適用済みLinuxカーネル</li>
+		<li>内部で管理されたTLS証明書により、分離された管理ネットワーク上で安全かつ信頼性の高い通信が可能</li>
+		<li>きめ細かなクレデンシャル管理</li>
+		<li>パッチ適用や重要なアップデートの応答時間の短縮</li>
+	</ul>
+	<p>これらの機能の多くはコミュニティが主導していますが、Pantsdownのような脆弱性は、<a href="https://gerrit.openbmc-project.xyz/c/openbmc/meta-phosphor/+/13290/5/aspeed-layer/recipes-bsp/u-boot/files/0001-aspeed-Disable-unnecessary-features.patch" target="_blank">すぐにパッチが適用されます</a>。</p>
+	<h3 id="--5">セキュアブートの拡張</h3>
+	<p><a href="https://blog.cloudflare.com/anchoring-trust-a-hardware-secure-boot-story/">ハードウェアroot-of-trust</a>を使ってブートプロセスを保護する弊社の最近の取り組みについてお読み頂いたかもしれませんが、BMCには独自のブートプロセスがあり、システムが電力を得るとすぐに開始することがよくあります。<a href="https://docs.microsoft.com/en-us/azure/security/fundamentals/project-cerberus" target="_blank">最先端</a><a href="https://axiado.com/" target="_blank">のセキュリティコプロセッサー</a>の活用と同様に、弊社が使用するBMCチップの新バージョンは、BMC/OpenBMCファームウェアの暗号署名を検証することによって、UEFIファームウェアのロード前に、セキュアブートの能力を拡張することができます。セキュリティブートチェーンを、弊社のシステムに電力を供給する最初のデバイスに拡張することで、サーバーを停止させるために使用できる悪意のあるインプラントの影響を大幅に削減します。</p>
+	<h2 id="--6">まとめ</h2>
+	<p>この脆弱性は、Quantaのファームウェアのアップデートと、フリートの検証およびパッチ適用をするための弊社チームの迅速な対応によってすぐに解決できるものでしたが、弊社はOpenBMCを通じて革新を続け、弊社フリートの安全性を可能な限り保証するために、信頼の起点を確保します。パートナーの迅速な対応に感謝するとともに、弊社がいかに真剣にお客様のセキュリティに取り組んでいるかを信頼していただけるよう、あらゆるリスクと軽減策をいつでも喜んでご報告いたします。</p>
+</div>

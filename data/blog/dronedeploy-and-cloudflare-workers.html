@@ -1,0 +1,184 @@
+<div class="post-content lh-copy gray1">
+	<!--kg-card-begin: markdown-->
+	<p><img src="https://blog.cloudflare.com/content/images/2018/06/image4.jpg" alt="image4"><small>Images courtesty of <a href="https://www.dronedeploy.com/" target="_blank">DroneDeploy</a></small></p>
+	<p>When we launched <a href="https://blog.cloudflare.com/cloudflare-workers-is-now-on-open-beta/">Workers</a> a few months ago, much of the focus was on use cases surrounding websites running on origins that needed extra oomph. With Workers you can easily take a site, introduce a raft of personalization capabilities, A/B test changes or even aggregate a set of API responses around a range of services. In short by layering in Cloudflare Workers we can take origin websites and do transformational things.</p>
+	<p>One of the joys of a platform, is that you never know where you are going to see the next use case. Enter <a href="https://www.dronedeploy.com/" target="_blank">DroneDeploy</a></p>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/06/image3.png" alt="image3"><br>
+		DroneDeploy is a cloud platform that makes it easy to collect and analyze drone imagery and data. Simply install DroneDeploy on your mobile device and connect to a DJI drone. DroneDeploy flies the drone, collects the imagery, then stitches the photos into maps.</p>
+	<p>The maps can show things like crop conditions &amp; stress, construction project progress, or even thermal temperature ranges across vast solar farms or for search and rescue situations.</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/06/image6.png" alt="image6"><br>
+		<small>Using plant health algorithms applied to drone-generated maps, growers can pinpoint crop stress in their fields and stomp out pests, disease, or irrigation issues.</small>
+	</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/06/image1.png" alt="image1"><small>With Thermal Live Map, it’s possible to inspect solar farms from the sky in minutes to detect broken photocells in solar panels that are in need of repair.</small></p>
+	<p>You can then upload the images to the cloud and make high res maps and 3D models. With these you can perform deeper analysis (such as volumes, distances, plant health, etc), share and collaborate with coworkers, or move the maps and models into applications like CAD or Agriculture Management Platforms.</p>
+	<p>Check out how we were able to draw a flight path over Cloudflare’s HQ. The drone flew around the building and captured imagery that we turned into a map and 3D model.</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/06/Screen-Shot-2018-06-21-at-10.08.50-AM.png" alt="Screen-Shot-2018-06-21-at-10.08.50-AM"></p>
+	<h4 id="sohowisdronedeployusingworkersandwhyisitimportanttodronedeploy">So how is DroneDeploy using Workers? And why is it important to DroneDeploy?</h4>
+	<p>It’s important to understand that they want to maintain architectural freedom around the many services they use to make their service. As with many software stacks today, they use GCP, AWS, and others, but they want to maintain flexibility in their network routing and authentication layer.</p>
+	<p>By offering a dramatically better experience to drone users in the field, they can both push the authentication out in front of a CDN and also serve collected images directly from our CDN (typically hundreds or thousands of tiles used to render maps or 3D models). Many of DroneDeploy’s users operate in highly variable network conditions on job sites or in the field. Workers allows them to push their authentication to the edge; and use Workers to build a custom signed URL to ensure the correct images are surfaced to the correct consumer - in effect ensuring their multi-tenancy image storage model is safe guarded at the edge. To do this, DroneDeploy employs a URL authentication method commonly known as request signing which uses the Web Crypto API.</p>
+	<p>Commenting on this Eric Hauser, VP Engineering of DroneDeploy detailed the upside of Cloudflare Workers for his team:</p>
+	<blockquote>
+		<p><em>Cloudflare Workers provided us with flexibility when we ran into limitations with the shared capabilities of our primary infrastructure providers CDNs. Unique enterprise requirements around authentication, data security, and locality require us to have flexibility at our routing layer. From just the work we’ve done around authentication to date, we see an exciting and productive relationship with Cloudflare.</em></p>
+	</blockquote>
+	<p>Let's peel back the layers and understand how they use Workers.</p>
+	<p>DroneDeploy uses standard JWT authentication - if you are not sure what a JWT Token is, read more <a href="https://jwt.io/" target="_blank">here</a>. So the general flow requires the Worker to:</p>
+	<ol>
+		<li>Intercept requests for images from the DroneDeploy mobile app or website. These requests can number in the hundreds or thousands of image tiles all of which are needed to render a typical map or 3D model and are stored on either S3 or Google Cloud Storage.</li>
+		<li>Ensure the correct JSON Web Token (JWT) is present.</li>
+		<li>Assuming the token is valid, HMAC sign the URL, set cache headers, and return the appropriate file.</li>
+	</ol>
+	<p>Let's look at each step - note we filtered out some components of the code for security reasons.</p>
+	<pre><code class="language-javascript">addEventListener('fetch', event =&gt; {
+  event.respondWith(handleFetch(event.request))
+});
+
+/**
+ * Intercept a request
+ * Validate the provided JWT credentials
+ * If valid: 
+ *   rewrite the request to the storage backend 
+ *   sign the request with our backend credentials
+ *   return the response from the storage backend
+ * If not valid:
+ *   return a 403 Forbidden response
+ */
+function handleFetch(request) {
+  if (!(await isValidJwt(request))) {
+    return new Response('Invalid JWT', { status: 403 })
+  }
+  const gsBaseUrl = createGoogleStorageUrl(request);
+  const gsHeaders = new Headers();
+  gsHeaders.set('Date', new Date().toUTCString());  // Required by Google for HMAC signed URLs
+  const signature =  await hmacSignature(gsBaseUrl, gsHeaders);
+  gsHeaders.set('Authorization', 'AWS ' + HMAC_KEY + ':' + signature);
+  return fetch(new Request(gsBaseUrl, {headers: gsHeaders}))
+}
+</code></pre>
+	<br>
+	Now check for the JWT Token
+	<br>
+	<pre><code class="language-javascript">/**
+ * Parse the JWT and validate it.
+ *
+ * We are just checking that the signature is valid, but you can do more that. 
+ * For example, check that the payload has the expected entries or if the signature is expired..
+ */ 
+async function isValidJwt(request) {
+  const encodedToken = getJwt(request);
+  if (encodedToken === null) {
+    return false
+  }
+  const token = decodeJwt(encodedToken);
+  return isValidJwtSignature(token)
+}
+
+/**
+ * For this example, the JWT is passed in as part of the Authorization header,
+ * after the Bearer scheme.
+ * Parse the JWT out of the header and return it.
+ */
+function getJwt(request) {
+  const authHeader = request.headers.get('Authorization');
+  if (!authHeader || authHeader.substring(0, 6) !== 'Bearer') {
+    return null
+  }
+  return authHeader.substring(6).trim()
+}
+</code></pre>
+	<br>
+	Now decode the JWT Token
+	<br>
+	<pre><code class="language-javascript">/**
+ * Parse and decode a JWT.
+ * A JWT is three, base64 encoded, strings concatenated with ‘.’:
+ *   a header, a payload, and the signature.
+ * The signature is “URL safe”, in that ‘/+’ characters have been replaced by ‘_-’
+ * 
+ * Steps:
+ * 1. Split the token at the ‘.’ character
+ * 2. Base64 decode the individual parts
+ * 3. Retain the raw Bas64 encoded strings to verify the signature
+ */
+function decodeJwt(token) {
+  const parts = token.split('.');
+  const header = JSON.parse(atob(parts[0]));
+  const payload = JSON.parse(atob(parts[1]));
+  const signature = atob(parts[2].replace(/_/g, '/').replace(/-/g, '+'));
+  return {
+    header: header,
+    payload: payload,
+    signature: signature,
+    raw: { header: parts[0], payload: parts[1], signature: parts[2] }
+  }
+}
+
+/**
+ * Validate the JWT.
+ *
+ * Steps:
+ * Reconstruct the signed message from the Base64 encoded strings.
+ * Load the RSA public key into the crypto library.
+ * Verify the signature with the message and the key.
+ */
+async function isValidJwtSignature(token) {
+  const encoder = new TextEncoder();
+  const data = encoder.encode([token.raw.header, token.raw.payload].join('.'));
+  const signature = new Uint8Array(Array.from(token.signature).map(c =&gt; c.charCodeAt(0)));
+  const jwk = {
+    alg: 'RS256',
+    e: 'AQAB',
+    ext: true,
+    key_ops: ['verify'],
+    kty: 'RSA',
+    n: RSA_PUBLIC_KEY
+  };
+  const key = await crypto.subtle.importKey('jwk', jwk, { name: 'RSASSA-PKCS1-v1_5', hash: 'SHA-256' }, false, ['verify']);
+  return crypto.subtle.verify('RSASSA-PKCS1-v1_5', key, signature, data)
+}
+</code></pre>
+	<br>
+	Now HMAC sign the URL, and return the file.
+	<br>
+	<pre><code class="language-javascript">/**
+ * Rewrite the URL from the original request to Google Storage API and bucket.
+ */
+function createGoogleStorageUrl(request) {
+  const googlePrefix = 'https://storage.googleapis.com/BUCKET_NAME';
+  const path = new URL(request.url).pathname;
+  return new URL(googlePrefix + path)
+}
+
+/**
+ * Create the HMAC signature for the Google Storage URL.
+ */
+async function hmacSignature(url, headers) {
+  const encoder = new TextEncoder()
+  const message = createMessage(url, headers)
+  const key = await crypto.subtle.importKey('raw', encoder.encode(HMAC_SECRET), {name: 'HMAC', hash: 'SHA-1'}, false, ['sign'])
+  const mac = await crypto.subtle.sign('HMAC', key, encoder.encode(message))
+  return btoa(String.fromCharCode(...new Uint8Array(mac)))
+}
+
+/**
+ * Google requires a specific format for the message that is signed.
+ * More documentation can be found here:
+ * https://cloud.google.com/storage/docs/migrating
+ */
+function createMessage(url, headers) {
+  const verb = 'GET'
+  return [
+    verb,
+    ‘’,  // GET requests don’t have Content-MD5 or Content-Type headers, so use empty strings
+    ‘’,
+    headers.get(‘Date’),
+    url.pathname
+  ].join('\n')
+}
+</code></pre>
+	<p>So the upside is clear - Authentication at the Edge provides flexibility, and scale but also means that DroneDeploy is not locked into an architecture that would prevent their ability to choose the best-in-class capabilities they need from GCP, AWS and more.</p>
+	<h4 id="sowheretofromhere">So where to from here?</h4>
+	<p>This Worker is the first of a few DroneDeploy are exploring. In next generation Workers, DroneDeploy is looking to deliver a range of improvements all with a view of optimizing their customers experience by using Cloudflare’s cache in addition to other features Cloudflare has to offer. We’ll update the blog at that time.</p>
+	<hr>
+	<p><em><small>If you have a worker you'd like to share, or want to check out workers from other Cloudflare users, visit the <a href="https://community.cloudflare.com/tags/recipe-exchange" target="_blank">“Recipe Exchange”</a> in the Workers section of the <a href="https://community.cloudflare.com/c/developers/workers" target="_blank">Cloudflare Community Forum</a>. </small></em><br></p>
+	<!--kg-card-end: markdown-->
+</div>

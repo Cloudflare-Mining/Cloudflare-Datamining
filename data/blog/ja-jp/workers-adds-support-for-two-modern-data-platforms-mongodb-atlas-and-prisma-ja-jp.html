@@ -1,0 +1,23 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/unnamed-29.png" class="kg-image"></figure>
+	<p>この1年、私たちは共通のテーマを耳にしました。それは、開発者がより多くのアプリケーションをWorkers上で構築したいということです。ビルトインのグローバルデプロイメント機能と驚くべきスケーラビリティ、JavaScriptの柔軟性を備えた当社のグローバルプラットフォームで構築されるアプリケーションが増えています。</p>
+	<p>そのためには、開発者がデータにアクセスする必要があります。Workersのデータに関する戦略は、3つの部分から構成されています。</p>
+	<ul>
+		<li>1つ目は、Workers KVやDurable Objectsのような、無限のスケールを想定したファーストパーティのソリューションを提供すること。</li>
+		<li>2つ目は、HTTPで接続するさまざまなNoSQLデータベースをサポートし、<a href="https://blog.cloudflare.com/ja-jp/relational-database-connectors-ja-jp/">TCPデータベースコネクタ</a>を使用して、現在すでに存在するデータへの接続を構築し始めること。</li>
+		<li>3つ目は、ベストオブブリードのデータ企業と提携して、彼らの能力をWorkersプラットフォームに導入すること。</li>
+	</ul>
+	<p>本日、既存のパートナーであるFaunaとMacrometaに加えて、Cloudflare WorkersがPrismaとMongoDB Atlasのサポートを追加したことをお知らせします。Prismaの最新のORMは、Prismaクライアントを介してPostgres、SQLサーバー、MySQLをサポートしており、MongoDBは当社のユーザーから最も求められているインテグレーション機能の上位にランクされています。</p>
+	<p>両クライアントは、それぞれのオーサーであるMongoDB用<a href="https://www.mongodb.com/developer/how-to/cloudflare-worker-rest-api-realm/?tck=cloudflare" target="_blank">Realm</a>とPrisma用<a href="https://github.com/prisma/prisma" target="_blank">Prisma</a>から入手できます。Workersにインポートすることで、すぐに使用を開始できます。</p>
+	<h3 id="mongodb-">MongoDBの魅力とは？</h3>
+	<p>MongoDBは開発者からの評判が高いデータベースです。ドキュメントモデルを採用しているので簡単に使い始めることができ、トランザクションとスケールアウト分散システムアーキテクチャにより、アプリケーションに合わせて拡張することができます。</p>
+	<p>MongoDBは、堅牢なクエリ言語であるMQLをWorkersプラットフォームの開発者に提供し、データベース内での豊富な集計をサポートしています。MongoDBのサポートは、Realm SDKを介して提供されます。Realm SDKは、MongoDB Atlasと直接統合されており、MongoDBを最も簡単に実行することができます。</p>
+	<p>MongoDB Atlasにはグローバルクラスターも含まれており、低遅延で地域分散型MongoDBデータベースを作成してWorkersをバックアップするのに最適です。</p>
+	<p>MongoDBと共同で、MongoDBの<a href="https://www.mongodb.com/developer/how-to/cloudflare-worker-rest-api-realm/?tck=cloudflare" target="_blank">ブログ</a> で再生できるデモアプリケーションを作成しました。ご覧になって、ご不明な点がありましたらご連絡ください。</p>
+	<h3 id="prisma-">Prismaの魅力とは？</h3>
+	<p>Prismaは、データベース内のエントリをコード内のオブジェクトに変換するORM（オブジェクト・リレーショナル・マッパー）です。Prismaは、型安全性、スキーマ移行、クエリの最適化、コードとデータベース間の実際のインタラクションを処理します。Workersがエッジコンピューティングを実現するように、Prismaはデータベースの管理を非常にシンプルにします。</p>
+	<p>Prismaは現在、Postgres、MySQL、SQLサーバー、SQLite、MongoDBをサポートしています。これらのデータベースは、あらゆるクラウドプロバイダー上に既存することができ、またHeroku上でオンデマンドで起動することもできます。</p>
+	<p>Prismaは、<a href="https://www.prisma.io/docs/concepts/components/prisma-data-platform#prisma-data-proxy" target="_blank"> &nbsp;Prisma Data Proxy</a> を介してWorkersと統合します。プロキシをセットアップした後、WorkersスクリプトにPrismaクライアントをインポートし、スキーマを定義することで、サポートされているデータベースの使用を開始することができます。</p>
+	<h3 id="-">次は何が起きるでしょう？</h3>
+	<p>MacrometaやFaunaとの既存のパートナーシップに加えて、MongoDBとPrismaのインテグレーションをWorkersの成長するライブラリに追加できることを嬉しく思います。Workersで使用したいデータプラットフォームをお持ちの方は、<a href="/cdn-cgi/l/email-protection#15627a677e7067663865677a716076615576797a607173797467703b767a78">当社までご連絡ください</a>。当社が実現させます！</p>
+</div>

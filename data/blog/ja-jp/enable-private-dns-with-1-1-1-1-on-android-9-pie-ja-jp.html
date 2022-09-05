@@ -1,0 +1,35 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/2-19.png" class="kg-image" alt="image2-1"></figure>
+	<p>最近、Googleが正式に立ち上げた<a href="https://www.android.com/versions/pie-9-0/" target="_blank">Android 9 Pie</a>には、Ditital Wellbeing、セキュリティ、プライバシーに関するさまざまな新機能が含まれています。ベータ版またはアップデート後に携帯電話のネットワーク設定を覗いてみた方は、新しい<a href="https://android-developers.googleblog.com/2018/04/dns-over-tls-support-in-android-p.html" target="_blank">プライベート DNS モード</a>がAndroidでサポートされるようになったことにお気づきかと思います。</p>
+	<p>この新しい機能により、Android でカスタムセキュアDNSリゾルバーを設定するプロセスが簡単になります。つまり、デバイスとアクセス先Webサイトの間に関与する人々は、DNSクエリが暗号化されるため、スヌーピングできなくなります。この背後にあるプロトコル、TLSは、HTTPS経由でWebサイトにアクセスしたときにアドレスバーに表示される緑色の鍵アイコンにも関係しています。これと同じ技術が、DNSクエリーを暗号化する場合にも役立ちます。おかげで、DNSクエリーが改ざんされず、ISP、モバイルキャリア、および DNSリゾルバー間のネットワークパスにある他のユーザーが判読できないようになります。これらの新しいセキュリティプロトコルは<a href="https://developers.cloudflare.com/1.1.1.1/dns-over-https/" target="_blank">DNS over HTTPS</a>、および<a href="https://developers.cloudflare.com/1.1.1.1/dns-over-tls/" target="_blank">DNS over TLS</a>と呼ばれています。</p>
+	<h3 id="1-1-1-1-">1.1.1.1の設定</h3>
+	<p>Android PieはDNS over TLSのみをサポートしています。お使いのデバイスでこれを有効にするには：</p>
+	<ol>
+		<li>設定 → ネットワーク＆インターネット → 詳細（Advanced） → プライベート DNSに移動します。</li>
+		<li>「プライベートDNSプロバイダーのホスト名」オプションを選択します。</li>
+		<li>1dot1dot1dot1.cloudflare-dns.comを入力し、 「Save（保存）」をクリックします。</li>
+		<li><a href="https://1.1.1.1/help" target="_blank">1.1.1.1/help</a> （または <a href="https://1.0.0.1/help" target="_blank">1.0.0.1/help</a>）にアクセスして「DNS over TLS （DoT）を使う」が「Yes」になっていることを確認します。</li>
+	</ol>
+	<p>これで完了です！</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/3-15.png" class="kg-image" alt="Android Pie Private DNS Mode screenshot"></figure>
+	<h3 id="-dns-">プライベートDNSを使用する理由</h3>
+	<p><a href="https://developers.cloudflare.com/1.1.1.1/dns-over-https/" target="_blank">DNS over HTTPS</a>と<a href="https://developers.cloudflare.com/1.1.1.1/dns-over-tls/" target="_blank">DNS over TLS</a>は、インターネットプライバシーの現状にどのように適合しますか？</p>
+	<p><a href="https://en.wikipedia.org/wiki/Transport_Layer_Security" target="_blank">TLS</a>はカフェにあるワイヤレスネットワークでメールを見るときなど、信頼できない通信チャネルを経由するトラフィックを暗号化するプロトコルです。TLSを使用していても、DNS サーバーへの接続がハイジャックされているか、サードパーティによってスヌーピングされているかを知ることはできません。これは、重大なことです。なぜなら、悪意のあるユーザーは、一般的なメールプロバイダーやネット銀行への接続をハイジャックするために、公共の場所にあるWiFi ホットスポットを構成して、偽造されたレコードでDNSクエリーに応答できるためです。<a href="https://www.cloudflare.com/ja-jp/dns/dnssec/how-dnssec-works/" target="_blank">DNSSEC</a>は、応答に署名して真正性を保証することでこの問題を解決し、改ざんを検出可能にしますが、メッセージ本文はワイヤー上で他の人が読める状態のままになっています。</p>
+	<p>DNS over HTTPS / TLSがこれを解決します。これらの新しいプロトコルにより、私たちがHTTPSトラフィックに期待するようになったのとちょうど同じように、デバイスとリゾルバー間の通信が暗号化されます。</p>
+	<p>しかし、この一連のイベントには、安全化されていない最後のステップがあります。お使いのデバイスとサーバーにおける特定のホストネーム間の最初のTLSネゴシエーションの間で、SNI（Server Name Indication）が明らかになる点です。リクエストされたホスト名は暗号化されないため、アクセスしたWebサイトを第三者が閲覧できてしまいます。ブラウジング活動を完全に保護するための最後のステップには、<a href="https://tools.ietf.org/html/draft-ietf-tls-sni-encryption-03" target="_blank">SNIの暗号化</a>が当然、必要となります。SNIの暗号化については、Cloudflareは他の企業と共同で進行中であり、定義と促進について取り組んでいるところです。</p>
+	<h3 id="ipv6-dns">IPv6の世界におけるDNS</h3>
+	<p>プライベートDNSフィールドは 1.1.1.1 のような IPアドレスを受け付けず、代わりに 1dot1dot1dot1.cloudflare-dns.com のようなホスト名が必要なことにすでにお気づきかもしれません。これは発音しやすいとは言えないので、リゾルバーにとって覚えやすいものをデプロイするために、現在取り組み中ですが、1.1.1.1、1.0.0.1、1dot1dot1dot1.cloudflare-dns.comについては引き続きサポートを続けていく予定です。</p>
+	<p>Googleではこのフィールドにホスト名が必要です。モバイルキャリアはIPv4とIpv6が共存するデュアルスタックの世界に適応しようとしているからです。企業によるIpv6の採用は、一般に予測されていたよりも<a href="https://www.internetsociety.org/resources/doc/2017/state-of-ipv6-deployment-2017/" target="_blank">かなり迅速に</a>行われており、<a href="https://www.internetsociety.org/resources/deploy360/2014/case-study-t-mobile-us-goes-ipv6-only-using-464xlat/" target="_blank">IPv6に完全移行した</a>T-Mobileを含めて、米国の主要なモバイルキャリアは<a href="http://www.worldipv6launch.org/major-mobile-us-networks-pass-50-ipv6-threshold/" target="_blank">IPv6をサポート</a>しています。<a href="https://www.statista.com/statistics/471264/iot-number-of-connected-devices-worldwide/" target="_blank">約260億</a>のインターネットに接続したデバイスが、43億のIPv4アドレスを上回る世界において、これは朗報です。さらに、前向きな動きの中で、Appleでは、すべての新しいiOSアプリでシングルスタックのIPv6ネットワークを<a href="https://blog.cloudflare.com/supporting-the-transition-to-ipv6-only-networking-services-for-ios/">サポートすることが必須</a>となっています。</p>
+	<p>しかし、私たちはまだIPv4アドレスを持つ世界に住んでいるので、電話メーカーや通信事業者は、下位互換性を念頭に置いてシステムを設計する必要があります。現在、iOSとAndroidは<a href="https://www.cloudflare.com/learning/dns/dns-records/dns-a-record/" target="_blank">A</a>および AAAA DNS レコードの両方をリクエストしています。これには、バージョン4およびバージョン6形式のドメインに対応する IP アドレスがそれぞれ含まれています。ご自分で試してみてください。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>$ dig A +short 1dot1dot1dot1.cloudflare-dns.com
+1.0.0.1
+1.1.1.1
+$ dig AAAA +short 1dot1dot1dot1.cloudflare-dns.com
+2606:4700:4700::1001
+2606:4700:4700::1111
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>IPv6 のみのネットワークでIPv4 アドレスのみのデバイスと通信するには、DNS リゾルバーは、<a href="https://en.wikipedia.org/wiki/IPv6_transition_mechanism#DNS64" target="_blank">DNS64</a>を使って、Ipv4アドレスをIPv6アドレスに変換する必要があります。変換された IP アドレスへのリクエストは、ネットワーク事業者が提供するNAT64変換サービスを通過します。これらはすべて、デバイスおよびWeb サーバーに対して完全に透過的です。</p>
+	<p>このプロセスの詳細については、<a href="https://blog.apnic.net/2016/06/09/lets-talk-ipv6-dns64-dnssec/" target="_blank">APNICの事例</a>を参照してください。</p>
+</div>

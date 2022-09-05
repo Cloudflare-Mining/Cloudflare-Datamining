@@ -1,0 +1,51 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://lh3.googleusercontent.com/tP04mOJyy0P2m2sYCESZ1ME2Q-KcW9ERsTFu6O4flDLFDYbaPer8-VtUeFiamvHecXSVQppe73_KlJjzu38zETOmup5DGJbhXt010I8-a8hFE-N4eeu5MR8kKP8cEj2IXq5MHAUQ" class="kg-image" alt="Launching a Startup on Cloudflare Workers"></figure>
+	<p>本周<a href="https://blog.cloudflare.com/tag/developer-spotlight/">开发人员聚焦</a>系列最后的故事将由 Tejas Mehta 来讲述，他将分享其制作 <a href="https://cclip.app/" target="_blank">cClip</a> 的过程。</p>
+	<p>cClip 是一款很棒的工具，可让您在任何设备之间“复制/粘贴”及传输文件，无论其运行何种操作系统。</p>
+	<p>cClip 的有趣之处在于，这是一款构建在 Workers 和 KV 基础上的完全无服务器应用程序，但又并非仅限于此。它使用 Firebase 进行身份验证，使用 RevenueCat 获得对 Apple 和 Google Play Store 的整合视图，并使用 Stripe 来进行所有其他计费相关工作。<br></p>
+	<p>这是对将来应用程序开发的展望。在将来，我们可以轻松地“导入”其他 SaaS 应用程序，就如现在从软件包管理器导入程序包一样。而且不仅仅是在该外部应用程序上调用 API 的单向操作，而是通过事件与 Webhooks 进行双向通信。</p>
+	<p>接下来由 Tejas 讲述他的故事。</p>
+	<h2 id="cclip-"><strong>cClip 的起源</strong></h2>
+	<p>在去年，突然之间改为虚拟教学，导致我所有的学校沟通和作业都转移到了线上。使用 MacBook 笔记本电脑和 Android 手机提交我的微积分家庭作业意味着我需要拍摄每个页面的图片，将每张图片通过电子邮件发送给自己，在电脑上访问我的电子邮箱，最后将每个文件上传到提交门户。如果这个流程只需要做一两次，那么问题不大。但如果在我接下来的大二和大三生涯里每天都要这么做，光是想一想都足以让我心烦。</p>
+	<p>于是我制作了 cClip，这是一款简单的传输工具，能够从我的手机发送图片和链接到我的笔记本电脑。在一些朋友看到这款工具后，他们也想使用它，于是我意识到，它可以提高生产力，并为众多虚拟工作区带来与平台无关的流动性。</p>
+	<p>在添加端到端加密、实时更新和订阅模式后，我将 cClip 推向大众。</p>
+	<h2 id="-"><strong>架构</strong></h2>
+	<p>正如 Erwin 所提到的，cClip 的架构并不仅仅是 Workers，还集成了一些其他的 SaaS 产品。我使用 <a href="https://www.revenuecat.com/" target="_blank">RevenueCat</a> 轻松集成了移动应用商店，并通过 Webhooks 集成了 Stripe。Firebase 同时用于身份验证和消息传递，最后，使用 B2 作为云存储。（至少在 R2 可用之前！）</p>
+	<p>当然，每一个平台都需要客户端。</p>
+	<p>大概可以用下面的示意图来表示：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image1-54.png" class="kg-image"></figure>
+	<h3 id="--1"><strong>客户端</strong></h3>
+	<p>一个重大挑战是为每个操作系统和平台创建客户端。我们至少需要一个 iOS 和 Android 应用程序，一个 Windows、Mac 和一个 Web 应用程序。</p>
+	<h4 id="flutter-"><strong>Flutter 解决了问题</strong></h4>
+	<p><a href="https://flutter.dev/" target="_blank">Flutter</a> 是一个跨平台应用程序开发框架。使用该框架，我为 UI 和大部分逻辑设置了一个单一代码库，同时允许某些特定部分（如加密）与特定于平台的库进行交互。</p>
+	<p>Flutter 能够很好地支持 iOS 和 Android，但 Flutter Web 相对较新。对于加密等任务，我需要使用大量 JavaScript，因为 Flutter Web 还不支持 WebWorker，以及文件上传和下载。我想要使用 StreamSaver.js 对下载进行流式解密，以节省大型文件的内存消耗。</p>
+	<p>此外，使用 Flutter Web 让我能够为 Windows 或 Linux 用户创建一个 Electron 应用程序，当用户想要一款用于 cClip 的原生应用程序而不是访问网站时，便可以使用该应用程序。</p>
+	<h4 id="mac-os"><strong>Mac OS</strong></h4>
+	<p>macOS 有其自己的应用程序，该应用程序以 Swift 编写，在 Web 应用程序之前构建，后来进行了进一步维护以获得其性能优势。macOS 和 iOS 应用程序共享用于密码哈希、文件上传和下载以及加密的代码。</p>
+	<h3 id="--2"><strong>后端</strong></h3>
+	<p>cClip 使用五种主要后端技术：Backblaze B2、Firebase Auth、Firebase 数据库、RevenueCat 和 Cloudflare Workers。Workers 充当所有后端服务之间的主要桥梁，无论是在访问控制的环境中还是在订阅管理环境中。</p>
+	<h4 id="--3"><strong>身份验证和授权</strong></h4>
+	<p>在身份验证流程中，首先使用 Firebase Authentication 通过登录 Google、Apple 或使用电子邮件/密码来验证用户的身份，然后使用 Workers 进行所有敏感 API 调用。Workers 使用 Firebase 提供的“idToken”验证调用者的身份（“idToken”是一个 JWT，在成功解码后包含用户的 UID）。每个敏感操作（如上传/下载文件、订阅/取消订阅等）都放在 Workers 之后，Workers 会在执行操作本身之前，验证在关联 API 调用中作为“Token”标头提供的 JWT。</p>
+	<p>Workers 处理用户验证后的所有访问控制，例如确保用户可以访问位于某个给定位置的文件，或当 RevenueCat 通知时更新用户的订阅状态。</p>
+	<p>Workers 充当用户上传或下载授权的守门人。当发送请求时，Workers 会验证用户的身份，检查请求的位置和用户的订阅状态。在这三项检查完成后，Workers 通过 B2 授权所请求操作，并返回相应信息。</p>
+	<h3 id="--4"><strong>存储和信息传递</strong></h3>
+	<p>由于文件可能大于 25MB，将其存储在 Workers KV 中并不实际，因此我选择了 B2 Cloud Storage。B2 Cloud Storage 是 Cloudflare 带宽联盟的一部分，这意味着我不需要为这些文件支付任何输出费用，这真是一个不错的奖励。</p>
+	<p>如上所述，在 B2 前方的 Worker 为上传、下载和任何其他 B2 操作完成了所有身份验证和授权过程。</p>
+	<p>Firebase 用于与所有客户端的实时通信。例如，订阅信息就存储在该处。在必要时，我们使用 Cloud Messaging API 向其他客户端发送通知。</p>
+	<h3 id="--5"><strong>订阅管理</strong></h3>
+	<p>当然，任何 SaaS 应用程序的大部分都用于处理计费和订阅事宜。幸运的是，RevenueCat 大大简化了此类事项，提供了一个位置来存放与移动应用商店和 Stripe 相关的所有信息。</p>
+	<p>这意味着我只需要实施一套 Webhooks 即可接收来自全部三个提供商的事件，且所有接收的事件都遵循相同的格式。</p>
+	<p>大部分传出订阅 API 调用也会通过 RevenueCat，但在一些边缘情况中，我们需要直接连接到 Stripe 和 Google Play Store。</p>
+	<h2 id="--6"><strong>最大的挑战</strong></h2>
+	<h3 id="--7"><strong>跨平台订阅</strong></h3>
+	<p>跨平台订阅，或者跨每一个平台同步用户订阅，是一个巨大的挑战。所有事情都必须完美集成，从确保不会出现双重订阅，到实时更改状态。RevenueCat 大大简化了此过程，但我仍然需要管理跨平台取消和更新。我通过将状态存储在 Firebase 数据库中并让用户在其终端侦听更新来实现这一点。信息被写锁定，只允许经过验证的 Worker 更新修改状态，以防止任何状态篡改。</p>
+	<h3 id="--8"><strong>文件配额</strong></h3>
+	<p>另一个艰巨的挑战是文件存储跟踪。在我的最初计划中，我了解到 B2 的 API 不支持任何用于目录存储总量的 getter，并且需要加总使用“b2_list_file_names”API 返回的所有文件值。从时间和金钱方面来说，这一方案十分昂贵，因为该 API 被归为成本较高的操作之一。除此之外，每当用户上传或删除文件时，都要调用该 API。因此，我创建了一个计数器，就不同的文件修改（上传或删除）与 B2 进行同步。该计数器由 Worker 存储在 Firebase 的数据库中，允许通过 Firebase 的 SDK 更改侦听器在用户设备上进行实时更新。</p>
+	<p>但是，我想要确保用户无法修改其已用存储计数，且每一个上传操作都能够有效用于验证用户拥有可用于该文件的足够存储空间。应用程序先与 Workers 交互，在确定用户拥有足够的存储空间时，就返回上传授权。</p>
+	<h2 id="--9"><strong>综合体验</strong></h2>
+	<p>Workers 和 KV 充当核心解决方案，以节省成本高昂的 API 调用，并为 cClip 提供完整的无服务器后端。再加上平台的快速特性，测试更改十分简单，仅需快速预览或模拟环境即可测试对 API 的最新更改。</p>
+	<p>我使用 Workers 的最大挑战是缺少 Stripe 库，因为 node.js Stripe 目前还不能与 Workers 兼容，但我使用 Stripe API 端点直接进行提取，这工作起来没有任何问题。但是，今天早些时候，看到 Stripe 推出了与 Workers 兼容的 SDK，这真是太棒了！</p>
+	<p>我目前正在改进 cClip Direct 的实施，这是一个对等传输协议，允许您跨设备分享任何文件。使用 Workers 管理通知和信号，初始握手流程已经过重新加工，我正在尝试将实时通信从 Firebase 移动到 Durable Objects 和 WebSockets。当然，等 R2 变得可用时，我一定会第一时间试用。</p>
+	<p>很高兴能够看到我为解决自身小麻烦而制作的应用程序能够扩展为完全成熟的产品，而且没有产生任何问题。</p>
+	<p><em>感谢您本周一直关注我们的开发人员聚焦系列。我们希望您能开心阅读我们的客户如何使用 Cloudflare 生态系统来解决有趣问题的故事。将来我们还会推出更多的聚焦故事，如果您想要阅读更多此类故事，或者想要提供值得写稿的使用案例，请随时通过 Twitter 或以下任何讨论链接联系我。</em></p>
+</div>

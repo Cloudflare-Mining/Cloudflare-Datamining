@@ -1,0 +1,52 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image2-28.png" class="kg-image" alt="A new WAF Experience"></figure>
+	<p>Vor etwa drei Jahren haben wir mehrere Funktionen in die <a href="https://blog.cloudflare.com/new-firewall-tab-and-analytics/">Registerkarte „Firewall“</a> in unserer Dashboard-Navigation aufgenommen. Unser Ziel war es, „unsere Produkte und Services intuitiv zu machen.” In den letzten 3 Jahren haben wir intensiv daran gearbeitet, <a href="https://blog.cloudflare.com/tag/waf/">das Angebot an Funktionen zu erweitern</a>. Wir möchten eine weitere Gelegenheit nutzen, um zu bewerten, wie intuitiv die Cloudflare WAF (Web Application Firewall) ist.</p>
+	<h2 id="unsere-kunden-weisen-den-weg-zur-neuen-waf">Unsere Kunden weisen den Weg zur neuen WAF</h2>
+	<p>Das Sicherheitsumfeld entwickelt sich rasant. Die Anzahl der unterschiedlichen Arten von Webanwendungen nimmt rapide zu. Innerhalb der Branche gibt es verschiedene Ansätze, was eine WAF umfasst und bieten kann. Cloudflare bietet nicht nur Proxies für Unternehmensanwendungen, sondern auch für Millionen von persönlichen Blogs, Community-Websites und Shops kleiner Unternehmen. Die Vielfalt der Anwendungsfälle wird durch verschiedene Produkte abgedeckt, die wir anbieten. Allerdings sind diese Produkte derzeit verstreut, weshalb nicht klar ersichtlich ist, welche Schutzregeln aktiv sind. Darum haben wir uns gefragt, wie wir unsere Kunden am besten dabei unterstützen können, die WAF bestmöglich einsetzen zu können. Hierfür stellen wir ein klareres Angebot bereit, das den Erwartungen gerecht wird.</p>
+	<p>Vor einigen Monaten haben wir unseren Kunden eine einfache Frage gestellt: Was gehört Ihrer Meinung nach zu einer WAF? Als Unterstützung setzten wir eine Reihe von Methoden der Benutzerforschung ein, darunter Kartensortierung, Baumtests, Design-Evaluierung und Umfragen. Die Ergebnisse dieser Untersuchung zeigen, wie unsere Kunden über WAF denken, was es für sie bedeutet und wie sie ihre Anwendungsfälle unterstützt. Dies inspirierte das Produktteam dazu, den Anwendungsbereich zu erweitern und darüber nachzudenken, was (Web Application) Security über die WAF hinaus bedeutet.</p>
+	<p>Basierend auf den Aussagen von Hunderten von Kunden haben unsere Teams für Benutzerforschung und Produktdesign gemeinsam mit dem Produktmanagement das Sicherheitserlebnis neu überdacht. Wir überprüften unsere Annahmen und bewerteten die Wirksamkeit der Designkonzepte. So haben wir eine Struktur (oder Informationsarchitektur) geschaffen, die die mentalen Modelle unserer Kunden widerspiegelt.</p>
+	<p>Diese neue Struktur fasst Firewall-Regeln, verwaltete Regeln und Regeln zur Durchsatzbegrenzung zu einem Teil der WAF zusammen. Die neue WAF soll eine zentrale Anlaufstelle für die Sicherheit von Webanwendungen sein, die bösartigen von sauberem Datenverkehr unterscheiden kann.</p>
+	<p>Ab heute werden Sie die folgenden Änderungen in unserer Navigation vorfinden:</p>
+	<ol>
+		<li><strong>Firewall</strong> wird umbenannt zu <strong>Sicherheit.</strong></li>
+		<li>Unter <strong>Sicherheit</strong> finden Sie jetzt <strong>WAF.</strong></li>
+		<li>Firewall-Regeln, verwaltete Regeln und Regeln zur Durchsatzbegrenzung werden jetzt unter <strong>WAF</strong> angezeigt.</li>
+	</ol>
+	<blockquote>Wenn wir von nun an von <strong>WAF</strong> sprechen, beziehen wir uns auf diese drei Komponenten.</blockquote>
+	<p>Darüber hinaus stehen einige wichtige Updates für diese Komponenten an. Im Rahmen der Security Week werden erweiterte Regeln zur Durchsatzbegrenzung eingeführt. Außerdem erhält jeder Kunde einen kostenlosen Satz verwalteter Regeln, um <a href="https://jira.cfops.it/browse/BLOG-946" target="_blank">den gesamten Datenverkehr vor schwerwiegenden Sicherheitslücken zu schützen</a>. Und schließlich werden in den nächsten Monaten die Firewall-Regeln in die <a href="https://developers.cloudflare.com/ruleset-engine/" target="_blank">Ruleset Engine</a> verlagert, die dank der neuen Ruleset API noch leistungsfähigere Funktionen bietet. Sind Sie schon gespannt?</p>
+	<h2 id="wie-kunden-die-zukunft-von-waf-gestalten">Wie Kunden die Zukunft von WAF gestalten</h2>
+	<p>Fast 500 Kunden haben an dieser Studie teilgenommen, die uns geholfen hat, mehr über die Bedürfnisse und den Kontext der Nutzung zu erfahren. Wir haben vier Forschungsmethoden angewandt, die alle unmoderiert durchgeführt wurden. Das bedeutet, dass Menschen auf der ganzen Welt zu einem Zeitpunkt und an einem Ort ihrer Wahl über das Internet teilnehmen konnten.</p>
+	<ul>
+		<li>Bei der Kartensortierung ordneten die Teilnehmer die Navigationselemente in Kategorien ein, die für sie Sinn machten.</li>
+		<li>Die Baumtests bewerteten, wie gut oder schlecht eine vorgeschlagene Navigationsstruktur für unser Zielpublikum geeignet war.</li>
+		<li>Die Evaluierung des Designs umfasste einen aufgabenbasierten Ansatz zur Messung der Effektivität und des Nutzens von Designkonzepten.</li>
+		<li>Die Fragen der Umfrage halfen uns, die Ergebnisse zu vertiefen und uns ein Bild von unseren Teilnehmern zu machen.</li>
+	</ul>
+	<p>Die Ergebnisse dieser vierstufigen Studie flossen in die Änderungen an WAF und Sicherheit ein, die im Folgenden näher erläutert werden.</p>
+	<h2 id="das-neue-waf-erlebnis">Das neue WAF-Erlebnis</h2>
+	<p>Das Endergebnis zeigt die WAF als Teil einer breiteren Sicherheitskategorie, die auch Bots, DDoS, API Shield und Page Shield umfasst. Nun können Sie Ihre Regeln (auch Firewall-Regeln genannt) erstellen, von Cloudflare verwaltete Regeln einrichten, Bedingungen für Durchsatzbegrenzungen festlegen und praktische Tools zum Schutz Ihrer Webanwendungen nutzen.</p>
+	<p>Für alle Kunden aller Tarife sind die WAF-Produkte jetzt wie unten dargestellt angeordnet:</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/03/image1-29.png" class="kg-image"></figure>
+	<ol>
+		<li><strong>Firewall-Regeln</strong> ermöglichen es Ihnen, durch Blockieren oder von Traffic eine benutzerdefinierte Logik zu erstellen, die alle Komponenten der von Cloudflare berechneten HTTP-Anfragen und dynamischen Felder nutzt, wie z.B. den Bot-Score.</li>
+		<li><strong>Regeln zur Durchsatzbegrenzung</strong> umfassen das traditionelle IP-basierte Produkt, das wir 2018 eingeführt haben, und das neuere Advanced Rate Limiting für HNO-Kunden mit dem Advanced-Tarif (bald verfügbar).</li>
+		<li><strong>Verwaltete Regeln</strong> ermöglicht es Kunden, Regelsätze einzusetzen, die vom Cloudflare-Analystenteam verwaltet werden. Zu diesen Regelsätzen gehört ein „Cloudflare Free Managed Ruleset“, das derzeit <a href="https://jira.cfops.it/browse/BLOG-946" target="_blank">für alle Tarife</a> einschließlich FREE eingeführt wird, sowie Cloudflare Managed, OWASP Implementation und Exposed Credentials Check für alle kostenpflichtigen Tarife.</li>
+		<li><strong>Tools</strong> ermöglichen den Zugriff auf IP-Zugriffsregeln, Zone Lockdown und User Agent Blocking. Obwohl diese Produkte noch aktiv unterstützt werden, decken sie spezielle Anwendungsfälle ab, die mit Firewall-Regeln abgedeckt werden können. Sie bleiben jedoch der Einfachheit halber Teil der WAF-Toolbox.</li>
+	</ol>
+	<h2 id="neugestaltung-des-waf-erlebnisses">Neugestaltung des WAF-Erlebnisses</h2>
+	<p>Die Prinzipien des Gestaltdesigns besagen, dass „Elemente, die nahe beieinander liegen, als ähnlich funktional oder charakteristisch wahrgenommen werden“. Dieses Prinzip und die Anregungen unserer Kunden haben unsere Designentscheidungen beeinflusst.</p>
+	<p>Die Durchsicht der Antworten aus der Studie führte uns zwei Dinge vor Augen: Es ist unglaublich wichtig, die Sicherheitsprodukte im Dashboard leicht auffindbar zu machen und deutlich zu machen, wie bestimmte Produkte miteinander verbunden sind oder zusammenarbeiten.</p>
+	<p>Unbedingt muss die Seite folgendes tun:</p>
+	<ul>
+		<li>Jede Art von Regel anzeigen, die wir unterstützen, d.h. Firewall-Regeln, Regeln zur Durchsatzbegrenzung und verwaltete Regeln</li>
+		<li>Die Nutzungsmenge jedes einzelnen Typs anzeigen</li>
+		<li>Dem Kunden die Möglichkeit geben, eine neue Regel hinzuzufügen und bestehende Regeln zu verwalten</li>
+		<li>Dem Kunden die Möglichkeit geben, Regeln mit Hilfe des bestehenden Drag &amp; Drop-Verfahrens neu zu priorisieren</li>
+		<li>Flexibel genug sein, um zukünftige Ergänzungen und Konsolidierungen von WAF-Funktionen zu ermöglichen</li>
+	</ul>
+	<p>Wir haben mehrere Optionen durchgespielt, darunter überwiegend vertikale Seitenlayouts, tabellenbasierte Seitenlayouts und sogar akkordeonbasierte Seitenlayouts. Jede dieser Optionen würde uns jedoch dazu zwingen, Schaltflächen mit ähnlichen Funktionen auf der Seite zu replizieren. Dies hätte jedoch zu zusätzlicher Verwirrung führen können. Darum haben wir uns anstatt dieser Optionen für ein horizontales Seitenlayout mit Registerkarten entschieden.</p>
+	<h2 id="wie-kann-ich-es-erhalten">Wie kann ich es erhalten?</h2>
+	<p>Ab heute stellen wir dieses neue Design von WAF allen zur Verfügung! In der Zwischenzeit aktualisieren wir die Dokumentation, um Ihnen zu zeigen, wie Sie die Leistungsfähigkeit von Cloudflare WAF maximieren können.</p>
+	<h2 id="der-blick-nach-vorn">Der Blick nach vorn</h2>
+	<p>Wir sehen dies als einen ersten Schritt in unserem Bemühen, um Cloudflare WAF nicht nur leistungsstark, sondern auch einfach an Ihre Bedürfnisse anpassbar zu machen. Wir evaluieren Ansätze, um Ihren Entscheidungsprozess beim Schutz Ihrer Webanwendungen zu unterstützen. Wir möchten Ihnen den Weg von der Erkennung einer möglichen Bedrohung (z.B. durch eine Sicherheitsübersicht) bis zur Erstellung der richtigen Regel zur Abwehr dieser Bedrohung verkürzen. Wir halten Sie auf dem Laufenden!</p>
+</div>

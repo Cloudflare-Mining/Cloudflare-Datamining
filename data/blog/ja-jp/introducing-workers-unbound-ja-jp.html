@@ -1,0 +1,265 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image3-14-2.png" class="kg-image"></figure>
+	<p>当社が求めてきた開発プラットフォームの構築を目標に掲げて、2017年にCloudflare Workers®を立ち上げました。Cloudflareがインフラストラクチャの設定や保守のオーバーヘッドを管理する一方で、開発者のみなさんが素晴らしいソフトウェアを構築できるようにしたいと考えています。Workersは、最初のコード行から最初のアプリケーションまでグローバルに広がる製品が完成するまでずっとみなさんに寄り添います。当社のEdgeネットワークをプログラム可能にし、世界中200を超えるロケーションにあるサーバーを提供することで、さらに大きなアイディアを実現させる力を提供します。</p>
+	<p>Cloudflareは、水面下でさらにパワフルで柔軟性のあるEdgeの開発を推進するために作業を続けてきました。そして本日、プライベートベータ版におけるCPU制限がない、新プラットフォームのWorkers Unboundのローンチとともに、この新局面を発表できることになりました（詳細については<a href="https://www.cloudflare.com/workers-unbound-beta/" target="_blank">こちら</a>でサインアップしてご覧ください）。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image2-9-3.png" class="kg-image"></figure>
+	<h3 id="workers-unbound-cloudflare-workers-">Workers Unboundとは？Cloudflare Workersとの違いは？</h3>
+	<p>Workers Unboundは、オリジナルのCloudflare Workers（現在、Workers Bundledと呼んでいます）と似ていますが、さらに長い実行時間を必要とするアプリケーション向けです。処理負荷がどれだけ高くても、お客様がそれをWorkersに移動させることができるようにCPU制限を拡張しています。そのため開発者は、Edgeで高速かつシンプルな作業をするか、リソースが無制限の集中型クラウドで重いコンピューティングを実行するか、どちらかを選ぶ必要がなくなります。</p>
+	<p>このプラットフォームは、画像処理や複雑なアルゴリズムといった負荷のかかるコンピューティングを伴う新しいクラスのアプリケーションをアンロックします。実際に、企業顧客のみなさまからアンロックする機能が欲しいというリクエストを多く以前からいただいており、現在、広く一般にもご利用いただけるように作業を進めているところです。</p>
+	<p>Workers Unboundは、多目的のコンピューティングプラットフォームを構築するものですが、単なるニッチなエッジコンピューティングの代替品ではありません。以前であれば、集中型のサーバーレスプラットフォームで実行するべきだと考えていた処理負荷に関して、当社はさらに高速で柔軟性があり、価格も抑えた、魅力的な製品にしたいと考えています。</p>
+	<h3 id="-">いいね、使ってみたい！という方へ</h3>
+	<p>プライベートデータの開発者の中から一部のグループの方々にWorkers Unboundのご提供をさせていただきます。こちらの<a href="https://www.cloudflare.com/workers-unbound-beta/" target="_blank">フォーム</a>にご自分のユースケースの詳細をご入力ください。当社よりご連絡させていただきます。みなさまからのご意見·ご感想、構築した結果を楽しみにお待ちしております。</p>
+	<h3 id="--1">水面下で何が？</h3>
+	<p>現在、既知のサーバーレスは古いパラダイムの上に構築されているために制約を受けています。サーバーレスプラットフォームの多くがクラウドコンピューティングのオリジンから受け継いだ制約があります。Cloudflareでは、Edge上で構築し、より複雑なアプリケーション向けにこの技術のパフォーマンスも規模も広げることで、サーバーレスを見直す機会にしました。</p>
+	<p>当社は<a href="https://v8docs.nodesource.com/node-0.8/d5/dda/classv8_1_1_isolate.html" target="_blank">V8 Isolate</a>でコードを実行することで、パフォーマンスのメリットを受けます。V8 Isolateは最短のコールドスタート時間で迅速に開始できるようにデザインされていて、ブラウザでJavaScriptエンジンを実行するために、Google Chromeチームが構築した技術です。そして、マルチテナントコードの実行のための新しいモデルが導入されています。変数を書き換えられるコードと変数をグループ化する軽量のコンテキストを提供します。</p>
+	<p>Isolate（分離）は、他のほとんどのサーバーレスプロバイダーのアーキテクチャの主要原則であるコンテナよりはるかに軽量です。コンテナは、バーチャルマシンを効果的に実行し、それに関連するオーバーヘッドがたくさん存在します。つまり、一元化された環境の外で、処理負荷を実行するのは非常に難しいということです。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/isolates-model@2x.png" class="kg-image"></figure>
+	<p>さらにWorkersでの処理一つで、何百何千ものisolateを実行でき、切り替えもシームレスです。これが意味することは、一つのオペレーティングシステム処理で多くのお客様からのコードを実行することが可能になるということです。この低いランタイムオーバーヘッドが、どのようにWorkersが多くのテナントをサポートするために拡張できるかという説明の一部です。</p>
+	<p>この説明には、コード配布も含まれています。世界中どこへでもお客様にサービスが提供できる能力とは、エッジベースのサーバーレスと地域ベースのサーバーレスとの重要な違いですが、顧客コードを一度にどのサーバーにも送信できなければなりません。そこで再度、Isolateが助け舟を出します。ブラウザで見ることができるのと同じ標準JavaScript APIとV8を組み込んだのです。つまり、サーバーレスエッジアプリケーションが軽量化され、高い性能を持ったということです。世界中に広がるデーターセンターのサーバーすべてにWorkersスクリプトを配布することができるため、サーバーはどこでも、あらゆるお客様に向けたリクエストに対応できます。</p>
+	<h3 id="--2">経費への影響は？</h3>
+	<p>当社のEdgeにおけるパフォーマンスの向上がお客様のコスト削減につながるため、大規模なパフォーマンスは、当社にとって最優先事項です。当社がJavaScriptランタイムのオーバーヘッドを一度支払うと、個々のオーバーヘッドがほとんどなく、本質的に無制限なスクリプトが実行できるようになります。</p>
+	<p>AWS Lambdaと比較すると、Workers Unboundは実に費用対効果が高いプラットフォームです。サーバーレスなら、ご利用分の支払いだけで十分です。訳のわからない追加料金はありません。Workersは、APIゲートウェイ手数料やDNSリクエスト料金のような隠れた追加料金を支払う必要がなくなります。</p>
+	<p>サーバーレス価格設定の比較*</p>
+	<!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-m5x7 {
+			background-color: #efefef;
+			border-color: inherit;
+			font-size: 18px;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: middle
+		}
+
+		.tg .tg-r5qm {
+			border-color: inherit;
+			font-size: 18px;
+			text-align: left;
+			vertical-align: middle
+		}
+	</style>
+	<table class="tg" style="undefined;table-layout: fixed; width: 715px">
+		<colgroup>
+			<col style="width: 223px">
+			<col style="width: 167px">
+			<col style="width: 127px">
+			<col style="width: 198px">
+		</colgroup>
+		<thead>
+			<tr>
+				<th class="tg-m5x7"></th>
+				<th class="tg-m5x7">Workers Unbound</th>
+				<th class="tg-m5x7">AWS Lambda</th>
+				<th class="tg-m5x7">AWS Lambda @ Edge</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-r5qm">リクエスト（MMリクエストごと）</td>
+				<td class="tg-r5qm">$0.15</td>
+				<td class="tg-r5qm">$0.20-$0.28</td>
+				<td class="tg-r5qm">$0.60</td>
+			</tr>
+			<tr>
+				<td class="tg-r5qm">稼働期間（MM GB-秒ごと）</td>
+				<td class="tg-r5qm">$12.50</td>
+				<td class="tg-r5qm">$16.67-$22.92</td>
+				<td class="tg-r5qm">$50.01</td>
+			</tr>
+			<tr>
+				<td class="tg-r5qm">データ転送（エグレス<br><br>GBごと）</td>
+				<td class="tg-r5qm">$0.09</td>
+				<td class="tg-r5qm">$0.09-$0.16</td>
+				<td class="tg-r5qm"><span style="font-weight:400;font-style:normal">$0.09-$0.16</span></td>
+			</tr>
+			<tr>
+				<td class="tg-r5qm">APIゲートウェイ（MMリクエストごと）</td>
+				<td class="tg-r5qm"><span style="font-weight:400;font-style:normal">$0</span></td>
+				<td class="tg-r5qm">$3.50-$4.68</td>
+				<td class="tg-r5qm">CloudFront 価格設定</td>
+			</tr>
+			<tr>
+				<td class="tg-r5qm" rowspan="2">DNS クエリ（MMリクエストごと）</td>
+				<td class="tg-r5qm" rowspan="2"><span style="font-weight:400;font-style:normal">$0</span></td>
+				<td class="tg-r5qm" rowspan="2">$0.40</td>
+				<td class="tg-r5qm" rowspan="2"><span style="font-weight:400;font-style:normal">$0.40</span></td>
+			</tr>
+			<tr>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: html-->
+	<p><em>*2020</em>年<em>7</em>月<em>4</em>日現在、<em>aws.amazon.com/lambda/pricing</em>で公開されている価格設定に基づきます。<em>AWS</em>で公開されている稼働時間価格設定は<em>1GB-</em>秒に基づきます。この表では、理解しやすくするために<em>100</em>万を掛けた値で表示されています。<em>AWS</em>の価格帯は地域の価格設定によって異なります。全ての価格は、小数点第<em>2</em>位で四捨五入しています。<em>AWS</em>へのデータ転送は、<em>Amazon EC2</em>からインターネット（<em>1 GB/</em>月以上、最大<em>9.999 TB/</em>月まで）へのデータ送信転送に基づきます。<em>AWS</em>の<em>API</em>ゲートウェイは、<em>Rest API</em>（<em>1MM/</em>月、最大<em>333 MM/</em>月まで）に基づきます。<em>Workers Unbound</em>サービスと<em>AWS Lambda</em>サービスの両方で、毎月<em>1MM</em>の無料リクエストと<em>400,000 GB-</em>秒のコンピューティングタイムをご提供しています。<em>AWS</em>への<em>DNS</em>クエリ率は、月当たり最大<em>10</em>億件のクエリまでの記載価格に基づいています。</p>
+	<h3 id="--3">どのくらいの節約が見込めるか</h3>
+	<p>数字を試験するために、<a href="https://github.com/Electroid/serverless-compare" target="_blank">hello world</a>GraphQLサーバーをWorkersとLambdaの両方にデプロイしました。Lambdaでの実行時間の中央値は、1.54ミリ秒でした。同じ処理負荷でWorkersでも行ったところ、0.90ミリ秒しかかかりませんでした。計算し、AWSが請求する（インターネットからリクエストを許可するAPIゲートウェイを含めて）不透明な料金すべてを考慮した結果、Workers Unboundを利用すると、最大75%の節約が見込めることがわかりました。しかもこれは、「hello world!」だけで出た結果です。何百万ものユーザーのために複雑な処理負荷を実行した場合のコスト削減を想像してみてください。</p>
+	<p>当社がどのように他社と競合できているのかと疑問に思っていらっしゃるかもしれません。その答えは、効率性という一言に尽きます。Workersの軽量性によって、同じ作業が可能となります。しかし、プラットフォームオーバーヘッドとリソース消費を低くすることができます。下の<a href="https://github.com/Electroid/serverless-compare" target="_blank">GraphQL hello worldテストの結果は、実行時間とプラットフォームプロバイダーのオーバーヘッドを示しています</a>。このテストは「hello world」だけですが、プロバイダー間（<a href="https://blog.cloudflare.com/cloud-computing-without-containers/">Isorate vs コンテナ</a>など）のばらつきは、アーキテクチャ上の違いであると説明できます。</p>
+	<p>サーバーレスプラットフォームでのGaphQL hello world の実行時間（ミリ秒）*</p>
+	<!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-aca4 {
+			border-color: #343434;
+			font-size: 18px;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: middle
+		}
+
+		.tg .tg-kxpn {
+			background-color: #efefef;
+			border-color: #343434;
+			font-size: 18px;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-z6tn {
+			border-color: #343434;
+			font-size: 18px;
+			text-align: center;
+			vertical-align: middle
+		}
+
+		.tg .tg-8tm3 {
+			background-color: #efefef;
+			border-color: #343434;
+			font-size: 18px;
+			text-align: center;
+			vertical-align: middle
+		}
+
+		.tg .tg-v8qi {
+			background-color: #efefef;
+			border-color: #343434;
+			font-size: 18px;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: middle
+		}
+
+		.tg .tg-ugnf {
+			border-color: #343434;
+			font-size: 18px;
+			text-align: center;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" style="undefined;table-layout: fixed; width: 638px">
+		<colgroup>
+			<col style="width: 113px">
+			<col style="width: 142px">
+			<col style="width: 126px">
+			<col style="width: 131px">
+			<col style="width: 126px">
+		</colgroup>
+		<thead>
+			<tr>
+				<th class="tg-8tm3"></th>
+				<th class="tg-v8qi">Cloudflare Workers</th>
+				<th class="tg-v8qi">AWS Lambda</th>
+				<th class="tg-v8qi"><span style="font-weight:700;font-style:normal">Google Cloud Functions</span></th>
+				<th class="tg-kxpn"><span style="font-weight:700">Azure Functions</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-aca4">最短</td>
+				<td class="tg-z6tn">0.58</td>
+				<td class="tg-z6tn">1.22</td>
+				<td class="tg-z6tn">6.16</td>
+				<td class="tg-ugnf">5.00</td>
+			</tr>
+			<tr>
+				<td class="tg-aca4">p50</td>
+				<td class="tg-z6tn">0.90</td>
+				<td class="tg-z6tn">154</td>
+				<td class="tg-z6tn">10.41</td>
+				<td class="tg-ugnf">21.00</td>
+			</tr>
+			<tr>
+				<td class="tg-aca4">p90</td>
+				<td class="tg-z6tn">1.24</td>
+				<td class="tg-z6tn">7.45</td>
+				<td class="tg-z6tn">15.93</td>
+				<td class="tg-ugnf">110.00</td>
+			</tr>
+			<tr>
+				<td class="tg-aca4">p99</td>
+				<td class="tg-z6tn">3.32</td>
+				<td class="tg-z6tn">57.51</td>
+				<td class="tg-z6tn">20.25</td>
+				<td class="tg-ugnf">207.96</td>
+			</tr>
+			<tr>
+				<td class="tg-aca4" rowspan="2">最長</td>
+				<td class="tg-z6tn" rowspan="2">16.39</td>
+				<td class="tg-z6tn" rowspan="2">398.54</td>
+				<td class="tg-z6tn" rowspan="2">31933.18</td>
+				<td class="tg-ugnf" rowspan="2">2768.00</td>
+			</tr>
+			<tr>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: html-->
+	<p><em>*128MB</em>メモリ層が、各プラットフォームで使用されました。本テストが行われたのは、<em>AWS</em>が米国東部、<em>Google</em>が米国中央部、<em>Azure</em>が米国西部です。各プラットフォームテストは、<em>1</em>時間にわたり、<em>1</em>秒あたり<em>1</em>リクエストのスループットで実行されました。実行時間は、各プロバイダーのログインシステムから取得しています。</p>
+	<p>こうした数字が物語り、Workersのアーキテクチャの効率性を明らかにしていると言えるでしょう。Workersでは、迅速な結果だけではなく、当社がお客様に提供するコスト削減のメリットも受けられます。</p>
+	<h3 id="--4">いつから利用できるか</h3>
+	<p>Workers Unboundは、当社のプラットフォームにとって大きな変革ですので、時間を掛けてゆっくりと調整していくことにしています。もし早めにご利用を始めたい、または利用開始時を知りたいとお考えの場合は、<a href="https://www.cloudflare.com/workers-unbound-beta/" target="_blank">こちら</a>にサインアップをして詳細をご覧ください。</p>
+	<p>今週は、楽しみなお知らせがあります。Serverless Weekのチェックをお忘れなく！</p>
+</div>

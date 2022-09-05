@@ -1,0 +1,293 @@
+<div class="post-content lh-copy gray1">
+	<p>Wir freuen uns, heute bekannt geben zu können, dass Workers KV jetzt allgemein verfügbar und einsatzbereit ist!</p>
+	<figure class="kg-card kg-image-card"><img src="https://lh3.googleusercontent.com/rMOCAd8sMP8ysgeBYcqJ-trOwalwpIABMoSfzIqcOHq8RaxG2MBH1-SZDg4ZCeU6XAqR847dRuuMp2CecpBE90gGfYmXxCR-zr-EVO8rFg2d2k6ojreowXBGZLLfNV8W1NWt1Ks" class="kg-image"></figure>
+	<h3 id="was-ist-workers-kv"><strong>Was ist Workers KV?</strong></h3>
+	<p><a href="https://www.cloudflare.com/products/workers-kv/" target="_blank">Workers KV</a> ist ein hochverteilter, konsistenter Schlüsselwertspeicher auf der gesamten globalen Edge von Cloudflare. Er gestattet Ihnen, Milliarden von Schlüsselwertpaaren zu speichern und diese überall auf der Welt mit extrem niedriger Latenz zu lesen. Sie können jetzt komplette Anwendungen mit der Leistung eines statischen CDN-Cache erstellen.</p>
+	<h3 id="warum-haben-wir-workers-kv-entwickelt"><strong>Warum haben wir Workers KV entwickelt?</strong></h3>
+	<p><a href="https://www.cloudflare.com/products/cloudflare-workers/" target="_blank">Workers</a> ist eine Plattform, auf der Sie JavaScript auf Cloudflares globaler Edge mit mehr als 175 Rechenzentren ausführen können. Mit nur wenigen Zeilen Code können Sie HTTP-Anfragen weiterleiten, Antworten ändern oder sogar neue Antworten ohne Ursprungsserver erstellen.</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">// A Worker that handles a single redirect,
+// such a humble beginning...
+addEventListener("fetch", event =&gt; {
+  event.respondWith(handleOneRedirect(event.request))
+})
+
+async function handleOneRedirect(request) {
+  let url = new URL(request.url)
+  let device = request.headers.get("CF-Device-Type")
+  // If the device is mobile, add a prefix to the hostname.
+  // (eg. example.com becomes mobile.example.com)
+  if (device === "mobile") {
+    url.hostname = "mobile." + url.hostname
+    return Response.redirect(url, 302)
+  }
+  // Otherwise, send request to the original hostname.
+  return await fetch(request)
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Kunden kamen schnell mit Anwendungsfällen zu uns, die die Möglichkeit erforderten, persistente Daten zu speichern. Auf der Basis unseres obigen Beispiel ist es einfach, eine einzelne Umleitung zu bewältigen, aber was ist, wenn Sie Milliarden davon bewältigen wollen? Sie müssten sie in Ihrem Workers-Skript hartcoden, alles in weniger als 1 MB einpassen und jedes Mal erneut bereitstellen, wenn Sie eine Änderung vornehmen wollen – oje! Deshalb haben wir Workers KV entwickelt.</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">// A Worker that can handle billions of redirects,
+// now that's more like it!
+addEventListener("fetch", event =&gt; {
+  event.respondWith(handleBillionsOfRedirects(event.request))
+})
+
+async function handleBillionsOfRedirects(request) {
+  let prefix = "/redirect"
+  let url = new URL(request.url)
+  // Check if the URL is a special redirect.
+  // (eg. example.com/redirect/&lt;random-hash&gt;)
+  if (url.pathname.startsWith(prefix)) {
+    // REDIRECTS is a custom variable that you define,
+    // it binds to a Workers KV "namespace." (aka. a storage bucket)
+    let redirect = await REDIRECTS.get(url.pathname.replace(prefix, ""))
+    if (redirect) {
+      url.pathname = redirect
+      return Response.redirect(url, 302)
+    }
+  }
+  // Otherwise, send request to the original path.
+  return await fetch(request)
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Mit nur wenigen Änderungen gegenüber unserem früheren Beispiel konnten wir von einer einzigen Umleitung auf Milliarden Umleitungen skalieren – und das ist nur ein Vorgeschmack auf das, was Sie mit Workers KV bauen können.</p>
+	<h3 id="wie-funktioniert-es"><strong>Wie funktioniert es?</strong></h3>
+	<p>Verteilte Datenspeicher werden häufig mit dem <a href="https://en.wikipedia.org/wiki/CAP_theorem" target="_blank">CAP-Theorem</a>modelliert, das besagt, dass verteilte Systeme nur 2 der folgenden 3 Eigenschaften gleichzeitig erfüllen können:</p>
+	<ul>
+		<li>Konsistenz – sind meine Daten überall gleich?</li>
+		<li>Verfügbarkeit – sind meine Daten jederzeit verfügbar?</li>
+		<li>Partitionstoleranz – sind meine Daten widerstandsfähig gegen regionale Ausfälle?</li>
+	</ul>
+	<figure class="kg-card kg-image-card"><img src="https://lh5.googleusercontent.com/0ygJCOwoQPpS5YbU7ACzYbqVIaJila1Qo02Ej6pPxVIG6-TNs_V_DHqT3mBfvUc6Te_f5_8TcseKer_s9GWg2AwiRLX-ckwl0A8_gXqCQOJc39VTHy8eikKHQSQBNddr4Uuw034" class="kg-image"></figure>
+	<p>Workers KV garantiert Verfügbarkeit und Partitionstoleranz. Diese Kombination wird als <a href="https://en.wikipedia.org/wiki/Eventual_consistency" target="_blank">Eventual Consistency</a> (schlussendliche Konsistenz) bezeichnet und stattet Workers KV mit zwei einzigartigen Wettbewerbsvorteilen aus:</p>
+	<ul>
+		<li>Die Lesevorgänge sind extrem schnell (im Mittelwert 12 ms), da sie von unserer Caching-Technologie gestützt werden.</li>
+		<li>Die Daten sind in mehr als 175 Edge-Rechenzentren verfügbar und widerstehen regionalen Ausfällen.</li>
+	</ul>
+	<p>Trotzdem gibt es Kompromisse bei der Eventual Consistency. Wenn zwei Clients gleichzeitig unterschiedliche Werte in denselben Schlüssel schreiben, „gewinnt“ <em>schlussendlich</em> der letzte Client, der geschrieben hat, und sein Wert wird global konsistent. Das bedeutet auch, dass, wenn ein Client in einen Schlüssel schreibt und derselbe Client denselben Schlüssel liest, die Werte für einen kurzen Zeitraum möglicherweise inkonsistent sind.</p>
+	<p>Um dieses Szenario zu visualisieren, hier ein Beispiel aus dem wirklichen Leben mit drei Freunden:</p>
+	<ul>
+		<li>Nehmen wir an, Matthew, Michelle und Lee planen ihr wöchentliches Mittagessen.</li>
+		<li>Matthew beschließt, dass sie Sushi essen werden.</li>
+		<li>Matthew teilt Michelle seine Sushi-Pläne mit und Michelle stimmt zu.</li>
+		<li>Lee, der die Pläne nicht kennt, sagt Michelle, dass sie tatsächlich Pizza essen werden.</li>
+	</ul>
+	<p>Eine Stunde später warten Michelle und Lee in der Pizzeria, während Matthew allein im Sushi-Restaurant sitzt – was ist schief gelaufen? Wir können es der Eventual Consistency ankreiden, denn nachdem Matthew einige Minuten lang gewartet hat, schaut er auf seinen aktualisierten Kalender und findet <em>schlussendlich </em>die neue Wahrheit heraus: dass sie Pizza essen.</p>
+	<p>Während es im wirklichen Leben Minuten dauern kann, ist Workers KV viel schneller. Es kann die globale Konsistenz in weniger als 60 Sekunden erreichen. Darüber hinauskann ein Worker, wenn er in einen Schlüssel schreibt und dann <em>sofort</em> denselben Schlüssel liest, erwarten, dass die Werte konsistent sind, wenn beide Vorgänge vom gleichen Speicherort stammen.</p>
+	<h3 id="wann-sollte-ich-das-anwenden"><strong>Wann sollte ich das anwenden?</strong></h3>
+	<p>Jetzt, da Sie die Vorteile und Kompromisse der Verwendung der Eventual Consistency verstehen, bleibt die Frage, wie Sie feststellen können, ob es die richtige Speicherlösung für Ihre Anwendung ist. Einfach formuliert: Wenn Sie globale Verfügbarkeit mit ultraschnellen Lesevorgängen wollen, ist Workers KV genau das Richtige für Sie.</p>
+	<p>Wenn Ihre Anwendung jedoch häufig in denselben Schlüssel schreibt, gibt es eine zusätzliche Überlegung. Wir nennen es „die Matthew-Frage“: Macht es Ihnen etwas aus, wenn die Matthews dieser Welt <em>gelegentlich</em> ins falsche Restaurant gehen?</p>
+	<p>Sie können sich Anwendungsfälle (wie unser Worker-Umleitungsbeispiel) vorstellen, bei denen es keinen wesentlichen Unterschied macht. Aber Sie den Kontostand eines Benutzers verfolgen wollen, möchten Sie nicht, dass die Möglichkeit des gleichzeitigen Vorhandenseins von zwei verschiedenen Salden besteht, da der Benutzer etwas mit Geld kaufen könnte, das er bereits ausgegeben hat.</p>
+	<h3 id="was-kann-ich-damit-bauen"><strong>Was kann ich damit bauen?</strong></h3>
+	<p>Hier sind einige Beispiele für Anwendungen, die mit KV erstellt wurden:</p>
+	<ul>
+		<li>Massenumleitungen – Bewältigung von Milliarden von HTTP-Umleitungen.</li>
+		<li>Benutzerauthentifizierung – Überprüfung von Benutzeranfragen an Ihre API.</li>
+		<li>Übersetzungsschlüssel – Dynamische Lokalisierung Ihrer Webseiten.</li>
+		<li>Konfigurationsdaten – Verwaltung des Zugriffs auf Ihren Ursprungsserver.</li>
+		<li>Step-Funktionen – Synchronisierung von Statusdaten zwischen den Funktionen mehrerer APIs.</li>
+		<li>Edge-Dateispeicher – Hosten von großen Mengen kleiner Dateien.</li>
+	</ul>
+	<p>Wir haben mehrere dieser Anwendungsfälle in unserem vorherigen <a href="https://blog.cloudflare.com/building-with-workers-kv/">Blogbeitrag</a> hervorgehoben. Wir haben auch einige ausführlichere Codedurchläufe veröffentlicht, einschließlich eines kürzlich erschienenen Blogbeitrags zum Erstellen einer Online-<a href="https://blog.cloudflare.com/building-a-to-do-list-with-workers-and-kv/">To-Do-Liste mit Workers KV</a>.</p>
+	<figure class="kg-card kg-image-card"><img src="https://lh5.googleusercontent.com/CF5geqMVxtwjd0yL_fWmhVS7jyZpuDpcvt6hQ_LqLUqXV6EDbf0BUGh2ByC102M79MwgXi0LCL-9cmDaB6TuyU5BFGAECZO_JNJ28nr1lv-EKaF9OSaaISskUyfkIlXuo2F1u7s" class="kg-image"></figure>
+	<h3 id="was-ist-neu-seit-der-beta-version"><strong>Was ist neu seit der Beta-Version?</strong></h3>
+	<p>Der bei weitem häufigste Wunsch war, das Schreiben von Daten in Workers KV zu vereinfachen. Deshalb veröffentlichen wir drei neue Möglichkeiten zur weiteren Verbesserung dieser Erfahrung:</p>
+	<h4 id="1-bulk-schreiben"><strong>1. Bulk-Schreiben</strong></h4>
+	<p>Beim Importieren Ihrer vorhandenen Daten in Workers KV wollen Sie sich nicht dem Senden einer HTTP-Anfrage für <em>jedes</em> Schlüsselwertpaar herumärgern müssen. Aus diesem Grund haben wir der Cloudflare-API einen <a href="https://api.cloudflare.com/#workers-kv-namespace-write-multiple-key-value-pairs" target="_blank">Bulk-Endpunkt</a> hinzugefügt. Jetzt können Sie bis zu 10.000 Paare (bis zu 100 MB Daten) in einer einzigen PUT-Anfrage hochladen.</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-bash">curl "https://api.cloudflare.com/client/v4/accounts/ \
+     $ACCOUNT_ID/storage/kv/namespaces/$NAMESPACE_ID/bulk" \
+  -X PUT \
+  -H "X-Auth-Key: $CLOUDFLARE_AUTH_KEY" \
+  -H "X-Auth-Email: $CLOUDFLARE_AUTH_EMAIL" \
+  -d '[
+    {"key": "built_by",    value: "kyle, alex, charlie, andrew, and brett"},
+    {"key": "reviewed_by", value: "joaquin"},
+    {"key": "approved_by", value: "steve"}
+  ]'
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Lassen Sie uns eine Beispielanwendung durchgehen: Sie wollen die Übersetzung Ihrer Website zu Workers auslagern. Da Sie die Übersetzungsschlüssel häufig lesen, aber nur gelegentlich aktualisieren, funktioniert diese Anwendung mit dem Modell der Eventual Consistency von Workers KV gut.</p>
+	<p>In diesem Beispiel haken wir uns in <a href="https://crowdin.com/" target="_blank">Crowdin</a>, eine beliebte Plattform zum Verwalten von Übersetzungsdaten, ein. Dieser Worker reagiert auf einen /translate-Endpunkt, lädt alle Übersetzungsschlüssel herunter und schreibt sie als Bulk in Workers KV, damit Sie sie später auf unserer Edge lesen können:</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-js">addEventListener("fetch", event =&gt; {
+  if (event.request.url.pathname === "/translate") {
+    event.respondWith(uploadTranslations())
+  }
+})
+
+async function uploadTranslations() {
+  // Ask crowdin for all of our translations.
+  var response = await fetch(
+    "https://api.crowdin.com/api/project" +
+    "/:ci_project_id/download/all.zip?key=:ci_secret_key")
+  // If crowdin is responding, parse the response into
+  // a single json with all of our translations.
+  if (response.ok) {
+    var translations = await zipToJson(response)
+    return await bulkWrite(translations)
+  }
+  // Return the errored response from crowdin.
+  return response
+}
+
+async function bulkWrite(keyValuePairs) {
+  return fetch(
+    "https://api.cloudflare.com/client/v4/accounts" +
+    "/:cf_account_id/storage/kv/namespaces/:cf_namespace_id/bulk",
+    {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Auth-Key": ":cf_auth_key",
+        "X-Auth-Email": ":cf_email"
+      },
+      body: JSON.stringify(keyValuePairs)
+    }
+  )
+}
+
+async function zipToJson(response) {
+  // ... omitted for brevity ...
+  // (eg. https://stuk.github.io/jszip)
+  return [
+    {key: "hello.EN", value: "Hello World"},
+    {key: "hello.ES", value: "Hola Mundo"}
+  ]
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Wenn Sie nun eine Seite übersetzen wollen, müssen Sie nur noch aus Workers KV auslesen:</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">async function translate(keys, lang) {
+  // You bind your translations namespace to the TRANSLATIONS variable.
+  return Promise.all(keys.map(key =&gt; TRANSLATIONS.get(key + "." + lang)))
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h4 id="2-ablaufende-schl-ssel"><strong>2. Ablaufende Schlüssel</strong></h4>
+	<p>Standardmäßig sind Schlüsselwertpaare, die in Workers KV gespeichert werden, dauerhaft. Manchmal wollen Sie jedoch, dass Ihre Daten nach einer bestimmten Zeit automatisch gelöscht werden. Aus diesem Grund führen wir für Schreibvorgänge die Optionen expiration undexpiration Ttl ein.</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">// Key expires 60 seconds from now.
+NAMESPACE.put("myKey", "myValue", {expirationTtl: 60})
+
+// Key expires if the UNIX epoch is in the past.
+NAMESPACE.put("myKey", "myValue", {expiration: 1247788800})
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p></p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-bash"># You can also set keys to expire from the Cloudflare API.
+curl "https://api.cloudflare.com/client/v4/accounts/ \
+     $ACCOUNT_ID/storage/kv/namespaces/$NAMESPACE_ID/ \
+     values/$KEY?expiration_ttl=$EXPIRATION_IN_SECONDS"
+  -X PUT \
+  -H "X-Auth-Key: $CLOUDFLARE_AUTH_KEY" \
+  -H "X-Auth-Email: $CLOUDFLARE_AUTH_EMAIL" \
+  -d "$VALUE"
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Angenommen, Sie wollen Benutzer blockieren, die von Ihrer Website als ungeeignet gekennzeichnet wurden, aber nur für eine Woche. Mit einem ablaufenden Schlüssel können Sie die Ablaufzeit festlegen und müssen sich nicht um ein späteres Löschen kümmern.</p>
+	<p>In diesem Beispiel gehen wir davon aus, dass Benutzer- und IP-Adressen identisch sind. Wenn Ihre Anwendung über eine Authentifizierung verfügt, können Sie Zugriffstoken als Schlüsselkennzeichen verwenden.</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">addEventListener("fetch", event =&gt; {
+  var url = new URL(event.request.url)
+  // An internal API that blocks a new user IP.
+  // (eg. example.com/block/1.2.3.4)
+  if (url.pathname.startsWith("/block")) {
+    var ip = url.pathname.split("/").pop()
+    event.respondWith(blockIp(ip))
+  } else {
+    // Other requests check if the IP is blocked.
+   event.respondWith(handleRequest(event.request))
+  }
+})
+
+async function blockIp(ip) {
+  // Values are allowed to be empty in KV,
+  // we don't need to store any extra information anyway.
+  await BLOCKED.put(ip, "", {expirationTtl: 60*60*24*7})
+  return new Response("ok")
+}
+
+async function handleRequest(request) {
+  var ip = request.headers.get("CF-Connecting-IP")
+  if (ip) {
+    var blocked = await BLOCKED.get(ip)
+    // If we detect an IP and its blocked, respond with a 403 error.
+    if (blocked) {
+      return new Response({status: 403, statusText: "You are blocked!"})
+    }
+  }
+  // Otherwise, passthrough the original request.
+  return fetch(request)
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h4 id="3-gr-ere-werte"><strong>3. Größere Werte</strong></h4>
+	<p>Wir haben unsere Größenbeschränkung für Werte von 64 kB auf 2 MB erhöht. Das ist sehr nützlich, wenn Sie pufferbasierte oder Dateidaten in Workers KV speichern müssen.</p>
+	<figure class="kg-card kg-image-card"><img src="https://lh5.googleusercontent.com/j52-quLN6favIawRZZ4pDodg_F5YQp0E8gXKCGhPPsPNhslwAgLNYcQdsyZeWDPrTTFGve-r88tS-44Pqoa4r2OSvzLaz-TWcEP2NeFzmz0skPc7NIigKGGqPbHzYvyAmYsfEqw" class="kg-image"></figure>
+	<p>Betrachten Sie folgendes Szenario: Sie wollen Ihren Benutzern das Hochladen ihres Lieblings-GIF für ihr Profil ermöglichen, ohne dass Sie diese GIFs als Binärdateien in Ihrer Datenbank speichern oder <em>noch ein</em> Speicher-Bucket in der Cloud verwalten müssen.</p>
+	<p>Workers KV passt hervorragend für diesen Anwendungsfall! Sie können einen Workers KV-Namepace für die GIFs Ihrer Benutzer erstellen, der schnell und zuverlässig ist, wo auch immer sich Ihre Kunden befinden.</p>
+	<p>In diesem Beispiel laden Benutzer einen Link zu ihrem bevorzugten GIF hoch, dann lädt ein Worker ihn herunter und speichert ihn in Workers KV.</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">addEventListener("fetch", event =&gt; {
+  var url = event.request.url
+  var arg = request.url.split("/").pop()
+  // User sends a URI encoded link to the GIF they wish to upload.
+  // (eg. example.com/api/upload_gif/&lt;encoded-uri&gt;)
+  if (url.pathname.startsWith("/api/upload_gif")) {
+    event.respondWith(uploadGif(arg))
+    // Profile contains link to view the GIF.
+    // (eg. example.com/api/view_gif/&lt;username&gt;)
+  } else if (url.pathname.startsWith("/api/view_gif")) {
+    event.respondWith(getGif(arg))
+  }
+})
+
+async function uploadGif(url) {
+  // Fetch the GIF from the Internet.
+  var gif = await fetch(decodeURIComponent(url))
+  var buffer = await gif.arrayBuffer()
+  // Upload the GIF as a buffer to Workers KV.
+  await GIFS.put(user.name, buffer)
+  return gif
+}
+
+async function getGif(username) {
+  var gif = await GIFS.get(username, "arrayBuffer")
+  // If the user has set one, respond with the GIF.
+  if (gif) {
+    return new Response(gif, {headers: {"Content-Type": "image/gif"}})
+  } else {
+    return new Response({status: 404, statusText: "User has no GIF!"})
+  }
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Abschließend möchten wir uns noch bei allen Beta-Kunden bedanken. Es war Ihr wertvolles Feedback, das uns zur Entwicklung dieser Änderungen von Workers KV veranlasst hat. Bleiben Sie in Kontakt mit uns. Wir sind immer auf der Suche nach neuen Möglichkeiten und wir freuen uns, von Ihnen zu hören!</p>
+	<h3 id="preis"><strong>Preis</strong></h3>
+	<p>Wir sind auch in der Lage, unsere GA-Preise bekannt zu geben. Wenn Sie einer unserer Enterprise-Kunden sind, bleiben Ihre Preise offensichtlich unverändert.</p>
+	<ul>
+		<li>0,50 USD / GB gespeicherte Daten, 1 GB enthalten</li>
+		<li>0,50 USD / Millionen Lesevorgänge, 10 Millionen enthalten</li>
+		<li>5 USD / Millionen Schreib-, Auflist- und Löschvorgänge, 1 Million enthalten</li>
+	</ul>
+	<p>Während der Beta-Phase haben wir erfahren, dass Kunden nicht nur Werte auf unserer Edge lesen, sondern auch Werte von unserer Edge schreiben wollen. Da die Nachfrage nach diesen teureren Edge-Vorgängen groß ist, haben wir damit begonnen, Nicht-Lese-Vorgänge pro Monat abzurechnen.</p>
+	<h3 id="beschr-nkungen"><strong>Beschränkungen</strong></h3>
+	<p>Wie bereits erwähnt, haben wir unsere Größenbeschränkung von 64 kB auf 2 MB erhöht. Wir haben auch unsere Obergrenze für die Anzahl der Schlüssel pro Namespace aufgehoben – sie ist jetzt unbegrenzt. Hier sind unsere GA-Beschränkungen:</p>
+	<ul>
+		<li>Bis zu 20 Namespaces pro Konto, jeder mit unbegrenzt vielen Schlüsseln</li>
+		<li>Schlüssel bis zu 512 Bytes und Werte bis zu 2 MB</li>
+		<li>Unbegrenzt viele Schreibvorgänge pro Sekunde für verschiedene Schlüssel</li>
+		<li>Ein Schreibvorgang pro Sekunde für denselben Schlüssel</li>
+		<li>Unbegrenzt viele Lesevorgänge pro Sekunde pro Schlüssel</li>
+	</ul>
+	<h3 id="probieren-sie-es-jetzt-aus-"><strong>Probieren Sie es jetzt aus!</strong></h3>
+	<p><a href="https://www.cloudflare.com/products/workers-kv/" target="_blank">Workers KV</a> ist jetzt für alle Kunden zugänglich und Sie können noch heute in Ihrem Cloudflare-Dashboard über die Registerkarte „Workers“ mit der Verwendung beginnen. Sie können auch unsere aktualisierte <a href="https://developers.cloudflare.com/workers/kv/" target="_blank">Dokumentation einsehen.</a></p>
+	<p>Wir sind sehr gespannt, was Sie mit Workers KV bauen werden!</p>
+	<p><a href="https://blog.cloudflare.com/tag/serverless/">Serverlos</a> <a href="https://blog.cloudflare.com/tag/workers/">Workers</a> <a href="https://blog.cloudflare.com/tag/workers-kv/">Workers KV</a> <a href="https://blog.cloudflare.com/tag/javascript/">JavaScript</a> <a href="https://blog.cloudflare.com/tag/bash/">Bash</a></p>
+</div>

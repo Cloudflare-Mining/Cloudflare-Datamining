@@ -1,0 +1,42 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/image1-5.png" class="kg-image"></figure>
+	<p>多くの開発者にとってWeb3という言葉は、よくある「2021年に学ぶべきこと」といったツイートで見かける類のバズワードのように感じられるでしょう。私もソフトウェアの開発者として、長年そのように感じていました。ここ数か月間、私はWeb3の仕組みや重要性をより深く理解するため、そのエコシステムを詳細に学びました。</p>
+	<p>Web3は一般に、インターネットの分散型進化形として知られています。Web上のインタラクションや日常生活をプロバイダー数社が仲介する代わりに、将来Web3ベースになれば、データを独自のデータベースから解放し、ブロックチェーン固有のインセンティブ構造を介して集中化せずに動作することができます。</p>
+	<p>2021年のWeb3スペースは、数年前とは見た目も使用方法も大きく異なります。<a href="https://ethereum.org/en/" target="_blank">Ethereum</a>などのブロックチェーンは、若干の改善が必要とはいえ、比較的簡単に膨大なトラフィックを処理しています。そして、Solanaなどの比較的新しいブロックチェーンが、ここ数年見られたスケーリング問題を軽減できる真の代替え手段として参入してきました。</p>
+	<p>Cloudflareは、開発者がWeb3で未来を構築していくのを後押しするのに適した立場にあります。本日発表した<a href="https://blog.cloudflare.com/ja-jp/announcing-web3-gateways-ja-jp/">CloudflareのEthereumゲートウェイ</a>によって、開発者は信頼性の高いCloudflareのネットワーク上でスケーラブルなWeb3アプリを構築することができるようになります。本日は、<a href="https://workers.cloudflare.com/" target="_blank">Cloudflare Workers</a>と<a href="https://pages.cloudflare.com/" target="_blank">Cloudflare Pages</a>を使用してNFT（非代替性トークン）をデプロイ、ミント、レンダリングする方法を紹介するオープンソースの例もリリースします。<a href="https://cfweb3.pages.dev/" target="_blank">こちらでお試しいただくか</a>、<a href="https://github.com/signalnerve/cfweb3" target="_blank">GitHubのオープンソースコードベース</a>をご確認ください。ご利用のNFTの本番環境へのデプロイを開始できます。</p>
+	<h3 id="web3-">Web3で解決できる問題</h3>
+	<p>Web3についてオンラインで読み始めると、可能性にワクワクしてきますね。私自身、ソフトウェア開発者として、「Web3アプリとは何なのか、どう構築するのか」という疑問を持つようになりました。</p>
+	<p>従来のアプリの多くは、データベース、そのデータベースのコードインターフェース、ユーザーインターフェースの3つの部分を使います。モデルビューコントローラー（MVC）アーキテクチャを代表例とするこのモデルは、数十年にわたってWebを支えてきました。MVCでは、データベースがご利用のデータモデルの格納システムとして機能し、クライアントとそのデータのインタラクションのやり方はコントローラーが決定します。データを取り入れて表示するビューをHTML、CSS、JavaScriptを使って定義し、データの作成や更新のインタラクションを提供します。</p>
+	<p>10億人のユーザーがいるソーシャルメディアのアプリを想像してみてください。MVCモデルでは、このアプリのデータモデルには、投稿、フレンド、イベントなど日常的に作られるあらゆるユーザー生成コンテンツが含まれます。そのアプリ用に作成されたコントローラーが、内部でデータとインタラクションできるユーザーを決定します。たとえば、ユーザー2人間のプライベートな対話は、その2人にしかアクセスできないというように。しかし、これらのコントローラーとアプリ全体は、データへの外部アクセスを許可しません。データはソーシャルメディアアプリが所有し、広告表示やWeb上の追跡と引き換えに「無料で」リースします。</p>
+	<p>ここまで考えた時、閃きました。どうすればWeb3がこうした問題への有力なソリューションになるかがわかったのです。MVCベースのWeb2.0アプリが「壁に囲まれた庭」（相互運用性もデータの所有権もない閉ざされた別々のプラットフォーム）の集まりだとすると、Web3は設計上その真逆です。</p>
+	<p>Web3アプリには、事実上2つの部分があります。ブロックチェーン（ここではEthereumを例に説明します）とユーザーインターフェースです。ブロックチェーンには2つの部分があります。ユーザー、グループユーザーまたは組織のアカウントと、ネットワーク上で発生するすべてのことを記録する不変のシステムとして機能するブロックチェーンそのものです。</p>
+	<p>ブロックチェーンに関して理解すべき重要な側面の1つは、コードをブロックチェーンにデプロイすることができ、そのブロックチェーンのユーザーがコードを実行できるという考えです。Ethereumでは、これを「スマートコントラクト」と呼んでいます。ブロックチェーンに対して実行されるスマートコントラクトは、MVCモデルのコントローラーのようなものです。謎に包まれていた従来のコードと異なり、スマートコントラクトは検証可能で、バイナリコードは誰でも閲覧することができます。</p>
+	<p>例の架空のソーシャルメディアアプリにおいては、これは、ユーザーのアクションが中央のデータベースに一切格納されないことを意味します。代わりに、ユーザーは誰でも検証できるプログラムを利用して、ブロックチェーンネットワークにデプロイされたスマートコントラクトとのインタラクションを行います。開発者は、情報を表示し簡単に利用できるユーザーインターフェースを構築することができます。壁に囲まれた庭もプラットフォームロックインもありません。もちろん、他の開発者がより良いユーザーインターフェースやスマートコントラクトを開発して、ユーザーが自分のニーズに合わせて、それらのインターフェース間やコントラクト間を移動することも考えられます。</p>
+	<p>そうしたスマートコントラクトによる操作は、ウォレット（たとえば<a href="https://metamask.io/" target="_blank">MetaMask</a>が管理するEthereumウォレット）を介して行われます。ウォレットは、サービスを提供する企業ではなくユーザーが所有します。これはつまり、あなたがご自身のウォレット（データに関する最終権限）を取得し、いつでも好きなようにそれを行使することができることを意味します。ウォレット自体は、ブロックチェーンのプログラム可能なもう1つの側面です。シングルユーザー用であったり、企業全体の利害を代表する複雑なマルチシグウォレットであったりします。ウォレットの所有者は、自身のデータをどう処理するかについてコンセンサス意思決定を選択することができます。</p>
+	<figure class="kg-card kg-embed-card">
+		<blockquote class="twitter-tweet">
+			<p lang="en" dir="ltr">people are talking trash about "web3" as a term, <br><br>but having all my data on multiple websites is cool<br><br>and having websites compete on interfaces for the same data is rad</p>— pm (@pm) <a href="https://twitter.com/pm/status/1434251123532070912?ref_src=twsrc%5Etfw" target="_blank">September 4, 2021</a>
+		</blockquote>
+		<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+	</figure>
+	<h3 id="-">非代替性トークンの台頭</h3>
+	<p>最近のWeb3スペースで見られる最も大きな変化の1つは、非代替性トークン（NFT）の成長です。非代替性トークンはブロックチェーン上に格納されるユニークな資産で、ユーザーが取引したり、所有権を確認したりできるものです。Cloudflareは2019年の<a href="https://blog.cloudflare.com/cloudflare-ethereum-gateway">Cloudflare Ethereumゲートウェイの発表</a>の際に、既にNFTに言及していました。その後、NFTの人気は爆発的に上がり、<a href="https://www.larvalabs.com/cryptopunks" target="_blank">CryptoPunks</a>や<a href="https://boredapeyachtclub.com/%23/" target="_blank">Bored Ape Yacht Club</a>などのプロジェクトで、毎月数百万ドルの取引が実行されています。</p>
+	<p>NFTは、「壁で囲まれた庭」時代が終わった後の世界でデータの所有権やコミュニティがどのようになるのかを表すため、Web3スペースの新たな魅力といえるでしょう。NFTを既にご存知でしたら、非常に視覚的なメディアとして認識しておられるかもしれません。CryptoPunksやBored Ape Yacht Clubの基本はアートなのです。PunkまたはApeを購入し、ソーシャルメディアのプロフィール写真として使用することができます。しかし、Apeを所有することは単にプロフィール写真を所有することではありません。ブロックチェーン検証済み資産の独占所有権を持つことにもなるのです。</p>
+	<p>NFTのコントラクトの急増により、<a href="https://www.theverge.com/22683766/nft-scams-theft-social-engineering-opensea-community-recovery" target="_blank">詐欺</a>も増加していることに注意する必要があります。ブロックチェーンベースのNFTは、特定のスマートコントラクトに基づいて所有権を移転するメディアです。このスマートコントラクトは誰でもデプロイでき、どのコンテンツとも関連付けることができます。取引をするコントラクトの信頼性と身元を確認するまでは、真偽の保証はありません。一部プラットフォームはアカウント認証に対応していますが、他のプラットフォームでは、信頼できるパートナーのみをプラットフォームに表示できるようになっています。NFTには、複数のアプローチを可能にできる柔軟性がありますが、信頼の前提に関するコミュニケーションは明確にするべきです。</p>
+	<p>この資産は、Ethereumにデプロイされたスマートコントラクトに関連付けられており、取引、認証、プログラムへのゲートウェイとしての使用が可能です。NFT開発者はNFTの取引イベントに参加して、ロイヤリティを請求したり、「ミント（NFT新規発行）」時にミント費を請求し、販売や取引で収益を上げ、次の大きなプロジェクトの資金に充てることができます。このようにして、NFTは平均的なWebアプリよりも、開発者とコミュニティメンバーの間に強力なインセンティブ関係を築くことができます。</p>
+	<h3 id="--1">構築内容</h3>
+	<p>Web3（とCloudflareの位置づけ）について理解を深めるため、当社は、Web3スタックをエンドツーエンドで利用して何かを構築する必要がありました。</p>
+	<p>同じことを可能にするため、本日、フルスタックアプリをオープンソーシングし、NFTのミント方法や管理方法を最初から最後までご紹介いたします。<a href="https://rinkeby.etherscan.io/token/0x290422EC6eADc2CC12aCd98C50333720382CA86B" target="_blank">アプリのスマートコントラクトは、Ethereumのプロジェクトやスマートコントラクトのテスト環境である</a><a href="https://www.rinkeby.io/" target="_blank">Rinkeby</a><a href="https://rinkeby.etherscan.io/token/0x290422EC6eADc2CC12aCd98C50333720382CA86B" target="_blank">ネットワーク上でデプロイされ、認証されています。</a>Rinkebyテストネットワークでは、メインのブロックチェーンのスマートコントラクトを、実際のイーサを使わずにまったく同じワークフローを使って、テストすることができます。プロジェクトをEthereumのメインネットにデプロイする準備が整ったら、そのコントラクトを本番環境でデプロイし、認証し、使用を開始することができます。</p>
+	<p>デプロイしたら、スマートコントラクトはNFTプロジェクトを管理する機能を提供します。この機能は、<a href="https://eips.ethereum.org/EIPS/eip-721" target="_blank">ERC-721スペック</a>に対応しており、ユーザーがミントすることができ、<a href="https://opensea.io/" target="_blank">OpenSea</a>などのNFTマーケットプレイスやお持ちのWebアプリで表示することができます。WebインターフェースやこれらのNFTをミントするためのコード例もご用意しました。ユーザーは、EthereumウォレットがインストールされたWebアプリを使用して、NFTをクレーム（claim）することができます。</p>
+	<p>NFTをミントしたら、ユーザーインターフェースの例がクレームされた各NFTのメタデータをレンダリングします。ERC-721（NFT）スペックによると、デプロイされたトークンには、JSONメタデータを提供する対応するURLがなければなりません。Cloudflare Workersとともに構築したこのJSONエンドポイントは、各NFTの名前と説明、および画像を返します。この画像をホストするために、Infuraでサービスをピン留めし、CloudflareIPFSゲートウェイを使用して配信しています。当社のNFTはそのハッシュを介してコンテンツを識別しており、後で別の物と置換できなくします。</p>
+	<p>このオープンソースプロジェクトでは、NFTプロジェクトを構築するのに必要なすべてのツールを提供しています。WorkersとPagesを基に構築することで、NFTを成功裏に導入しスケールするために必要なすべてのツールを手に入れ、ユーザーがウォレット間でミントや取引をする中、NFT資産について常に最新のメタデータを提供することができます。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/10/image2-3.png" class="kg-image" alt="Architecture diagram of Cloudflare’s open-source NFT project">
+		<figcaption>Architecture diagram of Cloudflare’s open-source NFT project</figcaption>
+	</figure>
+	<p>CloudflareのオープンソースNFTプロジェクトのアーキテクチャ</p>
+	<p><br></p>
+	<h3 id="cloudflare-web3">Cloudflare + Web3</h3>
+	<p>Workers、Pages、IPFSゲートウェイを含むCloudflareの開発者用プラットフォームは、お客様のNFTプロジェクトのライフサイクルの各ステップでスケーラブルなソリューションを連携して提供します。NFTプロジェクトを本番環境に移行する際は、プロジェクトのいかなるトラフィックも処理できるCloudflareの<a href="https://blog.cloudflare.com/ja-jp/announcing-web3-gateways-ja-jp/">Ethereum</a>および<a href="https://blog.cloudflare.com/cloudflare-ipfs-safe-mode/">IPFS</a>ゲートウェイを利用できます。</p>
+	<p>Cloudflareでは、Web3をとても楽しみにしています。社会は、World Wide Webの初期に想定されていた類の分散型モデルのインターネットに戻りつつあります。当社でよく言うように、<a href="https://blog.cloudflare.com/the-network-is-the-computer/">「ネットワークはコンピューター」です。</a>Metaversesのようなプロジェクト、コミュニティ用やソーシャルネットワーク用のDAOs（自律分散型組織）やNFT、金融管理のDeFi（分散型金融）アプリ、私たちがいまだ考えもしていないさまざまな種類の分散型アプリすべてなど、Web3がどのような形式をとろうとも、Cloudflareはその未来像の基盤になります。</p>
+	<p><a href="https://blog.cloudflare.com/tag/birthday-week/">バースデーウィーク</a> <a href="https://blog.cloudflare.com/404/">Web3</a> <a href="https://blog.cloudflare.com/tag/workers/">Cloudflare Workers</a> <a href="https://blog.cloudflare.com/tag/cloudflare-pages/">Cloudflare Pages</a></p>
+</div>

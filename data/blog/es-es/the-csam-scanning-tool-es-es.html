@@ -1,0 +1,96 @@
+<div class="post-content lh-copy gray1">
+	<p>Hace dos semanas escribimos sobre el <a href="https://blog.cloudflare.com/cloudflares-response-to-csam-online/">enfoque de Cloudflare para lidiar con el material de abuso sexual infantil (child sexual abuse material, CSAM)</a>. Comenzamos a trabajar con el Centro Nacional para Menores Desaparecidos y Explotados (National Center for Missing and Exploited Children, NCMEC), la organización con sede en Estados Unidos que actúa como centro de intercambio para eliminar este contenido aborrecible, a los pocos meses de nuestro lanzamiento público en 2010. Durante los últimos nueve años, nuestro equipo de Trust &amp; Safety ha trabajado con <a href="http://www.missingkids.com/" target="_blank">NCMEC</a>, <a href="https://www.interpol.int/en/Crimes/Crimes-against-children" target="_blank">Interpol</a>, y casi 60 organismos públicos y privados de todo el mundo para diseñar nuestro programa. Y estamos orgullosos del trabajo que hemos hecho para eliminar el material de abuso sexual infantil (CSAM) de Internet.</p>
+	<p>Los casos más repugnantes, de alguna manera, son los más fáciles de abordar. Aunque Cloudflare no puede eliminar contenido alojado por otros, tomaremos medidas para cancelar los servicios a un sitio web cuando quede claro que el sitio está dedicado a compartir CSAM o si los operadores del sitio web y su host no toman las medidas adecuadas para eliminar el contenido CSAM. Cuando cancelamos los sitios web, purgamos nuestras cachés, algo que entra en vigor en cuestión de segundos a nivel mundial, y bloqueamos el sitio web para que no pueda volver a utilizar la red de Cloudflare.</p>
+	<h3 id="abordaje-de-casos-dif-ciles"><strong>Abordaje de casos difíciles</strong></h3>
+	<p>Los casos difíciles se producen cuando un cliente nuestro ejecuta un servicio que permite contenido generado por el usuario (como un foro de debate) y un usuario carga CSAM, o si hackean a nuestro cliente, o si tiene un empleado malintencionado que está almacenando CSAM en sus servidores. Hemos visto de estos casos donde el CSAM toma totalmente desprevenidos a los servicios que intentan hacer lo correcto y termina publicado en sus sitios. A pesar de la ausencia de intención o malicia en estos casos, persiste la necesidad de identificar y eliminar ese contenido con rapidez.</p>
+	<p>Hoy estamos orgullosos de dar un paso adelante para ayudar a abordar esos casos difíciles. A partir de hoy, cada cliente de Cloudflare puede iniciar sesión en su panel de control y habilitar el acceso a CSAM Scanning Tool (herramienta de escaneo de CSAM). A medida que CSAM Scanning pase del desarrollo a la producción, la herramienta comprobará todas las propiedades de Internet que han habilitado el CSAM Scanning para este contenido ilegal. Cloudflare le enviará automáticamente un aviso cuando indique que hay material de CSAM, bloqueará el acceso a ese contenido (con un código de estado 451 "bloqueado por razones legales") y tomará medidas para admitir la notificación adecuada de ese contenido de conformidad con las obligaciones legales.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/01/image3-13.png" class="kg-image"></figure>
+	<p>CSAM Scanning estará disponible a través del panel de control de Cloudflare sin costo alguno para todos los clientes, independientemente del nivel de su plan. Puedes encontrar esta herramienta en la pestaña "Almacenamiento en caché" en tu panel de control. Esperamos que al abrir esta herramienta para todos nuestros clientes de forma gratuita podamos ayudar a hacer aún más para contrarrestar CSAM en línea y ayudar a proteger a nuestros clientes del riesgo legal y reputacional que CSAM puede suponer para sus negocios.</p>
+	<p>Ha sido un largo viaje para llegar al punto de poder comprometernos a ofrecer este servicio a nuestros millones de usuarios. Para entender lo que estamos haciendo y por qué ha sido un desafío desde una perspectiva técnica y política, necesita entender un poco sobre el rastreo de CSAM de última generación.</p>
+	<h3 id="hallazgo-de-im-genes-similares"><strong>Hallazgo de imágenes similares</strong></h3>
+	<p>Casi al mismo tiempo que nació Cloudflare por primera vez en 2009, un profesor de Dartmouth llamado Hany Farid estaba trabajando en software que podía comparar imágenes con una lista de "hashes" mantenidos por NCMEC. Microsoft tomó la iniciativa en la creación de una herramienta, PhotoDNA, que utilizó el trabajo del profesor Farid para identificar CSAM automáticamente.</p>
+	<p>En sus primeros días, Microsoft utilizó PhotoDNA para sus servicios internamente y, a finales de 2009, <a href="https://blogs.msdn.com/b/microsoftuseducation/archive/2009/12/17/microsoft-donates-photodna-technology-to-make-the-internet-safer-for-kids.aspx" target="_blank">donó la tecnología a NCMEC</a> para ayudar a gestionar su uso por parte de otras organizaciones. Las redes sociales fueron algunos de los primeros adoptantes. En 2011, <a href="http://www.huffingtonpost.com/2011/05/20/facebook-photodna-microsoft-child-pornography_n_864695.html" target="_blank">Facebook lanzó una implementación</a> de la tecnología como parte de su proceso contra el abuso. <a href="https://www.theguardian.com/technology/2013/jul/22/twitter-photodna-child-abuse" target="_blank">Twitter lo incorporó en 2014</a>.</p>
+	<p>El proceso se conoce como hash difuso. Los algoritmos hash tradicionales como MD5, SHA1 y SHA256 toman un archivo (como una imagen o documento) de longitud arbitraria y generan un número de longitud fijo que es, en efecto, la huella digital del archivo. Por ejemplo, si usted toma el MD5 de esta imagen entonces la huella digital resultante es <strong>605c83bf1bba62e85f4f5fccc56bc128</strong>.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/01/image4-2.jpg" class="kg-image">
+		<figcaption>La imagen base</figcaption>
+	</figure>
+	<p>Si cambiamos un solo píxel en la imagen para que sea ligeramente blanco en lugar de blanco puro, es visualmente idéntico, pero la huella digital cambia por completo a <strong>42ea4fb30a440d8787477c6c37b9daed</strong>. Como se puede ver en las dos huellas digitales, un pequeño cambio en la imagen da como resultado un cambio masivo e impredecible en la salida de un hash tradicional.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/01/image5-2.jpg" class="kg-image">
+		<figcaption>La imagen base con un solo píxel ha cambiado</figcaption>
+	</figure>
+	<p>Esto es ideal para algunos usos de hash donde se desea identificar de manera definitiva, si el documento que está mirando es el mismo que el que ha visto antes. Por ejemplo, si se agrega un cero adicional a un contrato digital, deseas que el hash del documento utilizado en su firma ya no sea válido.</p>
+	<h3 id="hash-difuso"><strong>Hash difuso</strong></h3>
+	<p>Sin embargo, en el caso de CSAM, esta característica del hash tradicional es una responsabilidad. Con el fin de evitar la detección, los delincuentes que producen CSAM cambian el tamaño, añaden ruido, o alteran de otra modo la imagen que se ve igual, pero genera un hash radicalmente diferente.</p>
+	<p>El hash difuso funciona de otra manera. En lugar de determinar si dos fotos son exactamente las mismas, en su lugar intenta llegar a la esencia de una fotografía. Esto permite al software calcular hashes para dos imágenes y luego comparar la "distancia" entre las dos. Mientras que los hashes difusos todavía pueden ser diferentes entre dos fotografías que han sido alteradas, a diferencia de con el hash tradicional, puede comparar las dos imágenes y ver sus similitudes.</p>
+	<p>Por lo tanto, en las dos fotos anteriores, el hash difuso de la primera imagen es</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>00e308346a494a188e1042333147267a
+653a16b94c33417c12b433095c318012
+5612442030d1484ce82c613f4e224733
+1dd84436734e4a5c6e25332e507a8218
+6e3b89174e30372d</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>y la segunda imagen es</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>00e308346a494a188e1042333147267a
+653a16b94c33417c12b433095c318012
+5612442030d1484ce82c613f4e224733
+1dd84436734e4a5c6e25332e507a8218
+6e3b89174e30372d</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Solo hay una ligera diferencia entre las dos fotos en términos de píxeles y los hashes difusos son idénticos.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/01/image6-2.jpg" class="kg-image">
+		<figcaption>La imagen base después de aumentar la saturación, cambiar a sepia, añadir un borde y agregar ruido aleatorio.</figcaption>
+	</figure>
+	<p>El hash difuso está diseñado para ser capaz de identificar imágenes que son sustancialmente similares. Por ejemplo, modificamos la imagen de los perros mejorando primero su color, luego cambiándola a sepia, luego agregando un borde y finalmente agregando ruido aleatorio. &nbsp;El hash difuso de la nueva imagen es</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>00d9082d6e454a19a20b4e3034493278
+614219b14838447213ad3409672e7d13
+6e0e4a2033de545ce731664646284337
+1ecd4038794a485d7c21233f547a7d2e
+663e7c1c40363335</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Esto se ve muy diferente del hash de la imagen sin cambios previa, pero los hashes difusos se comparan al ver lo cerca que están el uno del otro.</p>
+	<p>La mayor distancia posible entre dos imágenes es de casi 5 m unidades. Estos dos hashes difusos están a solo 4 913 unidades de distancia (cuanto menor sea el número, más similares son las imágenes) lo que indica que son sustancialmente la misma imagen.</p>
+	<p>Compare eso con dos fotografías no relacionadas. La fotografía de abajo tiene un hash difuso de</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>011a0d0323102d048148c92a4773b60d
+0d343c02120615010d1a47017d108b14
+d36fff4561aebb2f088a891208134202
+3e21ff5b594bff5eff5bff6c2bc9ff77
+1755ff511d14ff5b</code></pre>
+	<!--kg-card-end: markdown-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/01/image7-2.jpg" class="kg-image"></figure>
+	<p>La fotografía de abajo tiene un hash difuso de</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>062715154080356b8a52505955997751
+9d221f4624000209034f1227438a8c6a
+894e8b9d675a513873394a2f3d000722
+781407ff475a36f9275160ff6f231eff
+465a17f1224006ff</code></pre>
+	<!--kg-card-end: markdown-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/01/image8-8.png" class="kg-image"></figure>
+	<p>La distancia entre los dos hashes se calcula como 713 061. A través de la experimentación, es posible establecer un umbral de distancia bajo el cual se puede considerar que dos fotografías están probablemente relacionadas.</p>
+	<h3 id="la-caja-negra-intencional-de-los-hashes-difusos"><strong>La caja negra intencional de los hashes difusos</strong></h3>
+	<p>¿Como funciona? Si bien se han publicado muchos trabajos sobre hashes difusos, las entrañas del proceso son un misterio intencional. Hace poco tiempo el New York Times <a href="https://www.nytimes.com/interactive/2019/11/09/us/internet-child-sex-abuse.html" target="_blank">escribió un artículo</a> que fue quizá el debate más público sobre cómo funciona esa tecnología. El desafío era si los productores criminales y distribuidores de CSAM sabían con exactitud cómo funcionaban tales herramientas, entonces podrían ser capaces de descubrir cómo alterar sus imágenes con el fin de vencer a la tecnología. Para ser claros, Cloudflare ejecutará la herramienta CSAM Screening en nombre del operador del sitio web desde nuestros puntos de presencia seguros. No distribuiremos el software directo a los usuarios. Permaneceremos atentos a posibles intentos de abuso de la plataforma y tomaremos medidas rápidas, según sea necesario.</p>
+	<h3 id="equilibrio-entre-falsos-negativos-y-falsos-positivos"><strong>Equilibrio entre falsos negativos y falsos positivos</strong></h3>
+	<p>Hemos trabajado con una serie de autoridades sobre cómo podemos implementar mejor esta funcionalidad a nuestros clientes. Uno de los desafíos para una red con un conjunto de clientes tan diverso como el de Cloudflare es cuál debe ser el umbral adecuado para establecer la distancia de comparación entre los hashes difusos.</p>
+	<p>Si el umbral es demasiado estricto, lo que significa que está más cerca de un hash tradicional y dos imágenes deben ser casi idénticas para desencadenar una coincidencia, entonces es más probable que tengas muchos falsos negativos (es decir, CSAM que no está marcado). Si el umbral es demasiado amplio, entonces es posible tener muchos falsos positivos. Los falsos positivos pueden parecer el mal menor, pero hay preocupaciones legítimas de que al aumentar la posibilidad de falsos positivos a escala podrían desperdiciarse recursos limitados y <a href="https://www.nytimes.com/interactive/2019/09/28/us/child-sex-abuse.html" target="_blank">abrumar aún más al ecosistema existente</a>. &nbsp;Trabajaremos para reiterar la herramienta CSAM Scanning para proporcionar un control más granular al propietario del sitio web, mientras apoyamos la eficacia continua del ecosistema. Hoy en día, creemos que podemos ofrecer un buen primer conjunto de opciones para nuestros clientes que nos permitirá marcar con mayor rapidez el CSAM, sin agotar los recursos del ecosistema.</p>
+	<h3 id="diferentes-umbrales-para-diferentes-clientes"><strong>Diferentes umbrales para diferentes clientes</strong></h3>
+	<p>El mismo deseo de un enfoque granular se reflejó en nuestras conversaciones con nuestros clientes. Cuando preguntamos qué era apropiado para ellos, la respuesta varió radicalmente en función del tipo de negocio, lo sofisticado que era su proceso de detección de abuso existente, y su probable nivel de exposición y tolerancia para el riesgo de que CSAM se publicara en su sitio.</p>
+	<p>Por ejemplo, una red social madura que utiliza Cloudflare con un equipo anti abuso sofisticado puede querer que el umbral sea bastante amplio, pero no desea que el material se bloquee de manera automática porque tiene los recursos para revisar a mano todo lo que se marque.</p>
+	<p>Una empresa nueva dedicada a brindar un foro a padres primerizos puede querer que el umbral sea bastante amplio y que se bloqueen las visitas automáticamente, porque aún no han construido un equipo anti abuso sofisticado y el riesgo para su marca es muy alto, si se publica material CSAM; incluso si eso generará algunos falsos positivos.</p>
+	<p>Una institución financiera comercial puede querer establecer un umbral bastante estricto, porque es menos probable que tengan contenido generado por el usuario y tendrían una baja tolerancia a los falsos positivos, pero luego podrían bloquear de forma automática todo lo que se detecta, porque si sus sistemas se ven comprometidos para alojar CSAM conocido, desean detenerlo de inmediato.</p>
+	<h3 id="diferentes-requisitos-para-diferentes-jurisdicciones"><strong>Diferentes requisitos para diferentes jurisdicciones</strong></h3>
+	<p>También puede haber desafíos basados en el lugar donde se encuentran nuestros clientes y las leyes y reglamentaciones que se les aplican. Según el lugar donde se encuentre una empresa con clientes y dónde tenga usuarios, puede optar por usar una, más de una o todas las diferentes listas de hash disponibles.</p>
+	<p>En otras palabras, un tamaño no se ajusta a todos e, idealmente, creemos que permitir que los propietarios de sitios individuales establezcan los parámetros que tienen más sentido para su sitio en particular dará lugar a tasas de falsos negativos más bajas (es decir, más CSAM que se marca) que si intentamos establecer un estándar global para cada uno de nuestros clientes.</p>
+	<h3 id="mejora-de-la-herramienta-con-el-tiempo"><strong>Mejora de la herramienta con el tiempo</strong></h3>
+	<p>Con el tiempo, esperamos mejorar CSAM Screening para nuestros clientes. Esperamos agregar listas adicionales de hashes de numerosas agencias globales para nuestros clientes con usuarios de todo el mundo a los que suscribirse. Estamos comprometidos a permitir esta flexibilidad sin sobrecargar en exceso el ecosistema que está configurado para luchar contra este horrible crimen.</p>
+	<p>Por último, creemos que podría haber una oportunidad para ayudar a construir la próxima generación de hash difuso. Por ejemplo, el software solo puede escanear imágenes que estén en reposo en la memoria de una máquina, no las que se están transmitiendo. Estamos hablando con Hany Farid, el ex profesor de Dartmouth que ahora enseña en Berkeley California, sobre maneras en las que podamos construir un sistema de hash difuso más flexible, para marcar imágenes antes de que se publiquen.</p>
+	<h3 id="preocupaciones-y-responsabilidad"><strong>Preocupaciones y responsabilidad</strong></h3>
+	<p>Una pregunta que nos hicimos cuando comenzamos a considerar ofrecer CSAM Scanning es si éramos, en lo absoluto, el lugar correcto para hacer esto. Compartimos la preocupación universal por la distribución de representaciones de crímenes horribles contra los niños, y creemos que no debería tener lugar en Internet, sin embargo Cloudflare es un proveedor de infraestructura de red, no una plataforma de contenido.</p>
+	<p>Pero pensamos que había una función adecuada para nosotros en este espacio. En esencia, Cloudflare ofrece herramientas a nuestros más de 2 millones de clientes que antes estaban reservadas solo para los gigantes de Internet. Los servicios de seguridad, rendimiento y confiabilidad que ofrecemos, con frecuencia gratuitos, sin nosotros habrían sido muy caros o limitados a los gigantes de Internet como Facebook y Google.</p>
+	<p>Hoy en día hay empresas nuevas que están trabajando para construir el próximo gigante de Internet y competir con Facebook y Google, porque pueden utilizar Cloudflare para ser seguros, rápidos y confiables en línea. Sin embargo, a medida que siguen aumentando los obstáculos regulatorios que enfrentan problemas muy difíciles como el CSAM, muchos de esos clientes carecen de acceso a herramientas sofisticadas para escanear CSAM con proactividad. Debes ser grande para entrar en el club que otorga acceso a estas herramientas, y, en cualquier caso, estar en el club es cada vez más un requisito previo a hacerse grande.</p>
+	<p>Si queremos más competencia para los gigantes de Internet, necesitamos que estas herramientas estén disponibles de manera más amplia y para las organizaciones más pequeñas. Desde esa perspectiva, creemos que tiene sentido para nosotros ayudar a democratizar esta poderosa herramienta en la lucha contra el CSAM.</p>
+	<p>Esperamos que esto ayude a nuestros clientes a construir equipos de moderación de contenido más sofisticados adecuados para sus propias comunidades y que les permita escalar de manera responsable, para competir con los gigantes de Internet de hoy en día. Esto se alinea con nuestra misión de ayudar a construir un mejor Internet, y es por eso anunciamos que tendremos disponible este servicio de forma gratuita para todos nuestros clientes.</p>
+</div>

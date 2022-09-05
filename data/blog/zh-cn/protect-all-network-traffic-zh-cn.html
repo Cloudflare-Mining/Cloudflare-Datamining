@@ -1,0 +1,28 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image1-62.png" class="kg-image" alt="Protect all network traffic on Cloudflare"></figure>
+	<p>Magic Transit 保护客户的整个网络——任何端口/协议——免受 DDoS 攻击，并提供内置的性能和可靠性。今天，我们很高兴地宣布，通过将 Cloudflare 维护、受 Magic Transit 保护的 IP 空间作为服务提供，将 Magic Transit 的能力扩展到任何大小的网络，从家庭网络到办公室，直到大型云资产。</p>
+	<h3 id="-magic-transit-">什么是 Magic Transit？</h3>
+	<p>Magic Transit 将 <a href="https://www.cloudflare.com/network/" target="_blank">Cloudflare 全球网络</a>的力量扩展给客户，在最靠近来源的地方吸收发送给您网络的流量。流量到达最接近的 Cloudflare 数据中心后，就会通过一个安全保护堆栈，其中包括业界领先的 DDoS 缓解和云防火墙。详尽的<a href="https://support.cloudflare.com/hc/en-us/articles/360038696631-Understanding-Cloudflare-Network-Analytics" target="_blank">网络分析</a>、警报和报告让您深入了解所有流量和攻击模式。干净的流量通过 Anycast <a href="https://www.cloudflare.com/learning/network-layer/what-is-gre-tunneling/" target="_blank">GRE</a> 或 <a href="https://blog.cloudflare.com/anycast-ipsec/">IPsec</a> 隧道，或 <a href="https://blog.cloudflare.com/cloudflare-network-interconnect/">Cloudflare Network Interconnect</a> 转发到您的网络。Magic Transit 包括隧道之间的负载平衡和自动故障转移，以引导流量通过世界各地最健康的路径。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/03/image2-54.png" class="kg-image" alt="Magic Transit architecture: Internet BGP advertisement attracts traffic to Cloudflare’s network, where attack mitigation and security policies are applied before clean traffic is forwarded back to customer networks with an Anycast GRE tunnel or Cloudflare Network Interconnect.">
+		<figcaption><em>Magic Transit 架构：互联网 BGP 播发将流量吸引到 Cloudflare 的网络中，在 Cloudflare 的网络中应用攻击缓解和安全策略，然后将干净的流量通过Anycast GRE 隧道或 Cloudflare Network Interconnect 转发回客户网络。</em></figcaption>
+	</figure>
+	<p>“Magic”(魔法）存在于 Anycast 架构中： 我们网络上的每一台服务器都运行着每一项 Cloudflare 服务，因此流量可在其到达的任何地方得到处理。这意味着，我们网络的全部容量——截至本文发稿时为 121+Tbps ——都可以用于阻止最大规模的攻击。相比需要将流量路由到专门位置进行处理的传统“清洗中心”解决方案， 它还提供<a href="https://blog.cloudflare.com/magic-makes-your-network-faster/">巨大的性能优势</a>，并使网络工程师上手更加轻松：通过到 Cloudflare 的单一隧道自动将客户的基础设施连接到我们覆盖全球 250+ 城市的整个网络。</p>
+	<h3 id="-">有何更新？</h3>
+	<p>过去，Magic Transit 要求客户<a href="https://blog.cloudflare.com/bringing-your-own-ips-to-cloudflare-byoip/">携带自己的 IP 地址</a>——至少一个 C 类 IP 地址块——才能使用这个服务。这是因为 /24 是公共互联网上可通过 BGP 播发的最小前缀长度，后者我们为客户网络吸引流量的方式。</p>
+	<p>但并非所有客户都有这么大的 IP 空间，我们接触过很多人，他们要求获得 IP 保护的网络规模小于我们能代为向互联网播发的程度。今天，通过提供受 Magic Transit 保护、Cloudflare 代管的 IP 空间，我们将 Magic Transit 的可用性扩展到拥有较小网络的客户。从现在开始，您可以将网络流量引导到专用的静态 IP 地址，并获得 Magic Transit 的所有好处，包括业界领先的 DDoS 保护、可见性、性能和韧性。</p>
+	<p>让我们讨论一些利用 Magic Transit 来保护和加速任何网络的新方法。</p>
+	<h3 id="--1">一致的跨云安全性</h3>
+	<p>采用混合云或多云策略的组织难以在不同环境之间维持一致的安全管控。安全团队过去只需要在一个数据中心管理单一防火墙硬件设备，但现在面对来自不同提供商——物理、虚拟和基于云的——多种控制，全部具备不同的能力和管控机制。</p>
+	<p>Cloudflare 是跨混合云部署的单一控制平面，让您能够从一个地方管理安全策略，为您的整个环境获得一致的保护，并对您的流量和攻击模式获得深入了解。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/03/image5-12.png" class="kg-image"></figure>
+	<h3 id="--2">保护任何大小的分支机构</h3>
+	<p>随着 DDoS 攻击日益频繁和多样化，攻击者在攻击手段上也越来越有创意。近年来，我们发现针对企业基础设施（包括内部应用程序）的攻击<a href="https://blog.cloudflare.com/tag/trends/">持续增长</a>。随着企业网络依赖于互联网的比例越来越高，组织需要对整个网络提供一致的保护。</p>
+	<p>现在，您可以使用受 Magic Transit 保护的 IP 空间覆盖任何网络位置——分支机构、商店、远程站点、场馆等等。组织也能将以上位置的<a href="https://blog.cloudflare.com/replace-your-hardware-firewalls-with-cloudflare-one/">传统硬件防火墙替换为</a>我们的内建云防火墙来过滤双向流量，并在短短数秒内将更改传播到全球。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/03/image4-9.png" class="kg-image"></figure>
+	<h3 id="-ip">让直播流保持在线，无需担忧泄露 IP</h3>
+	<p>通常而言，DDoS 攻击瞄准特定应用程序或网络，以影响某个互联网资源的可用性。但即使没有<em>托管</em>任何内容也会受到攻击，很多游戏玩家和主播就面临这种情况。与某个家庭网络相关的公共 IP 地址很容易被泄露，使得攻击者能够直接瞄准并破坏直播流。</p>
+	<p>作为主播，您现在可以通过一个受 Magic Transit 保护的 IP 地址路由来自自己家庭网络的流量。这意味着您不再需要担忧您的 IP 被泄露：瞄准您的攻击者会在距离他们最近的 Cloudflare 位置被拦截，远离您的家庭网络。您也不需担忧游戏受到影响：得益于 Cloudflare 的全球分布式互连网络，您可在不牺牲性能的情况下获得保护。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/03/image3-25.png" class="kg-image"></figure>
+	<h3 id="--3">立即开始使用</h3>
+	<p>这个解决方案今天推出；<a href="https://www.cloudflare.com/magic-transit/" target="_blank">了解更多信息</a>，或联系您的帐户团队以开始使用。</p>
+</div>

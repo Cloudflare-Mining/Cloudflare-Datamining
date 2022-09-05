@@ -1,0 +1,124 @@
+<div class="post-content lh-copy gray1">
+	<p>最近，在布拉格Linux网络会议<a href="https://www.netdevconf.org/0x13/schedule.html" target="_blank">Netdev 0x13</a>上，我做了<a href="https://netdevconf.org/0x13/session.html?panel-industry-perspectives" target="_blank">一个简短的演讲，题目是“Cloudflare上的Linux”</a>。<a href="https://speakerdeck.com/majek04/linux-at-cloudflare" target="_blank">演讲</a>最后主要是关于BPF（柏克莱封包过滤器）的。似乎，不管问题是什么——BPF都是答案。</p>
+	<p>下面是这次演讲的稍作调整的笔录。</p>
+	<hr>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/12/01_edge-network-locations-100.jpg" class="kg-image"></figure>
+	<p></p>
+	<p>在Cloudflare，我们在服务器上运行Linux。我们运营两类数据中心：大型“核心”数据中心，用以处理日志，分析攻击，计算分析；以及“边缘”服务器机群，从全球180个（截至19年10月为190多个）位置交付客户内容。</p>
+	<p>在这次演讲中，我们将重点讨论“边缘”服务器。在这里，我们使用最新的Linux特性，优化性能，并深切关注DoS（拒绝服务攻击）的弹性。</p>
+	<hr>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/12/image-9.png" class="kg-image"></figure>
+	<p></p>
+	<p>由于我们的网络配置，我们的边缘服务很特别——我们广泛使用anycast（任播）路由。任播意味着所有数据中心都公布相同的IP地址集。</p>
+	<p>这种设计有很大的优势。首先，它保证了最终用户的最佳速度。无论身处何处，您都可以到达最近的数据中心。并且，任播帮助我们分散DoS流量。在遭受攻击过程中，每个位置接收的流量仅占总流量的一小部分，因此我们可以更容易地提取和过滤掉不需要的流量。</p>
+	<hr>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/12/03_edge-network-uniform-software-100-1.jpg" class="kg-image"></figure>
+	<p></p>
+	<p>任播使我们能够在所有边缘数据中心保持统一的网络设置。我们在数据中心内部应用了相同的设计——我们的软件堆栈在边缘服务器上是统一的。每一个服务器上都运行着所有的软件。</p>
+	<p>原则上，每台机器都能处理所有的任务——我们运行着许多不同的、要求很高的任务。我们有完整的HTTP栈、神奇的Cloudflare Workers、两组DNS服务器——权威DNS和解析器，以及许多其他的面向公众的应用程序，如Spectrum和Warp。</p>
+	<p>尽管每台服务器都运行着所有的软件，但请求通常也会在堆栈的旅程中跨越许多机器。例如，在处理HTTP请求的5个阶段中，每个阶段都有不同的机器进行处理。</p>
+	<hr>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/12/image-23.png" class="kg-image"></figure>
+	<p></p>
+	<p>让我向您介绍入站数据包处理的早期阶段：</p>
+	<p>（1）首先，数据包到达我们的路由器。路由器执行ECMP（等价多路径路由），并将数据包转发到我们的Linux服务器上。我们使用ECMP将每个目标IP分布到至少16台机器上。这是一种基本的负载均衡技术。</p>
+	<p>（2）在服务器上，我们使用XDP eBPF接收数据包。在XDP中，我们执行两个阶段。首先，我们运行大容量的DoS缓解措施，丢弃属于非常大的第3层攻击的数据包。</p>
+	<p>（3）然后，同样在XDP中，我们执行第4层负载均衡。所有的非攻击包都在计算机之间重定向。这是用来解决ECMP问题的，为我们提供了精细的负载均衡，并允许我们自然而正常地关闭服务器的服务。</p>
+	<p>（4）重定向之后，数据包到达指定的机器。此时，它们被普通的Linux网络堆栈接收，通过常规的iptables防火墙，并被分派到合适的网络套接字。</p>
+	<p>（5）最后，数据包被应用程序接收。例如，HTTP连接由“协议”服务器处理，该服务器负责执行TLS加密和处理HTTP、HTTP/2和QUIC协议。</p>
+	<p>在请求处理的早期阶段，我们使用了最酷的Linux新功能。我们可以将有用的现代功能分为三类：</p>
+	<ul>
+		<li>DoS处理</li>
+		<li>负载均衡</li>
+		<li>套接字分配</li>
+	</ul>
+	<hr>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/12/image-25.png" class="kg-image"></figure>
+	<p></p>
+	<p>让我们更详细地讨论DoS处理。如前所述，ECMP路由之后的第一步是Linux的XDP堆栈，其中，我们运行DoS缓解措施。</p>
+	<p>从历史上看，我们对容量攻击的缓解是用经典的BPF和iptables样式的语法表示的。最近，我们对它们进行了调整，从而在XDP eBPF环境中执行，事实证明这非常困难。一起来看看我们冒险的经历吧：</p>
+	<ul>
+		<li><a href="https://blog.cloudflare.com/l4drop-xdp-ebpf-based-ddos-mitigations/">L4Drop: XDP &nbsp; &nbsp; &nbsp;DDoS缓解</a></li>
+		<li><a href="https://blog.cloudflare.com/xdpcap/">xdpcap: XDP数据包捕获</a></li>
+		<li>Arthur Fabre的演讲：<a href="https://netdevconf.org/0x13/session.html?talk-XDP-based-DDoS-mitigation" target="_blank">基于XDP的DoS缓解</a></li>
+		<li><a href="https://netdevconf.org/2.1/papers/Gilberto_Bertin_XDP_in_practice.pdf" target="_blank">实践中的XDP：将XDP集成到我们的DDoS缓解通道中</a> (PDF)</li>
+	</ul>
+	<p>在这个项目中，我们遇到了许多eBPF/XDP限制。其中之一是缺乏并发原语。实现无竞争令牌桶之类的东西非常困难。后来，我们发现<a href="http://vger.kernel.org/lpc-bpf2018.html#session-9" target="_blank">Facebook工程师Julia Kartseva</a>遇到了同样的问题。在2月份，这个问题已经通过引入bpf_spin_lock helper得到了解决。</p>
+	<hr>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/12/image-26.png" class="kg-image"></figure>
+	<p></p>
+	<p>虽然我们现代的容量DoS防御是在XDP层完成的，但我们仍然依赖iptables来减轻应用层（第7层）的影响。在这里，更高级别防火墙的特性起着很大的作用：connlimit、hashlimit和ipset。我们还使用xt_bpf iptables模块在iptables中运行cBPF，从而匹配数据包有效负载。我们以前讨论过这个问题：</p>
+	<ul>
+		<li><a href="https://speakerdeck.com/majek04/lessons-from-defending-the-indefensible" target="_blank">抵御不可抗力的经验教训</a> (PPT)</li>
+		<li><a href="https://blog.cloudflare.com/introducing-the-bpf-tools/">介绍BPF工具</a></li>
+	</ul>
+	<hr>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/12/image-34.png" class="kg-image"></figure>
+	<p></p>
+	<p>在XDP和iptables之后，我们有了最后一个内核端DoS防御层。</p>
+	<p>考虑UDP缓解失败的情况。在这种情况下，可能会有大量的数据包到达应用程序UDP套接字。这可能会使套接字溢出，导致数据包丢失。这是有问题的——好的数据包和坏的数据包都会被随意丢弃。对于DNS这样的应用程序来说，这一后果是灾难性的。在过去，为了减少危害，我们为每个IP地址运行了一个UDP套接字。无法缓解的洪水攻击是很糟糕的，但至少它没有影响到其他服务器IP地址的流量。</p>
+	<p>如今，这种架构已不再适用。我们正在运行30,000多个DNS IP，并且运行同样数量的UDP套接字是不可行的。我们现代的解决方案是运行一个带有复杂eBPF套接字过滤器的UDP套接字——使用SO_ATTACH_BPFsocket选项。我们在以前的博客文章中讨论过在网络套接字上运行eBPF：</p>
+	<ul>
+		<li><u>eBPF，套接字，跳段距离，手动编写eBPF程序集</u></li>
+		<li><a href="https://blog.cloudflare.com/sockmap-tcp-splicing-of-the-future/">SOCKMAP——未来的TCP粘合</a></li>
+	</ul>
+	<p>上面提到的eBPF速率限制了数据包。它将状态（数据包计数）保存在eBPF映射中。我们可以确保一个被“淹没”的IP不会影响其他流量。这种做法效果很好，尽管在进行此项目期间，我们在eBPF验证程序中发现了一个令人担忧的错误：</p>
+	<ul>
+		<li><a href="https://blog.cloudflare.com/ebpf-cant-count/">eBPF无法计数</a><u>？！</u></li>
+	</ul>
+	<p>我猜在UDP套接字上运行eBPF并不如往常般简单。</p>
+	<hr>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/12/image-27.png" class="kg-image"></figure>
+	<p></p>
+	<p>除了DoS，在XDP中我们还运行了第4层负载均衡器层。这是一个新项目，我们还没作过多的谈论。无需深入探讨：在某些情况下，我们需要从XDP执行套接字查找。</p>
+	<p>这个问题相对简单——我们的代码需要查找从数据包中提取的5元组的“套接字”内核结构。这通常很简单——可以借助bpf_sk_lookup helper。不出所料的是，这里出现了一些复杂情况。其中有个问题是，当启用SYN cookie时，无法验证接收到的ACK包是否是三方握手的有效部分。我的同事Lorenz Bauer正在为这个特殊情况提供额外支持。</p>
+	<hr>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/12/image-28.png" class="kg-image"></figure>
+	<p></p>
+	<p>经过DoS和负载均衡层之后，数据包将被传递到通常的Linux TCP / UDP堆栈上。在这里，我们进行套接字分配——例如，将进入端口53的数据包传递到属于我们的DNS服务器的套接字上。</p>
+	<p>我们尽力使用原始Linux功能，但是当您在服务器上使用数千个IP地址时，事情会变得复杂。</p>
+	<p>使用<a href="https://blog.cloudflare.com/how-we-built-spectrum">“AnyIP”技巧</a>使Linux能够正确地路由数据包是相对比较容易的。但确保数据包被分发到正确的应用程序则是另一回事。不幸的是，标准的Linux套接字分派逻辑不够灵活，不能满足我们的需要。对于TCP/80这样的流行端口，我们希望在多个应用程序之间共享端口，每个应用程序在不同的IP范围内处理它。Linux不支持此功能。您可以在特定的IP或所有（使用0.0.0.0）的IP地址上调用bind()。</p>
+	<hr>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/12/image-29.png" class="kg-image"></figure>
+	<p></p>
+	<p>为了解决这个问题，我们开发了一个自定义内核补丁，其中添加了<a href="https://patchwork.ozlabs.org/patch/602916/" target="_blank">一个<code>SO_BINDTOPREFIX</code>socket选项</a>。顾名思义——它允许我们在选定的IP前缀上调用bind()。这解决了多个应用程序共享流行端口（如53或80）的问题。</p>
+	<p>然后我们遇到另一个问题。对于我们的Spectrum产品，我们需要监听所有总共65535个端口。运行这么多监听套接字不是一个好主意（请参阅<a href="https://blog.cloudflare.com/revenge-listening-sockets/">我们过去的战争故事博客</a>），因此我们不得不寻找另一种方法。经过一些实验，我们学会了使用一个鲜有人知的iptables模块——TPROXY——来达到这个目的。点击这里进行阅读：</p>
+	<ul>
+		<li><a href="https://blog.cloudflare.com/how-we-built-spectrum/">滥用Linux防火墙：允许我们构建Spectrum的黑客行为</a></li>
+	</ul>
+	<p>这个设置起到了作用，但我们不喜欢额外的防火墙规则。我们正在努力正确地解决这个问题——实际上我们扩展了套接字调度逻辑。您猜对了——我们希望利用eBPF扩展套接字分派逻辑。敬请期待我们的一些补丁。</p>
+	<hr>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/12/image-32.png" class="kg-image"></figure>
+	<p></p>
+	<p>然后还有一种使用eBPF改进应用程序的方法。最近，我们对使用SOCKMAP进行TCP粘合很感兴趣：</p>
+	<ul>
+		<li><a href="https://blog.cloudflare.com/sockmap-tcp-splicing-of-the-future/">SOCKMAP——未来的TCP粘合</a></li>
+	</ul>
+	<p>这项技术在改善我们许多软件堆栈的尾部延迟方面具有巨大潜力。当前的SOCKMAP实施尚未准备好完全发挥其作用，但它的潜力是巨大的。</p>
+	<p>同样，新的<a href="https://netdevconf.org/2.2/papers/brakmo-tcpbpf-talk.pdf" target="_blank">TCP-BPF又名BPF_SOCK_OPS</a>挂载为检查TCP流的性能参数提供了一种很好的方法。此功能对我们的性能表现团队非常有用。</p>
+	<hr>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/12/12_prometheus-ebpf_exporter-100.jpg" class="kg-image"></figure>
+	<p></p>
+	<p>一些Linux特性没有很好地发展成熟，我们需要解决它们。例如，我们正在突破网络指标的限制。不要误解我的意思——网络指标非常棒，但遗憾的是它们不够精细。像TcpExtListenDrops和TcpExtListenOverflows之类的事物被称为全局计数器，而我们需要在每个应用程序的基础上了解它。</p>
+	<p>我们的解决方案是使用eBPF探针直接从内核中抽取数字。我的同事Ivan Babrou编写了一个名为“ebpf_exporter”的Prometheus指标导出器，以便进行此操作。了解更多请继续阅读：</p>
+	<ul>
+		<li><a href="https://blog.cloudflare.com/introducing-ebpf_exporter/">ebpf_exporter简介</a></li>
+		<li><a href="https://github.com/cloudflare/ebpf_exporter" target="_blank">https://github.com/cloudflare/ebpf_exporter</a></li>
+	</ul>
+	<p>使用“ebpf_exporter”，我们可以生成所有形式的详细指标。它非常强大，并在许多情况下极大地帮助了我们。</p>
+	<hr>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/12/image-33.png" class="kg-image"></figure>
+	<p></p>
+	<p>在本次演讲中，我们讨论了在边缘服务器上运行的6层BPF：</p>
+	<ul>
+		<li>正在XDP eBPF上运行的批量DoS缓解措施</li>
+		<li>用于应用层攻击的Iptables xt_bpf cBPF</li>
+		<li>用于UDP套接字速率限制的SO_ATTACH_BPF</li>
+		<li>在XDP上运行的负载均衡器</li>
+		<li>用于运行应用帮助进程的eBPF，例如用于TCP套接字粘合的SOCKMAP和用于TCP测量的TCP-BPF</li>
+		<li>用于获取精细指标的“ebpf_exporter”</li>
+	</ul>
+	<p>我们才刚刚开始!很快，我们将在基于eBPF的套接字调度、在<a href="https://linux.die.net/man/8/tc" target="_blank">Linux TC（</a><u>流量控制）</u>层上运行的eBPF以及与控制组eBPF挂载的更多集成上完成更多的工作。然后，我们的SRE团队将维护不断增长的<a href="https://github.com/iovisor/bcc" target="_blank">BCC脚本</a>列表，这些脚本对于调试非常有用。</p>
+	<p>感觉就像Linux停止了开发新的API一样，所有的新特性都要通过eBPF挂载和帮助进程来实现。这很好，并且具有强大的优势。升级eBPF程序比重新编译内核模块更容易、更安全。如果没有eBPF，那么像TCP-BPF之类展现大量性能跟踪数据的东西可能是无法实现的。</p>
+	<p>有的人说：“软件正在占据世界”，但我想说：“BPF正在占据软件”。</p>
+</div>

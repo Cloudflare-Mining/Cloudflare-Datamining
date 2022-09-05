@@ -1,0 +1,48 @@
+<div class="post-content lh-copy gray1">
+	<p>Cloudflareの仕事の1つとして、物事を迅速にすることがあります。より応答性の高いWebサイト、アプリ、API、ネットワークは、コンバージョンとユーザー体験の向上に直結します。11月10日に、<a href="https://developers.google.com/search/blog/2020/11/timing-for-page-experience" target="_blank">Googleは</a>、2021年5月から検索エンジンの検索結果ページ（SERP）に結果をランク付けする際に、Webパフォーマンスとページ体験データを直接考慮に入れると発表しました。</p>
+	<p>具体的には、Google検索は、Core Web Vitalsのページスコアに基づいて結果を優先順位付けします。Core Web Vitalsは、CloudflareがGoogleと緊密に連携して確立した測定方法で、当社の分析ツールでサポートを実装しています。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image3-23.png" class="kg-image"></figure>
+	<p>出典：Googleの「Search Page Experience Graphic」クリエイティブコモンズライセンス（表示4.0国際）のもとに掲載を許諾されています。</p>
+	<p>The Core Web Vitals の指標は、Largest Contentful Paint（LCP、負荷の尺度）、First Input Delay (FID、インタラクティビティの尺度)、およびCumulative Layout Shift (CLS、視覚安定性の尺度) です。各ページは、ユーザーが知覚できるページ体験のマイルストーンに直接関連付けられます。この3つとも、当社のパフォーマンス製品を使用して改善することができます。また、この3つとも<a href="https://blog.cloudflare.com/ja-jp/start-measuring-web-vitals-with-browser-insights-ja-jp/">当社のCloudflare Browser Insights製品で測定することができ</a>、すぐに無料でプライバシー対応の<a href="https://www.cloudflare.com/ja-jp/web-analytics/" target="_blank">Cloudflare Web Analytics</a>で測定することができます。</p>
+	<p>SEOの専門家は、速いページがより良い検索ランキングにつながることについて常に懐疑的です。Googleによる最近の発表により、Cloudflareではお客様が3つのWebパフォーマンスを向上させるお手伝いができると自信をもって宣言できます。当社の製品スイートは、お客様のサイトを高速化し、サイトパフォーマンスに関するダイレクトな可視性を提供し（そのデータを使ってさらにパフォーマンスを改善し）、検索ランキングの改善と、ビジネスの成果に直結させることができます。</p>
+	<p><em>「Googleが、検索ランキングの仕組みについてより透明性を提供することは、オープンなWebにとってすばらしいことです。Cloudflareの分析スイートのようなツールで簡単に測定できる実際のメトリックスを使用して、Googleがランキングしているという事実を知るとGoogleの最近の発表がよりエキサイティングなものに感じられます。Cloudflareでは完全なツールセットを提供していて、サイトが非常に速くなり、『信じられないほど』直接測定することができます。」</em></p>
+	<p>– <strong>Matt Weinberg氏</strong>、<a href="https://www.happycog.com/" target="_blank">Happy Cog</a>（フルサービスデジタルエージェンシー）社長</p>
+	<h3 id="cloudflare-">Cloudflareがお客様のサイトを高速化します</h3>
+	<p>Cloudflareは、訪問者のページ体験を向上させるために、多様で簡単にデプロイできる製品セットを提供しています。当社ではページ速度を向上させるための、豊富で構成可能なツールセットを提供していますが、紙面に限りがあるため、本稿では割愛します。かの有名なフェルマーは、数学の問題を記述し、「余白が狭すぎて解答を記すことができない」と書き残して、他の数学者たちが彼の謎を解き明かすまでに300年の月日が経過することになりましたが、彼とは違って、筆者はCloudflareでどのようにWebパフォーマンスの問題を解決できるかについて説明したいと思います。重要なものをご紹介しましょう。</p>
+	<h3 id="caching-smart-routing">CachingとSmart Routing</h3>
+	<p>典型的なWebサイトは、画像や商品説明などの静的アセットと、ショッピングカートのコンテンツやユーザーのプロフィールページなどの動的コンテンツを組み合わせて構成されています。Cloudflareは顧客の静的コンテンツをエッジにキャッシュし、コンテンツがリクエストされるたびにオリジンサーバーへの完全なラウンドトリップは必要としません。エッジネットワークでは、コンテンツはユーザーにとって非常に近くに (物理的な用語では) 配置されるため、移動距離が短くなり、ページの読み込みが高速になります。アインシュタインのおかげです。</p>
+	<p>また、Argo Smart Routing は、動的コンテンツを必要とするページの読み込みを高速化するのに役立ちます。グローバルインターネット全体のルーティング決定をリアルタイムで分析し、最適化します。Wazeという自動車用ルート最適化アプリのインターネットトラフィック版のようなものだと考えてください。</p>
+	<p>Wazeで、どの道路が混雑またはブロックされているかを監視して、運転時にどのルートを通るとよいかがわかるように、Smart Routingでは、パケット損失、輻輳、および障害を回避することで、インターネットで効率的に接続をルーティングできます。</p>
+	<p>CachingとSmart Routingを使って、ページ速度と、Web Vitalsのような体験スコアを直接改善することができます。Googleの最近の発表によると、これにより、検索ランキングも改善することができます。</p>
+	<h3 id="-">コンテンツの最適化</h3>
+	<p>CachingとSmart Routingは、ユーザーからオリジンサーバーへのラウンドトリップを短縮および高速化するように設計されています。Cloudflareは、当社提供のコンテンツ<em>を最適化する</em>機能も提供しています。</p>
+	<p>Cloudflare画像のサイズ変更では、WebPやAVIFのような最新のファイル形式に画像を変換する機能を含む、画像のサイズ、品質、およびフォーマットをオンデマンドで調整することができます。</p>
+	<p>Cloudflareでは、エッジですでにキャッシュされた画像を最適化できるため、エンドユーザーにこの方法で画像を配信することで、帯域幅の費用を削減し、パフォーマンスを向上させることができます。</p>
+	<p>WordPressのオペレーターのために、当社では最近、プラットフォームの自動最適化（APO）を開始しました。APOを使用すると、Cloudflareはエッジネットワークからサイト全体にサービスを提供し、お客様のサイトを訪問した際のパフォーマンスが向上します。デフォルトでは、Cloudflareは静的コンテンツのみをキャッシュしますが、APOでは（HTMLのような）動的コンテンツをキャッシュすることもできるので、サイト全体がキャッシュから提供されます。これにより、オリジンからのラウンドトリップが削除され、TTFB やその他のサイトのパフォーマンスメトリクスが大幅に向上します。動的コンテンツのキャッシュに加えて、APOはサードパーティのスクリプトをキャッシュして、Cloudflareのエッジネットワークを離れるリクエストを行う必要性がさらに少なくなります。</p>
+	<h3 id="workers-workers-sites">WorkersとWorkers Sites</h3>
+	<p>お客様のオリジンへの負荷を軽減し、適切なコンテンツを適切なタイミングで適切なクライアントに提供することは素晴らしいことです。しかし、お客様がさらに一歩進んで、オリジンラウンドトリップを完全に排除したい場合はどうなりますか？<em>オリジンがなかったら</em>どうなりますか？シュレーディンガーの猫/サーバーの領域に入る前に、当社はこれを具体化することができます。オリジンサーバーがまったく関与することなく、当社のエッジからWebサイト全体にサービスを提供するツールを提供しています。Workers Sitesの詳細については、<a href="https://blog.cloudflare.com/ja-jp/workers-sites-ja-jp/">入門ブログ記事</a>を確認して、当社の<a href="https://workers.cloudflare.com/built-with" target="_blank">Built With Workers</a>プロジェクトギャラリーをご一読ください。</p>
+	<p>試験運用を重視する企業として、CloudflareのWebプロパティの多くはWorkers Sitesにデプロイされており、Web Vitalsを使用してお客様の体験を測定しています。</p>
+	<p>Workers Sitesを使用すると、1日に数十万の訪問者があり、当社のプラットフォーム上に構築している開発者にとって不可欠な<a href="https://developers.cloudflare.com/" target="_blank">developers.cloudflare.com</a>というサイトは、信じられないほどのWeb Vitalsスコアを獲得することができます。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image5-14.png" class="kg-image"></figure>
+	<p>これらのスコアは優れたもので、エッジ、静的Webサイト配信システム、分析ツールチェーンのパフォーマンスと使いやすさを示します。</p>
+	<h3 id="cloudflare-web-analytics-browser-insights-google-">Cloudflare Web AnalyticsとBrowser Insightsは、Googleが優先しているシグナルを直接測定します</h3>
+	<p>上記のように、<a href="https://blog.cloudflare.com/ja-jp/start-measuring-web-vitals-with-browser-insights-ja-jp/#:~:text=Web%20Vitals%20are%20a%20new,data%20from%20the%20whole%20web.">CloudflareではBrowser Insightsを使用してWebバイタルを直接測定することが容易になります</a>。CloudflareによってプロキシされたWebサイトのBrowser Insightsを有効にする場合は、Cloudflareダッシュボードの [Speed] タブを押せばワンクリックで完了します。そして、お客さまがCloudflareを介してサイトをプロキシ<em>していない</em>場合、Webバイタルズの測定は、<a href="https://blog.cloudflare.com/ja-jp/free-privacy-first-analytics-for-a-better-web-ja-jp/">今後無料で提供される予定の、Cloudflare Web分析製品</a>でサポートされ、これはあらゆるサイトで（Cloudflareのプロキシプの使用の有無に関わらず）使用することができます。</p>
+	<p>Web Vitals は、ユーザー体験を次の3つのコンポーネントに分けます</p>
+	<ul>
+		<li>読み込み : コンテンツが使用可能になるまでにどれくらいの時間が必要か？</li>
+		<li>インタラクティビティ： ユーザーがWebサイトを操作する際に、どれくらい応答性がよいか？</li>
+		<li>視覚的な安定性 ：読み込み中にどれくらいページが移動するか？</li>
+	</ul>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/image4-16.png" class="kg-image"></figure>
+	<p>この<a href="https://web.dev/vitals/" target="_blank">画像は</a> Googleが作成し共有した画像の複製で 、 <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">クリエイティブ・コモンズ表示4.0 ライセンス</a>に記載された規定に従って使用されます 。<br></p>
+	<p>これらの高レベルのコンポーネントをとらえる、ひとつの指標を作成することは困難です。ありがたいことに、Google Chromeチームのメンバーはこのことを考慮して、今年の初めに3つの「コア」なWeb Vitals 指標を導入しました：<a href="https://web.dev/lcp/" target="_blank">Largest Contentful Paint</a>、<a href="https://web.dev/fid/" target="_blank">First Input Delay</a>、そして<a href="https://web.dev/cls/" target="_blank">Comulative Layout Shift</a>です。</p>
+	<p>Cloudflare Browser Insightsは、Cloudflareダッシュボードからワンクリックで有効化することで、ユーザーのブラウザーで3つのメトリクスをすべて直接測定します。</p>
+	<p>一度有効化すれば、Browser Insightsは、HTMLページに JavaScript「ビーコン」を挿入することによって機能します。特定のページまたはホスト名のみを測定したい場合は、ビーコンがロードされる場所を制御できます。CSPバージョン 3を使用している場合は、nonce (存在する場合) を自動的に検出してスクリプトに追加します。</p>
+	<p>Browser Insightsの使用を開始するには、ダッシュボードの [Speed]タブに移動します。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/download.png" class="kg-image"></figure>
+	<p><em><em>blog.cloudflare.com 上の改善が必要なページを示すBrowser Insightsレポートの例</em></em></p>
+	<h3 id="--1">ページの高速化は皆にとって有益です</h3>
+	<p>Web Vitalsの測定が2021年5月に開始される検索ランキングで重要な鍵となるというGoogleの発表によって、Webサイトを高速化し、アクセス性を高めることがますます重要となっています。</p>
+	<p>キャッシングの最高の組み合わせであるArgo Smart Routing、コンテント最適化、Cloudflare Workers® 製品のようなCloudflareのパフォーマンスツールを使用することで、ページ体験やCore Web Vitalsの測定値を直接改善することができ、今なら、Google検索結果でお客様のページが表示される場所も直接向上させることができます。我々のことばを信じなくても構いません。当社の分析ツールは、Web Vitalsスコアを直接測定し、実際のユーザー体験を計測します。</p>
+	<p>お客様が迅速なWebサイトを構築し、<em>その速さ</em>を正確に把握し、結果としてGoogle検索で高いランクを獲得できることを嬉しく思っています 。向上させましょう！</p>
+</div>

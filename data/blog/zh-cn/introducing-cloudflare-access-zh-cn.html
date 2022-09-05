@@ -1,0 +1,34 @@
+<div class="post-content lh-copy gray1">
+	<p>告诉我这听起来是不是很熟悉：公司内部网络的任何连接都是可信的，而外部的任何连接都不可信。这是当今大多数企业使用的安全策略。问题是，一旦破坏了创建此边界的防火墙，网关或VPN服务器，攻击者就可以立即，轻松，以被受信任的状态访问所有内容。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/08/4859761438_0778df5e52_o-2.jpg" class="kg-image">
+		<figcaption><a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank">CC BY-SA 2.0</a> 图片来自 <a href="https://www.flickr.com/photos/wwarby/" target="_blank">William Warby</a></figcaption>
+	</figure>
+	<p></p>
+	<p>传统的安全边界模型还有第二个问题。它要么要求员工使用公司网络(即办公室)，要么使用VPN，这样做都会降低工作速度，因为每次页面加载都要额外往返于VPN服务器。即使经受了这些麻烦，VPN上的用户仍然非常容易受到钓鱼、中间人攻击和SQL注入攻击。</p>
+	<p>几年前，谷歌率先为自己的员工推出了一种名为BeyondCorp的解决方案。他们没有将内部应用程序保存在内部网中，而是让它们可以在internet上被访问。在谷歌，网络没有内外的概念。网络不是什么坚固的堡垒，一切都在互联网上，没有任何连接是可信的。每个人都必须证明自己就是他们所说的那个人。</p>
+	<p>Cloudflare的使命一直是让互联网巨头的工具大众化。今天，我们推出了<a href="https://www.cloudflare.com/products/cloudflare-access/?utm_medium=website&amp;utm_source=blog&amp;utm_campaign=access-launch" target="_blank">Cloudflare Access</a>：一种针对云和内部部署应用的无边界访问控制解决方案。它就像BeyondCorp，但您无需成为Google员工就能使用它。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/08/Access-blog-post-diagramv2-1.png" class="kg-image"></figure>
+	<p></p>
+	<h2 id="cloudflare-access-">Cloudflare Access是如何运作的？</h2>
+	<p>Access通过确保每一个请求都满足以下条件来作为统一的反向代理:</p>
+	<p><strong>身份验证：</strong> Access与大多数主要身份提供商（如Google，Azure Active Directory和Okta）集成在一起，这意味着您可以快速将现有身份提供商连接到Cloudflare，并使用已创建的群组和用户来访问您的Web应用程序。您还可以将<a href="https://blog.cloudflare.com/introducing-tls-client-auth/">TLS与客户端身份验证配合</a>使用，并仅将连接限制为唯一具有客户端证书的设备。Cloudflare将确保连接设备具有由公司CA签署的有效客户端证书，然后Cloudflare将对用户凭据进行身份验证，以授予其对内部应用程序的访问权限。</p>
+	<p><strong>授权：</strong>该解决方案为已经使用标识提供程序创建的组和个人用户配置访问策略，从而可以轻松地保护应用程序资源。例如，您可以使用Access确保只有您的公司员工可以访问您的内部看板，或者锁定您的wordpress站点的wp-admin。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/08/access-policy-1.png" class="kg-image">
+		<figcaption><strong>加密：</strong>由于Cloudflare使用HTTPS保证所有连接的安全，因此不需要VPN。</figcaption>
+	</figure>
+	<p></p>
+	<p>对于那些被环球旅行高管严厉批评过的所有IT管理员（被批评的原因是说VPN使互联网变慢）而言，Access是一个完美的解决方案。它使您能够通过控制面板和API提供以下功能来控制和监视对应用程序的访问：</p>
+	<ul>
+		<li>轻松更改访问策略</li>
+		<li>修改会话持续时间</li>
+		<li>撤消现有用户会话</li>
+		<li>集中记录审核和更改日志</li>
+	</ul>
+	<p>您希望使用更快的连接来替代VPN吗？您可以尝试将Access与<a href="https://www.cloudflare.com/argo/" target="_blank">Argo</a>配对。如果您要在内部应用程序前使用Access但不想将该应用程序应用到整个互联网，则可以将Access与<a href="https://www.cloudflare.com/products/cloudflare-warp/" target="_blank">Argo Tunnel</a>结合使用。Argo Tunnel将使Cloudflare成为您应用程序的互联网连接，因此您甚至不需要公共IP。如果您要在遗留应用程序前使用Access并保护该应用程序免受遗留软件中未修补的漏洞的影响，您只需单击启用<a href="https://www.cloudflare.com/waf/" target="_blank">Web应用程序防火墙</a>，Cloudflare将检查数据包并阻断具有漏洞的数据包。</p>
+	<p>Cloudflare Access允许员工从任何设备、任何地点和任何类型的网络上连接到企业应用程序。Access由Cloudflare全球120多个数据中心网络提供支持，能够提供足够的冗余度和DDoS保护，并且接近您的员工或公司可能位于任何位置的办公室。</p>
+	<h2 id="-">启用：</h2>
+	<p>设置Access仅需5-10分钟，您可以免费试用最多一个用户（超出这一数字的每位用户每月需要3美元，您可以<a href="https://www.cloudflare.com/plans/enterprise/contact/?utm_medium=website&amp;utm_source=product&amp;utm_campaign=access" target="_blank">联系销售部门</a>获得批量折扣）。Cloudflare Access现已完全可以供我们的企业客户使用，并向我们的免费、专业和商业计划客户开放beta公共测试版。若想要开始使用，<a href="https://cloudflare.com/a/access" target="_blank">请转到Cloudflare控制面板的“访问”选项卡</a>。</p>
+</div>

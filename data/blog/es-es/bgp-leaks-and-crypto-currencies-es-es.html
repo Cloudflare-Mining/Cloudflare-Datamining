@@ -1,0 +1,129 @@
+<div class="post-content lh-copy gray1">
+	<p>En las últimas horas, han aparecido una <a href="https://www.forbes.com/sites/thomasbrewster/2018/04/24/a-160000-ether-theft-just-exploited-a-massive-blind-spot-in-internet-security/" target="_blank">docena de noticias</a> sobre cómo un atacante ha intentado (y <a href="https://twitter.com/killeswagon/status/988795209361252357" target="_blank">tal vez ha logrado</a>) robar criptomonedas con una fuga del protocolo de puerta de enlace de frontera (Border Gateway Protocol o BGP por sus siglas en inglés).</p>
+	<p></p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/05/6818192898_c132e81824_z.jpg" class="kg-image">
+		<figcaption><a href="https://creativecommons.org/licenses/by/2.0/" target="_blank">Imagen</a> <a href="https://www.flickr.com/photos/77519207@N02/6818192898/in/photolist-EGDA1W-Ga795-6yLrTS-22PPou3-gi3qi-8S6vb4-bov2cY-dgBNxk-ba28ar-ebQUDY-acXCjq-zZppue-j8nDM9-78GCT9-zFTmT1-zFT1ME-a8iKNR-6Hbzuk-bmMV3X-6Hbt1t-HkBYhJ-h7mEUc-8kza6J-inYagg-PUtWHj-cMHLr-g1zfvy-emgRCp-262Z5jD-CLumQP-M13Veh-ur2aSQ-68UJQ1" target="_blank">CC BY 2.0</a> por elhombredenegro</figcaption>
+	</figure>
+	<p></p>
+	<h3 id="-qu-es-el-bgp"><strong>¿Qué es el BGP?</strong></h3>
+	<p>Internet se compone de rutas. Para el resolutor DNS <a href="https://cloudflare-dns.com/" target="_blank"><strong>1.1.1.1</strong></a>, le decimos al mundo que todas las IP en los rangos de 1.1.1.0 a 1.1.1.255 se pueden acceder en cualquier punto de presencia de Cloudflare.</p>
+	<p>Las personas que no tienen un <a href="https://blog.cloudflare.com/think-global-peer-local-peer-with-cloudflare-at-100-internet-exchange-points/">enlace directo a nuestros enrutadores</a> reciben la ruta a través de los proveedores de tránsito, que entregarán paquetes a esas direcciones conectadas a Cloudflare y al resto de Internet.</p>
+	<p>Así es el funcionamiento normal de Internet.</p>
+	<p>Hay autoridades (Registros Regionales de Internet) encargadas de la distribución de direcciones IP para evitar que haya personas que usen el mismo espacio de direcciones. Estas autoridades son <a href="https://www.iana.org/" target="_blank">IANA</a>, <a href="https://www.ripe.net/" target="_blank">RIPE</a>, <a href="https://www.arin.net/" target="_blank">ARIN</a>, <a href="https://www.lacnic.net/" target="_blank">LACNIC</a>, <a href="https://www.apnic.net/" target="_blank">APNIC</a> y <a href="https://www.afrinic.net/" target="_blank">AFRINIC</a>.</p>
+	<h3 id="-qu-es-una-fuga-de-bgp"><strong>¿Qué es una fuga de BGP?</strong></h3>
+	<p></p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/05/6385512087_802c680220_z.jpg" class="kg-image">
+		<figcaption><a href="https://creativecommons.org/licenses/by/2.0/" target="_blank">Imagen</a> <a href="https://www.flickr.com/photos/magnus_d/6385512087/" target="_blank">CC BY 2.0</a>, por Magnus D</figcaption>
+	</figure>
+	<p></p>
+	<p>La definición amplia de fuga de BGP sería un espacio IP anunciado por alguien sin permiso del dueño del espacio. Cuando un proveedor de tránsito recoge el anuncio de Cloudflare de 1.1.1.0/24 y lo anuncia a Internet, le permitimos que lo haga. También comprueba, utilizando la información del Registro Regional de Internet, que solo Cloudflare puede anunciarlo.</p>
+	<p>Sin embargo, puede ser difícil verificar todos los anuncios. Especialmente cuando hay <strong>más de 700 000</strong> rutas en Internet y cadenas de proveedores que intercambian tráfico entre rutas.</p>
+	<p>Por su naturaleza, las fugas de ruta están localizadas. Cuanto más localmente conectado estás, menor es el riesgo de aceptar una ruta fugada.</p>
+	<p>Para que se acepte en lugar de una ruta legítima, la ruta debe tener:</p>
+	<ul>
+		<li>Un prefijo más pequeño (10.0.0.1/32 = 1 IP vs. 10.0.0.0/24 = 256 IP)</li>
+		<li>Mejores métricas que un prefijo con la misma longitud (ruta de acceso más corta)</li>
+	</ul>
+	<p>La causa de una fuga de BGP suele ser un <strong>error de configuración</strong>: un enrutador que anuncia repentinamente las IP que ha aprendido. O prefijos más pequeños utilizados internamente para la ingeniería de tráfico que de repente se vuelven públicos.</p>
+	<p>Pero a veces se hace con intención <strong>maliciosa</strong>. El prefijo puede ser nuevamente enrutado para analizar pasivamente los datos. O alguien puede también configurar un servicio para responder ilegítimamente en su lugar. Esto ha <a href="https://blog.cloudflare.com/why-google-went-offline-today-and-a-bit-about/">sucedido ya</a>.</p>
+	<h3 id="-qu-ha-pasado-hoy"><strong>¿Qué ha pasado hoy?</strong></h3>
+	<p>Cloudflare mantiene un rango de colectores de BGP que reúnen información de BGP de cientos de enrutadores alrededor del planeta.</p>
+	<p>Aproximadamente entre las <strong>11:05:00 y las 12:55:00 (UTC) de hoy</strong> vimos los siguientes anuncios:</p>
+	<p></p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>BGP4MP|04/24/18 11:05:42|A|205.251.199.0/24|10297
+BGP4MP|04/24/18 11:05:42|A|205.251.197.0/24|10297
+BGP4MP|04/24/18 11:05:42|A|205.251.195.0/24|10297
+BGP4MP|04/24/18 11:05:42|A|205.251.193.0/24|10297
+BGP4MP|04/24/18 11:05:42|A|205.251.192.0/24|10297
+...
+BGP4MP|04/24/18 11:05:54|A|205.251.197.0/24|4826,6939,10297
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p></p>
+	<p>Esos son más anuncios específicos de los rangos:</p>
+	<ul>
+		<li><code>205.251.192.0/23</code></li>
+		<li><code>205.251.194.0/23</code></li>
+		<li><code>205.251.196.0/23</code></li>
+		<li><code>205.251.198.0/23</code></li>
+	</ul>
+	<p>Este espacio IP está asignado a <strong>Amazon</strong> (AS16509). Pero el número de sistema autónomo que lo anunció era <strong>eNet Inc</strong> (AS10297) a sus homólogos y lo envió a <strong>Hurricane Electric</strong> (AS6939).</p>
+	<p>Esas IP son para<a href="https://ip-ranges.amazonaws.com/ip-ranges.json" target="_blank">los servidores de DNS de la Ruta 53 de Amazon</a>. Cuando haces una consulta a una de sus zonas de cliente, esos servidores contestarán.</p>
+	<p>Durante la fuga de dos horas, los servidores en ese rango de IP solo respondieron a las consultas a <strong>myetherwallet.com</strong>. Mientras que algunas personas notaron <a href="https://puck.nether.net/pipermail/outages/2018-April/011257.html" target="_blank">SERVFAIL</a>.</p>
+	<p>Cualquier resolutor de DNS al que se le pidieran nombres gestionados por la Ruta 53 preguntaría a los servidores autoritativos que habían sido tomados mediante la fuga de BGP. Esto dañó los resolutores de DNS cuyos enrutadores habían aceptado la ruta.</p>
+	<p>También al <a href="https://cloudflare-dns.com/" target="_blank">resolutor de DNS Cloudflare 1.1.1.1</a>. Nos afectó en Chicago, Sídney, Melbourne, Perth, Brisbane, Cebú, Bangkok, Auckland, Muscat, Yibuti y Manila. En el resto del mundo, 1.1.1.1 funcionaba normalmente.</p>
+	<figure class="kg-card kg-embed-card">
+		<blockquote class="twitter-tweet">
+			<p lang="en" dir="ltr">BGP hijack this morning affected Amazon DNS. eNet (AS10297) of Columbus, OH announced the following more-specifics of Amazon routes from 11:05 to 13:03 UTC today:<br>205.251.192.0/24<br>205.251.193.0/24<br>205.251.195.0/24<br>205.251.197.0/24<br>205.251.199.0/24</p>— InternetIntelligence (@InternetIntel) <a href="https://twitter.com/InternetIntel/status/988792927068610561?ref_src=twsrc%5Etfw" target="_blank">April 24, 2018</a>
+		</blockquote>
+		<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+	</figure>
+	<figure class="kg-card kg-embed-card">
+		<blockquote class="twitter-tweet">
+			<p lang="en" dir="ltr">Correction: the BGP hijack this morning was against AWS DNS not Google DNS. <a href="https://t.co/gp3VLbImpX" target="_blank">https://t.co/gp3VLbImpX</a></p>— InternetIntelligence (@InternetIntel) <a href="https://twitter.com/InternetIntel/status/988841601400270848?ref_src=twsrc%5Etfw" target="_blank">April 24, 2018</a>
+		</blockquote>
+		<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+	</figure>
+	<p>Por ejemplo, la siguiente consulta te devolverá IP legítimas de Amazon:</p>
+	<p></p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>$ dig +short myetherwallet.com @205.251.195.239
+54.192.146.xx
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p></p>
+	<p>Pero durante el secuestro, devolvía IP asociados con un <strong>proveedor ruso</strong>(AS48693 y AS41995). No tenías que aceptar la ruta secuestrada para ser víctima del ataque, solo usar un resolutor DNS que estuviera dañado.</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/Screen-Shot-2018-04-24-at-1.55.12-PM.png" class="kg-image"></figure>
+	<p></p>
+	<p>Si estabas usando HTTPS, el sitio web falso habría mostrado un certificado TLS firmado por una autoridad desconocida (el dominio que aparecía en el certificado era correcto pero estaba autofirmado). La única forma de que este ataque funcionara sería continuar y aceptar el certificado incorrecto. Desde ese momento, todo lo que enviaras estaría cifrado pero el atacante tendría las claves.</p>
+	<p>Si ya habías iniciado sesión, tu navegador enviaría los datos de inicio de sesión en la cookie. Si no, tu nombre de usuario y contraseña se enviarían si los teclearas en una página de inicio de sesión.</p>
+	<p>Una vez el que atacante tenía los datos de inicio de sesión, los utilizaban en el sitio web legítimo para transferir y robar Ethereum.</p>
+	<h3 id="resumen-en-im-genes"><strong>Resumen en imágenes</strong></h3>
+	<p>Caso normal</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/Slide1.png" class="kg-image"></figure>
+	<p>Después de una fuga de ruta de BGP</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/Slide2.png" class="kg-image"></figure>
+	<p></p>
+	<h3 id="regiones-afectadas"><strong>Regiones afectadas</strong></h3>
+	<p>Como se mencionó anteriormente, <strong>AS10279</strong> anunció esa ruta. Pero solo afectó a algunas regiones. Hurricane Electric tiene una fuerte presencia en <strong>Australia</strong>, sobre todo debido a los costes de Internet. <strong>Chicago</strong> se vio afectada porque AS10279 tiene presencia física por emparejamiento directo.</p>
+	<p>El siguiente gráfico muestra el número de paquetes recibidos en las regiones afectadas y no afectadas (eje Y normalizado). La caída se debe a que el servidor autoritativo ya no respondía a nuestras peticiones (solo respondía a un sitio web y todos los demás dominios de Amazon eran ignorados).</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/Screen-Shot-2018-04-24-at-1.38.03-PM.png" class="kg-image"></figure>
+	<p></p>
+	<p>Otros tránsitos utilizados por eNet (CenturyLink, Cogent y NTT) no parecían haber aceptado esta ruta: una razón podría ser que tuvieran filtros o Amazon como cliente.</p>
+	<p>eNet proporciona servicios IP, así que uno de sus clientes podría haberlo anunciado.</p>
+	<h3 id="-alguien-tiene-la-culpa"><strong>¿Alguien tiene la culpa?</strong></h3>
+	<p>Como hay muchos actores implicados, es difícil determinar la culpa. Actores implicados:</p>
+	<ul>
+		<li>El proveedor de servicios de Internet que anunció una subred que no poseía.</li>
+		<li>Los proveedores de tránsito que no revisaron el anuncio antes de retransmitirlo.</li>
+		<li>Los proveedores de servicios de Internet que aceptaron la ruta.</li>
+		<li>La falta de protección de los resolutores DNS y la autoridad.</li>
+		<li>El sitio web de phishing alojado en proveedores de Rusia.</li>
+		<li>El sitio web que aplicó certificados TLS legítimos.</li>
+		<li>El usuario que hizo clic en continuar a pesar de que el certificado TLS no era válido.</li>
+	</ul>
+	<p>Al igual que una <strong>cadena de bloques</strong>, un cambio de red suele ser visible y se archiva. RIPE mantiene una <a href="https://ripe.net/ris/" target="_blank">base de datos para este uso</a>.</p>
+	<h3 id="-podr-amos-arreglarlo"><strong>¿Podríamos arreglarlo?</strong></h3>
+	<p>Es una pregunta difícil de responder. Hay propuestas para asegurar el BGP:</p>
+	<p>Pueden añadirse algunos términos a las bases de datos de los Registros Regionales de Internet, por lo que se puede generar una lista de fuentes permitidas:</p>
+	<p></p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>$ whois -h whois.radb.net ' -M 205.251.192.0/21' | egrep '^route:|^origin:|source:' | paste - - - | sort
+route:      205.251.192.0/23	origin:     AS16509	source:     RADB
+route:      205.251.192.0/23	origin:     AS16509	source:     REACH
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p></p>
+	<p>Pueden crearse registros RPKI/ROA con el Registro Regional de Internet como fuente fiable con respecto a la ruta de acceso a una ruta, aunque no todo el mundo cree esos registros o los valide. IP y BGP se crearon hace unas décadas, teniendo en cuenta diversos requisitos en cuanto a la integridad y autenticidad (menos rutas).</p>
+	<p>Pueden hacerse algunas cosas en los niveles superiores de la pila de red.</p>
+	<p>En <strong>DNS</strong>, puedes utilizar <a href="https://en.wikipedia.org/wiki/Domain_Name_System_Security_Extensions" target="_blank">DNSSEC</a> al firmar tus registros. Las IP devueltas por DNS falsos no se habrían firmado ya que no tienen las claves privadas.</p>
+	<p>Si utilizas Cloudflare como DNS, puedes habilitar DNSSEC con <a href="https://cloudflare.com/a/dns" target="_blank">unos clics en el panel</a>.</p>
+	<p>En <strong>HTTPS</strong>, tu navegador comprobará el certificado TLS proporcionado por el sitio web. Si se habilita <a href="https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security" target="_blank">HSTS</a>, el navegador requerirá un certificado válido todo el tiempo. La única manera de generar un certificado legítimo de TLS para un dominio sería dañar la caché de un resolutor DNS sin DNSSEC de la autoridad de certificación.</p>
+	<p><a href="https://en.wikipedia.org/wiki/DNS-based_Authentication_of_Named_Entities" target="_blank">DANE</a> proporciona una manera de asignar certificados a un nombre de dominio utilizando DNS.</p>
+	<p><a href="https://developers.cloudflare.com/1.1.1.1/dns-over-https/" target="_blank">DNS mediante HTTPS</a> también permitiría validar que estás hablando con el resolutor correcto si la fuga se produjera en los resolutores DNS en lugar de en la autoridad DNS.</p>
+	<p>No existe ninguna solución perfecta y única. Cuantas más protecciones se habiliten, más difícil será que un actor malicioso realice este tipo de ataque.</p>
+	<p>Etiquetado con <a href="https://blog.cloudflare.com/tag/bgp/">BGP</a>, <a href="https://blog.cloudflare.com/tag/crypto/">Criptografía</a>, <a href="https://blog.cloudflare.com/tag/tls/">TLS</a>, <a href="https://blog.cloudflare.com/tag/https/">HTTPS</a>, <a href="https://blog.cloudflare.com/tag/security/">Seguridad</a>, Vulnerabilidades<br></p>
+</div>

@@ -1,0 +1,111 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/07/image4-4.png" class="kg-image" alt="Hero image of laptop displaying analytics dashboard"></figure>
+	<p>ここ数週間、世界中で重要なインフラストラクチャを中断させる大規模なランサムウェアとランサムDDoS（分散サービス妨害）攻撃キャンペーンを目の当たりにしました。その中には、石油パイプラインの最大手や世界最大の食肉加工業者への攻撃もありました。今四半期の始め、ベルギーでは政府および国会のWebサイトやその他のサービスを含めて200以上の企業が、<a href="https://www.welivesecurity.com/2021/05/05/belgium-government-websites-offline-ddos-attack/" target="_blank">DDoS攻撃</a>を受けました。</p>
+	<p>そして7月4日、アメリカ人の大部分が独立記念日を祝っているときに、<a href="https://www.nytimes.com/2021/07/02/technology/cyberattack-businesses-ransom.html" target="_blank">何百社もの米国企業</a>がランサムウェア攻撃を受け、ビットコインで7000万米ドルが要求されました。これはロシアのランサムウェアグループ<a href="https://en.wikipedia.org/wiki/REvil" target="_blank">REvil</a>の関連グループと見られている攻撃者が、これまで知られていなかった<a href="https://csirt.divd.nl/2021/07/03/Kaseya-Case-Update/" target="_blank">IT管理ソフトウェアの脆弱性</a>を悪用した攻撃で、学校や小規模な公的機関、旅行・レジャー企業、信用組合が狙われました。ランサムウェアやランサムDDoSの脅威は目新しいものではありませんが（2021年第1四半期の<a href="https://blog.cloudflare.com/targeted-ransomware-attack/">ランサムウェア</a>と<a href="https://blog.cloudflare.com/ransom-ddos-attacks-target-a-fortune-global-500-company/">ランサムDDoS</a>をお読みください）、最近の攻撃はワイナリーからプロのスポーツチーム、フェリーサービス、そして病院まで様々なインターネットプロパティを標的としています。重要な問題として扱われなかったこれまでとは違い、今ではニュースの見出しになるほど私たちの生活に影響を与えるようになりました。実際に、最近の攻撃によって、ランサムウェアとDDoSは<a href="https://www.nytimes.com/2021/06/15/world/europe/biden-putin-cyberweapons.html" target="_blank">バイデン米大統領の国家安全保障の重要議題</a>になっています。</p>
+	<p>2021年第2四半期にCloudflareのネットワーク上で観察されたDDoS 攻撃の傾向は、グローバルなサイバー脅威の全体像を反映しています。2021年第2四半期に観察されたDDoS 攻撃のハイライトをご紹介します。</p>
+	<ul>
+		<li>今回の調査で、DDoS 攻撃の標的となったお客様の11%以上が今年前半の6か月に脅威または身代金要求を事前に受け取ったと報告しています。強力なDDoS 攻撃を受けているお客様が緊急にオンボーディングしたケースを2020年下半期と比較すると、2021年上半期は41.8%も増加しています。</li>
+		<li>行政機関/公的部門のWebサイトを標的とするHTTP DDoS 攻撃が491%増加しました。これは、DDoS 活動が前期比684%の増加となったコンシューマーサービスに続き、2番目となっています。</li>
+		<li>中国は、国内で発生するDDoS活動が最も多い国であり続けています。中国で送信されるHTTPリクエスト1,000件のうち7件がWebサイトを標的とするHTTP DDoS 攻撃の一部であり、中国にある当社のデータセンターでインジェストしたIPパケットは100個に3個以上の割合で、無防備なネットワークインフラストラクチャを標的とするネットワーク層DDoS 攻撃の一端でした。</li>
+		<li>新たな脅威には、前期比123%増の<a href="https://en.wikipedia.org/wiki/QOTD" target="_blank">今日の引用句</a>（QOTD）プロトコルを悪用するアンプリフィケーションDDoS 攻撃が含まれています。さらに、QUICプロトコルの採用が増加を続けるため、<a href="https://www.cloudflare.com/ja-jp/learning/ddos/what-is-a-quic-flood/" target="_blank">QUICに対する攻撃</a>も増加し、2021年第2四半期は前期比109%の増加を記録しました。</li>
+		<li>10〜100Gbpsまでのネットワーク層攻撃数は、前期比で21.4%増加しています。攻撃を受けたお客様の中に、アメリカのゲーミング会社<a href="https://hypixel.net/" target="_blank">Hypixel</a>があります。Hypixelは、620Gbpsを超える強力なDDoS 攻撃キャンペーン中でも、ゲーマーユーザーに対するダウンタイムはゼロで、パフォーマンスペナルティもゼロでオンラインを維持しました。詳細なストーリーはこちらでお読みください。</li>
+	</ul>
+	<p>世界中すべての業界における攻撃インサイトを見るには、Cloudflareのインテラクティブ<a href="https://radar.cloudflare.com/ddos-2021-q2" target="_blank">レーダーダッシュボード</a>をご確認ください。</p>
+	<h3 id="-ddos-">アプリケーション層DDoS攻撃</h3>
+	<p><a href="https://www.cloudflare.com/ja-jp/learning/ddos/application-layer-ddos-attack/" target="_blank">アプリケーション層DDoS攻撃</a>のうち、特にHTTP DDoS 攻撃は正当なユーザーリクエスト処理ができないようにすることで、HTTPサーバーの中断を狙います。処理能力を超える量のリクエストで攻め立てられた場合、サーバーは正当なリクエストをドロップせざるを得なくなるか、クラッシュすることさえあります。その結果、正当なユーザーに対してパフォーマンスペナルティやサービス拒否イベントが発生します。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/07/image9-2.png" class="kg-image" alt="Diagram showing how DDoS works"></figure>
+	<h3 id="-ddos--1">市場·業界別のDDoS攻撃活動</h3>
+	<p>攻撃を分析する際、「DDoSの活動」レートを計算します。これは、総攻撃数（攻撃+クリーン）に対する攻撃のトラフィックの割合です。この計算を使うと、データポイントを正常化できるため、たとえば、「大きいデータセンターの方がより多くのトラフィックに対処できる。ということは攻撃数も多い」というバイアスを回避することができます。</p>
+	<p>2021年第1四半期、コンシューマーサービスは最も標的となった業界です。その後に行政機関とマーケティング/広告業界が続きます。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/07/image9-5.png" class="kg-image" alt="Chart of industry data about DDoS attacks"></figure>
+	<h3 id="-ddos--2">配信元国別のDDoS活動</h3>
+	<p>Cloudflareのネットワーク上で観察したHTTP攻撃のオリジンを理解するために、攻撃HTTPリクエストを生成するクライアントの送信元（ソース）IP アドレスを見てみましょう。ネットワーク層攻撃とは違い、HTTP攻撃ではソースIPの<a href="https://www.cloudflare.com/ja-jp/learning/ddos/glossary/ip-spoofing/" target="_blank">スプーフィング</a>ができません。DDoSの活動レートが高い特定の国では、国内から大規模なボットネットが操作されていることがわかります。</p>
+	<p>自国の領土内で発生しているDDoS活動の割合に関しては、中国と米国がそれぞれ1位と2位にとどまっています。中国では、HTTPリクエストの1,000件に7件がHTTP DDoS 攻撃の一部である一方、米国ではHTTPリクエスト1,000件のうちほぼ5件が攻撃の一部でした。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/07/image15-1.png" class="kg-image" alt="Chart of source county data about DDoS attacks"></figure>
+	<h3 id="-ddos--3">攻撃対象となった国別のDDoS活動</h3>
+	<p>DDoS 攻撃の標的がどの国に存在しているのかを特定するために、当社のお客様の請求国別にDDoS活動を分析してみました。Cloudflareは、攻撃トラフィックに対して課金せず、<a href="https://blog.cloudflare.com/unmetered-mitigation/">2017年以降、定額で無制限のDDoS攻撃対策</a>を提供することで、業界の先駆けとなってきました。当社は、お客様の請求国と攻撃データを相互参照して、どの国が最も攻撃を受けているのかを特定できます。</p>
+	<p>2021年第2四半期で観察されたデータは、米国と中国の企業がHTTP DDoS 攻撃に最も標的とされたことを示しています。実際に、米国を拠点とする企業に向けられるHTTPリクエスト200件に1件が、DDoS 攻撃の一部でした。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/07/image12-2.png" class="kg-image" alt="Chart of target county data about DDoS attacks"></figure>
+	<h3 id="-ddos--4">ネットワーク層DDoS攻撃</h3>
+	<p>アプリケーション層攻撃は、エンドユーザーがアクセスを試みるサービスを実行するアプリケーション（<a href="https://www.cloudflare.com/ja-jp/learning/ddos/glossary/open-systems-interconnection-model-osi/" target="_blank">OSI参照モデル</a>のレイヤー7）を狙いますが、<a href="https://www.cloudflare.com/ja-jp/learning/ddos/layer-3-ddos-attacks/" target="_blank">ネットワークレイヤー攻撃</a>は、無防備なネットワークインフラストラクチャ（インラインルーターや他のネットワークサーバーなど）とインターネットのリンクそのものを攻撃対象とします。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/07/image8-3.png" class="kg-image" alt="The chart above shows the distribution of network-layer DDoS attacks in 2021 Q2.">
+		<figcaption>The chart above shows the distribution of network-layer DDoS attacks in 2021 Q2.</figcaption>
+	</figure>
+	<p>上のグラフは2021年第2四半期のネットワーク層DDoS 攻撃の分布を示しています。</p>
+	<h3 id="-">サイズ別（パケットレートとビットレート）の攻撃分布</h3>
+	<p>L3/4 DDoS 攻撃の規模を測定するために、様々な方法があります。1つは送信するトラフィックの量で、ビットレート（具体的にはギガビット/秒）で測定されます。もう1つは配信するパケット数を使い、パケットレート（具体的には、1秒あたりのパケット数）で測定されます。ビットレートが高い攻撃ではインターネットリンクを飽和状態にする一方で、パケットレートの高い攻撃ではルーターやその他のインラインハードウェアデバイスを過負荷状態に陥れようとします。</p>
+	<p>次は、攻撃サイズ別（ビットレートで）と月別の攻撃分布を示しています。グラフに示されるように、300Gbps超の攻撃はすべて、6月に観察されました。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/07/image17-1.png" class="kg-image" alt="The chart above shows the distribution of network-layer DDoS attacks in 2021 Q2."></figure>
+	<p>ビットレートについては、2021年第2四半期で観察された全DDoS 攻撃の大半が、500Mbpsを下回る攻撃でした。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/07/image1-11.png" class="kg-image" alt="The chart above shows the distribution of network-layer DDoS attacks in 2021 Q2."></figure>
+	<p>同様に、パケットレートの点から見ると、攻撃のほぼ94%が50Kpps未満でした。1~10 Mppsの攻撃は、観察されたすべてのDDoS 攻撃の1%にすぎませんが、この数字は前四半期に観察された値よりも27.5%高く、大きな攻撃も減少していないことを示唆しています。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/07/image16-1.png" class="kg-image" alt="The chart above shows the distribution of network-layer DDoS attacks in 2021 Q2."></figure>
+	<p>ニュースの見出しとなるような大規模な攻撃と比較すると500 Mbps未満と50Kppmの攻撃は「小さい」と言えるかもしれませんが、クラウドベースのDDoS攻撃対策サービスで保護されていないインターネットプロパティを大規模に中断させるのに、十分な威力を持つことに注意してください。多くの企業が、サービスプロバイダーが提供する1Gbps未満の帯域幅容量を持つアップリンクを使用しています。公開されているネットワークインターフェースも正当なトラフィックを送信とするなら、500Mbps未満のDDoS 攻撃でも、無防備なインターネットプロパティに危害を加えることができるということです。</p>
+	<h3 id="--1">攻撃時間別の分布</h3>
+	<p>Cloudflareは、DDoS 攻撃の大部分が1時間以上続かない状態が続いていることに気づいています。第2四半期、DDoS 攻撃の97%以上が1時間未満です。</p>
+	<p>短い攻撃は、DDoS検出システムによって検出されずにダメージを与える可能性があります。DDoSサービスは、手動で分析と軽減対策が行われており、この種の短い攻撃に対して役に立たない可能性があります。なぜなら、アナリストが攻撃のトラフィックの識別すら終えないうちに攻撃が終了してしまうためです。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/07/image7-2.png" class="kg-image" alt="The chart above shows the distribution of network-layer DDoS attacks in 2021 Q2."></figure>
+	<p>また、短い攻撃を使用して、ターゲットのサイバー防御体制に探りを入れることもできます。ダークウェブ上で広く普及している負荷テストツールと自動DDoSツールは、SYNフラッドなど短いバーストが生成するなどができ、異なる攻撃ベクトルを使用して、別の短い攻撃を続けることができます。これにより、サイバー攻撃者は大規模の攻撃をより大きなレートを使って、より長い攻撃期間で仕掛けるかどうかを決める前に（大規模攻撃にはコストがかかります）、ターゲットのセキュリティ体制を把握することができます。</p>
+	<p>他のケースでは、攻撃者がターゲット企業に対して、実際に後からダメージを与える攻撃力があることを、事前に示し警告するために、小さなDDoS攻撃を仕掛ける場合もあります。多くの場合、小規模の攻撃を仕掛けた後、ターゲット企業側に身代金を要求するメッセージが届きますが、これは、ネットワークインフラストラクチャをより徹底的に破壊する攻撃を回避させる見返りとして支払いを要求するものです。</p>
+	<p>だからこそ、常時稼働で自動化されたDDoS攻撃対策アプローチの必要なのです。手動による分析と軽減対策に依存するDDoSサービスは、この種の短い攻撃に対して役に立たない可能性があります。なぜなら、アナリストが攻撃のトラフィックの識別すら終えないうちに攻撃が終了してしまうからです。</p>
+	<h3 id="--2">攻撃ベクトル別の攻撃分布</h3>
+	<p>攻撃ベクトルは、攻撃者が利用する攻撃法を説明するために使われる用語です。</p>
+	<p>以前の四半期で観察した通り、SYNフラッドとUDPベースのプロトコルを使用する攻撃は、攻撃者が最もよく用いる方法であり続けています。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/07/image13-2.png" class="kg-image" alt="The chart above shows the distribution of network-layer DDoS attacks in 2021 Q2."></figure>
+	<p>では、<a href="https://www.cloudflare.com/ja-jp/learning/ddos/syn-flood-ddos-attack/" target="_blank">SYNフラッド</a>攻撃とはなんでしょうか。それはTCPプロトコルの基盤そのものを悪用するDDoS攻撃のことです。クライアントとサーバー間のステートフルなTCP接続は3ウェイ<a href="https://www.cloudflare.com/ja-jp/learning/ddos/glossary/tcp-ip/" target="_blank">TCPハンドシェイク </a>で始まります。クライアントは、初期接続リクエストパケットを同期フラッグ（SYN）で送信します。そして、サーバーが同期確認応答フラグ（SYN-ACK）を含めたパケットで応答します。最後にクライアントが、確認応答（ACK）パケットで応答します。この時点で接続が確立され、データは接続が終了するまで交換することができます。サービス拒否イベントを引き起こすために、攻撃者がこのステートフル処理を悪用する可能性があります。</p>
+	<p>SYNパケットを繰り返し送信することで、攻撃者はサーバーまたはTCP接続の状態を追跡するルーターの接続テーブルを過負荷にしようと試みます。ルーターは、SYN-ACKパケットで応答してから、所定の接続ごとに一定量のメモリを割り当て、クライアントが最終ACKで応答するのを偽装して待機します。ルーターのメモリを接続が占有してしまうと、ルーターは正規のクライアントにメモリを追加で割り当てることができなくなり、これがルーターのクラッシュを引き起こしたり、正規のクライアントによる接続に対応できなくします。サービス拒否イベントなどがその例です。</p>
+	<h3 id="--3">新たな脅威</h3>
+	<p>新たな脅威には、前期比で123%増加した<a href="https://en.wikipedia.org/wiki/QOTD" target="_blank">今日の引用句</a>（QOTD）サービスを悪用するアンプリフィケーションDDoS 攻撃が含まれます。QOTDは<a href="https://datatracker.ietf.org/doc/html/rfc865" target="_blank">RFC-865</a>（1983）で定義され、UDPプロトコル、またはTCPプロトコルのどちらかで送信できます。もともとデバッグ用に測定ツールとしてデザインされており、引用の具体的な構文はありません。しかし、RFCはASCII文字の使用を最大512文字までとして推奨しています。</p>
+	<p>さらに、UDPポートマップとエコー攻撃では前期比で107%も増加していることが確認されていますが、すべてが実に古い攻撃ベクトルです。これは攻撃者が古い方法や攻撃ツールを掘り起こして、保護システムを圧倒させようと試みていることを示しているかもしれません。</p>
+	<p>さらに、以前の四半期で確認したように<a href="https://blog.cloudflare.com/quic-version-1-is-live-on-cloudflare/">QUICプロトコル</a>の利用が増加し続けています。その結果として、QUICを使った攻撃、あるいはQUICのトラフィックが見られると予測した部分での非QUICトラフィックのフラッドおよびアンプリフィケーション攻撃が増加しています。2021年第2四半期、このタイプの攻撃が前期比で109%も増加しました。こうした傾向が続くのは、攻撃者がQUICを指定するポートと企業ネットワークとのゲートウェイを悪用し、脆弱性とセキュリティの抜け穴を探していることを示している可能性があります。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/07/image14-1.png" class="kg-image" alt="The chart above shows the distribution of network-layer DDoS attacks in 2021 Q2."></figure>
+	<h3 id="cloudflare-ddos-">Cloudflareデータセンターがある国別のDDoS活動</h3>
+	<p>2021年第2四半期、ハイチにあるデータセンターで最大のネットワーク層DDoS 攻撃トラフィックを観察しました。次いで、ブルネイ（パケット100個のうち、ほぼ3個が攻撃の一部）と中国です。</p>
+	<p>ネットワーク層DDoS 攻撃を分析する際、トラフィックはソースIPではなく、トラフィックが取り込まれたCloudflareエッジセンターのロケーションによって、バケットします。こうする理由は、攻撃者がネットワーク層攻撃を開始した時に、ソースIP アドレスを<a href="https://www.cloudflare.com/ja-jp/learning/ddos/glossary/ip-spoofing/" target="_blank">スプーフィング</a>しますが、これは攻撃ソースを難読化し、攻撃プロパティにランダム性を持たせるためで、単純なDDoS攻撃対策システムが攻撃をブロックしにくくなる可能性があるからです。したがって、スプーフィングされたソースIPに基づいて、送信元の国を割り出しても、スプーフィングされた国が明らかになるだけです。Cloudflareでは、攻撃が観察されたCloudflareのデータセンターのロケーションごとに攻撃データを表示することで、スプーフィングされたIPが直面する問題を解決することができます。当社には世界<a href="https://www.cloudflare.com/ja-jp/network" target="_blank">200都市以上</a>にデータセンターがあるため、当社のレポートには地理的な正確さが反映されます。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/07/image6-5.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/07/image11-3.png" class="kg-image"></figure>
+	<p>すべての地域と国を表示するには、<a href="https://radar.cloudflare.com/ddos-2021-q2%23ddos-activity-by-cloudflare-data-center-country" target="_blank">Radar DDoSレポートダッシュボードにあるインタラクティブマップ</a>をご覧ください。</p>
+	<h3 id="-ddos-ddos-">ランサムウェアとランサムDDoS（脅迫型DDoS）に関する注意事項—拡大するグローバル脅威</h3>
+	<p>ここ数週間、金銭を要求するサイバー脅威：<a href="https://blog.cloudflare.com/targeted-ransomware-attack/">ランサムウェア </a>と<a href="https://www.cloudflare.com/learning/ddos/ransom-ddos-attack/" target="_blank">ランサムDDoS</a>（RDDoS）の復活が目につきます。</p>
+	<h4 id="-ddos--5">では、ランサムウェアとランサムDDoSとは何なのか、この二つは何が違うのか、見ていきましょう。</h4>
+	<p>ランサムウェアは、企業のシステムとデータベースを暗号化し、アクセスも使用も不可能にする悪意のあるソフトウェアです。マルウェアは、<a href="https://www.cloudflare.com/ja-jp/learning/access-management/phishing-attack/" target="_blank">フィッシングメール</a>を送りつけて、企業のシステムに入り込みます。従業員がだまされて、メールにあるリンクをクリックしたり添付ファイルをダウンロードすると、マルウェアが従業員のデバイスにインストールされ、デバイスを暗号化し、企業のサーバーと他の従業員のデバイスのネットワーク全体に伝達されることもあります。攻撃者は、企業のシステムを復号化してからシステムにアクセスできる権限を取り戻すことを交換条件に、大抵ビットコインで金銭を要求してきます。</p>
+	<p>ランサムウェア攻撃とは違い、ランサムDDoS 攻撃は企業のシステムを暗号化せず、身代金を支払わなければ、システムをオフラインにすることが狙いです。ランサムDDoS 攻撃がさらに危険だと言われる理由は、攻撃者が攻撃実行のために企業の社内システムにアクセスする必要がないところです。しかし、強力なDDoS攻撃対策が機能していれば、DDoS 攻撃は企業に対しての影響はほとんどありません。</p>
+	<p>ランサムウェアとランサムDDoS 脅威の影響を受けているのは、金融業界、運輸、石油・ガス、消費財さらには教育や医療の分野まで、世界中のあらゆる業界です。</p>
+	<p>自らをFancy Lazarus、Fancy Bear、Lazarus Group、REvilと名乗るグループは、特定の期間までに身代金を支払わなければ、企業のWebサイトやネットワークインフラストラクチャに対してランサムウェアとランサムDDoS 攻撃を再び仕掛けます。DDoS脅威の場合、身代金要求を送りつける前に、示威行動として規模の小さいDDoS 攻撃を仕掛けてきます。示威行動としての攻撃は通常UDPを使い、所要時間はおよそ30~120分です。</p>
+	<p>身代金要求は通常、<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="5836373b18">[email&nbsp;protected]</a>、<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7e0d0b0e0e110c0a3e">[email&nbsp;protected]</a>、<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c9a1aca5b989">[email&nbsp;protected]</a>、<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="335f5654525f73">[email&nbsp;protected]</a>、<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="02636077716742">[email&nbsp;protected]</a>のようにオンラインで公開されている企業共通のグループメールエイリアスに送信されます。これは迷惑メールに分類されるものもたくさんあります。従業員が身代金要求メールを迷惑メールとして完全に無視し、企業の応答時間が長くなったことで、オンラインプロパティにさらに損害を与えることも多くなっています。</p>
+	<p>Cloudflareは、脅威や身代金要求を受け取った企業に次のことを推奨しています。</p>
+	<ol>
+		<li>パニックに陥らず、身代金を支払わない：身代金を支払うことは攻撃者を助長し、違法行為を金銭的に支援するだけです。また、身代金を支払っても、ネットワークが再度攻撃されないという保証はありません。</li>
+		<li><strong>法執行機関に連絡をする：</strong>受信した身代金要求メールのコピーやその他のログまたはパケットキャプチャを提供する準備をしてください。</li>
+		<li><strong>効果的なDDoS攻撃対策を稼働させる：</strong>強力な脅威が発生しても、クラウドベースのDDoS攻撃対策により素早くオンボードができて、セキュリティの専門家チームがしっかりとみなさんに寄り添うため、迅速かつ効果的にリスク軽減ができます。</li>
+	</ol>
+	<p><a href="https://www.cloudflare.com/ja-jp/ransom-ddos" target="_blank">こちらの短い動画</a>では、CloudflareのCTOであるJohn Graham-CummingがランサムDDoS 攻撃の脅威について話しています。</p>
+	<h3 id="cloudflare-ddos-hypixel-">Cloudflareは、大規模なDDoS 攻撃キャンペーンからHypixelを保護しています</h3>
+	<p>Cloudflareではこの四半期、身代金要求を受け取ったり強力なDDoS 攻撃を仕掛けられたりした新規のお客様と既存のお客様が迅速に（<a href="https://www.cloudflare.com/ja-jp/magic-transit/" target="_blank">Magic Transitサービス</a>に）オンボーディングできるように、チームが懸命に作業を行いました。</p>
+	<p>世界最大のMinecraftミニゲームサーバーの背後にある開発スタジオ、<a href="https://hypixel.net/" target="_blank">Hypixel Inc</a>もこうしたお客様です。Hypixelは、現在までにユニークログイン数が計2400万以上で、PCにおける同時プレーヤー数216,000人超の世界記録を持っており、チームは世界中の何百万人ものプレーヤーのエクスペリエンスの価値をさらに高めるために日々取り組んでいます。</p>
+	<p>ゲーミング業界は、最大規模の帯域幅消費型DDoS 攻撃の対象となることがよくあります。人気ブランドのHypixelは、必要以上に狙われてしまうのです。Hypixelのサーバー機能にとって、稼働時間と高い性能は基本です。ダウンタイムやラグが目立つと、ゲーマーが大量に離れてしまうことになります。</p>
+	<p>Hypixelは、大規模なDDoS 攻撃キャンペーンを受けている時に、Cloudflareが提供するサービスを拡張し、ネットワークインフラストラクチャを保護するCloudflareのBGPベースのDDoS攻撃対策サービス、Magic Transitを含めました。一晩のうちにオンボーディングがすばやく完了し、Cloudflareは自動的にHypixelのネットワークを標的とするDDoS 攻撃の検出/軽減ができました。攻撃のいくつかは、620Gbpsを超えるものもありました。DDoS 攻撃は、主にTCPフラッド攻撃とUDPアンプリフィケーション攻撃でした。グラフでは、それぞれの色がマルチベクトル型攻撃の検出/軽減に役立つCloudflareのシステムを表し、DDoSに対する多層防御アプローチの価値を強調しています。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/07/image10-5.png" class="kg-image"></figure>
+	<p>そして、攻撃パターンがリアルタイムで変化したにも関わらず、Magic TransitがHypixelのネットワークを防御できたのです。実際に、クリーンなトラフィックがすべてCloudflareの高パフォーマンスな低遅延ネットワークをルーティングしているため、強力な帯域幅消費型DDoS 攻撃中であっても、Hypixelのユーザーはゲーマー体験に影響しないことが分かりました。</p>
+	<p>攻撃キャンペーン中、Cloudflareは自動的に5,000件以上のDDoS 攻撃（53%がACKフラッド、39%がUDPベース攻撃、8%がSYNフラッド）を検出して軽減しました。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/07/image4-6.png" class="kg-image"></figure>
+	<blockquote><em>「620Gbpsを大幅に超える攻撃をいくつも受けていましたが、当社のプレーヤー全員に対する影響はゼロでした。Cloudflare Magic Transitのおかげで、ゲーミング体験に支障が出ることなく、スピードも維持することができました。」</em><br><strong>- Simon Collins-Laframme </strong>氏 Hypixel Inc. CEO</blockquote>
+	<p>HypixelがCloudflareとともに歩み始めたのは、DDoS 攻撃からゲーミングインフラストラクチャを保護するために<a href="https://www.cloudflare.com/ja-jp/products/cloudflare-spectrum/" target="_blank">Cloudflare Spectrum</a>の導入からでした。ユーザー基盤が大きくなり、重要なインフラストラクチャ全体の堅牢性とレジリエンスを強化しました。現在、HypixelはCDN、<a href="https://www.cloudflare.com/ja-jp/rate-limiting/" target="_blank">レート制限</a>、<a href="https://www.cloudflare.com/ja-jp/products/cloudflare-spectrum/" target="_blank">Spectrum</a>、<a href="https://www.cloudflare.com/ja-jp/products/argo-smart-routing/" target="_blank">Argo Smart Routing</a>、<a href="https://www.cloudflare.com/ja-jp/load-balancing/" target="_blank">負荷分散</a>を含む複数のCloudflare製品を使って、世界中のゲーマーが求めているリアルタイムのゲーム体験を提供するインフラストラクチャを構築し、その安全性を確保しています。</p>
+	<h3 id="--4">あらゆる種類のサイバー攻撃からの包括的な保護を</h3>
+	<p>DDoS攻撃は、企業が現在直面している多くのサイバー脅威の一面に過ぎません。企業が<a href="https://www.cloudflare.com/ja-jp/learning/security/glossary/what-is-zero-trust/" target="_blank">ゼロトラストアプローチ</a>に移行するにつれて、ネットワークおよびセキュリティの購入者は、ネットワークアクセスに関連する大きな脅威に直面し、ボット関連の攻撃とランサムウェア攻撃の頻度と高度化は引き続き急増するでしょう。</p>
+	<p>Cloudflareで製品を構築する際の重要な設計理念は、統合です。<a href="https://blog.cloudflare.com/ja-jp/introducing-cloudflare-one-ja-jp/">Cloudflare One</a>は、ゼロトラストセキュリティモデルを使用して、企業がデバイス、データ、アプリケーションをより優れた方法で保護できるようになるソリューションであり、セキュリティおよびDDoSソリューションの既存のプラットフォームとも深く統合されています。</p>
+	<p>実際に、Cloudflareは以下を含むオールスターキャストで構成された総合ソリューションを提供しています。</p>
+	<ul>
+		<li><strong>DDoS</strong>：Forrester Wave™： DDoS Mitigation Solutions, Q1 2021（2021年第1四半期 DDoS軽減ソリューション）で「リーダー」に選出<sup>1</sup></li>
+		<li><strong>WAF</strong>：Cloudflareは、GartnerのWebアプリケーションファイアウォールについてのマジック・クアドラントでチャレンジャーの１社に位置付け（チャレンジャー・クアドラントで「実行能力（Ability to Execute）について最も高い位置と評価」）<sup>2</sup></li>
+		<li><strong>ゼロトラスト</strong>：Cloudflareは、Omdia Market Radarの2020年のゼロトラストアクセスレポートで「リーダー」に選出<sup>3</sup></li>
+		<li><strong>Webの保護</strong>： 2020年のFrost &amp; SullivanのGlobal Holistic Web Protection Marketで「革新的なリーダー」に選出<sup>4</sup></li>
+	</ul>
+	<p>Cloudflareの（<a href="https://blog.cloudflare.com/ten-new-cities-four-new-countries/">成長を続ける</a>）グローバルネットワークは比類なき規模とスピード、そして知性とともに、唯一DDoS攻撃対策と他のセキュリティ、パフォーマンス、信頼性のあるサービスを届けます。</p>
+	<p>CloudflareのDDoSソリューションの詳細は、<a href="https://www.cloudflare.com/ja-jp/plans/enterprise/" target="_blank">こちらにお問い合わせ</a>いただくか、こちらから<a href="https://dash.cloudflare.com/" target="_blank">今すぐ始めましょう</a>。</p>
+	<p>____</p>
+	<p><sup>1</sup>Forrester Wave™: DDoS Mitigation Solutions, Q1 2021, （2021年第1四半期 DDoS 軽減ソリューション）Forrester Research, Inc., 2021年3月3日。レポートのアクセスはこちらから <a href="https://www.cloudflare.com/ja-jp/forrester-wave-ddos-mitigation-2021/" target="_blank">https://www.cloudflare.com/forrester-wave-ddos-mitigation-2021/</a></p>
+	<p><sup>2</sup>Gartner, “Magic Quadrant for Web Application Firewalls（Webアプリケーションファイアウォールに関するマジッククアドラント）”, アナリスト: Jeremy D'Hoinne, Adam Hils, John Watts, Rajpreet Kaur, 2020年10月19日。 <a href="https://www.cloudflare.com/ja-jp/gartner-mq-waf-2020/" target="_blank">https://www.cloudflare.com/gartner-mq-waf-2020/</a></p>
+	<p><sup>3</sup><a href="https://www.cloudflare.com/ja-jp/lp/omdia-zero-trust" target="_blank">https://www.cloudflare.com/lp/omdia-zero-trust</a></p>
+	<p><sup>4</sup><a href="https://www.cloudflare.com/ja-jp/lp/frost-radar-holistic-web/" target="_blank">https://www.cloudflare.com/lp/frost-radar-holistic-web/</a></p>
+</div>

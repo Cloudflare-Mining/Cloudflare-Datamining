@@ -1,0 +1,43 @@
+<div class="post-content lh-copy gray1">
+	<!--kg-card-begin: markdown-->
+	<p><img alt="CloudFlare Tips: Speeding up your WordPress
+blog" src="https://blog.cloudflare.com/content/images/wordpress-logo.png.scaled500.png" title="CloudFlare Tips: Speeding up your WordPress blog"><noscript><img alt="CloudFlare Tips: Speeding up your WordPress
+blog" src="http://blog.cloudflare.com/content/images/wordpress-logo.png.scaled500.png" title="CloudFlare Tips: Speeding up your WordPress blog"></noscript></p>
+	<p>WordPress is probably the most popular blogging platform on CloudFlare, with many WordPress users taking advantage of the fact that <a href="https://blog.cloudflare.com/cloudflares-free-cdn-and-you">CloudFlare's free CDN</a> can help speed up their sites by caching static content and distributing that content to <a href="https://www.cloudflare.com/system-status.html" target="_blank">CloudFlare's datacenters</a> around the world. Because WordPress is such a popular blogging platform, I thought I would include some other helpful tips to help speed up your WordPress blog using CloudFlare and provide some other quick tips about optimizing your Wordpress site.</p>
+	<p>CloudFlare tools for WordPress users:</p>
+	<ol>
+		<li>
+			<p>CloudFlare is complementary service to other caching plugins you may be using for WordPress, including <a href="https://blog.cloudflare.com/w3-total-cache-w3tc-total-cloudflare-integrat">W3TC</a> (W3 Total Cache). You can even configure CloudFlare settings directly in W3TC.</p>
+		</li>
+		<li>
+			<p>Use CloudFlare's <a href="https://blog.cloudflare.com/an-all-new-and improved-autominify">Auto Minify</a> to eliminate the white space in JavaScript, CSS and HTML. While the white space is great for humans reading code, it actually takes machines a little longer to read the code when it isn't minified. Instead of installing yet another plugin to optimize your site, CloudFlare can do this automatically for you on the fly.</p>
+		</li>
+		<li>
+			<p>Use CloudFlare's <a href="https://blog.cloudflare.com/56590463">Rocket Loader</a> to load your JavaScript asynchronously.</p>
+		</li>
+		<li>
+			<p>If you're using plugins for services like Google Analytics, consider removing the plugin from WordPress so that CloudFlare can automatically add your Google Analytics code to all of your pages through our <a href="https://www.cloudflare.com/apps/google_analytics" target="_blank">CloudFlare Apps integration</a>.</p>
+		</li>
+	</ol>
+	<p>Some other tips to speed up your WordPress blog:</p>
+	<ol>
+		<li>
+			<p><strong>Don't install too many plugins.</strong><br>
+				While there is no hard rule for how many plugins you should have active on WordPress, it generally seems that having no more than 10-12 active plugins is a fairly safe bet to have active. I recently saw a post online where someone had 44 plugins active on their blog, which only slows things down because each plugin is creating another call to another service.</p>
+		</li>
+		<li>
+			<p><strong>Remove any inactive plugins.</strong><br>
+				If you're not using a plugin on your WordPress blog, remove it if you have no plans to use the plugin again.</p>
+		</li>
+		<li>
+			<p><strong>Don't have too many social media buttons on your site.</strong><br>
+				While having social media plugins and social bookmarking options on your site is indeed important for your blog's traffic and visibility, you don't want to overload your blog with widgets and bookmarking options. Find one or two that cover the major social media services well, then remove any additional plugins.</p>
+		</li>
+		<li>
+			<p><strong>Optimize your images</strong><br>
+				There are a number of options for <a href="http://www.dailybloggr.com/2009/07/10-image-optimization-tools-to-help-reduce-image-file-sizes-page-load-time/" target="_blank">optimizing and compressing images</a> on your WordPress site. I've personally seen a number of bloggers use <a href="https://wordpress.org/extend/plugins/wp-smushit/" target="_blank">Smush.it</a> to optimize the image</p>
+		</li>
+	</ol>
+	<p>Also See: <a href="https://blog.cloudflare.com/introducing-the-cloudflare-wordpress-plugin">CloudFlare WordPress Plugin</a></p>
+	<!--kg-card-end: markdown-->
+</div>

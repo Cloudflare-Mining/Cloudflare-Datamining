@@ -1,0 +1,61 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image4-4.png" class="kg-image" alt="Waiting Room Event Scheduling protects your website during online events"></figure>
+	<p>您透過線上活動的形式，為電子商務策略制定了大型規劃：季節性銷售、開放註冊期、產品發佈提醒、票券銷售等更多內容。透過這些大肆宣傳的措施，即可為您的網站帶來不少流量，這也是一件好事！有了 Waiting Room 活動排程，您可以在活動期間保護伺服器免於過載情況，同時提供場合獨有且符合品牌形象的使用者體驗。目前可供具有進階 <a href="https://www.cloudflare.com/waiting-room/" target="_blank">Waiting Room</a> 訂閱的企業客戶使用，活動排程可讓您規劃 等待室設定變更並提前自訂佇列頁面，同時確保線上活動的流暢進程。</p>
+	<h2 id="-">不只永遠在線的保護</h2>
+	<p><a href="https://blog.cloudflare.com/zh-tw/cloudflare-waiting-room-zh-tw/">我們推出了 Waiting Room</a>，可在流量暴增期間保護客戶的伺服器。Waiting Room 會在流量激增期間將過多的訪客傳送至虛擬佇列，並在網站有空位時動態傳入訪客。透過自動將超過網站容量的流量排入佇列，Waiting Room 可以保護您的原始伺服器並提供卓越的客戶體驗。此外，Waiting Room 的佇列頁面可供自訂，以便與您網站的外觀及風格相宜，這樣您的使用者就不會感覺自己離開了您的應用程式，同時確保流暢的客戶體驗。</p>
+	<p>雖然我們許多客戶將 Waiting Room 用作一個永遠連線的故障保護裝置來因應可能的流量暴增情況，但還是有部分客戶使用 Waiting Room 來管理限時線上活動期間的流量。雖然這些活動勢必會導致 Waiting Room 所防禦的流量暴增，但它們還是為我們客戶帶來了獨一無二的挑戰。</p>
+	<p>在線上活動的生命週期中，各種活動階段一般會需要預計更新等待室設定。雖然每位客戶的活動需求不盡相同，還是請考量下列客戶使用案例。為了防止訪客在活動前瘋狂湧入登陸頁面而造成網路癱瘓，部分客戶希望在活動開始前幾天或幾小時將提早到達的訪客排入佇列。在活動期間，有些客戶希望針對訪客瀏覽網頁及完成交易的時間設定更嚴格的限制，以便盡量確保讓更多訪客有公平參加的機會。在活動結束之後，許多客戶想要卸載活動流量、封鎖對活動頁面的存取，同時告知使用者活動已結束。</p>
+	<p>對於上述每種情況，我們的客戶都希望將自己的期望傳達給使用者，並自訂其佇列頁面的外觀與風格，以便提供符合品牌形象的流暢使用者體驗。將上方範例中所有使用案例合併到一個時間軸之後，您必須至少在三個活動階段更新等待室設定與佇列頁面，而且確保時間恰到好處。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image3-4.png" class="kg-image" alt="Sample timeline of an online event’s Waiting Room requirements."></figure>
+	<p>雖然這些使用案例在技術上適用於 Waiting Room，但還是需要現場更新組態設定。如果客戶必須百分之百確定等待室與活動時間的步調完全一致，這項策略就顯得不夠理想，甚至是不太實用了。簡單來說，許多客戶都必須提前針對其等待室行為排定變更。我們建立的活動排程讓客戶能夠彈性地控制等待室設定變更的時間與方式，同時確保這些變更會依照預期自動進行。</p>
+	<h2 id="-waiting-room-">隆重推出 Waiting Room 活動排程</h2>
+	<p>有了活動排程，即可提前為您的等待室排定離散活動的串聯式變更。對於每個等待室活動，您可以自訂流量閾值、工作階段持續時間、佇列方式，以及佇列頁面的內容與樣式。<a href="https://api.cloudflare.com/#waiting-room-create-event" target="_blank">請參閱「建立活動 API」文件</a>，查看可自訂活動設定的完整清單。</p>
+	<h3 id="--1">全新佇列方式</h3>
+	<p>對於具有活動型 Waiting Room 需求的客戶來說，向他們提供等待室設定變更的排程功能是一種顛覆性的變革，但我們的野心不只如此。我們還加入了兩項全新佇列方式 — 拒絕與傳遞 — 並為客戶提供更多選項，以便在線上活動之前、期間及之後控制使用者流程。</p>
+	<p>在客戶希望在活動後卸載網站流量的範例中，「拒絕」佇列方式就具備這樣的功用！如果是配置有「拒絕」佇列方式的等待室，即可卸載您的網站流量，並為使用者呈現靜態且完全可供自訂的 HTML 頁面。相反地，「傳遞」佇列方式可讓所有訪客無限制地存取您的網站。不同於簡單透過停用您的等待室來實現這一點，「傳遞」的優點在於可提前排定開啟或關閉，並且透過 Waiting Room 狀態端點向使用者提供流量狀態。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/1.png" class="kg-image" alt="A waiting room with Passthrough queueing method enabled gives you visibility into Total Active Users on your site while in a passive state."></figure>
+	<p>如果您希望讓等待室完全進入被動狀態，則開啟等待室並將其配置「傳遞」佇列方式後，您可快速開啟「全部排入佇列」。「全部排入佇列」會將所有新的網站訪客加排入佇列，在網站意外停機或出現任何其他危機的情況下可發揮重要作用。停用「全部排入佇列」前，您可以查看等待進入網站的使用者人數。「全部排入佇列」也會覆寫任何進行中的等待室活動，並在緊急情況下為您提供權威且快速的控制能力。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/2.png" class="kg-image" alt="Quickly activate Queue All on a passive waiting room when you need to queue users in a hurry."></figure>
+	<h3 id="--2">活動預先排入佇列</h3>
+	<p>作為活動組態的一部分，您也可以啟用「預先排入佇列」，這是一個虛擬等候區，供活動開始之前就到達的訪客在此等候。「預先排入佇列」可另外增加一層保護，防止流量暴增導致網站當機。</p>
+	<p>為了說明這一點，假設您的客戶是一名忠實的粉絲，正在千方百計地想要買到最愛樂團下一場演唱會的門票。門票將在一小時後開賣，所以其會在開賣前 10 分鐘左右造訪您的售票頁面。您的網站上有一個靜態登陸頁面，之後就在這裡售票。這位粉絲在開賣前幾分鐘開始重新整理頁面，希望一開賣就能進入網站。現在，把這一位懷抱希望的演唱會常客乘以數千位粉絲，而且在售票開始前，您的網站早已有粉絲湧入並面臨當機的風險。啟用「預先排入佇列」可保護您的網站免受這類使用者活動侵害，因為這類活動有可能會在您品牌的重要時刻導致網站癱瘓。透過全面自訂預先排入佇列頁面的功能，您還是能夠讓活動登陸頁面同樣充滿刺激感。</p>
+	<p>更進一步，您可以選擇打亂預先佇列，在活動開始時，將在預先佇列期造訪應用程式的使用者隨機指派至隊伍中。如果您的活動採用了先進先出的佇列方式，則隨機排序預先佇列有助於提升公平性，特別是您的預先佇列期橫跨多個時區時。<a href="https://blog.cloudflare.com/waiting-room-random-queueing-and-custom-web-mobile-apps/#:~:text=Random%20queueing%20is,make%20a%20purchase!">就像是隨機佇列方式</a>，實作隨機化預先佇列可消除較早時區客戶的優勢，因此不會有活動開始前搶先排到隊伍的情況。最後，活動公平性對您與客戶的角度與需求來說非常獨特。透過活動間適用於預先佇列與溢位佇列的進站選項順序，您就能夠掌控並管理進站的公平性，以便與您的獨特需求保持一致。</p>
+	<h2 id="--3">建立等待室活動</h2>
+	<p>類似於設定等待室，<a href="https://developers.cloudflare.com/waiting-room/additional-options/create-events/" target="_blank">Waiting Room 排定活動功能</a>極為容易且不需要編碼或應用程式變更。首先，您必須<a href="https://developers.cloudflare.com/waiting-room/how-to/create-waiting-room/" target="_blank">設定基準的等待室</a>。接著，您可以從 <a href="https://dash.cloudflare.com/?to=/:account/:zone/traffic/waiting-rooms" target="_blank">Waiting Room 儀表板</a>排定此等待室的活動。在活動建立工作流程中，您需要指出活動的預期開始與結束時間，並設定選用的預先佇列功能。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/3.png" class="kg-image" alt="The first step in the event creation workflow–set its duration and configure an optional pre-queue."></figure>
+	<p>除非另有說明，否則您的活動一律會繼承其相關聯等待室的組態設定。這樣一來，您只需要更新希望在活動持續時間內變更的等待室設定。您可以針對活動獨有的使用者選擇性地建立佇列頁面，並以不同的佇列狀態與瀏覽器預覽活動佇列頁面的外觀，同時確保您的終端使用者體驗不會變成亂碼的 CSS 或外觀損壞的頁面！</p>
+	<p>儲存您的活動前，您可以並列檢閱等待室與活動設定，並輕鬆驗證等待室行為如何隨著活動持續時間變化。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image2-5.png" class="kg-image" alt="Review your event settings against those of your baseline waiting room."></figure>
+	<p>建立後，您的活動就會出現在嵌套於相關等待室的 Waiting Room 儀表板中。儀表板的預設檢視會指示每個等待室的下一場活動日期，讓您能夠一眼看出任何等待室的設定是否會因為下一場活動而產生變化。您可以展開每個等待室的資料列，以便列出即將登場的活動及相關持續時間。此外，如果活動在進行中，此日期旁邊即會出現綠點，藉此確保該活動已展開。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/4.png" class="kg-image" alt="From the Waiting Room dashboard, easily discern which waiting rooms have upcoming or live events."></figure>
+	<h2 id="--4">事件排程的運作情形</h2>
+	<p>將所有這些聯繫在一起，讓我們透過一個真實的情境，來展示活動排程的多功能性與實用性。在此範例中，我們有一個主要的女性時裝零售商，就叫 Shopflare 吧，即將舉行限時搶購活動。限時搶購是一種線上銷售活動，不同於普通促銷，其持續時間很短並會提供大幅折扣或庫存有限。通常，零售商會在限時搶購前幾天透過行銷活動將目標鎖定在特定受眾。</p>
+	<p>在我們的範例中，Shopflare 的行銷團隊計畫向一系列目標客戶傳送電子郵件活動通知，藉此宣傳春季限時搶購，在這場限時一天的特賣活動中，客戶購買春季新品可享 40% 的優惠且免運費！Shopflare 該如何使用 Waiting Room 與活動排程，為這場拍賣加持並使其順利進行呢？</p>
+	<h3 id="--5">準備限時搶購</h3>
+	<p>在活動一週前，Shopflare 的網頁團隊建立了一個登陸頁面，顯示春季限時搶購活動倒數計時，網址為：example.com/sales/spring_flash_sale。他們在此 URL 中設定了等待室，利用先進先出的佇列方式並設定了其允許通過的流量閾值，同時確保網站維持更好的效能。接下來，他們向目標受眾傳送了直接連結至活動登陸頁面的電子郵件通知。在設定基準等待室後，提早湧入 URL 的流量就不會致使其網站癱瘓。Shopflare 的團隊也透過提前排定兩場串聯式等待室活動，準備迎接即將登場的特賣活動。我們來檢閱 Shopflare 與 Waiting Room 相關的限時搶購需求，以及他們透過活動排程採取的步驟以滿足需求。</p>
+	<h3 id="--6">預先佇列與活動溢位佇列</h3>
+	<p>在拍賣開始前幾個小時，Shopflare 希望讓購物者開始「排隊」，以便確保他們能夠搶在活動開始後才抵達的人之前進場。他們想針為這些提早到達的訪客建立隨機分配的機制，在活動開始時將他們隨機指派在隊伍中，以便減消除來自較早時區的客戶的優勢，讓大家都有入場機會。為此，他們會針對已設定的等待室建立活動。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/5.png" class="kg-image" alt="To create an event, expand the row for the desired waiting room from and click Schedule Event."></figure>
+	<p>活動建立工作流程由 4 個主要步驟組成：詳細資料、設定、自訂及檢閱。在活動建立工作流程的詳細資料頁面上，他們會輸入活動的開始與結束時間、設定預先佇列的開始時間，並且啟用「在活動開始時打亂順序」，以便建立隨機化的預先佇列。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/10.png" class="kg-image" alt="To start queuing early visitors and randomize their entry at event start time, enable the pre-queue and select Shuffle at Event start."></figure>
+	<p>在活動進行時，Shopflare 需要溢位佇列來避免其網站因超出等待室的流量限制而癱瘓，同時讓這些使用者在網站出現空位時以先進先出的方式出入網站。由於他們的基礎等待室已透過其希望在活動期間強制執行的流量閾值進行設定，因此他們只要不變更活動建立工作流程的「設定」頁面，並繼續自訂即可。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image13-2.png" class="kg-image" alt="On the Settings page, change traffic thresholds, session settings, and queuing method for your event or choose to keep them the same as the underlying waiting room."></figure>
+	<p>在自訂步驟中，Shopflare 會上傳自訂 HTML 範本（含有預先佇列頁面與溢位佇列的 HTML ），藉此為他們的特賣活動打造自訂的佇列體驗。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/6.png" class="kg-image" alt="From the Customization page, you can override your baseline waiting room’s queuing page by importing a new HTML file. You can also preview your event’s queuing page in different states before publishing."></figure>
+	<p>Shopflare 希望其預先佇列頁面能讓購物者對活動的開始充滿興奮。他們想要確保頁面帶有品牌商標且專為此次限時搶購活動而建立，同時為購物者設定明確的期望。對於他們的溢位佇列，他們想要與預先佇列頁面相同的外觀與感受，並提供更新訊息功能來讓購物者了解預估等待時間並說明排入佇列的理由。在下方查看兩個範本佇列頁面，以便了解他們如何為已排入預先佇列與溢位佇列的客戶建立獨特且資訊豐富的體驗。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/07/unnamed-3.png" class="kg-image" alt="Shopflare’s pre-queuing page is customized for the brand and the flash sale. Shoppers are informed of the time until the event starts as well as are reassured that the page is automatically refreshing.">
+		<figcaption>Shopflare 的預先佇列頁面已針對品牌與限時搶購進行自訂。購物者會在活動開始前知道等待時間，而且系統會自動重新整理該頁面。</figcaption>
+	</figure>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/07/unnamed2.png" class="kg-image" alt="Shopflare’s overflow queuing page is also customized for the brand and the flash sale. Shoppers are assured they are in the right place, given an estimated wait time, and an explanation for queuing.">
+		<figcaption>Shopflare 的溢位佇列頁面也會針對品牌與限時搶購加以自訂。購物者可放心排入正確的隊伍、了解預估等待時間，並且獲得排入佇列的解釋。</figcaption>
+	</figure>
+	<h3 id="--7">活動結束</h3>
+	<p>活動結束後，Shopflare 希望為已下單的顧客提供 5 分鐘的寬限期來完成購物，而且不會放行更多的新訪客。在活動結束後的 48 小時內，讓所有訪客都看到一個靜態頁面，從而了解活動已結束並提供返回其首頁的重新導向連結。為此，Shopflare 會針對基準等待室建立另一場於先前活動結束時開始的活動，而且不會啟用預先佇列。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image14-2.png" class="kg-image" alt="To offload post-sale traffic, Shopflare creates another waiting room event that starts right after the previous waiting room event ended."></figure>
+	<p>為了在活動結束後卸載所有新的網站流量，同時向已下單的顧客提供 5 分鐘的寬限期，他們會從活動建立工作流程的「設定」頁面中，將工作階段持續時間設為 5 分鐘、停用工作階段更新並選擇「全部拒絕」佇列方式。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image12-1.png" class="kg-image" alt="To start blocking traffic that arrives after your event has ended while giving active shoppers a few minutes more to complete their purchases, select the Reject All queuing method and disable session renewal."></figure>
+	<p>接著在「自訂」索引標籤中，他們會選擇以自訂活動範本覆寫基礎等待室範本，然後上傳他們的自訂拒絕頁面 HTML。他們還會檢閱並儲存活動，然後 Waiting Room 儀表板會顯示該活動與先前建立的活動。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/7.png" class="kg-image" alt="From the Waiting Room Dashboard, both waiting room events related to the Spring Flash Sale are listed along with their start and end times."></figure>
+	<p>最後，大功告成！在設定等待室活動後，Shopflare 即可確保他們的網站會受到保護，而且其客戶都能夠在這場盛大的活動中，享有符合其品牌標準且透明的購物體驗。每位客戶與每場線上活動都是獨一無二的。但是，當您選擇管理線上活動的使用者流量時，Cloudflare Waiting Room 的活動排程可提供實現卓越且公平的使用者體驗，同時在線上活動期間保護您的應用程式的必要選項。我們等不及要在下一場線上活動中為您提供支援了！</p>
+	<p>如需活動排程與 Waiting Room 的更多資訊，<a href="https://developers.cloudflare.com/waiting-room/additional-options/create-events/" target="_blank">請查看我們的開發人員文件。</a>還沒使用 Cloudflare 嗎？立即使用我們的 <a href="https://www.cloudflare.com/plans/business/" target="_blank">Business 方案</a>，其中包括一個基本的 Waiting Room 功能，或者您可以<a href="https://www.cloudflare.com/plans/enterprise/discover/contact/" target="_blank">聯絡我們</a>了解具有活動排程的進階 Waiting Room 功能，就在我們的 <a href="https://www.cloudflare.com/plans/enterprise/" target="_blank">Enterprise 方案</a>之中。</p>
+</div>

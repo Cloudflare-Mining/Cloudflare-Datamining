@@ -1,0 +1,55 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/09/MRK-6641-Create-blog-post-image-for-Serverless-integration-announcement-01.svg" class="kg-image"></figure>
+	<p></p>
+	<!--kg-card-begin: markdown-->
+	<p>We’re very excited to announce that Cloudflare Workers are now integrated into the <a href="https://github.com/serverless/serverless" target="_blank">Serverless framework</a> as a serverless cloud provider! Serverless’ open source framework has become a must-have for many developers, and we want to make it as simple as possible to harness the power of Cloudflare’s distributed computing network.</p>
+	<p>Workers have become essential to the way people build applications on the web. The expressiveness of modern JavaScript combined with sub-30 second deploys to Cloudflare’s network of 152+ datacenters means that you can truly build your application <em>into</em> our global compute network. Up until this point, deploying Workers required doing all of your editing through our browser-based IDE or developing one’s own custom tooling on top of our API. But many developers have their own environments and are already familiar with the Serverless framework, so it seemed natural that we build first-class support for Workers into Serverless!</p>
+	<p>You can now define the entire structure and routing behavior of your Workers scripts in code and <a href="https://developers.cloudflare.com/workers/deploying-workers/serverless/" target="_blank">deploy</a> them with ease using <code>serverless deploy</code> from your own development environment. Store configuration files in version control alongside your application code. And feel more confident testing your application with <code>serverless invoke</code>, a new way to quickly send requests to endpoints of interest with specific arguments and headers.</p>
+	<h3 id="whatisserverless">What is Serverless?</h3>
+	<p><a href="https://www.cloudflare.com/learning/serverless/what-is-serverless/" target="_blank">Serverless</a> is a paradigm for building applications without concern for the underlying infrastructure. It lets developers focus on writing code and lets them deploy quickly and cheaply to a cloud provider which manages servers, networking, and configuration.</p>
+	<p>The Serverless framework takes this a step further. It empowers developers to write applications with consistent tooling and project structure, which speeds up development and simplifies deployment to common <a href="https://serverless.com/framework/docs/" target="_blank">cloud providers</a>.</p>
+	<p>Our new plugin lets you use <code>serverless</code> command line tool, which you may already be accustomed to, but with Cloudflare Workers! Define the structure of your Worker in <code>serverless.yml</code> and <code>serverless deploy</code> it to our 152+ data centers around the world.</p>
+	<p>How simple is it? Here’s a complete <code>serverless.yml</code> for a <a href="https://blog.cloudflare.com/building-a-serverless-slack-bot-using-cloudflare-workers/">Slackbot</a> running on Workers. Serverless uses the idea of functions (as in functions-as-service) to separate concerns within an application. For Workers, a function <em>is</em> your application, and the <code>script</code> field refers to the name of your Worker script locally on disk.</p>
+	<pre><code class="language-yml">service:
+    name: slack-bot
+    config:
+      accountId: CLOUDFLARE_ACCOUNT_ID 
+      zoneId: CLOUDFLARE_ZONE_ID 
+      workers:
+        slackbot:
+          routes:
+            - slackbot.example.com
+
+provider:
+  name: cloudflare
+
+plugins:
+  - serverless-cloudflare-workers
+
+functions:
+  SlackBot:
+    worker: slackbot
+    script: bot
+</code></pre>
+	<p><em><a href="https://developers.cloudflare.com/workers/api/config-api-for-enterprise/" target="_blank">Learn how retrieve your Cloudflare account and zone IDs</a></em></p>
+	<p>To deploy your new Worker, simply run <code>serverless deploy</code> or <code>serverless deploy -f SlackBot</code>.</p>
+	<h4 id="gettingstarted">Getting Started</h4>
+	<pre><code class="language-bash">$ npm install -g serverless
+$ serverless create --template cloudflare-workers --path new-project
+$ cd new-project
+$ npm install
+$ export <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="8ccfc0c3d9c8cac0cddec9d3cdd9d8c4d3c9c1cdc5c0b1f5e3f9cce9f4ede1fce0e9a2efe3e1">[email&nbsp;protected]</a>
+$ export CLOUDFLARE_AUTH_KEY=YOUR_API_KEY
+$ serverless deploy
+</code></pre>
+	<h4 id="enterprisefeatures">Enterprise Features</h4>
+	<p>Use the <code>cloudflare-workers-enterprise</code> template if you're on an enterprise plan in order to deploy multiple scripts to Workers.</p>
+	<h4 id="learnmore">Learn More</h4>
+	<p>Interested? Get started by <a href="https://github.com/serverless/serverless" target="_blank">reading the docs</a>.</p>
+	<p>Looking to build even more powerful Workers? Check out the <a href="https://developers.cloudflare.com/workers/recipes/" target="_blank">recipes</a> on the docs about <a href="https://developers.cloudflare.com/workers/writing-workers/using-npm-modules/" target="_blank">including NPM modules</a> in your project and performing additional <a href="https://developers.cloudflare.com/workers/recipes/conditional-routing/" target="_blank">routing</a> within your functions.</p>
+	<p>Are you building something cool with Workers? <a href="/cdn-cgi/l/email-protection#5635393b3b23383f222f16353a392332303a3724337835393b">Let us know!</a></p>
+	<!--kg-card-end: markdown-->
+	<hr>
+	<p><em>If you are in the San Francisco Bay Area, and are interested in hearing from Bay Area serverless experts and explorers, you're invited to come by tonight's <a href="https://www.heavybit.com/events/serverless-meetup-real-world-serverless-with-cloudflare/" target="_blank">Serverless Meetup. RSVP here!</a> Doors open at 6.</em></p>
+	<p></p>
+</div>

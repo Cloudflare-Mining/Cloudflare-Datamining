@@ -1,0 +1,67 @@
+<div class="post-content lh-copy gray1">
+	<!--kg-card-begin: markdown-->
+	<p><a href="https://www.flickr.com/photos/damonbillian/5428994744/" title="CloudFlare Ninja by dbillian, on Flickr" target="_blank"><img alt="CloudFlare Ninja" src="https://farm6.static.flickr.com/5135/5428994744_82565d089b.jpg"><noscript><img alt="CloudFlare Ninja" src="http://farm6.static.flickr.com/5135/5428994744_82565d089b.jpg"></noscript></a></p>
+	<p>Since signing up for any new service can often lead to a number of<br>
+		questions, I created a guide of things you should know after activating<br>
+		CloudFlare.</p>
+	<h3 id="1checktomakesurethatyourdnsrecordsarecorrectonthednssettingspage">1. Check to make sure that your DNS records are correct on the DNS settings page.</h3>
+	<p>If you need to add or edit entries to your DNS records, you can do so by going to:</p>
+	<p>Your Websites-&gt;Settings-&gt;DNS settings</p>
+	<p>One very important note to make about DNS: While CloudFlare can resolve<br>
+		DNS for all of your subdomains, CloudFlare can only proxy domains that<br>
+		would be considered web traffic (www, blog, etc.). Please read more about the<a href="https://support.cloudflare.com/entries/22280786-What-subdomains-are-appropriate-for-orange-gray-clouds-" target="_blank"></a> <a href="https://support.cloudflare.com/entries/22280786-What-subdomains-are-appropriate-for-orange-gray-clouds-" target="_blank">subdomains that are suitable to have a gray or orange cloud here</a>.</p>
+	<h3 id="2familiarizeyourselfwiththecloudflaresettingspage">2. Familiarize yourself with the CloudFlare Settings page</h3>
+	<p>The CloudFlare Settings page is where you will find all of the optional<br>
+		features that can be turned on or off. Some key features on this page<br>
+		include:</p>
+	<h4 id="cloudflaresecuritylevelsettings">CloudFlare Security Level Settings</h4>
+	<p>Use case: You can set the security level for your website to high,<br>
+		medium or low.</p>
+	<h4 id="cloudflaresdevelopmentmodeh2">CloudFlare's Development Mode</h4>
+	<p>Use case: You would want to turn this option on when you're making
+		changes to static files (javascript, CSS, images, etc.) on your site
+		that you want to appear immediately.
+	</p>
+	<h4 id="purgecache">Purge Cache</h4>
+	<p>Use case: You want to clear the CloudFlare cache of all the static files for a domain</p>
+	<p>CloudFlare --&gt; Websites --&gt; Settings (pull down menu) --&gt; CloudFlare Settings</p>
+	<h3 id="3installmod_cloudflaretogettheoriginalvisitorip">3. Install mod_cloudflare to get the original visitor IP</h3>
+	<p>Since CloudFlare acts as a reverse proxy for you site, your visitor logs<br>
+		will show our IP addresses unless you make a modification to your<br>
+		server. We have a<a href="https://support.cloudflare.com/forums/21318827-How-do-I-restore-original-visitor-IP-to-my-server-logs-" target="_blank"> </a><a href="https://support.cloudflare.com/forums/21318827-How-do-I-restore-original-visitor-IP-to-my-server-logs-" target="_blank">group of resources available here, including for Apache servers</a>. Note: WordPress users also have the option of installing our <a href="https://blog.cloudflare.com/introducing-the-cloudflare-wordpress-plugin"></a><a href="https://blog.cloudflare.com/introducing-the-cloudflare-wordpress-plugin">WordPress plugin</a> instead.</p>
+	<h3 id="4allowcloudflaresipaddressesrecommendedstrong">4. Allow CloudFlare's IP addresses (recommended)</h3>
+	<p>Allowing our<a href="https://www.cloudflare.com/ips" target="_blank"></a> <a href="https://www.cloudflare.com/ips" target="_blank">IP ranges</a> with your hosting provider ensures all of your website's requests are served properly.</p>
+	<p>Note: CloudFlare customers that are activated through our partners,<br>
+		<a href="http://www.prweb.com/releases/hostgator/cloudflare/prweb4575864.htm" target="_blank"></a><a href="http://www.hostgator.com" target="_blank">HostGator</a> and <a href="http://vexxhost.com/cloudflare_hosting" target="_blank">VEXXHost</a>, are not required to take this step.
+	</p>
+	<h3 id="5bookmarkourstatuspage">5. Bookmark our Status Page</h3>
+	<p>We run five data centers on three continents and we are constantly<br>
+		monitoring our systems. To get the most current updates, you can follow<br>
+		our:</p>
+	<ul>
+		<li><a href="https://www.cloudflare.com/system-status.html" target="_blank">System status page</a></li>
+		<li><a href="https://twitter.com/CloudFlareSys" target="_blank"></a><a href="https://twitter.com/CloudFlareSys" target="_blank">Twitter System Status account</a></li>
+	</ul>
+	<p>Finally, we get a lot of questions about the <a href="https://www.cloudflare.com/plans.html" target="_blank">Pro service vs Free<br>
+			service</a>. With the Pro service, you receive four additional benefits:</p>
+	<ol>
+		<li>Faster subsequent page loads (so the second, third and fourth page
+			loads are much quicker)</li>
+		<li>Web Application Firewall to protect from comment spam, SQL
+			injection and XSS attacks</li>
+		<li>SSL compatibility</li>
+		<li>Stats updates every 15 minutes (vs 24 hours)</li>
+	</ol>
+	<p>The pro service is done on a month by month basis so you can easily try
+		it for a month by choosing "Upgrade to Pro" in your CloudFlare account.
+	</p>
+	<p>Also see:</p>
+	<ul>
+		<li><a href="https://cloudflare.tenderapp.com/kb/troubleshooting/why-cant-i-access-my-cpanel" target="_blank">CloudFlare and accessing cpanel</a></li>
+		<li><a href="https://cloudflare.tenderapp.com/kb/troubleshooting/will-re-routing-through-cloudflare-affect-my-use-of-ftp-uploading" target="_blank">CloudFlare and ftp problems</a></li>
+		<li><a href="https://blog.cloudflare.com/cloudflare-tips-frequently-used-cloudflare-se">Frequently used CloudFlare Settings</a></li>
+	</ul>
+	<p>If you ever have a question, please <a href="https://www.cloudflare.com/contact.html" target="_blank">contact us</a>.</p>
+	<p>We read every email that we get and love to hear from our users.</p>
+	<!--kg-card-end: markdown-->
+</div>

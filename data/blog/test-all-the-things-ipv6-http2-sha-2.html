@@ -1,0 +1,22 @@
+<div class="post-content lh-copy gray1">
+	<!--kg-card-begin: markdown-->
+	<p><strong>NOTE: The <a href="https://http2.cloudflare.com" target="_blank">https://http2.cloudflare.com</a> site has been shut down. This blog was posted in 2015 and subsequently we took all the technologies here and made them part of our core product.</strong></p>
+	<p>CloudFlare constantly tries to stay on the leading edge of Internet technologies so that our customers' web sites use the latest, fastest, most secure protocols. For example, in the past we've enabled <a href="https://www.cloudflare.com/ipv6" target="_blank">IPv6</a> and <a href="https://blog.cloudflare.com/staying-up-to-date-with-the-latest-protocols-spdy-3-1/">SPDY/3.1</a>.</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2015/08/1490956.jpg" alt=""></p>
+	<p>Today we've switched on a test server that is open for people to test compatibility of web clients. It's a mirror of this blog and is served from <a href="https://http2.cloudflare.com/" target="_blank">https://http2.cloudflare.com/</a>. The server uses three technologies that it may be helpful to test with: IPv4/IPv6, HTTP/2 and an SSL certificate that uses SHA-2 for its signature.</p>
+	<p>The server has both IPv4 and IPv6 addresses.</p>
+	<pre><code>$ dig +short http2.cloudflare.com A
+45.55.83.207
+$ dig +short http2.cloudflare.com AAAA
+2604:a880:800:10:5ca1:ab1e:f4:e001
+</code></pre>
+	<p>The certificate is based on SHA-2 (in this case SHA-256). This is important because SHA-1 is being deprecated by some browsers <a href="https://blog.filippo.io/the-unofficial-chrome-sha1-faq/" target="_blank">very soon</a>. On a recent browser the connection will also be secured using ECDHE (for <a href="https://blog.cloudflare.com/staying-on-top-of-tls-attacks/">forward secrecy</a>).</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2015/08/Screen-Shot-2015-08-21-at-16-24-37.png" alt=""></p>
+	<p>And, finally, the server uses HTTP/2 if the browser is capable. For example, in Google Chrome, with the <a href="https://chrome.google.com/webstore/detail/http2-and-spdy-indicator/mpbpobfflnpcgagjijhmgnchggcjblin" target="_blank">HTTP/2 and SPDY indicator</a> extension the blue lightning bolt indicates that the page was served using HTTP/2:</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2015/08/Screen-Shot-2015-08-21-at-16-23-11.png" alt=""></p>
+	<p>This server isn't on the normal CloudFlare network and is intended for testing purposes only. We'll endeavor to keep it online so that people have an HTTP/2 endpoint to test clients against.</p>
+	<p>In Google Chrome's <a href="chrome://net-internals/#events" target="_blank">net-internals</a> view you can see the HTTP/2 session in use when connecting to the site.</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2015/09/Screen-Shot-2015-09-02-at-09-35-51.png" alt=""></p>
+	<p>We hope that this will prove useful for people tests HTTP/2 compatible client software. Let us know how it goes.</p>
+	<!--kg-card-end: markdown-->
+</div>

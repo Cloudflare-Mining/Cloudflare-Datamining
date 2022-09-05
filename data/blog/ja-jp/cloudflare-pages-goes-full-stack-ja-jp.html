@@ -1,0 +1,73 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image1-34.png" class="kg-image" alt="Cloudflare Pages Goes Full-Stack"></figure>
+	<p>4月にCloudflare Pagesの<a href="https://blog.cloudflare.com/cloudflare-pages-ga/">一般提供</a>を発表したとき、それが始まりに過ぎないことを約束しました。私たちのプラットフォームは、<a href="https://blog.cloudflare.com/custom-headers-for-pages/">リダイレクトやカスタムヘッダー</a>の設定など、ちょっとした動的機能を備えた静的サイトのサポートから始まりました。しかし私たちは、お客様とお客様のチームがもっと強力なツールで想像もつかないようなものを作り出せるようにしたいと考えていました。フロントエンド、API、ストレージ、データなど、アプリケーション全体が1回のコミットでデプロイされ、ステージングでは簡単にテストでき、本番環境へのデプロイは1回のマージで済むような未来を想像していました。この度、「Full Stack」Weekの精神に則り、まさにその未来を実現するためのツールをお届けします。</p>
+	<p>みなさん、ようこそ未来へ！—Pagesが<a href="https://workers.cloudflare.com/?&amp;_bt=521144407143&amp;_bk=&amp;_bm=b&amp;_bn=g&amp;_bg=123914288844&amp;_placement=&amp;_target=&amp;_loc=9067609&amp;_dv=c&amp;awsearchcpc=1&amp;gclid=Cj0KCQiAsqOMBhDFARIsAFBTN3eyQsvbPzy3y3BOeCnYZMDVjSd8QkaoPbOfFiFWxSK8zEm9lSCNAJsaAnfkEALw_wcB&amp;gclsrc=aw.ds" target="_blank">Cloudflare Workers</a>の力を借りて、フルスタックプラットフォームになったことを発表できることを嬉しく思います。</p>
+	<h2 id="-">でも、どうやって？</h2>
+	<p>Pagesのこれまでの仕組みとまったく同じです。コードを書き、gitプロバイダー（<a href="https://blog.cloudflare.com/cloudflare-pages-partners-with-gitlab/">現在はGitLab</a>もサポートしています）に`git push`すれば、Pagesがサイト全体をデプロイしてくれます。唯一の違いは、フロントエンドだけでなくバックエンドもCloudflare Workersを使ってサーバーレス機能をデプロイすることです。</p>
+	<h3 id="--1">待ち望んていた統合</h3>
+	<p>Cloudflare Workersは、インフラの設定やメンテナンスをすることなく、全く新しいアプリケーションを作成したり、既存のアプリケーションを拡張したりすることができるサーバーレス実行環境を提供します。これまでは、WranglerをインストールしたPagesプロジェクトにWorkerを接続し、PagesとWorkerの両方でアプリを記述して手動でWorkerをデプロイすることが可能でした。しかし、私たちは単に「可能」ということに満足せず、サイトにダイナミックな機能を追加する際に迷うことなく、自然に使えるようにしたいと考えました。</p>
+	<h2 id="--2">仕組み</h2>
+	<p>レポジトリのファイルシステム規則に従い、1つ以上の関数ハンドラをエクスポートすることで、PagesはWorkersを活用して、あなたに代わってサーバーレス関数をデプロイすることができます。まず、プロジェクトのルートに`./functions`ディレクトリを追加し、JavaScriptまたはTypeScriptファイルの中に、関数ハンドラをエクスポートします。例えば、`./functions`ディレクトリに`hello.js`というファイルがあるとします。そのファイルには：</p>
+	<pre><code class="language-javascript">// GET requests to /filename would return "Hello, world!"
+export const onRequestGet = () =&gt; {
+  return new Response("Hello, world!")
+}
+
+// POST requests to /filename with a JSON-encoded body would return "Hello, &lt;name&gt;!"
+export const onRequestPost = async ({ request }) =&gt; {
+  const { name } = await request.json()
+  return new Response(`Hello, ${name}!`)
+}</code></pre>
+	<p>「git commit」を実行すると、Pagesの新規ビルドが開始され、動的サイトが展開されます。ビルドパイプラインにある間、Pagesはディレクトリを横断して、リポジトリの構造に照らしてファイル名をURLにマッピングします。</p>
+	<p>Pagesは、ソースからルーティングと機能をすべて含むWorkerを生成します。関数は、ネストが深いルートやワイルドカードマッチング、認証やエラーハンドリングなどのためのミドルウェアをサポートしています。フルスタックアプリケーションの例を紹介する<a href="https://blog.cloudflare.com/building-full-stack-with-pages">ブログ記事</a>を作成しましたので、ご覧ください。</p>
+	<h2 id="--3">お客様は本業に専念</h2>
+	<p>サイトが複雑になっても、Pagesの新しいフルスタック機能を使えば、開発者の負担はありません。慣れ親しんだワークフローを維持しながら、サイトを一層深めていくことができます。</p>
+	<h3 id="--4">シームレスなビルド</h3>
+	<p>静的サイトのビルドとデプロイを `git commit` と `git push` で処理するのと同じ方法で、Pages は機能を自動的にデプロイします。あなたのディレクトリが適切な構造になっていれば、Pagesはあなたのサイトと一緒にあなたの関数を識別し、ネットワークに配備します。</p>
+	<h3 id="--5">バインディングの定義</h3>
+	<p>WorkersをPagesに導入する際、バインディングはアプリケーションをフルスタックアプリケーションにするための大きな要素となります。これまで通常のWorkerで使用していたバインディングをPagesでも使用できるようになりましたので、ご紹介したいと思います。</p>
+	<ul>
+		<li><strong>KVネームスペース：サーバーレスでグローバルにアクセス可能なKey-Valueストレージソリューションです。Pagesでは、Workersダッシュボードで設定したKV名前空間をPagesプロジェクトに統合することができます</strong>。</li>
+		<li><strong>Durable Objectネームスペース：WebSocketの接続、状態の処理、アプリケーション全体の構築を容易にする、一貫性の高い</strong>コーディネーションプリミティブです。KVと同様、Workersダッシュボードで名前空間を設定し、Pagesのインターフェース内のリストから選択することができます。</li>
+		<li><strong>R2（近日公開予定！）S3と互換性のあるオブジェクトストレージソリューションで、エグレス料金がゼロになります。</strong></li>
+		<li><strong><strong><strong>環境変数：注入された値で、関数からアクセスでき、プレーンテキストで保存されます。本番環境とプレビュー環境の両方で、構築時と実行時にPagesインターフェイス内で直接環境変数を設定することができます</strong>。</strong></strong></li>
+		<li><strong><strong><strong>シークレット（近日公開予定！）：</strong>暗号化された環境変数で、Wranglerやその他のダッシュボードインターフェースでは見ることができません。シークレットは、パスワードやAPIトークンのような機密データの格納に最適です。</strong></strong><br></li>
+	</ul>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image2-15.png" class="kg-image"></figure>
+	<h3 id="--6">デプロイメントのプレビュー - バックエンドにも対応</h3>
+	<p>サーバーレス機能のデプロイでは、以前のようにコラボレーションやテストを簡単に行うことができます。本番環境にデプロイする前に、プロジェクトをプレビュー環境に簡単にデプロイして、変更内容をステージングすることができます。また、Pagesでは、すべてのコミットのバージョン履歴を固有のURLで管理できるため、開発者、PM、デザイナー、マーケターなど、誰からでも簡単にフィードバックを集めることができます。また、スタティックサイトと同じように無限のステージング権限を持ち、最新の変更点を一貫したURLで公開できます。</p>
+	<h3 id="--7">ローカルでも開発やプレビューが可能</h3>
+	<p>しかし、小さな変更を行うたびに、ステージングのためにビルドやデプロイを行うのは、迅速なイテレーションを行っている場合には面倒なことだと思います。wrangler CLIの最新リリースでは、フルスタックのPagesアプリケーションを開発することができます。Miniflareのサポートにより、モックシークレット、環境変数、KV（Durable Objectsのサポートがまもなく実現）をサポートし、アプリケーション全体をローカルで実行することができます。wranglerで静的アセットのディレクトリを指定したり、既存ツールにシームレスに接続することができます。</p>
+	<pre><code class="language-sh"># Install wrangler v2 beta
+npm install <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="5720253639303b32251735322336">[email&nbsp;protected]</a>
+
+# Serve a folder of static assets
+npx wrangler pages dev ./dist
+
+# Or automatically proxy your existing tools
+npx wrangler pages dev -- npx react-scripts start</code></pre>
+	<p>PagesとWranglerの統合は、まだ始まったばかりです。今後も開発者の利便性を高めていきますので、ご期待ください。</p>
+	<h2 id="--8">その他にできることは？</h2>
+	<p>現在HTTP Workersでできることはすべてできます！ </p>
+	<p>Pagesアプリケーションを関数でデプロイする際、PagesはファーストクラスのWorkerをコンパイルしてデプロイします。つまり、PagesアプリケーションにWorkerを配置しても、機能的な損失はなく、新たなメリットが得られるだけです。</p>
+	<h3 id="sveltekit-">SvelteKitとの統合 — 即使える！</h3>
+	<p><a href="https://github.com/sveltejs/kit" target="_blank">SvelteKit</a>は、Svelteアプリケーションを構築するためのWebフレームワークです。SvelteKitは、Svelteチームによって構築・管理されており、Svelteユーザーのアプリケーションに関するあらゆるニーズに対応しています。SvelteKitを使用すると、複雑なAPIバックエンドを持つプロジェクトを構築することができます。</p>
+	<p>今日現在、SvelteKitプロジェクトは<a href="https://github.com/sveltejs/kit" target="_blank">`@sveltejs/adapter-cloudflare` </a>パッケージをアタッチして設定することができます。これを行うと、プロジェクトはPagesに追加され、最初のデプロイメントの準備が整います。Pagesでは、SvelteKitプロジェクトがAPIエンドポイントと完全なサーバーサイドレンダリングをサポートしてデプロイできます。さらに、APIエンドポイントを含むプロジェクト全体で、プレビューデプロイメントのメリットも享受できるのです！このことだけでも、これまでWorkersアダプターを使っていた高度なプロジェクトにとっては大前進です。Pagesを使った<a href="https://github.com/lukeed/pages-fullstack" target="_blank">SvelteKitアダプター</a>の動作を確認はこちらをご覧ください。</p>
+	<h3 id="--9">サーバーサイドレンダリングの使用</h3>
+	<p>Pagesプロジェクトに入ってくるあらゆるリクエストをインターセプトできるようになりました。つまり、URLを受信するWorkerロジックを定義して、静的なHTMLを提供する代わりに、動的データを含む新鮮なHTMLレスポンスをレンダリングすることができます。</p>
+	<p>例えば、商品ページを持つアプリケーションでは、product/[id].jsファイルを定義し、idパラメータを受け取り、WorkersのKVバインディングから商品情報を取得し、そのページのHTMLレスポンスを生成することができます。静的サイトの生成アプローチと比較すると、ビルド時に商品<em>ごと</em>の静的HTMLページ（数千ページ、数万ページに上る可能性も！）を作っておく必要がないため、長期的なメンテナンスが容易になります。</p>
+	<h2 id="worker-">Workerを既にお持ちですか？お任せください。</h2>
+	<p>既にWorkerをお持ちで、それをPagesに導入してPagesのプラットフォームの開発者体験を享受したいとお考えの方も、本日の発表で正確にそれが可能になりました。ビルド時に、プロジェクトのoutputディレクトリに_worker.jsというESモジュールのWorkerを生成し、gitコマンドを実行してデプロイすれば、あとは私たちにお任せください。これは、フレームワークの開発者や、提供されているファイル構造に適合しない複雑なユースケースをお持ちの方には、特に有益な機能です。</p>
+	<h2 id="--10">期間限定の無料お試しをご利用ください</h2>
+	<p>本日、オープンベータ版をリリースすることができました。<a href="https://developers.cloudflare.com/pages/platform/functions#pricing-and-limits" target="_blank">制限</a>はありますが、このオープンベータ期間中に、お客様やお客様のチームがどのようにPagesプロジェクトに機能を導入しているかを詳しく調査します。しばらくの間は、課金の心配をせずに、創造性を発揮して、ずっと考えていたサイトを作ってみてください。</p>
+	<p>数ヶ月後の一般提供開始時には、Workers Bundledプランに反映する予定です。結局のところ、中身はWorkersなのですから。</p>
+	<h2 id="--11">今後の予定</h2>
+	<p>今回のリリースはオープンベータ版としての発表ですが、今後数週間から数ヶ月の間に、いくつかのエキサイティングな計画があります。統合されたログのサポートや、デプロイされた関数の分析機能を追加することで、皆さんがすでに慣れ親しんでいる迅速で簡単なPages開発者の体験を改善したいと考えています。 <br></p>
+	<p>さらに、次世代のフロントエンドフレームワークに対する一流のサポートを拡大していきたいと考えています。SvelteKitで明らかになったように、静的コードと動的コードの両方をシームレスに展開できるPagesの機能は、エンドユーザーのパフォーマンスと開発者の利便性を両立させるものであり、これをより多くの人に提供したいと考えています。NextJS、NuxtJS、React Server Components、Remix、Hydrogenなど、類似のフレームワークやテクノロジーのファンの方は、このブログでさらなる発表をお楽しみください。また、私たちと一緒に、その実現に向けて協力していただけたら幸いです。また、私たちと一緒に、その実現に向けて<a href="https://www.cloudflare.com/ja-jp/careers/" target="_blank">協力</a>していただけたら幸いです。<br></p>
+	<p>さらに、SvelteKitで行ったように、既存のフレームワークとの統合をさらに強化し、Pagesがお好みのフレームワークの主要なホームになるようにしたいと考えています。NextJS、NuxtJS、React Server Components、Shopify Hydrogenなどが、フルスタックアプリケーションの開発時にシームレスに統合できるよう、作業が進められています。</p>
+	<p>最後に、ビルド時間の短縮にも取り組んでいます。これにより、お客様は待ち時間なしで、変更をプッシュしてすばやく反復することに集中できます。</p>
+	<h2 id="--12">利用開始</h2>
+	<p>利用を開始するには、<a href="https://developers.cloudflare.com/pages/platform/functions" target="_blank">Pagesに関するドキュメント</a>と<a href="https://blog.cloudflare.com/building-full-stack-with-pages">デモブログ</a>をご覧いただき、Cloudflare Workersを使ってPagesにサーバーレス関数をデプロイする方法をご確認ください。</p>
+	<p>もちろん、私たちが最も楽しみにしているのは、皆さんが作ったものを見ることです。<a href="https://discord.com/invite/cloudflaredev" target="_blank">Discord</a>にアクセスして、Pagesを使ってどのようにフルスタックアプリケーションを構築しているのか教えてください。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image3-21.png" class="kg-image" alt="To get started head over to our Pages docs and check out our demo blog to learn more about how to deploy serverless functions to Pages using Cloudflare Workers."></figure>
+</div>

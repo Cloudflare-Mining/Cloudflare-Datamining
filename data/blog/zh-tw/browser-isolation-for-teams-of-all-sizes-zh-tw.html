@@ -1,0 +1,34 @@
+<div class="post-content lh-copy gray1">
+	<p>每一個連入網際網路的組織都依靠 Web 瀏覽器來經營業務：接受交易、與客戶互動，或處理敏感性資料。點選連結這樣的動作會觸發 Web 瀏覽器在本機裝置上下載並執行一大堆未知程式碼。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/Browser-Isolation-OG-body-9.png" class="kg-image"></figure>
+	<p>在防禦安全威脅時，IT 組織總是處於不利境地。問題不在於「會不會」有下一個零時差安全漏洞入侵 Web 瀏覽器，而是這將在「何時」發生。IT 組織怎樣才能既防止其使用者和資料遭遇未知威脅，又不會過度封鎖所有潛在風險？解決方案是將執行不可信程式碼的負擔從使用者裝置轉移到遠端隔離瀏覽器。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image4-44.png" class="kg-image"></figure>
+	<h3 id="-">為所有規模的團隊提供遠端瀏覽器隔離</h3>
+	<p>今天，我們很高興宣佈正式推出 Cloudflare 瀏覽器隔離，作為 Cloudflare for Teams 零信任安全性與安全 Web 瀏覽服務套件的一項附加服務。不論初創公司還是大型企業，任何規模的團隊都能從可靠、安全的瀏覽中獲益，不必更改其偏好的 Web 瀏覽器，也不用設定複雜的網路拓撲。</p>
+	<h3 id="--1">遠端瀏覽器必須可靠</h3>
+	<p>在安全環境中執行敏感工作負載並非新鮮事物，遠端瀏覽器隔離 (RBI) 技術也有多年歷史。這引出了一個問題，為什麼遠端瀏覽器不是人人都在使用的常用技術？</p>
+	<p>答案是其執行在過去存有瑕疵。大家都依賴 Web 瀏覽器完成大部份工作，如果對使用者體驗或效能有任何影響，最樂觀的結果是生產力下降，而最糟糕的則是解決方案完全遭拒。</p>
+	<p>傳統瀏覽器隔離解決方案中轉譯不可靠且效能不理想，已經導致 IT 組織只能將增強的安全狀態保留給針對性強的使用者或活動。如同透過城堡加護城河模式信任網路，假定某些使用者或網站不是網路釣魚或惡意軟體的媒介，將為攻擊敞開大門。</p>
+	<p>Cloudflare 瀏覽器隔離建立在 Chromium 的基礎上，後者是驅動 Google Chrome、Microsoft Edge 和 Brave Browser 等流行 Web 瀏覽器的相同引擎。這與我們新穎的<a href="https://blog.cloudflare.com/cloudflare-and-remote-browser-isolation/">網路向量轉譯</a> (Network Vector Rendering) 技術相結合，即使網路技術不斷發展並變得更加複雜，也可確保安全、一致地呈現網頁。</p>
+	<h3 id="--2">遠端瀏覽器必須快速</h3>
+	<p>傳統瀏覽器隔離解決方案受到其基礎技術或工作所在網路的桎梏。這些陳舊解決方案依賴於延遲高並佔用大量頻寬的像素推送，或者脆弱的內容撤防和重建技術，這些技術會降低效能、破壞網站，並可能遺漏過程中的惡意有效負載。</p>
+	<p>網路向量轉譯使我們能夠提供遠端網頁的安全檢視方式，而不會佔用大量頻寬或降低圖像品質，但這只是解決方案的一部份。透過利用我們的全球網路，我們可以將遠端瀏覽器放到連入網際網路的每一個人的附近。這樣一來，無論您身在何處，我們都可以為您傳遞回應快、延遲低的網頁串流。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image1-52.png" class="kg-image"></figure>
+	<p>在連入網際網路主幹並且功能強大的伺服器上執行 Web 瀏覽器，這會帶來巨大的效能優勢。將最少的繪製命令發送給最後一英里連線使用者，即便是低頻寬網際網路連線，也能帶來更加暢快淋漓的網際網路體驗。</p>
+	<p>將龐大、智慧的分散式網路與我們享有專利的超快速輕量型網路向量轉譯技術相結合，帶來的結果是擺脫了傳統桎梏的遠端瀏覽技術，為從世界上任何位置使用任何裝置的任何使用者提供清晰的隔離頁面。</p>
+	<p>使用瀏覽器隔離的優勢之一是這可以減輕本機 Web 瀏覽器下載現代網頁的負擔。根據 FCC 的資料，有近 3000 萬美國人未接入寬頻網路 (<a href="https://www.fcc.gov/about-fcc/fcc-initiatives/bridging-digital-divide-all-americans" target="_blank">來源</a>)。現代網站並未針對通常需要下載數百個對象的低頻寬連線進行最佳化。Cloudflare 的遠端瀏覽器連入網際網路主幹，能夠以寬頻速度持續下載網站，為使用低頻寬網路連接的使用者提供了公平的平台。</p>
+	<p>下面的範例展示了在使用和不使用瀏覽器隔離的情況下，以低速網路連線載入網頁的對比資料。我們很高興看到瀏覽器隔離彌合了數位鴻溝，為低速網路使用者提供更快速的網路連線。</p>
+	<!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 66.66666666666666%;"><iframe src="https://iframe.videodelivery.net/f3b7ffbe1eba370b4ee28d509fef918a?preload=true" style="border: none; position: absolute; top: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
+	<p><i>注意：時間為從網頁開始下載到網頁觸發其載入完成訊號的時間。</i></p>
+	<!--kg-card-end: html-->
+	<h3 id="--3">遠端瀏覽器必須易用</h3>
+	<p>瀏覽器隔離產品通常實施為附加網路設備 (例如虛擬機器或防火牆盒子)，或者透過改變使用者的偏好瀏覽器來實現。作為附加網路設備，IT 團隊需要將多個不同的解決方案組合在一起 (即使它們來自同一廠商)。這會在網路內造成不必要的複雜性，還必須使用不同的介面來控制原則設定和監控威脅。</p>
+	<p>Cloudflare 瀏覽器隔離以原生狀態整合到 Cloudflare for Teams 中，為所有網路和隔離流量提供一個整合的檢視方式。就像使用 Gateway 根據內容類別或安全威脅來允許/封鎖流量一樣，您也可以定義隔離原則，以根據身分、安全威脅或內容來動態隔離網站。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image2-45.png" class="kg-image"></figure>
+	<h3 id="--4">網際網路瀏覽的未來是遠端瀏覽</h3>
+	<p>本機網頁執行對全球的企業和組織構成了巨大威脅。解決方案很簡單：將執行不可信程式碼的負擔從使用者裝置轉移到遠端隔離瀏覽器。</p>
+	<p>安全、快速又簡單的遠端瀏覽器隔離現已實現。今天，我們很高興地宣佈正式推出 Cloudflare 瀏覽器隔離，作為 Cloudflare for Teams 的一項附加服務。現在，您無需變更 Web 瀏覽器或網路，就能保護您的企業免受基於瀏覽器的安全威脅。若要開始使用，<a href="https://www.cloudflare.com/zh-tw/teams/browser-isolation/" target="_blank">請註冊 Cloudflare for Teams 帳戶</a>，再將瀏覽器隔離新增至 Teams Gateway 或 Teams Standard 方案中。簽約客戶若要將瀏覽器隔離新增至 Cloudflare for Teams 方案，可以<a href="https://cloudflare.com/zh-tw/teams/plans/enterprise" target="_blank">填寫此表來申請存取權限</a>。</p>
+	<p>自 Cloudflare 成立之日起，我們的使命便是幫助建設更美好的網際網路，並使那些過去僅供具備複雜網路、專職 IT 團隊和支援預算的大公司使用的技術變得大眾化。</p>
+	<p>就像此前 HTTPS 加密僅用於「敏感的」登入頁面和電子商務結帳一樣，我們認為信任任意網站代碼就像過去建立新的零信任 Web 瀏覽範例一樣。可靠和快速的遠端瀏覽器隔離技術的興起就在當下。</p>
+</div>

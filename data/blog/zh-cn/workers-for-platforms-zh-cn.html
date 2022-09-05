@@ -1,0 +1,110 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image4-4.png" class="kg-image" alt="Announcing Workers for Platforms: making every application on the Internet more programmable"></figure>
+	<p>作为一家企业，无论是初创企业还是财富 500 强；您的首要任务都是让客户通过您的产品获得快乐和成功。然而，对您的客户来说，成功和幸福有时似乎总是差点什么。</p>
+	<p>“<em>只要你能定制 X，我们就能使用你的产品”—— </em>您的销售管道中最大的潜在客户。<em>“如果你能让我们做到 Y，我们就能把你的产品的使用量扩大 10 倍”</em>——您最有战略性的现有客户。</p>
+	<p>您想让您的产品对每个人而言都重要无比，但工程并不能以足够快的速度跟上，那么，什么才能帮助您实现目标呢？</p>
+	<p>今天，我们推出了 Workers for Platforms，它是一个可以使任何产品变得可编程的工具套件，可帮助我们的客户给其客户和开发人员立即带来价值。</p>
+	<h2 id="-"><strong>一个更加可编程的介面</strong></h2>
+	<p>让客户能够以编程方式与您的产品交互的一种方法是，为他们提供 API。这就是如今 API 如此多产的一个重要原因——让代码（无论是您自己的代码还是第三方的代码）能够与您的应用程序互动，这不啻为一场革命。</p>
+	<p>但还是有一个问题。虽然 API 可以让开发人员能够以编程方式与您的应用程序交互，但开发人员终究会受到 API 所公开的抽象的限制。作为应用程序所有者，您必须预测客户将如何使用您的产品，然后构建 API 以支持用例。作为产品经理，我学到的一件事情就是，我们几乎不可能预测客户将如何使用产品。如果说我学到了第二件事，那就是即使拥有丰富的工程资源，也几乎不可能构建让客户满意所需的所有功能。</p>
+	<p>然而，还有另一种方法。</p>
+	<p>与 API 相反，函数提供了最底层的基元（而不是在它们之上的抽象）。这让开发人员能够在这基础上定义正确的行为——他们甚至可以在上面定义自己的 API。</p>
+	<p>从这个意义上说，函数和 API 实际上是相辅相成的——您甚至可以选择直接从您的函数中调用另一个 API。例如，如果您在消息系统中处理事件，您可以自己实现通过调用电子邮件 API 来发送电子邮件，或在您的工单系统中创建工单等。</p>
+	<p>这就是我们对 Workers for Platforms 如此兴奋的原因：它使您客户的开发人员能直接将他们自己的逻辑带入任何应用程序。我们认为它将在它的企业用户中掀起一波以客户为主导的创新浪潮，并有可能像 API 一样对在 Web 上构建应用程序产生影响。</p>
+	<h2 id="--1"><strong>为开发人员带来更好的体验</strong></h2>
+	<p>Workers for Platforms 既展示了其使产品可编程的超强功能，也给开发人员带来了更好的体验。</p>
+	<p>如今，作为开发人员，在您开始使用 API 或 webhook 之前，您必须先处理一系列繁琐的任务。首先，您必须设置某个地方来托管您的代码，无论是服务器（或是无服务器功能），并通过外部端点将其公开。在开始之前，您必须处理操作、自定义令牌、找出新的身份验证模式。然后，您必须维护该服务，并确保它保持正常运行以确保始终正确处理事件。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image3-6.png" class="kg-image"></figure>
+	<p>由于函数直接嵌入到您所使用的产品中，您可以<em>直接开始编写代码</em>。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image1-14.png" class="kg-image"></figure>
+	<h2 id="--2"><strong>为什么这种模式直到现在还没有被接受？</strong></h2>
+	<p>允许开发人员对程序的工作方式进行编程看起来很容易理解，但这并不意味着它很容易。</p>
+	<p>在 Cloudflare，我们五年前就遇到了这个问题——我们让越来越多的客户加入我们的网络，每个人都有不同的需求。虽然 Page Rules 允许通过 URL 修改行为，但客户希望根据 cookie、标题、地理位置等更多因素来控制行为！</p>
+	<p>我们意识到我们的工程团队无法满足每一个要求，因此我们决定让客户根据自己的需求调整我们的产品。</p>
+	<p>当我们寻找解决这个问题的方法时，我们事实上是在寻找一种能够满足以下两个要求的解决方案：</p>
+	<ol>
+		<li>性能要求：对于 CDN 来说，延迟是不可接受的。我们如何加快其速度，让您甚至都无法注意到它的存在？</li>
+		<li>安全性要求：我们如何安全地运行不受信任的代码？</li>
+	</ol>
+	<p>虽然这些要求在您提供性能和安全产品时尤其重要，但在让您的客户能够对您的产品进行编程时，解决这些挑战也十分关键。如果函数需要在用户的关键路径上运行，那么延迟也是同样不可接受的。当然，也不会有人愿意仅仅为了让他们的用户能够编程而受到攻击。</p>
+	<p>创建一个真正快速和安全的多租户环境并不容易。</p>
+	<p>当我们评估解决这个问题的方案时，我们首先决定从服务器上解决这个问题——当时无服务器功能已经存在，但是由容器提供支持，这会引入冷启动，所以这并不值得考虑。于是我们转向浏览器，具体来说是由 V8 驱动的 Chrome，并决定采用相同的方法，并在我们的服务器上运行它。</p>
+	<p>虽然这种方法听起来很简单（回想起来也许平淡无奇，因为这些事情看起来显而易见），但大规模运行大型多租户开发平台并非易事。如果允许客户对您的产品进行编程的部分目的是让工程人员专注于构建新功能，那么维护和扩展这样一个开发平台所付出的努力可能会违背这个目的。</p>
+	<p>我们最近意识到的是，在试图解决这个问题的旅程中，我们并不孤单。</p>
+	<p>Shopify 等公司正在构建他们的下一代可编程店面 Oxygen，试图解决同样的问题。他们希望让他们的客户能够运行自定义店面，并尽可能提供最佳性能，同时保持安全的多租户环境。</p>
+	<blockquote>“Shopify 是互联网的商务基础设施，有数百万商家使用该平台，”Shopify 定制店面产品总监 Zach Koch 说，“与 Cloudflare 合作，我们能够为开发人员提供构建独特且高性能的店面所需的工具。我们很高兴与 Cloudflare 合作，以减少构建商业体验的一些复杂性——例如可扩展性和全球可用性——这样开发人员就可以专注于研究让他们的品牌与众不同的东西。”</blockquote>
+	<h2 id="-workers-for-platforms-"><strong>您如何在 Workers for Platforms 上构建您的下一个平台？</strong></h2>
+	<p>与 Shopify 等平台合作来帮助他们满足开发人员的需求，让我们意识到另一件事——开发人员的体验并不是一刀切的。也就是说，虽然我们正在为众多行业的开发人员构建我们的平台，但电子商务开发人员可能有更专业的需求，最好通过专门的开发人员体验来解决。而且，尽管底层技术是相同的，但是，如果让他们在平台上体验我们的直接客户所需的相同高级概念，则并没有意义。</p>
+	<p>由于没有人比您更了解您的客户，我们希望您作为平台提供商，为您的用户设计最佳体验。Workers for Platforms 公开了一组新的工具和 API，可以直接集成到您想要设计的部署流程中（看看我们在那里做了什么？）。</p>
+	<h3 id="-api-"><strong>标记 API 以大规模管理函数</strong></h3>
+	<p>使用我们的 API，每当开发人员想要在您的平台上部署脚本时，您都可以调用我们的 API 在后台部署新的 Worker。与我们传统的 Workers 产品不同，Workers for Platforms 旨在大规模使用，以管理数十万到数百万的 Cloudflare Worker。</p>
+	<p>根据您管理部署服务或用户的方式，我们现在还提供使用标签来管理脚本分组的选项。例如，如果用户删除了他们的帐户，且您希望确保他们的所有 Worker 都已被清理干净。您现在可以使用标签功能为每个脚本添加任意标签（例如用户 ID），以启用批量操作。</p>
+	<h3 id="trace-worker"><strong>Trace Worker</strong></h3>
+	<p>有烟的地方就有火，有代码的地方也一定会有 bug。在为开发人员提供编写和部署代码的工具时，您还必须为他们提供调试代码的方法。</p>
+	<p>Trace Worker 允许您收集有关由 Worker 处理的请求的任何信息，包括任何日志或异常，并将它们传递给您的客户。Trace Worker 能接收有关其他 Worker 执行情况的信息，并可以将其转发到您选择的目的地，从而实现实时日志记录或长期存储等用例。</p>
+	<p>下面是一个简单的 Trace Worker，它会将其跟踪数据发送到一个 HTTP 端点：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-js">addEventListener("trace", event =&gt; {
+  event.waitUntil(fetch("http://example.com/trace", {
+    method: "POST",
+    body: JSON.stringify(event.traces),
+  }))
+})
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>下面的示例展示了 event.traces 中的数据可能的样子：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-js">[
+  {
+    "scriptName": "Example script",
+    "outcome": "exception",
+    "eventTimestamp": 1587058642005,
+    "event": {
+      "request": {
+        "url": "https://example.com/some/requested/url",
+        "method": "GET",
+        "headers": [
+          "cf-ray": "57d55f210d7b95f3",
+          "x-custom-header-name": "my-header-value"
+        ],
+        "cf": {
+          "colo": "SJC"
+        }
+      },
+    },
+    "logs": [
+      {
+        "message": ["string passed to console.log()"],
+        "level": "log",
+        "timestamp": 1587058642005
+      }
+    ],
+    "exceptions": [
+      {
+        "name": "Error",
+        "message": "Threw a sample exception",
+        "timestamp": 1587058642005
+      }
+    ]
+  }
+]
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h3 id="-worker-"><strong>使用动态分派将多个 Worker 链接在一起</strong></h3>
+	<p>在与我们一些早期客户合作的过程中，我们经常听到的另一个需求是在运行客户代码之前能够运行自己的代码。也许您想运行一层身份验证，清理输入或输出，或者是在下游提供有用的信息（如用户或帐户 ID）。</p>
+	<p>为此，您可能需要维护自己的 Worker。但是，当它执行完成后，您希望能够使用<em>客户的</em>代码调用下一个 Worker。</p>
+	<p>示例：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-js">let user_worker = dispatcher.get('customer-worker-123');
+let response = await user_worker.fetch(request);
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h3 id="--3"><strong>自定义域和更多功能！</strong></h3>
+	<p>上述功能只是本周我们为客户启用的新 Workers 功能，但我们的目标是提供构建平台所需的所有工具。例如，您可以结合使用 Workers for Platforms 和<a href="https://developers.cloudflare.com/ssl/ssl-for-saas/" target="_blank">Cloudflare for SaaS，以创建自定义域</a>。（敬请期待“更多功能”！）</p>
+	<h2 id="--4"><strong>如何获得？</strong></h2>
+	<p>与我们发布的任何新产品一样，毫无疑问，我们还有很多东西需要从客户及其用例中学习。因为我们希望为您提供支持，并确保您为成功做好准备，如果您有兴趣，我们很乐意了解您和您的用例，并为您提供所需的所有工具。首先，请<a href="https://www.cloudflare.com/lp/workers-for-platforms" target="_blank">填写我们的表格</a>，我们会与您联系。</p>
+	<p>同时，欢迎您查看我们的开发者文档，或在我们的 Discord 中打个招呼。</p>
+	<h2 id="--5"><strong>开始使用</strong></h2>
+	<p>五年前，我们自己也面临过这个问题——我们需要让客户能够以适合他们的方式来逐步增加使用我们的产品，所以我们在推出 Cloudflare Workers 时就是这样做的。允许我们的客户对我们的全局网络进行编程以满足他们的需求，这使我们的开发平台能够给予更多客户支持，同时使我们的工程团队能够专注于将最需要的定制服务转化为功能。</p>
+	<p>我们期待看到您的开发人员在您的平台上构建的内容（我们相信，您也会对开发人员所提出的您从未想象过的用例而感到惊讶），同时期待您的工程团队能够解决哪些问题！</p>
+</div>

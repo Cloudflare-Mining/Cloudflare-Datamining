@@ -1,0 +1,79 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image1-20.png" class="kg-image" alt="A New Hope for Object Storage: R2 enters open beta"></figure>
+	<p>Im September <a href="https://blog.cloudflare.com/introducing-r2-object-storage/">gaben wir bekannt</a>, dass wir an unserer eigenen Objektspeicherlösung arbeiten: Cloudflare R2. R2 ist unsere Antwort auf die horrenden Bandbreitengebühren der etablierten Cloud-Anbieter. Entwickler können so viele Daten speichern, wie sie wollen, ohne sich um die Kosten für den Zugriff auf diese Daten sorgen zu müssen.</p>
+	<p>Die Resonanz war überwältigend.</p>
+	<ul>
+		<li><strong>Die Rechnungen unabhängiger Entwickler</strong> waren zu niedrig, als dass Cloud-Anbieter mit ihnen faire Bandbreitengebühren hätten aushandeln können. Die Bandbreitengebühren waren der größte Posten auf ihren Cloud-Rechnungen. Sie waren ein massives Hindernis für Nebenprojekte und neue Geschäfte, die sie aufbauten.</li>
+		<li><strong>Große Unternehmen</strong> hatten Multi-Cloud-Storage – und damit Multi-Cloud selbst – als einen Wunschtraum abgeschrieben. Aufgeregt kamen sie zu uns, um uns neue Produkte vorzuschlagen, die Daten mit Partnerunternehmen integrieren würden.</li>
+		<li><strong>Gemeinnützige Forschungseinrichtungen</strong> zahlten hohe Gebühren, bloß um Experimentdaten untereinander auszutauschen. Die Bandbreitengebühren beeinträchtigten ihre Fähigkeit zur Zusammenarbeit, führten zu Silos zwischen den Organisationen und schränkten die Experimente und Analysen ein, die sie durchführen konnten.</li>
+	</ul>
+	<p>Cloudflare existiert, um ein besseres Internet zu schaffen. Heute bekommt das Internet, was es verdient: R2 ist jetzt im <a href="https://developers.cloudflare.com/r2/get-started/" target="_blank">Open Beta</a> verfügbar.</p>
+	<p>Kunden mit Self-Serve-Abonnement können R2 im Cloudflare-Dashboard aktivieren. Enterprise-Kunden können sich für das Onboarding an ihren CSM wenden.</p>
+	<h2 id="interne-und-externe-apis">Interne und externe APIs</h2>
+	<p>R2 hat zwei APIs: eine API, die nur von Workers aus zugänglich ist und die wir In-Worker-API nennen, und eine S3-kompatible API, die Ihren Bucket über eine URL der Form <a href="http://account.r2.cloudflarestorage.com/bucket" target="_blank">bucket.account.r2storage.com</a>. zugänglich macht. Bevor Sie Anfragen an R2 stellen können, müssen Sie authentifiziert werden – R2-Buckets sind standardmäßig privat.</p>
+	<h3 id="in-worker-api">In-Worker-API</h3>
+	<p>Mit der In-Worker-API wird ein Bucket an einen bestimmten Worker „gebunden“, der dann PUT-, GET-, DELETE- und LIST-Vorgänge mit dem Bucket durchführen kann.</p>
+	<h3 id="s3-kompatible-api">S3-kompatible API</h3>
+	<p>Bei der S3-kompatiblen API erfolgt die Authentifizierung auf die gleiche Weise wie bei S3: SigV4 gegenüber einer R2 URL. SigV4 signiert Anfragen mit einem geheimen Schlüssel, um sie gegenüber R2 zu authentifizieren. Das bedeutet, dass der öffentliche Zugang zu R2 über das Internet heute nur möglich ist, wenn Sie einen Worker hosten, ihn mit R2 verbinden und Anfragen über ihn weiterleiten.</p>
+	<p>Der einfachste Weg, die S3-kompatible API zu testen, ist die Verwendung eines S3-Clients. Einer der beliebtesten S3-Clients ist das <a href="https://boto3.amazonaws.com/v1/documentation/api/latest/index.html" target="_blank">boto3</a> SDK.</p>
+	<p>Kopieren Sie in Python das folgende Skript und füllen Sie die Felder <code>account_id</code>, <code>access_key</code>, und <code>secret_access_key</code> mit Ihren Anmeldedaten für das R2-Konto aus.</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>main.py
+import boto3
+
+s3 = boto3.resource('s3',
+  endpoint_url = 'https://&lt;accountid&gt;.r2.cloudflarestorage.com',
+  aws_access_key_id = '&lt;access_key_id&gt;',
+  aws_secret_access_key = '&lt;access_key_secret&gt;'
+)
+
+print('Buckets:')
+for bucket in s3.buckets.all():
+  print(' - ', bucket.name)
+
+bucket = s3.Bucket('my-bucket-name')
+
+print('Objects:')
+for item in bucket.objects.all():
+  print(' - ', item.key)
+
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h3 id="features">Features</h3>
+	<p>R2 bietet über seine beiden APIs Unterstützung für alle grundlegenden S3-Funktionen zum Erstellen/Lesen/Aktualisieren/Löschen.</p>
+	<p>Unser Ziel ist es, dass R2 während der Open Beta-Phase 1.000 GET-Vorgänge pro Sekunde und 100 PUT-Vorgänge pro Sekunde pro Bucket unterstützt. R2 unterstützt Objekte bis zu einer Größe von ca. 5 TB, wobei einzelne Teile auf 5 GB Daten begrenzt sind.</p>
+	<p>R2 bietet einen stark einheitlichen Zugriff auf Daten. Sobald ein PUT von R2 bestätigt wurde, werden zukünftige GET-Vorgänge immer das neue Schlüssel/Wert-Paar berücksichtigen. Die einzige Ausnahme ist das Löschen eines Bucket. Für eine kurze Zeit nach der Löschung kann der Bucket noch existieren und weiterhin Lese-/Schreibzugriffe zulassen.</p>
+	<h2 id="preise">Preise</h2>
+	<p>Als wir R2 ursprünglich vorgestellt haben, haben wir vorläufige Preisangaben gemacht. Eines unserer wichtigsten Ziele mit R2 war es, die Entwickler zu unterstützen, die keine großen Rabatte mit Cloud-Anbietern aushandeln können. Zu diesem Zweck kündigen wir auch eine kostenlose Tarifstufe an, die es Entwicklern ermöglicht, ohne jegliche Kosten auf R2 zu entwickeln.</p>
+	<p>Die R2-Gebühren hängen von der Gesamtmenge der gespeicherten Daten und der Art des Vorgangs ab, der mit den Daten durchgeführt wird:</p>
+	<ul>
+		<li>Der Preis für Speicherplatz beträgt $ 0,015/GB, pro Monat.</li>
+		<li>Vorgänge der Klasse A (einschließlich Schreibvorgänge und Listen) kosten $ 4,50/Million.</li>
+		<li>Vorgänge der Klasse B kosten $ 0,36 /Million.</li>
+	</ul>
+	<p>Vorgänge der Klasse A verändern in der Regel den Zustand, z.B. das Erstellen eines Buckets, das Auflisten von Objekten in einem Bucket oder das Schreiben eines Objekts. Operationen der Klasse B lesen in der Regel einen bestehenden Zustand, z.B. das Lesen eines Objekts aus einem Bucket. Weitere Informationen zur Preisgestaltung und eine vollständige Liste der Operationstypen finden Sie in der <a href="https://developers.cloudflare.com/r2/platform/pricing/" target="_blank">Dokumentation</a>.</p>
+	<p>Natürlich fallen für die ausgehende Bandbreite von R2 keine Gebühren an. Sie können nach Herzenslust auf Ihren Bucket zugreifen.</p>
+	<p>Die kostenlose Tarif-Stufe von R2 beinhaltet:</p>
+	<ul>
+		<li>10 GB-Monate an gespeicherten Daten</li>
+		<li>1.000.000 Vorgänge der Klasse A, pro Monat</li>
+		<li>10.000.000 Vorgänge der Klasse B, pro Monat</li>
+	</ul>
+	<p>Die kostenlose Nutzung wird jeden Monat zurückgesetzt. Während der Open-Beta-Phase wird die Nutzung von R2 über die kostenlose Tarif-Stufe hinaus in Rechnung gestellt.</p>
+	<h2 id="pl-ne-f-r-die-zukunft">Pläne für die Zukunft</h2>
+	<p>Wir haben die letzten sechs Monate in der geschlossenen Beta-Phase mit einer Reihe von Designpartnern verbracht, um unsere Speicherlösung zu entwickeln. Die neuartige Architektur von R2, die von Durable Objects unterstützt wird, bietet sowohl hohe Verfügbarkeit als auch beständige Performance.</p>
+	<p>Wir haben zwar große Fortschritte bei R2 gemacht, aber wir haben in den kommenden Monaten noch viel zu tun.</p>
+	<h3 id="verbessern-der-performance">Verbessern der Performance</h3>
+	<p>Unsere oberste Priorität ist es, die <strong>Performance und Zuverlässigkeit zu verbessern</strong>. Wir haben R2 intern genutzt und die Anforderungen unseres Designpartners berücksichtigt. Es gibt jedoch keinen Ersatz für Live-Produktionstraffic.</p>
+	<p>Während der OpenBeta-Phase kann R2 maximal 1.000 GET-Vorgänge pro Sekunde und 100 PUT-Vorgänge pro Sekunde pro Bucket verarbeiten. Wir werden versuchen, diese Grenzen zu erhöhen, sobald wir uns mit dem System vertraut gemacht haben. Sie benötigen mehr? Dann wenden Sie sich an uns!</p>
+	<p>Wenn Sie einen Bucket erstellen, werden Sie keinen Regler für die Regionenauswahl sehen. Unsere Vision für R2 beinhaltet eine automatische, global verteilte Speicherung, bei der R2 jedes Objekt nahtlos in der Speicherregion platziert, die der Region, aus der die Anfrage kommt, am nächsten liegt. Heute speichert R2 hauptsächlich Daten in Nordamerika, was zu höheren Latenzen beim Zugriff auf Inhalte aus anderen Regionen führen kann. Wir werden zunächst versuchen, dieses Problem zu lösen, indem wir zusätzliche Regionen hinzufügen, in denen Objekte erstellt werden können, bevor wir die automatische Migration bestehender Objekte zwischen den Regionen hinzufügen. Ähnlich wie bei den <a href="https://blog.cloudflare.com/supporting-jurisdictional-restrictions-for-durable-objects/">Rechtsraumbeschränkungen für Durable Objects</a>, werden wir auch die Möglichkeit schaffen, den Speicherort von Daten in einem R2-Bucket zu beschränken, um Datenschutzbestimmungen einzuhalten.</p>
+	<h3 id="erweiterung-des-funktionsumfangs-von-r2">Erweiterung des Funktionsumfangs von R2</h3>
+	<p>Anschließend werden wir uns auf die Erweiterung der R2-Funktionen über die grundlegende S3-API hinaus konzentrieren. In nächster Zeit konzentrieren wir uns auf das Ausrollen von:</p>
+	<ul>
+		<li>Unterstützung für TTLs, so dass Daten im Laufe der Zeit automatisch aus Buckets gelöscht werden können.</li>
+		<li>Öffentliche Buckets, so dass ein Bucket dem Internet zugänglich gemacht werden kann, ohne einen Worker zu schreiben</li>
+		<li>Unterstützung von vorsignierten URLs, die den Lese- und Schreibzugriff für einen bestimmten Schlüssel an ein Token delegieren.</li>
+		<li>Integration mit dem Cache von Cloudflare, um Leseanfragen zu skalieren und eine globale Verteilung der Daten zu ermöglichen.</li>
+	</ul>
+	<p>Wenn Sie zusätzliche Funktionswünsche haben, die oben nicht aufgeführt sind, möchten wir von Ihnen hören! Treten Sie unserem <a href="https://discord.gg/Z29YjNjxhQ" target="_blank">Discord</a> bei und teilen Sie uns im r2-open-beta-Kanal mit, was Sie brauchen, um R2 zu Ihrem neuen Objektspeicher ohne Bandbreitenkosten zu machen.</p>
+</div>

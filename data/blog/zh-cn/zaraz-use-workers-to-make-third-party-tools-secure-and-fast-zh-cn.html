@@ -1,0 +1,131 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image4-14.png" class="kg-image" alt="Zaraz use Workers to make third-party tools secure and fast"></figure>
+	<p>我们在 2020 年 3 月底左右决定创建 Zaraz。我们当时正在处理另一个产品，并注意到大家都在向我们询问在其网站上有许多第三方会带来什么性能影响。第三方内容是当今大多数网站的重要组成部分，用于支持分析、聊天机器人、转换像素、小部件 — 等等等等，应有尽有。第三方的定义是在主要的站点/用户关系之外托管的一个资产（通常是 JavaScript），它不受站点所有者直接控制，但经过“批准”才出现。<a href="https://blog.cloudflare.com/zh-cn/cloudflare-acquires-zaraz-to-enable-cloud-loading-of-third-party-tools-zh-cn/">Yair 详细描述了测量这些第三方工具的影响的过程，以及我们如何助推我们的初创企业起步</a>，但我想描述的是我们如何构建了 Zaraz，以及它在幕后实际做了什么工作。</p>
+	<p>第三方的优势在于让您将现成的解决方案集成到网站中，而您几乎不需要编写任何代码。至于分析功能？只需丢下这个代码片段即可。聊天小部件？只需添加这一项即可。第三方供应商通常会指导您如何添加其工具，在此之后，一切都应该正常运作。对吧？但是，当您添加第三方代码时，它通常会从远程来源获取更多代码，这意味着您越来越难以掌控访问者的浏览器中发生的情况。您的网站上有这么多第三方，如何能够保证它们都没有被入侵，没有开始<a href="https://www.theregister.com/2018/12/12/ticketmaster_denies_fault_website_magecart_infection/" target="_blank">盗窃信息</a>、<a href="https://www.wired.co.uk/article/browsealoud-ico-texthelp-cryptomining-how-cryptomining-work" target="_blank">开采加密货币</a>或在您访问者的计算机上记录按键操作？</p>
+	<p>这甚至不必是蓄意的入侵。随着我们调查越来越多的第三方工具，我们注意到一种模式 — 有时第三方供应商收集全部信息比有所选择或审慎地收集信息更容易。用户电子邮件往往会传输到第三方工具，这可能很容易使网站所有者因违反 GDPR、CCPA 或类似法规而陷入麻烦。</p>
+	<h2 id="-"><strong>当今第三方工具的工作方式</strong></h2>
+	<p>通常，当您将第三方添加到网页时，系统会要求您将一段 JavaScript 代码添加到 HTML 的 &lt;head&gt; 中。Google Analytics 绝对是最热门的第三方，所以我们来看一下它是如何添加的：</p>
+	<pre><code class="language-HTML">&lt;!-- Google Analytics --&gt;
+&lt;script&gt;
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-XXXXX-Y', 'auto');
+ga('send', 'pageview');
+&lt;/script&gt;
+&lt;!-- End Google Analytics --&gt;</code></pre>
+	<p>在此情况中，以及其他大多数情况中，您实际粘贴的片段会调用更多 JavaScript 代码来执行。上述片段创建了新的 &lt;script&gt; 元素，为其提供 https://www.google-analytics.com/analytics.js src 属性，并将其附加到 DOM。然后，浏览器加载 analytics.js 脚本，该脚本包含其该片段本身更多的 JavaScript 代码，并且有时会要求浏览器下载更多脚本，有些脚本比 analytics.js 本身还大。但是，目前为止，还完全没有捕获到任何分析数据，不过这正是您最初添加 Google Analytics 的原因。</p>
+	<p>片段中的最后一行 ga('send', 'pageview'); 使用 analytics.js 文件中定义的函数最终 send（发送）pageview（页面浏览）。需要该函数是因为，正是它在捕获分析数据 — 它获取浏览器的种类、屏幕分辨率、语言，等等。然后，它构造包含所有数据的 URL，并向此 URL 发送请求。只有在此步骤之后，才会捕获分析信息。您使用 Google Analytics 记录的每个用户行为事件都会产生另一个请求。</p>
+	<p>现实情况是，绝大部分工具包含多个资源文件，如果不在网站上进行测试，基本上不可能提前知道某个工具会加载什么内容。您可以使用 <a href="https://requestmap.webperf.tools/" target="_blank">Request Map Generator</a> 获取您网站上加载的所有资源的直观表示，包括它们如何相互调用。下面是我们创建的演示电子商务网站的 Request Map：</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/12/image6-6.png" class="kg-image" alt="a chart showing all the resources fetched when downloading an example website. The map shows how one resource can end up in a chain of other external resources, that are often coming from untrusted servers and responding with very large payloads."></figure>
+	<p>那个蓝色的大圆圈是我们网站的资源，其他所有圆圈是第三方工具。您可以看到，绿色的大圆圈实际上是 Facebook 主要像素 (fbevents.js) 的子请求，许多工具（如右上方的 LinkedIn）在创建重定向链，以便同步一些数据，这样做的代价是迫使浏览器发出越来越多的网络请求。</p>
+	<h2 id="--1"><strong>运行标记管理器的新地方 — 边缘</strong></h2>
+	<p>由于我们想让第三方运行更快速、更安全并保持私密，因此我们必须采用全新的方法来考虑它们，并针对其运行方式采用新的系统。我们想出了一种方案：构建一个平台，其中第三方可以在浏览器外部运行代码，同时仍可访问所需的信息，并能够根据需要与 DOM 通信。我们并不认为第三方是恶意的：它们并不想拖慢大家的互联网，它们只是别无选择。能够在边缘上运行代码并且快速运行，这带来了新的可能，彻底改变了现状，但过渡并不容易。</p>
+	<p>通过迁移第三方代码以在浏览器外部运行，我们可以赢得多方面好处。</p>
+	<ul>
+		<li>网站加载更快，交互性更高。渲染您的网站的浏览器现在可以专注于最重要的事情 — 您的网站。所有第三方脚本的下载、解析和执行将不再阻挠网站的渲染和交互，也不会与之相竞争。</li>
+		<li>轻松掌控发送到第三方的数据。第三方工具经常自动从网页和浏览器收集信息，以测量站点行为/使用情况，等等。在许多情况下，<a href="https://www.backblaze.com/blog/privacy-update-third-party-tracking/" target="_blank">此信息应该保持私密</a>。例如，大多数工具会收集 document.location，但我们经常看到“重置密码”页面在 URL 中包括用户电子邮箱，这意味着第三方提供商常常在未经用户同意的情况下无意中发送和保存了电子邮箱。将第三方的执行迁移到边缘意味着，我们可以为完全了解所发送的内容。这意味着，我们可以提供警报和过滤器，以防工具试图收集个人可识别信息，或者在数据到达第三方服务器之前屏蔽数据的私密部分。此功能目前在公共测试版上不可用，但如果您想立即开始使用该功能，请联系我们。</li>
+		<li>通过减少浏览器中执行的代码量并扫描浏览器中执行的所有代码，我们可以持续验证代码是否未被篡改，以及代码是否仅执行预期的任务。我们正在设法将 Zaraz 与 <a href="https://www.cloudflare.com/page-shield/" target="_blank">Cloudflare Page Shield</a> 连接来自动执行此工作。</li>
+	</ul>
+	<p>当您通过普通标记管理器配置第三方工具时，您的访问者的浏览器中会发生不受您控制的许多事情。标记管理器会加载并评估所有触发器规则，以决定加载哪些工具。它通常会将这些工具的脚本标记附加到网页的 DOM，让浏览器获取脚本并加以执行。这些脚本来自不受信任或未知的来源，增加了在浏览器中执行恶意代码的风险。在它们完全执行之前，浏览器也无法提供交互。它们往往能够在浏览器中为所欲为，但最常见的情况是，它们会收集一些信息，并将其发送到第三方服务器上的某个端点。利用 Zaraz，浏览器基本上避免了上述所有情况。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/BLOG-713---Pageload.png" class="kg-image"></figure>
+	<h2 id="-cloudflare-workers"><strong>选择 Cloudflare Workers</strong></h2>
+	<p>当我们着手编写 Zaraz 的代码时，我们很快明白，我们的基础结构决策会对我们的服务产生深远影响。事实上，选择错误的基础结构可能导致我们完全没有服务。Zaraz 的最常见替代选项是传统的标记管理软件。这些软件往往没有服务器端组件：每当用户“发布”配置时，将渲染一个 JavaScript 文件并将其作为静态资产托管在 CDN 上。利用 Zaraz，基本思路是将大部分代码评估工作迁移到浏览器外部，并且每次使用动态生成的 JavaScript 代码进行响应。我们需要找到一种解决方案，既允许我们拥有服务器端组件，又能像 CDN 一样快速。否则，我们可能面临的风险是网站变慢而不是更快。</p>
+	<p>我们需要从靠近访客用户的地方提供 Zaraz。作为初出茅庐的初创企业，安装遍布全世界的服务器太不切合实际，因此我们考察了几个分布式无服务器平台。我们在搜寻合适的平台时，有几个要求：</p>
+	<ul>
+		<li><strong>运行 JavaScript：</strong>第三方工具全都使用 JavaScript。如果我们要移植这些工具以在云环境中运行，能够使用 JavaScript，移植起来最轻松。</li>
+		<li><strong>安全：</strong>我们会处理敏感数据。我们承受不起他人入侵我们的 EC2 实例的风险。我们希望确保数据在我们发送 HTTP 响应之后不会保留在某个服务器上。</li>
+		<li><strong>完全可编程：</strong>一些 CDN 允许设置复杂的规则来处理请求，但修改 HTTP 标头、设置重定向或 HTTP 响应代码是不够的。我们需要动态生成 JavaScript 代码，这意味着我们需要完全控制响应。我们还需要使用一些外部 JavaScript 库。</li>
+		<li><strong>极其快速、全球分布：</strong>在公司的最早阶段，我们就已经在美国、欧洲、印度和以色列获得客户。随着我们准备向客户展示概念证明，我们需要确保无论客户在哪里都能快速运行。我们的竞争对手是标记管理器和客户数据平台，它们的响应时间相当快，所以我们需要能够像内容在 CDN 上静态托管一样快，甚至更快。</li>
+	</ul>
+	<p>最初，我们以为需要创建将在全世界运行并将使用其自己的 HTTP 服务器的 Docker 容器，但我们的 Y Combinator 批次的一位朋友说，我们应该考察一下 Cloudflare Workers。</p>
+	<p>起初，我们以为这行不通 — Workers 的运作方式不同于 Node.js 应用程序，我们感觉这种局限会使我们无法构建我们想要的东西。我们计划让 Workers 处理来自用户的浏览器的请求，然后将 AWS Lambda 用于实际处理数据并将其发送到第三方供应商的繁重工作。</p>
+	<p>我们首次尝试使用 Workers 时，想法非常简单：仅仅确认我们可以使用它来实际返回动态生成的动态浏览器端 JavaScript：</p>
+	<pre><code class="language-JavaScript">addEventListener('fetch', (event) =&gt; {
+ event.respondWith(handleRequest(event.request))
+})
+ 
+async function handleRequest(request) {
+   let code = '(function() {'
+  
+   if (request.headers.get('user-agent').includes('Firefox')) {
+     code += `console.log('Hello Firefox!');`
+   } else {
+     code += `console.log('Hey other browsers...');`
+   }
+  
+   code += '})();'
+  
+   return new Response(code, {
+     headers: { 'content-type': 'text/javascript' }
+   });
+}
+</code></pre>
+	<p>这是个很小的示例，但我记得后来给 Yair 打电话说：“这可能实际上行得通！”这证明了 Workers 的灵活性很高。我们只是创建了一个提供 JavaScript 文件的端点，此 JavaScript 文件是动态生成的，并且响应时间不到 10 毫秒。我们现在可以将 &lt; <code>script src="path/to/worker.js"</code> &gt; 放入我们的 HTML，并将此 Worker 视为普通的 JavaScript 文件进行处理。</p>
+	<p>我们在深入钻研之后，发现 Workers 能够满足我们一项接一项的要求，我们甚至可以在 Workers 中实现最复杂的事情。Lambda 函数开始承担越来越少的工作，最终被删除了。我们的小 Node.js 概念证明轻松转换为 Workers。</p>
+	<h2 id="-cloudflare-workers-"><strong>使用 Cloudflare Workers 平台：“站在巨人的肩膀上”</strong></h2>
+	<p>当我们早期融资时，我们听到了很多质疑，比如“如果这能起作用，为什么以前不弄呢？”我们经常说，虽然这个问题由来已久，但可访问的边缘计算是一种新情况。后来，在创建原型后的第一次投资者知情会上，我们告诉他们我们设法实现了令人难以置信的快速响应时间，并因此得到了许多赞誉 — 而我们认为我们是“站在了巨人的肩膀上”。Workers 简单勾选了所有方框。运行 JavaScript 并使用与浏览器相同的 V8 引擎，意味着我们在将工具移植到云端运行时，可以保持相同的环境（这也有助于雇用）。这也为以后使用 WebAssembly 完成某些任务开启了可能性。Workers 默认不使用服务器且没有状态，这个事实是一个卖点，可说明我们很值得信赖：我们告诉客户，即便在出错的情况下，我们也不会保存他们的个人数据，这也是事实。Webpack 和 Wrangler 之间的整合意味着我们可以编写一个全面的应用程序（采用模块并具有外部依赖性），以将我们的逻辑 100% 转移到 Worker 中。而且，这种性能帮助我们在所有演示中取得了胜利。</p>
+	<p>在我们创建 Zaraz 的过程中，Workers 平台也变得更加先进。我们最终使用 Workers KV 来存储用户配置，并使用 Durable Objects 在不同 Workers 之间进行通信。我们的主 Worker 可在服务器端执行 50 多款常用第三方工具，取代了传统上在浏览器内运行的数十万行 JavaScript 代码。可使用的第三方工具越来越多，而且我们最近还发布了 SDK，允许第三方供应商自己建立对其工具的支持。这些供应商第一次可以在一个安全、私密和快速的环境中执行这一操作。</p>
+	<h2 id="--2"><strong>构建第三方工具的新方法</strong></h2>
+	<p>大多数第三方工具会执行两个基本操作：首先，这些工具将从浏览器收集一些信息，如屏幕分辨率、当前 URL、页面标题或 cookie 内容。其次，这些工具将会把信息发送到其服务器。这通常很简单，但如果网站有几十个这样的工具且每个工具都去查询其所需要的信息并发送请求，就会造成大幅减速。在 Zaraz 上，情况会明显不同。每个工具都提供 run 函数，当 Zaraz 评估用户请求并决定加载工具时，就会执行这个 run 函数。这就是我们为 50 多个不同工具建立集成代码的方式，这些工具都来自不同的类别，这也是我们邀请第三方供应商将他们自己的集成代码写入 Zaraz 的方式。</p>
+	<pre><code class="language-JavaScript">run({system, utils}) { 
+  // The `system` object includes information about the current page, browser, and more 
+  const { device, page, cookies } = system
+  // The `utils` are a set of functions we found useful across multiple tools
+  const { getCookieString, waitUntil } = utils
+
+  // Get the existing cookie content, or create a new UUID instead
+  const cookieName = 'visitor-identifier'
+  const sessionCookie = cookies[cookieName] || crypto.randomUUID()
+
+  // Build the payload
+  const payload = {
+    session: sessionCookie,
+    ip: device.ip,
+    resolution: device.resolution,
+    ua: device.userAgent,
+    url: page.url.href,
+    title: page.title,
+  }
+
+  // Construct the URL
+  const baseURL = 'https://example.com/collect?'
+  const params = new URLSearchParams(payload)
+  const finalURL = baseURL + params
+
+  // Send a request to the third-party server from the edge
+  waitUntil(fetch(finalURL))
+  
+  // Save or update the cookie in the browser
+  return getCookieString(cookieName, sessionCookie)
+}
+</code></pre>
+	<p>以上代码在我们的 Cloudflare Worker 中运行，而不是在浏览器中运行。以前，拥有多 10 倍的工具意味着浏览器在渲染网站时需要提出多 10 倍的请求，并评估多 10 倍的 JavaScript 代码。这段代码通常是重复的，例如，几乎每个工具都会去执行自己的“获取 cookie”功能。而且，您必须相信没有人篡改多 10 倍的源站。在边缘上运行工具时，这完全不会影响到浏览器：您可以添加自己想要的工具，但这些工具不会在浏览器中加载，因此不会有任何影响。</p>
+	<p>在本例中，我们先检查是否存在一个可识别会话且名为“visitor-identifier”的 cookie。如果存在，我们就读取其值；如果不存在，我们就为其生成一个新的 UUID。请注意，Workers 的功能在这里都可以使用：我们使用 crypto.randomUUID()，就像我们可以使用任何其他 Workers 功能一样。然后，我们将收集示例工具所需的所有信息（用户代理、当前 URL、页面标题、屏幕分辨率、客户端 IP 地址）和“visitor-identifier”cookie 的内容。我们将构建 Worker 需要发送请求的最终 URL，然后使用 waitUntil 确保将请求送达到那里。Zaraz 的 fetch 版本为我们的工具提供了自动记录、防止数据丢失和重试功能。</p>
+	<p>最后，我们将返回 getCookieString 函数的值。无论 run 函数返回什么字符串，都会作为浏览器端的 JavaScript 传送给访问者。在这种情况下，getCookieString 将返回类似 document.cookie = 'visitor-identifier=5006e6fa-7ce6-45ef-8724-c846f1953369; Path=/; Max-age=31536000'; 这样的代码，导致浏览器创建第一方 cookie。用户下次加载页面时，visitor-identifier cookie 应存在，导致 Zaraz 重新使用 UUID，而不是创建一个新的 UUID。</p>
+	<p>这个 run 组成的系统允许我们对每个工具进行分离和隔离，使其独立于系统的其他部分运行，同时仍为其提供来自浏览器的所有必要的上下文和数据以及 Workers 的功能。我们目前正邀请第三方供应商与我们合作，共同为安全、私有和快速的第三方工具打造一片未来。</p>
+	<h2 id="--3"><strong>新型事件系统</strong></h2>
+	<p>很多第三方工具需要在用户访问期间收集行为信息。例如，您可能想在用户点击信用卡表格上的“提交”后立即放置一个对话像素。我们将工具转移到了云端，因此您无法再从浏览器上下文中访问工具库。为此，我们创建了 zaraz.track() — 这种方法允许您以编程方式调用工具，并可选择向其提供更多信息：</p>
+	<pre><code class="language-JavaScript">document.getElementById("credit-card-form").addEventListener("submit", () =&gt; {
+  zaraz.track("card-submission", {
+    value: document.getElementById("total").innerHTML,
+    transaction: "X-98765",
+  });
+});</code></pre>
+	<p>在本例中，我们让 Zaraz 了解一个名为“card-submission”的触发器，并将一些数据与之相关联 — 即我们从带有 ID total 的元素那里获取的交易 value 以及一个硬编码的交易代码（直接从我们的后台打印出来）。</p>
+	<p>在 Zaraz 界面中，配置的工具可以订阅多种不同的触发器。当触发以上代码后，Zaraz 将在边缘检查哪些工具订阅了 card-submission 触发器，然后在提供正确附加数据的情况下调用这些触发器，并用交易代码及其值填充其请求。</p>
+	<p>这与传统标签管理器的工作方式有所不同：GTM 的 dataLayer.push 与其作用相似，但在客户端进行评估。其结果是，当大量使用 GTM 时，其脚本会大幅增多，以至于它可以成为一个网站加载的负荷最重的工具。每一个使用 dataLayer.push 发送的事件都会引起浏览器中代码的重复评估，而每一个与评估相匹配的工具都会在浏览器中执行代码，并可能再次调用更多的外部资产。这些事件通常与用户互动同时发生，并且运行工具占用了主线程，因此往往会使网站互动的速度变慢，有了 Zaraz 后，可将这些工具放在边缘上并对其进行评估，进而提高了网站的速度和安全性。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/unnamed-7.png" class="kg-image"></figure>
+	<p>无需是程序员就能使用触发器。Zaraz 仪表板允许您在一组预定义的模板中进行选择（如点击侦听器、滚动事件等），您可以将其附加到网站上的任何元素，而无需触碰代码。当您将 zaraz.track() 与您自己的工具编程能力相结合时，基本上就相当于将 Workers 简短地集成于您的网站之中。您可以编写任何所需的后端代码，Zaraz 将负责在正确的时间用正确的参数对其进行调用。</p>
+	<h2 id="-cloudflare"><strong>加入 Cloudflare</strong></h2>
+	<p>当新客户开始使用 Zaraz 时，我们注意到一种情况：与我们合作过的最佳团队选择了 Cloudflare，有些团队还将一部分后台基础设施转移到了 Workers。我们认为我们也可以为使用 Cloudflare 的公司进一步改善性能和集成效果。我们可以在页面内部对部分代码进行内联，然后进一步减少网络请求的数量。集成同时也允许我们消除 DNS 解析脚本时所需的时间，因为我们可以使用 Workers 将 Zaraz 代理到我们客户的域中。集成 Cloudflare 使我们的产品更具竞争力。</p>
+	<p>我们在 2020 年冬天制作 Y Combinator 时，意识到第三方工具对网站性能的影响可能会很大。我们看到了我们面前的一项伟大使命：即通过减少第三方工具的数量，打造出一个更快速、更私密、更安全的网络。这个使命到今天仍然没有改变。随着与 Cloudflare 用户的对话愈加深入，我们很兴奋地意识到，我们正在与拥有相同愿景的人沟通交流。我们非常激动能有机会将我们的解决方案扩展到互联网上的数百万家网站，并使其更快速、更安全，甚至还能减少碳排放。</p>
+	<p>如果您希望体验免费测试版， <a href="https://dash.cloudflare.com/?to=/:account/:zone/zaraz" target="_blank">请点击这里</a>。如果您是企业并有其他/定制要求，请 <a href="https://www.cloudflare.com/cloudflare-zaraz-third-party-tool-manager-waitlist/" target="_blank">点击这里</a> 以加入等候名单。要加入我们的 Discord 频道，请<a href="https://discord.gg/cGDT6PdVyd" target="_blank">点击这里</a>。</p>
+	<p><a href="https://twitter.com/intent/tweet?in_reply_to=1468586664830377986" target="_blank"><strong>在 Twitter 上讨论</strong></a><a href="https://news.ycombinator.com/item?id=29485628" target="_blank"><strong> 在 Hacker News 上讨论</strong></a><a href="https://reddit.com/r/CloudFlare/comments/rbsdo0/zaraz_use_workers_to_make_thirdparty_tools_secure/" target="_blank"><strong> 在 Reddit 上讨论</strong></a></p>
+	<p><a href="https://blog.cloudflare.com/tag/cio-week/">CIO Week</a> <a href="https://blog.cloudflare.com/tag/workers/">Cloudflare Workers</a></p>
+	<p>在 Twitter 上关注 Cloudflare</p>
+	<p>Yo'av Moshe |<a href="https://twitter.com/@yoavmoshe" target="_blank">@yoavmoshe</a></p>
+	<p>Cloudflare 丨<a href="https://twitter.com/Cloudflare" target="_blank">Cloudflare</a><br></p>
+</div>

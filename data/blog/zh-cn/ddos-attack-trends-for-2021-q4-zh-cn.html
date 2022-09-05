@@ -1,0 +1,107 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/01/image3-1-4.png" class="kg-image" alt="2021 年第三季度 DDoS 攻击趋势"></figure>
+	<p>2021 年上半年出现了大规模的勒索软件和勒索 DDoS 攻击活动，导致世界各地的关键基础设施频繁中断（包括美国最大的管道系统运营商之一），在一个针对学校、公共领域、旅游组织和信用联盟等的<a href="https://csirt.divd.nl/2021/07/03/Kaseya-Case-Update/" target="_blank"> IT 管理软件曝光了一个漏洞</a>。</p>
+	<p>到了下半年，有史以来最强大的僵尸网络之一（<a href="https://blog.cloudflare.com/meris-botnet/">Meris</a>）变本加厉，Cloudflare 网络上观察到的 <a href="https://blog.cloudflare.com/zh-cn/cloudflare-thwarts-17-2m-rps-ddos-attack-the-largest-ever-reported-zh-cn/">HTTP DDoS 攻击</a>和<a href="https://blog.cloudflare.com/cloudflare-blocks-an-almost-2-tbps-multi-vector-ddos-attack/">网络层攻击</a>均刷新了记录。此外，12 月曝光的 <a href="https://blog.cloudflare.com/zh-cn/inside-the-log4j2-vulnerability-cve-2021-44228-zh-cn/">Log4j2 漏洞</a>（CVE-2021-44228）允许攻击者在远程服务器上执行代码——可谓自 <a href="https://blog.cloudflare.com/tag/heartbleed/">Heartbleed</a> 和 <a href="https://blog.cloudflare.com/inside-shellshock/">Shellshock</a> 曝光以来互联网上最严重的漏洞之一。</p>
+	<p>以上列举的主要网络攻击只是少数几个例子，表明网络安全方面存在一种不断加剧的趋势，从科技公司、政府机构到酒厂和肉类加工厂，所有组织都受到了影响。</p>
+	<p>如下为 2021 年、尤其是 2021 年第四季度的一些 <a href="https://www.cloudflare.com/zh-cn/learning/ddos/what-is-a-ddos-attack/" target="_blank">DDoS 攻击</a>趋势：</p>
+	<h3 id="ddos-">DDoS 勒索攻击</h3>
+	<ul>
+		<li>在第四季度，<a href="https://www.cloudflare.com/zh-cn/learning/ddos/ransom-ddos-attack/" target="_blank">勒索 DDoS 攻击</a>同比增长了 29%，环比增长了 175%。</li>
+		<li>仅 12 月而言，三分之一的受访者称自己遭受到一次勒索 DDoS 攻击或收到攻击者的威胁。</li>
+	</ul>
+	<h3 id="-ddos-">应用层 DDoS 攻击</h3>
+	<ul>
+		<li>制造业是 2021 年第四季度期间受到最多攻击的行业，攻击数量较上一个季度大幅增长了 641%。针对商业服务业和游戏/博彩业的攻击数量分别居第二和第三位。</li>
+		<li>今年以来，源于中国网络的攻击流量来源占比连续第四次高居榜首。</li>
+		<li>一个名为 <a href="https://blog.cloudflare.com/meris-botnet/">Meris 僵尸网络</a> 的新僵尸网络于 2021 年中出现，并继续肆意攻击世界各地的组织，发动了一些历来最大规模的 HTTP 攻击，包括一次 <a href="https://blog.cloudflare.com/zh-cn/cloudflare-thwarts-17-2m-rps-ddos-attack-the-largest-ever-reported-zh-cn/">1720 万 rps 的攻击（被 Cloudflare 自动缓解）</a>。</li>
+	</ul>
+	<h3 id="-ddos--1">网络层 DDoS 攻击</h3>
+	<ul>
+		<li>2021 年第四季度是 2021 年攻击最活跃的一个季度。仅 2021 年 12 月观察到的攻击数量就超过 2021 年第一季度、第二季度各自的攻击总数。</li>
+		<li>虽然大多数攻击规模较小，但 TB 级攻击在 2021 年下半年成为新常态。Cloudflare 自动缓解了数十次峰值超过 1 Tbps 的攻击，其中最大规模的一次接近 <a href="https://blog.cloudflare.com/cloudflare-blocks-an-almost-2-tbps-multi-vector-ddos-attack/">2 Tbps ，为我们见过的最大攻击</a>。</li>
+		<li>在 2021 年第四季度，尤其是 11 月，世界各地持续出现<a href="https://blog.cloudflare.com/update-on-voip-attacks/">针对 VoIP 提供商的勒索 DDoS 攻击活动</a>。</li>
+		<li>2021 年第四季度期间，源于摩尔多瓦的攻击较前一个季度翻了两番，使其成为网络层 DDoS 攻击活动占比最高的国家。</li>
+		<li><a href="https://www.cloudflare.com/zh-cn/learning/ddos/syn-flood-ddos-attack/" target="_blank">SYN 洪水</a>和<a href="https://www.cloudflare.com/zh-cn/learning/ddos/udp-flood-ddos-attack/" target="_blank">UDP 洪水</a> 为最常见的攻击手段，而 SNMP 攻击等新兴威胁环比增长接近 5800%。</li>
+	</ul>
+	<p>本报告是基于 Cloudflare DDoS 防护系统自动检测并缓解的 DDoS 攻击。如需进一步了解其工作原理，请查看<a href="https://blog.cloudflare.com/zh-cn/deep-dive-cloudflare-autonomous-edge-ddos-protection-zh-cn/">这篇深入剖析的博客文章</a>。</p>
+	<h3 id="-ddos--2">简要说明一下我们如何测量在我们网络上观察到的 DDoS 攻击。</h3>
+	<p>为分析攻击趋势，我们计算 “DDoS 活动”率，即攻击流量占我们全球网络观察到的总流量（攻击+干净）的百分比。通过测量攻击流量占观察到的总流量的百分比，我们能够对数据点进行标准化，并避免绝对数字所反映出来的偏差，例如，如果某个 Cloudflare 数据中心接收到更多流量，则其也可能受到更多攻击。 </p>
+	<p>本报告的交互式版本可在 Cloudflare Radar 查看。</p>
+	<h2 id="-">勒索攻击</h2>
+	<p>我们的系统持续分析流量，并在检测到 DDoS 攻击时自动应用缓解措施。每个遭受 DDoS 攻击的客户都会收到自动调查的提示，以帮助我们更好地了解攻击的性质和缓解是否成功。 </p>
+	<p>两年多来，Cloudflare 一直对受到攻击的客户进行调查，其中一个问题是客户是否收到勒索信，要求其支付赎金来换取停止 DDoS 攻击。2021 年第四季度期间录得的勒索威胁调查回应为历来最高水平，显示勒索攻击同比增长了 29%，环比增长了 175%。具体而言，22% 的受访者表示收到攻击者要求支付赎金的勒索信。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/01/image9.png" class="kg-image" alt="（图）勒索攻击按季度分布情况">
+		<figcaption><strong>受访者中报称遭受勒索 DDoS 攻击或在攻击前收到威胁的百分比。</strong></figcaption>
+	</figure>
+	<p>按月分析数据，我们可以看到，2021 年 12 月高居榜首，期间有接近三分之一（32%）的受访者报称收到勒索信。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/01/unnamed.png" class="kg-image" alt="各月份的勒索攻击图" title="Chart"></figure>
+	<h2 id="-ddos--3">应用层 DDoS 攻击</h2>
+	<p><a href="https://www.cloudflare.com/zh-cn/learning/ddos/application-layer-ddos-attack/" target="_blank">应用层 DDoS 攻击</a>，特别是 HTTP DDoS 攻击，旨在通过使 HTTP 服务器无法处理合法用户请求来破坏它。如果服务器收到的请求数量超过其处理能力，服务器将丢弃合法请求甚至崩溃，导致对合法用户的服务性能下降或中断。<br></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/01/image13.png" class="kg-image"></figure>
+	<h2 id="-ddos--4">应用层 DDoS 攻击：行业分布</h2>
+	<p><strong>在第四季度，针对制造业公司的 DDoS 攻击环比增长了 641%，针对商业服务业的攻击环比增长了 97%。</strong></p>
+	<p>按行业分析应用层攻击，2021 年第四季度期间受到最多攻击的是制造业、商业服务业和游戏/博彩业。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/01/image12.png" class="kg-image" alt="（图）第四季度 HTTP DDoS 攻击按行业分布"></figure>
+	<h2 id="-ddos--5">应用层 DDoS 攻击：来源国家/地区分布</h2>
+	<p>为了解 HTTP 攻击的来源，我们查看产生攻击 HTTP 请求的客户端的源 IP 地址。与网络层攻击不同，HTTP 攻击中的源 IP 无法<a href="https://www.cloudflare.com/zh-cn/learning/ddos/glossary/ip-spoofing/" target="_blank">假冒</a>。特定国家/地区的高 DDoS 活动率通常表明有僵尸网络在其境内运行。</p>
+	<p>源于中国境内的 DDoS 攻击占比连续第四个季度居首位。每 1000 个来自中国的 HTTP 请求中，超过 3 个是 HTTP DDoS 攻击的一部分。美国依然居第二位，其次为巴西和印度。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/01/image18.png" class="kg-image" alt="（图）第四季度 HTTP DDoS 攻击按来源国家/地区分布"></figure>
+	<h2 id="-ddos--6">应用层 DDoS 攻击：目标国家/地区分布</h2>
+	<p>为确定哪些国家/地区遭受到最多攻击，我们按客户的账单国家/地区统计 DDoS 攻击，并计算占 DDoS 攻击总数的百分比。</p>
+	<p>位于美国的组织今年连续第三次成为 HTTP DDoS 攻击的最大目标，其次为加拿大和德国。 </p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/01/image8.png" class="kg-image" alt="（图）第四季度 HTTP DDoS 攻击按目标国家/地区分布"></figure>
+	<h2 id="-ddos--7">网络层 DDoS 攻击</h2>
+	<p>应用层攻击的目标是最终用户尝试访问的服务所在的应用程序（<a href="https://www.cloudflare.com/zh-cn/learning/ddos/glossary/open-systems-interconnection-model-osi/" target="_blank">OSI 模型</a>的第 7 层），而<a href="https://www.cloudflare.com/zh-cn/learning/ddos/layer-3-ddos-attacks/" target="_blank">网络层攻击</a>以网络基础结构（例如联网路由器和服务器）和互联网链路本身为目标。</p>
+	<h3 id="cloudflare-2-tbps-">Cloudflare 拦截了一次接近 2 Tbps 的攻击</h3>
+	<p>在 11 月，我们的系统自动检测并缓解了一次<a href="https://blog.cloudflare.com/cloudflare-blocks-an-almost-2-tbps-multi-vector-ddos-attack/">接近 2 Tbps 的 DDoS 攻击</a>。该攻击使用了多种手段，包括 <a href="https://www.cloudflare.com/zh-cn/learning/ddos/dns-amplification-ddos-attack/" target="_blank">DNS 放大</a>攻击和 <a href="https://www.cloudflare.com/zh-cn/learning/ddos/udp-flood-ddos-attack/" target="_blank">UDP 洪水</a>。攻击仅持续了一分钟。这次攻击是从大约 1.5 万个僵尸（机器人）程序上发动的，这些机器人在物联网设备和11<a href="https://www.rapid7.com/blog/post/2021/11/01/gitlab-unauthenticated-remote-code-execution-cve-2021-22205-exploited-in-the-wild/" target="_blank">未打补丁的 GitLab 实例</a>上运行原始 Mirai 代码的一个变种。<br></p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/01/image14.jpg" class="kg-image" alt="（图）一次峰值接近 2 Tbps 的网络层 DDoS 攻击"></figure>
+	<h3 id="-ddos--8">网络层 DDoS 攻击：月份分布</h3>
+	<p><strong>12 月是 2021 年攻击最活跃的月份。</strong></p>
+	<p>第四季度是 2021 年攻击最活跃的季度。超过 43% 的网络层 DDoS 攻击发生在 2021 年第四季度。虽然 10 月相对平静，但在 11 月，期间有中国的光棍节、美国的感恩节、黑色星期五和网络星期一，网络层 DDoS 攻击的数量几乎翻了一番。12 月期间，2021 年即将结束的最后几天内，观察到的攻击数量也有所增加。事实上，仅 12 月的攻击总数就超过了 2021 年第二季度，并几乎追平 2021 年第一季度。<br></p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/01/image5.png" class="kg-image" alt="（图）2021 年网络层 DDoS 攻击按月分布"></figure>
+	<h3 id="-ddos--9">网络层 DDoS 攻击：攻击速率分布</h3>
+	<p><strong>虽然大多数攻击的规模依然相对“较小”，但 TB 级攻击正在成为常态。</strong></p>
+	<p>衡量 L3/4 DDoS 攻击的规模有不同的方法。一种方法是测量它产生的流量大小，以比特率为单位（例如，Tbps 或 Gbps）。另一种是测量它产生的数据包数，以数据包速率为单位（例如， Mpps：百万数据包/每秒）。 </p>
+	<p>高比特率的攻击试图使互联网链路饱和来导致拒绝服务，而高数据包速率的攻击尝试使服务器、路由器或其他联网硬件设备不堪重负。这些设备分配一定的内存和计算能力来处理每个数据包。因此，通过向设备发送大量数据包，该设备的处理资源就可能被耗尽。在这种情况下，数据包就会“被丢弃”，即设备无法再处理数据包。对用户而言，这会导致服务中断和拒绝服务。 </p>
+	<p>下图为攻击的规模（比特率）和月份分布情况。如上图所示，大多数攻击发生在 12 月。然而，下图显示，较大型的攻击（超过 300 Gbps）发生在 11 月。大多介于 5-20 Gbps 的攻击发生在 12 月。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/01/image10.png" class="kg-image" alt=" （图）第四季度网络层 DDoS 攻击按月分布"></figure>
+	<h3 id="--1">数据包速率分布</h3>
+	<p>Cloudflare 观察到一个值得注意的关联：在攻击数量增加时，攻击的规模和持续时间会下降。在 2021 年的前三分之二时间内，攻击数量相对较小，其速率则有所增加，例如，在 2021 年第三季度，速率介于 100-1000 万 pps 的攻击增长了 196%。在 2021 年第四季度，攻击数量有所增加，同时 Cloudflare 观察到的攻击规模出现下降。91% 的攻击峰值在 5 万 pps 以下，这个速率已经足以弄垮未受保护的互联网资产。<br></p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/01/image4.png" class="kg-image" alt="（图）第四季度网络层 DDoS 攻击按数据包速率分布"></figure>
+	<p>速率超过 100 万 pps 的较大型攻击环比减少 48% 至 28%，而峰值速率低于 5 万 pps 的攻击环比减少了 2.36%。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/01/image19.png" class="kg-image" alt="（图）第四季度网络层 DDoS 攻击环比变化按数据包速率分"></figure>
+	<h3 id="--2">比特率分布</h3>
+	<p>与数据包密集型攻击的趋势相似，比特率密集型攻击的数量也有所减少。虽然超过 1 Tbps 的攻击正在成为常态——我们观察到有史以来最大的一个攻击接近 2 Tbps，但大多数攻击的规模依然较小，峰值不到 500 Mbps（97.2%）。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/01/image17.png" class="kg-image" alt="（图）第四季度网络层 DDoS 攻击按比特率分布"></figure>
+	<p>在 2021 年第四季度，500 Mbps 以上所有范围的较大规模攻击均显著减少，幅度介于 35% 至 57%，其中 100 Gbps 以上的攻击减少了 57%。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/01/image1.png" class="kg-image" alt="（图）第四季度网络层 DDoS 攻击环比变化按比特率分]"></figure>
+	<h2 id="-ddos--10">网络层 DDoS 攻击：持续时间分布</h2>
+	<p><strong>大多数攻击的持续时间都在 1 小时以内，再次表明有必要采取始终启用的自动 DDoS 缓解解决方案。</strong></p>
+	<p>我们测量攻击持续时间的方式是：记录系统首次检测到攻击与具备该攻击特征的最后一个数据包之间的时间差。在 2021 年第四季度，98% 的网络层攻击持续时间不到 1 小时。这种情况非常常见，因为大多数攻击持续时间都很短。我们还观察到一个趋势：在攻击数量增加时（如这个季度），其速率和持续时间会有所下降。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/01/image2.png" class="kg-image" alt="（图）第四季度网络层 DDoS 攻击按持续时间分布]"></figure>
+	<p>短时间的攻击很可能不被察觉，特别是爆发攻击，此类攻击会在几秒钟内用大量的包、字节或请求轰击目标。在这种情况下，依赖于安全分析来手动缓解的 DDoS 保护服务没有机会及时缓解攻击。此类服务只能从攻击后分析中吸取教训，然后部署过滤该攻击指纹的新规则，期望下次能捕捉到它。同样，使用“按需”服务（即安全团队在遭到攻击时将流量重定向至 DDoS 保护提供商）也无济于事，因为在流量到达按需 DDoS 保护提供商前，攻击就已经结束了。 </p>
+	<p>建议企业使用始终启用的自动化 DDoS 防护服务，此类服务能分析流量并应用实时指纹识别，从而及时拦截短暂的攻击。</p>
+	<h3 id="--3">攻击手段</h3>
+	<p><strong>SYN 洪水依然是最常见的攻击方式，而基于 SNMP 的攻击环比激增了接近 5800%。</strong></p>
+	<p>攻击手段是指攻击者用于发动 DDoS 攻击的方法，即 IP 协议、数据包属性（如 TCP 标志）、洪水方法和其他条件。</p>
+	<p>SYN 洪水攻击所占的百分比在 2021 年内首次大幅减少。 2021 年，<a href="https://www.cloudflare.com/zh-cn/learning/ddos/syn-flood-ddos-attack/" target="_blank">SYN 洪水</a>平均占网络层攻击总数的 54%。虽然仍是最常见的手段，但所占比例已经较前一个季度减少了 38%，至 34%。</p>
+	<p>然而，SYN 攻击和 UDP 攻击已经不相上下。<a href="https://www.cloudflare.com/zh-cn/learning/ddos/udp-flood-ddos-attack/" target="_blank">UDP 洪水</a>是一种拒绝服务攻击，攻击者将大量用户报文协议（UDP）数据包发送到目标服务器，旨在瘫痪该设备的处理和响应能力。保护目标服务器的防火墙往往也可能因 UDP 洪水攻击而不堪重负，导致对合法流量的拒绝服务。基于 UDP 的攻击已从 2021 年第三季度的第四位上升至 2021 年第四季度的第二位，占网络层攻击的 32%，季度环比增长了 1198%。</p>
+	<p>居第三位的是 SNMP 攻击。自 2021 年首次跻身主要攻击手段行列以来，SNMP 攻击的占比已大幅提高。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/01/image7.png" class="kg-image" alt="（图）第四季度主要网络层 DDoS 攻击手段]"></figure>
+	<h2 id="--4">新兴威胁</h2>
+	<p>对新兴攻击手段的分析可见，SNMP、MSSQL 和基于 UDP 的通用攻击均出现大幅增长。 </p>
+	<p>SNMP 和 MSSQL 攻击都是通过在触发攻击的报文中将目标 IP 地址假冒为源 IP 来反射和放大目标的流量。</p>
+	<p>简单网络管理协议（SNMP）是一种基于 UDP 的协议，通常用于发现和管理家庭或企业网络中位于 UDP 161 端口上的网络设备，例如打印机、交换机、路由器和防火墙。在 SNMP 反射攻击中，攻击者发出大量 SNMP 查询，将数据包中的源 IP 地址伪装成目标的 IP 地址，使收到查询的网络设备将把响应发送到目标 IP 地址。这些网络设备发送的大量响应导致目标网络拒绝服务。</p>
+	<p>类似于 SNMP 放大攻击，Microsoft SQL（MSSQL）攻击基于一种滥用 Microsoft SQL 服务器解析协议来发动反射式 DDoS 攻击的技术。攻击发生于 Microsoft SQL 服务器对客户端查询或请求做出响应时，尝试利用侦听 UDP 1434 端口的 Microsoft SQL 服务器解析协议（MC-SQLR）。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/01/unnamed-6.png" class="kg-image" alt="（图）第四季度主要新兴网络层 DDoS 攻击威胁]"></figure>
+	<h3 id="-ddos--11">网络层 DDoS 攻击：国家/地区分布</h3>
+	<p><strong>源于摩尔多瓦的攻击较前一个季度翻了两番，使其成为网络层 DDoS 攻击活动占比最高的国家。 </strong></p>
+	<p>在分析网络层 DDoS 攻击时，我们统计流量的依据是接收流量的 Cloudflare 边缘数据中心位置，而不是源 IP 地址。这样做的原因在于，攻击者在发起网络层攻击时，可以通过<a href="https://www.cloudflare.com/zh-cn/learning/ddos/glossary/ip-spoofing/" target="_blank">伪造</a>源 IP 地址来混淆攻击来源并在攻击属性中引入随机性，这可能会使简单的 DDoS 防护系统更难拦截攻击。因此，如果我们根据伪造的源 IP 推导出源国家/地区，我们将得到一个伪造的国家/地区。</p>
+	<p>Cloudflare 能够通过根据 Cloudflare 观察到攻击的数据中心位置显示攻击数据来克服伪造 IP 的挑战。我们在全球 <a href="https://www.cloudflare.com/zh-cn/network" target="_blank">250 多个城市</a>拥有数据中心，因而能够在报告中体现准确的地理位置。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/01/image6.png" class="kg-image" alt="（图）第四季度网络层 DDoS 攻击按来源国家/地区分布]"></figure>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/01/image16.png" class="kg-image" alt="（图）第四季度网络层 DDoS 攻击按来源国家/地区分布]"></figure>
+	<p>T要查看所有地区和国家，请参阅 <a href="https://radar.cloudflare.com/notebooks/ddos-2021-q4#network-layer-ddos-attacks-by-country" target="_blank">交互式地图</a>。</p>
+	<h2 id="--5">摘要</h2>
+	<p>Cloudflare 的使命是帮助构建更好的互联网，使互联网对所有人都更安全、更快速、更可靠——即使面对 DDoS 攻击也如此。作为这个使命的一部分，我们自 2017 年以来一直向我们所有客户提供免费的<a href="https://blog.cloudflare.com/unmetered-mitigation/">不计量、无限 DDoS 防护</a>。多年来，攻击者发动 DDoS 攻击的难度变得越来越低。为了对抗攻击者的优势，我们想确保所有规模的组织也能轻松、免费地防护各种类型的 DDoS 攻击。</p>
+	<p>还没有使用 Cloudflare？<a href="https://dash.cloudflare.com/sign-up" target="_blank">现在开始</a>。</p>
+</div>

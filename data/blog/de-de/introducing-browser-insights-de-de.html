@@ -1,0 +1,51 @@
+<div class="post-content lh-copy gray1">
+	<p>Geschwindigkeit ist wichtig. Wenn Ihre Website oder App schneller ist, bietet sie den Nutzern eine angenehmere Erfahrung und Sie erzielen mehr Konversionen und mehr Umsatz, das ist bekannt. Wir bei Cloudflare sind besessen von Geschwindigkeit, von der Entwicklung neuer Features und davon, jeden Tag noch ein bisschen mehr Leistung herauszuholen.</p>
+	<p>Aber wenn wir die Geschwindigkeit steigern möchten, müssen wir sie erst einmal messen. Deshalb haben wir <a href="https://www.cloudflare.com/website-optimization/" target="_blank">Browser Insights</a> erfunden: ein neues Tool, das die Leistung Ihrer Website aus der Sicht Ihrer Nutzer misst. Mit Browser Insights können Sie im Detail erkennen, wo, wann und warum Webseiten langsam sind. Und Sie können es jetzt gleich kostenlos mit einem Klick aktivieren.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/09/insights-option-1.png" class="kg-image"></figure>
+	<h2 id="warum-haben-wir-browser-insights-entwickelt"><strong>Warum haben wir Browser Insights entwickelt?</strong></h2>
+	<p>Nehmen wir an, Sie betreiben eine E-Commerce-Website und möchten Ihre Konversionsraten verbessern. Sie haben festgestellt, dass es viele Zugriffe aus Peru gibt, aber bei diesen gibt es weniger Konversionen als bei den nordamerikanischen Nutzern. Möglicherweise haben Sie die Theorie, dass es zu lange dauert, bis Ihre Seite mit dem Bezahlvorgang geladen ist, und einige Kunden deshalb vor dem Bezahlen abspringen. Wie könnten Sie das überprüfen?</p>
+	<p>Dafür gibt es mehrere Möglichkeiten: Sie können sich die Zeitdaten in Ihren Serverprotokollen ansehen, oder Sie könnten die Seite ein paar Mal in Ihrem Browser laden, um zu sehen, was den Aufbau verzögert.</p>
+	<p>Diese Methoden haben jedoch einige Nachteile:</p>
+	<ul>
+		<li>Wenn Sie nur die serverseitigen Daten ansehen, entgehen Ihnen bestimmte Faktoren, die der Endbenutzer erlebt: Wie lange hat es gedauert, bis der Webbrowser alle erforderlichen Skripts geladen, ausgeführt und die Seite aufgebaut hatte?</li>
+		<li>Wenn Sie nur mit einem oder wenigen Computern messen, entgeht Ihnen die Vielfalt der Systeme und Endgeräte – zum Beispiel: „Wie funktioniert es auf einem Telefon über eine 3G-Verbindung?“</li>
+	</ul>
+	<p>Um diese Probleme zu lösen, setzen wir <em>Real User Monitoring</em> ein, d. h. wir beobachten aus der Sicht echter Anwender. So bekommen wir das Beste aus beiden Welten: Wir können einen Timer in echten Webbrowsern ausführen. Dieser Timer erfasst, wie lange das Laden von Webseiten bei Ihren tatsächlichen Nutzern dauert.</p>
+	<h2 id="wie-funktioniert-es"><strong>Wie funktioniert es?</strong></h2>
+	<p>Browser Insights kann ganz einfach im Abschnitt „Geschwindigkeit“ des Dashboards aktiviert werden:</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/09/pasted-image-0--3-.png" class="kg-image"></figure>
+	<p>Wenn es aktiviert ist, fügen wir beim Laden jeder HTML-Seite einen kurzen JavaScript-Code hinzu, der über die standardmäßige <a href="https://developer.mozilla.org/en-US/docs/Web/API/Performance" target="_blank">Performance-API</a> Timing-Informationen erfasst. So können wir Ihnen Messwerte darüber liefern, wie sich Ihre Webseiten in der richtigen Welt verhalten:</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/09/pasted-image-0--2-.png" class="kg-image"></figure>
+	<p>Dieses Diagramm enthält eine Menge Informationen! Auf der oberen Ebene gibt es zwei Haupttypen von Messwerten:</p>
+	<ul>
+		<li>Messwerte auf Anforderungsebene, etwa TCP-Verbindungszeit oder Anforderungszeit. Diese Messwerte werden jedes Mal ermittelt, wenn die Seite geladen wird. Sie werden von der Internet-Infrastruktur beeinflusst, z. B. vom Mobilfunknetz Ihrer Endbenutzer oder der Geschwindigkeit Ihrer Server.</li>
+		<li>Messwerte auf Seitenebene, etwa die Seitenladedauer. Diese berücksichtigen die vielen Anforderungen, die zum Laden einer Webseite erforderlich sind, sowie die Zeit für das Parsen von HTML und das Ausführen von JavaScript.</li>
+	</ul>
+	<p>Weitere Informationen über die Bedeutung dieser Zeiten und darüber, wie wir sie ausgewählt haben, finden Sie im <a href="https://blog.cloudflare.com/browser-performance-api">begleitenden Blogbeitrag</a>.</p>
+	<h2 id="die-daten-durchforsten"><strong>Die Daten durchforsten</strong></h2>
+	<p>Neben den verschiedenen <em>Messwerten</em> zur Performance Ihrer Webseite kann es auch nützlich sein, sich die <em>Dimensionen</em> genauer anzusehen, die die Leistung beeinflussen, zum Beispiel URL und Land. Das bedeutet, Sie können bis hinunter zur Leistung einer bestimmten Seite filtern (z. B. Ihrer Homepage oder Kassenseite), und Sie können die Standorte sehen, an denen Ihre Website am schnellsten und langsamsten geladen wird.</p>
+	<p>Um auf unser obiges Beispiel zurückzukommen: Wir möchten also die Leistung in Peru mit der in Nordamerika vergleichen:</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/09/pasted-image-0--1--1.png" class="kg-image"></figure>
+	<p>Wir erkennen tatsächlich, dass es viele Zugriffe aus Peru gibt, aber es dauert im Durchschnitt 13 s, bis eine Webseite geladen ist. Bei Nutzern in den USA sind es nur 4,2 Sekunden. Theorie bestätigt! &nbsp;Jetzt können wir alle unsere Messwerte nach Peru filtern, um besser zu verstehen, was los ist:</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/09/pasted-image-0-1.png" class="kg-image"></figure>
+	<p>Beachten Sie, dass der Wert für Verarbeitung („Processing“) am stärksten zugenommen hat und auf 12 Sekunden gestiegen ist. Auch die Anforderungszeiten sind höher, wahrscheinlich wegen der Verbindung zu einem Ursprungsserver in den USA. Webseiten setzen sich aus vielen individuellen Anforderungen zusammen. Es ist also plausibel, dass diese Kombination zu längeren Ladezeiten führt. In diesem Beispiel könnten die Seiten wahrscheinlich schneller geladen werden, wenn schnellere Inhalte im Cache abgelegt würden.</p>
+	<h2 id="wie-geht-es-weiter"><strong>Wie geht es weiter?</strong></h2>
+	<p>Die heutige Einführung von Browser Insights ist nur die Spitze des Eisbergs. Wir möchten schon sehr bald noch viel mehr Informationen aufnehmen, mit denen Sie besser verstehen können, was Ihre Website langsam macht und wie Sie sie beschleunigen können. Folgendes möchten wir einbeziehen:</p>
+	<ul>
+		<li><strong>Weitere Messwerte und Dimensionen,</strong> darunter Messwerte auf Seitenebene wie „Time to First Paint“ (Dauer bis zum Beginn des Seitenaufbaus) und Dimensionen wie Browser und Netzwerktyp.</li>
+		<li><strong>Analysen von Subressourcen</strong>. Eine durchschnittliche Webseite lädt über 100 Subressourcen, und wir können in einem Wasserfalldiagramm genau zeigen, welche davon langsam ist.</li>
+		<li><strong>A-B-Tests</strong>, an denen Sie erkennen, wie sich mögliche Konfigurationsänderungen auf die Leistung Ihres eigenen Traffics auswirken.</li>
+		<li><strong>Fehlersammlung zur Beobachtung von Problemen</strong> auf Netzwerkebene, in JavaScript usw.</li>
+		<li><strong>Warnmeldungen</strong>, um Sie zu informieren, wenn die Leistung unter einen vordefinierten Schwellenwert fällt.</li>
+		<li><strong>Von Cloudflare gelieferte Informationen</strong>, an denen Sie erkennen, <em>warum</em> etwas ggf. langsam ist – zum Beispiel die Auswirkungen Ihrer Cache-Trefferquote auf die Seitenladedauer.</li>
+	</ul>
+	<h2 id="schutz-der-privatsph-re-von-anwendern"><strong>Schutz der Privatsphäre von Anwendern</strong></h2>
+	<p>Die Grundlage von Cloudflares Mission, das Internet besser zu machen, ist die Bedeutung, die wir dem Vertrauen unserer Kunden, Website-Besucher und der Internet-Community weltweit beimessen. Unser Geschäftsmodell ist transparent und ganz auf die Interessen unserer Kunden abgestimmt: Wir verdienen Geld damit, die Internetauftritte unserer Kunden zu schützen und zu beschleunigen. Wir verkaufen weder die Daten unserer Kunden noch die ihrer Endanwender.</p>
+	<p>Für Browser Insights muss der Browser des Endanwenders Timing-Informationen an Cloudflare zurückmelden. Wir haben Browser Insights so gestaltet, dass nur der Mindestumfang an Daten gemeldet wird, die wir brauchen, um unseren Kunden zu zeigen, wie ihre Websites funktionieren. Browser Insights erfasst ausschließlich Messwerte zum Zeitverhalten. Wir verfolgen keine einzelnen Endanwender der Internetauftritte unserer Kunden. Rufen Sie einfach in Ihrem bevorzugten Webbrowser den Inspector auf, um zu sehen, was wir zurücksenden!</p>
+	<h2 id="browser-insights-noch-heute-ausprobieren"><strong>Browser Insights noch heute ausprobieren</strong></h2>
+	<p>Im letzten Mai haben wir die brandneue <a href="https://blog.cloudflare.com/new-speed-page/">Speed Page</a> angekündigt. Mit der Speed Page möchten wir Ihnen zeigen, wie schnell Ihre Website ist, und was Sie tun können, um sie schneller zu machen. Heute können wir Ihnen stolz mitteilen, dass die neue Speed Page für alle verfügbar ist!</p>
+	<p>Browser Insights wird im Rahmen des frühen Zugangs auf der Speed Page verfügbar sein. In den kommenden Wochen werden wir hart daran arbeiten, es so schnell wie möglich allen anbieten zu können. In diesem Blog werden wir Sie auf dem Laufenden halten!</p>
+	<figure class="kg-card kg-image-card"><img src="https://lh6.googleusercontent.com/zbVUo9ueL7h8vV_IvDhqK75p2XnT2FStCkTTKfUgwyX7DuyzkEf72Jd_rtYlXO1NT9pLG6r-FOtlRiurpal9TlJIi7pwi5aswjzd7tZUkmV8bFhZaqN28cvLCxfuHGor-vTF4tVB" class="kg-image"></figure>
+	<hr>
+	<p><a href="https://blog.cloudflare.com/subscribe/"><em>Abonnieren Sie diesen Blog</em></a> <em>und Sie erhalten tägliche Updates zu allen unseren Mitteilungen der Geburtstagswoche.</em></p>
+</div>

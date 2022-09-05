@@ -1,0 +1,236 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image5-14.png" class="kg-image" alt="Argo for Packets is Generally Available"></figure>
+	<p>「当社はIPネットワークを10％速くできます。担当アカウントチームにご連絡くださるだけで実現します」とお伝えしたら、お客様は何と言われるでしょうか？</p>
+	<p>本日、Argo for Packetsの一般提供を発表します。Argo for Packetsは、IPレイヤーのネットワーク最適化を提供し、<a href="https://www.cloudflare.com/ja-jp/magic-transit/" target="_blank">Magic Transit</a>（レイヤー3のDDoS攻撃対策サービス）、<a href="https://www.cloudflare.com/ja-jp/magic-wan/" target="_blank">Magic WAN</a>（これにより、Cloudflare上にお客様独自のSD-WANが構築できます）、<a href="https://blog.cloudflare.com/ja-jp/cloudflare-for-offices-ja-jp/">Cloudflare for Offices</a>（世界中の数千棟のオフィスビルに安全で高性能な接続性を提供する構想）のようなお客様のCloudflareネットワークサービス製品を強化します。</p>
+	<p>Argoをご存じない方は、トラフィックを高速化するCloudflare製品であるとご理解ください。Argoは、インターネット上のお客様のトラフィックに対して、最も速く、最も利用可能なパスを見つけます。毎日、Cloudflareは何兆ものリクエスト、接続、パケットを当社のネットワークとインターネット上で運んでいます。当社のネットワーク、お客様、エンドユーザーは世界各地に分散しているため、当社のインフラストラクチャを流れるこれらのリクエストはすべて、インターネットのさまざまな部分がその時点でどのように機能しているかの実態を表しています。Cloudflareはこの情報を活用し、お客様のトラフィックが当社のインフラストラクチャを最速で通過できるようにします。</p>
+	<p>これまでArgoは、レイヤー7のアプリケーション層とレイヤー4のプロトコル層でトラフィックを最適化していました。今回、Argo for PacketsのGAにより、お客様のプライベートネットワークのIPレイヤーを最適化することが可能になりました。<a href="https://blog.cloudflare.com/argo-v2/">Speed Week期間中に、当社はArgo for Packetsの早期アクセスについて発表し、</a>10%の遅延低減を提供することができることを示しました。本日は、Argo for PacketsのGA達成を記念して、遅延低減についてより深く掘り下げ、事例を紹介し、さらに大きな最適化を実現する方法を説明し、Argoのセキュアデータプレーンがレイヤー3でも追加の暗号化を提供する方法について説明します。</p>
+	<p>また、Argo for Packetsの導入にご興味のある方は、アカウントチームにご連絡ください。</p>
+	<h3 id="bgp-"><strong>BGPより優れている</strong></h3>
+	<p>Speed Weekでお伝えしたように、Argo for Packetsは、社内テストで全世界で平均10%の遅延改善を実現しています。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image6-14.png" class="kg-image" title="Chart"></figure>
+	<p>GAに移行すると、実際の数値と社内テストの数値が一致し、10％の改善が見られることがわかりました。しかし、10%の遅延低減の数値は、世界中のすべてのパスの平均値であることに留意することが重要です。お客様のセットアップによって、遅延の改善は異なります。</p>
+	<p>Argo for Packetsは、ネットワーク上で最適なパスを動的に選択することで、この遅延の向上を実現しています。それが何を意味するのか、少し説明します。</p>
+	<p>ネットワーク上の通常のパケットは、<a href="https://www.cloudflare.com/ja-jp/learning/security/glossary/what-is-bgp/" target="_blank">ボーダーゲートウェイプロトコル（BGP）</a>というものを使って送信先への道を探し、パケットがその送信先までの「最短」パスをたどることができるようになっています。しかし、BGPの用語における最短パスは、遅延ではなく、ネットワークホップと強く相関しています。たとえば、あるネットワークのパスAには、12345 - 54321 - 13335と、12345 13335という2つの実行可能なパスがあったとします。どちらのネットワークもネットワーク12345から始まり、AS13335であるCloudflareで終わります。BGPロジックでは、トラフィックは常に2番目のパスを通ることになっています。しかし、最初のパスの方がネットワーク遅延やパケット損失が少ない場合、お客様はパフォーマンスが向上する可能性があり、それを知らない可能性があります。</p>
+	<p>これを改善する方法は2つあります。1つ目の方法は、ネットワーク12345でより多くのパイプを構築する投資をしながら、あらゆるネットワークのすぐ隣にネットワークを拡張していくことです。また、お客様が独自にネットワークを構築したり、高価なベンダーのMPLSネットワークを購入することも可能です。どちらのソリューションも、お客様が望むレベルのパフォーマンスに到達するまでに、多くの費用と時間がかかります。</p>
+	<p>Cloudflareは、既存のグローバルネットワークとバックボーンに加え、すでに送られてきたトラフィックのネットワークデータを活用し、お客様に戻るルートを最適化することで、お客様のパフォーマンスを向上させます。これにより、トラフィックの変化やインターネット上の輻輳の発生に合わせて、どのパスを取るかを改善することができます。Argoは、Cloudflareの各データセンターからお客様のオリジンに戻るすべてのパスを、個々のネットワークパスに至るまで調査しています。Argoは、これらの独自のパスすべてについて、既存のレイヤー4のトラフィックとネットワーク分析を比較し、最も速く、最も利用しやすいパスを決定します。</p>
+	<p>Argoをお客様のプライベートネットワークにパーソナライズするために、Cloudflareは、<a href="https://www.cloudflare.com/ja-jp/magic-transit/" target="_blank">Magic Transit</a>のために既に構築したデータソースを利用しています。そのデータソースとは、ヘルスチェックプローブです。Cloudflareは、すべてのCloudflareデータセンターから各顧客のオリジンまで、既存のヘルスチェックプローブを活用します。これらのプローブは、CloudflareからMagic Transitのお客様に戻るパスの健全性を判断するために使用され、Cloudflareはオリジンに戻るどのパスが健全であるかを知ることができるようになります。これらのプローブには、パケット損失や遅延データなど、パフォーマンスの改善にも使用できるさまざまな情報が含まれています。ヘルスチェックプローブを調べ、既存のレイヤ4データに加えることで、Cloudflareは片道遅延をよりよく理解することができ、相互接続されたすべてのデータセンターとその速さを確認できるマップを構築することができます。さらに、Cloudflareは、パケットが当社のネットワークに入る場所と、Cloudflareネットワークインターコネクトを介してお客様に直接接続された出る場所を選ぶことで、お客様のデータセンターに戻るレイヤー3の最適なパスを見つけます。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/12/image1-49.png" class="kg-image"></figure>
+	<p>このマップを用いて、Cloudflareは、お客様のトラフィックがCloudflareのネットワークに入る場所と向かう必要がある場所に基づいて、お客様ごとに動的なルートを構築しています。</p>
+	<p>ここでは、セットアップによって遅延がどのように低減されるか、いくつかの例を挙げて説明します。</p>
+	<h3 id="cloudflare-"><strong>Cloudflareのネットワークがお客様のネットワークになる</strong></h3>
+	<p>Magic製品がネットワークを高速化する方法を概説する<a href="https://blog.cloudflare.com/magic-makes-your-network-faster/">Speed Weekブログ</a>中で、いくつかの異なるネットワークトポロジの例を紹介し、Magic TransitとMagic WANがそのネットワークにもたらした改善について示しました。その上にArgo for Packetsを追加することでこれらの数値を強化し、パフォーマンスをさらに改善する方法を見てみましょう。</p>
+	<p>ブログの例では、サウスカロライナ州、オレゴン州、ロサンゼルスに拠点を持つ企業の概要を紹介しました。そのブログでは、Magic Transit単体で片道分の遅延を改善したことを説明しました。そのネットワークは次のようなものです。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image3-23.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image4-25.png" class="kg-image"></figure>
+	<p>これを分解して、そのネットワーク上のすべてのパス間の遅延を表示してみましょう。サウスカロライナ州はアトランタに接続し、オレゴン州はシアトルに接続するとします。</p>
+	<!--kg-card-begin: markdown-->
+	<table>
+		<thead>
+			<tr>
+				<th>送信元の場所</th>
+				<th>送信先の場所</th>
+				<th>Magic WANの片道遅延</th>
+				<th>Argo for Packetsの片道遅延</th>
+				<th>Argo改善値（単位：ms</th>
+				<th>遅延改善率</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>ロサンゼルス</td>
+				<td>アトランタ</td>
+				<td>49.1</td>
+				<td>45</td>
+				<td>4.11</td>
+				<td>8.36</td>
+			</tr>
+			<tr>
+				<td>ロサンゼルス</td>
+				<td>シアトル</td>
+				<td>32.4</td>
+				<td>27.2</td>
+				<td>5.18</td>
+				<td>16</td>
+			</tr>
+			<tr>
+				<td>アトランタ</td>
+				<td>ロサンゼルス</td>
+				<td>49</td>
+				<td>44.9</td>
+				<td>4.09</td>
+				<td>8.35</td>
+			</tr>
+			<tr>
+				<td>アトランタ</td>
+				<td>シアトル</td>
+				<td>78.1</td>
+				<td>56.9</td>
+				<td>21.2</td>
+				<td>27.1</td>
+			</tr>
+			<tr>
+				<td>シアトル</td>
+				<td>ロサンゼルス</td>
+				<td>32.2</td>
+				<td>27</td>
+				<td>5.22</td>
+				<td>16.2</td>
+			</tr>
+			<tr>
+				<td>シアトル</td>
+				<td>アトランタ</td>
+				<td>77.7</td>
+				<td>56.7</td>
+				<td>20.9</td>
+				<td>26.9</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<p>このサンプルのお客様のネットワークでは、Argo for Packetsは可能な限りのパスで遅延を改善しています。このように、この特定のネットワークでは、平均改善率が世界平均の10%よりはるかに高いことがおわかりいただけると思います。</p>
+	<p>また、アジアの韓国、フィリピン、シンガポール、大阪、香港に拠点を持つお客様の例を見てみましょう。このような拠点のネットワークにおいて、Argo for Packetsは、韓国、大阪、フィリピン間など、通常最もナビゲートしにくい拠点間の最適パスを見つけることで、17%の遅延低減を実現しました。インターネット上の最も扱いに注意を要するパスを最適化し、他のパスと同じように高速化するため、多くの拠点を持つお客様にとって、Argo for Packetsは大きなメリットをもたらすでしょう。これにより、ネットワークパスで発生する最も大きい遅延が取り除かれ、平均値だけでなく、特に90パーセンタイルの遅延の数値が良く見えるようになります。</p>
+	<p>このようなロングテールの遅延を低減することは、特にお客様がより良い環境を求めて、オフィスを世界中に戻し始めている現在、非常に重要なことです。</p>
+	<h3 id="-"><strong>次は、お客様のオフィスです</strong></h3>
+	<p>Argo for Packetsは、Magic WANおよびCloudflare for Officesと見事に連携し、超最適化された、超セキュアなプライベートネットワークを構築し、どんな状況でも適応します。<a href="https://blog.cloudflare.com/ja-jp/cloudflare-for-offices-ja-jp/">Cloudflare for Offices</a>について初めて耳にされた方は、世界中の何千もの新しい拠点にプライベートで安全かつパフォーマンスの高い接続を提供する当社の新しい取り組みであるとご理解ください。そして、このプライベート接続が、Argo for Packetsがお客様のネットワークを高速化するための素晴らしい土台となります。</p>
+	<p>上記の米国の例で、この企業がボストンとダラスの2拠点を新たに追加した場合、これらの拠点でもArgo for Packetsによって遅延が大幅に低減されます。この場合、この企業のネットワークは次のようになります。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image2-32.png" class="kg-image"></figure>
+	<p>また、Argo for Packetsは、追加されたばかりの新しいオフィスでも、プライベートネットワーク上ですぐに優れたパフォーマンスを発揮することを保証します。</p>
+	<!--kg-card-begin: markdown-->
+	<table>
+		<thead>
+			<tr>
+				<th>送信元の場所</th>
+				<th>送信先の場所</th>
+				<th>Argo改善値（単位：ms）</th>
+				<th>遅延改善率</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>ロサンゼルス</td>
+				<td>ダラス</td>
+				<td>9.89</td>
+				<td>23.3</td>
+			</tr>
+			<tr>
+				<td>ロサンゼルス</td>
+				<td>アトランタ</td>
+				<td>0.774</td>
+				<td>1.58</td>
+			</tr>
+			<tr>
+				<td>ロサンゼルス</td>
+				<td>シアトル</td>
+				<td>0.478</td>
+				<td>1.51</td>
+			</tr>
+			<tr>
+				<td>ロサンゼルス</td>
+				<td>ボストン</td>
+				<td>13.3</td>
+				<td>16.8</td>
+			</tr>
+			<tr>
+				<td>ダラス</td>
+				<td>ロサンゼルス</td>
+				<td>9.66</td>
+				<td>23</td>
+			</tr>
+			<tr>
+				<td>ダラス</td>
+				<td>アトランタ</td>
+				<td>0</td>
+				<td>0</td>
+			</tr>
+			<tr>
+				<td>ダラス</td>
+				<td>シアトル</td>
+				<td>2.96</td>
+				<td>5.2</td>
+			</tr>
+			<tr>
+				<td>ダラス</td>
+				<td>ボストン</td>
+				<td>0.43</td>
+				<td>0.955</td>
+			</tr>
+			<tr>
+				<td>アトランタ</td>
+				<td>ロサンゼルス</td>
+				<td>0.687</td>
+				<td>1.4</td>
+			</tr>
+			<tr>
+				<td>アトランタ</td>
+				<td>ダラス</td>
+				<td>0</td>
+				<td>0</td>
+			</tr>
+			<tr>
+				<td>アトランタ</td>
+				<td>シアトル</td>
+				<td>9.7</td>
+				<td>12.4</td>
+			</tr>
+			<tr>
+				<td>アトランタ</td>
+				<td>ボストン</td>
+				<td>4.39</td>
+				<td>15.2</td>
+			</tr>
+			<tr>
+				<td>シアトル</td>
+				<td>ロサンゼルス</td>
+				<td>0.322</td>
+				<td>1.02</td>
+			</tr>
+			<tr>
+				<td>シアトル</td>
+				<td>ダラス</td>
+				<td>3.11</td>
+				<td>5.43</td>
+			</tr>
+			<tr>
+				<td>シアトル</td>
+				<td>アトランタ</td>
+				<td>9.81</td>
+				<td>12.6</td>
+			</tr>
+			<tr>
+				<td>シアトル</td>
+				<td>ボストン</td>
+				<td>34.7</td>
+				<td>30.3</td>
+			</tr>
+			<tr>
+				<td>ボストン</td>
+				<td>ロサンゼルス</td>
+				<td>13.3</td>
+				<td>16.8</td>
+			</tr>
+			<tr>
+				<td>ボストン</td>
+				<td>ダラス</td>
+				<td>0.386</td>
+				<td>0.85</td>
+			</tr>
+			<tr>
+				<td>ボストン</td>
+				<td>アトランタ</td>
+				<td>4.37</td>
+				<td>15</td>
+			</tr>
+			<tr>
+				<td>ボストン</td>
+				<td>シアトル</td>
+				<td>33.7</td>
+				<td>29.6</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<p>Cloudflare for Officesでは、お客様が境界ファイアウォールやWANデバイスなどを持ち込む必要がないため、オフィスのセットアップがとても簡単になります。お客様は、ビルでCloudflareに接続するだけで、Cloudflare Oneの機能により、Argo for Packetsで最適化されたCloudflareへのプライベート接続を介して、すべてのネットワークセキュリティサービスを利用することができます。</p>
+	<h3 id="--1"><strong>お客様のネットワークをもっと速く</strong></h3>
+	<p>Argo for Packetsは、Cloudflare Oneソリューションを完璧に補完し、Cloudflare上に構築されたネットワークを通じてより高速なビットを提供します。これにより、お客様のSD-WANとMagic Transitソリューションは、安全性だけでなく、パフォーマンスも最適化することができます。</p>
+	<p>Argo for Packetsの導入や、プライベートで安全な接続ソリューションのオフィスへの導入にご興味のある方は、アカウントチームに連絡してプロセスを開始してください。</p>
+</div>

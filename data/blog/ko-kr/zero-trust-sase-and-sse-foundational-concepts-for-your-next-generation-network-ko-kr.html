@@ -1,0 +1,122 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/unnamed.png" class="kg-image" alt="Zero Trust, SASE and SSE: foundational concepts for your next-generation network"></figure>
+	<p>여러분이 보안, 네트워크, IT 리더라면 기업 네트워크 아키텍처를 설명할 때 쓰이는 Zero Trust, 보안 액세스 서비스 에지(SASE), 보안 서비스 에지(SSE)라는 용어를 들어보셨을 것입니다. 이러한 프레임워크는 기업 네트워크를 구축하고 운영하는 방식을 근본적으로 바꿔놓을 대표적인 기술들이지만, 용어를 바꾸어 말하거나 일관되지 않게 사용하는 경우가 많습니다. 수많은 유행어가 쏟아질 때는 쉽게 길을 잃어 최종 사용자, 응용 프로그램, 네트워크를 위한 더 안전하고 더 빠르며 더 안정적인 경험이라는 궁극적인 목표까지 놓치기 쉽습니다. 오늘은 Zero Trust, SASE, SSE라는 각 개념을 자세히 알아보고, 이 목표를 달성하는 데 필요한 중요 요소들도 함께 살펴볼까 합니다. 이 콘텐츠의 상시 제공 버전은 Cloudflare의 <a href="https://www.cloudflare.com/learning/access-management/what-is-sase/" target="_blank">학습 센터</a>에서 확인할 수 있습니다.</p>
+	<h3 id="zero-trust-">Zero Trust란 무엇입니까?</h3>
+	<p>Zero Trust란 현재 네트워크 경계 내에 있든 외부에 있든 상관없이 사설 네트워크상의 리소스에 액세스하려는 모든 사람과 디바이스를 대상으로 엄격한 ID를 확인해야 하는 IT 보안 모델입니다. 네트워크 액세스 권한을 받은 사용자는 언제든 리소스에 액세스할 수 있는 전통적인 경계 기반 보안 모델, 소위 "성과 해자" 아키텍처 모델과 대비되는 개념입니다.</p>
+	<p>더 간단히 설명하면, 전통적인 IT 네트워크 보안 아키텍처는 네트워크 내부의 사람과 디바이스 모두를 신뢰하지만, Zero Trust 아키텍처는 그 누구도, 그 무엇도 신뢰하지 않습니다. Zero Trust 보안에 대한 자세한 내용은 <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/" target="_blank">여기</a>에서 살펴보세요.</p>
+	<h3 id="-sase-">보안 액세스 서비스 에지(SASE)란 무엇일까요?</h3>
+	<p>Gartner는 조직에서 Zero Trust 아키텍처를 구현하기 위한 프레임워크로 SASE를 소개했습니다. SASE는 소프트웨어 정의 네트워킹 기능을 다양한 네트워크 보안 기능과 결합하여 단일 클라우드 플랫폼에서 모두 제공합니다. 이러한 방식의 SASE를 통해 직원들은 어디에서든 인증을 거쳐 내부 리소스에 안전하게 접속하고, 조직은 내부 네트워크를 거치는 트래픽과 데이터를 더욱 원활하게 관리할 수 있습니다.</p>
+	<p>SASE의 보안 액세스 부분은 사용자 디바이스 및 응용 프로그램은 물론 분기, 데이터 센터, 클라우드 트래픽에 대해서도 Zero Trust 보안 정책을 정의하는 작업까지 포함합니다. 그리고 서비스 에지 부분은 그 위치에 상관없이 모든 트래픽이 보안 액세스 제어를 거치도록 해줍니다. 해당 제어를 시행되는 중앙 “허브”로 백홀링할 필요도 없습니다. SASE에 대한 자세한 내용은 <a href="https://www.cloudflare.com/learning/access-management/what-is-sase/" target="_blank">여기</a>에서 참고하세요.</p>
+	<h3 id="-sse-">보안 서비스 에지(SSE)란?</h3>
+	<p>Gartner가 마찬가지로 언급한 SSE는 특히 보안 실행 성능에 초점을 둔 SASE 기능의 하위 집합입니다. SSE는 SSE 보안 제어를 기업 광역 통신망(WAN)으로 확장할 수 있도록 SASE를 완전히 배포하기 위한 디딤돌 역할을 하며, 트래픽 쉐이핑 및 서비스 품질과 같이 소프트웨어 정의 네트워킹 기능을 포함하고 있습니다. SSE에 대한 자세한 내용은 <a href="https://www.cloudflare.com/learning/access-management/security-service-edge-sse/" target="_blank">여기</a>에서 참고하세요.</p>
+	<h2 id="sase-">SASE의 구성 요소는 무엇일까요?</h2>
+	<p>SASE에 대한 가장 일반적인 정의에는 Zero Trust 네트워크 액세스(ZTNA) 및 클라우드 액세스 보안 브로커(CASB) 등 다수의 보안 기능들이 포함되며, 특히 SASE 플랫폼이 갖추고 있어야 할 <strong>성능</strong>에 초점이 맞추어져 있습니다. 보안 기능이 핵심이지만 정의가 명료하지는 않습니다. 여기에는 그 기능을 이루어 낼 <strong>방법</strong>에 대한 설명이 빠져 있는데, 이러한 방법도 중요한 요소입니다.</p>
+	<p>각기 다른 세 가지 요소인 보안 액세스, 온램프, 서비스 에지를 포함하는 보안 기능 목록을 바탕으로 해야 SASE를 완벽히 정의했다고 볼 수 있습니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image7-3.png" class="kg-image"></figure>
+	<h2 id="cloudflare-one-sase-">Cloudflare One: 포괄적인 SASE 플랫폼</h2>
+	<p>Cloudflare One은 총체적인 액세스 기능을 유연한 온램프와 결합하여 모든 트래픽 소스 및 대상에 연결하는 완전한 SASE 플랫폼입니다. 이 모든 기능은 놀랍도록 빠르고 안정적인 서비스 에지 역할을 하는 Cloudflare의 전역 네트워크를 통해 제공됩니다. SSE를 SASE로 향하는 발판으로 삼으려는 조직에게 이를 달성할 수단을 제공하는 Cloudflare One은 귀사에게도 같은 이점을 제공합니다. 이 솔루션은 완전히 구성 가능하기 때문에 당면한 사용 사례에 맞춰 구성 요소를 개별적으로 배포할 수 있고, 원하는 속도로 전체 SASE 아키텍처를 구축해 나갈 수도 있습니다.</p>
+	<p>SASE 아키텍처의 각 구성 요소를 더욱 자세히 살펴보고, Cloudflare One이 구성 요소를 제공하는 방법을 설명해 드리겠습니다.</p>
+	<h3 id="-">보안 액세스: 보안 기능</h3>
+	<p>보안 액세스 기능은 트래픽 전체에 걸쳐 작동하면서 사용자, 응용 프로그램, 네트워크, 데이터를 안전하게 보호합니다. <a href="https://en.wikipedia.org/wiki/IPO_model" target="_blank">입력/프로세스/출력(IPO) 모델</a>에서는 트래픽을 모니터링하고 관련 조치를 취하는 <em>프로세스</em>로 보안 액세스를 생각하면 됩니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image1-10.png" class="kg-image"></figure>
+	<h3 id="zero-trust-ztna-">Zero Trust 네트워크 액세스(ZTNA)</h3>
+	<p>Zero Trust 네트워크 액세스는 내부 리소스에 액세스하도록 승인하기 전에 모든 사용자와 모든 디바이스를 엄격하게 확인함으로써 Zero Trust 보안 모델을 구현하는 기술입니다. 전체 로컬 네트워크에 대한 액세스를 한 번에 부여하는 전통적인 가상 사설망(VPN)과 비교해, ZTNA는 요청한 특정 응용 프로그램에 대해서만 액세스 권한을 부여하고, 기본적으로는 응용 프로그램 및 데이터에 액세스할 수 없도록 거부합니다.</p>
+	<p>ZTNA는 <a href="https://www.cloudflare.com/en-gb/learning/ddos/glossary/web-application-firewall-waf/" target="_blank">웹 애플리케이션 방화벽</a>, <a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/" target="_blank">DDoS 방어</a>, <a href="https://www.cloudflare.com/learning/bots/what-is-bot-management/" target="_blank">봇 관리</a> 등의 응용 프로그램 보안 기능들과 연동하여 응용 프로그램을 공공 인터넷에서 완벽하게 보호합니다. ZTNA에 대한 자세한 내용은 <a href="https://www.cloudflare.com/learning/access-management/what-is-ztna/" target="_blank">여기</a>를 참고하세요.</p>
+	<!--kg-card-begin: html-->
+	<p><img alt="ZTNA" src="https://blog.cloudflare.com/content/images/2022/06/image2-14.png" style="float:left; height:100px; margin:5px; width:100px">Cloudflare One에는 ZTNA 솔루션인 <a href="https://www.cloudflare.com/products/zero-trust/access/" style="text-decoration:none" target="_blank">Cloudflare Access</a>가 포함되어 있습니다. Cloudflare Access는 클라이언트 기반 모드 또는 클라이언트리스 모드로 작동하면서 자체 호스팅 응용 프로그램과 SaaS 응용 프로그램에 대한 액세스 권한을 부여합니다.</p>
+	<!--kg-card-end: html-->
+	<h3 id="-swg-">안전한 웹 게이트웨이(SWG)</h3>
+	<p>보안 웹 게이트웨이는 기업 네트워크와 인터넷 사이에서 작동하면서 보안 정책을 실행하고 기업 데이터를 보호합니다. 사용자 디바이스, 지사, 응용 프로그램 등 트래픽이 어디서 전달되었든 관계없이 SWG는 URL 필터링, 맬웨어 감지 및 차단, 응용 프로그램 제어 등의 보호 계층을 제공합니다. 기업 네트워크 트래픽이 사설 네트워크에서 인터넷으로 이동하는 비율이 높아질수록 기업 디바이스, 네트워크, 데이터를 다양한 보안 위협으로부터 보호하는 데 있어 SWG 배포의 중요성이 높아지고 있습니다.</p>
+	<p>SWG는 <a href="https://www.cloudflare.com/en-gb/learning/ddos/glossary/web-application-firewall-waf/" target="_blank">웹 애플리케이션 방화벽</a> 및 <a href="https://www.cloudflare.com/learning/security/what-is-next-generation-firewall-ngfw/" target="_blank">네트워크 방화벽</a> 등의 기타 도구들과 연동하여 기업 네트워크 전반에 걸쳐 전달되는 인바운드 트래픽과 아웃바운드 트래픽을 모두 보호할 수 있습니다. 또한, <a href="https://www.cloudflare.com/learning/access-management/what-is-browser-isolation/" target="_blank">원격 브라우저 격리</a>(RBI)와 통합하여 인터넷 리소스에 대한 사용자 액세스를 완전히 차단하지 않고도, 맬웨어와 기타 공격이 기업 디바이스와 네트워크를 손상시키려는 것을 방지할 수 있습니다. SWG에 대한 자세한 내용은 <a href="https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway/" target="_blank">여기</a>를 참고하세요.</p>
+	<!--kg-card-begin: html-->
+	<p><img alt="SWG" src="https://blog.cloudflare.com/content/images/2022/06/image4-8.png" style="float:left; height:100px; margin:5px; width:100px">Cloudflare One에는 SWG 솔루션인 <a href="https://www.cloudflare.com/products/zero-trust/gateway/" target="_blank">Cloudflare Gateway</a>가 포함되어 있습니다. 이 솔루션은 사용자 디바이스 및 사용자 네트워크 위치에서 전달되는 트래픽에 DNS, HTTP, 네트워크 필터링 기능을 제공합니다.</p>
+	<!--kg-card-end: html-->
+	<h3 id="-rbi-">원격 브라우저 격리(RBI)</h3>
+	<p>브라우저 격리는 웹페이지를 표시하는 사용자 디바이스에서 웹페이지 로딩 프로세스를 분리함으로써 브라우징 활동을 안전하게 보호하는 기술입니다. 이렇게 하면 사용자 디바이스에서 악의적인 웹페이지 코드를 실행할 수 없으므로 사용자 디바이스와 내부 네트워크가 맬웨어 감염 및 기타 사이버 공격에 영향을 받지 않게 방지할 수 있습니다.</p>
+	<p>RBI는 다른 보안 액세스 기능들과 함께 작동합니다. 예를 들어, 보안 팀에서 보안 웹 게이트웨이 정책을 구성하여 알려진 악성 웹사이트나 잠재적으로 의심스러운 웹사이트로 연결하는 트래픽을 자동으로 격리할 수 있습니다. 브라우저 격리에 대한 자세한 내용은 <a href="https://www.cloudflare.com/learning/access-management/what-is-browser-isolation/" target="_blank">여기</a>를 참고하세요.</p>
+	<!--kg-card-begin: html-->
+	<p><img alt="RBI" src="https://blog.cloudflare.com/content/images/2022/06/image9-6.png" style="float:left; height:100px; margin:5px; width:100px">Cloudflare One에는 <a href="https://www.cloudflare.com/products/zero-trust/browser-isolation/" target="_blank">브라우저 격리</a> 기능이 포함됩니다. 느리고 세련되지 못한 버전으로 웹페이지를 바꾸어 사용자에게 전송했던 기존의 원격 브라우저 접근법과 달리 Cloudflare 브라우저 격리는 사용자 디바이스에서 정확히 동일하게 복제한 웹페이지 버전을 만든 다음, 이 복제 웹페이지를 일반 브라우저처럼 느껴질 정도로 빠르게 제공합니다.</p>
+	<!--kg-card-end: html-->
+	<h3 id="-casb-">클라우드 액세스 보안 브로커(CASB)</h3>
+	<p>클라우드 액세스 보안 브로커는 SaaS 응용 프로그램의 보안 문제를 스캔, 감지하고 지속적으로 모니터링합니다. 조직에서는 CASB를 다음과 같은 용도로 사용합니다.</p>
+	<ul>
+		<li>데이터 보안 - 예: 잘못된 파일이나 폴더가 Dropbox에서 공개적으로 공유되지 않도록 합니다</li>
+		<li>사용자 활동 - 예: 오전 2시에 Workday에서 의심스러운 사용자 권한 변경이 수행될 경우 경고합니다</li>
+		<li>잘못된 구성 - 예: Zoom 녹화 영상에 공개적으로 액세스할 수 없도록 합니다</li>
+		<li>규정 준수 - 예: Bitbucket 분기 권한을 수정한 사람을 추적하고 보고합니다</li>
+		<li>섀도우 IT - 예: 업무용 이메일로 미승인 응용 프로그램에 등록한 사용자를 감지합니다</li>
+	</ul>
+	<p>API 기반 CASB는 다양한 SaaS 응용 프로그램과 API를 통합하며 단 몇 분이면 연결할 수 있습니다. CASB를 RBI와 함께 이용하면, 승인 SaaS 응용 프로그램과 비사용 권한 SaaS 응용 프로그램에서 파일을 다운로드하는 기능이나 문서의 텍스트를 복사하는 기능을 비활성화하는 등 원치 않는 동작이 발생하면 이를 감지하고 방지할 수도 있습니다. CASB에 대한 자세한 내용은 <a href="https://www.cloudflare.com/en-gb/learning/access-management/what-is-a-casb/" target="_blank">여기</a>를 참고하세요.</p>
+	<!--kg-card-begin: html-->
+	<p><img alt="CASB" src="https://blog.cloudflare.com/content/images/2022/06/image6-6.png" style="float:left; height:100px; margin:5px; width:100px">Cloudflare One에 API 기반 <a href="https://www.cloudflare.com/products/zero-trust/casb/" target="_blank">CASB</a>가 포함됩니다. CASB는 SaaS 앱에 대한 포괄적인 가시성과 제어를 제공하기 때문에 데이터 유출과 규정 위반을 쉽게 방지할 수 있습니다.</p>
+	<!--kg-card-end: html-->
+	<h3 id="-dlp-">데이터 손실 방지(DLP)</h3>
+	<p>데이터 손실 방지 도구는 데이터 반출(회사 승인 없이 데이터 이동) 또는 데이터 파기를 감지해 방지합니다. 여러 DLP 솔루션이 네트워크 트래픽과 내부 "엔드포인트" 디바이스를 분석하여 신용카드 번호와 개인 식별 정보(PII) 등의 기밀 정보가 누출되었는지, 또는 손실되었는지 파악합니다. DLP는 데이터 핑거프린팅, 키워드 매칭, 패턴 매칭, 파일 매칭 등 다양한 기술을 이용해 중요한 데이터를 감지합니다. DLP에 대한 자세한 내용은 <a href="https://www.cloudflare.com/en-gb/learning/access-management/what-is-dlp/" target="_blank">여기</a>를 참고하세요.</p>
+	<!--kg-card-begin: html-->
+	<p><img alt="DLP" src="https://blog.cloudflare.com/content/images/2022/06/image12.png" style="float:left; height:100px; margin:5px; width:100px">곧 Cloudflare One을 위한 <a href="https://www.cloudflare.com/teams/lp/dlp/" target="_blank">DLP</a> 기능을 선보일 예정입니다. 여기에는 PII, 레이블, 인덱스 관련 데이터 등 보호해야 할 데이터를 공통 패턴과 대조해 확인하는 기능, 다른 Zero Trust 정책과 DLP 규칙을 통합할 수 있는 기능도 포함됩니다.</p>
+	<!--kg-card-end: html-->
+	<h3 id="--1">서비스형 방화벽</h3>
+	<p>클라우드 방화벽이라고도 하는 서비스형 방화벽은 고객 네트워크 내 물리적인 하드웨어 없이도 잠재적으로 악의적인 트래픽을 필터링합니다. 서비스형 방화벽에 대한 자세한 내용은 <a href="https://www.cloudflare.com/en-gb/learning/cloud/what-is-a-cloud-firewall/" target="_blank">여기</a>를 참고하세요.</p>
+	<!--kg-card-begin: html-->
+	<p><img alt="Firewall" src="https://blog.cloudflare.com/content/images/2022/06/image14.png" style="float:left; height:100px; margin:5px; width:100px">Cloudflare One에는 <a href="https://www.cloudflare.com/magic-firewall/" target="_blank">Magic Firewall</a>이 포함됩니다. 단일 제어창에서 모든 IP 트래픽을 필터링하고, 전체적인 트래픽에 IDS 정책을 실행(새 기능!)할 수 있는 서비스형 방화벽입니다.</p>
+	<!--kg-card-end: html-->
+	<h3 id="--2">이메일 보안</h3>
+	<p>이메일 보안은 이메일 기반 사이버 공격과 원치 않는 통신을 방지하는 프로세스입니다. 탈취되지 않도록 받은 편지함을 보호하는 것, 스푸핑으로부터 도메인을 보호하는 것, 피싱 공격 저지, 사기 방지, 맬웨어 전달 차단, 스팸 필터링, 권한 없는 사람으로부터 이메일 콘텐츠를 보호하기 위한 암호화 등이 이메일 보안에 포함됩니다.</p>
+	<p>이메일 보안 도구는 DLP 및 RBI 등 다른 보안 액세스 기능들과 함께 사용할 수 있습니다. 예를 들면, 긍정 오류 사례를 차단하지는 않으면서 이메일에 포함된 잠재적으로 악의적인 링크를 격리 브라우저에서 실행할 수 있습니다. 이메일 보안에 대한 자세한 내용은 <a href="https://www.cloudflare.com/en-gb/learning/email-security/what-is-email-security/" target="_blank">여기</a>를 참고하세요.</p>
+	<!--kg-card-begin: html-->
+	<p><img alt="Email Security" src="https://blog.cloudflare.com/content/images/2022/06/image5-7.png" style="float:left; height:100px; margin:5px; width:100px">Cloudflare One에는 <a href="https://www.cloudflare.com/products/zero-trust/email-security/" target="_blank">Area 1</a> 이메일 보안 기능이 포함됩니다. 이 기능은 인터넷을 크롤링하여 공격이 수행되는 사이클 초반부터 피싱, 비즈니스 이메일 손상(BEC), 이메일 공급망 공격을 방지합니다. Area 1은 Microsoft와 Google 환경 및 워크플로와 긴밀하게 통합되어 클라우드 이메일 공급자의 기본 보안 성능을 강화합니다.</p>
+	<!--kg-card-end: html-->
+	<h2 id="--3">온램프: 연결하기</h2>
+	<p>보안 액세스 기능을 트래픽에 적용하려면 소스(원격 사용자 디바이스, 지사, 데이터 센터, 클라우드 등 모든 곳)에서 전달되는 트래픽을 보안 액세스 기능이 작동하는 서비스 에지(아래 참고)로 가져올 수 있는 메커니즘이 필요합니다. 그 메커니즘은 바로 온램프이며, IPO 모델에 입력하고 출력하는 방식, 다시 말해 필터를 적용한 후에 A 지점에서 B 지점으로 트래픽을 이동하는 방식을 뜻합니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image13.png" class="kg-image"></figure>
+	<h3 id="--4">역방향 프록시(응용 프로그램용)</h3>
+	<p>역방향 프록시는 웹 서버 앞에 위치하면서 클라이언트( 웹 브라우저 등) 요청을 웹 서버로 전달합니다. 보통 역방향 프록시는 보안, 성능, 안정성을 높이기 위해 구현됩니다. ID 및 엔드포인트 보안 공급자와 함께 역방향 프록시를 사용하면 웹 기반 응용 프로그램에 네트워크 액세스 권한을 부여할 수 있습니다.</p>
+	<p>Cloudflare One에는 세계에서 가장 많이 사용되는 역방향 프록시 중 하나가 포함되어 있으며, 매일 13억 9천만 개 이상의 DNS 요청을 처리합니다.</p>
+	<h3 id="--5">응용 프로그램 커넥터(응용 프로그램용)</h3>
+	<p>IT 팀에서는 사설 응용 프로그램이나 웹에 기반하지 않은 응용 프로그램을 위해 인프라에 경량 디먼을 설치하고, 아웃바운드로만 서비스 에지에 연결하도록 만들 수 있습니다. 이러한 응용 프로그램 커넥터를 사용하면 응용 프로그램이 잠재적인 공격에 노출되지 않고도 HTTP 웹 서버, SSH 서버, 원격 데스크탑, 기타 응용 프로그램/프로토콜로 연결할 수 있게 됩니다.</p>
+	<p>Cloudflare One에는 <a href="https://www.cloudflare.com/products/tunnel/" target="_blank">Cloudflare Tunnel</a>이 포함됩니다. Cloudflare Tunnel을 이용하는 사용자는 경량 디먼을 설치하여 공용 인바운드 포트를 열지 않고도 원본 웹 서버와 가장 가까운 Cloudflare 데이터 센터 사이에 암호화된 터널을 생성할 수 있습니다.</p>
+	<h3 id="--6">디바이스 클라이언트(사용자용)</h3>
+	<p>랩탑, 휴대폰과 같이 디바이스의 트래픽을 서비스 에지로 전달해 필터링하고 사설 네트워크에 액세스하려면 클라이언트를 설치하면 됩니다. “로밍 에이전트”라고도 하는 이 클라이언트는 디바이스 트래픽의 일부나 전부를 서비스 에지로 전달하는 정방향 프록시로 기능합니다.</p>
+	<p>Cloudflare One에는 <a href="https://1.1.1.1/" target="_blank">WARP</a> 디바이스 클라이언트가 포함됩니다. 이는 전세계 수백만 사용자가 이용하고 있으며, iOS, Android, ChromeOS, Mac, Linux, Windows에서 지원됩니다.</p>
+	<h3 id="-ip-byoip-ip-">자체 IP 이용(BYOIP) 또는 IP 임대(분기, 데이터 센터, 클라우드용)</h3>
+	<p>SASE 공급자의 네트워크/서비스 에지 기능에 따라 조직에서 자체 IP를 이용하거나 IP를 임대하여 BGP 알림을 수행해 전체 네트워크를 연결할 수 있습니다.</p>
+	<p>Cloudflare One에는 <a href="https://developers.cloudflare.com/byoip/" target="_blank">BYOIP</a>와 IP 임대 옵션이 모두 포함되어 있으며, 둘 다 Anycast 네트워크 전체를 아우르는 알림 범위를 갖추고 있습니다.</p>
+	<h3 id="--7">네트워크 터널(분기, 데이터 센터, 클라우드용)</h3>
+	<p>물리적 네트워크 경계에 위치하는 하드웨어 디바이스나 가상 하드웨어 디바이스는 대부분 <a href="https://www.cloudflare.com/learning/network-layer/what-is-gre-tunneling/" target="_blank">GRE</a> 및 <a href="https://www.cloudflare.com/learning/network-layer/what-is-ipsec/" target="_blank">IPsec</a> 같은 유형의 업계 표준 터널링 메커니즘을 하나 이상 지원할 수 있습니다. 분기, 데이터 센터, 공용 클라우드에서 서비스 에지 쪽으로 이러한 터널을 구성해 네트워크 수준의 연결을 구성할 수 있습니다.</p>
+	<p>Cloudflare One에는 Anycast GRE 및 <a href="https://blog.cloudflare.com/anycast-ipsec/">IPsec</a> 터널 옵션이 포함됩니다. 두 옵션은 전통적인 지점 간 터널처럼 구성되지만 Cloudflare의 전체 Anycast 네트워크에 자동 연결할 수 있게 하므로 관리하고 이중화하기 쉽습니다. 또한, 기존 SD-WAN 디바이스에서도 이 두 옵션으로 쉽게 연결할 수 있기 때문에 관리하기도 간단하고 터널 구성 전체를 자동화하도록 구현할 수도 있습니다.</p>
+	<h3 id="--8">직접 연결(분기 및 데이터 센터용)</h3>
+	<p>안정성과 용량 요건이 높은 네트워크에서 이용할 수 있는 마지막 온램프 옵션은 물리적인 교차 연결/라스트 마일 연결을 이용하거나 가상 패브릭 공급자를 거쳐서 가상으로 상호 연결하여, 서비스 에지와 직접 연결하는 것입니다.</p>
+	<p>Cloudflare One에는 <a href="https://www.cloudflare.com/network-interconnect/" target="_blank">Cloudflare 네트워크 상호 연결</a>(CNI)이 포함됩니다. 이 연결을 이용하면 물리적인으로 직접 연결하거나 파트너를 거쳐 가상으로 연결하여 Cloudflare의 네트워크에 연결할 수 있습니다. <a href="https://blog.cloudflare.com/ko-kr/cloudflare-for-offices-ko-kr/">Cloudflare for Offices</a>는 CNI를 물리적 프레미스에 직접 제공하기 때문에 훨씬 더 간단하게 연결할 수 있습니다.</p>
+	<h2 id="--9">서비스 에지: 이를 모두 뒷받침하는 네트워크</h2>
+	<p>보안 액세스 기능이 작동하려면 이를 지원할 공간이 있어야 합니다. 전통적인 경계 아키텍처 모델에서는 기업 사무실이나 데이터 센터의 하드웨어 박스 받침대 위에서 이러한 기능이 작동했습니다. 하지만 SASE의 경우에는, 사용자와 응용 프로그램이 세계 어디에 있든 최대한 가장 가까운 곳에 위치한 분산 네트워크에서 보안 액세스 기능이 작동합니다. 하지만 모든 서비스 에지가 똑같이 만들어지지는 않았습니다. SASE 플랫폼에서 사용자, 응용 프로그램, 네트워크에 훌륭한 환경을 제공하려면 뒷받침하는 네트워크가 빠르고, 지능적이고, 상호 운용 가능하고, 프로그래밍 기능이 있으며 투명해야 합니다. 이 각각의 플랫폼 기능을 더 자세히 살펴보겠습니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image10-2.png" class="kg-image"></figure>
+	<h3 id="--10">성능: 위치, 상호 연결, 속도, 용량</h3>
+	<p>여태까지 IT 팀은 보안과 성능 사이에서 절충해 힘들게 결정을 내려야 했습니다. 보안 필터링을 수행할 수 있도록 중앙 위치로 트래픽을 백홀링할지, 어떤 트래픽을 백홀링할지 결정하는 것부터 처리량과 처리 오버헤드 사이에 균형을 잡으려면 어떤 보안 기능을 활성화할지 결정해야 했습니다. SASE에서는 다음과 같은 서비스 에지의 특징 덕분에 절충할 필요가 없습니다.</p>
+	<ul>
+		<li><strong>지역적으로 분산</strong>: 서비스 에지는 사용자 및 응용 프로그램과 최대한 가까운 곳에 위치해야 합니다. 즉, 점점 더 세계 모든 곳에 위치하게 되어야 합니다.</li>
+		<li><strong>상호 연결: </strong>트래픽을 최종적으로 라우팅하는 대상에 안정적이고 빠르게 연결하려면 서비스 에지가 주요 트랜짓, 클라우드, SaaS 공급자를 비롯한 다른 네트워크와 상호 연결되어야 합니다.</li>
+		<li><strong>빠른 속도: </strong>사용자 경험에 대한 기대가 계속 높아지므로 서비스 에지는 최신 상태를 유지해야 합니다. 고속 라스트 마일 인터넷 연결이 가능한지 여부부터 보안 필터링 및 암호화/복호화 단계가 미치는 영향까지, 사용자가 체감하는 응용 프로그램 성능은 많은 요인으로 좌우됩니다. 그러므로 SASE 공급자는 네트워크 성능을 측정하고 개선할 때 총체적으로 접근해야 합니다.</li>
+		<li><strong>고용량: </strong>SASE 아키텍처 모델에서는 보안 기능에 용량을 계획할 필요가 없습니다. “어떤 크기의 박스를 구입해야 할까”라는 질문은 과거에나 필요했던 질문입니다. 즉, 서비스 에지는 네트워크 트래픽이 도달할 수 있는 각 위치에 충분한 용량을 갖추고, 서비스 에지 전반에 걸쳐 이 용량을 효율적으로 사용할 수 있도록 트래픽 부하를 지능적으로 분산할 기능이 있어야 합니다.</li>
+	</ul>
+	<p>Cloudflare One은 <a href="https://www.cloudflare.com/network/" target="_blank">Cloudflare의 전역 네트워크</a>에서 실행됩니다. 이 네트워크는 100여 개 국가의 270여 개 도시를 망라하며, 10,500개 이상의 상호 연결된 네트워크와 140Tbps 이상의 용량을 갖추고 있습니다.</p>
+	<h3 id="-qos-">트래픽 인텔리전스: 쉐이핑, QoS, 원격 측정 기반 라우팅</h3>
+	<p>네트워크/서비스 에지에 내재된 성능 속성 외에 귀사의 개별 네트워크 특성을 기반으로 트래픽에 영향을 미칠 수 있는 능력도 중요합니다. 트래픽 쉐이핑, 서비스 품질(QoS), 원격 측정 기반 라우팅 같은 기술들은 중요 응용 프로그램에 대역폭을 우선 할당하고, 중간 경로에서 발생할 수 있는 정체, 대기 시간, 기타 문제를 피해 라우팅함으로써 보안 서비스 에지 전반에 걸쳐 트래픽 관련 성능을 한층 개선해 줄 수 있습니다.</p>
+	<p>Cloudflare One에는 <a href="https://www.cloudflare.com/products/argo-smart-routing/" target="_blank">Argo Smart Routing</a>이 포함됩니다. Argo Smart Routing은 3~7계층 트래픽을 최적화하여 인터넷에서 발생할 수 있는 정체, 패킷 손실 및 기타 문제를 피해 지능적으로 라우팅합니다. Cloudflare One 로드맵에는 트래픽 쉐이핑과 QoS 기능까지 포함되어 있습니다.</p>
+	<h3 id="--11">위협 인텔리전스</h3>
+	<p>보안 액세스 기능을 구현하려면, 서비스 에지는 인텔리전스 피드에서 OSI 스택의 모든 계층 전체에서 수행되는 알려진 공격 유형과 새로운 공격 유형을 다루며 지속적으로 피드를 업데이트해야 합니다. 타사 위협 피드를 통합하는 기능도 좋지만, 서비스 에지 전체에서 이동하는 트래픽으로 확보하는 네이티브 위협 인텔리전스가 훨씬 강력합니다.</p>
+	<p>Cloudflare One에는 Cloudflare의 네트워크에 존재하는 2천만 개 이상의 인터넷 자산으로부터 수집한 <a href="https://www.cloudflare.com/products/zero-trust/threat-defense/" target="_blank">위협 인텔리전스</a>가 있습니다. 새로운 위협으에서 고객을 보호할 수 있도록 보안 액세스 정책에 지속적으로 인텔리전스가 제공됩니다.</p>
+	<h3 id="--12">상호 운용성: 통합, 표준, 구성 가능성</h3>
+	<p>SASE 플랫폼은 기존 네트워크 아키텍처의 여러 구성 요소를 대체하게 됩니다. 하지만 기존의 도구를 일부 그대로 유지하면서 나중에 새로 도구를 도입할 수도 있습니다. SASE로 원활하게 마이그레이션하려면 기존의 연결 공급자, 하드웨어, 도구와 서비스 에지가 호환되어야 합니다.</p>
+	<p>동시에 서비스 에지는 새로운 기술과 TLS 1.3 및 HTTP3 같은 보안 표준을 선제적으로 도입하는 데 도움이 되어야 합니다. 완벽한 구성 가능성도 갖추고 있어야 합니다. 모든 서비스가 함께 작동하여 포인트 솔루션 스택만으로 달성했던 결과보다 나은 결과를 이루어낼 수 있어야 합니다.</p>
+	<p>Cloudflare One은 <a href="https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/" target="_blank">ID 공급자</a> 및 <a href="https://www.cloudflare.com/endpoint-partners/" target="_blank">엔드포인트 보호</a> 솔루션, <a href="https://www.cloudflare.com/network-onramp-partners/" target="_blank">SD-WAN</a> 장비, <a href="https://www.cloudflare.com/network-interconnect-partnerships/" target="_blank">상호 연결 공급자</a>, 보안 사고 및 이벤트 관리 도구(<a href="https://www.cloudflare.com/products/zero-trust/integrations/" target="_blank">SIEM</a>) 등의 플랫폼과 통합됩니다. 기존 보안 및 IT 도구도 통합 작업을 최소화하여 Cloudflare One과 함께 사용할 수 있습니다.</p>
+	<p>Cloudflare는 인터넷 표준과 및 네트워킹 표준이 발달하도록 이끌고 있습니다. 새로운 웹 표준과 프로토콜은 대부분 Cloudflare 연구팀의 영향을 받았습니다.</p>
+	<p>또한, Cloudflare One은 완벽하게 구성 가능하기 때문에 하나의 사용 사례 및 계층으로 시작해서 추가 기능을 더하여 네트워크에 “1+1=3” 효과를 창출할 수 있습니다.</p>
+	<h3 id="--13">오케스트레이션: 자동화 및 프로그래밍 기능</h3>
+	<p>소수의 사용자, 응용 프로그램, 위치를 벗어나 규모를 확장하게 되면 SASE 구성을 배포하고 관리하기가 복잡할 수 있습니다. 서비스 에지는 Terraform 같은 도구를 이용해 코드형 인프라를 관리할 수 있는 기능과 같이, 전체 자동화 기능과 프로그램래밍 기능을 제공해야 합니다.</p>
+	<p>Cloudflare One에는 전체 API 및 <a href="https://developers.cloudflare.com/cloudflare-one/api-terraform/access-with-terraform/" target="_blank">Terraform</a> 지원이 포함되어 구성을 쉽게 배포하고 관리할 수 있습니다.</p>
+	<h3 id="--14">가시성: 분석 및 로그</h3>
+	<p>서비스 에지를 통하여 모든 트래픽 라우팅에 대한 전체적인 가시성을 팀에 제공합니다. 전통적인 경계 보안 모델에서는 기업 네트워크에서 트래픽이 오고 가는 많은 위치에 네트워크 탭을 구성함으로써 가시성을 확보할 수 있었습니다. 하지만 응용 프로그램이 데이터 센터에 위치하지 않고, 사용자도 사무실에 있지 않게 되면서 가시성 데이터에 액세스하기가 더 어려워졌습니다. SASE 아키텍처에서는 단일 제어창을 갖춘 서비스 에지를 통해 모든 트래픽을 라우팅하므로 플로우 데이터와 패킷 캡처 같은 익숙한 형식과 더불어, 풍부한 로그와 분석으로 다시 가시성을 누릴 수 있습니다.</p>
+	<p>Cloudflare One의 모든 보안 액세스 구성 요소에서 풍부한 분석과 로그를 생성하며, 분석과 로그를 Cloudflare One 대시보드에서 바로 평가하거나 고급 분석을 위해 SIEM 도구로 푸시할 수 있습니다.</p>
+	<h2 id="cloudflare-one-sase--1">Cloudflare One과 함께 SASE 여정을 시작하세요</h2>
+	<p>다음 주, Cloudflare에서는 Cloudflare One 플랫폼의 성능을 한층 강화하여 고객 팀이 SASE라는 비전을 더욱 쉽게 달성하는 데 도움이 될 새로운 기능을 발표할 예정입니다. Innovation Week 홈페이지를 팔로우하거나 당사에 문의하여 오늘 바로 시작하세요.</p>
+</div>

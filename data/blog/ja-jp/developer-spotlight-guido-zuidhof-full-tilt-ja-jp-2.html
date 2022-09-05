@@ -1,0 +1,126 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image1-18.png" class="kg-image"></figure>
+	<p>「開発者スポットライト」と名づけられた新しいブログ記事シリーズへようこそ。このシリーズでは、Cloudflare Workersのエコシステム上に構築された、興味深いアプリケーションをご紹介します。</p>
+	<p><a href="https://blog.cloudflare.com/ja-jp/durable-objects-ga-ja-jp/">Durable ObjectsのGA化</a>を記念して、このシリーズのキックオフには、Full Tiltと呼ばれるDurable Objectsのとても素晴らしい技術デモ以上に相応しいものはないでしょう。</p>
+	<p><a href="https://github.com/gzuidhof" target="_blank">Guido Zuidhof</a>氏によるFull Tiltは、彼が革新部門の最優秀賞に輝いた、最大級かつ最古のゲームジャムであるLudum Dareのためのゲームジャムエントリー作品です。ゲームジャムは非常に短い時間(通常48時間から72時間)で、一からゲームを制作するハッカソンのようなものです。</p>
+	<p>私たちはFull Tiltを大変気に入っています。それはコンピューター上のゲームのコントロールに自分の携帯電話を使用する素晴らしいゲームを構築するのに、GuidoがWorkersとDurable Objectsを使用したからというだけでなく、特にDurable Objectsがいかに強力であるのかが分かるからです。Guidoは、世界のどこでも、できるだけそのプレイヤーに近いところでパーソナルゲーミングサーバーを瞬時に立ち上げるためのすべてのロジックを48時間足らずで書き込むことができました。そしてそれは、まるで自分がコンピューターを直接コントロールしているかのようにとても速いのです。</p>
+	<p>しかし、ここではFull Tiltの開発体験について、Guido氏に語ってもらいます。</p>
+	<!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 76.28865979381443%;"><iframe src="https://iframe.videodelivery.net/9443c301ad57eb58d2068b3db7bb9bec?preload=true" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
+	<!--kg-card-end: html-->
+	<p>先月の10月、私はLudum Dare 49ゲームジャムに参加しました。ゲームジャムの時間的制約によって迅速な作業、頻繁な反復、そして何より範囲を切り捨てることを余儀なくさせられるところが気に入っています。</p>
+	<p>ゲームジャムで私は<a href="https://ldjam.com/events/ludum-dare/49/full-tilt" target="_blank">Full Tilt</a>を制作したのですが、このゲームでは、ノートパソコン上のWebブラウザで実行するゲームに、Wiiリモコンのようなモーションコントローラーとして自分の携帯電話をシームレスに使用します。こんなにもスムーズに作ることができた秘密は、ゲームジャムをJamstackに結び付け、一部のDurable Objectsに組み合わせたことです。</p>
+	<p>ゲームのお試しは <a href="https://ld49.pages.dev/" target="_blank">こちらから</a>。</p>
+	<h3 id="-"><strong>コントローラーとしての携帯電話</strong></h3>
+	<p>Full Tiltは、自分の手をあちこちに動かすことでプレイヤーキャラクターを動かすブラウザゲームです。実行するには、数通りの方法があります。ひとつはコンピューターのWebカメラを使用し、3D空間を介してマーカーオブジェクトを追跡するというものです。そのようなことが可能であっても、どのような状況下でも機能させるというのは難しく(暗い部屋ではさらに難しい！)、また、一部のプレーヤーはシンプルなWebゲームのためにWebカメラを作動させるのを億劫に感じるでしょう。</p>
+	<p>スマートフォンには磁力計やジャイロスコープなどの多くのセンサーが内蔵されており、これらのセンサーがまさに私たちに必要なもので、私たちの潜在的なプレイヤーの大半は、手の届く範囲にスマートフォンがあると想定できます。ネイティブモバイルアプリケーションがこれらのセンサーを使用すると、多くの実装作業と同様にかなりの面倒くささが加わります(ユーザーはこれからアプリケーションをインストールする必要があります)。幸いにも、現代のWebブラウザは<a href="https://developer.mozilla.org/en-US/docs/Web/API/DeviceMotionEvent" target="_blank">DeviceMotion API</a>を介してこれらのセンサーから読み取ることができます：小さなWebアプリは、完璧に仕事をこなします！</p>
+	<p>次なる課題は、メインコンピューターで実行されているゲームに、携帯電話からセンサーの読み取り結果を通信することです。そのためには、Cloudflare WorkersとDurable Objectsの組み合わせを使用します。メインコンピューターとスマートフォンの両方が通信する共有の接点(ゲームサーバー)がいくつか必要です。Webゲームにサーバーレスソリューションを用いることは、大いに道理にかなっています。それに私たちには48時間しかないので、心配事を減らすのは大きなセールスポイントでもあります。また、WorkersとDurable Objectsを使えば、ゲームジャム終了後にサーバーの稼動を維持するためにお金を払う必要も、何よりそれに関して心配する必要もなく簡単にゲームを継続することができます。</p>
+	<h3 id="--1"><strong>通信回線の設定</strong></h3>
+	<p>ブラウザを通信させるには、おおまかに2通りの方法があります。共有接続(どこかのゲームサーバー)またはピアツーピア接続を介して、<a href="https://webrtc.org/" target="_blank">WebRTC</a> DataChannelsを活用することで中間機関を使用することなくブラウザが互いに直接通信することができます。</p>
+	<p>WebRTCの信頼性を高めるのは非常に困難なこともあり、とりわけ複数のNATの背後にある一部の問題を抱えたネットワークのセットアップには、まだプロキシサーバーが必要な場合があります。WebRTC接続のセットアップが最小遅延に対する最適なソリューションであったかもしれませんが、このように短いゲームジャムでは対象外でした。</p>
+	<p>私たちが制作しているゲームは遅延が最小限である要件があり、ゲームには携帯電話を傾けた際の素早い反応が求められます。おそらく100ミリ秒未満であれば良いのですが、2桁台の前半あるいはそれ以下の数字であれば非常に理想的です！私がある場所に位置していて、ゲームサーバーが地理的に十分近くにある場合、このゲームサーバーは、私のスマートフォンからノートパソコンにメッセージを大きな遅延なく渡すことができます。最近はエッジコンピューティングが流行っており、このゲーミングのユースケースにとっては、あれば良いというだけでなく、必需品でもあるのです。</p>
+	<p>背景については十分なので、システムを設計してみましょう。</p>
+	<h3 id="--2"><strong>オンデマンドゲームルーム</strong></h3>
+	<p>まずゲームルームを設定する必要がありました。このゲームルームでは、携帯電話とコンピューターの両方のブラウザが接続できるようにすることで、両者間でのメッセージのやり取りを可能にします。</p>
+	<p>Durable Objectsによって、複数のクライアントがWebSocketを通じて同時に接続できる小さなステートフルな「ミニサーバー」や「ルーム」を大量に作成することができ、完璧な小型のオンデマンドゲームサーバーを提供します。Durable Objectsを、ユーザーが最初に作成を要求した場所に近いデータセンターで実行されるJavascriptのシングルスレッドとしてお考えください。</p>
+	<p>コンピューターのブラウザでゲームが開始されると、Cloudflare Worker APIに現在のゲームセッションのためにルームを作成するようリクエストします。このAPIリクエストはシンプルなPOSTリクエストで、サーバーは作成されたルームを一意に識別する4文字のルームコードで応答します。私たちがルームコードを短くする理由は、ユーザーがQRコードをスキャンできない場合、このコードをコピーしてスマートフォンに入力する必要があるかもしれないからです。</p>
+	<p>周知のように、人は異なる文字が似ていて紛らわしいものがあるような、ランダムな文字列のコピーが苦手なので、最も一般的に区別が付かない文字を除外した次のような制限された文字セットを使用します。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">const DICTIONARY = "2345679ADEFGHJKLMNPQRSTUVWXYZ"; // 29 chars (no 0, O, I, 1, B, 8)
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>4文字のコードで70万までの異なるルームを一意に示すことができるので、たとえ私たちのゲームが大好評になったとしても大丈夫です！さらに、ゲームのセッションは永遠に続くことはありません。一定時間(おおよそ24時間)が経過したら、ゲームセッションが終了したと確信するには十分で、そのルームコードを再利用することができます。</p>
+	<h3 id="--3"><strong>ルームコードの調整</strong></h3>
+	<p>Cloudflare Workersのスクリプトでは、Durable Objectを作成する方法は2つあります。名前から生成したIDでの作成を依頼するか、ランダムで一意なIDでの作成を依頼するどちらかです。ネイティブソリューションは、ルームコードから生成されたIDでDurable Objectを作成することになります。しかし、Durable Objectはエンドユーザーに地理的に近いデータセンター内で作成されるため、ここでは好ましくありません。</p>
+	<p>厄介な状況として、例えばムンバイにいるユーザーがルームをリクエストし、ルームコードABCDを取得した場合を考えます。最初のうちは、彼らが少しゲームをプレイしても問題なく動作するでしょう。</p>
+	<p>問題は1週間後、そのルームコードがロサンゼルスにいる他のプレイヤーのために再利用された時に生じます。ゲームルームDurable Objectはムンバイで復活し、ロサンゼルスにいるプレイヤーの遅延はひどいものになります。将来的に、Durable Objectsはデータセンター間で移行される可能性がありますが、まだ保証されていません。</p>
+	<p>代わりにできるのは、新しいゲームセッションすべてにランダムIDで新しいDurable Objectを作成し、4文字のルームコードからこのランダムIDまでマッピングを維持することです。私たちはシステムにステートをいくつか取り入れています。Durable Objectsが再び救いの手を差し伸べることのできる、信頼できる中心的な情報源が必要となるでしょう。</p>
+	<p>ルームコードからDurable Object IDまでこのマッピングを追跡する単一の「ルームハブ」Durable Objectを作成することで、これを解決します。このDurable Objectには2つのエンドポイントがあり、1つは新しいルームをリクエストするもので、もう1つはルームの情報を検索するものです。</p>
+	<p>ルームリクエストのエンドポイント用のリクエストハンドラーを以下に示します。(引数は <a href="https://sunderjs.com/docs/context" target="_blank">Sunder Context</a>で、 Sunderは私がこのプロジェクトで使用したWebフレームワークです)</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-typescript">export async function handleRoomRequest(ctx: Context&lt;Env&gt;) {
+    const now = Date.now();    
+    const reqBody = await ctx.request.json();
+
+    // We make some attempts to find a room that is available..
+    const attempts = 5
+
+    let roomCode: string;
+    let roomStorageKey: string;
+
+    for (let i = 0; i &lt; attempts; i++) {
+        roomCode = generateRoomCode();
+        roomStorageKey = ROOM_STATE_PREFIX + roomCode;
+        const room = await ctx.state.storage.get&lt;RoomData&gt;(roomStorageKey);
+        if (room === undefined) {
+            break;
+        } else if (now - room.createdAt &gt; MAX_ROOM_AGE) {
+            await ctx.state.storage.delete(roomStorageKey);
+            break;
+        }
+        if (i === attempts-1) {
+            return ctx.throw("Couldn't find available room code :(");
+        }
+    }
+
+    const roomData: RoomData = {
+        roomCode: roomCode,
+        durableObjectId: reqBody.durableObjectId,
+        createdAt: now,
+    }
+
+    await ctx.state.storage.put&lt;RoomData&gt;(roomStorageKey, roomData);
+
+    ctx.response.body = {
+        room: roomData
+    };
+    ctx.response.status = HttpStatus.Created;
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>簡単に言うと、一度も使用されたことがないか、または十分な期間使用されていないものが見つかるまで、いくつかルームコードを生成します。</p>
+	<p>このコードには、微妙ですが重要な違いがあります。Durable Objectは、ルームハブそのものではなく、ルームハブと通信するCloudflare Workersに作成されます。ルームハブは、Cloudflareのネットワーク上のどこかにある単一データセンターで動作します。そこからゲームルームを作成する場合、エンドユーザーからまだ遠く離れているかもしれません！</p>
+	<p>ルーム情報を検索する方がシンプルで、私たちはルームデータかステータス404のどちらかを返します。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-typescript">export async function handleRoomLookup(ctx: Context&lt;Env, {roomCode: string}&gt;) {
+    const now = Date.now();
+
+    let roomStorageKey = ROOM_STATE_PREFIX + ctx.params.roomCode;
+    const roomData = await ctx.state.storage.get&lt;RoomData&gt;(roomStorageKey);
+
+    if (roomData === undefined) {
+        ctx.throw(404, "Room not found");
+        return;
+    }
+
+    if (now - roomData.createdAt &gt; MAX_ROOM_AGE) {
+        // About time we cleaned it up.
+        await ctx.state.storage.delete(roomStorageKey);
+        ctx.response.status = HttpStatus.NotFound;
+        return;
+    }
+
+    ctx.response.body = {
+        room: roomData
+    };
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>スマートフォンのブラウザは、それと同じルームに接続する必要があります。ユーザーにとって簡単にするため、私たちは特定の「ゲームルーム」Durable Objectを指す4文字のルームコードを生成します。この方法で、ユーザーは自分のスマートフォンを手に取り、Webサイトアドレス <code>https://ld49.pages.dev</code> に移動してコード「ABCD」と入力します (またはより一般的に、次のリンクでQRコードをスキャンできます <code>https://ld49.pages.dev?room=ABCD</code> )。</p>
+	<h3 id="-durable-object"><strong>ゲームルームDurable Object</strong></h3>
+	<p>ゲームルームDurable Objectは、最新センサーの読み取りでスマートフォンからノートパソコンにメッセージを伝える役目があるだけなので、とてもシンプルなものになり得ます。私はまさにこれを行うために<a href="https://github.com/cloudflare/workers-chat-demo" target="_blank">Durable Objectsチャットルームの例</a>を修正することができたのです—ゲームジャム向けの時間節約術です！</p>
+	<p>ブラウザが接続するとき、それらは「ピア」または「ホスト」のいずれかのロールとして接続します。ピアによって送信されたメッセージはいずれもホストに転送され、ホストからのすべてのメッセージはすべてのピアに転送されます。この場合、ホストはゲームを実行しているノートパソコンのブラウザで、ピアはスマートフォンのコントローラーです。実装上、これは私たちがピアとホストというユーザーのリストを2つ持っているということになります。メッセージが届いたときはいつでもリストをループして、他のロールのすべての接続にブロードキャストします。実際には、ユーザーの切断に対処するために<a href="https://github.com/gzuidhof/LD49/blob/master/beamerserver/src/durableObjects/room/handler.ts" target="_blank">コード</a>はもう少し複雑です。</p>
+	<p>Full Tiltはシングルプレイヤーゲームですが、このセットアップで簡単にマルチプレイヤーゲームに適応させることができます。多くの仲間が自分のスマートフォンを手持ちのコントローラーとして使って参加できる、ブラウザ上で実行されるマリオカートのようなゲームを想像してみてください！残念ながら、このゲームジャムではそこまで洗練されたゲームを作るのに十分な時間はありませんでした。</p>
+	<h3 id="--4"><strong>フロントエンド</strong></h3>
+	<p>バックエンドの準備が整っても、まだ実際のゲームとコントローラーのWebアプリを作成する必要があります。</p>
+	<p>私の当初の計画は、お使いの携帯電話を傾けて星を集め、曲技飛行のトリックを完成させることによって3D飛行機を操縦するゲームを作ることでした。このコントロール方法がかなりお粗末だと思ったので、「不安定」というテーマにはぴったりだったでしょう！それに近いものを作る時間が残っていなかったので、範囲から切り捨てることになりました。</p>
+	<p>最終的に、Phaserのゲームエンジンを使用して、システム全体をSvelteアプリにまとめることになりました。私は何年も前にPhaserを一度使用しただけで、Svelteを使用したことはなかったため、これはまさしく挑戦でした。幸いなことに、私はシンプルなものを素早く組み立てることができました。何かを動かして、画面上にランダムに現れるブリップを集めるヘビのようなゲームです。</p>
+	<p>ゲームをゲームとするには、ユーザーに何らかの目標を持たせ、通常は何らかのゲーム―オーバーの条件を設定する必要があります。私は時間の経過とともに、だんだん速く進むようにゲームを変更し、スコアカウンターを追加したり、画面の端に触れたらゲームオーバーとなる条件を追加したりしました。私はMSペイントで自分の「アート」を作り、オンラインツールである<a href="https://sfxr.me/" target="_blank">sfxr</a>を使用してサウンドエフェクトをいくつか生成し、<a href="https://musiclab.chromeexperiments.com/Song-Maker" target="_blank">ChromeのMusic Lab Song Maker</a>で音楽サウンドトラックを「作曲」しました。</p>
+	<p>同時に、私はゲームサーバー用の小さなクライアントを書き、ブラウザのDeviceMotion APIを搭載した<a href="https://github.com/gzuidhof/LD49/blob/master/beamer-gamepad/src/components/Rotato.svelte" target="_blank">スマートフォンコントローラーアプリ</a>と一緒にガムテープを貼り付けました。自分のゲームを配布するため、私は最初に効果的だったCloudflare Pagesを使用しました。</p>
+	<h3 id="--5"><strong>完成</strong></h3>
+	<p>その後、締切り時間がすぐそこまで迫り — かろうじて間に合いましたが、自分で誇れるものを提出できました。それほど素晴らしいものではありませんが、興味深いバックエンドシステムと斬新な入力方法を備えたゲームです。<a href="https://ld49.pages.dev/" target="_blank">こちら</a>でゲームをお試しください。ソースコードは<a href="https://github.com/gzuidhof/LD49" target="_blank">こちら</a>から(警告：もちろん全く洗練されていないコードです！)。</p>
+	<p>私の共同ジャマーたちのレセプションは素晴らしいものでした。誰もがゲームそのものとグラフィックスがひどいものであったことには同意でしたが、それは斬新でした。何百もの他のゲームの中からこのゲームは、ゲームジャムの *イノベーション* 部門の1位に評価されたのです！</p>
+	<p>最後に、これはゲームサーバーの未来なのでしょうか？インディーズゲーム開発者や小規模なスタジオにとって、世界中に分散するゲームサーバー保有機の設定と維持は、大きな手間とコストの両方がかかります。サーバーレス、特にDurable Objectsは素晴らしいソリューションを提供することができます。</p>
+	<p>しかし、すべてのゲームがWebSocketベースのバックエンドに適しているわけではありません。一部のリアルタイムゲームにおいては、1秒前の出来事に関心はなく、最新の情報だけが重要です。この点こそ、WebSocketの信頼性と順序性が妨げになり得るところです。</p>
+	<p>概して、Durable Objectsの私の第一印象は非常にポジティブなものです。ツールベルトに入れておけば、あらゆる種類のWebプロジェクトに重宝する素晴らしいツールです。数日かかる問題に、わずか数分で取り組むことができるようになりました。私がまだ考えつかない他の問題でさえ、Durable Objectsによって容易になるのを見て非常に興奮しています。</p>
+</div>

@@ -1,0 +1,84 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/01/image21-1.png" class="kg-image"></figure>
+	<p>2020年の第4四半期のDDoS攻撃の傾向は、多くの点で規範を逸脱したものとなりました。Cloudflareでは、2020年で初めてとなる大規模なDDoS攻撃数の増加を観測しました。具体的には、500Mbpsと50K ppsを超えた攻撃数が、大きく膨れ上がりました。</p>
+	<p>さらに、攻撃ベクトルは進化を続け、プロトコルベースの攻撃は前四半期に比べて3～10倍の増加が見られました。攻撃者はこれまで以上に執拗でした。10月から12月の間に検出された全攻撃のおよそ9%が、24時間以上続きました。</p>
+	<p>以下は、2020年第4四半期のその他の注目すべき観測結果です。このブログで、さらに詳しく説明します。</p>
+	<ul>
+		<li>攻撃数：2020年で初めて、第4四半期で観測された総攻撃数が、前四半期と比べて減少しました。</li>
+		<li>攻撃期間：観察されたすべての攻撃の73%は攻撃期間が1時間以内で、第3四半期の88％から減少しました。</li>
+		<li>攻撃ベクトル：SYN、ACK、RSTフラッドが主な攻撃ベクトルとしてデプロイされましたが、NetBIOSを介した攻撃が5400%も急増し、ISAKMPとSPSSを介した攻撃がこれに続きました。</li>
+		<li>グローバルなDDoS活動：モーリシャス、ルーマニア、ブルネイのデータセンターでは、非攻撃のトラフィックに対するDDoS活動の割合が最高値を記録しました。</li>
+		<li>追加の攻撃戦術：<a href="https://blog.cloudflare.com/ransom-ddos-attacks-target-a-fortune-global-500-company/">ランサムDDoS（RDDoS）</a>攻撃は、依然として世界中の企業をターゲットにしています。これは、犯罪グループがDDoS攻撃の脅威の下で身代金をビットコインで要求するものです。</li>
+	</ul>
+	<h2 id="-">攻撃数</h2>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/01/image13.png" class="kg-image"></figure>
+	<p>2020年で初めて観測されたネットワーク層DDoS攻撃の総数が、前四半期と比較して減少しました。第3四半期に発生した攻撃は2020年に観測された全攻撃の48%であったのに対し、第4四半期は15％でした。実際に、第4四半期の攻撃の総数は、9月単独で見たものと比較すると60%の減少です。月単位では、12月は第4四半期で最も攻撃の多い月となりました。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/01/image15.png" class="kg-image"></figure>
+	<h2 id="--1">攻撃の発生率</h2>
+	<p>L3/4 DDoS攻撃規模の測定には、さまざまな方法があります。1つは送信するトラフィックの量で、「ビットレート」（具体的にはギガビット/秒）で測定されます。もう1つは配信するパケット数で、パケットレート（特に1秒あたりのパケット数）で測定されます。ビットレートが高い攻撃ではターゲットとなるネットワークリンクの最後が飽和状態になり、パケットレートの高い攻撃ではルーターやその他のハードウェア<a href="https://blog.cloudflare.com/network-layer-ddos-attack-trends-for-q3-2020/#blog-1-ddos">デバイス</a>が過負荷状態になります。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/01/image8-4.png" class="kg-image"></figure>
+	<p>第4四半期では、前四半期と同様に、大部分の攻撃は非常に小さく、具体的には1Gbpsと1M pps以下でした。この傾向は驚くべきことではありません。なぜなら、ほとんどの攻撃が、最高でも数ドルの費用で入手できる、使いやすいツールを用いたアマチュア攻撃者によって引き起こされているからです。小さな攻撃は、他の種類のサイバー攻撃からセキュリティチームの目をそらすための偽装工作として、またはネットワークの防衛メカニズムを試すために仕掛けられている可能性があります。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/01/image16.png" class="kg-image"></figure>
+	<p>しかし、小規模攻撃が全体的に多かったことが、そのまま第4四半期全体の傾向になるわけではありません。500Mbpsと50K ppsを超える攻撃総数の割合は、前四半期よりも高くなりました。実際、100 Gbpsを超える攻撃数は第3四半期から10倍増加し、10M ppsを超える攻撃は3.6倍増加しました。</p>
+	<p>Cloudflareは、特異な大規模攻撃を一つ観測しました。それはACKフラッドDoS攻撃で、Cloudflareのシステムが自動検出し、軽減しました。この攻撃が特異だったのは、最大限のパケットレートではなく、音響の世界から借用したと思われる方法を使っていた点です。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/01/image18.png" class="kg-image"></figure>
+	<p>上のグラフからわかるように、攻撃のパケットレートは19時間以上にわたり、波状のパターンをたどっています。まるで攻撃者が<a href="https://en.wikipedia.org/wiki/Beat_%28acoustics%29" target="_blank">ビート</a>と呼ばれる音響の概念から着想を得たようです。このため、当社ではこの攻撃に「ビート」というコードネームを付けました。音響学において、ビートとは、2つの異なる周波数の干渉を表す用語です。ビート攻撃の詳細については、ブログ記事「 <a href="https://blog.cloudflare.com/beat-an-acoustics-inspired-ddos-attack/">ビート - 音響から着想を得たDDoS攻撃</a> 」をお読みください。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/01/image14.png" class="kg-image"></figure>
+	<p>パケット集中型かビット集中型かにかかわらず、大規模なDDoS攻撃の増加は、憂慮すべき傾向です。これは、攻撃者がより大胆になって、より大きな攻撃を仕掛けられるツールを使用していることを示しています。さらに悪いことに、多くの場合、大規模な攻撃は、ネットワークだけでなく、ターゲットとなるネットワークのダウンストリームにサービスを提供する仲介サービスプロバイダーにも影響を与えます。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/01/image10.png" class="kg-image"></figure>
+	<h2 id="--2">攻撃期間</h2>
+	<p>第4四半期の攻撃の73%は、攻撃期間が1時間以内のものでした。一方で24時間以上続いた攻撃は、9%近くに増えています（第3四半期のわずか1.5%と比較）。この増加によって、あらゆる規模と期間の攻撃から保護するために、リアルタイムで常時稼働する防衛システムの必要性が増しています。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/01/image2-6.png" class="kg-image"></figure>
+	<h2 id="--3">攻撃ベクトル</h2>
+	<p>「攻撃ベクトル」は、攻撃方法を説明するために使用される用語です。最も一般的な方法であるSYNフラッドは、第3四半期に観測されたすべての攻撃のほぼ42%を占め、その後にACK、RST、UDPベースのDDoS攻撃が続きます。これは、前四半期で観測された傾向と比較的一致しています。しかし、ACK攻撃は第3四半期の9位から2位に急上昇し、前四半期と比較すると13倍増加し、2位だったRST攻撃を退けました。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/01/image3-9.png" class="kg-image"></figure>
+	<h2 id="--4">新たなトップ脅威</h2>
+	<p>SYNやRSTフラッドなどのTCPベースの攻撃は引き続き多く発生していますが、NetBIOS、ISAKMPベースのDDoS攻撃などのUDPプロトコル固有の攻撃は、前四半期と比較して急増しています。</p>
+	<p>NetBIOSは、別のマシン上のアプリケーションがローカルエリアネットワークを介して共有リソースと通信し、共有リソースにアクセスできるようにするプロトコルです。ISAKMPは、<a href="https://www.cloudflare.com/ja-jp/learning/network-layer/what-is-ipsec/" target="_blank">IPSec</a> VPN接続の設定時にセキュリティアソシエーション（SA）と暗号化キーを確立するために使用されるプロトコルです（ＶPＮ接続：IPsec は、インターネットキー交換（IKE）プロトコルを使用して安全な接続を確保し、インターネットプロトコル（IP）ネットワーク経由で送信されるデータのパケットを認証および暗号化します）。</p>
+	<p>Cloudflareは、ネットワークを停止させようとするプロトコルベースの攻撃、そしてマルチベクトル型攻撃のデプロイが続いているのを確認しています。攻撃の複雑さが増すにつれ、企業の安全とオンラインの状態を常に維持するために、適切なDDoS攻撃対策が必要になります。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/01/image20.png" class="kg-image"></figure>
+	<h2 id="-ddos-">グローバルなDDoS活動</h2>
+	<p>これらの攻撃がどこから発生しているかを把握するために、ソースIPの場所ではなく、トラフィックが取り込まれたCloudflareエッジネットワークデータセンターを調べます。その理由は？攻撃者がL3/4攻撃を開始すると、攻撃元を難読化するために送信元のIPアドレスを「スプーフィング」（改ざん）できるからです。</p>
+	<p>このレポートでは、Cloudflareデータセンターで観測された攻撃のトラフィックも測定し、地理的分散のために同じデータセンターで観測された非攻撃のトラフィックと比較します。これにより、他の場所よりも多くの脅威を観測している地理的位置の特定に関して、より正確な情報を得ることができます。世界100か国を超える、200以上の都市にCloudflareのデータセンターがあるため、レポートには地理的正確さを反映できます。</p>
+	<p>第4四半期のメトリクスを見てみると、興味深い傾向を観測しました。モーリシャス、ルーマニア、ブルネイのデータセンターは、非攻撃のトラフィックに対する攻撃のトラフィックの割合が最も高い数字を記録していました。具体的には、これらの国の全トラフィックの4.4%～4.9%がDDoS攻撃によるものでした。言い換えると、100バイト中約5バイトが攻撃トラフィックの一部だったことになります。これらの観測値は、これらの国でボットネット活動が増加していることを示しています。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/01/image17.png" class="kg-image"></figure>
+	<p>ここで、DDoS攻撃の比較的高い発生率の要因となり得るものは何でしょう。確証をもって述べることはできませんが、リストの上位2か国の要因となり得るのは以下のものです。</p>
+	<p><a href="https://en.wikipedia.org/wiki/Mauritius" target="_blank">モーリシャス &nbsp;</a>-2020年8月、<a href="https://news.sky.com/story/mauritius-declares-environmental-emergency-after-mass-oil-spill-from-grounded-tanker-12044845" target="_blank">約4,000トンの燃料を運ぶ船の船体に亀裂が入り</a>、モーリシャスで環境緊急事態が宣言されました。原油流出は、<a href="https://en.wikipedia.org/wiki/MV_Wakashio_oil_spill#Anti-government_protests" target="_blank">首相辞任を求める反政府抗議</a>に火をつけました。以後、政府は議会を2度停止し、さらに事故を報じる地元メディアや第三者機関による報告を抑止したことで非難されています。一連の人権スキャンダルの5か月後も、<a href="https://www.forbes.com/sites/nishandegnarain/2021/12/30/protests-continue-in-mauritius-five-months-after-oil-spill/" target="_blank">抗議は続いています</a>。モーリシャスでの出来事は、DDoS活動の増加に関連している可能性があります。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/01/image19.png" class="kg-image">
+		<figcaption>出典：Wikipedia</figcaption>
+	</figure>
+	<p><a href="https://en.wikipedia.org/wiki/Romania" target="_blank">ルーマニア</a>- ルーマニアでのDDoS活動の増加の背景には、2つの出来事があります。最近議会選挙があり、2020年12月6日に終了しました。さらに、EUは12月9日、<a href="https://www.zdnet.com/article/romania-to-host-the-eus-new-cybersecurity-research-hub/" target="_blank">ルーマニアが新しいサイバーセキュリティ研究拠点である欧州サイバーセキュリティ産業技術研究コンピテンスセンター（ECCC）をホストすると発表しました</a>。もう一つ考えられる説明としては、<a href="https://www.romania-insider.com/romania-cheapest-fast-internet-december-2019#:~:text=The%20price%20of%20super%2Dfast,and%20discounts%20platform%20Picodi.com." target="_blank">ルーマニアは世界で最も安い超高速ブロードバンドインターネットを持つ国であり</a>、ルーマニア国内から誰もが帯域幅消費型攻撃を容易に仕掛けられることです。</p>
+	<h2 id="-ddos--1">地域別のDDoS活動</h2>
+	<h3 id="--5">アフリカ</h3>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/01/image1-8.png" class="kg-image"></figure>
+	<h3 id="--6">アジア太平洋・オセアニア</h3>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/01/image7-2.png" class="kg-image"></figure>
+	<h3 id="--7">ヨーロッパ</h3>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/01/image5-4.png" class="kg-image"></figure>
+	<h3 id="--8">中東</h3>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/01/image12.png" class="kg-image"></figure>
+	<h3 id="--9">北米</h3>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/01/image6-2.png" class="kg-image"></figure>
+	<h3 id="--10">南米</h3>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/01/image11.png" class="kg-image"></figure>
+	<h3 id="--11">アメリカ合衆国</h3>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/01/image9-1.png" class="kg-image"></figure>
+	<h2 id="--12">ランサム攻撃が企業を悩ませ続ける</h2>
+	<p><a href="https://blog.cloudflare.com/network-layer-ddos-attack-trends-for-q3-2020/">前四半期のDDoSレポート</a>では、ランサム（RDDoS）攻撃が世界中で増加していることを報告しました。RDDoS攻撃では、個人または企業が身代金を支払わないと、悪意のある攻撃者が一定期間、ネットワーク、Webサイト、またはアプリケーションを攻撃し、オフラインにするサイバー攻撃を仕掛けて、ユーザーまたは企業を脅します。RDDoS攻撃の詳細については、<a href="https://www.cloudflare.com/ja-jp/learning/ddos/ransom-ddos-attack/" target="_blank">こちら</a>をご覧ください。</p>
+	<p>2020年の第4四半期は、この不穏な傾向が続きました。大企業も中小企業も、身代金要求メッセージへの対応を考える一方で、Cloudflareにネットワークインフラストラクチャをオンラインに保つ方法についての助けを求めました。<a href="https://blog.cloudflare.com/ransom-ddos-attacks-target-a-fortune-global-500-company/">こちらで、</a>Fortune Global 500企業が身代金要求メッセージを受け取ったときに取った行動、そして企業に向けた助言についてお読みください。</p>
+	<p>Cloudflareはこの傾向を注意深く監視し続けています。脅威を受けた場合の対処方法は以下のとおりです：</p>
+	<ol>
+		<li>パニックに陥らない：身代金を支払わないでください。身代金を支払うことは攻撃者を助長し、違法行為を金銭的に支援することになります。身代金を支払っても、ネットワークが攻撃されないという保証はありません。</li>
+		<li>現地の法執行機関に通知する：ご自身や会社が受け取った身代金要求書のコピーを求められる場合があります。</li>
+		<li>Cloudflareに連絡する：お客様のWebサイトやネットワークインフラストラクチャがランサム攻撃から保護されるようお手伝いします。</li>
+	</ol>
+	<h2 id="cloudflare-ddos-">CloudflareのDDoS攻撃対策</h2>
+	<p>Cloudflareは、包括的なL3-L7 DDoS攻撃対策をご提供します。2017年、他社に先駆けてDDoS攻撃に対する業界標準のサージプライシング（ピーク時料金）の撤廃を行い、定額制で無制限のDDoS攻撃対策をお客様にご使用いただいております。それ以来、<a href="https://www.cloudflare.com/ja-jp/case-studies/wikimedia-foundation/" target="_blank">ウィキメディア</a>、<a href="https://www.cloudflare.com/ja-jp/case-studies/panasonic" target="_blank"> &nbsp;パナソニック</a>、<a href="https://www.cloudflare.com/ja-jp/case-studies/discord" target="_blank">Discord</a> など、あらゆる規模の何千ものお客様を支援してきました— こうした企業はCloudlareでインターネットプロパティを保護し、高速化させています。なぜ企業は、Cloudflareを選ぶのでしょうか？3つの主な理由は以下のとおりです。</p>
+	<p><strong>1. スクラブなし</strong><br>Cloudflareは、<a href="https://blog.cloudflare.com/no-scrubs-architecture-unmetered-mitigation/">スクラビングセンターモデルはDDoS攻撃対策としては欠陥のあるアプローチである</a>と考えるため、スクラビングセンターを運営しません。スクラビングセンターは遅延を引き起こし、構築と実行にコストがかかりすぎます。その上、DDoS攻撃には不釣り合いです。攻撃者は、単一のスクラビングセンターで処理できるよりも多くの帯域幅を使用できるのです。</p>
+	<p>Cloudflareのネットワークは、すべてのデータセンターのすべてのマシンがDDoS軽減を実行するように設計されています。これをエッジで行うことが、パフォーマンスに影響を与えずに大規模に軽減する唯一の方法です。当社のエニーキャストベースのアーキテクチャでは、当社の容量がDDoSスクラビング容量と同等になっています。これは市場最大規模の51 Tbpsです。これは、Cloudflareが攻撃のソースに最も近い場所でDDoS攻撃を検出して軽減することを意味します。さらに、Cloudflareのグローバルな脅威インテリジェンスは、インターネットの免疫システムのように機能し、機械学習モデルを用いてあらゆる顧客に対する攻撃を学習して軽減し、すべてのお客様を保護します。</p>
+	<p><strong>2. 時間</strong><br>ほとんどの企業は、オンプレミスからクラウドへの移行段階にあります。脅威環境、機能要件、ビジネスアプリケーションの規模は以前より速く進化しており、ネットワーク攻撃の規模や精巧さが最先端の企業にさえ、その防御能力にすでに負担をかけています。クラウドを採用する際に多くの企業が懸念することに、アプリケーションに遅延が追加されることが挙げられます。クラウドベースのDDoS攻撃対策サービスのほとんどは、DDoS軽減を「スクラビングセンター」という専用のデータセンターに頼っています。これらのデータセンターへのトラフィックをバックホールすると、送信先サーバーが指す場所に応じて、かなりの遅延が加わることがあります。</p>
+	<p>この問題は、企業がネットワーク機能ごとに異なるプロバイダーを使用している場合にさらに複雑になります。トラフィックがプロバイダーからプロバイダーにホップする必要がある場合、遅延は数百ミリ秒単位になります。</p>
+	<p>Cloudflareは<a href="https://www.cloudflare.com/ja-jp/network" target="_blank">地理的に分散しているため</a>、攻撃はグローバルに検出され、平均3秒未満で軽減されます。これは業界最速クラスです。</p>
+	<p><strong>3. DDoSだけではない</strong><br>DDoS攻撃は、企業が現在直面している多くのサイバー脅威の一面に過ぎません。企業が<a href="https://www.cloudflare.com/ja-jp/learning/security/glossary/what-is-zero-trust/" target="_blank">ゼロトラストアプローチ</a>に移行するにつれて、ネットワークおよびセキュリティの購入者は、ネットワークアクセスに関連する大きな脅威に直面し、ボット関連の攻撃の頻度と高度化は引き続き急増するでしょう。</p>
+	<p>Cloudflareで製品を構築する際の重要な設計理念は、統合です。<a href="https://blog.cloudflare.com/ja-jp/introducing-cloudflare-one-ja-jp/">Cloudflare One</a>は、ゼロトラストセキュリティモデルを使用して、企業がデバイス、データ、アプリケーションをより優れた方法で保護できるようになるソリューションであり、セキュリティおよびDDoSソリューションの既存のプラットフォームとも深く統合されています。CloudflareのDDoSソリューションの詳細は<a href="https://www.cloudflare.com/ja-jp/plans/enterprise/" target="_blank">こちらにお問い合わせ</a>いただくか、ダッシュボードにサインアップして<a href="https://dash.cloudflare.com/" target="_blank">今すぐ始めましょう。</a></p>
+</div>

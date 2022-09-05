@@ -1,0 +1,115 @@
+<div class="post-content lh-copy gray1">
+	<p>A fundamental principle here at Cloudflare has always been that we want to <a href="https://blog.cloudflare.com/a-letter-from-cloudflares-founders-2020/">serve everyone</a> - from individual developers to small businesses to large corporations. In the earliest days, we provided services to hosting partners and resellers around the globe, who helped bring Cloudflare to thousands of domains with free caching and DDoS protection for shared infrastructures.</p>
+	<p>Today, we want to reinforce our commitment to our hosting ecosystem and small business partners that leverage Cloudflare to help bring a better Internet experience to their customers. We've been building a robust <a href="https://blog.cloudflare.com/announcing-the-new-cloudflare-partner-platform/">multi-tenant partner platform</a> that we will begin to open up to everyone searching for a faster, safer, and better Internet experience. This platform will come in the form of a Self Serve Partner program that will allow SMB agencies &amp; hosting partners to create accounts for all their customers under one dashboard, consolidate billing, and provide discounted plans to our partners.</p>
+	<h3 id="deprecation-of-our-legacy-apis">Deprecation of our legacy APIs</h3>
+	<p>To make way for the new, we first must discuss the end-of-life of some of Cloudflare’s earliest APIs. Built and launched in <a href="https://blog.cloudflare.com/api-how-to-build-cloudflare-into-your-web-app/">2011</a>, our Hosting and Optimized Partner Programs allowed our initial CDN and DDoS solutions to expand to brand-new audiences around the globe. These APIs were essential for fueling growth in the earliest days of Cloudflare supporting reseller partners, hosting partners, and external <a href="https://support.cloudflare.com/hc/en-us/articles/360042380772-Partner-Plugin-Supportability" target="_blank">plugins</a> that helped make implementing Cloudflare easier than ever. <br>On November 1, 2022 - Cloudflare will be discontinuing support for our <a href="https://www.cloudflare.com/docs/host-api/" target="_blank">Host</a> and <a href="https://www.cloudflare.com/docs/reseller-api/" target="_blank">Reseller</a> APIs. After this date:</p>
+	<ul>
+		<li>Management of zones, users, and configurations via the Host or Reseller API will be disabled.</li>
+		<li>Any plugins leveraging these APIs will no longer be functional. This includes our legacy cPanel, Plesk and WHMCS plugins. We recommend partners and users begin to work directly within the <a href="https://dash.cloudflare.com" target="_blank">Cloudflare dashboard</a> for any future configuration management.</li>
+		<li>Any domains created by these APIs will continue to function and traffic will not be impacted after the depreciation period. Customer traffic will not be impacted during the deprecation, and we’ve been working closely with our partners to ensure these domains are transitioned to customer-management where preferred or migrated when appropriate to the new partner platform.</li>
+		<li>Any active specialized subscriptions will be mapped to our current zone plans. <br>We are grateful for all of our earliest partners that trusted Cloudflare to increase the security and improve performance for their customer’s domains. All of our partners still leveraging our APIs should have received a communication with our deprecation schedule and next steps. And if there are any additional questions, they can be directed to <a href="/cdn-cgi/l/email-protection#95fdfae6e1caf1f0e5e7f0f6e7f4e1fcfafbd5f6f9fae0f1f3f9f4e7f0bbf6faf8"><span class="__cf_email__" data-cfemail="660e0915123902031614030507120f090826050a091302000a0714034805090b">[email&nbsp;protected]</span></a>.</li>
+	</ul>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image3-31.png" class="kg-image"></figure>
+	<h3 id="our-new-partner-platform">Our New Partner Platform</h3>
+	<p>As our solution offering and network grew, these early APIs were not well-equipped to scale with them. Cloudflare has continued to grow its network to <a href="https://blog.cloudflare.com/new-cities-april-2022-edition/">over 275 cities</a> and expand well beyond just web performance and security. With a full portfolio of Application Services, Zero Trust Services, Developer and Network solutions, our specialized plans and APIs quickly began to limit our partners instead of empowering them. Cloudflare announced our revamped <a href="https://blog.cloudflare.com/announcing-the-new-cloudflare-partner-platform/">partner platform</a> a few years ago, and it has since been used with some of our largest integration and service partners supporting our newest <a href="https://blog.cloudflare.com/zero-trust-managed-services/">SASE and Zero Trust offerings</a>.</p>
+	<h3 id="self-serve-partnerships-in-closed-beta">Self-serve partnerships in closed beta</h3>
+	<p>With the deprecation of our legacy APIs, we are opening up our Partner Platform to a broader base of partners with a Self-Serve Partner program. Working in tandem with our Self-Serve teams, we’ve been ramping up initial test partners since late last year. Now, we’re excited to announce a path forward for agencies, regional MSPs, and hosting providers that still rely on Cloudflare to help their customers experience a better, faster, and safer Internet:</p>
+	<!--kg-card-begin: markdown-->
+	<ul>
+		<li><strong>Multi-Tenant Account Support</strong>
+			<ul>
+				<li>Partners will have the ability to create individual customer accounts and manage individual user access to each one from our dashboard or via our Tenant API.</li>
+			</ul>
+		</li>
+		<li><strong>Centralized Self-Serve Billing</strong>
+			<ul>
+				<li>Partners will have the ability to own self-serve billing across each account with a single billing profile, ensuring subscription management is seamless across every account.</li>
+			</ul>
+		</li>
+	</ul>
+	<!--kg-card-end: markdown-->
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image2-45.png" class="kg-image"></figure>
+	<!--kg-card-begin: markdown-->
+	<ul>
+		<li><strong>Access to full catalog of Cloudflare Self-Serve Products &amp; Add-Ons</strong>
+			<ul>
+				<li>Every feature and add-on that Cloudflare has built will now be available to self-serve partners via the dashboard and API. End-customers will be able to implement <a href="https://www.cloudflare.com/load-balancing/" target="_blank">load-balancing</a>, <a href="https://www.cloudflare.com/products/cloudflare-spectrum/" target="_blank">Spectrum</a> for TCP/UDP applications, and <a href="https://workers.cloudflare.com/" target="_blank">Workers</a> for deploying code at the edge. Our partner platform ensures partners and customers are getting the most of their Cloudflare solution.</li>
+			</ul>
+		</li>
+		<li><strong>Self-Service Plan Discounting</strong>
+			<ul>
+				<li>We want to reward our partners for working with us and developing expertise across our solution. As part of our program commitments, we are offering volume discounts across all subscription renewals.</li>
+			</ul>
+		</li>
+		<li><strong>No Upfront Commitments</strong>
+			<ul>
+				<li>We’ve heard from many of you that you enjoy working with Cloudflare, but cannot support some minimums for our <a href="http://portal.cloudflarepartners.com" target="_blank">Enterprise partner programs</a>. This program is built to help you get started, with no upfront commitments for qualified partners.</li>
+			</ul>
+		</li>
+	</ul>
+	<!--kg-card-end: markdown-->
+	<h3 id="comparing-our-partner-programs">Comparing our partner programs</h3>
+	<!--kg-card-begin: markdown-->
+	<table>
+		<thead>
+			<tr>
+				<th></th>
+				<th>Self-Serve Partner Program</th>
+				<th>New Cloudflare One Partner Program</th>
+				<th>Enterprise Reseller &amp; Services Program</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Status</td>
+				<td>Closed Beta</td>
+				<td>Early Access</td>
+				<td>General Access</td>
+			</tr>
+			<tr>
+				<td>Tiers</td>
+				<td>N/A</td>
+				<td>N/A</td>
+				<td>Select Advanced Elite</td>
+			</tr>
+			<tr>
+				<td>Discount</td>
+				<td>Beta Discount - 20%</td>
+				<td>25-50%</td>
+				<td>30-40%</td>
+			</tr>
+			<tr>
+				<td>Revenue Commitment</td>
+				<td>No</td>
+				<td>No</td>
+				<td>Yes</td>
+			</tr>
+			<tr>
+				<td>Training &amp; Enablement</td>
+				<td>Self-Serve</td>
+				<td>Cloudflare University Specialized Training</td>
+				<td>Cloudflare University Specialized Training In-Person Training</td>
+			</tr>
+			<tr>
+				<td>Partner Account Resources</td>
+				<td>No - Self Serve</td>
+				<td>Yes - Tier Dependent</td>
+				<td>Yes - Tier Dependent</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<h3 id="sign-up-now">Sign Up Now</h3>
+	<p>If you want to start using our partner platform, sign up for the <a href="https://www.cloudflare.com/cloudflare-partners-self-serve-program-closed-beta/" target="_blank">closed beta</a>: we plan to start enabling access throughout this year. We’re looking forward to collecting feedback from each of you and learning how we can improve your end-customers experience with our global platform.</p>
+	<h3 id="ain-t-seen-nothing-yet-">Ain’t seen nothing yet…</h3>
+	<p>Cloudflare’s mission is to help build a better Internet. We know we cannot do that alone, and we treasure all of our partners that have worked with us to accomplish that mission across our technical, channel and alliance relationships. Throughout 2022 and 2023, we look to continue to grow our Partner Platform across a few key areas to make it easier to use and seamless to integrate into your current offering across CDN, DDoS, Zero Trust, Workers and more.</p>
+	<ul>
+		<li>Enhanced Partner Dashboard</li>
+		<li>Expanded Zero Trust Bundles for Partners</li>
+		<li>Additional Partner Service Opportunities</li>
+		<li>Select training and other Partner-only benefits</li>
+	</ul>
+	<h3 id="more-information-">More Information:</h3>
+	<p>Become an Enterprise Partner: <a href="http://portal.cloudflarepartners.com" target="_blank">Partner Portal</a></p>
+	<p>Sign Up for the <a href="https://www.cloudflare.com/cloudflare-partners-self-serve-program-closed-beta/" target="_blank">Self-Serve Partner Program</a></p>
+</div>

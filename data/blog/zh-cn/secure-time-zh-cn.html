@@ -1,0 +1,57 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/11/time-service@3x-1.png" class="kg-image"></figure>
+	<p>Cloudflare一直是先驱者，致力于对不安全互联网协议部署其安全版本并使任何人都可以免费使用。2014年，我们推出了世界上第一个免费、安全地HTTPS服务（<a href="https://blog.cloudflare.com/introducing-universal-ssl/">Universal SSL</a>），用来配合我们现有的免费HTTP计划。自从我们推出<a href="https://blog.cloudflare.com/announcing-1111/">1.1.1.1 DNS解析器</a>，我们也支持了新的安全版本的DNS（<a href="https://developers.cloudflare.com/1.1.1.1/dns-over-https/" target="_blank">DNS over HTTPS</a>以及<a href="https://developers.cloudflare.com/1.1.1.1/dns-over-tls/" target="_blank">DNS over TLS</a>）。今天，作为<a href="https://blog.cloudflare.com/welcome-to-crypto-week-2019/">2019年加密周的</a>一部分，我们正在为网络时间协议（NTP）做同样的事情，网络时间协议是通过互联网获取时间的主要协议。</p>
+	<p>这一公告对我个人别具意义。在过去的四年里，我一直在发现和修复时间协议中的漏洞。今天，我很自豪地帮助介绍一项服务，我从2015年到2019年历经千辛万苦为此付出：<a href="https://cloudflare.com/time" target="_blank">time.cloudflare.com</a>，这是一项自由时间服务，支持NTP和用于保护NTP的新兴的网络时间安全（NTS）协议。现在，任何人都可以安全地从我们在全球180个（现在已有193个）城市的所有数据中心获取时间信息。</p>
+	<p>您可以使用time.cloudflare.com作为现今所有<a href="https://cloudflare.com/time" target="_blank">NTP</a>设备的时间源，而NTS客户端仍在开发中。<a href="https://blog.ntpsec.org/2019/01/02/starting-nts.html" target="_blank">NTPsec</a>包含了对NTS的实验支持。如果您想获取有关NTS客户端开发的最新信息，请发送电子邮件至<a href="/cdn-cgi/l/email-protection#b5c1dcd8d098c6d0c7c3dcd6d0c6f5d6d9dac0d1d3d9d4c7d09bd6dad8"><span class="__cf_email__" data-cfemail="bfcbd6d2da92ccdacdc9d6dcdaccffdcd3d0cadbd9d3decdda91dcd0d2">[email&nbsp;protected]</span></a>来向我们请求加入。如果您要使用NTS来确保时间同步，请先联系您的供应商并咨询有关NTS支持的事项。</p>
+	<h2 id="-">先讲一个关于“时间”的小故事</h2>
+	<p>早在2015年，作为一名对互联网安全感兴趣的应届研究生，我就遇到了一项非常深奥的互联网协议，称为<a href="https://tools.ietf.org/html/rfc5905" target="_blank">网络时间协议</a>（Network Time protocol，NTP）。NTP旨在使通过不可靠和可变延迟网路进行通信的计算机系统之间的时间同步。实际上，我正在研究的是互联网路由安全性，特别是对资源公钥基础设施（Resource Public Key Infrastructure, <a href="https://blog.cloudflare.com/rpki/">RPKI</a>）的攻击，由于缓存刷新问题，我一直处于死胡同中。在最后一次尝试中，我决定手动回滚计算机上的时间，结果攻击成功了。</p>
+	<p>我发现了时间对计算机安全的重要性。大多数密码使用时间戳来限制证书和签名的有效期。当您连接到网站时，知晓正确的时间可确保您看到的证书是最新的，并且没有受到攻击者的破坏。在查看日志时，时间同步确保了不同机器上的事件可以准确地关联。证书和日志基础结构可以用分钟、小时或几个月的时差来划分。其他应用程序，如缓存和比特币，对时间上的细微差别也很敏感（以秒为单位）。</p>
+	<p>使用滚动数字的双因素身份验证也依赖于准确的时钟。它需要计算时钟访问被安全交付的合理准确的时间。NTP是互联网上最常用的时间同步协议。如果攻击者可以利用NTP中的漏洞来操纵计算机时钟上的时间，他们就可以破坏这些系统提供的安全保证。</p>
+	<p>出于对问题严重性的考虑，我决定深入研究NTP及其安全性。由于人们在很早就已经有对跨网络同步时间的需要，因此NTP出现的很早，是一个很古老的协议了。NTP的第一个标准化版本可以追溯到1985年，而最新的NTP版本4是在2010年完成的（参见<a href="https://tools.ietf.org/html/rfc5905" target="_blank">RFC5905</a>）。</p>
+	<p>在其最常见的模式中，NTP的工作方式是让客户端向NTP服务器发送一个查询包，然后该服务器用时钟时间进行响应。然后客户端计算其时钟与远程时钟之间的差值，并尝试在此过程中补偿网络延迟。NTP客户端查询多个服务器并执行算法来选择最佳估计时间值，并抛弃明显错误的答案。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/11/VGltZSBoYW5kc2hha2UgLnBuZw--.png" class="kg-image"></figure>
+	<p></p>
+	<p>令人惊讶的是，当时人们对NTP及其安全性的研究并不活跃。在此之前，在2013年末和2014年初，攻击者通过放大NTP服务器的流量进行了备受瞩目的分布式拒绝服务（DDoS）攻击。攻击者若可以欺骗受害者的IP地址，就可以引导大量流量淹没目标域。这引起了一些研究人员的注意。然而，这些攻击并没有利用基本协议设计中的缺陷。攻击者仅仅使用NTP作为无聊的带宽倍增器。Cloudflare撰写了大量有关这些攻击的文章，您可以<a href="https://blog.cloudflare.com/understanding-and-mitigating-ntp-based-ddos-attacks/">在这里</a>，<a href="https://blog.cloudflare.com/technical-details-behind-a-400gbps-ntp-amplification-ddos-attack/">这里</a>和<a href="https://blog.cloudflare.com/good-news-vulnerable-ntp-servers-closing-down/">这里</a>阅读有关内容。</p>
+	<p>我发现核心NTP协议设计及其实现过程存在一些缺陷，网络攻击者可以利用这些缺陷通过改变时间或拒绝向NTP客户端提供服务来发起更具破坏性的攻击。更令人担忧的是，这些攻击者<em>不必是中间人（MITM）——需要</em>在其中修改客户端和服务器之间的流量以发起这些攻击。我们中的一员撰写的一组最新<a href="https://www.cs.bu.edu/~goldbe/papers/NTPattack.pdf" target="_blank">论文</a>表明，网络上任何地方的远程攻击者都可以转变时间或拒绝向NTP客户端提供服务。完成此操作的方法之一是滥用IP分片。</p>
+	<p>分片是IP层的功能，其中的大数据包会被分割成几个小的碎片，以便它们通过不支持大数据包的网络。基本上，客户端和服务器之间路径上的任何随机网络元素都可以向服务器发送一个特殊的“<a href="https://en.wikipedia.org/wiki/Path_MTU_Discovery" target="_blank">需要ICMP分段</a>”数据包，告诉他们将数据包分段为X个字节。由于服务器不需要知道其路径上所有网络元素的IP地址，因此任何源IP都可以发送此包。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/11/time-fragmentation-attack-@2x.png" class="kg-image">
+		<figcaption>针对NTP的碎片攻击</figcaption>
+	</figure>
+	<p></p>
+	<p>在我们的攻击中，攻击者利用此功能使NTP服务器为受害NTP客户端分割其NTP响应数据包。然后，攻击者会欺骗从路径外精心制作的重叠响应片段，这些片段包含攻击者的时间戳值。通过进一步利用重叠片段的重组策略，攻击者欺骗客户端，将合法片段和攻击者插入的数据包组装在一起。这避免了依赖于数据包原始部分中的值的真实性检查。</p>
+	<h2 id="ntp-">NTP的过去和未来</h2>
+	<p>1985年NTP创建时，NTP提供的服务有两个主要设计目标。首先，人们希望它足够可靠，能够应对网络错误和设备故障。因此，它被设计成一种服务，客户端可以从多个通信路径上的多个对等点收集时间样本，然后取它们的平均值，以获得更准确的测量结果。</p>
+	<p>第二个目标是负载分布。尽管每个客户端都希望与时间服务器进行通信，而时间服务器直接连接到原子钟、GPS等高精度的计时设备上，从而拥有更准确的时间，但这些设备的容量只有这么多。因此，为了减少网络上的协议负载，这一服务采用了分层的方式设计。层次结构的顶部是连接到非NTP时间源的服务器，这些服务器将时间分配给其他服务器，从而进一步将时间分配给更多的服务器。大多数计算机都连接到这些第二或第三级服务器。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/11/time-stratum-@2x.png" class="kg-image">
+		<figcaption>NTP层次结构</figcaption>
+	</figure>
+	<p></p>
+	<p>原始规范（<a href="https://tools.ietf.org/html/rfc958" target="_blank">RFC 958</a>）还声明了协议的“非目标”，即对等身份验证和数据完整性。在规模相对较小、信任程度较高的早期互联网中，安全性并不重要，依赖于时间来实现安全性的协议和应用程序当时并不存在。保护NTP安全的优先级排在改进和实施协议之后。</p>
+	<p>随着互联网的发展，越来越多的核心互联网协议通过密码学得到保护，以防止协议被滥用：TLS、DNSSEC、RPKI都是确保互联网上所有通信安全的一环。这些协议使用“时间”来提供安全保证。互联网安全依赖于NTP安全，因此NTP安全就显得尤为重要。</p>
+	<p>这项研究清楚地表明了保护NTP的必要性。结果就是，互联网协议标准组织（IETF）做了很多事，以便对NTP进行加密身份验证。当时，尽管NTPv4同时支持对称和非对称加密身份验证，但由于两种方法的局限性，它在实践中很少得到应用。</p>
+	<p>NTPv4的用于确保同步的对称方法无法扩展，因为对称密钥必须预先共享和手动配置：想象一下，如果地球上的每个客户端都需要一个特殊的密钥来与他们想从中获取时间的服务器一起运行，那么运行这些服务器的组织将需要做很多工作来管理密钥。这对于必须接受来自任意客户端的查询的公共服务器而言，此解决方案非常麻烦。在目前的大环境下，NIST运行着重要的公共时间服务器，并且每年仅向（通过美国邮箱或传真注册的）用户分发一次对称秘钥；美国海军办公司也在做类似的事情。</p>
+	<p>解决密钥分发问题的第一个尝试是<a href="https://tools.ietf.org/html/rfc5906" target="_blank">RFC 5906</a>中描述的自动密钥协议。许多公共NTP服务器不支持自动密钥（例如，NIST和USNO时间服务器，以及pool.ntp.org中的许多服务器）。由于任何网络攻击者都可以很容易地检索客户端和服务器之间共享的密钥，因此该协议被严重破坏。这种身份认证机制是非标准的，而且非常特殊。</p>
+	<p>互联网的未来是一个安全的互联网，也即一个经过认证和加密的互联网。但是到目前为止，尽管协议还在继续发展，NTP仍是基本不安全的。与此同时，越来越多的服务开始依赖于NTP。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/11/timeline-@2x.png" class="kg-image">
+		<figcaption>NTP开发时间线</figcaption>
+	</figure>
+	<p></p>
+	<h2 id="--1">解决问题</h2>
+	<p>在我们的论文发布之后，互联网协议标准机构、互联网工程任务组（IETF）和外部的NTP团体对改善NTP安全状态表现出了更大的热情。作为一个短期的修复，ntpd参考实施软件针对我们发现的几个漏洞进行了修补。对于一个长期的解决方案，团队认识到我们迫切需要一个基于公钥加密的安全的、经过身份验证的时间同步协议，该协议支持加密和身份验证，而不需要预先共享密钥材料。今天，我们在IETF有了<a href="https://tools.ietf.org/html/draft-ietf-ntp-using-nts-for-ntp-19" target="_blank">网络时间安全</a>（NTS）草案，这要感谢NTP工作组数十位敬业的专门人员。</p>
+	<p>简而言之，NTS协议分为两个阶段。第一个阶段是NTS密钥交换，在NTP客户端和服务器之间建立必要的密钥材料。此阶段使用传输层安全性（TLS）握手，并依赖于与web相同的公钥基础设施。一旦完成密钥交换，TLS通道就会关闭，协议进入第二阶段。在此阶段，TLS握手的结果将用于通过扩展字段对NTP时间同步包进行身份验证。有兴趣的读者可以在互联网<a href="https://datatracker.ietf.org/doc/draft-ietf-ntp-using-nts-for-ntp/" target="_blank">草案</a>中找到更多的信息。</p>
+	<h2 id="cloudflare-">Cloudflare的新服务</h2>
+	<p>今天，Cloudflare宣布向互联网上的所有人提供免费时间服务。我们打算通过提高可用性、稳定性和安全性来解决现有公共时间服务的局限性。</p>
+	<p>我们利用全球网络在延迟和准确性方面提供了一些优势。我们在全球180个（目前有193个）地点都使用任播自动将您的数据包路由到我们最近的服务器。我们所有的服务器都与第1层时间服务提供商同步，然后向公众提供NTP，类似于其他公共NTP提供商的工作方式。时间同步协议不准确的最大原因是网络不对称，这导致客户端和服务器之间以及从服务器到客户端之间的传播时间有所不同。但是，我们的服务器与用户的距离很近，这意味着抖动会减少（抖动：网络延迟的变化的度量，以及数据包路径中可能的不对称性）。</p>
+	<p>Cloudflare服务器通过使用与我们的第1层上游服务器共享的对称密钥来获取认证时间。这些上游服务器地理位置分散，确保我们的服务器在数据中心拥有准确的时间。但这种确保时间的方法并不是普适的。我们必须单独与运行第1层服务器的组织交换电子邮件，并协商使用它们的权限。虽然这对我们来说是一个解决方案，但这并不是适用于互联网上每个人的解决方案。</p>
+	<p>作为一家安全的时间服务提供商，Cloudflare自豪地宣布，我们是首批提供基于网络时间安全性的免费且安全的公共时间服务的公司之一。我们已经实施了最新的<a href="https://datatracker.ietf.org/doc/draft-ietf-ntp-using-nts-for-ntp/" target="_blank">NTS IETF草案</a>。随着草案通过互联网标准流程的进行，我们将致力于保持我们的服务不断更新。</p>
+	<p>大多数NTP实现目前都在支持NTS，我们预计未来几个月将看到更广泛的NTP支持，以及当前草案协议升级为RFC。目前我们已经与NTPsec互通，他们已经实行了NTS<a href="https://tools.ietf.org/html/draft-ietf-ntp-using-nts-for-ntp-18" target="_blank">草案18</a>。我们希望我们的服务将促进NTP服务商更快地采用这一重要的互联网安全改进。因为这是一个没有向后兼容性要求的新服务，所以我们需要使用TLS v1.3来促进采用最安全版本的TLS。</p>
+	<h2 id="--2">使用服务</h2>
+	<p>如果您有一个NTS客户端，请将它指向time.cloudflare.com:1234。如果没有（NTS客户端），请将您的NTP客户端指向time.cloudflare.com。有关配置的更多细节可以在<a href="https://developers.cloudflare.com/time-services/" target="_blank">开发人员文档</a>中找到。</p>
+	<h2 id="--3">结论</h2>
+	<p>从我们的<a href="https://developers.cloudflare.com/roughtime/docs/" target="_blank">Roughtime</a>服务到<a href="https://blog.cloudflare.com/introducing-universal-ssl/">通用SSL</a>，Cloudflare在扩大安全协议的可用性和使用方面发挥了作用。现在，通过我们的免费公共时间服务，我们为另一个不安全的遗留协议提供了一个可靠的、广泛可用的替代方案。这是我们使命的一部分，也即为每个人提供一个更快，更可靠，更安全的互联网。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/11/crypto-week-2019-header-circle@2x-3.png" class="kg-image"></figure>
+	<p></p>
+	<p><em>感谢参与此项目的许多其他工程师，包括</em><a href="https://github.com/wbl/" target="_blank"><em>Watson Ladd</em></a><em>，<a href="https://blog.cloudflare.com/author/gabbi/">Gabbi Fisher</a>和<a href="https://blog.cloudflare.com/author/dina/">Dina Kozlov</a></em></p>
+	<hr>
+	<p><em>这篇文章的作者是波士顿大学研究生研究助理，密码学团队的前Cloudflare实习生</em><a href="https://scholar.google.com/citations?user=WVff3wsAAAAJ" target="_blank"><em>Aanchal Malhotra</em></a><em>。</em></p>
+</div>

@@ -1,0 +1,294 @@
+<div class="post-content lh-copy gray1">
+	<p>APIは、インターネットに接続された最新アプリケーションの生命線です。ミリ秒の単位で、APIはモバイルアプリケーションからのリクエストを運びます。例えば、このフードデリバリーの注文をする、この写真に「いいね」をつけるなど。そして、IoT デバイスに向けて指示を出します。たとえば、自動車のロックを解除します、洗濯を開始します、ユーザーが5キロ走り終えましたなど、この他にも数えきれないほどのコールがあります。</p>
+	<p>また、APIは不正行為やデータの漏えいを狙う広範な攻撃の対象となることが増えています。Gartnerによると、「2021年までに、Web対応アプリケーションの 90%がUIではなく公開APIの形で攻撃対象領域を増やし、2019年の40％から増加した」とのことです。「Gartnerは、2022年までに、APIの悪用が頻度の低い攻撃ベクトルから頻度の高い攻撃ベクトルに移行し、その結果、エンタープライズ Web アプリケーションのデータ漏えいが発生すると予測しています」[1] [2]。Cloudflare のネットワークを横断する毎秒1,800万リクエストのうち、50% はAPIに向けられ、これらのリクエストの大半は悪意のあるものとしてブロックされています。</p>
+	<p>これらの脅威に対処するために、Cloudflareは強力なクライアント証明書ベースのIDと厳格なスキーマベースの検証を使用して、APIの保護をシンプルにしています。本日付で、これらの機能は、新しい「API Shield」サービス内のすべてのプランで無料で利用できます。さらに本日付けで、セキュリティ上のメリットは、JSONではなくプロトコルバッファなどのバイナリ形式を使用する<a href="https://blog.cloudflare.com/announcing-grpc/">gRPCベースのAPIにも広がり</a>、お客様の間で人気が高まっています。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image3.png" class="kg-image"></figure>
+	<p>新機能の詳細については、引き続きこの記事をお読みください。または、「デモンストレーション」の段落にジャンプして、最初の API Shield ルールの設定を開始する方法の例を参照してください。</p>
+	<h3 id="-">ポジティブセキュリティモデルとクライアント証明書</h3>
+	<p>「ポジティブセキュリティ」モデルは、既知の動作とIDのみを許可し、他のすべてを拒否するモデルです。これは、Webアプリケーションファイアウォール（WAF）によって適用される、従来の「ネガティブセキュリティ」モデルとは逆です。ネガティブセキュリティモデルでは、問題のあるIP、ASN、国、または問題のある署名を持つリクエスト（SQLインジェクションの試み、など）以外のリクエストはすべて許可します。</p>
+	<p>API にポジティブセキュリティモデルを実装することは、クレデンシャルスタッフィング攻撃やその他の自動スキャンツールのノイズを除去する最も直接的な方法です。また、ポジティブモデルへの第一歩は、相互 TLS 認証などの強力な認証を展開することです。この認証は、 <a href="https://spycloud.com/2020-annual-credential-exposure-report/" target="_blank">パスワードの再利用や共有</a>に対して脆弱ではありません。</p>
+	<p>2014年に Universal SSL を使用してサーバー証明書の発行を簡素化したように、API Shieldでは、クライアント証明書の発行プロセスを減らして、Cloudflare ダッシュボードのいくつかのボタンをクリックするだけで済むようになりました。完全にホストされたパブリックキーインフラストラクチャ (PKI) を提供することで、独自の認証局 (CA) を操作してセキュリティで保護するのではなく、アプリケーションと機能に集中できます。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/API_Shield_Mutual_TLS.png" class="kg-image"></figure>
+	<h3 id="--1">スキーマ検証による有効なリクエストの実行</h3>
+	<p>開発者が、（SSL証明書を持つ）正規のクライアントだけが自分のAPIに接続していることを確認できたら、ポジティブセキュリティモデルを実装する次のステップは、これらのクライアントが有効なリクエストを行っていることを確認することです。デバイスからクライアント証明書を抽出し、他の場所で再利用することは困難ですが、不可能ではありません。そのため、API が意図したとおりに呼び出されていることを確認しておくことも重要です。</p>
+	<p>無関係な入力を含むリクエストは、API 開発者が予測していない可能性があり、アプリケーションで直接処理すると問題を引き起こす可能性があるため、可能であればエッジで遮断する必要があります。API スキーマの検証は、API リクエストの内容 （POST本文のURLとコンテンツの後にあるクエリーパラメータ) を、予想されるルールを含む規約（「スキーマ」）と照合することによって機能します。検証が失敗した場合、API 呼び出しはブロックされ、無効なリクエストまたは悪意のあるペイロードからオリジンを保護します。</p>
+	<p>スキーマ検証は現在はJSON ペイロードでは非公開のベータ版であり、ロードマップでは gRPC/プロトコルバッファがサポートされています。ベータ版への参加を希望される場合は、「API スキーマ検証ベータ」という件名でサポートチケットを開いてください。ベータ版の終了後、スキーマ検証を API Shield ユーザーインターフェイスの一部として使用できるようにする予定です。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/API_Shield_Schema_Protection.png" class="kg-image"></figure>
+	<h3 id="--2">デモンストレーション</h3>
+	<p>IoT デバイスおよびモバイルアプリケーションを動かすAPI がどのように保護されるかを示すために、クライアント証明書とスキーマ検証を使用した API Shieldのデモンストレーションを構築しました。</p>
+	<p>温度は IoT デバイスによってキャプチャされ、デモでは外部赤外線温度センサーを備えた Raspberry Pi 3 モデル B+ で表され、POST リクエストを介してCloudflareが保護したAPI に送信されます。温度はその後、GETリクエストによって取得され、iOS用のSwiftに組み込まれたモバイルアプリケーションに表示されます。</p>
+	<p>どちらの場合も、API は実際には Cloudflare Workers® と Workers KV を使用して構築されていますが、インターネットにアクセスできるエンドポイントに置き換えることができます。</p>
+	<h3 id="1-api-">1.APIの設定</h3>
+	<p>APIで安全に通信できるように、IoT デバイスおよびモバイルアプリケーションを設定する前に、API エンドポイントをブートストラップする必要があります。例をシンプルに保ちながら、追加のカスタマイズも可能にするために、API を Cloudflare Worker として実装しました (<a href="https://developers.cloudflare.com/workers/tutorials/build-a-jamstack-app" target="_blank">To-Do リストのチュートリアル </a>からコードを借用)。</p>
+	<p>この例では、temperatureはソースIPアドレスをキーとして使用して Workers KV に格納されますが、これは<a href="https://developers.cloudflare.com/access/service-auth/mtls-headers/" target="_blank">クライアント証明書の値</a>と簡単に置き換えることができます (例:フィンガープリント)。以下に示すコードでは、POSTが作られたときにtemperatureとタイムスタンプを KV に保存し、GETリクエストが行われたときに最新の 5 つのtemperatureを返します。</p>
+	<pre><code>const defaultData = { temperatures: [] }
+
+const getCache = key =&gt; TEMPERATURES.get(key)
+const setCache = (key, data) =&gt; TEMPERATURES.put(key, data)
+
+async function addTemperature(request) {
+
+    // pull previously recorded temperatures for this client
+    const ip = request.headers.get('CF-Connecting-IP')
+    const cacheKey = `data-${ip}`
+    let data
+    const cache = await getCache(cacheKey)
+    if (!cache) {
+        await setCache(cacheKey, JSON.stringify(defaultData))
+        data = defaultData
+    } else {
+        data = JSON.parse(cache)
+    }
+
+    // append the recorded temperatures with the submitted reading (assuming it has both temperature and a timestamp)
+    try {
+        const body = await request.text()
+        const val = JSON.parse(body)
+
+        if (val.temperature &amp;&amp; val.time) {
+            data.temperatures.push(val)
+            await setCache(cacheKey, JSON.stringify(data))
+            return new Response("", { status: 201 })
+        } else {
+            return new Response("Unable to parse temperature and/or timestamp from JSON POST body", { status: 400 })
+        }
+    } catch (err) {
+        return new Response(err, { status: 500 })
+    }
+}
+
+function compareTimestamps(a,b) {
+    return -1 * (Date.parse(a.time) - Date.parse(b.time))
+}
+
+// return the 5 most recent temperature measurements
+async function getTemperatures(request) {
+    const ip = request.headers.get('CF-Connecting-IP')
+    const cacheKey = `data-${ip}`
+
+    const cache = await getCache(cacheKey)
+    if (!cache) {
+        return new Response(JSON.stringify(defaultData), { status: 200, headers: { 'content-type': 'application/json' } })
+    } else {
+        data = JSON.parse(cache)
+        const retval = JSON.stringify(data.temperatures.sort(compareTimestamps).splice(0,5))
+        return new Response(retval, { status: 200, headers: { 'content-type': 'application/json' } })
+    }
+}
+
+async function handleRequest(request) {
+
+    if (request.method === 'POST') {
+        return addTemperature(request)
+    } else {
+        return getTemperatures(request)
+    }
+
+}
+
+addEventListener('fetch', event =&gt; {
+  event.respondWith(handleRequest(event.request))
+})</code></pre>
+	<p>相互TLS認証を追加する前に、ランダムなtemperature読み込みのPOST送信をテストします。</p>
+	<pre><code>$ TEMPERATURE=$(echo $((361 + RANDOM %11)) | awk '{printf("%.2f",$1/10.0)}')
+$ TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+
+$ echo -e "$TEMPERATURE\n$TIMESTAMP"
+36.30
+2020-09-28T02:57:49Z
+
+$ curl -v -H "Content-Type: application/json" -d '{"temperature":'''$TEMPERATURE''', "time": "'''$TIMESTAMP'''"}' https://shield.upinatoms.com/temps 2&gt;&amp;1 | grep "&lt; HTTP/2"
+&lt; HTTP/2 201 </code></pre>
+	<p>ここに示すのは、その後に読み取られたtemperatureと、以前提出された4つのtemperatureの読み取り結果です。</p>
+	<pre><code>$ curl -s https://shield.upinatoms.com/temps | jq .
+[
+  {
+    "temperature": 36.3,
+    "time": "2020-09-28T02:57:49Z"
+  },
+  {
+    "temperature": 36.7,
+    "time": "2020-09-28T02:54:56Z"
+  },
+  {
+    "temperature": 36.2,
+    "time": "2020-09-28T02:33:08Z"
+  },
+    {
+    "temperature": 36.5,
+    "time": "2020-09-28T02:29:22Z"
+  },
+  {
+    "temperature": 36.9,
+    "time": "2020-09-28T02:27:19Z"
+  } 
+]
+</code></pre>
+	<h3 id="2-">2.クライアント証明書の発行</h3>
+	<p>APIが設定できたら、有効なクライアント証明書を要求するためにロックダウンします。その前に、証明書を生成する必要があります。まず、CloudflareダッシュボードのSSL/TLS→クライアント証明書タブに移動し、「証明書の作成」をクリックするか、APIコールを介してプロセスを自動化することができます。</p>
+	<p>ほとんどの開発者は、独自のプライベートキーとCSRを生成し、API 経由で署名することをリクエストするため、ここで、そのプロセスを示します。CloudflareのPKI ツールキット <a href="https://github.com/cloudflare/cfssl" target="_blank">CFSSL</a>を使用して、 まず iOS アプリケーション用のブートストラップ証明書を作成し、次に IoT デバイスの証明書を作成します。</p>
+	<figure class="kg-card kg-code-card">
+		<pre><code>$ cat &lt;&lt;'EOF' | tee -a csr.json
+{
+    "hosts": [
+        "ios-bootstrap.devices.upinatoms.com"
+    ],
+    "CN": "ios-bootstrap.devices.upinatoms.com",
+    "key": {
+        "algo": "rsa",
+        "size": 2048
+    },
+    "names": [{
+        "C": "US",
+        "L": "Austin",
+        "O": "Temperature Testers, Inc.",
+        "OU": "Tech Operations",
+        "ST": "Texas"
+    }]
+}
+EOF
+
+$ cfssl genkey csr.json | cfssljson -bare certificate
+2020/09/27 21:28:46 [INFO] generate received request
+2020/09/27 21:28:46 [INFO] received CSR
+2020/09/27 21:28:46 [INFO] generating key: rsa-2048
+2020/09/27 21:28:47 [INFO] encoded CSR
+
+$ mv certificate-key.pem ios-key.pem
+$ mv certificate.csr ios.csr
+
+// and do the same for the IoT sensor
+$ sed -i.bak 's/ios-bootstrap/sensor-001/g' csr.json
+$ cfssl genkey csr.json | cfssljson -bare certificate
+...
+$ mv certificate-key.pem sensor-key.pem
+$ mv certificate.csr sensor.csr</code></pre>
+		<figcaption>IoT デバイスおよび iOS アプリケーションのためのプライベートキーとCSRを生成します</figcaption>
+	</figure>
+	<p></p>
+	<figure class="kg-card kg-code-card">
+		<pre><code>// we need to replace actual newlines in the CSR with ‘\n’ before POST’ing
+$ CSR=$(cat ios.csr | perl -pe 's/\n/\\n/g')
+$ request_body=$(&lt; &lt;(cat &lt;&lt;EOF
+{
+  "validity_days": 3650,
+  "csr":"$CSR"
+}
+EOF
+))
+
+// save the response so we can view it and then extract the certificate
+$ curl -H 'X-Auth-Email: YOUR_EMAIL' -H 'X-Auth-Key: YOUR_API_KEY' -H 'Content-Type: application/json' -d “$request_body” https://api.cloudflare.com/client/v4/zones/YOUR_ZONE_ID/client_certificates &gt; response.json
+
+$ cat response.json | jq .
+{
+  "success": true,
+  "errors": [],
+  "messages": [],
+  "result": {
+    "id": "7bf7f70c-7600-42e1-81c4-e4c0da9aa515",
+    "certificate_authority": {
+      "id": "8f5606d9-5133-4e53-b062-a2e5da51be5e",
+      "name": "Cloudflare Managed CA for account 11cbe197c050c9e422aaa103cfe30ed8"
+    },
+    "certificate": "-----BEGIN CERTIFICATE-----\nMIIEkzCCA...\n-----END CERTIFICATE-----\n",
+    "csr": "-----BEGIN CERTIFICATE REQUEST-----\nMIIDITCCA...\n-----END CERTIFICATE REQUEST-----\n",
+    "ski": "eb2a48a19802a705c0e8a39489a71bd586638fdf",
+    "serial_number": "133270673305904147240315902291726509220894288063",
+    "signature": "SHA256WithRSA",
+    "common_name": "ios-bootstrap.devices.upinatoms.com",
+    "organization": "Temperature Testers, Inc.",
+    "organizational_unit": "Tech Operations",
+    "country": "US",
+    "state": "Texas",
+    "location": "Austin",
+    "expires_on": "2030-09-26T02:41:00Z",
+    "issued_on": "2020-09-28T02:41:00Z",
+    "fingerprint_sha256": "84b045d498f53a59bef53358441a3957de81261211fc9b6d46b0bf5880bdaf25",
+    "validity_days": 3650
+  }
+}
+
+$ cat response.json | jq .result.certificate | perl -npe 's/\\n/\n/g; s/"//g' &gt; ios.pem
+
+// now ask that the second client certificate signing request be signed
+$ CSR=$(cat sensor.csr | perl -pe 's/\n/\\n/g')
+$ request_body=$(&lt; &lt;(cat &lt;&lt;EOF
+{
+  "validity_days": 3650,
+  "csr":"$CSR"
+}
+EOF
+))
+
+$ curl -H 'X-Auth-Email: YOUR_EMAIL' -H 'X-Auth-Key: YOUR_API_KEY' -H 'Content-Type: application/json' -d "$request_body" https://api.cloudflare.com/client/v4/zones/YOUR_ZONE_ID/client_certificates | perl -npe 's/\\n/\n/g; s/"//g' &gt; sensor.pem</code></pre>
+		<figcaption>Ask Cloudflare to sign the CSRs with the private CA issued for your zone</figcaption>
+	</figure>
+	<p>お客様のゾーンに対して発行されたプライベートCAでCSRへの署名は、Cloudflareにご依頼ください</p>
+	<h3 id="-api-shield-">.API Shield ルールの作成</h3>
+	<p>証明書が手に入ったので、API エンドポイントに証明書の使用をリクエストするように設定できます。以下は、そのルールを作成する方法のデモンストレーションです。</p>
+	<p>手順では、証明書をリクエストするホスト名 (shield.upinatoms.com など) を指定し、API Shield ルールを作成します。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/API_Shield_demo.gif" class="kg-image"></figure>
+	<h3 id="4-iot-">4.IoTデバイス通信</h3>
+	<p>API エンドポイントとの安全な通信のために IoT デバイスを準備するには、デバイスに証明書を埋め込み、アプリケーションがそれを指すようにし、API エンドポイントへの POSTリクエストを行うときに証明書が使用できるようにしておく必要があります。</p>
+	<p>プライベートキーと証明書を /etc/ssl/private/sensor-key.pem and /etc/ssl/certs/sensor.pemに安全にコピーしました。そしてサンプルスクリプトを改変して、次のファイルを指すようにします。</p>
+	<pre><code>import requests
+import json
+from datetime import datetime
+
+def readSensor():
+
+    # Takes a reading from a temperature sensor and store it to temp_measurement 
+
+    dateTimeObj = datetime.now()
+    timestampStr = dateTimeObj.strftime(‘%Y-%m-%dT%H:%M:%SZ’)
+
+    measurement = {'temperature':str(36.5),'time':timestampStr}
+    return measurement
+
+def main():
+
+    print("Cloudflare API Shield [IoT device demonstration]")
+
+    temperature = readSensor()
+    payload = json.dumps(temperature)
+    
+    url = 'https://shield.upinatoms.com/temps'
+    json_headers = {'Content-Type': 'application/json'}
+    cert_file = ('/etc/ssl/certs/sensor.pem', '/etc/ssl/private/sensor-key.pem')
+    
+    r = requests.post(url, headers = json_headers, data = payload, cert = cert_file)
+    
+    print("Request body: ", r.request.body)
+    print("Response status code: %d" % r.status_code)
+</code></pre>
+	<p>スクリプトが<a href="https://shield.upinatoms.com/temps" target="_blank"> https://shield.upinatoms.com/temps</a>に接続しようとすると、Cloudflare はクライアント証明書の送信をリクエストし、当社のスクリプトはSSL/TLSハンドシェイクの完了に必要な、sensor-key.pemを所有していることを証明する前にsensor.pem のコンテンツを送信します。</p>
+	<p>クライアント証明書の送信に失敗した場合、または APIリクエストに無関係なフィールドを含めようとすると、スキーマの検証（構成は表示されません）が失敗し、リクエストは拒否されます。</p>
+	<pre><code>Cloudflare API Shield [IoT device demonstration]
+Request body:  {"temperature": "36.5", "time": "2020-09-28T15:52:19Z"}
+Response status code: 403</code></pre>
+	<p>代わりに有効な証明書が表示され、ペイロードが以前にアップロードされたスキーマに従う場合、スクリプトは最新のtemperatureの読み取り結果を API にPOST送信します。</p>
+	<pre><code>Cloudflare API Shield [IoT device demonstration]
+Request body:  {"temperature": "36.5", "time": "2020-09-28T15:56:45Z"}
+Response status code: 201</code></pre>
+	<h3 id="5-ios-">5.モバイルアプリケーション (iOS) の通信</h3>
+	<p>temperatureのリクエストが API エンドポイントに送信されたら、クライアント証明書の 1 つを使用して、モバイルアプリケーションから安全に読み取ります。</p>
+	<p>簡潔にするために、アプリケーションバンドル内に「ブートストラップ」証明書とキーを PKCS #12 ファイルとして埋め込みます。実際の展開では、このブートストラップ証明を、一意のユーザー証明書を返すことができる API エンドポイントに対する認証に使用するためには、ユーザーの認証情報と共に使用する必要があります。企業ユーザーは、MDMを使用して証明書を配布し、制御および持続化オプションを追加する必要があります。</p>
+	<h4 id="--3">証明書とプライベートキーのパッケージ化</h4>
+	<p>ブートストラップ証明書とプライベートキーを追加する前に、この2つをバイナリ PKCS #12 ファイルに統合する必要があります。このバイナリファイルは、iOS アプリケーションバンドルに追加されます。</p>
+	<pre><code>$ openssl pkcs12 -export -out bootstrap-cert.pfx -inkey ios-key.pem -in ios.pem
+Enter Export Password:
+Verifying - Enter Export Password:</code></pre>
+	<h4 id="ios-">iOS アプリケーションに証明書バンドルを追加する</h4>
+	<p>XCode内で、ファイルをクリック → [プロジェクト名] にファイルを追加して、pfxファイルを選択します。「ターゲットに追加する」をチェックした後、確定してください。</p>
+	<h4 id="-url-">クライアント証明書を使用するためにURLセッションコードを変更します。</h4>
+	<p><a href="https://leenarts.net/2020/02/28/client-certificate-with-urlsession-in-swift/" target="_blank">本稿</a>ではPKCS#11 クラスと<a href="https://developer.apple.com/documentation/foundation/urlsessiondelegate" target="_blank">URLセッションの権限</a>を使って、アプリケーションを操作し、APIとの接続に必要なTLS相互認証を完了する方法をご紹介しました。</p>
+	<h3 id="--4">今後の予定</h3>
+	<p>今後数か月で、APIトラフィックを保護するために設計されたAPI Shieldをさらに拡張し、多数の追加機能を搭載する予定です。独自のPKIの使用を希望されるお客様のために、Cloudflare Accessの一部として <a href="https://developers.cloudflare.com/access/service-auth/mtls/" target="_blank">本日からご利用いただける</a>独自のCAをインポートする機能を提供します。</p>
+	<p>スキーマ検証ベータに関するフィードバックを受け取り次第、すべてのお客様に向けてこの機能を一般提供する予定です。ベータ版をお試しになり、共有したいことがありましたら、フィードバックをお送りください。</p>
+	<p>証明書やスキーマの検証に加えて、API をよりよく理解できるように、API セキュリティ機能の追加と詳細な分析を提供できることをうれしく思います。さらに希望される機能がある場合は、以下のコメントでお知らせください！</p>
+	<p></p>
+	<p></p>
+	<p><em>1:「2021年までに、Web対応アプリケーションの 90%が、UIではなく公開APIの形で攻撃対象領域を増やし、2019年の40％から増加した。」出典：Gartner「GartnerのAPI戦略成熟度モデル」、報告者：Saniye Alaybeyi、Mark O'Neill、2019年10月21日(Gartnerのサブスクリプションが必要です)</em></p>
+	<p><em>2:「Gartnerは、2022 年までに、API の悪用が頻度の低い攻撃ベクトルから頻度の高い攻撃ベクトルに移行し、その結果、エンタープライズ Web アプリケーションのデータ漏えいが発生すると予測している」出典：Gartner「API戦略におけるCool Vendors（注目ベンダー）」、報告者：Shameen Pillai、Paolo Malinverno、Mark O'Neill、Jeremy D'Hoinne、2020年5月18日（Gartnerのサブスクリプションが必要です）</em></p>
+</div>

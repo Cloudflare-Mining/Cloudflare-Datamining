@@ -1,0 +1,76 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image7-9.png" class="kg-image" alt="Version and Stage Configuration Changes with HTTP Applications in Beta"></figure>
+	<p>我们今天隆重宣布有关一个 HTTP 应用程序的封测。这是对 HTTP 流量进行安全测试和部署更改的新方式。HTTP 应用程序引入了配置版本控制，以及控制何时在 Cloudflare 的全球边缘网络上对 HTTP 流量进行更改的能力。寻求更大控制权的企业客户应联系他们的客户成功经理以获得访问权。</p>
+	<h3 id="-"><strong>管理配置时遇到的问题</strong></h3>
+	<p>自 Cloudflare 成立之初，网站和网络应用的管理一直通过我们所说的"区域"来完成，这源自于 <a href="https://www.cloudflare.com/zh-cn/learning/dns/glossary/dns-zone/" target="_blank">DNS 区域</a>的概念。虽然这种模式多年来为客户提供了很好的服务，但也确实在管理边缘配置方面造成了困难，即：</p>
+	<ol>
+		<li>客户需手动设置暂存环境。</li>
+		<li>生产和暂存之间的配置存在偏移风险。</li>
+	</ol>
+	<p>在软件开发过程中，您想在一个安全的环境中测试变化，以便在进入生产或影响实时流量之前对其进行验证。在很多常见的软件开发生命周期中，这意味着将更改部署到暂存或预生产环境中进行测试和验证。现在，客户在 Cloudflare 上执行此操作的最常见方式是使用由这些区域的主机名表示的两个区域，例如：一个用于暂存，名为 <em>staging.example.com</em>，一个用于生产，名为 <em>example.com</em>。这样通过更改隔离解决了核心问题。在暂存区的错误不会影响生产流量。</p>
+	<p>然而，为了将已在暂存区成功验证的变更应用到生产中，客户必须手动复制这些变更—或通过使用 Cloudflare 的 <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs" target="_blank">Terraform Provider</a> 创建自动化处理程序。对很多客户来说，需要执行一个手动的“变更请求”过程。在此过程中，需要将所做的变更记录在工单上。然后，会有人（通常是不同的人）收集工单，并必须根据人工提供的指示准确地复制相同变更。这个过程很容易出错：其中的每处错误都可能会导致中断，具体取决于所涉及的变更。此外，暂存配置和生产配置之间的配置偏差可能会导致更大的复杂性。</p>
+	<p>我们希望客户能够在 Cloudflare 上安全可靠地管理其服务。为了解决上述问题，我们发布了相关 HTTP 应用程序和路由规则。</p>
+	<h3 id="http-"><strong>HTTP 应用程序</strong></h3>
+	<p>HTTP 应用程序是一种根据使用情况（而不是按主机名）管理边缘配置的方式。无论是处理营销网站配置，还是处理内部应用程序，每个 HTTP 应用程序都有目的。所有 HTTP 应用程序均由各个版本的配置组成，每个版本代表着管理流量的设置快照—页面规则、防火墙规则、缓存设置等。HTTP 应用程序内部的每个版本的配置都与其他版本相独立，但当创建新版本时，其将作为之前版本的副本进行初始化。</p>
+	<h3 id="--1"><strong>路由规则</strong></h3>
+	<p>与区域不同，HTTP 应用程序的每个版本都与任何特定的主机名相独立。那么，如果版本不像区域那样与主机名绑定，那么您如何确定哪个版本的 HTTP 应用程序会影响一组特定的流量呢？答案是路由规则。通过路由规则，您可确定适用于流量的 HTTP 应用程序的版本，也就是主机名。路由规则由 Cloudflare 的<a href="https://developers.cloudflare.com/ruleset-engine/" target="_blank">规则集引擎</a>提供支持，依靠使用条件性的“if then”规则，将 Cloudflare 账户中控制的主机名映射到配置版本中。例如，如果请求的主机名与“www.example.com”相匹配，那么就应用第 2 版的营销 HTTP 应用程序。当此规则在边缘执行时，边缘将不应用 <a href="http://www.example.com/" target="_blank">www.example.com</a> 的常规区域配置，而是使用第 2 版 HTTP 应用程序中定义的配置。</p>
+	<p>路由规则支持两种规则 — 暂存规则和生产规则。如上所述，两者均采用主机名列表，但在创建暂存规则时，我们会额外使用一个过滤器，以便仅在流量发送到我们边缘的特定 IP 时执行该规则。这意味着您可在客户不受影响的情况下，将流量发送到暂存 IP 处的 <a href="http://www.example.com/" target="_blank">www.example.com</a>，以便安全地测试更改。更好的是，一旦您通过创建生产路由规则验证了您的更改，完全相同的配置将应用于您所有客户的生产。</p>
+	<p>说的够多了 —让我们来看看实际效果吧！</p>
+	<h3 id="-http-"><strong>使用 HTTP 应用程序安全地测试和部署更改</strong></h3>
+	<p>在这次演示中，我将扮演一位现有客户的角色。我有一个为客户提供服务的现有区域，想做出一些转换规则的更改，以便重写我的资产位置。然而，我并不擅长使用 regex，如果犯错，很可能会破坏我所有客户的网站！我们将使用 HTTP 应用程序和路由规则来制定、测试和推出更改，而不是直接在区域中做出更改。</p>
+	<p>首先，我将登录到 Cloudflare 仪表板。在选择账户后，侧栏中将出现可用的 HTTP 应用程序。做出选择后，便可以创建第一个 HTTP 应用程序。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/12/image9-2.png" class="kg-image" alt="The Cloudflare Dashboard showing the empty state page for HTTP Applications">
+		<figcaption>显示 HTTP 应用程序的空白状态页面的 Cloudflare 仪表板</figcaption>
+	</figure>
+	<p>要创建我的第一个 HTTP 应用程序，我需为其起一个名字，并选择一个预先存在的区域，在本例中为 example.com。Cloudflare 将使用该区域对 HTTP 应用程序第一个版本的配置进行初始化。通过在该区域中复制现有设置，我便有了一个可使用的安全副本，且无需手动重建配置。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/12/image4-26.png" class="kg-image" alt="The “Create an Application” screen showing that an HTTP Application will be created named “Example Application” and initialized from example.com.">
+		<figcaption>显示将创建名为“Example Application”的 HTTP 应用程序并从 example.com 进行初始化的“创建应用程序”屏幕。</figcaption>
+	</figure>
+	<p>选择创建后，我便有了第一个 HTTP 应用程序！现在，第一个版本正在创建之中。在幕后，Cloudflare 将采用 example.com 的现有配置，并将其复制到该 HTTP 应用程序的第 1 版。一旦成功复制，我就可开始对配置进行编辑。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/12/image6-15.png" class="kg-image" alt="The Version list of the Example Application, showing Version 1 being created.">
+		<figcaption>Example Application 的版本列表，显示正在创建版本 1。</figcaption>
+	</figure>
+	<p>我可对该版本进行编辑，就像对任何区域进行编辑一样。然而，还是有两个重要区别。第一：我现在所做的任何更改都不会影响在 Cloudflare 边缘的任何实时流量，因为我们还没有创建任何路由规则将流量发送到这个版本的配置。第二：我们不允许通过 HTTP 应用程序控制与一个区域相关的所有内容，即：DNS 记录、SSL 证书、Spectrum 或负载平衡。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/12/image8-8.png" class="kg-image" alt="Transform rules of Version 1 showing no rules have been created.">
+		<figcaption>版本 1 的转换规则，显示尚未创建任何规则。</figcaption>
+	</figure>
+	<p>在“规则”部分的<a href="https://blog.cloudflare.com/introducing-transform-rules-with-url-rewriting-at-the-edge/">转换规则</a>下，我创建了一个新规则, 将资产的路径重写到正确位置。对于任何指向 example.com/assets/* 的请求，我们将路径重写为 example.com/internal/files/assets/*。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/12/image13.png" class="kg-image" alt="Creating a transform rule for Version 1 named “Rewrite Assets”. This rule replaces the path for requests starting with “/assets/*” with “internal/files/assets/*”.">
+		<figcaption>为第 1 版创建一个名为“重写资产”的转换规则。该规则将以“/assets/*”开始的请求的路径替换为“internal/files/assets/*”。</figcaption>
+	</figure>
+	<p></p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/12/image8-10.png" class="kg-image" alt="Transform rules of Version 1 showing a new rule named “Rewrite Assets” has been created.">
+		<figcaption>第 1 版的转换规则显示已创建了一个名为“重写资产”的新规则。</figcaption>
+	</figure>
+	<p>就这点，我已做出了修改，但现在想测试一下。为此，我可以离开版本编辑部分，前往该 HTTP 应用程序的路由规则。在这里，我可以创建规则，使现有流量通过这个版本的配置进行路由。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/12/image12-3.png" class="kg-image" alt="An empty list of Routing Rules for the Example Application.">
+		<figcaption>Example Application 的路由规则的空列表。</figcaption>
+	</figure>
+	<p>我将创建一个暂存规则，因为我想成为唯一一个测试这些变化而不影响任何客户的人。请注意，当创建暂存规则时，可用于测试该版本的 IP 将在规则创建屏幕中显示。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/12/image5-15.png" class="kg-image" alt="Creating a staging Routing Rule that will match when requests match example.com and the edge IP is 192.168.1.1 or 192.168.2.2 and apply the configuration of Version 1">
+		<figcaption>创建暂存路由规则，该规则将在请求匹配 example.com 并且边缘 IP 为 192.168.1.1 或 192.168.2.2 时匹配，并将应用版本 1 的配置</figcaption>
+	</figure>
+	<p>创建规则后，我可对计算机进行配置，将请求发送至 example.com 的 IP。Rackspace 有一个<a href="https://docs.rackspace.com/support/how-to/modify-your-hosts-file/" target="_blank">全面的指南</a>，介绍如何更改本地机器的主机文件来做到这一点。现在，当我访问 example.com 时，系统将执行新的转换规则，但对于访问该网站的其他所有人来说，没有任何变化。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/12/image10-3.png" class="kg-image" alt="Routing Rules for the Example Application showing one rule for staging has been created.">
+		<figcaption>Example Application 的路由规则，显示已创建一个暂存规则。</figcaption>
+	</figure>
+	<p>一旦我确信更改有效，就可以创建一个生产路由规则，将这些修改应用于发往 example.com 的所有流量 — 这样工作就完成了！</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/12/image3-30.png" class="kg-image" alt="Routing Rule creation screen showing the creation of a production rule that will apply Version 1 when requests match example.com">
+		<figcaption>路由规则创建屏幕，显示生产规则的创建，该规则将在请求匹配 example.com 时应用版本 1</figcaption>
+	</figure>
+	<p>更新后，我的网站的资产路径将被重写，用于所有对 <em>example.com</em> 的请求。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/12/image1-61.png" class="kg-image" alt="Routing Rules for the Example Application showing both a staging and production rule for Version 1.">
+		<figcaption>Example Application 的路由规则，显示版本 1 的暂存和生产规则。</figcaption>
+	</figure>
+	<p>下一步是什么？当我准备做另一组修改时，可转至 HTTP 应用程序，复制第 1 版来创建第 2 版。最初，第 2 版将与第 1 版的配置完全匹配，但因其没有匹配的路由规则，而不会应用于任何流量。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/12/image11-3.png" class="kg-image" alt="The list of versions for the Example Application showing Version 1 being applied to staging and production, and Version 2 ready to edit, but not being used anywhere.">
+		<figcaption>Example Application 的版本列表，显示版本 1 应用于暂存和生产，版本 2 准备好进行编辑，但尚未在任何地方使用。</figcaption>
+	</figure>
+	<p>我现在可安全地编辑第 2 版，如同之前编辑第 1 版一样。这次我想对防火墙规则做一些更改，这样就可防止一些潜在的恶意流量访问我的网站。在第 2 版中做出的更改不会修改边缘处的任何流量，直到我更新暂存路由规则，才能使用第 2 版。这使我能够放心地进行修改，然后安全地进行测试。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/12/image2-46.png" class="kg-image" alt="The list of routing rules for the Example Application showing Version 2 being used for staging, while Version 1 is still used in production.">
+		<figcaption>Example Application 的路由规则列表，显示版本 2 用于暂存，而版本 1 仍用于生产。</figcaption>
+	</figure>
+	<p>在验证这组新的更改之后，我可以通过更新生产的路由规则来使用第 2 版，将第 2 版推送给所有的流量。对于每一个后续的更改可应用同一过程。</p>
+	<h3 id="http--1"><strong>HTTP 应用程序现已进入封闭测试阶段</strong></h3>
+	<p>借助 HTTP 应用程序和路由规则的力量，客户现在可更好地控制配置更改的方式和时间。这消除了您做出错误更改可能破坏网站的顾虑。为企业客户提供的封闭测试版可使用这一功能，但如果您感兴趣，请联系您的 Cloudflare 账户团队，了解如何获得访问权限！<br></p>
+</div>

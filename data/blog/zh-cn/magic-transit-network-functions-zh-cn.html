@@ -1,0 +1,41 @@
+<div class="post-content lh-copy gray1">
+	<p>今天我们发布了<a href="https://www.cloudflare.com/magic-transit" target="_blank">Cloudflare Magic Transit</a>，它使Cloudflare的网络可被互联网上的任意IP流量使用。到目前为止，Cloudflare主要运营代理服务：我们的服务器终止与Internet用户的HTTP、TCP和UDP会话，并通过与原始服务器创建的新会话传递这些数据。通过Magic Transit，我们现在还在IP层进行运营：除了终止会话之外，我们的服务器还在逐个数据包的基础上应用一套网络功能（DoS缓解、防火墙、路由等等）。</p>
+	<p>在过去的9年里，我们建立了一个强大的、可扩展的全球网络，目前我们的网络覆盖了90多个国家的193个城市，而且还在不断扩大。所有Cloudflare客户都能从这种规模的网络中受益，这要归功于两项重要技术。第一个是任播网络。Cloudflare是任播的<a href="https://blog.cloudflare.com/a-brief-anycast-primer/">早期采用者</a>，我们使用这种路由技术在我们的数据中心之间分发互联网流量。这意味着任何数据中心都可以处理任何客户的流量，我们可以在不需要获取和配置新的IP地址的前提下建立新的数据中心。第二种技术是同构服务器架构。我们每个边缘数据中心的每台服务器都<a href="https://blog.cloudflare.com/cloudflare-architecture-and-how-bpf-eats-the-world/">能够运行每一个任务</a>。我们在标准硬件上构建服务器，通过向现有数据中心添加新服务器，我们很容易就可以快速提高处理能力。没有可依赖的专门硬件也促使我们开发了一种专门的技术，来挑战使用现代Linux内核技术进行网络连接的极限。</p>
+	<p>Magic Transit是在与上述相同的网络上使用相同的技术构建的，这意味着我们的客户现在可以在Cloudflare规模的网络上运行他们的网络功能。我们快速、安全、可靠的全球优势同时也成为了客户的优势。要弄清楚这是如何工作的，就让我们来跟踪一下数据包从互联网上的用户到Magic Transit客户网络的旅程吧。</p>
+	<h2 id="-dos-">让我们的DoS缓解功能……为您服务！</h2>
+	<p>在<a href="https://www.cloudflare.com/magic-transit" target="_blank">产品发布博文</a>中，我们讲述了Acme Corp（顶点集团）的一个部署示例。让我们继续讲下这个例子吧。当Acme将其IP前缀203.0.113.0/24提供给Cloudflare时，我们开始向全球每个数据中心的传输提供者、对等网络和互联网交换机公告该前缀。此外，Acme停止向自己的网络服务提供商声明前缀。这意味着互联网上任何目标地址位于Acme前缀内的IP包都将被交付给附近的Cloudflare数据中心，而不是Acme的路由器。</p>
+	<p>假设我想从位于伊利诺伊州香槟市的Cloudflare办公室的计算机上访问Acme的FTP服务器203.0.113.100。得益于<a href="https://www.cloudflare.com/learning/cdn/glossary/anycast-network/" target="_blank">任播</a>，这个数据包最终到达了Cloudflare位于芝加哥的数据中心，这是离香槟市最近的数据中心（就互联网路由距离而言）。数据包到达数据中心的路由器，该路由器使用<a href="https://en.wikipedia.org/wiki/Equal-cost_multi-path_routing" target="_blank">ECMP（等价多路径）路由</a>选择应该处理数据包的服务器，并将数据包发送到所选的服务器。</p>
+	<p>一旦到达了服务器，数据包就会流经我们<a href="https://blog.cloudflare.com/cloudflare-architecture-and-how-bpf-eats-the-world/">基于XDP和iptables</a>的DoS检测和缓解功能。如果这个TCP SYN包被确定为攻击的一部分，它将被丢弃，传输就此结束。而我比较幸运，我发出的数据包通过了检测。</p>
+	<p>到目前为止，这看起来和Cloudflare网络上的其他流量完全一样。由于我们有运行全球任播网络方面的专业知识，我们能够将Magic Transit客户的流量吸引到每个数据中心，并部署多年来用于保护Cloudflare的相同<a href="https://blog.cloudflare.com/tag/ddos/">DoS缓解解决方案</a>。我们的DoS解决方案已经处理了一些有史以来最大的网络攻击，包括2018年942Gbps的SYN洪水。下面是最近的每秒300Mbps数据包的SYN洪水的截图。<a href="https://blog.cloudflare.com/how-cloudflares-architecture-allows-us-to-scale-to-stop-the-largest-attacks/">我们的体系架构允许我们进行扩展</a>从而阻止最大的攻击。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/09/large-syn-flood.png" class="kg-image"></figure>
+	<p></p>
+	<h2 id="-">用于隔离和控制的网络命名空间</h2>
+	<p>上面的操作看起来与其他Cloudflare流量的处理方式相同，但也只有这些是相同的。对于我们的其他服务，TCP SYN包现在将被发送到本地代理进程（例如，我们基于nginx的HTTP/S堆栈）。对于Magic Transit，我们希望动态地提供和应用客户定义的网络功能，比如防火墙和路由。我们需要一种方法来快速启动和配置这些网络功能，同时提供网络隔离。为此，我们转向了网络命名空间。</p>
+	<p>命名空间是一组Linux内核特性的集合，用于创建可在一组进程之间共享的系统资源的轻量级虚拟实例。命名空间是Linux中容器化的基本构建块。值得注意的是，Docker是基于Linux命名空间构建的。<em>网络命名空间</em>是Linux网络堆栈的一个独立实例，包含它自己的网络接口（带有它们自己的eBPF钩子）、路由表、netfilter配置等等。网络名称空间为我们提供了一种低成本的机制，可以独立地快速应用客户定义的网络配置，所有这些配置都具有内置的Linux内核特性，因此不会因为用户空间包转发或代理而影响性能。</p>
+	<p>当一个新客户开始使用Magic Transit时，我们在边缘网络的每个服务器上为该客户创建一个全新的网络命名空间（还记得我前面提到每个服务器都可以运行每个任务吧？）我们构建了一个守护进程，它运行在我们的服务器上，负责管理这些网络命名空间及其配置。这个守护进程不断地从<a href="https://blog.cloudflare.com/helping-to-build-cloudflare-part-4/">Quicksilver</a>读取配置更新（Quicksilver是我们的全局分布式键值存储区），并在<em>客户命名空间</em>中为防火墙、路由等应用客户定义的配置。例如，如果Acme希望提供一个防火墙规则来允许FTP流量（TCP端口20和21）达到203.0.113.100，那么该配置将通过Quicksilver在全球范围内传播，而Magic Transit守护进程将通过向Acme客户命名空间添加nftables规则来应用防火墙规则：</p>
+	<pre><code># Apply nftables rule inside Acme’s namespace
+$ sudo ip netns exec acme_namespace nft add rule inet filter prerouting ip daddr 203.0.113.100 tcp dport 20-21 accept</code></pre>
+	<p>将客户的流量引入其网络命名空间需要在默认网络命名空间中进行少量路由配置。创建网络命名空间时，我们还会创建一对虚拟以太网（veth）接口：一个在默认命名空间中，另一个在新创建的命名空间中。这个接口对创建了一条“虚拟线路”，用于将网络流量传入和传出新的网络命名空间。在默认网络命名空间中，我们维护着一个路由表，它将Magic Transit客户IP前缀转发到与这些客户命名空间对应的veth。我们使用iptables来标记发送给Magic Transit客户前缀的包，并且我们有一个路由规则，该规则指定这些被特殊标记的包应该使用Magic Transit路由表。</p>
+	<p>（为什么要在iptables中标记包并维护一个单独的路由表呢？为了隔离。通过保持Magic Transit路由配置的独立性，我们可以降低意外修改默认路由表的风险，避免影响流经我们边缘网络的非Magic Transit流量。）</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/09/067C8C9E-3C73-4DA0-AD77-35DAC9A5F182.png" class="kg-image"></figure>
+	<p></p>
+	<p>网络命名空间提供了一个轻量级的环境，在这个环境中，Magic Transit客户可以独立运行和管理网络功能，让我们将完全控制权交给客户。</p>
+	<h2 id="gre-">GRE（通用路由封装） + 任播 = 魔法</h2>
+	<p>通过边缘网络函数之后，TCP SYN包最终准备好被传送回客户的网络基础设施。因为Acme Corp.在Cloudflare的托管设施中没有网络占用，所以我们需要通过公共互联网交付它们的网络流量。</p>
+	<p>这就产生了一个问题。TCP SYN包的目标地址是203.0.113.100，但是Internet上唯一公告IP前缀为203.0.113.0/24的网络是Cloudflare。这意味着我们不能简单地把这个包转发到互联网上——它会直接给我们带来不良后果！为了将这个包交付给Acme，我们需要使用一种称为隧道的技术。</p>
+	<p>隧道是将流量从一个网络传输到另一个网络的一种方法。在我们的例子中，它涉及到将Acme的IP包封装在可以通过互联网交付给Acme路由器的IP包中。有许多<a href="https://en.wikipedia.org/wiki/Tunneling_protocol#Common_tunneling_protocols" target="_blank">常见的隧道协议</a>，但我们通常使用的是<a href="https://en.wikipedia.org/wiki/Generic_Routing_Encapsulation" target="_blank">通用路由封装</a>（GRE），因其简单性和受到广泛的供应商支持。</p>
+	<p>GRE隧道端点配置在Cloudflare的服务器（在Acme的网络命名空间内）以及Acme的路由器上。然后，Cloudflare服务器将发送到203.0.113.0/24的IP包封装在发送到Acme路由器的可公开路由IP地址的IP包中，该路由器将这些包解密并将其发送到Acme的内部网络。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/09/97ED9A08-71AA-490B-BD35-1E6D288EE1A3.png" class="kg-image"></figure>
+	<p></p>
+	<p>现在，我在上面的图表中省略了一个重要的细节：Cloudflare在GRE隧道一侧的IP地址。配置GRE隧道需要为每边指定一个IP地址，而通过隧道发送的数据包的外部IP请求头必须使用这些特定的地址。但是Cloudflare有数千台服务器，每台服务器都可能需要通过隧道向客户交付数据包。那么客户需要与多少Cloudflare IP地址（和GRE隧道）进行通信呢？答案：只有一个，多亏了任播的魔力。</p>
+	<p>Cloudflare为我们的GRE隧道端点使用任播IP地址，这意味着任意数据中心中的任意服务器都能够为同一个GRE隧道封装和解封数据包。这怎么可能呢？隧道不是点对点的链接的吗？GRE协议本身是无状态的——每个数据包都是独立处理的，不需要在隧道端点之间进行任何协商或协调。虽然隧道在技术上是绑定到一个IP地址的，但它不需要绑定到特定的设备。任何可以剥离外部请求头然后路由内部数据包的设备都可以处理通过隧道发送的任意GRE数据包。实际上，在任播背景中，术语“隧道”具有误导性，因为它字面上意味着两个定点之间的链接。借助Cloudflare的Anycast GRE（任播通用路由封装），一个“隧道”可以为Cloudflare全球边缘网络上的每个数据中心的每台服务器提供一个通道。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/09/228C64E9-DBE0-45AE-ACA9-8F1931998D4A.png" class="kg-image"></figure>
+	<p></p>
+	<p>Anycast GRE的一个非常强大的作用是它消除了单点故障。传统上，GRE-over-Internet可能存在问题，因为两个GRE端点之间的一次互联网中断会完全破坏“隧道”。这意味着可靠的数据传输需要经历令人头疼的问题，即建立和维护端点位于不同物理站点的冗长的GRE隧道，并在其中一个隧道中断时重新路由流量。但是，由于Cloudflare从每个数据中心的每个服务器封装和交付来自的客户流量，因此不会遇到仅有的单条“隧道”被破坏的问题。这意味着Magic Transit的客户可以享受在多个物理站点的终端隧道的冗余和可靠性，同时只需要设置和维护一个GRE端点，从而使他们的工作更简单。</p>
+	<h2 id="--1">我们的规模现在也是您的规模</h2>
+	<p>Magic Transit是一种强大的大规模部署网络功能的新方法。我们不只是给你一个虚拟实例，我们会给你一个全球虚拟边缘网络。Magic Transit采用您通常在本地网络中安装的硬件设备，并将它们分布在Cloudflare网络中的每个数据中心的每个服务器上。这使您可以访问我们的全球任播网络，使用我们的服务器群运行<em>您的</em>任务，以及借助我们的工程专业知识，构建快速、可靠、安全的网络。我们的规模就是你们的规模。</p>
+</div>

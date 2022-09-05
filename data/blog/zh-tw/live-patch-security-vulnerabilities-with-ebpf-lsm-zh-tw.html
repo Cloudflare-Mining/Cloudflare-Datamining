@@ -1,0 +1,328 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image1-57.png" class="kg-image" alt="Live-patching security vulnerabilities inside the Linux kernel with eBPF Linux Security Module"></figure>
+	<p><a href="https://www.kernel.org/doc/html/latest/admin-guide/LSM/index.html" target="_blank">Linux Security Module</a> (LSM) 是一個基於勾點的架構，用於在 Linux 核心中實作安全性原則及強制存取控制。直到前不久，期望實作安全性原則的使用者還只有兩個選項：即設定 AppArmor 或 SELinux 等現有 LSM 模組，或編寫自訂核心模組。</p>
+	<p><a href="https://cdn.kernel.org/pub/linux/kernel/v5.x/ChangeLog-5.7" target="_blank">Linux 5.7</a> 推出了第三種方法︰<a href="https://docs.kernel.org/bpf/prog_lsm.html" target="_blank">LSM 延伸柏克萊封包篩選 (eBPF)</a>（簡稱為 LSM BPF）。使用 LSM BPF，開發人員無需設定或載入核心模組即可編寫精細原則。LSM BPF 程式在載入時進行驗證，然後在呼叫路徑中連線 LSM 勾點時執行。</p>
+	<h2 id="-">我們來解決一個實際問題</h2>
+	<p>現代作業系統提供的設施允許對核心資源進行「分割」。例如，FreeBSD 有「jail」，Solaris 有「zone」。Linux 則有所不同，它提供一組看似獨立的設施，每個設施都允許隔離特定的資源。這些設施被稱為「命名空間」，並且已經在核心中不斷發展了很多年。它們是 Docker、lxc 或 firejail 等熱門工具的基礎。許多命名空間毫無爭議，比如 UTS 命名空間，它允許主機系統隱藏其主機名稱和時間。另一些則既複雜又直白——眾所週知，NET 和 NS (mount) 命名空間令人很難理解。最後，還有這個非常特殊、非常奇怪的 USER 命名空間。</p>
+	<p>USER 命名空間非常特殊，因為它允許擁有者在其內部以「root」身分進行操作。雖然其工作原理不在本部落格貼文所討論的範圍之內，但可以說，正是因為有它作為基礎，才會有 Docker 這樣不以真正的 root 身分操作的工具，以及無根容器這樣的物件。</p>
+	<p>由於其性質，允許無權限使用者存取 USER 命名空間總是會帶來很大的安全風險。權限提升就是這樣一種風險。</p>
+	<p>權限提升是常見的作業系統攻擊面。使用者獲得權限的一種方法就是透過 unshare <a href="https://en.wikipedia.org/wiki/System_call" target="_blank">syscall</a> 將其命名空間對應至根命名空間，並指定 <em>CLONE_NEWUSER</em> 旗標。這告訴 unshare 建立一個具有完整權限的新使用者命名空間，並將新使用者及群組 ID 對應至之前的命名空間。您可以使用 <a href="https://man7.org/linux/man-pages/man1/unshare.1.html" target="_blank">unshare(1)</a> 程式將 root 對應至原始命名空間：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-sh">$ id
+uid=1000(fred) gid=1000(fred) groups=1000(fred) …
+$ unshare -rU
+# id
+uid=0(root) gid=0(root) groups=0(root),65534(nogroup)
+# cat /proc/self/uid_map
+         0       1000          1
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>在大多數情况下，使用 unshare 並無危害，並且預定以較低的權限執行。但是，此 syscall 已被發現用於<a href="https://nvd.nist.gov/vuln/detail/CVE-2022-0492" target="_blank">提升權限</a>。</p>
+	<p>Syscalls<em> clone</em> 和 <em>clone3</em> 很是值得研究，因為它們還具有 <em>CLONE_NEWUSER</em> 的能力。然而，在這篇貼文中，我們將重點討論 unshare。</p>
+	<p>Debian 透過這個<a href="https://sources.debian.org/patches/linux/3.16.56-1+deb8u1/debian/add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by-default.patch/" target="_blank">「add sysctl to disallow unprivileged CLONE_NEWUSER by default」</a>修補程式解決了這個問題，但它不是主流。另一個類似的修補程式<a href="https://lore.kernel.org/all/1453502345-30416-3-git-send-email-keescook@chromium.org/" target="_blank">「sysctl: allow CLONE_NEWUSER to be disabled」</a>試圖成為主流，但遭到了排擠。一種批評意見是針對特定的應用程式<a href="https://lore.kernel.org/all/87poq5y0jw.fsf@x220.int.ebiederm.org/" target="_blank">無法切換此功能</a>。在《<a href="https://lwn.net/Articles/673597/" target="_blank">Controlling access to user namespaces</a>》（控制對使用者命名空間的存取權）這篇文章中，作者寫道「...the current patches do not appear to have an easy path into the mainline（現有修補程式似乎很難成為主流）。」我們可以看到，這些修補程式最終並沒有包含在 vanilla 核心中。</p>
+	<h2 id="-lsm-bpf">我們的解決方案 — LSM BPF</h2>
+	<p>由於似乎無法選擇使用上游程式碼來限制 USER 命名空間，我們决定使用 LSM BPF 來規避這些問題。使用這種方法，不僅無需修改核心，還可以體現複雜的規則來保護存取。</p>
+	<h3 id="--1">追蹤適當的候選勾點</h3>
+	<p>首先，我們來追蹤目標 syscall。我們可以在 <a href="https://elixir.bootlin.com/linux/v5.18/source/include/linux/syscalls.h#L608" target="_blank"><em>include/linux/syscalls.h</em></a> 檔案中找到原型。這在其中並不太容易進行追蹤，但這一行：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-c">/* kernel/fork.c */
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>為我們提供了接下來在 <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/fork.c#L3201" target="_blank"><em>kernel/fork.c</em></a> 中的何處進行尋找的線索。在那裡對 <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/fork.c#L3082" target="_blank"><em>ksys_unshare()</em></a> 進行了呼叫。透過該函式進行挖掘，我們找到了對 <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/fork.c#L3129" target="_blank"><em>unshare_userns()</em></a> 的呼叫。這看起來很有希望成功。</p>
+	<p>到目前為止，我們已經確定了 syscall 實作，但下一個問題是我們可以使用哪些勾點？因為我們透過<a href="https://man7.org/linux/man-pages/man2/unshare.2.html" target="_blank">手冊頁</a>知道 unshare 用於變動工作，所以我們在 <a href="https://elixir.bootlin.com/linux/v5.18/source/include/linux/lsm_hooks.h#L605" target="_blank"><em>include/linux/lsm_hooks.h</em></a> 中查看基於工作的勾點。回到函式 <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/user_namespace.c#L171" target="_blank"><em>unshare_userns()</em></a>，我們看到對 <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/cred.c#L252" target="_blank"><em>prepare_creds()</em></a> 進行了呼叫。這對 <a href="https://elixir.bootlin.com/linux/v5.18/source/include/linux/lsm_hooks.h#L624" target="_blank"><em>cred_prepare</em></a> 勾點來說非常熟悉。為了透過 <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/cred.c#L291" target="_blank"><em>prepare_creds()</em></a> 驗證我們有自己的配對，我們看到對安全性勾點 <a href="https://elixir.bootlin.com/linux/v5.18/source/security/security.c#L1706" target="_blank"><em>security_prepare_creds()</em></a><em> </em>的呼叫，其最終呼叫了勾點：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-c">…
+rc = call_int_hook(cred_prepare, 0, new, old, gfp);
+…
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>無需詳細探究細節，我們也知道這是一個很好用的勾點，因為 <em>prepare_creds()</em> 剛好在 <em>create_user_ns()</em> （位於 <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/user_namespace.c#L181" target="_blank"><em>unshare_userns()</em></a> 中）前進行了呼叫，後者是我們嘗試封鎖的操作。</p>
+	<h3 id="lsm-bpf-">LSM BPF 解決方案</h3>
+	<p>我們將使用 <a href="https://nakryiko.com/posts/bpf-core-reference-guide/#defining-own-co-re-relocatable-type-definitions" target="_blank">eBPF compile once-run everywhere (CO-RE)</a> 方法進行編譯。透過這種方法，我們可以在一個架構上進行編譯，在另一個架構中進行載入。但我們將專門以 x86_64 為目標。適用於 ARM64 的 LSM BPF 仍在開發中，以下程式碼將無法在該架構上執行。關注 <a href="https://lore.kernel.org/bpf/" target="_blank">BPF 郵寄名單</a>以追蹤進度。</p>
+	<p>此解決方案在具有以下設定且版本 &gt;= 5.15 的核心上進行了測試：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>BPF_EVENTS
+BPF_JIT
+BPF_JIT_ALWAYS_ON
+BPF_LSM
+BPF_SYSCALL
+BPF_UNPRIV_DEFAULT_OFF
+DEBUG_INFO_BTF
+DEBUG_INFO_DWARF_TOOLCHAIN_DEFAULT
+DYNAMIC_FTRACE
+FUNCTION_TRACER
+HAVE_DYNAMIC_FTRACE
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>可能需要開機選項 <code>lsm=bpf</code>（若是 <code>CONFIG_LSM</code> 在名單中不包含「bpf」的話）。</p>
+	<p>我們從前序編碼開始：</p>
+	<p><em>deny_unshare.bpf.c</em>：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-c">#include &lt;linux/bpf.h&gt;
+#include &lt;linux/capability.h&gt;
+#include &lt;linux/errno.h&gt;
+#include &lt;linux/sched.h&gt;
+#include &lt;linux/types.h&gt;
+
+#include &lt;bpf/bpf_tracing.h&gt;
+#include &lt;bpf/bpf_helpers.h&gt;
+#include &lt;bpf/bpf_core_read.h&gt;
+
+#define X86_64_UNSHARE_SYSCALL 272
+#define UNSHARE_SYSCALL X86_64_UNSHARE_SYSCALL
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>接下來，我們透過以下方式為 CO-RE 重新配置建立必要的結構：</p>
+	<p><em>deny_unshare.bpf.c</em>：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-c">…
+
+typedef unsigned int gfp_t;
+
+struct pt_regs {
+	long unsigned int di;
+	long unsigned int orig_ax;
+} __attribute__((preserve_access_index));
+
+typedef struct kernel_cap_struct {
+	__u32 cap[_LINUX_CAPABILITY_U32S_3];
+} __attribute__((preserve_access_index)) kernel_cap_t;
+
+struct cred {
+	kernel_cap_t cap_effective;
+} __attribute__((preserve_access_index));
+
+struct task_struct {
+    unsigned int flags;
+    const struct cred *cred;
+} __attribute__((preserve_access_index));
+
+char LICENSE[] SEC("license") = "GPL";
+
+…
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>我們不需要完全充實結構；我們只需要提供程式運作所需的絕對最少資訊即可。CO-RE 將採取任何必要的動作來為您的核心執行重新配置。因此，編寫 LSM BPF 程式就變得特別簡單！</p>
+	<p><em>deny_unshare.bpf.c</em>：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-c">SEC("lsm/cred_prepare")
+int BPF_PROG(handle_cred_prepare, struct cred *new, const struct cred *old,
+             gfp_t gfp, int ret)
+{
+    struct pt_regs *regs;
+    struct task_struct *task;
+    kernel_cap_t caps;
+    int syscall;
+    unsigned long flags;
+
+    // If previous hooks already denied, go ahead and deny this one
+    if (ret) {
+        return ret;
+    }
+
+    task = bpf_get_current_task_btf();
+    regs = (struct pt_regs *) bpf_task_pt_regs(task);
+    // In x86_64 orig_ax has the syscall interrupt stored here
+    syscall = regs-&gt;orig_ax;
+    caps = task-&gt;cred-&gt;cap_effective;
+
+    // Only process UNSHARE syscall, ignore all others
+    if (syscall != UNSHARE_SYSCALL) {
+        return 0;
+    }
+
+    // PT_REGS_PARM1_CORE pulls the first parameter passed into the unshare syscall
+    flags = PT_REGS_PARM1_CORE(regs);
+
+    // Ignore any unshare that does not have CLONE_NEWUSER
+    if (!(flags &amp; CLONE_NEWUSER)) {
+        return 0;
+    }
+
+    // Allow tasks with CAP_SYS_ADMIN to unshare (already root)
+    if (caps.cap[CAP_TO_INDEX(CAP_SYS_ADMIN)] &amp; CAP_TO_MASK(CAP_SYS_ADMIN)) {
+        return 0;
+    }
+
+    return -EPERM;
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>建立程式是第一步，第二步是載入程式並將其連接到所需的勾點。可以採取幾種方法來完成這一步：<a href="https://github.com/cilium/ebpf" target="_blank">Cilium ebpf</a> 專案、<a href="https://github.com/libbpf/libbpf-rs" target="_blank">Rust 繫結</a>以及 <a href="https://ebpf.io/projects/" target="_blank">ebpf.io</a> 專案橫向頁面上的其他幾個專案。我們將使用原生 libbpf。</p>
+	<p><em>deny_unshare.c</em>：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-c">#include &lt;bpf/libbpf.h&gt;
+#include &lt;unistd.h&gt;
+#include "deny_unshare.skel.h"
+
+static int libbpf_print_fn(enum libbpf_print_level level, const char *format, va_list args)
+{
+    return vfprintf(stderr, format, args);
+}
+
+int main(int argc, char *argv[])
+{
+    struct deny_unshare_bpf *skel;
+    int err;
+
+    libbpf_set_strict_mode(LIBBPF_STRICT_ALL);
+    libbpf_set_print(libbpf_print_fn);
+
+    // Loads and verifies the BPF program
+    skel = deny_unshare_bpf__open_and_load();
+    if (!skel) {
+        fprintf(stderr, "failed to load and verify BPF skeleton\n");
+        goto cleanup;
+    }
+
+    // Attaches the loaded BPF program to the LSM hook
+    err = deny_unshare_bpf__attach(skel);
+    if (err) {
+        fprintf(stderr, "failed to attach BPF skeleton\n");
+        goto cleanup;
+    }
+
+    printf("LSM loaded! ctrl+c to exit.\n");
+
+    // The BPF link is not pinned, therefore exiting will remove program
+    for (;;) {
+        fprintf(stderr, ".");
+        sleep(1);
+    }
+
+cleanup:
+    deny_unshare_bpf__destroy(skel);
+    return err;
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>最後，我們使用下列 Makefile 進行編譯：</p>
+	<p><em>Makefile</em>：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-makefile">CLANG ?= clang-13
+LLVM_STRIP ?= llvm-strip-13
+ARCH := x86
+INCLUDES := -I/usr/include -I/usr/include/x86_64-linux-gnu
+LIBS_DIR := -L/usr/lib/lib64 -L/usr/lib/x86_64-linux-gnu
+LIBS := -lbpf -lelf
+
+.PHONY: all clean run
+
+all: deny_unshare.skel.h deny_unshare.bpf.o deny_unshare
+
+run: all
+	sudo ./deny_unshare
+
+clean:
+	rm -f *.o
+	rm -f deny_unshare.skel.h
+
+#
+# BPF is kernel code. We need to pass -D__KERNEL__ to refer to fields present
+# in the kernel version of pt_regs struct. uAPI version of pt_regs (from ptrace)
+# has different field naming.
+# See: https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=fd56e0058412fb542db0e9556f425747cf3f8366
+#
+deny_unshare.bpf.o: deny_unshare.bpf.c
+	$(CLANG) -g -O2 -Wall -target bpf -D__KERNEL__ -D__TARGET_ARCH_$(ARCH) $(INCLUDES) -c $&lt; -o <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="507410">[email&nbsp;protected]</a>
+	$(LLVM_STRIP) -g <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="fcd8bc">[email&nbsp;protected]</a> # Removes debug information
+
+deny_unshare.skel.h: deny_unshare.bpf.o
+	sudo bpftool gen skeleton $&lt; &gt; <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="391d79">[email&nbsp;protected]</a>
+
+deny_unshare: deny_unshare.c deny_unshare.skel.h
+	$(CC) -g -Wall -c $&lt; -o <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="97b3d7b9f8">[email&nbsp;protected]</a>
+	$(CC) -g -o <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f9ddb9">[email&nbsp;protected]</a> $(LIBS_DIR) <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b397f39ddc">[email&nbsp;protected]</a> $(LIBS)
+
+.DELETE_ON_ERROR:
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h3 id="--2">結果</h3>
+	<p>在新的終端機視窗中執行：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-sh">$ make run
+…
+LSM loaded! ctrl+c to exit.
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>在另一個終端機視窗中，我們被成功封锁！</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-sh">$ unshare -rU
+unshare: unshare failed: Cannot allocate memory
+$ id
+uid=1000(fred) gid=1000(fred) groups=1000(fred) …
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>該原則還有一個額外功能，可以永遠允許權限通過：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-sh">$ sudo unshare -rU
+# id
+uid=0(root) gid=0(root) groups=0(root)
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>在無權限情况下，syscall 會提前中止。在有權限情况下，會對效能產生什麼影響呢？</p>
+	<h3 id="--3">測量效能</h3>
+	<p>我們將使用一行 unshare 來對應使用者命名空間，並在其中執行一個命令進行測量：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-sh">$ unshare -frU --kill-child -- bash -c "exit 0"
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>透過解析 syscall unshare 進入/結束的 CPU 週期數，我們將以 root 使用者身分進行下列測量：</p>
+	<ol>
+		<li>在無原則情况下執行命令</li>
+		<li>在有原則情况下執行命令</li>
+	</ol>
+	<p>我們將使用 <a href="https://docs.kernel.org/trace/ftrace.html" target="_blank">ftrace</a> 來記錄測量值：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-sh">$ sudo su
+# cd /sys/kernel/debug/tracing
+# echo 1 &gt; events/syscalls/sys_enter_unshare/enable ; echo 1 &gt; events/syscalls/sys_exit_unshare/enable
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>此時，我們專門為 unshare 啟用了 syscall 進入和結束追蹤。現在我們設定進入/結束呼叫的時間解析來計算 CPU 週期數：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-sh"># echo 'x86-tsc' &gt; trace_clock 
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>接下來，我們開始進行測量：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-sh"># unshare -frU --kill-child -- bash -c "exit 0" &amp;
+[1] 92014
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>在新的終端機視窗中執行原則，然後執行下一個 syscall：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-sh"># unshare -frU --kill-child -- bash -c "exit 0" &amp;
+[2] 92019
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>現在我們對兩個呼叫進行比較：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-sh"># cat trace
+# tracer: nop
+#
+# entries-in-buffer/entries-written: 4/4   #P:8
+#
+#                                _-----=&gt; irqs-off
+#                               / _----=&gt; need-resched
+#                              | / _---=&gt; hardirq/softirq
+#                              || / _--=&gt; preempt-depth
+#                              ||| / _-=&gt; migrate-disable
+#                              |||| /     delay
+#           TASK-PID     CPU#  |||||  TIMESTAMP  FUNCTION
+#              | |         |   |||||     |         |
+         unshare-92014   [002] ..... 762950852559027: sys_unshare(unshare_flags: 10000000)
+         unshare-92014   [002] ..... 762950852622321: sys_unshare -&gt; 0x0
+         unshare-92019   [007] ..... 762975980681895: sys_unshare(unshare_flags: 10000000)
+         unshare-92019   [007] ..... 762975980752033: sys_unshare -&gt; 0x0
+
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>unshare-92014 使用了 63294 個週期。</p>
+	<p>unshare-92019 使用了 70138 個週期。</p>
+	<p>在兩次測量之間有 6844 (~10%) 個週期的差值。結果還不錯！</p>
+	<p>這些數字是針對單個 syscall 的，並且程式碼呼叫頻率越高，這些數字加起來的總和就會越大。unshare 通常在建立工作時進行呼叫，而不是在程式正常執行期間反覆呼叫。您的使用案例需要仔細考量和測量。</p>
+	<h2 id="--4">結尾</h2>
+	<p>我們瞭解了 LSM BPF 是什麼，如何使用 unshare 將使用者對應至 root，以及如何透過在 eBPF 中實作解決方案來解决實際問題。追蹤適當的勾點並不容易，不僅需要有相關經驗，還需要大量的核心程式碼。所幸，這是最難的部分。因為原則是用 C 語言編寫的，所以我們可以根據我們的問題對原則進行細微地調整。這意味著可以使用允許清單來延伸此原則，以允許某些程式或使用者繼續使用無權限的 unshare。最後，我們瞭解了此程式對效能的影響，發現用於封锁攻擊手段的開支是非常值得的。</p>
+	<p>「Cannot allocate memory」（無法配置記憶體）不是拒絕權限的明確錯誤訊息。我們提出了一個<a href="https://lore.kernel.org/all/20220608150942.776446-1-fred@cloudflare.com/" target="_blank">修補程式</a>，來傳播 <em>cred_prepare</em> 中的錯誤碼以連結呼叫堆疊。最終我們得出結論：新勾點更適合解決此問題。敬請期待！</p>
+</div>

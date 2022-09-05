@@ -1,0 +1,112 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image4-32.png" class="kg-image" alt="隆重宣布 Foundation DNS —— Cloudflare 的全新高级 DNS 产品"></figure>
+	<p>今天，我们宣布 Foundation DNS，Cloudflare 的全新高级 DNS 产品，提供无以伦比的可靠性和卓越的性能，能满足 IT 基础设施团队最复杂的需求。</p>
+	<h2 id="-">我们先谈价格</h2>
+	<p>当你签署企业 DNS 协议时，DNS 供应商通常会要求你提供三个参数来生成报价：</p>
+	<ul>
+		<li>区域的数量</li>
+		<li>每月 DNS 请求总数</li>
+		<li>所有区域的 DNS 记录总数</li>
+	</ul>
+	<p>有些供应商更复杂一些，很多供应商提供价格计算器，或不透明的“联系我们”定价。要制定一个有关如何成长的预算格外的复，但我们可以帮你做得更好。为什么不让它变得更加简单呢？我们决定，Foundation DNS 的定价仅基于企业客户的一个参数：每月 DNS 查询总数。通过这样做，我们预计能为企业节省支出，更重要的是，简化企业的 DNS 账单。</p>
+	<p>不用担心，一如我们其他产品，DDoS 缓解依然是不计量的。如果您的名称服务器遭到 DDoS 攻击，或者一到两个月的 DNS 查询数量超过额度，也不会有任何隐藏的超额费用。</p>
+	<h2 id="-dns-">为什么 DNS 如此重要？</h2>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image1-69.png" class="kg-image"></figure>
+	<p>域名系统（DNS）几乎和互联网本身一样老。DNS 最早是在 1983 年的 <a href="https://datatracker.ietf.org/doc/html/rfc882" target="_blank">RFC882</a> 和 <a href="https://datatracker.ietf.org/doc/html/rfc883" target="_blank">RFC883</a> 中定义的，目的是在主机名和 IP 地址之间建立映射。当时，作者明智地指出：“<em>（互联网）是一个庞大的系统，可能会变得大得多。</em>” [<a href="https://datatracker.ietf.org/doc/html/rfc882" target="_blank">RFC882</a>]。今天，仅在最大的顶级域名（TLD）之一 “.com” 下就有接近 1.6 亿个域名[<a href="https://www.verisign.com/en_US/channel-resources/domain-registry-products/zone-file/index.xhtml" target="_blank">source</a>]。</p>
+	<p>按照设计，DNS 是一个层次结构和高度分布式的系统，但作为最终用户，您通常仅会与解析器（1）进行通信，解析器要么由您的互联网服务提供商（ISP）分配或运营，要么由您的雇主或自己直接配置。解析器与其中一个根服务器（2）、负责的 TLD 服务器（3）和相关域的权威名称服务器（4）进行通信。在很多情况下，以上四方由不同的实体运营，并位于不同的地区，甚至处于不同的大陆。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/12/image6-19.png" class="kg-image"></figure>
+	<p>正如我们<a href="https://blog.cloudflare.com/zh-cn/october-2021-facebook-outage-zh-cn/">近期</a>看到的情况，如果您的 DNS 基础设施宕机，您将面临严重问题，有可能损失大量金钱，声誉受损。因此，作为域名所有者，您希望针对域的 DNS 查询在任何时候都得到响应，并且越快越好。那么，您可以怎么做呢？您不能影响已配置的解析器。您不能影响根服务器。您可以通过挑选具有相应 TLD 的域名来选择哪一个 TLD 服务器会被涉及。但如果您因其他原因局限于某个 TLD，那么这也将不受您控制。您能轻易影响到的是自己的权威名称服务器。因此，让我们仔细看一下 Cloudflare 的权威 DNS 产品吧。</p>
+	<h2 id="cloudflare-dns-">Cloudflare 权威 DNS 简介</h2>
+	<p>权威 DNS 是我们<a href="https://blog.cloudflare.com/robust-free-dns/">最老的产品</a>之一，我们花了大量时间来将其打造成精品。我们的任播网络覆盖超过 250 个城市，使所有 DNS 查询都得到响应。因此我们能提供极致的性能，并始终能够保证全球可用性。此外，凭借在缓解 DDoS 攻击方面的丰富经验，我们能防止任何人破坏我们的名称服务器以及客户的域。</p>
+	<p>DNS 对 Cloudflare 具有至关重要的作用，这是因为，直到 <a href="https://www.cloudflare.com/zh-cn/magic-transit/" target="_blank">Magic Transit</a> 发布前，DNS 将互联网上的每一个用户引导到 Cloudflare 以保护和加速客户的应用。如果我们 DNS 应答缓慢，Cloudflare 也将快不起来。如果我们的 DNS 没有应答，Cloudflare 也就不可用。我们的权威 DNS 的速度和可靠性对 Cloudflare 的速度和可靠性至关重要，对我们的客户也是如此。随着客户与我们一起成长，客户也推动了我们的 DNS 基础设施发展。今天，我们最大的客户区域拥有超过 300 万条记录，前 5 位的记录数合计接近 1000 万条。这些客户都依赖于 Cloudflare 来在数秒（而非数分钟）内将新的 DNS 记录更新推送到我们的边缘。鉴于这种重要性和客户的需求，多年来，我们的专门 DNS 工程团队已得到发展壮大，专注于使我们的 <a href="https://blog.cloudflare.com/how-we-made-our-dns-stack-3x-faster/">DNS 堆栈快速和可靠</a>。</p>
+	<p>DNS 生态系统的安全也很重要。Cloudflare 一直是 <a href="https://blog.cloudflare.com/dnssec-an-introduction/">DNSSEC </a>支持者。通过 DNSSEC 签名和验证DNS 应答可以确保中间人攻击者<a href="https://blog.cloudflare.com/zh-cn/bgp-leaks-and-crypto-currencies-zh-cn/">不能劫持应答和重定向流量</a>。Cloudflare 一直向所有计划级别的用户免费提供 DNSSEC，并将继续将其作为 Foundation DNS 的一个免费选项。对于同时选择 Cloudflare 作为注册机构的客户，简单地一键部署 DNSSEC 是另一个重要功能，确保客户的域免遭劫持，用户得到保护。我们也支持 <a href="https://datatracker.ietf.org/doc/html/rfc8078" target="_blank">RFC 8078</a> <a href="https://blog.cloudflare.com/automatically-provision-and-maintain-dnssec/">在外部注册机构的一键部署</a>。</p>
+	<p>但还有一些其他问题会导致互联网的一部分停止工作，而且大多不受我们控制：<a href="https://blog.cloudflare.com/route-leak-detection/">路由泄漏</a> 或更严重的<a href="https://isbgpsafeyet.com/#whats-a-bgp-hijack" target="_blank">路由劫持</a>。虽然 DNSSEC 能帮助缓解路由劫持，但不幸的是，并非所有递归解析器都会验证DNSSEC。即使解析器进行了验证，针对名称服务器的路由泄漏或劫持仍将导致宕机。如果所有名称服务器 IP 都受到这一事件影响，您的域将变得无法解析。</p>
+	<p>对于很多提供商，每个名称服务器通常仅解析到一个 IPv4 和一个 IPv6 地址。如果这个 IP 地址不可达（例如，因为网络拥塞，或更糟糕的路由泄漏），那么整个名称服务器将变得不可用，导致您的域变得不可解析。更糟糕的是，一些提供商甚至为其所有的名称服务器使用相同的 IP 子网。因此，一旦这个子网出现问题，所有名称服务器都将下线。</p>
+	<p>我们看一个例子：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>$ dig aws.com ns +short              
+ns-1500.awsdns-59.org.
+ns-164.awsdns-20.com.
+ns-2028.awsdns-61.co.uk.
+ns-917.awsdns-50.net.
+
+$ dig ns-1500.awsdns-59.org. +short
+205.251.197.220
+$ dig ns-164.awsdns-20.com. +short
+205.251.192.164
+$ dig ns-2028.awsdns-61.co.uk. +short
+205.251.199.236
+$ dig ns-917.awsdns-50.net. +short
+205.251.195.149
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>所有名称服务器 IP 都是 205.251.192.0/21 的一部分。幸运的是，<a href="https://aws.amazon.com/blogs/networking-and-content-delivery/how-aws-is-helping-to-secure-internet-routing/" target="_blank">AWS 现在 </a>通过<a href="https://isbgpsafeyet.com/#what-is-rpki" target="_blank">RPKI</a> 签名所有的 IP 范围，降低了泄漏的可能性……前提是解析器 ISP 验证 RPKI。但如果解析器 ISP不验证 RPKI 且这个子网被遭到泄漏或劫持，解析器将无法到达任何一个名称服务器，aws.com 将变得不可解析。</p>
+	<p>理所当然的是，Cloudflare 为我们所有路由签名，并正<a href="https://isbgpsafeyet.com/" target="_blank">推动整个互联网</a>最大程度减少路由泄漏的影响，但在 RPKI 得到广泛部署前，我们能采取什么措施来确保我们的 DNS 系统能在路由泄漏中屹立不倒呢？</p>
+	<p>今天，当您通过 Free、Pro、Business 或 Enterprise 计划使用 Cloudflare DNS 时，您的域获得两个形如 &lt;name&gt;.ns.cloudflare.com 的名称服务器，其中 &lt;name&gt; 是一个随机名称。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>$ dig isbgpsafeyet.com ns +short
+tom.ns.cloudflare.com.
+kami.ns.cloudflare.com.
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>正如前面所说，为了让一个域可用，其名称服务器必须可用。因此，这些名称服务器每一个都解析到 3 个任播 IPv4 地址和 3 个任播 IPv6 地址。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>$ dig tom.ns.cloudflare.com a +short
+173.245.59.147
+108.162.193.147
+172.64.33.147
+$ dig tom.ns.cloudflare.com aaaa +short
+2606:4700:58::adf5:3b93
+2803:f800:50::6ca2:c193
+2a06:98c1:50::ac40:2193
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>这里需要注意的关键细节是，3 个 IPv4 地址和 3 个 IPv6 地址的每一个都分别来自不同的 /8 IPv4 块和 /45 IPv6 块。因此，要使您的名称服务器在 IPv4 上变得不可用，路由泄漏必须准确地影响所有 3 个 /8 IPv4 块的对应子网。此类事件虽然理论上有可能，但实际上几乎不可能发生。</p>
+	<h3 id="--1">如何进一步改进？</h3>
+	<p>使用 Foundation DNS 的客户将被分配一组新的高级名称服务器，托管于 foundationdns.com 和foundationdns.net。与默认 Cloudflare 名称服务器相比，这些名称服务器甚至更有韧性。有关我们如何做到这一切的更多详情，我们将在明年初予以宣布，敬请关注。所有外部 Cloudflare 域（例如 cloudflare.com）将在新的一年迁移到这些名称服务器。</p>
+	<h2 id="--2">还有更多</h2>
+	<p>我们欣然宣布将推出两个备受期待的功能：</p>
+	<ul>
+		<li>支持辅助 DNS 的传出区域转移</li>
+		<li>权威和辅助 DNS 查询的 <a href="https://developers.cloudflare.com/logs/about" target="_blank">Logpush</a></li>
+	</ul>
+	<p>这两个功能将作为 Foundation DNS 的一部分提供，对 Enterprise 客户而言，将无任何额外费用。让我们详细介绍一下这两个功能，了解它们如何使我们的 DNS 产品变得更好。</p>
+	<h3 id="-dns--1">支持辅助 DNS 的传出区域转移</h3>
+	<p>什么是辅助 DNS，它为何重要？许多大型企业都要求使用多个 DNS 提供商，作为一个提供商不可用时的冗余。要做到这一点，他们可以将其域的 DNS 记录添加到两个独立的平台，并手动保持区域文件同步——这被称为“多主”设置。通过辅助 DNS，有两种机制可自动使用“主-辅”设置：</p>
+	<ul>
+		<li>DNS NOTIFY：主名称服务器将区域的每一个更改通知辅助名称服务器。一旦辅助名称服务器收到 NOTIFY，就会向主服务器发出区域转移请求来进行同步。</li>
+		<li>SOA 查询：辅助名称服务器定期查询区域的 SOA 记录，并检查 SOA 中找到的序列号是否与辅助名称服务器存储在该区域的 SOA 记录中存储的最新序列号相同。如果区域的新版本可用，它将向主服务器发出区域转移请求，以获得这些更改。</li>
+	</ul>
+	<p>如果您想深入了解辅助 DNS 的工作原理，可阅读 Alex Fattouche 的这篇<a href="https://blog.cloudflare.com/secondary-dns-deep-dive/">博客文章</a>。另一种主-辅设置将主服务器隐藏起来，因而被称为“隐主”设置。这种设置的不同之处是，仅辅助服务器用作权威服务器，换言之，仅辅助服务器被配置到域的注册机构中。下图显示了这些不同的设置。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image7-11.png" class="kg-image"></figure>
+	<p>自 2018 年以来，我们一直支持主-辅设置，其中 Cloudflare 作为辅助名称服务器。这意味着，从我们角度来看，我们接收来自主名称服务器的传入区域转移。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image2-50.png" class="kg-image"></figure>
+	<p>从今天开始，我们也将支持传出的区域转移，也就是充当主名称服务器的角色，一个或多个外部辅助名称服务器接收来自 Cloudflare 的区域转移。与传入转移一模一样，我们支持</p>
+	<ul>
+		<li>通过 AXFR 和 IXFR 的转移</li>
+		<li>通过 DNS NOTIFY 自动通知在每一次更改时触发区域转移</li>
+		<li>使用 TSIG 的签名转移，以确保区域文件在转移过程中得到验证</li>
+	</ul>
+	<h3 id="-dns-logpush">权威和辅助 DNS 的 Logpush</h3>
+	<p>Cloudflare 热爱日志。在 2021 年第三季度，我们平均每秒处理 2800 万个 HTTP 请求和 1360 万个 DNS 查询，每天拦截 760 亿个威胁。所有这些事件都在日志存储一段时间，以便在仪表板中为用户提供近乎实时的分析。对于那些想要——或者必须——永久存储这些日志的客户，我们在 2019 年打造了 <a href="https://blog.cloudflare.com/cloudflare-logpush-the-easy-way-to-get-your-logs-to-your-cloud-storage/">Logpush </a>。Logpush 允许您近乎实时地将日志传送到我们的分析合作伙伴之一（Microsoft Azure Sentinel、Splunk、 Datadog 和 Sumo Logic），或者任何提供 <a href="https://blog.cloudflare.com/zh-cn/introducing-r2-object-storage-zh-cn/">R2 </a>兼容 API 的云存储目的地。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image3-37.png" class="kg-image"></figure>
+	<p>今天，我们为增加了一个新的数据集：DNS 日志。要配置 Logpush 并传送您的域的 DNS 日志，请进入 <a href="https://dash.cloudflare.com/?to=/:account/:zone/analytics/logs" target="_blank">Cloudflare 仪表板</a>，创建一个新的 Logpush 任务，选择 DNS 日志，并配置您感兴趣的日志字段：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image5-19.png" class="kg-image"></figure>
+	<p>欢迎查看 <a href="https://developers.cloudflare.com/logs/reference/log-fields/zone/dns_logs" target="_blank">开发文档</a>，了解如何通过 API 进行这一操作的详细说明，以及有关新 DNS 日志字段的详细描述。</p>
+	<h2 id="--3">补充说明一点（或两点……）</h2>
+	<p>在查看基础设施中的 DNS 整体时，重要的是检查流量如何通过您的系统流动，以及流量的表现如何。归根到底，可用的处理能力、内存、服务器容量和总体计算资源是有限的。我们今天可用的工具中，最好和最重要的是 <a href="https://www.cloudflare.com/zh-cn/load-balancing/" target="_blank">负载平衡</a> 和运行状况监测。</p>
+	<p>Cloudflare <a href="https://blog.cloudflare.com/cloudflare-traffic/">自 2016 年起</a>就提供了一个负载平衡解决方案，支持客户以可扩展和智能的方式利用现有资源。但是我们的负载均衡器限于 A、AAAA 和 CNAME 记录。这涵盖了客户要求的很多主要用例，但没有涵盖所有用例。许多客户有更多的需求，如负载平衡 MX（电子邮件服务器）流量，SRV 记录（声明特定服务的流量应该通过的端口和权重），HTTPS 记录（确保对应流量使用安全协议，无论使用什么端口）等等。我们希望确保我们的客户的需求得到满足，并支持他们将业务目标与技术实现相结合的能力。</p>
+	<p>我们欣然宣布，已经添加了额外的运行状况监测方法，以支持负载平衡 MX、SRV、HTTPS 和 TXT 记录流量，无需进行任何额外配置。在 Cloudflare 中创建相应的 DNS 记录，并将您的负载平衡器设置为目的地……就是如此简单。通过利用 ICMP Ping、SMTP 和 UDP-ICMP 方法，客户将始终掌握其服务器的运行状况，并能根据各自的运行状况信息应用智能的转向决定。</p>
+	<p>关于智能转向，并没有一个万能的解决方案。不同的企业有不同的需求，考虑到服务器在世界各地的位置，以及客户所在位置则尤其如此。一个常用的经验法则是，将服务器放置在客户所在的地方。这确保了客户能够获得最佳的性能和本地化体验。一种常见的场景是，根据最终用户请求的来源来引导流量，并创建到最接近该区域的服务器的映射。Cloudflare 的地理转向能力允许我们的客户做到这一点——轻松地创建地区到池的映射，从而确保，如果我们看到一个来自东欧的请求，就将该请求发送到适当的服务器以满足该请求。但有时地区范围会相当大，导致无法按预期那样紧密地匹配上述映射的问题。</p>
+	<p>今天，我们欣然宣布，我们的地理转向功能提供国家支持。现在，客户可以从我们的 13 个地区中选择一个，或者选择一个特定的国家来映射到他们的池中，从而进一步细化并控制客户流量在通过他们的系统时应该如何表现。国家级别的转向，以及我们支持负载平衡更多 DNS 记录的新运行状况监测方法，这两个功能将从 2021 年 1 月开始提供。</p>
+	<h2 id="-dns--2">推动 DNS 生态系统发展</h2>
+	<p>此外，我们还有一些令人兴奋的消息要宣布：我们有关 Multi-Signer DNSSEC (<a href="https://datatracker.ietf.org/doc/html/rfc8901" target="_blank">RFC8901</a>)的工作即将完成，计划在 2022 年第一季度推出。这有何意义呢？大型企业的两个常见诉求是：</p>
+	<ul>
+		<li>冗余：拥有多个 DNS 提供商为其域提供权威响应</li>
+		<li>真实性：部署 DNSSEC，以确保 DNS 响应能得到正确验证</li>
+	</ul>
+	<p>这两个诉求都可以通过如下方式满足：让主名称服务器为域签名，并将其 DNS 记录和记录签名一同转移到辅助名称服务器，后者将按原样提供。Cloudflare 辅助 DNS 现已支持这种设置。转移预签名区域时不受支持的是非标准 DNS 特性，如国家级别转向。这就是 Multi-Signer DNSSEC 可以发挥作用的地方了。两个 DNS 提供商均需要知道另一个提供商的签名密钥，并执行自己的在线（或实时）签名。如果您想进一步了解 Multi-Signer DNSSEC 的工作原理，请查看 APNIC 发布的这篇<a href="https://blog.apnic.net/2021/08/25/multi-signer-dnssec-models/" target="_blank">博客文章</a>。</p>
+	<p>最后但并非最不重要的一点是，Cloudflare 将作为金会员加入 <a href="https://www.dns-oarc.net/" target="_blank">DNS 运营、分析和研究中心（DNS-OARC）</a>。我们将与其他研究人员和 DNS 基础设施运营者携手合作，努力解决最具挑战性的问题，并继续致力于开发新的标准和功能。</p>
+	<blockquote><em>“对于在消费者要求性能和可靠性的边缘管理和交付内容，DNS 是一个关键的工具。Cloudflare 是 DNS 社区的重要成员，多年来一直定期参加 OARC 研讨会，向我们专注于 DNS 的受众展示他们的创新和运营成果。 我们热烈欢迎他们成为我们社区的正式成员，并期望他们作为 OARC 黄金会员继续做出独特的贡献。”</em><br>- Keith Mitchell, OARC 总裁</blockquote>
+	<p>虽然 Cloudflare 创立之日起我们就一直研究 DNS，但我们仍只是刚刚起步。我们知道，未来的客户将要求更多精细化和具体的功能，Foundation DNS 的推出是我们打下的一个基础，以便我们继续在 DNS 的所有层面继续投资，并打造全世界功能最丰富的企业级 DNS 平台。如果您有任何想法，欢迎告诉我们您一直梦想您的 DNS 提供商能做到的事情。如果您希望帮助我们打造这些功能，我们正在<a href="https://boards.greenhouse.io/cloudflare/jobs/3262004?gh_jid=3262004" target="_blank">招贤纳士</a>。</p>
+</div>

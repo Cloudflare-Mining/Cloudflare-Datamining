@@ -1,0 +1,46 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/01/Hybrid-WAF-keys.png" class="kg-image" alt="Encrypting your WAF Payloads with Hybrid Public Key Encryption (HPKE)"></figure>
+	<p>The Cloudflare <a href="https://www.cloudflare.com/waf/" target="_blank">Web Application Firewall</a> (WAF) blocks more than 72B malicious requests per day from reaching our customers’ applications. Typically, our users can easily confirm these requests were not legitimate by checking the URL, the query parameters, or other metadata that Cloudflare provides as part of the <a href="https://developers.cloudflare.com/logs/log-fields#firewall-events" target="_blank">security event log</a> in the dashboard.</p>
+	<p>Sometimes investigating a WAF event requires a bit more research and a trial and error approach, as the WAF may have matched against a field that is not logged by default.</p>
+	<p>Not logging all parts of a request is intentional: HTTP headers and payloads often contain sensitive data, including personally identifiable information, which <a href="https://blog.cloudflare.com/welcome-to-privacy-and-compliance-week/">we consider a toxic asset</a>. Request headers may contain cookies and <code>POST</code> payloads may contain username and password pairs submitted during a login attempt among other sensitive data.</p>
+	<p>We recognize that providing clear visibility in any security event is a core feature of a firewall, as this allows users to better fine tune their rules. To accomplish this, while ensuring end-user privacy, we built encrypted WAF matched payload logging. This feature will log only the specific component of the request the WAF has deemed malicious — and it is encrypted using a customer-provided key to ensure that no Cloudflare employee can examine the data*. Additionally, the crypto uses an exciting new standard — developed in part by Cloudflare — called Hybrid Public Key Encryption (HPKE).</p>
+	<p><em>*All Cloudflare logs are encrypted at rest. This feature implements a second layer of encryption for the specific matched fields so that only the customer can decrypt it.</em></p>
+	<h3 id="encrypting-matched-payloads">Encrypting Matched Payloads</h3>
+	<p>To turn on this feature, you need to provide a public key, or generate a private-public key pair directly from the dashboard. Your data will then be encrypted using <a href="https://datatracker.ietf.org/doc/draft-irtf-cfrg-hpke/" target="_blank">Hybrid Public Key Encryption (HPKE)</a>, which offers a great combination of both performance and security.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/12/image2-36.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/12/image1-52.png" class="kg-image"></figure>
+	<p>To simplify this process, we have built an easy-to-use <a href="https://github.com/cloudflare/matched-data-cli" target="_blank">command line utility</a> to generate the key pair:</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-bash">$ matched-data-cli generate-key-pair
+{
+  "private_key": "uBS5eBttHrqkdY41kbZPdvYnNz8Vj0TvKIUpjB1y/GA=",
+  "public_key": "Ycig/Zr/pZmklmFUN99nr+taURlYItL91g+NcHGYpB8="
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Cloudflare does not store the private key and it is our customers’ responsibility to ensure it is stored safely. Lost keys, and the data encrypted with them, cannot be recovered but customers can rotate keys to be used with future payloads.</p>
+	<p>Once encrypted, payloads will be available in the logs as encrypted base64 blobs within the <code>metadata</code> field:</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-json">"metadata": [
+  {
+    "key": "encrypted_matched_data",
+    "Value": "AdfVn7odpamJGeFAGj0iW2oTtoXOjVnTFT2x4l+cHKJsEQAAAAAAAAB+zDygjV2aUI92FV4cHMkp+4u37JHnH4fUkRqasPYaCgk="
+  }
+]
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Decrypting payloads can be done via the dashboard from the Security Events log, or by using the command line utility, as shown below. If done via the dashboard, the browser will decrypt the payload locally (i.e., client side) and will not send the private key to Cloudflare.</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-bash">$ printf $PRIVATE_KEY | ./matched-data-cli decrypt -d AdfVn7odpamJGeFAGj0iW2oTtoXOjVnTFT2x4l+cHKJsEQAAAAAAAAB+zDygjV2aUI92FV4cHMkp+4u37JHnH4fUkRqasPYaCgk= --private-key-stdin
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>The command above returns:</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-json">{"REQUEST_HEADERS:REFERER":"https:\/\/example.com\/testkey.txt?a=&lt;script&gt;alert('xss');&lt;\/script&gt;"}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>In the example above, the WAF matched against the <code>REQUEST_HEADERS:REFERER</code> field. Any other fields the WAF matched on would be similarly logged.</p>
+	<h3 id="better-logging-with-user-privacy-in-mind">Better Logging with User Privacy in Mind</h3>
+	<p>In the coming months, this feature will be available on our dashboard to our Enterprise customers. Enterprise customers who would like this feature enabled sooner should reach out to their account team. Only application owners who also have access to the Cloudflare dashboard as Super Administrators will be able to configure encrypted matched payload logging. Those who do not have access to the private key, including Cloudflare staff, are not able to decrypt the logs.</p>
+	<p>We are also excited for this feature to be one of our first to use Hybrid Public Key Encryption, and for Cloudflare to use this emerging standard developed by the Crypto Forum Research Group (CFRG), the research body that supports the development of Internet standards at the <a href="https://ietf.org" target="_blank">IETF</a>. And stay tuned, we will publish a deep dive post with the technical details soon!</p>
+</div>

@@ -1,0 +1,42 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image2-66.png" class="kg-image" alt="Cloudflare partners with Microsoft to protect joint customers with a Global Zero Trust Network"></figure>
+	<p>私たちは企業として、パートナーとの統合ソリューションも含め、お客様により高い価値を提供するために何ができるかを常に考えています。Azure Active Directoryとの統合により、以下のようなメリットをお客様に提供します。</p>
+	<p><strong>第一に</strong> 、シングルサインオン、多要素認証および条件付き認証によるアクセスを提供するAzure Active DirectoryによるIDおよびアクセス管理の一元化を実現。</p>
+	<p><strong>第二に</strong> 、VPNの代替サービスであるCloudflare Accessを利用した特定アプリケーションへのポリシー指向なアクセス。</p>
+	<p><strong>第三に</strong> 、社内アプリケーションをCloudflareのグローバルネットワークに接続することで、インターネット全体に開放することなく、セキュリティ層を追加することができます。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image3-32.png" class="kg-image"></figure>
+	<p>少し戻ってみましょう。</p>
+	<h3 id="-zero-trust-">なぜZero Trustなのか？</h3>
+	<p>あらゆる規模の企業が、ITスタックの加速するデジタルトランスフォーメーションとますます分散化する従業員に直面し、セキュリティ境界の定義が変化しています。城と堀のモデルからインターネット全体へと移行し、あらゆるリソースにアクセスするすべてのユーザーに対してセキュリティチェックが必要になっています。その結果、すべての企業、特にAzureの幅広いクラウドポートフォリオの利用が増加している企業は、クラウドとSaaSの道のりの不可欠な部分として、Zero Trustアーキテクチャを採用しています。</p>
+	<p>Cloudflare Accessは、Azureホスト型アプリケーションやオンプレミスのアプリケーションへのセキュアなアクセスを提供します。また、Azureやその他のインターネットに対する<a href="https://blog.cloudflare.com/cloudflare-partners-with-microsoft-to-protect-joint-customers-with-global-zero-trust-network/">世界最速のネットワーク</a>へのオンランプとして機能します。ユーザーは、自分のデバイスやオフィスから、世界250都市以上にあるCloudflareのネットワーク経由で接続します。そのグローバルネットワーク上でCloudflare Zero Trustを利用することで、すべてのリソースへのすべてのリクエストに対して、ユーザーIDを含むセキュリティ評価が行われるようになります。このセキュアなグローバルネットワークのオンランプを、Azureホスト型アプリケーションとオンプレミスアプリケーションに提供できることを嬉しく思います。</p>
+	<p>また、セキュリティだけでなく、パフォーマンスも私たちの大きな強みの一つです。Cloudflareは、当社のネットワークでアプリケーションを保護している何百万ものお客様に対して、平均して毎秒3,200万件以上のHTTPリクエストに対応しています。それらのアプリケーションが当社のネットワーク上で動作していないときは、自社のグローバルなプライベートバックボーンと、全世界で1万を超えるネットワークとの接続性に頼って、ユーザーを接続することができるのです。</p>
+	<p>このグローバルなセキュリティとパフォーマンスの境界ネットワークをCloudflare Zero Trust製品として、お客様のAzureホスト型アプリケーションやオンプレミスアプリケーションに提供できることを嬉しく思います。</p>
+	<h3 id="cloudflare-access-zero-trust-">Cloudflare Access：最新のZero Trustアプローチ</h3>
+	<p>CloudflareのZero TrustソリューションであるCloudflare Accessは、社内で管理するアプリケーションの認証に最新のアプローチを提供します。Azureやオンプレミス上の企業アプリケーションがCloudflare Accessで保護されていると、SaaSアプリケーションのように感じられ、従業員はシンプルで一貫したフローでアプリケーションにログインできます。Cloudflare Accessは統合リバースプロキシとして機能し、すべてのリクエストが認証、承認および暗号化されていることを確認することで、アクセス制御を実行します。</p>
+	<p>ID：Cloudflare Accessは、Azure Active Directoryを含む主要なIDプロバイダーと即統合し、既に作成したポリシーやユーザーを使用して、Webアプリケーションへの条件付きアクセスを提供することが可能です。例えば、社内カンバンボードにアクセスできるのは社員のみで、請負業者はアクセスできないようにしたり、AzureやオンプレミスでホストされるSAP財務アプリケーションをロックダウンしたりできます。</p>
+	<p>デバイス：<a href="https://blog.cloudflare.com/introducing-tls-client-auth/">クライアント認証付きのTLS</a>を使用し、一意のクライアント証明書を持つデバイスのみに接続を制限することができます。Cloudflareは、接続するデバイスが企業のCAによって署名された有効なクライアント証明書を持っていることを確認し、内部アプリケーションへのアクセスを許可するためにユーザー資格情報を認証します。</p>
+	<p>セキュリティ強化：社内アプリケーションの前でCloudflare Accessを使用したいけれど、そのアプリケーションをインターネット全体に公開したくない場合。セキュリティを強化するために、Accessと<a href="https://www.cloudflare.com/products/cloudflare-warp/" target="_blank">Cloudflare Tunnel</a>を組み合わせるとよいでしょう。Cloudflare Tunnelは、お客様のAzure環境からCloudflareのネットワークに直接接続するので、一般にアクセス可能なIPは存在しません。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image4-14.png" class="kg-image"></figure>
+	<h3 id="azure-ad-cloudflare-access-azure-">Azure ADとCloudflare Accessを使用して、共同でレガシーアプリケーションとAzureホスト型アプリケーションの両方を保護</h3>
+	<p>オンプレミスのレガシーアプリケーションについて、CloudflareがAzure Active Directoryの<a href="https://azure.microsoft.com/en-us/services/active-directory/sso/secure-hybrid-access/#overview" target="_blank">安全なハイブリッドアクセス</a>パートナーであることをお知らせできることを嬉しく思います。Azure ADの安全なハイブリッドアクセスにより、お客様は追加開発なしにSSO認証を使用してレガシーオンプレミスアプリケーションへのアクセスを一元的に管理することができます。本日より、共通のお客様はCloudflare Accessソリューションを、内蔵パフォーマンスを備えた追加のセキュリティ層として、レガシーアプリケーションの前に簡単に使用することができます。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image1-73.png" class="kg-image"></figure>
+	<p>従来、オンプレミスアプリケーションでは、Azure ADやCloudflare Accessのような機能を統合するために、お客様は既存のコードを変更したり、コードのレイヤーを追加したりする必要がありました。Azure Active Directoryの<a href="https://azure.microsoft.com/en-us/services/active-directory/sso/secure-hybrid-access/#overview" target="_blank">安全なハイブリッドアクセス</a>の助けを借りれば、お客様はコードをあまり変更せずに、これらの機能をシームレスに統合することができます。統合後は、以下のAzure ADの機能などを利用することができます。</p>
+	<ol>
+		<li>多要素認証（MFA）</li>
+		<li>シングルサインオン（SSO）</li>
+		<li>パスワードレス認証</li>
+		<li>統一されたユーザーアクセス管理</li>
+		<li>Azure AD Conditional Accessおよびデバイスの信頼性</li>
+	</ol>
+	<p>まさしく同様に、Azure ADとCloudflare Accessの組み合わせは、Azureホスト型アプリケーションの保護にも利用できます。Cloudflare Accessは、以下の2つの統合により、Azureホスト型アプリケーションやオンプレミスアプリケーションへのセキュアなオンランプを可能にします。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image5-17.png" class="kg-image"></figure>
+	<p>1. <a href="https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/azuread/" target="_blank">Azure ADとCloudflare Accessの統合</a>：</p>
+	<p>Cloudflare Accessは、Zero Trustネットワークアクセス（ZTNA）ソリューションであり、アプリケーション全体に緻密なアクセスポリシーを設定することが可能です。Microsoft Azure Active Directoryを<a href="https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/azuread/" target="_blank">Cloudflare Zero Trustと</a>統合し、ユーザーID、グループメンバーシップおよびAzure AD Conditional Accessポリシーに基づくルールを構築することができます。ユーザーはAzure ADの認証情報で認証され、Cloudflare Accessに接続します。その他のポリシーコントロールには、<a href="https://developers.cloudflare.com/cloudflare-one/identity/devices/" target="_blank">デバイスポスチャー</a>、ネットワーク、ロケーションなどがあります。セットアップは通常数時間以内で完了します。</p>
+	<p>2. <a href="https://support.cloudflare.com/hc/en-us/articles/360021621972-Exposing-applications-running-on-Microsoft-Azure-with-Cloudflare-Argo-Tunnel" target="_blank"> AzureとCloudflare Tunnelの統合</a>：</p>
+	<p><a href="https://www.cloudflare.com/products/tunnel/" target="_blank">Cloudflare Tunnel</a>は、<a href="https://azuremarketplace.microsoft.com/en-us/marketplace/apps/" target="_blank">Microsoft Azureプラットフォーム</a>上で動作するアプリケーションを公開することができます。<a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/" target="_blank">Cloudflare Tunnelのインストールと設定</a>のガイドを参照してください。また、<a href="https://azuremarketplace.microsoft.com/en-us/marketplace/apps/cloudflare.cloudflare_azure?src=tazure&amp;tab=Overview" target="_blank">Azure Marketplace</a>に事前作成されたCloudflare Linux画像が存在します。AzureアプリケーションをCloudflareのネットワークに接続するプロセスを簡略化するために、Azureリソースグループに事前作成された画像をデプロイします。Cloudflare Tunnelは、現在、Microsoftの<a href="https://azuremarketplace.microsoft.com/en-us/marketplace/apps/cloudflare.cloudflare_azure?tab=Overview" target="_blank">Azure Marketplace</a>で利用可能です。</p>
+	<blockquote>「ハイブリッド職場環境は、クラウドへの移行を加速させ、従業員に安全でパフォーマンスの高いアプリケーションへのアクセスを提供するという、世界中のCIOの必要性を高めています。これは、特にセルフホスト型アプリケーションに当てはまります。Cloudflare Accessを介したCloudflareのグローバルなネットワークセキュリティの境界は、Azure Active Directoryとともに、従業員がどこからでも安全かつ高いパフォーマンスで仕事をこなせるようにするための追加のセキュリティ層を提供します」と、主任プログラムマネージャーであるDavid Gregory氏は述べています。<br>- Microsoft Azure Active Directory</blockquote>
+	<h3 id="-">まとめ</h3>
+	<p>過去10年間で、Cloudflareは世界で最も速く、信頼できる安全なネットワークの一つを構築してきました。そのネットワークを、上記の統合により、Azureホスト型アプリケーションにグローバルなセキュリティとパフォーマンスの境界として使用することができるようになり、しかもそれは簡単です。</p>
+	<h3 id="--1">今後の展開は？</h3>
+	<p>今後数ヶ月の間に、Microsoft Azureとの統合をさらに強化し、お客様がSASEの境界をよりよく実装できるようにします。現在Cloudflare Zero Trust製品をご利用のお客様で、このAzureとの統合にご興味のある方は、上記の開発者向けドキュメントで有効化する方法をご確認ください。さらに詳しく知りたい、または追加の質問がある場合は、 <a href="https://www.cloudflare.com/partners/technology-partners/microsoft/" target="_blank">フォーム</a>にご記入いただくか、CloudflareのCSMまたはAEまでご連絡いただければ、喜んでお手伝いさせていただきます。</p>
+</div>

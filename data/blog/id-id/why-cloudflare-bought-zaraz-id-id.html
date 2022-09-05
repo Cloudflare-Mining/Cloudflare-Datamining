@@ -1,0 +1,53 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image1-32.png" class="kg-image" alt="Why Cloudflare Bought Zaraz"></figure>
+	<p>Saat ini, kami dengan senang hati mengumumkan bahwa Cloudflare telah mengakuisisi Zaraz. Proposisi nilai Zaraz sejalan dengan misi Cloudflare. Mereka bertujuan untuk membuat web lebih aman, lebih andal, dan lebih cepat. Mereka juga membangun solusi di Cloudflare Workers. Dengan kata lain, tidak salah jika kami mengundang mereka untuk bergabung dengan tim kami.</p>
+	<h3 id="berhati-hatilah-dengan-orang-yang-membuang-sampah"><strong>Berhati-hatilah dengan Orang yang Membuang Sampah</strong></h3>
+	<p>Untuk memahami proposisi nilai Zaraz, Anda perlu memahami salah satu risiko terbesar bagi sebagian besar situs web yang kurang diperhatikan oleh orang. Untuk memahaminya, saya akan menggunakan analogi.</p>
+	<p>Bayangkan Anda menjalankan sebuah bisnis. Anggap saja bisnis itu adalah, misalnya, apotek. Anda memiliki karyawan. Mereka memiliki proses dan cara kerja sendiri. Mereka terikat kontrak, dan Anda melakukan pemeriksaan latar belakang sebelum mempekerjakan mereka. Mereka bekerja dengan baik dan Anda mempercayai mereka. Namun, suatu hari, Anda menyadari bahwa tidak ada karyawan yang membuang sampah. Sehingga Anda meminta tim Anda untuk mencari seseorang yang dapat membuang sampah secara rutin.</p>
+	<p>Tim Anda sibuk dan tidak punya waktu untuk menambahkan tugas ini ke daftar tugas rutin mereka. Namun, satu karyawan yang berani memiliki sebuah ide. Dia pergi ke jalan dan memanggil orang asing. "Hai," kata karyawan Anda kepada orang asing itu. "Aku melihatmu berjalan di sini setiap hari. Kamu mau mampir dan membuang sampah saat melewati jalan ini?</p>
+	<p>"Eh", kata orang asing itu. "Tentu saja?!"</p>
+	<p>"Bagus," kata karyawan Anda. "Ini tanda pengenal untuk masuk ke gedung. Tempat sampah berada di belakang area aman apotek, tetapi, jangan khawatir, gunakan saja tanda pengenalnya, dan kamu bisa kembali ke sana. Kelihatannya kamu bisa dipercaya. Ini akan berhasil!!"</p>
+	<p>Ide itu memang berhasil untuk sementara. Orang asing itu lewat setiap hari. Membuang sampah. Bekerja seperti yang diharapkan. Dan tidak ada lagi yang memikirkan tentang sampah.</p>
+	<p>Tapi suatu hari Anda masuk, dan ternyata apotek telah dirampok. Obat-obatan dicuri, rekam medis pasien hilang. Log menunjukkan bahwa tanda pengenal orang asing itulah yang digunakan untuk masuk ke apotek. Anda mencari orang asing itu, dan dia berkata, "Hei, sayang sekali, tapi bukan saya yang melakukannya". Sudah lama saya menyerahkan tanggung jawab untuk membuang sampah itu kepada orang lain karena saya tidak lagi berjalan melewati apotek setiap hari."</p>
+	<p>Kemudian Anda tidak pernah mencari orang yang menggunakan akses khusus tersebut dan mengkhianati kepercayaan Anda.</p>
+	<h3 id="kunci-kerajaan"><strong>Kunci Kerajaan</strong></h3>
+	<p>Tentu saja, ini gila. Tidak ada yang akan memilih orang asing secara acak dari jalan dan memberinya akses ke toko fisik mereka. Namun, di dunia maya, kejadian semacam ini umum terjadi.</p>
+	<p>Setiap hari, pengembang front-end, pemasar, dan bahkan tim keamanan menyematkan skrip pihak ketiga langsung di halaman web mereka. Skrip ini melakukan tugas dasar — ibarat kata seperti membuang sampah. Ketika berfungsi dengan benar, skrip ini dapat bermanfaat dalam menghadirkan fungsionalitas tingkat lanjut ke situs, membantu melacak konversi pemasaran, menyediakan analitik, atau menghentikan penipuan. Tetapi, jika tidak berfungsi dengan benar, skrip tersebut dapat menyebabkan masalah besar dan bahkan mencuri data.</p>
+	<p>Biasanya, skrip yang dikonfigurasikan dengan buruk dapat memperlambat halaman rendering. Meskipun ada cara agar skrip tidak memblokir, sayangnya para pengembang tidak selalu melakukan praktik terbaik. Seringkali ketika kita melihat situs web yang lambat, penyebab kelambatan terbesar adalah semua skrip pihak ketiga yang telah disematkan.</p>
+	<p>Tapi itu bisa lebih buruk. Jauh lebih buruk. Di Cloudflare, kami telah melihatnya secara langsung. Pada tahun 2019, seorang peretas menyerang layanan pihak ketiga yang digunakan oleh Cloudflare dan mengubah JavaScript pihak ketiga tersebut yang dimuat pada halaman cloudflare.com. Tujuannya adalah mencuri login cookie, nama pengguna, dan kata sandi. Mereka bahkan secara otomatis membuat kolom nama pengguna dan kata sandi yang terisi otomatis.</p>
+	<p>Berikut cuplikan kode aktual yang dimasukkan:</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>        var cf_form = document.createElement("form");
+        cf_form.style.display = "none";
+        document.body.appendChild(cf_form);
+        var cf_email = document.createElement("input");
+        cf_email.setAttribute("type", "text");
+        cf_email.setAttribute("name", "email");
+        cf_email.setAttribute("autocomplete", "username");
+        cf_email.setAttribute("id", "_email_");
+        cf_email.style.display = "none";
+        cf_form.appendChild(cf_email);
+        var cf_password = document.createElement("input");
+        cf_password.setAttribute("type", "password");
+        cf_password.setAttribute("name", "password");
+        cf_password.setAttribute("autocomplete", "current-password");
+        cf_password.setAttribute("id", "_password_");
+        cf_password.style.display = "none";
+        cf_form.appendChild(cf_password);
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Untungnya, serangan ini hanya menyebabkan kerusakan kecil karena bisa diselesaikan dengan sangat cepat oleh tim, tetapi ini menunjukkan bahaya yang sangat nyata dari JavaScript pihak ketiga. Mengapa kode yang dirancang untuk menghitung jumlah klik bahkan diizinkan untuk membuat kolom kata sandi?</p>
+	<p>Sederhananya, JavaScript pihak ketiga adalah mimpi buruk bagi keamanan web. Apa yang tampak seperti perubahan satu baris sederhana ("cukup tambahkan JavaScript ini untuk mendapatkan pelacakan tampilan halaman gratis!") membuka celah bagi kode berbahaya yang tidak dapat Anda kendalikan.</p>
+	<p>Yang lebih buruk adalah JavaScript pihak ketiga dapat dan memang memuat JavaScript lain dari pihak lain yang tidak dikenal. Bahkan jika Anda memercayai perusahaan yang kodenya Anda pilih untuk disematkan, Anda mungkin tidak akan memercayai (atau bahkan tahu) apa yang akan mereka sertakan.</p>
+	<p>Lebih parahnya lagi, skrip ini bisa berubah kapan saja. Ancaman keamanan bisa datang dan pergi. Penyerang yang menargetkan Cloudflare dapat membahayakan pihak ketiga dan mengubah layanan mereka agar hanya menyerang Cloudflare dan menyertakan fitur anti-debugging guna mencoba menghentikan pengembang menemukan adanya peretasan. Jika Anda seorang CIO dan ini tidak membuat Anda takut, tanyakan kepada tim pengembangan web berapa banyak skrip pihak ketiga yang ada di situs web Anda. Apakah Anda mempercayai mereka semua?</p>
+	<p>Praktik menambahkan skrip pihak ketiga untuk menangani tugas sederhana sama halnya dengan menarik orang asing secara acak dari jalan, memberi mereka akses fisik ke kantor Anda, dan meminta mereka mampir sekali sehari untuk membuang sampah. Hal tersebut adalah sebuah kegilaan di dunia fisik, namun merupakan praktik yang umum dilakukan dalam pengembangan web.</p>
+	<h3 id="sandboxing-orang-asing"><strong>Sandboxing Orang Asing</strong></h3>
+	<p>Di Cloudflare, solusi kami sangat kejam. Kami memerintahkan agar semua skrip pihak ketiga dihapus dari situs web kami. Berbagai tim di Cloudflare prihatin dengan hal ini. Terutama tim pemasaran kami, yang menggunakan skrip ini untuk menilai apakah kampanye yang mereka jalankan berhasil. Namun, kami memutuskan bahwa melindungi integritas layanan kami lebih penting daripada memiliki visibilitas ke hal-hal seperti kampanye pemasaran.</p>
+	<p>Sekitar waktu inilah kami bertemu tim di belakang Zaraz. Mereka berpendapat tidak perlu ada pilihan drastis seperti itu. Bagaimana jika, sebagai gantinya, Anda dapat secara ketat mengontrol apa yang dilakukan skrip yang Anda sisipkan di halaman Anda. Pastikan jika mereka pernah disusupi, mereka tidak akan memiliki akses ke apa pun yang tidak boleh mereka lihat. Pastikan bahwa jika gagal atau lambat, halaman tidak akan dirender.</p>
+	<p>Kami telah menghabiskan setengah tahun terakhir menguji Zaraz, dan itu keajaiban. Hal itu memberi Anda yang terbaik dari web yang fleksibel dan dapat diperluas sambil memastikan bahwa CIO dan CISO dapat tidur nyenyak di malam hari mengetahui bahwa meskipun penyedia skrip pihak ketiga disusupi, itu tidak akan mengakibatkan insiden keamanan.</p>
+	<p>Untuk memperjelas, jika Cloudflare menjalankan Zaraz maka ancaman dari skrip yang dikompromikan yang kami lihat pada tahun 2019 akan sepenuhnya dan secara otomatis dihilangkan. Tidak ada cara bagi penyerang untuk membuat kolom nama pengguna dan kata sandi tersebut, tidak ada akses ke cookie yang disimpan di browser pengguna. Celah serangan akan benar-benar dihilangkan.</p>
+	<p>Kami telah menerbitkan dua postingan lain hari ini yang menguraikan cara kerja Zaraz serta contoh bagaimana perusahaan menggunakannya untuk memastikan keberadaan web mereka aman, andal, dan cepat. Kami membuat Zaraz tersedia untuk pelanggan Perusahaan kami segera, dan semua pelanggan lain dapat mengakses versi beta gratis di <a href="https://dash.cloudflare.com/?to=/:account/:zone/zaraz" target="_blank">dasbor mereka</a> mulai hari ini.</p>
+	<p>Jika Anda adalah pengembang skrip pihak ketiga, perhatikan bahwa jika Anda tidak mengamankan skrip dengan benar, maka saat Zaraz meluncurkan lebih banyak web, skrip Anda akan berhenti berfungsi. Hari ini, Cloudflare digunakan di hampir 20% dari semua situs web dan, tak lama kemudian, kami berharap teknologi Zaraz akan membantu melindungi semuanya. Kami ingin memastikan semua skrip yang berjalan di situs pelanggan kami memenuhi standar keamanan, keandalan, dan kinerja modern. Jika Anda memerlukan bantuan untuk mencapainya, hubungi kami, dan kami akan siap membantu: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="710b1003100b31121d1e0415171d1003145f121e1c5f">[email&nbsp;protected]</a></p>
+	<p>Sementara itu, kami mendorong Anda untuk membaca tentang cara kerja teknologi Zaraz dan bagaimana pelanggan seperti Instacart menggunakannya untuk membangun kehadiran web yang lebih baik.</p>
+	<p>Sungguh luar biasa untuk memiliki Zaraz, melanjutkan misi Cloudflare untuk membantu membangun Internet yang lebih baik. Selamat Datang di tim. Dan seiring dengan itu: kami ingin menyambut Anda di Zaraz! Kami senang Anda dapat memanfaatkan teknologi yang membuat web ini lebih baik.<br></p>
+</div>

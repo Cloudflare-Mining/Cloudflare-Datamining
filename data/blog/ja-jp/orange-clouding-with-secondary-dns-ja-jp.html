@@ -1,0 +1,55 @@
+<div class="post-content lh-copy gray1">
+	<h3 id="-dns-">セカンダリDNSとは？</h3>
+	<p>セカンダリDNSサーバーとは、もともとプライマリ権威DNSサーバーのバックアップとして機能するものを意味していました。プライマリサーバーのレコードに変更が加わると、ゾーン転送が行われ、セカンダリDNSサーバーがプライマリサーバーと同期されます。セカンダリサーバーはその時、プライマリサーバーであるかのようにレコードを処理できますが、変更ができるのはプライマリサーバーだけで、セカンダリサーバーではありません。これが、必要に応じて分散される異なるサーバー間で冗長性が作り出されます。</p>
+	<p>セカンダリDNSを活用する共通の方法がいくつもありますが、その中に次のような方法があります。</p>
+	<ol>
+		<li>受動的なバックアップとしてのセカンダリDNS - セカンダリDNSサーバーがプライマリサーバーがダウンするまで、アイドリング状態でいます。フェイルオーバーが発生した時点で、セカンダリがレコードの処理を始められます。</li>
+		<li>能動的なバックアップとしてのセカンダリDNS - セカンダリDNSサーバーはプライマリサーバーと連携してレコードを処理します。</li>
+		<li>隠れプライマリを持つセカンダリDNS - セカンダリサーバーにのみ対象とするregistrarポイントでネームサーバーが記録し、基本的にセカンダリをプライマリネームサーバーとして扱います。</li>
+	</ol>
+	<h3 id="-dns--1">セカンダリDNSのオーバーライドとは？</h3>
+	<p>セカンダリDNSオーバーライドは、隠れプライマリモデルを持つセカンダリDNS上で構築されます。これは、お客様の指示通りにレコードを処理するだけでなく、お客様が<a href="https://www.cloudflare.com/en-gb/network/" target="_blank">Cloudflareのネットワーク</a>を介して、あらゆるA/AAAA/CNAMEレコードをプロキシできるように許可することで実現します。これは、現在CloudflareがプライマリDNSプロバイダーとして機能する方法と似ています。</p>
+	<p>次の例を考えてみてください。</p>
+	<p>example.com Cloudflare IP - 192.0.2.0</p>
+	<p>example.com origin IP - 203.0.113.0</p>
+	<p>Cloudflareのセキュリティとパフォーマンスサービスをうまく活用するために、配信元IPがインターネットから隠れた状態のままであることを確認する必要があります。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image1-10-1.png" class="kg-image"></figure>
+	<p>図1：隠れプライマリネームサーバーがないセカンダリDNS</p>
+	<p>図1は、隠れプライマリネームサーバーがなく、リゾルバーがクエリをどちらか選択できることを示しています。これで、2つの問題が起こります。</p>
+	<ol>
+		<li><a href="https://tools.ietf.org/html/rfc1034" target="_blank">RFC 1034</a>と<a href="https://tools.ietf.org/html/rfc2182" target="_blank">RFC 2182</a>に違反します。これは、Cloudflareサーバーがプライマリネームサーバーとは異なる応答をするためです。</li>
+		<li>配信元IPが、インターネットに公開されてしまいます。</li>
+	</ol>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image2-6-1.png" class="kg-image"></figure>
+	<p>図2：隠れプライマリネームサーバーがあるセカンダリDNS</p>
+	<p>図2は、リゾルバーが常にCloudflareセカンダリDNSサーバーにクエリを出していることを示しています。</p>
+	<h3 id="-dns--2">セカンダリDNSオーバーライドの仕組み</h3>
+	<p>セカンダリDNSオーバーライドUIは、プライマリUIと類似していますが、レコードの編集ができないという違いが1つだけあります。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image3-5-2.png" class="kg-image"></figure>
+	<p>図3：セカンダリDNSオーバーライドダッシュボード</p>
+	<p>図3では、レコードがすべてプライマリDNSサーバーから転送されています。test-grey（テスト-グレー）とtest-mx（テスト-mx）が、通常のDNSレコードとして扱われる一方で、test-orang（テスト-オレンジ）とtest-aaaa-orange（テスト-aaaa-オレンジ）がオーバーライドされてCloudflareネットワークを経由してプロキシされます。</p>
+	<p>水面下では、ネームに基づいて転送されたレコードとペアになるオーバーライドレコードを保管します。セカンダリオーバーライドについては、レコードをオーバーライドする時の種類についてそれほど気にしていません。その理由は2つあります。</p>
+	<ol>
+		<li><a href="https://tools.ietf.org/html/rfc1912#section-2.4" target="_blank">RFC1912</a>によると、他のレコードと同じネームのCNAMEレコードを持つことはできません。（これは適用できないDNSSECレコードがあります。<a href="https://tools.ietf.org/html/rfc2181" target="_blank">RFC2181</a>を参照してください）</li>
+		<li>AレコードもAAAAレコードもアドレスタイプのレコードで、同じネームですべてプロキシされるか、すべてプロキシされないかのどちらかである必要があります。</li>
+	</ol>
+	<p>つまり、「example.com」というネームがついたAレコードとAAAAレコードがいくつかある場合、そのうち1つがプロキシされる場合、すべてのレコードがプロキシされるということです。UIは、「オレンジ色の雲」ボタンを使って追加のオーバーライドレコードを保管するという考えを抽象化するのに役立ちます。これは、クリックされた時、そのネームが持つすべてのA/AAAAレコードまたはCNAMEレコードに適用されるオーバーライドレコードを作成します。</p>
+	<h3 id="apex-cname">ApexのCNAME</h3>
+	<p>通常、Zone ApexにCNAMEを置くことは許可されません。例：</p>
+	<p>example.com CNAME other-domain.com</p>
+	<p>前述の通り、RFC1912に従わず、少なくとも1つ、別のSOAレコードとNSレコードが同じネームを持っているということを意味するため、これは許可されません。Cloudflareは<a href="https://support.cloudflare.com/hc/en-us/articles/200169056-CNAME-Flattening-RFC-compliant-support-for-CNAME-at-the-root" target="_blank">CNAME Flattening</a>を使用することで解決できます。CNAME FlatteningはプライマリDNSプロダクト内で一般的に用いられるテクニックです。権威サーバーにクエリが来たときに、CNAMEレコードの代わりにアドレスレコードを返すことができます。</p>
+	<p>セカンダリDNSオーバーライドUIを介したレコードの編集防止に関する前述の説明とは反対に、ApexのCNAMEはこの規則の例外です。ユーザーは、通常のセカンダリ DNSレコードに加えて、ApexでCNAMEを作成することができますが、RFC1912で定義された同じ規則も適用されます。つまり、ユーザーの決定内容に応じて、ApexレコードのCNAMEは通常のDNSレコードまたはプロキシされたレコードとして扱うことができるということです。ApexレコードのCNAMEのプロキシステータスに関わらず、プライマリDNSサーバーから転送されたその他のA/AAAレコードにオーバーライドします。</p>
+	<h3 id="apex-cname-">Apexレコードでセカンダリ、オーバーライド、CNAMEのマージ</h3>
+	<p>レコード編集時間に、Apexレコードでセカンダリ、オーバーライド、CNAMEのマージをすべて行います。つまり、DNSリクエストがエッジの権威サーバーに送信された時、<a href="https://www.dnsperf.com/" target="_blank">超高速時間</a>でレコードを戻すことができます。このワークフローは、図4で示されています。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image4-6-1.png" class="kg-image"></figure>
+	<p>図4：レコードのマージ処理</p>
+	<p>ゾーンビルダー内でのステップは以下の通りです。</p>
+	<ol>
+		<li>ApexにCNAMEがあるかどうかを確認し、ある場合はApexにある他のA/AAAセカンダリレコードをすべてオーバーライドします。</li>
+		<li>各セカンダリレコードについて、一致するオーバーライドレコードがあるかどうかを確認し、ある場合はオーバーライドレコードのプロキシステータスをそのネームを持つセカンダリレコードすべてに適用します。</li>
+		<li>他のセカンダリレコードをそのままに</li>
+	</ol>
+	<h3 id="-">利用開始</h3>
+	<p>セカンダリDNSオーバーライドは、ゾーンのすべてをプライマリプロバイダーとしてのCloudflareDNSに転送せずに、Cloudflareネットワークを活用したいユーザーにとって最適なオプションです。Cloudflare側における情報の不正な編集を心配することなく、プライマリ側でセキュリティとアクセス制御を管理できます。</p>
+	<p>セカンダリDNSオーバーライドは、現在Enterprise Planで利用できます。ご利用をお考えの場合は、アカウントチームにお知らせください。セカンダリDNSオーバーライドに関する追加の資料は、当社の<a href="https://support.cloudflare.com/hc/en-us/articles/360042169091-Understanding-Secondary-DNS-Override#:~:text=Secondary%20Override%20allows%20customers%20to,record%20at%20the%20root%20domain." target="_blank">サポート記事</a>をご参照ください。</p>
+</div>

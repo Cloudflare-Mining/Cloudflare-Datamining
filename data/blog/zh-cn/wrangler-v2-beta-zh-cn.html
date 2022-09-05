@@ -1,0 +1,36 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image1-23-2.png" class="kg-image"></figure>
+	<p>开发人员的很多工作都是为了做出各种权衡取舍，例如一致性与可用性，速度与正确性，等等。虽然总是会有某种技术上的权衡要考虑，但我们认为，作为开发人员，有一些是永远不应该需要取舍的。</p>
+	<p>其中一个决定是易于使用的开发环境。不管您的团队是要新增一名开发人员，还是仅仅希望加快开发速度，重要的是，即使是最细微的方面都要为速度和简单性进行优化。</p>
+	<p>正因为如此，我们很高兴能宣布 Cloudflare Workers 开发工具的第二代。这是一个全新的开发人员体验，开箱即用，迅如闪电，甚至能在本地机器上运行 Workers。（简直无敌！）</p>
+	<p>如果你已经熟悉我们的现有工具，我们说的不仅是 wrangler CLI，而是其下一个重大发布：wrangler 2.0。欢迎感受一下这种全新体验。</p>
+	<h3 id="-">没有配置？不是问题</h3>
+	<p>我们已经使上手 Cloudflare Workers 比以往容易多了。您只需要一个 JavaScript 文件就可以运行 Worker 项目了——不需要任何配置。您甚至连名字都不用决定。</p>
+	<p>在运行 <code>wrangler dev "时</code>您的代码就会自动捆绑并配置到一个开发环境中。然后，您就可以使用一个本地主机代理向开发环境发送 HTTP 请求。如下就是实际运行的情况：</p>
+	<!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 64.31670281995662%;"><iframe src="https://iframe.videodelivery.net/765a39a1dba51748080bbe98e4205119?preload=true" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
+	<!--kg-card-end: html-->
+	<h3 id="--1">实时调试，就是如此简单。</h3>
+	<p>调试 Worker 方面，现在有了全新设计的体验。使用一个简单的命令即可访问一个远程调试器，也就是在 Chrome 点击“Inspect” 时所使用的调试器，它提供日志、异常和 HTTP 请求的交互式视图。您的 Worker 感觉上是在本地运行，但实际上是在 Cloudflare 网络上运行。</p>
+	<!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 64.31670281995662%;"><iframe src="https://iframe.videodelivery.net/ac6691614c4515cb3ee82048a46de96f?preload=true" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
+	<!--kg-card-end: html-->
+	<p>调试器如果能“有效工作”并自动检测您的变化，对于刚开始尝试编程的您<em>非常</em>有用。我们还做了一些改良，以支持对 Workers 平台的新功能进行调试：</p>
+	<ul>
+		<li>快捷键绑定，用于快速切换功能或打开窗口。</li>
+		<li>支持“--public ”，以自动服务您的静态资源。</li>
+		<li>更快、更可靠的文件监听。</li>
+	</ul>
+	<p>要开始调试会话，只需运行：“wrangler dev ”，然后点击 “D” 绑定快捷键。</p>
+	<h3 id="--2">本地模式？随时切换</h3>
+	<p>新调试体验的另一个方面是能够切换到“本地模式”，即在您的本地机器上运行 Worker。实际上，您可以通过一个绑定快捷键来随时切换“网络”和“本地”模式。</p>
+	<!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 64.31670281995662%;"><iframe src="https://iframe.videodelivery.net/9d1f091813399737dfeadaaaa01d26be?preload=true" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
+	<!--kg-card-end: html-->
+	<p>其中原理是什么？我们最近宣布，<a href="https://github.com/cloudflare/miniflare" target="_blank">Miniflare</a>（由 <a href="https://twitter.com/_mrbbot" target="_blank">Brendan Coll</a> 创建)，一个在 Node.js 中模拟 Workers 的项目，已经加入了 Cloudflare 组织。 Miniflare 非常适用于在没有互联网连接的情况下调试 Workers。我们已经将其直接集成到本地开发环境中，让您能够同时享受网络和本地主机的好处。</p>
+	<h3 id="--3">让我们知道您的想法。</h3>
+	<p>无服务器计算应该简单易用。我们对 Workers 的这些开发体验改良感到兴奋不已，而且我们还有<em>很多</em>计划要做的事情。</p>
+	<p>虽然我们还在开发 wrangler 2.0，但您可以通过运行 “npm install <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="eb9c998a858c878e99ab898e9f8a">[email&nbsp;protected]</a>” 来尝试测试版，或访问<a href="https://github.com/cloudflare/wrangler2" target="_blank">代码库</a>来查看我们正在做的事情。如果您已经在使用 wrangler 来部署现有应用程序，我们推荐继续使用 wrangler 1.0，直至 2.0 版正式发布。我们将继续开发和维护 wrangler 1.0，直至开发完成 2.0 的向后兼容性。</p>
+	<p>如果您正在启动一个项目或想尝试新体验，欢迎向我们提供反馈！告诉我们有何不足之处，或者您希望在 wrangler 2.0 中包含的功能。您可以在代码库中创建<a href="https://github.com/cloudflare/wrangler2" target="_blank">功能请求</a>，或发起讨论（我们将在 2.0 测试结束后将其合并到现有的 wrangler 代码库中）。</p>
+	<p>感谢所有开发人员，我们期待看到你们创建的一切东西！</p>
+</div>

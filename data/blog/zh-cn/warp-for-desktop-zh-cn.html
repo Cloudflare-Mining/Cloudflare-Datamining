@@ -1,0 +1,59 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/BDES-1101_Gateway-Client-App-Blog_2@3x-2.png" class="kg-image"></figure>
+	<p>Cloudflare 于十年前诞生，以确保 Web 资产免受攻击并加快访问者的体验为己任。Cloudflare 客户将他们拥有的互联网资产放到我们的网络上。访问者访问这些站点和应用程序能享受到更畅快的体验，但若访问 Cloudflare 网络外的互联网资产，速度并不是同样迅捷的。</p>
+	<p>过去几年，我们开始打造各种产品，以帮助所有人（不仅是访问我们网络上站点的访问者）享受更畅快、更安全的互联网体验。我们从访问任何网站的第一步着手，即 DNS 查询，发布了世界上最快的公共 DNS 解析器 1.1.1.1。任何互联网用户都可加快连接任何网站的速度，只需更改所用的解析器便可。</p>
+	<p>在为用户提高互联网速度的同时，我们还致力于加强其私密性。我们的 1.1.1.1 能够为最后一英里连接提供加速，也就是从用户到我们的边缘网络或互联网上其他目的地的连接。与其他提供商不同，我们并没有将其打造成销售广告的工具。</p>
+	<p>去年我们又向前迈进一步，推出了 Cloudflare WARP，使设备的整个连接变得更加快速、更加安全。用户只需点击一下按钮，就能使用 WireGuard 隧道通过附近的 Cloudflare 数据中心将其移动设备与整个互联网相连。流量以更快的速度流向 Cloudflare 后方的站点，用户对互联网其余部分的体验也变得更加安全和私密。</p>
+	<p>我们在今年早些时候以 Beta 版形式将这种体验引入到桌面端，更是在今天宣布 Cloudflare WARP 如今正式向所有桌面端用户提供。无论以何种方式连接，您都能更加安全、私密地访问整个互联网。</p>
+	<h3 id="-warp-">让全球的安全团队获得 WARP 的力量</h3>
+	<p>WARP 给世界各地的个人用户带来更加畅快、私密的互联网体验。但是，随着企业大规模采用远程工作模式，安全团队难以将其在办公室启用的安全控制扩展到远程工作者。今天，我们将用户对 WARP 的所有期待送到了安全团队身边。这次发布还在我们 <a href="https://blog.cloudflare.com/gateway-swg/">Cloudflare Gateway 产品</a>中开启了新的功能。</p>
+	<p>客户可以使用 Cloudflare WARP 应用程序，将公司桌面端电脑连接到 Cloudflare Gateway 以进行高级 Web 过滤。Gateway 功能凭借的是底层 WARP 技术的相同性能和安全优势，现在还给连接带来了安全过滤功能。</p>
+	<p>因此，企业能够轻松地保护其用户，无论他们身在何处，也不需要将网络流量回传到集中式安全边界。组织可以对 WARP 客户端应用程序进行配置，从而通过附近的 Cloudflare 数据中心安全、私密地发送远程用户的流量。网关管理员将策略应用于通过客户端代理的出站互联网流量，使组织可以保护用户免受互联网威胁，并防止公司数据从组织泄露出去。</p>
+	<h3 id="-">人人享有隐私、安全和速度</h3>
+	<p>WARP 建立在这样一种哲学之上：即使您不懂“VPN”所<a href="https://www.cloudflare.com/learning/access-management/what-is-a-vpn/" target="_blank">代表</a>的意义，也应该能够轻松获得 VPN 提供的保护。遗憾的是，我们这些非常熟悉传统企业 VPN 的人有着更高的要求。我们的 WireGuard 实施应运而生，它称为 <a href="https://blog.cloudflare.com/boringtun-userspace-wireguard-rust/">BoringTun</a>。</p>
+	<p>WARP 应用程序使用 BoringTun 来加密来自您设备的所有流量，并将其直接发送到 Cloudflare 的边缘，无人能在这中间窥探您的活动。如果您访问的站点已经是 Cloudflare 客户，则内容将立即发送到您的设备。借助 WARP +，我们使用 Argo Smart Routing 来构建穿过我们全球数据中心网络的最短路径，抵达您要通信的任何目标对象。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image4-17.png" class="kg-image"></figure>
+	<p>结合 <a href="http://one.one.one.one/" target="_blank">1.1.1.1</a>（<a href="https://www.dnsperf.com/#!dns-resolvers" target="_blank">全球速度最快的</a>公共 DNS 解析器）的强大功能，WARP 可确保流量安全、私密且快速。由于您在互联网上的活动基本上都是从 DNS 请求开始，因此在所有设备上选择最快的 DNS 服务器几乎能给您的所有上网活动带来速度提升。不过，速度并不是一切。虽然您的应用程序和网站之间的连接可能已加密，但对该网站的 DNS 查找却未经过加密。因此，任何人（乃至您的互联网服务提供商）都有可能窥探（并出售）您在互联网上所访问的位置的信息。</p>
+	<p>Cloudflare 绝不会窥探或出售您的个人数据。如果您对我们的 1.1.1.1 解析器使用 DNS-over-HTTPS 或 DNS-over-TLS，那么 DNS 查找请求将通过安全通道发送。也就是说，如果您使用 1.1.1.1 解析器，那么除了我们的隐私保障外，还能确保窥探着无法看到您的 DNS 请求。如果觉得我们的话不可信，可以看看今年早些时候发布的<a href="https://blog.cloudflare.com/announcing-the-results-of-the-1-1-1-1-public-dns-resolver-privacy-examination/">第三方隐私审查结果</a>；我们会继续这样做，也希望其他人同样如此。</p>
+	<p>对于 Gateway 客户，我们致力于确保隐私和信任，绝不会将您的个人数据出售给第三方。虽然您的管理员可以审查组织的流量，但也请创建有关数据保留多久时间的规则，或制定有关数据可流向何处的具体策略。Cloudflare 绝不会出售您的个人数据，也不会使用您的个人数据向您定向投放广告。组织数据的隐私和控制掌握在您自己手中。</p>
+	<h3 id="-cloudflare-gateway">现已整合 Cloudflare Gateway</h3>
+	<p>传统上，公司使用 VPN 解决方案来控制对公司资源的访问，并利用过滤规则来确保设备安全。随着越来越多流量流过内部服务器，组织需要管理和扩展 VPN 服务器，这些连接很快成为了故障点（和入侵途径）。它们也不被最终用户喜爱。VPN 服务器通常无力应对高峰时段，客户端不仅体积庞大，也很少考虑性能。一旦恶意人员破门而入，他们就能访问一切信息。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/10/image3-21.png" class="kg-image">
+		<figcaption>传统 VPN 架构‌‌</figcaption>
+	</figure>
+	<p><a href="https://blog.cloudflare.com/introducing-cloudflare-for-teams/">2020 年 1 月</a>，我们发布了 Cloudflare for Teams 以取代这一模型。Cloudflare for Teams 围绕两个核心产品而构建。<a href="https://www.cloudflare.com/teams/access/" target="_blank">Cloudflare Access</a> 是一款零信任解决方案，让组织能够将内部（现在也包含 <a href="https://blog.cloudflare.com/cloudflare-access-for-saas/">SaaS</a>）应用程序连接到 Cloudflare 的边缘，并通过制定安全规则来实现安全访问。VPN 不再是组织的唯一入口点，用户可以随时随地工作，并且访问所需的资源。<a href="https://www.cloudflare.com/teams/gateway/" target="_blank">Cloudflare Gateway</a> 的首要功能着重于保护用户免受互联网威胁，其借助了面向企业打造的 DNS 解析器和策略引擎。</p>
+	<p>WARP 客户端功能强大，如今已被全球数百万用户使用，它将为安全团队带来令人难以置信的新用例：</p>
+	<ul>
+		<li>加密所有用户流量：不管您的用户身在何处，来自其设备的所有流量都将使用 WARP 加密，并且秘密地发送到最近的 WARP 端点。这样可确保您的用户和组织免受任何潜在人员的窥探。如果您仍在 Access 基础上使用传统 VPN 来加密用户流量，可以将它丢弃了。</li>
+		<li>WARP+：Cloudflare 为想要更多速度优势的客户提供高级 WARP+ 服务。此服务现已打包到 Teams 部署中。任何 Teams 客户只需部署 Teams 客户端应用程序，便可自动获得 WARP+ 的速度优势。</li>
+		<li>面向远程工作者的 Gateway：直到今天为止，Gateway 都要求您跟踪所有用户的 IP 地址，并制定每个位置的策略。当用户将设备移到新位置时，这很难实施策略或提供恶意软件防护。安装了相应客户端后，可以在任何地方实施这些策略。</li>
+		<li>L7 防火墙和基于用户的策略：借助今天推出的 <a href="https://blog.cloudflare.com/gateway-swg/">Cloudflare Gateway SWG 和安全 DNS 产品</a>，您的组织能够对 Teams 帐户实施设备身份验证，从而构建特定于用户的策略，并强制所有流量通过防火墙传输。</li>
+		<li>设备和用户审计：除了用户和设备策略外，管理员还将能够审计具体的用户和设备流量。通过与 logpush 结合使用，组织能够在发生违规或开展审计时进行详细的追踪。</li>
+	</ul>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image5-10.png" class="kg-image"></figure>
+	<h3 id="-warp-cloudflare-for-teams">注册组织以搭配使用 WARP 客户端和 Cloudflare for Teams</h3>
+	<p>我们知道在组织中部署额外的软件有多困难，因此我们一直在努力简化部署。若要开始使用，只需导航到我们的<a href="https://dash.cloudflare.com/sign-up/teams" target="_blank">注册页面</a>并创建一个帐户。如果您已拥有有效的帐户，可以跳过这一步，径直前往 <a href="https://dash.teams.cloudflare.com/onboarding" target="_blank">Cloudflare for Teams 仪表板</a>，您将直接进入我们的入门培训流程。在注册并配置团队后，请<a href="https://developers.cloudflare.com/gateway/getting-started-new/onboarding-gateway/" target="_blank">设置 Gateway 策略</a>，然后从以下三种安装方式中选择一种来安装客户端，从而实施该策略：</p>
+	<h3 id="--1">自助安装‌‌</h3>
+	<p>如果您是不设 IT 部门的小型组织，可以让用户自己下载客户端并输入必要的设置，即可以最快的方式完成部署。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/10/image1-35.png" class="kg-image">
+		<figcaption>手动加入组织</figcaption>
+	</figure>
+	<h3 id="--2">脚本化安装‌‌</h3>
+	<p>我们的桌面安装程序支持快速编写安装脚本的功能。对于 Windows，这像执行以下命令行一样简单：</p>
+	<pre><code>Cloudflare_WARP_Release-x64.msi /quiet ORGANIZATION="&lt;insert your org&gt;" SERVICE_MODE="warp" ENABLE="true" GATEWAY_UNIQUE_ID="&lt;insert your gateway DoH domain&gt;" SUPPORT_URL=”&lt;mailto or http of your support person&gt;"</code></pre>
+	<h3 id="--3">受管设备‌‌</h3>
+	<p>使用 Intune 或 JAMF 等 MDM 工具的组织可以通过一个操作将 WARP 部署到整个设备群。就像预配置所有其他设备设置一样，您可以设置 WARP，然后最终用户只需在 Cloudflare WARP 客户端部署完毕后点击客户端，利用您团队的身份提供商进行登录便可。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/10/image2-21.png" class="kg-image">
+		<figcaption>Microsoft Intune 配置</figcaption>
+	</figure>
+	<p>如需有关所有平台的安装选项、必填字段和分步骤说明的完整列表，请参阅 <a href="https://developers.cloudflare.com/warpclient/" target="_blank">WARP 客户端文档</a>。</p>
+	<h3 id="--4">敬请期待</h3>
+	<p>我们还有许多计划有待完成，希望给 WARP 消费者用户和 Cloudflare for Teams 客户带来更多产品。这里先透露一些我们最为兴奋（并允许分享）的消息：</p>
+	<ul>
+		<li>与 CrowdStrike 和 VMware Carbon Black（现已提供 Tanium）开展新的合作伙伴集成，让您能够制定更全面的 Cloudflare Access 策略，在允许用户连接应用程序之前检查设备运行状况。</li>
+		<li>Split Tunnel 支持，您或组织可以指定要从 WARP 排除的应用程序、站点或 IP 地址。这样，游戏、流媒体服务或您选择的任何应用程序便可在连接之外运行。</li>
+	</ul>
+	<h3 id="--5">立即下载</h3>
+	<p>我们非常高兴，终于将这些应用程序分享给我们的客户。特别感谢我们的 Cloudflare MVP、10 万多名桌面端 Beta 用户，以及移动平台上数百万的现有用户，是他们促使 WARP 成长到今天的地步。</p>
+	<p>您可以立即从以下地址下载应用程序：<a href="https://one.one.one.one/" target="_blank">https://one.one.one.one</a>‌‌</p>
+</div>

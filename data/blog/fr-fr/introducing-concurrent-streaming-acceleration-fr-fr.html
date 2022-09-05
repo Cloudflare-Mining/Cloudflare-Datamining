@@ -1,0 +1,66 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/05/Concurrent-Streaming.png" class="kg-image"></figure>
+	<p>Nous sommes ravis de présenter aujourd’hui Concurrent Streaming Acceleration, une nouvelle technique permettant de réduire le temps de latence de bout en bout de la vidéo en direct sur le Web lors de l’utilisation de <a href="https://www.cloudflare.com/products/stream-delivery/" target="_blank">Stream Delivery</a>.</p>
+	<p>Explorons la latence de la diffusion en direct, pourquoi elle est importante et ce qui a été fait pour l’améliorer.</p>
+	<h3 id="comment-en-direct-est-vid-o-en-direct-"><strong>Comment « en direct » est vidéo « en direct » ?</strong></h3>
+	<p>La diffusion en direct constitue une part croissante de la vidéo sur le Web. Qu'il s'agisse d'une émission télévisée, d'une émission de jeu en direct ou de cours en ligne, les utilisateurs s'attendent à ce que la vidéo arrive rapidement et sans accroc. Et la promesse du « direct » est que l'utilisateur voit les événements au fur et à mesure qu'ils se produisent. Mais à quelle distance du « temps réel » se trouve la vidéo Internet « en direct » ?</p>
+	<p>Diffuser de la vidéo en direct sur Internet est toujours <em>difficile </em>et ajoute beaucoup de temps de latence :</p>
+	<ol>
+		<li>La source de contenu enregistre la vidéo et l'envoie à un serveur de codage ;</li>
+		<li>Le serveur d’origine transforme cette vidéo en un format tel que DASH, HLS ou CMAF pouvant être transmis efficacement à des millions de périphériques ;</li>
+		<li>On utilise généralement un CDN pour diffuser de la vidéo codée dans le monde entier</li>
+		<li>Les lecteurs des clients décodent la vidéo et l’affichent à l'écran</li>
+	</ol>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/Content-Processing.jpg" class="kg-image"></figure>
+	<p>Et tout cela est soumis à une contrainte de temps. Tout le processus doit se dérouler en quelques secondes, sinon la vidéo sera de mauvaise qualité. Nous appelons le délai total entre le moment où la vidéo a été tournée et le moment où elle peut être visionnée sur le périphérique d'un utilisateur final, « latence de bout en bout » (considérez-le comme le temps écoulé entre l'objectif de l'appareil photo et l'écran de votre téléphone).</p>
+	<h3 id="livraison-segment-e-traditionnelle"><strong>Livraison segmentée traditionnelle</strong></h3>
+	<p>Les formats vidéo tels que DASH, HLS et CMAF fonctionnent en divisant la vidéo en petits fichiers, appelés « segments ». Une durée de segment typique est de 6 secondes.</p>
+	<p>Si un lecteur client doit attendre que tout un segment de 6 secondes soit codé, envoyé via un CDN, puis décodé, l'attente peut être longue ! Cela prend encore plus de temps si vous voulez que le client crée un tampon de segments pour se protéger contre les interruptions de livraison. Un tampon de lecteur typique pour HLS est constitué de 3 segments :</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/10/Buffering.png" class="kg-image">
+		<figcaption><em><em>Les clients peuvent avoir à mettre en tampon trois fragments de 6 secondes, introduisant au moins 18 secondes de latence‌‌</em></em></figcaption>
+	</figure>
+	<p>Lorsque l’on considère les délais d’encodage, il est facile de comprendre pourquoi la latence de la diffusion en direct sur Internet est généralement d’environ 20 à 30 secondes. Nous pouvons faire mieux.</p>
+	<h3 id="latence-r-duite-avec-codage-de-transfert-en-fragments"><strong>Latence réduite avec codage de transfert en fragments</strong></h3>
+	<p>Permettre aux lecteurs clients de commencer à jouer les fragments tout en téléchargeant, ou même pendant qu’ils sont en cours de création, est un moyen naturel de résoudre ce problème. Rendre cela possible nécessite une petite coopération intelligente pour coder et livrer les fichiers d'une manière particulière, appelée « codage en fragment ». Cela implique de diviser des segments en morceaux plus petits, de la taille de bouchées ou « fragments ». Le codage par fragments peut généralement ramener la latence réelle à 5 ou 10 secondes.</p>
+	<p>Sujet à confusion, le mot « fragment » est surchargé car il peut renvoyer à deux choses différentes :</p>
+	<ol>
+		<li>Les fragments CMAF ou HLS, qui sont de petits morceaux d'un segment (généralement des 1) alignés sur des images clés</li>
+		<li>Les fragments HTTP, qui sont juste un moyen de livrer n'importe quel fichier sur le web</li>
+	</ol>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/10/Chunked-Encoding.png" class="kg-image">
+		<figcaption><em><em>L'encodage par fragment divise les segments en fragments plus courts</em></em></figcaption>
+	</figure>
+	<p>Les fragments HTTP sont importants car les clients Web ont une capacité limitée à traiter des flux de données. La plupart des clients ne peuvent utiliser les données qu’une fois qu’ils ont reçu la réponse HTTP complète ou au moins un fragment HTTP complet. En utilisant l'encodage de transfert HTTP par fragment, nous permettons aux lecteurs de vidéos de commencer à analyser et décoder la vidéo plus rapidement.</p>
+	<p>Les fragments CMAF sont importants pour que les décodeurs puissent réellement <em>lire </em>les bits contenus dans les fragments HTTP. Sans coder soigneusement la vidéo, les décodeurs auraient des bits aléatoires d’un fichier vidéo qui ne peut pas être lu.</p>
+	<h3 id="les-cdn-peuvent-introduire-une-mise-en-m-moire-tampon-suppl-mentaire"><strong>Les CDN peuvent introduire une mise en mémoire tampon supplémentaire</strong></h3>
+	<p>Le codage par fragments avec HLS et CMAF est de plus en plus utilisé sur le Web. Ce qui rend cette technique remarquable, c’est en partie le fait que le codage par fragments HTTP est largement pris en charge par les CDN. Il fait partie de la spécification HTTP depuis 20 ans.</p>
+	<p>La prise en charge de CDN est essentielle car elle permet à la vidéo en direct à faible latence d’augmenter et d’atteindre un public de milliers ou de millions de téléspectateurs au même moment, ce qui est actuellement très difficile à faire avec d’autres protocoles non HTTP.</p>
+	<p>Malheureusement, même si vous activez la fragmentation pour optimiser la livraison, votre CDN peut fonctionner contre vous en mettant en mémoire tampon le segment entier. Pour comprendre pourquoi prendre en considération ce qui se passe lorsque de nombreuses personnes demandent un segment en direct au même moment :</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/Bulk-Request.jpg" class="kg-image"></figure>
+	<p>Si le fichier est déjà en cache, super ! Les CDN font un excellent travail en fournissant des fichiers en cache à un vaste public. Mais que se passe-t-il lorsque le segment n’est pas encore dans le cache ? N'oubliez pas : il s'agit du modèle de demande typique pour la vidéo en direct !</p>
+	<p>En règle générale, les CDN sont en mesure de « diffuser en continu sur les requêtes de la mémoire cache non satisfaite » à partir de la source. Cela ressemble à ceci :</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/Stream-On-Cache-Misse.jpg" class="kg-image"></figure>
+	<p>Mais encore une fois, que se passe-t-il lorsque plusieurs personnes demandent le fichier à la fois ? Les CDN doivent généralement mettre l'intégralité du fichier en cache avant de servir des téléspectateurs supplémentaires :</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/10/One-at-a-Time.jpg" class="kg-image">
+		<figcaption><em><em>Un seul téléspectateur peut diffuser de la vidéo, tandis que d'autres clients attendent que le segment soit mis en mémoire tampon sur le CDN</em></em></figcaption>
+	</figure>
+	<p>Cela est compréhensible. Les centres de données CDN sont constitués de nombreux serveurs. Pour éviter de surcharger les sources, ces serveurs se coordonnent généralement entre eux à l'aide d'un « verrou de cache » (mutex) qui permet à un seul serveur de demander un fichier particulier à l'origine à un moment donné. L’un des effets secondaires de cette opération est que, même si un fichier est mis en cache, il ne peut être servi à aucun autre utilisateur que le premier qui l’a demandé. Malheureusement, ce verrou de cache va également à l'encontre de l'utilisation de l'encodage par fragments !</p>
+	<p>Pour récapituler jusqu'à présent :</p>
+	<ul>
+		<li>Le codage par fragments divise les segments vidéo en morceaux plus petits</li>
+		<li>Cela peut réduire la latence de bout en bout en permettant aux lecteurs d'extraire et de décoder des fragments, même pendant la production de segments sur le serveur source</li>
+		<li>Certains CDN neutralisent les avantages de l'encodage par fragments en mettant en mémoire tampon des fichiers entiers à l'intérieur du CDN avant qu'ils ne puissent être livrés aux clients</li>
+	</ul>
+	<h3 id="la-solution-de-cloudflare-acc-l-ration-de-la-diffusion-simultan-e"><strong>La solution de Cloudflare : Accélération de la diffusion simultanée</strong></h3>
+	<p>Comme vous l'avez peut-être deviné, nous pensons pouvoir faire mieux. En termes simples, nous avons désormais la possibilité de livrer des fichiers n’étant pas mis en cache à plusieurs clients simultanément pendant que nous extrayons le fichier du serveur source.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/Simultaneously.jpg" class="kg-image"></figure>
+	<p>Cela ressemble à un simple changement mais il faut être assez subtile pour le faire en toute sécurité. En toute discrétion, nous avons profondément modifié notre infrastructure de mise en cache pour supprimer le verrou de cache et permettre à plusieurs clients de pouvoir lire en toute sécurité à partir d’un seul fichier pendant son écriture.</p>
+	<p>La bonne nouvelle est que l’ensemble de Cloudflare fonctionne maintenant de cette façon ! Il n’est pas nécessaire de s’inscrire, ni même d’effectuer un changement de configuration pour profiter des avantages.</p>
+	<p>Nous avons lancé cette fonctionnalité il y a quelques mois et nous sommes vraiment satisfaits des résultats obtenus jusqu'à présent. Nous mesurons le succès en fonction du « temps d’attente du verrouillage du cache », c’est-à-dire combien de temps une demande doit attendre d’autres demandes, une composante directe de Time To First Byte. &nbsp;Un client OTT a vu cette métrique chuter de 1,5 seconde sur P99 à près de 0, comme prévu :</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/Speed-Improvement.png" class="kg-image"></figure>
+	<p>Cela se traduit directement par une amélioration de 1,5 seconde de la latence de bout en bout. La vidéo en direct encore plus en direct !</p>
+	<h3 id="conclusion"><strong>Conclusion</strong></h3>
+	<p>De nouvelles techniques telles que l'encodage par fragment ont révolutionné la diffusion en direct, permettant aux éditeurs de diffuser en direct et à grande échelle des vidéos avec une faible latence. L'accélération de diffusion simultanée vous permet de débrider la puissance de cette technique sur votre CDN, ce qui vous permet d'économiser de précieuses secondes de latence de bout en bout.</p>
+	<p>Si vous souhaitez utiliser Cloudflare pour la diffusion de vidéos en direct, <a href="https://www.cloudflare.com/plans/enterprise/contact/" target="_blank">contactez notre équipe commerciale</a>.</p>
+	<p>Et si vous souhaitez travailler sur des projets de ce type et nous aider à améliorer la diffusion de vidéos en direct sur Internet, rejoignez notre <a href="https://www.cloudflare.com/careers/departments/engineering/" target="_blank">équipe ingénierie</a> !</p>
+</div>

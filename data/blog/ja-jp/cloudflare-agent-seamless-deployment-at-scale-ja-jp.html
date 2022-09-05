@@ -1,0 +1,188 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image1-51.png" class="kg-image" alt="Cloudflare Agent — Seamless Deployment at Scale"></figure>
+	<p>1年前、当社が<a href="https://blog.cloudflare.com/ja-jp/warp-for-desktop-ja-jp/">デスクトップ向けWARP</a>を発売し、誰でもインターネットへの高速でプライベートなオンランプが使用できるようになりました。ビジネスのお客様の場合、ITおよびセキュリティ管理者が同じエージェントを使用して、組織内のデバイスをCloudflare for Teamsに登録することも可能です。いったん登録が完了すると、チームメンバーはインターネットへの加速されたオンランプを使用することができるようになります。また、Cloudflareにより、ネットワークファイアウォール機能からリモートブラウザ分離まで、包括的なセキュリティフィルタリングを使用することもできます。</p>
+	<p>昨年の発売当初、当社はお客様の組織の保護を迅速に行うために、シンプルな設定オプションのセットで可能な限り幅広いデプロイメントメカニズムに対応しました。また、あらゆる場所からのHTTPとDNSのフィルタリングを使用して、ユーザーとデータの安全を維持できるよう、組織を支援することに重点を置きました。まず、Mac、Windows、iOS、Androidのサポートを開始しました。</p>
+	<p>この発表以来、何千もの組織がチームメンバーやエンドポイントをセキュリティ保護するためにエージェントをデプロイしています。しかし、製品展開の拡大に喜んでいるお客様がいる一方で、より多くのOSをサポートし、設定をより細かく制御する必要があるとの声も聞かれます。</p>
+	<p>今日、当社のZero Trustエージェントが、すべての主要なプラットフォームで同等の機能を持つようになったことを発表できることを嬉しく思います。さらに、お客様がトラフィックのルーティング方法を決定するための新しいオプションを制御できるようになったことで、管理者が大規模なデプロイメントを指揮することができます。本日のリリースにより、ITチームが使用している従来のVPNやネットワークセキュリティツールを完全に置き換える準備が整いました。</p>
+	<h3 id="-"><strong>規模に合わせて構築する</strong></h3>
+	<p>Zero Trustエージェントの最も重要な要素は、プラットフォーム間の信頼性と接続の信頼性の2つです。この規模のソフトウェアを出荷したことがある人なら、すべての主要なオペレーティングシステムでクライアントを維持することは非常に困難な（そしてエラーが起こりやすい）作業であることをご存知でしょう。</p>
+	<p>プラットフォームの落とし穴を避けるため、エージェントのコアをRustで記述しました。これにより、コードの95%をすべてのデバイスで共有できるようになりました。社内では、この共通のコードを共有デーモン（Windowsメンバーの場合はサービス）と呼んでいます。共通のRustベースの実装により、エンジニアは複数のプラットフォーム間でコードを複製する時間を減らすことができ、また品質改善のほとんどが同時にすべての人に影響を与えることが保証されます。</p>
+	<p>接続フロントの信頼性については、従来のVPNを利用した経験があれば、エラーが起こりやすく遅いことがお分かりいただけると思います。当社のネットワーク基盤は、<a href="https://blog.cloudflare.com/boringtun-userspace-wireguard-rust/">BoringTun</a> という当社独自のWireGuardの実装で構築されています。従来の遅いVPNとは異なり、当社はUDPで動作し、今日のユーザーが接続するインターネットインフラストラクチャの幅広いバリエーション（飛行機内、コーヒーショップ、都市部の混雑したネットワークなど）のために最適化されています。BoringTunは、数百万台のコンシューマーデバイスで毎年実証されており、トラフィックが暗号化され、決められたポリシーに対応できるようにします。</p>
+	<p>信頼性の規模により、現在、当社のエージェントを使用して、以下のオペレーションシステムを完全にサポートするようになりました。</p>
+	<ul>
+		<li>Windows 8.1、Windows 10、Windows 11</li>
+		<li>macOS Mojave、Catalina、Big Sur、Monterey</li>
+		<li>M1のサポートを含む</li>
+		<li>ChromeBook（2019年以降製造分）<strong>（新規）</strong></li>
+		<li>Linux CentOS 8、RHEL、Ubuntu、Debian<strong>（新規）</strong></li>
+		<li>iOS</li>
+		<li>Android</li>
+	</ul>
+	<h3 id="--1"><strong>お客様の展開モデルに合わせて構築する</strong></h3>
+	<p>エージェントの導入当初は、Cloudflareネットワークへのすべてのデバイストラフィックを暗号化し、管理者がHTTPおよびDNS<a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering" target="_blank">ポリシー</a>をそのトラフィック周りに構築できるようにすることに重点を置いていました。また、お客様がZero Trustモデルへの移行を進めていることも把握しています。時には、その変化は一歩ずつ行う必要があります。</p>
+	<p>当社はその時間を使って、お客様が従来のソリューションを置き換えるだけでなく、よりスムーズに移行できるように、ソフトウェアを従来のソリューションと一緒に実行できる機能を構築してきました。</p>
+	<ul>
+		<li><strong>ドメインベースのスプリットトンネリング</strong> - すべてのトラフィックに対して、セキュリティレイヤーを通した送信をする必要はありません。IPベースの除外はすでに対応していますが、特定のドメインのIPアドレスCIDRを調べさせる代わりに、<a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/exclude-traffic/split-tunnels#add-a-domain" target="_blank">ドメイン名（たとえば、*.example.comまたはexample.com）でスプリットトンネルルール</a>を作成しやすくなりました。</li>
+		<li><strong>インクルード専用のスプリットトンネル</strong> - 当社のエージェントは当初、すべてのデバイストラフィックを暗号化して当社のネットワークに送信することを前提に構築されました。これにより、トラフィックが盗聴されないことを保証し、管理者が可視性を維持できるようにしました。しかし、お客様は、一部のトラフィックのみをCloudflareに送信し、残りをデフォルトで除外したい場合があります。<a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/exclude-traffic" target="_blank"><em>インクルード専用</em>のスプリットトンネリング</a>はまさにそれを実現し、当社のネットワークへのルートを個別に選択することが可能になりました。<a href="https://blog.cloudflare.com/build-your-own-private-network-on-cloudflare/">Cloudflareトンネルリソース</a>に接続するために迅速な従来VPNの代替が必要な場合、または最も機密性の高いインフラストラクチャへのトラフィックがHTTP検査の対象となることを確認したいだけの場合は、<em>インクルード専用</em>のスピリットトンネルルールを使用してください。</li>
+		<li><strong>改善されたプライベートドメイン</strong> - CloudflareのZero Trust製品を既存のサードパーティ製VPNと同時に稼働させることで移行を開始する組織もあります。従来、当社のエージェントは、管理者にフォールバックドメイン名解決を設定させ、特定のユースケースのDNSクエリをVPN経由で送信させることで、この設定に対応していました。しかし、これはグローバルなものであり、クエリが送信される場所を制御することはできませんでした。現在、プライベートドメインに応答すべき<a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/exclude-traffic/local-domains" target="_blank">DNSサーバーを指定する</a>機能が追加されています。また、<a href="https://blog.cloudflare.com/zero-trust-private-networking-rules/">今週の初めに説明したように</a>、新しいZero Trustネットワーキング機能と共に使用することが可能です。</li>
+		<li><strong>ポスチャー専用モード（近日公開）</strong> - デバイスポスチャーや機能の重要性について<a href="https://blog.cloudflare.com/6-new-ways-to-validate-device-posture/">以前説明</a>しました。2022年の第1四半期に、エージェントをポスチャー専用モードで実行できる機能を送り出す予定です。つまり、クライアントはDNSリクエストを処理したり、その他のトラフィックを当社に送信したりすることはなくなります。これにより、お客様は、ユーザーのHTTP検査をオンにすることなく、Cloudflare Accessポスチャーポリシーを実装することができます。</li>
+	</ul>
+	<h3 id="--2"><strong>シームレスな設定を実現する</strong></h3>
+	<p>エージェントを数万人のユーザーにデプロイすることは、物流上のハードルが高くなります。当社は、お客様のチーム内でシームレスに大規模展開できるようにCloudflare for Teamsエージェントを構築しました。本日の発表では、APIとTerraformベースの制御により、組織全体にエージェントを展開するためのより多くのオプションを提供します。</p>
+	<p>管理業務を自動化することは、一貫性を保つための最良の方法です。Cloudflareでは、HTTPSリクエストとJSONレスポンスに基づく一連のRESTful APIの上にUIを構築しています。デバイス管理の場合、これらの同じAPIは、<a href="https://api.cloudflare.com/" target="_blank">APIドキュメント</a>と、さらに<a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs" target="_blank">Terraformプロバイダー</a>を介してユーザに公開されます。<a href="https://dash.teams.cloudflare.com/" target="_blank">https://dash.teams.cloudflare.com/</a>のWebバージョンで公開されているものはすべて、これらのインターフェースのいずれかを介して利用可能です。</p>
+	<p>自動化を実現する方法の例として、ドメインベースのスプリットトンネリングを見ていきましょう。参考に、<a href="https://api.cloudflare.com/#devices-set-split-tunnel-include-list" target="_blank">APIドキュメント</a>と<a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/split_tunnel" target="_blank">Terraformの同等のもの</a>を次に示します。</p>
+	<p>example.comのドメインベースのインクルードルールを作成するには、次のようにします。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>curl -X PUT "https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/devices/policy/include" \
+     -H "X-Auth-Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="bdc8ced8cffdd8c5dcd0cdd1d893ded2d0">[email&nbsp;protected]</a>" \
+     -H "X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41" \
+     -H "Content-Type: application/json" \
+     --data '[{"host":"*.example","description":"Include all traffic to example.com in the tunnel"}]'
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>それと同じルールをTerraformで作ると次のようになります。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code># Including *.example.com in WARP routes
+resource "cloudflare_split_tunnel" "example_split_tunnel_include" {
+  account_id = "699d98642c564d2e855e9661899b7252"
+  mode       = "include"
+  tunnels {
+    host        = "*.example.com",
+    description = "Include all traffic to example.com in the tunnel"
+  }
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>もう1つの一般的なタスクは、登録されたデバイスのレポートを作成することです。<a href="https://api.cloudflare.com/#devices-list-devices" target="_blank">Device List API</a>を使用して、組織に登録されているすべてのWindowsデバイスを一覧表示する方法を次の例で説明します。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>curl -X GET "https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/devices?type=windows" \
+     --header 'Authorization: Bearer 8M7wS6hCpXVc-DoRnPPY_UCWPgy8aea4Wy6kCe5T' \
+     -H "Content-Type: application/json"
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>そのコマンドを実行すると、次のようなJSONが返されます。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>        {
+            "created": "2021-12-01T17:14:23.847538Z",
+            "device_type": "windows",
+            "gateway_device_id": "215f9adc-52ca-11ec-9ece-f240956bdf5f",
+            "id": "215f9adc-52ca-11ec-9ece-f240956bdf5f",
+            "ip": "150.111.29.1",
+            "key": "0mS9vj2gk0KNcXoi50pwfuL49WT0rLGAcX2gVze3ixA=",
+            "last_seen": "2021-12-01T17:14:30.110663Z",
+            "mac_address": "00:0c:29:6f:11:93",
+            "model": "VMware7,1",
+            "name": "MYVMWin10",
+            "os_version": "10.0.19042",
+            "serial_number": "VMware-56",
+            "updated": "2021-12-01T17:14:30.110663Z",
+            "user": {
+                "email": "<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="740107110634110c15190418115a171b19">[email&nbsp;protected]</a>",
+                "id": "6a8e079d-8a33-4677-b610-a5e361c0c959"
+            },
+            "version": "2021.11.278"
+        },
+        {
+            "created": "2021-11-08T23:59:37.621164Z",
+            "device_type": "windows",
+            "gateway_device_id": "ee02da10-40ef-11ec-bb68-6a56f426bb46",
+            "id": "ee02da10-40ef-11ec-bb68-6a56f426bb46",
+            "ip": "98.247.211.1",
+            "key": "DhUI8nqeVrXL1JFhYbeCFmkeu/XEkkEjVmcZ8UraTDI=",
+            "last_seen": "2021-11-08T23:59:37.621164Z",
+            "model": "Latitude 7400",
+            "name": "CloudBox",
+            "os_version": "10.0.19043",
+            "serial_number": "7CHR3Z2",
+            "updated": "2021-11-23T20:03:12.046067Z",
+            "user": {
+                "email": "<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="91e4e2f4e3a3d1f4e9f0fce1fdf4bff2fefc">[email&nbsp;protected]</a>",
+                "id": "39663a0d-9f7c-4a24-ae7f-f869a8cf07f1"
+            },
+            "version": "2021.11.34"
+        },
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h3 id="--3"><strong>誰でも管理できるように構築する</strong></h3>
+	<p>本日のリリースの一環として、ユーザーと一緒にソフトウェアを展開するために使用できる仕組みとして、<a href="https://blog.cloudflare.com/mdm-partnerships/">MDMプロバイダーとのパートナーシップ</a>についても発表しました。また、MDMをまだ導入していない組織や、見て分かるユーザーインターフェースを好むデプロイメント管理者がいる組織があることも承知しています。</p>
+	<p>今後数週間のうちに、ダッシュボードから直接クライアントの動作を管理する機能をベータ版として公開する予定です。これにより、クライアントの新バージョンをプッシュすることなく、クライアントの設定に即座に変更を加えることができるようになります。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image3-24.png" class="kg-image"></figure>
+	<h3 id="--4"><strong>次は何を？</strong></h3>
+	<p>来年は、デプロイ後のクライアントのサポート性と柔軟性を実際に倍増させる、楽しみな年になります。当社が最も期待している機能のいくつかを紹介します。</p>
+	<ul>
+		<li><strong>ユーザー/グループ別のデバイス設定</strong>：クライアント設定（更新を許可された人、スプリットトンネルルールなど）をユーザー別に指定することができるようになります。</li>
+		<li><strong>ポスチャー専用モード</strong>：Cloudflare Gatewayの準備がまだできていない場合、追加のCloudflare Accessポスチャー制御を実装することができます。</li>
+		<li><strong>Linux配信の追加サポート</strong>：組織の全員を保護することができます。</li>
+		<li><strong>Telemetryと分析</strong>：クライアントやCloudflareのネットワークに流れるトラフィックに関連した、組織内のデバイスのパフォーマンスを確認できます。</li>
+	</ul>
+	<h3 id="--5"><strong>今すぐ接続する</strong></h3>
+	<p>以下に、すべてのクライアント向けのダウンロードを一覧表示します。</p>
+	<!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-0pky {
+			border-color: inherit;
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg">
+		<thead>
+			<tr>
+				<th class="tg-0pky">Windows</th>
+				<th class="tg-0pky"><a href="https://install.appcenter.ms/orgs/cloudflare/apps/1.1.1.1-windows/distribution_groups/beta" target="_blank" rel="noopener noreferrer">ダウンロードベータ版</a></th>
+				<th class="tg-0pky"><a href="https://install.appcenter.ms/orgs/cloudflare/apps/1.1.1.1-windows-1/distribution_groups/release" target="_blank" rel="noopener noreferrer">ダウンロードリリース</a></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0pky">macOS</td>
+				<td class="tg-0pky"><a href="https://install.appcenter.ms/orgs/cloudflare/apps/1.1.1.1-macos/distribution_groups/beta" target="_blank" rel="noopener noreferrer">ダウンロードベータ版</a></td>
+				<td class="tg-0pky"><a href="https://install.appcenter.ms/orgs/cloudflare/apps/1.1.1.1-macos-1/distribution_groups/release" target="_blank" rel="noopener noreferrer">ダウンロードリリース</a></td>
+			</tr>
+			<tr>
+				<td class="tg-0pky">Linux</td>
+				<td class="tg-0pky"><a href="https://pkg.cloudflareclient.com/install" target="_blank" rel="noopener noreferrer">セットアップリポジトリ</a></td>
+				<td class="tg-0pky"><a href="https://pkg.cloudflareclient.com/packages/cloudflare-warp" target="_blank" rel="noopener noreferrer">ダウンロードパッケージ</a></td>
+			</tr>
+			<tr>
+				<td class="tg-0pky">iOS</td>
+				<td class="tg-0pky"></td>
+				<td class="tg-0pky"><a href="https://apps.apple.com/us/app/1-1-1-1-faster-internet/id1423538627" target="_blank" rel="noopener noreferrer">ダウンロードリリース</a></td>
+			</tr>
+			<tr>
+				<td class="tg-0pky">Android/Chrome</td>
+				<td class="tg-0pky"></td>
+				<td class="tg-0pky"><a href="https://play.google.com/store/apps/details?id=com.cloudflare.onedotonedotonedotone" target="_blank" rel="noopener noreferrer">ダウンロードリリース</a></td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: html-->
+</div>

@@ -1,0 +1,18 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://lh4.googleusercontent.com/5Gr3J3wD_NLdfl7WVDi8lQbNkkmeR-G5bpoxEdhygGLMQXMG3PUx3Oxh9NUe5w_JxtldZVMRPGnykqk0Fodx5seH4SC7Br0l_xLAx-LRKwobvRkp_pnnjJWWYqBoC8ny6ePIdYPy" class="kg-image" alt="Developer Spotlight: Chris Coyier, CodePen"></figure>
+	<p><a href="https://twitter.com/chriscoyier" target="_blank">Chris Coyier氏</a>は15年以上にわたりWeb上で構築しています。2007年、Chris氏はフロントエンドおよびフルスタック開発者向けのWebの主要な出版物の1つである<a href="https://css-tricks.com/" target="_blank">CSS-Tricks</a>で、Web開発の世界で成功しました。</p>
+	<p>2012年にChris氏は、<a href="https://codepen.io/" target="_blank">CodePen</a>を共同設立しました。これは、開発者が協力してHTML、CSSおよびJavaScriptで記述されたコード例を共有できるようにするブラウザ上で動作するオンラインコードエディターです。</p>
+	<p>CodePenの性質上、すなわち、ホスティングコードと人気の高い埋め込み機能により、開発者が世界中でCodePenの「pen」機能を共有できることから、どんな種類の最適化でもCodePenのビジネスに大きなインパクトをもたらす可能性があります。CodePenは、これらの最適化の最初のステップとして、コードを実行し、Cloudflareのネットワークにデータを格納する機能にますます依存します。Chris氏が言うように、CodePenは「非常にたくさんのこと」のためにCloudflare Workersを使用しています。</p>
+	<blockquote><em>「外部のCMSからコンテンツを抽出し、利用者のブラウザに到達する前に、Workersを使用してHTMLを操作します。たとえば、元のページを取得してコンテンツを取得し、フルレスポンスのためにそれらをつなぎ合わせます。」</em></blockquote>
+	<p>Workersは、ネイティブのリクエスト/レスポンスクラスを使用して直接レスポンスに対応でき、当社のストリーミングHTMLRewriterエンジンを追加することで、パフォーマンスを損なうことなくHTMLを変更、結合および解析できます。Workersの機能はCloudflareのネットワークにデプロイされるため、CodePenはオリジンサーバーとクライアント間の非常にインテリジェントなミドルウェアを瞬時にデプロイすることができ、いかなる追加インフラストラクチャも立ち上げる必要はありません。</p>
+	<p>Chris Coyier氏のYouTubeチャンネルで人気の動画の中で、CodePenのフロントエンドエンジニアと対談し、CodePenの重要な機能を構築するためのCloudflare Workersの使用方法を説明しています。Chris氏は以下のように話しています。</p>
+	<blockquote><em>「Cloudflare Workersは、常にエッジで実行されるサーバーレス機能のようなもので、信じられないほど高速化します。それだけでなく、周辺ツールが本当に素晴らしいのです。ご自身のWebサイト上で特定のルートで実行することができ、どんなに厄介なCORSのトラブルも排除し、クリーンなAPIの作成に役立ちます。しかも、KVストレージ(エッジも同様)へのアクセス、画像編集と最適化、HTML書き換えなどといった特別なパワーも持ち合わせているのです。」</em></blockquote>
+	<figure class="kg-card kg-embed-card"><iframe width="200" height="113" src="https://www.youtube.com/embed/NGk2HxV0Xkg?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></figure>
+	<p>また、CodePenは、Workers KVを活用してデータを格納します。これにより、結果をキャッシュし、地理的にユーザーの近くにあるCloudflareのネットワーク上でアクセス可能にすることで、膨大な量の反復処理作業を回避できます。</p>
+	<blockquote><em>「WorkersはKV Storeと組み合わせて、価値あるジョブを実行します。たとえば、KV Storeをチェックして、何らかの処理作業が必要かどうか、またはその作業が既に完了しているかどChris氏うかを確認します。作業の必要があればそれを行い、それからKVを更新し、作業が完了してその結果がどこにあるのかを確認します。」</em></blockquote>
+	<p>彼のYouTubeチャンネルのフォローアップ動画で、はWorkers KVに集中して取り掛かかり、ストレージを備えたシンプルなサーバーレス機能を構築し、Cloudflareにデプロイする方法を伝えています。Workers KVを追加すると、パフォーマンスやスケーラビリティを損なうことなく、Workers関数と並行して複雑なデータ構造を保持できます。</p>
+	<figure class="kg-card kg-embed-card"><iframe width="200" height="113" src="https://www.youtube.com/embed/vrrOVbj9TNs?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></figure>
+	<p>Chris氏とCodePenチームはWorkersに投資しており、最も重要なのはCloudflareの開発者ツールで開発することを<em>楽しんで</em>いることです。「周りのDXは疑いたくなるほど素晴らしいです。他のクラウド機能サービスから来ると、私たちがやるべきことを行うためにちょうど適切な量のツールがあるように思います。」</p>
+	<p>CodePenは、Cloudflare Workersの開発者環境をスタックに統合する際に何ができるようになるかを示すよい例です。ビジネス、WorkersおよびWorkers KVやHTMLRewriterのツールなどのあらゆる要素を通して、CodePenは将来を見据えた、高パフォーマンスのアプリケーションを構築できるのです。</p>
+	<p>さらにCloudflare Workersについての詳細を知り、ご自身のサーバーレス機能をCloudflareネットワークにデプロイしたい方は<a href="https://workers.cloudflare.com/" target="_blank">workers.cloudflare.com</a>をご確認ください！</p>
+</div>

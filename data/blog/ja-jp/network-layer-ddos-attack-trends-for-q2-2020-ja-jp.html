@@ -1,0 +1,59 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/08/image6-1.png" class="kg-image"></figure>
+	<p>2020年の第1四半期には、数週間ほどの間に、私たちの生活様式が変わりました。私たちは、これまで以上にオンラインサービスに依存しています。リモートワークが可能な人は、自宅で働いていて、あらゆる年齢、学年の生徒たちがオンラインで授業を受けています。そして、私たちは「ネットにつながる」ということばの意味を再定義することになりました。一般市民が「ネットにつながる」状況に依存すればするほど、攻撃者が混乱を引き起こし、私たちの生活を混乱させることで得られる報酬は大きくなります。そのため、2020年第1四半期（2020年1月1日から2020年3月31日）に <a href="https://blog.cloudflare.com/network-layer-ddos-attack-trends-for-q1-2020/">攻撃数の増加</a>を報じたことは驚きではありませんでした—特に、3月後半にさまざまな政府機関が屋内退避勧告を行った後については理の当然です。</p>
+	<p>2020年第2四半期（2020年4月1日から2020年6月30日）には、DDoS攻撃が増加する傾向が続き、さらに加速しました。</p>
+	<ul>
+		<li>ネットワーク上で観測されたL3/4 DDoS攻撃数は、今年の最初の3か月間に比べて倍増しました。</li>
+		<li>L3/4 DDoS攻撃規模の最大値は大幅に上昇しました。実際、Cloudflareは当社のネットワークで記録史上最大規模の攻撃の一部を観測しました。</li>
+		<li>デプロイされる攻撃ベクトル数が増加し、攻撃の対象がより多くの地域に分散していることを確認しました。</li>
+	</ul>
+	<h3 id="-2-l3-4-ddos-2-">第2四半期におけるグローバルな L3/4 DDoS攻撃数は2倍になりました</h3>
+	<p><a href="https://blog.cloudflare.com/meet-gatebot-a-bot-that-allows-us-to-sleep/">Gatebot</a>はCloudflareの主要なDDoS保護システムです。グローバルに分散されたDDoS攻撃を自動的に検出し、軽減します。グローバルなDDoS攻撃とは、複数のエッジデータセンターで観察される攻撃です。これらの攻撃は、通常、巧妙な攻撃者が、数千から数百万のボットを使用したボットネットを仕掛けます。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/08/BDES-831_DDoS_Report_Q2-20_Infographic_Blog_1_V2.png" class="kg-image"></figure>
+	<p>第2四半期、高度な攻撃者に立ち向かうため、Gatebotは稼働し続けました。第2四半期にGatebotが検出し、対策を講じた世界規模のL3/4 DDoS攻撃の総数は、前四半期比で2倍になりました。<a href="https://blog.cloudflare.com/network-layer-ddos-attack-trends-for-q1-2020/">第1四半期のレポート</a>では、攻撃数と規模の急増を報告しています。この傾向は第2四半期まで加速し続けています。2020年の全世界のDDoS攻撃の66%以上が第2四半期に発生しました（これは、ほぼ 100%の増加です）。5月は2020年上半期で最も忙しい月で、6月と4月がこれに続きました。すべてのL3/4 DDoS攻撃のおよそ3分の1が5月に発生しています。</p>
+	<p>実は、最大値が100 Gbpsを超えるL3/4 DDoS攻撃の63%が5月に発生したものです。5月に世界的なパンデミックが各地で高まり続ける中、攻撃者は特にWebサイトやその他のインターネットプロパティをダウンさせる機会を狙っていました。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/08/BDES-831_DDoS_Report_Q2-20_Infographic_Blog_2_V2.png" class="kg-image"></figure>
+	<h3 id="-">小規模の攻撃はその数で圧倒し続け、大規模な攻撃は、規模をさらに拡大しています</h3>
+	<p>DDoS攻撃の強さは、そのサイズに相当します。つまり、その強さは、ターゲットを制圧するために、リンクを氾濫させる際に使われる実際のパケット数またはビット数で表すことができます。「大規模な」DDoS攻撃とは、インターネットトラフィックが高レートに達する攻撃を指します。レートは、パケットまたはビット単位で測定できます。ビットレートが高い攻撃ではインターネットリンクが飽和状態になり、パケットレートの高い攻撃ではルーターやその他のインラインハードウェアデバイスが過負荷状態になります。</p>
+	<p>第1四半期と同様に、第2四半期で観測したL3/4 DDoS攻撃の大部分は、Cloudflareのネットワークの規模からみれば、比較的「小規模」でした。第2四半期には、L3/4 DDoS攻撃の90%近くが、最大値で10 Gbpsを下回っていました。最大値が10Gbps未満である小規模な攻撃でも、クラウドベースの DDoS対策サービスによる保護がない場合、世界中のほとんどのWebサイトやインターネットプロパティを簡単に停止してしまう可能性があります。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/08/image3.png" class="kg-image"></figure>
+	<p>同様に、パケットレートで換算すると、第2四半期におけるすべてのL3/4 DDoS攻撃の76%は、最大値が100万パケット/秒（pps）でした。通常、1 GbpsのEthernetインターフェイスは、8万～150万ppsの範囲で送信できます。インターフェイスが（悪意のあるトラフィックだけでなく）正当なトラフィックも送信し、ほとんどの企業のインターフェイスが 1 Gbpsよりもはるかに少ないと仮定すると、これらの「小規模」なパケットレートのDDoS攻撃でさえ、インターネットプロパティを簡単に破壊できることがわかります。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/08/image12.png" class="kg-image"></figure>
+	<p>持続時間については、すべての攻撃の83%が30～60分間続きました。第1四半期でも同様の傾向が見られ、攻撃の79%が上記と同様の持続時間の範囲内に収まりました。これは一見短い時間のように思われるかもしれませんが、セキュリティチームと攻撃者の間で30～60分間に渡ってサイバーバトルが繰り広げられることを想像してみてください。それほど短いと感じなくなったのではないでしょうか。さらに、DDoS攻撃によって停止やサービスの低下が発生した場合は、機器やサービスの再起動を行う復旧時間が大幅に増え、復旧までの時間が1分増すごとに収益と評判が失われていく可能性があります。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/08/image5.png" class="kg-image"></figure>
+	<h3 id="-2-ddos-">第2四半期には、当社のネットワークで最大のDDoS攻撃が観測されました。</h3>
+	<p>今四半期には、パケットレートとビットレートの両方で、大規模な攻撃が増加しています。実際、2020年のDDoS攻撃の88%が最大値で100 Gbpsを超えたのは、3 月に屋内退避勧告が行われた後からでした。また、5月は攻撃数が最も多い月であっただけでなく、100 Gbpsを超える大規模な攻撃数が最も多い月でもありました。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/08/BDES-831_DDoS_Report_Q2-20_Infographic_Blog_6_V2.png" class="kg-image"></figure>
+	<p>パケットの観点からは、6月が 7億5400万pps の攻撃で首位でした。この攻撃を除けば、最大パケットレートは、四半期全体にわたってほぼ一貫して、約2億ppsでした。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/08/image4.png" class="kg-image"></figure>
+	<p>7億5400万ppsの攻撃は、Cloudflareによって自動的に検出、軽減されました。攻撃は、6月18日から21日まで続いた組織的な4日間の作戦の一部でした。作戦の一環で、316,000個以上のIPアドレスからの攻撃トラフィックが、1つのCloudflare IPアドレスをターゲットにしました。</p>
+	<p>CloudflareのDDoS保護システムは、攻撃を自動的に検出し、軽減しました。また、当社のネットワーク規模と世界的なカバー率により、パフォーマンスへの影響はありませんでした。大規模な攻撃対策には、世界規模で相互接続されたネットワークが重要です。攻撃トラフィックを吸収してソースの近くで緩和できるようにする一方で、レイテンシーやサービスの中断を引き起こすことなく、正当な顧客トラフィックを提供し続けることができます。</p>
+	<h3 id="--1">米国は、最も多くの攻撃の対象です</h3>
+	<p>L3/4 DDoS 攻撃の分布を国別に見ると、米国のデータセンターの攻撃数が最も多く（22.6%）、次いでドイツ（4.4%）、カナダ（2.7%）、イギリス（2.6%）の順になっています。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/08/image8.png" class="kg-image"></figure>
+	<p>しかし、各Cloudflareデータセンターで軽減された総攻撃バイト数を見ると、米国は依然としてトップですが（34.9%）、次いで香港（6.6%）、ロシア（6.5%）、ドイツ（4.5%）、コロンビア（3.7%）の順になっています。順位に変化が生じた理由は、各攻撃で生成された帯域幅の合計量によります。例えば、香港で観測された攻撃数は比較的少なく（1.8％）、上位10位内にランクインしなかったのに対し、攻撃の規模は非常に大きく、攻撃トラフィックが多かったため、香港は別のランキングで2位に浮上しています。</p>
+	<p>L3/4 DDoS攻撃を分析する際、トラフィックはソース IPの場所ではなく、Cloudflareエッジデータセンターの場所によってバケットされます。なぜなら、攻撃者がL3/4 攻撃を開始すると、攻撃元を難読化するために送信元のIPアドレスを「スプーフィング」（改ざん）できるからです。スプーフィングされたソースIPに基づいて国を割り出しても、偽装された国名が得られるだけです。Cloudflareは、偽装IPの課題を克服することができます。攻撃が観測されたCloudflareのデータセンターの場所別に攻撃データを表示できるためです。世界200以上の都市にCloudflareのデータセンターがあるため、レポートには地理的正確さを反映できます。</p>
+	<h3 id="-2-l3-4-ddos-57-syn-">第2四半期の全L3/4 DDoS攻撃の57%がSYNフラッド攻撃でした</h3>
+	<p>攻撃ベクトルは、攻撃方法を指す用語です。第2四半期には、L3/4 DDoS攻撃で攻撃者が使用するベクトルの数が増加しました。第2四半期では合計39種類の攻撃ベクトルが使用され、第1四半期では34種類の攻撃ベクトルが使用されました。<a href="https://www.cloudflare.com/learning/ddos/syn-flood-ddos-attack/" target="_blank">SYNフラッド攻撃</a>が、シェアの57%以上を占め、次にRST（13％）、<a href="https://www.cloudflare.com/learning/ddos/udp-flood-ddos-attack/" target="_blank"> &nbsp;UDP &nbsp;</a>（ 7％）、<a href="https://blog.cloudflare.com/reflections-on-reflections/"> CLDAP</a>（6％）、そして<a href="https://blog.cloudflare.com/ssdp-100gbps/"> SSDP </a> （3%）攻撃の順になります。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/08/image1-3.png" class="kg-image"></figure>
+	<p>SYNフラッド攻撃は、TCP 接続のハンドシェイクプロセスを悪用しようと試みます &nbsp;。同期フラグ（SYN）を使用して初期接続要求パケットを繰り返し送信することにより、攻撃者はTCP接続の状態を追跡するルーターの接続テーブルに過負荷をかけようとします。ルーターは、同期確認フラグ（SYN-ACK）を含むパケットで応答し、特定の接続ごとに一定量のメモリーを割り当てて、クライアントが最終確認（ACK）で応答するのを誤って待ってしまいます。ルーターのメモリーを占有する十分な数のSYNがあると、ルーターは正規のクライアントに対してさらにメモリーを割り当てることができず、サービス拒否を引き起こします。</p>
+	<p>Cloudflare は、攻撃ベクトルに関係なく、自社製のDDoS保護システムで構成された3つの保護アプローチを使用して、ステートフルまたはステートレスなDDoS攻撃を自動的に検出し、軽減します。</p>
+	<ul>
+		<li><a href="https://blog.cloudflare.com/meet-gatebot-a-bot-that-allows-us-to-sleep/">Gatebot</a> - Cloudflareの集中型DDoS保護システムは、グローバルに分散した大規模なDDoS攻撃を検出して軽減します。Gatebotは、ネットワークコアデータセンターで稼働します。すべてのエッジデータセンターからサンプルを受け取り、それらを分析し、攻撃が検出されると自動的に軽減命令を出します。また、Gatebotは顧客の各Webサーバーと同期され、ヘルスチェックを行い、それに応じてカスタマイズした保護を提供します。</li>
+		<li><a href="https://blog.cloudflare.com/rolling-with-the-punches-shifting-attack-tactics-dropping-packets-faster-cheaper-at-the-edge/">dosd</a>（サービス拒否デーモン）-Cloudflareの分散型DDoS保護システム。dosdは、世界中のすべてのCloudflareデータセンター内の各サーバーで自律的に動作し、トラフィックを分析し、必要に応じてローカル軽減ルールを適用します。dosdは、超高速な攻撃を検出して軽減できるだけでなく、検出機能と軽減機能をエッジに依頼することで、ネットワークの耐久性を大幅に向上させます。</li>
+		<li><a href="https://blog.cloudflare.com/announcing-flowtrackd/">flowtrackd</a>（フロートラッキングデーモン）-単方向ルーティングトポロジーで最もランダム化され、洗練されたTCPベースのDDoS攻撃を検出し、軽減するためのCloudflareのTCP状態追跡マシンです。flowtrackdはTCPの状態を識別することができ、正当な接続に属さないパケットをドロップ、チャレンジ、レート制限します。</li>
+	</ul>
+	<p>Cloudflareは自動化されたDDoS保護システムに加えて、攻撃を自動的に軽減するリアルタイムの脅威インテリジェンスを生成します。Cloudflareはさらに、カスタマイズの選択肢を広げ、保護の最適化を行うために、顧客に対してファイアウォール、レート制限、追加のツールを提供します。</p>
+	<h3 id="cloudflare-ddos-">CloudflareのDDoS対策</h3>
+	<p>企業や個人向けインターネット利用が進化し続けているのに合わせて、DDoS戦術もさらに精鋭化することが予測されます。Cloudflareは攻撃の洗練さの度合いに関わらず、あらゆる規模、種類のDDoS攻撃から、<a href="https://www.cloudflare.com/ddos" target="_blank">Webサイト</a>、<a href="https://www.cloudflare.com/products/cloudflare-spectrum" target="_blank">アプリケーション</a> 、そして<a href="https://www.cloudflare.com/magic-transit" target="_blank"> ネットワーク全体</a>を保護します。</p>
+	<p>当社の顧客と業界アナリストは、次の3つの主な理由により、Cloudflareの包括的なソリューションを推奨しています。</p>
+	<ul>
+		<li>ネットワークの規模：Cloudflareの37 Tbpsネットワークで、あらゆる規模、種類、高度なレベルの攻撃を簡単にブロックできます。Cloudflareネットワークには、競合他社4社を合算したものよりも高いDDoS軽減能力があります。</li>
+		<li>軽減までの時間：Cloudflareは、ほとんどのネットワーク層攻撃をグローバルに10秒未満で軽減し、静的ルールが事前設定されている場合は即座に軽減します (0 秒)。Cloudflare は、そのグローバルプレゼンスを活用して、最小限のレイテンシーでソースに近い攻撃を緩和します。場合によっては、トラフィックは公共のインターネットを経由するよりもさらに高速になります。</li>
+		<li>脅威インテリジェンス：CloudflareのDDoS対策は、2,700万を超えるインターネットプロパティを活用した脅威インテリジェンスによって実現されます。さらに、脅威インテリジェンスは、顧客向けファイアウォールやツールに組み込まれ、顧客を支援します。</li>
+	</ul>
+	<p>Cloudflare は、独自のネットワークアーキテクチャにより、比類なき規模と、速度、スマートな機能を合わせもつDDoS対策を実現できます。Cloudflareのネットワークはフラクタル（幾何学模様）のようです。すべてのサービスは、<a href="https://www.cloudflare.com/network" target="_blank">世界200都市</a>以上にまたがるすべてのCloudflareデータセンターのすべてのサーバー上で実行されます 。これにより、Cloudflareは、サイズ、送信元、または攻撃の種類に関係なく、配信元に近い攻撃を検出して軽減できます。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/08/image10.png" class="kg-image"></figure>
+	<p>CloudflareのDDoSソリューションの詳細は、<a href="https://www.cloudflare.com/plans/enterprise/" target="_blank">こちらにお問い合わせ</a>いただくか、<a href="https://dash.cloudflare.com/" target="_blank">今すぐ始めましょう</a>。</p>
+	<p>お客様は今後開催されるライブウェビナーに参加することも可能です。このセミナーでは、DDoS攻撃の傾向や、DDoS攻撃に対抗し、ネットワークをオンラインに保ち、高速に保つために企業が実装可能な戦略についてご説明します。<a href="https://onlinexperiences.com/Launch/QReg/ShowUUID=43F66E2A-9532-44CF-9852-59324105F8E0&amp;LangLocaleID=1033" target="_blank">登録はこちらから</a>。</p>
+</div>

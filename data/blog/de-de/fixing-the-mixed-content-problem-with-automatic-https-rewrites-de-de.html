@@ -1,0 +1,91 @@
+<div class="post-content lh-copy gray1">
+	<p>Cloudflare will Schluss machen mit dem unverschlüsselten Internet. Aber das Web hat beim Wechsel zu HTTPS ein Henne-Ei-Problem.</p>
+	<p>Vor langer Zeit war es schwierig, teuer und langsam, eine HTTPS-fähige Website einzurichten. Dann kamen Dienste wie Cloudflares <a href="https://blog.cloudflare.com/introducing-universal-ssl/">Universal SSL</a>, die den Wechsel von http:// auf https:// quasi auf Knopfdruck ermöglichten. Mit einem Klick wurde eine Seite über HTTPS bereitgestellt, mit einem frisch ausgestellten, kostenlosen SSL-Zertifikat.</p>
+	<p>Bumm!</p>
+	<p>Plötzlich ist die Website über HTTPS verfügbar, und, noch besser, die Website ist schneller, weil sie die Vorteile des neuesten Webprotokolls <a href="https://www.cloudflare.com/http2/" target="_blank">HTTP/2</a> nutzen kann.</p>
+	<p>Leider ist das nicht das Ende der Geschichte. Viele ansonsten sichere Websites leiden unter dem Problem gemischter Inhalte. Und gemischte Inhalte bedeuten, dass das grüne Schloss-Symbol für eine https://-Website nicht angezeigt wird, da sie in der Tat nicht wirklich sicher ist.</p>
+	<p>Hier liegt das Problem: Wenn eine https://-Website Inhalte von einer Website (auch ihrer eigenen) enthält, die über http:// bereitgestellt wird, kann das grüne Vorhängeschloss nicht angezeigt werden. Das liegt daran, dass Ressourcen wie Bilder, JavaScript, Audio, Video usw., die über http:// eingebunden sind, eine Sicherheitslücke in der sicheren Website öffnen. Eine Hintertür für Schwierigkeiten.</p>
+	<p>Webbrowser wissen seit langem, dass dies ein Problem ist. Bereits 1997 warnte der Internet Explorer 3.0.2 mit dem folgenden Dialogfeld die Nutzer von Websites mit gemischten Inhalten.</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2016/09/IC310968.gif" class="kg-image"></figure>
+	<p></p>
+	<p>Heute zeigt Google Chrome ein eingekreistes i bei jeder https:// an, die unsichere Inhalte hat.</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2016/09/Screen-Shot-2016-09-22-at-11.22.08.png" class="kg-image"></figure>
+	<p></p>
+	<p>Und Firefox zeigt ein Vorhängeschloss mit einem Warnsymbol. Um ein grünes Vorhängeschloss von einem dieser Browser zu erhalten, muss jede einzelne Subressource (eine von einer Seite geladene Ressource) über HTTPS bereitgestellt werden.</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2016/09/Screen-Shot-2016-09-22-at-11.23.45.png" class="kg-image"></figure>
+	<p></p>
+	<p>Wenn Sie 1997 auf „Ja“ geklickt hätten, hätte der Internet Explorer die Gefahren von gemischten Inhalten ignoriert und die Subressourcen über Klartext-HTTP geladen. Das Anklicken von „Nein“ verhinderte, dass sie geladen wurden (was oft zu einer fehlerhaften, aber sicheren Webseite führte).</p>
+	<h3 id="umstellung-auf-vollst-ndig-sichere-inhalte"><strong>Umstellung auf vollständig sichere Inhalte</strong></h3>
+	<p>Es ist verlockend, aber naiv, zu denken, dass es eine einfache Lösung für gemischte Inhalte gibt: „Laden Sie einfach alles über https:// und reparieren Sie Ihre Website.“ Leider macht es das Sammelsurium von Inhalten, die von Erst- und Drittanbieter-Websites in moderne Websites geladen werden, sehr schwierig, „einfach“ diese Änderung vorzunehmen.</p>
+	<p></p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2016/09/14127169401_54ca5e9c1f_z.jpg" class="kg-image">
+		<figcaption><a href="https://creativecommons.org/licenses/by/2.0/" target="_blank">CC BY 2.0</a> <a href="https://www.flickr.com/photos/jeepersmedia/14127169401/in/photolist-nwnrhe-nwFTKm-nwpaXy-nd8jZZ-nwnqMB-6bsjcC-nwFSD3-aQ5Zk4-c4uV99-6itRSF-6iy17Y-8iDUTL-jb2wag-MvpRU-B61f-B61b-7GcrpR-jCxYo4-bTkuiD-2rLaU-a7VsfV-eyNEd-dUEjYu-4iVNkY-a3Gcnb-nJhD2H-nHasXC-5L7FZy-2i8iQ9-qN5RF-6HHCqb-6HDxai-6HDxnK-6HHCvU-5T9v3L-6ytdUs-6HHCyG-2WZgpg-5XZ5BD-b4SFeF-hNBK9K-8JDyeY-pbysVv-5dkLUi-6iy19o-6HDxiV-4o63bZ-kiN76q-ik1o7a-qkcqbe" target="_blank">Foto</a> von Mike Mozart</figcaption>
+	</figure>
+	<p></p>
+	<p>Wired hat seinen Übergang zu https:// in einer Reihe von Blogbeiträgen <a href="https://www.wired.com/2016/09/now-encrypting-wired-com/" target="_blank">dokumentiert</a>, die zeigen, wie schwer es sein kann, alles auf HTTPS umzustellen. Sie begannen im <a href="https://www.wired.com/2016/04/wired-launching-https-security-upgrade/" target="_blank">April</a> und verbrachten fünf Monate mit dem Prozess (nachdem sie sich bereits monatelang nur für die Umstellung der zentralen Homepage auf https:// vorbereitet hatten). Im Mai schrieben sie über eine <a href="https://www.wired.com/2016/05/wired-first-big-https-rollout-snag/" target="_blank">größere Schwierigkeit</a>:</p>
+	<p><em>„[…] eine der größten Herausforderungen bei der Umstellung auf HTTPS ist die Vorbereitung aller unserer Inhalte für die Bereitstellung über sichere Verbindungen. Wenn eine Seite über HTTPS geladen wird, müssen auch alle anderen Ressourcen (wie Bilder und Javascript-Dateien) über HTTPS geladen werden. Wir erhalten eine hohe Anzahl von Meldungen wegen dieser „Gemischte Inhalte“-Probleme oder Ereignissen, bei denen eine unsichere HTTP-Ressource im Rahmen einer sicheren HTTPS-Seite geladen wird. Um unsere Einführung richtig zu gestalten, müssen wir sicherstellen, dass wir weniger Probleme mit gemischten Inhalten haben – dass wir so viele Inhalte von WIRED.com so sicher wie möglich bereitstellen.“</em></p>
+	<p>Im Jahr 2014 identifizierte die New York Times gemischte Inhalte als eine <a href="https://open.blogs.nytimes.com/2014/11/13/embracing-https/" target="_blank">große Hürde</a> für die Sicherheit:</p>
+	<p><em>„</em>Um erfolgreich zu HTTPS zu wechseln, müssen alle Anfragen an Seiteninhalte über einen sicheren Kanal gestellt werden.<em> Es ist eine gewaltige Herausforderung, und es gibt viele bewegliche Teile. Wir müssen Ressourcen berücksichtigen, die derzeit aus unsicheren Domains geladen werden – von JavaScript bis hin zu Werbeinhalten."</em></p>
+	<p>Und das W3C <a href="https://www.w3.org/TR/upgrade-insecure-requests/" target="_blank">erkannte</a> dies als ein großes Problem an: <em>„Vor allem die Prüfung gemischter Inhalte kann Administratoren, die mit der Übertragung großer Mengen an Altinhalten auf HTTPS beauftragt sind, echte Kopfschmerzen bereiten. Insbesondere stellt das Durchsuchen alter Inhalte und manuelle Umschreiben von Ressourcen-URLs eine große Herausforderung dar.“</em> Als ein schwieriges Beispiel wurde das <a href="https://www.bbc.co.uk/blogs/internet/entries/f7126d19-2afa-3231-9c4e-0f7198c468ab" target="_blank">riesige Archiv</a> der BBC angeführt.</p>
+	<p>Aber es sind nicht nur Medienseiten, die ein Problem mit gemischten Inhalten haben. Viele CMS-Benutzer finden es schwierig oder unmöglich, alle Links, die ihr CMS erzeugt, zu aktualisieren, da sie in Konfigurationsdateien, Quellcode oder Datenbanken verborgen sein können. Darüber hinaus haben auch Websites, die sich mit benutzergenerierten Inhalten befassen müssen, ein Problem mit http://-URIs.</p>
+	<h3 id="die-gefahren-gemischter-inhalte"><strong>Die Gefahren gemischter Inhalte</strong></h3>
+	<p>Gemischte Inhalte gibt es in zwei Varianten: aktiv und passiv. Moderne Webbrowser gehen die Gefahren dieser verschiedenen Arten gemischter Inhalte so an: Aktive gemischte Inhalte (die gefährlichsten) werden automatisch und vollständig blockiert, passive gemischte Inhalte werden durchgelassen, führen aber zu einer Warnung.</p>
+	<p></p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2016/09/6714200883_2ba8167533_b.jpg" class="kg-image">
+		<figcaption><a href="https://creativecommons.org/licenses/by/2.0/" target="_blank">CC BY 2.0</a> <a href="https://www.flickr.com/photos/99mph/6714200883/in/photolist-bej31c-szQAb-i2swr-fnz3A-avkaMz-SB8LC-4kKK2r-6UFtFq-5EhUFH-i2sBe-dHEMmA-A4cie-aC6Wtc-4ZRUkX-srjkGs-5raEpY-eosHU-Ee7Ye-6vWtxh-6Pd2Nq-5Yz5u2-nU1Pfn-nBPiU4-N6B99-7WL2J9-FEkU5X-dU1PPb-JbHZad-aBEqKL-6w5v1r-65Nths-6DbhPs-nsfgLN-67jbBc-nAxzxi-7krEou-4GxJDe-nUsvgg-9kk75E-8AAsi-jJpNkj-4a5Znf-NQtE-d5xmAL-qiBCh-8cM-qXdkTc-9aLMpU-dWVoe-4A1jyr" target="_blank">Foto</a> von Ben Tilley</figcaption>
+	</figure>
+	<p></p>
+	<p>Aktiver Inhalt ist alles, was das DOM (die Webseite selbst) verändern kann. Ressourcen, die über die Tags <code>&lt;script&gt;</code>, <code>&lt;link&gt;</code>, <code>&lt;iframe&gt;</code> oder <code>&lt;object&gt;</code> eingebunden sind, CSS-Werte, die <code>url</code> verwenden, und alles, was mittels <code>XMLHTTPRequest</code> angefordert wird, kann eine Seite ändern, Cookies lesen und auf Benutzerdaten zugreifen.</p>
+	<p>Passiver Inhalt ist alles andere: Bilder, Audio, Videos, die in die Seite geschrieben werden, aber selbst nicht auf die Seite zugreifen können.</p>
+	<p>Aktive Inhalte sind eine wirkliche Bedrohung, denn wenn es einem Angreifer gelingt, die Anfrage nach einem http://-URI abzufangen, kann er den Inhalt durch seinen eigenen ersetzen. Dabei handelt es sich nicht um ein theoretisches Problem. Im Jahr 2015 wurde Github von einem System namens <a href="https://citizenlab.org/2015/04/chinas-great-cannon/" target="_blank">Great Cannon</a> angegriffen, das Anfragen nach gängigen JavaScript-Dateien über HTTP abfing und durch ein JavaScript-Angriffsskript ersetzte. Die „Große Kanone“ nutzte die Computer unschuldiger Benutzer als Waffe, indem sie TCP abfing und die inhärente Schwachstelle aktiver Inhalte ausnutzte, die von den http://-URIs geladen wurden.</p>
+	<p>Passive Inhalte stellen eine andere Art von Bedrohung dar: Da Anfragen für passive Inhalte im Klartext gesendet werden, kann ein Lauscher die Anfragen überwachen und Informationen extrahieren. So könnte beispielsweise ein gut positionierter Lauscher Cookies, besuchte Webseiten und möglicherweise auch Authentifizierungsinformationen überwachen.</p>
+	<p>Das Firefox-Add-on <a href="http://codebutler.com/firesheep/" target="_blank">Firesheep</a> kann verwendet werden, um ein lokales Netzwerk (z. B. in einem Café) auf über HTTP gesendete Anfragen zu überwachen und automatisch Cookies zu stehlen, mit denen ein Benutzer die Identität einer Person mit einem einzigen Klick übernehmen kann.</p>
+	<p>Moderne Browser blockieren heute aktive Inhalte, die nicht sicher geladen werden, lassen aber passive Inhalte passieren. Dennoch ist der Wechsel zu ausschließlichem https:// der einzige Weg, um alle Sicherheitsbedenken für gemischte Inhalte zu beseitigen.</p>
+	<h3 id="automatische-behebung-des-problems-mit-gemischten-inhalten"><strong>Automatische Behebung des Problems mit gemischten Inhalten</strong></h3>
+	<p>Wir wollten schon lange helfen, das Problem mit gemischten Inhalten zu beheben, denn unser Ziel ist es, ein vollständig verschlüsseltes Web zu bekommen. Und wie bei anderen Cloudflare-Diensten wollten wir dies zu einer „Ein-Klick“-Erfahrung machen.</p>
+	<p></p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2016/09/1078317132_0e96301aef_b--1-.jpg" class="kg-image">
+		<figcaption><a href="https://creativecommons.org/licenses/by/2.0/" target="_blank">CC BY 2.0</a> <a href="https://www.flickr.com/photos/pinkmoose/1078317132/in/photolist-2DhE7G-pvcxy5-k8yyU-dGahX9-7cRyRV-byeo7f-cNka9m-5VqLgk-byenTE-dG4STe-dGafYU-dG4RnT-tAGvqC-tAGA6u-uxhxfW-4Wrx7L-dGahZQ-dGafW9-dG4QiZ-dGagHY-4K5jAk-dwrgVQ-dGafTE-xyEYA-dG4SYP-9LEfKd-7cRy3F-dGainJ-dGahAN-4LPBp9-bnWEe3-bNknmF-pTFtg2-dG4Ra8-6hZDxR-AobuPS-bM92up-dGafDC-yuJw-q8ZsgV-4GGuAM-4Twy1U-dGaf9s-dG4QfX-52rQZg-dpK5hj-dG4RSz-dpJU8v-4EJ5JP-5pvYKT" target="_blank">Foto</a> von Anthony Easton</figcaption>
+	</figure>
+	<p></p>
+	<p>Wir haben eine Reihe von Ansätzen erwogen:</p>
+	<p><em>Automatisches Einfügen der CSP-Anweisung upgrade-insecure-requests</em></p>
+	<p>Die Anweisung <a href="https://www.w3.org/TR/upgrade-insecure-requests/" target="_blank">upgrade-insecure-requests</a> kann wie folgt in einem <a href="https://www.w3.org/TR/CSP/" target="_blank">Content Security Policy</a>-Header eingefügt werden:</p>
+	<p></p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>Content-Security-Policy: upgrade-insecure-requests
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p></p>
+	<p>Dadurch wird der Browser angewiesen, jede HTTP-Anfrage automatisch auf HTTPS zu aktualisieren. Dies kann nützlich sein, wenn der Website-Besitzer weiß, dass jede Subressource über HTTPS verfügbar ist. Die Website muss die in sie eingebetteten http://-URIs nicht wirklich in https:// ändern, der Browser kümmert sich automatisch darum.</p>
+	<p>Leider gibt es einen großen Nachteil mit upgrade-insecure-requests. Da der Browser blind jeden URI auf https:// aktualisiert, unabhängig davon, ob der resultierende URI tatsächlich funktioniert, kann es zur <a href="https://www.w3.org/TR/upgrade-insecure-requests/#example-failed" target="_blank">fehlerhaften</a> Darstellung von Seiten kommen.</p>
+	<p><em>Änderung aller Links in https://</em></p>
+	<p>Da nicht alle Browser, die von Besuchern von Cloudflare-Websites verwendet werden, upgrade-insecure-requests unterstützen, haben wir erwogen, alle URIs von http:// auf https:// zu aktualisieren, wenn die Seiten unseren Dienst durchlaufen. Da wir Webseiten in Echtzeit analysieren und modifizieren können, hätten wir einen „upgrade-insecure-requests“-Dienst erstellen können, der nicht auf Browserunterstützung angewiesen gewesen wäre.</p>
+	<p>Leider tritt dabei aber immer noch das gleiche Problem von defekten Links auf, wenn ein http://-URI in https:// umgewandelt wird, die Ressource aber nicht tatsächlich mit HTTPS geladen werden kann.</p>
+	<p><em>Änderung von Links, die auf andere Cloudflare-Websites verweisen</em></p>
+	<p>Da Cloudflare allen seinen vier Millionen Kunden kostenlos <a href="https://blog.cloudflare.com/introducing-universal-ssl/">Universal SSL</a> bietet und wir einen großen Prozentsatz der Webzugriffe abdecken, haben wir darüber nachgedacht, nur bei URIs, von denen wir wissen, dass sie funktionieren werden (weil sie unseren Dienst nutzen), http:// zu https:// zu aktualisieren.</p>
+	<p>Dies löst einen Teil des Problems, ist aber keine gute Lösung für das allgemeine Problem des Upgrades von HTTP auf HTTPS.</p>
+	<p><em>Schaffung eines Systems, das bekannte HTTPS-fähige URIs umschreibt</em></p>
+	<p>Schließlich haben wir uns entschieden, es schlau anzustellen: URIs von http:// zu https:// zu aktualisieren, wenn wir wissen, dass die Ressource über HTTPS bereitgestellt werden kann. Um herauszufinden, welche Links aktualisiert werden können, haben wir die ausgezeichnete Erweiterung <a href="https://www.eff.org/https-Everywhere" target="_blank">HTTPS Everywhere</a> der EFF und die Liste <a href="https://github.com/chromium/hstspreload.appspot.com" target="_blank">HSTS preload</a> von Google Chrome genutzt, um unser Wissen über Cloudflare-Sites mit aktiviertem SSL zu erweitern.</p>
+	<p>Wir sind sehr dankbar, dass die EFF freundlicherweise bereit war, uns bei diesem Projekt zu unterstützen.</p>
+	<p>Der HTTPS-Everywhere-Regelsatz geht weit über den einfachen Wechsel von http:// zu https://: hinaus und enthält Regeln (und Ausschlüsse), mit denen es (und wir) sehr spezifische URIs ansprechen können. Hier ist zum Beispiel eine echte HTTPS-Everywhere-Regel für gstatic.com:</p>
+	<p></p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>&lt;rule from="^http://(csi|encrypted-tbn\d|fonts|g0|[\w-]+\.metric|ssl|t\d)\.
+gstatic\.com/" to="https://$1.gstatic.com/"/&gt;
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p></p>
+	<p>Sie verwendet einen regulären Ausdruck, um spezifische Subdomains von gstatic.com zu identifizieren, die sicher für die Verwendung von HTTPS aktualisiert werden können. Den kompletten Regelsatz können Sie <a href="https://www.eff.org/https-everywhere/atlas" target="_blank">hier</a> einsehen.</p>
+	<p>Da wir eine große Anzahl von URIs, die in Webseiten eingebettet sind, aktualisieren müssen (wir schätzen etwa fünf Millionen pro Sekunde), haben wir bestehende HTML-Parser (einschließlich unserer eigenen) verglichen und beschlossen, einen neuen für diese Art von Umschreibe-Aufgabe zu entwickeln. Wir werden in einem späteren Beitrag mehr über Design, Test und Leistung des Parsers berichten.</p>
+	<h3 id="automatische-https-rewrites"><strong>Automatische HTTPS-Rewrites</strong></h3>
+	<p>Automatische HTTPS-Rewrites sind nun im Kunden-Dashboard für alle Cloudflare-Kunden verfügbar. Derzeit ist diese Funktion standardmäßig deaktiviert und kann mit einem Klick aktiviert werden:</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2016/09/Screen-Shot-2016-09-22-at-11.06.05.png" class="kg-image"></figure>
+	<p></p>
+	<p>Wir werden die Leistung und Effektivität dieser Funktion überwachen und sie im Laufe des Jahres standardmäßig für Kunden mit kostenlosen und Pro-Tarifen aktivieren. Wir planen auch, die Berichtsfunktionen der Content Security Policy zu nutzen, um unseren Kunden eine automatische Übersicht zu geben, welche URIs noch aktualisiert werden müssen, damit ihr Übergang zu ausschließlichem https:// so einfach wie möglich wird: Manchmal kann es sehr schwierig sein, einfach nur herauszufinden, welche URIs geändert werden müssen, wie Wired <a href="https://www.wired.com/2016/05/wired-first-big-https-rollout-snag/" target="_blank">feststellen</a> musste.</p>
+	<p>Wir würden uns freuen, von Ihnen zu hören, welche Erfahrungen Sie mit dieser Funktion machen.<br></p>
+</div>

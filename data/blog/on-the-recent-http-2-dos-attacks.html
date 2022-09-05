@@ -1,0 +1,18 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/08/h2-dos.png" class="kg-image"></figure>
+	<p>Today, multiple Denial of Service (DoS) vulnerabilities were disclosed for a number of HTTP/2 server implementations. Cloudflare uses NGINX for HTTP/2. <strong>Customers using Cloudflare are already protected against these attacks.</strong></p>
+	<p>The individual vulnerabilities, originally discovered by Netflix and are included in <a href="https://github.com/Netflix/security-bulletins/blob/master/advisories/third-party/2019-002.md" target="_blank">this</a> announcement are:</p>
+	<ul>
+		<li><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9511" target="_blank">CVE-2019-9511</a> HTTP/2 Data Dribble</li>
+		<li><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9512" target="_blank">CVE-2019-9512</a> HTTP/2 Ping Flood</li>
+		<li><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9513" target="_blank">CVE-2019-9513</a> HTTP/2 Resource Loop</li>
+		<li><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9514" target="_blank">CVE-2019-9514</a> HTTP/2 Reset Flood</li>
+		<li><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9515" target="_blank">CVE-2019-9515</a> HTTP/2 Settings Flood</li>
+		<li><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9516" target="_blank">CVE-2019-9516</a> HTTP/2 0-Length Headers Leak</li>
+		<li><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9518" target="_blank">CVE-2019-9518</a> HTTP/2 Request Data/Header Flood</li>
+	</ul>
+	<p>As soon as we became aware of these vulnerabilities, Cloudflare’s Protocols team started working on fixing them. We first pushed a patch to detect any attack attempts and to see if any normal traffic would be affected by our mitigations. This was followed up with work to mitigate these vulnerabilities; we pushed the changes out few weeks ago and continue to monitor similar attacks on our stack.</p>
+	<p>If any of our customers host web services over HTTP/2 on an alternative, publicly accessible path that is not behind Cloudflare, we recommend you apply the latest security updates to your origin servers in order to protect yourselves from these HTTP/2 vulnerabilities.</p>
+	<p>We will soon follow up with more details on these vulnerabilities and how we mitigated them.</p>
+	<p>Full credit for the discovery of these vulnerabilities goes to Jonathan Looney of Netflix and Piotr Sikora of Google and the Envoy Security Team.</p>
+</div>

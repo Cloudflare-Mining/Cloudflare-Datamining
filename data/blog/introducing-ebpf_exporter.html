@@ -1,0 +1,151 @@
+<div class="post-content lh-copy gray1">
+	<!--kg-card-begin: markdown-->
+	<p><em>This is an adapted transcript of a talk I gave at Promcon 2018. You can find slides with additional information on our Prometheus deployment and presenter notes <a href="https://docs.google.com/presentation/d/1420m05QANTxrCPvwsLZSHWRTvqOsxCVRzJsVp9awoFg/edit?usp=sharing" target="_blank">here</a>. There's also a <a href="https://www.youtube.com/watch?v=VvJx0WTiGcA&amp;feature=youtu.be&amp;t=1h15m40s" target="_blank">video</a>.</em></p>
+	<p><em>Tip: you can click on the image to see the original large version.</em></p>
+	<p><img src="https://blog.cloudflare.com/content/images/2021/05/1-1.jpeg" alt="1-1"></p>
+	<p>Here at Cloudflare we use <a href="https://prometheus.io/" target="_blank">Prometheus</a> to collect operational metrics. We run it on hundreds of servers and ingest millions of metrics per second to get insight into our network and provide the best possible service to our customers.</p>
+	<p>Prometheus metric format is popular enough, it's now being standardized as <a href="https://openmetrics.io/" target="_blank">OpenMetrics</a> under Cloud Native Computing Foundation. It's exciting to see convergence in long fragmented metrics landscape.</p>
+	<p>In this blog post we'll talk about how we measure low level metrics and share a tool that can help you to get similar understanding of your systems.</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/08/2.jpg" alt="2"></p>
+	<p>There are two main exporters one can use to get some insight into a Linux system performance.</p>
+	<p>The first one is <a href="https://github.com/prometheus/node_exporter" target="_blank">node_exporter</a> that gives you information about basics like CPU usage breakdown by type, memory usage, disk IO stats, filesystem and network usage.</p>
+	<p>The second one is <a href="https://github.com/google/cadvisor" target="_blank">cAdvisor</a>, that gives similar metrics, but drills down to a container level. Instead of seeing total CPU usage you can see which containers (and systemd units are also containers for <code>cAdvisor</code>) use how much of global resources.</p>
+	<p>This is the absolute minimum of what you should know about your systems. If you don’t have these two, you should start there.</p>
+	<p>Let’s look at the graphs you can get out of this.</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/08/3.jpg" alt="3"></p>
+	<p>I should mention that every screenshot in this post is from a real production machine doing something useful. We have different generations of hardware, so don’t try to draw any conclusions.</p>
+	<p>Here you can see the basics you get from <code>node_exporter</code> for CPU and memory. You can see the utilization and how much slack resources you have.</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/08/4.jpg" alt="4"></p>
+	<p>Some more metrics from <code>node_exporter</code>, this time for disk IO. There are similar panels for network as well.</p>
+	<p>At the basic level you can do some correlation to explain why CPU went up if you see higher network and disk activity.</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/08/5.jpg" alt="5"></p>
+	<p>With <code>cAdvisor</code> this gets more interesting, since you can now see how global resources like CPU are sliced between services. If CPU or memory usage grows, you can pinpoint exact service that is responsible and you can also see how it affects other services.</p>
+	<p>If global CPU numbers do not change much, you can still see shifts between services.</p>
+	<p>All of this information comes from the simplest counters and first derivatives (rates) on them.</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/08/6.jpg" alt="6"></p>
+	<p>Counters are great, but they lack detail about individual events. Let’s take disk io for example. We get device io time from <code>node_exporter</code> and the derivative of that cannot go beyond one second per one second of real time, which means we can draw a bold red line at 1s and see what kind of utilization we get from our disks.</p>
+	<p>We get one number that characterizes out workload, but that’s simply not enough to understand it. Are we doing many fast IO operations? Are we doing few slow ones? What kind of mix of slow vs fast do we get? How are writes and reads different?</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/08/7.jpg" alt="7"></p>
+	<p>These questions beg for a histogram. What we have is a counter above, but what we want is a histogram below.</p>
+	<p>Keep in mind that Prometheus histograms are cumulative and <code>le</code> label counts all events lower than or equal to the value of the label.</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/08/8.jpg" alt="8"></p>
+	<p>Okay, so imagine we have that histogram. To visualize the difference you get between the two types of metrics here are two screenshots of the same event, which is an SSD replacement in production. We replaced a disk and this is how it affected the line and the histogram. In the new Grafana 5 you can plot histograms as heatmaps and it gives you a lot more detail than just one line.</p>
+	<p>The next slide has a bigger screenshot, on this slide you should just see the shift in detail.</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/08/9.jpg" alt="9"></p>
+	<p>Here you can see buckets color coded and each timeslot has its own distribution in a tooltip. It can definitely get easier to understand with bar highlights and double Y axis, but it’s a big step forward from just one line nonetheless.</p>
+	<p>In addition to nice visualizations, you can also plot number of events above Xms and have alerts and SLOs on that. For example, you can alert if your read latency for block devices exceeds 10ms.</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/08/10.jpg" alt="10"></p>
+	<p>And if you were looking closely at these histograms, you may have noticed values on the Y axis are kind of high. Before the replacement you can see values in 0.5s to 1.0s bucket.</p>
+	<p>Tech specs for the left disk give you 50 microsecond read/write latency and on the right you get a slight decrease to 36 microseconds. That’s not what we see on the histogram at all. Sometimes you can spot this with fio in testing, but production workloads may have patterns that are difficult to replicate and have very different characteristics. Histograms show how it is.</p>
+	<p>Even a few slow requests can hurt overall numbers if you're not careful with IO. We've blogged <a href="https://blog.cloudflare.com/how-we-scaled-nginx-and-saved-the-world-54-years-every-day/">how this affected our cache latency and how we worked around this</a> recently.</p>
+	<p>By now you should be convinced that histograms are clearly superior for events where you care about timings of individual events.</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/08/11.jpg" alt="11"></p>
+	<p>And if you wanted to switch all your storage latency measurements to histograms, I have tough news for you: Linux kernel only provides counters for <code>node_exporter</code>.</p>
+	<p>You can try to mess with <code>blktrace</code> for this, but it doesn’t seem practical or efficient.</p>
+	<p>Let’s switch gears a little and see how summary stats from counters can be deceiving.</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/08/12.gif" alt="12"></p>
+	<p>This is a <a href="https://www.autodeskresearch.com/publications/samestats" target="_blank">research from Autodesk</a>. The creature on the left is called Datasaurus. Then there are target figures in the middle and animations on the right.</p>
+	<p>The amazing part is that shapes on the right and all intermediate animation frames for them have the same values for mean and standard deviation for both X and Y axis.</p>
+	<p>From summary statistic’s point of view every box on the right is same, but if you plot individual events, a very different picture emerges.</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/08/13.gif" alt="13"></p>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/08/14.gif" alt="14"></p>
+	<p>These animations are from the same research, here you can clearly see how box plots (mean + stddev) are non-representative of the raw events.</p>
+	<p>Histograms, on the contrary, give an accurate picture.</p>
+	<p>We established that histograms are what you want, but you need individual events to make those histograms. What are the requirements for a system that would handle this task, assuming that we want to measure things like io operations in the Linux kernel?</p>
+	<ul>
+		<li>It has to be low overhead, otherwise we can’t run it in production</li>
+		<li>It has to be universal, so we are not locked into just io tracing</li>
+		<li>It has to be supported out of the box, third party kernel modules and patches are not very practical</li>
+		<li>And finally it has to be safe, we don’t want to crash large chunk of the internet we're responsible for to get some metrics, even if they are interesting</li>
+	</ul>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/08/16.jpg" alt="16"></p>
+	<p>And it turns out, there’s a solution called eBPF. It’s a low overhead sandboxed user-defined bytecode running in the kernel. It can never crash, hang or interfere with the kernel negatively. That sounds kind of vague, but here are <a href="http://www.brendangregg.com/ebpf.html" target="_blank">two</a> <a href="https://cilium.readthedocs.io/en/v1.1/bpf/" target="_blank">links</a> that dive into the details explaining how this works.</p>
+	<p>The main part is that it’s already included with the Linux kernel. It’s used in networking subsystem and things like seccomp rules, but as a general “run safe code in the kernel” it has many uses beyond that.</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/08/17.jpg" alt="17"></p>
+	<p>We said it’s a bytecode and this is how it looks. The good part is that you never have to write this by hand.</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/08/18.jpg" alt="18"></p>
+	<p>To use eBPF you write small C programs that attach to kernel functions and run before or after them. Your C code is then compiled into bytecode, verified and loaded into kernel to run with JIT compiler for translation into native opcodes. The constraints on the code are enforced by verifier and you are guaranteed to not be able to write an infinite loop or allocate tons of memory.</p>
+	<p>To share data with eBPF programs, you can use maps. In terms of metric collection, maps are updated by eBPF programs in the kernel and only accessed by userspace during scraping.</p>
+	<p>It is critical for performance that the eBPF VM runs in the kernel and does not cross userspace boundary.</p>
+	<p>You can see the workflow on the image above.</p>
+	<p>Having to write C is not an eBPF constraint, you can produce bytecode in any way you want. There are other alternatives like lua and ply, and sysdig is adding a backed to run via eBPF too. Maybe someday people will be writing <em>safe javacript</em> that runs in the kernel.</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/08/19.jpg" alt="19"></p>
+	<p>Just like GCC compiles C code into machine code, BCC compiles C code into eBPF opcodes. BCC is a rewriter plus LLVM compiler and you can use it as a library in your code. There are bindings for C, C++, Python and Go.</p>
+	<p>In this example we have a simple function that runs after <code>d_lookup</code> kernel function that is responsible for directory cache lookups. It doesn’t look complicated and the basics should be understandable for people familiar with C-like languages.</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/08/20.jpg" alt="20"></p>
+	<p>In addition to a compiler, BCC includes some tools that can be used for debugging production systems with low overhead eBPF provides.</p>
+	<p>Let’s quickly go over a few of them.</p>
+	<p>The one above is <code>biolatency</code>, which shows you a histogram of disk io operations. That’s exactly what we started with and it’s already available, just as a script instead of an exporter for Prometheus.</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/08/21.jpg" alt="21"></p>
+	<p>Here’s <code>execsnoop</code>, that allows you to see which commands are being launched in the system. This is often useful if you want to catch quickly terminating programs that do not hang around long enough to be observed in ps output.</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/08/22.jpg" alt="22"></p>
+	<p>There’s also <code>ext4slower</code> that instead of showing slow IO operations, shows slow ext4 filesystem operations. One might think these two map fairly closely, but one filesystem operation does not necessarily map to one disk IO operation:</p>
+	<ul>
+		<li>Writes can go into writeback cache and not touch the disk until later</li>
+		<li>Reads can involve multiple IOs to the physical device</li>
+		<li>Reads can also be blocked behind async writes</li>
+	</ul>
+	<p>The more you know about disk io, the more you want to run stateless, really. Sadly, RAM prices are not going down.</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/08/23.jpg" alt="23"></p>
+	<p>Okay, now to the main idea of this post. We have all these primitives, now we should be able to tie them all together and get an <a href="https://github.com/cloudflare/ebpf_exporter" target="_blank">ebpf_exporter</a> on our hands to get metrics in Prometheus where they belong. Many BCC tools already have kernel side ready, reviewed and battle tested, so the hardest part is covered.</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/08/24.jpg" alt="24"></p>
+	<p>Let’s look at a simple example to get counters for timers fired in the kernel. This example is from the <code>ebpf_exporter</code> repo, where you can find a few more complex ones.</p>
+	<p>On the BCC code side we define a hash and attach to a tracepoint. When the tracepoint fires, we increment our hash where the key is the address of a function that fired the tracepoint.</p>
+	<p>On the exporter side we say that we want to take the hash and transform 8 byte keys with <code>ksym</code> decoder. Kernel keeps a map of function addresses to their names in <code>/proc/kallsyms</code> and we just use that. We also define that we want to attach our function to <code>timer:timer_start</code> tracepoint.</p>
+	<p>This is objectively quite verbose and perhaps some things can be inferred instead of being explicit.</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/08/25.jpg" alt="25"></p>
+	<p>This is an example graph we can get out of this exporter config.</p>
+	<p>Why can this be useful? You may remember our <a href="https://blog.cloudflare.com/tracing-system-cpu-on-debian-stretch/">blog post about our tracing of a weird bug during OS upgrade from Debian Jessie to Stretch</a>.</p>
+	<p>TL;DR is that systemd bug broke TCP segmentation offload on vlan interface, which increased CPU load 5x and introduced lots of interesting side effects up to memory allocation stalls. You do not want to see that allocating one page takes 12 seconds, but that's exactly what we were seeing.</p>
+	<p>If we had timer metrics enabled, we would have seen the clear change in metrics sooner.</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/08/27.jpg" alt="27"></p>
+	<p>Another bundled example can give you IPC or instruction per cycle metrics for each CPU. On this production system we can see a few interesting things:</p>
+	<ul>
+		<li>Not all cores are equal, with two cores being outliers (green on the top is zero, yellow on the bottom is one)</li>
+		<li>Something happened that dropped IPC of what looks like half of cores</li>
+		<li>There’s some variation in daily load cycles that affects IPC</li>
+	</ul>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/08/28.jpg" alt="28"></p>
+	<p>Why can this be useful? Check out <a href="http://www.brendangregg.com/blog/2017-05-09/cpu-utilization-is-wrong.html" target="_blank">Brendan Gregg’s somewhat controversial blog post about CPU utilization</a>.</p>
+	<p>TL;DR is that CPU% does not include memory stalls that do not perform any useful compute work. IPC helps to understand that factor better.</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/08/29.jpg" alt="29"></p>
+	<p>Another bundled example is LLC or L3 CPU cache hit rate. This is from the same machine as IPC metrics and you can see some major affecting not just IPC, but also the hit rate.</p>
+	<p>Why can this be useful? You can see how your CPU cache is doing and you can see how it may be affected by bigger L3 cache or more cores sharing the same cache.</p>
+	<p>LLC hit rate usually goes hand in hand with IPC patterns as well.</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/08/31.jpg" alt="31"></p>
+	<p>Now to the fun part. We started with IO latency histograms and they are bundled with <code>ebpf_exporter</code> examples.</p>
+	<p>This is also a histogram, but now for run queue latency. When a process is woken up in the kernel, it’s ready to run. If CPU is idle, it can run immediately and scheduling delay is zero. If CPU is busy doing some other work, the process is put on a run queue and the CPU picks it up when it’s available. That delay between being ready to run and actually running is the scheduling delay and it affects latency for interactive applications.</p>
+	<p>In <code>cAdvisor</code> you have a counter with this delay, here you have a histogram of actual values of that delay.</p>
+	<p>Understanding of how you can be delayed is important for understanding the causes of externally visible latency. Check out <a href="http://www.brendangregg.com/blog/2017-03-16/perf-sched.html" target="_blank">another blog post by Brendan Gregg</a> to see how you can further trace and understand scheduling delays with Linux perf tool. It's quite surprising how high delay can be on even an even lighty loaded machine.</p>
+	<p>It also helps to have a metrics that you can observe if you change any scheduling sysctls in the kernel. The law is that you can never trust internet or even your own judgement to change any sysctls. If you can’t measure the effects, you are lying to yourself.</p>
+	<p>There’s also <a href="https://www.scylladb.com/2016/06/10/read-latency-and-scylla-jmx-process/" target="_blank">another great post from Scylla people</a> about their finds. We were able to apply their sysctls and observe results, which was quite satisfying.</p>
+	<p>Things like pinning processes to CPUs also affects scheduling, so this metric is invaluable for such experiments.</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/08/33.jpg" alt="33"></p>
+	<p>The examples we gave are not the only ones possible. In addition to IPC and LLC metrics there are around 500 hardware metrics you can get on a typical server.</p>
+	<p>There are around 2000 tracepoints with stable ABI you can use on many kernel subsystems.</p>
+	<p>And you can always trace any non-inlined kernel function with kprobes and kretprobes, but nobody guarantees binary compatibility between releases for those. Some are stable, others not so much.</p>
+	<p>We don’t have support for user statically defined tracepoints or uprobes, which means you cannot trace userspace applications. This is something we can reconsider in the future, but in the meantime you can always add metrics to your apps by regular means.</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/08/34.jpg" alt="34"></p>
+	<p>This image shows tools that BCC provides, you can see it covers many aspects.</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/08/35.jpg" alt="35"></p>
+	<p>Nothing in this life is free and even low overhead still means some overhead. You should measure this in your own environment, but this is <a href="https://github.com/cloudflare/ebpf_exporter/tree/master/benchmark" target="_blank">what we’ve seen</a>.</p>
+	<p>For a fast <code>getpid()</code> syscall you get around 34% overhead if you count them by PID. 34% sounds like a lot, but it’s the simplest syscall and 100ns overhead is a cost of one memory reference.</p>
+	<p>For a complex case where we mix command name to copy some memory and mix in some randomness, the number jumps to 330ns or 105% overhead. We can still do 1.55M ops/s instead of 3.16M ops/s per logical core. If you measure something that doesn’t happen as often on each core, you’re probably not going to notice it as much.</p>
+	<p>We've seen run queue latency histogram to add 300ms of system time on a machine with 40 logical cores and 250K scheduling events per second.</p>
+	<p>Your mileage may vary.</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/08/36.jpg" alt="36"></p>
+	<p>So where should you run the exporter then? The answer is anywhere you feel comfortable.</p>
+	<p>If you run simple programs, it doesn’t hurt to run anywhere. If you are concerned about overhead, you can do it only on canary instances and hope for results to be representative. We do exactly that, but instead of canary instances we have a luxury of having a couple of canary datacenters with live customers. They get updates after our offices do, so it’s not as bad as it sounds.</p>
+	<p>For some upgrade events you may want to enable more extensive metrics. An example would be a major distro or kernel upgrade.</p>
+	<p>The last thing we wanted to mention is that <code>ebpf_exporter</code> is open source and we encourage you to try it and maybe contribute interesting examples that may be useful to others.</p>
+	<p>GitHub: <a href="https://github.com/cloudflare/ebpf_exporter" target="_blank">https://github.com/cloudflare/ebpf_exporter</a></p>
+	<p>Reading materials on eBPF:</p>
+	<ul>
+		<li><a href="https://iovisor.github.io/bcc/" target="_blank">https://iovisor.github.io/bcc/</a></li>
+		<li><a href="https://github.com/iovisor/bcc/blob/master/docs/reference_guide.md" target="_blank">https://github.com/iovisor/bcc/blob/master/docs/reference_guide.md</a></li>
+		<li><a href="http://www.brendangregg.com/ebpf.html" target="_blank">http://www.brendangregg.com/ebpf.html</a></li>
+		<li><a href="http://docs.cilium.io/en/latest/bpf/" target="_blank">http://docs.cilium.io/en/latest/bpf/</a></li>
+	</ul>
+	<p><em>While this post was in drafts, we added another example for <a href="https://github.com/cloudflare/ebpf_exporter/pull/35" target="_blank">tracing port exhaustion issues</a> and that took under 10 minutes to write.</em></p>
+	<!--kg-card-end: markdown-->
+</div>

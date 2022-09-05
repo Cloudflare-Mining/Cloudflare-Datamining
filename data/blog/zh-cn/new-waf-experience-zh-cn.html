@@ -1,0 +1,52 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image2-28.png" class="kg-image" alt="A new WAF Experience"></figure>
+	<p>大约三年前，我们在仪表板导航栏的<a href="https://blog.cloudflare.com/new-firewall-tab-and-analytics/">防火墙选项卡</a>中引入了多项功能，旨在“使我们的产品和服务更直观”。三年来，我们努力<a href="https://blog.cloudflare.com/tag/waf/">不断扩展功能</a>。现在希望再次评估一下 Cloudflare WAF（web 应用程序防火墙）的直观性。</p>
+	<h3 id="-waf">客户引领我们走向全新 WAF</h3>
+	<p>安全形势瞬息万变；web 应用程序的类型快速增长；对于 WAF 应该包含什么和提供什么，业内有各种方法。Cloudflare 不仅代理企业应用程序，还代理数以百万计的个人博客、社区网站和小型商店。我们提供的产品覆盖各种各样的用例；然而，这些产品目前分散各处，使得主动保护规则的可见性不清晰。这促使我们思考：如何通过提供符合预期的更清晰产品，以便支持客户从 WAF 中获得更大的价值。</p>
+	<p>几个月前，我们联系客户并提出一个简单的问题：您认为 WAF 应该包括什么？为此目的，我们采用了一系列用户研究方法，包括卡片分类、树形图测试、设计评估和调查问卷。研究结果显示客户对 WAF 的想法，对他们有何意义，WAF 如何支持他们的用例。这启发了产品团队去扩大范围并考虑（web 应用程序）安全的意义，而非仅仅是 WAF。</p>
+	<p>根据数百位客户的反馈意见，我们的用户研究和产品设计团队与产品管理人员齐心协力，重新思考安全体验。我们研究了自己的假设，并评估了设计概念的有效性，以创建一个结构（即信息架构）来反映客户的心理模型。</p>
+	<p>这个新的结构整合了防火墙规则、托管规则和速率限制规则，使它们成为 WAF 的一部分。全新 WAF 致力于成为 web 应用程序安全的一站式门户，用于将干净流量与恶意流量区分开来。</p>
+	<p>截至今日，您将能看到我们导航栏中的如下变化：</p>
+	<ol>
+		<li><strong>防火墙</strong>被更名为<strong>安全。</strong></li>
+		<li>在<strong>安全</strong>下，列有 <strong>WAF。</strong></li>
+		<li>防火墙规则、托管规则、速率限制规则将出现在 <strong>WAF </strong>下。</li>
+	</ol>
+	<blockquote>从现在开始，每当谈及 <strong>WAF</strong>，我们就是指这三个组件。</blockquote>
+	<p>此外，这三个组件将迎来一些重要的更新。高级速率限制将在 <a href="https://blog.cloudflare.com/zh-cn/welcome-security-week-2022-zh-cn/">Security Week</a> 期间发布，每一个客户也将获得一套免费的托管规则，用于<a href="https://blog.cloudflare.com/waf-for-everyone/">保护流量免受重大漏洞威胁</a>。最后，未来几个月内，防火墙规则将启用<a href="https://developers.cloudflare.com/ruleset-engine/" target="_blank">规则集引擎</a>，增加更多强大功能。是否为之兴奋？</p>
+	<h3 id="-waf-">客户如何塑造 WAF 的未来</h3>
+	<p>接近 500 位客户参加这次用户研究，帮助我们了解需求和使用情景。我们使用了四种研究方法，全部以无监督方式进行，也就是说，世界各地的人可在自己选择的时间和地点远程参加研究。</p>
+	<ul>
+		<li>卡片分类让参与者将导航元素归入他们认为有意义的类别中。</li>
+		<li>树形图测试评估一个建议的导航结构对目标受众的表现好坏。</li>
+		<li>设计评估是一种基于任务的方法，用于衡量设计概念的有效性和效用。</li>
+		<li>调查问卷帮助我们更深入地理解结果，并展现参与者的画像。</li>
+	</ul>
+	<p>根据这次四管齐下的研究，我们对 WAF 和安全进行了一些调整，详述如下。</p>
+	<h3 id="-waf--1">全新的 WAF 体验</h3>
+	<p>最终结果显示 WAF 属于更广泛的安全类别，后者也包括 Bots、DDoS、API Shield 和 Page Shield。这个目的地使您能够创建自己的规则（即防火墙规则），部署 Cloudflare 托管规则，设定速率限制条件，并包括保护 web 应用程序的有用工具。</p>
+	<p>所有计划的所有客户现在都能看到 WAF 产品按如下方式组织：</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/03/image1-29.png" class="kg-image"></figure>
+	<ol>
+		<li><strong>防火墙规则</strong>允许您创建自定义的逻辑来阻止或允许流量，这些规则利用 HTTP 请求的所有组件和 Cloudflare 计算的动态字段，例如机器人分数。</li>
+		<li><strong>速率限制规则</strong>包括我们在 2018 年推出的基于 IP 的产品，以及更新的高级速率限制（针对使用 Advanced 计划的 Enterprise 客户）（即将推出）。</li>
+		<li><strong>托管规则</strong>允许客户部署 Cloudflare 分析团队管理的规则集。这些规则集包括 “Cloudflare 免费托管规则集”，目前正在向<a href="https://blog.cloudflare.com/waf-for-everyone/">所有计划</a>用户推出，包括 Free；也包括面向所有付费计划的 Cloudflare 托管 OWASP 实施和暴露凭据检查。</li>
+		<li><strong>工具</strong>用于访问 IP 访问规则、区域锁定和用户代理锁定。尽管仍受到积极支持，但这些产品涵盖可用防火墙规则覆盖的特定用例。然而，为方便起见，它们继续保留在 WAF 工具箱。</li>
+	</ol>
+	<h3 id="-waf--2">重新设计 WAF 体验</h3>
+	<p>格式塔（Gestalt）设计原则认为，“位置接近的元素被认为具有相似的功能或特征。” 这一原则以及来自客户的反馈为我们的设计决策提供了依据。</p>
+	<p>研究结果让我们认识到，使安全产品在仪表板中容易找到非常重要，还需要明确特定产品彼此之间有何关系及如何相互协作。</p>
+	<p>至关重要的是，页面需要：</p>
+	<ul>
+		<li>显示我们支持的每种规则，即防火墙规则、速率限制规则和托管规则</li>
+		<li>显示每种规则的使用量</li>
+		<li>让客户能够增加新规则和管理现有规则</li>
+		<li>允许客户通过现有拖放行为对规则重新排序</li>
+		<li>足够灵活，以适应在未来增加和整合 WAF 功能</li>
+	</ul>
+	<p>我们迭代了多个方案，包括垂直为主的页面布局，基于表格的页面布局，甚至基于手风琴的页面布局。然而，这些方案中的每一个都迫使我们在页面上重复类似功能的按钮。为了避免造成更多混乱，我们放弃了这些方案，转而采用水平的选项卡页面布局。</p>
+	<h3 id="-">我如何能使用新体验？</h3>
+	<p>今天开始，我们将向所有客户推出全新设计的 WAF！与此同时，我们正在更新文档，以指引您最大限度发挥 Cloudflare WAF 的力量。</p>
+	<h3 id="--1">展望未来</h3>
+	<p>我们正在踏上一个新的征程，目标是 Cloudflare WAF 不但强大，还能轻松满足您的需求。我们正在评估如何为您在保护应用程序时做出决策的过程提供协助。在情报信息不断增加、规则创建可能性越来越多的背景下，我们希望缩短从可能的威胁检测（例如通过安全概述）到设置正确规则以缓解这一威胁的过程。敬请关注！</p>
+</div>

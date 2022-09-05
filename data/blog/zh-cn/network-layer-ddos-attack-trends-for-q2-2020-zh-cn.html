@@ -1,0 +1,59 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/08/image6-1.png" class="kg-image"></figure>
+	<p>2020 年第一季度，在短短几周内，我们的生活方式发生了翻天覆地的变化。我们对在线服务的依赖达到前所未有的程度。有条件的员工在家工作、各个年龄段和各个年级的学生都在线上课，我们重新定义了保持在线的含义。公众对保持联系的依赖程度越深，攻击者造成混乱并破坏我们生活的潜在回报就越丰厚。因此，不出意料，在 2020 年第一季度（2020 年 1 月 1 日至 2020 年 3 月 31 日），我们报告的<a href="https://blog.cloudflare.com/network-layer-ddos-attack-trends-for-q1-2020/">攻击次数出现增加</a> —— 特别是在3月下半月各国政府机构实施居家隔离——就地庇护之后。</p>
+	<p>2020 年第二季度（2020 年 4 月 1 日至 2020 年 6 月 30 日），DDoS 攻击增加的趋势一直持续甚至加速：</p>
+	<ul>
+		<li>与今年前三个月相比，在我们网络上观察到的第 3/4 层 DDoS 攻击数量翻了一番。</li>
+		<li>最大的第 3/4 层 DDoS 攻击的规模显著扩大。实际上，我们观察到我们网络上历来最大的一些攻击。</li>
+		<li>我们观察到了更多攻击手段被使用，且攻击在地理位置上更加分散。</li>
+	</ul>
+	<h3 id="-3-4-ddos-">第二季度全球第 3/4 层 DDoS 攻击的数量翻一番</h3>
+	<p><a href="https://blog.cloudflare.com/meet-gatebot-a-bot-that-allows-us-to-sleep/">Gatebot </a>是 Cloudflare 的主要 DDoS 保护系统。该系统自动检测并缓解分布在全球的 DDoS 攻击。全球 DDoS 攻击是指我们在一个以上边缘数据中心观察到的攻击。这些攻击通常由老练的攻击者使用<a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-botnet/" target="_blank">僵尸网络</a>发动，每个僵尸网络可包含数万至数百万个机器人。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/08/BDES-831_DDoS_Report_Q2-20_Infographic_Blog_2_V2.png" class="kg-image"></figure>
+	<p>第二季度期间，Gatebot 一直忙于应付老练攻击者。Gatebot 在第二季度检测到并缓解的全球第 3/4 层 DDoS 攻击总数环比增长了一倍。在我们的<a href="https://blog.cloudflare.com/network-layer-ddos-attack-trends-for-q1-2020/">第一季度 DDoS 报告</a>中，我们报告了攻击数量和规模激增的情况。这种趋势在第二季度出现加速；2020 年的全球 DDoS 攻击中，超过 66% 发生在第二季度（增长近 100%）。5 月是 2020 年上半年最繁忙的月份，其次是 6 月和 4 月。接近三分之二的第 3/4 层 DDoS 攻击发生在 5 月。</p>
+	<p>实际上，在所有峰值超过 100 Gbps 的第 3/4 层 DDoS 攻击中，有 63% 发生在 5 月。今年 5 月份，随着世界各地疫情继续恶化，攻击者尤其热衷于攻击网站和其他互联网资产。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/08/BDES-831_DDoS_Report_Q2-20_Infographic_Blog_2_V2.png" class="kg-image"></figure>
+	<h3 id="-">虽然大型攻击的规模不断扩大，小型攻击仍然占有数量优势</h3>
+	<p>DDoS 攻击的强度等于其规模 —— 即为压倒目标而淹没链路的数据包或比特的实际数量。“大型” DDoS 攻击是指互联网流量峰值很高的攻击。速率可以按照数据包或比特数来衡量。高比特率的攻击会尝试使互联网链路饱和，而高数据包速率的攻击则会使路由器或其他联网硬件设备不堪重负。</p>
+	<p>与第一季度类似，就 Cloudflare 的网络规模而言，我们在第二季度观察到的大多数第 3/4 层 DDoS 攻击也相对较小。在第二季度，我们发现的所有第 3/4 层 DDoS 攻击中将近 90% 的峰值低于 10 Gbps。对于全球大多数网站和 Internet 资产而言，如果未受到云端 DDoS 缓解服务的保护，低于 10 Gbps 的小型攻击仍然很容易导致中断。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/08/image3.png" class="kg-image"></figure>
+	<p>同样，从数据包速率的角度来看，第二季度所有第 3/4 层 DDoS 攻击中有 76% 的峰值达到每秒 100 万个数据包（pps）。通常，1 Gbps 以太网接口的传输速率介乎 8 万到 150 万 pps。假设该接口还传输合法流量，而且大多数组织的接口速率都小于 1 Gbps，您可以看到，即使这些数据包速率较“小”的 DDoS 攻击也可以轻松地摧毁互联网资产。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/08/image12.png" class="kg-image"></figure>
+	<p>就持续时间而言，所有攻击中有 83% 持续 30 至 60 分钟。我们在第一季度看到的趋势类似，其中 79% 的攻击持续 30 至 60 分钟。这个持续时间看似很短，但是可以想象，这是安全团队与攻击者之间持续 30 至 60 分钟的网络大战。这么一看就不算短了吧。此外，如果 DDoS 攻击造成中断或服务降级，则重新启动设备和重新启动服务的恢复时间会更长；每分钟都对您的收入和声誉带来负面影响。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/08/image5.png" class="kg-image"></figure>
+	<h3 id="-ddos-">在第二季度，我们的网络上发生了有史以来最大的 DDoS 攻击</h3>
+	<p>本季度的大规模攻击越来越多，从数据包速率和比特率两方面而言都是如此。实际上，2020 年所有峰值超过 100 Gbps 的 DDoS 攻击中，有 88% 是在 3 月的就地庇护令生效后发起的。同样，5 月不仅是总攻击次数最多的月份，也是 100 Gbps 以上大型攻击次数最多的月份。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/08/BDES-831_DDoS_Report_Q2-20_Infographic_Blog_6_V2.png" class="kg-image"></figure>
+	<p>从数据包角度看，6 月居首位，有一次攻击的速率达到惊人的<a href="https://blog.cloudflare.com/mitigating-a-754-million-pps-ddos-attack-automatically/"> 7.54 亿 pps</a>。除了这次攻击外，整个季度的最大数据包速率基本保持在 2 亿 pps左右。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/08/image4.png" class="kg-image"></figure>
+	<p>Cloudflare 自动检测并缓解了这次高达 7.54 亿 pps 的攻击。上述攻击是一次有组织行动的一部分，该行动长达四天，从 6 月 18 日持续到 21 日。在这次行动中，来自超过 31.6 万个 IP 地址的攻击流量瞄准了单个 Cloudflare IP 地址。</p>
+	<p>Cloudflare 的 DDoS 保护系统自动检测并缓解了这次攻击，而由于我们的网络规模庞大、覆盖全球，网络性能没有受到任何影响。对于缓解大型攻击而言，全球互联的网络至为重要，因为这样的网络能吸收攻击流量，并在源头附近缓解攻击，同时继续为合法客户流量提供服务，而不引起延迟或服务中断。</p>
+	<h3 id="--1">美国是大多数攻击的目标</h3>
+	<p>如果按国家/地区来看第 3/4 层 DDoS 的攻击分布情况，美国的数据中心受到的攻击最多（22.6%），其次是德国（4.4%）、加拿大（2.7%）和英国（2.6%）。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/08/image8.png" class="kg-image"></figure>
+	<p>如果按每个 Cloudflare 数据中心缓解的攻击字节总数排列，美国仍然领先（34.9%），但其次是中国香港（6.6%）、俄罗斯（6.5%）、德国（4.5%）和哥伦比亚（3.7%）。后续排名变化的原因在于每次攻击产生的带宽总量。例如，虽然中国香港由于发现的攻击次数相对较少（1.8%）而未进入前十名，但这些攻击的容量巨大，并且产生了大量的攻击流量，将中国香港推到了第二名。</p>
+	<p>在分析第 3/4 层 DDoS 攻击时，我们按 Cloudflare 边缘数据中心位置而不是源 IP 的位置对流量进行分类。理由是，在发起第 3/4 层攻击时，攻击者可以“伪造”（更改）源 IP 地址，以掩盖攻击源。如果我们基于伪造的源 IP 来追溯国家/地区，我们会获得虚假的国家/地区信息。Cloudflare 能够按观察到攻击的 Cloudflare 数据中心的位置显示攻击数据，从而克服伪造 IP 带来的挑战。由于我们在全球 200 多个城市设有数据中心，我们能够在报告中实现地理位置上的准确性。</p>
+	<h3 id="-3-4-ddos-57-syn-">第二季度所有第 3/4 层 DDoS 攻击中，57% 是 SYN 洪水攻击</h3>
+	<p>攻击手段是用于描述攻击方法的术语。在第二季度，我们观察到攻击者在第 3/4 层 DDoS 攻击中使用的手段数量有所增加。第二季度共有 39 种不同类型的攻击手段，而第一季度共有 34 种。<a href="https://www.cloudflare.com/learning/ddos/syn-flood-ddos-attack/" target="_blank">SYN 洪水</a>占绝大多数，比例超过 57%，其次是 RST（13%）、<a href="https://www.cloudflare.com/learning/ddos/udp-flood-ddos-attack/" target="_blank">UDP</a>（7%）、<a href="https://blog.cloudflare.com/reflections-on-reflections/">CLDAP</a>（6%）和<a href="https://blog.cloudflare.com/ssdp-100gbps/">SSDP</a>（3%）攻击。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/08/image1-3.png" class="kg-image"></figure>
+	<p>SYN 洪水攻击旨在利用<a href="https://www.cloudflare.com/learning/ddos/glossary/tcp-ip/" target="_blank"> TCP </a>连接的握手过程。攻击者重复发送带有同步标志（SYN）的初始连接请求数据包，试图淹没跟踪 TCP 连接状态的路由器连接表。路由器回复包含同步确认标志（SYN-ACK）的数据包，为每个给定的连接分配一定数量的内存，然后错误地等待客户端发回最终确认（ACK）。如果有足够数量的 SYN 占用路由器的内存，则路由器将无法为合法客户端分配更多内存，从而导致拒绝服务。</p>
+	<p>无论攻击手段是什么，Cloudflare 都会使用我们三管齐下的保护方法（包括我们自建的 DDoS 保护系统）自动检测并缓解有状态或无状态 DDoS 攻击：</p>
+	<ul>
+		<li><a href="https://blog.cloudflare.com/meet-gatebot-a-bot-that-allows-us-to-sleep/">Gatebot</a> —— Cloudflare 的集中式 DDoS 保护系统，用于检测和缓解全球分布的 DDoS 容量耗尽攻击。Gatebot 在我们网络的核心数据中心中运行。它从我们每个边缘数据中心接收样本，对其进行分析，并在检测到攻击时自动发送缓解指令。Gatebot 还同步到我们客户的每台 Web 服务器，以识别其运行状况并相应地触发定制的保护机制。</li>
+		<li><a href="https://blog.cloudflare.com/rolling-with-the-punches-shifting-attack-tactics-dropping-packets-faster-cheaper-at-the-edge/">dosd</a>（拒绝服务守护程序）—— Cloudflare 的分布式 DDoS 保护系统。dosd 在全球每个 Cloudflare 数据中心的每台服务器中自主运行、分析流量并在需要时应用本地缓解规则。除了能够以超快的速度检测和缓解攻击外，dosd 还通过将检测和缓解能力委派给边缘来显著提高我们的网络韧性。</li>
+		<li><a href="https://blog.cloudflare.com/announcing-flowtrackd/">flowtrackd</a>（流跟踪守护程序）—— Cloudflare 的 TCP 状态跟踪服务，用于检测和缓解单向路由拓扑中最随机、最复杂的基于 TCP 的 DDoS 攻击。flowtrackd 能够识别 TCP 连接的状态，然后对不属于合法连接的数据包进行丢弃、质询或设置速率限制。</li>
+	</ul>
+	<p>除了我们的自动 DDoS 保护系统之外，Cloudflare 还可以生成实时威胁情报，以自动缓解攻击。此外，Cloudflare 还为客户提供防火墙、速率限制和其他工具，以进一步自定义和优化其保护。</p>
+	<h3 id="cloudflare-ddos-">Cloudflare DDoS 缓解</h3>
+	<p>随着企业和个人对互联网的使用不断发展，DDoS 策略也应该相应调整。Cloudflare 保护<a href="https://www.cloudflare.com/ddos" target="_blank">网站</a>、<a href="https://www.cloudflare.com/products/cloudflare-spectrum" target="_blank">应用程序</a>和<a href="https://www.cloudflare.com/magic-transit" target="_blank">整个网络</a>免受任何规模、种类或复杂程度的 DDoS 攻击。</p>
+	<p>我们的综合性解决方案备受客户和行业分析师推荐，主要出于以下三个原因：</p>
+	<ul>
+		<li>网络规模：Cloudflare 网络容量高达 37 Tbps，可以轻松阻止任何规模、类型或复杂程度的攻击。Cloudflare 网络的 DDoS 缓解容量高于后四家竞争对手的容量总和。</li>
+		<li>缓解时间：Cloudflare 可以在不到 10 秒内缓解全球大多数网络层攻击，在预先配置静态规则时可即刻缓解（0 秒）。凭借我们遍及全球的网络，Cloudflare 能以最小的延迟在源头附近缓解攻击。在某些情况下，流量传输速度甚至比在公共互联网上更快。</li>
+		<li>威胁情报：Cloudflare 的 DDoS 缓解由来自超过 2700 万个互联网资产的威胁情报驱动。此外，威胁情报还集成到面向客户的防火墙和工具中，以增强客户的能力。</li>
+	</ul>
+	<p>由于我们的网络架构，Cloudflare 具有独特优势，能以无与伦比的规模、速度和智能实现 DDoS 缓解。Cloudflare 的网络就像是一个分形 —— 每项服务在遍布全球<a href="https://www.cloudflare.com/network" target="_blank"> 200 个城市</a>的每个 Cloudflare 数据中心的每台服务器上运行。这使 Cloudflare 能够在靠近源头的位置检测和缓解攻击，无论攻击的规模、来源或类型如何。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/08/image10.png" class="kg-image"></figure>
+	<p>要了解有关 Cloudflare DDoS 解决方案的更多信息，请<a href="https://www.cloudflare.com/plans/enterprise/" target="_blank">联系我们</a>或<a href="https://dash.cloudflare.com/" target="_blank">开始使用</a>。</p>
+	<p>您还可以参加即将举行的直播网络研讨会，期间我们将讨论这些趋势，以及企业可以实施哪些策略来抵御 DDoS 攻击并保持其网络在线和快速运行。您可以<a href="https://onlinexperiences.com/Launch/QReg/ShowUUID=43F66E2A-9532-44CF-9852-59324105F8E0&amp;LangLocaleID=1033" target="_blank">在这里报名</a>。</p>
+</div>

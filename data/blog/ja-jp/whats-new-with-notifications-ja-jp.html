@@ -1,0 +1,22 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image1-64.png" class="kg-image" alt="What’s new with Cloudflare Notifications?"></figure>
+	<p>2019年に戻って、当社は<a href="https://blog.cloudflare.com/new-tools-to-monitor-your-server-and-avoid-downtime/">ブログで、あなたのアカウントに通知を設定するための一元化されたハブとして、当社ブランドの新しい通知センター</a>を紹介しました。それ以来、設定できる新しいタイプの通知については多く語ってきましたが、通知プラットフォーム自体の更新についてはそれほど多く語ってきませんでした。では、Notificationsの新機能は何でしょうか？</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/12/image3-31.png" class="kg-image"></figure>
+	<h3 id="-"><strong>通知機能にこだわる理由</strong></h3>
+	<p>当社は、お客様にとって通知が非常に重要であることを理解しています。Cloudflareは、お客様のインターネットプロパティとその他の世界との間に位置しています。何か問題が発生した場合、エンドユーザーに大きな影響を与える可能性があるため、すぐに知りたいと思うものです。しかし、重要なものを見逃さないようにするためだけに分析ページの更新を何度も押しながら、一日中Cloudflareダッシュボード上に座りたいとは思わないでしょう。そこで登場するのがNotificationsです。インターネットプロパティを積極的に監視することを要求をする代わりに、何か問題が発生したときにCloudflareが直接通知してくれるようにしたいのです。</p>
+	<p>Cloudflareには、重要なものを見逃さないようにするためのさまざまな通知タイプがあります。当社は<a href="https://blog.cloudflare.com/announcing-ddos-alerts/">お客様がDDoS攻撃を受けて</a>いたり、<a href="https://blog.cloudflare.com/get-notified-when-your-site-is-under-attack/">ファイアウォールが通常よりも多くの要求をブロックして</a>いたり、<a href="https://blog.cloudflare.com/smarter-origin-service-level-monitoring/">オリジンが高レベルの5xxエラーを確認して</a>いたり、あるいは<a href="https://blog.cloudflare.com/introducing-workers-usage-notifications/">WorkersスクリプトのCPU使用率が平均を上回っている</a>ことお知らせするための通知があります。当社は常に新しい通知を追加しているので、<a href="https://developers.cloudflare.com/fundamentals/notifications/notification-available" target="_blank">Cloudflare開発者ドキュメント</a>をチェックして最新情報をご確認ください！</p>
+	<h3 id="-webhook-"><strong>メールを止め、Webhookの出番</strong></h3>
+	<p>このように数々の優れた通知があるのですが、実際<em>どのように</em>イベントをお知らせするのでしょうか？定番の答えは、「メールでお知らせします」です。すべてのお客様が、ご自分の選んだメールアドレスに通知を送信するよう設定することができます。</p>
+	<p>しかし、メールは必ずしも最適な選択とは限りません。メールがスパムとして送信されたり、めったにチェックしない別のフォルダに振り分けられたりしたら、どうなるでしょう？受信トレイを掃除しない人は、4,000通もの未読メールがあると、新しく届いた重要なメールをかき消してしまうかもしれません。SlackやMicrosoft Teams、Discordなど、ご自身が最もよくチェックするメッセージングプラットフォームに直接通知が届くようにしたいものです。Professionalプラン、BusinessプランおよびEnterpriseプランをご利用のお客様のために、ここでWebhooksの登場となります。</p>
+	<p>Webhooksは信じられないほど強力です！それはシンプルで標準化された動作をするAPIの一種で、あるサービス（Cloudflare）が別のサービスに直接イベントを送れるようにします。この送信先サービスは、メッセージングプラットフォーム、データ管理システム、ワークフロー自動化システム、あるいは独自の内部APIなど、ほとんど何でもかまいません。</p>
+	<p>Cloudflareは以前よりSlack、Microsoft Teams、Google Chatおよびお客様独自のAPIへのWebフッキングを第一線でサポートしてきましたが、最近DataDog、Discord、OpsGenieおよびSplunkのサポートも追加されました。これらの各タイプのWebhookの設定方法については、<a href="https://developers.cloudflare.com/fundamentals/notifications/configure-webhooks" target="_blank">Cloudflare開発者ドキュメント</a>でご覧いただけます。</p>
+	<p>Webhooksは非常に汎用性が高いため、利用するお客様が増えています！Cloudflareの通知システムで設定されるWebhooksの数は、平均して3ヶ月ごとに2倍に増えています。お客様はダッシュボードのNotificationsタブでWebhooksを設定することができます。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/12/image2-47.png" class="kg-image"></figure>
+	<h3 id="--1"><strong>履歴を忘れた者は、それを繰り返す運命にある</strong></h3>
+	<p>Webhooksは素晴らしいものですが、まだエラーの余地を残しています。通知を受け取ったものの、誤って削除してしまった場合はどうなるのでしょうか？あるいは、あなたの会社に新しい人が入ってきたとき、新入社員に送るための通知設定を更新するのを忘れてしまったとしたら？</p>
+	<p>これまで、Cloudflareの通知は完全にポイントインタイムでした。お客様のご希望の方法で通知を送りましたが、その通知を見ることはできなくなりました。その通知がお客様の側で失われた場合、私たちはその通知に含まれる情報を回復するための手段を持ちません。</p>
+	<p>通知履歴は、まさにその問題を解決するものです。ユーザーは、送信された通知、送信日および送信先のログを確認することができます。Freeプラン、ProfessionalプランおよびBusinessプランのお客様は、過去30日分の通知履歴を見ることができます。Enterpriseプランのお客様は、過去90日分の通知履歴を確認できます。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/12/image4-27.png" class="kg-image"></figure>
+	<p>現在、通知履歴は <a href="https://api.cloudflare.com/#notification-history-properties" target="_blank">API経由でのみ利用可能</a>ですが、Cloudflareダッシュボードで直接閲覧するためのアップデートをお待ちください！</p>
+	<p></p>
+</div>

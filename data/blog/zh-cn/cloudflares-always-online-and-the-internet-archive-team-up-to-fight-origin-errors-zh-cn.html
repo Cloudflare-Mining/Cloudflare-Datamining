@@ -1,0 +1,42 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2020/12/image-30.png" class="kg-image"></figure>
+	<p>在整个互联网上，每天都会发生一些糟糕但稀松平常的事情：数以千计的<a href="https://www.cloudflare.com/learning/cdn/glossary/origin-server/" target="_blank">源服务器</a>宕机，导致连接错误和用户访问受阻。Cloudflare的用户每天等待无法访问的源服务器响应错误信息的时间加起来超过了4年半。但访问者并不希望看到错误页面，而是想要看到内容！</p>
+	<p>对于那些希望互联网变得更强大、更有弹性并有重要冗余的人来说，今天是激动人心的一天：Cloudflare很高兴地宣布与互联网档案馆合作，为我们的Always Online服务带来新的功能。</p>
+	<p>Always Online为客户的网站提供了保障。如果客户的源主机离线，超时或以其他方式中断，Always Online将介入并为访问者提供web页面的存档副本。<a href="https://archive.org/" target="_blank">互联网档案馆</a>是一个非盈利组织，它运行着Wayback Machine，这是一种可以保存互联网上数十亿网站快照的服务。通过与互联网档案馆合作，Cloudflare能够通过互联网档案馆无缝地为无法访问的网站传递响应，而互联网档案馆则可以继续对web进行归档，以提供对所有知识的访问。</p>
+	<p>在Cloudflare仪表板上启用“Always Online”功能，可以让我们与Wayback Machine共享您的主机名，以便它们存档您的网站。当一个网站的源主机下线时，Cloudflare将访问互联网档案馆以检索该网站的最新存档版本，让访问者仍然能够查看该网站的内容。</p>
+	<h3 id="-">尝试连接崩溃的源主机</h3>
+	<p>当用户访问Cloudflare网站时，他们的笔记本电脑/手机/平板电脑/智能冰箱会向Cloudflare的边缘发送请求。我们的边缘首先会查看是否可以用缓存的内容进行响应；如果请求的内容不在缓存中，或者确定该缓存已过期，则从源服务器获得一个新的副本。除了在源主机对未缓存/过期内容进行抓取，我们还会更新缓存，使后续请求能够更快、更安全地提供给访问者。如果我们无法抵达源主机，我们的边缘将多次尝试连接，然后再将源主机标记为关闭状态，并将错误页面提供给访问者。接收错误页面对任何人来说都是不理想的，所以我们非常努力地确保访问Cloudflare网站的用户能够获得一些内容，即使源主机面临故障。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2020/12/image-31.png" class="kg-image"></figure>
+	<h3 id="always-online-">Always Online简史</h3>
+	<p>当Cloudflare在10年前开始运营时，我们的大多数客户规模都很小，并且在频繁停机的主机上运行其互联网资产。这些早期客户担心他们的主机可能会在搜索引擎索引其网站的同时崩溃。搜索引擎的爬虫会将离线网站报告为无响应的，并且该网站的搜索排名将会下降。Always Online的推出正是为了消除这种忧虑。</p>
+	<p>通过在<a href="https://blog.cloudflare.com/always-online-because-downtime-sucks/">过去10年中</a>运营Always Online ，我们了解到用简单、不引人注目的工具来解决网络宕机问题是我们的客户及其用户所无比看重的。尽管有一些特性已经被重写了一遍又一遍，但是代码的其他部分相对来说经受住了时间的考验，这证明了其健壮性。例如，Always Online清晰地显示了一个横幅，表明由于无法访问源，它正在提供该页面的存档版本，这种透明性受到了网站所有者和访问者的欢迎。</p>
+	<p>我们最近开始着手让Always Online变得更好。我们希望维持客户喜欢的部分——在源服务器宕机时为用户提供尽可能无缝的体验——同时增加通过Always Online提供的内容量，确保其内容尽可能新鲜，通过一种让互联网变得更好的方式来展现这一存档。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/12/image-33.png" class="kg-image">
+		<figcaption>访客通过Always Online将看到的内容。</figcaption>
+	</figure>
+	<h3 id="--1">走进互联网档案馆</h3>
+	<p>与互联网档案馆的Wayback Machine的合作为下一代Always Online提供了动力，可以实现所有这些目标。互联网档案馆的使命是提供对所有知识的普遍访问。自1996年以来，互联网档案馆的Wayback Machine一直在对大部分公共网络进行存档：保存并提供数以百万计的网站和页面。没有了互联网档案馆，这些网站和页面就会丢失。为了完成这一使命，他们已经存档了4680亿个<a href="https://archive.org/web/" target="_blank">网页</a>，总计超过45PB的信息。</p>
+	<p>Always Online与互联网档案馆的集成有助于档案馆扩充其互联网记录；许多启用Always Online功能的域可能尚未被档案馆的爬虫发现。而对于Cloudflare的客户来说，这些档案将无缝地为访问者提供访问内容的权限，否则这些内容将会是错误的。</p>
+	<p>换句话说，Cloudflare与互联网档案馆的合作可以使互联网变得更好，更强大，并且可被每一个人使用。</p>
+	<!--kg-card-begin: markdown-->
+	<blockquote><em>“通过与Cloudflare合作，我们正在了解并存档我们以前可能不知道的网页。在集成了Cloudflare的Always Online服务以后，如果这些网页无法通过实时网络访问，访问者还可以访问这些网页的存档。”</em><br><em>——互联网档案馆Wayback Machine总监，</em><strong>Mark Graham</strong></blockquote>
+	<!--kg-card-end: markdown-->
+	<!--kg-card-begin: markdown-->
+	<blockquote><em>“我们很高兴能与Cloudflare合作，期待这种合作关系为互联网带来重要的冗余，并使我们能够继续努力，让互联网更加有用和可靠。”</em><br><em>——互联网档案馆创始人兼数字图书馆员，</em><strong>Brewster Kahle</strong></blockquote>
+	<!--kg-card-end: markdown-->
+	<h3 id="-always-online-">新的Always Online在幕后是如何工作的？</h3>
+	<p>升级到Cloudflare控制面板上的新版Always Online可以让我们与互联网档案馆共享一些关于您的网站的基本信息（比如主机名和流行url），这样他们就可以开始定期抓取并存档您的网站。这种信息共享和爬取确保了内容可通过Always Online提供，也加深了可通过档案馆直接访问的内容库。</p>
+	<p>如果你的源主机宕机或无法访问，Cloudflare的边缘将返回一个状态码，在<a href="https://support.cloudflare.com/hc/en-us/articles/115003011431-Troubleshooting-Cloudflare-5XX-errors" target="_blank"> 520到527</a>范围内，表明连接到源的过程出现问题。发生这种情况时，Cloudflare将首先查看本地边缘数据中心，以确认是否存在可提供给网站访问者的内容版本或内容是否过期。如果本地缓存中没有历史版本，Cloudflare就会访问互联网档案馆来获取该站点的最新存档版本，从而提供给您的访问者。此时，Always Online会在存档的内容上加上一个横幅，让您的访问者知道您的源节点出现了问题。您的访问者只需在该横幅通知栏上单击一下，就可以查看您的源节点是否恢复在线。尽管访问者看到的需要与源服务器进行通信的动态内容仍然会显示错误（例如，Web应用程序或购物车），但Always Online通常会提供基本的内容。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2020/12/image-32.png" class="kg-image"></figure>
+	<h3 id="-always-online">启用新版Always Online</h3>
+	<p>目前，旧的Always Online服务仍然可用，但我们计划在短期内完全过渡到互联网档案馆支持的版本。</p>
+	<p>Cloudflare客户可以在控制面板中启用Always Online：</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2020/12/image-34.png" class="kg-image"></figure>
+	<h3 id="--2">了解更多</h3>
+	<ul>
+		<li>有关Always Online及其工作方式的更多信息，请查阅我们的<a href="https://support.cloudflare.com/hc/articles/200168436-Understanding-Cloudflare-Always-Online" target="_blank">文档</a>。</li>
+		<li>要开始使用Always Online，请登录Cloudflare控制面板并将其打开</li>
+		<li>点击<a href="https://blog.archive.org/2020/09/17/internet-archive-partners-with-cloudflare-to-help-make-the-web-more-useful-and-reliable/" target="_blank">此处</a>可查看互联网档案馆关于我们合作关系的公告。</li>
+		<li>如你希望帮助改进Always Online或我们互联网的其他部分，欢迎<a href="https://www.cloudflare.com/careers/jobs/" target="_blank">加入</a>我们。</li>
+	</ul>
+</div>

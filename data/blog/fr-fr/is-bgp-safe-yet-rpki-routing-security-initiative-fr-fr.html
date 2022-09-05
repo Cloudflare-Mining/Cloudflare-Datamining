@@ -1,0 +1,42 @@
+<div class="post-content lh-copy gray1">
+	<p>Cela fait bien trop longtemps que les fuites et les détournements BGP sont considérés comme inévitables sur Internet. Nous avons toujours compté sur la protection des couches supérieures comme TLS et DNSSEC pour transmettre les paquets sans les altérer, mais il suffit souvent qu’un itinéraire soit détourné pour que l’adresse IP soit injoignable. Cela se traduit par une panne d’Internet.</p>
+	<p>Internet est trop indispensable pour que ce problème connu subsiste. Il est temps que les réseaux empêchent que les fuites et les détournements aient un quelconque impact. Le temps est venu de sécuriser le protocole BGP. Nous n’avons plus d’excuses.</p>
+	<p>Border Gateway Protocol (BGP), un protocole d’échange d’itinéraires d’acheminement, existe depuis les années 1980 et a évolué depuis. Au fil des ans, il a été doté de dispositifs de sécurité. Le plus important d’entre eux est l’infrastructure à clé publique de ressources (ICPR), qui constitue un mécanisme de sécurité pour le routage. Cela a fait l’objet de <a href="https://blog.cloudflare.com/tag/rpki/">plusieurs articles sur le blog</a> ayant fait suite à notre déploiement en 2018.</p>
+	<p>De nos jours, les entreprises estiment que l’ICPR est suffisamment aboutie pour que son utilisation soit généralisée, avec un écosystème de <a href="https://github.com/cloudflare/gortr" target="_blank">logiciels</a> et <a href="https://rpki.cloudflare.com/" target="_blank">d’outils</a> suffisant, y compris des outils que nous avons écrits et publiés en open source. Nous avons entièrement déployé un système de validation de l’origine pour toutes nos sessions BGP avec nos homologues et avons signé nos préfixes.</p>
+	<p>Toutefois, Internet ne sera sécurisé que si les principaux fournisseurs de réseaux <a href="https://www.ndss-symposium.org/wp-content/uploads/2017/09/ndss2017_06A-3_Gilad_paper.pdf" target="_blank">mettent en place l’ICPR</a>. Que ce soit par inadvertance ou délibérément, ces réseaux peuvent propager une fuite ou un piratage à grande échelle. Ils doivent donc participer à l’éradication des problèmes liés au protocole BGP.</p>
+	<p>Nombreux sont ceux qui, comme AT&amp;T et Telia, ont été les premiers à se doter de l’ICPR au niveau mondial en 2019. Cogent et NTT les ont suivis en 2020. Des centaines de réseaux de toutes tailles ont accompli un excellent travail ces dernières années, mais il reste encore beaucoup à faire.</p>
+	<p>Si l’on observe les entonnoirs de clients des réseaux qui ont adopté l’ICPR, on constate qu’environ 50 % d’Internet est mieux protégé contre les fuites au niveau des itinéraires. C’est très bien, mais loin d’être suffisant.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/04/isbgpsafeyet.png" class="kg-image"></figure>
+	<p>Aujourd’hui, nous vous présentons <a href="https://isbgpsafeyet.com/" target="_blank">isBGPSafeYet.com</a>, un site web permettant de suivre les déploiements et le filtrage des itinéraires incorrects par les grands réseaux.</p>
+	<p>Nous espérons que cela aidera la communauté et nous allons mettre à disposition les informations sur le site web. Le code source est disponible sur <a href="https://github.com/cloudflare/isbgpsafeyet.com" target="_blank">GitHub</a>, et vos suggestions et contributions sont les bienvenues.</p>
+	<p>Nous espérons que cette initiative permettra de rendre l’ICPR plus accessible à tous et, à terme, de réduire l’impact des fuites sur le routage. Faites passer le message à vos fournisseurs d’accès à Internet (FAI), à vos fournisseurs d’hébergement et à vos réseaux de transit pour bâtir un Internet plus sûr.</p>
+	<p>En outre, afin de surveiller et de tester les déploiements, nous avons décidé de signaler deux préfixes malveillants que nous avons relevés dans nos quelque 200 datacenters et via les quelque 233 points d’échange Internet (IXP) auxquels nous sommes connectés :</p>
+	<ul>
+		<li>103.21.244.0/24</li>
+		<li>2606:4700:7000::/48</li>
+	</ul>
+	<p>Ces deux préfixes doivent être considérés comme <em>non valides</em> et ne doivent pas être acheminés par votre fournisseur si l’ICPR est appliquée au sein de son réseau. Cela permet de démontrer facilement jusqu’où peut aller un itinéraire malveillant et de vérifier si l’ICPR fonctionne dans des conditions réelles.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/04/Screen-Shot-2020-04-16-at-6.36.48-PM.png" class="kg-image">
+		<figcaption><a href="https://rpki.cloudflare.com/?validateRoute=13335_103.21.244.0%252F24" target="_blank">Une autorisation d’origine de routage pour 103.21.244.0/24 sur rpki.cloudflare.com</a></figcaption>
+	</figure>
+	<p>Dans le cadre du test que vous pouvez exécuter sur <a href="https://isbgpsafeyet.com/" target="_blank">isBGPSafeYet.com</a>, votre navigateur tentera de télécharger deux pages : la première, valid.rpki.cloudflare.com, contient un préfixe valide pour l’ICPR et la seconde, invalid.rpki.cloudflare.com, contient un préfixe non valide pour l’ICPR.</p>
+	<p>Le test donne deux résultats :</p>
+	<ul>
+		<li>Si les deux pages ont été correctement chargées, cela signifie que votre FAI a accepté l’itinéraire non valide. Il n’a pas mis en place l’ICPR.</li>
+		<li>Si seul valid.rpki.cloudflare.com a été chargé, cela signifie que votre FAI a mis en place l’ICPR. Les fuites d’itinéraires vous poseront moins de problèmes.</li>
+	</ul>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/04/blogpost2-01.png" class="kg-image" alt="diagram showing a simple test of RPKI invalid reachability">
+		<figcaption>Un simple test d’accessibilité ICPR</figcaption>
+	</figure>
+	<p>Nous allons effectuer des tests en utilisant ces préfixes pour vérifier la propagation. <a href="https://en.wikipedia.org/wiki/Traceroute" target="_blank">Traceroutes</a> et les sondages nous ont permis par le passé de créer des représentations graphiques de déploiements.</p>
+	<p>Il suffit de calculer le nombre de réseaux qui envoient l’itinéraire accepté à leurs homologues et aux collecteurs :</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/04/invalid-prefixes-reachability.png" class="kg-image" alt="RIPE">
+		<figcaption>État de l’itinéraire selon l’outil de collecte d’itinéraires en ligne <a href="https://stat.ripe.net/widget/routing-status#w.resource=103.21.244.0/24&amp;w.min_peers_seeing=0" target="_blank">RIPE Stat</a></figcaption>
+	</figure>
+	<p>En décembre 2019, nous avons publié une <a href="https://xkcd.com/195/" target="_blank">courbe de Hilbert</a> de l’espace d’adressage IPv4. Chaque pixel représente un préfixe /20. Si un point est jaune, le préfixe ne répond qu’à la sonde d’un espace IP validé par l’ICPR. S’il est bleu, le préfixe répond aux sondes provenant à la fois de l’espace IP valide et de l’espace IP non valide.</p>
+	<p>En bref, les zones jaunes sont les espaces IP situés derrière les réseaux qui ignorent les préfixes invalidés par l’ICPR. Internet ne sera pas sûr tant que la zone bleue ne sera pas devenue jaune.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/04/blogpost-hilbert-01.png" class="kg-image">
+		<figcaption>Courbe de Hilbert de l’espace d’adressage IP derrière les réseaux filtrant les préfixes invalidés par l’ICPR</figcaption>
+	</figure>
+	<p>Pour finir, nous aimerions remercier tous les réseaux qui ont déjà mis en place l’ICPR et tous les développeurs qui ont travaillé sur les bases de code des logiciels de validation. Les deux années qui viennent de s’écouler ont montré qu’Internet peut devenir plus sûr et nous attendons avec impatience le jour où nous pourrons considérer les fuites et les détournements d’itinéraires comme de l’histoire ancienne.</p>
+</div>

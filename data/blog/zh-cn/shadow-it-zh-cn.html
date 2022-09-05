@@ -1,0 +1,24 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image5-10.png" class="kg-image" alt="Shadow IT: make it easy for users to follow the rules"></figure>
+	<p>SaaS 应用程序的使用在过去十年里呈爆发式增长。根据 <a href="https://www.gartner.com/en/newsroom/press-releases/2021-08-02-gartner-says-four-trends-are-shaping-the-future-of-public-cloud" target="_blank">Gartner</a> 的测算，2021 年全球的 SaaS 花费是 1450 亿美元，预计在 2022 年将达到 1710 亿美元。SaaS 应用程序的一项关键优势是，它们入门简单，成本低廉甚至免费。这对于用户和领导者都是好消息 — 试用新工具而不做出承诺或采购，是很容易的。但这种便捷性也给首席信息官和安全团队带来了挑战。许多 SaaS 应用程序非常适合某个特定任务，但缺乏必需的安全控制或可见性。员工可以轻松开始将 SaaS 应用程序用于日常工作，而不被 IT 团队察觉 — 这些“未经批准的”应用程序被通俗地称为影子 IT。</p>
+	<p>首席信息官往往不知道其 SaaS 员工使用的是什么应用程序。即使知道，他们也可能很难阻止用户使用未经批准的应用程序，或者反过来说，很难让用户轻松访问已批准的应用程序。</p>
+	<h3 id="-"><strong>针对应用程序使用情况的可见性</strong></h3>
+	<p>在办公室，首席信息官及其团队更容易监控其组织中的应用程序使用情况。存在相应机制来检查通过办公室 Wi-Fi 设备的出站 DNS 和 HTTP 流量，并检测未经批准的应用程序。在办公室环境中，IT 团队还可以注意到同事在使用新的 SaaS 应用程序，或者可能听到他们提及这些新的应用程序。当用户由于新冠病毒疫情和其他因素而转为远程工作时，以上情况就无法实现，网络驱动的日志记录也变得无效。在没有集中式网络的情况下，应用程序监控的焦点需要转移到用户的设备。</p>
+	<p>Cloudflare for Teams 再迎更新，解决影子 IT 挑战。我们的 Zero Trust 平台提供了一个框架，用于识别新应用程序、阻止应用程序并为已批准的应用程序提供单一位置。Cloudflare Gateway 允许管理员监控用户流量并检测新应用程序使用情况。我们的影子 IT 报告展示了新应用程序的列表，并允许批准或拒绝每个应用程序。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image3-18.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image2-26.png" class="kg-image"></figure>
+	<p>这样一来，首席信息官能够深入了解整个企业中使用了哪些应用程序，并可以想出一个方案，根据组织中的批准状态来相应允许和阻止应用程序。</p>
+	<h3 id="--1"><strong>阻止正确的应用程序</strong></h3>
+	<p>知道“影子”应用程序的列表后，下一步就是使用有意义的错误消息来阻止这些应用程序，将用户引导至已批准的应用程序。这样做的意图不应该是让用户感到做错了什么事，而是向他们提供正确的应用程序并鼓励他们加以利用。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image1-44.png" class="kg-image"></figure>
+	<p>Cloudflare Gateway 允许团队配置策略来阻止未经批准的应用程序，并向用户提供清晰的说明，指出该应用程序的替代选项有哪些。在 Gateway 中，管理员可以配置特定于应用程序的策略，如“阻止除了 Google 云端硬盘之外的所有文件共享应用程序。” <a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering/http-policies/tenant-control" target="_blank">租户控制</a>可以用于限制对给定应用程序的特定实例的访问，以防止个人帐户使用这些工具。</p>
+	<h3 id="--2"><strong>保护您的已批准应用程序</strong></h3>
+	<p>下一步是保护您确实希望用户使用的应用程序。为了完全保护您的 SaaS 应用程序，请务必保护初始授权并维护用户活动的清晰审计跟踪。Cloudflare Access for SaaS 允许管理员保护其 SaaS 应用程序的入口，并在允许访问之前验证用户身份、多因素身份验证、设备状态和位置。然后，Gateway 提供应用程序内所有用户活动的清晰审计跟踪，以在发生违规或其他安全性事件的情况下提供清晰的背景。</p>
+	<p>这样一来，首席信息官及其团队可以定义哪些用户可以或不可以访问特定应用程序。他们不用创建广泛的访问列表，而是可以精确定义哪些用户需要特定工具来完成其工作。这有利于增强安全性和控制许可成本。</p>
+	<h3 id="--3"><strong>向用户展示他们需要的应用程序</strong></h3>
+	<p>最后的挑战是向用户清楚表明他们可以和不可以访问哪些应用程序。新员工经常在前几周发现能够帮助他们更快提升工作速度的新应用程序。</p>
+	<p>我们想要让用户能够更轻松地在一个地方访问其所有批准的应用程序。我们向 Access 应用程序启动器添加了书签和应用程序可见性控制，进一步简化此过程。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image4-21.png" class="kg-image"></figure>
+	<p>当您的所有应用程序都通过应用程序启动器可用后，我们会记录这些应用程序中的所有用户活动。更好的是，其中许多应用程序都在 Cloudflare 中托管，这可带来总体性能提升。</p>
+	<p>Access 应用程序启动器入门很简单，并且对前 50 个用户免费！立即从 <a href="https://dash.teams.cloudflare.com/" target="_blank">Cloudflare for Teams 仪表板</a>开始使用。<br></p>
+</div>

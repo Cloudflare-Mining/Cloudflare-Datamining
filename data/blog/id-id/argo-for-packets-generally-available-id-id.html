@@ -1,0 +1,236 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image5-14.png" class="kg-image" alt="Argo for Packets is Generally Available"></figure>
+	<p>Bagaimana menurut Anda jika kami memberitahukan bahwa jaringan IP Anda mungkin 10% lebih cepat, dan Anda hanya perlu menghubungi tim akun Anda untuk mewujudkannya?</p>
+	<p>Hari ini, kami mengumumkan ketersediaan umum Argo for Packets, yang menyediakan optimalisasi jaringan lapisan IP untuk meningkatkan produk layanan jaringan Cloudflare Anda seperti <a href="https://www.cloudflare.com/magic-transit/" target="_blank">Magic Transit</a> (layanan perlindungan DDoS Layer 3 kami), <a href="https://www.cloudflare.com/magic-wan/" target="_blank">Magic WAN</a> (yang memungkinkan Anda membangun SD-WAN Anda sendiri di atas Cloudflare), dan <a href="https://blog.cloudflare.com/cloudflare-for-offices/">Cloudflare for Offices</a> (inisiatif kami untuk menyediakan konektivitas yang aman dan berkinerja tinggi ke ribuan gedung perkantoran di seluruh dunia).</p>
+	<p>Jika Anda tidak terbiasa dengan Argo, ini adalah produk Cloudflare yang membuat traffic Anda lebih cepat. Argo menemukan jalur tercepat dan paling tersedia untuk traffic Anda di Internet. Setiap hari, Cloudflare membawa triliunan permintaan, koneksi, dan paket di seluruh jaringan kami dan Internet. Karena jaringan kami, pelanggan kami, dan pengguna akhir mereka terdistribusi dengan baik secara global, semua permintaan yang mengalir di seluruh infrastruktur kami memberikan gambaran yang bagus tentang kinerja berbagai bagian Internet pada waktu tertentu. Cloudflare memanfaatkan gambaran ini untuk memastikan bahwa traffic Anda mengambil jalur tercepat melalui infrastruktur kami.</p>
+	<p>Sebelumnya, Argo mengoptimalkan traffic pada layer aplikasi Layer 7 dan pada layer protokol Layer 4. Dengan GA Argo for Packets, kami sekarang mengoptimalkan lapisan IP untuk jaringan pribadi Anda. Selama <a href="https://blog.cloudflare.com/argo-v2/">Speed Week, kami mengumumkan</a> akses awal untuk Argo for Packets, dan bagaimana Argo dapat menawarkan pengurangan latensi 10%. Hari ini, untuk merayakan Argo for Packets mencapai GA, kami akan membahas lebih dalam tentang pengurangan latensi, menunjukkan kepada Anda contoh, menjelaskan bagaimana Anda dapat melihat pengoptimalan yang lebih besar, dan berbicara tentang bagaimana bidang data aman Argo memberi Anda enkripsi tambahan bahkan di Layer 3.</p>
+	<p>Dan jika Anda tertarik untuk mengaktifkan Argo for Packets hari ini, hubungi tim akun Anda untuk memulai prosesnya!</p>
+	<h3 id="lebih-baik-dari-bgp"><strong>Lebih baik dari BGP</strong></h3>
+	<p>Seperti yang kami katakan selama Speed Week, Argo for Packets memberikan peningkatan latensi rata-rata 10% di seluruh dunia dalam pengujian internal kami:</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image6-14.png" class="kg-image" title="Chart"></figure>
+	<p>Seiring kita bergerak menuju GA, kami menemukan bahwa angka dunia nyata kami cocok dengan pengujian internal kami, dan kami masih melihat peningkatan 10% itu. Namun, penting untuk dicatat bahwa angka pengurangan latensi 10% adalah rata-rata di semua jalur di seluruh dunia. Pelanggan yang berbeda dapat melihat keuntungan latensi yang berbeda tergantung pada setup mereka.</p>
+	<p>Argo for Packets mencapai perolehan latensi ini dengan secara dinamis memilih jalur terbaik di seluruh jaringan kami. Mari kita bicara sedikit tentang apa artinya itu.</p>
+	<p>Paket normal di jaringan menemukan jalan mereka ke tujuan mereka menggunakan sesuatu yang disebut <a href="https://www.cloudflare.com/learning/security/glossary/what-is-bgp/" target="_blank">Border Gateway Protocol (BGP)</a>, yang memungkinkan paket untuk melintasi jalur "terpendek" ke tujuannya. Namun, jalur terpendek dalam istilah BGP tidak berkorelasi kuat dengan latensi, tetapi dengan lompatan jaringan. Misalnya, jalur A dalam jaringan memiliki dua kemungkinan jalur: 12345 - 54321 - 13335, dan 12345 13335. Kedua jaringan dimulai dari jaringan 12345 dan berakhir di Cloudflare, yaitu AS 13335. Logika BGP menyatakan bahwa traffic akan selalu melalui jalur kedua. Namun, jika jalur pertama memiliki latensi jaringan yang lebih rendah atau kehilangan paket yang lebih rendah, pelanggan berpotensi melihat kinerja yang lebih baik dan tidak mengetahuinya!</p>
+	<p>Ada dua cara untuk mengatasi hal ini. Cara pertama adalah berinvestasi dalam membangun lebih banyak pipa dengan jaringan 12345 sambil memperluas jaringan agar berada tepat di sebelah setiap jaringan. Pelanggan juga dapat membangun jaringan mereka sendiri atau membeli jaringan MPLS vendor yang mahal. Solusi mana pun akan menghabiskan banyak uang dan waktu untuk mencapai tingkat kinerja yang diinginkan pelanggan.</p>
+	<p>Cloudflare meningkatkan kinerja pelanggan dengan memanfaatkan jaringan global dan tulang punggung kami yang ada, ditambah data jaringan dari traffic yang sudah dikirim untuk mengoptimalkan rute kembali ke Anda. Hal ini membuat kami dapat meningkatkan jalur yang diambil saat terjadi perubahan traffic dan kemacetan di Internet. Argo melihat setiap jalur kembali dari setiap pusat data Cloudflare kembali ke asal Anda, hingga ke jalur jaringan individu. Argo membandingkan traffic dan analytics jaringan Layer 4 yang ada di semua jalur unik ini untuk menentukan jalur tercepat dan paling tersedia.</p>
+	<p>Untuk membuat Argo dipersonalisasi ke jaringan pribadi Anda, Cloudflare menggunakan sumber data yang telah kami buat untuk <a href="https://www.cloudflare.com/magic-transit/" target="_blank">Magic Transit</a>. Sumber data itu: probe pemeriksaan kesehatan. Cloudflare memanfaatkan probe pemeriksaan kesehatan yang ada dari setiap pusat data Cloudflare kembali ke asal masing-masing pelanggan. Probe ini digunakan untuk menentukan kesehatan jalur dari Cloudflare kembali ke pelanggan untuk Magic Transit, sehingga Cloudflare mengetahui jalur kembali ke asal yang sehat. Probe ini berisi berbagai informasi yang juga dapat digunakan untuk meningkatkan kinerja seperti kehilangan paket dan data latensi. Dengan memeriksa probe pemeriksaan kesehatan dan menambahkannya ke data Layer 4 yang ada, Cloudflare dapat memperoleh pemahaman yang lebih baik tentang latensi satu arah dan dapat membuat peta yang memungkinkan kita untuk melihat semua pusat data yang saling terhubung dan seberapa cepat mereka dibandingkan dengan satu sama lain. Cloudflare kemudian menemukan jalur terbaik di layer 3 kembali ke pusat data pelanggan dengan memilih lokasi entri di mana paket memasuki jaringan kami, dan lokasi keluar yang terhubung langsung kembali ke pelanggan melalui Interkoneksi Jaringan Cloudflare.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/12/image1-49.png" class="kg-image"></figure>
+	<p>Dengan menggunakan peta ini, Cloudflare membangun rute dinamis untuk setiap pelanggan berdasarkan lokasi sumber traffic ke jaringan Cloudflare dan lokasi tujuannya.</p>
+	<p>Mari pelajari beberapa contoh bagaimana terjadinya pengurangan latensi Anda tergantung pada setup Anda.</p>
+	<h3 id="jaringan-cloudflare-adalah-jaringan-anda"><strong>Jaringan Cloudflare adalah Jaringan Anda</strong></h3>
+	<p>Dalam <a href="https://blog.cloudflare.com/magic-makes-your-network-faster/">blog Speed Week</a>, kami yang menguraikan bagaimana produk Magic membuat jaringan Anda lebih cepat, kami menguraikan beberapa contoh topologi jaringan yang berbeda dan menunjukkan peningkatan yang dimiliki Magic Transit dan Magic WAN di jaringan mereka. Mari kita tingkatkan angka-angka itu dengan menambahkan Argo for Packets di atasnya untuk melihat bagaimana kami dapat meningkatkan kinerja lebih jauh.</p>
+	<p>Contoh dari blog menguraikan perusahaan dengan lokasi di Carolina Selatan, Oregon, dan Los Angeles. Di blog itu, kami menunjukkan peningkatan latensi yang disediakan oleh Magic Transit dengan sendirinya untuk satu tahap perjalanan. Jaringan itu terlihat seperti ini:</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image3-23.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image4-25.png" class="kg-image"></figure>
+	<p>Mari kita buat perincian untuk menunjukkan latensi antara semua jalur di jaringan tersebut. Anggap saja Carolina Selatan terhubung ke Atlanta, dan Oregon terhubung ke Seattle, yang merupakan skenario yang paling mungkin:</p>
+	<!--kg-card-begin: markdown-->
+	<table>
+		<thead>
+			<tr>
+				<th>Lokasi Sumber</th>
+				<th>Lokasi Tujuan</th>
+				<th>Magic WAN latensi satu arah</th>
+				<th>Argo for Packets Latensi satu arah</th>
+				<th>Peningkatan Argo (dalam ms)</th>
+				<th>Peningkatan persen latensi</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Los Angeles</td>
+				<td>Atlanta</td>
+				<td>49.1</td>
+				<td>45</td>
+				<td>4.11</td>
+				<td>8.36</td>
+			</tr>
+			<tr>
+				<td>Los Angeles</td>
+				<td>Seattle</td>
+				<td>32.4</td>
+				<td>27.2</td>
+				<td>5.18</td>
+				<td>16</td>
+			</tr>
+			<tr>
+				<td>Atlanta</td>
+				<td>Los Angeles</td>
+				<td>49</td>
+				<td>44.9</td>
+				<td>4.09</td>
+				<td>8.35</td>
+			</tr>
+			<tr>
+				<td>Atlanta</td>
+				<td>Seattle</td>
+				<td>78.1</td>
+				<td>56.9</td>
+				<td>21.2</td>
+				<td>27.1</td>
+			</tr>
+			<tr>
+				<td>Seattle</td>
+				<td>Los Angeles</td>
+				<td>32.2</td>
+				<td>27</td>
+				<td>5.22</td>
+				<td>16.2</td>
+			</tr>
+			<tr>
+				<td>Seattle</td>
+				<td>Atlanta</td>
+				<td>77.7</td>
+				<td>56.7</td>
+				<td>20.9</td>
+				<td>26.9</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<p>Untuk sampel jaringan pelanggan ini, Argo for Packets meningkatkan latensi di setiap jalur yang memungkinkan. Seperti yang Anda lihat, peningkatan persentase rata-rata jauh lebih tinggi untuk jaringan khusus ini daripada rata-rata global 10%.</p>
+	<p>Mari kita ambil contoh lain dari pelanggan dengan lokasi di Asia: Korea Selatan, Filipina, Singapura, Osaka, dan Hong Kong. Untuk jaringan dengan lokasi tersebut, Argo for Packets mampu menciptakan pengurangan latensi 17% dengan menemukan jalur optimal antara lokasi yang biasanya paling sulit dinavigasi, seperti antara Korea Selatan, Osaka, dan Filipina. Pelanggan dengan banyak lokasi akan melihat manfaat besar dari Argo for Packets, karena ia mengoptimalkan jalur tersulit di Internet dan membuatnya secepat jalur lainnya. Ini menghilangkan latensi yang ditimbulkan oleh jalur jaringan terburuk Anda dan tidak hanya membuat angka rata-rata Anda terlihat bagus, tetapi terutama nomor latensi persentil ke-90 Anda.</p>
+	<p>Mengurangi latensi jangka panjang ini sangat penting terutama saat pelanggan kembali ke kondisi yang lebih baik dan mulai kembali ke kantor di seluruh dunia.</p>
+	<h3 id="pemberhentian-berikutnya-kantor-anda"><strong>Pemberhentian Berikutnya: Kantor Anda</strong></h3>
+	<p>Argo for Packets berpasangan dengan cerdas dengan Magic WAN dan Cloudflare for Offices untuk menciptakan jaringan pribadi yang sangat dioptimalkan dan sangat aman, yang beradaptasi dengan apa pun yang Anda lakukan. Jika ini pertama kalinya Anda mendengar tentang <a href="https://blog.cloudflare.com/cloudflare-for-offices/">Cloudflare for Offices</a>, ini adalah inisiatif baru kami untuk menyediakan konektivitas yang pribadi, aman, dan berkinerja tinggi ke ribuan lokasi baru di seluruh dunia. Dan konektivitas pribadi itu memberikan landasan yang bagus bagi Argo for Packets untuk mempercepat jaringan Anda.</p>
+	<p>Mengambil contoh di atas dari Amerika Serikat, jika perusahaan ini menambahkan dua lokasi baru di Boston dan Dallas, lokasi tersebut juga melihat pengurangan latensi yang signifikan melalui Argo for Packets. Sekarang, jaringan mereka terlihat seperti ini:</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image2-32.png" class="kg-image"></figure>
+	<p>Argo for Packets juga memastikan bahwa kantor baru yang baru ditambahkan akan segera melihat kinerja yang luar biasa di jaringan pribadi:</p>
+	<!--kg-card-begin: markdown-->
+	<table>
+		<thead>
+			<tr>
+				<th>Lokasi Sumber</th>
+				<th>Lokasi Tujuan</th>
+				<th>Peningkatan Argo (dalam ms)</th>
+				<th>Peningkatan persen latensi</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Los Angeles</td>
+				<td>Dallas</td>
+				<td>9.89</td>
+				<td>23.3</td>
+			</tr>
+			<tr>
+				<td>Los Angeles</td>
+				<td>Atlanta</td>
+				<td>0.774</td>
+				<td>1.58</td>
+			</tr>
+			<tr>
+				<td>Los Angeles</td>
+				<td>Seattle</td>
+				<td>0.478</td>
+				<td>1.51</td>
+			</tr>
+			<tr>
+				<td>Los Angeles</td>
+				<td>Boston</td>
+				<td>13.3</td>
+				<td>16.8</td>
+			</tr>
+			<tr>
+				<td>Dallas</td>
+				<td>Los Angeles</td>
+				<td>9.66</td>
+				<td>23</td>
+			</tr>
+			<tr>
+				<td>Dallas</td>
+				<td>Atlanta</td>
+				<td>0</td>
+				<td>0</td>
+			</tr>
+			<tr>
+				<td>Dallas</td>
+				<td>Seattle</td>
+				<td>2.96</td>
+				<td>5.2</td>
+			</tr>
+			<tr>
+				<td>Dallas</td>
+				<td>Boston</td>
+				<td>0.43</td>
+				<td>0.955</td>
+			</tr>
+			<tr>
+				<td>Atlanta</td>
+				<td>Los Angeles</td>
+				<td>0.687</td>
+				<td>1.4</td>
+			</tr>
+			<tr>
+				<td>Atlanta</td>
+				<td>Dallas</td>
+				<td>0</td>
+				<td>0</td>
+			</tr>
+			<tr>
+				<td>Atlanta</td>
+				<td>Seattle</td>
+				<td>9.7</td>
+				<td>12.4</td>
+			</tr>
+			<tr>
+				<td>Atlanta</td>
+				<td>Boston</td>
+				<td>4.39</td>
+				<td>15.2</td>
+			</tr>
+			<tr>
+				<td>Seattle</td>
+				<td>Los Angeles</td>
+				<td>0.322</td>
+				<td>1.02</td>
+			</tr>
+			<tr>
+				<td>Seattle</td>
+				<td>Dallas</td>
+				<td>3.11</td>
+				<td>5.43</td>
+			</tr>
+			<tr>
+				<td>Seattle</td>
+				<td>Atlanta</td>
+				<td>9.81</td>
+				<td>12.6</td>
+			</tr>
+			<tr>
+				<td>Seattle</td>
+				<td>Boston</td>
+				<td>34.7</td>
+				<td>30.3</td>
+			</tr>
+			<tr>
+				<td>Boston</td>
+				<td>Los Angeles</td>
+				<td>13.3</td>
+				<td>16.8</td>
+			</tr>
+			<tr>
+				<td>Boston</td>
+				<td>Dallas</td>
+				<td>0.386</td>
+				<td>0.85</td>
+			</tr>
+			<tr>
+				<td>Boston</td>
+				<td>Atlanta</td>
+				<td>4.37</td>
+				<td>15</td>
+			</tr>
+			<tr>
+				<td>Boston</td>
+				<td>Seattle</td>
+				<td>33.7</td>
+				<td>29.6</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<p>Cloudflare for Offices membuatnya sangat mudah untuk menyiapkan kantor tersebut karena pelanggan tidak perlu membawa firewall perimeter, perangkat WAN, atau apa pun — mereka cukup menerapkan Cloudflare di gedung mereka, dan kekuatan Cloudflare One memungkinkan mereka untuk mendapatkan semua layanan keamanan jaringan mereka melalui koneksi pribadi ke Cloudflare, yang dioptimalkan oleh Argo for Packets.</p>
+	<h3 id="jaringan-anda-tetapi-lebih-cepat"><strong>Jaringan Anda, tetapi Lebih Cepat</strong></h3>
+	<p>Argo for Packets adalah pelengkap sempurna untuk salah satu solusi Cloudflare One kami: menyediakan bit yang lebih cepat melalui jaringan Anda, dibangun di atas Cloudflare. Sekarang, solusi SD-WAN dan Magic Transit Anda dapat dioptimalkan untuk tidak hanya aman, tetapi juga berkinerja baik.</p>
+	<p>Jika Anda tertarik untuk mengaktifkan Argo for Packets atau mengarahkan kantor Anda ke solusi konektivitas pribadi dan aman, hubungi tim akun Anda untuk memulai prosesnya.</p>
+</div>

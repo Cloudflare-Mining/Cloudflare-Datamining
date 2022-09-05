@@ -1,0 +1,40 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image2-44.png" class="kg-image"></figure>
+	<p>In Cloudflare, ci piacciono le idee dirompenti. Abbina questa cosa alla nostra convinzione fondamentale che la sicurezza sia qualcosa che dovrebbe essere accessibile a tutti e il risultato è un Internet migliore e più sicuro per tutti.</p>
+	<p>Non sono chiacchiere inutili. Ad esempio, nel 2014 abbiamo annunciato <a href="https://blog.cloudflare.com/introducing-universal-ssl/">Universal SSL</a>. Durante la notte, abbiamo fornito la crittografia SSL/TLS a oltre un milione di proprietà Internet senza che nessuno debba pagare un centesimo o configurare un certificato. Questo è stato positivo non solo per i nostri clienti, ma anche per tutti coloro che utilizzano il Web.</p>
+	<p>Nel 2017, abbiamo annunciato la <a href="https://blog.cloudflare.com/unmetered-mitigation/">mitigazione illimitata da attacchi DDoS</a>. Non abbiamo mai chiesto ai clienti di pagare per la larghezza di banda DDoS perché non ci è mai sembrato giusto, ma ci è voluto del tempo per raggiungere le dimensioni della rete in cui potevamo offrire una mitigazione completamente illimitata per tutti, clienti paganti o meno.</p>
+	<p>Tuttavia, ricevo spesso la domanda: come riusciamo a farlo? È davvero semplice. Riusciamo a farlo costruendo una tecnologia eccezionale ed efficiente che si adatta bene e questo ci consente di mantenere bassi i costi.</p>
+	<p><em><strong>Oggi lo stiamo facendo di nuovo, fornendo gratuitamente un set di regole gestite WAF (Web Application Firewall) Cloudflare a tutti i piani Cloudflare.</strong></em></p>
+	<h2 id="perch-lo-facciamo">Perché lo facciamo?</h2>
+	<p>Le vulnerabilità di alto profilo hanno un impatto importante su Internet, colpendo le organizzazioni di tutte le dimensioni. Lo abbiamo <a href="https://blog.cloudflare.com/tag/log4j/">visto di recente con Log4J</a>, ma anche prima, le principali vulnerabilità come <a href="https://blog.cloudflare.com/inside-shellshock/">Shellshock</a> e <a href="https://blog.cloudflare.com/tag/heartbleed/">Heartbleed</a> hanno lasciato cicatrici su Internet.</p>
+	<p>I proprietari e i team di piccole applicazioni non hanno sempre il tempo di tenere il passo con le patch relative alla sicurezza in rapida evoluzione, causando la compromissione e/o l'utilizzo di molte applicazioni per scopi nefasti.</p>
+	<p>Con milioni di proprietà Internet dietro il proxy Cloudflare, abbiamo il dovere di aiutare a mantenere il Web sicuro. Ed è quello che abbiamo fatto con Log4J <a href="https://blog.cloudflare.com/cve-2021-44228-log4j-rce-0-day-mitigation/">distribuendo regole di mitigazione</a> per tutto il traffico, comprese le aree GRATUITE. Stiamo ora ufficializzando il nostro impegno fornendo un set di regole gestito gratuito Cloudflare a tutti i piani oltre al nostro nuovo motore WAF.</p>
+	<h2 id="quando-lo-facciamo">Quando lo facciamo?</h2>
+	<p>Se hai un piano GRATUITO, stai già ricevendo protezione. Nei prossimi mesi, tutti gli utenti del nostro piano FREE riceveranno anche l'accesso all'interfaccia utente di Cloudflare WAF nel dashboard e saranno in grado di implementare e configurare il nuovo set di regole. Questo set di regole fornirà regole di mitigazione per vulnerabilità di alto profilo come Shellshock e Log4J, tra le altre.</p>
+	<p>Per accedere al nostro set più ampio di set di regole WAF (Cloudflare Managed Rules, Cloudflare OWASP Core Rulesset e Cloudflare Leaked Credential Check Rulesset) insieme alle funzionalità WAF avanzate, i clienti dovranno comunque eseguire l'aggiornamento a piani PRO o superiori.</p>
+	<h2 id="la-sfida">La sfida</h2>
+	<p>Con oltre 32 milioni di richieste HTTP al secondo inviate tramite proxy dalla rete globale di Cloudflare, eseguire il WAF su ogni singola richiesta non è un compito facile.</p>
+	<p>I WAF proteggono tutti i componenti della richiesta HTTP, inclusi i corpi, eseguendo una serie di regole, a volte note come firme, che cercano modelli specifici che potrebbero rappresentare un payload dannoso. Queste regole variano in complessità e più regole hai, più difficile sarà l'ottimizzazione del sistema. Inoltre, molte regole trarranno vantaggio dalle capacità delle espressioni regolari, consentendo all'autore di eseguire complesse logiche di corrispondenza.</p>
+	<p>Tutto ciò deve avvenire con un impatto di latenza trascurabile, poiché la sicurezza non dovrebbe comportare una riduzione delle prestazioni e molti proprietari di applicazioni si rivolgono a Cloudflare per ottenere vantaggi in termini di prestazioni.</p>
+	<p>Sfruttando il nostro nuovo Edge Rules Engine, su cui <a href="https://blog.cloudflare.com/new-cloudflare-waf/">è stato costruito il nuovo WAF</a>, siamo stati in grado di raggiungere i traguardi di prestazioni e memoria che ci fanno sentire a nostro agio e che ci consentono di fornire una buona protezione WAF di base per tutti. Entra nel nuovo set di regole gestito gratuito di Cloudflare.</p>
+	<h2 id="il-set-di-regole-gestito-gratuito-di-cloudflare">Il set di regole gestito gratuito di Cloudflare</h2>
+	<p>Questo set di regole viene distribuito automaticamente su qualsiasi nuova zona Cloudflare ed è appositamente progettato per ridurre al minimo i falsi positivi su una gamma molto ampia di tipi di traffico. I clienti potranno disabilitare il set di regole, se necessario, o configurare il filtro del traffico o le singole regole. Ad oggi, il set di regole contiene le seguenti regole:</p>
+	<ul>
+		<li>Regole Log4J che corrispondono ai payload nelle intestazioni URI e HTTP</li>
+		<li>Regole shellshock</li>
+		<li>Regole che corrispondono a exploit WordPress molto comuni.</li>
+	</ul>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image1-55.png" class="kg-image"></figure>
+	<p>Ogni volta che una regola corrisponde, verrà generato un evento nella scheda Panoramica della sicurezza, consentendoti di esaminare la richiesta.</p>
+	<h2 id="implementazione-e-configurazione">Implementazione e configurazione</h2>
+	<p>Per tutte le nuove aree GRATUITE, il set di regole verrà distribuito automaticamente. Le regole sono state testate sulla rete Cloudflare e sono sicure da implementare sulla maggior parte delle applicazioni pronte all'uso. I clienti possono in ogni caso configurare ulteriormente il set di regole:</p>
+	<ul>
+		<li>Sovrascrivendo tutte le regole per LOG o altre azioni.</li>
+		<li>Sovrascrivendo regole specifiche solo per LOG o altre azioni.</li>
+		<li>Disabilitando completamente il set di regole o qualsiasi regola specifica.</li>
+	</ul>
+	<p>Tutte le opzioni sono facilmente accessibili tramite il dashboard, ma possono essere eseguite anche tramite API. La documentazione su come configurare il set di regole, una volta disponibile nell'interfaccia utente, sarà reperibile sul nostro <a href="https://developers.cloudflare.com/waf/managed-rulesets/" target="_blank">sito per gli sviluppatori</a>.</p>
+	<h2 id="e-poi">E poi?</h2>
+	<p>Il set di regole gestite gratuite di Cloudflare verrà aggiornato da Cloudflare ogni volta che viene rilevata una vulnerabilità rilevante ad ampio raggio. Gli aggiornamenti al regolamento saranno pubblicati sul nostro <a href="https://developers.cloudflare.com/waf/change-log" target="_blank">log delle modifiche</a>, in questo modo i clienti possono tenersi aggiornati su eventuali nuove regole.</p>
+	<p>Adoriamo costruire nuove fantastiche tecnologie. Ma ci piace anche renderle ampiamente disponibili e facili da usare. Siamo davvero entusiasti di rendere il Web molto più sicuro per tutti con un WAF che non ti costerà un centesimo. Se sei interessato a iniziare, <a href="https://dash.cloudflare.com/sign-up" target="_blank">fai clic qui</a> per registrarti e ottenere un piano gratuito.</p>
+</div>

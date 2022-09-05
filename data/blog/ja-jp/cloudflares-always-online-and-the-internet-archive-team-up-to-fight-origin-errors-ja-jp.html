@@ -1,0 +1,38 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2020/09/image2-5.png" class="kg-image"></figure>
+	<p>毎日、インターネット上では、何か悪いこと（しかし、完全にノーマルなこと）が起こります。たとえば、何千もの<a href="https://www.cloudflare.com/learning/cdn/glossary/origin-server/" target="_blank">オリジンサーバー</a>がダウンし、接続エラーを招き、ユーザーは不満を懐きます。Cloudflareのユーザーは、到達不能なオリジンサーバーからのレスポンスがエラーメッセージとして送られてくるのを毎日4年半以上待ち続けています。しかし、訪問者はエラーページを見たいのではありません。彼らが見たいのはコンテンツなのです！</p>
+	<p>インターネットがより強力で耐障害性が高く、重要な冗長性を持つことを望む人にとって、今の時代は面白いでしょう。CloudflareはAlways Onlineサービスに新しい機能性をもたらすために、Internet Archiveと提携したことを発表いたします。</p>
+	<p>Always Onlineは、当社の顧客Webサイトの保険として機能します。顧客のオリジンがオフラインになったり、タイムアウトしたり、それ以外の方法で中断したりした場合は、Always Onlineが介入し、訪問者にWebページのアーカイブコピーを提供します。<a href="https://archive.org/" target="_blank">Internet Archive</a>は、インターネット経由で数十億のWebサイトのスナップショットを保存するサービス、Wayback Machineを運営する非営利団体です。Internet Archiveとの提携により、Cloudflareは到達不能なWebサイトへのレスポンスをシームレスに提供することができ、Internet Archiveは、すべての知識へのアクセスを提供するためにWebをアーカイブするというその使命を継続することができます。</p>
+	<p>Cloudflareダッシュボードで「Always Online」を有効にすると、当社はお客様のホスト名をWeyback Machineと共有し、お客様のWebサイトをアーカイブすることができます。Webサイトのオリジンがダウンしても、CloudflareはInternet Archiveに移動して、サイトの最新アーカイブバージョンを取得できるため、訪問者は引き続きサイトのコンテンツを閲覧することができます。</p>
+	<h3 id="-">壊れたオリジンへの到達を試みる</h3>
+	<p>ユーザーがCloudflare Webサイトを訪問すると、ノートパソコン/電話/タブレット/スマート冷蔵庫から、Cloudflareのエッジへとリクエストが送られます。当社のエッジでは、最初にキャッシュされたコンテンツで応答できるかどうかを調べます。リクエストされたコンテンツがキャッシュにない、または有効期限が切れていると判断した場合は、オリジンから新しいコピーを取得します。キャッシュされていない/期限切れのオリジンフェッチの任務を果たすため、キャッシュを更新し、後続のリクエストが訪問者により迅速／安全に提供されるようにします。オリジンに到達できない場合、さらに数回接続を試みて、必要があればオリジンがダウンしていることをマークし、訪問者にエラーページを提供します。エラーページを受け取ることは誰にとっても望ましくはないため、Cloudflareを利用しているWebサイトへの訪問者が、たとえオリジンに困難が伴う場合であっても、何らかのコンテンツを得ることができるように、私たちは本当に懸命に努力しています。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2020/09/image3-8.png" class="kg-image"></figure>
+	<h3 id="always-online-">Always Online の略歴</h3>
+	<p>Cloudflareが10年前に設立されたとき、当社お客様のほとんどは小規模で、頻繁にダウンタイムが発生するホスト上で稼働していました。初期のお客様は、検索エンジンがそのサイトのインデックスを作成しているときに、ホストがダウンしてしまうことを恐れていました。検索エンジンのクローラーは、ダウンしたサイトを非応答として報告し、検索ランキングではサイトの順位が下がってしまいます。Always Onlineはこのような懸念から生まれました。</p>
+	<p><a href="https://blog.cloudflare.com/always-online-because-downtime-sucks/">過去10年間に及ぶ</a> Always Online の運用を通じて、シンプルで目立たないツールでインターネットのダウンタイムと戦うことに、お客様とそのユーザーは深く価値を見出してくれることを私達は知りました。いくつかの機能は、何回も書き換えられていますが、当社のコードの他の部分は、時間の経過にも関わらず比較的手つかずのまま残されており、堅牢性の証となっています。たとえば、Always Online では、オリジンに到達不能のため、ページのアーカイブバージョンを提供していることを示すバナーが明確に表示されますが、この透明性はWebサイトの所有者と訪問者の両方に好評です。</p>
+	<p>当社では最近、Always Onlineをより良くするための取り組みをはじめました。当社はお客様が望むものを保存したかったのです。Always Online を通じて利用できるコンテンツの量を増やし、コンテンツを可能な限り新しい状態に保つとともに、オリジンサーバーがダウンしたときのユーザー体験を可能な限りシームレスに維持し、このアーカイブをインターネットをより良い場所にするという目標の達成に向けて使いたいと考えました。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/01/image1-10.png" class="kg-image">
+		<figcaption>Always Onlineで訪問者が目にするもの</figcaption>
+	</figure>
+	<h3 id="internet-archive-">Internet Archiveに参加する</h3>
+	<p>Internet ArchiveのWayback Machineと提携し、次世代のAlways Onlineを実現することで、これらの目標をすべて達成できます。Internet Archiveのミッションは、すべての知識への普遍的なアクセスを提供することです。1996年以来、Internet Archiveの Wayback Machine は、パブリックWebサイトの多くをアーカイブしています。つまり、アーカイブされなければ失われていたであろう数百万のWebサイトやページを保存し、利用できるようにしています。自社のミッションのために、彼らは4680億以上の<a href="https://archive.org/web/" target="_blank">Webページ</a>をアーカイブし、情報量に換算すると、45ペタバイト以上をアーカイブしていることになります。</p>
+	<p>Always Online とInternet Archiveとの統合は、Archiveがインターネットに関する記録を拡張するのに役立ちます。Always Online 機能をオプトインするドメインの多くは、Archiveのクローラーによって発見されていなければ、存在していない可能性があります。Archiveは、Cloudflareのお客様のために、Archiveがなければエラーになってしまうコンテンツへのアクセスをシームレスに提供します。</p>
+	<p>つまり、CloudflareはInternet Archiveと提携することで、インターネットをより良く、より強く、誰もが利用できるように変えることができるのです。</p>
+	<blockquote>「<em>Cloudflare</em>とのパートナーシップを通じて、このパートナーシップがなければ、特に知る機会もなかったであろう<em>Web</em>ページについて学び、そのページをアーカイブしています。そして<em>Cloudflare</em>の<em> Always Online </em>サービスと統合することで、それらのページのアーカイブを、アクセスを試みたけれど、ライブ<em>Web</em>を介しては利用できなくなった人々に提供することができます」<br><em>—Mark Graham</em>氏、<em> Internet Archive</em>、<em>Wayback Machine</em>、ディレクター</blockquote>
+	<blockquote>「<em>Cloudflare</em>と協力できることをうれしく思います。このパートナーシップが、インターネットに重要な冗長性をもたらし、インターネットをより便利で信頼できるものにするために、当社がさらに歩を進めるよい機会になると考えています。」<br><em>—Brewster Kahle</em>氏、<em>Internet Archive</em>、創設者兼デジタルライブラリアン</blockquote>
+	<h3 id="-always-online-">新しいAlways Onlineは舞台裏ではどのように機能しますか？</h3>
+	<p>Cloudflareダッシュボードの新しい Always Online にアップグレードすると、インターネットアーカイブを使用してWebサイトに関するいくつかの基本情報（ホスト名や人気のURLなど）を共有できるため、定期的にWebサイトをクロールしてアーカイブすることができます。この情報の共有とクロールにより、コンテンツはAlways Onlineで利用できるようになり、アーカイブを通じて直接利用できるコンテンツライブラリをさらに充実させることができます。</p>
+	<p>オリジンがダウンしたり、到達不能になった場合、Cloudflare のエッジは 520 から527 の範囲のステータスコードを返します。これは、オリジンへの接続に問題があることを示します。このような場合、Cloudflareは最初にローカルエッジデータセンターを調べて、Webサイト訪問者に提供できるコンテンツの古くなったバージョンまたは有効期限が切れたバージョンがないかどうかを確認します。ローカルキャッシュにバージョンがない場合、CloudflareはInternet Archiveに移動し、サイトの最新アーカイブバージョンを取得し、訪問者にサービスを提供します。その場合、Always Online はアーカイブされたコンテンツをバナーとともに提供し、オリジンに問題があることを訪問者に知らせます。バナーを使用すると、訪問者はワンクリックでオリジンがオンラインに戻ったかどうかを確認できます。オリジンサーバーとの通信を必要とする動的コンテンツは、訪問者（Webアプリケーションやショッピングカートなど）にエラーを表示しますが、多くの場合、基本コンテンツは Always Online で入手できます。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2020/09/image5-5.png" class="kg-image"></figure>
+	<h3 id="-always-online--1">新しいAlways Onlineを有効にする</h3>
+	<p>今のところ、古いAlways Onlineサービスは引き続き利用可能ですが、すぐにInternet Archiveと提携したバージョンに完全に移行する予定です。</p>
+	<p>Cloudflareのお客様は、ダッシュボードでAlways Onlineを有効にすることができます。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://lh6.googleusercontent.com/J42AtNZv8xNcyQPPefVywiAGEhJyNbtqEE1pclEjIEwdDKdrNri9IFx8QK21QKo5wZD1B96CplW24pAEXJlpIZJ-LQesFDkcCeyIF3ITXhv-owHH63Az-zIptuJk1acDeWacjfMO" class="kg-image"></figure>
+	<h3 id="--1">詳細</h3>
+	<ul>
+		<li>Always Online、およびその仕組みの詳細についてはt、当社のドキュメントをご覧ください。</li>
+		<li>Always Online の使用を開始するには、Cloudflareダッシュボードにログインして「オン」に切り替えてください。</li>
+		<li>Internet Archiveによる当社とのパートナーシップの発表は<a href="https://blog.archive.org/2020/09/17/internet-archive-partners-with-cloudflare-to-help-make-the-web-more-useful-and-reliable/" target="_blank">こちら</a>をご覧ください。</li>
+		<li>Always Online、またはインターネットのその他の部分に関する改善を支援するには、<a href="https://www.cloudflare.com/careers/jobs/" target="_blank">こちらから</a>ご連絡ください 。</li>
+	</ul>
+</div>

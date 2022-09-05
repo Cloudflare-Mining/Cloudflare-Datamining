@@ -1,0 +1,23 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/unnamed-3.png" class="kg-image"></figure>
+	<p><a href="https://blog.cloudflare.com/cloudflare-one/">Cloudflare One</a> 能讓客戶從單一控制平面連接任何來源或目的地，並設定路由、網路安全及效能政策，藉此在更快速且更安全的網際網路上建立自己的企業網路。我們很高興在今日公開另一塊「拼圖」，協助組織從傳統網路架構轉換為 Zero Trust：只要將我們的輕量級漫遊代理程式 (<a href="https://developers.cloudflare.com/cloudflare-one/setup/#install-the-warp-client-on-your-devices" target="_blank">WARP</a>) 安裝在任何與 Magic IP 層級通道（Anycast <a href="https://www.cloudflare.com/learning/network-layer/what-is-gre-tunneling/" target="_blank">GRE</a>、<a href="https://blog.cloudflare.com/anycast-ipsec/">IPsec</a> 或 <a href="https://blog.cloudflare.com/cloudflare-network-interconnect/">CNI</a>）連線的網路上，即可路由使用者裝置的流量。接下來，使用者便可隨著時間<a href="https://blog.cloudflare.com/private-networking/">升級至 Zero Trust</a>，同時從傳統「城堡加護城河」模型輕鬆地轉換至<a href="https://blog.cloudflare.com/zh-tw/welcome-to-cio-week-zh-tw/">新一代架構</a>。</p>
+	<h3 id="-">企業網路的未來</h3>
+	<p>我們談到的客戶描述了其企業網路三個不同的架構階段，反映出我們見證的儲存空間和運算能力方面的轉變，只是落後了 10 至 20 年。傳統網路（「第一代」）存在於資料中心或總部的牆內，且業務應用程式託管於公司自有的伺服器中，同時利用周圍網路安全設備並透過私有 LAN 或 WAN 授予存取權限。當應用程式轉移至雲端且使用者離開辦公室後，公司便開始採用 SD-WAN 等「第二代」技術和虛擬設備來處理越來越分散且依賴網際網路的流量。現在留給他們的是令人沮喪的新舊技術拼湊工作、可見度和網路安全的缺陷，過量的工作讓 IT 和網路團隊頭痛不已。</p>
+	<p>我們認為還是有令人期待的美好未來：Gartner 口中的 SASE 架構，其網路安全和網路功能會從實體或虛擬設備轉移至真正的雲端原生服務，無論使用者和應用程式位於世界上任一個角落，都能夠以毫秒的速度提供服務。這項新範式將構建出更安全、更高效且更可靠的網路，為使用者創造絕佳體驗並降低整體擁有成本。IT 會從人們眼中的成本中心和業務瓶頸，搖身一變成為創新和效率的驅動力。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/03/image2-64.png" class="kg-image" alt="Generation 1: Castle and Moat; Generation 2: Virtualized Functions; Generation 3: Zero Trust Network">
+		<figcaption><em><em>第一代：城堡加護城河；第二代：虛擬功能；第三代：Zero Trust 網路</em></em></figcaption>
+	</figure>
+	<p>但是，轉化變革並不能一蹴可幾。對於許多組織來說，特別是從舊版架構轉換的組織，他們必須花費數月或數年才能全面採用「第三代」網路。不過好消息是：Cloudflare 能夠助您一臂之力，為您提供由目前的網路架轉換為 Zero Trust 的橋樑，無論您處於哪個階段都可以。</p>
+	<h3 id="--1">我們如何實現？</h3>
+	<p>Cloudflare One 是我們的聯合 Zero Trust 網路即服務平台，可讓客戶從任何流量來源或目的地並透過各種入口，視需求連接至我們的<a href="https://www.cloudflare.com/network/" target="_blank">全球網路</a>。若要連接個別裝置，無論使用者身在何處，都可以安裝等同於正向代理的 <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/download-warp/" target="_blank">WARP 用戶端</a>，以便為距離最近的 Cloudflare 位置建立流量通道。<a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/" target="_blank">Cloudflare Tunnel</a> 可讓您透過安裝輕量級精靈，在原始伺服器和 Cloudflare 之間建立僅限輸出的安全連線。</p>
+	<p><a href="https://blog.cloudflare.com/private-networking/">去年，我們推出了</a>將 WARP 註冊裝置的私有流量路由至 Cloudflare Tunnel 連線應用程式的功能，同時啟用任一款 TCP 或 UDP 應用程式的私有網路存取權限。這是我們建議 Zero Trust 網路存取採用的最佳實踐架構，同時我們也聽見了運用舊版架構之客戶的心聲，他們希望有能夠實現逐步轉移的方案。</p>
+	<p>對於網路層級（OSI 第 3 層）的連線，我們提供具備 Cloudflare 變化的標準型 GRE 或 IPsec 選項：這些通道是 Anycast，表示會有一條通道從您的網路自動連接至 Cloudflare 在 250 多座城市設置的整個網路，同時提供備援和簡化的網路管理。客戶也可以選擇利用 <a href="https://blog.cloudflare.com/cloudflare-network-interconnect/">Cloudflare 網路互連</a>，在全球超過 1,600 個地點透過實體或虛擬連線，直接與 Cloudflare 網路連線。這些第 1 至 3 層的入口可讓您利用自動讓所有 IP 流量變得<a href="https://blog.cloudflare.com/magic-makes-your-network-faster/">更快速</a>且具備強化復原能力的熟悉技術，將您的公用及私有網路連接至 Cloudflare。</p>
+	<p>現在，WARP 註冊裝置的流量可以自動路由至與 IP 層級入口連線的任何網路。這項 Cloudflare One 額外的「管路系統」提升了使用者必須連接現有網路基礎結構的靈活性，並允許組織透過應用程式層級的連線能力，隨著時間從傳統 VPN 架構轉換至 Zero Trust。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image1-71.png" class="kg-image"></figure>
+	<h3 id="--2">這如何運作？</h3>
+	<p>使用者可以在任何裝置上安裝 WARP 用戶端，以便將流量代理至距離最近的 Cloudflare 位置。接下來，如果裝置在 Zero Trust 註冊 Cloudflare 帳戶並啟用私有路由，即可將其流量傳送至帳戶專用的隔離網路「命名空間」，這是單一客戶特定 Linux 網路堆疊的邏輯副本。這個命名空間存在於每處 Cloudflare 資料中心的每個伺服器中，儲存客戶所連線網路的全部路由和通道設定。</p>
+	<p>流量到達客戶命名空間後，即會透過設定完畢的 GRE、IPsec 或 CNI 通道路由至目的地網路。客戶能夠設定路由優先順序，運用多個通道實現流量負載平衡，並自動容錯移轉至每個 Cloudflare 位置中可能最穩健的流量路徑。</p>
+	<p>在返回路徑上，從客戶網路至 Cloudflare 的流量也會透過 Anycast 路由至距離最近的 Cloudflare 位置，但這個位置與 WARP 工作階段的位置不同，因此返回流量會轉遞至活動 WARP 工作階段的伺服器。為此，我們會利用名為 Hermes 的全新內部服務，讓資料得以在網路的所有伺服器中共用。就如同我們的 <a href="https://blog.cloudflare.com/introducing-quicksilver-configuration-distribution-at-internet-scale/">Quicksilver</a> 服務能夠在整個網路中傳播核心基礎結構的鍵值資料，Hermes 同樣允許伺服器寫入可由其他伺服器讀取的資料。建立 WARP 工作階段後，其位置也會寫入 Hermes。而且，收到返回流量時，將會從 Hermes 讀取到 WARP 工作階段的位置，並為流量創造適當的通道。</p>
+	<h3 id="--3">接下來呢？</h3>
+	<p>今日，所有 Cloudflare One 客戶皆可使用這項入口方法。請聯絡您的客戶團隊，完成所有設定！我們很高興加入更多功能，讓客戶能夠更輕鬆地轉移至 Zero Trust，包括在連線網路流量頂端分層其他的網路安全政策並提供服務探索，以便協助組織確定應用程式遷移至 Zero Trust 連線的優先順序。</p>
+</div>

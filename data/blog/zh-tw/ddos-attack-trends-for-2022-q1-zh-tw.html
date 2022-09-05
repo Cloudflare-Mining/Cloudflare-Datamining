@@ -1,0 +1,156 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/04/image24-1-3.png" class="kg-image"></figure>
+	<p>歡迎閱讀我們 2022 年的第一份 DDoS 報告，迄今為止我們已共發佈九份。本報告包括 2022 年 1 月至 3 月期間全球 Cloudflare 網路的應用程式層和網路層部分的全新資料點和見解。</p>
+	<p>2022 年第一季度，應用程式層 DDoS 攻擊數量激增，但網路層 DDoS 攻擊總量有所下降。雖然如此，但巨流量 DDoS 攻擊大幅增加，較上一季度成長高達 645%。放大係數達 22 億倍的新零日反射攻擊有所緩解。</p>
+	<p>在俄羅斯和烏克蘭的網路空間，最易受攻擊的行業是網路媒體和廣播媒體。在亞塞拜然和巴勒斯坦的 Cloudflare 資料中心，DDoS 活動數量激增，這表明有內部機器人在運作。</p>
+	<h2 id="-">重點內容</h2>
+	<h3 id="--1">俄羅斯和烏克蘭的網路空間</h3>
+	<ul>
+		<li>俄羅斯的網路媒體公司是俄羅斯第一季度遭受攻擊最多的行業。其次是網際網路行業，然後是加密貨幣，再之後是零售業。儘管針對俄羅斯加密貨幣公司的許多攻擊都源自烏克蘭或美國，但另一個主要的攻擊來源是俄羅斯內部。</li>
+		<li>針對俄羅斯公司的 HTTP DDoS 攻擊主要來自德國、美國、新加坡、芬蘭、印度、荷蘭和烏克蘭。需要注意的是，能夠識別網路攻擊流量的來源並不表示就能夠判斷攻擊者所處的位置。</li>
+		<li>針對烏克蘭廣播媒體和出版網站的攻擊似乎更為分散，源自更多國家，這表示可能使用了全球機器人。大部分攻擊流量來自美國、俄羅斯、德國、中國、英國和泰國。 </li>
+	</ul>
+	<p>更一步瞭解<a href="https://blog.cloudflare.com/what-cloudflare-is-doing-to-keep-the-open-internet-flowing-into-russia-and-keep-attacks-from-getting-out/"> Cloudflare 如何讓開放式網際網路流量流入俄羅斯，同時避免向外展開攻擊</a>。</p>
+	<h3 id="ddos-">DDoS 勒索攻擊</h3>
+	<ul>
+		<li>2022 年 1 月，在遭受攻擊的受訪者中，有 17% 報告說成為了 DDoS 勒索攻擊的目標或在攻擊前收到了威脅。</li>
+		<li>這個數字在 2 月急劇下降到 6%，在 3 月下降到 3%。</li>
+		<li>與前幾季相比，在第一季度，只有 10% 的受訪者報告了 DDoS 勒索攻擊，較去年同期下降 28%，較上一季度下降 52%。</li>
+	</ul>
+	<h3 id="-ddos-">應用程式層 DDoS 攻擊</h3>
+	<ul>
+		<li>2022 年第一季度是過去 12 月以來應用程式層攻擊最為活躍的一季。HTTP 層 DDoS 攻擊較去年同期成長 164%，較上一季度成長 135%。</li>
+		<li>深入瞭解這一季度的情況，2022 年 3 月的 HTTP DDoS 攻擊數超過了上一年第四季度（及第三季度和第一季度）的總數。</li>
+		<li>中國連續四個季度都是 HTTP DDoS 攻擊的主要來源，這一季則是美國。來自美國的 HTTP DDoS 攻擊猛增，較上一季度成長 6,777%，較去年同期成長 2,225%。</li>
+	</ul>
+	<h3 id="-ddos--1">網路層 DDoS 攻擊</h3>
+	<ul>
+		<li>第一季度網路層攻擊較去年同期成長 71%，但較上一季度下降 58%。</li>
+		<li>電信行業是網路層 DDoS 攻擊的主要目標，其次是遊戲和博彩公司，以及資訊科技和服務業。</li>
+		<li>巨流量攻擊在第一季度有所成長。超過 10 Mpps（百萬封包每秒）的攻擊較上一季度成長 300%，超過 100 Gbps 的攻擊較上一季度成長 645%。</li>
+	</ul>
+	<p>本報告基於 Cloudflare 的 DDoS 防護系統自動偵測和緩解的 DDoS 攻擊數。如需深入瞭解該系統的運作方式，請查看<a href="https://blog.cloudflare.com/zh-tw/deep-dive-cloudflare-autonomous-edge-ddos-protection-zh-tw/">此深度剖析部落格貼文</a>。</p>
+	<p><strong>有關我們如何衡量在網路中觀察到的 DDoS 攻擊的說明</strong><br>為分析攻擊趨勢，我們會計算「DDoS 活動」率，即攻擊流量在我們的全球網路中、特定位置或特定類別（如行業或帳單國家/地區）觀察到的總流量（攻擊流量+潔淨流量）中所佔的百分比。透過衡量這些百分比，我們能夠標準化資料點並避免以絕對數字反映而出現的偏頗，例如，某個 Cloudflare 資料中心接收到更多的總流量，因而發現更多攻擊。 </p>
+	<h2 id="--2">勒索攻擊</h2>
+	<p>我們的系統會持續分析流量，並在偵測到 DDoS 攻擊時自動套用緩解措施。每個受到 DDoS 攻擊的客戶都會收到提示，請求參與一個自動化調查，以幫助我們更好地瞭解該攻擊的性質以及緩解措施的成功率。 </p>
+	<p>兩年多以來，Cloudflare 一直在對受到攻擊的客戶進行調查，調查中的一個問題是，他們是否收到威脅或勒索信，要求付款以換得停止 DDoS 攻擊。在上一季，即 2021 年第四季，報告的 DDoS 勒索攻擊創下了歷史紀錄，每五位客戶就有一位遭受過 DDoS 勒索攻擊。這一季，DDoS 勒索攻擊有所下降，只有十分之一的受訪者報告 DDoS 勒索攻擊，較上一年同期下降 28%，較上一季度下降 52%。 </p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/04/unnamed.png" class="kg-image" alt="報告受到 DDoS 勒索攻擊或在攻擊前收到威脅的受訪者百分比。"></figure>
+	<p>當我們按月份細分，可以發現 2022 年 1 月是第一季收到勒索信的受訪者人數最多的一個月。近五分之一的客戶 (17%) 都收到過。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/04/unnamed--1-.png" class="kg-image" alt="按月份劃分的 DDoS 勒索攻擊圖表"></figure>
+	<h2 id="-ddos--2">應用程式層 DDoS 攻擊</h2>
+	<p><a href="https://www.cloudflare.com/zh-tw/learning/ddos/application-layer-ddos-attack/" target="_blank">應用程式層 DDoS 攻擊</a>，特別是 HTTP DDoS 攻擊，旨在通過使 HTTP 伺服器無法處理合法用戶請求來破壞它。如果伺服器收到的請求數量超過其處理能力，伺服器將丟棄合法請求甚至崩潰，導致對合法使用者的服務效能下降或中斷。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/04/unnamed1.png" class="kg-image" alt="DDoS 攻擊導致拒絕對合法使用者提供服務的示意圖"></figure>
+	<h3 id="-ddos--3">應用程式層 DDoS 攻擊：月份分佈</h3>
+	<p><strong>第一季度，應用程式層 DDoS 攻擊較上一年同期成長 164%，較上一季度成長 135%，是過去一年攻擊最活躍的季度。</strong></p>
+	<p>應用程式層 DDoS 攻擊在 2022 年第一季度成長到新高度。僅在 3 月，HTTP DDoS 攻擊數就超過了 2021 年第四季度（及第三季度和第一季度）的總數。 </p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/04/image22-1.png" class="kg-image" alt="過去 12 個月按月份劃分的應用程式層 DDoS 攻擊年度分佈圖表"></figure>
+	<p></p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/04/image23-1.png" class="kg-image" alt="過去 12 個月按月份劃分的應用程式層 DDoS 攻擊季度分佈圖表"></figure>
+	<h3 id="-ddos--4">應用程式層 DDoS 攻擊：行業分佈</h3>
+	<p><strong>消費電子是第一季度遭受攻擊最多的行業。</strong></p>
+	<p>在全球範圍內，消費電子行業遭受的攻擊最多，較上一季度成長 5,086% 。其次是網路媒體行業，攻擊數較上一季度成長 2,131%。第三是電腦軟體公司，較上一季度成長 76%，較去年同期成長 1,472。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/04/image9-5.png" class="kg-image" alt="2022 年第一季度按行業劃分的 HTTP DDoS 攻擊分佈圖表"></figure>
+	<p>然而，如果我們只關注烏克蘭和俄羅斯，會發現廣播媒體、網路媒體公司和網際網路公司是最主要的攻擊目標。更一步瞭解<a href="https://blog.cloudflare.com/what-cloudflare-is-doing-to-keep-the-open-internet-flowing-into-russia-and-keep-attacks-from-getting-out/"> Cloudflare 如何讓開放式網際網路流量流入俄羅斯，同時避免向外展開攻擊</a>。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/04/image14-1.png" class="kg-image" alt="2022 年第一季度按來源國家/地區劃分的針對俄羅斯各行業的 HTTP DDoS 攻擊分佈圖表"></figure>
+	<!--kg-card-begin: html-->
+	<p></p>
+	<!--kg-card-end: html-->
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/04/image3-6.png" class="kg-image" alt="2022 年第一季度按來源國家/地區劃分的針對烏克蘭各行業的 HTTP DDoS 攻擊分佈圖表"></figure>
+	<h3 id="-ddos--5">應用程式層 DDoS 攻擊：來源國家/地區分佈</h3>
+	<p>為瞭解 HTTP 攻擊的來源，我們研究了產生攻擊 HTTP 請求之用戶端的來源 IP 位址地理位置。與網路層攻擊不同，HTTP 攻擊中的來源 IP 位址無法<a href="https://www.cloudflare.com/learning/ddos/glossary/ip-spoofing/" target="_blank">偽造</a>。特定國家/地區的高 DDoS 活動百分比通常表明大型殭屍網路在其境內運行。</p>
+	<p>中國連續四個季度都是 HTTP DDoS 攻擊的主要來源，這一季則是美國。來自美國的 HTTP DDoS 攻擊猛增，較上一季度成長 6,777%，較去年同期成長 2,225%。其次是中國，然後是印度、德國、巴西和烏克蘭。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/04/unnamed--2-.png" class="kg-image" alt="2022 年第一季度按來源國家/地區劃分的 HTTP DDoS 攻擊分佈圖表"></figure>
+	<h3 id="-ddos--6">應用程式層 DDoS 攻擊：目標國家/地區分佈</h3>
+	<p>為確定哪些國家/地區遭受最多的 HTTP DDoS 攻擊，我們按客戶的帳單國家/地區對 DDoS 攻擊進行了分類，並以其佔據所有 DDoS 攻擊數的百分比進行表示。</p>
+	<p>美國在連續三個季度位居榜首之後，跌至第二位。中國的組織遭受的 HTTP DDoS 攻擊最多，其次是美國、俄羅斯和賽普勒斯。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/04/image7-4.png" class="kg-image" alt="2022 年第一季度按目標國家/地區劃分的 HTTP DDoS 攻擊分佈圖表"></figure>
+	<h2 id="-ddos--7">網路層 DDoS 攻擊</h2>
+	<p>應用程式層攻擊的目標是最終使用者嘗試訪問的服務（本例中為 HTTP/S）所在的應用程式（<a href="https://www.cloudflare.com/learning/ddos/glossary/open-systems-interconnection-model-osi/" target="_blank">OSI 模型</a>的第 7 層），而<a href="https://www.cloudflare.com/learning/ddos/layer-3-ddos-attacks/" target="_blank">網路層攻擊</a>以網路基礎結構（例如聯網路由器和伺服器）和網際網路鏈路本身為目標。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/04/unnamed--1--1.png" class="kg-image"></figure>
+	<h3 id="-ddos--8">網路層 DDoS 攻擊：月份分佈</h3>
+	<p><strong>雖然 HTTP DDoS 攻擊在第一季度激增，網路層 DDoS 攻擊較上一季度實際下降了 58%，但較去年同期仍成長 71%。</strong></p>
+	<p>深入瞭解第一季度，我們會發現網路層 DDoS 攻擊的數量在整個季度基本保持一致，每個月發生大約三分之一的攻擊。 </p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/04/image28.png" class="kg-image" alt="過去 12 個月按月份劃分的網路層 DDoS 攻擊年度分佈圖表"></figure>
+	<!--kg-card-begin: html-->
+	<p></p>
+	<!--kg-card-end: html-->
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/04/image23-3.png" class="kg-image" alt="過去 12 個月按月份劃分的網路層 DDoS 攻擊季度分佈圖表"></figure>
+	<!--kg-card-begin: html-->
+	<p></p>
+	<!--kg-card-end: html-->
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/04/unnamed--3-.png" class="kg-image" alt="過去 12 個月網路層 DDoS 攻擊分佈圖表"></figure>
+	<h2 id="cloudflare-ddos-">Cloudflare 緩解零日放大 DDoS 攻擊<br></h2>
+	<p>在這些網路層 DDoS 攻擊中，Cloudflare 可以自動偵測和緩解零日 DDoS 攻擊。</p>
+	<p>3 月初，Cloudflare 的研究人員幫助調查並暴露了 Mitel 商務電話系統的一個零日漏洞。該漏洞與其他潛在的漏洞一樣，也可以讓攻擊者發起放大 DDoS 攻擊。這種類型的攻擊將易受攻擊的 Mitel 伺服器的流量反射給受害者，放大在此過程中傳送的流量。本例中以<strong> 22 億倍的放大係數</strong>放大。更多內容請參閱我們最近發佈的<a href="https://blog.cloudflare.com/cve-2022-26143-amplification-attack/">部落格貼文</a>。</p>
+	<p>我們在網路上觀察到這些攻擊。其中一個攻擊針對一家使用 Cloudflare Magic Transit 服務的北美雲端提供商。此次攻擊共有 100 個來源 IP，主要來自美國、英國、加拿大、荷蘭、澳洲及大約 20 個其他國家或地區。攻擊峰值超過 50 Mpps（約 22 Gbps），Cloudflare 系統自動偵測到並緩解了這次攻擊。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/04/image1-9.png" class="kg-image" alt="Cloudflare 緩解放大 DDoS 攻擊示意圖"></figure>
+	<h3 id="-ddos--9">網路層 DDoS 攻擊：行業分佈</h3>
+	<p>許多網路層 DDoS 攻擊直接以 Cloudflare 的 IP 範圍為目標。這些 IP 範圍服務於我們的 <a href="https://www.cloudflare.com/cdn/" target="_blank">WAF/CDN 客戶</a>、<a href="https://www.cloudflare.com/dns/" target="_blank">Cloudflare 權威 DNS</a>、<a href="https://www.cloudflare.com/learning/dns/what-is-1.1.1.1/" target="_blank">Cloudflare 公用 DNS 解析器 1.1.1.1</a>、<a href="https://www.cloudflare.com/products/zero-trust/zero-trust-network-access/" target="_blank">Cloudflare Zero Trust</a> 產品及我們的企業辦公室等等。此外，我們還透過我們的 <a href="https://www.cloudflare.com/products/cloudflare-spectrum/" target="_blank">Spectrum</a> 產品為客戶分配專用的 IP 位址，並透過我們的 <a href="https://www.cloudflare.com/magic-transit/" target="_blank">Magic Transit</a>、<a href="https://www.cloudflare.com/magic-wan/" target="_blank">Magic WAN</a> 和 <a href="https://www.cloudflare.com/magic-firewall/" target="_blank">Magic Firewall</a> 產品公告其他公司的 IP 前綴，以提供第 3/4 層 DDoS 保護。</p>
+	<p>在本報告中，我們首次開始根據使用 Spectrum 和 Magic 產品的客戶所處的行業對網路層 DDoS 攻擊進行分類。透過這樣的分類，我們可以瞭解到哪些行業最容易遭受網路層 DDoS 攻擊。</p>
+	<p>根據第一季度的統計資料，我們可以發現，就針對 Cloudflare 客戶的攻擊封包和攻擊位元組而言，電信行業遭受的攻擊最多。Cloudflare 緩解了針對電信公司的超過 8% 的攻擊位元組及 10% 的攻擊封包。 &nbsp;</p>
+	<p>緊隨其後的是遊戲/博彩及資訊科技和服務行業，分列第二和第三位。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/04/image20-1.png" class="kg-image" alt="按行業劃分的網路層 DDoS 攻擊位元組分佈圖表"></figure>
+	<!--kg-card-begin: html-->
+	<p></p>
+	<!--kg-card-end: html-->
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/04/image5-7.png" class="kg-image" alt="按行業劃分的網路層 DDoS 攻擊封包分佈圖表"></figure>
+	<h3 id="-ddos--10">網路層 DDoS 攻擊：目標國家/地區分佈</h3>
+	<p>與按客戶所處行業分類類似，我們還可以根據客戶的帳單國家/地區對網路層 DDoS 攻擊進行分類（我們之前對應用程式層 DDoS 攻擊進行過這樣的分類），以識別遭受攻擊最多的國家或地區。 </p>
+	<p>根據第一季度的資料，我們可以看到，美國是 DDoS 攻擊流量百分比最高的國家，攻擊封包超過總量的 10%，攻擊位元組接近 8%。其次是中國、加拿大和新加坡。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/04/image19-1.png" class="kg-image" alt="按目標國家/地區劃分的網路層 DDoS 攻擊位元組分佈圖表"></figure>
+	<!--kg-card-begin: html-->
+	<p></p>
+	<!--kg-card-end: html-->
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/04/image15-2.png" class="kg-image" alt="按目標國家/地區劃分的網路層 DDoS 攻擊封包分佈圖表"></figure>
+	<h3 id="-ddos--11">網路層 DDoS 攻擊：輸入國家/地區分佈</h3>
+	<p>在試圖弄清網路層 DDoS 攻擊的來源時，我們不能使用與進行應用程式層攻擊分析相同的方法。要發起應用程式層 DDoS 攻擊，用戶端與伺服器之間必須<a href="https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake/" target="_blank">成功握手</a>，以建立 HTTP/S 連線。為成功實現握手，攻擊不能<a href="https://www.cloudflare.com/learning/ddos/glossary/ip-spoofing/" target="_blank">偽造</a>其來源 IP 位址。雖然攻擊者可能會使用機器人、代理或其他方法來掩蓋自己的身分，但攻擊用戶端的來源 IP 位置確實就是應用程式層 DDoS 攻擊的攻擊來源。</p>
+	<p>而要發起網路層 DDoS 攻擊，在大多數情況下都無需握手。攻擊者可以<a href="https://www.cloudflare.com/learning/ddos/glossary/ip-spoofing/" target="_blank">偽造</a>來源 IP 位址來混淆攻擊來源並在攻擊屬性中引入隨機性，這可能會使簡單的 DDoS 防護系統更難攔截攻擊。因此，如果我們根據偽造的來源 IP 位址推導出源國家/地區，我們將得到一個『偽造的國家/地區』。</p>
+	<p>為此，在分析網路層 DDoS 攻擊來源時，我們會根據吸收流量的 Cloudflare 邊緣資料中心位置對流量進行分類，而不是（潛在的）偽造來源 IP，來瞭解攻擊來源。我們的資料中心遍及全球<a href="https://www.cloudflare.com/network" target="_blank">超過 270 個城市</a>，因此能夠在本報告中實現地理上的準確性。然而，即便是這种方法也不能達到 100% 的準確性，因為出於各種原因，比如降低成本、網路壅塞或管理不善，流量可能會透過不同網際網路服務提供者和國家/地區回傳或路由。</p>
+	<p>第一季度，在亞塞拜然的 Cloudflare 資料中心偵測到的攻擊百分比較上一季度成長 16,624%，較去年同期成長 96,900%，成為網路層 DDoS 活動百分比最高的國家 (48.5%)。 </p>
+	<p>緊隨亞塞拜然資料中心之後的是我們的巴勒斯坦資料中心，DDoS 流量在所有流量中的佔比高達 41.9%。較上一季度成長 10,120%，較去年同期成長 46,456%。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/04/image2-8.png" class="kg-image" alt="Graph of the distribution of network-layer DDoS attacks by source country in 2022 Q1"></figure>
+	<!--kg-card-begin: html-->
+	<p></p>
+	<!--kg-card-end: html-->
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/04/image12-1.png" class="kg-image" alt="Map of the distribution of network-layer DDoS attacks by source country in 2022 Q1"></figure>
+	<p>要檢視所有國家和地區，請查看<a href="https://radar.cloudflare.com/notebooks/ddos-2021-q4#network-layer-ddos-attacks-by-country" target="_blank">互動式地圖</a>。</p>
+	<h3 id="--3">攻擊手段</h3>
+	<p><strong>SYN 洪水攻擊仍然是最受歡迎的 DDoS 攻擊手段，而通用 UDP 洪水攻擊的使用在第一季度有所下降。</strong></p>
+	<p>用語「攻擊手段」用於描述攻擊者用來發起 DDoS 攻擊的方法，如 IP 通訊協定、TCP 旗標等封包屬性、洪水方法和其他條件。</p>
+	<p>第一季度，SYN 洪水攻擊在所有網路層 DDoS 攻擊中佔 57%，較上一季度成長 69%，較去年同期下降 13%。其次是 SSDP 攻擊，較上一季度成長 1,100%。然後是 RST 洪水攻擊和 UDP 攻擊。上一季度，通用 UDP 洪水攻擊位居第二，但在這一季度，通用 UDP DDoS 攻擊較上一季度下降了 87%，從 32% 降至僅 3.9%。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/04/image11-1.png" class="kg-image" alt="2022 年第一季度主要網路層 DDoS 攻擊手段圖表"></figure>
+	<h2 id="--4">新興威脅</h2>
+	<p>識別主要攻擊手段有助於組織瞭解攻擊狀況。轉而幫助他們改善安全狀態，防禦這些威脅。同樣地，瞭解尚未在攻擊中發揮重大作用的新興威脅能讓我們在其造成重大影響之前緩解它們。 &nbsp; </p>
+	<p>透過第一季度的新興攻擊手段，我們可以看到反射 Lantronix 服務的 DDoS 攻擊（較上一季度成長 971%）和 SSDP 反射攻擊（較上一季度成長 724%）都有所上升。此外，SYN-ACK 攻擊較上季度成長 437%，Mirai 機器人攻擊成長 321%。</p>
+	<h3 id="-lantronix-">反射 Lantronix 發現服務之流量的攻擊者</h3>
+	<p>Lantronix 是一家美國的軟體和硬體公司，主要提供物聯網 (IoT) 管理解決方案及其他產品和服務。Lantronix 發現通訊協定是其提供的工具之一，用於管理其 IoT 元件。這是一個命令行工具，可以幫助搜尋和查找 Lantronix 裝置。這個發現工具以 UDP 為基礎，因此無需握手。可以偽造 IP 位址。因此攻擊者可以利用這個工具透過 4 位元組請求搜尋公開的 Lantronix 裝置，然後該裝置會透過連接埠 30718 以 30 位元組的回應進行回應。透過偽造受害者的來源 IP 位址，所有 Lantronix 裝置會將回應傳送給受害者，導致反射/放大攻擊。</p>
+	<h3 id="-ddos--12">用於反射 DDoS 攻擊的簡單服務發現通訊協定</h3>
+	<p>簡單服務發現通訊協定 (SSDP) 的運作方式與 Lantronix 發現通訊協定類似，但針對的是通用隨插即用 (UPnP) 裝置，如聯網印表機。透過濫用 SSDP 通訊協定，攻擊者可以產生反射 DDoS 攻擊，使目標的基礎結構不堪重負，致使網際網路設備離線。如需瞭解更多關於 SSDP DDoS 攻擊的資訊，請按<a href="https://www.cloudflare.com/learning/ddos/ssdp-ddos-attack/" target="_blank">此處</a>。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/04/image21.png" class="kg-image" alt="2022 年第一季度新出現的主要網路層 DDoS 攻擊威脅圖表"></figure>
+	<h3 id="-ddos--13">網路層 DDoS 攻擊：攻擊速度分佈</h3>
+	<p><strong>在第一季度，我們觀察到巨流量 DDoS 攻擊大幅上升，從封包速率和位元速率角度來看都是如此。超過 10 Mpps 的攻擊較上一季度成長超過 300%，超過 100 Gbps 的攻擊較上一季度成長 645% 。</strong></p>
+	<p>衡量 L3/4 DDoS 攻擊規模有不同的方法。一種方法是測量它傳遞的流量大小，以位元速率為單位（例如，Tbps 或 Gbps）。另一種是測量它傳遞的資料封包數，以封包速率為單位（例如， Mpps：百萬封包/每秒）。 </p>
+	<p>高位元速率的攻擊試圖使網際網路鏈路飽和，而高封包速率的攻擊會使伺服器、路由器或其他聯網硬體裝置不堪重負。這些裝置分配一定的記憶體量和計算能力來處理每個封包。因此，通過向裝置發送大量封包，該裝置的處理資源就可能被耗盡。在這種情況下，封包就會「被丟棄」，即裝置無法再處理封包。對使用者而言，這會導致服務中斷和拒絕服務。</p>
+	<h3 id="--5">基於封包速率的分佈情況</h3>
+	<p>大部分網路層 DDoS 攻擊都低於每秒 50,000 封包。雖然在 Cloudflare 面臨的攻擊範圍內，50 kpps 的封包速率並不算高，但仍可輕鬆摧毀未受保護的網際網路設備，即便是標準的千兆位元級乙太網路連線也會遭遇壅塞。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/04/image4-5.png" class="kg-image" alt="2022 年第一季度按封包速率劃分的網路層 DDoS 攻擊分佈圖表"></figure>
+	<p>分析攻擊規模的變化，我們可以看到，超過 10 Mpps 的攻擊較上一季度成長達 300% 以上。同樣地，1-10 Mpps 的攻擊較上一季度成長近 40%。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/04/image8-3.png" class="kg-image" alt="基於封包速率的網路層 DDoS 攻擊分佈按季變化圖表"></figure>
+	<h3 id="--6">基於位元速率的分佈情況</h3>
+	<p>在第一季度，大部分網路層 DDoS 攻擊都低於 500 Mbps。這在 <a href="https://www.cloudflare.com/network/" target="_blank">Cloudflare 面臨的攻擊範圍內</a>同樣不足掛齒，但可以非常快速地摧毀未受保護且網路處理能力較低的網際網路設備，至少能夠造成網路壅塞，即便是標準的千兆位元級乙太網路連線。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/04/image6-4.png" class="kg-image" alt="2022 年第一季度按位元速率劃分的網路層 DDoS 攻擊分佈圖表"></figure>
+	<p>與在每秒封包數領域觀察到的趨勢類似，這方面同樣出現大幅上升。峰值超過 100 Gbps 的 DDoS 攻擊數較上一季度成長 645%；峰值在 10 Gbps 到 100 Gbps 之間攻擊成長 407%；峰值在 1 Gbps 到 10 Gbps 的攻擊成長 88%；甚至峰值在 500 Mbps 到 1 Gbps 的攻擊較上一季度都成長了 20%。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/04/image13-1.png" class="kg-image" alt="基於位元速率的網路層 DDoS 攻擊分佈按季變化圖表"></figure>
+	<h3 id="-ddos--14">網路層 DDoS 攻擊：持續時間分佈</h3>
+	<p><strong>大多數攻擊的持續時間都在 1 小時以內，再次表明有必要採取始終啟用的自動 DDoS 緩解解決方案。</strong></p>
+	<p>我們測量攻擊持續時間的方式是：記錄系統首次偵測到攻擊與具備該攻擊特徵且前往該特定目標的最後一個封包之間的時間差。 </p>
+	<p>在先前的報告中，我們詳細分析了持續一小時及更長時間的攻擊。然而，大多數情況下，超過 90% 的攻擊持續時間都不到一小時。所以從本報告開始，我們對時間較短的攻擊進行了解析，並按較短時間範圍對其進行了分組，以提高精細度。 </p>
+	<p>需要記住的重要一點是，即使攻擊只持續幾分鐘，只要攻擊成功，其影響就會遠遠超過最初的攻擊時長。IT 人員回應成功的攻擊可能需要幾小時甚至幾天時間，才能恢復服務。 </p>
+	<p>在 2022 年第一季度，超過一半的攻擊持續了 10-20 分鐘，大約 40% 在 10 分鐘內就結束了，另外 5% 左右持續了 20-40 分鐘，其餘則持續了 40 分鐘以上。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/04/image27.png" class="kg-image" alt="2022 年第一季度按持續時間劃分的網路層 DDoS 攻擊分佈圖表"></figure>
+	<p>短時間的攻擊很可能不被察覺，特別是爆發攻擊，此類攻擊會在幾秒鐘內用大量的封包、位元組或請求轟擊目標。在這種情況下，依賴于安全分析來手動緩解的 DDoS 保護服務沒有機會及時緩解攻擊。此類服務只能從攻擊後分析中吸取教訓，然後部署篩選該攻擊指紋的新規則，期望下次能捕捉到它。同樣，使用「按需」服務（即安全團隊在遭到攻擊時將流量重定向至 DDoS 保護提供商）也無濟於事，因為在流量到達按需 DDoS 保護提供商前，攻擊就已經結束了。 </p>
+	<p>建議公司使用始終啟用的自動化 DDoS 防護服務來分析流量，並足夠快速地套用即時指紋識別以封鎖持續時間短暫的攻擊。</p>
+	<h2 id="--7">概述</h2>
+	<p>Cloudflare 的使命是幫助建構更好的網際網路，讓所有人擁有更快速、更安全、更可靠的體驗，即使在面臨 DDoS 攻擊時也是如此。作為我們使命的一部分，自 2017 年開始，我們一直在為所有客戶免費提供<a href="https://blog.cloudflare.com/unmetered-mitigation/">非計量、無限制的 DDoS 防護</a>。這些年來，攻擊者越來越容易發起 DDoS 攻擊。為反擊攻擊者的優勢，我們想要確保所有規模的組織都能夠簡單且免費地保護他們自身，防禦所有類型的 DDoS 攻擊。</p>
+	<p>尚未使用 Cloudflare？<a href="https://dash.cloudflare.com/sign-up" target="_blank">立即開始使用</a>，您可使用我們的 Free 和 Pro 方案保護您的網站，或<a href="https://www.cloudflare.com/magic-transit/" target="_blank">聯絡我們</a>獲得全面的 DDoS 保護，使用 Magic Transit 保護您的整個網路。</p>
+</div>

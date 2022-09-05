@@ -1,0 +1,63 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image3-28.png" class="kg-image" alt="Packet captures at the edge"></figure>
+	<p>パケットキャプチャは、ネットワークエンジニアやセキュリティエンジニアが日々使っている必須ツールです。オンプレミスのレガシーハードウェアからクラウドネイティブのサービスへ移行するネットワーク機能が増すにつれ、チームがかつてデータセンターの単一デバイスを通して収束し100%採取することによって得ていた可視性が、失われるリスクがあります。トラブルシューティングやトラフィックパターンの理解の深化には、お客様のネットワークトラフィック全体でパケットキャプチャに簡単にアクセスできることが重要です。当社は本日、オンデマンドのパケットキャプチャをCloudflareのグローバルネットワークから一般公開することを発表でき、嬉しく思います。</p>
+	<h3 id="-">パケットキャプチャとは？その使い方は？</h3>
+	<p>パケットキャプチャとは、特定のネットワークボックス（通常はファイアウォールかルーター）が特定のタイムフレームで見ているすべてのパケットを含んだファイルのことをいいます。パケットキャプチャは、ネットワークの問題をデバッグしたり、攻撃トラフィックの可視性を高めてセキュリティを強化（ファイアウォールルールを追加して特定の攻撃パターンをブロックするなど）するためによく使われるパワフルなツールです。</p>
+	<p>ネットワークエンジニアなら、パケットキャプチャ（PCAP）ファイルを他のツール（<a href="https://www.cloudflare.com/ja-jp/learning/network-layer/what-is-mtr/" target="_blank">mtr</a>）と組み合わせて、ネットワーク到達可能性のトラブルシューティングをするかもしれません。たとえば、エンドユーザーが特定アプリケーションへの断続的な接続をレポートした場合、エンジニアはユーザーのソースIPアドレスにパケットキャプチャをフィルター設定して、そのデバイスから受け取るすべてのパケットを記録します。次にそのパケットキャプチャを分析し、他の情報源（ネットワークパスのエンドユーザー側からのPCAPファイル、トラフィックログ、分析など）と比較して問題の規模を把握し、問題源を隔離します。</p>
+	<p>セキュリティエンジニアも、パケットキャプチャを使って潜在的な悪意あるトラフィックについて理解を深めることができます。たとえば、攻撃の試みかもしれないと疑われる予期せぬトラフィックスパイクに気づいたとします。エンジニアはパケットキャプチャを使って、ネットワークに到達するトラフィックを記録し、分析して、パケットの有効性を判断します。有効でない場合、たとえばパケットのペイロードがランダムに生成されたわけのわからないものだった場合は、セキュリティエンジニアはファイアウォールルールを作成して、それと思われるトラフィックがネットワーク内に入るのを阻止します。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/03/image1-65.png" class="kg-image" alt="Example of a packet capture from a recent DDoS attack targeted at Cloudflare infrastructure. The contents of this pcap can be used to create a “signature” to block the attack.">
+		<figcaption><em><em>Cloudflareのインフラを狙った最近のDDoS攻撃のパケットキャプチャ例。このPCAPのコンテンツを使って「シグネチャ」を作成し、攻撃をブロックできます。</em></em></figcaption>
+	</figure>
+	<h3 id="--1">トラフィックのフラグメント化で生じる可視性のギャップ</h3>
+	<p>従来、ユーザーはルーターかファイアウォールにログインして<a href="https://www.tcpdump.org/" target="_blank">tcpdump</a>などのプロセスを開始することで、パケットをキャプチャしています。特定のパケットと照合するためだけのフィルターを設定し、ファイルを取得するのですが、ネットワークのフラグメント化が進み、ユーザーがセキュリティ機能をエッジに移すに従って、対象トラフィックのパケットキャプチャを収集することがますます難しくなっています。全トラフィックが単一デバイス（<a href="https://www.cloudflare.com/learning/access-management/castle-and-moat-network-security/" target="_blank">「城と堀」</a>の例えでいえば跳ね橋）を通って流れるのとは違い、エンジニアは、さまざまなロケーションに広がる多くの物理的デバイスと仮想デバイスのすべてにおいて、パケットをキャプチャしなければならないかもしれません。パケットの多くはキャプチャを許可しないかもしれず、そうなるとユーザーはそれらを継ぎ接ぎしてネットワークトラフィックの全体像を作るよりほかありません。それは現在でもほぼ不可能なタスクであり、ネットワークの破損と複雑化が進むにつれて一層困難になります。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/03/image2-56.png" class="kg-image"></figure>
+	<h3 id="cloudflare-">Cloudflareグローバルネットワークからオンデマンドのパケットキャプチャを提供</h3>
+	<p>Cloudflareを使えば可視性を取り戻せます。お客様は<a href="https://www.cloudflare.com/ja-jp/magic-transit/" target="_blank">Magic Transit</a>と<a href="https://www.cloudflare.com/ja-jp/magic-wan/" target="_blank">Magic WAN</a>を使い、パブリックIPとプライベートIPのトラフィックをすべてCloudlareネットワーク経由でルーティングすることで、高速化を実現し、安全性と信頼性だけでなく可視性も高めることができます。古い例えを使えば、Cloudflareはグローバルに分散した巨大な跳ね橋だとお考えください。Cloudflareが、お客様のトラフィック全体をカバーする単一のクラウドベースのルーター兼ファイアウォールのような働きをし、お客様のトラフィック全体でパケットをキャプチャして一か所にお届けします。</p>
+	<h3 id="--2">その仕組みは？</h3>
+	<p>お客様は、<a href="https://developers.cloudflare.com/magic-firewall/how-to/collect-pcaps/" target="_blank">Packet Captures API</a>を使ってパケットキャプチャをリクエストすることができます。ご希望のパケットを取得するには、フィルター設定時に欲しいパケットのIPアドレス、ポート、プロトコルをご指定ください。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>curl -X POST https://api.cloudflare.com/client/v4/accounts/${account_id}/pcaps \
+-H 'Content-Type: application/json' \
+-H 'X-Auth-Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="99eceafcebd9fce1f8f4e9f5fcb7faf6f4">[email&nbsp;protected]</a>' \
+-H 'X-Auth-Key: 00000000000' \
+--data '{
+        "filter_v1": {
+               "source_address": "1.2.3.4",
+               "protocol": 6
+        },
+        "time_limit": 300,
+        "byte_limit": "10mb",
+        "packet_limit": 10000,
+        "type": "simple",
+        "system": "magic-transit"
+}'
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<!--kg-card-begin: markdown-->
+	<p><small>APIを使ったパケットキャプチャリクエストの例</small></p>
+	<!--kg-card-end: markdown-->
+	<p>当社は<a href="https://netfilter.org/projects/nftables/" target="_blank">nftables</a>を使ってお客様の着信パケットにフィルターを適用し、<a href="https://www.netfilter.org/projects/libnetfilter_log/index.html" target="_blank">nflog</a>で記録します。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>table inet pcaps_1 {
+    chain pcap_1 {
+        ip protocol 6 ip saddr 1.2.3.4 log group 1 comment “packet capture”
+    }
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<!--kg-card-begin: markdown-->
+	<p><small>お客様のパケットをフィルターしてログに記録するnftables設定の例</small></p>
+	<!--kg-card-end: markdown-->
+	<p>nflogはnetfilterソケットを作成し、パケットのログはそのソケットを通ってLinuxカーネルからユーザー空間へ送られます。ユーザー空間では、tcpdumpを使ってnetfilterソケットからパケットを読み取り、PCAPファイルを作成します。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>tcpdump -i nflog:1 -w pcap_1.pcap
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<!--kg-card-begin: markdown-->
+	<p><small>PCAPファイルを作成するtcpdumpコマンドの例</small></p>
+	<!--kg-card-end: markdown-->
+	<p>tcpdumpは通常、ネットワークインターフェイス上で着信パケットを聞いて使いますが、当社の場合はnflogグループからのパケットログを読み込むために設定します。tcpdumpは、パケットログをPCAPファイルに変換します。</p>
+	<p>PCAPファイルを取得できたら、それをお客様に送信します。PCAPファイルは容量が大きい場合があり、機密情報（パケットのペイロードなど）を含む可能性もありますので、当社のマシンからお客様のご希望のクラウドストレージサービスへ直接お送りします。これにより、当社では機密データを決して保存せず、お客様にとっては大きなファイルの管理と保存がしやすくなっています。</p>
+	<h3 id="--3">今すぐ始めましょう</h3>
+	<p>オンデマンドのパケットキャプチャが、Magic FirewallのAdvanced機能をご購入のお客様を対象に、一般公開されています。お客様は<a href="https://developers.cloudflare.com/magic-firewall/how-to/collect-pcaps/" target="_blank">パケットキャプチャAPI</a>を使って、パケットの先頭から160バイトを、サンプリングのデフォルト設定1/100でキャプチャすることができます。フルパケットキャプチャやオンデマンドパケットキャプチャコントロールなどさらなる機能が、今後数週間内にCloudflareダッシュボードに追加されます。担当のアカウントチームにご連絡いただければ、最新情報を随時お届けします。</p>
+</div>

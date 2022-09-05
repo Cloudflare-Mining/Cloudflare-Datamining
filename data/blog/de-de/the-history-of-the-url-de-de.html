@@ -1,0 +1,433 @@
+<div class="post-content lh-copy gray1">
+	<p>Am <a href="https://www.rfc-editor.org/rfc/rfc805.txt" target="_blank">11. Januar 1982</a> kamen zweiundzwanzig Computerwissenschaftler zusammen, um ein Problem mit der „Computerpost“ (heute E-Mail genannt) zu besprechen. Unter den Teilnehmern waren <a href="https://en.wikipedia.org/wiki/Bill_Joy" target="_blank">der spätere Gründer von Sun Microsystems</a>, <a href="https://en.wikipedia.org/wiki/Dave_Lebling" target="_blank">der Entwickler von Zork</a>, <a href="https://en.wikipedia.org/wiki/David_L._Mills" target="_blank">der Erfinder des NTP</a> und <a href="https://en.wikipedia.org/wiki/Bob_Fabry" target="_blank">der Mann, der die Regierung überredete, Unix zu finanzieren</a>. Das Problem ließ sich leicht auf den Punkt bringen: Es gab 455 Hosts im ARPANET und die Situation geriet allmählich außer Kontrolle.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/10/arpanet-1969.gif" class="kg-image" alt="ARPANET circa 1969"></figure>
+	<p>Dass es gerade zu diesem Zeitpunkt akut wurde, hing mit der anstehenden <a href="https://www.rfc-editor.org/rfc/rfc801.txt" target="_blank">Umstellung</a> des ARPANET vom ursprünglich verwendeten <a href="https://en.wikipedia.org/wiki/Network_Control_Program" target="_blank">NCP-Protokoll</a> auf das TCP/IP-Protokoll zusammen – auf dasjenige Protokoll also, auf dem auch unser heutiges Internet basiert. Diese Umstellung würde dazu führen, dass plötzlich eine Vielzahl von Netzwerken miteinander in Verbindung stehen (also gewissermaßen ein „Inter-Netz“ entsteht). Und dafür brauchte man ein stärker „hierarchisch“ aufgebautes Domainsystem, in dem das ARPANET und die anderen Netzwerke ihre jeweils eigenen Domains auflösen konnten.</p>
+	<p>Andere Netzwerke dieser Zeit trugen tolle Namen wie „COMSAT“, „CHAOSNET“, „UCLNET“ oder „INTELPOSTNET“. Sie wurden von Universitäts- und Firmengruppen in den ganzen USA betrieben, die miteinander kommunizieren wollten und es sich leisten konnten, sowohl die 56k-Leitungen von der Telefongesellschaft anzumieten als auch die erforderlichen <a href="https://en.wikipedia.org/wiki/PDP-11" target="_blank">PDP-11-Computer</a> zu erwerben, die für das Routing zuständig waren.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/10/pdp11.jpg" class="kg-image" alt="PDP-11"></figure>
+	<p>Ursprünglich war das ARPANET so gestaltet, dass in einem zentralen Network Information Center (NIC) eine Datei mit einer Liste aller Hosts des Netzwerks geführt wurde. Diese Datei hieß <a href="https://tools.ietf.org/html/rfc952" target="_blank"><code>HOSTS.TXT</code></a> und ähnelte der Datei <code>/etc/hosts</code> auf einem Linux- oder OS-X-System von heute. Bei jeder Änderung des Netzwerks <a href="https://www.rfc-editor.org/rfc/rfc952.txt" target="_blank">musste</a> das NIC die Datei per FTP (einem <a href="https://tools.ietf.org/html/rfc114" target="_blank">1971</a> erfundenen Protokoll) an jeden Host des Netzwerks übertragen, was die Infrastruktur spürbar belastete.</p>
+	<p>Eine einzige Datei, die sämtliche Hosts des Internets enthält, wäre natürlich nicht beliebig skalierbar gewesen. Aber zu diesem Zeitpunkt hatte E-Mail oberste Priorität, weil es in Bezug auf Adressierung die vorrangige Herausforderung darstellte. Letzten Endes wurde beschlossen, eine hierarchische Lösung aufzubauen, bei der man über ein externes System die benötigte Domain oder Gruppe von Domains abfragen konnte– oder in den Worten der Beteiligten: „Man beschloss in dieser Sache, die aktuelle Mailboxkennung, die dem Schema ‚<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="5f2a2c3a2d1f37302c2b">[email&nbsp;protected]</a>‘ folgte, auf ‚<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6a1f190f182a0205191e440e05070b0304">[email&nbsp;protected]</a>‘ zu erweitern. Dabei konnte ‚domain‘ auch eine Hierarchie von Domains sein.“ Das war die Geburtsstunde der Domain.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/10/arpanet.gif" class="kg-image" alt="ARPANET Map"></figure>
+	<p>Man sollte sich aber auf keinen Fall der Illusion hingeben, diese Entscheidungen seien in weiser Voraussicht getroffen worden, weil man um die zukünftige Bedeutung des Domainnamens wusste. Vielmehr ging es bei der gewählten Lösung vor allem darum, dass sie „den vorhandenen Systemen die wenigsten Probleme bereitete“. Ein <a href="https://www.rfc-editor.org/rfc/rfc799.txt" target="_blank">anderer Vorschlag</a> für das Format von E-Mail-Adressen war beispielsweise <code>&lt;user&gt;.&lt;host&gt;@&lt;domain&gt;</code> gewesen. Aber das musste verworfen werden, weil in den E-Mail-Nutzernamen damals bereits Punkte vorkamen. Sonst würden Sie mich heute vielleicht über die E-Mail-Adresse ‚<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="572d36343c79343b382233313b3625321734383a">[email&nbsp;protected]</a>‘ erreichen.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/10/arpanet-1987.gif" class="kg-image" alt="ARPANET circa 1987"></figure>
+	<!--kg-card-begin: html-->
+	<div class="cta">
+		<h2>Was ist Cloudflare?</h2>
+		<p style="margin-bottom: 1.5em;">Mit Cloudflare können Sie Caching, Lastverteilung, Rate Limiting und sogar Netzwerk-Firewalls und Codeausführung innerhalb von Millisekunden von praktisch jedem Internetbenutzer aus Ihrer Infrastruktur an unsere Points of Presence verschieben.</p>
+		<a class="mr2 pa3 bn button primary" href="https://www.cloudflare.com/de-de/case-studies/?utm_source=blog&amp;utm_campaign=Blog+CTA&amp;utm_content=History+of+URL&amp;utm_term=bottom_of_post" target="_blank">Fallstudie lesen</a>
+		<a href="https://www.cloudflare.com/de-de/plans/enterprise/contact/?utm_source=blog&amp;utm_campaign=Blog+CTA&amp;utm_content=History+of+URL&amp;utm_term=bottom_of_post" style="" class="bg-white40 mr2 pa3 bn bg-white-50 button" target="_blank">Vertrieb kontaktieren</a>
+	</div>
+
+	<style>
+		.cta {
+			padding: 1em;
+			background-color: #3eb0ef1f;
+			position: relative;
+			margin-bottom: 1em;
+		}
+
+		p.attribution {
+			font-size: 0.9em;
+			font-style: italic;
+			color: #222;
+		}
+
+		a code.year {
+			text-decoration: underline;
+		}
+
+		a.button {
+			cursor: pointer;
+			border-radius: 0.25em;
+			opacity: 0.9;
+			background-color: rgba(255, 255, 255, 0.9);
+			color: #498cb8;
+			white-space: nowrap;
+			display: inline-block;
+			height: 3em;
+			margin-bottom: 0.5em;
+		}
+
+		a.button:hover {
+			opacity: 1;
+			text-decoration: none;
+		}
+
+		a.button.primary {
+			background-color: #6cc7ff;
+			color: #FFF;
+		}
+	</style>
+	<!--kg-card-end: html-->
+	<h3 id="uucp-und-die-bang-adressierung">UUCP und die Bang-Adressierung</h3>
+	<blockquote>Man sagt, dass die Hauptfunktion eines Betriebssystems darin besteht, für ein und dasselbe Objekt mehrere verschiedene Namen zu definieren, damit sich das System dann damit beschäftigen kann, die Beziehungen zwischen all den verschiedenen Namen nachzuverfolgen. Bei Netzwerkprotokollen scheint es ganz ähnlich zu sein.<br>– David D. Clark, <a href="https://www.rfc-editor.org/rfc/rfc814.txt" target="_blank">1982</a></blockquote>
+	<p>Ein weiterer <a href="https://www.rfc-editor.org/ien/ien116.txt" target="_blank">Vorschlag, der sich nicht durchsetzen konnte,</a> bestand darin, das Ausrufezeichen <code>(!)</code> als Trennzeichen für Domainkomponenten zu verwenden. Der Pfad zum Host <code>ISIA</code> im <code>ARPANET</code> lautete demnach <code>!ARPA!ISIA</code>. Bei dieser Lösung konnte man auch Platzhalterzeichen für die Abfrage von Hosts nutzen: <code>!ARPA!*</code> lieferte jeden Host im <code>ARPANET</code>.</p>
+	<p>Diese Adressierungsmethode war keine wilde Abweichung vom Standard, sondern der Versuch, ihn zu erhalten. Das Verfahren, Hosts durch Ausrufezeichen zu trennen, geht auf ein Datenübertragungstool namens <a href="https://en.wikipedia.org/wiki/UUCP" target="_blank">UUCP</a> zurück, <a href="http://www.cs.dartmouth.edu/~doug/reader.pdf" target="_blank">das 1976 entstanden war</a>. Wenn Sie dies auf einem Computer mit OS X oder Linux lesen, ist uucp dort wahrscheinlich immer noch installiert und über das Terminal aufrufbar.</p>
+	<p>Das 1969 eingeführte ARPANET entwickelte sich schnell zu einem leistungsfähigen Kommunikationswerkzeug … allerdings nur für eine Handvoll Universitäten und Behörden, die Zugang dazu hatten. Das Internet nach heutigem Muster wurde erst <a href="http://www.cybertelecom.org/notes/nsfnet.htm" target="_blank">1991</a> außerhalb von Forschungseinrichtungen öffentlich zugänglich, also über zwanzig Jahre später. Aber Computerbenutzer kommunizierten natürlich trotzdem schon miteinander.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/10/coupler.jpg" class="kg-image" alt="Acoustic Coupler"></figure>
+	<p>In der Zeit vor dem Internet bestand die gängige Kommunikationsmethode zwischen Computern in einer direkten DFÜ-Verbindung von einem Rechner zum anderen. Wenn Sie mir beispielsweise eine Datei senden wollten, musste Ihr Modem mein Modem anrufen, dann konnten wir die Datei übertragen. UUCP entstand, um aus dieser Methode eine Art Netzwerk zu machen.</p>
+	<p>Bei diesem System gibt es auf jedem Computer eine Datei mit einer Liste der ihm bekannten Hosts, zusammen mit der jeweiligen Telefonnummer sowie dem Benutzernamen und dem Kennwort für diesen Host. Damit erstellt man einen „Pfad“ vom eigenen Rechner zum Ziel. Jeder Host entlang dieses Pfads muss „wissen“, wie er die Verbindung zum nächsten herstellen kann:</p>
+	<p><code>sw-hosts!digital-lobby!zack</code></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/10/uucp.jpg" class="kg-image" alt="Business card featuring UUCP address"></figure>
+	<p>Mit dieser Adresse konnte man mir nicht nur Dateien senden oder sich direkt mit meinem Computer verbinden – sie war gleichzeitig auch meine E-Mail-Adresse. Als es noch keine „Mailserver“ gab, konnten Sie mir keine E-Mail senden, wenn mein Computer ausgeschaltet war.</p>
+	<p>Während das ARPANET nur von den Top-Universitäten genutzt werden konnte, entstand mit UUCP ein improvisiertes Internet für die Allgemeinheit. Es bildete die Grundlage für das <a href="https://en.wikipedia.org/wiki/Usenet" target="_blank">Usenet</a> und das <a href="https://en.wikipedia.org/wiki/Bulletin_board_system" target="_blank">BBS</a>-System.</p>
+	<h3 id="dns">DNS</h3>
+	<p>1983 wurde schließlich das DNS-System <a href="https://www.rfc-editor.org/rfc/rfc882.txt" target="_blank">vorgeschlagen</a>, das wir auch heute noch nutzen. Wenn Sie eine DNS-Abfrage durchführen, zum Beispiel mit dem Tool dig, wird Ihnen heute wahrscheinlich ungefähr Folgendes angezeigt:</p>
+	<pre><code>;; ANSWER SECTION:
+google.com.   299 IN  A 172.217.4.206
+</code></pre>
+	<p>Damit wird uns mitgeteilt, dass google.com unter <code>172.217.4.206</code> erreichbar ist. Wie Sie vielleicht wissen, besagt das A, dass es sich um einen „Adresseintrag“ handelt, mit dem eine Domain einer IPv4-Adresse zugeordnet wird. Die Zahl <code>299</code> ist die „Lebenszeit“, die uns informiert, wie lange (in Sekunden) dieser Wert noch gültig ist, bis man ihn erneut abfragen sollte. Aber was bedeutet IN?</p>
+	<p><code>IN</code> steht für „Internet“. Wie so vieles geht auch dieses Feld auf eine Zeit zurück, in der es mehrere Computernetzwerke gab, die zwar einerseits miteinander konkurrierten, andererseits aber auch kompatibel sein mussten. Andere mögliche Werte waren <code>CH</code> für <a href="https://en.wikipedia.org/wiki/Chaosnet" target="_blank">CHAOSNET</a> oder HS für Hesiod, den Namensdienst des <a href="https://en.wikipedia.org/wiki/Project_Athena" target="_blank">Athena-Systems</a>. CHAOSNET gibt es schon lange nicht mehr, aber Athena wird in einer stark weiterentwickelten Version noch heute von Studenten am MIT genutzt. Auf der IANA-Website finden Sie noch die Liste der <a href="https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml" target="_blank">DNS-Klassen</a>, aber es wird Sie nicht überraschen, dass heute nur noch einer der möglichen Werte gebräuchlich ist.</p>
+	<h3 id="top-level-domains">Top-Level-Domains</h3>
+	<blockquote>Es ist äußerst unwahrscheinlich, dass noch weitere TLDs entstehen.<br>– John Postel, <a href="https://tools.ietf.org/html/rfc1591" target="_blank">1994</a></blockquote>
+	<p>Als feststand, dass Domainnamen hierarchisch angeordnet werden sollten, musste man auch festlegen, wie der Ausgangspunkt dieser Hierarchie aussehen sollte. Diese Wurzel wird traditionell mit einem einzigen Punkt („.“) angegeben. Es ist tatsächlich semantisch korrekt, alle Ihre Domainnamen mit einem Punkt abzuschließen, und das funktioniert garantiert auch in Ihrem Webbrowser: <a href="http://google.com./" target="_blank"><code>google.com</code>.</a></p>
+	<p>Die erste TLD war <code>.arpa.</code> Mit ihr konnten die Nutzer in der Übergangszeit ihre alten, traditionellen ARPANET-Hostnamen adressieren. Wenn mein Rechner beispielsweise vorher als <code>hfnet</code> registriert war, dann lautete meine neue Adresse <code>hfnet.arpa</code>. Dies galt allerdings nur vorübergehend, während die Serveradministratoren eine sehr wichtige Entscheidung treffen mussten: Welche der fünf möglichen TLDs sollten sie nehmen? „.com“, „.gov“, „.org“, „.edu“ oder „.mil“?</p>
+	<p>Wenn wir das DNS als hierarchisch bezeichnen, dann ist damit gemeint, dass es eine Reihe von DNS-Rootservern gibt, die dafür zuständig sind, beispielsweise aus <code>.com</code> die <code>.com-Nameserver</code> zu machen, die wiederum mitteilen, wie man zu <code>google.com</code> gelangt. Die DNS-Rootzone des Internets besteht aus <a href="https://www.internic.net/zones/named.cache" target="_blank">dreizehn </a>Serverclustern – mehr sind es nicht, weil in ein einzelnes UDP-Paket nicht mehr hineinpassen: Früher wurde das DNS auf der Grundlage von UDP-Paketen betrieben, sodass die Antwort auf eine Anfrage nie größer sein kann als 512 Bytes.</p>
+	<pre><code>;       This file holds the information on root name servers needed to
+;       initialize cache of Internet domain name servers
+;       (e.g. reference this file in the "cache  .  "
+;       configuration file of BIND domain name servers).
+;
+;       This file is made available by InterNIC 
+;       under anonymous FTP as
+;           file                /domain/named.cache
+;           on server           FTP.INTERNIC.NET
+;       -OR-                    RS.INTERNIC.NET
+;
+;       last update:    March 23, 2016
+;       related version of root zone:   2016032301
+;
+; formerly NS.INTERNIC.NET
+;
+.                        3600000      NS    A.ROOT-SERVERS.NET.
+A.ROOT-SERVERS.NET.      3600000      A     198.41.0.4
+A.ROOT-SERVERS.NET.      3600000      AAAA  2001:503:ba3e::2:30
+;
+; FORMERLY NS1.ISI.EDU
+;
+.                        3600000      NS    B.ROOT-SERVERS.NET.
+B.ROOT-SERVERS.NET.      3600000      A     192.228.79.201
+B.ROOT-SERVERS.NET.      3600000      AAAA  2001:500:84::b
+;
+; FORMERLY C.PSI.NET
+;
+.                        3600000      NS    C.ROOT-SERVERS.NET.
+C.ROOT-SERVERS.NET.      3600000      A     192.33.4.12
+C.ROOT-SERVERS.NET.      3600000      AAAA  2001:500:2::c
+;
+; FORMERLY TERP.UMD.EDU
+;
+.                        3600000      NS    D.ROOT-SERVERS.NET.
+D.ROOT-SERVERS.NET.      3600000      A     199.7.91.13
+D.ROOT-SERVERS.NET.      3600000      AAAA  2001:500:2d::d
+;
+; FORMERLY NS.NASA.GOV
+;
+.                        3600000      NS    E.ROOT-SERVERS.NET.
+E.ROOT-SERVERS.NET.      3600000      A     192.203.230.10
+;
+; FORMERLY NS.ISC.ORG
+;
+.                        3600000      NS    F.ROOT-SERVERS.NET.
+F.ROOT-SERVERS.NET.      3600000      A     192.5.5.241
+F.ROOT-SERVERS.NET.      3600000      AAAA  2001:500:2f::f
+;
+; FORMERLY NS.NIC.DDN.MIL
+;
+.                        3600000      NS    G.ROOT-SERVERS.NET.
+G.ROOT-SERVERS.NET.      3600000      A     192.112.36.4
+;
+; FORMERLY AOS.ARL.ARMY.MIL
+;
+.                        3600000      NS    H.ROOT-SERVERS.NET.
+H.ROOT-SERVERS.NET.      3600000      A     198.97.190.53
+H.ROOT-SERVERS.NET.      3600000      AAAA  2001:500:1::53
+;
+; FORMERLY NIC.NORDU.NET
+;
+.                        3600000      NS    I.ROOT-SERVERS.NET.
+I.ROOT-SERVERS.NET.      3600000      A     192.36.148.17
+I.ROOT-SERVERS.NET.      3600000      AAAA  2001:7fe::53
+;
+; OPERATED BY VERISIGN, INC.
+;
+.                        3600000      NS    J.ROOT-SERVERS.NET.
+J.ROOT-SERVERS.NET.      3600000      A     192.58.128.30
+J.ROOT-SERVERS.NET.      3600000      AAAA  2001:503:c27::2:30
+;
+; OPERATED BY RIPE NCC
+;
+.                        3600000      NS    K.ROOT-SERVERS.NET.
+K.ROOT-SERVERS.NET.      3600000      A     193.0.14.129
+K.ROOT-SERVERS.NET.      3600000      AAAA  2001:7fd::1
+;
+; OPERATED BY ICANN
+;
+.                        3600000      NS    L.ROOT-SERVERS.NET.
+L.ROOT-SERVERS.NET.      3600000      A     199.7.83.42
+L.ROOT-SERVERS.NET.      3600000      AAAA  2001:500:9f::42
+;
+; OPERATED BY WIDE
+;
+.                        3600000      NS    M.ROOT-SERVERS.NET.
+M.ROOT-SERVERS.NET.      3600000      A     202.12.27.33
+M.ROOT-SERVERS.NET.      3600000      AAAA  2001:dc3::35
+; End of file
+</code></pre>
+	<p>DNS-Rootserver sind in Tresoren untergebracht, die in vergitterten Räumen stehen. Auf jedem Tresor steht eine Uhr, damit die Aufnahme der Überwachungskamera nicht unbemerkt durch einen Loop ersetzt werden kann. Nicht zuletzt angesichts der langsamen Implementierung von <a href="https://en.wikipedia.org/wiki/Domain_Name_System_Security_Extensions" target="_blank">DNSSEC</a> könnte man mit einem Angriff auf einen dieser Server den gesamten Internet-Traffic eines Teils der Internetnutzer umleiten. Das wäre sicherlich der Stoff für einen der fantastischsten Thriller, die je gedreht wurden.</p>
+	<p>Es ist keine Überraschung, dass die Nameserver für Top-Level-TLDs nur selten geändert werden. <a href="http://dns.measurement-factory.com/writings/wessels-pam2003-paper.pdf" target="_blank">98 %</a> aller Anfragen an DNS-Rootserver sind fehlerhaft, meist weil die Clients unbrauchbar sind und ihre Ergebnisse nicht richtig cachen. Dieses Problem hat sich so verschärft, dass mehrere Rootbetreiber <a href="https://www.as112.net/" target="_blank">zusätzliche Server bereitstellen mussten</a>, die nur die Aufgabe haben, jeden abzuweisen, der eine inverse Anfrage für seine eigene lokale IP-Adresse stellt.</p>
+	<p>Die TLD-Nameserver werden von verschiedenen Unternehmen und Regierungen in aller Welt verwaltet (<a href="https://www.verisign.com/" target="_blank">Verisign</a> ist für die Verwaltung von <code>.com</code> zuständig). Wenn Sie eine <code>.com</code>-Domain erwerben, erhält die ICANN etwa 0,18 $, Verisign bekommt 7,85 $.</p>
+	<h3 id="punycode">Punycode</h3>
+	<p>Es passiert nur selten, dass ein fertiges und veröffentlichtes Produkt noch den albernen Namen trägt, den sich Entwickler in der Anfangszeit des Projekts ausgedacht hatten. Wir Entwickler mögen einer Unternehmensdatenbank vielleicht den Namen „Delaware“ geben (da in dem US-Bundesstaat alle Unternehmen registriert sind), aber Sie können sicher sein, dass das Produkt dann eher mit einem Namen wie „CompanyMetadataDatastore“ auf den Markt kommt. Nur manchmal, wenn die Sterne richtig stehen und der Boss gerade im Urlaub ist, rutscht so ein Name aus der Entwicklungsphase durch.</p>
+	<p>Das System, mit dem wir Unicode in Domainnamen umwandeln, heißt Punycode. Dabei geht es um ganz einfaches Problem: Wie schreibt man „比薩.com“, wenn das ganze System des Internets auf dem <a href="https://en.wikipedia.org/wiki/ASCII" target="_blank">ASCII</a>-Zeichensatz beruht, dessen exotischstes Zeichen die Tilde ist?</p>
+	<p>Man kann Domains nicht so einfach auf <a href="https://en.wikipedia.org/wiki/Unicode" target="_blank">Unicode</a> umstellen. In den <a href="https://tools.ietf.org/html/rfc1035" target="_blank">Originaldokumenten</a> mit den Spezifikationen für Domains ist festgelegt, dass diese in ASCII kodiert werden müssen. Die gesamte Internet-Hardware der letzten vierzig Jahre geht von dieser Annahme aus, einschließlich der <a href="https://www.cisco.com/c/en/us/support/routers/crs-1-multishelf-system/model.html" target="_blank">Cisco-</a> und <a href="https://www.juniper.net/techpubs/en_US/release-independent/junos/information-products/pathway-pages/t-series/t1600/" target="_blank">Juniper-</a>Router, die Ihnen die Seite liefern, die Sie gerade lesen.</p>
+	<p>Das Web selbst war hingegen <a href="http://1997.webhistory.org/www.lists/www-talk.1994q3/1085.html" target="_blank">noch nie reines ASCII</a>. Ursprünglich war es auf <a href="https://en.wikipedia.org/wiki/ISO/IEC_8859-1" target="_blank">ISO 8859-1</a> ausgelegt. In diesem Zeichensatz sind alle ASCII-Zeichen enthalten, dazu aber weitere Sonderzeichen wie „¼“ und diakritische Zeichen wie „ä“ oder „á“. Allerdings enthält er keine nicht-lateinischen Zeichen.</p>
+	<p>Diese Einschränkung für HTML wurde <a href="https://tools.ietf.org/html/rfc2070" target="_blank">2007</a> endgültig beseitigt und im gleichen Jahr <a href="https://googleblog.blogspot.com/2008/05/moving-to-unicode-51.html" target="_blank">wurde Unicode</a> zum beliebtesten Zeichensatz im Web. Für Domains konnte jedoch weiterhin nur ASCII verwendet werden.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/10/ie-hebrew.gif" class="kg-image" alt="Hebrew in IE 5"></figure>
+	<p>Wie Sie sich vorstellen können, war Punycode nicht der erste Lösungsvorschlag für dieses Problem. Wahrscheinlich haben Sie schon von UTF-8 gehört, einer gängigen Möglichkeit, Unicode als Bytes zu kodieren (die 8 steht für die acht Bits eines Bytes). Im Jahr <a href="https://tools.ietf.org/html/draft-jseng-utf5-01" target="_blank">2000</a> stellten mehrere Mitglieder der Internet Engineering Task Force UTF-5 vor. Die Idee dabei war, Unicode als Fünf-Bit-Abschnitte zu kodieren. Jede Fünf-Bit-Kombination konnte dann einem in Domainnamen zulässigen Zeichen zugeordnet werden (A–V und 0–9). Wenn ich beispielsweise eine Website zum Japanisch lernen anbiete, würde nach diesem Schema aus dem ursprünglichen Domainnamen 日本語.com die kryptische Version M5E5M72COA9E.com.</p>
+	<p>Diese Kodierungsmethode hat allerdings mehrere Nachteile. Erstens werden die Zeichen A–V und 0–9 in der kodierten Ausgabe verwendet. Wenn also eines dieser Zeichen auch im Domainnamen vorkommt, muss es genauso konvertiert werden wie alle anderen. Dadurch wurden einige Domainnamen sehr lang, und das ist ein echtes Problem, denn jeder Abschnitt eines Domainnamens kann maximal 63 Zeichen umfassen. Eine Domain in birmanischer Schrift ist damit effektiv auf 15 Zeichen begrenzt. Doch immerhin beinhaltete dieser Vorschlag auch die durchaus interessante Anregung, UTF-5 zu nutzen, um Unicode auch per Morsecode und Telegramm zu übertragen.</p>
+	<p>Außerdem stand die Frage im Raum, wie man dem Client mitteilen kann, dass eine Domain kodiert ist, sodass er sie in den entsprechenden Unicode-Zeichen darstellen kann, anstatt in der Adressleiste „M5E5M72COA9E.com“ anzuzeigen. Dafür gab es <a href="https://tools.ietf.org/html/draft-ietf-idn-compare-01" target="_blank">mehrere Vorschläge</a>, zum Beispiel die Idee, dies über ein unbenutztes Bit in der DNS-Antwort zu tun. Doch dabei handelte es sich um das „letzte unbenutzte Bit im Header“ und die DNS-Verantwortlichen waren „äußerst abgeneigt, es herauszurücken“.</p>
+	<p>Ein anderer Vorschlag bestand darin, jedem mit dieser Methode umgewandelten Domainnamen ra-- voranzustellen, denn wie es der Zufall wollte, gab es <a href="https://tools.ietf.org/html/draft-ietf-idn-race-00" target="_blank">z</a>u diesem Zeitpunkt (Mitte April 2000) noch keine Domains, die mit diesen Zeichen begannen. Aber wie ich das Internet kenne, hat nach der Veröffentlichung des Vorschlags gleich irgendjemand eine Domain mit ra-- cregistrieren lassen, einfach nur aus Bosheit.</p>
+	<p>Die <a href="https://tools.ietf.org/html/rfc3492" target="_blank">endgültige Entscheidung</a> fiel 2003: Ein Format namens Punycode wurde eingeführt, das auf einer Art Delta-Komprimierung basierte und die umgewandelten Domainnamen dadurch deutlich verkürzen konnte. Delta-Komprimierung ist hierfür besonders sinnvoll, weil es sehr wahrscheinlich ist, dass alle Zeichen in einem Domainnamen aus dem gleichen Unicode-Block stammen. Zwei Farsi-Zeichen stehen beispielsweise in Unicode viel näher beieinander als ein Farsi- und ein Hindi-Zeichen. Um zu zeigen, wie das funktioniert, sehen wir uns die folgende (unsinnige) Zeichenfolge an:</p>
+	<p>يذؽ</p>
+	<p>In einem nicht komprimierten Format müsste sie als drei Zeichen gespeichert werden: [<code>1610, 1584, 1597</code>] (auf der Grundlage der Unicode-Codepunkte). Um diese Werte zu komprimieren, sortieren wir sie zunächst numerisch (merken uns dabei aber die ursprüngliche Position der Zeichen): [<code>1584, 1597, 1610</code>]. Dann können wir den kleinsten Wert ( <code>1584</code> ) und die Deltas zwischen diesem Wert und dem nächsten Zeichen ( <code>13</code> ) sowie zwischen dem zweiten und dem dritten Zeichen ( <code>23</code> ) speichern. Das ergibt deutlich weniger Daten, die übertragen oder gespeichert werden müssen.</p>
+	<p>Punycode wandelt diese Ganzzahlwerte dann (sehr) effizient in Zeichen um, die in Domainnamen zulässig sind, und fügt am Anfang xn-- ein, was die Zeichenfolge als konvertierte Domain kennzeichnet. Wie Sie sehen werden, landen dabei alle Unicode-Zeichen am Ende des Domainnamens. Neben ihrem Wert wird auch die jeweilige Position kodiert, an der sie in den ASCII-Teil der Domain eingefügt werden müssen. Aus der Website 熱狗sales.com wird damit zum Beispiel <code>xn--sales-r65lm0e.com</code>. Jedes Mal, wenn Sie einen Domainnamen in Unicode in die Adressleiste Ihres Browsers eingeben, wird er auf diese Weise umgewandelt.</p>
+	<p>Diese Transformation könnte transparent vonstatten gehen, das führt aber zu einem größeren Sicherheitsproblem. Eine Menge Unicode-Zeichen unterscheiden sich rein optisch nicht von vorhandenen ASCII-Zeichen. So kann man beispielsweise keinen wirklichen Unterschied zwischen dem kyrillischen Kleinbuchstaben a („а“) und dem lateinischen Kleinbuchstaben a („a“) erkennen. Wenn ich nun аmazon.com mit einem kyrillischen „а“ registriere (xn--mazon-3ve.com) und es schaffe, Sie dorthin zu lotsen, können Sie nur schwer erkennen, dass Sie auf der falschen Website sind. Deshalb erscheint, wenn Sie <a href="http://xn--vi8hiv.ws/" target="_blank">🍕💩.ws</a> aufrufen, in der Adresszeile Ihres Browsers nur die etwas langweilige Fassung xn--vi8hiv.ws.</p>
+	<h3 id="protokoll">Protokoll</h3>
+	<p>Der erste Teil der URL ist das Protokoll, mit dem auf sie zugegriffen werden soll. Am gängigsten ist <code>http</code>, das einfache Protokoll zur Dokumentenübertragung, das Tim Berners-Lee speziell für das Web entwickelte. Allerdings standen auch andere Lösungen zur Debatte. <a href="http://1997.webhistory.org/www.lists/www-talk.1993q2/0339.html" target="_blank">Manche Leute</a> waren der Ansicht, wir sollten einfach Gopher nehmen. Dieses Protokoll ist nicht universell einsetzbar, sondern speziell für den Versand strukturierter Daten ausgelegt, ähnlich wie bei der Struktur eines Dateibaums.</p>
+	<p>Wenn man beispielsweise den Endpunkt <code>/Cars</code> anfordert, könnte es Folgendes zurückliefern:</p>
+	<pre><code>1Chevy Camaro             /Archives/cars/cc     gopher.cars.com     70
+iThe Camero is a classic  fake                  (NULL)              0
+iAmerican Muscle car      fake                  (NULL)              0
+1Ferrari 451              /Factbook/ferrari/451  gopher.ferrari.net 70
+</code></pre>
+	<p>which identifies two cars, along with some metadata about them and where you can connect to for more information. The understanding was your client would parse this information into a usable form which linked the entries with the destination pages.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/10/gopher.gif" class="kg-image" alt="Gopher"></figure>
+	<p>Das erste gängige Protokoll war das 1971 entwickelte FTP, mit dem man Dateien auf Remote-Computern auflisten und herunterladen konnte. Gopher war eine logische Erweiterung dieser Lösung: Das Protokoll lieferte eine ähnliche Liste, fügte aber Funktionen hinzu, die auch das Lesen der Metadaten zu den Einträgen erlaubten. Dadurch konnte es für weitergehende Zwecke wie einen Newsfeed oder eine einfache Datenbank verwendet werden. Es besaß jedoch nicht die Flexibilität und Einfachheit, die HTTP und HTML auszeichnen.</p>
+	<p>HTTP ist ein sehr simples Protokoll, vor allem im Vergleich zu Alternativen wie FTP oder auch dem Protokoll <a href="https://blog.cloudflare.com/http3-the-past-present-and-future/">HTTP/3</a>, das heute an Beliebtheit gewinnt. Zunächst einmal ist HTTP rein textbasiert und nicht aus speziellen binären Geheimformeln zusammengebaut (was seine Effizienz deutlich erhöht hätte). Tim Berners-Lee nahm zu Recht an, dass es Generationen von Programmierern mit einem textbasierten Format leichter fallen würde, HTTP-Anwendungen zu entwickeln und zu debuggen.</p>
+	<p>HTTP trifft außerdem kaum Annahmen darüber, welche Art von Inhalten übertragen werden soll. Obwohl es ausdrücklich für HTML erfunden wurde, können Sie (über die MIME <code>Content-Type</code>, die damals einen ganz neuen Ansatz darstellte) alle möglichen Inhaltsarten angeben. Das Protokoll selbst ist recht einfach gehalten:</p>
+	<p>Die folgende Anforderung:</p>
+	<pre><code class="language-http">GET /index.html HTTP/1.1
+Host: www.example.com
+</code></pre>
+	<p>könnte diese Antwort liefern:</p>
+	<pre><code class="language-http">HTTP/1.1 200 OK
+Date: Mon, 23 May 2005 22:38:34 GMT
+Content-Type: text/html; charset=UTF-8
+Content-Encoding: UTF-8
+Content-Length: 138
+Last-Modified: Wed, 08 Jan 2003 23:11:55 GMT
+Server: Apache/1.3.3.7 (Unix) (Red-Hat/Linux)
+ETag: "3f80f-1b6-3e1cb03b"
+Accept-Ranges: bytes
+Connection: close
+
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;An Example Page&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        Hello World, this is a very simple HTML document.
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+	<p>Insgesamt kann man es sich so vorstellen: Grundlage des Netzwerksystems des Internets ist IP, das Internetprotokoll. Es ist dafür zuständig, ein kleines Datenpaket (ca. 1500 Byte) von einem Computer zu einem anderen zu übertragen. Auf der nächsthöheren Ebene befindet sich TCP, das dafür zuständig ist, größere Datenblöcke wie ganze Dokumente und Dateien zuverlässig in Form vieler IP-Pakete zu versenden. Darüber wird ein Protokoll wie HTTP oder FTP implementiert, das festlegt, mit welchem Format die über TCP (oder UDP usw.) gesendeten Daten verständlich und aussagekräftig werden.</p>
+	<p>Anders ausgedrückt, TCP/IP sendet einen Haufen Bytes an einen anderen Computer. Das Protokoll sagt dann aus, was diese Bytes sein sollen und was sie bedeuten.</p>
+	<p>Wenn Sie wollen, können Sie auch ein eigenes Protokoll entwickeln und die Bytes in Ihren TCP-Nachrichten nach Belieben zusammenstellen. Sie müssen nur dafür sorgen, dass jeder, mit dem Sie sich austauschen, die gleiche Sprache spricht. Deshalb ist es üblich, diese Protokolle zu standardisieren.</p>
+	<p>Natürlich gibt es noch viele andere, weniger bedeutende Protokolle, mit denen man herumspielen kann. So gibt es zum Beispiel ein Protokoll für das <a href="https://www.rfc-editor.org/rfc/rfc865.txt" target="_blank">Zitat des Tages</a> (Port 17) und eines für <a href="https://www.rfc-editor.org/rfc/rfc864.txt" target="_blank">zufällige Zeichen</a> (Port 19). Das wirkt heute vielleicht albern, aber es zeigt auch, wie wichtig es war, ein Universalformat für die Dokumentenübertragung wie HTTP zu entwickeln.</p>
+	<h3 id="port">Port</h3>
+	<p><strong>D</strong>ie zeitliche Einordnung von Gopher und HTTP lässt sich an ihren Standard-Portnummern ablesen. Gopher ist Port 70, HTTP Port 80. Der HTTP-Port wurde auf Anforderung von Tim Berners-Lee (wahrscheinlich von <a href="https://en.wikipedia.org/wiki/Jon_Postel" target="_blank">Jon Postel</a> bei der IANA) irgendwann zwischen <a href="https://tools.ietf.org/html/rfc1060" target="_blank">1990</a> und <a href="https://tools.ietf.org/html/rfc1340" target="_blank">1992</a> zugewiesen.</p>
+	<p>Dieses Konzept, „Portnummern“ zu registrieren, ist noch älter als das Internet. Im ursprünglichen NCP-Protokoll für das ARPANET wurden Remote-Adressen durch 40 Bits identifiziert. Die ersten 32 Bit identifizierten den Remote-Host, ganz ähnlich wie heute eine IP-Adresse. Die letzten acht wurden als <a href="https://tools.ietf.org/html/rfc433" target="_blank">AEN</a> bezeichnet (das stand für „Another Eight-bit Number“, also einfach „Noch eine Acht-Bit-Zahl“). Der Remote-Rechner benutzte diese Bits genauso, wie wir eine Portnummer benutzen, also zur Unterscheidung von Nachrichten für verschiedene Prozesse. Anders gesagt, mit der Adresse wird angegeben, an welchen Rechner die Nachricht gerichtet ist, und die AEN (oder Portnummer) sagt dem Remote-Rechner dann, welche Anwendung die Nachricht empfangen soll.</p>
+	<p>Das führte umgehend zu der <a href="https://tools.ietf.org/html/rfc322" target="_blank">Anforderung</a> an die Nutzer, diese „Socket-Nummern“ registrieren, damit weniger Konflikte drohen. Als die Portnummern durch TCP/IP auf 16 Bits erweitert wurden, ging dieser Registrierungsprozess weiter.</p>
+	<p>Bei Protokollen gibt es zwar einen Standard-Port, aber es ist sinnvoll, auch die manuelle Anpassung von Ports zuzulassen, damit Entwicklung lokal möglich ist und mehrere Dienste auf dem gleichen Rechner gehostet werden können. Diese Überlegungen führten auch zu dem <a href="http://1997.webhistory.org/www.lists/www-talk.1992/0335.html" target="_blank">Vorschlag</a>, Websites mit dem Präfix <code>www.</code> zu versehen. Zu diesem Zeitpunkt war es zwar unwahrscheinlich, dass irgendjemand den Zugang zur Root einer Domain erhielt, nur um eine „experimentelle“ Website zu hosten. Aber wenn man den Nutzern den Hostnamen des jeweiligen Rechners ( <code>dx3.cern.ch</code>) mitteilt, bekommt man Probleme, wenn dieser Rechner ausgetauscht werden muss. Mit einer gemeinsamen Subdomain ( <code>www.cern.ch</code> ) kann man je nach Bedarf das Ziel der Weiterleitung ändern.</p>
+	<h3 id="das-bit-dazwischen">Das Bit dazwischen</h3>
+	<p>Wie Sie sicher wissen, fügt man gemäß der URL-Syntax zwei Schrägstriche ( <code>//</code> ) zwischen der Protokollangabe und der restlichen URL ein:</p>
+	<pre><code>http://cloudflare.com
+</code></pre>
+	<p>Dieser doppelte Schrägstrich wurde von einer der ersten vernetzten Workstations übernommen, dem Computersystem <a href="https://en.wikipedia.org/wiki/Apollo/Domain" target="_blank">Apollo</a>. Das Apollo-Team hatte ein ganz ähnliches Problem wie Tim Berners-Lee: Es brauchte eine Möglichkeit, einen Pfad von dem Rechner zu trennen, auf dem sich dieser Pfad befindet. Als Lösung entwickelten Sie ein spezielles Pfadformat:</p>
+	<pre><code>//computername/file/path/as/usual
+</code></pre>
+	<p>Und Tim Berners-Lee übernahm dieses Schema. Tatsächlich <a href="https://www.w3.org/People/Berners-Lee/FAQ.html#etc" target="_blank">bereut</a> er diese Entscheidung inzwischen; es wäre ihm lieber, die Domain (in diesem Fall beispiel.com) käme im Pfad zuerst:</p>
+	<pre><code>http:com/example/foo/bar/baz
+</code></pre>
+	<blockquote>URLs waren nie als das gedacht, was sie inzwischen geworden sind: eine schwer durchschaubare Methode, um als Nutzer eine Website zu identifizieren. Leider ist es nie gelungen, URNs zum Standard zu machen. Das hätte uns ein nützlicheres Namenssystem verschafft. Wenn man der Meinung ist, dass das derzeitige URL-System ausreicht, kann man auch die DOS-Befehlszeile toll finden und die Meinung vertreten, dass die Mehrheit der Nutzer eben einfach die Befehlszeilensyntax erlernen sollten. Wir haben Fenstersysteme entwickelt, damit Computer benutzerfreundlicher werden und breitere Akzeptanz finden. In gleicher Weise sollten wir darüber nachdenken, wie ein besserer Ansatz zum Auffinden bestimmter Websites aussehen könnte.<br>– Dale Dougherty <a href="https://lists.w3.org/Archives/Public/www-talk/1996JanFeb/0075.html" target="_blank">1996</a></blockquote>
+	<p>Unter dem „Internet“ kann man verschiedene Dinge verstehen. Zum Beispiel kann man es als ein System von Computern begreifen, die über ein Computernetzwerk verbunden sind. Diese Version des Internets entstand 1969 mit dem ARPANET. E-Mails, Dateien und Chats wurden schon über dieses Netzwerk ausgetauscht, bevor es HTTP, HTML oder „Webbrowser“ gab.</p>
+	<p>1992 kamen durch Tim Berners-Lee drei Dinge hinzu, die das ausmachen, was <em>wir</em> als das Internet betrachten: HTTP als Protokoll, HTML und die URL. Sein Ziel war es, „Hypertext“ zum Leben zu erwecken. In seiner einfachsten Form ist dies die Möglichkeit, miteinander verknüpfte Dokumente zu erzeugen. Das wurde damals eher als Wundermittel einer fernen Zukunft betrachtet, zusammen mit <a href="https://en.wikipedia.org/wiki/Hypermedia" target="_blank">Hypermedia</a> und allen möglichen anderen Begriffen mit der Vorsilbe „Hyper“.</p>
+	<p>Die entscheidende Anforderung an Hypertext war die Möglichkeit, Dokumente zu verlinken. Zu Berners-Lees Zeiten wurden diese Dokumente allerdings in einer Vielzahl von Formaten gehostet und über Protokolle wie <a href="https://en.wikipedia.org/wiki/Gopher_(protocol)" target="_blank">Gopher</a> und FTP aufgerufen. Er brauchte eine einheitliche Methode, die es erlaubte, auf eine Datei zu verweisen, und dabei auch das Protokoll, den Host im Internet und den Ablageort auf diesem Host kodierte.</p>
+	<p>Seine Lösung beschrieb Berners-Lee bei <a href="https://www.w3.org/Conferences/IETF92/WWX_BOF_mins.html" target="_blank">der allerersten</a> Vorstellung des World Wide Web im März 1992 als „Universal Document Identifier“ (universelle Dokumentenkennung, UDI). Für diese Kennung kamen viele <a href="https://www.w3.org/Protocols/old/osi-ds-29-00.txt" target="_blank">verschiedene Formate</a> in Frage:</p>
+	<pre><code>protocol: aftp host: xxx.yyy.edu path: /pub/doc/README
+ 
+PR=aftp; H=xx.yy.edu; PA=/pub/doc/README;
+ 
+PR:aftp/xx.yy.edu/pub/doc/README
+ 
+/aftp/xx.yy.edu/pub/doc/README
+</code></pre>
+	<p>In seinem Dokument wird auch erklärt, warum Leerzeichen in URLs kodiert werden müssen (%20):</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>&gt; The use of white space characters has been avoided in UDIs: spaces
+&gt; are not legal characters.  This was done because of the frequent
+&gt; introduction of extraneous white space when lines are wrapped by
+&gt; systems such as mail, or sheer necessity of narrow column width, and
+&gt; because of the  inter-conversion of various forms of white space
+&gt; which occurs during character code conversion and the transfer of
+&gt; text between applications.</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Man muss sich vor allem klarmachen, dass die URL im Grunde nur eine Abkürzung für die Kombination aus Schema, Domain, Port, Anmeldedaten und Pfad ist, die früher für jedes einzelne Kommunikationssystem im Kontext betrachtet werden mussten.</p>
+	<p>Die URL wurde erstmals 1994 in Form eines <a href="https://www.ietf.org/rfc/rfc1738.txt" target="_blank">RFC</a> veröffentlicht.</p>
+	<pre><code>scheme:[//[user:<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7e0e1f0d0d09110c1a3e">[email&nbsp;protected]</a>]host[:port]][/]path[?query][#fragment]
+</code></pre>
+	<p>Mit dieser Lösung konnte man aus Hypertext heraus auf verschiedene Systeme verweisen. Da heute aber praktisch alle Inhalte über HTTP gehostet werden, braucht man sie im Grunde nicht mehr. Bereits <a href="https://lists.w3.org/Archives/Public/www-talk/1996JanFeb/0075.html" target="_blank">1996</a> wurde <code>http:/</code>/ und <code>www</code>. von den Browsern automatisch eingefügt (und wenn diese Bestandteile in Werbeanzeigen noch heute genannt werden, ist das wirklich albern).</p>
+	<h3 id="pfad">Pfad</h3>
+	<blockquote>Es geht meiner Meinung nach nicht darum, ob die Leute lernen können, was eine URL bedeutet. Ich finde es moralisch einfach nur schauderhaft, Oma und Opa zu zwingen, sich mit Dingen auseinanderzusetzen, die eigentlich den Konventionen des UNIX-Dateisystems entstammen.<br>– Israel del Rio <a href="https://lists.w3.org/Archives/Public/www-talk/1996JanFeb/0041.html" target="_blank">1996</a></blockquote>
+	<p>Der durch Schrägstriche getrennte Pfad einer URL sollte jedem vertraut sein, der schon mal einen Computer aus den letzten fünfzig Jahren benutzt hat. Das hierarchische Dateisystem selbst wurde vom System <a href="http://www.multicians.org/" target="_blank">MULTICS</a> eingeführt. Dessen Erfinder wiederum führt es auf ein 1952 stattgefundenes <a href="http://www.csl.sri.com/users/neumann/" target="_blank">zweistündiges Gespräch mit Albert Einstein</a> zurück.</p>
+	<p>Bei MULTICS wurde das Größer-als-Zeichen (&gt;) zur Trennung der Bestandteile des Dateipfads benutzt. Beispiel:</p>
+	<pre><code>&gt;usr&gt;bin&gt;local&gt;awk
+</code></pre>
+	<p>Das war auch durchaus schlüssig, aber die Unix-Entwickler <a href="https://www.bell-labs.com/usr/dmr/www/cacm.html" target="_blank">beschlossen</a> leider, das Zeichen &gt; als Symbol für die Weiterleitung zu nutzen. Als Trennzeichen bei Pfaden kam stattdessen der normale Schrägstrich ( <code>/</code>) zum Einsatz.</p>
+	<h3 id="snapchat-beim-h-chsten-gericht">Snapchat beim höchsten Gericht</h3>
+	<blockquote>Falsch. Wir sind, das sehe ich jetzt ganz deutlich, *verschiedener Meinung*. Sie und ich.<br>...<br>Als Person behalte ich mir das Recht vor, unterschiedliche Kriterien für unterschiedliche Zwecke zu verwenden. Ich möchte in der Lage sein, generischen Werken UND bestimmten Übersetzungen UND bestimmten Versionen verschiedene Namen zu geben. Ich möchte eine vielfältigere Welt als die, die Sie vorschlagen. Ich möchte mich nicht von Ihrem zweistufigen System aus „Dokumenten“ und „Varianten“ einschränken lassen.<br><br>– Tim Berners-Lee <a href="http://1997.webhistory.org/www.lists/www-talk.1993q3/1003.html" target="_blank">1993</a></blockquote>
+	<p><a href="https://journals.cambridge.org/action/displayAbstract?fromPage=online&amp;aid=9282809&amp;fileId=S1472669614000255" target="_blank">Die Hälfte</a> der URLs in den Stellungnahmen des Obersten Gerichtshofs der USA verlinken Seiten, die es nicht mehr gibt. 2011 lag die Wahrscheinlichkeit, dass eine beliebige URL in einer 2001 verfassten wissenschaftlichen Arbeit <a href="https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-14-S14-S5" target="_blank">ungültig ist</a>, bei über 50 %.</p>
+	<p>1993 war man <a href="http://1997.webhistory.org/www.lists/www-talk.1993q2/0234.html" target="_blank">fest überzeugt</a>, dass die URL aussterben und durch den „URN“ ersetzt werden würde. Der „Uniform Resource Name“ (einheitlicher Name für Ressourcen) ist ein permanenter Verweis auf einen bestimmten Inhalt, der im Gegensatz zu einer URL niemals angepasst oder ungültig wird. Tim Berners-Lee führte schon <a href="http://1997.webhistory.org/www.lists/www-talk.1991/0018.html" target="_blank">1991</a> aus, dass hier „dringender Bedarf“ besteht.</p>
+	<p>Die einfachste Möglichkeit, einen URN zu erzeugen, wäre ein kryptografischer Hashwert des Seiteninhalts, zum Beispiel: <code>urn:791f0de3cfffc6ec7a0aacda2b147839</code>. Diese Methode erfüllt jedoch nicht die Kriterien der Web-Community, denn man konnte nicht so recht klären, wer dafür zuständig sein sollte, diesen Hashwert in den echten Inhalt umzuwandeln. Außerdem werden Formatänderungen dabei nicht berücksichtigt: Dateien treten oft in verschiedenen Formaten auf (zum Beispiel komprimiert und unkomprimiert), haben aber den gleichen Inhalt.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/10/12859_2013_Article_6083_Fig2_HTML.jpg" class="kg-image" alt="Reliability of URLs"></figure>
+	<p>1996 schlug Keith Shafer gemeinsam mit einigen anderen eine Lösung für das Problem ungültiger URLs vor. <a href="http://purl.oclc.org/OCLC/PURL/INET96" target="_blank">Der Link</a> zu dieser Lösung ist inzwischen ungültig. Roy Fielding veröffentlichte im Juli 1995 einen Implementierungsvorschlag. <a href="http://ftp.ics.uci.edu/pub/ietf/uri/draft-ietf-uri-roy-urn-urc-00.txt" target="_blank">Dieser Link</a> ist mittlerweile ebenfalls ungültig.</p>
+	<p>Über Google konnte ich diese Seiten aber aufstöbern. Durch Google wurden die Seitentitel effektiv zum URN von heute. Das URN-Format wurde 1997 endgültig fertiggestellt und seitdem praktisch nicht benutzt. Die Implementierung selbst ist allerdings durchaus interessant: Jeder URN setzt sich aus zwei Teilen zusammen, einer <code>authority</code> (zuständigen Stelle), die einen bestimmten URN-Typ auflösen kann, und der spezifischen ID dieses Dokuments, in dem jeweiligen Format, das die <code>authority</code> versteht. So wird durch <code>urn:isbn:0131103628</code> beispielsweise ein Buch identifiziert. Dies dient als permanenter Link, der von Ihrem örtlichen isbn-Resolver (hoffentlich) in einen Satz URLs umgewandelt werden kann.</p>
+	<p>Angesichts der Leistungsfähigkeit von Suchmaschinen bestünde das beste URN-Format heute möglicherweise darin, dass Dateien einfach auf ihre bisherigen URLs verweisen. Wir könnten den Suchmaschinen erlauben, diese Informationen zu indexieren und uns entsprechend zu verlinken:</p>
+	<pre><code class="language-html">&lt;!-- On http://zack.is/history --&gt;
+&lt;link rel="past-url" href="http://zackbloom.com/history.html"&gt;
+&lt;link rel="past-url" href="http://zack.is/history.html"&gt;
+</code></pre>
+	<h3 id="query-parameter">Query-Parameter</h3>
+	<blockquote>Das Format „application/x-www-form-urlencoded“ ist in vielerlei Hinsicht eine abartige Monstrosität und das Ergebnis vieler Jahre der Willkürlichkeiten und Kompromisse bei der Implementierung. So kam eine Reihe von Anforderungen zusammen, die zwar für die Interoperabilität notwendig sind, aber keineswegs den Prinzipien benutzerfreundlicher Gestaltung entsprechen.<br>– <a href="https://url.spec.whatwg.org/#application/x-www-form-urlencoded" target="_blank">URL-Spezifikation der WhatWG</a></blockquote>
+	<p>Jeder Internetnutzer erlernt früher oder später den Umgang mit Query-Parametern. Sie kommen nach dem Pfadteil der URL und kodieren bestimmte Optionen, zum Beispiel <code>?name=zack&amp;state=mi</code>. Vielleicht kommt es Ihnen seltsam vor, dass in diesen Abfragen das Ampersand-Zeichen ( <code>&amp;</code>) benutzt wird, denn mit dem gleichen Symbol werden in HTML Sonderzeichen kodiert. Und wenn Sie ein bisschen mit HTML zu tun hatten, mussten Sie wahrscheinlich auch schon das Ampersand-Zeichen in URLs kodieren, indem Sie etwa aus <code>http://host/?x=1&amp;y=2 entweder http://host/?x=1&amp;amp;y=2 oder http://host?x=1&amp;#38;y=2</code> machten (dieses spezielle Durcheinander <a href="http://1997.webhistory.org/www.lists/www-talk.1992/0447.html" target="_blank">gab es von Anfang an</a>).</p>
+	<p>Vielleicht ist Ihnen auch schon aufgefallen, dass das Format bei Cookies ganz ähnlich ist, wenn auch nicht identisch: <code>x=1;y=2</code>. Dieses Format steht tatsächlich nicht im Konflikt mit der HTML-Zeichenkodierung. Das war auch dem W3C nicht entgangen, und es ermunterte die Entwickler schon <a href="https://tools.ietf.org/html/rfc1866#section-8.2.1" target="_blank"><code>1995</code></a>, bei Query-Parametern sowohl ; als auch &amp; zu unterstützen.</p>
+	<p>Dieser URL-Abschnitt war ursprünglich ausschließlich für die Suche nach „Indexen“ vorgesehen. Das Web war anfangs für die Kooperation von Hochenergiephysikern entwickelt worden (und mit diesem Ziel wurde es auch finanziert). Trotzdem war sich Tim Berners-Lee sicherlich darüber im Klaren, dass er eigentlich ein universelles Kommunikationswerkzeug schuf. Jahrelang <a href="http://1997.webhistory.org/www.lists/www-talk.1993q1/0286.html" target="_blank">versäumte er es</a>, Unterstützung für Tabellen einzubauen, die die Physiker wahrscheinlich gebraucht hätten.</p>
+	<p>Jedenfalls benötigten diese „Physiker“ eine Möglichkeit, Informationen zu kodieren und zu verlinken, sowie eine Lösung, um nach diesen Informationen suchen zu können. Dafür entwickelte Tim Berners-Lee das Tag <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/isindex" target="_blank"><code>&lt;ISINDEX&gt;</code></a>. Wenn auf einer Seite <code>&lt;ISINDEX&gt;</code> vorkam, besagte dies für den Browser, dass dies eine durchsuchbare Seite war. Der Browser sollte dann ein Suchfeld einblenden und dem Nutzer ermöglichen, eine Abfrage an den Server zu senden.</p>
+	<p>Das Format dieser <a href="https://www.w3.org/History/19921103-hypertext/hypertext/WWW/Addressing/Search.html" target="_blank">Abfrage</a> bestand aus Schlüsselwörtern, die durch Pluszeichen (<code>+</code>) getrennt waren:</p>
+	<pre><code>http://cernvm/FIND/?sgml+cms
+</code></pre>
+	<p>In wilder Internet-Manier wurde dieses Tag schon bald für alles Mögliche zweckentfremdet, bis hin zu einer Eingabemöglichkeit für die Berechnung von Quadratwurzeln. <a href="https://lists.w3.org/Archives/Public/www-talk/1992NovDec/0042.html" target="_blank">Schnell wurde vorgeschlagen</a>, diese vielleicht allzu spezifische Lösung unbedingt um das universelle Tag <code>&lt;input&gt;</code> zu ergänzen.</p>
+	<p>Im Rahmen dieses Vorschlags werden tatsächlich Pluszeichen verwendet, um die Bestandteile einer Abfrage zu trennen, die ansonsten schon sehr nach einer modernen GET-Abfrage aussieht:</p>
+	<pre><code>http://somehost.somewhere/some/path?x=xxxx+y=yyyy+z=zzzz
+</code></pre>
+	<p>Dies fand allerdings noch lange keine allgemeine Akzeptanz. <a href="https://lists.w3.org/Archives/Public/www-talk/1992NovDec/0032.html" target="_blank">Manche Leute waren der Ansicht</a>, man müsse irgendwie ausdrücken können, dass die Inhalte auf der anderen Seite von Links durchsuchbar sein sollten:</p>
+	<pre><code class="language-html">&lt;a HREF="wais://quake.think.com/INFO" INDEX=1&gt;search&lt;/a&gt;
+</code></pre>
+	<p>Tim Berners-Lee <a href="https://lists.w3.org/Archives/Public/www-talk/1992NovDec/0044.html" target="_blank">war der Meinung</a>, man sollte Abfragen streng typisiert definieren können:</p>
+	<pre><code class="language-html">&lt;ISINDEX TYPE="iana:/www/classes/query/personalinfo"&gt;
+</code></pre>
+	<p>Im Nachhinein bin ich doch recht froh, dass sich die allgemeinere Lösung durchgesetzt hat.</p>
+	<p>Die eigentliche Arbeit an <code>&lt;INPUT&gt;</code> <a href="http://1997.webhistory.org/www.lists/www-talk.1993q1/0079.html" target="_blank">begann</a> im Januar 1993 auf der Grundlage eines älteren SGML-Typs. Man <a href="http://1997.webhistory.org/www.lists/www-talk.1993q1/0085.html" target="_blank">beschloss</a>, dass <code>&lt;SELECT&gt;</code>-Eingaben eine separate, komplexere Struktur benötigten (was vielleicht keine so gute Idee war):</p>
+	<pre><code class="language-html">&lt;select name=FIELDNAME type=CHOICETYPE [value=VALUE] [help=HELPUDI]&gt; 
+    &lt;choice&gt;item 1
+    &lt;choice&gt;item 2
+    &lt;choice&gt;item 3
+&lt;/select&gt;
+</code></pre>
+	<p>Falls es Sie interessiert: Die Idee, <code>&lt;li&gt;</code> wiederzuverwenden, anstatt das neue Element <code>&lt;option&gt;</code> einzuführen, wurde <a href="http://1997.webhistory.org/www.lists/www-talk.1993q2/0188.html" target="_blank">durchaus</a> in Betracht gezogen. Natürlich gab es auch andere Formularvorschläge. <a href="http://1997.webhistory.org/www.lists/www-talk.1993q2/0168.html" target="_blank">Einer davon</a> sah auch Variablensubstitution vor, ähnlich wie Angular heutzutage:</p>
+	<pre><code class="language-html">&lt;ENTRYBLANK TYPE=int LENGTH=length DEFAULT=default VAR=lval&gt;Prompt&lt;/ENTRYBLANK&gt;
+&lt;QUESTION TYPE=float DEFAULT=default VAR=lval&gt;Prompt&lt;/QUESTION&gt;
+&lt;CHOICE DEFAULT=default VAR=lval&gt;
+    &lt;ALTERNATIVE VAL=value1&gt;Prompt1 ...
+    &lt;ALTERNATIVE VAL=valuen&gt;Promptn
+&lt;/CHOICE&gt;
+</code></pre>
+	<p>In diesem Beispiel werden die Eingaben mit dem unter type festgelegten Typ abgeglichen und die VAR-Werte stehen auf der Seite für <a href="http://1997.webhistory.org/www.lists/www-talk.1993q2/0150.html" target="_blank">Zeichenkettensubstitution</a> in URLs zur Verfügung, nach dem Schema:</p>
+	<pre><code>http://cloudflare.com/apps/$appId
+</code></pre>
+	<p>Bei weiteren <a href="http://1997.webhistory.org/www.lists/www-talk.1993q2/0188.html" target="_blank">Vorschlägen</a> wurde das Zeichen <code>@</code> anstelle von <code>=</code> als Trennzeichen zwischen Abfragekomponenten benutzt:</p>
+	<pre><code><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d7b9b6bab297a1b6bba2b2">[email&nbsp;protected]</a><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b992d7d8d4dcf9">[email&nbsp;protected]</a>(value&amp;value)
+</code></pre>
+	<p>Marc Andreessen war derjenige, der unsere heutige Methode <a href="http://1997.webhistory.org/www.lists/www-talk.1993q3/0812.html" target="_blank">vorschlug</a>. Die Grundlage dafür war etwas, das er schon in Mosaic implementiert hatte:</p>
+	<pre><code>name=value&amp;name=value&amp;name=value
+</code></pre>
+	<p>Nur <a href="http://1997.webhistory.org/www.lists/www-talk.1993q4/0437.html" target="_blank">zwei Monate später</a> unterstützte Mosaic auch Formulare mit <code>method=POST</code> und das „moderne“ HTML-Formular war geboren.</p>
+	<p>Natürlich war es auch Marc Andreessen und sein Unternehmen <a href="https://web.archive.org/web/19990421025406/http://home.mcom.com/newsref/std/cookie_spec.html" target="_blank">Netscape</a>, die das Cookie-Format (mit einem anderen Trennzeichen) entwickelten. Ihr Vorschlag war allerdings leider sehr kurzsichtig. Er führte zu dem Versuch, einen Header <a href="https://www.ietf.org/rfc/rfc2965.txt" target="_blank"><code>Set-Cookie2</code></a> einzuführen, und zu grundlegenden strukturellen Schwächen, mit denen wir uns bei Cloudflare bis heute herumschlagen.</p>
+	<p>Fragmente</p>
+	<p>Der Bestandteil der URL, der nach dem „#“ kommt, wird als Fragment bezeichnet. Fragmente gehörten schon seit der <a href="https://www.w3.org/History/19921103-hypertext/hypertext/WWW/Addressing/Addressing.html" target="_blank">ersten Spezifikation</a> zu URLs. Sie verlinken zu einer bestimmten Position auf der Seite, die gerade geladen wird. Wenn ich zum Beispiel den folgenden Anker auf meiner Website habe:</p>
+	<pre><code class="language-html">&lt;a name="bio"&gt;&lt;/a&gt;
+</code></pre>
+	<p>dann kann ich diesen verlinken:</p>
+	<pre><code>http://zack.is/#bio
+</code></pre>
+	<p>Dieses Konzept blieb nicht auf Anker begrenzt, sondern wurde schrittweise auf alle Elemente erweitert und in das Attribut <code>id</code> anstelle von <code>name</code> verschoben:</p>
+	<pre><code class="language-html">&lt;h1 id="bio"&gt;Bio&lt;/h1&gt;
+</code></pre>
+	<p>Tim Berners-Lee entschied sich für das Zeichen # aufgrund dessen Verwendung in US-Adressen (auch wenn er eigentlich Brite ist). In <a href="https://www.w3.org/People/Berners-Lee/FAQ.html#etc" target="_blank">seinen </a>eigenen Worten:</p>
+	<blockquote>Bei Postanschriften wird zumindest in den USA das Nummernzeichen üblicherweise für die Wohnungs- oder Suite-Nummern eines Gebäudes verwendet. „12 Acacia Av #12“ bedeutet also „Das Gebäude Nummer 12 in der Acacia Av., und darin dann die Einheit mit der Nummer 12“. Es erschien deshalb naheliegend, dieses Zeichen für diese Aufgabe zu wählen. http://www.beispiel.com/abc#xyz bedeutet nunmehr: „Innerhalb der Ressource http://www.beispiel.com/abc die spezielle Ansicht mit der Bezeichnung xyz“.</blockquote>
+	<p>Wie sich herausstellte, wurde beim von Douglas Englebart entwickelten <a href="https://en.wikipedia.org/wiki/NLS_(computer_system)" target="_blank">ursprünglichen </a>Hypertextsystem ebenfalls das Zeichen „#“ für diesen Zweck verwendet. Das könnte Zufall oder auch ein Fall versehentlichen „Ideenklaus“ sein.</p>
+	<p>Fragmente sind ausdrücklich nicht Bestandteil von HTTP-Anfragen, sie existieren also nur im Browser. Dieses Konzept erwies sich bei der Entwicklung clientseitiger Navigation als sehr sinnvoll (bevor <a href="https://developer.mozilla.org/en-US/docs/Web/API/History_API" target="_blank">pushState</a> eingeführt wurde). Auch als es darum ging, wie man Zustände in URLs speichern kann, ohne sie wirklich zum Server zu senden, waren Fragmente von großem Nutzen. Was das bedeuten soll? Schauen wir uns das genauer an:</p>
+	<h3 id="m-cken-und-elefanten">Mücken und Elefanten</h3>
+	<p>Es gibt einen ganzen Standard, so widerlich wie SGML, für elektronischen Datenaustausch, also für Formulare und Formularübermittlung. Mehr weiß ich auch nicht, nur dass er aussieht wie Fortran rückwärts ohne Leerzeichen.</p>
+	<p>– Tim Berners-Lee <a href="http://1997.webhistory.org/www.lists/www-talk.1993q1/0091.html" target="_blank">1993</a></p>
+	<p>Oft wird der Eindruck erweckt, die Internet-Standardisierungsgremien hätten zwischen der Fertigstellung von HTTP 1.1 und HTML 4.01 im Jahr 2002 und der Zeit, in der HTML 5 wirklich in Gang kam, nicht viel geleistet. Manche Leute (genaugenommen nur ich) nennen diese Zeit auch das dunkle XHTML-Zeitalter. In Wirklichkeit aber waren die Leute im Standardisierungsbereich <em>sagenhaft fleißig</em>. Das Problem war nur, dass sie sich mit Dingen beschäftigten, die sich im Nachhinein nicht als besonders wertvoll erwiesen.</p>
+	<p>Ein solches Projekt war das Semantic Web. Sie träumten davon, ein Framework zur Beschreibung von Ressourcen (Resource Description Framework, RDF) zu entwickeln, mit dem die Metadaten von Inhalten universell ausgedrückt werden können (Anmerkung der Redaktion: wenn ein Team ein Framework entwickeln möchte, dann nichts wie weg): Anstatt beispielsweise eine schöne Webseite über meine Corvette Stingray zu gestalten, könnte ich ein RDF-Dokument erstellen, mit Angaben zur Größe und Farbe des Sportwagens und zur Anzahl der Strafzettel, die ich damit erhalten habe.</p>
+	<p>Natürlich ist das keineswegs eine schlechte Idee. Grundlage des Formats war jedoch XML und es war wie bei der Frage nach der Henne und dem Ei: Einerseits wollte man die ganze Welt dokumentieren, andererseits sollten die Browser irgendetwas Sinnvolles mit dieser Dokumentation anfangen.</p>
+	<p>Allerdings lieferte das Projekt einen ergiebiges Umfeld für philosophische Streitgespräche. Eine der besten dieser Diskussionen dauerte mindestens zehn Jahre und trug den formvollendeten Codenamen „<a href="https://www.w3.org/2001/tag/issues.html#httpRange-14" target="_blank">httpRange-14</a>“.</p>
+	<p>Mit httpRange-14 sollte die grundlegende Frage beantwortet werden, was eine URL ist. Verweist eine URL immer auf ein Dokument, oder kann sie auf alles Mögliche verweisen? Kann ich eine URL bekommen, die auf mein Auto verweist?</p>
+	<p>Der Versuch, diese Frage zufriedenstellend zu beantworten, wurde allerdings nicht unternommen. Stattdessen drehte sich vieles darum, wie und wann man Nutzer mithilfe von 303-Weiterleitungen von Links, die keine Dokumente sind, zu solchen führen kann, die es sind, und wann wir URL-Fragmente (den Teil hinter dem „#“) nutzen können, um <a href="http://blog.iandavis.com/2010/11/a-guide-to-publishing-linked-data-without-redirects/" target="_blank">Nutzer zu verlinkten Daten zu führen</a>.</p>
+	<p>Das ist aus heutiger, pragmatischer Sicht vielleicht eine alberne Frage. Viele von uns sind der Ansicht, dass man eine URL für alles verwenden kann, was sich eben damit machen lässt, und dann nutzen die Leute diese Lösung, oder auch nicht. Aber beim Semantic Web interessiert nur die Semantik, also wurde die Frage eben diskutiert.</p>
+	<p>Man debattierte am <a href="https://www.w3.org/2002/07/01-tag-summary#arch-doc" target="_blank">1. Juli 2002</a>, <a href="https://www.w3.org/2002/07/15-tag-summary#L3330" target="_blank">15. Juli 2002</a>, <a href="https://www.w3.org/2002/07/22-tag-summary#L3974" target="_blank">22. Juli 2002</a>, <a href="https://www.w3.org/2002/07/29-tag-summary#httpRange-14" target="_blank">29. Juli 2002</a>, <a href="https://lists.w3.org/Archives/Public/www-tag/2002Sep/0127" target="_blank">16. September 2002</a> und zu mindestens 20 weiteren Anlässen bis 2005 über dieses spezielle Thema. Entschieden wurde die Frage schließlich durch die großartige „<a href="https://lists.w3.org/Archives/Public/www-tag/2005Jun/0039.html" target="_blank">httpRange-14-Lösung</a>“ von 2005, aber aufgrund von Beschwerden in den Jahren <a href="https://lists.w3.org/Archives/Public/www-tag/2007Jul/0034.html" target="_blank">2007</a> und <a href="https://lists.w3.org/Archives/Public/public-awwsw/2011Jan/0021.html" target="_blank">2011</a> sowie <a href="https://www.w3.org/2001/tag/doc/uddp/change-proposal-call.html" target="_blank">einer Forderung nach neuen Lösungen</a> 2012 landete sie erneut auf der Tagesordnung. Von der Gruppe „<a href="https://groups.google.com/forum/#!searchin/pedantic-web/httprange-14/pedantic-web/iLY6VFvN-H0/SXQwc-lOpM8J" target="_blank">Pedantic Web</a>“, deren Name wirklich sehr passend ist, wurde die Frage umfassend diskutiert. Nur eines geschah nicht: Es wurden keine nennenswerten semantischen Daten im Web unter irgendeiner Art von URL platziert.</p>
+	<h3 id="auth">Auth</h3>
+	<p>Wie Sie wahrscheinlich wissen, können Sie bei URLs auch einen Benutzernamen und ein Passwort angeben:</p>
+	<pre><code>http://zack:<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3043585858585858704a51535b1e5943">[email&nbsp;protected]</a>
+</code></pre>
+	<p>Der Browser kodiert diese Authentifizierungsdaten dann mit <a href="https://en.wikipedia.org/wiki/Base64" target="_blank">Base64</a> und sendet sie als Header:</p>
+	<pre><code>Authentication: Basic emFjazpzaGhoaGho
+</code></pre>
+	<p>Benutzername und Passwort werden nur deshalb mit Base64 kodiert, damit auch Zeichen zugelassen werden können, die in einem Header möglicherweise nicht gültig sind; verschlüsselt werden Benutzername und Passwort dadurch nicht.</p>
+	<p>Insbesondere vor der Einführung der SSL-Internetverbindung war das sehr problematisch. Jeder, der Ihre Verbindung anzapfen konnte, konnte mühelos Ihr Passwort auslesen. Dementsprechend fehlte es auch nicht an <a href="http://1997.webhistory.org/www.lists/www-talk.1993q3/0297.html" target="_blank">Alternativvorschlägen</a>, darunter <a href="https://en.wikipedia.org/wiki/Kerberos_(protocol)" target="_blank">Kerberos</a>, damals wie heute ein breit genutztes Sicherheitsprotokoll.</p>
+	<p>Wie bei vielen ähnlich gelagerten Fällen war aber der simple <a href="http://1997.webhistory.org/www.lists/www-talk.1993q3/0882.html" target="_blank">Basic</a>-Auth-Vorschlag für die Browserhersteller (Mosaic) am einfachsten zu implementieren. Dadurch wurde er zur ersten und schließlich einzigen Lösung, bis die Entwickler die Werkzeuge zum Aufbau eigener Authentifizierungssysteme bekamen.</p>
+	<h3 id="die-webanwendung">Die Webanwendung</h3>
+	<p>In der Welt der Webanwendungen wirkt es vielleicht etwas seltsam, sich vorzustellen, dass der Hyperlink die Grundlage des Web sei. Er ist eine Methode, ein Dokument mit einem anderen zu verknüpfen. Nach und nach wurde er durch stilistische Anpassungen, Codeausführung, Sitzungen und Authentifizierung erweitert, bis schließlich das Computing-Gemeinschaftserlebnis entstand, um das sich so viele Experten der 70er Jahre (vergeblich) bemühten. Letzten Endes bestätigt sich auch hier wieder etwas, das damals wie heute für jedes Projekt oder Startup gilt: Es kommt nur auf die Akzeptanz an. Ganz gleich, wie schlampig Ihre Lösung ist – wenn Sie die Leute dazu bringen können, sie zu benutzen, dann werden sie Ihnen auch helfen, daraus etwas Brauchbares zu machen. Umgekehrt gilt natürlich das Gleiche: Wenn Ihnen die Nutzer fehlen, hilft auch keine technische Perfektion. Es gibt unzählige Werkzeuge, in denen Millionen von Arbeitsstunden stecken und die heute kein Mensch mehr verwendet.</p>
+	<p><em>Dieser Artikel ist die überarbeitete Fassung eines Beitrags, der ursprünglich im Eager-Blog erschienen ist. Aus Eager wurde 2016 </em><a href="https://www.cloudflare.com/apps" target="_blank"><em>Cloudflare Apps</em></a><em>.</em></p>
+	<!--kg-card-begin: html-->
+	<div class="cta">
+		<h2>Was ist Cloudflare?</h2>
+		<p style="margin-bottom: 1.5em;">Mit Cloudflare können Sie Caching, Lastverteilung, Rate Limiting und sogar Netzwerk-Firewalls und Codeausführung innerhalb von Millisekunden von praktisch jedem Internetbenutzer aus Ihrer Infrastruktur an unsere Points of Presence verschieben.</p>
+		<a class="mr2 pa3 bn button primary" href="https://www.cloudflare.com/de-de/case-studies/?utm_source=blog&amp;utm_campaign=Blog+CTA&amp;utm_content=History+of+URL&amp;utm_term=bottom_of_post" target="_blank">Fallstudie lesen</a>
+		<a href="https://www.cloudflare.com/de-de/plans/enterprise/contact/?utm_source=blog&amp;utm_campaign=Blog+CTA&amp;utm_content=History+of+URL&amp;utm_term=bottom_of_post" style="" class="bg-white40 mr2 pa3 bn bg-white-50 button" target="_blank">Vertrieb kontaktieren</a>
+	</div>
+
+	<style>
+		.cta {
+			padding: 1em;
+			background-color: #3eb0ef1f;
+			position: relative;
+			margin-bottom: 1em;
+		}
+
+		p.attribution {
+			font-size: 0.9em;
+			font-style: italic;
+			color: #222;
+		}
+
+		a code.year {
+			text-decoration: underline;
+		}
+
+		a.button {
+			cursor: pointer;
+			border-radius: 0.25em;
+			opacity: 0.9;
+			background-color: rgba(255, 255, 255, 0.9);
+			color: #498cb8;
+			white-space: nowrap;
+			display: inline-block;
+			height: 3em;
+			margin-bottom: 0.5em;
+		}
+
+		a.button:hover {
+			opacity: 1;
+			text-decoration: none;
+		}
+
+		a.button.primary {
+			background-color: #6cc7ff;
+			color: #FFF;
+		}
+	</style>
+	<!--kg-card-end: html-->
+</div>

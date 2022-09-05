@@ -1,0 +1,58 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/image1-1.png" class="kg-image"></figure>
+	<p>阅读这篇文章，您就是 web 的参与者。我们不需要操作服务器、也不需要写一行代码，就可以撰写这篇博客文章，并将它显示在您的面前，这多么神奇啊。总之，今天的网络让我们比以往任何时候都更能参与其中。</p>
+	<p>去年<a href="https://blog.cloudflare.com/internet-privacy/">我们就提出，</a>互联网的下一阶段将是永远开启、永远安全、永远私密。今天，我们深入研究一个类似的 web 趋势，我们称之为 Web3。在这个博客中，我们将在 web 发展的背景下开始解释 Web3 以及 Cloudflare 将如何帮助提供支持。</p>
+	<h3 id="-web-1-0-web-2-0">从 Web 1.0 到 Web 2.0</h3>
+	<p><a href="https://webfoundation.org/about/vision/history-of-the-web/" target="_blank">伯纳斯·李爵士（Sir Tim Berners-Lee）</a> 在 1989 年写下了影响深远的 “<a href="https://www.w3.org/History/1989/proposal.html" target="_blank">信息管理建议书</a>”，其中概述了 “web” 的愿景，即通过超文本链接相互连接的信息系统网络。人们经常将其视同互联网（其运行所依赖的计算机网络）。这个 web 的关键实践需求包括能够通过远程机器以去中心化方式访问网络，并允许系统在不需要任何中央控制或协调的情况下连接在一起。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/10/image4-3.png" class="kg-image" alt="The original proposal for what we know as the web, fitting in one diagram - Source: w3">
+		<figcaption>当今万维网的最初设想图解 —— 来源：<a href="https://www.w3.org/History/1989/proposal.html" target="_blank">w3</a></figcaption>
+	</figure>
+	<p>这个愿景最终变成了 web 的最初版本，它由通过分布式服务器网络传递的互连静态资源组成，主要从客户端侧以只读方式访问 — “Web 1.0”。1993 年 Mosaic 图形浏览器推出后的大约两年内，web 使用量激增，网站数量增长超过 1000%（根据来自<a href="https://www.mit.edu/people/mkgray/growth/" target="_blank">万维网漫游者</a>的数据）。</p>
+	<p>21 世纪初是 web 增长的转折点，也是其发展的关键时期。互联网泡沫崩溃后，在人们对 web 的质疑日益加剧的情况下，幸存下来的科技公司进一步发展，以新的方式为客户提供价值：</p>
+	<ul>
+		<li>网景 （Netscape）等桌面浏览器开始商品化，为搜索引擎等用于发现内容的原生 web 服务铺平了道路。</li>
+		<li>网络效应最初由 web 目录中的超链接驱动，例如雅虎，但平台通过实现用户参与并利用集体智慧，例如评论网站，显著放大了网络效应。</li>
+		<li>互联网活动产生的海量数据以及日益实现的竞争价值，迫使各个公司成为数据库管理专家。</li>
+	</ul>
+	<p>O’Reilly Media 创造了 <a href="https://www.oreilly.com/pub/a/web2/archive/what-is-web-20.html?page=1" target="_blank">Web 2.0</a> 概念，尝试在设计原则中捕捉这样的变化：它们改变了网络的可用性和交互性，并在近 20 年后继续作为互联网公司的核心组成部分。</p>
+	<p>然而，在 web 2.0 转型过程中，web 脱离了它最初的核心原则之一— 去中心化 。</p>
+	<blockquote>去中心化：在网上发布任何内容都不需要中央权威机构的许可，没有中央控制节点，因此没有单点故障 …… 同时也没有 “安全开关”！<br>— web 的历史，作者：<a href="https://webfoundation.org/about/vision/history-of-the-web/" target="_blank">万维网基金会（<em>Web Foundation</em>）</a></blockquote>
+	<h3 id="-">互联网的新范式</h3>
+	<p>这正是 Web3 的切入点。过去的二十年已经证明，构建一个可扩展的内容去中心化系统是一个挑战。虽然存在构建此类系统的技术，但没有内容平台能够实现大规模的去中心化。</p>
+	<p>但是，有一个明显的例外：比特币。比特币的概念首次出现于 2008 年的一份<a href="https://bitcoin.org/bitcoin.pdf" target="_blank">白皮书</a>，作者为 <a href="https://en.wikipedia.org/wiki/Satoshi_Nakamoto" target="_blank">Satoshi Nakamoto</a>，它作为一种被称为区块链的分布式分类账，旨在使点对点 (P2P) 网络能够以公开、一致和防篡改的方式进行交易。</p>
+	<p>这一句话涵盖了大量的信息。我们来逐一分解：</p>
+	<ul>
+		<li>点对点网络是一种网络架构。它由一组称为节点的计算机组成，可以存储和中继信息。每个节点都具有同等的特权，从而防止一个节点成为单点故障。在比特币案例中，节点可以发送、接收和处理比特币交易。</li>
+		<li>分类账是记录交易的一系列账户的集合。对于比特币而言，分类账记录比特币交易。</li>
+		<li>分布式分类帐在多台计算机之间共享和同步分类帐。这是通过共识实现的，因此每台计算机都持有一个类似的分类账副本。对于比特币，共识过程在 P2P 网络（比特币网络）上实现。</li>
+		<li>区块链是一种分布式分类账，它以 “块” 的形式存储数据，这些 “块” 通过加密方式链接在一起，形成一个不可变链，保留它们的时间顺序。比特币利用区块链技术建立了一个共享、单一的交易真相来源和交易发生的顺序，从而缓解了<a href="https://en.wikipedia.org/wiki/Double-spending" target="_blank">双重消费问题</a>。</li>
+	</ul>
+	<p>比特币目前有<a href="https://luke.dashjr.org/programs/bitcoin/files/charts/software.html" target="_blank"> 40,000 多个网络节点</a>，每天处理<a href="https://coinmarketcap.com/currencies/bitcoin/" target="_blank">超过 300 亿美元的交易，</a>表明该应用可以在不影响安全性的情况下以分布方式大规模运行。它启发了以太坊等其他区块链项目的开发，除了交易之外，以太坊还允许参与者部署可以在其每个节点上验证运行的代码。</p>
+	<p>今天，这些可编程区块链被视为<a href="https://www.coindesk.com/web3-transform-the-web" target="_blank">理想的开放与去信任平台，</a>可作为分布式互联网的基础设施。它们容纳了丰富且不断发展的生态系统，具有<a href="https://dappradar.com/rankings" target="_blank">近 7,000 个去中心化应用</a> (“Dapps”)，不依赖任何单一实体的可用。这样可为他们提供更大的灵活性，以更好地服务于所有司法管辖区的用户。</p>
+	<h3 id="--1">网络是为最终用户服务的</h3>
+	<p>分布式系统本质上不同于集中式系统。不应该以同样的方式来对待。分布式系统使数据及其处理不被单一方持有。这样对于公司提供韧性非常实用，但同时对基于 P2P 的网络也非常实用，从而使数据保留在参与者手中。</p>
+	<p>例如，如果您用传统的方式开博客，您会建立一个服务器，将其暴露给互联网（通过 <a href="https://blog.cloudflare.com/dyi-web-server-raspberry-pi-cloudflare/">Cloudflare :D</a>），就大功告成了。现在，您的博客托管在 WordPress、Ghost、Notions 甚至 Twitter 等平台上。如果这些公司发生宕机，会影响更多的人。而在分布式方式中（例如通过 IPFS），您的博客内容可以由不同实体运行的多个位置托管并提供服务。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/10/image5-2.png" class="kg-image" alt="Web 1.0">
+		<figcaption>Web 1.0</figcaption>
+	</figure>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/10/image2-2.png" class="kg-image" alt="Web 2.0">
+		<figcaption>Web 2.0</figcaption>
+	</figure>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/10/image3-1.png" class="kg-image" alt="Web3">
+		<figcaption>Web3</figcaption>
+	</figure>
+	<p>网络中的每个参与者都可以选择他们托管/提供的服务，并且可以容纳不同的内容。与家庭网络类似，您可以控制您分享的内容，但您不分享一切。</p>
+	<p>这是去中心化身份的核心原则。应用正在利用支撑比特币和以太坊等加密货币的相同加密原则，以提供安全、跨平台的身份服务。这与其他身份验证系统（如 OAuth 2.0）在根本上不同，无需找到受信任的一方来评估自己的身份。这种情况以 “使用&lt;大云提供商&gt;登录” 按钮的形式实现。这些云提供商是唯一拥有足够数据、资源和技术专长的提供商。</p>
+	<p>在去中心化的网络中，每个参与者都持有一个密钥。然后他们可以用它来识别对方。你可以在<a href="https://blog.cloudflare.com/zh-cn/introducing-cryptographic-attestation-of-personhood-zh-cn/%23the-technical-explanation">之前的博客文章</a>中了解这个密码系统。在 Web3 设置中，web 参与者拥有自己的数据，他们可以选择性地向与其交互的应用共享这些数据。参与者也可以利用这个系统来证明他们彼此之间的互动。例如，如果某所大学向您出具<a href="https://www.w3.org/TR/did-core/" target="_blank">去中心化标识符</a> (DID)，您可以稍后证明您已经在该学院注册，而无需再次联系该学院。去中心化身份也可以作为一个公共配置文件的占位符，其中参与者同意使用区块链作为信任来源。这正是 ENS 或 Unlock 等项目旨在提供的服务：一种基于您对公开密钥的控制来在线验证身份的方法。</p>
+	<p>这种通过共享信任来源来证明所有权的趋势是 NFT 热潮的关键。我们以前在本博客<a href="https://blog.cloudflare.com/cloudflare-stream-now-supports-nfts/">讨论过 NFT</a>。基于区块链的 NFT 是传递所有权的媒介。区块链使该信息能够得到公开验证和更新。如果区块链声明我控制的公钥是 NFT 的所有者，则我可以在其他平台上引用它来证明它的所有权。例如，如果我在社交媒体上的头像是一只猫，我可以证明这只猫与我的公钥相关联。其意义取决于我想证明什么，尤其是在 NFT 合同大量使用的情况下。如果您想了解 NFT 合同的原理，您可以<a href="https://blog.mycrypto.com/so-you-wanna-build-your-own-pfp-nft-project/" target="_blank">构建您自己的合同</a>。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/image6-1.png" class="kg-image"></figure>
+	<h3 id="cloudflare-web3-">Cloudflare 如何适应 Web3？</h3>
+	<p>去中心化和保护隐私是我们 Cloudflare 正在应对的挑战，这是我们帮助构建更好的互联网这一使命的组成部分。</p>
+	<p>在<a href="https://blog.cloudflare.com/next-generation-privacy-protocols/">之前的博文中</a>，Nick Sullivan 描述了 Cloudflare 保护网络隐私的贡献。我们发起倡议，以通过 <a href="https://blog.cloudflare.com/encrypted-client-hello">Encrypted Client Hello (ECH)</a> 修复 HTTPS 中的信息泄露问题，通过支持 <a href="https://blog.cloudflare.com/oblivious-dns">Oblivious DNS-over-HTTPS (ODoH)</a> 让 DNS 更加私密，同时开发 <a href="https://blog.cloudflare.com/opaque-oblivious-passwords">OPAQUE</a>，使密码更不可能泄露。我们还发布了<a href="https://blog.cloudflare.com/zh-cn/introducing-the-cloudflare-data-localization-suite-zh-cn/">数据本地化套装</a>，通过提供对数据存储位置的控制帮助企业适应不断发展的<a href="https://blog.cloudflare.com/data-privacy-day-2021-looking-ahead-at-the-always-on-always-secure-always-private-internet/">监管环境</a>，并且不牺牲性能和安全性。我们甚至构建了<a href="https://blog.cloudflare.com/zh-cn/introducing-zero-knowledge-proofs-for-private-web-attestation-with-cross-multi-vendor-hardware-zh-cn/">隐私保护认证</a>，它基于相同的零知识证明技术，是 <a href="https://electriccoin.co/blog/explaining-halo-2/" target="_blank">ZCash</a> 和 <a href="https://filecoin.io/blog/posts/filecoin-zk-snarks-zero-knowledge-but-a-lot-of-zero-knowledge/" target="_blank">Filecoin</a> 等分布式系统的核心。</p>
+	<p>令人兴奋的是，我们已经有了改变网络以提升用户体验的方法。然而，在令人兴奋的基础设施之上进行构建有一些限制。正因为如此，以太坊和 IPFS 等项目构建在自己的架构上。他们仍然依赖互联网，但并不像我们所知道的那样使用网络。为了方便过渡，Cloudflare 运行<a href="https://www.cloudflare.com/zh-cn/distributed-web-gateway/" target="_blank">分布式网络网关</a>。这些网关为 Web3 协议（以太坊和 IPFS）提供了一个 HTTP 接口。由于 HTTP 是我们今天所知的网络的核心，所以可以安全、轻松地访问分布式内容，而不需要用户操作实验软件。</p>
+	<h3 id="--2">我们接下来的发展方向？</h3>
+	<p>通往一个不同的 web 的旅程虽然漫长，但令人兴奋。过去 20 年里，基础设施建设确实令人惊叹。互联网和网络现在已经成为 46 亿人生活的一部分。同时，排名前 35 位的网站比其他网站的<a href="https://www.ncta.com/whats-new/the-expanding-consolidation-of-the-consumer-internet-3" target="_blank">访问量更多</a>（大约在 2014 年）。用户对自己的数据的控制更少，甚至更依赖于少数参与者。</p>
+	<p>早期的网络是静态的。然后，Web 2.0 开始提供我们每天使用的交互性和服务，但代价是集中化。Web3 是一种试图挑战这一现状的趋势。通过建立在开放协议上的分布式网络，网络用户能够参与其中。</p>
+	<p>在 Cloudflare，我们正在拥抱这种分布式未来。通过利用我们从运营一个最大的边缘网络中获得的知识和经验，我们正在让用户和企业更容易从 Web3 中受益。其中包括运行<a href="https://blog.cloudflare.com/zh-cn/announcing-web3-gateways-zh-cn/">分布式网络产品套装</a>，促进<a href="https://blog.cloudflare.com/cloudflares-approach-to-research/">开放标准</a>，以及<a href="https://blog.cloudflare.com/internet-privacy/">更好地保护隐私</a>。</p>
+	<p>如果您愿意与我们一起帮助建立一个更好的网络，欢迎<a href="https://www.cloudflare.com/zh-cn/careers/jobs/" target="_blank">加入我们</a>。</p>
+</div>

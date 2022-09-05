@@ -1,0 +1,25 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image2-11.png" class="kg-image" alt="Working in public — our docs-as-code approach"></figure>
+	<p><a href="https://www.writethedocs.org/guide/docs-as-code/" target="_blank">Docs-as-code</a> 是使用开发人员创建代码所用的相同工具和流程来编写和发布文档的一种方法。这种思路近年来比较流行，尤其是在技术公司。这个过程包含自动链接检查，用于确保作者的更改是合理、安全的，可放心部署。通过使用 docs-as-code 方法做好准备，技术作者可以专注于自己最擅长的工作：确保读者获得易于查找的有用、准确信息，并且我们的文档采用单一语言。</p>
+	<p>除了采用 docs-as-code 方法之外，Cloudflare 还会在 <a href="https://github.com/cloudflare/cloudflare-docs" target="_blank"><code>cloudflare-docs</code></a><a href="https://github.com/cloudflare/cloudflare-docs" target="_blank"> GitHub 存储库</a>中公开处理文档更改。我们允许外部人员参与编辑我们的文档，这种做法帮助我们逐渐改进了文档 — 我们的社区非常擅长发现问题！虽然我们需要审核这些贡献内容，并确保它们符合我们的风格指南和内容策略，但 Cloudflare 社区提供的贡献内容有助于我们日渐完善文档。Cloudflare 帮助构建更美好的互联网，而我们的社区则帮助构建更完善的文档。</p>
+	<h2 id="cloudflare-docs-as-code-">Cloudflare 对 Docs-as-code 方法的使用情况</h2>
+	<p>Cloudflare 采用 docs-as-code 方法在<a href="https://developers.cloudflare.com/" target="_blank">开发人员文档</a>中创建和发布产品文档。</p>
+	<p>这种方法涉及不同的组件。我们使用带<a href="https://github.com/cloudflare/cloudflare-docs" target="_blank">公共 GitHub 存储库</a>的 Git 来跟踪更改并处理分支与合并。我们依赖 GitHub Actions 和 Cloudflare Pages 进行持续集成和交付 (CI/CD)。我们的持续集成管道会检查文档是否成功构建，以及是否有任何损坏的链接。内部和外部用户都可以预览每个提取请求中的更改，这意味着协作者不必设置本地环境即可预览他们所建议的更改。但是，如果他们希望这样做，用户可以使用开源工具设置本地环境，并创建文档的本地构建。</p>
+	<p>采用这种 docs-as-code 策略有一些优势。我们使用了技术人群日常使用的已知工作流程。这样就更容易从工程师那里获得反馈，同时也很容易从贵公司内不太懂技术的人员那里以及从普通 Cloudflare 社区获得意见。审核并批准文档的贡献内容之后，我们可以一键将这些更改部署到实时文档站点。得益于<a href="https://blog.cloudflare.com/new-dev-docs/">我们文档引擎中最近的更改</a>，部署和本地构建都很快捷，这有助于提高我们团队的速度。此外，可以安全地重组文档的各个部分，而不用担心破坏内容 — 我们的 CI/CD 管道会确保我们的链接不受损坏。</p>
+	<h2 id="-">我们的开源方法</h2>
+	<p>可以通过私有存储库在内部使用 docs-as-code 方法。但是，该方法的一些优势无法延伸到更广大的 Cloudflare 社区所提供的贡献内容。</p>
+	<p>作为 Cloudflare 的技术作者，文档相关工作有一大优势在于，这一工作在我们的公共 GitHub 存储库中完成。我可以使用新的或经过更新的文档将更改推送到 <code>cloudflare-docs</code> GitHub 存储库，接着该文档会由我的 Cloudflare 利益相关者审核，例如产品经理和工程师。</p>
+	<p>除了与其他 Cloudflare 员工一起完成这一工作之外，我还可以处理问题并审核来自外部利益相关者的提取请求，因为我们的文档是开源的。例如，来自外部贡献者的提取请求 #4601 修复了文档中不正确的某个表达式：</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/07/image1-6.png" class="kg-image" alt="A GitHub pull request from an external contributor fixing an example in the documentation."></figure>
+	<p>得益于这些贡献内容，我们能够识别许多问题，不仅仅是文档，还包括产品！</p>
+	<p>我们在维护自有<a href="https://blog.cloudflare.com/content-as-a-product/">文档产品</a>并解决其自身错误和功能请求的过程中处理这些贡献内容。就像对待内部工单一样，我们会对问题和提取请求进行分配、优先级划分、处理和审核，尽管它们并非全部位于相同的积压工作中。</p>
+	<p>我们处理内部贡献内容和外部贡献内容所做的工作类似。我们审核建议的更改，确保新的或经过更新的内容遵守我们的风格指南和内容策略。必要时，我们会要求对内容进行技术验证。最后，我们会在更改得到批准后将其合并进来。</p>
+	<p>对于与文档无关的问题，我们在每个文档页面中都设置了反馈机制，允许读者就产品本身提供反馈。这些信息会在内部进行审核，并由合适的团队处理。</p>
+	<p>如需进一步了解如何通过创建问题或提取请求来向文档做出贡献，请参阅我们的公共 GitHub 存储库中的<a href="https://github.com/cloudflare/cloudflare-docs/blob/production/CONTRIBUTING.md" target="_blank">向 Cloudflare 的文档做出贡献</a>这一页面。</p>
+	<h3 id="--1">保留一些秘密</h3>
+	<p>有一些内容我们暂时需要保密，可以透露的是，我们目前有多种方法，具体取决于确切的技术作者和涉及的利益相关者。</p>
+	<p>在某些情况下，我们会处理在其中接收并回应直接反馈的共享文档。临近功能发布日期时，我们创建对应的 Markdown 版本，并在合适的时候将其推送到公共 GitHub 存储库。</p>
+	<p>在其他情况下，我们在私有 Git 存储库中工作，使用公共存储库所采用的相同流程来获取早期反馈。这种处理非公共内容的方法很容易实现，因为我们已经采用了 docs-as-code 方法。在此情况下，将内容推送到 GitHub 就是在合适的时候执行的简单操作，只需要将分支推送到不同的远程端并创建公共提取请求即可。</p>
+	<h2 id="--2">下一步</h2>
+	<p>我们的很多工作已经在公开进行，但仍有改进空间。虽然我们确实提供了<a href="https://github.com/cloudflare/cloudflare-docs/issues/new/choose" target="_blank">问题创建模板</a>和提取请求指南，但我们最终会公开风格指南和内容策略。这样，用户就可以提前知道我们会针对公共文档的每项贡献内容检查（并实施）哪些项目，从而提高审核过程的透明度。</p>
+</div>

@@ -1,0 +1,76 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image3-4-1.png" class="kg-image"></figure>
+	<p>最近，我们将使用的CAPTCHA 提供商从 Google 的 reCAPTCHA 迁移到了独立机构 hCaptcha 提供的服务。我们对此项变动感到兴奋，因为它有助于解决因为依赖 Google 服务而固有的隐私问题（已经存在一段时间），还让我们更加灵活地自定义显示的 CAPTCHA。此项变动可能会影响所有 Cloudflare 客户，所以我们希望比较详细地讲一讲来龙去脉。</p>
+	<h3 id="cloudflare-captcha">Cloudflare 的 CAPTCHA</h3>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image1-9-1.png" class="kg-image"></figure>
+	<p>在 Cloudflare 的众多服务中，其中之一便是提供一个途径来阻止恶意的自动（“机器人”）流量。我们利用多项技术来达成这个目标。当确信发生恶意机器人活动时，我们会将其完全阻止。当确信是善意人类流量（或时搜索引擎爬虫之类的善意机器人），我们就会让它通过。但有时候，如果不能百分百确定恶意还是善意，我们会发出“质询”。</p>
+	<p>咨询有多种不同的类型，其中一些是完全自动的，但有一种需要人类介入。这种质询称为 CAPTCHA。这是 Completely Automated Public Turing Test to Tell Computers and Humans Apart（全自动区分计算机和人类的图灵测试）的缩写，但拿掉了几个 T，否则就是 CAPTTTCHA了。它们表现为一种提示，让用户在方框中输入弯曲显示的字母或者辨认交通信号灯或人行横道。通常应该是人类容易做到的事，但对于机器来说却很难。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image2-7-1.png" class="kg-image"></figure>
+	<p>从 Cloudflare 的早期岁月开始，我们一直在使用 Google 的 reCAPTCHA 服务。ReCAPTCHA 诞生于 2007 年，作为卡内基梅隆大学的一个研究项目而启动。Google 于 2009 年收购了这个项目，Cloudflare 在大致相同的时间开始使用它。Google 原先免费提供 reCAPTCHA，以换取服务中的数据来训练其视觉识别系统。在为 Cloudflare 寻找 CAPTCHA 时，我们选择了 reCAPTCHA，因为它有效、可扩展，并且免费。免费很重要，因为有许多 Cloudflare 客户使用我们的免费服务。</p>
+	<h3 id="-">隐私和屏蔽问题</h3>
+	<p>从早期开始，部分客户就对使用 Google 服务来提供 CAPTCHA 表示担忧。Google 的业务模式会向目标用户投放广告，Cloudflare 则不会。我们严格遵守隐私承诺。我们对 reCAPTCHA 相关隐私政策坦然处之，但也理解一些客户为什么会担心向 Google 提供更多数据。</p>
+	<p>Google 的服务在包括中国在内的一些地区被间歇性屏蔽，我们也在这些地区遇到了问题。仅中国一个国家就占所有互联网用户的 25％。如果其中的一部分触发了 CAPTCHA，他们将无法触及 Cloudflare 的客户，这也一直是我们担忧的地方。</p>
+	<p>多年来，隐私和屏蔽问题足以使我们考虑从 reCAPTCHA 改用其他服务。但是，像大多数技术公司一样，很难优先考虑剔除那些大体正常工作的东西，而去为我们的客户提供全新的功能。</p>
+	<h3 id="google-">Google 不断改变商业模式</h3>
+	<p>Google 于今年早些时候通知我们，他们将开始对reCAPTCHA 收费。这完全在他们的权利范围内。鉴于我们的体量，Cloudflare 显然给 reCAPTCHA 服务造成巨大成本，即便是对 Google 来说。</p>
+	<p>再提一下，Google 这么做完全合情合理。如果图像分类训练的价值不能超越这些成本，那么 Google 要求为其提供的服务付费是合乎逻辑的。在我们的情形中，仅继续面向免费用户使用 reCAPTCHA，每年就将增加数百万美元的成本。这最终足以促使我们寻找更好的选择。</p>
+	<h3 id="-captcha">更好的 CAPTCHA</h3>
+	<p>我们评估了数家 CAPTCHA 供应商，自己也构建了一个系统。最后，<a href="https://www.hcaptcha.com/" target="_blank">hCaptcha</a>成为 reCAPTCHA 的最佳替代品。有多个因素促使我们爱上 hCaptcha 解决方案：1）他们不出售个人数据，仅收集最低限度的必要个人数据，并且公开透明地说明他们收集的信息以及如何使用和/或披露这些信息，另外也同意仅将此类数据用于向 Cloudflare 提供 hCaptcha 服务；2）在 A/B 测试中，性能（速度和求解率）均达到或优于预期；3）为视障人士和具有其他障碍的用户提供了强大的解决方案；4）支持<a href="https://privacypass.github.io/" target="_blank">隐私通行证</a>，可减少 CAPTCHA 的出现频率；5）能在 Google 被屏蔽的地区运作；以及 6）hCaptcha 团队反应敏捷，响应迅速。</p>
+	<p>标准的 hCaptcha 业务模式与 reCAPTCHA 启动之初相似。他们计划向需要图像分类数据的客户收费，并向在其站点上安装 CAPTCHA 的发布商付费。这听起来不错，但遗憾的是，虽然这对于大多数发布商来说可能效果不错，但它不适合 Cloudflare 这样的规模。</p>
+	<p>我们以两种方式与 hCaptcha 合作。首先，我们正在利用 Workers 平台来承担 CAPTCHA 的大部分技术负荷，以此降低他们的成本。其次，我们提议，与其他们向我们付钱，不如反过来。这确保他们有充足的资源来扩展服务，以满足我们的需求。尽管这带来了一些额外成本，但这些成本只是使用 reCAPTCHA 时的若干分之一。作为交换，我们得到了更加灵活的 CAPTCHA 平台，以及响应更加迅速的团队。</p>
+	<h3 id="-captcha-">客户何时提供 CAPTCHA？</h3>
+	<p>刚开始接触这个项目时，我们断定 Cloudflare 机器人管理和防火墙规则将是最大的 CAPTCHA 消费者，远超其他用户。这在某种程度上没错。虽然防火墙/机器人是第一大用户，但仅在我们提供的 CAPTCHA 中占 50％ 出头。</p>
+	<p>下表中的明细是 Cloudflare 客户要求我们在其区域提供 CAPTCHA 时我们提供的 CAPTCHA 总数。</p>
+	<!--kg-card-begin: markdown-->
+	<table>
+		<thead>
+			<tr>
+				<th>来源</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>防火墙和机器人规则</td>
+				<td>54.80%</td>
+			</tr>
+			<tr>
+				<td>IP 防火墙</td>
+				<td>18.60%</td>
+			</tr>
+			<tr>
+				<td>安全级别</td>
+				<td>16.80%</td>
+			</tr>
+			<tr>
+				<td>DDoS</td>
+				<td>6.30%</td>
+			</tr>
+			<tr>
+				<td>速率限制</td>
+				<td>1.70%</td>
+			</tr>
+			<tr>
+				<td>WAF 规则</td>
+				<td>1.50%</td>
+			</tr>
+			<tr>
+				<td>其他</td>
+				<td>0.30%</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<p>我们的防火墙和机器人规则排在首位，在 Cloudflare 提供的CAPTCHA 中占大多数。这些规则由我们的客户编写，专门在规则匹配时抛出 CAPTCHA。例如，如果<a href="https://support.cloudflare.com/hc/en-us/articles/360027519452-Understanding-Cloudflare-Bot-Management" target="_blank">机器人管理得分</a>低于您认定为可能是自动连接的阈值，但高于您认定为无法确定的阈值，则触发 CAPTCHA。桶中的另一个常见规则是，对某个站点或特定端点背后的所有流量百分百提供CAPTCHA。客户可以这样做来限制与其源站的连接，或者减慢自动系统执行某些操作的速度，例如在登录页面上填充凭据或污染注册数据等。这导致 Cloudflare 上的某些站点每天提供数亿个 CAPTCHA。</p>
+	<p>第二受欢迎的是我们的 <a href="https://support.cloudflare.com/hc/en-us/articles/217074967-Configuring-IP-Access-Rules" target="_blank">IP 防火墙</a>。这与防火墙和机器人规则相似，但在 IP、ASN 或国家/地区级别上粒度要小得多。此类别的大部分 CAPTCHA 是针对在 ASN 或国家/地区级别编写的规则完成。大概是我们的客户认为特定 ASN 在某种程度上不可信（比如，为什么本该是用户的流量会来自于云基础架构提供商？）或受到特定国家/地区的攻击。</p>
+	<p>接下来是<a href="https://support.cloudflare.com/hc/en-us/articles/200170056-Understanding-the-Cloudflare-Security-Level" target="_blank">安全级别</a>。安全级别有两种不同的用例：1）作为 IP 地址信誉的钝工具，以及 2）I’m Under Attack 模式。虽然我们建议客户仅在遭受拒绝服务攻击的情况下使用 I’m Under Attack 模式，但某些客户在全部时间内以简陋的限速和过滤形式保留这项功能。</p>
+	<p>CAPTCHA 的最后一个主要用例是借助我们的一个自动化系统：最近，我们的拒绝服务防御工程团队教导 <a href="https://blog.cloudflare.com/meet-gatebot-a-bot-that-allows-us-to-sleep/">Gatebot</a> 在特定情形下使用 CAPTCHA 来缓解小型洪水。Gatebot 现在可以编写临时规则，导致向攻击者显示 CAPTCHA。</p>
+	<p>最后，还有一些客户将它选择为其“速率限制”或“托管 WAF”规则集的替代操作。</p>
+	<p>我们还查看了哪些类型的客户在提供 CAPTCHA。在一周时间里（针对攻击进行正则化），我们免费客户配置的区域所提供的 CAPTCHA 数量大约占 Cloudflare 总数的 40-60％。而在我们的付费客户中，现收现付和企业客户两者基本持平。总体而言，我们测量结果表明，当一个或多个客户受到攻击时，Cloudflare 每秒显示的 CAPTCHA 数将达到数百万。</p>
+	<h3 id="--1">应对挑战</h3>
+	<p>每当我们改动 Cloudflare 系统的任何部分时，总会在某些方面实现明显改善，而其他方面则暂时变差。我们和 hCaptcha 团队致力于解决出现的任何问题。如果您或用户发现新的 hCaptcha 实施存在问题，请<a href="https://community.cloudflare.com/" target="_blank">在论坛上发帖</a>或提交<a href="https://support.cloudflare.com/hc/en-us/articles/200172476-Contacting-Cloudflare-Support" target="_blank">支持单</a>，并提供尽可能详细的信息。</p>
+	<p>如有可能，请注明 CAPTCHA 页面页脚中显示的 RayID，以便我们追溯问题的源头。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image4-8-1.png" class="kg-image"></figure>
+	<p>我们认为，久而久之，有不少难题无法通过视觉（和音频）CAPTCHA 来完美解决。Cloudflare 一直在努力尽可能减少我们发出的 CAPTCHA，也希望最终能消除。我们也乐意在取得进步时将这项工作的成果分享到本博客中。做出此项变动的团队开了个内部聊天室，叫做 New CAPTCHA，而不是 (No)CAPTCHA。</p>
+	<p><a href="https://blog.cloudflare.com/tag/recaptcha/">reCAPTCHA</a> &nbsp;<a href="https://blog.cloudflare.com/tag/hcaptcha/">hCaptcha</a> &nbsp;<a href="https://blog.cloudflare.com/tag/speed-and-reliability/">速度与可靠性</a> &nbsp;<a href="https://blog.cloudflare.com/tag/security/">安全</a> &nbsp;<a href="https://blog.cloudflare.com/tag/product-news/">产品资讯</a></p>
+</div>

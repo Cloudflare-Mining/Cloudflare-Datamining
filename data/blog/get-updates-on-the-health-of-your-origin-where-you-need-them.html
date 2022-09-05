@@ -1,0 +1,249 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image12-1.png" class="kg-image" alt="Get updates on the health of your origin where you need them"></figure>
+	<p>We are thrilled to announce the availability of Health Checks in the Cloudflare Dashboard’s Notifications tab, available to all Pro, Business, and Enterprise customers. Now, you can get critical alerts on the health of your origin without checking your inbox! Keep reading to learn more about how this update streamlines notification management and unlocks countless ways to stay informed on the health of your servers.</p>
+	<h2 id="keeping-your-site-reliable">Keeping your site reliable</h2>
+	<p>We first announced Health Checks when we realized some customers were setting up Load Balancers for their origins to monitor the origins’ availability and responsiveness. The Health Checks product provides a similarly powerful interface to Load Balancing, offering users the ability to ensure their origins meet criteria such as reachability, responsiveness, correct HTTP status codes, and correct HTTP body content. Customers can also receive email alerts when a Health Check finds their origin is unhealthy based on their custom criteria. In building a more focused product, we’ve added a slimmer, monitoring-based configuration, Health Check Analytics, and made it available for all paid customers. Health Checks run in multiple locations within Cloudflare’s edge network, meaning customers can monitor site performance across geographic locations.</p>
+	<h2 id="what-s-new-with-health-checks-notifications">What’s new with Health Checks Notifications</h2>
+	<p>Health Checks email alerts have allowed customers to respond quickly to incidents and guarantee minimum disruption for their users. As before, Health Checks users can still select up to 20 email recipients to notify if a Health Check finds their site to be unhealthy. And if email is the right tool for your team, we’re excited to share that we have jazzed up our notification emails and added details on which Health Check triggered the notification, as well as the status of the Health Check:</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/03/image9-1.png" class="kg-image" alt="New Health Checks email format with Time, Health Status, and Health Check details">
+		<figcaption><em>New Health Checks email format with Time, Health Status, and Health Check details</em></figcaption>
+	</figure>
+	<p>That being said, monitoring an inbox is not ideal for many customers needing to stay proactively informed. If email is not the communication channel your team typically relies upon, checking emails can at best be inconvenient and, at worst, allow critical updates to be missed. That's where the Notifications dashboard comes in.</p>
+	<p>Users can now create Health Checks notifications within the Cloudflare Notifications dashboard. By integrating Health Checks with Cloudflare's powerful Notification platform, we have unlocked myriad new ways to ensure customers receive critical updates for their origin health. One of the key benefits of Cloudflare's Notifications is webhooks, which give customers the flexibility to sync notifications with various external services. Webhook responses contain JSON-encoded information, allowing users to ingest them into their internal or third-party systems.</p>
+	<p>For real-time updates, users can now use webhooks to send Health Check alerts directly to their preferred instant messaging platforms such as Slack, Google Chat, or Microsoft Teams, to name a few. Beyond instant messaging, customers can also use webhooks to send Health Checks notifications to their internal APIs or their Security Information and Event Management (SIEM) platforms, such as DataDog or Splunk, giving customers a single pane of glass for all Cloudflare activity, including notifications and event logs. For more on how to configure popular webhooks, <a href="https://developers.cloudflare.com/fundamentals/notifications/create-notifications/configure-webhooks" target="_blank">check out our developer docs</a>. Below, we'll walk you through a couple of powerful webhook applications. But first, let's highlight a couple of other ways the update to Health Checks notifications improves user experience.</p>
+	<p>By including Health Checks in the Notifications tab, users need only to access one page for a single source of truth where they can manage their account notifications. &nbsp;For added ease of use, users can also migrate to Notification setup directly from the Health Check creation page as well. &nbsp;From within a Health Check, users will also be able to see what Notifications are tied to it.</p>
+	<p>Additionally, configuring notifications for multiple Health Checks is now simplified. Instead of configuring notifications one Health Check at a time, users can now set up notifications for multiple or even all Health Checks from a single workflow.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image6-8.png" class="kg-image" alt="Notification creation workflow:  Tie one or multiple Health Checks to the same notification and select notification trigger–Becomes unhealthy, Becomes healthy, or both."></figure>
+	<p>Also, users can now access Health Checks notification history, and Enterprise customers can integrate Health Checks <a href="https://developers.cloudflare.com/fundamentals/notifications/create-notifications/create-pagerduty" target="_blank">directly with PagerDuty</a>. Last but certainly not least, as Cloudflare’s Notifications infrastructure grows in capabilities, Health Checks will be able to leverage all of these improvements. This guarantees Health Checks users the most timely and versatile notification capabilities that Cloudflare offers now and into the future.</p>
+	<h2 id="setting-up-a-health-checks-webhook">Setting up a Health Checks webhook</h2>
+	<p>To get notifications for health changes at an origin, <a href="https://support.cloudflare.com/hc/en-us/articles/4404867308429-About-Health-Checks" target="_blank">we first need to set up a Health Check for it.</a> In this example, we'll monitor HTTP responses: leave the Type and adjacent fields to their defaults. We will also monitor HTTP response codes: add `200` as an expected code, which will cause any other HTTP response code to trigger an unhealthy status.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image13.png" class="kg-image" alt="Health Check creation page set to monitor HTTP response codes with 200 as expected code."></figure>
+	<h3 id="creating-the-webhook-notification-policy">Creating the webhook notification policy</h3>
+	<p>Once we’ve got our Health Check set up, we can create a webhook to link it to. Let’s start with a popular use case and send our Health Checks to a Slack channel. Before creating the webhook in the Cloudflare Notifications dashboard, we <a href="https://api.slack.com/messaging/webhooks" target="_blank">enable webhooks in our Slack workspace and retrieve the webhook URL of the Slack channel we want to send notifications to.</a> Next, we navigate to our account’s Notifications tab to add the Slack webhook as a Destination, entering the name and URL of our webhook — the secret will populate automatically.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/03/image2-91.png" class="kg-image" alt="Webhook creation page with the following user input: Webhook name, Slack webhook url, and auto-populated Secret">
+		<figcaption><em>Webhook creation page with the following user input: Webhook name, Slack webhook url, and auto-populated Secret</em></figcaption>
+	</figure>
+	<p>Once we hit <strong>Save and Test</strong>, we will receive a message in the designated Slack channel verifying that our webhook is working.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/03/image5-23.png" class="kg-image" alt="Message sent in Slack via the configured webhook, verifying the webhook is working">
+		<figcaption><em>Message sent in Slack via the configured webhook, verifying the webhook is working</em></figcaption>
+	</figure>
+	<p>This webhook can now be used for any notification type available in the Notifications dashboard. To have a Health Check notification sent to this Slack channel, simply add a new Health Check notification from the Notifications dashboard, selecting the Health Check(s) to tie to this webhook and the Slack webhook we just created. And, voilà! Anytime our Health Check detects a response status code other than 200 or goes from unhealthy to healthy, this Slack channel will be notified.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/03/image10-1.png" class="kg-image" alt="Health Check notification sent to Slack, indicating our server is online and Healthy.">
+		<figcaption><em>Health Check notification sent to Slack, indicating our server is online and Healthy.</em></figcaption>
+	</figure>
+	<h3 id="create-an-origin-health-status-page">Create an Origin Health Status Page</h3>
+	<p>Let’s walk through another powerful webhooks implementation with Health Checks. Using the Health Check we configured in our last example, let’s create a simple status page using Cloudflare Workers and Durable Objects that stores an origin’s health, updates it upon receiving a webhook request, and displays a status page to visitors.</p>
+	<p><strong>Writing our worker</strong><br>You can find the code for this example <a href="https://github.com/georgethomas111/status-page" target="_blank">in this GitHub repository</a>, if you want to clone it and try it out.</p>
+	<p>We’ve got our Health Check set up, and we’re ready to write our worker and durable object. To get started, we first need to <a href="https://developers.cloudflare.com/workers/cli-wrangler/install-update" target="_blank">install</a> wrangler, our CLI tool for testing and deploying more complex worker setups.</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>$ wrangler -V
+wrangler 1.19.8
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>The examples in this blog were tested in this wrangler version.</p>
+	<p>Then, to speed up writing our worker, we will use a template to generate a project:</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>$ wrangler generate status-page [https://github.com/cloudflare/durable-objects-template](https://github.com/cloudflare/durable-objects-template)
+$ cd status-page
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>The template has a Durable Object with the name <code>Counter</code>. We’ll rename that to <code>Status</code>, as it will store and update the current state of the page.</p>
+	<p>For that, we update <code>wrangler.toml</code> to use the correct name and type, and rename the <code>Counter</code> class in <code>index.mjs</code>.</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>name = "status-page"
+# type = "javascript" is required to use the `[build]` section
+type = "javascript"
+workers_dev = true
+account_id = "&lt;Cloudflare account-id&gt;"
+route = ""
+zone_id = ""
+compatibility_date = "2022-02-11"
+ 
+[build.upload]
+# Upload the code directly from the src directory.
+dir = "src"
+# The "modules" upload format is required for all projects that export a Durable Objects class
+format = "modules"
+main = "./index.mjs"
+ 
+[durable_objects]
+bindings = [{name = "status", class_name = "Status"}]
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Now, we’re ready to fill in our logic. We want to serve two different kinds of requests: one at <code>/webhook</code> that we will pass to the Notification system for updating the status, and another at <code>/</code> for a rendered status page.</p>
+	<p>First, let’s write the <code>/webhook</code> logic. We will receive a JSON object with a <code>data</code> and a <code>text</code> field. The `data` object contains the following fields:</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>time - The time when the Health Check status changed.
+status - The status of the Health Check.
+reason - The reason why the Health Check failed.
+name - The Health Check name.
+expected_codes - The status code the Health Check is expecting.
+actual_code - The actual code received from the origin.
+health_check_id - The id of the Health Check pushing the webhook notification. 
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>For the status page we are using the Health Check <code>name</code>, <code>status</code>, and <code>reason</code> (the reason a Health Check became unhealthy, if any) fields. The <code>text</code> field contains a user-friendly version of this data, but it is more complex to parse.</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code> async handleWebhook(request) {
+  const json = await request.json();
+ 
+  // Ignore webhook test notification upon creation
+  if ((json.text || "").includes("Hello World!")) return;
+ 
+  let healthCheckName = json.data?.name || "Unknown"
+  let details = {
+    status: json.data?.status || "Unknown",
+    failureReason: json.data?.reason || "Unknown"
+  }
+  await this.state.storage.put(healthCheckName, details)
+ }
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Now that we can store status changes, we can use our state to render a status page:</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code> async statusHTML() {
+  const statuses = await this.state.storage.list()
+  let statHTML = ""
+ 
+  for(let[hcName, details] of statuses) {
+   const status = details.status || ""
+   const failureReason = details.failureReason || ""
+   let hc = `&lt;p&gt;HealthCheckName: ${hcName} &lt;/p&gt;
+         &lt;p&gt;Status: ${status} &lt;/p&gt;
+         &lt;p&gt;FailureReason: ${failureReason}&lt;/p&gt; 
+         &lt;br/&gt;`
+   statHTML = statHTML + hc
+  }
+ 
+  return statHTML
+ }
+ 
+ async handleRoot() {
+  // Default of healthy for before any notifications have been triggered
+  const statuses = await this.statusHTML()
+ 
+  return new Response(`
+     &lt;!DOCTYPE html&gt;
+     &lt;head&gt;
+      &lt;title&gt;Status Page&lt;/title&gt;
+      &lt;style&gt;
+       body {
+        font-family: Courier New;
+        padding-left: 10vw;
+        padding-right: 10vw;
+        padding-top: 5vh;
+       }
+      &lt;/style&gt;
+     &lt;/head&gt;
+     &lt;body&gt;
+       &lt;h1&gt;Status of Production Servers&lt;/h1&gt;
+       &lt;p&gt;${statuses}&lt;/p&gt;
+     &lt;/body&gt;
+     `,
+   {
+    headers: {
+     'Content-Type': "text/html"
+    }
+   })
+ }
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Then, we can direct requests to our two paths while also returning an error for invalid paths within our durable object with a <code>fetch</code> method:</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>async fetch(request) {
+  const url = new URL(request.url)
+  switch (url.pathname) {
+   case "/webhook":
+    await this.handleWebhook(request);
+    return new Response()
+   case "/":
+    return await this.handleRoot();
+   default:
+    return new Response('Path not found', { status: 404 })
+  }
+ }
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Finally, we can call that <code>fetch</code> method from our worker, allowing the external world to access our durable object.</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>export default {
+ async fetch(request, env) {
+  return await handleRequest(request, env);
+ }
+}
+async function handleRequest(request, env) {
+ let id = env.status.idFromName("A");
+ let obj = env.status.get(id);
+ 
+ return await obj.fetch(request);
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h3 id="testing-and-deploying-our-worker">Testing and deploying our worker</h3>
+	<p>When we’re ready to deploy, it’s as simple as running the following command:</p>
+	<p><code>$ wrangler publish --new-class Status</code></p>
+	<p>To test the change, we create a webhook pointing to the path the worker was deployed to. On the Cloudflare account dashboard, navigate to Notifications &gt; Destinations, and create a webhook.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/03/image11.png" class="kg-image" alt="Webhook creation page, with the following user input: name of webhook, destination URL, and optional secret is left blank.">
+		<figcaption><em>Webhook creation page, with the following user input: name of webhook, destination URL, and optional secret is left blank.</em></figcaption>
+	</figure>
+	<p>Then, while still in the Notifications dashboard, create a Health Check notification tied to the status page webhook and Health Check.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/03/image4-26.png" class="kg-image" alt="Notification creation page, with the following user input: Notification name and the Webhook created in the previous step added.">
+		<figcaption><em>Notification creation page, with the following user input: Notification name and the Webhook created in the previous step added.</em></figcaption>
+	</figure>
+	<p>Before getting any updates the <code>status-page</code> worker should look like this:</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/03/image1-103.png" class="kg-image" alt="Status page without updates reads: “Status of Production Servers”">
+		<figcaption><em>Status page without updates reads: “Status of Production Servers”</em></figcaption>
+	</figure>
+	<p>Webhooks get triggered when the Health Check status changes. To simulate the change of Health Check status we take the origin down, which will send an update to the worker through the webhook. This causes the status page to get updated.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/03/image8-3.png" class="kg-image" alt="Status page showing the name of the Health Check as &quot;configuration-service&quot;, Status as &quot;Unhealthy&quot;, and the failure reason as &quot;TCP connection failed&quot;. ">
+		<figcaption><em>Status page showing the name of the Health Check as "configuration-service", Status as "Unhealthy", and the failure reason as "TCP connection failed".&nbsp;</em></figcaption>
+	</figure>
+	<p>Next, we simulate a return to normal by changing the Health Check expected status back to 200. This will make the status page show the origin as healthy.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/03/image7-3.png" class="kg-image" alt="Status page showing the name of the Health Check as &quot;configuration-service&quot;, Status as &quot;Healthy&quot;, and the failure reason as &quot;No failures&quot;. ">
+		<figcaption><em>Status page showing the name of the Health Check as "configuration-service", Status as "Healthy", and the failure reason as "No failures".&nbsp;</em></figcaption>
+	</figure>
+	<p>If you add more Health Checks and tie them to the webhook durable object, you will see the data being added to your account.</p>
+	<h3 id="authenticating-webhook-requests">Authenticating webhook requests</h3>
+	<p>We already have a working status page! However, anyone possessing the webhook URL would be able to forge a request, pushing arbitrary data to an externally-visible dashboard. Obviously, that’s not ideal. Thankfully, webhooks provide the ability to authenticate these requests by supplying a secret. Let’s create a new webhook that will provide a secret on every request. We can generate a secret by generating a pseudo-random UUID with Python:</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-python">$ python3
+&gt;&gt;&gt; import uuid
+&gt;&gt;&gt; uuid.uuid4()
+UUID('4de28cf2-4a1f-4abd-b62e-c8d69569a4d2')
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Now we create a new webhook with the secret.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/03/image3-42.png" class="kg-image" alt="Webhook creation page, with the following user input: name of webhook, destination URL, and now with a secret added.">
+		<figcaption><em>Webhook creation page, with the following user input: name of webhook, destination URL, and now with a secret added.</em></figcaption>
+	</figure>
+	<p>We also want to provide this secret to our worker. Wrangler has a command that lets us save the secret.</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>$ wrangler secret put WEBHOOK_SECRET
+Enter the secret text you'd like assigned to the variable WEBHOOK_SECRET on the script named status-page:
+4de28cf2-4a1f-4abd-b62e-c8d69569a4d2
+🌀 Creating the secret for script name status-page
+✨ Success! Uploaded secret WEBHOOK_SECRET.
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Wrangler will prompt us for the secret, then provide it to our worker. Now we can check for the token upon every webhook notification, as the secret is provided by the header <code>cf-webhook-auth</code>. By checking the header’s value against our secret, we can authenticate incoming webhook notifications as genuine. To do that, we modify <code>handleWebhook</code>:</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code> async handleWebhook(request) {
+  // ensure the request we receive is from the Webhook destination we created
+  // by examining its secret value, and rejecting it if it's incorrect
+  if((request.headers.get('cf-webhook-auth') != this.env.WEBHOOK_SECRET) {
+    return
+   }
+  ...old code here
+ }
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>This origin health status page is just one example of the versatility of webhooks, which allowed us to leverage Cloudflare Workers and Durable Objects to support a custom Health Checks application. From highly custom use cases such as this to more straightforward, out-of-the-box solutions, pairing webhooks and Health Checks empowers users to respond to critical origin health updates effectively by delivering that information where it will be most impactful.</p>
+	<h2 id="migrating-to-the-notifications-dashboard">Migrating to the Notifications Dashboard</h2>
+	<p>The Notifications dashboard is now the centralized location for most Cloudflare services. In the interest of consistency and streamlined administration, we will soon be limiting Health Checks notification setup to the Notifications dashboard. &nbsp;Many existing Health Checks customers have emails configured via our legacy alerting system. Over the next three months, we will support the legacy system, giving customers time to transition their Health Checks notifications to the Notifications dashboard. Customers can expect the following timeline for the phasing out of existing Health Checks notifications:</p>
+	<ul>
+		<li>For now, customers subscribed to legacy emails will continue to receive them unchanged, so any parsing infrastructure will still work. From within a Health Check, you will see two options for configuring notifications–the legacy format and a deep link to the Notifications dashboard.</li>
+		<li>On <strong>May 24, 2022,</strong> we will disable the legacy method for the configuration of email notifications from the Health Checks dashboard.</li>
+		<li>On <strong>June 28, 2022,</strong> we will stop sending legacy emails, and adding new emails at the <code>/healthchecks</code> endpoint will no longer send email notifications.</li>
+	</ul>
+	<p>We strongly encourage all our users to migrate existing Health Checks notifications to the Notifications dashboard within this timeframe to avoid lapses in alerts.</p>
+</div>

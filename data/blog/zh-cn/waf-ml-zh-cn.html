@@ -1,0 +1,35 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image5-1.png" class="kg-image" alt="Improving the WAF with Machine Learning"></figure>
+	<p>Cloudflare 每秒处理3200 万次 HTTP 请求，22% web 服务器为 <a href="https://w3techs.com/technologies/details/ws-cloudflare" target="_blank">W3Techs</a> 所知的网站使用 Cloudflare。Cloudflare 为五分之一的互联网资产保护其流量，因而具备独特的优势，得以在威胁出现时就加以识别，并跟踪其进化和变异。</p>
+	<p>Web 应用程序防火墙（WAF）处于 Cloudflare 安全工具箱的核心位置，而托管规则是 <a href="https://www.cloudflare.com/zh-cn/learning/ddos/glossary/web-application-firewall-waf/" target="_blank">WAF</a> 的关键功能。托管规则是 Cloudflare 分析师团队创建的一组规则，用于阻止显示已知攻击模式的请求。这些托管规则攻击对于现有攻击手段的模式非常有效，因为它们已经过广泛测试，能最大限度减少误报。托管规则的不足之处是，常常会错过攻击的变体（也称为绕过），因为基于静态正则表达式的规则本质上对引入的特征变体（如通过模糊技术）敏感。</p>
+	<p>发布<a href="https://blog.cloudflare.com/zh-cn/exploitation-of-cve-2021-44228-before-public-disclosure-and-evolution-of-waf-evasion-patterns-zh-cn/">针对 log4j 的保护</a>时，我们就见证了这个问题。在该漏洞曝光后的几天内，由于攻击者尝试绕过 WAF，我们必须不断更新规则来匹配变种。此外，优化规则需要大量的人工干预，而且通常要在绕过被识别或甚至被利用后才能起作用，导致保护变得被动。</p>
+	<p>今天，我们隆重推出托管规则集（例如 OWASP 和 Cloudflare 托管规则集）的增强功能，提供一个新工具，旨在无需人工干预的情况下识别绕过和恶意负载，以防其造成破坏。现在客户能够从一个机器学习模型中获取信号，这个模型根据托管规则和分类的善意/恶意流量和增强数据来训练，从而针对更大范围的新老攻击提供更佳的保护。 </p>
+	<p>全新机器学习 WAF 检测隆重登场！ </p>
+	<p>这一全新检测功能现已向 Enterprise、Pro 和 Biz 客户开放提前体验。若您有意尝试，请加入<a href="https://jira.cfops.it/browse/MOE-4523" target="_blank">等候列表</a>。长期而言，该功能将向更高级别的客户提供。</p>
+	<h3 id="-waf">第一个自我学习的 WAF</h3>
+	<p>全新检测系统增强现有的托管规则集，提供三大优势：</p>
+	<ol>
+		<li>适用于您的所有流量。系统会根据每个请求包含 SQLi 或 XSS 攻击等的可能性对其进行评分。这实现了一种全新的 WAF 分析体验，让您能够探索自己整体流量中的趋势和模式。</li>
+		<li>检测速率根据过去的流量和反馈而改善。托管规则集将所有 Cloudflare 流量分类为善意/恶意流量后，提供给该模型进行训练。这样一来，小型网站也能获得与大型网站同级的保护。</li>
+		<li>性能的新定义该机器学习模型在绕过和异常被利用或被人类研究人员识别前就将其识别出来。 </li>
+	</ol>
+	<p>其中秘诀在于如下几方面的结合：创新的机器学习建模，庞大的训练数据集（基于我们每天阻止的攻击，以及数据增强技术），基于行为测试原则的正确评估和测试框架，以及让我们在几乎毫不增加延迟的前提下评估每一个请求的尖端工程技术。</p>
+	<h3 id="-waf-">新的 WAF 体验</h3>
+	<p>全新检测系统基于与<a href="https://blog.cloudflare.com/introducing-bot-analytics/">机器人分析（Bot Analytics）</a> 一同发布的范式。根据这一方法，无论我们是否采取行动，都会对每个请求进行评估并赋分。由于我们对每一个请求赋分，针对发送到用户服务器的全部流量，用户能够看到分数如何随着时间变化。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image3-11.png" class="kg-image" alt="客户可以使用机器学习分类引擎来识别他们的流量趋势。"></figure>
+	<p>此外，用户还可以查看请求的特定攻击手段（如SQLi的）评分直方图，并找到合适的评分值来区分善意流量和恶意流量。 </p>
+	<p>实际的缓解基于自定义 WAF 规则执行，其中分数用于决定哪些请求应被阻止。这让客户能够创建逻辑包含 HTTP 请求任何参数的规则，包括Cloudflare 填充的动态字段，如机器人分数。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image2-29.png" class="kg-image" alt="基于防火墙机器学习分数创建的规则。"></figure>
+	<p>我们正在考虑将这种方法也扩展到托管规则（OWASP 和 Cloudflare 托管规则）。客户将能识别趋势，并根据查看其整体流量时可见的模式来创建规则；而非以试错方式创建规则、记录流量以验证并最终实施保护。</p>
+	<h3 id="-">工作原理</h3>
+	<p>基于机器学习的检测补充了现有的托管规则集，例如 OWASP 和 Cloudflare 托管规则。这套系统基于旨在没有研究人员或最终用户直接监督的情况下识别攻击模式变体或异常的模型。 </p>
+	<p>截至今日，我们已经公开两种攻击手段的分数：SQL 注入（SQLi）和跨站点脚本（XSS）。用户能根据三个单独的分数来创建自定义 WAF/防火墙规则：总分 （<code>cf.waf.ml.score</code>），SQLi 分数和 XSS 分数（分别为 <code>cf.waf.ml.score.sqli</code>，<code>cf.waf.ml.score.xss</code>,）。这些分数介于 1-99，其中 1 为绝对恶意，99 代表有效流量。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image4-1.png" class="kg-image" alt="到达某个应用程序的所有流量的分数。"></figure>
+	<p>然后，我们使用现有 WAF 规则分类的流量对该模型进行训练，它对原始请求的一个变异版本有效，使其更容易识别攻击的指纹。 </p>
+	<p>对于每个请求，该模型对请求的每个部分独立评分，从而有可能识别恶意负载所在的位置，例如，在请求的正文、URI 或标头中。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image1-30.png" class="kg-image" alt="检测引擎提供发现威胁的具体位置（例如，主体、URI、标头）。"></figure>
+	<p>这看起来很简单，但 Cloudflare 的工程师需要解决一系列挑战才能做到。其中包括：如何建立一个可靠的数据集，可扩展的数据标签，选择正确的模型架构，以及要求对 Cloudflare 全球网络处理的<em>每一个</em>请求（每秒 3200 万个）执行分类。</p>
+	<p>未来几周内，工程团队将发布一系列博客文章，以进一步解释这个解决方案的工作原理。</p>
+	<h3 id="--1">展望未来</h3>
+	<p>未来几个月内，我们将向客户发布这个全新的检测引擎，并收集有关其性能的反馈。长期而言，我们计划扩展这个检测引擎，以包括托管规则已经识别的所有攻击手段，并使用机器学习模型阻止的攻击来进一步改善我们的托管规则集。</p>
+</div>

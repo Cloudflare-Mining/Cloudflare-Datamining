@@ -1,0 +1,75 @@
+<div class="post-content lh-copy gray1">
+	<p>Hoy se celebra el 5.° aniversario del <a href="https://www.cloudflare.com/galileo/" target="_blank">Proyecto Galileo de Cloudflare</a>. Mediante este proyecto, Cloudflare protege, sin costo alguno, a casi 600 organizaciones de todo el mundo que participan en algunos de los trabajos en línea más importantes desde el punto de vista político y artístico. Debido a la naturaleza de su trabajo, estas organizaciones reciben ataques con frecuencia, y a veces han recibido los ataques cibernéticos más feroces que hemos visto.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/06/image1-1.png" class="kg-image"></figure>
+	<p>Desde <a href="https://blog.cloudflare.com/protecting-free-expression-online/">su lanzamiento en 2014</a>, no hemos hablado mucho de Galileo a nivel externo, porque tememos que una mayor atención sobre estas organizaciones podría aumentar el riesgo de ataques. A nivel interno, sin embargo, es un motivo de orgullo para todo nuestro equipo, y es algo a lo que dedicamos una importante cantidad de recursos. Y, para mí, personalmente, muchos de los momentos que marcan mis logros más significativos nacieron de nuestro trabajo para proteger a los destinatarios del Proyecto Galileo.</p>
+	<p>La promesa del Proyecto Galileo es sencilla: Cloudflare brindará, sin costo alguno, nuestra serie completa de servicios de seguridad a toda organización importante desde el punto de vista político o artístico, siempre y cuando estas sean organizaciones sin fines de lucro o entidades comerciales pequeñas. Todavía estoy en la lista de distribución que recibe un correo electrónico cada vez que alguien solicita participar en el Proyecto Galileo, y esos correos electrónicos siguen siendo los primeros que abro todas las mañanas.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/06/image3-1.png" class="kg-image"></figure>
+	<h3 id="historia-del-proyecto-galileo"><strong>Historia del Proyecto Galileo</strong></h3>
+	<p>El Proyecto Galileo se originó hace cinco años a raíz de un error que cometimos. En ese momento, el servicio gratuito de Cloudflare no incluía la mitigación de DDoS. Si un cliente que usaba nuestro servicio gratuito era atacado, nuestro equipo de operaciones, por lo general, dejaba de redirigir su tráfico mediante proxy. Hicimos esto para proteger nuestra propia red, que era mucho más pequeña de lo que es hoy.</p>
+	<p>Por lo general, esto no era un problema. La mayoría de los sitios que eran atacados en ese momento eran empresas o negocios que podían pagar por nuestros servicios.</p>
+	<p>Todas las mañanas yo recibía un informe de los sitios que se eliminaban de la lista de clientes de Cloudflare la noche anterior. Una mañana, a fines de febrero de 2014, yo leía el informe camino al trabajo. Uno de los sitios de la lista que había sido eliminado me resultó familiar, pero no lo pude localizar.</p>
+	<p>Traté de ir al sitio en mi teléfono, pero no estaba en línea, supuestamente porque ya no protegíamos al sitio de los ataques. Como aún sentía curiosidad, hice una búsqueda rápida y encontré una página de Wikipedia que describía el sitio. Era un periódico independiente de Ucrania que había estado cubriendo la invasión que Rusia estaba llevando a cabo en Crimea.</p>
+	<p>Me sentí mal.</p>
+	<h3 id="cuando-los-estados-nacionales-atacan"><strong>Cuando los estados nacionales atacan</strong></h3>
+	<p>Más tarde supimos que esta publicación había sido objeto de un ataque importante, probablemente del gobierno ruso. El periódico había recurrido a Cloudflare en busca de protección. Su director de informática (TI) en realidad trató de pagar por nuestro nivel superior de servicio, pero el banco vinculado a la tarjeta de crédito de la publicación también sufrió una interrupción en sus sistemas debido a un ataque cibernético y no se hizo el pago. Entonces se registraron para recibir la versión gratuita de Cloudflare y, por un tiempo, mitigamos el ataque.</p>
+	<p>El ataque fue tan grande que activó una alerta en nuestro Centro de Operaciones de Red (NOC). Un miembro de nuestro equipo de Ingeniería de Confiabilidad de Sistemas (SRE) que estaba de guardia investigó y descubrió que un cliente que contaba con servicio gratis estaba sufriendo un ataque importante. Siguió nuestra rutina de procedimientos y activó un FINT, que significa “Falla Interna”, que dirige el tráfico desde el sitio directamente a su lugar de origen en lugar de pasar por el perímetro de seguridad de Cloudflare. Instantáneamente, el sitio se vio desbordado por el ataque y, efectivamente, se cayó de internet.</p>
+	<h3 id="proceso-roto"><strong>Proceso roto</strong></h3>
+	<p>Debo ser claro: el SRE no hizo nada incorrecto. Siguió exactamente los procedimientos que habíamos establecido en ese momento. Era un excelente científico informático, pero no un científico político, por lo tanto, no reconoció el sitio ni entendió su importancia debido a la situación que en ese momento sufría Crimea y por qué un periódico que cubre el hecho podía ser atacado. Pero, a la mañana siguiente, mientras leía el informe camino al trabajo, me dí cuenta.</p>
+	<p>La misión de Cloudflare es ayudar a crear una mejor internet. Ese día no cumplimos esa misión. Yo sabía que teníamos que hacer algo.</p>
+	<h3 id="-importante-desde-el-punto-de-vista-pol-tico-o-art-stico"><strong>¿Importante desde el punto de vista político o artístico?</strong></h3>
+	<p>Para nosotros fue relativamente fácil decidir que brindaríamos servicios de protección de Cloudflare gratis a organizaciones sin fines de lucro y pequeñas entidades comerciales que tuvieran importancia desde el punto de vista político o artístico. Teníamos la seguridad de que podíamos hacer frente incluso a los ataques más grandes. Sin embargo, no confiábamos demasiado en nuestra capacidad para determinar quiénes eran “importantes desde el punto de vista político o artístico”.</p>
+	<p>Si bien Cloudflare tiene su infraestructura en todo el mundo, la mayor parte de nuestro equipo tiene su sede en San Francisco, Austin, Londres y Singapur. Eso ciertamente nos da una perspectiva, pero no es una perspectiva particularmente representativa a nivel global. Además, somos una organización muy técnica. Si hiciéramos una encuesta entre los integrantes de nuestro equipo para determinar qué organizaciones merecían protección, sin duda hubiéramos identificado una serie de organizaciones valiosas que están cerca del lugar donde vivimos o que son cercanas a nuestros intereses, pero hubiéramos dejado de lado muchas otras.</p>
+	<p>También pensamos que podía resultar peligroso para un proveedor de infraestructura como Cloudflare comenzar a tomar decisiones sobre qué contenido era “bueno”. Al hacer esto, intrínsecamente implicaría que estábamos en condiciones de tomar decisiones sobre qué contenido era “malo”. Si bien moderar el contenido y recopilar, seleccionar y presentar contenido a las comunidades es apropiado para algunas plataformas más visibles, cuanto más profundamente uno se adentra en la infraestructura de internet, esas decisiones se vuelven menos transparentes, justificadas y consistentes.</p>
+	<h3 id="solicitud-de-ayuda-a-los-expertos"><strong>Solicitud de ayuda a los expertos</strong></h3>
+	<p>Así que en lugar de determinar nosotros mismos quiénes eran importantes desde el punto de vista político o artístico, acudimos a las organizaciones de la sociedad civil que eran expertas exactamente en eso. Al principio, nos asociamos con las siguientes 15 organizaciones:</p>
+	<ul>
+		<li>Access Now</li>
+		<li>American Civil Liberties Union (ACLU)</li>
+		<li>Center for Democracy and Technology (CDT)</li>
+		<li>Centre for Policy Alternatives</li>
+		<li>Committee to Protect Journalists (CPJ)</li>
+		<li>Electronic Frontier Foundation (EFF)</li>
+		<li>Engine Advocacy</li>
+		<li>Freedom of the Press Foundation</li>
+		<li>Meedan</li>
+		<li>Mozilla</li>
+		<li>Open Tech Fund</li>
+		<li>Open Technology Institute</li>
+	</ul>
+	<p>Acordamos que si algún socio afirmaba que una organización sin fines de lucro o una entidad comercial pequeña que solicitaba protección era importante desde el punto de vista “político” o “artístico”, nosotros ampliaríamos nuestros servicios de seguridad y los protegeríamos, sea cual fuere.</p>
+	<p>Así se originó el Proyecto Galileo. Casi 600 organizaciones están recibiendo protección gracias al Proyecto Galileo. Nunca hemos eliminado a ninguna organización de la lista de protección a pesar de haber recibido presiones políticas en algunas ocasiones, y de haber sido objeto de ataques sumamente frecuentes y grandes.</p>
+	<p>Las organizaciones pueden solicitar la protección del Proyecto Galileo directamente a través de Cloudflare, o bien pueden ser recomendadas por un socio. Hoy, nuestra lista de socios se amplía a 28 con la adición de las siguientes organizaciones:</p>
+	<ul>
+		<li>Anti-Defamation League</li>
+		<li>Amnesty International</li>
+		<li>Business &amp; Human Rights Resource Centre</li>
+		<li>Council of Europe</li>
+		<li>Derechos Digitales</li>
+		<li>Fourth Estate</li>
+		<li>Frontline Defenders</li>
+		<li>Institute for War &amp; Peace Reporting (IWPR)</li>
+		<li>LION Publishers</li>
+		<li>National Democratic Institute (NDI)</li>
+		<li>Reporters Sans Frontières</li>
+		<li>Social Media Exchange (SMEX)</li>
+		<li>Sontusdatos.org</li>
+		<li>Tech Against Terrorism</li>
+		<li>World Wide Web Foundation</li>
+		<li>X-Lab</li>
+	</ul>
+	<h3 id="misi-n-de-cloudflare-ayudar-a-crear-una-mejor-internet"><strong>Misión de Cloudflare: Ayudar a crear una mejor internet</strong></h3>
+	<p>Algunas empresas comienzan con una misión. Cloudflare no fue una de esas empresas. Michelle, Lee y yo comenzamos con Cloudflare porque pensamos que habíamos identificado una importante oportunidad de negocio. A decir verdad, pensé que la idea de ser “impulsado por una misión” era algo poco realista.</p>
+	<p>Recuerdo muy bien el día que las cosas cambiaron para mí. El director de uno de los socios del Proyecto Galileo me llamó para decirme que tres periodistas que habían recibido protección bajo el Proyecto Galileo estaban de visita en San Francisco y me preguntó si podía llevarlos a nuestra oficina. Le dije que sí y me hice tiempo para reunirme con ellos.</p>
+	<p>Los tres periodistas estaban cubriendo casos de presunta corrupción del gobierno en sus países de origen. Uno era de Angola, otro era de Etiopía, y el nombre y el país de origen del tercero no me lo dijeron porque “actualmente estaba siendo perseguido por escuadrones de la muerte”. Los tres me abrazaron. Uno tenía lágrimas en los ojos. Y luego me explicaron porqué no podían hacer su trabajo como periodistas sin la protección de Cloudflare.</p>
+	<p>Hay personas increíblemente valientes que hacen un trabajo importante y arriesgan sus vidas en todo el mundo. Algunos de ellos utilizan internet para llegar a su audiencia. Ya sea que se trate de periodistas africanos que cubren casos de presunta corrupción en el gobierno, comunidades LGBTQ que brindan asistencia en el Medio Oriente o defensores de los derechos humanos en regímenes represivos, lamentablemente todos se enfrentan al riesgo de que las poderosas fuerzas opositoras utilicen ataques cibernéticos para silenciarlos.</p>
+	<p>Estoy orgulloso del trabajo que hemos hecho a través del Proyecto Galileo en los últimos cinco años y de toda la ayuda que Cloudflare ha brindado para proteger a estas organizaciones importantes desde el punto de vista político y artístico. Ha definido nuestra misión de ayudar a crear una mejor internet.</p>
+	<p>Si bien respetamos la confidencialidad de las organizaciones que reciben apoyo del Proyecto, agradezco que algunos de ellos nos hayan permitido contar sus historias. Lo invito a leer sobre nuestros nuevos beneficiarios del Proyecto:</p>
+	<ul>
+		<li><a href="https://www.cloudflare.com/galileo/case-study/majal" target="_blank">Majal</a></li>
+		<li><a href="https://www.cloudflare.com/galileo/case-study/womens-march-global" target="_blank">Women's March Global</a></li>
+		<li><a href="https://www.cloudflare.com/galileo/case-study/vost-portugal" target="_blank">VOST Portugal</a></li>
+		<li><a href="https://www.cloudflare.com/galileo/case-study/bullyingcanada" target="_blank">BullyingCanada</a></li>
+	</ul>
+	<p>Y, por último, si usted conoce una organización que necesita la protección del Proyecto Galileo, hágale saber que estamos dispuestos a ayudarla.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/06/image2-1.png" class="kg-image"></figure>
+</div>

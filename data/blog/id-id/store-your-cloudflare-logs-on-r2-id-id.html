@@ -1,0 +1,39 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/unnamed-4.png" class="kg-image"></figure>
+	<p>Kami senang mengumumkan bahwa pelanggan akan segera dapat menyimpan log Cloudflare mereka di penyimpanan Cloudflare R2. Menyimpan log Anda di Cloudflare akan memberi kesempatan kepada CIO dan Tim Keamanan untuk mengonsolidasikan infrastruktur mereka; menciptakan kesederhanaan, penghematan, dan keamanan tambahan.</p>
+	<p>Cloudflare melindungi aplikasi Anda dari traffic berbahaya, mempercepat koneksi, dan menjauhkan pelaku jahat dari jaringan Anda. Log yang dihasilkan dari produk kami membantu pelanggan menjawab pertanyaan seperti:</p>
+	<ul>
+		<li>Mengapa permintaan diblokir oleh aturan Firewall yang telah saya siapkan?</li>
+		<li>Mengapa pengguna saya terputus dari aplikasi saya yang menggunakan Spectrum?</li>
+		<li>Mengapa saya melihat lonjakan permintaan Gateway Cloudflare ke aplikasi tertentu?</li>
+	</ul>
+	<p>Penyimpanan di R2 meramaikan rangkaian produk pencatatan kami yang sudah ada. Menyimpan log di R2 mengisi kekosongan yang diminta oleh pelanggan kami: solusi hemat biaya dalam menyimpan log untuk setiap produk kami kapan saja.</p>
+	<h3 id="selamat-tinggal-pencatatan-kuno"><strong>Selamat tinggal pencatatan kuno</strong></h3>
+	<p>Mari kita mundur ke awal tahun 2000-an. Sebagian besar organisasi menjalankan infrastruktur mandiri mereka sendiri: perangkat jaringan, firewall, server, dan semua perangkat lunak terkait. Setiap perusahaan harus mengelola log yang berasal dari ratusan sumber di tumpukan TI. Dengan penyimpanan khusus yang diperlukan untuk menyimpan volume log yang tak terbatas, tim khusus diperlukan untuk membangun saluran ETL dan menjadikan data dapat ditindaklanjuti.</p>
+	<p>Sekarang kita maju ke 2010-an. Organisasi sedang bertransisi menggunakan layanan terkelola untuk fungsi TI mereka. Sebagai akibat pergeseran ini, cara pelanggan mengumpulkan log untuk semua layanan mereka juga berubah. Dengan layanan terkelola, sebagian besar beban pencatatan dialihkan dari pelanggan.</p>
+	<p>Tantangannya sekarang: mengumpulkan log dari kombinasi layanan terkelola, yang masing-masing memiliki keunikannya sendiri. Log dapat dikirim pada berbagai latensi, dalam format yang berbeda, serta beberapa terlalu detail, sementara yang lain tidak cukup detail. Untuk mendapatkan tampilan satu panel infrastruktur TI mereka, perusahaan perlu membangun atau membeli solusi SIEM.</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/12/Log-storage-diagram.png" class="kg-image" alt="Logging changes over the years">
+		<figcaption>Logging changes over the years</figcaption>
+	</figure>
+	<p>Perubahan pencatatan dari tahun ke tahun</p>
+	<p>Cloudflare menggantikan set layanan terkelola ini. Saat pelanggan bergabung ke Cloudflare, kami memudahkan pendapatan visibilitas traffic mereka yang mencapai jaringan kami. Kami telah membangun analitik untuk banyak produk kami, seperti CDN, Firewall, Magic Transit, dan Spectrum untuk melihat tren tingkat tinggi dan menggali pola dengan membagi dan memerinci data.</p>
+	<p>Analytics adalah cara yang bagus untuk melihat data pada tingkat agregat, tetapi kami tahu bahwa raw log juga penting bagi pelanggan, jadi kami telah membuat serangkaian produk pencatatan.</p>
+	<h3 id="pencatatan-masa-kini"><strong>Pencatatan masa kini</strong></h3>
+	<p>Selama <a href="https://blog.cloudflare.com/instant-logs/">Speed Week</a> , kami mengumumkan Log Instan untuk menunjukkan traffic pelanggan saat mencapai domain mereka. Log Instan sangat cocok untuk debugging langsung dan kasus penggunaan triase. Pantau traffic Anda, buat perubahan konfigurasi, dan lihat dampaknya secara instan. Jika Anda perlu memeriksa log secara retroaktif, kami memiliki Logpush.</p>
+	<p>Kami telah membangun alur pencatatan hebat untuk mendapatkan data dari 250+ kota yang menaungi pusat data kami kepada pelanggan kami dalam waktu kurang dari satu menit menggunakan Logpush. Jika organisasi Anda memiliki praktik yang ada untuk mendapatkan data di seluruh tumpukan Anda ke satu tempat, kami mendukung Logpush ke berbagai penyimpanan cloud atau tujuan SIEM. Kami juga bermitra dengan platform SIEM utama untuk memunculkan data Cloudflare dengan cara yang berarti bagi pelanggan kami.</p>
+	<p>Terakhir namun tidak kalah pentingnya adalah Logpull. Dengan Logpull, pelanggan dapat mengakses log permintaan HTTP menggunakan REST API kami. Pelanggan kami menyukai Logpull karena mudah dikonfigurasikan, mereka tidak perlu khawatir untuk menyimpan log di pihak ketiga, dan Anda dapat menarik data khusus hingga tujuh hari.</p>
+	<h3 id="mengapa-penyimpanan-cloudflare"><strong>Mengapa penyimpanan Cloudflare?</strong></h3>
+	<p>Empat permintaan teratas yang kami dengar dari pelanggan terkait log adalah:</p>
+	<ul>
+		<li>Anggaran saya terbatas dan membutuhkan penyimpanan log dengan biaya rendah.</li>
+		<li>Mereka harus mudah diatur dan dipelihara.</li>
+		<li>Saya harus dapat menyimpan log selama yang saya butuhkan.</li>
+		<li>Saya ingin mengakses log saya di Cloudflare untuk produk apa pun.</li>
+	</ul>
+	<p>Bagi sebagian besar pelanggan kami, Cloudflare adalah salah satu sumber data terpenting, serta menghasilkan lebih banyak data daripada aplikasi lain di tumpukan TI mereka. R2 secara signifikan lebih murah daripada penyedia cloud lainnya, jadi pelanggan kami tidak perlu berkompromi dengan mengambil sampel atau mengabaikan log dari produk secara bersamaan untuk mengurangi biaya.</p>
+	<p>Seperti halnya kesederhanaan Logpull, penyimpanan log di R2 juga cepat dan mudah. Dengan pengaturan satu klik, kami akan menyimpan log Anda, dan Anda tidak perlu mengkhawatirkan detail konfigurasi apa pun. Penyimpanan sepenuhnya berada dalam kendali pelanggan kami untuk menyesuaikan dengan kebutuhan keamanan dan kepatuhan bisnis mereka. Dengan R2, Anda juga dapat menyimpan log untuk produk apa pun yang kami catat untuk hari ini (dan kami selalu menambahkan lebih banyak seiring berkembangnya lini produk kami).</p>
+	<h3 id="penyimpanan-log-kami-baru-saja-mulai"><strong>Penyimpanan log; kami baru saja mulai</strong></h3>
+	<p>Dengan penyimpanan log di Cloudflare, kami membuat blok bangunan untuk memungkinkan pelanggan melakukan analisis log dan kemampuan forensik langsung di Cloudflare. Apakah melakukan penyelidikan, menanggapi permintaan dukungan, atau menangani insiden, menggunakan analitik untuk pandangan keseluruhan dan memeriksa log untuk menentukan akar penyebab adalah kombinasi yang kuat.</p>
+	<p>Jika Anda tertarik untuk mendapatkan kabar seputar kapan Anda dapat menyimpan log di Cloudflare, daftar melalui <a href="https://forms.gle/x24NKoMF8rJBJPpU7" target="_blank">formulir ini</a>.</p>
+	<p>Kami selalu mencari teknisi berbakat untuk menghadapi tantangan menangani data dalam skala luar biasa. Jika Anda tertarik, <a href="https://boards.greenhouse.io/cloudflare/jobs/2103918?gh_jid=2103918" target="_blank">lamar di sini</a>.</p>
+</div>

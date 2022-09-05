@@ -1,0 +1,33 @@
+<div class="post-content lh-copy gray1">
+	<p>Dime si esto te suena: las conexiones desde dentro de la red de la empresa son de confianza y las conexiones de fuera no lo son. Es la estrategia de seguridad que se usa en la mayoría de las empresas hoy en día. El problema es que una vez que se traspasa el firewall, la puerta de enlace o el servidor de la red privada virtual (Virtual Private Network o VPN por sus siglas en inglés) que crea este perímetro, el atacante consigue acceso inmediato, fácil y de confianza a todo.</p>
+	<p></p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/04/4859761438_0778df5e52_o-1.jpg" class="kg-image">
+		<figcaption>Imagen <a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank">CC BY-SA 2.0</a>, por William Warby</figcaption>
+	</figure>
+	<p></p>
+	<p>Hay un segundo problema con el modelo del perímetro de seguridad tradicional. Tampoco requiere que los empleados estén en la red corporativa (es decir, físicamente en la oficina) o utilicen una VPN, que ralentiza el trabajo porque cada carga de la página hace viajes adicionales al servidor de la VPN. Después de todo este jaleo, los usuarios de la VPN todavía son altamente susceptibles al phishing, los ataques de intermediarios y los ataques de inyección SQL.</p>
+	<p>Hace unos años, Google fue pionero en una solución para sus propios empleados, llamada BeyondCorp. En lugar de mantener sus aplicaciones internas en la intranet, las hizo accesible en Internet. Así se abandonaba el concepto de estar dentro o fuera de la red. La red no era una ciudadela fortificada, todo estaba en Internet, y no se consideraba fiable ninguna conexión. Cada uno tenía que demostrar que era quien decía.</p>
+	<p>La misión de Cloudflare ha sido siempre democratizar las herramientas de los gigantes de Internet. Hoy lanzamos <a href="https://www.cloudflare.com/products/cloudflare-access/?utm_medium=website&amp;utm_source=blog&amp;utm_campaign=access-launch" target="_blank">Access de Cloudflare</a>: una solución de control de acceso perimetral para aplicaciones en la nube y locales. Es como BeyondCorp, pero no tienes que ser empleado de Google para usarlo.</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/01/Access-blog-post-diagramv2.png" class="kg-image" alt="Access-blog-post-diagramv2"></figure>
+	<p></p>
+	<h3 id="-c-mo-funciona-access-de-cloudflare"><strong>¿Cómo funciona Access de Cloudflare?</strong></h3>
+	<p>Access actúa como un proxy inverso unificado para fortalecer el control de acceso comprobando que cada solicitud es:</p>
+	<p><strong>Autenticada:</strong> Access se integra de fábrica con la mayoría de los principales proveedores de identidad, como Google, Azure Active Directory y Okta, lo que significa que puedes conectar tu proveedor de identidad a Cloudflare rápidamente y usar los grupos y usuarios ya creados para regular el acceso a tus aplicaciones web. Además, puedes utilizar <a href="https://blog.cloudflare.com/introducing-tls-client-auth/">TLS con autenticación de cliente</a> y limitar las conexiones solo a dispositivos con un certificado de cliente específico. Cloudflare comprobará que el dispositivo que se conecta tiene un certificado de cliente válido firmado por la autenticación de cliente corporativa y entonces autenticará las credenciales de usuario para conceder acceso a una aplicación interna.</p>
+	<p><strong>Autorizado:</strong> la solución te permite proteger fácilmente los recursos de la aplicación mediante la configuración de políticas de acceso para grupos y usuarios individuales que ya creaste con tus proveedores de identidad. Por ejemplo, con Access podrías asegurarte de que solo los empleados de la empresa puedan llegar a tu tablero kanban interno o bloquear el wp-admin de tu sitio de wordpress.</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/01/access-policy.png" class="kg-image" alt="access-policy"></figure>
+	<p></p>
+	<p><strong>Cifrado:</strong> como Cloudflare hace que todas las conexiones sean seguras con HTTPS, no hay necesidad de una VPN.</p>
+	<p>Para todos los administradores de informática a quienes algún ejecutivo muy viajado les ha reprendido sobre cómo la VPN ralentiza Internet, Access es la solución perfecta. Te permite controlar y supervisar el acceso a las aplicaciones, dándote las siguientes funciones a través del panel de control y las API:</p>
+	<ul>
+		<li>Cambiar fácilmente las políticas de acceso</li>
+		<li>Modificar la duración de las sesiones</li>
+		<li>Revocar las sesiones de usuario existentes</li>
+		<li>Inicio de sesión centralizado para auditoría y registro de cambios</li>
+	</ul>
+	<p>¿Quieres una conexión aún más rápida que reemplace tu VPN? Prueba a combinar Access con <a href="https://www.cloudflare.com/argo/" target="_blank">Argo</a>. Si quieres usar Access para una aplicación interna pero no quieres abrir esa aplicación a todo Internet, puedes combinar Access con <a href="https://www.cloudflare.com/products/cloudflare-warp/" target="_blank">Warp</a>. Warp hará que Cloudflare sea la conexión a Internet de tu aplicación para que ni siquiera necesites una IP pública. Si quieres usar Access para una aplicación heredada y proteger esa aplicación de vulnerabilidades sin parchear en software heredado, simplemente puedes hacer clic para activar el <a href="https://www.cloudflare.com/waf/" target="_blank">Firewall de aplicación web</a> y Cloudflare inspeccionará paquetes y bloqueará los que tengan vulnerabilidades.</p>
+	<p>Access de Cloudflare permite que los empleados se conecten a aplicaciones corporativas desde cualquier dispositivo, cualquier lugar y en cualquier tipo de red. Access se impulsa a través de la red global de más de 120 centros de datos de Cloudflare, que ofrecen redundancia adecuada, protección DDoS y proximidad a donde estén tus empleados o tu oficina corporativa.</p>
+	<h3 id="comenzar-"><strong>Comenzar:</strong></h3>
+	<p>Se tarda de 5 a 10 minutos en configurar Access y es gratis probarlo para un usuario (a partir de ahí, cuesta 3 $ por usuario al mes. Puedes <a href="https://www.cloudflare.com/plans/enterprise/contact/?utm_medium=website&amp;utm_source=product&amp;utm_campaign=access" target="_blank">contactar con ventas</a> para descuentos por volumen). Access de Cloudflare está completamente disponible para nuestros clientes empresariales hoy y en versión beta abierta para nuestros clientes con planes gratuitos, profesionales y de negocios. Para empezar, <a href="https://cloudflare.com/a/access" target="_blank">ve a la pestaña de Access del panel de control de Cloudflare</a>.<br></p>
+</div>

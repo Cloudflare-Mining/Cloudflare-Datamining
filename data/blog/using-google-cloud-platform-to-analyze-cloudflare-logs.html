@@ -1,0 +1,32 @@
+<div class="post-content lh-copy gray1">
+	<!--kg-card-begin: markdown-->
+	<p>We’re excited to announce that we now offer deep insights into your domain’s web traffic, working with Google Cloud Platform (GCP). While Cloudflare Enterprise customers always have had access to their logs, they previously had to rely on their own tools to process them, adding extra complexity and cost.</p>
+	<p>Cloudflare logs provide real time insight into traffic, malicious activity, attack incidents, and infrastructure health checks. The output is used to help customers adjust their settings, manage costs and resources, and plan for expansion.</p>
+	<p>Working with Google, we created an end-to-end solution that allows customers to retrieve Cloudflare access logs, store and process data in a simple way. GCP components such as Google Storage, Cloud Function, BigQuery and Data Studio come together to make this possible.</p>
+	<p>One of the biggest challenges of data analysis is to store and process large volume of data within a short time period while avoiding high costs. GCP Storage and BigQuery easily address these challenges.</p>
+	<p>Cloudflare customers can decide if they wish to obtain and process data from Cloudflare access logs on demand or on a regular basis. The full solution is described in this <a href="https://support.cloudflare.com/hc/en-us/articles/115002220471-Using-Google-Cloud-Platform-to-Analyze-Cloudflare-Enterprise-Logshare" target="_blank">Knowledge Base article</a>. Initial setup takes no more than 30 minutes to an hour. Moreover, customers can still replace any part of the process with their own tool or solution.</p>
+	<p>Below is a simple visualization of the data flow:<br>
+		<img src="https://blog.cloudflare.com/content/images/2017/10/Cloudflare_logs_analysis_using_google_Cloud_platform_data_flow.png" alt="">
+	</p>
+	<h3 id="thekeyelementsare">The key elements are:</h3>
+	<br>
+	<h4 id="cloudflarelogshareservice">Cloudflare Logshare service</h4>
+	<p>Cloudflare logs are obtained via a REST API. Usually this service can be run on your local workstation or Virtual Machine. The illustrated solution uses GCP Compute micro-instance.</p>
+	<h4 id="logstorageandmanagement">Log storage and management</h4>
+	<p>For storing and managing log files we used GCP Storage bucket. All logs are stored in JSON format. Google Cloud Storage allows you to adjust the storage capacity when needed and set the retention policy.</p>
+	<h4 id="dataimport">Data Import</h4>
+	<p>Analyzing large data sets can be challenging. Google BigQuery makes it straightforward. When there is a new log file uploaded to the GCP Storage bucket, GCP Cloud Function triggers the process to import data from the new log file into BigQuery. BigQuery allows you to access your data almost immediately by running a simple query. As illustrated below you can, for example, pull top requested URIs with status code 404.</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2017/10/analyzing_cloudflare_logs_in_bigquery.png" alt=""></p>
+	<h4 id="datavisualization">Data Visualization</h4>
+	<p>Based on feedback from our customers about which data they are interested in, we used GCP Data Studio to create visual reports. Data Studio Cloudflare logs analysis template can be found <a href="https://datastudio.google.com/u/0/reporting/1ez3m7Yf8AZLfM6aYRjfgF0pPpRvOwhTh/page/mAzI/preview" target="_blank">here</a>. The following reports can be created in Data Studio using BigQuery as an input: top client IP address requests, requests by URL, error types, cached or uncached URLs, top triggered WAF rules, traffic types by device or location and many more.</p>
+	<h4 id="datastudioeditmode">Data Studio “Edit” mode</h4>
+	<p><img src="https://blog.cloudflare.com/content/images/2017/10/cloudflare_logs_in_data_studio_edit_mode.png" alt=""></p>
+	<h4 id="datastudioviewmode">Data Studio “View” mode</h4>
+	<p><img src="https://blog.cloudflare.com/content/images/2017/10/cloudflare_logs_in_data_studio.png" alt=""></p>
+	<h4 id="500gcpcredit">$500 GCP credit</h4>
+	<p>Google Cloud is offering a $500 credit towards a new Google Cloud account to help you get started. In order to receive a credit, please follow these <a href="https://goo.gl/M4RhsW" target="_blank">instructions</a>.</p>
+	<h4 id="costs">Costs</h4>
+	<p>Costs depend on several factors including the number of requests, storage, retention policy and number of queries in BigQuery, among others. For more pricing details, please use the <a href="https://cloud.google.com/products/calculator/" target="_blank">GCP Pricing Calculator</a>.</p>
+	<p>Please reach out to your Cloudflare Enterprise Solution Engineer or Customer Success Manager for more information.</p>
+	<!--kg-card-end: markdown-->
+</div>

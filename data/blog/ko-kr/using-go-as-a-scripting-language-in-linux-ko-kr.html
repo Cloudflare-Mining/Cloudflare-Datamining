@@ -1,0 +1,106 @@
+<div class="post-content lh-copy gray1">
+	<!--kg-card-begin: markdown-->
+	<hr>
+	<p>Cloudflare에서는 Go를 좋아합니다. Go는 많은 <a href="https://blog.cloudflare.com/what-weve-been-doing-with-go/">내부 소프트웨어 프로젝트</a>와 <a href="https://blog.cloudflare.com/meet-gatebot-a-bot-that-allows-us-to-sleep/">거대한 파이프라인 시스템</a>의 일부로도 사용되고 있습니다. 하지만 Go를 한단계 더 끌어 올려서 우리가 선호하는 운영체제인 리눅스의 스크립트 언어로 사용할 수 있을까요?</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2018/02/gopher-tux-1.png" alt="gopher-tux-1"><br>
+		<small><a href="https://golang.org/doc/gopher/gophercolor.png" target="_blank">gopher image</a> <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank">CC BY 3.0</a> <a href="https://reneefrench.blogspot.com/" target="_blank">Renee French</a> | <a href="https://pixabay.com/en/linux-penguin-tux-2025536/" target="_blank">Tux image</a> <a href="https://creativecommons.org/publicdomain/zero/1.0/deed.en" target="_blank">CC0 BY</a> <a href="https://pixabay.com/en/users/OpenClipart-Vectors-30363/" target="_blank">OpenClipart-Vectors</a></small>
+	</p>
+	<h3 id="go">Go를 왜 스크립트 언어로 고려하는가</h3>
+	<p>간단한 답은: 왜 안되나요? Go는 비교적 쉽게 배울 수 있고 아주 복잡하지도 않고, 코드를 처음부터 작성해야 하는 일을 피하기 위해 재사용 가능한 라이브러리의 거대한 에코시스템이 있습니다. 추가로 다음과 같은 잠재적인 장점이 있습니다:</p>
+	<ul>
+		<li>여러분의 Go 프로젝트를 위한 Go 기반 빌드 시스템: <code>go build</code> 명령은 대부분의 소규모이며 독립적인 프로젝트에 적합합니다. 더 복잡한 프로젝트는 대부분 별도의 빌드 시스템/스크립트 세트를 채용하고 있습니다. 이런 스크립트도 Go로 작성 가능하지 않을까요?</li>
+		<li>바로 이용 가능한 별도 권한 없는 패키지 관리: 여러분의 프로그램에서 서드 파티 라이브러리를 사용하고 싶다면 단순히 <code>go get</code> 을 사용하면 됩니다. 그리고 이 코드가 여러분의 <code>GOPATH</code>에 설치되므로, 서드파티 라이브러리를 받는 것은 시스템의 별도 운영 권한을 필요로 하지 않습니다(다른 일부 스크립트 언어와 달리). 이것은 대규모의 기업 환경에서 특히 유용합니다.</li>
+		<li>초기 단계 프로젝트를 위한 빠른 코드 프로토타이핑: 최초로 돌아가는 코드를 작성할 때 컴파일 되기 위해서 많은 편집을 해야 하고 <em>"편집-&gt;빌드-&gt;체크"</em> 사이클을 위해 많은 키보드 입력을 낭비하게 됩니다. 대신 "빌드" 부분을 넘어가서 바로 소스 파일을 실행할 수 있습니다.</li>
+		<li>강 타입 스크립트 언어: 스크립트안에 조그만 오류가 있다고 하면 대부분의 스크립트는 해당 지점까지 실행하고 나서 오류 부분에서 멈추게 됩니다. 이 경우 시스템이 불완전한 상황에 놓일 수 있습니다. 강 타입 언어의 경우 많은 오류가 컴파일 시간에 잡히게 되므로 오류가 있는 스크립트는 실행 자체가 되지 않을 것입니다.</li>
+	</ul>
+	<h3 id="go">Go 스크립트의 현재 상황</h3>
+	<p>처음 보았을 때 Go 스크립트는 스크립트를 위한 <a href="https://ko.wikipedia.org/wiki/%EC%85%94%EB%B1%85" target="_blank">셔뱅 라인</a>의 유닉스 지원을 이용하면 쉬울 것 처럼 보였습니다. 셔뱅 라인은 스크립트의 첫번째 행으로 <code>#!</code> 으로 시작하며 스크립트를 실행하기 위한 스크립트 인터프리터를 지정하게 됩니다(예를 들어 <code>#!/bin/bash</code> 이나 <code>#!/usr/bin/env python</code>). 따라서 시스템은 사용된 프로그래밍 언어에 관계 없이 스크립트를 어떻게 실행하게 될지 정확히 알고 있습니다. 그리고 Go 는 <code>go run</code> 명령을 통해서 <code>.go</code> 파일을 인터프리터처럼 실행하는 것을 지원하고 있으므로 <code>.go</code> 파일에 <code>#!/usr/bin/env go run</code>과 같은 적절한 셔뱅 라인을 추가하고 실행 비트를 지정하는 것 만으로 준비가 다 되어야 겠죠.</p>
+	<p>하지만 <code>go run</code>을 직접 실행하는데에는 문제가 있습니다. <a href="https://gist.github.com/posener/73ffd326d88483df6b1cb66e8ed1e0bd" target="_blank">이 멋진 글</a>에서는 <code>go run</code> 관련의 문제를 자세히 설명하고 가능한 대응 방안에 대해서 다룹니디만 미리 요약하면:</p>
+	<ul>
+		<li><code>go run</code>은 운영체제에 스크립트 오류 코드를 적절하게 전달하지 않습니다. 이는 스크립트에게 중요한데 오류 코드는 여러 스크립트간 또는 운영체제와 상호 동작하기 위한 가장 일반적인 방법이기 때문입니다.</li>
+		<li>유효한 <code>.go</code> 파일에는 셔뱅 라인을 넣을 수 없는데 Go 는 <code>#</code>으로 시작하는 행을 어떻게 처리해야 하는지 알지 못하기 때문입니다. 다른 스크립트 언어는 이런 문제가 없는데, 대부분 <code>#</code>은 주석을 지정하는데 사용하고 있어서 최종적으로 이런 인터프리터는 셔뱅 라인을 단순히 무시하게 됩니다. 하지만 Go의 주석문은 <code>//</code>으로 시작하므로 셔뱅 라인은 <code>go run</code> 실행시 다음과 같은 오류를 냅니다:</li>
+	</ul>
+	<pre><code>package main:
+helloscript.go:1:1: illegal character U+0023 '#'
+</code></pre>
+	<p><a href="https://gist.github.com/posener/73ffd326d88483df6b1cb66e8ed1e0bd" target="_blank">이 글</a>에서는 인터프리터로 사용하기 위한 커스텀 래퍼 프로그램 <a href="https://github.com/erning/gorun" target="_blank">gorun</a>을 포함하여 위 문제들에 대한 여러가지 대처 방법을 설명합니다만 전부 이상적인 해결 방법을 제시하는 것 만은 아닙니다. 여러분은 다음 중에서 선택을 해야 합니다:</p>
+	<ul>
+		<li><code>//</code>으로 시작하는 비표준 셔뱅 라인을 사용합니다. 이것은 기술적으로는 셔뱅 라인이 아니고 <code>bash</code> 쉘이 실행 가능한 텍스트 파일을 처리하는 방식이므로 <code>bash</code>에 한정된 방법입니다. 또한 <code>go run</code>의 특정한 행동 때문에 이 행은 오히려 복잡하고 명확하지 않습니다 (예제를 위해서는 <a href="https://gist.github.com/posener/73ffd326d88483df6b1cb66e8ed1e0bd" target="_blank">원래 글</a>을 보세요)</li>
+		<li>셔뱅 라인에서 커스텀 래퍼 프로그램 <a href="https://github.com/erning/gorun" target="_blank">gorun</a>을 사용합니다. 이것은 잘 동작하지만 허용되지 않는 <code>#</code> 문자를 사용하는 것 때문에 표준 <code>go build</code>명령과 호환되지 않는 <code>.go</code> 파일을 만들게 됩니다.</li>
+	</ul>
+	<h3 id="">리눅스가 파일을 실행하는 방법</h3>
+	<p>좋습니다. 셔뱅 방식은 만능의 해결책을 제공하지는 않는 것 같군요. 다른 방법이 없을까요? 먼저 리눅스 커널이 바이너리를 실행하는 방법에 대해서 자세히 보도록 합시다. 바이너리나 스크립트를 실행할 때 (또는 실행 비트가 설정되어 있는 어떤 파일에 대해서) 여러분의 쉘은 최종적으로 리눅스의 <code>execve</code> <a href="https://en.wikipedia.org/wiki/System_call" target="_blank">시스템 콜</a>을 사용하고 여기에 실행하고자 하는 바이너리의 파일시스템 경로명, 명령행 인자와 현재 정의된 환경 변수를 전달 합니다. 그리고 나서 커널은 파일을 올바르게 파싱하는 일과 파일의 코드로부터 새 프로세스를 생성하는 일을 담당 합니다. 리눅스(그리고 많은 유닉스 파생 운영체제)가 실행 파일용으로 <a href="https://en.wikipedia.org/wiki/Executable_and_Linkable_Format" target="_blank">ELF 바이너리 형식</a>을 사용하는 것은 잘 알려져 있습니다.</p>
+	<p>하지만 리눅스 커널 개발의 핵심 원칙 중 하나는 커널의 일부인 서브시스템에서 "벤더/포맷 제약"을 피하는 것입니다. 따라서 리눅스는 커널이 어떤 바이너리 형식도 지원할 수 있도록 하는 "추가 가능한" 시스템을 구현하였습니다 - 여러분이 해야 할 일은 선택한 형식을 파싱할 수 있는 올바른 모듈을 작성하는 것입니다. 그리고 커널 소스 코드를 잘 보면 리눅스는 기본적으로 여러가지 바이너리 형식을 지원하는 것을 알 수 있습니다. 예를 들어 최근의 <code>4.14</code> 리눅스 커널에서는 적어도 7개의 바이너리 형식을 지원하는 것을 <a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git/tree/fs?h=linux-4.14.y" target="_blank">볼 수 있습니다</a>(여러 바이너리 형식의 커널 내장 모듈은 대부분 <code>binfmt_</code> 로 시작하는 이름입니다). 그중 <a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git/tree/fs/binfmt_script.c?h=linux-4.14.y" target="_blank">binfmt_script</a> 모듈은 살펴볼 가치가 있는데, 이 모듈은 앞서 이야기한 셔뱅 라인을 해석하고 타겟 시스템에서 스크립트를 실행하는 것을 담당합니다(셔뱅 지원이 쉘이나 다른 대몬/프로세스가 아니라 실제 커널에 구현되어 있는 건 잘 알려진 사실은 아닙니다).</p>
+	<h3 id="">사용자 공간에서 바이너리 형식 지원을 추가하기</h3>
+	<p>하지만 Go 스크립트를 위해서 셔뱅이 최선의 옵션이 아니라고 결론을 내렸으므로, 다른 것이 필요합니다. 놀랍게도 리눅스 커널에는 <code>binfmt_misc</code> 라는 적절한 이름을 갖는 <a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git/tree/fs/binfmt_misc.c?h=linux-4.14.y" target="_blank">"다른" 바이너리 지원 모듈</a>이 이미 있습니다. 이 모듈은 관리자에게 동적으로 여러가지 실행 가능한 형식을 잘 정의된 <code>procfs</code> 인터페이스를 통해 사용자 공간에서 직접 추가로 지원할 수 있도록 해 주며 <a href="https://www.kernel.org/doc/html/v4.14/admin-guide/binfmt-misc.html" target="_blank">문서화</a>도 잘 되어 있습니다.</p>
+	<p><a href="https://www.kernel.org/doc/html/v4.14/admin-guide/binfmt-misc.html" target="_blank">해당 문서</a>를 따라서 <code>.go</code> 파일을 위한 바이너리 형식을 설정해 보도록 합니다. 먼저 가이드 문서는 <code>binfmt_misc</code> 파일시스템을 <code>/proc/sys/fs/binfmt_misc</code>에 마운트하도록 설명하고 있습니다. 비교적 최신의 <code>systemd</code> 기반 리눅스 배포본을 사용하고 있다면 이 파일시스템은 이미 마운트되어 있을 것인데 <code>systemd</code>는 기본적으로 이 목적으로 특별한 <a href="https://github.com/systemd/systemd/blob/master/units/proc-sys-fs-binfmt_misc.mount" target="_blank">mount</a>와 <a href="https://github.com/systemd/systemd/blob/master/units/proc-sys-fs-binfmt_misc.automount" target="_blank">automount</a> 유닛을 설치하기 때문입니다. 확인하기 위해서는 다음을 실행해 보세요:</p>
+	<pre><code class="language-bash">$ mount | grep binfmt_misc
+systemd-1 on /proc/sys/fs/binfmt_misc type autofs (rw,relatime,fd=27,pgrp=1,timeout=0,minproto=5,maxproto=5,direct)
+</code></pre>
+	<p>다른 방법은 <code>/proc/sys/fs/binfmt_misc</code> 안에 파일이 있는지 확인하는 것입니다: 제대로 마운트된 <code>binfmt_misc</code> 파일시스템은 그 디렉토리에 적어도 <code>register</code>와 <code>status</code>라는 두개의 파일을 생성할 것입니다.</p>
+	<p>다음으로 우리의 <code>.go</code> 스크립트가 종료 코드를 운영체제에 적절하게 전달 하도록 하기 위해서 "인터프리터"로 사용될 커스텀 <a href="https://github.com/erning/gorun" target="_blank">gorun</a> 래퍼가 필요 합니다:</p>
+	<pre><code class="language-bash">$ go get github.com/erning/gorun
+$ sudo mv ~/go/bin/gorun /usr/local/bin/
+</code></pre>
+	<p>기술적으로는 <code>binfmt_misc</code>는 인터프리터의 전체 경로를 필요로 하기 때문에 <code>gorun</code>을 <code>/usr/local/bin</code>이나 다른 시스템 경로에 옮길 필요는 없습니다만 시스템은 이 실행 파일을 임의의 권한으로 실행할 수 있으므로 보안 관점에서 파일 접근에 제한을 지정하는 것은 좋은 생각 입니다.</p>
+	<p>이 시점에서 간단한 장난감 Go 스트립트인 <code>helloscript.go</code>를 만들어서 제대로 "실행"하는지 확인해 봅니다. 스크립트는 다음과 같습니다:</p>
+	<pre><code class="language-go">package main
+
+import (
+	"fmt"
+	"os"
+)
+
+func main() {
+	s := "world"
+
+	if len(os.Args) &gt; 1 {
+		s = os.Args[1]
+	}
+
+	fmt.Printf("Hello, %v!", s)
+	fmt.Println("")
+
+	if s == "fail" {
+		os.Exit(30)
+	}
+}
+</code></pre>
+	<p>명령행 인수 전달과 오류 처리도 제대로 되고 있는지 확인합니다:</p>
+	<pre><code class="language-bash">$ gorun helloscript.go
+Hello, world!
+$ echo $?
+0
+$ gorun helloscript.go gopher
+Hello, gopher!
+$ echo $?
+0
+$ gorun helloscript.go fail
+Hello, fail!
+$ echo $?
+30
+</code></pre>
+	<p>이제 <code>binfmt_misc</code> 모듈에게 <code>gorun</code>으로 <code>.go</code> 파일을 실행하는 방법을 알려 주도록 합니다. <a href="https://www.kernel.org/doc/html/v4.14/admin-guide/binfmt-misc.html" target="_blank">문서</a>에 따르면 다음과 같은 설정 문자열이 필요 합니다: <code>:golang:E::go::/usr/local/bin/gorun:OC</code>. 이것은 기본적으로 시스템에게 다음과 같이 말하는 것입니다: "<code>.go</code> 확장자를 갖는 설정 파일을 만나면 <code>/usr/local/bin/gorun</code> 인터프리터로 실행해 주세요". 문자열 끝의 <code>OC</code> 플래그는 이 스크립트가 인터프리터 실행 파일이 아니라 해당 스크립트의 사용자 정보과 권한 비트에 따라 실행하도록 해 줍니다. 이렇게 하여 리눅스의 다른 실행 파일이나 스크립트와 동일한 방식으로 실행이 가능하도록 합니다.</p>
+	<p>이제 새 Go 스크립트 바이너리 형식을 등록합시다:</p>
+	<pre><code class="language-bash">$ echo ':golang:E::go::/usr/local/bin/gorun:OC' | sudo tee /proc/sys/fs/binfmt_misc/register
+:golang:E::go::/usr/local/bin/gorun:OC
+</code></pre>
+	<p>시스템이 성공적으로 새 형식을 등록하면 <code>golang</code> 이라는 파일이 새로 <code>/proc/sys/fs/binfmt_misc</code> 디렉토리에 나타날 것입니다. 마지막으로 이제 <code>.go</code> 파일을 바로 실행할 수 있습니다:</p>
+	<pre><code class="language-bash">$ chmod u+x helloscript.go
+$ ./helloscript.go
+Hello, world!
+$ ./helloscript.go gopher
+Hello, gopher!
+$ ./helloscript.go fail
+Hello, fail!
+$ echo $?
+30
+</code></pre>
+	<p>잘 되는군요! 이제 <code>helloscript.go</code> 를 원하는대로 바꾸어서 변경 사항이 실행 되면 바로 반영 되는지 보도록 하세요. 추가적으로 이전의 셔뱅 방식과는 달리 이 파일은 <code>go build</code>를 사용해서 바로 진짜 실행 파일로도 컴파일할 수 있습니다.</p>
+	<hr>
+	<p><em>Go 나 리눅스 내부 구조를 들여다 보는 것에 관심이 있다면, 어느 한 쪽 또는 양쪽 모두를 위한 자리가 있습니다. <a href="https://www.cloudflare.com/careers/" target="_blank">우리의 채용 페이지</a>를 참고 하세요.</em></p>
+	<!--kg-card-end: markdown-->
+	<!--kg-card-begin: markdown-->
+	<p><small><em>This is a Korean translation of a <a href="https://blog.cloudflare.com/using-go-as-a-scripting-language-in-linux/">existing post</a> by <a href="https://blog.cloudflare.com/author/ignat/">Ignat Korchagin</a>, translated by <a href="https://blog.cloudflare.com/author/junho/">Junho Choi</a>.</em></small></p>
+	<!--kg-card-end: markdown-->
+</div>

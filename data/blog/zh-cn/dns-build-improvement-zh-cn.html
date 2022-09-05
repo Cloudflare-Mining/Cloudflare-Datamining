@@ -1,0 +1,113 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image5-20.png" class="kg-image" alt="How we improved DNS record build speed by more than 4,000x"></figure>
+	<p>自从我发布上一篇关于辅助 DNS 的<a href="https://blog.cloudflare.com/secondary-dns-deep-dive/">博客</a>以来，Cloudflare 的 DNS 流量从每月 15.8 万亿次 DNS 查询增加了一倍多，达到 38.7 万亿次。我们的网络现在覆盖 100 多个国家的 270 多个城市，与全球 10,000 多个网络互连。根据 <a href="https://w3techs.com/technologies/overview/dns_server" target="_blank">w3 统计</a>，“15.3% 的网站将 Cloudflare 用作 DNS 服务器提供商。” 这意味着我们肩负着以最快、最可靠的方式为 DNS 提供服务的巨大责任。</p>
+	<p>尽管 DNS 查询的响应时间是最重要的性能指标，但还有另一个指标有时会被忽视。DNS 记录传播时间是指提交到我们 API 的更改需要多长时间才能反映在我们的 DNS 查询响应中。每一毫秒都很重要，因为它允许客户快速更改配置，使他们的系统更加敏捷。尽管我们的 DNS 传播管道现在已经非常快，但我们确定了几项改进，如果实施这些改进，将大大提高性能。在这篇博文中，我将解释我们如何设法大幅提高 DNS 记录的传播速度，以及它对我们客户的影响。</p>
+	<h3 id="dns-">DNS 记录是如何传播的</h3>
+	<p>Cloudflare 使用多阶段管道来获取客户的 DNS 记录更改并将其推送到我们的全球网络，以便它们在全球范围内可用。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/05/image3-37.png" class="kg-image"></figure>
+	<p></p>
+	<p>上图所示的步骤是：</p>
+	<ol>
+		<li>客户通过我们的 DNS 记录 API（或 UI）对记录进行更改。</li>
+		<li>更改持久保存到数据库中。</li>
+		<li>数据库事件触发由区域构建器使用的 Kafka 消息。</li>
+		<li>区域构建器接收消息，从数据库中收集区域的内容并将其推送到我们的分布式 KV 存储 Quicksilver。</li>
+		<li>然后，Quicksilver 将这些信息传播到网络上。<br></li>
+	</ol>
+	<p></p>
+	<p>当然，这是正在发生的事情的简化版本。实际上，我们的 API 每秒接收数千个请求。所有 POST/PUT/PATCH/DELETE 请求最终都会导致 DNS 记录更改。这些更改中的每一项都需要采取行动，以便我们通过 API 和 Cloudflare 仪表板显示的信息最终与我们用于响应 DNS 查询的信息保持一致。 </p>
+	<p>在过去，DNS 传播管道中最大的瓶颈之一是区域构建器，如上面的第 4 步所示。区域构建器负责收集和组织记录以写入我们的全球网络，通常会占用大部分传播时间，尤其是对于较大的区域。随着我们继续扩展，消除系统中可能存在的任何瓶颈对我们来说十分重要，而这已被明确确定为此类瓶颈之一。</p>
+	<p></p>
+	<h3 id="-">成长的痛苦</h3>
+	<p>当上面显示的管道<a href="https://blog.cloudflare.com/how-we-made-our-dns-stack-3x-faster/">首次推出</a>时，区域构建器每秒收到 5 到 10 次 DNS 记录更改。尽管当时的区域构建器已经对之前系统进行了巨大改进，但考虑到 Cloudflare 曾经并且仍在经历的增长，它不会持续很长时间。快进到今天，我们平均每秒收到 250 条 DNS 记录更改，与区域构建器首次推出时相比增长了 25 倍，这实在令人惊讶。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/05/image4-30.png" class="kg-image"></figure>
+	<p>区域构建器最初的设计方式非常简单。当区域发生变化时，区域构建器将从数据库中抓取该区域的所有记录，并将它们与存储在 Quicksilver 中的记录进行比较。修复所有差异以保持数据库和 Quicksilver 之间的一致性。</p>
+	<p>这称为完整构建。完整构建运作良好，因为每个 DNS 记录更改都对应一个区域更改事件。这意味着可以批处理多个事件，然后在需要时删除。例如，如果用户对其区域进行了 10 次更改，这将导致 10 个事件。由于区域构建器会抓取该区域的所有记录，因此无需构建该区域 10 次。我们只需要在提交最终更改后构建一次即可。</p>
+	<p>如果区域包含 100 万条记录或 1000 万条记录，会发生什么情况？这是一个非常现实的问题，因为不仅 Cloudflare 在扩展，我们的客户也在与我们一起扩展。如今，我们最大的区域目前拥有数百万条记录。尽管我们的数据库针对性能进行了优化，但即使是包含一百万条记录的完整构建也需要长达 <strong>35 秒</strong>，这主要是由于数据库查询延迟造成的。此外，当区域构建器将区域内容与存储在 Quicksilver 中的记录进行比较时，我们需要从 Quicksilver 中获取该区域的所有记录，导致增加时间。然而，影响并不仅仅停留在单个客户身上。这也消耗了从数据库读取的其他服务的更多资源，并减慢了我们的区域构建器构建其他区域的速度。</p>
+	<h3 id="--1">按记录构建：一种新的构建类型</h3>
+	<p>你们中的许多人可能已经在脑海中找到了解决这个问题的方法： </p>
+	<p><em>为什么区域构建器不直接在数据库中查询已更改的记录并仅传播单个记录？</em></p>
+	<p>当然，这是正确的解决方案，也是我们最终得到的解决方案。然而，通往成功的道路并不像看起来那么简单。 </p>
+	<p>首先，我们的数据库使用一系列函数，这些函数在区域接触时创建一个 PostgreSQL 队列 (PGQ) 事件，该事件最终变成一个 Kafka 事件。最初，我们对单个记录事件没有区别，这意味着我们的区域构建器在查询数据库之前不知道实际发生了什么变化。</p>
+	<p>其次，除了记录之外，区域构建器还负责 DNS 区域设置。DNS 区域设置的一些示例包括自定义名称服务器控制和 DNSSEC 控制。因此，我们的区域构建器需要了解特定的构建类型，以确保它们不会相互影响。此外，按记录构建不能以与区域构建相同的方式进行批处理，因为每个事件都需要单独操作。 </p>
+	<p>因此，需要编写一个全新的调度系统。最后，需要重写 Quicksilver 交互以考虑不同类型的调度程序。这些问题可以细分如下：</p>
+	<ol>
+		<li>为包含有关已更改记录的信息的记录更改创建一个新的 Kafka 事件管道。</li>
+		<li>将区域构建器分离成一种新型的调度程序，该程序实施一些已定义的调度程序接口。</li>
+		<li>实施按记录调度程序，以正确的顺序逐个读取事件。</li>
+		<li>为按记录调度程序实施新的 Quicksilver 接口。<br></li>
+	</ol>
+	<p>下面是新的区域构建器如何在内部使用新的调度程序类型的高级图表。<br></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image6-20.png" class="kg-image"></figure>
+	<p>我们在这两个调度程序之间锁定非常重要，因为如果不锁定，完整构建调度程序可能会用过期数据覆盖按记录调度程序的更改。</p>
+	<p>需要注意的是，如果不使用 Cloudflare 针对 DNSSEC 的否定回答的<a href="https://blog.cloudflare.com/black-lies/">黑色谎言方法</a>，这种按记录架构都不可能实现。通常，为了正确地使用 DNSSEC 提供否定回答，必须对区域内的所有记录进行规范排序。这是为了维护从顶点记录到区域中所有记录的引用列表。使用这种否定回答的常规方法，已添加到区域的单个记录需要收集所有记录以确定其在此名称排序列表中的插入点。</p>
+	<h3 id="--2">错误</h3>
+	<p>我很希望能够写一篇一切顺利的 Cloudflare 博客；然而，情况绝非如此。错误会发生，但我们需要准备好对它们作出反应，并让自己做好准备，以便这一错误不会再次发生。</p>
+	<p>在本文的情况中，我们发现的主要错误与 Quicksilver 中旧记录的清理有关。使用完整的区域构建器，我们可以准确地知道数据库和 Quicksilver 中存在哪些记录。这使得编写和清理工作变得相当简单。 </p>
+	<p>引入按记录构建时，需要区别对待所有记录事件，例如创建、更新和删除。创建和删除相当简单，因为您只要从 Quicksilver 中添加或删除记录即可。由于我们的 PGQ 生成 Kafka 事件的方式，更新引入了一个无法预料的问题。记录更新只包含新记录信息，这意味着当记录名称更改时，我们无法知道要在 Quicksilver 中查询什么来清理旧记录。这意味着只要客户更改了 DNS 记录 API 中记录的名称，旧记录就不会被删除。最终，通过将这些特定的更新事件替换为创建和删除事件来解决此问题，以便区域构建器拥有必要的信息来清理过时的记录。</p>
+	<p>这些都不是能够简单完成的，但我们花费工程精力不断改进我们的软件，以便它随着 Cloudflare 的扩展而增长。当数以百万计的域依赖于我们时，改变 Cloudflare 这样一个基本的低级别部分是一项挑战。</p>
+	<h3 id="--3">结果</h3>
+	<p>如今，所有 DNS 记录 API 记录更改都被区域构建器视为按记录构建。正如我之前提到的，我们无法完全摆脱完整构建。但是，它们现在约占 DNS 构建总量的 13%。这 13% 对应于对 DNS 设置所做的更改，此更改需要了解整个区域的信息。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/05/image1-56.png" class="kg-image"></figure>
+	<p>当我们比较如下所示的两种构建类型时，我们可以看到按记录构建平均比完整构建快 <strong>150 倍</strong>。下面的构建时间包括数据库查询时间和 Quicksilver 写入时间。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/05/image2-51.png" class="kg-image"></figure>
+	<p>从那里，我们的记录通过 Quicksilver 传播到我们的全球网络。 </p>
+	<p>上面 150 倍的提升是相对于平均值而言的，但是我一开始提到的 4000 倍呢？可以想象，随着区域大小的增加，完整构建时间和按记录构建时间之间的差异也会增加。我使用了一个包含一百万条记录的测试区，并运行了几次按记录构建，然后运行了几次完整构建。结果如下表所示：</p>
+	<!--kg-card-begin: markdown-->
+	<table>
+		<thead>
+			<tr>
+				<th style="text-align:center"><strong>构建类型</strong></th>
+				<th style="text-align:center"><strong>构建时间（毫秒</strong>）</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td style="text-align:center">按记录 1</td>
+				<td style="text-align:center">6</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">按记录 2</td>
+				<td style="text-align:center">7</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">按记录 3</td>
+				<td style="text-align:center">6</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">按记录 4</td>
+				<td style="text-align:center">8</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">按记录 5</td>
+				<td style="text-align:center">6</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">完整 1</td>
+				<td style="text-align:center">34032</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">完整 2</td>
+				<td style="text-align:center">33953</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">完整 3</td>
+				<td style="text-align:center">34271</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">完整 4</td>
+				<td style="text-align:center">34121</td>
+			</tr>
+			<tr>
+				<td style="text-align:center">完整 5</td>
+				<td style="text-align:center">34093</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<p>我们可以看到，对于给出的五次按记录构建，构建时间不超过 8 毫秒。然而，在运行完整构建时，构建时间平均持续 34 秒。构建时间减少了 <strong>4250 倍</strong>！</p>
+	<p>考虑到平均大小区域和大型区域的完整构建时间，很明显所有 Cloudflare 客户都能从这种改进的性能中受益，并且随着区域大小的增加，这些好处只会增加。此外，我们的区域构建器使用更少的数据库和 Quicksilver 资源，这意味着其他 Cloudflare 系统能够以更高的容量运行。</p>
+	<h3 id="--4">后续步骤</h3>
+	<p>这里的结果非常有影响力，尽管我们认为我们可以做得更好。在未来，我们计划通过用区域设置构建替换它们来完全摆脱完整构建。除了所有记录之外，区域设置构建器不会获取区域设置，而是仅获取区域设置并通过 Quicksilver 将其传播到我们的全球网络。与按记录构建类似，由于区域设置的复杂性和接触它的参与者数量，这是一个艰巨的挑战。最终，如果能做到这一点，我们可以正式淘汰完整构建，并将其留在我们的 git 历史中，作为我们这些年来发展规模的纪念。 </p>
+	<p>此外，我们计划引入一个批处理系统，将记录更改收集到组中，以最大限度地减少我们对数据库和 Quicksilver 进行的查询次数。 <br>解决这些技术和运营挑战会让您兴奋吗？Cloudflare 的<a href="https://www.cloudflare.com/en-gb/careers/jobs/?department=Engineering&amp;amp;location=default" target="_blank">工程</a>和<a href="https://www.cloudflare.com/careers" target="_blank">其他团队</a>一直在招聘有才华的专家和一般技术师。</p>
+</div>

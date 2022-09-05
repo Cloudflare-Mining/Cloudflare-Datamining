@@ -1,0 +1,51 @@
+<div class="post-content lh-copy gray1">
+	<p>今天，我们很高兴宣布对代理<a href="https://grpc.io/" target="_blank">gRPC</a>提供Beta支持，gRPC是下一代协议，允许您大规模地构建API。借助Cloudflare上的gRPC，您可以轻松获得传统API的安全、可靠性和性能特性。快来Cloudflare控制面板的网络选项卡中注册Beta版gRPC吧。</p>
+	<p>gRPC已被证明是一种流行的新协议，可用于大规模构建API：它更高效，并提供了优越的双向流功能。然而，由于gRPC使用较新的技术，如HTTP/2，因此现有的安全和性能工具并不支持开箱即用的gRPC流量。这意味着，采用gRPC来支持API的客户必须在现代化和安全性、性能、可靠性之间做出选择。因为支持现代协议并确保人们能够安全、高效地操作它们已镌刻在我们的DNA里，所以我们着手解决这个问题。</p>
+	<p>将gRPC API放在Cloudflare上，您会立即获得Cloudflare附带的好处。是否担心将API暴露给不良行为者？您可以在Cloudflare添加安全功能，例如WAF和Bot管理。需要提升性能？只需开启Argo智能路由，即可减少首字节时间。或者您可以通过添加负载均衡器来提高可靠性。</p>
+	<p>自然而然的，将gRPC插入到<a href="https://blog.cloudflare.com/introducing-api-shield">API Shield</a>中，可以让您通过在边缘强制执行客户端身份验证和模式验证来增加更多安全性。</p>
+	<h3 id="-grpc-">什么是gRPC？</h3>
+	<p>诸如JSON-REST之类的协议多年来一直是面向API的互联网的生力军。其出色之处在于它们可以通过HTTP进行操作，其有效载荷是人类可读的，并且存在大量工具可以快速设置用于与另一台机器进行对话的API。然而，使这些协议流行的同样也有着弱点。JSON，例如，JSON在存储和传输方面效率很低，并且在计算机中对其进行解析也很昂贵。</p>
+	<p>2015年，谷歌推出了<a href="https://grpc.io/" target="_blank">gRPC</a>协议，这是一种快速高效的协议，它依赖于二进制协议缓冲区来序列化消息，然后再通过网络进行传输。这样可以防止（一般）人读取它们，但可以提高处理效率。gRPC在微服务时代变得越来越受欢迎，因为它巧妙地解决了上面列出的不足。</p>
+	<!--kg-card-begin: markdown-->
+	<table>
+		<thead>
+			<tr>
+				<th>JSON</th>
+				<th>协议缓冲区</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>{ “foo”: “bar” }</td>
+				<td>0b111001001100001011000100000001100001010</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<p>gRPC依赖于HTTP/2作为传输机制。这给试图部署通用安全技术（例如Web应用程序防火墙）的客户带来了一个问题，因为大多数反向代理解决方案（包括Cloudflare的HTTP堆栈，直到今天）都将HTTP请求降级为HTTP / 1.1，然后再发送给原始服务器。</p>
+	<p>除了数据中心中的微服务（gRPC的原始用例）之外，在许多其他情况下，gRPC的采用率也在增长。许多流行的移动应用程序拥有数百万的用户，它们都依赖于在手机和服务器之间来回发送的消息。我们已经看到许多客户使用gRPC API端点来为他们的移动应用程序建立API连接，此前他们已在数据中心内部使用同一gRPC API端点来与外部世界的客户端进行通信。</p>
+	<p>虽然这解决了大规模运行服务的效率问题，但它向互联网公开了这些客户基础设施的关键部分，因而引入了安全性和可靠性问题。今天我们将介绍Cloudflare对gRPC的支持，以确保和改善在互联网上运行gRPC API的体验。</p>
+	<h3 id="grpc-cloudflare-">gRPC + Cloudflare如何工作？</h3>
+	<p>我们团队为添加gRPC支持所做的工程工作由以下几个部分组成：</p>
+	<ol>
+		<li><strong>更改了请求处理管道的早期阶段，以识别</strong>来自线路的<strong>gRPC流量。</strong></li>
+		<li><strong>WAF中的附加功能可“理解”gRPC流量</strong>，确保在WAF中正确处理gRPC连接，包含检查初始gRPC连接请求的所有组件。</li>
+		<li>为gRPC流量<strong>添加对建立到客户源的HTTP/2连接的支持</strong>，从而可以通过我们的边缘代理gRPC。到原点的HTTP/2的支持目前仅限于gRPC流量，但我们希望尽快扩展通过HTTP/2代理回源的流量的范围。</li>
+	</ol>
+	<p>如果您有兴趣使用我们的工具来保护和加速您的API，这意味着什么呢？如果我们已完成了困难的工作，因此您只需在Cloudflare控制面板上点击一个按钮即可启用对gRPC的支持。</p>
+	<h3 id="-grpc--1">使用gRPC大规模构建移动应用</h3>
+	<p>为什么Cloudflare支持gRPC很重要？让我们将目光转向移动应用，来深入探究一个用例。应用程序需要快速、有效的与服务器交互的方式，以获取需要显示在手机上的信息。由于不涉及浏览器，因此它们依靠<em>API</em>来获取信息。API代表应用程序编程接口，并且是机器（例如您的电话和服务器）相互通信的一种标准化方式。</p>
+	<p>假设我们是一个拥有数千甚至数百万用户的移动应用程序开发者。有了这么多的用户，使用现代协议，gRPC，我们对计算基础设施的运行需求可以比像JSON-REST一样的老式协议所需的更少。但在互联网上赤裸裸地暴露这些端点真的很可怕。到目前为止，使用WAF保护gRPC端点不受应用层攻击，使用DDoS缓解工具防止容量攻击的选项还很少。现在，情况有所改观，Cloudflare将gRPC添加到了支持的协议集中。</p>
+	<p>借助Cloudflare上的gRPC，您将获得我们的安全性，可靠性和性能产品的好处：</p>
+	<ul>
+		<li>WAF可用于检查传入的gRPC请求。您可以使用托管规则或制定自己的规则。</li>
+		<li>负载均衡可以提高可靠性：配置多个gRPC后端来处理负载，让Cloudflare在它们之间分配负载。可以根据运行状况检查或负载以轮询调度算法进行后端分配选择。</li>
+		<li>Argo智能路由传输您的gRPC消息的速度比互联网路由它们的速度更快，从而可以提高性能。在互联网上绕开拥塞路由消息，可以让首字节时间平均减少30%。</li>
+	</ul>
+	<p>当然，所有这些都可以与<a href="https://blog.cloudflare.com/introducing-api-shield">API Shield</a>一起使用，API Shield是向任意API端点添加mTLS身份验证的简便方法。</p>
+	<h3 id="-grpc--2">启用gRPC支持</h3>
+	<p>要启用gRPC支持，请前往<a href="https://dash.cloudflare.com/" target="_blank">Cloudflare控制面板</a>，然后转到“网络”选项卡。您可以在此注册加入Beta试用。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/12/image-56.png" class="kg-image"></figure>
+	<p>我们在发布时的试用名额有限，但在接下来的几周内，我们将扩大开放范围。注册并转到gRPC支持后，您必须在DNS选项卡中的域上启用Cloudflare代理才能为gRPC API激活Cloudflare。</p>
+	<p>我们很高兴能够为大众提供gRPC支持，让您能够增加安全性、可靠性和性能优势，就像您以前通过Cloudflare获得的那样。点击一下即可启用。快来试用吧，我们期待着您的反馈！</p>
+</div>

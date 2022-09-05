@@ -1,0 +1,61 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image3-43.png" class="kg-image" alt="Cloudflare’s approach to handling BMC vulnerabilities."></figure>
+	<p>近年來，伺服器上的管理介面（例如基礎板管理控制器(BMC)）已成為勒索軟體、植入物和干擾作業等網路攻擊的目標。<a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-6260" target="_blank">Pantsdown</a> 和 <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-16649" target="_blank">USBAnywhere</a> 等常見 BMC 漏洞，與不頻繁的韌體更新相結合，伺服器就變得易受攻擊。</p>
+	<p>我們最近從信任的廠商處得知，我們在產品系列中使用的熱門 BMC 軟體出現了<a href="https://eclypsium.com/2022/05/26/quanta-servers-still-vulnerable-to-pantsdown/" target="_blank">新的重大漏洞</a>。以下是所發現內容的摘要、我們如何緩解衝擊，以及我們如何尋求避免讓這些類型的漏洞對 Cloudflare 和客戶造成影響。</p>
+	<h2 id="-">背景</h2>
+	<p>基礎板管理控制器是小型的專屬處理器，用於遠端監控和主機系統管理。此處理器與主機系統有多個連線，因此能夠監控硬體、更新 BIOS 韌體、為主機提供電源循環，還具備其他多種功能。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image1-63.png" class="kg-image"></figure>
+	<p>對 BMC 的存取可以是本機，在某些情況下也可以是遠端。遠端向量開啟時，可能會透過 PCI Express 或低管脚数 (LPC) 介面，從本機主機在 BMC 上安裝惡意軟體。BMC 上的軟體遭到入侵後，惡意軟體或間諜軟體就可以在伺服器上持續發動攻擊。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image2-2.gif" class="kg-image"></figure>
+	<p>根據<a href="https://nvd.nist.gov/vuln/detail/CVE-2019-6260" target="_blank">美國國家漏洞資料庫</a>，已經有兩個 BMC 晶片（<a href="https://www.aspeedtech.com/" target="_blank">ASPEED</a> AST2400 和 AST2500）實作了進階高效能匯流排 (AHB) 橋接器，從而允許從主機對 BMC 的實體位址空間任意進行讀取和寫入存取。這意味著，在伺服器上執行的惡意軟體也可以存取 BMC 的 RAM。</p>
+	<p>這些 BMC 漏洞足以讓勒索軟體傳播、伺服器磚化，以及資料遭竊。</p>
+	<h2 id="--1">受影響的版本</h2>
+	<p>由於在 BMC 中發現易受攻擊的軟體，已發現多個漏洞會影響 <a href="https://www.qct.io/product/index/Server/rackmount-server/1U-Rackmount-Server/QuantaGrid-D52B-1U" target="_blank">QuantaGrid D52B</a> 雲端伺服器。這些漏洞與暴露在 AST2400 和 AST2500 上的特定介面相關聯，且在 <a href="https://nvd.nist.gov/vuln/detail/CVE-2019-6260" target="_blank">CVE-2019-6260</a> 中有所說明。相關的易受攻擊介面包括：</p>
+	<ul>
+		<li>iLPC2AHB 橋接器 Pt I</li>
+		<li>iLPC2AHB 橋接器 Pt II</li>
+		<li>PCIe VGA P2A 橋接器</li>
+		<li>透過 X-DMA 往返任意 BMC 的 <a href="https://en.wikipedia.org/wiki/Direct_memory_access" target="_blank">DMA</a></li>
+		<li><a href="https://en.wikipedia.org/wiki/Universal_asynchronous_receiver-transmitter" target="_blank">UART</a> 型 SoC 偵錯介面</li>
+		<li>LPC2AHB 橋接器</li>
+		<li>PCIe BMC P2A 橋接器</li>
+		<li>看門狗設定</li>
+	</ul>
+	<p>攻擊者可能能夠直接使用 SoCFlash，透過頻內 LPC 或 BMC 偵錯通用非同步接收傳輸器 (UART) 序列主控台來更新 BMC。雖然這可能被認為是發生全面損毀時的常用路徑，但其實是因為使用任何開放式介面進行刷新工作而造成 SoCFlash 內的濫用。</p>
+	<h2 id="--2">緩解與回應</h2>
+	<h3 id="--3">更新的韌體</h3>
+	<p>我們已與其中一位製造商 Quanta 聯繫，以驗證系統子集中的現有韌體已針對這些漏洞進行實際修補。雖然我們有部分韌體版本並非易受攻擊，但其他版本是。我們已在產品系列中受影響的 BMC 上發佈、測試和部署一項修補程式。</p>
+	<p>Cloudflare 安全性和基礎結構團隊也主動與其他製造商合作，以驗證其自有的 BMC 修補程式不會因為這些韌體漏洞與介面而變得明確易受攻擊。</p>
+	<h3 id="-bmc-">減少 BMC 遠端介面的暴露</h3>
+	<p>我們資料中心內的標準做法是透過實作網路區隔來區分不同的流量平面。我們的頻外網路不會對外部世界暴露，而且只能在其各自的資料中心內存取。對任何管理網路的存取權限都會經歷一個縱深防禦方法，因此會限制對跳板主機的連線能力，而且必須透過我們的 Zero Trust <a href="https://www.cloudflare.com/cloudflare-one/" target="_blank">Cloudflare One</a> 服務進行驗證/授權。</p>
+	<h3 id="-bmc--1">減少 BMC 本機介面的暴露</h3>
+	<p>主機內的應用程式限制為能夠對 BMC 進行對外呼叫的應用程式。此作法是為了限制可從主機對 BMC 執行的作業，並允許安全的頻內更新和使用者空間記錄與監控。</p>
+	<h3 id="--4">不要使用預設密碼</h3>
+	<p>這對大多數公司而言似乎是種常識，但是我們仍然會遵循一種標準做法：不僅變更 BMC 軟體隨附的預設使用者名稱與密碼，也要停用預設帳戶以避免任何被利用的機會。任何靜態帳戶都必須遵循定期密碼變換。</p>
+	<h3 id="bmc-">BMC 記錄與稽核</h3>
+	<p>我們預設會記錄 BMC 上的所有活動。所擷取的記錄包括：</p>
+	<ul>
+		<li>驗證（成功、未成功）</li>
+		<li>授權（使用者/服務）</li>
+		<li>介面（SOL、CLI、UI）</li>
+		<li>系統狀態（電源開啟/關閉、重新開機）</li>
+		<li>系統變更（韌體更新、刷新方法）</li>
+	</ul>
+	<p>這樣，我們能夠確認未偵測到任何惡意活動。</p>
+	<h2 id="bmc--1">BMC 的未來</h2>
+	<p>Cloudflare 會定期與多個原始設計製造商 (ODM) 合作，以依據我們自己的規格來製作效能最高、有效率且安全的運算系統。用於我們基礎板管理控制器的標準處理器通常與專屬韌體一起出貨，但是該專屬韌體的透明度較低，我們和 ODM 也比較難進行維護。我們相信，我們於世界各地超過 270 個城市中運作之系統的所有元件都將得到改進。</p>
+	<h3 id="openbmc">OpenBMC</h3>
+	<p>我們正在透過 <a href="https://github.com/openbmc/openbmc" target="_blank">OpenBMC</a> 追求進步；它是一種開放原始碼韌體，適用於我們支援的基礎板管理控制器。根據 Yocto Project（適用於嵌入系統上之 Linux 的工具鏈），OpenBMC 將可讓我們依據我們的規格，在最新的 Linux 核心功能集基礎上指定、建置和設定自有的韌體，與實體硬體和 ODM 類似。</p>
+	<p>OpenBMC 韌體將能夠啟用：</p>
+	<ul>
+		<li>最新、穩定且經修補的 Linux 核心</li>
+		<li>內部管理的 TLS 憑證，可在我們隔離的管理網路中進行安全且可信任的通訊</li>
+		<li>精細的憑證管理</li>
+		<li>對於修補和關鍵更新的更快回應時間</li>
+	</ul>
+	<p>雖然其中有許多功能是以社群為導向，但 Pantsdown 這類的漏洞會<a href="https://gerrit.openbmc-project.xyz/c/openbmc/meta-phosphor/+/13290/5/aspeed-layer/recipes-bsp/u-boot/files/0001-aspeed-Disable-unnecessary-features.patch" target="_blank">很快獲得修補</a>。</p>
+	<h3 id="--5">延伸安全開機</h3>
+	<p>您可能已經讀過有關我們最近透過<a href="https://blog.cloudflare.com/anchoring-trust-a-hardware-secure-boot-story/">硬體信任根目錄</a>保護開機程序的成就，但是 BMC 有其自有的開機程序，經常會在系統獲得電源時立即啟動。我們使用較新版本的 BMC 晶片，再加上運用<a href="https://docs.microsoft.com/en-us/azure/security/fundamentals/project-cerberus" target="_blank">頂尖</a><a href="https://axiado.com/" target="_blank">安全共同處理器</a>，可讓我們在 BMC/OpenBMC 韌體上驗證加密簽章，藉此在載入 UEFI 之前延伸安全開機功能。將安全開機鏈延伸至能夠為系統提供電源的第一個裝置上，我們就能夠大幅減少可用來使伺服器停機之惡意植入物的影響。</p>
+	<h2 id="--6">結論</h2>
+	<p>雖然我們最終得以透過 Quanta 進行韌體更新，我們的團隊也採取驗證和修補產品系列等快速行動來快速解決這個漏洞，我們仍會持續透過 OpenBMC 進行創新，並保護信任根目錄的安全，以盡可能確保我們產品系列安全無虞。我們非常感謝合作夥伴快速採取行動，也很樂意報告任何風險以及我們的緩解措施，以確保您可以信任我們，因為我們非常嚴正看待您的網路安全。</p>
+</div>

@@ -1,0 +1,90 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/Cloudflare-Gateway-now-protects-teams--wherever-they-are-thumbnail-top-page.png" class="kg-image"></figure>
+	<p>Im <a href="https://blog.cloudflare.com/introducing-cloudflare-for-teams/">Januar 2020</a> haben wir „Cloudflare for Teams“ eingeführt&amp;nbsp;– eine neue Möglichkeit, Unternehmen und ihre Mitarbeiter weltweit zu schützen, ohne dass die Performance darunter leidet. Im Mittelpunkt von Cloudflare for Teams stehen zwei Kernprodukte: Cloudflare Access und Cloudflare Gateway.</p>
+	<p><a href="https://blog.cloudflare.com/protect-your-team-with-cloudflare-gateway/">Im März 2020</a> brachte Cloudflare das erste Feature von Cloudflare Gateway auf den Markt, eine sichere DNS-Filterlösung, die auf dem weltweit schnellsten DNS-Resolver basiert. Durch die DNS-Filterfunktion von Gateway werden DNS-Abfragen an potenziell schädliche Ziele (die mit Bedrohungen wie Malware, Phishing oder Ransomware in Verbindung stehen) zum Schutz der Nutzer blockiert. Unternehmen können die Routereinstellungen vom eigenen Büro aus ändern und in etwa fünf Minuten das gesamte Team schützen.</p>
+	<p>Kurz nach dem Start von Gateway begann die Umstellung ganzer Unternehmen auf Remote-Arbeit. Das anfangs noch provisorische Home Office ist in den letzten Monaten zum Dauerzustand geworden. Nutzer und Daten müssen nun nicht einfach nur in einem Büro geschützt werden. Nutzer- und Geräteverwaltung hat sich auf hunderte oder gar tausende Standorte verteilt.</p>
+	<p>Auch die Sicherheitsbedrohungen im Internet haben sich weiterentwickelt. Phishing-Kampagnen und Malware-Angriffe haben in den letzten sechs Monaten zugenommen. Um diese Arten von Angriffen zu erkennen, müssen Sie tiefer blicken als nur auf die DNS-Abfrage.</p>
+	<p>Wir freuen uns, Ihnen heute zwei neue Features von Cloudflare Gateway vorstellen zu können, mit denen diese neuen Probleme gelöst werden. Erstens integriert sich Cloudflare Gateway jetzt in den <a href="https://blog.cloudflare.com/warp-for-desktop">Desktop-Client von Cloudflare WARP</a>. Wir haben WARP auf der Grundlage von WireGuard entwickelt, einem modernen, effizienten VPN-Protokoll, das viel effizienter und flexibler ist als herkömmliche VPN-Protokolle.</p>
+	<p>Zweitens wird Cloudflare Gateway zu einem Secure Web Gateway und führt eine L7-Filterung durch, um den Traffic auf Bedrohungen zu untersuchen, die sich unter der Oberfläche verbergen. Wie unsere DNS-Filterung und unser Resolver 1.1.1.1 basieren beide Features auf all dem, was wir durch das Angebot von Cloudflare WARP für Millionen von Nutzern weltweit gelernt haben.</p>
+	<h3 id="eine-verteilte-belegschaft-sch-tzen">Eine verteilte Belegschaft schützen</h3>
+	<p>Unsere Kunden haben weitgehend verteilte Belegschaften, ihre Mitarbeiter sind teilweise in Firmenbüros, teilweise im Home Office. Aufgrund der Pandemie ist dies auf absehbare Zeit ihr Arbeitsumfeld.</p>
+	<p>Dass sich Nutzer nicht an festen, bekannten Standorten befinden (wobei Remote-Arbeit nur ausnahmsweise erlaubt ist), hat bereits überlastete IT-Teams vor neue Herausforderungen gestellt:</p>
+	<ol>
+		<li>Bei VPNs wird der Fernzugriff auf interne Anwendungen nach dem Prinzip „alles oder nichts“ geregelt. Unsere Antwort darauf sind Cloudflare Access und unser Zero-Trust-Ansatz für die Sicherheit interner Anwendungen und <a href="https://blog.cloudflare.com/cloudflare-access-for-saas/">jetzt auch für SaaS-Anwendungen</a>.</li>
+		<li>VPNs sind langsam und teuer. Um Inhalts- und Sicherheitsrichtlinien des Unternehmens zum Schutz der externen Nutzer durchzusetzen, setzte man bisher primär auf Backhauling des Traffics zu einer zentralisierten Sicherheitsgrenze. Cloudflare Gateway wurde entwickelt, um dieses Problem für unsere Kunden zu lösen.</li>
+	</ol>
+	<p>Bis heute bot Cloudflare Gateway unseren Kunden Sicherheit durch DNS-Filterung. Obwohl dies ein anwendungsunabhängiges Maß an Sicherheit und Inhaltskontrolle bietet, stellt es unsere Kunden dennoch vor einige Herausforderungen:</p>
+	<ol>
+		<li>Kunden müssen die Quell-IP-Adresse aller Standorte registrieren, die DNS-Abfragen an Gateway senden, damit der Traffic ihres Unternehmens für die Durchsetzung von Richtlinien identifiziert werden kann. Dies ist für größere Unternehmen mit Hunderten von Standorten mindestens mühsam, wenn nicht gar unmöglich.</li>
+		<li>DNS-Richtlinien sind relativ grob, und sie werden pro Domain nach dem Prinzip „alles oder nichts“ umgesetzt. Unternehmen fehlt beispielsweise die Möglichkeit, den Zugriff auf einen Cloudspeicher-Anbieter zu erlauben, aber den Download schädlicher Dateien von bekannten böswilligen URLs zu blockieren.</li>
+		<li>Unternehmen, die IP-Adressen registrieren, verwenden häufig NAT-Traffic (Network Address Translation), um öffentliche IP-Adressen für viele Nutzer freizugeben. Dies führt dazu, dass die Sichtbarkeit von DNS-Aktivitätsprotokollen auf individueller Nutzerebene verloren geht. IT-Sicherheits-Administratoren können zwar sehen, dass eine böswillige Domain blockiert wurde, aber sie brauchen zusätzliche forensische Tools, um ein potenziell kompromittiertes Gerät aufzuspüren.</li>
+	</ol>
+	<p>Ab heute machen wir Cloudflare Gateway zu mehr als nur einer sicheren DNS-Filterungslösung: wir koppeln den Cloudflare-for-Teams-Client mit einer Cloud-L7-Firewall. Jetzt können unsere Kunden ein weiteres Hardware-Gerät innerhalb ihrer zentralisierten Sicherheitsgrenze ausmustern und ihren Nutzern direkt von der Cloudflare-Edge aus Sicherheit auf Enterprise-Niveau bieten.</p>
+	<p><strong>Nutzer schützen und den Verlust von Unternehmensdaten verhindern</strong></p>
+	<p>DNS-Filterung bietet eine grundlegende Sicherheitsebene für ganze Systeme und sogar Netzwerke, da alle Anwendungen DNS-Filterung für die Internet-Kommunikation nutzen. Ein anwendungsspezifischer Schutz bietet jedoch eine granulare Richtliniendurchsetzung und Transparenz darüber, ob der Traffic als böswillig eingestuft werden sollte.</p>
+	<p>Heute erweitern wir den Schutz, den wir durch DNS-Filterung bieten, um eine L7-Firewall, mit der unsere Kunden Sicherheits- und Inhaltsrichtlinien auf HTTP-Traffic anwenden können. Dies bietet Administratoren ein besseres Werkzeug, um Nutzer durch präzisere Steuerung in HTTP-Sitzungen zu schützen und Einblicke in die Richtliniendurchsetzung zu erhalten. Ebenso wichtig ist es, dass unsere Kunden mehr Kontrolle darüber erhalten, wo sich ihre Daten befinden. Durch die Erstellung von Richtlinien können Kunden festlegen, ob eine Anfrage zugelassen oder blockiert wird, und zwar je nach Dateityp, je nachdem, ob die Datei hoch- oder heruntergeladen werden soll und ob das Ziel ein zulässiger Cloudspeicher-Anbieter des Unternehmens ist.</p>
+	<p>Unternehmen schützen den Internet-Traffic ihrer Nutzer, wo sich diese auch befinden, indem sie sich über Cloudflare for Teams mit Cloudflare verbinden. Dieser Client bietet eine schnelle, sichere Verbindung zum nächstgelegenen Cloudflare-Rechenzentrum und stützt sich auf dieselbe Cloudflare-WARP-Anwendung, über die bereits Millionen von Nutzern weltweit verbunden sind. Da der Client unter der Motorhaube dieselbe WARP-Anwendung verwendet, können Unternehmen sicher sein, dass sie in großem Umfang getestet wurde und Sicherheit gewährleisten kann, ohne Kompromisse bei der Performance eingehen zu müssen. Cloudflare WARP optimiert die Netzwerk-Performance durch den Einsatz von WireGuard für die Verbindung zum Cloudflare-Edge.</p>
+	<p>Das Ergebnis ist eine sichere, leistungsstarke Verbindung für Enterprise-Nutzer, wo diese sich auch befinden, ohne dass ein Backhaul des Netzwerk-Traffics zu einer zentralisierten Sicherheitsgrenze erforderlich ist. Durch die Verbindung mit Cloudflare-Gateway über den Cloudflare for Teams-Client sind Enterprise-Nutzer durch Filterrichtlinien geschützt, die auf den gesamten ausgehenden Internet-Traffic angewendet werden. Das schützt Nutzer beim Surfen im Internet und verhindert den Verlust von Unternehmensdaten.</p>
+	<p>Cloudflare Gateway unterstützt jetzt HTTP-Traffic-Filterung basierend auf einer Vielzahl von Kriterien, darunter:</p>
+	<!--kg-card-begin: markdown-->
+	<table>
+		<thead>
+			<tr>
+				<th>Kriterien</th>
+				<th>Beispiel</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>URL, path, and/or query string</td>
+				<td><a href="https://www.myurl.com/path?query" target="_blank">https://www.myurl.com/path?query</a></td>
+			</tr>
+			<tr>
+				<td>HTTP method</td>
+				<td>GET, POST, etc.</td>
+			</tr>
+			<tr>
+				<td>HTTP response code</td>
+				<td>500</td>
+			</tr>
+			<tr>
+				<td>File type and file name</td>
+				<td>myfilename.zip</td>
+			</tr>
+			<tr>
+				<td>MIME type</td>
+				<td>application/zip</td>
+			</tr>
+			<tr>
+				<td>URL security or content category</td>
+				<td>Malware, phishing, adult themes</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<p></p>
+	<p>Zur Ergänzung der DNS-Filterrichtlinien können IT-Administratoren jetzt L7-Firewall-Regeln erstellen, um granulare Richtlinien auf HTTP-Traffic anzuwenden.</p>
+	<p>Ein Administrator kann beispielsweise zulassen, dass Nutzer sinnvolle Teile von Reddit aufrufen können, aber unerwünschte Subreddits blockieren.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image2-12.png" class="kg-image"></figure>
+	<p>Oder, um Datenverluste zu verhindern, könnte ein Administrator eine Regel erstellen, nach der Nutzer Inhalte von beliebten Cloudspeicheranbietern abrufen können, und gleichzeitig verbieten, ausgewählte Dateitypen von Unternehmensgeräten aus hochzuladen.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image6-7.png" class="kg-image"></figure>
+	<p>Ein anderer Administrator möchte möglicherweise verhindern, dass böswillige Dateien durch ZIP-Datei-Downloads eingeschleust werden. Also kann er eine Regel konfigurieren, um Downloads komprimierter Dateitypen zu blockieren.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image5-6.png" class="kg-image"></figure>
+	<p>Nach der Anwendung unserer DNS-Filterungskategorien zum Schutz interner Nutzer kann ein Administrator Sicherheitsbedrohungen auf Grundlage der Klassifizierung vollständiger URLs einfach blockieren. Malware-Nutzlasten werden häufig über Cloudspeicher verbreitet. Mit DNS-Filterung muss ein Administrator entscheiden, ob er einem bestimmten Speicheranbieter den Zugriff auf die gesamte Domain erlaubt oder verweigert. URL-Filterung gibt Administratoren die Möglichkeit, Anfragen nach den genauen URLs zu filtern, auf denen sich die Nutzlasten der Malware befinden, sodass Kunden weiterhin die Vorteile des jeweiligen Speicheranbieters nutzen können.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image7-4.png" class="kg-image"></figure>
+	<p>Und da all dies mit dem Cloudflare-for-Teams-Client möglich wird, erhalten Remote-Mitarbeiter mit Roaming-Clients diesen Schutz, wo sie sich auch befinden, über eine sichere Verbindung zum nächsten Cloudflare-Rechenzentrum.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/10/image4-7.png" class="kg-image"></figure>
+	<p>Wir freuen uns, dass wir Teams beim Internetsurfen schützen können, indem wir HTTP-Traffic überprüfen. Aber was ist mit Nicht-HTTP-Traffic? Im Laufe dieses Jahres werden wir das Cloudflare Gateway um die Unterstützung von IP-, Port- und Protokollfilterung mit einer Cloud-L4-Firewall erweitern. Dadurch können Administratoren Regeln auf den gesamten internetgebundenen Traffic anwenden, z. B. Regeln, die ausgehendes SSH erlauben, oder Regeln, die festlegen, ob HTTP-Traffic, der auf einem nicht standardmäßigen Port ankommt, zur HTTP-Inspektion an die L7-Firewall gesendet werden soll.</p>
+	<p>Zum Einstieg können Administratoren mit Cloudflare Gateway Richtlinien aufstellen, die den DNS- und HTTP-Traffic aller Nutzer in einer Unternehmen filtern. Dies schafft eine hervorragende Sicherheitsgrundlage. Ausnahmen gehören zur Realität aber dazu: Ein einheitlicher Ansatz für die Durchsetzung von Inhalten und Sicherheitsrichtlinien entspricht selten den spezifischen Bedürfnissen aller Nutzer.</p>
+	<p>Um dieses Problem anzugehen, arbeiten wir an der Unterstützung von Regeln basierend auf Nutzer- und Gruppenidentität, indem wir Cloudflare Access in den bestehenden Identitätsanbieter eines Kunden integrieren. Dadurch können Administratoren granulare Regeln erstellen, die auch den Kontext um den Nutzer herum auswerten, z. B:</p>
+	<ul>
+		<li>Allen Nutzern den Zugang zu sozialen Medien verweigern. Aber wenn Max Mustermann zur Marketinggruppe gehört, kann er auf diese Seiten zugreifen, um seine Arbeit zu erledigen.</li>
+		<li>Erika Mustermann nur die Verbindung zu bestimmten SaaS-Anwendungen über Cloudflare Gateway oder einen bestimmten <a href="https://blog.cloudflare.com/tanium-cloudflare-teams/">Gerätezustand</a> erlauben.</li>
+	</ul>
+	<p>Dass die Identität die Grundlage dafür bilden muss, Richtlinien durchzusetzen und Protokolle einzusehen, ergibt sich aus der Tatsache, dass die Nutzer nicht an feste, bekannte Arbeitsplätze gebunden sind. Deshalb integrieren wir beim Cloudflare-for-Teams-Client die Identität und schützen so die Nutzer überall, wo sie sind.</p>
+	<h3 id="was-kommt-als-n-chstes">Was kommt als Nächstes?</h3>
+	<p>Niemand gründet ein Unternehmen, um sich dann mit den Einzelheiten von Informationstechnologie und Sicherheit zu befassen. Gründerinnen und Gründer haben eine Vision und ein Produkt oder eine Dienstleistung, die sie mit der Welt teilen möchten. Wir wollen dafür sorgen, dass sie sich wieder darauf konzentrieren können. Wir können dazu beitragen, die Implementierung fortschrittlicher Sicherheitstools zu vereinfachen, und dadurch Sicherheitstools, die normalerweise nur größeren, anspruchsvolleren Unternehmen vorbehalten sind, für Teams jeder Größe zugänglich machen.</p>
+	<p>Die Einführung sowohl des Cloudflare-for-Teams-Clients als auch der L7-Firewall bildet die Grundlage für ein fortschrittliches sicheres Web-Gateway mit Integrationen wie Virus-Scanner, CASB und Remote Browser Isolation, die alle an der Cloudflare-Edge ausgeführt werden. Wir freuen uns, Ihnen diesen Vorgeschmack auf die Zukunft geben zu können, die unser Team gestaltet hat – und wir fangen gerade erst an.</p>
+	<h3 id="jetzt-einsteigen">Jetzt einsteigen</h3>
+	<p>All diese neuen Funktionen stehen Ihnen heute zur Verfügung. Die L7-Firewall ist in den Plänen Gateway Standalone, Teams Standard und Teams Enterprise erhältlich. Zum Einstieg können Sie sich für ein <a href="https://dash.cloudflare.com/sign-up/teams" target="_blank">Gateway-Konto anmelden</a> und nach der <a href="https://developers.cloudflare.com/gateway/about" target="_blank">Onboarding-Anleitung</a> vorgehen.</p>
+</div>

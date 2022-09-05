@@ -1,0 +1,75 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/08/API-tokens@2x.png" class="kg-image"></figure>
+	<h2 id="les-api-chez-cloudflare"><strong>Les API chez Cloudflare</strong></h2>
+	<p>Aujourd'hui, nous annonçons la disponibilité générale des jetons API. C’est un moyen évolutif et plus sécurisé d'interagir avec l’API Cloudflare. Dans le cadre de notre travail d’amélioration d’Internet, Cloudflare s'efforce de simplifier la gestion de la présence du client à la périphérie. C’est en partie en veillant à ce que tous nos produits et services soient configurables par API. Les clients, depuis nos partenaires aux entreprises, en passant par les développeurs, souhaitent automatiser la gestion de Cloudflare. Parfois, cela se fait directement via notre <a href="https://api.cloudflare.com/" target="_blank">API </a>, à d’autres moments via un logiciel open source que nous aidons à maintenir comme notre <a href="https://www.terraform.io/docs/providers/cloudflare/" target="_blank">fournisseur Terraform </a> ou <a href="https://github.com/cloudflare/cloudflare-go" target="_blank">la bibliothèque Cloudflare-Go</a>. Il est essentiel que les clients qui automatisent la gestion de Cloudflare puissent conserver dans toute la mesure du possible la sécurité de leurs services Cloudflare.</p>
+	<h2 id="privil-ge-minimum-et-pourquoi-cela-est-important"><strong>Privilège minimum et pourquoi cela est important</strong></h2>
+	<p>Il est difficile de sécuriser des systèmes logiciels. Limiter ce qu'un logiciel peut faire est une bonne défense pour empêcher les erreurs ou les actions malveillantes d'avoir un impact plus important que leur impact potentiel. Le <a href="https://en.wikipedia.org/wiki/Principle_of_least_privilege" target="_blank">principe du privilège minimum</a> aide à déterminer le degré d'accès qu'un système donné devra avoir pour effectuer des actions. Formulé à l'origine par Jérôme Saltzer, « Chaque programme et chaque utilisateur du système disposant de privilèges doivent opérer en utilisant le minimum de privilège nécessaire pour effectuer leur travail. » Dans le cas de Cloudflare, de nombreux clients ont différents domaines de routage du trafic en s’appuyant sur de nombreux services différents. Si un acteur malveillant obtient un accès non autorisé à un système, il peut utiliser tout accès dont ce système dispose pour causer d'autres dommages ou voler des informations supplémentaires.</p>
+	<p>Voyons comment les capacités des jetons API s'inscrivent dans le principe du privilège minimum.</p>
+	<h2 id="concernant-les-jetons-api"><strong>Concernant les jetons API</strong></h2>
+	<p>Les jetons API offrent trois possibilités principales :</p>
+	<ol>
+		<li>Portée des jetons API par ressource Cloudflare</li>
+		<li>Portée des jetons API par permission</li>
+		<li>La capacité de fournir plusieurs jetons API</li>
+	</ol>
+	<p>Détaillons chacune de ces capacités.</p>
+	<h3 id="attribuer-les-jetons-api-par-ressource-cloudflare"><strong>Attribuer les jetons API par ressource Cloudflare</strong></h3>
+	<p>Cloudflare sépare la configuration de service par zone, généralement équivalente à un domaine. En outre, certains clients ont plusieurs comptes, dont chacun possède de nombreuses zones. Il est important que, lorsqu’un accès API est accordé à un service, celui ci ne soit que pour les ressources et les zones de comptes pertinentes pour le travail à accomplir. La portée des jetons API peut être étendue pour couvrir uniquement des comptes spécifiques et des zones particulières. Par exemple, si vous avez une zone de préproduction et une zone de production, alors un jeton API peut être limité pour ne pouvoir affecter que la zone de préproduction et ne pas avoir accès à la zone de production.</p>
+	<h3 id="-tendue-des-jetons-api-par-permission"><strong>Étendue des jetons API par permission</strong></h3>
+	<p>La possibilité de définir l’étendue d’un jeton API à une zone spécifique est parfaite, mais dans une zone il existe de nombreux services différents qui peuvent être configurés : les règles de pare-feu, les règles de page et les équilibreurs de charge, pour n'en nommer que quelques-uns. Si un client dispose d'un service qui ne devrait pouvoir créer de nouvelles règles de pare-feu qu'en réponse à des modèles de trafic, le fait d'autoriser également ce service à modifier les enregistrements DNS constitue également une violation du privilège minimum. Les jetons API vous permettent de définir l’étendue de chaque jeton à une autorisation spécifique. Plusieurs autorisations peuvent être combinées pour créer des jetons personnalisés pour répondre à des cas d'utilisation spécifiques.</p>
+	<h3 id="jetons-api-multiples"><strong>Jetons API multiples</strong></h3>
+	<p>Si vous utilisez Cloudflare pour protéger et accélérer plusieurs services, il se peut qu'il y ait des changements d’API sur Cloudflare à partir de plusieurs emplacements : différents serveurs, VM, conteneurs ou Workers. La création d'un jeton API attribué à un service signifie que chaque service est isolé des changements apportés par un autre. Si un jeton API fuit ou doit être introduit, il n'y aura aucun impact sur les jetons API des autres services. En outre, les capacités mentionnées précédemment signifient que chaque service peut être étendu aux actions et ressources strictement nécessaires. Cela permet aux clients de mieux mettre en pratique le principe de privilège minimum pour accéder à Cloudflare par l’API.</p>
+	<p>Maintenant, nous allons voir comment créer un jeton API et l'utiliser.</p>
+	<h2 id="utilisation-des-jetons-api"><strong>Utilisation des jetons API</strong></h2>
+	<p>Pour créer votre premier jeton API, allez dans la section ‘API Tokens’ (Jetons API) de votre profil utilisateur que vous trouverez ici : <a href="https://dash.cloudflare.com/profile/api-tokens" target="_blank">dash.cloudflare.com/profile/api-tokens</a></p>
+	<p>1. Dans cette page, vous trouverez à la fois une liste de tous vos jetons API en plus de votre clé Global API et de votre clé Origin CA.</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/08/api_1_delay.gif" class="kg-image">
+		<figcaption>Comment commencer avec les jetons API - Créer un jeton</figcaption>
+	</figure>
+	<p>Pour créer votre premier jeton API, sélectionnez « Create Token » (Créer un jeton).</p>
+	<hr>
+	<p>2. Sur l'écran de création, il y a deux façons de créer votre jeton. Vous pouvez le créer à partir de rien, grâce à l'option « Custom », ou vous pouvez commencer avec un modèle prédéfini en sélectionnant « Start with a template » (Démarrer avec un modèle).</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/08/api_2_delay.gif" class="kg-image">
+		<figcaption>Sélection du modèle de jeton API</figcaption>
+	</figure>
+	<p>Dans ce cas, nous utiliserons le modèle « Edit zone DNS » (Modifier la zone DNS) pour créer un jeton API qui peut modifier les enregistrements DNS d'une seule zone.</p>
+	<hr>
+	<p>3. Une fois le modèle sélectionné, nous devons choisir une zone pour que le jeton API soit adapté. Notez que l'autorisation de modification DNS était déjà présélectionnée.</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/08/api_2_delay.gif" class="kg-image">
+		<figcaption>Spécifiez la zone pour laquelle le jeton sera en mesure de contrôler le DNS</figcaption>
+	</figure>
+	<p>Dans ce cas, « garrettgalow.com » est sélectionnée comme zone Cloudflare pour laquelle le jeton API pourra modifier les enregistrements DNS.</p>
+	<hr>
+	<p>4. Une fois que je sélectionne « Continuer vers le résumé », j’ai la possibilité de revoir ma sélection. Dans ce cas, les ressources et les autorisations sont assez simples. Mais cela vous permet de vous assurer que vous octroyez exactement au jeton API le niveau approprié de privilège avant de le créer.</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/08/api_4_delay.gif" class="kg-image">
+		<figcaption>Résumé du jeton - confirmation</figcaption>
+	</figure>
+	<hr>
+	<p>5. Une fois créé, le jeton API est présenté. Cet écran est la seule fois où la clé secrète vous sera présentée, alors assurez-vous de la mettre en lieu sûr ! Toute personne connaissant cette clé secrète peut effectuer les actions autorisées sur les ressources spécifiées. Donc, protégez-la comme un mot de passe. Dans la copie d'écran ci-dessous, j'ai mis la clé secrète dans une boîte noire pour des raisons évidentes. S'il vous arrive de perdre la clé secrète, vous pourrez toujours la régénérer à partir de la table de jetons API, afin que vous n'ayez pas à configurer à nouveau toutes les autorisations.</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/08/api_5_success.png" class="kg-image">
+		<figcaption>Écran de fin de création de jeton avec la clé secrète du jeton</figcaption>
+	</figure>
+	<p>En plus de la clé secrète proprement dite, cet écran fournit une requête curl d’exemple qui peut être utilisée pour vérifier que le jeton a bien été créé. Il fournit également un exemple de la façon dont le jeton doit être utilisé pour toutes les requêtes HTTP directes. Avec les jetons API, nous suivons maintenant la <a href="https://tools.ietf.org/html/rfc6750#section-2.1" target="_blank">norme RFC Autorisation Bearer</a>. En appelant cette API, nous voyons une réponse positive nous indiquant que le jeton est valide et actif :</p>
+	<pre><code class="language-js">~$ curl -X GET "https://api.cloudflare.com/client/v4/user/tokens/verify" \
+&gt;      -H "Authorization: Bearer vh9awGupxxxxxxxxxxxxxxxxxxx" \
+&gt;      -H "Content-Type:application/json" | jq
+
+{
+  "result": {
+    "id": "ad599f2b67cdccf24a160f5dcd7bc57b",
+    "status": "active"
+  },
+  "success": true,
+  "errors": [],
+  "messages": [
+    {
+      "code": 10000,
+      "message": "This API Token is valid and active",
+      "type": null
+    }
+  ]
+}</code></pre>
+	<h2 id="que-va-t-il-se-passer-ensuite"><strong>Que va-t-il se passer ensuite</strong></h2>
+	<p>Pour tous ceux qui utilisent l’API Cloudflare, nous vous recommandons, à l’avenir, de passer à l'utilisation de jetons API au lieu du système précédent les clés API. Avec cette annonce, notre<a href="https://www.terraform.io/docs/providers/cloudflare/" target="_blank">fournisseur Terraform</a>, la <a href="https://github.com/cloudflare/cloudflare-go" target="_blank">bibliothèque Cloudflare-Go</a> et le <a href="https://github.com/cloudflare/Cloudflare-WordPress" target="_blank">plug-in WordPress</a> sont tous mis à jour pour la compatibilité avec les jetons API. D'autres bibliothèques recevront bientôt des mises à jour. Les jetons API et clés API seront pris en charge pour le moment pour que les clients puissent migrer en toute sécurité. Nous avons d’autres capacités prévues pour les jetons API, afin de mieux protéger comment et quand ces jetons sont utilisés. Alors, restez à l'écoute pour les annonces futures !</p>
+	<p>Dites-nous ce que vous pensez et ce que vous aimeriez voir ensuite en ce qui concerne la sécurité de l'API sur la <a href="https://community.cloudflare.com/" target="_blank">Communauté Cloudflare</a>.</p>
+</div>

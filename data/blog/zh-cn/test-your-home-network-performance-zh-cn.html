@@ -1,0 +1,27 @@
+<div class="post-content lh-copy gray1">
+	<p>许多人被迫居家办公，<a href="https://blog.cloudflare.com/recent-trends-in-internet-traffic/">消费者 ISP 的负载随之变重</a>。您可能会问自己：我的 ISP 在流量变大时表现如何？今天，我们向普通大众推出 speed.cloudflare.com，为您提供富有意义的见解来帮助您准确了解网络运行情况。</p>
+	<p>我们看到了一个大变迁，访问互联网的用户<a href="https://blog.cloudflare.com/covid-19-impacts-on-internet-traffic-seattle-italy-and-south-korea/">从聚拢于繁忙的写字楼区域变为分散到都市的各处</a>。</p>
+	<p>尽管市面上有大量测速工具，但无一能给您精确的见解，您无法了解它们如何进行测量以及它们如何映射为实际的性能。借助 <a href="https://speed.cloudflare.com/" target="_blank">speed.cloudflare.com</a>，您可以深入了解正在测量的内容，以及我们如何精确计算网络连接的评分。最重要的是，如果您想自己进行分析，也可以从工具内部轻松下载测量值。</p>
+	<p>我们也知道您关注隐私。相信您应该知道这一工具生成的结果会有什么境遇。许多其他工具会将数据出售给第三方。Cloudflare 不会出售您的数据。性能数据会收集并匿名化处理，并且受到我们<a href="https://www.cloudflare.com/privacypolicy/" target="_blank">隐私政策</a>条款的约束。这些数据以匿名方式加以使用，以确定如何改进我们的网络，这包括容量方面的改进，也包括帮助我们决定与哪些互联网服务提供商进行合作。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image-29.png" class="kg-image"></figure>
+	<p>测试包含三个主要组件：下载、上传和延迟测试。它们各自测量网络连接的不同方面。</p>
+	<h3 id="-">下行</h3>
+	<p>对于新手用户，我们会为您进行基本的下载测试。从下载小文件开始，逐步升级为越来越大的文件，直到测试使您的互联网下行链路达到饱和。小文件（从 10KB 开始，然后是 100KB 等）能够很好地代表网站的加载方式，因为网站通常包含许多小文件，如图像、CSS 样式表和 JSON Blob。</p>
+	<p>对于每种文件大小，我们在表格内显示度量值，以便您深入分析。条形图中的每个点代表一个测量值，细线则表示我们测量的速度范围。稍粗一些的图块表示 25％ 和 75％ 之间的一组测量值。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image-30.png" class="kg-image"></figure>
+	<p>逐渐升级为更大的文件，我们就能看到真正的最大吞吐量：您真正拥有多少带宽？您可能想知道为什么我们必须逐渐增大文件大小。原因是下载速度起初缓慢（恰如其名，<a href="https://en.wikipedia.org/wiki/TCP_congestion_control#Slow_start" target="_blank">慢启动</a>），然后逐渐变快。如果仅使用小文件，我们将永远无法达到网络提供商支持的最大吞吐量，其值应当接近于 ISP 与您签约时给您报出的互联网速度。</p>
+	<p>较大文件的最大吞吐量将指示您下载游戏等大文件（<a href="https://store.steampowered.com/app/271590/Grand_Theft_Auto_V/" target="_blank">GTA V</a>的下载大有将近 100 GB！）时的速度，或者指示您流式传输视频时的最高画质（下载速度较低意味着您必须使用较低的分辨率才能流畅播放）。我们只会将下载文件的大小增加至达到准确测量所需的绝对最小值：不浪费带宽。</p>
+	<h3 id="--1">上行</h3>
+	<p>上传与下载相反：我们将数据<em>从</em>您的浏览器<em>发送到</em>互联网。如今，这一指标在许多居家办公的人中变得更加重要：它直接影响实时视频会议。上传速度更快意味着麦克风和视频馈送可以具有更高的质量，也就是说，人们可以在视频会议上更清楚地看到和听到您。</p>
+	<p>测量上传速度时采用相同的方式：逐步尝试上传越来越大的文件，直到我们注意到您的连接饱和为止。</p>
+	<p>速度测量永远不会 100％ 一致，这就是我们重复测量的原因。报告速度的一种简单方法就是只报告我们看到的最快速度。但问题在于，这不能代表您的真实体验：延迟和丢包会不断波动，也就是说，您不能期望一直看到最大的测得性能。</p>
+	<p>为弥补这一点，我们取测量值的 90％ 或 p90 并报告这个值，而不是测得的绝对最大速度。取 90% 测量值是一个比较准确的表示法，它可以剔除峰值离群值，与您在现实中的速度所能期望的值更加接近。</p>
+	<h3 id="--2">延迟和抖动</h3>
+	<p>下载和上传是重要的指标，但不能反映互联网连接质量的全貌。许多人发现，利用视频会议软件与工作和朋友互动比以往更多了。尽管速度很重要，但视频对互联网连接的<em>延迟</em>也非常敏感。延迟代表的是 IP <em>数据包</em>从您的设备传输到互联网上您正在使用的服务并返回的时间。延迟高意味着当您在视频会议上发言时，另一方需要等待较久的时间才会听到您的声音。</p>
+	<p>不过，延迟只能描绘连接质量的一半面貌。假设您正在与人对话，需要一些延迟后才能听到对方说话。这可能有些恼人，但片刻之后您就会习惯。更糟糕的情况是延迟长短<em>不断变化</em>：有时音频几乎同步，有时则延迟几秒钟。您可以想象这会多么频繁地导致两个人同时开口讲话。直接与之相关的是延迟的<em>稳定</em>程度，由抖动指标来表示。抖动是在连续延迟测量结果中发现的平均变化。数值较低表示测得的延迟更加一致，意味着您的媒体流在整个会话中具有同样的延迟。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image-31.png" class="kg-image"></figure>
+	<p>我们将speed.cloudflare.com 设计为尽可能透明：您可以点击任意一个测量值来查看平均值、中位值、最小值和最大值等。如果您有兴趣摆弄这些数值，可以使用下载按钮来获得我们测得的原始结果。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image-32.png" class="kg-image"></figure>
+	<p>整个 speed.cloudflare.com 后端都在 Workers 上运行，这意味着所有逻辑都完全在Cloudflare 边缘网络和您的浏览器中运行，无需服务器！如果您有兴趣了解基准测试的运作原理，我们已经公开了源代码，您可以随时查看我们的 <a href="https://github.com/cloudflare/worker-speedtest-template" target="_blank">Github</a> 存储库。</p>
+	<p>希望您会喜欢这个工具，将它添加到您的网络调试工具集中。我们热爱透明，我们的工具也体现了这一点：您的网络性能不仅仅是一个数值。请<a href="https://speed.cloudflare.com/" target="_blank">试一试</a>，并告诉我们您的想法。</p>
+</div>

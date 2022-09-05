@@ -1,0 +1,142 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image1-29.png" class="kg-image"></figure>
+	<p>根据过往情况来看，让 Rust 和 TypeScript 类型的存储库保持最新十分困难。它们是手动生成，这意味着面临不准确和过时的风险。直到最近，每当类型发生变化时，都需要手动更新 workers-types 存储库。我们还习惯于为大多数完整的浏览器 API 添加类型信息。这会导致混淆，当人们尝试使用不受 Workers 运行时支持的浏览器 API 时，它们会编译，但会抛出错误。</p>
+	<p>而在这个夏天，一切都发生了变化。我们的实习生 Brendan Coll 构建了一个可生成类型的自动化管道。每当我们构建 Workers 运行时时，它就会运行一次，为我们的 TypeScript 和 Rust 存储库生成类型。现在，所有内容都准确且为最新。</p>
+	<h2 id="-"><strong>快速概览</strong></h2>
+	<p>每次构建 Workers 运行时代码时，都会有一个脚本在公共 API 上运行，生成 Rust 和 TypeScript 类型，以及一个包含静态类型<a href="https://en.wikipedia.org/wiki/Intermediate_representation" target="_blank">中间表示</a>的 JSON 文件。这些类型将被发送到适当的存储库，JSON 文件也会被上传，以防人们想要创建他们自己的类型包。这一点将在后面进行详述。</p>
+	<p>这意味着静态类型将始终准确且为最新。它还允许项目以其他静态类型语言运行 Workers，以从我们的中间表示生成他们自己的类型。下面是来自我们 Cloudflare 机器人的示例 PR。它在运行时类型中检测到一个变化，并正在更新 TypeScript 文件和中间表示。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image2-12.png" class="kg-image"></figure>
+	<h2 id="--1"><strong>使用自动生成的类型</strong></h2>
+	<p>首先，使用 wrangler 生成一个新的 TypeScript 项目：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-sh">$ wrangler generate my-typescript-worker https://github.com/cloudflare/worker-typescript-template
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p><br></p>
+	<p>如果您已经拥有 TypeScript 项目，则可以使用以下命令安装最新版本的 <a href="https://github.com/cloudflare/workers-types" target="_blank">workers-types</a>：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-sh">$ npm install --save-dev @cloudflare/workers-types
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>然后将 <code>@cloudflare/workers-types</code> 添加到项目的 tsconfig.json 文件。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-json">{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "CommonJS",
+    "lib": ["ES2020"],
+    "types": ["@cloudflare/workers-types"]
+  }
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>之后，应当会在您选择的 IDE 中自动完成类型。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image3-19.png" class="kg-image"></figure>
+	<h2 id="--2"><strong>了解详情</strong></h2>
+	<p>下面是来自 Workers 运行时代码库的一些示例代码。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-cpp">class Blob: public js::Object {
+public:
+  typedef kj::Array&lt;kj::OneOf&lt;kj::Array&lt;const byte&gt;, kj::String, js::Ref&lt;Blob&gt;&gt;&gt; Bits;
+  struct Options {
+    js::Optional&lt;kj::String&gt; type;
+    JS_STRUCT(type);
+  };
+
+  static js::Ref&lt;Blob&gt; constructor(js::Optional&lt;Bits&gt; bits, js::Optional&lt;Options&gt; options);
+  
+  int getSize();
+  js::Ref&lt;Blob&gt; slice(js::Optional&lt;int&gt; start, js::Optional&lt;int&gt; end);
+
+  JS_RESOURCE_TYPE(Blob) {
+    JS_READONLY_PROPERTY(size, getSize);
+    JS_METHOD(slice);
+  }
+};
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>每次构建期间，都会有一个 Python 脚本在该代码上运行，并生成一个 <a href="https://en.wikipedia.org/wiki/Abstract_syntax_tree" target="_blank">Abstract Syntax Tree</a>，其中包含有关函数的信息，包括标识符、任何参数类型和任何返回类型。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-json">{
+  "name": "Blob",
+  "kind": "class",
+  "members": [
+    {
+      "name": "size",
+      "type": {
+        "name": "integer"
+      },
+      "readonly": true
+    },
+    {
+      "name": "slice",
+      "type": {
+        "params": [
+          {
+            "name": "start",
+            "type": {
+              "name": "integer",
+              "optional": true
+            }
+          },
+          {
+            "name": "end",
+            "type": {
+              "name": "integer",
+              "optional": true
+            }
+          }
+        ],
+        "returns": {
+          "name": "Blob"
+        }
+      }
+    }
+  ]
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>最后，会向 <a href="https://github.com/cloudflare/workers-types" target="_blank">TypeScript 类型</a>存储库自动传送带有已更新类型的 PR。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-typescript">declare type BlobBits = (ArrayBuffer | string | Blob)[];
+
+interface BlobOptions {
+  type?: string;
+}
+
+declare class Blob {
+  constructor(bits?: BlobBits, options?: BlobOptions);
+  readonly size: number;
+  slice(start?: number, end?: number, type?: string): Blob;
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h3 id="--3"><strong>覆盖</strong></h3>
+	<p>在某些情况下，TypeScript 支持一些 C++ 运行时不支持的概念，也就是泛型和函数重载。在这些情况下，我们会使用分部声明覆盖生成的类型。例如，DurableObjectStorage 为其 getter 和 setter 函数使用大量泛型。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>declare abstract class DurableObjectStorage {
+	 get&lt;T = unknown&gt;(key: string, options?: DurableObjectStorageOperationsGetOptions): Promise&lt;T | undefined&gt;;
+	 get&lt;T = unknown&gt;(keys: string[], options?: DurableObjectStorageOperationsGetOptions): Promise&lt;Map&lt;string, T&gt;&gt;;
+	 
+	 list&lt;T = unknown&gt;(options?: DurableObjectStorageOperationsListOptions): Promise&lt;Map&lt;string, T&gt;&gt;;
+	 
+	 put&lt;T&gt;(key: string, value: T, options?: DurableObjectStorageOperationsPutOptions): Promise&lt;void&gt;;
+	 put&lt;T&gt;(entries: Record&lt;string, T&gt;, options?: DurableObjectStorageOperationsPutOptions): Promise&lt;void&gt;;
+	 
+	 delete(key: string, options?: DurableObjectStorageOperationsPutOptions): Promise&lt;boolean&gt;;
+	 delete(keys: string[], options?: DurableObjectStorageOperationsPutOptions): Promise&lt;number&gt;;
+	 
+	 transaction&lt;T&gt;(closure: (txn: DurableObjectTransaction) =&gt; Promise&lt;T&gt;): Promise&lt;T&gt;;
+	}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>您还可以使用 Markdown 编写类型覆盖。<a href="https://github.com/cloudflare/workers-types/blob/master/docs/kv.md" target="_blank">这里</a>是覆盖 KVNamespace 类型的一个示例。</p>
+	<h2 id="--4"><strong>创建您自己的类型</strong></h2>
+	<p>JSON IR（<a href="https://en.wikipedia.org/wiki/Intermediate_representation" target="_blank">中间表示</a>）已经和 TypeScript 类型一起开放源码，可在<a href="https://github.com/cloudflare/workers-types/blob/master/src/workers.json" target="_blank">本 GitHub 存储库中</a>找到。我们还开放了<a href="https://github.com/cloudflare/workers-types/blob/master/src/schema.json" target="_blank">类型架构</a>本身的源码，该类型架构描述了 IR 的格式。如果您有兴趣为您自己的语言生成 Workers 类型，则可以使用 IR，它采用“规范化的”数据结构描述声明，并从中生成类型。</p>
+	<p>“workers.json”内的声明包含用于派生函数签名的元素和代码生成所需的其他元素，例如标识符、参数类型、返回类型和错误管理。一个具体用例是为编译到 WebAssembly 的语言生成外部函数声明，以精确地从 Workers 运行时导入可用的函数调用集。</p>
+	<h2 id="--5"><strong>总结</strong></h2>
+	<p>Cloudflare 深切关注支持 TypeScript 和 Rust 生态系统。Brendan 制作了一个工具，可确保两种语言的类型信息都始终为最新且准确。我们还以 JSON 格式开源了类型信息本身，这样，感兴趣的任何人都可以为他们想要的任何语言创建类型数据！</p>
+	<!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/07356fcb9d66ada45f8dcc2217b8c1d7?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2F07356fcb9d66ada45f8dcc2217b8c1d7%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D0m4s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
+	<!--kg-card-end: html-->
+</div>

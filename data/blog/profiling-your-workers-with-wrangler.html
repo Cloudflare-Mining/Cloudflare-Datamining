@@ -1,0 +1,44 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/image6-16.png" class="kg-image"></figure>
+	<p>In the year since Cloudflare’s launch of Workers Unbound, developers have unlocked the ability to run computationally intensive workloads on the Cloudflare edge network — like image processing, game logic, and other complex algorithms. With all that additional computing power comes a host of questions around performance. Our customers often ask us how they can profile or monitor their Workers to see where they spend the most CPU time, or to see whether their changes improve performance.</p>
+	<p>Here at Cloudflare, we not only want to build the fastest, most affordable, and most flexible compute platform at the edge; we also want to make the lives of our developers easier in building their applications. To do this, Cloudflare has begun to integrate with existing tools — places our developers feel comfortable and efficient in their day-to-day work. To help measure performance of our customers’ Workers, we’re beginning to integrate with the Chrome DevTools protocol. Just like you can use chrome://inspect to debug your Node backend, you can also use it to profile your Cloudflare Workers.</p>
+	<h3 id="introducing-chrome-devtools-integration-beta-">Introducing Chrome DevTools Integration (Beta)</h3>
+	<p>We’re starting off this integration with beta support for local CPU profiling, using Wrangler. To show off how to use this feature, I’m going to be optimizing a simple JavaScript program which outputs the first thousand integers separated by a space. Let’s start by installing the latest version of <a href="https://github.com/cloudflare/wrangler/#installation" target="_blank">Wrangler</a>. We’ll also need a Worker cloned down to your local machine. I’ll be using <a href="https://github.com/kabirsikand/workers-profiling-example/blob/main/slow-worker.js" target="_blank">Workers Profiling Example</a>, but feel free to use any CPU intensive Worker for this tutorial.</p>
+	<p>For reference, my sample code is below. You’ll notice this code is intentionally performing a computation that will slow down our Worker.</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-js">addEventListener("fetch", event =&gt; {
+  event.respondWith(handleRequest(event.request));
+});
+
+async function handleRequest(request) {
+  let body = '';
+  for (let i = 0; i &lt; 1000; ++i) {
+    body = body + ' ' + i;
+  }
+
+  return new Response(body, {
+    headers: { 'content-type': 'text/plain' },
+  });
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>To confirm this, we’ll run Chrome DevTools and profile our Worker locally. In the directory of your sample project, <code>run wrangler dev --inspect</code>. To launch the DevTools, open <code>chrome://inspect</code> in Chrome or Chromium. You’ll see Chrome’s DevTools homepage pop up: </p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/image1-22.png" class="kg-image" alt="Open up Chrome DevTools using chrome://inspect in your browser"></figure>
+	<p>Click ‘Configure’ and add <code>localhost://9230</code> as one of the targets. You should see <code>wrangler[{Worker name}]</code> appear under “Remote Targets”, where {Worker name} is the name of your project.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/image2-27.png" class="kg-image" alt="Click ‘Configure’ and add localhost://9230 as a target"></figure>
+	<p>Click ‘inspect’, then in the popup, ‘Profiler’.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/image4-21.png" class="kg-image" alt="Once in inspect mode, open up the Profiler"></figure>
+	<p>Click ‘Start’ and, in a different browser tab, make a few requests to your site, then click ‘Stop’. It should be available locally on localhost:8787.</p>
+	<p>Analyze the flame graph. For my Slow Worker, I see the following graph:</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/image3-25.png" class="kg-image" alt="Flame graph generated from the recorded profile of our sample Worker"></figure>
+	<p>When I click on <code>handleRequest</code>, I see the following annotated source of my Worker:</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/image5-19.png" class="kg-image" alt="Click on one of your functions to view the source code"></figure>
+	<p>In particular, it shows that, unsurprisingly, most of the time is being spent on memory allocations in the body of the loop. Note that the profiler is not always accurate with regard to exact timing, but does paint a picture of your largest bottlenecks.</p>
+	<h3 id="understanding-the-profile">Understanding the Profile</h3>
+	<p>The profiler works by gathering a stack trace of your program at a sampled rate, so remember that the profile is an approximation of where your code tends to spend the majority of its execution time, and is not meant to be perfectly accurate. In fact, functions that execute in less than 100 microseconds have a chance to not appear in the profile at all.</p>
+	<h3 id="what-s-next">What’s Next?</h3>
+	<p>With the Workers platform, we’re striving to build in the observability our users expect out of a robust compute platform. We’d love to hear more from the community about ways we can improve visibility into the code you’re writing on the edge. If you haven’t already, please join the Cloudflare Workers Discord community at <a href="https://discord.gg/PX8s2TmJ7s" target="_blank">https://discord.gg/PX8s2TmJ7s</a>. Happy building!</p>
+	<!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/f11809a382160334e9be9a2aedf13d1d?preload=true" style="border: none; position: absolute; top: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
+	<!--kg-card-end: html-->
+</div>

@@ -1,0 +1,152 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/09/BDES-1018_Cloudflare_Object_Workers_Birthday_Week_Blog_Hero.png" class="kg-image"></figure>
+	<p>Wir haben <a href="https://blog.cloudflare.com/introducing-cloudflare-workers/">Cloudflare Workers® im Jahr 2017</a> mit einer radikalen Vision gestartet: Code, der an der Netzwerk-Edge ausgeführt wird, könnte nicht nur die Performance verbessern, sondern auch einfacher bereitzustellen und kostengünstiger sein als Code, der in einem einzigen Rechenzentrum ausgeführt wird. Diese Vision bedeutet, dass Workers mehr ist als nur Edge-Computing&amp;nbsp;– wir denken damit auch beim Entwicklungsprozess von Anwendungen um.</p>
+	<p>Durch unser „serverloses“ Vorgehen sind Bereitstellungen kinderleicht geworden, und durch <a href="https://blog.cloudflare.com/cloud-computing-without-containers/">Isoliertechnologie</a> konnten wir Serverless günstiger anbieten und <a href="https://blog.cloudflare.com/eliminating-cold-starts-with-cloudflare-workers/">auf langwierige Kaltstarts verzichten</a>, die andere Anbieter ausbremsen. Mit <a href="https://blog.cloudflare.com/workers-kv-is-ga/">Workers KV</a> haben wir die Plattform um eine benutzerfreundliche, letzten Endes einheitliche Edge-Speicherplattform erweitert.</p>
+	<p>Bis heute war es jedoch nicht möglich, den Zustand mit hoher Konsistenz zu verwalten oder mehrere Clients in Echtzeit vollständig an der Edge zu koordinieren. Daher mussten diese Teile einer Anwendung noch an anderer Stelle gehostet werden.</p>
+	<p>Durable Objects bieten einen wirklich serverlosen Ansatz für Speicherung und Zustand: einheitlich, mit geringer Latenz, verteilt und dennoch mühelos zu warten und zu skalieren. Sie bieten auch eine einfache Möglichkeit, mehrere Clients zu koordinieren, ob es sich nun um Nutzer in einem bestimmten Chat-Raum, Bearbeiter eines bestimmten Dokuments oder IoT-Geräte in einem bestimmten Smart Home handelt. Durable Objects sind das Teil, das im Workers-Stack gefehlt hat und mit dem man ganze Anwendungen vollständig auf der Edge ausführen kann, ohne dass es überhaupt einen zentralen „Ursprungs“server gibt.</p>
+	<p>Heute beginnen wir einen geschlossenen Betatest von Durable Objects.</p>
+	<!--kg-card-begin: html--><a href="https://www.cloudflare.com/cloudflare-workers-durable-objects-beta" style="display: block; background-color: #fec368; text-align: center; padding: 0.5em; text-decoration: underline; border: none; box-shadow: none; font-size: 150%; font-weight: bold; margin: 1em 0; color: #36393a" target="_blank">Eine Beta-Einladung anfordern »</a>
+	<!--kg-card-end: html-->
+	<h3 id="was-ist-ein-durable-object-">Was ist ein „Durable Object“?</h3>
+	<p>Ganz ehrlich, es war gar nicht so einfach, diesem Produkt einen Namen zu geben, denn es unterscheidet sich von allem, was es heute im Bereich Cloudtechnologie gibt. Wir haben über die eher nebensächliche Frage des Namens lange diskutiert und uns schließlich auf „Unique Durable Objects“ oder kurz „Durable Objects“ geeinigt. Lassen Sie mich anhand des Namens erklären, worum es sich dabei handelt:</p>
+	<ul>
+		<li>Objects: Durable Objects sind Objekte im Sinne der objektorientierten Programmierung. Ein dauerhaftes Objekt ist eine Instanz einer Klasse&amp;nbsp;– genaugenommen einer in JavaScript (oder <a href="https://blog.cloudflare.com/cloudflare-workers-announces-broad-language-support/">der Sprache Ihrer Wahl</a>) geschriebenen Klassendefinition. Die Klasse hat Methoden, die ihre öffentliche Schnittstelle bilden. Ein Objekt ist eine Instanz dieser Klasse, eine Kombination aus diesem Code und einem privaten Zustand.</li>
+		<li>Unique: Jedes Objekt hat einen global eindeutigen Bezeichner. Dieses Objekt existiert jeweils nur an einem Ort auf der ganzen Welt. Jeder Worker, der irgendwo auf der Welt läuft und die ID des Objekts kennt, kann Nachrichten an das Objekt senden. Alle diese Botschaften werden am Ende an den gleichen Ort zugestellt.</li>
+		<li>Durable: Im Gegensatz zu einem normalen Objekt in JavaScript kann für dauerhafte Objekte ein dauerhafter Zustand auf der Festplatte gespeichert werden. Der dauerhafte Zustand jedes Objekts ist für das Objekt privat, was nicht nur bedeutet, dass der Zugriff auf den Speicher schnell erfolgt, sondern das Objekt kann sogar eine konsistente Kopie des Zustands sicher im Speicher aufbewahren und ohne Latenz damit arbeiten. Das In-Memory-Objekt wird im Leerlauf heruntergefahren und später bei Bedarf neu erstellt.</li>
+	</ul>
+	<h3 id="was-k-nnen-durable-objects">Was können Durable Objects?</h3>
+	<p>Durable Objects haben zwei primäre Fähigkeiten:</p>
+	<ul>
+		<li>Speicherung: Jedem Objekt ist dauerhafter Speicher zugeordnet. Da dieser Speicher für ein bestimmtes Objekt privat ist, befindet sich der Speicher immer an einem gemeinsamen Standort mit dem Objekt. Das bedeutet, dass der Speicher sehr schnell sein kann und gleichzeitig eine starke, transaktionale Konsistenz bietet. Durable Objects wenden die Serverless-Philosophie auf die Speicherung an, indem sie die traditionellen großen monolithischen Datenbanken in viele kleine, logische Einheiten aufspalten. Dabei erhalten wir die Vorteile, die wir bereits von Serverless gewohnt sind: mühelose Skalierung ohne Wartungsaufwand.</li>
+		<li>Koordination: In der Vergangenheit wurde bei Workers jede Anfrage im Rahmen der Lastverteilung nach dem Zufallsprinzip an eine Worker-Instanz übergeben. Da nicht steuerbar war, welche Instanz die Anfrage erhielt, konnte man zwei Clients auch nicht zwingen, mit demselben Worker zu sprechen, sodass Clients sich auch nicht über Workers koordinieren konnten. Das ändert sich mit Durable Objects: Anfragen, die sich auf dasselbe Thema beziehen, können an dasselbe Objekt weitergeleitet werden, das dann beide koordinieren kann, ohne Speicher einzusetzen. Hiermit kann man beispielsweise Echtzeit-Chat, gemeinsame Bearbeitung, Videokonferenzen, Warteschlangen für Pub-/Sub-Nachrichten, Spielsitzungen und vieles mehr ermöglichen.</li>
+	</ul>
+	<p>Der aufmerksame Leser bemerkt vielleicht, dass viele Koordinations-Anwendungsfälle WebSockets erfordern&amp;nbsp;– und in der Tat erfordern auch die meisten WebSocket-Anwendungsfälle Koordination. Aufgrund dieser Wechselbeziehung haben wir neben der Beta-Version von Durable Objects auch WebSocket-Unterstützung in Workers aufgenommen. Weitere Informationen hierzu finden Sie <a href="https://blog.cloudflare.com/introducing-workers-durable-objects/#can-durable-objects-serve-websockets">in den folgenden Fragen und Antworten</a>.</p>
+	<h3 id="region-planet-erde">Region: Planet Erde</h3>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/09/Earth-desktop-background-copy-2@2x.png" class="kg-image"></figure>
+	<p>Bei der Nutzung von Durable Objects legt Cloudflare automatisch das Cloudflare-Rechenzentrum fest, in dem jedes Objekt existieren wird, und kann Objekte bei Bedarf transparent zwischen Standorten verschieben.</p>
+	<p>Bei traditionellen Datenbanken und zustandsbehafteten Infrastrukturen muss man in der Regel über geografische „Regionen“ nachdenken, damit die Daten auch in der Nähe des Ortes gespeichert werden, an dem sie verwendet werden. Regionen zu berücksichtigen, kann oft eine unnatürliche Belastung sein, insbesondere bei Anwendungen, die selbst keinen Ortsbezug haben.</p>
+	<p>Mit Durable Objects entwerfen Sie Ihr Speichermodell stattdessen so, dass es dem logischen Datenmodell Ihrer Anwendung entspricht. Beispielsweise hat ein Dokument-Editor ein Objekt für jedes Dokument und eine Chat-App ein Objekt für jeden Chat. Es stellt kein Problem dar, Millionen oder Milliarden von Objekten zu erstellen, da jedes Objekt nur minimalen Overhead hat.</p>
+	<h3 id="killer-app-gemeinsame-dokumentenbearbeitung-in-echtzeit">Killer-App: Gemeinsame Dokumentenbearbeitung in Echtzeit</h3>
+	<p>Nehmen wir an, Ihre Anwendung ist ein Editor für eine Tabellenkalkulation – oder in der Praxis irgendeine Art von App, in der Nutzer ein komplexes Dokument bearbeiten. Bei einem Nutzer funktioniert alles noch gut, aber jetzt möchten Sie, dass mehrere Nutzer es gleichzeitig bearbeiten können. Wie erreichen Sie das?</p>
+	<p>Für Webanwendungs-Standardtechnologien ist dies ein schwieriges Problem. Herkömmliche Datenbanken sind einfach nicht auf Echtzeit ausgelegt. Wenn Alice und Bob dieselbe Tabelle bearbeiten, dann soll jeder einzelne Tastendruck von Alice sofort auf Bobs Bildschirm erscheinen und umgekehrt. Wenn Sie die Tastatureingaben aber nur in einer Datenbank speichern und die Nutzer für Aktualisierungen immer wieder die Datenbank abfragen müssen, wird Ihre Anwendung im besten Fall hohe Latenz haben – und im schlimmsten Fall werden Sie feststellen, dass Datenbanktransaktionen wiederholt fehlschlagen, weil Nutzer auf gegenüberliegenden Seiten der Welt um die Bearbeitung desselben Inhalts konkurrieren.</p>
+	<p>Der Trick zur Lösung dieses Problems ist ein Live-Koordinationspunkt. Alice und Bob verbinden sich mit demselben Koordinator, in der Regel über WebSockets. Der Koordinator leitet dann Alices Tastenanschläge an Bob und Bobs Tastenanschläge an Alice weiter, ohne eine Speicherschicht durchlaufen zu müssen. Wenn Alice und Bob denselben Inhalt gleichzeitig bearbeiten, löst der Koordinator Konflikte sofort. Der Koordinator kann dann auch für die Aktualisierung des Dokuments im Speicher zuständig sein. Aber da der Koordinator eine Live-Kopie des Dokuments im Arbeitsspeicher hält, kann das Zurückschreiben in den Speicher asynchron erfolgen.</p>
+	<p>Jeder namhafte Dokument-Editor für Zusammenarbeit in Echtzeit funktioniert so. Für viele Webentwickler, insbesondere wenn sie auf einer serverlosen Infrastruktur entwickeln, stand diese Lösung jedoch lange nicht zur Verfügung. Bei einer serverlosen Standard-Infrastruktur (und sogar bei Cloud-Infrastrukturen im Allgemeinen) ist es nicht einfach, diese Koordinationspunkte zuzuweisen und die Nutzer zu veranlassen, mit derselben Instanz eines Servers zu kommunizieren.</p>
+	<p>Mit Durable Objects ist es einfach. Sie erleichtern nicht nur die Zuweisung eines Koordinationspunktes. Cloudflare erstellt auch den Koordinator automatisch in der Nähe der Nutzer und verschiebt ihn bei Bedarf, wodurch die Latenz minimiert wird. Durch die Verfügbarkeit von lokalem, dauerhaftem Speicher können Änderungen am Dokument sofort zuverlässig gespeichert werden, selbst wenn der Langzeitspeicher langsamer ist. Oder Sie können sogar das gesamte Dokument an der Edge speichern und Ihre Datenbank komplett ausmustern.</p>
+	<p>Durable Obejcts erleichtern den Einstieg, deshalb hoffen wir, dass Echtzeit-Zusammenarbeit im Web zur Norm wird. Man muss Nutzer nicht mehr auffordern, für Updates zu aktualisieren.</p>
+	<h3 id="beispiel-ein-einfacher-z-hler">Beispiel: Ein einfacher Zähler</h3>
+	<p>Hier ein sehr einfaches Beispiel für ein dauerhaftes Objekt, das über HTTP inkrementiert, dekrementiert und ausgelesen werden kann. Dieser Zähler ist <em>konsistent</em> selbst bei gleichzeitigem Empfang von Anfragen von mehreren Clients&amp;nbsp;– keine der Inkremente oder Dekremente gehen verloren. Gleichzeitig werden Lesevorgänge vollständig aus dem Speicher bedient, es ist kein Festplattenzugriff erforderlich.</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">export class Counter {
+  // Constructor called by the system when the object is needed to
+  // handle requests.
+  constructor(controller, env) {
+    // `controller.storage` is an interface to access the object's
+    // on-disk durable storage.
+    this.storage = controller.storage
+  }
+
+  // Private helper method called from fetch(), below.
+  async initialize() {
+    let stored = await this.storage.get("value");
+    this.value = stored || 0;
+  }
+
+  // Handle HTTP requests from clients.
+  //
+  // The system calls this method when an HTTP request is sent to
+  // the object. Note that these requests strictly come from other
+  // parts of your Worker, not from the public internet.
+  async fetch(request) {
+    // Make sure we're fully initialized from storage.
+    if (!this.initializePromise) {
+      this.initializePromise = this.initialize();
+    }
+    await this.initializePromise;
+
+    // Apply requested action.
+    let url = new URL(request.url);
+    switch (url.pathname) {
+      case "/increment":
+        ++this.value;
+        await this.storage.put("value", this.value);
+        break;
+      case "/decrement":
+        --this.value;
+        await this.storage.put("value", this.value);
+        break;
+      case "/":
+        // Just serve the current value. No storage calls needed!
+        break;
+      default:
+        return new Response("Not found", {status: 404});
+    }
+
+    // Return current value.
+    return new Response(this.value);
+  }
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Sobald die Klasse an einen Durable-Object-Namensraum gebunden wurde, kann von überall auf der Welt aus auf eine bestimmte Instanz von Counter zugegriffen werden. Hier der Code dafür:</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">// Derive the ID for the counter object named "my-counter".
+// This name is associated with exactly one instance in the
+// whole world.
+let id = COUNTER_NAMESPACE.idFromName("my-counter");
+
+// Send a request to it.
+let response = await COUNTER_NAMESPACE.get(id).fetch(request);
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h3 id="demo-chat">Demo: Chat</h3>
+	<p>Ein Chat ist Echtzeit-Zusammenarbeit in ihrer wohl reinsten Form. Und wir haben dafür eine Open-Source-Demo-Chatanwendung entwickelt, die vollständig an der Edge läuft und dauerhafte Objekte nutzt.</p>
+	<!--kg-card-begin: html--><a href="https://edge-chat-demo.cloudflareworkers.com" style="display: block; background-color: #fec368; text-align: center; padding: 0.5em; text-decoration: underline; border: none; box-shadow: none; font-size: 150%; font-weight: bold; margin: 1em 0; color: #36393a" target="_blank">Live-Demo testen »</a>
+	<!--kg-card-end: html-->
+	<!--kg-card-begin: html--><a href="https://github.com/cloudflare/workers-chat-demo" style="display: block; background-color: #fec368; text-align: center; padding: 0.5em; text-decoration: underline; border: none; box-shadow: none; font-size: 150%; font-weight: bold; margin: 1em 0; color: #36393a" target="_blank">Quellcode auf GitHub ansehen »</a>
+	<!--kg-card-end: html-->
+	<p>Diese Chat-App verwendet für die Steuerung eines Chatraums jeweils ein Durable Object. Nutzer stellen über WebSockets eine Verbindung mit dem Objekt her. Nachrichten von einem Nutzer werden an alle anderen Nutzer gesendet. Der Chatverlauf wird ebenfalls im dauerhaften Speicher gespeichert, aber dies gilt nur für den Verlauf. Echtzeitnachrichten werden direkt von einem Nutzer an andere weitergeleitet, ohne die Speicherebene zu durchlaufen.</p>
+	<p>Zusätzlich verwendet diese Demo Durable Objects für einen weiteren Zweck: Die Begrenzung des Durchsatzes für Nachrichten von einer bestimmten IP. Jeder IP wird ein Durable Object zugewiesen, das die Häufigkeit der letzten Anfrage verfolgt, sodass Nutzer, die zu viele Nachrichten senden, vorübergehend blockiert werden können – selbst über mehrere Chat-Räume hinweg. Interessanterweise speichern diese Objekte überhaupt keinen dauerhaften Zustand, da sie sich nur für die jüngsten Ereignisse interessieren, und es ist keine große Sache, wenn ein Durchsatzbegrenzer gelegentlich zufällig zurückgesetzt wird. Diese Durchsatzbegrenzer sind also ein Beispiel für ein reines Koordinationsobjekt ohne Speicherung.</p>
+	<p>Diese Chat-App ist nur wenige hundert Codezeilen lang. Die Implementierungskonfiguration besteht nur aus wenigen Zeilen. Doch sie lässt sich nahtlos auf eine beliebige Anzahl von Chaträumen skalieren, deren einzige Beschränkung die verfügbaren Cloudflare-Ressourcen sind. Natürlich hat die Skalierbarkeit jedes <em>individuellen</em> Chatraums ein Limit, da jedes Objekt single-threaded ist. Aber dieses Limit liegt ohnehin so hoch, dass kein menschlicher Teilnehmer mithalten könnte.</p>
+	<h3 id="andere-anwendungsf-lle">Andere Anwendungsfälle</h3>
+	<p>Die Einsatzmöglichkeiten der Durable Objects sind endlos. Hier nur ein paar Ideen, die über die oben beschriebenen hinausgehen:</p>
+	<ul>
+		<li>Warenkorb: Ein Online-Shop kann den Warenkorb eines Nutzers in einem Objekt verfolgen. Der Rest der Storefront könnte als vollständig statische Website dienen. Cloudflare wird das Korbobjekt automatisch in der Nähe des Endnutzers hosten, wodurch die Latenz minimiert wird.</li>
+		<li>Gaming-Server: Ein Multiplayer-Spiel könnte den Zustand eines Spiels in einem Objekt verfolgen, das auf der Edge in der Nähe der Spieler gehostet wird.</li>
+		<li>IoT-Koordination: Geräte innerhalb des Hauses einer Familie könnten sich durch ein Objekt koordinieren und müssen nicht mit entfernten Servern kommunizieren.</li>
+		<li>Soziale Feeds: Jeder Nutzer könnte ein dauerhaftes Objekt haben, das seine Abonnenents aggregiert.</li>
+		<li>Kommentar/Chat-Widgets: Bei einer Website mit ansonsten statischen Inhalten kann ein Kommentar-Widget oder sogar ein Live-Chat-Widget zu einzelnen Artikeln hinzugefügt werden. Bei jedem Artikel wird ein separates Durable Object zur Koordination verwendet. Auf diese Weise kann sich der Ursprungsserver allein auf statische Inhalte konzentrieren.</li>
+	</ul>
+	<h3 id="die-zukunft-echte-edge-datenbanken">Die Zukunft: Echte Edge-Datenbanken</h3>
+	<p>Wir sehen Durable Objects als Low-Level-Primitiv zum Aufbau verteilter Systeme. Einige Anwendungen, wie die oben erwähnten, können Objekte direkt zur Implementierung einer Koordinationsschicht oder vielleicht sogar als ihre einzige Speicherschicht verwenden.</p>
+	<p>Allerdings sind Durable Objects heute keine vollständige Datenbanklösung. Jedes Objekt kann nur seine eigenen Daten sehen. Für eine Abfrage oder Transaktion über mehrere Objekte hinweg muss die Anwendung etwas Zusatzarbeit leisten.</p>
+	<p>Gleichwohl besteht jede große verteilte Datenbank (ob relational, dokumenten- oder grafikorientiert usw.) auf niedriger Ebene aus „Brocken“, in denen ein Teil der Gesamtdaten gespeichert wird. Die Aufgabe einer verteilten Datenbank ist die Koordination zwischen den einzelnen Brocken.</p>
+	<p>Wir stellen uns eine Zukunft von Edge-Datenbanken vor, die jeden „Brocken“ als Durable Object speichern. So können Datenbanken aufgebaut werden, die vollständig an der Edge operieren, vollständig verteilt sind und keine Regionen oder Heimatstandorte haben. Diese Datenbanken müssen nicht von uns erstellt werden; jeder kann sie potenziell auf Durable Objects aufbauen. Durable Objects sind nur der erste Schritt auf dem Weg zur Edge-Speicherung.</p>
+	<h3 id="am-betatest-teilnehmen">Am Betatest teilnehmen</h3>
+	<p>Die Speicherung von Daten ist eine große Verantwortung, die wir nicht auf die leichte Schulter nehmen. Da es von entscheidender Bedeutung ist, es richtig zu machen, gehen wir vorsichtig vor. Im Laufe der nächsten Monate werden wir Durable Objects nach und nach zur Verfügung stellen.</p>
+	<p>Wie bei jeder Beta-Version befindet sich dieses Produkt noch im Aufbau, und einige der in diesem Beitrag beschriebenen Merkmale sind noch nicht vollständig aktiviert. Vollständige Informationen zu Beta-Einschränkungen finden Sie in <a href="https://developers.cloudflare.com/workers/learning/using-durable-objects" target="_blank">der Dokumentation</a>.</p>
+	<p>Wenn Sie Durable Objects jetzt ausprobieren möchten, erzählen Sie uns von Ihrem Anwendungsfall. Für den frühen Zugang werden wir die interessantesten Anwendungsfälle auswählen.</p>
+	<!--kg-card-begin: html--><a href="https://www.cloudflare.com/cloudflare-workers-durable-objects-beta" style="display: block; background-color: #fec368; text-align: center; padding: 0.5em; text-decoration: underline; border: none; box-shadow: none; font-size: 150%; font-weight: bold; margin: 1em 0; color: #36393a" target="_blank">Eine Beta-Einladung anfordern »</a>
+	<!--kg-card-end: html-->
+	<h2 id="fa">F&amp;A</h2>
+	<h3 id="k-nnen-durable-objects-websockets-bedienen">Können Durable Objects WebSockets bedienen?</h3>
+	<p>Ja.</p>
+	<p>Im Rahmen der Beta von Durable Objects haben wir es Workers ermöglicht, als WebSocket-Endpunkte zu fungieren – auch als Client oder als Server. Zuvor konnten Workers WebSocket-Verbindungen auf einen Back-End-Server übertragen, aber nicht direkt die Sprache des Protokolls sprechen.</p>
+	<p>Technisch gesehen kann jeder Worker so WebSockets nutzen, WebSockets sind jedoch am nützlichsten, wenn sie mit Durable Objects kombiniert werden. Wenn sich ein Client über einen WebSocket mit Ihrer Anwendung verbindet, benötigen Sie eine Möglichkeit, vom Server generierte Ereignisse an die bestehende Socket-Verbindung zurückzusenden. Ohne Durable Objects gibt es keine Möglichkeit, ein Ereignis an einen bestimmten Worker mit einem WebSocket zu senden. Bei Durable Objects können Sie jetzt den WebSocket an ein Objekt weiterleiten. Nachrichten können dann an dieses Objekt über seine eindeutige ID adressiert werden und das Objekt kann diese Nachrichten dann über den WebSocket an den Client weiterleiten.</p>
+	<p>Die oben vorgestellte Chat-App-Demo verwendet WebSockets. <a href="https://github.com/cloudflare/workers-chat-demo" target="_blank">Sehen Sie sich den Quellcode an</a>, um zu sehen, wie es funktioniert.</p>
+	<h3 id="wie-verh-lt-sich-dies-im-vergleich-zur-workers-kv">Wie verhält sich dies im Vergleich zur Workers KV?</h3>
+	<p>Vor zwei Jahren haben wir Workers KV eingeführt, einen globalen Key-Value-Datenspeicher. KV ist ein ziemlich minimalistischer globaler Datenspeicher, der sich gut für bestimmte Zwecke eignet, aber nicht für alle. KV bietet nur „Eventual consistency“, was bedeutet, dass an einem Ort geschriebene Texte an anderen Orten möglicherweise nicht sofort sichtbar sind. Darüber hinaus implementiert es die „last write wins“-Semantik, bei gleichzeitiger Änderung von mehreren Orten in der Welt kann es also leicht passieren, dass die Schreibvorgänge sich gegenseitig überschreiben. KV ist so konzipiert, dass es latenzarme Lesevorgänge für Daten unterstützt, die sich nicht häufig ändern. Durch diese Designentscheidungen ist KV jedoch ungeeignet, wenn Zustände sich häufig ändern oder Änderungen weltweit sofort sichtbar sein müssen.</p>
+	<p>Durable Objects hingegen sind in erster Linie überhaupt kein Speicherprodukt – viele Anwendungsfälle für sie nutzen eigentlich keine dauerhafte Speicherung. Soweit sie als Speicher dienen, befinden sich langlebige Objekte am entgegengesetzten Ende des Speicherspektrums von KV. Sie eignen sich hervorragend für Arbeitslasten, die Transaktionsgarantien und sofortige Konsistenz erfordern. Transaktionen müssen jedoch von Natur aus zentral an einem Standort koordiniert werden, und Clients auf der gegenüberliegenden Seite der Welt werden von diesem Standort aus mäßige Latenz erleben. Das liegt an den inhärenten Beschränkungen der Lichtgeschwindigkeit. Mit Durable Objects kann man dieses Problem bewältigen, weil sie automatisch in die Nähe ihres Anwendungsortes verschoben werden.</p>
+	<p>Kurz gesagt, Workers KV ist nach wie vor der beste Weg, statische Inhalte, Konfigurationen und andere selten geänderte Daten auf der ganzen Welt bereitzustellen, während Durable Objects für die Verwaltung dynamischer Zustände und Koordination besser geeignet sind.</p>
+	<p>Für die Zukunft planen wir die Verwendung von Durable Objects bei der Implementierung von Workers KV selbst, um noch bessere Performance zu erzielen.</p>
+	<h3 id="warum-nicht-crdts-verwenden">Warum nicht CRDTs verwenden?</h3>
+	<p>Sie können CRDT-basierten Speicher über Durable Objects erstellen, aber Durable Objects erfordern keine Verwendung von CRDTs.</p>
+	<p>Conflict-free Replicated Data Types (CRDTs) oder ihre nahen Verwandten, Operational Transformations (OTs), sind eine Technologie, mit der man Daten gleichzeitig von mehreren Orten in der Welt aus bearbeiten kann&amp;nbsp;– ohne Synchronisation und ohne Datenverlust. Diese Technologien werden beispielsweise häufig bei der Implementierung von kollaborativen Echtzeit-Dokument-Editoren verwendet, sodass die Tastenanschläge eines Nutzers in Echtzeit in seiner lokalen Kopie des Dokuments angezeigt werden können, ohne darauf warten zu müssen, ob jemand anderes zuerst einen anderen Teil des Dokuments bearbeitet hat. Ohne ins Detail zu gehen, können Sie sich diese Techniken wie eine Echtzeitversion von „git fork“ und „git merge“ vorstellen, bei der alle Merge-Konflikte automatisch auf deterministische Weise gelöst werden, sodass am Ende alle den gleichen Zustand haben.</p>
+	<p>CRDTs sind eine leistungsfähige Technologie, aber sie richtig anzuwenden, kann eine Herausforderung sein. Nur bestimmte Arten von Datenstrukturen eignen sich für eine automatische Konfliktlösung, die nicht für leichte Datenverluste anfällig ist. Jeder Entwickler, der mit git vertraut ist, kann das Problem sehen: willkürliche Konfliktlösung ist schwer und jeder automatisierte Algorithmus wird wahrscheinlich manchmal Fehler begehen. Es ist umso schwieriger, wenn der Algorithmus Merges in beliebiger Reihenfolge verarbeiten und trotzdem die gleiche Antwort erhalten muss.</p>
+	<p>Wir sind der Meinung, dass CRDTs für die meisten Anwendungen übermäßig komplex und den Aufwand nicht wert sind. Schlimmer noch, die Menge der Datenstrukturen, die als CRDT dargestellt werden können, ist für viele Anwendungen zu begrenzt. Normalerweise ist es viel einfacher, für jedes Dokument eine einzige maßgebliche Koordinierungsstelle zu bestimmen, und genau das leisten Durable Objects.</p>
+	<p>Dennoch können CRDTs auf Durable Objects „draufgesattelt“ werden. Wenn sich der Zustand eines Objekts für eine CRDT-Behandlung eignet, dann könnte eine Anwendung dieses Objekt in mehrere Objekte replizieren, die verschiedene Regionen bedienen und dann ihre Zustände über CRDT synchronisieren. Dies wäre sinnvoll für Anwendungsoptimierungen, wenn sich der Aufwand tatsächlich lohnt.</p>
+	<h3 id="zum-abschluss-was-bedeutet-es-f-r-einen-zustand-serverlos-zu-sein">Zum Abschluss: Was bedeutet es für einen Zustand, „serverlos“ zu sein?</h3>
+	<p>Der Schwerpunkt bei Serverless lag traditionell in zustandslosem Computing. In serverlosen Architekturen wird die logische Einheit der Rechenleistung auf etwas Feinkörniges reduziert: ein einzelnes Ereignis, z.&amp;nbsp;B. eine HTTP-Anfrage. Dies funktioniert besonders gut, weil <em>Ereignisse</em> rein zufällig die logische Arbeitseinheit sind, an die wir denken, wenn wir Serveranwendungen entwickeln. Niemand denkt über seine Geschäftslogik in Einheiten von „Servern“ oder „Containern“ oder „Prozessen“ nach. Wir denken an <em>Ereignisse</em>. Genau wegen dieser semantischen Übereinstimmung kann man mit Serverless einen Großteil des logistischen Aufwands für Server vom Entwickler zum Cloud-Provider verlagern.</p>
+	<p>Nichtsdestotrotz, <a href="https://www.cloudflare.com/learning/serverless/what-is-serverless/" target="_blank">serverlose Architektur</a> ist traditionell zustandslos. Jedes Ereignis wird isoliert durchgeführt. Wenn Sie Daten speichern wollten, mussten Sie eine Verbindung zu einer herkömmlichen Datenbank herstellen. Wenn Sie Anfragen koordinieren wollten, mussten Sie eine Verbindung zu einem anderen Dienst herstellen, der diese Möglichkeit bietet. Diese externen Dienste tendierten dazu, die operativen Nachteile wieder einzuführen, die man mit Serverless vermeiden wollte. Entwickler und Dienstbetreiber müssen sich nicht nur um die Skalierung ihrer Datenbanken zur Bewältigung der steigenden Last kümmern, sondern auch darum, wie sie ihre Datenbank in „Regionen“ aufteilen können, um den globalen Traffic effektiv zu bewältigen. Letzteres kann besonders umständlich sein.</p>
+	<p>Wie können wir also die serverlose Philosophie auf Zustände anwenden? Genauso wie es beim serverlosen Rechnen darum geht, das Rechnen in feinkörnige Stücke zu zerlegen, geht es beim serverlosen Zustand darum, den Zustand in feinkörnige Stücke zu zerlegen. Auch hier versuchen wir, eine Zustandseinheit zu finden, die den logischen Einheiten in unserer Anwendung entspricht. Die logische Einheit des Zustands in einer Anwendung ist nicht „Tabelle“, „Collection“ oder „Graph“. Sie hängt vielmehr von der Anwendung ab. Die logische Zustandseinheit in einer Chat-Anwendung ist ein Chat-Raum. Die logische Zustandseinheit in einem Online-Tabellenkalkulations-Editor ist ein Arbeitsblatt. Die logische Zustandseinheit in einem Online-Shop ist ein Warenkorb. Durch Anpassung der <em>physischen</em> Speichereinheit, die von der Speicherschicht bereitgestellt wird, an die <em>logische</em> Zustandseinheit, die sich aus der Anwendung ergibt, können wir es dem Speicheranbieter (Cloudflare) ermöglichen, die Verantwortung für ein breites Spektrum logistischer Belange zu übernehmen, die zuvor beim Entwickler lagen, einschließlich Skalierbarkeit und Regionalität.</p>
+	<p>Das leisten Durable Objects.</p>
+</div>

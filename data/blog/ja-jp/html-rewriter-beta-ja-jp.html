@@ -1,0 +1,45 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/09/HTML-rewrriter-beta@2x-1.png" class="kg-image"></figure>
+	<p>本日、Cloudflare Workersランタイムで利用できる、使いやすいセレクターベースのJavaScript APIを備えたストリーミングHTMLパーサー、HTMLRewriteのベータ版を発表しました。</p>
+	<p>ご存知でない方のために補足すると、<a href="https://workers.cloudflare.com/" target="_blank">Cloudflare Workers</a>は、インフラストラクチャを構築または維持することなく、Cloudflareのネットワークを活用して既存のアプリケーションを拡張したり、まったく新しいアプリケーションを作成したりできる、軽量のサーバーレスプラットフォームです。</p>
+	<h2 id="-"><strong>静的サイトから動的アプリケーションへ</strong></h2>
+	<p>Cloudflareは、9月27日に、<a href="https://workers.cloudflare.com/sites" target="_blank">Workers Sites</a>という<a href="https://github.com/cloudflare/wrangler" target="_blank">Wrangler</a> CLIツールに組み込まれた静的サイトデプロイワークフローを発表しました。HTMLRewriter APIと組み合わせることで、Cloudflareのエッジの静的HTML上でDOM変換を実行できるようになりました。</p>
+	<p>これまでも、応答の本文全体をWorkerに取り込むことで同じ処理ができましたが、その方法ではいくつかの問題が発生しがちでした。第一に、大きなファイルの解析は、メモリまたはCPUを制限することになります。第二に、本文をストリーミングできなくなるため、TTFBに影響を及ぼし、ブラウザーは後続のアセットを読み込む投機的解析を行うことができなくなります。</p>
+	<p>HTMLRewriterは、初めから終わりまでアプリケーションをエッジ上で完全に稼働させるのに足りなかった最後のピースでした。サーバーレス関数としてCloudflare Workers上で<a href="https://developers.cloudflare.com/workers/tutorials/build-a-serverless-function/" target="_blank">APIを構築する</a>、フロントエンドの静的エレメントを<a href="https://workers.cloudflare.com/sites" target="_blank">Workers Sites</a>上でホストする、HTMLRewriter APIを使用してそれらを動的に結び付ける、といったことができます。</p>
+	<h2 id="jamstack-"><strong>JAMStackを入力する</strong></h2>
+	<p>「JavaScript、サーバーレスAPI…待てよ、どこかで聞いたことがある」と思うかもしれません。私たちもどこかで聞いたことがあります。</p>
+	<figure class="kg-card kg-embed-card kg-card-hascaption">
+		<blockquote class="twitter-tweet">
+			<p lang="en" dir="ltr">I've ported <a href="https://t.co/2bfz7ph4Ex" target="_blank">https://t.co/2bfz7ph4Ex</a> to <a href="https://twitter.com/Cloudflare?ref_src=twsrc%5Etfw" target="_blank">@Cloudflare</a> Workers Sites and Zola! <a href="https://t.co/wqlZCy83Ze" target="_blank">https://t.co/wqlZCy83Ze</a></p>— steveklabnik (@steveklabnik) <a href="https://twitter.com/steveklabnik/status/1177613915200610309?ref_src=twsrc%5Etfw" target="_blank">September 27, 2019</a>
+		</blockquote>
+		<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+		<figcaption>これはJAMStackか？</figcaption>
+	</figure>
+	<p>まず、JAMStackとは何かという質問に答えましょう。JAMStackは、Mathias Biilmannが作った造語で、JavaScript、API、Markupを表します。JAMStackアプリケーションは、簡略化した静的サイトのデプロイに依存することで、非常に簡単に拡張できるようにすることを目的としています。また、従来はバックエンドで発生するデータ操作とレンダリングをフロントエンドに持ってきて、API呼び出しのみを介してバックエンドと連絡することで、特にフロントエンド開発者向けのWeb開発ワークフローを簡略化することを目的としています。</p>
+	<p>そういう意味では、これはJAMStackです。しかし、HTMLRewriterは、この考えをさらに一歩進めています。</p>
+	<h2 id="--1"><strong>エッジ：クライアントでもサーバーでもない</strong></h2>
+	<p>ほとんどのJAMStackアプリケーションは、サードパーティAPIへのクライアント側の呼び出しに依存しています。レンダリングはJavaScriptを使用してクライアント側で処理できるため、フロントエンド開発者は使い慣れたツールチェーンと言語を使用できます。ただしこれは、ページが読み込まれるたびに、クライアントはオリジンに移動し、HTMLとJSを待ってから、解析と読み込みを実行した後にAPIを複数回呼び出す必要があることを意味します。さらに、必然的にこれらすべての処理は、サーバーよりも強力なマシンではなく、ラストマイル接続が不安定になりうるクライアント側デバイスで行われます。</p>
+	<p>Workers内のHTMLRewriterを使用すれば、そうしたAPI呼び出しをエッジから行うことができるので、クライアント側デバイスの接続よりも失敗はずっと少なく、結果をキャッシュできることが多いです。そのうえ、Workers内でAPI自体を書いて、結果をHTMLに直接組み込むことができます。すべてを同じ強力なエッジマシン上で行うことができます。これらのマシンによるHTMLRewriterを使用した「エッジ側レンダリング」の実行は、デバイス自体ではなく常にエンドユーザーにできるだけ近い場所で行われるので、オリジンまで移動することによる遅延がなくなります。</p>
+	<h2 id="htmlrewriter-api-"><strong>HTMLRewriter APIはどのようなものか？</strong></h2>
+	<p>HTMLRewriterクラスは、Workersアプリケーション内のjQueryのようなイベントなので、HTMLを解析して変換するのに強力なJavaScript APIを用いて、開発者は非常に機能的なアプリケーションを構築できます。</p>
+	<p>HTMLRewriterを使用して、Webページ上のリンクをHTTPからHTTPSに書き換える方法の一例を以下に示します。</p>
+	<pre><code class="language-javascript">const REWRITER = new HTMLRewriter()
+    .on('a.avatar', { element:  e =&gt; rewriteUrl(e, 'href') })
+    .on('img', { element: e =&gt; rewriteUrl(e, 'src') });
+
+async function handleRequest(req) {
+  const res = await fetch(req);
+  return REWRITER.transform(res);
+}</code></pre>
+	<p>上記の例では、HTMLRewriterの新しいインスタンスを作成し、セレクターを使用して「a」と「img」のエレメントのすべてのインスタンスを検索し、「href」と「src」のプロパティそれぞれでrewriteURL関数を呼び出します。</p>
+	<p>国際化とローカリゼーションに関するチュートリアル：さらに詳しく知りたい方は、HTMLRewriterを使用してアプリケーションをi18nにとって使いやすいものにする方法についての<a href="https://developers.cloudflare.com/workers/tutorials/localize-a-website/" target="_blank">完全なチュートリアル</a>をご覧ください。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/09/i18n-htmlrewriter.jpg" class="kg-image"></figure>
+	<h2 id="--2"><strong>使用するにあたって</strong></h2>
+	<p>Cloudflare Workersをすでに使用している場合は、<a href="https://developers.cloudflare.com/workers/reference/apis/html-rewriter/" target="_blank">ドキュメント</a>（サインアップなどは必要ありません）を参照するだけで、HTMLRewriterを使い始めることができます。Cloudflare Workersを初めて使用する場合は、最初に<a href="https://workers.cloudflare.com/sign-up" target="_blank">こちら</a>からサインアップすることをお勧めします。</p>
+	<p>HTMLRewriterの詳しい仕組みについて知りたい方やDOMの解析について詳しく知りたい方は、今後の投稿にご期待ください。詳細については、今後の投稿でお知らせします。</p>
+	<p>それから、Workers Sites以外にも使用できるツールがあります。Cloudflare Workersは、あらゆるアプリケーションプロキシとして展開できるため、HTMLRewriterを既存のサイトを強化する簡潔な方法として使用して、バックエンドに関係なく動的エレメントを簡単に追加できます。</p>
+	<h2 id="--3"><strong>ご意見・ご感想をお待ちしております</strong></h2>
+	<p>当社では、お客様からのフィードバックに基づいて製品の品質向上に常に取り組んでいます。ご利用体験についての<a href="https://docs.google.com/forms/d/e/1FAIpQLSffHlmO_4iyvDU6KbPLpZ820gZBymIlbjq6KL-oZCC97cCnTw/viewform?usp=sf_link" target="_blank">アンケートのご記入</a>にご協力ください。</p>
+	<hr>
+	<p><em>Workersを使用して何か面白いものを構築しましたか？</em><a href="https://twitter.com/CloudflareDev/" target="_blank"><em>@CloudflareDev</em></a><em>までお知らせください。</em></p>
+</div>

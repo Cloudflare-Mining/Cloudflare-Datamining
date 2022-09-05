@@ -1,0 +1,97 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/Screen-Shot-2021-10-26-at-2.44.18-PM-8.png" class="kg-image"></figure>
+	<p>一瞬、「フェイスブックがダウンするなんてあり得ない … よね？」と思いました。</p>
+	<p>本日15:51（協定世界時）、Cloudflareは「Facebook DNS lookup returning SERVFAIL」と題した内部インシデントをオープンしました。当社のDNSリゾルバー<a href="https://developers.cloudflare.com/warp-client/" target="_blank">1.1.1.1</a>で何か異常が発生しているのではという懸念を抱いたからです。当社が<a href="https://www.cloudflarestatus.com/" target="_blank">公開ステータス</a>ページに、何かもっと深刻な事態が起こっていることに気が付いた旨の投稿をしようとしていた矢先に … 。</p>
+	<p>ソーシャルメディアが突如炎上。そこで、その投稿内容を当社のエンジニアもいち早く確認したところ、フェイスブックと関連サービスのワッツアップ、インスタグラムがすべて実際にダウンしていたのです。DNS名解決機能が停止し、インフラのIPは到達不能になっていました。まるで誰かがデータセンターの「ケーブルを一気に抜いた」ように、インターネットとの接続が切れたのです。</p>
+	<p>これ自体はDNSの問題ではありませんでした。DNSの不具合は私たちが最初に気づいた症状であって、フェイスブックではもっと大規模な障害が発生していました。</p>
+	<p>どうしてあんなことに？</p>
+	<h3 id="-">フェイスブックからの最新情報</h3>
+	<p>フェイスブックからは既に<a href="https://engineering.fb.com/2021/10/04/networking-traffic/outage/" target="_blank">ブログ投稿</a>があり<a href="https://engineering.fb.com/2021/10/04/networking-traffic/outage/" target="_blank">、</a>内部で何が起こったかについてある程度の詳細が明らかにされています。外部に関しても、BGPやDNSの問題について説明がありました。しかし、事の始まりは実は内部バックボーン全体を左右する構成変更でした。その影響が連鎖式に広がり、フェイスブックと他のプロパティが消えて、フェイスブック内部スタッフが復旧に躍起になる事態を引き起こしたのです。</p>
+	<p>フェイスブックは<a href="https://engineering.fb.com/2021/10/05/networking-traffic/outage-details/" target="_blank">別のブログ投稿</a>で、 事態のさらなる詳細を公開しました。それを読めば、内側から見た状況がわかります。ここでは、外部から見た状況についてお話します。</p>
+	<h3 id="bgp-">BGPについて</h3>
+	<p><a href="https://www.cloudflare.com/learning/security/glossary/what-is-bgp/" target="_blank">BGP</a>はBorder Gateway Protocolの略で、インターネット上にある自律システム（AS）間の経路情報交換のメカニズムをいいます。インターネットを機能させる大型ルーターは、一つひとつのネットワークパケットを最終目的地まで送り届けるために利用できる経路のリストを持っており、そのリストは長大で常に更新されています。BGPがなければ、インターネットルーターはどう動作すべきかわからず、インターネットは機能しません。</p>
+	<p>インターネットは文字通りネットワークのネットワークで、BGPとは切っても切り離せません。BGPによって、ネットワーク（たとえばフェイスブック）はその存在を他のネットワークに広報でき、それがインターネットを形成します。この原稿を書いている現在、フェイスブックはその存在を広報していません。ISPやその他のネットワークはフェイスブックのネットワークを見つけることができないために、利用できないのです。</p>
+	<p>ネットワークにはそれぞれASN（自律システム番号）があります。自律システム（AS）は統合された内部ルーティングポリシーを持つ個々のネットワークです。ASでは、プレフィックスの作成（IPアドレスグループを管理している場合など）やトランジット（特定グループのIPアドレスへの到達方法を知っている場合など）を行うことができます。</p>
+	<p>CloudflareのASNは<a href="https://www.peeringdb.com/asn/13335" target="_blank">AS13335</a>です。各ASNはBGPを使ってプレフィックスルートをインターネットに広報する必要があり、それをしなければ誰も接続方法や場所を知ることはできません。</p>
+	<p>当社の<a href="https://www.cloudflare.com/learning/" target="_blank">ラーニングセンター</a>には、<a href="https://www.cloudflare.com/learning/security/glossary/what-is-bgp/" target="_blank">BGP</a>と<a href="https://www.cloudflare.com/ja-jp/learning/network-layer/what-is-an-autonomous-system/" target="_blank">ASN</a> が何であるか、どのような仕組みになっているかについて概説した良い資料があります。</p>
+	<p>この簡略図は、インターネット上の6つの自律システムと、1つのパケットが始点から終点まで行くのに使える2つの経路を示しています。AS1 → AS2 → AS3 が最も速い経路です。AS1 → AS6 → AS5 → AS4 → AS3 は最も遅い経路ですが、最初の経路で障害が発生した際に使えます。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/10/image5-10.png" class="kg-image"></figure>
+	<p>15:58（協定世界時）現在、フェイスブックからDNSプレフィックスへの経路広報は停止しています。つまり、少なくともフェイスブックのDNSサーバーは利用できない状態にあるということです。そのためCloudflareの1.1.1.1DNSリソルバーは、facebook.comのIPアドレスを求めるクエリーに応答できなくなっています。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>route-views&gt;show ip bgp 185.89.218.0/23
+% Network not in table
+route-views&gt;
+
+route-views&gt;show ip bgp 129.134.30.0/23
+% Network not in table
+route-views&gt;
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>一方、フェイスブックの他のIPアドレスについてはルーティングが維持されていますが、DNSがなければフェイスブックと関連のサービスは事実上利用不可能ですので、あまり有用ではありません。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>route-views&gt;show ip bgp 129.134.30.0   
+BGP routing table entry for 129.134.0.0/17, version 1025798334
+Paths: (24 available, best #14, table default)
+  Not advertised to any peer
+  Refresh Epoch 2
+  3303 6453 32934
+    217.192.89.50 from 217.192.89.50 (138.187.128.158)
+      Origin IGP, localpref 100, valid, external
+      Community: 3303:1004 3303:1006 3303:3075 6453:3000 6453:3400 6453:3402
+      path 7FE1408ED9C8 RPKI State not found
+      rx pathid: 0, tx pathid: 0
+  Refresh Epoch 1
+route-views&gt;
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Cloudflareでは、当社のグローバルネットワーク内で行われるBGPの更新や広報をすべて追跡しています。規模が大きな当社が収集するデータを見れば、地球上のどこであろうと、インターネットの接続状態や、トラフィックがどこからどこへ流れることになっているのかがわかります。</p>
+	<p>BGP UPDATEというメッセージは、プレフィックス広報に何らかの変更が加えられたり、プレフィックス自体が取り消されたりしたことをルーターへ知らせるものです。そうした動きは、時系列BGPデータベースをチェックする際にフェイスブックから受け取る更新の回数にはっきり見てとれます。このチャートは普段はあまり波がありません。フェイスブックは分単位でネットワークに多くの変更を加えたりしないからです。</p>
+	<p>ところが、15:40（協定世界時）頃にフェイスブックからの経路変更が急増しました。トラブルが始まった瞬間です。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/10/image4-11.png" class="kg-image"></figure>
+	<p>経路広報と取り消しの内訳を見ると、何が起こったのかをもっと詳しく知ることができます。経路が取り消され、フェイスブックのDNSサーバーがオフライン状態に陥りました。そして問題発生から1分後には、Cloudflareのエンジニアが部屋に集まって、1.1.1.1がfacebook.comを解決できない原因について首を傾げ、当社システムに何かしらの障害があったのではと心配していました。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/10/image3-9.png" class="kg-image"></figure>
+	<p>それらの取り消しによって、フェイスブックとそのサイトは事実上、インターネット接続を切っていました。</p>
+	<h3 id="dns-">DNSへの影響</h3>
+	<p>このことの直接の結果として、世界中のDNSリゾルバーがドメイン名の解決を停止しました。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>➜  ~ dig @1.1.1.1 facebook.com
+;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: SERVFAIL, id: 31322
+;facebook.com.			IN	A
+➜  ~ dig @1.1.1.1 whatsapp.com
+;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: SERVFAIL, id: 31322
+;whatsapp.com.			IN	A
+➜  ~ dig @8.8.8.8 facebook.com
+;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: SERVFAIL, id: 31322
+;facebook.com.			IN	A
+➜  ~ dig @8.8.8.8 whatsapp.com
+;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: SERVFAIL, id: 31322
+;whatsapp.com.			IN	A
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>このような事態となったのは、インターネット上の他の多くのシステムと同様に、DNSにもルーティング機構があるからです。誰かが<a href="https://facebook.com/" target="_blank">https://facebook.com</a>というURLをブラウザに入力すると、ドメイン名を実際の接続先IPアドレスに変換するDNSリゾルバーが、まずキャッシュ内をチェックして、あればそれを使います。なければ、ドメインネームサーバー（通常は所有する事業体がホスト）から答えを得ようとします。</p>
+	<p>他の何らかの理由でネームサーバーか到達不能であるか応答に失敗した場合は、SERVFAILというメッセージが返ってきて、ブラウザはユーザーへエラー通知を出します。</p>
+	<p>これに関しても、当社ラーニングセンターにDNSの仕組みの<a href="https://www.cloudflare.com/ja-jp/learning/dns/what-is-dns/" target="_blank">わかりやすい説明</a>を掲載しています。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/10/image8-8.png" class="kg-image"></figure>
+	<p>フェイスブックがBGPによるDNSプレフィックスルートの広報を停止したため、当社も含めすべてのDNSリゾルバーはそれぞれのネームサーバーに接続できなくなりました。その結果、1.1.1.1、8.8.8.8、その他の主要なパブリックDNSリゾルバーが、SERVFAILという応答（とキャッシュ）を開始しました。</p>
+	<p>しかし、事態はこれで収束ではありません。人間の挙動とアプリケーションロジックがここで作用し始め、別の急激な影響をもたらします。追加のDNSトラフィックが津波のように押し寄せるのです。</p>
+	<p>これには、アプリケーションがエラーを答えとして受け入れず、再試行を始め、時には何度も繰り返すことや、エンドユーザーもエラーを答えとして受け入れず、ページの再読み込みを始めるかアプリを閉じて再起動し始め、時にはそれを何度も繰り返すことが要因として挙げられます。</p>
+	<p>下図で示すのが、1.1.1.1で見られたトラフィックの増加（リクエスト数で計測）でした。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/10/image6-9.png" class="kg-image"></figure>
+	<p>フェイスブックとそのサイトは規模が大きいため、現在、当社のDNSリゾルバーは世界中で通常の30倍ものクエリーを処理しており、他のプラットフォームに遅延やタイムアウトが起こる可能性があります。</p>
+	<p>幸い1.1.1.1は「無料、プライベート、高速」を旨として構築され（独立系DNSモニターの<a href="https://www.dnsperf.com/%23!dns-resolvers" target="_blank">DNSPerf</a>が証明済み)、スケーラブルなため、当社ユーザーへの影響は最小限で配信の継続は可能でした。</p>
+	<p>当社のDNSリクエストの大半は、終始10ミリ秒未満で解決されました。一方、応答時間が延びたのは95パーセンタイルと99パーセンタイルと、ごくわずかでした。この延びはおそらく、TTLの期限切れによりフェイスブックのネームサーバーとタイムアウトに頼らなければならなかったからだと思われます。10秒のDNSタイムアウト制限は、エンジニアの間ではよく知られています。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/10/image2-11.png" class="kg-image"></figure>
+	<h3 id="--1">その他のサービスへの影響</h3>
+	<p>人は代替手段を探し、起こっている事象について知り、話し合いたいと思うものです。フェイスブックが到達不能になった時、Twitter、Signal、その他のメッセージング·ソーシャルメディアプラットフォームへのDNSクエリーが増加し始めました。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/10/image1-12.png" class="kg-image"></figure>
+	<p>この到着不能状態のもう一つの副作用が、影響のあったフェイスブックのASN 32934を発信元および受信先とする当社のWARPトラフィックに見られました。下図は、15:45から16:45（協定世界時）にかけて各国のトラフィックがどう変化したかを、その3時間前と比較して示しています。世界中で、フェイスブックのネットワークを発信元または受信先とするWARPトラフィックが忽然と消えています。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/10/image7-6.png" class="kg-image"></figure>
+	<h3 id="--2">インターネット</h3>
+	<p>本日の出来事は、インターネットが数百万ものシステムとプロトコルが連携して機能する非常に複雑で相互依存性のシステムであることを、改めて認識する機会となりました。信頼性、標準化、関係事業体間の協力が中核にあればこそ、世界中で50億近いアクティブユーザーの実用に足るのです。</p>
+	<h3 id="--3">更新</h3>
+	<p>21:00（協定世界時）頃にフェースブックネットワークからのBGPアクティビティが再開し、21:17にピークがありました。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/10/unnamed-3-3.png" class="kg-image"></figure>
+	<p>下図は、CloudflareのDNSリゾルバー1.1.1.1におけるDNS名「facebook.com」の可用性を示しています。15:50（協定世界時）頃に利用不能となり、復帰は21:20でした。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/10/unnamed-4.png" class="kg-image"></figure>
+	<p>フェイスブック、ワッツアップ、インスタグラムのサービスが再びオンラインになるまでには、当然ながらまだ時間がかかりますが、21:28現在、フェイスブックはグローバルインターネットに再接続され、DNSも機能しているようです。</p>
+</div>

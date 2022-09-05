@@ -1,0 +1,230 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/12/image-64.png" class="kg-image"></figure>
+	<p>今天，我们宣布DDoS攻击警报现已可用。所有付费计划的Cloudflare客户都可以免费获得这些提醒。</p>
+	<h3 id="-ddos-">无计量DDoS防护</h3>
+	<p>上周，我们在<a href="https://blog.cloudflare.com/welcome-to-birthday-week-2020/">生日周</a>上庆祝了Cloudflare的10岁生日。每年，在生日周的每一天，我们都会发布一款新产品，我们的目标是帮助互联网变得更好 – 更安全且更快捷。为了实现这一目标，多年来，我们通过向所有人免费（或以非常低的费用）提供这些产品，使以前只有大企业才能使用的产品变得大众化。例如，在2017年Cloudflare 7岁生日时，我们发布了<a href="https://blog.cloudflare.com/unmetered-mitigation/">免费的无计量DDoS保护</a>，使之成为Cloudflare每个产品和计划的一部分，<strong>包括免费计划</strong>。</p>
+	<p><a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/" target="_blank">DDoS攻击</a>旨在瘫痪网站或在线服务，使之无法对公众开放。我们希望确保每个组织和每个网站都是可用的和可访问的，不管他们是否负担得起企业级DDoS防护。这一直是我们使命的核心部分。在过去10年里，我们在DDoS保护功能上投入了大量资金，今后我们还将继续这样做。</p>
+	<h3 id="-ddos--1">实时DDoS攻击警报</h3>
+	<p>我最近发布了一些博客，<a href="https://blog.cloudflare.com/rolling-with-the-punches-shifting-attack-tactics-dropping-packets-faster-cheaper-at-the-edge/">深入介绍了我们的DDoS保护系统</a>。这些系统自主运行，无需任何人工干预即可检测和缓解攻击。正如七月份的<a href="https://blog.cloudflare.com/moobot-vs-gatebot-cloudflare-automatically-blocks-botnet-ddos-attack-topping-at-654-gbps/">654 Gbps</a>攻击和六月份的<a href="https://blog.cloudflare.com/mitigating-a-754-million-pps-ddos-attack-automatically/">754 Mpps</a>攻击案例。我们成功地阻止了DDoS攻击，还为用户提供了有关攻击的重要分析和见解，但我们的客户也希望在他们受到DDoS攻击时得到实时通知。</p>
+	<p>所以今天，我们很高兴地宣布DDoS警报的可用性。下表列出了当前这一服务按Cloudflare计划类型的交付方式。未来我们将提供更多的交付方式。</p>
+	<h4 id="-">基于计划的交付方式</h4>
+	<!--kg-card-begin: html-->
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-7btt" rowspan="2"><br>
+					<font style="vertical-align: inherit;">
+						<font style="vertical-align: inherit;">交付方式</font>
+					</font>
+				</th>
+				<th class="tg-7btt" colspan="4">
+					<font style="vertical-align: inherit;">
+						<font style="vertical-align: inherit;">计划</font>
+					</font>
+				</th>
+			</tr>
+			<tr>
+				<td class="tg-7btt">
+					<font style="vertical-align: inherit;">
+						<font style="vertical-align: inherit;">Free</font>
+					</font>
+				</td>
+				<td class="tg-7btt">
+					<font style="vertical-align: inherit;">
+						<font style="vertical-align: inherit;">Pro</font>
+					</font>
+				</td>
+				<td class="tg-7btt">
+					<font style="vertical-align: inherit;">
+						<font style="vertical-align: inherit;">Business</font>
+					</font>
+				</td>
+				<td class="tg-7btt">
+					<font style="vertical-align: inherit;">
+						<font style="vertical-align: inherit;">Enterprise</font>
+					</font>
+				</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-7btt">
+					<font style="vertical-align: inherit;">
+						<font style="vertical-align: inherit;">电子邮件</font>
+					</font>
+				</td>
+				<td class="tg-c3ow">
+					<font style="vertical-align: inherit;">
+						<font style="vertical-align: inherit;">❌</font>
+					</font>
+				</td>
+				<td class="tg-c3ow">
+					<font style="vertical-align: inherit;">
+						<font style="vertical-align: inherit;">✅</font>
+					</font>
+				</td>
+				<td class="tg-c3ow">
+					<font style="vertical-align: inherit;">
+						<font style="vertical-align: inherit;">✅</font>
+					</font>
+				</td>
+				<td class="tg-c3ow">
+					<font style="vertical-align: inherit;">
+						<font style="vertical-align: inherit;">✅</font>
+					</font>
+				</td>
+			</tr>
+			<tr>
+				<td class="tg-7btt">
+					<font style="vertical-align: inherit;">
+						<font style="vertical-align: inherit;">PagerDuty</font>
+					</font>
+				</td>
+				<td class="tg-c3ow">
+					<font style="vertical-align: inherit;">
+						<font style="vertical-align: inherit;">❌</font>
+					</font>
+				</td>
+				<td class="tg-c3ow">
+					<font style="vertical-align: inherit;">
+						<font style="vertical-align: inherit;">❌</font>
+					</font>
+				</td>
+				<td class="tg-c3ow">
+					<font style="vertical-align: inherit;">
+						<font style="vertical-align: inherit;">✅</font>
+					</font>
+				</td>
+				<td class="tg-c3ow">
+					<font style="vertical-align: inherit;">
+						<font style="vertical-align: inherit;">✅</font>
+					</font>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: html-->
+	<p>DDoS警报有两种类型：HTTP DDoS警报和L3/4 DDoS警报。您订阅的Cloudflare服务决定了您是否可以获得其中一项或两项警报服务。下表按Cloudflare服务计划列出了警报类型。</p>
+	<h4 id="--1">基于服务的警报类型</h4>
+	<!--kg-card-begin: html-->
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-uzvj" rowspan="2"><br>
+					<font style="vertical-align: inherit;">
+						<font style="vertical-align: inherit;">警报类型</font>
+					</font>
+				</th>
+				<th class="tg-uzvj" colspan="4">
+					<font style="vertical-align: inherit;">
+						<font style="vertical-align: inherit;">服务</font>
+					</font>
+				</th>
+			</tr>
+			<tr>
+				<td class="tg-uzvj">
+					<font style="vertical-align: inherit;">
+						<font style="vertical-align: inherit;">WAF/CDN</font>
+					</font>
+				</td>
+				<td class="tg-uzvj">
+					<font style="vertical-align: inherit;">
+						<font style="vertical-align: inherit;">Spectrum</font>
+					</font>
+				</td>
+				<td class="tg-uzvj">
+					<font style="vertical-align: inherit;">
+						<font style="vertical-align: inherit;">Spectrum BYOIP</font>
+					</font>
+				</td>
+				<td class="tg-uzvj">
+					<font style="vertical-align: inherit;">
+						<font style="vertical-align: inherit;">Magic Transit</font>
+					</font>
+				</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-uzvj">
+					<font style="vertical-align: inherit;">
+						<font style="vertical-align: inherit;">HTTP DDoS警报</font>
+					</font>
+				</td>
+				<td class="tg-9wq8">
+					<font style="vertical-align: inherit;">
+						<font style="vertical-align: inherit;">✅</font>
+					</font>
+				</td>
+				<td class="tg-9wq8">
+					<font style="vertical-align: inherit;">
+						<font style="vertical-align: inherit;">❌</font>
+					</font>
+				</td>
+				<td class="tg-9wq8">
+					<font style="vertical-align: inherit;">
+						<font style="vertical-align: inherit;">❌</font>
+					</font>
+				</td>
+				<td class="tg-9wq8">
+					<font style="vertical-align: inherit;">
+						<font style="vertical-align: inherit;">❌</font>
+					</font>
+				</td>
+			</tr>
+			<tr>
+				<td class="tg-uzvj">
+					<font style="vertical-align: inherit;">
+						<font style="vertical-align: inherit;">L3/4 DDoS警报</font>
+					</font>
+				</td>
+				<td class="tg-9wq8">
+					<font style="vertical-align: inherit;">
+						<font style="vertical-align: inherit;">即将推出</font>
+					</font>
+				</td>
+				<td class="tg-9wq8">
+					<font style="vertical-align: inherit;">
+						<font style="vertical-align: inherit;">✅</font>
+					</font>
+				</td>
+				<td class="tg-9wq8">
+					<font style="vertical-align: inherit;">
+						<font style="vertical-align: inherit;">✅</font>
+					</font>
+				</td>
+				<td class="tg-9wq8">
+					<font style="vertical-align: inherit;">
+						<font style="vertical-align: inherit;">✅</font>
+					</font>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: html-->
+	<h3 id="-ddos--2">创建DDoS警报策略</h3>
+	<p>为了接收以您的Cloudflare保护的互联网属性为目标的DDoS攻击警报，您必须先<a href="https://dash.cloudflare.com/?to=/:account/notifications/create" target="_blank">创建一个通知</a>策略。步骤快速简便：</p>
+	<ol>
+		<li>登录到您的Cloudflare帐户信息中心：<a href="https://dash.cloudflare.com/" target="_blank">https://dash.cloudflare.com</a></li>
+		<li>在帐户主页中，导航到“<strong>通知</strong>”选项卡</li>
+		<li>在通知选项卡中，点击<strong>创建</strong></li>
+		<li>命名你的通知，添加一个可选的描述，和收件人的电子邮件地址。</li>
+	</ol>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/12/image1.gif" class="kg-image"></figure>
+	<p>如果您使用的是Business计划或更高的计划，则需要在创建警报策略之前<a href="https://support.cloudflare.com/hc/en-us/articles/360047358211-Connecting-PagerDuty-to-Cloudflare" target="_blank">连接到PagerDuty</a>。完成此操作后，您可以选择将警报发送到PagerDuty服务。</p>
+	<h3 id="--2">接收警报，查看攻击，并给出反馈</h3>
+	<p>在开发和设计警报模板时，我们采访了许多客户，以了解哪些信息对他们来说是重要的，什么使警报有用且易于理解。我们特意精简了警报。电子邮件的主题也很简单：<strong>检测到DDoS攻击</strong>，警报邮件仅从我们的官方邮箱地址发送：<strong><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1e70716c7b6e72675e70716a777867307d72716b7a78727f6c7b">[email&nbsp;protected]</a>[dot]com</strong>。您可以将此邮箱地址添加到您的受信任电子邮件地址列表中，以确保您不会错过警报。</p>
+	<p>该警报包括以下信息：</p>
+	<ol>
+		<li>对事件的简短描述</li>
+		<li>我们的系统最初检测到并缓解攻击的日期和时间</li>
+		<li>攻击类型</li>
+		<li>触发警报时的最大攻击速率</li>
+		<li>攻击目标</li>
+	</ol>
+	<p>当您收到警告时，攻击可能正在进行，因此我们还提供了一个在Cloudflare控制面板上查看攻击的链接，以及一个提供有关保护和可见性的反馈的链接。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/12/image-66.png" class="kg-image"></figure>
+	<h3 id="--3">我们希望得到您的反馈！</h3>
+	<p>我们希望您对我们的DDoS保护解决方案提供反馈。当您收到DDoS警报时，您将收到一个可提交反馈的链接。衡量用户满意度有助于我们打造更好的产品。您的反馈意见可以帮助我们衡量用户对Cloudflare DDoS防护和我们在控制面板中提供的攻击分析的满意度。用户满意度是我们密切监控的DDoS防护服务的主要关键绩效指标（KPI）之一。因此，请提供您的反馈，帮助我们更好地为每个人提供DDoS保护。</p>
+	<p>还未成为Cloudflare客户吗？<a href="https://dash.cloudflare.com/sign-up" target="_blank">点击注册</a>即可开始使用。</p>
+</div>

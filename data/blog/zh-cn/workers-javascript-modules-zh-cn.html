@@ -1,0 +1,178 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image1-101.png" class="kg-image" alt="Cloudflare Workers 现已支持 JavaScript 模块。"></figure>
+	<p>我们很高兴地宣布，Cloudflare Workers 上现已支持 JavaScript 模块。如果您看过使用 JavaScript 编写的示例 Worker，您可能能够认出过去几年一直在互联网上流传的以下代码片段：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">addEventListener("fetch", (event) =&gt; {
+  event.respondWith(new Response("Hello Worker!"));
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>以上语法称为“<a href="https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API" target="_blank">Service Worker</a>”API，它需要进行标准化以用于 Web 浏览器。具体想法是您可以将 JavaScript 文件附加到网页以修改其 HTTP 请求和响应，充当虚拟端点。这恰好是 Workers 所需的，甚至能够很好地与 <a href="https://developers.cloudflare.com/workers/runtime-apis/fetch" target="_blank"><code>fetch()</code></a> 和 <a href="https://developers.cloudflare.com/workers/runtime-apis/cache" target="_blank"><code>caches</code></a> 之类的标准 Web API 集成。</p>
+	<p>介绍模块之前，我们想明确的是，我们会继续支持 Service Worker API。作为开发者，您肯定不愿意收到电子邮件称<em>您</em>由于某个 API 或功能被停用而需要重写<em>您的</em>代码；我们不会向您发送这样的电子邮件。如果您有兴趣了解我们为何会做出这个决定，您可以阅读我们对于 Workers <a href="https://blog.cloudflare.com/backwards-compatibility-in-cloudflare-workers/">向后兼容性</a>的承诺。</p>
+	<h3 id="javascript-">JavaScript 模块是什么？</h3>
+	<p>JavaScript 模块也称为 ECMAScript（缩略为“ES”）模块，是用于在 JavaScript 中导入和导出代码的标准 API。这是 JavaScript 的“ES6”语言规范引入的，已由大部分 Web 浏览器、Node.js、Deno 实施，现在，Cloudflare Workers 也实施了该模块。下面的例子演示了其工作方式：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">// filename: ./src/util.js
+export function getDate(time) {
+  return new Date(time).toISOString().split("T")[0]; // "YYYY-MM-DD"
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>“export”关键字指示“getDate”函数应该从当前模块中导出。然后，您可以使用另一个模块中的“import”来使用该函数。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">// filename: ./src/index.js
+import { getDate } from "./util.js"
+
+console.log("Today’s date:", getDate());
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>这些是基本操作，但您还可以使用模块执行更多操作。您可以很优雅地整理、维护和复用您的代码，效果也很不错。虽然我们无法在这里探讨模块的<em>每个</em>方面，但如果您想了解更多信息，我们鼓励您阅读有关模块的 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules" target="_blank">MDN 指南</a>，或 Lin Clark 所写的<a href="https://hacks.mozilla.org/2018/03/es-modules-a-cartoon-deep-dive/" target="_blank">技术深入研究</a>。</p>
+	<h3 id="-workers-">我如何在 Workers 中使用模块？</h3>
+	<p>您可以导出默认模块，它将代表您的 Worker。不再使用“addEventListener”，每个事件处理程序会定义为该模块上的函数。现在我们支持将“<a href="https://developers.cloudflare.com/workers/runtime-apis/fetch-event#syntax-module-worker" target="_blank">fetch</a>”用于 HTTP 和 WebSocket 请求，并将“<a href="https://developers.cloudflare.com/workers/runtime-apis/scheduled-event#syntax-module-worker" target="_blank">scheduled</a>”用于 cron 触发器。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">export default {
+  async fetch(request, environment, context) {
+    return new Response("I’m a module!");
+  },
+  async scheduled(controller, environment, context) {
+    // await doATask();
+  }
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>您还可能注意到其他一些差异，例如每个事件处理程序上的参数。您最需要的参数各自分散开，而不是使用单个“Event”对象。第一个参数特定于事件类型：对于“fetch”，为 <a href="https://developers.cloudflare.com/workers/runtime-apis/request" target="_blank">Request</a> 对象，对于“scheduled”，为包含 cron 计划的 <a href="https://developers.cloudflare.com/workers/runtime-apis/scheduled-event#properties-1" target="_blank">controller</a>。</p>
+	<p>第二个参数是包含环境变量的对象（也称为“<a href="https://developers.cloudflare.com/workers/platform/environment-variables" target="_blank">bindings</a>”）。之前，每个变量插入到 Worker 的全局作用域。虽然这是简单的解决方案，但变量像变魔术一样出现在代码中会让人感到困惑。现在，使用环境对象，您可以控制哪些模块和库可访问您的环境变量。这种机制更安全，因为它可以防止遭入侵或不安分的第三方库枚举您的所有变量或密钥。</p>
+	<p>第三个参数是上下文对象，允许您使用 <a href="https://developers.cloudflare.com/workers/runtime-apis/fetch-event#waituntil" target="_blank">waitUntil()</a> 注册后台任务。这很适合那些不得阻止事件执行的任务，如日志记录或错误报告。</p>
+	<p>综合使用上述代码，您可以导入和导出多个模块，以及使用新的事件处理程序语法。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">// filename: ./src/error.js
+export async function logError(url, error) {
+  await fetch(url, {
+     method: "POST",
+     body: error.stack
+  })
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">// filename: ./src/worker.js
+import { logError } from "./error.js"
+
+export default {
+  async fetch(request, environment, context) {
+    try {
+       return await fetch(request);
+    } catch (error) {
+       context.waitUntil(logError(environment.ERROR_URL, error));
+       return new Response("Oops!", { status: 500 });
+    }
+  }
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>别忘了在本周早些时候已<a href="https://blog.cloudflare.com/zh-cn/durable-objects-ga-zh-cn/">广泛可用</a>的 Durable Objects！您还可以导出类，通过这种方式来定义 Durable Object 类。下面是“Counter”Durable Object 的另一个示例，使用递增值进行响应。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">// filename: ./src/counter.js
+export class Counter {
+  value = 0;
+  fetch() {
+    this.value++;
+    return new Response(this.value.toString());
+  }
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">// filename: ./src/worker.js
+// We need to re-export the Durable Object class in the Worker module.
+export { Counter } from "./counter.js"
+
+export default {
+  async fetch(request, environment) {
+    const clientId = request.headers.get("cf-connecting-ip");
+    const counterId = environment.Counter.idFromName(clientId);
+    // Each IP address gets its own Counter.
+    const counter = environment.Counter.get(counterId);
+    return counter.fetch("https://counter.object/increment");
+  }
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h3 id="-javascript-">有非 JavaScript 模块吗？</h3>
+	<p>有！虽然模块主要用于 JavaScript，但我们还支持其他模块类型，其中一些尚未标准化。</p>
+	<p>例如，您可以导入 <a href="https://developer.mozilla.org/en-US/docs/WebAssembly" target="_blank">WebAssembly</a> 作为一个<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/Module/Module#synchronously_compiling_a_webassembly_module" target="_blank">模块</a>。之前，利用 Service Worker API，WebAssembly 包含为绑定。我们认为这是错误的，因为 WebAssembly 应该表示为代码，而不是外部资源。下面是利用模块导入 WebAssembly 的新方式：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">import module from "./lib/hello.wasm"
+
+export default {
+  async fetch(request) {
+    const instance = await WebAssembly.instantiate(module);
+    const result = instance.exports.hello();
+    return new Response(result);
+  }
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>虽然目前不支持，但我们计划在未来可以更紧密地集成 WebAssembly 和 JavaScript 模块，如该<a href="https://github.com/WebAssembly/esm-integration/tree/main/proposals/esm-integration#webassemblyes-module-integration" target="_blank">提议</a>中所概述。下面所示的人体工程学改进能够发挥非常大的作用，促进在 JavaScript 生态系统中更多地包含 WebAssembly。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">import { hello } from "./lib/hello.wasm"
+
+export default {
+  async fetch(request) {
+    return new Response(hello());
+  }
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>我们还增加了对文本和二进制模块的支持，这些模块分别允许您导入 <code>String</code> 和 <code>ArrayBuffer</code>。虽然这些模块未标准化，但可让您轻松导入 HTML 文件或图像之类的资源。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-html">&lt;!-- filename: ./public/index.html --&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;&lt;body&gt;
+&lt;p&gt;Hello!&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">import html from "../public/index.html"
+
+export default {
+  fetch(request) {
+    if (request.url.endsWith("/index.html") {
+       return new Response(html, {
+          headers: { "Content-Type": "text/html" }
+       });
+    }
+    return fetch(request);
+  }
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h3 id="-">我如何开始？</h3>
+	<p>有许多方法可以开始使用模块。</p>
+	<p>首先，您可以在浏览器中使用 <a href="https://cloudflareworkers.com/#a47f44190209e87bc95d5127ae0b2c84:https://welcome.developers.workers.dev" target="_blank">playground</a>（这不需要帐户）或通过使用仪表板<a href="https://workers.new/" target="_blank">快速编辑器</a>试用模块。浏览器将自动检测您何时在使用模块，以允许您从 Service Worker API 无缝切换。目前，您只能在浏览器中创建一个 JavaScript 模块，不过我们很快会加以改进，以支持多个模块。</p>
+	<p>如果您有冒险精神，想要使用模块开始<em>新</em>项目，您可以试用测试版 <a href="https://blog.cloudflare.com/zh-cn/wrangler-v2-beta-zh-cn/">wrangler 2.0</a>，这是适用于 Workers 的下一代命令行界面 (CLI)。</p>
+	<p>对于现有项目，我们仍推荐使用 <a href="https://github.com/cloudflare/wrangler" target="_blank">wrangler 1.0</a>（版本 1.17 或更高版本）。要启用模块，您可以按以下示例调整“<a href="https://developers.cloudflare.com/workers/cli-wrangler/configuration#modules" target="_blank">wrangler.toml</a>”配置：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-toml">name = "my-worker"
+type = "javascript"
+workers_dev = true
+
+[build.upload]
+format = "modules"
+dir = "./src"
+main = "./worker.js" # becomes "./src/worker.js"
+
+[[build.upload.rules]]
+type = "ESModule"
+globs = ["**/*.js"]
+
+# Uncomment if you have a build script.
+# [build]
+# command = "npm run build"
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>我们更新了<a href="https://developers.cloudflare.com/workers/" target="_blank">文档</a>，以提供有关<a href="https://developers.cloudflare.com/workers/runtime-apis/fetch-event#syntax-module-worker" target="_blank">模块</a>的更多详细信息，不过在我们过渡为显示两种格式时，一些示例仍使用 Service Worker API。（还有意外收获，就是 TypeScript！）</p>
+	<p>如果您遇到模块问题或注意到模块的异常情况，请告诉我们，我们会进行检查。祝您编码愉快，我们很期待看到您使用模块构建的成果！</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image2-72.png" class="kg-image"></figure>
+</div>

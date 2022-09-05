@@ -1,0 +1,162 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/Magic-IoT.png" class="kg-image"></figure>
+	<p>您的房子里可能有一个不安全的设备，带有可被利用的漏洞。还有您的办公室。甚至是您孩子的学校。相机、打印机、音箱、门禁读卡器、温度计和甚至心脏监控器……这些设备都是或可能是物联网（IoT）设备。这些物联网设备无缝集成到我们的现代生活中，以提高效率和对我们环境的控制——但它们出了名的不安全。这是因为设备硬件本质上受到约束且计算能力有限，往往导致最低程度的访问控制、硬编码的密码且无法远程打补丁。</p>
+	<p>这一威胁的现实有可能产生严重后果。例如，在 2016 年的 <a href="https://blog.cloudflare.com/inside-mirai-the-infamous-iot-botnet-a-retrospective-analysis/">Mirai 僵尸网络攻击</a>中，黑客利用数百万个物联网设备来组成一个大规模的僵尸网络，足以发动能导致互联网大部分瘫痪的 DDoS 攻击，包括推特、英国卫报和 CNN。这种攻击绝不罕见。Cloudflare 在 2021 年 3 月亲身体验了这一现实，当时我们潜在的物理安全摄像头供应商之一 Verkada 遭到入侵，一名黑客得以访问 Verkada 远程管理摄像头的内部支持工具，从而能够横向移动到网络中的其他设备。庆幸的是，Cloudflare 使用的一个 Zero Trust 模型<a href="https://blog.cloudflare.com/about-the-march-8-9-2021-verkada-camera-hack/">阻止了黑客的横向移动</a>；这次事件仅影响到摄像头，而非任何其他东西。</p>
+	<p>但即使我们没有受到影响，我们也将这一事件视为一个挑战，进一步推进我们的安全产品。因此，我们自问：能否使用我们自己的产品来保护物联网设备本身——即使它们与生产系统位于同一个网络上——从而确保这些出名不安全的设备一旦遭到入侵时会被隔离？使用 Cloudflare One，答案是肯定的。</p>
+	<h3 id="-"><strong>当前解决方案：充满复杂性的安全</strong></h3>
+	<h3 id="zero-trust-">Zero Trust 模型</h3>
+	<p>如前所述，Cloudflare 之所以没有受到一次物联网设备入侵的影响，是因为我们使用了一个 Zero Trust 模型。如果环境方面的考虑适合，例如在 Cloudflare 的公司办公室，企业网络可以利用一个 Zero Trust 模型进行隔离。访问网络的任何其他部分都要求进行访问验证，从而防止了横向移动。鉴于物联网设备本身没有被隔离，必须特别注意将所有其他网络入口置于 Zero Trust 保护之后。</p>
+	<p>然而，并非所有环境都能被如此尽职地控制。以数据中心为例。由于其他供应商的存在、老旧生产网络的复杂性以及机器对机器连接普遍存在，安装物联网设备时（例如门禁读卡器或摄像头），我们无法像公司办公室一样提供相同的 Zero Trust 安全保证。随着环境的复杂性增加，成功部署 Zero Trust 模型来阻止来自物联网设备的成功横向移动只会变得难上加难。</p>
+	<h4 id="vlan">VLAN</h4>
+	<p>很多企业利用带外网络或虚拟局域网（VLAN）将其物联网设备部署在与生产完全独立的网络上。虽然 VLAN 在第 2 层创建隔离，它们需要其上游路由接口的访问列表来限制第 3 层流量。而且，许多网络管理员需要额外配置来获得更严格的保证，例如针对入口和出口流量的访问列表，以及成功和拒绝连接的日志记录。这些访问列表的管理很快就会变得复杂：每个新网络都是另一个需要保护、修补和检测的区域。</p>
+	<p>若配置不当，VLAN 的安全保证可被轻易破坏。以一个包含两个独立 VLAN 的网络为例；如果没有对两个独立的交换机应用一致的访问列表，则其中一个 VLAN 中的被黑设备可轻易转至另一个 VLAN 下的一个设备。网络管理员可对每个交换机使用<a href="https://en.wikipedia.org/wiki/Private_VLAN#:~:text=Private%20VLAN%2C%20also%20known%20as,ports%2C%20and%20a%20single%20uplink." target="_blank">专用 VLAN</a>，但这再次增加了复杂性。</p>
+	<p>要成功部署 VLAN 来阻止横向移动，需要一致的配置和架构选择，从访问列表规则到每个站点使用的设备类型。随着站点数量增加和环境的足迹扩大，这只会变得更具挑战性。</p>
+	<h3 id="cloudflare-">Cloudflare 的解决方案</h3>
+	<p>我们使用自己的产品来隔离设备，而不是部署在一个独立的网络上。这可以在无需额外硬件的情况下提供安全保证。这是一个无服务器、无基础设施网络的隔离解决方案。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/Magic-x-IoT.png" class="kg-image"></figure>
+	<p>这是如何做到的？硬件设备（我们用于概念验证的是一个 Verkada 摄像头）连接到一个有源以太网（PoE）交换机，后者被配置为将流量通过 Anycast GRE 隧道传送到 Cloudflare 全球网络。在那里，我们可配置来自 Cloudflare 仪表板的规则来写入出口规则，确保传出流量只会前往它应该到的地方。这样就防止了横向移动。</p>
+	<p>利用这种架构，网络管理员可从单一仪表板对入口和出口流量立即应用策略，从而控制来自第 3 层及以上的流量。这种架构提供一个简单的“设后即忘”解决方案，可适应不断变化的环境：保护与厂商物管，使用常见标准，日志收集是自动进行的。与其他横向移动保护方法相比，Cloudflare 提供出色的易用性、适应性和安全保证，这些都是安全管理任何使用物联网设备的环境所必需的。</p>
+	<!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-ycr8 {
+			background-color: #ffffff;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-v0hj {
+			background-color: #efefef;
+			border-color: inherit;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-dvid {
+			background-color: #efefef;
+			border-color: inherit;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-c6of {
+			background-color: #ffffff;
+			border-color: inherit;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-3xi5 {
+			background-color: #ffffff;
+			border-color: inherit;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-i81m {
+			background-color: #ffffff;
+			text-align: center;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" style="undefined;table-layout: fixed; width: 721px">
+		<colgroup>
+			<col style="width: 340px">
+			<col style="width: 125px">
+			<col style="width: 125px">
+			<col style="width: 125px">
+		</colgroup>
+		<thead>
+			<tr>
+				<th class="tg-dvid"></th>
+				<th class="tg-v0hj">Zero Trust 架构</th>
+				<th class="tg-v0hj">VLAN</th>
+				<th class="tg-v0hj">Cloudflare One</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-c6of"><span style="font-weight:400;font-style:normal">通过适当配置来阻止横向移动</span></td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">✅</span></td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">✅</span></td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">✅</span></td>
+			</tr>
+			<tr>
+				<td class="tg-c6of">不需要硬件</td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">✅</span></td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">❌</span></td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">✅</span></td>
+			</tr>
+			<tr>
+				<td class="tg-c6of">自动日志记录</td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">✅</span></td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">❌</span></td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">✅</span></td>
+			</tr>
+			<tr>
+				<td class="tg-c6of">隔离物联网设备本身</td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">❌</span></td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">✅</span></td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">✅</span></td>
+			</tr>
+			<tr>
+				<td class="tg-c6of">单点配置</td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">❌</span></td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">❌</span></td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">✅</span></td>
+			</tr>
+			<tr>
+				<td class="tg-c6of">复杂性不会随着设备数量增加</td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">❌</span></td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">❌</span></td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">✅</span></td>
+			</tr>
+			<tr>
+				<td class="tg-c6of">设备无关性</td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">❌</span></td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">❌</span></td>
+				<td class="tg-3xi5"><span style="font-weight:400;font-style:normal">✅</span></td>
+			</tr>
+			<tr>
+				<td class="tg-ycr8">来自 Cloudflare 网络的速度和性能优势</td>
+				<td class="tg-i81m"><span style="font-weight:400;font-style:normal">❌</span></td>
+				<td class="tg-i81m"><span style="font-weight:400;font-style:normal">❌</span></td>
+				<td class="tg-i81m"><span style="font-weight:400;font-style:normal">✅</span></td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: html-->
+	<h3 id="--1">下一步是什么？</h3>
+	<p>2021 年第四季度，我们聘请了一个可信的渗透测试合作伙伴来测试这种配置：模拟一个流氓设备，尝试在 Cloudflare One 架构之后转向生产系统，他们无法横向移动，证明这种架构是有效的。</p>
+	<p>鉴于这种架构已经通过测试，我们将开始在我们的数据中心内部正式推出 Cloudflare One，这是物理安全计划的一部分，旨在保护我们最受信赖的资产。</p>
+	<p>若要详细了解如何在您的企业使用 Cloudflare One，请联系我们的销售团队。</p>
+</div>

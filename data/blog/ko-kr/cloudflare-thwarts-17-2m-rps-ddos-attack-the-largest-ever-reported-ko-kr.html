@@ -1,0 +1,52 @@
+<div class="post-content lh-copy gray1">
+	<p>올여름 초에 Cloudflare의 <a href="https://blog.cloudflare.com/deep-dive-cloudflare-autonomous-edge-ddos-protection/">에지 DDoS 자율 방어시스템</a>이 기존에 알려진 최대 공격의 거의 3배 규모인 초당 1,720만 건의 요청(17.2M rps, request-per-second)을 발생시키는 DDoS 공격을 자동으로 감지하고 완화하였습니다. 이 공격이 얼마나 큰 것인지 이해를 돕기 위해 설명드리면, Cloudflare는 초당 평균 2,500만 건 이상의 HTTP 요청을 처리하고 있는데, 이는 2021년 2분기의 정당한 트래픽 평균입니다. 그러므로 1,720만 &nbsp;rps 공격은 Cloudflare의 2분기 평균 HTTP rps rate의 68%에 달하는 수치입니다.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/08/image5-18.png" class="kg-image" title="Points scored">
+		<figcaption>Cloudflare의 평균 초당 요청 및 DDoS 공격 비교 그래프</figcaption>
+	</figure>
+	<h4 id="cloudflare-ddos-">Cloudflare의 자율적인 에지를 이용한 자동 DDoS 완화</h4>
+	<p>이 공격과 다음 절에서 설명할 추가적인 공격은 Cloudflare의 <a href="https://blog.cloudflare.com/deep-dive-cloudflare-autonomous-edge-ddos-protection/">자율적인 에지 DDoS 방어 시스템</a>이 자동으로 감지하고 완화하였습니다. 이 시스템은 Cloudflare의 서비스 거부 디먼(dosd: denial of service daemon)으로 구동됩니다. dosd는 자체적으로 개발된 소프트웨어 정의 디먼이며, 전세계에 있는 Cloudflare의 데이터 센터마다 고유한 인스턴스가 실행됩니다. 각 dosd 인스턴스는 트래픽 샘플을 경로에서 분리해 독립적으로 분석합니다. 트래픽을 경로에서 분리해 분석하므로 대기 시간을 유발하거나 성능에 영향을 주지 않고 DDoS 공격을 비동기적으로 스캔할 수 있습니다. 또한 DDoS에 대해 발견된 사항은 데이터 센터 내 다양한 dosd 인스턴스 간에 위협 인텔리전스로 적극적으로 공유됩니다.</p>
+	<p>공격이 감지되면, Cloudflare 시스템은 공격패턴과 일치하는 공격완화 real-time signature를 생성합니다. 이 규칙은 기술 스택 중 최적의 위치로 전파됩니다. 예를 들어, 대규모 HTTP DDoS 공격은 사용자 공간에서 실행되는 L7 역방향 프록시 내부의 L7가 아니라 Linux iptables 방화벽 내의 L4에서 차단할 수도 있습니다. &nbsp;L7에서 403 오류 페이지로 응답하지 않고 L4에서 패킷을 누락시켜 버리는 식으로 스택의 아래에서 공격을 완화하게 되면 비용 효율이 높아집니다. 따라서 에지 CPU 소비와 데이터 센터 내 대역폭 가동율이 낮아지므로 성능에 영향을 주지 않으면서 대규모 공격을 대규모로 완화할 수 있습니다.</p>
+	<p>Cloudflare는 이러한 자율적 방식과 네트워크의 세계적인 규모 및 안정성에 힘입어 Cloudflare 전체에 대한 초당 평균 요청의 68%에 달하는 공격을 완화할 수 있었으며, 이 과정에 Cloudflare 인력이 수작업으로 개입할 필요도 없었고 성능 저하도 유발되지 않았습니다.</p>
+	<h4 id="mirai-">Mirai의 부활과 새로운 강력한 봇넷</h4>
+	<p>이 공격은 금융업계의 Cloudflare 고객을 대상으로 강력한 봇넷에 의해 실행되었습니다. 이 봇넷은 수초 만에 3억 3천만 건 이상의 공격 요청으로 Cloudflare에 퍼부었습니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/08/image10-1.png" class="kg-image">
+		<figcaption>17.2M rps 공격의 그래프</figcaption>
+	</figure>
+	<p>이 공격은 전세계 125개 국가의 2만 개 이상 봇에서 발생했습니다. &nbsp;봇의 소스 IP 주소 기준으로 거의 15%는 인도네시아에서 비롯되었으며, 인도와 브라질을 합쳐 17%의 공격이 발생했습니다. 이로써 이들 국가에 맬웨어 감염 장치가 많음을 알 수 있습니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/08/image14.png" class="kg-image">
+		<figcaption>상위 국가별 공격 소스의 분포</figcaption>
+	</figure>
+	<h4 id="-">볼류메트릭 공격 증가</h4>
+	<p>이 17.2M rps 공격은 Cloudflare가 현재까지 관측한 가장 큰 규모의 HTTP DDoS 공격이며 보고된 다른 HTTP DDoS 공격의 3배 가까운 규모입니다. 하지만, 이 봇넷은 지난 수 주 내에 최소 2회 이상 관찰되었습니다. 바로 지난 주에는 호스팅 공급자인 다른 Cloudflare 고객을 대상으로 했는데 이 HTTP DDoS 공격은 8M rps에 조금 못 미치는 수준에서 정점을 이뤘습니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/08/image13-1.png" class="kg-image">
+		<figcaption>8M rps 공격의 그래프</figcaption>
+	</figure>
+	<p>2주 전에는 <a href="https://www.cloudflare.com/ko-kr/learning/ddos/glossary/mirai-botnet/" target="_blank">Mirai 변형 봇넷</a>(Mirai-variant botnet)이 10여 건 이상의 UDP 및 TCP 기반 DDoS 공격을 실행했으며, 수차례 1Tbps를 넘어섰고 최대는 약 1.2Tbps였습니다. 또한 첫 번째 HTTP 공격은 <a href="https://www.cloudflare.com/ko-kr/waf/" target="_blank">WAF/CDN 서비스</a>를 받는 Cloudflare 고객을 대상으로 한 반면, 1Tbps 이상의 네트워크 계층 공격은 <a href="https://www.cloudflare.com/ko-kr/magic-transit/" target="_blank">Magic Transit</a> 및 <a href="https://www.cloudflare.com/ko-kr/products/cloudflare-spectrum/" target="_blank">Spectrum</a> 서비스를 받는 Cloudflare 고객을 대상으로 했습니다. 공격 대상 중 하나는 APAC 기반의 인터넷 서비스, 통신, 호스팅 공급자였고, 다른 대상은 게임 회사였습니다. 어느 경우나 공격은 자동으로 감지되었고 사람의 개입 없이 완화되었습니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/08/image17.png" class="kg-image">
+		<figcaption>1.2Tbps에 달한 Mirai 봇넷의 그래프</figcaption>
+	</figure>
+	<p>Mirai 봇넷은 약 3만 개에서 시작하였으나 서서히 2만 8천 개로 줄어들었습니다. 그러나 봇들이 빠져나감에도 불구하고, 이 봇넷은 여전히 짧은 기간 동안 상당한 양의 공격적인 트래픽을 생성할 수 있었습니다. 경우에 따라 공격이 수 초만 지속된 경우도 있었습니다.</p>
+	<p>이러한 공격들 이외에도 지난 몇 주 동안에 Mirai 기반 DDoS 공격이 증가했습니다. 7월에만 L3/4 Mirai 공격은 88% 증가했고 L7 공격은 9% 증가했습니다. 또한 8월 현재까지의 일평균 Mirai 공격에 기초해 보면 8월말까지 L7 Mirai DDoS 공격 및 유사한 botnet 공격이 185% 증가하고 L3/4 공격은 71% 증가할 것으로 예상됩니다.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/08/image11-1.png" class="kg-image" title="Chart">
+		<figcaption>월별 Mirai 기반 DDoS 공격의 변화 그래프</figcaption>
+	</figure>
+	<h4 id="-mirai">백 투 더 Mirai</h4>
+	<p><a href="https://www.cloudflare.com/ko-kr/learning/ddos/glossary/mirai-botnet/" target="_blank">Mirai</a>는 일본어로 '미래'를 의미하며 비영리 보안 연구 워크그룹인 <a href="https://en.wikipedia.org/wiki/MalwareMustDie" target="_blank">MalwareMustDie</a>가 2016년에 처음 발견한 맬웨어의 코드 이름입니다. 이 맬웨어는 보안 카메라나 라우터 등의 Linux 작동 장치를 감염시키는 방식으로 확산됩니다. 이어서 열린 23 및 2323 텔넷 포트를 검색하여 자체적으로 전파됩니다. 발견되고 나면 공장 기본 사용자 이름 및 암호 같이 알려진 인증 정보를 <a href="https://www.cloudflare.com/ko-kr/learning/bots/brute-force-attack/" target="_blank">무차별 대입</a>함으로써 취약한 장치에 액세스하려고 시도합니다. Mirai의 이후 변형에서는 라우터 등 장치의 제로 데이 취약성도 활용합니다. 장치가 감염되면 해당 장치는 명령 및 제어(Command &amp; Control, C2) 서버를 모니터하여 공격할 대상에 대한 명령를 찾습니다.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/08/image8-3.png" class="kg-image">
+		<figcaption>봇넷 조작자가 웹 사이트 공격을 위해 봇넷을 통제하는 그림</figcaption>
+	</figure>
+	<h4 id="--1">가정과 비즈니스 보호 방법</h4>
+	<p>대부분의 공격은 규모가 작고 시간도 짧지만 이러한 유형의 볼류메트릭 공격도 계속 나타나고 있습니다. 이처럼 짧은 볼류메트릭 버스트 공격은 기존의 DDoS 방어 시스템이나 항상 가동되는 클라우드 기반 활성 방어 체제를 갖추지 않은 조직에게 특히 위험합니다.</p>
+	<p>또한 공격 지속 시간이 짧다는 것은 지속적으로 트래픽을 보내는 봇넷의 능력이 제약되어 있다는 뜻이지만, 동시에 사람들이 적시에 대응하기가 매우 어려우며 불가능할 수도 있다는 뜻입니다. 이런 경우에는 보안 엔지니어가 트래픽을 분석하거나 대기 중인 DDoS 방어 시스템을 활성화할 틈도 없이 공격이 끝나버리기 때문입니다. 따라서 항상 가동되는 자동화된 방어 시스템이 더욱 필요합니다.</p>
+	<h4 id="--2">비즈니스 및 인터넷 자산 보호 방법</h4>
+	<ol>
+		<li><a href="https://dash.cloudflare.com/sign-up" target="_blank">Cloudflare에 온보딩하여</a> 인터넷 자산을 보호하세요.</li>
+		<li>바로 DDoS 방어 기능을 활성화할 수 있으며 <a href="https://support.cloudflare.com/hc/ko/articles/200172676-Cloudflare-DDoS-%EB%B0%A9%EC%96%B4-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0" target="_blank">방어 설정을 사용자가 정의</a>할 수도 있습니다.</li>
+		<li>방어에 대한 Cloudflare의 <a href="https://support.cloudflare.com/hc/ko/articles/200170166-%EB%AA%A8%EB%B2%94-%EC%82%AC%EB%A1%80-DDoS-%EC%98%88%EB%B0%A9-%EC%A1%B0%EC%B9%98" target="_blank">모범 사례</a>를 따라 Cloudflare 설정과 원본 서버 설정을 모두 최적화하세요. 예를 들어, <a href="https://www.cloudflare.com/ko-kr/ips/" target="_blank">Cloudflare의 IP 범위</a>에서 오는 트래픽만 허용해야 합니다. 이상적으로는 업스트림 인터넷 서비스 공급자(ISP)에 액세스 제어 목록(ACL)을 적용하도록 요청하면 좋습니다. 그렇지 않으면 공격자가 서버의 IP 주소를 직접 대상으로 지정하고 방어를 우회할 수 있습니다.</li>
+	</ol>
+	<h4 id="-iot-">가정 및 IoT 장비 보호 방법에 대한 제언</h4>
+	<ol>
+		<li>스마트 카메라, 라우터 등 인터넷에 연결된 모든 장치의 기본 사용자 이름 및 암호를 변경하세요. 이렇게 하면 Mirai 같은 맬웨어가 라우터나 IoT 장치에 액세스할 위험이 줄어듭니다.</li>
+		<li><a href="https://developers.cloudflare.com/1.1.1.1/1.1.1.1-for-families" target="_blank">Cloudflare for Families</a>를 이용해 가정을 보호하세요. Cloudflare for Families는 무료 서비스로서 가정으로부터 악성 웹 사이트로 향하는 트래픽과 맬웨어 통신을 자동으로 차단합니다.</li>
+	</ol>
+</div>

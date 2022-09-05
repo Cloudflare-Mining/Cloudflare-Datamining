@@ -1,0 +1,114 @@
+<div class="post-content lh-copy gray1">
+	<p>Recently at <a href="https://www.netdevconf.org/0x13/schedule.html" target="_blank">Netdev 0x13</a>, the Conference on Linux Networking in Prague, I gave <a href="https://netdevconf.org/0x13/session.html?panel-industry-perspectives" target="_blank">a short talk titled "Linux at Cloudflare"</a>. The <a href="https://speakerdeck.com/majek04/linux-at-cloudflare" target="_blank">talk</a> ended up being mostly about BPF. It seems, no matter the question - BPF is the answer.</p>
+	<p>Here is a transcript of a slightly adjusted version of that talk.</p>
+	<hr>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/01_edge-network-locations-100.jpg" class="kg-image"></figure>
+	<p>At Cloudflare we run Linux on our servers. We operate two categories of data centers: large "Core" data centers, processing logs, analyzing attacks, computing analytics, and the "Edge" server fleet, delivering customer content from 180 locations across the world.</p>
+	<p>In this talk, we will focus on the "Edge" servers. It's here where we use the newest Linux features, optimize for performance and care deeply about DoS resilience.</p>
+	<hr>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/image-9.png" class="kg-image"></figure>
+	<p>Our edge service is special due to our network configuration - we are extensively using anycast routing. Anycast means that the same set of IP addresses are announced by all our data centers.</p>
+	<p>This design has great advantages. First, it guarantees the optimal speed for end users. No matter where you are located, you will always reach the closest data center. Then, anycast helps us to spread out DoS traffic. During attacks each of the locations receives a small fraction of the total traffic, making it easier to ingest and filter out unwanted traffic.</p>
+	<hr>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/03_edge-network-uniform-software-100-1.jpg" class="kg-image"></figure>
+	<p>Anycast allows us to keep the networking setup uniform across all edge data centers. We applied the same design inside our data centers - our software stack is uniform across the edge servers. All software pieces are running on all the servers.</p>
+	<p>In principle, every machine can handle every task - and we run many diverse and demanding tasks. We have a full HTTP stack, the magical Cloudflare Workers, two sets of DNS servers - authoritative and resolver, and many other publicly facing applications like Spectrum and Warp.</p>
+	<p>Even though every server has all the software running, requests typically cross many machines on their journey through the stack. For example, an HTTP request might be handled by a different machine during each of the 5 stages of the processing.</p>
+	<hr>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/image-23.png" class="kg-image"></figure>
+	<p>Let me walk you through the early stages of inbound packet processing:</p>
+	<p>(1) First, the packets hit our router. The router does ECMP, and forwards packets onto our Linux servers. We use ECMP to spread each target IP across many, at least 16, machines. This is used as a rudimentary load balancing technique.</p>
+	<p>(2) On the servers we ingest packets with XDP eBPF. In XDP we perform two stages. First, we run volumetric DoS mitigations, dropping packets belonging to very large layer 3 attacks.</p>
+	<p>(3) Then, still in XDP, we perform layer 4 load balancing. All the non-attack packets are redirected across the machines. This is used to work around the ECMP problems, gives us fine-granularity load balancing and allows us to gracefully take servers out of service.</p>
+	<p>(4) Following the redirection the packets reach a designated machine. At this point they are ingested by the normal Linux networking stack, go through the usual iptables firewall, and are dispatched to an appropriate network socket.</p>
+	<p>(5) Finally packets are received by an application. For example HTTP connections are handled by a "protocol" server, responsible for performing TLS encryption and processing HTTP, HTTP/2 and QUIC protocols.</p>
+	<p>It's in these early phases of request processing where we use the coolest new Linux features. We can group useful modern functionalities into three categories:</p>
+	<ul>
+		<li>DoS handling</li>
+		<li>Load balancing</li>
+		<li>Socket dispatch</li>
+	</ul>
+	<hr>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/image-25.png" class="kg-image"></figure>
+	<p>Let's discuss DoS handling in more detail. As mentioned earlier, the first step after ECMP routing is Linux's XDP stack where, among other things, we run DoS mitigations.</p>
+	<p>Historically our mitigations for volumetric attacks were expressed in classic BPF and iptables-style grammar. Recently we adapted them to execute in the XDP eBPF context, which turned out to be surprisingly hard. Read on about our adventures:</p>
+	<ul>
+		<li><a href="https://blog.cloudflare.com/l4drop-xdp-ebpf-based-ddos-mitigations/">L4Drop: XDP DDoS Mitigations</a></li>
+		<li><a href="https://blog.cloudflare.com/xdpcap/">xdpcap: XDP Packet Capture</a></li>
+		<li><a href="https://netdevconf.org/0x13/session.html?talk-XDP-based-DDoS-mitigation" target="_blank">XDP based DoS mitigation</a> talk by Arthur Fabre</li>
+		<li><a href="https://netdevconf.org/2.1/papers/Gilberto_Bertin_XDP_in_practice.pdf" target="_blank">XDP in practice: integrating XDP into our DDoS mitigation pipeline</a> (PDF)</li>
+	</ul>
+	<p>During this project we encountered a number of eBPF/XDP limitations. One of them was the lack of concurrency primitives. It was very hard to implement things like race-free token buckets. Later we found that <a href="http://vger.kernel.org/lpc-bpf2018.html#session-9" target="_blank">Facebook engineer Julia Kartseva</a> had the same issues. In February this problem has been addressed with the introduction of <code>bpf_spin_lock</code> helper.</p>
+	<hr>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/image-26.png" class="kg-image"></figure>
+	<p>While our modern volumetric DoS defenses are done in XDP layer, we still rely on <code>iptables</code> for application layer 7 mitigations. Here, a higher level firewall’s features are useful: connlimit, hashlimits and ipsets. We also use the <code>xt_bpf</code> iptables module to run cBPF in iptables to match on packet payloads. We talked about this in the past:</p>
+	<ul>
+		<li><a href="https://speakerdeck.com/majek04/lessons-from-defending-the-indefensible" target="_blank">Lessons from defending the indefensible</a> (PPT)</li>
+		<li><a href="https://blog.cloudflare.com/introducing-the-bpf-tools/">Introducing the BPF tools</a></li>
+	</ul>
+	<hr>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/image-34.png" class="kg-image"></figure>
+	<p>After XDP and iptables, we have one final kernel side DoS defense layer.</p>
+	<p>Consider a situation when our UDP mitigations fail. In such case we might be left with a flood of packets hitting our application UDP socket. This might overflow the socket causing packet loss. This is problematic - both good and bad packets will be dropped indiscriminately. For applications like DNS it's catastrophic. In the past to reduce the harm, we ran one UDP socket per IP address. An unmitigated flood was bad, but at least it didn't affect the traffic to other server IP addresses.</p>
+	<p>Nowadays that architecture is no longer suitable. We are running more than 30,000 DNS IP's and running that number of UDP sockets is not optimal. Our modern solution is to run a single UDP socket with a complex eBPF socket filter on it - using the <code>SO_ATTACH_BPF</code> socket option. We talked about running eBPF on network sockets in past blog posts:</p>
+	<ul>
+		<li><a href="https://blog.cloudflare.com/epbf_sockets_hop_distance/">eBPF, Sockets, Hop Distance and manually writing eBPF assembly</a></li>
+		<li><a href="https://blog.cloudflare.com/sockmap-tcp-splicing-of-the-future/">SOCKMAP - TCP splicing of the future</a></li>
+	</ul>
+	<p>The mentioned eBPF rate limits the packets. It keeps the state - packet counts - in an eBPF map. We can be sure that a single flooded IP won't affect other traffic. This works well, though during work on this project we found a rather worrying bug in the eBPF verifier:</p>
+	<ul>
+		<li><a href="https://blog.cloudflare.com/ebpf-cant-count/">eBPF can't count?!</a></li>
+	</ul>
+	<p>I guess running eBPF on a UDP socket is not a common thing to do.</p>
+	<hr>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/image-27.png" class="kg-image"></figure>
+	<p>Apart from the DoS, in XDP we also run a layer 4 load balancer layer. This is a new project, and we haven't talked much about it yet. Without getting into many details: in certain situations we need to perform a socket lookup from XDP.</p>
+	<p>The problem is relatively simple - our code needs to look up the "socket" kernel structure for a 5-tuple extracted from a packet. This is generally easy - there is a <code>bpf_sk_lookup</code> helper available for this. Unsurprisingly, there were some complications. One problem was the inability to verify if a received ACK packet was a valid part of a three-way handshake when SYN-cookies are enabled. My colleague Lorenz Bauer is working on adding support for this corner case.</p>
+	<hr>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/image-28.png" class="kg-image"></figure>
+	<p>After DoS and the load balancing layers, the packets are passed onto the usual Linux TCP / UDP stack. Here we do a socket dispatch - for example packets going to port 53 are passed onto a socket belonging to our DNS server.</p>
+	<p>We do our best to use vanilla Linux features, but things get complex when you use thousands of IP addresses on the servers.</p>
+	<p>Convincing Linux to route packets correctly is relatively easy with <a href="https://blog.cloudflare.com/how-we-built-spectrum">the "AnyIP" trick</a>. Ensuring packets are dispatched to the right application is another matter. Unfortunately, standard Linux socket dispatch logic is not flexible enough for our needs. For popular ports like TCP/80 we want to share the port between multiple applications, each handling it on a different IP range. Linux doesn't support this out of the box. You can call <code>bind()</code> either on a specific IP address or all IP's (with 0.0.0.0).</p>
+	<hr>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/image-29.png" class="kg-image"></figure>
+	<p></p>
+	<p>In order to fix this, we developed a custom kernel patch which adds <a href="https://patchwork.ozlabs.org/patch/602916/" target="_blank">a <code>SO_BINDTOPREFIX</code> socket option</a>. As the name suggests - it allows us to call <code>bind()</code> on a selected IP prefix. This solves the problem of multiple applications sharing popular ports like 53 or 80.</p>
+	<p>Then we run into another problem. For our Spectrum product we need to listen on all 65535 ports. Running so many listen sockets is not a good idea (see <a href="https://blog.cloudflare.com/revenge-listening-sockets/">our old war story blog</a>), so we had to find another way. After some experiments we learned to utilize an obscure iptables module - TPROXY - for this purpose. Read about it here:</p>
+	<ul>
+		<li><a href="https://blog.cloudflare.com/how-we-built-spectrum/">Abusing Linux's firewall: the hack that allowed us to build Spectrum</a></li>
+	</ul>
+	<p>This setup is working, but we don't like the extra firewall rules. We are working on solving this problem correctly - actually extending the socket dispatch logic. You guessed it - we want to extend socket dispatch logic by utilizing eBPF. Expect some patches from us.</p>
+	<hr>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/image-32.png" class="kg-image"></figure>
+	<p>Then there is a way to use eBPF to improve applications. Recently we got excited about doing TCP splicing with SOCKMAP:</p>
+	<ul>
+		<li><a href="https://blog.cloudflare.com/sockmap-tcp-splicing-of-the-future/">SOCKMAP - TCP splicing of the future</a></li>
+	</ul>
+	<p>This technique has a great potential for improving tail latency across many pieces of our software stack. The current SOCKMAP implementation is not quite ready for prime time yet, but the potential is vast.</p>
+	<p>Similarly, the new <a href="https://netdevconf.org/2.2/papers/brakmo-tcpbpf-talk.pdf" target="_blank">TCP-BPF aka BPF_SOCK_OPS</a> hooks provide a great way of inspecting performance parameters of TCP flows. This functionality is super useful for our performance team.</p>
+	<hr>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/12_prometheus-ebpf_exporter-100.jpg" class="kg-image"></figure>
+	<p></p>
+	<p>Some Linux features didn't age well and we need to work around them. For example, we are hitting limitations of networking metrics. Don't get me wrong - the networking metrics are awesome, but sadly they are not granular enough. Things like <code>TcpExtListenDrops</code> and <code>TcpExtListenOverflows</code> are reported as global counters, while we need to know it on a per-application basis.</p>
+	<p>Our solution is to use eBPF probes to extract the numbers directly from the kernel. My colleague Ivan Babrou wrote a Prometheus metrics exporter called "ebpf_exporter" to facilitate this. Read on:</p>
+	<ul>
+		<li><a href="https://blog.cloudflare.com/introducing-ebpf_exporter/">Introducing ebpf_exporter</a></li>
+		<li><a href="https://github.com/cloudflare/ebpf_exporter" target="_blank">https://github.com/cloudflare/ebpf_exporter</a></li>
+	</ul>
+	<p>With "ebpf_exporter" we can generate all manner of detailed metrics. It is very powerful and saved us on many occasions.</p>
+	<hr>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/image-33.png" class="kg-image"></figure>
+	<p></p>
+	<p>In this talk we discussed 6 layers of BPFs running on our edge servers:</p>
+	<ul>
+		<li>Volumetric DoS mitigations are running on XDP eBPF</li>
+		<li>Iptables <code>xt_bpf</code> cBPF for application-layer attacks</li>
+		<li><code>SO_ATTACH_BPF</code> for rate limits on UDP sockets</li>
+		<li>Load balancer, running on XDP</li>
+		<li>eBPFs running application helpers like SOCKMAP for TCP socket splicing, and TCP-BPF for TCP measurements</li>
+		<li>"ebpf_exporter" for granular metrics</li>
+	</ul>
+	<p>And we're just getting started! Soon we will be doing more with eBPF based socket dispatch, eBPF running on <a href="https://linux.die.net/man/8/tc" target="_blank">Linux TC (Traffic Control)</a> layer and more integration with cgroup eBPF hooks. Then, our SRE team is maintaining ever-growing list of <a href="https://github.com/iovisor/bcc" target="_blank">BCC scripts</a> useful for debugging.</p>
+	<p>It feels like Linux stopped developing new API's and all the new features are implemented as eBPF hooks and helpers. This is fine and it has strong advantages. It's easier and safer to upgrade eBPF program than having to recompile a kernel module. Some things like TCP-BPF, exposing high-volume performance tracing data, would probably be impossible without eBPF.</p>
+	<p>Some say "software is eating the world", I would say that: "BPF is eating the software".</p>
+</div>

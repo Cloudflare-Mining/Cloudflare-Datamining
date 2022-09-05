@@ -1,0 +1,188 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image1-51.png" class="kg-image" alt="Cloudflare Agent — Seamless Deployment at Scale"></figure>
+	<p>เราเปิดตัว <a href="https://blog.cloudflare.com/warp-for-desktop/">WARP for Desktop</a> เมื่อปีที่แล้ว เพื่อให้ทุกคนสามารถเข้าถึงอินเทอร์เน็ตได้อย่างรวดเร็วและเป็นส่วนตัว ในส่วนลูกค้าธุรกิจของเรานั้น ผู้ดูแลระบบไอทีและความปลอดภัยสามารถใช้เอเยนต์รายเดียวกันและลงทะเบียนอุปกรณ์ในองค์กรของตนภายใน Cloudflare for Teams ได้ ซึ่งเมื่อลงทะเบียนแล้ว สมาชิกในทีมจะสามารถเร่งความเร็วบนอินเทอร์เน็ต พร้อมกับที่ Cloudflare ช่วยกรองความปลอดภัยที่ครอบคลุม ตั้งแต่ฟังก์ชันไฟร์วอลล์ของเครือข่ายไปจนถึงการแยกเบราว์เซอร์ระยะไกล</p>
+	<p>ตอนเปิดตัวเมื่อปีที่แล้ว เราจัดชุดตัวเลือกการกำหนดค่าที่เรียบง่ายที่รับรองกลไกการปรับใช้งานได้ครอบคลุมสูงสุด เพื่อให้องค์กรของคุณได้รับการปกป้องอย่างรวดเร็ว เรามุ่งเน้นที่การช่วยให้องค์กรรักษาปลอดภัยให้กับผู้ใช้และข้อมูลได้ด้วยการกรอง HTTP และ DNS จากที่ใดก็ได้ โดยเราเริ่มต้นด้วยการรองรับ Mac, Windows, iOS และ Android</p>
+	<p>นับตั้งแต่เปิดตัว องค์กรหลายพันแห่งได้ปรับใช้เอเยนต์เพื่อให้สมาชิกในทีมและอุปกรณ์ปลายทางมีความปลอดภัย เราได้ยินมาว่า ลูกค้าตื่นเต้นกับการขยายกิจการของตน แต่ต้องการการสนับสนุนระบบปฏิบัติการเพิ่มเติมและควบคุมการกำหนดค่าได้อย่างมีประสิทธิภาพ</p>
+	<p>และวันนี้เรายินดีที่จะแจ้งให้ทราบว่า Zero Trust Agent มีคุณสมบัติเท่าเทียมกันในทุกแพลตฟอร์มหลักแล้ว นอกจากนั้น คุณยังสามารถควบคุมตัวเลือกใหม่ ๆ เพื่อเลือกวิธีกำหนดเส้นทางการรับส่งข้อมูล และผู้ดูแลระบบของคุณสามารถจัดการการปรับใช้ในวงกว้างได้ เราเปิดตัวโซลูชันใหม่ในวันนี้เพื่อแจ้งว่าเราพร้อมที่จะช่วยคุณกำจัด VPN และเครื่องมือรักษาความปลอดภัยเครือข่ายแบบดั้งเดิมที่ทีมไอทีของคุณเกลียดออกไปได้แล้ว</p>
+	<h3 id="-"><strong>สร้างขึ้นสำหรับทุกขนาด</strong></h3>
+	<p>ปัจจัยที่สำคัญที่สุดสองประการใน Zero Trust Agent คือความน่าเชื่อถือในทุกแพลตฟอร์มและความน่าเชื่อถือของการเชื่อมต่อ หากคุณเคยจัดส่งซอฟต์แวร์ในสเกลนี้ คุณจะรู้ว่าการดูแลลูกค้าในระบบปฏิบัติการหลักทั้งหมดนั้นเป็นงานที่หนักหนาสาหัส (และมีโอกาสเกิดข้อผิดพลาดได้ง่าย)</p>
+	<p>แต่เราหลีกเลี่ยงข้อผิดพลาดของแพลตฟอร์มได้ด้วยการเขียนแกนหลักของ Agent ใน Rust ซึ่งช่วยให้สามารถแชร์โค้ดได้ 95% ในทุกอุปกรณ์ เราอ้างถึงโค้ดทั่วไปนี้เป็นการภายในว่า shared daemon (หรือที่เรียกว่า บริการ สำหรับระบบ Windows) การใช้งานแบบ Rust-based โดยทั่วไปช่วยให้วิศวกรใช้เวลาน้อยลงในการทำซ้ำโค้ดในหลาย ๆ แพลตฟอร์ม และยังรับประกันได้อีกว่า ทุกคนจะเข้าถึงการปรับปรุงคุณภาพส่วนใหญ่ได้พร้อมกัน</p>
+	<p>ในเรื่องความน่าเชื่อถือของการเชื่อมต่อ หากคุณเคยมีประสบการณ์กับ VPN แบบเดิม คุณจะรู้ว่าระบบเดิมนั้นมักเกิดข้อผิดพลาดและทำงานช้า รากฐานเครือข่ายของเราสร้างขึ้นจากการนำ WireGuard ไปใช้งานที่เรียกว่า <a href="https://blog.cloudflare.com/boringtun-userspace-wireguard-rust/">BoringTun</a> ทั้งนี้ UDP ต่างจาก VPN ทั่วไปที่ทำงานช้า เราใช้ UDP ที่ได้รับการปรับให้เหมาะสมกับรูปแบบที่หลากหลายของโครงสร้างพื้นฐานอินเทอร์เน็ตที่ผู้ใช้เชื่อมต่อในปัจจุบัน (เช่น บนเครื่องบิน ที่ร้านกาแฟ เครือข่ายที่คับคั่งในเมือง ฯลฯ) BoringTun ได้รับการปรับเปลี่ยนให้มีขนาดที่เหมาะสมกับอุปกรณ์สำหรับผู้บริโภคหลายล้านเครื่องตลอดหลายปีที่ผ่านมา ทำให้มั่นใจได้ว่าการรับส่งข้อมูลของคุณจะได้รับการเข้ารหัสและพร้อมรองรับทุกนโยบายที่คุณตัดสินใจใช้</p>
+	<p>ด้วยพลังของระดับความน่าเชื่อถือ ตอนนี้เราสนับสนุนระบบปฏิบัติการต่อไปนี้ผ่าน Agent ของเราอย่างเต็มที่</p>
+	<ul>
+		<li>Windows 8.1, Windows 10 และ Windows 11</li>
+		<li>macOS Mojave, Catalina, Big Sur, Monterey</li>
+		<li>และยังรองรับ M1 ด้วย</li>
+		<li>ChromeBooks (ที่ผลิตหลังปี 2019) <strong>(ใหม่)</strong></li>
+		<li>Linux CentOS 8, RHEL, Ubuntu, Debian <strong>(ใหม่)</strong></li>
+		<li>iOS</li>
+		<li>Android</li>
+	</ul>
+	<h3 id="--1"><strong>สร้างขึ้นเพื่อให้ตรงตามโมเดลการปรับใช้ของคุณ</strong></h3>
+	<p>เมื่อเปิดตัว Agent ครั้งแรก จุดเน้นคือการเข้ารหัสการรับส่งข้อมูลของอุปกรณ์ทั้งหมดไปยังเครือข่าย Cloudflare และอนุญาตให้ผู้ดูแลระบบสร้าง<a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering" target="_blank">นโยบาย</a> HTTP และ DNS ไว้รวมกับการรับส่งข้อมูลนั้น เรายังทราบด้วยว่าลูกค้ากำลังวางแผนย้ายไปยังโมเดล Zero Trust ซึ่งบางครั้งการเปลี่ยนผ่านลักษณะนี้จำเป็นต้องเกิดขึ้นอย่างค่อยเป็นค่อยไป</p>
+	<p>ในช่วงเปลี่ยนผ่านดังกล่าว เราได้เพิ่มคุณสมบัติที่จะช่วยให้คุณไม่เพียงแค่แทนที่โซลูชันเดิมเท่านั้น แต่ยังสามารถเรียกใช้ซอฟต์แวร์ของเราควบคู่ไปกับโซลูชันเดิมเหล่านั้น เพื่อให้แผนการโยกย้ายดำเนินไปอย่างราบรื่นกว่าเดิม</p>
+	<ul>
+		<li><strong>Domain-Based Split Tunneling</strong> - บางครั้ง คุณไม่จำเป็นต้องส่งการรับส่งข้อมูลทั้งหมดผ่านเลเยอร์ความปลอดภัยของคุณ เพราะเราสนับสนุนการยกเว้นตาม IP เรียบร้อยแล้ว และตอนนี้เราทำให้คุณสร้าง<a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/exclude-traffic/split-tunnels#add-a-domain" target="_blank">กฎ Split Tunnel ด้วยชื่อโดเมน</a> (เช่น *.example.com หรือ example.com) ได้ง่ายๆ แทนที่จะบังคับให้คุณค้นหา CIDR ที่อยู่ IP สำหรับโดเมนใดโดเมนหนึ่ง</li>
+		<li><strong>Include-Only Split Tunnels</strong> - เริ่มแรกเราสร้าง Agent บนสมมติฐานที่ว่าการรับส่งข้อมูลของอุปกรณ์ทั้งหมดควรได้รับการเข้ารหัสและส่งไปยังเครือข่ายของเรา เพื่อให้แน่ใจว่าการรับส่งข้อมูลจะไม่ถูกสอดแนมและอนุญาตให้ผู้ดูแลระบบมองเห็นได้ตลอด แม้ว่าในบางครั้ง คุณต้องการส่งการรับส่งข้อมูลบางส่วนไปยัง Cloudflare และยกเว้นส่วนที่เหลือไว้ตั้งแต่ต้น <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/exclude-traffic" target="_blank"><em>Include-only</em> split tunneling</a> ทำได้เพียงแค่นั้น เปิดโอกาสให้คุณเลือกเส้นทางที่ต้องการไปที่เครือข่ายของเรา หากคุณต้องการเปลี่ยน VPN แบบเก่าโดยเร็วเพื่อเชื่อมต่อกับ<a href="https://blog.cloudflare.com/build-your-own-private-network-on-cloudflare/">ทรัพยากรของ Cloudflare Tunnel</a> หรือเพียงต้องการให้แน่ใจว่า การรับส่งข้อมูลไปยังโครงสร้างพื้นฐานที่ละเอียดอ่อนที่สุดของคุณอยู่ภายใต้การตรวจสอบ HTTP แนะนำให้ใช้กฎ <em>include-only</em> split tunnel</li>
+		<li><strong>พัฒนาโดเมนส่วนบุคคล</strong> - บางองค์กรเริ่มการโอนย้ายโดยใช้ผลิตภัณฑ์ Zero Trust ของ Cloudflare ควบคู่ไปกับ VPN ของบุคคลที่สามที่มีอยู่แล้ว ในอดีต Agent ของเราสนับสนุนการกำหนดค่าโดยอนุญาตให้ผู้ดูแลระบบตั้งความละเอียดชื่อโดเมนสำรองเพื่อส่งการร้องขอ DNS สำหรับกรณีการใช้งานที่ไว้ใจได้ผ่าน VPN อย่างไรก็ตาม นี่เป็นการตั้งค่าแบบมีผลทั้งระบบ และยังขาดการควบคุมว่าการร้องขอนั้นจะส่งไปที่ใด เราจึงได้เพิ่มความสามารถเพื่อ <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/exclude-traffic/local-domains" target="_blank">กำหนดเซิร์ฟเวอร์ DNS</a> ที่ควรตอบสนองต่อโดเมนส่วนตัว และตามที่ได้พูด<a href="https://blog.cloudflare.com/zero-trust-private-networking-rules/">ไปแล้วในสัปดาห์นี้</a> ว่าจะสามารถใช้งานกับความสามารถของเครือข่าย Zero Trust แบบใหม่ได้ด้วย</li>
+		<li><strong>โหมด Posture-only (เร็วๆ นี้)</strong> — เราได้<a href="https://blog.cloudflare.com/6-new-ways-to-validate-device-posture/">พูดไว้ก่อนหน้านี้</a>เกี่ยวกับความสำคัญของ Device Posture และความสามารถของเรา ในช่วงไตรมาสแรกของปี 2022 เราจะส่งความสามารถเพื่อให้ agent ของเราใช้งานในโหมด Posture-only ได้ ทำให้ลูกค้าของเราไม่ต้องส่งคำร้องขอ DNS หรือส่งการรับส่งข้อมูลอื่นๆ ให้กับเรา ซึ่งจะช่วยให้คุณเริ่มต้นใช้งานนโยบาย posture ของ Cloudflare Access โดยไม่ต้องเปิดการตรวจสอบ HTTP ของผู้ใช้ของคุณ</li>
+	</ul>
+	<h3 id="--2"><strong>สร้างเพื่อการกำหนดค่าแบบไม่มีสะดุด</strong></h3>
+	<p>การใช้งาน agent ใดๆ กับผู้ใช้เป็นร้อยเป็นพันบัญชีอาจมีอุปสรรคด้านโลจิสติกส์ เราสร้าง agent สำหรับ Cloudflare for Teams ให้สามารถนำมาใช้งานได้แบบไม่มีสะดุดตามที่ทีมคุณต้องการ การประกาศในวันนี้ให้คุณมีตัวเลือกมากขึ้นเพื่อใช้งาน agent กับทั้งองค์กรด้วย API และการควบคุมโดยอาศัย Terraform</p>
+	<p>การทำให้งานบริหารจัดการเป็นอัตโนมัติเป็นวิธีที่ดีที่สุดที่จะช่วยให้ทำงานได้ต่อเนื่อง ที่ Cloudflare เราสร้าง UI ไว้บน RESTful APIs ตามการร้องของของ HTTPS และการตอบสนองของ JSON หลังจากนั้น APIs เดียวกันนี้ในการจัดการอุปกรณ์ของเราจึงจะเปิดเผยต่อผู้ใช้ผ่าน <a href="https://api.cloudflare.com/" target="_blank">เอกสาร API</a> ของเรา และเปิดเผยเพิ่มเติมผ่าน <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs" target="_blank">ผู้ให้บริการ Terraform</a> ทุกอย่างที่เปิดเผยในเวอร์ชันเว็บ <a href="https://dash.teams.cloudflare.com/" target="_blank">https://dash.teams.cloudflare.com/</a> จะมีให้บริการผ่านหนึ่งในอินเทอร์เฟซเหล่านี้</p>
+	<p>เพื่อเป็นตัวอย่างว่าคุณจะสามารถใช้งานอัตโนมัติอย่างไร เราจะมาดูที่ Split tunneling ตามโดเมนของเรา เพื่อการอ้างอิง นี่คือ <a href="https://api.cloudflare.com/#devices-set-split-tunnel-include-list" target="_blank">เอกสาร API</a> และ <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/split_tunnel" target="_blank">สิ่งเทียบเท่า Terraform</a></p>
+	<p>เพื่อสร้างกฎการ include ที่อ้างอิงตามโดเมน สำหรับ example.com</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>curl -X PUT "https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/devices/policy/include" \
+     -H "X-Auth-Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="afdadccaddefcad7cec2dfc3ca81ccc0c2">[email&nbsp;protected]</a>" \
+     -H "X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41" \
+     -H "Content-Type: application/json" \
+     --data '[{"host":"*.example","description":"Include all traffic to example.com in the tunnel"}]'
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>กฎเดียวกันนั้นสามารถสร้างได้ใน Terraform ด้วย</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code># Including *.example.com in WARP routes
+resource "cloudflare_split_tunnel" "example_split_tunnel_include" {
+  account_id = "699d98642c564d2e855e9661899b7252"
+  mode       = "include"
+  tunnels {
+    host        = "*.example.com",
+    description = "Include all traffic to example.com in the tunnel"
+  }
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>การทำงานทั่วไปอีกอย่างหนึ่งคือการสร้างรายงานอุปกรณ์ที่ลงทะเบียน โดยการใช้ <a href="https://api.cloudflare.com/#devices-list-devices" target="_blank">รายการอุปกรณ์ API</a> ตัวอย่างต่อไปนี้แสดงให้เห็นวิธีระบุรายการอุปกรณ์ Windows ทั้งหมดที่ลงทะเบียนไว้กับองค์กรของคุณ</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>curl -X GET "https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/devices?type=windows" \
+     --header 'Authorization: Bearer 8M7wS6hCpXVc-DoRnPPY_UCWPgy8aea4Wy6kCe5T' \
+     -H "Content-Type: application/json"
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>การใช้งานคำสั่งนี้จะกลับไปที่ JSON ซึ่งจะมีลักษณะดังนี้</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>        {
+            "created": "2021-12-01T17:14:23.847538Z",
+            "device_type": "windows",
+            "gateway_device_id": "215f9adc-52ca-11ec-9ece-f240956bdf5f",
+            "id": "215f9adc-52ca-11ec-9ece-f240956bdf5f",
+            "ip": "150.111.29.1",
+            "key": "0mS9vj2gk0KNcXoi50pwfuL49WT0rLGAcX2gVze3ixA=",
+            "last_seen": "2021-12-01T17:14:30.110663Z",
+            "mac_address": "00:0c:29:6f:11:93",
+            "model": "VMware7,1",
+            "name": "MYVMWin10",
+            "os_version": "10.0.19042",
+            "serial_number": "VMware-56",
+            "updated": "2021-12-01T17:14:30.110663Z",
+            "user": {
+                "email": "<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="eb9e988e99ab8e938a869b878ec5888486">[email&nbsp;protected]</a>",
+                "id": "6a8e079d-8a33-4677-b610-a5e361c0c959"
+            },
+            "version": "2021.11.278"
+        },
+        {
+            "created": "2021-11-08T23:59:37.621164Z",
+            "device_type": "windows",
+            "gateway_device_id": "ee02da10-40ef-11ec-bb68-6a56f426bb46",
+            "id": "ee02da10-40ef-11ec-bb68-6a56f426bb46",
+            "ip": "98.247.211.1",
+            "key": "DhUI8nqeVrXL1JFhYbeCFmkeu/XEkkEjVmcZ8UraTDI=",
+            "last_seen": "2021-11-08T23:59:37.621164Z",
+            "model": "Latitude 7400",
+            "name": "CloudBox",
+            "os_version": "10.0.19043",
+            "serial_number": "7CHR3Z2",
+            "updated": "2021-11-23T20:03:12.046067Z",
+            "user": {
+                "email": "<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2b5e584e59196b4e534a465b474e05484446">[email&nbsp;protected]</a>",
+                "id": "39663a0d-9f7c-4a24-ae7f-f869a8cf07f1"
+            },
+            "version": "2021.11.34"
+        },
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h3 id="--3"><strong>สร้างขึ้นเพื่อให้ทุกคนจัดการได้</strong></h3>
+	<p>ส่วนหนึ่งของการเปิดตัววันนี้ เรายังประกาศ <a href="https://blog.cloudflare.com/mdm-partnerships/">ความร่วมมือทางธุรกิจกับผู้ให้บริการ MDM</a> เพื่อเป็นกลไกให้คุณสามารถใช้งานซอฟต์แวร์กับผู้ใช้ของคุณได้ เรายังทราบอีกว่าองค์กรต่างๆ ยังไม่มี MDM หรือมีผู้ดูแลจัดการการใช้งานที่ชอบอินเทอร์เฟซผู้ใช้แบบเห็นภาพ</p>
+	<p>ในอีกไม่กี่สัปดาห์ข้างหน้า เราจะเปิด (ในเวอร์ชันเบต้า) ความสามารถในการจัดการมุมมองพฤติกรรมลูกค้าโดยตรงจาก Dashboard ซึ่งจะอนุญาตให้คุณเปลี่ยนแปลงการกำหนดค่าของลูกค้าได้ทันทีโดยไม่ต้องส่งเวอร์ชันใหม่ของลูกค้า</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image3-24.png" class="kg-image"></figure>
+	<h3 id="--4"><strong>มีอะไรใหม่เร็วๆ นี้</strong></h3>
+	<p>ปีหน้าเป็นช่วงเวลาน่าตื่นเต้นสำหรับลูกค้า เมื่อเราจะเพิ่มการสนับสนุนและความยืดหยุ่นของลูกค้าขึ้นหลังจากใช้งานแล้ว คุณลักษณะบางอย่างที่เราตื่นเต้นที่จะส่งให้คือ</p>
+	<ul>
+		<li><strong>การตั้งค่าอุปกรณ์โดยผู้ใช้/กลุ่ม</strong> ที่คุณสามารถระบุการตั้งค่าของลูกค้า (เช่น ใครได้รับอนุญาตให้อัปเดตได้ กฎ split tunnel เป็นต้น) ให้กับผู้ใช้ที่แตกต่างกันได้</li>
+		<li><strong>โหมด Posture-only</strong> อนุญาตให้คุณเริ่มต้นใช้งานการควบคุม posture ของ Cloudflare Access เพิ่มเติมได้ หากคุณยังไม่พร้อมสำหรับ Cloudflare Gateway</li>
+		<li><strong>การสนับสนุนผู้แจกจ่าย Linux เพิ่มเติม</strong> เพื่อให้ทุกคนในองค์กรของคุณได้รับการป้องกัน</li>
+		<li><strong>การตรวจวัดระยะไกลและการวิเคราะห์</strong> การทำงานของอุปกรณ์ในองค์กรของคุณ ตามที่มีความเกี่ยวข้องกับลูกค้าของเราและความต่อเนื่องในการรับส่งข้อมูลไปยังเครือข่ายของ Cloudflare</li>
+	</ul>
+	<h3 id="--5"><strong>เชื่อมต่อเลยตอนนี้</strong></h3>
+	<p>คุณสามารถเลือกการดาวน์โหลดสำหรับรายการลูกค้าของเราทั้งหมดด้านล่าง</p>
+	<!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-0pky {
+			border-color: inherit;
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg">
+		<thead>
+			<tr>
+				<th class="tg-0pky">Windows</th>
+				<th class="tg-0pky"><a href="https://install.appcenter.ms/orgs/cloudflare/apps/1.1.1.1-windows/distribution_groups/beta" target="_blank" rel="noopener noreferrer">ดาวน์โหลดเวอร์ชันเบต้า</a></th>
+				<th class="tg-0pky"><a href="https://install.appcenter.ms/orgs/cloudflare/apps/1.1.1.1-windows-1/distribution_groups/release" target="_blank" rel="noopener noreferrer">ดาวน์โหลดเวอร์ชันรีลีส</a></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0pky">macOS</td>
+				<td class="tg-0pky"><a href="https://install.appcenter.ms/orgs/cloudflare/apps/1.1.1.1-macos/distribution_groups/beta" target="_blank" rel="noopener noreferrer">ดาวน์โหลดเวอร์ชันเบต้า</a></td>
+				<td class="tg-0pky"><a href="https://install.appcenter.ms/orgs/cloudflare/apps/1.1.1.1-macos-1/distribution_groups/release" target="_blank" rel="noopener noreferrer">ดาวน์โหลดเวอร์ชันรีลีส</a></td>
+			</tr>
+			<tr>
+				<td class="tg-0pky">Linux</td>
+				<td class="tg-0pky"><a href="https://pkg.cloudflareclient.com/install" target="_blank" rel="noopener noreferrer">ตั้งค่าฐานข้อมูล</a></td>
+				<td class="tg-0pky"><a href="https://pkg.cloudflareclient.com/packages/cloudflare-warp" target="_blank" rel="noopener noreferrer">ดาวน์โหลดแพ็กเกจ</a></td>
+			</tr>
+			<tr>
+				<td class="tg-0pky">iOS</td>
+				<td class="tg-0pky"></td>
+				<td class="tg-0pky"><a href="https://apps.apple.com/us/app/1-1-1-1-faster-internet/id1423538627" target="_blank" rel="noopener noreferrer">ดาวน์โหลดเวอร์ชันรีลีส</a></td>
+			</tr>
+			<tr>
+				<td class="tg-0pky">Android/Chrome</td>
+				<td class="tg-0pky"></td>
+				<td class="tg-0pky"><a href="https://play.google.com/store/apps/details?id=com.cloudflare.onedotonedotonedotone" target="_blank" rel="noopener noreferrer">ดาวน์โหลดเวอร์ชันรีลีส</a></td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: html-->
+</div>

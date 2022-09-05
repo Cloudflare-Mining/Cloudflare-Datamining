@@ -1,0 +1,126 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/unnamed.png" class="kg-image" alt="Zero Trust, SASE and SSE: foundational concepts for your next-generation network"></figure>
+	<p>如果您是安全性、網路、IT 主管，那有很大機率聽過這些術語：Zero Trust、安全存取服務邊緣 (SASE) 及安全服務邊緣 (SSE)，這些術語用來描述企業網路架構的全新方法。這些框架帶來了從根本上改變企業網路建構及操作之方式的技術浪潮，但術語通常會可交換且不一致地使用。您會非常容易迷失在大量流行語當中，且無法追蹤其背後的目標：為終端使用者、應用程式及網路提供更安全、快速、可靠的體驗。今天，我們將解析每一個概念——Zero Trust、SASE 及 SSE，並概述達成這些目標所需的關鍵元件。如需本內容的長青版本，請點選<a href="https://www.cloudflare.com/learning/access-management/what-is-sase/" target="_blank">此處</a>進入學習中心獲取。</p>
+	<h3 id="-zero-trust-">什麼是 Zero Trust？</h3>
+	<p>Zero Trust 是一種 IT 安全性模型，要求針對嘗試存取私人網路資源的所有人員和裝置執行嚴格的身分驗證，無論其位於網路邊界之內還是之外。這不同於傳統的邊界型安全性模型，其中使用者只要取得網路存取權限，即可存取資源——也稱為「城堡加護城河」架構。</p>
+	<p>更簡單地說：傳統的 IT 網路安全性信任網路內部的所有人員和內容。Zero Trust 架構不會信任任何人員與內容。如需深入瞭解 Zero Trust 安全性，請點選<a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/" target="_blank">此處</a>。</p>
+	<h3 id="-sase-">什麼是安全存取服務邊緣 (SASE)？</h3>
+	<p>Gartner 推出 SASE 作為在任何組織內實作 Zero Trust 架構的框架。SASE 將軟體定義的網路功能與多種網路安全性功能相結合，並在單一雲端平台上交付。這樣一來，SASE 可讓員工進行驗證，以及從任何地點安全地連接至內部資源，並讓組織進一步控制進出其內部網路的流量和資料。</p>
+	<p>SASE 的安全存取元件包括定義用於使用者裝置、應用程式、分支機構、資料中心及雲端流量的 Zero Trust 安全性原則。服務邊緣元件允許所有流量（無論其位置為何）通過安全存取控制項目，且不需要回傳至強制執行那些控制項目的中央「樞紐」。如需深入瞭解 SASE，請點選<a href="https://www.cloudflare.com/learning/access-management/what-is-sase/" target="_blank">此處</a>。</p>
+	<h3 id="-sse-">什麼是安全服務邊緣 (SSE)？</h3>
+	<p>由 Gartner 提出的 SSE 是特別專注於安全性強制執行功能的部分 SASE 功能。這是完整 SASE 部署的常見跳板，可將 SSE 安全性控制項目延伸至企業的廣域網路 (WAN)，且包含軟體定義的網路功能，例如流量定型和服務品質。如需深入瞭解 SSE，請點選<a href="https://www.cloudflare.com/learning/access-management/security-service-edge-sse/" target="_blank">此處</a>。</p>
+	<h2 id="sase-">SASE 包含哪些元件？</h2>
+	<p>最常使用的 SASE 定義列出了多種安全性功能，例如 Zero Trust 網路存取 (ZTNA) 和雲端存取安全性代理程式 (CASB)，專注於 SASE 平台所需要執行的<strong>內容</strong>。安全性功能是整個架構中的關鍵部分，但這些定義並不完整：它們並未描述各項功能的實現<strong>方式</strong>，而這些同樣重要。</p>
+	<p>SASE 的完整定義建立在這份安全性功能清單之上，包含三個不同的方面：安全存取、入口及服務邊緣。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image7-3.png" class="kg-image"></figure>
+	<h2 id="cloudflare-one-sase-">Cloudflare One：全面的 SASE 平台</h2>
+	<p>Cloudflare One 是完整的 SASE 平台，其將整套安全存取功能與靈活入口相結合，以便連接任何流量來源和目的地，且所有內容皆在作為快速又可靠之服務邊緣的 Cloudflare 全球網路上交付。對於希望將 SSE 作為 SASE 跳板的組織，Cloudflare One 也能夠滿足您的需求。由於具備完全可組合的特性，元件能夠個別部署，以解決即時的使用案例，並以您自己的步調建構完整 SASE 架構。</p>
+	<p>我們來深入解析 SASE 架構的每項元件，並說明 Cloudflare One 提供這些元件的方式。</p>
+	<h3 id="-">安全存取：安全性功能</h3>
+	<p>安全存取功能在您的流量間運作，以便保護您的使用者、網路及資料。在<a href="https://en.wikipedia.org/wiki/IPO_model" target="_blank">輸入/處理/輸出 (IPO) 模型中</a>，您可以將安全存取視為監控流量並對其採取動作的<em>程序</em>。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image1-10.png" class="kg-image"></figure>
+	<h3 id="zero-trust-ztna-">Zero Trust 網路存取（ZTNA）</h3>
+	<p>Zero Trust 網路存取技術可在授權每個使用者和裝置存取內部資源前，要求執行嚴格的驗證，從而實作 Zero Trust 安全性模型。相較於一次授予整個區域網路存取權限的傳統虛擬私人網路 (VPN)，ZTNA 僅授予對所要求的特定應用程式的存取權限，並預設拒絕對其他應用程式和資料的存取權限。</p>
+	<p>ZTNA 能夠與其他應用程式安全性功能協同工作，像是 <a href="https://www.cloudflare.com/en-gb/learning/ddos/glossary/web-application-firewall-waf/" target="_blank">Web Application Firewall</a>、<a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/" target="_blank">DDoS 防護</a>及<a href="https://www.cloudflare.com/learning/bots/what-is-bot-management/" target="_blank">機器人管理</a>，為公共網際網路上的應用程式提供完整保護。如需瞭解有關 ZTNA 的更多資訊，請點選<a href="https://www.cloudflare.com/learning/access-management/what-is-ztna/" target="_blank">此處</a>。</p>
+	<!--kg-card-begin: html-->
+	<p><img alt="ZTNA" src="https://blog.cloudflare.com/content/images/2022/06/image2-14.png" style="float:left; height:100px; margin:5px; width:100px">Cloudflare One 包括 ZTNA 解決方案 <a href="https://www.cloudflare.com/products/zero-trust/access/" style="text-decoration:none" target="_blank">Cloudflare Access</a>，能夠以用戶端或無用戶端模式運行，以授予對自行代管和 SaaS 應用程式的存取權限。</p>
+	<br><br>
+	<!--kg-card-end: html-->
+	<h3 id="-web-swg-">安全 web 閘道（SWG）</h3>
+	<p>安全 Web 閘道在企業網路和網際網路之間運作，以便強制執行安全性原則並保護公司資料。無論流量源自使用者裝置、分支機構還是應用程式，SWG 皆提供包括 URL 篩選、惡意軟體偵測及封鎖及應用程式控制在內的防護層。當越來越高比例的企業網路流量從私人網路轉移至網際網路，部署 SWG 對於保護公司裝置、網路及資料免受各種安全性威脅來說相當關鍵。</p>
+	<p>SWG 可與 <a href="https://www.cloudflare.com/en-gb/learning/ddos/glossary/web-application-firewall-waf/" target="_blank">Web Application Firewall</a> 和<a href="https://www.cloudflare.com/learning/security/what-is-next-generation-firewall-ngfw/" target="_blank">網路防火牆</a>等其他工具協作，以便保護流經企業網路的傳入和傳出流量。它們也能夠與<a href="https://www.cloudflare.com/learning/access-management/what-is-browser-isolation/" target="_blank">遠端瀏覽器隔離</a> (RBI) 進行整合，以防止惡意軟體和其他攻擊影響企業裝置和網站，而不會完全封鎖使用者的網際網路資源存取。如需瞭解有關 SWG 的更多資訊，請點選<a href="https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway/" target="_blank">此處</a>。</p>
+	<!--kg-card-begin: html-->
+	<p><img alt="SWG" src="https://blog.cloudflare.com/content/images/2022/06/image4-8.png" style="float:left; height:100px; margin:5px; width:100px">Cloudflare One 包括 SWG 解決方案 <a href="https://www.cloudflare.com/products/zero-trust/gateway/" target="_blank">Cloudflare Gateway</a>，可提供 DNS、HTTP，以及對來自使用者裝置和網路位置的流量進行網路篩選。</p>
+	<br><br>
+	<!--kg-card-end: html-->
+	<h3 id="-rbi-">遠程瀏覽器隔離（RBI）</h3>
+	<p>瀏覽器隔離技術會將網頁載入過程與顯示網頁的使用者裝置分開，藉此保護瀏覽活動的安全。這樣一來，潛在惡意網頁程式碼不會在使用者裝置上執行，防止惡意軟體感染及其他網路攻擊影響使用者裝置和內部網路。</p>
+	<p>RBI 與其他安全存取功能協作；例如安全性團隊可以設定安全 Web 閘道原則，自動將流量與已知或潛在的可疑網站隔離。如需瞭解有關瀏覽器隔離的更多資訊，請點選<a href="https://www.cloudflare.com/learning/access-management/what-is-browser-isolation/" target="_blank">此處</a>。</p>
+	<!--kg-card-begin: html-->
+	<p><img alt="RBI" src="https://blog.cloudflare.com/content/images/2022/06/image9-6.png" style="float:left; height:100px; margin:5px; width:100px">Cloudflare One 包括<a href="https://www.cloudflare.com/products/zero-trust/browser-isolation/" target="_blank">瀏覽器隔離</a>。相較於向使用者傳送緩慢老式網頁版本的傳統遠端瀏覽器方法，Cloudflare 瀏覽器隔離在使用者裝置上繪製精確的頁面複本，然後迅速交付該複本，一如普通瀏覽器那樣。</p>
+	<!--kg-card-end: html-->
+	<h3 id="-casb-">雲端存取安全性代理程式 (CASB)</h3>
+	<p>雲端存取安全性代理程式掃描、偵測並持續監控 SaaS 應用程式中的安全問題。組織使用 CASE 的用途包括：</p>
+	<ul>
+		<li>資料安全性，例如：確保不會在 Dropbox 中公開共用錯誤的檔案或資料夾</li>
+		<li>使用者活動，例如：針對凌晨 2 點在 Workday 中發生的可疑使用者權限變更活動發出提醒</li>
+		<li>設定錯誤，例如：確保 Zoom 錄音無法公開存取</li>
+		<li>合規性，例如：追蹤和報告修改 Bitbucket 分支權限的人員</li>
+		<li>影子 IT，例如：偵測使用其工作電子郵件註冊未核准應用程式的使用者</li>
+	</ul>
+	<p>API 驅動的 CASB 利用 API 整合與多種 SaaS 應用程式，且只需幾分鐘即可連線。CASB 也能夠與 RBI 合作，偵測並阻止對已核准及未經核准 SaaS 應用程式的不必要行為，例如停用下載檔案或向外複製文件文字的功能。如需瞭解有關 CASB 的更多資訊，請點選<a href="https://www.cloudflare.com/en-gb/learning/access-management/what-is-a-casb/" target="_blank">此處</a>。</p>
+	<!--kg-card-begin: html-->
+	<p><img alt="CASB" src="https://blog.cloudflare.com/content/images/2022/06/image6-6.png" style="float:left; height:100px; margin:5px; width:100px">Cloudflare One 包括 API 驅動的 <a href="https://www.cloudflare.com/products/zero-trust/casb/" target="_blank">CASB</a>，提供對 SaaS 應用程式的全面可見度和控制功能，讓您輕鬆防止資料洩漏和違規行為。</p>
+	<br><br>
+	<!--kg-card-end: html-->
+	<h3 id="-dlp-">資料丟失預防 (DLP)</h3>
+	<p>資料外洩防護工具偵測並防止資料外流（未經公司授權的資料移動）或資料毀損。許多 DLP 解決方案會分析網路流量和內部「端點」裝置，以便識別信用卡號和個人識別資訊 (PII) 等機密資訊的洩漏或外洩。DLP 使用多種技術偵測敏感性資料，包括資料特征識別、關鍵字比對、模式比對及檔案比對。如需瞭解有關 DLP 的更多資訊，請點選<a href="https://www.cloudflare.com/en-gb/learning/access-management/what-is-dlp/" target="_blank">此處</a>。</p>
+	<!--kg-card-begin: html-->
+	<p><img alt="DLP" src="https://blog.cloudflare.com/content/images/2022/06/image12.png" style="float:left; height:100px; margin:5px; width:100px">Cloudflare One 的 <a href="https://www.cloudflare.com/teams/lp/dlp/" target="_blank">DLP</a> 功能即將推出。這些將包括以下功能：針對 PII 等常見模式檢查資料、標示您必須保護的特定資料並製作索引，以及將 DLP 規則與其他 Zero Trust 原則結合。</p>
+	<!--kg-card-end: html-->
+	<h3 id="--1">防火牆即服務</h3>
+	<p>防火牆即服務也稱為雲端防火牆，可篩選潛在惡意流量且不要求客戶網路內部配備實體硬體。如需瞭解有關防火牆即服務的更多資訊，請點選<a href="https://www.cloudflare.com/en-gb/learning/cloud/what-is-a-cloud-firewall/" target="_blank">此處</a>。</p>
+	<!--kg-card-begin: html-->
+	<p><img alt="Firewall" src="https://blog.cloudflare.com/content/images/2022/06/image14.png" style="float:left; height:100px; margin:5px; width:100px">Cloudflare One 包括 <a href="https://www.cloudflare.com/magic-firewall/" target="_blank">Magic Firewall</a>，這項防火牆即服務允許您從單一控制平面中篩選任何 IP 流量，以及（新功能！）對流量強制執行 IDS 原則。</p>
+	<br><br>
+	<!--kg-card-end: html-->
+	<h3 id="--2">電子郵件安全</h3>
+	<p>電子郵件安全性是阻止基於電子郵件的網路攻擊和有害通訊的程序，包括保護收件匣免於被盜用、保護網域免於詐騙、阻止網路釣魚攻擊、防止欺詐、封鎖惡意軟體傳遞、篩選垃圾郵件，以及使用加密保護電子郵件內容免於被未經授權的人存取。</p>
+	<p>電子郵件安全性工具可與 DLP 和 RBI 等其他安全存取功能搭配使用；例如，電子郵件中潛在的可疑連結可在隔離瀏覽器中啟動，且不會封鎖誤判情形。如需瞭解有關電子郵件安全性的更多資訊，請點選<a href="https://www.cloudflare.com/en-gb/learning/email-security/what-is-email-security/" target="_blank">此處</a>。</p>
+	<!--kg-card-begin: html-->
+	<p><img alt="Email Security" src="https://blog.cloudflare.com/content/images/2022/06/image5-7.png" style="float:left; height:100px; margin:5px; width:100px">Cloudflare One 包括 <a href="https://www.cloudflare.com/products/zero-trust/email-security/" target="_blank">Area 1</a> 電子郵件安全性，這可在攻擊週期最早階段中執行網際網路爬蟲功能，以便阻止網路釣魚、企業電子郵件入侵 (BEC) 和電子郵件供應鏈攻擊。Area 1 深度整合 Microsoft 及 Google 的環境和工作流程，以便增強雲端電子郵件提供者的內建安全性。</p>
+	<!--kg-card-end: html-->
+	<h2 id="--3">入口：取得連線</h2>
+	<p>若要對您的流量套用安全存取功能，則需要相關機制，使流量從其來源（無論是遠端使用者裝置、分支機構、資料中心還是雲端）前往這些功能運作所在的服務邊緣（請參見下文）。入口即為此類機制：IPO 模型中的輸入和輸出，或者換句話說，您的流量在套用篩選條件後從 A 點流至 B 點的方式。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image13.png" class="kg-image"></figure>
+	<h3 id="-proxy-">反向 Proxy（適用於應用程式）</h3>
+	<p>反向 Proxy 位於網頁伺服器前端，並將用戶端（例如 Web 瀏覽器）要求轉送至那些網頁伺服器。反向 Proxy 通常在實作時有助於增加安全性、效能及可靠性。當與身分識別和端點安全性提供者搭配使用時，反向 Proxy 可授予對 Web 型應用程式的網路存取權限。</p>
+	<p>Cloudflare One 包括全球使用頻率最高的反向 Proxy 之一，每天可處理超過 13.9 億個 DNS 要求。</p>
+	<h3 id="--4">應用程式連接器（適用於應用程式）</h3>
+	<p>對於私人或非 Web 型應用程式，IT 團隊可在他們的基礎結構中安裝輕量精靈，並與服務邊緣建立僅限傳出的連線。這些應用程式連接器可為 HTTP 網頁伺服器、SSH 伺服器、遠端桌面及其他應用程式/通訊協定啟用連線能力，且應用程式不會面臨潛在攻擊。</p>
+	<p>Cloudflare One 包括 <a href="https://www.cloudflare.com/products/tunnel/" target="_blank">Cloudflare Tunnel</a>。使用者可以安裝一個輕量精靈，在其原始網頁伺服器和 Cloudflare 最近的資料中心間建立加密通道，而不必開啟任何公共傳入連接埠。</p>
+	<h3 id="--5">裝置用戶端（適用於使用者）</h3>
+	<p>若要使流量從筆記型電腦和電話等裝置流向提供篩選服務和私人網路存取的服務邊緣，使用者可以安裝用戶端。此用戶端也稱為「漫遊代理程式」，可作為正向 Proxy，將裝置中部分或全部的流量引導至服務邊緣。</p>
+	<p>Cloudflare One 包括 <a href="https://1.1.1.1/" target="_blank">WARP</a> 裝置用戶端，現已由全球數百萬名使用者使用，適用於 iOS、Android、ChromeOS、Mac、Linux 及 Windows。</p>
+	<h3 id="-ip-">自有或租用 IP（適用於分支機構、資料中心及雲端）</h3>
+	<p>根據 SASE 提供者網路/服務邊緣的功能，組織可能會選擇準備自有 IP 或租用 IP，透過 BGP 通告啟用整個網路的連線能力。</p>
+	<p>Cloudflare One 包括 <a href="https://developers.cloudflare.com/byoip/" target="_blank">BYOIP</a> 和租用 IP 選項，兩者皆涉及在整個 Anycast 網路中通告範圍。</p>
+	<h3 id="--6">網路通道（適用於分支機構、資料中心及雲端）</h3>
+	<p>大多數位於實體網路邊界的硬體或虛擬硬體裝置皆能夠支援一或多種類型的業界標準通道機制，例如 <a href="https://www.cloudflare.com/learning/network-layer/what-is-gre-tunneling/" target="_blank">GRE</a> 和 <a href="https://www.cloudflare.com/learning/network-layer/what-is-ipsec/" target="_blank">IPsec</a>。若要啟用網路層級的連線能力，這些通道可從分支機構、資料中心及公用雲端建立至服務邊緣。</p>
+	<p>Cloudflare One 包括 Anycast GRE 和 <a href="https://blog.cloudflare.com/anycast-ipsec/">IPsec</a> 通道選項，並透過類似傳統點對點通道的方式加以設定，但可為 Cloudflare 的整個 Anycast 網路授予自動連線能力並，以實現輕鬆管理及備援。這些選項也支援從現有 SD-WAN 裝置輕鬆連線，這可簡化管理或實現全自動化的通道設定。</p>
+	<h3 id="--7">直接連線（適用於分支機構和資料中心）</h3>
+	<p>具有高度可靠性和處理能力需求的網路最終入口選項直接連線至服務邊緣，方式包括實體交叉連線/最後一英里連線，或是透過虛擬光纖提供者的虛擬互連。</p>
+	<p>Cloudflare One 包括 <a href="https://www.cloudflare.com/network-interconnect/" target="_blank">Cloudflare 網路互連</a> (CNI)，可讓您透過直接實體連線或合作夥伴提供的虛擬連線，與 Cloudflare 的網路連線。<a href="https://blog.cloudflare.com/zh-tw/cloudflare-for-offices-zh-tw/">Cloudflare for Offices</a> 直接將 CNI 導入您的實體部署，實現更加簡易的連線能力。</p>
+	<h2 id="--8">服務邊緣：支援這一切的網路</h2>
+	<p>安全存取功能需要特定的運作地點。在傳統的邊界架構模型中，該地點為企業辦公室或資料中心的硬體工具箱機架；如果是 SASE，則為盡量接近全球任一處之使用者和應用程式的分散式網路。但是，並非所有服務邊緣都均衡構建：對於一個為使用者、應用程式及網路提供良好體驗的 SASE 平台，基礎網路必須具有快速、智慧、可互通、可編程及透明等特性。我們來深入解析每一項平台功能。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image10-2.png" class="kg-image"></figure>
+	<h3 id="--9">效能：位置、互連、速度、處理能力</h3>
+	<p>在過去，IT 團隊必須在安全性和效能之間作出艱難的權衡決策。這些包括是否將流量以及將哪些流量回傳至中央位置來進行安全性篩選，以及啟用哪些安全性功能來平衡輸送量和處理支出。使用 SASE，不再需要進行權衡，只要服務邊緣滿足以下條件即可：</p>
+	<ul>
+		<li><strong>地理位置分散</strong>：讓服務邊緣位置盡量靠近使用者和應用程式的所在地點，這一點至關重要，這將慢慢擴展至全球任何一處。</li>
+		<li><strong>互連</strong>：您的服務邊緣必須與其他網路互連，包括主要傳輸、雲端及 SaaS 提供者，以便為路由傳送流量的最終目的地提供可靠且快速的連線能力。</li>
+		<li><strong>快速</strong>：隨著使用者體驗的期望持續提升，您的服務邊緣必須跟上進度。使用者感受到的應用程式效能會受到許多因素影響，包括快速最後一英里網際網路連線能力的可用性，以及安全性篩選和加密/解密步驟的影響，因此 SASE 提供者必須採取整體方法以衡量並改善網路效能。</li>
+		<li><strong>高處理能力</strong>：使用 SASE 架構模型，您無需再考慮安全性功能的處理能力規劃，「該購買哪種規模的硬體工具」已是過時的問題。這意味著您的服務邊緣必須在網路流量所在的每個位置擁有足夠的處理能力，以及聰明地載入平衡流量的能力，以便在服務邊緣有效地利用該處理能力。</li>
+	</ul>
+	<p>Cloudflare One 構建於 <a href="https://www.cloudflare.com/network/" target="_blank">Cloudflare 的全球網路</a>之上，其遍佈 100 多個國家/地區的超過 270 座城市，且具有 10,500+ 互連網路及 140+ Tbps 處理能力。</p>
+	<h3 id="-qos-">流量情報：定型、QoS、基於遙測的路由</h3>
+	<p>除了網路/服務邊緣的固有效能屬性之外，根據您個別網路之特性影響流量的能力也很重要。流量定型、服務品質 (QoS) 及基於遙測的路由等技術可優先處理關鍵應用程式的頻寬，以及避開壅塞、延遲及中繼路徑之中其他問題，進一步改善安全性服務邊緣的流量效能。</p>
+	<p>Cloudflare One 包括 <a href="https://www.cloudflare.com/products/argo-smart-routing/" target="_blank">Argo Smart Routing</a>，可最佳化第 3 至 7 層的流量，以便聰明地避開壅塞、封包遺失及網際網路上的其他問題。其他流量定型和 QoS 功能還在 Cloudflare One 的規劃之中。</p>
+	<h3 id="--10">威脅情報</h3>
+	<p>為支援安全存取功能，您的服務邊緣需要不斷更新的情報來源，其中包含 OSI 堆疊所有層級的已知和全新攻擊類型。整合第三方威脅源的能力是好的開始，但從流經服務邊緣之流量所得出的原生威脅情報更加強大。</p>
+	<p>Cloudflare One 包括<a href="https://www.cloudflare.com/products/zero-trust/threat-defense/" target="_blank">威脅情報</a>，收集自 Cloudflare 網路上超過 2,000 萬網際網路設備，且持續回傳至我們的安全存取原則，以便保護客戶免受新興的威脅。</p>
+	<h3 id="--11">互通性：整合、標準及可組合性</h3>
+	<p>您的 SASE 平台將替代傳統網路架構的許多元件，但您可以選擇保留部分現有的工具，日後再引入新工具。您的服務邊緣需要與現有的連線性提供者、硬體及工具相容，以便流暢遷移至 SASE。</p>
+	<p>同時，服務邊緣還應協助您搶先掌握全新技術，以及 TLS 1.3 和 HTTP3 等安全性標準。而且還應具有完全可組合的特性，每項服務都能協同工作，獲得比一堆單獨的單一功能解決方案更佳的結果。</p>
+	<p>Cloudflare One 與<a href="https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/" target="_blank">身分識別提供者</a>、<a href="https://www.cloudflare.com/endpoint-partners/" target="_blank">端點保護</a>解決方案、<a href="https://www.cloudflare.com/network-onramp-partners/" target="_blank">SD-WAN</a> 設備、<a href="https://www.cloudflare.com/network-interconnect-partnerships/" target="_blank">互連提供者</a>，以及安全性事件和事件管理工具 (<a href="https://www.cloudflare.com/products/zero-trust/integrations/" target="_blank">SIEM</a>) 等平台相整合。只要最小程度的整合作業，即可將現有安全性和 IT 工具與 Cloudflare One 搭配使用。</p>
+	<p>Cloudflare 也是促進網際網路和網路標準的領導者。任何全新 Web 標準和通訊協定都有可能受到我們研究團隊的影響。</p>
+	<p>Cloudflare One 也具有完全可組合的特性，讓您能夠從一個使用案例開始，疊加額外的功能，為您的網路創造「1+1=3」的效應。</p>
+	<h3 id="--12">協調流程：自動化和可編程性</h3>
+	<p>在規模超過少量的使用者、應用程式及地點後，部署及管理您的 SASE 設定可能很複雜。您的服務邊緣應提供完整的自動化和可編程性，包括透過 Terraform 等工具管理基礎結構即程式碼的能力。</p>
+	<p>Cloudflare One 包含完整的 API 和 <a href="https://developers.cloudflare.com/cloudflare-one/api-terraform/access-with-terraform/" target="_blank">Terraform</a> 支援，以便輕鬆部署及管理設定。</p>
+	<h3 id="--13">可見度：分析和記錄</h3>
+	<p>您的團隊應全面瞭解所有透過服務邊緣路由傳送的流量。在經典的邊界安全性模型中，IT 和安全性團隊可在流量進出企業網路的少量位置上設定網路分流器，以取得可見度。當應用程式離開資料中心，而使用者離開辦公室時，取得這一資料變得相當具有挑戰性。使用 SASE 架構，由於您的全部流量透過具有單一控制平面的服務邊緣路由傳送，因此您可以重新取得該可見度——兩者皆透過流量資料、封包擷取及豐富的記錄和分析等熟悉格式獲得。</p>
+	<p>Cloudflare One 所有的安全存取元件都會產生豐富分析和記錄，並可直接在 Cloudflare One 儀表板上進行評估，或是推送至 SIEM 工具以取得進階分析。</p>
+	<h2 id="-cloudflare-one-sase-">利用 Cloudflare One 開啟您的 SASE 之旅</h2>
+	<p>在接下來的一週，我們將發佈各種新功能，這些功能將進一步增強 Cloudflare One 平台的能力，讓您的團隊更輕鬆地實現 SASE 的願景。您可以在此處關注我們的 Innovation Week 首頁，或是聯絡我們以立即開始使用。</p>
+</div>

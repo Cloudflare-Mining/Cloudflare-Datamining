@@ -1,0 +1,24 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image1-4.png" class="kg-image" alt="Durable Objects — 现已正式发布"></figure>
+	<p>Full Stack Week 旨在介绍开发人员如何拥抱 Cloudflare 网络的力量，打造默认全球性的完整应用。Workers 的承诺不仅仅是改善了延迟——而是从根本上改变了编程范式，使开发人员更轻松，应用程序更有韧性。</p>
+	<p>去年 <a href="https://blog.cloudflare.com/durable-objects-open-beta/">我们发布了 Durable Objects</a> — 用于对在 Cloudflare 边缘上运行的 Workers 的状态进行协调。通过 Durable Objects，仅需几行代码，开发人员就能实施过去比较复杂的应用程序，例如协作白板、游戏服务器或全球队列。</p>
+	<p>今天，我们宣布 Durable Objects 已普遍可用，并可用于生产环境。</p>
+	<h3 id="-durable-objects-">为何 Durable Objects 如此强大？</h3>
+	<p>对很多传统应用程序而言，状态协调都是通过数据库进行的。基于Workers 构建的应用程序对数据库提出了一些独特的挑战——即需要处理原生的全球规模和大量并发，这可能会导致在协调共享键时发生频繁的事务回滚。数据库本身很难配置和扩展，特别是在全球规模上，因此开发人员需要针对 Workers 的访问模式专门调整数据库。<br><br>Durable Objects 提供一个更简单的范式：编写一个 JavaScript 类，您的应用程序可以创建该类的命名实例——确保在 Cloudflare 的整个网络中是唯一的。该实例是一个 Durable Object ——Workers （及其他Durable Object！) 可以通过它的 ID 向它发送消息。Durable Object 以单线程方式按顺序处理消息，允许在消息之间进行协调。我们还提供了一个强一致的存储 API，可存储对象需持久化的键值对。</p>
+	<p>以在线文档编辑器为例。典型架构会将文档的状态保存在一个数据库中，并让用户将更改持久化到数据库中。这导致协作变得困难——多个用户如何确保他们都能看到对文档更改的最新副本？<br><br>通过使用 Durable Objects，这个问题变得简单了很多。通过编写一个 Document 类，可以将每个文档的状态存储在内存中的持久对象中。在用户连接时，他们会看到文档的最新副本——并能与其他用户同步进行更改。当用户离开文档时，Durable Object 将离开内存并停止产生更改，同时其状态将持久保存。即使不需要配置网络，不需要管理数据库，也不需要实施自动扩展策略——也能正常工作。</p>
+	<p>虽然个别对象是单线程的，但 Durable Objects 的设计意味着对象集合可以有效地无限扩展。对象的生命周期是托管的，意味着不需要运行清理任务或缩减系统——Durable Objects 可以即时扩展到每秒数十万个请求，然后再缩减，无需开发人员交互。</p>
+	<h3 id="-">发布提前体验以来，我们做了什么？</h3>
+	<p>首先，我们一直致力于提高可靠性和性能。Durable Objects 支持 Cloudflare 正在开发的多个产品，包括 <a href="https://blog.cloudflare.com/zh-cn/introducing-r2-object-storage-zh-cn/">R2 存储</a>和<a href="https://blog.cloudflare.com/zh-cn/cloudflare-waiting-room-zh-cn/">Cloudflare 等候室</a>。 </p>
+	<p>具体来说，等候室使用 Durable Objects 就试图访问特定站点的当前用户数量提供一个强一致性视图。将这种频繁更新的状态存储在传统数据库中将难以扩展，在全球规模上内运行则要困难得多。</p>
+	<p>我们的客户也拥抱了 Durable Objects。我们已经看到一家大型游戏公司在 Durable Objects 对象上构建了他们新的后端架构——协调个人游戏状态和多人游戏大厅。Durable Object 具有无需管理服务器或数据库而动态扩展的能力，使其成为他们的一个简单选择，让他们凭借一个相对较小的团队来开发自己的游戏。</p>
+	<p>客户已经构建了更多的应用——从状态页面监视器到协作白板应用程序。我们已经看到了在 WebSockets 中使用 Durable Objects 来创建完全响应式应用的特别兴趣，并且已经发布了一个<a href="https://github.com/cloudflare/dog" target="_blank">参考架构</a>来帮助客户进一步发展。</p>
+	<p>我们在运行系统方面也做得更好了，尤其是在响应大量请求的情况下。Durable Objects 现在可以在对象之间处理每秒数十万个请求，在单一对象上每秒处理数百个请求，这使得它们甚至能满足最苛刻的客户的生产要求。</p>
+	<p>我们已经发布了 <a href="https://blog.cloudflare.com/supporting-jurisdictional-restrictions-for-durable-objects/">Jurisdictional Restrictions</a>（司法管辖区限制） ，让开发人员能为 Durable Object 添加区域标记，确保它在该区域中处理和存储数据，从而使 Durable Object 的扩展变得简单。</p>
+	<p>我们在 Durable Object 存储请求前<a href="https://blog.cloudflare.com/durable-objects-easy-fast-correct-choose-three/">添加了一个缓存</a>，使读写操作迅如闪电，也使编写正确的并发代码更加容易。</p>
+	<p>除此之外，我们还做了一些较小的改进，包括：<a href="https://developers.cloudflare.com/workers/learning/using-durable-objects#uploading-a-durable-object-worker" target="_blank">简化新 Durable Objects 类的上传</a>，仪表板 UI，以及支持 `wrangler dev` 和 `wrangler tail` 进行实时调试。</p>
+	<h3 id="durable-objects-">Durable Objects 下一步发展是什么？</h3>
+	<p>我们继续致力于使 Durable Objects 成为构建无限扩展应用的最简单平台。</p>
+	<p>现在，在对象可被分区时，Durable Objects 能很好地扩展，但个别对象被限制于单一执行线程。很多工作负载可在多个线程中扩展，提供对某个对象的状态的只读访问，并仅在状态发生变化时进行同步。我们将此称为 Durable Objects 的复制。我们正在开发这个功能。<br><br>我们也在为添加一个 API 来获得对某个 Durable Object 的保证回调，让开发人员在未来指定的时间唤醒一个 Durable Object 来运行一个函数。这简化了生命周期管理，使得在 Durable Object 上构建可靠队列等基元变得容易。<br><br>我们还在研究如何更好地在地理上分布对象，包括我们在最初宣布时谈到的对象自动迁移愿景。<br><br>如果您有任何功能希望我们添加，欢迎给我们<a href="/cdn-cgi/l/email-protection#2b5c4459404e5958065b59444f5e485f6b4847445e4f4d474a594e05484446">写邮件</a>或<a href="https://info.cloudflare.com/rs/713-XSC-918/images/CF_China_QRcode.png?mkt_tok=NzEzLVhTQy05MTgAAAGAoxnAXUTroz-mJhALF3_p704Z9sCJJEiege0TluB4X6DnMaiJ5y6vMf_gi1M-PVjhhdCFQHi2YfzhUlfZ2kY" target="_blank">扫码关注</a>微信公众号进一步交流。</p>
+	<h3 id="-durable-objects--1">我们如何使用 Durable Objects？</h3>
+	<p>在 Cloudflare 仪表板中启用 Durable Objects 并选择定价，然后在这里查看我们的<a href="https://github.com/cloudflare/workers-chat-demo" target="_blank">示例聊天应用</a>和<a href="https://github.com/cloudflare/dog" target="_blank">参考架构</a>。<br><br>祝您构建之旅愉快！</p>
+</div>

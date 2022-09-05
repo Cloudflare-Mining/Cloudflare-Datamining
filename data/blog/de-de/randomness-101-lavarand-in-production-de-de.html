@@ -1,0 +1,90 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/05/lava-lamps.jpg" class="kg-image">
+		<figcaption>Lavalampen in der Cloudflare-Lobby – mit freundlicher Genehmigung von @mahtin</figcaption>
+	</figure>
+	<h3 id="einleitung"><strong>Einleitung</strong></h3>
+	<p>Wie einige von Ihnen vielleicht wissen, gibt es in der Lobby unseres Büros in San Francisco <a href="https://www.fastcodesign.com/90137157/the-hardest-working-office-design-in-america-encrypts-your-data-with-lava-lamps" target="_blank">eine Wand aus Lavalampen</a>, die wir für die Kryptografie verwenden. In diesem Blogbeitrag werden wir uns ansehen, wie das funktioniert. Dieser Beitrag setzt kein technisches Hintergrundwissen voraus. Einen detaillierteren Blick auf die technischen Details finden Sie unter <a href="https://blog.cloudflare.com/lavarand-in-production-the-nitty-gritty-technical-details">LavaRand im Einsatz: Die wichtigsten technischen Details</a>.</p>
+	<h3 id="hintergrund"><strong>Hintergrund</strong></h3>
+	<h4 id="zuf-lligkeit-in-der-kryptografie"><strong>Zufälligkeit in der Kryptografie</strong></h4>
+	<p>Wie wir <a href="https://blog.cloudflare.com/why-randomness-matters/">bereits früher besprochen haben</a>, beruht die Kryptografie auf der Fähigkeit, Zufallszahlen zu erzeugen, die sowohl unvorhersehbar sind als auch vor allen Widersachern geheim gehalten werden.</p>
+	<p>Aber „Zufall“ ist ein ziemlich kniffliger Begriff; er wird in vielen verschiedenen Bereichen mit leicht unterschiedlicher Bedeutung verwendet. Und wie in all diesen Bereichen ist auch seine Verwendung in der Kryptografie sehr präzise. In einigen Bereichen ist ein Prozess zufällig, wenn er einfach nur die richtigen statistischen Eigenschaften hat. So bezeichnet man beispielsweise die Ziffern von Pi als zufällig, weil alle Zahlenfolgen gleich häufig vorkommen („15“ erscheint so häufig wie „38“, „426“ erscheint so häufig wie „297“ usw.). Aber für die Kryptografie ist das nicht genug – Zufallszahlen müssen <em>unvorhersehbar</em> sein.</p>
+	<p>Um zu verstehen, was <em>unvorhersehbar</em> bedeutet, hilft es zu bedenken, dass Kryptografie immer auf einer Asymmetrie von Informationen basiert. Wenn Sie versuchen, eine kryptografische Operation sicher durchzuführen, dann sind Sie darüber besorgt, dass jemand – ein <em>Widersacher</em> – versuchen wird, Ihre Sicherheit zu verletzen. Das Einzige, was Sie vom Widersacher unterscheidet, ist, dass Sie einige Dinge wissen, die der Widersacher nicht weiß, und die Aufgabe der Kryptografie ist es sicherzustellen, dass diese Asymmetrie der Informationen für Ihre Sicherheit ausreicht.</p>
+	<p>Betrachten wir ein einfaches Beispiel. Stellen Sie sich vor, dass Sie und ein Freund ins Kino gehen wollen, Sie aber verhindern wollen, dass Ihre Erzfeindin herausfindet, welchen Film Sie sich ansehen werden (damit sie nicht erscheint und verhindert, dass Sie den Film sehen können!). In dieser Woche sind Sie an der Reihe, den Film auszuwählen. Sobald Sie Ihre Wahl getroffen haben, müssen Sie Ihrem Freund eine Nachricht senden, in der steht, welchen Film Sie ausgewählt haben. Dabei müssen Sie sicherstellen, dass Ihre Erzfeindin, selbst wenn sie die Nachricht abfangen sollte, nicht herauszufinden kann, was sie bedeutet.</p>
+	<p>Sie entwickeln folgenden Plan: Da es im Moment nur zwei Filme gibt, die Sie ansehen können, bezeichnen Sie einen als A und den anderen als B. Dann werfen Sie in Anwesenheit Ihres Freundes eine Münze. Sie einigen sich auf die folgende Tabelle, die angibt, welche Nachricht Sie je nach Wahl des zu sehenden Films und dem Ausgang des Münzwurfs mit Kopf (K) oder Zahl (Z), senden werden. Später, wenn Sie sich entschieden haben, welchen Film Sie sehen möchten, werden Sie diese Tabelle verwenden, um eine verschlüsselte Nachricht an Ihren Freund zu senden, in der steht, welchen Film Sie ausgewählt haben.</p>
+	<p></p>
+	<!--kg-card-begin: html-->
+	<center>
+		<div style="border: 1px solid black;">
+			<table style="background-color: transparent;">
+				<tbody>
+					<tr>
+						<th>
+							<div style="padding: 5px;"><strong>Film</strong></div>
+						</th>
+						<th>
+							<div style="padding: 5px;"><strong>Münze</strong></div>
+						</th>
+						<th>
+							<div style="padding: 5px;"><strong>Nachricht</strong></div>
+						</th>
+					</tr>
+					<tr>
+						<td>A</td>
+						<td>K</td>
+						<td>„Es grünt so grün, wenn Spaniens Blüten blühen.“</td>
+					</tr>
+					<tr>
+						<td>A</td>
+						<td>Z</td>
+						<td>„In Hertford, Hereford und Hampshire hagelt es höchst selten harmlos.“</td>
+					</tr>
+					<tr>
+						<td>B</td>
+						<td>K</td>
+						<td>„In Hertford, Hereford und Hampshire hagelt es höchst selten harmlos.“</td>
+					</tr>
+					<tr>
+						<td>B</td>
+						<td>Z</td>
+						<td>„Es grünt so grün, wenn Spaniens Blüten blühen.“</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</center>
+	<!--kg-card-end: html-->
+	<p></p>
+	<p>Wenn Sie sich für Film B entscheiden und die Münze mit Kopf nach oben gelandet ist, werden Sie die Nachricht „In Hertford, Hereford und Hampshire hagelt es höchst selten harmlos.“ senden. Da Ihr Freund weiß, dass die Münze mit Kopf nach oben gelandet ist – er war dabei –, weiß er nun auch, dass Sie sich für Film B entschieden haben. Aber betrachten Sie es aus der Perspektive Ihrer Erzfeindin. Sie kennt das Ergebnis des Münzwurfs nicht – alles, was sie weiß, ist, dass es eine 50-prozentige Chance gibt, dass die Münze mit Kopf nach oben gelandet ist, und eine 50-prozentige Chance, dass sie mit Zahl nach oben gelandet ist. Die Nachricht „In Hertford, Hereford und Hampshire hagelt es höchst selten harmlos.“ zu sehen, hilft ihr also überhaupt nicht! Es besteht eine 50-prozentige Chance, dass die Münze mit Kopf nach oben gelandet ist (was Film B impliziert), und eine 50-prozentige Chance, dass sie mit Zahl nach oben gelandet ist (was Film A impliziert). Sie weiß nicht mehr als zuvor!</p>
+	<p>Kommen wir nun zum Konzept der <em>Unvorhersehbarkeit</em> zurück. Stellen Sie sich vor, dass das Ergebnis des Münzwurfs völlig vorhersehbar war – sagen wir, Ihre Erzfeindin hat Ihnen eine Trickmünze untergejubelt, die beim ersten Wurf immer Kopf ergibt, beim zweiten immer Zahl, beim dritten wieder Kopf usw. Da sie wissen würde, dass es eine 100-prozentige Chance gab, dass der erste Münzwurf Kopf ergibt, würde sie unabhängig davon, welche Nachricht Sie senden, wissen, welchen Film Sie sehen werden. Obwohl die Trickmünze noch einige grundlegende Eigenschaften von „Zufälligkeit“ aufweist, wie der Begriff im Bereich der Statistik verwendet wird – sie landet so oft mit Kopf nach oben wie mit Zahl nach oben –, ist sie doch <em>vorhersehbar</em>, was sie für die Kryptografie nutzlos macht. Der wesentliche Punkt: Wenn wir im Kontext der Kryptografie <em>zufällig</em> sagen, meinen wir <em>unvorhersehbar</em>.</p>
+	<h3 id="zuf-lligkeit-und-computer"><strong>Zufälligkeit und Computer</strong></h3>
+	<p>Wenn es eine – aus Sicht von Kryptografen unglückliche – Sache gibt, in der Computer gut sind, dann ist es ihre Vorhersehbarkeit. Sie können denselben Code eine Million Mal ausführen, und solange sie jedes Mal den gleichen Input erhalten, werden sie immer den gleichen Output liefern. Das ist sehr gut für die Zuverlässigkeit, aber es ist von Nachteil, wenn es um Kryptografie geht – schließlich <em>brauchen</em> wir Unvorhersehbarkeit!</p>
+	<p>Die Lösung für dieses Problem sind <em>kryptografisch sichere Zufallszahlengeneratoren</em> (englisch <em>cryptographically secure pseudorandom number generators </em>– CSPRNGs). CSPRNGs sind Algorithmen, die bei einem unvorhersehbaren Input einen viel größeren Outputstrom erzeugen, der ebenfalls unvorhersehbar ist. Dieser Strom kann unbegrenzt verlängert werden; es kann so viel Output produziert werden, wie irgendwann in der Zukunft nötig. Mit anderen Worten, wenn man eine Münze mehrmals werfen würde (ein Prozess, von dem bekannt ist, dass er unvorhersehbar ist) und dann die Ergebnisse (Output) dieser Münzwürfe als Input für einen CSPRNG verwenden würde, wäre ein Widersacher, der den Output dieser Münzwürfe nicht vorhersagen konnte, auch nicht in der Lage, den Output des CSPRNG vorherzusagen – egal wie viel Output vom CSPRNG verbraucht wurde.</p>
+	<p>Aber obwohl CSPRNGs ein sehr mächtiges Werkzeug sind, sind sie nur eine Hälfte der Gleichung –sie benötigen immer noch einen unvorhersehbaren Input, um zu funktionieren. Aber Computer sind, wie wir gesagt haben, nicht unvorhersehbar – sind wir also wieder am Anfang? Nun, nicht ganz. Wie sich herausgestellt hat, haben Computer normalerweise Quellen der Unvorhersehbarkeit, die sie nutzen können, aber diese sind ziemlich langsam. Nun können wir Folgendes tun: wir können diesen langsamen Prozess der Sammlung unvorhersehbaren Inputs mit einem CSPRNG kombinieren, der diesen Input aufnehmen und viel schneller eine viel größere Menge an Input produzieren kann, und schon können wir alle unsere Zufallsbedürfnisse befriedigen!</p>
+	<p>Aber woher kann ein Computer solchen unvorhersehbaren Input bekommen, wenn auch nur langsam? Die Antwort ist <em>die reale Welt</em>. Während Computer eine schöne Vereinfachung der Welt für Programmierer darstellen, in der sie leben können, existieren reale, physische Computer immer noch in der realen, physischen Welt. Und diese Welt ist unvorhersehbar. Computer haben vielerlei Möglichkeiten, Input aus der realen Welt zu bekommen: Temperatursensoren, Tastaturen, Netzwerkschnittstellen usw. All das bietet die Möglichkeit, Messungen der realen Welt durchzuführen, und alle diese Messungen besitzen einen gewissen Grad an Ungenauigkeit. Wie wir gleich erklären werden, ist diese Ungenauigkeit dasselbe wie Unvorhersehbarkeit, und das lässt sich nutzen! Häufige Quellen für unvorhersehbare Zufälligkeiten sind beispielsweise die Messung der Temperatur der CPU mit hoher – und damit ungenauer – Genauigkeit, die Messung der Zeiteinteilung von Tastenanschlägen auf der Tastatur mit hoher Genauigkeit usw. Um zu verstehen, wie man damit unvorhersehbare Zufälligkeiten erzeugen kann, stellen Sie sich die Frage: „Wie hoch ist die Temperatur des Raums, in dem ich gerade sitze?“ Sie können sie wahrscheinlich bis auf ein paar Grad schätzen – sagen wir, irgendwo zwischen 21 und 24 Grad Celsius. Aber Sie haben wahrscheinlich keine Ahnung, wie hoch die Temperatur mit 2 Dezimalstellen Genauigkeit ist – beträgt sie 22,42 Grad oder 22,47 Grad? Wenn Sie die Temperatur mit hoher Präzision messen und dann nur die niederwertigen Ziffern des Messwerts verwenden, können Sie eine höchst unvorhersehbare Zufälligkeit erhalten, indem Sie einfach nur die Welt um sich herum beobachten. Und das können auch Computer.</p>
+	<p>Also, um es zusammenzufassen:</p>
+	<ul>
+		<li>Die in der Kryptografie verwendete Zufälligkeit muss unvorhersehbar sein.</li>
+		<li>Computer können langsam eine kleine Menge an unvorhersehbarer Zufälligkeit erhalten, indem sie ihre Umgebung messen.</li>
+		<li>Computer können diese Zufälligkeit erheblich erweitern, indem sie einen CSPRNG verwenden, der die kleine Menge schnell in eine große Menge unvorhersehbarer Zufälligkeit umwandeln kann.</li>
+	</ul>
+	<h3 id="absichern-ihrer-wetten"><strong>Absichern Ihrer Wetten</strong></h3>
+	<p>Wenn es eine Sache gibt, vor der Kryptografen auf der Hut sind, dann ist es die Gewissheit. Kryptografische Systeme erweisen sich regelmäßig als weniger sicher als ursprünglich angenommen, und wir erneuern ständig unser Verständnis davon, welche Algorithmen in welchen Szenarien sicher zu verwenden sind.</p>
+	<p>Es sollte also keine Überraschung sein, dass Kryptografen ihre Wetten gerne mit mehr Sicherheit absichern, als sie für notwendig halten, da sich herausstellen könnte, dass eine ihrer Annahmen falsch war. Das ist so etwas wie die Kryptografenversion der Praxis von Ingenieuren, Gebäude so zu konstruieren, dass sie weitaus mehr Gewicht, Wind oder Hitze aushalten, als sie in der Praxis erwarten.</p>
+	<p>Wenn es um Zufälligkeit geht, erfolgt diese Absicherung oft in Form einer <em>Mischung</em>. Unvorhersehbare Zufallswerte haben die nette Eigenschaft, dass, wenn sie auf die richtige Weise mit noch unvorhersehbareren Zufallswerten gemischt werden, das Ergebnis mindestens genauso unvorhersehbar ist wie jeder der beiden Inputs. Das bedeutet: Wenn Sie einen Zufallswert, der sehr unvorhersehbar ist, mit einem Zufallswert mischen, der etwas vorhersehbar ist, ist das Ergebnis ein sehr unvorhersehbarer Wert.</p>
+	<p>Diese Mischungseigenschaft ist nützlich, da Sie dadurch unvorhersehbare Zufallswerte aus vielen Quellen mischen können, und wenn Sie später feststellen, dass eine dieser Quellen weniger unvorhersehbar war, als Sie ursprünglich dachten, ist das immer noch in Ordnung – die anderen Quellen kommen zu Hilfe.</p>
+	<h3 id="lavarand"><strong>LavaRand</strong></h3>
+	<p>Bei Cloudflare haben wir Tausende von Computern in Rechenzentren auf der ganzen Welt, und jeder dieser Computer benötigt kryptografische Zufälligkeit. Anfangs haben sie diese Zufälligkeit unter Verwendung des Standardmechanismus erhalten, der von dem Betriebssystem zur Verfügung gestellt wird, das wir auf ihnen ausführen, Linux.</p>
+	<p>Aber als gute Kryptografen versuchen wir immer, unsere Wetten zu abzusichern. Wir wollten ein System, das gewährleistet, dass wir auch dann sicher sind, wenn der Standardmechanismus zum Erfassen von Zufälligkeiten fehlerhaft ist. So sind wir auf LavaRand gekommen.</p>
+	<p></p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/05/lava-lamps-camera.jpg" class="kg-image">
+		<figcaption>Aus Sicht der Kamera</figcaption>
+	</figure>
+	<p></p>
+	<p>LavaRand ist ein System, das Lavalampen als sekundäre Quelle der Zufälligkeit für unsere Produktionsserver verwendet. Eine Wand aus Lavalampen in der Lobby unseres Büros in San Francisco liefert einen unvorhersehbaren Input für eine auf die Wand gerichtete Kamera. Ein Video-Feed von der Kamera wird in einen CSPRNG eingespeist und dieser CSPRNG liefert einen Strom von Zufallswerten, der von unseren Produktionsservern als zusätzliche Quelle der Zufälligkeit genutzt werden kann. Da der Fluss der „Lava“ in einer Lavalampe sehr unvorhersehbar ist,1 ist das „Messen“ der Lampen durch Abfilmen eine gute Möglichkeit, unvorhersehbare Zufälligkeiten zu erhalten. Computer speichern Bilder als sehr große Zahlen, so dass wir sie als Input für einen CSPRNG verwenden können, genau wie jede andere Zahl.</p>
+	<p>Wir sind nicht die ersten, die das tun. Unser LavaRand-System wurde von einem ähnlichen System inspiriert, das zuerst von Silicon Graphics <a href="https://en.wikipedia.org/wiki/Lavarand" target="_blank">vorgeschlagen und gebaut</a> und 1996 <a href="https://www.google.com/patents/US5732138" target="_blank">patentiert</a> wurde (das Patent ist inzwischen abgelaufen).</p>
+	<p>Hoffentlich werden wir es nie benötigen. Hoffentlich bleiben die primären Zufälligkeitsquellen, die von unseren Produktionsservern verwendet werden, sicher und LavaRand wird keinen anderen Zweck erfüllen, als unserem Büro etwas Flair zu verleihen. Aber wenn sich herausstellen sollte, dass wir falsch lagen und dass unsere Zufälligkeitsquellen in der Produktion tatsächlich fehlerhaft sind, dann wird LavaRand unsere Absicherung sein, die es ein wenig schwieriger macht, Cloudflare zu hacken.</p>
+	<hr>
+	<ol>
+		<li>Noll, L.C. and Mende, R.G. and Sisodiya, S., <em>Method for seeding a pseudo-random number generator with a cryptographic hash of a digitization of a chaotic system</em><br></li>
+	</ol>
+</div>

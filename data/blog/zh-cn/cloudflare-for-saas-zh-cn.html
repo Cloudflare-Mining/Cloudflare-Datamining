@@ -1,0 +1,56 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/07/1-3.png" class="kg-image"></figure>
+	<p>软件即服务 (SaaS) 是 IT 市场中<a href="https://www.bmc.com/blogs/saas-growth-trends/" target="_blank">增长最快的</a>业务领域之一。SaaS 提供商可以是任何东西，从网络主机提供商到订阅服务，再到电子商务平台。虽然知名的 SaaS 供应商都是行业巨头，但每天都有新的 SaaS 公司被创建，并有可能成为下一个 Salesforce。</p>
+	<p>但是，虽然这是一个快速增长的细分市场，但如果您是一家 SaaS 公司，您就会知道这不是一条容易打造的道路。</p>
+	<p>Cloudflare<a href="https://blog.cloudflare.com/introducing-ssl-for-saas/">发布了</a>一个解决方案来帮助我们的 SaaS 客户在四年之前—它被称为 <a href="https://www.cloudflare.com/zh-cn/ssl-for-saas-providers/" target="_blank">SSL for SaaS</a>。它非常适合需要大规模管理客户网站和 SSL 证书的人，它已被世界上一些领先的 SaaS 公司采用，从 <a href="https://www.cloudflare.com/zh-cn/case-studies/wp-engine/" target="_blank">WP Engine</a> 到 <a href="https://www.cloudflare.com/zh-cn/case-studies/shopify-powering-the-biggest-shopping-weekend-of-the-year/" target="_blank">Shopify</a> 再到 <a href="https://www.cloudflare.com/zh-cn/case-studies/hubspot/" target="_blank">HubSpot</a>。随着产品的发展，它已成为 SaaS 提供商的一站式停止商店，他们希望为客户提供快速的加载时间、无与伦比的冗余和最强大的安全性。现在，超过 1000 万个应用程序通过其 SaaS 提供商继承了 Cloudflare 网络的全部优势。</p>
+	<p>在今天之前，SSL for SaaS 仅仅适用于企业客户。今天，我们很高兴地宣布我们的 SaaS 解决方案可供所有人使用。为了反映产品自首次发布以来的发展，我们更改了名称：Cloudflare for SaaS。</p>
+	<p>测试版今天可用 —在<a href="https://forms.gle/crARoXd4taCtoSti8" target="_blank">此处</a>提交您的请求以试用它！</p>
+	<p>如果您正在开展 SaaS 业务，价值主张很明确：<a href="https://www.cloudflare.com/zh-cn/saas/" target="_blank">Cloudflare for SaaS</a> 负责管理您的底层基础结构，使您能够保持团队精干并专注于构建您的核心解决方案。我们花了数年时间投资于证书发行，构建了我们的安全性和性能产品套件。现在，我们让您可以轻松地将我们为您的域提供的所有好处扩展到您的最终客户。</p>
+	<h2 id="-saas-">建立 SaaS 业务在技术上很棘手</h2>
+	<p>我们直接了解建立成功的 SaaS 业务所面临的诸多挑战。我们不会告诉您如何运营您的业务，但我们可以分享我们对核心基础结构需求的了解—以及 Cloudflare 如何做好准备来解决这些需求。</p>
+	<p>今天，许多 SaaS 提供商提供服务的方式是为他们的客户提供主机，在他们的 Origin 上（或者，通常是在 Cloudflare 上）的 Web 应用程序。</p>
+	<p>假设您正在构建用于构建电子商务站点的 SaaS 服务。您可以为您的客户提供一个专用子域，例如 myshop.example.com，但您的客户很可能会回来要求在 myshopsactualname.com 上运行该应用程序。为了给客户提供品牌体验，SaaS 提供商需要支持虚域。</p>
+	<p>这比听起来更繁重。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/07/2-2.png" class="kg-image"></figure>
+	<p>应用程序启动后，下一步是为 SaaS 提供商的应用程序及其客户提供 TLS 证书。开发人员可能会开始考虑构建他们的朴素解决方案，他们必须围绕向证书颁发机构发出 API 调用来构建整个管道。这意味着验证证书、更新它们并存储它们。为了防止证书失败和客户的正常运行时间，有许多状态需要考虑，这会转化为大量的工程投资。</p>
+	<p>但事情是这样的：你在这方面投入的每一小时，都不能花在工程工作上，以建立你的业务的核心部分。</p>
+	<p>你不必只相信我们的话。在构建 SSL for SaaS 时，我们必须向一流的工程团队学习，他们在管理复杂的证书管理系统时遇到了挑战。例如，<a href="https://www.cloudflare.com/zh-cn/case-studies/hubspot/" target="_blank">HubSpot</a> 在 2015 年推出了他们的内部解决方案，他们部署了在客户之间共享的 SSL 证书。当他们开始遇到扩展困难，导致证书部署缓慢，并给他们的客户留下不满意的体验时，这成为了一个短期解决方案。</p>
+	<h3 id="-ssl-for-saas">输入：SSL for SaaS</h3>
+	<p>Cloudflare 多年来一直专注于证书配置和管理—这是我们业务的核心。当我们在 2014 年推出 Universal SSL 时，我们构建了 SSL 管道来管理数百万个证书。然后，我们决定在 2017 年将托管证书颁发平台的优势扩展到我们的 SaaS 提供商客户，允许他们能够保护他们负责管理的客户网站的安全。</p>
+	<p>这允许像 Hubspot 这样的客户可以保护数千个域，而无需为此投入大量的工程工作。但是，虽然 SSL for SaaS 最初是为了代表我们的客户和他们自己的客户处理证书颁发、管理和续订而构建的，但我们已经扩展了我们的解决方案远不止于此。</p>
+	<h3 id="-ssl">超越 SSL</h3>
+	<p>对于 SaaS 提供商而言，其客户的业务依赖于他们保持在线状态、始终可用且性能良好。当他们的客户注册他们的业务时，这就是 SaaS 提供商做出的潜在承诺。</p>
+	<p>每天，互联网都会看到攻击、恶意 Traffic、意外的请求激增等等。</p>
+	<p>在 Cloudflare，我们投入巨资构建了最大、最具弹性的网络之一，并提供了保护您的应用程序和 Origin 保护解决方案。这是我们对客户的核心价值主张之一，现在 SaaS 提供商也可以将其扩展到他们的客户。借助内置的 DDoS 缓解、弹性 Web 应用程序防火墙 (WAF) 和运营商级自动程序管理解决方案，您可以为您和您的客户防止代价高昂的中断和停机，这样无论攻击者针对谁，你们都可以保持在线。</p>
+	<p>我们不仅减轻了您的工程和支持团队的负担，而且让您的最终客户可以轻松继承您的安全性设置。无论您为自己设置了什么好处，您的客户都会立即接受它们。</p>
+	<h3 id="-">超越安全性</h3>
+	<p>作为一家企业，您希望为您的用户提供最佳体验。速度在我们如何看待在线体验方面发挥着重要作用。</p>
+	<p>对于 SaaS 企业来说，投资性能是必须的。这样做时，您需要记住您的客户是全球性的，他们的目光位于世界各地，这意味着最终用户可能并不总是靠近您的源服务器。</p>
+	<p>Cloudflare for SaaS 允许您利用我们在 100 多个国家/地区设有数据中心的高性能 Anycast 网络，再加上我们的速度和性能功能（如 Caching 和 Argo Smart Routing），可以将性能提高 30%。这意味着，如果您是电子商务网站并且您的源服务器位于北美，那么您在亚洲的全球客户将获得与您的美国访问者相同的闪电般的加载时间，为每位客户提供最佳体验。</p>
+	<h2 id="--1">为巨人……和未来的巨人而建</h2>
+	<p>一月份我们在 Twitter 上<a href="https://twitter.com/dinasaur_404/status/1351703331744321536" target="_blank">宣布</a>我们已开放 SSL for SaaS 测试版。我们没想到的是，大约 80% 的测试版用户在 Workers 上构建了他们的 SaaS 应用程序。回想起来，这是完全有道理的：就像管理和扩展 SSL 管道可能需要宝贵的时间和资源来构建核心业务一样，管理和扩展基础结构可能既昂贵又耗时。</p>
+	<p>通过将 Cloudflare for SaaS 与 Workers 结合，SaaS 公司可以发动他们的开发人员—我们不仅会处理证书管理、安全性和性能，还会处理基础结构的负担。</p>
+	<p>您编写代码，剩下的交给我们。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/07/3-1.png" class="kg-image"></figure>
+	<p>为开发人员构建的最佳部分是了解他们构建的内容。在这里，我们将展示一些已经在我们平台上构建的惊人项目，它们采用了我们刚刚描述的路径：</p>
+	<h3 id="statusflare-">Statusflare：状态页面平台</h3>
+	<p><a href="http://statusflare.com/" target="_blank">Statusflare</a> 是一种用于监控您的网站和应用程序的工具，因为唯一比停机时间更糟糕的事情就是不知道它。Statusflare 团队构建了一个解决方案，允许企业在世界各地部署全局检查以监控正常运行时间、指标和服务器响应时间。除此之外，他们还允许客户部署状态页面，以便客户随时了解其服务的可用性。</p>
+	<p>在构建他们的状态页面产品时，Statusflare 团队决定使用 Workers 作为他们的部署平台。这允许他们可以将所有时间都花在编写代码和构建 API 上，而无需担心部署源服务器。一旦 Statusflare 团队完成了他们的应用程序的构建，他们就准备将其与客户的虚域集成，以便任何人都可以为他们的网站设置状态页面。</p>
+	<p>然后他们面临的挑战是让他们的客户获得他们产品的最新版本。首先，他们决定开源他们的解决方案，为他们的客户提供 Workers 脚本，并让他们的客户部署它以启动并运行他们的状态页面。但这使得更新变得复杂，并且不再为最终用户提供最新版本，而是由客户负责更新。</p>
+	<p>不仅如此—他们还必须花时间与证书颁发机构集成来颁发证书，这样他们客户的页面才能得到保护。</p>
+	<p>Statusflare 发现 Cloudflare for SaaS 是帮助他们成长的完美解决方案。通过易于使用的自定义域集成，他们现在只需单击几个按钮，他们的最终用户就可以使用虚域、获取状态页面的最新更新并部署证书。除此之外，Statusflare 现在正在寻求将他们的解决方案与 Cloudflare Access 和 Teams 集成，以便他们的客户可以将监控保密，并且只允许授权用户使用。凭借内置的安全性和速率限制，Statusflare 永远不必担心传入请求的数量或扩展其应用程序。Statusflare 很高兴地分享，将所有内容集中在一个地方意味着他们不必担心扩展或配置服务器，他们不必担心客户域的可用性，他们现在可以专注于编写代码和构建他们的产品，而不是投入时间来保持他们的应用程序稳定。</p>
+	<blockquote>使用 Cloudflare，我们的应用程序可以自行扩展，可以扩展到无限<br>- Adam,Statusflare 的创始人。</blockquote>
+	<h3 id="pluma-">PLUMA：用于发布博客和播客的多合一平台</h3>
+	<p><a href="https://pluma.cloud/" target="_blank">PLUMA</a> 是一项音频主机服务、一个博客平台，以及一项针对网站和移动应用程序的以隐私为重点的 Analytics 服务，目前正在开发中。它建立在 Workers 之上，这意味着应用程序完全在 Cloudflare 的边缘运行，冷启动时间为 0 毫秒。借助 Workers KV，PLUMA 能够在 Cloudflare 的边缘存储其所有数据，即会话数据、静态文件和日志，为其最终用户提供低延迟服务。PLUMA 用户最大的请求之一是让客户能够使用他们自己的品牌域名，而不是 PLUMA 提供的域名。借助适用于 SaaS 的 Cloudflare，PLUMA 可以轻松地为最终用户提供这种体验，并具有使用 TLS 证书保护客户站点安全的扩展优势。</p>
+	<blockquote>Cloudflare for SaaS 可以轻松地将任意数量的域与 Workers 集成。这使 Cloudflare 成为构建低延迟无服务器应用程序的绝佳平台。 <br>- PLUMA 创始人 Pier Bover</blockquote>
+	<h3 id="plink-"><strong>Plink：播客的智能链接</strong></h3>
+	<p>Plink 为播客制作通用链接。他们客户的主要功能请求之一是拥有自己的自定义域。作为一家处于早期阶段的初创公司，Plink 正在寻找一种经济高效的解决方案，以帮助他们优化应用程序、扩展规模并为用户提供定制体验。借助 Workers 和 Workers KV，他们能够优化其核心脚本和功能，而无需担心 DevOps。这与 Cloudflare for SaaS 相结合，允许他们能够为客户拥有的外部域创建 “定制品牌” 服务体验。</p>
+	<blockquote>将 Plink 的 API 与 Cloudflare 的 API 连接起来是一种无缝体验。总的来说，与 Workers 一起建造是惊人的！我很高兴能够通过 Cloudflare for SaaS 为 Plink 客户提供品牌体验。<br>- Scott Mathson，Plink 创始人</blockquote>
+	<h2 id="-cloudflare-for-saas-">今天立即试用 Cloudflare for SaaS！</h2>
+	<p>当开发人员开始构建他们的下一个 SaaS 应用程序时，他们不想担心的事情有很多。与其将工程资源分配到基础结构上，不如将时间花在打造下一个价值 10 亿美元的业务上。</p>
+	<p>这就是我们正在启用的。随着我们今天宣布的测试版，我们正在为每个人做这件事。</p>
+	<p>最终结果：您可以建立下一个开创性的 SaaS 业务，剩下的交给我们。要注册测试版，请在<a href="https://forms.gle/crARoXd4taCtoSti8" target="_blank">此处</a>提交您的请求。我们将滚动接纳客户，并为每个域分配 20 个自定义主机名。</p>
+	<p>请求加入我们的测试版<a href="https://forms.gle/crARoXd4taCtoSti8" target="_blank">在这里</a>！</p>
+	<h2 id="--2">企业客户，敬请期待</h2>
+	<p>虽然我们对让 Cloudflare for SaaS 可供所有人使用感到非常兴奋，但我们知道我们最大的企业客户有一些苛刻的专业需求。我们一直在努力构建新功能以满足他们。请继续关注未来几周令人兴奋的公告！<br></p>
+</div>

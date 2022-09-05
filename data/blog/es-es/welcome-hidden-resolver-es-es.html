@@ -1,0 +1,89 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/04/image_0.png" class="kg-image"></figure>
+	<p>Por si no lo sabías todavía, Cloudflare <a href="https://blog.cloudflare.com/dns-resolver-1-1-1-1/">lanzó</a> un servicio de resolutor de <a href="https://www.cloudflare.com/learning/dns/what-is-dns/" target="_blank">DNS</a> con la privacidad como prioridad el 1 de abril. ¡Va muy en serio! El servicio, el primero que orientamos al consumidor, es compatible con estándares emergentes de DNS, como DNS mediante HTTPS:443 y TLS:853, además de protocolos tradicionales mediante UDP:53 y TCP:53, todo en una dirección fácil de recordar: <a href="https://1.1.1.1/" target="_blank">1.1.1.1</a>.</p>
+	<p>Como se mencionó en el post original del blog, nuestra política es que nunca jamás se escriban las direcciones IP de los clientes en el disco y que se limpien todos los registros en 24 horas. Aún así, la gente más consciente con respecto a su privacidad no desea revelar su dirección IP al resolutor en ningún caso, y es algo que respetamos. Por ello, vamos a lanzar un servicio onion de Tor para nuestro resolutor en <a href="https://dns4torpnlfs2ifuz2s2yf3fc7rdmsbhm6rw75euj35pac6ap25zgqad.onion/" target="_blank">dns4torpnlfs2ifuz2s2yf3fc7rdmsbhm6rw75euj35pac6ap25zgqad.onion</a>, accesible a través de <a href="https://tor.cloudflare-dns.com/" target="_blank">Tor.CloudFlare-dns.com</a>.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/04/tor.gif" class="kg-image"></figure>
+	<p><strong>NOTA:</strong> el resolutor oculto es todavía un servicio experimental y no debería utilizarse en producción o para usos de vital importancia hasta que se haya probado más.</p>
+	<h3 id="curso-intensivo-de-tor"><strong>Curso intensivo de Tor</strong><br></h3>
+	<h4 id="-qu-es-tor"><strong>¿Qué es</strong> <a href="https://www.torproject.org/" target="_blank"><strong>Tor</strong></a><strong>?</strong></h4>
+	<p>Imaginemos un Internet alternativo donde, para conectarte a www.cloudflare.com, en lugar de delegar la tarea de encontrar un camino hacia nuestros servidores a tu proveedor de Internet, tuvieras que seguir estos pasos para llegar a Cloudflare:</p>
+	<ol>
+		<li>Calculas una ruta a tu destino así:<br><code>Tú -&gt; Tu proveedor de servicios de Internet -&gt; X -&gt; Y -&gt; Z -&gt; www.cloudflare.com.</code></li>
+		<li>Cifras tu paquete con la clave pública de Z, luego con la de Y, y finalmente con la de X.</li>
+		<li>Envías el resultado a X, que lo descifra con su clave privada;</li>
+		<li>X envía el resultado a Y, que lo descifra con su clave privada;</li>
+		<li>Y envía el resultado a Z, que lo descifra con su clave privada para obtener el paquete original;</li>
+		<li>Z envía el paquete a <a href="https://blog.cloudflare.com/welcome-hidden-resolver/www.cloudflare.com">www.cloudflare.com</a>.</li>
+	</ol>
+	<p>Si cada uno realiza sus funciones correctamente, es posible garantizar que solo el repetidor de entrada X sepa tu dirección IP y solo el de salida Z sepa el sitio web al que te conectas, proporcionándote así privacidad y anonimato. Esta es una versión simplificada de Tor: una colección de equipos de voluntarios y servidores de todo el mundo actúan como repetidores para una red enorme, construida sobre Internet, donde cada salto de un repetidor a otro quita una capa de encriptación. De ahí su nombre: el enrutador onion (cebolla).</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/04/exit-node.png" class="kg-image"></figure>
+	<h4 id="-qu-son-los-servicios-onion-de-tor"><strong>¿Qué son los servicios onion de Tor?</strong></h4>
+	<p>Mantener el anonimato de los usuarios de Internet no es la única función de la red Tor. En particular, una salvedad con respecto al procedimiento anterior es que el repetidor de salida y cualquiera entre este y el destino, incluidos los proveedores de red, aún pueden acceder a la conexión. Para resolver este problema y también proporcionar anonimato a los editores de contenido, Tor da paso a los servicios onion. Los servicios onion son nodos de Tor que anuncian su clave pública, codificada como una dirección con TLD .onion y establecen todas sus conexiones dentro de la red de Tor:</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/04/image_3.png" class="kg-image"></figure>
+	<h4 id="-c-mo-se-resuelve-un-dominio-cuando-se-usa-tor"><strong>¿Cómo se resuelve un dominio cuando se usa Tor?</strong></h4>
+	<p>El proceso de devolver una dirección IP dado un nombre de dominio se conoce como <em>resolución DNS</em>. Como Tor todavía utiliza direcciones IP, aún hay que hacer resolución DNS para navegar por la web mediante Tor. Hay dos métodos comunes para resolver un nombre de dominio cuando se usa Tor:</p>
+	<ol>
+		<li>Resolver el nombre directamente, luego dirigirse a la dirección IP a través de Tor;</li>
+		<li>Solicitar a un repetidor de salida de Tor que resuelva el nombre públicamente y conectarse a la IP.</li>
+	</ol>
+	<p>Claramente, la primera opción filtra tu IP a tu resolutor de DNS y, a menos que tu cliente utilice DNS mediante HTTPS o DNS mediante TLS, se filtra el nombre de tu destino a tu proveedor de servicios de Internet. Lo que resulta menos evidente es que la segunda opción puede hacerte vulnerable a <a href="https://arstechnica.com/information-technology/2014/01/scientists-detect-spoiled-onions-trying-to-sabotage-tor-privacy-network/" target="_blank">ataques</a> de manipulación como envenenamiento de DNS o sslstrip de <a href="https://trac.torproject.org/projects/tor/wiki/doc/ReportingBadRelays" target="_blank">repetidores malos</a>. Aquí es donde interviene nuestro servicio:</p>
+	<p> 3. &nbsp;¡Pide un servicio de resolutor basado en .onion!</p>
+	<h3 id="-c-mo-funciona-el-resolutor-oculto-de-cloudflare"><strong>¿Cómo funciona el resolutor oculto de Cloudflare?</strong></h3>
+	<p>Sintetizando, nuestro servicio de resolutor basado en .onion es un servicio de onion de Tor que reenvía todas las comunicaciones de puertos DNS a los puertos correspondientes de 1.1.1.1, y así la IP del cliente que aparece es una IP interna en lugar de la tuya. Hay, sin embargo, más de lo que parece.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/04/image_4.png" class="kg-image"></figure>
+	<h4 id="-es-seguro-el-resolutor-oculto"><strong>¿Es seguro el resolutor oculto?</strong></h4>
+	<p>Una diferencia evidente entre el uso de 1.1.1.1 y este servicio es que la dirección .onion consta de "dns4tor" además de 49 caracteres alfanuméricos aparentemente aleatorios. Esta cadena de 56 caracteres, de hecho, contiene una clave pública completa de Ed25519 que se utiliza para asegurar la comunicación con el servicio de onion. Eso plantea una serie de desafíos en cuanto la seguridad utilizable:</p>
+	<ol>
+		<li>¿Cómo pueden los usuarios estar seguros de que la dirección sea correcta?</li>
+	</ol>
+	<p>Simplemente compramos un <a href="https://crt.sh/?id=439705277" target="_blank">certificado</a> con tor.cloudflare-dns.com como título del asunto y la dirección .onion como un título alternativo para el asunto. Así, si estás en el lugar correcto, verás esto:</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/04/image_5.png" class="kg-image"></figure>
+	<p> &nbsp;2. &nbsp;¿Cómo pueden recordar los usuarios esta dirección?</p>
+	<p>No creemos que sea necesario recordar esta dirección. Idealmente, lo único que tendrías que hacer es ir a <a href="https://tor.cloudflare-dns.com/" target="_blank">https://tor.cloudflare-dns.com</a> y que el navegador dirija tu petición a la dirección .onion. Puede hacerse usando el encabezado HTTP "<a href="https://tools.ietf.org/html/rfc7838" target="_blank">Alt-Svc</a>", un encabezado opcional que notifica al explorador que se puede acceder a los recursos desde una ubicación de red alternativa, posiblemente usando un protocolo diferente. Gracias a <a href="https://hacks.mozilla.org/2018/05/a-cartoon-intro-to-dns-over-https/" target="_blank">Mozilla</a>, usar direcciones de .onion como servicios alternativos es posible ahora en <a href="https://nightly.mozilla.org/" target="_blank">Firefox Nightly</a>.</p>
+	<p>Piensa en esta función como <a href="https://blog.cloudflare.com/opportunistic-encryption-bringing-http-2-to-the-unencrypted-web/">un cifrado oportunista</a>: una vez que el navegador recibe un encabezado Alt-Svc que indica que una dirección .onion está disponible para tor.cloudflare-dns.com, si sabe que se puede acceder a las direcciones .onion (por ejemplo a través de un proxy SOCKS), intenta comprobar que el nivel de seguridad del servicio alternativo es el mismo o mayor. Esto incluye asegurarse de que es posible conectar con el servicio onion utilizando el mismo certificado y <a href="https://tools.ietf.org/html/rfc6066#section-3" target="_blank">Nombre del servidor</a>. Si ese es el caso, el navegador utiliza el servicio alternativo en su lugar, garantizando que tus peticiones futuras no salgan de la red Tor.</p>
+	<h4 id="-es-r-pido-el-resolutor-oculto"><strong>¿Es rápido el resolutor oculto?</strong></h4>
+	<p>Hagamos un experimento mental: supón que entre dos puntos en la tierra hay un cable de fibra óptica, capaz de transmitir paquetes a la velocidad de la luz sin pérdidas.</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/04/image_6.png" class="kg-image"></figure>
+	<p></p>
+	<p>Con un cálculo aproximado, es fácil ver que, de media, cada paquete recorre una distancia equivalente a un <strong>cuarto</strong> de la circunferencia de la tierra en unos <strong>33 ms</strong>, mientras que cada paquete de Tor tarda aproximadamente <strong>200 ms</strong> en dar <strong>una vuelta y media</strong> alrededor de la Tierra antes de llegar a un servicio onion; eso son tres vueltas para un viaje de ida y vuelta que garantiza el anonimato de ambas partes.</p>
+	<p>Cloudflare, sin embargo, no requiere anonimato para sus servidores, razón por la cual podemos reducir el número de repetidores a solo tres, habilitando una <a href="https://trac.torproject.org/projects/tor/ticket/17178" target="_blank">configuración</a><a href="https://gitweb.torproject.org/torspec.git/tree/proposals/260-rend-single-onion.txt" target="_blank">opcional</a> de servicios onion que priorice una menor latencia sobre el anonimato de la ubicación del servicio. Hay que subrayar que esto no afecta en modo alguno a la privacidad o al anonimato. De hecho, como habrás notado, en la primera imagen del servicio onion, el origen está a tres saltos de distancia del punto de encuentro, mientras que nuestro servicio onion solo está a un salto.</p>
+	<p>Trabajamos activamente en el desarrollo de maneras de hacer este servicio más rápido y garantizar que tiene el menor tiempo de inactividad posible.</p>
+	<h4 id="-por-qu-debo-utilizar-el-resolutor-oculto-de-cloudflare"><strong>¿Por qué debo utilizar el resolutor oculto de Cloudflare?</strong></h4>
+	<p>Ante todo, resolver las consultas DNS a través de la red Tor, por ejemplo mediante la conexión a la resolución 8.8.8.8 de Google, garantiza un nivel significativamente mayor de anonimato que realizar las peticiones directamente. Hacerlo no solo impide que la resolución vea tu dirección IP, sino que incluso tu proveedor de Internet no sabrá que has intentado resolver un nombre de dominio.</p>
+	<p>Todavía, a menos que el destino sea un servicio de onion, los atacantes pasivos pueden capturar paquetes que salen de la red Tor y los nodos de salida maliciosos pueden envenenar las consultas DNS o degradar la encriptación a través de <a href="https://moxie.org/software/sslstrip/" target="_blank">sslstripping</a>. Incluso si limitas la navegación a sitios <a href="https://www.eff.org/pages/tor-and-https" target="_blank">HTTPS únicamente</a> los atacantes pasivos pueden averiguar a qué direcciones te has conectado. Es más, hay actores capaces de comparar el tráfico antes de que entre en la red Tor y después de que salga de esta, que potencialmente pueden usar los metadatos (tamaño, tiempo, etc.) para <a href="https://nymity.ch/tor-dns/" target="_blank">desanonimizar</a> al cliente. La única solución, entonces, es eliminar la necesidad de nodos de salida usando en su lugar servicios de onion. Eso es lo que ofrece nuestro resolutor basada en .onion.</p>
+	<p>Por otra parte, si tu cliente no admite consultas DNS cifradas, usando un resolutor basada en .onion puedes asegurar la conexión frente a los ataques en la ruta de acceso, incluidos los ataques de secuestro de BGP. Esto implica tener el mismo nivel de seguridad para DNS mediante UDP y TCP mediante DNS que proporcionan DNS mediante HTTPS y DNS mediante TLS.</p>
+	<p>Sin embargo, el anonimato personal no es la única razón por la que debes utilizar este servicio. La capacidad de Tor para garantizar el anonimato de todo el mundo depende del número de personas que lo utilizan. Si por ejemplo solo usaran la red Tor los denunciantes, entonces cualquier persona que se conectara a la red Tor automáticamente estaría bajo sospecha de ser un denunciante. Por lo tanto, cuanta más gente use Tor para ver memes o vídeos de gatitos en Internet, más fácil será para aquellos que verdaderamente necesitan anonimato mezclarse con el tráfico.</p>
+	<p>Para muchos usuarios, una barrera para usar Tor es que simplemente es lento, así que podría comprenderse a quienes no sacrifican la rapidez del tiempo de carga de páginas web para ayudar a mantener el anonimato de activistas y disidentes. Dicho esto, las solicitudes DNS son pequeñas en tamaño, y como la mayoría de navegadores y sistemas operativos almacenan los resultados DNS, el tráfico total no es significativo. Como consecuencia, utilizar el resolutor basado en .onion solamente ralentizará un poco tu petición DNS inicial sin frenar nada más, contribuyendo aún al anonimato general de la red Tor y sus usuarios.</p>
+	<h3 id="-por-qu-debo-confiar-en-el-resolutor-oculto-de-cloudflare"><strong>¿Por qué debo confiar en el resolutor oculto de Cloudflare?</strong></h3>
+	<p>El uso de un resolutor basado en .onion garantiza que tu proveedor de servicios de Internet no sepa que resuelves un dominio, los nodos de salida no tienen la oportunidad de manipular las respuestas DNS y el resolutor nunca averigua tu dirección IP. Sin embargo, la ventaja especial de utilizar el resolutor basado en .onion de Cloudflare es la combinación de la potencia de Tor con todas las características de protección de la privacidad del resolutor 1.1.1.1, como la disminución de las consultas de nombre. Además, hay un equipo de ingenieros que trabaja para mejorarla en todos los niveles, incluidos estándares tales como DNS mediante HTTPS y DNS mediante TLS.</p>
+	<p>Como decía el directivo Matthew Prince <a href="https://blog.cloudflare.com/the-trouble-with-tor/">hace dos años</a>, el anonimato en línea es una causa que valoramos en Cloudflare. Además, cuando anunció el resolutor 1.1.1.1 nos <a href="https://developers.cloudflare.com/1.1.1.1/commitment-to-privacy/" target="_blank">comprometimos</a> a dar todos los pasos técnicos para garantizar que no sabemos lo que haces en Internet. Proporcionar una manera de usar el resolutor a través de la red Tor de la manera más rápida posible es un gran paso en esa dirección.</p>
+	<h3 id="-c-mo-configurarlo"><strong>¿Cómo configurarlo?</strong></h3>
+	<p>El resolutor basado en .onion es compatible con todos los protocolos DNS que funcionan con 1.1.1.1 solo en la red Tor. Sin embargo, puesto que no todos los clientes DNS pueden conectarse a la red Tor, es necesario algo de hackeo para lograr que funcione. Aquí explicaremos cómo configurar DNS mediante HTTPS según el resolutor basado en .onion. Para los demás casos, dirígete a la <a href="https://developers.cloudflare.com/1.1.1.1/fun-stuff/dns-over-tor/" target="_blank">página de desarrolladores</a> para ver los detalles de cómo utilizar el resolutor basado en .onion.</p>
+	<h4 id="-te-acuerdas-de-cloudflared"><strong>¿Te acuerdas de Cloudflared?</strong></h4>
+	<p>Aquí puedes ver cómo configurar <code>Cloudflared</code> para iniciar un cliente DNS que utiliza DNS mediante HTTPS, enrutado a través de la red Tor:</p>
+	<ol>
+		<li>En primer lugar, descarga <code>Cloudflared</code> siguiendo la guía general para <a href="https://developers.cloudflare.com/1.1.1.1/dns-over-https/cloudflared-proxy/" target="_blank">Operar un cliente DNS mediante HTTPS</a>.</li>
+		<li>Ejecuta un proxy Tor SOCKS y usa socat para desviar el puerto TCP:443 al localhost:</li>
+	</ol>
+	<!--kg-card-begin: markdown-->
+	<pre><code>socat TCP4-LISTEN:443,reuseaddr,fork SOCKS4A:127.0.0.1:dns4torpnlfs2ifuz2s2yf3fc7rdmsbhm6rw75euj35pac6ap25zgqad.onion:443,socksport=9150
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>3. Da instrucciones a tu equipo para que trate la dirección .onion como localhost:</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>cat &lt;&lt; EOF &gt;&gt; /etc/hosts 
+127.0.0.1 dns4torpnlfs2ifuz2s2yf3fc7rdmsbhm6rw75euj35pac6ap25zgqad.onion 
+128.EOF
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>4. Por último, inicia un DNS local mediante UDP daemon:</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>cloudflared proxy-dns --upstream "https://dns4torpnlfs2ifuz2s2yf3fc7rdmsbhm6rw75euj35pac6ap25zgqad.onion/dns-query"
+INFO[0000] Adding DNS upstream                           url="https://dns4torpnlfs2ifuz2s2yf3fc7rdmsbhm6rw75euj35pac6ap25zgqad.onion/dns-query"
+INFO[0000] Starting DNS over HTTPS proxy server          addr="dns://localhost:53"
+INFO[0000] Starting metrics server                       addr="127.0.0.1:35659"
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>5. ¡Benefíciate!<br></p>
+</div>

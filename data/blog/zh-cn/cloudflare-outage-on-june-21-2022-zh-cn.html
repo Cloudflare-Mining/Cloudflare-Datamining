@@ -1,0 +1,102 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/BLOG-1226-Global-Latency-1.png" class="kg-image" alt="Cloudflare outage on June 21, 2022"></figure>
+	<h3 id="-">简介</h3>
+	<p>2022 年 6 月 21 日，Cloudflare 发生了一次服务故障事件，影响到我们 19 个数据中心的流量。不幸的是，这 19 个数据中心处理的流量在我们的全球流量中占较大比例。这次服务故障事件的起因是我们在一个长期项目中所做的一项更改。该项目旨在提高我们最忙碌的一些数据中心的可用度弹性，因为这些数据中心是我们基础设施的关键组成部分，所处理的流量占 Cloudflare 流量的较大比例。从UTC 06:27开始，一项网络配置的修改导致了以上这些数据中心的服务中断。在 UTC 06:58，第一个故障数据中心恢复上线，到 UTC 07:42，所有故障数据中心均在线并正常运行。</p>
+	<p>如果您恰好在受影响的区域，那么在 2022 年 6 月 21 号的这段时间内，您可能会无法访问 Cloudflare 相关的网站和服务。</p>
+	<p>我们对此次事件的失误和造成的影响深感歉意。</p>
+	<h3 id="--1">背景</h3>
+	<p>在过去 18 个月内，Cloudflare 一直在努力将我们所有最忙碌的数据中心转换为更灵活、更具弹性的架构。这一次，我们已将 19 个数据中心转换为这种架构，内部名称为 Multi-Colo PoP（MCP），包括：阿姆斯特丹、亚特兰大、阿什本、芝加哥、法兰克福、伦敦、洛杉矶、马德里、曼彻斯特、迈阿密、米兰、孟买、纽瓦克、大阪、圣保罗、圣何塞、新加坡、悉尼、东京。</p>
+	<p>这个新架构的一个关键部分被称为 <a href="https://en.wikipedia.org/wiki/Clos_network" target="_blank">Clos 网络</a>，这是一个额外的路由层，可以方便网络链接。这种网络连接让我们能轻松地禁用和启用数据中心内部网络的某些部分，以便进行修复或者处理某个问题。下面这张图中的网络主干就代表了这个 Clos 网络。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image2-27.png" class="kg-image"></figure>
+	<p>这种新的架构为我们提供了显著的可靠性改进，并允许我们在不中断客户通信的情况下在这些位置进行维护。由于这些数据中心也承载着 Cloudflare 的很大一部分流量，这里的任何问题都可能产生非常广泛的影响，不幸的是，这就是今天发生的情况。</p>
+	<h3 id="-utc-">事件时间线（按 UTC）和影响</h3>
+	<p>为了保证 Internet 可达性，Cloudflare 利用了一种称为 <a href="https://www.cloudflare.com/en-gb/learning/security/glossary/what-is-bgp/" target="_blank">BGP</a> 的协议。作为该协议的一部分，管理员可以定义一些策略来确定哪些前缀（一个连续的 IP 地址的集合）广播给对等网络（它们连接到的其他网络）或从对等网络接受哪些前缀</p>
+	<p>这些策略由互相独立的单元构成，它们会被按照顺序进行独立评估。最终结果是，任何特定的前缀要么被广播，要么不被广播。策略的变化可能意味着以前广播的前缀不再被广播，在这种情况下，该前缀会被撤销，这些 IP 地址在互联网上将不可再访问。<br></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image1-27.png" class="kg-image"></figure>
+	<p>在部署前缀广播策略更改时，一个配置语句的顺序调整导致我们撤销了一个关键的前缀子集。</p>
+	<p>由于这一个撤销动作，Cloudflare 的工程师在连接到站点想要恢复问题时遭遇了额外的困难。我们有处理此类事件的备份程序，并使用它们来接管了受影响的数据中心。</p>
+	<p><strong>03:56：</strong>我们开始在第一个数据中心部署策略变更。这些数据中心都没有受到变更的影响，因为这些数据中心都在使用我们老架构。<br><strong>06:17：</strong>在我们一些最忙碌的数据中心开始部署策略变更，但这些数据中心也并非使用这个最新架构。<br><strong>06:27：</strong>策略变更开始部署到我们的 MCP 架构的数据中心，且已经更改了其中的网络骨干连接。<strong>服务故障开始</strong>，随即导致这 19 个数据中心下线。<br><strong>06:32：</strong>Cloudflare 内部正式发布这个事件。<br><strong>06:51：</strong>开始对一个路由器进行配置更改，以验证故障根本原因。<br><strong>06:58：</strong>故障根本原因确认。开始部署恢复配置。<br><strong>07:42：</strong>最后一个还原操作完成。由于网络工程师进行更改时发生重叠，还原了之前的还原，导致问题偶尔再次出现，完成时间被推迟。<br><strong>09:00：</strong>故障事件关闭</p>
+	<p>我们从全球返回的成功请求数量可以明显看出这些数据中心的重要性：</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/06/image3-19.png" class="kg-image"></figure>
+	<p>尽管这些数据中心仅占我们网络的一小部分（4%），但我们总请求数的 50% 受到了影响。出口带宽中也可以看到同样的情况：</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/06/image6-11.png" class="kg-image"></figure>
+	<h3 id="--2">这次事件技术描述及其发生过程</h3>
+	<p>作为标准化 Cloudflare 基础设施的一部分，我们开始标准化 Cloudflare 宣告的前缀BGP community 属性。具体来说，我们为 site-local 前缀添加了信息 community 属性。这些前缀允许我们的计算节点彼此通信，并连接到客户源站。作为 Cloudflare 配置变更的一部分，一个更改请求（CR）工单被生成，其中包括更改的试运行，以及一个分步骤部署过程。在被允许发布之前，它也经过了多位同级工程师的互相评估。不幸的是，在这种情况下，这些配置变更检查步骤没有能够在配置更改我们的骨干网络之前发现错误。</p>
+	<p>在其中一个路由器上的配置变更类似这样：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>[edit policy-options policy-statement 4-COGENT-TRANSIT-OUT term ADV-SITELOCAL then]
++      community add STATIC-ROUTE;
++      community add SITE-LOCAL-ROUTE;
++      community add TLL01;
++      community add EUROPE;
+[edit policy-options policy-statement 4-PUBLIC-PEER-ANYCAST-OUT term ADV-SITELOCAL then]
++      community add STATIC-ROUTE;
++      community add SITE-LOCAL-ROUTE;
++      community add TLL01;
++      community add EUROPE;
+[edit policy-options policy-statement 6-COGENT-TRANSIT-OUT term ADV-SITELOCAL then]
++      community add STATIC-ROUTE;
++      community add SITE-LOCAL-ROUTE;
++      community add TLL01;
++      community add EUROPE;
+[edit policy-options policy-statement 6-PUBLIC-PEER-ANYCAST-OUT term ADV-SITELOCAL then]
++      community add STATIC-ROUTE;
++      community add SITE-LOCAL-ROUTE;
++      community add TLL01;
++      community add EUROPE;
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>这是没有配置错误的，仅仅向这些前缀广播添加了一些额外的信息。对骨干网络连接的更改如下：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>[edit policy-options policy-statement AGGREGATES-OUT]
+term 6-DISABLED_PREFIXES { ... }
+!    term 6-ADV-TRAFFIC-PREDICTOR { ... }
+!    term 4-ADV-TRAFFIC-PREDICTOR { ... }
+!    term ADV-FREE { ... }
+!    term ADV-PRO { ... }
+!    term ADV-BIZ { ... }
+!    term ADV-ENT { ... }
+!    term ADV-DNS { ... }
+!    term REJECT-THE-REST { ... }
+!    term 4-ADV-SITE-LOCALS { ... }
+!    term 6-ADV-SITE-LOCALS { ... }
+[edit policy-options policy-statement AGGREGATES-OUT term 4-ADV-SITE-LOCALS then]
+community delete NO-EXPORT { ... }
++      community add STATIC-ROUTE;
++      community add SITE-LOCAL-ROUTE;
++      community add AMS07;
++      community add EUROPE;
+[edit policy-options policy-statement AGGREGATES-OUT term 6-ADV-SITE-LOCALS then]
+community delete NO-EXPORT { ... }
++      community add STATIC-ROUTE;
++      community add SITE-LOCAL-ROUTE;
++      community add AMS07;
++      community add EUROPE;
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>乍一看，这个配置好像完全相同，但不幸的是，实际并非如此。如果我们重点关注 以下部分，原因就很清楚了：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>!    term REJECT-THE-REST { ... }
+!    term 4-ADV-SITE-LOCALS { ... }
+!    term 6-ADV-SITE-LOCALS { ... }
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>在这部分配置中，term 前的感叹号表示 term 的重新排序。在这种情况下，多个 term 上移，两个术语被添加到底部。具体而言，4-ADV-SITE-LOCALS term 被从顶部移到底部。这个 term 现在处于 REJECT-THE-REST term 之后。顾名思义，这个 term 是一种显式拒绝：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>term REJECT-THE-REST {
+    then reject;
+} 
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>由于该 term 现在处于 site-local term 之前，我们立即停止广播了 site-local 前缀，在瞬间切断了我们对所有受影响数据中心的直接访问，并导致我们的服务器无法到达源。</p>
+	<p>除此之外，这些 site-local 前缀被移除也导致我们的内部负载平衡性系统 Multimog（我们 <a href="https://blog.cloudflare.com/unimog-cloudflares-edge-load-balancer/">Unimog 负载平衡器</a>的一个变体）停止工作，因为它不能在我们的 MCP 中的服务器之间转发请求。这意味着 MCP 中较小的计算集群接收到的流量与最大的集群相同，导致较小的集群过载。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/06/image4-15.png" class="kg-image"></figure>
+	<h3 id="--3">补救及后续步骤</h3>
+	<p>我们对本次事件造成的影响极其重视。我们已经明确了在未来需要改进的领域，并将杜绝今后可能发生的类似事件。</p>
+	<p>如下是我们目前进行中的工作：</p>
+	<p><strong>过程</strong>：虽然 MCP 项目旨在提高可用性，但我们更新这些数据中心的程序上存在缺陷，最终导致 MCP 数据中心以外更广泛的影响。虽然我们采用了一个交叉排错程序来实施配置变更，但交叉排错程序直到最后一步才将 MCP 数据中心包括在内。更改程序和自动化需要包括 MCP 特定的测试和部署程序，以确保不出现意外后果。</p>
+	<p><strong>架构</strong>：不正确的路由器配置阻止了适当的路由被公告到我们的边缘，阻止了流量正确地流向我们的基础设施。最终，导致问题产生的路由宣告机制将被重新设计，以防止无意的错误路由宣告排序问题。</p>
+	<p><strong>自动化</strong>：在我们的自动化套件中有几个机会可以减轻此事件的部分或全部影响。首先，我们会集中精力进行自动化改进，这将是一种交错式的网络配置策略，并可以提供 “提交—确认” 的配置回滚机制。前一种将大大降低事故产生的整体影响，后一种将大大降低事件的解决时间。</p>
+	<h3 id="--4">总结</h3>
+	<p>尽管我们在 MCP 设计上进行了大量投资，以期提高服务的可用性。但这次意外事件表明，我们显然没有达到预期。我们在此对我们的客户和所有在本次服务故障事件期间无法访问 Cloudflare 服务的用户深表歉意。我们已经开始着手进改进，并确保类似情况不会再次发生。</p>
+</div>

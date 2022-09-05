@@ -1,0 +1,125 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/http2-prioritization.png" class="kg-image" alt="HTTP/2 Prioritization"></figure>
+	<p>かなり前に、HTTP/2は超高速のWebを約束し、Cloudflareはすべてのお客様のためにHTTP/2アクセスを展開しました。しかし、HTTP/2の1つの特徴である優先度設定は、期待外れなものでした。根本的に崩壊していたからではなく、ブラウザーに実装する方法に問題があったのです。</p>
+	<p>今日、CloudflareはHTTP/2の優先度設定に変更を加え、サーバー側で、本当にWebの高速化を実現することを可能にする優先順位付けの決定を制御できるようにしました。</p>
+	<p>これまでは、Webコンテンツを読み込む方法とタイミングはブラウザーにより決定してきました。今日、Cloudflareはすべての有料プランに対して、そのモデルに根本的な改革を行っており、サイト所有者が、直接その手で制御できるようにします。お客様は、CloudflareダッシュボードのSpeedタブで「拡張HTTP/2優先度設定」を有効にすることができます。これにより、ブラウザーのデフォルトを、改良されたスケジューリングスキームで上書きして、訪問者のエクスペリエンスが大幅に加速します（50%の高速化を複数回確認しています）。Cloudflare Workersを使用することで、サイト所有者はさらに一歩先へと進み、それぞれに特有のニーズに合わせてエクスペリエンスを完全にカスタマイズできます。</p>
+	<h3 id="-"><strong>背景</strong></h3>
+	<p>Webページは、ブラウザーによって読み込まれ、最終的に表示されるコンテンツに組み立てられる、<a href="https://discuss.httparchive.org/t/whats-the-distribution-of-requests-per-page/21/10?u=patmeenan" target="_blank">数十（場合によっては数百）</a>の個別のリソースで構成されています。これには、ユーザーが操作する表示コンテンツ（HTML、CSS、画像）と、サイト自体のアプリケーションロジック（JavaScript）、広告、サイトの使用状況を追跡するための分析、マーケティング追跡ビーコンが含まれます。リソースの読み込み方法の優先順位付けにより、ユーザーがコンテンツの表示を目視し、ページを操作するまでにかかる時間に大きく影響するかもしれません。</p>
+	<p>基本的にブラウザーとは、HTMLドキュメントを通して、HTMLの始めから終わりまで順番に指示に従って順次ページを構築するHTML処理エンジンです。スタイルシート（CSS）への参照により、ページコンテンツのスタイル設定方法をブラウザに指示し、ブラウザはスタイルシートを読み込む（表示するコンテンツのスタイル設定方法を把握する）までコンテンツの表示を遅らせます。ドキュメントで参照されるスクリプトには、いくつかの異なる動作があります。スクリプトに「非同期」または「遅延」のタグ付けがある場合、ブラウザーはドキュメントの処理を続行し、スクリプトが使用可能になるたびにスクリプトコードを実行します。スクリプトに非同期または遅延とタグ付けされていない場合、実行前にブラウザーは、スクリプトがダウンロードされて実行されるまでドキュメントの処理を停止<a href="https://html.spec.whatwg.org/" target="_blank">しなければなりません</a>。ドキュメントが読み込まれて実行されるまで、ブラウザーの処理の続行をブロックするため、これを「ブロッキング」スクリプトと呼びます。</p>
+	<p>HTMLドキュメントは 2つに分割されます。ドキュメントの &lt;head&gt; は先頭にあり、スタイルシート、スクリプト、その他コンテンツの表示に必要なブラウザー向けの手順が含まれています。ドキュメントの &lt;body&gt; はhead部分の後に表示され、ブラウザーウィンドウに表示される実際のページコンテンツが含まれています（ただし、スクリプトとスタイルシートをbody部分に含めることもできます）。ブラウザーがドキュメントのbody部分に来るまで、ユーザーに表示するものは何もなく、ページは空白のままなので、できるだけ早くドキュメントのhead部分を通過することが重要です。「HTML5 rocks」は、詳細を深く掘り下げたい方のためにブラウザーの動作を詳しく説明する<a href="https://www.html5rocks.com/en/tutorials/internals/howbrowserswork/" target="_blank">優れたチュートリアル</a>が付いています。</p>
+	<p>ブラウザーは通常、ページの作成とドキュメント処理の続行に必要な様々なリソースの読み込み順序を決定する役割を果たします。HTTP/1.x の場合、ブラウザーが1つのサーバーから一度に要求できるものの数に制限があるため（通常は接続6つで、接続1つにつき一度にリソース1つのみ）、順序は要求方法によってブラウザーが厳密に制御します。HTTP/2では、状況が大幅に変わります。ブラウザーは、すべてのリソースをすぐに（少なくとも、ブラウザーがリソースを認識したらすぐに）要求でき、サーバーに対して、リソースの配信方法に関する<a href="https://hpbn.co/http2/#stream-prioritization" target="_blank">詳細な指示</a>を提供します。</p>
+	<h3 id="--1"><strong>最適なリソースの順序付け</strong></h3>
+	<p>ページの読み込みサイクルの多くで、最速のユーザーエクスペリエンスをもたらすために最適なリソースの順序があります（最適な時とそうでない時では、50%以上の改善くらいの大きな違いがあります）。</p>
+	<p>前述の通り、ページの読み込みサイクルの早い段階で、ブラウザーがコンテンツをレンダリングする前に、CSSでブロックされ、HTMLの &lt;head&gt; の部分で JavaScript をブロックしています。読み込みサイクルのその部分では、接続帯域幅を100%使用してブロッキングリソースをダウンロードし、HTMLで定義されている順序で一度に1つずつダウンロードするのが最適です。これにより、ブラウザーが次のブロッキングリソースをダウンロードしている間に各項目を解析して実行でき、ダウンロードと実行がパイプライン処理できます。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/pipeline-1.png" class="kg-image" alt="JavaScript Loading and Execution Pipelined"></figure>
+	<p>スクリプトは、ダウンロードを並列で行っても一つずつ順に行ってもかかる時間は同じですが、順次ダウンロードすると、2つ目のスクリプトのダウンロード中に最初のスクリプトを処理、実行することができます。</p>
+	<p>レンダリングをブロックするコンテンツが読み込まれた後はもっと興味深く、最適な読み込みは、特定のサイトやビジネスの優先順位（ユーザーコンテンツ対広告の分析など）によって異なることがあります。特にフォントに関しては、表示されようとしているコンテンツにスタイルシートが適用された後しか必要なフォントを検出しないので、ブラウザーがフォントを認識した時点で、すでに画面に描画される準備ができているテイストを表示する必要があって、難しい場合があります。フォントを読み込むのに遅延が発生すると、画面上に空白のテキストが表示される（または誤ったフォントを使用してテキストが表示される）時間ができてしまいます。</p>
+	<p>一般に、考慮する必要があるトレードオフがいくつかあります。</p>
+	<ul>
+		<li>ページの表示部分（ビューポート）に表示されるカスタムフォントと表示イメージは、できるだけ早く読み込む必要があります。これらは、ページの読み込み上のユーザーの視覚的エクスペリエンスに直接影響があります。</li>
+		<li>ノンブロッキングJavaScriptは、他の JavaScriptリソースに応じて順次ダウンロードし、各実行がダウンロードと共にパイプライン処理できるようにする必要があります。iJavaScript には、ユーザーが関わるアプリケーションロジックと分析の追跡やマーケティングビーコンが含まれることがあり、それらが遅延すると、ビジネスが追跡する数値指標を低下させることになりかねません。</li>
+		<li>画像を並列でダウンロードするからこそ、メリットがあるのです。画像ファイルの最初の数バイトには、ブラウザーのレイアウトに必要なイメージのサイズが含まれており、並列してダウンロードされるプログレッシブイメージは、転送されたバイトの約 50%で完全に視覚化することができます。</li>
+	</ul>
+	<p>トレードオフを検討したところ、ほとんどの場合に適切に機能する戦略が一つありました。</p>
+	<ul>
+		<li>カスタムフォントが順次ダウンロードされ、表示画像で利用できる帯域幅を分割します。</li>
+		<li>表示画像は並列してダウンロードされ、帯域幅の「画像」シェアを分割します。</li>
+		<li>保留中のフォントまたは表示画像がこれ以上ない場合:</li>
+		<li>ノンロッキングスクリプトが順次ダウンロードされ、非表示画像で利用できる帯域幅が分割されます。</li>
+		<li>帯域幅の「画像」シェアを分割し、非表示画像は並列でダウンロードされます。</li>
+	</ul>
+	<p>このように、ユーザーに表示されるコンテンツができるだけ早く読み込まれ、アプリケーションロジックの遅れをできるだけ抑え、レイアウトができるだけ速く完了するように非表示の画像が読み込まれます。</p>
+	<h3 id="--2"><strong>例</strong></h3>
+	<p>わかりやすくするために、一般的な電子商取引サイトの、簡略化された製品カテゴリーを示したページを例示します。この例では、ページには次の情報が含まれています。</p>
+	<!--kg-card-begin: markdown-->
+	<ul>
+		<li><img style="max-height:2em;vertical-align:middle;display:inline;padding:2px;" src="https://blog.cloudflare.com/content/images/2019/05/html-1.png"> 青色の四角：ページ自体のHTMLファイル。</li>
+		<li><img style="max-height:2em;vertical-align:middle;display:inline;padding:2px;" src="https://blog.cloudflare.com/content/images/2019/05/css-1.png"> 緑色の四角：外部スタイルシート1つ（CSS ファイル）。</li>
+		<li><img style="max-height:2em;vertical-align:middle;display:inline;padding:2px;" src="https://blog.cloudflare.com/content/images/2019/05/script-1.png"> オレンジ色の四角：外部スクリプト4つ（JavaScript）。スクリプトの2つはページ先頭でブロックされ、2つは非同期です。ブロッキングスクリプトは、濃いオレンジ色の四角で表示します。</li>
+		<li><img style="max-height:2em;vertical-align:middle;display:inline;padding:2px;" src="https://blog.cloudflare.com/content/images/2019/05/font-1.png"> 赤色の四角：カスタムWebフォント1つ。</li>
+		<li><img style="max-height:2em;vertical-align:middle;display:inline;padding:2px;" src="https://blog.cloudflare.com/content/images/2019/05/image-1.png"> 紫色の四角：画像13個。ページロゴと製品画像の4つはビューポートに表示され、製品画像の8つはスクロールしないと表示されません。表示されている画像5つは、濃い紫色で表示します。</li>
+	</ul>
+	<!--kg-card-end: markdown-->
+	<p>分かり易くするために、すべてのリソースは同じサイズであり、訪問者の接続で、ダウンロードにそれぞれ1 秒かかると仮定しましょう。すべて読み込むのに合計20秒かかりますが、どのように読み込むかは、エクスペリエンスに大きく影響します。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/optimal-1.png" class="kg-image" alt="Optimal Scheduling"></figure>
+	<p>これはリソースの読み込み時に、前述の最適な読み込みがブラウザーでどのように見えるかを示しています。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/Optimal_loading-1.gif" class="kg-image" alt="Optimal Loading Animation"></figure>
+	<ul>
+		<li>このページは、接続の100%を使用して、HTML、CSS、ブロッキングスクリプトを読み込む最初の4秒間が空白となります。</li>
+		<li>4秒の時点では、ページの背景と構造はテキストや画像なしで表示されます。</li>
+		<li>その1秒後、5 秒の時点でページのテキストが表示されます。</li>
+		<li>5〜10秒から画像が読み込まれ、ぼやけて始まりますが、非常に迅速に鮮明になります。7秒ぐらいで、最終バージョンとほぼ区別がつきません。</li>
+		<li>10秒の時点で、ビューポート内のすべてのビジュアルコンテンツの読み込みが完了しました。</li>
+		<li>次の2 秒間に非同期JavaScript が読み込まれて実行され、重要度の低いロジック（分析、マーケティングタグなど）が実行されます。</li>
+		<li>最後の 8 秒間、ユーザーがスクロールしたときに表示されるよう、残りの製品画像が読み込まれます。</li>
+	</ul>
+	<h3 id="--3"><strong>現在のブラウザの優先度設定</strong></h3>
+	<p>現在のブラウザーエンジンには、<a href="https://calendar.perfplanet.com/2018/http2-prioritization/" target="_blank">様々な優先度設定の戦略</a>が実装されていますが、いずれも最適なものではありません。</p>
+	<p>Microsoft Edge と Internet Explorer は<a href="https://calendar.perfplanet.com/2018/http2-prioritization/#microsoft_edge_internet_explorer" target="_blank">優先度設定をサポートしていない</a>ため、すべてが HTTP/2 のデフォルトにフォールバックし、並列で全ての読み込みを行い、帯域幅を均等に分割します。Microsoft Edgeは、今後のWindowsリリースでChromium ブラウザエンジンを使用する方向に向かっており、この状況を改善する助けとなりそうです。この例のページでは、これは、画像によってブロッキングスクリプトとスタイルシートの転送が遅れるため、ブラウザーが読み込み時間の大半、head部でスタックすることを意味しています。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/edge-1.png" class="kg-image" alt="Microsoft Edge Scheduling"></figure>
+	<p>視覚的には、19秒間空白の画面を見つめた後でコンテンツの大部分が表示され、その後にさらにテキストが表示されるまでに1秒の遅延が発生するという、かなり苦痛を伴うエクスペリエンスが発生します。アニメーション付き進捗状況を見る際は、辛抱強さが必要です。19秒間画面に何も表示されない間、何も起こっていないかのように感じるからです（実際にはそうではなくても）。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/Edge_loading-1.gif" class="kg-image" alt="Microsoft Edge Loading Animation"></figure>
+	<p>Safari は<a href="https://calendar.perfplanet.com/2018/http2-prioritization/#safari" target="_blank">すべてのリソースを並列で読み込み</a>、Safariが考える（画像よりも重要なスクリプトやスタイルシートなどのレンダリングブロックリソースとともに）リソースの重要性に基づいてリソース間の帯域幅を分割します。画像は並列で読み込まれますが、レンダリングブロックコンテンツも同時に読み込まれます。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/safari-1.png" class="kg-image" alt="Safari Scheduling"></figure>
+	<p>すべてのファイルが同時にダウンロードされるという点では Edge と似ていますが、レンダリングブロックリソースに帯域幅を割り当てることで、Safari はコンテンツをより速く表示できます。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/Safari_loading-1.gif" class="kg-image" alt="Safari Loading Animation"></figure>
+	<ul>
+		<li>約8秒後に、スタイルシートとスクリプトの読み込みが完了し、ページの表示を開始します。画像は並列に読み込まれていたため、部分的な状態（プログレッシブ画像の場合はぼやけ）でレンダリングすることもできます。これはまだ最適なケースの半分の速さですが、Edgeで見たものよりもはるかに優れています。</li>
+		<li>約11秒でフォントが読み込まれたため、テキストが表示でき、より多くの画像データがダウンロードされて画像が少し鮮明になります。これは、最適な読み込みのケースとなる7秒の目標近くのエクスペリエンスに匹敵します。</li>
+		<li>読み込みの残りの9秒間では、最終的に20 秒で完了するまで画像ダウンロードデータが増えるにしたがい、画像が鮮明になります。</li>
+	</ul>
+	<p>Firefoxは、<a href="https://calendar.perfplanet.com/2018/http2-prioritization/#firefox" target="_blank">リソースをグループ化</a>する依存関係ツリーを構築し、グループを順次読み込むか、グループ間で帯域幅を共有するようにスケジュールします。特定のグループ内でリソースが帯域幅を共有し、同時にダウンロードします。画像はレンダリングブロックスタイルシートの後に読み込まれ、並列に読み込むようにスケジュールされますが、レンダリングブロックスクリプトとスタイルシートも並列に読み込まれ、パイプライン処理の利点は生かせません。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/firefox-1.png" class="kg-image" alt="Firefox Scheduling"></figure>
+	<p>この例では、スタイルシートが完了するまで画像が遅延するため、Safari よりも少し速いエクスペリエンスになります。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/Firefox_loading-1.gif" class="kg-image" alt="Firefox Loading Animation"></figure>
+	<ul>
+		<li>6秒の時点で、初期ページのコンテンツが背景とぼやけた製品画像としてレンダリングされます（Safariの場合は8秒、最適なケースでは4秒）。</li>
+		<li>8秒でフォントが読み込まれ、製品画像のわずかに鮮明なバージョンと一緒にテキストが表示されます（Safariの場合は11秒、最適なケースでは7秒）。</li>
+		<li>コンテンツ読み込みの残りの12秒間で、残りのコンテンツが読み込まれて、製品画像が鮮明になっていきます。</li>
+	</ul>
+	<p>Chrome（およびすべてのChromiumベースのブラウザー）は、リソースに優先順位をつけて<a href="https://calendar.perfplanet.com/2018/http2-prioritization/#chrome" target="_blank">リスト</a>にします。これは、順番に読み込むメリットがあるレンダリングブロックコンテンツには適していますが、画像にはあまり適していません。各画像は、読み込みが100%完了してから次の画像を開始します。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/chrome-1.png" class="kg-image" alt="Chrome Scheduling"></figure>
+	<p>実際のところ、これは最適な読み込みケースとほぼ同じくらい良いのですが、唯一の違いは画像が並列ではなく一度に1つずつ読み込まれるという点です。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/Chrome_loading-1.gif" class="kg-image" alt="Chrome Loading Animation"></figure>
+	<ul>
+		<li>5秒の目標に達するまで、Chromeでのエクスペリエンスは最適なケースと同一で、背景は 4 秒、テキストコンテンツは5秒で表示されます。</li>
+		<li>次の5秒間で、可視画像が1つずつ読み込まれ、10秒時点ですべて完了します（最適なケースでは、7秒ではわずかにぼやけた状態で、残りの3秒間で鮮明に表示）。</li>
+		<li>ページのビジュアル部分が10秒で完了（最適なケースと同じ）した後、残りの10秒間は非同期スクリプトの実行と非表示の画像読み込みに費やされます（最適な読み込みケースと同様）。</li>
+	</ul>
+	<h3 id="--4"><strong>視覚的な比較</strong></h3>
+	<p>事実上すべてのコンテンツを読み込むのに同じ時間がかかったとしても、視覚的には非常に劇的な影響を与えます。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/compare.gif" class="kg-image" alt="Visual Comparison"></figure>
+	<h3 id="--5"><strong>サーバー側の優先度設定</strong></h3>
+	<p>HTTP/2の優先度設定はクライアント（ブラウザザー）によって要求され、要求に基づいて何を行うかを決定するのはサーバー次第です。<a href="https://github.com/andydavies/http2-prioritization-issues" target="_blank">大多数のサーバーは、優先度設定に関して一切サポートしていません</a>が、サポートしているサーバーは、すべて、クライアントの要求を尊重します。もう 1 つのオプションは、クライアントの要求を考慮して、サーバー側で使用する最適な優先度設定を決定するというものです。</p>
+	<p>HTTP/2の優先度設定は<a href="https://http2.github.io/http2-spec/#StreamPriority" target="_blank">仕様</a>に従い、処理中の全ての要求を完全に認識して、リソースを相互に優先度設定できるようにする必要がある依存関係ツリーです。これにより、非常に複雑なストラテジーが可能になりますが、（ブラウザーのストラテジーや様々なレベルのサーバーサポートでもわかるように）ブラウザー側またはサーバー側で適切に実装することは困難です。優先度設定を管理しやすくするために、最適なスケジューリングに必要なあらゆる柔軟性を持ちながらよりシンプルな優先度設定スキームを開発しました。</p>
+	<p>Cloudflareの優先度設定スキームは64の優先度「レベル」で構成され、各優先度レベル内には、接続の共有方法を決定するリソースのグループがあります。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/priorities.png" class="kg-image" alt="Prioritization Model"></figure>
+	<p>優先度の高いレベルにある全リソースが次に低い優先度レベルに進む前に転送されます。</p>
+	<p>優先度レベル内には、3 つの異なる「プロセス多重度」グループがあります。</p>
+	<ul>
+		<li>0 :プロセス多重度「0」グループ内のすべてのリソースは、帯域幅の100%を使用して、要求された順序で逐次送信されます。すべてのプロセス多重度「0」グループのリソースがダウンロードされた後にのみ、同じレベルの他のグループが考慮されます。</li>
+		<li>1 :プロセス多重度「1」グループ内のすべてのリソースは、要求された順序で逐次送信されます。利用可能な帯域幅は、プロセス多重度「1」グループとプロセス多重度「n」グループの間で均等に分割されます。</li>
+		<li>n：プロセス多重度「n」グループ内のリソースは並列で送信され、グループが使用できる帯域幅はリソース間で分割されます。</li>
+	</ul>
+	<p>実務上では、プロセス多重度「0」グループは、順番に処理する必要がある重要なコンテンツ（スクリプト、CSS など）に役立ちます。プロセス多重度「1」グループは、他のリソースと帯域幅を共有できる重要度の低いコンテンツで、かつリソース自体は順番に処理することが有用な場合（非同期スクリプト、非プログレッシブ画像など）に役立ちます。プロセス多重度「n」グループは、並列処理が有用なリソース（プログレッシブ画像、動画、オーディオなど）で役立ちます。</p>
+	<h3 id="cloudflare-"><strong>Cloudflareのデフォルト優先度設定</strong></h3>
+	<p>有効にすると、拡張した優先度が設定され、上記のリソースの「最適な」スケジューリングが実装されます。適用される特定の優先度設定は次のようになります。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/defaults.png" class="kg-image" alt="Default Prioritization Scheme"></figure>
+	<p>この優先度設定スキームを使用することで、レンダリングブロックコンテンツを順次送信し、次に表示画像の並列送信、続いてページコンテンツの残りの部分を一定のレベルで共有し、アプリケーションとコンテンツの読み込みのバランスを取りながら送信します。「*検出可能な場合」の注意書は、すべてのブラウザが異なる種類のスタイルシートとスクリプトを区別するわけではないながら、すべてのケースで大幅に高速化されるということです。特にEdgeとSafariの訪問者が、デフォルトで50%高速化することは珍しいことではありません。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/filmstrip2.png" class="kg-image" alt="Filmstrip Comparison"></figure>
+	<h3 id="workers-"><strong>Workers で優先度設定をカスタマイズする</strong></h3>
+	<p>デフォルト設定による高速化は素晴らしいですが、非常に興味深いのは、優先度を設定する機能が Cloudflare Workers にも導入されるため、サイトはリソースのデフォルトの優先度設定を上書きしたり、独自の完全な優先度スキームを実装したりできることです。</p>
+	<p>Worker がレスポンスに「cf-priority」ヘッダーを追加すると、Cloudflare エッジサーバーはそのレスポンスに指定された優先度とプロセス多重度を使用します。ヘッダーの形式は &lt;priority&gt;/&lt;concurrency&gt; なので、response.headers.set('cf-priority'、"30/0")のようになります。指定されたレスポンスへのプロセス多重度0で優先度を30に設定します。同様に、"30/1" はプロセス多重度を1に設定し、"30/n" はプロセス多重度を n に設定します。</p>
+	<p>このレベルの柔軟性により、サイトはニーズに合わせてリソースの優先度設定を調整できます。たとえば、一部の重要な非同期スクリプトを優先度を上げたり、ブラウザーがビューポートt内にあることを確認する前にヒーロー画像の優先度を上げたりします。</p>
+	<p>優先度設定の決定を通知するために、Workersランタイムは、Workers のフェッチイベントリスナー (request.cf.requestPriority) に渡された要求オブジェクト内のブラウザー要求された優先度情報も提供します。着信要求された優先順位は、セミコロンで区切られた属性のリストで、"weight=192;exclusive=0;group=3;group-weight=127" のようになります。</p>
+	<ul>
+		<li>Weight：HTTP/2 優先度設定に対してブラウザーが要求したweight。</li>
+		<li>Excluvie：ブラウザーが要求した HTTP/2 Exclusiveフラグ（Chromiumベースのブラウザの場合は 1、その他の場合は 0）。</li>
+		<li>グループ：リクエストグループの HTTP/2 ストリーム ID（Firefoxの場合は 0 以外のみ）。</li>
+		<li>グループ-Weight :リクエストグループの HTTP/2 weight（Firefox の場合は0以外のみ）。</li>
+	</ul>
+	<h3 id="--6"><strong>始まったばかりです</strong></h3>
+	<p>レスポンスの優先度設定を調整、制御する機能は将来、多くの作業に役立つ基本的な構成要素です。当社は、その上に独自の高度な最適化を実装しますが、異なる優先度設定ストラテジーで試すためにWorkersで公開することで、サイトと研究者にこれをオープンにしました。企業の方がApps Marketplace を使用すると、Workers のプラットフォームの上に新しい最適化サービスを構築し、他のサイトで使用できるようにすることも可能です。</p>
+	<p>Proプラン以上をご利用の場合は、Cloudflareダッシュボードの速度タブに移動し、「拡張 HTTP/2 優先度設定」をオンにすることで、サイトを加速することができます。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/speed-week-copy-2@2x.png" class="kg-image" alt="Cloudflare Speed Week"></figure>
+</div>

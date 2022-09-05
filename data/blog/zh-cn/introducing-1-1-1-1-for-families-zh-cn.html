@@ -1,0 +1,36 @@
+<div class="post-content lh-copy gray1">
+	<p>两年前的今天，我们推出了1.1.1.1，这是一个安全、快速、隐私至上的 DNS 解析器，人人都能免费使用。1.1.1.1 在这两年中的成长远超我们的想象。我们每天处理的 DNS 请求数目前已达 2000 多亿，成为仅次于 Google 的全球第二大公共 DNS 解析器。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image3-7.png" class="kg-image"></figure>
+	<p>昨天，我们发布了 <a href="https://blog.cloudflare.com/announcing-the-results-of-the-1-1-1-1-public-dns-resolver-privacy-examination/">1.1.1.1 隐私检查</a>结果。Cloudflare 的业务从未涉足销售用户数据或定向投放广告，因此我们很容在 1.1.1.1 上坚守隐私保护承诺。我们还引领了支持加密 DNS 技术的方式，包括基于 TLS 的 DNS 和基于 HTTPS 的 DNS。明文传输 DNS 很久之前便已告停，每天看到越来越多加密 DNS 流量让我们甚感欣慰。</p>
+	<h3 id="-1-1-1-1">家庭版 1.1.1.1</h3>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image4-2-2.png" class="kg-image"></figure>
+	<p>自启动 1.1.1.1 以来，我们收到的第一大请求是为该产品提供能自动过滤不良站点的版本。尽管 1.1.1.1 可以保护用户隐私并优化效率，但它的设计宗旨是直接、快速执行 DNS 解析，而不是阻止或过滤内容。我们收到的请求大多来自家庭用户，他们希望确保他们有一定的防护措施，来抵御安全威胁并防止孩子接触成人内容。今天，我们很高兴能回应这些要求。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/orange-background-family-@4x.png" class="kg-image"></figure>
+	<p>推出家庭版 1.1.1.1 — 以最简单的方式为家庭网络添加一层保护，防止它遭受恶意软件和成人内容的侵害。家庭版 1.1.1.1 利用 Cloudflare 的全球网络来确保其在全球范围内保持快速、安全。它也纳入了我们在两年前启动1.1.1.1 时承诺的强大隐私保护。而且，如同 1.1.1.1 一样，我们免费向全世界的所有家庭提供这项服务。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/purple-background-family-@4x.png" class="kg-image"></figure>
+	<h3 id="-1-1-1-2-1-1-1-3-">两个类别：1.1.1.2（阻止恶意软件）和 1.1.1.3（阻止恶意软件和成人内容）</h3>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image5-1-1.png" class="kg-image"></figure>
+	<p>家庭版 1.1.1.1 的设置和安装非常简单，只要更改家庭设备或网络路由器设置（主要 DNS 和辅助 DNS）中的两个数值便可。通常不用一分钟就能完成家庭版 1.1.1.1 设置。此外，我们也通过<a href="https://developers.cloudflare.com/1.1.1.1/1.1.1.1-for-families/setup-instructions/" target="_blank">安装指南</a>提供常见设备和路由器的说明。</p>
+	<p>家庭版 1.1.1.1 具有两个默认选项：其一可阻止恶意软件，其二则同时阻止恶意软件和成人内容。您可以根据配置的 IP 地址来选择想要的设置。</p>
+	<!--kg-card-begin: markdown-->
+	<p><strong>仅阻止恶意软件</strong><br>主要 DNS：1.1.1.2<br>辅助 DNS：1.0.0.2</p>
+	<!--kg-card-end: markdown-->
+	<!--kg-card-begin: markdown-->
+	<p><strong>恶意软件和成人内容</strong><br>主要 DNS：1.1.1.3<br>辅助 DNS：1.0.0.3</p>
+	<!--kg-card-end: markdown-->
+	<p>IPv6 用法：</p>
+	<!--kg-card-begin: markdown-->
+	<p><strong>仅阻止恶意软件</strong><br>主要 DNS：2606:4700:4700::1112<br>辅助 DNS：2606:4700:4700::1002</p>
+	<!--kg-card-end: markdown-->
+	<!--kg-card-begin: markdown-->
+	<p><strong>恶意软件和成人内容</strong><br>主要 DNS：2606:4700:4700::1113<br>辅助 DNS：2606:4700:4700::1003</p>
+	<!--kg-card-end: markdown-->
+	<h3 id="-">其他配置</h3>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image2-1-1.png" class="kg-image"></figure>
+	<p>未来几个月中，我们将提供为家庭版 1.1.1.1 定义其他配置设置的功能。这将包括用于创建某些站点的具体白名单和黑名单的选项。您将能够设置一天中封锁社交媒体等类别的时间，并获得有关家庭互联网使用情况的报告。</p>
+	<p>家庭版 1.1.1.1 建立在支持 Cloudflare <a href="https://teams.cloudflare.com/gateway/" target="_blank">Gateway</a>产品的相同站点分类和过滤技术之上。随着 Gateway 大获成功，我们希望提供一项易于使用的服务，帮助所有家庭网络保持快速、可靠、安全，并能防御潜在的有害内容。</p>
+	<h3 id="--1">并非玩笑</h3>
+	<p>Cloudflare 的大部分业务涉及向企业销售服务。但是，我们将每年 4 月 1 日发布新的消费产品作为一个传统，利用我们的网络让每个互联网用户享受更快的速度，更高的可靠性和安全性。尽管我们通过向企业销售来获得收入，但我们在每年这个时候推出的产品都发自内心，因为它们对所有互联网用户都有广泛的影响。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/blue-background-family@4x.png" class="kg-image"></figure>
+	<p>今年，我们许多人被迫宅在家里，保护我们的社区免受 COVID-19 侵害。我们依赖家庭网络的程度比以往任何时候都要高，所以推出家庭版 1.1.1.1 具有特别重要的意义。我们希望在这动荡的时期，它会给世界各地的家庭带来一丝安心。</p>
+</div>

@@ -1,0 +1,42 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/07/Upgrading-the-Cloudflare-China-Network-blog-header-1.png" class="kg-image"></figure>
+	<p>Cloudflare 的使命是帮助构建更好的互联网，我们的核心使命是让我们的客户能够轻松地提高其数字资产的性能、安全性和可靠性，无论他们身在何处。这包括中国大陆。自 2015 年以来，Cloudflare 在中国就有客户使用我们的服务，最近，我们通过与中国互联网巨头京东的云部门京东云合作，扩大了我们在中国的业务。几年来，我们还在北京设立了当地办事处，这让我们对中国互联网格局以及当地客户有了深入的了解。</p>
+	<p>与京东云合作建立的新 Cloudflare 中国网络已上线数月，与之前的国内网络相比，性能和安全性有了显着提升。今天，我们很高兴地介绍我们对 DNS 和 DDoS 系统所做的改进，并提供数据来证明客户所看到的性能提升。所有获准在中国运营的客户现在都可以从这些创新中受益，只需单击 Cloudflare Dashboard 中的按钮或通过 API。</p>
+	<h2 id="-dns"><strong>在中国境内服务 DNS</strong></h2>
+	<p>我们是<a href="https://w3techs.com/technologies/overview/dns_server" target="_blank">最大的 DNS</a> 提供商，互联网上超过 14% 的域使用 Cloudflare 的名称服务器。此外，我们一直以成为<a href="https://dnsperf.com/" target="_blank">最快的权威名称服务器</a>而自豪，平均每秒回答约 1200 万次 DNS 查询（2021 年第二季度）。我们通过在 100 多个国家/地区的 200 多个城市的<a href="https://www.cloudflare.com/zh-cn/network/" target="_blank">全局网络</a>上运行我们的 DNS 平台来实现这种规模和性能。</p>
+	<p>不久前，中国大陆用户使用 Cloudflare DNS 访问网站并没有充分受益于这些优势。他们的 DNS 查询必须离开中国，而且在大多数情况下，要跨越太平洋才能到达我们在中国境外的名称服务器。这种网络距离会引入延迟，有时甚至会导致丢包，从而导致用户体验不佳。</p>
+	<p>借助基于京东云基础结构的全新中国网络产品，客户现在可以在中国大陆为其 DNS 提供服务。这意味着 DNS 查询由京东云入网点 (PoPs) 之一直接回答，从而加快响应时间并提高可靠性。</p>
+	<p>一旦用户注册了一个域并选择在中国为其 DNS 提供服务，我们将从以下三个域中的两个域中分配两个名称服务器：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>cf-ns.com
+cf-ns.net
+cf-ns.tech
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>我们选择这些顶级域名 (TLD) 是因为它们在中国大陆提供了最佳性能。它们被选择为始终与使用它们的域的 TLD 不同。例如，example.com 将使用 .tech 和 .net TLD 分配名称服务器。这为我们提供了客户名称服务器的“无胶委托”，允许我们动态返回名称服务器 IP 地址而不是<a href="https://en.wikipedia.org/wiki/Domain_Name_System#Circular_dependencies_and_glue_records" target="_blank">静态粘合记录</a>。</p>
+	<p>“粘合记录”（或简称 “粘合”）是名称服务器和 IP 之间的映射，由Registrar 添加，用于在域使用具有相同 TLD 的域名服务器时打破循环查找依赖性。例如，假设一个解析器询问 .comTLD 域名服务器：“我在哪里可以找到 example.com 的名称服务器？” 并且此域使用 ns1.example.com 和 ns2.example.com 作为名称服务器。If .com仅需回复：“去问问 ns1.example.com 或 ns2.example.com。” 解析器会带着同样的问题回到 .com，这永远不会停止。一种解决方案是在 .com 上添加胶水，因此答案可以是：“example.com 的名称服务器是 ns1.example.com 和 ns2.example.com，它们可以在 192.0.2.78 和 203.0.113.55 上访问。 ”。</p>
+	<p>如上所述，通过使用不同的 TLD，我们不需要依赖客户名称服务器的粘合记录。通过这种方式，我们可以确保始终从最近的入网点 (PoP) 回答查询，从而实现更快的 DNS 响应。提供动态名称服务器 IP 的另一个优势是能够在不同的 PoP 之间分发查询，这有助于更有效地分散负载并缓解攻击。</p>
+	<h2 id="-ddos-"><strong>减轻中国境内的 DDoS 攻击</strong></h2>
+	<p>在除中国和印度之外的世界任何地方，我们都使用一种称为 Anycast 路由的技术来分发 DDoS 攻击，并将其吸收到尽可能靠近流量源的数据中心。但正如我们<a href="https://blog.cloudflare.com/how-we-extended-cloudflares-performance-and-security-into-mainland-china/">在 2015 年首次写道，</a>中国互联网的运作方式与世界其他地区略有不同，因此基于 Anycast 的缓解措施不是一种选择：</p>
+	<p><em>与网络路由开放的世界其他大部分地区不同，中国的核心互联网Access 主要由两个 ISP 控制：中国电信和中国联通。[今天这份名单还包括中国移动。] 这些 ISP 控制着国内的 IP 地址分配和路由。即使是中国互联网巨头也很少拥有自己的 IP 地址分配，或者使用 BGP 来控制中国互联网上的路由。这使得 BGP Anycast 和我们在 Cloudflare 网络中使用的许多其他路由技术在中国境内无法实现。</em></p>
+	<p>中国缺乏 Anycast 需要采用不同的方法来缓解攻击，我们与京东云的扩展促使我们进一步改进<a href="https://blog.cloudflare.com/zh-cn/deep-dive-cloudflare-autonomous-edge-ddos-protection-zh-cn/">我们今年早些时候撰写的基于边缘的缓解系统</a>。最重要的是，我们将应用程序 (L7) 攻击的检测和缓解推到了边缘，通过消除对其他核心数据中心指令的依赖，减少了缓解和提高系统弹性的时间。在 2021 年第一季度，我们缓解了 81% 的边缘 L7 攻击。</p>
+	<p>对于更大的基于网络 (L3/L4) 的攻击，我们与京东云密切合作，通过向中国电信、中国联通和中国移动发送远程信号来增强我们的数据中心内保护。当我们需要来自 ISP 的上游过滤帮助时，这些集成允许我们能够远程—和自动地—从我们的基于边缘的缓解系统发出信号。在边缘缓解攻击比依赖集中式数据中心更快，在 2021 年第一季度，98.6% 的 L3/4 DDoS 攻击在没有集中式通信的情况下得到缓解。超过特定 Thresholds 的攻击也可以重新路由到大型清理中心，这种技术在 Anycast 世界中没有意义，但在 unicast 是唯一选择时很有用。</p>
+	<p>除了改进的缓解控制之外，我们还开发了新的流量工程流程，将流量从过载的数据中心转移到具有更多备用资源的位置。这些控制措施已经在中国境外使用，但在中国境内使用需要与我们的 DNS 系统集成。</p>
+	<p>最后，由于我们所有的数据中心都运行相同的软件堆栈，我们为改进中国境内 DDoS 检测和缓解系统的底层组件所做的工作已经回到了我们在中国境外的数据中心。</p>
+	<h2 id="-"><strong>提高性能</strong></h2>
+	<p>京东云上的 Cloudflare 比我们之前的国内网络快得多，这允许我们能够加快客户在中国的 Web 属性的交付。</p>
+	<p>为了比较京东云上的 Cloudflare PoPs 与我们之前的国内网络，我们部署了一个测试区来模拟两个中国网络上的客户网站。我们使用相同的两个 Origin 网络测试了每个网站。这两个 Origin 都是常用的公共云提供商。一个站点位于美国西北部地区，另一个位于西欧。<br></p>
+	<p>对于这两个区域，我们在中国分配了 DNS 名称服务器，以减少 DNS 查找期间产生的国外延迟（更多详细信息见下文 DNS）。为了测试我们的 Caching，我们使用监控和基准测试服务，在 36 小时的过程中，每 15 分钟下载 100 KB、1 兆字节和 10 兆字节的文件，其中包含中国各个城市和省份的各种客户端。</p>
+	<p>通过从客户端到我们的京东云 PoPs 的往返时间 (RTT) 衡量，延迟在所有文件大小的测试中至少减少了 30%。这随后减少了我们的首字节时间 (TTFB) 指标。减少延迟—并使其更加一致，即改善抖动—对其他性能指标的影响最大，因为延迟和慢启动过程是绝大多数 TCP 连接的瓶颈。</p>
+	<p>我们减少延迟的原因在于京东云网络的质量、他们在中国境内的 PoPs 位置以及我们将客户引导至最近的 PoP 的能力。随着我们未来继续与京东云合作增加更多容量和 PoPs，我们只希望我们的延迟指标会变得更好。</p>
+	<h3 id="--1"><strong>动态内容</strong></h3>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/07/image3-8.png" class="kg-image"></figure>
+	<h3 id="--2"><strong>静态内容</strong></h3>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/07/image4-7.png" class="kg-image"></figure>
+	<h3 id="dns-"><strong>DNS 响应时间</strong></h3>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/07/image2-12.png" class="kg-image"></figure>
+	<h2 id="--3"><strong>期待并欢迎中国的新客户</strong></h2>
+	<p>Cloudflare 与京东云合作，在中国持续进行产品投资，与 2015 年首次推出的国内网络相比，性能和安全性有了显着提升。</p>
+	<p>具体而言，DNS 和 DDoS 缓解技术的创新，以及改进的网络设计和 PoPs 分布，为我们的客户带来了更好的安全性，并将性能提升了至少 30%。</p>
+	<p>这个新网络已开始营业，感兴趣的客户应该<a href="https://www.cloudflare.com/zh-cn/china-network/" target="_blank">联系以了解更多信息</a>。</p>
+</div>

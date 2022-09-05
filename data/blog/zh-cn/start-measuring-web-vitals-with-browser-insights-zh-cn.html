@@ -1,0 +1,34 @@
+<div class="post-content lh-copy gray1">
+	<p>我们 Cloudflare 有许多人都痴迷于加快网站速度的方法。不过，提高性能的首要步骤是衡量性能。去年，我们<a href="https://blog.cloudflare.com/introducing-browser-insights/">推出了“浏览器洞察力”，</a>，以帮助客户从最终用户的角度衡量网络性能。</p>
+	<p>目前，我们正在与 Google Chrome 团队合作，将 <a href="https://web.dev/vitals/" target="_blank">Web Vitals</a> 测量结果纳入“浏览器洞察力”中。Web Vitals 是一组新的指标，可帮助 Web 开发人员和网站所有者衡量并了解加载时间、响应速度和视觉稳定性。借助 Cloudflare 的“浏览器洞察力”，测量变得比以往更加简单，任何人都可免费使用它从整个 Web 收集数据。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/09/pasted-image-0-1.png" class="kg-image"></figure>
+	<h3 id="-web-vitals-">为什么需要 Web Vitals？</h3>
+	<p>在试图了解性能时，我们轻易会关注易于测量的指标，如首字节时间（TTFB）。尽管了解 TTFB 和类似指标都很重要，但我们知道它们并不总是能说明一切。</p>
+	<p>Google Chrome 团队的伙伴通过将用户体验分成三个要素来解决此问题：</p>
+	<ul>
+		<li>加载：内容需要多长时间才会可用？</li>
+		<li>交互：网站与您交互时的响应速度如何？</li>
+		<li>视觉稳定性：在加载过程中，页面移动幅度有多大？（我把它看成“混乱”的反面）</li>
+	</ul>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/09/pasted-image-0--1-.png" class="kg-image">
+		<figcaption>这张<a href="https://web.dev/vitals/" target="_blank">图片</a>源自于 <a href="https://developers.google.com/terms/site-policies" target="_blank">Google</a> 创作和共享的作品，其使用遵循 <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons 4.0 Attribution License</a> 中所述的条款。</figcaption>
+	</figure>
+	<p>创建一项指标来捕获这些高层要素颇有难度。值得庆幸的是，Google Chrome 团队的人已对此进行了思索，并于今年早些时候推出了三个“核心”Web Vitals 指标：<a href="https://web.dev/lcp/" target="_blank">Largest Contentful Paint</a>（最大内容绘制）、<a href="https://web.dev/fid/" target="_blank">First Input Delay</a>（首次输入延时）和 <a href="https://web.dev/cls/" target="_blank">Cumulative Layout Shift</a>（累积布局偏移）。</p>
+	<h3 id="web-vitals-">Web Vitals 如何帮助您加快网站速度？</h3>
+	<p>测量核心 Web Vitals 并不是终点。相反，这是了解网站性能影响因素的起点。Web Vitals 从高层面上告诉您发生了什么，其他更详细的指标则帮助您了解用户体验为什么会较慢。</p>
+	<p>我们以加载时间为例。如果您发现 Largest Contentful Paint 分数是“需要改进”，那么您要探究什么内容的加载时间如此之长！“浏览器洞察力”仍然会测量<a href="https://developer.mozilla.org/en-US/docs/Web/API/Navigation_timing_API#:~:text=The%2520Navigation%2520Timing%2520API%2520provides,much%2520more%2520accurate%2520and%2520reliable." target="_blank">浏览计时</a>指标，如 DNS 查找时间和 TTFB。通过分析这些指标，您或许希望进一步研究如何<a href="https://blog.cloudflare.com/introducing-cache-analytics/">优化缓存命中率</a>、调整源服务器性能，或调节 JavaScript 和 CSS 等资源的加载顺序。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/09/pasted-image-0--2-.png" class="kg-image"></figure>
+	<p>如需有关提高 Web 性能的更多信息，请参阅 Google 有关改进 <a href="https://web.dev/optimize-lcp/" target="_blank">LCP</a>、<a href="https://web.dev/optimize-fid/" target="_blank">FID</a> 和 <a href="https://web.dev/optimize-cls/" target="_blank">CLS</a> 的指南。</p>
+	<h3 id="-cloudflare-web-vitals-">为何要通过 Cloudflare 衡量 Web Vitals 指标？</h3>
+	<p>首先，我们认为 RUM（真实用户测量）是综合测量的一个重要搭档。尽管您随时都能尝试在自己的笔记本电脑上加载几个页面并查看结果，但要考量实际的设备性能和网络条件，唯一的途径是从真实用户那里收集数据。</p>
+	<p>市面上也有其他优秀的 RUM 工具。Google 的 <a href="https://developers.google.com/web/tools/chrome-user-experience-report" target="_blank">Chrome 用户体验报告</a>（CrUX）收集有关整个网络的数据，提供此报告的工具包括 <a href="https://developers.google.com/speed/pagespeed/insights/" target="_blank">Page Speed Insights</a>（PSI）等；该工具可将综合结果和 RUM 结果组合为实用的诊断信息。</p>
+	<p>Cloudflare 的“浏览器洞察力”的一大优势是它可不断更新；每当发现来自最终用户的请求，即可提供新的数据点。Chrome UX 报告中的数据是聚合指标的 28 天滚动平均值，因此您需要等待到数据中反映出变化。</p>
+	<p>“浏览器洞察力”的另一个优势是我们可以衡量任何浏览器，不仅限于 Chrome。在撰写本文时，仅 <a href="https://en.wikipedia.org/wiki/Chromium_(web_browser)" target="_blank">Chromium 浏览器</a>支持报告 Web Vitals 所需的 API，但在实现相应 API 后，我们也会支持 Safari 和 Firefox。</p>
+	<p>最后，“浏览器洞察力”可以免费使用！我们不辞辛劳地工作，让我们的分析工具能够极速分析任何流量规模的网站。我们已经支持按照 URL、浏览器、操作系统和国家/地区进行切片和分组，同时也计划在近期支持更多的维度。</p>
+	<h3 id="-">一键开始测量</h3>
+	<p>要开始使用“浏览器洞察力”，只需前往仪表板中的 Speed 选项卡。从今天开始，Web Vitals 指标已向所有人开放！</p>
+	<p>在幕后，“浏览器洞察力”通过将 JavaScript“信标”插入 HTML 页面来工作。如果只想测量特定的页面或主机名，您可以控制信标的加载位置。如果您使用 CSP 版本 3，我们甚至也能自动检测随机数（若存在）并将其添加到脚本中。</p>
+	<h3 id="--1">回首过去，展望未来</h3>
+	<p>对于“浏览器洞察力”的成功，我们感到非常自豪。过去一年，我们孜孜不倦地进行了许多改进。例如，我们提高了仪表板的<a href="https://blog.cloudflare.com/explaining-cloudflares-abr-analytics/">速度和灵敏度（而且依旧免费！），网站规模再大也不在话下</a>。</p>
+	<p>不久之后，我们会面向所有 Web Analytics 客户提供此项功能，甚至包括<a href="https://www.cloudflare.com/web-analytics/" target="_blank">目前尚未使用 Cloudflare 的客户</a>。我们也致力于添加呼声较高的功能，如客户端错误报告和诊断工具，使客户更加轻松地得知有待改进的地方。</p>
+</div>

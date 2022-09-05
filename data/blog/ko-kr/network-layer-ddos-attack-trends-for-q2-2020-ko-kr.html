@@ -1,0 +1,59 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/08/image6-1.png" class="kg-image"></figure>
+	<p>2020년 1분기의 불과 몇 주만에 생활 방식이 바뀌었습니다. 그 어느 때보다 온라인 서비스에 대한 의존도가 높아졌습니다. 직장인들이 재택 근무하고, 모든 연령과 학년 학생들이 온라인 수업을 받으면서, 연결 상태를 유지한다는 것의 의미가 재정의됐습니다. 연결 상태를 유지하는 일에 의존하는 사람들이 늘면서, 공격자들이 혼란을 일으키고 생활에 장애를 일으킴으로써, 얻을 수 있는 보상이 더욱 커졌습니다. 따라서, 2020년 1분기(2020년 1월 1일부터 2020년 3월 31일까지)에 <a href="https://blog.cloudflare.com/network-layer-ddos-attack-trends-for-q1-2020/">공격 횟수가 증가한 것은 놀랍지 않습니다.</a> 특히 다양한 정부 기관의 봉쇄 조치가 실행된 3월 하반기 이후 공격이 증가했습니다.</p>
+	<p>2020년 2분기(2020년 4월 1일부터 2020년 6월 30일까지)에도 DDoS 공격이 증가하는 추세는 계속되며, 사실상 더욱 가속화됐습니다.</p>
+	<ul>
+		<li>Cloudflare 네트워크에서 관찰된 L3/4 DDoS 공격 횟수는 올해 1분기에 비해 두 배 증가했습니다.</li>
+		<li>최대 L3/4 DDoS 공격의 규모도 크게 증가했습니다. 실제로, Cloudflare 네트워크에서 사상 최대 규모의 공격이 관찰됐습니다.</li>
+		<li>배포되는 공격 벡터가 많아지고, 공격이 지리적으로 더욱 분산됐습니다.</li>
+	</ul>
+	<h3 id="2-l3-4-ddos-">2분기의 글로벌 L3/4 DDoS 공격 횟수가 두 배 증가했습니다</h3>
+	<p><a href="https://blog.cloudflare.com/meet-gatebot-a-bot-that-allows-us-to-sleep/">Gatebot</a>은 Cloudflare의 기본 DDoS 보호 시스템입니다. 전 세계에 분산된 DDoS 공격을 자동으로 감지하고 완화합니다. 글로벌 DDoS 공격이란 두 개 이상의 Cloudflare 에지 데이터 센터에서 관찰되는 공격을 말합니다. 이러한 공격은 대개 정교한 공격자가 수만 개에서 수백만 개의 봇으로 이루어진 <a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-botnet/" target="_blank">봇넷</a>을 이용하여 발생시킵니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/08/BDES-831_DDoS_Report_Q2-20_Infographic_Blog_1_V2.png" class="kg-image"></figure>
+	<p>정교한 공격자들 때문에 2분기에 Gatebot이 바쁘게 활동했습니다. 2분기에 Gatebot이 감지하고 완화환 글로벌 L3/4 DDoS 공격의 총 횟수는 이전 분기에 비해 두 배 증가했습니다. Cloudflare의 <a href="https://blog.cloudflare.com/network-layer-ddos-attack-trends-for-q1-2020/">1분기 DDoS 보고서</a>에 따르면 공격의 횟수와 규모가 급증했는데, 2분기 내내 이러한 추세가 가속됐습니다. 2020년에 발생한 모든 글로벌 DDoS 공격 중 66% 이상이 2분기에 발생했습니다(거의 100% 증가). 2020년 상반기 중 5월에 가장 공격이 많았고 6월과 4월이 그 뒤를 이었습니다. 전체 L3/4 DDoS 공격 중 거의 3분의 1이 5월에 발생했습니다.</p>
+	<p>실제로, 100Gbps 이상의 L3/4 DDoS 공격 중 63%가 5월에 일어났습니다. 5월에 세계적 팬데믹이 지속되면서, 공격자들은 웹사이트와 기타 인터넷 자산을 중단시키기 위해 혈안이 됐습니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/08/BDES-831_DDoS_Report_Q2-20_Infographic_Blog_2_V2.png" class="kg-image"></figure>
+	<h3 id="-">대형 공격의 규모는 커졌지만, 횟수 면에서는 작은 공격이 여전히 주를 이루고 있습니다</h3>
+	<p>DDoS 공격의 강도는 규모와 같습니다. 즉, 대상을 압도하기 위해 링크에 폭주하는 패킷이나 비트의 실제 개수가 강도를 나타냅니다. ‘대형’ DDoS 공격은 인터넷 트래픽 속도가 높은 공격을 의미하며, 속도는 패킷이나 비트의 전송률로 측정할 수 있습니다. 비트 전송률이 높은 공격은 인터넷 링크를 포화시키려 하며, 패킷 전송률이 높은 공격은 라우터나 기타 인라인 하드웨어 장치를 마비시키려 합니다.</p>
+	<p>1분기와 마찬가지로, 2분기에 관찰된 대부분의 L3/4 DDoS 공격도 Cloudflare 네트워크의 규모에 비해 상대적으로 '작았습니다'. 2분기에 관찰된 모든 L3/4 DDoS 공격 중 약 90%의 최고 속도가 10Gbps 미만이었습니다. 최고 속도 10Gbps 미만의 소형 공격은 클라우드 기반 DDoS 완화 서비스로 보호되지 않는 전 세계 대부분의 웹사이트와 인터넷 자산을 가볍게 중단시킬 수 있습니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/08/image3.png" class="kg-image"></figure>
+	<p>마찬가지로 패킷 전송률 관점에서 2분기 모든 L3/4 DDoS 공격 중 76%의 최고 속도가 100만pps(packet per second)였습니다. 일반적으로 1Gbps Ethernet 인터페이스는 80kpps~1.5Mpps를 전송할 수 있습니다. 이 인터페이스가 합법적인 트래픽도 처리한다고 가정하고, 또한 대부분의 조직이 이보다 훨씬 작은 1 Gbps 인터페이스를 사용한다고 가정하면, 이렇게 패킷 전송률이 ‘작은’ DDoS 공격도 인터넷 자산을 쉽게 무너뜨릴 수 있습니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/08/image12.png" class="kg-image"></figure>
+	<p>지속 시간 면에서는, 총 공격의 83%가 30~60분 지속됐습니다. 1분기에도 공격의 79%가 동일한 시간 범위인 30~60분 간 지속됐습니다. 짧은 시간으로 보일 수도 있지만 보안팀과 공격자 사이의 30~60분 사이버 전투로 생각한다면, 이는 결코 짧은 시간이 아닙니다. 더불어, DDoS 공격으로 가동 중단이나 서비스 저하가 발생하면, 기기를 재부팅하고 서비스를 복구하는 데 시간이 훨씬 길어져, 지연된 시간만큼 수익과 평판을 잃게 됩니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/08/image5.png" class="kg-image"></figure>
+	<h3 id="2-ddos-cloudflare-">2분기에 사상 최대 규모의 DDoS 공격이 Cloudflare 네트워크에 발생했습니다</h3>
+	<p>2분기에 패킷 전송률과 비트 전송률 면에서 모두 대형인 공격 횟수가 증가했습니다. 실제로, 3월에 봉쇄 조치가 발령된 후 2020년 총 DDoS 공격 중 88%의 최고 속도가 100Gbps를 넘었습니다. 5월에는 공격도 가장 많았지만, 100Gbps 이상의 대형 공격도 가장 많이 발생했습니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/08/BDES-831_DDoS_Report_Q2-20_Infographic_Blog_6_V2.png" class="kg-image"></figure>
+	<p>패킷 관점에서, 6월에 <a href="https://blog.cloudflare.com/mitigating-a-754-million-pps-ddos-attack-automatically/">7억 5,400만pps 공격</a>이 일어나며 최고치를 기록했습니다. 이 공격을 제외하면 분기 내내 최고 패킷 전송률은 대부분 약 2억pps로 일정했습니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/08/image4.png" class="kg-image"></figure>
+	<p>Cloudflare는 7억 5,400만pps 공격을 자동으로 감지하고 완화했습니다. 이 공격은 6월 18일부터 21일까지 4일 동안 조직적으로 진행된 캠페인의 일부였습니다. 이 캠페인의 일환으로, 316,000개 이상의 IP 주소에서 단일 Cloudflare IP 주소를 노린 공격 트래픽이 발생했습니다.</p>
+	<p>Cloudflare의 DDoS 보호 시스템은 공격을 자동으로 감지하고 완화했으며, Cloudflare 네트워크의 규모와 글로벌 커버리지 덕분에 성능에는 영향이 없었습니다. 대기 시간이나 서비스 장애를 일으키지 않고, 합법적인 고객 트래픽을 처리하면서, 공격지에서 가까운 곳에서 공격 트래픽을 흡수하고 완화하려면, 전 세계에 상호연결된 네트워크가 매우 중요합니다.</p>
+	<h3 id="--1">가장 많이 공격을 받은 나라는 미국입니다</h3>
+	<p>국가별 L3/4 DDoS 공격 분포를 살펴보면 미국 내 Cloudflare 데이터 센터가 가장 많이 공격을 받았고(22.6%), 그 뒤를 독일(4.4%), 캐나다(2.7%), 영국(2.6%)이 따르고 있습니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/08/image8.png" class="kg-image"></figure>
+	<p>한편, 각 Cloudflare 데이터 센터가 완화한 총 공격 바이트를 살펴보면, 미국이 여전히 선두지만(34.9%), 홍콩(6.6%), 러시아(6.5%), 독일(4.5%), 콜롬비아(3.7%)가 뒤를 잇고 있습니다. 이러한 차이점이 발생한 것은 공격별로 사용된 대역폭을 합산했기 때문입니다. 예를 들어, 홍콩은 관찰된 공격의 수가 비교적 적어(1.8%) 상위 10대 목록에는 포함되지 않았지만, 공격의 규모가 매우 크고 막대한 공격 트래픽이 일어났기 때문에 홍콩이 2위를 차지했습니다.</p>
+	<p>L3/4 DDoS 공격을 분석할 때는, 소스 IP의 위치가 아니라, Cloudflare 에지 데이터 센터의 위치별로 트래픽을 구분합니다. 이것은 공격자가 L3/4 공격을 시작할 때 공격지를 숨기기 위해 소스 IP 주소를 '스푸핑'(변경)할 수 있기 때문입니다. 스푸핑된 소스 IP를 기반으로 국가를 파악하면 스푸핑된 국가를 확인할 수 있습니다. &nbsp;Cloudflare는 공격이 관찰된 Cloudflare 데이터 센터의 위치별로 공격 데이터를 표시하여, 스푸핑된 IP 문제를 극복할 수 있습니다. Cloudflare는 전 세계 200여 개 도시에 데이터 센터를 확보하고 있기 때문에 지리적 정확도를 달성할 수 있습니다.</p>
+	<h3 id="2-l3-4-ddos-57-syn-">2분기 L3/4 DDoS 공격 중 57%가 SYN 플러드였습니다</h3>
+	<p>공격 벡터는 공격 방법을 설명하기 위해 사용하는 용어입니다. 2분기에 공격자가 L3/4 DDoS 공격에 사용한 벡터의 개수가 증가했습니다. 공격 벡터의 유형은 1분기에 34개였는데, 2분기에는 39개로 늘어났습니다. <a href="https://www.cloudflare.com/learning/ddos/syn-flood-ddos-attack/" target="_blank">SYN 플러드</a>가 57%로 가장 많은 비율을 차지했고, RST(13%), <a href="https://www.cloudflare.com/learning/ddos/udp-flood-ddos-attack/" target="_blank">UDP</a>(7%), <a href="https://blog.cloudflare.com/reflections-on-reflections/">CLDAP</a>(6%), <a href="https://blog.cloudflare.com/ssdp-100gbps/">SSDP</a>(3%) 공격이 뒤를 이었습니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/08/image1-3.png" class="kg-image"></figure>
+	<p>SYN 플러드는 <a href="https://www.cloudflare.com/learning/ddos/glossary/tcp-ip/" target="_blank">TCP</a> 연결의 핸드셰이크 프로세스를 악용합니다. 공격자는 SYN(Synchronize Flag)을 포함한 최초 연결 요청 패킷을 반복적으로 보내, TCP 연결 상태를 추적하는 라우터의 연결 테이블을 마비시키려 합니다. 라우터는 SYN-ACK(Synchronized Acknowledgment Flag)를 포함한 패킷으로 응답하고, 각 연결에 특정한 양의 메모리를 할당하고, 클라이언트가 최종 ACK(Acknowledgment)로 응답하기를 기다리게 됩니다. SYN의 개수가 라우터의 메모리를 점유하는 데 충분하다면, 라우터는 합법적인 클라이언트에 메모리를 할당하지 못하고 서비스를 거부하게 됩니다.</p>
+	<p>Cloudflare는 어떠한 공격 벡터라도 다음과 같이 자체 제작한 DDoS 보호 시스템으로 구성된 세 가지 지연 접근법을 사용하여, 상태 저장이나 상태 비저장 DDoS 공격을 자동으로 감지하고 완화합니다.</p>
+	<ul>
+		<li><a href="https://blog.cloudflare.com/meet-gatebot-a-bot-that-allows-us-to-sleep/">Gatebot</a> - Cloudflare의 중앙집중식 DDoS 보호 시스템으로서 전 세계에 분산된 볼류메트릭 DDoS 공격을 감지하고 완화합니다. Gatebot는 Cloudflare 네트워크의 핵심 데이터 센터에서 작동합니다. 모든 에지 데이터 센터에서 샘플을 받고, 분석하고, 공격을 감지하면 자동으로 완화 지침을 보냅니다. Gatebot은 고객의 각 웹 서버에도 동기화되어 그 상태를 파악하고 그에 따라 맞춤형 보호를 시작합니다.</li>
+		<li><a href="https://blog.cloudflare.com/rolling-with-the-punches-shifting-attack-tactics-dropping-packets-faster-cheaper-at-the-edge/">dosd</a>(서비스 거부 디먼) - Cloudflare의 분산형 DDoS 보호 시스템입니다. dosd는 전 세계 모든 Cloudflare 데이터 센터의 각 서버에서 자율적으로 작동하며, 트래픽을 분석하고, 필요할 때 로컬 완화 규칙을 적용합니다. dosd는 고속으로 공격을 감지하고 완화할 수 있을 뿐만 아니라, 감지 및 완화 역량을 에지로 위임하여 네트워크 복원력을 크게 향상시킵니다.</li>
+		<li><a href="https://blog.cloudflare.com/announcing-flowtrackd/">flowtrackd</a>(플로 추적 디먼) - Cloudflare의 TCP 상태 추적 머신으로서 단방향 라우팅 토폴로지로 가장 무작위화되고 정교한 TCP 기반 DDoS 공격을 감지하고 완화합니다. flowtrackd는 TCP 연결 상태를 확인한 후 합법적인 연결이 아닌 패킷을 끊거나, 대응하거나, 속도를 제한할 수 있습니다.</li>
+	</ul>
+	<p>자동화 DDoS 보호 시스템과 더불어 Cloudflare는 공격을 자동 완화하는 실시간 위협 인텔리전스도 생성합니다. 또한, Cloudflare는 고객에게 방화벽, 속도 제한 등의 추가 도구를 제공하므로, 보호 기능의 사용자 지정 수준이 높아지고 최적화됩니다.</p>
+	<h3 id="cloudflare-ddos-">Cloudflare DDoS 완화</h3>
+	<p>비즈니스와 개인의 인터넷 사용이 계속 진화하면서, DDoS 전술도 이에 적응한다고 예상해야 합니다. Cloudflare는 크기, 유형 또는 정교성에 관계없이 DDoS 공격으로부터 <a href="https://www.cloudflare.com/ddos" target="_blank">웹사이트</a>, <a href="https://www.cloudflare.com/products/cloudflare-spectrum" target="_blank">애플리케이션</a>, <a href="https://www.cloudflare.com/magic-transit" target="_blank">전 네트워크</a>를 보호합니다.</p>
+	<p>고객과 업계 분석가들은 아래와 같은 세 가지 이유로 Cloudflare의 종합 솔루션을 추천합니다.</p>
+	<ul>
+		<li>네트워크 규모: Cloudflare의 37Tbps 네트워크는 모든 크기, 유형 또는 정교성의 공격을 쉽게 차단할 수 있습니다. Cloudflare 네트워크는 경쟁사 4개를 모두 합친 것보다 큰 DDoS 완화 용량을 갖고 있습니다.</li>
+		<li>완화 시간: Cloudflare는 전 세계에서 10초 내에 대부분의 네트워크 계층 공격을 완화하고 정적 규칙이 사전 구성된 경우 즉시(0초) 완화합니다. Cloudflare는 글로벌 네트워크를 통해 대기 시간을 최소화하면서 공격지에서 가까운 곳에서 공격을 완화합니다. 트래픽이 공용 인터넷보다 더 빠른 경우도 있습니다.</li>
+		<li>위협 인텔리전스: Cloudflare의 DDoS 완화는 2,700만 개 이상의 인터넷 자산에서 확보한 위협 인텔리전스가 뒷받침합니다. 더불어 위협 인텔리전스는 고객의 역량을 강화하기 위해 고객 대면 방화벽과 도구에 통합되어 있습니다.</li>
+	</ul>
+	<p>Cloudflare 네트워크 아키텍처의 특성으로 인해 Cloudflare는 최고의 규모, 속도, 스마트 기능으로 DDoS 완화를 제공하는 독보적인 입지를 갖고 있습니다. Cloudflare 네트워크는 프랙탈처럼 <a href="https://www.cloudflare.com/network" target="_blank">전 세계 200여 개 도시</a>에 위치한 모든 Cloudflare 데이터 센터의 모든 서버에서 모든 서비스가 작동합니다. 따라서 Cloudflare는 공격의 크기, 발생지 또는 유형에 관계없이 공격지에서 가까운 곳에서 공격을 완화할 수 있습니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/08/image10.png" class="kg-image"></figure>
+	<p>Cloudflare의 DDoS 솔루션에 대한 자세한 정보는<a href="https://www.cloudflare.com/plans/enterprise/" target="_blank">Cloudflare에 문의하기</a> 또는 <a href="https://dash.cloudflare.com/" target="_blank">시작하기</a>를 참조하시기 바랍니다.</p>
+	<p>조만간 시작될 라이브 웨비나에 참가하세요. 이러한 동향과 DDoS 공격에 대응하고 네트워크를 빠르게 유지하기 위해 기업이 취할 수 있는 전략에 대해 논의합니다. <a href="https://onlinexperiences.com/Launch/QReg/ShowUUID=43F66E2A-9532-44CF-9852-59324105F8E0&amp;LangLocaleID=1033" target="_blank">여기서 등록하세요</a>.</p>
+</div>

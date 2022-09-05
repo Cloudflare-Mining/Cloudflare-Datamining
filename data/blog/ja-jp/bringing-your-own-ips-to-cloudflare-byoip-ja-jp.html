@@ -1,0 +1,30 @@
+<div class="post-content lh-copy gray1">
+	<p>本日、Bring Your Own IP (BYOIP）がレイヤー７製品、および<a href="https://www.cloudflare.com/products/cloudflare-spectrum/" target="_blank">Spectrum</a>、<a href="https://www.cloudflare.com/magic-transit/" target="_blank">Magic Transit</a>サービスで一般利用できるようになったことを発表いたします。BYOIPを設定する時、Cloudflareエッジはお客様ご自身のIPプレフィックスを通知し、そのプレフィックスがレイヤー７サービス、Spectrum、Magic Transitと使われます。IPプレフィックスという用語はあまり耳慣れないかもしれませんね。これは、IPアドレスの範囲のことで、ルーターはインターネットを経由してパケットが正しく配信されるようにするルーティングテーブルとして知られている到達可能なプレフィックスの表を作成します。</p>
+	<p>この発表の一環として、関連製品<a href="https://www.cloudflare.com/cdn/" target="_blank">ページ</a>と<a href="https://developers.cloudflare.com/byoip/" target="_blank">開発者向けの資料</a>、プレフィックスを制御するためのUIサポートにBYOIPを一覧で掲載しています。以前のサポートはAPIだけでした。</p>
+	<p>お客様がCloudflareを選ぶ理由は、たくさんあります。IPプレフィックスが既に多くの重要な場所で許可リストされている場合もありますし、Cloudflareアドレススペースも許可するファイアウォール ルールを更新することが、管理上の大きな問題となることもあります。さらに、DNSを経由してIPを直接指し示すエンドユーザーが何百何千、もしかすると何百万もいるかもしれません。そして、すべてのエンドユーザーがCloudflare IPを指し示すようにレコードを更新するには、非常に時間がかかります。</p>
+	<p>ここ数四半期にわたって、お客様ご自身のIPを大々的に持ち込めるようにサポートするツールと手順を構築してきました。このブログを書いている時点で、何百ものお客様のIPプレフィックスをオンボードさせることに成功しています。このうち84%は、Magic Transitのデプロイメントで、14%がレイヤー7のデプロイメントで、そして2%がSpectrumのデプロイメントで使用されています。</p>
+	<p>CloudflareでBYOIPするということは、世界中200以上の都市でみなさまのIPスペースを通知し、お好きなサービス1つ（または複数のサービス）にIPプレフィックスを結びつけるという意味です。ユーザーのIPは、Cloudflare独自のIPであるかのように保護されて加速されます。プレフィックスが通知される場所を制限する技術的要件やデータ主権のような法的要件がある場合に、当社がBYOIPプレフィックスの地域デプロイメントもサポートできます。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/07/IP-at-the-edge@2x.png" class="kg-image"></figure>
+	<p>Cloudflareエッジからボタンを数回クリックするだけで、IPの広報をでき、ものの数分で世界中に伝えることができます。</p>
+	<p>BYOIPのお客様は全員に、プレフィックスに関する<a href="https://blog.cloudflare.com/announcing-network-analytics/">ネットワーク分析</a>をお送りします。さらに、BYOIPプレフィックスのIPはすべてが静的IPとみなされます。CloudflareのIPプレフィックスで利用するサービスに特有のメリットもあります。</p>
+	<h3 id="-7-byoip-">レイヤー7 + BYOIP:</h3>
+	<p>Cloudflareには、ボット管理、Rate Limiting、Web アプリケーションファイアウォール、コンテンツ配信など、堅牢なレイヤー7製品プロフィールが揃っています。BYOIPとレイヤー7製品を一緒に選択でき、IPアドレスの利点をすべてご活用していただけます。</p>
+	<p>レイヤー7製品では、ドメイン間でIPを共有したり、専用IPにドメインを配置するなど、IPからドメインへのマッピングリクエストを多数サポートでき、SNI非対応などの要件を満たすのに役立ちます。</p>
+	<p>BYOIPを利用するSSL for SaaSのお客様の場合、何らかの理由でIPが利用できなくなった時に、<a href="https://developers.cloudflare.com/ssl/ssl-for-saas/status-codes/custom-hostnames/" target="_blank">custom_hostnames</a>のIPアドレス応答を変更できるよう柔軟性が向上されました。</p>
+	<h3 id="spectrum-byoip-">Spectrum + BYOIP:</h3>
+	<p>Spectrumは、UDPまたはTCPプロトコルのどちらでも実行するアプリケーションを保護し、加速させるCloudflareのソリューションです。Spectrum<a href="https://developers.cloudflare.com/spectrum/getting-started/byoip/" target="_blank">API</a>は今、BYOIPをサポートしています。BYOIPをお使いのSpectrumのお客様は、SpectrumのAPIを介して、Spectrumアプリケーションと関連させるIPを特定することができます。</p>
+	<h3 id="magic-transit-byoip-">Magic Transit + BYOIP:</h3>
+	<p>Magic Transitは、IPアドレスを通知することでネットワークトラフィック全体を処理するレイヤー3セキュリティサービスです。処理するCloudflareエッジにトラフィックを集めます。そして、高度なパケットフィルタリングとファイアウォール設定をサポートしています。BYOIPは、Magic Transitサービスの利用要件です。Magic TransitはIPレベルサービスなので、Cloudflareはこのサービスをご提供するためにユーザーのIPを通知できなければなりません。</p>
+	<h3 id="cloudflare-ip-">CloudflareにIPを持ち込むために必要なことは？</h3>
+	<p>Cloudflareがプレフィックスを通知する前、始めるために必要な文書があります。1つ目は、「認可書（LOA）」と呼ばれるもので、プレフィックスとCloudflareにどのように通知して欲しいかについての詳細を説明します。この文書は、プレフィックスのプロビジョニングの前に、Tier 1トランジットプロバイダーと共有します。このステップは、当社がユーザーのプレフィックスを通知する許可を得ていることをTier 1が認識するために行われます。</p>
+	<p>2つ目は、インターネットルーティングレジストリ（IRR）レコードが最新のものでありLOAのデータが反映されていることが求められます。これは通常、地域レジストリのエントリが最新のものであるかを確認することを意味します（例：ARIN, RIPE, APNIC）。</p>
+	<p>細かい管理が大変になった場合は、アカウントチームと協力して、プレフィックスが通知の準備がいつ完了するか把握してください。</p>
+	<p>当社では、お客様に<a href="https://blog.cloudflare.com/tag/rpki/">RPKI</a>のご利用をお勧めしていますが、お客様のプレフィックスのためにこれをサポートすることができるからです。ブログで書いた通り、このプロトコルの採用を要因するための広い機能を構築してきました。RPKIサポートとBYOIPに関心をお持ちであれば、ぜひアカウントチームにお知らせください！</p>
+	<h3 id="-">設定</h3>
+	<p>お客様のプレフィックスはそれぞれ、UIまたは<a href="https://api.cloudflare.com/%23ip-address-management-dynamic-advertisement-properties" target="_blank">API</a>のどちらかで「ダイナミック広報」トグルを経由して通知することができ、お客様の代わりにプレフィックスを通知するか、取り消すか、どちらかをCloudflareエッジで行えます。プレフィックスの準備ができたかどうかをアカウントチームがお知らせ次第、すぐに実行できます。</p>
+	<p>IPが通知の準備ができると、プレフィックスの「委託」を設定することもできます。「委託」機能は複数のCloudflareアカウントを通じてプレフィックスがどのように使用されるかを管理し、どのサービスとつながっているかによって、若干の影響があります。プレフィックスは、単一のアカウントで所有されるものですが、「委託」はプレフィックスの機能性のいくつかを他のアカウントにも拡張することができます。これは、開発者向け文書にも記録されています。現在、「委託」はレイヤー7とSpectrum BYOIPプレフィックスに影響を与える可能性があります。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/07/delegation-BYOIP@2x.png" class="kg-image"></figure>
+	<p>レイヤー7：BYOIP＋レイヤー7も<a href="https://developers.cloudflare.com/ssl/ssl-for-saas" target="_blank">SSL for SaaS</a>サービスもご利用の場合、他のアカウントの委託は、プレフィックスを所有するオリジナルアカウントに加えて、そのアカウントもプレフィックスを使ってカスタムホスト名を検証することができるようにします。つまり、複数のアカウントが同じIPプレフィックスを使って、カスタムホスト名へのトラフィックを処理できるということです。さらに、みなさまのIPはすべて、こうしたホスト名のトラフィックを処理できます。ということは、IPが何らかの理由でブロックされても、こうしたホスト名のIPアドレスが簡単に変更できるということになります。</p>
+	<p>Spectrum：もし<a href="https://developers.cloudflare.com/spectrum/getting-started/byoip/" target="_blank">Spectrum API</a>経由でBYOIP + Spectrumをご利用ならば、Spectrumアプリを作成したいプレフィックスで、IPを特定できます。他のアカウントにプレフィックスの委託を作成したい場合は、2番目のアカウントもアプリを作成したいプレフィックスからIPを特定することができます。</p>
+	<p>Magic Transit、CDN、Spectrumのどれかを介したBYOIPについて関心をお持ちの場合、現在当社のサービスをご利用中のお客様は、ご自分のアカウントチームにお問い合わせください。当社をまだご利用になっていない方は、<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="4635272a233506252a293322202a2734236825292b">[email&nbsp;protected]</a>にご連絡お願いいたします。</p>
+</div>

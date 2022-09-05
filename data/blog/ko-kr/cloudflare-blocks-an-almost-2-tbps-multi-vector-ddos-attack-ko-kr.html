@@ -1,0 +1,21 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image2-2.jpg" class="kg-image" alt="Cloudflare blocks an almost 2 Tbps multi-vector DDoS attack"></figure>
+	<p>이번 주 초, Cloudflare는 사상 최대 규모로 약 2Tbps급에 해당하는 <a href="https://www.cloudflare.com/en-gb/learning/ddos/what-is-a-ddos-attack/" target="_blank">DDoS 공격</a>을 자동으로 감지해 완화했습니다. 이는 <a href="https://www.cloudflare.com/en-gb/learning/ddos/dns-amplification-ddos-attack/" target="_blank">DNS 증폭 </a>공격과 <a href="https://www.cloudflare.com/en-gb/learning/ddos/udp-flood-ddos-attack/" target="_blank">UDP 폭주</a> 공격을 조합한 멀티 벡터 공격이었습니다. 전체 공격은 1분 동안 지속되었습니다. 이 공격은 IoT 장치와 <a href="https://www.rapid7.com/blog/post/2021/11/01/gitlab-unauthenticated-remote-code-execution-cve-2021-22205-exploited-in-the-wild/" target="_blank">패치되지 않은 GitLab 인스턴스</a>에서 오리지널 Mirai 코드의 변형을 구동하는 약 15,000개 봇을 통해 이루어졌습니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/08/image4-11.png" class="kg-image">
+		<figcaption>최대 2Tbps에 육박하는 DDoS 공격‌‌</figcaption>
+	</figure>
+	<h3 id="-ddos-44-">네트워크 계층 DDoS 공격은 44% 증가했습니다</h3>
+	<p>지난 분기에는 수 테라바이트 크기의 DDoS 공격이 여러 차례 관측되었으며, 이번 공격으로 공격 강도가 증가한 동향이 계속되고 있습니다. Cloudflare의 <a href="https://blog.cloudflare.com/ko-kr/ddos-attack-trends-for-2021-q3-ko-kr/">3분기 DDoS 공격 동향 보고서</a>에서 알 수 있는 핵심 중 하나는, 네트워크 계층 DDoS 공격이 실제로 지난 분기 대비 44% 증가했다는 사실입니다. 아직 4분기가 끝나지 않았는데도 또 다시 Cloudflare 고객을 대상으로 한 수 테라바이트 크기의 공격이 여러 차례 관측되었습니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/11/image1-21.png" class="kg-image" alt="DDoS attacks peaking at 1-1.4 Tbps">
+		<figcaption>1~1.4Tbps에 달한 DDoS 공격</figcaption>
+	</figure>
+	<h3 id="cloudflare-">Cloudflare는 어떻게 이 공격을 완화할 수 있었나요?</h3>
+	<p>우선 Cloudflare의 시스템은 "경로 밖에서" 지속적으로 트래픽 샘플을 분석하므로, 대기 시간을 초래하거나 성능에 영향을 주지 않고도 비동기적으로 DDoS 공격을 감지할 수 있습니다. 공격 트래픽이 (1초 이내에) 감지되었을 때, Cloudflare의 시스템은 정상적인 트래픽에 영향을 주지 않으면서도 공격을 완화할 수 있도록 공격 패턴만을 정밀하게 대상으로 하는 실시간 서명을 생성했습니다.</p>
+	<p>지문이 생성되면 비용효율적으로 완화할 수 있도록 단기간 동안의 완화 규칙으로 지문을 Cloudflare 에지 상 최적의 위치로 전파합니다. 이 경우 대부분의 L3/4 DDoS 공격과 같이, Linux 커널 <a href="https://blog.cloudflare.com/l4drop-xdp-ebpf-based-ddos-mitigations/">XDP(eXpress Data Path)</a>로 규칙이 즉각 푸시되어 최대한 빠른 속도로 공격 패킷이 무효화되었습니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/11/image3-17.png" class="kg-image" alt="Conceptual diagram of Cloudflare’s DDoS mitigation systems">
+		<figcaption>Cloudflare의 DDoS 방어 시스템의 개념도</figcaption>
+	</figure>
+	<p><a href="https://developers.cloudflare.com/ddos-protection/" target="_blank">Cloudflare의 DDoS 방어</a>에 관해 더 자세히 읽어보세요.</p>
+	<h3 id="-">더 나은 인터넷 구축 지원</h3>
+	<p>Cloudflare는 더 나은 인터넷을 만들려고 목표하고 있습니다. 더 안전하고, 빠르고, 모두가 더 신뢰할 수 있는 인터넷을 구축하는 것입니다. DDoS 공격의 영향을 지난 일로 만들겠다는 사명에서 DDoS 팀의 비전이 생겨났습니다. <a href="https://blog.cloudflare.com/meris-botnet/">Meris 봇넷</a>이 <a href="https://blog.cloudflare.com/ko-kr/cloudflare-thwarts-17-2m-rps-ddos-attack-the-largest-ever-reported-ko-kr/">사상 최대 규모의 HTTP DDoS 공격을 감행했던</a> 상황이든, 최근 <a href="https://blog.cloudflare.com/update-on-voip-attacks/">VoIP 공급자를 목표로 삼았던 공격</a>이든, 인터넷 자산에 DDoS 공격을 퍼붓고 있는 이번 Mirai 변종이든 간에 Cloudflare 네트워크는 DDoS 공격을 자동으로 감지하고 완화합니다. Cloudflare는 모든 유형의 인터넷 자산에 안전하고, 믿을 수 있고, 성능이 뛰어나며 <a href="https://blog.cloudflare.com/ko-kr/http-ddos-managed-rules-ko-kr/">사용자 지정 가능한</a> 플랫폼을 제공합니다.Cloudflare의 DDoS 방어에 대해 더 알아보려면, <a href="https://www.cloudflare.com/enterprise" target="_blank">문의</a>하거나 <a href="https://dash.cloudflare.com/sign-up" target="_blank">이곳</a>에서 Cloudflare의 Free 요금제를 실제로 사용하며 평가해보세요.</p>
+</div>

@@ -1,0 +1,64 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://lh3.googleusercontent.com/jAzJD_kPdJiw3eWQ0JNXRO-mPcTyUNDlhsJUQrhw00xBnT3qofGxs2OByY_j6Y93sZ-PU-PGcsJLESmRDjSGqcMxPqXmwrLUusfadl0CBxJb6vbFCg1VPjA1NfbDgf_GRuXkV4NC" class="kg-image" alt="Developer Spotlight: Automating Workflows with Airtable and Cloudflare Workers"></figure>
+	<p><a href="https://blog.cloudflare.com/tag/developer-spotlight/">开发人员聚焦</a>接下来要介绍的是我很喜欢的另一个人。今天的帖子由 Jacob Hands 撰写。Jacob 经营 <a href="http://tritailsbeef.com/" target="_blank">TriTails Premium Beef</a>，这是一个网上商店，销售肉类这种极易变质的商品。因此他在运输方面会遇到许多独特挑战。为了应对他们的发展，Jacob 作为一名开发人员，借助 Airtable 和 Cloudflare Workers 来自动化他们的大量工作流程。</p>
+	<p>我非常喜欢 Jacob 曾说过的一句话：</p>
+	<blockquote><em>“诚然，Cloudflare Workers 能够让您一天处理数十亿个请求，但一天处理几百个请求也同样很了不起。”</em></blockquote>
+	<p>下面，Jacob 将讲述他如何通过集成 Airtable 和 Workers，在短短几天时间内组合了一个完全定制的工作流工具，以及该工具如何帮助他们每天节省几个小时的时间。</p>
+	<h2 id="-"><strong>发货要求</strong></h2>
+	<p>随着经营范围的扩大，在一家运输易变质物品的新电子商务公司上班会面临几个挑战。我们的最大挑战之一就是每天的发货吞吐量是有限的。一方面是因为工作空间太小，限制了能够同时打包订单的员工数。还有一个原因是，尽管已经申请了 UPS 的取货时间，但他们经常会提前几个小时到达，导致打包人员不得不停下手中的工作去配合他们，直到他们离开。打包也十分耗费时间，因为这就像一个俄罗斯方块游戏，需要为所有产品匹配足够的干冰以保持其冷冻。</p>
+	<p>常规包装盒通常如下所示：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image3-27.png" class="kg-image"></figure>
+	<p>确保运送时间尽可能短对于确保产品在到达客户家门口时仍然保持冷冻十分关键。由于这一要求，必须要避免包裹在周末期间处于运送途中。我们了解到，在包裹延误一天后的状况并不算太糟糕，但如果这意味着包裹要在分拣中心度过整个周末，这可不是件令人愉快的事。</p>
+	<p>幸运的是，我们及时赶到了，我们曾经连夜寄送了一箱替换牛排，拯救了一场晚宴。但在那之后，我们开始对订单进行分类，确保在正确的时间交付正确的包裹。</p>
+	<h2 id="--1"><strong>订单分类，前路难行</strong></h2>
+	<p>在早些时候，我们可以在午饭后打包订单，一个小时就可以完成。但随着我们的发展，我们需要关注我们发货的内容、时间和方式。首先，将所有未结订单复制到一个 Google Sheet。然后，手动检查每笔订单的运送时间并添加到工作表。然后按运送时间对工作表进行排序（先付费的订单在最上面），并将每组订单分成组。最后，打印 Google Sheet 以供打包团队进行工作。</p>
+	<p>运送时间对装运过程十分关键，因此需要在每一张装箱单上注明，以便打包团队了解每个订单需要多少干冰和包装。因此，在打印前，会将运送时间输入到 Adobe Acrobat 中的每个装箱单上。尽管这是一个十分繁琐的过程，但它对于确保每个包裹都按照以良好的状态到达目的地所需的要求进行打包至关重要。</p>
+	<p>在打包团队完成打包订单后，会根据打包人员填写的工作表将包裹重量和尺寸添加到 Google Sheet 中。接下来，会创建每个订单标签，分别将重量和尺寸从 Google Sheet 复制到 ShipStation，这是我们用来管理提供商物流的应用程序。最后，将拿起包裹并开始送往客户家门。</p>
+	<p>如果只有十个订单，这个过程运作良好，但随着经营范围扩大，分类和组织订单成了全职工作，需要再三检查所有内容都已正确输入且没有发生人为错误（搅局者时有发生！）</p>
+	<h2 id="--2"><strong>自动化</strong></h2>
+	<p>最开始，我只是想要自动化最繁琐的步骤：计算运送时间。这个过程花费了太长的时间，阻碍了打包团队开始打包订单的时间，进而限制了我们的吞吐量。Cloudflare Workers 易于使用且运行快速，看起来是一个不错的着手点。我的计划是在 Google Sheets 中使用 =IMPORTDATA(order) 并消除过程中的该步骤。</p>
+	<p>只对一件事进行自动化是很强大的，它引发了关于如何进一步改进工作流程的大量想法。在每天最开始的 30 分钟日常工作进行自动化后，我们还可以做些什么？然后我开始计划自动化尽可能多的工作流程，对于各种可能性感到很兴奋。</p>
+	<h3 id="--3"><strong>再分类</strong></h3>
+	<p>解决问题通常就是要找出需要优先处理的事情，自动化该工作流程也同样如此。我们的订单分类过程有许多步骤，一次性自动化整个过程显然不可能，因为存在时间限制。因此，我决定仅解决优先级最高的问题，一次解决一个步骤。再分类过程帮助我构建了自动化整个工作流程所需的一切，而不会让人感到难以承受，并在此过程中的每一步都提高了效率。</p>
+	<p>随着运送时间计算 API 开始工作，接下来我想自动化的部分是，通过 API 从 Shopify 获取需要运输的订单，而不是每次都需要复制粘贴。从这一步开始，Google Sheets 的限制开始变得明显。尽管自动化可以在 Sheets 中完成，但它很快可能变成满是黑客的盲盒。所以，是时候转移到更好的平台了。但是，选择哪个平台呢？</p>
+	<p>自从 2012 年 Airtable 推出以来，我经常听到这个名字，也试着用过几次，但是它的定价和限制看起来并不适合我的任何一个用例。不过由于我们每次只需要存储少量的数据，它似乎值得一试，因为它有易于使用的 API，且支持严格的单元格格式，这在 Sheets 中要难得多。Airtable 有着直观的 UI，且很容易为所需的每个数据类型创建自定义字段。</p>
+	<p>在我发现 Airtable 具有一个内置 <a href="https://airtable.com/marketplace/blkQyAKhJoGKqnR0T/scripting" target="_blank">Scripting App</a> 后，很显然这就是适合我们工作的工具。</p>
+	<h2 id="-airtable-scripting-apps"><strong>构建 Airtable Scripting Apps</strong></h2>
+	<p>Airtable Scripting 是一款强大的工具，用于直接在 Airtable 内使用 JavaScript 构建功能。遗憾的是，存在一些限制。例如，如果不复制粘贴，就无法在不同的 Scripting App 实例之间共享代码。这里也没有源代码管理，因此还原更改依赖于“撤消”按钮。</p>
+	<p>而另一方面，Cloudflare Workers 是一个完整的开发人员平台。您可以轻松使用源代码管理，而且它在 Wrangler 和 Miniflare 上有很好的开发人员体验，可以快速且无缝地测试和部署。</p>
+	<p>Airtable Scripting 和 Cloudflare Workers 可以完美配合。在 Workers 上构建 API 允许在 Cloudflare 网络上运行更复杂的任务。然后，Airtable 脚本提取这些 API，解决代码共享问题并加速开发。</p>
+	<h3 id="shopify-"><strong>Shopify 订单导入</strong></h3>
+	<p>首先，我们需要从 Shopify 导入订单到 Airtable。我在 Workers 中创建的 API 端点会仔细检查所有未结订单，并找出哪些订单应当在本周内发货。然后，这些订单缓存到 Workers Cache API 中，以便我们可以根据需要请求此端点，而不会触及 Shopify API 的限制。</p>
+	<p>从那里，Airtable Scripting App 会使用我们的 Workers API 来检查每笔订单的运送时间，该 API 会调用 Shippo（一个多承运人运输 API）来获取承运人的运送时间估计值。最后，会在 Airtable 中的每一行更新相应的运送时间，并自动进行排序，空运优先级位于最上面，随后按最长运送时间到最短运送时间排序。</p>
+	<p>从用 45 分钟的时间手动完成获取分类订单列表的整个过程，到点击一个按钮并让 Airtable 和 Workers 在几秒钟内为我完成这一切，这是我编程以来经历过的最重要的“高光”时刻之一。</p>
+	<h3 id="--4"><strong>按顺序打印装箱单</strong></h3>
+	<p>接下来要解决的重要事情是打印装箱单。它们需要按分类顺序打印，而不是按时间顺序打印。为此，这需要手动搜索每个订单，但是现在，Airtable 中的一个按钮会生成指向 Shopify 搜索的链接，并预先填充每批订单。</p>
+	<h3 id="--5"><strong>打印订单工作表</strong></h3>
+	<p>当然，我们不会止步于此。</p>
+	<p>为保持追踪打包的订单，我们使用打印的工作表，其中包含列出的所有订单，列中填写了每个订单包装盒的尺寸和重量信息。遗憾的是，Airtable 并没有一种好的方法来定制表格打印。</p>
+	<p>讽刺的是，这让我们回到了 Google Sheets！因为 Sheets 是设置表格格式最简单的方式，这似乎是最佳选择。但是从 Airtable 复制数据到 Sheets 十分繁琐。于是，我在 Workers 中创建了一个 API 端点来从 Airtable 获取数据，并将其设置为 CSV 格式，就像我们打印时需要的格式一样。从 Sheets 中，IMPORTDATA 函数在打开时自动导入当天的订单，以供打印。</p>
+	<h3 id="-shipstation"><strong>将包裹详情发送到 ShipStation</strong></h3>
+	<p>在打包团队完成打包并填写装运工作表后，会将每笔订单的包装盒尺寸和重量输入 Airtable。无需将这些信息也输入到 ShipStation 中，我在 Workers API 中构建可一个端点，使用 ShipStation API 来设置重量和尺寸。ShipStation 订单会根据订单 ID 完成更新。脚本先列出所有未结订单，然后将所有未结订单的订单名称和 ID 映射写入 Workers KV，以便未来对此 API 的请求可以避免 ShipStation 列表 API，这十分缓慢且具有严格限制。</p>
+	<p>接下来，我构建了另一个 Airtable 脚本，将每个包装盒的详细信息发送到此 API。除了设置重量和尺寸外，还会在订单上标记当天的日期，以便让人轻松识别 ShipStation 中的哪些订单已准备好贴标签。最后，在 ShipStation 中批量制作标签并打印，然后贴到相应的包裹上。</p>
+	<h2 id="--6"><strong>结合在一起</strong></h2>
+	<p>整个系统的概览就像这样。所有客户端连接至 Airtable，Airtable 向 Worker API 发出调用，而 Worker API 连接并协调所有第三方 API。</p>
+	<figure class="kg-card kg-image-card"><img src="https://lh4.googleusercontent.com/fz8XzFRVfZre4nr2ZqjS7VJ2K8xBPRgkbVufo07LCLAxAvp-lI3GKmk7VPp8hDMFXnJZPXy2SjvRgK8fPJoZhC5g6OTmsy2YzTkmlKOXTYd-xvGIUpcO0t6_qryLPxfwo2Ou1yQ1" class="kg-image"></figure>
+	<h2 id="-workers-airtable-"><strong>为什么 Workers 和 Airtable 可以合作良好</strong></h2>
+	<p>尽管可能能够在 Airtable 中构建整个系统，但与 Workers 集成可以简化在 Airtable 脚本与其他平台之间构建、测试和重复使用代码的过程。</p>
+	<h3 id="--7"><strong>开发体验</strong></h3>
+	<p>Airtable Scripting app 具有良好的编辑器和自动填写功能，可让人轻松且快速地构建可使用 Airtable 中所存储数据的脚本，但很难在其中构建更复杂的脚本。</p>
+	<p>有趣的是，对这个项目来说，延迟和扩展并不是那么重要。但 Cloudflare Workers 使开发和测试过程简单得不可思议：无需过多的配置或部署管道。</p>
+	<h3 id="--8"><strong>可靠性和安全性</strong></h3>
+	<p>我们要做业务，如果还需要照看服务器，势必会造成巨大的干扰，显然我们并不需要这种干扰。使用完全无服务器的 Workers，我永远无需担心因为服务器宕机所造成的任何中断。</p>
+	<p>而且我们可以使用机密的环境变量，将访问所有第三方系统所需的所有密码安全存储在 Cloudflare 中。确保这些令牌和密钥完全加密且安全。</p>
+	<h3 id="airtable-ui"><strong>Airtable 就是一个很棒的数据库和 UI</strong></h3>
+	<p>围绕数据输入和可视化构建 UI 会耗费大量时间和资源。利用 Airtable，我在构建整个工作流程的过程中完全无需触碰 HTML，更不用说前端架构。取而代之，我仅需完全专注于核心业务逻辑。Airtable 的仪表板功能还允许构建报告，对正在运送的包裹提供高级别的概览，帮助我们预测未来所需的包装材料。</p>
+	<p>当涉及到自定义脚本时，在电子表格中构建工作流程感觉就像处理各种杂务，而 Airtable 则相反。Airtable 的可扩展性和良好用户体验使其成为一款广受欢迎的绝佳工具。</p>
+	<h2 id="--9"><strong>后来的改进</strong></h2>
+	<p>在完成基础部分后，我注意到关于此设置的一个强大能力：添加功能有多简单。我开始留意工作流程中一些可以改进的小问题。例如，当一个订单需要拆分为多个包裹时，需要复制 Airtable 中的行，并向每个订单的订单号添加前缀。自动化订单拆分之前并不是重要事项，但它很快成为整个过程中最耗时的部分之一。花了三十分钟时间，我用另一个 Airtable 脚本为每一行构建了一个“拆分订单”按钮。</p>
+	<p>另一个问题是，当客户周三不在家时，如果订单在周一寄出，那么就只能在客户家门口等到变质。幸运的是，我们可以轻松又快速地向获取可发货订单的 Workers API 添加一个可选的最短发货日期标签。现在，当客户计划出门时，我们的销售团队可以添加最短发货日期标签，在决定发货物品时会自动考虑工作流程的其他部分。</p>
+	<h2 id="--10"><strong>总结</strong></h2>
+	<p>许多公司都因为 Workers 令人不可置信的性能和缩放功能而选用 Workers，从而处理数百万或数十亿的请求，但对我们来说，通过每天处理的数百个 Workers 请求所获得的价值已经足够让我们开心不已。</p>
+	<p>Cloudflare Workers，尤其在与 Airtable 等工具结合使用时，可以让您安全按照自己所需的确切规格轻松创建自己的内部工具。这将为更多企业带来这一能力。</p>
+	<p><em>Cloudflare 不隶属于 Formagrid, Inc., dba Airtable。本博客帖子中表达的观点仅为嘉宾作者的观点，不代表 Cloudflare, Inc 的观点。</em><br></p>
+</div>

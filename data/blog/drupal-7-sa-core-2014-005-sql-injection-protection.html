@@ -1,0 +1,17 @@
+<div class="post-content lh-copy gray1">
+	<!--kg-card-begin: markdown-->
+	<p>Yesterday the Drupal Security Team released a <a href="https://www.drupal.org/SA-CORE-2014-005" target="_blank">critical security patch</a> for Drupal 7 that fixes a very serious <a href="https://www.sektioneins.de/advisories/advisory-012014-drupal-pre-auth-sql-injection-vulnerability.html" target="_blank">SQL injection</a> vulnerability. At the same time we pushed an update to our Drupal WAF rules to mitigate this problem. Any customer using the WAF and with the Drupal ruleset enabled will have received automatic protection.</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2014/10/Screen-Shot-2014-10-16-at-10-57-27.png" alt=""></p>
+	<p>Rule D0002 provides protection against this vulnerability. If you do not have that ruleset enabled and are using Drupal clicking the ON button next to CloudFlare Drupal in the WAF Settings will enable protection immediately.</p>
+	<p>CloudFlare WAF protection can help mitigate vulnerabilities like this, but it is vital that Drupal 7 users <a href="https://www.drupal.org/drupal-7.32-release-notes" target="_blank">upgrade</a> to the safe version of Drupal immediately.</p>
+	<h3 id="importantupdateonoctober292014">Important Update on October 29, 2014</h3>
+	<p>The Drupal Security team has posted a <a href="https://www.drupal.org/PSA-2014-003" target="_blank">PSA</a> on this vulnerability that states:</p>
+	<blockquote>
+		<p>You should proceed under the assumption that every Drupal 7 website was compromised unless updated or patched before Oct 15th, 11pm UTC, that is 7 hours after the announcement.</p>
+	</blockquote>
+	<p>Given the severity of that statement, if you did not update your Drupal 7 installation please read the PSA and follow the instructions on cleaning up your site.</p>
+	<blockquote>
+		<p>If you have not updated or applied this patch, do so immediately, then continue reading this announcement; updating to version 7.32 or applying the patch fixes the vulnerability but does not fix an already compromised website. If you find that your site is already patched but you didn’t do it, that can be a symptom that the site was compromised - some attacks have applied the patch as a way to guarantee they are the only attacker in control of the site.</p>
+	</blockquote>
+	<!--kg-card-end: markdown-->
+</div>

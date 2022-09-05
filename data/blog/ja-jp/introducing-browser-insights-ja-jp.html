@@ -1,0 +1,51 @@
+<div class="post-content lh-copy gray1">
+	<p>肝心なのは、スピードです。Webサイトやアプリが速くなると、ユーザーエクスペリエンスが向上し、コンバージョンが増加し、収益も上がることが分かっています。Cloudflareでは、スピードにこだわって新しい機能を構築し、可能な限り多くのパフォーマンスを捻り出す日々を過ごしています。</p>
+	<p>しかし、速度を向上させるにはまず、それを測定する必要があります。ですから、<a href="https://www.cloudflare.com/website-optimization/" target="_blank">Browser Insights</a>を発表します。いうユーザーの視点からWebサイトのパフォーマンスを測定する新しいツールです。Browser Insights を使用すると、どこで、いつ、そしてなぜ、Webページの速度がおちるのかを深く理解できます。そして今日、ワンクリックで、無料で有効にすることができるのです。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/09/insights-option-1.png" class="kg-image"></figure>
+	<h2 id="browser-insights-"><strong>Browser Insightsを構築した理由</strong></h2>
+	<p>たとえば、eコマースサイトを運営していて、コンバージョン率を向上させたいとしましょう。ペルーの訪問者からのトラフィックが多いのに、北米のユーザーよりもコンバージョンが悪いことに気がつきました。チェックアウトページの読み込みに時間がかかるため、チェックアウト前に顧客がページを離れていくからだと考えるかもしれません。どうやってその説を検証すればいいのでしょうか？</p>
+	<p>検証するためには、サーバーログからタイミング情報を確認する、自分のブラウザでページを何度か読み込んでみて、どの情報が遅いのかを確認するなど、方法がいくつかあります。</p>
+	<p>ただし、これらのアプローチにはいくつかの欠点があります。</p>
+	<ul>
+		<li>サーバー側のデータを見るだけでは、エンドユーザーエクスペリエンスに影響を及ぼす要因を見逃してしまいます。Webブラウザが必要なスクリプト全てを読み込み、実行し、ページを描画するのにどのくらいの時間がかかりましたか？</li>
+		<li>1台のコンピュータ （または何台かのコンピュータ）からのみ計測する場合は、利用者の多様性を見逃してしまいます。例えば、「3G接続の携帯電話ではどう動作するのか？」</li>
+	</ul>
+	<p>これらの問題を解決するには、<em>リアルユーザーモニタリング</em>を利用します。これにより、両者の長所を生かすことができます。現実のWebブラウザ内に、タイマーを実行することができるのです。このタイマーは、実際のユーザー側から Web ページの読み込みにかかる時間をキャプチャーします。</p>
+	<h2 id="-"><strong>どのように動作するか</strong></h2>
+	<p>Browser Insightsは、ダッシュボードの「スピード」セクションでスイッチを切り替えることで有効にできます。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/09/pasted-image-0--3-.png" class="kg-image"></figure>
+	<p>有効にすると、各HTMLページの読み込みに<a href="https://developer.mozilla.org/en-US/docs/Web/API/Performance" target="_blank">パフォーマンスAPI</a>を使用するJavaScriptコードのほんの小さな断片を追加して、タイミング情報を集めます。そうすると、Webページが実際にどのように動作しているかを数値で確認できるようになります。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/09/pasted-image-0--2-.png" class="kg-image"></figure>
+	<p>このグラフには情報がぎっしり！ざっくり言うと、数値指標には主に2種類あります。</p>
+	<ul>
+		<li>TCP接続時間や要求時間などの要求レベルの数値指標。この数値は、すべてのページの読み込みでカウントされ、エンドユーザーのモバイルネットワークやサーバーの速さなど、インターネットインフラの影響を受けます。</li>
+		<li>ページの読み込み時間などのページレベルの数値は、Webページの読み込みに必要となる多くの要求に加えて、HTML解析とJavaScriptの実行にかかる時間を考慮します。</li>
+	</ul>
+	<p>これらの時間が意味すること、どうしてこれらを選択したのかついては、当社の<a href="https://blog.cloudflare.com/browser-performance-api">コンパニオンブログ記事</a>をご参照ください。</p>
+	<h2 id="--1"><strong>データを掘り下げる</strong></h2>
+	<p>Webページのパフォーマンスに関する<em>数値指標</em>を何件か見るだけでなく、URLや国など、パフォーマンスに影響を与える<em>ディメンション</em>を掘り下げみると有用です。つまり、特定のページ（ホームページやチェックアウトページなど）のパフォーマンスに絞り込みができ、またサイトの読み込みが最も速い場所、最も遅い場所を確認できます。</p>
+	<p>前述の例に戻って、ペルーのパフォーマンスが北米と比較してどうかを確認します。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/09/pasted-image-0--1--1.png" class="kg-image"></figure>
+	<p>確かに、ペルーからのトラフィックが非常に多いことは確認できますが、Webページの読み込みには平均で約13秒かかります。これに対して米国内のユーザーは、4.2秒でした。仮説が確認されました！ では、全ての数値指標をペルーに絞り込み、何が起こっているのかをさらに見てみましょう。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/09/pasted-image-0-1.png" class="kg-image"></figure>
+	<p>「処理中」が最も増加し、12秒まで増加していることに注意してください。要求時間も長くなりました。これはおそらく米国内のオリジンサーバーに接続しているためでしょう。Webページは、数多くの個別要求で構成されるため、組み合わせると読み込み時間が遅くなるのは、理にかなっていると言えます。この例では、高速なコンテンツをキャッシュすると、ページの読み込みが大幅に改善できるでしょう。</p>
+	<h2 id="--2"><strong>次は何が？</strong></h2>
+	<p>本日のリリースは、Browser Insightsの氷山の一角に過ぎません。近い将来、もっと情報を追加して、Webサイトの速度を落としているのが何か、そしてより速くするためには何ができるのかを正確に理解するのに役立ちたいと考えています。以下を追加する予定です。</p>
+	<ul>
+		<li>最初の描画開始までの時間など、ページレベルの数値指標や、ブラウザ、ネットワークタイプなどのディメンション情報の充実</li>
+		<li>サブリソース分析。平均的なWebページは100を超えるサブリソースを読み込むもので、当社はどれが遅いのかを正確に示すウォーターフォールチャートを提示できます。</li>
+		<li>潜在的な構成変更がユーザーのトラフィックパフォーマンスに与える影響を示すA/Bテスト</li>
+		<li>ネットワーク層、JavaScriptなどでの問題を監視するためのエラー収集</li>
+		<li>パフォーマンスが事前に定義されたしきい値を下回った時に知らせるアラート</li>
+		<li>Cloudflareが提供するインサイトは、何かが遅い可能性がある<em>理由</em>を示します（例、キャッシュヒット率がページの読み込み時間に与える影響など)。</li>
+	</ul>
+	<h2 id="--3"><strong>ユーザーのプライバシー保護</strong></h2>
+	<p>より良いインターネットの構築を支援するというCloudflareの使命は、お客様、お客様のエンドユーザー、インターネットコミュニティとの信頼関係をグローバルに確立することの重要性に基づいています。当社は、お客様の利益に合わせた透明性の高いビジネスモデルを持ち、お客様のインターネットプロパティの保護とスピードアップを行なって利益を上げています。当社は、お客様（またはエンドユーザー）のデータを販売することはありません。</p>
+	<p>Browser Insightsでは、エンドユーザーのブラウザがタイミング情報をCloudflareに報告する必要があります。Browser Insights は、Webサイトのパフォーマンスをお客様に示すために必要な最低限の情報のみを報告するようにデザインされました。Browser Insightsが収集する数値指標は、タイミングに関するものだけです。当社は、お客様のインターネットプロパティ全体で個々のエンドユーザーを追跡しません。お気に入りのWebブラウザでインスペクターを開いて、何が返送されるかを確認することをお勧めします。</p>
+	<h2 id="-browser-insights-"><strong>今すぐBrowser Insightsをお試しください</strong></h2>
+	<p>昨年5月、全く新しい<a href="https://blog.cloudflare.com/new-speed-page/">Speed Page</a>を発表しました。Speed Pageでの当社の使命は、Webサイトの速度を示し、そしてそれをより速くするために何ができるかを提示することです。本日は、新しいSpeed Pageが誰でもご利用いただけることをお知らせします。</p>
+	<p>Browser Insights は、Speed Pageで先着順でご利用いただけるようになります。また、当社は今後数週間でできるだけ早くみなさまにお届けできるよう尽力しています。最新情報は、このスペースをご覧ください!</p>
+	<figure class="kg-card kg-image-card"><img src="https://lh6.googleusercontent.com/zbVUo9ueL7h8vV_IvDhqK75p2XnT2FStCkTTKfUgwyX7DuyzkEf72Jd_rtYlXO1NT9pLG6r-FOtlRiurpal9TlJIi7pwi5aswjzd7tZUkmV8bFhZaqN28cvLCxfuHGor-vTF4tVB" class="kg-image"></figure>
+	<hr>
+	<p><a href="https://blog.cloudflare.com/subscribe/"><em>このブログを購読</em></a><em>していただくと、誕生日ウィーク中の発表を全て毎日のアップデートでお知らせします</em>。</p>
+</div>

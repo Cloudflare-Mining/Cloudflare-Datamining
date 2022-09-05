@@ -1,0 +1,298 @@
+<div class="post-content lh-copy gray1">
+	<p>(<em>Esta es una publicación cruzada de un tutorial </em><a href="https://rreverser.com/writing-complex-macros-in-rust/" target="_blank"><em>publicado originalmente</em></a><em> en mi blog personal )</em></p>
+	<p>Entre otras características interesantes, Rust tiene un sólido sistema macro. Lamentablemente, incluso después de leer el libro y varios tutoriales, cuando trataba de implementar una macro, que implicaba el procesamiento de listas complejas de diferentes elementos, seguía teniendo problemas para entender cómo se hacía, y me llevó un tiempo hasta que me dí cuenta y comencé a usar macros indiscriminadamente para todo :) <em>(de acuerdo, no para todo, como si dijera uso macros porque no quiero usar funciones y especificar tipos y duraciones como he visto que hacen algunos, pero en realidad es útil)</em></p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/10/image-4.png" class="kg-image">
+		<figcaption><a href="https://creativecommons.org/licenses/by/2.0/" target="_blank">CC BY 2.0</a> <a href="https://www.flickr.com/photos/conchur/25057125240/in/photolist-EbdjmG-8NSN1q-qXhueG-YTYnm3-odaneQ-DxCKQA-228jg4t-DU8Axz-XTQfdD-4p6nJk-UKVzbn-YFeKcW-osZ2XM-e6qefx-Tb3a6Q-dCw1zk-Et3kKh-dbAR9x-zHP8TR-a9cqw4-9JQHRy-Et1Ag5-PqFtx1-7x3Ukq-67VJc6-cvoKSo-qH2S9L-zHJAr9-XmCLsL-8AMWXX-ZV2hHh-XGPiHq-ZKpFSB-yqd2P1-23hMiaC-zETYYa-Wj7BVi-PNP4YA-LCNm6c-8AnkrZ-KA7qmt-KjYPxC-SzQsZD-Cxwvqg-GuZ3nn-J4jBaA-TzyjpB-DcYJA1-YQYNA3-My1uu8" target="_blank">Imagen</a> de <a href="https://www.flickr.com/photos/conchur/" target="_blank">Conor Lawless</a></figcaption>
+	</figure>
+	<p>Por lo tanto, esta es mi opinión sobre la descripción de los principios de creación de estas macros. Se supone que ha leído la sección <a href="https://doc.rust-lang.org/book/first-edition/macros.html" target="_blank">Macros</a> del libro y que está familiarizado con las definiciones básicas de macros y con los tipos de <em>token.</em></p>
+	<p>Tomaré <a href="https://en.wikipedia.org/wiki/Reverse_Polish_notation" target="_blank">la notación polaca inversa</a> como ejemplo para este tutorial. Es interesante porque es bastante simple, es posible que el tema le resulte familiar, ya que seguramente lo vio en la escuela o la universidad y, sin embargo, para implementarla de manera estática en el momento de la compilación, usted debe usar un método recursivo de macros.</p>
+	<p>La notación polaca inversa (también denominada notación posfija) utiliza una pila para todas sus operaciones, por lo tanto, cualquier operando se inserta en la pila, y cualquier operador <em>[binario] </em>toma dos operandos de la pila, evalúa el resultado y lo vuelve a colocar en su lugar. Por lo tanto, la expresión a continuación:</p>
+	<p><code>2 3 + 4 *</code></p>
+	<p>se traduce en lo siguiente:</p>
+	<ol>
+		<li>Poner <code>2</code> en la pila.</li>
+		<li>Poner <code>3</code> en la pila.</li>
+		<li>Tomar los dos últimos valores de la pila ( <code>3</code> y <code>2</code>), aplicar el operador <code>+</code> y volver a colocar el resultado ( <code>5</code>) en la pila.</li>
+		<li>Poner <code>4</code> en la pila.</li>
+		<li>Tomar los dos últimos valores de la pila ( <code>4</code> y <code>5</code>), aplicar el operador <code>*</code> ( <code>4 * 5</code>) y volver a colocar el resultado ( <code>20</code>) en la pila.</li>
+		<li>Fin de la expresión, el valor único de la pila es el resultado ( <code>20</code>).</li>
+	</ol>
+	<p>En una notación infija más común, que se utiliza en matemáticas y en la mayoría de los lenguajes de programación modernos, la expresión sería <code>(2 + 3) * 4</code>.</p>
+	<p>Así que vamos a crear una macro que evaluaría la notación polaca inversa (RPN) en el momento de la compilación convirtiéndola en una notación infija que Rust comprenda.</p>
+	<pre><code class="language-rust">macro_rules! rpn {
+  // TODO
+}
+
+println!("{}", rpn!(2 3 + 4 *)); // 20</code></pre>
+	<p>Comencemos por hacer avanzar números a la pila.</p>
+	<p>Las macros actualmente no permiten literales coincidentes, y <code>expr</code> no funcionará para nosotros ya que puede hacer coincidir accidentalmente una secuencia como <code>2 + 3 ...</code> en lugar de tomar un solo número, por lo tanto, recurriremos a <code>tt</code> - un buscador de coincidencias de token genérico que coincida con un solo árbol de token (independientemente de si se trata de un token primitivo como literal/identificador/duración/etc. o <code>()</code>/ <code>[]</code>/ <code>{}</code> - expresión entre paréntesis que contiene más tokens):</p>
+	<pre><code class="language-rust">macro_rules! rpn {
+  ($num:tt) =&gt; {
+    // TODO
+  };
+}</code></pre>
+	<p>Ahora, necesitaremos una variable para la pila.</p>
+	<p>Las macros no pueden usar variables reales, ya que queremos que esta pila solo exista en el momento de la compilación. Por lo tanto, el truco consiste en tener una secuencia de token separada que se pueda hacer circular y usar como una especie de acumulador.</p>
+	<p>En nuestro caso, la representaremos como una secuencia separada por comas de <code>expr</code> (ya que la usaremos no solo para números simples sino también para expresiones infijas intermedias) y la encerraremos entre corchetes para separarla del resto de la entrada:</p>
+	<pre><code class="language-rust">macro_rules! rpn {
+  ([ $($stack:expr),* ] $num:tt) =&gt; {
+    // TODO
+  };
+}</code></pre>
+	<p>Ahora, una secuencia de token no es en realidad una variable - no se puede modificar in situ y hacer algo con esta después. Pero usted puede crear una copia nueva de esta secuencia de token con las modificaciones necesarias y volver a designar de manera recursiva la misma macro.</p>
+	<p>Si usted proviene de un entorno de lenguaje funcional o ha trabajado antes con una biblioteca que proporciona datos inmutables, es probable que ambos métodos - mutación de datos mediante la creación de una copia modificada y procesamiento de listas con recursividad - le resulten familiares.</p>
+	<pre><code class="language-rust">macro_rules! rpn {
+  ([ $($stack:expr),* ] $num:tt) =&gt; {
+    rpn!([ $num $(, $stack)* ])
+  };
+}</code></pre>
+	<p>Ahora, obviamente, el caso con un número simple es bastante improbable y no resulta muy interesante para nosotros, por lo tanto, tendremos que hacer coincidir todo lo demás después de ese número como una secuencia de cero o más tokens <code>tt</code>, que se puede pasar a la siguiente invocación de nuestra macro para una coincidencia y procesamiento posteriores:</p>
+	<pre><code class="language-rust">macro_rules! rpn {
+  ([ $($stack:expr),* ] $num:tt $($rest:tt)*) =&gt; {
+      rpn!([ $num $(, $stack)* ] $($rest)*)
+  };
+}</code></pre>
+	<p>En este punto aún nos falta el soporte del operador. ¿Cómo hacemos coincidir a los operadores?</p>
+	<p>Si nuestra RPN fuera una secuencia de tokens que quisiéramos procesar exactamente de la misma manera, simplemente podríamos usar una lista como <code>$($token:tt)*</code>. Lamentablemente, eso no nos permitiría revisar la lista y hacer avanzar un operando o aplicar un operador según cada token.</p>
+	<p>El libro dice que “el sistema macro no se ocupa de analizar la ambigüedad”, y eso es cierto para una sola bifurcación de macros - no podemos hacer coincidir una secuencia de números seguidos por un operador como <code>$($num:tt)* +</code> &nbsp;porque <code>+</code> también es un token válido y podría hacerse coincidir por el grupo tt, pero aquí es donde las macros recursivas vuelven a ayudar.</p>
+	<p>Si tiene diferentes bifurcaciones en su definición de macro, Rust las probará una por una, para que podamos poner nuestras bifurcaciones para el operador antes del número uno y, de esta manera, evitar cualquier tipo de conflicto:</p>
+	<pre><code class="language-rust">macro_rules! rpn {
+  ([ $($stack:expr),* ] + $($rest:tt)*) =&gt; {
+    // TODO
+  };
+  
+  ([ $($stack:expr),* ] - $($rest:tt)*) =&gt; {
+    // TODO
+  };
+  
+  ([ $($stack:expr),* ] * $($rest:tt)*) =&gt; {
+    // TODO
+  };
+  
+  ([ $($stack:expr),* ] / $($rest:tt)*) =&gt; {
+    // TODO
+  };
+
+  ([ $($stack:expr),* ] $num:tt $($rest:tt)*) =&gt; {
+    rpn!([ $num $(, $stack)* ] $($rest)*)
+  };
+}
+</code></pre>
+	<p>Como dije antes, los operadores se aplican a los dos últimos números de la pila, por lo tanto, tendremos que lograr una coincidencia por separado, “evaluar” el resultado (construir una expresión infija regular) y volver a colocarlo:</p>
+	<pre><code class="language-rust">macro_rules! rpn {
+  ([ $b:expr, $a:expr $(, $stack:expr)* ] + $($rest:tt)*) =&gt; {
+    rpn!([ $a + $b $(, $stack)* ] $($rest)*)
+  };
+
+  ([ $b:expr, $a:expr $(, $stack:expr)* ] - $($rest:tt)*) =&gt; {
+    rpn!([ $a - $b $(, $stack)* ] $($rest)*)
+  };
+
+  ([ $b:expr, $a:expr $(, $stack:expr)* ] * $($rest:tt)*) =&gt; {
+    rpn!([ $a * $b $(,$stack)* ] $($rest)*)
+  };
+
+  ([ $b:expr, $a:expr $(, $stack:expr)* ] / $($rest:tt)*) =&gt; {
+    rpn!([ $a / $b $(,$stack)* ] $($rest)*)
+  };
+
+  ([ $($stack:expr),* ] $num:tt $($rest:tt)*) =&gt; {
+    rpn!([ $num $(, $stack)* ] $($rest)*)
+  };
+}
+</code></pre>
+	<p>En realidad no me gustan mucho esas repeticiones tan obvias, pero, al igual que con los literales, no hay ningún tipo de token especial que coincida con los operadores.</p>
+	<p>Lo que podemos hacer, sin embargo, es agregar un auxiliar que sería responsable de la evaluación y delegar cualquier bifurcación para el operador explícita a este.</p>
+	<p>En las macros, no se puede utilizar un auxiliar externo, pero de lo único que puede estar seguro es que sus macros ya están en escala, por lo tanto, el truco habitual es tener una bifurcación en la misma macro “marcada” con alguna secuencia de token única, y designarla de manera recursiva como lo hicimos con las bifurcaciones regulares.</p>
+	<p>Usaremos <code>@op</code> como marcador, y aceptaremos cualquier operador a través de <code>tt</code> dentro de este ( <code>tt</code> sería inequívoco en ese contexto, ya que solo pasaremos operadores a este auxiliar).</p>
+	<p>Y la pila ya no necesita expandirse en cada bifurcación separada, ya que la encerramos entre <code>[]</code> corchetes anteriormente, se puede hacer coincidir como cualquier otro árbol de tokens <code>(tt)</code>, y luego pasar a nuestro auxiliar:</p>
+	<pre><code class="language-rust">macro_rules! rpn {
+  (@op [ $b:expr, $a:expr $(, $stack:expr)* ] $op:tt $($rest:tt)*) =&gt; {
+    rpn!([ $a $op $b $(, $stack)* ] $($rest)*)
+  };
+
+  ($stack:tt + $($rest:tt)*) =&gt; {
+    rpn!(@op $stack + $($rest)*)
+  };
+  
+  ($stack:tt - $($rest:tt)*) =&gt; {
+    rpn!(@op $stack - $($rest)*)
+  };
+
+  ($stack:tt * $($rest:tt)*) =&gt; {
+    rpn!(@op $stack * $($rest)*)
+  };
+  
+  ($stack:tt / $($rest:tt)*) =&gt; {
+    rpn!(@op $stack / $($rest)*)
+  };
+
+  ([ $($stack:expr),* ] $num:tt $($rest:tt)*) =&gt; {
+    rpn!([ $num $(, $stack)* ] $($rest)*)
+  };
+}
+</code></pre>
+	<p>Ahora las bifurcaciones correspondientes procesan los tokens, y nosotros debemos manejar el proceso final cuando la pila contenga un solo elemento, y ya no quedan más tokens:</p>
+	<pre><code class="language-rust">macro_rules! rpn {
+  // ...
+  
+  ([ $result:expr ]) =&gt; {
+    $result
+  };
+}</code></pre>
+	<p>En este punto, si usted invoca esta macro con una pila vacía y una expresión RPN, ya arrojará un resultado correcto:</p>
+	<p><a href="https://play.rust-lang.org/?gist=cd56f6d7335e2d27c05e7fa89545b2cd&amp;version=stable" target="_blank">Sitio de prueba</a></p>
+	<p><code>println!("{}", rpn!([] 2 3 + 4 *)); // 20</code></p>
+	<p>Sin embargo, nuestra pila es un detalle de la implementación y realmente no quisiéramos que cada usuario pase una pila vacía, por lo tanto, agregaremos otra bifurcación de captura general al final que serviría como punto de entrada y agregaría [] de manera automática:</p>
+	<p><a href="https://play.rust-lang.org/?gist=d94abc0e20aa5c7f689706af06fd1923&amp;version=stable" target="_blank">Sitio de prueba</a></p>
+	<pre><code class="language-rust">macro_rules! rpn {
+  // ...
+
+  ($($tokens:tt)*) =&gt; {
+    rpn!([] $($tokens)*)
+  };
+}
+
+println!("{}", rpn!(2 3 + 4 *)); // 20</code></pre>
+	<p>Nuestra macro incluso funciona para expresiones más complejas, ¡como la de la <a href="https://en.wikipedia.org/wiki/Reverse_Polish_notation#Example" target="_blank">página de Wikipedia sobre RPN</a>!</p>
+	<p><code>println!("{}", rpn!(15 7 1 1 + - / 3 * 2 1 1 + + -)); // 5</code></p>
+	<h3 id="soluci-n-de-errores"><strong>Solución de errores</strong></h3>
+	<p>Ahora todo parece funcionar sin inconvenientes para las expresiones RPN correctas, pero para que una macro esté lista para funcionar, debemos estar seguros de que también pueda gestionar las entradas no válidas, con un mensaje de error razonable.</p>
+	<p>En primer lugar, intentaremos insertar otro número en el medio y ver qué sucede:</p>
+	<pre><code class="language-rust">println!("{}", rpn!(2 3 7 + 4 *));</code></pre>
+	<p>Resultado:</p>
+	<pre><code>error[E0277]: the trait bound `[{integer}; 2]: std::fmt::Display` is not satisfied
+  --&gt; src/main.rs:36:20
+   |
+36 |     println!("{}", rpn!(2 3 7 + 4 *));
+   |                    ^^^^^^^^^^^^^^^^^ `[{integer}; 2]` cannot be formatted with the default formatter; try using `:?` instead if you are using a format string
+   |
+   = help: the trait `std::fmt::Display` is not implemented for `[{integer}; 2]`
+   = note: required by `std::fmt::Display::fmt`</code></pre>
+	<p>De acuerdo, eso indudablemente no parece útil, ya que no brinda ninguna información relevante con respecto al error real en la expresión.</p>
+	<p>Para averiguar qué sucedió, deberemos depurar nuestras macros. Para ello, utilizaremos una característica <a href="https://doc.rust-lang.org/unstable-book/language-features/trace-macros.html" target="_blank"><code>trace_macros</code></a> (y, como para cualquier otra característica del compilador opcional, necesitará una versión nocturna de Rust). No queremos rastrear la designación <code>println!</code>, por lo tanto, separaremos nuestro cálculo de RPN a una variable:</p>
+	<p><a href="https://play.rust-lang.org/?gist=610bc0c241aacda3d30a916f89b244cd&amp;version=nightly" target="_blank">Sitio de prueba</a></p>
+	<pre><code class="language-rust">#![feature(trace_macros)]
+
+macro_rules! rpn { /* ... */ }
+
+fn main() {
+  trace_macros!(true);
+  let e = rpn!(2 3 7 + 4 *);
+  trace_macros!(false);
+  println!("{}", e);
+}</code></pre>
+	<p>En el resultado, ahora veremos cómo nuestra macro se está evaluando de manera recursiva, paso a paso:</p>
+	<pre><code>note: trace_macro
+  --&gt; src/main.rs:39:13
+   |
+39 |     let e = rpn!(2 3 7 + 4 *);
+   |             ^^^^^^^^^^^^^^^^^
+   |
+   = note: expanding `rpn! { 2 3 7 + 4 * }`
+   = note: to `rpn ! ( [  ] 2 3 7 + 4 * )`
+   = note: expanding `rpn! { [  ] 2 3 7 + 4 * }`
+   = note: to `rpn ! ( [ 2 ] 3 7 + 4 * )`
+   = note: expanding `rpn! { [ 2 ] 3 7 + 4 * }`
+   = note: to `rpn ! ( [ 3 , 2 ] 7 + 4 * )`
+   = note: expanding `rpn! { [ 3 , 2 ] 7 + 4 * }`
+   = note: to `rpn ! ( [ 7 , 3 , 2 ] + 4 * )`
+   = note: expanding `rpn! { [ 7 , 3 , 2 ] + 4 * }`
+   = note: to `rpn ! ( @ op [ 7 , 3 , 2 ] + 4 * )`
+   = note: expanding `rpn! { @ op [ 7 , 3 , 2 ] + 4 * }`
+   = note: to `rpn ! ( [ 3 + 7 , 2 ] 4 * )`
+   = note: expanding `rpn! { [ 3 + 7 , 2 ] 4 * }`
+   = note: to `rpn ! ( [ 4 , 3 + 7 , 2 ] * )`
+   = note: expanding `rpn! { [ 4 , 3 + 7 , 2 ] * }`
+   = note: to `rpn ! ( @ op [ 4 , 3 + 7 , 2 ] * )`
+   = note: expanding `rpn! { @ op [ 4 , 3 + 7 , 2 ] * }`
+   = note: to `rpn ! ( [ 3 + 7 * 4 , 2 ] )`
+   = note: expanding `rpn! { [ 3 + 7 * 4 , 2 ] }`
+   = note: to `rpn ! ( [  ] [ 3 + 7 * 4 , 2 ] )`
+   = note: expanding `rpn! { [  ] [ 3 + 7 * 4 , 2 ] }`
+   = note: to `rpn ! ( [ [ 3 + 7 * 4 , 2 ] ] )`
+   = note: expanding `rpn! { [ [ 3 + 7 * 4 , 2 ] ] }`
+   = note: to `[(3 + 7) * 4, 2]`
+</code></pre>
+	<p>Si analizamos detenidamente el seguimiento, advertiremos que el problema se origina en estos pasos:</p>
+	<pre><code>   = note: expanding `rpn! { [ 3 + 7 * 4 , 2 ] }`
+   = note: to `rpn ! ( [  ] [ 3 + 7 * 4 , 2 ] )`</code></pre>
+	<p>Puesto que a <code>[ 3 + 7 * 4 , 2 ]</code> la bifurcación <code>([$result:expr]) =&gt; ...</code> no lo hizo coincidir como expresión final, nuestra bifurcación <code>($($tokens:tt)*) =&gt; ...</code> de captura general final antepuso una pila vacía con <code>[]</code> y luego al original <code>[ 3 + 7 * 4 , 2 ]</code> el genérico <code>$num:tt</code> lo hizo coincidir y se empujó hacia la pila como único valor final.</p>
+	<p>Para evitar que esto suceda, insertaremos otra bifurcación entre estas dos últimas que coincidirían con cualquier pila.</p>
+	<p>Solo se afectaría cuando nos quedamos sin tokens, pero la pila no tenía exactamente un valor final, por lo tanto, podemos tratarlo como un error de compilación y producir un mensaje de error más útil usando una macro incorporada <a href="https://doc.rust-lang.org/std/macro.compile_error.html" target="_blank"><code>compile_error!</code></a>.</p>
+	<p>Tenga en cuenta que no podemos usar <code>format!</code> en este contexto, ya que este utiliza API en tiempo de ejecución para dar formato a una cadena, y tendremos que limitarnos a las macros incorporadas <code>concat!</code> y <code>stringify!</code> para dar formato a un mensaje:</p>
+	<p><a href="https://play.rust-lang.org/?gist=e56be9422387bcae54aab3b8405a11e7&amp;version=stable" target="_blank">Sitio de prueba</a></p>
+	<pre><code class="language-rust">macro_rules! rpn {
+  // ...
+
+  ([ $result:expr ]) =&gt; {
+    $result
+  };
+
+  ([ $($stack:expr),* ]) =&gt; {
+    compile_error!(concat!(
+      "Could not find final value for the expression, perhaps you missed an operator? Final stack: ",
+      stringify!([ $($stack),* ])
+    ))
+  };
+
+  ($($tokens:tt)*) =&gt; {
+    rpn!([] $($tokens)*)
+  };
+}</code></pre>
+	<p>El mensaje de error ahora resulta más comprensible y contiene al menos algunos detalles sobre el estado actual de la evaluación:</p>
+	<pre><code class="language-rust">error: Could not find final value for the expression, perhaps you missed an operator? Final stack: [ (3 + 7) * 4 , 2 ]
+  --&gt; src/main.rs:31:9
+   |
+31 |         compile_error!(concat!("Could not find final value for the expression, perhaps you missed an operator? Final stack: ", stringify!([$($stack),*])))
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+40 |     println!("{}", rpn!(2 3 7 + 4 *));
+   |                    ----------------- in this macro invocation
+</code></pre>
+	<p>Pero, ¿qué pasaría si perdemos algún número?</p>
+	<p><a href="https://play.rust-lang.org/?gist=ce40630b8c1aa610c46b94557fdc9905&amp;version=stable" target="_blank">Sitio de prueba</a></p>
+	<p><code>println!("{}", rpn!(2 3 + *));</code></p>
+	<p>Lamentablemente, esto todavía no es muy útil:</p>
+	<pre><code class="language-rust">error: expected expression, found `@`
+  --&gt; src/main.rs:15:14
+   |
+15 |         rpn!(@op $stack * $($rest)*)
+   |              ^
+...
+40 |     println!("{}", rpn!(2 3 + *));
+   |                    ------------- in this macro invocation
+</code></pre>
+	<p>Si trata de usar trace_macros, tampoco va a ampliar la pila aquí por alguna razón, pero, afortunadamente, lo que sucede es relativamente claro - @op tiene condiciones muy específicas en cuanto a lo que se debe hacer coincidir (se esperan al menos dos valores en la pila) y, cuando no se puede, a @, $num:tt la hace coincidir y la empuja a la pila.</p>
+	<p>Para evitar esto, de nuevo, agregaremos otra bifurcación para que coincida con todo lo que comience con @op que aún no se ha hecho coincidir, y que genera un error de compilación:</p>
+	<p><a href="https://play.rust-lang.org/?gist=8729a8f3c96fa58ed62d35804c48782d&amp;version=stable" target="_blank">Sitio de prueba</a></p>
+	<pre><code class="language-rust">macro_rules! rpn {
+  (@op [ $b:expr, $a:expr $(, $stack:expr)* ] $op:tt $($rest:tt)*) =&gt; {
+    rpn!([ $a $op $b $(, $stack)* ] $($rest)*)
+  };
+
+  (@op $stack:tt $op:tt $($rest:tt)*) =&gt; {
+    compile_error!(concat!(
+      "Could not apply operator `",
+      stringify!($op),
+      "` to the current stack: ",
+      stringify!($stack)
+    ))
+  };
+
+  // ...
+}</code></pre>
+	<p>Intentémoslo nuevamente:</p>
+	<pre><code>error: Could not apply operator `*` to the current stack: [ 2 + 3 ]
+  --&gt; src/main.rs:9:9
+   |
+9  |         compile_error!(concat!("Could not apply operator ", stringify!($op), " to current stack: ", stringify!($stack)))
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+46 |     println!("{}", rpn!(2 3 + *));
+   |                    ------------- in this macro invocation
+</code></pre>
+	<p>¡Mucho mejor! Ahora, nuestra macro puede evaluar cualquier expresión de RPN durante la compilación y controla correctamente los errores más comunes, así que nos detendremos aquí y consideremos que está lista para funcionar:)</p>
+	<p>Podríamos agregar muchas mejoras más pequeñas, pero me gustaría dejarlas afuera de este tutorial de demostración.</p>
+	<p>No dude en comentarme si esto le ha resultado útil y/o qué temas le gustaría que incluyamos <a href="https://twitter.com/RReverser" target="_blank">en Twitter</a>.</p>
+</div>

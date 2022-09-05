@@ -1,0 +1,77 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image1-34.png" class="kg-image" alt="Page Shield is generally available"></figure>
+	<p>供应链攻击已成为首席信息官和安全专业人士日益关注的话题。</p>
+	<p>在供应链攻击中，攻击者会破坏目标应用程序正使用的第三方工具或库。这通常会导致攻击者获得对应用程序环境的访问特权，使其能够窃取私人数据或执行后续攻击。例如，Magecart 是一种非常常见的供应链攻击。借此攻击者通过破坏网站使用的第三方库，并从电子商务网站的结账表格中窃取信用卡数据。</p>
+	<p>为了帮助识别和缓解 web 应用环境下的供应链攻击，我们隆重推出 Page Shield GA 版。</p>
+	<p>通过 Page Shield，您可拆开看应用程序上正运行的脚本，并可在脚本受到破坏或出现恶意行为（如试图泄漏用户数据）时获得通知。</p>
+	<p>我们努力确保 Page Shield 易于使用：您可在防火墙选项卡下找到该工具，并通过简单的点击将其打开。无需额外配置。可针对一系列不同的事件单独设置警报。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/12/image2-17.png" class="kg-image" alt="The Page Shield interface showing the list of scripts detected on the zone"></figure>
+	<h2 id="-page-shield-"><strong>什么是 Page Shield？</strong></h2>
+	<p>早在今年 3 月, <a href="https://blog.cloudflare.com/zh-cn/introducing-page-shield-zh-cn/">我就发布了提前体验版的 Page Shield</a>。该解决方案可防止终端用户的数据受到针对浏览器的攻击。</p>
+	<p>今天早些时候，我们<a href="https://blog.cloudflare.com/zh-cn/cloudflare-acquires-zaraz-to-enable-cloud-loading-of-third-party-tools-zh-cn/">宣布收购一款建立在 Workers 上的工具 Zaraz</a>。该工具方便客户直接通过 Cloudflare UI 加载云端上的第三方工具，而不是在浏览器中加载 JavaScript 代码，这立即提高了性能和安全性。但并非所有应用程序都使用或希望使用第三方管理器。尽管如此，我们已为您提供了保障。</p>
+	<p>Page Shield 利用我们在网络中作为反向代理的地位，直接通过浏览器接收有关正在加载的 JavaScript 文件和模块的信息。然后，每当 JavaScript 文件出现恶意行为时，我们就会为您提供可见性、分析和警告。</p>
+	<p>遭到破坏的 JavaScript 文件的例子包括 Magecart 攻击、加密挖掘和广告软件。随着基于 SaaS 的应用程序和服务的不断普及，很少有应用程序不利用或不直接通过应用程序所有者控制的第三方工具加载 JavaScript 代码，这使检测和缓解受遭到破坏的文件变得更加困难。</p>
+	<h3 id="-"><strong>实现客户端安全性有多难？</strong></h3>
+	<p>Page Shield 中的早期指示表明，平均而言，任何给定应用程序会加载来自 8 个第三方主机的脚本。拥有这些主机的公司可能是 Google 之类的大企业，也可能是提供“即插即用”模块的小公司，这些模块可快速增强 Web 应用程序功能（想想聊天系统、日期选取器、结帐平台，等等）。其中每个第三方都可能是潜在供应链攻击的目标，如此一来，攻击面就会非常大，也很难监控。</p>
+	<p>更糟糕的是，情况变化得很快。平均而言，每月大约 50% 的应用程序会加载来自新的第三方主机的脚本。这表明，攻击面不仅很大，而且还会迅速变化。</p>
+	<h2 id="page-shield-"><strong>Page Shield 如何工作？</strong></h2>
+	<p>与任何安全产品一样，我们可以将 Page Shield 视为提供可见性、检测、缓解和预防功能。第一步是可见性。</p>
+	<h3 id="--1"><strong>可见性</strong></h3>
+	<p>开启后，Page Shield 的当前迭代会使用通过<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP" target="_blank">仅限报告的指令</a>部署的<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy-Report-Only" target="_blank">内容安全策略</a> (CSP) 来从浏览器收集信息。这样一来，我们可以向您提供在您应用程序上运行的所有脚本的列表。</p>
+	<p>用 HTTP 的术语来说，这是添加到从源服务器返回浏览器的页面响应示例的 HTTP 响应标头。CSP 标头类似于以下内容：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>content-security-policy-report-only: script-src 'none'; report-uri /cdn-cgi/script_monitor/report
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>上述标头告诉浏览器，不应加载任何脚本 <code>(script-src 'none')</code>，并应将任何违规情况报告给提供的端点 <code>(report-uri /cdn-cgi/script_monitor/report)</code>。还请注意，违规报告端点解析为处理违规的 <a href="https://www.cloudflare.com/zh-cn/network/" target="_blank">Cloudflare 网络</a>，因此没有更多流量到达源服务器。</p>
+	<p>浏览器发送的每个违规报告实施为 HTTP POST 请求，向我们提供了有关脚本的信息。下面是一个示例：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>{
+   "csp-report":{
+      "document-uri":"https://www.example.com/",
+      "referrer":"",
+      "violated-directive":"script-src-elem",
+      "effective-directive":"script-src-elem",
+      "original-policy":"script-src 'none'; report-uri /cdn-cgi/script_monitor/report",
+      "Disposition":"report",
+      "blocked-uri":"https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js",
+      "status-code":200,
+      "script-sample":""
+   }
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>此报告告诉我们：</p>
+	<ul>
+		<li>从中加载脚本的页面 (document-uri)</li>
+		<li>引用者（如果适用）</li>
+		<li>违反了哪个 CSP 指令</li>
+		<li>包含指令的完整 CSP</li>
+		<li>JavaScript 文件的完整链接</li>
+		<li>浏览器在加载文件时收到的响应代码。在上述示例中，响应代码是 200，这表示文件已成功加载。</li>
+	</ul>
+	<p>通过整理报告中提供的所有信息并使用更多数据加以增强，我们能够通过 Cloudflare UI <a href="https://developers.cloudflare.com/page-shield/" target="_blank">和 API</a> 提供有关您应用程序加载的每个脚本的详细信息。</p>
+	<p>所有 Cloudflare Pro 区域都有权访问我们的 Page Shield 脚本报告。此外，Business 和 Enterprise 区域有权访问页面归属信息，允许您快速识别在何处从您的应用程序中加载了脚本。Business 和 Enterprise 区域还可以设置有关一些脚本更改事件的警报。</p>
+	<h3 id="--2"><strong>检测</strong></h3>
+	<p>应用程序所有者可能已经在利用内容安全策略以确保仅加载特定脚本。但是，CSP 通常倾向于过于自由，并且浏览器不提供任何原生机制来检测 JavaScript 文件何时表现出恶意行为。这包括允许根据内容安全策略加载的 JavaScript 代码，从而高度降低其有效性。</p>
+	<p>使用 Page Shield，我们相信有机会切实帮助客户进行恶意行为检测。</p>
+	<p>对于系统在您的区域中发现的任何 JavaScript 文件，我们将执行旨在检测恶意行为的一些操作：</p>
+	<ol>
+		<li>从在我们的威胁馈送中分类为恶意的主机名加载的任何 JavaScript 文件将相应进行标记。这包括父域。</li>
+		<li>类似地，如果特定 URL 在我们的馈送中分类为恶意，这些也会进行标记。在这后一种情况下，假定确切的文件已分类为恶意，攻击很可能已在进行中。</li>
+		<li>最后，我们将下载该文件并通过我们的分类器运行。分类器会先执行取消混淆、标准化和解码步骤，然后查找表单字段提取与数据泄露调用之间的关联度。关联度越强，脚本就越有可能在执行 Magecart 类型攻击。我们将在跟进帖子中发布有关我们技术的技术详情 — 敬请关注！</li>
+	</ol>
+	<p>我们的 Enterprise 客户可以购买一整套 Page Shield 功能，包括检测功能。请联系您的客户经理。</p>
+	<p>随着我们明年进一步构建该产品，我们计划添加更多检测信号，以及改进分类器并检测更多攻击类型，包括广告软件、勒索软件和加密采矿。</p>
+	<p>恶意信号在 JavaScript 文件上触发后，Cloudflare 就能够通过警报通知您，警报可以通过电子邮件、Webhook、PagerDuty 和其他格式进行设置。</p>
+	<h3 id="--3"><strong>防护和缓解</strong></h3>
+	<p>我们许多规模更大的客户已经有内容安全策略，虽然很容易<a href="https://blog.cloudflare.com/zh-cn/transform-http-response-headers-zh-cn/">通过 Cloudflare 添加实施 CSP 的 HTTP 响应标头</a>，但我们还可以做得更好。</p>
+	<p>尽管未包含在此即时版本中，但我们已经在努力设法将防护和缓解选项引入 Page Shield 中：</p>
+	<ul>
+		<li>防护的做法是允许根据观察到的活动脚本轻松生成 CSP，允许根据需要通过仪表板或直接通过 API 作为部署管道的一部分编辑和重新部署策略。</li>
+		<li>阻止的做法是利用我们的代理，允许以内联方式从 HTTP 响应主体中删除恶意脚本。</li>
+	</ul>
+	<h2 id="--4"><strong>立刻开始</strong></h2>
+	<p>如果您已经有网站位于 Cloudflare 上，请升级到我们的任何付费计划，以立即开始利用 Page Shield 功能，而不需要任何额外的配置。您还可以<a href="https://developers.cloudflare.com/page-shield/" target="_blank">使用我们的 API 来利用 Page Shield 功能</a>。</p>
+	<p>如果您没有网站位于 Cloudflare 上， <a href="https://dash.cloudflare.com/sign-up" target="_blank">注册</a>只需要 5 分钟！</p>
+</div>

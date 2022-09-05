@@ -1,0 +1,20 @@
+<div class="post-content lh-copy gray1">
+	<p><em><strong>续 2022 年 6 月 24 日更新：</strong>我们已将发动这一每秒 2600 次请求（2600 万 rps）DDoS 攻击的僵尸网络命名为 <strong>“Mantis”（螳螂）</strong>，因为它也像</em><a href="https://en.wikipedia.org/wiki/Mantis_shrimp" target="_blank"><em>Mantis Shrimp（螳螂虾）</em></a><em>一样，形体小但非常强大。Mantis 在过去一周尤其活跃，对 VoIP 和加密货币互联网资产发动的 HTTP DDoS 攻击规模高达 900 万 rps。</em></p>
+	<p>在上周，Cloudflare 自动检测并缓解了一次 2600 万 rps 的 <a href="https://www.cloudflare.com/zh-cn/learning/ddos/what-is-a-ddos-attack/" target="_blank">DDoS 攻击</a>，这是有史以来最大规模的 HTTPS DDoS 攻击。</p>
+	<p>这次攻击的目标是一个使用 Cloudflare Free 计划的客户网站。类似于此前的 <a href="https://blog.cloudflare.com/15m-rps-ddos-attack/">1500 万 rps 攻击</a>，这次攻击也主要源于云服务提供商，而非居民互联网服务提供商，表明其使用了劫持的虚拟机和强大的服务器来产生攻击，而不是弱得多的物联网（IoT）设备。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/06/image1-7.png" class="kg-image" alt="Graph of the 26 million request per second DDoS attack"></figure>
+	<h3 id="-">破纪录的攻击</h3>
+	<p>过去一年来，我们目击了一次又一次破纪录的攻击。2021 年 8 月，我们就披露了一次 <a href="https://blog.cloudflare.com/zh-cn/cloudflare-thwarts-17-2m-rps-ddos-attack-the-largest-ever-reported-zh-cn/">1720 万 rps 的 HTTP DDoS 攻击</a>，在更近期的 4 月，则是一次 <a href="https://blog.cloudflare.com/15m-rps-ddos-attack/">1500 万 rps 的 HTTPS DDoS 攻击</a>。我们由<a href="https://blog.cloudflare.com/zh-cn/deep-dive-cloudflare-autonomous-edge-ddos-protection-zh-cn/">自主边缘 DDoS 防护系统</a>驱动的 <a href="https://blog.cloudflare.com/http-ddos-managed-rules/">HTTP DDoS Managed Ruleset</a> 自动检测并缓解了所有这些攻击。</p>
+	<p>这次 2600 万 rps DDoS 攻击源自一个小规模但强大的僵尸网络，其中有 5067 个设备。平均而言，每个节点产生的请求峰值约为 5200 rps。与此形成鲜明对比的是，我们一直在跟踪的另一个僵尸网络规模要大得多，拥有超过 73 万个设备，但要弱得多。后者每秒产生的请求不超过 100 万次，相当于平均每个设备每秒 1.3 次请求。简单地说，由于使用了虚拟机和服务器，这个僵尸网络的平均强度是后者的 4000 倍。</p>
+	<p>此外，值得一提的是，这次攻击是通过 <a href="https://www.cloudflare.com/zh-cn/learning/ssl/what-is-https/" target="_blank">HTTPS</a> 发动的。由于建立安全 <a href="https://www.cloudflare.com/zh-cn/learning/ssl/transport-layer-security-tls/" target="_blank">TLS</a> 加密连接的成本较高，HTTPS DDoS 攻击在计算资源方面的开销更大。因此，攻击者发起攻击的成本更高，而受害者缓解攻击的成本也更高。我们在过去看到过非常大规模的（未加密的）HTTP 攻击 ，但鉴于其规模所需要的资源，这次攻击特别引人注目。</p>
+	<p>在不到 30 秒内，这个僵尸网络从 121 个国家的 1500 多个网络中产生了超过 2.12 亿次 HTTPS 请求。最主要的国家是印度尼西亚、美国、巴西和俄罗斯。大约 3% 的攻击来自 Tor 节点。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/06/image3-9.png" class="kg-image" alt="Chart of the top source countries of the attack" title="Chart"></figure>
+	<p>最主要的来源网络是法国的 OVH （自治系统编号 - ASN 16276）、印尼的 Telkomnet（ASN 7713）、美国的 iboss（ASN 137922）和利比亚的 Ajeel （ASN 37284）。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/06/image3-8.png" class="kg-image" alt="Chart of the top source networks of the attack" title="Chart"></figure>
+	<h3 id="ddos-">DDoS 威胁格局</h3>
+	<p>在考虑 DDoS 防护时，了解攻击格局非常重要。在我们近期的 <a href="https://blog.cloudflare.com/zh-cn/ddos-attack-trends-for-2022-q1-zh-cn/">DDoS 趋势报告</a>中，可以看到大多数攻击都是小规模的，例如网络破坏行为。然而，即使是小型攻击也会严重影响不受保护的互联网资产。另一方面，大型攻击在规模和频率上都不断增长——但仍然是短时间和快速的。攻击者集中其僵尸网络的力量，试图通过一次快速的致命攻击来造成破坏，尝试避免检测。</p>
+	<p>虽然 DDoS 攻击是由人类发动的，但实际攻击是机器产生的。等到人类能够对攻击做出响应时，攻击已经结束了。而且，即使攻击很短暂，网络和应用的故障事件有可能在攻击过后长时间持续，给您的收入和声誉造成损失。因此，建议您为互联网资产部署始终开启的自动保护服务，这种服务不需要依赖人类来检测和缓解攻击。</p>
+	<h3 id="--1">帮助构建更好的互联网</h3>
+	<p>在 Cloudflare，我们所做的一切都基于我们的使命：帮助建设更好的互联网。DDoS 团队的愿景源于这个使命，我们的目标是使 DDoS 攻击的影响成为历史。我们提供<a href="https://blog.cloudflare.com/unmetered-mitigation/">不计量、无限</a>的保护。与攻击的规模、次数、持续时间无关。在攻击规模<a href="https://blog.cloudflare.com/zh-cn/ddos-attack-trends-for-2022-q1-zh-cn/">越来越大、频率越来越高</a>的今天，这一点尤其重要。</p>
+	<p>还没有使用 Cloudflare？<a href="https://dash.cloudflare.com/sign-up" target="_blank">立即开始</a>使用我们的 Free 和 Pro 计划来保护您的网站， 也可以<a href="https://www.cloudflare.com/zh-cn/magic-transit/" target="_blank">联系我们</a>，使用 Magic Transit 为您的整个网络提供全面的 DDoS 保护。</p>
+</div>

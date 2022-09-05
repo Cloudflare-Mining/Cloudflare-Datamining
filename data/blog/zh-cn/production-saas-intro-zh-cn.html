@@ -1,0 +1,52 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image3-31.png" class="kg-image" alt="An Open-Source CMS on the Cloudflare Stack: Introductory Post"></figure>
+	<p>当学习概念、查看 API 用法说明或需要简洁的代码段来阐释这些 API 或概念时，<a href="https://developers.cloudflare.com/" target="_blank">Cloudflare 文档</a>是非常不错的资源。然而，尽管它的内容十分全面，Cloudflare Workers 平台的新用户可能需要经历长长的入门示例代码段，才能接触到真正可用于生产的应用程序。虽然其中一些可能特定于 Workers（与任何平台一样），但<em>世界各地</em>的开发人员都在寻求如何在无服务器世界中构建应用程序。无论开发人员原有的经验水平如何，构建大型无服务器应用程序都需要进行大量学习。</p>
+	<p>在 Cloudflare，我们十分清楚这一点，因为我们也曾经历相同的过渡过程。我们的工程师出类拔萃，能够专业地设计和制作与分布式范式相得益彰的产品，但……专家并非一夜之间诞生的！我们已到达成功彼岸，现在，我们想帮助他人快速理解。</p>
+	<p>抱着这种想法，我们决定做一些对行业特别的事情：我们在开发一个功能完善的示例 SaaS 应用程序，完全构建于 Cloudflare 堆栈之上。它目前且将持续完全免费，<a href="https://github.com/cloudflare/production-saas" target="_blank">在 GitHub 上开放源码</a>，并公开开发。这将是一个令人难以置信的时刻，因为该应用程序还可以用作模板，用于推动您自己的 SaaS 应用程序！事实上，您可以复制 GitHub 存储库，更新一些服务令牌，在几分钟之内将预先构建的应用程序部署到您自己的 Cloudflare 帐户！</p>
+	<p>当然，示例和模板虽然很棒，但技术和最佳实践从未停止演进。Cloudflare 也不例外，它也在持续迭代并引入新的产品和产品功能。因此，这要求该 SaaS 应用程序是一个<em>动态的示例</em>，能够随着 Workers 平台不断演进——这是我们承诺的一部分。</p>
+	<p>||<strong>不要错过！</strong>观看 <a href="https://github.com/cloudflare/production-saas" target="_blank">GitHub 上的项目</a>以跟踪其开发进度，并保持了解我们的最新更改和建议。</p>
+	<h2 id="-"><strong>应用程序概览</strong></h2>
+	<p>现在，除了实际构建应用程序外，我们还面临一个难点。我们的示例 SaaS 应用程序需要足够复杂，以作为令人信服的案例研究，同时又必须足够简单（或者说一应俱全），让开发人员可以快速着手，跟进来源，并了解所涉及的组件以及使用这些组件的原因和/或方式。我们需要在这种简单与复杂之间找到一个平衡。</p>
+	<p>最终我们决定构建一个示例内容管理系统 (CMS)，这作为一个应用程序原型，多年来已发生转变。传统上，CMS 在租用的硬件上运行，其中会容纳一个长期存在的服务器，该服务器处理传入请求以及查询 SQL 之类的数据库，以便检索请求的内容、将其呈现到 HTML 页面，并一次又一次重复该过程。<a href="https://wordpress.org/" target="_blank">WordPress</a> 一直是这一方法的最常见示例。</p>
+	<p>当然，多年来这一应用程序架构已经得到了改善：引入了缓存层，数据库架构已进行重新设计以尽量减少处理的行数，一些框架开始完全跳过数据库，选择一个构建步骤来将所有内容提前呈现为静态 HTML 页面。（这一方法如今称为“静态网站生成”且仍然十分流行。）</p>
+	<p>在如今的无服务器时代，可以使用一些“无头 CMS”选项。之所以是“无头”，是因为它们不是为每个请求呈现 HTML 的单片式 Web 服务器。相反，它们提供 API 端点，将内容返回为原始 JSON 数据。这允许 Web 开发人员使用他们选择的任何工具和/或框架为其网站构建完全自定义的模板。此方法为开发人员带来了巨大的灵活性，同时不损失组织其内容、图像资产等的能力。经验丰富的 WordPress 是少数能够提供无头和<em>和</em>“有头”模式的平台之一。<a href="https://www.sanity.io/" target="_blank">Sanity.io</a> 和 <a href="https://www.contentful.com/" target="_blank">Contentful</a> 等其他无头选项也十分受欢迎。</p>
+	<p>对于我们的开源示例来说，CMS 应用程序是一个很棒的案例研究。边缘优先设计的一条主要原则是，应在物理上尽可能靠近请求内容之用户的地方提供内容。且无服务器架构意味着不再有（或者说不应该有）单点故障。这些都直接有益于 CMS 原型，且在实施后将产生明显的性能提升。</p>
+	<h2 id="--1"><strong>当前进展</strong></h2>
+	<p>在深入研究路线图并说明此项目将如何进展之前，需要表明的一点是，该项目<em>已经</em>在进行中，且我们仍将付出持续努力！今天，您可以在 <a href="https://github.com/cloudflare/production-saas" target="_blank">GitHub 上找到项目</a>，并检查目前已完成的工作。截至现在，该应用程序已组合 Workers、Workers KV、Cloudflare for SaaS 和 Rate Limiting，Pages 和 Durable Objects 已提上日程，将在之后的里程碑中出现。</p>
+	<p>阶段 1（参见以下内容）即将完成，当完成时，将标志着一个重大里程碑的结束。届时将发布本博客文章系列的新更新，讲述这个项目目前为止的亮点和技术概览。这很重要且立即有用，因为<em>就其本身而言，</em>阶段 1 有资格成为一个成功的全栈应用程序。</p>
+	<h2 id="--2"><strong>开发里程碑</strong></h2>
+	<p>CMS 应用程序将以里程碑的形式来衡量进度。我们已经发布该项目，且将根据下文中的路线图对其持续进行构建。<a href="https://github.com/cloudflare/production-saas" target="_blank">GitHub 观测爱好者</a>将能够持续关注其进展，或者可以仅订阅下文中他们感兴趣的里程碑更新。</p>
+	<p>每个里程碑本身都是一个相当大的检查点。您在下文中可以看到，根据项目路线图的规划，每一个阶段都会添加大量的新功能和/或集成一个新的 Cloudflare 产品。在每一个点，该应用程序都将保持功能性，并维持一个实时的交互式演示，向看客立即展示最新功能。</p>
+	<p>之所以选择此格式，使用因为这是真实的应用程序和真实的产品开发的方式。我们的目标是确保 GitHub 存储库永不过时。而且，出于开发结构的原因，人们可能<em>始终</em>需要浏览完过去的里程碑列表，才能看到迁移 X 所需的更改或集成产品 Y 的过程。</p>
+	<p>|| <strong>注意：</strong>访问 <a href="https://github.com/cloudflare/production-saas/milestones" target="_blank">GitHub 里程碑</a>以查看更多详细信息和订阅更新。内容太多，此处无法一一列出。</p>
+	<h3 id="-1-json-api"><strong>阶段 1 – JSON API</strong></h3>
+	<p>项目必须从一些 API 端点开始，以便开始管理和操作数据。使用 Workers 和 Workers KV，该里程碑内的工作将着重于构建一个强大的 JSON API，其处理应用程序的剩余部分将需要的核心功能。</p>
+	<p>这一阶段不会涉及到 HTML、CSS 或客户端 JavaScript。取而代之，这一阶段的工作仅着重于数据：如何访问数据、一个模型如何与另一个模型相关，以及如何在 Workers KV 内最佳安排和存储这些关系。例如，个人应当能够创建和管理属于其个人用户帐户或其所属组织的工作区。</p>
+	<p>此外，当创建内容时，应当针对分配该文档的现有架构对文档进行验证。此功能对于计划在一个工作区内处理数千个文档的任何 CMS 平台都十分重要。没有此功能，就无法肯定内容的 JSON 表示的结构是一致的。</p>
+	<p>还规划了一些其他功能：通过 <a href="https://stripe.com/" target="_blank">Stripe</a> 进行订阅管理并开发票，通过 <a href="https://sendgrid.com/" target="_blank">SendGrid</a> 发送交易电子邮件，以及通过 <a href="https://blog.cloudflare.com/cloudflare-for-saas-for-all-now-generally-available/">Cloudflare for SaaS</a> 将虚域分配到工作区。最后，当然是设置标准的内务处理任务。这包括与 API 测试的持续集成 (CI) 以及自动化的持续部署 (CD)。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image2-20.png" class="kg-image"></figure>
+	<p>在本阶段结束时，项目将作为 API 端点的集合而存在，其本身也是一个完整的应用程序。尽管它只能通过 curl 命令或任何其他手动构建 HTTP 请求的首选方法进行访问，但<strong>阶段 1</strong> 的完成已经证明该项目有资格成为一个全栈应用程序，且<em>能够</em>作为一个真正的 SaaS 产品提供。</p>
+	<p>此外，存储库将包含写入测试、自动化部署以及以可长期发展和维护的方式组织来源的所有最佳实践。而且，因为我们从 JSON API 开始，项目立即就可使用，且能够与您的现有构建工具和框架集成。换句话说，<a href="https://github.com/cloudflare/production-saas" target="_blank">观察爱好者</a>可以将项目部署到他们自己的帐户，以作为他们自己的个性化无头 CMS。或许部分人还会构建 Gatsby 或 Eleventy 插件，如果您这么做了，请告诉我们！</p>
+	<h3 id="-2-ui"><strong>阶段 2 — 仪表板 UI</strong></h3>
+	<p>尽管 curl 可能很有趣，但大多数人更喜欢他们能够与之交互的某种形式的可视界面。此阶段将关于组装一个前端以作为 CMS 应用程序的仪表板。</p>
+	<p>我们将使用 <a href="https://svelte.dev/" target="_blank">Svelte</a> 这一 JavaScript 框架来构建用户界面。尽管并非所有人都喜欢或同意这一决定，但模板语法类似于标准 HTML 标记，这将让非前端开发人员能够跟进并判断正在进行的工作。</p>
+	<p>Svelte 将与 <a href="https://tailwindcss.com/" target="_blank">Tailwind CSS</a> 配对以用于设计系统。Tailwind 是一个效用优先的大热 CSS 框架，允许开发人员通过可重复使用的预定义 HTML ”class” 名称来组合样式。</p>
+	<p>其成果将是一个单页面应用程序 (SPA)，且将托管在 Cloudflare Pages 上。这意味着，自创建之日起，该仪表板即可利用<a href="https://developers.cloudflare.com/pages/platform/preview-deployments#customizing-preview-deployments-access" target="_blank">受访问保护的预览部署</a>、<a href="https://developers.cloudflare.com/pages/platform/rollbacks" target="_blank">即时回滚</a>、自动化部署、全面分析等功能。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image1-53.png" class="kg-image"></figure>
+	<p>最后，<a href="https://blog.cloudflare.com/zh-cn/cloudflare-pages-goes-full-stack-zh-cn/">由于 Pages 与 Workers 直接集成</a>，<strong>阶段 1</strong> 构建的 JSON API 将迁移至新的存储库结构。尽管这看起来可能像毫无意义的重构，但实际上能为 JSON API 解锁一组令人难以置信的功能：<a href="https://developers.cloudflare.com/pages/platform/preview-deployments#customizing-preview-deployments-access" target="_blank">受访问保护的预览部署</a>、<a href="https://developers.cloudflare.com/pages/platform/rollbacks" target="_blank">即时回滚</a>和自动化部署。是的，就是上面提到的 Pages 功能！这真的很不可思议，因为这意味着我们的 API 是持续的、原子化的版本，允许其<em>随着</em>依赖于它的客户端仪表8板持续进行安全开发。换句话说，API 和仪表板分离的风险为零，这种分离会导致它们彼此的期望不符。即时回滚也会应用至 API，因为<em>整个</em>应用程序作为单个 Pages 单元运行。</p>
+	<p>上一阶段已经构建了核心的 SaaS 产品功能，但完成本阶段将使其像一个可立即推出并日常使用的真正产品。事实上，<strong>阶段 2 </strong>的结束标志着该应用程序已经成为无头 CMS 服务领域的一个可能竞争者。</p>
+	<h3 id="-3-"><strong>阶段 3 — 文章边缘呈现</strong></h3>
+	<p>上一阶段着重于组装一个最小可行的无头 CMS 产品，<strong>阶段 3</strong> 则寻求发展到原型框架的外部。将允许应用程序通过将 JSON 内容注入预定义模板来呈现 HTML 网页，从而实现这一点。</p>
+	<p>和 WordPress 一样，CMS 应用程序应允许其用户选择是想要继续使用“无头”功能还是想要获取完整的模板引擎。如果他们选择 HTML 输出，Cloudflare 项目将仅包含一些用户可以选择的预制模板。不过，当然，这可以在您自己的项目中进行定制。</p>
+	<p>尽管这一阶段重新引入了单片式 CMS 原型，但与过去单一的一体化服务器相比，它是一种更安全、更快且更具有复原能力的架构。CMS 内容仍将全球分布，靠近客户的读者。不过现在，内容还能够以极低的延迟从全球任何位置<em>呈现</em>。</p>
+	<h3 id="-4-"><strong>阶段 4 — 功能升级</strong></h3>
+	<p>在这个阶段，应用程序已经基本上完成了。它具有功能性，外观精致，可在全球良好运行，且能够以两种完全不同的方法使用。</p>
+	<p>在真实 SaaS 产品的环境中，开发开始转移至添加令用户兴奋的新功能，或者是维护项目的健康状况。例如，<strong>阶段 4</strong> 将利用 <a href="https://blog.cloudflare.com/zh-cn/durable-objects-ga-zh-cn/">Durable Objects</a> 来引入文档编辑器，允许多名用户在实时协作环境中编辑同一文档。</p>
+	<p>还有可能引入 <a href="https://blog.cloudflare.com/zh-cn/introducing-r2-object-storage-zh-cn/">Cloudflare R2 Storage</a> 作为媒体资产的后端，允许用户在一个工作区内上传和管理图像。也可能我们会决定使用 <a href="https://blog.cloudflare.com/announcing-cloudflare-images/">Cloudflare Images</a> 来作为后端，并使用 R2 来导入和导出内容备份。</p>
+	<p>您可以拭目以待，这个里程碑将充满变数，因为未来有着无限可能。随着 Cloudflare 的发展和时间的推移，该项目将继续演进和扩展。</p>
+	<p>当然，如果您对于功能有什么想法或建议，可以在 GitHub 上与我们进行讨论。我们很期待听到您的声音！</p>
+	<h2 id="--3"><strong>后续步骤</strong></h2>
+	<p>这是一个正在进行的系列的介绍性文章。当每一个里程碑完成时，我们都将在本系列中发布一篇新文章，其中包含该阶段工作的回顾和重要方面的技术讲解。</p>
+	<p>我们正在开启一段令人兴奋的旅程，我们希望您和我们一样对此感兴趣！</p>
+	<p>您可以通过点亮收藏或<a href="https://github.com/cloudflare/production-saas" target="_blank">在 GitHub 上关注项目</a>来表达您的支持。所有的发布、讨论和里程碑跟踪都将保留在存储库中。下一代 SaaS 应用程序将在 Cloudflare 上构建，立即订阅，尽早调研！</p>
+</div>

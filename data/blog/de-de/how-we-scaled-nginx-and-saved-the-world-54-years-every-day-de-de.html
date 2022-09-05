@@ -1,0 +1,115 @@
+<div class="post-content lh-copy gray1">
+	<blockquote>Das<a href="https://twitter.com/Cloudflare" target="_blank"> @Cloudflare</a>-Team hat gerade eine Änderung vorgenommen, die die Leistung unseres Netzwerks deutlich verbessert, insbesondere bei besonders langsamen Ausreißeranfragen. Wie viel schneller? Wir schätzen, dass wir dem Internet *pro Tag* ca. 54 Jahre an Zeit sparen, die wir sonst alle darauf warten müssten, dass Websites geladen werden.<br>- @eastdakota- <a href="https://twitter.com/eastdakota/status/1012420672352542720" target="_blank">28. Juni 2018</a></blockquote>
+	<p>10 Millionen Websites, Apps und APIs nutzen Cloudflare, um ihren Besuchern einen Geschwindigkeitsschub zu verpassen. Zu Spitzenzeiten bearbeiten wir in unseren 151 Rechenzentren mehr als 10 Millionen Anfragen pro Sekunde. Im Laufe der Jahre haben wir viele Änderungen an unserer Version von NGINX vorgenommen, um unserem Wachstum gerecht zu werden. In diesem Blogbeitrag geht es um eine davon.</p>
+	<h3 id="so-funktioniert-nginx"><strong>So funktioniert NGINX</strong></h3>
+	<p>NGINX ist eines der Programme, das die Verwendung von Ereignisschleifen zur Lösung des <a href="http://www.kegel.com/c10k.html" target="_blank">C10K-Problems</a> populär gemacht hat. Jedes Mal, wenn ein Netzwerkereignis eintritt (eine neue Verbindung, eine Anfrage oder eine Meldung, dass wir mehr Daten senden können usw.), wacht NGINX auf, verarbeitet das Ereignis und macht dann wieder das, was auch immer es tun muss (das kann das Verarbeiten von anderen Ereignissen sein). Wenn ein Ereignis eintrifft, stehen die mit dem Ereignis verbundenen Daten schon bereit, sodass NGINX viele Anfragen gleichzeitig effizient verarbeiten kann, ohne zu warten.</p>
+	<p></p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>num_events = epoll_wait(epfd, /*returned=*/events, events_len, /*timeout=*/-1);
+// events is list of active events
+// handle event[0]: incoming request GET http://example.com/
+// handle event[1]: send out response to GET http://cloudflare.com/
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p></p>
+	<p>So könnte beispielsweise ein Codeabschnitt aussehen, mit dem Daten aus einem Datei-Deskriptor (fd) gelesen werden:</p>
+	<p></p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>// we got a read event on fd
+while (buf_len &gt; 0) {
+    ssize_t n = read(fd, buf, buf_len);
+    if (n &lt; 0) {
+        if (errno == EWOULDBLOCK || errno == EAGAIN) {
+            // try later when we get a read event again
+        }
+        if (errno == EINTR) {
+            continue;
+        }
+        return total;
+    }
+    buf_len -= n;
+    buf += n;
+    total += n;
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p><br></p>
+	<p>Wenn fd ein Netzwerk-Socket ist, gibt dies die bereits angekommenen Bytes zurück. Der letzte Aufruf gibt <code>EWOULDBLOCK</code> zurück, was bedeutet, dass wir den lokalen Lesepuffer geleert haben, sodass wir nicht mehr aus dem Socket lesen sollten, bis mehr Daten verfügbar sind.</p>
+	<h3 id="festplatten-e-a-ist-nicht-gleich-netzwerk-e-a"><strong>Festplatten-E/A ist nicht gleich Netzwerk-E/A</strong></h3>
+	<p>Wenn fd eine normale Datei in Linux ist, kommt es nie zu <code>EWOULDBLOCK</code> and <code>EAGAIN</code> und das Leseereignis wartet immer darauf, den gesamten Puffer zu lesen. Dies gilt auch dann, wenn die Datei mit <code>O_NONBLOCK</code> geöffnet wurde. Um <code>open(2)</code> zu zitieren:</p>
+	<blockquote>Beachten Sie, dass dieses Flag keine Auswirkung auf reguläre Dateien und blockorientierte Geräte hat.</blockquote>
+	<p>Mit anderen Worten, der obige Code reduziert sich im Wesentlichen auf:</p>
+	<p></p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>if (read(fd, buf, buf_len) &gt; 0) {
+   return buf_len;
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p></p>
+	<p>Das bedeutet, dass ein Ereignishandler, der von der Festplatte lesen muss, die Ereignisschleife blockiert, bis das gesamte Leseereignis beendet ist, und die nachfolgenden Ereignishandler verzögert werden.</p>
+	<p>Dies ist für die meisten Arbeitslasten in Ordnung, da das Lesen von der Festplatte normalerweise schnell genug und viel vorhersehbarer ist als das Warten auf das Eintreffen eines Pakets aus dem Netzwerk. Dies gilt besonders jetzt, da jeder eine SSD hat und unsere Cache-Festplatten alle SSDs sind. Moderne SSDs haben eine sehr geringe Latenzzeit, normalerweise unter 100 µs. Darüber hinaus können wir NGINX mit multiplen Worker-Prozessen ausführen, sodass ein langsamer Ereignishandler Anfragen in anderen Prozessen nicht blockiert. Meistens können wir uns darauf verlassen, dass die Ereignisbehandlung von NGINX Anfragen schnell und effizient verarbeitet.</p>
+	<h3 id="ssd-performance-nicht-immer-das-was-sie-verspricht"><strong>SSD-Performance: nicht immer das, was sie verspricht</strong></h3>
+	<p>Wie Sie vielleicht schon vermutet haben, sind diese rosigen Annahmen nicht immer wahr. Wenn jeder Lesevorgang immer 50 µs dauert, dann sollte es nur 2 ms dauern, um 0,19 MB in 4-KB-Blöcken zu lesen (und wir lesen in größeren Blöcken). Aber unsere eigenen Messungen haben gezeigt, dass unsere Zeit bis zum ersten Byte manchmal viel schlechter ist, besonders im 99. und 999. Perzentil. Mit anderen Worten, der langsamste Lesevorgang pro 100 (oder pro 1.000) Lesevorgänge dauert oft viel länger.</p>
+	<p>SSDs sind sehr schnell, aber sie sind bekanntermaßen auch kompliziert. In ihnen befinden sich Computer, die E/As aneinanderreihen und neu ordnen sowie verschiedene Hintergrundaufgaben wie Speicherbereinigung und Defragmentierung ausführen. Ab und zu wird eine Anfrage so verlangsamt, dass dies merkliche Auswirkungen hat. Mein Kollege <a href="https://twitter.com/ibobrik?lang=en" target="_blank">Ivan Babrou</a> hat einige E/A-Benchmark-Tests durchgeführt und erlebte Lesespitzen von bis zu 1 Sekunde. Darüber hinaus weisen einige unserer SSDs mehr Performance-Ausreißer auf als andere. In Zukunft werden wir Leistungskonstanz bei unseren SSD-Käufen berücksichtigen, aber bis dahin benötigen wir eine Lösung für unsere bestehende Hardware.</p>
+	<h3 id="gleichm-ige-lastverteilung-mit-so_reuseport"><strong>Gleichmäßige Lastverteilung mit </strong><code>SO_REUSEPORT</code></h3>
+	<p>Eine einzelne langsame Antwort alle Jubeljahre einmal ist schwer zu vermeiden, aber was wir wirklich nicht wollen, ist eine E/A, die eine Sekunde dauert und dabei die 1.000 anderen Anfragen blockiert, die wir innerhalb derselben Sekunde erhalten. Konzeptionell kann NGINX viele Anfragen parallel verarbeiten, führt aber nur jeweils einen Ereignishandler aus. Deshalb habe ich eine Metrik hinzugefügt, die dies misst:</p>
+	<p></p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>if (read(fd, buf, buf_len) &gt; 0) {
+   return buf_len;
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p></p>
+	<p>P99 von <code>event_loop_blocked</code> entpuppte sich als mehr als 50 % unserer TTFB. Das heißt, die Hälfte der Zeit, die für die Bearbeitung einer Anforderung benötigt wird, ist darauf zurückzuführen, dass die Ereignisschleife durch andere Anfragen blockiert wird. <code>event_loop_blocked</code> misst nur etwa die Hälfte der Blockierung (weil verzögerte Aufrufe von <code>epoll_wait()</code> nicht gemessen werden), sodass das tatsächliche Verhältnis der blockierten Zeit viel höher ist.</p>
+	<p>Auf jeder unserer Maschinen läuft NGINX mit 15 Worker-Prozessen, was bedeutet, dass eine langsame E/A nur bis zu 6 % der Anfragen blockieren sollte. Die Ereignisse sind jedoch nicht gleichmäßig verteilt, der Top-Worker bearbeitet 11 % der Anfragen (also doppelt so viele wie erwartet).</p>
+	<p><code>SO_REUSEPORT</code> kann das Problem der ungleichen Verteilung lösen. Marek Majkowski hat bereits im Zusammenhang mit anderen NGINX-Instanzen über den <a href="https://blog.cloudflare.com/the-sad-state-of-linux-socket-balancing/">Nachteil</a> geschrieben, aber dieser Nachteil trifft in unserem Fall meist nicht zu, da Upstream-Verbindungen in unserem Cache-Prozess langlebig sind, sodass eine etwas höhere Latenz beim Öffnen der Verbindung vernachlässigbar ist. Diese Konfigurationsänderung allein, mit der <code>SO_REUSEPORT</code> aktiviert wird, verbesserte die Höchst-P99 um 33 %.</p>
+	<h3 id="verschieben-von-read-in-den-thread-pool-keine-wunderl-sung"><strong>Verschieben von read() in den Thread-Pool: keine Wunderlösung</strong></h3>
+	<p>Eine Lösung dafür besteht darin, dafür zu sorgen, dass read() nicht blockiert. Tatsächlich ist diese Funktion <a href="https://www.nginx.com/blog/thread-pools-boost-performance-9x/" target="_blank">im Upstream von NGINX implementiert</a>! Wenn die folgende Konfiguration verwendet wird, werden <code>read()</code> und <code>write()</code> in einem Thread-Pool ausgeführt und blockieren die Ereignisschleife nicht:</p>
+	<p></p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>aio         threads;
+aio_write   on;
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p></p>
+	<p>Als wir dies jedoch testeten, sahen wir anstelle einer 33-fachen Verbesserung der Antwortzeit tatsächlich einen leichten Anstieg von P99. Der Unterschied lag innerhalb der Fehlergrenze, aber wir waren durch das Ergebnis ziemlich entmutigt und haben diese Option für eine Weile nicht mehr verfolgt.</p>
+	<p>Es gibt mehrere Gründe dafür, dass wir nicht den Grad an Verbesserungen erhalten haben, den NGINX erlebt hat. Beim dortigen Test wurden 200 gleichzeitige Verbindungen genutzt, um Dateien mit einer Größe von 4 MB anzufordern, die sich auf rotierenden Festplatten befanden. Rotierende Festplatten erhöhen die E/A-Latenzzeit, deshalb ist es nachvollziehbar, dass eine Optimierung bei der Latenz dramatischere Auswirkungen haben würde.</p>
+	<p>Außerdem befassen wir uns vor allem mit der P99- (und P999-)Performance. Lösungen, die bei der Durchschnitts-Performance helfen, helfen nicht unbedingt bei Ausreißern.</p>
+	<p>Zu guter Letzt sind in unserer Umgebung die typischen Dateigrößen auch viel kleiner. 90 % unserer Cache-Treffer sind für Dateien, die kleiner als 60 KB sind. Kleinere Dateien bedeuten weniger Gelegenheiten für Blockierungen (wir lesen normalerweise die gesamte Datei in zwei Lesezugriffen).</p>
+	<p>Wenn wir uns die Festplatten-E/A ansehen, die bei einem Cache-Treffer ausgeführt werden muss:</p>
+	<p></p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>// we got a request for https://example.com which has cache key 0xCAFEBEEF
+fd = open("/cache/prefix/dir/EF/BE/CAFEBEEF", O_RDONLY);
+// read up to 32KB for the metadata as well as the headers
+// done in thread pool if "aio threads" is on
+read(fd, buf, 32*1024);
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p></p>
+	<p>32 KB ist keine statische Zahl. Wenn die Header klein sind, müssen wir nur 4 KB lesen (wir verwenden kein direktes E/A, sodass der Kernel auf 4 KB aufrunden wird). Das open() scheint harmlos zu sein, aber es hat tatsächlich seine Kosten. Als Minimum muss der Kernel prüfen, ob die Datei existiert und ob der aufrufende Prozess die Berechtigung hat, sie zu öffnen. Dazu müsste er den Inode von <code>/cache/prefix/dir/EF/BE/CAFEBEEF</code> finden, wozu er <code>CAFEBEEF</code> in <code>/cache/prefix/dir/EF/BE/</code> nachschlagen müsste. Um es kurz zu fassen, im schlimmsten Fall muss der Kernel die folgenden Lookups durchführen:</p>
+	<p></p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>/cache
+/cache/prefix
+/cache/prefix/dir
+/cache/prefix/dir/EF
+/cache/prefix/dir/EF/BE
+/cache/prefix/dir/EF/BE/CAFEBEEF
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p></p>
+	<p>Das sind sechs separate Lesevorgänge von <code>open()</code> im Vergleich zu nur einem Lesevorgang von <code>read()</code>! Glücklicherweise werden die meisten Lookups vom <a href="https://www.kernel.org/doc/Documentation/filesystems/vfs.txt" target="_blank">Verzeichniseintrag-Cache</a> bedient und erfordern keine Ausflüge zu den SSDs. Aber dass <code>read()</code> im Thread-Pool ausgeführt wird, ist offensichtlich nur die halbe Miete.</p>
+	<h3 id="der-durchbruch-nicht-blockierendes-open-in-thread-pools"><strong>Der Durchbruch: nicht blockierendes open() in Thread-Pools</strong></h3>
+	<p>Deshalb habe ich NGINX so modifiziert, dass es den größten Teil von <code>open()</code> ebenfalls innerhalb des Thread-Pools ausführt, damit es die Ereignisschleife nicht blockiert. Das Ergebnis (sowohl nicht blockierendes Öffnen als auch nicht blockierendes Lesen):</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/04/Screenshot-from-2018-07-17-12-16-27.png" class="kg-image"></figure>
+	<p></p>
+	<p>Am 26. Juni haben wir unsere Änderungen in fünf unserer verkehrsreichsten Rechenzentren eingeführt, gefolgt von einem weltweiten Roll-out am nächsten Tag. Insgesamt verbesserte sich die Höchst-P99-TTFB um den Faktor 6. Wenn wir sämtliche Verarbeitungszeiten von acht Millionen Anfragen pro Sekunde addieren, haben wir dem Internet tatsächlich jeden Tag 54 Jahre Wartezeit gespart.</p>
+	<p>Wir haben unsere Arbeit <a href="https://mailman.nginx.org/pipermail/nginx-devel/2018-August/011354.html" target="_blank">hier</a> vorgelegt. Interessenten können sie nachverfolgen.</p>
+	<p>Unsere Ereignisschleifenbehandlung ist immer noch nicht vollständig blockierungsfrei. Insbesondere blockieren wir noch immer, wenn wir eine Datei zum ersten Mal zwischenspeichern (sowohl bei <code>open(O_CREAT)</code> als auch bei <code>rename()</code>) oder wenn wir Aktualisierungen zur Revalidierung durchführen. Das passiert im Vergleich zu Cache-Treffern jedoch eher selten. Für die Zukunft erwägen wir, dies aus der Ereignisschleife zu entfernen, um unsere P99-Latenzzeit weiter zu verbessern.</p>
+	<h3 id="fazit"><strong>Fazit</strong></h3>
+	<p>NGINX ist eine leistungsstarke Plattform, aber die Skalierung extrem hoher E/A-Lasten auf Linux kann eine Herausforderung darstellen. Im Upstream kann NGINX Lesezugriffe in separaten Threads abladen, aber bei unserer Größenordnung müssen wir oft einen Schritt weiter gehen. Wenn die Arbeit an herausfordernden Performance-Problemen für Sie spannend klingt, <a href="https://www.cloudflare.com/careers/departments/engineering/" target="_blank">bewerben Sie sich</a> und kommen Sie in eins unserer Teams in San Francisco, London, Austin oder Champaign.</p>
+</div>

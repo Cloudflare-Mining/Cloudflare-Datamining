@@ -1,0 +1,47 @@
+<div class="post-content lh-copy gray1">
+	<!--kg-card-begin: markdown-->
+	<p>Over the last two days, Cloudflare observed two events that had effects on global Internet traffic levels. Cloudflare handles approximately 10% of all Internet requests, so we have significant visibility into traffic from countries and networks across the world.</p>
+	<p>On <strong>Tuesday, September 5th</strong>, the <a href="https://www.bbc.co.uk/news/world-africa-41174005" target="_blank">government of Togo decided to restrict Internet access</a> in the country following political protests. The government blocked social networks and rate-limited traffic, which had an impact on Cloudflare.</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2017/09/download--11-.png" alt="Internet traffic of Togo rate limited during protests in September 2017"></p>
+	<p>This adds Togo to the list of countries like <a href="https://blog.cloudflare.com/how-syria-turned-off-the-internet/">Syria</a> (<a href="https://blog.cloudflare.com/how-syria-turned-off-the-internet-again/">twice</a>), <a href="https://www.theguardian.com/technology/2016/may/18/iraq-shuts-down-internet-to-stop-pupils-cheating-in-exams" target="_blank">Iraq</a>, <a href="https://labs.ripe.net/Members/emileaben/internet-access-disruption-in-turkey" target="_blank">Turkey</a>, <a href="https://en.wikipedia.org/wiki/Internet_censorship_in_the_Arab_Spring" target="_blank">Libya, Tunisia, etc</a> that have restricted or revoked Internet access.</p>
+	<p>The second event happened on <strong>Wednesday, September 6th</strong>, when a category 5 hurricane ravaged the Caribbean Islands.</p>
+	<p>The affected countries at the moment are:</p>
+	<ul>
+		<li>Anguilla</li>
+		<li>Antigua and Barbuda</li>
+		<li>British Virgin Islands</li>
+		<li>Puerto Rico</li>
+		<li>Saint Barthelemy</li>
+		<li>Saint Kitts and Nevis</li>
+		<li>Saint Martin</li>
+		<li>Sint Maarten</li>
+		<li>U.S. Virgin Islands</li>
+	</ul>
+	<h3 id="losingtheroutes">Losing the routes</h3>
+	<p>Most of the network cables are buried underground or laying at the bottom of the oceans but the hardware which relies on electricity is the first one to go down.</p>
+	<p>Cell towers sometime have their own power source thus allowing local phone calls but without a backbone no outside access is possible.</p>
+	<p>The Réseaux IP Européens (RIPE) is an Internet registry that collects routes announced over the Internet and can display the reachability of a country.<br>
+		A few networks went black in Saint Martin island. <a href="http://caraibe.orange.fr/cache/communiques_de_presse/cppassageirmailesnordsoir.pdf" target="_blank">Orange Caraïbes announced in a press release</a> that they repaired their network at 14:00 local time (18:00 UTC). On the graph we can see that it recovered at 19:00 UTC.</p>
+	<p><a href="https://stat.ripe.net/widget/country-routing-stats#w.resource=mf&amp;w.zoom_start=1504548000000&amp;w.zoom_end=1504803900000&amp;w.comparison=no" target="_blank"><img src="https://blog.cloudflare.com/content/images/2017/09/Screen-Shot-2017-09-07-at-6.15.52-PM.png" alt="RIPE BGP Collection: Routes announced in Saint Martin during Hurricane Irma - September 2017"></a></p>
+	<h3 id="losingthetraffic">Losing the traffic</h3>
+	<p>While the routers were going back online, the end-user traffic was severely reduced on the edge of Cloudflare.</p>
+	<p><strong>Saint Kitts</strong> did not go offline, but traffic was reduced at 08:00 am local time on Wednesday.</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2017/09/download--14-.png" alt="Internet traffic of Saint Kitts during Hurricane Irma - September 2017"></p>
+	<p>Both <strong>Saint Martin</strong> and <strong>Sint Maarten</strong> share the same island, which was one of the most affected by the hurricane. According to the <a href="https://www.nytimes.com/2017/09/06/world/americas/hurricane-irma-update.html" target="_blank">New York Times</a>, the island was badly hit at around 10:00 am local time on September 6th.</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2017/09/download--16-.png" alt="Internet traffic of Saint Martin during Hurricane Irma - September 2017"><br>
+		<img src="https://blog.cloudflare.com/content/images/2017/09/download--17-.png" alt="Internet traffic of Sint Maarten during Hurricane Irma - September 2017">
+	</p>
+	<p><strong>Antigua and Barbuda</strong> started losing connectivity when the storm approached at 10:00 pm local time on Tuesday 5th September.</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2017/09/download--12-.png" alt="Internet traffic of Antigua and Barbuda during Hurricane Irma - September 2017"></p>
+	<p>The <strong>U.S. Virgin Islands</strong> and <strong>Puerto Rico</strong> were also strongly affected.</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2017/09/download--13-.png" alt="Internet traffic of the U.S. Virgin Islands during Hurricane Irma - September 2017"><br>
+		<img src="https://blog.cloudflare.com/content/images/2017/09/download--15--1.png" alt="Internet traffic of Puerto Rico during Hurricane Irma - September 2017">
+	</p>
+	<p>This final image shows the different times when the hurricane reaches every island:</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2017/09/download--18-.png" alt="Internet traffic of the Caribbeans islands during Hurricane Irma - September 2017"></p>
+	<h3 id="conclusions">Conclusions</h3>
+	<p>While the Internet was designed to sustain a nuclear attack and can re-route within seconds, islands are often isolated with fewer routing options for provider than on the mainland (3 or 4 instead of 10 or 15).<br>
+		During natural events like this one, the Internet is crucial as a resource for communication, since people use it to tell their family abroad they are safe and to find shelter, food and clean water.</p>
+	<p>If you live in these islands and have Internet access, <a href="https://google.org/crisismap/2017-irma" target="_blank">Google lists</a> the shelters and has <a href="https://www.google.org/publicalerts/alert?aid=883ff9045515341c&amp;hl=en" target="_blank">public alerts</a>.</p>
+	<!--kg-card-end: markdown-->
+</div>

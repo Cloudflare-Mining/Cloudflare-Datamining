@@ -1,0 +1,148 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/09/unnamed-1.png" class="kg-image"></figure>
+	<p></p>
+	<ul>
+		<li><strong>Wann:</strong> ein kalter Sommernachmittag in San Francisco</li>
+		<li><strong>Wo:</strong> Raum <a href="https://httpstat.us/305" target="_blank">305</a>, Cloudflare</li>
+		<li><strong>Wer:</strong> 2 Teilnehmer von Cloudflare + 9 Teilnehmer vom Tor-Projekt</li>
+	</ul>
+	<p>Was könnte da schon schiefgehen?</p>
+	<h3 id="ein-bisschen-hintergrund"><strong>Ein bisschen Hintergrund</strong></h3>
+	<p>Vor fast genau zwei Jahren führte Cloudflare die <a href="https://blog.cloudflare.com/opportunistic-encryption-bringing-http-2-to-the-unencrypted-web/">opportunistische Verschlüsselung</a> ein, eine Funktion, die zusätzliche Sicherheits- und Performance-Vorteile für Websites bietet, die noch nicht auf HTTPS umgestellt wurden. In der Tat, in der guten alten Zeit gab es einige Websites, die nur HTTP verwendeten – seltsam, oder? „Opportunistisch" bedeutete in diesem Fall, dass der Server über einen <a href="https://tools.ietf.org/html/rfc7838" target="_blank">HTTP Alternative-Service</a>-Header Unterstützung von HTTP/2 signalisierte, in der Hoffnung, dass jeder Browser, der das Protokoll erkannte, diese Vorteile bei späteren Anfragen an diese Domain nutzen konnte.</p>
+	<p>Etwa zur gleichen Zeit <a href="https://blog.cloudflare.com/the-trouble-with-tor/">schrieb</a> unser CEO Matthew Prince über die Bedeutung und die Herausforderungen des Datenschutzes im Internet und gab uns den Auftrag, eine Lösung zu finden, die <strong>Bequemlichkeit</strong>, <strong>Sicherheit</strong> und <strong>Anonymität</strong> bietet.</p>
+	<p>Von der Neutralisierung von Fingerprinting-Vektoren und alltäglichen Browser-Trackern, aus denen sich <a href="https://www.eff.org/privacybadger" target="_blank">Privacy Badger</a> speist, bis hin zur Entschärfung von Korrelationsattacken, zu denen nur große Akteure in der Lage sind, ist die Gewährleistung der Privatsphäre eine komplexe Herausforderung. Glücklicherweise widmet sich das <a href="https://www.torproject.org/" target="_blank">Tor-Projekt</a> im Tor-Browser diesem umfangreichen <a href="https://www.torproject.org/projects/torbrowser/design/#adversary" target="_blank">Widersacher-Modell</a>.</p>
+	<p>Das Internet ist jedoch voll von böswilligen Akteuren, und die Unterscheidung zwischen legitimen und bösartigen Zugriffen, eine der Kernfunktionen von Cloudflare, wird viel schwieriger, wenn die Zugriffe anonym sind. Insbesondere machen viele Funktionen, die Tor zu einem großartigen Werkzeug für den Datenschutz machen, es gleichzeitig zu einem Werkzeug, mit dem man die Quelle von bösartigem Datenverkehr verbergen kann. Deshalb greifen viele Seiten auf CAPTCHA-Aufforderungen zurück, um es aufwändiger und teurer zu machen, Bots im Tor-Netzwerk einzusetzen. Mit der Nutzung von CAPTCHA-Aufforderungen zum Stoppen von Bots geht jedoch ein Nachteil einher: Auch menschliche Augen müssen sich mit ihnen herumschlagen.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/09/Captcha-Example.png" class="kg-image"></figure>
+	<p>Dies lässt sich unter anderem durch den Einsatz privater kryptographischer Signaturen minimieren, sogenannter <em>blinded tokens</em>, z. B. solche wie die, auf denen <a href="https://blog.cloudflare.com/privacy-pass-the-math/">Privacy Pass</a> basiert.</p>
+	<p>Die andere Möglichkeit ist Onion-Routing.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/09/Onion-Cloudflare.png" class="kg-image"></figure>
+	<h3 id="vorhang-auf-f-r-die-onions"><strong>Vorhang auf für die Onions</strong></h3>
+	<p>In der heutigen Ausgabe der Crypto Week wird eine „opportunistische“ Lösung für dieses Problem vorgestellt, mit der unter geeigneten Bedingungen jeder, der <a href="https://blog.torproject.org/new-release-tor-browser-80" target="_blank">Tor Browser 8.0</a> verwendet, beim Besuch von Cloudflare-Websites von einer verbesserten Sicherheit und Performance profitiert, ohne sich einem CAPTCHA stellen zu müssen. Gleichzeitig ermöglicht diese Funktion auch ein fein abgestuftes Rate Limiting, um bösartige Zugriffe zu verhindern. Da die Funktionsweise der hier beschriebenen Idee nicht spezifisch für Cloudflare ist, kann jeder <a href="https://github.com/mahrud/caddy-altonions" target="_blank">diese Methode auf seiner eigenen Website verwenden</a>.</p>
+	<p>Bevor wir fortfahren: Wenn Sie sich noch einmal in Erinnerung rufen möchten, was Tor ist oder warum wir über Onions sprechen, schauen Sie sich die Website des <a href="https://www.torproject.org/about/overview.html.en" target="_blank">Tor-Projekts</a> oder unseren eigenen Blogbeitrag vom Juni über den <a href="https://blog.cloudflare.com/welcome-hidden-resolver/">DNS-Resolver-Onion</a> an.</p>
+	<p>Wie Matthew in seinem Blogbeitrag erwähnte, ist eine Möglichkeit, die Tor-Zugriffe durchzusieben, die Verwendung des <a href="https://www.torproject.org/docs/onion-services.html.en" target="_blank">Onion-Service-Protokolls</a>. Onion Services sind Tor-Knoten, die ihren öffentlichen Schlüssel, der als Adresse mit der TLD .onion kodiert ist, anbieten und „Rendezvous-Punkte“ nutzen, um Verbindungen vollständig innerhalb des Tor-Netzwerks herstellen:</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/09/Tor-network-example-1.png" class="kg-image"></figure>
+	<p></p>
+	<p>Onion Services wurden ursprünglich dafür entwickelt, Anbietern von Inhalten Anonymität zu bieten, aber jetzt werden sie auch von <a href="https://securedrop.org/directory/" target="_blank">Medienunternehmen</a> für die sichere Kommunikation mit Whistleblowern genutzt, und <a href="https://www.facebook.com/notes/protect-the-graph/making-connections-to-facebook-more-secure/1526085754298237" target="_blank">Facebook</a> verwendet einen Onion Service, um Tor-Benutzer von Bots zu unterscheiden.</p>
+	<p>Das funktioniert technisch deshalb, weil aus Sicht eines Onion Service jede einzelne Tor-Verbindung (<em>circuit</em>) eine eindeutige, aber flüchtige Nummer hat, während aus Sicht eines normalen Servers alle Tor-Anfragen, die über einen Austrittsknoten gestellt werden, dieselbe IP-Adresse besitzen. Mit dieser Verbindungsnummer können Onion Services einzelne Verbindungen unterscheiden und solche, die sich bösartig zu verhalten scheinen, beenden. Das bedeutet aber nicht, dass Onion Services Tor-Benutzer identifizieren oder verfolgen können.</p>
+	<p>Böswillige Akteure können zwar durch die Wiederholung des Rendezvous-Protokolls eine neue Verbindung aufbauen, dabei kommt es aber zum Austausch eines kryptographischen Schlüssels, was Zeit und Berechnung erfordert. Stellen Sie sich das wie eine kryptographische <a href="https://en.wikipedia.org/wiki/File:Dial_up_modem_noises.ogg" target="_blank">Einwahlsequenz</a> vor. Spammer können unseren Onion Service immer wieder anwählen, aber jedes Mal müssen sie den Schlüsselaustausch wiederholen.</p>
+	<p>Alternativ kann die Abarbeitung des Rendezvous-Protokolls als ein kleiner Arbeitsnachweis gesehen werden, der für die Nutzung des Cloudflare Onion Services notwendig ist. Dies erhöht den Aufwand (und die Kosten) dafür, unseren Onion Service für Denial-of-Service-Angriffen zu nutzen.</p>
+	<h3 id="problem-gel-st-oder"><strong>Problem gelöst, oder?</strong></h3>
+	<p>Nicht ganz. Wie bei der Einführung des <a href="https://blog.cloudflare.com/welcome-hidden-resolver/">versteckten Resolvers</a> ausgeführt, ist es schwierig sicherzustellen, dass eine scheinbar zufällige .onion-Adresse korrekt ist, und das ist ein Hindernis für nutzbare Sicherheit. In jenem Fall bestand unsere Lösung darin, ein <a href="https://www.digicert.com/extended-validation-ssl.htm" target="_blank">Extended-Validation</a>-Zertifikat (EV-Zertifikat) zu erwerben, das erheblich teurer ist. Unnötig zu sagen, dass sich dadurch der Kreis derer, die ein HTTPS-Zertifikat für Ihren Onion Service kaufen können, auf <a href="https://crt.sh/?Identity=%25.onion" target="_blank">wenige Privilegierte</a> beschränkt.</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/09/Address-Bar.png" class="kg-image"></figure>
+	<p></p>
+	<p>Einige Leute sind <a href="https://cabforum.org/pipermail/public/2017-November/012451.html" target="_blank">anderer Meinung</a>. Insbesondere die <a href="https://blog.torproject.org/tors-fall-harvest-next-generation-onion-services" target="_blank">neue Generation</a> von Onion Services sieht die von Matthew genannte Schwäche als möglichen Grund, warum das CA/B-Forum für Onion Services nur EV-Zertifikate <a href="https://cabforum.org/2015/02/18/ballot-144-validation-rules-dot-onion-names/" target="_blank">erlaubt</a>. Dies könnte bedeuten, dass man für Onion Services bald Domain-Validation-Zertifikate (DV-Zertifikate) bekommen kann. Wir hoffen sehr, dass es so kommt.</p>
+	<p>Dennoch fehlt DV-Zertifikaten der Organisationsname (z. B. „Cloudflare, Inc.“), der in der Adresszeile erscheint, und Menschen können sich kryptographisch relevante Zahlen kaum merken oder unterscheiden. Damit wären wir wieder beim Problem der nutzbaren Sicherheit, und deshalb haben wir eine andere Idee entwickelt.</p>
+	<h3 id="onion-adressen-anders-betrachtet"><strong>Onion-Adressen anders betrachtet</strong></h3>
+	<p>Vergessen Sie einen Moment lang, dass es um Anonymität geht. Wenn Sie „cloudflare.com“ in einem Browser eingeben und die Eingabetaste drücken, löst Ihr Gerät zuerst diesen Domainnamen in eine IP-Adresse auf, dann fragt Ihr Browser den Server nach einem für „cloudflare.com“ gültigen Zertifikat und versucht, eine verschlüsselte Verbindung mit dem Host herzustellen. Solange das Zertifikat von einer Zertifizierungsstelle bestätigt wird, gibt es keinen Grund, sich um die IP-Adresse zu kümmern.</p>
+	<p>Grob gesagt ist die Idee, einfach die IP-Adresse im obigen Szenario durch eine .onion-Adresse zu ersetzen. Solange das Zertifikat gültig ist, muss die .onion-Adresse selbst nicht manuell von einem Benutzer eingegeben werden, und er muss sich auch nicht daran erinnern können. Tatsächlich ist daran, dass das Zertifikat gültig ist, die Korrektheit der .onion-Adresse erkennbar.</p>
+	<p>Insbesondere sollte eine einzelne .onion-Adresse in der gleichen Weise, wie eine einzige IP-Adresse Millionen von Domains bereitstellen kann, in der Lage sein, eine beliebige Anzahl von Domains bereitzustellen.</p>
+	<p>Nur, dass das DNS nicht so funktioniert.</p>
+	<h3 id="wie-funktioniert-es-dann"><strong>Wie funktioniert es dann?</strong></h3>
+	<p>Genau wie bei der opportunistischen Verschlüsselung können wir Benutzer über <a href="https://tools.ietf.org/html/rfc7838" target="_blank">HTTP Alternative Services</a> auf den Cloudflare Onion Service hinweisen. Ein HTTP Alternative Service ist ein Mechanismus, mit dem Server Clients mitteilen können, dass der Dienst, auf den sie zugreifen, an einem anderen Netzwerkstandort oder über ein anderes Protokoll verfügbar ist. Wenn beispielsweise der Tor Browser eine Anfrage an „cloudflare.com“ stellt, fügt Cloudflare einen Alternative-Service-Header (Alt-Svc-Header) hinzu, um anzuzeigen, dass die Website für den Zugriff mit HTTP/2 über unsere Onion Services verfügbar ist.</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/09/tor-resquest@2x.png" class="kg-image"></figure>
+	<p></p>
+	<p>In dem gleichen Sinne, wie Cloudflare die IP-Adressen besitzt, auf denen die Websites unserer Kunden bereitgestellt werden, betreiben wir zehn .onion-Adressen. Stellen Sie sich diese als zehn Cloudflare Points of Presence (oder PoPs) im Tor-Netzwerk vor. Der genaue Header sieht ungefähr so aus, nur, dass alle zehn .onion-Adressen enthalten sind, von denen jede mit dem Präfix „cflare“ beginnt:</p>
+	<p></p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>alt-svc: h2="cflare2nge4h4yqr3574crrd7k66lil3torzbisz6uciyuzqc2h2ykyd.onion:443"; ma=86400; persist=1
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p></p>
+	<p>Dies gibt einfach nur an, dass der maßgebliche Zugriff auf „cloudflare.com“ mit HTTP/2 („h2“) über den Onion Service „cflare2n[....].onion“ über den virtuellen Port 443 möglich ist. Das Feld „ma“ (max-age) gibt an, wie viele Sekunden lang sich der Client an die Existenz des alternativen Dienstes erinnern soll, und „persist“ gibt an, ob der Alternative-Dienst-Cache gelöscht werden soll, wenn das Netzwerk unterbrochen wird.</p>
+	<p>Sobald der Browser diesen Header erhält, versucht er, eine neue Tor-Verbindung zum im Alt-Svc-Header angebotenen Onion Service herzustellen und zu bestätigen, dass der Server, der auf dem virtuellen Port 443 lauscht, ein gültiges Zertifikat für „cloudflare.com“ vorlegen kann – d. h. für den ursprünglichen Hostnamen und nicht für die .onion-Adresse.</p>
+	<p>Der Onion Service leitet dann das Client-Hello-Paket an einen lokalen Server weiter, der ein Zertifikat für „cloudflare.com“ bereitstellen kann. Auf diese Weise kann der Tor-Daemon minimalisiert werden. Hier ist eine Beispiel-Konfigurationsdatei:</p>
+	<p></p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>SocksPort 0
+HiddenServiceNonAnonymousMode 1
+HiddenServiceSingleHopMode 1
+HiddenServiceVersion 3
+HiddenServicePort 443
+SafeLogging 1
+Log notice stdout
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p></p>
+	<p>Seien Sie vorsichtig bei der Verwendung der obigen Konfiguration, da sie eine nicht-anonyme Einstellung für Onion Services ermöglicht, die für sich selbst keine Anonymität erfordern. Zur Klarstellung: Dies beeinträchtigt nicht die Privatsphäre oder Anonymität der Tor-Benutzer, sondern nur den Server. Außerdem verbessert es die Latenzzeiten der Verbindungen.</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/09/Tor-Onion-Service-Cloudflare.png" class="kg-image"></figure>
+	<p></p>
+	<p>Wenn das Zertifikat von einer vertrauenswürdigen Zertifizierungsstelle signiert ist, verbindet sich der Browser bei späteren Anfragen an „cloudflare.com“ mit HTTP/2 über den Onion Service und umgeht so die Notwendigkeit, einen Austrittsknoten zu durchlaufen.</p>
+	<p>Hier sind die Schritte noch einmal zusammengefasst:</p>
+	<ol>
+		<li>Eine neue Tor-Verbindung wird hergestellt;</li>
+		<li>Der Browser sendet ein Client Hello mit SNI=cloudflare.com an den Onion Service;</li>
+		<li>Der Onion Service leitet das Paket an einen lokalen Server weiter;</li>
+		<li>Der Server antwortet mit Server Hello für SNI=cloudflare.com;</li>
+		<li>Der Onion Service leitet das Paket an den Browser weiter;</li>
+		<li>Der Browser überprüft, ob das Zertifikat gültig ist.</li>
+	</ol>
+	<p>Um es noch einmal zu betonen: Das vom Onion Service vorgelegte Zertifikat muss nur für den ursprünglichen Hostnamen gültig sein, d. h. die Onion-Adresse muss nirgendwo auf dem Zertifikat erwähnt werden. Das ist ein großer Vorteil, weil Sie dadurch z. B. ein kostenloses Zertifikat von <a href="https://letsencrypt.org/" target="_blank">Let's Encrypt</a> für Ihre .org-Domain vorlegen können und kein teures EV-Zertifikat brauchen.</p>
+	<p>Bequemlichkeit, ✓</p>
+	<h3 id="unterscheidung-der-verbindungen"><strong>Unterscheidung der Verbindungen</strong></h3>
+	<p>Denken Sie daran, dass ein Austrittsknoten zwar viele verschiedene Clients bereitstellen kann, aus Sicht von Cloudflare jedoch sämtliche Zugriffe von einer IP-Adresse kommen. Diese Bündelung hilft, den böswilligen Traffic in legitimem Datenverkehr zu verstecken, aber sie ist für die Sicherheit oder Privatsphäre von Tor nicht unbedingt erforderlich. Tatsächlich kann sie Benutzern schaden, indem sie ihren Traffic <a href="https://trac.torproject.org/projects/tor/wiki/doc/ReportingBadRelays" target="_blank">schlechten Austrittsknoten</a> aussetzt.</p>
+	<p>Denken Sie daran, dass Tor-Verbindungen zu Onion Services eine Verbindungsnummer haben, mit der wir Rate Limiting für die Verbindung betreiben können. Nun stellt sich die Frage, wie man einen Server wie nginx mit minimalem Aufwand über diese Nummer informiert. Wie sich herausgestellt hat, können wir mit nur einer <a href="https://github.com/torproject/tor/pull/343/" target="_blank">kleinen Änderung</a> in der Tor-Binärdatei einen <a href="https://www.haproxy.org/download/1.8/doc/proxy-protocol.txt" target="_blank">Proxy-Protokoll</a>-Header am Anfang jedes Pakets einfügen, das an den Server weitergeleitet wird. Dieses Protokoll wurde entwickelt, um TCP-Proxys zu helfen, Parameter weiterzugeben, die bei der Übersetzung verloren gehen können, zum Beispiel Quell- und Ziel-IP-Adressen. Es wird bereits von nginx, Apache, Caddy usw. unterstützt.</p>
+	<p>Glücklicherweise ist der IPv6-Raum so groß, dass wir die Tor-Verbindungsnummer als IP-Adresse in einem ungenutzten Bereich kodieren und über das Proxy-Protokoll an den Server senden können. Hier ein Beispiel für den Header, den unser Tor-Daemon in die Verbindung einfügen würde:</p>
+	<p></p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>PROXY TCP6 2405:8100:8000:6366:1234:ABCD ::1 43981 443\r\n
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p><br></p>
+	<p>In diesem Fall kodiert 0x1234ABCD die Verbindungsnummer in den letzten 32 Bit der Quell-IP-Adresse. Der lokale Cloudflare-Server kann diese IP dann transparent nutzen, um bei Bedarf Reputation zuzuweisen, CAPTCHAs anzuzeigen oder Anfragen zu blockieren.</p>
+	<p>Obwohl Anfragen, die von einem Onion Service weitergeleitet werden, keine IP-Adresse enthalten, werden Sie in Ihren Protokollen eine IP-Adresse wie die oben angeführte mit dem Ländercode „T1“ sehen. Diese IP gibt nur die vom Onion Service gesehene Verbindungsnummer an, nicht die tatsächliche Benutzer-IP-Adresse. Tatsächlich ist 2405:8100:8000::/48 ein ungenutztes Subnetz, das Cloudflare zugewiesen ist und das wir zu diesem Zweck nicht global routen.</p>
+	<p>So können Kunden durch IP-Reputation weiterhin Bots erkennen, während sie Menschen die Mühe ersparen, immer wieder auf CAPTCHA-Straßenschilder zu klicken.</p>
+	<p>Sicherheit, ✓</p>
+	<h3 id="warum-sollte-ich-cloudflare-trauen"><strong>Warum sollte ich Cloudflare trauen?</strong></h3>
+	<p>Das müssen Sie nicht. Der Cloudflare Onion Service präsentiert genau das gleiche Zertifikat, das wir für direkte Anfragen an unsere Server verwendet hätten, sodass Sie diesen Dienst mit Certificate Transparency (einschließlich <a href="https://blog.cloudflare.com/introducing-certificate-transparency-and-nimbus/">Nimbus</a>, unserem Certificate-Transparency-Logbuch) überprüfen können, um mögliche Betrügereien aufzudecken.</p>
+	<p>Da Tor Browser 8.0 bei der Verbindung über einen .onion Alternative Service eine neue Verbindung für jeden Hostnamen erstellt, kann darüber hinaus die Verbindungsnummer nicht verwendet werden, um Verbindungen zu zwei verschiedenen Standorten miteinander zu verknüpfen.</p>
+	<p>Beachten Sie, dass all dies ohne Eintritts-, Relay- oder Austrittsknoten funktioniert. Daher sind die einzigen Anfragen, die wir als Ergebnis dieser Funktion sehen, die Anfragen, die ohnehin für uns eingegangen wären. Insbesondere da kein neuer Traffic eingeführt wird, erhält Cloudflare keine weiteren Informationen darüber, was Menschen im Internet tun.</p>
+	<p>Anonymität, ✓</p>
+	<h3 id="ist-es-schneller"><strong>Ist es schneller?</strong></h3>
+	<p>Tor ist nicht dafür bekannt, schnell zu sein. Ein Grund dafür sind die physischen Kosten für das Herumspringen von Paketen in einem dezentralen Netzwerk. Verbindungen über den Cloudflare Onion Service steigern diese Kosten nicht, da die Anzahl der Teilstrecken nicht höher ist als üblich.</p>
+	<p>Ein weiterer Grund sind die Datenübertragungskosten für die Betreiber von Austrittsknoten. Dies ist ein Bereich, in dem wir mit diesem Dienst hoffentlich zur Verbesserung beitragen, da er den Traffic von den Austrittsknoten auf unsere eigenen Server verlagert und damit die Betriebskosten der Austrittsknoten senkt.</p>
+	<p>BONUS: Performance, ✓</p>
+	<h3 id="wie-aktiviere-ich-es"><strong>Wie aktiviere ich es?</strong></h3>
+	<p>Onion-Routing ist ab sofort für alle Cloudflare-Kunden verfügbar und für Kunden mit kostenlosen und Pro-Tarifen standardmäßig aktiviert. Die Option ist auf der Registerkarte „Krypto“ im Cloudflare Dashboard verfügbar.</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/09/Screen-Shot-2018-09-20-at-7.36.11-AM.jpg" class="kg-image"></figure>
+	<p></p>
+	<h3 id="browserunterst-tzung"><strong>Browserunterstützung</strong></h3>
+	<p>Wir empfehlen die Verwendung von <a href="https://blog.torproject.org/new-release-tor-browser-80" target="_blank">Tor Browser 8.0</a>, der ersten stabilen Version, die auf Firefox 60 ESR basiert und .onion-Alt-Svc-Header sowie HTTP/2 unterstützt. Der neue Tor-Browser für Android (alpha) unterstützt diese Funktion ebenfalls. Sie können im Fenster „Developer Tools“ auf der Registerkarte „Netzwerk“ überprüfen, ob Ihre Verbindung über einen Onion Service geleitet wird oder nicht. Wenn Sie den Tor-Browser benutzen und den Alt-Svc-Header nicht unter den Antwort-Headern sehen, bedeutet das, dass Sie bereits die .onion-Route benutzen. In zukünftigen Versionen von Tor Browser werden Sie dies <a href="https://trac.torproject.org/projects/tor/ticket/27590" target="_blank">in der Benutzeroberfläche</a> sehen können.</p>
+	<figure class="kg-card kg-embed-card">
+		<blockquote class="twitter-tweet">
+			<p lang="en" dir="ltr">We've got BIG NEWS. We gave Tor Browser a UX overhaul. <br><br>Tor Browser 8.0 has a new user onboarding experience, an updated landing page, additional language support, and new behaviors for bridge fetching, displaying a circuit, and visiting .onion sites.<a href="https://t.co/fpCpSTXT2L" target="_blank">https://t.co/fpCpSTXT2L</a> <a href="https://t.co/xbj9lKTApP" target="_blank">pic.twitter.com/xbj9lKTApP</a></p>— The Tor Project (@torproject) <a href="https://twitter.com/torproject/status/1037397236257366017?ref_src=twsrc%5Etfw" target="_blank">September 5, 2018</a>
+		</blockquote>
+		<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+	</figure>
+	<p></p>
+	<blockquote>Wir haben GROSSE NEUIGKEITEN. Wir haben die Benutzererfahrung des Tor Browsers überarbeitet.</blockquote>
+	<blockquote>Tor Browser 8.0 bietet eine neue Onboarding-Erfahrung für Benutzer, eine aktualisierte Einstiegsseite, zusätzliche Sprachunterstützung und neue Verhaltensweisen für das Abrufen von Bridges, das Anzeigen einer Verbindung und den Besuch von .onion-Seiten. https://blog.torproject.org/new-release-tor-browser-80 …</blockquote>
+	<p>Es gibt auch Interesse von anderen datenschutzbewussten Browseranbietern. Tom Lowenthal, Product Manager for Privacy &amp; Security bei <a href="https://brave.com/" target="_blank">Brave</a>, sagte:</p>
+	<p>Automatische Upgrades auf „.onion“-Seiten werden eine weitere Sicherheitsebene für Braves Private Browsing mit Tor bieten. Wir freuen uns sehr, diesen neuen Standard zu implementieren.</p>
+	<h3 id="letzte-worte"><strong>Letzte Worte?</strong></h3>
+	<p>Ähnlich wie bei der opportunistischen Verschlüsselung schützen opportunistische Onions nicht vollständig vor Angreifern, die einfach den Header mit dem alternativen Dienst entfernen können. Daher ist es wichtig, <a href="https://www.eff.org/https-everywhere" target="_blank">HTTPS Everywhere</a> zu verwenden, um die erste Anfrage zu sichern. Sobald eine Tor-Verbindung hergestellt ist, sollten nachfolgende Anfragen von der Quelle bis zum Ziel im Tor-Netzwerk bleiben.</p>
+	<p>Während wir diesen Dienst anbieten und verbessern, werden wir Ihnen <a href="https://trac.torproject.org/projects/tor/ticket/27502" target="_blank">mitteilen</a>, was wir lernen. In der Zwischenzeit können Sie diese Idee auf <a href="https://github.com/mahrud/caddy-altonions" target="_blank">Caddy</a> ausprobieren und uns Kommentare oder Vorschläge senden.</p>
+	<h3 id="danksagung"><strong>Danksagung</strong></h3>
+	<p>Unser Dank gilt Patrick McManus von Mozilla für die Unterstützung von .onion Alternative Services in Firefox; Arthur Edelstein vom Tor-Projekt für die Überprüfung und Aktivierung von HTTP/2 und HTTP Alternative Services in Tor Browser 8.0; Alexander Færøy und George Kadianakis vom Tor-Projekt für die Unterstützung des Proxy-Protokolls in Onion Services; dem gesamten Tor-Projekt-Team für unbezahlbare Unterstützung und Diskussionen; und zu guter Letzt den vielen Leuten bei Cloudflare, die bei diesem Projekt geholfen haben.</p>
+	<h4 id="vom-cloudflare-onion-service-verwendete-adressen"><strong>Vom Cloudflare Onion Service verwendete Adressen</strong></h4>
+	<!--kg-card-begin: markdown-->
+	<pre><code>cflarexljc3rw355ysrkrzwapozws6nre6xsy3n4yrj7taye3uiby3ad.onion
+cflarenuttlfuyn7imozr4atzvfbiw3ezgbdjdldmdx7srterayaozid.onion
+cflares35lvdlczhy3r6qbza5jjxbcplzvdveabhf7bsp7y4nzmn67yd.onion
+cflareusni3s7vwhq2f7gc4opsik7aa4t2ajedhzr42ez6uajaywh3qd.onion
+cflareki4v3lh674hq55k3n7xd4ibkwx3pnw67rr3gkpsonjmxbktxyd.onion
+cflarejlah424meosswvaeqzb54rtdetr4xva6mq2bm2hfcx5isaglid.onion
+cflaresuje2rb7w2u3w43pn4luxdi6o7oatv6r2zrfb5xvsugj35d2qd.onion
+cflareer7qekzp3zeyqvcfktxfrmncse4ilc7trbf6bp6yzdabxuload.onion
+cflareub6dtu7nvs3kqmoigcjdwap2azrkx5zohb2yk7gqjkwoyotwqd.onion
+cflare2nge4h4yqr3574crrd7k66lil3torzbisz6uciyuzqc2h2ykyd.onion
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p></p>
+	<p><a href="https://blog.cloudflare.com/subscribe/"><em>Abonnieren Sie den Blog</em></a><em>, um täglich über unsere Ankündigungen informiert zu werden.</em></p>
+	<figure class="kg-card kg-image-card"><img src="https://lh3.googleusercontent.com/WCBo-rsJsviYGtNn1R40KgP6dMUTvs9SX13InuulTDo7D0M4o3LuLDh-uyoixTV2DZsqtofVO3wLUZmbZkmY6ljItrLj_Ka-hNdh0YRMI2NpHW9a4wowcbyTuybWcZo645IhokFwHJ1OVVYOEQ" class="kg-image"></figure>
+</div>

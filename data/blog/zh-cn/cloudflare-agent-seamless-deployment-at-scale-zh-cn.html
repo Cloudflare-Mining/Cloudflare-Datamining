@@ -1,0 +1,190 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image1-51.png" class="kg-image" alt="Cloudflare Agent — Seamless Deployment at Scale"></figure>
+	<p>一年前，我们推出了 <a href="https://blog.cloudflare.com/zh-cn/warp-for-desktop-zh-cn/">WARP for Desktop</a>，以此为所有人提供快速、私密的互联网通道。对于我们的企业客户，IT 和安全管理员也可使用同一个代理，将其组织中的设备注册到 Cloudflare for Teams。注册完毕后，其团队成员便可加速进入互联网，并通过 Cloudflare 实现从网络防火墙功能到远程浏览器隔离的全面安全性过滤。</p>
+	<p>当去年推出这款产品时，我们旨在用一套简单的配置选项来尽可能支持最广泛的部署机制，以使您的组织迅速得到保护。我们专注于帮助各组织从任何位置通过 HTTP 和 DNS 过滤来确保用户和数据的安全。我们从支持 Mac、Windows、iOS 和 Android 开始。</p>
+	<p>自推出以来，已有数千家组织部署该代理，以确保其团队成员和端点的安全。我们已经听到有些客户很希望扩大自己的部署范围，但却需要更多的操作系统支持和对配置的更佳控制。</p>
+	<p>我们今天隆重宣布：我们的 Zero Trust 代理现已在所有主要平台实现功能同等。除此之外，您还可控制新选项来决定流量的路由，而您的管理员则可协调大规模的部署。凭借目前这个版本，我们已经准备好帮助您完全抛弃您的 IT 团队讨厌的传统 VPN 和网络安全工具。</p>
+	<h3 id="-"><strong>按比例打造</strong></h3>
+	<p>在我们的 Zero Trust 代理中，最重要的两个因素就是跨平台可靠性和连接可靠性。如果您曾发布过这种规模的软件，您就会知道在所有主要操作系统上维护客户端是一项艰巨（且容易出错）的任务。</p>
+	<p>为了避免平台陷阱，我们用 Rust 编写了该代理的核心，其允许跨所有设备共享 95% 的代码。在内部，我们将此公共代码称为共享后台程序（或服务，对于 Windows 用户）。一个通用的、基于 Rust 的实现允许我们的工程师可花更少的时间跨多个平台复制代码，同时确保大多数质量得到改进并惠及每个人。</p>
+	<p>在连接可靠性方面，如果您对传统 VPN 有任何经验，就会知道其很容易出错且速度很慢。我们的网络基础建立在我们自己的 WireGuard 实现（称为 <a href="https://blog.cloudflare.com/boringtun-userspace-wireguard-rust/">BoringTun</a>）之上。与传统的慢速 VPN 不同，我们通过 UDP 运行，并针对当今用户连接的各种互联网基础设施进行了优化（例如，在飞机上、在咖啡馆里、在城市拥挤的网络中等）。随着规模的逐年增长，我们已拥有数以百万计的消费者设备，BoringTun 借此可确保对您的流量进行加密，并为您任何政策的决策做好准备。</p>
+	<p>凭借可靠的扩展能力，我们的代理现在完全支持以下操作系统</p>
+	<ul>
+		<li>Windows 8.1、Windows 10 和 Windows 11</li>
+		<li>macOS Mojave、Catalina、Big Sur、Monterey</li>
+		<li>包括对 M1 的支持</li>
+		<li>ChromeBooks（2019 年后制造） <strong>（新版）</strong></li>
+		<li>Linux CentOS 8、RHEL、Ubuntu、Debian <strong>（新版）</strong></li>
+		<li>iOS</li>
+		<li>Android</li>
+	</ul>
+	<h3 id="--1"><strong>为满足您的部署模式而打造</strong></h3>
+	<p>首次推出时，我们的代理重点是加密到 Cloudflare 网络的所有设备流量，并允许管理员围绕流量建立 HTTP 和 DNS <a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering" target="_blank">策略</a> 。我们也知道，客户正处于向 Zero Trust 模式迁移的过程中。有时，这种转变需要一步一脚印地进行。</p>
+	<p>我们用大量时间创建了一些功能，使您不仅能完全替换传统的解决方案，还能与这些传统解决方案一起运行我们的软件，从而确保迁移更顺利。</p>
+	<ul>
+		<li><strong>基于域的拆分隧道</strong>——有时，您无需通过安全层来发送所有流量。我们已支持 IP 排除，现在可很容易地用域名（如 *.example.com 或 example.com）创建<a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/exclude-traffic/split-tunnels#add-a-domain" target="_blank">拆分隧道规则</a>，而不是强迫您去查找特定域名的 IP 地址 CIDR。</li>
+		<li><strong>仅包含拆分隧道</strong>——我们的代理在最初创建时的前提是，所有设备流量已加密并发送到我们的网络。这确保了流量不会被窥探，并允许管理员保持可见性。但是，有时您只是希望将一些流量发送至 Cloudflare，并默认排除其余流量。<a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/exclude-traffic" target="_blank"><em>仅包含</em>拆分隧道</a>可执行这一操作，允许您选择前往我们网络的路线。如果您需要快速替代传统 VPN 以连接到 <a href="https://blog.cloudflare.com/build-your-own-private-network-on-cloudflare/">Cloudflare 隧道资源</a>或只是希望确保对通往敏感基础设施的流量进行 HTTP 检查，请使用<em>仅包含</em>拆分隧道规则。</li>
+		<li><strong>改进的私有域</strong>——有些组织将现有的第三方 VPN 与 Cloudflare 的 Zero Trust 产品一起运行，以开始执行迁移。在过去，我们的代理支持这种配置，方法是让管理员设置回退域名解析，通过 VPN 为某些使用情况发送 DNS 查询。然而，这种操作是全局性的，缺乏对查询发送地点的控制。我们现在新增了<a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/exclude-traffic/local-domains" target="_blank">指定 DNS 服务器</a>响应私有域的功能，正如<a href="https://blog.cloudflare.com/zero-trust-private-networking-rules/">本周早些时候</a>讨论的那样，这种功能可与我们新的 Zero Trust 网络功能一起使用。</li>
+		<li><strong>纯态势模式（即将推出）</strong> — 我们<a href="https://blog.cloudflare.com/6-new-ways-to-validate-device-posture/">之前已经讨论</a>了有关设备态势和我们能力的重要性。在 2022 年第一季度，我们将为代理提供在纯态势模式下运行的能力。也就是说，我们的客户不会处理任何 DNS 请求或向我们发送任何其他流量。这使您能采用 Cloudflare Access 态势策略，而无需为您的用户开启 HTTP 检查。</li>
+	</ul>
+	<h3 id="--2"><strong>为实现无缝配置而打造</strong></h3>
+	<p>将任何代理部署到上万个用户可能在后勤方面带来很大障碍。我们构建了 Cloudflare for Teams，以无缝地在您的团队中大规模部署。今天的公告为您提供了更多选项来使用基于 API 和 Terraform 的控制将代理推广到您的整个组织。</p>
+	<p>自动执行管理任务是使其保持一致的最佳方式。在 Cloudflare，我们在基于 HTTPS 请求和 JSON 响应的一组 RESTful API 基础上构建我们的 UI。这些用于设备管理的相同 API 会通过我们的 <a href="https://api.cloudflare.com/" target="_blank">API 文档</a>以及通过我们的 <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs" target="_blank">Terraform 提供商</a>向用户公开。<a href="https://dash.teams.cloudflare.com/" target="_blank">https://dash.teams.cloudflare.com/</a> 的 Web 版本中公开的一切内容都通过其中某个界面提供。</p>
+	<p>作为实现自动化的方法示例，我们会考察一下基于域的拆分隧道。这里有 <a href="https://api.cloudflare.com/#devices-set-split-tunnel-include-list" target="_blank">API 文档</a>和 <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/split_tunnel" target="_blank">Terraform 等效文档</a>，以供参考。</p>
+	<p>要为 example.com 创建基于域的包含规则：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>curl -X PUT "https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/devices/policy/include" \
+     -H "X-Auth-Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b7c2c4d2c5f7d2cfd6dac7dbd299d4d8da">[email&nbsp;protected]</a>" \
+     -H "X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41" \
+     -H "Content-Type: application/json" \
+     --data '[{"host":"*.example","description":"Include all traffic to example.com in the tunnel"}]'
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>在 Terraform 中可以使用以下内容创建这一相同规则：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code># Including *.example.com in WARP routes
+resource "cloudflare_split_tunnel" "example_split_tunnel_include" {
+  account_id = "699d98642c564d2e855e9661899b7252"
+  mode       = "include"
+  tunnels {
+    host        = "*.example.com",
+    description = "Include all traffic to example.com in the tunnel"
+  }
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>另一个常见任务是生成注册设备的报告。使用<a href="https://api.cloudflare.com/#devices-list-devices" target="_blank">设备列表 API</a>，以下示例将显示如何列出向您的组织注册的所有 Windows 设备：</p>
+	<p>curl -X GET "https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/devices?type=windows" \</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>curl -X GET "https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/devices?type=windows" \
+     --header 'Authorization: Bearer 8M7wS6hCpXVc-DoRnPPY_UCWPgy8aea4Wy6kCe5T' \
+     -H "Content-Type: application/json"
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>运行该命令将返回类似于以下内容的 JSON：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>        {
+            "created": "2021-12-01T17:14:23.847538Z",
+            "device_type": "windows",
+            "gateway_device_id": "215f9adc-52ca-11ec-9ece-f240956bdf5f",
+            "id": "215f9adc-52ca-11ec-9ece-f240956bdf5f",
+            "ip": "150.111.29.1",
+            "key": "0mS9vj2gk0KNcXoi50pwfuL49WT0rLGAcX2gVze3ixA=",
+            "last_seen": "2021-12-01T17:14:30.110663Z",
+            "mac_address": "00:0c:29:6f:11:93",
+            "model": "VMware7,1",
+            "name": "MYVMWin10",
+            "os_version": "10.0.19042",
+            "serial_number": "VMware-56",
+            "updated": "2021-12-01T17:14:30.110663Z",
+            "user": {
+                "email": "<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="4f3a3c2a3d0f2a372e223f232a612c2022">[email&nbsp;protected]</a>",
+                "id": "6a8e079d-8a33-4677-b610-a5e361c0c959"
+            },
+            "version": "2021.11.278"
+        },
+        {
+            "created": "2021-11-08T23:59:37.621164Z",
+            "device_type": "windows",
+            "gateway_device_id": "ee02da10-40ef-11ec-bb68-6a56f426bb46",
+            "id": "ee02da10-40ef-11ec-bb68-6a56f426bb46",
+            "ip": "98.247.211.1",
+            "key": "DhUI8nqeVrXL1JFhYbeCFmkeu/XEkkEjVmcZ8UraTDI=",
+            "last_seen": "2021-11-08T23:59:37.621164Z",
+            "model": "Latitude 7400",
+            "name": "CloudBox",
+            "os_version": "10.0.19043",
+            "serial_number": "7CHR3Z2",
+            "updated": "2021-11-23T20:03:12.046067Z",
+            "user": {
+                "email": "<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="196c6a7c6b2b597c61787469757c377a7674">[email&nbsp;protected]</a>",
+                "id": "39663a0d-9f7c-4a24-ae7f-f869a8cf07f1"
+            },
+            "version": "2021.11.34"
+        },
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h3 id="--3"><strong>专为所有人进行管理而构建</strong></h3>
+	<p>作为今天的发布的一部分，我们还宣布<a href="https://blog.cloudflare.com/mdm-partnerships/">与 MDM 提供商建立合作伙伴关系</a>，以便您可以为用户部署软件。我们也知道，一些组织还没有 MDM，或者其管理部署的管理员偏好可视用户界面。</p>
+	<p>在未来几周，我们将在测试版中开启直接从仪表板管理客户端行为的各个方面的功能。这样一来，您可以立即对客户端配置进行更改，而无需推送客户端的新版本。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image3-24.png" class="kg-image"></figure>
+	<h3 id="--4"><strong>敬请期待</strong></h3>
+	<p>明年，我们会加倍努力提高部署后的客户端的可支持性和灵活性，这对于客户端来说是个令人振奋的好消息。我们特别想交付的一些功能包括：</p>
+	<ul>
+		<li><strong>按用户/组进行设备设置</strong>，您将能够为不同的用户指定客户端设置（例如，允许谁进行更新、拆分隧道规则，等等）</li>
+		<li><strong>纯状态模式</strong>，允许您在尚未针对 Cloudflare Gateway 做好准备时上线更多 Cloudflare Access 状态控件</li>
+		<li><strong>更多 Linux 发行版本支持</strong>，这样可以保护您组织中的所有人</li>
+		<li><strong>遥测和分析</strong>，涉及您组织中的设备的表现情况，与我们的客户端和流入 Cloudflare 的网络的流量相关</li>
+	</ul>
+	<h3 id="--5"><strong>立即进行连接</strong></h3>
+	<p>您可以在下面找到我们的所有客户端的所列示下载：</p>
+	<!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-0pky {
+			border-color: inherit;
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg">
+		<thead>
+			<tr>
+				<th class="tg-0pky">Windows</th>
+				<th class="tg-0pky"><a href="https://install.appcenter.ms/orgs/cloudflare/apps/1.1.1.1-windows/distribution_groups/beta" target="_blank" rel="noopener noreferrer">下载测试版</a></th>
+				<th class="tg-0pky"><a href="https://install.appcenter.ms/orgs/cloudflare/apps/1.1.1.1-windows-1/distribution_groups/release" target="_blank" rel="noopener noreferrer">下载版本</a></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0pky">macOS</td>
+				<td class="tg-0pky"><a href="https://install.appcenter.ms/orgs/cloudflare/apps/1.1.1.1-macos/distribution_groups/beta" target="_blank" rel="noopener noreferrer">下载测试版</a></td>
+				<td class="tg-0pky"><a href="https://install.appcenter.ms/orgs/cloudflare/apps/1.1.1.1-macos-1/distribution_groups/release" target="_blank" rel="noopener noreferrer">下载版本</a></td>
+			</tr>
+			<tr>
+				<td class="tg-0pky">Linux</td>
+				<td class="tg-0pky"><a href="https://pkg.cloudflareclient.com/install" target="_blank" rel="noopener noreferrer">设置存储库</a></td>
+				<td class="tg-0pky"><a href="https://pkg.cloudflareclient.com/packages/cloudflare-warp" target="_blank" rel="noopener noreferrer">下载程序包</a></td>
+			</tr>
+			<tr>
+				<td class="tg-0pky">iOS</td>
+				<td class="tg-0pky"></td>
+				<td class="tg-0pky"><a href="https://apps.apple.com/us/app/1-1-1-1-faster-internet/id1423538627" target="_blank" rel="noopener noreferrer">下载版本</a></td>
+			</tr>
+			<tr>
+				<td class="tg-0pky">Android/Chrome</td>
+				<td class="tg-0pky"></td>
+				<td class="tg-0pky"><a href="https://play.google.com/store/apps/details?id=com.cloudflare.onedotonedotonedotone" target="_blank" rel="noopener noreferrer">下载版本</a></td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: html-->
+	<p></p>
+</div>

@@ -1,0 +1,38 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/1-11.png" class="kg-image" alt="利用 Cloudflare Stream 實行無伺服器即時串流」"></figure>
+	<p>我們很高興推出 Stream Live 公開測試版，這是一款可擴展的端對端即時串流平台，讓您專注於發展即時視訊 app，而不是程式碼基底。</p>
+	<p>有了 Stream Live，您可以無憂發展串流 app，拓展到成萬上億的播客和同步使用者。開始使用業界標準 RTMPS 通訊協定，從行動裝置或桌面裝置發送即時視訊，即時傳播給數以百萬計的觀眾。Stream Live 支援您已在使用的最流行即時視訊廣播軟體，包括 ffmpeg 和 <a href="https://obsproject.com/" target="_blank">OBS</a> 等。您的廣播內容會自動錄影、最佳化並透過 Stream 播放器傳送。</p>
+	<p>如果您從頭開始打造即時基礎結構，必須要回答以下幾個關鍵問題：</p>
+	<ol>
+		<li><em>「預備使用哪個/哪些編碼器對視訊進行編碼？」</em></li>
+		<li><em><em><em>「預備使用哪些通訊協定來擷取和傳遞視訊？」</em></em></em></li>
+		<li><em><em><em>「不同組件對延遲有何影響？」</em></em></em></li>
+	</ol>
+	<p>我們開發了 Stream Live，所以您不必費心思索並花費寶貴精力來回答這些問題。Stream Live 可以自動選取與用戶端裝置相容性最好的邊碼器和串流通訊協定，將這些煩人卻重要的實施細節抽離出來。使用 Stream Live 時，您可以開啟的直播數量和能夠擁有的觀眾人數均無限制。無論是要製作下一波熱門視訊分享 app，還是將全員會議安全地傳送至公司，Stream 都能根據您的需求輕鬆擴充，不需要花費數月時間去構建和維護視訊基礎結構。</p>
+	<h3 id="-">内建播放器和存取控制</h3>
+	<p>每一個即時視訊都有可配合您網站的嵌入程式碼。您也可以使用自己的播放器，因為它支援兩種主流 HTTP 串流格式 (HLS 和 DASH)，能對使用者體驗進行細項控制。</p>
+	<p>您可以給每位觀眾提供自動失效的符記化連結，以此控制哪些人可以觀看您的即時視訊。在生成符記化連結時，您可以定義各種約束條件，<a href="https://developers.cloudflare.com/stream/viewing-videos/securing-your-stream" target="_blank">如基於時間失效、地理疆界和 IP 限制等</a>。在打造線上學習網站或視訊分享 app 時，您可以將視訊置於身分認證後方，僅允許登入的使用者觀看您的視訊。或者，如果您在建立一個演唱會直播平台，您可以規定僅允許來自特定國家或地區的觀眾觀看。Stream 的簽名符記可以幫助您遵循複雜的客製化規則集。</p>
+	<h3 id="--1">即時錄影</h3>
+	<p>有了 Stream Live，即時廣播結束後您無需等待就能提供錄影。即時視訊會自動轉換為錄影，需時不到一秒。觀眾可以即時觀看錄影來彌補遺漏之處。</p>
+	<h3 id="--2">即時擴充</h3>
+	<p>不論您的平台擁有一名還是一萬名播客，Stream Live 可以根據您的使用情形來擴充。您不必煩心新增運算執行個體、設定可用區域或為取得額外軟體許可進行協商。</p>
+	<p>內部構建的傳統即時視訊管道通常在單一位置上擷取和編碼即時視訊，而且距離十分遙遠。視訊擷取位置遙遠會導致視訊串流變得不可靠，特別是觀眾分散於全球各地時。所有 Cloudflare 地點都有必要的軟體運行，能夠將即時視訊擷取<em>進來</em>並傳送<em>出去</em>。一旦您的視訊廣播處於 Cloudflare 網路內，Stream Live 就會利用 <a href="https://blog.cloudflare.com/250-cities-is-just-the-start/">Cloudflare 骨幹</a>和<a href="https://www.cloudflare.com/zh-tw/products/argo-smart-routing/" target="_blank"> Argo </a>來傳輸您的即時視訊，加強其可靠性。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/10/2-4.png" class="kg-image"></figure>
+	<h3 id="--3">等待時間低至十秒</h3>
+	<p>根據您的視訊編碼器設定，使用 Stream Live 可將您從廣播至顯示在觀眾螢幕上，兩者相隔的時間縮短到十秒。由於等待時間很短，您可以在應用程式中建立聊天和問答等互動功能。這種等待時間非常適合會議、運動會、音樂會和禮拜等場景，但我們清楚這不能覆蓋即時視訊的所有用途。 </p>
+	<p>我們正在奮力將 Stream Live 延遲增加值縮短到接近於零。現在 Cloudflare 網路與<a href="https://blog.cloudflare.com/250-cities-is-just-the-start/"> 世界上 95% 的人口相距在 50 毫秒內</a>。我們相信能夠在未來數月內大幅縮短從播客到觀眾的延遲。最後，在即時串流領域中，只有能落實可靠性，延遲才有意義。Cloudflare 網路橫跨 250 多個地點，您可以獲得對即時事件無比重要的可靠性。</p>
+	<h3 id="--4">簡單且可預測的定價</h3>
+	<p>Stream Live 服務屬於隨用隨付，具體根據視訊錄影時長和視訊觀看時長決定。</p>
+	<ul>
+		<li>每月每 1,000 分鐘視訊儲存容量為 5 美元。所有即時串流視訊都會自動錄影。無需額外支付即時串流擷取費用。</li>
+		<li>每 1,000 分鐘視訊觀賞收費 1 美元。</li>
+		<li>不會有任何意外。您絕不用支付隱藏費用，例如傳統視訊管道中常見的視訊擷取、運算 (編碼)、輸出或儲存等費用。</li>
+		<li>您可以利用帳單提醒來控制 Stream 相關開支，也可透過建立僅供授權觀眾使用的簽署符記來限制觀看。</li>
+	</ul>
+	<p>Cloudflare Stream 以多種品質等級對即時串流進行編碼，不需額外費用。這可確保觀眾在各種互聯網速度下皆能享受暢快的播放體驗。觀眾從 Wi-Fi 切換到行動網路時，視訊可以繼續播放，不會中斷。提供即時串流基礎結構的其他平台為滿足全球觀眾需求而添加不同品質等級時，往往會收取額外費用。 &nbsp;</p>
+	<p>如果您的使用方式包括數千個同步播客或數百萬同步觀眾，請<a href="https://www.cloudflare.com/zh-tw/plans/enterprise/contact/" target="_blank">連絡</a>我們洽詢大用量定價。</p>
+	<h3 id="-stream-">利用 Stream 來直播</h3>
+	<p>Stream 的運作獨立於 Cloudflare 上的所有網域。如果您已擁有 Cloudflare 帳戶並且訂閱了 Stream，只需按一下 <a href="https://dash.cloudflare.com/?to=/:account/stream" target="_blank">Stream 儀表板</a>上的 [Live Input] 並建立新的輸入源，即可開始使用 Stream Live：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/3-5.png" class="kg-image" alt="開始使用 Stream Live"></figure>
+	<p>如果您是 Cloudflare 新使用者，請<a href="https://dash.cloudflare.com/sign-up/stream" target="_blank">註冊 Cloudflare Stream。</a></p>
+</div>

@@ -1,0 +1,42 @@
+<div class="post-content lh-copy gray1">
+	<!--kg-card-begin: markdown-->
+	<p><em>This is a guest post by <a href="https://www.linkedin.com/in/davidurbansky/" target="_blank">David Urbansky</a>, CEO and Co-Founder of <a href="https://semknox.com" target="_blank">SEMKNOX</a> and <a href="https://sitesearch360.com/" target="_blank">Site Search 360</a>. David is a search enthusiast having built natural language search experiences for e-commerce sites and <a href="https://spoonacular.com" target="_blank">recipe search engines</a>.</em></p>
+	<p>As a startup founder, there are always key product decisions to be made when Site Search 360, our key product, is embedded in one context versus another. I’d like to share some experiences, choices, and challenges in our process packaging Site Search 360 for Cloudflare Apps.</p>
+	<h3 id="whatissitesearch360">What is Site Search 360?</h3>
+	<p><a href="https://www.cloudflare.com/apps/site-search-360" target="_blank">Site Search 360</a> is a search solution for websites. Offering a search bar on a website improves user experience tremendously if the site has more than just a handful of pages. According to a <a href="https://econsultancy.com/blog/10407-site-search-for-e-commerce-13-best-practice-tips#i.e6bb0iahterern" target="_blank">eConsultancy study</a>, up to <strong>30% of web visitors use the search feature on e-commerce sites</strong> and searchers sometimes make up 40% of the revenue. Additionally, <a href="https://www.nngroup.com/articles/search-visible-and-simple/" target="_blank">Nielsen Group</a> found that 51% of people who did not find what they were looking for with the first query, gave up without refining the search - the search had better work very well then.</p>
+	<p><a href="https://www.cloudflare.com/apps/site-search-360" target="_blank"><img src="https://blog.cloudflare.com/content/images/2018/01/cloudflare-pic1.png" alt="Site Search 360"></a></p>
+	<h3 id="whyusethecloudflareapp">Why use the <a href="https://www.cloudflare.com/apps/site-search-360" target="_blank">Cloudflare App</a>?</h3>
+	<p>Considering these facts, almost every website should have a search feature. However, implementing that functionality is not trivial. Developers are faced with multiple non-obvious decisions to make, such as:</p>
+	<ul>
+		<li>What content should and should not be indexed (do you need the header and footer of every page in the index? Probably not!)</li>
+		<li>How do I keep my index up to date when I add new pages or change something?</li>
+		<li>What storage engine should I use and how do I handle complex queries?</li>
+		<li>How to maintin the additional codebase, especially if non-technical leadership wants to change a decision on what to index?</li>
+	</ul>
+	<p>Thus, <strong>for most sites, a highly customizable off-the-shelf search solution is the fastest and lowest maintenance way to go</strong>. Site Search 360 offers that along with additional features, such as:</p>
+	<ul>
+		<li>Autocomplete and search suggestions</li>
+		<li>High speed</li>
+		<li>Mobile capability</li>
+		<li>Full control over search results</li>
+		<li>Analytics about user behavior and search trends</li>
+	</ul>
+	<h3 id="indepthconfiguration">In-depth configuration</h3>
+	<p>To make a search solution fit perfectly into the style and theme of a website, one has to be able to customize it. Site Search 360 offers over <strong>60 parameters</strong> developers can tinker with to make the search behave and consistently fit the brand and style of the rest of the site.</p>
+	<p><a href="https://www.cloudflare.com/apps/" target="_blank">Cloudflare Apps</a> are configured visually though, and 60 input fields, radio buttons, check lists, select boxes, and sliders would be too much for the average Cloudflare user. Applying the Pareto Principle, we were able to identify the <strong>7 parameters</strong> most frequently used that have the highest impact on a website's look and feel. We chose these for our Cloudflare app.</p>
+	<p><a href="https://www.cloudflare.com/apps/site-search-360" target="_blank"><img src="https://blog.cloudflare.com/content/images/2018/01/cloudflare-pic2.png" alt="Site Search 360"></a></p>
+	<h3 id="experiencedevelopingthecloudflareapps">Experience developing the Cloudflare Apps</h3>
+	<p>We have integrated Site Search 360 with other platforms, such as <a href="https://zapier.com" target="_blank">Zapier</a> (<a href="https://sitesearch360.com/docs/en/zapier-integration" target="_blank">read more</a>), <a href="https://www.integromat.com/en/integrations/site-search-360" target="_blank">Integromat</a>, <a href="https://wordpress.org/plugins/site-search-360/" target="_blank">WordPress</a>,and <a href="https://www.drupal.org/project/sitesearch_360" target="_blank">Drupal</a>, so we’ve seen multiple interfaces and experienced many different processes of getting an integration working and approved.</p>
+	<p>Where Cloudflare stood out is the <strong>declaration-driven approach to app development</strong>. Using only the form elements provided by Cloudflare required us to think about how to map our configuration parameters to Cloudflare components and make them as simple as possible. Just this process alone made us reconsider some of our configuration options and how we could make them easier to use, even outside the Cloudflare use case. For example, instead of letting the user choose between a set of icons for the search bar, we opted for picking one. This allowed us to embed it directly in CSS and minimize the CSS file size that would otherwise get considerably bigger with every Base64 encoded icon choice we could have provided.</p>
+	<p>The <strong>single best thing I have to say about the process is the support</strong>. No matter how good the documentation, developers always have questions, so it was crucial for us that we could get quick and thorough feedback every step along the way. Cloudflare takes the approval process very seriously and only allows high quality apps into their store. Their eye for detail challenged us to go back to the drawing board more than once and rethink certain design choices, e.g. did we really need sliders for the margin of an element or can we simplify it to a choice between "none", "little", and "more"?</p>
+	<h3 id="challenges">Challenges</h3>
+	<p>We encountered two main challenges:</p>
+	<ul>
+		<li><strong>jQuery had to die</strong>: Since we have no idea on which of 7+ million sites the Cloudflare app will be installed we had to move away from jQuery completely to avoid possible conflicts. This is another example of a push that came through the platform that benefits our product also outside of Cloudflare.</li>
+		<li><strong>Account &amp; Sign Up</strong>: In order for the user to see the search working, we have to have some indexed data. However, if a user without a Cloudflare account just previews the app, there is no indexed data. We therefore created a preview account that shows search results from Wikipedia, making registration unnecessary to preview the app.</li>
+	</ul>
+	<p style="text-align: center"><a class="btn btn-warning" href="https://www.cloudflare.com/apps/site-search-360" target="_blank">Preview Site Search 360 on any site with Cloudflare Apps »</a></p>
+	<p>If you have questions or feedback, it is easy to reach us in Site Search 360’s <a href="https://gitter.im/site-search-360/Lobby" target="_blank">community chat</a>, via Twitter <a href="https://twitter.com/sitesearch360" target="_blank">@sitesearch</a>, or by email <a href="/cdn-cgi/l/email-protection#3d505c54517d4e5449584e585c4f5e550e0b0d135e5250"><span class="__cf_email__" data-cfemail="107d71797c50637964756375716273782326203e737f7d">[email&nbsp;protected]</span></a>.</p>
+	<p>Happy Searching!</p>
+	<!--kg-card-end: markdown-->
+</div>

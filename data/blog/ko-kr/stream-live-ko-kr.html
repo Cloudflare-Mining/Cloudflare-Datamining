@@ -1,0 +1,38 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/unnamed-4.png" class="kg-image" alt="Cloudflare Stream을 이용한 서버리스 라이브 스트리밍”"></figure>
+	<p>확장이 가능한 종단간 라이브 스트리밍 플랫폼으로 코드베이스가 아니라 비디오 앱 사용자 기반을 확대하는 데 중점을 두고 라이브 스트리밍 서비스를 제공하는 Stream Live의 오픈 베타 버전을 발표하게 된 것을 기쁘게 생각합니다.</p>
+	<p>Stream Live을 이용하면 스트리밍 앱의 서비스 범위를 수백만명에 달하는 동시접속 송출자와 동시접속 시청자에게까지 손쉽게 확장하는 것이 가능합니다. Stream Live를 이용하면 업계 표준인 RTMPS 프로토콜을 통해 모바일이나 데스크톱 환경에서 수백만 명의 시청자에게 영상을 바로 내보낼 수 있습니다. Stream Live는 ffmpeg 및 <a href="https://obsproject.com/" target="_blank">OBS</a> 등 여러분이 이미 사용 중인 라이브 영상 송출용 소프트웨어와 호환돼 구동합니다. 방송 내용은 자동으로 녹화가 이뤄지며 최적화 과정을 거쳐 Stream 플레이어를 통해 시청자에게 전달됩니다.</p>
+	<p>라이브 스트리밍 인프라를 새로 구축하는 경우라면 다음과 같은 문제에 대해 생각하는 것이 매우 중요합니다.</p>
+	<ol>
+		<li>“비디오 인코딩에 어떤 코덱을 사용할 것인가?”</li>
+		<li>“영상을 수집하고 송출하는데 어떤 프로토콜을 사용할 것인가?”</li>
+		<li>"다양한 구성 요소들이 대기 시간에 얼마나 큰 영향을 미칠 것인가?"</li>
+	</ol>
+	<p>Cloudflare는 사용자들이 이 같은 문제들에 대해 고민할 필요가 없도록, 답을 얻기 위해 엔지니어링 측면에서 노력하느라 시간을 허비하지 않도록 하기 위해 Stream Live를 개발했습니다. Stream Live는 고객의 기기와 가장 잘 호환이 되는 코덱과 스트리밍 프로토콜을 자동으로 선택해줌으로써 이처럼 성가시지만 중요한 문제들을 해결해 드립니다. Stream Live를 이용하면 라이브 방송을 내보낼 수 있는 횟수와 시청자의 수에 전혀 구속을 받을 필요가 없습니다. 다음으로 선풍적인 영상을 만들어 모바일 앱으로 공유하고자 하는 경우가 됐든 사내에서 전 직원 모임을 중계하고자 하는 경우가 됐든 Stream Live를 이용하면 비디오 인프라 구축과 유지 문제로 시간을 쏟을 필요 없이 서비스를 확장하는 것이 가능합니다.</p>
+	<h3 id="-">내장 플레이어 및 액세스 제어</h3>
+	<p>모든 라이브 영상에는 임베드 코드가 적용되기 때문에 이를 웹 사이트에도 이용할 수 있습니다. Stream Live는 업계를 대표하는 두 가지 HTTP 스트리밍 포맷, 즉 HLS와 DASH도 지원하기 때문에 자체 플레이어를 통해 사용자의 사용 환경을 세부적으로 제어할 수 있습니다.</p>
+	<p>사용자마다 주어지는 자체 만료 토큰화 링크를 통해 자신의 라이브 영상을 시청할 수 있는 대상을 제한할 수도 있습니다. 토큰화 링크를 생성할 때는 <a href="https://developers.cloudflare.com/stream/viewing-videos/securing-your-stream" target="_blank">시간 기반 만료, 지오펜싱, IP 제한</a> 등의 제약 조건을 설정할 수 있습니다. 온라인 학습 사이트나 비디오 공유 앱을 구축하는 경우에는 영상 시청 전에 인증 기능을 추가해 로그인한 사용자만 볼 수 있게 하는 것도 가능합니다. 라이브 콘서트 플랫폼을 만드는 경우라면 특정 국가 또는 지역의 시청자에게만 시청을 허용하는 계약을 맺을 수도 있습니다. Stream Live의 서명 토큰을 이용하면 복잡한 사용자 지정 규칙에서 벗어나지 않을 수 있습니다.</p>
+	<h3 id="--1">즉시 녹화 기능</h3>
+	<p>Stream Live에서는 라이브 스트리밍 방송이 끝난 후 녹화 기능이 나오기를 기다리지 않아도 됩니다. 방금 내보낸 라이브 영상이 1초도 안 되는 짧은 순간에 자동적으로 녹화물로 변환되기 때문에 그렇습니다. 시청자 입장에서는 즉시 녹화물에 액세스할 수 있기 때문에 놓친 부분을 바로 파악할 수 있습니다.</p>
+	<h3 id="--2">즉각적인 확장 기능</h3>
+	<p>여러분이 구축한 플랫폼에서 활동하는 방송자가 한 명이든 만 명이든 관계 없이 Stream Live는 여러분의 필요에 따라 확장이 가능합니다. 새로운 컴퓨팅 인스턴스를 추가하거나 가용 지역을 설정하거나 추가적인 소프트웨어 라이센스 협상 등을 고민할 필요가 없습니다.</p>
+	<p>자체적으로 구축한 레거시 라이브 영상 전송 파이프라인은 단 한곳의 위치에서 라이브 스트리밍 콘텐츠를 수집하고 인코딩하는 것이 일반적입니다. 멀리 떨어진 곳에서 수집된 영상의 경우 비디오 스트리밍이 불안정해집니다. 전 세계 시청자를 대상으로 할 경우 특히 문제가 됩니다. Cloudflare는 어느 위치에 있든 라이브 비디오를 가져오고 영상을 내보내는 작업을 위해 그에 필요한 소프트웨어를 실행하게 됩니다. 비디오 방송이 Cloudflare 네트워크에 올라오게 되면 Stream Live는 <a href="https://blog.cloudflare.com/250-cities-is-just-the-start/">Cloudflare 백본</a>과 <a href="https://www.cloudflare.com/products/argo-smart-routing/" target="_blank">Argo</a>를 이용해 안전성이 향상된 상태로 라이브 영상을 송출하게 됩니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/09/unnamed--1--2.png" class="kg-image"></figure>
+	<h3 id="15-">15초 수준의 짧은 대기 시간</h3>
+	<p>Stream Live를 사용했을 때, 방송된 영상이 시청자의 화면에 표시되는 시간은 비디오 인코더 설정에 따라 15초까지 줄어들 수 있습니다. 대기 시간이 짧으므로 채팅 및 Q&amp;A와 같은 대화형 기능을 응용 프로그램에 구축할 수 있습니다. 짧은 대기 시간은 회의, 스포츠, 콘서트 및 예배에 적합하지만, 더 다양한 상황에서의 활용도 얼마든지 가능합니다.</p>
+	<p>Cloudflare는 Stream Live의 작동으로 늘어나는 대기 시간을 0에 가깝게 줄이는데 주력하고 있습니다. Cloudflare 네트워크는 현재 <a href="https://blog.cloudflare.com/250-cities-is-just-the-start/">0.05초 이내에 전 세계 인구의 95%</a>에 연결될 수 있는 위치해 있습니다. 앞으로 수 개월 안에 방송자와 시청자 사이의 지연 시간을 현저히 줄일 수 있을 것으로 기대하고 있습니다. 마지막으로 라이브 스트리밍 시장에서 안정성을 당연시한다면 대기 시간이 중요합니다. Cloudflare는 전세계 250여개 지역에 있는 Cloudflare 네트워크를 통해 라이브 행사에 매우 중요한 안정성을 타의 추종을 불허하는 수준으로 제공합니다.</p>
+	<h3 id="--3">단순하면서도 예측 가능한 요금제</h3>
+	<p>Stream Live는 녹화한 스트리밍 영상의 분량과 시청한 영상 시간에 따라 요금이 정해지는 종량제 가격으로 제공됩니다.</p>
+	<ul>
+		<li>1,000분의 영상 녹화물을 저장할 때마다 월 $5의 비용이 발생합니다. 라이브로 스트리밍되는 영상은 자동으로 녹화가 됩니다. 라이브 스트리밍을 수집하는데 들어가는 추가 비용은 없습니다.</li>
+		<li>시청한 영상 1,000분 당 월 $1의 비용이 발생합니다.</li>
+		<li>예기치 못한 비용은 발생하지 않습니다. 레거시 비디오 파이프라인의 경우와는 달리 비디오 수집, 컴퓨팅(인코딩), 송신, 저장과 관련해 드러나지 않는 비용은 없습니다.</li>
+		<li>청구서 알림을 통해 Stream Live 사용료와 관련한 지출을 제어할 수 있으며 인증된 사용자의 경우에만 쓸 수 있는 서명 토큰을 생성새 시청을 제한할 수도 있습니다.</li>
+	</ul>
+	<p>Cloudflare Stream은 라이브 스트리밍을 추가 비용 없이 다양한 수준의 품질로 인코딩해줍니다. 이 때문에 시청자의 인터넷 속도는 다양할 수 있지만 시청자 모두가 원활한 영상을 즐길 수 있습니다. 시청자가 와이파이에서 모바일 네트워크로 이동할 경우에도 영상은 끊김 현상 없이 재생됩니다. 라이브 스트리밍 인프라를 제공하는 다른 플랫폼의 경우 전 세계 시청자를 대상으로 하면서 영상의 품질 수준을 올리게 되면 추가 비용을 요구하는 경향이 있습니다.</p>
+	<p>수천 명의 동시접속 방송자나 수백만 명의 동시접속 시청자를 대상으로 스트리밍 서비스를 하는 경우라면 대량 구매 할인이 가능하니 <a href="https://www.cloudflare.com/ko-kr/plans/enterprise/contact/" target="_blank">Cloudflare에 문의</a>해 주시기 바랍니다.</p>
+	<h3 id="stream-live-">Stream Live로 라이브 방송하기</h3>
+	<p>Stream Live는 Cloudflare의 모든 도메인에서 독립돼 운영됩니다. 이미 Stream Live 서비스를 구독할 수 있는 Cloudflare 계정을 보유하신 경우라면 <a href="https://dash.cloudflare.com/?to=/:account/stream" target="_blank">Stream Dashboard</a>에서 "Live Input" 탭을 클릭한 다음에 새로운 입력을 생성시키면 Stream Live를 이용한 방송을 시작할 수 있습니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/09/unnamed--1--2.png" class="kg-image" alt="Stream Live로 방송 시작하기"></figure>
+	<p>Cloudflare 계정이 없으시다면 <a href="https://dash.cloudflare.com/sign-up/stream" target="_blank">Cloudflare Stream에 등록</a>해주세요.</p>
+</div>

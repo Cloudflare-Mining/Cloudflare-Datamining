@@ -1,0 +1,37 @@
+<div class="post-content lh-copy gray1">
+	<!--kg-card-begin: markdown-->
+	<p><em>This is guest post from Roy Feintuch, Co-Founder &amp; CTO of Dome9</em></p>
+	<p><img alt="Dome9 + CloudFlare = Combined Security For Your Website and Web
+Server" src="https://blog.cloudflare.com/content/images/Dome9_Logo_PNG.png.scaled500.png" title="Dome9 + CloudFlare = Combined Security For Your Website and Web Server "><noscript><img alt="Dome9 + CloudFlare = Combined Security For Your Website and Web Server" src="http://blog.cloudflare.com/content/images/Dome9_Logo_PNG.png.scaled500.png" title="Dome9 + CloudFlare = Combined Security For Your Website and Web Server "></noscript></p>
+	<p>Dome9 is a new kind of security management service that protects your cloud or hosted server firewall, including all the admin services for all your server's applications (e.g., phpMyAdmin). It's a great complement to the web security that CloudFlare provides.</p>
+	<p>Like CloudFlare, Dome9 is super simple. You simply <a href="https://www.cloudflare.com/apps/dome9" target="_blank">create a free Dome9 account</a>and install a lightweight agent on your host machine. After that, Dome9 will secure your server's host firewall, or your EC2 security groups -- Dome9 can work agentless on EC2.</p>
+	<p>The magic of Dome9 is its ability to lock down all your administrative services so hackers can't brute force attack (or exploit a vulnerability of) SSH, RDP, MySQL and whatever else you've got running. Dome9 can open those services on demand (with just the click of a button) only for a specific user, service, and time period.</p>
+	<p>Here's an optimal server security policy you might set with Dome9:</p>
+	<ul>
+		<li>Port 80 - Open *only* for CloudFlare's proxy servers</li>
+		<li>Port 443 - Open *only* for CloudFlare's proxy servers</li>
+		<li>Port 22 (SSH) - Closed, and opened only on demand</li>
+		<li>Port 8080 (phpMyAdmin) - Closed, and opened only on demand</li>
+		<li>All the rest - Closed</li>
+	</ul>
+	<p>With this, your web server only communicates with CloudFlare and whomever you authorize.</p>
+	<p>How hard is it to set this up? It takes just a few minutes.</p>
+	<ol>
+		<li>Activate your Dome9 account [2 clicks thanks to <a href="https://www.cloudflare.com/apps/dome9" target="_blank">CloudFlare Apps</a>]</li>
+		<li>Install the Dome9 Agent on your server (Linux and Windows are supported). [3 minutes]</li>
+		<li>In Dome9 Central, create a ‘Web Servers' security group with the above policy. [2 minutes]</li>
+		<li>Attach your server to the new security group. [2 clicks]</li>
+	</ol>
+	<p>Setting a service to ‘On-Demand' is as easy as clicking a button.</p>
+	<h3 id="dome9magicipsallowtrafficonlythroughthecloudflarenetwork">Dome9 Magic IPs allow traffic only through the CloudFlare network</h3>
+	<p>You're probably wondering how to allow only <a href="https://www.cloudflare.com/ips" target="_blank">CloudFlare IPs</a>? That's where Dome9's Magic IPs come into play.</p>
+	<p>Magic IPs are special IP address lists that Dome9 creates and maintains. We've created a special Magic IP for CloudFlare customers: {cloudflare}</p>
+	<p>With the {cloudflare} Magic IP you never have to worry about changes to CloudFlare's proxy IP addresses – Dome9 maintains them automatically.</p>
+	<p>Hence, your port 80 policy within Dome9 will look like this:</p>
+	<p><img alt="Dome9 + CloudFlare = Combined Security For Your Website and Web Server" src="https://blog.cloudflare.com/content/images/image01.png.scaled500.png" title="Dome9 + CloudFlare = Combined Security For Your Website and Web Server "><noscript><img alt="Dome9 + CloudFlare = Combined Security For Your Website and Web
+Server" src="http://blog.cloudflare.com/content/images/image01.png.scaled500.png" title="Dome9 + CloudFlare = Combined Security For Your Website and Web Server "></noscript></p>
+	<p>With CloudFlare and Dome9 you can kick your cloud or hosted server's security up a notch with fun, easy to use, next generation security services.</p>
+	<p>Visit the <a href="https://www.cloudflare.com/apps/dome9" target="_blank">Dome9 App page</a> today to get started.</p>
+	<p></p>
+	<!--kg-card-end: markdown-->
+</div>

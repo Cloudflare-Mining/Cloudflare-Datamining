@@ -1,0 +1,42 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/09/Cloudflare-Birthday-Week-2.png" class="kg-image"></figure>
+	<p></p>
+	<p>Cloudflare于2010年9月27日<a href="https://www.youtube.com/watch?v=bAc_5gMwzuM" target="_blank">推出</a>。从那时起，我们就把9月27日定为我们的生日。这个星期四是我们的8岁生日。</p>
+	<p>从我们的第一个生日开始，我们就利用这个机会推出新产品或服务。多年来，我们得出的结论是，庆祝我们生日的正确方式，与其推出我们可以从中赚钱的产品，不如做一些回馈用户和整个互联网的礼物。我的联合创始人米歇尔<a href="https://blog.cloudflare.com/cloudflare-turns-8/">昨天在一篇很棒的博客文章中提到了这一传统</a>。</p>
+	<p>就我个人而言，我在Cloudflare最自豪的时刻之一是在2014年我们生日那天，我们<a href="https://blog.cloudflare.com/introducing-universal-ssl/">为所有用户免费提供HTTPS支持</a>。当时，人们不断地说我们疯了。坦率地说，在内部，我们对我们是否疯了有过激烈的争论，因为加密是人们从免费账户升级到付费账户的主要原因。</p>
+	<p>但这是正确的做法。在我们看来，网络从一开始就没有加密，这是一个缺陷。如今，差不多整整四年过去了，由于Let's Encrypt等伟大项目的领导、谷歌、苹果、微软和Mozilla的浏览器团队，以及越来越多的主机和SaaS提供商免费构建了对HTTPS的支持，web加密率已接近80%。我很自豪我们是引领这一潮流的领导者。</p>
+	<p>今天是另一个我希望日后回顾会令我感到自豪的一天，因为今天我们希望帮助大众开创一种新的趋势，使加密的网络更加私密和安全。要理解这一点，您必须了解为什么当前存在的加密网络仍会大量泄露您的浏览历史记录。</p>
+	<h2 id="-">你的浏览历史有多私密?</h2>
+	<p>当您通过HTTPS访问一个站点时，您希望没有人监听您和您的连接终止的位置之间的操作的。某种程度上来说，这是HTTPS能做到的。如果您访问您的银行网站，HTTPS可以有效地防止发送到或从该网站发送的内容(例如，您的用户名和密码或您的银行帐户余额)泄露给ISP或监视您网络连接的任何人。</p>
+	<p>尽管发送到HTTPS站点或从HTTPS站点接收的内容是受到保护的，但是还有两种方式可以很容易地观察到您访问过该站点。传统上，其中一种是通过DNS。默认情况下，DNS查询是不加密的，因此您的ISP或任何其他人都可以看到您要到达网络上的哪个地方。这就是为什么去年4月，我们发布了<a href="https://one.one.one.one/" target="_blank">1.1.1.1</a>——一个免费的(而且<a href="https://www.dnsperf.com/#!dns-resolvers" target="_blank">速度很快的</a>)公共DNS解析器，支持DNS over TLS和DNS over HTTPS。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/09/Cloudflare_resolver-1111-april-to-sept-2018.png" class="kg-image"></figure>
+	<p></p>
+	<p><a href="https://one.one.one.one/" target="_blank">1.1.1.1</a> 已经取得了巨大的成功，我们显著提高了通过加密连接发送DNS查询的百分比。然而，批评人士正确地指出，你访问的网站的身份仍可能以其他方式泄露。最有问题的是所谓的服务器名称指示(SNI)扩展。</p>
+	<h2 id="-sni">为什么使用SNI</h2>
+	<p>从根本上说，SNI的存在是为了允许您在一个IP地址上托管多个加密的网站。早期的浏览器没有包含SNI扩展。因此，当发出建立HTTPS连接的请求时，web服务器没有太多信息来继续进行，并且只能回收web服务器正在监听的每个IP地址的单个SSL证书。</p>
+	<p>这个问题的一个解决方案是，创建具有多个主题备用名称(SANs)的证书。这些证书将加密多个域的流量，这些域都可以托管在同一个IP上。Cloudflare就是这样处理来自不支持SNI的旧浏览器的HTTPS流量的。然而，我们限制这一功能仅供我们的付费客户使用，这和SANs不是一个很好的解决方案的原因一样：它们是一种黑客攻击，管理起来很麻烦，如果包含了太多域，可能会降低性能。</p>
+	<p>最具弹性的解决方案是SNI。我认为的一个合理的类比是，把它想象成一个邮政信封。信封里的东西是受保护的，邮差是看不到的。而信封外面是街道地址，邮差根据它来将信封送到正确的建筑位置。在互联网上，web服务器的IP地址就相当于街道地址。</p>
+	<p>然而，如果你住在一个多单元的大楼里，仅仅通过一个街道地址是不足以把信封送到正确的收件人手中的。为了补充街道地址，你要写上一个公寓号码或收件人的名字。这相当于SNI。如果web服务器承载多个域，SNI可以确保将请求路由到正确的站点，以便返回正确的SSL证书，从而能够加密和解密任何内容。</p>
+	<h2 id="nosey-">Nosey网络</h2>
+	<p>SNI的规范是由IETF在2003年引入的，浏览器在接下来的几年里推出了对它的支持。在当时，这似乎是一个可以接受的折衷的方案。绝大多数互联网流量都没有加密。即使扩展本身没有加密，添加TLS扩展使支持加密变得更容易似乎也是一种不错的交易。</p>
+	<p>但是，今天，HTTPS覆盖了几乎80%的网络流量，SNI把你上网的每个站点都泄露给了ISP和其他在线监听者，这一事实已经成为一个明显的隐私漏洞。只要知道你访问了哪些网站就可以非常准确地了解你是谁，从而产生隐私和安全风险。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/09/Cloudflare_https_with_plaintext_dns_tls12_plaintext_sni.png" class="kg-image"></figure>
+	<p></p>
+	<p>在美国，根据奥巴马政府末期通过的联邦通信委员会(FCC)规定，互联网服务提供商收集客户浏览数据的能力曾一度受到限制。然而，互联网服务提供商游说了国会，2017年4月，特朗普总统签署了一项国会决议，废除了这些保护措施。随着互联网服务提供商越来越多地<a href="https://arstechnica.com/information-technology/2017/06/oath-verizon-completes-4-5-billion-buy-of-yahoo-and-merges-it-with-aol/" target="_blank">收购媒体公司</a>和<a href="https://www.appnexus.com/company/pressroom/att-to-acquire-appnexus" target="_blank">针对企业广告</a>，并能够从他们的渠道中挖掘数据，这成了一项对互联网服务提供商越来越有吸引力的业务，对我们所有人来说，这也是一个日益令人不安的隐私威胁。</p>
+	<h2 id="-sni-">关闭SNI隐私漏洞</h2>
+	<p>5月3日，在我们发布<a href="https://one.one.one.one/" target="_blank">1.1.1.1</a>大约一个月后，我阅读了大众对我们新服务的评论。尽管这篇文章赞扬了<a href="https://one.one.one.one/" target="_blank">1.1.1.1</a>以隐私为导向的事实，但它得出的结论多少有些虚无主义，它认为这一切都是徒劳的，因为ISP仍然可以通过监视SNI来监视您。沮丧之余，我匆匆给Cloudflare的一些工程师和Mozilla（一个我们一直致力于帮助加密DNS的项目）的高级团队发了一封电子邮件。我邮件的总结如下:</p>
+	<blockquote>我的产品需求很简单：如果Firefox连接到Cloudflare IP，那么在发送给我们之前，我们会给您一个用于加密SNI条目的公钥。至于如何将它扩展给其他供应商使用?我不知道，但我们必须重新开始。形成初步的共识并运行代码，你说对吧?</blockquote>
+	<p>事实证明这<a href="https://blog.cloudflare.com/encrypted-sni">比我所想的要复杂一些</a>。然而，今天我很自豪地宣布，加密SNI（ESNI）已经在Cloudflare的网络上运行了。本周晚些时候，我们预计Mozilla的Firefox将成为第一个在Nightly版本中支持新协议的浏览器。在接下来的几个月里，该计划将逐渐成为主流。不仅仅是Mozilla，所有主要浏览器的生产商都对此产生了浓厚的兴趣，我希望随着时间的推移，它们都能增加对ESNI的支持。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/09/Cloudflare_https_with_secure_dns_tls13_encrytped_sni-1.png" class="kg-image"></figure>
+	<p></p>
+	<h2 id="--1">寄望于开创另一个趋势</h2>
+	<p>虽然我们是第一个支持ESNI的，但并不是只有我们在做这件事情。我们与来自苹果(Apple)、Fastly、Mozilla以及其他与我们一样关心互联网隐私的业内人士的优秀团队合作开发了ESNI。虽然Cloudflare是第一个支持ESNI的内容网络，但这并不是一个专有的协议。它正在作为一项<a href="https://datatracker.ietf.org/doc/draft-ietf-tls-esni/?include_text=1" target="_blank">IETF Draft RFC</a>被研究中，我们希望其他人也能帮助我们将草案正式化并实现该标准。如果您对ESNI背后的技术细节感兴趣，可以从<a href="https://blog.cloudflare.com/encrypted-sni/">我的同事Alessandro Ghedini刚刚发布的一篇很棒的博客文章</a>中了解更多的内容。最后，在今天过后或者周末浏览器支持启用ESNI时，您可以使用我们的<a href="https://encryptedsni.com/" target="_blank">简易ESNI测试工具</a>来测试它。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/09/Cloudflare_esni-2.png" class="kg-image"></figure>
+	<p></p>
+	<p>四年前，我很自豪我们帮助开创了一种趋势，如今几乎所有的网络都被加密了。今天，我希望我们再次帮助开创一种趋势——这一次是让加密的网络更加私密和安全。</p>
+	<p><a href="https://blog.cloudflare.com/subscribe/"><em>订阅博客，</em></a><em>了解我们在生日周公告中的所有每日更新内容。</em></p>
+</div>

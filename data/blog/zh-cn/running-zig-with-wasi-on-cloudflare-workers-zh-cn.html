@@ -1,0 +1,105 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/08/image1-4.png" class="kg-image" alt="Running Zig with WASI on Cloudflare Workers"></figure>
+	<p>在阅读最近关于 <a href="https://blog.cloudflare.com/zh-cn/announcing-wasi-on-workers-zh-cn/">Workers 中的 WASI 支持</a>的公告之后，我决定探索一下，怎样才能让 <a href="https://ziglang.org/" target="_blank">Zig</a> 中编写的代码作为 Worker 运行，结果发现毫不费力就能做到。本文记录了我作为 Zig 的新用户所采用的过程。我惊奇地发现，Cloudflare Workers 是一个多语言平台，可以采用自己喜欢的语言或者正在学习的语言来编写程序！</p>
+	<h3 id="-">你好，世界！</h3>
+	<p>我绝非 Zig 专家，实不相瞒，我刚刚开始学习这门语言，但我们总归要迈出第一步。所以，如果我的 Zig 代码有疏漏之处，请多包涵。我的目标是使用 Zig 构建一个真实的小程序，并将其部署到 Cloudflare Workers 上。然后看看我从一片空白开始，到写出富有成效的代码，需要多长时间。</p>
+	<p>我的目标谈不上宏伟，就只是从 stdin 读取一些文本，然后打印到 stdout 并加上行号，就像运行 <code>cat -n</code> 那样。但这确实表明 Workers 范式非常简单。这个 Zig 程序在笔记本电脑的命令行上以及作为部署到 Cloudflare Workers 上的 HTTP API 时采用完全相同的方式运行。</p>
+	<p>我编写的代码如下。它从 stdin 读取一行，将其原封不动地输出，只是加上了行号前缀。没有更多输入时，程序终止。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>const std = @import("std");
+
+pub fn main() anyerror!void {
+	// setup allocator
+	var gpa = std.heap.GeneralPurposeAllocator(.{}){};
+	defer std.debug.assert(!gpa.deinit());
+	const allocator = gpa.allocator();
+
+	// setup streams
+	const stdout = std.io.getStdOut().writer();
+	const in = std.io.getStdIn();
+	var reader = std.io.bufferedReader(in.reader()).reader();
+
+	var counter: u32 = 1;
+
+	// read input line by line
+	while (try reader.readUntilDelimiterOrEofAlloc(allocator, '\n', std.math.maxInt(usize))) |line| {
+    	    defer allocator.free(line);
+    	    try stdout.print("{d}\t{s}\n", .{counter, line});
+    	    counter = counter + 1;
+	}
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>要构建 Zig 代码，就需要创建一个 <code>build.zig</code> 文件来定义如何构建项目。就这个小案例而言，我选择从源文件构建可执行文件</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>const std = @import("std");
+
+pub fn build(b: *std.build.Builder) void {
+	const target = b.standardTargetOptions(.{});
+	const mode = b.standardReleaseOptions();
+
+	const exe = b.addExecutable("print-with-line-numbers", "src/main.zig");
+	exe.setTarget(target);
+	exe.setBuildMode(mode);
+	exe.install();
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>通过运行 <code>zig build</code>，编译器将运行并在 <code>zig-out/bin</code> 下输出二进制文件</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>$ zig build
+
+$ ls zig-out/bin
+print-with-line-numbers
+
+$ echo "Hello\nWorld" | ./zig-out/bin/print-with-line-numbers
+1    Hello
+2    World
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h3 id="wasi">WASI</h3>
+	<p>下一步就是在 Workers 上运行此程序，但首先我需要将其编译到具有 WASI 支持的 WASM 中。</p>
+	<p>幸好，在最新版本的 Zig 中，这个功能开箱即用，所以可以直接让编译器使用 <code>wasm32-wasi</code> 目标构建可执行文件，这样生成的文件可以在任何兼容 WASI 的 WebAssembly 运行时上运行，例如 <a href="https://wasmtime.dev/" target="_blank">wasmtime</a>。</p>
+	<p>这同一个 .wasm 文件可在 wasmtime 中运行并直接部署到 Cloudflare Workers。这样一来，就可以无缝地编译、测试和部署。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>$ zig build -Dtarget=wasm32-wasi
+
+$ ls zig-out/bin
+print-with-line-numbers.wasm
+
+$ echo "Hello\nWorld" | wasmtime ./zig-out/bin/print-with-line-numbers.wasm
+1    Hello
+2    World
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h3 id="workers-zig">Workers 上的 Zig</h3>
+	<p>二进制文件准备好之后，最后需要使用 <a href="https://blog.cloudflare.com/zh-cn/wrangler-v2-beta-zh-cn/">Wrangler2</a> 在 Cloudflare Workers 上运行它。这很简单，只需在 workers.dev 上发布 .wasm 文件即可。如果没有 <a href="https://workers.dev/" target="_blank">workers.dev</a> 帐户，可以按照我们<a href="https://developers.cloudflare.com/workers/get-started/guide/" target="_blank">入门指南</a>上的教程，几分钟就能完成从编写代码到部署的全过程！</p>
+	<p>事实上，我注册帐户之后，只需完成前两步，即安装 Wrangler 和登录。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>$ npx <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1f686d7e7178737a6d5f687e6c72">[email&nbsp;protected]</a> login
+Attempting to login via OAuth...
+Opening a link in your default browser: https://dash.cloudflare.com/oauth2/auth
+Successfully logged in.
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>然后，我运行了以下命令来发布我的 Worker：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>$ npx <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="82f5f0e3ece5eee7f0c2f5e3f1ef">[email&nbsp;protected]</a> publish --name print-with-line-numbers --compatibility-date=2022-07-07 zig-out/bin/print-with-line-numbers.wasm
+Uploaded print-with-line-numbers (3.04 sec)
+Published print-with-line-numbers (6.28 sec)
+  print-with-line-numbers.workers.dev
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>完成这一步之后，Worker 即可开始运行，并可通过调用上面输出中打印的 URL 来调用 Worker。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>echo "Hello\nWorld" | curl https://print-with-line-numbers.workers.dev -X POST --data-binary @-
+1    Hello
+2    World
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>调用成功！</p>
+	<h3 id="--1">总结</h3>
+	<p>整个过程十分简单，这让我惊叹不已。</p>
+	<p>首先，我为笔记本电脑的架构编译了二进制文件，然后向编译器传递一个标志来将代码编译到 WebAssembly 中，最后，<strong>不用改动任何代码</strong>，就可以让程序在 Workers 上运行。</p>
+	<p>诚然，这个程序并不怎么复杂，能够做的事情无非是从 STDIN 读取内容并写入 STDOUT，但这让我对其潜力充满信心，尤其随着 WASI 这样的技术趋于成熟，相信它能打造无限可能。</p>
+</div>

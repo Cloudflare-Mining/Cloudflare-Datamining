@@ -1,0 +1,27 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image1-64.png" class="kg-image"></figure>
+	<p>今天，我们很高兴地宣布，Cloudflare 和 Aruba 正在携手合作开发一款解决方案，使 Aruba 客户能够将 EdgeConnect SD-WAN 与 Cloudflare 的全球网络连接起来，以通过 <a href="https://www.cloudflare.com/cloudflare-one/" target="_blank">Cloudflare One</a> 进一步保障他们的企业流量。无论组织是需要使用 Cloudflare 的<a href="https://www.cloudflare.com/products/zero-trust/gateway/" target="_blank">安全 Web 网关</a>和 <a href="https://www.cloudflare.com/magic-firewall/" target="_blank">Magic Firewall</a> 来保障分支机构的互联网流量，还是要通过 Magic Firewall 针对分支机构间的东/西向流量实施防火墙策略，我们都能满足要求。客户不但可以从 Cloudflare 获得一致的全球安全，并且可以从他们的 Aruba EdgeConnect 设备对其分支机构间和互联网流量策略进行细粒度控制，这可让客户十分放心。</p>
+	<h3 id="sd-wan-">SD-WAN 解决方案</h3>
+	<p>软件定义的广域网 (SD-WAN) 是广域网 (WAN) 的演变，它简化了底层架构。与租用费昂贵并使用 MPLS 链路的传统广域网架构模型不同，SD-WAN 可以有效地结合使用专用线路和公共互联网。它结合这二者的优点，提供集成的解决方案，使网络管理员能够轻松管理和扩展其网络和资源。</p>
+	<h3 id="aruba-edgeconnect-sd-wan-">Aruba 的 EdgeConnect SD-WAN 解决方案</h3>
+	<p>我们很高兴地宣布我们的第一个增强型 SD-WAN 集成已经面世。Aruba 的 EdgeConnect 解决方案是<a href="https://www.arubanetworks.com/analyst-reports/sd-wan-edge-gartner-magic-quadrant-2021" target="_blank">广域网边缘基础设施</a>的行业领头羊。Aruba 的解决方案提供物理和虚拟设备以在广域网中创建逻辑网络覆盖，使网络管理员能够创建多个不同的流量配置文件，以控制企业应用程序流量在分支机构和互联网之间的转发方式。在 Aruba EdgeConnect 解决方案中，Aruba Orchestrator 用于配置和管理整个 SD-WAN，包括位于分支机构的 EdgeConnect 设备。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/03/image2-55.png" class="kg-image" alt="EdgeConnect UI showing overlays directing traffic to Cloudflare or to local breakout.">
+		<figcaption><em><em>EdgeConnect UI，显示将流量引导至 Cloudflare 或本地疏导的覆盖图。</em></em></figcaption>
+	</figure>
+	<h3 id="cloudflare-one-">Cloudflare One 入口</h3>
+	<p><a href="https://www.cloudflare.com/cloudflare-one/" target="_blank">Cloudflare One</a> 统一云原生安全和访问服务，以满足当今要求苛刻且不断变化的架构需求。我们的 <a href="https://www.cloudflare.com/products/zero-trust/" target="_blank">Zero Trust</a> 和 <a href="https://www.cloudflare.com/network-services/" target="_blank">Magic 网络服务</a> 产品通过智能路由和流量加速，将远程用户、分支机构和数据中心安全地连接到他们（它们）所需的应用程序和互联网资源——所有这些都通过在一个控制平面上将网络和零信任安全策略应用至应用程序访问和互联网浏览来实现。</p>
+	<p>那么新功能有哪些呢？我们之前宣布了将客户流量<a href="https://blog.cloudflare.com/network-onramp-partnerships/">接入</a> Cloudflare One 的许多方法。对于此集成，我们的目标很简单：帮助我们的共同客户和潜在客户利用他们现有的 SD-WAN 投资，使他们能够将其设备连接到 Cloudflare，以在其所有业务实体中获得额外的组织安全性和控制。这为我们的客户提供了他们所需的安全和控制，而无需采用破坏性的替代解决方案。</p>
+	<h3 id="-">集成的解决方案</h3>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image3-26.png" class="kg-image"></figure>
+	<p>在较高级别，在每个分支机构或公共云中的 EdgeConnect 设备与 Cloudflare 边缘之间建立隧道（Anycast GRE 或 IPSec）。这意味着在地球上任何地方，这些设备现在已连接到最近的 Cloudflare 数据中心。然后，网络管理员使用 Aruba Orchestrator 的<a href="https://www.silver-peak.com/sites/default/files/UserDocuments/WAN-OP-HTML/content/business_intent_overlays_bio.htm" target="_blank">商业意图覆盖层</a>来创建直观的策略，它们可自动识别应用程序流量并将其引导到 Cloudflare。例如，客户可以选择进行比对并通过已建立的隧道将特定的互联网流量发送到 Cloudflare，同时确保其他流量类型可以通过其他 EdgeConnect 接口送出。这可以直接送出到其他办事处中的其他 EdgeConnect 设备、其他服务提供商，也可以本地连接到互联网，具体取决于与其他流量配置文件匹配的覆盖层。一个典型的用例是，业务应用程序通过已建立的隧道，而视频流可能直接进入互联网。</p>
+	<p>完整的集成详细信息可在我们的<a href="https://developers.cloudflare.com/magic-wan/partners/aruba-edgeconnect/" target="_blank">指南</a>中找到。在将来，我们希望加强这一集成，使得 EdgeConnect 设备只需要授权凭据，就可以使用 Magic WAN 管理 API 自动配置自身。</p>
+	<h3 id="--1">客户优势</h3>
+	<p><em><strong>简单：</strong></em>与我们合作的主要好处是，能够使用客户已经拥有并熟悉的 SD-WAN 设备连接到 Cloudflare 的全球边缘并且操作简单。客户可能已经拥有全面的 SD-WAN 部署，并与各种目的地、服务和云之间有流量往来。Cloudflare 以及 Magic WAN 和 Cloudflare Zero Trust 服务的好处现在可以轻松地融入这种网络拓扑结构中。</p>
+	<p><em><strong>安全和控制：</strong></em>对于发送到 Cloudflare 的流量，网关和访问策略使安全更加强健、更具针对性并且更无缝衔接。Cloudflare 的仪表板提供单个面板，其中提供策略管理、日志记录和分析等功能，在提供广泛的安全粒度的同时保持了易用性。网关策略类型包括 DNS、网络和 HTTP(s)。还提供了远程浏览器隔离，以帮助保护最终用户设备免受恶意软件和关键的零日漏洞等互联网威胁。Access 应用程序继续允许客户为应用程序创建条件式零信任策略，无论这些应用程序是公开托管、内部托管还是基于 SaaS。Magic WAN 和 Magic Firewall 可以进一步为互联网或分支机构间流量提供先进的基于云的网络防火墙功能。</p>
+	<h3 id="--2">速度和性能</h3>
+	<p>在过去，用复杂且租赁费用昂贵的线路或 MPL 凑成企业网络令人头疼，现在这个问题已经解决了。通过我们新的 SD-WAN 集成，将分支机构同时连接到另一个分支机构和云变得前所未有的容易。EdgeConnect 设备和 Cloudflare 之间有一个简单的 GRE 或 IPSec 隧道，每个分支机构位置现在都利用 Cloudflare 的高性能且安全的全球 Anycast 网络作为其 WAN 主干网——该连接跨越 100 多个国家/地区的 250 多个城市，在全球 95% 的互联网连接人口范围内运作。</p>
+	<h3 id="--3">总结</h3>
+	<p>我们的联合解决方案通过在全球最大、速度最快的全球边缘网络上插入我们的云原生零信任广域网架构，扩展了现有的 Aruba EdgeConnect SD-WAN 功能，以确保组织的安全。</p>
+	<p>如果贵公司目前使用 EdgeConnect SD-WAN 设备（或任何 SD-WAN 设备），并希望在网络转型中更进一步，我们很乐意与您洽谈。请随时通过以下网址联系我们：<a href="https://www.cloudflare.com/partners/technology-partners/aruba/" target="_blank">https://www.cloudflare.com/partners/technology-partners/aruba/</a>。</p>
+	<blockquote><em>“<strong>作为慧与（Hewlett Packard Enterprise）旗下公司的 Aruba 很高兴能与 Cloudflare 合作开发解决方案，使我们的客户能轻松地部署 Aruba EdgeConnect SD-WAN 平台，作为到 Cloudflare Magic WAN 和 Magic Firewall 的企业连接入口。这一新解决方案的基础是 Aruba EdgeConnect 平台对领先云连接和安全服务的一流集成，其将支持客户利用 Cloudflare 的全球边缘网络来保护和加速云负载。</strong>”</em><br>- Fraser Street，Aruba WAN 技术联盟主管</blockquote>
+</div>

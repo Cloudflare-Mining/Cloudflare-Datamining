@@ -1,0 +1,26 @@
+<div class="post-content lh-copy gray1">
+	<p>Time To First Byte通常用于测量Web服务器响应请求的速度，而且公共Web测试服务会报告该请求。（理论上）响应的越快Web服务器越好。但理论并不是很完善。</p>
+	<p>维基百科将Time To First Byte <a href="https://en.wikipedia.org/wiki/Time_To_First_Byte" target="_blank">定义</a>为“从虚拟用户发出HTTP请求到浏览器接收到页面的第一个字节的持续时间”。但是，流行的网页测试网站实际报告的究竟是什么的结果呢？为了找到答案，我们创建了一个测试服务器，在HTTP响应中插入延迟，用以找出实际测量的内容。令人吃惊的是，TTFB并不是一个有效的衡量指标。</p>
+	<p>当Web浏览器向Web服务器请求页面时，它会发送请求本身以及一些请求头，这些请求头指定了响应的可接收格式之类的内容。服务器响应以更多的请求头（包含有关页面的信息），后附带有状态行（通常是HTTP / 1.1 200 OK表示页面可用），最后才是页面内容。</p>
+	<p>CloudFlare的TTFB测试服务器的行为略有不同。当它收到请求时，它会发送HTTP / 1.1 200 OK（H）的第一个字母，然后等待10秒钟，然后再发送其余的请求头和页面本身。（你可以在<a href="https://github.com/jgrahamc/ttfb" target="_blank">这里</a>获取TTFB服务器的代码;它是用Go编写的）。</p>
+	<p>如果你用<a href="http://www.webpagetest.org/" target="_blank">WebPageTest</a>从CloudFlare TTFB服务器下载页面，你就会发现 WebPageTest报告的TTFB为接收到H的时间（而不是页面本身实际发送的时间），从十秒的等待时间你就很容易可以看出这一点。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/07/Screen_Shot_2012-07-02_at_9.49.22_AM.png.scaled500.png" class="kg-image"></figure>
+	<p></p>
+	<p><a href="http://www.gomeznetworks.com/custom/instant_test.html" target="_blank">gomez</a>也报告了完全相同的数字。</p>
+	<p>报告的TTFB不是接收到页面的第一个数据字节的时间，而是HTTP响应的第一个字节到达的时间。这两者是很不一样的，因为响应请求头可以非常快速地生成，但其实是页面数据影响着这一最重要的指标：用户查看页面的速度。</p>
+	<p>在CloudFlare，我们大量地使用着nginx，而在调查TTFB时，使用或不使用压缩的情况下来自nginx的TTFB存在显着差异。网页的Gzip压缩大大减少了网页下载所需的时间，但压缩本身需要付出代价。尽管网页的完整下载更快了，但压缩的成本也导致TTFB更大。</p>
+	<p>为了说明此情况，我们采用了最大的维基百科页面（<a href="https://en.wikipedia.org/wiki/List_of_Advanced_Dungeons_%26_Dragons_2nd_edition_monsters" target="_blank">高级龙与地下城第二版怪物列表</a>）并分别使用开启和不开启gzip压缩的nginx服务。下表显示了打开和关闭压缩情况下的TTFB和总下载时间。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>                          |  TTFB   |  Page loaded
+------------------------- | ------- | -------------
+No compression (gzip off) | 213us   | 43ms
+Compressed (gzip on)      | 1.7ms   | 8ms
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>请注意，如果使用gzip压缩，页面下载速度会提高5倍，但TTFB却高出8倍。那是因为nginx在发送HTTP头之前需要等待压缩开始; 当压缩关闭时，它才会立即发送请求头。因此，如果只看TTFB，你就会觉得压缩页面并不好。但是如果看下载时间，你会得到相反的结论。</p>
+	<p>从最终用户的角度来看，TTFB几乎没用。在这个（实际）示例中，实际上TTFB与下载时间负相关：TTFB越大，下载时间越快。我们发现，如果我们使用nginx源代码，我们可以作假，而且快速地发送请求头。这样做能够让我们的TTFB即使压缩了页面也不会显得太长，但我们不会这样做：使用nginx源代码使得TCP<a href="https://blog.cloudflare.com/why-mobile-performance-is-difficult">慢速启动</a>时会浪费掉一个有价值的数据包，这会影响终端用户体验。这个行为可能会让CloudFlare在某些测试中看起来很好，但实际上却影响了终端用户的体验。</p>
+	<p>也许TTFB的唯一用处是用于观察趋势。并且=最好在服务器本身进行TTFB测量，这样就消除了网络延迟。通过研究其趋势，我们可以发现Web服务器上是否存在问题（例如当它变得过载）。</p>
+	<p>远程测量TTFB意味着您还要同时测量网络延迟，这会模糊TTFB测量实际指代的内容：Web服务器能够响应请求的速度。</p>
+	<p>在CloudFlare，TTFB不是一个重要的指标。我们希望优化终端用户体验，因此我们更关注真正的终端用户页面可见的时间。我们将推出专门用于监控终端用户体验的工具，使得我们所有的发布者都能监测到他们的访问者的用户体验。</p>
+</div>

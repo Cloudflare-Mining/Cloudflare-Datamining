@@ -1,0 +1,35 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image5-1.png" class="kg-image" alt="Improving the WAF with Machine Learning"></figure>
+	<p>Cloudflare 每秒處理 3,200 萬次 HTTP 請求，並在網頁伺服器名為 <a href="https://w3techs.com/technologies/details/ws-cloudflare" target="_blank">W3Techs</a> 的所有網站上，有超過 22% 的選用比例。Cloudflare 定位獨特，可在 5 部網際網路設備中保護 1 部的流量，同時識別隨之引發的威脅並追蹤其中的進化和突變情況。</p>
+	<p>Web Application Firewall (WAF) 位於 Cloudflare 網路安全工具箱的核心，且 <a href="https://www.cloudflare.com/en-gb/learning/ddos/glossary/web-application-firewall-waf/" target="_blank">WAF</a> 的關鍵功能為受管理規則：這是一系列由 Cloudflare 分析師團隊建立的規則，可在顯示已知攻擊模式時封鎖請求；且由於經過廣泛測試以大幅度減少漏判（未找出攻擊）和誤判（沒有攻擊時卻找出攻擊），因此極度適合既定的攻擊手段。在缺點方面，受管理規則通常會未找出攻擊變體（亦稱為旁路），因為靜態 RegEx 型規則在本質上對引入的簽名變體相當敏感，例如透過模糊技術的方法。</p>
+	<p>我們在釋出<a href="https://blog.cloudflare.com/zh-tw/exploitation-of-cve-2021-44228-before-public-disclosure-and-evolution-of-waf-evasion-patterns-zh-tw/"> log4j 防護時發現了問題</a>，並在公開漏洞後幾天內，必須在攻擊者試圖繞過 WAF 時，持續更新規則以適應變體和突變的情況。此外，針對規則執行最佳化需要大量的人為干預操作，且通常只會在識別甚至利用旁路後，才能發揮作用，保護措施因此變得更加被動（而非主動執行）。</p>
+	<p>在此隆重推出全新工具，能夠在無人為涉入的情況下，以及在濫用之前識別旁路和惡意酬載，讓受管理規則集（例如 OWASP 和 Cloudflare 受管理規則集）更為完善。客戶現在可以存取機器學習模型中的訊號，且該模型已針對依受管理規則和增強資料分類的良好/惡意流量完成訓練，以便為更加廣泛的新舊攻擊提供更完善的保護。 </p>
+	<p>歡迎使用我們全新的機器學習 WAF 偵測。 </p>
+	<p>企業、專業、商業客戶可透過搶先體驗取得全新偵測功能。如有信去嘗試看看，請<a href="https://www.cloudflare.com/zh-tw/lp/waf-ml/" target="_blank">加入等候名單</a>。長期來說，這可供更高層級的客戶使用。</p>
+	<h3 id="-waf">第一款自學 WAF</h3>
+	<p>全新偵測系統額外增強了現有受管理規則集，其提供三項主要優勢：</p>
+	<ol>
+		<li>可運行於您所有的流量。每項請求的分數皆取決於其包含 SQLi 或 XSS 等攻擊的可能性。這實現了可讓您在整體流量中探索趨勢和模式的全新 WAF 分析體驗。</li>
+		<li>偵測率會根據過去流量和意見反映有所改善。該模型已針對依所有 Cloudflare 流量中受管理規則分類的良好和惡意流量完成訓練。這可讓小型網站取得與最大規模的網際網路設備相同的防護等級。</li>
+		<li>全新的效能定義。機器學習引擎能夠在人類研究人員利用或識別之前，識別旁路和異常的情況。 </li>
+	</ol>
+	<p>訣竅在於組合創新的機器學習模型、依我們每日封鎖之攻擊建構的龐大訓練資料級及資料增強技術、根據行為測試原則的正確評估和測試框架，以及讓我們得以透過可忽略等待時間評估每項請求的尖端功能。</p>
+	<h3 id="-waf-">全新的 WAF 體驗</h3>
+	<p>全新偵測係以與<a href="https://blog.cloudflare.com/introducing-bot-analytics/">機器人分析</a>一同推出的典範為基礎。我們透過此方法評估每項請求並指派分數，無論我們是否對其採取行動。由於我們會為每個請求評分，使用者即可看得到分數如何隨著時間針對導向至伺服器的整體流量而進化。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image3-11.png" class="kg-image" alt="客戶可以使用機器學習分類引擎，在他們的流量中識別趨勢。"></figure>
+	<p>此外，使用者可以看得到如何針對特定攻擊手段（例如 SQLi）為請求評分的長條圖，並找出哪項分數是區分良好流量和惡意流量的良好數值。 <br></p>
+	<p>實際緩解係透過自訂 WAF 規則執行，其中會將分數用於決定必須封鎖哪些請求。這可讓客戶建立納入任何 HTTP 請求參數之邏輯的規則，其中包括由 Cloudflare 填入的動態欄位，例如機器人分數。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image2-29.png" class="kg-image" alt="建立於 WAF 機器學習分數的防火牆規則。"></figure>
+	<p>我們現在正在考慮擴展此方法，使其同樣適用於受管理規則（OWASP 和 Cloudflare Managed）。客戶將能夠識別趨勢，並根據觀察其整體流量時可見的模式建立規則；記錄流量便於執行驗證並在最後階段強制執行保護措施，而不是根據反覆試驗建立規則。</p>
+	<h3 id="-">這如何運作？</h3>
+	<p>機器學習型偵測額外增強了現有的受管理規則集，例如 OWASP 和 Cloudflare Managed。系統係以旨在識別攻擊模式和異常變體的模型為基礎，且不會由研究人員或終端使用者直接監督。 </p>
+	<p>截至今日為止，我們公開了兩項攻擊手段的分數：SQL 資料隱碼攻擊和跨網站指令碼。使用者可以使用三項分開的分數建立自訂 WAF/防火牆規則：總分 (<code>cf.waf.ml.score</code>)，一項為 SQLi 且一項為 XSS（分別是 <code>cf.waf.ml.score.sqli</code>、 <code>cf.waf.ml.score.xss</code>）。分數的值會落在 1 至 99 之間，1 為絕對惡意，而 99 為有效流量。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image4-1.png" class="kg-image" alt="所有命中應用程式之流量分數的長條圖。"></figure>
+	<p>接著，該模型會根據依現有 WAF 規則分類的流量完成訓練，並在原始請求的轉換版本上執行，進而更加輕鬆地識別攻擊指紋。 </p>
+	<p>針對每項請求，該模型會為每個請求部分獨立進行評分，這樣才有機會識別惡意酬載的識別位置，例如位於請求內文、URI 或標頭中。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image1-30.png" class="kg-image" alt="偵測引擎提供威脅發現位置的解析（例如內文、URI、標頭）。"></figure>
+	<p>紙上談兵或許簡單，但 Cloudflare 工程師必須解決多項挑戰才能實現此操作。這包括如何建立可靠的資料集、可擴展的資料標籤、選擇適當的模型架構，以及在<em>每項</em>由 Cloudflare 全球網路執行之請求上執行分類的需求（也就是每秒 3,200 萬次）。</p>
+	<p>在未來幾週內，工程團隊將會發佈一系列部落格文章，讓客戶能夠深入了解神秘面紗底下的解決方案。</p>
+	<h3 id="--1">期待</h3>
+	<p>在未來幾個月內，我們將會向客戶推出全新的偵測引擎，並收集他們對其效能的意見反應。從長期來看，我們打算擴展偵測引擎以涵蓋所有已由受管理規則識別的攻擊手段，並使用透過機器學習模型封鎖之攻擊進一步改善我們的受管理規則集。</p>
+</div>

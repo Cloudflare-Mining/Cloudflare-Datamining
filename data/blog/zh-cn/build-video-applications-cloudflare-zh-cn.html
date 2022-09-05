@@ -1,0 +1,164 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://lh6.googleusercontent.com/rtr3vWNrtk3X2HSUuSSIHvNud8K6WeNHokdbx231vi9-TIC87GeD6QJ6dMR0vlSJF4qFzv-heJHGXFzhVDygIdHsm3Jh0kGw47QyVx8vtmxPVShb8YsE7CqBRaWJpIivB2kiGX03" class="kg-image" alt="Build your next video application on Cloudflare"></figure>
+	<p>过去，构建视频应用程序十分困难。在录制、编码和播放视频背后有许多复杂的技术。幸运的是，<a href="https://www.cloudflare.com/products/cloudflare-stream/" target="_blank">Cloudflare Stream</a> 分担走了所有困难的部分，现在您可以轻松构建自定义视频和流媒体应用程序。让我们看一下，我们可以如何结合 Cloudflare Stream、Access、Pages 和 Workers，使用极少的代码创建一个高性能的视频应用程序。</p>
+	<p>今天，我们将构建一个受 <a href="https://cloudflare.tv/live" target="_blank">Cloudflare TV</a> 启发的视频应用程序。我们将提供用户身份验证，管理员可以上传录制的视频或直播新内容。能够使用 Cloudflare 服务打造自己的 YouTube 或 Twich，这多么令人兴奋！</p>
+	<!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 36.09550561797753%;"><iframe src="https://iframe.videodelivery.net/116d621e621e7884791a88307c8bcc7e?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2F116d621e621e7884791a88307c8bcc7e%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
+	<!--kg-card-end: html-->
+	<h3 id="-"><strong>提取视频列表</strong></h3>
+	<p>我们想要在应用程序主页显示所有视频的列表，使用 Cloudflare Stream 上传和存储的所有视频，之后还会有更多功能！该代码可以更改，以仅显示“热门”视频或为每个用户选择的视频精选。目前，我们将使用搜索 API 并在一个空字符串中传递以返回全部。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">import { getSignedStreamId } from "../../src/cfStream"
+
+export async function onRequestGet(context) {
+    const {
+        request,
+        env,
+        params,
+    } = context
+
+    const { id } = params
+
+    if (id) {
+        const res = await fetch(`https://api.cloudflare.com/client/v4/accounts/${env.CF_ACCOUNT_ID}/stream/${id}`, {
+            method: "GET",
+            headers: {
+                "Authorization": `Bearer ${env.CF_API_TOKEN_STREAM}`
+            }
+        })
+
+        const video = (await res.json()).result
+
+        if (video.meta.visibility !== "public") {
+            return new Response(null, {status: 401})
+        }
+
+        const signedId = await getSignedStreamId(id, env.CF_STREAM_SIGNING_KEY)
+
+        return new Response(JSON.stringify({
+            signedId: `${signedId}`
+        }), {
+            headers: {
+                "content-type": "application/json"
+            }
+        })
+    } else {
+        const url = new URL(request.url)
+        const res = await (await fetch(`https://api.cloudflare.com/client/v4/accounts/${env.CF_ACCOUNT_ID}/stream?search=${url.searchParams.get("search") || ""}`, {
+            headers: {
+                "Authorization": `Bearer ${env.CF_API_TOKEN_STREAM}`
+            }
+        })).json()
+
+        const filteredVideos = res.result.filter(x =&gt; x.meta.visibility === "public") 
+        const videos = await Promise.all(filteredVideos.map(async x =&gt; {
+            const signedId = await getSignedStreamId(x.uid, env.CF_STREAM_SIGNING_KEY)
+            return {
+                uid: x.uid,
+                status: x.status,
+                thumbnail: `https://videodelivery.net/${signedId}/thumbnails/thumbnail.jpg`,
+                meta: {
+                    name: x.meta.name
+                },
+                created: x.created,
+                modified: x.modified,
+                duration: x.duration,
+            }
+        }))
+        return new Response(JSON.stringify(videos), {headers: {"content-type": "application/json"}})
+    }
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>我们将仔细检查每个视频，过滤掉任何私人视频，并抽取出我们需要的元数据，例如缩略图 URL、ID 和创建日期。</p>
+	<h3 id="--1"><strong>播放视频</strong></h3>
+	<p>要允许用户从我们的应用程序播放视频，则需要公开视频，否则您将需要签署每个请求。将视频标记为“公开”可使整个过程更为简单。然而，可能出于许多原因，您想要控制对视频的访问。如果您希望用户登录后才可播放视频，或者想要能够以任何方式限制访问，可将视频标记为“私人”并使用签名的 URL 来控制访问。您可在<a href="https://developers.cloudflare.com/stream/viewing-videos/securing-your-stream" target="_blank">此处</a>找到有关保护视频的更多信息。</p>
+	<p>如果您在本地测试您的应用程序，或希望每天的请求数少于 10,000 个，您可以调用 /token 端点以生成一个签名令牌。如果您希望每天超过 10,000 个请求，请使用 <a href="https://jwt.io/" target="_blank">JSON Web Tokens</a> 签署您自己的令牌，就像我们这里所做的一样。</p>
+	<h3 id="--2"><strong>允许用户上传视频</strong></h3>
+	<p>下一步是构建管理员页面，用户可在其中上传他们的视频。您可在<a href="https://developers.cloudflare.com/stream/uploading-videos/direct-creator-uploads" target="_blank">此处</a>找到有关允许用户上传的说明文档。</p>
+	<p>Cloudflare Stream API 使该过程得到了简化。您可使用您的 <a href="https://developers.cloudflare.com/api/tokens/create" target="_blank">API 令牌</a>和帐户 ID 生成一个唯一的一次性上传 URL。仅需确保您的令牌拥有 Stream:Edit 权限即可。我们从应用程序钩入所有 POST 请求，并返回生成的上传 URL。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">export const cfTeamsAccessAuthMiddleware = async ({request, data, env, next}) =&gt; {
+    try {
+        const userEmail = request.headers.get("cf-access-authenticated-user-email")
+
+        if (!userEmail) {
+            throw new Error("User not found, make sure application is behind Cloudflare Access")
+        }
+  
+        // Pass user info to next handlers
+        data.user = {
+            email: userEmail
+        }
+  
+        return next()
+    } catch (e) {
+        return new Response(e.toString(), {status: 401})
+    }
+}
+
+export const onRequest = [
+    cfTeamsAccessAuthMiddleware
+]
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>管理员页面包含一个表单，允许用户从他们的计算机拖放或上传视频。当一个已登录用户点击上传表单上的“提交”时，应用程序会生成一个唯一的 URL，然后向其发布 <a href="https://developer.mozilla.org/en-US/docs/Web/API/FormData" target="_blank">FormData</a>。该代码可有效用于构建视频分享网站或与任何允许用户生成内容的应用程序搭配使用。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">async function getOneTimeUploadUrl() {
+    const res = await fetch('/api/admin/videos', {method: 'POST', headers: {'accept': 'application/json'}})
+    const upload = await res.json()
+    return upload.uploadURL
+}
+
+async function uploadVideo() {
+    const videoInput = document.getElementById("video");
+
+    const oneTimeUploadUrl = await getOneTimeUploadUrl();
+    const video = videoInput.files[0];
+    const formData = new FormData();
+    formData.append("file", video);
+
+    const uploadResult = await fetch(oneTimeUploadUrl, {
+        method: "POST",
+        body: formData,
+    })
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h3 id="-stream-live-"><strong>使用 Stream Live 添加实时视频</strong></h3>
+	<p>您还可以使用 <a href="https://blog.cloudflare.com/stream-live/">Stream Live</a>，结合我们已经讨论过的技术，向您的应用程序添加直播部分。您可以允许已登录用户开始直播，并允许其他已登录用户（甚至是未登录用户）实时观看！直播内容将自动保存至您的帐户，因此，当直播结束后就可以立即在应用程序的主要区域查看直播内容。</p>
+	<h3 id="--3"><strong>使用中间件保护我们的应用程序</strong></h3>
+	<p>我们将所有经过身份验证的页面都放在此中间件函数后方。它会检查请求标头以确保用户正在发送有效的经过身份验证的用户电子邮件。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">export const cfTeamsAccessAuthMiddleware = async ({request, data, env, next}) =&gt; {
+    try {
+        const userEmail = request.headers.get("cf-access-authenticated-user-email")
+
+        if (!userEmail) {
+            throw new Error("User not found, make sure application is behind Cloudflare Access")
+        }
+  
+        // Pass user info to next handlers
+        data.user = {
+            email: userEmail
+        }
+  
+        return next()
+    } catch (e) {
+        return new Response(e.toString(), {status: 401})
+    }
+}
+
+export const onRequest = [
+    cfTeamsAccessAuthMiddleware
+]
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h3 id="-pages-"><strong>使用 Pages 将所有功能组合起来</strong></h3>
+	<p>我们使用 Cloudflare Access 来控制我们的登录流程，使用 Stream API 管理上传、显示和观看视频，使用 <a href="https://workers.cloudflare.com/" target="_blank">Workers</a> 来管理 fetch 请求和处理 API 调用。现在，让我们使用 <a href="https://pages.cloudflare.com/" target="_blank">Cloudflare Pages</a> 将所有功能结合起来！</p>
+	<p>Pages 提供一种简单的方法来部署和托管静态网站。不过现在，Pages 可与 Workers 平台无缝集成（公告文章链接）。使用该新集成，我们可以使用单个可读存储库来部署这一整个应用程序。</p>
+	<h3 id="--4"><strong>控制访问</strong></h3>
+	<p>一些应用程序更适合公开；另一些应用程序包含敏感数据，应当限制向特定用户开放。此应用程序的主页是公开的，我们已使用 <a href="https://www.cloudflare.com/zh-cn/teams/access/" target="_blank">Cloudflare Access</a> 将管理员页面限制为仅向员工开放。如果您要构建内部学习服务，甚至想要推出新网站的测试版，您都可以轻松使用 Access 保护您的整个应用程序！</p>
+	<p>当用户点击我们<a href="https://cf-pages-stream.pages.dev/" target="_blank">演示网站</a>上的管理员链接时，将提示他们输入电子邮件地址。如果他们输入有效的 Cloudflare 电子邮件，则应用程序会向他们发送访问代码。否则，他们将无法访问该页面。</p>
+	<p>立即查看<a href="https://github.com/cloudflare/pages-stream-demo" target="_blank">源代码</a>并开始构建您自己的视频应用程序吧！</p>
+</div>

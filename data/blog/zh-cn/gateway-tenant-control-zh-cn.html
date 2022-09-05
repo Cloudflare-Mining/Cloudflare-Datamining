@@ -1,0 +1,23 @@
+<div class="post-content lh-copy gray1">
+	<h1></h1>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/teams-gateway-hero-illustration-3x-8-1.png" class="kg-image"></figure>
+	<p>我们在工作中使用的工具开始看起来像我们在个人生活中使用的 Apps。我们使用 Google Workspace 为我们的工作发送电子邮件，并在 Gmail 中回复个人笔记。我们从我们团队的 Dropbox 下载 PDF，然后将 Cloudflare Images 上传到我们的个人帐户。这可能会导致混乱和错误—当我们忘记退出当天的远程工作时，情况会变得更糟。</p>
+	<p>今天，我们很高兴地宣布 Cloudflare Gateway 中的租户控制，这是一项有助于保持工作正常进行的新功能。组织可以将 Cloudflare Gateway 部署到他们的公司设备并应用规则，确保员工只能登录到他们需要的工具的公司版本。现在，团队可以防止用户登录流行应用程序的错误实例。更重要的是，他们可以确保公司数据保留在公司帐户中。</p>
+	<h3 id="-"><strong>仅控制应用程序是不够的</strong></h3>
+	<p>Cloudflare Gateway 通过将所有离开设备的 DNS 流量发送到 Cloudflare 的 Anycast 网络进行过滤，从而提供免受 Internet 威胁的安全性。组织通过部署 WARP 代理将 DNS 流量发送到 Cloudflare，这是一个基于 WireGuard 的客户端，且基于我们流行的消费者应用的反馈构建。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/identity-policy-engine-1.svg" class="kg-image"></figure>
+	<p>Cloudflare Gateway 可以以多种模式部署，但大多数客户从 DNS 过滤开始，它只向 Cloudflare 发送 DNS 查询。Cloudflare 运行世界上最快的 DNS 解析器 1.1.1.1，在此基础上，我们构建了一个 DNS 过滤解决方案，帮助防止用户访问包含恶意软件或提供网络钓鱼攻击的站点。</p>
+	<p>当组织准备为其部署增加更多安全性时，他们还通过添加 HTTP/2 过滤来超越 DNS 过滤。Cloudflare 检查离开设备的 HTTP/2 DNS 流量，这提供了更精细的粒度控制，而不仅仅是对目标和 DNS 流量内部发生的事件进行 DNS 过滤，例如阻止文件上传到某些目标。</p>
+	<p>客户使用 HTTP/2 过滤来过滤和控制 SaaS 应用程序的使用。例如，如果您的团队使用 OneDrive，您可以阻止所有文件上传到 Google Drive，以避免数据离开您控制的租户。Cloudflare 提供了构成应用程序的主机名和 URL 的分类，<a href="https://blog.cloudflare.com/gateway-app-policies/">并且只需单击两次即可构建规则</a>。但是，如果您没有使用两个不同的应用程序—您使用的是同一个应用程序的两个不同实例，会发生什么？</p>
+	<h3 id="-saas-"><strong>对 SaaS 租户应用控制</strong></h3>
+	<p>现在，您可以使用 Cloudflare Gateway 中的 Gateway HTTP/2 策略启用租户控制。管理员可以首先在 Gateway 中添加一种新类型的规则，提示他们输入 SaaS 应用程序提供的特定值。例如，管理员可以为其 <a href="https://docs.microsoft.com/en-us/azure/active-directory/manage-apps/tenant-restrictions" target="_blank">Microsoft 365 部署收集租户 ID</a>。</p>
+	<p>启用规则后，Cloudflare Gateway 将<a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering/http-policies/tenant-control" target="_blank">附加特定标头</a>，如果启用，则将特定租户 ID 作为附加标头的一部分附加到您的请求中。根据 SaaS 应用程序，这些将阻止所有消费者或个人使用或阻止所有不属于该租户 ID 的帐户的登录。SaaS 应用程序知道它依赖于强制执行此规则的特定标头，并在收到时做出相应的响应。</p>
+	<p>一般来说，这些标头由企业 VPN 或本地维护的代理服务器注入，并通过回程用户 DNS 流量进行访问。Cloudflare Gateway 在我们靠近您用户的数据中心为客户提供过滤和检查，结合我们加速 DNS 流量的能力，将您的用户运送到他们的目的地，而不会影响传统回程方法的性能。</p>
+	<h3 id="--1"><strong>强制执行企业租户访问</strong></h3>
+	<p>今天您可以在 Cloudflare for Teams 仪表板中开始配置这些规则。要使用 Gateway 实施租户控制，您可以在 Teams 仪表板中配置 HTTP/2 策略。例如，您可以使用以下策略（GSuite 使用“X-GooGApps-Allowed-Domains”标头）防止用户使用他们的个人帐户向 GSuite 进行身份验证并将文档上传到 Google Drive 帐户：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image1-37-5.png" class="kg-image"></figure>
+	<p>当请求被 Gateway 的防火墙过滤时，允许的请求被代理到各自的上游服务器。在将它们发送到上游之前，我们预处理请求并附加我们自己的跟踪标头—这些包括对调试有用的东西，比如请求 ID 标头。现在，您可以指定要添加到这些请求中的自己的自定义标头，这使客户能够对其组织实施租户控制。</p>
+	<h3 id="--2"><strong>下一步</strong></h3>
+	<p>控制组织中的数据使用是一个多步骤的过程。今天，Cloudflare Gateway 让您的团队可以控制<a href="https://blog.cloudflare.com/gateway-app-policies/">您使用的应用程序</a>、您可以<a href="https://developers.cloudflare.com/cloudflare-one/tutorials/block-uploads" target="_blank">上传或下载文件</a>的位置以及何时在我们的隔离浏览器中阻止复制粘贴和打印。我们很高兴将租户控制引入到该产品组合中，以增加另一层安全性。</p>
+	<p>也就是说，我们才刚刚开始。随着我们继续构建 Cloudflare 的数据控制功能，我们将在现有功能的基础上引入新的扫描功能。如果您想成为第一个了解下一波这些功能的人，请立即点击<a href="https://www.cloudflare.com/zh-cn/teams/" target="_blank">此链接</a>进行注册。</p>
+</div>

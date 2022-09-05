@@ -1,0 +1,35 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image3-52.png" class="kg-image"></figure>
+	<p>今天，我們欣然宣佈 Page Shield，這是一個用戶端安全產品，供客戶用於檢測最終使用者瀏覽器中的攻擊。</p>
+	<p>從 2015 年開始，一個名為 <a href="https://sansec.io/what-is-magecart" target="_blank">Magecart </a>的駭客組織通過用惡意程式碼感染協力廠商依賴的方式竊取網上商店的支付憑證。被感染代碼被最終用戶瀏覽器請求，在其中執行並獲得網頁上的使用者資料。在獲取到這些資訊後，被感染代碼將其發送給駭客，供其轉賣或者用於發動進一步攻擊，例如信用卡欺詐和身份盜用。</p>
+	<p>自那時起，遭到此類<a href="https://en.wikipedia.org/wiki/Supply_chain_attack" target="_blank">供應鏈攻擊</a>的其他目標包括 Ticketmaster、新蛋（Newegg）、英國航空（British Airways) 等。針對英國航空的攻擊源於該公司一個自託管 JavaScript 遭到破壞，將接近 50 萬名客戶的資料洩漏給駭客。這次攻擊招致 GDPR 罰款和<a href="https://www.bloomberg.com/news/articles/2021-01-12/british-airways-faces-biggest-class-action-suit-over-data-breach" target="_blank">英國歷史上最大規模的集體訴訟</a>。共計數百萬用戶受到這些攻擊的影響。</p>
+	<p>即使不用擔心協力廠商，在組織內部編寫安全的代碼就已經不是容易的事情。很多 SaaS 平臺向數以百萬計的網站提供協力廠商代碼，意味著一次破壞就能帶來毀滅性的後果。Page Shield 幫助客戶監控這些潛在的攻擊手段，阻止保密使用者資訊落入駭客手中。</p>
+	<p>本周初， <a href="https://blog.cloudflare.com/zh-tw/browser-isolation-for-teams-of-all-sizes-zh-tw/">我們宣佈了遠端瀏覽器隔離（Remote Browser Isolation）</a>，作為緩解員工瀏覽器中用戶端攻擊的一個方法。Page Shield 延續 Cloudflare 在用戶端安全的努力，幫助緩解針對貴組織客戶的攻擊。</p>
+	<h3 id="-">背景</h3>
+	<p>Magecart 式攻擊是在用戶瀏覽器中執行的一種軟體供應鏈攻擊。攻擊者瞄準存放協力廠商 JavaScript 依賴的主機，控制向瀏覽器提供的原始程式碼。當被感染代碼運行時，其往往嘗試盜取最終用戶輸入到網站的敏感性資料，例如支付過程中的信用卡資訊。</p>
+	<p>這些攻擊難以檢測，因為很多應用程式所有者都信任協力廠商 JavaScript 會按照預期運行。由於這種信任，應用程式所有者極少對協力廠商代碼進行審計。很多情況下，Magecart 攻擊持續數月才被發現。</p>
+	<p>資料滲漏不是軟體供應鏈攻擊帶來的唯一風險。近年來，我們也看到駭客修改協力廠商代碼來向使用者顯示欺詐廣告。如果用戶點擊這些廣告進入釣魚網站，其個人資訊就會被駭客竊取。其他 JavaScript 惡意軟體使用最終使用者資源為攻擊者挖掘加密貨幣，破壞網站性能。</p>
+	<p>那麼，應用程式所有者應如何保護自己？現有的瀏覽器技術，如內容安全性原則（CSP）和子資源完整性（SRI），提供了一些針對用戶端威脅的保護，但也存在一些缺陷。</p>
+	<p>CSP 允許應用程式所有者向瀏覽器發送一個允許列表，防止列表之外的任何資源執行。雖然這可以防止某些跨網站腳本攻擊（XSS），但無法檢測現有資源是否已從良性狀態變為惡意狀態。管理 CSP 在操作上也具有挑戰性，因為它要求開發者每次向網站添加新腳本時更新允許列表。</p>
+	<p>SRI 允許應用程式所有者為 JavaScript 和其他資源指定預期的文件雜湊值。如果獲取的檔與雜湊值不匹配，它將被阻止執行。SRI 的挑戰在於供應商經常更新其代碼，且某些情況下向不同最終使用者提供不同的檔案。我們還發現，JavaScript 供應商有時會因為一些細微的差異（如間距）而向最終用戶提供帶有不同雜湊值的版本檔。這可能導致 SRI 在並非應用程式所有者本意的情況下錯誤阻止合法的檔案。</p>
+	<h3 id="-script-monitor-page-shield-">腳本監測器（Script Monitor）是 Page Shield 提供的第一個功能</h3>
+	<p>腳本監測器是 Cloudflare 打造 Page Shield 的起點。一旦開啟，這個功能會持續記錄網站的 JavaScript。每當出現新的 JavaScript 依賴時，我們就會提醒您，以便您調查這些是否您網站的預期變化。這可以幫助您識別是否有惡意行為者修改了您的應用程式以請求一個新的、惡意 JavaScript 檔。一旦完成 beta 測試，這個初始功能集將向 Business 和 Enterprise 客戶免費開放。</p>
+	<h3 id="--1">腳本監測器如何工作？</h3>
+	<p>由於 Cloudflare 處於應用程式原伺服器和最終使用者之間的獨特位置，我們能在回應到達最終用戶前對其進行修改。在這種情況下，我們在頁面通過我們的邊緣時在其中增加一個額外的 Content-Security-Policy-Report-Only 標頭。當 Javascript 試圖在頁面執行時，瀏覽器將向 Cloudflare 發送報告。由於我們使用 report-only 標頭，應用程式所有者不需要維護允許清單來獲得相關洞察。</p>
+	<p>針對我們看到的每個報告，我們都會將該 JavaScript 與這個區域的歷史依賴進行比較，檢查其是否為新檔。如是，我們會發出警告，以便客戶進行調查並確認這個變化是否在預期之中。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/03/image2-54.png" class="kg-image" alt="腳本監測器使用者介面位於 Firewall -> Page Shield">
+		<figcaption>腳本監測器使用者介面位於 Firewall -&gt; Page Shield</figcaption>
+	</figure>
+	<p>作為 beta 參與者，您將在您的區域儀錶板的防火牆部分看到 Page Shield 標籤。然後，您可以找到跟蹤您的區域 JavaScript 依賴的腳本監測器表格。對於每一個依賴，您都可以查看首次出現日期，最後出現日期，以及被檢測到的主機域。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/03/image4-55.png" class="kg-image" alt="發現新 JavaScript 依賴時的電子郵件通知示例">
+		<figcaption>發現新 JavaScript 依賴時的電子郵件通知示例</figcaption>
+	</figure>
+	<p>您也可以在儀錶板中配置腳本監測器通知。每當您的網站請求一個新的 JavaScript 檔，這些通知都會向您的電子郵箱或 PagerDuty 發送警告。</p>
+	<h3 id="--2">我們的使命是幫助建設更加美好的互聯網。</h3>
+	<p>我們的使命是要協助建立更安全的網際網路環境。這一使命延伸到最終用戶瀏覽器，而近年來，我們發現這個領域的攻擊出現了驚人的增長。通過 Page Shield，我們將輔助應用程式檢測和緩解這些難以捉摸的攻擊，以保護其用戶的敏感性資料。</p>
+	<p>我們已經在向腳本監測器中構建代碼變化檢測功能。代碼變化檢測將定期獲取您的應用程式的 JavaScript 依賴並分析其行為。當現有檔中檢測到新的代碼行為時，我們會向您發出警告，以便您查看該變化並確定新代碼是無害的更新還是受感染的代碼。</p>
+	<p>代碼變化檢測之後將是 JavaScript 檔的智慧分析。在應用程式的依賴發生變化時向應用程式所有者發出警告可以提供針對所關注檔的洞察，但我們可以更進一步。我們已經與我們的安全合作夥伴合作，獲取了 Magecart JavaScript 的樣本，並已證明我們可以準確地對惡意 JavaScript樣本進行分類。我們計畫進一步改進我們的技術，最終將開始在我們認為 Page Shield 客戶的依賴是惡意的時候向其發出警告。</p>
+	<p>我們已經和我們的客戶談過，瞭解到維護 CSP 允許列表在操作上是並非易事。如果部署了新的用戶端 JavaScript 但沒有將其添加到允許列表中，那麼新代碼將被瀏覽器阻止。因此，我們將利用我們做為反向代理的地位來部署負面安全模型阻止（negative security model blocking）。如此一來，應用程式所有者不需要維護允許清單就能阻止個別腳本，確保客戶能在無繁瑣開銷的前提下發佈新代碼。</p>
+	<h3 id="-beta-">申請加入 beta 測試</h3>
+	<p>今天開始，所有 Business 和 Enterprise 客戶都可以在<a href="https://www.cloudflare.com/zh-tw/waf/page-shield/" target="_blank">這裡</a>申請加入 Page Shield 的封閉測試。加入beta 測試後，客戶將能啟動腳本監測器並開始監控其網站的 JavaScript。</p>
+</div>

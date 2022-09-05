@@ -1,0 +1,132 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/image1-OG-2.png" class="kg-image" alt="Announcing support for WASI on Cloudflare Workers"></figure>
+	<p>今天，我们宣布 Cloudflare Workers 试验性支持 WASI（WebAssembly 系统接口），并在 wrangler2 中提供支持，以便大幅提升工作便利性。我们一如既往对 Primer 整个 WebAssembly 生态系统充满希望，并十分积极地采纳新开发的标准。</p>
+	<h3 id="webassembly-">WebAssembly 快速入门</h3>
+	<p>那么，WASI 到底是什么呢？若要了解 WASI 以及我们对其充满希望的理由，就有必要快速回顾一下 WebAssembly 以及它周边的生态系统。</p>
+	<p>借助 WebAssembly，使用编译语言编写的代码未来有望能够编译为通用二进制格式并以接近原生速度的速度在安全沙盒中运行。虽然 WebAssembly 是围绕浏览器设计的，但模型迅速扩展到服务器端平台，例如 Cloudflare Workers（自 2017 年以来<a href="https://blog.cloudflare.com/webassembly-on-cloudflare-workers/">一直支持 WebAssembly</a>）。</p>
+	<p>WebAssembly 最初设计为<em>与</em> Javascript 一起运行，并需要开发人员直接与 Javascript 交互才能访问沙盒之外的内容。换句话说，WebAssembly 并没有为 I/O 任务提供任何标准接口，例如与文件交互、访问网络或读取系统时钟。这意味着，如果要响应外部事件，开发人员需要负责在 JavaScript 中处理该事件，并直接调用从 WebAssembly 模块导出的函数。类似地，如果要从 WebAssembly 中执行 I/O，就需要在 Javascript 中实现该逻辑并将其导入 WebAssembly 模块中。</p>
+	<p>Emscripten 等自定义工具链或 wasm-bindgen 等库应运而生，用于简化这一工作，但它们特定于语言，会带来极大的复杂度，并且使代码显得十分臃肿。我们甚至构建了自己的库 workers-rs，使用 wasm-bindgen 以试图让在 Rust 中编写应用程序感觉就像在 Worker 中原生那样 – 但最后我们发现，这不仅很难维护，而且还需要开发人员编写特定于 Workers 的代码，并且这些代码无法移植到 Workers 生态系统之外。</p>
+	<p>我们需要更强的功能。</p>
+	<h3 id="webassembly-wasi-">WebAssembly 系统接口 (WASI)</h3>
+	<p>WASI 旨在提供任何编译到 WebAssembly 的语言都可以作为目标的标准接口。点击<a href="https://hacks.mozilla.org/2019/03/standardizing-wasi-a-webassembly-system-interface/" target="_blank">此处</a>阅读 Lin Clark 的原创文章，其中很漂亮地做了介绍 – 甚至还做了代码卡通。简而言之，Lin 将 WebAssembly 形容为适合“概念机器”的<em>汇编语言</em>，而 WASI 则是适合“概念操作系统”的<em>系统接口</em>。</p>
+	<p>这种系统接口标准化为现有工具链针对 wasm32-wasi 目标交叉编译现有代码库铺平了道路。通过 <a href="https://github.com/WebAssembly/wasi-sdk" target="_blank">wasi-sdk</a> 和 <a href="https://doc.rust-lang.org/stable/nightly-rustc/rustc_target/spec/wasm32_wasi/index.html" target="_blank">Rust</a> 工具链已经实现了极大进展，尤其是在 Clang/LLVM 中。这些工具链利用某个版本的 <a href="https://github.com/WebAssembly/wasi-libc" target="_blank">Libc</a>，它提供 POSIX 标准 API 调用，这些调用是在 WASI“系统调用”基础上构建的。甚至在 <a href="https://tinygo.org/docs/guides/webassembly/" target="_blank">TinyGo</a> 和 <a href="https://swiftwasm.org/" target="_blank">SwiftWasm</a> 这样更为边缘化的工具链中也有基本实现。</p>
+	<p>实际说来，这意味着现在可以编写的应用程序不仅能够与实现该标准的任何 WebAssembly 运行时互操作，还能与任何符合 POSIX 标准的系统互操作！这意味着，完全相同的“Hello World!” 可在本地 Linux/Mac/Windows WSL 机器上运行。</p>
+	<h3 id="-">代码细节</h3>
+	<p>WASI 听起来很不错，但它能真正简化编程工作吗？谁用谁知道。我们来看一个例子，看看它如何运用于实践。</p>
+	<p>首先，生成一个基本的 Rust“Hello, world!”应用程序，对其进行编译并运行。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-bash">$ cargo new hello_world
+$ cd ./hello_world
+$ cargo build --release
+   Compiling hello_world v0.1.0 (/Users/benyule/hello_world)
+    Finished release [optimized] target(s) in 0.28s
+$ ./target/release/hello_world
+Hello, world!
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>这是再简单不过的了。可以看到，我们只定义了一个 main() 函数，接着是用一个 println 语句打印到 stdout。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-rust">fn main() {
+    println!("Hello, world!");
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>现在，我们针对 wasm32-wasi 目标编译这个程序，并在 <a href="https://wasmtime.dev/" target="_blank">Wasmtime</a> 等“现成”的 wasm 运行时中运行。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-bash">$ npx <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="116663707f767d7463516670627c">[email&nbsp;protected]</a> dev target/wasm32-wasi/release/hello_world.wasm
+$ curl http://localhost:8787/
+
+Hello, world!
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>太棒了！相同的代码在多个 POSIX 环境中顺利编译并运行。</p>
+	<p>最后，来看看我们刚才为 Wasmtime 生成的二进制文件，但这次改用 Wrangler2 将其发布到 Workers。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-bash">$ npx <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="057277646b626960774572647668">[email&nbsp;protected]</a> dev target/wasm32-wasi/release/hello_world.wasm
+$ curl http://localhost:8787/
+
+Hello, world!
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>不出所料，成功了！相同的代码兼容了多个 POSIX 环境，并且相同的二进制文件兼容了多个 WASM 运行时。</p>
+	<h3 id="-cli-">在云中运行 CLI 应用</h3>
+	<p>细心的读者可能会注意到，我们在通过 cURL 发出的 HTTP 请求中做了一点手脚。在这个例子中，我们实际上是分别使用 HTTP 请求和响应主体来与 Worker 之间进行 stdin 和 stdout 流传输。利用这个模式，可以实现一些非常有意思的用例，具体来说，设计为在命令行中运行的程序可以作为“服务”部署到云中。</p>
+	<p>“Hexyl”就是一个完全开箱即用的例子。这里，我们对本地机器上的二进制文件执行“cat”命令，并通过“pipe”命令将输出输送到 curl，后者会通过 POST 命令将输出发布到我们的服务，并流传输回结果。按照我们用于编译“Hello World!”的步骤，我们可以编译 hexyl。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-bash">$ git clone <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3c5b55487c5b554854495e125f5351">[email&nbsp;protected]</a>:sharkdp/hexyl.git
+$ cd ./hexyl
+$ cargo build --target wasm32-wasi --release
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>无需任何修改，我们就能利用一个现实的程序来创建立即就能运行或部署的用例。同样，我们让 wrangler2 预览 hexyl，但这次给它提供一些输入。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-bash">$ npx <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="255257444b424940576552445648">[email&nbsp;protected]</a> dev target/wasm32-wasi/release/hexyl.wasm
+$ echo "Hello, world\!" | curl -X POST --data-binary @- http://localhost:8787
+
+┌────────┬─────────────────────────┬─────────────────────────┬────────┬────────┐
+│00000000│ 48 65 6c 6c 6f 20 77 6f ┊ 72 6c 64 21 0a          │Hello wo┊rld!_   │
+└────────┴─────────────────────────┴─────────────────────────┴────────┴────────┘
+
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>点击 <a href="https://hexly.examples.workers.dev/" target="_blank">https://hexyl.examples.workers.dev</a>，自己试一试。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-bash">echo "Hello world\!" | curl https://hexyl.examples.workers.dev/ -X POST --data-binary @- --output -
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>一个更有用、但也更复杂一些的例子就是将 swc (swc.rs) 等实用工具部署到云中并将其用作按需 JavaScript/TypeScript 跨平台编译服务。这里，我们可以执行几个额外步骤，确保编译的输出尽可能小，但除此之外，它基本上是开箱即用的。这些步骤在 <a href="https://github.com/zebp/wasi-example-swc" target="_blank">https://github.com/zebp/wasi-example-swc</a> 中详述，但目前我们只是粗略概括一下，看看托管示例。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-bash">$ echo "const x = (x, y) =&gt; x * y;" | curl -X POST --data-binary @- https://swc-wasi.examples.workers.dev/ --output -
+
+var x=function(a,b){return a*b}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>最后，我们还可以对 C/C++ 执行相同的操作，但需要做一些修改，将 Makefile 调整正确。这里有一个例子，说明如何编译 zstd 并将其上传作为流传输压缩服务。</p>
+	<p><a href="https://github.com/zebp/wasi-example-zstd" target="_blank">https://github.com/zebp/wasi-example-zstd</a></p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-bash">$ echo "Hello world\!" | curl https://zstd.examples.workers.dev/ -s -X POST --data-binary @- | file -
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h3 id="-javascript-worker-wasi-"><strong>如果我想在 JavaScript Worker 中使用 WASI 该怎么办？</strong></h3>
+	<p>利用 Wrangler，可以非常轻松地部署代码，不用管 Workers 生态系统，但在一些情况下，可能实际上需要从 Javascript 调用基于 WASI 的 WASM 模块。这可以使用以下简单样板来实现。<a href="https://github.com/cloudflare/workers-wasi" target="_blank">https://github.com/cloudflare/workers-wasi</a> 中将保留一份更新的 README。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">import { WASI } from "@cloudflare/workers-wasi";
+import demoWasm from "./demo.wasm";
+
+export default {
+  async fetch(request, _env, ctx) {
+    // Creates a TransformStream we can use to pipe our stdout to our response body.
+    const stdout = new TransformStream();
+    const wasi = new WASI({
+      args: [],
+      stdin: request.body,
+      stdout: stdout.writable,
+    });
+
+    // Instantiate our WASM with our demo module and our configured WASI import.
+    const instance = new WebAssembly.Instance(demoWasm, {
+      wasi_snapshot_preview1: wasi.wasiImport,
+    });
+
+    // Keep our worker alive until the WASM has finished executing.
+    ctx.waitUntil(wasi.start(instance));
+
+    // Finally, let's reply with the WASM's output.
+    return new Response(stdout.readable);
+  },
+};
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>现在借助 JavaScript 样板和 wasm，我们可以利用 Wrangler 的 WASM 功能轻松部署 Worker。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-bash">$ npx wrangler publish
+Total Upload: 473.89 KiB / gzip: 163.79 KiB
+Uploaded wasi-javascript (2.75 sec)
+Published wasi-javascript (0.30 sec)
+  wasi-javascript.zeb.workers.dev
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h2 id="--1">回到未来</h2>
+	<p>过去几十年积极关注编程发展的读者可能会注意到，这非常类似于 RFC3875，也就是我们常说的 CGI（公共网关接口）。虽然我们这个例子显然不符合该规范，但不难想象，完全可以加以扩展，将基本“命令行”应用程序的 stdin 转变为完全成熟的 http 处理程序。</p>
+	<p>在此，我们非常渴望了解开发人员对此有何看法。请在 <a href="https://discord.com/invite/cloudflaredev" target="_blank">Discord</a> 或 <a href="https://twitter.com/CloudflareDev" target="_blank">Twitter</a> 上与我们分享您所构建的成果！</p>
+</div>

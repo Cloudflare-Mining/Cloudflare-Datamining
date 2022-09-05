@@ -1,0 +1,98 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/image5-23.png" class="kg-image"></figure>
+	<p>"Facebook 서비스가 중단될 리는 없어." 잠시 그렇게 생각했습니다.</p>
+	<p>협정 세계시(UTC) 기준으로 오늘 15시 51분경에 Cloudflare는 Cloudflare의 DNS 확인자인 <a href="https://developers.cloudflare.com/warp-client/" target="_blank">1.1.1.1</a>에 무슨 문제가 있을까 걱정이 된 나머지, "Facebook DNS 조회 SERVFAIL 반환"이라는 내부 인시던트를 열었습니다. 하지만 이를 <a href="https://www.cloudflarestatus.com/" target="_blank">공개 상태</a> 페이지에 게시하기 직전에 더 심각한 문제가 진행되고 있다는 사실을 알게 되었습니다.</p>
+	<p>소셜 미디어는 순식간에 혼란에 휩싸였으며, Cloudflare의 엔지니어들은 신속하게 확인 사항을 보고했습니다. Facebook과 Facebook에 연계된 WhatsApp, Instagram 서비스의 가동이 모두 중단된 것이었습니다. 이들 서비스에 대한 DNS 기록에 접근할 수 없는 상태가 되었으며, 인프라 IP에도 접속할 수 없었습니다. 마치 누군가가 데이터 센터로부터 한꺼번에 "케이블을 끌어다가" 인터넷에서 끊어버린 것 같았습니다.</p>
+	<p>DNS 자체의 문제는 아니었지만, DNS에 대한 접근 실패가 Facebook 서비스 대규모 중단의 첫 번째 증상이었습니다.</p>
+	<p>왜 이런 일이 벌어졌을까요?</p>
+	<h3 id="facebook-">Facebook측의 입장</h3>
+	<p>조금 전 Facebook은 내부적으로 어떤 일이 있었는지 설명하는 <a href="https://engineering.fb.com/2021/10/04/networking-traffic/outage/" target="_blank">블로그 글을 게시</a>했습니다. 그 글에 게시된 내용과 같이 외부적으로 파악된 원인은 BGP와 DNS였으나, 실제 문제는 전체 내부 백본에 영향을 미치는 구성 변경으로부터 비롯된 것이었습니다. 이것이 Facebook과 기타 자산이 사라지는 문제로 이어졌고, Facebook 내부 직원들은 서비스를 복구하는 데 어려움을 겪었습니다.</p>
+	<p>Facebook은 더욱 자세한 내용이 담긴 <a href="https://engineering.fb.com/2021/10/05/networking-traffic/outage-details/" target="_blank">블로그 글을 추가로 게시</a>했습니다. 전자에서는 내부적인 관점을, 후자에서는 외부적인 관점을 통해 이번 문제를 파악할 수 있습니다.</p>
+	<p>그럼 외부적인 관점에서 문제를 분석해 보도록 하겠습니다.</p>
+	<h3 id="bgp-">BGP에 대해</h3>
+	<p><a href="https://www.cloudflare.com/learning/security/glossary/what-is-bgp/" target="_blank">BGP</a>는 경계 경로 프로토콜(Border Gateway Protocol)의 약자로 인터넷상의 자율 시스템(AS) 간에 라우팅 정보를 교환하는 메커니즘입니다. 인터넷을 작동시키는 대형 라우터들에는 모든 네트워크 패킷을 최종 목적지로 전달하는 데 사용할 수 있는 경로가 담긴 방대한 목록이 지속적으로 업데이트됩니다. BGP가 없다면 인터넷 라우터는 방향성을 잃게 되므로 그로 인해 인터넷이 작동하지 않는 문제가 발생할 수 있습니다.</p>
+	<p>인터넷은 말 그대로 네트워크의 네트워크이며, BGP로 묶여 있다고 볼 수 있습니다. BGP를 사용하게 되면 하나의 네트워크(예: Facebook)가 인터넷을 구성하는 다른 네트워크에 자신의 존재를 알릴 수 있게 됩니다. 본 글에 기재한 바와 같이, 현재 Facebook이 자신의 존재를 알리고 있지 않기 때문에 ISP를 비롯한 기타 네트워크가 Facebook의 네트워크를 찾을 수 없어 접속 불가능한 상태가 되어버린 것입니다.</p>
+	<p>개별 네트워크에는 각각의 ASN(Autonomous System Number; 자율 시스템 번호)이 있습니다. 자율 시스템(AS, Autonomous System)은 통합된 내부 라우팅 정책이 있는 개별 네트워크를 말합니다. AS는 하나의 IP 주소 그룹을 제어하는 접두사와 특정 IP 주소 그룹에 도달하는 방법을 알고 있는 전송 접두사를 생성할 수 있습니다.</p>
+	<p>Cloudflare의 ASN은 <a href="https://www.peeringdb.com/asn/13335" target="_blank">AS13335</a>입니다. 모든 ASN은 BGP를 이용해서 인터넷에 대한 접두사 경로를 발표해야 합니다. 그렇지 않으면, Cloudflare에 대한 연결 방법과 Cloudflare의 위치를 아무도 파악할 수 없습니다.</p>
+	<p>Cloudflare의 <a href="https://www.cloudflare.com/learning/" target="_blank">학습 센터</a>에는 <a href="https://www.cloudflare.com/learning/security/glossary/what-is-bgp/" target="_blank">BGP</a> 및 <a href="https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system/" target="_blank">ASN</a>에 대한 개요와 이들의 작동 방식에 대한 좋은 자료가 있습니다.</p>
+	<p>아래의 단순화된 다이어그램에는 인터넷상의 6개의 자율 시스템이 표시되어 있으며, 하나의 패킷이 시작에서 끝으로 이동하는 데 사용하고 있는 두 개의 경로가 나타나 있습니다. AS1 → AS2 → AS3 경로가 가장 빠르고 AS1 → AS6 → AS5 → AS4 → AS3 경로는 가장 느리지만, 첫 번째 경로에서 실패할 경우 이 경로를 이용할 수도 있습니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/10/image11-3.png" class="kg-image"></figure>
+	<p>협정 세계시(UTC) 기준 15시 58분경에 Cloudflare는 Facebook이 Facebook의 DNS 접두사에 대한 경로 발표를 중단했음을 알게 됐습니다. 즉, Facebook의 DNS 서버가 가용 상태에 있지 않다는 의미입니다. 따라서 Cloudflare의 1.1.1.1 DNS 확인자가 facebook.com의 IP 주소를 묻는 쿼리에 응답할 수 없었던 것입니다.</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>route-views&gt;show ip bgp 185.89.218.0/23
+% Network not in table
+route-views&gt;
+
+route-views&gt;show ip bgp 129.134.30.0/23
+% Network not in table
+route-views&gt;
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>한편 Facebook의 다른 IP 주소들은 경로가 유지됐지만, DNS가 없이는 Facebook 및 관련 서비스를 결과적으로 이용할 수 없었기 때문에 이는 도움이 되지 않았습니다.</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>route-views&gt;show ip bgp 129.134.30.0   
+BGP routing table entry for 129.134.0.0/17, version 1025798334
+Paths: (24 available, best #14, table default)
+  Not advertised to any peer
+  Refresh Epoch 2
+  3303 6453 32934
+    217.192.89.50 from 217.192.89.50 (138.187.128.158)
+      Origin IGP, localpref 100, valid, external
+      Community: 3303:1004 3303:1006 3303:3075 6453:3000 6453:3400 6453:3402
+      path 7FE1408ED9C8 RPKI State not found
+      rx pathid: 0, tx pathid: 0
+  Refresh Epoch 1
+route-views&gt;
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Cloudflare는 Cloudflare의 전역 네트워크에서 파악 가능한 모든 BGP 업데이트와 발표를 추적합니다. Cloudflare 정도의 규모에서 수집한 데이터를 이용하면 인터넷이 어떻게 연결되어 있고, 지구상의 모든 곳을 오가는 트래픽의 출발지와 목적지를 알 수 있습니다.</p>
+	<p>BGP UPDATE 메시지는 접두사 발표에 변경 사항이 있거나 해당 접두사가 완전히 철회된 경우 이를 라우터에 알려줍니다. Cloudflare의 시계열 BGP 데이터베이스를 점검하면 Facebook으로부터 받은 업데이트 수를 통해 이를 명확하게 알 수 있습니다. 정상적인 상태라면 이 그래프는 거의 변화가 없습니다. Facebook의 네트워크의 경우, 시시각각으로 변동되는 일이 많지 않기 때문입니다.</p>
+	<p>그러나 협정 세계시(UTC) 15시 40분경에 Facebook의 라우팅 변경이 갑자기 늘어난 것을 확인하였습니다. 이때 문제가 발생하기 시작합니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/10/image4-11-4.png" class="kg-image"></figure>
+	<p>이를 경로 발표와 철회로 나누어 분석해 보면 무슨 일이 일어났는지 훨씬 더 잘 알 수 있습니다. 경로가 철회되고 Facebook의 DNS 서버가 오프라인 상태가 되었으며, 문제 발생 1분 후 Cloudflare 엔지니어들이 모여 1.1.1.1이 facebook.com을 확인하지 못하는 이유를 고민하였고 Cloudflare의 시스템에 문제가 있는지 걱정하기 시작했습니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/10/image3-9-4.png" class="kg-image"></figure>
+	<p>경로를 철회함으로써 Facebook을 비롯한 관련 사이트들은 인터넷으로부터 스스로 자신들을 끊어버린 결과에 이르게 된 것입니다.</p>
+	<h3 id="dns-">DNS에 미친 영향</h3>
+	<p>이번 사고로 인하여 전 세계의 DNS 확인자들이 Facebook 및 관련 서비스의 도메인 이름을 확인하지 못하게 되었습니다.</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>➜  ~ dig @1.1.1.1 facebook.com
+;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: SERVFAIL, id: 31322
+;facebook.com.			IN	A
+➜  ~ dig @1.1.1.1 whatsapp.com
+;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: SERVFAIL, id: 31322
+;whatsapp.com.			IN	A
+➜  ~ dig @8.8.8.8 facebook.com
+;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: SERVFAIL, id: 31322
+;facebook.com.			IN	A
+➜  ~ dig @8.8.8.8 whatsapp.com
+;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: SERVFAIL, id: 31322
+;whatsapp.com.			IN	A
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>이는 인터넷의 다른 많은 시스템과 마찬가지로 DNS에도 자체적인 라우팅 메커니즘이 있기 때문입니다. 누군가 브라우저에 <a href="https://facebook.com/" target="_blank">https://facebook.com</a> URL을 입력하면, 도메인 이름을 실제 연결할 IP 주소로 변환하는 DNS 확인자는 먼저 자체 캐시 내에 해당 주소가 있는지 확인하고 사용합니다. 캐시 내에 해당 주소가 없다면 주로 도메인을 소유한 주체가 호스팅하는 도메인 이름 서버로부터 응답을 가져오게 됩니다.</p>
+	<p>해당 이름 서버에 연결할 수 없거나 그 밖의 다른 이유로 해당 이름 서버가 응답하지 않으면 SERVFAIL이 반환되고, 브라우저는 사용자에게 오류를 표시합니다.</p>
+	<p>Cloudflare의 학습 센터에는 DNS 작동 방식에 대해서도 <a href="https://www.cloudflare.com/ko-kr/learning/dns/what-is-dns/" target="_blank">좋은 설명 자료</a>가 있습니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/10/image8-8-4.png" class="kg-image"></figure>
+	<p>Facebook이 BGP를 통한 DNS 접두사 경로 발표를 중단하였기 때문에 Cloudflare를 포함한 모든 주체의 DNS 확인자는 Facebook의 이름 서버에 연결할 수 없게 되었습니다. 결과적으로, 1.1.1.1, 8.8.8.8 및 기타 모든 주요 공개 DNS 확인자가 SERVFAIL 응답을 발행하고 캐싱을 시작했습니다.</p>
+	<p>하지만 이것으로 끝이 아닙니다. 인간의 행태적 요인과 응용 프로그램의 논리가 개입하면서 또 다른 기하급수적 효과가 발생합니다. 추가적인 DNS 트래픽이 쓰나미처럼 몰려든 것입니다.</p>
+	<p>이는 앱들이 오류를 응답으로 받아들이지 않으면서 재시도를(때로는 매우 공격적으로) 하기 때문이며, 한편으로 사용자들도 오류를 응답으로 받아들이지 않으면서(역시 때로는 매우 공격적으로) 페이지를 다시 띄우거나 앱을 종료하고 다시 시작하기 때문에 발생했습니다.</p>
+	<p>1.1.1.1에서 관찰된 트래픽(요청 수) 증가는 바로 이것이었습니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/10/image6-9-4.png" class="kg-image"></figure>
+	<p>Facebook 및 관련 사이트의 규모가 매우 크기 때문에, 현재 전 세계의 DNS 확인자들이 평소보다 30배나 많은 쿼리를 처리해야 하므로 다른 플랫폼에 대기 시간 및 제한 시간 초과 문제가 발생할 수 있습니다.</p>
+	<p>다행히 1.1.1.1은 무료 및 비공개이며, 신속함(독립 DNS 모니터 회사인<a href="https://www.dnsperf.com/#!dns-resolvers" target="_blank">DNSPerf</a>가 인증)과 확장성을 기초로 구축되었으므로 Cloudflare는 사용자에 대한 영향을 최소화하며 서비스를 제공할 수 있었습니다.</p>
+	<p>Cloudflare의 DNS 요청 대다수는 10ms 이내에 확인되었습니다. 동시에 p95 및 p99 백분위수라는 아주 작은 비율에서 대기 시간 증가가 있었는데 이는 만료된 TTL이 Facebook 이름 서버에 의존하여 제한 시간 초과가 되었기 때문으로 보입니다. 10초의 DNS 제한 시간 초과는 엔지니어 사이에서는 잘 알려진 내용입니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/10/image2-11-4.png" class="kg-image"></figure>
+	<h3 id="-">다른 서비스에 미친 영향</h3>
+	<p>문제가 발생하자 사람들은 대안을 찾고, 문제의 원인에 대해 자세히 알거나 토론하려 했습니다. Facebook을 이용할 수 없게 되자 Twitter, Signal 등의 메시징 및 소셜 미디어 플랫폼에 대한 DNS 쿼리가 증가하기 시작했습니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/10/image1-12-4.png" class="kg-image"></figure>
+	<p>또한, Facebook의 영향을 받는 ASN 32934를 오가는 Cloudflare의 WARP 트래픽에도 이용 불가능의 부작용이 발생했습니다. 다음 그림에는 3시간 전과 비교하였을 때 협정 세계시 15시 45분부터 16시 45분 사이에 트래픽에 어떤 변화가 있었는지 국가별로 표시되어 있습니다. 전 세계적으로 Facebook 네트워크에 오가는 WARP 트래픽이 사라져 버렸습니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/10/image7-6-4.png" class="kg-image"></figure>
+	<h3 id="--1">인터넷에 미친 영향</h3>
+	<p>오늘날의 사건은 인터넷이 수백만 개의 시스템과 프로토콜로 구성된 매우 복잡하고 독립적인 시스템이라는 사실을 조심스럽게 상기시킵니다. 주체들 간의 이러한 신뢰, 표준화 및 협력은 전 세계적으로 50억 명에 가까운 사용자가 이용하는 인터넷의 작동을 가능하게 하는 핵심인 것입니다.</p>
+	<h3 id="--2">업데이트</h3>
+	<p>협정 세계시(UTC) 기준 21시경에 Facebook 네트워크에서 새로운 BGP 활동이 관찰되었으며, 이는 협정 세계시(UTC) 기준으로 21시 17분경에 최대치에 달했습니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/10/unnamed-3-3-4.png" class="kg-image"></figure>
+	<p>아래 그림에는 Cloudflare의 DNS 확인자인 1.1.1.1에서 파악한 'facebook.com' DNS의 가용성이 표시되어 있습니다. 협정 세계시(UTC) 기준 15시 50분경에 가용성이 0이었으나, 협정 세계시 기준(UTC) 21시 20분경에 다시 가용성이 증가하기 시작했습니다.</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/10/unnamed-4-4.png" class="kg-image"></figure>
+	<p>Facebook, WhatsApp, Instagram 서비스가 다시 복구될 때까지 더욱 시간이 걸릴 것은 자명해 보입니다만, 협정 세계시(UTC) 기준 21시 28분 현재 Facebook은 온라인 상태로 다시 복구되었으며, DNS도 문제없이 작동하는 것 같습니다.</p>
+</div>

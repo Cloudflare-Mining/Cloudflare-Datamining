@@ -1,0 +1,20 @@
+<div class="post-content lh-copy gray1">
+	<!--kg-card-begin: markdown-->
+	<p>HTTP Strict Transport Security (HSTS, <a href="https://tools.ietf.org/html/rfc6797" target="_blank">RFC 6797</a>) is a web security policy technology designed to help secure HTTPS web servers against downgrade attacks. HSTS is a powerful technology which is not yet widely adopted. CloudFlare aims to change this.</p>
+	<p>Downgrade attacks (also known as SSL stripping attacks) are a serious threat to web applications. This type of attack is a form of on-path attacker attack in which an attacker can redirect web browsers from a correctly configured HTTPS web server to an attacker controlled server. Once the attacker has successfully redirected a user, user data, including cookies, can be compromised. Unfortunately, this attack is outside the realm of pure SSL to prevent. This is why HSTS was created.</p>
+	<p>These attacks are very real: many major websites have been attacked through SSL stripping. They are a particularly powerful attack against otherwise well secured sites, as they bypass the protections of SSL.</p>
+	<p>HSTS headers consists of an HTTP header with several parameters -- including a configurable duration for client web browsers to cache and continue to enforce policy even if the site itself changes. Through CloudFlare, it is easy to configure on a per-domain basis with standard settings.</p>
+	<p>HSTS causes compliant browsers to strictly enforce web security practices. Specifically, it automatically turns all HTTP links into HTTPS links within an application, and it upgrades all SSL errors from warnings or bypassable errors into non-bypassable errors.</p>
+	<p>The configurable parameters for HSTS are:</p>
+	<ul>
+		<li>Enable HSTS (Strict-Transport-Security): On/Off.</li>
+		<li>Max Age (max-age): This is essentially a "time to live" field for the HSTS header. We recommend 6 months in order to earn an A+ rating from <a href="https://www.ssllabs.com/ssltest/" target="_blank">Qualys SSL Labs</a>. Web browsers will cache and enforce HSTS policy for the duration of this value. A value of "0" will disable HSTS.</li>
+		<li>Apply HSTS Policy to subdomains (includeSubDomains): Applies HSTS policy to every host in a domain.</li>
+	</ul>
+	<p>There is one caveat to HSTS: it's a policy cached in each browser. If you configure HSTS settings, browsers will cache those settings for the duration of max-age. We recommend 6 months. If your site becomes inaccessible over strongly-configured HTTPS, web browsers will refuse to connect to the site on HTTP until the policy expires in the browser. Therefore, it's important that you set up HSTS only <strong>after</strong> establishing a stable SSL configuration. Fortunately, CloudFlare's default SSL settings are perfectly compatible with HSTS.</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2015/02/Screen-Shot-2015-02-25-at-17-46-53-1.png" alt=""></p>
+	<p>In order to enable HSTS for your CloudFlare protected website, you will need to use our new dashboard, currently in beta. To access this beta dashboard, first log in to your CloudFlare account. In the lower right corner of the page there is a button labeled "Try Our New Dashboard." Click and log in again. At this point, you're in our new dashboard with access to all your existing domains and settings through a completely new user interface.</p>
+	<p>There will be more information about this new dashboard in the near future, but feel free to check it out. You can continue to freely switch between old and new dashboard.</p>
+	<p><img src="https://blog.cloudflare.com/content/images/2015/02/cloudflare_ssl-week-2.png" alt="CloudFlare SSL Week"></p>
+	<!--kg-card-end: markdown-->
+</div>

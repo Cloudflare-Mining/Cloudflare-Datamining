@@ -1,0 +1,57 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image8-2.png" class="kg-image"></figure>
+	<p>当我们<a href="https://blog.cloudflare.com/announcing-cloudflare-images-beta/">向世界推出Cloudflare Images</a> 时，我们推出了一种在产品内存储图像的方法，并帮助客户通过 Cloudflare，摆脱在使用远程资源进行交付时遇到的出口费用。<br></p>
+	<p>要将图像存储在 Cloudflare 中，客户可以通过简单的拖放<a href="https://developers.cloudflare.com/images/cloudflare-images/upload-images/dashboard-upload/" target="_blank">通过 UI</a> 上传它们，或者<a href="https://developers.cloudflare.com/images/cloudflare-images/api-request/" target="_blank">通过 API</a> 针对具有大量对象的场景上传图像，在上传过程中编写脚本更为合理。<br></p>
+	<p>为了灵活地导入图像，我们最近还提供了<a href="https://developers.cloudflare.com/images/cloudflare-images/upload-images/upload-via-url/" target="_blank">通过 URL 上传</a>或<a href="https://developers.cloudflare.com/images/cloudflare-images/upload-images/custom-id/" target="_blank">为图像定义自定义名称和路径</a>的功能，以允许在客户存储库和 Cloudflare 中的对象之间进行简单映射。还可以<a href="https://developers.cloudflare.com/images/cloudflare-images/serve-images/#serving-images-from-custom-domains" target="_blank">从自定义主机名提供服务</a>，以灵活地决定最终用户如何查看路径，通过消除进行 TLS 协商的需要，来提高交付性能，或通过 URL 一致性提高您的品牌认知度。<br></p>
+	<p>尽管如此，目前并没有简单的方法去告诉我们的产品：<em>“这个存储库 URL 中有数以千万计的图像。去把它们都给我拿走</em>。<em>”</em><br></p>
+	<p>在某些情况下，我们的客户要将包含数百万张图像的存储桶上传到 Cloudflare Images。他们的目标是一次性将所有对象迁移到 Cloudflare，从而完全放弃外部存储。<br></p>
+	<p>在另一种常见的情况下，大公司的不同部门使用配置有不同存储库的独立系统，所有这些系统都在特定时间以不均匀的上传量提供数据。如果他们可以重用定义以在 Cloudflare 中获取所有这些新图像，以确保产品组合为最新，同时通过直接从多个存储提供商处为公众提供服务而无需支付巨额的出口费用，那将是最好的。<br></p>
+	<p>目前为止，在这些情况下，上传到 Cloudflare Images 的过程需要包含后勤协调和脚本知识。<br></p>
+	<h2 id="-cloudflare-images-sourcing-kit"><strong>宣布推出 Cloudflare Images Sourcing Kit</strong></h2>
+	<p>今天，我们很高兴与您分享我们的 Sourcing Kit，您可以在其中定义一个或多个来源，其中包含要迁移到 Cloudflare Images 的对象。<br></p>
+	<p>但是，究竟什么是 Sourcing（采购）？在制造业等行业，这意味着从选择供应商到审查原材料和向流程所有者提供报告等一系列操作。 <br></p>
+	<p>因此，我们借用了该定义并将其转换为 Cloudflare Images 的一组功能，这些功能允许您：<br></p>
+	<ol>
+		<li>定义一个或多个图像存储库以批量导入；</li>
+		<li>重复使用这些来源并仅导入新图像；</li>
+		<li>确保只导入实际可用的图像，而不是该来源中存在的其他对象或文件类型；</li>
+		<li>定义导入图像的目标路径和文件名；</li>
+		<li>获得批量操作的日志。<br></li>
+	</ol>
+	<p>新的套件可以提供所有这些功能。所以，我们来看看它吧。<br></p>
+	<h2 id="cloudflare-images-sourcing-kit-"><strong>Cloudflare Images Sourcing Kit 如何运作</strong><br></h2>
+	<p>在 Cloudflare 仪表板中，您很快就会在 Images 下方看到 Sourcing Kit。<br></p>
+	<p>在其中，您将能够创建新的源定义、查看现有源定义以及查看最后操作的状态。<br></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image5-12.png" class="kg-image" alt="the new Cloudflare Images Sourcing Kit home screen"></figure>
+	<p><br></p>
+	<p>单击“创建”按钮将启动向导，引导您完成从定义的来源进行的第一次批量导入：<br></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image2-32.png" class="kg-image" alt="creating a source definition"></figure>
+	<p>首先，您需要输入来源的名称和用于访问它的 URL。您将能够保存定义，并在需要的时候重复使用该来源。<br>运行必要的验证后，您将能够为导入过程定义规则。<br></p>
+	<p>您拥有的第一个选项允许使用可选前缀路径。定义前缀将会使从该特定来源上传的图像具有唯一标识符，从而区分从该来源导入的图像。<br></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image4-19.png" class="kg-image" alt="define a path prefix to easily identify all images imported from this source"></figure>
+	<p>目前已存在遵循来源图像名称和路径的适当命名规则，我们假设可以在以下位置检索一个小狗图像：</p>
+	<p><br><code><a href="https://my-bucket.s3.us-west-2.amazonaws.com/folderA/puppy.png" target="_blank">https://my-bucket.s3.us-west-2.amazonaws.com/folderA/puppy.png</a></code></p>
+	<p>当在没有任何路径前缀的情况下导入时，您会发现图像位于</p>
+	<p><br><code><a href="https://imagedelivery.net/<AccountId>/folderA/puppy.png" target="_blank">https://imagedelivery.net/&lt;AccountId&gt;/folderA/puppy.png</a></code></p>
+	<p>现在，您可能想要创建一个额外的路径前缀来标识来源，例如提及此存储桶来自技术写作部门。对于小狗示例，结果将是：<br></p>
+	<p><code><a href="https://imagedelivery.net/<AccountId>/techwriting/folderA/puppy.png" target="_blank">https://imagedelivery.net/&lt;AccountId&gt;/<strong>techwriting</strong>/folderA/puppy.png</a></code></p>
+	<p>自定义路径前缀还提供了一种方法来防止来自其他来源的名称冲突。<br></p>
+	<p>不过，有时客户还是不想使用它们。而且，当重新使用该来源导入图像时，可能会出现相同路径+文件名目的地冲突。 <br></p>
+	<p>默认情况下，我们不会覆盖现有图像，但我们允许您选择该选项并刷新 Cloudflare 管道中的目录。<br></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image6-12.png" class="kg-image" alt="refreshing an images catalog or just uploading new images with one simple choice"></figure>
+	<p></p>
+	<p>在定义这些输入后，单击底部的“创建并开始迁移”按钮将触发上传过程。<br></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image10.png" class="kg-image" alt="the final look before starting the migration process"></figure>
+	<p></p>
+	<p>此操作将显示最终的向导屏幕，其中显示迁移状态。进度日志将报告上传过程中出现的任何错误，同时可供下载。<br></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image7-6.png" class="kg-image" alt="Images migration status"></figure>
+	<p>您可以在未运行任何操作时重复使用、编辑或删除来源定义，并且在任何时候，都可以从工具包的主页访问状态并返回到正在进行的或上次的迁移报告。<br></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image3-24.png" class="kg-image" alt="Images migration status and edit source definitions access"></figure>
+	<h2 id="-">后续计划</h2>
+	<p>使用 Cloudflare Images Sourcing Kit 的测试版，您可以将 AWS S3 存储桶定义为导入源。在以下版本中，我们将启用针对其他常见存储库的定义，例如来自 Azure Storage Accounts 或 Google Cloud Storage 的存储库。<br></p>
+	<p>虽然我们的目标是提供一个简单的 UI，但我们还计划通过 CLI 提供所有内容：从定义存储库 URL 到启动上传过程和检索最终报告。</p>
+	<h2 id="--1">申请测试版本</h2>
+	<p>我们将在接下来的几周内发布此工具包的测试版，让您可以将图像从第三方存储库迁移至 Cloudflare。<br></p>
+	<p>如果您想成为第一个使用 Sourcing Kit 的人，请在 <a href="https://dash.cloudflare.com/?to=/:account/images" target="_blank">Cloudflare Images 仪表板</a>上申请加入等待名单！</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/05/image1-39.png" class="kg-image"></figure>
+</div>

@@ -1,0 +1,107 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/Workers-General-2.png" class="kg-image"></figure>
+	<p></p>
+	<p>Hace exactamente un año, Cloudflare me encomendó una misión: Hacer que la gente pudiera ejecutar código en el perímetro de Cloudflare. Entonces, todavía no sabíamos lo que eso significaría. ¿Estaría basado en el contenedor? ¿Sería un nuevo lenguaje Turing incompleto, específico de dominio? ¿Lua? ¿"Funciones"? Había un montón de ideas.</p>
+	<p>Finalmente, nos decidimos por la que ahora parece la opción más obvia: JavaScript, usando la API estándar de Service Workers, funcionando en un nuevo entorno construido en V8. Hace cinco meses, te <a href="https://blog.cloudflare.com/introducing-cloudflare-workers/">ofrecimos un adelanto</a> de lo que estábamos construyendo y comenzamos la versión beta.</p>
+	<p>Hoy, con miles de secuencias de comandos desplegados y miles de millones de solicitudes servidas, Cloudflare Workers está ya listo para todo el mundo.</p>
+	<blockquote><em>"Dejar VCL y adoptar Cloudflare Workers nos permitirá realizar enrutamientos creativos para ofrecer JavaScript a millones de usuarios de npb incluso más rápido que ahora. Construiremos nuestra próxima generación de servicios en la plataforma de Cloudflare y así podremos hacerlo con JavaScript"</em></blockquote>
+	<blockquote><em>— CJ Silverio, director de tecnología, npm, Inc.</em></blockquote>
+	<h3 id="-qu-es-la-nube-en-realidad"><strong>¿Qué es la nube en realidad?</strong></h3>
+	<p>Históricamente, el código de aplicaciones web se ha dividido entre servidores y navegadores. Entre ellos se encuentra una red extensa pero fundamentalmente <em>tonta</em> que simplemente transporta datos de un punto a otro.</p>
+	<p>No creemos que esto responda a la promesa de "la nube".</p>
+	<p>Pensamos que el verdadero sueño de la computación en nube es que el código resida en la propia red. El código no se ejecuta en "us-west-4" de Estados Unidos o "Asia Sur Central (Mumbai)", sino <em>en todas partes</em>.</p>
+	<p>Más concretamente, debe ejecutarse donde más se necesite. Al responder a un usuario en Nueva Zelanda, el código debe ejecutarse en Nueva Zelanda. Cuando analiza los datos de tu base de datos, tu código debe ejecutarse en las máquinas que los almacenan. Al interactuar con una API de terceros, el código debe ejecutarse donde se aloje la API. Cuando los humanos lleguen a Marte, no les gustará esperar media hora a que su aplicación responda; tu código tiene que ejecutarse en Marte.</p>
+	<p>Cloudflare Workers es primer paso hacia esa visión. Al implementar un Worker, este se despliega en la red perimetral completa de Cloudflare con más de cien ubicaciones en el mundo, en menos de 30 segundos. Cada solicitud de tu dominio la gestionará el Worker de la ubicación de Cloudflare más cercana al usuario final, sin que tengas que pensar en las ubicaciones individuales. Cuantas más ubicaciones tengamos en línea, más código se "ejecuta en todas partes."</p>
+	<p>Bueno, vale... No se ejecutará en Marte. Todavía. ¿Estás ahí, Elon?</p>
+	<h3 id="-qu-es-un-worker"><strong>¿Qué es un Worker?</strong></h3>
+	<p>Los Workers de Cloudflare toman su nombre de los Workers de la Web y más concretamente los Service Workers, la API estándar de W3C para secuencias de comandos que se ejecutan en segundo plano en un explorador web e interceptan solicitudes HTTP. Los Workers de Cloudflare están escritos con la misma API estándar, pero se ejecutar en servidores de Cloudflare, no en un navegador.</p>
+	<p>Estas son las herramientas con las que puedes trabajar:</p>
+	<ul>
+		<li>Ejecutar cualquier código JavaScript utilizando las últimas características del lenguaje estándar.</li>
+		<li>Interceptar y modificar URL de solicitud y respuesta, estado, encabezados y contenido del cuerpo de HTTP.</li>
+		<li>Responder a solicitudes directamente desde tu Worker o reenviarlas a otra parte.</li>
+		<li>Enviar solicitudes HTTP a servidores de terceros.</li>
+		<li>Enviar múltiples solicitudes, en serie o en paralelo y utilizar las respuestas para componer una respuesta final a la solicitud original.</li>
+		<li>Enviar solicitudes asincrónicas cuando la respuesta ya se ha devuelto al cliente (por ejemplo, para registro o análisis).</li>
+		<li>Controlar otras características de Cloudflare, tales como comportamiento del almacenamiento en caché.</li>
+	</ul>
+	<p>Los posibles usos de Workers son infinitos y nos entusiasma conocer las ideas de nuestros clientes. Estas son algunas ideas que hemos visto en la versión beta:</p>
+	<ul>
+		<li>Enrutar diferentes tipos de peticiones a servidores de origen diversos.</li>
+		<li>Expandir plantillas HTML en el perímetro, para reducir los costes del ancho de banda en tu origen.</li>
+		<li>Aplicar control de acceso a contenido almacenado en caché.</li>
+		<li>Redirigir a una parte de los usuarios a un servidor provisional.</li>
+		<li>Realizar pruebas A/B entre dos backends totalmente diferentes.</li>
+		<li>Construir aplicaciones "sin servidor" que dependen enteramente de las API de web.</li>
+		<li>Crear filtros de seguridad específicos de tu aplicación para bloquear tráfico no deseado.</li>
+		<li>Reescribir solicitudes para mejorar la tasa de aciertos de caché.</li>
+		<li>Implementar lógica personalizada de equilibrio de carga y conmutación por error.</li>
+		<li>Aplicar soluciones rápidas a tu aplicación sin tener que actualizar tus servidores de producción.</li>
+		<li>Recoger análisis sin ejecutar código en el navegador del usuario.</li>
+		<li>Mucho más.</li>
+	</ul>
+	<p>A continuación, un ejemplo:</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">// A Worker which:
+// 1. Redirects visitors to the home page ("/") to a
+//    country-specific page (e.g. "/US/").
+// 2. Blocks hotlinks.
+// 3. Serves images directly from Google Cloud Storage.
+addEventListener('fetch', event =&gt; {
+  event.respondWith(handle(event.request))
+})
+
+async function handle(request) {
+  let url = new URL(request.url)
+  if (url.pathname == "/") {
+    // This is a request for the home page ("/").
+    // Redirect to country-specific path.
+    // E.g. users in the US will be sent to "/US/".
+    let country = request.headers.get("CF-IpCountry")
+    url.pathname = "/" + country + "/"
+    return Response.redirect(url, 302)
+
+  } else if (url.pathname.startsWith("/images/")) {
+    // This is a request for an image (under "/images").
+    // First, block third-party referrers to discourage
+    // hotlinking.
+    let referer = request.headers.get("Referer")
+    if (referer &amp;&amp;
+        new URL(referer).hostname != url.hostname) {
+      return new Response(
+          "Hotlinking not allowed.",
+          { status: 403 })
+    }
+
+    // Hotlink check passed. Serve the image directly
+    // from Google Cloud Storage, to save serving
+    // costs. The image will be cached at Cloudflare's
+    // edge according to its Cache-Control header.
+    url.hostname = "example-bucket.storage.googleapis.com"
+    return fetch(url, request)
+  } else {
+    // Regular request. Forward to origin server.
+    return fetch(request)
+  }
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h3 id="es-realmente-r-pido"><strong>Es realmente rápido</strong></h3>
+	<p>A veces la gente nos pregunta si JavaScript es "lento". Nada podría estar más lejos de la realidad.</p>
+	<p>Workers utiliza el motor de JavaScript V8 construido por Google para Chrome. V8 no es solo una de las implementaciones más rápidas de JavaScript, sino una de las implementaciones más rápidas de cualquier lenguaje tipado dinámicamente, sin duda. Debido a la gran cantidad de trabajo invertido en optimizar V8, supera a cualquiera de los lenguajes más populares de programación de servidores, con las posibles excepciones de C/C++, Rust y Go. (Por cierto, pronto les daremos soporte, a través de WebAssembly).</p>
+	<p>La conclusión: <strong>Una secuencia de comandos típica de Worker se ejecuta en menos de un milisegundo.</strong> La mayoría de los usuarios no pueden medir las diferencias de latencia cuando habilitan Workers, excepto, por supuesto, cuando su Worker de hecho <em>mejora</em> la latencia respondiendo directamente desde el perímetro.</p>
+	<p>También con respecto a la velocidad, Workers se despliega rápido, además. <strong>Workers se despliega globalmente en menos de 30 segundos</strong> desde el momento en que guardas y activas la secuencia de comandos.</p>
+	<h3 id="precios"><strong>Precios</strong></h3>
+	<p>Workers es un complemento pagado de Cloudflare. Queríamos simplificar los precios tanto como fuera posible, así que este es el plan:</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/05/workers-pricing-text@4x.png" class="kg-image"></figure>
+	<h3 id="comenzar"><strong>Comenzar</strong></h3>
+	<ul>
+		<li><a href="https://www.cloudflare.com/a/overview" target="_blank">Inicia sesión en tu cuenta de Cloudflare</a> y visita la sección "Workers" para configurarlo.</li>
+		<li><a href="https://cloudflareworkers.com/" target="_blank">Prueba Workers en el área interactiva</a>, no se requiere cuenta.</li>
+		<li><a href="https://developers.cloudflare.com/workers/" target="_blank">Lee la documentación</a> para aprender cómo se escriben los Workers.</li>
+		<li><a href="https://blog.cloudflare.com/introducing-cloudflare-workers/">Revisa la publicación del anuncio original en el blog</a> para más detalles técnicos.</li>
+	</ul>
+	<blockquote><a href="https://community.cloudflare.com/c/developers/workers" target="_blank">Habla de Workers en la comunidad de Cloudflare.</a></blockquote>
+	<blockquote><em>"Workers de Cloudflare nos ahorra mucho tiempo. Gestionar el tráfico de bots sin Workers consumiría valiosos recursos de desarrollo y servidor que es mejor usar para otras cosas".</em></blockquote>
+	<blockquote><em>— John Thompson, administrador de sistemas sénior, MaxMind</em></blockquote>
+</div>

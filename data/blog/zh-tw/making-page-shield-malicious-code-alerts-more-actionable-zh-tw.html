@@ -1,0 +1,37 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/Untitled.png" class="kg-image" alt="Page Shield is generally available"></figure>
+	<p>去年在 CIO 週期間，我們宣佈 <a href="https://blog.cloudflare.com/page-shield-generally-available/">Page Shield 正式上市</a>。今天，我們將討論我們為協助 Page Shield 使用者專注於影響最大的指令碼並從產品中獲得更多價值所做的改進。在這篇文章中，我們將討論對指令碼狀態、中繼資料和分類的改進。</p>
+	<h3 id="-page-shield-">什麼是 Page Shield？</h3>
+	<p><a href="https://www.cloudflare.com/page-shield/" target="_blank">Page Shield</a> 可保護網站擁有者和訪客免受惡意第三方 JavaScript 的侵害。JavaScript 可能透過多種惡意方式被利用：瀏覽器端加密挖掘、資料外流和惡意軟體注入等等。</p>
+	<p>例如，一個被劫持的 JavaScript 可能將一系列網站上數百萬使用者的信用卡詳細資訊暴露給惡意執行者。惡意執行者透過利用遭入侵的 JavaScript 程式庫、側錄表單的輸入，並將其外洩到他們控制下的第三方端點，從而抓取詳細資訊。</p>
+	<p>如今，Page Shield 部分依賴於<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy" target="_blank">內容安全性原則</a> (CSP)，這是一種瀏覽器原生架構，可用於控制和瞭解允許在頁面上載入哪些指令碼（同時還報告任何違規行為）。我們使用這些違規報告，可在 Cloudflare 儀表板中提供有關最終使用者瀏覽器正在載入的指令碼的詳細資訊。</p>
+	<p>Page Shield 使用者可透過儀表板，查看哪些指令碼在其網站上以及在哪些頁面上處於作用中狀態。如果指令碼執行惡意活動，使用者將收到警示，並監控指令碼的程式碼變更。</p>
+	<h3 id="-">指令碼狀態</h3>
+	<p>為協助識別惡意指令碼，並且更輕鬆地對即時威脅採取動作，我們引入了一個狀態欄位。</p>
+	<p>前往 <a href="https://dash.cloudflare.com/?to=/:account/:zone/security/page-shield" target="_blank">Page Shield 儀表板</a>時，客戶現在只會看到狀態為 <code>active</code> 的指令碼。作用中指令碼是指在過去七天看到的，且沒有透過「cdn-cgi」端點（由 Cloudflare 管理）取得服務的指令碼。</p>
+	<p>我們還引入了其他狀態：</p>
+	<ul>
+		<li><code>infrequent</code> 指令碼是指在一段時間內，僅在極少數 CSP 報告中看到的指令碼。它們通常表示正在使用遭入侵瀏覽器擴充功能的單個使用者的瀏覽器。此狀態的目標是減少由將 JavaScript 注入 HTML 的瀏覽器外掛程式所引起的雜訊。</li>
+		<li><code>inactive</code> 指令碼是指七天未報告且因此可能已被移除或取代的指令碼。</li>
+		<li><code>cdn-cgi</code> 是由 Cloudflare 管理的 ‘/cdn-cgi/’ 端點提供的指令碼。這些指令碼與 Cloudflare 產品相關，例如我們的分析或機器人管理功能。Cloudflare 會密切監控這些指令碼，由於它們是相當靜態的，不需要客戶密切監控，因此，如若我們的偵測未發現任何可疑之處，它們是預設隱藏的。</li>
+	</ul>
+	<p>如果客戶希望查看包括非作用中指令碼在內的完整指令碼清單，則他們仍然可以透過按一下「所有指令碼」來實現此目的。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/Screenshot-2022-06-28-at-13.30.05.png" class="kg-image" alt="Page Shield dashboard showing detected scripts."></figure>
+	<h3 id="--1">警示中的指令碼中繼資料</h3>
+	<p>客戶若選擇加入 Page Shield 企業附加元件版本，還可以選擇針對惡意指令碼設定通知。在之前的版本中，我們提供了第一次和最後一次在資料上看到的指令碼 URL。這些警示已經過修改，以改善安全分析師的體驗。我們的目標是提供安全分析師為驗證指令碼而想要手動查詢的所有資料。透過此次更新，我們利用 <a href="https://radar.cloudflare.com/" target="_blank">Cloudflare Radar</a> 提供的深入解析，朝著該方向邁出了重要一步。</p>
+	<p>現在，在電子郵件警示的上方，您會找到看到指令碼的位置，以及有關何時看到指令碼的其他資訊和完整 URL（出於安全考慮，該 URL 不可點按）。</p>
+	<p>作為 Page Shield 企業附加元件版本的一部分，我們透過自訂<a href="https://blog.cloudflare.com/detecting-magecart-style-attacks-for-pageshield/">機器學習分類器</a>，以及一系列網域和 URL 威脅摘要來審查指令碼。在任何機器學習評分系統中，一個非常常見的問題是「為什麼以所採用的評分方式來評分」。正因為如此，我們的系統產生的機器學習分數如今會進行拆分，以顯示構成分數的元件；目前包括混淆和資料外流值。這應當有助於提高客戶在出現誤判時審查指令碼的能力。</p>
+	<p>威脅摘要對於針對偵測我們的分類器尚未訓練的新攻擊方式非常有幫助。其中一些摘要為我們提供了一系列惡意端點類別，如「惡意軟體」、「間諜軟體」或「網路釣魚」。我們的企業附加元件客戶現在能夠在我們的警示（如上所示）和儀表板中看到分類。其目標是提供有關為何指令碼被視為惡意的更多相關資訊。</p>
+	<p>此外，我們現在還提供有關指令碼變更的資訊，以及每個版本的「惡意程式碼分數」。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/Issued-certificates.png" class="kg-image" alt="Email alert showing which script was flagged and where it was seen."></figure>
+	<p>在最重要資訊的正下方，我們新增了有關提供指令碼的相關方網域的 WHOIS 資訊。在某些情況下，網域名稱註冊商可能會隱藏組織名稱等相關資訊，然而，有關註冊日期和到期日期的資訊對於偵測擁有權的非預期變更非常有用。例如，我們經常看到惡意指令碼託管在新註冊的網域下。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/Insights.png" class="kg-image" alt="email alert showing WhoIs information of the domain the script was delivered from."></figure>
+	<p>我們現在還透過憑證透明度監控，提供有關為此網域簽發 SSL 憑證的詳細資訊。這對於偵測潛在的盜用很有用。例如，如果第三方指令碼端點通常使用 Digicert 憑證，但最近簽發了 Let's Encrypt 憑證，這可能表明另一方正嘗試盜用該網域。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/07/Main.png" class="kg-image" alt="Email alert. Certificate Transparency monitor information of the script:   "></figure>
+	<p>最後的一項重要功能是，我們改進了儀表板連結，將使用者直接帶到 Page Shield UI 提供的特定指令碼詳細資訊頁面。</p>
+	<h3 id="--2">接下來呢？</h3>
+	<p>透過 JavaScript 執行惡意活動的方法有很多。因此，我們建置特定於攻擊類型的偵測機制，以及有助於偵測異常的全方位工具非常重要。我們目前正在建置一個新元件，旨在透過運用 <code>connect-src</code> CSP 指令，在資料端點中尋找惡意意圖的跡象。其目標是改善我們的 Magecart 式攻擊偵測的準確性。</p>
+	<p>此外，我們還在努力提供直接透過 Page Shield 產生 CSP 原則的能力，從而能夠輕鬆地執行積極封鎖，並長時間維護這些規則。</p>
+	<p>我們正在開發的另一項功能是，輕輕一按即可封鎖指令碼存取使用者的網路攝像頭、麥克風或位置的能力。</p>
+	<p>在今後的部落格文章中將進一步介紹此功能。更多功能即將推出！</p>
+</div>

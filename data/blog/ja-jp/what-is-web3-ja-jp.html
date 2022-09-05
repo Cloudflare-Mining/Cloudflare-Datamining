@@ -1,0 +1,58 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/image1-1.png" class="kg-image"></figure>
+	<p>この投稿を読むことで、あなたもWeb参加者の1人になります。サーバーの操作やLOCの書き込みをしなくても、このブログを投稿してみなさんに読んでいただけるのは素晴らしいことですね。一般に、現代のWebのおかげで、私たちが関与できる物事の範囲が過去には考えられなかったほど広がりました。</p>
+	<p>昨年、<a href="https://blog.cloudflare.com/internet-privacy/">当社は</a>インターネットの次フェーズは「常に稼働し、常に安全で、常にプライバシーが守られている状態」をいうとお話しました。本日は、Webに見られる同様の動向、Web3について掘り下げていきます。本ブログではまず、Web3をWebの進化という観点から説明し、Cloudflareでこれをどのようにサポートできるかをお話していきます。</p>
+	<h3 id="web-1-0-web-2-0-">Web 1.0 からWeb 2.0へ</h3>
+	<p><a href="https://webfoundation.org/about/vision/history-of-the-web/" target="_blank">ティム バーナーズ＝リー卿</a>は、後の世に大きな影響を与えることになる1989年の提案書<a href="https://www.w3.org/History/1989/proposal.html" target="_blank">「Information Management：A Proposal</a>」で、「Web」の構想をハイパーテキストリンクで相互接続する情報システムのネットワークとして説明しました。Webはインターネットと同じものと思われがちですが、インターネットというコンピューターネットワーク上で動作するのがWebです。このWebの主だった実用的要件としては、遠隔地のマシンを通じて分散型のネットワークアクセスが可能であることと、中央集中管理も調整も必要とせずにシステムの連携が可能であることなどがあります。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/10/image4-3.png" class="kg-image" alt="The original proposal for what we know as the web, fitting in one diagram - Source: w3">
+		<figcaption>Webと呼ばれるものの原案は、1つの図に表すことができます（出典：<a href="https://www.w3.org/History/1989/proposal.html" target="_blank">w3</a>）</figcaption>
+	</figure>
+	<p>この構想がWebとして実現したわけですが、初期のWebは、分散型サーバーネットワーク経由で配信される相互接続された静的リソースで構成されており、クライアント側からのアクセスは読み取り専用でした。これが「Web 1.0」です。<a href="https://www.mit.edu/people/mkgray/growth/" target="_blank">World Wide Web Wanderer</a>（ワールドワイドウェブワンダラー）からのデータを基に1993年にMosaicグラフィカルブラウザが導入され、それから2年でWebサイト数が1,000%を軽く超える勢いで増え、Webの利用が激増しました。</p>
+	<p>2000年代初頭、Webは成長の転換点を迎え、その発展において重要な時期に入ります。Webに対する猜疑心が高まる中、ドットコムバブルの崩壊を凌いで生き残ったテック企業が進化し、新たな方法で顧客に価値を届け始めたのです。</p>
+	<ul>
+		<li>Netscapeのようなデスクトップブラウザは日用品化し、検索エンジンのようにコンテンツを見つけるためのネイティブWebサービスに道を開きました。</li>
+		<li>当初、Yahoo!などウェブディレクトリのハイパーリンクで実現していたネットワーク効果は、ユーザーエンゲージメントを可能にし、評価サイトなどからの集合知を活用したプラットフォームによって急拡大しました。</li>
+		<li>インターネット上の活動によって大量のデータが生成され、それが持つ競争上の価値について認識が高まるにつれ、企業はデータベース管理の専門家にならざるを得なくなりました。</li>
+	</ul>
+	<p>こうしたデザイン原理の変化をとらえようと、O'Reilly Media（オーライリメディア）は<a href="https://www.oreilly.com/pub/a/web2/archive/what-is-web-20.html?page=1" target="_blank">Web 2.0</a>という概念を考え出しました。新たなデザイン原理は、Webの有用性と双方向性にも変革をもたらし、20年近く経った今もインターネット企業の根幹であり続けています。</p>
+	<p>しかし、Web 2.0への変革が起こる中、Webは初期の原則の1つである「分散化」とはかけ離れたものになってしまいました。</p>
+	<blockquote>分散化：Webに何かを投稿する際に中央機関から許可を得る必要がありません。中央制御ノードがないため、単一障害点も存在せず、「キルスイッチ（非常停止ボタン）」もありません！<br>—Webの歴史 <a href="https://webfoundation.org/about/vision/history-of-the-web/" target="_blank">、<em>Web Foundation</em></a>より</blockquote>
+	<h3 id="-">インターネットの新しいパラダイム</h3>
+	<p>ここでWeb 3の登場となります。過去20年間で、コンテンツを分散化する拡張可能なシステムの構築が難しいことが証明されました。こうしたシステムを構築する技術は存在するものの、大規模な分散化を実現させるコンテンツプラットフォームがありません。</p>
+	<p>ここに注目すべき例外が1つあります。Bitcoin（ビットコイン）です。ビットコインは<a href="https://en.wikipedia.org/wiki/Satoshi_Nakamoto" target="_blank">サトシナカモト</a>著の2008年<a href="https://bitcoin.org/bitcoin.pdf" target="_blank">ホワイトペーパー</a>の中で、分散型台帳の一種として概念化されました。ブロックチェーンとして知られるもので、パブリックで一貫性があり改ざん不可能な形でピアツーピア（P2P）ネットワークが取引を行えるようにデザインされました。</p>
+	<p>この短い説明では十分ではありませんので、用語ごとに詳しく見ていきましょう。</p>
+	<ul>
+		<li>ピアツーピアネットワークはネットワークアーキテクチャで、情報を格納し中継するノードと呼ばれるコンピューターグループから構成されています。各ノードが等しく権限を有し、1つのノードが単一障害点にならないようになっています。ビットコインの場合、ノードはビットコイン取引の送受信と処理ができます。</li>
+		<li>台帳は取引が記録されるアカウントの集合です。ビットコインでは、台帳がビットコイン取引を記録します。</li>
+		<li>分散型台帳は複数のコンピューター間で共有し同期される台帳のことです。合意形成により行われるため、各コンピューターは同じ台帳の複製を保有します。ビットコインでは、合意形成のプロセスがP2Pネットワークであるビットコインネットワークで実行されます。</li>
+		<li>ブロックチェーンは分散型台帳の一種で、「ブロック」にデータを格納します。この「ブロック」は暗号化してつなげ、時系列を保存した不可変のチェーンとなります。ビットコインはブロックチェーン技術を活用して、取引の真正性とシーケンスを記録した共有の単一ソースを確立することで、<a href="https://en.wikipedia.org/wiki/Double-spending" target="_blank">二重支払いの問題</a>を軽減します。</li>
+	</ul>
+	<p>ビットコインでは、現在<a href="https://luke.dashjr.org/programs/bitcoin/files/charts/software.html" target="_blank">40,000ノード以上</a>がネットワーク内にあり、毎日<a href="https://coinmarketcap.com/currencies/bitcoin/" target="_blank">300億ドル超の取引</a>を処理しています。これは、安全性を損なうことなく、アプリケーションを大規模に分散化して実行できることを実証しています。ビットコインの成功をインスピレーションとして、イーサリアム（Ethereum）など他のブロックチェーンプロジェクトも開発されました。イーサリアムは、取引はもちろん、参加者が各ノードで検証可能な形で実行できるコードをデプロイできます。</p>
+	<p>現在、こうしたプログラム可能なブロックチェーンは、分散型インターネットのインフラストラクチャとして機能する、<a href="https://www.coindesk.com/web3-transform-the-web" target="_blank">オープンでトラストレスな理想的プラットフォーム</a>と考えられています。ここには、いかなる事業体にも依存せず利用できる<a href="https://dappradar.com/rankings" target="_blank">分散型アプリケーション（「Dapps」）が7,000近くある</a>豊かなエコシステムが存在し、今も成長し続けています。それが、各法域でユーザーに最善のサービスを提供するための優れた柔軟性をもたらしています。</p>
+	<h3 id="web-">Webはエンドユーザーのため</h3>
+	<p>本来、分散型システムは集中型システムとは異なります。この2つを同じように捉えるべきではありません。分散型システムでは、データとその処理が1事業者に集中しないようにできます。これは企業が復元力を提供するのに役立ちますが、参加者の手元にデータが残るP2Pベースのネットワークにも有用です。</p>
+	<p>たとえば、従来の方法でブログをホストする場合、サーバーを設置してインターネット（<a href="https://blog.cloudflare.com/dyi-web-server-raspberry-pi-cloudflare/">Cloudflare :D</a>経由）に露出すれば、<em>et voilà</em>（はい、完了）となります。最近のブログは、WordPressやGhost、Notions、Twitterなどのプラットフォームでホストしています。こうした企業で障害が発生した場合、遥かに多くのユーザーに影響が出ます。しかし分散型なら、IPFSなどを経由してブログのコンテンツをホストでき、別の事業体が運営する複数のロケーションから配信できます。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/10/image5-2.png" class="kg-image" alt="Web 1.0">
+		<figcaption>Web 1.0</figcaption>
+	</figure>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/10/image2-2.png" class="kg-image" alt="Web 2.0">
+		<figcaption>Web 2.0</figcaption>
+	</figure>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/10/image3-1.png" class="kg-image" alt="Web3">
+		<figcaption>Web3</figcaption>
+	</figure>
+	<p>ネットワークの各参加者が何をホストまたは提供するかを決定でき、異なるコンテンツを持つことができます。ホームネットワークと同様、共有する内容を管理できるので、すべてを共有することはありません。</p>
+	<p>これが分散型IDの基本原則です。ビットコインやイーサリアムのような暗号通貨の基盤を成しているのと同じ暗号化の原則をアプリケーションに適用し、安全でクロスプラットフォームのIDサービスを提供しています。これは、OAuth 2.0など他の認証システムとは根本的に異なります。OAuth 2.0ではIDの評価に信頼される機関への照会が必要で、それは「＜大手クラウドプロバイダー＞でログインする」というボタンでわかります。十分なデータとリソース、技術的専門知識を持っているのは、こうしたクラウドプロバイダーだけなのです。</p>
+	<p>分散型のWebでは、各参加者が秘密鍵を持ち、お互いの認証にこれを使うことができます。この暗号化システムについては、<a href="https://blog.cloudflare.com/ja-jp/introducing-cryptographic-attestation-of-personhood-ja-jp/%23the-technical-explanation">以前のブログ</a>で説明しています。Web参加者がデータを所有できるWeb3の設定では、インタラクション（対話型操作）を行うアプリケーションとのデータ共有を選択的に行えます。また、このシステムを活用して、互いの過去のインタラクションを証明することもできます。たとえば、大学があなたに<a href="https://www.w3.org/TR/did-core/" target="_blank">分散型ID</a>（DID）を発行したら、後日この大学に改めて連絡を取らなくても在籍を証明できます。また、信頼性付与にブロックチェーンを使用することに参加者が合意している場合の、公開プロフィールのプレースホルダーとしても分散型IDを使うことができます。ENSやUnlockのようなプロジェクトが提供しようとしているのは、みなさんが公開鍵のコントロールによって自分のIDをオンライン認証する方法です。</p>
+	<p>信頼のもとになっている情報を共有することによって所有権を証明するというトレンドが、NFTブームに火をつけました。<a href="https://blog.cloudflare.com/cloudflare-stream-now-supports-nfts/">NFTについて</a>は、以前このブログで取り上げました。ブロックチェーンをベースとするNFTは、所有権を伝える方法の1つです。ブロックチェーンはこの情報が公に認証され、更新されるようにします。もし私が管理する公開鍵がNFT所有者であることをブロックチェーンが示していれば、それを他のプラットフォームで所有権を証明する際に参照情報として提示できます。たとえば、私がソーシャルメディアのプロフィール写真を猫にしているとしましょう。私はその猫と私の公開鍵との関連づけを証明できます。これが何を意味するかは、証明したい内容によります。特にNFTコントラクトの普及に伴って、その傾向は強くなります。NFTコントラクトがどのように機能するかを理解したい方は、<a href="https://blog.mycrypto.com/so-you-wanna-build-your-own-pfp-nft-project/" target="_blank">独自のものを構築</a>してみるのもいいかもしれません。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/image6-1.png" class="kg-image"></figure>
+	<h3 id="web3-cloudflare-">Web3におけるCloudflareの位置づけは？</h3>
+	<p>分散化とプライバシー確保は、Cloudflareがより良いインターネットの構築というミッションの一環としての取り組んでいる課題です。</p>
+	<p><a href="https://blog.cloudflare.com/ja-jp/next-generation-privacy-protocols-ja-jp/">以前の投稿</a>で、Nick SullivanはWeb上のプライバシー確保に対するCloudflareの貢献について説明しました。<a href="https://blog.cloudflare.com/encrypted-client-hello">Encrypted Client Hello（ECH）</a>によってHTTPSでの情報漏れを修正するイニチアチブを開始し、<a href="https://blog.cloudflare.com/oblivious-dns">Oblivious DNS-over-HTTPS（ODoH）</a>をサポートすることでDNSのプライバシー保護を強化し、パスワード漏えいが発生しにくくする<a href="https://blog.cloudflare.com/opaque-oblivious-passwords">OPAQUE</a>を開発しました。また、<a href="https://blog.cloudflare.com/ja-jp/introducing-the-cloudflare-data-localization-suite-ja-jp/">データローカライゼーションスイート</a>をリリースして、企業がパフォーマンスとセキュリティ機能を損なうことなくデータ格納場所を管理できるようにし、変化し続ける<a href="https://blog.cloudflare.com/data-privacy-day-2021-looking-ahead-at-the-always-on-always-secure-always-private-internet/">規制状況</a>に対応できるようにしています。さらに<a href="https://blog.cloudflare.com/introducing-zero-knowledge-proofs-for-private-web-attestation-with-cross-multi-vendor-hardware/">プライバシー保護認証</a>まで構築しています。これは、<a href="https://electriccoin.co/blog/explaining-halo-2/" target="_blank">ZCash</a>や<a href="https://filecoin.io/blog/posts/filecoin-zk-snarks-zero-knowledge-but-a-lot-of-zero-knowledge/" target="_blank">Filecoin</a>などの分散型システムの核を成すゼロ知識証明技術に基づく認証です。</p>
+	<p>ユーザーエクスペリエンスを向上させるためにWebを変えられる方法が既にあると考えると、ワクワクします。ただし、その楽しみなインフラストラクチャ上の構築には多少の制限があるため、イーサリアムやIPFSのようなプロジェクトは独自のアーキテクチャ上に構築されています。依然インターネットには依存していますが、私たちが知っているようなWebでは運用していません。その移行を容易にするため、Cloudflareは<a href="https://www.cloudflare.com/ja-jp/distributed-web-gateway/" target="_blank">分散型Webゲートウェイ</a>を運用しています。それらのゲートウェイは、Web3プロトコル（イーサリアムやIPFS）にHTTPインターフェースを提供します。HTTPは現在私たちが知っているWebの中核ですから、ユーザーに実験的ソフトウェアを使うように求めなくても、分散されたコンテンツへの安全かつ簡単なアクセスが実現できます。</p>
+	<h3 id="cloudflare-">Cloudflareの今後の動きは？</h3>
+	<p>新たなWebへの道は長いですが、楽しみでもあります。過去20年に構築されたインフラストラクチャは実に素晴らしく、インターネットとWebは今や46億人の生活の一部になりました。一方、トップ35Webサイトへの<a href="https://www.ncta.com/whats-new/the-expanding-consolidation-of-the-consumer-internet-3" target="_blank">訪問数が他サイトの合計より多い</a>という状況（2014年頃）があり、ユーザーは自分のデータをコントロールしにくくなり、一部の関係者に依存する傾向が強まっています。</p>
+	<p>初期のWebは静的でした。次にWeb 2.0が登場し、集中化を犠牲にして、私たちが日々享受する対話性とサービスを提供したのです。Web3は、さらにこの上を行こうという動きです。オープンプロトコル上で構築された分散型ネットワークにすることで、Webユーザーは権限を持った参加者になります。</p>
+	<p>Cloudflareはこの分散型の未来を歓迎します。最大エッジネットワークの1つを運営することで得た知識と経験を応用し、ユーザーと企業が簡単にWeb3の恩恵を受けられるよう、<a href="https://blog.cloudflare.com/ja-jp/announcing-web3-gateways-ja-jp/">分散型Web製品スイート</a>の運用や、<a href="https://blog.cloudflare.com/cloudflares-approach-to-research/">オープンスタンダード整備への貢献</a>、<a href="https://blog.cloudflare.com/ja-jp/internet-privacy-ja-jp/">プライバシー保護の強化推進</a>に取り組んでいきます。</p>
+	<p>Cloudflareと共により良いWebの構築に役立ちたいとお考えなら、当社は現在<a href="https://www.cloudflare.com/ja-jp/careers/jobs/" target="_blank">求人</a>中です。</p>
+</div>

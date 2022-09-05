@@ -1,0 +1,31 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image3-3.png" class="kg-image" alt="How Cloudflare verifies the code WhatsApp Web serves to users"></figure>
+	<p>了解 Cloudflare 如何帮助 WhatsApp 验证他们用于保护消息的代码没有遭到篡改。</p>
+	<p>当您访问一个网站时，您如何知道 Web 浏览器下载的代码是网站打算让你运行的代码？相比从可信的应用商店下载的移动应用，Web 无法提供同样程度的保证以确保代码没有被篡改。今天，<a href="https://engineering.fb.com/2022/03/10/security/code-verify/" target="_blank">我们很高兴能与 WhatsApp 合作</a>来提供一个系统，以确保用户在 Web 上访问 WhatsApp 时运行的代码就是 WhatsApp 打算运行的代码。</p>
+	<p>随着 WhatsApp 在浏览器中的使用日益增加，面临风险的用户——包括记者、活动人士和人权维护者——越来越多，WhatsApp 希望向基于浏览器的用户提供保证。该公司希望我们提供帮助，使第三方破坏负责 WhatsApp 用户间消息端到端加密的代码难度大幅提高。</p>
+	<p>那么其工作原理是怎样的呢？Cloudflare 持有 WhatsApp 应该运行的代码的哈希。当用户在浏览器中运行 WhatsApp 时，WhatsApp 代码验证扩展将浏览器中执行的代码的哈希与 Cloudflare 持有的哈希进行比较，从而轻松确定正在执行的代码是不是应该执行的代码。</p>
+	<p>这种想法本身——比较哈希以检测篡改或甚至被破坏的文件——并不新鲜，但自动化、大规模地部署并确保其对 WhatsApp 用户能 “完全有效” 是现在才出现的。鉴于 WhatsApp 的影响力及对 Cloudflare 的信任，我们希望从技术角度来进一步说明下这个系统如何发挥作用。 </p>
+	<p>在我们开始前，有一件非常重要的事情需要明确指出：Cloudflare 正在提供一个支持代码验证（Code Verify）的审计端点。WhatsApp 用户之间的消息、聊天或其他流量始终不会发送到 Cloudflare；这些数据保持私密和端到端加密状态。消息或媒体不会作为这个系统的一部分通过 Cloudflare 的网络，从 Cloudflare 作为可信第三方的角度来看，这些是重要的资产。</p>
+	<h3 id="-">使验证更加容易</h3>
+	<p>回想 2003 年：基于红帽的流行 Linux 发行版 Fedora 刚刚发布。您很想下载它，但要确保拿到的是 “真正的” &nbsp;Fedora ，而不是一个会窃取密码和记录键盘输入的 “假冒” 版本。您进入下载页面并开始下载，并在下载链接旁看到一个 MD5 哈希（当时被认为是安全的）。在下载完成后，您会运行 <code>md5 fedora-download.iso</code> 并将哈希输出与页面上的哈希做比较。如果两者匹配，那么平安大吉，您就可以将 Fedora 安装到计算机上了。</p>
+	<p>但是，稍等一下：如果提供下载的网站也就是提供哈希的网站，某个恶意行为者就不能将下载文件和哈希都替换成自己的值吗？上面运行的 <code>md5</code> 检查仍可以通过，但不能保证我们拥有希望下载的 “真正”（未经篡改的）软件版本。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/03/image2-6.png" class="kg-image" alt="Hosting the hash on the same server as the software is still common in 2022.">
+		<figcaption>在 2022 年，将软件和哈希放在同一个服务器上依然是常见的做法。</figcaption>
+	</figure>
+	<p>有其他方法尝试改进这个问题——提供签署的签名，让用户能够验证是由其他地方托管的 “知名” 公钥签署。将这些签名（即 “哈希”）托管在可信第三方大幅提高了篡改的难度，但现在我们需要用户知道谁可信，要求他们学习 <a href="https://www.debian.org/CD/verify" target="_blank">GnuPG</a> 这样的工具。这并不能帮助我们信任和验证现代互联网规模的软件。</p>
+	<p>这就是<a href="https://chrome.google.com/webstore/detail/code-verify/llohflklppcaghdpehpbklhlfebooeog/related" target="_blank">代码验证扩展</a>和 Cloudflare 发挥作用的地方了。Meta Open Source 发布的代码验证扩展自动执行如下操作：在本地计算 WhatsApp 所用库的加密哈希，<em>并</em>将其与来自可信第三方来源（本例中是 Cloudflare）的哈希做比较。</p>
+	<p>我们绘制了一张示意图说明其中原理，显示用户、WhatsApp 和 Cloudflare 这三方的每一方如何进行交互。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/03/image1-5.png" class="kg-image" alt="示意图：验证 WhatsApp 网络代码的四个步骤"></figure>
+	<p>分解一下，验证代码没有被篡改分为四个主要步骤：</p>
+	<ol>
+		<li>WhatsApp 将其 JavaScript 库的最新版本发布到他们的服务器，该版本的响应哈希发布到 Cloudflare 的审计端点。</li>
+		<li>某个 WhatsApp Web 客户端从 WhatsApp 获取最新的库。</li>
+		<li>代码验证浏览器扩展随后通过一个单独、安全的连接从 Cloudflare 获取该版本的哈希。</li>
+		<li>代码验证扩展将来自 Cloudflare 的 “已知良好” 哈希预其在本地计算的库哈希进行比较。</li>
+	</ol>
+	<p>如果两个哈希匹配——几乎任何情况下都应该如此——则从扩展的角度来看，这些代码得到 “验证”。如果两个哈希<em>不</em>匹配，则表明用户浏览器中运行的代码不同于 WhatsApp 打算在所有用户浏览器中运行的代码。</p>
+	<h3 id="--1">安全需要便利</h3>
+	<p>正是以上过程，以及其代表用户自动化执行这一事实，帮助以可扩展的方式来提供透明度。如果用户必须自行手动获取、计算和比较哈希，检测篡改将只适合于一小部分技术用户。对 WhatsApp 这样的大型服务而言，这并不是一种特别容易使用或对用户友好的方式。 </p>
+	<p>这种方法与目前使用的很多技术也有相似之处。其中之一是 Web 浏览器的<a href="https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity" target="_blank">子资源完整性</a>：当您获取第三方资源（例如脚本或样式表）时，浏览器验证返回的资源是否匹配所描述的哈希。若不匹配，浏览器拒绝加载该资源，防止可能受到破坏的脚本窃取用户数据。另一个是<a href="https://certificate.transparency.dev/" target="_blank">证书透明度</a>和相关的<a href="https://binary.transparency.dev/" target="_blank">二进制透明度</a>项目。这两个项目都为关键资产（包括 WebPKI 证书和其他二进制 blob）提供公共可审计的透明度。本文描述的系统暂未扩展到二进制资源，但我们正在探索如何将这个产品扩展到更通用和更可用的东西，例如二进制透明度。</p>
+	<p>我们与 WhatsApp 团队的合作只是我们为改善 Web 隐私和安全所做工作的开端。我们的目标是帮助其他组织验证交付用户的代码就是他们应该运行的代码。大规模保护互联网用户并实现私密是 Cloudflare 的核心原则，我们期待在 2022 年内继续这项工作。</p>
+</div>

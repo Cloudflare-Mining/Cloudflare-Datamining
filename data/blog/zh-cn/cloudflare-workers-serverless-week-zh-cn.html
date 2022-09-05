@@ -1,0 +1,77 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image-33.png" class="kg-image"></figure>
+	<p>Cloudflare Workers® 是规模最大、使用最广泛的边缘计算平台之一。我们是<a href="https://blog.cloudflare.com/introducing-cloudflare-workers/">大约三年前发布 Cloudflare Workers</a>的，过去两年它已变得比较普及。这段时间以来，我们已经看到成千上万开发人员编写的数千万行代码如今在Cloudflare 的网络上运行。</p>
+	<p>就在上个季度，20,000 名开发人员首次使用 Cloudflare Workers 部署了一个新应用程序。现在，流经我们网络的所有请求中有超过 10％ 使用了 Cloudflare Workers。而且在我们最大的客户中，大约有 20％ 正在采用 Cloudflare Workers 作为其部署的一部分。这个平台有如此发展，真是令人不可思议。</p>
+	<p>在未来一周（我们称为“无服务器周”），我们将推出对 Cloudflare Workers 平台的一系列增强，让您能够构建更加复杂的应用程序，降低无服务器计算开支，同时让您的应用程序变得更加快速，并证明 Workers 平台由内而外皆安全。</p>
+	<h3 id="-">马修的开发者需求层次结构</h3>
+	<p>在这一周开始之前，我想先退后一步，谈谈过去三年我们在边缘计算方面的收获。在发布 Cloudflare Workers 时，我们认为杀手锏是速度。Workers 在整个 Cloudflare 网络上运行，更靠近最终用户，因此其响应速度天生比传统的中央化无服务器平台快。</p>
+	<p>但是，我们观察开发人员使用 Cloudflare Workers 后发现，一个开发平台有着若干个属性，而不仅仅是速度。速度是锦上添花，但对大多数应用程序而言，速度并不是初始要求。只专注于它是不对的，会让边缘计算平台注定走向默默无闻。</p>
+	<p>如今，几乎所有谈论边缘计算优势的人仍然聚焦于速度。Akamai 亦是如此；他们<a href="https://www.akamai.com/fr/fr/multimedia/documents/technical-publication/edgecomputing-extending-enterprise-applications-to-the-edge-of-the-internet-technical-publication.pdf" target="_blank">于 2002 年推出了基于 Java 和 .NET 的 EdgeComputing 平台</a>，但由于未能找到足够多的客户，2009 年便已关闭（仅靠网络延迟少一点无法成为在边缘运行代码增加成本和复杂性的理由）。这是业内许多人都已忘记的一个警世故事。</p>
+	<p>如今我相信，我们在推出 Cloudflare Workers 时将速度视为边缘计算的杀手锏是错误的，并且业内许多人的关注点仍然错位，面临着失去更大机遇的风险。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image-34.png" class="kg-image"></figure>
+	<p>这里，我要提出一个不同的观点。任何平台上开发人员的需求按照重要性从低到高排序其实应该是：速度 &lt; 一致性 &lt; 成本 &lt; 易用性 &lt; 合规性。我们把它叫做“马修的开发者需求层次结构”。尽管所有谈论边缘计算的人几乎都聚焦于速度，但我认为一致性、成本、易用性，尤其是合规性最终会变得远比速度重要。实际上，我预测，未来三年边缘计算的真正杀手锏与相对不那么吸引人但从根本上看很重要的一点相关：合规性。</p>
+	<h3 id="--1">速度是杀手锏吗？</h3>
+	<p>不要误会我的意思，速度很棒。让应用应用程序快速运行是开发人员经验的自我实现。我们也把 Workers 打造得特别快速。通过将计算工作负载移到更接近应用程序用户所在位置，我们可以有效突破光速带来的限制。<a href="https://www.cloudflare.com/network/" target="_blank">Cloudflare 的网络遍布全球 100 多个国家/地区的 200 多个城市</a>。我们将继续建设这个网络，让它与地球上每个人相距都在几毫秒内。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image-35.png" class="kg-image"></figure>
+	<p>由于我们不太可能提高光速，因此能够让任何开发人员能够编写代码并使代码在我们整个网络中运行，意味着我们将始终比传统的中央化计算解决方案（即使是那些在“云端”运行的解决方案）更有性能优势。如果必须为运行应用程序的位置选择一个“可用区域”，那么如果一个应用程序是利用 Workers 这样在 Cloudflare 网络覆盖的所有位置运行的平台来构建的，其性能始终处于劣势。</p>
+	<p>我们认为 Cloudflare Workers 已经是最快的无服务器平台，我们将继续建设我们的网络以确保它保持这样的地位。</p>
+	<h3 id="--2">速度本身是利基的</h3>
+	<p>然而，我们暂时现实一点。仅有限的一组应用程序对几百毫秒的网络延迟敏感。这并不是说在现代主流无服务器平台模式下，网络延迟并不重要，只是说那些要求这种额外性能的应用程序是利基的。</p>
+	<p>诸如信用卡处理、广告投放、游戏和人机交互之类的应用程序可能对延迟非常敏感。例如，Amazon 的 Alexa 和 Google Home 优于许多竞争对手，部分原因是它们可以利用母公司的边缘网络来负责语音处理，因此延迟时间比较短、响应速度比较快。</p>
+	<p>但在这样的应用程序之后，它变得有些“华而不实”了。那些对边缘计算高谈阔论的人很快就开始谈论物联网和无人驾驶汽车了。令人尴尬的是，我们最初启动 Workers 平台时，我也一直都在这么做。专家提示：当您与边缘计算狂热分子交谈时，如果想要次次赢得流行语竞猜游戏，只需确保竞猜卡片上有“物联网”和“无人驾驶汽车”。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image-36.png" class="kg-image"></figure>
+	<p>斯坦福大学计算机科学著名教授 Donald Knuth（与 Tony Hoare、Essgar Dijkstra 和许多其他人一起）说了类似于这样的话，“过早优化是编程中的万恶之源”。因此，对于大多数开发人员选择使用边缘计算平台而言，仅凭速度本身并不是令人信服的充分理由，也就不足为奇了。对于大多数应用程序而言，这样做也属过早优化，即“万恶之源”。那么，有什么比速度更重要？</p>
+	<h3 id="--3">一致性</h3>
+	<p>虽然最小化网络延迟不足以使大多数开发人员迁移到新平台，但几乎所有无服务器平台都存在一种延迟源：冷启动时间。冷启动时间是指一个应用程序首次在特定服务器上运行时需要花费多长时间。冷启动让人受伤，因为它使应用程序无法预测且不稳定。有时，如果无服务器应用程序遇到代码处于热状态的服务器，速度可能会很快，但其他时候，如果需要启动新服务器上的容器并将代码从磁盘加载到内存中，速度就会变慢。不可预测性确实会损害用户体验；事实证明，人们对一致性的钟爱要超过速度。</p>
+	<p>冷启动的问题并非边缘计算平台所独有。源于冷启动的不一致性是所有无服务器平台的祸根。它们是您不必自行维护和部署实例所需要支付的税款。但边缘计算平台实际上会使冷启动问题变得更糟，因为它们将计算工作负载分散到更多位置的更多服务器上。结果，当请求到达时，代码在任何特定服务器上“已热”的可能性较小。</p>
+	<p>换句话说，平台的分布性越高，出现冷启动问题的可能性就越大。为了在大多数无服务器平台上解决此问题，开发人员必须创造可怕的骇客，比如从世界各地对自己的应用程序执行空闲请求，以使其代码保持热状态。雪上加霜的是，传统云提供商对这些抛弃式请求收费，甚至对自己的骇客式“预热/预留”解决方案收取更高的费用。太荒谬了！</p>
+	<h3 id="--4">零纳秒冷启动</h3>
+	<p>我们知道冷启动很重要，因此从一开始就努力确保涉及 Workers 的冷启动时间在 5 毫秒以内。这与其他无服务器平台相比<a href="https://blog.cloudflare.com/serverless-performance-comparison-workers-lambda/">特别有利</a>，例如AWS Lambda 等平台的冷启动可能需要长达 5 秒（比Workers 慢 1000 倍）。</p>
+	<p>不过，我们想要更上一层楼。因此本周我们将宣布 Workers 现在支持<em>零纳秒</em>冷启动。除非有人发明了时间机器，否则用时不可能比这还短，因此我们有信心，Workers 现在是所有无服务器平台中冷启动最快的。这使 Cloudflare Workers 成为一致性上的王者，甚至能击败传统的中央化无服务器平台。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image-37.png" class="kg-image"></figure>
+	<p>然而，再提一下，在马修的开发者需求层次结构中，虽然一致性比速度重要，但在选择计算平台时，还有其他因素的重要性甚至要高于一致性。</p>
+	<h3 id="--5">费用</h3>
+	<p>如果必须从一个快速平台和一个便宜平台中取舍，在其他条件相同的情况下，大多数开发人员会选择便宜的那一个。只有在看到用户体验受损造成的代价超过速度升级所需的成本时，开发人员才会愿意为速度支付更多费用。在那之前，便宜胜过快速。</p>
+	<p>在大多数情况下，边缘计算平台会为提高速度收取额外费用。例如，通过 AWS 的 <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="327e535f5056537277565557">[email&nbsp;protected]</a> 处理请求的成本大约是<a href="https://medium.com/@zackbloom/serverless-pricing-and-costs-aws-lambda-and-lambda-edge-169bfb58db75" target="_blank">通过 AWS Lambda 处理的三倍</a>；而基础版 Lambda 已经非常昂贵了。从某些方面来看，这似乎情有可原。我们都认为需要付出更多才能变得更快，但这是一种定价原理，它总会让边缘计算成为一种利基产品，仅为那些对网络延迟极为敏感的有限应用程序提供服务。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image-38.png" class="kg-image"></figure>
+	<p>然而，边缘计算并不一定需要变得昂贵。实际上，它可以变得便宜。要理解这一点，可以看看从边缘提供服务的成本。如果您与 Cloudflare 的网络一样有合作良好的本地 ISP，那么与穿越全球回传相比，在本地提供带宽的开销可能会较低。在边缘运行时，还可以节省更多的能源和场地成本。这些节省有助于我们让 Cloudflare Workers 平台价格保持低廉。</p>
+	<h3 id="--6">更高效的架构意味着更低的成本</h3>
+	<p>但是，真正的成本赢面来自更高效的架构。上世纪 90 年代初，我还是大学的网络管理员，那时想要添加新的应用程序意味着需要订购新服务器。（我们从Gateway 购买了服务器；我认为带有牛纹的纸板装运箱颇为有趣。）后来出现了虚拟机（VM），您可以在同一服务器上运行多个应用程序。实际上，每个应用程序的开销减少了，因为每个应用程序需要的物理服务器数变少了。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image-39.png" class="kg-image"></figure>
+	<p>虚拟机造就了第一批公共云。但是，云提供商很快就去寻求进一步降低开销的方法。容器提供了更加轻巧的选择，可以在同一台机器上运行多个客户的工作负载。使用的是 dotCloud，它后来<a href="https://www.infoq.com/news/2013/10/dotcloud-renamed-docker/" target="_blank">变成了 Docker</a>，而且一路领先，最终被几乎所有其他人效仿。再一次，容器胜过虚拟机的原因也是减少了每个应用程序的开销。</p>
+	<p>在 Cloudflare，我们知道历史不会停下脚步，所以在开始打造Workers 时，我们问自己：容器之后是什么？<a href="https://blog.cloudflare.com/cloud-computing-without-containers/">答案是隔离（Isolates）</a>。隔离是浏览器用来使进程相互隔开的沙盒技术。它们非常快速，轻巧。这就是为什么当您访问网站时，浏览器可以获取以前从未见过的代码并几乎立即执行它的原因。</p>
+	<p>通过使用隔离而不是容器或虚拟机，我们能够使计算开销远低于传统的无服务器平台。如此，我们就能更高效地处理计算工作负载。反过来，我们可以这种效率中节省下来的转送给我们的客户。我们的目标不是比 <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="206c414d4244416065444745">[email&nbsp;protected]</a> 便宜，而是要比 Lambda 便宜，而且便宜得多。</p>
+	<h3 id="--7">从极限到无限</h3>
+	<p>最初，我们希望 Workers 的定价非常简单且具有成本效益。与其他无服务器提供商不同，我们没有同时基于请求、CPU 时间<em>和</em>带宽收费，而是仅基于请求收费。简简单单。折衷是我们不得不施加最大 CPU、内存和应用程序大小限制。在过去三年中，我们了解到开发人员希望使用 Workers 构建更复杂、更精良的应用程序，其中一些突破了这些极限。因此，本周我们将剔除限制。</p>
+	<p>明天我们将公布一个新的 Workers 选项。借助这个选项，您可以按照其他无服务器提供商使用的相同定价模型来运行更复杂的计算机工作负载，但价格却更具吸引力。对于能够接受以前限制范围的用户，我们将继续支持简化选项。我特别期待开发人员能够驾驭我们的技术来开发新的应用程序，以付出比其他传统中央化无服务器平台更低的代价，得到比这些平台更高的性能。</p>
+	<p>更快速、更一致和更便宜已然不错，但即使它们加在一起仍然不足以赢得大多数开发人员的工作负载。那么，有什么比成本更重要？</p>
+	<h3 id="--8">易用性</h3>
+	<p>开发人员是懒人。我是第一手了解的，因为当我需要编写程序时，我仍然会把手伸向 Perl 这种我知道的可信赖语言（不要评判我），即便它速度比较慢，代价比较高。我不是唯一这样的。</p>
+	<p>因此对于 Cloudflare Workers，我们知道我们需要在开发人员已经很熟悉的环境中与他们交流。而这始于支持开发人员知道并喜爱的语言。我们之前已宣布支持 JavaScript、C、C++、Rust、Go，<a href="https://blog.cloudflare.com/cloudflare-workers-now-support-cobol/">甚至 COBOL</a>。本周，我们将宣布支持 Python、Scala 和 Kotlin。我们希望确保一点，您不必学习新语言和新平台就能从 Cloudflare Workers 获益。（我仍在推动对 Perl 的支持。）</p>
+	<p>易用性还意味着减少在技术运维等事务上花费的时间。那就是无服务器平台出众之处。能够简单地部署代码并允许平台随负载扩展和缩小是有魔力的。我们已经在 Cloudflare Workers 的长期用户上看到了这一点，比如 <a href="https://www.cloudflare.com/case-studies/discord/" target="_blank">Discord </a>，其使用量在过去三年增长了百分之几千，而 Workers 平台通过自动扩展满足了他们的需求。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image-40.png" class="kg-image"></figure>
+	<p>但是，无服务器平台的一个挑战是调试。作为开发人员，您很难在本地复制整个无服务器平台，因此调试应用程序或许更加困难。更加糟糕的是，将代码部署到平台<a href="https://aws.amazon.com/blogs/networking-and-content-delivery/slashing-cloudfront-change-propagation-times-in-2020-recent-changes-and-looking-forward/" target="_blank">需要长达 5 分钟时间，AWS 的 <span class="__cf_email__" data-cfemail="064a676b62674643626163">[email&nbsp;protected]</span> 便是这样</a>。如果您是一名开发人员，就会知道等待代码部署和测试的痛苦。这就是为什么我们必须要做到，让代码更改能够在不到 15 秒内部署到覆盖全球 200 多个城市的整个网络中。</p>
+	<h3 id="--9">贝佐斯法则</h3>
+	<p>我们内部做出的一个最重要决定是实施所谓的贝佐斯法则。它有两个要求：1) Cloudflare 工程师为自己开发的新功能必须尽可能使用 Workers 开发；2) 我们为自己开发的任何 API 或工具都必须提供给第三方 Workers 开发人员。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image-41.png" class="kg-image"></figure>
+	<p>建立一个强大的测试和调试框架需要开发人员的投入。三年来，Cloudflare Workers 的开发工具包已经明显成熟，而这离不开使用我们平台的数十万开发人员给予的反馈，包括我们自己的团队在内，他们使用 Workers 快速构建了创新的新功能，如 <a href="https://teams.cloudflare.com/access" target="_blank">Cloudflare Access</a> 和 <a href="https://teams.cloudflare.com/gateway/" target="_blank">Gateway</a>。历史表明，任何平台的最优客户必须是制造这个平台的公司的开发团队。</p>
+	<p><a href="https://developers.cloudflare.com/workers/tooling/wrangler" target="_blank">Wrangler</a> 是用于配置、部署和调试 Cloudflare Workers 的命令行工具，因为我们自己团队提供的广泛反馈，已经发展成为一种强大的开发人员体验。除了成为最快速、最一致、最负担得起的产品外，鉴于 Cloudflare Workers 背后的势头，它正迅速成为最易于使用的无服务器平台，这让我倍感欣慰。</p>
+	<p>通常，最容易使用的平台都会是胜者。但还有一点甚至比易用性更重要；按照我的预测，它将被证明是边缘计算的真正杀手锏。</p>
+	<h3 id="--10">合规性</h3>
+	<p>如果您是个人开发人员，或许对合规性不会想太多。但是，如果您在大型银行、保险公司、医疗保健公司或任何其他在一定规模上接触敏感数据的公司中担任开发人员，您会对合规性考虑很多。您可能想要使用某一个平台，因为它快速、一致、便宜，而且易于使用，但若 CIO、CTO、CISO 或总法律顾问说“不行”，那么一切回到原点。</p>
+	<p>在包括无服务器平台在内的云计算平台上，运行的大多数计算资源都是由就职于视合规性为基本要求的公司的开发人员创建的。而且，到目前为止，这意味着要确保平台遵循政府法规（例如 GDPR（欧洲隐私准则）），或具有相关的<a href="https://www.cloudflare.com/compliance/" target="_blank">认证</a>来确保其遵循行业法规，例如 PCI DSS（如果您接受信用卡则需要）、FedRamp（美国政府采购要求）、ISO27001（安全风险管理）、SOC 1/2/3（安全性、机密性和可用性控制），等等。</p>
+	<h3 id="--11">数据主权时代即将到来</h3>
+	<p>然而，一个新的风险迫在眉睫，传统的云计算解决方案无力满足某些法规要求。越来越多国家或地区正在制定法规，确保其法律适用于其公民的个人数据。若要确保您遵守这些法律，一种方法是在一个国家/地区的境内存储和处理其公民的数据。</p>
+	<p><a href="https://medium.com/center-for-media-data-and-society/data-governance-in-the-eu-data-sovereignty-cloud-federation-f26d44032d63" target="_blank">欧盟</a>、<a href="https://techcrunch.com/2019/12/10/india-personal-data-protection-bill-2019/" target="_blank">印度</a>和<a href="https://digitalguardian.com/blog/breaking-down-lgpd-brazils-new-data-protection-law" target="_blank">巴西</a>这些主流市场全部已经或正在考虑制定法规来维护对本国/地区公民个人数据的法律主权。<a href="https://jsis.washington.edu/news/chinese-data-localization-law-comprehensive-ambiguous/" target="_blank">中国</a> 已经对多种类型的数据实施了数据本地化法规。不论您认为似乎要求在本地数据存储和处理的法规是不是一个好主意（我个人认为它们是扼杀创新的不良政策），我的感觉是，这些法规背后的势头足够重要，从目前来看，或许已不可避免。而且，一旦几个国家/地区开始要求数据主权，几乎每一个国家/地区都会去效仿，而这很难阻止。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image-42.png" class="kg-image"></figure>
+	<p>风险在于，此类法规可能会抵消开发人员从多无服务器计算获得的大部分效率提升。如果整个团队必须要在不同辖区的不同云平台之间进行协调以确保合规性，那将是一场噩梦。</p>
+	<h3 id="--12">边缘计算前来拯救</h3>
+	<p>边缘计算杀手锏就在于此。随着政府施行新的数据主权法规，对于寻求在本地保管和处理数据以遵守这些新法律并保持效率的公司而言，至关重要的是拥有一个能让单个平台覆盖每一个受管制地区的网络。</p>
+	<p>尽管这些法规刚刚冒头，但 Cloudflare Workers 已经可以在全球 100 多个国家/地区的本地运行。这使我们能够帮助开发人员满足他们认为合适的数据主权要求。而且，我们将继续开发工具来给予开发人员选择，让他们既履行其合规性义务，又不必牺牲云所带来的效率。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image-43.png" class="kg-image"></figure>
+	<p>无服务器的最终前景是让任何开发人员都能说，“我不在乎我的代码在哪里运行，只要让它能扩展便可。”而另一个前景越来越清晰，“我的确在乎代码的运行位置，我还要更多的控制权，以满足合规部门的要求。”Cloudflare Workers 通过即时扩展、遍布全球 100 多个国家/地区的位置以及精确选择所需的粒度，让您做到两全其美。</p>
+	<h3 id="--13">无服务器周</h3>
+	<p>最精彩之处？我们才刚开始。在接下来的一周里，我们将探讨我们对无服务器的愿景，并向您展示我们如何将Cloudflare Workers 打造成最快速、最具成本效益，而且安全、灵活、可靠、易于使用的无服务器平台。还会重点介绍来自客户的用例，展示他们如何使用 Cloudflare Workers 以前所未有的方式构建和扩展应用程序。另外，我们将概述对平台所做的增强，使其成为开发人员眼中越来越好的选择。</p>
+	<p>这三年来，我们在打造这个平台上确实走了很长一段路。我迫不及待地想看到开发人员使用 Cloudflare Workers 开发的所有新应用程序。若要立即开始免费使用这个平台，您可以访问 <a href="https://workers.cloudflare.com/" target="_blank">workers.cloudflare.com</a>。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image-44.png" class="kg-image"></figure>
+</div>

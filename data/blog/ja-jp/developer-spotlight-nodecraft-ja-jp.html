@@ -1,0 +1,20 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image2-14.png" class="kg-image"></figure>
+	<p>Nodecraftを活用することで、ゲーマーは自分のお気に入りのゲーム用に専用サーバーをホストできます。James Ross氏はNodecraft社の最高技術責任者（CTO）であり、社内でCloudflare（特に、Cloudflare Workers）を提唱しています。</p>
+	<blockquote><em>「当社は、あらゆるものにWorkersを使用します。当社のWebサイトの最適化、リダイレクト処理および当社のメインWebサイトの画像コンテンツネゴシエーションへの対応のためにWorkersを使用しています。大変ありがたいことに、当社ユーザーの大半が現代のWebブラウザを使用しているので、Workersのスクリプトを介してユーザーにJPEG XLやAVIFのような形式で画像を提供することができるのです」</em>。</blockquote>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image3-20.png" class="kg-image"></figure>
+	<p>Nodecraftは、ゲーミングコミュニティがゲーム情報の取得に頼るマイクロサイトやAPIも数多く保持しています。<a href="https://playerdb.co/" target="_blank">PlayerDB</a>は、多くのゲーミングサービスにユーザープロファイルで情報を検索するためのJSON APIを提供し、<a href="https://mcuuid.net/" target="_blank">MCUUID</a>と<a href="https://steamid.net/" target="_blank">SteamID</a>は、そのサービスのユーザーがAPIと対話するためにラップされたフロントエンドです。これらは、それぞれCloudflare Workerとして作成および展開されます。</p>
+	<p>「プレイヤーがMinecraftサーバーに参加するたびに、名前やプレイヤーの画像などといった情報を取得して、ユーザーに表示したいと考えています。そのAPIは、月に1億のリクエストを受信します。また、他の3つのWebサイトで同じAPIエンドポイントを使用して、そのデータをユーザーに表示します。」</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image1-30.png" class="kg-image"></figure>
+	<p>チームをWorkersプラットフォームにオンボードする素晴らしい方法として機能するので、Workersと開発者の既存のインフラストラクチャ間のこのような統合を気に入っています。既存インフラストラクチャから、リソースを大量に消費し、低速かつ高価である可能性のある部分を探し出して、Workersに移植することができます。Nodecraftの場合、途方もなく高額なメンテナンスコストの管理から解放され、その成果として、端的に言うと心の平穏が得られます。</p>
+	<blockquote><em>「当社独自のインフラストラクチャで月に3億人を管理するのは本当に大変なのですが、Workerにすべてを投入する際に、規模を心配する必要はありません。時折、誰かがWorkerを書き、1時間で3,000万件のリクエストにサービスを提供することがあります…Cloudflareダッシュボードの統計を見るまでは、気付くこともありません。」</em></blockquote>
+	<p>Nodecraftは、10年近くCloudflareを使用し続けてています。まず、アプリケーションの外部画像アセットを簡素化するためにWorkersを調査しました。最初のWorkerは、以前インフラストラクチャでホストしていた画像プロキシを置き換え、それ以来、Workersによってアプリケーションの構築に対する考え方が変わりました。</p>
+	<blockquote><em>「Jamstackの登場で、当社はWorkersサイトの使用を開始し、静的なアーキテクチャに移行し始めました。しかし、Workers Sitesプロジェクトの多くは、本質的にページが無数にありました。たとえば、Minecraftには1,500万人(増加中)のユーザープロファイルがあります。それぞれの静的ページを構築するのは困難です。そこで、HTMLRewriterを使用して、静的ページに動的なユーザーコンテンツを挿入します。」</em></blockquote>
+	<p>James氏にとって、WorkersはWebアプリケーションの将来を理解する触媒としての役割を果たしています。CloudflareとWorkers開発環境でチームはスケーリングとインフラストラクチャについて心配する必要がなくなり、それはつまりNodecraftは<em>デフォルトで</em>Cloudflareに構築するということです。</p>
+	<blockquote><em>「間違いなく、Workersは当社のアプリケーション構築に対する考え方を変えました。ここで、Cloudflareのエッジに直接デプロイするアプリケーションを構築する方法について考えます。」</em></blockquote>
+	<p>コミュニティモデレーターとして、そしてDiscordコミュニティの非常にアクティブなメンバーとして、James氏はCloudflareのスタックの将来に胸を躍らせています。この数ヶ月間私たちがからかってきたように、James氏はWorkers機能とNodecraftのページアプリケーションの統合を楽しみにしていました。この機能のリリースにより、Nodecraftはサイトのページ駆動型のデプロイメントに完全に移行できます。彼はまた、Nodecraftが同様のストレージ製品を大いに使用しており、可能な限りCloudflareのツーリングに完全に移行したいと考えているため、当社のストレージ製品であるCloudflare R2のリリースも楽しみにしています。</p>
+	<p>さらにCloudflare Workersについての詳細を知り、ご自身のサーバーレス機能をCloudflareネットワークにデプロイしたい方は<a href="https://workers.cloudflare.com/" target="_blank">workers.cloudflare.com</a>をご確認ください！</p>
+	<!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/07356fcb9d66ada45f8dcc2217b8c1d7?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2F07356fcb9d66ada45f8dcc2217b8c1d7%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D0m4s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
+	<!--kg-card-end: html-->
+</div>

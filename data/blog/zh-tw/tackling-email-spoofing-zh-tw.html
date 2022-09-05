@@ -1,0 +1,224 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/image6-20.png" class="kg-image"></figure>
+	<p>今天我們推出了新的工具，用來解決電子郵件詐騙和網路釣魚，並改善電子郵件寄送情況：全新<em>電子郵件安全性 DNS 精靈</em>可讓使用者建立防止其他人代表您的網域傳送惡意電子郵件的 DNS 記錄。這項新功能也在使用者網域有不安全的 DNS 設定時發出警報，並顯示如何修正的建議。這項新功能將首先向 Free 方案的使用者推出，並在未來幾周內提供給 Pro、Business 和 Enterprise 使用者。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/image4-24.png" class="kg-image"></figure>
+	<p>在我們深入探討此精靈能夠做到的神奇事項之前，先退回一步，看看問題：電子郵件詐騙和網路釣魚。</p>
+	<h2 id="-">什麼是電子郵件詐騙和網路釣魚？</h2>
+	<p>詐騙是為了取得某種非法利益而假裝成別人的過程。一個例子是<strong>網域詐騙</strong>，其中某人會代管例如 mycoolwebpaqe.xyz 的網站，以誘騙 mycoolwebpage.xyz 的使用者在不知道自己登陸假網站的情況下提供敏感性資訊。在瀏覽器的地址欄並排查看時，很難發現兩者的區別。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/09/Screen-Shot-2021-09-25-at-10.05.21-AM.png" class="kg-image"></figure>
+	<p>然後，也有<strong>電子郵件詐騙</strong>。為了瞭解它是如何工作的，請看一下我通過自己的個人電子郵件地址收到的一封 Cloudflare 產品更新電子郵件。對於大多數電子郵件提供者，您可以查看電子郵件的完整源代碼，其中包含多個標頭以及電子郵件的主體。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>Date: Thu, 23 Sep 2021 10:30:02 -0500 (CDT)
+From: Cloudflare &lt;<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6111130e051402154c1411050015041221020d0e1405070d0013044f020e0c">[email&nbsp;protected]</a>&gt;
+Reply-To: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="78080a171c0d1b0c550d081c190c1d0b381b14170d1c1e14190a1d561b1715">[email&nbsp;protected]</a>
+To: &lt;my_personal_email_address&gt;
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>在上面，您可以看到電子郵件的 4 個標頭，何時收到、來自誰、我應該回復給誰以及我的個人電子郵件地址。From 標頭的值用於在我的電子郵件程式中顯示發送者。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/image3-30.png" class="kg-image"></figure>
+	<p>當我收到以上郵件時，我會自動認為這封郵件是由 Cloudflare 發送的。然而，任何人都可以從他們的電子郵件伺服器發送帶有修改過的 From 標頭的電子郵件。如果我的電子郵件提供者沒有進行適當的檢查（這一點將在本文稍後討論），我有可能受騙，以為某一封電子郵件是從 Cloudflare 發送的，但實際上並非如此。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/image13-4.png" class="kg-image"></figure>
+	<p>這會引導我們來到第二種攻擊類型：<strong>網路釣魚</strong>。現在假設惡意執行者已成功使用電子郵件詐騙，將電子郵件傳送至您公司的客戶，讓電子郵件看起來源自您公司的服務電子郵件之一。這些電子郵件的內容看起來正如同來自您公司的合法電子郵件，使用相同的樣式和格式。電子郵件內文可能是緊急訊息，要更新某些帳戶資訊，包括前往所謂入口網站的超連結。若使用者的接收郵件伺服器沒有將這封電子郵件標記為垃圾郵件或不安全的來源，使用者可能就會點按連結，而這可能會執行惡意軟體或引導使用者前往詐騙網域，被要求提供敏感性資訊。<br></p>
+	<p>根據 <a href="https://www.ic3.gov/Media/PDF/AnnualReport/2020_IC3Report.pdf" target="_blank">FBI 2020 年網際網路犯罪報告</a>，網路釣魚是 2020 年最常見的網路犯罪，受害者超過 24 萬人，導致的損失超過 5 千萬美元。受害者數量自 2019 年以來增加了超過一倍，幾乎比 2018 年高出十倍。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/09/image5-23.png" class="kg-image" title="Chart"></figure>
+	<p>為了瞭解大多網路釣魚攻擊如何執行，我們仔細看看<a href="https://enterprise.verizon.com/resources/reports/2020/2020-data-breach-investigations-report.pdf" target="_blank"> 2020 年 Verizon 數據外洩調查報告 </a>中的發現。報告顯示，網路釣魚佔所有「社交行為」（社交工程攻擊的另一個說法）的 80% 以上，使其成為迄今此類攻擊中最常見的一種。此外，報告指出，96% 的社交行為是通過電子郵件傳送的，僅 3% 通過網站、1% 通過電話或簡訊。</p>
+	<figure class="kg-card kg-image-card"><img src="https://lh6.googleusercontent.com/zJaupW_6sFUgHngoCJ6naiTt_XpKHahn5P63J9jlxpynfThhNpDb9wAREZbAkL9SSIuUfu4l_K0rnYUP-iOQZvmZinl5Kt9BNKrreXFyQ07q0YZApEAdw927zjk7C5ohTdjBe9H2=s0" class="kg-image" title="Chart"></figure>
+	<p>這清楚顯示電子郵件網路釣魚是個嚴重的問題，讓網際網路使用者非常頭痛。因此，現在來看看網域擁有者可以做些什麼，來阻止惡意執行者盜用網域來進行電子郵件網路釣魚。</p>
+	<h2 id="dns-">DNS 可以如何協助防止此情形？</h2>
+	<p>幸運地，網域名稱系統（DNS）已內建三個反詐騙機制。</p>
+	<ul>
+		<li>寄件者原則架構 (SPF)</li>
+		<li>網域金鑰識別郵件 (DKIM)</li>
+		<li>基於網域的訊息驗證報告和合格性(DMARC)</li>
+	</ul>
+	<p>然而，正確配置它們並非易事，尤其是對缺乏經驗的人而言。如果您的配置過於嚴格，合法的電子郵件將被丟棄或標記爲垃圾郵件。如果配置過於寬鬆，您的域名可能被濫用於電子郵件欺騙。</p>
+	<h2 id="-spf-">寄件者原則架構 (SPF)</h2>
+	<p>SPF 用於允許哪些 IP 位址和網域代表您的網域發送電子郵件。SPF 原則以 TXT 記錄的形式發佈在您的網域上，以便人人都能通過 DNS &nbsp;存取。讓我們來檢查 cloudflare.com 的 TXT 記錄：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>cloudflare.com 	TXT	"v=spf1 ip4:199.15.212.0/22 ip4:173.245.48.0/20 include:_spf.google.com include:spf1.mcsv.net include:spf.mandrillapp.com include:mail.zendesk.com include:stspg-customer.com include:_spf.salesforce.com -all"
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>SPF TXT 記錄永遠需要以 v=spf1 開始。這通常包含使用 ip4 (或 ip6) 機制之傳送電子郵件伺服器的 IP 位址清單。include機制用來參考另一個網域的另一個 SPF 記錄。若您依賴需要代表我們傳送電子郵件的其他提供者，這通常會進行。您可以在以上 cloudflare.com 的 SPF 記錄中看見幾個例子：我們正在使用 Zendesk 作為客戶支援軟體，而 Mandrill 則用作行銷和交易電子郵件。</p>
+	<p>最後，還有全部擷取機制 -all，這指定應如何處理所有傳入但不明的電子郵件。全部擷取機制前面會加上限定詞，可以是 + (Allow)、~ (Softfail) 或 - (Fail)。不建議使用 Allow (允許) 限定詞，因為這基本上會讓 SPF 記錄變得沒有用處，並允許所有 IP 位址和網域代表您的網域傳送電子郵件。Softfail (軟性未通過) 由接收郵件伺服器以不同的方式解譯，根據伺服器將電子郵件標記為垃圾郵件或不安全。Fail (未通過) 告知伺服器不要接受源自不明來源的任何電子郵件。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/09/image12-7.png" class="kg-image"></figure>
+	<p>上圖顯示了爲確保收到的郵件符合 SPF 原則所採取的步驟。</p>
+	<ol>
+		<li>電子郵件發送自 IP 位址 203.0.113.10，包含的 From 標頭值為<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="93fbf2fdfdf6e0d3feeaf0fcfcffe4f6f1e3f2f4f6bdebeae9">[email&nbsp;protected]</a>。</li>
+		<li>收到這封電子郵件后，接收者查詢 mycoolwebpage.xyz 上 SPF 記錄，以獲得這個網域的 SPF 原則。</li>
+		<li>接收者檢查發送 IP 位址203.0.113.10 是否列於 SPF 記錄中。如是，該電子郵件成功完成 SPF 檢查。否則，all機制的限定詞定義結果。</li>
+	</ol>
+	<p>如需所有機制的完整清單和更多關於 SPF 的詳細資訊，請參閱 <a href="https://datatracker.ietf.org/doc/html/rfc7208#section-5" target="_blank">RFC7208</a>。</p>
+	<h2 id="-dkim-">網域金鑰識別郵件 (DKIM)</h2>
+	<p>現在，透過 SPF，我們已確保只有允許的 IP 位址和網域才能代表 cloudflare.com 傳送電子郵件。但是，如果其中一個 IP 變更擁有者，而我們沒有注意到並更新 SPF 記錄，該怎麼辦？或者，如果某個也在相同 IP 上使用 Google 電子郵件伺服器的人嘗試假冒來自 cloudflare.com 的電子郵件，該怎麼辦？</p>
+	<p>這就是 DKIM 產生的原因。DKIM 提供的機制可透過密碼簽署部分電子郵件——通常是內文和特定標頭——並使用<a href="https://www.cloudflare.com/zh-tw/learning/ssl/how-does-public-key-encryption-work/" target="_blank">公用金鑰加密</a>來進行。在我們深入探討其運作方式之前，先來看看用於 cloudflare.com 的 DKIM 記錄：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>google._domainkey.cloudflare.com.	TXT	"v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDMxbNxA2V84XMpZgzMgHHey3TQFvHkwlPF2a11Ex6PGD71Sp8elVMMCdZhPYqDlzbehg9aWVwPz0+n3oRD73o+JXoSswgUXPV82O8s8dGny/BAJklo0+y+Bh2Op4YPGhClT6mRO2i5Qiqo4vPCuc6GB34Fyx7yhreDNKY9BNMUtQIDAQAB"
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>DKIM 記錄的結構是 &lt;selector&gt;._domainkey.&lt;domain&gt;，其中選取器由您的電子郵件提供者來提供。DKIM TXT 記錄的內容永遠以 v=DKIM1 開始，後面接著公用金鑰。我們可以看見以 k 標記參考的公用金鑰類型以及公用金鑰本身，前面會加上 p 標記。</p>
+	<p>以下是簽署和 DKIM 檢查運作方式的簡化順序：<br></p>
+	<ol>
+		<li>傳送電子郵件伺服器從電子郵件內容建立<a href="https://en.wikipedia.org/wiki/Cryptographic_hash_function" target="_blank">雜湊</a>。</li>
+		<li>傳送電子郵件伺服器以私人 DKIM 金鑰加密此雜湊。</li>
+		<li>電子郵件已傳送，包含加密的雜湊。</li>
+		<li>接收電子郵件伺服器從發佈在電子郵件網域的 DKIM TXT 記錄擷取公用金鑰。</li>
+		<li>接收電子郵件伺服器使用公用 DKIM 金鑰加密雜湊。</li>
+		<li>接收電子郵件伺服器從電子郵件內容產生雜湊。</li>
+		<li>若加密的雜湊和產生的雜湊相符，則會證明電子郵件真實性。否則，不會通過 DKIM 檢查。</li>
+	</ol>
+	<p>可在 <a href="https://datatracker.ietf.org/doc/html/rfc4871" target="_blank">RFC4871</a> 和 <a href="https://datatracker.ietf.org/doc/html/rfc5672" target="_blank">RFC5672</a> 找到完整 DKIM 規格。</p>
+	<h2 id="-dmarc-">基於網域的訊息驗證報告和合格性(DMARC)</h2>
+	<p>基於網域的訊息驗證報告和合格性，讀起來絕對很拗口。我們只要將重點放在兩個詞即可：<em>報告</em>和<em>合格性</em>。DMARC 正是提供這兩者。一般報告可讓電子郵件寄件者知道有多少電子郵件不合格並且可能遭到假冒。合格性有助於向電子郵件收件者提供清楚的訊號，瞭解如何處理不合格的電子郵件。電子郵件收件者可能會針對未通過 SPF 或 DKIM 檢查的電子郵件強制執行自己的原則，甚至在沒有 DMARC 記錄的情況下進行。不過，在 DMARC 記錄上設定的原則是電子郵件寄件者的明確指示，因此這會讓電子郵件收件者在處理不合格的電子郵件時提升信心。</p>
+	<p>以下是 cloudflare.com 的 DMARC 記錄</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>_dmarc.cloudflare.com.   TXT   "v=DMARC1; p=reject; pct=100; rua=mailto:<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a9dbdcc8e9cac5c6dccdcfc5c8dbcc87cac6c4">[email&nbsp;protected]</a>"
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>DMARC TXT 記錄永遠設定在電子郵件網域的 _dmarc 子網域，而且——類似於 SPF 和 DKIM ——內容需要以 v=DMARC1 開始。然後，我們會看見其他三個標記：</p>
+	<p>原則標記 (p) 指示電子郵件收件者應如何處理未通過 SPF 或 DKIM 檢查的電子郵件。可能值為 none (無)、reject (拒絕) 和 quarantine (隔離)。none (無) 原則也稱為僅監控，並且允許仍可接受未通過檢查的電子郵件。若指定 quarantine (隔離)，則電子郵件收件者會將 SPF 或 DKIM 不合格電子郵件放入垃圾郵件資料夾。透過 reject (拒絕)，若電子郵件未通過 SPF 或 DKIM 檢查，則會捨棄電子郵件，根本不會傳遞。</p>
+	<p>百分比標記 (pct) 可用來將指定的原則套用至傳入電子郵件的子集。若您剛推出 DMARC，並且想要透過測試子集來確認一切都正確設定，則這很實用。</p>
+	<p>我們可以在記錄上找到的最後一個標記是報告 URI (rua)。這用來指定將會接收不合格電子郵件相關彙總報告 (通常是每日) 的電子郵件地址。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/09/unnamed3.png" class="kg-image"></figure>
+	<p>以上，我們可以看到 DMARC 是如何逐步工作的。<br></p>
+	<ol>
+		<li>From 標頭包含<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="bcd4ddd2d2d9cffcd1c5dfd3d3d0cbd9deccdddbd992c4c5c6">[email&nbsp;protected]</a> 的電子郵件被發出。</li>
+		<li>接收者查詢網域 mycoolwebpage.xyz 的 SPF、DKIM 和 DMARC 記錄以獲取所需原則和 DKIM 公開金鑰。</li>
+		<li>接收者執行如上所述的 SPF 和 DKIM 檢查。如兩者均通過，該電子郵件被接受並投遞到收件箱。如果 SPF 或 DKIM 檢查失敗，將遵循 DMARC 原則並確定郵件是否仍被接受、丟棄或發送到垃圾郵件資料夾。</li>
+		<li>最後，接收者返回一個彙總報告。根據 rua 標記中指定的電子郵件，報告也可能被發送到負責該電子郵件的另一個電子郵件伺服器。</li>
+	</ol>
+	<p>其他選用標記和完整的 DMARC 規格在 <a href="https://datatracker.ietf.org/doc/html/rfc7489" target="_blank">RFC7489</a> 中說明。</p>
+	<h2 id="--1">關於目前採用情況的幾項數據</h2>
+	<p>現在我們已經瞭解問題所在以及如何使用 SPF、DKIM 和 DMARC 來解決，現在來看看採用的廣泛程度。</p>
+	<p><a href="https://dmarc.org/stats/farsight/dmarc/" target="_blank">Dmarc.org</a> 已發佈了代表性資料集中網域的DMARC 記錄採用情況。這顯示，截至 2020 年，具有 DMARC 記錄的網域仍低於 50%。而且，請記住，沒有 DMARC 記錄，就不會明確執行 SPF 和 DKIM 檢查。研究進一步顯示，在具有 DMARC 記錄的網域中，超過 65% 正在使用僅監控原則 (p:none)，因此還有很大的潛力來推升採用率。研究沒有提及這些網域是傳送或接收電子郵件，但即使沒有提及，安全設定也應包括 DMARC 記錄 (之後對此有更多詳情)。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/09/image2-37.png" class="kg-image"></figure>
+	<p>另一份 2021 年 8 月 1 日的<a href="https://www.dmarc360.com/dmarc-adoption-rate" target="_blank">報告</a>顯示，屬於銀行金融領域實體的網域有相同的情況。在美國的 2,881 個銀行金融實體當中，只有 44% 已在網域上發佈 DMARC 記錄。在具有 DMARC 記錄的實體當中，每 5 個大約有 2 個將 DMARC 原則設定為 None (無)，而另外 8% 被視為「錯誤設定」。丹麥在銀行金融領域方面的網域 DMARC 採用率非常高，有 94%，相較於日本只有 13% 的網域使用 DMARC。SPF 採用率平均大幅高於 DMARC，這可能與 2006 年先引進了 SPF 標準作為<a href="https://datatracker.ietf.org/doc/html/rfc4408" target="_blank">實驗 RFC</a> ，而 DMARC 在 2015 年才<a href="https://datatracker.ietf.org/doc/html/rfc7489" target="_blank">成為標準</a>有關。</p>
+	<!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 12px;
+			overflow: hidden;
+			padding: 10px 10px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 12px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 10px;
+			word-break: normal;
+		}
+
+		.tg .tg-2bn0 {
+			font-size: 22px;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-auka {
+			font-size: 22px;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-ozhh {
+			font-size: 22px;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg">
+		<thead>
+			<tr>
+				<th class="tg-ozhh">國家地區</th>
+				<th class="tg-ozhh">實體數量</th>
+				<th class="tg-ozhh">存在 SPF</th>
+				<th class="tg-ozhh">存在 DMARC</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-auka">丹麥</td>
+				<td class="tg-2bn0">53</td>
+				<td class="tg-2bn0">91%</td>
+				<td class="tg-2bn0">94%</td>
+			</tr>
+			<tr>
+				<td class="tg-auka">英國</td>
+				<td class="tg-2bn0">83</td>
+				<td class="tg-2bn0">88%</td>
+				<td class="tg-2bn0">76%</td>
+			</tr>
+			<tr>
+				<td class="tg-auka">加拿大</td>
+				<td class="tg-2bn0">24</td>
+				<td class="tg-2bn0">96%</td>
+				<td class="tg-2bn0">67%</td>
+			</tr>
+			<tr>
+				<td class="tg-auka">USA</td>
+				<td class="tg-2bn0">2,881</td>
+				<td class="tg-2bn0">91%</td>
+				<td class="tg-2bn0">44%</td>
+			</tr>
+			<tr>
+				<td class="tg-auka">德國</td>
+				<td class="tg-2bn0">39</td>
+				<td class="tg-2bn0">74%</td>
+				<td class="tg-2bn0">36%</td>
+			</tr>
+			<tr>
+				<td class="tg-auka">日本</td>
+				<td class="tg-2bn0">90</td>
+				<td class="tg-2bn0">82%</td>
+				<td class="tg-2bn0">13%</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: html-->
+	<p>這向我們顯示，還有相當大的改善空間。</p>
+	<h2 id="-dns-">開始使用：電子郵件安全性 DNS 精靈</h2>
+	<p>那麼，我們要做什麼，才能提升 SPF、DKIM 和 DMARC 的採用率並解決電子郵件詐騙和網路釣魚？請開始使用新的 Cloudflare <em>電子郵件安全性 DNS 精靈</em>。<br></p>
+	<p>從今天開始，當我們前往 Cloudflare 儀錶板的 <a href="https://dash.cloudflare.com/?to=/:account/:zone/dns" target="_blank">DNS 索引標籤</a>時，您會看見兩個新功能：<br></p>
+	<p>1) 稱為電子郵件安全性的新區段</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://lh4.googleusercontent.com/7yW39Yx6BIcxLPOaHCJJkQHMCfihi6ZI1TeIw26hoYNslR0Dpm0E0A2QT7zA-78TWXvK_wAxbxcFdK815bu-2xx8046O5rOgVavTZLPT8k6pWoMMfSvjc0LDN5d8MweayzEuD3fg=s0" class="kg-image"></figure>
+	<p>2) 關於不安全設定的新警告</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/09/image.png" class="kg-image"></figure>
+	<p>若要開始使用<em>電子郵件安全性 DNS 精靈</em>，您可以直接按一下警告中的連結，這會帶您前往精靈的相關區段，或按一下新的<strong>電子郵件安全性區段</strong>中的<a href="https://dash.cloudflare.com/?to=/:account/:zone/dns/wizard" target="_blank">設定</a>。後者將會向您顯示下列可用選項：</p>
+	<figure class="kg-card kg-image-card"><img src="https://lh4.googleusercontent.com/HTcq6CITW8kzRBSoK23qWiekQRf2cfGwKp_aNoIcIdJOSw7ZeNXAoR3UtJ2-jZ9RDgweHIZQqrpDzLvy210kwRNjRT8lBeS1cUd0D4LLawcOJ_xT-6v4SY81-shQYxUkch2oVOQI=s0" class="kg-image"></figure>
+	<p>有兩種情境。您正在使用您的網域傳送電子郵件，或您沒有這麼做。若您這麼做，可以按照幾個簡單的步驟，設定 SPF、DKIM 和 DMARC 記錄。您可以在此查看 SPF 的步驟： </p>
+	<!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 57.28155339805825%;"><iframe src="https://iframe.videodelivery.net/256d8b89df970f4e8157692599e7e81f?preload=true" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
+	<p></p>
+	<!--kg-card-end: html-->
+	<p>若您的網域目前沒有傳送電子郵件，則只要按一下，即可輕鬆設定全部三個記錄：</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://lh4.googleusercontent.com/Azbl1cjgQw2_iThjg-8djR52IWooTAg9J5PJ-ak-TtZc3UnqMOLN9LqsKw1-mGyn5SsJ9mYzIth9IxWXjiLHnLHAFHetl6Fy1DIB0fXBLwQr3hXq2giVs52YNLNu4Vz-5IAj1JKK=s0" class="kg-image"></figure>
+	<p>按一下<strong>提交</strong>後，這將會建立全部三個以這類方式設定的記錄，所有電子郵件都不會通過檢查，並由傳入電子郵件伺服器拒絕。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>example.com			TXT	"v=spf1 -all"
+*._domainkey.example.com.	TXT	"v=DKIM1; p="
+_dmarc.example.com.		TXT	"v=DMARC1; p=reject; sp=reject; adkim=s; aspf=s;"
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h2 id="--2">協助解決電子郵件詐騙和網路釣魚</h2>
+	<p>開始行動並確認您的網域可防禦電子郵件詐騙和網路釣魚。只要前往 Cloudflare 儀錶板中的 <a href="https://dash.cloudflare.com/?to=/:account/:zone/dns" target="_blank">DNS 索引標籤</a>即可，或者若您尚未使用 Cloudflare DNS，只要花幾分鐘即可在 <a href="https://www.cloudflare.com/" target="_blank">cloudflare.com</a> 免費註冊。<br>若您想要閱讀更多關於 SPF、DKIM 和 DMARC 的資訊，請查看我們針對電子郵件相關 DNS 記錄的<a href="https://www.cloudflare.com/zh-tw/learning/dns/dns-records/dns-txt-record/" target="_blank">新學習頁面</a>。</p>
+</div>

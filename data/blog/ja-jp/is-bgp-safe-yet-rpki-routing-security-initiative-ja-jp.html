@@ -1,0 +1,42 @@
+<div class="post-content lh-copy gray1">
+	<p>BGPリークやハイジャックはインターネットのやむを得ない部分としてあまりにも長い間受け入れられてきました。配信するパケットの改ざんから保護するためにTLSやDNSSECといった上位層での保護に頼ってきましたが、ルートがハイジャックされるとIPアドレスが到達不可能になることがよくあります。その結果が、インターネットの機能停止です。</p>
+	<p>インターネットは不可欠なものであり、よく知られているこの問題が続くことは許されません。ネットワークがいかなるリークからもハイジャックからも影響を受けることがないようにする時が来ました。BGPを安全にする時が来ました。もう言い訳はしません。</p>
+	<p>Border Gateway Protocol（BGP）とは、ルートを交換するプロトコルは1980年代から存在し、進化してきました。長年にわたり、セキュリティ機能が備わっていました。追加されたセキュリティで最も注目すべきなのは、ルーティングのセキュリティフレームワークであるリソースパブリックキーインフラストラクチャ（RPKI）です。これは、2018年半ばに当社の展開に続いて、<a href="https://blog.cloudflare.com/tag/rpki/">いくつかのブログ記事</a>で取り扱われました。</p>
+	<p>現在、業界では、RPKIは十分な<a href="https://github.com/cloudflare/gortr" target="_blank">ソフトウェア</a>のエコシステムと<a href="https://rpki.cloudflare.com/" target="_blank">ツール</a>を持ち、広く普及できるほど成熟していると考えられています。そのツールには以前にも書いたツールやオープンソースのツールも含まれています。ピアとの全BGPセッションで、当社の配信元検証を完全配置し、当社のプレフィックスに署名もしました。</p>
+	<p>しかし、インターネットは主要な通信事業者が<a href="https://www.ndss-symposium.org/wp-content/uploads/2017/09/ndss2017_06A-3_Gilad_paper.pdf" target="_blank">RPKIをデプロイ</a>して初めて安全になります。こうしたネットワークは津々浦々までリークやハイジャックを広める能力があり、不注意か意図的かに関係なく、BFP問題の弊害を払拭する役割をすることは極めて重要です。</p>
+	<p>AT&amp;TやTeliaのように多くの事業者は2019年、率先してRPKIを世界的に展開しました。2020年、それにCogentとNTTが続きました。ここ数年で、あらゆる規模の何百もあるネットワークが、この上なく素晴らしい仕事をしてきましたが、まだやることは残っています。</p>
+	<p>RPKIを展開したネットワークのカスタマーコーンを観察すると、インターネットの約50%が経路リークに対して保護されていることがわかります。素晴らしいです。しかし、十分と言うには程遠いです。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/04/isbgpsafeyet.png" class="kg-image"></figure>
+	<p>本日、Cloudflareは<a href="https://isbgpsafeyet.com/" target="_blank">isBGPSafeYet.com</a>をリリースします。これは、主要なネットワークで無効となったルートの展開とフィルタリングを追跡するWebサイトです。</p>
+	<p>これがコミュニティの役に立ち、Webサイト上の情報をクラウドソースすることを期待しています。このソースコードは<a href="https://github.com/cloudflare/isbgpsafeyet.com" target="_blank">GitHub</a>で利用可能できます。ご提案やご助言がありましたら、ぜひお寄せください。</p>
+	<p>このイニシアチブで、RPKIが誰にとってもアクセスしやすいものになり、最終的に経路リークの影響が軽減されることを期待しています。インターネットサービスプロパイダー（ISP）、ホストプロバイダー、トランジットネットワークでメッセージを共有し、安全なインターネットを構築しましょう。</p>
+	<p>さらに、展開を監視し、テストするために200以上のデータセンターから2つの不正なプレフィックスを発表することを決めました。そして、233以上あるインターネット交換ポイント（IXPs）を経由して次に接続します。</p>
+	<ul>
+		<li>103.21.244.0/24</li>
+		<li>2606:4700:7000::/48</li>
+	</ul>
+	<p>この2つのプレフィックスは無効と考えられるべきで、RPKIがネットワーク内に実装されているプロバイダーなら、ルーティングされるはずがありません。これは不正なルートがどれだけ遠くに広がることができるかを実証し、RPKIが実際の世界で機能するかどうかをテストする方法です。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/04/Screen-Shot-2020-04-16-at-6.36.48-PM.png" class="kg-image">
+		<figcaption><a href="https://rpki.cloudflare.com/?validateRoute=13335_103.21.244.0%252F24" target="_blank">rpki.cloudflare.comの103.21.244.0/24のRoute Origin Authorization</a></figcaption>
+	</figure>
+	<p><a href="https://isbgpsafeyet.com/" target="_blank">isBGPSafeYet.com</a>上で実行できるテストでは、ブラウザはページを2つ取得しようとします。1つ目のvalid.rpki.cloudflare.com はRPKIが有効なプレフィックスの後ろにあり、2つ目はinvalid.rpki.cloudflare.comで、RPKIが向こうのプレフィックスの後ろにあります。</p>
+	<p>このテストでは結果が2つ出ました。</p>
+	<ul>
+		<li>両ページとも正しく取得された場合に、ISPが無効なルートを受け入れました。RPKIを実装しませんでした。</li>
+		<li>valid.rpki.cloudflare.comだけが取得された場合、ISPはRPKIを実装しました。経路リークの影響を受けにくくなります。</li>
+	</ul>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/04/blogpost2-01.png" class="kg-image" alt="diagram showing a simple test of RPKI invalid reachability">
+		<figcaption>RPKIの無効な到達可能性の簡単なテスト</figcaption>
+	</figure>
+	<p>これらのプレフィックスを使ってテストを実施して、プロパゲーション（伝播）を確認します。<a href="https://en.wikipedia.org/wiki/Traceroute" target="_blank">Traceroutes</a>とプロービングは、デプロイメントの視覚化を作成することで、これまで役に立ってきました。</p>
+	<p>そのわかりやすい証拠としては、受け入れられたルートをピアやコレクターに送信するネットワークの数が挙げられるでしょう。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/04/invalid-prefixes-reachability.png" class="kg-image" alt="RIPE">
+		<figcaption>オンラインルートコレクションツール<a href="https://stat.ripe.net/widget/routing-status#w.resource=103.21.244.0/24&amp;w.min_peers_seeing=0" target="_blank">RIPE Stat</a>からのルーティング状況</figcaption>
+	</figure>
+	<p>2019年12月、当社はIpv4アドレス空間の<a href="https://xkcd.com/195/" target="_blank">ヒルベルト曲線</a>マップをリリースしました。すべてのピクセルが/20プレフィックスを表します。点が黄色の場合、プレフィックスはRPKI有効のIP空間からのプローブにだけ応答したということです。点が青色の場合は、プレフィックスがRPKI有効IP空間とRPKI無効IP空間の両方からのプローブに応答したというです。</p>
+	<p>要約すると、黄色いエリアがRPKI無効プレフィックスをドロップするネットワークの背後にあるIP空間です。青色が黄色に変わるまでインターネットは安全ではありません。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2020/04/blogpost-hilbert-01.png" class="kg-image">
+		<figcaption>RPKI無効のプレフィックスをフィルタリングするネットワークの背後にあるIPアドレスのヒルベルト曲線マップ</figcaption>
+	</figure>
+	<p>大事なことが最後になってしまいましたが、すでにRPKIを展開しているネットワーク、バリデーター·ソフトウェアコードベースに貢献してくださっている開発者の皆さんに感謝の意を表したいと思います。ここ2年間は、インターネットがさらに安全になる可能性があることが示されており、すべての経路リークとハイジャックが過去の出来事だと言える日が来るのを楽しみにしています。</p>
+</div>

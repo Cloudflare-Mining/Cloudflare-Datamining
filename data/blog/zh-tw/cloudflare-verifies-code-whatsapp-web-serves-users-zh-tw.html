@@ -1,0 +1,31 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image3-3.png" class="kg-image" alt="How Cloudflare verifies the code WhatsApp Web serves to users"></figure>
+	<p>瞭解 Cloudflare 如何幫助 WhatsApp 驗證他們用於實現安全傳訊之代碼未被篡改。</p>
+	<p>您如何得知您的 Web 瀏覽器在造訪網站時下載的代碼是該網站希望您執行的代碼？與從受信任的 App Store 下載的行動應用程式相比，Web 並不能提供相同程度的保障，即確保代碼未被篡改。今天，<a href="https://engineering.fb.com/2022/03/10/security/code-verify/" target="_blank">我們很高興能與 WhatsApp 合作</a>提供一個系統，保障使用者在造訪 WhatsApp Web 版本時執行的代碼是 WhatsApp 計畫執行的代碼。</p>
+	<p>隨著 WhatsApp 在瀏覽器中的使用情況不斷增加，以及越來越多的高危使用者（包括記者、活動者和人權捍衛者），WhatsApp 希望採取措施以保障瀏覽器使用者。他們與我們接洽，希望我們能幫他們大幅提高安全狀況，以防止第三方入侵或以其他方式篡改負責 WhatsApp 使用者之間訊息之端到端加密的代碼。</p>
+	<p>那麼要如何執行？Cloudflare 持有 WhatsApp 使用者應執行的代碼雜湊。當使用者在其瀏覽器中執行 WhatsApp 時，WhatsApp 代碼驗證擴充功能會將在其瀏覽器中執行的代碼雜湊與 Cloudflare 擁有的雜湊進行比較，這讓他們能夠輕鬆瞭解正在執行的代碼是否是應當執行的代碼。</p>
+	<p>比較雜湊以偵測篡改或甚至毀損的檔案的想法本身並不新穎，但將其自動化、大規模部署，並確保它對 WhatsApp 使用者「非常有效」才是創新之處。鑒於 WhatsApp 的影響力和對 Cloudflare 的絕對信任，我們想從技術角度提供更多關於該系統實際運作情況的詳細資訊。 </p>
+	<p>在我們深入探討之前，需明確指出一件重要的事情：Cloudflare 正在提供一個受信任的稽核端點來支援代碼驗證。我們絕不會將 WhatsApp 使用者之間的訊息、聊天或其他流量傳送到 Cloudflare；這些資訊會保持私密，並進行端到端加密。訊息或媒體不會作為該系統的一部分穿越 Cloudflare 的網路，從 Cloudflare 的角度來看，這是我們作為受信任第三方的重要特質。</p>
+	<h3 id="-">簡化驗證流程</h3>
+	<p>讓我們回顧 2003 年：Fedora，一套由 Red Hat 贊助的人氣 Linux 發行版，才剛推出。您很想下載這套系統，但也想確保那是「真正的」Fedora，並希望您下載的不是會竊取您密碼或記錄您按鍵輸入的「假」版本。您前往下載頁面，開始下載，看到下載旁邊有 MD5 雜湊（在當時被認為是安全的）。下載完成後，您執行 <code>md5 fedora-download.iso</code>，並將雜湊輸出與頁面上的雜湊進行比較。它們相吻合，一切都很順利，您就開始在您的機器上安裝 Fedora。</p>
+	<p>但等一下：如果提供下載的網站同時也提供雜湊，那麼惡意行為者難道不能用他們自己的值來替換下載和雜湊嗎？我們上方執行的 <code>md5</code> 檢查仍然會通過，但不能保證我們準備下載的軟體是「真實」（未經篡改）版本。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/03/image2-6.png" class="kg-image" alt="Hosting the hash on the same server as the software is still common in 2022.">
+		<figcaption>將雜湊託管在與軟體相同的伺服器上在 2022 年仍然很常見。</figcaption>
+	</figure>
+	<p>還有其他方法試圖在此基礎上作出改進——提供使用者可以驗證的簽名，是用託管在其他地方的「眾所周知」公開金鑰簽署的。將那些簽名（或「雜湊」）託管給受信任的第三方，可大幅提升防止篡改的安全標準，但現在我們需要使用者知道誰該信任，並要求他們學習 <a href="https://www.debian.org/CD/verify" target="_blank">GnuPG</a> 等工具。那並不能幫助我們在現代網路的規模下信任和驗證軟體。</p>
+	<p>這就是<a href="https://chrome.google.com/webstore/detail/code-verify/llohflklppcaghdpehpbklhlfebooeog/related" target="_blank">代碼驗證擴充功能</a>和 Cloudflare 的功用。由中繼開放原始碼發布的代碼驗證擴充功能可以自動執行此操作：在當地計算 WhatsApp Web 所使用程式庫的加密雜湊，<em>並</em>將該雜湊與可信賴的第三方來源（在本例中是 Cloudflare）的雜湊進行比較。</p>
+	<p>為了使其工作原理更加清晰，我們對此進行了圖解，顯示了使用者、WhatsApp 和 Cloudflare 三方之間的互動情況。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/03/image1-5.png" class="kg-image" alt="WhatsApp Web 驗證代碼的四步驟圖表。"></figure>
+	<p>分解開來，採用了四個主要步驟來驗證代碼未被篡改：</p>
+	<ol>
+		<li>WhatsApp 將其 JavaScript 程式庫的最新版本發布到其伺服器上，並將該版本的相應雜湊發布到 Cloudflare 的稽核端點。</li>
+		<li>WhatsApp Web 用戶端從 WhatsApp 擷取最新的程式庫。</li>
+		<li>代碼驗證瀏覽器擴充功能隨後透過單獨的安全連線從 Cloudflare 擷取該版本的雜湊。</li>
+		<li>代碼驗證將來自 Cloudflare 的「已知良性」雜湊與它在當地計算之程式庫的雜湊進行比較。</li>
+	</ol>
+	<p>如果雜湊相符合，即在任何情況下都幾乎相符合的情況下，代碼從擴充功能的角度看即是「已驗證」。如果雜湊<em>不</em>相符，這表示在使用者瀏覽器上執行的代碼與 WhatsApp 打算在其所有使用者瀏覽器上執行的代碼不同。</p>
+	<h3 id="--1">網路安全需要具有便利性</h3>
+	<p>正是這個流程——以及代表使用者自動執行的事實——有助於以可擴展的方式提供透明度。如果使用者必須自己手動擷取、計算和比較雜湊，那麼偵測篡改動作將只適用於一小部分技術使用者。對於像 WhatsApp 這樣大規模的服務，則不會是特別容易使用或使用者友好的方法。 </p>
+	<p>這種方法也與如今所使用的一些技術有相似之處。其中之一是 Web 瀏覽器中的<a href="https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity" target="_blank">子資源完整性</a>：當您擷取第三方資產（如指令碼或樣式表）時，瀏覽器會驗證回傳的資產是否與描述的雜湊一致。如果不相符，它就會拒絕載入該資產，以防止潛在有害的指令碼竊取使用者資料。另一個是<a href="https://certificate.transparency.dev/" target="_blank">憑證透明度</a>和相關的<a href="https://binary.transparency.dev/" target="_blank">二進位透明度</a>專案。這兩個專案都為關鍵資產提供了可公開稽核的透明度，包括 WebPKI 憑證和其他二進位 Blob。本文章中所描述的系統尚不能擴展到任意資產，但我們正在探索如何將這一服務擴展為像二進位透明度這樣更普遍和可用的東西。</p>
+	<p>我們與 WhatsApp 團隊的合作只是我們為幫助改善 Web 隱私和安全所做工作的開始。我們的目標是幫助其他組織驗證交付給使用者的代碼確為他們應該執行的代碼。大規模保護網際網路使用者和實現隱私是我們在 Cloudflare 的核心原則，我們期待在 2022 年繼續為網路安全服務。</p>
+</div>

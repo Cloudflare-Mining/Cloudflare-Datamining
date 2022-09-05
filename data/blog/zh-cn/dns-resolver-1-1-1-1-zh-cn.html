@@ -1,0 +1,54 @@
+<div class="post-content lh-copy gray1">
+	<p>Cloudflare的使命是帮助建立一个更好的互联网，因此今天我们将推出我们的DNS解析器<a href="https://1.1.1.1/?_ga=2.166171390.1336473006.1563180154-1579748144.1560247212" target="_blank">1.1.1.1</a> - 递归DNS服务。有了这个产品，我们能够建立一个更快，更安全以及更注重隐私的公共DNS解析器，以此创造一个更好的互联网环境。DNS解析器1.1.1.1可供所有人公开使用 - 它是Cloudflare发布的第一个以消费者为中心的服务。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/07/1.1.1.1.svg" class="kg-image"></figure>
+	<p>我们的解析器使用的IPv4地址如下： 1.1.1.1和1.0.0.1.非常方便记忆。这些地址由亚太互联网络信息中心(APNIC)提供给Cloudflare，除作双方研究使用外，还用于该服务。您可以通过<a href="https://labs.apnic.net/?p=1127" target="_blank">APNIC的博客</a>了解更多他们的信息。</p>
+	<p>DNS解析器1.1.1.1由Cloudflare的全球任播网络提供服务。</p>
+	<h3 id="-dns-">背景：快速了解解析器在DNS中的作用</h3>
+	<p>我们在<a href="https://dnsimple.com/" target="_blank">DNSimple</a>的朋友制作了这个很棒的DNS教程，任何人都能从中学习<a href="https://howdns.works/" target="_blank">DNS的工作原理</a>。他们全面地解释了所有有关解析器、根名称服务器等的信息。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/07/dnsimple-howdns-works.png" class="kg-image"></figure>
+	<p>浏览器在解析域名时，query（询问请求）会从您的终端系统（即Web浏览器）传输到递归DNS服务。如果DNS记录不在服务的本地缓存中，recursor将查询权威DNS层次结构找到您正在查找的IP地址信息。 DNS解析器1.1.1.1在recursor服务器中运作。它必须是高速高效的，并且，在现在的网络环境下它必须是安全的！</p>
+	<h3 id="dns-1-1-1-1-">DNS解析器1.1.1.1的目标</h3>
+	<p>我们推出公共解析器的目标很简单:Cloudflare希望在提高用户隐私保护标准的同时，并做出全球速度最快的公共解析器。为了使互联网运行速度更快，我们已经在全球各地建立数据中心，以缩短用户的延迟时间。我们希望每个人都能在10毫秒内至少连接到我们的一个数据中心点。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/07/Cloudflare_and_world-population-map.png" class="kg-image"></figure>
+	<p>仅在3月份，我们就在全球启用了31个新的数据中心（<a href="https://blog.cloudflare.com/istanbul-not-constantinople/">伊斯坦布尔</a>，<a href="https://blog.cloudflare.com/reykjavik-cloudflares-northernmost-location/">雷克雅未克</a>，<a href="https://blog.cloudflare.com/riyadh/">利雅得</a>，<a href="https://blog.cloudflare.com/macau/">澳门</a>，<a href="https://blog.cloudflare.com/baghdad/">巴格达</a>，<a href="https://blog.cloudflare.com/usa-expansion/">休斯顿，印第安纳波利斯，蒙哥马利，匹兹堡，萨克拉门托</a>，<a href="https://blog.cloudflare.com/mexico-city/">墨西哥城</a>，<a href="https://blog.cloudflare.com/tel-aviv/">特拉维夫</a>，<a href="https://blog.cloudflare.com/durban-and-port-louis/">德班，路易港</a>，<a href="https://blog.cloudflare.com/cebu/">宿雾市</a>，<a href="https://blog.cloudflare.com/edinburgh/">爱丁堡</a>，<a href="https://blog.cloudflare.com/riga-tallinn-vilnius/">里加，塔林，维尔纽斯</a>，<a href="https://blog.cloudflare.com/welcome-calgary-saskatoon-and-winnipeg/">卡尔加里，萨斯卡通，温尼伯</a>，<a href="https://blog.cloudflare.com/more-us-data-centers/">杰克逊维尔，孟菲斯，塔拉哈西</a>，<a href="https://blog.cloudflare.com/bogota/">波哥大</a>，<a href="https://blog.cloudflare.com/luxembourg-chisinau/">卢森堡市，基希讷乌</a>），并且我们所服务的其他城市一样，这些数据中心从第一天就开始运行DNS解析器1.1.1.1！</p>
+	<p>我们建立如此高速且高度分布的网络的目的在于服务所有的协议。我们目前是互联网上最快的权威DNS提供商，拥有超过700万的互联网资产。此外，我们已经为十三个根域名服务器中的两个提供了任播服务。逻辑上，下一步我们将为用户提供更快速的递归DNS服务。我们的recursor服务器可以利用与我们位于同一位置的权威服务器，从而加快所有域名的查找速度。</p>
+	<p>虽然DNSSEC可确保解析器与权威服务器之间的数据完整性，但它并不能保护您“最后一英里”的隐私。而DNS解析器1.1.1.1达到了新兴的DNS隐私标准 - DNS-over-TLS和DNS-over-HTTPS，它们都提供最后一英里加密，以保证您的DNS查询的私密性，免受篡改。</p>
+	<h3 id="-">令解析器拥有隐私保护意识</h3>
+	<p>以前，recursor找到了通向根或权威DNS的路径时会将完整的域名发送给任意中介。这意味着，如果你要访问<a href="https://blog.cloudflare.com/dns-resolver-1-1-1-1/www.cloudflare.com">www.cloudflare.com</a>，根服务器和.COM服务器均会对域名进行完整的查询（即<code>www</code> , <code>cloudflare</code> 和 <code>com</code> 的部分），即便是在根服务器仅仅需要将递归重定向到dot com（独立于完全的域名信息中的任何其他内容）的情况下。因此通过DNS用户的所有个人浏览信息很容易暴露，这对许多人来说是一个严重的隐私问题。尽管一些解析器的软件包已经能够解决这个问题，但并非所有解决方案都能够被适配或部署。</p>
+	<p>DNS解析器1.1.1.1从第一天使用开始就提供了所有已定义和拟建的DNS隐私保护机制，用于存根解析器和递归解析器之间。对此不太熟悉的人仅需了解，存根解析器是操作系统中与递归解析器通信的组件。通过使用<a href="https://tools.ietf.org/html/rfc7816" target="_blank">RFC7816</a>中定义的DNS查询名称最小化，DNS解析器1.1.1.1减少了泄漏到中间DNS服务器（如根和TLD）的信息。这意味着DNS解析器1.1.1.1只要发送足够的名称，权威解析器就能告诉解析器下一个查询的问题在哪里。</p>
+	<p>DNS解析器1.1.1.1还支持在853端口（<a href="https://developers.cloudflare.com/1.1.1.1/dns-over-tls/" target="_blank">DNS over TLS</a>）上启用隐私的TLS查询，因此我们可以将查询隐藏在监听网络之外。此外，通过提供试验性DoH（<a href="https://developers.cloudflare.com/1.1.1.1/dns-over-https/" target="_blank">DNS over HTTPS</a>）协议，我们可以为终端用户改善隐私保护以及之后的一些加速，因为浏览器和其他应用程序现在可以将DNS和HTTPS流量混合到一个连接中。</p>
+	<p>而使用DNS主动否定缓存（主动负缓存），如<a href="https://tools.ietf.org/html/rfc8198" target="_blank">RFC8198</a>中所述，我们可以进一步减少全局DNS系统的负载。该技术首先尝试使用现有的解析器否定缓存，其在一段时间内保持否定（或不存在）信息。对于标识DNSSEC的区域和缓存中的NSEC记录，解析器可以在不进行任何进一步查询的情况下确定所请求的名称是否不存在。因此，如果您键入 <code>wwwwwww.</code>某内容，然后输入 <code>wwww.</code>某内容，第二个查询可以很快地返回得到“否”（DNS世界中的NXDOMAIN）。主动否定缓存仅适用于DNSSEC标识区域，其中包括根和今天签署的1544个TLD中的1400个。</p>
+	<p>我们尽可能使用<a href="https://blog.cloudflare.com/dnssec-an-introduction/">DNSSEC</a>验证，因为这样可以确保返回响应准确无误。信号验证本身成本很低，而我们从主动否定缓存中所节省的费用可以弥补这一点。我们希望我们的用户信任我们给出的解决方案，并尽可能执行所有检查以避免我们给客户带来错误的解答。</p>
+	<p>但是，<a href="https://blog.cloudflare.com/dnssec-complexities-and-considerations/">DNSSEC</a>非常不近人情。权威DNS运营商在DNSSEC配置中的错误可能会使这些配置错误的域无法解析。要解决此问题，Cloudflare将在检测和审查DNSSEC错误的域上配置“不信任锚”，并在权威运营商纠正配置后将其删除。这可以通过暂时禁用特定配置错误的域的DNSSEC验证来限制损坏的DNSSEC域的影响，从而恢复最终使用者的访问通道。</p>
+	<h3 id="--1">我们是如何构建它的？</h3>
+	<p>最初，我们考虑构建自己的解析器，但最终我们因其复杂性和进入市场的种种因素而否决了这种方案。接着我们查看了市场上所有的开源解析器; 从这个长长的清单中，我们将选择范围缩小到两到三个能够适应大多数项目的目标。最后，我们决定围绕<a href="https://www.knot-resolver.cz/" target="_blank">CZ NIC</a>的<a href="https://www.knot-resolver.cz/" target="_blank">Knot Resolver</a>构建系统。这是一款现代解析器，发布于两年半前。选择Knot Resolver还提高了我们的软件多样性。<a href="https://openresty.org/" target="_blank">关键</a>在于Knot Resolver具有我们想要的更多核心功能，它的模块化架构类似于<a href="https://openresty.org/" target="_blank">OpenResty</a>。目前Knot Resolver也正在积极应用和开发中。</p>
+	<h3 id="--2">我们正在做其他人还未尝试的有趣的事情</h3>
+	<p>我们目前想要的更先进的功能是：</p>
+	<ul>
+		<li>最小化查询 <a href="https://tools.ietf.org/html/rfc7816" target="_blank">RFC7816</a></li>
+		<li>DNS-over-TLS（传输层安全性） <a href="https://tools.ietf.org/html/rfc7858" target="_blank">RFC7858</a></li>
+		<li>DNS-over-HTTPS协议 <a href="https://datatracker.ietf.org/wg/doh/about/" target="_blank">DoH</a></li>
+		<li>主动否定响应 <a href="https://tools.ietf.org/html/rfc8198" target="_blank">RFC8198</a></li>
+	</ul>
+	<p>免责声明：最初的Knot Resolver主要开发商<a href="https://blog.cloudflare.com/author/marek/">MarekVavruša</a>已经在Cloudflare DNS团队工作了两年多。</p>
+	<h3 id="--3">如何让我们的解析器更快</h3>
+	<p>有许多因素会影响解析器的速度。其中最主要的是：它可以通过缓存返回响应吗？如果可以，那么响应时间仅仅相当于从客户端到解析器的数据包往返时间。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/07/1.1.1.1-dns-resolver-performance.png" class="kg-image"></figure>
+	<p>当解析器需要从权威机构获得答案时，事情会变得复杂一些。解析器需要遵循DNS层次结构来解析名称，这意味着它必须与从根开始的多个权威服务器通信。例如，我们在阿根廷布宜诺斯艾利斯的解析器比在德国法兰克福的解析器需要用更长时间来遵循DNS层次结构，因为后者比前者更靠近权威服务器。为了解决这个问题，我们为主流域名预先进行带外（光纤网络通道外的管理协议信息传输）缓存，这意味着当实际查询开始时，响应内容可以从缓存中获取，这样一来速度要快得多。在接下来的几周内，我们将陆续发布一些博客，讲述其他我们在做的使得解析器更快更好的事情，包括我们的快速缓存。</p>
+	<p>我们扩展网络存在的一个问题是：缓存的准确率与每个数据中心中配置的节点数成反比。如果数据中心中只有一个节点离您最近，那么可以肯定，如果您两次询问相同的查询，那么第二次将得到缓存的答案。但是，由于我们每个数据中心都有数百个节点，您可能会得到一个未缓存的响应，令每个请求延迟增加。有一个常见的解决方案是在所有解析器前面设置一个缓存负载均衡器，然而不幸的是它引入了单点故障。而我们不做单点故障。</p>
+	<p>DNS解析器1.1.1.1并非依据集中式缓存，而是使用创新的分布式缓存，这一点我们将在后面的博客中讨论。</p>
+	<h3 id="--4">数据政策</h3>
+	<p>我们保证永远不会存储客户端IP地址。我们只需要使用查询名称，用于改善DNS解析器的性能（例如，根据区域中的热门网域和/或混淆后预缓存，APNIC研究）。</p>
+	<p>Cloudflare永远不会在日志中存储任何标识终端用户的信息，我们的公共解析器收集的所有日志将在24小时内删除。我们会一直遵守我们的<a href="https://developers.cloudflare.com/1.1.1.1/commitment-to-privacy/privacy-policy/privacy-policy/" target="_blank">隐私政策</a>，并确保没有用户数据出售给广告商或用于定位消费者。</p>
+	<h3 id="--5">设置</h3>
+	<p>很简单，请访问<a href="https://1.1.1.1/?_ga=2.164551039.1336473006.1563180154-1579748144.1560247212" target="_blank">https://1.1.1.1/</a> 。</p>
+	<h3 id="--6">关于地址</h3>
+	<p>我们感谢APNIC，我们IPv4地址 <code>1.0.0.1</code>和 <code>1.1.1.1</code>（每个人都认为这两个地址非常容易记住）的合作伙伴。如果没有多年的研究和测试，这些地址将无法投入建设。然而，我们仍有一段路要走。请持续关注我们接下来的博客，了解我们开发这些IP的经历。</p>
+	<p>对于IPv6，我们选择 <code>2606:4700:4700::1111</code>以及 <code>2606:4700:4700::1001</code>为我们的服务。获得酷炫的IPv6地址并不容易; 但是，我们选择了一个仅由数字组成的地址。</p>
+	<p>但为什么要使用易记的地址呢？公共解析器有什么特别之处？我们几乎做什么都需要用到名字，然而这些过程总是需要有第一步，那就是这些数字的来源。我们需要一个数字输入到您正在使用的任何计算机或连接设备中，以便找到解析器服务。</p>
+	<p>互联网上的任何人都可以使用我们的公共解析器，您可以通过访问<a href="https://1.1.1.1/?_ga=2.169712097.1336473006.1563180154-1579748144.1560247212" target="_blank">https://1.1.1.1/</a>并点击<strong>GET STARTED</strong>来了解如何操作。</p>
+	<h3 id="-4-">为什么要在4月份首次公布？</h3>
+	<p>对于世界上大多数国家而言，星期日都在1/4/2018（美国日期表示法，相当于2018/4/1）。看到数字<strong>4</strong>和<strong>1</strong>了吗？我们这样做是因为我们公布的是<strong>1.1.1.1</strong>恰好四个<strong>1</strong>！如果在这一天发布能帮助你记住<strong>1.1.1.1</strong>，那这就是好事！</p>
+	<p>当然，对于很多人而言，这一天正好也是<a href="https://en.wikipedia.org/wiki/April_Fools%27_Day" target="_blank">愚人节</a>，是开玩笑、犯傻、进行无害的恶作剧的一天。然而，我们不是在开玩笑，这不是恶作剧，这不是愚蠢的行为。这是DNS解析器，<a href="https://1.1.1.1/?_ga=2.99941086.1336473006.1563180154-1579748144.1560247212" target="_blank">1.1.1.1</a>！快上<a href="https://twitter.com/hashtag/1dot1dot1dot1" target="_blank">＃1dot1dot1dot1</a>关注它吧！</p>
+	<p><strong>关键词</strong>：<a href="https://blog.cloudflare.com/tag/dns/">DNS</a>，<a href="https://blog.cloudflare.com/tag/1-1-1-1/">1.1.1.1</a>，<a href="https://blog.cloudflare.com/tag/privacy/">隐私</a>，<a href="https://blog.cloudflare.com/tag/resolver/">解析器</a>，<a href="https://blog.cloudflare.com/tag/product-news/">产品新闻</a></p>
+</div>

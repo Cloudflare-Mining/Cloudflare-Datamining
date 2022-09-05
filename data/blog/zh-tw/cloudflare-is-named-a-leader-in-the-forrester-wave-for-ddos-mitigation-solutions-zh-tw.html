@@ -1,0 +1,72 @@
+<div class="post-content lh-copy gray1">
+	<!--kg-card-begin: markdown-->
+	<p><img src="https://blog.cloudflare.com/content/images/2021/03/image5-16.png" alt="image5-16"><br>
+		我們在此欣然宣布，Cloudflare 已獲評為 2021 年第一季 Forrester Wave TM ：DDoS 緩解解決方案領導者。請<a href="https://www.cloudflare.com/zh-tw/forrester-wave-ddos-mitigation-2021/" target="_blank">在此</a>下載免費報告副本。</p>
+	<!--kg-card-end: markdown-->
+	<p>Forrester 公司安全與風險資深分析師 David Holmes 撰寫的這份報告稱：「Cloudflare 從邊緣處防護 DDoS 攻擊，而且反應迅速…客戶好評如潮，將 Cloudflare 的邊緣網路視為一種令人讚嘆的保護及傳遞應用程式的方式。」</p>
+	<h3 id="-ddos-">對所有使用者開放的非計量和無限制 DDoS 保護</h3>
+	<p>Cloudflare 的使命是協助打造更安全的網際網路環境，在這個環境中，<a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/" target="_blank">DDoS 攻擊</a>的影響將不復存在。在過去 10 年中，我們一直堅定不移地保護客戶的網際網路設備免受各種 DDoS 攻擊影響。在 2017 年，我們宣佈推出<a href="https://blog.cloudflare.com/unmetered-mitigation/">免費的非計量 DDoS 保護</a>，包含於 Cloudflare 的每一項服務和方案中，包括免費方案，旨在確保每一個組織都受到保護並維持可用性。</p>
+	<p>憑藉我們自行開發的自動 DDoS 緩解系統，我們能免費提供非計量和無限制的 DDoS 保護。我們的自動化系統持續非同步分析流量樣本以免影響效能。系統對 <a href="https://www.cloudflare.com/learning/ddos/glossary/open-systems-interconnection-model-osi/" target="_blank">OSI 模型</a>的 3-7 層進行掃描以監測 DDoS 攻擊。系統在 IP 封包、HTTP 請求和 HTTP 回應中尋找規律。在發現攻擊時，系統以臨時緩解規則的形式產生一個即時簽名。該規則傳播至我們網路邊緣上的最佳位置，以獲得最合乎成本效益的緩解：例如在 Linux 核心的 <a href="https://blog.cloudflare.com/l4drop-xdp-ebpf-based-ddos-mitigations/">eXpress Data Path (XDP)</a>、Linux 使用者空間 <a href="https://en.wikipedia.org/wiki/Iptables" target="_blank">iptables 中</a>或在 <a href="https://www.cloudflare.com/learning/cdn/glossary/reverse-proxy/" target="_blank">HTTP 反向代理</a>中。由於採用這種合乎成本效益的策略，我們能在不影響效能的情況下緩解最大容量的分散式攻擊。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image1-18.png" class="kg-image"></figure>
+	<p>如需進一步瞭解 Cloudflare DDoS 保護系統的工作原理，請按一下<a href="https://blog.cloudflare.com/moobot-vs-gatebot-cloudflare-automatically-blocks-botnet-ddos-attack-topping-at-654-gbps/#ddos-detect-mitigate">此處</a>。</p>
+	<h3 id="ddos-">DDoS 攻擊不斷增加</h3>
+	<p>我們希望 DDoS 攻擊已成為過去。但不幸的是，情況並非如此。</p>
+	<p>事實上，我們繼續觀察到 DDoS 攻擊的頻率、複雜程度和地理分佈每季都在增加。查看我們去年的報告 (<a href="https://blog.cloudflare.com/network-layer-ddos-attack-trends-for-q1-2020">2020 年第一季</a>、<a href="https://blog.cloudflare.com/network-layer-ddos-attack-trends-for-q2-2020">2020 年第二季</a>、<a href="https://blog.cloudflare.com/network-layer-ddos-attack-trends-for-q3-2020">2020 年第三季</a>和<a href="https://blog.cloudflare.com/network-layer-ddos-attack-trends-for-q4-2020"> 2020 年第四季</a>)，在 <a href="https://radar.cloudflare.com/" target="_blank">Cloudflare Radar</a> 上瞭解網際網路流量的整體趨勢。</p>
+	<p>過去一年來，Cloudflare 觀察到並自動緩解了一些<a href="https://blog.cloudflare.com/mitigating-a-754-million-pps-ddos-attack-automatically/">最大型</a>並可以說是<a href="https://blog.cloudflare.com/beat-an-acoustics-inspired-ddos-attack/">最有創意的</a>網路攻擊。由於攻擊者所採取的方式日益大膽和狡猾，組織也在尋求各種方法對付這些攻擊而又不會導致其服務中斷。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image3-14.png" class="kg-image"></figure>
+	<h3 id="-ddos--1">組織遭遇 DDoS 勒索攻擊</h3>
+	<p>今年 1 月，我們發布了一則消息：<a href="https://blog.cloudflare.com/ransom-ddos-attacks-target-a-fortune-global-500-company/">我們幫助一家財富全球 500 強企業</a>抵禦住了<a href="https://www.cloudflare.com/learning/ddos/ransom-ddos-attack/" target="_blank">勒索型 DDoS 攻擊</a>並維持連線狀態。這並非孤例。事實上，2020 年第四季期間，17% 的受訪 Cloudflare 客戶聲稱受到 DDoS 勒索攻擊或攻擊威脅。2021 年第一季，這個比例增加到 26%。大約四分之一受訪者聲稱受到勒索威脅，並且其網路基礎結構後續遭受到 DDoS 攻擊。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image4-13.png" class="kg-image" alt="Chart"></figure>
+	<p>不管組織成為勒索型攻擊還是業餘級「網路破壞行為」的目標，使用一種在需要時不必使用人工干預、<em>不間斷的自動化</em> DDoS 保護服務非常重要。能向客戶提供這種級別的保護，我們深感自豪。</p>
+	<h3 id="-">持續改進</h3>
+	<p>隨著攻擊繼續演變，使用我們服務的客戶數量也在增加，Cloudflare 不斷投資於我們的技術，總是領先於攻擊者數步。我們斥巨資增強緩解容量，完善偵測演算法，向客戶提供更佳的分析能力。我們的目標是讓所有客戶都不再受到 DDoS 攻擊的影響，正如上世紀 90 年代的垃圾郵件已銷聲匿跡。</p>
+	<p>在 2019 年，我們<a href="https://blog.cloudflare.com/rolling-with-the-punches-shifting-attack-tactics-dropping-packets-faster-cheaper-at-the-edge/">推出了自發的 DDoS 偵測和緩解系統</a> DosD。作為我們緩解體系的一個組成部分，DosD 是完全為軟體定義，利用 Linux 的 eXpress Data Path (XDP)，讓我們能迅速自動部署 eBPF 規則，對接收到的每個封包進行偵測。在邊緣處平均不到 3 秒即可緩解最複雜的攻擊，並能即時緩解其他普通攻擊。其運作方式是偵測攻擊流量中的規律，然後迅速自動部署規則，在瞬息間擊退攻擊者。此外，DosD 在每個資料中心內獨立執行，不依賴於集中式資料中心，這極大地增強了我們網路的復原能力。</p>
+	<p>DDoS 透過偵測流量中的規律來緩解攻擊的方式非常有效，但沒有規律的攻擊如何因應呢？這時 <a href="https://blog.cloudflare.com/announcing-flowtrackd/">flowtrackd</a> 就有了用武之地。這是我們在 2020 年建立的新型 TCP 狀態分類引擎，用於防禦針對我們 <a href="https://blog.cloudflare.com/magic-transit/">Magic Transit 客戶</a>的破壞性第 3/4 層攻擊。<a href="https://blog.cloudflare.com/beat-an-acoustics-inspired-ddos-attack/">這種技術能偵測並緩解最隨機、最複雜的攻擊。</a>此外，在第 7 層，我們也學習客戶的流量基準線並<a href="https://blog.cloudflare.com/rolling-with-the-punches-shifting-attack-tactics-dropping-packets-faster-cheaper-at-the-edge/#low">在其來源伺服器遭受壓力時加以識別</a>。在某個來源伺服器顯示惡化跡象時，我們的系統就會啟動<em>軟</em>緩解，以便降低對伺服器的影響並允許其恢復正常狀態。</p>
+	<p>建置進階 DDoS 保護系統不僅事關偵測，也涉及到合乎成本效益的緩解。我們致力於在緩解攻擊的同時，不會因過度運算消耗而導致影響效能。基於這個要求，我們向全球<a href="https://blog.cloudflare.com/rolling-with-the-punches-shifting-attack-tactics-dropping-packets-faster-cheaper-at-the-edge/#jails">推出了 IP Jails</a>：IP Jails 是一種 <a href="https://blog.cloudflare.com/meet-gatebot-a-bot-that-allows-us-to-sleep/">gatebot</a> 能力，可在不影響效能的情況下緩解最大容量的分散式攻擊。在攻擊容量明顯增加時，gatebot 就會啟動 IP Jails。這時，系統不再在第 7 層進行封鎖，取而代之，IP Jails 會暫時斷開攻擊性 IP 位址 (這些 IP 位址產生的請求符合 gatebot 所建立的攻擊簽名) 的連線。IP Jails 利用 Linux iptables 機制在瞬間丟棄封包。在第 4 層斷開第 7 層攻擊大幅提高了成本效益，我們的客戶和網站可靠性工程團隊均從中受益。</p>
+	<p>鑑於我們觀察到和緩解的攻擊日益複雜，為了向客戶提供更佳的可見性和洞察，我們於 2019 年<a href="https://blog.cloudflare.com/new-firewall-tab-and-analytics/">推出了</a><a href="https://support.cloudflare.com/hc/en-us/articles/360024520152-Understanding-Cloudflare-Firewall-Analytics" target="_blank">防火牆分析 (Firewall Analytics)</a> 儀表板。該儀表板提供了對第 7 層 HTTP 應用程式安全性和 DDoS 活動的洞察，並允許客戶在分析儀表板中直接設定<a href="https://support.cloudflare.com/hc/en-us/articles/360016473712-Cloudflare-Firewall-Rules" target="_blank">規則</a>，進而縮短了事件回應的意見反應循環。此後於 2020 年，我們為 Magic Transit 和 Spectrum 企業客戶<a href="https://blog.cloudflare.com/announcing-network-analytics/">發布了</a>針對第 3/4 層活動的同等功能儀表板，即 <a href="https://support.cloudflare.com/hc/en-us/articles/360038696631-Understanding-Cloudflare-Network-Analytics" target="_blank">網路分析 (Network Analytics)</a> 儀表板。網路分析儀表板提供對封包級別流量和 DDoS 攻擊活動的洞察，同時提供定期的<a href="https://blog.cloudflare.com/announcing-spectrum-ddos-analytics-and-ddos-insights-trends/">洞察與趨勢 (Insights and Trends)</a>。作為這些儀表板的補充，並為我們的使用者在其需要時提供正確的資訊，<a href="https://blog.cloudflare.com/announcing-ddos-alerts/">我們推出了即時 DDoS 警示</a>以及定期 <a href="https://support.cloudflare.com/hc/en-us/articles/360053233231-Understanding-Cloudflare-DDoS-reports" target="_blank">DDoS 報告</a>——直接投遞到您的收件匣。您也可以選擇直接投送到 <a href="https://developers.cloudflare.com/logs/" target="_blank">SIEM 儀表板</a>。</p>
+	<h3 id="cloudflare-">Cloudflare 在策略類別獲得最高分</h3>
+	<p>今年，由於我們的進階 DDoS 保護能力，Cloudflare 在策略類別獲得最高分，並在目前的提供產品類別進入前三名。此外，我們在該報告的 15 項標準中獲得最高分數，包括：</p>
+	<ul>
+		<li>威脅偵測</li>
+		<li>爆發性攻擊</li>
+		<li>回應自動化</li>
+		<li>實作速度</li>
+		<li>產品願景</li>
+		<li>效能</li>
+		<li>安全營運中心 (SOC) 服務</li>
+	</ul>
+	<p>我們相信，今天的成績源於過去幾年來對我們<a href="https://www.cloudflare.com/network" target="_blank">全球 Anycast 網路</a>的持續投資，而這正是我們向客戶提供的所有服務的基石。</p>
+	<p>我們的網路具備可擴充的架構設計，每一項服務都執行於遍布全球 200 多個城市的每一個 Cloudflare 資料中心中的每一台伺服器。不同於報告中的部分其他廠商，Cloudflare 的每一項服務都是從我們的每一個邊緣資料中心傳遞。</p>
+	<h3 id="--1">整合安全性與效能</h3>
+	<p>一家領先業界的應用程式效能監測公司使用了 Cloudflare 的無伺服器運算和內容傳遞服務。該公司最近告訴我們，他們希望將其效能和安全服務整合到一個供應商。他們放棄了原有的第 3 層服務供應商，並啟用 Cloudflare 的應用程式和<a href="https://www.cloudflare.com/magic-transit/" target="_blank">網路服務 (Magic Transit</a>)，以便獲得更輕鬆的管理和更出色的支援。</p>
+	<p>這種現象日益普遍。使用單一雲端供應商以獲得一體化安全和效能服務的益處不可勝數：</p>
+	<ul>
+		<li>管理更輕鬆：使用者可透過單一儀表板和單一 API 端點管理 Cloudflare 的所有服務，例如<a href="https://www.cloudflare.com/ddos/" target="_blank"> DDoS 保護</a>、<a href="https://www.cloudflare.com/waf/" target="_blank">WAF</a>，<a href="https://www.cloudflare.com/cdn/" target="_blank">CDN</a>、<a href="https://www.cloudflare.com/products/bot-management/" target="_blank">機器人管理</a>及<a href="https://workers.cloudflare.com/" target="_blank">無伺服器運算</a>。</li>
+		<li>深度服務整合：我們的所有服務都經過深度整合，使用者得以充分利用 Cloudflare 的強大功能。例如，機器人管理規則是透過我們的應用程式防火牆部署。</li>
+		<li>疑難排解更輕鬆：我們的客戶在排解疑難時只有一個連絡窗口，而不必連絡多個供應商。我們還透過<a href="https://www.cloudflare.com/ddos/under-attack/" target="_blank">攻擊求助熱線</a>提供即時人工回應。</li>
+		<li>更低延遲：我們的每一項服務都是從我們所有資料中心傳遞，不存在任何效能損失。例如，從 DDoS 服務到機器人管理服務，再到 CDN 服務，沒有額外的路由躍點。</li>
+	</ul>
+	<p>然而，並非所有雲端服務都相同，當今大多數供應商都不能提供一套全面和強固的解決方案。Cloudflare 具有獨特的架構，能夠提供一個擁有全明星產品陣容的整合解決方案，例如：</p>
+	<!--kg-card-begin: markdown-->
+	<ul>
+		<li><strong>CDN</strong>：2020 年度 Garner Peer Insights 「客戶之聲」：全球 CDN 評選中榮獲「客戶之選」領導者稱號<sup>1</sup></li>
+		<li><strong>DDoS</strong>：在 2020 年度 Gartner DDoS 雲端清理中心解決方案比較報告中獲得最多最高分<sup>2</sup></li>
+		<li><strong>WAF</strong>：Cloudflare 成為 2020 年度 Gartner Web 應用程式防火牆魔力象限報告中的挑戰者 (在「執行能力」項目獲得最高排名)<sup>3</sup></li>
+		<li><strong>零信任</strong>：Cloudflare 成為 2020 年 Omidia 市場雷達：零信任存取報告中的領導者<sup>4</sup></li>
+		<li><strong>機器人管理</strong>：2020 年 SPARK Matrix 機器人管理市場領導者<sup>5</sup></li>
+		<li><strong>整合解決方案</strong>：2020 年 Frost &amp; Sullivan 全球全面 Web 保護市場創新領導者<sup>6</sup></li>
+	</ul>
+	<!--kg-card-end: markdown-->
+	<p>我們很高興獲評為 2021 年第一季 Forrester Wave™ DDoS 緩解解決方案領導者，並將繼續不懈努力，如報告所述，一如既往為客戶提供「一種令人讚嘆的保護及傳遞應用程式的方式」。</p>
+	<p>若要進一步瞭解 Cloudflare 的 DDoS 保護解決方案，<a href="https://www.cloudflare.com/enterprise" target="_blank">請在此連絡我們。</a>如需試用 Cloudflare 服務，請<a href="https://dash.cloudflare.com/sign-up" target="_blank">在此</a>註冊。</p>
+	<!--kg-card-begin: markdown-->
+	<p>.........<br>
+		<sup>1</sup><a href="https://www.gartner.com/reviews/market/global-cdn/vendor/cloudflare/product/cloudflare-cdn" target="_blank">https://www.gartner.com/reviews/market/global-cdn/vendor/cloudflare/product/cloudflare-cdn</a><br>
+		<sup>2</sup><a href="https://www.gartner.com/en/documents/3983636/solution-comparison-for-ddos-cloud-scrubbing-centers" target="_blank">https://www.gartner.com/en/documents/3983636/solution-comparison-for-ddos-cloud-scrubbing-centers</a><br>
+		<sup>3</sup>Gartner, “Magic Quadrant for Web Application Firewalls'', Analyst(s): Jeremy D'Hoinne, Adam Hils, John Watts, Rajpreet Kaur, October 19, 2020. <a href="https://www.gartner.com/doc/reprints?id=1-249JQ6L1&amp;ct=200929&amp;st=sb" target="_blank">https://www.gartner.com/doc/reprints?id=1-249JQ6L1&amp;ct=200929&amp;st=sb</a><br>
+		<sup>4</sup><a href="https://www.cloudflare.com/lp/omdia-zero-trust" target="_blank">https://www.cloudflare.com/lp/omdia-zero-trust</a><br>
+		<sup>5</sup><a href="https://www.cloudflare.com/lp/qks-bot-management-leader/" target="_blank">https://www.cloudflare.com/lp/qks-bot-management-leader/</a><br>
+		<sup>6</sup><a href="https://www.cloudflare.com/lp/frost-radar-holistic-web/" target="_blank">https://www.cloudflare.com/lp/frost-radar-holistic-web/</a>
+	</p>
+	<!--kg-card-end: markdown-->
+</div>

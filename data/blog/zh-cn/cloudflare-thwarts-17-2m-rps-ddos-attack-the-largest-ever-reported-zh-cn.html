@@ -1,0 +1,52 @@
+<div class="post-content lh-copy gray1">
+	<p>今年初夏，Cloudflare 的<a href="https://blog.cloudflare.com/zh-cn/deep-dive-cloudflare-autonomous-edge-ddos-protection-zh-cn/">自主边缘 DDoS 保护系统</a>自动检测并缓解了一次每秒 1720 万个请求 (rps) 的 DDoS 攻击，这个攻击规模相当于我们过去已知任何一次攻击的近三倍。作为对比，Cloudflare 平均每秒处理超过 2500 万个 HTTP 请求，这是 2021 年第二季度的平均合法流量速率。这次攻击的峰值速率达到 1720 万 rps，也即是相当于我们第二季度合法 HTTP 流量平均 rps 速率的 68%。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/08/image5-18-1.png" class="kg-image" alt="Comparison graph of Cloudflare’s average request per second rate versus the DDoS attack">
+		<figcaption>Cloudflare 平均每秒请求数与 DDoS 攻击对比</figcaption>
+	</figure>
+	<h3 id="cloudflare-ddos-"><strong>Cloudflare 自主边缘进行自动 DDoS 缓解</strong></h3>
+	<p>Cloudflare 的<a href="https://blog.cloudflare.com/zh-cn/deep-dive-cloudflare-autonomous-edge-ddos-protection-zh-cn/">自主边缘 DDoS 保护系统</a>自动检测并缓解了以上攻击，以及下文提到的其他攻击。这个系统由我们本机资料中心缓解系统（dosd）驱动。dosd 是我们自己研发的软件定义后台程序。在我们分布在全球各地的数据中心每一台服务器中，都运行着唯一的 dosd 实例。每个 dosd 实例都会对流量样本进行路径外分析。通过在路径外分析流量，我们可在不造成延迟和影响性能的情况下异步检测 DDoS 攻击。DDoS 检测结果也会在同一数据中心内部的不同 dosd 之间共享，这是主动威胁情报共享的一种形式。</p>
+	<p>一旦检测到攻击，我们的系统就会产生一条缓解规则，其中附带与攻击模式匹配的实时特征。该规则将被传播至技术堆栈中的最佳位置。例如，容量耗尽 HTTP DDoS 攻击可在第四层 Linux iptables 防火墙内予以阻止，而非第七层在用户空间运行的 L7 反向代理内。在堆栈的较低层进行缓解更具成本效益，例如，在 L4 丢弃数据包，而非在 L7 以 403 错误页面响应。这样做能减少边缘 CPU 消耗和数据中心内部的带宽使用，从而帮助我们在不影响性能的情况下缓解大规模攻击。</p>
+	<p>这种自主方式，加上我们网络的全球规模和可靠性，使我们能够缓解达到我们平均每秒速率 68% 或以上的攻击，而无需任何 Cloudflare 人员执行手动缓解，也不会造成性能出现任何下降。</p>
+	<h3 id="mirai-"><strong>Mirai 卷土重来和强大的新型僵尸网络</strong></h3>
+	<p>这次攻击是由一个强大的僵尸网络发动的，目标是 Cloudflare 在金融行业的客户。在短短几秒钟内，这个僵尸网络就使用了超过 3.3 亿个攻击请求对 Cloudflare 边缘进行了轰炸。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/08/image10-1-1.png" class="kg-image" alt="Graph of 17.2M rps attack">
+		<figcaption>1720 万 rps 攻击</figcaption>
+	</figure>
+	<p>这些攻击流量源于全球 125 个国家/地区的 2 万多个僵尸程序。根据僵尸程序的源 IP 地址，接近 15% 的攻击流量源于印度尼西亚，另外 17% 源于印度和巴西。这表明，在以上国家/地区可能存在很多被恶意软件感染的设备。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/08/image8-4.png" class="kg-image" alt="Distribution of the attack sources by top countries">
+		<figcaption>攻击来源分布（主要国家/地区）</figcaption>
+	</figure>
+	<h3 id="-volumetric-attack-"><strong>巨流量攻击(Volumetric Attack)有所增加</strong></h3>
+	<p>这个 1720 万 rps 攻击是 Cloudflare 迄今为止见到的最大规模 HTTP DDoS 攻击，相当于其他任一已报告 HTTP DDoS 攻击的近三倍。然而，这个僵尸网络在过去几周内已经出现过至少两次。就在上周，这个僵尸网络还对另一个 Cloudflare 客户（一家托管服务提供商）发动了一次峰值速率接近 800 万 rps 的 HTTP DDoS 攻击。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/08/image4-22.png" class="kg-image" alt="Graph of 8M rps attack">
+		<figcaption>800 万 rps 攻击</figcaption>
+	</figure>
+	<p>两周前，一个 <a href="https://www.cloudflare.com/zh-cn/learning/ddos/glossary/mirai-botnet/" target="_blank">Mirai 变体僵尸网络</a>发起了十多次基于 UDP 和 TCP 的 DDoS 攻击，峰值多次超过 1 Tbps，最大峰值约为 1.2 Tbps。其中第一次 HTTP 攻击的目标是 Cloudflare <a href="https://www.cloudflare.com/zh-cn/waf/" target="_blank">WAF/CDN 服务</a>上的客户，而超过 1 Tbps 的网络层攻击针对 Cloudflare <a href="https://www.cloudflare.com/zh-cn/magic-transit/" target="_blank">Magic Transit</a> 和 <a href="https://www.cloudflare.com/zh-cn/products/cloudflare-spectrum/" target="_blank">Spectrum</a> 服务的客户。其中一个目标是位于亚太地区的主要互联网服务、电信和托管服务提供商。另一个是游戏公司。在所有情况下，攻击都被自动检测并缓解，无需人工干预。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/08/image7-10.png" class="kg-image" alt="Graph of Mirai botnet attack peaking at 1.2 Tbps">
+		<figcaption>峰值 1.2 Tbps Mirai 僵尸网络攻击</figcaption>
+	</figure>
+	<p>这个 Mirai 僵尸网络最初包含大约 3 万个僵尸程序，随后逐渐减少至约 2.8 万个。然而，尽管数量有所减少，这个僵尸网络依然能够在短时间内产生大规模的攻击流量。在某些情况下，每次爆发仅持续数秒钟。</p>
+	<p>与此同时，过去几周内，我们的网络上检测到的 Mirai 型 DDoS 攻击也有所增加。仅在 7 月份，L3/L4 Mirai 攻击就增加了 88%，L7 攻击增加了 9%。此外，根据目前 8 月的日均 Mirai 攻击数量，我们可以预计，到月底时，L7 Mirai DDoS 攻击和其他类似僵尸网络攻击的数量将增长 185%，而L3/L4 攻击将增长 71%。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/08/image6-7.png" class="kg-image" alt="Graph of change in Mirai based DDoS attacks by month">
+		<figcaption>Mirai 型 DDoS 攻击月度变化</figcaption>
+	</figure>
+	<h3 id="-"><strong>回到 “未来”</strong></h3>
+	<p><a href="https://www.cloudflare.com/zh-cn/learning/ddos/glossary/mirai-botnet/" target="_blank">Mirai</a> 在日语中意为 “未来”，是一种恶意软件的代号，由非营利安全研究工作组 <a href="https://en.wikipedia.org/wiki/MalwareMustDie" target="_blank">MalwareMustDie</a> 在 2016 年首次发现。这种恶意软件通过感染运行 Linux 的设备（例如安全摄像头和路由器）进行传播。然后它通过搜索开放的 Telnet 端口 23 和 2323 进行自我传播。一旦找到，它就会尝试通过<a href="https://www.cloudflare.com/zh-cn/learning/bots/brute-force-attack/" target="_blank">暴力破解</a>已知凭据（例如出厂默认用户名和密码）来访问易受攻击的设备。 Mirai 的后期变体还利用了路由器和其他设备中的零日漏洞。一旦被感染，设备将监控命令与控制 (C2) 服务器以获取有关攻击目标的指令。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/08/image3-26.png" class="kg-image" alt="Diagram of Botnet operator controlling the botnet to attack websites">
+		<figcaption>僵尸网络操作者控制僵尸网络来攻击网站</figcaption>
+	</figure>
+	<h3 id="--1"><strong>如何保护您的家庭和企业</strong></h3>
+	<p>虽然大部分攻击时间短、规模小，我们继续看到这种类型的容量耗尽攻击更频繁地出现。值得注意的是，对于没有主动型、始终启用云保护的传统 DDos 保护系统或组织而言，这些短暂爆发型攻击可能尤其危险。</p>
+	<p>此外，虽然短暂的持续时间一定程度上反映了僵尸网络长时间维持流量水平的能力，人类可能难以或不可能对这种攻击做出反应。在这种情况下，安全工程师甚至还未来得及分析流量或激活其备用 DDoS 攻击系统，攻击就已经结束了。这种攻击凸显了自动型、始终启用保护的必要性。</p>
+	<h3 id="--2"><strong>如何保护您的企业和互联网资产</strong></h3>
+	<ol>
+		<li><a href="https://dash.cloudflare.com/sign-up" target="_blank">启用 Cloudflare 服务</a>，保护您的互联网资产。</li>
+		<li>DDoS 保护开箱即用，您也可以<a href="https://support.cloudflare.com/hc/zh-cn/articles/200172676-%E4%BA%86%E8%A7%A3-Cloudflare-DDOS-%E9%98%B2%E6%8A%A4" target="_blank">自定义保护设置</a>。</li>
+		<li>遵循我们的预防性<a href="https://support.cloudflare.com/hc/zh-cn/articles/200170166-%E6%9C%80%E4%BD%B3%E5%81%9A%E6%B3%95-DDoS-%E9%A2%84%E9%98%B2%E6%8E%AA%E6%96%BD" target="_blank">最佳实践</a>，以确保您的 Cloudflare 设置和源服务器设置都得到优化。例如，确保您只允许来自 <a href="https://www.cloudflare.com/zh-cn/ips/" target="_blank">Cloudflare IP 范围的</a>流量。理想情况下，请您的上游互联网服务提供商 (ISP) 应用访问控制列表 (ACL)，否则，攻击者可能会直接针对您服务器的 IP 地址并绕过您的保护。</li>
+	</ol>
+	<h3 id="--3"><strong>有关如何保护家庭和物联网设备的建议</strong></h3>
+	<ol>
+		<li>更改任何联网设备的默认用户名和密码，例如智能相机和路由器。这样将降低 Mirai 等恶意软件侵入您的路由器和物联网设备的风险。</li>
+		<li>使用 <a href="https://developers.cloudflare.com/1.1.1.1/1.1.1.1-for-families" target="_blank">Cloudflare for Families</a> 保护您的家庭免受恶意软件的侵害。 Cloudflare for Families 是一项免费服务，可自动阻止从您的家庭网络到恶意网站的流量和恶意软件通信。<a href="https://twitter.com/intent/tweet?in_reply_to=1428343744642813956" target="_blank"><strong> </strong></a></li>
+	</ol>
+</div>

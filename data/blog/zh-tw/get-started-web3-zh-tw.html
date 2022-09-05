@@ -1,0 +1,41 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/image1-5.png" class="kg-image"></figure>
+	<p>在許多開發人員心中，Web3 感覺就是一個流行語，正如您在「2021 年度須知事項」這篇熱門推文中所見那樣。作為軟體開發人員的我，這種想法縈繞於心已有數年。過去幾個月我鑽研了 Web3 生態系統，深入瞭解它的工作原理和重要性。</p>
+	<p>Web3 可以籠統地描述為網際網路的去中心化演進。不是由幾個提供者介入定應您在網路上的互動方式和日常生活，而是由一個基於 Web3 的功能，將您的資料從專有資料庫中解放，並透過區塊鏈中固有的激勵結構採取去中心化運作。</p>
+	<p>2021 年的 Web3 空間與過去幾年相比，在外觀和感覺上大有不同。<a href="https://ethereum.org/en/" target="_blank">乙太坊</a>等區塊鏈以相對輕鬆的方式處理數量龐大的流量，但還仍然需要一些改進，更新的區塊鏈 (如 Solana) 也已進入這個空間，成為真正的替代，能避免一些過去幾年冒出的擴充問題。</p>
+	<p>Cloudflare 適應開發人員的需求，協助他們借助 Web3 創造未來。今天稍早公佈的 <a href="https://blog.cloudflare.com/zh-tw/announcing-web3-gateways-zh-tw/">Cloudflare Ethereum Gateway</a> 將可協助開發人員在 Cloudflare 可靠的網路上開發可擴充的 Web3 應用程式。我們今天還發佈了一個範例，展示如何利用 <a href="https://workers.cloudflare.com/" target="_blank">Cloudflare Workers</a> 和 <a href="https://pages.cloudflare.com/" target="_blank">Cloudflare Pages</a> 部署、鑄造和呈現 NFT (或非同質化代幣)。您可以<a href="https://cfweb3.pages.dev/" target="_blank">在這裡體驗</a>，或者查閱 <a href="https://github.com/signalnerve/cfweb3" target="_blank">GitHub 上的開源程式代碼庫</a>，開始將自己的 NFT 部署在生成中。</p>
+	<h3 id="web3-">Web3 解決的問題</h3>
+	<p>如果您到網上查閱 Web3 相關資訊，一定會對它的潛力感到興奮。身為一名軟體開發人員，我經常問自己：「Web3 應用程式到底是什麼？我該如何構建它？」</p>
+	<p>大多數傳統應用程式會利用三個組成部份：資料庫、資料庫的代碼介面，以及使用者介面。這種模型 (「模型-視圖-控制器 (MVC)」架構就是最佳例證) 已服務這個網路幾十年。在 MVC 中，資料庫是資料模型的儲存系統，而控制器則決定用戶端如何與這些資料互動。你透過 HTML、CSS 和 JavaScript 定義瀏覽，以取得並顯示資料，並且提供各種互動用於創建和更新資料。</p>
+	<p>讓我們想像一個有十億使用者的社交媒體應用程式。在 MVC 模型中，這個應用程式的資料模型包括每天創建的使用者生成內容，如貼文、朋友關係、事件和其他內容。為應用程式編寫的控制器決定誰能夠在內部與此資料互動；例如，只有私密對話中的兩個使用者才能存取這個對話。但是，這些控制器 (以及整個應用程式) 不允許從外部存取此資料。社交媒體應用程式擁有該資料，並且「免費」對外出租以換取廣告瀏覽或在網路上被追蹤。</p>
+	<p>這一刻我幡然醒悟：明白了 Web3 如何為這些問題提供令人嘆服的解決方案。如果說基於 MVC 的 Web 2.0 應用程式呈現為一系列「圍牆花園」，是離散而封閉且沒有資料互通性或所有權的平台，那麼 Web3 在設計上恰恰相反。</p>
+	<p>在 Web3 應用程式中，有效組成部份有兩個：區塊鏈 (用乙太坊為例) 和使用者介面。區塊鏈包含兩個部份：代表使用者、使用者組或組織的帳戶，以及區塊鏈本身，後者充當記錄網路上所有事件的不可變系統。</p>
+	<p>對於區塊鏈，最緊要的一點是程式碼可以部署到區塊鏈上，並且區塊鏈的使用者可以執行這些程式碼。在乙太坊中，這稱為「智慧合約」。在區塊鏈執行的智慧合約就像是我們 MVC 模型中的控制器。智慧合約並非籠罩在迷霧之中，而是可以驗證的，任何人都能查看其二進位程式碼。</p>
+	<p>對於我們假想的那個社交媒體應用程式，這意味著使用者執行的任何操作均不會儲存在中央資料庫中。相反地，使用者借助可由任何人驗證的程式，與部署在區塊鏈網路上的智慧合約互動。開發人員可以開始構建使用者介面，來顯示那些資訊並且輕鬆地與資訊互動，不會有圍牆花園或平台桎梏。實際上，其他開發人員可以開發出更好的使用者介面或智慧合約，以便使用者在這些介面和合約中尋找到最符合自己需求的。</p>
+	<p>這些智慧合約的操作是藉由錢包 (例如，由 <a href="https://metamask.io/" target="_blank">MetaMask</a> 管理的乙太坊錢包) 來進行的。錢包的所有者是使用者，而不是提供服務的公司。這意味著，您可以隨時利用您的錢包 (您的資料的最終授權) 做任何想做的事情。錢包本身是區塊鏈的另一個可程式化設計元素，它們可以代表單一的使用者，也可以是複雜的多簽章錢包，代表整個組織的利益。錢包的所有者可以就其資料的用途做出一致的決定。</p>
+	<figure class="kg-card kg-embed-card">
+		<blockquote class="twitter-tweet">
+			<p lang="en" dir="ltr">people are talking trash about "web3" as a term, <br><br>but having all my data on multiple websites is cool<br><br>and having websites compete on interfaces for the same data is rad</p>— pm (@pm) <a href="https://twitter.com/pm/status/1434251123532070912?ref_src=twsrc%5Etfw" target="_blank">September 4, 2021</a>
+		</blockquote>
+		<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+	</figure>
+	<h3 id="-">非同質化代幣的興起</h3>
+	<p>在 Web3 空間中，近期最大的一個變化是 NFT (非同質化代幣) 的發展。非同質化代幣是儲存在區塊鏈上的一種特殊資產，使用者可以買賣這些資產並驗證所有權。2019 年，Cloudflare 就已在編寫 NFT 相關產品，作為我們推出的 <a href="https://blog.cloudflare.com/cloudflare-ethereum-gateway">Cloudflare Ethereum Gateway</a> 的一部份。自那以後，非同質化代幣突然興盛起來，<a href="https://www.larvalabs.com/cryptopunks" target="_blank">CryptoPunks</a> 和 <a href="https://boredapeyachtclub.com/%23/" target="_blank">Bored Ape Yacht Club</a> 等專案誕生，每月交易量達到數百萬美元。</p>
+	<p>非同質化代幣是 Web3 空間中引人矚目的附屬品，因為它體現了資料所有權和社群在後圍牆花園時代會有何種表現。如果您聽說過非同質化代幣，可能是透過其視覺媒體知道的：CryptoPunks 和 Bored Ape Yacht Club 的核心就是它。您可以購買龐克或猩猩，並將它當作社交媒體上的個人設定頭像。但在根本上，擁有猩猩並不只是擁有個人頭像而已，也意味著對一種區塊鏈驗證的資產的獨佔所有權。</p>
+	<p>需要注意的是，非同質化代幣合約的增殖導致了<a href="https://www.theverge.com/22683766/nft-scams-theft-social-engineering-opensea-community-recovery" target="_blank">詐騙</a>增多。基於區塊鏈的非同質化代幣是傳達所有權的媒介，以給定的智慧合約為基礎。而智慧合約可以由任何人部署，並與任何內容相關聯。其真實性無法保證，除非您驗證其可信度，並確認您與之互動的合約真偽。一些平台可能支援已驗證的帳戶，另一些則僅允許一群可信任的合作夥伴出現在他們的平台上。非同質化代幣非常靈活，允許採用多種方法，但這些信任推斷必須要明確傳達。</p>
+	<p>與乙太坊上部署的智慧合約綁定的資產，可以交易、驗證，或用作程式存取權限的關卡。NFT 開發人員可以進入非同質化代幣交易事件中，並收取特許使用費，或者在「鑄造」或創建非同質化代幣時收取鑄造費，根據銷售額和交易量來產生收入，作為未來專案的資金來源。這樣，非同質化代幣可以在開發人員和社區成員之間建立很強的共同誘因，牢靠程度勝於普通的網路應用程式。</p>
+	<h3 id="--1">我們構建了什麼</h3>
+	<p>為了更好地理解 Web3 (以及 Cloudflare 如何融入到這個拼圖之中) ，我們需要利用 Web3 堆疊從頭至尾構建一個東西。</p>
+	<p>為了幫助您也這樣做，我們開放了一個全堆疊應用程式的原始程式碼，向您展示如何從頭開始鑄造和管理非同質化代幣。<a href="https://rinkeby.etherscan.io/token/0x290422EC6eADc2CC12aCd98C50333720382CA86B" target="_blank">這個應用程式的智慧合約</a>部署在乙太坊的 <a href="https://www.rinkeby.io/" target="_blank">Rinkeby </a>網路上，並已經過驗證，該網路是乙太坊專案和智慧合約的測試環境。Rinkeby 網路允許您在區塊鏈主網之外，使用完全相同的工作流，並在不干擾真實使用者的前提下測試智慧合約。當您的專案準備好部署到乙太坊主網時，您可以取用同樣的合約，進行部署和驗證，並開始在生產環境中使用。</p>
+	<p>部署了智慧合約後，您可以按照 <a href="https://eips.ethereum.org/EIPS/eip-721" target="_blank">ERC-721 規範</a>管理自己的非同值化代幣專案，由使用者鑄造並顯示在非同質化代幣市場上 (如 <a href="https://opensea.io/" target="_blank">OpenSea</a>) 和您自己的網路應用程式中。我們也提供了用於鑄造這些非同質化代幣的網路介面和範例程式碼。身為使用者，您可以使用安裝的相容乙太坊錢包存取該網路應用程式並領取非同質化代幣。</p>
+	<p>當您鑄造了 NFT 後，示範使用者介面會呈現領取的各個非同質化代幣的中繼資料。根據 ERC-721 (NFT) 規範，部署的代幣必須有對應的 URL 來提供 JSON 中繼資料。這一 JSON 端點是我們用 Cloudflare Workers 構建的，它會為每一個非同質化代幣回復名稱、描述以及圖像。為託管這一圖像，我們使用 Infura 釘選服務，並使用 Cloudflare IPFS Gateway 來提供服務。我們的非同質化代幣使用其雜湊來標識內容，使得它無法在日後被其他事物替代。</p>
+	<p>這個開源專案提供了構建非同質化代幣專案需要的所有工具。透過使用 Workers 和 Pages 進行構建，您不僅擁有成功啟動非同質化代幣需要的所有工具，而且也能在使用者鑄造並透過各種錢包交易時，為您的非同質化代幣資產提供最新的中繼資料。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/10/image2-3.png" class="kg-image" alt="Architecture diagram of Cloudflare’s open-source NFT project">
+		<figcaption>Architecture diagram of Cloudflare’s open-source NFT project</figcaption>
+	</figure>
+	<p>Cloudflare 開源非同值化代幣專案的架構示意圖</p>
+	<h3 id="cloudflare-web3">Cloudflare + Web3</h3>
+	<p>Cloudflare 的開發者平台 (包括 Workers、Pages 和 IPFS Gateway) 互相配合，共同在非同質化代幣專案生命週期的每個階段，提供可擴充的解決方案。Cloudflare 提供了 <a href="https://blog.cloudflare.com/zh-tw/announcing-web3-gateways-zh-tw/">Ethereum</a> 和<a href="https://blog.cloudflare.com/cloudflare-ipfs-safe-mode/"> IPFS </a>閘道，用於處理您的專案可能擁有的所有流量。</p>
+	<p>我們對 Cloudflare 在 Web3 方面的工作感到興奮。世界正在重新轉向去中心化的網際網路模型，全球資訊網回歸到早期所期待的模樣。正如我們在 Cloudflare 常說的：「<a href="https://blog.cloudflare.com/the-network-is-the-computer/">網路即電腦</a>」，我們相信，無論 Web3 的模樣為何，不管是透過面向社區和社交網路的 Metaverses、DAO (去中心化自治組織) 和非同質化代幣等專案、用於管理資金的 DeFi (去中心化金融) 應用程式，或是我們或許未曾想過的一整類別去中心化應用程式，Cloudflare 都將成為塑造其未來的中堅力量。</p>
+	<p><a href="https://blog.cloudflare.com/tag/birthday-week/">生日週</a> <a href="https://blog.cloudflare.com/404/">Web3</a> <a href="https://blog.cloudflare.com/tag/workers/">Cloudflare Workers</a> <a href="https://blog.cloudflare.com/tag/cloudflare-pages/">Cloudflare Pages</a></p>
+</div>

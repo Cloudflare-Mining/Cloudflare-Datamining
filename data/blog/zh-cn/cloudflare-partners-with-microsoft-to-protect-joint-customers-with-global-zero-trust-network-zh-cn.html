@@ -1,0 +1,42 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image2-66.png" class="kg-image" alt="Cloudflare partners with Microsoft to protect joint customers with a Global Zero Trust Network"></figure>
+	<p>作为一家公司，我们不断自问，可以做什么来为客户提供更多价值，包括与合作伙伴之间的集成解决方案。共同客户受益于我们与 Azure Active Directory 的集成，包括如下方式：</p>
+	<p><strong>首先</strong>，通过 Azure Active Directory 进行集中的身份和访问管理，它提供单点登录、多因素身份验证和条件身份验证访问。</p>
+	<p><strong>第二</strong>，使用 Cloudflare Access（一种 VPN 替代服务）实现对特定应用程序基于策略的访问。</p>
+	<p><strong>第三</strong>，将本地应用程序连接到 Cloudflare 网络，而非任其暴露给整个互联网，从而提供额外的一层安全保护。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image3-32.png" class="kg-image"></figure>
+	<p>让我们回顾一下。</p>
+	<h3 id="-zero-trust-">为什么采用 Zero Trust？</h3>
+	<p>各种规模的的公司都面临着 IT 堆栈数字化转型加速和员工队伍日益分散的情况，改变了安全边界的定义。我们正在从城堡加护城河模式过渡到整个互联网，要求对访问每一个资源的每一个用户进行安全检查。因此，所有公司，尤其是那些越来越多使用 Azure 广泛云产品组合的公司，都在将 Zero Trust 架构作为其云和 SaaS 旅程的重要组成部分。</p>
+	<p>Cloudflare Access 提供对 Azure 托管应用程序和本地应用程序的安全访问。它还充当着通过<a href="https://blog.cloudflare.com/benchmarking-edge-network-performance/">世界上最快的网络</a>连接到 Azure 和互联网其他部分的入口。用户从他们的设备或办公室通过覆盖全球 250 多个城市的 Cloudflare 网络进行连接。您可以在该全球网络上使用 Cloudflare Zero Trust，以确保对每个资源的每个请求都经过了安全评估，包括用户身份。我们很高兴能够将这个安全的全球网络接入到 Azure 托管应用程序和本地应用程序。</p>
+	<p>此外，除了安全，性能也是我们的关键优势之一。数百万客户通过 Cloudflare 网络保护他们的应用程序，Cloudflare 平均每秒服务 3200 万个 HTTP 请求。当这些应用程序没有在我们的网络上运行时，我们可以依赖于自有全球专用骨干网和我们与全球超过上万个网络的互连来连接用户。</p>
+	<p>我们很高兴能将这个全球安全和性能边界网络作为我们的 Zero Trust 产品提供给您的 Azure 托管应用程序和本地应用程序。</p>
+	<h3 id="cloudflare-access-zero-trust-">Cloudflare Access：一种现代 Zero Trust 方法</h3>
+	<p>Cloudflare 的 Zero Trust 解决方案 Cloudflare Access 为内部管理的应用程序提供一种现代的验证方法。当 Azure 上的企业应用程序或本地应用程序受到 Cloudflare Access 的保护时，它们就会像 SaaS 应用程序一样，员工可以用简单而一致的流程登录。Cloudflare Access 充当一个统一的反向代理，通过确保每个请求都经过身份验证、授权和加密来实施访问控制。</p>
+	<p>身份：Cloudflare Access 提供与所有主要身份提供者的开箱即用集成，包括 Azure Active Directory，允许使用您已经创建的策略和用户来提供对 web 应用程序的条件访问。例如， 您可以使用 Cloudflare Access 来确保仅公司员工而非承包商可以访问您的内部看板，或者可以锁定托管在 Azure 或本地的 SAP 财务应用程序。</p>
+	<p>设备： 您可以<a href="https://blog.cloudflare.com/introducing-tls-client-auth/">对客户端验证使用 TLS</a> ，并将连接限于持有唯一客户端证书的设备。Cloudflare 将确保连接设备拥有由企业 CA 签名的有效客户端证书，并验证用户凭据，以授权对内部应用程序的访问。</p>
+	<p>增强安全：要在一个内部应用前使用 Cloudflare Access，但不想将这个应用程序开放给整个互联网？为了增强安全，您可以结合使用 Access 与 <a href="https://www.cloudflare.com/products/cloudflare-warp/" target="_blank">Cloudflare Tunnel</a>。Cloudflare Tunnel 将从您的 Azure 环境直连到 Cloudflare 的网络，从而不会有公开访问的 IP。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image4-14.png" class="kg-image"></figure>
+	<h3 id="-azure-ad-cloudflare-access-azure-">通过联合使用 Azure AD 和 Cloudflare Access，同时保护您的传统应用程序和 Azure 托管应用程序。</h3>
+	<p>对于本地传统应用程序，我们很高兴能宣布，Cloudflare 是 Azure Active Directory <a href="https://azure.microsoft.com/en-us/services/active-directory/sso/secure-hybrid-access/#overview" target="_blank">安全混合访问</a>合作伙伴。Azure AD 安全混合访问使客户能够使用 SSO 验证来集中管理对其传统本地应用程序的访问，无需额外开发。从今天开始，共同客户可轻松在他们的传统应用程序前使用 Cloudflare Access 解决方案，作为内建性能的额外安全保护。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image1-73.png" class="kg-image"></figure>
+	<p>传统上，对于本地应用程序，客户必须更改现有代码或增加一层额外代码来集成 Azure AD 或 Cloudflare Access 之类的功能。借助 Azure Active Directory <a href="https://azure.microsoft.com/en-us/services/active-directory/sso/secure-hybrid-access/#overview" target="_blank">安全混合访问</a>，客户能在不进行太多代码更改的情况下无缝集成这些能力。一旦集成，客户能充分利用如下 Azure AD 功能：</p>
+	<ol>
+		<li>多因素身份验证 (MFA)</li>
+		<li>单点登录（SSO）</li>
+		<li>无密码身份验证</li>
+		<li>统一用户访问管理</li>
+		<li>Azure AD 条件访问和设备信任</li>
+	</ol>
+	<p>非常相似，Azure AD 和 Cloudflare Access 组合也能用于保护您的 Azure 托管应用程序。Cloudflare Access 通过以下两个集成实现到 Azure 托管应用程序或本地应用程序的安全接入：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image5-17.png" class="kg-image"></figure>
+	<p>1. <a href="https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/azuread/" target="_blank">Cloudflare Access 与 Azure AD</a> 集成：</p>
+	<p>Cloudflare Access 是一个 Zero Trust 网络访问（ZTNA）解决方案，允许您对应用程序配置精确的访问策略。您可以将 Microsoft Azure Active Directory <a href="https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/azuread/" target="_blank">与 Cloudflare Zero Trust</a> 集成起来，并构建基于用户身份的规则，分组成员资格和 Azure AD 条件访问策略。用户将使用他们的 Azure AD 凭据进行身份验证并连接到 Cloudflare Access。额外的安全控制包括 <a href="https://developers.cloudflare.com/cloudflare-one/identity/devices/" target="_blank">设备态势</a>、网络、位置等。设置仅需短短几个小时！</p>
+	<p>2. <a href="https://support.cloudflare.com/hc/en-us/articles/360021621972-Exposing-applications-running-on-Microsoft-Azure-with-Cloudflare-Argo-Tunnel" target="_blank">Cloudflare Tunnel 与 Azure 集成</a>：</p>
+	<p><a href="https://www.cloudflare.com/products/tunnel/" target="_blank">Cloudflare Tunnel</a> 可暴露在 <a href="https://azuremarketplace.microsoft.com/en-us/marketplace/apps/" target="_blank">Microsoft Azure 平台</a>上运行的应用程序。参考指南以<a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/" target="_blank">安装和配置 Cloudflare Tunnel</a>。此外，<a href="https://azuremarketplace.microsoft.com/en-us/marketplace/apps/cloudflare.cloudflare_azure?src=tazure&amp;tab=Overview" target="_blank">Azure Marketplace</a> 有一个预构建的 Cloudflare Linux 映像。为了简化将 Azure 应用程序连接到 Cloudflare 网络的过程，将该预构建映像部署到一个 Azure 资源组中。Cloudflare Tunnel 现已在 Microsoft 的 <a href="https://azuremarketplace.microsoft.com/en-us/marketplace/apps/cloudflare.cloudflare_azure?tab=Overview" target="_blank">Azure 市场</a>中提供。</p>
+	<blockquote>Microsoft Azure Active Directory 首席项目经理 David Gregory 表示：“混合工作环境加速了到云计算的过渡，使每一个地方的首席信息官更加需要为其员工提供安全、高性能的应用程序访问。对自托管的应用程序而言尤其如此。Cloudflare 通过 Cloudflare Access 提供的全球网络安全边界与 Azure Active Directory 提供额外的安全保护，使员工能够从任何地方安全、高效地完成工作。”</blockquote>
+	<h3 id="-">总结</h3>
+	<p>在过去的 10 年里，Cloudflare 建成了世界上最快、最可靠、最安全的网络之一。现在，通过以上集成，您可以将该网络用作您的应用程序的全球安全和性能边界，而且简单易行。</p>
+	<h3 id="--1">接下来？</h3>
+	<p>未来几个月内，我们将进一步增强与 Microsoft Azure 的集成，允许客户更好地部署我们的 SASE 边界。如果您正在使用 Cloudflare Zero Trust 产品，并有意使用这一与 Azure 的集成，请访问我们上述开发文档，以了解如何启用。如果您要了解更多信息或有其他问题，请填写<a href="https://www.cloudflare.com/partners/technology-partners/microsoft/" target="_blank">表格</a>或联系您的 Cloudflare CSM 或 AE，我们将乐于提供协助。</p>
+</div>

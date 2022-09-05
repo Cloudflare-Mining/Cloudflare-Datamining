@@ -1,0 +1,75 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/08/API-tokens@2x.png" class="kg-image"></figure>
+	<h2 id="las-api-de-cloudflare"><strong>Las API de Cloudflare</strong></h2>
+	<p>Hoy anunciamos la disponibilidad general de tokens API: una forma escalable y más segura de interactuar con las API de Cloudflare. Como parte de la creación de un mejor Internet, Cloudflare se esfuerza por simplificar la capacidad de administración de la presencia de un cliente en el límite. Parte de la manera en que hacemos esto es asegurando que todos nuestros productos y servicios sean configurables por API. Los clientes, desde socios hasta empresas y desarrolladores, desean automatizar la administración de Cloudflare. Algunas veces eso se hace directamente a través de <a href="https://api.cloudflare.com/" target="_blank">nuestra API</a> y otras veces se realiza a través de un software de código abierto que ayudamos a mantener como nuestro <a href="https://www.terraform.io/docs/providers/cloudflare/" target="_blank">proveedor Terraform</a> o la <a href="https://github.com/cloudflare/cloudflare-go" target="_blank">biblioteca Cloudflare-Go</a>. Es vital que los clientes que están automatizando la administración de Cloudflare puedan mantener sus servicios de Cloudflare lo más seguros posible.</p>
+	<h2 id="menos-privilegio-y-por-qu-importa"><strong>Menos privilegio y por qué importa</strong></h2>
+	<p>Proteger los sistemas de software es difícil. Limitar lo que puede hacer un software es una buena defensa para prevenir que los errores o las acciones maliciosas tengan un mayor impacto del que podrían tener. El <a href="https://en.wikipedia.org/wiki/Principle_of_least_privilege" target="_blank">principio del privilegio mínimo</a> ayuda a orientar cuánto acceso debe tener un sistema determinado para realizar acciones. Originalmente desarrollado por Jerome Saltzer: "Todos los programas y todos los usuarios privilegiados del sistema deben operar al usar la menor cantidad de privilegios necesarios para completar el trabajo". En el caso de Cloudflare, muchos clientes tienen varios dominios que enrutan el tráfico al aprovechar muchos servicios diferentes. Si un mal actor obtiene acceso no autorizado a un sistema, puede utilizar cualquier acceso que ese sistema tenga para provocar más daño o robar información adicional.</p>
+	<p>Veamos cómo las capacidades de los tokens API se ajustan al principio de privilegio mínimo.</p>
+	<h2 id="acerca-de-los-tokens-api"><strong>Acerca de los tokens API</strong></h2>
+	<p>Los tokens API proporcionan tres capacidades principales:</p>
+	<ol>
+		<li>Alcance de tokens API por recurso de Cloudflare</li>
+		<li>Alcance de tokens API con permiso</li>
+		<li>La capacidad de suministrar múltiples tokens API</li>
+	</ol>
+	<p>Analicemos cada una de estas capacidades.</p>
+	<h3 id="alcance-de-tokens-api-por-recurso-de-cloudflare"><strong>Alcance de tokens API por recurso de Cloudflare</strong></h3>
+	<p>Cloudflare separa la configuración del servicio por zona, lo cual generalmente equivale a un dominio. Adicionalmente, algunos clientes tienen varias cuentas, cada una con muchas zonas. Es importante que al otorgar acceso API a un servicio solo tenga acceso a los recursos de cuentas y zonas que sean pertinentes para el trabajo en cuestión. Los tokens API pueden tener un alcance para cubrir solo cuentas específicas y zonas específicas. Un caso de uso común es si tiene una zona de preparación y una zona de producción, entonces un token API se puede limitar para que solo pueda afectar la zona de preparación y no tener acceso a la zona de producción.</p>
+	<h3 id="alcance-de-los-tokens-api-por-permiso"><strong>Alcance de los tokens API por permiso</strong></h3>
+	<p>Poder aplicar un token API a una zona específica es excelente, pero en una zona hay muchos servicios diferentes que se pueden configurar: reglas de firewall, reglas de página y equilibradores de carga, solo por mencionar algunos. Si un cliente tiene un servicio que solo debería poder crear nuevas reglas de firewall en respuesta a los patrones de tráfico, entonces también permitir que ese servicio cambie los registros DNS es una violación al privilegio mínimo. Los tokens API le permiten aplicar cada token a un permiso específico. Se pueden combinar múltiples permisos para crear tokens personalizados que se adapten a casos de uso específicos.</p>
+	<h3 id="m-ltiples-tokens-api"><strong>Múltiples tokens API</strong></h3>
+	<p>Si usted usa Cloudflare para proteger y acelerar múltiples servicios, entonces puede estar haciendo cambios de API a Cloudflare desde múltiples ubicaciones: diferentes servidores, máquinas virtuales, contenedores o trabajadores. Poder crear un token API por servicio significa que cada servicio está aislado de los cambios de otro. Si se filtra un token API o es necesario implementarlo, no se producirá ningún impacto en los tokens API de los otros servicios. Además, las capacidades mencionadas anteriormente significan que cada servicio se puede enfocar exactamente en las acciones y recursos necesarios. Esto permite a los clientes realizar mejor la práctica de privilegios mínimos para acceder a Cloudflare a través de API.</p>
+	<p>Ahora veamos cómo crear un token API y usarlo.</p>
+	<h2 id="uso-de-tokens-api"><strong>Uso de tokens API</strong></h2>
+	<p>Para crear su primer token API, vaya a la sección "Tokens API" de su perfil de usuario que puede encontrar aquí: <a href="https://dash.cloudflare.com/profile/api-tokens" target="_blank">dash.cloudflare.com/profile/api-tokens</a></p>
+	<p>1. En esta página, encontrará una lista de todos sus tokens API, además de su clave API global y su clave CA de origen.</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/08/api_1_delay.gif" class="kg-image">
+		<figcaption>Introducción a Tokens API - Crear token</figcaption>
+	</figure>
+	<p>Para crear su primer token API, seleccione "Crear token".</p>
+	<hr>
+	<p>2. En la pantalla de creación, hay dos formas de crear su token. Puede crearlo desde cero por medio de la opción "Personalizar" o puede comenzar con una plantilla predefinida al seleccionar "Comenzar con una plantilla".</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/08/api_2_delay.gif" class="kg-image">
+		<figcaption>Selección de plantilla de token API</figcaption>
+	</figure>
+	<p>Para este caso, usaremos la plantilla "Editar zona DNS" para crear un token API que pueda editar los registros DNS de una sola zona.</p>
+	<hr>
+	<p>3. Una vez que se selecciona la plantilla, debemos elegir una zona para que el token API lo tenga como su alcance. Observe que el permiso de edición de DNS ya estaba preseleccionado</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/08/api_2_delay.gif" class="kg-image">
+		<figcaption>Especificación de la zona para la cual el token podrá controlar el DNS</figcaption>
+	</figure>
+	<p>En este caso, "garrettgalow.com" se selecciona como la zona Cloudflare para la cual el token API podrá editar registros DNS.</p>
+	<hr>
+	<p>4. Una vez que selecciono continuar con el resumen, tengo la oportunidad de revisar mi selección. En este caso, los recursos y los permisos son muy simples, pero esto le da un cambio para asegurarse de que le está dando al token API exactamente la cantidad correcta de privilegios antes de crearlo.</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/08/api_4_delay.gif" class="kg-image">
+		<figcaption>Resumen de tokens: confirmación</figcaption>
+	</figure>
+	<hr>
+	<p>5. Una vez creado, se nos presenta el token de API. ¡En esta pantalla es la única vez que se le mostrará el secreto, así que asegúrese de guardar el secreto en un lugar seguro! Cualquier persona que conozca este secreto puede realizar las acciones otorgadas en los recursos especificados, así que protéjalo como una contraseña. En la captura de pantalla siguiente, he enmarcado el secreto en negro por razones obvias. Si pierde el secreto, siempre puede volver a generarlo desde la tabla de tokens API para que no tenga que configurar todos los permisos de nuevo.</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/08/api_5_success.png" class="kg-image">
+		<figcaption>Pantalla de finalización de creación de tokens con el secreto del token</figcaption>
+	</figure>
+	<p>Además del secreto en sí, esta pantalla proporciona un ejemplo de solicitud de curl que se puede usar para verificar que el token se haya creado correctamente. También proporciona un ejemplo de cómo se debe utilizar el token para cualquier solicitud de HTTP directa. Con los Tokens API ahora seguimos el estándar <a href="https://tools.ietf.org/html/rfc6750#section-2.1" target="_blank">RFC Authorization Bearer</a>. Al llamar a esa API, vemos una respuesta exitosa que nos indica que el token es válido y que está activo</p>
+	<pre><code class="language-js">~$ curl -X GET "https://api.cloudflare.com/client/v4/user/tokens/verify" \
+&gt;      -H "Authorization: Bearer vh9awGupxxxxxxxxxxxxxxxxxxx" \
+&gt;      -H "Content-Type:application/json" | jq
+
+{
+  "result": {
+    "id": "ad599f2b67cdccf24a160f5dcd7bc57b",
+    "status": "active"
+  },
+  "success": true,
+  "errors": [],
+  "messages": [
+    {
+      "code": 10000,
+      "message": "This API Token is valid and active",
+      "type": null
+    }
+  ]
+}</code></pre>
+	<h2 id="lo-qu-se-ofrecer-en-el-futuro"><strong>Lo qué se ofrecerá en el futuro</strong></h2>
+	<p>Para cualquier persona que use la API de Cloudflare, le recomendamos que opte por el uso de tokens API en lugar de sus claves API anteriores. Con este anuncio, nuestro <a href="https://www.terraform.io/docs/providers/cloudflare/" target="_blank">proveedor Terraform</a>, <a href="https://github.com/cloudflare/cloudflare-go" target="_blank">la biblioteca Cloudflare-Go</a> y el <a href="https://github.com/cloudflare/Cloudflare-WordPress" target="_blank">plugin WordPress</a> están actualizados para que sean compatibles con el token API. Otras bibliotecas pronto recibirán actualizaciones. Por el momento, tanto los tokens API como las claves API serán compatibles para que los clientes puedan migrar de forma segura. Tenemos más capacidades planificadas para los tokens API a fin de proteger aún más cómo y cuándo se utilizan los tokens, ¡así que esté atento a los anuncios futuros!</p>
+	<p>Cuéntenos qué piensa y qué le gustaría ver después con respecto a la seguridad de la API en la <a href="https://community.cloudflare.com/" target="_blank">Comunidad de Cloudflare</a>.</p>
+</div>

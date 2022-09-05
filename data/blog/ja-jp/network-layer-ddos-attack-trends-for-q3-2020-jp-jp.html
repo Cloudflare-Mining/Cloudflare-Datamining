@@ -1,0 +1,74 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image6-4.png" class="kg-image"></figure>
+	<p>DDoS攻撃は、急激にその頻度が増し、精巧さを高めています。ネットワーク層攻撃の総数は、第1四半期から第2四半期に倍増した後、第3四半期には再び倍増し、第1四半期のコロナ禍以前のレベルと比較すると第3四半期では4倍に増加しています。Cloudflareの観測により、これまで以上に多数の攻撃ベクトルがデプロイされていることも明らかになっています。実際に、SYN、RST、UDPフラッドが攻撃の大多数を占める一方で、MDN、Memcached、Jenkins DoS攻撃など、プロトコル固有の攻撃が急増しています。</p>
+	<p>第3四半期に検知したその他の主要なネットワーク層DDoS傾向は次のとおりです。</p>
+	<ul>
+		<li>攻撃の大半は500Mbpsと1Mpps未満であり、どちらもサービスの中断を引き起こすのに十分な大きさです。</li>
+		<li>攻撃の大半は1時間未満であることが引き続き確認されています。</li>
+		<li>ランサム主導型DDoS攻撃（RDDOS）は増加しており、自らをFancy Bear、Cozy Bear、Lazarus Groupと名乗るグループが世界中の企業から金銭をゆすり取ろうとしています。この記事の執筆時点では、一連のランサム攻撃はまだ進行中です。これについては、以下の特記事項をご確認ください。</li>
+	</ul>
+	<h3 id="-"><strong>攻撃数</strong></h3>
+	<p>以下のグラフに示すように、ネットワークで検知されたL3/4 DDoS攻撃の総数は、引き続き大幅に増加しています。全体として、第3四半期のL3/4 DDoS攻撃の総数は、全攻撃の56%超となり、これは第2四半期の2倍、第1四半期の4倍でした。さらに、第3四半期全体を通して月あたりの攻撃数が増加しました。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image12-1.png" class="kg-image" title="Chart"></figure>
+	<p>9月は全体で最大の攻撃数を記録しましたが、8月は最大規模の攻撃（500Mbps以上）を観測しました。第3四半期の大規模攻撃の91%は、同じく8月に発生しています。一方、他の攻撃サイズの月間分布は、はるかに均一でした。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image9-1.png" class="kg-image" title="Chart"></figure>
+	<p>9 月には200～300Gbpsクラスの攻撃の総数は減少しましたが、第3四半期にはネットワークに対するグローバル攻撃が増加していることを確認しました。これは、攻撃を開始するために、分散型ボットネットの使用が増加していることを示唆しています。実際、Cloudflareでは7月上旬に<a href="https://blog.cloudflare.com/moobot-vs-gatebot-cloudflare-automatically-blocks-botnet-ddos-attack-topping-at-654-gbps/">当社のネットワーク上で、過去最大クラスの攻撃となる</a>、<a href="https://blog.cloudflare.com/inside-mirai-the-infamous-iot-botnet-a-retrospective-analysis/">Miraiベースのボットネット</a>—Moobotによって生成された攻撃を目撃しました。攻撃は最大で654 Gbpsに達しており、18,705の一意のIPアドレスから発生していて、Moobotに感染したIoTデバイスがそれぞれの発生源だったと考えられています。一連の攻撃は10日間近く続きましたが、顧客はCloudflareによって保護されていたため、ダウンタイムやサービスの低下は見られませんでした。</p>
+	<h3 id="--1"><strong>攻撃サイズ（ビットレートとパケットレート）</strong></h3>
+	<p>L3/4 DDoS攻撃サイズの測定には、さまざまな方法があります。1つは送信するトラフィックの量で、ビットレート（具体的にはギガビット/秒）で測定されます。もう1つは配信するパケット数で、パケットレート（特に1秒あたりのパケット数）で測定されます。ビットレートが高い攻撃ではインターネットリンクが飽和状態になり、パケットレートの高い攻撃ではルーターやその他のインラインハードウェアデバイスが過負荷状態になります。</p>
+	<p>第3四半期、当社が観測した攻撃の大多数は小規模のものでした。実際、すべての攻撃の87%以上が1Gbps以下のものでした。第2四半期では、同等規模の小さな攻撃は約52%だったことから、第3四半期は第2四半期から大幅に増加したことになります。500Mbps未満の攻撃が小規模だと言っても、クラウドベースのDDoS保護サービスが適用されていない場合、ドメインを中断させるのに十分な攻撃の大きさの数倍分の威力を持つことに注意してください。多くの企業では、ISPによって提供されるアップリンクは1Gbpsよりもはるかに小さなものです。公開されているネットワークインターフェースも正当なトラフィックを送信すると仮定すると、こうした「小規模な」DDoS攻撃であっても、ドメインに対して簡単に危害を加えることができてしまいます。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image10-2.png" class="kg-image" title="Chart"></figure>
+	<p>この傾向は、攻撃パケットレートにも当てはまります。第3四半期では、攻撃の47%が50kpps以下でした。同規模の攻撃は、第2四半期ではわずか19％でした。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image8-1.png" class="kg-image" title="Chart"></figure>
+	<p>小規模な攻撃は、アマチュア攻撃者による可能性があり、彼らは簡単に利用可能なツールを使用して、公開された IPS／ネットワークへの攻撃を生成しています。また、同時に起こっている可能性のある他の種類のサイバー攻撃からセキュリティチームの目をそらすための偽装工作として機能している可能性もあります。</p>
+	<h3 id="--2"><strong>攻撃期間</strong></h3>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image5-3.png" class="kg-image" title="Chart"></figure>
+	<p>攻撃期間に関しては、第3四半期に検知された最も一般的な攻撃タイプは非常に短いものであり、これが全攻撃の88%近くを占めています。この観測結果は、前のレポートの内容にも沿うものです。一般的に、L3/4 DDoS攻撃期間はより短くなっています。</p>
+	<p>短い攻撃は、DDoS検出システムによって検出されずにダメージを与える可能性があります。DDoSサービスは、手動で分析と軽減対策が行われており、この種の短い攻撃に対して役に立たない可能性があります。なぜなら、アナリストが攻撃のトラフィックの識別すら終えないうちに攻撃が終了してしまうためです。</p>
+	<p>また、短い攻撃を使用して、ターゲットのサイバー防御体制に探りを入れることもできます。ダークウェブ上で広く普及している負荷テストツールと自動DDoSツールは、SYNフラッドなどの短いバーストを生成し、代替攻撃ベクトルを使用して別の短い攻撃を追加で仕掛けることができます。これにより、サイバー攻撃者は、大規模の攻撃をより大きなレートを使って、より長い攻撃期間で仕掛けるかどうかを決める前に（大規模攻撃にはコストがかかります）、ターゲットのセキュリティ体制を把握することができます。</p>
+	<p>他のケースでは、攻撃者がターゲット企業に対して、実際に後からダメージを与える攻撃力があることを、事前に示し警告するために、小さなDDoS攻撃を仕掛ける場合もあります。多くの場合、小規模の攻撃を仕掛けた後、ターゲット企業側に身代金を要求するメッセージが届きますが、これは、ネットワークインフラストラクチャをより徹底的に破壊する攻撃を回避させる見返りとして支払いを要求するものです。</p>
+	<p>攻撃者の動機が何であれ、どんな規模や期間のDDoS攻撃でも、すぐに攻撃が止むことはありません。DDoS攻撃の攻撃期間が短い場合でも危害を与えられるため、自動化されたリアルタイム防御メカニズムを導入することは、どのようなオンラインビジネスにとっても重要です。</p>
+	<h3 id="--3"><strong>攻撃ベクトル</strong></h3>
+	<p><a href="https://www.cloudflare.com/learning/ddos/syn-flood-ddos-attack/" target="_blank">SYNフラッドは</a>、第3四半期に観測されたすべての攻撃の約65%を占め、続いてRSTフラッドとUDPフラッドが2番目、3番目に多く発生しました。これ以前の複数の四半期でも、割合的には同じ傾向を示していて、攻撃者が選択したDDoS攻撃ベクトルが浮かび上がってきます。</p>
+	<p>SYNやRSTフラッドなどのTCPベースの攻撃は引き続き多く発生していますが、MDN、Memcached、JenkinsなどのUDPプロトコル固有の攻撃は、前四半期と比較して急増しています。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image-5.png" class="kg-image" title="Chart"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image13-1.png" class="kg-image" title="Chart"></figure>
+	<p>マルチキャスト DNS（mDNS）は、サービス/デバイス検出のためにローカルネットワークで使用されるUDPベースのプロトコルです。脆弱なmDNS サーバーは、ローカルネットワークの外部から発信されたunicast クエリーに応答します。このクエリーは、被害者の送信元アドレスで「スプーフィング」（変更）されます。これにより、アンプ（アンプリフィケーション）攻撃が発生します。第3四半期には、mDNS攻撃が爆発的に増加していることが判明しました。具体的には、前四半期と比較して2,680% 増加しました。</p>
+	<p>この後に、<a href="https://www.cloudflare.com/learning/ddos/memcached-ddos-attack" target="_blank">Memcached</a>とJenkins攻撃が続きました。Memcached はKey Valueのデータベースです。リクエストは、スプーフィングされたターゲットの送信元アドレスを使用し、UDPプロトコルを介して行われます。リクエストされたKeyに格納されたValueサイズは増幅率に影響を与え、この結果、DDoSアンプリフィケーション（アンプ）攻撃が発生します。同様に、Jenkins、NTP、Ubiquity、およびその他のUDPベースのプロトコルは、そのUDPのステートレスな性質により第3四半期に劇的な増加を見せています。古いバージョン（<a href="https://nvd.nist.gov/vuln/detail/CVE-2020-2100" target="_blank">Jenkins 2.218</a>以前）の脆弱性は、DDoS攻撃のローンチを助長しました。この脆弱性は、Jenkins 2.219 で UDP マルチキャスト/ブロードキャストメッセージをデフォルトで無効にすることで修正されました。しかし、UDPベースのサービスを実行する、脆弱で、公開されているデバイスは未だ多数存在し、帯域幅消費型アンプ攻撃を生成するために利用されています。</p>
+	<h3 id="--4"><strong>国別の攻撃</strong></h3>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image2-9.png" class="kg-image" title="Chart"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/11/image4-8.png" class="kg-image" title="Chart"></figure>
+	<p>国別の分布を見ると、L3/4 DDoS攻撃の数が最も多かったのは米国で、ドイツとオーストラリアがこれに続きました。L3/4 DDoS攻撃を分析する際、トラフィックはソース IPの場所ではなくトラフィックを集約するCloudflareエッジデータセンターの場所によってバケットされることに注意してください。なぜなら、攻撃者がL3/4 攻撃を開始すると、攻撃元を難読化するために送信元のIPアドレスを「スプーフィング」できるからです。スプーフィングされたソースIPに基づいて国を割り出しても、偽装された国名が得られるだけです。Cloudflareは、偽装IPの課題を克服することができます。攻撃が観測されたCloudflareのデータセンターの場所別に攻撃データを表示できるためです。世界200都市以上にCloudflareのデータセンターがあるため、レポートには地理的正確さを反映できます。</p>
+	<h3 id="--5"><strong>アフリカ</strong></h3>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2020/11/BDES-1247_DDoS_Trends_Report_Q32020-10.png" class="kg-image" title="Chart"></figure>
+	<h3 id="--6"><strong>アジア太平洋オセアニア</strong></h3>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2020/11/BDES-1247_DDoS_Trends_Report_Q32020-11.png" class="kg-image" title="Chart"></figure>
+	<h3 id="--7"><strong>ヨーロッパ</strong></h3>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2020/11/BDES-1247_DDoS_Trends_Report_Q32020-12.png" class="kg-image" title="Chart"></figure>
+	<h3 id="--8"><strong>中東</strong></h3>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2020/11/Middle-East@3x.png" class="kg-image" title="Chart"></figure>
+	<h3 id="--9"><strong>北米</strong></h3>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2020/11/North-America@3x.png" class="kg-image" title="Chart"></figure>
+	<h3 id="--10"><strong>南米</strong></h3>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2020/11/BDES-1247_DDoS_Trends_Report_Q32020-15.png" class="kg-image" title="Chart"></figure>
+	<h3 id="--11"><strong>アメリカ合衆国</strong></h3>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2020/11/BDES-1247_DDoS_Trends_Report_Q32020-16.png" class="kg-image" title="Chart"></figure>
+	<h3 id="-ddos-"><strong>最近のランサム駆動型DDoS攻撃に関する注意事項</strong></h3>
+	<p>ここ数か月間、Cloudflareは別の不穏な傾向を検知しました—恐喝とランサムベースのDDoS (RDDoS) 攻撃の増加は、世界中の企業をターゲットにしています。RDDoSの脅威は必ずしも実際の攻撃につながるとは限りませんが、ここ数か月で見られるケースでは、サイバー攻撃者が脅迫どおりに、十分な保護がない企業のサーバーを過負荷状態に陥らせる大規模なDDoS攻撃を仕掛ける事例が確認されています。場合によっては、クラウドベースのDDoS 攻撃対策サービスで保護されておらず、最初の小規模の攻撃が影響を引き起こすのに十分なことがあります。</p>
+	<p>RDDoS攻撃では、個人または企業が身代金を支払わないと、悪意のある攻撃者が一定期間、ネットワーク、Webサイト、またはアプリケーションを攻撃し、オフラインにするサイバー攻撃を仕掛けて、ユーザーまたは企業に脅威をもたらします。RDDoS攻撃の詳細については 、<a href="https://www.cloudflare.com/learning/ddos/ransom-ddos-attack/" target="_blank">こちら</a>をご覧ください。</p>
+	<p>自らをFancy Bear、Cozy Bear、Lazarus と名乗る組織は、特定の期限までに身代金を支払わなければ、企業のWebサイトやネットワークインフラストラクチャに対してDDoS攻撃を開始するとして脅迫します。さらに、最初の「ティーザー（teaser）」DDoS攻撃は、多くの場合、身代金を要求するランサムメールが送信される前に、デモの形態をとって開始されます。デモ攻撃は通常、さまざまなプロトコルを使用したUDPリフレクション攻撃で、所要時間は約30分、またはそれ以内です。</p>
+	<p>脅威を受けた場合の対処方法</p>
+	<ol>
+		<li>まずは、パニックに陥らず落ち着くことが肝要です。また、身代金を支払わないようにします。身代金を支払うことは攻撃者を助長し、違法行為を金銭的に支援することになります。身代金を支払っても、彼らが将来的にネットワークを攻撃しない保証はありません。</li>
+		<li>現地の法執行機関に通知する：ご自身や会社が受け取った身代金要求書のコピーを求められる場合があります。</li>
+		<li>Cloudflareに連絡する：お客様のWebサイトやネットワークインフラストラクチャがランサム攻撃から保護されるようお手伝いします。</li>
+	</ol>
+	<h3 id="cloudflare-ddos-"><strong>Cloudflare DDoS 攻撃対策は違います</strong></h3>
+	<p>オンプレミスのハードウェア／クラウドスクラビングセンターでは、最新の帯域幅消費型DDoS攻撃に対処できません。アプライアンスは大規模なDDoS 攻撃によって簡単に過負荷状態に陥り、インターネットリンクはすぐに飽和状態になり、トラフィックをクラウドスクラブセンターに再ルーティングすると、許容できない遅延が生じます。当社のクラウドネイティブで、常時オンである自動DDoS保護アプローチが、従来のクラウドシグナリングアプローチが元々対処すべきだった問題点を解決します。</p>
+	<p>Cloudflareの使命は、より良いインターネットを構築することです。これは当社のDDoSに対するアプローチの礎となり、2017年に、Free プランを含むすべてのプランのお客様のために、定額制の DDoS軽減策をリリースした理由です 。当社では、ネットワーク上のすべてのサーバーが脅威を検出／ブロックできるため、このレベルの保護を提供できます。これにより、遅延による影響がなく、あらゆるサイズ／種類の攻撃に対応します。このアーキテクチャは、他のベンダーと比較して比類のない利点を提供します。</p>
+	<ul>
+		<li>51TbpsのDDoS 軽減能力、3秒未満のTTM：Cloudflare のネットワーク内のすべてのデータセンターがDDoS攻撃を検出し、軽減します。攻撃が特定されると、Cloudflare のローカルデータセンター軽減システム (dosd) は、リアルタイム署名を使用して動的に作成されたルールを生成して適用し、平均して3 秒未満でグローバルに攻撃を軽減します。この3秒の軽減時間 (TTM) は、業界最速クラスです。ファイアウォールルールと「プロアクティブな」/静的設定は直ちに有効になります。</li>
+		<li>高速パフォーマンスを含む：Cloudflareは、攻撃の結果としてお客様が遅延の被害を被ることがないように設計されています。当社では、すべてのCloudflareデータセンターからDDoSからの保護を提供し（従来のスクラビングセンターやオンプレミスのハードウェアボックスの代わりに）、ソースに最も近い攻撃を軽減することができます。Cloudflareはアウトオブパスでトラフィックを分析し、DDoS軽減ソリューションが正当なトラフィックにレイテンシーを追加しないようにします。このルールはLinuxスタック内で最適な場所に適用され、コスト効率に優れた軽減を実現するため、パフォーマンスの低下はありません。</li>
+		<li>グローバルな脅威インテリジェンス：当社のネットワークは、免疫システムのように、あらゆる顧客に対する攻撃を学習／軽減し、すべての攻撃から顧客を保護します。脅威インテリジェンス (TI) が、攻撃を自動的にブロックし、TIは顧客向けの機能 (ボットファイトモード、ファイアウォールルールのセキュリティレベル) でも使用されています。ユーザーは、トラフィック属性フィルタ、MLモデルを使用して生成された脅威ボットスコア（ボット/ボットネット/DDoS からの保護）に基づいて攻撃を軽減するためのカスタムルールを作成します。</li>
+	</ul>
+	<p>CloudflareのDDoSソリューションの詳細は、<a href="https://www.cloudflare.com/plans/enterprise/" target="_blank">こちらにお問い合わせ</a>いただくか、こちらから<a href="https://dash.cloudflare.com/" target="_blank">今すぐ始めましょう</a>。</p>
+</div>

@@ -1,0 +1,33 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/08/image1-23.png" class="kg-image"></figure>
+	<p>今年のはじめ、当社は<a href="https://blog.cloudflare.com/ja-jp/introducing-cryptographic-attestation-of-personhood-ja-jp/">世界規模で、より多くのユーザーが簡単にオンライン認証をできるようにする</a>と発表しました。バスや信号機の選択、歪んだ文字列の解読などの無限ループに終止符を打ちたいと考えています。それは単に他人の機械学習の問題を解くのに<a href="https://blog.cloudflare.com/ja-jp/introducing-cryptographic-attestation-of-personhood-ja-jp/">人類は1日あたり500年という時間を無駄にしている</a>からだけでなく、誰にとってもインターネットを高速で透明性があり、プライバシーが守られるものにするように当社が尽力しているからです。CAPTCHAは、人に優しいとは言い難く、最も熱心なインターネットユーザーでさえ回答するのが難しいこともあります。特定の言語を使わない人やモバイル端末を使っている人（大体のユーザーがそうです！）にはとてつもなく難しいものです。</p>
+	<p>今日私たちは、あなたがロボットではないことを証明するための、インターネットのCAPTCHAへの依存を減らすために、新たな一歩を踏み出しました。私たちは、より幅広いデバイスのサポートを追加することで、Cryptographic Attestation of Personhood（人間の暗号化証明）の実験の範囲を拡大しています。これには、AppleのFace ID、Microsoft Hello、Android Biometric Authenticationなどの生体認証機能が含まれます。これにより、指先のタッチや顔の表情だけで5秒以内に要求を解決できるようになり、このプライベートな生体データは誰にも送信されません。</p>
+	<p>デモサイト「<a href="https://cloudflarechallenge.com/" target="_blank"> &nbsp;cloudflarechallenge.com</a> &nbsp;」でお試しいただき、ご感想をお聞かせください。</p>
+	<p>ハードウェア生体認証デバイスのサポートに加え、本日、Cryptographic Attestation of Personhoodの実験において、さらに多くのハードウェアトークンのサポートを発表します。FIDOアライアンスによって認証され、FIDOアライアンスのメタデータサービス（<a href="https://fidoalliance.org/metadata/" target="_blank">MDS 3.0 </a>）に従って、既知のセキュリティ問題がないすべてのUSBキーとNFCキーをサポートします。</p>
+	<h2 id="-">プライバシーファースト</h2>
+	<p>Cryptographic Attestation of Personhoodの中心には、プライバシーがあります。お客様の生体データに関する情報は、Cloudflareと共有したり、Cloudflareに送信したり、Cloudflareが処理したりすることはありません。私たちがその情報にアクセスすることは一切ありません。お客様のセンシティブな生体データはすべて、お客様のデバイスで処理されます。各オペレーティングシステムメーカーでは若干異なるプロセスを採用していますが、いずれもTrusted Execution Environment（TEE）またはTrusted Platform Module（TPM）の考え方を採用しています。TEEとTPMは、あなたの暗号化された生体情報を、あなたのデバイスだけが保存して使用することを可能にします。デバイス上で動作しているすべてのアプリケーションやソフトウェアは、あなたのデータにアクセスすることはできず、そのシステムにデータを転送することもできません。各主要オペレーティングシステムがどのようにバイオメトリックセキュリティを実装しているか、さらに詳しく知りたい場合は、以下のリンク先の記事をご覧ください。</p>
+	<h3 id="apple-face-id-touch-id-">Apple（Face IDとTouch ID）</h3>
+	<p><a href="https://support.apple.com/en-us/HT212036" target="_blank">Face IDとTouch IDのプライバシー</a><br><a href="https://support.apple.com/guide/security/secure-enclave-sec59b0b31ff/web" target="_blank">Secure Enclaveの概要</a></p>
+	<h3 id="microsoft-windows-hello-">Microsoft（Windows Hello）</h3>
+	<p><a href="https://support.microsoft.com/en-us/windows/windows-sign-in-options-and-account-protection-7b34d4cf-794f-f6bd-ddcc-e73cdf1a6fbf#ID0EBD=Windows_10" target="_blank">Windows Helloの概要</a><br><a href="https://docs.microsoft.com/en-us/windows/uwp/security/microsoft-passport" target="_blank">Windows Hello テクニカルディープダイブ</a></p>
+	<h3 id="google-android-biometric-authentication-">Google（Android Biometric Authentication）</h3>
+	<p><a href="https://source.android.com/security/authentication" target="_blank">生体認証</a><br><a href="https://source.android.com/security/biometric/measure#strong-weak-unlocks" target="_blank">生体認証によるロック解除のセキュリティ測定</a></p>
+	<p>私たちのプライバシーへの取り組みは、デバイスだけにとどまりません。<a href="https://blog.cloudflare.com/cloudflare-now-supports-security-keys-with-web-authentication-webauthn/">WebAuthn API</a> では、生体情報の送信も防止します。ユーザーが生体認証キー（Apple TouchIDやWindows Helloなど）とやり取りする場合、Cloudflareなどの第三者がその生体認証データを受け取ることはできません。それはあなたのデバイスに保存され、ブラウザから送信されることはありません。Cryptographic Attestation of Personhoodが、どのように個人情報を保護するかについてさらに深く理解するために、<a href="https://blog.cloudflare.com/ja-jp/introducing-cryptographic-attestation-of-personhood-ja-jp/">最初の発表についてのブログ記事</a>をお読みいただくことをお勧めします。</p>
+	<h2 id="--1">プライバシーストーリーをより良いものに</h2>
+	<p>この技術を構築する一方で、私たちは常に最高のプライバシー保証を提供することに取り組んできました。既存の保証でも、すでにかなり強力なものです。前回の記事でご説明したように、CAPを使用する場合、認証ハードウェアに関するわずかな情報（メーカーおよびモデル程度）を開示することがあります。設計上、この情報はあなたに固有のものではありません。基本的な規格では、この情報が他の何千ものハードウェアと区別できないことを要求しており、同一のハードウェア群の中にあなたを隠すものです。</p>
+	<p>これはすばらしいスタートですが、さらに上へ推し進める方法がないか考えていました。</p>
+	<p>あなたが有効なセキュリティキーを持っているという1つの必要な事実だけを、他には何も得ることなく知ることはできないでしょうか？</p>
+	<p>そこで、次世代の暗号技術であるZKP（ゼロ知識証明）を用いて、この問いに対する答えを導き出すことができました。ZKPはあなたが、人間であると証明するための承認された証明書を生成できるデバイスを持っている、という事実以外、私たちがあなたから何らかの情報を得ることを防いでくれます。</p>
+	<p>ゼロ知識証明についてもっと詳しく知りたい方は、ぜひ<a href="https://blog.cloudflare.com/introducing-zero-knowledge-proofs-for-private-web-attestation-with-cross-multi-vendor-hardware/">こちら</a>をご覧ください。</p>
+	<h2 id="--2">スピード、使いやすさ、ボット対策が原動力</h2>
+	<p>このプロジェクトを始めるにあたり、私たちは3つの目標を掲げました。</p>
+	<ol>
+		<li>人間であることを証明するユーザーエクスペリエンスを、劇的に向上させるにはどうすればいいか？</li>
+		<li>使いやすさを重視し、インターネット上でのグローバルなアクセシビリティを向上させるには、どのようなソリューションを開発すればよいのか？</li>
+		<li>既存のボット管理システムを損なわないソリューションを作るには、どうしたらよいのか？</li>
+	</ol>
+	<p>このCAPTCHAソリューションの新しい進化を展開する前に、私たちは実際のユーザーを対象に概念実証テストを行い、このアプローチを追求する価値があるかどうかを確認しました（理論上すばらしいからといって、それが実際にうまくいくとは限りません）。テストグループに、Face IDを使った私たちのCryptographic Attestation of Personhoodソリューションを試してもらい、その感想を伺いました。これは非常に好まれ、Face IDとTouch IDを使った解決時間は、写真を選択するよりもはるかに速く、エラーもほとんどないことがわかりました。また、ユーザーエクスペリエンスの改善提案もいただき、展開に反映させました。</p>
+	<p>このことは本番の利用データで、より顕著に表れました。CAP導入の最初のフェーズでは、生体認証プロバイダーとの認証を有効にしませんでしたが、人々が生体認証サービスを利用しようとしたときの記録は残しました。YubiKey以外で、最も高い試行解決率を示したのはiOSのFace IDとAndroidの生体認証でした。人間であることを証明する要求において、こうしたモバイルユーザーの最初の選択肢となったことを嬉しく思います。</p>
+	<p>テストの中で私たちがお聞きしたことのひとつに、当然のことながら、プライバシーに関する懸念がありました。<a href="https://blog.cloudflare.com/ja-jp/introducing-cryptographic-attestation-of-personhood-ja-jp/">最初の発表</a>でご説明したように、私たちのソリューションを支えるWebAuthnテクノロジーは、高いレベルのプライバシー保護を提供します。Cloudflareは、何千もの同様のデバイスが共有するを見ることができ、一般的なメーカーとモデル情報が提供されます。ただしこれは、お客様を一意に特定したり、追跡したりするために使用することはできません。そしてこれが、当社がまさに求めていたことなのです</p>
+	<p>現在、より多くのデバイスで当社のソリューションが利用され、生体認証リーダーも利用できるようになりました。同じプライバシー保護が適用され、デバイスに保存されたお客様の生体情報に私たちがアクセスすることはありませんので、ご安心ください。デバイスが照合を確認すると、セキュリティキーと同様に基本的な認証メッセージのみを送信します。事実上、あなたのデバイスは「はい、誰かがこの信頼できるデバイスで正しく指紋情報を入力しました」と証明するメッセージを送信し、指紋そのものが送信されることはありません。また、デモサイトや日常的な閲覧で、CAPを試された方々からのフィードバックも確認しています。皆さまからいただいたご意見は大変参考になり、今後の改善に役立てたいと考えています。<a href="https://cloudflarechallenge.com/?cf_target_id=060E548548666B095D695B2D1C0B92E8" target="_blank">デモサイト</a>にアンケートを設置しました。また、<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f2938199809781979380919ab2919e9d8796949e938097dc919d9f">[email&nbsp;protected]</a> でも受け付けています。皆さまからのご意見は、私たちがユーザビリティを確保するための重要な要素となります。ぜひあなたのご感想をお聞かせください。</p>
+</div>

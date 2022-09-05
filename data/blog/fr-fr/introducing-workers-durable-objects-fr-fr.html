@@ -1,0 +1,152 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/09/BDES-1018_Cloudflare_Object_Workers_Birthday_Week_Blog_Hero.png" class="kg-image"></figure>
+	<p>Nous avons <a href="https://blog.cloudflare.com/introducing-cloudflare-workers/">lancé Cloudflare Workers® en 2017</a> avec une vision radicale : le code s'exécutant à la périphérie du réseau pouvait non seulement améliorer les performances, mais aussi être plus facile à déployer et moins cher à exécuter que le code exécuté dans un datacenter. Cette vision signifie que Workers ne se limite pas au calcul à la périphérie : nous repensons la façon dont les applications sont créées.</p>
+	<p>L'utilisation d'une approche « serverless » nous a permis de simplifier fortement le déploiement, et grâce à l'utilisation d'une <a href="https://blog.cloudflare.com/cloud-computing-without-containers/">technologie isolée</a>, nous avons pu fournir des solutions serverless à moindre coût et <a href="https://blog.cloudflare.com/eliminating-cold-starts-with-cloudflare-workers/">sans les longs démarrages à froid</a> qui entravent les autres fournisseurs. Nous avons ajouté à la plateforme un stockage en périphérie facile à utiliser et compatible avec <a href="https://blog.cloudflare.com/workers-kv-is-ga/">Workers KV</a>.</p>
+	<p>Toutefois, jusqu'à ce jour il n'était pas possible de gérer l'état avec une cohérence forte ou d'assurer la coordination en temps réel entre plusieurs clients entièrement à la périphérie. Ces parties de votre application devaient encore être hébergées ailleurs.</p>
+	<p>Les Objets durables offrent une approche véritablement serverless du stockage et de l'état en étant : cohérents, à faible latence, distribués et ne nécessitant pas de tâches de maintenance et de mise à l'échelle particulières. Ils permettent également de coordonner facilement les clients, qu'il s'agisse d'utilisateurs dans un chatroom particulier, de rédacteurs d'un document donné ou d'appareils IdO en domotique. Les Objets durables constituent la pièce manquante de la pile Workers qui permet à des applications entières de fonctionner entièrement en périphérie, sans aucun serveur « d'origine » centralisé.</p>
+	<p>Aujourd'hui, nous entamons un bêta fermé des Objets durables.</p>
+	<!--kg-card-begin: html--><a href="https://www.cloudflare.com/cloudflare-workers-durable-objects-beta" style="display: block; background-color: #fec368; text-align: center; padding: 0.5em; text-decoration: underline; border: none; box-shadow: none; font-size: 150%; font-weight: bold; margin: 1em 0; color: #36393a" target="_blank">Demander une invitation au bêt »</a>
+	<!--kg-card-end: html-->
+	<h3 id="qu-est-ce-qu-un-objet-durable-">Qu'est-ce qu'un « Objet durable » ?</h3>
+	<p>Je vais être honnête avec vous : nommer ce produit n'a pas été une mince affaire, car il n'est pas tout à fait comme les autres technologies cloud largement utilisées aujourd'hui. Après une longue réflexion, nous nous sommes décidés pour « Objets durables uniques », ou « Objets durables » pour faire court. Laissez-moi vous expliquer ce qu'ils sont en décomposant leur nom :</p>
+	<ul>
+		<li>Objets : les Objets durables sont des objets dans le sens de la programmation orientée objet. Un Objet durable est une instance d'une classe. Littéralement, une définition de classe écrite en JavaScript (ou <a href="https://blog.cloudflare.com/cloudflare-workers-announces-broad-language-support/">le langage de votre choix</a>). La classe a des méthodes qui définissent son interface publique. Un objet est une instance de cette classe, combinant le code avec un état privé.</li>
+		<li>Unique : chaque objet possède un identifiant global unique. Cet objet n'existe qu'à un seul endroit dans le monde entier à un instant T. Tout Worker exécuté n'importe où dans le monde et qui connaît l'identifiant de l'objet peut lui envoyer des messages. La destination finale de ces messages est toujours la même.</li>
+		<li>Durable : contrairement à un objet normal en JavaScript, les Objets durables peuvent présenter un état persistant stocké sur disque. L'état durable de chaque objet lui est privé, ce qui signifie non seulement que l'accès au stockage est rapide, mais aussi que l'objet peut conserver de manière sécurisée une copie cohérente de l'état en mémoire et utiliser cette copie sans latence. L'objet en mémoire sera fermé lorsqu'il sera inactif, et recréé plus tard à la demande.</li>
+	</ul>
+	<h3 id="quelles-sont-leurs-fonctions">Quelles sont leurs fonctions ?</h3>
+	<p>Les Objets durables ont deux fonctions principales :</p>
+	<ul>
+		<li>Stockage : chaque objet est doté d'un espace de stockage durable. Comme ce stockage est unique à l'objet, le stockage est toujours situé au même endroit que l'objet. Cela signifie que le stockage peut être très rapide, tout en assurant une forte cohérence transactionnelle. Les Objets durables appliquent la philosophie serverless au stockage, en divisant les bases de données monolithiques traditionnelles en plusieurs petites unités logiques. Ainsi, nous obtenons les avantages que vous attendez du serverless : un passage à l'échelle sans effort et sans maintenance.</li>
+		<li>Coordination : auparavant, avec Workers, chaque requête faisait l'objet d'un équilibrage de charge aléatoire vers une instance Worker. Étant donné qu'il n'y avait aucun moyen de contrôler quelle instance recevait une requête, il n'existait aucune possibilité pour deux clients de communiquer avec le même Worker, et il n'était donc impossible pour les clients de se coordonner par l'intermédiaire de Workers. Les Objets durables apportent un changement sur ce point : les requêtes liées au même sujet peuvent être transmises au même objet, qui peut ensuite assurer la coordination sans qu'il soit nécessaire de toucher au stockage. Par exemple, ils peuvent faciliter le chat en temps réel, l'édition collaborative, la visioconférence, les files d'attente de messages Pub/Sub, les sessions de jeu et bien plus encore.</li>
+	</ul>
+	<p>Les lecteurs avisés remarqueront peut-être que de nombreux cas d'utilisation de la coordination font appel aux WebSockets et, réciproquement, la plupart des cas d'utilisation des WebSockets nécessitent une coordination. En raison de cette relation complémentaire, nous avons également ajouté, en plus de la version bêta des Objets durables, la prise en charge des WebSockets et à Workers. Pour en savoir plus, <a href="https://blog.cloudflare.com/introducing-workers-durable-objects/#can-durable-objects-serve-websockets">consultez les questions/réponses ci-dessous</a>.</p>
+	<h3 id="r-gion-le-monde-entier">Région : le monde entier</h3>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2020/09/Earth-desktop-background-copy-2@2x.png" class="kg-image"></figure>
+	<p>Lorsque vous utilisez des Objets durables, Cloudflare détermine automatiquement le datacenter Cloudflare dans lequel résidera chaque objet et peut migrer en toute transparence des objets d'un emplacement à l'autre selon les besoins.</p>
+	<p>Les bases de données traditionnelles et l'infrastructure avec état exige généralement que vous pensiez aux « régions » géographiques, afin de veiller à de stocker les données à proximité du lieu où elles sont utilisées. Penser aux régions peut souvent être une charge contre nature, en particulier pour les applications qui ne sont pas intrinsèquement géographiques.</p>
+	<p>Avec les Objets durables, vous concevez plutôt votre modèle de stockage pour qu'il corresponde au modèle de données logique de votre application. Par exemple, un éditeur de documents aura un objet pour chaque document, tandis qu'une application de chat aura un objet pour chaque chat. Créer des millions ou des milliards d'objets n'a aucune incidence, car chaque objet a une charge minimale.</p>
+	<h3 id="une-killer-application-dition-collaborative-de-documents-en-temps-r-el">Une killer application : édition collaborative de documents en temps réel</h3>
+	<p>Disons que vous avez une application d'édition de feuilles de calcul, ou n'importe quel type d'application dans laquelle les utilisateurs modifient un document complexe. Elle fonctionne très bien pour un seul utilisateur, mais vous voulez maintenant que plusieurs utilisateurs puissent modifier des documents en même temps. Comment y parvenir ?</p>
+	<p>Pour la pile d'application web standard, ce problème est difficile. Les bases de données traditionnelles ne sont tout simplement pas conçues pour le temps réel. Lorsque Alice et Bob modifient la même feuille de calcul, vous voulez que chacune des frappes d'Alice apparaisse immédiatement sur l'écran de Bob, et vice versa. Mais si vous vous contentez de stocker les frappes dans une base de données et que les utilisateurs interrogent à plusieurs reprises la base de données pour obtenir les nouvelles mises à jour, au mieux votre application aura une latence médiocre, et au pire vous risquez de rencontrer des erreurs répétées dans les transactions de base de données, car les utilisateurs à l'autre bout du monde se démèneront pour modifier le même contenu.</p>
+	<p>Le secret pour résoudre ce problème ? Avoir un point de coordination en direct. Alice et Bob se connectent au même coordinateur, spécifiquement à l'aide de WebSockets. Le coordinateur transmet ensuite les frappes d'Alice à Bob et les frappes de Bob à Alice, sans avoir à passer par une couche de stockage. Lorsque Alice et Bob modifient simultanément le même contenu, le coordinateur résout instantanément les conflits. Le coordinateur peut alors assumer la responsabilité de mettre à jour le document dans le stockage, mais comme il conserve une copie en direct du document en mémoire, la réécriture dans le stockage peut se faire de manière asynchrone.</p>
+	<p>Chaque éditeur de documents collaboratif en temps réel de référence fonctionne de cette façon. Cependant, pour de nombreux développeurs web, et en particulier ceux qui s'appuient sur une infrastructure serverless, ce type de solution a longtemps été hors de portée. L'infrastructure serverless standard, et même l'infrastructure cloud plus généralement, ne facilite pas l'affectation de ces points de coordination et dirige les utilisateurs vers la même instance de votre serveur.</p>
+	<p>Les Objets durables facilitent cette tâche. Non seulement ils simplifient l'affectation d'un point de coordination, mais Cloudflare crée automatiquement le coordinateur à proximité des personnes qui l'utilisent et le migre au besoin, en réduisant ainsi la latence. La disponibilité d'un stockage local et durable signifie que les modifications apportées au document peuvent être sauvegardées de manière fiable en un instant, même si l'éventuel stockage à long terme est plus lent. Vous pouvez même stocker l'ensemble du document à la périphérie et abandonner complètement votre base de données.</p>
+	<p>Avec les Objets durables qui éliminent cet obstacle, nous espérons voir la collaboration en temps réel devenir la norme sur le web. Les utilisateurs n'ont plus à obtenir de mises à jour.</p>
+	<h3 id="exemple-un-compteur-atomique">Exemple : un compteur atomique</h3>
+	<p>Voici un exemple très simple d'Objet durable qui peut être incrémenté, décrémenté et lu via HTTP. Ce compteur est <em>cohérent</em> même lorsqu'il reçoit des requêtes simultanées de plusieurs clients : aucun des incréments ou décréments ne sera perdu. En même temps, les lectures sont entièrement fournies à partir de la mémoire, sans besoin d'accès à un disque.</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">export class Counter {
+  // Constructor called by the system when the object is needed to
+  // handle requests.
+  constructor(controller, env) {
+    // `controller.storage` is an interface to access the object's
+    // on-disk durable storage.
+    this.storage = controller.storage
+  }
+
+  // Private helper method called from fetch(), below.
+  async initialize() {
+    let stored = await this.storage.get("value");
+    this.value = stored || 0;
+  }
+
+  // Handle HTTP requests from clients.
+  //
+  // The system calls this method when an HTTP request is sent to
+  // the object. Note that these requests strictly come from other
+  // parts of your Worker, not from the public internet.
+  async fetch(request) {
+    // Make sure we're fully initialized from storage.
+    if (!this.initializePromise) {
+      this.initializePromise = this.initialize();
+    }
+    await this.initializePromise;
+
+    // Apply requested action.
+    let url = new URL(request.url);
+    switch (url.pathname) {
+      case "/increment":
+        ++this.value;
+        await this.storage.put("value", this.value);
+        break;
+      case "/decrement":
+        --this.value;
+        await this.storage.put("value", this.value);
+        break;
+      case "/":
+        // Just serve the current value. No storage calls needed!
+        break;
+      default:
+        return new Response("Not found", {status: 404});
+    }
+
+    // Return current value.
+    return new Response(this.value);
+  }
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Une fois que la classe a été liée à un espace de noms d'Objet durable, une instance particulière de compteur est accessible depuis n'importe où dans le monde en utilisant un code semblable au suivant :</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">// Derive the ID for the counter object named "my-counter".
+// This name is associated with exactly one instance in the
+// whole world.
+let id = COUNTER_NAMESPACE.idFromName("my-counter");
+
+// Send a request to it.
+let response = await COUNTER_NAMESPACE.get(id).fetch(request);
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h3 id="d-monstration-le-chat">Démonstration : le chat</h3>
+	<p>Le chat est sans doute la collaboration en temps réel dans sa forme la plus pure. À cette fin, nous avons créé une application de chat open source à titre de démonstration qui s'exécute entièrement à la périphérie à l'aide d'Objets durables.</p>
+	<!--kg-card-begin: html--><a href="https://edge-chat-demo.cloudflareworkers.com" style="display: block; background-color: #fec368; text-align: center; padding: 0.5em; text-decoration: underline; border: none; box-shadow: none; font-size: 150%; font-weight: bold; margin: 1em 0; color: #36393a" target="_blank">Essayer la démo en direct »</a>
+	<!--kg-card-end: html-->
+	<!--kg-card-begin: html--><a href="https://github.com/cloudflare/workers-chat-demo" style="display: block; background-color: #fec368; text-align: center; padding: 0.5em; text-decoration: underline; border: none; box-shadow: none; font-size: 150%; font-weight: bold; margin: 1em 0; color: #36393a" target="_blank">Voir le code source sur GitHub » »</a>
+	<!--kg-card-end: html-->
+	<p>Cette application de chat utilise un Objet durable pour contrôler chaque chatroom. Les utilisateurs se connectent à l'objet à l'aide de WebSockets. Les messages d'un utilisateur sont diffusés auprès de tous les autres utilisateurs. L'historique du chat est également stocké dans une mémoire durable, mais ce n'est qu'un détail. Les messages en temps réel sont relayés directement d'un utilisateur à l'autre sans passer par la couche de stockage.</p>
+	<p>En outre, cette démonstration utilise des Objets durables dans un deuxième but : appliquer une limite de débit aux messages provenant de toute adresse IP donnée. Chaque adresse IP se voit attribuer un Objet durable qui suit la fréquence des requêtes récentes, de sorte que les utilisateurs qui envoient trop de messages peuvent être temporairement bloqués, même dans plusieurs chatrooms. Il est intéressant de noter que ces objets ne stockent en fait aucun état durable, car ils ne s'intéressent qu'à l'historique très récent, et ce n'est pas grave si un limiteur de taux se réinitialise aléatoirement à l'occasion. Ainsi, ces objets limiteurs de taux sont un exemple d'objet de coordination pure sans stockage.</p>
+	<p>Cette application de chat ne comporte que quelques centaines de lignes de code. La configuration du déploiement consiste en quelques lignes seulement. Pourtant, elle s'adaptera sans problème à n'importe quel nombre de chatrooms, limité uniquement par les ressources disponibles de Cloudflare. Bien entendu, l'évolutivité de tout chatroom <em>individuel</em> a une limite, puisque chaque objet est mono-thread. Mais cette limite est bien supérieure à ce qu'un humain pourrait suivre de toute façon.</p>
+	<h3 id="autres-cas-d-utilisation">Autres cas d'utilisation</h3>
+	<p>Les Objets durables ont des utilisations infinies. En voici quelques unes, en plus de celles décrites ci-dessus :</p>
+	<ul>
+		<li>Panier : une boutique en ligne pourrait suivre le panier d'un utilisateur dans un objet. Le reste de la vitrine pourrait être utilisé comme un site web entièrement statique. Cloudflare hébergerait automatiquement l'objet panier à proximité de l'utilisateur final, ce qui réduirait la latence.</li>
+		<li>Serveur de jeu : un jeu multijoueur pourrait suivre l'état d'un match dans un objet, hébergé à la périphérie, près des joueurs.</li>
+		<li>Coordination de l'IdO : des appareils installés dans la maison d'une famille pourraient se coordonner grâce à un objet, évitant ainsi de devoir communiquer avec des serveurs distants.</li>
+		<li>Flux sociaux : chaque utilisateur pourrait être associé à un Objet durable qui rassemblerait ses abonnements.</li>
+		<li>Widgets de commentaires/chat : un site web qui est par ailleurs du contenu statique pourrait ajouter un widget de commentaires ou même de chat en direct pour des articles individuels. Chaque article utiliserait un Objet durable distinct à coordonner. De cette façon, le serveur d'origine pourrait se concentrer uniquement sur le contenu statique.</li>
+	</ul>
+	<h3 id="l-avenir-de-v-ritables-bases-de-donn-es-la-p-riph-rie">L'avenir : de véritables bases de données à la périphérie</h3>
+	<p>Nous considérons les Objets durables comme une conception primitive de bas niveau pour la construction de systèmes distribués. Certaines applications, comme celles mentionnées ci-dessus, peuvent utiliser des objets directement pour implémenter une couche de coordination, peut-être même comme leur seule couche de stockage.</p>
+	<p>Cependant, les Objets durables ne constituent pas aujourd'hui une solution de base de données complète. Chaque objet ne peut voir que ses propres données. Pour exécuter une requête ou une transaction sur plusieurs objets, l'application doit effectuer des opérations supplémentaires.</p>
+	<p>Cela dit, toute grande base de données distribuée (qu'elle soit relationnelle, documentaire, graphique, etc.) est, à un niveau plutôt bas, composée de « blocs » ou « segments » qui stockent une partie de l'ensemble des données. La tâche d'une base de données distribuée consiste à coordonner ces blocs.</p>
+	<p>Nous envisageons un futur où les bases de données périphériques stockeront chaque « bloc » en tant qu'Objet durable. Ce faisant, il sera possible de créer des bases de données fonctionnant entièrement à la périphérie, entièrement distribuées, sans région ni emplacement d'origine. Ces bases de données ne devront pas être construites par Cloudflare ; n'importe qui pourra les construire sur des Objets durables. Les Objets durables ne sont que la première étape du parcours vers le stockage à la périphérie.</p>
+	<h3 id="participez-la-version-b-ta">Participez à la version bêta</h3>
+	<p>Le stockage des données est une grande responsabilité que nous ne prenons pas à la légère. Étant donné qu'il est crucial de bien faire les choses, nous faisons preuve de prudence. Nous mettrons progressivement les Objets durables à votre disposition au cours des prochains mois.</p>
+	<p>Comme pour toute version bêta, ce produit est un travail en cours, et une partie de ce qui est décrit dans ce post n'est pas encore complètement activé. Tous les détails des limitations relatives à la version bêta sont disponibles dans la <a href="https://developers.cloudflare.com/workers/learning/using-durable-objects" target="_blank">documentation</a>.</p>
+	<p>Si vous souhaitez essayer les Objets durables maintenant, parlez-nous de votre cas d'utilisation. Nous allons sélectionner les cas d'utilisation les plus intéressants pour un accès anticipé.</p>
+	<!--kg-card-begin: html--><a href="https://www.cloudflare.com/cloudflare-workers-durable-objects-beta" style="display: block; background-color: #fec368; text-align: center; padding: 0.5em; text-decoration: underline; border: none; box-shadow: none; font-size: 150%; font-weight: bold; margin: 1em 0; color: #36393a" target="_blank">Demander une invitation au bêt »</a>
+	<!--kg-card-end: html-->
+	<h2 id="questions-r-ponses">Questions/réponses</h2>
+	<h3 id="les-objets-durables-peuvent-ils-tre-associ-s-des-websockets">Les Objets durables peuvent-ils être associés à des WebSockets ?</h3>
+	<p>Oui.</p>
+	<p>Dans le cadre de la version bêta des Objets durables, nous avons fait en sorte que Workers puissent agir en tant que points de terminaison de WebSockets, y compris en tant que clients ou serveurs. Auparavant, Workers pouvaient traiter en proxy les connexions WebSocket sur un serveur backend, mais ils n'arrivaient pas à parler directement le protocole.</p>
+	<p>Bien que tout Worker puisse techniquement parler le protocole WebSocket de cette manière, les WebSockets sont plus utiles lorsqu'ils sont combinés à des Objets durables. Lorsqu'un client se connecte à votre application à l'aide d'un WebSocket, il vous faut un moyen de renvoyer à la connexion par socket existante les événements générés par le serveur. Sans Objets durables, il est impossible d'envoyer un événement au Worker spécifique qui détient un WebSocket. Avec les Objets durables, vous pouvez désormais transférer le WebSocket vers un Objet. Les messages peuvent alors être adressés à cet Objet au moyen de son identifiant unique, et l'Objet peut ensuite transmettre ces messages au client via le WebSocket.</p>
+	<p>La démo de l'application de chat présentée ci-dessus utilise des WebSockets. <a href="https://github.com/cloudflare/workers-chat-demo" target="_blank">Étudiez le code source</a> pour voir comment cela fonctionne.</p>
+	<h3 id="comparaison-avec-workers-kv">Comparaison avec Workers KV</h3>
+	<p>Il y a deux ans, nous avons lancé Workers KV, un magasin de données de clés-valeurs mondial. KV est un magasin de données assez minimaliste qui répond bien certains objectifs, mais ne convient pas à tout le monde. KV est cohérent à terme, ce qui signifie que des écritures à un emplacement peuvent ne pas être visibles immédiatement à d'autres emplacements. De plus, il applique la sémantique LWW (dernière écriture prioritaire), ce qui signifie que si une seule clé est modifiée à partir de plusieurs emplacements dans le monde à la fois, il est facile pour ces écritures de s'écraser les unes les autres. Cette conception de KV permet de prendre en charge les lectures à faible latence pour les données qui ne changent pas fréquemment. Cependant, ces décisions de conception rendent KV inapproprié dans le cas d'un état changeant fréquemment, ou lorsque des changements doivent être immédiatement visibles dans le monde entier.</p>
+	<p>Les Objets durables, en revanche, ne sont pas essentiellement un produit de stockage : ils sont souvent utilisés à d'autres fins que l'utilisation d'un stockage durable. Dans la mesure où ils fournissent un stockage, les Objets durables se situent à l'extrémité opposée du spectre de stockage de KV. Ils sont extrêmement bien adaptés aux charges de travail nécessitant des garanties transactionnelles et une cohérence immédiate. Cependant, étant donné que les transactions doivent être coordonnées en un seul endroit, les clients situés de l'autre côté du monde par rapport à cet emplacement subiront une latence modérée en raison des limitations inhérentes à la vitesse de la lumière. Les Objets durables lutteront contre ce problème en migrant automatiquement pour se situer à proximité du lieu où ils sont utilisés.</p>
+	<p>En bref, Workers KV reste le meilleur moyen de fournir du contenu statique, une configuration et d'autres données qui changent rarement dans le monde entier, tandis que les Objets durables sont plus adaptés pour gérer l'état et la coordination dynamiques.</p>
+	<p>À l'avenir, nous prévoyons d'utiliser des Objets durables pour implémenter l'outil Workers KV lui-même, afin d'augmenter encore les performances.</p>
+	<h3 id="pourquoi-ne-pas-utiliser-les-crdt">Pourquoi ne pas utiliser les CRDT ?</h3>
+	<p>Vous pouvez construire un stockage reposant sur des CRDT en plus des Objets durables, mais les Objets durables ne vous obligent pas à utiliser de CRDT.</p>
+	<p>Les types de données répliqués sans conflit (CRDT) ou leurs cousines, les transformations opérationnelles (OT), sont une technologie qui permet de modifier simultanément des données à partir de plusieurs emplacements dans le monde, sans synchronisation ni perte de données. Par exemple, ces technologies sont couramment utilisées dans la mise en œuvre d'éditeurs de documents collaboratifs en temps réel, de sorte que les frappes d'un utilisateur sur son clavier peuvent apparaître dans sa copie locale du document en temps réel, sans attendre de voir si quelqu'un d'autre a édité une autre partie du document au préalable. Sans entrer dans les détails, vous pouvez considérer ces techniques comme une version en temps réel de « git fork » et « git merge », où tous les conflits de fusion sont résolus automatiquement de manière déterministe, de sorte que tout le monde obtient finalement le même état.</p>
+	<p>Les CRDT constituent une technologie puissante, mais les appliquer correctement peut s'avérer difficile. Seuls certains types de structures de données se prêtent à la résolution automatique des conflits d'une manière qui ne facilite pas la perte de données. Tout développeur connaissant bien git peut cerner le problème : la résolution arbitraire des conflits est difficile, et tout algorithme automatisé à cette fin risque parfois d'aboutir à un résultat faussé. Cette tâche se complique encore si l'algorithme doit gérer les fusions dans un ordre arbitraire et obtenir encore la même réponse.</p>
+	<p>Nous estimons que, pour la plupart des applications, les CRDT sont trop complexes et n'en valent pas la peine. Pire encore, l'ensemble de structures de données qui peut être représenté en tant que CRDT est trop limité pour de nombreuses applications. Il est généralement beaucoup plus facile d'attribuer un seul point de coordination faisant autorité pour chaque document, c'est exactement ce que les Objets durables accomplissent.</p>
+	<p>Cela dit, les CRDT peuvent être utilisés sur des Objets durables. Si l'état d'un objet se prête au traitement CRDT, une application pourrait répliquer cet objet en plusieurs objets desservant différentes régions, qui synchroniseraient ensuite leurs états via CRDT. Cela serait logique que les applications mettre en œuvre cette opération en tant qu'optimisation chaque fois qu'elles estiment que cela en vaut la peine.</p>
+	<h3 id="derni-res-r-flexions-que-signifie-pour-un-tat-d-tre-serverless-">Dernières réflexions : que signifie pour un état d'être « serverless » ?</h3>
+	<p>Le serverless se concentre traditionnellement sur le calcul sans état. Dans les architectures serverless, l'unité logique de calcul est réduite à quelque chose d'affiné : un seul événement, comme une requête HTTP. Cela fonctionne très bien parce que <em>les événements</em> sont tout simplement l'unité logique de travail à laquelle nous pensons lors de la conception d'applications de serveur. Personne ne pense à sa logique d'activité en unités de « serveurs » ou de « conteneurs » ou encore de « procédés » : nous pensons aux <em>événements</em>. C'est exactement à cause de cet alignement sémantique que le serverless réussit à déplacer la charge logistique de la maintenance des serveurs du développeur au fournisseur de cloud.</p>
+	<p>Cependant, <a href="https://www.cloudflare.com/learning/serverless/what-is-serverless/" target="_blank">l'architecture serverless</a> est traditionnellement sans état. Chaque événement s'exécute de manière isolée. Si vous vouliez stocker des données, vous deviez vous connecter à une base de données traditionnelle. Si vous vouliez coordonner les requêtes, vous deviez vous connecter à d'autres services qui offrent cette capacité. Ces services externes ont tendance à réintroduire les préoccupations opérationnelles que le serverless était destiné à éviter. Les développeurs et les opérateurs de service doivent s'occuper non seulement du passage à l'échelle de leurs bases de données pour gérer une charge croissante, mais aussi de les diviser en « régions » pour gérer efficacement le trafic mondial. Cette dernière préoccupation peut être particulièrement lourde.</p>
+	<p>Alors comment appliquer la philosophie du serverless à l'état ? Tout comme le calcul serverless consiste à diviser le calcul en parties affinées, l'état serverless consiste à diviser l'état en parties affinées. Là encore, nous cherchons à trouver une unité d'état qui corresponde aux unités logiques de notre application. L'unité logique d'état dans une application n'est pas une « table », une « collection » ou un « graphique ». Elle dépend plutôt de l'application. L'unité logique d'état dans une application de chat est un chatroom. L'unité logique d'état dans un éditeur de feuilles de calcul en ligne est un tableur. L'unité logique d'état dans une vitrine en ligne est un panier d'achat. En faisant correspondre l'unité <em>physique</em> de stockage fournie par la couche de stockage à l'unité <em>logique</em> d'état inhérente à l'application, nous pouvons permettre au fournisseur de stockage sous-jacent (Cloudflare) de prendre en charge un large éventail de préoccupations logistiques qui incombaient auparavant au développeur, y compris la scalabilité et la régionalité.</p>
+	<p>C'est ce que font les Objets durables.</p>
+</div>

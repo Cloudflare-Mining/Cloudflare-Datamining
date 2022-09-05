@@ -1,0 +1,97 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/10/Screen-Shot-2021-10-26-at-2.44.18-PM.png" class="kg-image"></figure>
+	<p>今天的 UTC 时间 15:51，我们打开一个标题为 “Facebook DNS 查询返回 SERVFAIL”的内部事件，因为我们担心自己的 DNS 解析服务 <a href="https://developers.cloudflare.com/warp-client/" target="_blank">1.1.1.1</a> 出了问题。但当我们准备在<a href="https://www.cloudflarestatus.com/" target="_blank">公共状态</a>页发布信息时，我们意识到还有更严重的事情在发生。</p>
+	<p>社交媒体迅速爆发，我们的工程师也迅速确认了所讨论的事情。事实上，Facebook 及其相关服务 WhatsApp 和 Instagram 已全部宕机。它们的 DNS 名称已停止解析，它们的基础设施 IP 无法访问。好像有人一下子从它们的数据中心“拔掉了电缆”，切断了它们与互联网的连接。</p>
+	<p>这并不是 DNS 本身的问题，但 DNS 故障是我们看到的一次 Facebook 更大规模宕机的第一个症状。</p>
+	<p>怎么可能发生这样的事情？</p>
+	<h3 id="-facebook-">来自 Facebook 的最新消息</h3>
+	<p>Facebook 现已<a href="https://engineering.fb.com/2021/10/04/networking-traffic/outage/" target="_blank">发布了一篇博客文章</a>，提供了一些内部所发生事情的细节。从外部来看，我们看到本博文中给出的 BGP 和 DNS 问题，但问题实际上始于一个配置更改，其影响了整个内部骨干网络。这最终发展成 Facebook 及其他服务消失，且内部员工难以将其恢复。</p>
+	<p>Facebook 发布了<a href="https://engineering.fb.com/2021/10/05/networking-traffic/outage-details/" target="_blank">另一篇博文</a>，更详细地说明了所发生的情况。您可以阅读该博文以了解内部观点，并将本博文作为外部观点。</p>
+	<p>如下为我们从外部看到的情况。</p>
+	<h3 id="-bgp">认识 BGP</h3>
+	<p><a href="https://www.cloudflare.com/zh-cn/learning/security/glossary/what-is-bgp/" target="_blank">BGP</a> 表示边界网关协议。这是在互联网上的自治系统（AS）之间交换路由信息的一种机制。使互联网正常工作的大型路由器有大量不断更新的可能路由列表，用于将每个网络数据包发送到最终目的地。如果没有 BGP，互联网路由器就不知道该做什么，互联网也就无法运作。</p>
+	<p>互联网实际上就是一个网络组成的网络，它是通过 BGP 绑定在一起的。BGP 让某个网络（如 Facebook）向其他组成互联网的网络公告自己的存在。在我们写这篇博文时，Facebook 没有公告其存在，ISP 和其他网络无法找到 Facebook 的网络，导致其不可访问。</p>
+	<p>每个独立的网络都有一个 ASN：自治系统号。自治系统（AS）是一个具有统一内部路由策略的独立网络。AS 可以产生前缀（假设它们控制一组 IP 地址），也可以传输前缀（假设它们知道如何到达特定的 IP 地址组）。</p>
+	<p>Cloudflare 的 ASN 是 <a href="https://www.peeringdb.com/asn/13335" target="_blank">AS13335</a>。每个 ASN 都需要使用 BGP 向互联网公告其前缀；否则无人会知道如何连接，不知道到哪里找到我们。</p>
+	<p>我们<a href="https://www.cloudflare.com/zh-cn/learning/" target="_blank">学习中心</a>很好地概述了 <a href="https://www.cloudflare.com/zh-cn/learning/security/glossary/what-is-bgp/" target="_blank">BGP</a> 和 <a href="https://www.cloudflare.com/zh-cn/learning/network-layer/what-is-an-autonomous-system/" target="_blank">ASN</a> 的定义及其工作原理。</p>
+	<p>在这个简化的图中，可以看到互联网上的 6 个自治系统和两个可能的路由（数据包的传输途径）。AS1 → AS2 → AS3 速度最快，AS1 → AS6 → AS5 → AS4 → AS3 速度最慢，但可在第一个路由失败时使用。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/10/image5-10-1.png" class="kg-image"></figure>
+	<p>在 UTC 15:58，我们注意到 Facebook 已停止公告对其路由的前缀。那意味着，至少 Facebook 的 DNS 服务器是不可用的。因此，Cloudflare 的 1.1.1.1 DNS 解析器不再响应查询 facebook.com IP 地址的请求。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>route-views&gt;show ip bgp 185.89.218.0/23
+% Network not in table
+route-views&gt;
+
+route-views&gt;show ip bgp 129.134.30.0/23
+% Network not in table
+route-views&gt;
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>同时，其他 Facebook IP 地址依然被路由，但并不是特别有用，因为在没有 DNS 的情况下，Facebook 及相关服务实际上是无法访问的：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>route-views&gt;show ip bgp 129.134.30.0   
+BGP routing table entry for 129.134.0.0/17, version 1025798334
+Paths: (24 available, best #14, table default)
+  Not advertised to any peer
+  Refresh Epoch 2
+  3303 6453 32934
+    217.192.89.50 from 217.192.89.50 (138.187.128.158)
+      Origin IGP, localpref 100, valid, external
+      Community: 3303:1004 3303:1006 3303:3075 6453:3000 6453:3400 6453:3402
+      path 7FE1408ED9C8 RPKI State not found
+      rx pathid: 0, tx pathid: 0
+  Refresh Epoch 1
+route-views&gt;
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>我们跟踪在我们全球网络中看到的所有 BGP 更新和公告。鉴于我们的规模，我们收集的数据让我们了解到互联网是如何连接的，在世界任何地方的流量应从何处发出并前往何处。</p>
+	<p>BGP UPDATE 消息通知路由器您对前缀进行的任何更改，或者完全撤销该前缀。在检查我们的时间序列 BGP 数据库时，我们从 Facebook 收到的更新数量中可以清楚这种情况。通常这个表是相当平静的：Facebook 不会每一分钟都对其网络进行大量更改。</p>
+	<p>但在 UTC 时间 15:40 左右，我们看到来自 Facebook 的路由更改达到峰值。那就是问题开始的时候。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/10/image4-11-1.png" class="kg-image"></figure>
+	<p>如果分别看路由公告和撤销，我们就能更好地了解发生了什么。路由被撤销，Facebook 的 DNS 服务器下线，问题发生后一分钟，Cloudflare 的工程师已经在困惑为何 1.1.1.1 无法解析 facebook.com，并担心是否我们的系统发生了某种故障。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/10/image3-9-1.png" class="kg-image"></figure>
+	<p>受路由撤销影响，Facebook 及其网站实际上已经切断了自己与互联网的连接。</p>
+	<h3 id="dns-">DNS 受到影响</h3>
+	<p>作为直接后果，世界各地的所有 DNS 解析器都停止解析它们的域名。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>➜  ~ dig @1.1.1.1 facebook.com
+;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: SERVFAIL, id: 31322
+;facebook.com.			IN	A
+➜  ~ dig @1.1.1.1 whatsapp.com
+;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: SERVFAIL, id: 31322
+;whatsapp.com.			IN	A
+➜  ~ dig @8.8.8.8 facebook.com
+;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: SERVFAIL, id: 31322
+;facebook.com.			IN	A
+➜  ~ dig @8.8.8.8 whatsapp.com
+;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: SERVFAIL, id: 31322
+;whatsapp.com.			IN	A
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>这是因为，和互联网的其他很多系统一样，DNS 也有它的路由机制。当有人在浏览器中输入 <a href="https://facebook.com/" target="_blank">https://facebook.com</a> 的 URL 时，DNS 解析器（负责将域名转换为实际要连接到的 IP 地址）首先检查其缓存中是否有内容并使用。如无，它会尝试从域名服务器中获取答案，后者通常由拥有它的实体托管。</p>
+	<p>如果名称服务器无法访问或因为其他原因而没有响应，则返回 SERVFAIL，浏览器向用户发出一个错误提示。</p>
+	<p>我们的学习中心也<a href="https://www.cloudflare.com/zh-cn/learning/dns/what-is-dns/" target="_blank">详细地解释</a>了 DNS 的工作原理。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/10/image8-8-1.png" class="kg-image"></figure>
+	<p>由于 Facebook 停止通过 BGP 公告其 DNS 前缀，我们及其他所有人的 DNS 解析器无法连接到它们的名称服务器。结果是，1.1.1.1、8.8.8.8 和其他主要的公共 DNS 解析器都开始发布（或缓存）SERVFAIL 响应。</p>
+	<p>但这还不是全部。现在人类行为和应用程序逻辑开始发挥作用，导致另一个指数级增长的效应。更多 DNS 流量海啸般接踵而来。</p>
+	<p>发生这种情况的一个原因是，应用程序不接受错误这个答案并开始重试，有时会十分积极，这是因为最终用户也不接受错误这个答案并开始刷新页面，或退出并重启其应用程序，有时也十分积极。</p>
+	<p>这就是我们在 1.1.1.1 上看到的流量（请求数）上升：</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/10/image6-9-1.png" class="kg-image"></figure>
+	<p>因此，由于 Facebook 和它们的网站规模巨大，我们在世界各地的 DNS 解析器处理的请求数都相当于平时的 30 倍，从而可能给其他平台造成延迟和超时问题。</p>
+	<p>幸运的是，1.1.1.1 是免费、私密、快速的（独立 DNS 监测工具 <a href="https://www.dnsperf.com/#!dns-resolvers" target="_blank">DNSPerf </a>可证明这一点）和可扩展的，因此我们受到的影响非常小，能够继续服务我们的用户。</p>
+	<p>我们绝大部分 DNS 请求都在 10 毫秒内得到解析。同时，极小部分的 p95 和 p99 百分位响应时间有所增加，可能是因为过期的 TTL 不得不求助于 Facebook 名称服务器并超时。10 秒 DNS 超时在工程师中是众所周知的。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/10/image2-11-1.png" class="kg-image"></figure>
+	<h3 id="-">影响到其他服务</h3>
+	<p>人们寻找其他选择，并想知道更多或讨论正在发生的事情。当 Facebook 开始无法访问时，我们开始看到对 Twitter、Signal 和其他消息和社交媒体平台的 DNS 查询增加。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/10/image1-12-1.png" class="kg-image"></figure>
+	<p>我们还看到，我们的 WARP 流量往返 Facebook 受影响的 ASN 32934 的不可达性带来的另一个副作用。此图显示 UTC 15:45 至 16:45 之间每个国家的流量与三个小时前的对比。在全球范围内，往返 Facebook 网络的 WARP 流量完全消失了。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/10/image7-6-1.png" class="kg-image"></figure>
+	<h3 id="--1">互联网</h3>
+	<p>今天的事件提醒我们，互联网是一个非常复杂且相互依赖的系统，包含数以百万计的系统，通过各种协议协调工作。各个实体之间的信任、标准化和合作是互联网能为全球近 50 亿活跃用户服务的核心。</p>
+	<h3 id="--2">更新</h3>
+	<p>在 UTC 21:00 左右，我们看到来自 Facebook 网络的 BGP 活动再次出现，并在 UTC 21:17 达到峰值。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/10/unnamed-3-3-1.png" class="kg-image"></figure>
+	<p>此图显示 DNS 名称 ‘facebook.com’ 在Cloudflare DNS 解析器 1.1.1.1.上的可用性。它在 UTC 15:50 左右变成不可用，并在 UTC 21:20 恢复。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/10/unnamed-4-1.png" class="kg-image"></figure>
+	<p>毫无疑问，Facebook、WhatsApp 和 Instagram 服务将需要更长时间才能上线，但在 UTC 21:28，Facebook 看来已重新连接到全球互联网，DNS 再次工作。</p>
+</div>

@@ -1,0 +1,42 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/1-12.png" class="kg-image" alt="Protecting Cloudflare Customers from BGP Insecurity with Route Leak Detection"></figure>
+	<p>ボーダーゲートウェイプロトコル（BGP）ルートのリークやハイジャックは、大変な事態を招く恐れがあります。BGPは<a href="https://blog.cloudflare.com/ja-jp/is-bgp-safe-yet-rpki-routing-security-initiative-ja-jp/">設計上安全ではなく</a>、インターネット全体に広がる誤ったルーティング情報は、顧客ネットワークやインターネット全体の正常な機能にとって非常に破壊的で危険な場合があります。本日、Cloudflareにオンボーディングされている所有するプレフィックスがリークされたとき、つまり許可されていない第三者によってアドバタイズされたときに顧客に通知する新しいネットワークアラート機能であるルートリーク検出（Route Leak Detection）を発表いたします。ルートリーク検出は、インターネット上のルートを保護するのに役立ち、トラフィックが行くべきではない場所に行こうとしている際に攻撃の可能性があることを知らせ、タイムリーな情報を提供することで、リークを軽減するまでの時間を短縮します。</p>
+	<p>この記事では、ルートリークとは何か、Cloudflareのルートリーク検出がどのように機能するか、そしてインターネットをルートリークから保護するために私たちの取り組みについて説明します。</p>
+	<h2 id="-">ルートリークとは何ですか？なぜ気にする必要がありますか？</h2>
+	<p>ルートリークは、インターネットに接続されているネットワークに世界中のトラフィックをルーティングするように仕向け、本来行くはずのないトラフィックが大量に入ってしまう事態を引き起こします。この<a href="https://blog.cloudflare.com/ja-jp/how-verizon-and-a-bgp-optimizer-knocked-large-parts-of-the-internet-offline-today-ja-jp/">良い例</a>とそれが引き起こす可能性のある影響は、2019年6月の事件で、ペンシルベニア州の小さなISPが、Cloudflare、Amazon、Linodeなどのインターネットの一部のルートのアドバタイズを開始しました。これらのネットワーク宛てのトラフィックの大部分がそのネットワークに誤ってルーティングされ、Cloudflare、Amazon、Linodeのプレフィックスがリークし、エンドユーザーに輻輳と到達不能なネットワークエラーが発生しました。ルートリークは、ピアリングセッションまたはカスタマールーターの設定ミス、カスタマーまたはサードパーティルーターのソフトウェアバグ、中間者攻撃、または悪意のあるカスタマーまたはサードパーティが原因で発生する傾向があります。</p>
+	<p>一部のルートリークは無害ですが、一部のルートリークは悪意のあるものであり、セキュリティに非常に大きな影響を与える可能性があります。攻撃者は、<a href="https://blog.cloudflare.com/bgp-leaks-and-crypto-currencies/">暗号通貨</a>やその他の重要なデータを盗むなどのことを行うためにユーザーをネットワークに誘導するという明確な目的のために特定のルートをアドバタイズしたり、ドメインの偽装に使用できるSSL / TLS証明書を発行しようとしたりする可能性があります。攻撃者は、より具体的なルートを宣伝することで、意図しないサイトにアクセスするように仕向けることができます。意図したサイトとまったく同じように見える場合は、無意識のうちに個人データを入力して攻撃の危険にさらされる可能性があります。ルートリークのないトラフィックを表す図は次のとおりです。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/2-7.png" class="kg-image" alt="Here’s a diagram representing traffic without a route leak"></figure>
+	<p>こちらはルートリークのあるトラフィックです。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/3-3.png" class="kg-image" alt="And here’s traffic after a route leak"></figure>
+	<p>したがって、多くのインターネットトラフィックがそれを処理できないパスを通過しているため、ユーザーを不満にさせるだけでなく、ルートリークは実際のデータリークにつながる可能性があります。</p>
+	<p>Cloudflareのルートリーク検出を使用すると、ルートがリークしているときにすばやく通知を受け取ることができるため、潜在的な攻撃がいつ発生しているかを知ることができます。</p>
+	<h2 id="cloudflare-">Cloudflareのルートリーク検出はどのようにネットワークを保護しますか？</h2>
+	<h3 id="--1">ルートリーク検出の設定方法</h3>
+	<p>ルートリーク検出を構成するには、<a href="https://developers.cloudflare.com/byoip/" target="_blank">「独自のIPを使用する」（BYOIP）</a>アドレスを持っているCloudflareの顧客である必要があります。これには、Magic Transit（L3）、Spectrum（L4）、およびWAF（ L7）顧客が含まれます。 Cloudflareによってアドバタイズされたプレフィックスのみがルートリーク検出の対象となります。</p>
+	<p>ルートリーク検出の構成は、アカウントの[通知]タブでメッセージを設定することで実行できます。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/4.png" class="kg-image" alt="Configuring Route Leak Detection can be done by setting up a message in the Notifications tab in your account."></figure>
+	<p>そうすると、Cloudflareは、オンボーディングされたすべてのプレフィックスのリークとハイジャックの監視を開始し、それらが発生した場合に<a href="https://support.cloudflare.com/hc/en-us/articles/360047358211-Connecting-PagerDuty-to-Cloudflare" target="_blank">電子メール、またはPagerDutyなどの専用通話ツール</a>にアラートを送信します。</p>
+	<p>Cloudflareのアラート通知システムはWebhook、メール、PagerDutyをサポートしているため、チームはネットワークルートの変更に応じて目的のメディア全体で最新の状態に保たれ、必要に応じて対応して修正措置を講じることができます。</p>
+	<h3 id="--2">攻撃シナリオの例</h3>
+	<p>悪意のある第三者がルートを使用して顧客データにアクセスしようとすると、Magic Transit カスタマーの 1 人のオンボードプレフィックスのサブネットをアドバタイズし始めます。この攻撃を迅速に発見および修復しない場合、お客様に重大な影響を与える可能性があります。攻撃者が顧客の知らないうちにプレフィックスのアドバタイズを開始すると、BGPの更新とルートの変更がグローバルルーティングテーブルで急速に発生し始めます（通常は60秒以内）。</p>
+	<p>顧客がルートリーク検出を導入する方法について見てみましょう。カスタマー Acme Corp. は、IP プレフィクス 203.0.113.0/24 を所有しています。AcmeはCloudflareに203.0.113.0/24をオンボードしており、CloudflareはこのプレフィックスがCloudflareのネットワークを介して到達可能であることをインターネットに発信します。</p>
+	<p>Acme がルートリーク検出を有効にすると、Cloudflare は 203.0.113.0/24 のルーティング情報を継続的に監視します。私たちの目標は、インターネット上に伝播する誤ったルーティング情報からリークを 5 分以内に検出することです。</p>
+	<p>攻撃シナリオに戻りましょう。Acme のネットワークを攻撃しようとする悪意のある当事者はアドバタイズされている203.0.113.0/24 を乗っ取り、正当なユーザーをAcmeへのネットワークパス（Cloudflareのネットワーク）から、ユーザーから情報をだまし取るための複製ネットワークに迂回させます。</p>
+	<p>Acme はルートリーク検出を有効にしているため、Acme の管理者にアラートが送信されます。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/5.png" class="kg-image" alt="Because Acme has enabled Route Leak Detection, an alert is sent to Acme’s administrators."></figure>
+	<p>アラートには、潜在的に悪意のあるパーティによってアドバタイズされているプレフィクスを確認しているすべての ASN が含まれます。Acme は、データ侵入攻撃の危険性があり、疑わしい動作に目を光らせる必要があることをユーザーに警告することができます。</p>
+	<p>また、Acme は、アラートに記載されているサービスプロバイダーにすばやく連絡して、小さいルートの使用を停止することもできます。現在、ルートリークを軽減するプロセスは、非常に手動のプロセスであり、<a href="https://www.peeringdb.com/" target="_blank">公開されている情報</a>を使用してサービスプロバイダーに直接連絡する必要があります。将来的には、このアウトリーチと軽減プロセスを自動化するための機能を構築し、お客様に影響を与える可能性のあるルートリークイベントの軽減までの時間をさらに短縮する予定です。</p>
+	<h2 id="cloudflare--1">Cloudflareのリーク検出はどのようにルートリークを検出しますか？</h2>
+	<p>Cloudflareはルーティングデータのいくつかのソースを使用して、インターネットからBYOIP顧客へのルートがどのように見られているかを合成します。Cloudflareは、インターネット上で発生した突然の変化を追跡するために、これらのビューを監視します。これらの変更を私たちが取った行動と関連付けることができれば、問題がないことがわかります。ただし、こちらの行動と関係ない場合は、お客様のルートとユーザーが危険にさらされている可能性があることを通知する措置を迅速に行います。</p>
+	<h3 id="cloudflare--2">Cloudflareの外部からの取り込みパイプライン</h3>
+	<p>Cloudflareの主なデータソースは、<a href="https://ris-live.ripe.net/" target="_blank">RIPEのRISフィード</a>、<a href="http://www.routeviews.org/" target="_blank">RouteViews</a>、<a href="https://bgpstream.caida.org/data#!caida-bmp" target="_blank">CaidaのパブリックBMPフィード</a>などの外部で管理されているリポジトリによるのものです。インターネットの状態を推測するときは、インターネットルーティングテーブルの複数の外部ビューを使用して、できるだけ正確にすることが重要です。 CloudflareはこれらのソースにAPI呼び出しを行い、データを取り込んでBGPルートの変更を分析します。これらのフィードを使用すると、インターネット全体のルーティングデータを取り込むことができます。 Cloudflareは、以前にCloudflareにオンボーディングしたプレフィックスまですべてをフィルタリングします。</p>
+	<p>このデータが取り込まれてフィルタリングされると、Cloudflareは、ルートを直接表示するASNの数、短期間に発生するBGP更新の数、アドバタイズされているサブネットの数など、ハイジャックの可能性を示すメトリックを使用して、グローバルルーティングテーブルへの更新の相互参照を開始します。ルートを直接確認するASNの数または更新の数が大幅に変化する場合は、プレフィックスがリークされている可能性があります。アドバタイズしているプレフィックスのサブネットでグローバルルーティングテーブルに大幅な変更が見られる場合は、プレフィックスがどこかでリークされている可能性があります。</p>
+	<p>Cloudflareは、すでにこれを独自のプレフィックスで構成しています。これは、システムが何かが異常があると判断したときに表示される例です。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/6.png" class="kg-image" alt="Cloudflare already has this configured on our own prefixes today. Here’s an example of what we see when our system determines that something is wrong:"></figure>
+	<p>Cloudflareは、<a href="https://www.cloudflare.com/ja-jp/ips/" target="_blank">ここのサイトにリストされている</a>範囲の1つのサブネットであるため、プレフィックス範囲2606：4700：50 :: / 44を所有しています。 1時間の間、誰かがその範囲のサブネットを他の38のネットワークにアドバタイズしようとしていることに気づきました。幸い、<a href="https://blog.cloudflare.com/rpki-details/">RPKIを導入</a>しているため、ほとんどのネットワークは、攻撃者からのこれらのルートアドバタイズメントを尊重するのではなく、拒否することがわかっています。</p>
+	<h2 id="--3">将来、ルートリークを防ぐために何ができますか？</h2>
+	<p>ルートリークを防ぐ最善の方法は、<a href="https://blog.cloudflare.com/rpki-details/">RPKI</a>をネットワークに展開し &nbsp;、インターネットプロバイダーにもそうするように促すことです。RPKI を使用すると、インターネットにアドバタイズしたルートをあなたとあなたのプロバイダーが署名できるため、他の誰も盗むことはできません。誰かが RPKI ルートをアドバタイズしている場合、RPKI をサポートするプロバイダーは、それらのルートを他のカスタマーに転送しません。これにより、試行されたリークが攻撃者の近くに留まらせることが保証されます。</p>
+	<p>CloudflareのRPKIに対する<a href="https://isbgpsafeyet.com/" target="_blank">継続的な支持</a>は、過去3か月だけでも成果を上げています。 Amazon、Google、Telstra、Cogent、さらにはNetflixなどのプロバイダーがRPKIのサポートを開始し、無効なプレフィックスをフィルタリングして削除しています。実際、上位のインターネットプロバイダーの50％以上が、何らかの方法でRPKIをサポートしています。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/04/7.png" class="kg-image" alt="In fact, over 50% of the top Internet providers now support RPKI in some fashion:"></figure>
+	<p>Cloudflareのルートリーク検出とRPKIを実装するより多くのプロバイダーを組み合わせることで、データ損失とルートリークによるダウンタイムが過去のものになるでしょう。Cloudflare Magic Transit または BYOIP カスタマーの場合は、ダッシュでルートリークアラートを設定してみてください。Magic TransitまたはBYOIPのお客様でない場合は、<a href="https://www.cloudflare.com/ja-jp/plans/enterprise/contact/" target="_blank">当社の営業チームに連絡して</a>、お客様のネットワークを安全に保つためのプロセスを開始してください。</p>
+</div>

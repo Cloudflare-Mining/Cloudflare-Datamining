@@ -1,0 +1,53 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image1-32.png" class="kg-image" alt="Why Cloudflare Bought Zaraz"></figure>
+	<p>今天，我们隆重宣布 Cloudflare 已收购 Zaraz。Zaraz 的价值主张与 Cloudflare 的使命一致。他们旨在使 Web 更安全、更可靠、更快速。他们的解决方案是在 Cloudflare Workers 上构建的。换言之，我们当时没有多想就邀请他们加入了我们的团队。</p>
+	<h3 id="-"><strong>小心倒垃圾的人</strong></h3>
+	<p>要了解 Zaraz 的价值主张，您需要先弄清楚大多数网站所面临而人们并没有给予足够关注的一个最大的风险。为了帮您理解这一点，让我打一个比方。</p>
+	<p>设想您经营一家企业。设想这家企业是一个药店。您雇了一些员工。他们有自己的做事过程和方式。他们有工作合同，而且您在雇用他们前进行了背景调查。他们工作优秀，因此您很信任他们。然而，有一天，您发现没人去倒垃圾。因此，您要求您的团队找人定期去倒垃圾。</p>
+	<p>您的团队很忙，谁都没时间在日常工作外处理这项工作。这时，有位勇敢的员工想到了一个办法。他在大街上叫住了一个陌生人。“嗨”，您的员工和这个陌生人打招呼。“我每天都看到你从这儿走过。你能不能每次顺便帮我把垃圾倒掉？"</p>
+	<p>“好吧”，陌生人说道。“真的吗？！”</p>
+	<p>“太好了”，您的员工说道。“这是能帮你进入大楼的通行证。垃圾桶在药店安全区域的后面，但是，不用担心，你只要使用通行证，就可以走到那里。你看起来很可靠。这真是一个好办法！！”</p>
+	<p>在一段时间里，确实如此。陌生人每天都会路过这里。倒掉垃圾。做的和想的一样好。没人再去想倒垃圾这件事。</p>
+	<p>但是，有一天，您进入药店后发现药店被抢了。药品被盗窃一空，患者记录也丢了。记录表明，有人使用陌生人的通行证进入了药店。您找到了那个陌生人，他却说：“嘿，这很糟糕，但不是我干的。因为前阵子我不是天天经过药店，就把这个倒垃圾的责任交给别人了。”</p>
+	<p>而且，您永远找不到那个利用特殊权限背信弃义的人。</p>
+	<h3 id="--1"><strong>进入王国的钥匙</strong></h3>
+	<p>当然，这很疯狂。没有人会在街上随便找个陌生人，就让他们进入自己的实体店。然而，在虚拟世界中，这种情况一直都在发生。</p>
+	<p>前端开发人员、营销人员甚至安全团队每一天都在他们的网页中直接嵌入第三方脚本。这些脚本会执行各种基本任务 — 就相当于倒垃圾。如果执行得当，这些脚本将很有价值，可为网站增添高级功能，帮助跟踪营销侵权行为，提供分析或阻止欺诈。但是，如果其执行不当，就会造成重大问题，甚至窃取数据。</p>
+	<p>在最常见的情况下，配置不良的脚本会降低渲染页面的速度。虽然有些方法能使脚本运行顺畅，但事实并非如此，很多开发者并没有去遵循最佳做法。当网站速度变慢时，通常最大的原因就是其被嵌入了第三方脚本。</p>
+	<p>但情况可能更糟。非常糟。在 Cloudflare，我们已经亲眼目睹了这一情况。早在 2019 年，有一名黑客破坏了 Cloudflare 使用的第三方服务，并修改了加载到 cloudflare.com 上一个页面的第三方 JavaScript。他们的目标是窃取登录 cookie、用户名和密码。他们甚至自行创建了可自动填写的用户名和密码字段。</p>
+	<p>以下是其实际注入的代码片段：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>        var cf_form = document.createElement("form");
+        cf_form.style.display = "none";
+        document.body.appendChild(cf_form);
+        var cf_email = document.createElement("input");
+        cf_email.setAttribute("type", "text");
+        cf_email.setAttribute("name", "email");
+        cf_email.setAttribute("autocomplete", "username");
+        cf_email.setAttribute("id", "_email_");
+        cf_email.style.display = "none";
+        cf_form.appendChild(cf_email);
+        var cf_password = document.createElement("input");
+        cf_password.setAttribute("type", "password");
+        cf_password.setAttribute("name", "password");
+        cf_password.setAttribute("autocomplete", "current-password");
+        cf_password.setAttribute("id", "_password_");
+        cf_password.style.display = "none";
+        cf_form.appendChild(cf_password);
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>幸运的是，安全团队很快就发现了这次攻击，因此造成的损失很小，但这也凸显了第三方 JavaScript 非常真实的危险。为什么用来计算点击次数的代码甚至能去创建密码字段？</p>
+	<p>简单地说，第三方 JavaScript 是网络安全的噩梦。看似简单的一行改动（“只是添加这个 JavaScript 以便免费进行页面浏览跟踪！”）就能为您根本无法控制的恶意代码打开一扇门。</p>
+	<p>而更糟糕的是，第三方 JavaScript 可能乃至必定加载了其他未知方的 JavaScript。即使您信任您自己选择嵌入其代码的公司，但也可能不会信任（或甚至不清楚）他们选择包含的内容。</p>
+	<p>而且更糟糕的是，这些脚本可能会随时改变。安全威胁可能随时都会出现。瞄准 Cloudflare 的攻击者先入侵第三方并对其服务进行修改，以便仅攻击 Cloudflare，并加入反调试功能，设法阻止开发人员发现非法侵入。如果您是 CIO，而且这还没有让您感到不寒而栗，您可以去问一下您的网络开发团队，在您的网站上有多少第三方脚本。您是否能相信所有的第三方脚本？</p>
+	<p>添加第三方脚本来处理简单任务的做法相当于从街上随便拉一个陌生人，使其有权进入您的办公室，并要求其每天都过来倒一次垃圾。这在现实世界中是很疯狂的举动，但在网络开发中却很常见。</p>
+	<h3 id="--2"><strong>对陌生人进行沙盒化管理</strong></h3>
+	<p>在 Cloudflare，我们的解决方案非常严格。我们要求剥离网站中的所有第三方脚本。这涉及到 Cloudflare 的不同团队。特别是我们的营销团队，该团队使用这些脚本来评估其开展的活动是否成功。但我们做出决定，保护我们服务的完整性比对营销活动等事项的可见性更为重要。</p>
+	<p>就在这个时候，我们遇到了 Zaraz 背后的团队。他们认为不需要做出这么极端的选择。相反，如果能严格控制页面中插入脚本的功能，是不是会更好？确保脚本若遭到破坏，就无权访问任何未授权查看的内容。确保脚本若出错或变慢，不会影响页面呈现。</p>
+	<p>我们花费了过去半年时间来测试 Zaraz，效果好得就像魔法一般。它让您充分利用灵活、可扩展的 Web，同时确保 CIO 和 CISO 可以高枕无忧，因为即使第三方脚本提供商遭到破坏，也不会造成安全事件。</p>
+	<p>坦白地说，假如当初 Cloudflare 运行的是 Zaraz，2019 年因脚本遭到破坏所带来的威胁就会完全、自行被消除。攻击者根本没有办法创建那些用户名和密码字段，也无法访问用户浏览器中存储的 Cookie。攻击面就会被彻底抹除。</p>
+	<p>我们今天发布了另外两篇帖子，概述了 Zaraz 的工作方式，并举例说明各个公司如何使用它来确保其 Web 业务安全、可靠、快速。我们会立即向我们的 Enterprise 客户提供 Zaraz，并且其他所有客户从今天开始都可以在其<a href="https://dash.cloudflare.com/?to=/:account/:zone/zaraz" target="_blank">仪表板</a>上访问免费的测试版。</p>
+	<p>如果您是第三方脚本开发人员，请注意，如果您没有恰当地确保您的脚本安全，那么随着 Zaraz 在 Web 的更多地方实施，您的脚本将无法正常发挥作用。如今，Cloudflare 为全世界接近 20% 的网站充当保护屏障，不久之后，我们预计 Zaraz 的技术将帮助保护所有网站。我们想要确保在我们客户的站点上运行的所有脚本都满足现代安全性、可靠性和性能标准。如果您需要帮助以实现这些标准，请联系我们，我们随时乐意效劳：<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="9ce6fdeefde6dcfff0f3e9f8faf0fdeef9b2fff3f1">[email&nbsp;protected]</a>。</p>
+	<p>与此同时，我们鼓励您阅读 Zaraz 技术的工作方式，并了解诸如 Instacart 之类的客户如何使用它来构建更好的 Web 业务。</p>
+	<p>有了 Zaraz 的协助，Cloudflare 如虎添翼，将更好地完成构筑更美好互联网的使命。欢迎加入团队。与此同时：我们也想欢迎您使用 Zaraz！我们很高兴地推荐您亲自体验这项让 Web 更美好的技术。<br></p>
+</div>

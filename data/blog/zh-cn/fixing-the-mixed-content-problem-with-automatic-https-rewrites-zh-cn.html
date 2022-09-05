@@ -1,0 +1,81 @@
+<div class="post-content lh-copy gray1">
+	<p>CloudFlare旨在终结未加密的互联网。但我们在网络上一谈论到HTTPS就会面临一个先有鸡还是先有蛋的问题。</p>
+	<p>很久以前，建立支持HTTPS的网站很困难，昂贵且速度慢。后来出现了像CloudFlare的<a href="https://blog.cloudflare.com/introducing-universal-ssl/">Universal SSL</a>这样的服务，它使得从http：//切换到https：//就像点击按钮一样简单。只需点击一下网址，就可以通过HTTPS提供一个新建的免费SSL证书。</p>
+	<p>Boom</p>
+	<p>一下子，该网站可以通过HTTPS，更好的是，网站变得更快了，因为它可以使用最新的Web协议<a href="https://www.cloudflare.com/http2/" target="_blank">HTTP / 2</a>。</p>
+	<p>不幸的是，故事并没有就此结束。许多其他安全站点都存在混合内容的问题。混合内容意味着https：//网站不会显示绿色挂锁图标，因为它并不是真正安全的。</p>
+	<p>问题在于：如果https：//网站包含来自http：//网站（甚至是自己的）提供的任何内容，则绿色挂锁无法显示。这是因为http：//上包含的图像，JavaScript，音频，视频等资源成为了安全网站的安全漏洞。它们将带来故障。</p>
+	<p>Web浏览器很久前就已经意识到这一问题。早在1997年，Internet Explorer 3.0.2就已通过以下对话框警告用户这些具有混合内容的网站。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/07/IC310968.gif" class="kg-image"></figure>
+	<p></p>
+	<p>现在，谷歌浏览器会在任何具有不安全内容的https：//上显示带圆圈的i。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/07/Screen-Shot-2016-09-22-at-11.22.08.png" class="kg-image"></figure>
+	<p></p>
+	<p>Firefox对此会显示带有警告符号的挂锁。若要从这些浏览器中获取绿色挂锁，则每个子资源（页面加载的资源）都需要通过HTTPS提供。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/07/Screen-Shot-2016-09-22-at-11.23.45.png" class="kg-image"></figure>
+	<p></p>
+	<p>在1997年，如果你点击了Yes，那么Internet Explorer就会忽略混合内容的不安全性，并继续使用明文HTTP加载子资源。单击“否”会阻止加载它们（这通常会导致网页损坏，但确保了网页安全）。</p>
+	<h2 id="-">过渡到完全安全的内容</h2>
+	<p>你可能会以为混合内容的问题很容易解决：“只需使用https：//加载所有内容，然后就能修复您的网站。” 这种想法很诱人，但是很天真。然而，从第一方和第三方网站加载到现代网站的内容大杂烩使得这种改变很难“简单”实现。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/07/14127169401_54ca5e9c1f_z.jpg" class="kg-image">
+		<figcaption>由<a href="https://www.flickr.com/photos/jeepersmedia/" target="_blank">Mike Mozart </a><a href="https://www.flickr.com/photos/jeepersmedia/14127169401/in/photolist-nwnrhe-nwFTKm-nwpaXy-nd8jZZ-nwnqMB-6bsjcC-nwFSD3-aQ5Zk4-c4uV99-6itRSF-6iy17Y-8iDUTL-jb2wag-MvpRU-B61f-B61b-7GcrpR-jCxYo4-bTkuiD-2rLaU-a7VsfV-eyNEd-dUEjYu-4iVNkY-a3Gcnb-nJhD2H-nHasXC-5L7FZy-2i8iQ9-qN5RF-6HHCqb-6HDxai-6HDxnK-6HHCvU-5T9v3L-6ytdUs-6HHCyG-2WZgpg-5XZ5BD-b4SFeF-hNBK9K-8JDyeY-pbysVv-5dkLUi-6iy19o-6HDxiV-4o63bZ-kiN76q-ik1o7a-qkcqbe" target="_blank">拍摄</a>的<a href="https://creativecommons.org/licenses/by/2.0/" target="_blank">CC BY 2.0 </a><a href="https://www.flickr.com/photos/jeepersmedia/14127169401/in/photolist-nwnrhe-nwFTKm-nwpaXy-nd8jZZ-nwnqMB-6bsjcC-nwFSD3-aQ5Zk4-c4uV99-6itRSF-6iy17Y-8iDUTL-jb2wag-MvpRU-B61f-B61b-7GcrpR-jCxYo4-bTkuiD-2rLaU-a7VsfV-eyNEd-dUEjYu-4iVNkY-a3Gcnb-nJhD2H-nHasXC-5L7FZy-2i8iQ9-qN5RF-6HHCqb-6HDxai-6HDxnK-6HHCvU-5T9v3L-6ytdUs-6HHCyG-2WZgpg-5XZ5BD-b4SFeF-hNBK9K-8JDyeY-pbysVv-5dkLUi-6iy19o-6HDxiV-4o63bZ-kiN76q-ik1o7a-qkcqbe" target="_blank">图像</a></figcaption>
+	</figure>
+	<p></p>
+	<p>Wired 在一系列博客中<a href="https://www.wired.com/2016/09/now-encrypting-wired-com/" target="_blank">记录了</a>他们向https：//的过渡，体现了将所有内容切换到HTTPS的难度。从<a href="https://www.wired.com/2016/04/wired-launching-https-security-upgrade/" target="_blank">四月份</a>开始，他们在这个过程中花了5个月的时间（在几个月前就已经做好准备，只为了在他们的主网站上看到https://）。在五月，他们记录了一个<a href="https://www.wired.com/2016/05/wired-first-big-https-rollout-snag/" target="_blank">阻碍</a>：</p>
+	<p><em>“[...]转移到HTTPS的最大挑战之一就是准备通过安全连接提供所有内容。要通过HTTPS加载页面，还必须通过HTTPS加载所有其他资源（如图像和Javascript文件）我们看到大量关于这些“混合内容”问题的报告，或者在安全的HTTPS页面上加载不安全的HTTP资源的事件。为了正确上线网站，我们需要确保混合内容问题较少——因此我们要尽可能安全地提供WIRED.com的内容。”</em></p>
+	<p>2014年，“纽约时报”将混合内容视为安全的<a href="https://open.blogs.nytimes.com/2014/11/13/embracing-https/" target="_blank">主要障碍</a>：</p>
+	<p><em>“要成功转移到HTTPS，所有对页面资源的请求都需要通过安全通道进行。这是一项艰巨的挑战，而且其中还有很多活动部分。我们必须考虑当前从不安全域加载的资源——一切从JavaScript到广告资源的内容。”</em></p>
+	<p>W3C <a href="https://www.w3.org/TR/upgrade-insecure-requests/" target="_blank">认为</a>这是一个很大的问题：<em>“最值得注意的是，混合内容检查有可能给负责将大量遗留内容迁移到HTTPS的管理员带来真正的麻烦。而且，浏览旧内容并手动重写资源URL是一项艰巨的任务。”</em>W3C还引用了BBC的<a href="https://www.bbc.co.uk/blogs/internet/entries/f7126d19-2afa-3231-9c4e-0f7198c468ab" target="_blank">庞大存档</a>作为一个困难案例。</p>
+	<p>但并不是只有媒体网站存在混合内容的问题。许多CMS用户发现更新CMS生成的所有链接是很难或不可能的，因为它们可能隐藏在配置文件，源代码或数据库中。此外，需要处理用户生成内容的网站也面临http：// URIs的问题。</p>
+	<h2 id="--1">混合内容的危害</h2>
+	<p>混合内容有两种形式：主动和被动。现代Web浏览器可以通过如下方式解决这些不同类型的混合内容的危险：完全隔绝主动混合内容（最危险的部分），允许被动混合内容通过，但浏览器会发出警告。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/07/6714200883_2ba8167533_b.jpg" class="kg-image">
+		<figcaption><a href="https://creativecommons.org/licenses/by/2.0/" target="_blank">CC BY 2.0 </a><a href="https://www.flickr.com/photos/99mph/6714200883/in/photolist-bej31c-szQAb-i2swr-fnz3A-avkaMz-SB8LC-4kKK2r-6UFtFq-5EhUFH-i2sBe-dHEMmA-A4cie-aC6Wtc-4ZRUkX-srjkGs-5raEpY-eosHU-Ee7Ye-6vWtxh-6Pd2Nq-5Yz5u2-nU1Pfn-nBPiU4-N6B99-7WL2J9-FEkU5X-dU1PPb-JbHZad-aBEqKL-6w5v1r-65Nths-6DbhPs-nsfgLN-67jbBc-nAxzxi-7krEou-4GxJDe-nUsvgg-9kk75E-8AAsi-jJpNkj-4a5Znf-NQtE-d5xmAL-qiBCh-8cM-qXdkTc-9aLMpU-dWVoe-4A1jyr" target="_blank">图像</a>由<a href="https://www.flickr.com/photos/99mph/" target="_blank">本特利</a>提供</figcaption>
+	</figure>
+	<p></p>
+	<p>主动内容可以修改DOM（网页本身）的任何内容。包括通过 <code>&lt;script&gt;</code>， <code>&lt;link&gt;</code>， <code>&lt;iframe&gt;</code>或 <code>&lt;object&gt;</code>标签还有CSS值来调用 <code>url</code>，以及任何要求使用 <code>XMLHTTPRequest</code>的资源，都能够修改一个页面，浏览cookies和访问用户的信任凭证。</p>
+	<p>被动内容就是其他内容：图像，音频，视频，他们被写入页面但不能自己访问页面。</p>
+	<p>主动内容是一个真正的威胁，因为如果攻击者设法拦截对http：// URI的请求，他们可以用自己的内容替换该内容。这并非纸上谈兵。2015年，Github受到一个名为<a href="https://citizenlab.org/2015/04/chinas-great-cannon/" target="_blank">Great Cannon</a>的系统的攻击，该系统通过HTTP拦截了对常见JavaScript文件的请求，并用JavaScript攻击脚本替换了它们。Great Cannon通过拦截TCP并利用从http：// URIs加载的主动内容中的固有漏洞来武装无辜用户的机器。</p>
+	<p>被动内容是一种不同的威胁：因为被动内容的请求是明文发送的，窃听者可以监视请求并提取信息。例如，定位良好的窃听者可以监控cookie，访问过的网页以及潜在的身份验证信息。</p>
+	<p><a href="http://codebutler.com/firesheep/" target="_blank">Firesheep</a> Firefox插件就可以用来监控本地网络（例如，在咖啡店）发送的HTTP请求，并自动窃取cookie，这允许用户通过一个点击就能劫持某个人的身份。</p>
+	<p>如今，现代浏览器阻止了不安全加载的主动内容，但允许被动内容通过。然而，过渡到完全的https：//才是解决混​​合内容的所有安全问题的唯一方法。</p>
+	<h2 id="--2">自动修复混合内容</h2>
+	<p>我们希望长期帮助修复混合内容，因为我们的目标是网络完全加密。而且，与其他CloudFlare服务一样，我们希望其能带来 “一键式”体验。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/07/1078317132_0e96301aef_b--1-.jpg" class="kg-image">
+		<figcaption><a href="https://creativecommons.org/licenses/by/2.0/" target="_blank">CC BY 2.0 </a><a href="https://www.flickr.com/photos/pinkmoose/1078317132/in/photolist-2DhE7G-pvcxy5-k8yyU-dGahX9-7cRyRV-byeo7f-cNka9m-5VqLgk-byenTE-dG4STe-dGafYU-dG4RnT-tAGvqC-tAGA6u-uxhxfW-4Wrx7L-dGahZQ-dGafW9-dG4QiZ-dGagHY-4K5jAk-dwrgVQ-dGafTE-xyEYA-dG4SYP-9LEfKd-7cRy3F-dGainJ-dGahAN-4LPBp9-bnWEe3-bNknmF-pTFtg2-dG4Ra8-6hZDxR-AobuPS-bM92up-dGafDC-yuJw-q8ZsgV-4GGuAM-4Twy1U-dGaf9s-dG4QfX-52rQZg-dpK5hj-dG4RSz-dpJU8v-4EJ5JP-5pvYKT" target="_blank">图像</a>由<a href="https://www.flickr.com/photos/pinkmoose/" target="_blank">安东尼伊斯顿</a>提供</figcaption>
+	</figure>
+	<p>我们考虑了很多方法：</p>
+	<p><em>自动插入upgrade-insecure-requests CSP指令</em></p>
+	<p>该<a href="https://www.w3.org/TR/upgrade-insecure-requests/" target="_blank">upgrade-insecure-requests</a> 指令可以在添加<a href="https://www.w3.org/TR/CSP/" target="_blank">内容安全政策</a>的题头，如下：</p>
+	<pre><code>Content-Security-Policy: upgrade-insecure-requests</code></pre>
+	<p>它指示浏览器自动将任何HTTP请求升级到HTTPS。如果网站所有者确定每个子资源都可通过HTTPS获得，则此功能非常有用。该网站不必实际将网站中嵌入的http：// URI更改为https：//，浏览器将自动处理该问题。</p>
+	<p>不幸的是，upgrade-insecure-requests存在很大的缺点。由于浏览器会盲目地将每个URI升级到https：//，不管生成的URI是否真正起作用，因此页面会被<a href="https://www.w3.org/TR/upgrade-insecure-requests/#example-failed" target="_blank">破坏</a>。</p>
+	<p><em>将所有链接改为使用https：//</em></p>
+	<p>由于并非所有访问CloudFlare网站的用户使用的浏览器都支持upgrade-insecure-requests，因此我们考虑当网页通过我们的服务时，将所有http：// URI升级到https：//。由于我们能够实时解析和修改网页，因此我们可以创建一个无需浏览器支持的“upgrade-insecure-requests”服务。</p>
+	<p>不幸的是，当http：// URI转换为https：//但是实际上无法使用HTTPS加载资源时，用户仍会遇到链接断开的问题。</p>
+	<p><em>修改指向其他CloudFlare站点的链接</em></p>
+	<p>由于CloudFlare为我们所有的400万客户提供免费的<a href="https://blog.cloudflare.com/introducing-universal-ssl/">通用SSL</a>，覆盖了很大比例的网络流量，我们认为只需将我们知道的（因为他们使用我们的服务）http：//的URI升级到支持https：//就可以起作用。</p>
+	<p>这解决了部分问题，但对于从HTTP升级到HTTPS的一般问题，这不是一个好的解决方案</p>
+	<p><em>创建一个可重写已知且支持HTTPS的URI的系统</em></p>
+	<p>最后，我们决定做一些明智的事情：如果我们知道可以使用HTTPS上传资源，则将URI从http：//升级到https：//。为了弄清楚哪些链接可以升级，我们求助了EFF优秀的<a href="https://www.eff.org/https-Everywhere" target="_blank">HTTPS Everywhere</a>扩展和Google Chrome <a href="https://github.com/chromium/hstspreload.appspot.com" target="_blank">HSTS预加载</a>列表，这增强了我们对启用了SSL的CloudFlare站点的了解。</p>
+	<p>我们非常感谢EFF慷慨地答应了帮助我们完成这个项目。</p>
+	<p>HTTPS Everywhere规则集不仅仅是将http://切换到https://:它还包括一些允许它(和我们)将一些特定uri视为目标地址的规则(和排除规则)。</p>
+	<p>以下是一个真实的gstatic.com的HTTP Everywhere规则：</p>
+	<pre><code>&lt;rule from="^http://(csi|encrypted-tbn\d|fonts|g0|[\w-]+\.metric|ssl|t\d)\.
+gstatic\.com/" to="https://$1.gstatic.com/"/&gt;</code></pre>
+	<p>它使用正则表达式来标识gstatic.com的特定子域，可以安全地升级为使用HTTPS。点击<a href="https://www.eff.org/https-everywhere/atlas" target="_blank">此处</a>可浏览完整的规则集。</p>
+	<p>因为我们需要升级嵌入在网页中的大量URI（我们估计大约每秒500万），我们对现有的HTML解析器（包括我们自己的）进行了基准测试，并决定为这种类型的重写任务编写一个新的解析器。我们将在以后的文章中详细介绍其设计，测试和性能。</p>
+	<h2 id="-https-">自动HTTPS重写</h2>
+	<p>现在，所有CloudFlare用户的用户面板中都提供了自动HTTPS重写功能。现在，此功能在默认情况下禁用，可以“一键”启用：</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/07/Screen-Shot-2016-09-22-at-11.06.05.png" class="kg-image"></figure>
+	<p></p>
+	<p>我们将监控此功能的性能和有效性，并在今年晚些时候为Free和Pro客户默认启用该功能。我们还计划使用内容安全策略（Content Security Policy）报告功能，让客户自动查看哪些URI仍需要升级，以便尽可能简单地转换到https：//，因为有时候仅仅找到需要更改的uri就非常困难了，正如Wired所<a href="https://www.wired.com/2016/05/wired-first-big-https-rollout-snag/" target="_blank">发现</a>的。</p>
+	<p>想知道这个功能对您有什么帮助吗？</p>
+</div>

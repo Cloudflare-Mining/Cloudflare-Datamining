@@ -1,0 +1,23 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/unnamed-27.png" class="kg-image"></figure>
+	<p>在过去的一年里，我们听到了一个共同的主题：开发人员希望在 Workers 上构建更多的应用程序。凭借内置的全球部署、强大的可扩展性和 JavaScript 的灵活性，越来越多的应用程序选择在我们的全球平台上构建。</p>
+	<p>为此，开发人员需要访问数据。我们 Workers 上的数据策略包含三个部分：</p>
+	<ul>
+		<li>其一，提供专为无限规模设计的第一方解决方案，例如 Workers KV 和 Durable Objects。</li>
+		<li>其二，支持通过 HTTP 连接的大量 NoSQL 数据库，以及开始通过 <a href="https://blog.cloudflare.com/zh-cn/relational-database-connectors-zh-cn/">TCP 数据库连接器</a>建立与目前已存在的数据的连接。</li>
+		<li>其三，与顶级数据公司合作以将他们的功能引入 Workers 平台。</li>
+	</ul>
+	<p>今天我们很高兴地宣布，除了我们现有的合作伙伴 Fauna 和 Macrometa 之外，Cloudflare Workers 还增加了对 Prisma 和 MongoDB Atlas 的支持。这些数据平台都是开发人员大量需求的平台 — Prisma 的现代 ORM 通过其 Prisma 客户端带来了对 Postgres、SQL Server、MySQL 的支持，而 MongoDB 在我们的用户最需要的集成名单中赫然在列。</p>
+	<p>这两个客户端都可以从它们各自的作者那里获得：<a href="https://www.mongodb.com/developer/how-to/cloudflare-worker-rest-api-realm/?tck=cloudflare" target="_blank">Realm</a> (MongoDB) 和 <a href="https://github.com/prisma/prisma" target="_blank">Prisma</a> (Prisma)。您把它们导入您的 Workers 中之后马上就可以开始使用它们。</p>
+	<h3 id="mongodb-">MongoDB 的优点是什么？</h3>
+	<p>MongoDB 是一个深受开发者喜爱的数据库 -- 它的文档模型使它上手容易，而事务和向外扩展的分布式系统架构使它能够随着您的应用扩大而扩展。</p>
+	<p>MongoDB 为 Workers 平台上的开发人员带来了稳健的查询语言 MQL，支持在数据库内进行丰富的聚合。MongoDB 支持通过 Realm SDK 提供，后者直接与 MongoDB Atlas 集成 — 这是运行 MongoDB 的最简单方法。</p>
+	<p>MongoDB Atlas 还包括全球集群，非常适合创建一个低延迟、地理分布的 MongoDB 数据库来支持您的 Workers。</p>
+	<p>我们与 MongoDB 合作制作了一个演示应用，您可以在 MongoDB 的<a href="https://www.mongodb.com/developer/how-to/cloudflare-worker-rest-api-realm/?tck=cloudflare" target="_blank">博客</a>上试用它。请尝试一下，如果您有任何疑问，请告诉我们！</p>
+	<h3 id="prisma-">Prisma 的优点是什么？</h3>
+	<p>Prisma 是一个对象关系映射器 (object-relational mapper, ORM)，它将数据库中的条目转换为代码中的对象。Prisma 的妙处是它能够抽离使用数据库的复杂性 — Prisma 处理类型安全、架构迁移、查询优化以及代码和数据库之间的实际交互。就像 Workers 简化边缘计算一样，Prisma 使得管理数据库变得极其简单。</p>
+	<p>Prisma 目前支持 Postgres、MySQL、SQL Server、SQLite 和 MongoDB。这些数据库可以存在于任何云供应商上，也可以在 Heroku 上按需启动。</p>
+	<p>Prisma 通过 <a href="https://www.prisma.io/docs/concepts/components/prisma-data-platform#prisma-data-proxy" target="_blank">Prisma Data Proxy</a> 与 Workers 集成。设置好 Proxy 后，您可以将 Prisma 客户端导入您的 Workers 脚本，并定义一个架构以开始使用任何支持的数据库！</p>
+	<h3 id="-">接下来？</h3>
+	<p>除了我们与 Macrometa 和 Fauna 的现有合作关系外，我们很高兴将 MongoDB 和 Prisma 集成到 Workers 不断增长的库中。如果您有数据平台想与 Workers 搭配使用，请<a href="/cdn-cgi/l/email-protection#1a6d7568717f6869376a68757e6f796e5a7976756f7e7c767b687f34797577">联系我们</a>，我们将使之成为现实！</p>
+</div>

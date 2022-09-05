@@ -1,0 +1,233 @@
+<div class="post-content lh-copy gray1">
+	<p>9年ほど前のCloudflareは小さな会社で、当時私は一顧客であり従業員ではありませんでした。Cloudflareがひと月前に設立されたという時期のある日、私は自分の小さなサイト、<a href="https://jgc.org/" target="_blank">jgc.org</a>のDNSが動作していないという警告を受け取りました。そしてCloudflareは<a href="https://developers.google.com/protocol-buffers/" target="_blank">Protocol Buffers</a>の使用に変更を加えた上でDNSを切断したのです。</p>
+	<p>私は「私のDNSはどうなったのでしょうか？」という件名のメールを直接Matthew Prince宛に出しました。すると彼は長文かつ詳細な返信をくれたのです。（<a href="https://gist.github.com/jgrahamc/6bb02a6f7c3799a1590b3cdb901f8e08" target="_blank">メールのやり取りの全文はこちら</a>からご覧いただけます）。下記は私のそのメールに対する返信です。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>From: John Graham-Cumming
+日時：2010/10/7（木）9:14 AM
+件名：Re: 私のDNSはどうなったのでしょうか？
+To: Matthew Prince
+
+ご報告ありがとうございました。何か問題があれば
+ご連絡します。 技術詳細に関する全容が判明したら、
+本件をブログに記載するのはいかがでしょうか。
+本件に対しての開示や誠実であることを他の人も評価すると思うのです。
+特に、ローンチ後のトラフィック増加を示すグラフを
+添えていただければと思います。
+
+私は自分のサイトを厳格に監視しているので、何かあれば
+SMSを受け取れます。 監視結果では13:03:07から14:04:12までダウンしていたことが
+わかりました。 テストは5分おきに実行されています。
+
+本件は大事には至らずに済んでいますし、解決していただけると確信しています。 しかしながら、ヨーロッパには本当に
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>誰も必要ないとお考えですか？</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>これに対するMatthewの返信は以下の通りです。
+From: Matthew Prince
+日時：2010/10/7（木）9:57 AM
+件名：Re: 私のDNSはどうなったのでしょうか？
+To: John Graham-Cumming
+
+ありがとうございます。Cloudflareではいただいたメールすべてに対して返信しております。私は現在
+オフィスに向かっており、ブログへの投稿またはCloudflareの掲示板システムのトップに
+公式投稿をピン留めする予定です。透明性が一番だということには
+全面的に同意します。
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>今日、当時より遥かに大規模になったCloudflareの社員として、私は当社が犯した過ちとその影響、対応内容について明らかにします。</p>
+	<h3 id="7-2-">7月2日の件について</h3>
+	<p>7月2日、CloudflareはWAFマネージドルールに新規ルールを追加したのですが、これが世界中のCloudflareネットワーク上にあるHTTP/HTTPSトラフィックを扱う各CPUコアの<a href="https://blog.cloudflare.com/cloudflare-outage/">CPU枯渇</a>を引き起こしました。Cloudflareでは新たな脆弱性や脅威に対応するため、継続的にWAFマネージドルールを改善しています。たとえば5月には、WAFの更新速度を活用して深刻なSharePointの脆弱性に対する保護を行うための<a href="https://blog.cloudflare.com/stopping-cve-2019-0604/">ルールを追加</a>しました。迅速かつグローバルにルールをリリースできることはCloudflareのWAFにとって重要な機能です。</p>
+	<p>しかし残念ながら、先週の火曜日に行った更新に莫大なバックトラックを行いHTTP/HTTPS配信用のCPUを枯渇させるような正規表現が含まれてしまい、これによりCloudflareのコアプロキシ、CDN、WAF機能のダウンに繋がる結果となりました。次のグラフはHTTP/HTTPSトラフィックの配信を専門に行うCPUがCloudflareネットワーク内のサーバー全体で100%に近い使用量まで急上昇したことを示しています。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/07/cpu-goes-boom.png" class="kg-image">
+		<figcaption>インシデント中のCloudflare PoPにおけるCPU使用量</figcaption>
+	</figure>
+	<p></p>
+	<p>この結果、Cloudflareのお客様（およびお客様の顧客の方々）に対し、Cloudflareのドメイン訪問時に502エラーが表示されることとなりました。この502エラーはフロントのCloudflare Webサーバーに利用可能なCPUコアがあるにも関わらずHTTP/HTTPSトラフィックを配信するプロセスに到達できないことにより発生したものです。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/07/502-bad-gateway.png" class="kg-image"></figure>
+	<p></p>
+	<p>Cloudflareは本件がお客様に与えた損害について認識しており、誠に忸怩たる思いでおります。本インシデントの対応中ではありますが、Cloudflareの運営自体にも悪影響が及んでおります。</p>
+	<p>また、お客様におかれましては、多大なストレス、不満、不安を感じられたことと存じます。6年間<a href="https://blog.cloudflare.com/todays-outage-post-mortem-82515/">グローバルな停止</a>がなかったこともあり、動揺はことさら大きいものでした。</p>
+	<p>CPUが枯渇した原因は、過剰にバックトラッキングを発生させる不完全な正規表現を記載した1つのWAFルールによるものでした。停止の核心となった正規表現は次の通りです。<code>(?:(?:\"|'|\]|\}|\\|\d|(?:nan|infinity|true|false|null|undefined|symbol|math)|\`|\-|\+)+[)]*;?((?:\s|-|~|!|{}|\|\||\+)*.*(?:.*=.*)))</code> </p>
+	<p>多くの方が正規表現そのものに対して関心を抱いておりますが（これについては後ほど詳述します）、Cloudflareのサービスが27分間ダウンしたという実際の出来事は「正規表現の失敗」よりもはるかに複雑なものでした。以降、停止を引き起こし我々の迅速な対応を阻んだ一連の出来事を時系列で説明いたします。正規表現のバックトラッキングやその対応方法について詳しく確認したい場合は、本記事の最後に記載した付録をご覧ください。</p>
+	<h3 id="-">発生内容</h3>
+	<p>まず本件の流れをご説明します。本記事内に記載する時間は全て協定世界時（UTC）表記です。</p>
+	<p>13時42分、ファイアウォールチームに所属する1名のエンジニアが自動プロセスで<a href="https://www.cloudflare.com/learning/security/threats/cross-site-scripting/" target="_blank">XSS</a>を検出するためのルールに対する小さな変更をリリースしました。そして、これに対する変更申請チケットが作成されました。Cloudflareではこのようなチケットの管理にJiraを使用しておりますが、以下はそのスクリーンショットです。</p>
+	<p>3分後、1つ目のPagerDutyページがWAFの異常を表示して停止しました。これはCloudflare外からWAFの機能を確認する模擬テストで（このようなテストは数百とあります）、正常動作を確認するためのものでした。そしてすぐにCloudflareサービスのエンドツーエンドテストの失敗、グローバルなトラフィック低下アラート、502エラーの蔓延がページに表示され、世界各都市のPoint of Presence（PoP）からCPU枯渇に関する報告を多数受けました。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/07/pager-duty-1345.png" class="kg-image"></figure>
+	<p></p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/07/pager-duty-1346.jpg" class="kg-image"></figure>
+	<p></p>
+	<p>これらのアラートの一部を受け取った私が会議を飛び出して自分のデスクに戻ると、ソリューションエンジニアグループのリーダーにCloudflareのトラフィックのうち80％がロストしているという報告を受けました。そこで私は事態に対するデバッグを行っているSREへ向かいました。停止の初期段階では、これまでにない種類の攻撃なのではないかという推測がありました。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/07/pager-duty-1348.jpg" class="kg-image"></figure>
+	<p></p>
+	<p>CloudflareのSREチームは世界中に配置されており、24時間体制で継続的に対応を行っています。このようなアラート（アラートの大部分が特定の地域の制限された範囲における非常に具体的な問題に言及しているようなもの）は内部のダッシュボードで監視されており、毎日幾度となく対応が行われています。しかしながらこのパターンのページやアラートは非常に深刻な何かが発生しているということを示していたため、SREはすぐにP0インシデントを宣言してエンジニアリーダーおよびシステムエンジニアリングへエスカレーションを行いました。</p>
+	<p>ロンドンのエンジニアリングチームはその時Cloudflareのメインイベントスペースで内部のTechTalkを聞いているところだったのですが、それを中断して全員が大会議室に集まり他の社員も電話接続しました。これはSREが単独で処理できるような通常の問題ではなく、各関連チームがオンラインで一同に会す必要があったのです。</p>
+	<p>14時00分、WAFが問題の原因コンポーネントであることを特定し、攻撃が原因である可能性は却下されました。パフォーマンスチームはマシンから稼働中のCPUデータを取得し、WAFが原因であることを明示しました。他のチームのメンバーがstraceで確認を行い、また別のチームはWAFが問題を起こしているという記載があるエラーログを発見しました。14時02分、私は全チームに対して「global kill」を行う提案をしました。これはCloudflareに組み込まれた仕組みで、世界中の単一コンポーネントを無効とするものです。</p>
+	<p>しかしWAFに対するglobal killの実行も簡単にはいきませんでした。また問題が現れたのです。Cloudflareでは自社製品を使用しているため、<a href="https://www.cloudflare.com/en-gb/products/cloudflare-access/" target="_blank">Access</a>サービスがダウンすると内部のコントロールパネルで認証することができないのです（復旧後、内部コントロールパネルをあまり使用していないメンバーはセキュリティ機能により資格情報が無効になったためアクセスできなくなっていることがわかりました）。</p>
+	<p>さらにJiraやビルドシステムのような他の内部サービスも利用できなくなりました。利用できるようにするにはあまり使っていないバイパスの仕組みを使う必要がありました（これも本件の後で検討すべき項目です）。最終的にチームメンバーがWAFのglobal killを14時07分に実行し、14時09分までに世界中のトラフィックレベルおよびCPUが想定状態にまで戻りました。その他のCloudflareの保護の仕組みは継続して運用できています。</p>
+	<p>その後我々はWAF機能の復旧に取り掛かりました。微妙な状況だったこともあり、Cloudflareの有料プランのお客様のトラフィックを退避した後で一部のトラフィックを使って1つの都市内で異常系テスト（「この変更が本当に本件の原因なのか」を確認するもの）も正常系テスト（ロールバックの動作検証）も両方実施しました。</p>
+	<p>14時52分、原因の把握および適切な箇所への修正を行ったということに100%の確信を持てたため、WAFをグローバルに再度有効化しました。</p>
+	<h3 id="cloudflare-">Cloudflareの運営方法</h3>
+	<p>CloudflareにはWAFマネージドルール製品を担当するエンジニアチームがあり、検出率の改善、偽陽性の低下、新たな脅威への迅速な対応に継続的に取り組んでいます。直近60日では、WAFマネージドルールに対する476件の変更申請を処理しました（平均すると3時間ごとに1件のペースです）。</p>
+	<p>このような変更は「シミュレート」モードにリリースされます。このモードでは実際のカスタマートラフィックに対してルールが実行されますが何もブロックされません。Cloudflareではこのシミュレートモードを使ってルールの有効性をテストし、偽陽性および偽陰性の比率を測定しています。しかし、シミュレートモードでもルールを実際に実行する必要があり、今回の場合はそのルール内に過度にCPUを消費する正規表現が記載されていました。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/07/change-request.png" class="kg-image"></figure>
+	<p></p>
+	<p>上記の変更申請でご確認いただける通り、リリース計画、ロールバック計画、この種のリリース向けの内部標準業務手順書（SOP）へのリンクが記載されています。そして、ルール変更向けのSOPでは特別にグローバルなプッシュが許可されています。これはCloudflareでリリースする他のソフトウェアとは大きく異なるものです。通常SOPのプッシュ先はまず内部の試験運用版ネットワークにあるPoit of Presence（PoP）、次に独立した地域にいる少数のお客様、多数のお客様、最後に世界という順になります。</p>
+	<p>ソフトウェアのリリース手順は次の通りです。Cloudflareでは内部的にBitBucket経由のgitを使用しています。変更を行ったエンジニアがTeamCityでビルドしたコードをプッシュし、ビルドがパスするとレビュアーが割り当てられます。プルリクエストが承認されるとコードがビルドされ、テストスイートが（再度）実行されます。</p>
+	<p>ビルドとテストが通ったらJiraの変更申請が作成され、関連する管理者または技術リーダーが変更承認を行います。承認されると「アニマルPoP」と呼ばれる場所へのリリースが行われます。アニマルPoPにはDOG、PIG、<a href="https://en.wikipedia.org/wiki/Sentinel_species" target="_blank">カナリア</a>があります。</p>
+	<p>DOG PoPは（世界の他の場所と同様）CloudflareのPoPですが、Cloudflareの社員のみが利用するものです。この試験運用版のPoPではお客様のトラフィックがコードに接触する前に問題を早期発見することができ、実際頻繁に検出されています。</p>
+	<p>DOGテストが正常に完了するとコードはPIG（「実験」目的）に移動します。PIGは無料プランのうちごく一部のお客様のトラフィックが新規コードを通過するようになっているCloudflareのPoPです。</p>
+	<p>ここでも正常であれば、コードは「カナリア」へ移動します。Cloudflareには世界中に3つのカナリアPoPがあり、有料／無料プランのお客様のトラフィックを新規コード上で実行してエラーの最終チェックを行っています。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/07/animal-deploy-1.png" class="kg-image">
+		<figcaption>Cloudflareのソフトウェアリリース手順</figcaption>
+	</figure>
+	<p></p>
+	<p>カナリアで正常に動作すると、コードの公開ができるようになります。DOG、PIG、カナリア、グローバル手順の完了には、コード変更の種類にもよりますが数時間から数日ほどかかります。Cloudflareのネットワークやお客様が多様であるおかげで、Cloudflareではリリース内容を世界中の全てのお客様に公開する前に徹底的にコードをテストすることができるのです。しかし、設計上WAFにはこの手順を採用していません。それは脅威に迅速に対応する必要があるからです。</p>
+	<h3 id="waf-">WAFの脅威</h3>
+	<p>過去数年で一般的なアプリケーションにおける脆弱性は大幅に増加しています。これは、ファジングなどといったソフトウェアテストツールの可用性が増加したためです（ファジングに関する新規ブログ記事は<a href="https://blog.cloudflare.com/a-gentle-introduction-to-linux-kernel-fuzzing/">こちら</a>）。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/07/Number-of-CVEs-per-year.png" class="kg-image">
+		<figcaption>出典：https://cvedetails.com/</figcaption>
+	</figure>
+	<p></p>
+	<p>十分な保護ができているかどうかをアプリケーションの実行や維持を行うチームがテストできるよう、概念実証（PoC）が作成されすぐにGithubに公開されるのをよく見かけます。そのため、お客様がこういったソフトウェアに対してパッチを当てられるよう、新たな攻撃にできるだけ早く対応することがCloudflareにとっては必須なのです。</p>
+	<p>5月にSharePointの脆弱性に対する保護を展開した件はCloudflareが事前にこのような保護を提供できた好例です（<a href="https://blog.cloudflare.com/stopping-cve-2019-0604/">ブログはこちら</a>）。発表の公表から間もなく、Cloudflareはお客様のSharePointインストールを悪用しようとする動きが急増したことを確認しました。Cloudflareチームは日々新たな脅威を監視し、お客様のために脅威を軽減するためのルールを記載しています。</p>
+	<p>先週の火曜日の停止を引き起こしたルールはクロスサイトスクリプティング（XSS）攻撃を対象としたものでした。この攻撃は近年劇的に増加しているものです。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/07/Number-of-XSS-CVEs-by-year.png" class="kg-image">
+		<figcaption>出典：https://cvedetails.com/</figcaption>
+	</figure>
+	<p></p>
+	<p>WAFマネージドルールの変更における標準的な手順には、グローバルリリース前に継続的インテグレーション（CI）テストに合格しなければならないことが記載されています。これは先週の火曜日の際にも通常通り実施され、ルールがリリースされました。13時31分、チームのエンジニアが承認済みの変更を含むプルリクエストをマージしました。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/07/change-details.png" class="kg-image"></figure>
+	<p></p>
+	<p>13時37分、TeamCityがルールをビルドしてテストを実行し、合格を示す緑色を表示しました。WAFテストスイートはWAFの主な機能が動作することをテストするもので、個別のマッチング機能に対する多数の単体テストで構成されています。単体テストにて個別のWAFを実行した後、WAFに対する大規模なHTTPリクエストを実行してルールをテストします。こういったHTTPリクエストはWAFでブロックすべきリクエストのテスト（攻撃を検出できることの確認）やブロックしてはいけないリクエストのテスト（必要以上にブロックしないことや偽陽性を作り出していないことの確認）向けに設計されたものです。WAFテストスイートが実施しなかったのはCPU使用量の急増テストであり、結果的に今回CPU枯渇の原因となったルールが含まれている以前のWAFビルドのログファイルにはテストスイートの実行時間に増加は見られませんでした。</p>
+	<p>そしてテストが合格し、TeamCityが自動的に13時42分時点の変更をリリースし始めました。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/07/build-process.png" class="kg-image"></figure>
+	<p></p>
+	<h3 id="quicksilver">Quicksilver</h3>
+	<p>WAFルールは新たな脅威に対応する必要があるため、数秒で世界中に変更を適用することのできるCloudflareの分散型Key-Value Store（KVS）、Quicksilverを使用してリリースしています。この技術はCloudflareのダッシュボード内やAPI経由での設定変更時にCloudflareの全てのお客様が使用しているもので、Cloudflareが変更に対して非常に迅速に処理できる理由でもあります。</p>
+	<p>Quicksilverについてはこれまであまり言及したことがありませんでした。以前Cloudflareでは<a href="https://fallabs.com/kyototycoon/" target="_blank">Kyoto Tycoon</a>を分散型Key-Value Storeとしてグローバルに採用しておりましたが、運用上の問題が発生したため独自KVSを構築して180以上の都市に複製していました。Quicksilverはお客様の設定に変更を加えたり、WAFルールを更新したり、Cloudflare Workersを使用して書いたJavaScriptコードを配信したりするための手段です。</p>
+	<p>ダッシュボードのボタンをクリックまたはAPI呼び出しを行うことで、変更内容は数秒で世界中に適用されます。お客様にはこの高速に実施できる設定を気に入って頂いておりました。Workersを利用するとほぼ瞬時にグローバルなソフトウェアリリースが行えます。平均的ではQuicksilverは1秒あたりおよそ350件の変更を配信します。</p>
+	<p>さらに、Quicksilverは非常に高速です。 平均では2.29秒で世界中のマシンへ1つの変更を配信することができます。通常、このスピードは素晴らしいことです。要するに、機能を有効にしたりキャッシュをパージしたりする際、世界中に一瞬で稼働させられるのです。Cloudflare Workersでコードをプッシュすると、同じ速度でプッシュすることができます。これは必要なときに高速で更新ができるという、Cloudflareのお約束の1つです。</p>
+	<p>しかしながら今回はこのスピードがあることでルール変更が世界中に数秒で適用されたということを意味します。また、WAFコードにLuaを採用していることにお気づきの方もいるかもしれません。Cloudflareの製品には広くLuaを採用しておりますが、<a href="https://blog.cloudflare.com/cloudflares-new-waf-compiling-to-lua/">WAFのLua</a>に関する詳細は<a href="https://www.youtube.com/watch?v=nlt4XKhucS4" target="_blank">以前ご説明</a>した通りです。WAFのLuaでは内部的に<a href="https://www.pcre.org/" target="_blank">PCRE</a>を利用しているのですが、このPCREがマッチングにバックトラッキングを採用しており正規表現の暴走から保護する手段がありません。これに関する詳細や対策を以下に説明します。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/07/rule-deployment.png" class="kg-image"></figure>
+	<p></p>
+	<p>ルールがリリースされた時点までは全てが「正しく」実行されていました。プルリクエストがあがって承認され、CI/CDがコードをビルドしてテストを行い、SOPのロールアウトとロールバックを詳述したSOPと共に変更申請が提出され、ロールアウトが実行されました。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/07/WAF-deploy-1.png" class="kg-image">
+		<figcaption>Cloudflare WAFのリリース手順</figcaption>
+	</figure>
+	<h3 id="--1"><br><br>問題点</h3>
+	<p>前述の通り、我々は毎週数十件の新規ルールをリリースし、リリースの悪影響を防止するため多数のシステムを組み込んでいます。そのため、何かおかしなことがあるときは複数の原因に収束することは通常ありません。しかし、1つの根本原因に辿り着くと満足できる一方で、現実が見えなくなることもあります。下記は、CloudflareのHTTP/HTTPSサービスがオフラインになる時点に至るまでの複数の脆弱性です。</p>
+	<ol>
+		<li>エンジニアが簡単に膨大な<a href="https://www.regular-expressions.info/catastrophic.html" target="_blank">バックトラック</a>をしてしまう正規表現を記述しました。</li>
+		<li>数週間前に実施したWAFのリファクタリングにより、正規表現によるCPUの過度な消費を防ぐための保護が誤って削除されていました。このリファクタリングはWAFによるCPU消費を抑えるためのものでした。</li>
+		<li>使用していた正規表現エンジンには複雑性の保証がありませんでした。</li>
+		<li>テストスイートに過度なCPU消費を特定する手段がありませんでした。</li>
+		<li>段階的ロールアウトをせずに世界中の本番環境へ緊急性のないルール変更を展開できるようなSOPになっていました。</li>
+		<li>WAFの完全なビルドを2回実行するという時間のかかりすぎることがロールバック計画で要求されていました。</li>
+		<li>グローバルなトラフィックドロップに対する初めのアラートの発火が遅すぎました。</li>
+		<li>Cloudflareのステータスページをすぐに更新できませんでした。</li>
+		<li>停止およびバイパス手順に不慣れだったため、Cloudflare内からのCloudflare独自システムへのアクセスが困難でした。</li>
+		<li>セキュリティ上の理由により資格情報がタイムアウトしたため、SREが一部のシステムにアクセスできませんでした。</li>
+		<li>Cloudflareのエッジを経由するお客様は、CloudflareのダッシュボードやAPIにアクセスできませんでした。</li>
+	</ol>
+	<h3 id="--2">火曜日以降の動向</h3>
+	<p>まず、WAF上で動作する全リリースを停止して次のことを行いました。</p>
+	<ol>
+		<li>過度のCPU利用を行う保護を取り除いた上での再導入（完了）</li>
+		<li>WAFマネージドルールにある全3,868件のルールを手動にて調査し、過度のバックトラッキングが発生する可能性があるその他のインスタンスを検出、修正（検査は完了）</li>
+		<li>全ルールに対するパフォーマンスプロファイリングをテストスイートに導入（完了予定： 7月19日）</li>
+		<li>正規表現エンジンを<a href="https://github.com/google/re2" target="_blank">re2</a>または<a href="https://docs.rs/regex/1.1.9/regex/" target="_blank">Rust</a>に切り替え（どちらもランタイム保証搭載）（完了予定：7月31日）</li>
+		<li>進行中の攻撃に対する緊急かつグローバルなリリースを実施できる点を保持しつつ、Cloudflareの他のソフトウェアと同じ方法でルールを段階的ロールアウトするようSOPを変更</li>
+		<li>CloudflareのダッシュボードやAPIをCloudflareのエッジから外すための緊急機能を設置</li>
+		<li><a href="https://www.cloudflarestatus.com/" target="_blank">Cloudflareステータス</a>ページへの更新の自動化</li>
+	</ol>
+	<p>長期的には、Cloudflareは数年前に私が記述したLuaによるWAFから離脱していく予定です。そして<a href="https://blog.cloudflare.com/how-we-made-firewall-rules/">新規ファイアウォールエンジン</a>を採用するようWAFを移植していきます。これによりWAFがより高速になり保護層を追加することができます。</p>
+	<h3 id="--3">まとめ</h3>
+	<p>本件はお客様にとってもCloudflareチームにとっても大きな混乱を招いた停止でした。我々は事態の収拾のため迅速に対応し、現在は停止を発生させてしまった手順の欠陥を修正し、正規表現に使われている技術を置き換えることでさらなる潜在的問題の防止により一層取り組んでおります。</p>
+	<p>今回の停止については忸怩たる思いであり、お客様に影響を出してしまったことをお詫び申し上げます。今回の変更により、このような停止が今後再発生しないものと考えております。</p>
+	<h3 id="--4">付録：正規表現のバックトラッキングについて</h3>
+	<p><code>(?:(?:\"|'|\]|\}|\\|\d|(?:nan|infinity|true|false|null|undefined|symbol|math)|\`|\-|\+)+[)]*;?((?:\s|-|~|!|{}|\|\||\+)*.*(?:.*=.*)))</code> がどのようにCPU枯渇を引き起こすのかを完全に理解するには、正規表現エンジンの動作を少々理解しておく必要があります。重要なのは<code>.*(?:.*=.*)</code>の部分です。<code>(?:</code>とは非<code>)</code>キャプチャグループです（つまり、カッコ内の表現は1つの表現としてグルーピングされています）。</p>
+	<p>ここではCPU枯渇の原因となったパターンを説明するため、これを無視して<a href="https://www.debuggex.com/r/DpHY-UOB9tRCJ62L" target="_blank">.*.*=.*</a>というパターンを見ていきます。ここまでシンプルにすると、このパターンが不要に複雑であることがわかります。しかし、重要なのは「全てに続く全てにマッチする」ものをエンジンに問い合わせた「実際の」表現（CloudflareのWAFルールに記載された複雑な表現のようなもの）により壊滅的なバックトラッキングを引き起こしたという点です。こちらがその理由です。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/07/regex.png" class="kg-image"></figure>
+	<p></p>
+	<p>正規表現では、.は1文字とのマッチを意味し、.*は0文字以上の貪欲な（greedy）マッチング（つまり可能な限りの数と合致すること）を意味するため、.*.*=.*は、0文字以上のマッチ、0文字以上のマッチ、=リテラルの検索、0文字以上のマッチ、という意味になります。</p>
+	<p>テスト文字列x=xについて考察してみましょう。これは.*.*=.*にマッチする文字列です。イコールの前にある.*.*が1つ目のxにマッチします（.*のうちの1つがxにマッチしもう一方が0文字にマッチするため）。そして=の後にある.*は最後のxにマッチします。</p>
+	<p>このマッチングに至るまでには23の手順があります。.*.*=.*にある1つ目の.*が貪欲に（greedy）動作してx=xという文字列全体にマッチします。エンジンは次の.*の考慮に移ります。マッチする文字はもうないので、2つ目の.*は0文字にマッチします（こういう場合もあります）。それからエンジンは=部分に移行します。もうマッチングすべき文字が残っていないので（はじめの.*部分でx=xの全てにマッチしているので）マッチングは失敗します。</p>
+	<p>ここで正規表現エンジンがバックトラックします。エンジンは1つ目の.*に戻り（x=xではなく）x=とマッチし、それから2つ目の.*に移ります。.*が2つ目のxにマッチするので残りの文字はありません。そこでエンジンが=を.*.*=.*とマッチさせようとするとそのマッチングは失敗します。エンジンはまたバックトラックします。</p>
+	<p>今回のバックトラックでは1つ目の.*はx=とマッチしますが2つ目の.*はxとマッチするのではなく0文字にマッチします。それからエンジンは.*.*=.*パターンにある=というリテラルを探そうとしますが失敗します（すでに1つ目の.*にマッチしているため）。エンジンはまたバックトラックします。</p>
+	<p>今度は1つ目の.*がx1文字にマッチします。しかし2つ目の.*が貪欲に動作し、=xとマッチしてしまいます。もうどうなるかわかるでしょう。エンジンが=リテラルのマッチングを探そうとすると失敗して再度バックトラックとなります。</p>
+	<p>1つ目の.*は1つ目のxとマッチします。そして今回は2つ目の.*が=とのみマッチします。しかし、ご想像どおりエンジンは=にマッチしません。2つ目の.*で既にマッチしているからです。そこでまたバックトラックを行います。ここで思い出していただきたいのですが、これは全て3文字の文字列のマッチングにかかる手順なのです。</p>
+	<p>最後に、1つ目の.*が1つ目のxに、2つ目の.*が0文字にマッチすると、エンジンは=リテラルと文字列の=をマッチさせることができます。そして最後の.*が最後のxとマッチするのです。</p>
+	<p>これがx=xにマッチするまでの23の手順です。こちらはPerlの<a href="https://metacpan.org/pod/Regexp::Debugger" target="_blank">Regexp::Debugger</a>を使って発生したバックトラッキングの手順を説明した短いビデオです。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/07/23-steps-1.gif" class="kg-image"></figure>
+	<p></p>
+	<p>これでも作業量が多いのですが、もし文字列がx=xからx=xxに変わったらどうなるでしょうか？この場合のマッチング手順は33です。さらに、入力がx=xxxとなると手順は45になります。直線的な増え方ではありません。ここにx=xからx=xxxxxxxxxxxxxxxxxxxx（=の後のxが20個）までのマッチングを示したグラフがあります。=の後のxが20になると、エンジンのマッチングには555もの手順がかかります。（さらに悪いことに、x=の部分がなく文字列が20個のxだけになった場合、マッチしないパターンを探す手順は4,067になります。）</p>
+	<p></p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/07/matching-x-x.png" class="kg-image"></figure>
+	<p></p>
+	<p><br>このビデオではx=xxxxxxxxxxxxxxxxxxxxのマッチングに必要なバックトラッキングを示しています。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/07/555-steps.gif" class="kg-image"></figure>
+	<p></p>
+	<p><br>残念なことに入力値が増えるとマッチング回数が超線形的に増えています。ただし、もっと悪いのは正規表現に少々の修正が入った場合です。.*.*=.*;という正規表現になった（つまりパターンの最後にセミコロンが追加された）としましょう。これはfoo=bar;のような表現にマッチさせようとして書かれたものです。</p>
+	<p>この場合のバックトラッキングは最悪です。x=xのマッチには23ではなく90手順もかかります。手順の増加は非常に劇的です。x=の後に20個のxがある場合のマッチングにかかる手順は5,353にも及びます。こちらがそのグラフです。Y軸の値を前回のグラフと比べてみてください。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/07/failing-x-x.png" class="kg-image"></figure>
+	<p></p>
+	<p>こちらの画像ではx=xxxxxxxxxxxxxxxxxxxxを.*.*=.*;にマッチさせようとして失敗するまでの全5,353手順を表示しています。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/07/5353.gif" class="kg-image"></figure>
+	<p></p>
+	<p><br>GreedyマッチではなくLazyマッチを用いると、この場合のバックトラッキング数を制限することができます。元の表現を.*?.*?=.*?に変更するとx=xのマッチングは（23手順から）11手順になり、x=xxxxxxxxxxxxxxxxxxxxの場合も同様となります。これは.*の後にある?がエンジンに、移動する前に最小文字数とマッチするよう指示するためです。</p>
+	<p>しかし、Lazyマッチがこのバックトラッキング行為に対する完全な解決策ではありません。.*.*=.*;という最悪の例を.*?.*?=.*?;に変えても実行回数は全く変わりません。x=xの所要手順は555で、x=の後に20個のxが続く場合の手順数も5,353のままです。</p>
+	<p>（パターンを完全に書き直してより具体的に記述する以外で）唯一真の解決策となるのが、正規表現エンジンをバックトラッキングの仕組みから退避することです。これは今後数週間で取り組んでいきます。</p>
+	<p>この問題に対する解決策は1968年のKen Thompson氏による「<a href="https://dl.acm.org/citation.cfm?doid=363347.363387" target="_blank">Programming Techniques:Regular expression search algorithm（プログラミングアルゴリズム：正規表現の検索アルゴリズム）</a>」という論文で知られているものです。この論文では正規表現をNFA（非決定性有限オートマトン）に変換し、その後照合する文字列のサイズで時間線形的に実行するアルゴリズムを用いてNFAの状態遷移をするメカニズムについて説明しています。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/07/thompson-1968.png" class="kg-image"></figure>
+	<p></p>
+	<p>この論文で実際にNFAに関する記述があるわけではありませんが、線形時間アルゴリズムに関しては明確に説明されており、IBM 7094用のアセンブリ言語のコードを生成するALGOL60プログラムが提示されています。その実装は難解なものですが、考え方はさほどではありません。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/07/nfa.png" class="kg-image"></figure>
+	<p></p>
+	<p>これは.*.*=.*という正規表現をThompson氏の論文の図と同じ形式で図式化したものです。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/07/figure-0@1.5x.png" class="kg-image"></figure>
+	<p></p>
+	<p><br>図0では0から始まる5つの状態があります。そして状態1、2、3から始まるループが3つあります。このループは正規表現にある3つの.*に一致しています。ドットが記載された3つの楕円形がそれぞれ1文字とマッチします。=の楕円形は=とマッチしているということを示しています。状態4は終了状態であり、正規表現がマッチした場合に到達します。</p>
+	<p>このような状態図を使って.*.*=.*という正規表現のマッチングを行う方法を確認するため、ここではx=xを検証していきます。プログラムは図1の状態0から開始します。</p>
+	<p></p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/07/figure-1@1.5x.png" class="kg-image"></figure>
+	<p><br></p>
+	<p>このアルゴリズムの動作のキーとなるのが状態マシンは同時に複数の状態になるという点です。NFAはそれぞれの遷移を同時に行います。</p>
+	<p>入力読み込みの前でも図2のように状態1と2両方に遷移することが可能です。</p>
+	<p></p>
+	<p></p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/07/figure-2@1.5x.png" class="kg-image"></figure>
+	<p><br></p>
+	<p>図2を見てみると、x=xにある1つ目のxに何が起きたのかを確認できます。xは状態1に遷移して一番上のドットにマッチすることができます。もしくは、xは状態2に移行して2つ目のドットにマッチし、状態2に戻ることができます。</p>
+	<p>x=xの1つ目のxにマッチした後でも状態は1と2のままです。状態3や4に到達できないのは、リテラル=が必要になるためです。</p>
+	<p>次に、アルゴリズムはx=xにある=の考察を行います。x同様、上部にある2つのループ（状態1から1、状態2から2のループ）のいずれかにマッチすることができますが、=がマッチするとアルゴリズムは状態2から状態3（そしてすぐに状態4）に遷移します。これは図3で示したとおりです。</p>
+	<p></p>
+	<p></p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/07/figure-3@1.5x.png" class="kg-image"></figure>
+	<p></p>
+	<p>次にアルゴリズムはx=xにある最後のxに到達します。状態1や2から同じ遷移が状態1や2に戻ることが可能です。状態3からxは右側にあるドットとマッチして状態3に戻ることができます。</p>
+	<p>x=xの全文字が考察された時点で状態4に到達するため、この正規表現は文字列にマッチします。各文字が一度処理されるためこのアルゴリズムは入力文字列の長さの点で線形です。さらに、バックトラッキングも必要ありませんでした。</p>
+	<p>（x=にマッチした後で）一度状態4に到達したらその正規表現はマッチしアルゴリズムは最後のxを全く考察することなく中止になります。</p>
+	<p>このアルゴリズムは入力サイズの点において線形です。</p>
+</div>

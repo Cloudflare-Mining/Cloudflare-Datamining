@@ -1,0 +1,47 @@
+<div class="post-content lh-copy gray1">
+	<!--kg-card-begin: markdown-->
+	<p><small><em>This is a Korean translation of a <a href="https://blog.cloudflare.com/encrypted-sni/">existing post</a> by <a href="https://blog.cloudflare.com/author/alessandro-ghedini/">Alessandro Ghedini</a>, translated by <a href="https://blog.cloudflare.com/author/junho/">Junho Choi</a>.</em></small></p>
+	<!--kg-card-end: markdown-->
+	<hr>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2018/09/esni-3@3.5x-1.png" class="kg-image"></figure>
+	<p></p>
+	<p>오늘 우리는 ISP, 카페 주인이나 방화벽과 같은 중간 경로의 관찰자가 TLS 서버 이름 지정 (Server Name Indication, SNI)확장을 가로채서 사용자가 어떤 사이트에 방문하는지 알고 싶어하지 못하게 하는 <a href="https://blog.cloudflare.com/rfc-8446-aka-tls-1-3/">TLS 1.3</a> 프로토콜의 <a href="https://tools.ietf.org/html/draft-ietf-tls-esni" target="_blank">확장</a>인 <a href="https://blog.cloudflare.com/esni">암호화된 SNI</a> 지원을 발표 합니다.</p>
+	<p>암호화된 SNI는 클라우드플레어가 이미 무료로 제공하고 있는 다른 인터넷 보안 기능과 같이 컨텐츠 검열과 인터넷 상의 사용자 추적을 어렵게 합니다. 이제 ​동작 방식에 대해서 알아 보도록 합시다.</p>
+	<h3 id="sn-">SN뭐라고요?</h3>
+	<p>TLS 서버 이름 지정(SNI)확장의 <a href="https://tools.ietf.org/html/rfc3546" target="_blank">표준화는 2003년까지 거슬러 올라 가는데</a>, 초기 TLS 핸드쉐이크 도중에 접속하고자 하는 사이트를 클라이언트가 지정하도록 하여 서버가 동일 IP 주소에서 복수의 TLS 설정된 웹사이트를 호스팅 할 수 있도록 해 줍니다. SNI없이는 서버는 사용자에게 어떤 인증서를 제공해야 하는지 또는 어떤 설정을 적용해야 하는지 모를 수도 있습니다.​</p>
+	<p>클라이언트는 접속하고자 하는 사이트의 호스트 이름을 포함하는 SNI 확장을 ClientHello 메시지에 추가 합니다. 클라이언트는 ClientHello 를 TLS 핸드쉐이크시에 서버에게 보냅니다. 이 시점에서 서버와 클라이언트는 암호화 키를 공유하지 않았기 때문에 불행히 ClientHello 메시지는 암호화가 되지 않은 채로 전송됩니다.</p>
+	<p></p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2018/09/tls13_unencrypted_server_name_indication-2.png" class="kg-image">
+		<figcaption>암호화되지 않은 SNI와 TLS 1.3​</figcaption>
+	</figure>
+	<p></p>
+	<p>이는 중간 경로의 관찰자 (ISP, 카페 주인, 방화벽 등)이 평문의 ClientHello 메시지를 가로채서 사용자가 접속하고자 하는 웹사이트를 알 수 있다는 것입니다. 이는 관찰자가 사용자가 접속하는 사이트를 추적할 수 있게 합니다.</p>
+	<p>하지만 SNI 암호화를 통해서 클라이언트는 ClientHello의 다른 부분이 평문으로 보내져도 SNI를 암호화하게 됩니다.</p>
+	<p>​</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2018/09/tls13_encrypted_server_name_indication-1.png" class="kg-image">
+		<figcaption>암호화된 SNI와 TLS 1.3​</figcaption>
+	</figure>
+	<p></p>
+	<p>그렇다면 SNI는 이전에 암호화되지 못했는데 왜 이제는 가능 할까요? 클라이언트와 서버가 아직 키 교환을 하지 못했는데 암호화 키는 어디서 왔을까요?</p>
+	<h3 id="-">달걀보다 닭이 먼저라 한다면, 닭은 어디에 있나요?</h3>
+	<p><a href="https://datatracker.ietf.org/meeting/101/materials/slides-101-dnsop-sessa-the-dns-camel-01" target="_blank">다른 여러가지 기능</a>과 마찬가지로 간단한 답은 "DNS"입니다.</p>
+	<p>서버는 잘 알려진 DNS 레코드에 <a href="https://en.wikipedia.org/wiki/Public-key_cryptography" target="_blank">공개 키</a>를 올려놓고, 클라이언트는 접속하기 전에 (A, AAAA 등의 다른 레코드처럼) 이 정보를 가져 옵니다. 이제 클라이언트는 ClientHello의 SNI 확장을 "암호화된 SNI"확장으로 교체하는데, 이 내용은 원래의 SNI와 다를게 없지만 아래 설명하는 것 처럼 서버의 공개 키에서 만든 대칭 암호 키를 사용하여 암호화합니다. 서버는 개인 키를 갖고 있으며 여기서 대칭 암호 키를 만들어낼 수 있으므로 확장 내용의 암호화를 풀어서 연결을 종료시킬 수 있습니다 (또는 백엔드 서버로 전달합니다​). 따라서 클라이언트와 접속할 서버 사이에서만 암호화 키를 알아낼 수 있기 때문에 암호화된 SNI를 제3자가 풀어낼 수 없습니다.</p>
+	<p>중요한 점은 이것은 TLS 1.3 또는 이후 버전의 확장이라는 점으로 이전 버전의 프로토콜에서는 동작하지 않습니다. 이유는 매우 간단합니다: TLS 1.3의 변경점 중 하나는 (<a href="https://blog.cloudflare.com/you-get-tls-1-3-you-get-tls-1-3-everyone-gets-tls-1-3/">문제가 없지는 않지만</a>)서버가 보낸 Certificate 메시지를 TLS 핸드쉐이크의 암호화 단계 이후로 옮긴 것입니다(1.3 이전에는 평문으로 전송되었습니다). 이런 프로토콜의 근본적인 변경 없이는 공격자가 네트워크를 통해서 전송되는 평문 인증서를 보는 것 만으로 서버의 정체를 알아낼 수 있을 것입니다.</p>
+	<p>기반이 되는 암호화 기술은 클라이언트와 서버가 신뢰할 수 없는 통신에서 공유하는 암호화 키를 만들어낼 수 있다는 <a href="https://ko.wikipedia.org/wiki/%EB%94%94%ED%94%BC-%ED%97%AC%EB%A8%BC_%ED%82%A4_%EA%B5%90%ED%99%98" target="_blank">디피-헬먼 키 교환 알고리즘</a>과 관련이 있습니다. 암호화된 SNI의 암호화 키는 (디피-헬먼 반고정 키의 공개 키 부분인)서버의 공개 키와 클라이언트가 즉석에서 만들어낸 일시적인 디피-헬먼 개인 키 부분을 사용하여 클라이언트 측에서 계산 됩니다. &nbsp;추가적인 데이터 (클라이언트가 ClientHello 메시지의 일부로 보낸 암호화 파라메터 등)도 암호화 과정 속에 들어가게 됩니다.</p>
+	<p>클라이언트의 ESNI 확장에는 실제 암호화된 SNI 데이터 뿐 아니라, 클라이언트의 공개 키 공유분, 암호화 알고리즘의 종류와 서버의 ESNI DNS 레코드의 요약 정보가 포함되어 있습니다. 한편 서버는 자신의 개인 키와 클라이언트의 공개​ 키 부분을 사용하여 암호화 키를 만들어​ 확장 내용의 암호화를 풀게 됩니다.</p>
+	<p>이 과정이 지나치게 복잡해 보일 수 있지만, 이 과정은 암호화 키가 생성된 TLS 세션에 묶여 있다는 점을 암호학적으로 보장하여 여러 연결에서 재사용될 수 없도록 합니다. 이렇게 하여 공격자는 단순히 확장 내용을 관찰하여 사용자가 접속하려는 사이트의 정체를 알아내기 위해서 별도의 세션에서 다시 돌려보는 일을 못하게 됩니다(소위 "붙여넣기" 공격이라고 합니다).</p>
+	<p>하지만 서버의 개인 키의 유출은 모든 ESNI의 대칭 키를 위험하게 할 수 있습니다(이전에 수집한 암호화된 정보를 관찰자가 풀어볼 수 있게 되므로). 따라서 클라우드플레어의 자체 SNI 암호화 구현은 전방 익명성(forward secrecy)를 향상시키기 위해 서버 키를 매 시간마다 새로 만들고 DNS 캐싱과 복제 지연 시간을 고려해서 이전 수 시간 분의 키도 같이 갖고 있습니다. 이렇게 하여 클라이언트는 약간 오래된 키를 써도 ESNI를 문제 없이 사용할 수 있습니다(하지만 모든 키는 언젠가는 파기되게 됩니다).</p>
+	<h3 id="-dns-">잠깐, 정말 DNS라고 했나요?</h3>
+	<p>주의깊은 독자라면 (기본적으로 평문인)DNS를 사용하는 것 자체가 암호화된 SNI 아이디어 전체를 의미없게 만든다고 생각할 지 모릅니다. 중간 경로의 관찰자는 암호화된 SNI의 사용 여부에 관계 없이 클라이언트가 보내는 평문 DNS 질의를 관찰하는 것 만으로 사용자가 어떤 웹사이트에 접속하려 하는지 알아낼 수 있을 것입니다.</p>
+	<p>그러나 TLS상의 DNS(DNS over TLS, DoT)와 HTTPS상의 DNS(DNS over HTTPS, DoH)와 같은 DNS 기능과 (클라우드플레어의 <a href="https://blog.cloudflare.com/announcing-1111/">1.1.1.1</a>과 같이) 이런 기능을 지원하는 공개 DNS 리졸버의 도입으로, DNS 질의는 암호화되어 감시자나 추적자에게서 보호될 수 있습니다.</p>
+	<p>DoT/DoH 리졸버의 응답을 일정 부분 신뢰할 수 있지만 (그래도 나쁜 리졸버는 있습니다) 특정 공격자는 권한 있는(authoritative) DNS 서버의 통신을 가로 채서 악성 정보를 넣어서 리졸버의 캐시를 오염시킬 수 있습니다. 이것을 막기 위해서는 권한 있는 DNS서버와 리졸버가 모두 <a href="https://www.cloudflare.com/dns/dnssec/" target="_blank">DNSSEC</a><sub>[1]</sub>을 지원해야 합니다. 클라우드플레어의 권한 있는 DNS 서버는 리졸버에 돌려주는 응답을 사인할 수 있고 1.1.1.1 리졸버는 이것을 검증할 수 있습니다.</p>
+	<h3 id="ip-">IP주소는 어떤가요?</h3>
+	<p>이제 DNS 질의와 TLS SNI 확장이 공격자에게서 보호될 수 있지만, 사용자의 장치에서 나오는 트래픽의 최종 주소를 보는 것 만으로 사용자가 어떤 웹사이트를 방문하고 있는지 알 수 있을지도 모릅니다. 우리의 고객은 많은 클라우드플레어 도메인이 같은 주소를 공유한다는 사실 덕분에 일정 부분 보호를 받습니다만, 이것으로만은 충분하지 않고 더 많은 사용자를 보호하기 위해 더 많은 작업이 필요합니다. 향후 이 문제에 대해서 클라우드플레어의 업데이트를 기대해 주시기 바랍니다.</p>
+	<h3 id="--1">어디서 신청 가능 한가요?</h3>
+	<p>암호화된 SNI는 현재 클라우드플레어 네임 서버를 시용하는 모든 존에서 무료로 설정되어 있으므로 클라우드플레어를 이용하는 웹사이트에서는 이 기능을 활성화하기 위해 다른 설정은 필요하지 않습니다. 브라우저 쪽에서는 <a href="https://www.mozilla.org/firefox/channel/desktop/" target="_blank">Firefox Nightly</a> 에 이 <a href="https://blog.cloudflare.com/encrypt-that-sni-firefox-edition/">기능이 추가</a>되어 있습니다(암호화 SNI 스펙은 아직 개발 중이므로 안정적이지 않을 수 있습니다).</p>
+	<p><a href="https://encryptedsni.com" target="_blank">encryptedsni.com</a> ​를 방문하면 브라우징이 얼마나 안전한지 체크해 볼 수 있습니다. 안전한 DNS를 사용하고 있는지? 여러분의 리졸버가 DNSSEC 시그너처를 확인하고 있는지? 브라우저가 TLS 1.3을 지원하는지? 브라우저가 SNI정보를 암호화하고 있는지? 이 모든 대답에 "예"라고 한다면 여러분은 웹사이트 브라우징이 감시자로부터 안전하다고 믿고 편히 잠들 수 있을 것입니다.</p>
+	<h3 id="--2">결론</h3>
+	<p>암호화된 SNI는 TLS 1.3, DNSSEC, DoT/DoH 와 같이 쓰이면 인터넷상의 감시와 검열을 가능하게 하는 몇가지 문제점을 해결해 줍니다. 감시가 없는 인터넷을 위해서는 더 많은 작업이 필요 합니다만, 그 길로 ​천천히 나아가고 있습니다.</p>
+	<p><sub>[1]: DNSSEC은 DNS 리졸버와 TLS 서버 사이의 BGP 경로를 중간에서 탈취해 막을 수 있다는 점을 말해두고 싶습니다. 지난 주 우리는 RPKI 지원을 <a href="https://blog.cloudflare.com/rpki/">발표</a> 하였는데, DNS 리졸버와 TLD가 모두 RPKI를 구현한다면 이런 중간 탈취는 더 어려워질 것입니다.</sub></p>
+</div>

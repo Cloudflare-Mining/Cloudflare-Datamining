@@ -1,0 +1,95 @@
+<div class="post-content lh-copy gray1">
+	<p><em>本博客发布于 2021 年 11 月 20 日。随着我们继续优化我们的网络，我们将发布定期更新，请于</em><a href="https://blog.cloudflare.com/tag/network-performance-update/"><em>此处</em></a><em>获取。</em></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/Network-Performance-Update--Full-Stack-Week-header.png" class="kg-image" alt="Network Performance Update: Full Stack Week"></figure>
+	<p>两个多月前，我们分享了全球最后一英里网络的<a href="https://blog.cloudflare.com/benchmarking-edge-network-performance/">广泛基准测试结果</a>。结果显示，基于一系列的测试（TCP 连接时间、接收第一个字节的时间、接收最后一个字节的时间）和一系列测量值（平均值为 p95），Cloudflare 是全球 49% 的网络中最快的提供商。从那时起，我们一直在不断努力，持续改善性能，力图成为全球最快的提供商。<a href="https://blog.cloudflare.com/two-weeks-later-finding-and-eliminating-long-tail-latencies/">我们设定了一个目标</a>，在每一个创新周，都在额外 10% 的网络中成为最快的提供商。我们在 <a href="https://blog.cloudflare.com/tag/birthday-week/">Birthday Week</a>（2021 年 9 月）期间实现了该目标。</p>
+	<p>今天，我们很骄傲地报告，我们 <a href="https://blog.cloudflare.com/tag/full-stack-week/">Full Stack Week</a>（2021 年 11 月）的目标已取得部分胜利。Cloudflare 针对全球前 1,000 个网络（依据播发的 IPv4 地址数）测量了我们的性能。Cloudflare 已在 79 个新网络中成为最快的提供商，在这 1,000 个网络中增加了 14%。当然，我们尚未完成目标，但我们想要分享最新成果，并说明我们是如何实现的。</p>
+	<p>然而，在我们详细介绍我们的网络性能之前，我们想要分享一些有关 Workers 平台的新性能指标（鉴于这是 Full Stack Week！）。我们比较了 Cloudflare Workers 和 Fastly 的 <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6e2d01031e1b1a0b2e2b0a090b">[email&nbsp;protected]</a> 的数据，结果是：Workers 快 196%。</p>
+	<h3 id="-"><strong>更快的网络意味着更快的堆栈</strong></h3>
+	<p>几个月前，我们也讨论了 Cloudflare Workers 的性能和其他相似产品的比较情况。我们<a href="https://blog.cloudflare.com/cloudflare-workers-the-fast-serverless-platform/">将我们的性能</a>与 Lambda 和 <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a2eec3cfc0c6c3e2e7c6c5c7">[email&nbsp;protected]</a> 进行比较，Cloudflare Workers 的性能分别超出 210% 和 298%。</p>
+	<p>当时，我们想要了解我们与所有竞争产品比较的情况，但是并非所有产品都广泛可用。因此，我们无法报告 Workers 与另一解决方案——Fastly 的 <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="aeedc1c3dedbdacbeeebcac9cb">[email&nbsp;protected]</a> 的比较情况。</p>
+	<p>今天，我们很高兴地报告，<strong>我们使用 Catchpoint 在世界各地的数据在 50 个节点上运行了测试，根据这些测试中的接收第一个字节的时间，可以得出 Cloudflare Workers 比 Fastly 的 <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="74371b190401001134311013111d07">[email&nbsp;protected]</a> 快 196%。</strong></p>
+	<p>像过去一样，我们执行了一个函数，仅返回当前时间和所测得的接收第一个字节等待时间（客户端发出 HTTP 请求，到 DNS、连接和 TLS 握手之后，客户端收到请求响应的第一个字节之间的时间长度）。测试在 2021 年 11 月 8 日进行，对 Cloudflare Workers 和 Fastly 的 <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="97d4f8fae7e2e3f2d7d2f3f0f2">[email&nbsp;protected]</a> 都使用了免费层级帐户。</p>
+	<p>在两个提供商上运行的代码完全相同 — 是一个返回所有请求标头的小型函数：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">addEventListener('fetch', event =&gt; event.respondWith(handleRequest(event)));
+
+
+async function handleRequest(event) {
+  let requestHeaders = Object.fromEntries(event.request.headers)
+
+  return new Response(JSON.stringify(requestHeaders), {status: 200})
+};
+
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>橙色：Cloudflare Workers</p>
+	<p>黑色：<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="93d0fcfee3e6e7f6d3d6f7f4f6">[email&nbsp;protected]</a></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image8-9.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image7-9.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image10-11.png" class="kg-image"></figure>
+	<p>如果您想要自行探索结果，此处是<a href="https://p.catchpoint.com/ui/Entry/PC/V/ARTO-C-D-K396AjZokq1JMAA" target="_blank">数据链接</a>。</p>
+	<p>在建立我们的全球网络的过程中，我们不断加速，利用隔离，并<a href="https://blog.cloudflare.com/eliminating-cold-starts-with-cloudflare-workers/">实现零冷启动</a>，从而全方面为客户提供极快速度。</p>
+	<p>现在，让我们继续讲述 Cloudflare 更广泛的网络性能是如何持续改进的！</p>
+	<h3 id="--1"><strong>测量重要指标</strong></h3>
+	<p>为量化网络性能，我们必须从世界各地的各种不同网络获取足够的数据，以将我们自己与其他提供商进行比较。我们使用 Real User Measurements (RUM) 来从几家不同提供商提取一个 100kb 的文件。世界各地的用户会报告不同提供商的性能。报告数据的用户越多，信号的保真度就越高。目标是准确地反映出在哪些网络中其他提供商的速度更快，以及更重要的，Cloudflare 在哪些地区还可以改进。您可以在<a href="https://blog.cloudflare.com/benchmarking-edge-network-performance/">这里的原始 Speed Week 博客文章</a>中阅读更多内容。</p>
+	<p>在量化网络性能的过程中，我们清楚地看到我们并未在所有地区都实现最快速度。在 Birthday Week 之后，我们发现在 601 个国家（地区）/网络对中，我们的速度落后于领先提供商 100 多毫秒（国家（地区）/网络对定义为一个特定国家（地区）内的网络性能）。</p>
+	<p>我们不断寻找我们慢的<em>原因</em>，然后作出改进。我们在每一个网络所面临的挑战都是独特的，这些挑战展示出互联网上盛行的各种不同问题。我们将深入分析几个网络，展示我们诊断并改进性能的过程。</p>
+	<p>在此之前，我们先看一下我们在过去两周内努力的成果。</p>
+	<p>Cloudflare 成为 79 个新网络中的 TCP 连接时间第一名。下表显示了 Full Stack Week 和 Birthday Week 期间，我们在 TCP 连接时间方面排名第一的网络数比较情况：</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/11/image13-6.png" class="kg-image" alt="*Performance is defined by TCP connection time across top 1000 networks in the world by number of IPv4 addresses advertised" title="Chart">
+		<figcaption><em>*Performance is defined by TCP connection time across top 1000 networks in the world by number of IPv4 addresses advertised</em></figcaption>
+	</figure>
+	<p><em><em>*性能由全球前 1000 个网络（依据播发的 IPv4 地址数）中的 TCP 连接时间定义</em></em></p>
+	<p>出于我们的不断努力，我们在额外 79 个网络中变得更为快速，这代表我们在其中最快的网络数增长了 14%。以下图表展示了 Birthday Week 和 Full Stack Week 周期间我们的排名分布情况对比：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image12-9.png" class="kg-image" title="Chart"></figure>
+	<p>现在我们已经谈论完我们的改进情况，接下来我们将分享我们在全球追求最佳性能的几个故事，每个故事中都有一系列不同的挑战。</p>
+	<h3 id="--2"><strong>在秘鲁适当放置流量</strong></h3>
+	<p>我们改善网络性能的第一站是秘鲁。我们发现，利马的许多用户实际上是被发送到智利来接受服务。Cloudflare 在秘鲁有多个设点，这种事情本不应该发生。将流量发送到智利导致我们在该国家特定网络中的排名位于第四。我们的工程师知道，获得第一的最佳方式是确保所有利马流量保留在该国家范围内，因此我们决定了解一下为什么这么多流量会被路由到国家外部。</p>
+	<p>这么多流量被路由到国家外部的原因是，网络提供商分配到 Cloudflare 的流量并不均衡，过多用户被发送到一个特定地点。我们的网络有一系列检查和自动防故障措施，让我们能够确保即使发生这种情况，我们的用户也将继续拥有良好的体验。由于分配到我们在利马所在地点的流量不均衡，这里的检查变得过于繁忙；于是，流量被发送到国外。</p>
+	<p>为短期解决此问题，我们决定对我们在利马的设点进行一些手动负载平衡，同时构建自动化以在未来消除手动操作的需求。我们选择了流量最大的地点，并停止从该地点播发一些前缀。我们的假设是，流量将只流向利马的其他地点，而不是智利，所有一切都将取得平衡，从而改善所有人的 TCP 连接时间，同时将流量保持在国内。我们开始对免费流量的一小部分进行改变，证实了我们的假设是正确的。然后，我们在更大的范围内部署改变，P90 客户端 TCP 往返时间从 240 毫秒降低到 60 毫秒。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image14-9.png" class="kg-image"></figure>
+	<p>于是，Cloudflare 现在成为了秘鲁网络性能中的第一名。</p>
+	<h3 id="--3"><strong>在斯里兰卡降低延迟</strong></h3>
+	<p>我们的下一个示例在另一个半球的斯里兰卡，在这里，我们发现网络提供商将用户的请求路由到纽瓦克市。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>1 * * *
+2 100.85.0.1 3.061ms 2.522ms 2.728ms
+3 198.51.100.146 AS29766 3.651ms 1.855ms 2.715ms
+4 198.51.100.145 AS29766 3.438ms 3.225ms 2.805ms
+5 222.165.177.150 AS9329 2.233ms 2.272ms 2.843ms
+6 222.165.177.145 AS9329 2.703ms 2.862ms 2.291ms
+7 103.87.125.253 AS45489 3.658ms 3.708ms 3.613ms
+8 103.87.124.245 AS45489 120.027ms 120.665ms 120.471ms
+9 103.87.124.146 AS45489 115.597ms 115.863ms 115.178ms
+10 50.208.235.157 be-107-2008-pe01.60hudson.ny.ibone.comcast.net AS7922 249.884ms 249.475ms 250.063ms -&gt; going from Sri Lanka to New York
+11 96.110.41.145 be-4101-cs01.newyork.ny.ibone.comcast.net AS7922 267.839ms 267.979ms 268.719ms
+12 96.110.34.34 be-3112-pe12.111eighthave.ny.ibone.comcast.net AS7922 262.647ms 261.272ms 262.272ms
+13 66.208.233.106 AS7922 262.378ms 258.948ms 258.057ms
+14 172.70.108.4 AS13335 268.974ms 280.475ms 268.158ms
+15 172.67.182.209 AS13335 267.329ms 266.466ms 266.593ms
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>显然，这会导致严重的延迟问题，出于此原因， Cloudflare 在斯里兰卡的网络中排名第四。尽管科伦坡是一个相对较小的地点，我们还是尽可能多地转移了流量，并通过该地点进行播发，以改善用户体验，并减少发送至纽瓦克市的潜在流量数量。</p>
+	<p>在进行此操作后，我们发现 P90 客户端 TCP 往返时间从 150 毫秒降低到 50 毫秒。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image1-60.png" class="kg-image"></figure>
+	<p>然而，尽管我们通过科伦坡来播发我们的所有范围，且性能总体来说得到了改善，该提供商仍然将部分 Cloudflare 前缀的流量发送到纽瓦克市。我们联系了该提供商，让他们知道他们所做的这一更改影响到用户体验。</p>
+	<p>完成所有这些事情后，Cloudflare 在斯里兰卡的排名从第四上升到第一。</p>
+	<h3 id="birthday-week-"><strong>Birthday Week 的更新</strong></h3>
+	<p>所有这些网络变化和其他措施，让 Cloudflare 在比以往更多的网络中成为了网络效能的第一名。在 Birthday Week 期间，我们宣布在更多的网络中比我们的竞争对手更快一步。在全球前 1,000 个网络中（依据播发的 IPv4 地址数），下面是 Cloudflare 在 Birthday Week（2021 年 9 月）期间的表现：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image11-7.png" class="kg-image"></figure>
+	<p>截至 Full Stack Week（2021 年 11 月），我们进一步提升了我们的位置，在 79 个新网络中变得更快：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image4-16.png" class="kg-image"></figure>
+	<p>但我们并非仅提高了最后一英里的性能，我们也在收到最后字节的时间方面获得了更好的性能。下面是 Birthday Week（2021 年 9 月） 之前的网络格局：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image9-8.png" class="kg-image"></figure>
+	<p>下面是现在（2021 年 11 月）的网络格局：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image5-10.png" class="kg-image"></figure>
+	<p>Cloudflare 还承诺在每个国家（地区）成为最快的提供商。每个国家（地区）的网络性能是一个活动目标，很大程度上由给定日期访问的用户来驱动。此外，查看长时间范围内不同国家（地区）的总体网络性能可能会遗漏大量数据。话虽这么说，在下面的世界地图中，使用数据展示了 Birthday Week（2021 年 9 月）期间具有最快网络提供商的国家（地区）：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image6-11.png" class="kg-image"></figure>
+	<p>下面是两个月之后 Full Stack Week（2021 年 11 月）期间的情况：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image2-24.png" class="kg-image"></figure>
+	<h3 id="--4"><strong>长尾延迟</strong></h3>
+	<p>这些性能更新反复不断的主题始终是待解决的长尾问题。随着我们的发展，解决网络上的这些问题对于确保提供卓越性能至关重要。</p>
+	<p>我们的团队已付出大量努力，且获得了一些伟大的成果，但我们仍在尝试变得更快。我们已自动化探索此类性能问题的过程，我们正在尝试构建自动化，以检测并修复不同类型的此类问题，从而在未来保持最佳网络性能。</p>
+	<p>像这样跟踪性能不仅仅是让一个数据变得更快，还有助于改善整个堆栈的性能，使一切像闪电般快速。</p>
+	<p>2021 年我们还有一个即将到来的创新周，之后我们将继续报告我们在优化全球性能方面所取得的进一步进展。</p>
+</div>

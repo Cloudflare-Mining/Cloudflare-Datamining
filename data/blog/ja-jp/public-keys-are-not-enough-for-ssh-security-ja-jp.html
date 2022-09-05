@@ -1,0 +1,59 @@
+<div class="post-content lh-copy gray1">
+	<p>SSH公開鍵を使用している組織なら、SSH公開鍵を紛失してしまったなんてことは大いにあり得ると思います。鍵の所有者にインフラストラクチャへのアクセスを許可するファイルが、バックアップまたは前任者のコンピューターにあります。従業員間でSSH鍵を共有する場合、攻撃者はいくつかの鍵を手に入れればシステム全体にアクセスできてしまう可能性があります。共有しない場合は、あまりに多くの鍵があって、少なくとも1つの鍵がかなり前から消息不明になっているはずです。</p>
+	<p>攻撃者が1台のクライアントデバイスを侵害できるとしたら、マシンにすでに含まれている鍵を使用して簡単にアクセスできるすべてのターゲットを一覧表示する、known_hostsファイルがある可能性があります。誰かがチームメンバーのノートパソコンを侵害することができたとしたら、パスワード保護をしていないデバイス上にある鍵を使用して機密情報を入手できてしまいます。</p>
+	<p>その場合、紛失したSSH鍵はどのように対処して失効させるか？生成された鍵のアカウンティング（利用の事実の記録）を持っているか？SSH鍵のローテーションをしているか？お客様へのサービス提供に忙しくてセキュリティ対策を確実に実施するのが難しい組織において、そうした点をどのように確認すればよいでしょうか。</p>
+	<p>チームがインフラストラクチャに接続する方法についてゼロトラストセキュリティを適用できるように、Cloudflare Accessは昨年からSSH接続のサポートを<a href="https://blog.cloudflare.com/releasing-the-cloudflare-access-feature-that-let-us-smash-a-vpn-on-stage/">開始</a>しました。ユーザーがターゲットリソースへの接続を試みるたびにIDベースルールを適用してSSOセキュリティをSSH接続に適用するため、Accessはお使いのIdPと統合します。</p>
+	<p>ただし、Accessがサーバーにユーザーを接続すると、ユーザーはアカウントを承認するのに従来のSSH鍵に依存する必要がありました。今日からでも、チームはその要件を撤廃し、静的SSH鍵を短時間の証明書に置き換えることができます。その手助けができることを嬉しく思います。</p>
+	<h2 id="-cloudflare-access-"><strong>プライベートネットワークをCloudflare Accessに置き換える</strong></h2>
+	<p>従来のネットワーク境界モデルでは、チームはプライベートネットワークとSSH鍵という2つのゲートを使用してインフラストラクチャのセキュリティを保護します。</p>
+	<p>プライベートネットワークでは、サーバーに接続しようとするユーザーが同じネットワーク上、またはピアリングされた同等のネットワーク（VPNなど）上に存在している必要があります。しかし、それにはいくつかのリスクが伴います。プライベートネットワークは、マシンに接続できるネットワーク上にいるユーザーをデフォルトで信頼します。アドミニストレーターは、ネットワークを事前にセグメント化するか、またはデフォルトから逆方向に辿る制御リストを使用してインフラストラクチャの各部分をセキュリティ保護する必要があります。</p>
+	<p>Cloudflare Accessは、どのユーザーも信頼すべきでない、という別の角度から捉えてインフラストラクチャを保護します。代わりに、ユーザーはデフォルトで一意のマシンまたはデスティネーションにアクセスできることを証明する必要があります。</p>
+	<p><a href="https://blog.cloudflare.com/releasing-the-cloudflare-access-feature-that-let-us-smash-a-vpn-on-stage/">昨年</a>、Cloudflare Access内でのSSH接続のサポートをリリースし、チームが従来のネットワーク境界モデルから、ユーザー認証のためにサーバーに対するすべての要求を評価するモデルに移行できるようにしました。人気IDプロバイダーとの統合を通じて、このソリューションはチームがSSOパイプラインをSSHフローに取り込むことも可能にします。</p>
+	<h2 id="-ssh-"><strong>静的SSH鍵を短時間の証明書に置き換える</strong></h2>
+	<p>ユーザーがSSH経由でサーバーに接続したら、通常はセッションを承認する必要があります。接続しようとしているマシンには、ユーザーIDまたはロールIDで構成されるプロフィール一式があります。これらのプロフィールは、ユーザーが実行できるアクションを定義します。</p>
+	<p>SSHプロセスでは、ユーザーがプロフィールにログインするのに使用できるいくつかのオプションがあります。場合によっては、ユーザーはユーザー名とパスワードの組み合わせを使ってログインできます。しかし、ほとんどのチームは、そのログインを処理するのに公開鍵／秘密鍵証明書に頼っています。このフローを使用するには、アドミニストレーターとユーザーは前提条件となる手順を実行する必要があります。</p>
+	<p>接続する前に、ユーザーは証明書を生成して、公開鍵をアドミニストレーターに提供します。アドミニストレーターは証明書を信頼するようにサーバーを設定し、そのサーバーを特定のユーザーとパーミッション一式に関連付けます。ユーザーは、その証明書をデバイスに保存し、ラストマイル時に証明書を提示します。ただし、これにより、SSOが解決しようとする以下の問題がすべて未解決のままとなります。</p>
+	<ul>
+		<li>ほとんどのチームは、ユーザーに証明書のローテーションを強制することはありません。したとしても、せいぜい年1回です。これにより、静的な認証情報は、数百または数千のデバイスにつながったコアインフラストラクチャに残ったままになります。</li>
+		<li>ユーザーは、デバイス上の証明書を保護する責任があります。また、ユーザーはパスワードについても責任を負いますが、組織は要件と失効を一元的に実施できます。</li>
+		<li>失効は難しい作業です。チームは、紛失または盗難に遭った証明書が使用されないように、CRLまたはOCSPのプラットフォームを管理しなければなりません。</li>
+	</ul>
+	<p>Cloudflare Accessを使用すれば、インフラストラクチャ内のユーザー認証にSSOアカウントを用いることができます。静的鍵は必要ありません。</p>
+	<h2 id="-"><strong>仕組み</strong></h2>
+	<p>この仕組みを確立するのに、既存の3つのツール、Cloudflare Access、Argo Tunnel、Workersを利用しました。</p>
+	<p>Accessは、IDプロバイダー（OktaやAzureADなど）内の従業員データと、作成したポリシーを組み合わせたポリシーエンジンです。これらのポリシーに基づいて、Accessは、内部アプリケーションへのアクセスを、選択したユーザーに制限できます。同じポリシー概念を使用してSSH経由でサーバーへのアクセスを制御するという方法は、それほど大きな飛躍ではありません。作成されたポリシーを使用して、どの従業員がどのリソースにアクセスできるかを決定します。次に、短時間の証明書を生成して、ごく短時間だけそのリソースにアクセスできるようにします。IdPからユーザーを削除すると、インフラストラクチャへのユーザーのアクセスも同様にシームレスに削除されます。</p>
+	<p>ネットワークを介してトラフィックを濾過するには、別のCloudflareツール、Argo Tunnelを使用します。Argo Tunnelは、サーバーをインターネットに接続する従来のモデルを反転させます。マシン上でデーモンをスピンアップすると、Cloudflareとのアウトバウンド接続が確立され、すべてのトラフィックはそれらの接続を通過します。これにより、マシンを直接インターネットに公開することなく、マシンをCloudflareのネットワークの一部にすることができます。</p>
+	<p>HTTPユースケースの場合、Argo Tunnelはサーバー上での実行のみを必要とします。Access SSHフローの場合、Argo Tunnelクライアントであるcloudflaredをサーバーとエンドユーザーのノートパソコンの両方で実行して、Cloudflare経由でSSHトラフィックを中継・代理します。</p>
+	<p>ユーザーがSSH経由でAccess for Infrastructureによって保護されているリソースに接続する場合、コマンドラインツールcloudflaredを使用します。cloudflaredは、そのホスト名にバインドされているSSHトラフィックを取得し、ssh config設定に基づいてCloudflareを介して転送します。パイピングやコマンドラッピングは必要ありません。cloudflaredは、ブラウザーウィンドウを起動し、SSO認証情報を用いて認証するようユーザーに要求します。</p>
+	<p>認証されると、AccessはユーザーのIDを、そのアプリケーションに対して設定したポリシーと照合します。ユーザーがリソースへのアクセスを許可されている場合、Accessは、Cloudflareによって署名され、ユーザーとアプリケーションを対象範囲とするJSON Web Token（JWT）を生成します。Accessは、cloudflaredを介してそのトークンをユーザーのデバイスに配布し、ツールがトークンをローカルに保存します。</p>
+	<p>主なAccess認証フローと同様に、トークン検証は、すべてのデータセンターで実行しているCloudflare Workerを使用して構築されるため、高速かつ高可用性を実現します。Workerにより、Cloudflareのデータセンターの194か所すべてにこのSSHプロキシ機能を実装できました。多くの場合、Access for Infrastructureは、SSHセッションの速度を下げるのではなく上げることになります。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/10/Short-lived-Cert-copy@2x-1.png" class="kg-image"></figure>
+	<p>短時間の証明書を有効にすると、クライアント上で実行されているcloudflaredのインスタンスがもう1つの手順を実行します。cloudflaredは、そのトークンを一時的な証明書を作成するCloudflareの証明書署名エンドポイントに送信します。次に、ユーザーのSSHフローが、Accessによる認証に使用されるトークンと、認証に使用される短時間の証明書の両方をサーバーに送信します。主なAccess認証フローと同様に、トークン検証は、すべてのデータセンターで実行しているCloudflare Workerを使用して構築されるため、高速かつ高可用性を実現します。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/10/Short-lived-Cert@2x.png" class="kg-image"></figure>
+	<p>サーバーが要求を受信すると、短時間の証明書をその公開鍵に対して検証します。有効な場合は、一致するUnixユーザーに対してユーザーIDを承認します。証明書は発行から2分間有効ですが、セッションが開始するとSSH接続はそれより長く維持される可能性があります。</p>
+	<h2 id="--1"><strong>エンドユーザーの利用体験</strong></h2>
+	<p>Cloudflare AccessのSSH機能は、エンドユーザーに対して完全に透過的であり、一意のSSHコマンド、ラッパー、フラグは必要ありません。代わりに、Accessでは、使用するにあたって、チームメンバーは以下のような1回限りの手順を実行する必要があります：</p>
+	<h4 id="1-cloudflared-"><strong>1.cloudflaredデーモンをインストールする</strong></h4>
+	<p>Cloudflareを介してチームメンバーのデバイスからSSH接続をプロキシするのに、ターゲットサーバー上で実行されるのと同じ軽量ソフトウェアを使用します。ユーザーは、brewのような人気のパッケージマネージャーを使用するか、または<a href="https://developers.cloudflare.com/access/cli/installing-cli-tool/" target="_blank">こちら</a>にあるリンクにてcloudflaredデーモンをインストールすることができます。あるいは、オープンソースソフトウェアであるため、アドミニストレーターが構築して配布することができます。</p>
+	<h4 id="2-ssh-"><strong>2.SSH構成の更新を印刷して保存する</strong></h4>
+	<p>エンドユーザーがcloudflaredをインストールしたら、以下の1つのコマンドを実行して、SSH構成ファイルに追加する新しい行を生成する必要があります：</p>
+	<pre><code class="language-ssh">cloudflared access ssh-config --hostname vm.example.com --short-lived-cert</code></pre>
+	<p>hostnameフィールドには、Accessによって保護されているリソースのホスト名またはワイルドカードサブドメインがあります。実行すると、cloudflaredは次の設定内容を印刷します：</p>
+	<pre><code class="language-ssh">Host vm.example.com
+    ProxyCommand bash -c '/usr/local/bin/cloudflared access ssh-gen --hostname %h; ssh -tt %<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2f5d6f4c495f465f4a025942014a574e425f434a014c4042">[email&nbsp;protected]</a> &gt;&amp;2 &lt;&amp;1'
+    
+Host cfpipe-vm.example.com
+    HostName vm.example.com
+    ProxyCommand /usr/local/bin/cloudflared access ssh --hostname %h
+    IdentityFile ~/.cloudflared/vm.example.com-cf_key
+    CertificateFile ~/.cloudflared/vm.example.com-cf_key-cert.pup</code></pre>
+	<p>ユーザーは、その出力をSSH構成ファイルに追加する必要があります。保存すると、SSH経由で保護されているリソースに接続できます。ほかのブラウザーベースのツールにログインするのと同じ方法で、AccessはブラウザーでSSO認証情報を使用して認証するよう要求します。認証情報を使用したアクティブなブラウザーセッションがすでに存在する場合は、成功ページが表示されます。</p>
+	<p>端末内では、cloudflaredはセッションを確立し、そのアイデンティティに対応するクライアント証明書を発行します。</p>
+	<!--kg-card-begin: html-->
+	<stream src="bb9667207c9686037858c6534ff7d6bc" controls=""></stream>
+	<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+	<script data-cfasync="false" defer="" type="text/javascript" src="https://embed.videodelivery.net/embed/r4xu.fla9.latest.js?video=bb9667207c9686037858c6534ff7d6bc"></script>
+	<!--kg-card-end: html-->
+	<h2 id="--2"><strong>次は何？</strong></h2>
+	<p>Accessは、短時間の証明書を使用して、あらゆる環境でチームとインフラストラクチャに対する単一のSSO統合ゲートウェイになることができます。ユーザーは、任意のマシンに直接SSH接続することができ、アドミニストレーターは、ジャンプホストを完全に置き換え、オーバーヘッドを削除することができます。この機能は、現在、すべてのAccessのお客様がご利用いただけます。<a href="https://developers.cloudflare.com/access/ssh/short-live-cert-server/" target="_blank">こちら</a>にあるドキュメントの手順に従って使い始めることができます。</p>
+</div>

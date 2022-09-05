@@ -1,0 +1,201 @@
+<div class="post-content lh-copy gray1">
+	<p>在公司内部，我们的DDoS缓解团队有时被称为“丢包者”。其他团队在构建令人兴奋的产品来处理通过我们网络的流量，而我们却乐于发现丢弃这些流量的新方法。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/12/38464589350_d00908ee98_b.jpg" class="kg-image">
+		<figcaption><span class="-mobiledoc-kit__atom">‌‌</span><a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank">CC BY-SA 2.0 </a><a href="https://www.flickr.com/photos/beegee49/38464589350" target="_blank">图片</a>作者<a href="https://www.flickr.com/photos/beegee49" target="_blank">Brian Evans</a></figcaption>
+	</figure>
+	<p></p>
+	<p>快速丢弃数据包对于抵御DDoS攻击非常重要。</p>
+	<p>丢掉发送到我们服务器的数据包，这和听上去一样简单，我们可以在很多层面上完成。每种技术都有其优缺点，在这篇博文里，我们将回顾到目前为止我们尝试过的所有技术。</p>
+	<h2 id="-">试验台</h2>
+	<p>为了说明这些方法的相对性能，我们将展示一些数字。这些基准是人为设定的，因此对这些数字我们要有所保留。我们将使用我们的一台Intel服务器，它具有10Gbps的网卡。硬件的具体细节并不是很重要，因为这一测试是为了显示操作系统的限制而非硬件的限制。</p>
+	<p>我们的测试参数设置如下：</p>
+	<ul>
+		<li>我们传输大量小UDP数据包，达到14Mpps（一千四百万数据包/每秒）。</li>
+		<li>该流量直接指向目标服务器上的单个CPU。</li>
+		<li>我们测量该CPU上内核处理的数据包数量。</li>
+	</ul>
+	<p>我们并不是要最大化用户空间应用的速度，也不是要最大化数据包的吞吐量——相反，我们要特别展现出内核的瓶颈。</p>
+	<p>试验生成的流量将准备对conntrack施加最大的压力——它使用随机源IP和端口字段。Tcpdump将显示如下：</p>
+	<pre><code>$ tcpdump -ni vlan100 -c 10 -t udp and dst port 1234
+IP 198.18.40.55.32059 &gt; 198.18.0.12.1234: UDP, length 16
+IP 198.18.51.16.30852 &gt; 198.18.0.12.1234: UDP, length 16
+IP 198.18.35.51.61823 &gt; 198.18.0.12.1234: UDP, length 16
+IP 198.18.44.42.30344 &gt; 198.18.0.12.1234: UDP, length 16
+IP 198.18.106.227.38592 &gt; 198.18.0.12.1234: UDP, length 16
+IP 198.18.48.67.19533 &gt; 198.18.0.12.1234: UDP, length 16
+IP 198.18.49.38.40566 &gt; 198.18.0.12.1234: UDP, length 16
+IP 198.18.50.73.22989 &gt; 198.18.0.12.1234: UDP, length 16
+IP 198.18.43.204.37895 &gt; 198.18.0.12.1234: UDP, length 16
+IP 198.18.104.128.1543 &gt; 198.18.0.12.1234: UDP, length 16</code></pre>
+	<p>在目标端，所有数据包都将被转发到一个RX队列，即一个CPU。我们通过硬件流控制来实现这一点：</p>
+	<pre><code>ethtool -N ext0 flow-type udp4 dst-ip 198.18.0.12 dst-port 1234 action 2</code></pre>
+	<p>基准测试总是很难的。在准备测试时，我们了解到任何活动的raw socket（原始套接字）都会破坏性能。在运行任何测试之前，请记住确保没有任何陈旧的tcpdump进程在运行。这是一个检查它的方法，表明活动的进程无效：</p>
+	<pre><code>$ ss -A raw,packet_raw -l -p|cat
+Netid  State      Recv-Q Send-Q Local Address:Port
+p_raw  UNCONN     525157 0      *:vlan100          users:(("tcpdump",pid=23683,fd=3))</code></pre>
+	<p>最后，我们将在计算机上禁用Intel Turbo Boost功能：</p>
+	<pre><code>echo 1 | sudo tee /sys/devices/system/cpu/intel_pstate/no_turbo</code></pre>
+	<p>尽管Turbo Boost很好并且可以将吞吐量提高至少20％，但它也大大恶化了我们测试中的标准偏差。启用turbo后，我们的数值偏差为±1.5％。如果关闭Turbo，这一数值则下降到可控的0.25％。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/12/layers.jpg" class="kg-image"></figure>
+	<p></p>
+	<h4 id="-1-">阶段1. 在应用程序中丢弃数据包</h4>
+	<p>让我们先从将数据包传递到应用程序，并在用户空间代码中忽略这些数据包的想法开始。 对于测试设置，首先需要确保iptables不会影响性能：</p>
+	<pre><code>iptables -I PREROUTING -t mangle -d 198.18.0.12 -p udp --dport 1234 -j ACCEPT
+iptables -I PREROUTING -t raw -d 198.18.0.12 -p udp --dport 1234 -j ACCEPT
+iptables -I INPUT -t filter -d 198.18.0.12 -p udp --dport 1234 -j ACCEPT</code></pre>
+	<p>应用程序代码是一个简单的循环，接收数据并立即将其丢弃在用户空间中：</p>
+	<pre><code>s = socket.socket(AF_INET, SOCK_DGRAM)
+s.bind(("0.0.0.0", 1234))
+while True:
+    s.recvmmsg([...])</code></pre>
+	<p><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-07-dropping-packets/recvmmsg-loop.c" target="_blank">我们准备了代码</a>，运行一下：</p>
+	<pre><code>$ ./dropping-packets/recvmmsg-loop
+packets=171261 bytes=1940176</code></pre>
+	<p>这种设置允许内核从硬件接收队列中仅接收微不足道的175kpps，这是使用我们的简易<a href="https://blog.cloudflare.com/three-little-tools-mmsum-mmwatch-mmhistogram/"><code>mmwatch</code>工具</a>和通过<code>ethtool</code>来测量的：</p>
+	<pre><code>$ mmwatch 'ethtool -S ext0|grep rx_2'
+ rx2_packets: 174.0k/s</code></pre>
+	<p>从技术上讲，硬件接收的速度是14Mpps（Mpacket/s，每秒百万包数），但是我们不可能将所有这些数据包都传递给一个RX队列，因为这个队列只由一个单核CPU处理内核工作。mpstat证实了这一点：</p>
+	<pre><code>$ watch 'mpstat -u -I SUM -P ALL 1 1|egrep -v Aver'
+01:32:05 PM  CPU    %usr   %nice    %sys %iowait    %irq   %soft  %steal  %guest  %gnice   %idle
+01:32:06 PM    0    0.00    0.00    0.00    2.94    0.00    3.92    0.00    0.00    0.00   93.14
+01:32:06 PM    1    2.17    0.00   27.17    0.00    0.00    0.00    0.00    0.00    0.00   70.65
+01:32:06 PM    2    0.00    0.00    0.00    0.00    0.00  100.00    0.00    0.00    0.00    0.00
+01:32:06 PM    3    0.95    0.00    1.90    0.95    0.00    3.81    0.00    0.00    0.00   92.38</code></pre>
+	<p>正如你所看到的，应用程序代码并不是瓶颈所在。在CPU #1上有27%系统空间和2%用户空间的占用，而在CPU #2上网络软中断（SOFTIRQ）占用了100%的资源。</p>
+	<p>顺便说一句，使用recvmmsg(2)很重要。自Spectre漏洞被发现以来，系统调用的成本变得更加高了，我们使用了4.14版本的内核，并开启了KPTI和Retpoline：</p>
+	<pre><code>$ tail -n +1 /sys/devices/system/cpu/vulnerabilities/*
+==&gt; /sys/devices/system/cpu/vulnerabilities/meltdown &lt;==
+Mitigation: PTI
+
+==&gt; /sys/devices/system/cpu/vulnerabilities/spectre_v1 &lt;==
+Mitigation: __user pointer sanitization
+
+==&gt; /sys/devices/system/cpu/vulnerabilities/spectre_v2 &lt;==
+Mitigation: Full generic retpoline, IBPB, IBRS_FW</code></pre>
+	<h4 id="-2-conntrack">阶段2. 击垮conntrack</h4>
+	<p>我们特别设计了测试——通过选择随机源IP和端口——来对conntrack层施加压力。这可以通过查看conntrack条目的数量得到验证，在测试期间这些条目数量达到了最大值：</p>
+	<pre><code>$ conntrack -C
+2095202
+
+$ sysctl net.netfilter.nf_conntrack_max
+net.netfilter.nf_conntrack_max = 2097152</code></pre>
+	<p>您也可以从dmesg中看到conntrack的反馈日志：</p>
+	<pre><code>[4029612.456673] nf_conntrack: nf_conntrack: table full, dropping packet
+[4029612.465787] nf_conntrack: nf_conntrack: table full, dropping packet
+[4029617.175957] net_ratelimit: 5731 callbacks suppressed</code></pre>
+	<p>为了加快测试速度，让我们禁用它：</p>
+	<pre><code>iptables -t raw -I PREROUTING -d 198.18.0.12 -p udp -m udp --dport 1234 -j NOTRACK</code></pre>
+	<p>并重新运行测试：</p>
+	<pre><code>$ ./dropping-packets/recvmmsg-loop
+packets=331008 bytes=5296128</code></pre>
+	<p>这立即将应用程序接收性能提升到了333kpps。太棒了！</p>
+	<p>顺带一提。使用SO_BUSY_POLL可以让我们将数字提高到470k pps，但这是另一个话题了。</p>
+	<h4 id="-3-bpf-">阶段3. 使用BPF在套接字上丢包</h4>
+	<p>更进一步说，我们为什么要向用户空间应用程序交付数据包呢？尽管这种技术并不常见，但是我们可以使用setsockopt(SO_ATTACH_FILTER)将一个经典的BPF过滤器附加到SOCK_DGRAM套接字上，并对过滤器编程从而在内核空间中丢弃数据包。</p>
+	<p><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-07-dropping-packets/bpf-drop.c" target="_blank">查看这里的代码</a>，运行一下：</p>
+	<pre><code>$ ./bpf-drop
+packets=0 bytes=0</code></pre>
+	<p>使用BPF进行丢包（经典cBPF和扩展的eBPF都有相似的性能），我们大概达到了512kpps的性能。当这些数据包仍处于软件中断模式时，它们就被全部被丢弃在了BPF过滤器中，这节省了我们唤醒用户空间应用程序所需的CPU资源。</p>
+	<h4 id="-4-iptables-">阶段4. 在路由后使用iptables丢包</h4>
+	<p>下一步，我们可以通过添加如下的规则来简单地删除iptables防火墙输入链中的数据包：</p>
+	<pre><code>iptables -I INPUT -d 198.18.0.12 -p udp --dport 1234 -j DROP</code></pre>
+	<p>需要注意的是我们之前已经通过-j NOTRACK禁用了conntrack，这两条规则使我们达到了608kpps的性能。</p>
+	<p>iptables的统计数据如下：</p>
+	<pre><code>$ mmwatch 'iptables -L -v -n -x | head'
+
+Chain INPUT (policy DROP 0 packets, 0 bytes)
+    pkts      bytes target     prot opt in     out     source               destination
+605.9k/s    26.7m/s DROP       udp  --  *      *       0.0.0.0/0            198.18.0.12          udp dpt:1234</code></pre>
+	<p>600kpps不算差，但是我们可以做得更好！</p>
+	<h4 id="-5-iptables-">阶段5. 在路由之前使用iptables丢包</h4>
+	<p>我们甚至还有一种更快的技术，就是在数据包被路由之前丢弃它们。使用以下这个规则即可做到这一点：</p>
+	<pre><code>iptables -I PREROUTING -t raw -d 198.18.0.12 -p udp --dport 1234 -j DROP</code></pre>
+	<p>这个方法可以使性能达到惊人的1.688mpps</p>
+	<p>这是一个相当大的性能飞跃，我不太理解为什么在路由前后丢包的性能差距这么大。要么是我们的路由层异常复杂，要么是我们的服务器配置有问题。</p>
+	<p>在任何情况下——通过iptables的raw列表进行丢包绝对是最快的方法。</p>
+	<h4 id="-6-nftables-conntrack-">阶段6. 使用nftables在CONNTRACK之前丢包</h4>
+	<p>iptables现在已经过时了。这里的新起之秀是nftables。请观看这个视频：<a href="https://www.youtube.com/watch?v=9Zr8XqdET1c" target="_blank">技术解释说明为什么nftables更好</a>。由于许多原因，nftables承诺要比老旧的iptables更快，其中有一个说法是retpolines（无间接跳转预测）严重影响了iptables性能。</p>
+	<p>由于本文不是要比较nftables和iptables的速度，所以让我们尝试一下我能想到的最快的丢包方法：</p>
+	<pre><code>nft add table netdev filter
+nft -- add chain netdev filter input { type filter hook ingress device vlan100 priority -500 \; policy accept \; }
+nft add rule netdev filter input ip daddr 198.18.0.0/24 udp dport 1234 counter drop
+nft add rule netdev filter input ip6 daddr fd00::/64 udp dport 1234 counter drop</code></pre>
+	<p>可以使用以下命令查看计数器：</p>
+	<pre><code>$ mmwatch 'nft --handle list chain netdev filter input'
+table netdev filter {
+    chain input {
+        type filter hook ingress device vlan100 priority -500; policy accept;
+        ip daddr 198.18.0.0/24 udp dport 1234 counter packets    1.6m/s bytes    69.6m/s drop # handle 2
+        ip6 daddr fd00::/64 udp dport 1234 counter packets 0 bytes 0 drop # handle 3
+    }
+}</code></pre>
+	<p>Nftables “ingress” hook达到的性能在1.53mpps左右。这比PREROUTING层（未路由）中使用iptables稍慢一些。这令人费解——理论上“ingress”是在PREROUTING之前的，所以本应更快才对。</p>
+	<p>在我们的测试中nftables比iptables略慢，但并不是慢很多。Nftables仍然是更好的选择:P</p>
+	<h4 id="-7-tc-ingress-">阶段7. 利用tc ingress策略来丢包</h4>
+	<p>一个有点令人惊讶的事实是，tc（traffic control，流量控制）ingress hook（入口钩子函数）甚至发生在PREROUTING之前。tc有可能并且确实可以做到根据一定的标准来选择并丢弃数据包。这里的语法难的夸张，所以建议<a href="https://github.com/netoptimizer/network-testing/blob/master/bin/tc_ingress_drop.sh" target="_blank">使用这里的脚本</a>进行设置。我们需要稍微复杂一点的tc匹配，命令行如下：</p>
+	<pre><code>tc qdisc add dev vlan100 ingress
+tc filter add dev vlan100 parent ffff: prio 4 protocol ip u32 match ip protocol 17 0xff match ip dport 1234 0xffff match ip dst 198.18.0.0/24 flowid 1:1 action drop
+tc filter add dev vlan100 parent ffff: protocol ipv6 u32 match ip6 dport 1234 0xffff match ip6 dst fd00::/64 flowid 1:1 action drop</code></pre>
+	<p>我们可以验证一下：</p>
+	<pre><code>$ mmwatch 'tc -s filter  show dev vlan100  ingress'
+filter parent ffff: protocol ip pref 4 u32 
+filter parent ffff: protocol ip pref 4 u32 fh 800: ht divisor 1 
+filter parent ffff: protocol ip pref 4 u32 fh 800::800 order 2048 key ht 800 bkt 0 flowid 1:1  (rule hit   1.8m/s success   1.8m/s)
+  match 00110000/00ff0000 at 8 (success   1.8m/s ) 
+  match 000004d2/0000ffff at 20 (success   1.8m/s ) 
+  match c612000c/ffffffff at 16 (success   1.8m/s ) 
+        action order 1: gact action drop
+         random type none pass val 0
+         index 1 ref 1 bind 1 installed 1.0/s sec
+        Action statistics:
+        Sent    79.7m/s bytes   1.8m/s pkt (dropped   1.8m/s, overlimits 0 requeues 0) 
+        backlog 0b 0p requeues 0</code></pre>
+	<p>通过tc的ingress hook的u32匹配，可以让我们实现单核1.8mpps的丢包能力。这实在太棒了！</p>
+	<p>但是，我们还可以更快……</p>
+	<h4 id="-8-xdp_drop">阶段8. XDP_DROP</h4>
+	<p>最后，我们的终极武器是XDP – <a href="https://prototype-kernel.readthedocs.io/en/latest/networking/XDP/" target="_blank">eXpress数据路径</a>。通过XDP，我们可以在网络驱动程序环境中运行eBPF代码。最重要的是，这发生在skbuff内存分配之前，可以提高速度。</p>
+	<p>通常，XDP项目包含两个部分：</p>
+	<ul>
+		<li>eBPF代码加载到内核环境中</li>
+		<li>用户态加载器，它可以将代码加载到正确的网卡上并进行管理</li>
+	</ul>
+	<p>编写加载程序是相当困难的，所以我们可以使用<a href="https://cilium.readthedocs.io/en/latest/bpf/#iproute2" target="_blank">iproute2的新特性</a>，用这个简单的命令加载代码：</p>
+	<pre><code>ip link set dev ext0 xdp obj xdp-drop-ebpf.o</code></pre>
+	<p>成功了！</p>
+	<p><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-07-dropping-packets/xdp-drop-ebpf.c" target="_blank">此处提供了已加载的eBPF XDP程序</a>的源代码。该程序解析IP数据包并查找所需的特性：IP传输，UDP协议，所需的目标子网和目标端口：</p>
+	<pre><code class="language-undefined">if (h_proto == htons(ETH_P_IP)) {
+    if (iph-&gt;protocol == IPPROTO_UDP
+        &amp;&amp; (htonl(iph-&gt;daddr) &amp; 0xFFFFFF00) == 0xC6120000 // 198.18.0.0/24
+        &amp;&amp; udph-&gt;dest == htons(1234)) {
+        return XDP_DROP;
+    }
+}</code></pre>
+	<p>XDP程序需要用现代的clang编译器编译成BPF字节码。在此之后，我们可以加载和验证运行的XDP程序：</p>
+	<pre><code>$ ip link show dev ext0
+4: ext0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 xdp qdisc fq state UP mode DEFAULT group default qlen 1000
+    link/ether 24:8a:07:8a:59:8e brd ff:ff:ff:ff:ff:ff
+    prog/xdp id 5 tag aedc195cc0471f51 jited</code></pre>
+	<p>然后通过ethtool -S查看网卡的统计数字：</p>
+	<pre><code>$ mmwatch 'ethtool -S ext0|egrep "rx"|egrep -v ": 0"|egrep -v "cache|csum"'
+     rx_out_of_buffer:     4.4m/s
+     rx_xdp_drop:         10.1m/s
+     rx2_xdp_drop:        10.1m/s</code></pre>
+	<p>哇哦！使用XDP，我们可以在单核CPU上每秒丢弃1000万个数据包。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2019/12/225821241_ed5da2da91_o.jpg" class="kg-image">
+		<figcaption><a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank">CC BY-SA 2.0 </a><a href="https://www.flickr.com/photos/afiler/225821241/" target="_blank">图片</a>作者<a href="https://www.flickr.com/photos/afiler/" target="_blank">Andrew Filer</a></figcaption>
+	</figure>
+	<h2 id="--1">总结</h2>
+	<p>我们针对IPv4和IPv6重复了这些试验，并绘制了以下图表：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/12/numbers-noxdp.png" class="kg-image"></figure>
+	<p>总的来说在我们现在的设置下，IPv6比v4要稍微慢一些，需要注意的是IPv6的包也稍微大了一些，所以这些性能上的区别还是可以理解的。</p>
+	<p>Linux提供了很多过滤数据包的Hook，其性能和易用性都有所不同。</p>
+	<p>对于应对DDoS，我们完全可以在应用程序中接收包并在用户空间中处理它们。适当调优的应用程序可以得到相当不错的性能。</p>
+	<p>对于有随机源IP和端口的攻击，禁用conntrack来换取速度也是值得的，但是要注意——在某些攻击情况下conntrack是很有用的。</p>
+	<p>在其他情况下，将Linux防火墙集成到DDoS缓解渠道中是有意义的。在这种情况下，请记住在“-t raw PREROUTING”层中进行缓解，因为在这一层比在“filter”表中快得多。</p>
+	<p>对于要求更高的工作负载，我们还有XDP。并且我的天，它实在太强大了。这里的图表与上面的相同，但是加上了XDP：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/12/numbers-xdp-1.png" class="kg-image"></figure>
+	<p>如果你想要复现这些数字，<a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-07-dropping-packets/README.md" target="_blank">请点击这里，其中记录了所有内容</a></p>
+	<p>在Cloudflare，我们使用了……几乎所有的这些技术。一些用户空间技巧已经与我们的应用程序集成在一起。iptables层由我们的<a href="https://blog.cloudflare.com/meet-gatebot-a-bot-that-allows-us-to-sleep/">Gatebot DDoS通道管理</a>。最后，我们正在用XDP替换我们专有的内核卸载解决方案。</p>
+	<p>想来帮我们丢弃更多的数据包吗？我们的许多岗位正在招聘中，包括丢包者，系统工程师等等！</p>
+	<p><em>特别感谢</em><a href="https://twitter.com/JesperBrouer" target="_blank"><em>Jesper Dangaard Brouer</em></a><em>为这项工作提供的帮助。</em></p>
+</div>

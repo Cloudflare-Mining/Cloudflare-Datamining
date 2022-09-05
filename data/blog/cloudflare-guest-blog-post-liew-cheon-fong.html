@@ -1,0 +1,74 @@
+<div class="post-content lh-copy gray1">
+	<!--kg-card-begin: markdown-->
+	<p><em>Liew Cheon Fong (a.k.a LiewCF) is a full-time <a href="http://www.riceblogger.com/top-100-malaysian-blogs/" target="_blank">tech blogger from Malaysia</a> writing about tech news, tech tips and gadget reviews at: <a href="http://www.liewcf.com/" target="_blank">www.liewcf.com</a></em></p>
+	<p>My blog (<a href="http://liewcf.com" target="_blank">http://liewcf.com</a>) was frequently coming under heavy server
+		load because of malicious traffic. The malicious traffic to my blog
+		frequently brought down my dedicated server, with a server load pushing
+		up to 100 CPU. While my hosting company worked very hard to keep the
+		server online, even their 24/7 server monitoring only helped reduce the
+		downtime associated with malicious traffic.</p>
+	<p>I was looking for help with my blog and was thinking about migrating my
+		blog to a high-end secured web hosting company. Given the hassles of
+		migrating hosting providers - not to mention the fact that I would
+		likely be paying higher monthly fees for hosting - I was frantically
+		looking for an alternative that would help my site stay up when my
+		server went down. A friend of mine advised me that I should try
+		<a href="https://cloudflare.com" target="_blank">CloudFlare</a>, a relatively new service that could
+		help mitigate problems with malicious traffic and other service outages.
+		After doing a bit of research about CloudFlare on Google, I decided to
+		create an account to see if that would help me with my problems.
+	</p>
+	<p>Setting up CloudFlare was an easy process, one that took about five
+		minutes for me to switch my authoritative name servers over to
+		CloudFlare, and switching over the name servers would be a far easier
+		task than migrating to a different hosting provider. If I wasn't happy
+		with CloudFlare, it would only take me a few minutes to switch the name
+		servers back to my original registrar. Much to my surprise, my server
+		load dropped rapidly and I was no longer seeing the effects of the
+		attacks on my server.</p>
+	<p>In addition to the free security protection that CloudFlare offers,
+		CloudFlare also works like a Content Delivery Network (CDN) to cache
+		your website static content and speed up the page load time. I
+		personally decided to upgrade to the
+		<a href="https://www.cloudflare.com/plans.html" target="_blank">Pro</a> account to take advantage
+		of the more advanced security functions, which was important to me
+		because of the frequent attacks, and because the more advanced caching
+		with the <a href="https://support.cloudflare.com/entries/22263581-What-does-the-Website-Preloader-do-" target="_blank">website preloader</a>
+		helps make my pages load even faster.
+	</p>
+	<p>My CloudFlare dashboard has revealed the following benefits to me as a
+		blogger:</p>
+	<p>-My page loads are approximately 73% faster (.38 seconds after
+		installing CloudFlare, 1.43 seconds before installing CloudFlare).
+		CloudFlare calculates the speed by sending the same request twice: once
+		through the CloudFlare system, and once directly to your site, bypassing
+		the CloudFlare system)<br>
+		-CloudFlare is saving me about 38% on my bandwidth costs.</p>
+	<p>I highly recommend CloudFlare to any site that is suffering a high
+		server load or that has issues with malicious traffic. You can get
+		started with a free CloudFlare account (yes, it is FREE!) to reduce
+		server load, increase page load time, and get protected! In a nutshell,
+		if you need a free (or paid) service to protect your website and
+		increase site performance, try CloudFlare.</p>
+	<p>Notes:
+		- You can only modify your name servers settings if you own your own
+		domain name. <br>
+		- You will have to switch your name servers to CloudFlare to get their
+		protection and CDN services.<br>
+		- Doing a dig or checking whois would reflect CloudFlare's name servers.<br>
+		- CloudFlare, much like any other rapidly growing startup, has had some
+		growing pains and is not entirely problem free. But they always solve
+		problems promptly and are continuously improving the system. CloudFlare
+		support has been highly responsive via both <a href="https://www.cloudflare.com/help.html" target="_blank">CloudFlare
+			help</a> or
+		<a href="https://twitter.com/cloudflare" target="_blank">Twitter</a>.
+	</p>
+	<p>Disclosure: While I did receive a <a href="https://blog.cloudflare.com/inaugural-cloudflare-t-shirts">CloudFlare
+			t-shir</a>t
+		shortly after subscribing to CloudFlare , I did not receive any
+		compensation to write this article.</p>
+	<p><img alt="CloudFlare Guest Blog Post: Liew Cheon
+Fong" src="https://blog.cloudflare.com/content/images/liewcf-server-load.png" title="CloudFlare Guest Blog Post: Liew Cheon Fong"><noscript><img alt="CloudFlare Guest Blog Post: Liew Cheon
+Fong" src="http://blog.cloudflare.com/content/images/liewcf-server-load.png" title="CloudFlare Guest Blog Post: Liew Cheon Fong"></noscript></p>
+	<!--kg-card-end: markdown-->
+</div>

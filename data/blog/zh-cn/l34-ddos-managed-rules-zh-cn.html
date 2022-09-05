@@ -1,0 +1,63 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image2-28.png" class="kg-image" alt="How to customize your layer 3/4 DDoS protection settings"></figure>
+	<p>在今年早些时候，在为我们的客户提供了 <a href="https://blog.cloudflare.com/http-ddos-managed-rules/">对 HTTP 层 DDoS 保护设置的控制之后</a>，我们现在很高兴能将客户的控制扩展到数据包层。借助这些新的控制，Cloudflare 企业客户使用 <a href="https://www.cloudflare.com/zh-cn/magic-transit/" target="_blank">Magic Transit</a> 和 <a href="https://www.cloudflare.com/zh-cn/products/cloudflare-spectrum/" target="_blank">Spectrum</a> 服务现在可以直接从 Cloudflare Dashboard 或通过 Cloudflare API 调整和微调他们的 L3/4 DDoS 保护设置。</p>
+	<p>新功能为客户提供了两个主要的 DDoS 规则集的控制：</p>
+	<ol>
+		<li><strong>网络层 DDoS 保护规则集</strong> — 该规则集中包括的规则将用于检测和缓解<a href="https://www.cloudflare.com/zh-cn/learning/ddos/glossary/open-systems-interconnection-model-osi/" target="_blank">OSI 模型</a>中的 3/4 层的 DDoS 攻击，如 UDP floods 攻击、SYN-ACK 反射攻击、SYN Floods 攻击和 DNS floods 攻击。此规则集适用于 Enterprise 计划中的 Spectrum 和 Magic Transit 客户。</li>
+		<li><strong>高级 TCP 保护规则集</strong> — 该规则集包括了检测和缓解复杂的脱离状态下 TCP 攻击的规则，如欺骗 ACK Floods 攻击、随机 SYN Floods 攻击和分布式 SYN-ACK 反射攻击。此规则集仅适用于 Magic Transit 客户。</li>
+	</ol>
+	<p>欲了解更多，请查看我们的 <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets" target="_blank">DDoS 托管规则集开发者文档</a>。我们整理了一些指南，希望对您有所帮助：</p>
+	<ol>
+		<li><a href="https://developers.cloudflare.com/ddos-protection/get-started" target="_blank">导入和开启 Cloudflare DDoS 保护</a></li>
+		<li><a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/adjust-rules/false-negative" target="_blank">处理漏报</a></li>
+		<li><a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/adjust-rules/false-positive" target="_blank">处理误报</a></li>
+		<li><a href="https://developers.cloudflare.com/ddos-protection/best-practices/third-party" target="_blank">使用 VPNs、VoIP 和其他第三方服务的最佳实践</a></li>
+		<li><a href="https://developers.cloudflare.com/ddos-protection/reference/simulate-ddos-attack" target="_blank">如何模拟 DDoS 攻击</a></li>
+	</ol>
+	<h2 id="cloudflare-ddos-"><strong>Cloudflare DDoS 保护</strong></h2>
+	<p><a href="https://www.cloudflare.com/zh-cn/learning/ddos/what-is-a-ddos-attack/" target="_blank">分布式拒绝服务 (DDoS) 攻击</a>是一种旨在破坏受害者的互联网服务的网络攻击。DDoS 攻击有多种类型，可以由互联网不同层次的攻击者发起。<a href="https://www.cloudflare.com/zh-cn/learning/ddos/http-flood-ddos-attack/" target="_blank">HTTP flood</a> 攻击就是其中一个例子，此类攻击旨在破坏诸如那些支持移动 Apps 和网站的 HTTP 应用程序服务器。<a href="https://www.cloudflare.com/zh-cn/learning/ddos/udp-flood-ddos-attack/" target="_blank">UDP flood</a> 攻击是另一个例子。虽然这种类型的攻击可以用来干扰 HTTP 服务器，但它也可以用来尝试干扰非 HTTP 应用程序，包括基于 TCP 和 UDP 的应用程序和网络服务，如 <a href="https://blog.cloudflare.com/update-on-voip-attacks/">VoIP 服务</a>、游戏服务器、加密货币，等等。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image5-12.png" class="kg-image" alt="An illustration of a DDoS attack"></figure>
+	<p>为了保护组织免受 DDoS 攻击，我们构建并运行了自主运行的软件定义系统。其能够在我们的整个网络中自动检测和缓解 DDoS 攻击。您可以在我们的<a href="https://blog.cloudflare.com/zh-cn/deep-dive-cloudflare-autonomous-edge-ddos-protection-zh-cn/">深度技术博客</a>中，阅读有关我们的自主 DDoS 保护系统以及关于该系统工作原理的更多内容。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/12/unnamed-33.png" class="kg-image" alt="A diagram of Cloudflare’s DDoS protection system"></figure>
+	<h2 id="-ddos-"><strong>不限量和无限制 DDoS 保护</strong></h2>
+	<p>我们提供的保护等级是<a href="https://blog.cloudflare.com/unmetered-mitigation/">不限量且无限制的</a> - 它不受攻击规模、攻击次数、攻击持续时间的限制。这在今天尤为重要，因为正如我们最近看到的，攻击规模正变得越来越大，越来越频繁。因此，在第三季度，网络层攻击比前一季度增加了 44%。此外，就在最近，我们的系统自动检测并缓解了一次 <a href="https://blog.cloudflare.com/cloudflare-blocks-an-almost-2-tbps-multi-vector-ddos-attack/">DDoS 攻击，其峰值仅略低于 2 Tbps</a> - 这是我们迄今为止遇到的最大规模的攻击。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/12/image4.jpg" class="kg-image" alt="Graph of an almost 2 Tbps DDoS attack launched by a Mirari-variant botnet">
+		<figcaption>Mirai 僵尸网络发起了接近 2 Tbps 的 DDoS 攻击</figcaption>
+	</figure>
+	<p>阅读有关<a href="https://radar.cloudflare.com/notebooks/ddos-2021-q3" target="_blank">最近的 DDoS 趋势的更多内容</a>。</p>
+	<h2 id="-"><strong>托管规则集</strong></h2>
+	<p>您可以将我们的自主 DDoS 保护系统视为智能规则组（规则集），包括 HTTP DDoS 保护规则集、网络层 DDoS 保护规则集和高级 TCP 保护规则集。在这篇博客文章中，我们将讨论后两种规则集。我们已经在<a href="https://blog.cloudflare.com/http-ddos-managed-rules/">如何自定义您的 HTTP DDoS 保护设置</a>的博客文章中介绍了第一种规则集。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/12/image7-6.png" class="kg-image" alt="A screenshot of the DDoS Protection Managed Rulesets in the Cloudflare dashboard">
+		<figcaption>Cloudflare L3/4 DDoS 托管规则</figcaption>
+	</figure>
+	<p>在<strong>网络层 DDoS 保护规则集中</strong>，每一种规则都有一组专属的条件指纹、动态字段屏蔽、激活阈值和缓解操作。这些规则由 Cloudflare 托管，这意味着每一种规则的规定都由我们的 DDoS 专家内部制定。在部署新规则之前，我们会首先在全局网络对其进行严格测试和优化，以实现缓解的准确性和效率。</p>
+	<p>在<strong>高级 TCP 保护规则集中</strong>，我们使用了一种新的 TCP 状态分类引擎来识别 TCP 流量的状态。驱动该规则集的引擎是<em>流程跟踪</em> — 您可以在我们的<a href="https://blog.cloudflare.com/announcing-flowtrackd/">公告博客文章</a>中阅读更多内容。该系统的一个独特功能是，它仅能使用入口（流入）数据包流进行操作。系统只能看到入口的流量，并根据数据包的合法性对其进行丢弃、质疑或允许。例如，大量与打开的 TCP 连接不对应的 ACK 数据包将被丢弃。</p>
+	<h2 id="--1"><strong>如何检测和缓解攻击</strong></h2>
+	<h3 id="--2"><strong>取样</strong></h3>
+	<p>最初，互联网流量经由 <a href="https://www.cloudflare.com/zh-cn/learning/cdn/glossary/anycast-network/" target="_blank">BGP Anycast</a> 路由至最近的 Cloudflare 边缘数据中心。在流量到达我们的数据中心后，我们的 DDoS 系统将对其进行异步采样，允许对流量进行非路径分析，而不会导致延迟惩罚。高级 TCP 保护规则集需要查看整个数据包流量，因此它只对 Magic Transit 客户开放，也不会带来任何延迟惩罚。</p>
+	<h3 id="--3"><strong>分析与缓解</strong></h3>
+	<p>对<strong>高级 TCP 保护规则集</strong>所进行的分析直接且有效。系统将对 TCP 流量进行限定并跟踪其状态。通过这种方式，违反合法连接及其状态的数据包将被丢弃或质疑。只有在达到客户定义的某些阈值以上时才会激活缓解。</p>
+	<p>使用数据流算法对<strong>网络层 DDoS 保护规则集</strong>进行分析。将数据包样本与条件指纹进行比较，并基于动态屏蔽生成多个实时签名。每当另一个数据包与其中一个签名匹配时，计数器读数就会增加。当达到给定签名的激活阈值时，将编译并内推发送缓解规则。缓解规则包括实时签名和缓解操作，如丢弃。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image9-1.png" class="kg-image"></figure>
+	<h3 id="--4"><strong>​​​​ 示例</strong></h3>
+	<p>举一个简单的例子，一个指纹可以包括以下字段：源 IP、源端口、目的 IP 和 TCP 序列号。固定序列号的数据包洪水攻击会与指纹匹配，每匹配一个数据包，计数器读数就会增加，直至超过激活阈值。然后将采取缓解行动。</p>
+	<p>然而，在 <a href="https://www.cloudflare.com/zh-cn/learning/ddos/glossary/ip-spoofing/" target="_blank">spoofed</a> 攻击的情况下，源 IP 地址和端口是随机的，我们最终会为每个源 IP 和端口的组合提供多个签名。假设其具有足够的随机性/分布式攻击，则将无法满足激活阈值，也不会进行缓解。出于这一原因，我们使用动态屏蔽，即忽略那些可能不是签名强指标的字段。通过屏蔽（忽略）源 IP 和端口，我们将能够根据唯一的 TCP 序列号匹配所有的攻击数据包，而无视攻击的随机/分布程度。</p>
+	<h3 id="-ddos--1"><strong>配置 DDoS 保护设置</strong></h3>
+	<p>至今为止，我们只公开了一小部分网络层 DDoS 保护规则，这些规则是我们认为最容易进行自定义的规则。我们将定期披露更多规则。这不应影响您的任何流量。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/12/image8-4.png" class="kg-image" alt="Overriding the sensitivity level and mitigation action">
+		<figcaption>覆盖灵敏度等级和缓解操作</figcaption>
+	</figure>
+	<p>对于<strong>网络层 DDoS 保护规则集</strong>，每个可用规则您都可以覆盖<a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/override-parameters#sensitivity-level" target="_blank">灵敏度级别</a>（激活阈值），自定义<a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/override-parameters#action" target="_blank">缓解操作</a>，以及应用<a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/fields" target="_blank">表达式过滤器</a>，根据不同的数据包字段，将流量排除/包括在 DDoS 保护系统中。您可以创建多个覆盖来为您的网络和各种应用程序定制保护。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2021/12/image3-22.png" class="kg-image" alt="Configuring expression fields for the DDoS Managed Rules to match on">
+		<figcaption>配置 DDoS 托管规则匹配的表达式字段</figcaption>
+	</figure>
+	<p>在过去，您必须通过我们支持的渠道来自定义规则。在某些情况下，解决这个问题可能需要花费比预期更长的时间。通过今天的公告，您可以自行调整和微调我们的自主边缘系统设置，从而快速提高保护的准确性，满足您特定的网络需求。</p>
+	<p>对于<strong>高级 TCP 保护规则集</strong>，到目前为止，我们只在仪表板中公开了整体启用或禁用的能力。要启用或禁用每个 IP 前缀的规则集，则必须使用 <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/configure-api" target="_blank"> API</a>。目前，当您刚开始使用 Cloudflare 时，Cloudflare 团队必须首先为您创建一个策略。在开始使用后，如果您需要更改灵敏度阈值、使用 Monitor 模式或添加过滤器表达式，则您必须联系 Cloudflare 支持团队。在即将发布的版本中，这也将通过仪表板和 API 提供，而无需我们的支持团队的帮助。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/12/image1-45.png" class="kg-image"></figure>
+	<h2 id="--5"><strong>预装自定义</strong></h2>
+	<p>如果您之前联系过 Cloudflare 支持团队来应用自定义，那么您的自定义将被保留，您可以访问仪表板来查看网络层 DDoS 保护规则集的设置，并在需要时对其进行更改。如果您需要对高级 TCP 保护自定义进行任何更改，请联系 Cloudflare 支持团队。</p>
+	<p>如果到目前为止您还不需要对此保护进行自定义，那么您这边无需任何操作。然而，如果你想查看和自定义您的 DDoS 保护设置，请遵循<a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/configure-dashboard" target="_blank">本仪表板指南</a>或查看 <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/configure-api" target="_blank">API 文档</a>，以编程的方式配置 DDoS 保护设置。</p>
+	<h2 id="--6"><strong>帮助构建更好的互联网</strong></h2>
+	<p>在 Cloudflare，我们所做的一切都以我们的使命为本，即，助力打造出更好的互联网。DDoS 团队的愿景源于此使命：我们的目标是让 DDos 攻击的影响成为历史。我们的第一步是构建独立检测和缓解攻击的自主系统。已完成。第二步是将这些系统的控制平面提供给我们的客户（今天已宣布）。已完成。下一步将是完全自动化配置自动驾驶功能—训练系统学习您的特定的流量模式，以自动优化您的 DDoS 保护设置。我们将继续提供更多改进、自动化和新功能，以保证您的互联网属性安全、可用以及高性能。</p>
+	<p>还没有使用 Cloudflare？<a href="https://dash.cloudflare.com/sign-up" target="_blank">现在开始</a>。<br></p>
+</div>

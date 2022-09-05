@@ -1,0 +1,50 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/09/image2-1.png" class="kg-image"></figure>
+	<p>ウェブ上のパフォーマンスは常に光速との戦いでした。ワシントン州シアトルにサーバーがあるサイトにロンドンからアクセスする場合、すべてのアセットリクエストは11,200km以上も移動する必要があります。ウェブパフォーマンスの戦いにおける最初の突破口となったのは、HTTP/1.1のキープアライブと複数の接続を開けることができるブラウザでした。次の突破口はCDNでした。静的アセットをエンドユーザーに近いデータセンターにキャッシュすることで、エンドユーザーに近づけたのです。そして今、弊社の誇るWorkers サイトは次の大きな突破口となるでしょう。サイト全体を、インターネットのエッジに直接配信するのです。</p>
+	<h2 id="-"><strong>ネットワークのエッジへの展開</strong></h2>
+	<p>アセットをキャッシュするだけでは十分でないのは、なぜでしょうか？確かにキャッシュすることでパフォーマンスは向上しますが、パフォーマンスを大幅に向上させるには、頭痛が伴います。CDNは、キャッシュする必要があるアセットを推測することはできますが、単なる推測にすぎません。サイトのパフォーマンスを最大限に高めるよう構成するプロセスには常にエラーの発生が付きまとい、多数の難解なルールやヘッダーが必要でした。完璧な構成ができていても、永遠にキャッシュされるものはまずありませんから、貴重なリクエストの多くが、サイトの配信元まで(それがどこであれ)移動する必要があります。キャッシュの無効化は、結局のところ、<a href="https://twitter.com/secretgeek/status/7269997868" target="_blank">コンピュータサイエンスで最も難しい問題の1つ</a>なのです。</p>
+	<p>ここで問題の提起です。バイト(bytes)を配信元からエッジへ少しずつぎこちなく動かすより、配信元を丸ごとエッジへプッシュしてはどうでしょうか？</p>
+	<h2 id="workers-workers-"><strong>Workers サイト:Workers プラットフォームの拡張</strong></h2>
+	<p>2年前のバースデーウィークに発表した<a href="https://workers.cloudflare.com/" target="_blank">Cloudflare Workers</a>は、開発者がJavaScriptとWebAssemblyを当社ネットワーク上で作成して実行できる方法で、世界中の194都市から利用可能です。その1年後、その同じ都市で、開発者がエッジに状態を格納する機能を提供する分散Key-valueストア、Workers KVをリリースしました。</p>
+	<p>Workersサイトでは、開発者がサイトをエッジに直接アップロードしてエンドユーザーに近づけることを可能にし、WokersとWorkers KV の機能を活用します。エッジで生まれたWorkersサイトは、まさに当社が考えるウェブ上の現代的展開のあるべき姿で、本質的にセキュアであり高速、そして高い拡張性を持ちます。構成に費やす時間を短縮し、コードやコンテンツ自体に費やす時間をより多く確保できます。</p>
+	<h2 id="--1"><strong>仕組み</strong></h2>
+	<p>Workersサイトは、少数のターミナルコマンドで展開し、Hugo、Gatsby、Jekyllなどの静的サイトジェネレーターの生成するサイトならどれでもサポートできます。<a href="https://github.com/cloudflare/wrangler" target="_blank">Wrangler</a>(当社のCLI)を使用して、サイトのアセットをKVに直接アップロードできます。Workersサイトにリクエストが届くと、Wranglerが生成したCloudflare Workerが適切なヘッダーを使用し、KVからアセットを読み取って提供します(コンテンツタイプやキャッシュコントロールの心配は不要です、当社が対応します）。</p>
+	<p>Workersサイトを使用して、ブログ、マーケティングサイト、ポートフォリオなどの静的サイトを展開できます。 サイトを少し動的にしたいと判断した場合、Workerは単なるコードですから、編集し、拡張すれば世界中で動的サイトを運営できます。</p>
+	<h2 id="--2"><strong>はじめに</strong></h2>
+	<p>Workersサイトを使用するには、まず<a href="https://dash.cloudflare.com/sign-up" target="_blank">Workersにサインアップする</a>必要があります。workers.dev のサブドメインを選択したら、Workers 無制限プラン ($5/月から) を選択すると、Workers KV へアクセスできて、Workers サイトを展開することができます。</p>
+	<p>Workers 無制限プランにサインアップした後、WorkersのためのCLI、Wranglerをインストールする必要があります。Wrangler は、NPMまたはCargoからインストールすることができます。</p>
+	<pre><code class="language-bash"># NPM Installation
+npm i @cloudflare/wrangler -g
+# Cargo Installation
+cargo install wrangler</code></pre>
+	<p>Wranglerをインストールすると、次の手順で静的サイトを展開する準備が整います。</p>
+	<ol>
+		<li>静的サイトの構築済みアセットを含むディレクトリでwrangler init --site を実行する</li>
+		<li>新しく作成したwrangler.toml ファイルにアカウントとプロジェクトの詳細を入力する</li>
+		<li>wrangler publish　でサイトを公開する</li>
+	</ol>
+	<p>Workersサイトの<a href="https://developers.cloudflare.com/workers/sites" target="_blank">参照ドキュメント</a>を確認するか、またはdocsで<a href="https://developers.cloudflare.com/workers/tutorials/deploy-a-react-app" target="_blank">create-react-app</a>の完全版チュートリアルに従って操作ができます。</p>
+	<p>動画を見てから始めたいという方も、しっかりとサポートします！<a href="https://watch.cloudflarestream.com/9943b400b59802b77f83a8a57f39d682" target="_blank">この動画</a>では、初めてのWorkersサイトの作成と展開について説明します。</p>
+	<!--kg-card-begin: html-->
+	<stream src="9943b400b59802b77f83a8a57f39d682" controls=""></stream>
+	<script data-cfasync="false" defer="" type="text/javascript" src="https://embed.videodelivery.net/embed/r4xu.fla9.latest.js?video=9943b400b59802b77f83a8a57f39d682"></script>
+	<!--kg-card-end: html-->
+	<h2 id="--3"><strong>驚きの速さ:アトランタからザグレブへ</strong></h2>
+	<p>開発者の体験の向上のほかにも、デプロイとサイト自体の両方が高速なるように、舞台裏で多くの作業を行いました。当社の<a href="https://blog.cloudflare.com/extending-the-workers-platform">技術系ブログ記事</a>でノウハウを共有できることを嬉しく思います。</p>
+	<p>Workersサイトのパフォーマンスをテストするために、当社の個人用サイトを1つ展開してベンチマークを調査しました。このテストは当社サイトを対象としており、結果は異なる場合があります。</p>
+	<p><a href="https://developers.google.com/web/tools/lighthouse" target="_blank">Googleの「Lighthouse」</a>を使用してサイトのパフォーマンスをベンチマークする一般的な方法の 1 つで、Chrome ブラウザの [監査] タブから直接実行できます。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/09/image1-7.png" class="kg-image"></figure>
+	<p>そして、当社は見事に100点で最初のテストに合格しました！ただし、自分のコンピュータからのベンチマークには偏りがあります。ユーザーの所在地は必ずしも自分と同位置ではありません。通常、ユーザーが<em>別の</em>場所にいることの方が多くなっています。</p>
+	<p>ベンチマークを行う場所は非常に重要です。異なる場所からテストを実行すると、異なる結果が得られます。シアトルからベンチマークを行い、西海岸のサーバーをヒットすると、グローバルなパフォーマンスについての情報はほとんど得られません。</p>
+	<p>世界中の都市からベンチマークを実行するためにCatchpoint と呼ばれるツールを使用することにしました。どのように比較したかを確認するために、Workers サイトを含む 3 つの異なる静的サイト展開プラットフォームにサイトを展開しました。</p>
+	<p>プロバイダーが米国沿岸部または中央ヨーロッパにデータセンターリージョンを置くため、北米などの地域で良好なパフォーマンスを見るのは一般的で、当社もこうした地域に対応しています。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/09/Screen-Shot-2019-09-26-at-10.58.41-PM.png" class="kg-image"></figure>
+	<p>しかし、世界中のその他の地域のユーザーはどうでしょうか？これらの地域では、パフォーマンスがさらに重要です: 最初のユーザーがMacBook Proを使って超高速接続でサイトにアクセスしてくることはまずないでしょう。Workersサイトを使用すれば、御社側で追加作業をする必要もなく、こうした地域にも浸透することができます。<a href="https://blog.cloudflare.com/scaling-the-cloudflare-global/">当社の地図が広がる</a>たびに、御社の存在感がグローバル規模に拡大していくのです。</p>
+	<p>当社では、世界の各地域において各種ベンチマークを調査しており、ここで結果が共有できることを嬉しく思います。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/09/Screen-Shot-2019-09-26-at-10.58.24-PM.png" class="kg-image"></figure>
+	<h2 id="--4"><strong>最後に...</strong></h2>
+	<p>Workersサイトを使用すると、サイトの展開が簡単であり、優れたパフォーマンスにつながるため、当社自身もWorkersサイトで展開するべきと考えました。さらに、今後、<a href="https://developers.cloudflare.com/workers" target="_blank">CloudflareWorkersドキュメント</a>をオープンソースにします！またWorkersサイトを使用して、お近くのCloudflareデータセンターからサービスを提供するようになりました。</p>
+	<p>お客様が<a href="https://workers.cloudflare.com/sites" target="_blank">Workersサイト</a>で何を展開するのか、楽しみです！</p>
+	<hr>
+	<p><em>WorkersやWorkersサイトで何か面白いものを構築されましたか<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="fbc4bbb897948e9f9d979a899ebf9e8d">[email&nbsp;protected]</a>までお知らせください !</em><br></p>
+</div>

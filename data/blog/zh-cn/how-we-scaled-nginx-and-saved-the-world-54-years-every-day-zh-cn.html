@@ -1,0 +1,106 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-embed-card">
+		<blockquote class="twitter-tweet">
+			<p lang="en" dir="ltr">The <a href="https://twitter.com/Cloudflare?ref_src=twsrc%5Etfw" target="_blank">@Cloudflare</a> team just pushed a change that improves our network's performance significantly, especially for particularly slow outlier requests. How much faster? We estimate we're saving the Internet ~54 years *per day* of time we'd all otherwise be waiting for sites to load.</p>— Matthew Prince 🌥 (@eastdakota) <a href="https://twitter.com/eastdakota/status/1012420672352542720?ref_src=twsrc%5Etfw" target="_blank">June 28, 2018</a>
+		</blockquote>
+		<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+	</figure>
+	<p></p>
+	<p>目前已经有1000万个网站，应用程序和API使用Cloudflare加快其用户的上网速度。我们曾经最多通过151个数据中心每秒上传一千多万个请求。多年来，随着请求的增加，我们对我们的NGINX版本进行了许多修改。这篇文章讲述了其中一项修改内容。</p>
+	<h2 id="nginx-">NGINX的工作原理</h2>
+	<p>NGINX是使用事件循环来解决<a href="http://www.kegel.com/c10k.html" target="_blank">C10K问题的程序之一</a>。每次有一个网络事件进入时（一个新连接、请求或通知（让我们可以发送更多数据）等），NGINX就会被唤醒并开始处理事件，然后返回做它需要做的任何事情（可能是处理其他事件）。当事件到达时，与该事件关联的数据就已准备就绪，这使得NGINX可以同时有效地处理许多请求而无需等待。</p>
+	<p></p>
+	<pre><code>num_events = epoll_wait(epfd, /*returned=*/events, events_len, /*timeout=*/-1);
+// events is list of active events
+// handle event[0]: incoming request GET http://example.com/
+// handle event[1]: send out response to GET http://cloudflare.com/</code></pre>
+	<p></p>
+	<p>以下是从文件描述符读取数据的一段代码：</p>
+	<p></p>
+	<pre><code>// we got a read event on fd
+while (buf_len &gt; 0) {
+    ssize_t n = read(fd, buf, buf_len);
+    if (n &lt; 0) {
+        if (errno == EWOULDBLOCK || errno == EAGAIN) {
+            // try later when we get a read event again
+        }
+        if (errno == EINTR) {
+            continue;
+        }
+        return total;
+    }
+    buf_len -= n;
+    buf += n;
+    total += n;
+}</code></pre>
+	<p></p>
+	<p>当fd是网络套接字时，网站将返回已经到达的字节。最后的调用将返回 <code>EWOULDBLOCK</code>，这意味着我们已经耗尽了本地读缓冲区，因此在更多数据可用之前，我们不能再次从套接字中读取数据。</p>
+	<h2 id="-i-o-i-o-">磁盘I / O与网络I / O不同</h2>
+	<p>当 <code>fd</code>是Linux上的一个普通文件时， <code>EWOULDBLOCK</code>和 <code>EAGAIN</code>不可能出现，而read总是等待读取整个缓冲区。即使文件是由 <code>O_NONBLOCK</code>打开的，也是如此。</p>
+	<p>引用 <a href="http://man7.org/linux/man-pages/man2/open.2.html" target="_blank"><code>open(2)</code></a>：</p>
+	<blockquote>请注意，此标记对常规文件和块设备无效</blockquote>
+	<p>换句话说，上面的代码基本上减少到：</p>
+	<p></p>
+	<pre><code>if (read(fd, buf, buf_len) &gt; 0) {
+   return buf_len;
+}</code></pre>
+	<p></p>
+	<p>这意味着如果事件处理程序需要从磁盘读取，那么在整个读取过程完成之前，它会一直阻止事件循环，从而导致接下来的事件处理程序都被延迟。</p>
+	<p>这对于大多数工作负载来说都很好，因为从磁盘读取通常足够快，并且与等待数据包从网络到达相比更加可预测。而且现在每个人都有SSD，我们的缓存磁盘都是SSD。现代SSD具有非常低的延迟，通常为10sμs。最重要的是，我们可以使用多个工作进程运行NGINX，这样以来，速度较慢的事件处理程序不会阻止其他进程中的请求。大多数情况下，我们可以依靠NGINX的事件处理来快速有效地处理请求。</p>
+	<h2 id="ssd-">SSD性能：并不总是像预想的那样</h2>
+	<p>您可能已经猜到这些理想的假设并非总能如愿。如果每次读取需要50μs，那么在4KB块中读取0.19MB只需要2ms（我们读取的还是相比一般要更大的块）。但是我们测验到，我们到第一个字节的时间有时会更久，特别是在第99和第9百分位。换句话说，每100（或每1000）read的最慢读取时间通常比真正所需要的时间更长。</p>
+	<p>固态硬盘虽然很快，但它们非常复杂。其中包括计算机排队和重新排序I / O，还有执行垃圾收集和碎片整理等各种后台任务。有时会因为有一个请求变得很慢而影响整个进程。我的同事<a href="https://twitter.com/ibobrik?lang=en" target="_blank">Ivan Babrou</a>运行了一些I / O基准测试，并且看到了读取时间最长高达1秒。此外，我们的一些SSD比其他SSD的性能异常值更多。往后，我们将在购买SSD时更多地考虑性能稳定性，但与此同时，我们需要为现有硬件提供解决方案。</p>
+	<h2 id="-so_reuseport-">使用 <code>SO_REUSEPORT</code>平均分散负载</h2>
+	<p>偶然的慢响应问题很难避免，我们真正想要避免的是1秒的I / O阻塞我们在同一秒内收到的1000个其他请求。从概念上讲，NGINX可以并行处理许多请求，但它一次只能运行1个事件处理程序。所以我添加了衡量这一点的指标：</p>
+	<p></p>
+	<pre><code>gettimeofday(&amp;start, NULL);
+num_events = epoll_wait(epfd, /*returned=*/events, events_len, /*timeout=*/-1);
+// events is list of active events
+// handle event[0]: incoming request GET http://example.com/
+gettimeofday(&amp;event_start_handle, NULL);
+// handle event[1]: send out response to GET http://cloudflare.com/
+timersub(&amp;event_start_handle, &amp;start, &amp;event_loop_blocked);</code></pre>
+	<p></p>
+	<p>p99 &nbsp;<code>event_loop_blocked</code>结果是我们TTFB的50％以上。也就是说，服务请求所花费的时间的一半是事件循环被其他请求阻止的结果。 <code>event_loop_blocked</code>仅测量大约一半的阻塞（因为延迟的呼叫 <code>epoll_wait()</code>未被测量）因此阻塞时间的实际比率要高得多。</p>
+	<p>我们的每台机器有15个工作进程运行NGINX，这意味着一个慢速I / O应该只阻止最多达6％的请求。但是，事件并不是均匀分布的，最高工作者占用了11％的请求（或者是预期的两倍）。</p>
+	<p> <code>SO_REUSEPORT</code>可以解决分布不均的问题。Marek Majkowski之前曾在其他NGINX实例的背景下撰写过关于<a href="https://blog.cloudflare.com/the-sad-state-of-linux-socket-balancing/">下行</a>的文章，但由于我们的缓存过程中的上行连接是长期存在的，因此这种下行很大程度上不适用于我们的情况，因此打开连接的微小延迟可忽略不计。此单一配置更改可使 <code>SO_REUSEPORT</code>峰值p99提高33％。</p>
+	<h2 id="-read-">将read（）移动到线程池：并非良招</h2>
+	<p>解决这个问题的方法是使read（）不阻塞。事实上，这是一个<a href="https://www.nginx.com/blog/thread-pools-boost-performance-9x/" target="_blank">在上行NGINX中实现</a>的功能！下面的配置使得 <code>read()</code>与 <code>write()</code>在一个线程池完成，而不会阻止事件循环：</p>
+	<p></p>
+	<pre><code>aio         threads;
+aio_write   on;</code></pre>
+	<p></p>
+	<p>然而，当我们对此进行测试时，我们实际上看到p99略有增加，而不是33倍的响应时间改进。差异在误差范围内，但我们对结果感到绝望，并暂时停止继续测试。</p>
+	<p>我们没有看到NGINX所能看到的改进程度有几个原因。在他们的测试中，他们使用200个并发连接来请求大小为4MB的文件，这些文件位于旋转磁盘上。旋转磁盘会增加I / O延迟，因此有助于解决延迟的优化会产生更大的影响。</p>
+	<p>我们也更注重p99（和p999）的性能。有助于平均性能的方法不一定有助于异常值。</p>
+	<p>最后，在我们的环境中，典型的文件大小要小得多。我们90％的缓存命中率适用于小于60KB的文件。较小的文件意味着更少的阻塞时间（我们通常在2次读取中读取整个文件）。</p>
+	<p>如果我们查看缓存命中必须执行的磁盘I / O：</p>
+	<p></p>
+	<pre><code>// we got a request for https://example.com which has cache key 0xCAFEBEEF
+fd = open("/cache/prefix/dir/EF/BE/CAFEBEEF", O_RDONLY);
+// read up to 32KB for the metadata as well as the headers
+// done in thread pool if "aio threads" is on
+read(fd, buf, 32*1024);</code></pre>
+	<p></p>
+	<p>32KB不是静态数字，如果标题很小，我们只需要读取4KB（我们不使用直接IO，因此内核四舍五入为4KB）。 <code>open()</code>看起来没什么害处，但它实际上并不是免费的。内核至少需要检查文件是否存在以及调用进程是否有打开它的权限。为此，它必须找到 <code>/cache/prefix/dir/EF/BE/CAFEBEEF</code>的索引点，要做到这一点，它又必须从 <code>/cache/prefix/dir/EF/BE/</code>中查找 <code>CAFEBEEF</code>。长话短说，在最坏的情况下，内核必须执行以下查找：</p>
+	<p></p>
+	<pre><code>/cache
+/cache/prefix
+/cache/prefix/dir
+/cache/prefix/dir/EF
+/cache/prefix/dir/EF/BE
+/cache/prefix/dir/EF/BE/CAFEBEEF</code></pre>
+	<p> </p>
+	<p><code>open()</code>与仅完成1的次读取时相比，这次完成了6次 <code>read()</code>的单独读取！幸运的是，大多数时间查找由<a href="https://www.kernel.org/doc/Documentation/filesystems/vfs.txt" target="_blank">dentry缓存</a>提供服务，并且不需要访问SSD。但显然 <code>read()</code>在线程池中完成只是图片的一半。</p>
+	<p><strong>coup degrâce：线程池中的非阻塞open（）</strong></p>
+	<p>于是我修改了NGINX以完成 <code>open()</code>线程池内部的大部分内容，因此它不会阻止事件循环。结果（非阻塞打开和非阻塞读取）：</p>
+	<p></p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/07/Screenshot-from-2018-07-17-12-16-27.png" class="kg-image"></figure>
+	<p></p>
+	<p>6月26日，我们对我们的5个最繁忙的数据中心进行了更改，紧接着，第二天在全球范围内推出。总体峰值p99 TTFB提高了6倍。实际上，将我们每天处理800万个请求的总时间累加，每天我们能为互联网省去相当于54年的等待时间。</p>
+	<p>我们已将工作提交给<a href="https://mailman.nginx.org/pipermail/nginx-devel/2018-August/011354.html" target="_blank">上行</a>。有兴趣的人可以跟进。</p>
+	<p>我们的事件循环处理仍然不是完全非阻塞的。特别是，当我们第一次缓存文件（包括 <code>open(O_CREAT)</code>和 <code>rename()</code>）或执行重新验证更新时，我们仍会遇到阻塞。但是，与缓存命中相比，这些是很少见的。在未来，我们会考虑将这些移出事件循环以进一步改善我们的p99延迟。</p>
+	<p><strong>结论</strong></p>
+	<p>NGINX是一个功能强大的平台，但在Linux上扩展极高的I / O负载仍然很难。上行NGINX可以在单独的线程中卸载读取，但从我们的规模来看，我们要做的还有更多。</p>
+	<p>如果您对解决具有挑战性的性能问题感兴趣，那么请<a href="https://www.cloudflare.com/careers/departments/engineering/" target="_blank">加入我们</a>在旧金山，伦敦，奥斯汀或尚佩恩的<a href="https://www.cloudflare.com/careers/departments/engineering/" target="_blank">团队</a>吧。</p>
+</div>

@@ -1,0 +1,62 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image6-8.png" class="kg-image" alt="Introducing browser isolation for email links to stop modern phishing threats"></figure>
+	<p>对于电子邮件通信，我们赋予了一种隐含、不对称的信任。我们意识到，如果不将电子邮件包含在内，组织就无法拥有真正的 Zero Trust 安全态势，这是<a href="https://blog.cloudflare.com/zh-cn/why-we-are-acquiring-area-1-zh-cn/"> Cloudflare 在今年早些时候收购 Area 1 Security</a>的原因所在。今天，我们已经开始踏上一个令人兴奋的旅程，将 Cloudflare Area 1 集成到我们更广泛的 Zero Trust 平台中。Cloudflare Gateway 客户很快就可以启用针对电子邮件链接的远程浏览器隔离，为他们提供无与伦比的保护级别，以抵御基于电子邮件的现代多渠道攻击。</p>
+	<p>来自 Cloudflare Area 1 的研究发现，在所有观察到的恶意攻击中，近 10% 涉及凭据收集者，凸显受害者身份是威胁行为者的常见目标。虽然现有安全控制措施能拦截商品化网络钓鱼攻击，但高级攻击和负载通常没有固定模式，无法用阻止或隔离规则可靠匹配。此外，随着多渠道钓鱼攻击增加，有效的电子邮件安全解决方案需要能够检测跨越电子邮件和 Web 交付的混合活动，以及在交付时无害但在点击时武器化的延迟活动。 </p>
+	<p>当存在足够的“模糊”信号时，隔离目的地以确保最终用户的安全是最有效的解决方案。现在，通过将 <a href="https://www.cloudflare.com/products/zero-trust/browser-isolation/" target="_blank">Cloudflare 浏览器隔离</a>集成到 Cloudflare Area 1 电子邮件安全中，这些攻击很容易被检测和瓦解。</p>
+	<h3 id="-">人为错误是人性使然</h3>
+	<p>为什么人们<a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7005690/" target="_blank">仍会点击</a>恶意链接？并不是因为他们没有受过充分培训，或是缺乏安全意识。而是因为他们的收件箱中有 50 封未读电子邮件，要参加另一个 Zoom 会议，肩膀上还扛着一个四岁大的孩子。他们已经在尽最大努力。如果对手准备充分， 任何人，<a href="https://blog.google/threat-analysis-group/new-campaign-targeting-security-researchers/" target="_blank">包括安全研究人员</a>，在社会工程攻击前都可能上当。</p>
+	<p>如果我们接受人为错误的存在，开发安全工作流程就会引入新的问题和目标：<br></p>
+	<ul>
+		<li>我们怎样才能减少（如果不能消除）人为错误的可能性？</li>
+		<li>当发生人为错误时，我们如何减少其影响？</li>
+		<li>如何将安全性嵌入到员工现有的日常工作流程中？ &nbsp;</li>
+	</ul>
+	<p>当我们得出结论——电子邮件是<a href="https://blog.cloudflare.com/zh-cn/why-we-are-acquiring-area-1-zh-cn/">任何 Zero Trust 平台的一个基本组成部分</a>时，我们就想到了这些问题。人们在电子邮件中犯错的频率和他们在网上冲浪时一样高——事实上，有时甚至更多。</p>
+	<h3 id="--1">阻止还是不阻止？</h3>
+	<p>对于 IT 团队来说，这是他们每天都在努力解决的问题，以平衡风险缓解和用户生产力。SOC 团队希望 IT 阻止一切有风险或未知的活动，而业务部门希望 IT 允许一切不是明显恶意的东西。如果 IT 决定阻止有风险的或未知的链接，并导致误报，他们就会浪费时间手动添加 URL 到允许列表——也许攻击者后来还是会将这些 URL 转向恶意内容。如果 IT 决定允许有风险或未知的网站，最好的情况是，他们浪费时间为受感染的设备重置系统和重设登录证书——但最常见不过的是，他们会将危害分类为数据泄露或<a href="https://blog.cloudflare.com/targeted-ransomware-attack/">勒索软件</a>锁定。启用针对电子邮件的远程浏览器隔离（RBI）——又称“电子邮件链接隔离”——为 IT、SOC 和业务部门团队节省大量时间。</p>
+	<h3 id="--2">了解详情</h3>
+	<p>对于 Cloudflare Area 1 客户，在门户内启用 RBI 的初始步骤如下:</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image5-8.png" class="kg-image"></figure>
+	<p>启用电子邮件链接隔离后，一封附带恶意链接的电子邮件仅能存在很短时间：</p>
+	<p><strong>第一步：</strong>Cloudflare Area 1 检查电子邮件并确定消息中的某些链接有可疑。</p>
+	<p><strong>第二步： </strong>电子邮件中的所有 URL 和超链接被改写成一个自定义的 Area 1 前缀 URL。</p>
+	<p><strong>第三步：</strong>电子邮件被投递到目标的收件箱。</p>
+	<p><strong>第四步：</strong>如果用户点击电子邮件中的链接，Cloudflare 会通过 <code>&lt;authdomain&gt;.cloudflareaccess.com/browser/{{url}}</code> 重定向到一个远程浏览器。</p>
+	<p><strong>第五步： </strong> 远程浏览器在 Cloudflare 全球网络的服务器上加载网站，并向用户的无客户端浏览器端点发送 Zero Trust 绘制命令<strong>。</strong></p>
+	<p>通过在远程服务器而非客户端设备上执行浏览器代码，任何恶意软件都被隔离在服务器级别，无法感染和破坏端点上的客户端网络。当存在未知风险和非受管设备时，这可以提高客户端的安全性，并允许用户无需连接到 VPN 或实施严格防火墙策略就可以访问网站。</p>
+	<p>Cloudflare 的 RBI 技术使用一种独特的专利技术，称为<a href="https://blog.cloudflare.com/zh-cn/cloudflare-and-remote-browser-isolation-zh-cn/">网络矢量渲染（NVR）</a>。这种技术利用云端基于 Chromium 的无头浏览器，透明地拦截绘制层输出，通过 Web 高效、安全地传输绘制指令，并在本地 HTML4 浏览器的窗口中重新绘制。不同于依赖于像素推送或 DOM 重构的传统浏览器隔离技术，NVR 在可扩展性、安全性和最终用户透明度方面进行了优化，同时确保与网站的最广泛兼容性。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image4-13.png" class="kg-image"></figure>
+	<h3 id="--3">启用电子邮件链接隔离前的钓鱼攻击 </h3>
+	<p>让我们来看一个延迟钓鱼攻击的具体例子，它如何越过传统的防御，以及电子邮件链接隔离如何应对该威胁。</p>
+	<p>随着组织寻求采用新的安全原则和网络架构，如 <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/" target="_blank">Zero Trust</a>，对手则不断想出新的技术来绕过这些控制，利用最常用和最脆弱的应用程序——电子邮件。电子邮件被普遍使用，而且很容易被别有用心的攻击者绕过，因而成为理想的攻击途径。</p>
+	<p>让我们看一个没有启用电子邮件链接隔离情况下的“延迟钓鱼攻击”示例。 </p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image1-17.png" class="kg-image"></figure>
+	<h3 id="--4">攻击者准备：发动前数周</h3>
+	<p>攻击者为即将发动的网络钓鱼企图搭建基础设施。这可能包括：</p>
+	<ul>
+		<li>注册一个域名</li>
+		<li>将其用 SSL 加密</li>
+		<li>设置适当的电子邮件验证 （<a href="https://www.cloudflare.com/learning/dns/dns-records/dns-spf-record/" target="_blank">SPF</a>，<a href="https://www.cloudflare.com/learning/dns/dns-records/dns-dkim-record/" target="_blank">DKIM</a>， <a href="https://www.cloudflare.com/en-gb/learning/dns/dns-records/dns-dmarc-record/" target="_blank">DMARC</a>）</li>
+		<li>创建一个无害的网页<br></li>
+	</ul>
+	<p>在这个阶段，对于单纯依赖基于信誉的信号和其他确定性检测技术的威胁情报系统而言，并不能捕获到任何攻击的证据。</p>
+	<p><strong>攻击“发动”：星期天下午</strong></p>
+	<p>攻击者从新创建的域发送一封看似真实的电子邮件。电子邮件中包含到上述（依然无害的）网页的链接。电子邮件中没有任何东西会被阻止或标记为可疑。该电子邮件被投递到目标收件箱。</p>
+	<p><strong>攻击发动：星期日晚上</strong></p>
+	<p>一旦确信所有的电子邮件都已到达目的地，攻击者就会更改他们控制的网页，将链接重定向到一个恶意目的地，如创建一个用于收集凭据的虚假登录页面。 </p>
+	<p><strong>攻击登陆：星期一上午</strong></p>
+	<p>员工浏览收件箱以开始一周工作时，就会看到这封电子邮件。也许并非所有人都会点击链接，但有些人会。也许并非所有点击链接的人都会输入他们的凭据，但有些人会。如果没有电子邮件链接隔离，攻击就会取得成功。 </p>
+	<p>攻击的后果才刚刚开始——一旦获得用户的登录凭据，攻击者就能<a href="https://www.crn.com/news/security/solarwinds-ceo-confirms-office-365-email-compromise-played-role-in-broad-based-attack" target="_blank">入侵合法帐户</a>，在组织的网络中传播恶意软件，并导致更多下游破坏。</p>
+	<h3 id="--5">启用电子邮件链接隔离后的一次钓鱼攻击</h3>
+	<p>Cloudflare Area 1 和 Cloudflare 浏览器隔离的集成提供了关键的投递后保护层，从而能够挫败类似上述延迟钓鱼示例的攻击。</p>
+	<p>如果攻击者准备并执行上述攻击，当用户单击电子邮件链接时，我们的电子邮件隔离系统会加以分析，并对用户是否应该导航到该链接进行高级评估。 </p>
+	<p><strong>安全链接</strong> —— 用户将被透明地重定向到此站点</p>
+	<p><strong>恶意链接 </strong>—— 用户被阻止进行浏览</p>
+	<p><strong>可疑链接 </strong>—— 系统强烈建议用户放弃浏览，并弹出一个醒目的警告页面，鼓励他们在一个隔离的浏览器中查看链接</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image3-14.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image2-15.png" class="kg-image"></figure>
+	<p>虽然上述例子中使用了警告提示页面，电子邮件链接隔离也将为安全管理员提供其他可定制的缓解选项，包括在其 Cloudflare Gateway 控制台内将页面设置为只读模式，限制文件下载和上传，以及完全禁用键盘输入。</p>
+	<p>电子邮件链接隔离也被嵌入到用户现有工作流程中，不会用 IT 工单影响生产力或消耗用户的时间。由于 Cloudflare 浏览器隔离建立在 Cloudflare 网络上，后者覆盖全球 270 个城市，Web 浏览会话能在尽可能靠近用户的位置进行，从而最大程度减少延迟。此外，Cloudflare 浏览器隔离将每个网页的最终输出发送给用户，而非进行页面清洗或推送像素流，从而进一步降低延迟，不会破坏基于浏览器的应用程序，如 SaaS。</p>
+	<h3 id="--6">我如何开始？</h3>
+	<p>现有 Cloudflare Area 1 和 Cloudflare Gateway 客户均有资格使用电子邮件链接隔离的测试版。如需了解详情并表达意向，<a href="https://www.cloudflare.com/zero-trust/lp/email-link-isolation" target="_blank">请注册即将发布的测试版</a>。<br>如果您想看看 Cloudflare Area 1 能在您的实际电子邮件流中检测到什么威胁，<a href="https://www.cloudflare.com/lp/emailsecurity/" target="_blank">在此</a>预约免费的网络钓鱼风险评估。启动仅需 5 分钟，不会影响到邮件流。</p>
+</div>
