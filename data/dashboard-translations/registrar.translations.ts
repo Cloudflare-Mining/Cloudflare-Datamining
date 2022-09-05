@@ -528,5 +528,7 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 	pricing_table_header_tld: "TLD",
 	pricing_table_header_current_fee: "Current Fee (per year)",
 	pricing_table_header_new_fee: "New Fee (per year)",
-	pricing_table_header_date: "Effective Date"
+	pricing_table_header_date: "Effective Date",
+	protection_auto_lock_title: "Automatic locking",
+	protection_auto_lock_description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dolor magna eget est lorem ipsum dolor sit amet."
 }
