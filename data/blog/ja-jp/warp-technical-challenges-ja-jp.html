@@ -20,7 +20,7 @@ workers.dev.    161  IN  A  198.41.214.162
 	<p>パケットが当社データセンターに到着すると、ルーターがこれを処理します。ルーターは、ECMP（等コストマルチパス）と呼ばれるルーティングストラテジーを用いて、トラフィックを、このアドレスの処理を担当するサーバーのうちの 1 台に送信します。ECMPは、ルーターにおいて複数の経路に明確な「勝者」がなく、良好なネクストホップを複数持っていてそのすべての最終的宛先が同一である状況を指します。この例では、ECMPで複数の仲介的なリンクのバランスを取る代わりに、このコンセプトを流用して、この中間的なリンクのアドレスをトラフィックの最終的な宛先、つまり当社サーバーとします。</p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/09/image6.png" class="kg-image"></figure>
 	<p>こちらは、当社データセンターに設置しているタイプのJuniper製のルーターの構成で、3つの宛先の間でトラフィックのバランスを取るよう設定されています。</p>
-	<pre><code class="language-ini"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1b6e687e695b7374686f">[email&nbsp;protected]</a># show routing-options
+	<pre><code class="language-ini"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="5c292f392e1c34332f28">[email&nbsp;protected]</a># show routing-options
 
 static {
   route 172.16.1.0/24 next-hop [ 172.16.2.1 172.16.2.2 172.16.2.3 ];

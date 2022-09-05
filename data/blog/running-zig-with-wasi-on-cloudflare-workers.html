@@ -79,7 +79,7 @@ $ echo "Hello\nWorld" | wasmtime ./zig-out/bin/print-with-line-numbers.wasm
 	<p>With our binary ready to go, the last piece is to get it running on Cloudflare Workers using <a href="https://blog.cloudflare.com/wrangler-v2-beta/">wrangler2</a>. That is as simple as publishing the .wasm file on workers.dev. If you don’t have a <a href="https://workers.dev" target="_blank">workers.dev</a> account, you can follow the tutorial on our <a href="https://developers.cloudflare.com/workers/get-started/guide/" target="_blank">getting started guide </a>that will get you from code to deployment within minutes!</p>
 	<p>In fact, once I signed up for my account, all I needed to do was complete the first two steps, install wrangler and login.</p>
 	<!--kg-card-begin: markdown-->
-	<pre><code>$ npx <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1b6c697a757c777e695b6c7a6876">[email&nbsp;protected]</a> login
+	<pre><code>$ npx <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b2c5c0d3dcd5ded7c0f2c5d3c1df">[email&nbsp;protected]</a> login
 Attempting to login via OAuth...
 Opening a link in your default browser: https://dash.cloudflare.com/oauth2/auth
 Successfully logged in.
@@ -87,7 +87,7 @@ Successfully logged in.
 	<!--kg-card-end: markdown-->
 	<p>Then, I ran the following command to publish my worker:</p>
 	<!--kg-card-begin: markdown-->
-	<pre><code>$ npx <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="bdcacfdcd3dad1d8cffdcadcced0">[email&nbsp;protected]</a> publish --name print-with-line-numbers --compatibility-date=2022-07-07 zig-out/bin/print-with-line-numbers.wasm
+	<pre><code>$ npx <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="4e393c2f2029222b3c0e392f3d23">[email&nbsp;protected]</a> publish --name print-with-line-numbers --compatibility-date=2022-07-07 zig-out/bin/print-with-line-numbers.wasm
 Uploaded print-with-line-numbers (3.04 sec)
 Published print-with-line-numbers (6.28 sec)
   print-with-line-numbers.workers.dev

@@ -32,7 +32,7 @@
 	<h3 id="sourcing-packets-from-a-wildcard-socket">Sourcing packets from a wildcard socket</h3>
 	<p>There is a bigger problem with this code. It only works correctly when binding to a specific IP address, like <code>::1</code> or <code>127.0.0.1</code>. It won't always work when we bind to a wildcard. The issue lies in the <code>sendto()</code> line — we didn't explicitly set the outbound IP address! Linux doesn't know where we'd like to source the packet from, and it will choose a default egress IP address. It might not be the IP the client communicated to. For example, let's say we added <code>::2</code> address to loop back interface and sent a packet to it, with src IP set to a valid <code>::1</code>:</p>
 	<!--kg-card-begin: markdown-->
-	<pre><code><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="670a0615020c270a1517150204">[email&nbsp;protected]</a>:~$ sudo tcpdump -ni lo port 1234 -t
+	<pre><code><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e28f83908789a28f9092908781">[email&nbsp;protected]</a>:~$ sudo tcpdump -ni lo port 1234 -t
 tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
 listening on lo, link-type EN10MB (Ethernet), capture size 262144 bytes
 IP6 ::1.41879 &gt; ::2.1234: UDP, length 2
@@ -63,7 +63,7 @@ IP6 ::1.1234 &gt; ::1.41879: UDP, length 2
 	<p>— As soon as we receive the first packet from the client, we immediately create a new fully connected socket, *over* the unconnected socket! It shares the same local port and local IP.</p>
 	<p>This is how it might look in ss:</p>
 	<!--kg-card-begin: markdown-->
-	<pre><code><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="75181407101e35180705071016">[email&nbsp;protected]</a>:~$ ss -panu sport = :1234 or dport = :1234 | cat
+	<pre><code><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="0e636f7c6b654e637c7e7c6b6d">[email&nbsp;protected]</a>:~$ ss -panu sport = :1234 or dport = :1234 | cat
 State     Recv-Q    Send-Q       Local Address:Port        Peer Address:Port    Process                                                                         
 ESTAB     0         0                    [::1]:1234               [::1]:44592    python3
 UNCONN    0         0                        *:1234                   *:*        python3

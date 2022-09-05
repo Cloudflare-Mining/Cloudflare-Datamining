@@ -20,7 +20,7 @@ workers.dev.    161  IN  A  198.41.214.162
 	<p>Una vez que un paquete llega a nuestro centro de datos, este se procesa en un enrutador. Ese enrutador envía el tráfico a uno de un conjunto de servidores responsables de manejar esa dirección usando una estrategia de enrutamiento llamada Equal-Cost Multi-Path (ECMP, siglas para “múltiples rutas y un mismo costo”). ECMP se refiere a la situación en la que el enrutador no tiene un claro "ganador" entre las diferentes rutas; tiene múltiples próximos saltos buenos, todos al mismo destino final. En nuestro caso, cambiamos un poco ese concepto. En lugar de utilizar ECMP para equilibrar varios enlaces intermediarios, hacemos que el enlace intermediario se dirija al destino final de nuestro tráfico: nuestros servidores.</p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/09/image6.png" class="kg-image"></figure>
 	<p>Esta es la configuración de un enrutador de marca Juniper, del tipo que podría estar en uno de nuestros centros de datos, y que está configurado para equilibrar el tráfico en tres destinos:</p>
-	<pre><code class="language-ini"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="5326203621133b3c2027">[email&nbsp;protected]</a># show routing-options
+	<pre><code class="language-ini"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="087d7b6d7a4860677b7c">[email&nbsp;protected]</a># show routing-options
 
 static {
   route 172.16.1.0/24 next-hop [ 172.16.2.1 172.16.2.2 172.16.2.3 ];

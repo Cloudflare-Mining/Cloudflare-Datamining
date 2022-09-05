@@ -51,10 +51,10 @@ const main = async () =&gt; {
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>We’ve also leveraged this benefit in our Make targets where at build time we ensure that the deployed security.txt is clearsigned with the <a href="https://www.cloudflare.com/gpg/security-at-cloudflare-pubkey-06A67236.txt" target="_blank"><span class="__cf_email__" data-cfemail="c2b1a7a1b7b0abb6bb82a1aeadb7a6a4aea3b0a7eca1adaf">[email&nbsp;protected]</span> PGP key</a>:</p>
+	<p>We’ve also leveraged this benefit in our Make targets where at build time we ensure that the deployed security.txt is clearsigned with the <a href="https://www.cloudflare.com/gpg/security-at-cloudflare-pubkey-06A67236.txt" target="_blank"><span class="__cf_email__" data-cfemail="afdccaccdaddc6dbd6efccc3c0dacbc9c3ceddca81ccc0c2">[email&nbsp;protected]</span> PGP key</a>:</p>
 	<!--kg-card-begin: markdown-->
 	<pre><code>sign:
-	gpg --local-user <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b6c5d3d5c3c4dfc2cff6d5dad9c3d2d0dad7c4d398d5d9db">[email&nbsp;protected]</a> -o src/txt/security.txt --clearsign src/txt/security.txt.temp
+	gpg --local-user <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="0774626472756e737e47646b687263616b6675622964686a">[email&nbsp;protected]</a> -o src/txt/security.txt --clearsign src/txt/security.txt.temp
 	rm src/txt/security.txt.temp
 </code></pre>
 	<!--kg-card-end: markdown-->
