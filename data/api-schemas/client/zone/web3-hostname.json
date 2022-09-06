@@ -60,7 +60,8 @@
 						"description": "Target gateway of the hostname.",
 						"enum": [
 							"ethereum",
-							"ipfs"
+							"ipfs",
+							"ipfs_universal_path"
 						]
 					},
 					"dnslink": {
@@ -157,6 +158,220 @@
 			"uri": "zones/:zone_identifier/web3/hostnames/:identifier",
 			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/zones/9a7806061c88ada191ed06f989cc3dac/web3/hostnames/9a7806061c88ada191ed06f989cc3dac\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"9a7806061c88ada191ed06f989cc3dac\"\n  }\n}"
+		},
+		{
+			"title": "IPFS Universal Path Gateway Content List Details",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_identifier}/web3/hostnames/{#/definitions/identifier}/ipfs_universal_path/content_list",
+			"method": "GET",
+			"cfOwnership": "web3",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"html_id": "web3-hostname-ipfs-universal-path-gateway-content-list-details",
+			"uri": "zones/:zone_identifier/web3/hostnames/:identifier/ipfs_universal_path/content_list",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/9a7806061c88ada191ed06f989cc3dac/web3/hostnames/9a7806061c88ada191ed06f989cc3dac/ipfs_universal_path/content_list\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"action\": \"block\"\n  }\n}"
+		},
+		{
+			"title": "Update IPFS Universal Path Gateway Content List",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_identifier}/web3/hostnames/{#/definitions/identifier}/ipfs_universal_path/content_list",
+			"method": "PUT",
+			"cfOwnership": "web3",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"html_id": "web3-hostname-update-ipfs-universal-path-gateway-content-list",
+			"uri": "zones/:zone_identifier/web3/hostnames/:identifier/ipfs_universal_path/content_list",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/zones/9a7806061c88ada191ed06f989cc3dac/web3/hostnames/9a7806061c88ada191ed06f989cc3dac/ipfs_universal_path/content_list\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"action\":\"block\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"action": {
+						"type": "string",
+						"example": "\"block\"",
+						"enum": [
+							"block"
+						],
+						"description": "Behavior of the content list"
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"action"
+				],
+				"objects": [],
+				"example": "{\n  \"action\": \"block\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"action\": \"block\"\n  }\n}"
+		},
+		{
+			"title": "List IPFS Universal Path Gateway Content List Entries",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_identifier}/web3/hostnames/{#/definitions/identifier}/ipfs_universal_path/content_list/entries",
+			"method": "GET",
+			"cfOwnership": "web3",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"html_id": "web3-hostname-list-ipfs-universal-path-gateway-content-list-entries",
+			"uri": "zones/:zone_identifier/web3/hostnames/:identifier/ipfs_universal_path/content_list/entries",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/9a7806061c88ada191ed06f989cc3dac/web3/hostnames/9a7806061c88ada191ed06f989cc3dac/ipfs_universal_path/content_list/entries\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"entries\": [\n      {\n        \"id\": \"9a7806061c88ada191ed06f989cc3dac\",\n        \"type\": \"cid\",\n        \"content\": \"QmPZ9gcCEpqKTo6aq61g2nXGUhM4iCL3ewB6LDXZCtioEB\",\n        \"description\": \"this is my content list entry\",\n        \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n        \"modified_on\": \"2014-01-01T05:20:00.12345Z\"\n      }\n    ]\n  }\n}"
+		},
+		{
+			"title": "Create IPFS Universal Path Gateway Content List Entry",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_identifier}/web3/hostnames/{#/definitions/identifier}/ipfs_universal_path/content_list/entries",
+			"method": "POST",
+			"cfOwnership": "web3",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"html_id": "web3-hostname-create-ipfs-universal-path-gateway-content-list-entry",
+			"uri": "zones/:zone_identifier/web3/hostnames/:identifier/ipfs_universal_path/content_list/entries",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/zones/9a7806061c88ada191ed06f989cc3dac/web3/hostnames/9a7806061c88ada191ed06f989cc3dac/ipfs_universal_path/content_list/entries\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"type\":\"cid\",\"content\":\"QmPZ9gcCEpqKTo6aq61g2nXGUhM4iCL3ewB6LDXZCtioEB\",\"description\":\"this is my content list entry\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"type": {
+						"type": "string",
+						"example": "\"cid\"",
+						"enum": [
+							"cid",
+							"content_path"
+						],
+						"description": "Type of content list entry to block"
+					},
+					"content": {
+						"type": "string",
+						"example": "\"QmPZ9gcCEpqKTo6aq61g2nXGUhM4iCL3ewB6LDXZCtioEB\"",
+						"maxLength": 500,
+						"description": "CID or content path of content to block"
+					},
+					"description": {
+						"type": "string",
+						"example": "\"this is my content list entry\"",
+						"maxLength": 500,
+						"description": "An optional description of the content list entry."
+					}
+				},
+				"required_props": [
+					"type",
+					"content"
+				],
+				"optional_props": [
+					"description"
+				],
+				"objects": [],
+				"example": "{\n  \"type\": \"cid\",\n  \"content\": \"QmPZ9gcCEpqKTo6aq61g2nXGUhM4iCL3ewB6LDXZCtioEB\",\n  \"description\": \"this is my content list entry\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"9a7806061c88ada191ed06f989cc3dac\",\n    \"type\": \"cid\",\n    \"content\": \"QmPZ9gcCEpqKTo6aq61g2nXGUhM4iCL3ewB6LDXZCtioEB\",\n    \"description\": \"this is my content list entry\",\n    \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\"\n  }\n}"
+		},
+		{
+			"title": "IPFS Universal Path Gateway Content List Entry Details",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_identifier}/web3/hostnames/{#/definitions/identifier}/ipfs_universal_path/content_list/entries/{#/definitions/content_list_entry_identifier}",
+			"method": "GET",
+			"cfOwnership": "web3",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"html_id": "web3-hostname-ipfs-universal-path-gateway-content-list-entry-details",
+			"uri": "zones/:zone_identifier/web3/hostnames/:identifier/ipfs_universal_path/content_list/entries/:content_list_entry_identifier",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/9a7806061c88ada191ed06f989cc3dac/web3/hostnames/9a7806061c88ada191ed06f989cc3dac/ipfs_universal_path/content_list/entries/9a7806061c88ada191ed06f989cc3dac\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"9a7806061c88ada191ed06f989cc3dac\",\n    \"type\": \"cid\",\n    \"content\": \"QmPZ9gcCEpqKTo6aq61g2nXGUhM4iCL3ewB6LDXZCtioEB\",\n    \"description\": \"this is my content list entry\",\n    \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\"\n  }\n}"
+		},
+		{
+			"title": "Edit IPFS Universal Path Gateway Content List Entry",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_identifier}/web3/hostnames/{#/definitions/identifier}/ipfs_universal_path/content_list/entries/{#/definitions/content_list_entry_identifier}",
+			"method": "PUT",
+			"cfOwnership": "web3",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"html_id": "web3-hostname-edit-ipfs-universal-path-gateway-content-list-entry",
+			"uri": "zones/:zone_identifier/web3/hostnames/:identifier/ipfs_universal_path/content_list/entries/:content_list_entry_identifier",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/zones/9a7806061c88ada191ed06f989cc3dac/web3/hostnames/9a7806061c88ada191ed06f989cc3dac/ipfs_universal_path/content_list/entries/9a7806061c88ada191ed06f989cc3dac\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"type\":\"cid\",\"content\":\"QmPZ9gcCEpqKTo6aq61g2nXGUhM4iCL3ewB6LDXZCtioEB\",\"description\":\"this is my content list entry\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"type": {
+						"type": "string",
+						"example": "\"cid\"",
+						"enum": [
+							"cid",
+							"content_path"
+						],
+						"description": "Type of content list entry to block"
+					},
+					"content": {
+						"type": "string",
+						"example": "\"QmPZ9gcCEpqKTo6aq61g2nXGUhM4iCL3ewB6LDXZCtioEB\"",
+						"maxLength": 500,
+						"description": "CID or content path of content to block"
+					},
+					"description": {
+						"type": "string",
+						"example": "\"this is my content list entry\"",
+						"maxLength": 500,
+						"description": "An optional description of the content list entry."
+					}
+				},
+				"required_props": [
+					"type",
+					"content"
+				],
+				"optional_props": [
+					"description"
+				],
+				"objects": [],
+				"example": "{\n  \"type\": \"cid\",\n  \"content\": \"QmPZ9gcCEpqKTo6aq61g2nXGUhM4iCL3ewB6LDXZCtioEB\",\n  \"description\": \"this is my content list entry\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"9a7806061c88ada191ed06f989cc3dac\",\n    \"type\": \"cid\",\n    \"content\": \"QmPZ9gcCEpqKTo6aq61g2nXGUhM4iCL3ewB6LDXZCtioEB\",\n    \"description\": \"this is my content list entry\",\n    \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\"\n  }\n}"
+		},
+		{
+			"title": "Delete IPFS Universal Path Gateway Content List Entry",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_identifier}/web3/hostnames/{#/definitions/identifier}/ipfs_universal_path/content_list/entries/{#/definitions/content_list_entry_identifier}",
+			"method": "DELETE",
+			"cfOwnership": "web3",
+			"cfPlanAvailability": {
+				"free": false,
+				"pro": false,
+				"business": false,
+				"enterprise": true
+			},
+			"html_id": "web3-hostname-delete-ipfs-universal-path-gateway-content-list-entry",
+			"uri": "zones/:zone_identifier/web3/hostnames/:identifier/ipfs_universal_path/content_list/entries/:content_list_entry_identifier",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/zones/9a7806061c88ada191ed06f989cc3dac/web3/hostnames/9a7806061c88ada191ed06f989cc3dac/ipfs_universal_path/content_list/entries/9a7806061c88ada191ed06f989cc3dac\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"9a7806061c88ada191ed06f989cc3dac\"\n  }\n}"
 		}
 	],
 	"html_id": "web3-hostname",
@@ -205,7 +420,8 @@
 				"description": "Target gateway of the hostname.",
 				"enum": [
 					"ethereum",
-					"ipfs"
+					"ipfs",
+					"ipfs_universal_path"
 				]
 			},
 			"dnslink": {
