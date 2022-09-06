@@ -16,6 +16,14 @@ const dir = path.resolve(`../data/jobs`);
 await fs.ensureDir(dir);
 await fs.emptyDir(dir);
 
+function sortDepartmentInfo(departmentInfo){
+	departmentInfo.children = departmentInfo.children.sort((childA, childB) => childA.id - childB.id);
+	for(const child of departmentInfo.children){
+		child.jobs = child.jobs.sort((jobA, jobB) => jobA.updated_at.localeCompare(jobB.updated_at) || jobA.id - jobB.id);
+	}
+	return departmentInfo;
+}
+
 console.log('Fetch information for offices...');
 const officesRes = await fetch(`https://boards-api.greenhouse.io/v1/boards/cloudflare/offices/`, {agent});
 if(officesRes.ok){
@@ -37,7 +45,10 @@ if(departmentsRes.ok){
 		const departmentDir = path.resolve(dir, departmentDirName);
 		await fs.ensureDir(departmentDir);
 		const {jobs, ...departmentInfo} = department;
-		await fs.writeFile(path.resolve(departmentDir, `_index.json`), JSON.stringify(departmentInfo, null, '\t'));
+
+		// sort department jobs by date
+		const sortedDepartmentInfo = sortDepartmentInfo(departmentInfo);
+		await fs.writeFile(path.resolve(departmentDir, `_index.json`), JSON.stringify(sortedDepartmentInfo, null, '\t'));
 
 
 		for(const job of jobs){
