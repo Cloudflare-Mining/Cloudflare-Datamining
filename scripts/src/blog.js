@@ -71,7 +71,7 @@ const fetchURL = async function(url, waitFor, slug){
 	}
 
 	if(results.status() !== 200){
-		console.warn('Bad status', page.status());
+		console.warn('Bad status', results.status());
 		try{
 			await fs.remove(slug);
 		}catch{}
@@ -151,6 +151,17 @@ for(const url of [...blogURLs].sort()){
 				}
 			});
 		}
+
+		// handle weird email protection edge-cases
+		const paragraphs = dom('p, code');
+		paragraphs.each((i, node) => {
+			const el = dom(node);
+			const html = el.html();
+			if(/\[email protected]\w+/.test(html)){
+				console.log('Found weird email protection', html);
+				el.html(html.replaceAll(/\[email protected]\w+/g, '[email protected]'));
+			}
+		});
 
 		// handle cfbeacon stuff
 		const cfBeacon = dom('script[src*="beacon.min.js"]');
