@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Adam Janiš",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/11/Screenshot-2021-11-19-at-13.03.41.png",
+			"width": 694,
+			"height": 660
+		},
+		"url": "https://blog.cloudflare.com/author/adam-janis/",
+		"sameAs": [
+			"https://twitter.com/adam_janis"
+		]
+	},
+	"headline": "Building a scheduling system with Workers and Durable Objects",
+	"url": "https://blog.cloudflare.com/building-scheduling-system-with-workers-and-durable-objects/",
+	"datePublished": "2022-08-05T15:45:57.000Z",
+	"dateModified": "2022-08-16T16:15:16.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/08/Scheduling-system-with-Workers-and-Durable-Objects-1.png",
+		"width": 1600,
+		"height": 901
+	},
+	"keywords": "Cloudflare Workers, Durable Objects, JavaScript, Serverless, Edge Computing",
+	"description": "In this post we&#x27;re going to show you how to build a scalable service that will schedule HTTP requests on a specific schedule or as one-off at a specific time ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

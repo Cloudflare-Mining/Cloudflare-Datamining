@@ -1,0 +1,32 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Ingvar Stepanyan",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/rYPVgOqN.jpg",
+		"url": "https://blog.cloudflare.com/author/ingvar-stepanyan/",
+		"sameAs": []
+	},
+	"headline": "Faster script loading with BinaryAST?",
+	"url": "https://blog.cloudflare.com/binary-ast/",
+	"datePublished": "2019-05-17T13:00:00.000Z",
+	"dateModified": "2019-08-22T23:54:21.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2019/05/Screen-Shot-2019-05-16-at-4.03.09-PM.png",
+	"keywords": "Speed Week, Speed & Reliability, Product News, JavaScript",
+	"description": "BinaryAST is a new over-the-wire format for JavaScript that aims to speed up parsing while keeping the semantics of the original JavaScript intact.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

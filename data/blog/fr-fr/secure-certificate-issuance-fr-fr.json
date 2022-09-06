@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Dina Kozlov",
+		"image": "http://blog.cloudflare.com/content/images/2019/06/headshot.jpg",
+		"url": "https://blog.cloudflare.com/author/dina/",
+		"sameAs": [
+			"https://twitter.com/dinasaur_404"
+		]
+	},
+	"headline": "Sécurisation de l&#x27;émission d&#x27;un certificat à l&#x27;aide de la validation de contrôle de domaine par chemins multiples",
+	"url": "https://blog.cloudflare.com/fr-fr/secure-certificate-issuance-fr-fr/",
+	"datePublished": "2019-06-18T13:00:00.000Z",
+	"dateModified": "2021-01-21T21:18:53.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2019/09/Screen-Shot-2019-06-17-at-8.46.28-AM-1-1.png",
+		"width": 922,
+		"height": 644
+	},
+	"keywords": "Français, Cryptographie (FR), Semaine de la crypto, Crypto (FR), DNS (FR), BGP (FR)",
+	"description": "La confiance sur Internet repose sur l&#x27;infrastructure à clé publique (PKI). L&#x27;infrastructure à clé publique permet aux serveurs de servir de manière sécurisée des sites Web en émettant des certificats",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

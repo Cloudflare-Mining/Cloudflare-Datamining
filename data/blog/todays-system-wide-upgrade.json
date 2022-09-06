@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew Prince",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
+			"width": 1196,
+			"height": 1190
+		},
+		"url": "https://blog.cloudflare.com/author/matthew-prince/",
+		"sameAs": [
+			"https://twitter.com/eastdakota"
+		]
+	},
+	"headline": "Today&#x27;s System-Wide Upgrade",
+	"url": "https://blog.cloudflare.com/todays-system-wide-upgrade/",
+	"datePublished": "2013-01-11T02:27:00.000Z",
+	"dateModified": "2018-08-09T23:42:13.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/upgrade.jpg.scaled500.jpg",
+	"keywords": "Network, Our History",
+	"description": "Today from 21:00 - 23:00 UTC CloudFlare scheduled a maintenance window. During that time, CloudFlare&#x27;s interface was offline. While it was only two hours of time (and we finished a bit early, at 22:16 UTC) what went on during that window had been in the works for several months. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

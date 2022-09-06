@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Ivan Babrou",
+		"image": {
+			"@type": "ImageObject",
+			"url": "//www.gravatar.com/avatar/e2ee800c1f69d88acdfea37994b87276?s=250&d=mm&r=x",
+			"width": 250,
+			"height": 250
+		},
+		"url": "https://blog.cloudflare.com/author/ivan/",
+		"sameAs": []
+	},
+	"headline": "Introducing ebpf_exporter",
+	"url": "https://blog.cloudflare.com/introducing-ebpf_exporter/",
+	"datePublished": "2018-08-24T15:11:53.000Z",
+	"dateModified": "2021-05-06T14:23:45.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/05/1.jpeg",
+		"width": 2000,
+		"height": 1125
+	},
+	"keywords": "Speed & Reliability, eBPF, Linux, Programming",
+	"description": "Here at Cloudflare we use Prometheus to collect operational metrics. We run it on hundreds of servers and ingest millions of metrics per second to get insight into our network and provide the best possible service to our customers.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

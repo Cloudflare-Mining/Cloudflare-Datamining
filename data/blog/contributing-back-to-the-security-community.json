@@ -1,0 +1,33 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Ryan Lackey",
+		"image": "http://blog.cloudflare.com/content/images/2018/02/x_400x400.jpg",
+		"url": "https://blog.cloudflare.com/author/rdl/",
+		"sameAs": [
+			"https://twitter.com/octal"
+		]
+	},
+	"headline": "Contributing back to the security community",
+	"url": "https://blog.cloudflare.com/contributing-back-to-the-security-community/",
+	"datePublished": "2015-04-21T22:14:26.000Z",
+	"dateModified": "2018-08-27T21:50:56.000Z",
+	"keywords": "CFSSL, RSA, Events, Security",
+	"description": "This Friday at the RSA Conference in San Francisco, along with Marc Rogers, Principal Security Researcher at CloudFlare, I&#x27;m speaking about a version of The Grugq&#x27;s PORTAL, an open source network security device designed to make life easier and safer.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

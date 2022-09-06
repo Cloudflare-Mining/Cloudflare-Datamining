@@ -1,0 +1,34 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Junade Ali",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/G1VwuaxB.jpg",
+		"url": "https://blog.cloudflare.com/author/junade-ali/",
+		"sameAs": [
+			"https://twitter.com/IcyApril"
+		]
+	},
+	"headline": "The Curious Case of Caching CSRF Tokens",
+	"url": "https://blog.cloudflare.com/the-curious-case-of-caching-csrf-tokens/",
+	"datePublished": "2017-12-13T14:00:00.000Z",
+	"dateModified": "2021-01-28T23:31:44.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2017/11/23910AEA00000578-2852835-Shoppers_scramble_to_pick_up_one-8_1417169462181-1.jpg",
+	"keywords": "Cache Everything, Page Rules, SaaS, Speed & Reliability, HTTPS, Debugging, Cache",
+	"description": "It is now commonly accepted as fact that web performance is critical for business. Slower sites can affect conversion rates on e-commerce stores, they can affect your sign-up rate on your SaaS service and lower the readership of your content.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

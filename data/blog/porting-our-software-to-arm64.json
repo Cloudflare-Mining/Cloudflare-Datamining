@@ -1,0 +1,34 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Alexander Huynh",
+		"image": "http://blog.cloudflare.com/content/images/2018/08/0-2.jpg",
+		"url": "https://blog.cloudflare.com/author/alexander/",
+		"sameAs": [
+			"https://twitter.com/divbyzer0"
+		]
+	},
+	"headline": "Porting Our Software to ARM64",
+	"url": "https://blog.cloudflare.com/porting-our-software-to-arm64/",
+	"datePublished": "2018-09-02T07:35:00.000Z",
+	"dateModified": "2018-09-02T07:35:33.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/09/photo-1509815963-90cab26a868f.jpg",
+	"keywords": "Programming, Rust, Go, Developers, Speed & Reliability",
+	"description": "As we enable more ARM64[1] machines in our network, I want to give some technical insight into the process we went through to reach software parity in our multi-architecture environment.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

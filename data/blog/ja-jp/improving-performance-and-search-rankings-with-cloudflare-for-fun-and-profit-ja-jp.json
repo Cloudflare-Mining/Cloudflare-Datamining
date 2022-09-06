@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Rustam Lalkaka",
+		"image": "http://blog.cloudflare.com/content/images/2017/05/AAEAAQAAAAAAAAc9AAAAJDg0MzBkZTg1LTNkOTUtNGFlYy1hMjJiLTQxMjlmYzkyNjJjMA.jpg",
+		"url": "https://blog.cloudflare.com/author/rustam/",
+		"sameAs": [
+			"https://twitter.com/lalkaka"
+		]
+	},
+	"headline": "Cloudflareでパフォーマンスと検索ランキングを改善し、楽しみながら利益を得る",
+	"url": "https://blog.cloudflare.com/ja-jp/improving-performance-and-search-rankings-with-cloudflare-for-fun-and-profit-ja-jp/",
+	"datePublished": "2020-11-19T00:00:00.000Z",
+	"dateModified": "2021-08-31T21:02:52.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/04/image3-24.png",
+		"width": 960,
+		"height": 540
+	},
+	"keywords": "分析, Browser Insights (JP), パフォーマンス, スピードと信頼性, 日本語",
+	"description": "Cloudflareの仕事の1つとして、物事を迅速にすることがあります。より応答性の高いWebサイト、アプリ、API、ネットワークは、コンバージョンとユーザー体験の向上に直結します。11月10日に、Googleは、2021年5月から検索エンジンの検索結果ページ（SERP）に結果をランク付けする際に、Webパフォーマンスとページ体験データを直接考慮に入れると発表しました。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

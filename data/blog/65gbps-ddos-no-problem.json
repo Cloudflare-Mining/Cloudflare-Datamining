@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew Prince",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
+			"width": 1196,
+			"height": 1190
+		},
+		"url": "https://blog.cloudflare.com/author/matthew-prince/",
+		"sameAs": [
+			"https://twitter.com/eastdakota"
+		]
+	},
+	"headline": "How to Launch a 65Gbps DDoS, and How to Stop One",
+	"url": "https://blog.cloudflare.com/65gbps-ddos-no-problem/",
+	"datePublished": "2012-09-17T20:17:00.000Z",
+	"dateModified": "2018-08-03T23:17:06.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/03/massive-attack.jpg.scaled500.jpg",
+	"keywords": "I'm Under Attack Mode, Traffic, DDoS, Attacks, Reliability, Speed & Reliability",
+	"description": "Yesterday I posted a post mortem on an outage we had Saturday. The outage was caused when we applied an overly aggressive rate limit to traffic on our network while battling a determined DDoS attacker. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

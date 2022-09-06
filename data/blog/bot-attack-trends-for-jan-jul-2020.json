@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Ricardo Pacheco",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/09/unnamed.jpg",
+			"width": 150,
+			"height": 150
+		},
+		"url": "https://blog.cloudflare.com/author/ricardo/",
+		"sameAs": []
+	},
+	"headline": "Bot Attack trends for Jan-Jul 2020",
+	"url": "https://blog.cloudflare.com/bot-attack-trends-for-jan-jul-2020/",
+	"datePublished": "2020-10-20T11:00:00.000Z",
+	"dateModified": "2020-10-20T11:00:02.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2020/10/Bots-Trends-header@3x.png",
+		"width": 2093,
+		"height": 1130
+	},
+	"keywords": "Bots, Bot Management, Trends, COVID-19",
+	"description": "Automated traffic makes up almost 40% of total Internet traffic. Let’s take a look at how bots behaved over 2020 so far.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

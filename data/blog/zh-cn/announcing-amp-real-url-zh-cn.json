@@ -1,0 +1,37 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Zack Bloom",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/YZCINbF6.jpg",
+		"url": "https://blog.cloudflare.com/author/zack-bloom/",
+		"sameAs": []
+	},
+	"headline": "AMP缓存网站加速时显示真实URL_Cloudflare推出AMP Real URL，显示AMP网站的真实网址",
+	"url": "https://blog.cloudflare.com/zh-cn/announcing-amp-real-url-zh-cn/",
+	"datePublished": "2019-04-17T00:45:00.000Z",
+	"dateModified": "2021-01-28T18:51:55.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2019/09/amp-real-url-@2x-1.png",
+		"width": 3032,
+		"height": 1728
+	},
+	"keywords": "AMP, 产品新闻, 速度和可靠性 (CN), 简体中文 (CN)",
+	"description": "AMP（加速移动页面）项目的承诺是，它将使用户在浏览网站，尤其是移动端网站时，获得更愉悦的浏览体验。AMP HTML架构的设计目的是让网页能够快速加载，而不是用无关的内容分散用户对网页内容的注意力。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "André Cruz",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/02/andre2.jpg",
+			"width": 2000,
+			"height": 2000
+		},
+		"url": "https://blog.cloudflare.com/author/andre-cruz/",
+		"sameAs": [
+			"https://twitter.com/edevil"
+		]
+	},
+	"headline": "The benefits of serving stale DNS entries when using Consul",
+	"url": "https://blog.cloudflare.com/the-benefits-of-serving-stale-dns-entries-when-using-consul/",
+	"datePublished": "2021-03-08T14:00:00.000Z",
+	"dateModified": "2021-03-08T14:00:01.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/03/image15-update.png",
+		"width": 1560,
+		"height": 732
+	},
+	"keywords": "DNS, Cache, Unbound",
+	"description": "We use Consul for service discovery, and we’ve deployed a cluster that spans several of our data centers. We were aware from the start that the DNS query latencies were not great from certain parts of the world that were furthest away from these data centers.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

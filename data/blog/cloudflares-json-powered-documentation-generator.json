@@ -1,0 +1,35 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Vojtech Miksu",
+		"image": "http://blog.cloudflare.com/content/images/2016/08/avatar_small.png",
+		"url": "https://blog.cloudflare.com/author/vojtech-miksu/",
+		"sameAs": [
+			"https://miksu.cz",
+			"https://twitter.com/vmiksu"
+		]
+	},
+	"headline": "CloudFlare&#x27;s JSON-powered Documentation Generator",
+	"url": "https://blog.cloudflare.com/cloudflares-json-powered-documentation-generator/",
+	"datePublished": "2016-08-03T11:26:13.000Z",
+	"dateModified": "2018-08-28T20:31:44.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/6825340663_f67969a7aa_z.jpg",
+	"keywords": "API, JSON, Tips, Programming",
+	"description": "Everything that it&#x27;s possible to do in the CloudFlare Dashboard is also possible through our RESTful API. We use the same API to power the dashboard itself.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

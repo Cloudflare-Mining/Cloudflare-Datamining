@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "John Graham-Cumming",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
+		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
+		"sameAs": [
+			"https://twitter.com/jgrahamc"
+		]
+	},
+	"headline": "2020年7月17日に発生したCloudflareの障害について",
+	"url": "https://blog.cloudflare.com/ja-jp/cloudflare-outage-on-july-17-2020-ja-jp/",
+	"datePublished": "2020-07-18T01:22:00.000Z",
+	"dateModified": "2021-01-21T18:46:52.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2020/07/1-3.png",
+		"width": 1043,
+		"height": 749
+	},
+	"keywords": "エンジニアリング, 日本語",
+	"description": "本日、バックボーンネットワークで発生した設定エラーにより、インターネットプロパティとCloudflareサービスが27分間にわたり、停止する障害が発生しました。その結果、当社ネットワーク全体で約50%のトラフィックが減少しました。バックボーンの構造上、この停止がCloudflareネットワーク全体に影響を与えることはなく、特定の地域での影響に抑えられました。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

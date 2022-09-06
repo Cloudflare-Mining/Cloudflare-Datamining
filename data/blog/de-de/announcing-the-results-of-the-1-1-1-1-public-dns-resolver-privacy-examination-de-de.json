@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "John Graham-Cumming",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
+		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
+		"sameAs": [
+			"https://twitter.com/jgrahamc"
+		]
+	},
+	"headline": "Die Ergebnisse der Datenschutzuntersuchung unseres öffentlichen DNS-Resolvers 1.1.1.1",
+	"url": "https://blog.cloudflare.com/de-de/announcing-the-results-of-the-1-1-1-1-public-dns-resolver-privacy-examination-de-de/",
+	"datePublished": "2020-03-31T13:01:00.000Z",
+	"dateModified": "2021-01-22T18:38:09.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2020/12/1.1.1.1-audit-@2x-1.png",
+		"width": 1676,
+		"height": 849
+	},
+	"keywords": "Deutsch, 1.1.1.1 (DE), Datenschutz (DE)",
+	"description": "Am 1. April 2018 unternahmen wir einen großen Schritt, um Datenschutz und der Sicherheit im Internet zu verbessern: die Markteinführung des öffentlichen DNS-Resolvers 1.1.1.1&amp;nbsp;– der schnellste öffentliche DNS-Resolver, bei dem Datenschutz an erster Stelle steht. Und wenn wir Datenschutz",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

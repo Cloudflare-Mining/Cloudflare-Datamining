@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Rita Kozlov",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/05/Rita-Kozlov.jpeg",
+			"width": 200,
+			"height": 200
+		},
+		"url": "https://blog.cloudflare.com/author/rita/",
+		"sameAs": [
+			"https://twitter.com/ritakozlov_"
+		]
+	},
+	"headline": "Cloudflare Workers改进用户体验，新增Wrangler - Workers CLI，以及Multiscript脚本分发工具",
+	"url": "https://blog.cloudflare.com/zh-cn/just-write-code-improving-developer-experience-for-cloudflare-workers-zh-cn/",
+	"datePublished": "2019-06-02T09:35:00.000Z",
+	"dateModified": "2021-01-28T19:03:43.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2019/10/442516AB-F97C-4725-B0A8-1F8157043B2C.jpeg",
+		"width": 1451,
+		"height": 661
+	},
+	"keywords": "无服务器, 简体中文 (CN), 产品新闻, 开发人员, Cloudflare Workers (CN), JavaScript (CN)",
+	"description": "我们很高兴地宣布，从今天开始，Cloudflare Workers®将拥有一个CLI（命令行界面）、新的且改进过的说明文件、适用于所有人的多个脚本、在worker .dev上运行应用程序而无需自带域的功能，以及一个令试验比以往任何时候都更容易的免费层。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

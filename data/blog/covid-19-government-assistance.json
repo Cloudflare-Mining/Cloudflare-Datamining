@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Jocelyn Woolbright",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/12/0-1.jpg",
+			"width": 450,
+			"height": 450
+		},
+		"url": "https://blog.cloudflare.com/author/jocelyn/",
+		"sameAs": [
+			"https://twitter.com/jo_woolbright"
+		]
+	},
+	"headline": "Offer of Assistance to Governments During COVID-19",
+	"url": "https://blog.cloudflare.com/covid-19-government-assistance/",
+	"datePublished": "2020-04-15T13:03:44.000Z",
+	"dateModified": "2022-04-26T23:25:47.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2020/04/image2-12.png",
+		"width": 1999,
+		"height": 1185
+	},
+	"keywords": "Security, Legal, Speed & Reliability, Cloudflare Zero Trust, Zero Trust",
+	"description": "During the spread of COVID-19, Cloudflare is offering free services to government agencies around the world to help them stay online and provide essential information to the public.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

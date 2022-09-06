@@ -1,0 +1,45 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Junho Choi",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/05/junho_profile_300x300--1-.jpg",
+			"width": 300,
+			"height": 300
+		},
+		"url": "https://blog.cloudflare.com/author/junho/",
+		"sameAs": [
+			"https://saturnsoft.net",
+			"https://twitter.com/junhochoi"
+		]
+	},
+	"headline": "gRPC実現への道",
+	"url": "https://blog.cloudflare.com/ja-jp/road-to-grpc-ja-jp/",
+	"datePublished": "2020-10-26T16:40:00.000Z",
+	"dateModified": "2021-03-22T22:11:42.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/01/2-2.png",
+		"width": 2000,
+		"height": 950
+	},
+	"keywords": "gRPC (JP), 日本語",
+	"description": "Cloudflareは、2020年のBirthday Week中にgrPC® のサポートを開始しました  。当社は、皆様がベータ版への大きな関心をお寄せくださったことに、身の引き締まる思いです。そして、grPCを適用し、試してくださったすべての方々に感謝申し上げます！この記事では、サポートの実装方法に関する技術的な点について詳しくご説明します。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,34 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "John Graham-Cumming",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
+		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
+		"sameAs": [
+			"https://twitter.com/jgrahamc"
+		]
+	},
+	"headline": "CloudFlare in 2014: Bigger, Faster, Securer",
+	"url": "https://blog.cloudflare.com/cloudflare-2014-review/",
+	"datePublished": "2014-12-31T16:41:38.000Z",
+	"dateModified": "2018-08-23T16:53:54.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/7491816206_1978c48c89_z.jpg",
+	"keywords": "Speed & Reliability, Our History, Year in Review",
+	"description": "At the end of 2013 we posted a blog article titled 2013: Rebuild the Engine; 2014: Step on the Gas which explained how in 2013 we had been rebuilding the engine that powers CloudFlare and how we expected 2014 to be when we stepped on the gas.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

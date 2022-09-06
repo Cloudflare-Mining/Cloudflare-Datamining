@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Jon Levine",
+		"image": "http://blog.cloudflare.com/content/images/2018/04/prof-crop.jpg",
+		"url": "https://blog.cloudflare.com/author/jpl/",
+		"sameAs": [
+			"https://twitter.com/jplevine"
+		]
+	},
+	"headline": "處理 Cloudflare 記錄以保護客戶免受 Log4j 攻擊",
+	"url": "https://blog.cloudflare.com/zh-tw/log4j-cloudflare-logs-mitigation-zh-tw/",
+	"datePublished": "2021-12-14T10:23:00.000Z",
+	"dateModified": "2021-12-28T23:26:47.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/12/Sanitizing-Cloudflare-Logs-to-protect-customers-from-Log4j-vulnerability-OG-3-1.png",
+		"width": 1200,
+		"height": 628
+	},
+	"keywords": "漏洞 (TW), 繁體中文 (TW), Log4J (TW), Log4Shell (TW)",
+	"description": "2021 年 12 月 9 日，全世界得知 CVE-2021-44228 這種零時差漏洞利用正在影響 Apache Log4j 公用程式。Cloudflare 立即更新了我們的 WAF 以協助防範這個漏洞，但",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

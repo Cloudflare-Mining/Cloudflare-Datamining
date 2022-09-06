@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Zaid Farooqui",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/05/Screen-Shot-2022-05-12-at-5.21.40-PM.png",
+			"width": 406,
+			"height": 370
+		},
+		"url": "https://blog.cloudflare.com/author/zaid/",
+		"sameAs": [
+			"https://twitter.com/zaid"
+		]
+	},
+	"headline": "Cloudflare Stream을 통한 서버리스 라이브 스트리밍",
+	"url": "https://blog.cloudflare.com/ko-kr/stream-live-ko-kr/",
+	"datePublished": "2021-09-30T12:59:00.000Z",
+	"dateModified": "2021-10-14T00:10:12.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/10/unnamed-3-4.png",
+		"width": 1801,
+		"height": 1013
+	},
+	"keywords": "한국어, 생일 주 (KO), 제품 뉴스, RTMP (KO), WebRTC (KO), Cloudflare Stream (KO), 서버리스",
+	"description": "이제 Cloudflare를 이용하면 송출에서 스트리밍까지 종단간 서버리스 스트리밍이 가능해집니다. Stream Live는 비디오 수집, 인코딩, 녹화, 플레이어를 모두 한 제품 안에서 처리해줍니다.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

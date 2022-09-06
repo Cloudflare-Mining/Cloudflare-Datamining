@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Brendan Coll",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/11/brendan-coll.png",
+			"width": 406,
+			"height": 406
+		},
+		"url": "https://blog.cloudflare.com/author/brendan-coll/",
+		"sameAs": [
+			"https://twitter.com/_mrbbot"
+		]
+	},
+	"headline": "自动生成 Cloudflare Workers 的类型",
+	"url": "https://blog.cloudflare.com/zh-cn/automatically-generated-types-zh-cn/",
+	"datePublished": "2021-11-16T13:58:00.000Z",
+	"dateModified": "2021-12-30T00:59:50.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/12/image1-28-1.png",
+		"width": 1200,
+		"height": 675
+	},
+	"keywords": "Cloudflare Workers (CN), 简体中文 (CN), 无服务器, Full Stack Week (CN)",
+	"description": "根据过往情况来看，让 Rust 和 TypeScript 类型的存储库保持最新十分困难。它们是手动生成，这意味着面临不准确和过时的风险。直到最近，每当类型发生变化时，都需要手动更新",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

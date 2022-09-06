@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "João Tomé",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/09/V0x3WKfJ_400x400-1.jpeg",
+			"width": 400,
+			"height": 400
+		},
+		"url": "https://blog.cloudflare.com/author/joao-tome/",
+		"sameAs": [
+			"https://twitter.com/emot"
+		]
+	},
+	"headline": "Tonga’s likely lengthy Internet outage",
+	"url": "https://blog.cloudflare.com/tonga-internet-outage/",
+	"datePublished": "2022-01-19T13:58:08.000Z",
+	"dateModified": "2022-01-19T21:33:55.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/01/Asia-or-Oceania-Outage-2.png",
+		"width": 1200,
+		"height": 675
+	},
+	"keywords": "Cloudflare Radar, Internet Traffic, Outage",
+	"description": "The latest Internet outage, in the South Pacific country of Tonga (with 169 islands), is still ongoing. It started with the large eruption of Hunga Tonga–Hunga Haʻapai, an uninhabited volcanic island of the Tongan archipelago on Friday, January 14, 2022",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

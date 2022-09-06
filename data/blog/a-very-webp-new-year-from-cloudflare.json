@@ -1,0 +1,32 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "David Wragg",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/davidface2.jpg",
+		"url": "https://blog.cloudflare.com/author/david-wragg/",
+		"sameAs": []
+	},
+	"headline": "A Very WebP New Year from Cloudflare",
+	"url": "https://blog.cloudflare.com/a-very-webp-new-year-from-cloudflare/",
+	"datePublished": "2016-12-21T14:00:00.000Z",
+	"dateModified": "2018-08-28T20:54:20.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2016/12/holly-2.jpg",
+	"keywords": "Polish, Bandwidth, Compression, Optimization, WebP, Speed & Reliability",
+	"description": "Cloudflare has an automatic image optimization feature called Polish, available to customers on paid plans. It recompresses images and removes unnecessary data so that they are delivered to browsers more quickly.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

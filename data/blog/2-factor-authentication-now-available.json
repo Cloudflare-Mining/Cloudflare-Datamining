@@ -1,0 +1,32 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Kristin Tarr",
+		"image": "http://blog.cloudflare.com/content/images/2018/08/0.jpg",
+		"url": "https://blog.cloudflare.com/author/kristin-tarr/",
+		"sameAs": []
+	},
+	"headline": "Two-factor Authentication Now Available",
+	"url": "https://blog.cloudflare.com/2-factor-authentication-now-available/",
+	"datePublished": "2012-11-28T17:05:00.000Z",
+	"dateModified": "2018-08-27T21:52:43.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/Screen20shot202012-11-2020at2012.22.1420PM.png.scaled500.png",
+	"keywords": "Authy, 2FA, Security",
+	"description": "With web performance and security being the core of CloudFlare, we are always looking for ways to improve not just our customers&#x27; website security, but their account security as well. Therefore, we are excited to now offer two-factor authentication for all CloudFlare accounts.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

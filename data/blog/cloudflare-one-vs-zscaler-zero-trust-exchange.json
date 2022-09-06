@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Ben Munroe",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/06/Ben-HeadShot-LowLOWlowRes.jpg",
+			"width": 600,
+			"height": 600
+		},
+		"url": "https://blog.cloudflare.com/author/ben-munroe/",
+		"sameAs": [
+			"https://twitter.com/munrolo"
+		]
+	},
+	"headline": "Cloudflare One vs Zscaler Zero Trust Exchange: who is most feature complete? It’s not who you might expect",
+	"url": "https://blog.cloudflare.com/cloudflare-one-vs-zscaler-zero-trust-exchange/",
+	"datePublished": "2022-06-24T14:30:11.000Z",
+	"dateModified": "2022-07-12T10:38:54.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/06/Zero-Trust-Exchange-1.png",
+		"width": 1600,
+		"height": 900
+	},
+	"keywords": "Cloudflare One Week, Cloudflare One, Cloudflare Zero Trust, Zero Trust, SASE",
+	"description": "How does Cloudflare One compare to Zscaler&#x27;s Trust Exchange. Read on to find out.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

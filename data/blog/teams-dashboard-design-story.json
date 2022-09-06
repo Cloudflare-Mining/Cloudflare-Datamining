@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Bethany Sonefeld",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/03/Bethany-Sonefeld-Cloudflare-blog-profile-photo.jpeg",
+			"width": 600,
+			"height": 600
+		},
+		"url": "https://blog.cloudflare.com/author/bethany/",
+		"sameAs": [
+			"https://twitter.com/bsonefeld"
+		]
+	},
+	"headline": "The Teams Dashboard: The Design Story",
+	"url": "https://blog.cloudflare.com/teams-dashboard-design-story/",
+	"datePublished": "2021-03-18T12:00:00.000Z",
+	"dateModified": "2022-04-26T23:12:43.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/03/image1-22.png",
+		"width": 1999,
+		"height": 1068
+	},
+	"keywords": "Design, Product Design, Teams Dashboard, Cloudflare Zero Trust, Zero Trust, Security",
+	"description": "Here is the story of how we took Cloudflare for Teams from initial concepts, to an MVP, to now a comprehensive security platform that secures networks, users, devices, and applications.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

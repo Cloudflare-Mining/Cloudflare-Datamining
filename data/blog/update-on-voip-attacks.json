@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Omer Yoachimik",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/Omer-1.png",
+			"width": 773,
+			"height": 653
+		},
+		"url": "https://blog.cloudflare.com/author/omer/",
+		"sameAs": [
+			"https://twitter.com/OmerYoahimik"
+		]
+	},
+	"headline": "Update on recent VoIP attacks: What should I do if I’m attacked?",
+	"url": "https://blog.cloudflare.com/update-on-voip-attacks/",
+	"datePublished": "2021-10-07T02:20:59.000Z",
+	"dateModified": "2021-10-07T13:50:33.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/10/image-2-1-1.png",
+		"width": 1360,
+		"height": 772
+	},
+	"keywords": "DDoS, Ransom DDoS, Trends, SIP, VoIP, UDP, REvil",
+	"description": "Because of the sustained attacks we are observing, we are sharing details on recent attack patterns, what steps they should take before an attack, and what to do after an attack has taken place.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

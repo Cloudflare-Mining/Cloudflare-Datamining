@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Nadin El-Yabroudi",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/11/Screen-Shot-2019-11-21-at-12.26.44-PM.png",
+			"width": 666,
+			"height": 650
+		},
+		"url": "https://blog.cloudflare.com/author/nadin/",
+		"sameAs": []
+	},
+	"headline": "Introducing Flan Scan: Cloudflare’s Lightweight Network Vulnerability Scanner",
+	"url": "https://blog.cloudflare.com/introducing-flan-scan/",
+	"datePublished": "2019-11-21T14:00:00.000Z",
+	"dateModified": "2019-11-28T10:19:37.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2019/11/flan-scan-dark-@3x.png",
+		"width": 2964,
+		"height": 1494
+	},
+	"keywords": "Security, Product News, Python, Latex, Developers",
+	"description": "Today, we’re excited to open source Flan Scan, Cloudflare’s in-house lightweight network vulnerability scanner. Flan Scan is a thin wrapper around Nmap that converts this popular open source tool into a vulnerability scanner with the added benefit of easy deployment.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

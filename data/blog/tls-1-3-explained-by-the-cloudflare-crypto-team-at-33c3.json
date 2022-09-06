@@ -1,0 +1,34 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Filippo Valsorda",
+		"image": "http://blog.cloudflare.com/content/images/2018/02/K6rX3ZSn_400x400.jpg",
+		"url": "https://blog.cloudflare.com/author/filippo/",
+		"sameAs": [
+			"https://twitter.com/filosottile"
+		]
+	},
+	"headline": "TLS 1.3 explained by the Cloudflare Crypto Team at 33c3",
+	"url": "https://blog.cloudflare.com/tls-1-3-explained-by-the-cloudflare-crypto-team-at-33c3/",
+	"datePublished": "2017-02-01T14:57:00.000Z",
+	"dateModified": "2018-08-27T21:23:56.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/Screen-Shot-2017-01-30-at-20.14.53.png",
+	"keywords": "TLS 1.3, Crypto, TLS, Security, Chrome, Firefox, Beta",
+	"description": "Nick Sullivan and I gave a talk about TLS 1.3 at 33c3, the latest Chaos Communication Congress. The congress, attended by more that 13,000 hackers in Hamburg, has been one of the hallmark events of the security community for more than 30 years.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

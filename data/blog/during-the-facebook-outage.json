@@ -1,0 +1,45 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Celso Martinho",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Celso-Martinho.png",
+			"width": 486,
+			"height": 488
+		},
+		"url": "https://blog.cloudflare.com/author/celso/",
+		"sameAs": [
+			"https://celso.io/",
+			"https://twitter.com/celso"
+		]
+	},
+	"headline": "What happened on the Internet during the Facebook outage",
+	"url": "https://blog.cloudflare.com/during-the-facebook-outage/",
+	"datePublished": "2021-10-08T15:16:00.000Z",
+	"dateModified": "2021-10-08T16:44:28.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/10/The-Internet-during-the-Facebook-outage-header-1.png",
+		"width": 823,
+		"height": 360
+	},
+	"keywords": "Outage, Facebook, BGP, DNS, Trends",
+	"description": "Today, we&#x27;re going to show you how the Facebook and affiliate sites downtime affected us, and what we can see in our data.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

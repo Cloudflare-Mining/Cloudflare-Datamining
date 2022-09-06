@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew Prince",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
+			"width": 1196,
+			"height": 1190
+		},
+		"url": "https://blog.cloudflare.com/author/matthew-prince/",
+		"sameAs": [
+			"https://twitter.com/eastdakota"
+		]
+	},
+	"headline": "Empty DDoS Threats: Meet the Armada Collective",
+	"url": "https://blog.cloudflare.com/empty-ddos-threats-meet-the-armada-collective/",
+	"datePublished": "2016-04-25T12:39:56.000Z",
+	"dateModified": "2018-08-27T20:16:54.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/wizard_behind_the_curtain.jpg",
+	"keywords": "Attacks, DDoS, Reliability, Security",
+	"description": "Beginning in March 2016, we began hearing reports of a gang of cybercriminals once again calling themselves the Armada Collective. The calling card of the gang was an extortion email sent to a wide variety of online businesses threatening to launch DDoS attacks if they weren&#x27;t paid in Bitcoin.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

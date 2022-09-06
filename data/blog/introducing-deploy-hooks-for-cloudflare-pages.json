@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Nevi Shah",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/07/Screen-Shot-2021-07-26-at-3.28.33-PM.png",
+			"width": 1242,
+			"height": 1158
+		},
+		"url": "https://blog.cloudflare.com/author/nevi/",
+		"sameAs": [
+			"https://twitter.com/nevikashah"
+		]
+	},
+	"headline": "Introducing Deploy Hooks for Cloudflare Pages",
+	"url": "https://blog.cloudflare.com/introducing-deploy-hooks-for-cloudflare-pages/",
+	"datePublished": "2021-08-06T12:59:11.000Z",
+	"dateModified": "2021-08-06T12:59:11.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/08/pasted-image-0-1.png",
+		"width": 1600,
+		"height": 740
+	},
+	"keywords": "Cloudflare Workers, Cloudflare Pages, Product News",
+	"description": "Today, we are proud to announce a new way to connect your Pages application with your headless CMSs and databases: introducing Deploy Hooks for Pages.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

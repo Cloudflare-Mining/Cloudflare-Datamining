@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Darren Remington",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/01/CAB16BB8-BE17-4EE0-B9AD-7AE6E20BCBBD.jpeg",
+			"width": 632,
+			"height": 720
+		},
+		"url": "https://blog.cloudflare.com/author/darren/",
+		"sameAs": []
+	},
+	"headline": "Cloudflare +リモートブラウザ分離",
+	"url": "https://blog.cloudflare.com/ja-jp/cloudflare-and-remote-browser-isolation-ja-jp/",
+	"datePublished": "2020-01-07T14:00:00.000Z",
+	"dateModified": "2021-09-02T19:31:42.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2020/01/image2-23.png",
+		"width": 1600,
+		"height": 1089
+	},
+	"keywords": "製品ニュース (JP), Cloudflare Access (JP), セキュリティ, VPN (JP), 日本語, 買収 (JP), Cloudflare Zero Trust (JP)",
+	"description": "Cloudflareは本日、S2 Systems社を買収したことを発表しました。S2 Systems社は、現在市場に出回っている他のソリューションとは異なる革新的なリモートブラウザー分離ソリューションを構築したシアトルに拠点を置くスタートアップ企業です。エンドポイントでの侵害の大半は、Webブラウザーに関連しています。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

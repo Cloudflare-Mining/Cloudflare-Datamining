@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Lennart Espe",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2020/10/PHOTO-2019-11-09-21-17-57-copy.jpg",
+			"width": 894,
+			"height": 894
+		},
+		"url": "https://blog.cloudflare.com/author/lennart/",
+		"sameAs": []
+	},
+	"headline": "Diving into /proc/[pid]/mem",
+	"url": "https://blog.cloudflare.com/diving-into-proc-pid-mem/",
+	"datePublished": "2020-10-27T12:00:00.000Z",
+	"dateModified": "2020-10-27T12:25:46.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2020/10/image2-27.png",
+		"width": 1200,
+		"height": 628
+	},
+	"keywords": "Deep Dive, Programming, Linux",
+	"description": "A few months ago, after reading about Cloudflare doubling its intern class, I quickly dusted off my CV and applied for an internship. Long story short: now, a couple of months later, I found myself staring at Linux kernel code and adding a pretty cool feature to gVisor.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

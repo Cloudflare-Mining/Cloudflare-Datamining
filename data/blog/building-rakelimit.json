@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Jonas Otten",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/09/jonas-1.png",
+			"width": 597,
+			"height": 600
+		},
+		"url": "https://blog.cloudflare.com/author/jonas/",
+		"sameAs": [
+			"https://twitter.com/thinanchor"
+		]
+	},
+	"headline": "Raking the floods: my intern project using eBPF",
+	"url": "https://blog.cloudflare.com/building-rakelimit/",
+	"datePublished": "2020-09-18T11:00:00.000Z",
+	"dateModified": "2020-09-18T15:53:57.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2020/09/raking-sandbox@2x.png",
+		"width": 1600,
+		"height": 823
+	},
+	"keywords": "eBPF, Linux, UDP, Programming",
+	"description": "SYN-cookies help mitigating SYN-floods for TCP, but how can we protect services from similar attacks that use UDP? We designed an algorithm and a library to fill this gap, and it’s open source!",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

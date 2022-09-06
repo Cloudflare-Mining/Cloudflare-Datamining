@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Abe Carryl",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2020/10/3A8B82DA-79A1-44EB-873A-B56773A4F764.jpeg",
+			"width": 900,
+			"height": 900
+		},
+		"url": "https://blog.cloudflare.com/author/abe/",
+		"sameAs": [
+			"https://twitter.com/mrlincolnlogs"
+		]
+	},
+	"headline": "ขยายแพลตฟอร์ม Zero Trust ของ Cloudflare เพื่อรองรับ UDP และ DNS ภายใน",
+	"url": "https://blog.cloudflare.com/th-th/extending-cloudflares-zero-trust-platform-to-support-udp-and-internal-dns-th-th/",
+	"datePublished": "2021-12-08T13:59:00.000Z",
+	"dateModified": "2021-12-30T22:42:33.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/12/image2-19-2.png",
+		"width": 1801,
+		"height": 1013
+	},
+	"keywords": "CIO Week (TH), Cloudflare One (TH), Cloudflare Tunnel (TH), UDP (TH), ไทย, ข่าวผลิตภัณฑ์, Zero Trust (TH)",
+	"description": "ในช่วงสิ้นปี 2020 Cloudflare ช่วยให้องค์กรต่างๆ สามารถเริ่ม สร้างเครือข่ายส่วนตัว บนเครือข่ายของเรา โดยใช้ Cloudflare Tunnel ในฝั่งเซิร์ฟเวอร์ และ Cloudflare Warp ในฝั่งลูกค้า ทำให้ความต้องการใช้ VPN แบบดั้งเดิมถูกกำจัดไป ข้ามมาที่ปั",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

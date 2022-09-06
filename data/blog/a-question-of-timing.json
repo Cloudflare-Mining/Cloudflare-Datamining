@@ -1,0 +1,32 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Piers Cornwell",
+		"image": "http://blog.cloudflare.com/content/images/2018/10/s6TzQ1qOREmRNxPg1eTb_1204a20b3d1d96bba523a6a2a5fa3cd73bd4fe59240a27ad6eb8c064c6792446.jpg",
+		"url": "https://blog.cloudflare.com/author/piers/",
+		"sameAs": []
+	},
+	"headline": "Timing web requests with cURL and Chrome",
+	"url": "https://blog.cloudflare.com/a-question-of-timing/",
+	"datePublished": "2018-10-17T12:00:00.000Z",
+	"dateModified": "2018-10-17T13:45:40.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/10/Screen-Shot-2018-10-16-at-2.47.11-PM.png",
+	"keywords": "Speed & Reliability, Chrome",
+	"description": "When considering website performance, the term TTFB - time to first byte - crops up regularly. Often we see measurements from cURL and Chrome, and this article will show what timings those tools can produce, including time to first byte...",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

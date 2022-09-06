@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Dina Kozlov",
+		"image": "http://blog.cloudflare.com/content/images/2019/06/headshot.jpg",
+		"url": "https://blog.cloudflare.com/author/dina/",
+		"sameAs": [
+			"https://twitter.com/dinasaur_404"
+		]
+	},
+	"headline": "Making DNS record changes more reliable",
+	"url": "https://blog.cloudflare.com/making-dns-record-changes-more-reliable/",
+	"datePublished": "2020-05-25T11:00:00.000Z",
+	"dateModified": "2020-06-04T20:18:43.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2020/05/Making-DNS-record-changes-more-reliable.png",
+		"width": 1781,
+		"height": 1073
+	},
+	"keywords": "DNS, Dashboard, Onboarding, Product News, Speed & Reliability",
+	"description": "DNS is the very first step in accessing any website, API, or pretty much anything on the Internet, which makes it mission-critical to keeping your site up and running. This week, we are launching two significant changes that allow our customers to better maintain and update their DNS records. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

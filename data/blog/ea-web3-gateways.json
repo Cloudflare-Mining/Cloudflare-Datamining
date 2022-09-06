@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Wesley Evans",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/08/Headshot.jpeg",
+			"width": 960,
+			"height": 960
+		},
+		"url": "https://blog.cloudflare.com/author/wesley/",
+		"sameAs": [
+			"https://twitter.com/whywevans"
+		]
+	},
+	"headline": "Public access for our Ethereum and IPFS gateways now available",
+	"url": "https://blog.cloudflare.com/ea-web3-gateways/",
+	"datePublished": "2022-05-16T12:57:48.000Z",
+	"dateModified": "2022-05-16T12:57:48.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/05/image2-33.png",
+		"width": 1800,
+		"height": 1013
+	},
+	"keywords": "Platform Week, Web3, Ethereum, IPFS",
+	"description": "Today we are excited to announce that our Ethereum and IPFS gateways are publicly available to all Cloudflare customers for the first time",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

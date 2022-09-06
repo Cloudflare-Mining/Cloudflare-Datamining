@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew Prince",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
+			"width": 1196,
+			"height": 1190
+		},
+		"url": "https://blog.cloudflare.com/author/matthew-prince/",
+		"sameAs": [
+			"https://twitter.com/eastdakota"
+		]
+	},
+	"headline": "1 Billion Served (Every Day)",
+	"url": "https://blog.cloudflare.com/1-billion-served-every-day/",
+	"datePublished": "2011-06-25T01:00:00.000Z",
+	"dateModified": "2018-01-29T20:12:54.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/01/1_billion.png.scaled500.png",
+	"keywords": "Our History, Milestones, Life @ Cloudflare",
+	"description": "About 8 months ago I posted a blog post about how CloudFlare had served 1 billion requests that month. It was quite a milestone for our young startup. This week we crossed a new milestone: now serving more than 1 billion requests every day. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

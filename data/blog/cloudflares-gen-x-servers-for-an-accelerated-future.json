@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Nitin Rao",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/08/WtxhLSEUSgqYRMdQUwWp_1204a20b3d1d96bba523a6a2a5fa3cd73bd4fe59240a27ad6eb8c064c6792446.jpg",
+			"width": 600,
+			"height": 600
+		},
+		"url": "https://blog.cloudflare.com/author/nitin-rao/",
+		"sameAs": [
+			"https://twitter.com/NitinBRao"
+		]
+	},
+	"headline": "Cloudflare’s Gen X: \nServers for an Accelerated Future",
+	"url": "https://blog.cloudflare.com/cloudflares-gen-x-servers-for-an-accelerated-future/",
+	"datePublished": "2020-02-24T13:00:00.000Z",
+	"dateModified": "2020-02-24T13:00:01.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2020/02/gen-x-color-Friday--twitter@2x-1.png",
+		"width": 1249,
+		"height": 703
+	},
+	"keywords": "Hardware, Cloudflare Network, Data Center, Partners, Speed & Reliability, EPYC, AMD",
+	"description": "We designed and built Cloudflare’s network to be able to grow capacity quickly and inexpensively; to allow every server, in every city, to run every service; and to allow us to shift customers and traffic across our network efficiently.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

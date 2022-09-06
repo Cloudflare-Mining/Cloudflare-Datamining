@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matt Alonso",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/08/photo.jpg",
+			"width": 600,
+			"height": 600
+		},
+		"url": "https://blog.cloudflare.com/author/matt-alonso/",
+		"sameAs": []
+	},
+	"headline": "Live Preview: Build and Test Workers Faster with Wrangler CLI 1.2.0",
+	"url": "https://blog.cloudflare.com/live-preview-build-and-test-workers-faster-with-wrangler-cli-1-2-0/",
+	"datePublished": "2019-08-19T22:36:00.000Z",
+	"dateModified": "2019-08-27T18:00:26.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2019/08/wrangler-crab.png",
+		"width": 2000,
+		"height": 901
+	},
+	"keywords": "Cloudflare Workers, Serverless, Wrangler, CLI, Product News",
+	"description": "As part of my internship on the Workers Developer Experience team, I set out to polish the Wrangler CLI for Cloudflare Workers. If you&#x27;re not familiar with Workers, the premise is quite simple: Write a bit of Javascript that takes in an HTTP request, does some processing, and spits out a response. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

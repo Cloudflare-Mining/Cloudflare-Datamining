@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Arushi Shah",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/03/IMG_0310.jpg",
+			"width": 2000,
+			"height": 2000
+		},
+		"url": "https://blog.cloudflare.com/author/arushi/",
+		"sameAs": []
+	},
+	"headline": "Evolving our machine learning to stop mobile bots",
+	"url": "https://blog.cloudflare.com/machine-learning-mobile-traffic-bots/",
+	"datePublished": "2022-03-17T16:39:20.000Z",
+	"dateModified": "2022-06-14T05:12:26.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/03/image2-59.png",
+		"width": 1801,
+		"height": 1013
+	},
+	"keywords": "Security Week, Machine Learning",
+	"description": "How Cloudflare has evolved our Machine Learning models to identify automated traffic in mobile apps",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,34 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Marek Majkowski",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/b5967d6c687939594adb6992723d0529.jpeg",
+		"url": "https://blog.cloudflare.com/author/marek-majkowski/",
+		"sameAs": [
+			"https://twitter.com/majek04"
+		]
+	},
+	"headline": "TLD glue sticks around too long",
+	"url": "https://blog.cloudflare.com/tld-glue-sticks-around-too-long/",
+	"datePublished": "2016-12-05T13:54:10.000Z",
+	"dateModified": "2018-08-28T20:49:57.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/4536619509_0a576921df_z.jpg",
+	"keywords": "DNS, Reliability, DDoS, Attacks, Security, TLS",
+	"description": "Recent headline grabbing DDoS attacks provoked heated debates in the DNS community. Everyone has strong opinions on how to harden DNS to avoid downtime in the future. Is it better to use a single DNS provider or multiple? ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

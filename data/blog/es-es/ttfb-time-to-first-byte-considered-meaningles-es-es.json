@@ -1,0 +1,34 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "John Graham-Cumming",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
+		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
+		"sameAs": [
+			"https://twitter.com/jgrahamc"
+		]
+	},
+	"headline": "Deja de preocuparte por el tiempo hasta el primer byte (TTFB)",
+	"url": "https://blog.cloudflare.com/es-es/ttfb-time-to-first-byte-considered-meaningles-es-es/",
+	"datePublished": "2012-07-05T07:17:00.000Z",
+	"dateModified": "2021-01-21T18:25:58.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2019/05/Screen_Shot_2012-07-02_at_9.49.22_AM.png.scaled500-3.png",
+	"keywords": "Velocidad, Rendimiento, Español, Velocidad y confiabilidad",
+	"description": "El tiempo hasta el primer byte se utiliza a menudo para medir la rapidez con que un servidor web responde a una petición. Los servicios habituales de pruebas web informan de ello.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Jon Levine",
+		"image": "http://blog.cloudflare.com/content/images/2018/04/prof-crop.jpg",
+		"url": "https://blog.cloudflare.com/author/jpl/",
+		"sameAs": [
+			"https://twitter.com/jplevine"
+		]
+	},
+	"headline": "令视频直播更实时：介绍并行流加速",
+	"url": "https://blog.cloudflare.com/zh-cn/introducing-concurrent-streaming-acceleration-zh-cn/",
+	"datePublished": "2019-05-16T13:00:00.000Z",
+	"dateModified": "2021-01-28T18:53:31.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2019/11/Concurrent-Streaming-1.png",
+		"width": 1813,
+		"height": 1221
+	},
+	"keywords": "产品新闻, 速度和可靠性 (CN), 视频 (CN), Cloudflare流, 速度周 (CN), 简体中文 (CN)",
+	"description": "今天，我们很高兴在此推出并行流加速技术，这是一种减少人们使用Stream Delivery时网络上实时视频的端到端延迟的新技术。让我们来深入探讨一下实时流延迟，为什么它很重要，以及人们做了什么来改善它。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

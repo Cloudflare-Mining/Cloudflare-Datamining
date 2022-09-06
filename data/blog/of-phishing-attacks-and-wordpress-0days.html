@@ -7,7 +7,7 @@
 	<p>Here's an example we've recently received:<br>
 		<img src="https://blog.cloudflare.com/content/images/2015/04/Screen-Shot-2015-04-20-at-9-28-35-PM.png" alt="Example Phish">
 	</p>
-	<p><strong>Note</strong> — CloudFlare will never send you an email like this. If you see one like it, it is fake and should be reported to our abuse team by forwarding it to <a href="#email-protected"><span class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</span></a>.</p>
+	<p><strong>Note</strong> — CloudFlare will never send you an email like this. If you see one like it, it is fake and should be reported to our abuse team by forwarding it to [email protected].</p>
 	<p>In terms of the phishing campaign timeline, these emails aren’t the first event. Much like a spider looking to trap flies, a phisher first has to build a web to trap his or her victims. One way is through landing pages.</p>
 	<p>Looking like the legitimate login page of a target domain, these landing pages have one goal - to collect your credentials. Since these landing pages are quickly identified, the phisher will often go to great lengths to ensure that he or she can put up tens or even hundreds of pages during the lifetime of a campaign, all while being extra careful that these pages can't be traced back to him or her. Generally, this means compromising a large number of vulnerable websites in order to inject a phishing toolkit.</p>
 	<p>It's no surprise that first step in most phishing campaigns will usually be the mass compromise of a large number of vulnerable websites. This is why you will often see a notable uptick in the volume of phishing emails whenever a major vulnerability comes out for one of the popular CMS platforms. This is also why protecting the Internet’s back-office is a critical step in building a better Internet. If vulnerable CMS sites are protected, not only can they flourish, but the thousands of potential victims that could get abused when their infrastructure gets hijacked for malicious purposes are also protected.</p>
@@ -46,14 +46,14 @@
 		<li><strong>URL obfuscation.</strong> Historically, this has been one of the most popular and varied techniques. The concept is simple: use any of the available URL encoding methods to disguise the true nature of the destination URL. I'll describe a couple of historic techniques below.</li>
 	</ul>
 	<p><strong>Note</strong>: many modern browsers now warn against some of these techniques.</p>
-	<p><strong>First</strong> is username:<a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a> abuse. This notation, now deprecated because only an idiot would pass credentials in the HTTP query string these days, was designed to allow seamless access to password protected areas. Abuse is easy, for example:</p>
-	<p><a href="#email-protected"><span class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</span></a></p>
-	<p><strong>Next</strong> is IP address obfuscation. You are probably familiar with the IP address as a dotted quad? 123.123.123.123 Well, IP addresses can also be expressed in a number of other formats which browsers will accept. By combining this with the “username:<a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a>” trick above, an attacker can effectively hide his true destination. Below are four different methods for presenting one of Google’s IP addresses -- 74.125.131.105</p>
+	<p><strong>First</strong> is username:[email protected] abuse. This notation, now deprecated because only an idiot would pass credentials in the HTTP query string these days, was designed to allow seamless access to password protected areas. Abuse is easy, for example:</p>
+	<p>[email protected]</p>
+	<p><strong>Next</strong> is IP address obfuscation. You are probably familiar with the IP address as a dotted quad? 123.123.123.123 Well, IP addresses can also be expressed in a number of other formats which browsers will accept. By combining this with the “username:[email protected]” trick above, an attacker can effectively hide his true destination. Below are four different methods for presenting one of Google’s IP addresses -- 74.125.131.105</p>
 	<ul>
-		<li><a href="http://www.safesite.com@74.125.131.105" target="_blank">http://<span class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</span></a></li>
-		<li><a href="http://www.safesite.com@1249739625/" target="_blank">http://<span class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</span>/</a></li>
-		<li><a href="http://www.safesite.com@0x4a.0x7d.0x83.0x69/" target="_blank">http://<span class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</span>/</a></li>
-		<li><a href="http://www.safesite.com@0112.0175.0203.0151/" target="_blank">http://<span class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</span>/</a></li>
+		<li>[email protected]</li>
+		<li>[email protected]</li>
+		<li>[email protected]</li>
+		<li>[email protected]</li>
 	</ul>
 	<p>All of these URLs go to 74.125.131.150.</p>
 	<p><strong>Finally</strong> we have Punycode and Homoglyph based obfuscation. Punycode was created as a way for international characters to map to valid characters for DNS, e.g., “café.com”. Using punycode this would be represented as xn--caf-dma.com. As mentioned at the start, homoglyphs are symbols which closely resemble other symbols, like 0 and O, or I and l.</p>

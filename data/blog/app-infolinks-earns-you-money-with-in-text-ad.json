@@ -1,0 +1,34 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "John Roberts",
+		"image": "http://blog.cloudflare.com/content/images/2018/02/john.jpg",
+		"url": "https://blog.cloudflare.com/author/john-roberts/",
+		"sameAs": [
+			"https://twitter.com/pencoyd"
+		]
+	},
+	"headline": "App: Infolinks Earns You Money With In-Text Ads",
+	"url": "https://blog.cloudflare.com/app-infolinks-earns-you-money-with-in-text-ad/",
+	"datePublished": "2012-07-31T00:25:00.000Z",
+	"dateModified": "2018-02-20T20:15:49.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/02/infolinks-screenshot.png.scaled500.png",
+	"keywords": "Cloudflare Apps, Advertising",
+	"description": "At CloudFlare, we&#x27;re interested in making running a website easier. That&#x27;s a broad definition, on purpose, going far beyond security and performance. If your goal is making money from your website, we want to make that easier, too.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

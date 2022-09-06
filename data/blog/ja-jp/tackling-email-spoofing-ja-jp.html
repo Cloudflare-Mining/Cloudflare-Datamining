@@ -9,8 +9,8 @@
 	<p>また、<strong>メールスプーフィング</strong>もあります。この仕組みを理解するために、筆者のメールアドレスで受信したCloudflare製品更新のメールを見てみましょう。ほとんどのメールプロバイダーでは、いくつかのヘッダーとメール本文を含むメールのソース全体を見ることができます。</p>
 	<!--kg-card-begin: markdown-->
 	<pre><code>Date: Thu, 23 Sep 2021 10:30:02 -0500 (CDT)
-From: Cloudflare &lt;<a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a>&gt;
-Reply-To: <a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a>
+From: Cloudflare &lt;[email protected]&gt;
+Reply-To: [email protected]
 To: &lt;my_personal_email_address&gt;
 </code></pre>
 	<!--kg-card-end: markdown-->
@@ -43,7 +43,7 @@ To: &lt;my_personal_email_address&gt;
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/10/8.png" class="kg-image"></figure>
 	<p>上図は、受信メールがSPFに準拠するものであることを確認するステップを示しています。</p>
 	<ol>
-		<li>メールは、IPアドレス203.0.113.10から送信され、Fromヘッダーと、<a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a>という値が含まれています。</li>
+		<li>メールは、IPアドレス203.0.113.10から送信され、Fromヘッダーと、[email protected]という値が含まれています。</li>
 		<li>このメールを受信した後、受信者はmycoolwebpage.xyzについてSPFレコードに問い合わせ、このドメインのSPFポリシーを取得します。</li>
 		<li>受信者は、送信IP アドレスの203.0.113.10がSPFレコードに記載されているかどうか確認します。記載されていれば、メールはSPFチェック合格です。不記載の場合は、all機構の限定子が結果を左右します。</li>
 	</ol>
@@ -71,7 +71,7 @@ To: &lt;my_personal_email_address&gt;
 	<p>Domain-based Message Authentication Reporting and Conformanceは、とても長い用語ですが、次の2つの単語に焦点を当ててみましょう：<em>Reporting（レポート）</em>と<em>Conformance（適合性）</em>です。DMARCはまさにこの2つを提供するものです。定期レポートでは、不適合のメールやスプーフィングされている可能性のあるメールの数をメール送信者に知らせます。Conformanceは、メールの受信者に不適合メールの取り扱いについて明確なシグナルを送る手助けをします。メール受信者は、DMARCレコードがなくても、SPFやDKIMチェックに不合格だったメールに関する独自のポリシーを適用する場合があります。しかし、DMARCレコードで設定されているポリシーはメール送信者の明示的指示であるため、メール受信者が不適合メールの取り扱いについて自信をもって行えるようになります。</p>
 	<!--kg-card-begin: markdown-->
 	<pre><code>cloudflare.comのDMARCレコードを以下に記載しています。
-_dmarc.cloudflare.com.	TXT	"v=DMARC1; p=reject; pct=100; rua=mailto:<a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a>"
+_dmarc.cloudflare.com.	TXT	"v=DMARC1; p=reject; pct=100; rua=mailto:[email protected]"
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>The DMARC TXT レコードは、常にメールドメインの_dmarcサブドメインにセットされています（SPF、DKIMと同様）。 内容は必ずv=DMARC1で始まらなければなりません。さらに、3つの追加のタグを確認できます：</p>
@@ -81,7 +81,7 @@ _dmarc.cloudflare.com.	TXT	"v=DMARC1; p=reject; pct=100; rua=mailto:<a href="#em
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/10/9.png" class="kg-image"></figure>
 	<p>上は、DMARCの機能を手順を追って説明した図です。</p>
 	<ol>
-		<li>メールは、<a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a>を含むFromヘッダーを付けて送信されます。</li>
+		<li>メールは、[email protected]を含むFromヘッダーを付けて送信されます。</li>
 		<li>メール受信者がドメインmycoolwebpage.xyzからSPF、DKIM、DMARCレコードを問い合わせ、必要なポリシーとDKIM公開鍵を取得します。</li>
 		<li>メール受信者が先ほど概説したようにSPFおよびDKIMチェックを実行します。両方に合格すればメールは受理され、受信箱に送信されます。SPFまたはDKIMチェックのいずれかで不合格となった場合は、DMARCポリシーに基づいて、それでもメールを受理するか、ドロップするか、スパムフォルダーに送信するかを決定します。</li>
 		<li>最後にメール受信者が集約レポートを送り返します。このレポートは、rua タグで指定されたメールアドレス次第で、そのアドレスを管轄する別のメールサーバーにも送信できます。</li>

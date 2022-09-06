@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew Prince",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
+			"width": 1196,
+			"height": 1190
+		},
+		"url": "https://blog.cloudflare.com/author/matthew-prince/",
+		"sameAs": [
+			"https://twitter.com/eastdakota"
+		]
+	},
+	"headline": "No Payola Here. Period.",
+	"url": "https://blog.cloudflare.com/no-payola-here/",
+	"datePublished": "2011-11-11T21:33:00.000Z",
+	"dateModified": "2018-02-01T00:58:22.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/02/payola.jpg.scaled500.jpg",
+	"keywords": "Free, Our History",
+	"description": "We regularly get requests to provide a free paid account in exchange for promoting CloudFlare. I may be naive, but I was surprised to learn how many web companies go along with these arrangements — or even suggest them themselves. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

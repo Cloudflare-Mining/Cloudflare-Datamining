@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "David Tuber",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/07/kutiya-face.png",
+			"width": 983,
+			"height": 1049
+		},
+		"url": "https://blog.cloudflare.com/author/tubes/",
+		"sameAs": [
+			"https://twitter.com/tubes__"
+		]
+	},
+	"headline": "ネットワークパフォーマンスの最新情報：Full Stack Week",
+	"url": "https://blog.cloudflare.com/ja-jp/network-performance-update-full-stack-week-ja-jp/",
+	"datePublished": "2021-11-20T13:59:00.000Z",
+	"dateModified": "2022-01-01T03:05:05.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/01/Network-Performance-Update--Full-Stack-Week-header-1.png",
+		"width": 1800,
+		"height": 804
+	},
+	"keywords": "Full Stack Week (JP), 日本語, スピードと信頼性, 製品ニュース (JP)",
+	"description": "2か月と少し前に、世界中のラストワンマイルネットワークの広範なベンチマーク結果を共有しました。さまざまなテスト （TCP接続時間、最初の1バイトを受信するまでの時間（TTFB）、最後の1バイトを受信するまでの時間（TTLB））、また、さまざ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

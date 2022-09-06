@@ -1,0 +1,45 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Patrick R. Donahue",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/me0-1.png",
+			"width": 300,
+			"height": 291
+		},
+		"url": "https://blog.cloudflare.com/author/patrick/",
+		"sameAs": [
+			"https://www.cloudflare.com",
+			"https://twitter.com/prdonahue"
+		]
+	},
+	"headline": "Protecting against recently disclosed Microsoft Exchange Server vulnerabilities: CVE-2021-26855, CVE-2021-26857, CVE-2021-26858, and CVE-2021-27065",
+	"url": "https://blog.cloudflare.com/protecting-against-microsoft-exchange-server-cves/",
+	"datePublished": "2021-03-07T00:47:20.000Z",
+	"dateModified": "2021-03-07T02:03:48.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/03/Screen-Shot-2021-03-06-at-4.43.00-PM.png",
+		"width": 394,
+		"height": 182
+	},
+	"keywords": "Vulnerabilities, WAF, WAF Rules",
+	"description": "Cloudflare has deployed managed rules protecting customers against a series of remotely exploitable vulnerabilities that were recently found in Microsoft Exchange Server. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

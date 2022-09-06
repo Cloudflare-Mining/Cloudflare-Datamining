@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Justin Zhou",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/03/Screen-Shot-2019-06-19-at-10.29.51-PM.png",
+			"width": 788,
+			"height": 812
+		},
+		"url": "https://blog.cloudflare.com/author/justin-zhou/",
+		"sameAs": []
+	},
+	"headline": "Page Shield：ブラウザ上のユーザーデータを保護する",
+	"url": "https://blog.cloudflare.com/ja-jp/introducing-page-shield-ja-jp/",
+	"datePublished": "2021-03-25T13:01:00.000Z",
+	"dateModified": "2021-03-31T19:25:59.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/03/image3-48.png",
+		"width": 1600,
+		"height": 802
+	},
+	"keywords": "日本語, 製品ニュース (JP), リモートブラウザの分離, セキュリティ, セキュリティウィーク, Page Shield (JP), スピードと信頼性",
+	"description": "本日、新たにクライアント側のセキュリティ製品であるPage Shieldをご紹介いたします。この製品は、お客様側で、エンドユーザー側のブラウザで発生した攻撃を検出するためにご利用いただく製品です。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

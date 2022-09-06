@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Nick Blazier",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2020/12/image-63.png",
+			"width": 800,
+			"height": 799
+		},
+		"url": "https://blog.cloudflare.com/author/nick-blazier/",
+		"sameAs": []
+	},
+	"headline": "A quirk in the SUNBURST DGA algorithm",
+	"url": "https://blog.cloudflare.com/a-quirk-in-the-sunburst-dga-algorithm/",
+	"datePublished": "2020-12-18T00:30:00.000Z",
+	"dateModified": "2020-12-18T23:08:06.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2020/12/Sunburst-1.png",
+		"width": 1600,
+		"height": 898
+	},
+	"keywords": "Cloudflare Zero Trust, Cloudflare Gateway, Deep Dive",
+	"description": "On Wednesday, December 16, the RedDrip Team from QiAnXin Technology released their discoveries (tweet, github) regarding the random subdomains associated with the SUNBURST malware which was present in the SolarWinds Orion compromise. I",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

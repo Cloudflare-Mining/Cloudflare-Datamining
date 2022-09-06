@@ -1,0 +1,32 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Vlad Krasnov",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/165e069.jpg",
+		"url": "https://blog.cloudflare.com/author/vlad-krasnov/",
+		"sameAs": []
+	},
+	"headline": "Fighting Cancer: The Unexpected Benefit Of Open Sourcing Our Code",
+	"url": "https://blog.cloudflare.com/cloudflare-fights-cancer/",
+	"datePublished": "2015-07-08T13:28:00.000Z",
+	"dateModified": "2020-08-18T16:01:41.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2017/10/2653833040_644faff824_z.jpg",
+	"keywords": "Open Source, Compression, Optimization",
+	"description": "Recently I was contacted by Dr. Igor Kozin from The Institute of Cancer Research in London. He asked about the optimal way to compile CloudFlare&#x27;s open source fork of zlib.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

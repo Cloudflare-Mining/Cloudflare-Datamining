@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Sam Marsh",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/12/1637323544042.jpeg",
+			"width": 400,
+			"height": 400
+		},
+		"url": "https://blog.cloudflare.com/author/sam-marsh/",
+		"sameAs": [
+			"https://twitter.com/marshnet_social"
+		]
+	},
+	"headline": "Managed Transforms: templated HTTP header modifications",
+	"url": "https://blog.cloudflare.com/managed-transforms-templated-http-header-modifications/",
+	"datePublished": "2022-06-30T12:55:19.000Z",
+	"dateModified": "2022-07-12T10:39:57.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/06/image5-18.png",
+		"width": 1584,
+		"height": 716
+	},
+	"keywords": "Transform Rules",
+	"description": "Customize multiple HTTP headers with a single click using Cloudflare Managed Transforms",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

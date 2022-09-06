@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Rita Kozlov",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/05/Rita-Kozlov.jpeg",
+			"width": 200,
+			"height": 200
+		},
+		"url": "https://blog.cloudflare.com/author/rita/",
+		"sameAs": [
+			"https://twitter.com/ritakozlov_"
+		]
+	},
+	"headline": "Cloudflare Pagesの紹介：JAMstack Webサイトを構築するための最良の方法",
+	"url": "https://blog.cloudflare.com/ja-jp/cloudflare-pages-ja-jp/",
+	"datePublished": "2020-12-17T14:00:00.000Z",
+	"dateModified": "2021-08-31T22:37:24.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/04/image2-31.png",
+		"width": 1600,
+		"height": 829
+	},
+	"keywords": "製品ニュース (JP), Cloudflare Workers (JP), Cloudflare Pages (JP), JAMstack (JP), サーバーレス",
+	"description": "この時期は、世界中の様々な文化で最も大切な人々と祝い、贈り物をし合う時期です。この精神に則り、当社ではこの時期に、過去10年間にわたってCloudflareをサポートしてくれている開発者コミュニティに恩返しをしようと考えました。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

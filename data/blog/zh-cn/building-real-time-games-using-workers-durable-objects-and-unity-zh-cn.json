@@ -1,0 +1,40 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Kristian Freeman",
+		"image": "http://blog.cloudflare.com/content/images/2019/05/2fGb07-c_400x400.jpg",
+		"url": "https://blog.cloudflare.com/author/kristian/",
+		"sameAs": [
+			"https://www.signalnerve.com",
+			"https://twitter.com/signalnerve"
+		]
+	},
+	"headline": "使用 Workers、Durable Objects 和 Unity 构建实时游戏",
+	"url": "https://blog.cloudflare.com/zh-cn/building-real-time-games-using-workers-durable-objects-and-unity-zh-cn/",
+	"datePublished": "2021-05-25T23:00:00.000Z",
+	"dateModified": "2021-08-31T20:33:26.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/07/1.png",
+		"width": 1531,
+		"height": 796
+	},
+	"keywords": "持久对象, 游戏, 简体中文 (CN), Cloudflare Workers (CN)",
+	"description": "Durable Objects 是 Workers 开发者生态系统的一个很棒的补充，它允许您在特定的 Worker 中寻址和工作，以提供应用程序的一致性。这听起来很令人兴奋，但如果你像我一样，你可能想知道“好吧，我可以用它做什么？”",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

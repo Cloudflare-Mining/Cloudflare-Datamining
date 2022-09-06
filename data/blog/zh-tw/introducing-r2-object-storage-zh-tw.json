@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Greg McKeon",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/05/Screen-Shot-2022-05-10-at-2.50.56-PM.png",
+			"width": 692,
+			"height": 662
+		},
+		"url": "https://blog.cloudflare.com/author/greg/",
+		"sameAs": [
+			"https://twitter.com/wegmckeon"
+		]
+	},
+	"headline": "隆重推出 Cloudflare R2 Storage - 快速、可靠的物件儲存空間，減少輸出費用",
+	"url": "https://blog.cloudflare.com/zh-tw/introducing-r2-object-storage-zh-tw/",
+	"datePublished": "2021-09-27T13:00:00.000Z",
+	"dateModified": "2021-10-04T14:07:39.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/09/R2.png",
+		"width": 1800,
+		"height": 1013
+	},
+	"keywords": "Cloudflare Workers (TW), 繁體中文 (TW), 產品新聞 (TW), 生日週 (TW)",
+	"description": "隆重推出與 S3 相容的 Cloudflare 物件儲存服務，不僅輸出頻寬費用為零，還可從 S3 相容服務自動遷入。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

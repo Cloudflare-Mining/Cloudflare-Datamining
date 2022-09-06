@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Marwan Fayed",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/09/sta-profile.jpg",
+			"width": 600,
+			"height": 600
+		},
+		"url": "https://blog.cloudflare.com/author/marwan/",
+		"sameAs": [
+			"https://twitter.com/marwanfayed"
+		]
+	},
+	"headline": "Resolvemos la arquitectura &quot;narrow waist&quot; de las direcciones IP con Addressing Agility, una solución para nombres y servicios web",
+	"url": "https://blog.cloudflare.com/es-es/addressing-agility-es-es/",
+	"datePublished": "2021-10-13T23:00:00.000Z",
+	"dateModified": "2021-11-09T20:13:13.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/11/image6-19-3.png",
+		"width": 1200,
+		"height": 628
+	},
+	"keywords": "Investigación, Español",
+	"description": "A grandes escalas operativas, el direccionamiento IP impide la innovación en los servicios de red. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

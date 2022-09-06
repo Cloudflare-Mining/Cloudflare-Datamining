@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Fallon Blossom",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/02/Q2ZRUdz7_400x400-1.jpg",
+			"width": 400,
+			"height": 400
+		},
+		"url": "https://blog.cloudflare.com/author/fallon/",
+		"sameAs": [
+			"https://twitter.com/fallon_blossom"
+		]
+	},
+	"headline": "Announcing Cloudflare TV as a Service",
+	"url": "https://blog.cloudflare.com/cloudflare-tv-as-a-service/",
+	"datePublished": "2021-09-30T12:59:20.000Z",
+	"dateModified": "2021-10-01T13:43:54.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/09/image4-28.png",
+		"width": 1200,
+		"height": 675
+	},
+	"keywords": "Birthday Week, Cloudflare TV, Cloudflare Stream, Product News",
+	"description": "Today we’re excited to announce that we&#x27;re making the technology we used to build Cloudflare TV available to any other business that wants to run their own 24x7 streaming network.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

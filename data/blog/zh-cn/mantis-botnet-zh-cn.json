@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Omer Yoachimik",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/Omer-1.png",
+			"width": 773,
+			"height": 653
+		},
+		"url": "https://blog.cloudflare.com/author/omer/",
+		"sameAs": [
+			"https://twitter.com/OmerYoahimik"
+		]
+	},
+	"headline": "Mantis - 迄今最强大的僵尸网络",
+	"url": "https://blog.cloudflare.com/zh-cn/mantis-botnet-zh-cn/",
+	"datePublished": "2022-07-14T13:00:00.000Z",
+	"dateModified": "2022-08-19T09:37:27.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/08/image5-7.png",
+		"width": 1999,
+		"height": 1125
+	},
+	"keywords": "Mantis (CN), 僵尸网络, DDoS (CN), 趋势, 简体中文 (CN)",
+	"description": "我们将发起每秒 2600 万个请求 DDoS 攻击的僵尸网络命名为“Mantis”，因为它就像螳螂虾那样，个头虽小却很强悍",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

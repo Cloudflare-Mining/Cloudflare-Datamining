@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Omer Yoachimik",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/Omer-1.png",
+			"width": 773,
+			"height": 653
+		},
+		"url": "https://blog.cloudflare.com/author/omer/",
+		"sameAs": [
+			"https://twitter.com/OmerYoahimik"
+		]
+	},
+	"headline": "請問是誰打電話給我。近期 VoIP DDoS 攻擊活動增加",
+	"url": "https://blog.cloudflare.com/zh-tw/attacks-on-voip-providers-zh-tw/",
+	"datePublished": "2021-10-01T00:05:00.000Z",
+	"dateModified": "2021-10-19T20:33:25.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/10/3A3A8D3C-19A6-4630-9A4C-476469801D2C-2.png",
+		"width": 1360,
+		"height": 772
+	},
+	"keywords": "繁體中文 (TW), 贖金攻擊 (TW), VoiP (TW), 趨勢 (TW), DDoS (TW)",
+	"description": "過去一個月內，多家 VoIP（基於 IP 的語音通話）提供商遭受到自稱 REvil 的實體發動的分散式阻斷服務（DDoS）攻擊。這些多手段攻擊同時使用針對關鍵 HTTP 網站和 API 端點的 L7 攻擊，以及針對 VoIP 伺服器基礎結構的 L3/4 攻擊。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

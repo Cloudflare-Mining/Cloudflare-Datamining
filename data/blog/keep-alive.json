@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew Prince",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
+			"width": 1196,
+			"height": 1190
+		},
+		"url": "https://blog.cloudflare.com/author/matthew-prince/",
+		"sameAs": [
+			"https://twitter.com/eastdakota"
+		]
+	},
+	"headline": "Stayin&#x27; Alive",
+	"url": "https://blog.cloudflare.com/keep-alive/",
+	"datePublished": "2011-10-19T02:45:00.000Z",
+	"dateModified": "2018-02-01T00:16:55.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/02/shortcircuit.jpg.scaled500.jpg",
+	"keywords": "TCP, Speed, Product News, Speed & Reliability",
+	"description": "We&#x27;ve been making a lot of improvements deep within CloudFlare that you&#x27;ll start to see the benefits of over the coming weeks. As the changes graduate from our tests to full production, we&#x27;ll try and give you a sense of what they are and why they&#x27;re important. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Nitin Rao",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/08/WtxhLSEUSgqYRMdQUwWp_1204a20b3d1d96bba523a6a2a5fa3cd73bd4fe59240a27ad6eb8c064c6792446.jpg",
+			"width": 600,
+			"height": 600
+		},
+		"url": "https://blog.cloudflare.com/author/nitin-rao/",
+		"sameAs": [
+			"https://twitter.com/NitinBRao"
+		]
+	},
+	"headline": "Taipei: CloudFlare’s 77th Data Center is Now Live",
+	"url": "https://blog.cloudflare.com/taipei/",
+	"datePublished": "2016-04-11T20:23:00.000Z",
+	"dateModified": "2019-01-18T19:52:54.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/Taipei_med.jpg",
+	"keywords": "Cloudflare Network, Data Center, Asia",
+	"description": "We are excited to announce the launch of our Taipei data center, which is our 28th data center in Asia, and our 77th data center globally. Millions of websites which were previously served from Hong Kong are now served locally from Taipei.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

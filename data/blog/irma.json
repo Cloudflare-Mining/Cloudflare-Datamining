@@ -1,0 +1,34 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Jérôme Fleury",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/1c11387.jpg",
+		"url": "https://blog.cloudflare.com/author/jerome-fleury/",
+		"sameAs": [
+			"https://twitter.com/Jerome_UZ"
+		]
+	},
+	"headline": "Hurricane Irma",
+	"url": "https://blog.cloudflare.com/irma/",
+	"datePublished": "2017-09-09T15:10:00.000Z",
+	"dateModified": "2018-08-29T01:44:26.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2017/10/irma.jpg",
+	"keywords": "Hurricane, Community, Data Center",
+	"description": "Yesterday, we described how Hurricane Irma impacted several Caribbean islands, with the damage including a significant disruption to Internet access.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

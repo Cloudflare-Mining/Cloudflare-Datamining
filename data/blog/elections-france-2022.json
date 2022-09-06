@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "João Tomé",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/V0x3WKfJ_400x400-1.jpeg",
+			"width": 400,
+			"height": 400
+		},
+		"url": "https://blog.cloudflare.com/author/joao-tome/",
+		"sameAs": [
+			"https://twitter.com/emot"
+		]
+	},
+	"headline": "The 2022 French Presidential election leaves its mark on the Internet",
+	"url": "https://blog.cloudflare.com/elections-france-2022/",
+	"datePublished": "2022-04-11T17:30:53.000Z",
+	"dateModified": "2022-04-13T08:14:44.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/04/image8-4.png",
+		"width": 1800,
+		"height": 1013
+	},
+	"keywords": "Internet Traffic, Cloudflare Radar, Elections, Trends",
+	"description": "What happens to the Internet trends in France when an election like the 2022 French presidential happens? Here are some answers.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

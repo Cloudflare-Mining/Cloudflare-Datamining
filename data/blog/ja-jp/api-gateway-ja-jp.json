@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Ben Solomon",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/08/Personal-Pic.jpg",
+			"width": 2000,
+			"height": 2000
+		},
+		"url": "https://blog.cloudflare.com/author/bensol/",
+		"sameAs": [
+			"https://twitter.com/bensol"
+		]
+	},
+	"headline": "Cloudflare APIゲートウェイを発表",
+	"url": "https://blog.cloudflare.com/ja-jp/api-gateway-ja-jp/",
+	"datePublished": "2022-03-16T12:59:00.000Z",
+	"dateModified": "2022-05-19T23:22:15.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/05/image5-4-5.png",
+		"width": 1800,
+		"height": 1013
+	},
+	"keywords": "セキュリティウィーク, API Gateway (JA), 製品ニュース (JP), API (JA), セキュリティ",
+	"description": "本日は、CloudflareAPIゲートウェイを発表します。既存のゲートウェイをわずかな費用で完全に置き換えることができます。また、当社のソリューションでは、Workers、ボット管理、Access、および変換ルールの背後にあるテクノロジーを使用した、市場で最も高度なAPIツールセットを提供します",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

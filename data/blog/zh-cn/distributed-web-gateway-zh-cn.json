@@ -1,0 +1,37 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Andy Parker",
+		"image": "http://blog.cloudflare.com/content/images/2018/08/_DSC8743.jpg",
+		"url": "https://blog.cloudflare.com/author/andy/",
+		"sameAs": []
+	},
+	"headline": "hash加密，Cloudflare的IPFS网关_引领网络走向去中心化未来",
+	"url": "https://blog.cloudflare.com/zh-cn/distributed-web-gateway-zh-cn/",
+	"datePublished": "2018-09-17T13:01:00.000Z",
+	"dateModified": "2021-01-28T18:36:56.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2019/07/ipfs-gateway-header@3.5x-2.png",
+		"width": 1600,
+		"height": 1196
+	},
+	"keywords": "IPFS (ZH), 简体中文 (CN), 加密周, 加密, 安全, SSL (ZH), DNSSEC (CN), HTTPS (ZH)",
+	"description": "今天，我们很高兴能够介绍Cloudflare的IPFS网关，这是一种从InterPlanetary文件系统（IPFS）访问内容的简便方法，不需要在您的计算机上安装和运行任何特殊软件就可以访问内容。我们希望我们在cloudflare-ipfs.com上托管的网关能够为许多新的可靠性和安全性高的Web应用程序服务。IPFS网关是第一个作为我们分布式Web网关项目的一部分而发布的产品，它是我们为新的分布式Web技术所作出的所有努力的成果。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

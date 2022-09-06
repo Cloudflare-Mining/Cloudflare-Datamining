@@ -1,0 +1,34 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Junade Ali",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/G1VwuaxB.jpg",
+		"url": "https://blog.cloudflare.com/author/junade-ali/",
+		"sameAs": [
+			"https://twitter.com/IcyApril"
+		]
+	},
+	"headline": "DNS-Over-TLS Built-In &amp; Enforced - 1.1.1.1 and the GL.iNet GL-AR750S",
+	"url": "https://blog.cloudflare.com/dns-over-tls-built-in/",
+	"datePublished": "2018-07-14T17:13:00.000Z",
+	"dateModified": "2018-08-27T21:33:20.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/07/Screen-Shot-2018-07-14-at-04.36.11-1.png",
+	"keywords": "1.1.1.1, DNS, TLS, Privacy, Resolver, IoT, Security",
+	"description": "Back in April, I wrote about how it was possible to modify a router to encrypt DNS queries over TLS using Cloudflare&#x27;s 1.1.1.1 DNS Resolver and a GL.iNet router; the folks at GL.iNet read that blog post and decided to bake DNS-Over-TLS support into their new router using the 1.1.1.1 resolver.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

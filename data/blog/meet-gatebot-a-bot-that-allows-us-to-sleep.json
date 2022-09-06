@@ -1,0 +1,34 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Marek Majkowski",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/b5967d6c687939594adb6992723d0529.jpeg",
+		"url": "https://blog.cloudflare.com/author/marek-majkowski/",
+		"sameAs": [
+			"https://twitter.com/majek04"
+		]
+	},
+	"headline": "Meet Gatebot - a bot that allows us to sleep",
+	"url": "https://blog.cloudflare.com/meet-gatebot-a-bot-that-allows-us-to-sleep/",
+	"datePublished": "2017-09-25T13:00:30.000Z",
+	"dateModified": "2019-10-28T19:38:28.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2017/10/gatebot-3.jpg",
+	"keywords": "DDoS, Mitigation, Reliability, Birthday Week, Security, Attacks, Gatebot",
+	"description": "In the past, we’ve spoken about how Cloudflare is architected to sustain the largest DDoS attacks. During traffic surges we spread the traffic across a very large number of edge servers. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

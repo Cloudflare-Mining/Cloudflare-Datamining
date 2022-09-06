@@ -1,0 +1,37 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Garrett Galow",
+		"image": "http://blog.cloudflare.com/content/images/2018/04/14729279_10207227100946205_2625241094472568444_n.jpg",
+		"url": "https://blog.cloudflare.com/author/garrett/",
+		"sameAs": []
+	},
+	"headline": "Domain Scoped Roles —— 提前体验",
+	"url": "https://blog.cloudflare.com/zh-cn/domain-scoped-roles-early-access-zh-cn/",
+	"datePublished": "2022-03-18T21:04:00.000Z",
+	"dateModified": "2022-06-28T08:35:12.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/06/image3-30-1.png",
+		"width": 1801,
+		"height": 1013
+	},
+	"keywords": "Security Week (CN), 安全, 产品新闻, 提前体验, Domain Scoped Roles (CN), 简体中文 (CN)",
+	"description": "通过允许将用户访问限定到域的集合，Cloudflare 将使企业客户更容易管理团队对 Cloudflare 的访问",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

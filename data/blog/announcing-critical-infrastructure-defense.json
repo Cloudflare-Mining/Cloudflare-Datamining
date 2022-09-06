@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew Prince",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
+			"width": 1196,
+			"height": 1190
+		},
+		"url": "https://blog.cloudflare.com/author/matthew-prince/",
+		"sameAs": [
+			"https://twitter.com/eastdakota"
+		]
+	},
+	"headline": "Cloudflare, CrowdStrike, and Ping Identity launch the Critical Infrastructure Defense Project",
+	"url": "https://blog.cloudflare.com/announcing-critical-infrastructure-defense/",
+	"datePublished": "2022-03-07T13:59:10.000Z",
+	"dateModified": "2022-07-27T18:08:56.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/03/unnamed--1-.png",
+		"width": 1200,
+		"height": 675
+	},
+	"keywords": "CIDP, Defense, Infrastructure, Zero Trust, Cloudflare Zero Trust",
+	"description": "Today, Cloudflare is launching the Critical Infrastructure Defense Project. The Project was born out of conversations with cybersecurity and government experts concerned about potential retaliation to the sanctions that resulted from the Russian invasion of Ukraine",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

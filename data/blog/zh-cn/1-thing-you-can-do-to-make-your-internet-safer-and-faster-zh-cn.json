@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Irtefa",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/03/irtefa-profile-picture.jpg",
+			"width": 600,
+			"height": 600
+		},
+		"url": "https://blog.cloudflare.com/author/irtefa/",
+		"sameAs": []
+	},
+	"headline": "dns污染预防，如何让网速更快 - Cloudflare dns 1.1.1.1应用程序",
+	"url": "https://blog.cloudflare.com/zh-cn/1-thing-you-can-do-to-make-your-internet-safer-and-faster-zh-cn/",
+	"datePublished": "2018-11-11T13:00:00.000Z",
+	"dateModified": "2021-01-28T18:47:43.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2019/07/Screen-Shot-2018-11-10-at-12.29.49-PM-5.png",
+		"width": 886,
+		"height": 554
+	},
+	"keywords": "1.1.1.1 (CN), DNS (CN), 简体中文 (CN), 隐私 (CN), 产品新闻",
+	"description": "在2018年4月1日，我们推出了1.1.1.1，这是世界上最快的公共DNS解析器。今天，我们推出1.1.1.1移动应用程序，让您在手机上轻松使用1.1.1.1。🚀🚀🚀",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

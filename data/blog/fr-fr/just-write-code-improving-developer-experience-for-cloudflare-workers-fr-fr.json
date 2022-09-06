@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Rita Kozlov",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/05/Rita-Kozlov.jpeg",
+			"width": 200,
+			"height": 200
+		},
+		"url": "https://blog.cloudflare.com/author/rita/",
+		"sameAs": [
+			"https://twitter.com/ritakozlov_"
+		]
+	},
+	"headline": "Il suffit d&#x27;écrire le code : Améliorer l&#x27;expérience des développeurs avec Cloudflare Workers",
+	"url": "https://blog.cloudflare.com/fr-fr/just-write-code-improving-developer-experience-for-cloudflare-workers-fr-fr/",
+	"datePublished": "2019-06-02T09:35:00.000Z",
+	"dateModified": "2021-01-21T23:36:01.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2019/10/aa-2.jpeg",
+		"width": 1451,
+		"height": 661
+	},
+	"keywords": "Français, Sans serveur, Développeurs, Cloudflare Workers (FR), JavaScript (FR), Actualités produits",
+	"description": "Nous sommes ravis de vous annoncer que dès aujourd&#x27;hui, Cloudflare Workers® disposera d&#x27;une CLI, de documents nouveaux et améliorés, de plusieurs scripts pour tout le monde, de la possibilité d&#x27;exécuter des applications sur workers.dev sans apporter votre propre domaine ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

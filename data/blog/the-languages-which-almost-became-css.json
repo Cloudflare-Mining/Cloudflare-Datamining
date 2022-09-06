@@ -1,0 +1,32 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Zack Bloom",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/YZCINbF6.jpg",
+		"url": "https://blog.cloudflare.com/author/zack-bloom/",
+		"sameAs": []
+	},
+	"headline": "The Languages Which Almost Became CSS",
+	"url": "https://blog.cloudflare.com/the-languages-which-almost-became-css/",
+	"datePublished": "2017-08-02T05:00:00.000Z",
+	"dateModified": "2018-08-29T01:32:28.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2017/08/viola.png",
+	"keywords": "Cloudflare Apps, CSS, History, Developers, Programming",
+	"description": "The history of all the languages which almost became CSS and the development of\nthe styled web.When Tim Berners-Lee announced HTML in 1991 there was no method\nof styling pages. How a given HTML tag was rendered was determined by the\nbrowser, often with significant input from the user’s preferences. To many, it\nseemed like a good idea to create a standard way for pages to ‘suggest’ how they\nmight prefer to be rendered stylistically.\n\nThis was adapted from a post which originally appeared on the E",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Chris J Arges",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/12/chris.jpg",
+			"width": 1342,
+			"height": 1342
+		},
+		"url": "https://blog.cloudflare.com/author/arges/",
+		"sameAs": [
+			"https://twitter.com/ChrisArges"
+		]
+	},
+	"headline": "Bagaimana Kami Menggunakan eBPF untuk Membangun Pemfilteran Paket yang Dapat Diprogram di Magic Firewall",
+	"url": "https://blog.cloudflare.com/id-id/programmable-packet-filtering-with-magic-firewall-id-id/",
+	"datePublished": "2021-12-06T13:59:00.000Z",
+	"dateModified": "2021-12-29T23:47:04.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/12/Magic-Firewall.png",
+		"width": 1600,
+		"height": 900
+	},
+	"keywords": "Indonesia, CIO Week (ID), Magic Firewall (ID), Keamanan, eBPF (ID), Magic Transit (ID)",
+	"description": "Cloudflare secara aktif melindungi layanan dari serangan canggih hari demi hari. Untuk pengguna Magic Transit, perlindungan DDoS mendeteksi dan menghentikan serangan, sementara Magic Firewall ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

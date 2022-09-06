@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew Prince",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
+			"width": 1196,
+			"height": 1190
+		},
+		"url": "https://blog.cloudflare.com/author/matthew-prince/",
+		"sameAs": [
+			"https://twitter.com/eastdakota"
+		]
+	},
+	"headline": "Introducing: Single File Cache Purge",
+	"url": "https://blog.cloudflare.com/introducing-single-file-purge/",
+	"datePublished": "2012-07-14T05:51:00.000Z",
+	"dateModified": "2018-02-20T20:01:36.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/02/single_object_purge.png.scaled500-1.png",
+	"keywords": "Cache, Free, Product News, Speed & Reliability",
+	"description": "CloudFlare has supported a way to purge your cache for the last year. Unfortunately, it was all or nothing. While that, for practical purposes, didn&#x27;t cause a significant performance hit for most websites.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

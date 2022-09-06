@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Rita Kozlov",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/05/Rita-Kozlov.jpeg",
+			"width": 200,
+			"height": 200
+		},
+		"url": "https://blog.cloudflare.com/author/rita/",
+		"sameAs": [
+			"https://twitter.com/ritakozlov_"
+		]
+	},
+	"headline": "The next chapter for Cloudflare Workers: open source",
+	"url": "https://blog.cloudflare.com/workers-open-source-announcement/",
+	"datePublished": "2022-05-09T12:59:56.000Z",
+	"dateModified": "2022-07-29T18:34:24.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/05/image1-11.png",
+		"width": 1800,
+		"height": 1013
+	},
+	"keywords": "Platform Week, Product News, Cloudflare Workers, Serverless",
+	"description": "As the first announcement of Platform Week, today Cloudflare is announcing the open sourcing of the Workers runtime under the Apache-2.0 license",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

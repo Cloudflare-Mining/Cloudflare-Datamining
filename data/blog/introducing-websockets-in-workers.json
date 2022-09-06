@@ -1,0 +1,40 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Kristian Freeman",
+		"image": "http://blog.cloudflare.com/content/images/2019/05/2fGb07-c_400x400.jpg",
+		"url": "https://blog.cloudflare.com/author/kristian/",
+		"sameAs": [
+			"https://www.signalnerve.com",
+			"https://twitter.com/signalnerve"
+		]
+	},
+	"headline": "Introducing WebSockets Support in Cloudflare Workers",
+	"url": "https://blog.cloudflare.com/introducing-websockets-in-workers/",
+	"datePublished": "2021-04-14T13:02:00.000Z",
+	"dateModified": "2022-01-24T09:40:36.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/04/image2-13.png",
+		"width": 1410,
+		"height": 724
+	},
+	"keywords": "Developer Week, Developers, JAMstack, Cloudflare Workers, WebSockets, Product News",
+	"description": "WebSockets are a powerful new addition to the Workers platform that unlocks real-time use cases in your application.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

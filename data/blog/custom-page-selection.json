@@ -1,0 +1,32 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Victoria Bernard",
+		"image": "http://blog.cloudflare.com/content/images/2018/04/UOeuJDMRxejfddFMXFvl_1204a20b3d1d96bba523a6a2a5fa3cd73bd4fe59240a27ad6eb8c064c6792446.jpg",
+		"url": "https://blog.cloudflare.com/author/victoria/",
+		"sameAs": []
+	},
+	"headline": "Custom Page Selection for Cloudflare Apps",
+	"url": "https://blog.cloudflare.com/custom-page-selection/",
+	"datePublished": "2018-05-03T17:00:00.000Z",
+	"dateModified": "2018-08-29T07:36:18.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/04/Screen-Shot-2018-04-16-at-3.10.53-PM-1.png",
+	"keywords": "Cloudflare Apps, JavaScript, Always Online, Developers",
+	"description": "In July 2016, Cloudflare integrated with Eager - an apps platform. During this integration, several decisions were made to ensure an optimal experience installing apps. We wanted to make sure site owners on Cloudflare could customize and install an app with the minimal number of clicks possible. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

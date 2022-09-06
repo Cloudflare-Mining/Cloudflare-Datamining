@@ -1,0 +1,32 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Peter Dumanian",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/0abb04c.jpg",
+		"url": "https://blog.cloudflare.com/author/peter/",
+		"sameAs": []
+	},
+	"headline": "Cloudflare Support for Azure Customers",
+	"url": "https://blog.cloudflare.com/cloudflare-support-for-azure-customers/",
+	"datePublished": "2019-02-05T16:00:00.000Z",
+	"dateModified": "2021-06-02T17:25:52.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2019/02/azure-1.png",
+	"keywords": "1.1.1.1, Microsoft, Partners, DNS, TLS, Security, Speed & Reliability, Cloudflare Tunnel",
+	"description": "Cloudflare seeks to help its end customers use whichever public and private clouds best suit their needs.  Towards that goal, we have been working to make sure our solutions work well with various public cloud providers including Microsoft’s Azure platform.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

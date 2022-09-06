@@ -1,0 +1,37 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Kris Kwiatkowski",
+		"image": "http://blog.cloudflare.com/content/images/2019/06/kris.jpg",
+		"url": "https://blog.cloudflare.com/author/kris/",
+		"sameAs": []
+	},
+	"headline": "TLS Post-Quantum Experiment",
+	"url": "https://blog.cloudflare.com/the-tls-post-quantum-experiment/",
+	"datePublished": "2019-10-30T13:00:00.000Z",
+	"dateModified": "2019-10-30T17:12:45.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2019/10/Post-Quantum@2x-1.png",
+		"width": 1600,
+		"height": 887
+	},
+	"keywords": "Crypto Week, Crypto, TLS, Security, Research, Post-Quantum",
+	"description": "In June, we announced a wide-scale post-quantum experiment with Google. We implemented two post-quantum (i.e., not yet known to be broken by quantum computers) key exchanges, integrated them into our TLS stack and deployed the implementation on our edge servers and in Chrome Canary clients.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

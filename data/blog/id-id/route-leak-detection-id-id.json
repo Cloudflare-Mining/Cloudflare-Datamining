@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "David Tuber",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/07/kutiya-face.png",
+			"width": 983,
+			"height": 1049
+		},
+		"url": "https://blog.cloudflare.com/author/tubes/",
+		"sameAs": [
+			"https://twitter.com/tubes__"
+		]
+	},
+	"headline": "Melindungi Pelanggan Cloudflare dari Ketidakamanan BGP dengan Deteksi Kebocoran Rute",
+	"url": "https://blog.cloudflare.com/id-id/route-leak-detection-id-id/",
+	"datePublished": "2021-03-25T00:00:00.000Z",
+	"dateModified": "2022-01-24T11:12:20.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/01/image6-16--1--1.png",
+		"width": 1852,
+		"height": 926
+	},
+	"keywords": "BGP (ID), Security Week (ID), RPKI (ID), Keamanan",
+	"description": "Kebocoran dan pembajakan rute Protokol Batas Gerbang atau Border Gateway Protocol (BGP) dapat merusak hari Anda — BGP secara perancangan memang tidak aman, dan informasi perutean yang salah dan tersebar di Internet dapat sangat mengganggu dan berbahaya bagi fungsi normal jaringan pelanggan",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

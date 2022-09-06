@@ -1,0 +1,45 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Val Vesa",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/07/Ct5xlQ1a_400x400.jpeg",
+			"width": 400,
+			"height": 400
+		},
+		"url": "https://blog.cloudflare.com/author/val/",
+		"sameAs": [
+			"https://www.facebook.com/valentinvesa",
+			"https://twitter.com/adspedia"
+		]
+	},
+	"headline": "A Thanksgiving 2020 Reading List",
+	"url": "https://blog.cloudflare.com/a-thanksgiving-2020-reading-list/",
+	"datePublished": "2020-11-28T12:00:00.000Z",
+	"dateModified": "2020-11-28T12:00:00.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2020/11/Thanksgiving-Reading-List-2020-OG-2.png",
+		"width": 1200,
+		"height": 627
+	},
+	"keywords": "Cloudflare TV, Careers, Thanksgiving, Quicksilver, Serverless, eCommerce",
+	"description": "If you want to relax in an active and learning way this Thanksgiving weekend, here are some of the topics we’ve covered on the Cloudflare blog this past week that you may find interesting.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

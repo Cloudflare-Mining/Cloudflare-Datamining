@@ -1,0 +1,32 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Alex Bocharov",
+		"image": "http://blog.cloudflare.com/content/images/2018/02/27b2849.jpg",
+		"url": "https://blog.cloudflare.com/author/alex-bocharov/",
+		"sameAs": []
+	},
+	"headline": "HTTP Analytics for 6M requests per second using ClickHouse",
+	"url": "https://blog.cloudflare.com/http-analytics-for-6m-requests-per-second-using-clickhouse/",
+	"datePublished": "2018-03-06T22:13:18.000Z",
+	"dateModified": "2020-08-21T00:06:29.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/03/New-system-architecture-1.jpg",
+	"keywords": "Analytics, Data, Speed & Reliability, Kafka, Cap'n Proto, API, php, Load Balancing, NGINX",
+	"description": "One of our large scale data infrastructure challenges here at Cloudflare is around providing HTTP traffic analytics to our customers. HTTP Analytics is available to all our customers via two options:",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

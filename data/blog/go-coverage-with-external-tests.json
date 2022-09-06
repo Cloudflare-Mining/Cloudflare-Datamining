@@ -1,0 +1,33 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Filippo Valsorda",
+		"image": "http://blog.cloudflare.com/content/images/2018/02/K6rX3ZSn_400x400.jpg",
+		"url": "https://blog.cloudflare.com/author/filippo/",
+		"sameAs": [
+			"https://twitter.com/filosottile"
+		]
+	},
+	"headline": "Go coverage with external tests",
+	"url": "https://blog.cloudflare.com/go-coverage-with-external-tests/",
+	"datePublished": "2016-01-19T18:19:59.000Z",
+	"dateModified": "2018-08-24T23:49:27.000Z",
+	"keywords": "RRDNS, Tips, DNS, Reliability, Programming, Go",
+	"description": "The Go test coverage implementation is quite ingenious: when asked to, the Go compiler will preprocess the source so that when each code portion is executed a bit is set in a coverage bitmap.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Daniele Molteni",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/10/meProfessional-1-flipped.jpg",
+			"width": 1732,
+			"height": 1732
+		},
+		"url": "https://blog.cloudflare.com/author/daniele/",
+		"sameAs": []
+	},
+	"headline": "Aprendizaje automático para la optimización del WAF",
+	"url": "https://blog.cloudflare.com/es-es/waf-ml-es-es/",
+	"datePublished": "2022-03-15T12:59:00.000Z",
+	"dateModified": "2022-03-16T18:13:52.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/03/image5-8.png",
+		"width": 1801,
+		"height": 1013
+	},
+	"keywords": "Semana de la Seguridad, WAF (ES)",
+	"description": "Cloudflare gestiona 32 millones de solicitudes HTTP por segundo. Además, más del 22 % de todos los sitios web con un servidor web conocido por W3Techs utilizan nuestros servicios.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

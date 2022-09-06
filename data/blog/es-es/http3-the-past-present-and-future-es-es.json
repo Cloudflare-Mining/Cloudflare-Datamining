@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Alessandro Ghedini",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/09/Ii4TgsoTda2layE131Dk_1204a20b3d1d96bba523a6a2a5fa3cd73bd4fe59240a27ad6eb8c064c6792446.jpg",
+			"width": 600,
+			"height": 600
+		},
+		"url": "https://blog.cloudflare.com/author/alessandro-ghedini/",
+		"sameAs": []
+	},
+	"headline": "HTTP/3: el pasado, el presente y el futuro",
+	"url": "https://blog.cloudflare.com/es-es/http3-the-past-present-and-future-es-es/",
+	"datePublished": "2019-09-26T13:00:00.000Z",
+	"dateModified": "2021-01-21T19:19:32.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2019/10/http3-option-tunnel@2x-1-1-1.png",
+		"width": 2356,
+		"height": 1493
+	},
+	"keywords": "Semana de cumpleaños, Noticias de productos, Seguridad, Español, QUIC (ES), HTTP3 (ES)",
+	"description": "Durante la semana del aniversario del año pasado,anunciamos el soporte preliminar para QUIC y HTTP/3 (o &quot;HTTP sobre QUIC&quot; como se conocía en aquel entonces), el nuevo estándar para la web, que permite conexiones más rápidas, más confiables y más seguras a los puntos de conexión web, ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

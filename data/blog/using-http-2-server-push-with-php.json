@@ -1,0 +1,34 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "John Graham-Cumming",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
+		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
+		"sameAs": [
+			"https://twitter.com/jgrahamc"
+		]
+	},
+	"headline": "Using HTTP/2 Server Push with PHP",
+	"url": "https://blog.cloudflare.com/using-http-2-server-push-with-php/",
+	"datePublished": "2016-05-13T13:11:28.000Z",
+	"dateModified": "2018-08-27T20:01:41.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/Screen-Shot-2018-08-27-at-12.54.39-PM.png",
+	"keywords": "HTTP2, Server Push, php, Speed & Reliability",
+	"description": "Two weeks ago CloudFlare announced that it was supporting HTTP/2 Server Push for all our customers. By simply adding a Link header to an HTTP response specifying preload CloudFlare would automatically push items to web browsers that support Server Push.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

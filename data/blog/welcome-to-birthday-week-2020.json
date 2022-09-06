@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "John Graham-Cumming",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
+		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
+		"sameAs": [
+			"https://twitter.com/jgrahamc"
+		]
+	},
+	"headline": "Welcome to Birthday Week 2020",
+	"url": "https://blog.cloudflare.com/welcome-to-birthday-week-2020/",
+	"datePublished": "2020-09-27T15:15:00.000Z",
+	"dateModified": "2020-09-27T15:15:00.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2020/09/image8-2.png",
+		"width": 1999,
+		"height": 1123
+	},
+	"keywords": "Birthday Week, Life @ Cloudflare, Cloudflare History",
+	"description": "Each year we celebrate our launch on September 27, 2010 with a week of product announcements. We call this Birthday Week, but rather than receiving gifts, we give them away. This year is no different, except that it is… Cloudflare is 10 years old.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,32 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Piotr Sikora",
+		"image": "http://blog.cloudflare.com/content/images/2018/02/4OE8Z183_400x400.png",
+		"url": "https://blog.cloudflare.com/author/piotr/",
+		"sameAs": []
+	},
+	"headline": "Killing RC4 (softly)",
+	"url": "https://blog.cloudflare.com/killing-rc4/",
+	"datePublished": "2014-01-29T12:00:00.000Z",
+	"dateModified": "2018-08-21T23:52:24.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/rock-and-hard-place.jpg",
+	"keywords": "RC4, Crypto, OpenSSL, Encryption, Vulnerabilities",
+	"description": "Back in 2011, the BEAST attack on the cipher block chaining (CBC) encryption mode used in TLS v1.0 was demonstrated. At the time the advice of experts (including our own) was to prioritize the use of RC4-based cipher suites.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

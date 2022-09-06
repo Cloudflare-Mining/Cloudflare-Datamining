@@ -1,0 +1,34 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Anthony Davanzo",
+		"image": "http://blog.cloudflare.com/content/images/2018/06/Screen-Shot-2018-06-07-at-3.48.53-PM.png",
+		"url": "https://blog.cloudflare.com/author/anthony-davanzo/",
+		"sameAs": [
+			"https://twitter.com/exclesium"
+		]
+	},
+	"headline": "There’s Always Cache in the Banana Stand",
+	"url": "https://blog.cloudflare.com/theres-always-cache-in-the-banana-stand/",
+	"datePublished": "2017-12-14T16:09:22.000Z",
+	"dateModified": "2019-09-03T21:23:26.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2017/12/banana-stand.png",
+	"keywords": "Cache, Speed & Reliability, Product News",
+	"description": "We’re happy to announce that we now support all HTTP Cache-Control response directives. This puts powerful control in the hands of you, the people running origin servers around the world. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

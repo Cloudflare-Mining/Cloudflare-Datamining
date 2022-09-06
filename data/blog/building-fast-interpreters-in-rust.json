@@ -1,0 +1,32 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Ingvar Stepanyan",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/rYPVgOqN.jpg",
+		"url": "https://blog.cloudflare.com/author/ingvar-stepanyan/",
+		"sameAs": []
+	},
+	"headline": "Building fast interpreters in Rust",
+	"url": "https://blog.cloudflare.com/building-fast-interpreters-in-rust/",
+	"datePublished": "2019-03-04T16:00:00.000Z",
+	"dateModified": "2019-08-13T15:19:42.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2019/02/pasted-image-0.png",
+	"keywords": "Rust, JavaScript, Cloudflare Workers, Serverless, IPv4, IPv6, Security, Programming, API",
+	"description": "In the previous post we described the Firewall Rules architecture and how the different components are integrated together. We created a configurable Rust library for writing and executing Wireshark®-like filters in different parts of our stack written in Go, Lua, C, C++ and JavaScript Workers.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

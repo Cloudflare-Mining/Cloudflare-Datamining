@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Erfi Anugrah",
+		"image": "http://blog.cloudflare.com/content/images/2018/11/photo.jpg",
+		"url": "https://blog.cloudflare.com/author/erfi/",
+		"sameAs": [
+			"https://erfianugrah.com/"
+		]
+	},
+	"headline": "My time as an intern (thus far)",
+	"url": "https://blog.cloudflare.com/my-time-at-cloudflare-as-an-intern-thus-far/",
+	"datePublished": "2018-11-21T06:19:00.000Z",
+	"dateModified": "2018-11-22T02:16:48.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://images.unsplash.com/photo-1509220676330-01891402eb14?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjExNzczfQ&s=c2c3c07d247dd21edb7032b5152e467a",
+		"width": 1080,
+		"height": 1615
+	},
+	"keywords": "Life @ Cloudflare, APJC, Singapore",
+	"description": "Sit down by the fire, and let me regale you with a tale of my time at Cloudflare as an intern.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

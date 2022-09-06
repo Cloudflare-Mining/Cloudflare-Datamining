@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Jon Levine",
+		"image": "http://blog.cloudflare.com/content/images/2018/04/prof-crop.jpg",
+		"url": "https://blog.cloudflare.com/author/jpl/",
+		"sameAs": [
+			"https://twitter.com/jplevine"
+		]
+	},
+	"headline": "开始通过“浏览器洞察力”衡量 Web Vitals 指标",
+	"url": "https://blog.cloudflare.com/zh-cn/start-measuring-web-vitals-with-browser-insights-zh-cn/",
+	"datePublished": "2020-09-29T13:00:00.000Z",
+	"dateModified": "2021-01-27T02:41:07.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2020/12/image1-26-1.png",
+		"width": 1800,
+		"height": 1083
+	},
+	"keywords": "简体中文 (CN), 生日周 (CN), 分析, 浏览器见解",
+	"description": "我们 Cloudflare 有许多人都痴迷于加快网站速度的方法。不过，提高性能的首要步骤是衡量性能。去年，我们推出了“浏览器洞察力”，，以帮助客户从最终用户的角度衡量网络性能。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

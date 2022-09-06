@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Michelle Zatlyn",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Michelle-Zatlyn-2.png",
+			"width": 492,
+			"height": 488
+		},
+		"url": "https://blog.cloudflare.com/author/michelle-zatlyn/",
+		"sameAs": [
+			"https://twitter.com/zatlyn"
+		]
+	},
+	"headline": "That&#x27;s Freaking Awesome: CloudFlare Automatically Learns How to Stop New Attacks",
+	"url": "https://blog.cloudflare.com/thats-freaking-awesome-cloudflare-automatical/",
+	"datePublished": "2011-05-18T17:16:00.000Z",
+	"dateModified": "2018-01-26T20:48:46.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/01/CloudFlare_getting_smarter.tiff.scaled.500.jpg",
+	"keywords": "Attacks, DDoS",
+	"description": "We always talk about how CloudFlare gets smarter, and we do that in a variety of ways. One of the ways is that we look at changes in traffic to a site. If there is a big change, then our system automatically starts to investigate whether it is legitimate traffic or an attack. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

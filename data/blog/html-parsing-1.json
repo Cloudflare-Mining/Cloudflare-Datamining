@@ -1,0 +1,37 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Andrew Galloni",
+		"image": "http://blog.cloudflare.com/content/images/2018/02/4Dzpw0TrQAmQGEaubqch_1204a20b3d1d96bba523a6a2a5fa3cd73bd4fe59240a27ad6eb8c064c6792446.jpg",
+		"url": "https://blog.cloudflare.com/author/andrew-galloni/",
+		"sameAs": []
+	},
+	"headline": "A History of HTML Parsing at Cloudflare: Part 1",
+	"url": "https://blog.cloudflare.com/html-parsing-1/",
+	"datePublished": "2019-11-28T08:44:00.000Z",
+	"dateModified": "2020-08-21T00:07:34.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2019/11/HTML-rewrriter_1@3x-1.png",
+		"width": 2000,
+		"height": 1025
+	},
+	"keywords": "Rust, Product News, Serverless, Cloudflare Workers, Workers Sites, JavaScript",
+	"description": "To coincide with the launch of streaming HTML rewriting functionality for Cloudflare Workers we are open sourcing the Rust HTML rewriter (LOL  HTML) used to back the Workers HTMLRewriter API. We also thought it was about time to review the history of HTML rewriting at Cloudflare.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

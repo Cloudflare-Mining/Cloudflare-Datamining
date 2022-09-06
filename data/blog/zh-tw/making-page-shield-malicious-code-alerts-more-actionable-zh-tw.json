@@ -1,0 +1,45 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Simon Wijckmans",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/09/simon.wijckmans@microsoft.com_02p.jpg",
+			"width": 600,
+			"height": 600
+		},
+		"url": "https://blog.cloudflare.com/author/swijckmans/",
+		"sameAs": [
+			"https://simonwijckmans.com/",
+			"https://twitter.com/SimonWijckmans"
+		]
+	},
+	"headline": "使 Page Shield 惡意程式碼警示更具可操作性",
+	"url": "https://blog.cloudflare.com/zh-tw/making-page-shield-malicious-code-alerts-more-actionable-zh-tw/",
+	"datePublished": "2022-07-05T12:59:00.000Z",
+	"dateModified": "2022-08-10T09:57:00.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/08/Untitled-1.png",
+		"width": 1600,
+		"height": 802
+	},
+	"keywords": "防守, Page Shield (TW), Magecart (TW), JavaScript (TW), 繁體中文 (TW)",
+	"description": "在這篇文章中，我們將討論對指令碼狀態、中繼資料和分類的改進",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

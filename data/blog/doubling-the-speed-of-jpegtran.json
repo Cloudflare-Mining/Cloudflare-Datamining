@@ -1,0 +1,32 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Vlad Krasnov",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/165e069.jpg",
+		"url": "https://blog.cloudflare.com/author/vlad-krasnov/",
+		"sameAs": []
+	},
+	"headline": "Doubling the speed of jpegtran with SIMD",
+	"url": "https://blog.cloudflare.com/doubling-the-speed-of-jpegtran/",
+	"datePublished": "2015-10-08T10:10:41.000Z",
+	"dateModified": "2018-08-24T20:59:57.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2017/10/print_poster_0025.jpg",
+	"keywords": "Speed, Polish, Open Source, Optimization, Speed & Reliability, Programming",
+	"description": "It is no secret that at CloudFlare we put a great effort into accelerating our customers&#x27; websites. One way to do it is to reduce the size of the images on the website. This is what our Polish product is for. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

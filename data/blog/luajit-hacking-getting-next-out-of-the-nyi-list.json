@@ -1,0 +1,32 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Javier Guerra",
+		"image": "http://blog.cloudflare.com/content/images/2017/02/headshot.jpeg",
+		"url": "https://blog.cloudflare.com/author/javier-guerra/",
+		"sameAs": []
+	},
+	"headline": "LuaJIT Hacking: Getting next() out of the NYI list",
+	"url": "https://blog.cloudflare.com/luajit-hacking-getting-next-out-of-the-nyi-list/",
+	"datePublished": "2017-02-21T13:40:23.000Z",
+	"dateModified": "2020-08-20T18:06:36.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/6822250770_d6f8399cf2_z.jpg",
+	"keywords": "LUA, Programming, Speed & Reliability",
+	"description": "At Cloudflare we’re heavy users of LuaJIT and in the past have sponsored many improvements to its performance.\n\n",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

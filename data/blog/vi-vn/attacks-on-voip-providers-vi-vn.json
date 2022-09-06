@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Omer Yoachimik",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/Omer-1.png",
+			"width": 773,
+			"height": 653
+		},
+		"url": "https://blog.cloudflare.com/author/omer/",
+		"sameAs": [
+			"https://twitter.com/OmerYoahimik"
+		]
+	},
+	"headline": "Tôi có thể hỏi ai đang gọi không? Sự gia tăng gần đây trong các cuộc tấn công VoIP DDoS",
+	"url": "https://blog.cloudflare.com/vi-vn/attacks-on-voip-providers-vi-vn/",
+	"datePublished": "2021-09-30T23:00:00.000Z",
+	"dateModified": "2022-01-10T18:30:51.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/01/image-2-1.png",
+		"width": 1360,
+		"height": 772
+	},
+	"keywords": "VoIP (VN), DDoS (VN), Tốc độ và độ tin cậy (VN)",
+	"description": "Trong tháng qua, nhiều nhà cung cấp Giao thức thoại qua Internet (VoIP) bị nhiều cuộc tấn công Từ chối dịch vụ phân tán (DDoS) nhắm đến từ các tổ chức tự xưng là REvil",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

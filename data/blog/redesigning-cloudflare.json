@@ -1,0 +1,32 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Kevin Wilson",
+		"image": "http://blog.cloudflare.com/content/images/2018/02/AAMABADGAAwAAQAAAAAAAA8fAAAAJDEwMTAyM2YwLWQyZTEtNGE5ZS1iYjIyLTI2OWNmNTExMTE1Yg.jpg",
+		"url": "https://blog.cloudflare.com/author/kevin/",
+		"sameAs": []
+	},
+	"headline": "Redesigning CloudFlare",
+	"url": "https://blog.cloudflare.com/redesigning-cloudflare/",
+	"datePublished": "2015-05-01T10:58:30.000Z",
+	"dateModified": "2018-08-24T02:14:10.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2015/04/intro-1.png",
+	"keywords": "Cloudflare Apps, Dashboard, Product News",
+	"description": "After several years of new features, settings, and ancillary UIs buried beneath clicks, it became clear that the user experience was lacking and would only get worse as we continued to add features. The question became: How could we make a UI that was versatile, scalable, and consistent?",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

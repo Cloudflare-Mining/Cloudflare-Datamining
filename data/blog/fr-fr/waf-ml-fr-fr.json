@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Daniele Molteni",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/10/meProfessional-1-flipped.jpg",
+			"width": 1732,
+			"height": 1732
+		},
+		"url": "https://blog.cloudflare.com/author/daniele/",
+		"sameAs": []
+	},
+	"headline": "Améliorer le WAF grâce à l&#x27;apprentissage automatique",
+	"url": "https://blog.cloudflare.com/fr-fr/waf-ml-fr-fr/",
+	"datePublished": "2022-03-15T17:06:00.000Z",
+	"dateModified": "2022-04-01T17:21:37.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/03/image2-89.png",
+		"width": 1801,
+		"height": 1013
+	},
+	"keywords": "Semaine de la sécurité",
+	"description": "Aujourd&#x27;hui, nous sommes heureux de compléter les ensembles de règles gérées (telles que OWASP et l&#x27;ensemble de règles gérées par Cloudflare) avec un nouvel outil visant à identifier les contournements et les charges malveillantes, sans intervention humaine et avant leur exploitation",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

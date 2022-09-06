@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew Prince",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
+			"width": 1196,
+			"height": 1190
+		},
+		"url": "https://blog.cloudflare.com/author/matthew-prince/",
+		"sameAs": [
+			"https://twitter.com/eastdakota"
+		]
+	},
+	"headline": "Details Behind Today&#x27;s Internet Hacks",
+	"url": "https://blog.cloudflare.com/details-behind-todays-internet-hacks/",
+	"datePublished": "2013-08-27T18:15:00.000Z",
+	"dateModified": "2018-08-17T22:03:00.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/CloudFlare_DNS.png",
+	"keywords": "Attacks, Post Mortem, DNS, Reliability",
+	"description": "At 1:19pm (PDT) today, a researcher noticed that the New York Times&#x27; website wasn&#x27;t loading. We know the New York Times tech team, so we sent an email to check in. A few minutes later, the CTO of the NYT called us back. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

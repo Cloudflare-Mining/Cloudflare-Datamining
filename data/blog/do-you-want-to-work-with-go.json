@@ -1,0 +1,34 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "John Graham-Cumming",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
+		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
+		"sameAs": [
+			"https://twitter.com/jgrahamc"
+		]
+	},
+	"headline": "Do you want to work with Go?",
+	"url": "https://blog.cloudflare.com/do-you-want-to-work-with-go/",
+	"datePublished": "2012-11-18T00:35:00.000Z",
+	"dateModified": "2018-08-08T22:30:44.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/IMG_4122.JPG.scaled500.jpg",
+	"keywords": "Life @ Cloudflare, spdy, Railgun, Careers, Go",
+	"description": "It&#x27;s no secret that CloudFlare has adopted Go for some production systems; we&#x27;ve written about our use of Go in the past. But over time it&#x27;s become clear to us that Go is an important language for the sort of high-performance, highly-concurrent software we have to write.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

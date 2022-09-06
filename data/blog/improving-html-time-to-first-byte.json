@@ -1,0 +1,35 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Patrick Meenan",
+		"image": "http://blog.cloudflare.com/content/images/2018/08/PatPerfCalendar.jpg",
+		"url": "https://blog.cloudflare.com/author/patrick-meenan/",
+		"sameAs": [
+			"https://www.webpagetest.org/",
+			"https://twitter.com/patmeenan"
+		]
+	},
+	"headline": "Improving HTML Time to First Byte",
+	"url": "https://blog.cloudflare.com/improving-html-time-to-first-byte/",
+	"datePublished": "2018-12-24T16:00:00.000Z",
+	"dateModified": "2018-12-24T16:00:00.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/12/tweet-1.png",
+	"keywords": "Speed & Reliability, Cloudflare Workers, Cloudflare Workers KV, WordPress, Cache, Serverless, Programming",
+	"description": "Fixing slow Time To First Byte by edge-caching HTML with Cloudflare Workers and automatically purging the cache when content changes.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

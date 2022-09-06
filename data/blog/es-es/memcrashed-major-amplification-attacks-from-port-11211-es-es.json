@@ -1,0 +1,34 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Marek Majkowski",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/b5967d6c687939594adb6992723d0529.jpeg",
+		"url": "https://blog.cloudflare.com/author/marek-majkowski/",
+		"sameAs": [
+			"https://twitter.com/majek04"
+		]
+	},
+	"headline": "Memcrashed - importantes ataques de amplificación del puerto UDP 11211",
+	"url": "https://blog.cloudflare.com/es-es/memcrashed-major-amplification-attacks-from-port-11211-es-es/",
+	"datePublished": "2018-02-27T14:38:00.000Z",
+	"dateModified": "2021-02-05T00:29:07.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2019/03/3829936641_f112ed1665_b-1.jpg",
+	"keywords": "Desarrolladores, Mitigación, Fiabilidad, Ataques (ES), Vulnerabilidades, Español, DDoS (ES)",
+	"description": "En los últimos dos días, hemos visto un gran aumento en un extraño vector de ataque de amplificación, que usa el protocolo Memcached, originado del puerto UDP 11211.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

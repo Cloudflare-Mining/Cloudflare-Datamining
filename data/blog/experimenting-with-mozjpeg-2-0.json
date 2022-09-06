@@ -1,0 +1,33 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "John Graham-Cumming",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
+		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
+		"sameAs": [
+			"https://twitter.com/jgrahamc"
+		]
+	},
+	"headline": "Experimenting with mozjpeg 2.0",
+	"url": "https://blog.cloudflare.com/experimenting-with-mozjpeg-2-0/",
+	"datePublished": "2014-07-29T02:29:00.000Z",
+	"dateModified": "2018-08-23T00:07:02.000Z",
+	"keywords": "Polish, Product News, Speed & Reliability",
+	"description": "One of the services that CloudFlare provides to paying customers is called Polish. Polish automatically recompresses images cached by CloudFlare to ensure that they are as small as possible and can be delivered to web browsers as quickly as possible.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

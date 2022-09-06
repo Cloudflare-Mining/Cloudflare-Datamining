@@ -11,7 +11,7 @@
 	<pre><code>$ dig cloudflare.com txt
 "v=spf1 ip4:199.15.212.0/22 ip4:173.245.48.0/20 include:_spf.google.com include:spf1.mcsv.net include:spf.mandrillapp.com include:mail.zendesk.com include:customeriomail.com include:stspg-customer.com -all"
 </code></pre>
-	<p>This says that email clients should only accept cloudflare.com emails if they come from an IP in the ranges 199.15.212.0/22, 173.245.48.0/20, or one of the IP ranges found in the SPF records for the other domains listed. Then if a receiving email server receives an email from <a href="#email-protected"><span class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</span></a> from the server at 185.12.80.67, that email server would check the SPF records of all the allowed domains until it finds that 185.12.80.67 is allowed because 185.12.80.0/22 is listed in mail.zendesk.com’s SPF record:</p>
+	<p>This says that email clients should only accept cloudflare.com emails if they come from an IP in the ranges 199.15.212.0/22, 173.245.48.0/20, or one of the IP ranges found in the SPF records for the other domains listed. Then if a receiving email server receives an email from [email protected] from the server at 185.12.80.67, that email server would check the SPF records of all the allowed domains until it finds that 185.12.80.67 is allowed because 185.12.80.0/22 is listed in mail.zendesk.com’s SPF record:</p>
 	<pre><code>$ dig txt mail.zendesk.com
 "v=spf1 ip4:192.161.144.0/20 ip4:185.12.80.0/22 ip4:96.46.150.192/27 ip4:174.137.46.0/24 ip4:188.172.128.0/20 ip4:216.198.0.0/18 ~all"
 </code></pre>
@@ -22,9 +22,9 @@
 </code></pre>
 	<p>There’s one more mechanism for controlling email spoofing called DMARC. DMARC sets the overarching email policy, indicates what to do if the policies are not met and sets a reporting email address for logging invalid mail attempts. Cloudflare’s DMARC record says that noncomplying emails should be sent to junk mail, 100% of messages should be subject to filtering and if policies are not met, send the report to the two email addresses below.</p>
 	<pre><code>$ dig txt _dmarc.cloudflare.com
-"v=DMARC1\; p=quarantine\; pct=100\; rua=mailto:<a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a>, mailto:<a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a>"
+"v=DMARC1\; p=quarantine\; pct=100\; rua=mailto:[email protected], mailto:[email protected]"
 </code></pre>
-	<p>When an email server receives an email from <a href="#email-protected"><span class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</span></a>, it first checks SPF, DKIM and DMARC records to know whether the email is valid, and if not, how to route it.</p>
+	<p>When an email server receives an email from [email protected], it first checks SPF, DKIM and DMARC records to know whether the email is valid, and if not, how to route it.</p>
 	<h3 id="stoppingphishybehavior">Stopping Phishy Behavior</h3>
 	<p>For known phishing campaigns using the Cloudflare platform for evil, we have a DNS trick for getting their phishing campaigns to stop. If you remember, there are three DNS records required for sending email: SPF, DKIM and DMARC. The last one is the one that defines the overarching email policy for the domain.</p>
 	<p>What we do is rewrite the DMARC record so that the overarching email policy instructs email clients to reject all emails from that sender. We also remove the other DNS record types used for sending email.</p>

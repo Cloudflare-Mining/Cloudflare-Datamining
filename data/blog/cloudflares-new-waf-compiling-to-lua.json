@@ -1,0 +1,33 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "John Graham-Cumming",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
+		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
+		"sameAs": [
+			"https://twitter.com/jgrahamc"
+		]
+	},
+	"headline": "CloudFlare&#x27;s new WAF: compiling to Lua",
+	"url": "https://blog.cloudflare.com/cloudflares-new-waf-compiling-to-lua/",
+	"datePublished": "2013-08-23T05:31:00.000Z",
+	"dateModified": "2017-04-28T21:10:58.000Z",
+	"keywords": "NGINX, WAF, Reliability",
+	"description": "We use nginx throughout our network for front-line web serving, proxying and\ntraffic filtering. In some cases, we&#x27;ve augmented the core C code of nginx with\nour own modules, but recently we&#x27;ve made a major move\n[http://blog.cloudflare.com/pushing-nginx-to-its-limit-with-lua] to using Lua in\nconjunction with nginx.\n\nOne project that&#x27;s now almost entirely written in Lua is the new CloudFlare WAF\nthat we blogged about the other day\n[http://blog.cloudflare.com/heuristics-and-rules-why-we-built-a-new",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

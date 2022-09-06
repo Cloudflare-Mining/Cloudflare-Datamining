@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew Prince",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
+			"width": 1196,
+			"height": 1190
+		},
+		"url": "https://blog.cloudflare.com/author/matthew-prince/",
+		"sameAs": [
+			"https://twitter.com/eastdakota"
+		]
+	},
+	"headline": "Ladies and Gentlemen…Cloudflare TV!",
+	"url": "https://blog.cloudflare.com/ladies-and-gentlemen-cloudflare-tv/",
+	"datePublished": "2020-06-07T20:55:33.000Z",
+	"dateModified": "2020-06-09T21:05:05.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2020/06/horizon-twitter-post.png",
+		"width": 1012,
+		"height": 506
+	},
+	"keywords": "Cloudflare TV, Video, Events, Cloudflare Stream",
+	"description": "I&#x27;m excited to announce the upcoming launch of Cloudflare TV. A 24x7 live television broadcast, streamed globally via the Cloudflare network. You can tune in to the pre-broadcast station and check out the upcoming schedule at: cloudflare.tv",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

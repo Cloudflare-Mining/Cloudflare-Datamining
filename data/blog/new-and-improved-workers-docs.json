@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "David Song",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/08/pro2.png",
+			"width": 600,
+			"height": 600
+		},
+		"url": "https://blog.cloudflare.com/author/david-song/",
+		"sameAs": [
+			"https://twitter.com/davidtsong"
+		]
+	},
+	"headline": "New and improved Workers Docs",
+	"url": "https://blog.cloudflare.com/new-and-improved-workers-docs/",
+	"datePublished": "2020-08-19T11:00:00.000Z",
+	"dateModified": "2020-08-22T00:39:29.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2020/08/image2-4.png",
+		"width": 1920,
+		"height": 1008
+	},
+	"keywords": "Cloudflare Workers, Workers Docs, Serverless",
+	"description": "Following user feedback about Workers Docs, we reorganized and reformatted all of our content. The documentation is now intuitive to navigate and the content is now easy and enjoyable to read.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

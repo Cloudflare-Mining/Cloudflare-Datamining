@@ -1,0 +1,34 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "John Graham-Cumming",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
+		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
+		"sameAs": [
+			"https://twitter.com/jgrahamc"
+		]
+	},
+	"headline": "Staying up to date with the latest protocols: SPDY/3.1",
+	"url": "https://blog.cloudflare.com/staying-up-to-date-with-the-latest-protocols-spdy-3-1/",
+	"datePublished": "2014-02-17T16:00:00.000Z",
+	"dateModified": "2018-08-22T00:42:09.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/9739472905_4dd2992b6c_c.jpg",
+	"keywords": "Google, spdy, Speed & Reliability, Claire, QUIC",
+	"description": "Back in June 2012 CloudFlare started a beta rollout of Google&#x27;s then new SPDY protocol and we took a detailed look at how SPDY makes web sites faster.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

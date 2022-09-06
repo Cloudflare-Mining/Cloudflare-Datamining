@@ -1,0 +1,34 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "John Graham-Cumming",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
+		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
+		"sameAs": [
+			"https://twitter.com/jgrahamc"
+		]
+	},
+	"headline": "Railgun v5 has landed: better, faster, lighter",
+	"url": "https://blog.cloudflare.com/railgun-v5-has-landed/",
+	"datePublished": "2015-08-31T22:31:51.000Z",
+	"dateModified": "2018-08-27T21:03:46.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2017/10/2300190277_360853ae0d_z.jpg",
+	"keywords": "Railgun, Speed & Reliability, Compression, Product News, Speed, Partners",
+	"description": "Three years ago we launched Railgun, CloudFlare&#x27;s origin network optimizer. Railgun allows us to cache the uncacheable to accelerate the connection between CloudFlare and our customers&#x27; origin servers. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

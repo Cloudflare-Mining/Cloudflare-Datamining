@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Chung-Ting Huang",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/08/Bn4bHZCORlC9ARY8Fawk_1204a20b3d1d96bba523a6a2a5fa3cd73bd4fe59240a27ad6eb8c064c6792446.jpeg",
+			"width": 600,
+			"height": 600
+		},
+		"url": "https://blog.cloudflare.com/author/chung-ting/",
+		"sameAs": []
+	},
+	"headline": "How Argo Tunnel engineering uses Argo Tunnel",
+	"url": "https://blog.cloudflare.com/how-argo-tunnel-engineering-uses-argo-tunnel/",
+	"datePublished": "2020-08-27T11:00:00.000Z",
+	"dateModified": "2022-04-26T23:22:46.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2020/08/How-Argo-Tunnel-engineering-uses-Argo-Tunnel-thumb.png",
+		"width": 1200,
+		"height": 628
+	},
+	"keywords": "Cloudflare Access, Remote Work, Cloudflare Zero Trust, Cloudflare Tunnel, Security, Zero Trust",
+	"description": "Argo Tunnel provides remote access to development environments by creating secure outbound-only connections to Cloudflare’s edge network from a resource exposing it to the Internet. That model helps protect servers and resources from being vulnerable to attack by an exposed IP address. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

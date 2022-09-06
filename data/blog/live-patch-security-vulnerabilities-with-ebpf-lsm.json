@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Frederick Lawler",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/06/Fred-Serious-Portrait-Color-smol.jpg",
+			"width": 899,
+			"height": 599
+		},
+		"url": "https://blog.cloudflare.com/author/frederick/",
+		"sameAs": []
+	},
+	"headline": "Live-patching security vulnerabilities inside the Linux kernel with eBPF Linux Security Module",
+	"url": "https://blog.cloudflare.com/live-patch-security-vulnerabilities-with-ebpf-lsm/",
+	"datePublished": "2022-06-29T11:45:00.000Z",
+	"dateModified": "2022-08-15T10:11:08.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/06/Linux---Warp.png",
+		"width": 1894,
+		"height": 947
+	},
+	"keywords": "Linux, Security, Deep Dive, Programming",
+	"description": "Learn how to patch Linux security vulnerabilities without rebooting the hardware and how to tighten the security of your Linux operating system with eBPF Linux Security Module",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

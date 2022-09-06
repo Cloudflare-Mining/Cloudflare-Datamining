@@ -1,0 +1,32 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Julien Desgats",
+		"image": "http://blog.cloudflare.com/content/images/2017/06/profile-square-small.jpg",
+		"url": "https://blog.cloudflare.com/author/julien-desgats/",
+		"sameAs": []
+	},
+	"headline": "How we built rate limiting capable of scaling to millions of domains",
+	"url": "https://blog.cloudflare.com/counting-things-a-lot-of-different-things/",
+	"datePublished": "2017-06-07T12:47:51.000Z",
+	"dateModified": "2018-08-28T23:24:53.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2017/06/14247536929_1a6315311d_z-1.jpg",
+	"keywords": "Attacks, Rate Limiting, Optimization, Network, Security, Reliability",
+	"description": "Back in April we announced Rate Limiting of requests for every Cloudflare customer. Being able to rate limit at the edge of the network has many advantages: it’s easier for customers to set up and operate, their origin servers are not bothered by excessive traffic or layer 7 attacks.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

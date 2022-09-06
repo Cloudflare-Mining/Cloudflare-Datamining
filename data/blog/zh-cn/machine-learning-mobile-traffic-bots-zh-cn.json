@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Arushi Shah",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/03/IMG_0310.jpg",
+			"width": 2000,
+			"height": 2000
+		},
+		"url": "https://blog.cloudflare.com/author/arushi/",
+		"sameAs": []
+	},
+	"headline": "发展机器学习，拦截移动端机器人",
+	"url": "https://blog.cloudflare.com/zh-cn/machine-learning-mobile-traffic-bots-zh-cn/",
+	"datePublished": "2022-03-17T16:39:00.000Z",
+	"dateModified": "2022-06-14T05:12:15.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/06/image2-61.png",
+		"width": 1801,
+		"height": 1013
+	},
+	"keywords": "简体中文 (CN), Security Week (CN), 机器学习",
+	"description": "利用来自已验证的移动应用流量的额外数据，我们的最新模型可以理解我们针对移动应用流量所发现的独特模式和信号，从而识别源自这种类型的流量的有效用户请求",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

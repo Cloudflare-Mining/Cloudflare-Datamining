@@ -1,0 +1,32 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Vlad Krasnov",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/165e069.jpg",
+		"url": "https://blog.cloudflare.com/author/vlad-krasnov/",
+		"sameAs": []
+	},
+	"headline": "AES-CBC is going the way of the dodo",
+	"url": "https://blog.cloudflare.com/aes-cbc-going-the-way-of-the-dodo/",
+	"datePublished": "2017-04-21T16:44:29.000Z",
+	"dateModified": "2018-08-28T22:18:03.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/153059715_fad3b8be43_z.jpg",
+	"keywords": "RSA, Security",
+	"description": "A little over a year ago, Nick Sullivan talked about the beginning of the end for AES-CBC cipher suites, following a plethora of attacks on this cipher mode.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

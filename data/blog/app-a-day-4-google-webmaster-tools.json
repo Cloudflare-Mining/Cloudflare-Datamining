@@ -1,0 +1,34 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "John Roberts",
+		"image": "http://blog.cloudflare.com/content/images/2018/02/john.jpg",
+		"url": "https://blog.cloudflare.com/author/john-roberts/",
+		"sameAs": [
+			"https://twitter.com/pencoyd"
+		]
+	},
+	"headline": "App a Day #4: Google Webmaster Tools",
+	"url": "https://blog.cloudflare.com/app-a-day-4-google-webmaster-tools/",
+	"datePublished": "2011-06-05T23:02:00.000Z",
+	"dateModified": "2020-08-14T15:31:03.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/01/gwt-verify.png.scaled500.png",
+	"keywords": "Cloudflare Apps, Google, DNS",
+	"description": "Google Webmaster Tools collects several utilities from the search giant that make a site owner&#x27;s life better. You can see how visible your site is to Google&#x27;s crawlers, learn about links to your site, provide a sitemap, and generally confirm your site is operating at full blast for search customers.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

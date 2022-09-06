@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew Prince",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
+			"width": 1196,
+			"height": 1190
+		},
+		"url": "https://blog.cloudflare.com/author/matthew-prince/",
+		"sameAs": [
+			"https://twitter.com/eastdakota"
+		]
+	},
+	"headline": "Introducing Page Rules: Fine Grained Control over CloudFlare&#x27;s Features",
+	"url": "https://blog.cloudflare.com/introducing-pagerules-fine-grained-feature-co/",
+	"datePublished": "2012-02-20T23:57:00.000Z",
+	"dateModified": "2018-02-01T23:57:47.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/02/page_rules_menu_highlighted.png.scaled500.png",
+	"keywords": "Product News, Page Rules, DNS, Speed & Reliability, Reliability",
+	"description": "CloudFlare is provisioned by DNS. That means that, from the beginning, you&#x27;ve been able to turn CloudFlare on or off on a subdomain level. From the CloudFlare DNS Manager. Often, however, users have wanted finer-grained control. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

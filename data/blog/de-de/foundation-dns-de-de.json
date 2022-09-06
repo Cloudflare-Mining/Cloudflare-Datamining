@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Hannes Gerhart",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/09/Profile.jpg",
+			"width": 600,
+			"height": 600
+		},
+		"url": "https://blog.cloudflare.com/author/hannes/",
+		"sameAs": [
+			"https://linkedin.com/in/hannesgerhart"
+		]
+	},
+	"headline": "Wir präsentieren Foundation DNS, das neue erstklassige DNS-Angebot von Cloudflare",
+	"url": "https://blog.cloudflare.com/de-de/foundation-dns-de-de/",
+	"datePublished": "2021-12-08T18:47:00.000Z",
+	"dateModified": "2022-01-10T18:57:12.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/01/image4-9-3.png",
+		"width": 1801,
+		"height": 1013
+	},
+	"keywords": "CIO Week (DE), Deutsch, Produktneuigkeiten, DNS (DE), Foundation DNS (DE)",
+	"description": "Heute stellen wir Foundation DNS vor, das neue Premium-DNS-Angebot von\nCloudflare, das unvergleichliche Zuverlässigkeit und höchste Performance bietet\nund in der Lage ist, die komplexesten Anforderungen von Infrastrukturteams zu\nerfüllen.\n\nReden wir zunächst einmal übers Geld\nWenn Sie einen DNS-Vertrag für ein Unternehmen abschließen, verlangen\nDNS-Anbieter in der Regel drei Angaben von Ihnen, um ein Angebot zu erstellen:\n\n * Anzahl an Zonen\n * Gesamte DNS-Abfragen pro Monat\n * Gesamte DNS-Eintr",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

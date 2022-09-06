@@ -1,0 +1,34 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Jon Levine",
+		"image": "http://blog.cloudflare.com/content/images/2018/04/prof-crop.jpg",
+		"url": "https://blog.cloudflare.com/author/jpl/",
+		"sameAs": [
+			"https://twitter.com/jplevine"
+		]
+	},
+	"headline": "Lancement de l&#x27;API Cache pour Workers : contrôlez la mise en cache de votre contenu",
+	"url": "https://blog.cloudflare.com/fr-fr/introducing-the-workers-cache-api-giving-you-control-over-how-your-content-is-cached-fr-fr/",
+	"datePublished": "2019-01-25T15:33:00.000Z",
+	"dateModified": "2021-01-27T01:23:50.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2019/04/caching@3x-1.png",
+	"keywords": "Français, Sans serveur, Développeurs, Cloudflare Workers (FR), JavaScript (FR), Cache (FR), Rapidité et fiabilité",
+	"description": "Chez Cloudflare, notre objectif est de rendre Internet plus rapide et plus sûr pour tous. Nous y parvenons notamment au moyen de la mise en cache : nous conservons une copie du contenu de nos clients dans nos 165 datacenters répartis dans le monde entier.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

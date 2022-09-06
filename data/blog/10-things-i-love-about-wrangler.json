@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Sunil Pai",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/11/blog-avatar.png",
+			"width": 500,
+			"height": 500
+		},
+		"url": "https://blog.cloudflare.com/author/sunil/",
+		"sameAs": [
+			"https://twitter.com/threepointone"
+		]
+	},
+	"headline": "10 things I love about Wrangler v2.0",
+	"url": "https://blog.cloudflare.com/10-things-i-love-about-wrangler/",
+	"datePublished": "2022-05-09T13:00:07.000Z",
+	"dateModified": "2022-05-09T23:31:34.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/05/image4-1.png",
+		"width": 1800,
+		"height": 1013
+	},
+	"keywords": "Platform Week, Wrangler, Developers",
+	"description": "We are proud to announce that Wrangler goes public today for general usage, and can’t wait to see what people build with it",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,40 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Nick Sullivan",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/09/BJ4NgXVj_400x400.jpg",
+			"width": 400,
+			"height": 400
+		},
+		"url": "https://blog.cloudflare.com/author/nick-sullivan/",
+		"sameAs": [
+			"https://crypto.dance",
+			"https://twitter.com/grittygrease"
+		]
+	},
+	"headline": "How we built Origin CA: Web Crypto",
+	"url": "https://blog.cloudflare.com/how-we-built-origin-ca-web-crypto/",
+	"datePublished": "2016-05-10T15:21:42.000Z",
+	"dateModified": "2018-08-27T20:26:41.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/illustrations-ssl.png",
+	"keywords": "Certificate Authority, JavaScript, Crypto, API, Security",
+	"description": "At CloudFlare we strive to combine features that are simple, secure, and backed by solid technology. The Origin CA is a great example of this. You no longer need to go to a third-party certificate authority to protect the connection between CloudFlare and your origin server.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew Prince",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
+			"width": 1196,
+			"height": 1190
+		},
+		"url": "https://blog.cloudflare.com/author/matthew-prince/",
+		"sameAs": [
+			"https://twitter.com/eastdakota"
+		]
+	},
+	"headline": "Happy IPv6 Day: Usage On the Rise, Attacks Too",
+	"url": "https://blog.cloudflare.com/ipv6-day-usage-attacks-rise/",
+	"datePublished": "2013-06-06T06:00:00.000Z",
+	"dateModified": "2020-08-20T23:43:13.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/IPv6_Attacks.jpg",
+	"keywords": "IPv6, Attacks, Reliability, IPv4, World IPv6 Day",
+	"description": "June 6th is known as World IPv6 Day so we thought it was a good time to look at the trends in IPv6 usage across CloudFlare&#x27;s network. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

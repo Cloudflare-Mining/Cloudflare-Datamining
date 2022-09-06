@@ -1,0 +1,45 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Kyle Krum",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2020/10/KylePhoto.jpg",
+			"width": 2000,
+			"height": 2000
+		},
+		"url": "https://blog.cloudflare.com/author/kyle-krum/",
+		"sameAs": [
+			"https://www.linkedin.com/in/kylekrum/",
+			"https://twitter.com/KyleKrum"
+		]
+	},
+	"headline": "Cloudflare Agent - シームレスな大規模デプロイメント",
+	"url": "https://blog.cloudflare.com/ja-jp/cloudflare-agent-seamless-deployment-at-scale-ja-jp/",
+	"datePublished": "2021-12-10T13:58:00.000Z",
+	"dateModified": "2021-12-30T21:12:20.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/12/image1-50-2.png",
+		"width": 1801,
+		"height": 1013
+	},
+	"keywords": "CIO Week (JP), Cloudflare Agent (JP), 日本語, 製品ニュース (JP)",
+	"description": "1年前、当社がデスクトップ向けWARPを発売し、誰でもインターネットへの高速でプライベートなオンランプが使用できるようになりました。ビジネスのお客様の場合、ITおよびセキュリティ管理者が同じエージェントを使用して",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

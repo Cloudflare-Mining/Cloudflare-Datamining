@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Sam Rhea",
+		"image": "http://blog.cloudflare.com/content/images/2018/07/photo-for-profile.jpg",
+		"url": "https://blog.cloudflare.com/author/sam/",
+		"sameAs": [
+			"https://twitter.com/LakeAustinBlvd"
+		]
+	},
+	"headline": "Multi-SSO and Cloudflare Access: Adding LinkedIn and GitHub Teams",
+	"url": "https://blog.cloudflare.com/multi-sso-and-cloudflare-access-adding-linkedin-and-github-teams/",
+	"datePublished": "2020-02-20T12:38:08.000Z",
+	"dateModified": "2020-02-22T00:09:33.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2020/02/federated-1-1.png",
+		"width": 934,
+		"height": 416
+	},
+	"keywords": "Cloudflare Access, Cloudflare Zero Trust",
+	"description": "We are excited to announce two new integrations that make it even easier for organizations to work securely with third parties. Starting today, customers can now add LinkedIn and GitHub Teams as login methods alongside their corporate SSO.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

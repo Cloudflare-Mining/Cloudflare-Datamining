@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Omer Yoachimik",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/Omer-1.png",
+			"width": 773,
+			"height": 653
+		},
+		"url": "https://blog.cloudflare.com/author/omer/",
+		"sameAs": [
+			"https://twitter.com/OmerYoahimik"
+		]
+	},
+	"headline": "2022 年第二季度 DDoS 攻擊趨勢",
+	"url": "https://blog.cloudflare.com/zh-tw/ddos-attack-trends-for-2022-q2-zh-tw/",
+	"datePublished": "2022-07-06T12:55:00.000Z",
+	"dateModified": "2022-07-08T13:04:11.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/07/image22-2-4.png",
+		"width": 1801,
+		"height": 1013
+	},
+	"keywords": "DDoS (TW), DDoS 報告, 攻撃, 趨勢 (TW), Cloudflare Radar (TW), 贖金攻擊 (TW), 勒索型 DDoS, 烏克蘭, 俄羅斯, BitTorrent (TW), CHARGEN (TW), TeeWorlds (TW), 繁體中文",
+	"description": "歡迎閱讀我們的 2022 年第二季 DDoS 報告。本報告包括有關 DDoS 威脅情勢的深入解析與趨勢，這些資訊從全球 Cloudflare 網路中觀察所得。Radar 上也會提供本報告的互動版本。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

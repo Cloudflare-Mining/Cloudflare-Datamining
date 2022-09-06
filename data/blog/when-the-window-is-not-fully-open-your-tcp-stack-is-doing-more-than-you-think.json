@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Marek Majkowski",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/b5967d6c687939594adb6992723d0529.jpeg",
+		"url": "https://blog.cloudflare.com/author/marek-majkowski/",
+		"sameAs": [
+			"https://twitter.com/majek04"
+		]
+	},
+	"headline": "When the window is not fully open, your TCP stack is doing more than you think",
+	"url": "https://blog.cloudflare.com/when-the-window-is-not-fully-open-your-tcp-stack-is-doing-more-than-you-think/",
+	"datePublished": "2022-07-26T13:00:00.000Z",
+	"dateModified": "2022-08-25T11:04:32.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/07/image1-11.png",
+		"width": 1000,
+		"height": 600
+	},
+	"keywords": "Linux, TCP",
+	"description": "In this blog post I&#x27;ll share my journey deep into the Linux networking stack, trying to understand the memory and window management of the receiving side of a TCP connection",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

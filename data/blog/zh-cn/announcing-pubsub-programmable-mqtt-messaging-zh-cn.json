@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matt Silverlock",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/08/profile-1500px-square.jpeg",
+			"width": 1500,
+			"height": 1500
+		},
+		"url": "https://blog.cloudflare.com/author/silverlock/",
+		"sameAs": [
+			"https://twitter.com/elithrar"
+		]
+	},
+	"headline": "基于 MQTT 的可编程消息传递",
+	"url": "https://blog.cloudflare.com/zh-cn/announcing-pubsub-programmable-mqtt-messaging-zh-cn/",
+	"datePublished": "2022-05-12T12:59:00.000Z",
+	"dateModified": "2022-05-13T19:34:25.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/05/image1-26-3.png",
+		"width": 1920,
+		"height": 1013
+	},
+	"keywords": "Platform Week (CN), 产品新闻, 简体中文 (CN), MQTT (CN)",
+	"description": "我们很高兴地推出 Cloudflare Pub/Sub 的私人测试版，这是一个可编程消息中枢，建立在当今数千万现有设备支持的普遍和行业标准的 MQTT 协议基础上",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

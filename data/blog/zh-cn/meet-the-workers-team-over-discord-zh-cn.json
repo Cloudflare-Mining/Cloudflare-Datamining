@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Albert Zhao",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/01/Ghost-Blog-DP.jpg",
+			"width": 398,
+			"height": 366
+		},
+		"url": "https://blog.cloudflare.com/author/albert/",
+		"sameAs": []
+	},
+	"headline": "和 Workers 团队在 Discord 上会面",
+	"url": "https://blog.cloudflare.com/zh-cn/meet-the-workers-team-over-discord-zh-cn/",
+	"datePublished": "2021-01-29T14:00:00.000Z",
+	"dateModified": "2021-02-23T00:37:32.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/02/Discord-Cloudflare-blog-home-5-1.png",
+		"width": 1600,
+		"height": 852
+	},
+	"keywords": "Discord (CN), Cloudflare Workers (CN)",
+	"description": "Cloudflare 的 Workers 团队很兴奋地宣布我们的 Discord 频道开通!你通过访问这里即可参加。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Omer Yoachimik",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/Omer-1.png",
+			"width": 773,
+			"height": 653
+		},
+		"url": "https://blog.cloudflare.com/author/omer/",
+		"sameAs": [
+			"https://twitter.com/OmerYoahimik"
+		]
+	},
+	"headline": "Cloudflare blocks 15M rps HTTPS DDoS attack",
+	"url": "https://blog.cloudflare.com/15m-rps-ddos-attack/",
+	"datePublished": "2022-04-27T14:02:36.000Z",
+	"dateModified": "2022-07-29T18:55:52.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/04/1109-1-1.png",
+		"width": 1200,
+		"height": 675
+	},
+	"keywords": "DDoS, Deep Dive, Attacks, Speed & Reliability",
+	"description": "Earlier this month, Cloudflare’s systems automatically detected and mitigated a 15.3 million request-per-second (rps) DDoS attack — one of the largest HTTPS DDoS attacks on record",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

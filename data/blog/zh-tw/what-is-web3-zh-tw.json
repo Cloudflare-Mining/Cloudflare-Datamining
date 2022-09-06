@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Thibault Meunier",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2020/12/profile_picture.png",
+			"width": 224,
+			"height": 224
+		},
+		"url": "https://blog.cloudflare.com/author/thibault/",
+		"sameAs": [
+			"https://twitter.com/thibmeu"
+		]
+	},
+	"headline": "Web3 — 分散式網路的願景",
+	"url": "https://blog.cloudflare.com/zh-tw/what-is-web3-zh-tw/",
+	"datePublished": "2021-10-01T12:59:00.000Z",
+	"dateModified": "2021-10-14T22:41:47.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/10/Solar-1.png",
+		"width": 1200,
+		"height": 675
+	},
+	"keywords": "Web3 (TW), 生日週 (TW), 研究 (TW), 隱私 (TW)",
+	"description": "這篇部落格中，我們會在網路發展的脈絡下說明 Web3，以及 Cloudflare 將如何協助提供支援。\n",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Marek Majkowski",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/b5967d6c687939594adb6992723d0529.jpeg",
+		"url": "https://blog.cloudflare.com/author/marek-majkowski/",
+		"sameAs": [
+			"https://twitter.com/majek04"
+		]
+	},
+	"headline": "A gentle introduction to Linux Kernel fuzzing",
+	"url": "https://blog.cloudflare.com/a-gentle-introduction-to-linux-kernel-fuzzing/",
+	"datePublished": "2019-07-10T13:07:21.000Z",
+	"dateModified": "2019-07-15T18:46:20.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2019/07/Screenshot-from-2019-07-10-11-44-50-1.png",
+		"width": 944,
+		"height": 598
+	},
+	"keywords": "Linux, Kernel, Developers, Deep Dive",
+	"description": "For some time I’ve wanted to play with coverage-guided fuzzing. I decided to have a go at the Linux Kernel netlink machinery.  It&#x27;s a good target: it&#x27;s an obscure part of kernel, and it&#x27;s relatively easy to automatically craft valid messages.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

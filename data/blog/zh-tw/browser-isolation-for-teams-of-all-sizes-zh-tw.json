@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Tim Obezuk",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/05/0-1.jpeg",
+			"width": 200,
+			"height": 200
+		},
+		"url": "https://blog.cloudflare.com/author/tim-obezuk/",
+		"sameAs": [
+			"https://twitter.com/obezuk"
+		]
+	},
+	"headline": "適合所有規模的團隊的瀏覽器隔離",
+	"url": "https://blog.cloudflare.com/zh-tw/browser-isolation-for-teams-of-all-sizes-zh-tw/",
+	"datePublished": "2021-03-23T13:00:00.000Z",
+	"dateModified": "2021-03-31T19:36:59.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/03/Browser-Isolation-OG-body-8.png",
+		"width": 1252,
+		"height": 669
+	},
+	"keywords": "繁體中文 (TW), Cloudflare One (TW), 產品新聞 (TW)",
+	"description": "每一個連入網際網路的組織都依靠 Web 瀏覽器來經營業務：接受交易、與客戶互動，或處理敏感性資料。點選連結這樣的動作會觸發 Web 瀏覽器在本機裝置上下載並執行一大堆未知程式碼。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

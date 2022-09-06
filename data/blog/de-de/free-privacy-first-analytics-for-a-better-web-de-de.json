@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Jon Levine",
+		"image": "http://blog.cloudflare.com/content/images/2018/04/prof-crop.jpg",
+		"url": "https://blog.cloudflare.com/author/jpl/",
+		"sameAs": [
+			"https://twitter.com/jplevine"
+		]
+	},
+	"headline": "Kostenlose, datenschutzgerechte Analytics („Privacy First“) für ein besseres Web",
+	"url": "https://blog.cloudflare.com/de-de/free-privacy-first-analytics-for-a-better-web-de-de/",
+	"datePublished": "2020-09-29T13:02:00.000Z",
+	"dateModified": "2021-01-22T18:27:36.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/01/Cloudflare-Web-Analytics.png",
+		"width": 2184,
+		"height": 1415
+	},
+	"keywords": "Deutsch, Produktneuigkeiten, Analytik (DE), Datenschutz (DE), Geburtstagswoche",
+	"description": "Jeder, der eine Website besitzt, muss einige grundlegende Informationen über seine Website kennen: Welche Seiten besuchen Nutzer? Wo befinden sie sich? Welche anderen Websites haben Traffic an meine Website gesendet?",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

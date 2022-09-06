@@ -1,0 +1,33 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Sam Rhea",
+		"image": "http://blog.cloudflare.com/content/images/2018/07/photo-for-profile.jpg",
+		"url": "https://blog.cloudflare.com/author/sam/",
+		"sameAs": [
+			"https://twitter.com/LakeAustinBlvd"
+		]
+	},
+	"headline": "Cloudflare Access: Sharing our single-sign on plugin for Atlassian",
+	"url": "https://blog.cloudflare.com/cloudflare-access-sharing-our-single-sign-on-plugin-for-atlassian/",
+	"datePublished": "2018-10-02T18:56:34.000Z",
+	"dateModified": "2018-10-02T19:00:11.000Z",
+	"keywords": "Product News, Security, Cloudflare Access, Plugins",
+	"description": "Here at Cloudflare, we rely on a set of productivity tools built by Atlassian, including Jira and Confluence. We secure them with Cloudflare Access. In the past, when our team members wanted to reach those applications, they first logged in with our identity provider credentials to pass Access.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

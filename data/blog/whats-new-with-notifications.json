@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Natasha Wissmann",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/05/IMG-1568.jpg",
+			"width": 600,
+			"height": 600
+		},
+		"url": "https://blog.cloudflare.com/author/natasha/",
+		"sameAs": []
+	},
+	"headline": "What’s new with Notifications?",
+	"url": "https://blog.cloudflare.com/whats-new-with-notifications/",
+	"datePublished": "2021-12-11T13:59:18.000Z",
+	"dateModified": "2021-12-31T04:31:10.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/12/image1-63.png",
+		"width": 1331,
+		"height": 657
+	},
+	"keywords": "CIO Week, Notifications, Alerts, Webhooks, Emails",
+	"description": "We know that notifications are incredibly important to our customers. Cloudflare sits in between your Internet property and the rest of the world. When something goes wrong, you want to know right away because it could have a huge impact on your end users.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

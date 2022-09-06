@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Reid Tatoris",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/03/reid-headshot.jpeg",
+			"width": 960,
+			"height": 960
+		},
+		"url": "https://blog.cloudflare.com/author/reid/",
+		"sameAs": [
+			"https://twitter.com/reidtatoris"
+		]
+	},
+	"headline": "Private Access Tokens: eliminating CAPTCHAs on iPhones and Macs with open standards",
+	"url": "https://blog.cloudflare.com/eliminating-captchas-on-iphones-and-macs-using-new-standard/",
+	"datePublished": "2022-06-08T16:01:46.000Z",
+	"dateModified": "2022-06-09T10:50:38.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/06/Private-Authentication-Token-open-source-standard-to-eliminate-CAPTCHAs-1.png",
+		"width": 1600,
+		"height": 900
+	},
+	"keywords": "Product News, Partners, CAPTCHA, Security",
+	"description": "Today we’re announcing Private Access Tokens, a completely invisible, private way to validate that real users are visiting your site",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Guest Author",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/10/Screen-Shot-2019-10-09-at-11.21.59-AM.png",
+			"width": 362,
+			"height": 364
+		},
+		"url": "https://blog.cloudflare.com/author/guest-author/",
+		"sameAs": []
+	},
+	"headline": "Mapping Factorio with Leaflet",
+	"url": "https://blog.cloudflare.com/mapping-factorio-with-leaflet/",
+	"datePublished": "2018-10-10T14:09:31.000Z",
+	"dateModified": "2018-10-10T14:09:31.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2018/10/Screen-Shot-2018-10-03-at-5.25.28-PM-1.png",
+		"width": 1248,
+		"height": 704
+	},
+	"keywords": "Cloudflare Workers, Serverless, Developers, JavaScript",
+	"description": "Factorio is a game about building and maintaining factories. Players mine resources, research new technology and automate production. Resources move along the production line through multiple means of transportation such as belts and trains. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

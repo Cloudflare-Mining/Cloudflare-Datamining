@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew Prince",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
+			"width": 1196,
+			"height": 1190
+		},
+		"url": "https://blog.cloudflare.com/author/matthew-prince/",
+		"sameAs": [
+			"https://twitter.com/eastdakota"
+		]
+	},
+	"headline": "What&#x27;s the story behind the names of CloudFlare&#x27;s name servers?",
+	"url": "https://blog.cloudflare.com/whats-the-story-behind-the-names-of-cloudflares-name-servers/",
+	"datePublished": "2013-08-06T14:40:00.000Z",
+	"dateModified": "2020-08-17T17:37:18.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2018/08/ninja-matt.png",
+		"width": 1600,
+		"height": 1600
+	},
+	"keywords": "Our History, DNS, Ninjas",
+	"description": "We&#x27;re going to do a series of blog posts about some of the inner workings of CloudFlare. One of the questions we get often is what the names of our name servers mean. Here&#x27;s the story.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

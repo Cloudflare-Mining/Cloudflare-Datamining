@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Kabir Sikand",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/05/0.jpeg",
+			"width": 800,
+			"height": 800
+		},
+		"url": "https://blog.cloudflare.com/author/kabir/",
+		"sameAs": [
+			"https://twitter.com/kabirsikand"
+		]
+	},
+	"headline": "Service Bindings are generally available, with efficient pricing",
+	"url": "https://blog.cloudflare.com/service-bindings-ga/",
+	"datePublished": "2022-05-10T13:01:16.000Z",
+	"dateModified": "2022-05-10T21:10:41.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/05/image5-2.png",
+		"width": 1801,
+		"height": 1013
+	},
+	"keywords": "Platform Week, Product News, API, Cloudflare Workers, Serverless, Service Bindings",
+	"description": "Service bindings are an API that facilitate Worker-to-Worker communication. You can invoke other Workers directly from your code; making it possible to communicate with shared services. We’ll also make it cost-efficient to run multiple Workers",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

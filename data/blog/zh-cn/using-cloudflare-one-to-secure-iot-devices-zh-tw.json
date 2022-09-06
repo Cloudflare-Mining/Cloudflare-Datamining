@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Molly Cinnamon",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/08/Screenshot-2021-08-10-at-6.56.05-PM.png",
+			"width": 1170,
+			"height": 892
+		},
+		"url": "https://blog.cloudflare.com/author/molly/",
+		"sameAs": []
+	},
+	"headline": "運用 Cloudflare One 保護 IoT 裝置",
+	"url": "https://blog.cloudflare.com/zh-cn/using-cloudflare-one-to-secure-iot-devices-zh-tw/",
+	"datePublished": "2022-03-18T21:03:00.000Z",
+	"dateModified": "2022-06-13T16:02:00.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/06/Magic-IoT-6.png",
+		"width": 1600,
+		"height": 900
+	},
+	"keywords": "Cloudflare One (TW), Cloudflare Zero Trust (TW), Zero Trust (TW), 產品新聞 (TW), IoT (TW), 防守, 繁體中文 (TW)",
+	"description": "我們曾自問：我們是否能夠運用自家的產品來保護 IoT 裝置 — 即使是在與生產系統相同的網路上，確保隔離這些不安全裝置導致的任何漏洞？藉助 Cloudflare One，答案是肯定的",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew Prince",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
+			"width": 1196,
+			"height": 1190
+		},
+		"url": "https://blog.cloudflare.com/author/matthew-prince/",
+		"sameAs": [
+			"https://twitter.com/eastdakota"
+		]
+	},
+	"headline": "Why Cloudflare Bought Zaraz",
+	"url": "https://blog.cloudflare.com/why-cloudflare-bought-zaraz/",
+	"datePublished": "2021-12-08T14:02:00.000Z",
+	"dateModified": "2021-12-29T01:50:24.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/12/image1-31.png",
+		"width": 1801,
+		"height": 1013
+	},
+	"keywords": "CIO Week",
+	"description": "Today we&#x27;re excited to announce that Cloudflare has acquired Zaraz. The Zaraz value proposition aligns with Cloudflare&#x27;s mission. They aim to make the web more secure, more reliable, and faster. And they built their solution on Cloudflare Workers.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

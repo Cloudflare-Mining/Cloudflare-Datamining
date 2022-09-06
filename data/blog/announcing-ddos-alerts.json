@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Omer Yoachimik",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/Omer-1.png",
+			"width": 773,
+			"height": 653
+		},
+		"url": "https://blog.cloudflare.com/author/omer/",
+		"sameAs": [
+			"https://twitter.com/OmerYoahimik"
+		]
+	},
+	"headline": "Know When You’ve Been DDoS’d",
+	"url": "https://blog.cloudflare.com/announcing-ddos-alerts/",
+	"datePublished": "2020-10-05T11:00:00.000Z",
+	"dateModified": "2022-03-02T04:54:27.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2020/10/DDoS-Alerts@2x.png",
+		"width": 1600,
+		"height": 783
+	},
+	"keywords": "DDoS, Product News, PagerDuty, Attacks",
+	"description": "Today we’re announcing the availability of DDoS attack alerts. The alerts are available for free for all Cloudflare’s customers on paid plans. Learn how to create an alert.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

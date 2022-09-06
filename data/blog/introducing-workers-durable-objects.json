@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Kenton Varda",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/08/avatar-github.jpg",
+			"width": 460,
+			"height": 460
+		},
+		"url": "https://blog.cloudflare.com/author/kenton-varda/",
+		"sameAs": [
+			"https://twitter.com/kentonvarda"
+		]
+	},
+	"headline": "Workers Durable Objects Beta:\nA New Approach to Stateful Serverless",
+	"url": "https://blog.cloudflare.com/introducing-workers-durable-objects/",
+	"datePublished": "2020-09-28T13:00:00.000Z",
+	"dateModified": "2020-11-10T12:52:59.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2020/09/Birthday-Week-OG-images_Object_Workers.png",
+		"width": 3334,
+		"height": 1668
+	},
+	"keywords": "Cloudflare Workers, Product News, Birthday Week, Serverless",
+	"description": "Durable Objects provide a truly serverless approach to storage and state: consistent, low-latency, distributed, yet effortless to maintain and scale. They also enable coordination and real-time collaboration between clients.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

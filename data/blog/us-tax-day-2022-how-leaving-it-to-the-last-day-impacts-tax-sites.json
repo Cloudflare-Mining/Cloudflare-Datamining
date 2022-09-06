@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "João Tomé",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/V0x3WKfJ_400x400-1.jpeg",
+			"width": 400,
+			"height": 400
+		},
+		"url": "https://blog.cloudflare.com/author/joao-tome/",
+		"sameAs": [
+			"https://twitter.com/emot"
+		]
+	},
+	"headline": "US Tax Day 2022. How leaving it to the last day impacts tax sites",
+	"url": "https://blog.cloudflare.com/us-tax-day-2022-how-leaving-it-to-the-last-day-impacts-tax-sites/",
+	"datePublished": "2022-04-20T14:03:21.000Z",
+	"dateModified": "2022-07-11T18:24:41.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/04/image1-14.png",
+		"width": 1800,
+		"height": 1013
+	},
+	"keywords": "Cloudflare Radar, Internet Traffic, Trends",
+	"description": "How tax related websites were impacted by the Tax Day 2022 (the April 18 deadline to fill federal and state taxes)? With the highest growth in April",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

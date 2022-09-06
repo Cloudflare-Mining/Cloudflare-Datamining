@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Erwin van der Koogh",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/04/twitter-profile-photo.jpeg",
+			"width": 400,
+			"height": 400
+		},
+		"url": "https://blog.cloudflare.com/author/erwin/",
+		"sameAs": [
+			"https://twitter.com/evanderkoogh"
+		]
+	},
+	"headline": "開発者スポットライト：AirtableとCloudflare Workersでワークフローを自動化",
+	"url": "https://blog.cloudflare.com/ja-jp/developer-spotlight-jacob-hands-tritails-ja-jp/",
+	"datePublished": "2021-11-18T14:00:00.000Z",
+	"dateModified": "2021-12-30T00:41:54.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/12/image1-47-2.png",
+		"width": 1800,
+		"height": 1012
+	},
+	"keywords": "Full Stack Week (JP), Cloudflare Workers (JP), 日本語, 開発者スポットライト (JP)",
+	"description": "次のDeveloper Spotlightは私のもう一つのお気に入りです。今日はJacob Hands氏の投稿です。Jacob氏は生鮮品である肉のオンラインストアTriTails Premium Beefを経営しています。そのため、彼は出荷に関する独特の問題を多",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

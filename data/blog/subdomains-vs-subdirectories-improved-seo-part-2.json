@@ -1,0 +1,32 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Michael Pinter",
+		"image": "http://blog.cloudflare.com/content/images/2018/11/g5QoJmQKS5iJdbcxHJXg_1204a20b3d1d96bba523a6a2a5fa3cd73bd4fe59240a27ad6eb8c064c6792446.png",
+		"url": "https://blog.cloudflare.com/author/michael-pinter/",
+		"sameAs": []
+	},
+	"headline": "Subdomain vs. Subdirectory Strategies – Improving SEO Pt 2",
+	"url": "https://blog.cloudflare.com/subdomains-vs-subdirectories-improved-seo-part-2/",
+	"datePublished": "2019-02-15T17:09:26.000Z",
+	"dateModified": "2019-02-22T01:12:13.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2019/02/rawpixel-620230-unsplash.jpg",
+	"keywords": "Cloudflare Workers, SEO, NGINX, Serverless",
+	"description": "In Part 1, the merits and tradeoffs of subdirectories and subdomains were discussed.  The subdirectory strategy is typically superior to subdomains because subdomains suffer from keyword and backlink dilution. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

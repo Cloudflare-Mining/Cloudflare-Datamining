@@ -1,0 +1,45 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Celso Martinho",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Celso-Martinho.png",
+			"width": 486,
+			"height": 488
+		},
+		"url": "https://blog.cloudflare.com/author/celso/",
+		"sameAs": [
+			"https://celso.io/",
+			"https://twitter.com/celso"
+		]
+	},
+	"headline": "了解 Facebook 如何从互联网上消失",
+	"url": "https://blog.cloudflare.com/zh-cn/october-2021-facebook-outage-zh-cn/",
+	"datePublished": "2021-10-04T21:08:00.000Z",
+	"dateModified": "2021-10-26T21:45:18.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/10/Screen-Shot-2021-10-26-at-2.44.18-PM-1.png",
+		"width": 896,
+		"height": 466
+	},
+	"keywords": "发展趋势, DNS (CN), Facebook (CN), BGP (CN), 简体中文 (CN)",
+	"description": "今天的 UTC 时间 15:51，我们打开一个标题为 “Facebook DNS 查询返回 SERVFAIL”的内部事件，因为我们担心自己的 DNS 解析服务 1.1.1.1 出了问题。但当我们准备在公共状态页发布信息时，我们意识到还有更严重的事情在发生。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

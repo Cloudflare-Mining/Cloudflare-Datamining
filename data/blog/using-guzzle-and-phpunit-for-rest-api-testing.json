@@ -1,0 +1,34 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Junade Ali",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/G1VwuaxB.jpg",
+		"url": "https://blog.cloudflare.com/author/junade-ali/",
+		"sameAs": [
+			"https://twitter.com/IcyApril"
+		]
+	},
+	"headline": "Using Guzzle and PHPUnit for REST API Testing",
+	"url": "https://blog.cloudflare.com/using-guzzle-and-phpunit-for-rest-api-testing/",
+	"datePublished": "2016-12-28T14:10:46.000Z",
+	"dateModified": "2018-08-28T20:54:56.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2016/12/IMG_2787-1.jpg",
+	"keywords": "php, Testing",
+	"description": "APIs are increasingly becoming the backbone of the modern internet - whether you&#x27;re ordering food from an app on your phone or browsing a blog using a modern JavaScript framework, chances are those requests are flowing through an API. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

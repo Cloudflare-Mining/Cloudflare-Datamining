@@ -1,0 +1,35 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Patrick Meenan",
+		"image": "http://blog.cloudflare.com/content/images/2018/08/PatPerfCalendar.jpg",
+		"url": "https://blog.cloudflare.com/author/patrick-meenan/",
+		"sameAs": [
+			"https://www.webpagetest.org/",
+			"https://twitter.com/patmeenan"
+		]
+	},
+	"headline": "Mejoramos el tiempo hasta el primer byte de HTML",
+	"url": "https://blog.cloudflare.com/improving-html-time-to-first-byte-es/",
+	"datePublished": "2018-12-24T16:00:00.000Z",
+	"dateModified": "2020-04-06T18:53:27.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2019/04/tweet-1-1.png",
+	"keywords": "Rendimiento, Programación, Cache, Cloudflare Workers (ES), Cloudflare Workers KV (ES), Passwords (ES), Serverlos, Cache (ES)",
+	"description": "El tiempo hasta el primer byte (TTFB) de un sitio web es el tiempo desde que el usuario comienza a navegar hasta que el código HTML de la página que ha solicitado empieza a llegar.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

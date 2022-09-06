@@ -1,0 +1,45 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Celso Martinho",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Celso-Martinho.png",
+			"width": 486,
+			"height": 488
+		},
+		"url": "https://blog.cloudflare.com/author/celso/",
+		"sameAs": [
+			"https://celso.io/",
+			"https://twitter.com/celso"
+		]
+	},
+	"headline": "Eine erste Analyse zum Ausfall von Facebook",
+	"url": "https://blog.cloudflare.com/de-de/october-2021-facebook-outage-de-de/",
+	"datePublished": "2021-10-04T21:08:00.000Z",
+	"dateModified": "2021-10-26T21:48:50.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/10/Screen-Shot-2021-10-26-at-2.44.18-PM-17.png",
+		"width": 896,
+		"height": 466
+	},
+	"keywords": "Trends (DE), Facebook (DE), BGP (DE), DNS (DE), Deutsch",
+	"description": "Heute um 17:51 Uhr (MESZ) haben wir einen internen Vorfall mit dem Titel „Facebook DNS lookup returning SERVFAIL“ eröffnet. Unsere Befürchtung war, dass etwas mit unserem DNS-Resolver 1.1.1.1 nicht in Ordnung sein könnte. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

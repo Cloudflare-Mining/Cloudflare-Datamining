@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Yair Dovrat",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/11/profile.jpeg",
+			"width": 400,
+			"height": 400
+		},
+		"url": "https://blog.cloudflare.com/author/yair-dovrat/",
+		"sameAs": [
+			"https://twitter.com/YDovrat"
+		]
+	},
+	"headline": "Need to keep analytics data in the EU? Cloudflare Zaraz can offer a solution",
+	"url": "https://blog.cloudflare.com/keep-analytics-tracking-data-in-the-eu-cloudflare-zaraz/",
+	"datePublished": "2022-02-03T13:58:05.000Z",
+	"dateModified": "2022-07-21T17:54:45.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/02/unnamed--1-.png",
+		"width": 1600,
+		"height": 900
+	},
+	"keywords": "Data Privacy Day, Analytics, Zaraz, Third Parties",
+	"description": "Zaraz offers a way to use tools like Google Analytics, but doing so with an approach that protects the privacy of personal information and keeps it in the EU",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

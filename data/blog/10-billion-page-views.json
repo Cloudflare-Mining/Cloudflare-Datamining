@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew Prince",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
+			"width": 1196,
+			"height": 1190
+		},
+		"url": "https://blog.cloudflare.com/author/matthew-prince/",
+		"sameAs": [
+			"https://twitter.com/eastdakota"
+		]
+	},
+	"headline": "10 Billion Page Views",
+	"url": "https://blog.cloudflare.com/10-billion-page-views/",
+	"datePublished": "2011-07-29T21:25:00.000Z",
+	"dateModified": "2018-01-30T20:15:58.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/01/cloudflare_10_billion_page_views.png.scaled500-1.png",
+	"keywords": "Growth, Milestones, Page Views, Our History",
+	"description": "About an hour ago we crossed 10 billion page views having been powered by CloudFlare over the last 30 days. That means more than 13% of worldwide Internet visitors passed through our network at least once in the last month. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

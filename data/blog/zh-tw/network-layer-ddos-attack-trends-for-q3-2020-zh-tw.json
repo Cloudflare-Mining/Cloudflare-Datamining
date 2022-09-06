@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Vivek Ganti",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/08/Vivek-Ganti.jpeg",
+			"width": 469,
+			"height": 469
+		},
+		"url": "https://blog.cloudflare.com/author/vivek/",
+		"sameAs": [
+			"https://twitter.com/VivekGanti"
+		]
+	},
+	"headline": "2020 年第三季網路層 DDoS 攻擊趨勢",
+	"url": "https://blog.cloudflare.com/zh-tw/network-layer-ddos-attack-trends-for-q3-2020-zh-tw/",
+	"datePublished": "2020-11-18T09:56:00.000Z",
+	"dateModified": "2021-07-16T23:16:36.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/02/image6-4-3.png",
+		"width": 1348,
+		"height": 766
+	},
+	"keywords": "繁體中文 (TW), DDoS (TW), 趨勢 (TW), Fancy Bear (TW)",
+	"description": "DDoS 攻擊在頻率和複雜度上愈演愈烈。自第二季比第一季翻了一倍後，第三季觀察到的網路層攻擊總數再次翻倍，達到了第一季 COVID 疫情前水準的 4 倍。Cloudflare 還觀察到，實施攻擊的手段數量也達到歷史新高。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Sam Rhea",
+		"image": "http://blog.cloudflare.com/content/images/2018/07/photo-for-profile.jpg",
+		"url": "https://blog.cloudflare.com/author/sam/",
+		"sameAs": [
+			"https://twitter.com/LakeAustinBlvd"
+		]
+	},
+	"headline": "Un détail supplémentaire (sur le Zero Trust) : le système de détection des intrusions de Cloudflare",
+	"url": "https://blog.cloudflare.com/fr-fr/one-more-zero-trust-thing-cloudflare-intrusion-detection-fr-fr/",
+	"datePublished": "2020-10-17T13:00:00.000Z",
+	"dateModified": "2021-09-03T22:00:00.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/01/3.png",
+		"width": 1600,
+		"height": 914
+	},
+	"keywords": "Français, Confiance zéro (FR), Semaine Zero Trust, Sécurité, Magic Firewall (FR)",
+	"description": "Aujourd&#x27;hui, nous sommes très heureux d&#x27;annoncer nos plans concernant notre système de détection des intrusions Cloudflare, un nouveau produit qui surveille votre réseau et vous avertit lorsqu&#x27;une attaque est suspectée. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,33 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "John Graham-Cumming",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
+		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
+		"sameAs": [
+			"https://twitter.com/jgrahamc"
+		]
+	},
+	"headline": "Go interfaces make test stubbing easy",
+	"url": "https://blog.cloudflare.com/go-interfaces-make-test-stubbing-easy/",
+	"datePublished": "2014-08-27T15:56:00.000Z",
+	"dateModified": "2018-08-23T01:27:48.000Z",
+	"keywords": "Testing, Go, Programming",
+	"description": "Go&#x27;s &quot;object-orientation&quot; approach is through interfaces. Interfaces provide a way of specifying the behavior expected of an object, but rather than saying what an object itself can do, they specify what&#x27;s expected of an object.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

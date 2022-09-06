@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Nitin Rao",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/08/WtxhLSEUSgqYRMdQUwWp_1204a20b3d1d96bba523a6a2a5fa3cd73bd4fe59240a27ad6eb8c064c6792446.jpg",
+			"width": 600,
+			"height": 600
+		},
+		"url": "https://blog.cloudflare.com/author/nitin-rao/",
+		"sameAs": [
+			"https://twitter.com/NitinBRao"
+		]
+	},
+	"headline": "Cloudflare网络覆盖90多个国家193个城市_十亿IP加速，多节点弹性负载均衡",
+	"url": "https://blog.cloudflare.com/zh-cn/scaling-the-cloudflare-global-zh-cn/",
+	"datePublished": "2019-08-15T01:41:00.000Z",
+	"dateModified": "2021-01-28T19:13:18.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2019/10/image1-4-3.png",
+		"width": 1986,
+		"height": 1228
+	},
+	"keywords": "Cloudflare 网络 (CN), 数据中心, 南美洲, 印度, 简体中文 (CN)",
+	"description": "Cloudflare的全球网络目前覆盖90多个国家的193个城市。我们的网络拥有超过2000万个互联网资产，每次添加新的位点，我们都会提高互联网大部分内容的安全性，性能和可靠性。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

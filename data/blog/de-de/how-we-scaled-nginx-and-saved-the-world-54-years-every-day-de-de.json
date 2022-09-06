@@ -1,0 +1,34 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Ka-Hing Cheung",
+		"image": "http://blog.cloudflare.com/content/images/2018/01/AAEAAQAAAAAAAAJjAAAAJGRkYmFkY2Q2LTE3NmItNDgwZS04OWNlLTM2MzcwMzZiZTgwNQ.jpg",
+		"url": "https://blog.cloudflare.com/author/khc/",
+		"sameAs": [
+			"https://twitter.com/kahingcheung"
+		]
+	},
+	"headline": "Wie wir nginx skaliert und der Welt jeden Tag 54 Jahre gespart haben",
+	"url": "https://blog.cloudflare.com/de-de/how-we-scaled-nginx-and-saved-the-world-54-years-every-day-de-de/",
+	"datePublished": "2018-07-31T15:00:00.000Z",
+	"dateModified": "2021-01-22T21:26:23.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2019/04/Matthew-Tweet-2.png",
+	"keywords": "Entwickler, Programmierung, Deutsch, Geschwindigkeit & Zuverlässigkeit, Cache (DE), NGINX (DE)",
+	"description": "10 Millionen Websites, Apps und APIs nutzen Cloudflare, um ihren Besuchern einen Geschwindigkeitsschub zu verpassen. Zu Spitzenzeiten bearbeiten wir in unseren 151 Rechenzentren mehr als 10 Millionen Anfragen pro Sekunde.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

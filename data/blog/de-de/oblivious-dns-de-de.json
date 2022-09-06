@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Tanya Verma",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2020/11/DSC00267-2.png",
+			"width": 2000,
+			"height": 1645
+		},
+		"url": "https://blog.cloudflare.com/author/tanya/",
+		"sameAs": []
+	},
+	"headline": "DNS-Datenschutz verbessern mit Oblivious DoH in 1.1.1.1",
+	"url": "https://blog.cloudflare.com/de-de/oblivious-dns-de-de/",
+	"datePublished": "2020-12-08T15:30:36.000Z",
+	"dateModified": "2021-01-22T18:25:14.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2020/12/image2-13.png",
+		"width": 1999,
+		"height": 1068
+	},
+	"keywords": "Deutsch, DNS (DE), DoH (DE), Sicherheit, Datenschutzwoche (DE)",
+	"description": "Oblivious DoH macht sichere DNS-Abfragen über HTTPS (DoH) auch zu privaten Abfragen. Es ist ein Vorschlag für einen neuen Standard, der IP-Adressen von Abfragen trennt, damit kein einzelner Akteur beides gleichzeitig sein kann.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

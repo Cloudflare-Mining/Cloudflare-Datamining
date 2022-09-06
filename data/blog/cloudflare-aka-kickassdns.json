@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew Prince",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
+			"width": 1196,
+			"height": 1190
+		},
+		"url": "https://blog.cloudflare.com/author/matthew-prince/",
+		"sameAs": [
+			"https://twitter.com/eastdakota"
+		]
+	},
+	"headline": "CloudFlare (aka. KickassDNS)",
+	"url": "https://blog.cloudflare.com/cloudflare-aka-kickassdns/",
+	"datePublished": "2012-08-01T17:17:00.000Z",
+	"dateModified": "2018-02-20T20:23:21.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/02/unicast_anycast.png.scaled500-2.png",
+	"keywords": "Speed & Reliability, DNS",
+	"description": "One of the things we don&#x27;t talk about much at CloudFlare is how we&#x27;ve built one of the largest, fastest, easiest, and most resilient authoritative DNS networks in the world. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

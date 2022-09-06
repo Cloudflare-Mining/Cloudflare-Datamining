@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Ben Yule",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/09/ben_yule.png",
+			"width": 600,
+			"height": 600
+		},
+		"url": "https://blog.cloudflare.com/author/ben-yule/",
+		"sameAs": [
+			"https://twitter.com/bjyule"
+		]
+	},
+	"headline": "How we built Instant Logs",
+	"url": "https://blog.cloudflare.com/how-we-built-instant-logs/",
+	"datePublished": "2021-09-14T12:59:03.000Z",
+	"dateModified": "2021-09-18T14:26:43.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/09/image3-8.png",
+		"width": 1235,
+		"height": 639
+	},
+	"keywords": "Speed Week, Logs, Analytics, Software, Deep Dive",
+	"description": "In this blog post, we’ll show you how we built a new system that can give you access to your Cloudflare logs in real time, with just a single click.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

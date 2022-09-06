@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew Prince",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
+			"width": 1196,
+			"height": 1190
+		},
+		"url": "https://blog.cloudflare.com/author/matthew-prince/",
+		"sameAs": [
+			"https://twitter.com/eastdakota"
+		]
+	},
+	"headline": "Quantifying the Impact of &quot;Cloudbleed&quot;",
+	"url": "https://blog.cloudflare.com/quantifying-the-impact-of-cloudbleed/",
+	"datePublished": "2017-03-01T15:27:00.000Z",
+	"dateModified": "2018-08-28T22:12:54.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/example-leak.png",
+	"keywords": "Bugs, Post Mortem, Privacy, Security",
+	"description": "Last Thursday we released details on a bug in Cloudflare&#x27;s parser impacting our customers. It was an extremely serious bug that caused data flowing through Cloudflare&#x27;s network to be leaked onto the Internet.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

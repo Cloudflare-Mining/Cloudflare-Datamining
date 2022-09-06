@@ -1,0 +1,40 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Nick Sullivan",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/09/BJ4NgXVj_400x400.jpg",
+			"width": 400,
+			"height": 400
+		},
+		"url": "https://blog.cloudflare.com/author/nick-sullivan/",
+		"sameAs": [
+			"https://crypto.dance",
+			"https://twitter.com/grittygrease"
+		]
+	},
+	"headline": "A (Relatively Easy To Understand) Primer on Elliptic Curve Cryptography",
+	"url": "https://blog.cloudflare.com/a-relatively-easy-to-understand-primer-on-elliptic-curve-cryptography/",
+	"datePublished": "2013-10-24T03:00:00.000Z",
+	"dateModified": "2022-03-09T15:07:27.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/03/image07.jpg",
+	"keywords": "HTTPS, Elliptic Curves, Crypto, Security",
+	"description": "Elliptic Curve Cryptography (ECC) is one of the most powerful but least understood types of cryptography in wide use today. At CloudFlare, we make extensive use of ECC to secure everything from our customers&#x27; HTTPS connections to how we pass data between our data centers.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

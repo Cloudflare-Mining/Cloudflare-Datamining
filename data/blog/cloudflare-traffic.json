@@ -1,0 +1,34 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "John Roberts",
+		"image": "http://blog.cloudflare.com/content/images/2018/02/john.jpg",
+		"url": "https://blog.cloudflare.com/author/john-roberts/",
+		"sameAs": [
+			"https://twitter.com/pencoyd"
+		]
+	},
+	"headline": "Control your traffic at the edge with Cloudflare",
+	"url": "https://blog.cloudflare.com/cloudflare-traffic/",
+	"datePublished": "2016-09-29T14:04:00.000Z",
+	"dateModified": "2018-08-28T20:42:06.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/traffic-manager-failover.png",
+	"keywords": "Traffic, Load Balancing, Rate Limiting, API, Product News, Reliability, Traffic Manager",
+	"description": "Today, we&#x27;re introducing two new Cloudflare Traffic products to give customers control over how Cloudflare’s edge network handles their traffic, allowing them to shape and direct it for their specific needs.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

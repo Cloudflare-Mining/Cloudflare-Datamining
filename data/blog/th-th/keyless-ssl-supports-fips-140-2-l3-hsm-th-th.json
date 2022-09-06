@@ -1,0 +1,45 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Patrick R. Donahue",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/me0-1.png",
+			"width": 300,
+			"height": 291
+		},
+		"url": "https://blog.cloudflare.com/author/patrick/",
+		"sameAs": [
+			"https://www.cloudflare.com",
+			"https://twitter.com/prdonahue"
+		]
+	},
+	"headline": "ตอนนี้ Keyless SSL รองรับโมดูลความปลอดภัยฮาร์ดแวร์ FIPS 140-2 L3 (HSM) ที่เสนอโดยผู้ให้บริการระบบคลาวด์รายใหญ่ทั้งหมด",
+	"url": "https://blog.cloudflare.com/th-th/keyless-ssl-supports-fips-140-2-l3-hsm-th-th/",
+	"datePublished": "2021-03-27T14:26:00.000Z",
+	"dateModified": "2022-01-21T14:27:03.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/01/image1-54.png",
+		"width": 1872,
+		"height": 898
+	},
+	"keywords": "สัปดาห์ความปลอดภัย, Keyless SSL (TH), HSM (TH), ข่าวผลิตภัณฑ์",
+	"description": "ในตอนนี้ คีย์เข้ารหัสส่วนตัวที่จัดเก็บไว้ในโมดูลความปลอดภัยฮาร์ดแวร์จากผู้ให้บริการระบบคลาวด์รายใหญ่ทั้งหมด สามารถถูกนำมาใช้เพื่อรักษาความปลอดภัยการเชื่อมต่อ HTTPS ภายในสภาพแวดล้อม Edge ทั่วโลกของ Cloudflare ได้แล้ว",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

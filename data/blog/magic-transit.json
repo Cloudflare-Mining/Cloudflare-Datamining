@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Rustam Lalkaka",
+		"image": "http://blog.cloudflare.com/content/images/2017/05/AAEAAQAAAAAAAAc9AAAAJDg0MzBkZTg1LTNkOTUtNGFlYy1hMjJiLTQxMjlmYzkyNjJjMA.jpg",
+		"url": "https://blog.cloudflare.com/author/rustam/",
+		"sameAs": [
+			"https://twitter.com/lalkaka"
+		]
+	},
+	"headline": "Magic Transit | Extending Cloudflare to On-Prem Networks",
+	"url": "https://blog.cloudflare.com/magic-transit/",
+	"datePublished": "2019-08-13T13:01:00.000Z",
+	"dateModified": "2019-12-11T22:35:29.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2019/08/Magic_transit_network_diagram_with_Cloudflare.png",
+		"width": 1520,
+		"height": 855
+	},
+	"keywords": "Speed & Reliability, Magic Transit, Product News",
+	"description": "Today we’re excited to announce Cloudflare Magic Transit. Magic Transit provides secure, performant, and reliable IP connectivity to the Internet. Out-of-the-box, Magic Transit deployed in front of your on-premise network protects it from DDoS attack ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

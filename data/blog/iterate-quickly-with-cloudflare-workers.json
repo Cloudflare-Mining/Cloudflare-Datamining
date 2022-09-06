@@ -1,0 +1,32 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Remy Guercio",
+		"image": "http://blog.cloudflare.com/content/images/2018/06/0.jpg",
+		"url": "https://blog.cloudflare.com/author/remy/",
+		"sameAs": []
+	},
+	"headline": "Test New Features and Iterate Quickly with Cloudflare Workers",
+	"url": "https://blog.cloudflare.com/iterate-quickly-with-cloudflare-workers/",
+	"datePublished": "2018-06-19T19:11:14.000Z",
+	"dateModified": "2018-08-29T07:41:41.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/06/photo-1526253038957-bce54e05968e.jpg",
+	"keywords": "Cloudflare Workers, JavaScript, Serverless",
+	"description": "At Cloudflare, we believe that getting new products and features into the hands of customers as soon as possible is the best way to get great feedback. The thing about releasing products early and often is that sometimes they might not be initially ready for your entire user base.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

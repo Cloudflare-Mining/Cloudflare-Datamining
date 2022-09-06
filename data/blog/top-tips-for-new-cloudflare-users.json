@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Michelle Zatlyn",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Michelle-Zatlyn-2.png",
+			"width": 492,
+			"height": 488
+		},
+		"url": "https://blog.cloudflare.com/author/michelle-zatlyn/",
+		"sameAs": [
+			"https://twitter.com/zatlyn"
+		]
+	},
+	"headline": "Top Tips for new CloudFlare Users",
+	"url": "https://blog.cloudflare.com/top-tips-for-new-cloudflare-users/",
+	"datePublished": "2011-05-26T17:34:00.000Z",
+	"dateModified": "2018-01-26T20:43:16.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/01/welcome_mat.gif",
+	"keywords": "Tips, Onboarding",
+	"description": "CloudFlare is a service that has powerful underlying technology. We run 10 (with more coming) data centers around the world and do DNS, caching, bot filtering and more for all of our users. Despite all of this technology, our goal is to make the service simple for our users to use.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

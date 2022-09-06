@@ -1,0 +1,32 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew C",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/e8Q_R7gt.jpg",
+		"url": "https://blog.cloudflare.com/author/matthew-c/",
+		"sameAs": []
+	},
+	"headline": "What&#x27;s inside net/http? Late binding in the Go standard library",
+	"url": "https://blog.cloudflare.com/whats-inside-net-http-socket-late-binding-in-the-go-standard-library/",
+	"datePublished": "2015-12-21T14:30:48.000Z",
+	"dateModified": "2018-08-24T23:37:04.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/11940908695_cea0865524_o-1.jpg",
+	"keywords": "Go, Programming, Railgun, Speed & Reliability",
+	"description": "It&#x27;s well known that we&#x27;re heavy users of the Go programming language at CloudFlare. Our work often involves delving into the standard library source code to understand internal code paths, error handling and performance characteristics.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

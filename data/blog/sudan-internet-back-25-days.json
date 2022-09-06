@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "João Tomé",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/V0x3WKfJ_400x400-1.jpeg",
+			"width": 400,
+			"height": 400
+		},
+		"url": "https://blog.cloudflare.com/author/joao-tome/",
+		"sameAs": [
+			"https://twitter.com/emot"
+		]
+	},
+	"headline": "Sudan was cut off from the Internet for 25 days",
+	"url": "https://blog.cloudflare.com/sudan-internet-back-25-days/",
+	"datePublished": "2021-11-22T14:44:30.000Z",
+	"dateModified": "2021-11-22T14:44:56.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/11/image7-10.png",
+		"width": 1200,
+		"height": 675
+	},
+	"keywords": "Cloudflare Radar, Internet Shutdown",
+	"description": "The Internet started to come back to Sudan (with limitations) this past Thursday, November 18. This happens after 25 days (three weeks and four days) of an almost complete shutdown that affected the whole country. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

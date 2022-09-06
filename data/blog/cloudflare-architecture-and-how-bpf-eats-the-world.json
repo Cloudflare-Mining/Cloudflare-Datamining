@@ -1,0 +1,34 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Marek Majkowski",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/b5967d6c687939594adb6992723d0529.jpeg",
+		"url": "https://blog.cloudflare.com/author/marek-majkowski/",
+		"sameAs": [
+			"https://twitter.com/majek04"
+		]
+	},
+	"headline": "Cloudflare architecture and how BPF eats the world",
+	"url": "https://blog.cloudflare.com/cloudflare-architecture-and-how-bpf-eats-the-world/",
+	"datePublished": "2019-05-18T15:00:00.000Z",
+	"dateModified": "2019-05-18T15:00:00.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2019/05/13_BPF-is-everywhere.jpg",
+	"keywords": "eBPF, Linux, Programming, Developers, Anycast, TCP",
+	"description": "Recently at I gave a short talk titled &quot;Linux at Cloudflare&quot;. The talk ended up being mostly about BPF. It seems, no matter the question - BPF is the answer.\n\nHere is a transcript of a slightly adjusted version of that talk.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

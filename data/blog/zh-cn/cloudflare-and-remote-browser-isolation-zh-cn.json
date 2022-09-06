@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Darren Remington",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/01/CAB16BB8-BE17-4EE0-B9AD-7AE6E20BCBBD.jpeg",
+			"width": 632,
+			"height": 720
+		},
+		"url": "https://blog.cloudflare.com/author/darren/",
+		"sameAs": []
+	},
+	"headline": "应对零日漏洞 - 利用浏览器隔离确保浏览器安全",
+	"url": "https://blog.cloudflare.com/zh-cn/cloudflare-and-remote-browser-isolation-zh-cn/",
+	"datePublished": "2020-01-07T14:00:00.000Z",
+	"dateModified": "2021-01-28T19:51:18.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2020/02/Screen-Shot-2020-01-06-at-7.40.10-PM.png",
+		"width": 1888,
+		"height": 972
+	},
+	"keywords": "Cloudflare Access (CN), 团队的Cloudflare, 产品新闻, VPN (CN), 简体中文 (CN), 远程浏览器隔离 (CN)",
+	"description": "Cloudflare今天宣布，它已经收购了S2系统公司，这是一家位于西雅图地区的初创公司，它建立了一种创新的远程浏览器隔离解决方案，与目前市场上的任何其他解决方案都不同。大多数终端危害都涉及Web浏览器——通过在用户设备和Web代码执行位置之间留出空间，浏览器隔离可以使终端安全得多。在这篇博客文章中，我将讨论什么是浏览器隔离，为什么它如此重要，S2 Systems云浏览器如何工作，以及它如何与Cloudflare帮助构建更好的互联网的使命相契合。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -17,11 +17,11 @@
       body: JSON.stringify({
         personalizations: [
           {
-            to: [{ email: '<a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a>', name: 'Test Recipient' }],
+            to: [{ email: '[email protected]', name: 'Test Recipient' }],
           },
         ],
         from: {
-          email: '<a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a>',
+          email: '[email protected]',
           name: 'Workers - MailChannels integration',
         },
         subject: 'Look! No servers',
@@ -45,10 +45,10 @@
 export const onRequest = mailchannelsPlugin({
   personalizations: [
     {
-      to: [{ name: "ACME Support", email: "<a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a>" }],
+      to: [{ name: "ACME Support", email: "[email protected]" }],
     },
   ],
-  from: { name: "Enquiry", email: "<a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a>" },
+  from: { name: "Enquiry", email: "[email protected]" },
   respondWith: () =&gt;
     new Response(null, {
       status: 302,

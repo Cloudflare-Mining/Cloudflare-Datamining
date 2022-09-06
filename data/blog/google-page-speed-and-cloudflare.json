@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew Prince",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
+			"width": 1196,
+			"height": 1190
+		},
+		"url": "https://blog.cloudflare.com/author/matthew-prince/",
+		"sameAs": [
+			"https://twitter.com/eastdakota"
+		]
+	},
+	"headline": "Google Page Speed and CloudFlare",
+	"url": "https://blog.cloudflare.com/google-page-speed-and-cloudflare/",
+	"datePublished": "2011-07-28T13:57:00.000Z",
+	"dateModified": "2018-01-30T20:12:56.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/01/cloudflare_google_page_speed.png.scaled500.png",
+	"keywords": "Cloudflare Apps, Google",
+	"description": "This morning Google launched a limited new service they&#x27;re calling Google Page Speed. We&#x27;ve known they&#x27;ve been working on this service for some time and are friends with several of the members of the Google speed team who helped build it. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

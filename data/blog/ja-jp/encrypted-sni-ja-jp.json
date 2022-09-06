@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Alessandro Ghedini",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/09/Ii4TgsoTda2layE131Dk_1204a20b3d1d96bba523a6a2a5fa3cd73bd4fe59240a27ad6eb8c064c6792446.jpg",
+			"width": 600,
+			"height": 600
+		},
+		"url": "https://blog.cloudflare.com/author/alessandro-ghedini/",
+		"sameAs": []
+	},
+	"headline": "暗号化か喪失か。SNI暗号化の仕組みについて",
+	"url": "https://blog.cloudflare.com/ja-jp/encrypted-sni-ja-jp/",
+	"datePublished": "2018-09-24T12:01:00.000Z",
+	"dateModified": "2021-01-21T18:43:55.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2019/12/esni-3@3.5x-1.png",
+		"width": 1999,
+		"height": 870
+	},
+	"keywords": "日本語, Birthday Week (JP), 製品ニュース (JP), 暗号化, セキュリティ, TLS (JP)",
+	"description": "Cloudflareが本日サポートを発表した、暗号化SNIは、拡張版TLS 1.3プロトコルであり、ISP、カフェ店主、ファイアウォールなどのパス上のオブザーバーが、TLS Server Name Indication（SNI）拡張子を傍受し、これを利用してユーザーの訪問先のWebサイトを特定することを防止し、インターネットユーザーのプライバシーを向上させます。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

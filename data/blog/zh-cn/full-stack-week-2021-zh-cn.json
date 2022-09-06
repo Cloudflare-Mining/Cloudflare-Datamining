@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Rita Kozlov",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/05/Rita-Kozlov.jpeg",
+			"width": 200,
+			"height": 200
+		},
+		"url": "https://blog.cloudflare.com/author/rita/",
+		"sameAs": [
+			"https://twitter.com/ritakozlov_"
+		]
+	},
+	"headline": "欢迎来到 Full Stack Week",
+	"url": "https://blog.cloudflare.com/zh-cn/full-stack-week-2021-zh-cn/",
+	"datePublished": "2021-11-14T20:09:00.000Z",
+	"dateModified": "2021-11-18T20:15:30.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/11/Full-Stack-Week-3.png",
+		"width": 1800,
+		"height": 1013
+	},
+	"keywords": "全栈周 (CN), 简体中文 (CN), Cloudflare Workers (CN), 产品新闻",
+	"description": "当您阅读这篇文章时，您正在使用互联网。请停下来想一下这个问题。我们会说“在互联网上”找东西；我们会说“使用互联网”来执行一个任务。但我们从不会说：“我要使用互联网作为我的计算机与服务器之间的中介，在某个服务器上找这些内容。”",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

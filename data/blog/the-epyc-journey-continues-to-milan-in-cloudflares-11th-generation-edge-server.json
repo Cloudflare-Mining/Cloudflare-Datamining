@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Chris Howells",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/08/photo.jpg",
+			"width": 600,
+			"height": 600
+		},
+		"url": "https://blog.cloudflare.com/author/chris-howells/",
+		"sameAs": []
+	},
+	"headline": "The EPYC journey continues to Milan in Cloudflare’s 11th generation Edge Server",
+	"url": "https://blog.cloudflare.com/the-epyc-journey-continues-to-milan-in-cloudflares-11th-generation-edge-server/",
+	"datePublished": "2021-08-31T13:00:45.000Z",
+	"dateModified": "2021-09-03T16:26:43.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/08/Gen-11-1.png",
+		"width": 1200,
+		"height": 675
+	},
+	"keywords": "Cloudflare Network, EPYC, AMD",
+	"description": "At Cloudflare we aim to introduce a new server platform to our edge network every 12 to 18 months or so, to ensure that we keep up with the latest industry technologies and developments. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

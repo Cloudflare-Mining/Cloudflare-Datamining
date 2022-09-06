@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew Prince",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
+			"width": 1196,
+			"height": 1190
+		},
+		"url": "https://blog.cloudflare.com/author/matthew-prince/",
+		"sameAs": [
+			"https://twitter.com/eastdakota"
+		]
+	},
+	"headline": "Cloudflare发布WARP和WARP+_使用我们的全球网络保护手机的互联网流量。",
+	"url": "https://blog.cloudflare.com/zh-cn/announcing-warp-plus-zh-cn/",
+	"datePublished": "2019-09-25T13:00:00.000Z",
+	"dateModified": "2021-01-28T19:18:13.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2020/01/Warp-@2x-1.png",
+		"width": 1306,
+		"height": 1064
+	},
+	"keywords": "WARP (CN), 简体中文 (CN), 生日周 (CN), 产品新闻, 1.1.1.1 (CN), VPN (CN)",
+	"description": "今天，经过漫长的等待之后，我们将向公众开放WARP和WARP+（plus）。如果你还没听说过，WARP是一款为所有人设计的移动应用，它使用我们的全球网络来保护你手机的所有互联网流量。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

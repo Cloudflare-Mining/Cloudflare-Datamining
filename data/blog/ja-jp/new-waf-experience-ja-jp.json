@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Zhiyuan Zheng",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/03/square.jpg",
+			"width": 1479,
+			"height": 1479
+		},
+		"url": "https://blog.cloudflare.com/author/xmflsct/",
+		"sameAs": [
+			"https://xmflsct.com"
+		]
+	},
+	"headline": "新しいWAF体験",
+	"url": "https://blog.cloudflare.com/ja-jp/new-waf-experience-ja-jp/",
+	"datePublished": "2022-03-15T00:00:00.000Z",
+	"dateModified": "2022-03-18T17:00:50.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/03/image2-49.png",
+		"width": 1800,
+		"height": 1013
+	},
+	"keywords": "セキュリティウィーク, WAF (JP), セキュリティ",
+	"description": "3年ほど前、&quot;製品やサービスを直感的に使えるようにしたい &quot;という思いから、ダッシュボードナビゲーション内の「   Firewallタブ  」に複数の機能を導入しました。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

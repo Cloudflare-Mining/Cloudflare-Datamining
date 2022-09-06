@@ -1,0 +1,32 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Damon Billian",
+		"image": "http://blog.cloudflare.com/content/images/2018/02/1b3fcea.jpg",
+		"url": "https://blog.cloudflare.com/author/damon-billian/",
+		"sameAs": []
+	},
+	"headline": "CloudFlare&#x27;s New UI: Managing DNS records",
+	"url": "https://blog.cloudflare.com/managing-dns-records/",
+	"datePublished": "2012-04-10T22:33:00.000Z",
+	"dateModified": "2018-02-02T23:02:17.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/02/6893885124_742dc218ab.jpg",
+	"keywords": "Dashboard, Product News",
+	"description": "We have released a number of changes to the site to make things easier to find and locate. Since making changes to existing DNS records and adding new ones are vitally important to site owners, we thought it would be helpful to craft a blog post showing the changes to the DNS editor.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,36 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Andrew Fitch",
+		"image": "http://blog.cloudflare.com/content/images/2017/10/AJF-Headshot.jpg",
+		"url": "https://blog.cloudflare.com/author/andrew/",
+		"sameAs": [
+			"https://www.cloudflare.com",
+			"https://www.facebook.com/andrew.fitch.315",
+			"https://twitter.com/fitchaj"
+		]
+	},
+	"headline": "JAMstack podcast episode: Listen to Cloudflare&#x27;s Kenton Varda speak about originless code",
+	"url": "https://blog.cloudflare.com/jamstack-podcast-with-kenton-varda/",
+	"datePublished": "2018-09-15T15:00:00.000Z",
+	"dateModified": "2020-08-20T23:40:21.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/09/maxresdefault.jpg",
+	"keywords": "Cloudflare Workers, Serverless, JavaScript, Developers",
+	"description": "JAMstack Radio is a show all about the JAMstack, a new way to build fast &amp; secure apps or websites. In the most recent episode, the host, Brian Douglas, met with our own Kenton Varda to discuss some of the infinite uses for running code at the edge.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

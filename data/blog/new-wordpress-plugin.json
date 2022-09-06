@@ -1,0 +1,32 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Rahul Mahajan",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/AAEAAQAAAAAAAAjEAAAAJDI2NTVlOTU4LTRlZTQtNDk3Mi04NzY3LThkNTA0M2MyODRkMw.jpg",
+		"url": "https://blog.cloudflare.com/author/rahul-mahajan/",
+		"sameAs": []
+	},
+	"headline": "CloudFlare’s new WordPress plugin",
+	"url": "https://blog.cloudflare.com/new-wordpress-plugin/",
+	"datePublished": "2016-09-19T20:00:00.000Z",
+	"dateModified": "2018-08-28T20:40:20.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/Untitled.png",
+	"keywords": "WordPress, Plugins, Reliability, Visitor IPs, WAF, Security",
+	"description": "Over 25% of all websites use WordPress, and over 10% of all internet traffic flows through CloudFlare; WordPress + CloudFlare has always been a winning combination, and now with CloudFlare’s new WordPress plugin, it&#x27;s easier than ever to make your site 60% faster.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

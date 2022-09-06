@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Alex Cruz Farmer",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/12/_DSC4744--2-.jpg",
+			"width": 600,
+			"height": 600
+		},
+		"url": "https://blog.cloudflare.com/author/alex-cruz-farmer/",
+		"sameAs": [
+			"https://twitter.com/alexcf"
+		]
+	},
+	"headline": "Cloudflare WAF防火墙日志全新改版_加入更精细的特性设置，更具体的事件搜索",
+	"url": "https://blog.cloudflare.com/zh-cn/supercharging-firewall-events-for-self-serve-zh-cn/",
+	"datePublished": "2019-08-22T13:00:00.000Z",
+	"dateModified": "2021-01-28T19:13:46.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2019/11/image1-7.png",
+		"width": 1999,
+		"height": 1315
+	},
+	"keywords": "产品新闻, 防火墙 (CN), 安全, 控制面板, 简体中文 (CN), WAF (CN)",
+	"description": "今天，我很高兴能够向我们的免费、专业和商业客户发布一个完全改版的防火墙事件日志。这个新的防火墙事件日志现在可以在控制面板中使用，您不需要做任何事情就可以接收到这个新的功能。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

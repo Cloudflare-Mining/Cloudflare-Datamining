@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Omer Yoachimik",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/Omer-1.png",
+			"width": 773,
+			"height": 653
+		},
+		"url": "https://blog.cloudflare.com/author/omer/",
+		"sameAs": [
+			"https://twitter.com/OmerYoahimik"
+		]
+	},
+	"headline": "How to customize your HTTP DDoS protection settings",
+	"url": "https://blog.cloudflare.com/http-ddos-managed-rules/",
+	"datePublished": "2021-09-20T12:59:20.000Z",
+	"dateModified": "2021-09-22T10:06:40.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/09/customize-your-HTTP-DDoS-protection-settings.png",
+		"width": 1826,
+		"height": 913
+	},
+	"keywords": "DDoS, L7, Managed Rules, Product News",
+	"description": "We’re excited to announce the availability of the HTTP DDoS Managed Ruleset. This new feature allows Cloudflare customers to independently tailor their HTTP DDoS protection settings. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

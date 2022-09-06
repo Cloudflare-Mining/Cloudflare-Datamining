@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "David Song",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/08/pro2.png",
+			"width": 600,
+			"height": 600
+		},
+		"url": "https://blog.cloudflare.com/author/david-song/",
+		"sameAs": [
+			"https://twitter.com/davidtsong"
+		]
+	},
+	"headline": "Location-based personalization at the edge with Cloudflare Workers",
+	"url": "https://blog.cloudflare.com/location-based-personalization-using-workers/",
+	"datePublished": "2021-04-13T13:00:00.000Z",
+	"dateModified": "2021-04-22T18:17:42.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/04/image1-12.png",
+		"width": 1842,
+		"height": 890
+	},
+	"keywords": "Developer Week, Developers, Cloudflare Workers, Product News, Serverless",
+	"description": "Geolocation data access is now available and free for all developers on our Workers platform, including users on the free plan!",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

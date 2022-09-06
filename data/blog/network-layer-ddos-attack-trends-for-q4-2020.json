@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Vivek Ganti",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/08/Vivek-Ganti.jpeg",
+			"width": 469,
+			"height": 469
+		},
+		"url": "https://blog.cloudflare.com/author/vivek/",
+		"sameAs": [
+			"https://twitter.com/VivekGanti"
+		]
+	},
+	"headline": "Network-layer DDoS attack trends for Q4 2020",
+	"url": "https://blog.cloudflare.com/network-layer-ddos-attack-trends-for-q4-2020/",
+	"datePublished": "2021-01-22T12:00:00.000Z",
+	"dateModified": "2022-04-12T09:01:21.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/01/image21.png",
+		"width": 1999,
+		"height": 1033
+	},
+	"keywords": "DDoS, Trends, Ransom Attack, RDDoS, Fancy Bear, Lazarus group, Cozy Bear, DDoS Reports",
+	"description": "DDoS attack trends in the final quarter of 2020 defied norms in many ways. For the first time in 2020, Cloudflare observed an increase in the number of large DDoS attacks. Specifically, the number of attacks over 500Mbps and 50K pps saw a massive uptick. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

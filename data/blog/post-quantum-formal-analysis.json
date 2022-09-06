@@ -1,0 +1,45 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Thom Wiggers",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/01/thom.jpeg",
+			"width": 200,
+			"height": 200
+		},
+		"url": "https://blog.cloudflare.com/author/thom/",
+		"sameAs": [
+			"https://thomwiggers.nl",
+			"https://twitter.com/thomwiggers"
+		]
+	},
+	"headline": "Building Confidence in Cryptographic Protocols",
+	"url": "https://blog.cloudflare.com/post-quantum-formal-analysis/",
+	"datePublished": "2022-02-24T17:30:00.000Z",
+	"dateModified": "2022-02-24T17:30:55.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/02/Blog-827---KEMs-and-KEMTLS-1.png",
+		"width": 1600,
+		"height": 900
+	},
+	"keywords": "Research, Cryptography, Post-Quantum",
+	"description": "This blogpost refers to the efforts to use formal/verification/implementation for post-quantum algorithms to achieve better assurance for them. It also touches on our Cloudflare efforts on this",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

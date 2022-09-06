@@ -1,0 +1,41 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Andrew Fitch",
+		"image": "http://blog.cloudflare.com/content/images/2017/10/AJF-Headshot.jpg",
+		"url": "https://blog.cloudflare.com/author/andrew/",
+		"sameAs": [
+			"https://www.cloudflare.com",
+			"https://www.facebook.com/andrew.fitch.315",
+			"https://twitter.com/fitchaj"
+		]
+	},
+	"headline": "Learn more about Workers Sites at Austin &amp; San Francisco Meetups",
+	"url": "https://blog.cloudflare.com/learn-more-about-workers-sites-at-austin-san-francisco-meetups/",
+	"datePublished": "2019-10-02T01:00:10.000Z",
+	"dateModified": "2019-10-02T16:11:55.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2019/10/Screen-Shot-2019-10-01-at-5.43.47-PM-1-1.png",
+		"width": 1634,
+		"height": 900
+	},
+	"keywords": "Cloudflare Workers, Serverless, Cloudflare Meetups, Austin, Wrangler, CLI",
+	"description": "Last Friday, at the end of Cloudflare’s 9th birthday week, we announced Workers Sites. Now, using the Wrangler CLI, you can deploy entire websites directly to the Cloudflare Network using Cloudflare Workers and Workers KV.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

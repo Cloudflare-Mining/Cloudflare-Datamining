@@ -1,0 +1,33 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Filippo Valsorda",
+		"image": "http://blog.cloudflare.com/content/images/2018/02/K6rX3ZSn_400x400.jpg",
+		"url": "https://blog.cloudflare.com/author/filippo/",
+		"sameAs": [
+			"https://twitter.com/filosottile"
+		]
+	},
+	"headline": "Building the simplest Go static analysis tool",
+	"url": "https://blog.cloudflare.com/building-the-simplest-go-static-analysis-tool/",
+	"datePublished": "2016-04-27T15:01:15.000Z",
+	"dateModified": "2018-08-27T19:10:28.000Z",
+	"keywords": "Tools, Go, Programming",
+	"description": "Go native vendoring (a.k.a. GO15VENDOREXPERIMENT) allows you to freeze dependencies by putting them in a vendor folder in your project. The compiler will then look there before searching the GOPATH.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

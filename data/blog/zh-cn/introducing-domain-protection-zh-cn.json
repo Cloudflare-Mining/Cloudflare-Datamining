@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Eric Brown",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/09/ebrown.jpg",
+			"width": 2000,
+			"height": 1969
+		},
+		"url": "https://blog.cloudflare.com/author/eric/",
+		"sameAs": []
+	},
+	"headline": "隆重推出 Cloudflare 域保护 — 使域破坏成为历史",
+	"url": "https://blog.cloudflare.com/zh-cn/introducing-domain-protection-zh-cn/",
+	"datePublished": "2021-12-10T13:58:00.000Z",
+	"dateModified": "2021-12-30T00:03:57.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/12/image1-55-1.png",
+		"width": 1800,
+		"height": 1013
+	},
+	"keywords": "产品新闻, 简体中文 (CN), CIO Week (CN), 安全",
+	"description": "网络上的一切都始于域名。这是一家公司建立网络形象的基础。如果此基础受到破坏，公司将遭受巨大损害。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

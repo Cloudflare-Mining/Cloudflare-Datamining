@@ -1,0 +1,32 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Albert Strasheim",
+		"image": "http://blog.cloudflare.com/content/images/2018/02/3006048.jpg",
+		"url": "https://blog.cloudflare.com/author/albert-strasheim/",
+		"sameAs": []
+	},
+	"headline": "Scaling out PostgreSQL for CloudFlare Analytics using CitusDB",
+	"url": "https://blog.cloudflare.com/scaling-out-postgresql-for-cloudflare-analytics-using-citusdb/",
+	"datePublished": "2015-04-09T17:32:05.000Z",
+	"dateModified": "2020-08-14T15:37:09.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/keepcalm_scaled.png",
+	"keywords": "Analytics, SQL, Postgres, Kafka, LUA, DDoS",
+	"description": "When I joined CloudFlare about 18 months ago, we had just started to build out our new Data Platform. At that point, the log processing and analytics pipeline built in the early days of the company had reached its limits. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

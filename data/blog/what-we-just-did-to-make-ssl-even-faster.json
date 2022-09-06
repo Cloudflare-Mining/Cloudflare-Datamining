@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew Prince",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
+			"width": 1196,
+			"height": 1190
+		},
+		"url": "https://blog.cloudflare.com/author/matthew-prince/",
+		"sameAs": [
+			"https://twitter.com/eastdakota"
+		]
+	},
+	"headline": "What We Just Did to Make SSL Even Faster",
+	"url": "https://blog.cloudflare.com/what-we-just-did-to-make-ssl-even-faster/",
+	"datePublished": "2012-12-11T17:24:00.000Z",
+	"dateModified": "2018-08-27T21:57:10.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/we_love_ssl.png.scaled500-1.png",
+	"keywords": "OCSP, Speed & Reliability, HTTPS, SSL, Security",
+	"description": "A little over a month ago, we published a couple of blog posts about how we were making SSL faster. Specifically, we enabled OCSP stapling across our network.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

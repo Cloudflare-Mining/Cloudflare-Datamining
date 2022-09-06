@@ -1,0 +1,37 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Alex Davidson",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/10/pic_of_me.jpg",
+			"width": 600,
+			"height": 600
+		},
+		"url": "https://blog.cloudflare.com/author/alex-davidson/",
+		"sameAs": []
+	},
+	"headline": "Preventing Request Loops Using CDN-Loop",
+	"url": "https://blog.cloudflare.com/preventing-request-loops-using-cdn-loop/",
+	"datePublished": "2019-03-20T13:00:00.000Z",
+	"dateModified": "2021-05-19T18:30:46.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2019/02/Loop1-1.png",
+	"keywords": "Request Loops, Attacks, WAF, Security, Speed & Reliability",
+	"description": "HTTP requests typically originate with a client, and end at a web server that processes the request and returns some response. Such requests may pass through multiple proxies before they arrive at the requested resource. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

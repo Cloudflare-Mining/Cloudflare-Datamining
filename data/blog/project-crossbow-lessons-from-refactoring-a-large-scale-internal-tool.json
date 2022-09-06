@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Junade Ali",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/G1VwuaxB.jpg",
+		"url": "https://blog.cloudflare.com/author/junade-ali/",
+		"sameAs": [
+			"https://twitter.com/IcyApril"
+		]
+	},
+	"headline": "Project Crossbow: Lessons from Refactoring a Large-Scale Internal Tool",
+	"url": "https://blog.cloudflare.com/project-crossbow-lessons-from-refactoring-a-large-scale-internal-tool/",
+	"datePublished": "2020-04-07T11:00:00.000Z",
+	"dateModified": "2020-04-07T11:00:00.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2020/04/Crossbow-tool@2x.png",
+		"width": 2182,
+		"height": 1138
+	},
+	"keywords": "Tools, Cloudflare Access, Support, Spectrum",
+	"description": "Crossbow is a tool that is now allowing Cloudflare’s Technical Support Engineers to perform diagnostic activities from running commands (like traceroutes, cURL requests and DNS queries) to debugging product features and performance features using bespoke tools.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

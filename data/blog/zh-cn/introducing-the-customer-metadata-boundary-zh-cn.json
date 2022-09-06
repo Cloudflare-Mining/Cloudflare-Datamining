@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Jon Levine",
+		"image": "http://blog.cloudflare.com/content/images/2018/04/prof-crop.jpg",
+		"url": "https://blog.cloudflare.com/author/jpl/",
+		"sameAs": [
+			"https://twitter.com/jplevine"
+		]
+	},
+	"headline": "隆重推出 Customer Metadata Boundary",
+	"url": "https://blog.cloudflare.com/zh-cn/introducing-the-customer-metadata-boundary-zh-cn/",
+	"datePublished": "2021-12-07T13:59:00.000Z",
+	"dateModified": "2021-12-30T00:14:29.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/12/image1-24-1.png",
+		"width": 1186,
+		"height": 573
+	},
+	"keywords": "简体中文 (CN), 安全, CIO Week (CN), 产品新闻",
+	"description": "数据本地化近年来得到了更多关注，因为许多国家将其视为控制或保护公民数据的一种方式。澳大利亚、中国、印度、巴西和韩国等国已经或目前正在考虑制定规定",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

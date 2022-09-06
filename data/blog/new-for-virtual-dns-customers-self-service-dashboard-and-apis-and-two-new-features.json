@@ -1,0 +1,34 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Dani Grant",
+		"image": "http://blog.cloudflare.com/content/images/2018/08/efVJR3rj_400x400.jpg",
+		"url": "https://blog.cloudflare.com/author/dani/",
+		"sameAs": [
+			"https://twitter.com/thedanigrant"
+		]
+	},
+	"headline": "New for Virtual DNS Customers: Self-Service Dashboard and APIs, and Two New Features",
+	"url": "https://blog.cloudflare.com/new-for-virtual-dns-customers-self-service-dashboard-and-apis-and-two-new-features/",
+	"datePublished": "2016-04-13T16:59:24.000Z",
+	"dateModified": "2018-08-27T21:53:09.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/Screen-Shot-2016-04-09-at-8-12-41-PM.png",
+	"keywords": "Product News, Virtual DNS, DNS, Reliability, Multi-User, 2FA, Security, Attacks, Dashboard, API",
+	"description": "Today we&#x27;re launching two new features and a brand new dashboard and API for Virtual DNS. Virtual DNS is CloudFlare’s DNS proxy that sits in front of some of the largest hosting providers in the world, shielding their DNS infrastructure from attacks.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

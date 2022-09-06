@@ -36,7 +36,7 @@
 	<p>以上攻击之后，我们筛查所有系统日志，以寻找来自这个特定攻击者的任何额外指纹。鉴于 Cloudflare Access 是所有Cloudflare 应用的中央控制点，我们可以搜索日志以查找攻击者可能破坏了任何系统的任何迹象。鉴于员工的电话成为了目标，我们也仔细检查了员工目录提供商的日志。我们没有发现任何破坏迹象。</p>
 	<h2 id="--4">吸取的教训及正在采取的额外措施</h2>
 	<p>我们从每一个攻击中学习。即使攻击没有成功，我们也正在根据所了解到的情况进行额外的调整。我们正在调整 Cloudflare Gateway 的设置，以限制或隔离对 24 小时内注册的域上所运行网站的访问。任何包含“cloudflare”、“okta”、“sso”和“2fa”等术语但不在允许列表中的网站，也将通过我们的浏览器隔离技术运行。我们也越来越多地使用 <a href="https://www.cloudflare.com/products/zero-trust/email-security/" target="_blank">Cloudflare Area 1 </a>的网络钓鱼识别技术来扫描 Web，寻找任何针对 Cloudflare 的网页。最后，我们正在加强 Access 实施，以防止来自未知 VPN、民用代理和基础设施提供商的任何登录。这些都是我们提供给客户的相同产品的标准功能。</p>
-	<p>这一攻击还使我们目前做得好的三件事情变得更加重要。第一，要求硬件密钥来访问所有应用。和 <a href="https://krebsonsecurity.com/2018/07/google-security-keys-neutralized-employee-phishing/" target="_blank">Google </a>一样，自从推出硬件密钥以来，我们还没有遭遇任何成功的钓鱼攻击。通过像 Cloudflare Access 这样的工具，即使对传统应用使用硬件密钥也变得简单易行。如果您的组织对我们如何推出硬件密钥感兴趣，请联系<a href="#email-protected"><span class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</span></a>，我们的安全团队将乐于分享我们在此过程中学到的最佳实践。</p>
+	<p>这一攻击还使我们目前做得好的三件事情变得更加重要。第一，要求硬件密钥来访问所有应用。和 <a href="https://krebsonsecurity.com/2018/07/google-security-keys-neutralized-employee-phishing/" target="_blank">Google </a>一样，自从推出硬件密钥以来，我们还没有遭遇任何成功的钓鱼攻击。通过像 Cloudflare Access 这样的工具，即使对传统应用使用硬件密钥也变得简单易行。如果您的组织对我们如何推出硬件密钥感兴趣，请联系[email protected]，我们的安全团队将乐于分享我们在此过程中学到的最佳实践。</p>
 	<p>第二，使用 Cloudflare 自身技术来保护我们的员工和系统。Cloudflare One 的 Access 和 Gateway 等解决方案对于在这次攻击中保持领先至关重要。我们实施的 Access 要求对每一个应用使用硬件密钥。它还为所有应用的身份验证创建一个中央日志位置。如有必要，我们还可以在这里终止可能受到入侵的员工的会话。Gateway 让我们能够迅速关闭类似这样的恶意网站，并了解哪些员工可能已被攻击所欺骗。这些都是我们作为 Cloudflare One 套件的一部分向 Cloudflare 客户提供的功能，而这次攻击证明了它们的有效性。</p>
 	<p>第三，拥有多疑但不责难的文化对安全至关重要。落入网络钓鱼骗局的三名员工没有受到训斥。我们都是人，都会犯错。至关重要的是，如果确实犯错了，就要上报而非隐瞒。这起事件再次证明了为什么安全是 Cloudflare 每个团队成员工作的一部分。</p>
 	<h2 id="--5">事件的时间线</h2>
@@ -182,5 +182,5 @@
 	</table>
 	<!--kg-card-end: html-->
 	<h2 id="--7">你可以做什么</h2>
-	<p>如果您的环境遭遇到类似攻击，请随时联系 <a href="#email-protected"><span class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</span></a>，我们乐于分享有关保障企业安全的最佳实践。最后，如果你想和我们一起检测并缓解下一次的攻击，我们的检测和响应团队正在招聘，<a href="https://boards.greenhouse.io/cloudflare/jobs/4364485?gh_jid=4364485" target="_blank">欢迎加入我们</a>！</p>
+	<p>如果您的环境遭遇到类似攻击，请随时联系 [email protected]，我们乐于分享有关保障企业安全的最佳实践。最后，如果你想和我们一起检测并缓解下一次的攻击，我们的检测和响应团队正在招聘，<a href="https://boards.greenhouse.io/cloudflare/jobs/4364485?gh_jid=4364485" target="_blank">欢迎加入我们</a>！</p>
 </div>

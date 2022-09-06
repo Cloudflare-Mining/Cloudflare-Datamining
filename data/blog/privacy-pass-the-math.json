@@ -1,0 +1,37 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Alex Davidson",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/10/pic_of_me.jpg",
+			"width": 600,
+			"height": 600
+		},
+		"url": "https://blog.cloudflare.com/author/alex-davidson/",
+		"sameAs": []
+	},
+	"headline": "Privacy Pass - “The Math”",
+	"url": "https://blog.cloudflare.com/privacy-pass-the-math/",
+	"datePublished": "2017-11-09T16:05:00.000Z",
+	"dateModified": "2021-09-20T17:55:33.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2017/11/image3-2.png",
+	"keywords": "Crypto, Privacy Pass, Security, CAPTCHA, Chrome, Firefox, Research",
+	"description": "During a recent internship at Cloudflare, I had the chance to help integrate support for improving the accessibility of websites that are protected by the Cloudflare edge network. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

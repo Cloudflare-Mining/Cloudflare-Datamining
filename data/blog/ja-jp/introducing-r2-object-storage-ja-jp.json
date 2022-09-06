@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Greg McKeon",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/05/Screen-Shot-2022-05-10-at-2.50.56-PM.png",
+			"width": 692,
+			"height": 662
+		},
+		"url": "https://blog.cloudflare.com/author/greg/",
+		"sameAs": [
+			"https://twitter.com/wegmckeon"
+		]
+	},
+	"headline": "Cloudflare R2ストレージの発表 - 高速で信頼できるオブジェクトストレージ、エグレス料金なし",
+	"url": "https://blog.cloudflare.com/ja-jp/introducing-r2-object-storage-ja-jp/",
+	"datePublished": "2021-09-27T23:00:00.000Z",
+	"dateModified": "2021-10-11T22:35:00.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/10/1-9.png",
+		"width": 1800,
+		"height": 1013
+	},
+	"keywords": "Birthday Week (JP), ストレージ, Cloudflare Workers (JP), 日本語",
+	"description": "帯域幅のエグレス料金をゼロにし、S3互換サービスから自動移行する、CloudflareのS3互換オブジェクトストレージサービスをご紹介します。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

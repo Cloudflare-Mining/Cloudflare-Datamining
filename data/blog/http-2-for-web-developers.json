@@ -1,0 +1,32 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Ryan Hodson",
+		"image": "http://blog.cloudflare.com/content/images/2018/02/2636b99.jpg",
+		"url": "https://blog.cloudflare.com/author/ryan-hodson/",
+		"sameAs": []
+	},
+	"headline": "HTTP/2 For Web Developers",
+	"url": "https://blog.cloudflare.com/http-2-for-web-developers/",
+	"datePublished": "2015-12-10T12:10:51.000Z",
+	"dateModified": "2018-08-24T21:51:23.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/domain-sharding-1.png",
+	"keywords": "HTTP2, spdy, Speed & Reliability, Optimization",
+	"description": "HTTP/2 changes the way web developers optimize their websites. In HTTP/1.1, it’s become common practice to eek out an extra 5% of page load speed by hacking away at your TCP connections and HTTP requests with techniques like spriting, inlining, domain sharding, and concatenation.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

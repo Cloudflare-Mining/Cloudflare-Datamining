@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew Prince",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
+			"width": 1196,
+			"height": 1190
+		},
+		"url": "https://blog.cloudflare.com/author/matthew-prince/",
+		"sameAs": [
+			"https://twitter.com/eastdakota"
+		]
+	},
+	"headline": "Today&#x27;s Outage Post Mortem",
+	"url": "https://blog.cloudflare.com/todays-outage-post-mortem-82515/",
+	"datePublished": "2013-03-03T13:47:00.000Z",
+	"dateModified": "2018-08-10T20:13:58.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/cloudflare_outage.png.scaled500.png",
+	"keywords": "Post Mortem, BGP, Outage, DDoS, Attacks",
+	"description": "This morning at 09:47 UTC CloudFlare effectively dropped off the Internet. The outage affected all of CloudFlare&#x27;s services including DNS and any services that rely on our web proxy.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

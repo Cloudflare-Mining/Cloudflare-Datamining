@@ -92,7 +92,7 @@
 </code></pre>
 	<p>environments/qa/main.tf</p>
 	<pre><code>module "zone_settings" {
-  source        = "<a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a>:foo/modules/zone_settings"
+  source        = "[email protected]:foo/modules/zone_settings"
   zone_name     = var.zone_name
   browser_check = var.zone_settings_browser_check
   [...]
@@ -137,11 +137,11 @@ variable "member_roles" {
   super_admin = "00001534sd1a2123781j5gj18gj511321"
 }
 users = {
-  "<a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a>"  = ["super_admin"]
-  "<a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a>"  = ["analytics", "audit_logs", "cache_purge", "cf_workers"]
-  "<a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a>"  = ["cf_stream"]
+  "[email protected]"  = ["super_admin"]
+  "[email protected]"  = ["analytics", "audit_logs", "cache_purge", "cf_workers"]
+  "[email protected]"  = ["cf_stream"]
   [...]
-  "<a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a>" = ["cf_stream"]
+  "[email protected]" = ["cf_stream"]
 }
 </code></pre>
 	<p>Another interesting case we dealt with was the <em>rate_limit</em> resource; the variable declaration (list of objects) &amp; implementation goes as follows:<br>

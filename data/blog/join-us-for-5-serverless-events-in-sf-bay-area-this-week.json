@@ -1,0 +1,36 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Andrew Fitch",
+		"image": "http://blog.cloudflare.com/content/images/2017/10/AJF-Headshot.jpg",
+		"url": "https://blog.cloudflare.com/author/andrew/",
+		"sameAs": [
+			"https://www.cloudflare.com",
+			"https://www.facebook.com/andrew.fitch.315",
+			"https://twitter.com/fitchaj"
+		]
+	},
+	"headline": "Join us for 5 serverless events in SF Bay Area this week",
+	"url": "https://blog.cloudflare.com/join-us-for-5-serverless-events-in-sf-bay-area-this-week/",
+	"datePublished": "2019-02-20T17:20:29.000Z",
+	"dateModified": "2020-05-13T16:38:53.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2019/02/Workers-EB-Image.png",
+	"keywords": "Cloudflare Workers, Cloudflare Workers KV, Developers, JavaScript, Serverless",
+	"description": "Developer Week Bay Area is approaching and our engineers and developer relations team are delivering several talks around the Bay. Join us in San Francisco and Oakland for the following talks.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

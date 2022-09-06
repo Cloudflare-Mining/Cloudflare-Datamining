@@ -1,0 +1,34 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "John Graham-Cumming",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
+		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
+		"sameAs": [
+			"https://twitter.com/jgrahamc"
+		]
+	},
+	"headline": "End of the road for RC4",
+	"url": "https://blog.cloudflare.com/end-of-the-road-for-rc4/",
+	"datePublished": "2015-02-23T18:51:04.000Z",
+	"dateModified": "2020-08-20T17:20:05.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/593px-Nokia_6120_Classic_alga_01-1.jpg",
+	"keywords": "RC4, Encryption, TLS, SSL, Security, Crypto Week",
+	"description": "Today, we completely disabled the RC4 encryption algorithm for all SSL/TLS connections to CloudFlare sites. It&#x27;s no longer possible to connect to any site that uses CloudFlare using RC4.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

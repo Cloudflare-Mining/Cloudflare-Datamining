@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew Prince",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
+			"width": 1196,
+			"height": 1190
+		},
+		"url": "https://blog.cloudflare.com/author/matthew-prince/",
+		"sameAs": [
+			"https://twitter.com/eastdakota"
+		]
+	},
+	"headline": "macOS と Windows向けのWARPベータ版の発表",
+	"url": "https://blog.cloudflare.com/ja-jp/announcing-the-beta-for-warp-for-macos-and-windows-ja-jp/",
+	"datePublished": "2020-04-01T13:00:00.000Z",
+	"dateModified": "2021-01-21T18:46:26.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2020/12/warp-desktop-comet.png",
+		"width": 1024,
+		"height": 513
+	},
+	"keywords": "1.1.1.1 (JP), WARP (JP), 製品ニュース (JP), プライバシー, 日本語",
+	"description": "昨年4月1日、当社はWARPを発表しました。WARPは、1.1.1.1 iOSとAndroidアプリで、インターネット接続の確保とスピードアップをするためのオプションです。現在、何百万人ものユーザーがWARPを使ってモバイルインターネット接続を確保しています。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

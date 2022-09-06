@@ -1,0 +1,45 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Junho Choi",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/05/junho_profile_300x300--1-.jpg",
+			"width": 300,
+			"height": 300
+		},
+		"url": "https://blog.cloudflare.com/author/junho/",
+		"sameAs": [
+			"https://saturnsoft.net",
+			"https://twitter.com/junhochoi"
+		]
+	},
+	"headline": "HTTP/2 업로드 속도 향상기",
+	"url": "https://blog.cloudflare.com/ko-kr/delivering-http-2-upload-speed-improvements-ko-kr/",
+	"datePublished": "2020-08-28T10:01:49.000Z",
+	"dateModified": "2021-01-21T21:00:30.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2020/08/Speed-header@2x-2.png",
+		"width": 2832,
+		"height": 1472
+	},
+	"keywords": "한국어, HTTP2 (KO), Network (KO)",
+	"description": "Cloudflare는 HTTP/2 클라이언트들이 우리 네트워크에 업로드하는 속도를 향상하였습니다. 이 글에서는 문제를 찾아내는 방법에서 시작하여 이를 수정하고 글로벌 인터넷의 업로드 속도 향상이 되기까지의 과정에 대해 설명하겠습니다. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

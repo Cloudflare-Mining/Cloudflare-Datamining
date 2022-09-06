@@ -1,0 +1,34 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Marek Majkowski",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/b5967d6c687939594adb6992723d0529.jpeg",
+		"url": "https://blog.cloudflare.com/author/marek-majkowski/",
+		"sameAs": [
+			"https://twitter.com/majek04"
+		]
+	},
+	"headline": "The curious case of slow downloads",
+	"url": "https://blog.cloudflare.com/the-curious-case-of-slow-downloads/",
+	"datePublished": "2016-04-11T12:23:02.000Z",
+	"dateModified": "2018-08-27T18:53:54.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/6784957048_4661ea7dfc_z.jpg",
+	"keywords": "Speed & Reliability, NGINX, Programming",
+	"description": "Some time ago we discovered that certain very slow downloads were getting abruptly terminated and began investigating whether that was a client (i.e. web browser) or server (i.e. us) problem.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

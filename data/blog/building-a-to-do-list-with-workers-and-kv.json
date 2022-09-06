@@ -1,0 +1,35 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Kristian Freeman",
+		"image": "http://blog.cloudflare.com/content/images/2019/05/2fGb07-c_400x400.jpg",
+		"url": "https://blog.cloudflare.com/author/kristian/",
+		"sameAs": [
+			"https://www.signalnerve.com",
+			"https://twitter.com/signalnerve"
+		]
+	},
+	"headline": "Building a To-Do List with Workers and KV",
+	"url": "https://blog.cloudflare.com/building-a-to-do-list-with-workers-and-kv/",
+	"datePublished": "2019-05-21T13:30:00.000Z",
+	"dateModified": "2019-08-13T20:55:34.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2019/05/workers-KV-dark-back@2x-1.png",
+	"keywords": "Serverless, Cloudflare Workers, Cloudflare Workers KV, JavaScript, Programming",
+	"description": "In this tutorial, we’ll build a todo list application in HTML, CSS and JavaScript, with a twist: all the data should be stored inside of the newly-launched Workers KV, and the application itself should be served directly from Cloudflare’s edge network, using Cloudflare Workers.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

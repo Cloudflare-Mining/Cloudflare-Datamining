@@ -1,0 +1,45 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Derek Chamorro",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2020/11/dc-01.png",
+			"width": 3001,
+			"height": 3000
+		},
+		"url": "https://blog.cloudflare.com/author/derek-chamorro/",
+		"sameAs": [
+			"https://randomsecurity.dev",
+			"https://twitter.com/theredinthesky"
+		]
+	},
+	"headline": "BMC 취약점을 다루는 Cloudflare의 접근 방식",
+	"url": "https://blog.cloudflare.com/ko-kr/bmc-vuln-ko-kr/",
+	"datePublished": "2022-05-26T13:17:00.000Z",
+	"dateModified": "2022-06-03T16:45:57.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/06/image3-43-2.png",
+		"width": 1868,
+		"height": 1050
+	},
+	"keywords": "취약점, 하드웨어, 속도 및 신뢰성, 제품 뉴스, 한국어",
+	"description": "펌웨어 취약점을 다루고 내부 데이터를 보호하는 Cloudflare의 접근 방식",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

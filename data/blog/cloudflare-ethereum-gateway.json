@@ -1,0 +1,32 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Jonathan Hoyland",
+		"image": "http://blog.cloudflare.com/content/images/2019/06/20190310_210646.jpg",
+		"url": "https://blog.cloudflare.com/author/jonathan-hoyland/",
+		"sameAs": []
+	},
+	"headline": "Cloudflare&#x27;s Ethereum Gateway",
+	"url": "https://blog.cloudflare.com/cloudflare-ethereum-gateway/",
+	"datePublished": "2019-06-19T13:01:00.000Z",
+	"dateModified": "2022-06-01T14:55:21.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2019/06/ethereum-Gateway@2x-1.png",
+	"keywords": "Crypto Week, Crypto, Cryptography, IPFS, Ethereum, Security, Research",
+	"description": "Today, we are excited to announce Cloudflare&#x27;s Ethereum Gateway, where you can interact with the Ethereum network without installing any software on your computer.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

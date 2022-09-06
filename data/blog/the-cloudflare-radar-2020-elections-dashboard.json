@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew Prince",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
+			"width": 1196,
+			"height": 1190
+		},
+		"url": "https://blog.cloudflare.com/author/matthew-prince/",
+		"sameAs": [
+			"https://twitter.com/eastdakota"
+		]
+	},
+	"headline": "The Cloudflare Radar 2020 Elections Dashboard",
+	"url": "https://blog.cloudflare.com/the-cloudflare-radar-2020-elections-dashboard/",
+	"datePublished": "2020-10-21T13:00:00.000Z",
+	"dateModified": "2020-10-21T13:00:00.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2020/10/Cloudflare-Radar-for-Elections-thumb.png",
+		"width": 1200,
+		"height": 628
+	},
+	"keywords": "Cloudflare Radar, Elections, Election Security",
+	"description": "We thought it was important to provide a view into how overall traffic to campaign and elections sites is trending as well as a view into the cyberattacks we&#x27;re observing. To that end, today we&#x27;re sharing data from our internal monitoring systems publicly through Cloudflare Radar.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

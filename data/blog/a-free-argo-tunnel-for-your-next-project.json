@@ -1,0 +1,34 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Sam Rhea",
+		"image": "http://blog.cloudflare.com/content/images/2018/07/photo-for-profile.jpg",
+		"url": "https://blog.cloudflare.com/author/sam/",
+		"sameAs": [
+			"https://twitter.com/LakeAustinBlvd"
+		]
+	},
+	"headline": "A free Argo Tunnel for your next project",
+	"url": "https://blog.cloudflare.com/a-free-argo-tunnel-for-your-next-project/",
+	"datePublished": "2019-06-15T13:00:00.000Z",
+	"dateModified": "2021-06-02T17:24:04.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2019/06/Screen-Shot-2019-06-11-at-9.58.58-AM.png",
+	"keywords": "Product News, Security, Developers, Cloudflare Tunnel",
+	"description": "Argo Tunnel lets you expose a server to the Internet without opening any ports. The service runs a lightweight process on your server that creates outbound tunnels to the Cloudflare network. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

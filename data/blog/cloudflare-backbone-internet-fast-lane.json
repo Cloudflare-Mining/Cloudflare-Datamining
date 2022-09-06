@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Tanner Ryan",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Tanner-Ryan.png",
+			"width": 486,
+			"height": 486
+		},
+		"url": "https://blog.cloudflare.com/author/tanner/",
+		"sameAs": [
+			"https://twitter.com/TheTannerRyan"
+		]
+	},
+	"headline": "Cloudflare Backbone: A Fast Lane on the Busy Internet Highway",
+	"url": "https://blog.cloudflare.com/cloudflare-backbone-internet-fast-lane/",
+	"datePublished": "2021-09-16T12:59:48.000Z",
+	"dateModified": "2021-09-20T17:12:07.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/09/Grbackbone.png",
+		"width": 1709,
+		"height": 1048
+	},
+	"keywords": "Speed Week, Cloudflare Network, Speed & Reliability, Better Internet, Product News",
+	"description": "It’s important that our network continues to help bring improved performance and resiliency to the Internet. To accomplish this, we built our own backbone. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

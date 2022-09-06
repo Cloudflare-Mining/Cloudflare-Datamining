@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Joshua Nelson",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/09/me-1.jpg",
+			"width": 600,
+			"height": 600
+		},
+		"url": "https://blog.cloudflare.com/author/joshua/",
+		"sameAs": []
+	},
+	"headline": "Profiling Your Workers with Wrangler",
+	"url": "https://blog.cloudflare.com/profiling-your-workers-with-wrangler/",
+	"datePublished": "2021-09-18T12:59:17.000Z",
+	"dateModified": "2021-09-18T12:59:17.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/09/image6-15.png",
+		"width": 1943,
+		"height": 1000
+	},
+	"keywords": "Speed Week, Wrangler, Cloudflare Workers",
+	"description": "To help measure performance of our customers’ Workers, we’re beginning to integrate with the Chrome DevTools protocol.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Jon Levine",
+		"image": "http://blog.cloudflare.com/content/images/2018/04/prof-crop.jpg",
+		"url": "https://blog.cloudflare.com/author/jpl/",
+		"sameAs": [
+			"https://twitter.com/jplevine"
+		]
+	},
+	"headline": "El video en vivo ahora es más directo: Presentamos la aceleración simultánea de streaming",
+	"url": "https://blog.cloudflare.com/es-es/introducing-concurrent-streaming-acceleration-es-es/",
+	"datePublished": "2019-05-16T13:00:00.000Z",
+	"dateModified": "2021-01-21T19:06:48.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2019/10/Concurrent-Streaming-1-2.png",
+		"width": 1813,
+		"height": 1221
+	},
+	"keywords": "Semana de la Velocidad, Velocidad y confiabilidad, Español, Noticias de productos, Cloudflare Stream (ES)",
+	"description": "Hoy nos complace presentar la aceleración simultánea de streaming, una nueva técnica para reducir la latencia de un extremo a otro del video en vivo en la web cuando se usa Stream Delivery.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

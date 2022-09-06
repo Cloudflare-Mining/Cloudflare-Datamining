@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Rita Kozlov",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/05/Rita-Kozlov.jpeg",
+			"width": 200,
+			"height": 200
+		},
+		"url": "https://blog.cloudflare.com/author/rita/",
+		"sameAs": [
+			"https://twitter.com/ritakozlov_"
+		]
+	},
+	"headline": "Platform Weekへようこそ",
+	"url": "https://blog.cloudflare.com/ja-jp/platform-week-2022-ja-jp/",
+	"datePublished": "2022-05-08T16:59:00.000Z",
+	"dateModified": "2022-05-09T21:34:49.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/05/image1-7-2.png",
+		"width": 1800,
+		"height": 1013
+	},
+	"keywords": "プラットフォームウィーク, 日本語, 開発者 (JP)",
+	"description": "今回のPlatform Weekでは、単に新しいものや、優れたものを提供したいわけではありません（もちろん、そういうものもあります）。私たちは原則を実現したいのです。ベストソリューションを導き出すために",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

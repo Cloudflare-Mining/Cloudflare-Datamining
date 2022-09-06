@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Alex Krivit",
+		"image": "http://blog.cloudflare.com/content/images/2018/08/RE0BQ6EF_400x400.jpg",
+		"url": "https://blog.cloudflare.com/author/alex/",
+		"sameAs": [
+			"https://twitter.com/ackriv"
+		]
+	},
+	"headline": "Le service Always Online de Cloudflare et l&#x27;organisation Internet Archive font équipe pour lutter contre les erreurs des serveurs d&#x27;origine",
+	"url": "https://blog.cloudflare.com/fr-fr/cloudflares-always-online-and-the-internet-archive-team-up-to-fight-origin-errors-fr-fr/",
+	"datePublished": "2020-09-17T13:00:00.000Z",
+	"dateModified": "2021-01-21T18:36:02.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/01/Internet-archive-copy-2@2x-2.png",
+		"width": 1600,
+		"height": 859
+	},
+	"keywords": "Français, Actualités produits",
+	"description": "Chaque jour, sur Internet voit survenir des événements négatifs mais tout à fait normaux : des milliers de serveurs d&#x27;origine tombent en panne, en entraînant des erreurs de connexion et la frustration des utilisateurs. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

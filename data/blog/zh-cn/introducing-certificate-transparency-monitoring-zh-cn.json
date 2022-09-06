@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Ben Solomon",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/08/Personal-Pic.jpg",
+			"width": 2000,
+			"height": 2000
+		},
+		"url": "https://blog.cloudflare.com/author/bensol/",
+		"sameAs": [
+			"https://twitter.com/bensol"
+		]
+	},
+	"headline": "Cloudflare发布证书透明度监控_发现伪造CA证书行为，防止中间人攻击",
+	"url": "https://blog.cloudflare.com/zh-cn/introducing-certificate-transparency-monitoring-zh-cn/",
+	"datePublished": "2019-08-08T22:00:00.000Z",
+	"dateModified": "2021-01-28T19:10:18.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2019/11/image10-1.png",
+		"width": 1327,
+		"height": 879
+	},
+	"keywords": "产品新闻, 安全, 简体中文 (CN), SSL (ZH)",
+	"description": "今天，我们将启动证书透明度监控（这是我暑期实习时的项目！），用以帮助客户发现恶意的证书。如果您选择使用CT（证书透明度）监控，我们将在您的某个域名获得证书时发送电子邮件给您。我们爬取所有的公共日志从而快速找到这些证书。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Alex Forster",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/10/me-even-smaller-crushed.png",
+			"width": 600,
+			"height": 600
+		},
+		"url": "https://blog.cloudflare.com/author/alex-forster/",
+		"sameAs": [
+			"https://twitter.com/alex_forster"
+		]
+	},
+	"headline": "PIPEFAIL: How a missing shell option slowed Cloudflare down",
+	"url": "https://blog.cloudflare.com/pipefail-how-a-missing-shell-option-slowed-cloudflare-down/",
+	"datePublished": "2022-04-05T12:57:28.000Z",
+	"dateModified": "2022-04-05T23:05:14.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/04/image4-3.png",
+		"width": 1200,
+		"height": 675
+	},
+	"keywords": "Post Mortem, Outage, Deep Dive, Speed & Reliability",
+	"description": "This post tells the story of how a missing shell option called “pipefail” slowed Cloudflare down.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew Prince",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
+			"width": 1196,
+			"height": 1190
+		},
+		"url": "https://blog.cloudflare.com/author/matthew-prince/",
+		"sameAs": [
+			"https://twitter.com/eastdakota"
+		]
+	},
+	"headline": "Cloudflare&#x27;s Architected to Stop the Biggest DDoS Attacks",
+	"url": "https://blog.cloudflare.com/how-cloudflares-architecture-allows-us-to-scale-to-stop-the-largest-attacks/",
+	"datePublished": "2016-10-26T12:59:29.000Z",
+	"dateModified": "2021-08-19T03:41:37.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/03/IBM-z13-Mainframe-1.png",
+	"keywords": "DDoS, Attacks, Mitigation, Protection, DNS, Reliability, Bandwidth, Security",
+	"description": "The last few weeks have seen several high-profile outages in legacy DNS and DDoS-mitigation services due to large scale attacks. Cloudflare&#x27;s customers have, understandably, asked how we are positioned to handle similar attacks.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

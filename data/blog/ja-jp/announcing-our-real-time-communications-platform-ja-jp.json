@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matt Silverlock",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/08/profile-1500px-square.jpeg",
+			"width": 1500,
+			"height": 1500
+		},
+		"url": "https://blog.cloudflare.com/author/silverlock/",
+		"sameAs": [
+			"https://twitter.com/elithrar"
+		]
+	},
+	"headline": "大規模なリアルタイムコミュニケーション",
+	"url": "https://blog.cloudflare.com/ja-jp/announcing-our-real-time-communications-platform-ja-jp/",
+	"datePublished": "2021-09-30T17:56:00.000Z",
+	"dateModified": "2021-10-11T22:33:26.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/10/1-16.png",
+		"width": 1801,
+		"height": 1013
+	},
+	"keywords": "Birthday Week (JP), Cloudflareストリーム, 動画, リアルタイムコミュニケーション, WebRTC (JP), 日本語",
+	"description": "Cloudflareでは、WebRTCコンポーネントをはじめとするオープンテクノロジーを中心にしてリアルタイムコミュニケーションアプリケーションを簡単に構築・拡張できるようにします。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

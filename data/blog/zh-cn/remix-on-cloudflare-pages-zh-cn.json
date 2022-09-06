@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Greg Brimble",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/09/Profile-Picture--Square-.jpg",
+			"width": 2000,
+			"height": 2000
+		},
+		"url": "https://blog.cloudflare.com/author/greg-brimble/",
+		"sameAs": [
+			"https://twitter.com/GregBrimble"
+		]
+	},
+	"headline": "使用全栈 Cloudflare Pages 支持 Remix",
+	"url": "https://blog.cloudflare.com/zh-cn/remix-on-cloudflare-pages-zh-cn/",
+	"datePublished": "2021-12-17T00:00:00.000Z",
+	"dateModified": "2022-02-16T15:26:24.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/02/remix.png",
+		"width": 1200,
+		"height": 675
+	},
+	"keywords": "Cloudflare Pages (CN)), 全栈周 (CN), 无服务器函数, Cloudflare Workers (CN), 无服务器",
+	"description": "我们在 11 月宣布了全栈 Cloudflare Pages 的公测版，从那时起，希望向其应用程序添加动态功能的开发人员开始广泛使用它。今天，我们很高兴地宣布 Pages 对 Remix 应用程序的支持，该应用程序由我们的全堆栈平台提供支持。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew Prince",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
+			"width": 1196,
+			"height": 1190
+		},
+		"url": "https://blog.cloudflare.com/author/matthew-prince/",
+		"sameAs": [
+			"https://twitter.com/eastdakota"
+		]
+	},
+	"headline": "30% More Traffic in Less Than a Blink of an Eye",
+	"url": "https://blog.cloudflare.com/30-more-traffic-in-less-than-a-blink-of-an-ey/",
+	"datePublished": "2012-04-18T22:43:00.000Z",
+	"dateModified": "2018-02-02T23:35:50.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/02/CloudFlare_Thailand_Traffic.png.scaled500.png",
+	"keywords": "Traffic, Peering, Speed & Reliability",
+	"description": "CloudFlare&#x27;s traffic grows in a number of different ways. The most obvious is that we sign up more websites. We also grow as the natural traffic to sites using CloudFlare increases as they get more popular themselves. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

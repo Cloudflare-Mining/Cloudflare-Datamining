@@ -1,0 +1,34 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Marek Majkowski",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/b5967d6c687939594adb6992723d0529.jpeg",
+		"url": "https://blog.cloudflare.com/author/marek-majkowski/",
+		"sameAs": [
+			"https://twitter.com/majek04"
+		]
+	},
+	"headline": "SYN 패킷 처리 실제​",
+	"url": "https://blog.cloudflare.com/ko-kr/syn-packet-handling-in-the-wild-ko-kr/",
+	"datePublished": "2018-01-15T13:50:00.000Z",
+	"dateModified": "2021-01-21T20:57:33.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/1471936772_652043cb6c_b.jpg",
+	"keywords": "한국어, SYN (KO)",
+	"description": "우리 Cloudflare는 실제 인터넷상의 서버 운영 경험이 많지만 이런 흑마술 수련도 게을리하지 않습니다. 이 블로그에서는 인터넷 프로토콜의 여러 어두운 부분을 다룬 적이 있지만, 이번에는 리눅스의 SYN패킷 처리에 대해서 자세히 알아 보도록 하겠습니다.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

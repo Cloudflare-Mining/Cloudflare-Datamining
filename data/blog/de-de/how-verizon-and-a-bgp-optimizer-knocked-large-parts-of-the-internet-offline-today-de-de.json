@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Tom Strickx",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/07/Headshot_Lisbon.png",
+			"width": 150,
+			"height": 176
+		},
+		"url": "https://blog.cloudflare.com/author/tom-strickx/",
+		"sameAs": [
+			"https://twitter.com/tstrickx"
+		]
+	},
+	"headline": "Wie Verizon und ein BGP Optimizer heute große Teile des Internets ausgeknockt haben",
+	"url": "https://blog.cloudflare.com/de-de/how-verizon-and-a-bgp-optimizer-knocked-large-parts-of-the-internet-offline-today-de-de/",
+	"datePublished": "2019-06-24T19:58:00.000Z",
+	"dateModified": "2021-01-22T18:51:14.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2019/07/leak2-2-1.png",
+		"width": 1600,
+		"height": 939
+	},
+	"keywords": "Deutsch, BGP (DE)",
+	"description": "Heute um 10:30 Uhr UTC erlitt das Internet einen kleinen Herzinfarkt. Ein kleines Unternehmen in Nord-Pennsylvania wurde zum bevorzugten Pfad vieler Internetrouten über Verizon (AS701), einem großen Internet-Transitanbieter. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

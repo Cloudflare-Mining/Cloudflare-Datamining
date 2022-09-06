@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "James Espinosa",
+		"image": {
+			"@type": "ImageObject",
+			"url": "//www.gravatar.com/avatar/0652b3169abf338ca1178e57f293d8ec?s=250&d=mm&r=x",
+			"width": 250,
+			"height": 250
+		},
+		"url": "https://blog.cloudflare.com/author/james-espinosa/",
+		"sameAs": [
+			"https://twitter.com/jamesejr7"
+		]
+	},
+	"headline": "Anatomy of a Targeted Ransomware Attack",
+	"url": "https://blog.cloudflare.com/targeted-ransomware-attack/",
+	"datePublished": "2021-03-23T13:00:00.000Z",
+	"dateModified": "2021-03-23T15:38:33.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/03/Ransom-DDoS-attacks-target-a-Fortune-Global-500-company-img-LP-1.png",
+		"width": 1815,
+		"height": 738
+	},
+	"keywords": "DDoS, Ransom Attack, Attacks, Ransom DDoS, RDDoS",
+	"description": "Imagine your most critical systems suddenly stop operating. And then someone demands a ransom to get your systems working again. Or someone launches a DDoS against you and demands a ransom to make it stop.  That’s the world of ransomware and ransom DDoS.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

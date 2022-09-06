@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Aaron Loyd",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2020/12/aaron-loyd.jpg",
+			"width": 600,
+			"height": 600
+		},
+		"url": "https://blog.cloudflare.com/author/aaron-loyd/",
+		"sameAs": []
+	},
+	"headline": "Using One Cron Parser Everywhere With Rust and Saffron",
+	"url": "https://blog.cloudflare.com/using-one-cron-parser-everywhere-with-rust-and-saffron/",
+	"datePublished": "2020-12-25T14:00:00.000Z",
+	"dateModified": "2020-12-25T14:00:01.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2020/12/image4-29.png",
+		"width": 1200,
+		"height": 628
+	},
+	"keywords": "Cloudflare Workers, Serverless, Rust",
+	"description": "Cron parsers are everywhere, each supporting their own extensions on the cron string format, which made consistency between parts of Cron Triggers difficult to achieve. Today we’re showing how we easily solved this problem with Rust without needing to write the same code twice.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

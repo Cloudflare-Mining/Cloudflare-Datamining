@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Shalabh Mohan",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/03/Shalabh-Mohan.jpeg",
+			"width": 450,
+			"height": 450
+		},
+		"url": "https://blog.cloudflare.com/author/shalabh/",
+		"sameAs": []
+	},
+	"headline": "隆重推出适用于电子邮件链接的浏览器隔离，阻止高级钓鱼威胁",
+	"url": "https://blog.cloudflare.com/zh-cn/email-link-isolation-zh-cn/",
+	"datePublished": "2022-06-20T12:57:43.000Z",
+	"dateModified": "2022-06-20T12:57:43.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/06/Screenshot-2022-06-20-at-10.19.17.png",
+		"width": 1506,
+		"height": 844
+	},
+	"keywords": "Zero Trust (CN), 产品新闻, Phishing (CN), Cloudflare Area 1 (CN), 简体中文, 电子邮件安全, 远程浏览器隔离, Cloudflare Email Security (JP), Cloudflare One Week (CN)",
+	"description": "我们正在将 Area 1 集成到我们更广泛的 Zero Trust 套件中，作为这一激动人心的过程的一部分，Cloudflare Gateway 客户很快就能启用针对电子邮件链接的远程浏览器隔离。通过电子邮件链接隔离，获得无与伦比的保护级别，免受基于电子邮件的复杂多渠道攻击",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Lucas Pardue",
+		"image": "http://blog.cloudflare.com/content/images/2018/12/Lucas---KIN01111.jpg",
+		"url": "https://blog.cloudflare.com/author/lucas/",
+		"sameAs": [
+			"https://twitter.com/SimmerVigor"
+		]
+	},
+	"headline": "How to test HTTP/3 and QUIC with Firefox Nightly",
+	"url": "https://blog.cloudflare.com/how-to-test-http-3-and-quic-with-firefox-nightly/",
+	"datePublished": "2020-06-30T11:00:00.000Z",
+	"dateModified": "2020-06-30T11:00:00.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2020/06/HTTP3-partnership-nightly-@3x.png",
+		"width": 2000,
+		"height": 1256
+	},
+	"keywords": "Security, Product News, QUIC, HTTP3",
+	"description": "Now that Firefox Nightly supports HTTP/3 we thought we&#x27;d share some instructions to help you enable and test it yourselves.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

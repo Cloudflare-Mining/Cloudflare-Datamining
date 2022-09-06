@@ -17,7 +17,7 @@
 		<p>What do we mean by a software architecture? To me the term architecture conveys a notion of the core elements of the system, the pieces that are difficult to change. A foundation on which the rest must be built. <cite><a href="https://www.martinfowler.com/articles/designDead.html" target="_blank">Martin Fowler</a></cite></p>
 	</blockquote>
 	<p>When getting started with this package, you'll notice there are 3 classes you'll need to instantiate:</p>
-	<pre><code class="language-php">$key     = new \Cloudflare\API\Auth\APIKey('<a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a>', 'apiKey');
+	<pre><code class="language-php">$key     = new \Cloudflare\API\Auth\APIKey('[email protected]', 'apiKey');
 $adapter = new Cloudflare\API\Adapter\Guzzle($key);
 $user    = new \Cloudflare\API\Endpoints\User($adapter);
     
@@ -49,7 +49,7 @@ interface Adapter
 	<p>Dependency Injection is also used where the parameters for an API Endpoint become more complicated then what is permitted by simpler variables types; for example, this is done for defining the Target or Configuration when configuring a Page Rule:</p>
 	<pre><code class="language-php">require_once('vendor/autoload.php');
 
-$key = new \Cloudflare\API\Auth\APIKey('<a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a>', 'apiKey');
+$key = new \Cloudflare\API\Auth\APIKey('[email protected]', 'apiKey');
 $adapter = new Cloudflare\API\Adapter\Guzzle($key);
 $zones = new \Cloudflare\API\Endpoints\Zones($adapter);
 

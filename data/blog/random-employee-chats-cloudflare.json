@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Sven Sauleau",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/09/7cBY6-H7_400x400--1-.jpg",
+			"width": 400,
+			"height": 400
+		},
+		"url": "https://blog.cloudflare.com/author/sven/",
+		"sameAs": [
+			"https://twitter.com/svensauleau"
+		]
+	},
+	"headline": "Random Employee Chats at Cloudflare",
+	"url": "https://blog.cloudflare.com/random-employee-chats-cloudflare/",
+	"datePublished": "2021-03-20T12:00:00.000Z",
+	"dateModified": "2021-03-20T12:00:00.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/03/Random-Employee-Chats-at-Cloudflare-blog-preview.png",
+		"width": 1156,
+		"height": 662
+	},
+	"keywords": "Cloudflare Workers, Cloudflare Workers KV, Wrangler",
+	"description": "We developed the Random Employee Chats application internally, with the goal of recreating the pre-pandemic informal interactions. Here&#x27;s how we moved from a shared spreadsheet to Cloudflare Workers to automate the entire process.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

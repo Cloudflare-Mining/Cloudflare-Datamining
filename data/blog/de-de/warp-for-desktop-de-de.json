@@ -1,0 +1,45 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Kyle Krum",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2020/10/KylePhoto.jpg",
+			"width": 2000,
+			"height": 2000
+		},
+		"url": "https://blog.cloudflare.com/author/kyle-krum/",
+		"sameAs": [
+			"https://www.linkedin.com/in/kylekrum/",
+			"https://twitter.com/KyleKrum"
+		]
+	},
+	"headline": "Wir präsentieren: WARP für Desktops und Cloudflare for Teams",
+	"url": "https://blog.cloudflare.com/de-de/warp-for-desktop-de-de/",
+	"datePublished": "2020-10-14T15:01:00.000Z",
+	"dateModified": "2021-01-12T01:30:17.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/01/4-1.png",
+		"width": 1200,
+		"height": 628
+	},
+	"keywords": "Produktneuigkeiten, Deutsch, Null Vertrauen Woche, Null Vertrauen, 1.1.1.1 (DE), WARP (DE), Cloudflare Gateway (DE)",
+	"description": "Cloudflare wurde vor zehn Jahren ins Leben gerufen, um Websites und Webapplikationen vor Angriffen zu schützen und für Besucher schneller zu machen.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

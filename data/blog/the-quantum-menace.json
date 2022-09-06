@@ -1,0 +1,40 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Armando Faz-Hernández",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/10/armfazh.png",
+			"width": 498,
+			"height": 516
+		},
+		"url": "https://blog.cloudflare.com/author/armfazh/",
+		"sameAs": [
+			"https://research.cloudflare.com/people/armando-faz/",
+			"https://twitter.com/armfazh"
+		]
+	},
+	"headline": "The Quantum Menace",
+	"url": "https://blog.cloudflare.com/the-quantum-menace/",
+	"datePublished": "2019-06-20T13:02:00.000Z",
+	"dateModified": "2022-02-28T17:35:52.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2019/06/post-quantum--2-1.png",
+	"keywords": "Crypto Week, Crypto, Research, Cryptography, Security, Product News, Deep Dive, Post-Quantum",
+	"description": "The impact of quantum computing on cryptography conducts research and development towards a Post-Quantum era.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

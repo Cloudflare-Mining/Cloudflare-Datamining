@@ -1,0 +1,32 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Zack Bloom",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/YZCINbF6.jpg",
+		"url": "https://blog.cloudflare.com/author/zack-bloom/",
+		"sameAs": []
+	},
+	"headline": "Comparing Serverless Performance for CPU Bound Tasks",
+	"url": "https://blog.cloudflare.com/serverless-performance-with-cpu-bound-tasks/",
+	"datePublished": "2018-07-09T06:08:00.000Z",
+	"dateModified": "2018-08-29T07:45:28.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/07/Screen-Shot-2018-07-05-at-11.07.51-AM.png",
+	"keywords": "Cloudflare Workers, JavaScript, Speed & Reliability, AWS, Serverless, Programming",
+	"description": "This post is a part of an ongoing series comparing the performance of Cloudflare Workers with other Serverless providers. In our past tests we intentionally chose a workload which imposes virtually no CPU load (returning the current time). ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

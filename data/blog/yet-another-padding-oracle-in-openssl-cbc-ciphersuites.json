@@ -1,0 +1,34 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Filippo Valsorda",
+		"image": "http://blog.cloudflare.com/content/images/2018/02/K6rX3ZSn_400x400.jpg",
+		"url": "https://blog.cloudflare.com/author/filippo/",
+		"sameAs": [
+			"https://twitter.com/filosottile"
+		]
+	},
+	"headline": "Yet Another Padding Oracle in OpenSSL CBC Ciphersuites",
+	"url": "https://blog.cloudflare.com/yet-another-padding-oracle-in-openssl-cbc-ciphersuites/",
+	"datePublished": "2016-05-04T12:20:42.000Z",
+	"dateModified": "2021-02-01T12:53:37.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/S22C-6e16050319300-1.jpg",
+	"keywords": "TLS, Vulnerabilities, Reliability, SSL, Security",
+	"description": "Yesterday a new vulnerability has been announced in OpenSSL/LibreSSL. A padding oracle in CBC mode decryption, to be precise. Just like Lucky13. Actually, it’s in the code that fixes Lucky13.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

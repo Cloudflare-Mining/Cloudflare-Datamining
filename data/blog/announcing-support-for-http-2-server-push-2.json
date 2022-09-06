@@ -1,0 +1,32 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Vlad Krasnov",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/165e069.jpg",
+		"url": "https://blog.cloudflare.com/author/vlad-krasnov/",
+		"sameAs": []
+	},
+	"headline": "Announcing Support for HTTP/2 Server Push",
+	"url": "https://blog.cloudflare.com/announcing-support-for-http-2-server-push-2/",
+	"datePublished": "2016-04-28T13:00:00.000Z",
+	"dateModified": "2020-08-14T15:13:23.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/They_started_our_car_by_pushing_it_backwards_up_the_hill-_-3854246685-.jpg",
+	"keywords": "HTTP2, Reliability, spdy, Product News",
+	"description": "Last November, we rolled out HTTP/2 support for all our customers. At the time, HTTP/2 was not in wide use, but more than 88k of the Alexa 2 million websites are now HTTP/2-enabled.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

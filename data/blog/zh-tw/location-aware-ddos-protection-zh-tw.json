@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Omer Yoachimik",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/Omer-1.png",
+			"width": 773,
+			"height": 653
+		},
+		"url": "https://blog.cloudflare.com/author/omer/",
+		"sameAs": [
+			"https://twitter.com/OmerYoahimik"
+		]
+	},
+	"headline": "隆重推出位置感知 DDoS 防護",
+	"url": "https://blog.cloudflare.com/zh-tw/location-aware-ddos-protection-zh-tw/",
+	"datePublished": "2022-07-11T12:57:00.000Z",
+	"dateModified": "2022-08-15T11:04:42.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/08/image2-4-2.png",
+		"width": 1801,
+		"height": 1013
+	},
+	"keywords": "DDoS (TW), 攻擊, 進階 DDoS, 託管規則, 產品新聞 (TW), 繁體中文 (TW)",
+	"description": "位置感知 DDoS 防護還會利用 Cloudflare 的機器學習模型來識別可能是自動化的流量。您可以將其用作額外訊號，來提供更準確的保護",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

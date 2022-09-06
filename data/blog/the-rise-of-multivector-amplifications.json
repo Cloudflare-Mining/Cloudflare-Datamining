@@ -1,0 +1,34 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Marek Majkowski",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/b5967d6c687939594adb6992723d0529.jpeg",
+		"url": "https://blog.cloudflare.com/author/marek-majkowski/",
+		"sameAs": [
+			"https://twitter.com/majek04"
+		]
+	},
+	"headline": "The rise of multivector DDoS attacks",
+	"url": "https://blog.cloudflare.com/the-rise-of-multivector-amplifications/",
+	"datePublished": "2018-11-12T11:27:01.000Z",
+	"dateModified": "2021-05-19T18:43:34.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/11/ams-1-1.png",
+	"keywords": "Security, DDoS, Attacks, Speed & Reliability",
+	"description": "It&#x27;s been a while since we last wrote about Layer 3/4 DDoS attacks on this blog. This is a good news - we&#x27;ve been quietly handling the daily onslaught of DDoS attacks. Since our last write-up, a handful of interesting L3/4 attacks have happened. Let&#x27;s review them.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,34 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Connor Peshek",
+		"image": "http://blog.cloudflare.com/content/images/2017/11/icBKUT78_400x400.jpg",
+		"url": "https://blog.cloudflare.com/author/connor-peshek/",
+		"sameAs": [
+			"https://twitter.com/ConzorKingKong"
+		]
+	},
+	"headline": "The Serverlist: 2nd Edition - Available Now",
+	"url": "https://blog.cloudflare.com/serverlist-2nd-edition/",
+	"datePublished": "2019-02-26T16:00:00.000Z",
+	"dateModified": "2019-09-24T19:00:08.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2019/02/serverlist-header.png",
+	"keywords": "Serverless, The Serverlist Newsletter, Cloudflare Workers, Cloudflare Workers KV, Developers",
+	"description": "Check out our second edition of The Serverlist below. Get the latest scoop on the serverless space, get your hands dirty with new developer tutorials, engage in conversations with other serverless developers, and find upcoming meetups and conferences to attend.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

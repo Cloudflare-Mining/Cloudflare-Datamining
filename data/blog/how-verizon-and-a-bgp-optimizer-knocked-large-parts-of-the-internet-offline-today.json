@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Tom Strickx",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/07/Headshot_Lisbon.png",
+			"width": 150,
+			"height": 176
+		},
+		"url": "https://blog.cloudflare.com/author/tom-strickx/",
+		"sameAs": [
+			"https://twitter.com/tstrickx"
+		]
+	},
+	"headline": "How Verizon and a BGP Optimizer Knocked Large Parts of the Internet Offline Today",
+	"url": "https://blog.cloudflare.com/how-verizon-and-a-bgp-optimizer-knocked-large-parts-of-the-internet-offline-today/",
+	"datePublished": "2019-06-24T19:58:39.000Z",
+	"dateModified": "2019-06-24T23:05:21.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2019/06/leak2-2-1.png",
+	"keywords": "BGP",
+	"description": "Today at 10:30UTC, the Internet had a small heart attack. A small company in Northern Pennsylvania became a preferred path of many Internet routes through Verizon (AS701), a major Internet transit provider. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

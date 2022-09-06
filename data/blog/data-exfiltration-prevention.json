@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Misha Yalavarthy",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/03/Screen-Shot-2021-03-16-at-12.31.11-PM.png",
+			"width": 386,
+			"height": 385
+		},
+		"url": "https://blog.cloudflare.com/author/misha/",
+		"sameAs": [
+			"https://twitter.com/Mushhuuu"
+		]
+	},
+	"headline": "Using Cloudflare for Data Loss Prevention",
+	"url": "https://blog.cloudflare.com/data-exfiltration-prevention/",
+	"datePublished": "2021-03-24T13:00:00.000Z",
+	"dateModified": "2022-02-03T13:39:04.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/03/image4-30.png",
+		"width": 1870,
+		"height": 984
+	},
+	"keywords": "Security Week, Cloudflare One, Data Loss Prevention, Data Exfiltration",
+	"description": "The increased use of cloud-based SaaS providers to store and access sensitive data introduces a swath of security risks as management of these resources can be unwieldy. The risk of data loss can be managed by using Cloudflare Access, API Shield, and Browser Isolation.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Sam Rhea",
+		"image": "http://blog.cloudflare.com/content/images/2018/07/photo-for-profile.jpg",
+		"url": "https://blog.cloudflare.com/author/sam/",
+		"sameAs": [
+			"https://twitter.com/LakeAustinBlvd"
+		]
+	},
+	"headline": "How Cloudflare keeps employees productive from any location",
+	"url": "https://blog.cloudflare.com/how-cloudflare-keeps-employees-productive-from-any-location/",
+	"datePublished": "2020-03-06T21:30:00.000Z",
+	"dateModified": "2020-08-20T23:06:18.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2020/03/Cloudflare-access-white-back-@2x--1-.png",
+		"width": 2368,
+		"height": 1243
+	},
+	"keywords": "Cloudflare Access, Cloudflare Zero Trust, VPN, Security",
+	"description": "Cloudflare employs more than 1,200 people in 13 different offices and maintains a network that operates in 200 cities. To do that, we used to suffer through a traditional corporate VPN that backhauled traffic through a physical VPN appliance.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

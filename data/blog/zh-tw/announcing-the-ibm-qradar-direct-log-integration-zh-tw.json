@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Tanushree Sharma",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/09/IMG_1328-1.jpg",
+			"width": 1895,
+			"height": 1874
+		},
+		"url": "https://blog.cloudflare.com/author/tanushree/",
+		"sameAs": [
+			"https://twitter.com/TanushreeS5"
+		]
+	},
+	"headline": "運用 IBM QRadar SIEM 從 Cloudflare 記錄中獲取深入解析",
+	"url": "https://blog.cloudflare.com/zh-tw/announcing-the-ibm-qradar-direct-log-integration-zh-tw/",
+	"datePublished": "2022-03-14T12:59:00.000Z",
+	"dateModified": "2022-06-30T08:04:03.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/06/image2-12-1.png",
+		"width": 1800,
+		"height": 1013
+	},
+	"keywords": "Security Week (TW), 日誌, 分析 (TW), 繁體中文 (TW)",
+	"description": "我們很高興宣布，Cloudflare 客戶現在能夠直接將其記錄直接推送至 IBM Security QRadar SIEM。這種直接整合能夠讓 Cloudflare 和 QRadar SIEM 客戶節省成本，傳送記錄也更快速，因為不需要中間雲端儲存",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

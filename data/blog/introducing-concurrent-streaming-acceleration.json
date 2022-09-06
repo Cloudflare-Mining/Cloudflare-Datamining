@@ -1,0 +1,34 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Jon Levine",
+		"image": "http://blog.cloudflare.com/content/images/2018/04/prof-crop.jpg",
+		"url": "https://blog.cloudflare.com/author/jpl/",
+		"sameAs": [
+			"https://twitter.com/jplevine"
+		]
+	},
+	"headline": "Live video just got more live: Introducing Concurrent Streaming Acceleration",
+	"url": "https://blog.cloudflare.com/introducing-concurrent-streaming-acceleration/",
+	"datePublished": "2019-05-16T13:00:00.000Z",
+	"dateModified": "2019-12-19T15:58:12.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2019/05/Concurrent-Streaming-1.png",
+	"keywords": "Speed Week, Cloudflare Stream, Video, Speed & Reliability, Product News",
+	"description": "Today we’re excited to introduce Concurrent Streaming Acceleration, a new technique for reducing the end-to-end latency of live video on the web when using Stream Delivery.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

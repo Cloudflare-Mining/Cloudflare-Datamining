@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "David Tuber",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/07/kutiya-face.png",
+			"width": 983,
+			"height": 1049
+		},
+		"url": "https://blog.cloudflare.com/author/tubes/",
+		"sameAs": [
+			"https://twitter.com/tubes__"
+		]
+	},
+	"headline": "隆重推出 Cloudflare Network Interconnect",
+	"url": "https://blog.cloudflare.com/zh-cn/cloudflare-network-interconnect-zh-cn/",
+	"datePublished": "2020-08-04T14:40:00.000Z",
+	"dateModified": "2021-01-28T20:11:55.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2020/11/Cloudflare-Network-Interconnect-@2x-2.png",
+		"width": 1600,
+		"height": 856
+	},
+	"keywords": "简体中文 (CN), Cloudflare Access (CN), Magic Transit (CN)",
+	"description": "今天，我们很高兴地宣布 Cloudflare Network Interconnect（CNI）上线运营。CNI 使我们的客户无论身在何处都可以将分支机构和总部直接与 Cloudflare 互连，将 Cloudflare 的全套网络功能引入他们的物理网络边缘。与使用公共互联网连接到 Cloudflare 相比，使用 CNI 进行互连具有安全性、可靠性和性能上的优势",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

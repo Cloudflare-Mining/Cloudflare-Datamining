@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Omer Yoachimik",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/Omer-1.png",
+			"width": 773,
+			"height": 653
+		},
+		"url": "https://blog.cloudflare.com/author/omer/",
+		"sameAs": [
+			"https://twitter.com/OmerYoahimik"
+		]
+	},
+	"headline": "Introducing Location-Aware DDoS Protection",
+	"url": "https://blog.cloudflare.com/location-aware-ddos-protection/",
+	"datePublished": "2022-07-11T12:57:54.000Z",
+	"dateModified": "2022-08-15T11:04:44.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/07/image2-3.png",
+		"width": 1801,
+		"height": 1013
+	},
+	"keywords": "DDoS, Attacks, Advanced DDoS, Managed Rules, Product News",
+	"description": "Location-Aware DDoS Protection is now available in beta for Cloudflare Enterprise customers that are subscribed to the Advanced DDoS service",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

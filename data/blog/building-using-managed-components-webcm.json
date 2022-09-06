@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Yo&#x27;av Moshe",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/11/IMG_4345-01-01.jpeg",
+			"width": 1392,
+			"height": 1393
+		},
+		"url": "https://blog.cloudflare.com/author/yoav/",
+		"sameAs": [
+			"https://twitter.com/yoavmoshe"
+		]
+	},
+	"headline": "Building and using Managed Components with WebCM",
+	"url": "https://blog.cloudflare.com/building-using-managed-components-webcm/",
+	"datePublished": "2022-08-03T13:00:00.000Z",
+	"dateModified": "2022-08-26T07:04:05.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/08/image1-7.png",
+		"width": 1800,
+		"height": 1013
+	},
+	"keywords": "Zaraz, Managed Components, WebCM, Open Source",
+	"description": "This is how Managed Components can be useful for you right now, if you manage a website or if you’re building third-party tools",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

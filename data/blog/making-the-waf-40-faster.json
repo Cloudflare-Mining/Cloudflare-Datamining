@@ -1,0 +1,45 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Miguel de Moura",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/03/9093796.jpg",
+			"width": 600,
+			"height": 600
+		},
+		"url": "https://blog.cloudflare.com/author/miguel/",
+		"sameAs": [
+			"https://migueldemoura.com",
+			"https://twitter.com/miguel_demoura"
+		]
+	},
+	"headline": "Making the WAF 40% faster",
+	"url": "https://blog.cloudflare.com/making-the-waf-40-faster/",
+	"datePublished": "2020-07-01T11:00:00.000Z",
+	"dateModified": "2021-01-25T13:15:43.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2020/07/results.png",
+		"width": 1395,
+		"height": 722
+	},
+	"keywords": "WAF, Performance",
+	"description": "As with all Cloudflare security products, the WAF is designed to not sacrifice performance for security, but there is always room for improvement.\nThis blog post provides a brief overview of the latest performance improvements that were rolled out to our customers.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew Prince",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
+			"width": 1196,
+			"height": 1190
+		},
+		"url": "https://blog.cloudflare.com/author/matthew-prince/",
+		"sameAs": [
+			"https://twitter.com/eastdakota"
+		]
+	},
+	"headline": "CloudFlare &amp; OpenDNS Work Together to Help the Web",
+	"url": "https://blog.cloudflare.com/cloudflare-opendns-work-together-to-save-the/",
+	"datePublished": "2012-05-03T13:00:00.000Z",
+	"dateModified": "2018-02-03T00:37:58.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/02/cloudflare_opendns_savetheweb.png.scaled500.png",
+	"keywords": "Save The Web, Malware, OpenDNS, Legal",
+	"description": "Several years ago, some suspected cyber criminals on the Internet wrote a family of malware dubbed DNSChanger. About a year ago, law enforcement tracked down the suspected cyber criminals behind this malware.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

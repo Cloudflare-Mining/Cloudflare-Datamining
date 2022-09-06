@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Omer Yoachimik",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/Omer-1.png",
+			"width": 773,
+			"height": 653
+		},
+		"url": "https://blog.cloudflare.com/author/omer/",
+		"sameAs": [
+			"https://twitter.com/OmerYoahimik"
+		]
+	},
+	"headline": "Maaf, dengan siapa saya berbicara? Peningkatan serangan DDoS VoIP baru-baru ini",
+	"url": "https://blog.cloudflare.com/id-id/attacks-on-voip-providers-id-id/",
+	"datePublished": "2021-10-01T18:28:00.000Z",
+	"dateModified": "2021-10-27T20:16:38.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/10/image-2-1-8.png",
+		"width": 1360,
+		"height": 772
+	},
+	"keywords": "DDoS (ID), VoiP (ID)",
+	"description": "Selama sebulan terakhir, beberapa penyedia Voice over Internet Protocol (VoIP) telah menjadi target serangan Distributed Denial of Service (DDoS) dari entitas yang mengaku sebagai REvil. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

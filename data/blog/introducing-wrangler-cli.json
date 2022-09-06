@@ -1,0 +1,32 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Ashley Williams",
+		"image": "http://blog.cloudflare.com/content/images/2019/04/photo.jpg",
+		"url": "https://blog.cloudflare.com/author/ashley-williams/",
+		"sameAs": []
+	},
+	"headline": "🤠 The Wrangler CLI: Deploying Rust with WASM on Cloudflare Workers",
+	"url": "https://blog.cloudflare.com/introducing-wrangler-cli/",
+	"datePublished": "2019-03-28T16:08:45.000Z",
+	"dateModified": "2021-05-18T05:43:29.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2019/03/wrangler-copy@2x.png",
+	"keywords": "Cloudflare Workers, Serverless, JavaScript, WebAssembly, Rust, CLI, Wrangler",
+	"description": "Today, we&#x27;re open sourcing and announcing wrangler, a CLI tool for building, previewing, and publishing Rust and WebAssembly Cloudflare Workers. If that sounds like some word salad to you, that&#x27;s a reasonable reaction.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

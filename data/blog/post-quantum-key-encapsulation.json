@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Goutam Tamvada",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/02/goutam-tamvada.jpg",
+			"width": 400,
+			"height": 400
+		},
+		"url": "https://blog.cloudflare.com/author/goutam-tamvada/",
+		"sameAs": []
+	},
+	"headline": "Deep dive into a post-quantum key encapsulation algorithm",
+	"url": "https://blog.cloudflare.com/post-quantum-key-encapsulation/",
+	"datePublished": "2022-02-22T13:59:26.000Z",
+	"dateModified": "2022-02-23T09:36:54.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/02/image4-10.png",
+		"width": 1800,
+		"height": 1013
+	},
+	"keywords": "Research, Cryptography, Post-Quantum",
+	"description": "In this blog post, we will look at what Key Encapsulation Mechanisms are and why they matter in a post-quantum world",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

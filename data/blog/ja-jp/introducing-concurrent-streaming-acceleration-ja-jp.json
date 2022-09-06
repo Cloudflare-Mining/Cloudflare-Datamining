@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Jon Levine",
+		"image": "http://blog.cloudflare.com/content/images/2018/04/prof-crop.jpg",
+		"url": "https://blog.cloudflare.com/author/jpl/",
+		"sameAs": [
+			"https://twitter.com/jplevine"
+		]
+	},
+	"headline": "ライブ動画がもっと生き生きと同時ストリーミングアクセラレーションの導入",
+	"url": "https://blog.cloudflare.com/ja-jp/introducing-concurrent-streaming-acceleration-ja-jp/",
+	"datePublished": "2019-05-16T13:00:00.000Z",
+	"dateModified": "2021-01-21T18:45:34.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2019/12/Concurrent-Streaming-1.png",
+		"width": 1813,
+		"height": 1221
+	},
+	"keywords": "日本語, スピードウィーク, Cloudflareストリーム, 動画, 製品ニュース (JP), スピードと信頼性",
+	"description": "今日は、ストリーム配信を利用する際に、Web 上のライブ動画のエンドツーエンドのレイテンシーを短縮するための新しい手法である、同時ストリーミングアクセラレーションの導入をご紹介できることを嬉しく思います。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

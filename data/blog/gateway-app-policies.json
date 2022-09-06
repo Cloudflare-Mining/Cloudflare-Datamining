@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Malavika Balachandran Tadeusz",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/12/IMG_7208Malavika-Balachandran-Tadeusz.png",
+			"width": 200,
+			"height": 200
+		},
+		"url": "https://blog.cloudflare.com/author/malavika/",
+		"sameAs": [
+			"https://twitter.com/malavikabala"
+		]
+	},
+	"headline": "Control web applications with two-clicks in Cloudflare Gateway",
+	"url": "https://blog.cloudflare.com/gateway-app-policies/",
+	"datePublished": "2021-03-09T12:00:00.000Z",
+	"dateModified": "2021-03-09T22:17:49.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/03/image2-4.png",
+		"width": 2000,
+		"height": 949
+	},
+	"keywords": "Cloudflare Zero Trust, Cloudflare Gateway, Product News, Zero Trust, Security",
+	"description": "Announcing Application policies in Cloudflare Gateway. With Gateway, users instead connect to one of Cloudflare’s data centers in 200 cities around the world where our network can apply consistent security policies for all of their Internet traffic.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

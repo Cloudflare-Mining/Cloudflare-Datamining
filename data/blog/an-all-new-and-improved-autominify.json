@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew Prince",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
+			"width": 1196,
+			"height": 1190
+		},
+		"url": "https://blog.cloudflare.com/author/matthew-prince/",
+		"sameAs": [
+			"https://twitter.com/eastdakota"
+		]
+	},
+	"headline": "An All New (and Improved) AutoMinify",
+	"url": "https://blog.cloudflare.com/an-all-new-and-improved-autominify/",
+	"datePublished": "2011-06-18T23:35:00.000Z",
+	"dateModified": "2018-08-23T22:32:37.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/01/minify.jpg",
+	"keywords": "Speed & Reliability, AutoMinify, JavaScript",
+	"description": "We turned on AutoMinify as a beta feature a while ago, but we weren&#x27;t particularly happy with it. Originally, we did it the same way everyone else does: we&#x27;d request the resource from the origin, serve it unminified on the first load, cache it, and then...",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

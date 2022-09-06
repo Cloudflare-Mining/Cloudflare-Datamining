@@ -1,0 +1,34 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "John Graham-Cumming",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
+		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
+		"sameAs": [
+			"https://twitter.com/jgrahamc"
+		]
+	},
+	"headline": "No upgrade needed: CloudFlare sites already protected from FREAK",
+	"url": "https://blog.cloudflare.com/cloudflare-sites-are-protected-from-freak/",
+	"datePublished": "2015-03-04T00:32:33.000Z",
+	"dateModified": "2018-08-24T01:07:57.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/2659844503_53300bee78_z.jpg",
+	"keywords": "Vulnerabilities, OpenSSL, SSL, Attacks, RC4, Elliptic Curves",
+	"description": "The newly announced FREAK vulnerability is not a concern for CloudFlare&#x27;s SSL customers. We do not support &#x27;export grade&#x27; cryptography (which, by its nature, is weak) and we upgraded to the non-vulnerable version of OpenSSL the day it was released in early January.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

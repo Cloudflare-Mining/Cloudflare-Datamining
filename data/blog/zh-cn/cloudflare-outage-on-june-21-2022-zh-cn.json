@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Tom Strickx",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/07/Headshot_Lisbon.png",
+			"width": 150,
+			"height": 176
+		},
+		"url": "https://blog.cloudflare.com/author/tom-strickx/",
+		"sameAs": [
+			"https://twitter.com/tstrickx"
+		]
+	},
+	"headline": "2022 年 6 月 21 日 Cloudflare 服务故障报告",
+	"url": "https://blog.cloudflare.com/zh-cn/cloudflare-outage-on-june-21-2022-zh-cn/",
+	"datePublished": "2022-06-21T12:38:00.000Z",
+	"dateModified": "2022-06-22T14:45:57.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/06/Screenshot-2022-06-22-at-09.57.33.png",
+		"width": 1510,
+		"height": 842
+	},
+	"keywords": "停电, 验尸, 简体中文",
+	"description": "2022 年 6 月 21 日，Cloudflare 发生了一次中断，影响到我们 19 个数据中心的流量",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew Prince",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
+			"width": 1196,
+			"height": 1190
+		},
+		"url": "https://blog.cloudflare.com/author/matthew-prince/",
+		"sameAs": [
+			"https://twitter.com/eastdakota"
+		]
+	},
+	"headline": "Thoughts on Network Neutrality, the FCC, and the Future of Internet Governance",
+	"url": "https://blog.cloudflare.com/net-neutrality/",
+	"datePublished": "2015-02-27T00:14:00.000Z",
+	"dateModified": "2018-08-24T00:46:14.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/fcc-logo.gif",
+	"keywords": "FCC, Net Neutrality, Internet Governance, Legal, Politics",
+	"description": "Today the United States Federal Communications Commission (FCC) voted to extend the rules that previously regulated the telephone industry to now regulate Internet Service Providers (ISPs).",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

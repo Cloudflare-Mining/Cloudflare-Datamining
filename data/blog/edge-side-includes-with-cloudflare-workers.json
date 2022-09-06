@@ -1,0 +1,32 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Stephane Nouvellon",
+		"image": "http://blog.cloudflare.com/content/images/2018/04/photo.jpg",
+		"url": "https://blog.cloudflare.com/author/stephane/",
+		"sameAs": []
+	},
+	"headline": "Edge-Side-Includes with Cloudflare Workers",
+	"url": "https://blog.cloudflare.com/edge-side-includes-with-cloudflare-workers/",
+	"datePublished": "2018-08-20T08:00:00.000Z",
+	"dateModified": "2018-08-29T07:50:38.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/workers-social.png",
+	"keywords": "Cloudflare Workers, Serverless, JavaScript, Programming",
+	"description": "At Cloudflare we’re accelerating web assets in a number of different ways. Part of this is caching, by storing the response given by the origin server directly within our 151+ global data centers.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

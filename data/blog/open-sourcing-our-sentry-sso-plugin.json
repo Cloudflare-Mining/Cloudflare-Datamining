@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Sam Rhea",
+		"image": "http://blog.cloudflare.com/content/images/2018/07/photo-for-profile.jpg",
+		"url": "https://blog.cloudflare.com/author/sam/",
+		"sameAs": [
+			"https://twitter.com/LakeAustinBlvd"
+		]
+	},
+	"headline": "Open sourcing our Sentry SSO plugin",
+	"url": "https://blog.cloudflare.com/open-sourcing-our-sentry-sso-plugin/",
+	"datePublished": "2020-03-11T12:00:00.000Z",
+	"dateModified": "2020-03-11T13:19:31.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2020/03/pasted-image-0-1.png",
+		"width": 1334,
+		"height": 844
+	},
+	"keywords": "Cloudflare Zero Trust, Cloudflare Access, Security, SSO, VPN",
+	"description": "Cloudflare Access, part of Cloudflare for Teams, replaces legacy corporate VPNs with Cloudflare’s global network. Using your existing identity provider, Access enables your end users to login from anywhere — without a clunky agent or traffic backhaul through a centralized appliance or VPN.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

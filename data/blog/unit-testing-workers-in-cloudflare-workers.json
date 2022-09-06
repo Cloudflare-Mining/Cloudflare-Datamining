@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Tim Obezuk",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/05/0-1.jpeg",
+			"width": 200,
+			"height": 200
+		},
+		"url": "https://blog.cloudflare.com/author/tim-obezuk/",
+		"sameAs": [
+			"https://twitter.com/obezuk"
+		]
+	},
+	"headline": "Unit Testing Workers, in Cloudflare Workers",
+	"url": "https://blog.cloudflare.com/unit-testing-workers-in-cloudflare-workers/",
+	"datePublished": "2019-05-02T13:00:00.000Z",
+	"dateModified": "2019-05-02T12:59:59.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2019/05/terminal-worker.png",
+	"keywords": "Cloudflare Workers, Serverless, JavaScript, Developers",
+	"description": "We recently wrote about unit testing Cloudflare Workers within a mock environment using CloudWorker (a Node.js based mock Cloudflare Worker environment created by Dollar Shave Club&#x27;s engineering team). See Unit Testing Worker Functions.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

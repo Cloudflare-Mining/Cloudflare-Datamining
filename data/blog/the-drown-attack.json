@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "John Graham-Cumming",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
+		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
+		"sameAs": [
+			"https://twitter.com/jgrahamc"
+		]
+	},
+	"headline": "Staying afloat: the DROWN Attack and CloudFlare",
+	"url": "https://blog.cloudflare.com/the-drown-attack/",
+	"datePublished": "2016-03-01T13:45:08.000Z",
+	"dateModified": "2018-08-28T20:19:52.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2018/08/DROWN_logo.svg",
+		"width": 307,
+		"height": 306
+	},
+	"keywords": "Attacks, SSL, Vulnerabilities, Security",
+	"description": "CloudFlare customers are automatically protected against the recently disclosed DROWN Attack. We do not have SSLv2 enabled on our servers.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

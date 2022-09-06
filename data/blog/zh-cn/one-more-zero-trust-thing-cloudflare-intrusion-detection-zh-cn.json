@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Sam Rhea",
+		"image": "http://blog.cloudflare.com/content/images/2018/07/photo-for-profile.jpg",
+		"url": "https://blog.cloudflare.com/author/sam/",
+		"sameAs": [
+			"https://twitter.com/LakeAustinBlvd"
+		]
+	},
+	"headline": "还有一件事（零信任）：Cloudflare Intrusion Detection System",
+	"url": "https://blog.cloudflare.com/zh-cn/one-more-zero-trust-thing-cloudflare-intrusion-detection-zh-cn/",
+	"datePublished": "2020-10-17T13:00:00.000Z",
+	"dateModified": "2021-01-27T02:52:34.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2020/12/Group-711-2.png",
+		"width": 1600,
+		"height": 914
+	},
+	"keywords": "简体中文 (CN), 入侵检测, 零信任 (CN), 零信任周 (CN), 安全性, Cloudflare IDS (CN)",
+	"description": "今天，我们非常高兴地公布我们的Cloudflare Intrusion Detection System 计划，这款新产品将能够监控您的网络，并在怀疑遇到攻击时发出警报。通过与 Cloudflare One 深度集成，",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

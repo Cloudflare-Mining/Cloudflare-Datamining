@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Abe Carryl",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2020/10/3A8B82DA-79A1-44EB-873A-B56773A4F764.jpeg",
+			"width": 900,
+			"height": 900
+		},
+		"url": "https://blog.cloudflare.com/author/abe/",
+		"sameAs": [
+			"https://twitter.com/mrlincolnlogs"
+		]
+	},
+	"headline": "将 Cloudflare 的 Zero Trust 平台延伸至支持 UDP 和互联网 DNS",
+	"url": "https://blog.cloudflare.com/zh-cn/extending-cloudflares-zero-trust-platform-to-support-udp-and-internal-dns-zh-cn/",
+	"datePublished": "2021-12-08T13:59:00.000Z",
+	"dateModified": "2021-12-30T22:43:30.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/12/image2-19-1.png",
+		"width": 1801,
+		"height": 1013
+	},
+	"keywords": "CIO Week (CN), Cloudflare One (CN), Cloudflare Zero Trust (CN), UDP (CN), 简体中文 (CN), 零信任 (CN), 产品新闻",
+	"description": "2020 年末，经 Cloudflare 授权的组织开始在我们的网络上构建私有网络。他们在服务器端使用 Cloudflare Tunnel，并在客户端使用 Cloudflare WARP，以此消除对传统 VPN 的需求。时至今日，已有数千家组织与我们一起踏上了这段旅程—弃用了传统的 VPN 集中",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

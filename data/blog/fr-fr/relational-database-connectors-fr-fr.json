@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Greg McKeon",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/05/Screen-Shot-2022-05-10-at-2.50.56-PM.png",
+			"width": 692,
+			"height": 662
+		},
+		"url": "https://blog.cloudflare.com/author/greg/",
+		"sameAs": [
+			"https://twitter.com/wegmckeon"
+		]
+	},
+	"headline": "Présentation des Database Connectors pour bases de données relationnelles",
+	"url": "https://blog.cloudflare.com/fr-fr/relational-database-connectors-fr-fr/",
+	"datePublished": "2021-11-15T13:59:00.000Z",
+	"dateModified": "2021-11-18T19:09:01.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/11/Relational.png",
+		"width": 1200,
+		"height": 675
+	},
+	"keywords": "MySQL (FR), Cloudflare Workers (FR), Semaine pleine pile, Postgres (FR)",
+	"description": "Cloudflare construit la meilleure plate-forme informatique du monde. Nous souhaitons vous faciliter le développement sur cette dernière, afin de vous permettre de profiter d&#x27;une expérience fluide et limpide. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

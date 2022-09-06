@@ -1,0 +1,32 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Ingvar Stepanyan",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/rYPVgOqN.jpg",
+		"url": "https://blog.cloudflare.com/author/ingvar-stepanyan/",
+		"sameAs": []
+	},
+	"headline": "Improving request debugging in Cloudflare Workers",
+	"url": "https://blog.cloudflare.com/better-workers-debugging-with-a-network-panel/",
+	"datePublished": "2018-12-28T14:18:11.000Z",
+	"dateModified": "2018-12-28T14:18:11.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/12/Workers-Illustration--WiP-as-of-2.21.18--copy@2x.png",
+	"keywords": "Cloudflare Workers, Serverless, Dashboard, Programming, Developers",
+	"description": "As some of you might have already noticed either from our public release notes, on cloudflareworkers.com or in your Cloudflare Workers dashboard, there was a small but important change in the look of the inspector.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "John Graham-Cumming",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
+		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
+		"sameAs": [
+			"https://twitter.com/jgrahamc"
+		]
+	},
+	"headline": "COVID-19 impacts on Internet traffic: Seattle, Northern Italy and South Korea",
+	"url": "https://blog.cloudflare.com/covid-19-impacts-on-internet-traffic-seattle-italy-and-south-korea/",
+	"datePublished": "2020-03-13T16:17:43.000Z",
+	"dateModified": "2020-08-28T17:47:49.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2020/03/italy-january-copy@3x.png",
+		"width": 2124,
+		"height": 1122
+	},
+	"keywords": "Internet Usage, South Korea, Italy, Seattle, COVID-19",
+	"description": "The last few weeks have seen unprecedented changes in how people live and work around the world. Over time more and more companies have given their employees the right to work from home, restricted business travel and, in some cases, outright sent their entire workforce home.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

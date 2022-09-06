@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Simona Badoiu",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/03/WhatsApp-Image-2021-10-19-at-6.58.54-PM-1.jpeg",
+			"width": 1200,
+			"height": 1200
+		},
+		"url": "https://blog.cloudflare.com/author/simona-badoiu/",
+		"sameAs": [
+			"https://twitter.com/badoiu_simona"
+		]
+	},
+	"headline": "Cloudflare Zaraz supports CSP",
+	"url": "https://blog.cloudflare.com/cloudflare-zaraz-supports-csp/",
+	"datePublished": "2022-03-15T12:59:16.000Z",
+	"dateModified": "2022-03-15T12:59:16.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/03/image1-34.png",
+		"width": 1801,
+		"height": 1013
+	},
+	"keywords": "Security Week, CSP, XSS, Security, Zaraz, Content Security Policy",
+	"description": "If you have Cloudflare Zaraz enabled on your website, you don’t have to ask yourself twice if you should enable CSP because there’s no harmful collision between CSP &amp; Cloudflare Zaraz",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

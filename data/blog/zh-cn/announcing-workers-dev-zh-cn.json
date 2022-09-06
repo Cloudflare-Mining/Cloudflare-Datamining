@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Rita Kozlov",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/05/Rita-Kozlov.jpeg",
+			"width": 200,
+			"height": 200
+		},
+		"url": "https://blog.cloudflare.com/author/rita/",
+		"sameAs": [
+			"https://twitter.com/ritakozlov_"
+		]
+	},
+	"headline": "workers.dev正式发布 - 在自定义域名部署Cloudflare Workers，轻松实现云端开发",
+	"url": "https://blog.cloudflare.com/zh-cn/announcing-workers-dev-zh-cn/",
+	"datePublished": "2019-02-19T16:00:00.000Z",
+	"dateModified": "2021-01-28T18:50:00.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2019/08/Screen-Shot-2019-02-18-at-10.11.54-AM-1.png",
+		"width": 1968,
+		"height": 1130
+	},
+	"keywords": "简体中文 (CN), 无服务器, Cloudflare Workers (CN), JavaScript (CN)",
+	"description": "我们正在努力让您在没有Cloudflare域的情况下部署Worker。您很快就可以将Cloudflare Workers部署到subdomain-of-your-choice.workers.dev （subdomain-of-your-choice为自定义子域），您现在可以在workers.dev上申请！",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

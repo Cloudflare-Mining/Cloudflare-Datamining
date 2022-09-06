@@ -1,0 +1,40 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Kristian Freeman",
+		"image": "http://blog.cloudflare.com/content/images/2019/05/2fGb07-c_400x400.jpg",
+		"url": "https://blog.cloudflare.com/author/kristian/",
+		"sameAs": [
+			"https://www.signalnerve.com",
+			"https://twitter.com/signalnerve"
+		]
+	},
+	"headline": "CloudflareでWeb3アプリの構築を始める",
+	"url": "https://blog.cloudflare.com/ja-jp/get-started-web3-ja-jp/",
+	"datePublished": "2021-10-01T12:59:00.000Z",
+	"dateModified": "2021-10-14T22:57:10.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/10/Solar-4.png",
+		"width": 1200,
+		"height": 675
+	},
+	"keywords": "Web3 (JP), Cloudflare Pages (JP), 日本語, バースデーウィーク",
+	"description": "Cloudflareの新しいオープンソーステンプレートを用いて、Web3アプリケーションを構築する方法をご覧ください。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

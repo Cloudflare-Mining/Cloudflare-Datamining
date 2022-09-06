@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew Prince",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
+			"width": 1196,
+			"height": 1190
+		},
+		"url": "https://blog.cloudflare.com/author/matthew-prince/",
+		"sameAs": [
+			"https://twitter.com/eastdakota"
+		]
+	},
+	"headline": "Deep Inside a DNS Amplification DDoS Attack",
+	"url": "https://blog.cloudflare.com/deep-inside-a-dns-amplification-ddos-attack/",
+	"datePublished": "2012-10-30T07:54:00.000Z",
+	"dateModified": "2021-09-29T13:06:15.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/amplification.gif.scaled500.gif",
+	"keywords": "DNS, DDoS, Attacks, Reliability",
+	"description": "A few weeks ago I wrote about DNS Amplification Attacks. These attacks are some of the largest, as measured by the number of Gigabits per second (Gbps), that we see directed toward our network.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

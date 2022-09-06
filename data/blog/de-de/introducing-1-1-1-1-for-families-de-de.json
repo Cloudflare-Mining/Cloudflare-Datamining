@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew Prince",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
+			"width": 1196,
+			"height": 1190
+		},
+		"url": "https://blog.cloudflare.com/author/matthew-prince/",
+		"sameAs": [
+			"https://twitter.com/eastdakota"
+		]
+	},
+	"headline": "Wir stellen vor: 1.1.1.1 for Families",
+	"url": "https://blog.cloudflare.com/de-de/introducing-1-1-1-1-for-families-de-de/",
+	"datePublished": "2020-04-01T13:00:00.000Z",
+	"dateModified": "2021-01-22T18:37:51.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2020/12/image3-1-1.png",
+		"width": 1550,
+		"height": 786
+	},
+	"keywords": "Deutsch, 1.1.1.1 (DE), Datenschutz (DE), DNS (DE)",
+	"description": "Heute vor zwei Jahren haben wir 1.1.1.1 vorgestellt, ein sicherer, schneller und datenschutzfreundlicher DNS-Resolver, der von allen Verbrauchern kostenlos genutzt werden kann. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Ignat Korchagin",
+		"image": "http://blog.cloudflare.com/content/images/2018/02/AAEAAQAAAAAAAAepAAAAJGI3NzA4ZDQxLTE1NTYtNDNlNi05M2NjLTE4NDE3ZTE3OWEyZg.jpg",
+		"url": "https://blog.cloudflare.com/author/ignat/",
+		"sameAs": [
+			"https://twitter.com/ignatkn"
+		]
+	},
+	"headline": "Speeding up Linux disk encryption",
+	"url": "https://blog.cloudflare.com/speeding-up-linux-disk-encryption/",
+	"datePublished": "2020-03-25T12:00:00.000Z",
+	"dateModified": "2020-12-28T11:35:10.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2020/03/dm-crypt-1.png",
+		"width": 1610,
+		"height": 792
+	},
+	"keywords": "Linux, Kernel, Crypto, Performance, Security",
+	"description": "Encrypting data at rest is vital for Cloudflare with more than 200 data centres across the world. In this post, we will investigate the performance of disk encryption on Linux and explain how we made it at least two times faster for ourselves and our customers!",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

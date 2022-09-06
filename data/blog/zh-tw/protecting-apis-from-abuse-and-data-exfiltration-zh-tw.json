@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Daniele Molteni",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/10/meProfessional-1-flipped.jpg",
+			"width": 1732,
+			"height": 1732
+		},
+		"url": "https://blog.cloudflare.com/author/daniele/",
+		"sameAs": []
+	},
+	"headline": "如何做好网络安全防护_网络安全解决方案_2021Cloudflare安全周| Cloudflare中国官网",
+	"url": "https://blog.cloudflare.com/zh-tw/protecting-apis-from-abuse-and-data-exfiltration-zh-tw/",
+	"datePublished": "2021-03-24T13:00:00.000Z",
+	"dateModified": "2021-04-13T17:08:09.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/04/Announcing-Cloudflare-s-Data-Loss-Prevention-platform-OG-blog-body-3-2.png",
+		"width": 1513,
+		"height": 757
+	},
+	"keywords": "繁體中文 (TW), 產品新聞 (TW), WAF (TW), 安全週 (ZH)",
+	"description": "API 流量增長迅速。僅去年一年，我們的邊緣 API 流量的增長速度就比 Web 流量快 300％。API 為行動裝置和 Web 應用程式提供強大支援，使其可以傳輸各種指令，例如「使用這張信用卡從我最喜歡的餐館訂購披薩」或「進行加密貨幣交易，這些是我的個人詳細資料」，而這些資料很容易被竊取和濫用。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,33 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "John Graham-Cumming",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
+		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
+		"sameAs": [
+			"https://twitter.com/jgrahamc"
+		]
+	},
+	"headline": "Keeping our open source promise",
+	"url": "https://blog.cloudflare.com/keeping-our-open-source-promise/",
+	"datePublished": "2013-12-22T17:00:00.000Z",
+	"dateModified": "2019-06-29T21:19:32.000Z",
+	"keywords": "OpenSSL, Open Source, LUA, Developers, Deep Dive",
+	"description": "Back in October I wrote a blog post about CloudFlare and open source software titled CloudFlare And Open Source Software: A Two-Way Street which detailed the many ways in which we use and support open source software.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

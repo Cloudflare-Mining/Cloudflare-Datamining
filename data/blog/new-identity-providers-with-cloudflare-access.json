@@ -1,0 +1,32 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Venkat Viswanathan",
+		"image": "http://blog.cloudflare.com/content/images/2018/01/AAEAAQAAAAAAAAkkAAAAJGExM2M4ZjM1LTEzZjQtNDIyYi1hMDBmLTRhMWIxNGY1MGFmZQ.jpg",
+		"url": "https://blog.cloudflare.com/author/venkat/",
+		"sameAs": []
+	},
+	"headline": "Now You Can Setup Centrify, OneLogin, Ping and Other Identity Providers with Cloudflare Access",
+	"url": "https://blog.cloudflare.com/new-identity-providers-with-cloudflare-access/",
+	"datePublished": "2018-04-23T19:08:18.000Z",
+	"dateModified": "2018-08-29T07:34:14.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/04/Screen-Shot-2018-04-23-at-10.24.08-AM.png",
+	"keywords": "Cloudflare Access, Authentication, Product News, Security",
+	"description": "Today we would like to announce support for two more Identity Providers with Cloudflare Access: Centrify and OneLogin. If you are using Centrify or OneLogin as your identity provider you can now easily integrate them with Cloudflare Access.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

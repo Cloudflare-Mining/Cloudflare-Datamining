@@ -1,0 +1,34 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Filippo Valsorda",
+		"image": "http://blog.cloudflare.com/content/images/2018/02/K6rX3ZSn_400x400.jpg",
+		"url": "https://blog.cloudflare.com/author/filippo/",
+		"sameAs": [
+			"https://twitter.com/filosottile"
+		]
+	},
+	"headline": "TLS nonce-nse",
+	"url": "https://blog.cloudflare.com/tls-nonce-nse/",
+	"datePublished": "2016-10-12T15:05:00.000Z",
+	"dateModified": "2018-08-27T21:18:20.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/19fq1n.jpg",
+	"keywords": "TLS, TLS 1.3, Crypto, Security, Encryption",
+	"description": "One of the base principles of cryptography is that you can&#x27;t just encrypt multiple messages with the same key. At the very least, what will happen is that two messages that have identical plaintext will also have identical ciphertext, which is a dangerous leak. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

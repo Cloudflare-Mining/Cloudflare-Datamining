@@ -1,0 +1,34 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Louis Poinsignon",
+		"image": "http://blog.cloudflare.com/content/images/2017/09/AAEAAQAAAAAAAAYXAAAAJGE5YjM0YmVmLWJhMTItNDExZS1iNTcwLTdmNTg1YzZjMjBiNg.jpg",
+		"url": "https://blog.cloudflare.com/author/louis-poinsignon/",
+		"sameAs": [
+			"https://twitter.com/lpoinsig"
+		]
+	},
+	"headline": "Fugas de BGP y criptomonedas",
+	"url": "https://blog.cloudflare.com/es-es/bgp-leaks-and-crypto-currencies-es-es/",
+	"datePublished": "2018-04-24T22:31:00.000Z",
+	"dateModified": "2021-01-21T19:21:04.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2019/05/6818192898_c132e81824_z-2.jpg",
+	"keywords": "Español, Criptografía, Seguridad, Vulnerabilidades, TLS (ES), HTTPS (ES), BGP (ES)",
+	"description": "En las últimas horas, han aparecido una docena de noticias sobre cómo un atacante ha intentado (y tal vez ha logrado) robar criptomonedas con una fuga del protocolo de puerta de enlace de frontera (Border Gateway Protocol o BGP por sus siglas en inglés).",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

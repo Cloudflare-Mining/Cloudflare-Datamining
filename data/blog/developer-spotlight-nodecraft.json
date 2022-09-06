@@ -1,0 +1,40 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Kristian Freeman",
+		"image": "http://blog.cloudflare.com/content/images/2019/05/2fGb07-c_400x400.jpg",
+		"url": "https://blog.cloudflare.com/author/kristian/",
+		"sameAs": [
+			"https://www.signalnerve.com",
+			"https://twitter.com/signalnerve"
+		]
+	},
+	"headline": "Developer Spotlight: James Ross, Nodecraft",
+	"url": "https://blog.cloudflare.com/developer-spotlight-nodecraft/",
+	"datePublished": "2021-11-16T13:58:49.000Z",
+	"dateModified": "2021-11-26T06:39:44.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/11/image2-13.png",
+		"width": 1801,
+		"height": 1011
+	},
+	"keywords": "Full Stack Week, Developer Spotlight",
+	"description": "Nodecraft allows gamers to host dedicated servers for their favorite games. James Ross is the Chief Technology Officer for Nodecraft and has advocated for Cloudflare — particularly Cloudflare Workers —  within the company.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

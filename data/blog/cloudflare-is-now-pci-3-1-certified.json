@@ -1,0 +1,34 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Marc Rogers",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/marcwrogers_400x400.jpg",
+		"url": "https://blog.cloudflare.com/author/marc-rogers/",
+		"sameAs": [
+			"https://twitter.com/marcwrogers"
+		]
+	},
+	"headline": "CloudFlare is now PCI 3.1 certified",
+	"url": "https://blog.cloudflare.com/cloudflare-is-now-pci-3-1-certified/",
+	"datePublished": "2015-11-02T07:00:42.000Z",
+	"dateModified": "2018-08-24T21:31:37.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2017/10/image_0-1-1.jpg",
+	"keywords": "PCI Certified",
+	"description": "The Payment Card Industry Data Security Standard (PCI DSS) is a global financial information security standard that keeps credit card holders safe. It ensures that any company processing credit card transactions adheres to the highest technical standards.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

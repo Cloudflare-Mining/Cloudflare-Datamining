@@ -1,0 +1,37 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Guest Author",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/10/Screen-Shot-2019-10-09-at-11.21.59-AM.png",
+			"width": 362,
+			"height": 364
+		},
+		"url": "https://blog.cloudflare.com/author/guest-author/",
+		"sameAs": []
+	},
+	"headline": "Inside the infamous Mirai IoT Botnet: A Retrospective Analysis",
+	"url": "https://blog.cloudflare.com/inside-mirai-the-infamous-iot-botnet-a-retrospective-analysis/",
+	"datePublished": "2017-12-14T19:41:49.000Z",
+	"dateModified": "2021-09-20T21:12:29.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2017/12/animation-iot-botnet-1.gif",
+	"keywords": "DDoS, Attacks, Security, Vulnerabilities, Bots, Speed & Reliability, Mirai, Research",
+	"description": "This post provides a retrospective analysis of Mirai — the infamous Internet-of-Things botnet that took down major websites via massive distributed denial-of-service using hundreds of thousands of compromised Internet-Of-Things devices.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Greg McKeon",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/05/Screen-Shot-2022-05-10-at-2.50.56-PM.png",
+			"width": 692,
+			"height": 662
+		},
+		"url": "https://blog.cloudflare.com/author/greg/",
+		"sameAs": [
+			"https://twitter.com/wegmckeon"
+		]
+	},
+	"headline": "Workersは、2つの最新データプラットフォームMongoDB AtlasとPrismaのサポートを追加しました。",
+	"url": "https://blog.cloudflare.com/ja-jp/workers-adds-support-for-two-modern-data-platforms-mongodb-atlas-and-prisma-ja-jp/",
+	"datePublished": "2021-11-15T19:53:00.000Z",
+	"dateModified": "2021-12-15T19:54:11.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/12/unnamed-28.png",
+		"width": 1600,
+		"height": 900
+	},
+	"keywords": "Cloudflare Workers (JP), Full Stack Week (JP)",
+	"description": "この1年、私たちは共通のテーマを耳にしました。それは、開発者がより多くのアプリケーションをWorkers上で構築したいということです。ビルトインのグローバルデプロイメント機能と驚くべきスケーラビリティ、JavaScriptの柔軟性を備えた当社のグローバルプラットフォームで構築されるアプリケーションが増えています。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

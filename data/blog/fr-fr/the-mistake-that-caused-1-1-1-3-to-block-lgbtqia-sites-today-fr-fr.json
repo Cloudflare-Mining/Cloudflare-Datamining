@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew Prince",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
+			"width": 1196,
+			"height": 1190
+		},
+		"url": "https://blog.cloudflare.com/author/matthew-prince/",
+		"sameAs": [
+			"https://twitter.com/eastdakota"
+		]
+	},
+	"headline": "L’erreur qui a conduit 1.1.1.3 à bloquer les sites LGBTQIA+ aujourd’hui",
+	"url": "https://blog.cloudflare.com/fr-fr/the-mistake-that-caused-1-1-1-3-to-block-lgbtqia-sites-today-fr-fr/",
+	"datePublished": "2020-04-02T03:32:00.000Z",
+	"dateModified": "2021-01-27T01:55:13.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2020/12/image3-1-2.png",
+		"width": 1550,
+		"height": 786
+	},
+	"keywords": "Français, 1.1.1.1 (FR), LGBTQIA+ (FR)",
+	"description": "Aujourd’hui, nous avons commis une erreur. Du fait de cette erreur, un certain nombre de sites LGBTQIA+ ont été bloqués par inadvertance par le nouveau service 1.1.1.1 for Families. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

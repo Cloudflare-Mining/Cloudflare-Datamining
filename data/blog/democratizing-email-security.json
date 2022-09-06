@@ -1,0 +1,45 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Patrick R. Donahue",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/me0-1.png",
+			"width": 300,
+			"height": 291
+		},
+		"url": "https://blog.cloudflare.com/author/patrick/",
+		"sameAs": [
+			"https://www.cloudflare.com",
+			"https://twitter.com/prdonahue"
+		]
+	},
+	"headline": "Democratizing email security: protecting individuals and businesses of all sizes from phishing and malware attacks",
+	"url": "https://blog.cloudflare.com/democratizing-email-security/",
+	"datePublished": "2022-03-14T12:59:33.000Z",
+	"dateModified": "2022-06-24T10:00:49.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/03/image1-9.png",
+		"width": 1800,
+		"height": 1013
+	},
+	"keywords": "Security Week, Email, Security, Zero Trust, Phishing, Malware, Cloudflare Zero Trust",
+	"description": "Once the acquisition of Area 1 closes, we plan to give all paid self-serve plans access to their email security technology at no additional charge",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

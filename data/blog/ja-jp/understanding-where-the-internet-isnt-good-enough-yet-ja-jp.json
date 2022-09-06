@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "John Graham-Cumming",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
+		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
+		"sameAs": [
+			"https://twitter.com/jgrahamc"
+		]
+	},
+	"headline": "インターネットがまだ改善余地ががある場所を知る",
+	"url": "https://blog.cloudflare.com/ja-jp/understanding-where-the-internet-isnt-good-enough-yet-ja-jp/",
+	"datePublished": "2021-07-25T23:00:00.000Z",
+	"dateModified": "2021-08-31T20:26:54.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/08/Better-Internet-for-Everyone-1.png",
+		"width": 1200,
+		"height": 675
+	},
+	"keywords": "インパクトウィーク (JP), より良いインターネット, 日本語",
+	"description": "今週、Cloudflareは、この格差の軽減を支援することを目標に、プロジェクトPangeaを発表します。私たちは、コミュニティネットワークが安く、安全に、そして良好な帯域幅と遅延でインターネットにアクセスできることを支援しています。高速かつ安価なブロードバンドアクセスを誰にでも提供するというすべての課題を解決することはできませんが、サービス不足のコミュニティのISPへの高速で信頼性の高いトランジットを提供して、良い方向に迎うように取り組めます。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

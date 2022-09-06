@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Kenny Johnson",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2020/12/0DA903DE-E315-43D5-B0DE-39870448303D.jpeg",
+			"width": 265,
+			"height": 252
+		},
+		"url": "https://blog.cloudflare.com/author/kenny/",
+		"sameAs": [
+			"https://twitter.com/KennyJohnsonATX"
+		]
+	},
+	"headline": "Verify Apple devices with no installed software",
+	"url": "https://blog.cloudflare.com/private-attestation-token-device-posture/",
+	"datePublished": "2022-06-22T13:38:09.000Z",
+	"dateModified": "2022-06-22T13:38:09.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/06/image2-32.png",
+		"width": 1800,
+		"height": 1013
+	},
+	"keywords": "Cloudflare One Week, Device Security, Security, Apple, Cloudflare Access, Private Attestation, Product News",
+	"description": "Security teams that rely on Cloudflare Access can verify a user’s Apple device before they access a sensitive application — no additional software required",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

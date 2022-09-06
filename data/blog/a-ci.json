@@ -1,0 +1,32 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Tom Brightbill",
+		"image": "http://blog.cloudflare.com/content/images/2019/03/tomb.jpg",
+		"url": "https://blog.cloudflare.com/author/tom-brightbill/",
+		"sameAs": []
+	},
+	"headline": "A Full CI/CD Pipeline for Workers with Travis CI",
+	"url": "https://blog.cloudflare.com/a-ci/",
+	"datePublished": "2019-03-22T17:10:37.000Z",
+	"dateModified": "2020-08-14T01:42:18.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2019/03/Workers-Illustration--WiP-as-of-2.21.18--copy@2x-1-1.png",
+	"keywords": "Cloudflare Workers, Serverless, JavaScript, Developers",
+	"description": "In today’s post we’re going to talk about building a CI/CD pipeline for Cloudflare Worker’s using Travis CI. If you aren’t yet aware, Cloudflare Workers allow you to run Javascript in all 165 of our data centers, and they deploy globally in about 30 seconds. Learn more here. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

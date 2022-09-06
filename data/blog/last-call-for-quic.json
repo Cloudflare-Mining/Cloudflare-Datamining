@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Lucas Pardue",
+		"image": "http://blog.cloudflare.com/content/images/2018/12/Lucas---KIN01111.jpg",
+		"url": "https://blog.cloudflare.com/author/lucas/",
+		"sameAs": [
+			"https://twitter.com/SimmerVigor"
+		]
+	},
+	"headline": "A Last Call for QUIC, a giant leap for the Internet",
+	"url": "https://blog.cloudflare.com/last-call-for-quic/",
+	"datePublished": "2020-10-22T14:08:51.000Z",
+	"dateModified": "2020-10-22T14:13:36.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2020/10/image2-23.png",
+		"width": 1668,
+		"height": 933
+	},
+	"keywords": "QUIC, HTTP3, Speed, Security, IETF",
+	"description": "QUIC and HTTP/3 are open standards that have been under development in the IETF for almost exactly 4 years. On October 21, 2020, following two rounds of Working Group Last Call, draft 32 of the family of documents that describe QUIC and HTTP/3 were put into IETF Last Call.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

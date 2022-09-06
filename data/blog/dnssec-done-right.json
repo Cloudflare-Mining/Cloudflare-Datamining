@@ -1,0 +1,32 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Ólafur Guðmundsson",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/3a917b8.jpg",
+		"url": "https://blog.cloudflare.com/author/olafur-gudmundsson/",
+		"sameAs": []
+	},
+	"headline": "DNSSEC Done Right",
+	"url": "https://blog.cloudflare.com/dnssec-done-right/",
+	"datePublished": "2015-01-29T20:10:54.000Z",
+	"dateModified": "2018-08-23T17:05:47.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/dnssec_image.png",
+	"keywords": "DNSSEC, DNS, Life @ Cloudflare, Our History",
+	"description": "I’ve been working on DNSSEC evolution for a long time as implementor, IETF working group chair, protocol experimenter, DNS operator, consultant, and evangelist. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

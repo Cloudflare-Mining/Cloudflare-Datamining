@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew Prince",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
+			"width": 1196,
+			"height": 1190
+		},
+		"url": "https://blog.cloudflare.com/author/matthew-prince/",
+		"sameAs": [
+			"https://twitter.com/eastdakota"
+		]
+	},
+	"headline": "1 Billion Requests Served",
+	"url": "https://blog.cloudflare.com/1-billion-requests-served/",
+	"datePublished": "2010-10-10T22:35:00.000Z",
+	"dateModified": "2020-12-07T02:51:03.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/01/1_billion.png.scaled.500.jpg",
+	"keywords": "Our History, Milestones",
+	"description": "ICloudflare passed a big milestone yesterday: over the last 30 days we&#x27;ve served more than 1 billion requests. The Cloudflare network is architected to handle many, many times this level traffic, but it&#x27;s still pretty amazing to realize the extent of what already powering.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

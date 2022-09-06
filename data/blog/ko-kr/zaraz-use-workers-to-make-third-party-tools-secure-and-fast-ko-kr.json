@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Yo&#x27;av Moshe",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/11/IMG_4345-01-01.jpeg",
+			"width": 1392,
+			"height": 1393
+		},
+		"url": "https://blog.cloudflare.com/author/yoav/",
+		"sameAs": [
+			"https://twitter.com/yoavmoshe"
+		]
+	},
+	"headline": "Workers를 이용해 서드파티 도구의 보안과 속도를 보장하는 Zaraz",
+	"url": "https://blog.cloudflare.com/ko-kr/zaraz-use-workers-to-make-third-party-tools-secure-and-fast-ko-kr/",
+	"datePublished": "2021-12-08T14:00:00.000Z",
+	"dateModified": "2021-12-29T00:41:20.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/12/zaraz_w-2.png",
+		"width": 1801,
+		"height": 1013
+	},
+	"keywords": "CIO Week (KO), Zaraz (KO), 한국어",
+	"description": "우리는 2020년 3월 말경에 Zaraz를 만들기로 결정했습니다. 우리는 다른 제품을 개발 중이던 중 모든 사람들이 웹사이트에 많은 타사가 있을 때 성능에 미치는 영향에 대해 묻는다는 사실을 알게 되었습니",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,34 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Dani Grant",
+		"image": "http://blog.cloudflare.com/content/images/2018/08/efVJR3rj_400x400.jpg",
+		"url": "https://blog.cloudflare.com/author/dani/",
+		"sameAs": [
+			"https://twitter.com/thedanigrant"
+		]
+	},
+	"headline": "Economical With The Truth: Making DNSSEC Answers Cheap",
+	"url": "https://blog.cloudflare.com/black-lies/",
+	"datePublished": "2016-06-24T16:31:10.000Z",
+	"dateModified": "2020-08-14T16:30:42.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/217591669_c31a16e301_o.jpg",
+	"keywords": "DNS, DNSSEC, Reliability, NXDOMAIN, RRDNS",
+	"description": "We launched DNSSEC late last year and are already signing 56.9 billion DNS record sets per day. At this scale, we care a great deal about compute cost.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

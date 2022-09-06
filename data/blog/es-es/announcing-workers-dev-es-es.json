@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Rita Kozlov",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/05/Rita-Kozlov.jpeg",
+			"width": 200,
+			"height": 200
+		},
+		"url": "https://blog.cloudflare.com/author/rita/",
+		"sameAs": [
+			"https://twitter.com/ritakozlov_"
+		]
+	},
+	"headline": "Anunciamos workers.dev",
+	"url": "https://blog.cloudflare.com/es-es/announcing-workers-dev-es-es/",
+	"datePublished": "2019-02-19T16:00:00.000Z",
+	"dateModified": "2021-02-05T01:26:24.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2019/05/Screen-Shot-2019-02-18-at-10.11.54-AM-1.png",
+	"keywords": "JavaScript (ES), Programación, Español, Cloudflare Workers (ES), Sin servidor",
+	"description": "Estamos trabajando duramente para que puedas implementar Workers sin tener un dominio de Cloudflare. ¡Pronto podrás desplegar tu Cloudflare en un subdominio-de-tu-eleccion.workers.dev, que se puede pedir ahora en workers.dev!",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,32 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Vlad Krasnov",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/165e069.jpg",
+		"url": "https://blog.cloudflare.com/author/vlad-krasnov/",
+		"sameAs": []
+	},
+	"headline": "How &quot;expensive&quot; is crypto anyway?",
+	"url": "https://blog.cloudflare.com/how-expensive-is-crypto-anyway/",
+	"datePublished": "2017-12-28T18:22:17.000Z",
+	"dateModified": "2018-08-29T06:56:26.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/22100041369_327f9dcfc6_o.jpg",
+	"keywords": "Crypto, Speed & Reliability, Security, SSL, TLS, RSA",
+	"description": "I wouldn’t be surprised if the title of this post attracts some Bitcoin aficionados, but if you are such, I want to disappoint you. For me crypto means cryptography, not cybermoney, and the price we pay for it is measured in CPU cycles, not USD.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

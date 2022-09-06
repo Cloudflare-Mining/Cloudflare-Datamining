@@ -1,0 +1,33 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Sam Rhea",
+		"image": "http://blog.cloudflare.com/content/images/2018/07/photo-for-profile.jpg",
+		"url": "https://blog.cloudflare.com/author/sam/",
+		"sameAs": [
+			"https://twitter.com/LakeAustinBlvd"
+		]
+	},
+	"headline": "Cloudflare Access now supports RDP",
+	"url": "https://blog.cloudflare.com/cloudflare-access-now-supports-rdp/",
+	"datePublished": "2019-02-21T15:18:53.000Z",
+	"dateModified": "2020-09-03T15:27:31.000Z",
+	"keywords": "Cloudflare Access, Product News, Security",
+	"description": "Last fall, the United States FBI warned organizations of an increase in attacks that exploit vulnerabilities in the Remote Desktop Protocol (RDP). Attackers stole sensitive data and compromised networks by taking advantage of desktops left unprotected.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

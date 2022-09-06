@@ -1,0 +1,34 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "John Graham-Cumming",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
+		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
+		"sameAs": [
+			"https://twitter.com/jgrahamc"
+		]
+	},
+	"headline": "What makes SPDY speedy?",
+	"url": "https://blog.cloudflare.com/what-makes-spdy-speedy/",
+	"datePublished": "2012-06-25T07:14:00.000Z",
+	"dateModified": "2018-02-20T20:36:59.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/02/6188310189_a4059f9e2c.jpeg.scaled500.jpg",
+	"keywords": "spdy, Google, TCP",
+	"description": "Google has proposed a new protocol for downloading web pages called SPDY and CloudFlare will shortly be making it available in beta form. SPDY is designed to make web browsing faster without replacing HTTP. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

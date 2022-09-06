@@ -1,0 +1,37 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Christopher Patton",
+		"image": "http://blog.cloudflare.com/content/images/2018/09/0-8.jpg",
+		"url": "https://blog.cloudflare.com/author/christopher-patton/",
+		"sameAs": []
+	},
+	"headline": "Good-bye ESNI, hello ECH!",
+	"url": "https://blog.cloudflare.com/encrypted-client-hello/",
+	"datePublished": "2020-12-08T12:00:00.000Z",
+	"dateModified": "2022-07-27T17:43:47.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2020/12/Good-bye-ESNI--hello-ECH-blog-header-1.png",
+		"width": 1200,
+		"height": 569
+	},
+	"keywords": "Privacy, Privacy Week, Research, Protocols, DNS, TLS",
+	"description": "A deep dive into the Encrypted Client Hello, a standard that encrypts privacy-sensitive parameters sent by the client, as part of the TLS handshake.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

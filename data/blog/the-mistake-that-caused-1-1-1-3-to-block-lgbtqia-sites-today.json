@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew Prince",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
+			"width": 1196,
+			"height": 1190
+		},
+		"url": "https://blog.cloudflare.com/author/matthew-prince/",
+		"sameAs": [
+			"https://twitter.com/eastdakota"
+		]
+	},
+	"headline": "The Mistake that Caused 1.1.1.3 to Block LGBTQIA+ Sites Today",
+	"url": "https://blog.cloudflare.com/the-mistake-that-caused-1-1-1-3-to-block-lgbtqia-sites-today/",
+	"datePublished": "2020-04-02T03:32:47.000Z",
+	"dateModified": "2020-04-02T03:32:47.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2020/04/image3--1-.png",
+		"width": 1550,
+		"height": 786
+	},
+	"keywords": "1.1.1.1, DNS, Resolver",
+	"description": "Today we made a mistake. The mistake caused a number of LGBTQIA+ sites to inadvertently be blocked by the new 1.1.1.1 for Families service. I wanted to walk through what happened, why, and what we&#x27;ve done to fix it.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

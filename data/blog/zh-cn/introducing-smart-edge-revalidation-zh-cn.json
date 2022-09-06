@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Alex Krivit",
+		"image": "http://blog.cloudflare.com/content/images/2018/08/RE0BQ6EF_400x400.jpg",
+		"url": "https://blog.cloudflare.com/author/alex/",
+		"sameAs": [
+			"https://twitter.com/ackriv"
+		]
+	},
+	"headline": "引入智能边缘重新验证",
+	"url": "https://blog.cloudflare.com/zh-cn/introducing-smart-edge-revalidation-zh-cn/",
+	"datePublished": "2021-07-27T23:00:00.000Z",
+	"dateModified": "2021-11-23T12:57:04.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/11/image1-65.png",
+		"width": 1999,
+		"height": 1125
+	},
+	"keywords": "产品新闻, 影响周",
+	"description": "今天，我们很高兴地宣布智能边缘重新验证。它旨在确保计算资源在我们的边缘和浏览器之间高效同步。目前，多达 30% 缓存在 Cloudflare 边缘的对象没有重新验证所需的 HTTP 响应标头。这可能会导致不必要的源调用。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

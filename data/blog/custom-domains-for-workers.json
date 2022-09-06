@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Kabir Sikand",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/05/0.jpeg",
+			"width": 800,
+			"height": 800
+		},
+		"url": "https://blog.cloudflare.com/author/kabir/",
+		"sameAs": [
+			"https://twitter.com/kabirsikand"
+		]
+	},
+	"headline": "Introducing Custom Domains for Workers",
+	"url": "https://blog.cloudflare.com/custom-domains-for-workers/",
+	"datePublished": "2022-05-12T12:58:52.000Z",
+	"dateModified": "2022-05-12T12:58:52.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/05/image2-17.png",
+		"width": 1200,
+		"height": 675
+	},
+	"keywords": "Platform Week, Cloudflare Workers",
+	"description": "Custom Domains are now available for your Workers. Hook up a Worker to any domain you own, and Cloudflare will handle making DNS records and issuing certificates on your behalf",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

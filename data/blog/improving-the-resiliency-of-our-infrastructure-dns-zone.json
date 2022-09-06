@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Ryan Timken",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/09/ryan_timken.jpg",
+			"width": 600,
+			"height": 600
+		},
+		"url": "https://blog.cloudflare.com/author/ryan-timken/",
+		"sameAs": []
+	},
+	"headline": "Improving the Resiliency of Our Infrastructure DNS Zone",
+	"url": "https://blog.cloudflare.com/improving-the-resiliency-of-our-infrastructure-dns-zone/",
+	"datePublished": "2020-11-30T13:14:40.000Z",
+	"dateModified": "2020-11-30T13:14:40.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2020/11/image2-15.png",
+		"width": 1726,
+		"height": 866
+	},
+	"keywords": "DNS, Availability, OctoDNS",
+	"description": "We&#x27;ve improved the resiliency and management of our infrastructure DNS zone. In this post, we guide you through some of the &quot;whats&quot;, &quot;whys&quot; and &quot;hows&quot; we encountered along the way. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

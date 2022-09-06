@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew Prince",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
+			"width": 1196,
+			"height": 1190
+		},
+		"url": "https://blog.cloudflare.com/author/matthew-prince/",
+		"sameAs": [
+			"https://twitter.com/eastdakota"
+		]
+	},
+	"headline": "Always Online v.2",
+	"url": "https://blog.cloudflare.com/always-online-v2/",
+	"datePublished": "2012-08-05T19:33:00.000Z",
+	"dateModified": "2020-08-14T09:57:14.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/phpot_logo_white.jpg.scaled500.jpg",
+	"keywords": "Reliability, Cache, Always Online, Product News, Project Honey Pot",
+	"description": "The video on CloudFlare&#x27;s home page promises that we will keep your web page online &quot;even if your server goes down.&quot; It&#x27;s a feature we dubbed &quot;Always Online&quot; and, when it works, it&#x27;s magical. The problem is, Always Online doesn&#x27;t always work.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,34 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Dani Grant",
+		"image": "http://blog.cloudflare.com/content/images/2018/08/efVJR3rj_400x400.jpg",
+		"url": "https://blog.cloudflare.com/author/dani/",
+		"sameAs": [
+			"https://twitter.com/thedanigrant"
+		]
+	},
+	"headline": "How to use Cloudflare for Service Discovery",
+	"url": "https://blog.cloudflare.com/service-discovery/",
+	"datePublished": "2017-07-21T08:01:00.000Z",
+	"dateModified": "2018-08-29T01:30:34.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2017/10/Service-Discovery-Diagram.png",
+	"keywords": "DDoS, Reliability, Speed & Reliability, IPv4, DNS, API, Programming, Argo Smart Routing, TLS, Security",
+	"description": "Cloudflare runs 3,588 containers, making up 1,264 apps and services that all need to be able to find and discover each other in order to communicate -- a problem solved with service discovery.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

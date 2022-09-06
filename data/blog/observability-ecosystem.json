@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Steven Pack",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/steven-pack.png",
+			"width": 496,
+			"height": 492
+		},
+		"url": "https://blog.cloudflare.com/author/stevenpack/",
+		"sameAs": [
+			"https://twitter.com/steven_pack"
+		]
+	},
+	"headline": "Expanding the Cloudflare Workers Observability Ecosystem",
+	"url": "https://blog.cloudflare.com/observability-ecosystem/",
+	"datePublished": "2021-04-13T13:00:00.000Z",
+	"dateModified": "2021-04-22T18:18:02.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/04/Observability-partnerships-1.png",
+		"width": 1377,
+		"height": 695
+	},
+	"keywords": "Developer Week, Developers, Cloudflare Workers, Partners, Observability, Serverless, Product News",
+	"description": "Cloudflare adds Data Dog, Honeycomb, New Relic, Sentry, Splunk, and Sumologic as observability partners to the Cloudflare Workers Ecosystem",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Cody Koeninger",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/07/cody--1-.jpg",
+			"width": 600,
+			"height": 600
+		},
+		"url": "https://blog.cloudflare.com/author/cody/",
+		"sameAs": []
+	},
+	"headline": "Cloudflare Workers Announces Broad Language Support",
+	"url": "https://blog.cloudflare.com/cloudflare-workers-announces-broad-language-support/",
+	"datePublished": "2020-07-28T13:01:00.000Z",
+	"dateModified": "2020-07-28T15:13:08.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2020/07/Screen-Shot-2020-07-28-at-8.12.46-AM.png",
+		"width": 712,
+		"height": 352
+	},
+	"keywords": "Cloudflare Workers, Serverless, Serverless Week, JavaScript, Python, Wrangler",
+	"description": "Today, we’re excited to announce support for Python, Scala, Kotlin, Reason and Dart. You can build applications on Cloudflare Workers using your favorite language starting today.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Steven Pack",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/steven-pack.png",
+			"width": 496,
+			"height": 492
+		},
+		"url": "https://blog.cloudflare.com/author/stevenpack/",
+		"sameAs": [
+			"https://twitter.com/steven_pack"
+		]
+	},
+	"headline": "Announcing Network On-ramp Partners for Cloudflare One",
+	"url": "https://blog.cloudflare.com/network-onramp-partnerships/",
+	"datePublished": "2021-03-22T13:00:00.000Z",
+	"dateModified": "2022-01-20T08:47:04.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/03/Screen-Shot-2021-03-21-at-8.03.04-PM.png",
+		"width": 1312,
+		"height": 924
+	},
+	"keywords": "Cloudflare One, Partners, Security, Security Week",
+	"description": "We know the promise of replacing MPLS links with a global, secure, performant and observable network is going to transform the corporate network and the industry itself. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

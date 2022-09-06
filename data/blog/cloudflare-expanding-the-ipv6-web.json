@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew Prince",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
+			"width": 1196,
+			"height": 1190
+		},
+		"url": "https://blog.cloudflare.com/author/matthew-prince/",
+		"sameAs": [
+			"https://twitter.com/eastdakota"
+		]
+	},
+	"headline": "CloudFlare Expanding the IPv6 Web",
+	"url": "https://blog.cloudflare.com/cloudflare-expanding-the-ipv6-web/",
+	"datePublished": "2012-01-12T22:42:00.000Z",
+	"dateModified": "2018-02-01T22:12:38.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/02/ipv6-ipv4.gif.scaled500.gif",
+	"keywords": "IPv6, Save The Web, Product News, IPv4, Milestones",
+	"description": "We regularly monitor the Alexa top 1 million websites for trends. Specifically, we&#x27;ve been tracking how many of them support IPv6 connections. The numbers are still low but have been improving. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

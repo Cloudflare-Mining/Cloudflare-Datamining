@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Ankur Aggarwal",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/11/00100lPORTRAIT_00100_BURST20181020175123196_COVER-01.jpeg",
+			"width": 110,
+			"height": 100
+		},
+		"url": "https://blog.cloudflare.com/author/ankur/",
+		"sameAs": [
+			"https://twitter.com/Encore_Encore"
+		]
+	},
+	"headline": "CloudflareのZero Trustプラットフォームで、PII（個人識別情報）と選択的ログの制御",
+	"url": "https://blog.cloudflare.com/ja-jp/pii-and-selective-logging-controls-for-cloudflares-zero-trust-platform-ja-jp/",
+	"datePublished": "2021-12-06T13:59:00.000Z",
+	"dateModified": "2021-12-31T05:07:07.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/12/image1-18-3.png",
+		"width": 964,
+		"height": 537
+	},
+	"keywords": "CIO Week (JP), Cloudflare One (JP), Cloudflare Gateway (JP), 日本語, 製品ニュース (JP), セキュリティ",
+	"description": "Cloudflareでは、セキュリティのためにプライバシーを妥協する必要はないと考えています。昨年、当社はCloudflare Gatewayを発表しました。これは、お客様の組織のためにZero Trustブラウジングコントロールを組み込んだ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

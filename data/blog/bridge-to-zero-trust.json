@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Annika Garbers",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/annika.png",
+			"width": 400,
+			"height": 400
+		},
+		"url": "https://blog.cloudflare.com/author/annika/",
+		"sameAs": [
+			"https://twitter.com/annikagarbers"
+		]
+	},
+	"headline": "A bridge to Zero Trust",
+	"url": "https://blog.cloudflare.com/bridge-to-zero-trust/",
+	"datePublished": "2022-03-18T13:00:15.000Z",
+	"dateModified": "2022-05-22T13:19:07.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/03/unnamed-3-2.png",
+		"width": 1600,
+		"height": 900
+	},
+	"keywords": "Security Week, Cloudflare Zero Trust, Zero Trust, Security, Product News",
+	"description": "Today, we’re excited to announce the ability to route traffic from user devices with our lightweight roaming agent (WARP) installed to any network connected with our Magic IP-layer tunnels",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

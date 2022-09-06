@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Michael Tremante",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/url-3.jpg",
+		"url": "https://blog.cloudflare.com/author/michael-tremante/",
+		"sameAs": [
+			"https://twitter.com/MichaelTremante"
+		]
+	},
+	"headline": "全新 Cloudflare Web Application Firewall（Web 應用程式防火牆，WAF）",
+	"url": "https://blog.cloudflare.com/zh-tw/new-cloudflare-waf-zh-tw/",
+	"datePublished": "2021-03-29T13:39:00.000Z",
+	"dateModified": "2021-05-05T22:27:35.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/04/1-15.png",
+		"width": 1200,
+		"height": 628
+	},
+	"keywords": "安全週 (ZH), 產品新聞 (TW), WAF (TW)",
+	"description": "Cloudflare Web Application Firewall (WAF) 每天封鎖 570 多億次網路威脅，相當於每秒封鎖 65 萬個 HTTP 請求。用來篩選這些流量的原始程式碼是由 Cloudflare 現任技術長編寫的。WAF 迄今已獲無數好評，包括在 2020 年度 Gartner Magic Quadrant WAF 評測中獲得「執行能力」最高分。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

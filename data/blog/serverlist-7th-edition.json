@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Connor Peshek",
+		"image": "http://blog.cloudflare.com/content/images/2017/11/icBKUT78_400x400.jpg",
+		"url": "https://blog.cloudflare.com/author/connor-peshek/",
+		"sameAs": [
+			"https://twitter.com/ConzorKingKong"
+		]
+	},
+	"headline": "The Serverlist: Building out the SHAMstack",
+	"url": "https://blog.cloudflare.com/serverlist-7th-edition/",
+	"datePublished": "2019-08-09T16:01:00.000Z",
+	"dateModified": "2019-10-01T23:38:50.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2019/08/5EB386F2-AE6D-46A2-8EF7-19BA469F3B9C.png",
+		"width": 954,
+		"height": 428
+	},
+	"keywords": "Serverless, Cloudflare Workers, The Serverlist Newsletter",
+	"description": "Check out our seventh edition of The Serverlist below. Get the latest scoop on the serverless space, get your hands dirty with new developer tutorials, engage in conversations with other serverless developers, and find upcoming meetups and conferences to attend.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

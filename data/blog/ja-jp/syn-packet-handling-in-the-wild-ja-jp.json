@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Marek Majkowski",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/b5967d6c687939594adb6992723d0529.jpeg",
+		"url": "https://blog.cloudflare.com/author/marek-majkowski/",
+		"sameAs": [
+			"https://twitter.com/majek04"
+		]
+	},
+	"headline": "未知の領域でのSYNパケット処理",
+	"url": "https://blog.cloudflare.com/ja-jp/syn-packet-handling-in-the-wild-ja-jp/",
+	"datePublished": "2018-01-15T13:49:00.000Z",
+	"dateModified": "2021-01-21T18:52:40.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2019/12/all-1-1-1.jpeg",
+		"width": 480,
+		"height": 265
+	},
+	"keywords": "日本語, SYN (JP), TCP (JP)",
+	"description": "Cloudflareは、インターネットの未知の領域でのサーバー運用に関して豊富な経験があります。それでも、常にこの黒魔術の腕に磨きをかけています。まさにこのブログで、FIN-WAIT-2の理解やバッファチューニングを受けるといったインターネットプロトコルの影の部分についてこれまで言及してきました。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Michelle Zatlyn",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Michelle-Zatlyn-2.png",
+			"width": 492,
+			"height": 488
+		},
+		"url": "https://blog.cloudflare.com/author/michelle-zatlyn/",
+		"sameAs": [
+			"https://twitter.com/zatlyn"
+		]
+	},
+	"headline": "Edge Cache Expire TTL: Easiest way to override any existing headers",
+	"url": "https://blog.cloudflare.com/edge-cache-expire-ttl-easiest-way-to-override/",
+	"datePublished": "2013-02-01T22:27:00.000Z",
+	"dateModified": "2021-01-28T23:28:38.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/Cache_Rules_Everything_Around_Me.png.scaled500-1.png",
+	"keywords": "Cache, TTL, Speed & Reliability",
+	"description": "CloudFlare makes caching easy. Our service automatically determines what files to cache based on file extensions. Performance benefits kick in automatically.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

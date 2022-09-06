@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Michael Tremante",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/url-3.jpg",
+		"url": "https://blog.cloudflare.com/author/michael-tremante/",
+		"sameAs": [
+			"https://twitter.com/MichaelTremante"
+		]
+	},
+	"headline": "¡WAF para todos!",
+	"url": "https://blog.cloudflare.com/es-es/waf-for-everyone-es-es/",
+	"datePublished": "2022-03-15T12:59:00.000Z",
+	"dateModified": "2022-03-15T21:22:28.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/03/image2-33.png",
+		"width": 1801,
+		"height": 1013
+	},
+	"keywords": "Semana de la Seguridad, Español, Noticias de productos, Seguridad",
+	"description": "En Cloudflare, nos gustan las ideas disruptivas. Si lo unimos a nuestra convicción fundamental de que la seguridad es algo que debería estar al alcance de cualquiera, el resultado es una red de Internet mejor y más segura para todos.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

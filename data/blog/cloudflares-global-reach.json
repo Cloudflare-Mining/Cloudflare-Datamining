@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew Prince",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
+			"width": 1196,
+			"height": 1190
+		},
+		"url": "https://blog.cloudflare.com/author/matthew-prince/",
+		"sameAs": [
+			"https://twitter.com/eastdakota"
+		]
+	},
+	"headline": "CloudFlare&#x27;s Global Reach",
+	"url": "https://blog.cloudflare.com/cloudflares-global-reach/",
+	"datePublished": "2012-11-02T20:19:00.000Z",
+	"dateModified": "2018-08-08T22:04:27.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/cloudflare_unique_logins.png.scaled500.png",
+	"keywords": "Customers, Traffic, Our History, Speed & Reliability",
+	"description": "CloudFlare is based in San Francisco, California, USA but we serve a global audience. Every minute of every day we send and receive traffic from nearly all of the world&#x27;s networks.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

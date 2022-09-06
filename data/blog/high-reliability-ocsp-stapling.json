@@ -1,0 +1,40 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Nick Sullivan",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/09/BJ4NgXVj_400x400.jpg",
+			"width": 400,
+			"height": 400
+		},
+		"url": "https://blog.cloudflare.com/author/nick-sullivan/",
+		"sameAs": [
+			"https://crypto.dance",
+			"https://twitter.com/grittygrease"
+		]
+	},
+	"headline": "High-reliability OCSP stapling and why it matters",
+	"url": "https://blog.cloudflare.com/high-reliability-ocsp-stapling/",
+	"datePublished": "2017-07-10T12:43:30.000Z",
+	"dateModified": "2021-09-20T18:03:05.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/Swingline-stapler.jpg",
+	"keywords": "Crypto, OCSP, TLS, HTTPS, Security, Programming, Research",
+	"description": "At Cloudflare our focus is making the internet faster and more secure. Today we are announcing a new enhancement to our HTTPS service: High-Reliability OCSP stapling.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

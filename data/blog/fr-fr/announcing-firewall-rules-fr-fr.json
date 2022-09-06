@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Alex Cruz Farmer",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/12/_DSC4744--2-.jpg",
+			"width": 600,
+			"height": 600
+		},
+		"url": "https://blog.cloudflare.com/author/alex-cruz-farmer/",
+		"sameAs": [
+			"https://twitter.com/alexcf"
+		]
+	},
+	"headline": "Lancement de Firewall Rules",
+	"url": "https://blog.cloudflare.com/fr-fr/announcing-firewall-rules-fr-fr/",
+	"datePublished": "2018-12-03T20:20:00.000Z",
+	"dateModified": "2021-01-22T03:45:14.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/01/Firewall-rules-white-back-1.png",
+		"width": 650,
+		"height": 519
+	},
+	"keywords": "Français, Sécurité, Fiabilité, Pare-feu, Règle WAF, Actualités produits",
+	"description": "Les menaces changent de visage à chaque seconde. Au fur et à mesure que les pirates évoluent, devenant plus dynamiques et sournois, les vulnérabilités se matérialisent plus rapidement que les ingénieurs ne peuvent corriger leurs applications.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

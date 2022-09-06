@@ -1,0 +1,34 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "John Graham-Cumming",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
+		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
+		"sameAs": [
+			"https://twitter.com/jgrahamc"
+		]
+	},
+	"headline": "Inside ImageTragick: The Real Payloads Being Used to Hack Websites",
+	"url": "https://blog.cloudflare.com/inside-imagetragick-the-real-payloads-being-used-to-hack-websites-2/",
+	"datePublished": "2016-05-09T13:34:26.000Z",
+	"dateModified": "2018-08-27T20:27:03.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/4968376506_9021f8ba78_z.jpg",
+	"keywords": "WAF Rules, WAF, Vulnerabilities, Reliability, Security",
+	"description": "Last week multiple vulnerabilities were made public in the popular image manipulation software, ImageMagick. These were quickly named ImageTragick. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

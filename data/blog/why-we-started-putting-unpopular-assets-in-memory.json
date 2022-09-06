@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Yuchen Wu",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/03/yuchen--1-.jpg",
+			"width": 600,
+			"height": 600
+		},
+		"url": "https://blog.cloudflare.com/author/yuchen/",
+		"sameAs": []
+	},
+	"headline": "Why We Started Putting Unpopular Assets in Memory",
+	"url": "https://blog.cloudflare.com/why-we-started-putting-unpopular-assets-in-memory/",
+	"datePublished": "2020-03-24T12:00:00.000Z",
+	"dateModified": "2021-01-28T23:33:52.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2020/03/one-hit-wonders-copy@2x.png",
+		"width": 2299,
+		"height": 1294
+	},
+	"keywords": "Cache, Product News, Speed & Reliability",
+	"description": "Recently, we developed a technology that reduces our hit tail latency and reduces the wear out of SSDs. This technology is a memory-SSD hybrid storage system that puts unpopular assets in memory.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Annika Garbers",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/annika.png",
+			"width": 400,
+			"height": 400
+		},
+		"url": "https://blog.cloudflare.com/author/annika/",
+		"sameAs": [
+			"https://twitter.com/annikagarbers"
+		]
+	},
+	"headline": "Welcome to CIO Week and the future of corporate networks",
+	"url": "https://blog.cloudflare.com/welcome-to-cio-week/",
+	"datePublished": "2021-12-05T20:58:39.000Z",
+	"dateModified": "2022-01-21T08:13:50.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/12/image5-1.png",
+		"width": 1200,
+		"height": 675
+	},
+	"keywords": "CIO Week, Cloudflare One, Zero Trust, Network-as-a-service",
+	"description": "This week, we’ll demonstrate how Cloudflare One, our Zero Trust Network-as-a-Service, is helping CIOs transform their corporate networks. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

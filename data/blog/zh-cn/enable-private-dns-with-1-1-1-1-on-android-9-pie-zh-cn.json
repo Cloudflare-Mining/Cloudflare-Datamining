@@ -1,0 +1,37 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Stephen Pinkerton",
+		"image": "http://blog.cloudflare.com/content/images/2018/07/00100dPORTRAIT_00100_BURST20180413122146489_COVER.jpg",
+		"url": "https://blog.cloudflare.com/author/stephen/",
+		"sameAs": []
+	},
+	"headline": "在 Android 9 Pie 上使用 1.1.1.1 开启私人 DNS",
+	"url": "https://blog.cloudflare.com/zh-cn/enable-private-dns-with-1-1-1-1-on-android-9-pie-zh-cn/",
+	"datePublished": "2018-08-16T14:17:00.000Z",
+	"dateModified": "2021-09-02T19:02:52.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/04/1-34.png",
+		"width": 2400,
+		"height": 1801
+	},
+	"keywords": "简体中文 (CN), 1.1.1.1 (CN), DNS (CN)",
+	"description": "最近，Google 正式发布了 Android 9 Pie，其包含与数字健康、安全性和隐私相关的一系列新功能。如果您在测试版或更新后的版本中使用过网络设置，可能会注意到Android 现在支持一种新的私人 DNS 模式。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

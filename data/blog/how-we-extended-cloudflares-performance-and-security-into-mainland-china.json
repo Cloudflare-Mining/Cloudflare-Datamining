@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew Prince",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
+			"width": 1196,
+			"height": 1190
+		},
+		"url": "https://blog.cloudflare.com/author/matthew-prince/",
+		"sameAs": [
+			"https://twitter.com/eastdakota"
+		]
+	},
+	"headline": "How We Extended CloudFlare&#x27;s Performance and Security Into Mainland China",
+	"url": "https://blog.cloudflare.com/how-we-extended-cloudflares-performance-and-security-into-mainland-china/",
+	"datePublished": "2015-09-14T05:25:41.000Z",
+	"dateModified": "2018-08-24T18:41:14.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2017/10/network-map-china.png",
+	"keywords": "Product News, Baidu, China, Cloudflare Network, Data Center",
+	"description": "CloudFlare launched five years ago. Within a year of our launch, the biggest surprise was the strong global demand for our service. From nearly the beginning, China was the second largest source of traffic by country to our network, behind only the United States.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

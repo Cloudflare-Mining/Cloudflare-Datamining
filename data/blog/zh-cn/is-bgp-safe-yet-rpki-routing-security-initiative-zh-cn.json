@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Louis Poinsignon",
+		"image": "http://blog.cloudflare.com/content/images/2017/09/AAEAAQAAAAAAAAYXAAAAJGE5YjM0YmVmLWJhMTItNDExZS1iNTcwLTdmNTg1YzZjMjBiNg.jpg",
+		"url": "https://blog.cloudflare.com/author/louis-poinsignon/",
+		"sameAs": [
+			"https://twitter.com/lpoinsig"
+		]
+	},
+	"headline": "BGP路由协议是否安全_部署RPKI防范BGP路由泄露和路由劫持",
+	"url": "https://blog.cloudflare.com/zh-cn/is-bgp-safe-yet-rpki-routing-security-initiative-zh-cn/",
+	"datePublished": "2020-04-17T15:00:00.000Z",
+	"dateModified": "2021-01-28T20:05:26.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2020/11/image--2---1--1.png",
+		"width": 1510,
+		"height": 950
+	},
+	"keywords": "简体中文 (CN), DNSSEC (CN), BGP (CN), 安全",
+	"description": "许久以来，人们已经接受 BGP 泄漏与劫持是互联网不可避免的一个部分。我们依靠 TLS 和 DNSSEC 等上层保护来确保数据包传送不受篡改，但路由被劫持常常导致 IP 地址不可达，致使互联网服务中断。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

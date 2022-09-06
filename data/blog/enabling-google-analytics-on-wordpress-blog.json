@@ -1,0 +1,31 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "David Zakur",
+		"image": "http://blog.cloudflare.com/content/images/2018/02/Screen-Shot-2018-02-12-at-9.56.03-AM.png",
+		"url": "https://blog.cloudflare.com/author/david-zakur/",
+		"sameAs": []
+	},
+	"headline": "Enabling Google Analytics on Your WordPress.com Blog",
+	"url": "https://blog.cloudflare.com/enabling-google-analytics-on-wordpress-blog/",
+	"datePublished": "2011-07-15T16:54:00.000Z",
+	"dateModified": "2018-01-30T00:52:11.000Z",
+	"keywords": "WordPress, Analytics, Cloudflare Apps",
+	"description": "As is common for many people these days, I write a blog: OneFortyWines.com. Yay for me, right? I do this because I am passionate about wine, and I think that people who read the site find it interesting. The problem is that I don&#x27;t *know *if they do or not.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

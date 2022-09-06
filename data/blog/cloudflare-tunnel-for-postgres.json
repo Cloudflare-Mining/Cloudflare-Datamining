@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Robert McNeil",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/robert-mcneil.png",
+			"width": 504,
+			"height": 488
+		},
+		"url": "https://blog.cloudflare.com/author/robert-mcneil/",
+		"sameAs": [
+			"https://twitter.com/poooorty"
+		]
+	},
+	"headline": "Using Cloudflare Tunnel and Access with Postgres",
+	"url": "https://blog.cloudflare.com/cloudflare-tunnel-for-postgres/",
+	"datePublished": "2022-06-23T13:35:14.000Z",
+	"dateModified": "2022-06-23T14:16:20.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/06/image1-40.png",
+		"width": 1800,
+		"height": 1013
+	},
+	"keywords": "Cloudflare One Week",
+	"description": "How the Database team uses Cloudflare Tunnels internally to improve security and usability of adhoc DB queries",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

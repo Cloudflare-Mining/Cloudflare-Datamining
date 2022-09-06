@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "John Graham-Cumming",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
+		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
+		"sameAs": [
+			"https://twitter.com/jgrahamc"
+		]
+	},
+	"headline": "Internet traffic disruption caused by the Christmas Day bombing in Nashville",
+	"url": "https://blog.cloudflare.com/internet-traffic-disruption-caused-by-the-christmas-day-bombing-in-nashville/",
+	"datePublished": "2021-01-06T17:05:44.000Z",
+	"dateModified": "2021-01-13T22:24:01.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/01/Internet-traffic-disruption-caused-by-the-Christmas-Day-bombing-in-Nashville--TN-OG.png-blog-home-1.png",
+		"width": 1202,
+		"height": 628
+	},
+	"keywords": "Traffic, Internet Performance",
+	"description": "On Christmas Day 2020, an apparent suicide bomb exploded in Nashville, TN. The explosion happened outside an AT&amp;T network building on Second Avenue in Nashville at 1230 UTC.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

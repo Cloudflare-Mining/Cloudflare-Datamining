@@ -1,0 +1,34 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Louis Poinsignon",
+		"image": "http://blog.cloudflare.com/content/images/2017/09/AAEAAQAAAAAAAAYXAAAAJGE5YjM0YmVmLWJhMTItNDExZS1iNTcwLTdmNTg1YzZjMjBiNg.jpg",
+		"url": "https://blog.cloudflare.com/author/louis-poinsignon/",
+		"sameAs": [
+			"https://twitter.com/lpoinsig"
+		]
+	},
+	"headline": "Fuites BGP et crypto-monnaies",
+	"url": "https://blog.cloudflare.com/fr-fr/bgp-leaks-and-crypto-currencies-fr-fr/",
+	"datePublished": "2018-04-24T22:31:00.000Z",
+	"dateModified": "2021-01-22T03:21:51.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2019/05/6818192898_c132e81824_z-1.jpg",
+	"keywords": "Français, Sécurité, Vulnérabilités, BGP (FR), TLS (FR), HTTPS (FR), Crypto (FR)",
+	"description": "Au cours des dernières heures, une douzaine d&#x27;articles ont relaté la manière dont un pirate a tenté de voler des crypto-monnaies en exploitant une fuite BGP. (et a peut-être réussi).",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

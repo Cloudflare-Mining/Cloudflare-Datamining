@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Anbang Wen",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2020/10/1889.jpg",
+			"width": 600,
+			"height": 600
+		},
+		"url": "https://blog.cloudflare.com/author/anbang/",
+		"sameAs": []
+	},
+	"headline": "Unwrap the SERVFAIL",
+	"url": "https://blog.cloudflare.com/unwrap-the-servfail/",
+	"datePublished": "2020-10-30T12:00:00.000Z",
+	"dateModified": "2020-10-30T12:00:00.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2020/10/image1-2.jpg",
+		"width": 910,
+		"height": 513
+	},
+	"keywords": "DNS, Resolver",
+	"description": "We recently released a new version of Cloudflare Resolver, which adds a piece of information called “Extended DNS Errors” (EDE) along with the response code under certain circumstances. This will be helpful in tracing DNS resolution errors and figure out what went wrong behind the scenes.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

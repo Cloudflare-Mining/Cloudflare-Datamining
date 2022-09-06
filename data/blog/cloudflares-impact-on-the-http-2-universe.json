@@ -1,0 +1,32 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Christian Elsen",
+		"image": "http://blog.cloudflare.com/content/images/2018/02/AAEAAQAAAAAAAAf8AAAAJDQ0YmU2OWMxLWI2YmMtNDhlOS1hOTY2LTc2OWIxYzQ1YjI5ZA.jpg",
+		"url": "https://blog.cloudflare.com/author/christian-elsen/",
+		"sameAs": []
+	},
+	"headline": "CloudFlare’s Impact On The HTTP/2 “Universe”",
+	"url": "https://blog.cloudflare.com/cloudflares-impact-on-the-http-2-universe/",
+	"datePublished": "2016-02-03T17:16:10.000Z",
+	"dateModified": "2018-08-24T23:57:22.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/image_0.png",
+	"keywords": "HTTP2, spdy, Speed & Reliability",
+	"description": "CloudFlare released HTTP/2 support for all customers on December 3rd, 2015. Now, two months later, it&#x27;s time to take a look at the impact of this release on the HTTP/2 &quot;universe&quot; and also at what has changed from a HTTP/2 vs. SPDY vs. HTTP 1.1 traffic ratio perspective.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

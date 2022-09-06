@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew Prince",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
+			"width": 1196,
+			"height": 1190
+		},
+		"url": "https://blog.cloudflare.com/author/matthew-prince/",
+		"sameAs": [
+			"https://twitter.com/eastdakota"
+		]
+	},
+	"headline": "Facebook Bug Redirects the Web Through Javascript Widget Error",
+	"url": "https://blog.cloudflare.com/facebook-bug-takes-down-much-of-the-web-cloud/",
+	"datePublished": "2013-02-08T05:08:00.000Z",
+	"dateModified": "2018-08-10T01:26:46.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/rocket.png.scaled500-1.png",
+	"keywords": "Rocket Loader, Speed & Reliability",
+	"description": "You may have heard that Facebook took down a significant portion of the Internet today. A bug in their Facebook Connect script caused users to be redirected to a Facebook error page.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew Prince",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
+			"width": 1196,
+			"height": 1190
+		},
+		"url": "https://blog.cloudflare.com/author/matthew-prince/",
+		"sameAs": [
+			"https://twitter.com/eastdakota"
+		]
+	},
+	"headline": "CloudFlare New Jersey Now Online",
+	"url": "https://blog.cloudflare.com/cloudflare-new-jersey-now-online/",
+	"datePublished": "2011-05-03T19:51:00.000Z",
+	"dateModified": "2018-01-26T19:58:49.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/01/jersey_shore_cast.jpg",
+	"keywords": "Data Center, Cloudflare Network, United States",
+	"description": "CloudFlare&#x27;s newest data center just started receiving traffic. Located just over the river from Manhattan in New Jersey, the latest facility is already taking load away from our facility in Ashburn, VA. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew Prince",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
+			"width": 1196,
+			"height": 1190
+		},
+		"url": "https://blog.cloudflare.com/author/matthew-prince/",
+		"sameAs": [
+			"https://twitter.com/eastdakota"
+		]
+	},
+	"headline": "Load Balancing without Load Balancers",
+	"url": "https://blog.cloudflare.com/cloudflares-architecture-eliminating-single-p/",
+	"datePublished": "2013-03-06T17:43:00.000Z",
+	"dateModified": "2018-08-17T22:57:18.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/balance.jpg.scaled500.jpg",
+	"keywords": "Load Balancing, Speed & Reliability, Reliability, Product News",
+	"description": "CloudFlare had an hour-long outage this last weekend. Thankfully, outages like this have been a relatively rare occurrance for our service. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

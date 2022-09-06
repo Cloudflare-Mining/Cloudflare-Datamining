@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Yair Dovrat",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/11/profile.jpeg",
+			"width": 400,
+			"height": 400
+		},
+		"url": "https://blog.cloudflare.com/author/yair-dovrat/",
+		"sameAs": [
+			"https://twitter.com/YDovrat"
+		]
+	},
+	"headline": "Cloudflare, Zaraz 인수로 서드파티 도구의 클라우드 로딩을 실현",
+	"url": "https://blog.cloudflare.com/ko-kr/cloudflare-acquires-zaraz-to-enable-cloud-loading-of-third-party-tools-ko-kr/",
+	"datePublished": "2021-12-08T14:01:00.000Z",
+	"dateModified": "2022-01-01T02:10:47.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/01/image5-8-2.png",
+		"width": 1801,
+		"height": 1013
+	},
+	"keywords": "CIO Week (KO), Zaraz (KO), 한국어",
+	"description": "Cloudflare의 Zaraz 인수와 Cloudflare Zaraz(베타) 출시를 발표하게 되어 매우 기쁩니다. 오늘 출시 대상은 Cloudflare 시스템과 대시보드에 통합되는 Zaraz 제품의 베타 버전입니다. 이 제품을 사용하여 클라우드에서 타사 도구를 관리 및 로드하고 상당한 속도, 프라이버시, 보안 개선을 달성할 수 있습니다. 우리는 첫날부터 Workers",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

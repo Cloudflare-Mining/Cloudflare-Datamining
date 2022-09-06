@@ -1,0 +1,32 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Joshua Liebow-Feeser",
+		"image": "http://blog.cloudflare.com/content/images/2017/04/1046063-1.jpg",
+		"url": "https://blog.cloudflare.com/author/joshlf/",
+		"sameAs": []
+	},
+	"headline": "Understanding Our Cache and the Web Cache Deception Attack",
+	"url": "https://blog.cloudflare.com/understanding-our-cache-and-the-web-cache-deception-attack/",
+	"datePublished": "2017-04-14T15:00:00.000Z",
+	"dateModified": "2021-01-28T23:29:28.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/01/one-way.jpg",
+	"keywords": "Page Rules, Attacks, Tips, Security, Reliability, Best Practices, Cache, Speed & Reliability",
+	"description": "About a month ago, security researcher Omer Gil published the details of an attack that he calls the Web Cache Deception attack. It works against sites that sit behind a reverse proxy (like Cloudflare) and are misconfigured in a particular way.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

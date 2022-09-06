@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "David Belson",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/01/headshot-grayscale-crop.jpeg",
+			"width": 526,
+			"height": 480
+		},
+		"url": "https://blog.cloudflare.com/author/david-belson/",
+		"sameAs": [
+			"https://twitter.com/dbelson"
+		]
+	},
+	"headline": "Internet Explorer, we hardly knew ye",
+	"url": "https://blog.cloudflare.com/internet-explorer-retired/",
+	"datePublished": "2022-06-29T12:55:46.000Z",
+	"dateModified": "2022-07-12T10:39:49.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/06/unnamed11-1.png",
+		"width": 1198,
+		"height": 419
+	},
+	"keywords": "Analytics, Bots, Trends, Browser",
+	"description": "With the recent retirement of Microsoft Internet Explorer 11, we analyzed Internet Explorer traffic trends. Breaking the traffic down by bot score revealed much of this traffic is “likely automated”",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Sam Rhea",
+		"image": "http://blog.cloudflare.com/content/images/2018/07/photo-for-profile.jpg",
+		"url": "https://blog.cloudflare.com/author/sam/",
+		"sameAs": [
+			"https://twitter.com/LakeAustinBlvd"
+		]
+	},
+	"headline": "Using your devices as the key to your apps",
+	"url": "https://blog.cloudflare.com/using-your-devices-as-the-key-to-your-apps/",
+	"datePublished": "2020-02-21T17:14:04.000Z",
+	"dateModified": "2021-02-23T15:19:47.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2020/02/Screen-Shot-2020-02-21-at-9.28.42-AM.png",
+		"width": 794,
+		"height": 526
+	},
+	"keywords": "Cloudflare Access, Product News, Security, VPN",
+	"description": "I keep a very detailed budget. I have for the last 7 years. I manually input every expense into a spreadsheet app and use a combination of sumifs functions to track spending.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

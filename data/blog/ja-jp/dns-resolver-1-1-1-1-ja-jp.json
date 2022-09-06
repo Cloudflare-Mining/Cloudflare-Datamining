@@ -1,0 +1,37 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Ólafur Guðmundsson",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/3a917b8.jpg",
+		"url": "https://blog.cloudflare.com/author/olafur-gudmundsson/",
+		"sameAs": []
+	},
+	"headline": "DNSリゾルバー、1.1.1.1のご紹介（冗談ではなく）",
+	"url": "https://blog.cloudflare.com/ja-jp/dns-resolver-1-1-1-1-ja-jp/",
+	"datePublished": "2018-03-31T23:00:00.000Z",
+	"dateModified": "2021-10-08T10:56:19.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/06/1.1.1.1.png",
+		"width": 1600,
+		"height": 800
+	},
+	"keywords": "日本語, DNS (JP), 1.1.1.1 (JP), リゾルバー, プライバシー, 製品ニュース (JP)",
+	"description": "Cloudflareのミッションは、より良いインターネットを構築することです。そして本日、DNSリゾルバー1.1.1.1 - 再帰的なDNSサービスをリリースします。このサービスでは、より速く、安全で、プライバシー中心のパブリックDNSリゾルバーを構築することで、インターネットの基盤をより強固なものにしています。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

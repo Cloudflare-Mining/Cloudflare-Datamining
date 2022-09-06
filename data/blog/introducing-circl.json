@@ -1,0 +1,32 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Kris Kwiatkowski",
+		"image": "http://blog.cloudflare.com/content/images/2019/06/kris.jpg",
+		"url": "https://blog.cloudflare.com/author/kris/",
+		"sameAs": []
+	},
+	"headline": "Introducing CIRCL: An Advanced Cryptographic Library",
+	"url": "https://blog.cloudflare.com/introducing-circl/",
+	"datePublished": "2019-06-20T13:00:00.000Z",
+	"dateModified": "2022-05-26T09:15:07.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2019/06/circl-header@2x.png",
+	"keywords": "Crypto Week, Crypto, Cryptography, Product News, Security, Elliptic Curves, TLS, Research",
+	"description": "Today we are proud to release the source code of a cryptographic library we’ve been working on:  a collection of cryptographic primitives written in Go, called CIRCL. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

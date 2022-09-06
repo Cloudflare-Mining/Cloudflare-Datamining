@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Guest Author",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/10/Screen-Shot-2019-10-09-at-11.21.59-AM.png",
+			"width": 362,
+			"height": 364
+		},
+		"url": "https://blog.cloudflare.com/author/guest-author/",
+		"sameAs": []
+	},
+	"headline": "Exploring WebAssembly AI Services on Cloudflare Workers",
+	"url": "https://blog.cloudflare.com/exploring-webassembly-ai-services-on-cloudflare-workers/",
+	"datePublished": "2020-10-09T11:00:00.000Z",
+	"dateModified": "2020-10-09T15:23:53.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2020/10/image3-4.png",
+		"width": 1330,
+		"height": 816
+	},
+	"keywords": "Cloudflare Workers, Serverless",
+	"description": "Edge networks present a significant opportunity for Artificial Intelligence (AI) performance and applicability. AI technologies already make it possible to run compelling applications like object and voice recognition, navigation, and recommendations.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

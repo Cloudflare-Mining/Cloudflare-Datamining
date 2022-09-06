@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Eric Brown",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/09/ebrown.jpg",
+			"width": 2000,
+			"height": 1969
+		},
+		"url": "https://blog.cloudflare.com/author/eric/",
+		"sameAs": []
+	},
+	"headline": "Cloudflare Domain Protectionのご紹介 — ドメインで妥協することはもうありません",
+	"url": "https://blog.cloudflare.com/ja-jp/introducing-domain-protection-ja-jp/",
+	"datePublished": "2021-12-10T13:58:00.000Z",
+	"dateModified": "2021-12-30T00:05:27.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/12/image1-55-2.png",
+		"width": 1800,
+		"height": 1013
+	},
+	"keywords": "日本語, セキュリティ, 製品ニュース (JP), CIO Week (JP)",
+	"description": "Web上のすべては、ドメイン名から始まります。ドメイン名は、企業のオンラインプレゼンスを構築する基盤です。その土台の安全性が損なわれた場合のダメージは計り知れません。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

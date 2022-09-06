@@ -1,0 +1,34 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Dani Grant",
+		"image": "http://blog.cloudflare.com/content/images/2018/08/efVJR3rj_400x400.jpg",
+		"url": "https://blog.cloudflare.com/author/dani/",
+		"sameAs": [
+			"https://twitter.com/thedanigrant"
+		]
+	},
+	"headline": "Announcing Virtual DNS: DDoS Mitigation and Global Distribution for DNS Traffic",
+	"url": "https://blog.cloudflare.com/announcing-virtual-dns-ddos-mitigation-and-global-distribution-for-dns-traffic/",
+	"datePublished": "2015-03-10T12:59:09.000Z",
+	"dateModified": "2018-08-24T01:10:29.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/VirtualDns.png",
+	"keywords": "Virtual DNS, DNS, Reliability, Mitigation, DDoS, Attacks",
+	"description": "It’s 9am and CloudFlare has already mitigated three billion malicious requests for our customers today. Six out of every one hundred requests we see are malicious, and increasingly, more of those bad requests are targeting DNS nameservers.\n\n",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

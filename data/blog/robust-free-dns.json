@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew Prince",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
+			"width": 1196,
+			"height": 1190
+		},
+		"url": "https://blog.cloudflare.com/author/matthew-prince/",
+		"sameAs": [
+			"https://twitter.com/eastdakota"
+		]
+	},
+	"headline": "Robust, Free DNS FTW",
+	"url": "https://blog.cloudflare.com/robust-free-dns/",
+	"datePublished": "2011-10-17T23:10:00.000Z",
+	"dateModified": "2020-08-14T15:32:26.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/02/DNS_resolution_error.png.scaled500.png",
+	"keywords": "Free, DNS, Speed & Reliability",
+	"description": "Most people don&#x27;t think DNS is very sexy, but it&#x27;s critically important to the functioning of the Internet. At its core, the purpose of DNS is to turn a domain that humans can read (example.com) into an IP address that computers can read (192.0.43.10).",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

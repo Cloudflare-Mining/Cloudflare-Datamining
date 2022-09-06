@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Greg McKeon",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/05/Screen-Shot-2022-05-10-at-2.50.56-PM.png",
+			"width": 692,
+			"height": 662
+		},
+		"url": "https://blog.cloudflare.com/author/greg/",
+		"sameAs": [
+			"https://twitter.com/wegmckeon"
+		]
+	},
+	"headline": "Durable Objects — 现已正式发布",
+	"url": "https://blog.cloudflare.com/zh-cn/durable-objects-ga-zh-cn/",
+	"datePublished": "2021-11-15T16:24:00.000Z",
+	"dateModified": "2021-12-02T16:25:20.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/12/image1-5.png",
+		"width": 1200,
+		"height": 675
+	},
+	"keywords": "Full Stack Week (CN), Durable Objects (CN)",
+	"description": "Full Stack Week 旨在介绍开发人员如何拥抱 Cloudflare 网络的力量，打造默认全球性的完整应用。Workers 的承诺不仅仅是改善了延迟——而是从根本上改变了编程范式，使开发人员更轻松，应用程序更有韧性。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

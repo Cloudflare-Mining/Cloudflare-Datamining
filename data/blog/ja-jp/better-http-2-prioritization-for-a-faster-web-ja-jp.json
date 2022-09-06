@@ -1,0 +1,40 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Patrick Meenan",
+		"image": "http://blog.cloudflare.com/content/images/2018/08/PatPerfCalendar.jpg",
+		"url": "https://blog.cloudflare.com/author/patrick-meenan/",
+		"sameAs": [
+			"https://www.webpagetest.org/",
+			"https://twitter.com/patmeenan"
+		]
+	},
+	"headline": "HTTP/2優先度設定の機能向上によるWebの加速化",
+	"url": "https://blog.cloudflare.com/ja-jp/better-http-2-prioritization-for-a-faster-web-ja-jp/",
+	"datePublished": "2019-05-14T13:00:00.000Z",
+	"dateModified": "2021-01-21T18:55:50.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2019/12/http2-prioritization-2.png",
+		"width": 1600,
+		"height": 1122
+	},
+	"keywords": "日本語, スピードウィーク, 製品ニュース (JP), スピードと信頼性, HTTP2 (JP)",
+	"description": "かなり前に、HTTP/2は超高速のWebを約束し、Cloudflareはすべてのお客様のためにHTTP/2アクセスを展開しました。しかし、HTTP/2の1つの特徴である優先度設定は、期待外れなものでした。根本的に崩壊していたからではなく、ブラウザーに実装する方法に問題があったのです。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

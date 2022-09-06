@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Ben Solomon",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/08/Personal-Pic.jpg",
+			"width": 2000,
+			"height": 2000
+		},
+		"url": "https://blog.cloudflare.com/author/bensol/",
+		"sameAs": [
+			"https://twitter.com/bensol"
+		]
+	},
+	"headline": "隆重推出 Cloudflare API 閘道",
+	"url": "https://blog.cloudflare.com/zh-tw/api-gateway-zh-tw/",
+	"datePublished": "2022-03-16T12:59:00.000Z",
+	"dateModified": "2022-06-30T08:35:11.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/06/image5-4-2.png",
+		"width": 1800,
+		"height": 1013
+	},
+	"keywords": "Security Week (TW), API Gateway (TW), 產品新聞 (TW), API (TW), 防守, 繁體中文 (TW)",
+	"description": "今天，我們宣佈推出 Cloudflare API 閘道。我們將以少許成本完全替換您現有的閘道",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

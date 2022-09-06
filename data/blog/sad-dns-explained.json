@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Marek Vavruša",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Marek-Vavrus-a-1.png",
+			"width": 500,
+			"height": 502
+		},
+		"url": "https://blog.cloudflare.com/author/marek/",
+		"sameAs": []
+	},
+	"headline": "SAD DNS Explained",
+	"url": "https://blog.cloudflare.com/sad-dns-explained/",
+	"datePublished": "2020-11-13T19:06:13.000Z",
+	"dateModified": "2020-11-16T18:02:54.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2020/11/379B202B-994E-4870-B84B-5EC6E5467F24.png",
+		"width": 1214,
+		"height": 603
+	},
+	"keywords": "DNS, Security, DNS Poisoning, Vulnerabilities",
+	"description": "Researchers from UC Riverside and Tsinghua University found a new way to revive a decade-old DNS cache poisoning attack. Read our deep dive into how the SAD DNS attack on DNS resolvers works, how we protect against this attack in 1.1.1.1, and what the future holds for DNS cache poisoning attacks.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

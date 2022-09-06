@@ -1,0 +1,37 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Garrett Galow",
+		"image": "http://blog.cloudflare.com/content/images/2018/04/14729279_10207227100946205_2625241094472568444_n.jpg",
+		"url": "https://blog.cloudflare.com/author/garrett/",
+		"sameAs": []
+	},
+	"headline": "Cloudflare API令牌正式可用 - 适应最小权限原则，合理界定权限与Token作用域",
+	"url": "https://blog.cloudflare.com/zh-cn/api-tokens-general-availability-zh-cn/",
+	"datePublished": "2019-08-30T13:00:00.000Z",
+	"dateModified": "2021-01-28T19:14:59.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2019/11/API-tokens@2x-1.png",
+		"width": 2004,
+		"height": 1278
+	},
+	"keywords": "产品新闻, 安全, 简体中文 (CN), API (CN)",
+	"description": "今天，我们宣布我们的API Token普遍可用了——这是一种可扩展的，更安全的与Cloudflare API交互的方式。作为致力于让互联网变得更好的一份子，Cloudflare努力简化客户在边缘的可管理性。我们做到这一点的方法之一是确保我们所有的产品和服务都可以通过API进行配置。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

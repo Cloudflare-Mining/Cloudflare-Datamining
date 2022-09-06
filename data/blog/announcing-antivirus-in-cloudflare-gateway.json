@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Malavika Balachandran Tadeusz",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/12/IMG_7208Malavika-Balachandran-Tadeusz.png",
+			"width": 200,
+			"height": 200
+		},
+		"url": "https://blog.cloudflare.com/author/malavika/",
+		"sameAs": [
+			"https://twitter.com/malavikabala"
+		]
+	},
+	"headline": "Announcing antivirus in Cloudflare Gateway",
+	"url": "https://blog.cloudflare.com/announcing-antivirus-in-cloudflare-gateway/",
+	"datePublished": "2021-03-23T13:00:00.000Z",
+	"dateModified": "2022-04-26T23:12:25.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/03/Announcing-antivirus-in-Cloudflare-Gateway-OG-internal.png",
+		"width": 1978,
+		"height": 1116
+	},
+	"keywords": "Cloudflare Zero Trust, Cloudflare Gateway, Security Week, Security, Product News, Zero Trust",
+	"description": "We’re announcing support for malware detection and prevention directly from the Cloudflare edge, giving Gateway users an additional line of defense against security threats.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

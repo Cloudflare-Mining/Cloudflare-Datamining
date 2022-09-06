@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "John Graham-Cumming",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
+		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
+		"sameAs": [
+			"https://twitter.com/jgrahamc"
+		]
+	},
+	"headline": "介绍 Cloudflare 数据本地化套件",
+	"url": "https://blog.cloudflare.com/zh-cn/introducing-the-cloudflare-data-localization-suite-zh-cn/",
+	"datePublished": "2020-12-07T11:59:00.000Z",
+	"dateModified": "2021-01-28T17:42:36.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/01/image2-11.png",
+		"width": 1186,
+		"height": 573
+	},
+	"keywords": "简体中文 (CN), 隐私 (CN)",
+	"description": "今天，我们很高兴地宣布 Cloudflare 数据本地化套件，它可以帮助企业获得Cloudflare 全球网络的性能和安全优势，同时也可以方便地设置关于数据存储和保护位置的规则和控制。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew Prince",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
+			"width": 1196,
+			"height": 1190
+		},
+		"url": "https://blog.cloudflare.com/author/matthew-prince/",
+		"sameAs": [
+			"https://twitter.com/eastdakota"
+		]
+	},
+	"headline": "The CLAMP Stack",
+	"url": "https://blog.cloudflare.com/the-clamp-stack/",
+	"datePublished": "2011-08-15T20:51:00.000Z",
+	"dateModified": "2018-01-31T00:20:55.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/01/clamp_stack.jpg.scaled500-1.jpg",
+	"keywords": "php, NGINX",
+	"description": "Much of the modern Internet is built on what is known as the LAMP Stack. LAMP originally stood for Linux + Apache + MySQL + PHP. You&#x27;ll find this basic stack at the core of companies like Google, Facebook, Yahoo, and more. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

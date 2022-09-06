@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Brian Batraski",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/12/brian.jpg",
+			"width": 600,
+			"height": 600
+		},
+		"url": "https://blog.cloudflare.com/author/brian/",
+		"sameAs": []
+	},
+	"headline": "Sala de espera de Cloudflare",
+	"url": "https://blog.cloudflare.com/es-es/cloudflare-waiting-room-es-es/",
+	"datePublished": "2021-01-22T14:00:00.000Z",
+	"dateModified": "2021-09-02T19:42:02.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/01/image3-20.png",
+		"width": 1437,
+		"height": 864
+	},
+	"keywords": "Noticias de productos, Español, COVID-19 (ES), Project Fair Shot (ES), Waiting Room (ES)",
+	"description": "Hoy estamos encantados de anunciar Cloudflare Waiting Room. Esta función estará disponible en primer lugar para un determinado grupo de clientes a través de un nuevo programa llamado Project Fair Shot.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

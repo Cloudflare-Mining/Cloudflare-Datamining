@@ -1,0 +1,45 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Tyler Caslin",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/08/pic.JPG",
+			"width": 960,
+			"height": 959
+		},
+		"url": "https://blog.cloudflare.com/author/tyler/",
+		"sameAs": [
+			"https://github.com/tc80",
+			"https://twitter.com/tycaslin"
+		]
+	},
+	"headline": "Waiting Room: Random Queueing and Custom Web/Mobile Apps",
+	"url": "https://blog.cloudflare.com/waiting-room-random-queueing-and-custom-web-mobile-apps/",
+	"datePublished": "2021-10-07T15:07:17.000Z",
+	"dateModified": "2021-10-07T15:07:17.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/10/image11.png",
+		"width": 1437,
+		"height": 864
+	},
+	"keywords": "Waiting Room, Project Fair Shot, Product News, Load Balancing",
+	"description": "Today, we are announcing Waiting Room’s general availability and several new features that have user experience in mind — an alternative queueing method and support for custom web/mobile applications!",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

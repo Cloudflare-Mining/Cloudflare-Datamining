@@ -1,0 +1,37 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Achiel van der Mandele",
+		"image": "http://blog.cloudflare.com/content/images/2019/04/avatar.png",
+		"url": "https://blog.cloudflare.com/author/achiel/",
+		"sameAs": []
+	},
+	"headline": "Magic WAN &amp; Magic Firewall: サービスとして安全なネットワーク接続",
+	"url": "https://blog.cloudflare.com/ja-jp/magic-wan-firewall-ja-jp/",
+	"datePublished": "2021-03-22T13:27:33.000Z",
+	"dateModified": "2021-09-02T19:33:19.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/03/Magic-WAN-blog-preview-2.png",
+		"width": 1200,
+		"height": 628
+	},
+	"keywords": "日本語, Cloudflare One (JP), 製品ニュース (JP), セキュリティウィーク, ファイアウォール (JP), ネットワーク",
+	"description": "Magic WANは、企業ネットワーク全体に安全で高性能な接続とルーティングを提供し、コストを抑え、運用に伴う複雑さを軽減します。Magic FirewallはMagic WANと円滑に統合されるため、ネットワーク内の任意のエンティティからトラフィックに至るまで、エッジでネットワークファイアウォールポリシーを適用できます。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

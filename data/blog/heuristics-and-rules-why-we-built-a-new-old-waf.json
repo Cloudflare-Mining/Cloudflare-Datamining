@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew Prince",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
+			"width": 1196,
+			"height": 1190
+		},
+		"url": "https://blog.cloudflare.com/author/matthew-prince/",
+		"sameAs": [
+			"https://twitter.com/eastdakota"
+		]
+	},
+	"headline": "Heuristics and Rules: Why We Built a New Old WAF",
+	"url": "https://blog.cloudflare.com/heuristics-and-rules-why-we-built-a-new-old-waf/",
+	"datePublished": "2013-08-19T06:00:00.000Z",
+	"dateModified": "2020-11-10T18:40:22.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/cloudflare-waf-screenshot.png",
+	"keywords": "Reliability, WAF",
+	"description": "We just rolled out an update to CloudFlare&#x27;s Web Application Firewall (WAF). Previously, CloudFlare&#x27;s WAF has received criticism from people who have tested it and found that it didn&#x27;t behave as traditional WAFs are expected to. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Eric Brown",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/09/ebrown.jpg",
+			"width": 2000,
+			"height": 1969
+		},
+		"url": "https://blog.cloudflare.com/author/eric/",
+		"sameAs": []
+	},
+	"headline": "Registrar for Everyone",
+	"url": "https://blog.cloudflare.com/registrar-for-everyone/",
+	"datePublished": "2021-09-28T12:59:45.000Z",
+	"dateModified": "2021-09-28T16:45:16.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/09/Registrar-3.png",
+		"width": 1800,
+		"height": 1013
+	},
+	"keywords": "Birthday Week, Registrar, Product News",
+	"description": "We’re excited to announce that all customers now have the ability to register new domains with Cloudflare.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

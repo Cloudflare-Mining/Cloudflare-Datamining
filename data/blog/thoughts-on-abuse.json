@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew Prince",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
+			"width": 1196,
+			"height": 1190
+		},
+		"url": "https://blog.cloudflare.com/author/matthew-prince/",
+		"sameAs": [
+			"https://twitter.com/eastdakota"
+		]
+	},
+	"headline": "Thoughts on Abuse",
+	"url": "https://blog.cloudflare.com/thoughts-on-abuse/",
+	"datePublished": "2012-07-13T21:47:00.000Z",
+	"dateModified": "2018-02-20T18:23:06.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/02/lulzsec.jpg.scaled500.jpg",
+	"keywords": "Malware, Abuse",
+	"description": "One of the behind the scenes topics we think about a lot at CloudFlare is how to handle abuse of our network. I realized that we hadn&#x27;t exposed our thoughts on this clearly enough. In the next few days, we&#x27;ll be making some minor updates to our Terms of Service.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

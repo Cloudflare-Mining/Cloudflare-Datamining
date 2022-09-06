@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Rita Kozlov",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/05/Rita-Kozlov.jpeg",
+			"width": 200,
+			"height": 200
+		},
+		"url": "https://blog.cloudflare.com/author/rita/",
+		"sameAs": [
+			"https://twitter.com/ritakozlov_"
+		]
+	},
+	"headline": "隆重宣布 Workers for Platforms：提高互联网上每一个应用程序的可编程性",
+	"url": "https://blog.cloudflare.com/zh-cn/workers-for-platforms-zh-cn/",
+	"datePublished": "2022-05-10T13:01:00.000Z",
+	"dateModified": "2022-05-17T20:15:27.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/05/image4-4-3.png",
+		"width": 1200,
+		"height": 675
+	},
+	"keywords": "Cloudflare Workers (CN), 无服务器, 开发者",
+	"description": "今天，我们推出了 Workers for Platforms，它是一个可以使任何产品变得可编程的工具套件，可帮助我们的客户给其客户和开发人员立即带来价值",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

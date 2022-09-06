@@ -1,0 +1,45 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Junho Choi",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/05/junho_profile_300x300--1-.jpg",
+			"width": 300,
+			"height": 300
+		},
+		"url": "https://blog.cloudflare.com/author/junho/",
+		"sameAs": [
+			"https://saturnsoft.net",
+			"https://twitter.com/junhochoi"
+		]
+	},
+	"headline": "Der Weg zum gRPC",
+	"url": "https://blog.cloudflare.com/de-de/road-to-grpc-de-de/",
+	"datePublished": "2020-10-26T16:40:00.000Z",
+	"dateModified": "2021-09-03T21:57:39.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/01/2-1.png",
+		"width": 2000,
+		"height": 950
+	},
+	"keywords": "Deutsch, gRPC (DE)",
+	"description": "Während der Geburtstagswoche 2020 hat Cloudflare gRPC®-Unterstützung eingeführt. Wir haben uns über das immense Interesse an der Beta-Version sehr gefreut und möchten allen danken,",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

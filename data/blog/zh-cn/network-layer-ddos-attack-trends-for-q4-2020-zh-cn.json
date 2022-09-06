@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Vivek Ganti",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/08/Vivek-Ganti.jpeg",
+			"width": 469,
+			"height": 469
+		},
+		"url": "https://blog.cloudflare.com/author/vivek/",
+		"sameAs": [
+			"https://twitter.com/VivekGanti"
+		]
+	},
+	"headline": "2020 年第四季度网络层 DDoS 攻击趋势",
+	"url": "https://blog.cloudflare.com/zh-cn/network-layer-ddos-attack-trends-for-q4-2020-zh-cn/",
+	"datePublished": "2021-01-22T09:11:00.000Z",
+	"dateModified": "2021-09-02T19:10:24.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/03/image21-2.png",
+		"width": 1999,
+		"height": 1033
+	},
+	"keywords": "简体中文 (CN), DDoS (CN), Fancy Bear (CN), Cozy Bear (CN), Lazarus Group (CN), RDDoS (CN), 赎金攻击 (CN), 发展趋势",
+	"description": "2020 年第四季度的 DDoS 攻击趋势在许多方面一反常态。Cloudflare 观察到大型 DDoS 攻击数量增加，为 2020 年期间首次。具体而言，超过 500Mbps 和 50K pps 的攻击数量大幅上升。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

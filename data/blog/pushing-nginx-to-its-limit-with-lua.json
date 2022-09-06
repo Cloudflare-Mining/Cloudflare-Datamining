@@ -1,0 +1,32 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthieu Tourne",
+		"image": "http://blog.cloudflare.com/content/images/2018/02/AAEAAQAAAAAAAALtAAAAJGRmMDA0OTUwLTYxNzEtNDFjMi1hMjhiLWVlMTJjZmExMzcyNw.jpg",
+		"url": "https://blog.cloudflare.com/author/matthieu-tourne/",
+		"sameAs": []
+	},
+	"headline": "Pushing Nginx to its limit with Lua",
+	"url": "https://blog.cloudflare.com/pushing-nginx-to-its-limit-with-lua/",
+	"datePublished": "2012-12-08T20:46:00.000Z",
+	"dateModified": "2018-08-10T02:14:01.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/nginx-lua.png.scaled500.png",
+	"keywords": "NGINX, LUA",
+	"description": "At CloudFlare, Nginx is at the core of what we do. It is part of the underlying foundation of our reverse proxy service. In addition to the built-in Nginx functionalities, we use an array of custom C modules...",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

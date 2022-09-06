@@ -1,0 +1,45 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Celso Martinho",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Celso-Martinho.png",
+			"width": 486,
+			"height": 488
+		},
+		"url": "https://blog.cloudflare.com/author/celso/",
+		"sameAs": [
+			"https://celso.io/",
+			"https://twitter.com/celso"
+		]
+	},
+	"headline": "Как Facebook исчез из Интернета",
+	"url": "https://blog.cloudflare.com/ru-ru/october-2021-facebook-outage-ru-ru/",
+	"datePublished": "2021-10-04T21:08:00.000Z",
+	"dateModified": "2021-10-26T21:45:39.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/10/Screen-Shot-2021-10-26-at-2.44.18-PM-3.png",
+		"width": 896,
+		"height": 466
+	},
+	"keywords": "Facebook (RU), BGP (RU), DNS (RU), Pусский",
+	"description": "Сегодня в 15:51 UTC мы открыли внутренний инцидент под названием &quot;DNS-поиск для Facebook возвращает SERVFAIL&quot;, поскольку забеспокоились, что что-то не так с нашим DNS-резолвером 1.1.1.1. Мы уже собирались сделать пост на нашей публичной странице состояния, но ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

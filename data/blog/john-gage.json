@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "John Graham-Cumming",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
+		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
+		"sameAs": [
+			"https://twitter.com/jgrahamc"
+		]
+	},
+	"headline": "The Network is the Computer: A Conversation with John Gage",
+	"url": "https://blog.cloudflare.com/john-gage/",
+	"datePublished": "2019-07-11T13:03:00.000Z",
+	"dateModified": "2020-08-20T23:37:44.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2019/07/NetworkIsTheComputer-3.png",
+		"width": 1500,
+		"height": 1305
+	},
+	"keywords": "Network, Brand, Cloudflare Workers, Serverless",
+	"description": "To learn more about the origins of “The Network is the Computer,” I spoke with John Gage, the creator of the phrase and the 21st employee of Sun Microsystems. John had a key role in shaping the vision of Sun and had a lot to share about his vision for the future.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

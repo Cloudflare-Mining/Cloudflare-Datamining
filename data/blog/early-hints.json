@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Alex Krivit",
+		"image": "http://blog.cloudflare.com/content/images/2018/08/RE0BQ6EF_400x400.jpg",
+		"url": "https://blog.cloudflare.com/author/alex/",
+		"sameAs": [
+			"https://twitter.com/ackriv"
+		]
+	},
+	"headline": "Early Hints: How Cloudflare Can Improve Website Load Times by 30%",
+	"url": "https://blog.cloudflare.com/early-hints/",
+	"datePublished": "2021-09-16T13:00:04.000Z",
+	"dateModified": "2021-09-18T14:34:42.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/09/Early-Hints-1.png",
+		"width": 1801,
+		"height": 1013
+	},
+	"keywords": "Speed Week, Speed & Reliability, Early Hints, Product News",
+	"description": "Today, Cloudflare is announcing support for Early Hints. Early Hints takes advantage of “server think time” to asynchronously send instructions to the browser to begin loading resources while the origin server is compiling the full response, which can improve page load time by 30%. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

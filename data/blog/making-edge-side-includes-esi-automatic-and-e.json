@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew Prince",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
+			"width": 1196,
+			"height": 1190
+		},
+		"url": "https://blog.cloudflare.com/author/matthew-prince/",
+		"sameAs": [
+			"https://twitter.com/eastdakota"
+		]
+	},
+	"headline": "Making Edge Side Includes (ESI) Automatic and Easy",
+	"url": "https://blog.cloudflare.com/making-edge-side-includes-esi-automatic-and-e/",
+	"datePublished": "2012-07-03T07:00:00.000Z",
+	"dateModified": "2021-01-28T23:27:11.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/02/futurama.png.scaled500.png",
+	"keywords": "Speed & Reliability, Railgun, Product News, Cache",
+	"description": "On HTTP, caching is done at the file level. A browser will cache the JPEG, CSS, and Javascript files on a page. However, the HTML of most pages is dynamically generated. As a result, the pages cannot be cached. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

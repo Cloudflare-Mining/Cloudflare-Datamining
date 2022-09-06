@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew Prince",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
+			"width": 1196,
+			"height": 1190
+		},
+		"url": "https://blog.cloudflare.com/author/matthew-prince/",
+		"sameAs": [
+			"https://twitter.com/eastdakota"
+		]
+	},
+	"headline": "Análisis de la interrupción de CenturyLink/Level(3) de hoy",
+	"url": "https://blog.cloudflare.com/es-es/analysis-of-todays-centurylink-level-3-outage-es-es/",
+	"datePublished": "2020-08-30T20:55:00.000Z",
+	"dateModified": "2021-02-05T02:06:39.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2020/09/4-2-4.png",
+		"width": 1428,
+		"height": 880
+	},
+	"keywords": "Post Mortem (ES), Español",
+	"description": "Hoy, CenturyLink/Level(3), uno de los principales proveedores de ancho de banda y servicios de Internet, sufrió una importante interrupción que afectó a algunos de los clientes de Cloudflare, así como a muchos otros servicios y proveedores de Internet.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

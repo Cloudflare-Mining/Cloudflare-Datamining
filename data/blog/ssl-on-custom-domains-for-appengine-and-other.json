@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew Prince",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
+			"width": 1196,
+			"height": 1190
+		},
+		"url": "https://blog.cloudflare.com/author/matthew-prince/",
+		"sameAs": [
+			"https://twitter.com/eastdakota"
+		]
+	},
+	"headline": "SSL on Custom Domains for AppEngine and Other Cloud Services",
+	"url": "https://blog.cloudflare.com/ssl-on-custom-domains-for-appengine-and-other/",
+	"datePublished": "2011-07-22T20:33:00.000Z",
+	"dateModified": "2018-08-27T21:56:40.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/01/app-engine.jpg.scaled500.jpg",
+	"keywords": "Google, EC2, HTTPS, Security",
+	"description": "Note: this post is deprecated. While it worked for a while, AppEngine made a change on their side that caused it to break. Rather than playing wack-a-mole with a brittle solution, we decided to create something that would work for the long term and across a wider range or services.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew Prince",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
+			"width": 1196,
+			"height": 1190
+		},
+		"url": "https://blog.cloudflare.com/author/matthew-prince/",
+		"sameAs": [
+			"https://twitter.com/eastdakota"
+		]
+	},
+	"headline": "Groovy Baby! CloudFlare&#x27;s London Data Center Now Online",
+	"url": "https://blog.cloudflare.com/groovy-baby-cloudflares-london-data-center-no/",
+	"datePublished": "2011-11-10T20:29:00.000Z",
+	"dateModified": "2018-02-01T00:56:29.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/02/london_online_groovy.jpg.scaled500.jpg",
+	"keywords": "Europe, Data Center, United Kingdom, Cloudflare Network",
+	"description": "As our network map will soon indicate, CloudFlare&#x27;s London (LHR) data center is now online. The team started routing traffic through it this beginning at 12:13 GMT. We&#x27;re already doing more than 1Gbps of traffic through LHR, most of which would previously have been routed to Amsterdam.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

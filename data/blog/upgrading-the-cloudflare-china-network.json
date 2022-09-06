@@ -1,0 +1,45 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Patrick R. Donahue",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/me0-1.png",
+			"width": 300,
+			"height": 291
+		},
+		"url": "https://blog.cloudflare.com/author/patrick/",
+		"sameAs": [
+			"https://www.cloudflare.com",
+			"https://twitter.com/prdonahue"
+		]
+	},
+	"headline": "Upgrading the Cloudflare China Network: better performance and security through product innovation and partnership",
+	"url": "https://blog.cloudflare.com/upgrading-the-cloudflare-china-network/",
+	"datePublished": "2021-07-22T12:56:26.000Z",
+	"dateModified": "2021-07-22T12:56:26.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/07/Upgrading-the-Cloudflare-China-Network-blog-header.png",
+		"width": 1200,
+		"height": 628
+	},
+	"keywords": "China, Partners, JD Cloud Partnership",
+	"description": "Cloudflare and our strategic partner in China have created a global network that offers a fast experience for visitors inside and outside of China — with DDoS mitigation, web application firewall (WAF), and other security services built in.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

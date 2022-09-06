@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Jordan Griege",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/03/xlarge.png",
+			"width": 600,
+			"height": 600
+		},
+		"url": "https://blog.cloudflare.com/author/jordan/",
+		"sameAs": []
+	},
+	"headline": "Optimizing Magic Firewall’s IP lists",
+	"url": "https://blog.cloudflare.com/magic-firewall-optimizing-ip-lists/",
+	"datePublished": "2022-03-29T16:54:58.000Z",
+	"dateModified": "2022-03-29T16:54:58.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/03/image6-11.png",
+		"width": 1600,
+		"height": 800
+	},
+	"keywords": "Magic Firewall, Magic Transit, Security",
+	"description": "More and more users are using Magic Firewall’s IP lists to filter network traffic en route to their infrastructure. In response to that growth, we improved how our systems handle large sets of IPs",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

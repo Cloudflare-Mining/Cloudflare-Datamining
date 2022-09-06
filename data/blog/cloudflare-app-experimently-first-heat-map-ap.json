@@ -1,0 +1,32 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Kristin Tarr",
+		"image": "http://blog.cloudflare.com/content/images/2018/08/0.jpg",
+		"url": "https://blog.cloudflare.com/author/kristin-tarr/",
+		"sameAs": []
+	},
+	"headline": "CloudFlare App: Experimently - First Heat Map App Now Available",
+	"url": "https://blog.cloudflare.com/cloudflare-app-experimently-first-heat-map-ap/",
+	"datePublished": "2012-05-24T02:25:00.000Z",
+	"dateModified": "2018-02-03T00:22:16.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/02/heatmap.png.scaled500.png",
+	"keywords": "Cloudflare Apps",
+	"description": "This is the first app of its kind in the CloudFlare app marketplace and we couldn&#x27;t be happier to welcome Experimently as our newest app partner. Experimently provides free heat maps (up to 5,000 visitors per month) and A/B testing for any website.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

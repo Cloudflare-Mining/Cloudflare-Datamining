@@ -1,0 +1,45 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Tyler Caslin",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/08/pic.JPG",
+			"width": 960,
+			"height": 959
+		},
+		"url": "https://blog.cloudflare.com/author/tyler/",
+		"sameAs": [
+			"https://github.com/tc80",
+			"https://twitter.com/tycaslin"
+		]
+	},
+	"headline": "利用 Workers KV 将 cdnjs 迁移到无服务器",
+	"url": "https://blog.cloudflare.com/zh-cn/migrating-cdnjs-to-serverless-with-workers-kv-zh-cn/",
+	"datePublished": "2020-09-10T14:41:00.000Z",
+	"dateModified": "2022-01-05T20:24:14.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2020/11/image4-1-2.png",
+		"width": 1200,
+		"height": 713
+	},
+	"keywords": "简体中文 (CN), CDNJS (CN), Cloudflare Workers KV (CN), 无服务器, 速度和可靠性 (CN)",
+	"description": "Cloudflare 为 cdnjs 提供支持，这个开源项目通过利用 Cloudflare 的网络提供流行的 JavaScript 库和资源，从而给网站加速。自 12 月发布重要更新以来，我们专注于改造 cdnjs 以实现可扩展性和弹性。今天，我们很高兴宣布 Cloudflare 如何利用 Cloudflare Workers 以及它的键值存储 Workers KV 来交付 cdnjs（迁移到无服务器基础架构）！",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

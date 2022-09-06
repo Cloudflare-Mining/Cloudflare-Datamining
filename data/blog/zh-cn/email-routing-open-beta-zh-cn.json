@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "João Sousa Botto",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/07/profile2.jpg",
+			"width": 2000,
+			"height": 2026
+		},
+		"url": "https://blog.cloudflare.com/author/joao/",
+		"sameAs": [
+			"https://twitter.com/jsbotto"
+		]
+	},
+	"headline": "电子邮件路由现在处于公开测试阶段，可供所有人使用",
+	"url": "https://blog.cloudflare.com/zh-cn/email-routing-open-beta-zh-cn/",
+	"datePublished": "2022-02-08T11:21:00.000Z",
+	"dateModified": "2022-05-18T15:52:58.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/05/image2-8-1.png",
+		"width": 1800,
+		"height": 1013
+	},
+	"keywords": "Email Routing (CN), 邮件 (CN), 测试, 免费",
+	"description": "我们已将 Cloudflare 电子邮件路由从内部测试版改为公开测试版",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,37 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Mahrud Sayrafi",
+		"image": "http://blog.cloudflare.com/content/images/2018/05/7Ivdj5-6.jpg",
+		"url": "https://blog.cloudflare.com/author/mahrud/",
+		"sameAs": []
+	},
+	"headline": "Lancement du service caché Cloudflare Onion",
+	"url": "https://blog.cloudflare.com/fr-fr/cloudflare-onion-service-fr-fr/",
+	"datePublished": "2018-09-20T12:00:00.000Z",
+	"dateModified": "2021-01-22T03:46:42.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/01/unnamed-2.png",
+		"width": 1049,
+		"height": 553
+	},
+	"keywords": "Français, Sécurité, Confidentialité, Crypto (FR), Semaine de la crypto, Tor (FR), Laissez-passer de confidentialité",
+	"description": "Il y a deux ans cette semaine, Cloudflare dévoilait le Opportunistic Encryption, une fonctionnalité qui offrait une sécurité et des performances supplémentaires aux sites Web qui n&#x27;étaient pas encore passés à HTTPS.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

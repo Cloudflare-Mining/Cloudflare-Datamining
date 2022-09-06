@@ -1,0 +1,32 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Vlad Krasnov",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/165e069.jpg",
+		"url": "https://blog.cloudflare.com/author/vlad-krasnov/",
+		"sameAs": []
+	},
+	"headline": "It takes two to ChaCha (Poly)",
+	"url": "https://blog.cloudflare.com/it-takes-two-to-chacha-poly/",
+	"datePublished": "2016-04-04T11:50:49.000Z",
+	"dateModified": "2018-08-27T20:21:50.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/5730883_872a32b09d_z.jpg",
+	"keywords": "TLS, Speed & Reliability, Chrome, Security",
+	"description": "Not long ago we introduced support for TLS cipher suites based on the ChaCha20-Poly1305 AEAD, for all our customers. Back then those cipher suites were only supported by the Chrome browser and Google&#x27;s websites, but were in the process of standardization. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

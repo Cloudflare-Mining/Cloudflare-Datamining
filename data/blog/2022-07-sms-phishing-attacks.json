@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew Prince",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
+			"width": 1196,
+			"height": 1190
+		},
+		"url": "https://blog.cloudflare.com/author/matthew-prince/",
+		"sameAs": [
+			"https://twitter.com/eastdakota"
+		]
+	},
+	"headline": "The mechanics of a sophisticated phishing scam and how we stopped it",
+	"url": "https://blog.cloudflare.com/2022-07-sms-phishing-attacks/",
+	"datePublished": "2022-08-09T15:56:30.000Z",
+	"dateModified": "2022-08-19T02:00:36.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/08/unnamed.png",
+		"width": 1600,
+		"height": 900
+	},
+	"keywords": "Security, Post Mortem, Phishing, Cloudflare Gateway, Cloudflare Access",
+	"description": "Yesterday, August 8, 2022, Twilio shared that they’d been compromised by a targeted phishing attack. Around the same time as Twilio was attacked, we saw an attack with very similar characteristics also targeting Cloudflare’s employees",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

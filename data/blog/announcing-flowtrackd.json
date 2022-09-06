@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Omer Yoachimik",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/Omer-1.png",
+			"width": 773,
+			"height": 653
+		},
+		"url": "https://blog.cloudflare.com/author/omer/",
+		"sameAs": [
+			"https://twitter.com/OmerYoahimik"
+		]
+	},
+	"headline": "flowtrackd: DDoS Protection with Unidirectional TCP Flow Tracking",
+	"url": "https://blog.cloudflare.com/announcing-flowtrackd/",
+	"datePublished": "2020-07-14T11:00:00.000Z",
+	"dateModified": "2020-08-05T14:37:56.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2020/07/flowtrackd-blog@3x.png",
+		"width": 2000,
+		"height": 1268
+	},
+	"keywords": "DDoS, Security, TCP, Magic Transit, Gatebot",
+	"description": "flowtrackd is a software-defined DDoS protection system that significantly improves our ability to automatically detect and mitigate even the most complex TCP-based DDoS attacks. If you are a Magic Transit customer, this feature will be enabled by default at no additional cost on July 29, 2020.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

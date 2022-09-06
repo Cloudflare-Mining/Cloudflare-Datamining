@@ -1,0 +1,37 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Lorenz Bauer",
+		"image": "http://blog.cloudflare.com/content/images/2018/10/DLHhBC1xSXCeWnvbGAnC_1204a20b3d1d96bba523a6a2a5fa3cd73bd4fe59240a27ad6eb8c064c6792446.jpeg",
+		"url": "https://blog.cloudflare.com/author/lorenz-bauer/",
+		"sameAs": []
+	},
+	"headline": "Production ready eBPF, or how we fixed the BSD socket API",
+	"url": "https://blog.cloudflare.com/tubular-fixing-the-socket-api-with-ebpf/",
+	"datePublished": "2022-02-17T17:02:54.000Z",
+	"dateModified": "2022-07-27T17:15:14.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/02/tubular.png",
+		"width": 1200,
+		"height": 675
+	},
+	"keywords": "eBPF, Linux, sockets, Go",
+	"description": "We are open sourcing the production tooling we’ve built for the sk_lookup hook we contributed to the Linux kernel, called tubular",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

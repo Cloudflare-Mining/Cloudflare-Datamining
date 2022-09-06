@@ -1,0 +1,46 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "David Harnett",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/03/DavidHar-photo.PNG",
+			"width": 470,
+			"height": 502
+		},
+		"url": "https://blog.cloudflare.com/author/davidharnett/",
+		"sameAs": [
+			"https://www.linkedin.com/in/david-harnett/",
+			"https://www.facebook.com/david.harnett.16",
+			"https://twitter.com/dfh603"
+		]
+	},
+	"headline": "Setting up Cloudflare for Teams as a Start-Up Business",
+	"url": "https://blog.cloudflare.com/setting-up-cloudflare-for-teams-as-a-start-up-business/",
+	"datePublished": "2020-05-05T11:00:00.000Z",
+	"dateModified": "2022-04-26T23:24:46.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2020/04/image2-16.png",
+		"width": 1089,
+		"height": 656
+	},
+	"keywords": "Cloudflare Zero Trust, Remote Browser Isolation, Cloudflare Access, Cloudflare Gateway, Open for Business, Product News, Security, Zero Trust",
+	"description": "S2 Systems, recently acquired by Cloudflare, provides a start-up’s perspective of setting up Cloudflare for Teams and how it solved some problems that we struggled with for way too long.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

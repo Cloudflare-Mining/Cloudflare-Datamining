@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew Prince",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
+			"width": 1196,
+			"height": 1190
+		},
+		"url": "https://blog.cloudflare.com/author/matthew-prince/",
+		"sameAs": [
+			"https://twitter.com/eastdakota"
+		]
+	},
+	"headline": "環境に優しいインターネットを構築する",
+	"url": "https://blog.cloudflare.com/ja-jp/helping-build-a-green-internet-ja-jp/",
+	"datePublished": "2021-07-27T13:00:00.000Z",
+	"dateModified": "2021-10-19T20:38:34.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/09/image2-27-1.png",
+		"width": 1200,
+		"height": 675
+	},
+	"keywords": "サステナビリティ, 排出, インパクトウィーク (JP)",
+	"description": "Cloudflareを設立したとき、インターネットが与える環境への影響を最小限にすることなど考えていませんでした。実のところ、インターネットがそれほど環境に影響を与えるものだと思っていなかったのです。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

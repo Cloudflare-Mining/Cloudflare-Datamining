@@ -1,0 +1,37 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Nick Jones",
+		"image": "http://blog.cloudflare.com/content/images/2018/10/nick-jones.jpg",
+		"url": "https://blog.cloudflare.com/author/nick-jones/",
+		"sameAs": []
+	},
+	"headline": "NGINX结构重大更改-Cloudflare增强HTTP/2优先级",
+	"url": "https://blog.cloudflare.com/zh-cn/nginx-structural-enhancements-for-http-2-performance-zh-cn/",
+	"datePublished": "2019-05-22T17:19:00.000Z",
+	"dateModified": "2021-01-28T19:03:14.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2020/01/http2prioritization-copy@2x-3.png",
+		"width": 2000,
+		"height": 1025
+	},
+	"keywords": "简体中文 (CN), NGINX (ZH), HTTP2 (CN), 速度周 (CN), 速度和可靠性 (CN)",
+	"description": "我的团队：Cloudflare PROTOCOLS（协议）团队负责终止Cloudflare网络边缘的HTTP流量。我们处理与以下内容相关的特性：TCP、QUIC、TLS和安全证书管理、HTTP/1和HTTP/2。在第一季度，我们负责实现Cloudflare在速度周期间发布的增强型HTTP/2优先级产品。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

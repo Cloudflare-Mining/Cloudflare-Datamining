@@ -1,0 +1,32 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Ólafur Guðmundsson",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/3a917b8.jpg",
+		"url": "https://blog.cloudflare.com/author/olafur-gudmundsson/",
+		"sameAs": []
+	},
+	"headline": "What happened next: the deprecation of ANY",
+	"url": "https://blog.cloudflare.com/what-happened-next-the-deprecation-of-any/",
+	"datePublished": "2016-04-13T12:39:32.000Z",
+	"dateModified": "2018-08-27T20:20:53.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/5719368307_7475b5594c_z.jpg",
+	"keywords": "DNS, DNSSEC, Reliability, DDoS, Attacks, Security",
+	"description": "Almost a year ago, we announced that we were going to stop answering DNS ANY queries. We were prompted by a number of factors: The lack of legitimate ANY use. The abundance of malicious ANY use. The constant use of ANY queries in large DNS amplification DDoS attacks.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

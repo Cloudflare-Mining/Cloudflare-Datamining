@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Michael Tremante",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/url-3.jpg",
+		"url": "https://blog.cloudflare.com/author/michael-tremante/",
+		"sameAs": [
+			"https://twitter.com/MichaelTremante"
+		]
+	},
+	"headline": "Application security: Cloudflare’s view",
+	"url": "https://blog.cloudflare.com/application-security/",
+	"datePublished": "2022-03-21T12:59:50.000Z",
+	"dateModified": "2022-03-21T14:12:46.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/03/image5-19.png",
+		"width": 1801,
+		"height": 1013
+	},
+	"keywords": "Security Week, Cloudflare Radar, Security",
+	"description": "In this post, we share some of the insights we’ve gathered from the 32 million HTTP requests/second that pass through our network",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

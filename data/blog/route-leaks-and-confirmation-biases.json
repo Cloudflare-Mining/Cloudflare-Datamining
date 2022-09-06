@@ -1,0 +1,45 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Maximilian Wilhelm",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/02/max-inog-c.jpeg",
+			"width": 718,
+			"height": 718
+		},
+		"url": "https://blog.cloudflare.com/author/max/",
+		"sameAs": [
+			"https://blog.sdn.clinic",
+			"https://twitter.com/BarbarossaTM"
+		]
+	},
+	"headline": "BGP security and confirmation biases",
+	"url": "https://blog.cloudflare.com/route-leaks-and-confirmation-biases/",
+	"datePublished": "2022-02-23T13:59:26.000Z",
+	"dateModified": "2022-02-25T16:15:05.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/02/Route-Leaks-and-Confirmation-Biases-1.png",
+		"width": 809,
+		"height": 400
+	},
+	"keywords": "BGP, RPKI, Security, Internet Traffic, Better Internet",
+	"description": "On February 1, 2022, a configuration error on one of our routers caused a route leak of up to 2,000 Internet prefixes to one of our Internet transit providers. This leak lasted for 32 seconds and at a later time 7 seconds",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

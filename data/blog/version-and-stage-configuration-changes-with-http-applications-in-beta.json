@@ -1,0 +1,37 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Garrett Galow",
+		"image": "http://blog.cloudflare.com/content/images/2018/04/14729279_10207227100946205_2625241094472568444_n.jpg",
+		"url": "https://blog.cloudflare.com/author/garrett/",
+		"sameAs": []
+	},
+	"headline": "Version and Stage Configuration Changes with HTTP Applications in Beta",
+	"url": "https://blog.cloudflare.com/version-and-stage-configuration-changes-with-http-applications-in-beta/",
+	"datePublished": "2021-12-11T13:59:21.000Z",
+	"dateModified": "2021-12-31T05:52:25.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/12/image7-8.png",
+		"width": 1200,
+		"height": 676
+	},
+	"keywords": "CIO Week",
+	"description": "Today, we are announcing a closed beta of HTTP Applications: a new way to safely test and deploy changes to your HTTP traffic",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}
