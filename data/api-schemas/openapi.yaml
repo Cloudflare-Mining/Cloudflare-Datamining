@@ -9293,8 +9293,8 @@ components:
       - ip_list
       title: IP list
       type: object
-    ip_network:
-      example: ff01::/32
+    ip_network_encoded:
+      example: 172.16.0.0%2F16
       type: string
     ip_range:
       description: Allowed IPv4/IPv6 address range of primary or secondary nameservers.
@@ -32094,16 +32094,16 @@ paths:
       - api_email: []
         api_key: []
       summary: Get Tunnel Route by IP
-  /accounts/{account_identifier}/teamnet/routes/network/{ip_network}:
+  /accounts/{account_identifier}/teamnet/routes/network/{ip_network_encoded}:
     delete:
       description: Delete an existing route from the account's routing table
       operationId: tunnel-route-delete-route
       parameters:
       - in: path
-        name: ip_network
+        name: ip_network_encoded
         required: true
         schema:
-          $ref: '#/components/schemas/ip_network'
+          $ref: '#/components/schemas/ip_network_encoded'
       - in: path
         name: account_identifier
         required: true
@@ -32138,10 +32138,10 @@ paths:
       operationId: tunnel-route-update-route
       parameters:
       - in: path
-        name: ip_network
+        name: ip_network_encoded
         required: true
         schema:
-          $ref: '#/components/schemas/ip_network'
+          $ref: '#/components/schemas/ip_network_encoded'
       - in: path
         name: account_identifier
         required: true
@@ -32187,10 +32187,10 @@ paths:
       operationId: tunnel-route-create-route
       parameters:
       - in: path
-        name: ip_network
+        name: ip_network_encoded
         required: true
         schema:
-          $ref: '#/components/schemas/ip_network'
+          $ref: '#/components/schemas/ip_network_encoded'
       - in: path
         name: account_identifier
         required: true
