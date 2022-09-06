@@ -85762,18 +85762,18 @@
 				]
 			}
 		},
-		"/accounts/{account_identifier}/teamnet/routes/network/{ip_network}": {
+		"/accounts/{account_identifier}/teamnet/routes/network/{ip_network_encoded}": {
 			"post": {
 				"summary": "Create Route",
 				"description": "Add a new route to the account's routing table for the given tunnel",
 				"parameters": [
 					{
-						"name": "ip_network",
+						"name": "ip_network_encoded",
 						"in": "path",
 						"required": true,
 						"schema": {
 							"type": "string",
-							"example": "ff01::/32"
+							"example": "172.16.0.0%2F16"
 						}
 					},
 					{
@@ -85847,11 +85847,11 @@
 				"description": "Update an existing route in the account's routing table for the given tunnel",
 				"parameters": [
 					{
-						"name": "ip_network",
+						"name": "ip_network_encoded",
 						"in": "path",
 						"required": true,
 						"schema": {
-							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1teamnet~1routes~1network~1%7Bip_network%7D/post/parameters/0/schema"
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1teamnet~1routes~1network~1%7Bip_network_encoded%7D/post/parameters/0/schema"
 						}
 					},
 					{
@@ -85859,7 +85859,7 @@
 						"in": "path",
 						"required": true,
 						"schema": {
-							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1teamnet~1routes~1network~1%7Bip_network%7D/post/parameters/1/schema"
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1teamnet~1routes~1network~1%7Bip_network_encoded%7D/post/parameters/1/schema"
 						}
 					}
 				],
@@ -85869,7 +85869,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1teamnet~1routes~1network~1%7Bip_network%7D/post/responses/200/content/application~1json/schema"
+									"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1teamnet~1routes~1network~1%7Bip_network_encoded%7D/post/responses/200/content/application~1json/schema"
 								}
 							}
 						}
@@ -85892,7 +85892,7 @@
 										"description": "UUID of the tunnel this route should belong to"
 									},
 									"comment": {
-										"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1teamnet~1routes~1network~1%7Bip_network%7D/post/requestBody/content/application~1json/schema/properties/comment"
+										"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1teamnet~1routes~1network~1%7Bip_network_encoded%7D/post/requestBody/content/application~1json/schema/properties/comment"
 									},
 									"network": {
 										"description": "New CIDR of this route"
@@ -85911,11 +85911,11 @@
 				"description": "Delete an existing route from the account's routing table",
 				"parameters": [
 					{
-						"name": "ip_network",
+						"name": "ip_network_encoded",
 						"in": "path",
 						"required": true,
 						"schema": {
-							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1teamnet~1routes~1network~1%7Bip_network%7D/post/parameters/0/schema"
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1teamnet~1routes~1network~1%7Bip_network_encoded%7D/post/parameters/0/schema"
 						}
 					},
 					{
@@ -85923,7 +85923,7 @@
 						"in": "path",
 						"required": true,
 						"schema": {
-							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1teamnet~1routes~1network~1%7Bip_network%7D/post/parameters/1/schema"
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1teamnet~1routes~1network~1%7Bip_network_encoded%7D/post/parameters/1/schema"
 						}
 					}
 				],
@@ -85933,7 +85933,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1teamnet~1routes~1network~1%7Bip_network%7D/post/responses/200/content/application~1json/schema"
+									"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1teamnet~1routes~1network~1%7Bip_network_encoded%7D/post/responses/200/content/application~1json/schema"
 								}
 							}
 						}
