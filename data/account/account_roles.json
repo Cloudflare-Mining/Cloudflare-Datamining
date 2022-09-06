@@ -1,0 +1,130 @@
+[
+	{
+		"id": "05784afa30c1afe1440e79d9351c7430",
+		"name": "Administrator",
+		"description": "Can access the full account, except for membership management and billing.",
+		"permissions": {
+			"organization": {
+				"read": true,
+				"edit": true
+			},
+			"zone": {
+				"read": true,
+				"edit": true
+			},
+			"ssl": {
+				"read": true,
+				"edit": true
+			},
+			"dns_records": {
+				"read": true,
+				"edit": true
+			},
+			"waf": {
+				"read": true,
+				"edit": true
+			},
+			"analytics": {
+				"read": true,
+				"edit": false
+			},
+			"zone_settings": {
+				"read": true,
+				"edit": true
+			},
+			"cache_purge": {
+				"read": false,
+				"edit": true
+			},
+			"logs": {
+				"read": true,
+				"edit": true
+			},
+			"lb": {
+				"read": true,
+				"edit": true
+			},
+			"app": {
+				"read": false,
+				"edit": true
+			},
+			"access": {
+				"read": true,
+				"edit": true
+			},
+			"subscription": {
+				"read": true,
+				"edit": true
+			},
+			"worker": {
+				"read": true,
+				"edit": true
+			},
+			"member": {
+				"read": true,
+				"edit": false
+			},
+			"billing": {
+				"read": true,
+				"edit": false
+			},
+			"webhooks": {
+				"read": true,
+				"edit": true
+			},
+			"legal": {
+				"read": true,
+				"edit": false
+			},
+			"stream": {
+				"read": true,
+				"edit": true
+			},
+			"auditlogs": {
+				"read": true,
+				"edit": false
+			},
+			"teams": {
+				"read": true,
+				"edit": true,
+				"report": true
+			},
+			"healthchecks": {
+				"read": true,
+				"edit": true
+			},
+			"waitingroom": {
+				"read": true,
+				"edit": true
+			},
+			"zaraz": {
+				"read": true,
+				"edit": true
+			},
+			"blocks": {
+				"read": true,
+				"edit": true
+			},
+			"http_applications": {
+				"read": true,
+				"edit": true
+			},
+			"magic": {
+				"read": true,
+				"edit": true
+			},
+			"image": {
+				"read": true,
+				"edit": true
+			},
+			"fbm": {
+				"read": true,
+				"edit": true
+			},
+			"fbm_acc": {
+				"read": false,
+				"edit": true
+			}
+		}
+	}
+]
