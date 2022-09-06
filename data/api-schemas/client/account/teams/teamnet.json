@@ -13,7 +13,7 @@
 			"cfOwnership": "argo_tunnel",
 			"html_id": "tunnel-route-list-tunnel-routes",
 			"uri": "accounts/:account_identifier/teamnet/routes",
-			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/teamnet/routes?tunnel_id=f70ff985-a4ef-4643-bbbc-4a0ed4fc8415&comment=Example comment for this route&is_deleted=true&network_subset=ff01::/32&network_superset=ff01::/32&existed_at=2019-10-12T07:20:50.52Z&virtual_network_id=f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/teamnet/routes?tunnel_id=f70ff985-a4ef-4643-bbbc-4a0ed4fc8415&comment=Example comment for this route&is_deleted=true&network_subset=172.16.0.0%2F16&network_superset=172.16.0.0%2F16&existed_at=2019-10-12T07:20:50.52Z&virtual_network_id=f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}
@@ -40,12 +40,12 @@
 					},
 					"network_subset": {
 						"type": "string",
-						"example": "\"ff01::/32\"",
+						"example": "\"172.16.0.0%2F16\"",
 						"description": "If set, only list routes that are a subset of this network"
 					},
 					"network_superset": {
 						"type": "string",
-						"example": "\"ff01::/32\"",
+						"example": "\"172.16.0.0%2F16\"",
 						"description": "If set, only list routes that are a superset of this network"
 					},
 					"existed_at": {
@@ -75,9 +75,9 @@
 					"virtual_network_id"
 				],
 				"objects": [],
-				"example": "{\n  \"tunnel_id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\",\n  \"comment\": \"Example comment for this route\",\n  \"is_deleted\": true,\n  \"network_subset\": \"ff01::/32\",\n  \"network_superset\": \"ff01::/32\",\n  \"existed_at\": \"2019-10-12T07:20:50.52Z\",\n  \"virtual_network_id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\"\n}"
+				"example": "{\n  \"tunnel_id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\",\n  \"comment\": \"Example comment for this route\",\n  \"is_deleted\": true,\n  \"network_subset\": \"172.16.0.0%2F16\",\n  \"network_superset\": \"172.16.0.0%2F16\",\n  \"existed_at\": \"2019-10-12T07:20:50.52Z\",\n  \"virtual_network_id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"network\": \"ff01::/32\",\n      \"tunnel_id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\",\n      \"tunnel_name\": \"blog\",\n      \"comment\": \"Example comment for this route\",\n      \"created_at\": \"2021-01-25T18:22:34.317854Z\",\n      \"deleted_at\": \"2021-01-25T18:22:34.317854Z\",\n      \"virtual_network_id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\"\n    }\n  ]\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"network\": \"172.16.0.0/16\",\n      \"tunnel_id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\",\n      \"tunnel_name\": \"blog\",\n      \"comment\": \"Example comment for this route\",\n      \"created_at\": \"2021-01-25T18:22:34.317854Z\",\n      \"deleted_at\": \"2021-01-25T18:22:34.317854Z\",\n      \"virtual_network_id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\"\n    }\n  ]\n}"
 		},
 		{
 			"title": "Get Tunnel Route by IP",
@@ -89,18 +89,18 @@
 			"html_id": "tunnel-route-get-tunnel-route-by-ip",
 			"uri": "accounts/:account_identifier/teamnet/routes/ip/:ip",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/teamnet/routes/ip/10.1.0.137\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"network\": \"ff01::/32\",\n    \"tunnel_id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\",\n    \"tunnel_name\": \"blog\",\n    \"comment\": \"Example comment for this route\",\n    \"created_at\": \"2021-01-25T18:22:34.317854Z\",\n    \"deleted_at\": \"2021-01-25T18:22:34.317854Z\",\n    \"virtual_network_id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\"\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"network\": \"172.16.0.0/16\",\n    \"tunnel_id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\",\n    \"tunnel_name\": \"blog\",\n    \"comment\": \"Example comment for this route\",\n    \"created_at\": \"2021-01-25T18:22:34.317854Z\",\n    \"deleted_at\": \"2021-01-25T18:22:34.317854Z\",\n    \"virtual_network_id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\"\n  }\n}"
 		},
 		{
 			"title": "Create Route",
 			"description": "Add a new route to the account's routing table for the given tunnel",
 			"rel": "self",
-			"href": "accounts/{#/definitions/account_identifier}/teamnet/routes/network/{#/definitions/ip_network}",
+			"href": "accounts/{#/definitions/account_identifier}/teamnet/routes/network/{#/definitions/ip_network_encoded}",
 			"method": "POST",
 			"cfOwnership": "argo_tunnel",
 			"html_id": "tunnel-route-create-route",
-			"uri": "accounts/:account_identifier/teamnet/routes/network/:ip_network",
-			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/teamnet/routes/network/ff01::/32\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"tunnel_id\":\"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\",\"comment\":\"Example comment for this route\",\"virtual_network_id\":\"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\"}'",
+			"uri": "accounts/:account_identifier/teamnet/routes/network/:ip_network_encoded",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/teamnet/routes/network/172.16.0.0%2F16\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"tunnel_id\":\"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\",\"comment\":\"Example comment for this route\",\"virtual_network_id\":\"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\"}'",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}
@@ -140,18 +140,18 @@
 				"objects": [],
 				"example": "{\n  \"tunnel_id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\",\n  \"comment\": \"Example comment for this route\",\n  \"virtual_network_id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"network\": \"ff01::/32\",\n    \"tunnel_id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\",\n    \"tunnel_name\": \"blog\",\n    \"comment\": \"Example comment for this route\",\n    \"created_at\": \"2021-01-25T18:22:34.317854Z\",\n    \"deleted_at\": \"2021-01-25T18:22:34.317854Z\",\n    \"virtual_network_id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\"\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"network\": \"172.16.0.0/16\",\n    \"tunnel_id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\",\n    \"tunnel_name\": \"blog\",\n    \"comment\": \"Example comment for this route\",\n    \"created_at\": \"2021-01-25T18:22:34.317854Z\",\n    \"deleted_at\": \"2021-01-25T18:22:34.317854Z\",\n    \"virtual_network_id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\"\n  }\n}"
 		},
 		{
 			"title": "Update Route",
 			"description": "Update an existing route in the account's routing table for the given tunnel",
 			"rel": "self",
-			"href": "accounts/{#/definitions/account_identifier}/teamnet/routes/network/{#/definitions/ip_network}",
+			"href": "accounts/{#/definitions/account_identifier}/teamnet/routes/network/{#/definitions/ip_network_encoded}",
 			"method": "PATCH",
 			"cfOwnership": "argo_tunnel",
 			"html_id": "tunnel-route-update-route",
-			"uri": "accounts/:account_identifier/teamnet/routes/network/:ip_network",
-			"curl": "curl -X PATCH \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/teamnet/routes/network/ff01::/32\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"tunnel_id\":\"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\",\"comment\":\"Example comment for this route\",\"network\":\"ff01::/32\",\"virtual_network_id\":\"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\"}'",
+			"uri": "accounts/:account_identifier/teamnet/routes/network/:ip_network_encoded",
+			"curl": "curl -X PATCH \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/teamnet/routes/network/172.16.0.0%2F16\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"tunnel_id\":\"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\",\"comment\":\"Example comment for this route\",\"network\":\"172.16.0.0/16\",\"virtual_network_id\":\"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\"}'",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}
@@ -173,7 +173,7 @@
 					},
 					"network": {
 						"type": "string",
-						"example": "\"ff01::/32\"",
+						"example": "\"172.16.0.0/16\"",
 						"description": "New CIDR of this route"
 					},
 					"virtual_network_id": {
@@ -194,21 +194,21 @@
 					"virtual_network_id"
 				],
 				"objects": [],
-				"example": "{\n  \"tunnel_id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\",\n  \"comment\": \"Example comment for this route\",\n  \"network\": \"ff01::/32\",\n  \"virtual_network_id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\"\n}"
+				"example": "{\n  \"tunnel_id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\",\n  \"comment\": \"Example comment for this route\",\n  \"network\": \"172.16.0.0/16\",\n  \"virtual_network_id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"network\": \"ff01::/32\",\n    \"tunnel_id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\",\n    \"tunnel_name\": \"blog\",\n    \"comment\": \"Example comment for this route\",\n    \"created_at\": \"2021-01-25T18:22:34.317854Z\",\n    \"deleted_at\": \"2021-01-25T18:22:34.317854Z\",\n    \"virtual_network_id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\"\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"network\": \"172.16.0.0/16\",\n    \"tunnel_id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\",\n    \"tunnel_name\": \"blog\",\n    \"comment\": \"Example comment for this route\",\n    \"created_at\": \"2021-01-25T18:22:34.317854Z\",\n    \"deleted_at\": \"2021-01-25T18:22:34.317854Z\",\n    \"virtual_network_id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\"\n  }\n}"
 		},
 		{
 			"title": "Delete Route",
 			"description": "Delete an existing route from the account's routing table",
 			"rel": "self",
-			"href": "accounts/{#/definitions/account_identifier}/teamnet/routes/network/{#/definitions/ip_network}",
+			"href": "accounts/{#/definitions/account_identifier}/teamnet/routes/network/{#/definitions/ip_network_encoded}",
 			"method": "DELETE",
 			"cfOwnership": "argo_tunnel",
 			"html_id": "tunnel-route-delete-route",
-			"uri": "accounts/:account_identifier/teamnet/routes/network/:ip_network",
-			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/teamnet/routes/network/ff01::/32\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"network\": \"ff01::/32\",\n    \"tunnel_id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\",\n    \"tunnel_name\": \"blog\",\n    \"comment\": \"Example comment for this route\",\n    \"created_at\": \"2021-01-25T18:22:34.317854Z\",\n    \"deleted_at\": \"2021-01-25T18:22:34.317854Z\",\n    \"virtual_network_id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\"\n  }\n}"
+			"uri": "accounts/:account_identifier/teamnet/routes/network/:ip_network_encoded",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/teamnet/routes/network/172.16.0.0%2F16\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"network\": \"172.16.0.0/16\",\n    \"tunnel_id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\",\n    \"tunnel_name\": \"blog\",\n    \"comment\": \"Example comment for this route\",\n    \"created_at\": \"2021-01-25T18:22:34.317854Z\",\n    \"deleted_at\": \"2021-01-25T18:22:34.317854Z\",\n    \"virtual_network_id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\"\n  }\n}"
 		}
 	],
 	"html_id": "tunnel-route",
@@ -219,7 +219,7 @@
 		"all_props": {
 			"network": {
 				"type": "string",
-				"example": "\"ff01::/32\"",
+				"example": "\"172.16.0.0/16\"",
 				"description": "CIDR notation of the IPv4 or IPv6 range of the network the route connects to"
 			},
 			"tunnel_id": {
@@ -279,7 +279,7 @@
 			"virtual_network_id"
 		],
 		"objects": [],
-		"example": "{\n  \"network\": \"ff01::/32\",\n  \"tunnel_id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\",\n  \"tunnel_name\": \"blog\",\n  \"comment\": \"Example comment for this route\",\n  \"created_at\": \"2021-01-25T18:22:34.317854Z\",\n  \"deleted_at\": \"2021-01-25T18:22:34.317854Z\",\n  \"virtual_network_id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\"\n}",
+		"example": "{\n  \"network\": \"172.16.0.0/16\",\n  \"tunnel_id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\",\n  \"tunnel_name\": \"blog\",\n  \"comment\": \"Example comment for this route\",\n  \"created_at\": \"2021-01-25T18:22:34.317854Z\",\n  \"deleted_at\": \"2021-01-25T18:22:34.317854Z\",\n  \"virtual_network_id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\"\n}",
 		"title": "Tunnel Route",
 		"description": "A network address range that the Tunnel connects."
 	}
