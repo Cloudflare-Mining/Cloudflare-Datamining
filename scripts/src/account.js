@@ -57,6 +57,9 @@ async function run(){
 	await fetchAndWrite(`/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/entitlements`, '../data/account/account_entitlements.json');
 	await fetchAndWrite(`/zones/${process.env.CLOUDFLARE_ZONE_ID}/entitlements`, '../data/account/zone_entitlements.json');
 
+	// Roles
+	await fetchAndWrite(`/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/roles?per_page=100`, '../data/account/account_roles.json');
+
 	console.log('Pushing!');
 	await gitPush();
 
