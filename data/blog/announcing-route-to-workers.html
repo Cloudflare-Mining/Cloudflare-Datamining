@@ -31,13 +31,13 @@
 	<pre><code class="language-js">export default {
    async email(message, env, ctx) {
        switch (message.to) {
-           case "<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a2cfc3d0c9c7d6cbccc5e2c7dac3cfd2cec78cc1cdcf">[email&nbsp;protected]</a>":
+           case "<a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a>":
                await fetch("https://webhook.slack/notification", {
                    body: `Got a marketing email from ${ message.from }, subject: ${ message.headers.get("subject") }`,
                });
                sendEmail(message, [
-                   "<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="93fef2e1f8f6e7fafdf4d3f0fce1e3">[email&nbsp;protected]</a>",
-                   "<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c2b1a3aea7b182a1adb0b2">[email&nbsp;protected]</a>",
+                   "<a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a>",
+                   "<a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a>",
                ]);
                break;
 

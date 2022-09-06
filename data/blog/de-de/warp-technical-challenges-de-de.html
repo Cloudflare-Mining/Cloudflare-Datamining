@@ -20,7 +20,7 @@ workers.dev.    161  IN  A  198.41.214.162
 	<p>Sobald ein Paket in unserem Rechenzentrum ankommt, wird es von einem Router verarbeitet. Dieser Router sendet den Traffic an einen der Server, die für die Verarbeitung dieser Adresse zuständig sind. Dabei wird eine Routingstrategie namens ECMP (Equal-Cost Multi-Path) eingesetzt. Mit ECMP ist eine Situation gemeint, in der der Router unter mehreren Routen keinen klaren „Gewinner“ feststellen kann und es mehrere geeignete Etappen gibt, die alle zu demselben Endziel führen. Wir haben dieses Konzept ein wenig „gehackt“. Wir gleichen mit ECMP nicht mehrere Zwischenverbindungen aus, sondern wir erklären die Zwischenverbindungsadressen zum Endziel des Traffics: unsere Server.</p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/09/image6.png" class="kg-image"></figure>
 	<p>Hier die Konfiguration eines Juniper-Routers, der sich in einem unserer Rechenzentren befinden könnte und so konfiguriert ist, dass der Traffic zwischen drei Zielen ausgeglichen wird:</p>
-	<pre><code class="language-ini"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1f6a6c7a6d5f77706c6b">[email&nbsp;protected]</a># show routing-options
+	<pre><code class="language-ini"><a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a># show routing-options
 
 static {
   route 172.16.1.0/24 next-hop [ 172.16.2.1 172.16.2.2 172.16.2.3 ];

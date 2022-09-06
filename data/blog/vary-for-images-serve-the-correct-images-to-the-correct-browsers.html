@@ -44,7 +44,7 @@ Vary: Accept</code></pre>
 	<p><strong>Create a variants rule:</strong></p>
 	<pre><code>curl -X PATCH
 "https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/cache/variants" \ 
-	-H "X-Auth-Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6f1a1c0a1d2f0a170e021f030a410c0002">[email&nbsp;protected]</a>" \ 
+	-H "X-Auth-Email: <a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a>" \ 
 	-H "X-Auth-Key: 3xamp1ek3y1234" \ 
 	-H "Content-Type: application/json" \ 
 	--data 
@@ -52,7 +52,7 @@ Vary: Accept</code></pre>
 	<p><strong>Modify to only allow WebP variants:</strong></p>
 	<pre><code>curl -X PATCH 
 "https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/cache/variants" \ 
-	-H "X-Auth-Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="265355435466435e474b564a430845494b">[email&nbsp;protected]</a>" \ 
+	-H "X-Auth-Email: <a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a>" \ 
 	-H "X-Auth-Key: 3xamp1ek3y1234" \ 
 	-H "Content-Type: application/json" \ 
 	--data 
@@ -60,12 +60,12 @@ Vary: Accept</code></pre>
 	<p><strong>Delete the rule:</strong></p>
 	<pre><code>curl -X DELETE 
 "https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/cache/variants" \ 
-	-H "X-Auth-Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="add8dec8dfedc8d5ccc0ddc1c883cec2c0">[email&nbsp;protected]</a>" \ 
+	-H "X-Auth-Email: <a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a>" \ 
 	-H "X-Auth-Key: 3xamp1ek3y1234" </code></pre>
 	<p><strong>Get the rule:</strong></p>
 	<pre><code>curl -X GET 
 "https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c3533/cache/variants" \
-	-H "X-Auth-Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2b5e584e596b4e534a465b474e05484446">[email&nbsp;protected]</a>" \ 
+	-H "X-Auth-Email: <a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a>" \ 
 	-H "X-Auth-Key: 3xamp1ek3y1234"</code></pre>
 	<h3 id="purging-variants">Purging variants</h3>
 	<p>Any purge of varied images will purge <strong>all</strong> content variants for that URL. That way, if the image changes, you can easily update the cache with a single purge versus chasing down how many potential out-of-date variants may exist. This behavior is true regardless of purge type (single file, tag, or hostname) used.</p>

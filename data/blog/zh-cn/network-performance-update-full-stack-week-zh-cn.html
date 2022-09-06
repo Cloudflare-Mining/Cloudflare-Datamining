@@ -3,12 +3,12 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/Network-Performance-Update--Full-Stack-Week-header.png" class="kg-image" alt="Network Performance Update: Full Stack Week"></figure>
 	<p>两个多月前，我们分享了全球最后一英里网络的<a href="https://blog.cloudflare.com/benchmarking-edge-network-performance/">广泛基准测试结果</a>。结果显示，基于一系列的测试（TCP 连接时间、接收第一个字节的时间、接收最后一个字节的时间）和一系列测量值（平均值为 p95），Cloudflare 是全球 49% 的网络中最快的提供商。从那时起，我们一直在不断努力，持续改善性能，力图成为全球最快的提供商。<a href="https://blog.cloudflare.com/two-weeks-later-finding-and-eliminating-long-tail-latencies/">我们设定了一个目标</a>，在每一个创新周，都在额外 10% 的网络中成为最快的提供商。我们在 <a href="https://blog.cloudflare.com/tag/birthday-week/">Birthday Week</a>（2021 年 9 月）期间实现了该目标。</p>
 	<p>今天，我们很骄傲地报告，我们 <a href="https://blog.cloudflare.com/tag/full-stack-week/">Full Stack Week</a>（2021 年 11 月）的目标已取得部分胜利。Cloudflare 针对全球前 1,000 个网络（依据播发的 IPv4 地址数）测量了我们的性能。Cloudflare 已在 79 个新网络中成为最快的提供商，在这 1,000 个网络中增加了 14%。当然，我们尚未完成目标，但我们想要分享最新成果，并说明我们是如何实现的。</p>
-	<p>然而，在我们详细介绍我们的网络性能之前，我们想要分享一些有关 Workers 平台的新性能指标（鉴于这是 Full Stack Week！）。我们比较了 Cloudflare Workers 和 Fastly 的 <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1e5d71736e6b6a7b5e5b7a797b">[email&nbsp;protected]</a> 的数据，结果是：Workers 快 196%。</p>
+	<p>然而，在我们详细介绍我们的网络性能之前，我们想要分享一些有关 Workers 平台的新性能指标（鉴于这是 Full Stack Week！）。我们比较了 Cloudflare Workers 和 Fastly 的 <a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a> 的数据，结果是：Workers 快 196%。</p>
 	<h3 id="-"><strong>更快的网络意味着更快的堆栈</strong></h3>
-	<p>几个月前，我们也讨论了 Cloudflare Workers 的性能和其他相似产品的比较情况。我们<a href="https://blog.cloudflare.com/cloudflare-workers-the-fast-serverless-platform/">将我们的性能</a>与 Lambda 和 <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3b775a56595f5a7b7e5f5c5e">[email&nbsp;protected]</a> 进行比较，Cloudflare Workers 的性能分别超出 210% 和 298%。</p>
-	<p>当时，我们想要了解我们与所有竞争产品比较的情况，但是并非所有产品都广泛可用。因此，我们无法报告 Workers 与另一解决方案——Fastly 的 <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e3a08c8e93969786a3a6878486">[email&nbsp;protected]</a> 的比较情况。</p>
-	<p>今天，我们很高兴地报告，<strong>我们使用 Catchpoint 在世界各地的数据在 50 个节点上运行了测试，根据这些测试中的接收第一个字节的时间，可以得出 Cloudflare Workers 比 Fastly 的 <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="4f0c20223f3a3b2a0f0a2b282a263c">[email&nbsp;protected]</a> 快 196%。</strong></p>
-	<p>像过去一样，我们执行了一个函数，仅返回当前时间和所测得的接收第一个字节等待时间（客户端发出 HTTP 请求，到 DNS、连接和 TLS 握手之后，客户端收到请求响应的第一个字节之间的时间长度）。测试在 2021 年 11 月 8 日进行，对 Cloudflare Workers 和 Fastly 的 <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="abe8c4c6dbdedfceebeecfccce">[email&nbsp;protected]</a> 都使用了免费层级帐户。</p>
+	<p>几个月前，我们也讨论了 Cloudflare Workers 的性能和其他相似产品的比较情况。我们<a href="https://blog.cloudflare.com/cloudflare-workers-the-fast-serverless-platform/">将我们的性能</a>与 Lambda 和 <a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a> 进行比较，Cloudflare Workers 的性能分别超出 210% 和 298%。</p>
+	<p>当时，我们想要了解我们与所有竞争产品比较的情况，但是并非所有产品都广泛可用。因此，我们无法报告 Workers 与另一解决方案——Fastly 的 <a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a> 的比较情况。</p>
+	<p>今天，我们很高兴地报告，<strong>我们使用 Catchpoint 在世界各地的数据在 50 个节点上运行了测试，根据这些测试中的接收第一个字节的时间，可以得出 Cloudflare Workers 比 Fastly 的 <a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a> 快 196%。</strong></p>
+	<p>像过去一样，我们执行了一个函数，仅返回当前时间和所测得的接收第一个字节等待时间（客户端发出 HTTP 请求，到 DNS、连接和 TLS 握手之后，客户端收到请求响应的第一个字节之间的时间长度）。测试在 2021 年 11 月 8 日进行，对 Cloudflare Workers 和 Fastly 的 <a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a> 都使用了免费层级帐户。</p>
 	<p>在两个提供商上运行的代码完全相同 — 是一个返回所有请求标头的小型函数：</p>
 	<!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">addEventListener('fetch', event =&gt; event.respondWith(handleRequest(event)));
@@ -23,7 +23,7 @@ async function handleRequest(event) {
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>橙色：Cloudflare Workers</p>
-	<p>黑色：<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1f5c70726f6a6b7a5f5a7b787a">[email&nbsp;protected]</a></p>
+	<p>黑色：<a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a></p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image8-9.png" class="kg-image"></figure>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image7-9.png" class="kg-image"></figure>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image10-11.png" class="kg-image"></figure>

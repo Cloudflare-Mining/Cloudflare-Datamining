@@ -100,7 +100,7 @@ aliceswonderland.com.	 28 IN TXT "google-site-verification=COanvvo4CIfihirYW6C0j
 	<p>作为一个简单的获取器和整合器，DCV协调器是<a href="https://developers.cloudflare.com/workers/" target="_blank">Cloudflare Workers</a>的应用的绝佳选择。我们以<a href="https://blog.cloudflare.com/generating-documentation-for-typescript-projects/">这篇文章</a>作为指南，在TypeScript中实现了协调器功能，并创建了一个易于部署和迭代的类型化、可靠的协调器服务。太好了，我们不需要维护我们自己的dcv-orchestrator服务器了！</p>
 	<p>我们使用<a href="https://developers.cloudflare.com/argo-tunnel/" target="_blank">Argo Tunnel</a>来让Cloudflare Workers接入DCV代理成为可能。Argo Tunnel可以让我们轻松安全地将DCV暴露在Workers环境中。由于Cloudflare有大约175个（截止至2019年9月已有193个）运行DCV代理的数据中心，我们通过Argo Tunnel公开了许多服务，并且有机会将Argo Tunnel视为具有多种来源的高级用户，在其上加载测试。Argo Tunnel很容易就可以处理好这些新来源的涌入！</p>
 	<h2 id="--7">获取多域控制器验证检查器使用资格</h2>
-	<p>如果您和/或您的组织有兴趣尝试我们的DCV检查器，请发送电子邮件至<a href="/cdn-cgi/l/email-protection#f89c9b8eb89b94978d9c9e94998a9dd69b9795"><span class="__cf_email__" data-cfemail="eb8f889dab8887849e8f8d878a998ec5888486">[email&nbsp;protected]</span></a>告诉我们！我们希望了解有关多路径查询和验证如何增强证书颁发安全性的更多信息。</p>
+	<p>如果您和/或您的组织有兴趣尝试我们的DCV检查器，请发送电子邮件至<a href="#email-protected"><span class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</span></a>告诉我们！我们希望了解有关多路径查询和验证如何增强证书颁发安全性的更多信息。</p>
 	<p>由于一类新的BGP和IP欺骗攻击可能会破坏PKI（公钥基础设施）基础，因此主张网站所有者在颁发证书时进行多路径验证是非常重要的。我们鼓励所有CA使用多路径验证，无论是Cloudflare还是他们自己的。Let's Encrypt 的技术负责人Jacob Hoffman-Andrews写道：</p>
 	<p>“BGP劫持是Web PKI仍然需要解决的重大挑战之一，我们认为多路径验证可以成为解决方案的一部分。我们正在测试我们自己的实施结果，我们鼓励其他CA也采用多路径”</p>
 	<p>希望将来，网站所有者在选择CA时会考虑多路径验证支持。</p>

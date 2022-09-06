@@ -8,7 +8,7 @@
 	<p><img src="https://blog.cloudflare.com/content/images/2016/04/Screen-Shot-2016-04-09-at-8-12-41-PM.png" alt=""></p>
 	<p>Alongside the dashboard, we've also released a new API for managing Virtual DNS. You can now configure every aspect of Virtual DNS programmatically. This is how easy it is to spin up a new Virtual DNS instance -- it’s just one command:</p>
 	<pre><code>$ curl -X POST "https://api.cloudflare.com/client/v4/user/virtual_dns" \
--H "X-Auth-Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="572224322517322f363a273b327934383a">[email&nbsp;protected]</a>" \
+-H "X-Auth-Email: <a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a>" \
 -H "X-Auth-Key: XXX" \
 -H "Content-Type: application/json" \
 --data '{"name":"My Awesome Virtual DNS cluster","origin_ips":["1.1.1.1","2.2.2.2"],"minimum_cache_ttl":60,"maximum_cache_ttl":900,"deprecate_any_request":true}'

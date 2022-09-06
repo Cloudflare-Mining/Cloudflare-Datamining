@@ -20,7 +20,7 @@ workers.dev.    161  IN  A  198.41.214.162
 	<p>Une fois qu'un paquet atteint notre centre de données, il est traité par un routeur. Ce routeur envoie le trafic à l'un des ensembles de serveurs responsables de la gestion de cette adresse, à l'aide d'un algorithme de routage appelé ECMP (Equal-Cost Multi-Path). ECMP se réfère à la situation dans laquelle le routeur n’a pas de « gagnant » entre plusieurs itinéraires de mérite égal, il dispose de plusieurs « prochains bonds » corrects, tous avec la même destination finale. Dans notre cas, nous contournons un peu ce concept. Plutôt que d'utiliser ECMP pour créer un équilibre entre plusieurs liens intermédiaires, nous faisons en sorte que le lien intermédiaire s’adresse à la destination finale de notre trafic : nos serveurs.</p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/09/image6.png" class="kg-image"></figure>
 	<p>Voici la configuration d'un routeur de marque Juniper que l’on peut trouver dans l'un de nos centres de données et qui est configuré pour équilibrer le trafic sur trois destinations :</p>
-	<pre><code class="language-ini"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2356504651634b4c5057">[email&nbsp;protected]</a># show routing-options
+	<pre><code class="language-ini"><a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a># show routing-options
 
 static {
   route 172.16.1.0/24 next-hop [ 172.16.2.1 172.16.2.2 172.16.2.3 ];

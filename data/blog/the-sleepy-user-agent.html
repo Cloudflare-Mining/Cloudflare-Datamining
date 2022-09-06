@@ -114,7 +114,7 @@ $stmt-&gt;execute();
 &lt;head&gt;&lt;/head&gt;
 &lt;body&gt;&lt;b&gt;Thanks for visiting&lt;/b&gt;&lt;/body&gt;
 </code></pre>
-	<script defer="" src="https://static-poc.cloudflareinsights.com/beacon.min.js/vd03ae6ecf94f4dad98dac2127521fd2f1661894799895" data-cf-beacon="{&quot;rayId&quot;:&quot;7462ba888f81580c&quot;,&quot;token&quot;:&quot;2bc156e5f250476cb274d269511ffb57&quot;,&quot;version&quot;:&quot;2022.8.1&quot;,&quot;si&quot;:100}" crossorigin="anonymous"></script>
+	<script defer="" src="https://static-poc.cloudflareinsights.com/beacon.min.js/vd03ae6ecf94f4dad98dac2127521fd2f1661894799895" data-cf-beacon="{&quot;rayId&quot;:&quot;7462f46339227717&quot;,&quot;token&quot;:&quot;2bc156e5f250476cb274d269511ffb57&quot;,&quot;version&quot;:&quot;2022.8.1&quot;,&quot;si&quot;:100}" crossorigin="anonymous"></script>
 
 	<p>This prepares the SQL query to perform the insertion using <a href="https://secure.php.net/manual/en/mysqli.prepare.php" target="_blank"><code>prepare</code></a> and then binds the two parameters (the user agent and the date/time) using <a href="https://secure.php.net/manual/en/mysqli-stmt.bind-param.php" target="_blank"><code>bind_param</code></a> and then runs the query with <a href="https://secure.php.net/manual/en/mysqli-stmt.execute.php" target="_blank"><code>execute</code></a>.</p>
 	<p><code>bind_param</code> ensures that the special SQL characters like quotes are escaped correctly for insertion in the database. Trying to repeat the injection above results in the following database entry:</p>

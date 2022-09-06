@@ -123,7 +123,7 @@
 	<p>Once I had my site up and running on Cloudflare, I learned how to make API calls to pull down the our Enterprise raw logs and use jq to sort them (jq, I learned, is “a lightweight and flexible command-line JSON processor”):</p>
 	<p></p>
 	<!--kg-card-begin: markdown-->
-	<pre><code>curl -H "X-Auth-Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="9dfceefef5fcfbf8efddfef1f2e8f9fbf1fceff8b3fef2f0">[email&nbsp;protected]</a>" -H "X-Auth-Key:
+	<pre><code>curl -H "X-Auth-Email: <a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a>" -H "X-Auth-Key:
 cc1e78b22222229b9d72643fbda69655579d" -H "Content-Type: application/json" 
 "https://api.cloudflare.com/client/v4/zones/f5fb827cf31f628c1c0730bc4b0792d
 d/logs/requests?start=0&amp;count=1" | jq 'select(.clientRequest.uri == 

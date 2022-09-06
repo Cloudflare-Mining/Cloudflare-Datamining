@@ -18,7 +18,7 @@
 	<p><img src="https://blog.cloudflare.com/content/images/2018/03/devices.png" alt="Attached devices"></p>
 	<p>OK, that's promising. Let's connect to that IP using the default pi/raspberry credentials:</p>
 	<pre><code>$ ssh 192.168.8.26 -l pi
-<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1868715829212a36292e203620362a2e">[email&nbsp;protected]</a>'s password: 
+<a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a>'s password: 
 
 The programs included with the Debian GNU/Linux system are free software;
 the exact distribution terms for each program are described in the
@@ -27,17 +27,17 @@ individual files in /usr/share/doc/*/copyright.
 Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
 permitted by applicable law.
 Last login: Sun Mar 18 23:24:11 2018 from stevens-air-2.lan
-<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="63130a2311021013010611111a130a">[email&nbsp;protected]</a>:~ $ 
+<a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a>:~ $ 
 </code></pre>
 	<p>We're in!</p>
 	<p><strong>Pro tip: quick way to figure it out which type you have is</strong></p>
-	<pre><code><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a3d3cae3d1c2d0d3c1c6d1d1dad3ca">[email&nbsp;protected]</a>:~ $ cat /proc/cpuinfo | grep 'Revision' | awk '{print $3}' | sed 's/^1000//'
+	<pre><code><a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a>:~ $ cat /proc/cpuinfo | grep 'Revision' | awk '{print $3}' | sed 's/^1000//'
 a22082
 </code></pre>
 	<p>Then look up the value in the <a href="https://elinux.org/RPi_HardwareHistory" target="_blank">Raspbery Pi revision history</a>. I have Raspberry Pi 3 Model B</p>
 	<h3 id="internetconnectivity">Internet connectivity</h3>
 	<p>OK, so we have a Pi connected to our router. Let's make 100% sure it can connect to the Internet.</p>
-	<pre><code><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="493920093b283a392b2c3b3b303920">[email&nbsp;protected]</a>:~$ $ curl -I https://www.cloudflare.com
+	<pre><code><a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a>:~$ $ curl -I https://www.cloudflare.com
 HTTP/2 200
 date: Tue, 20 Mar 2018 22:54:20 GMT
 content-type: text/html; charset=utf-8

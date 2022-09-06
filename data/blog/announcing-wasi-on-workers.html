@@ -45,7 +45,7 @@ Hello, world!
 	<p>Neat! The same code compiles and runs in multiple POSIX environments.</p>
 	<p>Finally, let’s take the binary we just generated for Wasmtime, but instead publish it to Workers using Wrangler2.</p>
 	<!--kg-card-begin: markdown-->
-	<pre><code class="language-bash">$ npx <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="9fe8edfef1f8f3faeddfe8feecf2">[email&nbsp;protected]</a> dev target/wasm32-wasi/release/hello_world.wasm
+	<pre><code class="language-bash">$ npx <a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a> dev target/wasm32-wasi/release/hello_world.wasm
 $ curl http://localhost:8787/
 
 Hello, world!
@@ -56,14 +56,14 @@ Hello, world!
 	<p>The attentive reader may notice that we played a small trick with the HTTP request made via cURL. In this example, we actually stream stdin and stdout to/from the Worker using the HTTP request and response body respectively. This pattern enables some really interesting use cases, specifically, programs designed to run on the command line can be deployed as 'services' to the cloud.</p>
 	<p>‘Hexyl’ is an example that works completely out of the box. Here, we ‘cat’ a binary file on our local machine and ‘pipe’ the output to curl, which will then POST that output to our service and stream the result back. Following the steps we used to compile our 'Hello World!', we can compile hexyl.</p>
 	<!--kg-card-begin: markdown-->
-	<pre><code class="language-bash">$ git clone <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="61060815210608150914034f020e0c">[email&nbsp;protected]</a>:sharkdp/hexyl.git
+	<pre><code class="language-bash">$ git clone <a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a>:sharkdp/hexyl.git
 $ cd ./hexyl
 $ cargo build --target wasm32-wasi --release
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>And without further modification we were able to take a real-world program and create something we can now run or deploy. Again, let's tell wrangler2 to preview hexyl, but this time give it some input.</p>
 	<!--kg-card-begin: markdown-->
-	<pre><code class="language-bash">$ npx <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7c0b0e1d121b10190e3c0b1d0f11">[email&nbsp;protected]</a> dev target/wasm32-wasi/release/hexyl.wasm
+	<pre><code class="language-bash">$ npx <a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a> dev target/wasm32-wasi/release/hexyl.wasm
 $ echo "Hello, world\!" | curl -X POST --data-binary @- http://localhost:8787
 
 ┌────────┬─────────────────────────┬─────────────────────────┬────────┬────────┐
