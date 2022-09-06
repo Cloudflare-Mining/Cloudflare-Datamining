@@ -1,0 +1,27 @@
+[
+	{
+		"name": "cf.anonymizer",
+		"description": "IP addresses of known anonymizers (Open SOCKS Proxies, VPNs and Tor nodes)",
+		"kind": "ip"
+	},
+	{
+		"name": "cf.botnetcc",
+		"description": "IP addresses of known botnet command and control servers",
+		"kind": "ip"
+	},
+	{
+		"name": "cf.malware",
+		"description": "IP addresses of known sources of malware",
+		"kind": "ip"
+	},
+	{
+		"name": "cf.open_proxies",
+		"description": "IP addresses of known open HTTP and SOCKS proxy endpoints, which are frequently used to launch attacks and hide attackers identity",
+		"kind": "ip"
+	},
+	{
+		"name": "cf.vpn",
+		"description": "IP addresses of known VPN servers",
+		"kind": "ip"
+	}
+]
