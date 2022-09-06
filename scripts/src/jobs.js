@@ -45,14 +45,13 @@ if(departmentsRes.ok){
 			console.log(`Fetch information for job ${jobDirName}...`);
 			const jobsDir = path.resolve(departmentDir, jobDirName);
 			await fs.ensureDir(jobsDir);
-			await fs.writeFile(path.resolve(jobsDir, `_index.json`), JSON.stringify(job, null, '\t'));
 
 			const jobInfo = await fetch(`https://boards-api.greenhouse.io/v1/boards/cloudflare/jobs/${job.id}`, {agent});
 			if(jobInfo.ok){
 				const jobInfoData = await jobInfo.json();
 				const {content, ...jobInfoDataWithoutContent} = jobInfoData;
 				if(content){
-					const decoded = decodeHTML(jobInfoData.content);
+					const decoded = decodeHTML(content);
 					const beautified = jsBeautify.html_beautify(decoded, {
 						'indent_size': 4,
 						'indent_char': '\t',
