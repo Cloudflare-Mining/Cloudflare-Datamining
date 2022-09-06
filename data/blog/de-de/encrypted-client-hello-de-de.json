@@ -1,0 +1,37 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Christopher Patton",
+		"image": "http://blog.cloudflare.com/content/images/2018/09/0-8.jpg",
+		"url": "https://blog.cloudflare.com/author/christopher-patton/",
+		"sameAs": []
+	},
+	"headline": "Tschüss ESNI! Hallo ECH!",
+	"url": "https://blog.cloudflare.com/de-de/encrypted-client-hello-de-de/",
+	"datePublished": "2020-12-08T12:27:06.000Z",
+	"dateModified": "2021-01-22T18:25:36.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2020/12/Good-bye-ESNI--hello-ECH-blog-header-8.png",
+		"width": 1200,
+		"height": 569
+	},
+	"keywords": "Deutsch, DNS (DE), Datenschutzwoche (DE), TLS (DE), Privatsphäre, Protokolle, Forschung",
+	"description": "Eine eingehende Betrachtung von Encrypted ClientHello: Dieser Standard verschlüsselt datenschutzrelevante Parameter, die vom Client im Rahmen des TLS-Handshake übermittelt werden.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

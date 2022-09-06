@@ -31,14 +31,14 @@ deploy:
   timeout-minutes: 60
   needs: test
   steps:
-    - uses: actions/<a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a>
+    - uses: actions/[email protected]
     - name: Publish
-      uses: cloudflare/<a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a>
+      uses: cloudflare/[email protected]
 </code></pre>
 	<p>2) Add support for CF_API_TOKEN and CF_ACCOUNT_ID in your repo workflow:</p>
 	<pre><code># Update "Publish" step from last code snippet
 - name: Publish
-  uses: cloudflare/<a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a>
+  uses: cloudflare/[email protected]
   with:
     apiToken: ${{ secrets.CF_API_TOKEN }}
   env:

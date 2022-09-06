@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "John Graham-Cumming",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
+		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
+		"sameAs": [
+			"https://twitter.com/jgrahamc"
+		]
+	},
+	"headline": "2020년 7월 17일의 Cloudflare 서비스 중단에 관한 분석",
+	"url": "https://blog.cloudflare.com/ko-kr/cloudflare-outage-on-july-17-2020-ko-kr/",
+	"datePublished": "2020-07-18T14:55:00.000Z",
+	"dateModified": "2021-01-21T21:00:43.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2020/11/image3-10.png",
+		"width": 1043,
+		"height": 749
+	},
+	"keywords": "한국어, 사후 분석",
+	"description": "오늘 백본 네트워크의 구성 오류로 인해 Cloudflare 서비스의 가동이 27분 동안 중단됐습니다. Cloudflare 네트워크 전반에서 트래픽이 약 50% 감소했습니다. Cloudflare 백본 네트워크의 구조 상 이러한 가동 중단은 Cloudflare의 전 네트워크에 영향을 주지 않았고 특정 지역에 한정됐습니다.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

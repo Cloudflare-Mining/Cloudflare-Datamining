@@ -1,0 +1,31 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Vlad Krasnov",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/165e069.jpg",
+		"url": "https://blog.cloudflare.com/author/vlad-krasnov/",
+		"sameAs": []
+	},
+	"headline": "Know your SCM_RIGHTS",
+	"url": "https://blog.cloudflare.com/know-your-scm_rights/",
+	"datePublished": "2018-11-29T09:54:22.000Z",
+	"dateModified": "2020-03-30T19:17:56.000Z",
+	"keywords": "TLS 1.3, TLS, Security, Linux, TCP, OpenSSL, Go, NGINX",
+	"description": "As TLS 1.3 was ratified earlier this year, I was recollecting how we got started with it here at Cloudflare. We made the decision to be early adopters of TLS 1.3 a little over two years ago. It was a very important decision, and we took it very seriously.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Zhiyuan Zheng",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/03/square.jpg",
+			"width": 1479,
+			"height": 1479
+		},
+		"url": "https://blog.cloudflare.com/author/xmflsct/",
+		"sameAs": [
+			"https://xmflsct.com"
+		]
+	},
+	"headline": "Une nouvelle expérience du WAF",
+	"url": "https://blog.cloudflare.com/fr-fr/new-waf-experience-fr-fr/",
+	"datePublished": "2022-03-15T12:59:00.000Z",
+	"dateModified": "2022-05-17T20:16:40.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/05/image2-28-2.png",
+		"width": 1800,
+		"height": 1013
+	},
+	"keywords": "Semaine de la sécurité, WAF (FR), Français, Sécurité",
+	"description": "À partir d&#x27;aujourd&#x27;hui, nous lançons cette nouvelle présentation du WAF pour tout le monde ! Parallèlement, nous mettons à jour la documentation qui vous guidera pour optimiser la puissance du pare-feu WAF de Cloudflare",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

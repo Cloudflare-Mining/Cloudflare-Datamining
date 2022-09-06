@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Mike Conlow",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/03/Mike-Conlow.png",
+			"width": 88,
+			"height": 88
+		},
+		"url": "https://blog.cloudflare.com/author/mike-conlow/",
+		"sameAs": [
+			"https://twitter.com/mikeconlow"
+		]
+	},
+	"headline": "New cities on the Cloudflare global network: March 2022 edition",
+	"url": "https://blog.cloudflare.com/mid-2022-new-cities/",
+	"datePublished": "2022-03-21T12:59:02.000Z",
+	"dateModified": "2022-03-21T17:48:01.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/03/image1-90.png",
+		"width": 1541,
+		"height": 1013
+	},
+	"keywords": "Cloudflare Network, Internet Performance",
+	"description": "Today, we are announcing the addition of 18 new cities in Africa, South America, Asia, and the Middle East, bringing our network to over 270 cities globally",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

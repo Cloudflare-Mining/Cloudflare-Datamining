@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Omer Yoachimik",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/Omer-1.png",
+			"width": 773,
+			"height": 653
+		},
+		"url": "https://blog.cloudflare.com/author/omer/",
+		"sameAs": [
+			"https://twitter.com/OmerYoahimik"
+		]
+	},
+	"headline": "Wer spricht, wenn ich fragen darf? Die Zahl der VoIP-DDoS-Angriffe nimmt zuletzt zu",
+	"url": "https://blog.cloudflare.com/de-de/attacks-on-voip-providers-de-de/",
+	"datePublished": "2021-10-01T00:05:00.000Z",
+	"dateModified": "2022-07-21T16:26:57.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/07/image-2-1.png",
+		"width": 1360,
+		"height": 772
+	},
+	"keywords": "Gerätesicherheit, Sicherheit, DDoS (DE), VoIP (DE), Ransom-DDoS-Angriffe, Trends (DE), Deutsch",
+	"description": "Im vergangenen Monat wurden mehrere Voice-over-Internet-Protocol (VoIP)-Anbieter mittels Distributed Denial of Service (DDoS)--Angriffen von Unternehmen angegriffen, die sich als REvil ausgaben",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

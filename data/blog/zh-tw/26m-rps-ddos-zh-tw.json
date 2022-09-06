@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Omer Yoachimik",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/Omer-1.png",
+			"width": 773,
+			"height": 653
+		},
+		"url": "https://blog.cloudflare.com/author/omer/",
+		"sameAs": [
+			"https://twitter.com/OmerYoahimik"
+		]
+	},
+	"headline": "Cloudflare 可緩解每秒 2600 萬個請求的 DDoS 攻擊",
+	"url": "https://blog.cloudflare.com/zh-tw/26m-rps-ddos-zh-tw/",
+	"datePublished": "2022-06-14T12:56:00.000Z",
+	"dateModified": "2022-07-08T02:05:20.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/07/image1-2-1.png",
+		"width": 1830,
+		"height": 850
+	},
+	"keywords": "DDoS (TW), 殭屍網絡, 攻擊, 防守, 繁體中文 (TW)",
+	"description": "在上週，Cloudflare 自動偵測並緩解了一場每秒 2600 萬個請求的 DDoS 攻擊，這是有記錄以來最大規模的 HTTPS DDoS 攻擊",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

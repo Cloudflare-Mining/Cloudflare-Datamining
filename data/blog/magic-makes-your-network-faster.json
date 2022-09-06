@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Annika Garbers",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/annika.png",
+			"width": 400,
+			"height": 400
+		},
+		"url": "https://blog.cloudflare.com/author/annika/",
+		"sameAs": [
+			"https://twitter.com/annikagarbers"
+		]
+	},
+	"headline": "Magic makes your network faster",
+	"url": "https://blog.cloudflare.com/magic-makes-your-network-faster/",
+	"datePublished": "2021-09-16T12:59:51.000Z",
+	"dateModified": "2021-09-18T14:33:30.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/09/Magic-Network-1.png",
+		"width": 1095,
+		"height": 616
+	},
+	"keywords": "Speed Week, Speed & Reliability, Magic Transit, Magic WAN, Magic Firewall, Zero Trust",
+	"description": "Today, as part of Speed Week, we’ll break down the other side of the Magic: how using Cloudflare can automatically make your entire network faster. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

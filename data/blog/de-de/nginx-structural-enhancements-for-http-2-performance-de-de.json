@@ -1,0 +1,37 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Nick Jones",
+		"image": "http://blog.cloudflare.com/content/images/2018/10/nick-jones.jpg",
+		"url": "https://blog.cloudflare.com/author/nick-jones/",
+		"sameAs": []
+	},
+	"headline": "NGINX-Strukturverbesserungen für die Performance von HTTP/2",
+	"url": "https://blog.cloudflare.com/de-de/nginx-structural-enhancements-for-http-2-performance-de-de/",
+	"datePublished": "2019-05-22T17:14:00.000Z",
+	"dateModified": "2021-01-22T20:04:51.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/01/http2prioritization-copy@2x-3.png",
+		"width": 2000,
+		"height": 1025
+	},
+	"keywords": "Geschwindigkeit & Zuverlässigkeit, Deutsch, NGINX (DE), HTTP2 (DE), Geschwindigkeitswoche",
+	"description": "Mein Team, das Cloudflare PROTOCOLS-Team, ist für die Beendigung des HTTP-Datenverkehrs am Rande des Cloudflare-Netzwerks zuständig. Wir beschäftigen uns mit Funktionen im Zusammenhang mit: TCP, QUIC, TLS und Secure Certificate Management, HTTP/1 sowie HTTP/2.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

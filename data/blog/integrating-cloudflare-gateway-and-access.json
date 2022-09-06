@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Kenny Johnson",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2020/12/0DA903DE-E315-43D5-B0DE-39870448303D.jpeg",
+			"width": 265,
+			"height": 252
+		},
+		"url": "https://blog.cloudflare.com/author/kenny/",
+		"sameAs": [
+			"https://twitter.com/KennyJohnsonATX"
+		]
+	},
+	"headline": "Integrating Cloudflare Gateway and Access",
+	"url": "https://blog.cloudflare.com/integrating-cloudflare-gateway-and-access/",
+	"datePublished": "2020-12-23T12:00:00.000Z",
+	"dateModified": "2021-01-07T15:01:49.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2020/12/image3-45.png",
+		"width": 1382,
+		"height": 663
+	},
+	"keywords": "Cloudflare Access, Cloudflare Gateway, Security, Zero Trust",
+	"description": "We’re excited to announce that you can now set up your Access policies to require that all user traffic to your application is filtered by Cloudflare Gateway. This ensures that all of the traffic to your self-hosted and SaaS applications is secured and centrally logged.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

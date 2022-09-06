@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew Prince",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
+			"width": 1196,
+			"height": 1190
+		},
+		"url": "https://blog.cloudflare.com/author/matthew-prince/",
+		"sameAs": [
+			"https://twitter.com/eastdakota"
+		]
+	},
+	"headline": "Introducing CNAME Flattening: RFC-Compliant CNAMEs at a Domain&#x27;s Root",
+	"url": "https://blog.cloudflare.com/introducing-cname-flattening-rfc-compliant-cnames-at-a-domains-root/",
+	"datePublished": "2014-04-03T00:34:00.000Z",
+	"dateModified": "2022-07-29T18:53:38.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/image_0_1.png",
+	"keywords": "CNAME, Reliability, DNS",
+	"description": "This post is about a new feature we&#x27;ve been quietly rolling out over the last few months. Last week we began enabling it for everyone by default. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

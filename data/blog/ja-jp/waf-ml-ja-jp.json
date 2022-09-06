@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Daniele Molteni",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/10/meProfessional-1-flipped.jpg",
+			"width": 1732,
+			"height": 1732
+		},
+		"url": "https://blog.cloudflare.com/author/daniele/",
+		"sameAs": []
+	},
+	"headline": "機械学習でWAFを改善",
+	"url": "https://blog.cloudflare.com/ja-jp/waf-ml-ja-jp/",
+	"datePublished": "2022-03-15T12:59:00.000Z",
+	"dateModified": "2022-03-21T20:52:54.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/03/image5-7.png",
+		"width": 1801,
+		"height": 1013
+	},
+	"keywords": "セキュリティウィーク, WAF (JP)",
+	"description": "Cloudflareは、毎秒3200万件のHTTPリクエストを処理しており、W3Techsで把握しているWebサーバーが提供するWebサイトの22%以上で利用されています。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

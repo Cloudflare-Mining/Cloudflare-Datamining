@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Omer Yoachimik",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/Omer-1.png",
+			"width": 773,
+			"height": 653
+		},
+		"url": "https://blog.cloudflare.com/author/omer/",
+		"sameAs": [
+			"https://twitter.com/OmerYoahimik"
+		]
+	},
+	"headline": "Cloudflare wehrt 26 Millionen Anfragen pro Sekunde starken DDoS-Angriff ab",
+	"url": "https://blog.cloudflare.com/de-de/26m-rps-ddos-de-de/",
+	"datePublished": "2022-06-13T12:56:00.000Z",
+	"dateModified": "2022-06-28T10:32:29.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/06/Screenshot-2022-06-28-at-11.13.07-2.png",
+		"width": 2000,
+		"height": 900
+	},
+	"keywords": "Sicherheit, Angriffe, DDoS (DE), Deutsch, Botnetz",
+	"description": "Letzte Woche hat Cloudflare einen DDoS-Angriff mit 26 Millionen Anfragen pro Sekunde automatisch erkannt und abgewehrt. Dabei handelte es sich um die größte HTTPS-DDoS-Attacke, die jemals verzeichnet wurde",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

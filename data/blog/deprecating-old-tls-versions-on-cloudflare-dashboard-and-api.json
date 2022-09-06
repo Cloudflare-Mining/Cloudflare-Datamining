@@ -1,0 +1,40 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Patrick R. Donahue",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/me0-1.png",
+			"width": 300,
+			"height": 291
+		},
+		"url": "https://blog.cloudflare.com/author/patrick/",
+		"sameAs": [
+			"https://www.cloudflare.com",
+			"https://twitter.com/prdonahue"
+		]
+	},
+	"headline": "Deprecating TLS 1.0 and 1.1 on api.cloudflare.com",
+	"url": "https://blog.cloudflare.com/deprecating-old-tls-versions-on-cloudflare-dashboard-and-api/",
+	"datePublished": "2018-03-12T16:00:47.000Z",
+	"dateModified": "2018-08-29T07:19:18.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/03/tls-analytics-1.png",
+	"keywords": "TLS, API, Security",
+	"description": "On June 4, Cloudflare will be dropping support for TLS 1.0 and 1.1 on api.cloudflare.com. Additionally, the dashboard will be moved from www.cloudflare.com/a to dash.cloudflare.com and will require a browser that supports TLS 1.2 or higher.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Alex Davidson",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/10/pic_of_me.jpg",
+			"width": 600,
+			"height": 600
+		},
+		"url": "https://blog.cloudflare.com/author/alex-davidson/",
+		"sameAs": []
+	},
+	"headline": "プライバシーパスプロトコル最新バージョンのサポート",
+	"url": "https://blog.cloudflare.com/ja-jp/supporting-the-latest-version-of-the-privacy-pass-protocol-ja-jp/",
+	"datePublished": "2019-10-28T13:00:00.000Z",
+	"dateModified": "2021-01-21T18:42:45.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2019/11/Screen-Shot-2019-10-27-at-7.05.21-PM-1.png",
+		"width": 2000,
+		"height": 1025
+	},
+	"keywords": "日本語, 暗号化, セキュリティ, プライバシーパス",
+	"description": "Cloudflareでは、すべてのインターネットユーザーに便益をもたらす新しいプライバシー保護テクノロジーをサポート・開発する事業に取り組んでいます。2017年11月に当社は学術界との共同研究により開発されたプライバシーパスプロトコルのサーバー側サポートを発表いたしました。プライバシーパスとは、要約すると、その信用が供与された場所と時期を明らかにすることなく",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

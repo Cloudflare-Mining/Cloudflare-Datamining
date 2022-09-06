@@ -1,0 +1,33 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "John Graham-Cumming",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
+		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
+		"sameAs": [
+			"https://twitter.com/jgrahamc"
+		]
+	},
+	"headline": "Three little tools: mmsum, mmwatch, mmhistogram",
+	"url": "https://blog.cloudflare.com/three-little-tools-mmsum-mmwatch-mmhistogram/",
+	"datePublished": "2017-07-04T10:32:20.000Z",
+	"dateModified": "2018-08-29T01:28:17.000Z",
+	"keywords": "Tools, Programming, Star Wars, ASCII, DDoS, Attacks, Security, Reliability",
+	"description": "In a recent blog post, my colleague Marek talked about some SSDP-based DDoS activity we&#x27;d been seeing recently. In that blog post he used a tool called mmhistogram to output an ASCII histogram.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

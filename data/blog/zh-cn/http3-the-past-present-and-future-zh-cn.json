@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Rustam Lalkaka",
+		"image": "http://blog.cloudflare.com/content/images/2017/05/AAEAAQAAAAAAAAc9AAAAJDg0MzBkZTg1LTNkOTUtNGFlYy1hMjJiLTQxMjlmYzkyNjJjMA.jpg",
+		"url": "https://blog.cloudflare.com/author/rustam/",
+		"sameAs": [
+			"https://twitter.com/lalkaka"
+		]
+	},
+	"headline": "Cloudflare边缘网络支持QUIC和HTTP/3 - 了解HTTP/3的前世今生",
+	"url": "https://blog.cloudflare.com/zh-cn/http3-the-past-present-and-future-zh-cn/",
+	"datePublished": "2019-09-26T13:00:00.000Z",
+	"dateModified": "2021-01-28T19:23:07.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2020/01/http3-option-tunnel@2x-1-1.png",
+		"width": 2356,
+		"height": 1493
+	},
+	"keywords": "简体中文 (CN), 安全, HTTP3 (ZH), QUIC (ZH), 生日周 (CN), 产品新闻",
+	"description": "在去年的生日周，我们宣布初步支持QUIC和HTTP/3（当时称为“HTTP over QUIC”），这是web的新标准，支持更快、更可靠、更安全的到web端点（如网站和API）的连接。我们还让客户加入等待队列，从而在QUIC和HTTP/3可用后立即试用。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

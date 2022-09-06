@@ -1,0 +1,45 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Peter Wu",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/10/gravatar.png",
+			"width": 512,
+			"height": 512
+		},
+		"url": "https://blog.cloudflare.com/author/peter-wu/",
+		"sameAs": [
+			"https://lekensteyn.nl/",
+			"https://twitter.com/Lekensteyn"
+		]
+	},
+	"headline": "Cloudflare_利用DoH，DoT加密DNS，保护DNS查询及响应",
+	"url": "https://blog.cloudflare.com/zh-cn/dns-encryption-explained-zh-cn/",
+	"datePublished": "2019-10-29T13:00:00.000Z",
+	"dateModified": "2021-01-28T19:26:56.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2020/01/Screen-Shot-2019-10-28-at-12.46.36-PM.png",
+		"width": 2000,
+		"height": 709
+	},
+	"keywords": "加密周, 加密, DNS (CN), DoH (CN), DoT (CN), 简体中文 (CN)",
+	"description": "域名系统（DNS）是互联网的地址簿。当您访问cloudflare.com或任何其他站点时，您的浏览器将向DNS解析器询问可以找到站点的IP地址。不幸的是，这些DNS查询和回应通常是不受保护的。加密DNS将改善用户隐私和安全性。在本文中，我们将研究两种用于加密DNS的机制，称为DNS over TLS（DoT）以及DNS over HTTPS（DoH），并解释它们的工作原理。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Aaron Lisman",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/09/lisman.jpg",
+			"width": 300,
+			"height": 301
+		},
+		"url": "https://blog.cloudflare.com/author/aaron-lisman/",
+		"sameAs": []
+	},
+	"headline": "Making Time for Cron Triggers: A Look Inside",
+	"url": "https://blog.cloudflare.com/cron-triggers-for-scheduled-workers/",
+	"datePublished": "2020-09-28T13:02:00.000Z",
+	"dateModified": "2020-09-28T14:22:50.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2020/09/image2-11.png",
+		"width": 1999,
+		"height": 949
+	},
+	"keywords": "Serverless, Product News, Cloudflare Workers, Birthday Week",
+	"description": "Today, we are excited to launch Cron Triggers to the Cloudflare Workers serverless compute platform. We’ve heard the developer feedback, and we want to give our users the ability to run a given Worker on a scheduled basis.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Ankur Aggarwal",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/11/00100lPORTRAIT_00100_BURST20181020175123196_COVER-01.jpeg",
+			"width": 110,
+			"height": 100
+		},
+		"url": "https://blog.cloudflare.com/author/ankur/",
+		"sameAs": [
+			"https://twitter.com/Encore_Encore"
+		]
+	},
+	"headline": "하드웨어 방화벽을 Cloudflare One으로 교체하세요",
+	"url": "https://blog.cloudflare.com/ko-kr/replace-your-hardware-firewalls-with-cloudflare-one-ko-kr/",
+	"datePublished": "2021-12-06T14:00:00.000Z",
+	"dateModified": "2022-01-01T02:29:13.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/01/image2-6-1.png",
+		"width": 1800,
+		"height": 1013
+	},
+	"keywords": "CIO Week (KO), Cloudflare One (KO), Cloudflare Gateway (KO), 한국어, 보안",
+	"description": "오늘, 고객이 하드웨어 방화벽 어플라이언스에서 차세대 네트워크용으로 구축된 진정한 클라우드 네이티브 방화벽으로 전환하도록 지원하는 새로운 기능을 발표하게 되어 기쁘게 생각합니다. Cloudflare One은 관리자들이 모든 사용자와 리소스에 대해 일관",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

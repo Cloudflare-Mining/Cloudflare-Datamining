@@ -1,0 +1,37 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Nick Jones",
+		"image": "http://blog.cloudflare.com/content/images/2018/10/nick-jones.jpg",
+		"url": "https://blog.cloudflare.com/author/nick-jones/",
+		"sameAs": []
+	},
+	"headline": "Mejoras estructurales de NGINX para optimizar el rendimiento de HTTP/2",
+	"url": "https://blog.cloudflare.com/es-es/nginx-structural-enhancements-for-http-2-performance-es-es/",
+	"datePublished": "2019-05-22T17:14:00.000Z",
+	"dateModified": "2021-01-21T19:18:23.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2019/10/http2prioritization-copy@2x-4-1.png",
+		"width": 2000,
+		"height": 1025
+	},
+	"keywords": "Semana de la Velocidad, Velocidad y confiabilidad, Español, NGINX (ES), HTTP2 (ES)",
+	"description": "Mi equipo: el equipo de PROTOCOLOS de Cloudflare se encarga de la terminación del tráfico HTTP en el perímetro de la red de Cloudflare. Nos ocupamos de las características relacionadas con lo siguiente: TCP, QUIC, TLS y la gestión de certificados seguros, HTTP/1 y HTTP/2. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,34 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Marek Majkowski",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/b5967d6c687939594adb6992723d0529.jpeg",
+		"url": "https://blog.cloudflare.com/author/marek-majkowski/",
+		"sameAs": [
+			"https://twitter.com/majek04"
+		]
+	},
+	"headline": "Path MTU discovery in practice",
+	"url": "https://blog.cloudflare.com/path-mtu-discovery-in-practice/",
+	"datePublished": "2015-02-04T14:16:31.000Z",
+	"dateModified": "2018-08-23T17:09:25.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/11774786603_c3bfd2d22c_z.jpg",
+	"keywords": "BGP, IPv6, IPv4",
+	"description": "Last week, a very small number of our users who are using IP tunnels (primarily tunneling IPv6 over IPv4) were unable to access our services because a networking change broke &quot;path MTU discovery&quot; on our servers. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

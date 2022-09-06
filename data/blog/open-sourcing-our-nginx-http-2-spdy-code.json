@@ -1,0 +1,34 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "John Graham-Cumming",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
+		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
+		"sameAs": [
+			"https://twitter.com/jgrahamc"
+		]
+	},
+	"headline": "Open sourcing our NGINX HTTP/2 + SPDY code",
+	"url": "https://blog.cloudflare.com/open-sourcing-our-nginx-http-2-spdy-code/",
+	"datePublished": "2016-05-13T09:55:41.000Z",
+	"dateModified": "2018-08-27T19:54:23.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/4950445842_daabb0ae20_z.jpg",
+	"keywords": "spdy, NGINX, HTTP2, Speed & Reliability, Reliability",
+	"description": "In December, we released HTTP/2 support for all customers and on April 28 we released HTTP/2 Server Push support as well.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

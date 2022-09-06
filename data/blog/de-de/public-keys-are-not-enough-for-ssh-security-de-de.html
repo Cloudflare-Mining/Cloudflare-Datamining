@@ -40,7 +40,7 @@
 	<pre><code class="language-ssh">cloudflared access ssh-config --hostname vm.example.com --short-lived-cert</code></pre>
 	<p>Das <code>--hostname</code>-Feld enthält den Hostnamen oder die Platzhalter-Unterdomäne der Ressource, die hinter Access geschützt ist. Nach der Ausführung gibt <code>Cloudflared</code> die folgenden Konfigurationsdetails aus:</p>
 	<pre><code class="language-ssh">Host vm.example.com
-    ProxyCommand bash -c '/usr/local/bin/cloudflared access ssh-gen --hostname %h; ssh -tt %<a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a> &gt;&amp;2 &lt;&amp;1'
+    ProxyCommand bash -c '/usr/local/bin/cloudflared access ssh-gen --hostname %h; ssh -tt %[email protected] &gt;&amp;2 &lt;&amp;1'
     
 Host cfpipe-vm.example.com
     HostName vm.example.com

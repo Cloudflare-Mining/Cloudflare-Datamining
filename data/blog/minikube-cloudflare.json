@@ -1,0 +1,37 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Guest Author",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/10/Screen-Shot-2019-10-09-at-11.21.59-AM.png",
+			"width": 362,
+			"height": 364
+		},
+		"url": "https://blog.cloudflare.com/author/guest-author/",
+		"sameAs": []
+	},
+	"headline": "How To Minikube + Cloudflare",
+	"url": "https://blog.cloudflare.com/minikube-cloudflare/",
+	"datePublished": "2018-07-08T15:00:00.000Z",
+	"dateModified": "2021-06-02T17:26:37.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/03/Screen-Shot-2018-03-14-at-08.33.58.389-0000-1.png",
+	"keywords": "Kubernetes, Developers, Load Balancing, API, Serverless, Cloudflare Tunnel",
+	"description": "A step-by-step guide for how to run production Minikube deployments using the Cloudflare Ingress Controller.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

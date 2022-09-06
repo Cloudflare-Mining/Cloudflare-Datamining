@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Jon Levine",
+		"image": "http://blog.cloudflare.com/content/images/2018/04/prof-crop.jpg",
+		"url": "https://blog.cloudflare.com/author/jpl/",
+		"sameAs": [
+			"https://twitter.com/jplevine"
+		]
+	},
+	"headline": "Web Vitals mit Browser Insights messen",
+	"url": "https://blog.cloudflare.com/de-de/start-measuring-web-vitals-with-browser-insights-de-de/",
+	"datePublished": "2020-09-29T13:00:00.000Z",
+	"dateModified": "2021-09-03T21:37:46.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/01/1-2.png",
+		"width": 1800,
+		"height": 1083
+	},
+	"keywords": "Deutsch, Geburtstagswoche, Analytik (DE), Geschwindigkeit & Zuverlässigkeit",
+	"description": "Bei Cloudflare sind viele von uns ganz besessen davon, Websites schneller zu machen. Doch wer die Performance verbessern will, muss sie erst einmal messen können. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

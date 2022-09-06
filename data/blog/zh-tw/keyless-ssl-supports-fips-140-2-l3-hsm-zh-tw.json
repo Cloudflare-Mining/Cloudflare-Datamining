@@ -1,0 +1,45 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Patrick R. Donahue",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/me0-1.png",
+			"width": 300,
+			"height": 291
+		},
+		"url": "https://blog.cloudflare.com/author/patrick/",
+		"sameAs": [
+			"https://www.cloudflare.com",
+			"https://twitter.com/prdonahue"
+		]
+	},
+	"headline": "Keyless SSL 現已支援所有主流雲端提供者的 FIPS 140-2 L3 硬體安全模組 (HSM) 產品",
+	"url": "https://blog.cloudflare.com/zh-tw/keyless-ssl-supports-fips-140-2-l3-hsm-zh-tw/",
+	"datePublished": "2021-03-27T13:00:00.000Z",
+	"dateModified": "2021-04-16T20:45:10.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/04/1-7.png",
+		"width": 1600,
+		"height": 768
+	},
+	"keywords": "繁體中文 (TW), 安全週 (ZH), 產品新聞 (TW), 無密鑰SSL (TW)",
+	"description": "Cloudflare 產生、保護和管理的 SSL/TLS 私密金鑰數量比世界上任何組織都要多。私密金鑰必須得到妥善保護，因為攻擊者一旦掌握了私密金鑰，就能冒充合法站點並解密 HTTPS 請求。為了緩解這種風險，Cloudflare 制定了嚴格的私密金鑰處理程序，並在邊緣部署了隔離層，不惜一切代價保護私密金鑰安全。然而，有少數客戶因爲資訊安全政策規定了允許（或禁止）在哪裡保管私密金鑰，因此無法透過這些保護措施來滿足要求。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

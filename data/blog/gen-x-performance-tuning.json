@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Sung Park",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/11/_tmp_uploaded20190827-140-5glea4.jpg",
+			"width": 600,
+			"height": 600
+		},
+		"url": "https://blog.cloudflare.com/author/sung/",
+		"sameAs": [
+			"https://twitter.com/shjpark92"
+		]
+	},
+	"headline": "Gen X Performance Tuning",
+	"url": "https://blog.cloudflare.com/gen-x-performance-tuning/",
+	"datePublished": "2020-02-27T14:00:00.000Z",
+	"dateModified": "2020-10-12T21:21:39.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2020/02/image7-4.png",
+		"width": 1251,
+		"height": 703
+	},
+	"keywords": "EPYC, AMD, Hardware, Gen X",
+	"description": "We have partnered with AMD to get the best performance out of this processor and today, we are highlighting our tuning efforts that led to an additional 6% performance. Thermal design power (TDP) and dynamic power, amongst others, play a critical role when tuning a system. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,32 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Tom Arnfeld",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/55mQcruC.jpg",
+		"url": "https://blog.cloudflare.com/author/tom/",
+		"sameAs": []
+	},
+	"headline": "How we made our DNS stack 3x faster",
+	"url": "https://blog.cloudflare.com/how-we-made-our-dns-stack-3x-faster/",
+	"datePublished": "2017-04-11T09:28:45.000Z",
+	"dateModified": "2018-08-28T22:08:08.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/8159769501_c2026331b8_k.jpg",
+	"keywords": "Reliability, DNS, CNAME, Speed & Reliability, Speed, Growth, Our History",
+	"description": "Cloudflare is now well into its 6th year and providing authoritative DNS has been a core part of infrastructure from the start. We’ve since grown to be the largest and one of the fastest managed DNS services on the Internet, hosting DNS for nearly 100,000 of the Alexa top 1M sites.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

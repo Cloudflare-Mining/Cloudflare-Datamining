@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Marek Majkowski",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/b5967d6c687939594adb6992723d0529.jpeg",
+		"url": "https://blog.cloudflare.com/author/marek-majkowski/",
+		"sameAs": [
+			"https://twitter.com/majek04"
+		]
+	},
+	"headline": "Branch predictor: How many &quot;if&quot;s are too many? Including x86 and M1 benchmarks!",
+	"url": "https://blog.cloudflare.com/branch-predictor/",
+	"datePublished": "2021-05-06T13:00:00.000Z",
+	"dateModified": "2021-05-19T18:10:26.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/05/unnamed.png",
+		"width": 1600,
+		"height": 847
+	},
+	"keywords": "Deep Dive, Programming, AMD, EPYC, Speed & Reliability",
+	"description": "Is it ok to have if clauses that will basically never be run? Surely, there must be some performance cost to that...",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

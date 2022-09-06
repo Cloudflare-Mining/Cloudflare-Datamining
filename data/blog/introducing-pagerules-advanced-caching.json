@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew Prince",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
+			"width": 1196,
+			"height": 1190
+		},
+		"url": "https://blog.cloudflare.com/author/matthew-prince/",
+		"sameAs": [
+			"https://twitter.com/eastdakota"
+		]
+	},
+	"headline": "Introducing Page Rules: Advanced Caching (Including Configurable HTML Caching)",
+	"url": "https://blog.cloudflare.com/introducing-pagerules-advanced-caching/",
+	"datePublished": "2012-02-22T18:24:00.000Z",
+	"dateModified": "2021-01-28T23:25:30.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/02/cf-blog-pagerules.png.scaled500.png",
+	"keywords": "Page Rules, Product News, Speed & Reliability, Cache",
+	"description": "On Monday, CloudFlare officially announced Page Rules. The new feature allows you to customize behavior on a page-by-page basis. The previous two blog posts have outlined how you can turn off CloudFlare&#x27;s features based on URL patterns, or accomplish advanced URL forwarding.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

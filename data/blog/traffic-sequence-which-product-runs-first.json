@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Sam Marsh",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/12/1637323544042.jpeg",
+			"width": 400,
+			"height": 400
+		},
+		"url": "https://blog.cloudflare.com/author/sam-marsh/",
+		"sameAs": [
+			"https://twitter.com/marshnet_social"
+		]
+	},
+	"headline": "Traffic Sequence: Which Product Runs First?",
+	"url": "https://blog.cloudflare.com/traffic-sequence-which-product-runs-first/",
+	"datePublished": "2021-10-20T19:00:00.000Z",
+	"dateModified": "2021-10-21T13:26:21.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/10/Traffic-Sequence-1.png",
+		"width": 1600,
+		"height": 767
+	},
+	"keywords": "WAF, Page Rules, Cloudflare Workers",
+	"description": "Understand how Cloudflare product’s interact via the new dashboard addition ‘Traffic Sequence’.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

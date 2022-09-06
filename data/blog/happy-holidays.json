@@ -1,0 +1,45 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Val Vesa",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/07/Ct5xlQ1a_400x400.jpeg",
+			"width": 400,
+			"height": 400
+		},
+		"url": "https://blog.cloudflare.com/author/val/",
+		"sameAs": [
+			"https://www.facebook.com/valentinvesa",
+			"https://twitter.com/adspedia"
+		]
+	},
+	"headline": "Happy Holidays!",
+	"url": "https://blog.cloudflare.com/happy-holidays/",
+	"datePublished": "2019-12-27T19:30:00.000Z",
+	"dateModified": "2019-12-27T19:56:05.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2019/12/thumbnail-YouTube-source-2.png",
+		"width": 2808,
+		"height": 1652
+	},
+	"keywords": "Life @ Cloudflare, Holidays",
+	"description": "There are over 50 languages spoken at Cloudflare, as we have natives from many countries on our team, with different backgrounds, religions, gender and cultures. And it is this diversity that makes us a great team.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

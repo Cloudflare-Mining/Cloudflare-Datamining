@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Neil Patel",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/11/profile-photo-1.png",
+			"width": 299,
+			"height": 299
+		},
+		"url": "https://blog.cloudflare.com/author/neil/",
+		"sameAs": [
+			"https://twitter.com/neilnpate1"
+		]
+	},
+	"headline": "How to connect your offices to Cloudflare using SD-WAN",
+	"url": "https://blog.cloudflare.com/how-to-connect-your-offices-to-cloudflare-using-sd-wan/",
+	"datePublished": "2021-12-06T13:59:27.000Z",
+	"dateModified": "2021-12-29T21:54:16.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/12/image2-12.png",
+		"width": 1810,
+		"height": 1022
+	},
+	"keywords": "CIO Week, Office, SD-WAN",
+	"description": "Today, a more modern approach is to use SD-WAN to configure your networks and connect them to Cloudflare’s network, leveraging that as the new corporate backbone. It&#x27;s quick and easy!",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

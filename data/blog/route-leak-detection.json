@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "David Tuber",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/07/kutiya-face.png",
+			"width": 983,
+			"height": 1049
+		},
+		"url": "https://blog.cloudflare.com/author/tubes/",
+		"sameAs": [
+			"https://twitter.com/tubes__"
+		]
+	},
+	"headline": "Protecting Cloudflare Customers from BGP Insecurity with Route Leak Detection",
+	"url": "https://blog.cloudflare.com/route-leak-detection/",
+	"datePublished": "2021-03-25T13:00:00.000Z",
+	"dateModified": "2022-01-24T11:00:17.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/03/image6-16.png",
+		"width": 1852,
+		"height": 926
+	},
+	"keywords": "Security Week, BGP, Security, RPKI",
+	"description": "Today, we&#x27;re excited to announce Route Leak Detection, a new network alerting feature that tells customers when a prefix they own that is onboarded to Cloudflare is being leaked.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

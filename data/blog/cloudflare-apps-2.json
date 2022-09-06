@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Renan Dincer",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/03/renan-kid.jpg",
+			"width": 1024,
+			"height": 1032
+		},
+		"url": "https://blog.cloudflare.com/author/renan/",
+		"sameAs": [
+			"https://twitter.com/rrnn"
+		]
+	},
+	"headline": "Announcing the New Cloudflare Apps",
+	"url": "https://blog.cloudflare.com/cloudflare-apps-2/",
+	"datePublished": "2017-06-27T13:00:00.000Z",
+	"dateModified": "2018-08-28T23:23:42.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2017/06/Screen-Shot-2017-06-27-at-9.02.41-AM-1.png",
+	"keywords": "Cloudflare Apps, Product News",
+	"description": "Today we’re excited to announce the next generation of Cloudflare Apps. Cloudflare Apps is an open platform of tools to build a high quality website.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

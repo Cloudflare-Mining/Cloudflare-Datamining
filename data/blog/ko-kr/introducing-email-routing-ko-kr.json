@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "João Sousa Botto",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/07/profile2.jpg",
+			"width": 2000,
+			"height": 2026
+		},
+		"url": "https://blog.cloudflare.com/author/joao/",
+		"sameAs": [
+			"https://twitter.com/jsbotto"
+		]
+	},
+	"headline": "Cloudflare Email Routing으로 이메일 주소를 손쉽게 만들고 라우팅하기",
+	"url": "https://blog.cloudflare.com/ko-kr/introducing-email-routing-ko-kr/",
+	"datePublished": "2021-09-27T12:59:00.000Z",
+	"dateModified": "2021-09-28T16:21:10.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/09/1-4.png",
+		"width": 1800,
+		"height": 1013
+	},
+	"keywords": "한국어, 제품 뉴스, Email Routing (KO)",
+	"description": "세계 인구의 절반에 해당하는 40억 명 이상의 사람들이 현재 한 가지 이상의 이메일 주소를 보유하고 있으며 이 가운데 상당수는 이메일을 개인적인 일이나 직업과 관련한 업무를 처리하는 수단을 넘어서는 필수적인 도구로 사용하고 있습니다.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Vivek Ganti",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/08/Vivek-Ganti.jpeg",
+			"width": 469,
+			"height": 469
+		},
+		"url": "https://blog.cloudflare.com/author/vivek/",
+		"sameAs": [
+			"https://twitter.com/VivekGanti"
+		]
+	},
+	"headline": "2021년 3분기 DDoS 공격 동향",
+	"url": "https://blog.cloudflare.com/ko-kr/ddos-attack-trends-for-2021-q3-ko-kr/",
+	"datePublished": "2021-11-04T12:58:00.000Z",
+	"dateModified": "2021-11-18T18:36:37.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/11/image15-no-text-no-logo-2.png",
+		"width": 1920,
+		"height": 1080
+	},
+	"keywords": "DDoS (KO), Cloudflare Radar (KO), RRDoS (KO), VoiP (KO), Meris (KO)",
+	"description": "2021년 3분기에는 유달리 많은 DDoS 공격 활동이 관찰되었습니다. Cloudflare는 기록적인 HTTP DDoS 공격, 테라비트급 네트워크 계층 공격, 역대 최대 규모의 봇넷(Meris) 배포 사례를 확인하고 완화한 바 있으며, 최근에는 전 세계 VoIP(Voice over IP) 서비스 공급자 및 해당 네트워크 인프라에 대한 랜섬 DDoS 공격이 있었습니다.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

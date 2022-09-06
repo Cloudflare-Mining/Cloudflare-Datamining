@@ -1,0 +1,32 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Nikon Rasumov",
+		"image": "http://blog.cloudflare.com/content/images/2019/03/Nikon-photo.jpg",
+		"url": "https://blog.cloudflare.com/author/nikon/",
+		"sameAs": []
+	},
+	"headline": "Stop the Bots: Practical Lessons in Machine Learning",
+	"url": "https://blog.cloudflare.com/stop-the-bots-practical-lessons-in-machine-learning/",
+	"datePublished": "2019-02-20T15:14:05.000Z",
+	"dateModified": "2019-02-20T16:20:03.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2019/02/Stop-the-Bots-2.png",
+	"keywords": "Attacks, Security",
+	"description": "Bot-powered credential stuffing is a scourge on the modern Internet. These attacks attempt to log into and take over a user’s account by assaulting password forms with a barrage of dictionary words and previously stolen account credentials.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

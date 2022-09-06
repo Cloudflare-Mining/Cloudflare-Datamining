@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matt Silverlock",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/08/profile-1500px-square.jpeg",
+			"width": 1500,
+			"height": 1500
+		},
+		"url": "https://blog.cloudflare.com/author/silverlock/",
+		"sameAs": [
+			"https://twitter.com/elithrar"
+		]
+	},
+	"headline": "Cloudflare 如何驗證 WhatsApp Web 向使用者提供的代碼",
+	"url": "https://blog.cloudflare.com/zh-tw/cloudflare-verifies-code-whatsapp-web-serves-users-zh-tw/",
+	"datePublished": "2022-03-10T18:30:00.000Z",
+	"dateModified": "2022-06-14T07:18:52.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/06/image3-3-2.png",
+		"width": 1200,
+		"height": 675
+	},
+	"keywords": "隱私 (TW), 防守, 繁體中文 (TW)",
+	"description": "今天，我們很高興能與 WhatsApp 合作提供一個系統，保障使用者在造訪 WhatsApp Web 版本時執行的代碼是 WhatsApp 計畫執行的代碼",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

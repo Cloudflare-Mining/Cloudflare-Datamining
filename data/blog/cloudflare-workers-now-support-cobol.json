@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "John Graham-Cumming",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
+		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
+		"sameAs": [
+			"https://twitter.com/jgrahamc"
+		]
+	},
+	"headline": "Cloudflare Workers Now Support COBOL",
+	"url": "https://blog.cloudflare.com/cloudflare-workers-now-support-cobol/",
+	"datePublished": "2020-04-16T11:00:00.000Z",
+	"dateModified": "2020-04-16T12:22:31.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2020/04/report-cropped-featured.png",
+		"width": 500,
+		"height": 284
+	},
+	"keywords": "Cloudflare Workers",
+	"description": "COBOL is often a source of amusement for programmers because it is seen as old, verbose, clunky, and difficult to maintain. COBOL can now be used to write code for Cloudflare’s serverless platform Workers.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Ankur Aggarwal",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/11/00100lPORTRAIT_00100_BURST20181020175123196_COVER-01.jpeg",
+			"width": 110,
+			"height": 100
+		},
+		"url": "https://blog.cloudflare.com/author/ankur/",
+		"sameAs": [
+			"https://twitter.com/Encore_Encore"
+		]
+	},
+	"headline": "SSHコマンドロギングの紹介",
+	"url": "https://blog.cloudflare.com/ja-jp/ssh-command-logging-ja-jp/",
+	"datePublished": "2022-03-18T13:00:00.000Z",
+	"dateModified": "2022-06-24T09:04:36.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/06/Security-Week---SSH-Command-Logging-1.png",
+		"width": 1600,
+		"height": 900
+	},
+	"keywords": "Security Week (JP), SSH (JP), 製品ニュース (JP), セキュリティ, Cloudflare Zero Trust (JP), Zero Trust (JP), 日本語",
+	"description": "当社では、個々の機器上のソフトウェアに依存するのではなく、Cloudflare Zero TrustにSSHコマンドのロギングを組み込むことによって、ネットワーク層でのSSHの可視性を提供します",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

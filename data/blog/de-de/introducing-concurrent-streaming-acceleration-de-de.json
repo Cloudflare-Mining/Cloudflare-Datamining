@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Jon Levine",
+		"image": "http://blog.cloudflare.com/content/images/2018/04/prof-crop.jpg",
+		"url": "https://blog.cloudflare.com/author/jpl/",
+		"sameAs": [
+			"https://twitter.com/jplevine"
+		]
+	},
+	"headline": "Live-Videos sind gerade „liver“ geworden: Einführung von Concurrent Streaming Acceleration",
+	"url": "https://blog.cloudflare.com/de-de/introducing-concurrent-streaming-acceleration-de-de/",
+	"datePublished": "2019-05-16T13:00:00.000Z",
+	"dateModified": "2021-01-22T18:56:53.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2019/10/Concurrent-Streaming-1-1.png",
+		"width": 1813,
+		"height": 1221
+	},
+	"keywords": "Deutsch, Geschwindigkeit & Zuverlässigkeit, Produktneuigkeiten, Cloudflare Stream (DE), Geschwindigkeitswoche",
+	"description": "Wir freuen uns, heute Concurrent Streaming Acceleration vorzustellen, eine neue Technik zur Reduzierung der End-to-End-Latenz von Live-Videos im Web beim Einsatz von Stream Delivery.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

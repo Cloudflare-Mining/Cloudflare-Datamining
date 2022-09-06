@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "João Sousa Botto",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/07/profile2.jpg",
+			"width": 2000,
+			"height": 2026
+		},
+		"url": "https://blog.cloudflare.com/author/joao/",
+		"sameAs": [
+			"https://twitter.com/jsbotto"
+		]
+	},
+	"headline": "Email Routing Insights",
+	"url": "https://blog.cloudflare.com/email-routing-insights/",
+	"datePublished": "2022-04-25T13:00:05.000Z",
+	"dateModified": "2022-04-25T19:46:22.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/04/image5-9.png",
+		"width": 1200,
+		"height": 675
+	},
+	"keywords": "Analytics, Email, Insights, Product News",
+	"description": "Insights and Logs are now available to everyone using Cloudflare Email Routing",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

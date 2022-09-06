@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Justin Paine",
+		"image": {
+			"@type": "ImageObject",
+			"url": "//www.gravatar.com/avatar/04d92a2396a0dc6e794c12989720cd4b?d=404&s=250",
+			"width": 250,
+			"height": 250
+		},
+		"url": "https://blog.cloudflare.com/author/justin/",
+		"sameAs": [
+			"https://www.linkedin.com/in/justinpaine/"
+		]
+	},
+	"headline": "利用模糊hash鉴别CSAM - Cloudflare帮助净化网络环境",
+	"url": "https://blog.cloudflare.com/zh-cn/the-csam-scanning-tool-zh-cn/",
+	"datePublished": "2019-12-18T18:02:00.000Z",
+	"dateModified": "2021-01-28T19:28:55.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2020/02/csam-tool-3.png",
+		"width": 1650,
+		"height": 1049
+	},
+	"keywords": "滥用, 简体中文 (CN), 法律",
+	"description": "两周前，我们写了关于Cloudflare处理儿童性虐待材料（CSAM）的方法。在2010年，我们向公共推出服务的几个月内，我们首次与美国国家失踪与受虐儿童中心（NCMEC）合作，NCMEC是一家总部位于美国的组织，是消除这种可憎内容的信息交流中心。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

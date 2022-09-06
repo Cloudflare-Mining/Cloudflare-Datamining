@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Tim Obezuk",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/05/0-1.jpeg",
+			"width": 200,
+			"height": 200
+		},
+		"url": "https://blog.cloudflare.com/author/tim-obezuk/",
+		"sameAs": [
+			"https://twitter.com/obezuk"
+		]
+	},
+	"headline": "Cloudflare Browser Isolationで不審なサイトでの入力を制御",
+	"url": "https://blog.cloudflare.com/ja-jp/phishing-protection-browser-ja-jp/",
+	"datePublished": "2021-12-07T13:59:00.000Z",
+	"dateModified": "2021-12-30T22:31:30.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/12/unnamed--1--3-2.png",
+		"width": 1600,
+		"height": 900
+	},
+	"keywords": "CIO Week (JP), Cloudflare Zero Trust (JP), ゼロトラスト, セキュリティ, 製品ニュース (JP), 日本語",
+	"description": "お客様のチームは、Cloudflareブラウザ分離サービスを利用して、Webブラウザ内のフィッシング攻撃や認証情報の盗難から保護することができるようになりました。ユーザーはリスクを負わずに、より多くのインターネットを閲覧することができます。管理者は",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

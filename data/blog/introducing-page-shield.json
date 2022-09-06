@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Justin Zhou",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/03/Screen-Shot-2019-06-19-at-10.29.51-PM.png",
+			"width": 788,
+			"height": 812
+		},
+		"url": "https://blog.cloudflare.com/author/justin-zhou/",
+		"sameAs": []
+	},
+	"headline": "Page Shield: Protect User Data In-Browser",
+	"url": "https://blog.cloudflare.com/introducing-page-shield/",
+	"datePublished": "2021-03-25T13:01:00.000Z",
+	"dateModified": "2022-05-13T19:31:51.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/03/image3-32.png",
+		"width": 1960,
+		"height": 982
+	},
+	"keywords": "Security Week, Page Shield, Product News, Device Security, Speed & Reliability, Remote Browser Isolation",
+	"description": "We&#x27;re excited to introduce Page Shield, a client-side security product customers can use to detect attacks in end-user browsers.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

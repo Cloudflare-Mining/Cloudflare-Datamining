@@ -1,0 +1,33 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Ryan Lackey",
+		"image": "http://blog.cloudflare.com/content/images/2018/02/x_400x400.jpg",
+		"url": "https://blog.cloudflare.com/author/rdl/",
+		"sameAs": [
+			"https://twitter.com/octal"
+		]
+	},
+	"headline": "OpenSSL Security Advisory of 19 March 2015",
+	"url": "https://blog.cloudflare.com/openssl-security-advisory-of-19-march-2015/",
+	"datePublished": "2015-03-19T15:15:54.000Z",
+	"dateModified": "2018-08-24T01:11:19.000Z",
+	"keywords": "Bugs, OpenSSL, Vulnerabilities, SSL",
+	"description": "Today there were multiple vulnerabilities released in OpenSSL, a cryptographic library used by CloudFlare (and most sites on the Internet).",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

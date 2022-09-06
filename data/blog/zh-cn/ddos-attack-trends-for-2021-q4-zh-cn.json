@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Omer Yoachimik",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/Omer-1.png",
+			"width": 773,
+			"height": 653
+		},
+		"url": "https://blog.cloudflare.com/author/omer/",
+		"sameAs": [
+			"https://twitter.com/OmerYoahimik"
+		]
+	},
+	"headline": "2021 年第四季度 DDoS 攻击趋势",
+	"url": "https://blog.cloudflare.com/zh-cn/ddos-attack-trends-for-2021-q4-zh-cn/",
+	"datePublished": "2022-01-10T19:59:00.000Z",
+	"dateModified": "2022-01-12T07:43:11.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/01/image3-1-1.png",
+		"width": 1920,
+		"height": 1080
+	},
+	"keywords": "简体中文 (CN), RDDoS (CN), DDoS (CN), REvil (CN), VoiP (CN), Meris (CN)",
+	"description": "2021 年上半年出现了大规模的勒索软件和勒索 DDoS 攻击活动，导致世界各地的关键基础设施频繁中断（包括美国最大的管道系统运营商之一），在一个针对学校、公共领域、旅游组织和信用联盟等的 IT 管理软件曝光了一个漏洞。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

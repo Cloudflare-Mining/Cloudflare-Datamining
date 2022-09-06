@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Tom Strickx",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/07/Headshot_Lisbon.png",
+			"width": 150,
+			"height": 176
+		},
+		"url": "https://blog.cloudflare.com/author/tom-strickx/",
+		"sameAs": [
+			"https://twitter.com/tstrickx"
+		]
+	},
+	"headline": "Panne de Cloudflare le 21 juin 2022",
+	"url": "https://blog.cloudflare.com/fr-fr/cloudflare-outage-on-june-21-2022-fr-fr/",
+	"datePublished": "2022-06-21T12:38:00.000Z",
+	"dateModified": "2022-06-22T10:39:18.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/06/BLOG-1226-Global-Latency-1-2.png",
+		"width": 1200,
+		"height": 675
+	},
+	"keywords": "Panne, Post Mortem (FR), Français",
+	"description": "Aujourd&#x27;hui, le 21 juin 2022, Cloudflare a subi une panne qui a affecté le trafic dans 19 de nos datacenters",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "John Graham-Cumming",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
+		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
+		"sameAs": [
+			"https://twitter.com/jgrahamc"
+		]
+	},
+	"headline": "2020 年 7 月 17 日 Cloudflare 故障",
+	"url": "https://blog.cloudflare.com/zh-tw/cloudflare-outage-on-july-17-2020-zh-tw/",
+	"datePublished": "2020-07-18T16:06:00.000Z",
+	"dateModified": "2021-09-03T21:36:24.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2020/11/image3-11.png",
+		"width": 1043,
+		"height": 749
+	},
+	"keywords": "繁體中文 (TW), 斷電",
+	"description": "我們骨幹網路 (backbone network) 的某項設定錯誤導致網際網路設備和 Cloudflare 服務今天 (7/17) 故障了 27 分鐘。我們發現整個網路的流量下降了大約 50%。鑑於我們的主幹架構，這次故障沒有影響到整個 Cloudflare 網路，而是僅限於局部。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

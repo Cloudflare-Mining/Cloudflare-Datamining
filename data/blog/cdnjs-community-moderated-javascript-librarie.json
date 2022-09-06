@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew Prince",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
+			"width": 1196,
+			"height": 1190
+		},
+		"url": "https://blog.cloudflare.com/author/matthew-prince/",
+		"sameAs": [
+			"https://twitter.com/eastdakota"
+		]
+	},
+	"headline": "CDNJS: Community Moderated Javascript Libraries + CloudFlare",
+	"url": "https://blog.cloudflare.com/cdnjs-community-moderated-javascript-librarie/",
+	"datePublished": "2011-06-16T20:43:00.000Z",
+	"dateModified": "2020-02-24T14:26:05.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/01/cdnjs.png.scaled500.png",
+	"keywords": "JavaScript, Community, CDNJS",
+	"description": "If you&#x27;re using a Javascript library, the ideal case is that your visitors arrive on your site with it already stored in their browser&#x27;s cache. The more sites that use the same URL to reference the library, the more likely it is that it will be cached even for first-time visitors. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

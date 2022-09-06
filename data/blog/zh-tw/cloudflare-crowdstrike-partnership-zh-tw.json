@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Deeksha Lamba",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/03/Deeksha-Lamba-1.jpg",
+			"width": 600,
+			"height": 600
+		},
+		"url": "https://blog.cloudflare.com/author/deeksha/",
+		"sameAs": [
+			"https://twitter.com/deekshalamba"
+		]
+	},
+	"headline": "Cloudflare 和 CrowdStrike 攜手合作，在各種裝置、應用程式和企業網路間提供 CISO 安全控制",
+	"url": "https://blog.cloudflare.com/zh-tw/cloudflare-crowdstrike-partnership-zh-tw/",
+	"datePublished": "2022-03-17T09:59:00.000Z",
+	"dateModified": "2022-08-24T14:57:47.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/06/Crowdstrike-Partnership-7.png",
+		"width": 1600,
+		"height": 900
+	},
+	"keywords": "Security Week (TW), Partners (TW), CrowdStrike (TW), Cloudflare Zero Trust (TW), 防守, Zero Trust (TW), 產品新聞 (TW), 繁體中文 (TW)",
+	"description": "今天，我們很高興地宣佈推出與 CrowdStrike 的幾項新整合。這些整合會將 Cloudflare 遼闊網路和 Zero Trust 套件的強大功能，與 CrowdStrike 的端點偵測和回應 (EDR) 及事件補救產品結合在一起",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

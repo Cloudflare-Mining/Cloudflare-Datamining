@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew Prince",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
+			"width": 1196,
+			"height": 1190
+		},
+		"url": "https://blog.cloudflare.com/author/matthew-prince/",
+		"sameAs": [
+			"https://twitter.com/eastdakota"
+		]
+	},
+	"headline": "Patent Troll Battle Update: Doubling Down on Project Jengo",
+	"url": "https://blog.cloudflare.com/patent-troll-battle-update-doubling-down-on-project-jengo/",
+	"datePublished": "2017-05-25T16:00:00.000Z",
+	"dateModified": "2021-04-26T04:07:04.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/04/Troll-Hunter-1.png",
+		"width": 1999,
+		"height": 1125
+	},
+	"keywords": "Patents, Jengo, Community, Legal, SWAG",
+	"description": "We knew the case against patent trolls was the right one, but we have been overwhelmed by the response to our blog posts on patent trolls and our program for finding prior art on the patents held by Blackbird Tech, which we’ve dubbed Project Jengo.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

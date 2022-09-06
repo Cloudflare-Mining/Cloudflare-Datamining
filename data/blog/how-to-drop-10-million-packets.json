@@ -1,0 +1,34 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Marek Majkowski",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/b5967d6c687939594adb6992723d0529.jpeg",
+		"url": "https://blog.cloudflare.com/author/marek-majkowski/",
+		"sameAs": [
+			"https://twitter.com/majek04"
+		]
+	},
+	"headline": "How to drop 10 million packets per second",
+	"url": "https://blog.cloudflare.com/how-to-drop-10-million-packets/",
+	"datePublished": "2018-07-06T13:00:00.000Z",
+	"dateModified": "2018-08-29T07:44:40.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/07/numbers-noxdp-1.png",
+	"keywords": "DDoS, Mitigation, Reliability, Attacks, Security",
+	"description": "Internally our DDoS mitigation team is sometimes called &quot;the packet droppers&quot;. When other teams build exciting products to do smart things with the traffic that passed through our network, we take joy in discovering novel ways of discarding it.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

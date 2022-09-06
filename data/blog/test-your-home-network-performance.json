@@ -1,0 +1,37 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Achiel van der Mandele",
+		"image": "http://blog.cloudflare.com/content/images/2019/04/avatar.png",
+		"url": "https://blog.cloudflare.com/author/achiel/",
+		"sameAs": []
+	},
+	"headline": "Test your home network performance",
+	"url": "https://blog.cloudflare.com/test-your-home-network-performance/",
+	"datePublished": "2020-05-26T17:00:59.000Z",
+	"dateModified": "2020-08-20T21:37:09.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2020/05/image1_thumb.png",
+		"width": 1664,
+		"height": 1012
+	},
+	"keywords": "Performance, Speed, Testing, Latency, Jitter, COVID-19, Insights",
+	"description": "Cloudflare launches speed.cloudflare.com, a tool that allows you to gain in-depth insights into the quality of your network uplink, including throughput, latency and jitter.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,37 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Guest Author",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/10/Screen-Shot-2019-10-09-at-11.21.59-AM.png",
+			"width": 362,
+			"height": 364
+		},
+		"url": "https://blog.cloudflare.com/author/guest-author/",
+		"sameAs": []
+	},
+	"headline": "Enhancing the Optimizely Experimentation Platform with Cloudflare Workers",
+	"url": "https://blog.cloudflare.com/enhancing-optimizely-with-cloudflare-workers/",
+	"datePublished": "2019-06-05T13:00:00.000Z",
+	"dateModified": "2019-10-09T22:48:02.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2019/05/Optimizely-Diagram--1-.png",
+	"keywords": "Serverless, Cloudflare Workers, JavaScript, Developers",
+	"description": "Experimentation is an important ingredient in driving business growth: whether you’re iterating on a product or testing new messaging, there’s no substitute for the data and insights gathered from conducting rigorous experiments in the wild. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

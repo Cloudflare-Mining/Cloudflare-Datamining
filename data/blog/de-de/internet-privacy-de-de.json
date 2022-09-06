@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "John Graham-Cumming",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
+		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
+		"sameAs": [
+			"https://twitter.com/jgrahamc"
+		]
+	},
+	"headline": "Datenschutz muss zentraler Bestandteil des Internets werden",
+	"url": "https://blog.cloudflare.com/de-de/internet-privacy-de-de/",
+	"datePublished": "2020-12-07T12:00:00.000Z",
+	"dateModified": "2021-01-22T18:26:09.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2020/12/Privacy-needs-to-be-built-into-the-Internet-blog-thumb-8.png",
+		"width": 800,
+		"height": 441
+	},
+	"keywords": "Deutsch, Datenschutzwoche (DE), Privatsphäre",
+	"description": "Das Internet wurde nicht unter Beachtung des Schutzes der Privatsphäre entwickelt. Willkommen in Phase 3 des Internets: immer an, immer sicher, immer privat.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,40 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Zack Proser",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/10/zack-proser-1.jpeg",
+			"width": 194,
+			"height": 174
+		},
+		"url": "https://blog.cloudflare.com/author/zackp/",
+		"sameAs": [
+			"https://zackproser.com",
+			"https://twitter.com/zackproser"
+		]
+	},
+	"headline": "Dogfooding Cloudflare Workers",
+	"url": "https://blog.cloudflare.com/dogfooding-edge-workers/",
+	"datePublished": "2018-05-04T16:20:00.000Z",
+	"dateModified": "2018-08-29T07:37:54.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/05/upload.png",
+	"keywords": "JavaScript, API, Serverless, Cloudflare Workers",
+	"description": "We deployed a Cloudflare worker in front of www.cloudflare.com and api.cloudflare.com, that has since served over &lt;X&gt; million requests. Here&#x27;s what we learned about debugging and &quot;failing open&quot; when writing workers.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

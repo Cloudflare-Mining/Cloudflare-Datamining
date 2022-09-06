@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Kenny Johnson",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2020/12/0DA903DE-E315-43D5-B0DE-39870448303D.jpeg",
+			"width": 265,
+			"height": 252
+		},
+		"url": "https://blog.cloudflare.com/author/kenny/",
+		"sameAs": [
+			"https://twitter.com/KennyJohnsonATX"
+		]
+	},
+	"headline": "Zero Trust 客户端会话",
+	"url": "https://blog.cloudflare.com/zh-cn/zero-trust-client-sessions-zh-cn/",
+	"datePublished": "2022-03-18T13:00:00.000Z",
+	"dateModified": "2022-06-28T06:48:42.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/06/Warp-Sessions.png",
+		"width": 1600,
+		"height": 900
+	},
+	"keywords": "Security Week (CN), Zero Trust (CN), Cloudflare Zero Trust (CN), TCP (CN), 安全, 简体中文 (CN)",
+	"description": "今天开始，您可以构建要求定期验证的 Zero Trust 规则来控制网络访问",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

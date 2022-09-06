@@ -1,0 +1,37 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Guest Author",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/10/Screen-Shot-2019-10-09-at-11.21.59-AM.png",
+			"width": 362,
+			"height": 364
+		},
+		"url": "https://blog.cloudflare.com/author/guest-author/",
+		"sameAs": []
+	},
+	"headline": "The SamKnows Cloudflare Platform",
+	"url": "https://blog.cloudflare.com/the-samknows-cloudflare-platform/",
+	"datePublished": "2019-01-18T17:07:24.000Z",
+	"dateModified": "2020-08-14T18:19:45.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2019/01/Cloudflare-SamKnows-1.png",
+	"keywords": "Cloudflare Workers, Serverless, Analytics, Programming",
+	"description": "At SamKnows, we run lots of tests to measure internet performance. Actually, that’s an understatement. Our software is embedded on tens of millions of devices, and that number grows daily.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

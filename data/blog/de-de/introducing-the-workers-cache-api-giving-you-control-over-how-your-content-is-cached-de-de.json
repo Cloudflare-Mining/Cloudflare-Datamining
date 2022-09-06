@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Jon Levine",
+		"image": "http://blog.cloudflare.com/content/images/2018/04/prof-crop.jpg",
+		"url": "https://blog.cloudflare.com/author/jpl/",
+		"sameAs": [
+			"https://twitter.com/jplevine"
+		]
+	},
+	"headline": "Einführung der Workers Cache API: Sie steuern selbst, wie Ihre Inhalte zwischengespeichert werden",
+	"url": "https://blog.cloudflare.com/de-de/introducing-the-workers-cache-api-giving-you-control-over-how-your-content-is-cached-de-de/",
+	"datePublished": "2019-01-25T15:33:00.000Z",
+	"dateModified": "2021-01-22T20:06:34.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/01/caching@3x.png",
+		"width": 3449,
+		"height": 1562
+	},
+	"keywords": "Cloudflare Workers (DE), Deutsch, Serverlos, Entwickler, JavaScript (DE)",
+	"description": "Bei Cloudflare wollen wir das Internet für alle schneller und sicherer machen. Eine Möglichkeit dafür ist Caching: Wir bewahren Kopien der Inhalte unserer Kunden in unseren 165 Rechenzentren auf der ganzen Welt auf.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

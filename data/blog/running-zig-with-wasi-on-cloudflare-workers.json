@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Daniel Harper",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/me21.jpg",
+			"width": 346,
+			"height": 259
+		},
+		"url": "https://blog.cloudflare.com/author/daniel-harper/",
+		"sameAs": [
+			"https://djharper.dev"
+		]
+	},
+	"headline": "Running Zig with WASI on Cloudflare Workers",
+	"url": "https://blog.cloudflare.com/running-zig-with-wasi-on-cloudflare-workers/",
+	"datePublished": "2022-08-01T14:12:26.000Z",
+	"dateModified": "2022-08-15T10:52:50.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/08/image1-5.png",
+		"width": 1801,
+		"height": 1013
+	},
+	"keywords": "Cloudflare Workers, WebAssembly, WASM, WASI, Zig",
+	"description": "After the recent announcement regarding WASI support in Workers I decided to see what it would take to get code written in Zig to run as a Worker, and it turned out to be pretty trivial. This post documents the process I followed",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

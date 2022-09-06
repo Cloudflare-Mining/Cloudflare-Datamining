@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Hannes Gerhart",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/09/Profile.jpg",
+			"width": 600,
+			"height": 600
+		},
+		"url": "https://blog.cloudflare.com/author/hannes/",
+		"sameAs": [
+			"https://linkedin.com/in/hannesgerhart"
+		]
+	},
+	"headline": "應對電子郵件欺騙和網路釣魚",
+	"url": "https://blog.cloudflare.com/zh-tw/tackling-email-spoofing-zh-tw/",
+	"datePublished": "2021-09-27T12:59:00.000Z",
+	"dateModified": "2021-09-30T20:23:31.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/09/Email-Spoofing-2.png",
+		"width": 1800,
+		"height": 1013
+	},
+	"keywords": "繁體中文 (TW), 生日週 (TW), 產品新聞 (TW)",
+	"description": "今天我們推出了新的工具，用來解決電子郵件詐騙和網路釣魚，並改善電子郵件寄送情況：全新電子郵件安全性 DNS 精靈可讓使用者建立防止其他人代表您的網域傳送惡意電子郵件的 DNS 記錄。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Marwan Fayed",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/09/sta-profile.jpg",
+			"width": 600,
+			"height": 600
+		},
+		"url": "https://blog.cloudflare.com/author/marwan/",
+		"sameAs": [
+			"https://twitter.com/marwanfayed"
+		]
+	},
+	"headline": "Announcing Project Pangea: Helping Underserved Communities Expand Access to the Internet For Free",
+	"url": "https://blog.cloudflare.com/pangea/",
+	"datePublished": "2021-07-26T12:59:25.000Z",
+	"dateModified": "2021-08-04T20:44:42.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/07/Project-Pangea.png",
+		"width": 1600,
+		"height": 845
+	},
+	"keywords": "Impact Week, Project Pangea, Product News, Magic Transit, Magic Firewall, Network Interconnect",
+	"description": "Cloudflare is excited to announce Project Pangea. We’re launching a program that provides secure, performant, reliable access to the Internet for community networks that support underserved communities, and we’re doing it for free because we want to help build an Internet for everyone.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Tanushree Sharma",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/09/IMG_1328-1.jpg",
+			"width": 1895,
+			"height": 1874
+		},
+		"url": "https://blog.cloudflare.com/author/tanushree/",
+		"sameAs": [
+			"https://twitter.com/TanushreeS5"
+		]
+	},
+	"headline": "New RelicでCloudflareログの完全な可観測性を実現",
+	"url": "https://blog.cloudflare.com/ja-jp/announcing-the-new-relic-direct-log-integration-ja-jp/",
+	"datePublished": "2022-03-14T12:59:00.000Z",
+	"dateModified": "2022-05-30T04:37:27.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/05/image2-14-2.png",
+		"width": 1801,
+		"height": 1013
+	},
+	"keywords": "セキュリティウィーク, ログ分析",
+	"description": "New Relic Oneでスタック全体のCloudflareログを関連付けることは、サービスの安全性と信頼性を維持するためのモニタリングやデバッグに威力を発揮します。このような可視性を提供する直接的な連携を実現するために、New Relic社との提携が実現できたことを嬉しく思います",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

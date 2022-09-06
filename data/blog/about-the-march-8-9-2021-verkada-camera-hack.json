@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "John Graham-Cumming",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
+		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
+		"sameAs": [
+			"https://twitter.com/jgrahamc"
+		]
+	},
+	"headline": "About the March 8 &amp; 9, 2021 Verkada camera hack",
+	"url": "https://blog.cloudflare.com/about-the-march-8-9-2021-verkada-camera-hack/",
+	"datePublished": "2021-03-10T20:43:48.000Z",
+	"dateModified": "2021-03-11T01:26:56.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/03/image1-11-1.png",
+		"width": 1999,
+		"height": 1498
+	},
+	"keywords": "Security",
+	"description": "To be clear: this hack affected the cameras and nothing else. No customer data was accessed, no production systems, no databases, no encryption keys, nothing. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

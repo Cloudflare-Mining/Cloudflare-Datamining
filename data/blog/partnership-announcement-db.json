@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Greg McKeon",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/05/Screen-Shot-2022-05-10-at-2.50.56-PM.png",
+			"width": 692,
+			"height": 662
+		},
+		"url": "https://blog.cloudflare.com/author/greg/",
+		"sameAs": [
+			"https://twitter.com/wegmckeon"
+		]
+	},
+	"headline": "Announcing Cloudflare’s Database Partners",
+	"url": "https://blog.cloudflare.com/partnership-announcement-db/",
+	"datePublished": "2021-04-16T13:00:00.000Z",
+	"dateModified": "2021-04-16T15:32:09.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/04/Data-Center-Partnerships.png",
+		"width": 1439,
+		"height": 801
+	},
+	"keywords": "Developer Week, Developers, Cloudflare Workers, Partners, Edge Database, Serverless",
+	"description": "Cloudflare introduces Macrometa and Fauna as Edge database partners and adds database connectors for DynamoDB and Aurora to Cloudflare Workers, expanding what developers can build at the edge.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

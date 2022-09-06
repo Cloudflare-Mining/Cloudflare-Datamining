@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Kenton Varda",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/08/avatar-github.jpg",
+			"width": 460,
+			"height": 460
+		},
+		"url": "https://blog.cloudflare.com/author/kenton-varda/",
+		"sameAs": [
+			"https://twitter.com/kentonvarda"
+		]
+	},
+	"headline": "Cloudflare Workersのご紹介：エッジでJavaScript Service Workersを実行する",
+	"url": "https://blog.cloudflare.com/ja-jp/introducing-cloudflare-workers-ja-jp/",
+	"datePublished": "2017-09-29T13:00:00.000Z",
+	"dateModified": "2022-06-20T09:44:52.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/06/workers-social-1.png",
+		"width": 1758,
+		"height": 879
+	},
+	"keywords": "バースデーウィーク, JavaScript (JP), 製品ニュース (JP), 開発者 (JP), サーバーレス, 日本語",
+	"description": "いたるところで見られる光景ですが、生粋のゲーマーである私が個人的に気に入っている例は、グラフィックカードです。90年代のグラフィックスハードウェアは、決まった機能セットを提供するのが一般的でした",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

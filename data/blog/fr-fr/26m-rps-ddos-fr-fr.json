@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Omer Yoachimik",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/Omer-1.png",
+			"width": 773,
+			"height": 653
+		},
+		"url": "https://blog.cloudflare.com/author/omer/",
+		"sameAs": [
+			"https://twitter.com/OmerYoahimik"
+		]
+	},
+	"headline": "Cloudflare atténue une attaque DDoS de 26 millions de requêtes par seconde",
+	"url": "https://blog.cloudflare.com/fr-fr/26m-rps-ddos-fr-fr/",
+	"datePublished": "2022-06-14T12:56:00.000Z",
+	"dateModified": "2022-06-28T16:36:16.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/06/Screenshot-2022-06-28-at-11.13.07-3.png",
+		"width": 2000,
+		"height": 900
+	},
+	"keywords": "Sécurité, Botnet (FR), Attaques, DDoS (FR), Français",
+	"description": "La semaine dernière, Cloudflare a détecté et atténué automatiquement une attaque DDoS évaluée à 26 millions de requêtes par seconde, soit un chiffre qui la place comme la plus vaste attaque DDoS HTTP jamais enregistrée",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

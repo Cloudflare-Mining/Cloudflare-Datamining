@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Sam Rhea",
+		"image": "http://blog.cloudflare.com/content/images/2018/07/photo-for-profile.jpg",
+		"url": "https://blog.cloudflare.com/author/sam/",
+		"sameAs": [
+			"https://twitter.com/LakeAustinBlvd"
+		]
+	},
+	"headline": "将 CASB 添加到 Cloudflare Zero Trust",
+	"url": "https://blog.cloudflare.com/zh-cn/cloudflare-zero-trust-casb-zh-cn/",
+	"datePublished": "2022-02-10T21:18:00.000Z",
+	"dateModified": "2022-05-18T15:45:18.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/05/image3-11-1.png",
+		"width": 1200,
+		"height": 675
+	},
+	"keywords": "CASB (CN), Cloudflare Zero Trust (CN), 零信任 (CN), 安全, 产品新闻",
+	"description": "早些时候，Cloudflare 宣布我们收购了云访问安全代理 (CASB) 公司 Vectrix，该公司专注于解决团队使用的 SaaS 应用程序和公共云提供商的控制和可见性问题",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

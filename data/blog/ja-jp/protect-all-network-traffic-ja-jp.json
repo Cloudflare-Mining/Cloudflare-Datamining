@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Annika Garbers",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/annika.png",
+			"width": 400,
+			"height": 400
+		},
+		"url": "https://blog.cloudflare.com/author/annika/",
+		"sameAs": [
+			"https://twitter.com/annikagarbers"
+		]
+	},
+	"headline": "Cloudflareですべてのネットワークトラフィックを保護",
+	"url": "https://blog.cloudflare.com/ja-jp/protect-all-network-traffic-ja-jp/",
+	"datePublished": "2022-03-17T12:59:00.000Z",
+	"dateModified": "2022-06-08T22:13:14.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/06/Screenshot-2022-06-07-at-09.16.28-4.png",
+		"width": 1502,
+		"height": 836
+	},
+	"keywords": "Magic Transit (JP), 製品ニュース (JP), セキュリティ, Security Week (JP), Cloudflareネットワーク",
+	"description": "本日、Cloudflareが管理するMagic Transitで保護されたIPスペースを提供することにより、小規模なネットワークをお持ちのお客様にもMagic Transitをご利用いただけるよう拡張しました",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

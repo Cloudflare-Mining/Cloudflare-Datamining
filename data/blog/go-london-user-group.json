@@ -1,0 +1,34 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "John Graham-Cumming",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
+		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
+		"sameAs": [
+			"https://twitter.com/jgrahamc"
+		]
+	},
+	"headline": "Go London User Group",
+	"url": "https://blog.cloudflare.com/go-london-user-group/",
+	"datePublished": "2013-03-07T16:45:00.000Z",
+	"dateModified": "2018-08-17T23:09:14.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/photo-1529850494847-05b7e590e91f.jpg",
+	"keywords": "DNS, United Kingdom, Go, Events",
+	"description": "We&#x27;ve mentioned before that we&#x27;re using Go internally for projects such as Railgun (and a new DNS server and SSL infrastructure amongst other things). ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

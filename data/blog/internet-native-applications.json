@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Steven Pack",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/steven-pack.png",
+			"width": 496,
+			"height": 492
+		},
+		"url": "https://blog.cloudflare.com/author/stevenpack/",
+		"sameAs": [
+			"https://twitter.com/steven_pack"
+		]
+	},
+	"headline": "Internet Native Applications",
+	"url": "https://blog.cloudflare.com/internet-native-applications/",
+	"datePublished": "2018-08-21T19:08:00.000Z",
+	"dateModified": "2018-08-29T07:51:39.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/image3-1.gif",
+	"keywords": "Serverless, Cloudflare Workers, JavaScript, Speed & Reliability, Programming",
+	"description": "I grew up with DOS and Windows 3.1. I remember applications being *fast* - instant feedback or close to it. Today, native applications like Outlook or Apple Mail still feel fast - click compose and the window is there instantly and it feels snappy. Internet applications do not.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

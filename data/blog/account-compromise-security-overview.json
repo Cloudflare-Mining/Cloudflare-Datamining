@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Julie A. Sparks",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/08/IMG_1517.jpg",
+			"width": 640,
+			"height": 480
+		},
+		"url": "https://blog.cloudflare.com/author/julie/",
+		"sameAs": []
+	},
+	"headline": "Inside Cloudflare: Preventing Account Takeovers",
+	"url": "https://blog.cloudflare.com/account-compromise-security-overview/",
+	"datePublished": "2021-03-30T13:00:00.000Z",
+	"dateModified": "2022-06-21T19:53:20.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/03/image1-63.png",
+		"width": 1585,
+		"height": 740
+	},
+	"keywords": "Security Week, Security Team, Cloudflare Gateway, Cloudflare Access, Security",
+	"description": "Throughout the day, Cloudflare has published blog posts on products created to secure our customers from credential stuffing bots, detect users with compromised credentials, and block users from proxy services. But what do we do inside Cloudflare to prevent account takeovers on our own applications?",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

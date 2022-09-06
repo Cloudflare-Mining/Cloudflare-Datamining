@@ -1,0 +1,32 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Achiel van der Mandele",
+		"image": "http://blog.cloudflare.com/content/images/2019/04/avatar.png",
+		"url": "https://blog.cloudflare.com/author/achiel/",
+		"sameAs": []
+	},
+	"headline": "Spectrum for UDP: DDoS protection and firewalling for unreliable protocols",
+	"url": "https://blog.cloudflare.com/spectrum-for-udp-ddos-protection-and-firewalling-for-unreliable-protocols/",
+	"datePublished": "2019-03-20T15:01:00.000Z",
+	"dateModified": "2021-05-19T18:30:33.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2019/03/spectrum.png",
+	"keywords": "DDoS, Spectrum, Product News, TCP, Speed & Reliability, Firewall",
+	"description": "Today, we&#x27;re announcing Spectrum for UDP. Spectrum for UDP works the same as Spectrum for TCP: Spectrum sits between your clients and your origin. Incoming connections are proxied through, whilst applying our DDoS protection and IP Firewall rules. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

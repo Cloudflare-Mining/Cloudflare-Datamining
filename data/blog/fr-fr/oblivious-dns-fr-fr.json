@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Tanya Verma",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2020/11/DSC00267-2.png",
+			"width": 2000,
+			"height": 1645
+		},
+		"url": "https://blog.cloudflare.com/author/tanya/",
+		"sameAs": []
+	},
+	"headline": "Améliorer la confidentialité du DNS grâce au protocole Oblivious DoH 1.1.1.1",
+	"url": "https://blog.cloudflare.com/fr-fr/oblivious-dns-fr-fr/",
+	"datePublished": "2020-12-08T13:25:40.000Z",
+	"dateModified": "2021-01-27T02:13:14.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2020/12/image2-11.png",
+		"width": 1999,
+		"height": 1068
+	},
+	"keywords": "Français, Semaine de la confidentialité, DoH (FR), DNS (FR), Sécurité",
+	"description": "Le protocole Oblivious DoH (ODoH) transforme également les requêtes DNS sécurisées sur HTTPS (DoH) en requêtes privées. Il s&#x27;agit d&#x27;une nouvelle proposition de norme séparant les adresses IP des requêtes, de sorte qu&#x27;aucune entité ne puisse voir les deux en même temps.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

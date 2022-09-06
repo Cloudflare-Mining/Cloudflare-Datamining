@@ -1,0 +1,37 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Simon Moore",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/simon-moore.png",
+			"width": 494,
+			"height": 500
+		},
+		"url": "https://blog.cloudflare.com/author/simon-moore/",
+		"sameAs": []
+	},
+	"headline": "Jetpack for WordPress: automatic protection",
+	"url": "https://blog.cloudflare.com/our-waf-is-keeping-wordpress-jetpack-on-track/",
+	"datePublished": "2014-04-10T01:59:00.000Z",
+	"dateModified": "2018-08-23T22:55:04.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/Screen_Shot_2014-04-10_at_18.11.59_1.png",
+	"keywords": "WordPress, Speed & Reliability, Vulnerabilities",
+	"description": "As we&#x27;ve said before, lots of our users run WordPress on their websites and its popularity makes it a big target. So when a new vulnerability is discovered, acting quickly is prudent.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

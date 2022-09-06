@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Alex Chen",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/08/Casual_Profile_Pic_Square.jpg",
+			"width": 600,
+			"height": 600
+		},
+		"url": "https://blog.cloudflare.com/author/alex-chen/",
+		"sameAs": [
+			"https://twitter.com/alexchenhz"
+		]
+	},
+	"headline": "Multi-User IP Address Detection",
+	"url": "https://blog.cloudflare.com/multi-user-ip-address-detection/",
+	"datePublished": "2021-10-15T13:01:28.000Z",
+	"dateModified": "2021-10-15T14:58:23.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/10/Screen-Shot-2021-10-14-at-12.50.11-PM-1.png",
+		"width": 1642,
+		"height": 970
+	},
+	"keywords": "Product News, Research, Better Internet, Device Security, Bots",
+	"description": "We’ve devised novel methods to detect multi-user IP addresses, and today we’re excited to announce their integration into our global threat intelligence products. These will improve the quality of our detection techniques and reduce false positives for our customers, and the clients that visit them.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

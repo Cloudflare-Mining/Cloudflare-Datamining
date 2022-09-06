@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Abe Carryl",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2020/10/3A8B82DA-79A1-44EB-873A-B56773A4F764.jpeg",
+			"width": 900,
+			"height": 900
+		},
+		"url": "https://blog.cloudflare.com/author/abe/",
+		"sameAs": [
+			"https://twitter.com/mrlincolnlogs"
+		]
+	},
+	"headline": "A Boring Announcement: Free Tunnels for Everyone",
+	"url": "https://blog.cloudflare.com/tunnel-for-everyone/",
+	"datePublished": "2021-04-15T13:00:00.000Z",
+	"dateModified": "2022-07-29T18:54:44.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/04/image1-19.png",
+		"width": 1200,
+		"height": 628
+	},
+	"keywords": "Developer Week, Developers, Product News, Cloudflare Tunnel",
+	"description": "Argo Tunnel has been priced based on bandwidth consumption as part of Argo Smart Routing, Cloudflare’s traffic acceleration feature. Starting today, we’re excited to announce that any organization can use the secure, outbound-only connection feature of the product at no cost.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

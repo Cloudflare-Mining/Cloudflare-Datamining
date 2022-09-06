@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Omer Yoachimik",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/Omer-1.png",
+			"width": 773,
+			"height": 653
+		},
+		"url": "https://blog.cloudflare.com/author/omer/",
+		"sameAs": [
+			"https://twitter.com/OmerYoahimik"
+		]
+	},
+	"headline": "¿Puedo saber quién llama, por favor? Auge reciente de los ataques DDoS a proveedores VoIP",
+	"url": "https://blog.cloudflare.com/es-es/attacks-on-voip-providers-es-es/",
+	"datePublished": "2021-10-01T00:05:00.000Z",
+	"dateModified": "2022-07-21T16:51:55.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/07/image-2-1-1.png",
+		"width": 1360,
+		"height": 772
+	},
+	"keywords": "Seguridad del dispositivo, Seguridad, DDoS (ES), VoIP (ES), DDoS de rescate, Tendencias (ES), Español",
+	"description": "En el último mes, varios proveedores de voz sobre IP (VoIP) fueron objeto de ataques de denegación de servicio distribuido (DDoS) por parte de entidades que decían ser REvil",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

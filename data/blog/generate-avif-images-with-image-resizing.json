@@ -1,0 +1,45 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Kornel Lesiński",
+		"image": {
+			"@type": "ImageObject",
+			"url": "//www.gravatar.com/avatar/3a534a3c391d25cb34cb4078cb0c1148?s=250&d=mm&r=x",
+			"width": 250,
+			"height": 250
+		},
+		"url": "https://blog.cloudflare.com/author/kornel/",
+		"sameAs": [
+			"https://kornel.ski",
+			"https://twitter.com/kornelski"
+		]
+	},
+	"headline": "AVIF image format supported by Cloudflare Image Resizing",
+	"url": "https://blog.cloudflare.com/generate-avif-images-with-image-resizing/",
+	"datePublished": "2020-10-03T13:00:00.000Z",
+	"dateModified": "2021-11-11T16:23:34.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2020/10/BDES-1080_Cloudflare_Resize_Illustration_AV1-AVIF_Blog_Header-1.png",
+		"width": 1600,
+		"height": 759
+	},
+	"keywords": "Optimization, WebP, Speed & Reliability, Product News",
+	"description": "We&#x27;re adding support for the new AVIF image format. It compresses images significantly better than older-generation formats such as WebP and JPEG.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

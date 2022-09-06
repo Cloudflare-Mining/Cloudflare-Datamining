@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "John Graham-Cumming",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
+		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
+		"sameAs": [
+			"https://twitter.com/jgrahamc"
+		]
+	},
+	"headline": "Understanding Where the Internet Isn’t Good Enough Yet",
+	"url": "https://blog.cloudflare.com/understanding-where-the-internet-isnt-good-enough-yet/",
+	"datePublished": "2021-07-26T12:59:38.000Z",
+	"dateModified": "2021-07-26T23:11:01.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/07/Better-Internet-for-Everyone-1.png",
+		"width": 1200,
+		"height": 675
+	},
+	"keywords": "Impact Week, Better Internet",
+	"description": "This week, Cloudflare is announcing Project Pangea, with the goal of helping reduce Internet access inequality. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

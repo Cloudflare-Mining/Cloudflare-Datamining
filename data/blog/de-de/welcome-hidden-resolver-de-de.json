@@ -1,0 +1,32 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Mahrud Sayrafi",
+		"image": "http://blog.cloudflare.com/content/images/2018/05/7Ivdj5-6.jpg",
+		"url": "https://blog.cloudflare.com/author/mahrud/",
+		"sameAs": []
+	},
+	"headline": "Der DNS Resolver für Tor stellt sich vor",
+	"url": "https://blog.cloudflare.com/de-de/welcome-hidden-resolver-de-de/",
+	"datePublished": "2018-06-05T14:46:00.000Z",
+	"dateModified": "2021-01-22T21:25:44.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2019/04/tor-address-1-2.gif",
+	"keywords": "Datenschutz (DE), Deutsch, 1.1.1.1 (DE), DNS (DE), Tor (DE), Kryptografie",
+	"description": "Falls Sie es noch nicht gehört haben, Cloudflare hat am 1. April einen DNS Resolver-Dienst gestartet, bei dem die Privatsphäre an erster Stelle steht. Das war kein Aprilscherz!",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Ben Yule",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/09/ben_yule.png",
+			"width": 600,
+			"height": 600
+		},
+		"url": "https://blog.cloudflare.com/author/ben-yule/",
+		"sameAs": [
+			"https://twitter.com/bjyule"
+		]
+	},
+	"headline": "Announcing support for WASI on Cloudflare Workers",
+	"url": "https://blog.cloudflare.com/announcing-wasi-on-workers/",
+	"datePublished": "2022-07-07T16:09:43.000Z",
+	"dateModified": "2022-08-10T08:11:36.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/07/image1-OG-3.png",
+		"width": 1600,
+		"height": 900
+	},
+	"keywords": "Cloudflare Workers, WebAssembly, WASM, WASI",
+	"description": "Today, we are announcing experimental support for WASI (the WebAssembly System Interface) on Cloudflare Workers and support within wrangler2 to make it a joy to work with",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

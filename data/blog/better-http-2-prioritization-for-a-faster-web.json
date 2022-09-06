@@ -1,0 +1,35 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Patrick Meenan",
+		"image": "http://blog.cloudflare.com/content/images/2018/08/PatPerfCalendar.jpg",
+		"url": "https://blog.cloudflare.com/author/patrick-meenan/",
+		"sameAs": [
+			"https://www.webpagetest.org/",
+			"https://twitter.com/patmeenan"
+		]
+	},
+	"headline": "Better HTTP/2 Prioritization for a Faster Web",
+	"url": "https://blog.cloudflare.com/better-http-2-prioritization-for-a-faster-web/",
+	"datePublished": "2019-05-14T13:00:00.000Z",
+	"dateModified": "2022-06-29T09:04:57.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2019/05/http2-prioritization-2.png",
+	"keywords": "HTTP2, Speed Week, Speed & Reliability, Product News",
+	"description": "Advancing the state of the art of HTTP/2 to deliver a faster user experience. See why it matters and how much of a difference it can make.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

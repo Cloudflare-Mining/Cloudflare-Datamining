@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "David Belson",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/01/headshot-grayscale-crop.jpeg",
+			"width": 526,
+			"height": 480
+		},
+		"url": "https://blog.cloudflare.com/author/david-belson/",
+		"sameAs": [
+			"https://twitter.com/dbelson"
+		]
+	},
+	"headline": "2022年第1四半期の\nインターネット障害の概観",
+	"url": "https://blog.cloudflare.com/ja-jp/q1-2022-internet-disruption-summary-ja-jp/",
+	"datePublished": "2022-04-04T15:36:00.000Z",
+	"dateModified": "2022-04-08T16:32:54.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/04/image5-2-2.png",
+		"width": 1200,
+		"height": 675
+	},
+	"keywords": "Cloudflare Radar (JP)",
+	"description": "この記事では、2022年第1四半期にCloudflareが観察したインターネット接続障害をいくつか選んで原因別にグループ分けし、Cloudflare Radarのトラフィックグラフや他のCloudflare内部ツールを使って振り返っていきます",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

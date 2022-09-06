@@ -1,0 +1,37 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Jakub Sitnicki",
+		"image": "http://blog.cloudflare.com/content/images/2019/05/4_300698554542850065.jpg",
+		"url": "https://blog.cloudflare.com/author/jakub/",
+		"sameAs": []
+	},
+	"headline": "It&#x27;s crowded in here!",
+	"url": "https://blog.cloudflare.com/its-crowded-in-here/",
+	"datePublished": "2019-10-12T13:00:00.000Z",
+	"dateModified": "2019-10-14T15:14:12.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2019/10/idea_program_socket_lookup_with_bpf-3.png",
+		"width": 2000,
+		"height": 902
+	},
+	"keywords": "eBPF, Linux, UDP",
+	"description": "We recently gave a presentation on Programming socket lookup with BPF at the Linux Plumbers Conference 2019 in Lisbon, Portugal. This blog post is a recap of the problem statement and proposed solution we presented.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

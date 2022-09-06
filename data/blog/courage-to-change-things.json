@@ -1,0 +1,33 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "John Graham-Cumming",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
+		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
+		"sameAs": [
+			"https://twitter.com/jgrahamc"
+		]
+	},
+	"headline": "Courage to change things",
+	"url": "https://blog.cloudflare.com/courage-to-change-things/",
+	"datePublished": "2014-07-11T13:00:00.000Z",
+	"dateModified": "2021-02-02T21:21:50.000Z",
+	"keywords": "Speed & Reliability, Tech Talks, Life @ Cloudflare, Deep Dive",
+	"description": "This was an internal email that I sent to the CloudFlare team about how we are not afraid to throw away old code. We thought it was worth sharing with a wider audience.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

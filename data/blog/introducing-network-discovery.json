@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Abe Carryl",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2020/10/3A8B82DA-79A1-44EB-873A-B56773A4F764.jpeg",
+			"width": 900,
+			"height": 900
+		},
+		"url": "https://blog.cloudflare.com/author/abe/",
+		"sameAs": [
+			"https://twitter.com/mrlincolnlogs"
+		]
+	},
+	"headline": "Introducing Private Network Discovery",
+	"url": "https://blog.cloudflare.com/introducing-network-discovery/",
+	"datePublished": "2022-06-22T13:14:46.000Z",
+	"dateModified": "2022-06-22T13:14:46.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/06/image4-18.png",
+		"width": 1800,
+		"height": 1013
+	},
+	"keywords": "Cloudflare One Week, Cloudflare One, Zero Trust, Private Network, Cloudflare Tunnel, Product News",
+	"description": "Rest easy knowing exactly who and what is being accessed within your private network. Introducing Private Network Discovery",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

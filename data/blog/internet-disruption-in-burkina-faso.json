@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "João Tomé",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/V0x3WKfJ_400x400-1.jpeg",
+			"width": 400,
+			"height": 400
+		},
+		"url": "https://blog.cloudflare.com/author/joao-tome/",
+		"sameAs": [
+			"https://twitter.com/emot"
+		]
+	},
+	"headline": "Burkina Faso experiencing second major Internet disruption this year",
+	"url": "https://blog.cloudflare.com/internet-disruption-in-burkina-faso/",
+	"datePublished": "2022-01-24T13:44:21.000Z",
+	"dateModified": "2022-01-25T11:47:06.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/01/Europe-or-Africa-Outage--1-.png",
+		"width": 1200,
+		"height": 675
+	},
+	"keywords": "Cloudflare Radar, Internet Shutdown, Internet Traffic",
+	"description": "The early hours of Sunday, January 23, 2022, started in Burkina Faso with an Internet outage or shutdown",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Jon Levine",
+		"image": "http://blog.cloudflare.com/content/images/2018/04/prof-crop.jpg",
+		"url": "https://blog.cloudflare.com/author/jpl/",
+		"sameAs": [
+			"https://twitter.com/jplevine"
+		]
+	},
+	"headline": "Introducing Browser Insights",
+	"url": "https://blog.cloudflare.com/introducing-browser-insights/",
+	"datePublished": "2019-09-24T13:00:00.000Z",
+	"dateModified": "2019-09-24T23:35:16.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2019/09/insights-option.png",
+		"width": 1600,
+		"height": 980
+	},
+	"keywords": "Birthday Week, Product News, Analytics, Speed & Reliability",
+	"description": "Speed matters. We know that when your website or app gets faster, users have a better experience and you get more conversions and more revenue. At Cloudflare, we spend our days obsessing about speed and building new features to squeeze out as much performance as possible.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

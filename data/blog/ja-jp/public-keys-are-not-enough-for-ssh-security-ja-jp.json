@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Sam Rhea",
+		"image": "http://blog.cloudflare.com/content/images/2018/07/photo-for-profile.jpg",
+		"url": "https://blog.cloudflare.com/author/sam/",
+		"sameAs": [
+			"https://twitter.com/LakeAustinBlvd"
+		]
+	},
+	"headline": "公開鍵だけではSSHのセキュリティは不十分",
+	"url": "https://blog.cloudflare.com/ja-jp/public-keys-are-not-enough-for-ssh-security-ja-jp/",
+	"datePublished": "2019-10-25T13:00:00.000Z",
+	"dateModified": "2021-01-21T18:43:04.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2019/11/Short-lived-Cert-copy@2x-2.png",
+		"width": 1812,
+		"height": 1015
+	},
+	"keywords": "日本語, アクセス, セキュリティ, Cloudflare Access (JP)",
+	"description": "SSH公開鍵を使用している組織なら、SSH公開鍵を紛失してしまったなんてことは大いにあり得ると思います。鍵の所有者にインフラストラクチャへのアクセスを許可するファイルが、バックアップまたは前任者のコンピューターにあります。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

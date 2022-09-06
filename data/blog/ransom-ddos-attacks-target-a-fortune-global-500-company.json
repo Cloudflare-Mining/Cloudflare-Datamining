@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Omer Yoachimik",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/Omer-1.png",
+			"width": 773,
+			"height": 653
+		},
+		"url": "https://blog.cloudflare.com/author/omer/",
+		"sameAs": [
+			"https://twitter.com/OmerYoahimik"
+		]
+	},
+	"headline": "Ransom DDoS attacks target a Fortune Global 500 company",
+	"url": "https://blog.cloudflare.com/ransom-ddos-attacks-target-a-fortune-global-500-company/",
+	"datePublished": "2021-01-07T16:19:24.000Z",
+	"dateModified": "2021-01-07T16:35:22.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/01/image1-2.png",
+		"width": 1815,
+		"height": 957
+	},
+	"keywords": "DDoS, Ransom Attack, Fancy Bear, Magic Transit, Lazarus group, Cozy Bear",
+	"description": "In late 2020, a major Fortune Global 500 company was targeted by a Ransom DDoS (RDDoS) attack by a group claiming to be the Lazarus Group. Cloudflare quickly onboarded them to the Magic Transit service and protected them against the lingering threat. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

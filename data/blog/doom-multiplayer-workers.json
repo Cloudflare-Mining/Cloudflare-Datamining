@@ -1,0 +1,45 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Celso Martinho",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Celso-Martinho.png",
+			"width": 486,
+			"height": 488
+		},
+		"url": "https://blog.cloudflare.com/author/celso/",
+		"sameAs": [
+			"https://celso.io/",
+			"https://twitter.com/celso"
+		]
+	},
+	"headline": "Multiplayer Doom on Cloudflare Workers",
+	"url": "https://blog.cloudflare.com/doom-multiplayer-workers/",
+	"datePublished": "2021-05-18T12:59:57.000Z",
+	"dateModified": "2021-08-03T11:47:49.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/05/image4-8.png",
+		"width": 1531,
+		"height": 796
+	},
+	"keywords": "Cloudflare Workers, Gaming, Durable Objects",
+	"description": "So, if a developer wants to run their next hit, say a real-time multiplayer game, using nothing but their app and Workers, without any servers or traditional infrastructure, can they? Let’s prove they can. Here&#x27;s Doom Multiplayer running on top of Cloudflare Workers.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

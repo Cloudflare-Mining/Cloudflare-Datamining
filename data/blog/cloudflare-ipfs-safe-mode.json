@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Thibault Meunier",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2020/12/profile_picture.png",
+			"width": 224,
+			"height": 224
+		},
+		"url": "https://blog.cloudflare.com/author/thibault/",
+		"sameAs": [
+			"https://twitter.com/thibmeu"
+		]
+	},
+	"headline": "How Cloudflare provides tools to help keep IPFS users safe",
+	"url": "https://blog.cloudflare.com/cloudflare-ipfs-safe-mode/",
+	"datePublished": "2021-09-29T23:02:00.000Z",
+	"dateModified": "2021-10-01T17:33:44.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/10/image4.png",
+		"width": 1200,
+		"height": 675
+	},
+	"keywords": "Birthday Week, IPFS, Research, Distributed Web",
+	"description": "The Cloudflare IPFS module protects users from threats like phishing and ransomware.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

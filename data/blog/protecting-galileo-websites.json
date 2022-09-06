@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Maxime Guerreiro",
+		"image": "http://blog.cloudflare.com/content/images/2019/06/unnamed.jpg",
+		"url": "https://blog.cloudflare.com/author/maxime/",
+		"sameAs": [
+			"https://twitter.com/punkeel"
+		]
+	},
+	"headline": "Protecting Project Galileo websites from HTTP attacks",
+	"url": "https://blog.cloudflare.com/protecting-galileo-websites/",
+	"datePublished": "2019-06-13T13:00:00.000Z",
+	"dateModified": "2021-05-19T18:29:48.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2019/06/Screen-Shot-2019-06-12-at-9.52.20-AM.png",
+		"width": 1750,
+		"height": 908
+	},
+	"keywords": "Project Galileo, Firewall, DDoS, Attacks, Security, Speed & Reliability",
+	"description": "Yesterday, we celebrated the fifth anniversary of Project Galileo. More than 550 websites are part of this program, and they have something in common: each and every one of them has been subject to attacks in the last month.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

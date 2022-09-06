@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Erwin van der Koogh",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/04/twitter-profile-photo.jpeg",
+			"width": 400,
+			"height": 400
+		},
+		"url": "https://blog.cloudflare.com/author/erwin/",
+		"sameAs": [
+			"https://twitter.com/evanderkoogh"
+		]
+	},
+	"headline": "Cloudflare Workersでスタートアップを立ち上げる",
+	"url": "https://blog.cloudflare.com/ja-jp/developer-spotlight-tejas-metha-cclip-ja-jp/",
+	"datePublished": "2021-11-19T13:59:00.000Z",
+	"dateModified": "2021-12-28T21:58:04.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/12/Workers-Spotlight-1.png",
+		"width": 1600,
+		"height": 899
+	},
+	"keywords": "Full Stack Week (JP), 日本語, サーバーレス, 開発者スポットライト (JP)",
+	"description": "今週の開発者スポットライトシリーズを締めくくるのは、自身のスタートアップであるcClipをどのように構築したかを共有してくれるTejas Mehta氏です",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Brendan Coll",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/11/brendan-coll.png",
+			"width": 406,
+			"height": 406
+		},
+		"url": "https://blog.cloudflare.com/author/brendan-coll/",
+		"sameAs": [
+			"https://twitter.com/_mrbbot"
+		]
+	},
+	"headline": "Automatically generating types for Cloudflare Workers",
+	"url": "https://blog.cloudflare.com/automatically-generated-types/",
+	"datePublished": "2021-11-16T13:58:45.000Z",
+	"dateModified": "2021-12-30T00:53:16.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/11/image1-28.png",
+		"width": 1200,
+		"height": 675
+	},
+	"keywords": "Full Stack Week, Cloudflare Workers, Developers, Typescript, Serverless",
+	"description": "Every time the Workers runtime code is built, a script runs over the public APIs and generates the Rust and TypeScript types as well as a JSON file containing an intermediate representation of the static types. The types are sent to the appropriate repositories and the JSON file is uploaded as well.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

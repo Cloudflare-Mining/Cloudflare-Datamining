@@ -1,0 +1,34 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Junade Ali",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/G1VwuaxB.jpg",
+		"url": "https://blog.cloudflare.com/author/junade-ali/",
+		"sameAs": [
+			"https://twitter.com/IcyApril"
+		]
+	},
+	"headline": "Privacy-Protecting Portable Router: Adding DNS-Over-TLS support to OpenWRT (LEDE) with Unbound",
+	"url": "https://blog.cloudflare.com/dns-over-tls-for-openwrt/",
+	"datePublished": "2018-04-09T19:20:32.000Z",
+	"dateModified": "2018-08-29T07:31:50.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/04/IMG-3335.JPG",
+	"keywords": "1.1.1.1, Privacy, Encryption, TLS, DNS, Security",
+	"description": "This blog post explains how you can configure an OpenWRT router to encrypt DNS traffic to Cloudflare Resolver using DNS-over-TLS.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

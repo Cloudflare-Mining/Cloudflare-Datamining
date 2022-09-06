@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew Prince",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
+			"width": 1196,
+			"height": 1190
+		},
+		"url": "https://blog.cloudflare.com/author/matthew-prince/",
+		"sameAs": [
+			"https://twitter.com/eastdakota"
+		]
+	},
+	"headline": "Do Hackers Take the Holidays Off?",
+	"url": "https://blog.cloudflare.com/do-hackers-take-the-holidays-off/",
+	"datePublished": "2011-12-15T00:28:00.000Z",
+	"dateModified": "2018-02-01T21:04:34.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/02/web_attacks_on_the_holidays.png.scaled500.png",
+	"keywords": "Data, Holidays, Attacks, Traffic, Reliability",
+	"description": "I was talking last week with Shawn Graham, a reporter at Fast Company, and he asked a simple but interesting question: do hackers take the holidays off?",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

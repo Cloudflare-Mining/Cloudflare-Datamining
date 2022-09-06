@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Marc Lamik",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/09/unnamed-2.jpg",
+			"width": 1974,
+			"height": 1974
+		},
+		"url": "https://blog.cloudflare.com/author/marc-lamik/",
+		"sameAs": [
+			"https://twitter.com/marclamik"
+		]
+	},
+	"headline": "Cloudflare Radarの紹介",
+	"url": "https://blog.cloudflare.com/ja-jp/introducing-cloudflare-radar-ja-jp/",
+	"datePublished": "2020-09-30T13:01:00.000Z",
+	"dateModified": "2021-01-12T01:45:43.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/01/Birthday-Week-OG-images_Radar-2.png",
+		"width": 3334,
+		"height": 1668
+	},
+	"keywords": "日本語, 製品ニュース (JP), サーバーレス, サーバーレスウィーク, Cloudflare Radar (JP)",
+	"description": "潮の満ち引きとは違って、インターネットは、月ではなく太陽の動きに合わせて、満ちたり、引いたりします。世界中のインターネットの使用は夜の間は穏やかになり、朝が来るとまた上がり始めます。インターネットの使用は、人間が作り出すパターンにも従います。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

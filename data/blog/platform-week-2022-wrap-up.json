@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Dawn Parzych",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/04/Untitled---1-of-1.jpeg",
+			"width": 2000,
+			"height": 2000
+		},
+		"url": "https://blog.cloudflare.com/author/dawn/",
+		"sameAs": [
+			"https://twitter.com/dparzych"
+		]
+	},
+	"headline": "Platform Week wrap-up",
+	"url": "https://blog.cloudflare.com/platform-week-2022-wrap-up/",
+	"datePublished": "2022-05-31T13:41:53.000Z",
+	"dateModified": "2022-06-07T17:31:23.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/05/Platform-Week-Wrap-up-1.png",
+		"width": 1801,
+		"height": 1013
+	},
+	"keywords": "Platform Week, Product News, Cloudflare R2, Cloudflare Workers, Developers, Cache Reserve",
+	"description": "Recently, during Platform Week, we made a number of announcements expanding what’s possible with the Developer Platform. Let’s take a look at some of these and what this enables you to build",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

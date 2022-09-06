@@ -1,0 +1,35 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Jaime Cochran",
+		"image": "http://blog.cloudflare.com/content/images/2018/02/ucarecdn.jpg",
+		"url": "https://blog.cloudflare.com/author/jaimecochran/",
+		"sameAs": [
+			"http://ethi.cx/",
+			"https://twitter.com/ackflags"
+		]
+	},
+	"headline": "The WireX Botnet: How Industry Collaboration Disrupted a DDoS Attack",
+	"url": "https://blog.cloudflare.com/the-wirex-botnet/",
+	"datePublished": "2017-08-28T14:00:07.000Z",
+	"dateModified": "2020-08-14T18:47:37.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2017/10/ua26-uniques-1.png",
+	"keywords": "DDoS, Attacks, Programming, Security, Vulnerabilities, Bots, Speed & Reliability",
+	"description": "On August 17th, 2017, multiple Content Delivery Networks (CDNs) and content providers were subject to significant attacks from a botnet dubbed WireX. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

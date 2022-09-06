@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Tim Obezuk",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/05/0-1.jpeg",
+			"width": 200,
+			"height": 200
+		},
+		"url": "https://blog.cloudflare.com/author/tim-obezuk/",
+		"sameAs": [
+			"https://twitter.com/obezuk"
+		]
+	},
+	"headline": "Cloudflare ブラウザ分離（ベータ版）の紹介",
+	"url": "https://blog.cloudflare.com/ja-jp/browser-beta-ja-jp/",
+	"datePublished": "2020-10-14T23:00:00.000Z",
+	"dateModified": "2021-08-31T21:01:49.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/04/image2--2--2.png",
+		"width": 505,
+		"height": 322
+	},
+	"keywords": "製品ニュース (JP), ゼロトラスト, ゼロトラストウィーク, Cloudflare One (JP), リモートブラウザの分離, 日本語",
+	"description": "Webブラウザは、ユーザーをインターネット全体に接続するのと同じアプリケーションで、インターネットの潜在的に有害な部分すべてにも接続します。これは地球上のほぼすべての接続システムへ開かれており、パワフルで恐ろしいことです。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

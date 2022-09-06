@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matt Silverlock",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/08/profile-1500px-square.jpeg",
+			"width": 1500,
+			"height": 1500
+		},
+		"url": "https://blog.cloudflare.com/author/silverlock/",
+		"sameAs": [
+			"https://twitter.com/elithrar"
+		]
+	},
+	"headline": "Introducing Load Balancing &amp; Intelligent Failover with Cloudflare",
+	"url": "https://blog.cloudflare.com/introducing-load-balancing-intelligent-failover-with-cloudflare/",
+	"datePublished": "2017-05-14T15:00:00.000Z",
+	"dateModified": "2022-06-10T12:19:12.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/Freibordmarke.jpg",
+	"keywords": "Load Balancing, DNS, Reliability, Speed & Reliability, Product News",
+	"description": "Cloudflare&#x27;s Enterprise customers have been using our Load Balancing service since March, and it has been helping them avoid website downtime caused by unreliable hosting providers, Internet outages, or servers. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Dina Kozlov",
+		"image": "http://blog.cloudflare.com/content/images/2019/06/headshot.jpg",
+		"url": "https://blog.cloudflare.com/author/dina/",
+		"sameAs": [
+			"https://twitter.com/dinasaur_404"
+		]
+	},
+	"headline": "隆重推出：備用憑證",
+	"url": "https://blog.cloudflare.com/zh-tw/introducing-backup-certificates-zh-tw/",
+	"datePublished": "2022-03-14T12:59:00.000Z",
+	"dateModified": "2022-06-30T07:44:02.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/06/image1-header.png",
+		"width": 512,
+		"height": 288
+	},
+	"keywords": "Security Week (TW), TLS (TW), 無密鑰SSL (TW), 產品新聞 (TW), 繁體中文 (TW)",
+	"description": "我們感到非常自豪 Cloudflare 讓每位客戶都能提供網際網路應用程式的TLS 憑證 — 免費的。我們現在負責管理約 4,500 萬份憑證的生命週期，從發行到部署再到更新",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

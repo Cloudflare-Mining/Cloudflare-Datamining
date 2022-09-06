@@ -1,0 +1,45 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Patrick R. Donahue",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/me0-1.png",
+			"width": 300,
+			"height": 291
+		},
+		"url": "https://blog.cloudflare.com/author/patrick/",
+		"sameAs": [
+			"https://www.cloudflare.com",
+			"https://twitter.com/prdonahue"
+		]
+	},
+	"headline": "メールセキュリティの民主化：フィッシングやビジネスメール詐欺（BEC）から個人とあらゆる規模の企業を保護",
+	"url": "https://blog.cloudflare.com/ja-jp/democratizing-email-security-ja-jp/",
+	"datePublished": "2022-03-14T12:59:00.000Z",
+	"dateModified": "2022-03-18T16:55:46.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/03/image1-10-2.png",
+		"width": 1800,
+		"height": 1013
+	},
+	"keywords": "セキュリティ, 日本語, Cloudflare Zero Trust (JP), セキュリティウィーク",
+	"description": "Cloudflareは創業以来、通常は大企業でしか導入できない高価で複雑なセキュリティソリューションを、誰もが簡単に利用できるようにすることを使命としてきました。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -46,10 +46,10 @@ opkg remove dnsmasq
 	</p>
 	<pre><code>forward-zone:
   name: "."
-  forward-addr: <a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a>                   
-  forward-addr: <a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a>                             
-  forward-addr: 2606:4700:4700::<a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a>
-  forward-addr: 2606:4700:4700::<a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a>
+  forward-addr: [email protected]                   
+  forward-addr: [email protected]                             
+  forward-addr: 2606:4700:4700::[email protected]
+  forward-addr: 2606:4700:4700::[email protected]
   forward-ssl-upstream: yes   
 </code></pre>
 	<p>In the Unbound configuration file at <code>/etc/config/unbound</code>, I've added some required configuration parameters as outlined in the package documentation. In my case, I backed up the configuration file and simply used the following:</p>

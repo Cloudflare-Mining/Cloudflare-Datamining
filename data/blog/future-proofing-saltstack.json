@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Lenka Mareková",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/02/2021-07-30-162049.jpeg",
+			"width": 1141,
+			"height": 1141
+		},
+		"url": "https://blog.cloudflare.com/author/lenka/",
+		"sameAs": [
+			"https://pure.royalholloway.ac.uk/portal/en/persons/lenka-marekova%28371a2632-c1c4-4866-8141-c4b99807d326%29.html"
+		]
+	},
+	"headline": "Future-proofing SaltStack",
+	"url": "https://blog.cloudflare.com/future-proofing-saltstack/",
+	"datePublished": "2022-03-31T12:59:45.000Z",
+	"dateModified": "2022-03-31T12:59:45.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/03/image2-93.png",
+		"width": 1801,
+		"height": 1013
+	},
+	"keywords": "Research, Post-Quantum, Cryptography, Security",
+	"description": "This blogpost chronicles the recent CVEs investigation, our findings, and how we are helping secure Salt now and in the Quantum future",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

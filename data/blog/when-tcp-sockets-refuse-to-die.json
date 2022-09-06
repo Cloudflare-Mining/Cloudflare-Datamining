@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Marek Majkowski",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/b5967d6c687939594adb6992723d0529.jpeg",
+		"url": "https://blog.cloudflare.com/author/marek-majkowski/",
+		"sameAs": [
+			"https://twitter.com/majek04"
+		]
+	},
+	"headline": "When TCP sockets refuse to die",
+	"url": "https://blog.cloudflare.com/when-tcp-sockets-refuse-to-die/",
+	"datePublished": "2019-09-20T15:53:33.000Z",
+	"dateModified": "2019-09-20T16:58:12.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2019/09/637px-Tcp_state_diagram_fixed_new.svg-1.png",
+		"width": 637,
+		"height": 480
+	},
+	"keywords": "SYN, TCP, Spectrum, Tech Talks",
+	"description": "We noticed something weird - the TCP sockets which we thought should have been closed - were lingering around. We realized we don&#x27;t really understand when TCP sockets are supposed to time out!\n\nWe naively thought enabling TCP keepalives would be enough... but it isn&#x27;t!",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

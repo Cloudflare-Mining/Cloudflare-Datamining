@@ -1,0 +1,31 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Damon Billian",
+		"image": "http://blog.cloudflare.com/content/images/2018/02/1b3fcea.jpg",
+		"url": "https://blog.cloudflare.com/author/damon-billian/",
+		"sameAs": []
+	},
+	"headline": "Cloudflare Threat Control: Making your website safer",
+	"url": "https://blog.cloudflare.com/cloudflare-threat-control-making-your-website/",
+	"datePublished": "2011-01-14T23:08:00.000Z",
+	"dateModified": "2020-08-20T12:54:23.000Z",
+	"keywords": "Tips",
+	"description": "One of the benefits of CloudFlare is that it provides broad, effective security for any website. CloudFlare is a first line of defense against all sorts of threats from comment spammers to automated crawlers that don&#x27;t follow robots.txt.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

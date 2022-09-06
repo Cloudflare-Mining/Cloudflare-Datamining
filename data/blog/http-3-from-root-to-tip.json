@@ -1,0 +1,34 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Lucas Pardue",
+		"image": "http://blog.cloudflare.com/content/images/2018/12/Lucas---KIN01111.jpg",
+		"url": "https://blog.cloudflare.com/author/lucas/",
+		"sameAs": [
+			"https://twitter.com/SimmerVigor"
+		]
+	},
+	"headline": "HTTP/3: From root to tip",
+	"url": "https://blog.cloudflare.com/http-3-from-root-to-tip/",
+	"datePublished": "2019-01-24T17:57:09.000Z",
+	"dateModified": "2020-03-12T16:17:07.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2019/01/layer-cake-diagram-copy-2@2x.png",
+	"keywords": "QUIC, TLS, Security, HTTP3, IETF",
+	"description": "Explore HTTP/3 from root to tip and discover the backstory of this new HTTP syntax that works on top of the IETF QUIC transport.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Tanushree Sharma",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/09/IMG_1328-1.jpg",
+			"width": 1895,
+			"height": 1874
+		},
+		"url": "https://blog.cloudflare.com/author/tanushree/",
+		"sameAs": [
+			"https://twitter.com/TanushreeS5"
+		]
+	},
+	"headline": "Get full observability into your Cloudflare logs with New Relic",
+	"url": "https://blog.cloudflare.com/announcing-the-new-relic-direct-log-integration/",
+	"datePublished": "2022-03-14T12:59:17.000Z",
+	"dateModified": "2022-05-30T04:38:20.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/03/image2-15.png",
+		"width": 1801,
+		"height": 1013
+	},
+	"keywords": "Security Week, Logs, Analytics",
+	"description": "Correlating Cloudflare logs across your stack in New Relic One is powerful for monitoring and debugging in order to keep services safe and reliable. We’re excited to have partnered with New Relic to create a direct integration that provides this visibility",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

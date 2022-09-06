@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Molly Cinnamon",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/08/Screenshot-2021-08-10-at-6.56.05-PM.png",
+			"width": 1170,
+			"height": 892
+		},
+		"url": "https://blog.cloudflare.com/author/molly/",
+		"sameAs": []
+	},
+	"headline": "Cloudflare OneでIoTデバイスの安全確保",
+	"url": "https://blog.cloudflare.com/ja-jp/using-cloudflare-one-to-secure-iot-devices-ja-jp/",
+	"datePublished": "2022-03-18T21:03:00.000Z",
+	"dateModified": "2022-06-13T15:59:47.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/06/Magic-IoT-3.png",
+		"width": 1600,
+		"height": 900
+	},
+	"keywords": "Cloudflare One (JP), Cloudflare Zero Trust (JP), Zero Trust (JP), 製品ニュース (JP), IoT (JP), セキュリティ, 日本語",
+	"description": "そこで私たちは、自社製品を使ってIoTデバイス自体を保護することはできないか、たとえ本番システムと同じネットワーク上にあるとしても、このような悪名高い、安全性に劣るデバイスの侵害を確実に防ぐことはできないか、と自問しました。Cloudflare Oneを使えば、その答えは「イエス」です",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

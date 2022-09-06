@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Renan Dincer",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/03/renan-kid.jpg",
+			"width": 1024,
+			"height": 1032
+		},
+		"url": "https://blog.cloudflare.com/author/renan/",
+		"sameAs": [
+			"https://twitter.com/rrnn"
+		]
+	},
+	"headline": "Stream now supports SRT as a drop-in replacement for RTMP",
+	"url": "https://blog.cloudflare.com/stream-now-supports-srt-as-a-drop-in-replacement-for-rtmp/",
+	"datePublished": "2022-03-10T18:00:00.000Z",
+	"dateModified": "2022-03-11T14:26:01.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/03/Build-your-next-video-application-on-Cloudflare.png",
+		"width": 1200,
+		"height": 675
+	},
+	"keywords": "Cloudflare Stream, Video, Product News",
+	"description": "RTMP is not the protocol to carry us into the future so Cloudflare Stream now supports SRT in wherever you would use RTMP for. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

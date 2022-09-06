@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Pedro Sousa",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/07/PedroSousa_foto_passe.jpg",
+			"width": 600,
+			"height": 600
+		},
+		"url": "https://blog.cloudflare.com/author/pedro/",
+		"sameAs": []
+	},
+	"headline": "公開工作——我們的文件即程式碼方法",
+	"url": "https://blog.cloudflare.com/zh-tw/our-docs-as-code-approach-zh-tw/",
+	"datePublished": "2022-07-15T13:02:00.000Z",
+	"dateModified": "2022-09-01T08:37:09.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/08/image2-11-1.png",
+		"width": 1615,
+		"height": 869
+	},
+	"keywords": "技術文件編寫, 繁體中文 (TW), 開發人員文件",
+	"description": "除了採用「文件即程式碼」方法外，在 Cloudflare，我們還在存放庫中公開處理文件變更。讓我們的文件開放接收外部投稿有助於我們隨著時間的推移改進文件",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

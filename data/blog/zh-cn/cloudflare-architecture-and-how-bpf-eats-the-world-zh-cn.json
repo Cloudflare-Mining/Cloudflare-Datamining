@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Marek Majkowski",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/b5967d6c687939594adb6992723d0529.jpeg",
+		"url": "https://blog.cloudflare.com/author/marek-majkowski/",
+		"sameAs": [
+			"https://twitter.com/majek04"
+		]
+	},
+	"headline": "Cloudflare在边缘服务器运行6层BPF，使用eBPF改善应用进程",
+	"url": "https://blog.cloudflare.com/zh-cn/cloudflare-architecture-and-how-bpf-eats-the-world-zh-cn/",
+	"datePublished": "2019-05-18T15:00:00.000Z",
+	"dateModified": "2021-01-28T19:00:10.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2019/12/13_BPF-is-everywhere.jpg",
+		"width": 950,
+		"height": 512
+	},
+	"keywords": "简体中文 (CN), 开发人员, 任播, eBPF (ZH)",
+	"description": "最近，在布拉格Linux网络会议Netdev 0x13上，我做了一个简短的演讲，题目是“Cloudflare上的Linux”。演讲最后主要是关于BPF（柏克莱封包过滤器）的。似乎，不管问题是什么——BPF都是答案。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

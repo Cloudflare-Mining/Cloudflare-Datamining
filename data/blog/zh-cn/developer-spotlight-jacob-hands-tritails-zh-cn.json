@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Erwin van der Koogh",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/04/twitter-profile-photo.jpeg",
+			"width": 400,
+			"height": 400
+		},
+		"url": "https://blog.cloudflare.com/author/erwin/",
+		"sameAs": [
+			"https://twitter.com/evanderkoogh"
+		]
+	},
+	"headline": "开发人员聚焦：使用 Airtable 和 Cloudflare Workers 实现工作流自动化",
+	"url": "https://blog.cloudflare.com/zh-cn/developer-spotlight-jacob-hands-tritails-zh-cn/",
+	"datePublished": "2021-11-18T14:00:00.000Z",
+	"dateModified": "2021-12-30T00:41:58.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/12/image1-47-1.png",
+		"width": 1800,
+		"height": 1012
+	},
+	"keywords": "Full Stack Week (CN), Cloudflare Workers (CN), 简体中文 (CN), 开发者聚焦 (CN)",
+	"description": "开发人员聚焦接下来要介绍的是我很喜欢的另一个人。今天的帖子由 Jacob Hands 撰写。Jacob 经营 TriTails Premium Beef，这是一个网上商店",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

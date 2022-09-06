@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Fernando Serto",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/10/xlarge.jpg",
+			"width": 600,
+			"height": 600
+		},
+		"url": "https://blog.cloudflare.com/author/fernando/",
+		"sameAs": [
+			"https://twitter.com/fserto"
+		]
+	},
+	"headline": "Zero Trust — Not a Buzzword",
+	"url": "https://blog.cloudflare.com/zero-trust-not-a-buzzword/",
+	"datePublished": "2021-10-20T01:00:23.000Z",
+	"dateModified": "2021-10-20T20:41:23.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/10/Screen-Shot-2021-10-19-at-10.37.44-AM-1.png",
+		"width": 1484,
+		"height": 762
+	},
+	"keywords": "Zero Trust, Security, VPN",
+	"description": "Over the last few years, Zero Trust, a term coined by Forrester, picked up a lot of steam. Zero Trust, in its core, is a network architecture and security framework focusing on not having a distinction between external and internal access environments, and never trusting users/roles. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

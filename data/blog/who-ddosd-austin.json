@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Omer Yoachimik",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/Omer-1.png",
+			"width": 773,
+			"height": 653
+		},
+		"url": "https://blog.cloudflare.com/author/omer/",
+		"sameAs": [
+			"https://twitter.com/OmerYoahimik"
+		]
+	},
+	"headline": "Dogfooding Magic Transit by DDoSing our Austin office",
+	"url": "https://blog.cloudflare.com/who-ddosd-austin/",
+	"datePublished": "2019-10-24T13:00:00.000Z",
+	"dateModified": "2019-10-24T19:19:14.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2019/10/image-6-2.png",
+		"width": 2000,
+		"height": 764
+	},
+	"keywords": "Magic Transit, DDoS, Attacks, Texas, Austin, Life @ Cloudflare, Speed & Reliability",
+	"description": "It was a scorching Monday on July 22 as temperatures soared above 37°C (99°F) in Austin, TX, the live music capital of the world. Only hours earlier, the last crowds dispersed from the historic East 6th Street entertainment district. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

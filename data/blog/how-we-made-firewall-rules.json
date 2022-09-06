@@ -1,0 +1,32 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "David Kitchen",
+		"image": "http://blog.cloudflare.com/content/images/2019/03/david-k.jpg",
+		"url": "https://blog.cloudflare.com/author/david-kitchen/",
+		"sameAs": []
+	},
+	"headline": "How we made Firewall Rules",
+	"url": "https://blog.cloudflare.com/how-we-made-firewall-rules/",
+	"datePublished": "2019-03-04T13:00:00.000Z",
+	"dateModified": "2020-08-20T23:23:56.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2019/02/image1-5.png",
+	"keywords": "Firewall, Page Rules, Rust, Security, WAF",
+	"description": "Recently we launched Firewall Rules, a new feature that allows you to construct expressions that perform complex matching against HTTP requests and then choose how that traffic is handled.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

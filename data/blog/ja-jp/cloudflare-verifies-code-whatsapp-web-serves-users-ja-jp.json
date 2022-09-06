@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matt Silverlock",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/08/profile-1500px-square.jpeg",
+			"width": 1500,
+			"height": 1500
+		},
+		"url": "https://blog.cloudflare.com/author/silverlock/",
+		"sameAs": [
+			"https://twitter.com/elithrar"
+		]
+	},
+	"headline": "CloudflareがWhatsApp Webがユーザーに提供するコードを検証する方法",
+	"url": "https://blog.cloudflare.com/ja-jp/cloudflare-verifies-code-whatsapp-web-serves-users-ja-jp/",
+	"datePublished": "2022-03-10T18:30:00.000Z",
+	"dateModified": "2022-06-14T07:18:40.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/06/image3-3-4.png",
+		"width": 1200,
+		"height": 675
+	},
+	"keywords": "プライバシー, セキュリティ, 日本語",
+	"description": "本日皆様に提供できるのは、WhatsAppと提携し、Web上のWhatsAppにアクセスした際に実行されるコードがWhatsAppの意図したコードであることをユーザーに保証するシステムであり、この発表ができることを嬉しく思います",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

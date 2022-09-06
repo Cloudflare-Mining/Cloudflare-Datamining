@@ -1,0 +1,34 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Michael Tremante",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/url-3.jpg",
+		"url": "https://blog.cloudflare.com/author/michael-tremante/",
+		"sameAs": [
+			"https://twitter.com/MichaelTremante"
+		]
+	},
+	"headline": "Logs from the Edge",
+	"url": "https://blog.cloudflare.com/logs-from-the-edge/",
+	"datePublished": "2018-11-29T18:45:25.000Z",
+	"dateModified": "2021-05-19T18:51:25.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/logs-1.jpg",
+	"keywords": "Cloudflare Workers, Serverless, Logs, Speed & Reliability",
+	"description": "With Cloudflare Workers, it is possible to send traffic logs to arbitrary locations. In this post we are going to discuss an example Worker implementation on how to achieve this. So if you are building or maintaining your own traffic logging/analytics environment, read on.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

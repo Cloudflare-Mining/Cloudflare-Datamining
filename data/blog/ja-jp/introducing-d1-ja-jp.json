@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Rita Kozlov",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/05/Rita-Kozlov.jpeg",
+			"width": 200,
+			"height": 200
+		},
+		"url": "https://blog.cloudflare.com/author/rita/",
+		"sameAs": [
+			"https://twitter.com/ritakozlov_"
+		]
+	},
+	"headline": "D1を発表：当社初のSQLデータベース",
+	"url": "https://blog.cloudflare.com/ja-jp/introducing-d1-ja-jp/",
+	"datePublished": "2022-05-11T13:02:00.000Z",
+	"dateModified": "2022-05-17T03:37:58.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/05/image1-47.png",
+		"width": 1801,
+		"height": 1013
+	},
+	"keywords": "製品ニュース (JP), 開発者 (JP)",
+	"description": "当社は2017年にCloudflare Workersを発表しました。これは、当社のネットワーク上のコンピューティングへのアクセスを開発者に提供するものです。私たちは、このことによって生まれる可能性に胸を躍らせていましたが、すぐに、現実世界のほとんどのアプリケーションはステートフルであることに気づきました。それ以来、私たちはKV、Durable Objects、R2を提供し、開発者がさまざまなタイプのストレージにアクセスできるようにしました",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

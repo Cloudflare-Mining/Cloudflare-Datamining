@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew Prince",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
+			"width": 1196,
+			"height": 1190
+		},
+		"url": "https://blog.cloudflare.com/author/matthew-prince/",
+		"sameAs": [
+			"https://twitter.com/eastdakota"
+		]
+	},
+	"headline": "100 Billion Page Views",
+	"url": "https://blog.cloudflare.com/100-billion-page-views/",
+	"datePublished": "2011-12-09T04:49:00.000Z",
+	"dateModified": "2018-02-01T21:01:43.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/02/cf-blog-10-billion.png.scaled500.png",
+	"keywords": "Traffic, Page Views, Milestones, Our History",
+	"description": "In the next few hours, CloudFlare will cross having served more than 100 billion page views over the last year. We&#x27;ve been growing very quickly. To give you a sense, a quarter of the total page views for the year (about 25 billion) has come in just the last 30 days.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

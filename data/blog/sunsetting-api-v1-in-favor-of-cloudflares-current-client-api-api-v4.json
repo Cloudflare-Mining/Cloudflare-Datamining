@@ -1,0 +1,33 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Dani Grant",
+		"image": "http://blog.cloudflare.com/content/images/2018/08/efVJR3rj_400x400.jpg",
+		"url": "https://blog.cloudflare.com/author/dani/",
+		"sameAs": [
+			"https://twitter.com/thedanigrant"
+		]
+	},
+	"headline": "Sunsetting API v1 In Favor Of CloudFlare’s Current Client API: API v4",
+	"url": "https://blog.cloudflare.com/sunsetting-api-v1-in-favor-of-cloudflares-current-client-api-api-v4/",
+	"datePublished": "2016-05-09T21:48:53.000Z",
+	"dateModified": "2018-08-27T19:44:26.000Z",
+	"keywords": "Product News, API, JSON",
+	"description": "Today we’re announcing the sunsetting of CloudFlare’s first client API, API v1. Starting November 9th, 2016 at noon Pacific Time (20:00 UTC), CloudFlare will no longer be supporting API v1.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Brendan Coll",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/11/brendan-coll.png",
+			"width": 406,
+			"height": 406
+		},
+		"url": "https://blog.cloudflare.com/author/brendan-coll/",
+		"sameAs": [
+			"https://twitter.com/_mrbbot"
+		]
+	},
+	"headline": "Workers用TCPおよびSocketsとの接続",
+	"url": "https://blog.cloudflare.com/ja-jp/introducing-socket-workers-ja-jp/",
+	"datePublished": "2021-11-15T13:58:00.000Z",
+	"dateModified": "2021-12-30T01:12:58.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/12/unnamed--1--5-1.png",
+		"width": 1200,
+		"height": 675
+	},
+	"keywords": "Full Stack Week (JP), Cloudflare Workers (JP), QUIC (JP), 日本語, 製品ニュース (JP), サーバーレス",
+	"description": "JavaScriptおよびSocket Workers用の新しいソケットAPIの開発は活発に進められており、まずWorkersがバックエンド上のデータベースにさらに効率的な方法で接続できるようにすることに焦点が当てられています — ユーザ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

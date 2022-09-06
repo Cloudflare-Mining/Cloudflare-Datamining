@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Sergi Isasi",
+		"image": "http://blog.cloudflare.com/content/images/2017/11/FullSizeRender_jpeg.png",
+		"url": "https://blog.cloudflare.com/author/sergi/",
+		"sameAs": [
+			"https://twitter.com/sgisasi"
+		]
+	},
+	"headline": "Dépréciation du cookie __cfduid",
+	"url": "https://blog.cloudflare.com/fr-fr/deprecating-cfduid-cookie-fr-fr/",
+	"datePublished": "2020-12-09T12:00:00.000Z",
+	"dateModified": "2021-01-27T02:12:40.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2020/12/image1-24.png",
+		"width": 1295,
+		"height": 686
+	},
+	"keywords": "Français, Semaine de la confidentialité, Confidentialité",
+	"description": "Cloudflare déprécie le cookie __cfduid. Si nous n&#x27;avons jamais suivi les utilisateurs finaux d&#x27;un site à l&#x27;autre ni vendu leurs données personnelles, nous ne souhaitons néanmoins pas qu&#x27;un client pense qu&#x27;il a besoin d&#x27;un bandeau d&#x27;informations sur les cookies du fait de nos activités.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

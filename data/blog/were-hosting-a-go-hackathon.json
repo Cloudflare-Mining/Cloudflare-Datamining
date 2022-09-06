@@ -1,0 +1,34 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Lauren Buchman",
+		"image": "http://blog.cloudflare.com/content/images/2018/02/download-2.jpg",
+		"url": "https://blog.cloudflare.com/author/lauren-buchman/",
+		"sameAs": [
+			"https://twitter.com/laurenjbuchman"
+		]
+	},
+	"headline": "We’re Hosting a Go Hackathon!",
+	"url": "https://blog.cloudflare.com/were-hosting-a-go-hackathon/",
+	"datePublished": "2016-01-20T02:14:41.000Z",
+	"dateModified": "2018-08-24T23:50:41.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/women-who-go-1.png",
+	"keywords": "Hackathon",
+	"description": "The Go test coverage implementation is quite ingenious: when asked to, the Go compiler will preprocess the source so that when each code portion is executed a bit is set in a coverage bitmap.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

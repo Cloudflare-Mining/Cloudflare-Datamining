@@ -1,0 +1,32 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Timothy Fong",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/8y9ggnnnu6e1xawbo2rt.jpeg",
+		"url": "https://blog.cloudflare.com/author/timothy/",
+		"sameAs": []
+	},
+	"headline": "Cloudflare Rate Limiting - Insight, Control, and Mitigation against Layer 7 DDoS Attacks",
+	"url": "https://blog.cloudflare.com/rate-limiting/",
+	"datePublished": "2017-04-13T20:34:00.000Z",
+	"dateModified": "2018-08-28T22:11:17.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/benjamin-child-16017.jpg",
+	"keywords": "Rate Limiting, Reliability, Product News, DDoS, Attacks, Mitigation, Security",
+	"description": "Today, Cloudflare is extending its Rate Limiting service by allowing any of our customers to sign up. Our Enterprise customers have enjoyed the benefits of Cloudflare’s Rate Limiting offering for the past several months. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

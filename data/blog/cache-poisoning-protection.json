@@ -1,0 +1,34 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Jon Levine",
+		"image": "http://blog.cloudflare.com/content/images/2018/04/prof-crop.jpg",
+		"url": "https://blog.cloudflare.com/author/jpl/",
+		"sameAs": [
+			"https://twitter.com/jplevine"
+		]
+	},
+	"headline": "How Cloudflare protects customers from cache poisoning",
+	"url": "https://blog.cloudflare.com/cache-poisoning-protection/",
+	"datePublished": "2018-08-20T15:53:14.000Z",
+	"dateModified": "2018-08-29T07:51:23.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/8CC51014-22BF-4965-9AD7-542338F8C3AA.png",
+	"keywords": "Vulnerabilities, Cache, Security",
+	"description": "A few days ago, Cloudflare — along with the rest of the world — learned of a &quot;practical&quot; cache poisoning attack. In this post I’ll walk through the attack and explain how Cloudflare mitigated it for our customers.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

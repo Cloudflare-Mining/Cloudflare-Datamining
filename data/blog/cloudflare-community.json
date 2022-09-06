@@ -1,0 +1,36 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Ryan Knight",
+		"image": "http://blog.cloudflare.com/content/images/2018/05/Me_Beer_Right.jpg",
+		"url": "https://blog.cloudflare.com/author/ryank/",
+		"sameAs": [
+			"https://freebaxter.com",
+			"https://www.facebook.com/ryan.knight",
+			"https://twitter.com/yank"
+		]
+	},
+	"headline": "Introducing the new Cloudflare Community Forum",
+	"url": "https://blog.cloudflare.com/cloudflare-community/",
+	"datePublished": "2017-05-03T21:02:29.000Z",
+	"dateModified": "2018-08-28T22:22:24.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2017/05/Screen-Shot-2017-05-05-at-2.28.57-PM.png",
+	"keywords": "Community, Support, Feedback, Tips, Life @ Cloudflare",
+	"description": "Cloudflare’s community of users is vast. With more than 6 million domains registered, our users come in all shapes and sizes and are located all over the world. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

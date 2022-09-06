@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Omer Yoachimik",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/Omer-1.png",
+			"width": 773,
+			"height": 653
+		},
+		"url": "https://blog.cloudflare.com/author/omer/",
+		"sameAs": [
+			"https://twitter.com/OmerYoahimik"
+		]
+	},
+	"headline": "Cloudflare mitigates 26 million request per second DDoS attack",
+	"url": "https://blog.cloudflare.com/26m-rps-ddos/",
+	"datePublished": "2022-06-14T12:56:31.000Z",
+	"dateModified": "2022-07-04T07:27:32.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/06/image1-2-1.png",
+		"width": 1830,
+		"height": 850
+	},
+	"keywords": "DDoS, Botnet, Attacks, Security",
+	"description": "Last week, Cloudflare automatically detected and mitigated a 26 million request per second DDoS attack — the largest HTTPS DDoS attack on record",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

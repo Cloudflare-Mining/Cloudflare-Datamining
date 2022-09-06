@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Kabir Sikand",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/05/0.jpeg",
+			"width": 800,
+			"height": 800
+		},
+		"url": "https://blog.cloudflare.com/author/kabir/",
+		"sameAs": [
+			"https://twitter.com/kabirsikand"
+		]
+	},
+	"headline": "Workers Unbound 进一步解绑：15 分钟，100 个脚本，免出口费用",
+	"url": "https://blog.cloudflare.com/zh-cn/workers-now-even-more-unbound-zh-cn/",
+	"datePublished": "2021-11-18T14:00:00.000Z",
+	"dateModified": "2021-11-22T22:54:55.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/11/unbound-1.png",
+		"width": 1200,
+		"height": 675
+	},
+	"keywords": "Full Stack Week (CN), Cloudflare Workers (CN), Workers Unbound (CN), 简体中文 (CN), 产品新闻, 全栈周 (CN)",
+	"description": "我们的使命是，让开发人员能够在我们的平台上从头到尾地构建他们的应用程序，并彻底消除任何可能的限制。今天，我们很高兴地宣布，",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

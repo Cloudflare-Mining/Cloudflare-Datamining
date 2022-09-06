@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "John Graham-Cumming",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
+		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
+		"sameAs": [
+			"https://twitter.com/jgrahamc"
+		]
+	},
+	"headline": "2020年4月15日に発生したダッシュボードとAPIの停止について",
+	"url": "https://blog.cloudflare.com/ja-jp/cloudflare-dashboard-and-api-outage-on-april-15-2020-ja-jp/",
+	"datePublished": "2020-04-16T00:28:00.000Z",
+	"dateModified": "2021-01-21T18:57:26.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2020/05/cf-logo-social-media-1.png",
+		"width": 1024,
+		"height": 512
+	},
+	"keywords": "日本語",
+	"description": "15:31 UTC (世界協定時)から19:52 UTCまでの間、Cloudflare ダッシュボードとAPIが利用が出来なくなる障害が発生しました。これは、二つのコアデータセンターのうち一つから、複数の冗長化したファイバー接続が切断されたためです。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Omer Yoachimik",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/Omer-1.png",
+			"width": 773,
+			"height": 653
+		},
+		"url": "https://blog.cloudflare.com/author/omer/",
+		"sameAs": [
+			"https://twitter.com/OmerYoahimik"
+		]
+	},
+	"headline": "3/4 DDoS攻撃対策設定をカスタマイズする方法",
+	"url": "https://blog.cloudflare.com/ja-jp/l34-ddos-managed-rules-ja-jp/",
+	"datePublished": "2021-12-09T13:59:00.000Z",
+	"dateModified": "2021-12-29T22:15:52.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/12/image2-27-3.png",
+		"width": 1800,
+		"height": 1013
+	},
+	"keywords": "日本語, 製品ニュース (JP), Cloudflare Spectrum (JP), Spectrum (JP), DDoS (JP), L3/4 (JP), Magic Transit (JP), CIO Week (JP)",
+	"description": "今年初めにお客様にHTTPレイヤーのDDoS攻撃対策設定の制御を提供した後、お客様の制御をパケットレイヤーにまで拡張できることを嬉しく思います。こ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

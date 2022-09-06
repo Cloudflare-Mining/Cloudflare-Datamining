@@ -95,7 +95,7 @@ aliceswonderland.com.	 28 IN TXT "google-site-verification=COanvvo4CIfihirYW6C0j
 	<p>シンプルな収集および集計ツールとしてのDCVオーケストレーターは、<a href="https://developers.cloudflare.com/workers/" target="_blank">Cloudflare Workers</a>の優秀な候補でした。<a href="https://blog.cloudflare.com/generating-documentation-for-typescript-projects/">こちらの記事</a>を参考にこのオーケストレーターをTypeScriptに実装し、展開および繰り返しが容易な、型指定された信頼性の高いオーケストレーターサービスを作成しました。当社独自のDCVオーケストレーター用サーバーの維持が不要なことには、たいへん満足しています。</p>
 	<p>当社では<a href="https://developers.cloudflare.com/argo-tunnel/" target="_blank">Argo Tunnel</a>を使用し、Cloudflare WorkersがDCVエージェントと通信できるようにしています。Argo Tunnelを使用することで、当社のDCVエージェントをWorkers環境に容易かつセキュアに公開することができます。CloudflareにはDCVエージェントを実行するデータセンターが約175か所あるため、Argo Tunnelを通して多数のサービスを公開しており、パワーユーザーとして様々な送信元からArgo Tunnelの負荷をテストする機会がありました。Argo Tunnelは、しっかりとこの新しい送信元からの流入を処理してくれました。</p>
 	<h3 id="-dcv-"><strong>マルチパスDCVチェッカーへのアクセス取得</strong></h3>
-	<p>個人や企業でDCVチェッカーにご興味のある方は、<a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a>までお問い合わせください。当社では、皆様の証明書発行に関するセキュリティを、このマルチパスクエリや認証でいかに向上できるかについて、皆様からのご意見をお待ちしています。</p>
+	<p>個人や企業でDCVチェッカーにご興味のある方は、[email protected]までお問い合わせください。当社では、皆様の証明書発行に関するセキュリティを、このマルチパスクエリや認証でいかに向上できるかについて、皆様からのご意見をお待ちしています。</p>
 	<p>新しい種類のBGPおよびIPスプーフィング攻撃は、PKIの基盤を損なう恐れがあり、Webサイトの所有者が、証明書の発行を受ける時にマルチパス検証を求めることも重要です。Cloudflareによるか、自社かに関わらず、すべてのCAでマルチパス検証を使用することをお勧めします。Let’s Encryptのテクニカルリード、Jacob Hoffman-Andrewsが、次のように書いています。</p>
 	<blockquote>「BGPハイジャックは、Web PKIがまだ解決する必要がある大きな課題の1つであり、マルチパス検証はこの解決策の一端を担えると考えています。我々は独自に実装テストを実施し、他のCAにもマルチパスに目を向けるようお勧めしています。」</blockquote>
 	<p>将来的には、Webサイトの所有者が、CA選択時にマルチパス検証のサポートの有無を確認するようになって欲しい、と願っています。</p>

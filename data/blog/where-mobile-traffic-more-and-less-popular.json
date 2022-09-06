@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "João Tomé",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/V0x3WKfJ_400x400-1.jpeg",
+			"width": 400,
+			"height": 400
+		},
+		"url": "https://blog.cloudflare.com/author/joao-tome/",
+		"sameAs": [
+			"https://twitter.com/emot"
+		]
+	},
+	"headline": "Where is mobile traffic the most and least popular?",
+	"url": "https://blog.cloudflare.com/where-mobile-traffic-more-and-less-popular/",
+	"datePublished": "2021-10-09T12:58:41.000Z",
+	"dateModified": "2021-10-11T13:18:23.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/10/image3-15.png",
+		"width": 1200,
+		"height": 675
+	},
+	"keywords": "Cloudflare Radar, Internet Performance, Internet Traffic",
+	"description": "We used Cloudflare Radar to find out those countries on the planet that have more (and less) mobile traffic on the Internet. Africa and the Middle East are the areas of the planet where mobile traffic dominates the Internet experience",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

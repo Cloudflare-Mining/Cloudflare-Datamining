@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Rita Kozlov",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/05/Rita-Kozlov.jpeg",
+			"width": 200,
+			"height": 200
+		},
+		"url": "https://blog.cloudflare.com/author/rita/",
+		"sameAs": [
+			"https://twitter.com/ritakozlov_"
+		]
+	},
+	"headline": "Novedad: Workers para plataformas, aplicaciones de Internet más programables",
+	"url": "https://blog.cloudflare.com/es-es/workers-for-platforms-es-es/",
+	"datePublished": "2022-05-10T13:01:00.000Z",
+	"dateModified": "2022-05-17T20:13:59.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/05/image4-4-1.png",
+		"width": 1200,
+		"height": 675
+	},
+	"keywords": "Cloudflare Workers (ES), Sin servidor, Desarrolladores",
+	"description": "Hoy anunciamos Workers para plataformas, nuestro conjunto de herramientas para ayudar a que cualquier producto sea programable, y que permite a nuestros clientes ofrecer valor a sus usuarios y desarrolladores de forma instantánea",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

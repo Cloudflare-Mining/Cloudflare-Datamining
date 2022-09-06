@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Sam Rhea",
+		"image": "http://blog.cloudflare.com/content/images/2018/07/photo-for-profile.jpg",
+		"url": "https://blog.cloudflare.com/author/sam/",
+		"sameAs": [
+			"https://twitter.com/LakeAustinBlvd"
+		]
+	},
+	"headline": "A Zero Trust terminal in your web browser",
+	"url": "https://blog.cloudflare.com/browser-ssh-terminal-with-auditing/",
+	"datePublished": "2021-04-15T13:00:00.000Z",
+	"dateModified": "2021-04-22T18:20:40.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/04/image4-3.png",
+		"width": 1615,
+		"height": 869
+	},
+	"keywords": "Developer Week, Developers, Zero Trust, SSH, Cloudflare Access, Cloudflare One, Security, Product News",
+	"description": "Starting today, your team can use that same platform to seamlessly connect to non-HTTP resources from inside of a browser with the same level of Zero Trust control available in web applications.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

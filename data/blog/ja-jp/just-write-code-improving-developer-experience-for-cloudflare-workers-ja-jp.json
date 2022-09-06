@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Rita Kozlov",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/05/Rita-Kozlov.jpeg",
+			"width": 200,
+			"height": 200
+		},
+		"url": "https://blog.cloudflare.com/author/rita/",
+		"sameAs": [
+			"https://twitter.com/ritakozlov_"
+		]
+	},
+	"headline": "コードの記述に専念：Cloudflare Workersの開発者エクスペリエンスの向上",
+	"url": "https://blog.cloudflare.com/ja-jp/just-write-code-improving-developer-experience-for-cloudflare-workers-ja-jp/",
+	"datePublished": "2019-06-02T09:35:00.000Z",
+	"dateModified": "2021-01-21T18:56:12.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2019/12/442516AB-F97C-4725-B0A8-1F8157043B2C.jpeg",
+		"width": 1451,
+		"height": 661
+	},
+	"keywords": "日本語, サーバーレス, 製品ニュース (JP), Cloudflare Workers (JP), JavaScript (JP)",
+	"description": "本日、Cloudflare Workers®で、CLI、新しく改良されたドキュメント、すべての人が使える複数のスクリプト、ならびにご自身のドメインを使用せずにworkers.dev上でアプリケーションを実行可能な無料利用枠の提供が開始し、過去になかったほどに実験が容易になりましたことを発表します。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

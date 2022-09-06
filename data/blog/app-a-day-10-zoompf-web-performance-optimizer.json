@@ -1,0 +1,34 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "John Roberts",
+		"image": "http://blog.cloudflare.com/content/images/2018/02/john.jpg",
+		"url": "https://blog.cloudflare.com/author/john-roberts/",
+		"sameAs": [
+			"https://twitter.com/pencoyd"
+		]
+	},
+	"headline": "App a Day #10 - Zoompf Web Performance Optimizer",
+	"url": "https://blog.cloudflare.com/app-a-day-10-zoompf-web-performance-optimizer/",
+	"datePublished": "2011-06-14T03:01:00.000Z",
+	"dateModified": "2018-01-29T19:46:14.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/01/zoompf-200.png.scaled500.png",
+	"keywords": "Cloudflare Apps, Speed & Reliability",
+	"description": "The Zoompf Web Performance Optimizer (WPO) is a cloud-based front-end performance scanner which analyzes your website for over 380 performance issues which are slowing it down. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

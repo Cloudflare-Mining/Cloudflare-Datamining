@@ -1,0 +1,45 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Watson Ladd",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/10/0.jpg",
+			"width": 500,
+			"height": 500
+		},
+		"url": "https://blog.cloudflare.com/author/watson/",
+		"sameAs": [
+			"http://kc2kdm.com",
+			"https://twitter.com/WatsonLadd"
+		]
+	},
+	"headline": "Announcing cfnts: Cloudflare&#x27;s implementation of NTS in Rust",
+	"url": "https://blog.cloudflare.com/announcing-cfnts/",
+	"datePublished": "2019-10-31T13:00:00.000Z",
+	"dateModified": "2019-10-31T14:08:19.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2019/10/Screen-Shot-2019-10-28-at-11.26.45-AM.png",
+		"width": 2000,
+		"height": 818
+	},
+	"keywords": "Crypto Week, Crypto, Security, NTS, Product News, Research",
+	"description": "Several months ago we announced that we were providing a new public time service. Part of what we were providing was the first major deployment of the new Network Time Security protocol, with a newly written implementation of NTS in Rust. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

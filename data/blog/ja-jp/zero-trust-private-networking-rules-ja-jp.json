@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Kenny Johnson",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2020/12/0DA903DE-E315-43D5-B0DE-39870448303D.jpeg",
+			"width": 265,
+			"height": 252
+		},
+		"url": "https://blog.cloudflare.com/author/kenny/",
+		"sameAs": [
+			"https://twitter.com/KennyJohnsonATX"
+		]
+	},
+	"headline": "Zero Trustプライベートネットワーキングルール",
+	"url": "https://blog.cloudflare.com/ja-jp/zero-trust-private-networking-rules-ja-jp/",
+	"datePublished": "2021-12-08T13:59:00.000Z",
+	"dateModified": "2021-12-31T04:19:35.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/12/image3-12-2.png",
+		"width": 1761,
+		"height": 1011
+	},
+	"keywords": "CIO Week (JP), 日本語, 製品ニュース (JP), ゼロトラスト",
+	"description": "当社は今年、IDに基づくアクセス制御機能を備えたCloudflareネットワーク上でプライベートネットワークの構築が可能になったことを発表しました。まもなくこの制御をセッションとログインインターバルにも拡張できるようになることをお知らせできて、嬉しく思います。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,34 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Ka-Hing Cheung",
+		"image": "http://blog.cloudflare.com/content/images/2018/01/AAEAAQAAAAAAAAJjAAAAJGRkYmFkY2Q2LTE3NmItNDgwZS04OWNlLTM2MzcwMzZiZTgwNQ.jpg",
+		"url": "https://blog.cloudflare.com/author/khc/",
+		"sameAs": [
+			"https://twitter.com/kahingcheung"
+		]
+	},
+	"headline": "Cómo escalamos NGINX y ahorramos 54 años al mundo todos los días",
+	"url": "https://blog.cloudflare.com/es-es/how-we-scaled-nginx-and-saved-the-world-54-years-every-day-es/",
+	"datePublished": "2018-07-31T15:00:00.000Z",
+	"dateModified": "2021-09-03T21:33:33.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2019/04/Matthew-Tweet.png",
+	"keywords": "Rendimiento, Desarrolladores, Programación, Español, NGINX (ES)",
+	"description": "10 millones de sitios web, aplicaciones y API utilizan Cloudflare para proporcionar mayor velocidad a sus usuarios . En los picos, atendemos más de 10 millones de solicitudes por segundo a través de nuestros 151 centros de datos.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

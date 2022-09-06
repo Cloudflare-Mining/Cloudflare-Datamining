@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Greg McKeon",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/05/Screen-Shot-2022-05-10-at-2.50.56-PM.png",
+			"width": 692,
+			"height": 662
+		},
+		"url": "https://blog.cloudflare.com/author/greg/",
+		"sameAs": [
+			"https://twitter.com/wegmckeon"
+		]
+	},
+	"headline": "Durable Objectsの一般提供を開始",
+	"url": "https://blog.cloudflare.com/ja-jp/durable-objects-ga-ja-jp/",
+	"datePublished": "2021-11-15T16:27:00.000Z",
+	"dateModified": "2021-12-02T16:29:13.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/12/image1-6.png",
+		"width": 1200,
+		"height": 675
+	},
+	"keywords": "Full Stack Week (JP), Durable Objects (JP)",
+	"description": "Full Stack Weekでは、開発者がいかにCloudflareネットワークのパワーを利用して、全体がデフォルトでグローバルなアプリケーションを構築するかをテーマにしています。Workersは単にレイテンシーを改善するだけではなく、開発者の生活を楽にし、アプリケーションの耐障害性を高める、根本的に異なるプログラミングパラダイムを提供します。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

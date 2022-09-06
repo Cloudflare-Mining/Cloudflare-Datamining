@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Yo&#x27;av Moshe",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/11/IMG_4345-01-01.jpeg",
+			"width": 1392,
+			"height": 1393
+		},
+		"url": "https://blog.cloudflare.com/author/yoav/",
+		"sameAs": [
+			"https://twitter.com/yoavmoshe"
+		]
+	},
+	"headline": "通过 WebCM 构建和使用托管组件",
+	"url": "https://blog.cloudflare.com/zh-cn/building-using-managed-components-webcm-zh-cn/",
+	"datePublished": "2022-08-03T13:00:00.000Z",
+	"dateModified": "2022-08-26T07:03:58.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/08/image1-6-1.png",
+		"width": 1800,
+		"height": 1013
+	},
+	"keywords": "Zaraz (CN), 托管组件, WebCM (CN), 开源, 简体中文 (CN)",
+	"description": "我准备展示托管组件可以怎样立即帮助您管理网站或构建第三方工具",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

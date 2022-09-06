@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Lucas Pardue",
+		"image": "http://blog.cloudflare.com/content/images/2018/12/Lucas---KIN01111.jpg",
+		"url": "https://blog.cloudflare.com/author/lucas/",
+		"sameAs": [
+			"https://twitter.com/SimmerVigor"
+		]
+	},
+	"headline": "Unlocking QUIC’s proxying potential with MASQUE",
+	"url": "https://blog.cloudflare.com/unlocking-quic-proxying-potential/",
+	"datePublished": "2022-03-20T16:58:37.000Z",
+	"dateModified": "2022-04-26T21:01:52.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/03/image1-85.png",
+		"width": 1999,
+		"height": 1125
+	},
+	"keywords": "Proxying, Content Security Policy, Deep Dive, Research, QUIC",
+	"description": "We continue our technical deep dive into traditional TCP proxying over HTTP",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

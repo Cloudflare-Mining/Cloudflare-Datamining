@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "John Graham-Cumming",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
+		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
+		"sameAs": [
+			"https://twitter.com/jgrahamc"
+		]
+	},
+	"headline": "プライバシーをインターネットに組み込む必要性",
+	"url": "https://blog.cloudflare.com/ja-jp/internet-privacy-ja-jp/",
+	"datePublished": "2020-12-07T12:00:00.000Z",
+	"dateModified": "2021-09-03T21:36:52.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2020/12/Privacy-needs-to-be-built-into-the-Internet-blog-thumb-4.png",
+		"width": 800,
+		"height": 441
+	},
+	"keywords": "日本語, プライバシーウィーク, プライバシー",
+	"description": "インターネットの構築において、プライバシーはあまり重要視されませんでした。 インターネットのフェーズ 3 へようこそ：常にオン、常に安全、常にプライベート。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

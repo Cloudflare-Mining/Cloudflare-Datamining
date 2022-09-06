@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "João Sousa Botto",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/07/profile2.jpg",
+			"width": 2000,
+			"height": 2026
+		},
+		"url": "https://blog.cloudflare.com/author/joao/",
+		"sameAs": [
+			"https://twitter.com/jsbotto"
+		]
+	},
+	"headline": "Attack Maps now available on Radar",
+	"url": "https://blog.cloudflare.com/attack-maps-now-available-on-radar/",
+	"datePublished": "2021-11-29T18:30:00.000Z",
+	"dateModified": "2021-11-29T18:30:06.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/11/radar-maps-birthday-week-1.png",
+		"width": 1200,
+		"height": 675
+	},
+	"keywords": "Cloudflare Radar, Trends, Attacks, Radar Maps, Product News",
+	"description": "We love line and bar graphs, but some data is best represented with different visualizations. We’re introducing world maps and sankey visualizations as part of Radar Maps, which are being used today to show you the top layer 7 attacks in real time.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

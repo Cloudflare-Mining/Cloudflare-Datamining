@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Tom Strickx",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/07/Headshot_Lisbon.png",
+			"width": 150,
+			"height": 176
+		},
+		"url": "https://blog.cloudflare.com/author/tom-strickx/",
+		"sameAs": [
+			"https://twitter.com/tstrickx"
+		]
+	},
+	"headline": "本日発生したVerizonとBGPオプティマイザを原因とするインターネットの大規模な通信障害について",
+	"url": "https://blog.cloudflare.com/ja-jp/how-verizon-and-a-bgp-optimizer-knocked-large-parts-of-the-internet-offline-today-ja-jp/",
+	"datePublished": "2019-06-24T19:58:00.000Z",
+	"dateModified": "2021-01-21T18:41:09.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2019/07/leak2-2.png",
+		"width": 1600,
+		"height": 939
+	},
+	"keywords": "日本語, BGP (JP)",
+	"description": "本日10時30分 (UTC: 協定世界時)、インターネットで小規模な心臓発作的な事象が発生しました。ペンシルベニア州北部にある小さな会社が、大手インターネットトランジットプロバイダVerizon (AS701) を経由する多くのネットワークの経路の優先経路になったというものです。今回のトラフィックの集中は、Wazeに例えると、高速道路全体の交通を近隣の一般道に迂回させたのに相当する規模のもので、Cloudflareや他の多くのプロバイダが持つ多数のウェブサイトへのアクセスが不能になりました。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

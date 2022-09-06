@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Tom Strickx",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/07/Headshot_Lisbon.png",
+			"width": 150,
+			"height": 176
+		},
+		"url": "https://blog.cloudflare.com/author/tom-strickx/",
+		"sameAs": [
+			"https://twitter.com/tstrickx"
+		]
+	},
+	"headline": "边界网关协议优化与Verizon失误致使互联网连接遭受重创_Cloudflare呼吁运营商部署RPKI避免路由泄漏",
+	"url": "https://blog.cloudflare.com/zh-cn/how-verizon-and-a-bgp-optimizer-knocked-large-parts-of-the-internet-offline-today-zh-cn/",
+	"datePublished": "2019-06-24T20:46:00.000Z",
+	"dateModified": "2021-01-28T19:09:21.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2019/07/leak2-2-2.png",
+		"width": 1600,
+		"height": 939
+	},
+	"keywords": "简体中文 (CN), BGP (CN)",
+	"description": "在 UTC 时间今天（ 2019年6月24号）10 点 30 分，互联网遭受了一场不小的冲击。通过主要互联网转接服务提供供应商 Verizon (AS701) 转接的许多互联网路由，都被先导至宾夕法尼亚北部的一家小型公司。这相当于  滴滴错误地将整条高速公路导航至某小巷 – 导致大部分互联网用户无法访问 Cloudflare 上的许多网站和许多其他供应商的服务。这本不应该发生，因为 Verizon 不应将这些路径转送到互联网",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

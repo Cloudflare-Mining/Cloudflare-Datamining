@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Kenton Varda",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/08/avatar-github.jpg",
+			"width": 460,
+			"height": 460
+		},
+		"url": "https://blog.cloudflare.com/author/kenton-varda/",
+		"sameAs": [
+			"https://twitter.com/kentonvarda"
+		]
+	},
+	"headline": "Durable Objects: Easy, Fast, Correct — Choose three",
+	"url": "https://blog.cloudflare.com/durable-objects-easy-fast-correct-choose-three/",
+	"datePublished": "2021-08-03T13:24:44.000Z",
+	"dateModified": "2021-08-03T16:10:19.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/08/blog-570-DO-collisions.png",
+		"width": 1500,
+		"height": 788
+	},
+	"keywords": "Durable Objects",
+	"description": "When multiple clients access the same storage concurrently, race conditions abound. Durable Objects can make it easier. We recently rolled out improvements to Durable Objects that automatically correct many common race conditions while actually making your code faster.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

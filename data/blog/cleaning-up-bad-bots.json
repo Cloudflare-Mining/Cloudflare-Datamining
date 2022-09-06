@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "John Graham-Cumming",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
+		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
+		"sameAs": [
+			"https://twitter.com/jgrahamc"
+		]
+	},
+	"headline": "Cleaning up bad bots (and the climate)",
+	"url": "https://blog.cloudflare.com/cleaning-up-bad-bots/",
+	"datePublished": "2019-09-23T13:00:00.000Z",
+	"dateModified": "2019-10-24T16:35:22.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2019/10/linkedin-In-Stream_Wide___Screen-Shot-2019-10-24-at-9.32.13-AM.png",
+		"width": 1161,
+		"height": 612
+	},
+	"keywords": "Birthday Week, Product News, Bots, Security",
+	"description": "From the very beginning Cloudflare has been stopping bots from scraping websites, or misusing APIs. Over time we’ve improved our bot detection methods and deployed large machine learning models that are able to distinguish real traffic (be it from humans or apps) from misbehaving bots.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

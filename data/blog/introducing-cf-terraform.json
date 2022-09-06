@@ -1,0 +1,40 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Zack Proser",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/10/zack-proser-1.jpeg",
+			"width": 194,
+			"height": 174
+		},
+		"url": "https://blog.cloudflare.com/author/zackp/",
+		"sameAs": [
+			"https://zackproser.com",
+			"https://twitter.com/zackproser"
+		]
+	},
+	"headline": "Introducing Cf-Terraforming",
+	"url": "https://blog.cloudflare.com/introducing-cf-terraform/",
+	"datePublished": "2019-02-15T20:02:04.000Z",
+	"dateModified": "2021-11-02T15:38:49.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2019/02/Screen-Shot-2019-02-19-at-9.47.38-AM-1.png",
+	"keywords": "Terraform, Programming, API, Developers",
+	"description": "Ever since we implemented support for configuring Cloudflare via Terraform, we’ve been steadily expanding the set of features and services you can manage via this popular open-source tool. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

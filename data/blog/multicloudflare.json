@@ -1,0 +1,37 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Zack Bloom",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/YZCINbF6.jpg",
+		"url": "https://blog.cloudflare.com/author/zack-bloom/",
+		"sameAs": []
+	},
+	"headline": "MultiCloud... flare",
+	"url": "https://blog.cloudflare.com/multicloudflare/",
+	"datePublished": "2019-06-02T21:00:00.000Z",
+	"dateModified": "2021-06-02T17:24:18.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2019/11/Workers-General-1.png",
+		"width": 935,
+		"height": 654
+	},
+	"keywords": "Serverless, Cloudflare Workers, Load Balancing, Cloudflare Access, Speed & Reliability, Cloudflare Tunnel",
+	"description": "If you want to start an intense conversation in the halls of Cloudflare, try describing us as a &quot;CDN&quot;. CDNs don&#x27;t generally provide you with Load Balancing, they don&#x27;t allow you to deploy Serverless Applications, and they certainly don&#x27;t get installed onto your phone. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

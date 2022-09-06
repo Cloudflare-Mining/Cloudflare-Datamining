@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Jocelyn Woolbright",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/12/0-1.jpg",
+			"width": 450,
+			"height": 450
+		},
+		"url": "https://blog.cloudflare.com/author/jocelyn/",
+		"sameAs": [
+			"https://twitter.com/jo_woolbright"
+		]
+	},
+	"headline": "2020 U.S. Election: Cybersecurity Analysis",
+	"url": "https://blog.cloudflare.com/2020-us-election-cybersecurity-analysis/",
+	"datePublished": "2021-02-09T14:00:00.000Z",
+	"dateModified": "2021-08-03T10:04:33.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/02/image2-10.png",
+		"width": 1962,
+		"height": 1170
+	},
+	"keywords": "Elections, Election Security, Trends",
+	"description": "As we protect many entities in the election space, we have the ability to identify, learn and analyze attack trends targeted at these sites that provide authoritative election information.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Tanushree Sharma",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/09/IMG_1328-1.jpg",
+			"width": 1895,
+			"height": 1874
+		},
+		"url": "https://blog.cloudflare.com/author/tanushree/",
+		"sameAs": [
+			"https://twitter.com/TanushreeS5"
+		]
+	},
+	"headline": "IBM QRadar SIEM을 활용하여 Cloudflare 로그에서 통찰력 확보",
+	"url": "https://blog.cloudflare.com/ko-kr/announcing-the-ibm-qradar-direct-log-integration-ko-kr/",
+	"datePublished": "2022-03-14T12:59:00.000Z",
+	"dateModified": "2022-06-30T08:04:05.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/06/image2-12-2.png",
+		"width": 1800,
+		"height": 1013
+	},
+	"keywords": "Security Week (KO), 로그, Analytics (KO), 한국어",
+	"description": "이제 Cloudflare 고객이 자신의 로그를 IBM Security QRadar SIEM으로 직접 푸시할 수 있음을 발표하게 되어 기쁩니다. 이러한 직접적인 통합은 Cloudflare 및 QRadar SIEM 고객에게는 비용 절감과 더욱 빠른 로그 전달로 이어집니다. 중간 클라우드 스토리지가 필요하지 않기 때문입니다",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

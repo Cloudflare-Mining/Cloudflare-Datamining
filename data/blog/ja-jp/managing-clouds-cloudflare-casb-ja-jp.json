@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Corey Mahan",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/02/CoreyMahan_ProfilePhoto.jpg",
+			"width": 2000,
+			"height": 1659
+		},
+		"url": "https://blog.cloudflare.com/author/corey-mahan/",
+		"sameAs": [
+			"https://twitter.com/coreymahan"
+		]
+	},
+	"headline": "クラウド管理 - Cloudflare CASBとその後の計画",
+	"url": "https://blog.cloudflare.com/ja-jp/managing-clouds-cloudflare-casb-ja-jp/",
+	"datePublished": "2022-03-18T13:00:00.000Z",
+	"dateModified": "2022-06-13T12:52:42.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/06/image1-70-4.png",
+		"width": 1200,
+		"height": 675
+	},
+	"keywords": "Security Week (JP), CASB (JP), Zero Trust (JA), セキュリティ, SaaSセキュリティ, Cloudflare Zero Trust (JP), 製品ニュース (JP), 日本語",
+	"description": "現在、Cloudflareでは、帯域外のCASB製品をZero Trustプラットフォームへシームレスに統合するための取り組みを行っています",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Kabir Sikand",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/05/0.jpeg",
+			"width": 800,
+			"height": 800
+		},
+		"url": "https://blog.cloudflare.com/author/kabir/",
+		"sameAs": [
+			"https://twitter.com/kabirsikand"
+		]
+	},
+	"headline": "Happy Earth Day: Announcing Green Compute open beta",
+	"url": "https://blog.cloudflare.com/earth-day-2022-green-compute-open-beta/",
+	"datePublished": "2022-04-22T12:57:13.000Z",
+	"dateModified": "2022-04-26T20:41:27.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/04/image3-10.png",
+		"width": 1200,
+		"height": 675
+	},
+	"keywords": "Green Compute, Cloudflare Workers, Serverless, Earth Day",
+	"description": "Today, we are happy to announce that we are bringing Green Compute to all our developers",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

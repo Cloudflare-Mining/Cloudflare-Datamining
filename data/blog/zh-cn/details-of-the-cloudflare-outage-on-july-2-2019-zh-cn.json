@@ -1,0 +1,33 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "John Graham-Cumming",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
+		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
+		"sameAs": [
+			"https://twitter.com/jgrahamc"
+		]
+	},
+	"headline": "WAF新规则导致表达式回溯_Cloudflare网络中断事件，全球节点cpu耗尽",
+	"url": "https://blog.cloudflare.com/zh-cn/details-of-the-cloudflare-outage-on-july-2-2019-zh-cn/",
+	"datePublished": "2019-07-12T15:45:00.000Z",
+	"dateModified": "2021-01-28T19:09:39.000Z",
+	"keywords": "简体中文 (CN)",
+	"description": "大约九年前，Cloudflare 还是一家小公司，我也还是一名客户，而不是员工。当时，Cloudflare 在一个月前刚成立，有一天警报消息显示，我的小网站 jgc.org 的DNS不再正常运行。原来是Cloudflare针对Protocol Buffers刚推送了一个更新，而这个更新弄坏了DNS。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,40 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Tim Ruffles",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Screen-Shot-2022-08-18-at-11.51.06-AM.png",
+			"width": 276,
+			"height": 250
+		},
+		"url": "https://blog.cloudflare.com/author/tim/",
+		"sameAs": [
+			"http://truffles.me.uk",
+			"https://twitter.com/timruffles"
+		]
+	},
+	"headline": "How we made our page-load optimisations even faster",
+	"url": "https://blog.cloudflare.com/making-page-load-even-faster/",
+	"datePublished": "2018-02-02T16:41:00.000Z",
+	"dateModified": "2019-06-29T21:07:05.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/02/dimon-blr-309444-1.jpg",
+	"keywords": "Mirage, Rocket Loader, Speed & Reliability, Product News",
+	"description": "We improved the Lighthouse and time-to-first-meaningful-paint scores of two of our web optimisation products: Mirage and Rocket Loader! Combined, these products speed up around 1.2 billion web-pages a week.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

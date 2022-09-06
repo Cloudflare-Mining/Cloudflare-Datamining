@@ -1,0 +1,40 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Patrick R. Donahue",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/me0-1.png",
+			"width": 300,
+			"height": 291
+		},
+		"url": "https://blog.cloudflare.com/author/patrick/",
+		"sameAs": [
+			"https://www.cloudflare.com",
+			"https://twitter.com/prdonahue"
+		]
+	},
+	"headline": "TLS Certificate Optimization: Lazyloading for Legacy Browsers",
+	"url": "https://blog.cloudflare.com/tls-certificate-optimization-technical-details/",
+	"datePublished": "2016-03-23T16:03:04.000Z",
+	"dateModified": "2020-08-14T19:15:21.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/certificate_optimization_logic.png",
+	"keywords": "TLS, HTTPS, Speed & Reliability, SSL, Security",
+	"description": "Back in early December we announced our &quot;no browser left behind&quot; initiative to the world. Since then, we have served well over 500 billion SHA-1 certificates to visitors that otherwise would not have been able to communicate securely with our customers’ sites using HTTPS.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

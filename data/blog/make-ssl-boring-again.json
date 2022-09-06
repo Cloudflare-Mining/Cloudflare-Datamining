@@ -1,0 +1,37 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Alessandro Ghedini",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/09/Ii4TgsoTda2layE131Dk_1204a20b3d1d96bba523a6a2a5fa3cd73bd4fe59240a27ad6eb8c064c6792446.jpg",
+			"width": 600,
+			"height": 600
+		},
+		"url": "https://blog.cloudflare.com/author/alessandro-ghedini/",
+		"sameAs": []
+	},
+	"headline": "Make SSL boring again",
+	"url": "https://blog.cloudflare.com/make-ssl-boring-again/",
+	"datePublished": "2017-12-06T14:00:00.000Z",
+	"dateModified": "2018-08-29T06:34:38.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/curves-metrics-with-logo-1.png",
+	"keywords": "SSL, Product News, TLS 1.3, Security, TLS",
+	"description": "It may (or may not!) come as surprise, but a few months ago we migrated Cloudflare’s edge SSL connection termination stack to use BoringSSL: Google&#x27;s crypto and SSL implementation that started as a fork of OpenSSL.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,32 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Garrett Galow",
+		"image": "http://blog.cloudflare.com/content/images/2018/04/14729279_10207227100946205_2625241094472568444_n.jpg",
+		"url": "https://blog.cloudflare.com/author/garrett/",
+		"sameAs": []
+	},
+	"headline": "SSO Support for the Cloudflare Dashboard",
+	"url": "https://blog.cloudflare.com/introducing-single-sign-on-for-the-cloudflare-dashboard/",
+	"datePublished": "2018-10-10T17:00:00.000Z",
+	"dateModified": "2018-10-10T16:59:59.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/10/Screen-Shot-2018-10-10-at-9.37.23-AM.png",
+	"keywords": "Product News, SaaS, Dashboard, SSO",
+	"description": "As the  number of SaaS services people use everyday grows, it has become more challenging to juggle the number of password and multi-factor authentication combinations users have to keep track of to get online. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

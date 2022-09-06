@@ -1,0 +1,32 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Kamilla Amirova",
+		"image": "http://blog.cloudflare.com/content/images/2017/11/photo.jpg",
+		"url": "https://blog.cloudflare.com/author/kamilla-amirova/",
+		"sameAs": []
+	},
+	"headline": "Creating a single pane of glass for your multi-cloud Kubernetes workloads with Cloudflare",
+	"url": "https://blog.cloudflare.com/creating-a-single-pane-of-glass-for-your-multi-cloud-kubernetes-workloads-with-cloudflare/",
+	"datePublished": "2018-02-23T17:00:00.000Z",
+	"dateModified": "2018-08-29T07:12:50.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/02/Single_Pane_ofglass_Cloudflare-1.png",
+	"keywords": "Google Cloud, Google, Kubernetes, Speed & Reliability, Multi-Cloud, Serverless",
+	"description": "One of the great things about container technology is that it delivers the same experience and functionality across different platforms. This frees you as a developer from having to rewrite or update your application to deploy it on a new cloud provider.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

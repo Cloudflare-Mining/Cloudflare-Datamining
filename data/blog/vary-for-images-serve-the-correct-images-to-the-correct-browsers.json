@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Alex Krivit",
+		"image": "http://blog.cloudflare.com/content/images/2018/08/RE0BQ6EF_400x400.jpg",
+		"url": "https://blog.cloudflare.com/author/alex/",
+		"sameAs": [
+			"https://twitter.com/ackriv"
+		]
+	},
+	"headline": "Vary for Images: Serve the Correct Images to the Correct Browsers",
+	"url": "https://blog.cloudflare.com/vary-for-images-serve-the-correct-images-to-the-correct-browsers/",
+	"datePublished": "2021-09-13T12:58:11.000Z",
+	"dateModified": "2021-09-18T14:21:37.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/09/Vary-Support-1.png",
+		"width": 1801,
+		"height": 1013
+	},
+	"keywords": "Speed Week, Cloudflare Images, Speed & Reliability, Product News",
+	"description": "We’re excited to announce support for Vary, an HTTP header that ensures different content types can be served to user-agents with differing capabilities.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

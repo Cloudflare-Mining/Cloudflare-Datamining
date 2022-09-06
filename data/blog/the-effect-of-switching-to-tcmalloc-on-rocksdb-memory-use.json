@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Dmitry Vorobev",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/02/ABM08198-1.jpg",
+			"width": 600,
+			"height": 600
+		},
+		"url": "https://blog.cloudflare.com/author/dmitry/",
+		"sameAs": []
+	},
+	"headline": "The effect of switching to TCMalloc on RocksDB memory use",
+	"url": "https://blog.cloudflare.com/the-effect-of-switching-to-tcmalloc-on-rocksdb-memory-use/",
+	"datePublished": "2021-02-03T12:00:00.000Z",
+	"dateModified": "2021-02-03T15:20:47.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/02/The-effect-of-switching-to-TCMalloc-on-RocksDB-memory-use-in-blog.png",
+		"width": 1200,
+		"height": 662
+	},
+	"keywords": "Quicksilver, TCMalloc, malloc, RocksDB, Memory",
+	"description": "Memory allocator is an important part of the system, so choosing the right allocator for a workload can give huge benefits. Here is a story of how we decreased service memory usage by almost three times.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

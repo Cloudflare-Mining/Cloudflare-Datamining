@@ -15,14 +15,14 @@ $ vagrant up
 …
 $ vagrant ssh
 Last login: Sun Jan 31 15:08:02 2021 from 192.168.122.1
-[<a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a> ~]$ sudo conntrack -L
+[[email protected] ~]$ sudo conntrack -L
 conntrack v1.4.5 (conntrack-tools): 0 flow entries have been shown.
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>… nothing!</p>
 	<p>Even though the conntrack kernel module is loaded:</p>
 	<!--kg-card-begin: markdown-->
-	<pre><code class="language-ssh">[<a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a> ~]$ lsmod | grep '^nf_conntrack\b'
+	<pre><code class="language-ssh">[[email protected] ~]$ lsmod | grep '^nf_conntrack\b'
 nf_conntrack          163840  1 nf_conntrack_netlink
 </code></pre>
 	<!--kg-card-end: markdown-->
@@ -56,19 +56,19 @@ nf_conntrack          163840  1 nf_conntrack_netlink
 	<p>The SSH connection doesn’t show up in the conntrack table just because the module is loaded. We already saw that. This means that conntrack doesn’t register its callbacks with Netfilter at module load time.</p>
 	<p>Or at least, it doesn't do it by <em>default</em>. Since Linux v5.1 (May 2019) the conntrack module has the <a href="https://github.com/torvalds/linux/commit/ba3fbe663635ae7b33a2d972c5d2def036258e42" target="_blank">enable_hooks parameter</a>, which causes conntrack to register its callbacks on load:</p>
 	<!--kg-card-begin: markdown-->
-	<pre><code class="language-ssh">[<a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a> ~]$ modinfo nf_conntrack
+	<pre><code class="language-ssh">[[email protected] ~]$ modinfo nf_conntrack
 …
 parm:           enable_hooks:Always enable conntrack hooks (bool)
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>Going back to our toy VM, let’s try to reload the conntrack module with enable_hooks set:</p>
 	<!--kg-card-begin: markdown-->
-	<pre><code class="language-ssh">[<a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a> ~]$ sudo rmmod nf_conntrack_netlink nf_conntrack
-[<a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a> ~]$ sudo modprobe nf_conntrack enable_hooks=1
-[<a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a> ~]$ sudo conntrack -L
+	<pre><code class="language-ssh">[[email protected] ~]$ sudo rmmod nf_conntrack_netlink nf_conntrack
+[[email protected] ~]$ sudo modprobe nf_conntrack enable_hooks=1
+[[email protected] ~]$ sudo conntrack -L
 tcp      6 431999 ESTABLISHED src=192.168.122.204 dst=192.168.122.1 sport=22 dport=34858 src=192.168.122.1 dst=192.168.122.204 sport=34858 dport=22 [ASSURED] mark=0 secctx=system_u:object_r:unlabeled_t:s0 use=1
 conntrack v1.4.5 (conntrack-tools): 1 flow entries have been shown.
-[<a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a> ~]$
+[[email protected] ~]$
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>Nice! The conntrack table now contains an entry for our SSH session.</p>
@@ -82,7 +82,7 @@ conntrack v1.4.5 (conntrack-tools): 1 flow entries have been shown.
 	</ol>
 	<!--kg-card-end: markdown-->
 	<!--kg-card-begin: markdown-->
-	<pre><code class="language-ssh">[<a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a> ~]$ sudo iptables -t filter -A INPUT -p tcp --dport 2570 -j DROP
+	<pre><code class="language-ssh">[[email protected] ~]$ sudo iptables -t filter -A INPUT -p tcp --dport 2570 -j DROP
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>2) Connect to the VM on port tcp/2570 from the outside</p>
@@ -92,7 +92,7 @@ conntrack v1.4.5 (conntrack-tools): 1 flow entries have been shown.
 	<!--kg-card-end: markdown-->
 	<p>3) List conntrack table entries</p>
 	<!--kg-card-begin: markdown-->
-	<pre><code class="language-ssh">[<a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a> ~]$ sudo conntrack -L
+	<pre><code class="language-ssh">[[email protected] ~]$ sudo conntrack -L
 tcp      6 431999 ESTABLISHED src=192.168.122.204 dst=192.168.122.1 sport=22 dport=34858 src=192.168.122.1 dst=192.168.122.204 sport=34858 dport=22 [ASSURED] mark=0 secctx=system_u:object_r:unlabeled_t:s0 use=1
 conntrack v1.4.5 (conntrack-tools): 1 flow entries have been shown.
 </code></pre>
@@ -123,7 +123,7 @@ conntrack v1.4.5 (conntrack-tools): 1 flow entries have been shown.
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image3-3.png" class="kg-image"></figure>
 	<p>With <a href="https://github.com/osandov/drgn" target="_blank">drgn</a>, a programmable C debugger tailored for the Linux kernel, we can locate the Netfilter state in kernel memory, and walk its contents relatively easily. Given we know what we are looking for.</p>
 	<!--kg-card-begin: markdown-->
-	<pre><code class="language-ssh">[<a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a> ~]$ sudo drgn
+	<pre><code class="language-ssh">[[email protected] ~]$ sudo drgn
 drgn 0.0.8 (using Python 3.9.1, without libkdumpfile)
 …
 &gt;&gt;&gt; pre_routing_hook = prog['init_net'].nf.hooks_ipv4[0]
@@ -138,7 +138,7 @@ drgn 0.0.8 (using Python 3.9.1, without libkdumpfile)
 	<p>Neat! We have a way to access Netfilter state.</p>
 	<p>Let’s take it to the next level and list all registered callbacks for each Netfilter hook (using <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2021-03-conntrack-syn-drop/tools/list-nf-hooks" target="_blank">less than 100 lines of Python</a>):</p>
 	<!--kg-card-begin: markdown-->
-	<pre><code class="language-ssh">[<a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a> ~]$ sudo /vagrant/tools/list-nf-hooks
+	<pre><code class="language-ssh">[[email protected] ~]$ sudo /vagrant/tools/list-nf-hooks
 🪝 ipv4 PRE_ROUTING
        -400 → ipv4_conntrack_defrag     ☜ conntrack callback
        -300 → iptable_raw_hook
@@ -194,14 +194,14 @@ kprobe:ipv4_conntrack_in
 	<p>(If you haven’t used bpftrace, it comes with an excellent <a href="https://github.com/iovisor/bpftrace/blob/master/docs/reference_guide.md" target="_blank">reference guide</a> and gives you the ability to explore kernel data types on the fly with <code>bpftrace -lv 'struct iphdr'</code>.)</p>
 	<p>Let’s run the tracing program while we connect to the VM from the outside (<code>nc -z 192.168.122.204 2570</code>):</p>
 	<!--kg-card-begin: markdown-->
-	<pre><code class="language-ssh">[<a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a> ~]$ sudo bpftrace /vagrant/tools/trace-conntrack-prerouting.bt
+	<pre><code class="language-ssh">[[email protected] ~]$ sudo bpftrace /vagrant/tools/trace-conntrack-prerouting.bt
 Attaching 3 probes...
 Tracing conntrack prerouting callbacks... Hit Ctrl-C to quit
 13:22:56 192.168.122.1:33254 &gt; 192.168.122.204:2570 tcp syn ipv4_conntrack_defrag
 13:22:56 192.168.122.1:33254 &gt; 192.168.122.204:2570 tcp syn ipv4_conntrack_in
 ^C
 
-[<a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a> ~]$
+[[email protected] ~]$
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>Conntrack callbacks have processed the TCP SYN packet destined to tcp/2570.</p>
@@ -219,11 +219,11 @@ Tracing conntrack prerouting callbacks... Hit Ctrl-C to quit
 
 host $ virsh -c qemu:///session console conntrack_default
 Once connected to the console and logged into the VM, we can record the call chain using the trace-cmd wrapper for Ftrace:
-[<a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a> ~]$ sudo trace-cmd start -p function_graph -g ipv4_conntrack_defrag -g ipv4_conntrack_in
+[[email protected] ~]$ sudo trace-cmd start -p function_graph -g ipv4_conntrack_defrag -g ipv4_conntrack_in
   plugin 'function_graph'
-[<a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a> ~]$ # … connect from the host with `nc -z 192.168.122.204 2570` …
-[<a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a> ~]$ sudo trace-cmd stop
-[<a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a> ~]$ sudo cat /sys/kernel/debug/tracing/trace
+[[email protected] ~]$ # … connect from the host with `nc -z 192.168.122.204 2570` …
+[[email protected] ~]$ sudo trace-cmd stop
+[[email protected] ~]$ sudo cat /sys/kernel/debug/tracing/trace
 # tracer: function_graph
 #
 # CPU  DURATION                  FUNCTION CALLS
@@ -249,7 +249,7 @@ Once connected to the console and logged into the VM, we can record the call cha
  1) + 34.595 us   |    }
  1) + 35.742 us   |  }
  …
-[<a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a> ~]$
+[[email protected] ~]$
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>What catches our attention here is the allocation, <a href="https://elixir.bootlin.com/linux/v5.10.14/source/net/netfilter/nf_conntrack_core.c#L1471" target="_blank">__nf_conntrack_alloc()</a> (❶), inside <code>init_conntrack() (❷). __nf_conntrack_alloc()</code> creates a <a href="https://elixir.bootlin.com/linux/v5.10.14/source/include/net/netfilter/nf_conntrack.h#L58" target="_blank">struct nf_conn</a> object which represents a tracked connection.</p>
@@ -270,9 +270,9 @@ Once connected to the console and logged into the VM, we can record the call cha
 	<h2 id="pulling-the-rabbit-out-of-the-hat">Pulling the rabbit out of the hat</h2>
 	<p>I have bad news…</p>
 	<!--kg-card-begin: markdown-->
-	<pre><code class="language-ssh">[<a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a> ~]$ sudo conntrack -L unconfirmed
+	<pre><code class="language-ssh">[[email protected] ~]$ sudo conntrack -L unconfirmed
 conntrack v1.4.5 (conntrack-tools): 0 flow entries have been shown.
-[<a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a> ~]$
+[[email protected] ~]$
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>The flow is not present in the unconfirmed table. We have to dig deeper.</p>
@@ -286,7 +286,7 @@ conntrack v1.4.5 (conntrack-tools): 0 flow entries have been shown.
 	<!--kg-card-end: markdown-->
 	<p>With <code>bpftrace</code> running our one-liner, we connect to the VM from the host with <code>nc</code> as before:</p>
 	<!--kg-card-begin: markdown-->
-	<pre><code class="language-ssh">[<a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a> ~]$ sudo bpftrace -e 'kprobe:nf_ct_del_from_dying_or_unconfirmed_list { @[kstack()] = count(); exit(); }'
+	<pre><code class="language-ssh">[[email protected] ~]$ sudo bpftrace -e 'kprobe:nf_ct_del_from_dying_or_unconfirmed_list { @[kstack()] = count(); exit(); }'
 Attaching 1 probe...
 
 @[
@@ -306,7 +306,7 @@ Attaching 1 probe...
     …
 ]: 1
 
-[<a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a> ~]$
+[[email protected] ~]$
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>Bingo. The conntrack delete function was called, and the captured stack trace shows that on local delivery path (❶), where <code>LOCAL_IN</code> Netfilter hook runs (❷), the packet is destroyed (❸). Conntrack must be getting called when <a href="https://elixir.bootlin.com/linux/v5.10.14/source/include/linux/skbuff.h#L713" target="_blank">sk_buff</a> (the packet and its metadata) is destroyed. This causes conntrack to remove the unconfirmed flow entry (❹).</p>
@@ -316,7 +316,7 @@ Attaching 1 probe...
 	<h2 id="making-the-rabbit-disappear-or-actually-appear">Making the rabbit disappear, or actually appear</h2>
 	<p>If you recall the output from <code>list-nf-hooks</code> that we’ve seen earlier, there is another conntrack callback there - <code>ipv4_confirm</code>, which I have ignored:</p>
 	<!--kg-card-begin: markdown-->
-	<pre><code class="language-ssh">[<a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a> ~]$ sudo /vagrant/tools/list-nf-hooks
+	<pre><code class="language-ssh">[[email protected] ~]$ sudo /vagrant/tools/list-nf-hooks
 …
 🪝 ipv4 LOCAL_IN
        -150 → iptable_mangle_hook

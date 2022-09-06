@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Lucas Pardue",
+		"image": "http://blog.cloudflare.com/content/images/2018/12/Lucas---KIN01111.jpg",
+		"url": "https://blog.cloudflare.com/author/lucas/",
+		"sameAs": [
+			"https://twitter.com/SimmerVigor"
+		]
+	},
+	"headline": "ssl与tls的历史，全方面介绍HTTP3_Cloudflare",
+	"url": "https://blog.cloudflare.com/zh-cn/http-3-from-root-to-tip-zh-cn/",
+	"datePublished": "2019-01-24T17:57:00.000Z",
+	"dateModified": "2021-01-28T18:49:35.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2019/07/layer-cake-diagram-copy-2@2x.png",
+		"width": 1028,
+		"height": 787
+	},
+	"keywords": "安全, 简体中文 (CN), TLS (ZH), QUIC (ZH)",
+	"description": "HTTP是支持Web的应用程序协议。在1991年，它以所谓的HTTP/0.9协议开始，到1999年发展为HTTP/1.1，并在IETF (Internet Engineering Task Force)中标准化。HTTP/1.1在很长一段时间内已经表现得足够好了，但是Web上不断变化的需求使得我们需要一个更适合的协议，于是HTTP/2在2015年出现了。最近又有新闻宣称IETF打算提供一个新版本——HTTP/3。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

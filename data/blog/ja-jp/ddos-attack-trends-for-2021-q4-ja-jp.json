@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Omer Yoachimik",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/Omer-1.png",
+			"width": 773,
+			"height": 653
+		},
+		"url": "https://blog.cloudflare.com/author/omer/",
+		"sameAs": [
+			"https://twitter.com/OmerYoahimik"
+		]
+	},
+	"headline": "2021年第4四半期におけるDDoS攻撃の傾向",
+	"url": "https://blog.cloudflare.com/ja-jp/ddos-attack-trends-for-2021-q4-ja-jp/",
+	"datePublished": "2022-01-10T13:58:23.000Z",
+	"dateModified": "2022-01-10T13:58:23.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/01/image3-11.png",
+		"width": 1920,
+		"height": 1080
+	},
+	"keywords": "DDoS (JP), Cloudflare Radar (JP), RDDoS (JP), VoIP (JP), 攻撃, 動向, ランサムDDoS",
+	"description": "2021年上半期には、世界中の重要なインフラストラクチャの複数の側面（米国最大の石油パイプラインシステム運営会社の1つを含む）を妨害する大規模なランサムウェアとランサムDDoS攻撃キャンペーンや、学校、公共機関、旅行団体、信用金庫などを対象としたIT管理ソフトの脆弱性などの問題が発生しました",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

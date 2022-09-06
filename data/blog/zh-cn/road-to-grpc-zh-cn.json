@@ -1,0 +1,45 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Junho Choi",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/05/junho_profile_300x300--1-.jpg",
+			"width": 300,
+			"height": 300
+		},
+		"url": "https://blog.cloudflare.com/author/junho/",
+		"sameAs": [
+			"https://saturnsoft.net",
+			"https://twitter.com/junhochoi"
+		]
+	},
+	"headline": "gRPC 之路",
+	"url": "https://blog.cloudflare.com/zh-cn/road-to-grpc-zh-cn/",
+	"datePublished": "2020-10-26T16:40:00.000Z",
+	"dateModified": "2021-01-27T03:52:59.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2020/12/image1-37-1.png",
+		"width": 2000,
+		"height": 950
+	},
+	"keywords": "简体中文 (CN), gRPC (CN)",
+	"description": "在 2020 年生日周期间，Cloudflare 发布了对 gRPC® 的支持。大家对 Beta 测试的浓厚兴趣令我们受宠若惊，在此我们向所有申请并试用 gRPC 的人致以衷心感谢！在本文中，我们将深入探讨有关如何实施这一支持的技术细节。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

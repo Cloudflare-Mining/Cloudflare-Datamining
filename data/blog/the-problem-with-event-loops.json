@@ -1,0 +1,37 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Julien Desgats",
+		"image": "http://blog.cloudflare.com/content/images/2017/06/profile-square-small.jpg",
+		"url": "https://blog.cloudflare.com/author/julien-desgats/",
+		"sameAs": []
+	},
+	"headline": "The problem with thread^W event loops",
+	"url": "https://blog.cloudflare.com/the-problem-with-event-loops/",
+	"datePublished": "2020-03-18T12:00:00.000Z",
+	"dateModified": "2020-03-20T11:13:18.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2020/03/evpool-sequence-diagram@2x.png",
+		"width": 1772,
+		"height": 995
+	},
+	"keywords": "NGINX, Linux",
+	"description": "Back when Cloudflare was created, over 10 years ago now, the dominant HTTP server used to power websites was Apache httpd. However, we decided to build our infrastructure using the then relatively new NGINX server.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

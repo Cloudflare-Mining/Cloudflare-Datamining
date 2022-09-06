@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Sam Rhea",
+		"image": "http://blog.cloudflare.com/content/images/2018/07/photo-for-profile.jpg",
+		"url": "https://blog.cloudflare.com/author/sam/",
+		"sameAs": [
+			"https://twitter.com/LakeAustinBlvd"
+		]
+	},
+	"headline": "A single dashboard for Cloudflare for Teams",
+	"url": "https://blog.cloudflare.com/a-single-dashboard-for-cloudflare-for-teams/",
+	"datePublished": "2020-05-04T14:00:00.000Z",
+	"dateModified": "2022-04-26T23:25:29.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2020/05/blog-featured-image.png",
+		"width": 1200,
+		"height": 600
+	},
+	"keywords": "Cloudflare Zero Trust, Cloudflare Access, Cloudflare Gateway, Zero Trust, SSO, Product News, Security, Teams Dashboard",
+	"description": "Cloudflare Access is now available in the Cloudflare for Teams UI. You can now manage application and threat security for your organization in a single dashboard.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

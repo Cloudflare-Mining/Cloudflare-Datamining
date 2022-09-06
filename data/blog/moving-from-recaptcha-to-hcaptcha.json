@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew Prince",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
+			"width": 1196,
+			"height": 1190
+		},
+		"url": "https://blog.cloudflare.com/author/matthew-prince/",
+		"sameAs": [
+			"https://twitter.com/eastdakota"
+		]
+	},
+	"headline": "Moving from reCAPTCHA to hCaptcha",
+	"url": "https://blog.cloudflare.com/moving-from-recaptcha-to-hcaptcha/",
+	"datePublished": "2020-04-08T13:00:00.000Z",
+	"dateModified": "2020-06-26T20:47:57.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2020/04/image3-5.png",
+		"width": 1999,
+		"height": 1043
+	},
+	"keywords": "hCaptcha, Speed & Reliability, Security, Product News",
+	"description": "We recently migrated the CAPTCHA provider we use from Google&#x27;s reCAPTCHA to a service provided by the independent hCaptcha. Since this change potentially impacts all Cloudflare customers, we wanted to walk through the rationale in more detail.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

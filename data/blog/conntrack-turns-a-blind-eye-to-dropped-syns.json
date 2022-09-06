@@ -1,0 +1,37 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Jakub Sitnicki",
+		"image": "http://blog.cloudflare.com/content/images/2019/05/4_300698554542850065.jpg",
+		"url": "https://blog.cloudflare.com/author/jakub/",
+		"sameAs": []
+	},
+	"headline": "Conntrack turns a blind eye to dropped SYNs",
+	"url": "https://blog.cloudflare.com/conntrack-turns-a-blind-eye-to-dropped-syns/",
+	"datePublished": "2021-03-04T12:00:00.000Z",
+	"dateModified": "2021-03-04T12:00:00.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/03/image2.jpg",
+		"width": 1280,
+		"height": 853
+	},
+	"keywords": "Conntrack, Linux, Network, Kernel, Tracing",
+	"description": "We have been dealing with conntrack, the connection tracking layer in the Linux kernel, for years. And yet, despite the collected know-how, questions about its inner workings occasionally come up. When they do, it is hard to resist the temptation to go digging for answers.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,34 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "John Graham-Cumming",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
+		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
+		"sameAs": [
+			"https://twitter.com/jgrahamc"
+		]
+	},
+	"headline": "Go at CloudFlare",
+	"url": "https://blog.cloudflare.com/go-at-cloudflare/",
+	"datePublished": "2012-07-03T15:21:00.000Z",
+	"dateModified": "2019-06-29T21:20:27.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/02/1320968710.jpeg.scaled500.jpg",
+	"keywords": "Go, Railgun, JavaScript, Deep Dive, Programming",
+	"description": "The other day I blogged here about our new Railgun software that speeds up the back haul between CloudFlare data centers and our clients&#x27; servers. At CloudFlare we&#x27;re using a number of different languages depending on the task.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

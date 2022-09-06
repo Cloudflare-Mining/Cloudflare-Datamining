@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Michael Tremante",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/url-3.jpg",
+		"url": "https://blog.cloudflare.com/author/michael-tremante/",
+		"sameAs": [
+			"https://twitter.com/MichaelTremante"
+		]
+	},
+	"headline": "Encrypting your WAF Payloads with Hybrid Public Key Encryption (HPKE)",
+	"url": "https://blog.cloudflare.com/encrypt-waf-payloads-hpke/",
+	"datePublished": "2020-12-11T15:00:00.000Z",
+	"dateModified": "2021-01-27T21:49:08.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/01/Hybrid-WAF-keys-1.png",
+		"width": 1600,
+		"height": 800
+	},
+	"keywords": "Privacy Week, WAF, WAF Rules, Security, Firewall",
+	"description": "Allowing logging for payloads that trigger the Web Application Firewall has always led to end-user privacy concerns. We built encrypted matched payload logging to solve this!",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

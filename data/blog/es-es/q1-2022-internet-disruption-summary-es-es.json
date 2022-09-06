@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "David Belson",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/01/headshot-grayscale-crop.jpeg",
+			"width": 526,
+			"height": 480
+		},
+		"url": "https://blog.cloudflare.com/author/david-belson/",
+		"sameAs": [
+			"https://twitter.com/dbelson"
+		]
+	},
+	"headline": "Panorama de las interrupciones de Internet en el 1.er trimestre de 2022",
+	"url": "https://blog.cloudflare.com/es-es/q1-2022-internet-disruption-summary-es-es/",
+	"datePublished": "2022-04-04T15:36:00.000Z",
+	"dateModified": "2022-04-12T08:07:19.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/04/image5-4-1.png",
+		"width": 1200,
+		"height": 675
+	},
+	"keywords": "Cloudflare Radar (ES)",
+	"description": "En esta publicación, revisamos una selección de las interrupciones de Internet que hemos observado durante el primer trimestre de 2022 e incluimos gráficos del tráfico de Cloudflare Radar y otras de nuestras herramientas internas, agrupadas por la causa asociada",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

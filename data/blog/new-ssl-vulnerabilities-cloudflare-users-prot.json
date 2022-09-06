@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew Prince",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
+			"width": 1196,
+			"height": 1190
+		},
+		"url": "https://blog.cloudflare.com/author/matthew-prince/",
+		"sameAs": [
+			"https://twitter.com/eastdakota"
+		]
+	},
+	"headline": "New &quot;Lucky Thirteen&quot; SSL Vulnerabilities: CloudFlare Users Protected",
+	"url": "https://blog.cloudflare.com/new-ssl-vulnerabilities-cloudflare-users-prot/",
+	"datePublished": "2013-02-04T14:26:00.000Z",
+	"dateModified": "2018-08-27T21:08:43.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/cloudflare_secure_ssl.png.scaled500-1.png",
+	"keywords": "TLS, SSL, Vulnerabilities, Security",
+	"description": "CloudFlare often gets early word of new vulnerabilities before they are released. Last week we got word that today (Monday, February 4, 2013) there would be a new SSL vulnerability announced. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,34 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Junade Ali",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/G1VwuaxB.jpg",
+		"url": "https://blog.cloudflare.com/author/junade-ali/",
+		"sameAs": [
+			"https://twitter.com/IcyApril"
+		]
+	},
+	"headline": "A New API Binding: cloudflare-php",
+	"url": "https://blog.cloudflare.com/cloudflare-php-api-binding/",
+	"datePublished": "2017-09-23T00:01:35.000Z",
+	"dateModified": "2018-08-29T02:01:35.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2017/09/A80E511F-98BF-422F-B39A-22D51DA0A3BA-1.JPG",
+	"keywords": "php, API, Programming, Developers, Python",
+	"description": "Back in May last year, one of my colleagues blogged about the introduction of our Python binding for the Cloudflare API and drew reference to our other bindings in Go and Node. Today we are complimenting this range by introducing a new official binding, this time in PHP.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

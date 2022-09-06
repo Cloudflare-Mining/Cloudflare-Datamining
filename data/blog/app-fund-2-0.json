@@ -1,0 +1,33 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Jonathan Bruce",
+		"image": "http://blog.cloudflare.com/content/images/2018/08/Screen-Shot-2018-08-03-at-10.55.24-AM.png",
+		"url": "https://blog.cloudflare.com/author/jonathan/",
+		"sameAs": [
+			"https://twitter.com/jonbruce"
+		]
+	},
+	"headline": "Cloudflare Apps Fund 2.0",
+	"url": "https://blog.cloudflare.com/app-fund-2-0/",
+	"datePublished": "2018-11-30T08:52:00.000Z",
+	"dateModified": "2018-12-03T20:40:00.000Z",
+	"keywords": "Cloudflare Apps, Serverless, Cloudflare Workers, Developers",
+	"description": "Today we are launching the second iteration of the Cloudflare App Developer Fund. This is an investment fund started in partnership with Venrock, Pelion Venture Partners, and New Enterprise Associates.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

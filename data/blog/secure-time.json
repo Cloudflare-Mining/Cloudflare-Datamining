@@ -1,0 +1,37 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Aanchal Malhotra",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/08/0-1.jpeg",
+			"width": 337,
+			"height": 337
+		},
+		"url": "https://blog.cloudflare.com/author/aanchal/",
+		"sameAs": []
+	},
+	"headline": "Introducing time.cloudflare.com",
+	"url": "https://blog.cloudflare.com/secure-time/",
+	"datePublished": "2019-06-21T13:00:00.000Z",
+	"dateModified": "2021-09-20T18:04:23.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2019/06/time-service@3x.png",
+	"keywords": "Crypto, Crypto Week, Cryptography, Product News, Security, Research",
+	"description": "Cloudflare has always been a leader in deploying secure versions of insecure Internet protocols and making them available for free for anyone to use. In 2014, we launched one of the world’s first free, secure HTTPS service (Universal SSL) to go along with our existing free HTTP plan. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

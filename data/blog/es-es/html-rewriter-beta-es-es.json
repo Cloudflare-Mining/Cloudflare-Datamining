@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Rita Kozlov",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/05/Rita-Kozlov.jpeg",
+			"width": 200,
+			"height": 200
+		},
+		"url": "https://blog.cloudflare.com/author/rita/",
+		"sameAs": [
+			"https://twitter.com/ritakozlov_"
+		]
+	},
+	"headline": "No tan estático... Presentamos la versión Beta de LA API HTMLRewriter a Cloudflare Workers",
+	"url": "https://blog.cloudflare.com/es-es/html-rewriter-beta-es-es/",
+	"datePublished": "2019-09-30T17:00:00.000Z",
+	"dateModified": "2021-01-21T19:09:16.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2019/11/HTML-rewrriter-beta@2x-1-2.png",
+		"width": 3111,
+		"height": 1594
+	},
+	"keywords": "Español, Workers Sites (ES), Sin servidor, Cloudflare Workers (ES), JavaScript (ES)",
+	"description": "Hoy nos complace anunciar la versión beta de HTMLRewriter, un analizador HTML de transmisión con una API JavaScript basada en selector fácil de usar para la manipulación DOM, disponible en el tiempo de ejecución de Cloudflare Workers.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Corey Mahan",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/02/CoreyMahan_ProfilePhoto.jpg",
+			"width": 2000,
+			"height": 1659
+		},
+		"url": "https://blog.cloudflare.com/author/corey-mahan/",
+		"sameAs": [
+			"https://twitter.com/coreymahan"
+		]
+	},
+	"headline": "Novedad: Gateway y CASB",
+	"url": "https://blog.cloudflare.com/es-es/announcing-gateway-and-casb-es-es/",
+	"datePublished": "2022-06-24T13:00:30.000Z",
+	"dateModified": "2022-06-27T09:05:24.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/06/Screenshot-2022-06-21-at-09.41.25.png",
+		"width": 1232,
+		"height": 700
+	},
+	"keywords": "Cloudflare One Week (ES), CASB (ES), Zero Trust (ES), Noticias sobre productos, Secure Web Gateway (ES), Español",
+	"description": "Detecta y soluciona elementos de Shadow IT con la puerta de enlace web segura y el agente de seguridad de acceso a la nube (CASB) basado en la API de Cloudflare",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

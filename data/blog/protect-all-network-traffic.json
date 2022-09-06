@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Annika Garbers",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/annika.png",
+			"width": 400,
+			"height": 400
+		},
+		"url": "https://blog.cloudflare.com/author/annika/",
+		"sameAs": [
+			"https://twitter.com/annikagarbers"
+		]
+	},
+	"headline": "Protect all network traffic with Cloudflare",
+	"url": "https://blog.cloudflare.com/protect-all-network-traffic/",
+	"datePublished": "2022-03-17T12:59:25.000Z",
+	"dateModified": "2022-06-07T15:57:15.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/03/image1-61.png",
+		"width": 1800,
+		"height": 1013
+	},
+	"keywords": "Security Week, Cloudflare Network, Magic Transit, Security, Product News",
+	"description": "Today, we’re extending the availability of Magic Transit to customers with smaller networks by offering Magic Transit-protected, Cloudflare-managed IP space",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

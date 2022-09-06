@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Marek Majkowski",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/b5967d6c687939594adb6992723d0529.jpeg",
+		"url": "https://blog.cloudflare.com/author/marek-majkowski/",
+		"sameAs": [
+			"https://twitter.com/majek04"
+		]
+	},
+	"headline": "Abuso del firewall de Linux: el hack que nos permitió crear Spectrum",
+	"url": "https://blog.cloudflare.com/es-es/how-we-built-spectrum-es-es/",
+	"datePublished": "2018-04-12T13:00:00.000Z",
+	"dateModified": "2021-01-21T19:16:18.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2019/10/image2--1-.jpg",
+		"width": 640,
+		"height": 425
+	},
+	"keywords": "Noticias de productos, Velocidad y confiabilidad, Seguridad, Español, Cloudflare Spectrum (ES), DDoS (ES)",
+	"description": "Hoy presentamos Spectrum:una nueva función de Cloudflare que brinda protección contra ataques DDoS, equilibrio de carga y aceleración de contenido a cualquier protocolo de control de transmisión (TCP).",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

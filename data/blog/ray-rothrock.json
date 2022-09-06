@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "John Graham-Cumming",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
+		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
+		"sameAs": [
+			"https://twitter.com/jgrahamc"
+		]
+	},
+	"headline": "The Network is the Computer: A Conversation with Ray Rothrock",
+	"url": "https://blog.cloudflare.com/ray-rothrock/",
+	"datePublished": "2019-07-11T13:02:00.000Z",
+	"dateModified": "2019-07-12T17:09:13.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2019/07/NetworkIsTheComputer-Alt3--1--1.png",
+		"width": 1500,
+		"height": 1305
+	},
+	"keywords": "Network, Brand, Serverless, Cloudflare Workers",
+	"description": "Last week I spoke with Ray Rothrock, former Director of CAD/CAM Marketing at Sun Microsystems, to discuss his time at Sun and how the Internet has evolved. In this conversation, Ray discusses the importance of trust as a principle, the growth of Sun in sales and marketing",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

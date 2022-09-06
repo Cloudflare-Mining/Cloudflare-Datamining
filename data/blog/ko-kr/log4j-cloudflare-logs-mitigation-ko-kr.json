@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Jon Levine",
+		"image": "http://blog.cloudflare.com/content/images/2018/04/prof-crop.jpg",
+		"url": "https://blog.cloudflare.com/author/jpl/",
+		"sameAs": [
+			"https://twitter.com/jplevine"
+		]
+	},
+	"headline": "Log4j 취약점으로부터 고객을 보호하기 위한 Cloudflare Logs 삭제",
+	"url": "https://blog.cloudflare.com/ko-kr/log4j-cloudflare-logs-mitigation-ko-kr/",
+	"datePublished": "2021-12-14T10:23:00.000Z",
+	"dateModified": "2021-12-28T23:26:52.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/12/Sanitizing-Cloudflare-Logs-to-protect-customers-from-Log4j-vulnerability-OG-3-2.png",
+		"width": 1200,
+		"height": 628
+	},
+	"keywords": "취약점, Log4J (KO), Log4Shell (KO), 한국어",
+	"description": "2021년 12월 9일에 모두가 Apache Log4j 유틸리티에 영향을 주는 제로 데이 취약점 공격인 CVE-2021-44228에 대해 알게 되었습니다. Cloudflare에서는 이러한 취약점으로부터 ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

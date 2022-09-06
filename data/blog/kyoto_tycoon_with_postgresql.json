@@ -1,0 +1,32 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matvey Arye",
+		"image": "http://blog.cloudflare.com/content/images/2018/02/AAEAAQAAAAAAAANKAAAAJGFlNGQxYTI5LTIwZjMtNDNjZC1iYzVmLWUyZGYwMTUxOGEyMQ.jpg",
+		"url": "https://blog.cloudflare.com/author/matvey-arye/",
+		"sameAs": []
+	},
+	"headline": "Integrating Kyoto Tycoon With PostgreSQL",
+	"url": "https://blog.cloudflare.com/kyoto_tycoon_with_postgresql/",
+	"datePublished": "2013-07-08T06:00:00.000Z",
+	"dateModified": "2020-08-20T23:27:54.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/pg_kt.png",
+	"keywords": "SQL, Speed & Reliability, Cloudflare Network",
+	"description": "CloudFlare has Points of Presence (PoPs) in 23 datacenters around the world and plans to expand to many more soon. It also has a single portal, CloudFlare.com, where website owners interact with the system. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

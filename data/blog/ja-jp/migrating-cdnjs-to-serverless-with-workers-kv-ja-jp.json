@@ -1,0 +1,45 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Tyler Caslin",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/08/pic.JPG",
+			"width": 960,
+			"height": 959
+		},
+		"url": "https://blog.cloudflare.com/author/tyler/",
+		"sameAs": [
+			"https://github.com/tc80",
+			"https://twitter.com/tycaslin"
+		]
+	},
+	"headline": "Workers KVを使って、cdnjsをサーバーレスに移行する",
+	"url": "https://blog.cloudflare.com/ja-jp/migrating-cdnjs-to-serverless-with-workers-kv-ja-jp/",
+	"datePublished": "2020-09-10T11:18:00.000Z",
+	"dateModified": "2022-01-05T20:23:44.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2020/11/image4-1-1.png",
+		"width": 1200,
+		"height": 713
+	},
+	"keywords": "日本語, CDNJS (JP), Cloudflare Workers KV (JP), Cloudflare Workers (JP), サーバーレス",
+	"description": "Cloudflareはcdnjsを運用しています。cdnjsは、オープンソースプロジェクトで、人気のJavaScriptライブラリとリソースをCloudflare Workersのネットワークを経由して配信することで、Webサイトを加速させます。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

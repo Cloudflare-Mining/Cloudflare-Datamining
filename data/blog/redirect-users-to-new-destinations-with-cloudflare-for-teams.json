@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Sam Rhea",
+		"image": "http://blog.cloudflare.com/content/images/2018/07/photo-for-profile.jpg",
+		"url": "https://blog.cloudflare.com/author/sam/",
+		"sameAs": [
+			"https://twitter.com/LakeAustinBlvd"
+		]
+	},
+	"headline": "Resolve internal hostnames with Cloudflare for Teams",
+	"url": "https://blog.cloudflare.com/redirect-users-to-new-destinations-with-cloudflare-for-teams/",
+	"datePublished": "2020-05-19T11:00:00.000Z",
+	"dateModified": "2022-04-26T23:23:58.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2020/05/image12-2.png",
+		"width": 1200,
+		"height": 600
+	},
+	"keywords": "Cloudflare Zero Trust, Cloudflare Gateway, DNS Filtering, DNS Security, Cloud Firewall, Product News, Security, Zero Trust",
+	"description": "Cloudflare for Teams customers can customize the destination for any domain name queried by devices using Cloudflare Gateway.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

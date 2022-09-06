@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Alex Davidson",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/10/pic_of_me.jpg",
+			"width": 600,
+			"height": 600
+		},
+		"url": "https://blog.cloudflare.com/author/alex-davidson/",
+		"sameAs": []
+	},
+	"headline": "Supporting the latest version of the Privacy Pass Protocol",
+	"url": "https://blog.cloudflare.com/supporting-the-latest-version-of-the-privacy-pass-protocol/",
+	"datePublished": "2019-10-28T13:00:00.000Z",
+	"dateModified": "2021-09-20T17:55:13.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2019/10/Screen-Shot-2019-10-27-at-7.05.21-PM-1.png",
+		"width": 2000,
+		"height": 1025
+	},
+	"keywords": "Crypto Week, Privacy Pass, Security, Crypto, Research",
+	"description": "At Cloudflare, we are committed to supporting and developing new privacy-preserving technologies that benefit all Internet users. In November 2017, we announced server-side support for the Privacy Pass protocol, a piece of work developed in collaboration with the academic community.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

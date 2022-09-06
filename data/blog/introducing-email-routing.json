@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "João Sousa Botto",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/07/profile2.jpg",
+			"width": 2000,
+			"height": 2026
+		},
+		"url": "https://blog.cloudflare.com/author/joao/",
+		"sameAs": [
+			"https://twitter.com/jsbotto"
+		]
+	},
+	"headline": "Easily creating and routing email addresses with Cloudflare Email Routing",
+	"url": "https://blog.cloudflare.com/introducing-email-routing/",
+	"datePublished": "2021-09-27T12:59:43.000Z",
+	"dateModified": "2022-07-29T18:33:38.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/09/image2-33.png",
+		"width": 1800,
+		"height": 1013
+	},
+	"keywords": "Birthday Week, Product News, Email Routing",
+	"description": "You can now easily and quickly create email addresses for domain, and forward to them all to your preferred inbox, like Gmail or Outlook. Cloudflare Email Forwarding is completely free, and always respects your privacy, by not storing or looking into your emails.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

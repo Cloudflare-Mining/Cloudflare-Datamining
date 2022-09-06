@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Chris J Arges",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/12/chris.jpg",
+			"width": 1342,
+			"height": 1342
+		},
+		"url": "https://blog.cloudflare.com/author/arges/",
+		"sameAs": [
+			"https://twitter.com/ChrisArges"
+		]
+	},
+	"headline": "CloudflareがMagic Firewallで、プログラム可能なパケットフィルターをeBPFを使ってどのように構築しているか",
+	"url": "https://blog.cloudflare.com/ja-jp/programmable-packet-filtering-with-magic-firewall-ja-jp/",
+	"datePublished": "2021-12-06T13:59:00.000Z",
+	"dateModified": "2021-12-29T23:44:04.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/12/Magic-Firewall-2.png",
+		"width": 1600,
+		"height": 900
+	},
+	"keywords": "日本語, セキュリティ, 製品ニュース (JP), CIO Week (JP), eBPF (JP), VoIP (JP), Magic Firewall (JP), Magic Transit (JP)",
+	"description": "クラウドフレアは、日々巧妙な攻撃から積極的にサービスを守っています。Magic Transitのユーザーの場合、DDoS保護対策が攻撃を検知して",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

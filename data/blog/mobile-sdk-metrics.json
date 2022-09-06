@@ -1,0 +1,34 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Rustam Lalkaka",
+		"image": "http://blog.cloudflare.com/content/images/2017/05/AAEAAQAAAAAAAAc9AAAAJDg0MzBkZTg1LTNkOTUtNGFlYy1hMjJiLTQxMjlmYzkyNjJjMA.jpg",
+		"url": "https://blog.cloudflare.com/author/rustam/",
+		"sameAs": [
+			"https://twitter.com/lalkaka"
+		]
+	},
+	"headline": "Data-driven development with Cloudflare Mobile SDK",
+	"url": "https://blog.cloudflare.com/mobile-sdk-metrics/",
+	"datePublished": "2018-03-22T13:00:00.000Z",
+	"dateModified": "2020-08-20T17:59:35.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/03/Mobile-SDK-Social_1Asset-3@3x-1.png",
+	"keywords": "Product News, Developers, Mobile SDK, Mobile, Analytics",
+	"description": "How much engagement are you losing in your app to network errors? Chances are, you don&#x27;t know.  We didn&#x27;t either, until we built a free tool that helps Android and iOS developers visualize and understand their mobile app&#x27;s network utilization.\n\n",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

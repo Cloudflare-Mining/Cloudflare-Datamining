@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew Prince",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
+			"width": 1196,
+			"height": 1190
+		},
+		"url": "https://blog.cloudflare.com/author/matthew-prince/",
+		"sameAs": [
+			"https://twitter.com/eastdakota"
+		]
+	},
+	"headline": "We Saved Users Half a Petabyte Last Month!",
+	"url": "https://blog.cloudflare.com/we-saved-users-half-a-petabyte-last-month/",
+	"datePublished": "2011-09-25T00:45:00.000Z",
+	"dateModified": "2018-01-31T23:28:49.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/01/data.jpg.scaled500.jpg",
+	"keywords": "Data, Cache, Bandwidth, Milestones, Our History",
+	"description": "I was just looking over our daily stats report and noticed something incredible. In the last 30 days, CloudFlare saved our users more than half a petabyte of data they would have otherwise had to transfer from their servers.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

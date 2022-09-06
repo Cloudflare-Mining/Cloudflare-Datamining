@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Tim Obezuk",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/05/0-1.jpeg",
+			"width": 200,
+			"height": 200
+		},
+		"url": "https://blog.cloudflare.com/author/tim-obezuk/",
+		"sameAs": [
+			"https://twitter.com/obezuk"
+		]
+	},
+	"headline": "适合所有规模团队的浏览器隔离",
+	"url": "https://blog.cloudflare.com/zh-cn/browser-isolation-for-teams-of-all-sizes-zh-cn/",
+	"datePublished": "2021-03-23T13:00:00.000Z",
+	"dateModified": "2021-03-31T19:37:23.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/03/Browser-Isolation-OG-body-6.png",
+		"width": 1252,
+		"height": 669
+	},
+	"keywords": "简体中文 (CN), Cloudflare One (CN), 安全, 安全周 (CN), 产品新闻",
+	"description": "每一个连入互联网的组织都依靠 Web 浏览器来经营业务：接受交易、与客户互动，或处理敏感数据。点击链接这样的操作会触发 Web 浏览器在本地设备上下载并执行一大堆未知代码。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

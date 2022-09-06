@@ -1,0 +1,40 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Patrick R. Donahue",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/me0-1.png",
+			"width": 300,
+			"height": 291
+		},
+		"url": "https://blog.cloudflare.com/author/patrick/",
+		"sameAs": [
+			"https://www.cloudflare.com",
+			"https://twitter.com/prdonahue"
+		]
+	},
+	"headline": "A tour through Merkle Town, Cloudflare&#x27;s Certificate Transparency dashboard",
+	"url": "https://blog.cloudflare.com/a-tour-through-merkle-town-cloudflares-ct-ecosystem-dashboard/",
+	"datePublished": "2018-03-24T02:59:29.000Z",
+	"dateModified": "2020-08-14T09:40:22.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/03/merkle-town-2.png",
+	"keywords": "SSL, TLS, HTTPS, Security, Dashboard, Certificate Authority",
+	"description": "The success of Certificate Transparency rests on the existence of a robust ecosystem of logs and log operators. Without logs that CAs can depend on, it’s not practical for browsers to require that SSL certificates have been logged to be trusted—as Chrome plans to do on April 30.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Mike Freemon",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/06/Mike-Freemon.jpeg",
+			"width": 600,
+			"height": 600
+		},
+		"url": "https://blog.cloudflare.com/author/mike-freemon/",
+		"sameAs": []
+	},
+	"headline": "Optimizing TCP for high WAN throughput while preserving low latency",
+	"url": "https://blog.cloudflare.com/optimizing-tcp-for-high-throughput-and-low-latency/",
+	"datePublished": "2022-07-01T13:00:01.000Z",
+	"dateModified": "2022-07-12T10:40:12.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/06/BLOG-1004-header-1.png",
+		"width": 1600,
+		"height": 900
+	},
+	"keywords": "Deep Dive, TCP, Latency, Optimization",
+	"description": "In this post, we describe how we modified the Linux kernel to optimize for both low latency and high throughput concurrently",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

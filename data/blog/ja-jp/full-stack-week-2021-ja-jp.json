@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Rita Kozlov",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/05/Rita-Kozlov.jpeg",
+			"width": 200,
+			"height": 200
+		},
+		"url": "https://blog.cloudflare.com/author/rita/",
+		"sameAs": [
+			"https://twitter.com/ritakozlov_"
+		]
+	},
+	"headline": "Full Stack Weekへようこそ",
+	"url": "https://blog.cloudflare.com/ja-jp/full-stack-week-2021-ja-jp/",
+	"datePublished": "2021-11-14T13:57:00.000Z",
+	"dateModified": "2021-11-18T20:15:21.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/11/Full-Stack-Week-2.png",
+		"width": 1800,
+		"height": 1013
+	},
+	"keywords": "フルスタックウィーク, 製品ニュース (JP), Cloudflare Workers (JP), 日本語",
+	"description": "これを読んでいるあなたは、インターネットを利用しています。ちょっと立ち止まって考えてみてください。私たちは「インターネットで」何かを見つけることについて話し、タスクを実行するために「インターネットを使う」ことについて話します。私たちは基本的に、「私のコンピュータとサーバーの間にインターネットを介在させて、サーバー上でこれを探します」というようなことは言いません。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Wesley Evans",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/08/Headshot.jpeg",
+			"width": 960,
+			"height": 960
+		},
+		"url": "https://blog.cloudflare.com/author/wesley/",
+		"sameAs": [
+			"https://twitter.com/whywevans"
+		]
+	},
+	"headline": "支持更多设备、进一步减少 CAPTCHA、用户更愉快",
+	"url": "https://blog.cloudflare.com/zh-cn/cap-expands-support-zh-cn/",
+	"datePublished": "2021-08-12T13:00:00.000Z",
+	"dateModified": "2022-06-10T08:49:02.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/06/Screenshot-2022-06-09-at-17.31.44.png",
+		"width": 1138,
+		"height": 690
+	},
+	"keywords": "安全, 简体中文, 可访问性, 产品新闻",
+	"description": "今天减，在帮助减少互联网对通过 CAPTCHA 来证明您不是机器人的依赖方面，我们更进了一步。通过增加对更广泛设备的支持，我们进一步扩大了人格加密证明（Cryptographic Attestation of Personhood，缩写为CAP）实验的范围。其中包括生物识别身份验证工具，例如苹果 Face ID、微软 Hello 和安卓生物识别身份验证等",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

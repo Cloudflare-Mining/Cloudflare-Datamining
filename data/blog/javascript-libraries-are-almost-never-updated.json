@@ -1,0 +1,37 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Zack Bloom",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/YZCINbF6.jpg",
+		"url": "https://blog.cloudflare.com/author/zack-bloom/",
+		"sameAs": []
+	},
+	"headline": "JavaScript Libraries Are Almost Never Updated Once Installed",
+	"url": "https://blog.cloudflare.com/javascript-libraries-are-almost-never-updated/",
+	"datePublished": "2020-01-27T16:48:58.000Z",
+	"dateModified": "2020-01-27T19:13:20.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2020/01/pasted-image-0--1--2.png",
+		"width": 1470,
+		"height": 870
+	},
+	"keywords": "JavaScript, CDNJS, Data",
+	"description": "An analysis, based on CDNJS data, of when and if JavaScript libraries are updated after being installed onto websites.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

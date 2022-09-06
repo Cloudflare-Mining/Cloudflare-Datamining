@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Rishabh Bector",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/08/1592594527406.jpeg",
+			"width": 800,
+			"height": 800
+		},
+		"url": "https://blog.cloudflare.com/author/rishabh/",
+		"sameAs": [
+			"https://twitter.com/rishabhbector"
+		]
+	},
+	"headline": "Quick Tunnels: Anytime, Anywhere",
+	"url": "https://blog.cloudflare.com/quick-tunnels-anytime-anywhere/",
+	"datePublished": "2021-09-02T13:00:03.000Z",
+	"dateModified": "2021-09-14T03:01:54.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/08/image2-27.png",
+		"width": 1200,
+		"height": 628
+	},
+	"keywords": "Cloudflare Tunnel, Connector, Zero Trust, Product News, Cloudflare Zero Trust, Road to Zero Trust",
+	"description": "Cloudflare Tunnel now supports a free version that includes all the latest features and does not require any onboarding to Cloudflare. With today’s change, you can begin experimenting with Tunnel in five minutes or less.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

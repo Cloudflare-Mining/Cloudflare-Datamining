@@ -1,0 +1,32 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Richard Sommerville",
+		"image": "http://blog.cloudflare.com/content/images/2018/09/2018-03-19-122955.jpg",
+		"url": "https://blog.cloudflare.com/author/richard-sommerville/",
+		"sameAs": []
+	},
+	"headline": "Stopping Drupal’s SA-CORE-2019-003 Vulnerability",
+	"url": "https://blog.cloudflare.com/stopping-drupal-sa-core-2019-003/",
+	"datePublished": "2019-03-05T22:55:04.000Z",
+	"dateModified": "2021-04-10T16:20:53.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2019/03/D0020-1.png",
+	"keywords": "Drupal, WAF, WAF Rules, Security, Vulnerabilities",
+	"description": "Drupal discovered a severe vulnerability and said they would release a patch. When the patch was released we analysed and created rules to mitigate these. By analysing the patch we created WAF rules to protect Cloudflare customers running Drupal.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Kenton Varda",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/08/avatar-github.jpg",
+			"width": 460,
+			"height": 460
+		},
+		"url": "https://blog.cloudflare.com/author/kenton-varda/",
+		"sameAs": [
+			"https://twitter.com/kentonvarda"
+		]
+	},
+	"headline": "Everyone can now run JavaScript on Cloudflare with Workers",
+	"url": "https://blog.cloudflare.com/cloudflare-workers-unleashed/",
+	"datePublished": "2018-03-13T13:00:00.000Z",
+	"dateModified": "2022-06-20T11:20:53.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/03/workers-social-3.png",
+	"keywords": "Product News, Cloudflare Workers, JavaScript, Speed & Reliability, Compression, Developers, Serverless",
+	"description": "We believe the true dream of cloud computing is that your code lives in the network itself. Your code doesn&#x27;t run in &quot;us-west-4&quot;, it runs everywhere.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

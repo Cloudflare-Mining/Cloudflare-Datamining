@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Marek Majkowski",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/b5967d6c687939594adb6992723d0529.jpeg",
+		"url": "https://blog.cloudflare.com/author/marek-majkowski/",
+		"sameAs": [
+			"https://twitter.com/majek04"
+		]
+	},
+	"headline": "Cloudflare - 如何控制tcp套接字超时",
+	"url": "https://blog.cloudflare.com/zh-cn/when-tcp-sockets-refuse-to-die-zh-cn/",
+	"datePublished": "2019-09-20T15:53:00.000Z",
+	"dateModified": "2021-01-28T19:16:05.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2020/01/637px-Tcp_state_diagram_fixed_new.svg-1.png",
+		"width": 637,
+		"height": 480
+	},
+	"keywords": "TCP (CN), 简体中文 (CN), SYN (CN), Spectrum (ZH)",
+	"description": "在我们的Spectrum服务器上工作时，我们注意到了一些奇怪的现象：我们认为应该关闭了的TCP套接字一直在徘徊。我们意识到我们并不真正了解TCP套接字何时应该超时！",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

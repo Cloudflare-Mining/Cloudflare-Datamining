@@ -19,7 +19,7 @@
 	<p>When a user clicks on the register button, it calls an API that adds a key in Workers KV:</p>
 	<!--kg-card-begin: markdown-->
 	<pre><code>key: register:ID
-value: {"name":"Sven Sauleau","picture":"picture.jpg","email":"<a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a>"}
+value: {"name":"Sven Sauleau","picture":"picture.jpg","email":"[email protected]"}
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>User information is stored in Workers KV and displayed in the interface to create the list of participants. The user information gets deleted during pairing so the list is ready for the next round of chats. We require weekly sign-ups from participants who want to participate in the chats to confirm their availability.</p>
@@ -90,7 +90,7 @@ crons = ["0 8 * * 2"]
 	<p>The pairs are recorded in Workers KV with their updated matching count to refine the weights at future sessions:</p>
 	<!--kg-card-begin: markdown-->
 	<pre><code>key: paired:ID
-value: {"emails":["<a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a>","<a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a>", "count": 1]}
+value: {"emails":["[email protected]","[email protected]", "count": 1]}
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>A notification is sent to each pair of users to notify them that they matched.</p>

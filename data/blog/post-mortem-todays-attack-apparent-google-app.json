@@ -1,0 +1,38 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew Prince",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
+			"width": 1196,
+			"height": 1190
+		},
+		"url": "https://blog.cloudflare.com/author/matthew-prince/",
+		"sameAs": [
+			"https://twitter.com/eastdakota"
+		]
+	},
+	"headline": "Post Mortem: Today&#x27;s Attack; Apparent Google Apps/Gmail Vulnerability; and How to Protect Yourself",
+	"url": "https://blog.cloudflare.com/post-mortem-todays-attack-apparent-google-app/",
+	"datePublished": "2012-06-01T22:22:00.000Z",
+	"dateModified": "2018-02-03T01:00:21.000Z",
+	"keywords": "Post Mortem, Attacks",
+	"description": "This morning a hacker was able to access a customer&#x27;s account on CloudFlare and change that customer&#x27;s DNS records. The attack was the result of a compromise of Google&#x27;s account security procedures.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

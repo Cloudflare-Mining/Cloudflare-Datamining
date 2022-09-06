@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Alex Krivit",
+		"image": "http://blog.cloudflare.com/content/images/2018/08/RE0BQ6EF_400x400.jpg",
+		"url": "https://blog.cloudflare.com/author/alex/",
+		"sameAs": [
+			"https://twitter.com/ackriv"
+		]
+	},
+	"headline": "Cloudflare_Argo_智能分层缓存 | Cloudflare 中国官网",
+	"url": "https://blog.cloudflare.com/zh-cn/introducing-smarter-tiered-cache-topology-generation-zh-cn/",
+	"datePublished": "2021-02-18T20:01:00.000Z",
+	"dateModified": "2021-03-22T17:03:17.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/03/image3-15.png",
+		"width": 1200,
+		"height": 619
+	},
+	"keywords": "Argo智能路由 (CN), Cloudflare One (CN), 速度和可靠性 (CN), 分层缓存",
+	"description": "缓存是一个魔术。 Cloudflare 遍布全球的 200 多个数据中心没有以客户的来源来响应每个请求，而是以在地理位置上接近访问者的缓存的内容进行响应。通过让Cloudflare 响应缓存内容的请求，可以显著提高网页的加载性能，同时降低带宽成本。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

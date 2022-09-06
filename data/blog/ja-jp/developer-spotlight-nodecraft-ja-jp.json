@@ -1,0 +1,40 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Kristian Freeman",
+		"image": "http://blog.cloudflare.com/content/images/2019/05/2fGb07-c_400x400.jpg",
+		"url": "https://blog.cloudflare.com/author/kristian/",
+		"sameAs": [
+			"https://www.signalnerve.com",
+			"https://twitter.com/signalnerve"
+		]
+	},
+	"headline": "開発者スポットライト：Nodecraft、James Ross",
+	"url": "https://blog.cloudflare.com/ja-jp/developer-spotlight-nodecraft-ja-jp/",
+	"datePublished": "2021-11-16T13:58:00.000Z",
+	"dateModified": "2021-12-28T22:04:48.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/12/Nodecraft-1.png",
+		"width": 1801,
+		"height": 1011
+	},
+	"keywords": "開発者スポットライト (JP), 日本語, サーバーレス, Full Stack Week (JP)",
+	"description": "Nodecraftを活用することで、ゲーマーは自分のお気に入りのゲーム用に専用サーバーをホストできます。James Ross氏はNodecraft社の最高技術責任者（CTO）であり、社内でCloudflare（特に、Cloudflare Workers）を提唱しています",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

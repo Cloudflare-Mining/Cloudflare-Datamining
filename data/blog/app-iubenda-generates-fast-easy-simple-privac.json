@@ -1,0 +1,34 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "John Roberts",
+		"image": "http://blog.cloudflare.com/content/images/2018/02/john.jpg",
+		"url": "https://blog.cloudflare.com/author/john-roberts/",
+		"sameAs": [
+			"https://twitter.com/pencoyd"
+		]
+	},
+	"headline": "App: iubenda generates fast, easy, simple privacy policies",
+	"url": "https://blog.cloudflare.com/app-iubenda-generates-fast-easy-simple-privac/",
+	"datePublished": "2012-12-10T22:16:00.000Z",
+	"dateModified": "2018-08-10T02:17:59.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/full-privacy-policy-example-iubenda.png.scaled500.png",
+	"keywords": "Cloudflare Apps",
+	"description": "Almost every website needs a privacy policy. In most countries, it&#x27;s legally required, and it helps build trust with visitors. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

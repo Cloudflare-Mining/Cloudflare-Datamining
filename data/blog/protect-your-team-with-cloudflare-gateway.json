@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Irtefa",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/03/irtefa-profile-picture.jpg",
+			"width": 600,
+			"height": 600
+		},
+		"url": "https://blog.cloudflare.com/author/irtefa/",
+		"sameAs": []
+	},
+	"headline": "Protect your team with Cloudflare Gateway",
+	"url": "https://blog.cloudflare.com/protect-your-team-with-cloudflare-gateway/",
+	"datePublished": "2020-03-12T12:00:00.000Z",
+	"dateModified": "2020-03-16T22:56:44.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2020/02/Screen-Shot-2020-02-24-at-6.56.17-PM.png",
+		"width": 1906,
+		"height": 1170
+	},
+	"keywords": "Cloudflare Zero Trust, Cloudflare Gateway, Security, Product News, DNS, Resolver, 1.1.1.1",
+	"description": "On January 7th, we announced Cloudflare for Teams, a new way to protect organizations and their employees globally, without sacrificing performance. Cloudflare for Teams centers around two core products - Cloudflare Access and Cloudflare Gateway.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

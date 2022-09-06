@@ -1,0 +1,32 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Kristin Tarr",
+		"image": "http://blog.cloudflare.com/content/images/2018/08/0.jpg",
+		"url": "https://blog.cloudflare.com/author/kristin-tarr/",
+		"sameAs": []
+	},
+	"headline": "Ian Pye Presents SortaSQL @ the CloudFlare Loft",
+	"url": "https://blog.cloudflare.com/ian-pye-presents-sortasql-the-cloudflare-loft/",
+	"datePublished": "2011-04-22T19:49:00.000Z",
+	"dateModified": "2020-08-21T00:05:27.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/01/IMG_1615.JPG.scaled500.jpg",
+	"keywords": "Cloudflare Meetups, SQL",
+	"description": "Last night CloudFlare hosted a Hybrid DB meetup where Ian Pye, our lead Analytics Engineer, presented on the data infrastructure at CloudFlare. He discussed how CloudFlare looked at several NoSQL and SQL solutions and ended up with a hybrid model, SortaSQL.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

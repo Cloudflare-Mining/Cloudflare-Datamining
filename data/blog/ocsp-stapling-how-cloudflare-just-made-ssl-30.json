@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew Prince",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
+			"width": 1196,
+			"height": 1190
+		},
+		"url": "https://blog.cloudflare.com/author/matthew-prince/",
+		"sameAs": [
+			"https://twitter.com/eastdakota"
+		]
+	},
+	"headline": "OCSP Stapling: How CloudFlare Just Made SSL 30% Faster",
+	"url": "https://blog.cloudflare.com/ocsp-stapling-how-cloudflare-just-made-ssl-30/",
+	"datePublished": "2012-10-29T17:54:00.000Z",
+	"dateModified": "2018-08-08T19:32:05.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/Screen-Shot-2018-08-08-at-12.31.36-PM.png",
+	"keywords": "Speed & Reliability, OCSP, SSL",
+	"description": "This week CloudFlare is announcing several things we&#x27;re doing to significantly improve the performance of SSL. Too few sites are secured with SSL. One of the reasons sites don&#x27;t implement SSL is that it can slow down web performance. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

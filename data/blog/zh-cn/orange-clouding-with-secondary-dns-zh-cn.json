@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Alex Fattouche",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/09/portrait.png",
+			"width": 665,
+			"height": 704
+		},
+		"url": "https://blog.cloudflare.com/author/alex-fattouche/",
+		"sameAs": []
+	},
+	"headline": "橙色云与次要 DNS",
+	"url": "https://blog.cloudflare.com/zh-cn/orange-clouding-with-secondary-dns-zh-cn/",
+	"datePublished": "2020-08-20T13:48:00.000Z",
+	"dateModified": "2021-01-28T20:12:39.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2020/11/Orange-Clouding-with-Secondary-DNS-OG.png",
+		"width": 1200,
+		"height": 650
+	},
+	"keywords": "简体中文 (CN), DNS (CN)",
+	"description": "在传统意义上，次要 DNS 服务器充当主要权威性 DNS 服务器的备份。主要服务器上的记录发生更改时，将进行区域传送使次要 DNS 服务器与主服务器保持同步。然后，次要服务器可以像主要服务器一样提供记录，但是只能由主要服务器进行更改，次要服务器则不行。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,37 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Nick B",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Screen-Shot-2022-08-18-at-11.51.06-AM-2.png",
+			"width": 276,
+			"height": 250
+		},
+		"url": "https://blog.cloudflare.com/author/nick/",
+		"sameAs": []
+	},
+	"headline": "Ecommerce websites on Cloudflare: best practices",
+	"url": "https://blog.cloudflare.com/ecommerce-best-practices/",
+	"datePublished": "2017-04-25T07:45:00.000Z",
+	"dateModified": "2021-01-28T23:31:28.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2017/04/Cloudflare-Ecommerce-Best-Practices.png",
+	"keywords": "eCommerce, Tips, Page Rules, Railgun, JavaScript, DDoS, Security, WAF, Speed & Reliability, Cache, Best Practices",
+	"description": "Cloudflare provides numerous benefits to ecommerce sites, including advanced DDOS protection and an industry-leading Web Application Firewall (WAF) that helps secure your transactions and protect customers’ private data.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

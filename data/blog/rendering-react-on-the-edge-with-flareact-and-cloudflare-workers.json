@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Guest Author",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/10/Screen-Shot-2019-10-09-at-11.21.59-AM.png",
+			"width": 362,
+			"height": 364
+		},
+		"url": "https://blog.cloudflare.com/author/guest-author/",
+		"sameAs": []
+	},
+	"headline": "Rendering React on the Edge with Flareact and Cloudflare Workers",
+	"url": "https://blog.cloudflare.com/rendering-react-on-the-edge-with-flareact-and-cloudflare-workers/",
+	"datePublished": "2020-09-03T12:00:00.000Z",
+	"dateModified": "2020-09-03T12:00:01.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2020/09/Screen-Shot-2020-09-02-at-3.13.54-PM.png",
+		"width": 1000,
+		"height": 520
+	},
+	"keywords": "Cloudflare Workers, Serverless, Edge, Developers",
+	"description": "Page speed is critical. You need to get content to your audience as quickly as possible on every device. You also need to render ads in a speedy way to maintain a good user experience and make money to support your journalism.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

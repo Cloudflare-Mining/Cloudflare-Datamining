@@ -1,0 +1,34 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "John Graham-Cumming",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
+		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
+		"sameAs": [
+			"https://twitter.com/jgrahamc"
+		]
+	},
+	"headline": "DDoS Packet Forensics: Take me to the hex!",
+	"url": "https://blog.cloudflare.com/ddos-packet-forensics-take-me-to-the-hex/",
+	"datePublished": "2015-01-06T23:10:34.000Z",
+	"dateModified": "2018-08-23T16:55:46.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/30957385_bfb4b7fb79_z.jpg",
+	"keywords": "DDoS, Reliability, Attacks, IPv4, TTL",
+	"description": "A few days ago, my colleague Marek sent an email about a DDoS attack against one of our DNS servers that we&#x27;d been blocking with our BPF rules.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

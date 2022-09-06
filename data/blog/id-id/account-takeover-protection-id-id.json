@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Michael Tremante",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/url-3.jpg",
+		"url": "https://blog.cloudflare.com/author/michael-tremante/",
+		"sameAs": [
+			"https://twitter.com/MichaelTremante"
+		]
+	},
+	"headline": "Keamanan Pengguna Akhir: Perlindungan Pengambilalihan Akun dengan Cloudflare",
+	"url": "https://blog.cloudflare.com/id-id/account-takeover-protection-id-id/",
+	"datePublished": "2021-03-30T13:00:00.000Z",
+	"dateModified": "2022-01-20T01:51:29.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/01/Account-Takeover-Protection.png",
+		"width": 1585,
+		"height": 755
+	},
+	"keywords": "Cloudflare Gateway (ID), Indonesia, Cloudflare Access (ID), Keamanan, Minggu Keamanan, Berita Produk",
+	"description": "Keamanan akun pengguna akhir selalu menjadi prioritas utama, tetapi hal tersebut adalah masalah yang sulit dipecahkan. Lebih buruk lagi, mengautentikasi pengguna itu adalah hal yang sulit. Dengan pelanggaran terhadap kumpulan ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

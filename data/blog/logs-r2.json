@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Tanushree Sharma",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/09/IMG_1328-1.jpg",
+			"width": 1895,
+			"height": 1874
+		},
+		"url": "https://blog.cloudflare.com/author/tanushree/",
+		"sameAs": [
+			"https://twitter.com/TanushreeS5"
+		]
+	},
+	"headline": "Logs on R2: slash your logging costs",
+	"url": "https://blog.cloudflare.com/logs-r2/",
+	"datePublished": "2022-05-11T12:59:24.000Z",
+	"dateModified": "2022-05-11T18:17:19.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/05/PW-Logs-on-R2_-Slash-your-storage-costs-1.png",
+		"width": 1600,
+		"height": 900
+	},
+	"keywords": "Platform Week, Product News, Cloudflare R2, Logs, Beta",
+	"description": "You shouldn’t have to make trade-offs between keeping logs that you need and managing tight budgets. R2’s low costs makes this decision easier for our customers. We’re excited to announce that you can now use Logpush to store logs on R2",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

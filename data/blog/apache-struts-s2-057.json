@@ -1,0 +1,32 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Richard Sommerville",
+		"image": "http://blog.cloudflare.com/content/images/2018/09/2018-03-19-122955.jpg",
+		"url": "https://blog.cloudflare.com/author/richard-sommerville/",
+		"sameAs": []
+	},
+	"headline": "Protection from Struts Remote Code Execution Vulnerability (S2-057)",
+	"url": "https://blog.cloudflare.com/apache-struts-s2-057/",
+	"datePublished": "2018-09-05T14:58:32.000Z",
+	"dateModified": "2018-09-05T21:45:41.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/09/Screen-Shot-2018-09-05-at-7.57.25-AM.png",
+	"keywords": "Attacks, Vulnerabilities, Reliability",
+	"description": "On August 22 a new vulnerability in the Apache Struts framework was announced. We quickly deployed a mitigation to protect customers.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

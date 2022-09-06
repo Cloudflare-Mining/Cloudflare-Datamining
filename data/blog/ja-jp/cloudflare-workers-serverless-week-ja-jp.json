@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew Prince",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
+			"width": 1196,
+			"height": 1190
+		},
+		"url": "https://blog.cloudflare.com/author/matthew-prince/",
+		"sameAs": [
+			"https://twitter.com/eastdakota"
+		]
+	},
+	"headline": "エッジコンピューティングの好機：誤解されているようですが",
+	"url": "https://blog.cloudflare.com/ja-jp/cloudflare-workers-serverless-week-ja-jp/",
+	"datePublished": "2020-07-26T11:00:00.000Z",
+	"dateModified": "2021-01-21T19:00:49.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2020/12/Screen-Shot-2020-07-25-at-8.37.47-PM-3.png",
+		"width": 1286,
+		"height": 626
+	},
+	"keywords": "日本語, Cloudflare Workers (JP), 无服务器, 无服务器周, サーバーレス, サーバーレスウィーク",
+	"description": "Cloudflare Workers®は最も広く利用されている最大規模のエッジコンピューティングプラットフォームの1つです。Cloudflare Workersを発表したのはほぼ3年前ですが、ここ2年ほどで一般的に利用されるようになりました。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

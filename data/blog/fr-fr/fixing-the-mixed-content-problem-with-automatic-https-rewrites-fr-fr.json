@@ -1,0 +1,34 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "John Graham-Cumming",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
+		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
+		"sameAs": [
+			"https://twitter.com/jgrahamc"
+		]
+	},
+	"headline": "Remédier au problème du contenu mixte avec les réécritures automatiques HTTPS",
+	"url": "https://blog.cloudflare.com/fr-fr/fixing-the-mixed-content-problem-with-automatic-https-rewrites-fr-fr/",
+	"datePublished": "2016-09-22T14:34:00.000Z",
+	"dateModified": "2021-01-22T22:22:32.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2019/04/Preview-2.jpg",
+	"keywords": "Français, HTTPS automatique, Erreurs de contenu mixte, Sécurité, SSL (FR), Semaine de la crypto, HTTPS (FR), Actualités produits",
+	"description": "Cloudflare a pour ambition de mettre fin à l&#x27;Internet non crypté. Mais la transition du Web vers HTTPS pose un problème qui s&#x27;apparente à un cercle vicieux.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

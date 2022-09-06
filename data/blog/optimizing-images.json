@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Greg Brimble",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/09/Profile-Picture--Square-.jpg",
+			"width": 2000,
+			"height": 2000
+		},
+		"url": "https://blog.cloudflare.com/author/greg-brimble/",
+		"sameAs": [
+			"https://twitter.com/GregBrimble"
+		]
+	},
+	"headline": "Optimizing images on the web",
+	"url": "https://blog.cloudflare.com/optimizing-images/",
+	"datePublished": "2021-09-15T12:59:31.000Z",
+	"dateModified": "2021-09-18T14:28:50.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/09/image1-11.png",
+		"width": 1200,
+		"height": 675
+	},
+	"keywords": "Speed Week, Product News, Speed & Reliability, Cloudflare Images",
+	"description": "A detailed breakdown of how best to optimize images for the web, a new tool to test a webpage&#x27;s image performance, and explanation of how Cloudflare Images can help to improve your website&#x27;s image experience.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Sam Rhea",
+		"image": "http://blog.cloudflare.com/content/images/2018/07/photo-for-profile.jpg",
+		"url": "https://blog.cloudflare.com/author/sam/",
+		"sameAs": [
+			"https://twitter.com/LakeAustinBlvd"
+		]
+	},
+	"headline": "Export logs from Cloudflare Gateway with Logpush",
+	"url": "https://blog.cloudflare.com/export-logs-from-cloudflare-gateway-with-logpush/",
+	"datePublished": "2020-05-29T11:00:00.000Z",
+	"dateModified": "2022-04-26T23:23:20.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2020/05/Gateway-Logs@2x.png",
+		"width": 2734,
+		"height": 1353
+	},
+	"keywords": "Cloudflare Zero Trust, Cloudflare Gateway, Logging, SIEM, Secure Web Gateway, Product News, Security, Zero Trust",
+	"description": "Automatically export DNS query logs from Cloudflare Gateway to your SIEM.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

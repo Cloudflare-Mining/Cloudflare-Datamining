@@ -1,0 +1,40 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Patrick Meenan",
+		"image": "http://blog.cloudflare.com/content/images/2018/08/PatPerfCalendar.jpg",
+		"url": "https://blog.cloudflare.com/author/patrick-meenan/",
+		"sameAs": [
+			"https://www.webpagetest.org/",
+			"https://twitter.com/patmeenan"
+		]
+	},
+	"headline": "网络延迟降低，首字节时间改进_Cloudflare边缘网络支持静态HTML缓存",
+	"url": "https://blog.cloudflare.com/zh-cn/improving-html-time-to-first-byte-zh-cn/",
+	"datePublished": "2018-12-24T16:00:00.000Z",
+	"dateModified": "2021-01-28T18:48:37.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2019/08/tweet-1.png",
+		"width": 535,
+		"height": 369
+	},
+	"keywords": "简体中文 (CN), 速度和可靠性 (CN), 无服务器, Cloudflare Workers (CN), Cloudflare Workers KV (CN), WordPress (CN)",
+	"description": "站点的第一个字节的时间（TTFB）是从用户开始导航到他们请求的页面的HTML开始到达的时间。在我运行WebPageTest的十多年里，缓慢的TTFB一直是我的痛苦之源。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

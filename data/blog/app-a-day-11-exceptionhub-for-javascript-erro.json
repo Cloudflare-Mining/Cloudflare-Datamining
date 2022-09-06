@@ -1,0 +1,34 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "John Roberts",
+		"image": "http://blog.cloudflare.com/content/images/2018/02/john.jpg",
+		"url": "https://blog.cloudflare.com/author/john-roberts/",
+		"sameAs": [
+			"https://twitter.com/pencoyd"
+		]
+	},
+	"headline": "App a Day #11 - ExceptionHub for JavaScript Error Tracking",
+	"url": "https://blog.cloudflare.com/app-a-day-11-exceptionhub-for-javascript-erro/",
+	"datePublished": "2011-06-15T22:59:00.000Z",
+	"dateModified": "2018-01-29T19:57:49.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/01/exceptionhub-200.png.scaled500.png",
+	"keywords": "Cloudflare Apps, JavaScript",
+	"description": "The utility of JavaScript in modern websites increases daily. Whatever the web application, JavaScript is often the answer. But debugging can be a slog, and it&#x27;s nearly impossible to capture the diversity of web browsers in the real world, no matter how comprehensive your test suite.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

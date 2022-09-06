@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Erwin van der Koogh",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/04/twitter-profile-photo.jpeg",
+			"width": 400,
+			"height": 400
+		},
+		"url": "https://blog.cloudflare.com/author/erwin/",
+		"sameAs": [
+			"https://twitter.com/evanderkoogh"
+		]
+	},
+	"headline": "开发人员聚焦：使用 Jamstack 和 Durable Objects 赢得 Game Jam",
+	"url": "https://blog.cloudflare.com/zh-cn/developer-spotlight-guido-zuidhof-full-tilt-ja-jp/",
+	"datePublished": "2021-11-15T13:59:00.000Z",
+	"dateModified": "2021-12-28T21:54:06.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/12/Durable.png",
+		"width": 1800,
+		"height": 1012
+	},
+	"keywords": "无服务器, Full Stack Week (CN), 简体中文 (CN), 开发者聚焦 (CN)",
+	"description": "欢迎阅读“开发人员聚焦”新博客文章系列。在本系列中，我们将展示一些在 Cloudflare Workers 生态系统上构建的有趣应用程序",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Rita Kozlov",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/05/Rita-Kozlov.jpeg",
+			"width": 200,
+			"height": 200
+		},
+		"url": "https://blog.cloudflare.com/author/rita/",
+		"sameAs": [
+			"https://twitter.com/ritakozlov_"
+		]
+	},
+	"headline": "Just write code: improving developer experience for Cloudflare Workers",
+	"url": "https://blog.cloudflare.com/just-write-code-improving-developer-experience-for-cloudflare-workers/",
+	"datePublished": "2019-06-02T09:35:00.000Z",
+	"dateModified": "2022-06-20T15:46:19.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2019/06/442516AB-F97C-4725-B0A8-1F8157043B2C.jpeg",
+	"keywords": "Serverless, Cloudflare Workers, JavaScript, Product News, Developers",
+	"description": "We’re excited to announce that starting today, Cloudflare Workers® gets a CLI, new and improved docs, multiple scripts for everyone, the ability to run applications on workers.dev without bringing your own domain, and a free tier to make experimentation easier than ever.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

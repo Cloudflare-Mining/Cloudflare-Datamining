@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Junade Ali",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/G1VwuaxB.jpg",
+		"url": "https://blog.cloudflare.com/author/junade-ali/",
+		"sameAs": [
+			"https://twitter.com/IcyApril"
+		]
+	},
+	"headline": "Using data science and machine learning for improved customer support",
+	"url": "https://blog.cloudflare.com/using-data-science-and-machine-learning-for-improved-customer-support/",
+	"datePublished": "2020-06-15T11:00:00.000Z",
+	"dateModified": "2020-06-15T11:00:00.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2020/06/image6-4.png",
+		"width": 1999,
+		"height": 985
+	},
+	"keywords": "Machine Learning, Data, Support, Engineering",
+	"description": "In this blog post we’ll explore three tricks that can be used for data science that helped us solve real problems for our customer support group and our customers. Two for natural language processing in a customer support context and one for identifying attack Internet attack traffic.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Zhiyuan Zheng",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/03/square.jpg",
+			"width": 1479,
+			"height": 1479
+		},
+		"url": "https://blog.cloudflare.com/author/xmflsct/",
+		"sameAs": [
+			"https://xmflsct.com"
+		]
+	},
+	"headline": "A new WAF experience",
+	"url": "https://blog.cloudflare.com/new-waf-experience/",
+	"datePublished": "2022-03-15T12:59:06.000Z",
+	"dateModified": "2022-07-29T18:43:09.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/03/image2-27.png",
+		"width": 1800,
+		"height": 1013
+	},
+	"keywords": "Security Week, WAF, Firewall, Security, User Research, Product Design, Design",
+	"description": "The security landscape is moving fast. We invited users to help us shape a new WAF experience that enables us to evolve WAF to meet their demands and use cases",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

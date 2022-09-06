@@ -1,0 +1,33 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Filippo Valsorda",
+		"image": "http://blog.cloudflare.com/content/images/2018/02/K6rX3ZSn_400x400.jpg",
+		"url": "https://blog.cloudflare.com/author/filippo/",
+		"sameAs": [
+			"https://twitter.com/filosottile"
+		]
+	},
+	"headline": "Setting Go variables from the outside",
+	"url": "https://blog.cloudflare.com/setting-go-variables-at-compile-time/",
+	"datePublished": "2015-07-01T13:26:37.000Z",
+	"dateModified": "2018-08-24T17:55:41.000Z",
+	"keywords": "RRDNS, Programming, Go, Reliability",
+	"description": "CloudFlare&#x27;s DNS server, RRDNS, is written in Go and the DNS team used to generate a file called version.go in our Makefile. version.go looked something like this.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

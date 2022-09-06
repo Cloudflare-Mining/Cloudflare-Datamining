@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "John Graham-Cumming",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
+		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
+		"sameAs": [
+			"https://twitter.com/jgrahamc"
+		]
+	},
+	"headline": "Internet performance during the COVID-19 emergency",
+	"url": "https://blog.cloudflare.com/recent-trends-in-internet-traffic/",
+	"datePublished": "2020-04-23T15:08:51.000Z",
+	"dateModified": "2020-06-26T20:41:10.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2020/04/Screenshot-2020-04-20-at-18.27.41-1.png",
+		"width": 1706,
+		"height": 1292
+	},
+	"keywords": "Trends, Internet Performance, COVID-19",
+	"description": "The Internet has shown that it was built for this: designed to handle huge changes in traffic, outages, and a changing mix of use. As we are well into April I thought it was time for an update.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

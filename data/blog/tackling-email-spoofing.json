@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Hannes Gerhart",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/09/Profile.jpg",
+			"width": 600,
+			"height": 600
+		},
+		"url": "https://blog.cloudflare.com/author/hannes/",
+		"sameAs": [
+			"https://linkedin.com/in/hannesgerhart"
+		]
+	},
+	"headline": "Tackling Email Spoofing and Phishing",
+	"url": "https://blog.cloudflare.com/tackling-email-spoofing/",
+	"datePublished": "2021-09-27T12:59:31.000Z",
+	"dateModified": "2022-07-27T16:56:20.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/09/image6-21.png",
+		"width": 1800,
+		"height": 1013
+	},
+	"keywords": "Birthday Week, DNS, Phishing",
+	"description": "Today we’re announcing a new tool to tackle email spoofing and phishing. We’ll warn users about insecure configurations and provide an easy-to-use wizard to create required DNS records.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

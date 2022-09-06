@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Ben Krebsbach",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/05/me-and-the-ripper-200.jpeg",
+			"width": 200,
+			"height": 200
+		},
+		"url": "https://blog.cloudflare.com/author/ben-krebsbach/",
+		"sameAs": []
+	},
+	"headline": "Cloudflare Stream simplifies creator management for creator platforms",
+	"url": "https://blog.cloudflare.com/stream-creator-management/",
+	"datePublished": "2022-05-13T12:59:08.000Z",
+	"dateModified": "2022-05-13T12:59:08.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/05/Stream---Creator-IDs-1.png",
+		"width": 1600,
+		"height": 900
+	},
+	"keywords": "Platform Week, Cloudflare Stream, Product News, Video",
+	"description": "Many Stream customers track video usage on a per-creator basis. Today, we are announcing creator management to make usage tracking much easier",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

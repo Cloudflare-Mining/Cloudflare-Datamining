@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Nadin El-Yabroudi",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/11/Screen-Shot-2019-11-21-at-12.26.44-PM.png",
+			"width": 666,
+			"height": 650
+		},
+		"url": "https://blog.cloudflare.com/author/nadin/",
+		"sameAs": []
+	},
+	"headline": "Presentación de Flan Scan: Escáner ligero para detectar vulnerabilidades en la red de Cloudflare",
+	"url": "https://blog.cloudflare.com/es-es/introducing-flan-scan-es-es/",
+	"datePublished": "2019-11-21T14:00:00.000Z",
+	"dateModified": "2021-01-21T19:11:28.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2019/12/image4-15.png",
+		"width": 1600,
+		"height": 806
+	},
+	"keywords": "Español, Seguridad, Noticias de productos, Desarrolladores, Python (ES), Latex (ES)",
+	"description": "Hoy, nos complace presentar Flan Scan de código abierto, el escáner ligero para detectar vulnerabilidades en la red de Cloudflare.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

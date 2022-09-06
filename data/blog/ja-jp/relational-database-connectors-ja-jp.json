@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Kabir Sikand",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/05/0.jpeg",
+			"width": 800,
+			"height": 800
+		},
+		"url": "https://blog.cloudflare.com/author/kabir/",
+		"sameAs": [
+			"https://twitter.com/kabirsikand"
+		]
+	},
+	"headline": "Relational Database Connectorsのご紹介",
+	"url": "https://blog.cloudflare.com/ja-jp/relational-database-connectors-ja-jp/",
+	"datePublished": "2021-11-15T13:59:00.000Z",
+	"dateModified": "2021-11-19T23:37:21.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/11/Relational-2.png",
+		"width": 1200,
+		"height": 675
+	},
+	"keywords": "Full Stack Week (JP), Cloudflare Workers (JP), MySQL (JP), Postgres (JP)",
+	"description": "Cloudflareでは、世界最高のコンピュートプラットフォームを構築しています。私たちは、お客様のアプリケーションを簡単に、シームレスに、そして明白に構築できるようにしたいと考えています。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Jake Jones",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2020/11/Screenshot-2020-11-13-at-14.42.46.png",
+			"width": 662,
+			"height": 656
+		},
+		"url": "https://blog.cloudflare.com/author/jake-jones/",
+		"sameAs": []
+	},
+	"headline": "When trusted relationships are formed, everyone wins!",
+	"url": "https://blog.cloudflare.com/when-trusted-relationships-are-formed-everyone-wins/",
+	"datePublished": "2020-11-16T12:00:00.000Z",
+	"dateModified": "2020-11-16T21:16:02.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2020/11/image1-6.png",
+		"width": 1546,
+		"height": 714
+	},
+	"keywords": "Customer Success, CSM, Monday Mornings",
+	"description": "Monday Mornings with Customer Success: A monthly series brought to you by our Customer Success Team. This month&#x27;s post is all about how building trusted relationships resulted in an improved security posture and better solution for one of our customers.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Jon Levine",
+		"image": "http://blog.cloudflare.com/content/images/2018/04/prof-crop.jpg",
+		"url": "https://blog.cloudflare.com/author/jpl/",
+		"sameAs": [
+			"https://twitter.com/jplevine"
+		]
+	},
+	"headline": "Présentation de Browser Insights",
+	"url": "https://blog.cloudflare.com/fr-fr/introducing-browser-insights-fr-fr/",
+	"datePublished": "2019-09-24T13:00:00.000Z",
+	"dateModified": "2021-01-22T01:22:51.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2019/10/insights-option-2.png",
+		"width": 1600,
+		"height": 980
+	},
+	"keywords": "Semaine d’anniversaire, Analytique (FR), Vitesse et fiabilité, Français, Actualités produits",
+	"description": "La vitesse est primordiale. Nous savons que lorsque votre site Web ou votre application est plus rapide, l’expérience utilisateur est meilleure, ce qui vous permet d’obtenir de meilleurs taux de conversion et des revenus plus importants.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

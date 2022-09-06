@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Vivek Ganti",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/08/Vivek-Ganti.jpeg",
+			"width": 469,
+			"height": 469
+		},
+		"url": "https://blog.cloudflare.com/author/vivek/",
+		"sameAs": [
+			"https://twitter.com/VivekGanti"
+		]
+	},
+	"headline": "2020年第4四半期ネットワーク層DDoS攻撃の傾向",
+	"url": "https://blog.cloudflare.com/ja-jp/network-layer-ddos-attack-trends-for-q4-2020-ja-jp/",
+	"datePublished": "2021-01-22T12:00:00.000Z",
+	"dateModified": "2021-09-02T19:31:32.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/03/image21-1-1.png",
+		"width": 1999,
+		"height": 1033
+	},
+	"keywords": "身代金攻撃 (JP), DDoS (JP)",
+	"description": "2020年の第4四半期のDDoS攻撃の傾向は、多くの点で規範を逸脱したものとなりました。Cloudflareでは、2020年で初めてとなる大規模なDDoS攻撃数の増加を観測しました。具体的には、500Mbpsと50K ppsを超えた攻撃数が、大きく膨れ上がりました。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

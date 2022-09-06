@@ -1,0 +1,45 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Val Vesa",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/07/Ct5xlQ1a_400x400.jpeg",
+			"width": 400,
+			"height": 400
+		},
+		"url": "https://blog.cloudflare.com/author/val/",
+		"sameAs": [
+			"https://www.facebook.com/valentinvesa",
+			"https://twitter.com/adspedia"
+		]
+	},
+	"headline": "Privacy and Compliance Reading List",
+	"url": "https://blog.cloudflare.com/privacy-and-compliance-reading-list/",
+	"datePublished": "2020-12-13T17:30:00.000Z",
+	"dateModified": "2020-12-13T17:30:00.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2020/12/Welcome-to-privacy-and-complaince-week-3.png",
+		"width": 964,
+		"height": 537
+	},
+	"keywords": "Privacy Week, Privacy",
+	"description": "In case you missed any of the blog posts this week addressing the topics of Privacy and Compliance, you’ll find a summary below.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

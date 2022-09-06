@@ -1,0 +1,32 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Gabbi Fisher",
+		"image": "http://blog.cloudflare.com/content/images/2018/11/IMG_9719.jpg",
+		"url": "https://blog.cloudflare.com/author/gabbi/",
+		"sameAs": []
+	},
+	"headline": "Monsters in the Middleboxes: Introducing Two New Tools for Detecting HTTPS Interception",
+	"url": "https://blog.cloudflare.com/monsters-in-the-middleboxes/",
+	"datePublished": "2019-03-18T17:47:50.000Z",
+	"dateModified": "2021-09-20T17:56:05.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2019/03/monsters-in-the-middleware@2x-1.png",
+	"keywords": "HTTPS, Malware, Security, Speed & Reliability, Research",
+	"description": "The practice of HTTPS interception continues to be commonplace on the Internet. This blog post discusses types of monster-in-the-middle devices and software, and how to detect them.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

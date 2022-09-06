@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Sam Rhea",
+		"image": "http://blog.cloudflare.com/content/images/2018/07/photo-for-profile.jpg",
+		"url": "https://blog.cloudflare.com/author/sam/",
+		"sameAs": [
+			"https://twitter.com/LakeAustinBlvd"
+		]
+	},
+	"headline": "Leave your VPN and cURL secure APIs with Cloudflare Access",
+	"url": "https://blog.cloudflare.com/leave-your-vpn-and-curl-secure-apis-with-cloudflare-access/",
+	"datePublished": "2018-10-05T18:30:07.000Z",
+	"dateModified": "2019-05-30T01:15:37.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2018/10/access-illustration-v2.svg",
+		"width": 625,
+		"height": 506
+	},
+	"keywords": "Cloudflare Access, VPN, Security, Product News",
+	"description": "We built Access to solve a problem here at Cloudflare: our VPN. Our team members hated the slowness and inconvenience of VPN but, that wasn’t the issue we needed to solve. The security risks posed by a VPN required a better solution.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

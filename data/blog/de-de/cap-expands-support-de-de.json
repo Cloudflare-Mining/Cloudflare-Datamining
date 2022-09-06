@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Wesley Evans",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/08/Headshot.jpeg",
+			"width": 960,
+			"height": 960
+		},
+		"url": "https://blog.cloudflare.com/author/wesley/",
+		"sameAs": [
+			"https://twitter.com/whywevans"
+		]
+	},
+	"headline": "Mehr Geräte, weniger CAPTCHAs, größere Nutzerzufriedenheit",
+	"url": "https://blog.cloudflare.com/de-de/cap-expands-support-de-de/",
+	"datePublished": "2021-08-12T16:44:00.000Z",
+	"dateModified": "2021-08-31T20:16:26.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/08/image1-29.png",
+		"width": 1600,
+		"height": 826
+	},
+	"keywords": "Deutsch, Forschung, Sicherheit, Produktneuheiten, Zugänglichkeit, 1.1.1.1 (DE)",
+	"description": "Heute kommen wir der Unabhängigkeit des Internets von CAPTCHAs zur Erkennung von Bots einen weiteren Schritt näher: Wir dehnen den Anwendungsbereich unseres Experiments „Cryptographic Attestation of Personhood“ (CAP) aus – nun wird eine deutlich größere Bandbreite von Geräten unterstützt. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,32 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Rajeev Sharma",
+		"image": "http://blog.cloudflare.com/content/images/2018/02/10731e9.jpg",
+		"url": "https://blog.cloudflare.com/author/rajeev-sharma/",
+		"sameAs": []
+	},
+	"headline": "Protecting web origins with Authenticated Origin Pulls",
+	"url": "https://blog.cloudflare.com/protecting-the-origin-with-tls-authenticated-origin-pulls/",
+	"datePublished": "2015-02-27T23:50:45.000Z",
+	"dateModified": "2022-07-19T10:07:24.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/illustration-tls-ssl-standard-1.png",
+	"keywords": "TLS, Partners, Security",
+	"description": "As we have been discussing this week, securing the connection between CloudFlare and the origin server is arguably just as important as securing the connection between end users and CloudFlare. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

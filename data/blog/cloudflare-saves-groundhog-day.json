@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew Prince",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
+			"width": 1196,
+			"height": 1190
+		},
+		"url": "https://blog.cloudflare.com/author/matthew-prince/",
+		"sameAs": [
+			"https://twitter.com/eastdakota"
+		]
+	},
+	"headline": "CloudFlare Keeps Groundhog Day Online!",
+	"url": "https://blog.cloudflare.com/cloudflare-saves-groundhog-day/",
+	"datePublished": "2011-02-03T00:04:00.000Z",
+	"dateModified": "2018-01-26T00:22:35.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/01/groundhog_day.jpg.scaled500-1.jpg",
+	"keywords": "Always Online, Fun, Customers",
+	"description": "Today is Groundhog Day: the day on which a groundhog (named Phil) crawls out of his hole in Punxsutawney, PA and either sees his shadow, meaning we&#x27;re in for six more weeks of winter, or does not, in which case it will be an early spring. Phil&#x27;s official keeper is the Punxsutawney Groundhog Club. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

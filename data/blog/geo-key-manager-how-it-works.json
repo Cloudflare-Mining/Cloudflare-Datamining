@@ -1,0 +1,40 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Nick Sullivan",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/09/BJ4NgXVj_400x400.jpg",
+			"width": 400,
+			"height": 400
+		},
+		"url": "https://blog.cloudflare.com/author/nick-sullivan/",
+		"sameAs": [
+			"https://crypto.dance",
+			"https://twitter.com/grittygrease"
+		]
+	},
+	"headline": "Geo Key Manager: How It Works",
+	"url": "https://blog.cloudflare.com/geo-key-manager-how-it-works/",
+	"datePublished": "2017-09-26T13:00:00.000Z",
+	"dateModified": "2021-11-09T20:33:23.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2017/10/image3.png",
+	"keywords": "Product News, SSL, HTTPS, Birthday Week, Crypto, Security, Keyless SSL, Research",
+	"description": "Today we announced Geo Key Manager, a feature that gives customers control over where their private keys are stored with Cloudflare. This builds on a previous Cloudflare innovation called Keyless SSL and a novel cryptographic access control mechanism.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

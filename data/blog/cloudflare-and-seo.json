@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew Prince",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
+			"width": 1196,
+			"height": 1190
+		},
+		"url": "https://blog.cloudflare.com/author/matthew-prince/",
+		"sameAs": [
+			"https://twitter.com/eastdakota"
+		]
+	},
+	"headline": "CloudFlare and SEO",
+	"url": "https://blog.cloudflare.com/cloudflare-and-seo/",
+	"datePublished": "2011-06-25T22:56:00.000Z",
+	"dateModified": "2018-01-29T20:17:56.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/01/seo.jpg.scaled500.jpg",
+	"keywords": "SEO",
+	"description": "In April 2010, around the time we launched the CloudFlare private beta to a limited set of test users, Google announced that they were going to start taking site speed into account in their rankings.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

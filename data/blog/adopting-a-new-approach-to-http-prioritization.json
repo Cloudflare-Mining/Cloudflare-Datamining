@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Lucas Pardue",
+		"image": "http://blog.cloudflare.com/content/images/2018/12/Lucas---KIN01111.jpg",
+		"url": "https://blog.cloudflare.com/author/lucas/",
+		"sameAs": [
+			"https://twitter.com/SimmerVigor"
+		]
+	},
+	"headline": "Adopting a new approach to HTTP prioritization",
+	"url": "https://blog.cloudflare.com/adopting-a-new-approach-to-http-prioritization/",
+	"datePublished": "2019-12-31T19:13:58.000Z",
+	"dateModified": "2021-05-05T15:17:05.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2019/12/httpprioritization-copy@2x-4_bg-1.png",
+		"width": 2000,
+		"height": 1025
+	},
+	"keywords": "Speed & Reliability, Product News, IETF",
+	"description": "HTTP prioritization is important for web performance. This is the story behind a new approach recently adopted for further work in the IETF.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

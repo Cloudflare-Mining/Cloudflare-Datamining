@@ -1,0 +1,34 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Louis Poinsignon",
+		"image": "http://blog.cloudflare.com/content/images/2017/09/AAEAAQAAAAAAAAYXAAAAJGE5YjM0YmVmLWJhMTItNDExZS1iNTcwLTdmNTg1YzZjMjBiNg.jpg",
+		"url": "https://blog.cloudflare.com/author/louis-poinsignon/",
+		"sameAs": [
+			"https://twitter.com/lpoinsig"
+		]
+	},
+	"headline": "Cloudflare’s RPKI Toolkit",
+	"url": "https://blog.cloudflare.com/cloudflares-rpki-toolkit/",
+	"datePublished": "2019-02-24T17:00:00.000Z",
+	"dateModified": "2019-02-24T16:59:59.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2019/02/Screen-Shot-2019-02-22-at-2.23.27-PM.png",
+	"keywords": "BGP, Security, RPKI, Crypto, Product News",
+	"description": "A few months ago, we made a first then a second announcement about Cloudflare’s involvement in Resource Public Key Infrastructure (RPKI), and our desire to make BGP Internet routing more secure.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

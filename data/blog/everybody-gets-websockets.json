@@ -1,0 +1,34 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "John Roberts",
+		"image": "http://blog.cloudflare.com/content/images/2018/02/john.jpg",
+		"url": "https://blog.cloudflare.com/author/john-roberts/",
+		"sameAs": [
+			"https://twitter.com/pencoyd"
+		]
+	},
+	"headline": "Everybody gets WebSockets",
+	"url": "https://blog.cloudflare.com/everybody-gets-websockets/",
+	"datePublished": "2016-05-05T13:00:00.000Z",
+	"dateModified": "2018-08-27T19:38:33.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/2503896186_31f70c2e76_z.jpg",
+	"keywords": "Speed & Reliability, WebSockets, Product News",
+	"description": "Two summers ago, with a seemed-big-at-the-time network of 28 datacenters, not long after introducing Medellin, CloudFlare introduced support for WebSockets, initially for our Enterprise customers.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

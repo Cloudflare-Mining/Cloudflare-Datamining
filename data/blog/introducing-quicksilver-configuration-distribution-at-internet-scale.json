@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Geoffrey Plouviez",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2020/11/_DSC5175.jpg",
+			"width": 100,
+			"height": 100
+		},
+		"url": "https://blog.cloudflare.com/author/geoffrey-plouviez/",
+		"sameAs": []
+	},
+	"headline": "Introducing Quicksilver: Configuration Distribution at Internet Scale",
+	"url": "https://blog.cloudflare.com/introducing-quicksilver-configuration-distribution-at-internet-scale/",
+	"datePublished": "2020-03-30T11:02:00.000Z",
+	"dateModified": "2020-08-20T23:49:34.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2020/03/config-values-stored.png",
+		"width": 1194,
+		"height": 730
+	},
+	"keywords": "LMDB, Quicksilver, Key-Value, Kyoto-Tycoon, Product News",
+	"description": "Cloudflare’s network processes more than fourteen million HTTP requests per second at peak for Internet users around the world. We spend a lot of time thinking about the tools we use to make those requests faster and more secure.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

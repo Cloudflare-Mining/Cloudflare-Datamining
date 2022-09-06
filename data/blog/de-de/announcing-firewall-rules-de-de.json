@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Alex Cruz Farmer",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/12/_DSC4744--2-.jpg",
+			"width": 600,
+			"height": 600
+		},
+		"url": "https://blog.cloudflare.com/author/alex-cruz-farmer/",
+		"sameAs": [
+			"https://twitter.com/alexcf"
+		]
+	},
+	"headline": "Einführung von Firewall-Regeln",
+	"url": "https://blog.cloudflare.com/de-de/announcing-firewall-rules-de-de/",
+	"datePublished": "2018-10-03T20:20:00.000Z",
+	"dateModified": "2021-01-22T21:28:57.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2019/05/Firewall-rules-white-back-1-2.png",
+	"keywords": "Sicherheit, WAF-Regeln, Produktneuigkeiten, Deutsch, Firewall (DE)",
+	"description": "Die Bedrohungslandschaft verändert sich ständig. Weil sich Angreifer weiterentwickeln, dynamischer und heimtückischer werden, entstehen Schwachstellen schneller, als Entwickler ihre Anwendungen patchen können. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

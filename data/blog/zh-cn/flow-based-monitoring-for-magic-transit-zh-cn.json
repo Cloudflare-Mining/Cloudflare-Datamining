@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Annika Garbers",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/annika.png",
+			"width": 400,
+			"height": 400
+		},
+		"url": "https://blog.cloudflare.com/author/annika/",
+		"sameAs": [
+			"https://twitter.com/annikagarbers"
+		]
+	},
+	"headline": "Magic Transit 中基于通信流的监控",
+	"url": "https://blog.cloudflare.com/zh-cn/flow-based-monitoring-for-magic-transit-zh-cn/",
+	"datePublished": "2021-02-26T23:00:00.000Z",
+	"dateModified": "2021-09-02T19:01:57.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/04/image7--1-.png",
+		"width": 1600,
+		"height": 866
+	},
+	"keywords": "产品新闻, 攻击, 安全, 简体中文 (CN)",
+	"description": "网络层 DDoS 攻击愈演愈烈，安全团队不得不重新考虑思索其 L3 DDoS 缓解策略，以防业务受到影响。Magic Transit 将我们的网络置于客户网络的之前，保护客户的整个网络免受 DDoS 攻击，有永远在线或按需使用两种选择。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

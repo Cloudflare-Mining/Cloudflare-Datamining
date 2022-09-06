@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew Prince",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
+			"width": 1196,
+			"height": 1190
+		},
+		"url": "https://blog.cloudflare.com/author/matthew-prince/",
+		"sameAs": [
+			"https://twitter.com/eastdakota"
+		]
+	},
+	"headline": "Cloudflare&#x27;s abuse policies &amp; approach",
+	"url": "https://blog.cloudflare.com/cloudflares-abuse-policies-and-approach/",
+	"datePublished": "2022-08-31T13:00:00.000Z",
+	"dateModified": "2022-09-02T15:01:09.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/08/The-Cloudflare-Blog.png",
+		"width": 1800,
+		"height": 1013
+	},
+	"keywords": "Abuse, Freedom of Speech, Legal",
+	"description": "Cloudflare launched nearly twelve years ago. Over that time, our set of services has become much more complicated. With that complexity we have developed policies around how we handle abuse of different features Cloudflare provides",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

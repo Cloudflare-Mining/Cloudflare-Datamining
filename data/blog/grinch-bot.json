@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Ben Solomon",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/08/Personal-Pic.jpg",
+			"width": 2000,
+			"height": 2000
+		},
+		"url": "https://blog.cloudflare.com/author/bensol/",
+		"sameAs": [
+			"https://twitter.com/bensol"
+		]
+	},
+	"headline": "The Grinch Bot is Stealing Christmas!",
+	"url": "https://blog.cloudflare.com/grinch-bot/",
+	"datePublished": "2021-12-03T18:59:05.000Z",
+	"dateModified": "2021-12-03T19:00:55.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/12/image1-13.png",
+		"width": 1045,
+		"height": 557
+	},
+	"keywords": "Bots, Bot Management, Trends",
+	"description": "Bots moved quickly this holiday season, launching over 1 trillion requests on Black Friday but quickly receding after the weekend.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

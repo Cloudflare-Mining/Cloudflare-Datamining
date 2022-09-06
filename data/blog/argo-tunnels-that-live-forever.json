@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Sam Rhea",
+		"image": "http://blog.cloudflare.com/content/images/2018/07/photo-for-profile.jpg",
+		"url": "https://blog.cloudflare.com/author/sam/",
+		"sameAs": [
+			"https://twitter.com/LakeAustinBlvd"
+		]
+	},
+	"headline": "Argo Tunnels that live forever",
+	"url": "https://blog.cloudflare.com/argo-tunnels-that-live-forever/",
+	"datePublished": "2020-10-13T17:00:00.000Z",
+	"dateModified": "2020-10-13T17:53:01.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2020/10/BDES-1096_Argo-Tunnel-Diagram_1@3x.png",
+		"width": 1754,
+		"height": 975
+	},
+	"keywords": "Zero Trust, Zero Trust Week, Product News, Cloudflare Access, Cloudflare Tunnel",
+	"description": "Securely connecting your infrastructure to Cloudflare&#x27;s network just became easier.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

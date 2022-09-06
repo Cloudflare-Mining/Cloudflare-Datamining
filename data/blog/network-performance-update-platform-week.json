@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "David Tuber",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/07/kutiya-face.png",
+			"width": 983,
+			"height": 1049
+		},
+		"url": "https://blog.cloudflare.com/author/tubes/",
+		"sameAs": [
+			"https://twitter.com/tubes__"
+		]
+	},
+	"headline": "Network performance update: Platform Week",
+	"url": "https://blog.cloudflare.com/network-performance-update-platform-week/",
+	"datePublished": "2022-05-16T13:45:00.000Z",
+	"dateModified": "2022-05-16T16:23:10.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/05/image7-7.png",
+		"width": 1800,
+		"height": 1013
+	},
+	"keywords": "Platform Week, Network Performance Update",
+	"description": "In addition to sharing a general update on where our network performance stands, we’re also sharing updated performance metrics on our Workers platform. We’ve done an extensive benchmark of Cloudflare Workers vs Fastly’s Compute@Edge",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

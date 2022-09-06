@@ -1,0 +1,45 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Christian Elmerot",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/10/ElmerotQuarter.png",
+			"width": 720,
+			"height": 792
+		},
+		"url": "https://blog.cloudflare.com/author/christian_elmerot/",
+		"sameAs": [
+			"https://www.facebook.com/christian.elmerot",
+			"https://twitter.com/Chreo"
+		]
+	},
+	"headline": "DNS Flag Day 2020",
+	"url": "https://blog.cloudflare.com/dns-flag-day-2020/",
+	"datePublished": "2020-10-02T07:35:00.000Z",
+	"dateModified": "2021-05-19T18:28:53.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2020/10/DNS_Flag.png",
+		"width": 1312,
+		"height": 976
+	},
+	"keywords": "DNS, Speed & Reliability",
+	"description": "October 1 is DNS Flag Day, an initiative by the DNS community to make DNS more secure, reliable and robust. This year the focus is on problems around IP fragmentation of DNS packets.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

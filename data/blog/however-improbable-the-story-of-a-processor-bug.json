@@ -1,0 +1,32 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "David Wragg",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/davidface2.jpg",
+		"url": "https://blog.cloudflare.com/author/david-wragg/",
+		"sameAs": []
+	},
+	"headline": "However improbable: The story of a processor bug",
+	"url": "https://blog.cloudflare.com/however-improbable-the-story-of-a-processor-bug/",
+	"datePublished": "2018-01-18T12:06:48.000Z",
+	"dateModified": "2018-08-29T06:58:38.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/01/Sherlock_holmes_pipe_hat-1-1.jpg",
+	"keywords": "Reliability, Bugs, Vulnerabilities, NGINX",
+	"description": "Processor problems have been in the news lately, due to the Meltdown and Spectre vulnerabilities. But generally, engineers writing software assume that computer hardware operates in a reliable, well-understood fashion, and that any problems lie on the software side of the software-hardware divide.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

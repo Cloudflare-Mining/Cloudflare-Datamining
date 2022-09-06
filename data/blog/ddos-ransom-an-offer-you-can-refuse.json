@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Justin Paine",
+		"image": {
+			"@type": "ImageObject",
+			"url": "//www.gravatar.com/avatar/04d92a2396a0dc6e794c12989720cd4b?d=404&s=250",
+			"width": 250,
+			"height": 250
+		},
+		"url": "https://blog.cloudflare.com/author/justin/",
+		"sameAs": [
+			"https://www.linkedin.com/in/justinpaine/"
+		]
+	},
+	"headline": "DDoS Ransom: An Offer You Can Refuse",
+	"url": "https://blog.cloudflare.com/ddos-ransom-an-offer-you-can-refuse/",
+	"datePublished": "2017-02-06T21:43:03.000Z",
+	"dateModified": "2020-08-20T16:40:44.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/ddosgf.jpg",
+	"keywords": "DDoS, Security, Reliability",
+	"description": "Cloudflare has covered DDoS ransom groups several times in the past. First, we reported on the copycat group claiming to be the Armada Collective and then not too long afterwards, we covered the &quot;new&quot; Lizard Squad.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

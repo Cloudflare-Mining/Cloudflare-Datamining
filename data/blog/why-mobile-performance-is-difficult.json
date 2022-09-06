@@ -1,0 +1,34 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "John Graham-Cumming",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
+		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
+		"sameAs": [
+			"https://twitter.com/jgrahamc"
+		]
+	},
+	"headline": "Why mobile performance is difficult",
+	"url": "https://blog.cloudflare.com/why-mobile-performance-is-difficult/",
+	"datePublished": "2012-06-28T06:48:00.000Z",
+	"dateModified": "2018-02-20T20:49:49.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/02/7454479488_9cf64433d6.jpeg.scaled500.jpg",
+	"keywords": "Mobile, TCP, Speed & Reliability, Mirage, Polish, spdy, Rocket Loader, Product News",
+	"description": "Mobile web browsing is very different, at the network level, to browsing on a desktop machine connected to the Internet. Yet both use the very same protocols, and although TCP was designed to perform well on the fixed-line Internet, it doesn&#x27;t perform as well on mobile networks. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

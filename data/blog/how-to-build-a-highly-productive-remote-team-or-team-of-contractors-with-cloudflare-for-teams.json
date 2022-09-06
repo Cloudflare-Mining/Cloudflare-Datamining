@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Lane Billings",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/02/IMG_4096.jpg",
+			"width": 139,
+			"height": 140
+		},
+		"url": "https://blog.cloudflare.com/author/lane-billings/",
+		"sameAs": [
+			"https://twitter.com/lanebillings"
+		]
+	},
+	"headline": "How to Build a Highly Productive Remote Team (or Team of Contractors) with Cloudflare for Teams",
+	"url": "https://blog.cloudflare.com/how-to-build-a-highly-productive-remote-team-or-team-of-contractors-with-cloudflare-for-teams/",
+	"datePublished": "2020-03-09T20:00:00.000Z",
+	"dateModified": "2020-03-09T20:22:43.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2020/03/Screen-Shot-2020-03-09-at-12.56.10-PM.png",
+		"width": 2000,
+		"height": 1003
+	},
+	"keywords": "Cloudflare Zero Trust, Cloudflare Access, VPN, Security",
+	"description": "Much of IT has been built on two outdated assumptions about how work is done. First, that employees all sit in the same building or branch offices. Second, that those employees will work full-time at the same company for years.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

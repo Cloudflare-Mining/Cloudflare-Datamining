@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Alessandro Ghedini",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/09/Ii4TgsoTda2layE131Dk_1204a20b3d1d96bba523a6a2a5fa3cd73bd4fe59240a27ad6eb8c064c6792446.jpg",
+			"width": 600,
+			"height": 600
+		},
+		"url": "https://blog.cloudflare.com/author/alessandro-ghedini/",
+		"sameAs": []
+	},
+	"headline": "TLS1.3扩展加密SNI - 在TLS握手期间客户端如何获得加密秘钥",
+	"url": "https://blog.cloudflare.com/zh-cn/encrypted-sni-zh-cn/",
+	"datePublished": "2018-09-24T12:01:00.000Z",
+	"dateModified": "2021-01-28T18:42:05.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2019/10/esni-3@3.5x-2.png",
+		"width": 1999,
+		"height": 870
+	},
+	"keywords": "生日周 (CN), 产品新闻, 密码学, 安全, 简体中文 (CN), TLS (ZH)",
+	"description": "今天，我们发布了加密SNI支持，这是TLS 1.3协议的扩展，它通过防止路径上的观察者（包括互联网服务提供商，咖啡店所有者和防火墙）拦截TLS服务器名称指示（SNI）扩展，并使用它来确定用户正在访问哪些网站，从而提高互联网用户的隐私。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

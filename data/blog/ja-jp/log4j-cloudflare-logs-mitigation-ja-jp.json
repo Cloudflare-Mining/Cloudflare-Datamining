@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Jon Levine",
+		"image": "http://blog.cloudflare.com/content/images/2018/04/prof-crop.jpg",
+		"url": "https://blog.cloudflare.com/author/jpl/",
+		"sameAs": [
+			"https://twitter.com/jplevine"
+		]
+	},
+	"headline": "Log4jの脆弱性からお客様を守るためのCloudflareログのサニタイジング",
+	"url": "https://blog.cloudflare.com/ja-jp/log4j-cloudflare-logs-mitigation-ja-jp/",
+	"datePublished": "2021-12-14T10:23:00.000Z",
+	"dateModified": "2021-12-28T23:25:41.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/12/Sanitizing-Cloudflare-Logs-to-protect-customers-from-Log4j-vulnerability-OG-3-4.png",
+		"width": 1200,
+		"height": 628
+	},
+	"keywords": "Log4J (JP), Log4Shell (JP), 脆弱性, 日本語",
+	"description": "2021年12月9日、Apache Log4jユーティリティに影響を与えるゼロデイエクスプロイトCVE-2021-44228について世界中に知れ渡りましたCloudflareは直ちにWAFを更新し、この脆弱性から保護するようにしましたが、お客様にはできるだけ早くシステムを更新することをお勧めします",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

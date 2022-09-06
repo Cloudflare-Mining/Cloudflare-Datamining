@@ -1,0 +1,45 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Peter Wu",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/10/gravatar.png",
+			"width": 512,
+			"height": 512
+		},
+		"url": "https://blog.cloudflare.com/author/peter-wu/",
+		"sameAs": [
+			"https://lekensteyn.nl/",
+			"https://twitter.com/Lekensteyn"
+		]
+	},
+	"headline": "Explicación del cifrado de DNS",
+	"url": "https://blog.cloudflare.com/es-es/dns-encryption-explained-es-es/",
+	"datePublished": "2019-10-29T13:26:00.000Z",
+	"dateModified": "2021-01-21T19:09:24.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2019/11/Screen-Shot-2019-10-28-at-12.46.36-PM-2.png",
+		"width": 2000,
+		"height": 709
+	},
+	"keywords": "Español, Semana de la criptografía, Criptografía, DoH (ES), DoT (ES), DNS (ES)",
+	"description": "El sistema de nombres de dominio (DNS) es la libreta de direcciones de Internet. Cuando visitas cloudflare.com o cualquier otro sitio, tu navegador le solicitará a un resolutor de DNS la dirección IP para encontrar el sitio web.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

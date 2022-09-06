@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Omer Yoachimik",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/Omer-1.png",
+			"width": 773,
+			"height": 653
+		},
+		"url": "https://blog.cloudflare.com/author/omer/",
+		"sameAs": [
+			"https://twitter.com/OmerYoahimik"
+		]
+	},
+	"headline": "CloudflareのFreeプランをご利用のお客様も、リアルタイムのDDoSアラートの取得が可能に",
+	"url": "https://blog.cloudflare.com/ja-jp/free-ddos-alerts-ja-jp/",
+	"datePublished": "2022-01-17T00:00:00.000Z",
+	"dateModified": "2022-03-07T18:32:23.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/03/unnamed-14-4.png",
+		"width": 1600,
+		"height": 900
+	},
+	"keywords": "DDoSアラート, DDoS (JP)",
+	"description": "Cloudflareによって自動的に検出および軽減されたHTTP DDoS攻撃に関するリアルタイムアラートを受信する機能が、Freeプランをご利用のお客様にご利用いただけるようになったことを発表でき嬉しく思います。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

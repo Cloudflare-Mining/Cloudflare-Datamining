@@ -1,0 +1,32 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Filipp Nisenzoun",
+		"image": "http://blog.cloudflare.com/content/images/2019/03/filipp.png",
+		"url": "https://blog.cloudflare.com/author/filipp/",
+		"sameAs": []
+	},
+	"headline": "Logpush: the Easy Way to Get Your Logs to Your Cloud Storage",
+	"url": "https://blog.cloudflare.com/cloudflare-logpush-the-easy-way-to-get-your-logs-to-your-cloud-storage/",
+	"datePublished": "2019-02-25T16:00:00.000Z",
+	"dateModified": "2020-05-13T16:25:02.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2019/02/log-push-blog-header@2x.png",
+	"keywords": "Analytics, Data, Privacy",
+	"description": "Today, we’re excited to announce a new way to get your logs: Logpush, a tool for uploading your logs to your cloud storage provider, such as Amazon S3 or Google Cloud Storage. It’s now available in Early Access for Enterprise domains.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

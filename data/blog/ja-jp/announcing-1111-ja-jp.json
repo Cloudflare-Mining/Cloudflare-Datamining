@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew Prince",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
+			"width": 1196,
+			"height": 1190
+		},
+		"url": "https://blog.cloudflare.com/author/matthew-prince/",
+		"sameAs": [
+			"https://twitter.com/eastdakota"
+		]
+	},
+	"headline": "プライバシー優先の最速の消費者向けDNSサービス「1.1.1.1」を発表",
+	"url": "https://blog.cloudflare.com/ja-jp/announcing-1111-ja-jp/",
+	"datePublished": "2018-04-01T12:59:00.000Z",
+	"dateModified": "2021-01-21T18:57:08.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/1.1.1.1-fancycolor-4.gif",
+	"keywords": "1.1.1.1 (JP), 製品ニュース (JP), DNS (JP), 日本語",
+	"description": "Cloudflareのミッションは、より良いインターネットを構築することです。本日、リリースしたプライバシー優先のインターネット最速の消費者向けDNSサービスである1.1.1.1を通じて、このミッションに向かって新たな一歩を進めることができたことを大変喜ばしく思っています。この記事では、このサービスについて概説し、当社がこのサービスの提供を決意した理由を詳しく説明します（当社のサービスの構築方法を技術面から詳しく知りたい方は、オラフール・グッドムンソンの関連記事をご確認ください）。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,37 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Jakub Sitnicki",
+		"image": "http://blog.cloudflare.com/content/images/2019/05/4_300698554542850065.jpg",
+		"url": "https://blog.cloudflare.com/author/jakub/",
+		"sameAs": []
+	},
+	"headline": "The tale of a single register value",
+	"url": "https://blog.cloudflare.com/the-tale-of-a-single-register-value/",
+	"datePublished": "2021-11-03T14:37:10.000Z",
+	"dateModified": "2021-12-01T09:45:19.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/11/The-tale-of-a-single-register-value-header.png",
+		"width": 1200,
+		"height": 628
+	},
+	"keywords": "Deep Dive, Software",
+	"description": "It’s not every day that you get to debug what may well be a packet of death. It was certainly the first time for me.\nWhat do I mean by “a packet of death”? A software bug where the network stack crashes in reaction to a single received network packet, taking down the whole operating system with it. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

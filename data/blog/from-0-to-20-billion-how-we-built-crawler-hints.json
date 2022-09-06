@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matt Boyle",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/04/Screen-Shot-2022-04-25-at-3.13.35-PM.png",
+			"width": 810,
+			"height": 808
+		},
+		"url": "https://blog.cloudflare.com/author/matt/",
+		"sameAs": [
+			"https://twitter.com/mattjamesboyle"
+		]
+	},
+	"headline": "From 0 to 20 billion - How We Built Crawler Hints",
+	"url": "https://blog.cloudflare.com/from-0-to-20-billion-how-we-built-crawler-hints/",
+	"datePublished": "2021-12-16T13:58:29.000Z",
+	"dateModified": "2021-12-16T13:58:29.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/12/image2-59.png",
+		"width": 1800,
+		"height": 1013
+	},
+	"keywords": "Crawler Hints, Product News, Search Engine, Speed & Reliability",
+	"description": "Cloudflare Is reducing the environmental impact of web searches with 20+ billions crawler hints delivered so far. This blog describes the technical solution of how we built the Crawler Hints system that makes all this possible.\n",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

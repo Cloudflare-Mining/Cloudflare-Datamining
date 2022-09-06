@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Jason Farber",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/jason-photo4.jpg",
+			"width": 200,
+			"height": 200
+		},
+		"url": "https://blog.cloudflare.com/author/jason/",
+		"sameAs": []
+	},
+	"headline": "Deploying Gateway using a Raspberry Pi, DNS over HTTPS and Pi-hole",
+	"url": "https://blog.cloudflare.com/deploying-gateway-using-a-raspberry-pi-dns-over-https-and-pi-hole/",
+	"datePublished": "2020-04-21T11:00:00.000Z",
+	"dateModified": "2020-04-21T18:00:23.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2020/04/Screen-Shot-2020-02-24-at-6.56.17-PM.png",
+		"width": 1906,
+		"height": 1170
+	},
+	"keywords": "Cloudflare Gateway, Cloudflare Access, DoH, Raspberry Pi, DNS, Security",
+	"description": "Like many, I am working remotely and in this post, I describe some of the ways to deploy Cloudflare Gateway directly from your home. Gateway’s DNS filtering protects networks from malware, phishing, ransomware and other security threats. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

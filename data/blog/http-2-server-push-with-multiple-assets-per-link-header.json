@@ -1,0 +1,34 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "John Graham-Cumming",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
+		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
+		"sameAs": [
+			"https://twitter.com/jgrahamc"
+		]
+	},
+	"headline": "HTTP/2 Server Push with multiple assets per Link header",
+	"url": "https://blog.cloudflare.com/http-2-server-push-with-multiple-assets-per-link-header/",
+	"datePublished": "2016-06-30T12:09:46.000Z",
+	"dateModified": "2018-08-28T20:06:56.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/1673801831_a93ecfc3c4_z.jpg",
+	"keywords": "HTTP2, php, Reliability, Programming, Server Push",
+	"description": "In April we announced that we had added experimental support for HTTP/2 Server Push to all CloudFlare web sites. We did this so that our customers could iterate on this new functionality.\n\n",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

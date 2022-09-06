@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Michael Tremante",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/url-3.jpg",
+		"url": "https://blog.cloudflare.com/author/michael-tremante/",
+		"sameAs": [
+			"https://twitter.com/MichaelTremante"
+		]
+	},
+	"headline": "エンドユーザーセキュリティ：Cloudflareでのアカウント乗っ取り対策",
+	"url": "https://blog.cloudflare.com/ja-jp/account-takeover-protection-ja-jp/",
+	"datePublished": "2021-03-30T15:14:00.000Z",
+	"dateModified": "2021-09-02T19:04:05.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/04/1-32.png",
+		"width": 1585,
+		"height": 755
+	},
+	"keywords": "日本語, Cloudflare Access (JP), Cloudflare Gateway (JP), セキュリティウィーク, セキュリティ",
+	"description": "エンドユーザーアカウントのセキュリティは常に最優先事項ですが、解決するのは難しい問題です。さらに厄介なことに、ユーザーの認証は困難です。 認証情報のデータセットの流出が一般的になり、Webをクローリングする高度なボットがクレデンシャルスタッフィング攻撃が仕掛けられる中で、認証エンドポイントの保護や監視をすることは、セキュリティに重点を置いたチームにとって課題となります。これに加えて、多くの認証エンドポイントは依然として正しいユーザー名とパスワードを提供することだけに依存しているため、検出されないクレデンシャルスタッフィングが、悪意のある行為者によるアカウントの乗っ取りにもつながります。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

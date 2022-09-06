@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Sam Rhea",
+		"image": "http://blog.cloudflare.com/content/images/2018/07/photo-for-profile.jpg",
+		"url": "https://blog.cloudflare.com/author/sam/",
+		"sameAs": [
+			"https://twitter.com/LakeAustinBlvd"
+		]
+	},
+	"headline": "Two clicks to add region-based Zero Trust compliance",
+	"url": "https://blog.cloudflare.com/two-clicks-to-enable-regional-zero-trust-compliance/",
+	"datePublished": "2020-09-01T14:51:38.000Z",
+	"dateModified": "2022-04-26T23:22:23.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2020/09/Screen-Shot-2020-09-01-at-3.39.57-PM.png",
+		"width": 1020,
+		"height": 528
+	},
+	"keywords": "Cloudflare Access, Cloudflare Zero Trust, Product News, Zero Trust, Security",
+	"description": "Starting today, you can make geography-based compliance easy again in Cloudflare Access with just two clicks.\nYou can now build rules that require employees to connect from certain countries. You can also add rules that block team members from connecting from other countries.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

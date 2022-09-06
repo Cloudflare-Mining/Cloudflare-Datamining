@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Nancy Gao",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/07/Screen-Shot-2020-05-19-at-12.14.42-AM.png",
+			"width": 1250,
+			"height": 1512
+		},
+		"url": "https://blog.cloudflare.com/author/nancy-gao/",
+		"sameAs": []
+	},
+	"headline": "Introducing Cron Triggers for Cloudflare Workers",
+	"url": "https://blog.cloudflare.com/introducing-cron-triggers-for-cloudflare-workers/",
+	"datePublished": "2020-09-28T13:03:00.000Z",
+	"dateModified": "2020-09-30T16:55:24.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2020/09/Birthday-Week-OG-images_Scheduled_Workers.png",
+		"width": 3334,
+		"height": 1668
+	},
+	"keywords": "Serverless, Product News, Cloudflare Workers, Birthday Week",
+	"description": "Today the Cloudflare Workers team is thrilled to announce the launch of Cron Triggers. Before now, Workers were triggered purely by incoming HTTP requests but starting today you’ll be able to set a scheduler to run your Worker on a timed interval. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

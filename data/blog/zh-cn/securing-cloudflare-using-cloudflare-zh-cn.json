@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Molly Cinnamon",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/08/Screenshot-2021-08-10-at-6.56.05-PM.png",
+			"width": 1170,
+			"height": 892
+		},
+		"url": "https://blog.cloudflare.com/author/molly/",
+		"sameAs": []
+	},
+	"headline": "用 Cloudflare 保护 Cloudflare",
+	"url": "https://blog.cloudflare.com/zh-cn/securing-cloudflare-using-cloudflare-zh-cn/",
+	"datePublished": "2022-03-18T21:04:00.000Z",
+	"dateModified": "2022-06-28T07:24:01.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/06/Securing-Cloudflare-with-Cloudflare.png",
+		"width": 1600,
+		"height": 900
+	},
+	"keywords": "Security Week (CN), 使用自己的产品, 安全, LavaRand (CN), 简体中文 (CN)",
+	"description": "Cloudflare 致力于使用一流解决方案来加强我们的安全态势。因此，我们常常会像其他 Cloudflare 客户一样求助于我们自己的产品",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Alex Krivit",
+		"image": "http://blog.cloudflare.com/content/images/2018/08/RE0BQ6EF_400x400.jpg",
+		"url": "https://blog.cloudflare.com/author/alex/",
+		"sameAs": [
+			"https://twitter.com/ackriv"
+		]
+	},
+	"headline": "CDN-Cache-Control: Precision Control for your CDN(s)",
+	"url": "https://blog.cloudflare.com/cdn-cache-control/",
+	"datePublished": "2021-05-21T11:00:02.000Z",
+	"dateModified": "2021-05-21T11:00:02.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/05/image1-9.png",
+		"width": 1918,
+		"height": 1068
+	},
+	"keywords": "CDN, Cache, Cache-Control, Product News, Headers",
+	"description": "Today we are thrilled to announce our support of a new set of HTTP response headers that provide surgical control over our CDN’s caching decisions. CDN-Cache-Control allows customers to directly control how our CDN behaves without affecting the behavior of downstream or upstream caches.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

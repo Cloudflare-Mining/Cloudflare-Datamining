@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Daniele Molteni",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/10/meProfessional-1-flipped.jpg",
+			"width": 1732,
+			"height": 1732
+		},
+		"url": "https://blog.cloudflare.com/author/daniele/",
+		"sameAs": []
+	},
+	"headline": "APIを悪用やデータ流出から保護",
+	"url": "https://blog.cloudflare.com/ja-jp/protecting-apis-from-abuse-and-data-exfiltration-ja-jp/",
+	"datePublished": "2021-03-24T13:00:00.000Z",
+	"dateModified": "2021-04-22T18:30:36.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/04/Announcing-Cloudflare-s-Data-Loss-Prevention-platform-OG-blog-body-3-1.png",
+		"width": 1513,
+		"height": 757
+	},
+	"keywords": "日本語, API Shield (JP), セキュリティ, セキュリティウィーク, WAF (JP), 製品ニュース (JP)",
+	"description": "APIトラフィックは急増しています。昨年だけで、APIトラフィックはWebトラフィックよりも 300%速くエッジで増加しました。APIは、モバイルおよびWebアプリケーションを稼働させ、「このクレジットカードを使用してお気に入りのレストランからピザを注文します」または「暗号通貨取引をします、これが私の個人情報です」など多様な指示を送信するため、データ窃盗や乱用にはうってつけです。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

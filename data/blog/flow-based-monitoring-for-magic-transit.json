@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Annika Garbers",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/annika.png",
+			"width": 400,
+			"height": 400
+		},
+		"url": "https://blog.cloudflare.com/author/annika/",
+		"sameAs": [
+			"https://twitter.com/annikagarbers"
+		]
+	},
+	"headline": "Flow-based monitoring for Magic Transit",
+	"url": "https://blog.cloudflare.com/flow-based-monitoring-for-magic-transit/",
+	"datePublished": "2021-02-26T23:00:00.000Z",
+	"dateModified": "2021-08-03T10:11:04.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/02/1-3.png",
+		"width": 1600,
+		"height": 866
+	},
+	"keywords": "Product News, Magic Transit, Security, DDoS, Attacks",
+	"description": "Today, we’re announcing new functionality to improve the experience for on demand Magic Transit customers: flow-based monitoring. Flow-based monitoring allows us to detect and notify customers when they’re under attack so they can activate Magic Transit for protection.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,40 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Kristian Freeman",
+		"image": "http://blog.cloudflare.com/content/images/2019/05/2fGb07-c_400x400.jpg",
+		"url": "https://blog.cloudflare.com/author/kristian/",
+		"sameAs": [
+			"https://www.signalnerve.com",
+			"https://twitter.com/signalnerve"
+		]
+	},
+	"headline": "JAMstack at the Edge: How we built Built with Workers… on Workers",
+	"url": "https://blog.cloudflare.com/jamstack-at-the-edge-how-we-built-built-with-workers-on-workers/",
+	"datePublished": "2020-01-29T13:00:00.000Z",
+	"dateModified": "2020-01-31T20:09:03.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2020/01/Cloudflare-Blog_Built-with-Workers_28JAN2020.png",
+		"width": 3338,
+		"height": 2003
+	},
+	"keywords": "Cloudflare Workers, JavaScript, JAMstack, Serverless",
+	"description": "I&#x27;m extremely stoked to announce Built with Workers today – it&#x27;s an awesome resource for exploring what you can build with Cloudflare Workers. As Adam explained in our launch post, showcasing developers building incredible projects with tools like Workers KV ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

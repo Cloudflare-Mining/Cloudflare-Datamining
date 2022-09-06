@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Rita Kozlov",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/05/Rita-Kozlov.jpeg",
+			"width": 200,
+			"height": 200
+		},
+		"url": "https://blog.cloudflare.com/author/rita/",
+		"sameAs": [
+			"https://twitter.com/ritakozlov_"
+		]
+	},
+	"headline": "Cloudflare Workers Sites",
+	"url": "https://blog.cloudflare.com/workers-sites/",
+	"datePublished": "2019-09-27T13:00:00.000Z",
+	"dateModified": "2019-09-27T14:44:53.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2019/09/Screen-Shot-2019-09-26-at-1.39.06-PM.png",
+		"width": 967,
+		"height": 551
+	},
+	"keywords": "Birthday Week, Product News, Cloudflare Workers, Serverless, JavaScript, Cloudflare Workers KV",
+	"description": "Performance on the web has always been a battle against the speed of light — accessing a site from London that is served from Seattle, WA means every single asset request has to travel over seven thousand miles.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

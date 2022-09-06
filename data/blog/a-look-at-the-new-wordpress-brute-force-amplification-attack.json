@@ -1,0 +1,32 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Pasha Kravtsov",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/AAEAAQAAAAAAAAUDAAAAJDA5NTAyYWRjLWFjYTktNDUzNC1hYWZlLThjNmU4MmRhNmRiMw.jpg",
+		"url": "https://blog.cloudflare.com/author/pasha-kravtsov/",
+		"sameAs": []
+	},
+	"headline": "A Look at the New WordPress Brute Force Amplification Attack",
+	"url": "https://blog.cloudflare.com/a-look-at-the-new-wordpress-brute-force-amplification-attack/",
+	"datePublished": "2015-10-16T17:14:32.000Z",
+	"dateModified": "2018-08-24T21:03:22.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2017/10/wordpress-xmlrpc-brute-force-amplification.png",
+	"keywords": "WordPress, php, Attacks, Reliability",
+	"description": "Recently, a new brute force attack method for WordPress instances was identified by Sucuri. This latest technique allows attackers to try a large number of WordPress username and password login combinations in a single HTTP request.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

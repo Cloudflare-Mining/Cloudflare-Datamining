@@ -1,0 +1,45 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Peter Wu",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/10/gravatar.png",
+			"width": 512,
+			"height": 512
+		},
+		"url": "https://blog.cloudflare.com/author/peter-wu/",
+		"sameAs": [
+			"https://lekensteyn.nl/",
+			"https://twitter.com/Lekensteyn"
+		]
+	},
+	"headline": "DNS暗号化について",
+	"url": "https://blog.cloudflare.com/ja-jp/dns-encryption-explained-ja-jp/",
+	"datePublished": "2019-10-29T13:00:00.000Z",
+	"dateModified": "2021-01-21T18:42:25.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2019/11/Screen-Shot-2019-10-28-at-12.46.36-PM.png",
+		"width": 2000,
+		"height": 709
+	},
+	"keywords": "日本語, DoT (JP), DNS (JP), DoH (JP), クリプトウィーク, 暗号化",
+	"description": "ドメインネームシステム（DNS）はインターネットのアドレス帳に相当します。cloudflare.com、あるいはその他のサイトにアクセスする際、ブラウザーは DNSリゾルバーに対しそのウェブサイトの IP アドレスを要求します。この時のDNSクエリと応答は残念なことに通常無防備です。DNSを暗号化することにより、ユーザーのプライバシーとセキュリティは向上します。この記事では、DNS を暗号化する 2 種類の方式、つまり DNS over TLS (DoT) および DNS over HTTPS (DoH) について説明します。また、その仕組みについても説明します。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

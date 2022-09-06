@@ -1,0 +1,34 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Marek Majkowski",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/b5967d6c687939594adb6992723d0529.jpeg",
+		"url": "https://blog.cloudflare.com/author/marek-majkowski/",
+		"sameAs": [
+			"https://twitter.com/majek04"
+		]
+	},
+	"headline": "Say Cheese: a snapshot of the massive DDoS attacks coming from IoT cameras",
+	"url": "https://blog.cloudflare.com/say-cheese-a-snapshot-of-the-massive-ddos-attacks-coming-from-iot-cameras/",
+	"datePublished": "2016-10-11T12:59:26.000Z",
+	"dateModified": "2018-08-28T21:01:00.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/4766316315_48242afc03_b.jpg",
+	"keywords": "DDoS, Attacks, IoT, Reliability, Bandwidth, Security",
+	"description": "Over the last few weeks we&#x27;ve seen DDoS attacks hitting our systems that show that attackers have switched to new, large methods of bringing down web applications.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

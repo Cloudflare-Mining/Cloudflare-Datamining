@@ -1,0 +1,40 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Kristian Freeman",
+		"image": "http://blog.cloudflare.com/content/images/2019/05/2fGb07-c_400x400.jpg",
+		"url": "https://blog.cloudflare.com/author/kristian/",
+		"sameAs": [
+			"https://www.signalnerve.com",
+			"https://twitter.com/signalnerve"
+		]
+	},
+	"headline": "Building a GraphQL server on the edge with Cloudflare Workers",
+	"url": "https://blog.cloudflare.com/building-a-graphql-server-on-the-edge-with-cloudflare-workers/",
+	"datePublished": "2019-08-14T03:21:00.000Z",
+	"dateModified": "2021-09-08T16:47:59.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2019/08/Screen-Shot-2019-08-13-at-2.25.23-PM-1.png",
+		"width": 1978,
+		"height": 980
+	},
+	"keywords": "Cloudflare Workers, Serverless, GraphQL, Developers, JavaScript",
+	"description": "Today, we&#x27;re open-sourcing an exciting project that showcases the strengths of our Cloudflare Workers platform: workers-graphql-server is a batteries-included Apollo GraphQL server, designed to get you up and running quickly with GraphQL.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

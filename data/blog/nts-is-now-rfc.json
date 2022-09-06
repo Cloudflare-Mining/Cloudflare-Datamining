@@ -1,0 +1,45 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Watson Ladd",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/10/0.jpg",
+			"width": 500,
+			"height": 500
+		},
+		"url": "https://blog.cloudflare.com/author/watson/",
+		"sameAs": [
+			"http://kc2kdm.com",
+			"https://twitter.com/WatsonLadd"
+		]
+	},
+	"headline": "NTS is now an RFC",
+	"url": "https://blog.cloudflare.com/nts-is-now-rfc/",
+	"datePublished": "2020-10-01T14:53:04.000Z",
+	"dateModified": "2021-09-20T18:04:08.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2020/10/TlRTIGlzIG5vdyBhbiBSRkMgT0cgSW1nLnBuZw--.png",
+		"width": 1356,
+		"height": 785
+	},
+	"keywords": "Time, IETF, Crypto, DNS Security, Research",
+	"description": "After much hard work, NTS finally becomes an official RFC.This means that Network Time Security (NTS) is officially part of the collection of protocols that makes the Internet work. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

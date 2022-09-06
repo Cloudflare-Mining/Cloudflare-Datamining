@@ -1,0 +1,34 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Marek Majkowski",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/b5967d6c687939594adb6992723d0529.jpeg",
+		"url": "https://blog.cloudflare.com/author/marek-majkowski/",
+		"sameAs": [
+			"https://twitter.com/majek04"
+		]
+	},
+	"headline": "CloudFlare &quot;Interview Questions&quot;",
+	"url": "https://blog.cloudflare.com/cloudflare-interview-questions/",
+	"datePublished": "2015-05-11T10:08:30.000Z",
+	"dateModified": "2018-08-24T17:11:10.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/netstat.jpg",
+	"keywords": "Careers, Life @ Cloudflare, Linux, TCP",
+	"description": "For quite some time we&#x27;ve been grilling our candidates about dirty corners of TCP/IP stack. Every engineer here must prove his/her comprehensive understanding of the full network stack. For example: what are the differences in checksumming algorithms between IPv4 and IPv6 stacks?",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

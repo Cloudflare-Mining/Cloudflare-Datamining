@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "John Graham-Cumming",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
+		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
+		"sameAs": [
+			"https://twitter.com/jgrahamc"
+		]
+	},
+	"headline": "Limpieza de bots malos (y el entorno)",
+	"url": "https://blog.cloudflare.com/es-es/cleaning-up-bad-bots-es-es/",
+	"datePublished": "2019-09-23T13:00:00.000Z",
+	"dateModified": "2021-01-21T19:08:21.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2019/10/a.png",
+		"width": 2000,
+		"height": 1263
+	},
+	"keywords": "Semana de cumpleaños, Noticias de productos, Seguridad, Español, Bots (ES)",
+	"description": "Desde el principio, Cloudflare ha estado impidiendo que los bots maliciosos eliminen sitios web o usen las API para fines malintencionados. A lo largo del tiempo, hemos mejorado nuestros métodos de detección de bots e implementado",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Omer Yoachimik",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/Omer-1.png",
+			"width": 773,
+			"height": 653
+		},
+		"url": "https://blog.cloudflare.com/author/omer/",
+		"sameAs": [
+			"https://twitter.com/OmerYoahimik"
+		]
+	},
+	"headline": "Cloudflareの自律的なエッジでのDDoS攻撃対策",
+	"url": "https://blog.cloudflare.com/ja-jp/deep-dive-cloudflare-autonomous-edge-ddos-protection-ja-jp/",
+	"datePublished": "2021-03-18T15:29:00.000Z",
+	"dateModified": "2021-09-02T19:04:39.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/04/1-26.png",
+		"width": 1572,
+		"height": 839
+	},
+	"keywords": "日本語, DDoS (JP)",
+	"description": "本日は、自律的なDDoS（分散サービス妨害）攻撃対策システムをみなさまにご紹介いたします。このシステムは、Cloudflareの200を超えるデータセンターでデプロイされており、人の介入を必要とせず、（OSI 参照モデルの）レイヤー3からレイヤー7を狙うDDoS攻撃からすべてのお客様を保護しています。当社はDDoS攻撃対策を定額制にする取り組みを行っており、DDoS攻撃を受けた際もお客様から追加料金をいただくことはありません。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

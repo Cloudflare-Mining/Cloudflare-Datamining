@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Tom Strickx",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/07/Headshot_Lisbon.png",
+			"width": 150,
+			"height": 176
+		},
+		"url": "https://blog.cloudflare.com/author/tom-strickx/",
+		"sameAs": [
+			"https://twitter.com/tstrickx"
+		]
+	},
+	"headline": "2022年6月21日に発生したCloudflareの障害について",
+	"url": "https://blog.cloudflare.com/ja-jp/cloudflare-outage-on-june-21-2022-ja-jp/",
+	"datePublished": "2022-06-21T12:38:00.000Z",
+	"dateModified": "2022-06-22T11:16:42.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/06/BLOG-1226-Global-Latency-1-5.png",
+		"width": 1200,
+		"height": 675
+	},
+	"keywords": "停止, 事後分析, 日本語",
+	"description": "本日2022年6月21日、Cloudflareの19か所のデータセンターにおいて、トラフィックに影響を与える障害が発生しました",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

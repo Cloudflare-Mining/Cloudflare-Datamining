@@ -1,0 +1,34 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Jon Levine",
+		"image": "http://blog.cloudflare.com/content/images/2018/04/prof-crop.jpg",
+		"url": "https://blog.cloudflare.com/author/jpl/",
+		"sameAs": [
+			"https://twitter.com/jplevine"
+		]
+	},
+	"headline": "Presentamos la API de caché de Workers: te dará control sobre cómo se almacena tu contenido",
+	"url": "https://blog.cloudflare.com/es-es/introducing-the-workers-cac-he-api-giving-you-control-over-how-your-content-is-cached-es-es/",
+	"datePublished": "2019-01-25T15:33:00.000Z",
+	"dateModified": "2021-02-05T01:24:46.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2019/04/caching@3x-1-1.png",
+	"keywords": "Español, Desarrolladores, Sin servidor, Cloudflare Workers (ES), JavaScript (ES)",
+	"description": "En Cloudflare, nuestro objetivo es hacer Internet más rápido y seguro para todos. Una forma de lograrlo es a través del almacenamiento en caché: guardamos una copia del contenido de nuestros clientes en nuestros 165 centros de datos alrededor del mundo. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

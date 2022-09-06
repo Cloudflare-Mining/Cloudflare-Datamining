@@ -1,0 +1,37 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Arjunan Rajeswaran",
+		"image": "http://blog.cloudflare.com/content/images/2018/11/Arjunan.jpg",
+		"url": "https://blog.cloudflare.com/author/arjunan/",
+		"sameAs": []
+	},
+	"headline": "Empowering customers with the Bandwidth Alliance",
+	"url": "https://blog.cloudflare.com/empowering-customers-with-the-bandwidth-alliance/",
+	"datePublished": "2021-07-23T12:59:54.000Z",
+	"dateModified": "2021-07-23T12:59:54.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/07/image1-15.png",
+		"width": 1965,
+		"height": 942
+	},
+	"keywords": "Open Internet, Bandwidth Alliance, Egress",
+	"description": "High egress costs from a Cloud limit customers choice in Cloud services. Cloudflare’s Bandwidth Alliance with our cloud partners provides an alternative to this lock-in. Our customers have benefitted from this both via discounted egress costs and choice of storage providers.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

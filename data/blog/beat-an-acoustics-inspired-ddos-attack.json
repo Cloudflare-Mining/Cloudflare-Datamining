@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Omer Yoachimik",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/Omer-1.png",
+			"width": 773,
+			"height": 653
+		},
+		"url": "https://blog.cloudflare.com/author/omer/",
+		"sameAs": [
+			"https://twitter.com/OmerYoahimik"
+		]
+	},
+	"headline": "Beat - An Acoustics Inspired DDoS Attack",
+	"url": "https://blog.cloudflare.com/beat-an-acoustics-inspired-ddos-attack/",
+	"datePublished": "2020-12-22T12:00:00.000Z",
+	"dateModified": "2022-07-12T18:38:51.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2020/12/1-2.png",
+		"width": 1600,
+		"height": 900
+	},
+	"keywords": "DDoS, Magic Transit, Attacks, Security",
+	"description": "On the week of Black Friday, Cloudflare automatically detected and mitigated “Beat” - an acoustics inspired DDoS attacks that targeted a Magic Transit customer.\n",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

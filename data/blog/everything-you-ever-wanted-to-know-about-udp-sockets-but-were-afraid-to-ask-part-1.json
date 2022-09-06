@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Marek Majkowski",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/b5967d6c687939594adb6992723d0529.jpeg",
+		"url": "https://blog.cloudflare.com/author/marek-majkowski/",
+		"sameAs": [
+			"https://twitter.com/majek04"
+		]
+	},
+	"headline": "Everything you ever wanted to know about UDP sockets but were afraid to ask, part 1",
+	"url": "https://blog.cloudflare.com/everything-you-ever-wanted-to-know-about-udp-sockets-but-were-afraid-to-ask-part-1/",
+	"datePublished": "2021-11-25T17:27:37.000Z",
+	"dateModified": "2022-07-27T17:46:45.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/11/Spectrum-Data-Plane-Internals.png",
+		"width": 960,
+		"height": 540
+	},
+	"keywords": "UDP",
+	"description": "Historically Cloudflare&#x27;s core competency was operating an HTTP reverse proxy. We&#x27;ve spent significant effort optimizing traditional HTTP/1.1 and HTTP/2 servers running on top of TCP. Recently though, we started operating big scale stateful UDP services.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

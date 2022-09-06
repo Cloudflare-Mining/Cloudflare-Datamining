@@ -1,0 +1,34 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Sam Rhea",
+		"image": "http://blog.cloudflare.com/content/images/2018/07/photo-for-profile.jpg",
+		"url": "https://blog.cloudflare.com/author/sam/",
+		"sameAs": [
+			"https://twitter.com/LakeAustinBlvd"
+		]
+	},
+	"headline": "Cloudflare Registrar: what happens when you register a domain?",
+	"url": "https://blog.cloudflare.com/using-cloudflare-registrar/",
+	"datePublished": "2018-09-27T12:01:00.000Z",
+	"dateModified": "2018-12-13T22:51:11.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/09/rolling-out-@2x.png",
+	"keywords": "Birthday Week, Product News, Registrar",
+	"description": "Every website, large or small, started with an idea, rapidly followed by registering a domain. Most registrars offer promotions for your initial domain registration and then quietly hike the price with each renewal. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

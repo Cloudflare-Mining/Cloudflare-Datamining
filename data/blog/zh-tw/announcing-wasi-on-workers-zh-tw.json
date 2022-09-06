@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Ben Yule",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/09/ben_yule.png",
+			"width": 600,
+			"height": 600
+		},
+		"url": "https://blog.cloudflare.com/author/ben-yule/",
+		"sameAs": [
+			"https://twitter.com/bjyule"
+		]
+	},
+	"headline": "宣佈在 Cloudflare Workers 上支援 WASI",
+	"url": "https://blog.cloudflare.com/zh-tw/announcing-wasi-on-workers-zh-tw/",
+	"datePublished": "2022-07-07T16:09:00.000Z",
+	"dateModified": "2022-08-12T07:33:30.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/08/image1-OG-2-1.png",
+		"width": 1600,
+		"height": 900
+	},
+	"keywords": "Cloudflare Workers (TW), WebAssembly (TW), WASM (TW), WASI (TW), 繁體中文 (TW)",
+	"description": "今天，我們宣佈在 Cloudflare Workers 上提供對 WASI（WebAssembly 系統介面）的實驗性支援，並在 wrangler2 中提供支援，以打造輕鬆愉悅的使用體驗",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Omer Yoachimik",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/Omer-1.png",
+			"width": 773,
+			"height": 653
+		},
+		"url": "https://blog.cloudflare.com/author/omer/",
+		"sameAs": [
+			"https://twitter.com/OmerYoahimik"
+		]
+	},
+	"headline": "Cloudflare缓解754Mpps syn泛洪攻击_自动防御ddos_ddos如何防护",
+	"url": "https://blog.cloudflare.com/zh-cn/mitigating-a-754-million-pps-ddos-attack-automatically-zh-cn/",
+	"datePublished": "2020-07-09T11:00:00.000Z",
+	"dateModified": "2021-01-28T20:07:42.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2020/12/image3-4.png",
+		"width": 1965,
+		"height": 1162
+	},
+	"keywords": "简体中文 (CN), DDoS (CN), 安全, Gatebot (ZH)",
+	"description": "6月21日，Cloudflare自动缓解了一次每秒7.54亿封包的高容量DDoS攻击。此次攻击属于6月18日开始到6月21日结束的为期四天的有组织攻击活动的一部分：攻击流量来自于超过316000个IP地址，并发送到了单个Cloudflare IP，",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

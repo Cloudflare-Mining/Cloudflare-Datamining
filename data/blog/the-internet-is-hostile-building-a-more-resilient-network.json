@@ -1,0 +1,34 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Jérôme Fleury",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/1c11387.jpg",
+		"url": "https://blog.cloudflare.com/author/jerome-fleury/",
+		"sameAs": [
+			"https://twitter.com/Jerome_UZ"
+		]
+	},
+	"headline": "The Internet is Hostile: Building a More Resilient Network",
+	"url": "https://blog.cloudflare.com/the-internet-is-hostile-building-a-more-resilient-network/",
+	"datePublished": "2016-11-08T18:56:49.000Z",
+	"dateModified": "2018-08-28T21:06:39.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/916142_ddc2fd0140_o.gif",
+	"keywords": "DDoS, Mitigation, Attacks, Bandwidth, Salt, Protection",
+	"description": "The strength of the Internet is its ability to interconnect all sorts of networks — big data centers, e-commerce websites at small hosting companies, Internet Service Providers (ISP), and Content Delivery Networks (CDN) — just to name a few. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

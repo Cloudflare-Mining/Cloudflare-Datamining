@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Tanushree Sharma",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/09/IMG_1328-1.jpg",
+			"width": 1895,
+			"height": 1874
+		},
+		"url": "https://blog.cloudflare.com/author/tanushree/",
+		"sameAs": [
+			"https://twitter.com/TanushreeS5"
+		]
+	},
+	"headline": "通过 New Relic 获得对 Cloudflare 日志的完整可观察性",
+	"url": "https://blog.cloudflare.com/zh-cn/announcing-the-new-relic-direct-log-integration-zh-cn/",
+	"datePublished": "2022-03-14T12:59:00.000Z",
+	"dateModified": "2022-05-30T04:37:20.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/05/image2-14-1.png",
+		"width": 1801,
+		"height": 1013
+	},
+	"keywords": "安全周 (CN), 日志 (CN), 分析",
+	"description": "在 New Relic One 中关联堆栈中的 Cloudflare 日志，对监控和排除故障以保持服务安全、可靠非常有用。我们很高兴能与 New Relic 合作创造一个直接集成来提供这种可见性",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

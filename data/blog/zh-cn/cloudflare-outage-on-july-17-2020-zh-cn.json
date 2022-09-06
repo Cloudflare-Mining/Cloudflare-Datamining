@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "John Graham-Cumming",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
+		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
+		"sameAs": [
+			"https://twitter.com/jgrahamc"
+		]
+	},
+	"headline": "2020 年 7 月 17 日 Cloudflare 中断故障",
+	"url": "https://blog.cloudflare.com/zh-cn/cloudflare-outage-on-july-17-2020-zh-cn/",
+	"datePublished": "2020-07-18T01:22:00.000Z",
+	"dateModified": "2021-01-28T20:08:14.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2020/07/1-4.png",
+		"width": 1043,
+		"height": 749
+	},
+	"keywords": "简体中文 (CN), 工程",
+	"description": "今天，我们主干网络的一个配置错误导致互联网资产和 Cloudflare 服务中断了 27 分钟。我们发现整个网络的流量下降了大约 50%。鉴于我们的主干架构设计，这次中断没有影响到整个 Cloudflare 网络，而是仅限于局部地区。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

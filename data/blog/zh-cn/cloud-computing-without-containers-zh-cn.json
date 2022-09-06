@@ -1,0 +1,37 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Zack Bloom",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/YZCINbF6.jpg",
+		"url": "https://blog.cloudflare.com/author/zack-bloom/",
+		"sameAs": []
+	},
+	"headline": "云计算的未来_Isolate框架的Cloudflare Workers云计算平台，无服务器编写代码",
+	"url": "https://blog.cloudflare.com/zh-cn/cloud-computing-without-containers-zh-cn/",
+	"datePublished": "2018-11-09T14:57:00.000Z",
+	"dateModified": "2021-01-28T18:43:57.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2019/07/no-VM-@3x-2.png",
+		"width": 2000,
+		"height": 792
+	},
+	"keywords": "简体中文 (CN), 云计算, 无服务器",
+	"description": "Cloudflare有一个名为Workers的云计算平台。与我所知的其他所有云计算平台不同，它不使用容器或虚拟机。我们认为这是无服务器和云计算的未来，接下来我会告诉你为什么。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Shalabh Mohan",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/03/Shalabh-Mohan.jpeg",
+			"width": 450,
+			"height": 450
+		},
+		"url": "https://blog.cloudflare.com/author/shalabh/",
+		"sameAs": []
+	},
+	"headline": "Introducing browser isolation for email links to stop modern phishing threats",
+	"url": "https://blog.cloudflare.com/email-link-isolation/",
+	"datePublished": "2022-06-20T14:02:00.000Z",
+	"dateModified": "2022-06-21T10:34:25.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/06/image6-7.png",
+		"width": 1801,
+		"height": 1013
+	},
+	"keywords": "Cloudflare One Week, Product News, Zero Trust, Phishing, Cloudflare Area 1, Remote Browser Isolation, Cloud Email Security, Email Security, Cloudflare Zero Trust",
+	"description": "As part of our exciting journey to integrate Area 1 into our broader Zero Trust suite, Cloudflare Gateway customers can soon enable Remote Browser Isolation for email links. With Email Link Isolation, gain an unmatched level of protection from sophisticated multi-channel email-based attacks",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

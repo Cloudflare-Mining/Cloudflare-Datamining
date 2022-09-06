@@ -1,0 +1,45 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Simon Wijckmans",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/09/simon.wijckmans@microsoft.com_02p.jpg",
+			"width": 600,
+			"height": 600
+		},
+		"url": "https://blog.cloudflare.com/author/swijckmans/",
+		"sameAs": [
+			"https://simonwijckmans.com/",
+			"https://twitter.com/SimonWijckmans"
+		]
+	},
+	"headline": "Making Page Shield malicious code alerts more actionable",
+	"url": "https://blog.cloudflare.com/making-page-shield-malicious-code-alerts-more-actionable/",
+	"datePublished": "2022-07-05T12:59:11.000Z",
+	"dateModified": "2022-08-10T10:47:16.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/06/Untitled-1.png",
+		"width": 1600,
+		"height": 802
+	},
+	"keywords": "Security, Page Shield, Magecart, JavaScript",
+	"description": "In this post we go over improvements to script status, metadata and categorization.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

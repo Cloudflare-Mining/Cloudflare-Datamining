@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Ling Wu",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2020/12/Crepe.JPG",
+			"width": 640,
+			"height": 854
+		},
+		"url": "https://blog.cloudflare.com/author/ling/",
+		"sameAs": []
+	},
+	"headline": "Cloudflare Certifications",
+	"url": "https://blog.cloudflare.com/cloudflare-certifications/",
+	"datePublished": "2020-12-10T12:00:00.000Z",
+	"dateModified": "2020-12-10T12:00:00.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2020/12/certifications.png",
+		"width": 1600,
+		"height": 905
+	},
+	"keywords": "Privacy Week, Certification, PCI Certified",
+	"description": "We think trust is fundamental to building a better Internet. Cloudflare adheres to industry-standard security compliance certifications and regulations to help our customers earn their users’ trust.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

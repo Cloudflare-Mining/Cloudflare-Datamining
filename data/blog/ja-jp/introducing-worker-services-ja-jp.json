@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Ashcon Partovi",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/04/117158947_4858836477475662_2532132460047140852_o.jpeg",
+			"width": 280,
+			"height": 280
+		},
+		"url": "https://blog.cloudflare.com/author/ashcon/",
+		"sameAs": [
+			"https://twitter.com/ashconpartovi"
+		]
+	},
+	"headline": "Servicesの紹介：Cloudflare Workersに構成可能な分散型アプリケーションを構築",
+	"url": "https://blog.cloudflare.com/ja-jp/introducing-worker-services-ja-jp/",
+	"datePublished": "2021-11-16T19:25:00.000Z",
+	"dateModified": "2021-12-15T19:31:28.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/12/unnamed-21.png",
+		"width": 1200,
+		"height": 675
+	},
+	"keywords": "Full Stack Week (JP), 開発者 (JP), Cloudflare Workers (JP)",
+	"description": "まず、Workerのスクリプトです。これは、シンプルかつエレガントなものでした。わずか数行のコードで、HTTPリクエストを書き換えたり、ヘッダーを追加したり、Webサイトを素早く修正することができます。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

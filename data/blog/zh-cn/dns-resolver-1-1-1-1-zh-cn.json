@@ -1,0 +1,37 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Ólafur Guðmundsson",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/3a917b8.jpg",
+		"url": "https://blog.cloudflare.com/author/olafur-gudmundsson/",
+		"sameAs": []
+	},
+	"headline": "dns服务器1.1.1.1_首选Cloudflare dns，最快速的安全公共dns解析器",
+	"url": "https://blog.cloudflare.com/zh-cn/dns-resolver-1-1-1-1-zh-cn/",
+	"datePublished": "2018-04-01T13:00:00.000Z",
+	"dateModified": "2021-01-28T18:33:14.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2019/07/dnsimple-howdns-works-1.png",
+		"width": 2611,
+		"height": 676
+	},
+	"keywords": "隐私 (CN), 简体中文 (CN), 产品新闻, DNS (CN), 1.1.1.1 (CN)",
+	"description": "Cloudflare的使命是帮助建立一个更好的互联网，因此今天我们将推出我们的DNS解析器1.1.1.1 - 递归DNS服务。有了这个产品，我们能够建立一个更快，更安全以及更注重隐私的公共DNS解析器，以此创造一个更好的互联网环境。DNS解析器1.1.1.1可供所有人公开使用 - 它是Cloudflare发布的第一个以消费者为中心的服务。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

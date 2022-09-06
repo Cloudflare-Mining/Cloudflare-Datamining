@@ -1,0 +1,33 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "John Graham-Cumming",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
+		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
+		"sameAs": [
+			"https://twitter.com/jgrahamc"
+		]
+	},
+	"headline": "A Go Gotcha: When Closures and Goroutines Collide",
+	"url": "https://blog.cloudflare.com/a-go-gotcha-when-closures-and-goroutines-collide/",
+	"datePublished": "2015-03-25T16:23:01.000Z",
+	"dateModified": "2018-08-24T01:13:49.000Z",
+	"keywords": "Go, Programming, Tips",
+	"description": "Here&#x27;s a small Go gotcha that it&#x27;s easy to fall into when using goroutines and closures. Here&#x27;s a simple program that prints out the numbers 0 to 9.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

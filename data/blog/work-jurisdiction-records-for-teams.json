@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew Prince",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
+			"width": 1196,
+			"height": 1190
+		},
+		"url": "https://blog.cloudflare.com/author/matthew-prince/",
+		"sameAs": [
+			"https://twitter.com/eastdakota"
+		]
+	},
+	"headline": "Announcing Workplace Records for Cloudflare for Teams",
+	"url": "https://blog.cloudflare.com/work-jurisdiction-records-for-teams/",
+	"datePublished": "2020-12-10T16:14:06.000Z",
+	"dateModified": "2022-04-26T23:19:35.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2020/12/image1-46.png",
+		"width": 1999,
+		"height": 1200
+	},
+	"keywords": "Privacy Week, Cloudflare Access, Cloudflare Zero Trust, Compliance, Security, Zero Trust",
+	"description": "Workplace Records uses Access and Gateway logs to provide the state and country from which employees are working. Workplace Records can be used to help finance, legal, and HR departments determine where payroll taxes are due and provide a record to defend those decisions.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

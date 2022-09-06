@@ -1,0 +1,32 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Nick Jones",
+		"image": "http://blog.cloudflare.com/content/images/2018/10/nick-jones.jpg",
+		"url": "https://blog.cloudflare.com/author/nick-jones/",
+		"sameAs": []
+	},
+	"headline": "HTTP/2 성능 향상을 위한 NGINX 구조 개선",
+	"url": "https://blog.cloudflare.com/ko-kr/nginx-structural-enhancements-for-http-2-performance-ko-kr/",
+	"datePublished": "2019-05-22T17:14:00.000Z",
+	"dateModified": "2021-01-21T20:57:07.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2019/05/http2prioritization-copy@2x-5.png",
+	"keywords": "한국어, 속도 및 신뢰성, 성능 주간, NGINX (KO), HTTP2 (KO)",
+	"description": "우리 Cloudflare 프로토콜 팀은 Cloudflare 네트워크의 엣지서버에서 HTTP 트래픽을 처리하는 일을 맡고 있습니다. 우리는 TCP, QUIC, TLS, 안전한 인증서 관리, HTTP/1 과 HTTP/2 에 관련된 기능을 담당하고 있습니다.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

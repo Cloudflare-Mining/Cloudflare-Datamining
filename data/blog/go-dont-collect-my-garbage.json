@@ -1,0 +1,32 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Vlad Krasnov",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/165e069.jpg",
+		"url": "https://blog.cloudflare.com/author/vlad-krasnov/",
+		"sameAs": []
+	},
+	"headline": "Go, don&#x27;t collect my garbage",
+	"url": "https://blog.cloudflare.com/go-dont-collect-my-garbage/",
+	"datePublished": "2017-11-13T10:31:09.000Z",
+	"dateModified": "2021-11-04T09:09:55.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2017/11/36963798223_b4da5151aa_k-1.jpg",
+	"keywords": "Go, Speed & Reliability, Developers, Programming",
+	"description": "Not long ago I needed to benchmark the performance of Golang on a many-core machine. I took several of the benchmarks that are bundled with the Go source code, copied them, and modified them to run on all available threads.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

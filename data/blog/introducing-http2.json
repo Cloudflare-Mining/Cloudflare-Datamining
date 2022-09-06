@@ -1,0 +1,32 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Christian Elsen",
+		"image": "http://blog.cloudflare.com/content/images/2018/02/AAEAAQAAAAAAAAf8AAAAJDQ0YmU2OWMxLWI2YmMtNDhlOS1hOTY2LTc2OWIxYzQ1YjI5ZA.jpg",
+		"url": "https://blog.cloudflare.com/author/christian-elsen/",
+		"sameAs": []
+	},
+	"headline": "HTTP/2 is here! Goodbye SPDY? Not quite yet",
+	"url": "https://blog.cloudflare.com/introducing-http2/",
+	"datePublished": "2015-12-03T13:59:00.000Z",
+	"dateModified": "2018-08-27T21:13:01.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/image_2.jpg",
+	"keywords": "spdy, Speed & Reliability, HTTP2, TLS, SSL, Security",
+	"description": "Why choose, if you can have both? Today CloudFlare is introducing HTTP/2 support for all customers using SSL/TLS connections, while still supporting SPDY. There is no need to make a decision between SPDY or HTTP/2. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

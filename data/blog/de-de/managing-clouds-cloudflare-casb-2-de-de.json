@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Corey Mahan",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/02/CoreyMahan_ProfilePhoto.jpg",
+			"width": 2000,
+			"height": 1659
+		},
+		"url": "https://blog.cloudflare.com/author/corey-mahan/",
+		"sameAs": [
+			"https://twitter.com/coreymahan"
+		]
+	},
+	"headline": "Clouds verwalten – Cloudflare CASB und unser nicht ganz so geheimer Plan für das, was als nächstes kommt",
+	"url": "https://blog.cloudflare.com/de-de/managing-clouds-cloudflare-casb-2-de-de/",
+	"datePublished": "2022-03-18T13:00:00.000Z",
+	"dateModified": "2022-06-21T20:06:08.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/06/image1-70.png",
+		"width": 1200,
+		"height": 675
+	},
+	"keywords": "Security Week (DE), CASB (DE), Cloudflare Zero Trust (DE), Sicherheit, SaaS-Sicherheit, Produktneuheiten, Deutsch",
+	"description": "Im Moment arbeiten wir daran, das Out-of-Band CASB-Produkt nahtlos in die Zero Trust-Plattform zu integrieren",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

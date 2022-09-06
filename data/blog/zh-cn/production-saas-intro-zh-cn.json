@@ -1,0 +1,45 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Luke Edwards",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/08/887b052b9a3d2b39837750058d949b82_400x400.jpg",
+			"width": 400,
+			"height": 400
+		},
+		"url": "https://blog.cloudflare.com/author/lukeed/",
+		"sameAs": [
+			"https://lukeed.com",
+			"https://twitter.com/lukeed05"
+		]
+	},
+	"headline": "Cloudflare 堆栈上的开源 CMS：Introductory Post",
+	"url": "https://blog.cloudflare.com/zh-cn/production-saas-intro-zh-cn/",
+	"datePublished": "2021-11-19T13:59:00.000Z",
+	"dateModified": "2022-01-01T21:47:53.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/01/image3-30-1.png",
+		"width": 1200,
+		"height": 675
+	},
+	"keywords": "Full Stack Week (CN), Cloudflare Workers (CN), 简体中文 (CN), 产品新闻, 无服务器",
+	"description": "当学习概念、查看 API 用法说明或需要简洁的代码段来阐释这些 API 或概念时，Cloudflare 文档是非常不错的资源。然而，尽管它的内容十分全面，Cloudflare Workers 平台的新用户可能需要经历长长的入门示例代码段，",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

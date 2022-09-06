@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Justin Paine",
+		"image": {
+			"@type": "ImageObject",
+			"url": "//www.gravatar.com/avatar/04d92a2396a0dc6e794c12989720cd4b?d=404&s=250",
+			"width": 250,
+			"height": 250
+		},
+		"url": "https://blog.cloudflare.com/author/justin/",
+		"sameAs": [
+			"https://www.linkedin.com/in/justinpaine/"
+		]
+	},
+	"headline": "Lancement de l’outil de détection CSAM, gratuit pour tous les clients Cloudflare",
+	"url": "https://blog.cloudflare.com/fr-fr/the-csam-scanning-tool-fr-fr/",
+	"datePublished": "2019-12-18T18:02:00.000Z",
+	"dateModified": "2021-01-27T01:52:33.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2020/01/image3-12.png",
+		"width": 1600,
+		"height": 639
+	},
+	"keywords": "Maltraitance, Français",
+	"description": "Nous avons écrit il y a deux semaines un article sur la stratégie adoptée par Cloudflare pour lutter contre les contenus pédopornographiques. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

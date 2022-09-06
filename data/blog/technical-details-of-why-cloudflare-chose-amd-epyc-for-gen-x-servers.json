@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Nitin Rao",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/08/WtxhLSEUSgqYRMdQUwWp_1204a20b3d1d96bba523a6a2a5fa3cd73bd4fe59240a27ad6eb8c064c6792446.jpg",
+			"width": 600,
+			"height": 600
+		},
+		"url": "https://blog.cloudflare.com/author/nitin-rao/",
+		"sameAs": [
+			"https://twitter.com/NitinBRao"
+		]
+	},
+	"headline": "Why Cloudflare Chose AMD EPYC for Gen X Servers",
+	"url": "https://blog.cloudflare.com/technical-details-of-why-cloudflare-chose-amd-epyc-for-gen-x-servers/",
+	"datePublished": "2020-03-01T13:00:00.000Z",
+	"dateModified": "2020-03-03T17:50:55.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2020/02/gen-x-color-Friday--twitter@2x-2.png",
+		"width": 1249,
+		"height": 703
+	},
+	"keywords": "EPYC, AMD, Gen X, Cache, Hardware, Security",
+	"description": "Looking back at this week&#x27;s posts on the design, specifications, and performance of Cloudflare’s Gen X servers using AMD CPUs. Every server can run every service. This architectural decision has helped us achieve higher efficiency across the Cloudflare network. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

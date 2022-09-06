@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Ashcon Partovi",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/04/117158947_4858836477475662_2532132460047140852_o.jpeg",
+			"width": 280,
+			"height": 280
+		},
+		"url": "https://blog.cloudflare.com/author/ashcon/",
+		"sameAs": [
+			"https://twitter.com/ashconpartovi"
+		]
+	},
+	"headline": "wrangler 2.0 —— Cloudflare Workers 的新开发体验",
+	"url": "https://blog.cloudflare.com/zh-cn/wrangler-v2-beta-zh-cn/",
+	"datePublished": "2021-11-16T13:55:00.000Z",
+	"dateModified": "2021-11-18T13:56:09.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/11/image1-23-3.png",
+		"width": 1200,
+		"height": 675
+	},
+	"keywords": "Cloudflare Workers (CN), Full Stack Week (CN), 开发者, Wrangler (CN)",
+	"description": "开发人员的很多工作都是为了做出各种权衡取舍，例如一致性与可用性，速度与正确性，等等。虽然总是会有某种技术上的权衡要考虑，但我们认为，作为开发人员，有一些是永远不应该需要取舍的。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

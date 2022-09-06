@@ -1,0 +1,32 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Damon Billian",
+		"image": "http://blog.cloudflare.com/content/images/2018/02/1b3fcea.jpg",
+		"url": "https://blog.cloudflare.com/author/damon-billian/",
+		"sameAs": []
+	},
+	"headline": "Cloudflare and E-commerce sites",
+	"url": "https://blog.cloudflare.com/cloudflare-and-e-commerce-sites/",
+	"datePublished": "2011-07-18T21:58:00.000Z",
+	"dateModified": "2020-08-17T16:11:08.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/01/ecommerce.jpg.scaled500-1.jpg",
+	"keywords": "eCommerce, FAQ, Tips",
+	"description": "We get a number of questions about using CloudFlare with e-commerce sites in customer service. CloudFlare works great at making e-commerce sites faster and protecting them against attacks. I thought I would try to address many of the key questions.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

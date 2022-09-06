@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Omer Yoachimik",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/Omer-1.png",
+			"width": 773,
+			"height": 653
+		},
+		"url": "https://blog.cloudflare.com/author/omer/",
+		"sameAs": [
+			"https://twitter.com/OmerYoahimik"
+		]
+	},
+	"headline": "DDoS attack trends for 2022 Q2",
+	"url": "https://blog.cloudflare.com/ddos-attack-trends-for-2022-q2/",
+	"datePublished": "2022-07-06T12:55:42.000Z",
+	"dateModified": "2022-07-13T10:05:01.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/07/image19.png",
+		"width": 1801,
+		"height": 1013
+	},
+	"keywords": "DDoS, DDoS Reports, Attacks, Trends, Cloudflare Radar, Ransom Attack, Ransom DDoS, Ukraine, Russia, BitTorrent, CHARGEN, TeeWorlds",
+	"description": "Welcome to our 2022 Q2 DDoS report. This report includes insights and trends about the DDoS threat landscape — as observed across the global Cloudflare network",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

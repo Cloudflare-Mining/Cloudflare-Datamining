@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Tanushree Sharma",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/09/IMG_1328-1.jpg",
+			"width": 1895,
+			"height": 1874
+		},
+		"url": "https://blog.cloudflare.com/author/tanushree/",
+		"sameAs": [
+			"https://twitter.com/TanushreeS5"
+		]
+	},
+	"headline": "Store your Cloudflare logs on R2",
+	"url": "https://blog.cloudflare.com/store-your-cloudflare-logs-on-r2/",
+	"datePublished": "2021-12-07T13:59:42.000Z",
+	"dateModified": "2022-01-21T08:12:40.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/12/unnamed-5.png",
+		"width": 1600,
+		"height": 900
+	},
+	"keywords": "CIO Week, Logs, Security, Product News, Storage, Cloudflare R2",
+	"description": "We&#x27;re excited to announce that customers will soon be able to store their Cloudflare logs on Cloudflare R2 storage. Storing your logs on Cloudflare will give CIOs and Security Teams an opportunity to consolidate their infrastructure; creating simplicity, savings and additional security.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

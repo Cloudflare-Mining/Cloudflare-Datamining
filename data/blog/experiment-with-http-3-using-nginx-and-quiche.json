@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Alessandro Ghedini",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/09/Ii4TgsoTda2layE131Dk_1204a20b3d1d96bba523a6a2a5fa3cd73bd4fe59240a27ad6eb8c064c6792446.jpg",
+			"width": 600,
+			"height": 600
+		},
+		"url": "https://blog.cloudflare.com/author/alessandro-ghedini/",
+		"sameAs": []
+	},
+	"headline": "Experiment with HTTP/3 using NGINX and quiche",
+	"url": "https://blog.cloudflare.com/experiment-with-http-3-using-nginx-and-quiche/",
+	"datePublished": "2019-10-17T14:00:00.000Z",
+	"dateModified": "2019-10-17T20:12:00.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2019/10/Screen-Shot-2019-10-16-at-3.42.02-PM-1.png",
+		"width": 1112,
+		"height": 564
+	},
+	"keywords": "NGINX, QUIC, Chrome, Developers, HTTP3",
+	"description": "Just a few weeks ago we announced the availability on our edge network of HTTP/3, the new revision of HTTP intended to improve security and performance on the Internet. Everyone can now enable HTTP/3 on their Cloudflare zone",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

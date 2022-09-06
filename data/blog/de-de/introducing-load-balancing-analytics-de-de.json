@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Brian Batraski",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/12/brian.jpg",
+			"width": 600,
+			"height": 600
+		},
+		"url": "https://blog.cloudflare.com/author/brian/",
+		"sameAs": []
+	},
+	"headline": "Einführung von Load Balancing Analytics",
+	"url": "https://blog.cloudflare.com/de-de/introducing-load-balancing-analytics-de-de/",
+	"datePublished": "2019-12-10T14:00:00.000Z",
+	"dateModified": "2021-01-22T18:41:53.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2019/12/image3-22.png",
+		"width": 1600,
+		"height": 831
+	},
+	"keywords": "Deutsch, Erkenntnisse, Analytik (DE), Produktneuigkeiten, Lastverteilung",
+	"description": "Cloudflare möchte Internetwebsites überall schneller, sicherer und zuverlässiger machen. Load Balancing (Lastverteilung) fördert Geschwindigkeit und Zuverlässigkeit und hat sich in den letzten drei Jahren weiterentwickelt.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

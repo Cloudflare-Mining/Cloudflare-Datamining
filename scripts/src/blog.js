@@ -78,19 +78,28 @@ const fetchURL = async function(url, waitFor, slug){
 		await page.close();
 		return;
 	}
+	const bodyHTML = await page.evaluate(() => document.documentElement.outerHTML);
 	if(waitFor){
 		const textContent = await page.evaluate(waitFor => document.querySelector(waitFor).innerHTML, waitFor);
 		await page.close();
-		return textContent;
+		return {
+			selected: textContent,
+			body: bodyHTML,
+		};
 	}
 
-	const bodyHTML = await page.evaluate(() => document.documentElement.outerHTML);
 	await page.close();
-	return bodyHTML;
+	return {
+		body: bodyHTML,
+		selected: null,
+	};
 };
 
 const sitemap = await fetchURL(`https://blog.cloudflare.com/sitemap-posts.xml`);
-const sitemapXml = parser.parse(sitemap);
+if(!sitemap || !sitemap.body){
+	throw new Error('Failed to fetch sitemap');
+}
+const sitemapXml = parser.parse(sitemap.body);
 for(const element of sitemapXml?.html?.head?.body?.div?.table?.tbody?.tr ?? []){
 	if(element?.td?.[0]?.a){
 		let url = element.td[0].a;
@@ -113,19 +122,62 @@ for(const url of [...blogURLs].sort()){
 		await fs.ensureDir(path.dirname(slug));
 
 		const data = await fetchURL(url, 'section.post-full-content', slug);
-		const dom = cheerio.load(data, null, false);
+		if(!data?.selected){
+			console.warn('Failed to fetch', url);
+			return;
+		}
+		const dom = cheerio.load(data.selected, null, false);
+
+		// handle email protection
 		const emailProtectionLinks = dom('a[href^="/cdn-cgi/l/email-protection"]');
 		if(emailProtectionLinks){
 			emailProtectionLinks.each(function(i, rawEl){
 				const el = dom(rawEl);
-				el.attr('href', '#email-protected');
+				el.replaceWith('[email protected]');
 			});
 		}
 		const cfEmail = dom('[data-cfemail]');
 		if(cfEmail){
 			cfEmail.each((i, spanEl) => {
-				dom(spanEl).attr('data-cfemail', 'email protected');
+				const el = dom(spanEl);
+				const parents = el.parents('a');
+				if(parents.length > 0){
+					parents.each((i, parentEl) => {
+						const parent = dom(parentEl);
+						parent.replaceWith('[email protected]');
+					});
+				}else{
+					dom(spanEl).attr('data-cfemail', 'email protected');
+				}
 			});
+		}
+
+		// handle cfbeacon stuff
+		const cfBeacon = dom('script[src*="beacon.min.js"]');
+		if(cfBeacon){
+			cfBeacon.each((i, beacon) => {
+				dom(beacon).remove();
+			});
+		}
+
+		// get application/ld+json
+		const rawDom = cheerio.load(data.body);
+		const ldJson = rawDom('script[type="application/ld+json"]');
+		if(ldJson){
+			let ldJsonData;
+			ldJson.each((i, json) => {
+				const el = rawDom(json);
+				const jsonText = el.text();
+				try{
+					const parsed = JSON.parse(jsonText);
+					if(['Article', 'BlogPosting'].includes(parsed['@type'])){
+						ldJsonData = parsed;
+					}
+				}catch{}
+			});
+			if(ldJsonData){
+				await fs.writeFile(slug + '.json', JSON.stringify(ldJsonData, null, '\t'));
+			}
 		}
 		console.log('write', slug);
 		const beautified = jsBeautify.html_beautify(dom.html(), {

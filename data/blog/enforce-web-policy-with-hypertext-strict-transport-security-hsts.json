@@ -1,0 +1,34 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Ryan Lackey",
+		"image": "http://blog.cloudflare.com/content/images/2018/02/x_400x400.jpg",
+		"url": "https://blog.cloudflare.com/author/rdl/",
+		"sameAs": [
+			"https://twitter.com/octal"
+		]
+	},
+	"headline": "Enforce Web Policy with HTTP Strict Transport Security (HSTS)",
+	"url": "https://blog.cloudflare.com/enforce-web-policy-with-hypertext-strict-transport-security-hsts/",
+	"datePublished": "2015-02-26T01:25:25.000Z",
+	"dateModified": "2020-08-20T17:21:12.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/cloudflare_ssl-week-1.png",
+	"keywords": "SSL, HTTPS, Dashboard, Security, Crypto Week",
+	"description": "HTTP Strict Transport Security (HSTS, RFC 6797) is a web security policy technology designed to help secure HTTPS web servers against downgrade attacks.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

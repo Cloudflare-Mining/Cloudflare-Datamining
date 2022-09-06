@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Daniele Molteni",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/10/meProfessional-1-flipped.jpg",
+			"width": 1732,
+			"height": 1732
+		},
+		"url": "https://blog.cloudflare.com/author/daniele/",
+		"sameAs": []
+	},
+	"headline": "Verbesserung der WAF mit maschinellem Lernen",
+	"url": "https://blog.cloudflare.com/de-de/waf-ml-de-de/",
+	"datePublished": "2022-03-15T17:14:00.000Z",
+	"dateModified": "2022-03-21T20:56:25.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/03/image2-90.png",
+		"width": 1801,
+		"height": 1013
+	},
+	"keywords": "Sicherheitswoche, WAF (DE)",
+	"description": "Heute freuen wir uns, verwaltete Regelsätze (Managed Rulesets; wie OWASP und Cloudflare Managed) durch ein neues Tool zu ergänzen. Dieses Tool soll Umgehungen und bösartige Nutzdaten ohne menschliches Zutun identifizieren, bevor sie ausgenutzt werden.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

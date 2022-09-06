@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "João Sousa Botto",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/07/profile2.jpg",
+			"width": 2000,
+			"height": 2026
+		},
+		"url": "https://blog.cloudflare.com/author/joao/",
+		"sameAs": [
+			"https://twitter.com/jsbotto"
+		]
+	},
+	"headline": "博客：使用 Cloudflare 电子邮件路由轻松创建和路由电子邮件地址",
+	"url": "https://blog.cloudflare.com/zh-cn/introducing-email-routing-zh-cn/",
+	"datePublished": "2021-09-27T12:59:00.000Z",
+	"dateModified": "2021-09-28T15:14:52.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/09/image2-35-1.png",
+		"width": 1800,
+		"height": 1013
+	},
+	"keywords": "生日周 (CN), 简体中文 (CN), 产品新闻",
+	"description": "超过四十亿人（也就是世界人口的一半）至少拥有一个电子邮件地址，其中许多人将它当成处理个人和职业事务的重要工具。每天收发的电子邮件数量超过 3000 亿封，但若只将电子邮件视为通信工具对它来说并不公平。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

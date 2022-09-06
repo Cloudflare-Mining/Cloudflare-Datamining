@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Dina Kozlov",
+		"image": "http://blog.cloudflare.com/content/images/2019/06/headshot.jpg",
+		"url": "https://blog.cloudflare.com/author/dina/",
+		"sameAs": [
+			"https://twitter.com/dinasaur_404"
+		]
+	},
+	"headline": "Mehr Sicherheit bei der Zertifikatsausstellung mit Multipath Domain Control Validation",
+	"url": "https://blog.cloudflare.com/de-de/secure-certificate-issuance-de-de/",
+	"datePublished": "2019-06-18T13:00:00.000Z",
+	"dateModified": "2021-01-22T18:52:17.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2019/09/Screen-Shot-2019-06-17-at-8.46.28-AM-1-2.png",
+		"width": 922,
+		"height": 644
+	},
+	"keywords": "Krypto-Woche, Kryptografie, Deutsch, BGP (DE), DNS (DE)",
+	"description": "Das Vertrauen im Internet basiert auf der Public Key Infrastruktur (PKI). Die PKI ermöglicht es Servern, Webseiten sicher zu bereitzustellen, indem sie digitale Zertifikate ausstellt und damit die Grundlage für eine verschlüsselte und authentische Ko",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

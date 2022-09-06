@@ -1,0 +1,34 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Filippo Valsorda",
+		"image": "http://blog.cloudflare.com/content/images/2018/02/K6rX3ZSn_400x400.jpg",
+		"url": "https://blog.cloudflare.com/author/filippo/",
+		"sameAs": [
+			"https://twitter.com/filosottile"
+		]
+	},
+	"headline": "Creative foot-shooting with Go RWMutex",
+	"url": "https://blog.cloudflare.com/creative-foot-shooting-with-go-rwmutex/",
+	"datePublished": "2015-10-29T21:26:36.000Z",
+	"dateModified": "2018-08-24T21:31:20.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2017/10/1280px-Mexican_Standoff.jpg",
+	"keywords": "RRDNS, Bugs, DNS, Reliability, Programming, Go",
+	"description": "Hi, I&#x27;m Filippo and today I managed to surprise myself! (And not in a good way.)\n\nI&#x27;m developing a new module (&quot;filter&quot; as we call them) for RRDNS, CloudFlare&#x27;s Go DNS server. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

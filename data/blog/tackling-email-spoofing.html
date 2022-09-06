@@ -12,8 +12,8 @@
 	<p>Then, there is <strong>email spoofing</strong>. In order to understand how this works, let’s take a look at a Cloudflare product update email I received on my personal email address. With most email providers you can look at the full source of an email which contains a number of headers and of course the body of the email. </p>
 	<!--kg-card-begin: markdown-->
 	<pre><code>Date: Thu, 23 Sep 2021 10:30:02 -0500 (CDT)
-From: Cloudflare &lt;<a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a>&gt;
-Reply-To: <a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a>
+From: Cloudflare &lt;[email protected]&gt;
+Reply-To: [email protected]
 To: &lt;my_personal_email_address&gt;
 </code></pre>
 	<!--kg-card-end: markdown-->
@@ -46,7 +46,7 @@ To: &lt;my_personal_email_address&gt;
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/09/image12-7.png" class="kg-image"></figure>
 	<p>The diagram above shows the steps taken to ensure a received email is SPF compliant.</p>
 	<ol>
-		<li>The email is sent from the IP address <code>203.0.113.10</code> and contains a <code>From</code> header with the value of <code><a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a></code>.</li>
+		<li>The email is sent from the IP address <code>203.0.113.10</code> and contains a <code>From</code> header with the value of <code>[email protected]</code>.</li>
 		<li>After receiving the email, the receiver queries the SPF record on <code>mycoolwebpage.xyz</code> to retrieve the SPF policy for this domain.</li>
 		<li>The receiver checks if the sending IP address <code>203.0.113.10</code> is listed in the SPF record. If it is, the email succeeds the SPF check. If it is not, the qualifier of the <code>all</code> mechanism defines the outcome.</li>
 	</ol>
@@ -62,7 +62,7 @@ To: &lt;my_personal_email_address&gt;
 	<p>Besides the TXT record that contains the public DKIM key, receiving email servers will parse an email header that contains the DKIM signature -- the part that has been signed with the private DKIM key -- besides some other information the email receiver needs to perform the DKIM check. Below is an example of this email header which is part of a Cloudflare product update email:</p>
 	<!--kg-card-begin: markdown-->
 	<pre><code>DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-   t=1632416903; s=m1; d=cloudflare.com; <a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a>;
+   t=1632416903; s=m1; d=cloudflare.com; [email protected];
    h=Content-Type:MIME-Version:Subject:To:From:Date;
    bh=uMixy0BsCqhbru4fqPZQdeZY5Pq865sNAnOAxNgUS0s=;
    b=LiIvJeRyqMo0gngiCygwpiKphJjYezb5kXBKCNj8DqRVcCk7obK6OUg4o+EufEbB
@@ -86,7 +86,7 @@ To: &lt;my_personal_email_address&gt;
 	<p>Domain-based Message Authentication Reporting and Conformance, that’s definitely a mouthful. Let’s focus on two words: <em>Reporting</em> and <em>Conformance</em>. DMARC provides exactly that. Regular reports let the email sender know how many emails are non-conforming and potentially spoofed. Conformance helps provide a clear signal to the email receiver how to treat non-conforming emails. Email receivers might impose their own policies for emails that fail SPF or DKIM checks even without a DMARC record. However, the policy configured on the DMARC record is an explicit instruction by the email sender, so it increases the confidence for email receivers what to do with non-conforming emails.</p>
 	<p>Here is the DMARC record for <code>cloudflare.com</code></p>
 	<!--kg-card-begin: markdown-->
-	<pre><code>_dmarc.cloudflare.com.   TXT   "v=DMARC1; p=reject; pct=100; rua=mailto:<a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a>"
+	<pre><code>_dmarc.cloudflare.com.   TXT   "v=DMARC1; p=reject; pct=100; rua=mailto:[email protected]"
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>The DMARC TXT record is always set on the <code>_dmarc</code> subdomain of the email domain and — similar to SPF and DKIM — the content needs to start with <code>v=DMARC1</code>. Then we see three additional tags: </p>
@@ -96,7 +96,7 @@ To: &lt;my_personal_email_address&gt;
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/09/unnamed3.png" class="kg-image"></figure>
 	<p>Above, we can see how DMARC works step by step.</p>
 	<ol>
-		<li>An email is sent with a From header containing <code><a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a></code>.</li>
+		<li>An email is sent with a From header containing <code>[email protected]</code>.</li>
 		<li>The receiver queries SPF, DKIM and DMARC records from the domain <code>mycoolwebpage.xyz</code> to retrieve the required policies and the DKIM public key.</li>
 		<li>The receiver performs SPF and DKIM checks as outlined previously. If both succeed, the email is accepted and delivered to the inbox. If both SPF and DKIM checks fail, the DMARC policy will be followed and determines if the email is still accepted, dropped or sent to the spam folder.</li>
 		<li>Finally, the receiver sends back an aggregate report. Depending on the email specified in the <code>rua</code> tag this report could also be sent to a different email server which is responsible for that email address.</li>

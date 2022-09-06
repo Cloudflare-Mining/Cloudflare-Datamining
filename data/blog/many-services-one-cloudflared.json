@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Adam Chalmers",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Adam-Chalmers.png",
+			"width": 494,
+			"height": 490
+		},
+		"url": "https://blog.cloudflare.com/author/adam-chalmers/",
+		"sameAs": [
+			"https://twitter.com/adam_chal"
+		]
+	},
+	"headline": "Many services, one cloudflared",
+	"url": "https://blog.cloudflare.com/many-services-one-cloudflared/",
+	"datePublished": "2020-11-19T12:00:00.000Z",
+	"dateModified": "2021-07-22T10:11:40.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2020/11/Multiple-proxy-services-in-one-cloudflared-2.png",
+		"width": 1418,
+		"height": 769
+	},
+	"keywords": "Cloudflare Access, Product News, Cloudflare Tunnel",
+	"description": "Previously, if you wanted to proxy 100 services through Argo Tunnel, you needed 100 instances of cloudflared running on your server. Today, we’re thrilled to announce our most-requested feature: you can now expose unlimited services using one cloudflared.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

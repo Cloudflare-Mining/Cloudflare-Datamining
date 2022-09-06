@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "John Graham-Cumming",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
+		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
+		"sameAs": [
+			"https://twitter.com/jgrahamc"
+		]
+	},
+	"headline": "TTFB较大会导致网页打开慢吗，网站速度由什么决定_Cloudflare",
+	"url": "https://blog.cloudflare.com/zh-cn/ttfb-time-to-first-byte-considered-meaningles-zh-cn/",
+	"datePublished": "2012-07-05T07:17:00.000Z",
+	"dateModified": "2021-01-28T18:10:36.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2019/07/Screen_Shot_2012-07-02_at_9.49.22_AM.png.scaled500-1.png",
+		"width": 500,
+		"height": 255
+	},
+	"keywords": "简体中文 (CN), 速度和可靠性 (CN)",
+	"description": "Time To First Byte通常用于测量Web服务器响应请求的速度，而且公共Web测试服务会报告该请求。（理论上）响应的越快Web服务器越好。但理论并不是很完善。\n维基百科将Time To First Byte 定义为“从虚拟用户发出HTTP请求到浏览器接收到页面的第一个字节的持续时间”。但是，流行的网页测试网站实际报告的究竟是什么的结果呢？为了找到答案，",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

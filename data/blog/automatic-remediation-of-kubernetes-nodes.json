@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Andrew DeMaria",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/05/andrew.jpg",
+			"width": 600,
+			"height": 600
+		},
+		"url": "https://blog.cloudflare.com/author/andrew-demaria/",
+		"sameAs": []
+	},
+	"headline": "Automatic Remediation of Kubernetes Nodes",
+	"url": "https://blog.cloudflare.com/automatic-remediation-of-kubernetes-nodes/",
+	"datePublished": "2021-07-15T12:59:42.000Z",
+	"dateModified": "2021-07-15T12:59:41.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/07/image3-3.png",
+		"width": 1461,
+		"height": 743
+	},
+	"keywords": "Kubernetes, Reliability, Monitoring, Alertmanager",
+	"description": "In Cloudflare’s core data centers, we are using Kubernetes to run many of the diverse services that help us control Cloudflare’s edge. We are automating some aspects of node remediation to keep the Kubernetes clusters healthy.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew Prince",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
+			"width": 1196,
+			"height": 1190
+		},
+		"url": "https://blog.cloudflare.com/author/matthew-prince/",
+		"sameAs": [
+			"https://twitter.com/eastdakota"
+		]
+	},
+	"headline": "Avoid Losing SEO Link Juice to Traditional CDNs",
+	"url": "https://blog.cloudflare.com/losing-seo-link-juice-to-traditional-cdns/",
+	"datePublished": "2011-08-04T16:37:00.000Z",
+	"dateModified": "2018-01-30T22:05:47.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/01/cloudfront_twitter_search.jpg.scaled500.jpg",
+	"keywords": "SEO, Google",
+	"description": "One of the problems with many traditional CDNs it that they require you to rewrite the URLs of your static resources to point to a third party domain. This is problematic for two reasons: one obvious, one less obvious.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Pete Zimmerman",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/09/unnamed-1.jpg",
+			"width": 600,
+			"height": 600
+		},
+		"url": "https://blog.cloudflare.com/author/pete/",
+		"sameAs": []
+	},
+	"headline": "Configure identity-based policies in Cloudflare Gateway",
+	"url": "https://blog.cloudflare.com/gateway-swg-3/",
+	"datePublished": "2020-12-21T11:11:00.000Z",
+	"dateModified": "2022-04-26T23:17:48.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2020/12/Configure-identity-based-policies-in-Cloudflare-Gateway-blog-home.png",
+		"width": 1182,
+		"height": 692
+	},
+	"keywords": "Zero Trust, WARP, Cloudflare Gateway, SWG, Cloudflare Zero Trust, Security",
+	"description": "You can now build secure web gateway rules based on user and group identity.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

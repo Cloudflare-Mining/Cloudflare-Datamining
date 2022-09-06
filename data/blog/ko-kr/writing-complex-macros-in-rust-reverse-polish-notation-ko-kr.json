@@ -1,0 +1,32 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Ingvar Stepanyan",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/rYPVgOqN.jpg",
+		"url": "https://blog.cloudflare.com/author/ingvar-stepanyan/",
+		"sameAs": []
+	},
+	"headline": "Rust 로 복잡한 매크로를 작성하기: 역폴란드 표기법​",
+	"url": "https://blog.cloudflare.com/ko-kr/writing-complex-macros-in-rust-reverse-polish-notation-ko-kr/",
+	"datePublished": "2018-01-31T12:13:00.000Z",
+	"dateModified": "2021-01-21T20:57:48.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/02/25057125240_939a41249f_z.jpg",
+	"keywords": "한국어, 개발자, Rust (KO)",
+	"description": "Rust에는 흥미로운 기능이 많지만 그중에도 강력한 매크로 시스템이 있습니다. 하지만 The Book과 여러가지 튜토리얼을 읽고 나서도 서로 다른 요소의 복잡한 리스트를 처리하는 매크로를 구현하려고 하면 저는 여전히 어떻게 만들어야 하는지를 이해하는데 힘들어 하며",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

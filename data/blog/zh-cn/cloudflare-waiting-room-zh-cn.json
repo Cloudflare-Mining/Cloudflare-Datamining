@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Brian Batraski",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/12/brian.jpg",
+			"width": 600,
+			"height": 600
+		},
+		"url": "https://blog.cloudflare.com/author/brian/",
+		"sameAs": []
+	},
+	"headline": "Cloudflare 等候室",
+	"url": "https://blog.cloudflare.com/zh-cn/cloudflare-waiting-room-zh-cn/",
+	"datePublished": "2021-01-22T15:59:00.000Z",
+	"dateModified": "2021-09-02T19:44:54.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/01/image3-34.png",
+		"width": 1437,
+		"height": 864
+	},
+	"keywords": "简体中文 (CN), Project Fair Shot (CN), 更好的互联网, COVID-19 (CN), 负载均衡 (CN), 产品新闻, Cloudflare候诊室, Project Fair Shot (ZH), Waiting Room (CN)",
+	"description": "今天，我们很高兴地宣布 Cloudflare 等候室上线！该服务将首先通过名为 Project Fair Shot 的新计划提供给指定客户，旨在解决因 COVID-19 疫苗接种需求爆增而造成预约登记网站瘫痪的问题。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

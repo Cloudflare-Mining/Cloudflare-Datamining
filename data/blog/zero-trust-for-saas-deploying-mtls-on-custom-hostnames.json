@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Dina Kozlov",
+		"image": "http://blog.cloudflare.com/content/images/2019/06/headshot.jpg",
+		"url": "https://blog.cloudflare.com/author/dina/",
+		"sameAs": [
+			"https://twitter.com/dinasaur_404"
+		]
+	},
+	"headline": "Zero Trust for SaaS: Deploying mTLS on custom hostnames",
+	"url": "https://blog.cloudflare.com/zero-trust-for-saas-deploying-mtls-on-custom-hostnames/",
+	"datePublished": "2022-03-22T12:58:25.000Z",
+	"dateModified": "2022-04-26T21:00:43.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/03/image2-87.png",
+		"width": 1222,
+		"height": 1028
+	},
+	"keywords": "Zero Trust, Cloudflare for SaaS, SaaS, Cloudflare Zero Trust, Product News",
+	"description": "SaaS providers can now enable mutual TLS authentication on their customer’s domains through our Access product",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,34 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "John Graham-Cumming",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
+		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
+		"sameAs": [
+			"https://twitter.com/jgrahamc"
+		]
+	},
+	"headline": "The QUICening",
+	"url": "https://blog.cloudflare.com/the-quicening/",
+	"datePublished": "2018-09-25T12:00:00.000Z",
+	"dateModified": "2020-08-14T16:37:18.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/09/full-commute-share_1@2x.png",
+	"keywords": "Birthday Week, Product News, QUIC, HTTPS, Security, Beta",
+	"description": "Six o’clock already, I was just in the middle of a dream, now I’m up, awake, looking at my Twitter stream. As I do that the Twitter app is making multiple API calls over HTTPS to Twitter’s servers somewhere on the Internet.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

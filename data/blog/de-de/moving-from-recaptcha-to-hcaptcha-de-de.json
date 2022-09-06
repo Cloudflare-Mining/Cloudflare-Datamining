@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew Prince",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
+			"width": 1196,
+			"height": 1190
+		},
+		"url": "https://blog.cloudflare.com/author/matthew-prince/",
+		"sameAs": [
+			"https://twitter.com/eastdakota"
+		]
+	},
+	"headline": "Wechsel von reCAPTCHA zu hCaptcha",
+	"url": "https://blog.cloudflare.com/de-de/moving-from-recaptcha-to-hcaptcha-de-de/",
+	"datePublished": "2020-04-08T13:00:00.000Z",
+	"dateModified": "2021-01-22T18:37:05.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2020/12/image3-5-1.png",
+		"width": 1999,
+		"height": 1043
+	},
+	"keywords": "Deutsch, hCaptcha (DE), Sicherheit, Produktneuigkeiten, Geschwindigkeit & Zuverlässigkeit",
+	"description": "Wir haben vor Kurzem unseren CAPTCHA-Anbieter gewechselt und sind von Googles reCAPTCHA zu einem Dienst migriert, der den unabhängigen hCaptcha anbietet. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

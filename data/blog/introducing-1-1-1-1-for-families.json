@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew Prince",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
+			"width": 1196,
+			"height": 1190
+		},
+		"url": "https://blog.cloudflare.com/author/matthew-prince/",
+		"sameAs": [
+			"https://twitter.com/eastdakota"
+		]
+	},
+	"headline": "Introducing 1.1.1.1 for Families",
+	"url": "https://blog.cloudflare.com/introducing-1-1-1-1-for-families/",
+	"datePublished": "2020-04-01T13:00:00.000Z",
+	"dateModified": "2022-07-12T18:32:24.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2020/04/image3-1.png",
+		"width": 1550,
+		"height": 786
+	},
+	"keywords": "1.1.1.1, Families, Privacy, DNS, Security, Product News, Speed & Reliability",
+	"description": "Introducing 1.1.1.1 for Families — the easiest way to add a layer of protection to your home network and protect it from malware and adult content. 1.1.1.1 for Families leverages Cloudflare&#x27;s global network to ensure that it is fast and secure around the world.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

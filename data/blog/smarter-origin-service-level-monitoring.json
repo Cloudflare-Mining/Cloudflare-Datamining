@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Natasha Wissmann",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/05/IMG-1568.jpg",
+			"width": 600,
+			"height": 600
+		},
+		"url": "https://blog.cloudflare.com/author/natasha/",
+		"sameAs": []
+	},
+	"headline": "Smart(er) Origin Service Level Monitoring",
+	"url": "https://blog.cloudflare.com/smarter-origin-service-level-monitoring/",
+	"datePublished": "2021-07-08T12:59:19.000Z",
+	"dateModified": "2021-07-08T13:19:34.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/07/image10-1.png",
+		"width": 1439,
+		"height": 714
+	},
+	"keywords": "Product News, Notifications, Origin Error Rate, Origin Monitoring",
+	"description": "Today we’re excited to announce Origin Error Rate notifications: a new, sophisticated way to detect and notify you when Cloudflare sees elevated levels of 5xx errors from your origin.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,37 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Jonathan Spies",
+		"image": {
+			"@type": "ImageObject",
+			"url": "//www.gravatar.com/avatar/19532e3ffeb770f1fcf6a94c8fd5449e?s=250&d=mm&r=x",
+			"width": 250,
+			"height": 250
+		},
+		"url": "https://blog.cloudflare.com/author/jonathan-spies/",
+		"sameAs": []
+	},
+	"headline": "Eating Dogfood at Scale: How We Build Serverless Apps with Workers",
+	"url": "https://blog.cloudflare.com/building-serverless-apps-with-workers/",
+	"datePublished": "2019-04-19T13:00:00.000Z",
+	"dateModified": "2019-04-19T12:59:59.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2019/04/ZG9nZm9vZEAyeC5wbmc--1.png",
+	"keywords": "Serverless, Cloudflare Workers, Programming, API, CLI, GitHub, YAML",
+	"description": "You’ve had a chance to build a Cloudflare Worker. You’ve tried KV Storage and have a great use case for your Worker. You’ve even demonstrated the usefulness to your product or organization. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

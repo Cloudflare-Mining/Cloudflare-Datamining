@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Omer Yoachimik",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/Omer-1.png",
+			"width": 773,
+			"height": 653
+		},
+		"url": "https://blog.cloudflare.com/author/omer/",
+		"sameAs": [
+			"https://twitter.com/OmerYoahimik"
+		]
+	},
+	"headline": "Cloudflare, 역대 최대의 17.2M rps DDoS 공격 저지",
+	"url": "https://blog.cloudflare.com/ko-kr/cloudflare-thwarts-17-2m-rps-ddos-attack-the-largest-ever-reported-ko-kr/",
+	"datePublished": "2021-08-19T12:58:00.000Z",
+	"dateModified": "2021-08-25T23:08:01.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/08/graph-og-1-1.png",
+		"width": 1609,
+		"height": 844
+	},
+	"keywords": "한국어, 트렌드 (KO), DDoS (KO), Mirai (KO), 봇넷, dosd (KO)",
+	"description": "올여름 초에 Cloudflare의 에지 DDoS 자율 방어시스템이 기존에 알려진 최대 공격의 거의 3배 규모인 초당 1,720만 건의 요청(17.2M rps, request-per-second)을 발생시키는 DDoS 공격을 자동으로 감지하고 완화하였습니다. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

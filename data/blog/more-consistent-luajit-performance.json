@@ -1,0 +1,37 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Guest Author",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/10/Screen-Shot-2019-10-09-at-11.21.59-AM.png",
+			"width": 362,
+			"height": 364
+		},
+		"url": "https://blog.cloudflare.com/author/guest-author/",
+		"sameAs": []
+	},
+	"headline": "More consistent LuaJIT performance",
+	"url": "https://blog.cloudflare.com/more-consistent-luajit-performance/",
+	"datePublished": "2018-12-12T13:00:00.000Z",
+	"dateModified": "2018-12-12T13:00:00.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/12/Screen-Shot-2018-12-10-at-12.02.28-PM.png",
+	"keywords": "LUA, Programming, Speed & Reliability",
+	"description": "A year ago I wrote about a project that Cloudflare were funding at King&#x27;s College London to help improve LuaJIT. Our twelve months is now up. How did we do? ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

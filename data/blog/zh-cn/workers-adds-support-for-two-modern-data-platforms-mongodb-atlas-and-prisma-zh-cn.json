@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Greg McKeon",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/05/Screen-Shot-2022-05-10-at-2.50.56-PM.png",
+			"width": 692,
+			"height": 662
+		},
+		"url": "https://blog.cloudflare.com/author/greg/",
+		"sameAs": [
+			"https://twitter.com/wegmckeon"
+		]
+	},
+	"headline": "Workers 已增加对两个现代数据平台的支持：MongoDB Atlas 和 Prisma",
+	"url": "https://blog.cloudflare.com/zh-cn/workers-adds-support-for-two-modern-data-platforms-mongodb-atlas-and-prisma-zh-cn/",
+	"datePublished": "2021-11-15T19:50:00.000Z",
+	"dateModified": "2021-12-15T19:51:16.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/12/unnamed-26.png",
+		"width": 1600,
+		"height": 900
+	},
+	"keywords": "Full Stack Week (CN), Cloudflare Workers (CN)",
+	"description": "在过去的一年里，我们听到了一个共同的主题：开发人员希望在 Workers 上构建更多的应用程序。凭借内置的全球部署、强大的可扩展性和 JavaScript 的灵活性，越来越多的应用程序选择在我们的全球平台上构建。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

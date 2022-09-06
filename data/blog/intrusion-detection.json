@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Annika Garbers",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/annika.png",
+			"width": 400,
+			"height": 400
+		},
+		"url": "https://blog.cloudflare.com/author/annika/",
+		"sameAs": [
+			"https://twitter.com/annikagarbers"
+		]
+	},
+	"headline": "Next generation intrusion detection: an update on Cloudflare’s IDS capabilities",
+	"url": "https://blog.cloudflare.com/intrusion-detection/",
+	"datePublished": "2022-06-21T13:12:47.000Z",
+	"dateModified": "2022-06-21T13:12:46.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/06/image1-20.png",
+		"width": 1800,
+		"height": 1013
+	},
+	"keywords": "Cloudflare One Week, Zero Trust, Intrusion Detection",
+	"description": "Cloudflare’s IDS capabilities operate across all of your network traffic - any IP port or protocol — whether it flows to your IPs that we advertise on your behalf, IPs we lease to you, or soon, traffic within your private network.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

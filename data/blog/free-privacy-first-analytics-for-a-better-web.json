@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Jon Levine",
+		"image": "http://blog.cloudflare.com/content/images/2018/04/prof-crop.jpg",
+		"url": "https://blog.cloudflare.com/author/jpl/",
+		"sameAs": [
+			"https://twitter.com/jplevine"
+		]
+	},
+	"headline": "Free, Privacy-First Analytics for a Better Web",
+	"url": "https://blog.cloudflare.com/free-privacy-first-analytics-for-a-better-web/",
+	"datePublished": "2020-09-29T13:02:00.000Z",
+	"dateModified": "2020-09-29T14:15:36.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2020/09/Cloudflare-Web-Analytics.png",
+		"width": 2184,
+		"height": 1415
+	},
+	"keywords": "Birthday Week, Product News, Analytics, Privacy",
+	"description": "We’re announcing a brand new, privacy-first analytics service that’s open to everyone — even if they&#x27;re not already a Cloudflare customer. And if you&#x27;re a Cloudflare customer, we&#x27;ve enhanced our analytics to make them even more powerful than before.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

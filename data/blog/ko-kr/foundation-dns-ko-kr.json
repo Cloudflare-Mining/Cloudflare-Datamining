@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Hannes Gerhart",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/09/Profile.jpg",
+			"width": 600,
+			"height": 600
+		},
+		"url": "https://blog.cloudflare.com/author/hannes/",
+		"sameAs": [
+			"https://linkedin.com/in/hannesgerhart"
+		]
+	},
+	"headline": "Cloudflare의 새로운 프리미엄 DNS 오퍼링인 Foundation DNS 발표",
+	"url": "https://blog.cloudflare.com/ko-kr/foundation-dns-ko-kr/",
+	"datePublished": "2021-12-08T13:58:00.000Z",
+	"dateModified": "2022-01-01T01:28:47.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/01/image4-9-1.png",
+		"width": 1801,
+		"height": 1013
+	},
+	"keywords": "CIO Week (KO), DNS (KO), Foundation DNS (KO), 한국어, 제품 뉴스",
+	"description": "오늘 우리는 비할 데 없는 신뢰성과 최고의 성능을 제공하며 인프라 팀의 가장 복잡한 요구사항을 충족할 수 있는 Cloudflare의 새로운 프리미엄 DNS 오퍼링인 Foundation DNS를 발표하려고 합니다.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matt Silverlock",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/08/profile-1500px-square.jpeg",
+			"width": 1500,
+			"height": 1500
+		},
+		"url": "https://blog.cloudflare.com/author/silverlock/",
+		"sameAs": [
+			"https://twitter.com/elithrar"
+		]
+	},
+	"headline": "Cloudflare 如何验证 WhatsApp Web 提供给用户的代码",
+	"url": "https://blog.cloudflare.com/zh-cn/cloudflare-verifies-code-whatsapp-web-serves-users-zh-cn/",
+	"datePublished": "2022-03-10T18:30:00.000Z",
+	"dateModified": "2022-06-14T07:18:57.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/06/image3-3-1.png",
+		"width": 1200,
+		"height": 675
+	},
+	"keywords": "隐私 (CN), 安全, 简体中文 (CN)",
+	"description": "今天，我们很高兴能与 WhatsApp 合作来提供一个系统，以确保用户在 web 上访问 WhatsApp 时运行的代码就是 WhatsApp 打算运行的代码",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

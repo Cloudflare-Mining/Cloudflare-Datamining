@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Filippo Valsorda",
+		"image": "http://blog.cloudflare.com/content/images/2018/02/K6rX3ZSn_400x400.jpg",
+		"url": "https://blog.cloudflare.com/author/filippo/",
+		"sameAs": [
+			"https://twitter.com/filosottile"
+		]
+	},
+	"headline": "「Go net/http タイムアウト」の完全ガイド",
+	"url": "https://blog.cloudflare.com/ja-jp/the-complete-guide-to-golang-net-http-timeouts-ja-jp/",
+	"datePublished": "2016-06-28T23:00:00.000Z",
+	"dateModified": "2021-10-08T11:01:40.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/06/Timeouts-002.png",
+		"width": 2234,
+		"height": 603
+	},
+	"keywords": "日本語, 信頼性, API (JP), JSON (JP), プログラミング, Go (JP)",
+	"description": "GoでHTTPサーバーまたはクライアントを書くとき、タイムアウトは、最も間違えやすく、そして最も軽微な間違えです。選択する対象が数多くあり、間違えても、ネットワークの不具合やプロセスがハングアップするまで、長い間、何の影響もありません。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

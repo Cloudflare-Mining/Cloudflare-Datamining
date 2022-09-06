@@ -1,0 +1,40 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Nick Sullivan",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/09/BJ4NgXVj_400x400.jpg",
+			"width": 400,
+			"height": 400
+		},
+		"url": "https://blog.cloudflare.com/author/nick-sullivan/",
+		"sameAs": [
+			"https://crypto.dance",
+			"https://twitter.com/grittygrease"
+		]
+	},
+	"headline": "The Heartbleed Aftermath: all CloudFlare certificates revoked and reissued",
+	"url": "https://blog.cloudflare.com/the-heartbleed-aftermath-all-cloudflare-certificates-revoked-and-reissued/",
+	"datePublished": "2014-04-17T00:44:00.000Z",
+	"dateModified": "2018-08-27T21:10:07.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/Screen_Shot_2014-04-17_at_10.53.46.png",
+	"keywords": "TLS, HTTPS, Crypto, OpenSSL, Heartbleed, Vulnerabilities, Security",
+	"description": "Eleven days ago the Heartbleed vulnerability was publicly announced. Last Friday, we issued the CloudFlare Challenge: Heartbleed and simultaneously started the process of revoking and reissuing all the SSL certificates.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

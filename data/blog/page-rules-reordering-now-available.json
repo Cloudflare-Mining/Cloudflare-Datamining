@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Michelle Zatlyn",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Michelle-Zatlyn-2.png",
+			"width": 492,
+			"height": 488
+		},
+		"url": "https://blog.cloudflare.com/author/michelle-zatlyn/",
+		"sameAs": [
+			"https://twitter.com/zatlyn"
+		]
+	},
+	"headline": "Page Rules Reordering Now Available",
+	"url": "https://blog.cloudflare.com/page-rules-reordering-now-available/",
+	"datePublished": "2013-03-22T21:53:00.000Z",
+	"dateModified": "2018-08-10T21:18:41.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/Page_Rules_screenshot.tiff.scaled500.jpg",
+	"keywords": "Page Rules, Product News, Speed & Reliability",
+	"description": "Page Rules are powerful tools for controlling how CloudFlare works on your site on a page-by-page basis. Customers customize CloudFlare with Page Rules based on their specific needs.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

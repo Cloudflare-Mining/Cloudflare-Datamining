@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Michael Tremante",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/url-3.jpg",
+		"url": "https://blog.cloudflare.com/author/michael-tremante/",
+		"sameAs": [
+			"https://twitter.com/MichaelTremante"
+		]
+	},
+	"headline": "Cloudflare เว็บแอปพลิเคชันไฟร์วอลล์ใหม่",
+	"url": "https://blog.cloudflare.com/new-cloudflare-waf-th-th/",
+	"datePublished": "2021-03-29T13:00:00.000Z",
+	"dateModified": "2021-12-29T20:30:35.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/12/image6-24-1.png",
+		"width": 1200,
+		"height": 628
+	},
+	"keywords": "ไทย, สัปดาห์ความปลอดภัย, ความปลอดภัย, ข่าวผลิตภัณฑ์, WAF (TH)",
+	"description": "Cloudflare เว็บแอปพลิเคชันไฟร์วอลล์ (WAF) บล็อกภัยคุกคามทางไซเบอร์มากกว่า 57 พันล้านรายการต่อวัน ซึ่งนั่นหมายถึงการร้องขอ HTTP ที่ถูกบล็อกไปกว่า 650,000 การร้องขอต่อวินาที โค้ดต้นฉบับที่ใช้กรองการรับส่งข้อมูลนี้เขียน",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

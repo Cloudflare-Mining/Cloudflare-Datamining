@@ -1,0 +1,33 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Filippo Valsorda",
+		"image": "http://blog.cloudflare.com/content/images/2018/02/K6rX3ZSn_400x400.jpg",
+		"url": "https://blog.cloudflare.com/author/filippo/",
+		"sameAs": [
+			"https://twitter.com/filosottile"
+		]
+	},
+	"headline": "Help us test our DNSSEC implementation",
+	"url": "https://blog.cloudflare.com/help-us-test-our-dnssec-implementation/",
+	"datePublished": "2015-01-29T13:03:08.000Z",
+	"dateModified": "2021-01-12T23:32:58.000Z",
+	"keywords": "DNSSEC, Beta, Reliability, Programming",
+	"description": "Today is a big day for CloudFlare! We are publishing our first two DNSSEC signed zones for the community to analyze and give feedback on.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew Prince",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
+			"width": 1196,
+			"height": 1190
+		},
+		"url": "https://blog.cloudflare.com/author/matthew-prince/",
+		"sameAs": [
+			"https://twitter.com/eastdakota"
+		]
+	},
+	"headline": "Taming BEAST: Faster, Safer SSL now on CloudFlare",
+	"url": "https://blog.cloudflare.com/taming-beast-better-ssl-now-available-across/",
+	"datePublished": "2012-06-01T23:55:00.000Z",
+	"dateModified": "2018-08-27T21:08:05.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/02/taming-beast.jpg.scaled500.jpg",
+	"keywords": "TLS, Security, SSL, Product News",
+	"description": "For some time, the vast majority of the web has been vulnerable to the so-called BEAST SSL attack. The attack was first demonstrated in 2011, and more than 90% of the Internet including large sites like Google.com remain vulnerable to their SSL sessions being decrypted.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

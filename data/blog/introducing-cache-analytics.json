@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Jon Levine",
+		"image": "http://blog.cloudflare.com/content/images/2018/04/prof-crop.jpg",
+		"url": "https://blog.cloudflare.com/author/jpl/",
+		"sameAs": [
+			"https://twitter.com/jplevine"
+		]
+	},
+	"headline": "Introducing Cache Analytics",
+	"url": "https://blog.cloudflare.com/introducing-cache-analytics/",
+	"datePublished": "2020-06-16T19:28:00.000Z",
+	"dateModified": "2020-08-21T00:00:14.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2020/06/overview.png",
+		"width": 2000,
+		"height": 1504
+	},
+	"keywords": "Analytics, Cache, Product News, Speed & Reliability",
+	"description": "Cache Analytics gives you deeper exploration capabilities into Cloudflare’s content delivery services, making it easier than ever to improve the performance and economics of serving your website to the world.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

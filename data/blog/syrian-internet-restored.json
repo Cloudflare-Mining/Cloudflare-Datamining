@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew Prince",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
+			"width": 1196,
+			"height": 1190
+		},
+		"url": "https://blog.cloudflare.com/author/matthew-prince/",
+		"sameAs": [
+			"https://twitter.com/eastdakota"
+		]
+	},
+	"headline": "Syrian Internet Restored",
+	"url": "https://blog.cloudflare.com/syrian-internet-restored/",
+	"datePublished": "2013-05-08T11:10:00.000Z",
+	"dateModified": "2018-08-17T18:37:32.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/Screen-Shot-2018-08-17-at-11.37.08-AM.png",
+	"keywords": "Outage, Syria",
+	"description": "Yesterday, Syria&#x27;s Internet connectivity was cut off from the rest of the world. At 14:12 UTC, approximately 19 hours and 30 minutes after it had been shut down, connectivity was returned.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

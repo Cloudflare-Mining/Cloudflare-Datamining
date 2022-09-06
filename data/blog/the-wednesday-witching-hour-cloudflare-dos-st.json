@@ -1,0 +1,34 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "John Graham-Cumming",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
+		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
+		"sameAs": [
+			"https://twitter.com/jgrahamc"
+		]
+	},
+	"headline": "The Wednesday Witching Hour: CloudFlare DoS Statistics",
+	"url": "https://blog.cloudflare.com/the-wednesday-witching-hour-cloudflare-dos-st/",
+	"datePublished": "2012-08-03T15:06:00.000Z",
+	"dateModified": "2018-08-03T21:10:25.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/Whitesnake.jpg.scaled500.jpg",
+	"keywords": "DDoS, Attacks, Reliability",
+	"description": "Data from inside CloudFlare&#x27;s network shows that over 40% of the time there&#x27;s a denial of service attack happening and directed at us. And that&#x27;s just up to network layer 4 (i.e. it doesn&#x27;t include more sophisticated attacks targeting applications themselves at layer 7).",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

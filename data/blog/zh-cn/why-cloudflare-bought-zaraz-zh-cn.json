@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew Prince",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
+			"width": 1196,
+			"height": 1190
+		},
+		"url": "https://blog.cloudflare.com/author/matthew-prince/",
+		"sameAs": [
+			"https://twitter.com/eastdakota"
+		]
+	},
+	"headline": "Cloudflare 为什么收购 Zaraz",
+	"url": "https://blog.cloudflare.com/zh-cn/why-cloudflare-bought-zaraz-zh-cn/",
+	"datePublished": "2021-12-08T14:02:00.000Z",
+	"dateModified": "2021-12-29T01:50:27.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/12/CFZW-4.png",
+		"width": 1801,
+		"height": 1013
+	},
+	"keywords": "CIO Week (CN), Zaraz (CN)",
+	"description": "今天，我们隆重宣布 Cloudflare 已收购 Zaraz。Zaraz 的价值主张与 Cloudflare 的使命一致。他们旨在使 Web 更安全、更可靠、更快速。他们的解决方案是在 Cloudflare Workers",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

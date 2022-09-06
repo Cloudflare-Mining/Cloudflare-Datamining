@@ -1,0 +1,40 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Kristian Freeman",
+		"image": "http://blog.cloudflare.com/content/images/2019/05/2fGb07-c_400x400.jpg",
+		"url": "https://blog.cloudflare.com/author/kristian/",
+		"sameAs": [
+			"https://www.signalnerve.com",
+			"https://twitter.com/signalnerve"
+		]
+	},
+	"headline": "Building real-time games using Workers, Durable Objects, and Unity",
+	"url": "https://blog.cloudflare.com/building-real-time-games-using-workers-durable-objects-and-unity/",
+	"datePublished": "2021-05-26T13:00:05.000Z",
+	"dateModified": "2021-05-26T13:00:05.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/05/image1-13.png",
+		"width": 1531,
+		"height": 796
+	},
+	"keywords": "Durable Objects, Cloudflare Workers, Gaming",
+	"description": "Durable Objects are an awesome addition to the Workers developer ecosystem, allowing you to address and work inside a specific Worker to provide consistency in your applications. You might be wondering &quot;Okay, so what can I build with that?&quot;",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

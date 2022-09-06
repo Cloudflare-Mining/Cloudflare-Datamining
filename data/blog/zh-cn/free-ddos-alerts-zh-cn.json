@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Omer Yoachimik",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/Omer-1.png",
+			"width": 773,
+			"height": 653
+		},
+		"url": "https://blog.cloudflare.com/author/omer/",
+		"sameAs": [
+			"https://twitter.com/OmerYoahimik"
+		]
+	},
+	"headline": "Free 计划的 Cloudflare 客户现在也可以获得实时 DDoS 警报",
+	"url": "https://blog.cloudflare.com/zh-cn/free-ddos-alerts-zh-cn/",
+	"datePublished": "2022-01-17T00:00:00.000Z",
+	"dateModified": "2022-08-23T01:58:51.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/03/unnamed-14.png",
+		"width": 1600,
+		"height": 900
+	},
+	"keywords": "警报, DDoS (CN), 通知, 免费",
+	"description": "我们很高兴地宣布，使用我们的 Free 计划的客户现在可以获得有关 HTTP DDoS 攻击的实时警报，这些攻击由 Cloudflare 自动检测并缓解。实时 DDoS 警报最初是在一年多前发布的，但已向 Pro 计划或更高版本的客户提供。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

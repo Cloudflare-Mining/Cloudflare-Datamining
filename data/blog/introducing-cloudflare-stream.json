@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew Prince",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
+			"width": 1196,
+			"height": 1190
+		},
+		"url": "https://blog.cloudflare.com/author/matthew-prince/",
+		"sameAs": [
+			"https://twitter.com/eastdakota"
+		]
+	},
+	"headline": "Introducing Cloudflare Stream: Fixing the Streaming Video Market",
+	"url": "https://blog.cloudflare.com/introducing-cloudflare-stream/",
+	"datePublished": "2017-09-27T13:00:00.000Z",
+	"dateModified": "2018-08-29T02:06:51.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2017/10/Screen-Shot-2017-10-18-at-9.58.38-AM.png",
+	"keywords": "Product News, Birthday Week, Video, Cloudflare Stream, Speed & Reliability",
+	"description": "Cloudflare turns seven years old today. We launched on September 27, 2010.\n\nIt was only a few days after our launch that we got our first request to support video streaming. Yet, until today, we&#x27;d avoided it.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

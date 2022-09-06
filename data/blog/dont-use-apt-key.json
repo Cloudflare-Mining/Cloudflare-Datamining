@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Jeff Hiner",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/12/jhiner_portrait.jpg",
+			"width": 912,
+			"height": 912
+		},
+		"url": "https://blog.cloudflare.com/author/jeff/",
+		"sameAs": []
+	},
+	"headline": "An exposed apt signing key and how to improve apt security",
+	"url": "https://blog.cloudflare.com/dont-use-apt-key/",
+	"datePublished": "2021-12-15T13:56:03.000Z",
+	"dateModified": "2022-04-26T22:19:08.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/12/image1-78.png",
+		"width": 815,
+		"height": 404
+	},
+	"keywords": "Debian, Ubuntu, Security, Cloudflare Zero Trust, WARP, Zero Trust",
+	"description": "Recently, we received a bug bounty report regarding the GPG signing key used for pkg.cloudflareclient.com, the Linux package repository for our Cloudflare WARP products.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

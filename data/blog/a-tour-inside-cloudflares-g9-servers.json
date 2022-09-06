@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Rob Dinh",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2020/12/Screen-Shot-2020-12-08-at-07.04.53.png",
+			"width": 266,
+			"height": 256
+		},
+		"url": "https://blog.cloudflare.com/author/robdinh/",
+		"sameAs": [
+			"https://twitter.com/rob_dinh"
+		]
+	},
+	"headline": "A Tour Inside Cloudflare&#x27;s G9 Servers",
+	"url": "https://blog.cloudflare.com/a-tour-inside-cloudflares-g9-servers/",
+	"datePublished": "2018-10-10T15:17:00.000Z",
+	"dateModified": "2021-05-19T18:42:40.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/10/Screen-Shot-2018-10-09-at-1.12.12-PM.png",
+	"keywords": "Speed & Reliability, Network",
+	"description": "This is about our latest generation G9 server. From a G4 server comprising of 12 Intel Sandybridge CPU cores, our G9 server has 192 Intel Skylake CPU cores ready to handle today’s load across Cloudflare’s network.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

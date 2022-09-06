@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Sam Rhea",
+		"image": "http://blog.cloudflare.com/content/images/2018/07/photo-for-profile.jpg",
+		"url": "https://blog.cloudflare.com/author/sam/",
+		"sameAs": [
+			"https://twitter.com/LakeAustinBlvd"
+		]
+	},
+	"headline": "Öffentliche Schlüssel reichen für SSH-Sicherheit nicht aus",
+	"url": "https://blog.cloudflare.com/de-de/public-keys-are-not-enough-for-ssh-security-de-de/",
+	"datePublished": "2019-10-25T13:00:00.000Z",
+	"dateModified": "2021-01-22T18:46:27.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2019/11/Short-lived-Cert-copy@2x.png",
+		"width": 1812,
+		"height": 1015
+	},
+	"keywords": "Deutsch, Produktneuigkeiten, Sicherheit, Cloudflare Access (DE)",
+	"description": "Wenn Ihre Organisation öffentliche SSH-Schlüssel verwendet, ist es durchaus möglich, dass Sie bereits einen verlegt haben. In einem Backup oder auf dem Computer eines ehemaligen Mitarbeiters kann sich eine Datei befinden, die dem Inhaber Zugriff auf Ihre Infrastruktur gewährt.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Kabir Sikand",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/05/0.jpeg",
+			"width": 800,
+			"height": 800
+		},
+		"url": "https://blog.cloudflare.com/author/kabir/",
+		"sameAs": [
+			"https://twitter.com/kabirsikand"
+		]
+	},
+	"headline": "介绍关系数据库连接器",
+	"url": "https://blog.cloudflare.com/zh-cn/relational-database-connectors-zh-cn/",
+	"datePublished": "2021-11-15T13:59:00.000Z",
+	"dateModified": "2021-11-18T19:12:28.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/11/Relational-1.png",
+		"width": 1200,
+		"height": 675
+	},
+	"keywords": "全栈周 (CN), 简体中文 (CN), Cloudflare Workers (CN), 产品新闻, MySQL (CN), Postgres (CN)",
+	"description": "Cloudflare 正在打造世界上最优秀的计算平台。我们希望使通过 Cloudflare 构建应用的工作变得轻松、无缝和顺理成章。但仅仅打造最优秀的计算平台并不足够——应用的核心在于与其交互的数据。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

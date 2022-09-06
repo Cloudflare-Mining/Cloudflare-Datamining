@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Daniele Molteni",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/10/meProfessional-1-flipped.jpg",
+			"width": 1732,
+			"height": 1732
+		},
+		"url": "https://blog.cloudflare.com/author/daniele/",
+		"sameAs": []
+	},
+	"headline": "Improving the WAF with Machine Learning",
+	"url": "https://blog.cloudflare.com/waf-ml/",
+	"datePublished": "2022-03-15T12:59:10.000Z",
+	"dateModified": "2022-06-30T07:14:27.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/03/image5.png",
+		"width": 1801,
+		"height": 1013
+	},
+	"keywords": "Security Week, WAF, Machine Learning",
+	"description": "Today we are excited to complement managed rulesets (such as OWASP and Cloudflare Managed) with a new tool aimed at identifying bypasses and malicious payloads without human involvement, and before they are exploited",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

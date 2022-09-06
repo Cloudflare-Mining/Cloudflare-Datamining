@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "James M Snell",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/11/mecoffee.jpg",
+			"width": 400,
+			"height": 400
+		},
+		"url": "https://blog.cloudflare.com/author/jasnell/",
+		"sameAs": [
+			"https://twitter.com/jasnell"
+		]
+	},
+	"headline": "A Community Group for Web-interoperable JavaScript runtimes",
+	"url": "https://blog.cloudflare.com/introducing-the-wintercg/",
+	"datePublished": "2022-05-09T13:00:27.000Z",
+	"dateModified": "2022-07-29T18:35:42.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/05/image1-9.png",
+		"width": 1800,
+		"height": 1013
+	},
+	"keywords": "Platform Week, JavaScript, Community, Cloudflare Workers, Node.js, Serverless",
+	"description": "Cloudflare is excited to be a part of the launch of the Web-interoperable Runtimes Community Group, a new effort that brings contributors from Cloudflare Workers, Deno, and Node.js together to collaborate on common Web platform API standards",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

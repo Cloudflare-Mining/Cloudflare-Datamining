@@ -1,0 +1,38 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew Prince",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
+			"width": 1196,
+			"height": 1190
+		},
+		"url": "https://blog.cloudflare.com/author/matthew-prince/",
+		"sameAs": [
+			"https://twitter.com/eastdakota"
+		]
+	},
+	"headline": "Today&#x27;s Network Issue",
+	"url": "https://blog.cloudflare.com/todays-network-issue/",
+	"datePublished": "2013-05-31T11:10:00.000Z",
+	"dateModified": "2018-08-17T20:48:14.000Z",
+	"keywords": "Network, Post Mortem",
+	"description": "Today at 16:13 UTC a large amount of traffic began hitting our Los Angeles data center. We have an in-house team that monitors our network 24x7x365 and immediately all their alarms went off.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

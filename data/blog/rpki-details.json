@@ -1,0 +1,34 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Jérôme Fleury",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/1c11387.jpg",
+		"url": "https://blog.cloudflare.com/author/jerome-fleury/",
+		"sameAs": [
+			"https://twitter.com/Jerome_UZ"
+		]
+	},
+	"headline": "RPKI and BGP: our path to securing Internet Routing",
+	"url": "https://blog.cloudflare.com/rpki-details/",
+	"datePublished": "2018-09-19T12:01:00.000Z",
+	"dateModified": "2018-09-19T12:00:59.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/09/rpki-copy@6.5x-1.png",
+	"keywords": "Crypto Week, Crypto, Security, Product News, RPKI, BGP",
+	"description": "This article will talk about our approach to network security using technologies like RPKI to sign Internet routes and protect our users and customers from route hijacks and misconfigurations.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,32 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Vlad Krasnov",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/165e069.jpg",
+		"url": "https://blog.cloudflare.com/author/vlad-krasnov/",
+		"sameAs": []
+	},
+	"headline": "Improving compression with a preset DEFLATE dictionary",
+	"url": "https://blog.cloudflare.com/improving-compression-with-preset-deflate-dictionary/",
+	"datePublished": "2015-03-30T09:21:21.000Z",
+	"dateModified": "2018-08-24T01:16:25.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/15585984911_6a6bff8f30_z.jpg",
+	"keywords": "Google, Optimization, Speed & Reliability, Compression",
+	"description": "A few years ago Google made a proposal for a new HTTP compression method, called SDCH (SanDwiCH). The idea behind the method is to create a dictionary of long strings that appear throughout many pages of the same domain (or popular search results).",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

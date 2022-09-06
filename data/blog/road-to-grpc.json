@@ -1,0 +1,45 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Junho Choi",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/05/junho_profile_300x300--1-.jpg",
+			"width": 300,
+			"height": 300
+		},
+		"url": "https://blog.cloudflare.com/author/junho/",
+		"sameAs": [
+			"https://saturnsoft.net",
+			"https://twitter.com/junhochoi"
+		]
+	},
+	"headline": "Road to gRPC",
+	"url": "https://blog.cloudflare.com/road-to-grpc/",
+	"datePublished": "2020-10-26T16:40:02.000Z",
+	"dateModified": "2020-10-26T17:40:34.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2020/10/image1-37.png",
+		"width": 2000,
+		"height": 950
+	},
+	"keywords": "gRPC",
+	"description": "Cloudflare launched support for gRPC during our 2020 Birthday Week. In this post, we’ll do a deep-dive into the technical details of how we implemented support.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

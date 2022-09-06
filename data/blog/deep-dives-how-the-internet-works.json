@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "João Tomé",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/V0x3WKfJ_400x400-1.jpeg",
+			"width": 400,
+			"height": 400
+		},
+		"url": "https://blog.cloudflare.com/author/joao-tome/",
+		"sameAs": [
+			"https://twitter.com/emot"
+		]
+	},
+	"headline": "Deep dives &amp; how the Internet works",
+	"url": "https://blog.cloudflare.com/deep-dives-how-the-internet-works/",
+	"datePublished": "2022-08-25T18:08:00.000Z",
+	"dateModified": "2022-08-25T18:08:00.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/08/pasted-image-0-2.png",
+		"width": 1600,
+		"height": 900
+	},
+	"keywords": "Deep Dive, Trends, Internet Traffic, Research, Reading List",
+	"description": "We have amazing deep dives in our blog, but also research and how the Internet works kind of stories. Here are some highlights from 2022, and before (with glimpses of our history).",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

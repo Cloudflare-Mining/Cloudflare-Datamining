@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Rita Kozlov",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/05/Rita-Kozlov.jpeg",
+			"width": 200,
+			"height": 200
+		},
+		"url": "https://blog.cloudflare.com/author/rita/",
+		"sameAs": [
+			"https://twitter.com/ritakozlov_"
+		]
+	},
+	"headline": "Cloudflare Pages is now Generally Available",
+	"url": "https://blog.cloudflare.com/cloudflare-pages-ga/",
+	"datePublished": "2021-04-12T13:00:00.000Z",
+	"dateModified": "2021-04-22T18:17:11.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/04/image1-8.png",
+		"width": 1600,
+		"height": 740
+	},
+	"keywords": "Developer Week, Cloudflare Pages, JAMstack, Cloudflare Workers, Developers, Product News",
+	"description": "Today, we’re excited to announce that Cloudflare Pages is now Generally  Available and ready for your production needs.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

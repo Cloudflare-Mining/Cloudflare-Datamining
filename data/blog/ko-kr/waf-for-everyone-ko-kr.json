@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Michael Tremante",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/url-3.jpg",
+		"url": "https://blog.cloudflare.com/author/michael-tremante/",
+		"sameAs": [
+			"https://twitter.com/MichaelTremante"
+		]
+	},
+	"headline": "모두가 WAF를 받습니다!",
+	"url": "https://blog.cloudflare.com/ko-kr/waf-for-everyone-ko-kr/",
+	"datePublished": "2022-03-15T12:59:00.000Z",
+	"dateModified": "2022-06-28T09:12:06.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/06/image2-26-2.png",
+		"width": 1801,
+		"height": 1013
+	},
+	"keywords": "Security Week (KO), WAF (KO), 관리 규정, Free (KO), 한국어",
+	"description": "오늘날 Cloudflare WAF(웹 애플리케이션 방화벽) 관리 규칙 집합을 모든 Cloudflare 요금제에 무료로 제공함으로써 이를 다시 수행하고 있습니다",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

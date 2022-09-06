@@ -1,0 +1,34 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "John Graham-Cumming",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
+		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
+		"sameAs": [
+			"https://twitter.com/jgrahamc"
+		]
+	},
+	"headline": "Introducing Workers KV",
+	"url": "https://blog.cloudflare.com/introducing-workers-kv/",
+	"datePublished": "2018-09-28T12:02:00.000Z",
+	"dateModified": "2018-09-28T16:41:45.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/09/workers-kv-for-jgc-s-post-@2x.png",
+	"keywords": "Birthday Week, Product News, Cloudflare Workers, Serverless, Cloudflare Workers KV",
+	"description": "In 1864 British computer pioneer Charles Babbage described the first key-value store to be used as part of his Analytical Engine. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

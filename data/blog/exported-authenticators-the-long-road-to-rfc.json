@@ -1,0 +1,37 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Jonathan Hoyland",
+		"image": "http://blog.cloudflare.com/content/images/2019/06/20190310_210646.jpg",
+		"url": "https://blog.cloudflare.com/author/jonathan-hoyland/",
+		"sameAs": []
+	},
+	"headline": "Exported Authenticators: The long road to RFC",
+	"url": "https://blog.cloudflare.com/exported-authenticators-the-long-road-to-rfc/",
+	"datePublished": "2021-10-13T12:59:28.000Z",
+	"dateModified": "2021-10-13T12:59:28.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/10/image3-21.png",
+		"width": 1803,
+		"height": 1013
+	},
+	"keywords": "Research, IEFT, TLS, Cryptography, Protocols",
+	"description": "Learn more about Exported Authenticators, a new extension to TLS, currently going through the IETF standardisation process.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

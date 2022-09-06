@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Vânia Gonçalves",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/08/cover_photo.jpg",
+			"width": 1781,
+			"height": 1914
+		},
+		"url": "https://blog.cloudflare.com/author/vania/",
+		"sameAs": [
+			"https://twitter.com/vgonc"
+		]
+	},
+	"headline": "Cloudflare invites visiting researchers",
+	"url": "https://blog.cloudflare.com/visiting-researcher-program/",
+	"datePublished": "2021-10-11T12:59:33.000Z",
+	"dateModified": "2021-10-11T13:08:20.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/10/image1-21.png",
+		"width": 946,
+		"height": 546
+	},
+	"keywords": "Research, Careers",
+	"description": "As part of Cloudflare’s effort to build collaborations with academia, we host research focused internships all year long. Interns collaborate cross-functionally in research projects and are encouraged to ship code and write a blog post and a peer-reviewed publication at the end of their internship.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

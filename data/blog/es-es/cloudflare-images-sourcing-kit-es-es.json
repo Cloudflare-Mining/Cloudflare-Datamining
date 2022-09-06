@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Paulo Costa",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/04/ProfilePicture_square_100px-1.jpg",
+			"width": 100,
+			"height": 100
+		},
+		"url": "https://blog.cloudflare.com/author/paulo/",
+		"sameAs": [
+			"https://twitter.com/biscadosnove"
+		]
+	},
+	"headline": "Novedad: Sourcing Kit de Cloudflare Images",
+	"url": "https://blog.cloudflare.com/es-es/cloudflare-images-sourcing-kit-es-es/",
+	"datePublished": "2022-05-13T12:59:00.000Z",
+	"dateModified": "2022-05-17T06:57:36.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/05/image8-2-2.png",
+		"width": 1801,
+		"height": 1013
+	},
+	"keywords": "Platform Week (ES), Noticias de productos, Cloudflare Images (ES), Desarrolladores",
+	"description": "Hoy nos complace compartir contigo nuestra herramienta Sourcing Kit, con la que podrás definir uno o varios orígenes que contengan los objetos que quieras migrar a Cloudflare Images",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

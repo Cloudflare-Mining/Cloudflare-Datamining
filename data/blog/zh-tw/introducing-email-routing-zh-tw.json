@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "João Sousa Botto",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/07/profile2.jpg",
+			"width": 2000,
+			"height": 2026
+		},
+		"url": "https://blog.cloudflare.com/author/joao/",
+		"sameAs": [
+			"https://twitter.com/jsbotto"
+		]
+	},
+	"headline": "部落格：使用 Cloudflare 電子郵件路由輕鬆創建和路由電子郵寄地址",
+	"url": "https://blog.cloudflare.com/zh-tw/introducing-email-routing-zh-tw/",
+	"datePublished": "2021-09-27T12:59:00.000Z",
+	"dateModified": "2021-09-28T15:20:18.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/09/image2-35-2.png",
+		"width": 1800,
+		"height": 1013
+	},
+	"keywords": "繁體中文 (TW), 生日週 (TW), 產品新聞 (TW)",
+	"description": "超過四十億人（也就是世界人口的一半）至少擁有一個電子郵寄地址，其中許多人將它當成處理個人和職業事務的重要工具。每天收發的電子郵件數量超過 3000 億封，但若只將電子郵件視為通信工具對它來說並不公平。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

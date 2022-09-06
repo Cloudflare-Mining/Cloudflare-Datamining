@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew Prince",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
+			"width": 1196,
+			"height": 1190
+		},
+		"url": "https://blog.cloudflare.com/author/matthew-prince/",
+		"sameAs": [
+			"https://twitter.com/eastdakota"
+		]
+	},
+	"headline": "EveryDNS Magic Data Liberation Bookmarklet",
+	"url": "https://blog.cloudflare.com/everydns-magic-data-liberation-tool-redux/",
+	"datePublished": "2011-08-20T02:34:00.000Z",
+	"dateModified": "2018-01-31T00:37:26.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/01/data_liberation_bookmarklet.png.scaled500.png",
+	"keywords": "Data, Free, DNS",
+	"description": "At CloudFlare, we believe in giving control back to website owners. This includes the idea that our users&#x27; data is theirs. One of the first functions we built was the ability for CloudFlare users to export their DNS files as an industry-standard BIND file. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

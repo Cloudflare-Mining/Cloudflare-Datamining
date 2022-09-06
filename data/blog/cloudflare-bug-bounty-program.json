@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Rushil Shah",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/12/8B764ABE-D6C2-47FD-AD51-4C9E762BCD00.jpeg",
+			"width": 1170,
+			"height": 1064
+		},
+		"url": "https://blog.cloudflare.com/author/rushil/",
+		"sameAs": []
+	},
+	"headline": "Announcing the public launch of Cloudflare&#x27;s bug bounty program",
+	"url": "https://blog.cloudflare.com/cloudflare-bug-bounty-program/",
+	"datePublished": "2022-02-01T17:28:25.000Z",
+	"dateModified": "2022-02-01T17:45:51.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/02/image6-1.png",
+		"width": 1801,
+		"height": 1013
+	},
+	"keywords": "Security, Vulnerabilities, HackerOne",
+	"description": "Today we are launching Cloudflare’s paid public bug bounty program. We believe bug bounties are a vital part of every security team’s toolbox and have been working hard on improving and expanding our private bug bounty program over the last few years",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

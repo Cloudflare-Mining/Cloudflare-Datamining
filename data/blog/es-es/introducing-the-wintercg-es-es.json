@@ -1,0 +1,44 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "James M Snell",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2021/11/mecoffee.jpg",
+			"width": 400,
+			"height": 400
+		},
+		"url": "https://blog.cloudflare.com/author/jasnell/",
+		"sameAs": [
+			"https://twitter.com/jasnell"
+		]
+	},
+	"headline": "Un grupo comunitario para tiempos de ejecución de JavaScript interoperables en la web",
+	"url": "https://blog.cloudflare.com/es-es/introducing-the-wintercg-es-es/",
+	"datePublished": "2022-05-09T13:00:00.000Z",
+	"dateModified": "2022-05-12T14:46:23.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/05/image1-10-1.png",
+		"width": 1800,
+		"height": 1013
+	},
+	"keywords": "Platform Week (ES), JavaScript (ES), Cloudflare Workers (ES), Node.js (ES), Sin servidor",
+	"description": "Cloudflare se complace en formar parte del lanzamiento del grupo comunitario Web-interoperable Runtimes, una nueva iniciativa que reúne a los colaboradores de Cloudflare Workers, Deno y Node.js para trabajar conjuntamente en los estándares comunes de la API para plataformas web\n",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

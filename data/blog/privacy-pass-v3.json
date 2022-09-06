@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Pop Chunhapanya",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/10/Haxxpop-avatar-1.jpg",
+			"width": 600,
+			"height": 600
+		},
+		"url": "https://blog.cloudflare.com/author/pop-chun/",
+		"sameAs": []
+	},
+	"headline": "Privacy Pass v3: the new privacy bits",
+	"url": "https://blog.cloudflare.com/privacy-pass-v3/",
+	"datePublished": "2021-10-12T12:59:19.000Z",
+	"dateModified": "2021-10-12T12:59:18.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/10/image1-31.png",
+		"width": 1812,
+		"height": 1008
+	},
+	"keywords": "Research, Security, Privacy Pass, CAPTCHA",
+	"description": "A new version of Privacy Pass for reducing the number of CAPTCHAs.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

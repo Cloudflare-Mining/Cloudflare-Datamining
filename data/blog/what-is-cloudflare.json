@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew Prince",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
+			"width": 1196,
+			"height": 1190
+		},
+		"url": "https://blog.cloudflare.com/author/matthew-prince/",
+		"sameAs": [
+			"https://twitter.com/eastdakota"
+		]
+	},
+	"headline": "What Is CloudFlare?",
+	"url": "https://blog.cloudflare.com/what-is-cloudflare/",
+	"datePublished": "2012-01-06T22:09:00.000Z",
+	"dateModified": "2018-02-01T22:09:18.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/02/classification.png.scaled500.png",
+	"keywords": "Our History",
+	"description": "I just got off the phone with a reporter. Like many reporters or analysts we talk to, she wanted to put CloudFlare into a defined category. Specifically, she wanted to call us a content delivery network (CDN) and compare us with companies like Akamai or Amazon&#x27;s CloudFront. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

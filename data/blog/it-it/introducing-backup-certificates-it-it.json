@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Dina Kozlov",
+		"image": "http://blog.cloudflare.com/content/images/2019/06/headshot.jpg",
+		"url": "https://blog.cloudflare.com/author/dina/",
+		"sameAs": [
+			"https://twitter.com/dinasaur_404"
+		]
+	},
+	"headline": "Introduzione: Certificati di backup",
+	"url": "https://blog.cloudflare.com/it-it/introducing-backup-certificates-it-it/",
+	"datePublished": "2022-03-14T12:59:00.000Z",
+	"dateModified": "2022-03-22T11:34:41.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/03/image1-header-2.png",
+		"width": 512,
+		"height": 288
+	},
+	"keywords": "Settimana della sicurezza (IT), SSL (IT), Novità sui prodotti",
+	"description": "In Cloudflare, siamo orgogliosi di offrire a ogni cliente la possibilità di fornire gratuitamente un certificato TLS per la propria applicazione Internet. Oggi siamo responsabili della gestione del ciclo di vita dei certificati per quasi 45 milioni di certificati",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

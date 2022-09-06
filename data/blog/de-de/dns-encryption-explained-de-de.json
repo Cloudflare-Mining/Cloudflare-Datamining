@@ -1,0 +1,45 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Peter Wu",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/10/gravatar.png",
+			"width": 512,
+			"height": 512
+		},
+		"url": "https://blog.cloudflare.com/author/peter-wu/",
+		"sameAs": [
+			"https://lekensteyn.nl/",
+			"https://twitter.com/Lekensteyn"
+		]
+	},
+	"headline": "So funktioniert DNS-Verschlüsselung",
+	"url": "https://blog.cloudflare.com/de-de/dns-encryption-explained-de-de/",
+	"datePublished": "2019-10-29T13:00:00.000Z",
+	"dateModified": "2021-01-22T18:43:42.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2019/11/Screen-Shot-2019-10-28-at-12.46.36-PM-3.png",
+		"width": 2000,
+		"height": 709
+	},
+	"keywords": "Deutsch, Krypto-Woche, DoT (DE), DoH (DE), DNS (DE), Sicherheit, Kryptografie",
+	"description": "Das Domain Name System (DNS) ist das Adressbuch des Internets. Wenn Sie cloudflare.com oder irgendeine andere Website besuchen, fragt Ihr Browser einen DNS-Resolver nach der IP-Adresse der Website.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

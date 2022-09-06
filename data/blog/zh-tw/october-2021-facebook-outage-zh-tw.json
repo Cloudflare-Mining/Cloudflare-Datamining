@@ -1,0 +1,45 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Celso Martinho",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Celso-Martinho.png",
+			"width": 486,
+			"height": 488
+		},
+		"url": "https://blog.cloudflare.com/author/celso/",
+		"sameAs": [
+			"https://celso.io/",
+			"https://twitter.com/celso"
+		]
+	},
+	"headline": "瞭解臉書如何從網際網路消失",
+	"url": "https://blog.cloudflare.com/zh-tw/october-2021-facebook-outage-zh-tw/",
+	"datePublished": "2021-10-04T21:08:00.000Z",
+	"dateModified": "2021-10-26T21:48:10.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/10/Screen-Shot-2021-10-26-at-2.44.18-PM-13.png",
+		"width": 896,
+		"height": 466
+	},
+	"keywords": "DNS (TW), 繁體中文 (TW)",
+	"description": "「臉書不能可能當掉，對吧？」有一瞬間，我們這樣覺得。\n今天世界標準時間 15:51，我們開啟了一個名為「臉書 DNS 查找回應 SERVFAIL」的內部事件，因為我們擔心是我們的 DNS 解析器 1.1.1.1 出了問題。但是當我們準備在我們的公開狀態頁面上發文時，我們意識到還有更嚴重的事情正在發生。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

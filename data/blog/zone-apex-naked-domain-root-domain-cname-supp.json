@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Matthew Prince",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
+			"width": 1196,
+			"height": 1190
+		},
+		"url": "https://blog.cloudflare.com/author/matthew-prince/",
+		"sameAs": [
+			"https://twitter.com/eastdakota"
+		]
+	},
+	"headline": "Zone Apex / Naked Domain / Root Domain CNAME Support for Amazon EC2, Google App Engine and Other Cloud Hosts",
+	"url": "https://blog.cloudflare.com/zone-apex-naked-domain-root-domain-cname-supp/",
+	"datePublished": "2011-05-16T19:34:00.000Z",
+	"dateModified": "2018-01-26T20:20:08.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/01/AWS_LOGO_RGB.png.scaled.500.jpg",
+	"keywords": "AWS, EC2, CNAME, Reliability",
+	"description": "CloudFlare now supports CNAME Flattening, which is a better solution to this same problem. Read more in our knowledge base. ",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

@@ -1,0 +1,34 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "John Graham-Cumming",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
+		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
+		"sameAs": [
+			"https://twitter.com/jgrahamc"
+		]
+	},
+	"headline": "New OpenSSL vulnerabilities: CloudFlare systems patched",
+	"url": "https://blog.cloudflare.com/new-openssl-vulnerabilities-cloudflare-systems-patch/",
+	"datePublished": "2014-06-05T04:00:00.000Z",
+	"dateModified": "2020-08-18T18:28:08.000Z",
+	"image": "http://blog.cloudflare.com/content/images/2018/08/logo.png",
+	"keywords": "OpenSSL, Vulnerabilities, Reliability, SSL",
+	"description": "The OpenSSL team announced seven vulnerabilities covering OpenSSL 0.9.8, 1.0.0, 1.0.1 and 1.0.2 (i.e. all versions) earlier today.",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

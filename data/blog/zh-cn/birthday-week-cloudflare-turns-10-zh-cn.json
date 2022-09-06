@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "James Allworth",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/10/jamesallworth-20171002-024-bw-centered-square.jpg",
+			"width": 2000,
+			"height": 2000
+		},
+		"url": "https://blog.cloudflare.com/author/james-allworth/",
+		"sameAs": []
+	},
+	"headline": "web分析服务推出_API防护_在无服务器平台支持存储一致性_Cloudflare十周年生日周",
+	"url": "https://blog.cloudflare.com/zh-cn/birthday-week-cloudflare-turns-10-zh-cn/",
+	"datePublished": "2020-10-04T12:03:00.000Z",
+	"dateModified": "2021-01-28T20:27:03.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2020/12/facebook-link-image-5-1.png",
+		"width": 1200,
+		"height": 628
+	},
+	"keywords": "简体中文 (CN), 生日周 (CN), 产品新闻, Cloudflare Workers (CN), WordPress (CN)",
+	"description": "我们一直将生日作为回馈互联网的机会。但是在今年 - 互联网对我们保持一定程度的联系和维持常态无比关键 - 我们感觉回馈互联网比以往任何时候都更重要。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

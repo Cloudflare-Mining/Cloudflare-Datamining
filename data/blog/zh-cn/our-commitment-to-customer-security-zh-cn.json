@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Ling Wu",
+		"image": {
+			"@type": "ImageObject",
+			"url": "http://blog.cloudflare.com/content/images/2020/12/Crepe.JPG",
+			"width": 640,
+			"height": 854
+		},
+		"url": "https://blog.cloudflare.com/author/ling/",
+		"sameAs": []
+	},
+	"headline": "对客户安全的承诺",
+	"url": "https://blog.cloudflare.com/zh-cn/our-commitment-to-customer-security-zh-cn/",
+	"datePublished": "2022-03-18T18:58:00.000Z",
+	"dateModified": "2022-06-15T09:43:38.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/06/Commitment-to-Customer-Security-1-5.png",
+		"width": 1600,
+		"height": 900
+	},
+	"keywords": "Security Week (CN), 安全, 合规性, 简体中文 (CN)",
+	"description": "自创立以来，Cloudflare 一直致力于保护全球客户。我们的服务保护客户的流量和数据，也保护我们自己的流量和数据，并持续改善和扩展这些服务，以应对不断改变的互联网威胁环境",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

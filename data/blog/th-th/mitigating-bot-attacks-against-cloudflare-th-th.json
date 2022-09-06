@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Sergi Isasi",
+		"image": "http://blog.cloudflare.com/content/images/2017/11/FullSizeRender_jpeg.png",
+		"url": "https://blog.cloudflare.com/author/sergi/",
+		"sameAs": [
+			"https://twitter.com/sgisasi"
+		]
+	},
+	"headline": "การบรรเทาผลกระทบจากการโจมตี Cloudflare ของบ็อต",
+	"url": "https://blog.cloudflare.com/th-th/mitigating-bot-attacks-against-cloudflare-th-th/",
+	"datePublished": "2021-03-26T00:00:00.000Z",
+	"dateModified": "2022-01-21T13:39:16.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2022/01/image3-40-1.png",
+		"width": 1382,
+		"height": 668
+	},
+	"keywords": "สัปดาห์ความปลอดภัย, Bot Management (TH), บ็อต, การโจมตี",
+	"description": "คำว่า “บ็อต” บนอินเทอร์เน็ตเป็นอะไรที่ค่อนข้างโหลดได้พอสมควร ประสบการณ์ &#x27;บ็อต&#x27; แรกสุดของฉันคือ บน IRC ที่บ็อตมีประโยชน์มาก โดยช่วยทำให้ช่องโปรดของคุณไม่ถูกผู้ใช้ที่ประสงค์ร้ายเข้าสวมรอยและเปิดให้ Game of Trivia ที่สนุกสนานเข้ามามีบทบาท ซึ่งเมื่อประมาณห้าปีที่แล้ว “บ็อต”",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

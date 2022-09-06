@@ -1,0 +1,39 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Marek Majkowski",
+		"image": "http://blog.cloudflare.com/content/images/2017/03/b5967d6c687939594adb6992723d0529.jpeg",
+		"url": "https://blog.cloudflare.com/author/marek-majkowski/",
+		"sameAs": [
+			"https://twitter.com/majek04"
+		]
+	},
+	"headline": "ddos超大规模攻击 - 利用udp端口11211，Memcrashed被用于反射攻击_Cloudflare",
+	"url": "https://blog.cloudflare.com/zh-cn/memcrashed-major-amplification-attacks-from-port-11211-zh-cn/",
+	"datePublished": "2018-02-27T14:38:00.000Z",
+	"dateModified": "2021-01-28T18:32:13.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2019/07/3829936641_f112ed1665_b-1-1.jpg",
+		"width": 1024,
+		"height": 680
+	},
+	"keywords": "简体中文 (CN), 开发人员, DDoS (CN)",
+	"description": "在过去的几天里，我们观察到隐蔽的放大攻击向量的频次大幅增加，这些放大攻击使用了来自UDP端口11211 的memcached协议。之前我们已经谈论过很多关于互联网上放大攻击的话题。我们最近关于这个主题的两篇博文是：",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}

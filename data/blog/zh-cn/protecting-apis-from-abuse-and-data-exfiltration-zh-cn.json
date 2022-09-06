@@ -1,0 +1,42 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "The Cloudflare Blog",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
+			"width": 109,
+			"height": 40.5
+		}
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Daniele Molteni",
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/10/meProfessional-1-flipped.jpg",
+			"width": 1732,
+			"height": 1732
+		},
+		"url": "https://blog.cloudflare.com/author/daniele/",
+		"sameAs": []
+	},
+	"headline": "保护您的 API 以防滥用和数据泄漏",
+	"url": "https://blog.cloudflare.com/zh-cn/protecting-apis-from-abuse-and-data-exfiltration-zh-cn/",
+	"datePublished": "2021-03-24T13:00:00.000Z",
+	"dateModified": "2021-04-22T18:30:26.000Z",
+	"image": {
+		"@type": "ImageObject",
+		"url": "http://blog.cloudflare.com/content/images/2021/04/Announcing-Cloudflare-s-Data-Loss-Prevention-platform-OG-blog-body-3.png",
+		"width": 1513,
+		"height": 757
+	},
+	"keywords": "产品新闻, 安全, 安全周 (CN), API Shield (CN), DLP (CN), WAF (CN)",
+	"description": "API 流量正在迅速增长。仅在去年，我们边缘节点的 API 流量增长比 Web 流量快 300%。API 驱动移动和 Web 应用程序，传输各种各样的指令，例如“使用这张信用卡从我最喜欢的餐厅点一个披萨“，或者“进行一笔加密货币交易，这是我的个人信息”等等，因此 API 很容易成为数据盗窃和滥用的目标。（2019 年十大 API 安全威胁）。",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "http://blog.cloudflare.com/"
+	}
+}
