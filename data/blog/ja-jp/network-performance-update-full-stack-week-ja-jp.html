@@ -3,12 +3,12 @@
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/Network-Performance-Update--Full-Stack-Week-header.png" class="kg-image" alt="Network Performance Update: Full Stack Week"></figure>
 	<p>2か月と少し前に、世界中のラストワンマイルネットワークの<a href="https://blog.cloudflare.com/benchmarking-edge-network-performance/">広範なベンチマーク結果</a>を共有しました。さまざまなテスト （TCP接続時間、最初の1バイトを受信するまでの時間（TTFB）、最後の1バイトを受信するまでの時間（TTLB））、また、さまざまな測定（p95、平均）の結果は、Cloudflareが世界中の49％のネットワークで最速のプロバイダーであることを示しました。それ以来、当社はあらゆる場所で最速のプロバイダーになるまで、パフォーマンスの継続的な改善に取り組み、イノベーションウィークごとに当社が最速とするネットワークの数を10％増やすという<a href="https://blog.cloudflare.com/two-weeks-later-finding-and-eliminating-long-tail-latencies/">目標を設定し</a>、<a href="https://blog.cloudflare.com/tag/birthday-week/">バースデーウィーク</a>（2021年9月）の間にその目標を達成しました。</p>
 	<p>本日、<a href="https://blog.cloudflare.com/tag/full-stack-week/">Full Stack Week</a>（2021年11月）の目標を達成したことを報告できることを誇りに思います。Cloudflareは、世界の上位1,000のネットワークに対するパフォーマンスを測定しました（アドバタイズされたIPv4アドレスの数による）。これらのうち、Cloudflareは新たに79のネットワークで最速のプロバイダになりました。これは1,000あるネットワークのうち14%増にあたります。もちろん、まだ完了していませんが、最新の結果を共有し、どのようにそれを達成したかを説明したいと思います。</p>
-	<p>しかし、ネットワークパフォーマンスについて詳しく説明する前に、Workersプラットフォームに関する新しいパフォーマンス指標を共有したいと思います（Full Stack Weekと仮定）。Cloudflare WorkersとFastlyの<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7734181a070203123732131012">[email&nbsp;protected]</a>の数を減らした結果、Workerの速度が196％増となりました。</p>
+	<p>しかし、ネットワークパフォーマンスについて詳しく説明する前に、Workersプラットフォームに関する新しいパフォーマンス指標を共有したいと思います（Full Stack Weekと仮定）。Cloudflare WorkersとFastlyの<a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a>の数を減らした結果、Workerの速度が196％増となりました。</p>
 	<h3 id="-"><strong>より高速なネットワークはより高速なスタックを意味します</strong></h3>
-	<p>数ヶ月前、私たちはCloudflare Workersのパフォーマンスについて、他の類似品と比較しながら説明しました。<a href="https://blog.cloudflare.com/cloudflare-workers-the-fast-serverless-platform/">当社のパフォーマンスの比較</a>でLambdaと<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="94d8f5f9f6f0f5d4d1f0f3f1">[email&nbsp;protected]</a>と比較し、Cloudflare Workersがそれぞれ210%と298%上回っていました。</p>
-	<p>当時、比較可能なすべての製品に対して、私たちがどのような評価を受けているかを確認したかったのですが、すべての製品が一般的に提供されているわけではありませんでした。そのため、Workersが別のソリューションであるFastlyの<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d596bab8a5a0a1b09590b1b2b0">[email&nbsp;protected]</a>と比較した結果について報告することができませんでした。</p>
-	<p><strong>世界中のCatchpointのデータを使用して50のノードで実施したテストから最初の1バイトを受信するまでの時間（TTFB）を基に算出し、Cloudflare WorkersがFastlyの<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="195a7674696c6d7c595c7d7e7c">[email&nbsp;protected]</a>よりも196％高速でした。</strong>本日、このような報告ができることを嬉しく思います。</p>
-	<p>過去に行ったように、現在の時刻と測定された最初の1バイトを受信するまでの待ち時間（DNS、接続、およびTLSハンドシェイク後に、クライアントがHTTPリクエストを行ってからクライアントがリクエストの応答の最初のバイトを受信するまでの時間の長さ）を単純に返す関数を実行しました。テストは2021年11月8日に、Cloudflare WorkersとFastlyの<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="93d0fcfee3e6e7f6d3d6f7f4f6">[email&nbsp;protected]</a>の両方の無料利用枠アカウントを使用して実行されました。</p>
+	<p>数ヶ月前、私たちはCloudflare Workersのパフォーマンスについて、他の類似品と比較しながら説明しました。<a href="https://blog.cloudflare.com/cloudflare-workers-the-fast-serverless-platform/">当社のパフォーマンスの比較</a>でLambdaと<a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a>と比較し、Cloudflare Workersがそれぞれ210%と298%上回っていました。</p>
+	<p>当時、比較可能なすべての製品に対して、私たちがどのような評価を受けているかを確認したかったのですが、すべての製品が一般的に提供されているわけではありませんでした。そのため、Workersが別のソリューションであるFastlyの<a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a>と比較した結果について報告することができませんでした。</p>
+	<p><strong>世界中のCatchpointのデータを使用して50のノードで実施したテストから最初の1バイトを受信するまでの時間（TTFB）を基に算出し、Cloudflare WorkersがFastlyの<a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a>よりも196％高速でした。</strong>本日、このような報告ができることを嬉しく思います。</p>
+	<p>過去に行ったように、現在の時刻と測定された最初の1バイトを受信するまでの待ち時間（DNS、接続、およびTLSハンドシェイク後に、クライアントがHTTPリクエストを行ってからクライアントがリクエストの応答の最初のバイトを受信するまでの時間の長さ）を単純に返す関数を実行しました。テストは2021年11月8日に、Cloudflare WorkersとFastlyの<a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a>の両方の無料利用枠アカウントを使用して実行されました。</p>
 	<p>双方のプロバイダーで実行したコードはまったく同じ（すべてのリクエストヘッダーを返す小さな関数）でした：</p>
 	<!--kg-card-begin: markdown-->
 	<pre><code class="language-javascript">addEventListener('fetch', event =&gt; event.respondWith(handleRequest(event)));
@@ -23,7 +23,7 @@ async function handleRequest(event) {
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>オレンジ色: Cloudflare Workers</p>
-	<p>黒色: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="9ad9f5f7eaefeeffdadffefdff">[email&nbsp;protected]</a></p>
+	<p>黒色: <a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a></p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image8-9.png" class="kg-image"></figure>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image7-9.png" class="kg-image"></figure>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/11/image10-11.png" class="kg-image"></figure>

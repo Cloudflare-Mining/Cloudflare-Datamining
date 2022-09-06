@@ -224,15 +224,15 @@ clean:
 # See: https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=fd56e0058412fb542db0e9556f425747cf3f8366
 #
 deny_unshare.bpf.o: deny_unshare.bpf.c
-	$(CLANG) -g -O2 -Wall -target bpf -D__KERNEL__ -D__TARGET_ARCH_$(ARCH) $(INCLUDES) -c $&lt; -o <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="163256">[email&nbsp;protected]</a>
-	$(LLVM_STRIP) -g <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2f0b6f">[email&nbsp;protected]</a> # Removes debug information
+	$(CLANG) -g -O2 -Wall -target bpf -D__KERNEL__ -D__TARGET_ARCH_$(ARCH) $(INCLUDES) -c $&lt; -o <a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a>
+	$(LLVM_STRIP) -g <a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a> # Removes debug information
 
 deny_unshare.skel.h: deny_unshare.bpf.o
-	sudo bpftool gen skeleton $&lt; &gt; <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3a1e7a">[email&nbsp;protected]</a>
+	sudo bpftool gen skeleton $&lt; &gt; <a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a>
 
 deny_unshare: deny_unshare.c deny_unshare.skel.h
-	$(CC) -g -Wall -c $&lt; -o <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1135513f7e">[email&nbsp;protected]</a>
-	$(CC) -g -o <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="0f2b4f">[email&nbsp;protected]</a> $(LIBS_DIR) <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b094f09edf">[email&nbsp;protected]</a> $(LIBS)
+	$(CC) -g -Wall -c $&lt; -o <a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a>
+	$(CC) -g -o <a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a> $(LIBS_DIR) <a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a> $(LIBS)
 
 .DELETE_ON_ERROR:
 </code></pre>

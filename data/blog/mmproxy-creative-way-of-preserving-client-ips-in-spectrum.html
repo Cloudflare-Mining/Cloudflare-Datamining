@@ -74,7 +74,7 @@ PING cloudflare.com(2400:cb00:2048:1::c629:d6a2) 56 data bytes
 	<pre><code>$ sudo ./mmproxy --allowed-subnets ./cloudflare-ip-ranges.txt \
       -l 0.0.0.0:2222 \
       -4 127.0.0.1:22 -6 '[::1]:22'
-<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c6b4a9a9b286b3a4b3a8b2b3">[email&nbsp;protected]</a>:~# ./mmproxy -a cloudflare-ip-ranges.txt -l 0.0.0.0:2222 -4 127.0.0.1:22 -6 [::1]:22[ ] Remember to set the reverse routing rules correctly:
+<a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a>:~# ./mmproxy -a cloudflare-ip-ranges.txt -l 0.0.0.0:2222 -4 127.0.0.1:22 -6 [::1]:22[ ] Remember to set the reverse routing rules correctly:
 iptables -t mangle -I PREROUTING -m mark --mark 123 -m comment --comment mmproxy -j CONNMARK --save-mark        # [+] VERIFIED
 iptables -t mangle -I OUTPUT -m connmark --mark 123 -m comment --comment mmproxy -j CONNMARK --restore-mark     # [+] VERIFIED
 ip6tables -t mangle -I PREROUTING -m mark --mark 123 -m comment --comment mmproxy -j CONNMARK --save-mark       # [+] VERIFIED

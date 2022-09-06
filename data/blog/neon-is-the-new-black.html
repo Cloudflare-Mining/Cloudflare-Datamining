@@ -3,13 +3,13 @@
 	<p>As engineers at Cloudflare quickly adapt our software stack to run on ARM, a few parts of our software stack have not been performing as well on ARM processors as they currently do on our Xeon® Silver 4116 CPUs. For the most part this is a matter of Intel specific optimizations some of which utilize SIMD or other special instructions.</p>
 	<p>One such example is the venerable jpegtran, one of the workhorses behind our Polish image optimization service.</p>
 	<p>A while ago I <a href="https://blog.cloudflare.com/doubling-the-speed-of-jpegtran/">optimized</a> our version of jpegtran for Intel processors. So when I ran a comparison on my <a href="https://blog.cloudflare.com/content/images/2015/10/print_poster_0025.jpg">test image</a>, I was expecting that the Xeon would outperform ARM:</p>
-	<pre><code><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="92e4fef3f6d2eaf7fdfc">[email&nbsp;protected]</a>:~$ time  ./jpegtran -outfile /dev/null -progressive -optimise -copy none test.jpg
+	<pre><code><a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a>:~$ time  ./jpegtran -outfile /dev/null -progressive -optimise -copy none test.jpg
 
 real    0m2.305s
 user    0m2.059s
 sys     0m0.252s
 </code></pre>
-	<pre><code><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="dbadb7babf9bbaa9b6">[email&nbsp;protected]</a>:~$ time ./jpegtran -outfile /dev/null -progressive -optimise -copy none test.jpg
+	<pre><code><a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a>:~$ time ./jpegtran -outfile /dev/null -progressive -optimise -copy none test.jpg
 
 real    0m8.654s
 user    0m8.433s
@@ -135,7 +135,7 @@ r += skip;
 temp = absvalues[k];
 </code></pre>
 	<p>How fast are we now?</p>
-	<pre><code><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="ea9c868b8eaa8b9887">[email&nbsp;protected]</a>:~$ time ./jpegtran -outfile /dev/null -progressive -optimise -copy none test.jpg
+	<pre><code><a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a>:~$ time ./jpegtran -outfile /dev/null -progressive -optimise -copy none test.jpg
 
 real    0m4.008s
 user    0m3.770s
@@ -187,7 +187,7 @@ vst1q_s16(&amp;t1[k], x); // Store
 vst1q_s16(&amp;t2[k], n);
 </code></pre>
 	<p>And the moment of truth:</p>
-	<pre><code><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f0869c9194b091829d">[email&nbsp;protected]</a>:~$ time ./jpegtran -outfile /dev/null -progressive -optimise -copy none test.jpg
+	<pre><code><a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a>:~$ time ./jpegtran -outfile /dev/null -progressive -optimise -copy none test.jpg
 
 real    0m3.480s
 user    0m3.243s

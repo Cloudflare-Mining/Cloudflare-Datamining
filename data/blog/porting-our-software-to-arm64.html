@@ -30,7 +30,7 @@ aarch64
 FROM qemu-aarch64/master:latest as qemu
 
 # arm64v8/debian:stretch-slim at 2018-02-12T13:02:00Z
-FROM arm64v8/<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2e4a4b4c474f406e5d464f1c1b18">[email&nbsp;protected]</a>:841bbe6f4132526be95c91bec6757831c76e603309a47992e6444de6a0b6521a
+FROM arm64v8/<a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a>:841bbe6f4132526be95c91bec6757831c76e603309a47992e6444de6a0b6521a
 
 COPY --from=qemu /qemu-aarch64 /qemu-aarch64
 SHELL ["/qemu-aarch64", "/bin/sh", "-c"]

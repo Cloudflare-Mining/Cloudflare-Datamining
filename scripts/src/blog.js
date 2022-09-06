@@ -7,6 +7,7 @@ import {XMLParser} from 'fast-xml-parser';
 import puppeteer from 'puppeteer';
 import pLimit from 'p-limit';
 import fetch from 'node-fetch';
+import * as cheerio from 'cheerio';
 
 import {tryAndPush, userAgent} from './utils.js';
 
@@ -104,7 +105,7 @@ await fs.writeFile(path.resolve(dir, 'sitemap.json'), JSON.stringify([...blogURL
 console.log('Processing blog posts...', blogURLs.size);
 
 const promises = [];
-for(const url of blogURLs){
+for(const url of [...blogURLs].sort()){
 	promises.push(limit(async () => {
 		console.log('Fetching', url);
 		const parsedURL = new URL(url);
@@ -112,15 +113,29 @@ for(const url of blogURLs){
 		await fs.ensureDir(path.dirname(slug));
 
 		const data = await fetchURL(url, 'section.post-full-content', slug);
+		const dom = cheerio.load(data, null, false);
+		const emailProtectionLinks = dom('a[href^="/cdn-cgi/l/email-protection"]');
+		if(emailProtectionLinks){
+			emailProtectionLinks.each(function(i, rawEl){
+				const el = dom(rawEl);
+				el.attr('href', '#email-protected');
+			});
+		}
+		const cfEmail = dom('[data-cfemail]');
+		if(cfEmail){
+			cfEmail.each((i, spanEl) => {
+				dom(spanEl).attr('data-cfemail', 'email protected');
+			});
+		}
 		console.log('write', slug);
-		const beautified = jsBeautify.html_beautify(data, {
+		const beautified = jsBeautify.html_beautify(dom.html(), {
 			'indent_size': 4,
 			'indent_char': '\t',
 		});
 		await fs.writeFile(slug + '.html', beautified);
 	}));
 }
-await Promise.allSettled(promises);
+await Promise.all(promises);
 
 await browser.close();
 

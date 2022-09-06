@@ -19,7 +19,7 @@ workers.dev.    161  IN  A  198.41.214.162
 	<p>一旦数据包到达我们的数据中心，它就会被路由器处理。该路由器使用称为ECMP（等成本多路径）的路由策略将流量发送到负责处理该地址的一组服务器之一。ECMP指的是路由器在多条路由之间没有明确的“赢家”，而是有多个好的下一跳，都指向同一个最终目的地。在我们的例子中，我们稍微修改了这个概念，不使用ECMP来平衡多个中间链接，而是将中间链接地址作为流量的最终目的地：我们的服务器。</p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2020/01/image6.png" class="kg-image"></figure>
 	<p>以下是Juniper-品牌路由器的配置，该路由器可能位于我们的数据中心之一，并被配置为平衡三个目的地之间的流量：</p>
-	<pre><code class="language-ini"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b9cccadccbf9d1d6cacd">[email&nbsp;protected]</a># show routing-options
+	<pre><code class="language-ini"><a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a># show routing-options
 
 static {
   route 172.16.1.0/24 next-hop [ 172.16.2.1 172.16.2.2 172.16.2.3 ];

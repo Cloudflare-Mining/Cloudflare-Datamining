@@ -33,7 +33,7 @@ Hello, world!
 	<!--kg-card-end: markdown-->
 	<p>现在，我们针对 wasm32-wasi 目标编译这个程序，并在 <a href="https://wasmtime.dev/" target="_blank">Wasmtime</a> 等“现成”的 wasm 运行时中运行。</p>
 	<!--kg-card-begin: markdown-->
-	<pre><code class="language-bash">$ npx <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c2b5b0a3aca5aea7b082b5a3b1af">[email&nbsp;protected]</a> dev target/wasm32-wasi/release/hello_world.wasm
+	<pre><code class="language-bash">$ npx <a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a> dev target/wasm32-wasi/release/hello_world.wasm
 $ curl http://localhost:8787/
 
 Hello, world!
@@ -42,7 +42,7 @@ Hello, world!
 	<p>太棒了！相同的代码在多个 POSIX 环境中顺利编译并运行。</p>
 	<p>最后，来看看我们刚才为 Wasmtime 生成的二进制文件，但这次改用 Wrangler2 将其发布到 Workers。</p>
 	<!--kg-card-begin: markdown-->
-	<pre><code class="language-bash">$ npx <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="582f2a39363f343d2a182f392b35">[email&nbsp;protected]</a> dev target/wasm32-wasi/release/hello_world.wasm
+	<pre><code class="language-bash">$ npx <a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a> dev target/wasm32-wasi/release/hello_world.wasm
 $ curl http://localhost:8787/
 
 Hello, world!
@@ -53,14 +53,14 @@ Hello, world!
 	<p>细心的读者可能会注意到，我们在通过 cURL 发出的 HTTP 请求中做了一点手脚。在这个例子中，我们实际上是分别使用 HTTP 请求和响应主体来与 Worker 之间进行 stdin 和 stdout 流传输。利用这个模式，可以实现一些非常有意思的用例，具体来说，设计为在命令行中运行的程序可以作为“服务”部署到云中。</p>
 	<p>“Hexyl”就是一个完全开箱即用的例子。这里，我们对本地机器上的二进制文件执行“cat”命令，并通过“pipe”命令将输出输送到 curl，后者会通过 POST 命令将输出发布到我们的服务，并流传输回结果。按照我们用于编译“Hello World!”的步骤，我们可以编译 hexyl。</p>
 	<!--kg-card-begin: markdown-->
-	<pre><code class="language-bash">$ git clone <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e0878994a0878994889582ce838f8d">[email&nbsp;protected]</a>:sharkdp/hexyl.git
+	<pre><code class="language-bash">$ git clone <a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a>:sharkdp/hexyl.git
 $ cd ./hexyl
 $ cargo build --target wasm32-wasi --release
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>无需任何修改，我们就能利用一个现实的程序来创建立即就能运行或部署的用例。同样，我们让 wrangler2 预览 hexyl，但这次给它提供一些输入。</p>
 	<!--kg-card-begin: markdown-->
-	<pre><code class="language-bash">$ npx <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b6c1c4d7d8d1dad3c4f6c1d7c5db">[email&nbsp;protected]</a> dev target/wasm32-wasi/release/hexyl.wasm
+	<pre><code class="language-bash">$ npx <a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a> dev target/wasm32-wasi/release/hexyl.wasm
 $ echo "Hello, world\!" | curl -X POST --data-binary @- http://localhost:8787
 
 ┌────────┬─────────────────────────┬─────────────────────────┬────────┬────────┐

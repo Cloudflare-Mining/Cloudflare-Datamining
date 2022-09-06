@@ -17,11 +17,11 @@
       body: JSON.stringify({
         personalizations: [
           {
-            to: [{ email: '<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b2c6d7c1c6f2d7cad3dfc2ded79cd1dddf">[email&nbsp;protected]</a>', name: 'Test Recipient' }],
+            to: [{ email: '<a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a>', name: 'Test Recipient' }],
           },
         ],
         from: {
-          email: '<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="9eedfbf0fafbecdefbe6fff3eef2fbb0fdf1f3">[email&nbsp;protected]</a>',
+          email: '<a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a>',
           name: 'Workers - MailChannels integration',
         },
         subject: 'Look! No servers',
@@ -45,10 +45,10 @@
 export const onRequest = mailchannelsPlugin({
   personalizations: [
     {
-      to: [{ name: "ACME Support", email: "<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6d05080101022d08150c001d0108430e0200">[email&nbsp;protected]</a>" }],
+      to: [{ name: "ACME Support", email: "<a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a>" }],
     },
   ],
-  from: { name: "Enquiry", email: "<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="5c3233712e392c30251c39243d312c3039723f3331">[email&nbsp;protected]</a>" },
+  from: { name: "Enquiry", email: "<a href="#email-protected" class="__cf_email__" data-cfemail="email protected">[email&nbsp;protected]</a>" },
   respondWith: () =&gt;
     new Response(null, {
       status: 302,
