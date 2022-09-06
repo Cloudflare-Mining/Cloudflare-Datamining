@@ -1,0 +1,29 @@
+{
+	"name": "@example/basics",
+	"version": "0.0.1",
+	"private": true,
+	"scripts": {
+		"lint": "eslint .",
+		"lint:fix": "eslint . --fix",
+		"dev": "astro dev",
+		"start": "astro dev",
+		"build": "astro build",
+		"preview": "astro preview",
+		"astro": "astro"
+	},
+	"devDependencies": {
+		"astro": "1.1.6",
+		"@nodecraft/eslint-config": "19.0.0",
+		"@typescript-eslint/eslint-plugin": "5.36.2",
+		"@typescript-eslint/parser": "5.36.2",
+		"astro-eslint-parser": "0.6.0",
+		"eslint": "8.18.0",
+		"eslint-plugin-astro": "0.18.0",
+		"eslint-plugin-json": "3.1.0",
+		"eslint-plugin-node": "11.1.0",
+		"eslint-plugin-unicorn": "43.0.0",
+		"eslint-plugin-vue": "9.1.1",
+		"eslint-plugin-vuejs-accessibility": "1.2.0",
+		"typescript": "4.8.2"
+	}
+}
