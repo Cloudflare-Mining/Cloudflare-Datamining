@@ -1,0 +1,68 @@
+{
+	"componentChunkName": "component---src-components-case-studies-templates-case-study-template-tsx",
+	"path": "/case-studies/consumer-goods-leader/",
+	"result": {
+		"data": {
+			"caseStudy": {
+				"name": "Consumer Goods Leader",
+				"contentfulId": "2K6lXovxaJP2DHjDStOCJO",
+				"nameUrlSlug": "consumer-goods-leader",
+				"metaTags": {
+					"metaTitle": "Cloudflare Area 1 email security consumer goods leader",
+					"metaDescription": "Cloudflare Area 1 email security case study - multinational consumer goods leader protected against malicious emails and targeted threats",
+					"twitterCustomImage": null,
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/Cloudflare_default_OG_.png"
+						}
+					},
+					"facebookCustomImage": null
+				},
+				"orderDate": "2020-01-07",
+				"homepageUrl": "/",
+				"hideFromCaseStudiesPage": false,
+				"shortDescription": "Defeating a Fortune 500 company's cloud email threats",
+				"longDescription": "Throughout its successful, multi-decade long history, the confidential subject of this case study has always strived for advancing technology to address the needs of its consumers worldwide. \n\nIn a pivotal example of its commitment to innovation and growth, and to modernize its collaboration company-wide, the company successfully migrated to G Suite. In doing so, the company initially elected to rely on its existing information security infrastructure to keep the business safe from cyber threats. \n\nHowever, as technologies and industries evolve, the risk of cyberattacks that could lead to a data breach or system disruption also evolves - and increases. Particularly for an S&P 100 company that serves customers around the world, such attacks can inflict major operational downtime, brand harm, significant cost, and government investigations and fines. \n\n## Challenge\n\nThe information security team recognized that the most significant cyber risk is email-borne threats: it was time to prioritize a project to defend against these attacks. \n\nOf greatest concern were end users clicking on malicious links or falling for [business email compromise](learning/email-security/business-email-compromise-bec/) (BEC), with high potential for theft of funds and information. \n\nAlthough the company relied on industry-known email and web security technology to protect it from phishing attacks, the team found itself frequently \"tuning\" the security gateways and adding rules to block messages after attacks got through. Therefore, executives and end users worried their email was not secure. While the IT team can control software updates, they can't control which links end users click on or whether they fall for a BEC email. The team recognized the need for technology to better defend the company against malicious links and phishing attacks.\n\n## Solution\n\nThe company worked with Cloudflare Area 1 Security to bring the attacks to a halt. Area 1's innovative technology continuously and proactively crawls the web, discovering phishing campaigns and infrastructure before attacks launch. On average, the solution detects malicious sites and payloads a full 24 days before industry benchmarks. The resulting early insight and threat information empowers the Area 1 anti-phishing service to detect and block phish that other defenses miss, adding a layer of protection against attacks.  \n\nTo evaluate effectiveness, Area 1 was deployed with the company's Gmail instance. The Area 1 service is automated, operationally simple, and cloud-based, so it required no new on-site equipment. \n\nThe Area 1 service successfully detected and blocked substantial numbers of phishing emails, including credential harvesting and BEC attacks. In one incident, an email sent to the CFO that appeared to be from the CEO, requesting a transfer of funds, was detected and blocked before it reached the CFO's inbox, averting potential financial loss. \n\nIn addition to protecting against phishing email, Area 1 also includes a recursive DNS service that protects against web-based attacks. The company successfully deployed the Area 1 recursive DNS service with their Windows DNS server to block end-user access to phishing sites. The Area 1 service is updated hourly with newly discovered phishing domains to maximize protection.\n\nArea 1 is now operational company-wide, protecting this Fortune 500 leader against email and web-based phishing attacks. Over one year, the service processed 375 million email messages and stopped upwards of eight million targeted phishing attempts. The multitude of stopped attacks includes credential harvesting threats that spoof brands such as Outlook, Paypal, UPS, and Apple; links resolving to sites or files with malicious payloads; and email attachments with embedded malicious code or links. \n",
+				"cloudflareStreamVideoId": null,
+				"keyResults": "  - The IT team now provides specific metrics and reporting to the Board about the number of emails processed and malicious messages caught.\n\n  - Cloudflare Area 1's preemptive, comprehensive, targeted phishing protection has helped improve productivity, and significantly reduced cybersecurity risk.\n",
+				"relatedCaseStudies": null,
+				"inPartnershipWith": null,
+				"relatedCloudflareProducts": [
+					{
+						"title": "Area 1 Email Security",
+						"url": "https://www.cloudflare.com/products/zero-trust/email-security/"
+					}
+				],
+				"employeeHeadshot": null,
+				"employeeQuoteName": null,
+				"employeeQuoteText": null,
+				"employeeQuoteJobTitle": null,
+				"employeeQuoteName2": null,
+				"employeeQuoteText2": null,
+				"employeeQuoteJobTitle2": null,
+				"downloadPdfButtonLink": null,
+				"ref_streamVideoThumbnail": null,
+				"logo": {
+					"file": {
+						"publicURL": "[path]/BDES-3693_AnonymizedConsumer_ProductsCompany_graphiclockup-1.png"
+					}
+				},
+				"customCanonicalTag": null
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "2K6lXovxaJP2DHjDStOCJO",
+			"pathname": "/case-studies/consumer-goods-leader/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": [
+				"en-US"
+			]
+		}
+	}
+}
