@@ -4,7 +4,7 @@
 		"title": "Cloudflare Client API",
 		"description": "The Cloudflare Client API",
 		"version": "4.0.0",
-		"x-revision": "236-527aa1b"
+		"x-revision": "239-725b8e4"
 	},
 	"servers": [
 		{
@@ -37330,6 +37330,11 @@
 											"timeoutSeconds": 0
 										},
 										"type": "object"
+									},
+									"defaultCreator": {
+										"description": "Sets the creator ID asssociated with this live input.",
+										"type": "string",
+										"default": null
 									}
 								}
 							}
@@ -37575,6 +37580,11 @@
 											"timeoutSeconds": 0
 										},
 										"type": "object"
+									},
+									"defaultCreator": {
+										"description": "Sets the creator ID asssociated with this live input.",
+										"type": "string",
+										"default": null
 									}
 								}
 							}
