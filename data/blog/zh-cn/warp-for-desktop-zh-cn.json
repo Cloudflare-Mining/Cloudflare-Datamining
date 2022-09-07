@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Kyle Krum",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2020/10/KylePhoto.jpg",
-			"width": 2000,
-			"height": 2000
-		},
 		"url": "https://blog.cloudflare.com/author/kyle-krum/",
 		"sameAs": [
 			"https://www.linkedin.com/in/kylekrum/",
@@ -30,16 +11,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/warp-for-desktop-zh-cn/",
 	"datePublished": "2020-10-14T15:01:00.000Z",
 	"dateModified": "2021-01-27T02:51:42.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2020/12/BDES-1101_Gateway-Client-App-Blog_2@3x.png",
-		"width": 1200,
-		"height": 628
-	},
+	"image": "http://blog.cloudflare.com/content/images/2020/12/BDES-1101_Gateway-Client-App-Blog_2@3x.png",
 	"keywords": "简体中文 (CN), 产品新闻, 零信任 (CN), 零信任周 (CN), 1.1.1.1 (CN), Cloudflare Access (CN), Cloudflare Gateway (CN), 团队的Cloudflare, WARP (CN)",
-	"description": "Cloudflare 于十年前诞生，以确保 Web 资产免受攻击并加快访问者的体验为己任。Cloudflare 客户将他们拥有的互联网资产放到我们的网络上。访问者访问这些站点和应用程序能享受到更畅快的体验，但若访问 Cloudflare 网络外的互联网资产，速度并不是同样迅捷的。",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Cloudflare 于十年前诞生，以确保 Web 资产免受攻击并加快访问者的体验为己任。Cloudflare 客户将他们拥有的互联网资产放到我们的网络上。访问者访问这些站点和应用程序能享受到更畅快的体验，但若访问 Cloudflare 网络外的互联网资产，速度并不是同样迅捷的。"
 }

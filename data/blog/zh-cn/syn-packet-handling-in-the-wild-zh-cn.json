@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Marek Majkowski",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/b5967d6c687939594adb6992723d0529.jpeg",
 		"url": "https://blog.cloudflare.com/author/marek-majkowski/",
 		"sameAs": [
 			"https://twitter.com/majek04"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/syn-packet-handling-in-the-wild-zh-cn/",
 	"datePublished": "2018-01-15T13:49:00.000Z",
 	"dateModified": "2021-01-28T18:30:28.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2019/12/all-1-1.jpeg",
-		"width": 480,
-		"height": 265
-	},
+	"image": "https://blog.cloudflare.com/content/images/2019/12/all-1-1.jpeg",
 	"keywords": "简体中文 (CN), SYN (CN), TCP (CN)",
-	"description": "在Cloudflare，我们有很多在“野外”互联网上操作服务器的经验。但我们一直在提高我们对这种“妖术”的掌握。在这篇博客中，我们触及了互联网协议的多个黑暗角落：比如理解FIN-WAIT-2或接收缓冲区调优。",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "在Cloudflare，我们有很多在“野外”互联网上操作服务器的经验。但我们一直在提高我们对这种“妖术”的掌握。在这篇博客中，我们触及了互联网协议的多个黑暗角落：比如理解FIN-WAIT-2或接收缓冲区调优。"
 }

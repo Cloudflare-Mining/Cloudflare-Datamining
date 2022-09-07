@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Marek Majkowski",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/b5967d6c687939594adb6992723d0529.jpeg",
 		"url": "https://blog.cloudflare.com/author/marek-majkowski/",
 		"sameAs": [
 			"https://twitter.com/majek04"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/computing-euclidean-distance-on-144-dimensions/",
 	"datePublished": "2020-12-18T12:00:00.000Z",
 	"dateModified": "2020-12-18T18:52:04.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2020/12/image1-61.png",
-		"width": 1653,
-		"height": 853
-	},
+	"image": "http://blog.cloudflare.com/content/images/2020/12/image1-61.png",
 	"keywords": "Performance, Optimization, Speed",
-	"description": "Last year we deployed a CSAM image scanning tool. This is so cool! Image processing is always hard, and deploying a real image identification system at a Cloudflare scale is no small achievement! But we hit a problem - the matching algorithm was too slow for our needs.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Last year we deployed a CSAM image scanning tool. This is so cool! Image processing is always hard, and deploying a real image identification system at a Cloudflare scale is no small achievement! But we hit a problem - the matching algorithm was too slow for our needs."
 }

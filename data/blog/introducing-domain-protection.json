@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Eric Brown",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/09/ebrown.jpg",
-			"width": 2000,
-			"height": 1969
-		},
 		"url": "https://blog.cloudflare.com/author/eric/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/introducing-domain-protection/",
 	"datePublished": "2021-12-10T13:58:35.000Z",
 	"dateModified": "2021-12-30T00:08:06.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/12/image1-55.png",
-		"width": 1800,
-		"height": 1013
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/12/image1-55.png",
 	"keywords": "CIO Week, Registrar, Security",
-	"description": "Today we are announcing secure domain registrations bundled into enterprise contracts.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Today we are announcing secure domain registrations bundled into enterprise contracts."
 }

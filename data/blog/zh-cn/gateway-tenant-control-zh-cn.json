@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Alyssa Wang",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/08/IMG_2420-2.jpg",
-			"width": 2000,
-			"height": 1991
-		},
 		"url": "https://blog.cloudflare.com/author/alyssa/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/gateway-tenant-control-zh-cn/",
 	"datePublished": "2021-08-20T13:00:00.000Z",
 	"dateModified": "2021-12-16T23:36:11.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/12/teams-gateway-hero-illustration-3x-8-1-1.png",
-		"width": 1609,
-		"height": 844
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/12/teams-gateway-hero-illustration-3x-8-1-1.png",
 	"keywords": "Cloudflare Zero Trust (CN), Cloudflare Gateway (CN), 租户控制, 零信任之路 (CN)",
-	"description": "今天，我们很高兴地宣布 Cloudflare Gateway 中的租户控制，这是一项有助于保持工作正常进行的新功能。组织可以将 Cloudflare Gateway 部署到他们的公司设备并应用规则，确保员工只能登录到他们需要的工具的公司版本。现在，团队可以防止用户登录流行应用程序的错误实例。更重要的是，他们可以确保公司数据保留在公司帐户中。",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "今天，我们很高兴地宣布 Cloudflare Gateway 中的租户控制，这是一项有助于保持工作正常进行的新功能。组织可以将 Cloudflare Gateway 部署到他们的公司设备并应用规则，确保员工只能登录到他们需要的工具的公司版本。现在，团队可以防止用户登录流行应用程序的错误实例。更重要的是，他们可以确保公司数据保留在公司帐户中。"
 }

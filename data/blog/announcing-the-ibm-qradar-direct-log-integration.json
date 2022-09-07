@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Tanushree Sharma",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/09/IMG_1328-1.jpg",
-			"width": 1895,
-			"height": 1874
-		},
 		"url": "https://blog.cloudflare.com/author/tanushree/",
 		"sameAs": [
 			"https://twitter.com/TanushreeS5"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/announcing-the-ibm-qradar-direct-log-integration/",
 	"datePublished": "2022-03-14T12:59:13.000Z",
 	"dateModified": "2022-06-30T08:04:52.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/03/image2-13.png",
-		"width": 1800,
-		"height": 1013
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/03/image2-13.png",
 	"keywords": "Security Week, Logs, Analytics",
-	"description": "We’re excited to announce that Cloudflare customers are now able to push their logs directly to QRadar. This direct integration leads to cost savings and faster log delivery for Cloudflare and QRadar SIEM customers",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "We’re excited to announce that Cloudflare customers are now able to push their logs directly to QRadar. This direct integration leads to cost savings and faster log delivery for Cloudflare and QRadar SIEM customers"
 }

@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Teffen Ellis",
-		"image": {
-			"@type": "ImageObject",
-			"url": "//www.gravatar.com/avatar/6d0ec3130074d4036eb25c7e53d29939?s=250&d=mm&r=x",
-			"width": 250,
-			"height": 250
-		},
 		"url": "https://blog.cloudflare.com/author/teffen-ellis/",
 		"sameAs": [
 			"https://www.cloudflare.com/apps/"
@@ -31,9 +12,5 @@
 	"dateModified": "2018-08-29T02:17:18.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/08/installs-1.png",
 	"keywords": "Cloudflare Apps, Analytics, Developers",
-	"description": "Since launch, we’ve received hundreds of feature requests from developers and users alike. Feedback has been the source of some our most popular features. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Since launch, we’ve received hundreds of feature requests from developers and users alike. Feedback has been the source of some our most popular features. "
 }

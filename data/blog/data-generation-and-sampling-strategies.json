@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Vikram Grover",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/09/PicGrid_20220905_12063095.jpg",
-			"width": 2000,
-			"height": 1412
-		},
 		"url": "https://blog.cloudflare.com/author/vikram/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/data-generation-and-sampling-strategies/",
 	"datePublished": "2022-09-05T13:00:00.000Z",
 	"dateModified": "2022-09-05T13:02:28.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/09/image2-1.png",
-		"width": 1801,
-		"height": 1013
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/09/image2-1.png",
 	"keywords": "WAF, Machine Learning, AI, Edge Inference, Data Science",
-	"description": "Data Generation and Augmentation methods to train an effective machine learning WAF",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Data Generation and Augmentation methods to train an effective machine learning WAF"
 }

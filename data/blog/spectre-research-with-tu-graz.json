@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Kenton Varda",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/08/avatar-github.jpg",
-			"width": 460,
-			"height": 460
-		},
 		"url": "https://blog.cloudflare.com/author/kenton-varda/",
 		"sameAs": [
 			"https://twitter.com/kentonvarda"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/spectre-research-with-tu-graz/",
 	"datePublished": "2021-10-12T12:59:31.000Z",
 	"dateModified": "2021-10-12T16:56:27.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/10/Frozen-Spectre-1.png",
-		"width": 1800,
-		"height": 1012
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/10/Frozen-Spectre-1.png",
 	"keywords": "Research, Cloudflare Workers, Security",
-	"description": "Cloudflare worked with TU Graz to study the impact of Spectre on Cloudflare Workers and to develop new defenses against it. Today we&#x27;re publishing a paper about our research.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Cloudflare worked with TU Graz to study the impact of Spectre on Cloudflare Workers and to develop new defenses against it. Today we&#x27;re publishing a paper about our research."
 }

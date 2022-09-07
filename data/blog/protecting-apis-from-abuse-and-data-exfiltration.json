@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Daniele Molteni",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/10/meProfessional-1-flipped.jpg",
-			"width": 1732,
-			"height": 1732
-		},
 		"url": "https://blog.cloudflare.com/author/daniele/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/protecting-apis-from-abuse-and-data-exfiltration/",
 	"datePublished": "2021-03-24T13:00:00.000Z",
 	"dateModified": "2022-01-24T20:12:58.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/03/Announcing-Cloudflare-s-Data-Loss-Prevention-platform-OG-blog-body-3.png",
-		"width": 1513,
-		"height": 757
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/03/Announcing-Cloudflare-s-Data-Loss-Prevention-platform-OG-blog-body-3.png",
 	"keywords": "Security Week, API Shield, Firewall, Lists, DLP",
-	"description": "API Shield is growing with new functionalities: Schema Validation generally available, Managed IP List, more controls to manage certificates, and Data Loss Prevention.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "API Shield is growing with new functionalities: Schema Validation generally available, Managed IP List, more controls to manage certificates, and Data Loss Prevention."
 }

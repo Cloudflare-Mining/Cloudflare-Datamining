@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Louis Poinsignon",
-		"image": "http://blog.cloudflare.com/content/images/2017/09/AAEAAQAAAAAAAAYXAAAAJGE5YjM0YmVmLWJhMTItNDExZS1iNTcwLTdmNTg1YzZjMjBiNg.jpg",
 		"url": "https://blog.cloudflare.com/author/louis-poinsignon/",
 		"sameAs": [
 			"https://twitter.com/lpoinsig"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/de-de/is-bgp-safe-yet-rpki-routing-security-initiative-de-de/",
 	"datePublished": "2020-04-17T15:00:00.000Z",
 	"dateModified": "2021-01-22T18:36:41.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2020/12/image--2---1--1-1.png",
-		"width": 1510,
-		"height": 950
-	},
+	"image": "http://blog.cloudflare.com/content/images/2020/12/image--2---1--1-1.png",
 	"keywords": "Deutsch, BGP (DE), RPKI (DE), DNSSEC (DE), Sicherheit",
-	"description": "BGP-Lecks und BGP-Hijacking werden schon viel zu lange als unvermeidlicher Bestandteil des Internets hingenommen.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "BGP-Lecks und BGP-Hijacking werden schon viel zu lange als unvermeidlicher Bestandteil des Internets hingenommen."
 }

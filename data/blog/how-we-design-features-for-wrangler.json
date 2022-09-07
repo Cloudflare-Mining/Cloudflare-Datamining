@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Ashley M Lewis",
-		"image": "http://blog.cloudflare.com/content/images/2019/03/ashley.jpg",
 		"url": "https://blog.cloudflare.com/author/ashley/",
 		"sameAs": []
 	},
@@ -22,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/how-we-design-features-for-wrangler/",
 	"datePublished": "2019-09-17T15:55:00.000Z",
 	"dateModified": "2020-08-20T23:22:19.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2019/09/wrangler-header-Social.png",
-		"width": 2000,
-		"height": 1363
-	},
+	"image": "https://blog.cloudflare.com/content/images/2019/09/wrangler-header-Social.png",
 	"keywords": "Wrangler, Cloudflare Workers, Cloudflare Workers KV, Serverless, Product News",
-	"description": "The most recent update to Wrangler, version 1.3.1, introduces important new features for developers building Cloudflare Workers — from built-in deployment environments to first class support for Workers KV.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "The most recent update to Wrangler, version 1.3.1, introduces important new features for developers building Cloudflare Workers — from built-in deployment environments to first class support for Workers KV."
 }

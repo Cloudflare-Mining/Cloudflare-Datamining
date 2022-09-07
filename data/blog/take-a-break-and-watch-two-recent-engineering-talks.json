@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "John Graham-Cumming",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
 		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
 		"sameAs": [
 			"https://twitter.com/jgrahamc"
@@ -24,10 +10,7 @@
 	"url": "https://blog.cloudflare.com/take-a-break-and-watch-two-recent-engineering-talks/",
 	"datePublished": "2014-10-30T12:08:33.000Z",
 	"dateModified": "2018-08-23T16:38:31.000Z",
+	"image": null,
 	"keywords": "NGINX, Events, Speed & Reliability, Go",
-	"description": "Recently, I spoke at the dotGo 2014 conference in Paris and my colleague (and creator of OpenResty) Yichun Zhang spoke at the first NGINX conference in San Francisco.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Recently, I spoke at the dotGo 2014 conference in Paris and my colleague (and creator of OpenResty) Yichun Zhang spoke at the first NGINX conference in San Francisco."
 }

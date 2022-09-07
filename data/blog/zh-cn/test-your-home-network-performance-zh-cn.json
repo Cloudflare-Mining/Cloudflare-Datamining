@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Achiel van der Mandele",
-		"image": "http://blog.cloudflare.com/content/images/2019/04/avatar.png",
 		"url": "https://blog.cloudflare.com/author/achiel/",
 		"sameAs": []
 	},
@@ -22,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/test-your-home-network-performance-zh-cn/",
 	"datePublished": "2020-05-26T17:00:00.000Z",
 	"dateModified": "2021-01-28T20:06:31.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2020/12/image1_thumb.png",
-		"width": 1664,
-		"height": 1012
-	},
+	"image": "http://blog.cloudflare.com/content/images/2020/12/image1_thumb.png",
 	"keywords": "简体中文 (CN), Cloudflare Workers (CN), 速度和可靠性 (CN)",
-	"description": "许多人被迫居家办公，消费者 ISP 的负载随之变重。您可能会问自己：我的 ISP 在流量变大时表现如何？今天，我们向普通大众推出 speed.cloudflare.com，为您提供富有意义的见解来帮助您准确了解网络运行情况。",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "许多人被迫居家办公，消费者 ISP 的负载随之变重。您可能会问自己：我的 ISP 在流量变大时表现如何？今天，我们向普通大众推出 speed.cloudflare.com，为您提供富有意义的见解来帮助您准确了解网络运行情况。"
 }

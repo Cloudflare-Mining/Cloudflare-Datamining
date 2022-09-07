@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "David Tuber",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/07/kutiya-face.png",
-			"width": 983,
-			"height": 1049
-		},
 		"url": "https://blog.cloudflare.com/author/tubes/",
 		"sameAs": [
 			"https://twitter.com/tubes__"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/last-mile-insights/",
 	"datePublished": "2021-09-16T12:59:45.000Z",
 	"dateModified": "2021-09-18T14:35:53.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/09/Last-mile-1.png",
-		"width": 1801,
-		"height": 1013
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/09/Last-mile-1.png",
 	"keywords": "Speed Week, Speed & Reliability, Product News, Last Mile",
-	"description": "“The last 20% of the work requires 80% of the effort.” The Pareto Principle applies in many domains — nowhere more so on the Internet, however, than on the Last Mile.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "“The last 20% of the work requires 80% of the effort.” The Pareto Principle applies in many domains — nowhere more so on the Internet, however, than on the Last Mile."
 }

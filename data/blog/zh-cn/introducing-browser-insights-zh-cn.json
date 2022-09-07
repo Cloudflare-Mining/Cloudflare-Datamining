@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Jon Levine",
-		"image": "http://blog.cloudflare.com/content/images/2018/04/prof-crop.jpg",
 		"url": "https://blog.cloudflare.com/author/jpl/",
 		"sameAs": [
 			"https://twitter.com/jplevine"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/introducing-browser-insights-zh-cn/",
 	"datePublished": "2019-09-24T13:00:00.000Z",
 	"dateModified": "2021-01-28T19:19:00.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2020/01/insights-option-1-1.png",
-		"width": 1600,
-		"height": 980
-	},
+	"image": "https://blog.cloudflare.com/content/images/2020/01/insights-option-1-1.png",
 	"keywords": "简体中文 (CN), 生日周 (CN), 速度＆信頼性 (JP), 产品新闻, 浏览器见解",
-	"description": "速度至关重要。我们知道，当你的网站或应用程序变得更快时，用户会有更好的体验，你会获得更多的转化率和更多的收益。在Cloudflare，我们整天都在纠结于速度和构建新功能，以尽可能地提高性能。",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "速度至关重要。我们知道，当你的网站或应用程序变得更快时，用户会有更好的体验，你会获得更多的转化率和更多的收益。在Cloudflare，我们整天都在纠结于速度和构建新功能，以尽可能地提高性能。"
 }

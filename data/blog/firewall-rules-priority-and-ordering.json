@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Alex Cruz Farmer",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/12/_DSC4744--2-.jpg",
-			"width": 600,
-			"height": 600
-		},
 		"url": "https://blog.cloudflare.com/author/alex-cruz-farmer/",
 		"sameAs": [
 			"https://twitter.com/alexcf"
@@ -31,9 +12,5 @@
 	"dateModified": "2018-12-21T13:50:35.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/12/Firewall-rules-white-back@2x-1.png",
 	"keywords": "Firewall, Security",
-	"description": "Firewall Rules are one of the best security features we released this year, and have been an overwhelming success. Customers have been using Firewall Rules to solve interesting security related use cases.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Firewall Rules are one of the best security features we released this year, and have been an overwhelming success. Customers have been using Firewall Rules to solve interesting security related use cases."
 }

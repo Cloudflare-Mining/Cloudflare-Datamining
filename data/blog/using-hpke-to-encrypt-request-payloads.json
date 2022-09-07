@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Miguel de Moura",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/03/9093796.jpg",
-			"width": 600,
-			"height": 600
-		},
 		"url": "https://blog.cloudflare.com/author/miguel/",
 		"sameAs": [
 			"https://migueldemoura.com",
@@ -30,16 +11,7 @@
 	"url": "https://blog.cloudflare.com/using-hpke-to-encrypt-request-payloads/",
 	"datePublished": "2021-02-19T12:00:00.000Z",
 	"dateModified": "2021-08-03T10:09:50.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/02/Hybrid-WAF-keys-1.png",
-		"width": 1600,
-		"height": 800
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/02/Hybrid-WAF-keys-1.png",
 	"keywords": "WAF, WAF Rules, Security, Firewall, Crypto",
-	"description": "Allowing users to securely log parts of the request that match firewall rules while making it impossible for anyone else to decrypt.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Allowing users to securely log parts of the request that match firewall rules while making it impossible for anyone else to decrypt."
 }

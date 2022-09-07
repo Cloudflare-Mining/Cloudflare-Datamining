@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Erwin van der Koogh",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/04/twitter-profile-photo.jpeg",
-			"width": 400,
-			"height": 400
-		},
 		"url": "https://blog.cloudflare.com/author/erwin/",
 		"sameAs": [
 			"https://twitter.com/evanderkoogh"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/amp-optimizer-on-cloudflare-workers/",
 	"datePublished": "2021-04-14T13:01:00.000Z",
 	"dateModified": "2022-08-09T14:31:10.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/04/image3-5.png",
-		"width": 1582,
-		"height": 732
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/04/image3-5.png",
 	"keywords": "Developer Week, Developers, AMP, Cloudflare Workers, Workers Unbound, Performance",
-	"description": "Google’s new page experience measurements are going to be included in their search ranking in May 2021. Learn more about how to improve your page experience with AMP and Cloudflare Workers.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Google’s new page experience measurements are going to be included in their search ranking in May 2021. Learn more about how to improve your page experience with AMP and Cloudflare Workers."
 }

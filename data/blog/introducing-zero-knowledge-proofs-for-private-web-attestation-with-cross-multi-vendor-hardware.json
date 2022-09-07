@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Watson Ladd",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/10/0.jpg",
-			"width": 500,
-			"height": 500
-		},
 		"url": "https://blog.cloudflare.com/author/watson/",
 		"sameAs": [
 			"http://kc2kdm.com",
@@ -30,16 +11,7 @@
 	"url": "https://blog.cloudflare.com/introducing-zero-knowledge-proofs-for-private-web-attestation-with-cross-multi-vendor-hardware/",
 	"datePublished": "2021-08-12T13:00:06.000Z",
 	"dateModified": "2021-08-12T13:00:05.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/08/image5-5.png",
-		"width": 968,
-		"height": 517
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/08/image5-5.png",
 	"keywords": "Privacy, WebAuthn, HAC, zkp, Research",
-	"description": "In Cryptographic Attestation of Personhood the server sends a message to the browser that the hardware security signs, demonstrating its authenticity. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "In Cryptographic Attestation of Personhood the server sends a message to the browser that the hardware security signs, demonstrating its authenticity. "
 }

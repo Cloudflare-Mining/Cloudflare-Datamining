@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Jet Mariscal",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2020/12/jmzurich.jpg",
-			"width": 600,
-			"height": 600
-		},
 		"url": "https://blog.cloudflare.com/author/jet/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/automating-data-center-expansions-with-airflow/",
 	"datePublished": "2021-01-27T16:46:02.000Z",
 	"dateModified": "2021-08-03T10:07:01.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/01/Automating-data-center-expansions-with-Airflow-blog-home-preview.png",
-		"width": 1373,
-		"height": 849
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/01/Automating-data-center-expansions-with-Airflow-blog-home-preview.png",
 	"keywords": "Edge, Data Center",
-	"description": "How we automated data center expansions and cut by 90% the amount of time our team spent on tedious operational work.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "How we automated data center expansions and cut by 90% the amount of time our team spent on tedious operational work."
 }

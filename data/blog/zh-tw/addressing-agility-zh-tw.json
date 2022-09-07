@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Marwan Fayed",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/09/sta-profile.jpg",
-			"width": 600,
-			"height": 600
-		},
 		"url": "https://blog.cloudflare.com/author/marwan/",
 		"sameAs": [
 			"https://twitter.com/marwanfayed"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/zh-tw/addressing-agility-zh-tw/",
 	"datePublished": "2021-10-14T12:59:00.000Z",
 	"dateModified": "2022-04-21T16:18:06.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/04/image6-19-1.png",
-		"width": 1200,
-		"height": 628
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/04/image6-19-1.png",
 	"keywords": "研究 (TW)",
-	"description": "在這篇部落格貼文中，我們將解釋 IP 定址為什麼會是 Web 服務 (潛在原因) 的問題，然後描述我們稱為定址靈活度的創新解決方案，以及我們學到的經驗。最棒的部分是，可能是因為定址靈活度而得以運作的新系統和架構種類",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "在這篇部落格貼文中，我們將解釋 IP 定址為什麼會是 Web 服務 (潛在原因) 的問題，然後描述我們稱為定址靈活度的創新解決方案，以及我們學到的經驗。最棒的部分是，可能是因為定址靈活度而得以運作的新系統和架構種類"
 }

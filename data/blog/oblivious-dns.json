@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Tanya Verma",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2020/11/DSC00267-2.png",
-			"width": 2000,
-			"height": 1645
-		},
 		"url": "https://blog.cloudflare.com/author/tanya/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/oblivious-dns/",
 	"datePublished": "2020-12-08T12:00:00.000Z",
 	"dateModified": "2022-07-12T18:35:38.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2020/12/image2-3.png",
-		"width": 1999,
-		"height": 1068
-	},
+	"image": "http://blog.cloudflare.com/content/images/2020/12/image2-3.png",
 	"keywords": "Privacy Week, Research, DNS, DoH, Security",
-	"description": "Oblivious DoH (ODoH) makes secure DNS over HTTPS (DoH) queries into private queries which prevent the leakage of client IP addresses to resolvers. The new proposed ODoH standard addresses this problem and today we are enabling users to use this protocol with 1.1.1.1",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Oblivious DoH (ODoH) makes secure DNS over HTTPS (DoH) queries into private queries which prevent the leakage of client IP addresses to resolvers. The new proposed ODoH standard addresses this problem and today we are enabling users to use this protocol with 1.1.1.1"
 }

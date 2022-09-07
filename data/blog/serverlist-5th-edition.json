@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Connor Peshek",
-		"image": "http://blog.cloudflare.com/content/images/2017/11/icBKUT78_400x400.jpg",
 		"url": "https://blog.cloudflare.com/author/connor-peshek/",
 		"sameAs": [
 			"https://twitter.com/ConzorKingKong"
@@ -26,9 +12,5 @@
 	"dateModified": "2019-09-24T19:00:37.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2019/05/serverlist-header.png",
 	"keywords": "Cloudflare Workers, Cloudflare Workers KV, JavaScript, Developers, Events, The Serverlist Newsletter, Product News, Serverless",
-	"description": "Check out our 5th edition of The Serverlist below. Get the latest scoop on the serverless space, get your hands dirty with new developer tutorials, engage in conversations with other serverless developers, and find upcoming meetups and conferences to attend.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Check out our 5th edition of The Serverlist below. Get the latest scoop on the serverless space, get your hands dirty with new developer tutorials, engage in conversations with other serverless developers, and find upcoming meetups and conferences to attend."
 }

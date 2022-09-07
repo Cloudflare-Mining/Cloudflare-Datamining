@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Ingvar Stepanyan",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/rYPVgOqN.jpg",
 		"url": "https://blog.cloudflare.com/author/ingvar-stepanyan/",
 		"sameAs": []
 	},
@@ -22,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/es-es/writing-complex-macros-in-rust-reverse-polish-notation-es-es/",
 	"datePublished": "2018-01-31T12:11:00.000Z",
 	"dateModified": "2021-01-21T19:07:41.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2019/10/image-4-2.png",
-		"width": 640,
-		"height": 427
-	},
+	"image": "https://blog.cloudflare.com/content/images/2019/10/image-4-2.png",
 	"keywords": "Rust, Desarrolladores, Programación, Polaca, Español",
-	"description": "Entre otras características interesantes, Rust tiene un sólido sistema macro. Lamentablemente, incluso después de leer el libro y varios tutoriales, cuando trataba de implementar una macro, que implicaba el procesamiento de listas complejas",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Entre otras características interesantes, Rust tiene un sólido sistema macro. Lamentablemente, incluso después de leer el libro y varios tutoriales, cuando trataba de implementar una macro, que implicaba el procesamiento de listas complejas"
 }

@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Brian Parks",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2020/10/Copy-of-Brian-Parks-Headshot.jpg",
-			"width": 139,
-			"height": 140
-		},
 		"url": "https://blog.cloudflare.com/author/brian-parks/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/zero-trust-week-setting-up-cloudflare-one-as-a-small-business/",
 	"datePublished": "2020-10-15T17:00:00.000Z",
 	"dateModified": "2020-10-15T17:00:00.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2020/10/image9-5.png",
-		"width": 1999,
-		"height": 1224
-	},
+	"image": "http://blog.cloudflare.com/content/images/2020/10/image9-5.png",
 	"keywords": "Product News, Zero Trust Week, Cloudflare One",
-	"description": "As a small business network administrator, there are fundamentally three things you need to protect: devices, applications, and the network itself. Here&#x27;s how.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "As a small business network administrator, there are fundamentally three things you need to protect: devices, applications, and the network itself. Here&#x27;s how."
 }

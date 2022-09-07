@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Ólafur Guðmundsson",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/3a917b8.jpg",
 		"url": "https://blog.cloudflare.com/author/olafur-gudmundsson/",
 		"sameAs": []
 	},
@@ -24,9 +10,5 @@
 	"dateModified": "2020-08-20T23:41:26.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/02/photo-1502082553048-f009c37129b9.jpg",
 	"keywords": "DNS, DNSSEC, Reliability",
-	"description": "The root of the DNS tree has been using DNSSEC to protect the zone content since 2010. DNSSEC is simply a mechanism to provide cryptographic signatures alongside DNS records that can be validated, i.e. prove the answer is correct and has not been tampered with. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "The root of the DNS tree has been using DNSSEC to protect the zone content since 2010. DNSSEC is simply a mechanism to provide cryptographic signatures alongside DNS records that can be validated, i.e. prove the answer is correct and has not been tampered with. "
 }

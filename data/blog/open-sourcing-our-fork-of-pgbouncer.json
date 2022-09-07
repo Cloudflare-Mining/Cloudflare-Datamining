@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Justin Kwan",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/08/264556746_3031732377142979_127214207127407913_n--1-.jpeg",
-			"width": 600,
-			"height": 600
-		},
 		"url": "https://blog.cloudflare.com/author/justin-kwan/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/open-sourcing-our-fork-of-pgbouncer/",
 	"datePublished": "2022-08-26T14:30:37.000Z",
 	"dateModified": "2022-08-26T15:11:57.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/08/Magic-Nat-1.png",
-		"width": 1600,
-		"height": 890
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/08/Magic-Nat-1.png",
 	"keywords": "PgBouncer, PostgresSQL, Edge Database, Open Source",
-	"description": "We are releasing our internal fork of PgBouncer, filled with authentication bug fixes and new features around per user and connection pool isolation",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "We are releasing our internal fork of PgBouncer, filled with authentication bug fixes and new features around per user and connection pool isolation"
 }

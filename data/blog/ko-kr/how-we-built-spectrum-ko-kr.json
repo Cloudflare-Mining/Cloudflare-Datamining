@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Marek Majkowski",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/b5967d6c687939594adb6992723d0529.jpeg",
 		"url": "https://blog.cloudflare.com/author/marek-majkowski/",
 		"sameAs": [
 			"https://twitter.com/majek04"
@@ -26,9 +12,5 @@
 	"dateModified": "2021-01-21T20:58:18.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/04/13334109713_0b32435032_z-3.jpg",
 	"keywords": "한국어, 제품 뉴스, DDoS (KO), Spectrum (KO)",
-	"description": "오늘 우리는 Spectrum을 발표 하였습니다: 어떤 TCP 기반의 프로토콜이라도 DDoS 방어, 로드밸런싱 그리고 컨텐츠 가속을 할 수 있는 새로운 Cloudflare의 기능입니다.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "오늘 우리는 Spectrum을 발표 하였습니다: 어떤 TCP 기반의 프로토콜이라도 DDoS 방어, 로드밸런싱 그리고 컨텐츠 가속을 할 수 있는 새로운 Cloudflare의 기능입니다."
 }

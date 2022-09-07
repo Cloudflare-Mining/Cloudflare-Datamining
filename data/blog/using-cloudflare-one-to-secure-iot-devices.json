@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Molly Cinnamon",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/08/Screenshot-2021-08-10-at-6.56.05-PM.png",
-			"width": 1170,
-			"height": 892
-		},
 		"url": "https://blog.cloudflare.com/author/molly/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/using-cloudflare-one-to-secure-iot-devices/",
 	"datePublished": "2022-03-18T21:03:00.000Z",
 	"dateModified": "2022-06-13T16:02:29.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/03/Magic-IoT-1.png",
-		"width": 1600,
-		"height": 900
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/03/Magic-IoT-1.png",
 	"keywords": "Cloudflare One, Cloudflare Zero Trust, Zero Trust, Product News, IoT, Security",
-	"description": "We asked ourselves: can we use our own products to secure IoT devices themselves — even on the same network as production systems? Using Cloudflare One, the answer is yes.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "We asked ourselves: can we use our own products to secure IoT devices themselves — even on the same network as production systems? Using Cloudflare One, the answer is yes."
 }

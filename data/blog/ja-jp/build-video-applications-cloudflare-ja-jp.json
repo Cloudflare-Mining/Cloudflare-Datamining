@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Jonathan Kuperman",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/09/jon.jpeg",
-			"width": 400,
-			"height": 400
-		},
 		"url": "https://blog.cloudflare.com/author/jkup/",
 		"sameAs": [
 			"https://jonkuperman.com/",
@@ -30,16 +11,7 @@
 	"url": "https://blog.cloudflare.com/ja-jp/build-video-applications-cloudflare-ja-jp/",
 	"datePublished": "2021-11-19T13:59:00.000Z",
 	"dateModified": "2022-01-04T12:15:01.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/01/Build-your-next-video-application-on-Cloudflare-1.png",
-		"width": 1200,
-		"height": 675
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/01/Build-your-next-video-application-on-Cloudflare-1.png",
 	"keywords": "Full Stack Week (JP), Cloudflare Workers (JP), Cloudflare Pages (JP), Cloudflare Access (JP), Cloudflare Stream (JP), 日本語, 製品ニュース (JP)",
-	"description": "歴史的に、動画アプリケーションの構築は非常に難しいものでした。動画の録画、エンコード、そして再生の裏には多くの複雑な技術があります。幸いなことに、Cloudflare Streamではすべての難しい部分を取り除くことで、カスタム動画やストリーミングアプリケーションを簡単に構築できます",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "歴史的に、動画アプリケーションの構築は非常に難しいものでした。動画の録画、エンコード、そして再生の裏には多くの複雑な技術があります。幸いなことに、Cloudflare Streamではすべての難しい部分を取り除くことで、カスタム動画やストリーミングアプリケーションを簡単に構築できます"
 }

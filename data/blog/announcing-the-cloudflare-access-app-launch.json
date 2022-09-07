@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Sam Rhea",
-		"image": "http://blog.cloudflare.com/content/images/2018/07/photo-for-profile.jpg",
 		"url": "https://blog.cloudflare.com/author/sam/",
 		"sameAs": [
 			"https://twitter.com/LakeAustinBlvd"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/announcing-the-cloudflare-access-app-launch/",
 	"datePublished": "2020-01-16T16:13:02.000Z",
 	"dateModified": "2020-01-17T14:39:28.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2020/01/Screen-Shot-2020-01-15-at-11.46.25-AM.png",
-		"width": 2000,
-		"height": 1345
-	},
+	"image": "https://blog.cloudflare.com/content/images/2020/01/Screen-Shot-2020-01-15-at-11.46.25-AM.png",
 	"keywords": "Cloudflare Zero Trust, Cloudflare Access, VPN, Security, Product News",
-	"description": "Since launch, Cloudflare Access has helped improve how users connect to secured applications. When you protect an application with Access, users never have to connect to a private network and never have to deal with a clunky VPN client. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Since launch, Cloudflare Access has helped improve how users connect to secured applications. When you protect an application with Access, users never have to connect to a private network and never have to deal with a clunky VPN client. "
 }

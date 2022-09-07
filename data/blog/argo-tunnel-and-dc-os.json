@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Tom Brightbill",
-		"image": "http://blog.cloudflare.com/content/images/2019/03/tomb.jpg",
 		"url": "https://blog.cloudflare.com/author/tom-brightbill/",
 		"sameAs": []
 	},
@@ -24,9 +10,5 @@
 	"dateModified": "2021-06-02T17:26:03.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2019/01/multicloud-neautral@2x-1.png",
 	"keywords": "Data Center, Argo Smart Routing, Product News, Cloudflare Tunnel",
-	"description": "Cloudflare is proud to partner with Mesosphere on their new Argo Tunnel offering available within their DC/OS (Data Center / Operating System) catalogue! Before diving deeper into the offering itself, we’ll first do a quick overview of the Mesophere platform, DC/OS.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Cloudflare is proud to partner with Mesosphere on their new Argo Tunnel offering available within their DC/OS (Data Center / Operating System) catalogue! Before diving deeper into the offering itself, we’ll first do a quick overview of the Mesophere platform, DC/OS."
 }

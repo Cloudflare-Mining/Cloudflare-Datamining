@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Derek Chamorro",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2020/11/dc-01.png",
-			"width": 3001,
-			"height": 3000
-		},
 		"url": "https://blog.cloudflare.com/author/derek-chamorro/",
 		"sameAs": [
 			"https://randomsecurity.dev",
@@ -30,16 +11,7 @@
 	"url": "https://blog.cloudflare.com/anchoring-trust-a-hardware-secure-boot-story/",
 	"datePublished": "2020-11-17T12:00:00.000Z",
 	"dateModified": "2020-11-17T12:00:02.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2020/11/anchor2-2.png",
-		"width": 1600,
-		"height": 904
-	},
+	"image": "http://blog.cloudflare.com/content/images/2020/11/anchor2-2.png",
 	"keywords": "Security, Hardware, Encryption, Data Center, Cloudflare Network",
-	"description": "As a security company, we pride ourselves on finding innovative ways to protect our platform to, in turn, protect the data of our customers. Part of this approach is implementing progressive methods in protecting our hardware at scale.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "As a security company, we pride ourselves on finding innovative ways to protect our platform to, in turn, protect the data of our customers. Part of this approach is implementing progressive methods in protecting our hardware at scale."
 }

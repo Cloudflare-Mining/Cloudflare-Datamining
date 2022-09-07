@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Omer Yoachimik",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/Omer-1.png",
-			"width": 773,
-			"height": 653
-		},
 		"url": "https://blog.cloudflare.com/author/omer/",
 		"sameAs": [
 			"https://twitter.com/OmerYoahimik"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/cloudflare-blocks-an-almost-2-tbps-multi-vector-ddos-attack-zh-cn/",
 	"datePublished": "2021-11-13T14:33:00.000Z",
 	"dateModified": "2022-08-23T16:26:38.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/08/image2-2.jpeg",
-		"width": 1200,
-		"height": 627
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/08/image2-2.jpeg",
 	"keywords": "DDoS (CN), 攻击, Mirai (CN), 僵尸网络, DNS (CN), UDP (CN), 简体中文 (CN)",
-	"description": "本周初，Cloudflare 自动检测并缓解了一次峰值接近 2 Tbps 的 DDoS 攻击，这是我们迄今为止看到的最大攻击",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "本周初，Cloudflare 自动检测并缓解了一次峰值接近 2 Tbps 的 DDoS 攻击，这是我们迄今为止看到的最大攻击"
 }

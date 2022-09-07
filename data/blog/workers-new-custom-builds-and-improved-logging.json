@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Ashcon Partovi",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/04/117158947_4858836477475662_2532132460047140852_o.jpeg",
-			"width": 280,
-			"height": 280
-		},
 		"url": "https://blog.cloudflare.com/author/ashcon/",
 		"sameAs": [
 			"https://twitter.com/ashconpartovi"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/workers-new-custom-builds-and-improved-logging/",
 	"datePublished": "2021-04-16T13:00:00.000Z",
 	"dateModified": "2022-07-19T21:54:46.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/04/Developer-Experience-1.png",
-		"width": 1600,
-		"height": 791
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/04/Developer-Experience-1.png",
 	"keywords": "Developer Week, Developers, Cloudflare Workers, Wrangler, Logging, Webpack, Product News, workers.new",
-	"description": "In the spirit of quickly solving problems, we’re excited to launch three new improvements to the Workers experience, so you can take your next idea and ship it even faster.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "In the spirit of quickly solving problems, we’re excited to launch three new improvements to the Workers experience, so you can take your next idea and ship it even faster."
 }

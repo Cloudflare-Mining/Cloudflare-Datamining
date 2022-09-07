@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Peter Belesis",
-		"image": "http://blog.cloudflare.com/content/images/2018/06/EjYeARURLAZJx59NtgSo_1204a20b3d1d96bba523a6a2a5fa3cd73bd4fe59240a27ad6eb8c064c6792446.jpg",
 		"url": "https://blog.cloudflare.com/author/peter-belesis/",
 		"sameAs": []
 	},
@@ -24,9 +10,5 @@
 	"dateModified": "2018-12-13T22:59:59.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/07/rocket-loader@4x-3.png",
 	"keywords": "Rocket Loader, Product News, Speed & Reliability, Optimization",
-	"description": "Rocket Loader is in the news again. One of Cloudflare&#x27;s earliest web performance products has been re-engineered for contemporary browsers and Web standards.\n\nIt controls the load and execution of your JavaScript, ensuring useful, meaningful page content is unblocked and displayed sooner.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Rocket Loader is in the news again. One of Cloudflare&#x27;s earliest web performance products has been re-engineered for contemporary browsers and Web standards.\n\nIt controls the load and execution of your JavaScript, ensuring useful, meaningful page content is unblocked and displayed sooner."
 }

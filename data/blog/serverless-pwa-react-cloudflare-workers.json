@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Sevki Hasirci",
-		"image": "http://blog.cloudflare.com/content/images/2018/07/download.jpg",
 		"url": "https://blog.cloudflare.com/author/sevki/",
 		"sameAs": []
 	},
@@ -22,10 +8,7 @@
 	"url": "https://blog.cloudflare.com/serverless-pwa-react-cloudflare-workers/",
 	"datePublished": "2018-11-23T13:29:35.000Z",
 	"dateModified": "2018-11-26T20:38:41.000Z",
+	"image": null,
 	"keywords": "Serverless, Cloudflare Workers, Programming, JavaScript",
-	"description": "The story of how I learned that you can build Progressive Web Apps on the Cloudflare’s Edge.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "The story of how I learned that you can build Progressive Web Apps on the Cloudflare’s Edge."
 }

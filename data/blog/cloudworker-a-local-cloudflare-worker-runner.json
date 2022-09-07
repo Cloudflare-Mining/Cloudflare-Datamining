@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Guest Author",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/10/Screen-Shot-2019-10-09-at-11.21.59-AM.png",
-			"width": 362,
-			"height": 364
-		},
 		"url": "https://blog.cloudflare.com/author/guest-author/",
 		"sameAs": []
 	},
@@ -29,9 +10,5 @@
 	"dateModified": "2019-01-10T19:38:08.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/12/local-worker@2x.png",
 	"keywords": "Cloudflare Workers, Serverless, Programming, JavaScript",
-	"description": "At Dollar Shave Club, we continuously look for ways to improve how we build and ship code. Improving the time it takes for engineers to ship code is key. Providing engineers with a development environment that closely mirrors production really helps.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "At Dollar Shave Club, we continuously look for ways to improve how we build and ship code. Improving the time it takes for engineers to ship code is key. Providing engineers with a development environment that closely mirrors production really helps."
 }

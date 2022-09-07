@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Dani Grant",
-		"image": "http://blog.cloudflare.com/content/images/2018/08/efVJR3rj_400x400.jpg",
 		"url": "https://blog.cloudflare.com/author/dani/",
 		"sameAs": [
 			"https://twitter.com/thedanigrant"
@@ -26,9 +12,5 @@
 	"dateModified": "2018-08-29T01:25:51.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/08/ipv4-ipv6-translation-gateway-1.png",
 	"keywords": "IPv4, IPv6, OpenDNS, DNS, Reliability",
-	"description": "At Cloudflare we believe in being good to the Internet and good to our customers. By moving on from the legacy world of IPv4-only to the modern-day world where IPv4 and IPv6 are treated equally, we believe we are doing exactly that.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "At Cloudflare we believe in being good to the Internet and good to our customers. By moving on from the legacy world of IPv4-only to the modern-day world where IPv4 and IPv6 are treated equally, we believe we are doing exactly that."
 }

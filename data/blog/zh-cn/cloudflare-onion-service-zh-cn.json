@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Mahrud Sayrafi",
-		"image": "http://blog.cloudflare.com/content/images/2018/05/7Ivdj5-6.jpg",
 		"url": "https://blog.cloudflare.com/author/mahrud/",
 		"sameAs": []
 	},
@@ -22,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/cloudflare-onion-service-zh-cn/",
 	"datePublished": "2018-09-20T12:00:00.000Z",
 	"dateModified": "2021-01-28T18:37:12.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2019/08/unnamed-2.png",
-		"width": 1049,
-		"height": 553
-	},
+	"image": "https://blog.cloudflare.com/content/images/2019/08/unnamed-2.png",
 	"keywords": "简体中文 (CN), 加密周, 密码学, 隐私 (CN), 安全, 隐私通行证 (CN), 证书透明度监控 (CN)",
-	"description": "两年前的这个星期，Cloudflare引入了机会性加密技术，该功能为那些还没有转变为HTTPS的网站提供了额外的安全和性能优势。事实上，在过去，一些网站只使用HTTP ---是不是很奇怪？这里的“机会性”意味着服务器通过HTTP Alternative Service请求头宣告了对HTTP / 2的支持，希望任何识别该协议的浏览器都可以在后续的域请求中利用这些优势。",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "两年前的这个星期，Cloudflare引入了机会性加密技术，该功能为那些还没有转变为HTTPS的网站提供了额外的安全和性能优势。事实上，在过去，一些网站只使用HTTP ---是不是很奇怪？这里的“机会性”意味着服务器通过HTTP Alternative Service请求头宣告了对HTTP / 2的支持，希望任何识别该协议的浏览器都可以在后续的域请求中利用这些优势。"
 }

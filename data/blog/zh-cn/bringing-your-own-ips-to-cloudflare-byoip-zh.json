@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Tom Brightbill",
-		"image": "http://blog.cloudflare.com/content/images/2019/03/tomb.jpg",
 		"url": "https://blog.cloudflare.com/author/tom-brightbill/",
 		"sameAs": []
 	},
@@ -22,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/bringing-your-own-ips-to-cloudflare-byoip-zh/",
 	"datePublished": "2020-07-30T15:00:00.000Z",
 	"dateModified": "2021-09-03T21:35:20.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2020/11/Screen-Shot-2020-07-29-at-3.18.59-PM-1.png",
-		"width": 1502,
-		"height": 808
-	},
+	"image": "http://blog.cloudflare.com/content/images/2020/11/Screen-Shot-2020-07-29-at-3.18.59-PM-1.png",
 	"keywords": "简体中文 (CN), DNS (CN), Magic Transit (CN), 产品新闻, Cloudflare Spectrum (CN)",
-	"description": "今天，我们很高兴宣布，我们的所有第 7 层产品以及 Spectrum 和 Magic Transit 服务中将全面可用自带IP（BYOIP）。配置 BYOIP 后，Cloudflare 边缘将公告客户自己的 IP 前缀，并且这些前缀可用于我们的第 7 层服务、Spectrum 或 Magic Transit。",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "今天，我们很高兴宣布，我们的所有第 7 层产品以及 Spectrum 和 Magic Transit 服务中将全面可用自带IP（BYOIP）。配置 BYOIP 后，Cloudflare 边缘将公告客户自己的 IP 前缀，并且这些前缀可用于我们的第 7 层服务、Spectrum 或 Magic Transit。"
 }

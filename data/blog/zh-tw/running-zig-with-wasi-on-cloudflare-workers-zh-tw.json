@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Daniel Harper",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/08/me21.jpg",
-			"width": 346,
-			"height": 259
-		},
 		"url": "https://blog.cloudflare.com/author/daniel-harper/",
 		"sameAs": [
 			"https://djharper.dev"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/zh-tw/running-zig-with-wasi-on-cloudflare-workers-zh-tw/",
 	"datePublished": "2022-08-01T14:12:00.000Z",
 	"dateModified": "2022-08-15T10:50:00.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/08/image1-4-1.png",
-		"width": 1801,
-		"height": 1013
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/08/image1-4-1.png",
 	"keywords": "Cloudflare Workers (TW), WebAssembly (TW), WASM (TW), WASI (TW), Zig (TW), 繁體中文 (TW)",
-	"description": "在最近關於 Workers 中的 WASI 支援的公告發佈之後，我决定看看用 Zig 編寫程式碼並作為 Worker 執行需要採取哪些步驟，結果發現這件事情特別簡單。這篇貼文記錄了我作為 Zig 的新使用者所採用的過程",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "在最近關於 Workers 中的 WASI 支援的公告發佈之後，我决定看看用 Zig 編寫程式碼並作為 Worker 執行需要採取哪些步驟，結果發現這件事情特別簡單。這篇貼文記錄了我作為 Zig 的新使用者所採用的過程"
 }

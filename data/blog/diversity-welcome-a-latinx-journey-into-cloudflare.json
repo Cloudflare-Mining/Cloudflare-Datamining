@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Pablo Viera",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/07/0--2-.jpeg",
-			"width": 1536,
-			"height": 2048
-		},
 		"url": "https://blog.cloudflare.com/author/pablo-viera/",
 		"sameAs": [
 			"https://www.pabloviera.com"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/diversity-welcome-a-latinx-journey-into-cloudflare/",
 	"datePublished": "2020-07-24T11:00:00.000Z",
 	"dateModified": "2021-05-05T17:25:44.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2020/07/image1-1.jpg",
-		"width": 1999,
-		"height": 1335
-	},
+	"image": "https://blog.cloudflare.com/content/images/2020/07/image1-1.jpg",
 	"keywords": "Life @ Cloudflare, Diversity, Careers, Employee Resource Groups",
-	"description": "Cloudflare values diversity in our workforce and we are genuinely interested in recruiting as well as retaining under-represented groups and creating a collective learning environment for everyone.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Cloudflare values diversity in our workforce and we are genuinely interested in recruiting as well as retaining under-represented groups and creating a collective learning environment for everyone."
 }

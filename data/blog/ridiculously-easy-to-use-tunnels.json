@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Abe Carryl",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2020/10/3A8B82DA-79A1-44EB-873A-B56773A4F764.jpeg",
-			"width": 900,
-			"height": 900
-		},
 		"url": "https://blog.cloudflare.com/author/abe/",
 		"sameAs": [
 			"https://twitter.com/mrlincolnlogs"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/ridiculously-easy-to-use-tunnels/",
 	"datePublished": "2022-03-25T12:58:59.000Z",
 	"dateModified": "2022-04-26T20:46:45.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/03/image1-105.png",
-		"width": 1200,
-		"height": 675
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/03/image1-105.png",
 	"keywords": "Cloudflare Tunnel, Zero Trust, Private Network, Product News, Cloudflare Zero Trust",
-	"description": "Today, we’re thrilled to announce that we have launched a new solution to remotely create, deploy, and manage Tunnels and their configuration directly from the Zero Trust dashboard. This new solution allows our customers to provide their workforce with Zero Trust network access in 15 minutes or less",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Today, we’re thrilled to announce that we have launched a new solution to remotely create, deploy, and manage Tunnels and their configuration directly from the Zero Trust dashboard. This new solution allows our customers to provide their workforce with Zero Trust network access in 15 minutes or less"
 }

@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Marek Majkowski",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/b5967d6c687939594adb6992723d0529.jpeg",
 		"url": "https://blog.cloudflare.com/author/marek-majkowski/",
 		"sameAs": [
 			"https://twitter.com/majek04"
@@ -26,9 +12,5 @@
 	"dateModified": "2018-08-27T18:46:25.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/08/a-net.png",
 	"keywords": "Programming, DNS, Reliability, Linux",
-	"description": "Back in November we wrote a blog post about one latency spike. Today I&#x27;d like to share a continuation of that story. As it turns out, the misconfigured rmem setting wasn&#x27;t the only source of added latency. It looked like Mr Wolf hadn&#x27;t finished his job.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Back in November we wrote a blog post about one latency spike. Today I&#x27;d like to share a continuation of that story. As it turns out, the misconfigured rmem setting wasn&#x27;t the only source of added latency. It looked like Mr Wolf hadn&#x27;t finished his job."
 }

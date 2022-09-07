@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Sam Rhea",
-		"image": "http://blog.cloudflare.com/content/images/2018/07/photo-for-profile.jpg",
 		"url": "https://blog.cloudflare.com/author/sam/",
 		"sameAs": [
 			"https://twitter.com/LakeAustinBlvd"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/cloudflare-for-teams-products-zh-cn/",
 	"datePublished": "2020-01-07T14:00:00.000Z",
 	"dateModified": "2021-01-28T19:32:25.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2020/02/Screen-Shot-2020-01-07-at-1.53.14-PM.png",
-		"width": 472,
-		"height": 230
-	},
+	"image": "https://blog.cloudflare.com/content/images/2020/02/Screen-Shot-2020-01-07-at-1.53.14-PM.png",
 	"keywords": "产品新闻, Cloudflare Access (CN), 团队的Cloudflare, 简体中文 (CN)",
-	"description": "随着时间的流逝，我们使用互联网的体验不断提高。它变得更快，更安全，更可靠。然而，当你工作的时候，你可能不得不使用一个不同的，更糟糕的网络。虽然互联网变得越来越好，但企业和员工却被自己的专用网络困住了。",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "随着时间的流逝，我们使用互联网的体验不断提高。它变得更快，更安全，更可靠。然而，当你工作的时候，你可能不得不使用一个不同的，更糟糕的网络。虽然互联网变得越来越好，但企业和员工却被自己的专用网络困住了。"
 }

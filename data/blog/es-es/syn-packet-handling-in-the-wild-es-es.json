@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Marek Majkowski",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/b5967d6c687939594adb6992723d0529.jpeg",
 		"url": "https://blog.cloudflare.com/author/marek-majkowski/",
 		"sameAs": [
 			"https://twitter.com/majek04"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/es-es/syn-packet-handling-in-the-wild-es-es/",
 	"datePublished": "2018-01-15T13:49:00.000Z",
 	"dateModified": "2021-01-21T19:17:03.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2019/10/image3-1.jpg",
-		"width": 480,
-		"height": 267
-	},
+	"image": "https://blog.cloudflare.com/content/images/2019/10/image3-1.jpg",
 	"keywords": "Español",
-	"description": "En Cloudflare, tenemos mucha experiencia en la operación de servidores en la internet de libre circulación. Sin embargo, siempre tratamos de optimizar nuestro dominio de este arte negro.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "En Cloudflare, tenemos mucha experiencia en la operación de servidores en la internet de libre circulación. Sin embargo, siempre tratamos de optimizar nuestro dominio de este arte negro."
 }

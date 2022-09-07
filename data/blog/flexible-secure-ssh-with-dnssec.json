@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Etienne Labaume",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/fVRXLqJL.jpg",
 		"url": "https://blog.cloudflare.com/author/etienne-labaume/",
 		"sameAs": []
 	},
@@ -24,9 +10,5 @@
 	"dateModified": "2018-08-24T23:46:50.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2016/01/3923470620_d64bde94dd_z_d.jpg",
 	"keywords": "DNSSEC, DNS, Reliability",
-	"description": "If you read this blog on a regular basis, you probably use the little tool called SSH, especially its ubiquitous and most popular implementation OpenSSH.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "If you read this blog on a regular basis, you probably use the little tool called SSH, especially its ubiquitous and most popular implementation OpenSSH."
 }

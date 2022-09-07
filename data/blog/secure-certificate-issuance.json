@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Dina Kozlov",
-		"image": "http://blog.cloudflare.com/content/images/2019/06/headshot.jpg",
 		"url": "https://blog.cloudflare.com/author/dina/",
 		"sameAs": [
 			"https://twitter.com/dinasaur_404"
@@ -26,9 +12,5 @@
 	"dateModified": "2019-12-06T17:07:20.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2019/06/Screen-Shot-2019-06-17-at-8.46.28-AM-1.png",
 	"keywords": "Crypto Week, Crypto, Cryptography, DNS, BGP, TLS, CFSSL, HTTPS, Security, Speed & Reliability",
-	"description": "Trust on the Internet is underpinned by the Public Key Infrastructure (PKI). PKI grants servers the ability to securely serve websites by issuing digital certificates, providing the foundation for encrypted and authentic communication. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Trust on the Internet is underpinned by the Public Key Infrastructure (PKI). PKI grants servers the ability to securely serve websites by issuing digital certificates, providing the foundation for encrypted and authentic communication. "
 }

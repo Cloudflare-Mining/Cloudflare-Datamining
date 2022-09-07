@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Kyle Krum",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2020/10/KylePhoto.jpg",
-			"width": 2000,
-			"height": 2000
-		},
 		"url": "https://blog.cloudflare.com/author/kyle-krum/",
 		"sameAs": [
 			"https://www.linkedin.com/in/kylekrum/",
@@ -30,16 +11,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/announcing-warp-for-linux-and-proxy-mode-zh-cn/",
 	"datePublished": "2021-06-17T13:00:00.000Z",
 	"dateModified": "2021-09-08T18:18:25.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/09/image4-5.png",
-		"width": 1668,
-		"height": 834
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/09/image4-5.png",
 	"keywords": "WARP (CN), Cloudflare Zero Trust (CN), 1.1.1.1 (CN), 产品新闻, Cloudflare 网关 (CN)",
-	"description": "去年 10 月，我们发布了桌面版 WARP，为数十亿台设备免费提供更安全、更快捷的互联网使用方式。同时，我们让企业客户能够将 WARP 与 Cloudflare for Teams 相结合使用。",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "去年 10 月，我们发布了桌面版 WARP，为数十亿台设备免费提供更安全、更快捷的互联网使用方式。同时，我们让企业客户能够将 WARP 与 Cloudflare for Teams 相结合使用。"
 }

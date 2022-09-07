@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Ivan Babrou",
-		"image": {
-			"@type": "ImageObject",
-			"url": "//www.gravatar.com/avatar/e2ee800c1f69d88acdfea37994b87276?s=250&d=mm&r=x",
-			"width": 250,
-			"height": 250
-		},
 		"url": "https://blog.cloudflare.com/author/ivan/",
 		"sameAs": []
 	},
@@ -29,9 +10,5 @@
 	"dateModified": "2018-08-28T20:53:28.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/08/grains.jpg",
 	"keywords": "Salt, GitHub, API, DNS, Reliability",
-	"description": "We use Salt to manage our ever growing global fleet of machines. Salt is great for managing configurations and being the source of truth. We use it for remote command execution and for network automation tasks.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "We use Salt to manage our ever growing global fleet of machines. Salt is great for managing configurations and being the source of truth. We use it for remote command execution and for network automation tasks."
 }

@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Kristian Freeman",
-		"image": "http://blog.cloudflare.com/content/images/2019/05/2fGb07-c_400x400.jpg",
 		"url": "https://blog.cloudflare.com/author/kristian/",
 		"sameAs": [
 			"https://www.signalnerve.com",
@@ -25,16 +11,7 @@
 	"url": "https://blog.cloudflare.com/lessons-from-the-2020-intern-assignment/",
 	"datePublished": "2020-06-23T11:00:00.000Z",
 	"dateModified": "2020-06-23T11:00:00.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2020/06/OG.png",
-		"width": 1200,
-		"height": 701
-	},
+	"image": "https://blog.cloudflare.com/content/images/2020/06/OG.png",
 	"keywords": "Cloudflare Workers, Students, Careers, Internship Experience",
-	"description": "In this blog post, I want to explain the details of the full-stack take home exercise that we sent out to our 2020 internship applicants.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "In this blog post, I want to explain the details of the full-stack take home exercise that we sent out to our 2020 internship applicants."
 }

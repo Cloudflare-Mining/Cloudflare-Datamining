@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Rita Kozlov",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/05/Rita-Kozlov.jpeg",
-			"width": 200,
-			"height": 200
-		},
 		"url": "https://blog.cloudflare.com/author/rita/",
 		"sameAs": [
 			"https://twitter.com/ritakozlov_"
@@ -31,9 +12,5 @@
 	"dateModified": "2020-10-12T23:06:12.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/06/workers_slack_bot2.jpg",
 	"keywords": "Cloudflare Workers, Serverless, JavaScript",
-	"description": "Our Workers platform can be used for a ton of useful purposes: for A/B testing, storage bucket authentication, coalescing responses from multiple APIs, and more. But Workers can also be put to use beyond &quot;HTTP middleware&quot;: a Worker can effectively be a web application in its own right.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Our Workers platform can be used for a ton of useful purposes: for A/B testing, storage bucket authentication, coalescing responses from multiple APIs, and more. But Workers can also be put to use beyond &quot;HTTP middleware&quot;: a Worker can effectively be a web application in its own right."
 }

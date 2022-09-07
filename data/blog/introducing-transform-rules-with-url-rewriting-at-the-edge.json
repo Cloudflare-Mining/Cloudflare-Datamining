@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Sam Marsh",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/12/1637323544042.jpeg",
-			"width": 400,
-			"height": 400
-		},
 		"url": "https://blog.cloudflare.com/author/sam-marsh/",
 		"sameAs": [
 			"https://twitter.com/marshnet_social"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/introducing-transform-rules-with-url-rewriting-at-the-edge/",
 	"datePublished": "2021-04-08T09:33:00.000Z",
 	"dateModified": "2021-04-08T21:16:15.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/04/image6-1.png",
-		"width": 1842,
-		"height": 890
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/04/image6-1.png",
 	"keywords": "Transform Rules, Product News, Security",
-	"description": "Today we are announcing the immediate availability of Transform Rules for all Cloudflare plans. Transform Rules provide Cloudflare administrators with the ability to create URL rewrite rules. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Today we are announcing the immediate availability of Transform Rules for all Cloudflare plans. Transform Rules provide Cloudflare administrators with the ability to create URL rewrite rules. "
 }

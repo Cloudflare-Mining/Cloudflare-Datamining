@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Sam Rhea",
-		"image": "http://blog.cloudflare.com/content/images/2018/07/photo-for-profile.jpg",
 		"url": "https://blog.cloudflare.com/author/sam/",
 		"sameAs": [
 			"https://twitter.com/LakeAustinBlvd"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/one-more-zero-trust-thing-cloudflare-intrusion-detection/",
 	"datePublished": "2020-10-17T13:00:00.000Z",
 	"dateModified": "2020-12-09T20:57:51.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2020/10/Group-711-2.png",
-		"width": 1600,
-		"height": 914
-	},
+	"image": "http://blog.cloudflare.com/content/images/2020/10/Group-711-2.png",
 	"keywords": "Zero Trust, Zero Trust Week, Security, Intrusion Detection",
-	"description": "We’re very excited to announce our plans for Cloudflare Intrusion Detection System, a new product that monitors your network and alerts when an attack is suspected. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "We’re very excited to announce our plans for Cloudflare Intrusion Detection System, a new product that monitors your network and alerts when an attack is suspected. "
 }

@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Omer Yoachimik",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/Omer-1.png",
-			"width": 773,
-			"height": 653
-		},
 		"url": "https://blog.cloudflare.com/author/omer/",
 		"sameAs": [
 			"https://twitter.com/OmerYoahimik"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/ddos-attack-trends-for-2022-q1/",
 	"datePublished": "2022-04-12T13:12:59.000Z",
 	"dateModified": "2022-04-26T20:44:32.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/04/DDoS-Report-Q1-2022-header.png",
-		"width": 1600,
-		"height": 900
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/04/DDoS-Report-Q1-2022-header.png",
 	"keywords": "DDoS, DDoS Reports, Attacks, Trends, Cloudflare Radar, Ransom DDoS, Ukraine, Russia, Mitel, Speed & Reliability",
-	"description": "Welcome to our first DDoS report of 2022, and the ninth in total so far. This report includes new data points and insights both in the application-layer and network-layer sections — as observed across the global Cloudflare network between January and March 2022",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Welcome to our first DDoS report of 2022, and the ninth in total so far. This report includes new data points and insights both in the application-layer and network-layer sections — as observed across the global Cloudflare network between January and March 2022"
 }

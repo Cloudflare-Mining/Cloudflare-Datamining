@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Daniela Rodrigues",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/01/119041139_1920215361447680_7159337926422350791_n.jpg",
-			"width": 600,
-			"height": 600
-		},
 		"url": "https://blog.cloudflare.com/author/daniela/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/starting-a-new-job-in-the-middle-of-a-pandemic/",
 	"datePublished": "2021-01-29T12:00:00.000Z",
 	"dateModified": "2021-01-29T12:00:00.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/01/Starting-a-new-job-in-the-middle-of-a-pandemic-OG-inblog-1.png",
-		"width": 1200,
-		"height": 628
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/01/Starting-a-new-job-in-the-middle-of-a-pandemic-OG-inblog-1.png",
 	"keywords": "Lisbon, Portugal, Life @ Cloudflare, Careers",
-	"description": "When 2020 started, it was not in my plans to change jobs and start working at a new company, completely remote, without ever meeting my colleagues in person or visiting the office. However, that is exactly what happened, and I am so glad I did.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "When 2020 started, it was not in my plans to change jobs and start working at a new company, completely remote, without ever meeting my colleagues in person or visiting the office. However, that is exactly what happened, and I am so glad I did."
 }

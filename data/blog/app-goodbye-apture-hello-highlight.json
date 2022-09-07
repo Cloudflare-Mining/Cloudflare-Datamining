@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "John Roberts",
-		"image": "http://blog.cloudflare.com/content/images/2018/02/john.jpg",
 		"url": "https://blog.cloudflare.com/author/john-roberts/",
 		"sameAs": [
 			"https://twitter.com/pencoyd"
@@ -26,9 +12,5 @@
 	"dateModified": "2018-02-01T21:13:51.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/02/burritos.jpg.scaled500.jpg",
 	"keywords": "Cloudflare Apps, Hackathon",
-	"description": "Since its June introduction as a CloudFlare App, Apture&#x27;s contextual search service has been popular. Thousands of CloudFlare customers installed the app. In November, we heard that Apture was shutting down their service, as part of their acquisition by Google. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Since its June introduction as a CloudFlare App, Apture&#x27;s contextual search service has been popular. Thousands of CloudFlare customers installed the app. In November, we heard that Apture was shutting down their service, as part of their acquisition by Google. "
 }

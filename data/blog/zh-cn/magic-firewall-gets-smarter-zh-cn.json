@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Achiel van der Mandele",
-		"image": "http://blog.cloudflare.com/content/images/2019/04/avatar.png",
 		"url": "https://blog.cloudflare.com/author/achiel/",
 		"sameAs": []
 	},
@@ -22,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/magic-firewall-gets-smarter-zh-cn/",
 	"datePublished": "2021-12-09T13:59:00.000Z",
 	"dateModified": "2021-12-31T04:42:49.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/12/pasted-image-0-6.png",
-		"width": 1600,
-		"height": 800
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/12/pasted-image-0-6.png",
 	"keywords": "CIO Week (CN), Magic Firewall (CN), Magic Transit (CN), 产品新闻, 安全, 简体中文 (CN)",
-	"description": "今天，我们非常高兴地发布了 Magic Firewall 的一套更新 ，新增了现代云防火墙必需的安全性和可见性功能。为了改善安全性，我们增加了威胁情报集成和地理位置锁定。为改善可见性，我们在边缘部署包捕获，在数据包到达边缘时接近实时地查看包数据",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "今天，我们非常高兴地发布了 Magic Firewall 的一套更新 ，新增了现代云防火墙必需的安全性和可见性功能。为了改善安全性，我们增加了威胁情报集成和地理位置锁定。为改善可见性，我们在边缘部署包捕获，在数据包到达边缘时接近实时地查看包数据"
 }

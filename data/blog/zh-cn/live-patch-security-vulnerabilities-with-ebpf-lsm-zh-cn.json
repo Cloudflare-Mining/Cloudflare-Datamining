@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Frederick Lawler",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/06/Fred-Serious-Portrait-Color-smol.jpg",
-			"width": 899,
-			"height": 599
-		},
 		"url": "https://blog.cloudflare.com/author/frederick/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/live-patch-security-vulnerabilities-with-ebpf-lsm-zh-cn/",
 	"datePublished": "2022-06-29T11:45:00.000Z",
 	"dateModified": "2022-08-15T10:09:30.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/08/image1-57.png",
-		"width": 1894,
-		"height": 947
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/08/image1-57.png",
 	"keywords": "Linux (CN), 安全, 深入剖析, 编程, 简体中文 (CN)",
-	"description": "使用 LSM BPF，开发人员能够在无需配置或加载内核模块的情况下编写精细策略。LSM BPF 程序会在加载时进行验证，然后在调用路径中到达 LSM hook 时执行",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "使用 LSM BPF，开发人员能够在无需配置或加载内核模块的情况下编写精细策略。LSM BPF 程序会在加载时进行验证，然后在调用路径中到达 LSM hook 时执行"
 }

@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Sofía Celi",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/01/me.jpg",
-			"width": 192,
-			"height": 192
-		},
 		"url": "https://blog.cloudflare.com/author/sofia/",
 		"sameAs": [
 			"http://claucece.github.io/",
@@ -30,16 +11,7 @@
 	"url": "https://blog.cloudflare.com/post-quantum-easycrypt-jasmin/",
 	"datePublished": "2022-02-24T16:23:46.000Z",
 	"dateModified": "2022-02-24T16:23:46.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/02/image13-1.png",
-		"width": 1800,
-		"height": 1013
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/02/image13-1.png",
 	"keywords": "Research, Cryptography, Post-Quantum",
-	"description": "This blogpost will touch upon how to practically use Jasmin and EasyCrypt to achieve better security guarantees when verifying KEMs",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "This blogpost will touch upon how to practically use Jasmin and EasyCrypt to achieve better security guarantees when verifying KEMs"
 }

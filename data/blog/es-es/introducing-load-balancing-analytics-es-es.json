@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Brian Batraski",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/12/brian.jpg",
-			"width": 600,
-			"height": 600
-		},
 		"url": "https://blog.cloudflare.com/author/brian/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/es-es/introducing-load-balancing-analytics-es-es/",
 	"datePublished": "2019-12-10T14:00:00.000Z",
 	"dateModified": "2021-01-21T19:11:48.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2019/12/image3-24.png",
-		"width": 1600,
-		"height": 831
-	},
+	"image": "https://blog.cloudflare.com/content/images/2019/12/image3-24.png",
 	"keywords": "Español, Perspectivas, Analítica (ES), Equilibrio de carga, Noticias de productos",
-	"description": "El objetivo de Cloudflare es hacer que las propiedades de Internet en todo el mundo sean más rápidas, seguras y confiables. El equilibrio de carga, que contribuye con la velocidad y la confiabilidad, ha evolucionado en los últimos tres años.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "El objetivo de Cloudflare es hacer que las propiedades de Internet en todo el mundo sean más rápidas, seguras y confiables. El equilibrio de carga, que contribuye con la velocidad y la confiabilidad, ha evolucionado en los últimos tres años."
 }

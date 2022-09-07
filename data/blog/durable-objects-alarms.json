@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Matt Alonso",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/08/photo.jpg",
-			"width": 600,
-			"height": 600
-		},
 		"url": "https://blog.cloudflare.com/author/matt-alonso/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/durable-objects-alarms/",
 	"datePublished": "2022-05-11T12:59:17.000Z",
 	"dateModified": "2022-05-11T12:59:17.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/05/Durable-Object-Alarms-1.png",
-		"width": 1200,
-		"height": 675
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/05/Durable-Object-Alarms-1.png",
 	"keywords": "Platform Week, Durable Objects, Product News, Serverless, Cloudflare Workers, Notifications",
-	"description": "Durable Object alarms let you call a function at a defined point in the future, unlocking deeper use-cases for Durable Objects like reliable queuing",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Durable Object alarms let you call a function at a defined point in the future, unlocking deeper use-cases for Durable Objects like reliable queuing"
 }

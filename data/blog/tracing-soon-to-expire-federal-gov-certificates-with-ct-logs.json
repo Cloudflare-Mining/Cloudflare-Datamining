@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Gabbi Fisher",
-		"image": "http://blog.cloudflare.com/content/images/2018/11/IMG_9719.jpg",
 		"url": "https://blog.cloudflare.com/author/gabbi/",
 		"sameAs": []
 	},
@@ -24,9 +10,5 @@
 	"dateModified": "2019-01-23T09:13:59.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2019/01/cert_expired-1.png",
 	"keywords": "Politics, TLS, Security",
-	"description": "As of December 22, 2018, parts of the US Government have “shut down” because of a lapse in appropriation. The shutdown has caused the furlough of employees across the government and has affected federal contracts. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "As of December 22, 2018, parts of the US Government have “shut down” because of a lapse in appropriation. The shutdown has caused the furlough of employees across the government and has affected federal contracts. "
 }

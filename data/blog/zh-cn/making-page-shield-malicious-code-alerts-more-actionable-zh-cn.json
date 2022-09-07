@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Simon Wijckmans",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/09/simon.wijckmans@microsoft.com_02p.jpg",
-			"width": 600,
-			"height": 600
-		},
 		"url": "https://blog.cloudflare.com/author/swijckmans/",
 		"sameAs": [
 			"https://simonwijckmans.com/",
@@ -30,16 +11,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/making-page-shield-malicious-code-alerts-more-actionable-zh-cn/",
 	"datePublished": "2022-07-05T12:59:00.000Z",
 	"dateModified": "2022-08-10T08:27:12.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/08/Untitled.png",
-		"width": 1600,
-		"height": 802
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/08/Untitled.png",
 	"keywords": "安全, Page Shield (CN), Magecart (CN), JavaScript (CN), 简体中文 (CN)",
-	"description": "在本文中，我们介绍了对脚本状态、元数据和分类的改进",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "在本文中，我们介绍了对脚本状态、元数据和分类的改进"
 }

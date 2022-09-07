@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Michael Tremante",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/url-3.jpg",
 		"url": "https://blog.cloudflare.com/author/michael-tremante/",
 		"sameAs": [
 			"https://twitter.com/MichaelTremante"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/zh-tw/account-takeover-protection-zh-tw/",
 	"datePublished": "2021-03-30T15:01:00.000Z",
 	"dateModified": "2021-09-02T19:04:16.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/04/1-29.png",
-		"width": 1585,
-		"height": 755
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/04/1-29.png",
 	"keywords": "Cloudflare Access (TW), Cloudflare Gateway (TW), 安全週 (ZH), 安全性",
-	"description": "終端使用者的帳戶安全一直是頭等大事，同時也是一個頗爲棘手的問題。更糟糕的是，驗證使用者身分並非易事。鑒於憑證外洩日益氾濫，而且技術先進的機器人透過爬行網路來試圖發動憑證填充攻擊，保護和監控身分驗證端點成為安全團隊面臨的一項挑戰。不但如此，很多身分驗證端點依然僅依賴於提供正確的使用者名稱和密碼，這使得行蹤隱匿的憑證填充惡化為帳戶被惡意行為者盜用。",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "終端使用者的帳戶安全一直是頭等大事，同時也是一個頗爲棘手的問題。更糟糕的是，驗證使用者身分並非易事。鑒於憑證外洩日益氾濫，而且技術先進的機器人透過爬行網路來試圖發動憑證填充攻擊，保護和監控身分驗證端點成為安全團隊面臨的一項挑戰。不但如此，很多身分驗證端點依然僅依賴於提供正確的使用者名稱和密碼，這使得行蹤隱匿的憑證填充惡化為帳戶被惡意行為者盜用。"
 }

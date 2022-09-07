@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Malavika Balachandran Tadeusz",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/12/IMG_7208Malavika-Balachandran-Tadeusz.png",
-			"width": 200,
-			"height": 200
-		},
 		"url": "https://blog.cloudflare.com/author/malavika/",
 		"sameAs": [
 			"https://twitter.com/malavikabala"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/security-center-zh-cn/",
 	"datePublished": "2021-12-09T13:59:00.000Z",
 	"dateModified": "2021-12-29T01:34:26.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/12/Sec-Center-4.png",
-		"width": 1801,
-		"height": 1013
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/12/Sec-Center-4.png",
 	"keywords": "CIO Week (CN), 简体中文 (CN), 安全",
-	"description": "今天，我们推出了 Cloudflare 安全中心。该产品将我们的安全产品套件、安全专业知识和独特的互联网情报整合在一起，成为一个统一的安全情报解决方案",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "今天，我们推出了 Cloudflare 安全中心。该产品将我们的安全产品套件、安全专业知识和独特的互联网情报整合在一起，成为一个统一的安全情报解决方案"
 }

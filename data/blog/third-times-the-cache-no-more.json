@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Edward Wang",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/03/profile-lower.jpg",
-			"width": 1950,
-			"height": 1950
-		},
 		"url": "https://blog.cloudflare.com/author/edward-h-wang/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/third-times-the-cache-no-more/",
 	"datePublished": "2021-03-19T12:00:00.000Z",
 	"dateModified": "2021-03-19T12:00:00.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/03/image1-24.png",
-		"width": 1918,
-		"height": 1068
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/03/image1-24.png",
 	"keywords": "Cache, Speed & Reliability, Performance",
-	"description": "Up until now, we wouldn’t cache requests with query strings until we saw them three times. We trace that behavior back to 2010, examine why we might have needed it, and show ourselves why we don’t need it anymore.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Up until now, we wouldn’t cache requests with query strings until we saw them three times. We trace that behavior back to 2010, examine why we might have needed it, and show ourselves why we don’t need it anymore."
 }

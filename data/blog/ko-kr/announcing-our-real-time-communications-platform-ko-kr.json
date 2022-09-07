@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Matt Silverlock",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/08/profile-1500px-square.jpeg",
-			"width": 1500,
-			"height": 1500
-		},
 		"url": "https://blog.cloudflare.com/author/silverlock/",
 		"sameAs": [
 			"https://twitter.com/elithrar"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/ko-kr/announcing-our-real-time-communications-platform-ko-kr/",
 	"datePublished": "2021-09-30T07:29:00.000Z",
 	"dateModified": "2021-10-06T07:29:53.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/10/image1-44.png",
-		"width": 1801,
-		"height": 1013
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/10/image1-44.png",
 	"keywords": "비디오, 실시간 통신, WebRTC (KO), TURN (KO), 한국어",
-	"description": "Cloudflare는 WebRTC Components로 시작해 공개 기술을 바탕으로 실시간 커뮤니케이션 응용 프로그램의 구축과 확장을 수월하게 하는 서비스를 선보입니다.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Cloudflare는 WebRTC Components로 시작해 공개 기술을 바탕으로 실시간 커뮤니케이션 응용 프로그램의 구축과 확장을 수월하게 하는 서비스를 선보입니다."
 }

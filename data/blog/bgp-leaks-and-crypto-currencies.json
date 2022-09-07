@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Louis Poinsignon",
-		"image": "http://blog.cloudflare.com/content/images/2017/09/AAEAAQAAAAAAAAYXAAAAJGE5YjM0YmVmLWJhMTItNDExZS1iNTcwLTdmNTg1YzZjMjBiNg.jpg",
 		"url": "https://blog.cloudflare.com/author/louis-poinsignon/",
 		"sameAs": [
 			"https://twitter.com/lpoinsig"
@@ -26,9 +12,5 @@
 	"dateModified": "2018-08-29T07:34:30.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/04/6818192898_c132e81824_z-1.jpg",
 	"keywords": "BGP, Crypto, TLS, HTTPS, Security, Vulnerabilities",
-	"description": "Over the few last hours, a dozen news stories have broken about how an attacker attempted (and perhaps managed) to steal cryptocurrencies using a BGP leak.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Over the few last hours, a dozen news stories have broken about how an attacker attempted (and perhaps managed) to steal cryptocurrencies using a BGP leak."
 }

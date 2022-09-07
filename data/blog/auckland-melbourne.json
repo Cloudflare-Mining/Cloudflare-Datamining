@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Joshua Motta",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/08/BLOG-Default-Male-21.png",
-			"width": 276,
-			"height": 250
-		},
 		"url": "https://blog.cloudflare.com/author/joshua-motta/",
 		"sameAs": []
 	},
@@ -29,9 +10,5 @@
 	"dateModified": "2018-08-24T01:48:41.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/03/aus-nz.png",
 	"keywords": "Cloudflare Network, Data Center, Australia, Oceania",
-	"description": "The genesis of our 33rd and 34th data centers in Auckland and Melbourne started a short hop away in nearby Sydney. Prior to these deployments traffic from all of New Zealand and Australia&#x27;s collective 23 million Internet users was routed through CloudFlare&#x27;s Sydney data center. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "The genesis of our 33rd and 34th data centers in Auckland and Melbourne started a short hop away in nearby Sydney. Prior to these deployments traffic from all of New Zealand and Australia&#x27;s collective 23 million Internet users was routed through CloudFlare&#x27;s Sydney data center. "
 }

@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Brian Bradley",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/02/twitter-profile-photo-1.jpeg",
-			"width": 400,
-			"height": 400
-		},
 		"url": "https://blog.cloudflare.com/author/brian-bradley/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/tiered-cache-smart-topology-zh-cn/",
 	"datePublished": "2021-02-18T20:00:00.000Z",
 	"dateModified": "2021-09-02T19:01:41.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/04/image5--1--1.png",
-		"width": 1200,
-		"height": 619
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/04/image5--1--1.png",
 	"keywords": "简体中文 (CN), 分级高速缓存, 性能, 高速缓存 (CN)",
-	"description": "几年前，我们发布了 Argo 来帮助提高互联网的速度和效率。Argo 会观察网络状况，寻找互联网上最适合源服务器请求的最佳路由，以免传输过程中遭遇拥塞。",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "几年前，我们发布了 Argo 来帮助提高互联网的速度和效率。Argo 会观察网络状况，寻找互联网上最适合源服务器请求的最佳路由，以免传输过程中遭遇拥塞。"
 }

@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Adi Mukadam",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/06/profil-pic-2.PNG",
-			"width": 566,
-			"height": 533
-		},
 		"url": "https://blog.cloudflare.com/author/adi/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/mpls-to-zerotrust/",
 	"datePublished": "2022-06-23T13:11:37.000Z",
 	"dateModified": "2022-06-23T13:11:37.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/06/image7-8.png",
-		"width": 1800,
-		"height": 1013
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/06/image7-8.png",
 	"keywords": "Cloudflare One Week, MPLS, Zero Trust",
-	"description": "‘My home network is faster than my corporate network’’ is a common complaint of the employees returning to work. Legacy MPLS based networks were not built to support the shift in the applications. In this blog, find out how you can move from MPLS to Zero Trust in 30 days!",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "‘My home network is faster than my corporate network’’ is a common complaint of the employees returning to work. Legacy MPLS based networks were not built to support the shift in the applications. In this blog, find out how you can move from MPLS to Zero Trust in 30 days!"
 }

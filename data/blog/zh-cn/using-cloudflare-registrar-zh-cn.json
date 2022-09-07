@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Sam Rhea",
-		"image": "http://blog.cloudflare.com/content/images/2018/07/photo-for-profile.jpg",
 		"url": "https://blog.cloudflare.com/author/sam/",
 		"sameAs": [
 			"https://twitter.com/LakeAustinBlvd"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/using-cloudflare-registrar-zh-cn/",
 	"datePublished": "2018-09-27T12:01:00.000Z",
 	"dateModified": "2021-01-28T18:42:50.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2019/08/rolling-out-@2x.png",
-		"width": 2000,
-		"height": 1504
-	},
+	"image": "https://blog.cloudflare.com/content/images/2019/08/rolling-out-@2x.png",
 	"keywords": "生日周 (CN), 产品新闻, 注册商, 简体中文 (CN)",
-	"description": "每个网站，或大或小，都是从一个想法开始，接着就是注册域名。大多数注册商在你首次注册域名时会提供优惠，之后每一次续订的价格会被提高。而他们不会告诉客户，你支付给他们的注册费用是由注册中心规定的。而且我们还发现注册商通常收取的费用是批发价的8倍。",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "每个网站，或大或小，都是从一个想法开始，接着就是注册域名。大多数注册商在你首次注册域名时会提供优惠，之后每一次续订的价格会被提高。而他们不会告诉客户，你支付给他们的注册费用是由注册中心规定的。而且我们还发现注册商通常收取的费用是批发价的8倍。"
 }

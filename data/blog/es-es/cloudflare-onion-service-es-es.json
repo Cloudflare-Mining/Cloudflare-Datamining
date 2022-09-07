@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Mahrud Sayrafi",
-		"image": "http://blog.cloudflare.com/content/images/2018/05/7Ivdj5-6.jpg",
 		"url": "https://blog.cloudflare.com/author/mahrud/",
 		"sameAs": []
 	},
@@ -24,9 +10,5 @@
 	"dateModified": "2021-02-05T00:35:24.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2019/05/unnamed-2-6.png",
 	"keywords": "Semana de la criptografía, Criptografía, Seguridad, Privacidad, Español, Tor (ES)",
-	"description": "Esta semana hace dos años que Cloudflare introdujo Opportunistic Encryption (el cifrado oportunista), una característica que ofrecía ventajas adicionales de seguridad y rendimiento a sitios web que todavía no se habían cambiado a HTTPS. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Esta semana hace dos años que Cloudflare introdujo Opportunistic Encryption (el cifrado oportunista), una característica que ofrecía ventajas adicionales de seguridad y rendimiento a sitios web que todavía no se habían cambiado a HTTPS. "
 }

@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Alex Davidson",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/10/pic_of_me.jpg",
-			"width": 600,
-			"height": 600
-		},
 		"url": "https://blog.cloudflare.com/author/alex-davidson/",
 		"sameAs": []
 	},
@@ -29,9 +10,5 @@
 	"dateModified": "2020-10-26T20:42:06.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2019/06/image8-4.png",
 	"keywords": "Crypto Week, Security, Crypto, Cryptography, Entropy, Programming",
-	"description": "Generating random outcomes is an essential part of everyday life; from lottery drawings and constructing competitions, to performing deep cryptographic computations. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Generating random outcomes is an essential part of everyday life; from lottery drawings and constructing competitions, to performing deep cryptographic computations. "
 }

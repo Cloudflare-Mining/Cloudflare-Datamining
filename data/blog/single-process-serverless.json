@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Andrew Fitch",
-		"image": "http://blog.cloudflare.com/content/images/2017/10/AJF-Headshot.jpg",
 		"url": "https://blog.cloudflare.com/author/andrew/",
 		"sameAs": [
 			"https://www.cloudflare.com",
@@ -28,9 +14,5 @@
 	"dateModified": "2019-01-15T13:00:00.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2019/01/worker-and-content.png",
 	"keywords": "Cloudflare Workers, Serverless, JavaScript, Developers",
-	"description": "This talk was originally presented and recorded at Serverless Computing London in November 2018. If you’d like to join us in person to talk about serverless, we’ll be announcing 2019 event locations throughout the year on the docs page.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "This talk was originally presented and recorded at Serverless Computing London in November 2018. If you’d like to join us in person to talk about serverless, we’ll be announcing 2019 event locations throughout the year on the docs page."
 }

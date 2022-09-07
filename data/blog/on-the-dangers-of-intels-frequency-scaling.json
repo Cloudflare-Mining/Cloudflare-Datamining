@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Vlad Krasnov",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/165e069.jpg",
 		"url": "https://blog.cloudflare.com/author/vlad-krasnov/",
 		"sameAs": []
 	},
@@ -24,9 +10,5 @@
 	"dateModified": "2018-08-29T06:16:46.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/08/3618979283_5d117e956f_o.jpg",
 	"keywords": "Security, OpenSSL, SSL, Crypto",
-	"description": "While I was writing the post comparing the new Qualcomm server chip, Centriq, to our current stock of Intel Skylake-based Xeons, I noticed a disturbing phenomena.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "While I was writing the post comparing the new Qualcomm server chip, Centriq, to our current stock of Intel Skylake-based Xeons, I noticed a disturbing phenomena."
 }

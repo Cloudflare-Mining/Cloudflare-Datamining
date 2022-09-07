@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Darius Jankauskas",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/03/Darius-Jankauskas.jpg",
-			"width": 428,
-			"height": 428
-		},
 		"url": "https://blog.cloudflare.com/author/darius/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/get-updates-on-the-health-of-your-origin-where-you-need-them/",
 	"datePublished": "2022-03-22T15:08:45.000Z",
 	"dateModified": "2022-05-04T16:01:52.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/03/image12.png",
-		"width": 1620,
-		"height": 1262
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/03/image12.png",
 	"keywords": "Product News, Developers, Serverless, Cloudflare Workers, Health Checks, Notifications, Webhooks",
-	"description": "We are thrilled to announce Health Checks availability within Cloudflare’s centralized Notification tab, available to all Pro, Business, and Enterprise customers. Now, you can get critical alerts on the health of your origin without checking your inbox!",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "We are thrilled to announce Health Checks availability within Cloudflare’s centralized Notification tab, available to all Pro, Business, and Enterprise customers. Now, you can get critical alerts on the health of your origin without checking your inbox!"
 }

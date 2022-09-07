@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Albert Zhao",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/01/Ghost-Blog-DP.jpg",
-			"width": 398,
-			"height": 366
-		},
 		"url": "https://blog.cloudflare.com/author/albert/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/de-de/developer-expert-program-de-de/",
 	"datePublished": "2021-11-18T00:00:00.000Z",
 	"dateModified": "2021-12-02T14:05:31.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/12/image1-1.png",
-		"width": 1200,
-		"height": 675
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/12/image1-1.png",
 	"keywords": "Full Stack Week (DE), Cloudflare Workers (DE), Entwickler",
-	"description": "Heute starten wir das Cloudflare Developer Expert Program: eine Initiative zur Unterstützung und Wertschätzung unserer VIP-Benutzer, die mit Workers, Pages und dem gesamten Cloudflare-Entwickler-Ökosystem arbeiten.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Heute starten wir das Cloudflare Developer Expert Program: eine Initiative zur Unterstützung und Wertschätzung unserer VIP-Benutzer, die mit Workers, Pages und dem gesamten Cloudflare-Entwickler-Ökosystem arbeiten."
 }

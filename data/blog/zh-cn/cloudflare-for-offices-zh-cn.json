@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "James Allworth",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/10/jamesallworth-20171002-024-bw-centered-square.jpg",
-			"width": 2000,
-			"height": 2000
-		},
 		"url": "https://blog.cloudflare.com/author/james-allworth/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/cloudflare-for-offices-zh-cn/",
 	"datePublished": "2021-09-29T12:59:00.000Z",
 	"dateModified": "2021-10-14T15:55:01.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/10/image2-42-3.png",
-		"width": 1800,
-		"height": 1013
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/10/image2-42-3.png",
 	"keywords": "Cloudflare Zero Trust (CN), Cloudflare One (CN), 简体中文 (CN), 零信任 (CN), 产品新闻, 生日周 (CN)",
-	"description": "我们正在将 Cloudflare 网络直接扩展到 1000 多栋人员最密集的办公楼。",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "我们正在将 Cloudflare 网络直接扩展到 1000 多栋人员最密集的办公楼。"
 }

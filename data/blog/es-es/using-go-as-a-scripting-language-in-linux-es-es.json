@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Ignat Korchagin",
-		"image": "http://blog.cloudflare.com/content/images/2018/02/AAEAAQAAAAAAAAepAAAAJGI3NzA4ZDQxLTE1NTYtNDNlNi05M2NjLTE4NDE3ZTE3OWEyZg.jpg",
 		"url": "https://blog.cloudflare.com/author/ignat/",
 		"sameAs": [
 			"https://twitter.com/ignatkn"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/es-es/using-go-as-a-scripting-language-in-linux-es-es/",
 	"datePublished": "2018-02-20T19:49:00.000Z",
 	"dateModified": "2021-01-21T19:16:54.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2019/10/gopher-tux-1-1-1.png",
-		"width": 1500,
-		"height": 1000
-	},
+	"image": "https://blog.cloudflare.com/content/images/2019/10/gopher-tux-1-1-1.png",
 	"keywords": "Conferencias sobre tecnologia, Desarrolladores, Programación, Español, Linux (ES), Go (ES)",
-	"description": "En Cloudflare nos gusta Go. Lo utilizamos en muchos proyectos de software propios y también como parte de sistemas de canalización más grandes. Pero, ¿podemos llevar a Go al siguiente nivel y usarlo como lenguaje de scripting para nuestro sistema operativo favorito, Linux?",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "En Cloudflare nos gusta Go. Lo utilizamos en muchos proyectos de software propios y también como parte de sistemas de canalización más grandes. Pero, ¿podemos llevar a Go al siguiente nivel y usarlo como lenguaje de scripting para nuestro sistema operativo favorito, Linux?"
 }

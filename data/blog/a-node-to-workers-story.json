@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Victoria Bernard",
-		"image": "http://blog.cloudflare.com/content/images/2018/04/UOeuJDMRxejfddFMXFvl_1204a20b3d1d96bba523a6a2a5fa3cd73bd4fe59240a27ad6eb8c064c6792446.jpg",
 		"url": "https://blog.cloudflare.com/author/victoria/",
 		"sameAs": []
 	},
@@ -24,9 +10,5 @@
 	"dateModified": "2020-08-14T08:44:15.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2019/03/worker-and-content.png",
 	"keywords": "JavaScript, Cloudflare Workers, Serverless, Developers",
-	"description": "Node.js allows developers to build web services with JavaScript. However, you&#x27;re on your own when it comes to registering a domain, setting up DNS, managing the server processes, and setting up builds. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Node.js allows developers to build web services with JavaScript. However, you&#x27;re on your own when it comes to registering a domain, setting up DNS, managing the server processes, and setting up builds. "
 }

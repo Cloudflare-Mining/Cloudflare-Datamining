@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Rustam Lalkaka",
-		"image": "http://blog.cloudflare.com/content/images/2017/05/AAEAAQAAAAAAAAc9AAAAJDg0MzBkZTg1LTNkOTUtNGFlYy1hMjJiLTQxMjlmYzkyNjJjMA.jpg",
 		"url": "https://blog.cloudflare.com/author/rustam/",
 		"sameAs": [
 			"https://twitter.com/lalkaka"
@@ -26,9 +12,5 @@
 	"dateModified": "2022-06-10T12:28:27.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/10/Screenshot-2018-10-24-13.44.11.png",
 	"keywords": "Product News, Load Balancing, Spectrum, Speed & Reliability",
-	"description": "We’re excited to announce the full integration of Cloudflare Spectrum with Load Balancing. Combining Spectrum with Load Balancing enables traffic management of TCP connections utilising the same battle tested Load Balancer our customers already use for billions of HTTP requests every day.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "We’re excited to announce the full integration of Cloudflare Spectrum with Load Balancing. Combining Spectrum with Load Balancing enables traffic management of TCP connections utilising the same battle tested Load Balancer our customers already use for billions of HTTP requests every day."
 }

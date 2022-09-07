@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Brian Batraski",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/12/brian.jpg",
-			"width": 600,
-			"height": 600
-		},
 		"url": "https://blog.cloudflare.com/author/brian/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/zh-tw/cloudflare-waiting-room-zh-tw/",
 	"datePublished": "2021-01-22T16:02:00.000Z",
 	"dateModified": "2021-09-02T19:46:34.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/01/image3-35.png",
-		"width": 1437,
-		"height": 864
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/01/image3-35.png",
 	"keywords": "Waiting Room (TW), 繁體中文 (TW)",
-	"description": "今天，我們很高興地宣佈 Cloudflare 等待室上線！該服務將首先通過名為 Project Fair Shot 的新計畫提供給指定客戶，該計畫旨在解決因 COVID-19 疫苗接種需求爆增而造成預約登記網站癱瘓的問題。",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "今天，我們很高興地宣佈 Cloudflare 等待室上線！該服務將首先通過名為 Project Fair Shot 的新計畫提供給指定客戶，該計畫旨在解決因 COVID-19 疫苗接種需求爆增而造成預約登記網站癱瘓的問題。"
 }

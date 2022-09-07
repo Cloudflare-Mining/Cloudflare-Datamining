@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "João Tomé",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/08/V0x3WKfJ_400x400-1.jpeg",
-			"width": 400,
-			"height": 400
-		},
 		"url": "https://blog.cloudflare.com/author/joao-tome/",
 		"sameAs": [
 			"https://twitter.com/emot"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/how-the-us-paused-shopping-and-browsing-for-thanksgiving/",
 	"datePublished": "2021-11-26T15:51:31.000Z",
 	"dateModified": "2021-11-26T17:32:05.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/11/Americas-Outage--1-.png",
-		"width": 1200,
-		"height": 675
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/11/Americas-Outage--1-.png",
 	"keywords": "Cloudflare Radar, Thanksgiving, Internet Traffic",
-	"description": "Throughout the pandemic we saw different trends caused by people being more at home than usual, but Internet patterns also change at specific times of the year (like when students go back to school or when it’s colder outside) or on some holidays like Thanksgiving.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Throughout the pandemic we saw different trends caused by people being more at home than usual, but Internet patterns also change at specific times of the year (like when students go back to school or when it’s colder outside) or on some holidays like Thanksgiving."
 }

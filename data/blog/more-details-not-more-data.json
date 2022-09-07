@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Emily Hancock",
-		"image": "http://blog.cloudflare.com/content/images/2018/04/IMG_1766--1-.jpg",
 		"url": "https://blog.cloudflare.com/author/emily-hancock/",
 		"sameAs": []
 	},
@@ -24,9 +10,5 @@
 	"dateModified": "2021-10-01T21:47:08.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/04/37845654022_7c027817b0_k-1.jpg",
 	"keywords": "Legal, GDPR, Privacy",
-	"description": "I’m excited to announce that today we are launching a new Privacy Policy. Our new policy explains the kind of information we collect, from whom we collect it, and how we use it in a more transparent way. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "I’m excited to announce that today we are launching a new Privacy Policy. Our new policy explains the kind of information we collect, from whom we collect it, and how we use it in a more transparent way. "
 }

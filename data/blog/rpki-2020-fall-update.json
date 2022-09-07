@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Louis Poinsignon",
-		"image": "http://blog.cloudflare.com/content/images/2017/09/AAEAAQAAAAAAAAYXAAAAJGE5YjM0YmVmLWJhMTItNDExZS1iNTcwLTdmNTg1YzZjMjBiNg.jpg",
 		"url": "https://blog.cloudflare.com/author/louis-poinsignon/",
 		"sameAs": [
 			"https://twitter.com/lpoinsig"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/rpki-2020-fall-update/",
 	"datePublished": "2020-11-06T12:36:07.000Z",
 	"dateModified": "2020-11-06T19:18:54.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2020/10/hilbert-2020-10-05--2-.png",
-		"width": 694,
-		"height": 439
-	},
+	"image": "http://blog.cloudflare.com/content/images/2020/10/hilbert-2020-10-05--2-.png",
 	"keywords": "BGP, RPKI, Security, Crypto",
-	"description": "The cap of two hundred thousand routing cryptographic records was recently passed. We thought it was time for an update on a major year for RPKI.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "The cap of two hundred thousand routing cryptographic records was recently passed. We thought it was time for an update on a major year for RPKI."
 }

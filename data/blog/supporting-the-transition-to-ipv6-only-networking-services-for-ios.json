@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Dragos Bogdan",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/AAEAAQAAAAAAAAkhAAAAJGFmODBiNGQ1LTEyODAtNDA4MS1hZjY3LWVmNDg2MzRiZmVkYQ.jpg",
 		"url": "https://blog.cloudflare.com/author/dragos-bogdan/",
 		"sameAs": []
 	},
@@ -24,9 +10,5 @@
 	"dateModified": "2018-08-27T20:05:48.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/08/ipv6-plate.jpg",
 	"keywords": "IPv6, IPv4, iOS, Mobile",
-	"description": "Early last month Apple announced that all apps submitted to the Apple Store June 1 forward would need to support IPv6-only networking as they transition to IPv6-only network services in iOS 9. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Early last month Apple announced that all apps submitted to the Apple Store June 1 forward would need to support IPv6-only networking as they transition to IPv6-only network services in iOS 9. "
 }

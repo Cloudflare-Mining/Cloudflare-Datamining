@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Corey Mahan",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/02/CoreyMahan_ProfilePhoto.jpg",
-			"width": 2000,
-			"height": 1659
-		},
 		"url": "https://blog.cloudflare.com/author/corey-mahan/",
 		"sameAs": [
 			"https://twitter.com/coreymahan"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/cloudflare-acquires-vectrix-to-expand-zero-trust-saas-security-zh-cn/",
 	"datePublished": "2022-02-10T00:00:00.000Z",
 	"dateModified": "2022-08-23T02:02:20.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/02/image2-10-1.png",
-		"width": 1200,
-		"height": 675
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/02/image2-10-1.png",
 	"keywords": "CASB (CN), Cloudflare Zero Trust (CN), Cloudflare for SaaS (CN), 安全, 收购",
-	"description": "Vectrix 帮助 IT 和安全团队检测其 SaaS 应用程序的安全问题。我们监测 SaaS 应用中的数据和用户，提醒团队注意一系列问题，包括未授权的用户访问、文件暴露、错误配置和影子 IT 等。",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Vectrix 帮助 IT 和安全团队检测其 SaaS 应用程序的安全问题。我们监测 SaaS 应用中的数据和用户，提醒团队注意一系列问题，包括未授权的用户访问、文件暴露、错误配置和影子 IT 等。"
 }

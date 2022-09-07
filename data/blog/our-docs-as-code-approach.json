@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Pedro Sousa",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/07/PedroSousa_foto_passe.jpg",
-			"width": 600,
-			"height": 600
-		},
 		"url": "https://blog.cloudflare.com/author/pedro/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/our-docs-as-code-approach/",
 	"datePublished": "2022-07-15T13:02:00.000Z",
 	"dateModified": "2022-08-25T10:25:34.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/07/image2-10.png",
-		"width": 1615,
-		"height": 869
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/07/image2-10.png",
 	"keywords": "Technical Writing, Developer Documentation",
-	"description": "Besides following a docs-as-code approach, at Cloudflare we handle our documentation changes in a public repository. The contributions we get from the entire Cloudflare community help us make our documentation better every day",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Besides following a docs-as-code approach, at Cloudflare we handle our documentation changes in a public repository. The contributions we get from the entire Cloudflare community help us make our documentation better every day"
 }

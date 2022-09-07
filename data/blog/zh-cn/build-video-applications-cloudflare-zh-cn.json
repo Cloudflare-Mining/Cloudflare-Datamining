@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Jonathan Kuperman",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/09/jon.jpeg",
-			"width": 400,
-			"height": 400
-		},
 		"url": "https://blog.cloudflare.com/author/jkup/",
 		"sameAs": [
 			"https://jonkuperman.com/",
@@ -30,16 +11,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/build-video-applications-cloudflare-zh-cn/",
 	"datePublished": "2021-12-19T13:59:00.000Z",
 	"dateModified": "2022-01-01T02:51:20.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/01/Build-your-next-video-application-on-Cloudflare.png",
-		"width": 1200,
-		"height": 675
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/01/Build-your-next-video-application-on-Cloudflare.png",
 	"keywords": "Full Stack Week (CN), Cloudflare Workers (CN), Cloudflare Pages (CN)), Cloudflare Access (CN), Cloudflare Stream (CN), 简体中文 (CN), 产品新闻",
-	"description": "过去，构建视频应用程序十分困难。在录制、编码和播放视频背后有许多复杂的技术。幸运的是，Cloudflare Stream 分担走了所有困难的部分，现在您可以轻松构建自定义视频和流媒体应用程序。让我们看一下，我们可以如何结合 Cloudflare Stream、Access、Pages 和 Workers，使用极少的代码创建一个高性能的视频应用程序。",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "过去，构建视频应用程序十分困难。在录制、编码和播放视频背后有许多复杂的技术。幸运的是，Cloudflare Stream 分担走了所有困难的部分，现在您可以轻松构建自定义视频和流媒体应用程序。让我们看一下，我们可以如何结合 Cloudflare Stream、Access、Pages 和 Workers，使用极少的代码创建一个高性能的视频应用程序。"
 }

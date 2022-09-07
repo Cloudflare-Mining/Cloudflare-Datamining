@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Joaquin Madruga",
-		"image": {
-			"@type": "ImageObject",
-			"url": "//www.gravatar.com/avatar/d1ce1296c94accbe4ff06a8eb6fad569?s=250&d=mm&r=x",
-			"width": 250,
-			"height": 250
-		},
 		"url": "https://blog.cloudflare.com/author/joaquin/",
 		"sameAs": []
 	},
@@ -29,9 +10,5 @@
 	"dateModified": "2021-06-02T17:29:10.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/06/Salt_Cars-1.jpg",
 	"keywords": "Argo Smart Routing, Product News, Speed & Reliability, Reliability, Load Balancing, Cloudflare Tunnel",
-	"description": "We recently announced Argo Tunnel which allows you to deploy your applications anywhere, even if your webserver is sitting behind a NAT or firewall. Now, with support for load balancing, you can spread the traffic across your tunnels.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "We recently announced Argo Tunnel which allows you to deploy your applications anywhere, even if your webserver is sitting behind a NAT or firewall. Now, with support for load balancing, you can spread the traffic across your tunnels."
 }

@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Marek Majkowski",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/b5967d6c687939594adb6992723d0529.jpeg",
 		"url": "https://blog.cloudflare.com/author/marek-majkowski/",
 		"sameAs": [
 			"https://twitter.com/majek04"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/de-de/cloudflare-architecture-and-how-bpf-eats-the-world-de-de/",
 	"datePublished": "2019-05-18T13:00:00.000Z",
 	"dateModified": "2021-01-22T18:56:41.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2019/10/13_BPF-is-everywhere-2.jpg",
-		"width": 950,
-		"height": 512
-	},
+	"image": "https://blog.cloudflare.com/content/images/2019/10/13_BPF-is-everywhere-2.jpg",
 	"keywords": "Programmierung, Entwickler, Deutsch, eBPF (DE), Linux (DE), Anycast (DE)",
-	"description": "Vor Kurzem hielt ich bei der Netdev 0x13 , der Konferenz über Linux-Netzwerke in Prag, einen kurzen Vortrag mit dem Titel „Linux bei Cloudflare“.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Vor Kurzem hielt ich bei der Netdev 0x13 , der Konferenz über Linux-Netzwerke in Prag, einen kurzen Vortrag mit dem Titel „Linux bei Cloudflare“."
 }

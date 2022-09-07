@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Martin Hauskrecht",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/05/twitter-profile-photo.jpeg",
-			"width": 400,
-			"height": 400
-		},
 		"url": "https://blog.cloudflare.com/author/martinhauskrecht/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/improving-your-monitoring-setup-by-integrating-cloudflares-analytics-data-into-prometheus-and-grafana/",
 	"datePublished": "2021-05-20T13:00:15.000Z",
 	"dateModified": "2021-05-20T13:00:15.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/05/image1-8.png",
-		"width": 1382,
-		"height": 668
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/05/image1-8.png",
 	"keywords": "Analytics, Customers, Prometheus, Grafana, Monitoring",
-	"description": "Here at Labyrinth Labs, we put great emphasis on monitoring. Having a working monitoring setup is a critical part of the work we do for our clients.\nImproving your monitoring setup by integrating Cloudflare’s analytics data into Prometheus and Grafana",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Here at Labyrinth Labs, we put great emphasis on monitoring. Having a working monitoring setup is a critical part of the work we do for our clients.\nImproving your monitoring setup by integrating Cloudflare’s analytics data into Prometheus and Grafana"
 }

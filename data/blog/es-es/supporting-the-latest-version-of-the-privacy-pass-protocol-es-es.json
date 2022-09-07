@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Alex Davidson",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/10/pic_of_me.jpg",
-			"width": 600,
-			"height": 600
-		},
 		"url": "https://blog.cloudflare.com/author/alex-davidson/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/es-es/supporting-the-latest-version-of-the-privacy-pass-protocol-es-es/",
 	"datePublished": "2019-10-28T13:00:00.000Z",
 	"dateModified": "2021-01-21T19:09:07.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2019/11/Screen-Shot-2019-10-27-at-7.05.21-PM-1-3.png",
-		"width": 2000,
-		"height": 1025
-	},
+	"image": "https://blog.cloudflare.com/content/images/2019/11/Screen-Shot-2019-10-27-at-7.05.21-PM-1-3.png",
 	"keywords": "Seguridad, Noticias de productos, Español, Privacy Pass (ES), Criptografía, Semana de la criptografía",
-	"description": "En Cloudflare, nos comprometemos a apoyar y desarrollar nuevas tecnologías de protección de la privacidad que beneficien a todos los usuarios de Internet. En noviembre de 2017, anunciamos un soporte por parte del servidor para el protocolo de Privacy Pass,",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "En Cloudflare, nos comprometemos a apoyar y desarrollar nuevas tecnologías de protección de la privacidad que beneficien a todos los usuarios de Internet. En noviembre de 2017, anunciamos un soporte por parte del servidor para el protocolo de Privacy Pass,"
 }

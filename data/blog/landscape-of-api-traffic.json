@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Daniele Molteni",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/10/meProfessional-1-flipped.jpg",
-			"width": 1732,
-			"height": 1732
-		},
 		"url": "https://blog.cloudflare.com/author/daniele/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/landscape-of-api-traffic/",
 	"datePublished": "2022-01-26T13:59:09.000Z",
 	"dateModified": "2022-07-27T17:54:27.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/01/image6-17.png",
-		"width": 1801,
-		"height": 1013
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/01/image6-17.png",
 	"keywords": "Cloudflare Radar, API, API Shield, Security",
-	"description": "More than 50% of all traffic processed by Cloudflare is API-based, and it’s growing twice as fast as traditional web traffic. This huge growth is driven by a few industries, and it calls for the development of dedicated security solutions",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "More than 50% of all traffic processed by Cloudflare is API-based, and it’s growing twice as fast as traditional web traffic. This huge growth is driven by a few industries, and it calls for the development of dedicated security solutions"
 }

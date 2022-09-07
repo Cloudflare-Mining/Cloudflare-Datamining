@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Sam Rhea",
-		"image": "http://blog.cloudflare.com/content/images/2018/07/photo-for-profile.jpg",
 		"url": "https://blog.cloudflare.com/author/sam/",
 		"sameAs": [
 			"https://twitter.com/LakeAustinBlvd"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/cloudflare-for-teams-products/",
 	"datePublished": "2020-01-07T14:00:13.000Z",
 	"dateModified": "2021-12-07T13:21:16.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2020/01/Screen-Shot-2020-01-07-at-1.53.14-PM.png",
-		"width": 472,
-		"height": 230
-	},
+	"image": "https://blog.cloudflare.com/content/images/2020/01/Screen-Shot-2020-01-07-at-1.53.14-PM.png",
 	"keywords": "Product News, Cloudflare Access, Cloudflare Zero Trust, Security",
-	"description": "Ten years ago, when Cloudflare launched, businesses and organizations purchased expensive on-premise hardware to keep their sites online first and foremost. If they wanted those sites to be faster, or safer, they needed to buy more boxes. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Ten years ago, when Cloudflare launched, businesses and organizations purchased expensive on-premise hardware to keep their sites online first and foremost. If they wanted those sites to be faster, or safer, they needed to buy more boxes. "
 }

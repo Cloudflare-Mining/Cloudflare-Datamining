@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Rita Kozlov",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/05/Rita-Kozlov.jpeg",
-			"width": 200,
-			"height": 200
-		},
 		"url": "https://blog.cloudflare.com/author/rita/",
 		"sameAs": [
 			"https://twitter.com/ritakozlov_"
@@ -31,9 +12,5 @@
 	"dateModified": "2018-09-19T21:52:22.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/09/Screen-Shot-2018-09-14-at-10.30.08-AM.png",
 	"keywords": "Cloudflare Workers, Serverless, Beta, Cache, API, JavaScript",
-	"description": "In October of last year we announced the launch of Cloudflare Workers. Workers allow you to run JavaScript from 150+ of Cloudflare’s data centers. This means that from the moment a request hits the Cloudflare network, you have full control over its destiny. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "In October of last year we announced the launch of Cloudflare Workers. Workers allow you to run JavaScript from 150+ of Cloudflare’s data centers. This means that from the moment a request hits the Cloudflare network, you have full control over its destiny. "
 }

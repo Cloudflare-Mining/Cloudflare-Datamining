@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Marwan Fayed",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/09/sta-profile.jpg",
-			"width": 600,
-			"height": 600
-		},
 		"url": "https://blog.cloudflare.com/author/marwan/",
 		"sameAs": [
 			"https://twitter.com/marwanfayed"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/pt-br/addressing-agility-pt-br/",
 	"datePublished": "2021-10-14T12:59:00.000Z",
 	"dateModified": "2021-11-09T20:06:49.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/11/main.png",
-		"width": 1200,
-		"height": 628
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/11/main.png",
 	"keywords": "Pesquisar, DNS (PT), Português",
-	"description": "Em grandes escalas operacionais, o endereçamento de IP emperra a inovação em serviços de rede e na web. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Em grandes escalas operacionais, o endereçamento de IP emperra a inovação em serviços de rede e na web. "
 }

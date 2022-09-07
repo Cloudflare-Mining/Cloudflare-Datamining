@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Pete Zimmerman",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/09/unnamed-1.jpg",
-			"width": 600,
-			"height": 600
-		},
 		"url": "https://blog.cloudflare.com/author/pete/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/gateway-swg/",
 	"datePublished": "2020-10-14T15:00:00.000Z",
 	"dateModified": "2021-01-08T00:28:00.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2020/10/Cloudflare-Gateway-now-protects-teams--wherever-they-are-thumbnail-1.png",
-		"width": 1200,
-		"height": 628
-	},
+	"image": "http://blog.cloudflare.com/content/images/2020/10/Cloudflare-Gateway-now-protects-teams--wherever-they-are-thumbnail-1.png",
 	"keywords": "Zero Trust, Zero Trust Week, 1.1.1.1, Product News, WARP, Cloudflare Gateway, SWG, Cloudflare Zero Trust, Security",
-	"description": "Announcing a full Secure Web Gateway at the Cloudflare edge. Cloudflare Gateway provides security wherever organizations operate via the Cloudflare WARP client.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Announcing a full Secure Web Gateway at the Cloudflare edge. Cloudflare Gateway provides security wherever organizations operate via the Cloudflare WARP client."
 }

@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Guest Author",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/10/Screen-Shot-2019-10-09-at-11.21.59-AM.png",
-			"width": 362,
-			"height": 364
-		},
 		"url": "https://blog.cloudflare.com/author/guest-author/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/terraforming-cloudflare/",
 	"datePublished": "2019-10-09T15:00:00.000Z",
 	"dateModified": "2019-10-11T18:55:22.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2019/10/Image_20191002_222359-1-2.png",
-		"width": 1662,
-		"height": 1142
-	},
+	"image": "https://blog.cloudflare.com/content/images/2019/10/Image_20191002_222359-1-2.png",
 	"keywords": "Terraform, Developers",
-	"description": "This post is about our introductive journey to the infrastructure-as-code practice; managing Cloudflare configuration in a declarative and version-controlled way.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "This post is about our introductive journey to the infrastructure-as-code practice; managing Cloudflare configuration in a declarative and version-controlled way."
 }

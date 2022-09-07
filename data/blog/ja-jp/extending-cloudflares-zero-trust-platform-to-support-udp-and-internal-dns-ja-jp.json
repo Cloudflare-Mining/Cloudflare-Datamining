@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Abe Carryl",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2020/10/3A8B82DA-79A1-44EB-873A-B56773A4F764.jpeg",
-			"width": 900,
-			"height": 900
-		},
 		"url": "https://blog.cloudflare.com/author/abe/",
 		"sameAs": [
 			"https://twitter.com/mrlincolnlogs"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/ja-jp/extending-cloudflares-zero-trust-platform-to-support-udp-and-internal-dns-ja-jp/",
 	"datePublished": "2021-12-08T13:59:00.000Z",
 	"dateModified": "2021-12-30T22:40:29.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/12/image2-19-3.png",
-		"width": 1801,
-		"height": 1013
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/12/image2-19-3.png",
 	"keywords": "CIO Week (JP), Cloudflare One (JP), Cloudflare Tunnel (JP), UDP (JP), 日本語, 製品ニュース (JP), セキュリティ, ゼロトラスト",
-	"description": "2020年末、Cloudflareは、当社のネットワークの上にプライベートネットワークの構築を開始する権限を組織に与えました。サーバー側でCloudflareトンネルを、クライアント側でCloudflare WARPを使用することで、",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "2020年末、Cloudflareは、当社のネットワークの上にプライベートネットワークの構築を開始する権限を組織に与えました。サーバー側でCloudflareトンネルを、クライアント側でCloudflare WARPを使用することで、"
 }

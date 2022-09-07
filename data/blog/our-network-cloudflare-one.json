@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Annika Garbers",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/annika.png",
-			"width": 400,
-			"height": 400
-		},
 		"url": "https://blog.cloudflare.com/author/annika/",
 		"sameAs": [
 			"https://twitter.com/annikagarbers"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/our-network-cloudflare-one/",
 	"datePublished": "2020-10-16T17:00:00.000Z",
 	"dateModified": "2020-10-16T17:00:00.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2020/10/image1-24.png",
-		"width": 2000,
-		"height": 1203
-	},
+	"image": "http://blog.cloudflare.com/content/images/2020/10/image1-24.png",
 	"keywords": "Product News, Zero Trust, Zero Trust Week, Cloudflare One, Cloudflare Network",
-	"description": "Cloudflare&#x27;s network is architected to solve the problems that face every organization trying to grow and protect a global network. With Cloudflare One, we&#x27;re extending the advantage of these decisions to your company&#x27;s network to help you solve them too.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Cloudflare&#x27;s network is architected to solve the problems that face every organization trying to grow and protect a global network. With Cloudflare One, we&#x27;re extending the advantage of these decisions to your company&#x27;s network to help you solve them too."
 }

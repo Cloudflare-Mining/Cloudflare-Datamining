@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Ashcon Partovi",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/04/117158947_4858836477475662_2532132460047140852_o.jpeg",
-			"width": 280,
-			"height": 280
-		},
 		"url": "https://blog.cloudflare.com/author/ashcon/",
 		"sameAs": [
 			"https://twitter.com/ashconpartovi"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/fr-fr/workers-kv-is-ga-fr-fr/",
 	"datePublished": "2019-05-21T13:00:00.000Z",
 	"dateModified": "2021-01-21T21:18:05.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2019/09/Workers-KV-GA@2x-1-2.png",
-		"width": 1517,
-		"height": 776
-	},
+	"image": "https://blog.cloudflare.com/content/images/2019/09/Workers-KV-GA@2x-1-2.png",
 	"keywords": "Français, Sans serveur, Cloudflare Workers (FR), Cloudflare Workers KV (FR), JavaScript (FR), Actualités produits",
-	"description": "Aujourd’hui, nous sommes heureux d’annoncer que Workers KV est mis à votre disposition et est prêt à être utilisé pour la production !",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Aujourd’hui, nous sommes heureux d’annoncer que Workers KV est mis à votre disposition et est prêt à être utilisé pour la production !"
 }

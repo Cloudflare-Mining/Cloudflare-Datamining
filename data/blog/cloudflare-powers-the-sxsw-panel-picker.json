@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Matthew Prince",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
-			"width": 1196,
-			"height": 1190
-		},
 		"url": "https://blog.cloudflare.com/author/matthew-prince/",
 		"sameAs": [
 			"https://twitter.com/eastdakota"
@@ -31,9 +12,5 @@
 	"dateModified": "2019-06-29T21:04:31.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/01/sxsw_logo.png.scaled500.png",
 	"keywords": "SXSW, Speed, Austin, Always Online, Bandwidth, Panel Picker, Speed & Reliability",
-	"description": "Each year, the SXSW Music, Film and Interactive Conferences (sxsw.com) solicit session ideas from the community for the upcoming event using Panel Picker. After submissions are collected, PanelPicker launches a voting interface that allows the world to pick what sessions they&#x27;d like to see at SXSW.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Each year, the SXSW Music, Film and Interactive Conferences (sxsw.com) solicit session ideas from the community for the upcoming event using Panel Picker. After submissions are collected, PanelPicker launches a voting interface that allows the world to pick what sessions they&#x27;d like to see at SXSW."
 }

@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Aanchal Malhotra",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/08/0-1.jpeg",
-			"width": 337,
-			"height": 337
-		},
 		"url": "https://blog.cloudflare.com/author/aanchal/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/secure-time-zh-cn/",
 	"datePublished": "2019-06-21T13:00:00.000Z",
 	"dateModified": "2021-01-28T19:08:54.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2019/11/time-service@3x-1-1.png",
-		"width": 1600,
-		"height": 1032
-	},
+	"image": "https://blog.cloudflare.com/content/images/2019/11/time-service@3x-1-1.png",
 	"keywords": "嘉宾帖子, 加密, 加密周, 密码学, 产品新闻, 简体中文 (CN)",
-	"description": "Cloudflare一直是先驱者，致力于对不安全互联网协议部署其安全版本并使任何人都可以免费使用。2014年，我们推出了世界上第一个免费、安全地HTTPS服务（Universal SSL），用来配合我们现有的免费HTTP计划。",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Cloudflare一直是先驱者，致力于对不安全互联网协议部署其安全版本并使任何人都可以免费使用。2014年，我们推出了世界上第一个免费、安全地HTTPS服务（Universal SSL），用来配合我们现有的免费HTTP计划。"
 }

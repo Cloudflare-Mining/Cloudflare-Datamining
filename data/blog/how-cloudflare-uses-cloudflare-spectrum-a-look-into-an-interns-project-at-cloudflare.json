@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Ryan Jacobs",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/08/20200821_103010.jpg",
-			"width": 2000,
-			"height": 2667
-		},
 		"url": "https://blog.cloudflare.com/author/ryan-jacobs/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/how-cloudflare-uses-cloudflare-spectrum-a-look-into-an-interns-project-at-cloudflare/",
 	"datePublished": "2020-08-21T11:00:00.000Z",
 	"dateModified": "2020-08-21T11:09:51.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2020/08/Dogfooding-Spectrum@2x.png",
-		"width": 1600,
-		"height": 913
-	},
+	"image": "https://blog.cloudflare.com/content/images/2020/08/Dogfooding-Spectrum@2x.png",
 	"keywords": "Spectrum, Product News, Internship Experience",
-	"description": "As part of my onboarding as an intern on the Spectrum (a layer 4 reverse proxy) team, I learned that many internal services dogfood Spectrum, as they are exposed to the Internet and benefit from layer 4 DDoS protection.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "As part of my onboarding as an intern on the Spectrum (a layer 4 reverse proxy) team, I learned that many internal services dogfood Spectrum, as they are exposed to the Internet and benefit from layer 4 DDoS protection."
 }

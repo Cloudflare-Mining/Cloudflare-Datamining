@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Nitin Rao",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/08/WtxhLSEUSgqYRMdQUwWp_1204a20b3d1d96bba523a6a2a5fa3cd73bd4fe59240a27ad6eb8c064c6792446.jpg",
-			"width": 600,
-			"height": 600
-		},
 		"url": "https://blog.cloudflare.com/author/nitin-rao/",
 		"sameAs": [
 			"https://twitter.com/NitinBRao"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/scaling-the-cloudflare-global/",
 	"datePublished": "2019-08-15T01:41:18.000Z",
 	"dateModified": "2019-10-11T21:15:43.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2019/08/image1-4.png",
-		"width": 1986,
-		"height": 1228
-	},
+	"image": "https://blog.cloudflare.com/content/images/2019/08/image1-4.png",
 	"keywords": "Cloudflare Network, Data Center, Africa, South America, India",
-	"description": "Cloudflare’s global network currently spans 193 cities across 90+ countries. With over 20 million Internet properties on our network, we increase the security, performance, and reliability of large portions of the Internet every time we add a location.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Cloudflare’s global network currently spans 193 cities across 90+ countries. With over 20 million Internet properties on our network, we increase the security, performance, and reliability of large portions of the Internet every time we add a location."
 }

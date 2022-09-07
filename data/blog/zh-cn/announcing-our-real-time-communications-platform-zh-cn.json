@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Matt Silverlock",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/08/profile-1500px-square.jpeg",
-			"width": 1500,
-			"height": 1500
-		},
 		"url": "https://blog.cloudflare.com/author/silverlock/",
 		"sameAs": [
 			"https://twitter.com/elithrar"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/announcing-our-real-time-communications-platform-zh-cn/",
 	"datePublished": "2021-09-29T23:00:00.000Z",
 	"dateModified": "2021-10-01T14:18:04.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/10/1-1.png",
-		"width": 1801,
-		"height": 1013
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/10/1-1.png",
 	"keywords": "Cloudflare流, 生日周 (CN), 产品新闻, Video (CN), 视频 (CN), 实时通信",
-	"description": "我们正在使围绕开放技术构建和扩展实时通信应用变得更容易，从 WebRTC Components 开始。",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "我们正在使围绕开放技术构建和扩展实时通信应用变得更容易，从 WebRTC Components 开始。"
 }

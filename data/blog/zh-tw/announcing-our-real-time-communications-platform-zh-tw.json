@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Matt Silverlock",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/08/profile-1500px-square.jpeg",
-			"width": 1500,
-			"height": 1500
-		},
 		"url": "https://blog.cloudflare.com/author/silverlock/",
 		"sameAs": [
 			"https://twitter.com/elithrar"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/zh-tw/announcing-our-real-time-communications-platform-zh-tw/",
 	"datePublished": "2021-09-30T17:56:00.000Z",
 	"dateModified": "2021-10-05T18:01:52.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/10/1-17.png",
-		"width": 1801,
-		"height": 1013
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/10/1-17.png",
 	"keywords": "視訊, 即時通訊, Stream (TW)",
-	"description": "我們正在讓利用開放技術構建和擴充即時通訊應用程式變得更容易，就從WebRTC Components 開始。",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "我們正在讓利用開放技術構建和擴充即時通訊應用程式變得更容易，就從WebRTC Components 開始。"
 }

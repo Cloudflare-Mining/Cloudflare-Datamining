@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Nancy Gao",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/07/Screen-Shot-2020-05-19-at-12.14.42-AM.png",
-			"width": 1250,
-			"height": 1512
-		},
 		"url": "https://blog.cloudflare.com/author/nancy-gao/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/introducing-cron-triggers-for-cloudflare-workers-zh-cn/",
 	"datePublished": "2020-09-28T13:03:00.000Z",
 	"dateModified": "2021-05-05T22:06:37.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2020/12/Birthday-Week-OG-images_Scheduled_Workers.png",
-		"width": 3334,
-		"height": 1668
-	},
+	"image": "http://blog.cloudflare.com/content/images/2020/12/Birthday-Week-OG-images_Scheduled_Workers.png",
 	"keywords": "无服务器, 产品新闻, 生日周 (CN), 简体中文 (CN), Cloudflare Workers (CN)",
-	"description": "今天，Cloudflare Workers团队无比激动地宣布了Cron Triggers的推出。在此之前，Worker纯粹是由传入的HTTP请求触发的，但是从今天开始，您将能够设置调度程序以按一定的时间间隔运行Worker。这是一个非常受人欢迎的功能，我们知道很多开发人员会发现它很有用，我们已在无服务器周后听到了大家的反馈。",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "今天，Cloudflare Workers团队无比激动地宣布了Cron Triggers的推出。在此之前，Worker纯粹是由传入的HTTP请求触发的，但是从今天开始，您将能够设置调度程序以按一定的时间间隔运行Worker。这是一个非常受人欢迎的功能，我们知道很多开发人员会发现它很有用，我们已在无服务器周后听到了大家的反馈。"
 }

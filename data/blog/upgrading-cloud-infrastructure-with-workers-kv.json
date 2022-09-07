@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Guest Author",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/10/Screen-Shot-2019-10-09-at-11.21.59-AM.png",
-			"width": 362,
-			"height": 364
-		},
 		"url": "https://blog.cloudflare.com/author/guest-author/",
 		"sameAs": []
 	},
@@ -29,9 +10,5 @@
 	"dateModified": "2019-01-10T21:59:59.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2019/01/workers-kv-for-jgc-s-post-@2x.png",
 	"keywords": "Cloudflare Workers, Cloudflare Workers KV, Serverless",
-	"description": "At Timely we started a project to migrate our web applications from legacy Azure services to a modern PaaS offering. In theory it meant no code changes. We decided to start with our webhooks. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "At Timely we started a project to migrate our web applications from legacy Azure services to a modern PaaS offering. In theory it meant no code changes. We decided to start with our webhooks. "
 }

@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Juan M. Rodriguez",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/01/IMG_5590.jpg",
-			"width": 600,
-			"height": 600
-		},
 		"url": "https://blog.cloudflare.com/author/juan/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/why-i-am-joining-cloudflare-as-its-first-cio/",
 	"datePublished": "2020-03-04T01:09:43.000Z",
 	"dateModified": "2020-03-04T01:09:43.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2020/02/Juan-Rodriguez--Cloudflare-1.jpg",
-		"width": 1024,
-		"height": 768
-	},
+	"image": "https://blog.cloudflare.com/content/images/2020/02/Juan-Rodriguez--Cloudflare-1.jpg",
 	"keywords": "Life @ Cloudflare",
-	"description": "I am delighted to share that I have joined Cloudflare as its first Chief Information Officer to help scale the company in this new phase of its business.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "I am delighted to share that I have joined Cloudflare as its first Chief Information Officer to help scale the company in this new phase of its business."
 }

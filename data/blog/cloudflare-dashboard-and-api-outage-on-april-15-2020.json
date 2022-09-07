@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "John Graham-Cumming",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
 		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
 		"sameAs": [
 			"https://twitter.com/jgrahamc"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/cloudflare-dashboard-and-api-outage-on-april-15-2020/",
 	"datePublished": "2020-04-16T00:28:02.000Z",
 	"dateModified": "2020-05-26T16:08:08.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2020/04/cf-logo-social-media-1.png",
-		"width": 1024,
-		"height": 512
-	},
+	"image": "https://blog.cloudflare.com/content/images/2020/04/cf-logo-social-media-1.png",
 	"keywords": "Outage",
-	"description": "Starting at 1531 UTC and lasting until 1952 UTC, the Cloudflare Dashboard and API were unavailable because of the disconnection of multiple, redundant fibre connections from one of our two core data centers.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Starting at 1531 UTC and lasting until 1952 UTC, the Cloudflare Dashboard and API were unavailable because of the disconnection of multiple, redundant fibre connections from one of our two core data centers."
 }

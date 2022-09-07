@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Michael Tremante",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/url-3.jpg",
 		"url": "https://blog.cloudflare.com/author/michael-tremante/",
 		"sameAs": [
 			"https://twitter.com/MichaelTremante"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/account-takeover-protection/",
 	"datePublished": "2021-03-30T13:00:00.000Z",
 	"dateModified": "2022-01-20T12:06:55.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/03/Account-Takeover-Protection.png",
-		"width": 1585,
-		"height": 755
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/03/Account-Takeover-Protection.png",
 	"keywords": "Security Week, Security, Cloudflare Access, Cloudflare Gateway, Product News",
-	"description": "End-user account security is always a top priority, but a hard problem to solve. In this post, we provide a summary of all the Cloudflare features that can help.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "End-user account security is always a top priority, but a hard problem to solve. In this post, we provide a summary of all the Cloudflare features that can help."
 }

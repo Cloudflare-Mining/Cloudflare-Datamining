@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Swapnil Bhalode (Guest Author) ",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/03/Tala-CEO-1.jpeg",
-			"width": 2000,
-			"height": 1333
-		},
 		"url": "https://blog.cloudflare.com/author/swapnil/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/addressing-the-webs-client-side-security-challenge/",
 	"datePublished": "2020-03-03T13:00:00.000Z",
 	"dateModified": "2020-03-30T20:01:48.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2020/02/pasted-image-0-3.png",
-		"width": 789,
-		"height": 457
-	},
+	"image": "https://blog.cloudflare.com/content/images/2020/02/pasted-image-0-3.png",
 	"keywords": "Serverless, Cloudflare Workers, Partners, Tala",
-	"description": "Modern web architecture relies heavily on JavaScript and enabling third-party code to make client-side network requests. These innovations are built on client-heavy frameworks such as Angular, Ember, React, and Backbone that leverage the processing power of the browser",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Modern web architecture relies heavily on JavaScript and enabling third-party code to make client-side network requests. These innovations are built on client-heavy frameworks such as Angular, Ember, React, and Backbone that leverage the processing power of the browser"
 }

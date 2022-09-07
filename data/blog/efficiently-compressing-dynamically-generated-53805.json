@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "John Graham-Cumming",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
 		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
 		"sameAs": [
 			"https://twitter.com/jgrahamc"
@@ -24,10 +10,7 @@
 	"url": "https://blog.cloudflare.com/efficiently-compressing-dynamically-generated-53805/",
 	"datePublished": "2012-12-06T09:19:00.000Z",
 	"dateModified": "2019-06-29T21:19:48.000Z",
+	"image": null,
 	"keywords": "Tech Talks, Speed & Reliability, Compression, Cache, Deep Dive",
-	"description": "With the widespread adoption of high bandwidth Internet connections in the home, offices and on mobile devices, limitations in available bandwidth to download web pages have largely been eliminated.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "With the widespread adoption of high bandwidth Internet connections in the home, offices and on mobile devices, limitations in available bandwidth to download web pages have largely been eliminated."
 }

@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Dane Knecht",
-		"image": {
-			"@type": "ImageObject",
-			"url": "//www.gravatar.com/avatar/ad349b9256727a05e59d3657edf4e055?d=404&s=250",
-			"width": 250,
-			"height": 250
-		},
 		"url": "https://blog.cloudflare.com/author/dane-knecht/",
 		"sameAs": [
 			"https://twitter.com/dok2001"
@@ -31,9 +12,5 @@
 	"dateModified": "2018-08-28T20:17:23.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2017/01/firebolt-logo-v0.1.png",
 	"keywords": "Advertising, Speed & Reliability, Firebolt, AMP, SSL, Security",
-	"description": "Cloudflare’s mission is to help build a better Internet. That means a faster, more secure, open Internet world-wide. We have millions of customers using our services like free SSL, an advanced WAF.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Cloudflare’s mission is to help build a better Internet. That means a faster, more secure, open Internet world-wide. We have millions of customers using our services like free SSL, an advanced WAF."
 }

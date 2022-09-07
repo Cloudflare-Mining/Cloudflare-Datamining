@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Ka-Hing Cheung",
-		"image": "http://blog.cloudflare.com/content/images/2018/01/AAEAAQAAAAAAAAJjAAAAJGRkYmFkY2Q2LTE3NmItNDgwZS04OWNlLTM2MzcwMzZiZTgwNQ.jpg",
 		"url": "https://blog.cloudflare.com/author/khc/",
 		"sameAs": [
 			"https://twitter.com/kahingcheung"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/how-we-scaled-nginx-and-saved-the-world-54-years-every-day-zh-cn/",
 	"datePublished": "2018-07-31T15:00:00.000Z",
 	"dateModified": "2021-01-28T18:35:46.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2019/07/Screenshot-from-2018-07-25-16-23-10-1.png",
-		"width": 1190,
-		"height": 886
-	},
+	"image": "https://blog.cloudflare.com/content/images/2019/07/Screenshot-from-2018-07-25-16-23-10-1.png",
 	"keywords": "简体中文 (CN), NGINX (ZH)",
-	"description": "目前已经有1000万个网站，应用程序和API使用Cloudflare加快其用户的上网速度。我们曾经最多通过151个数据中心每秒上传一千多万个请求。多年来，随着请求的增加，我们对我们的NGINX版本进行了许多修改。这篇文章讲述了其中一项修改内容。",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "目前已经有1000万个网站，应用程序和API使用Cloudflare加快其用户的上网速度。我们曾经最多通过151个数据中心每秒上传一千多万个请求。多年来，随着请求的增加，我们对我们的NGINX版本进行了许多修改。这篇文章讲述了其中一项修改内容。"
 }

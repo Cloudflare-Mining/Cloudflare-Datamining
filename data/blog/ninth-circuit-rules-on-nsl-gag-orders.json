@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Doug Kramer",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/12/148D6BBD-2D14-4462-B253-954E979A032C.jpeg",
-			"width": 828,
-			"height": 825
-		},
 		"url": "https://blog.cloudflare.com/author/doug-kramer/",
 		"sameAs": []
 	},
@@ -29,9 +10,5 @@
 	"dateModified": "2018-08-28T23:34:52.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2017/10/4900491002_e733185dac_b.jpg",
 	"keywords": "Legal, Privacy, Security",
-	"description": "As we’ve previously discussed on this blog, Cloudflare has been challenging for years the constitutionality of the FBI’s use of national security letters (NSLs) to demand user data on a confidential basis.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "As we’ve previously discussed on this blog, Cloudflare has been challenging for years the constitutionality of the FBI’s use of national security letters (NSLs) to demand user data on a confidential basis."
 }

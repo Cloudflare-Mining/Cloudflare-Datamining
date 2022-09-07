@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Corey Mahan",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/02/CoreyMahan_ProfilePhoto.jpg",
-			"width": 2000,
-			"height": 1659
-		},
 		"url": "https://blog.cloudflare.com/author/corey-mahan/",
 		"sameAs": [
 			"https://twitter.com/coreymahan"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/fr-fr/managing-clouds-cloudflare-casb-fr-fr/",
 	"datePublished": "2022-03-18T13:00:00.000Z",
 	"dateModified": "2022-06-13T12:51:14.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/06/image1-70-2.png",
-		"width": 1200,
-		"height": 675
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/06/image1-70-2.png",
 	"keywords": "Semaine de la sécurité, CASB (FR), Zero Trust (FR), Sécurité, Sécurité SaaS, Cloudflare Zero Trust (FR), Nouveautés produits, Français",
-	"description": "Nous travaillons actuellement à l&#x27;intégration en toute fluidité de notre produit CASB hors bande à la plateforme Zero Trust",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Nous travaillons actuellement à l&#x27;intégration en toute fluidité de notre produit CASB hors bande à la plateforme Zero Trust"
 }

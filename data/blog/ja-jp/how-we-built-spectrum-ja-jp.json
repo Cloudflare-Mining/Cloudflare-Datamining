@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Marek Majkowski",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/b5967d6c687939594adb6992723d0529.jpeg",
 		"url": "https://blog.cloudflare.com/author/marek-majkowski/",
 		"sameAs": [
 			"https://twitter.com/majek04"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/ja-jp/how-we-built-spectrum-ja-jp/",
 	"datePublished": "2018-04-12T13:00:00.000Z",
 	"dateModified": "2021-01-21T18:54:13.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2019/12/13334109713_0b32435032_z.jpg",
-		"width": 640,
-		"height": 425
-	},
+	"image": "https://blog.cloudflare.com/content/images/2019/12/13334109713_0b32435032_z.jpg",
 	"keywords": "製品ニュース (JP), セキュリティ, 日本語, DDoS (JP), Cloudflare Spectrum (JP)",
-	"description": "Cloudflareは本日、Spectrumの提供を開始します。Spectrumは、TCPベースのプロトコル向けのCloudflareの新たな機能で、DDoS攻撃に対する防御、ロードバランシング、およびコンテンツ高速化を実現します。",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Cloudflareは本日、Spectrumの提供を開始します。Spectrumは、TCPベースのプロトコル向けのCloudflareの新たな機能で、DDoS攻撃に対する防御、ロードバランシング、およびコンテンツ高速化を実現します。"
 }

@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "João Sousa Botto",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/07/profile2.jpg",
-			"width": 2000,
-			"height": 2026
-		},
 		"url": "https://blog.cloudflare.com/author/joao/",
 		"sameAs": [
 			"https://twitter.com/jsbotto"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/automatic-signed-exchanges-desktop-android-zh-cn/",
 	"datePublished": "2022-07-08T12:27:00.000Z",
 	"dateModified": "2022-08-19T09:23:06.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/08/pasted-image-0--4-.png",
-		"width": 1600,
-		"height": 900
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/08/pasted-image-0--4-.png",
 	"keywords": "速度和可靠性, Signed Exchanges (SXG) (CN), SEO (CN), 最大内容渲染 (LCP), 简体中文 (CN)",
-	"description": "Automatic Signed Exchanges 能够显著提升您的站点访问者数量",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Automatic Signed Exchanges 能够显著提升您的站点访问者数量"
 }

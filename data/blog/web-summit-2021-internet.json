@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "João Tomé",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/08/V0x3WKfJ_400x400-1.jpeg",
-			"width": 400,
-			"height": 400
-		},
 		"url": "https://blog.cloudflare.com/author/joao-tome/",
 		"sameAs": [
 			"https://twitter.com/emot"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/web-summit-2021-internet/",
 	"datePublished": "2021-11-26T13:59:12.000Z",
 	"dateModified": "2021-11-26T13:59:12.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/11/Web-Summit-2021-header.png",
-		"width": 1200,
-		"height": 800
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/11/Web-Summit-2021-header.png",
 	"keywords": "Events, Cloudflare Radar, Cloudflare Stream, Better Internet, Internet Usage",
-	"description": "Global in-person events are back. We present a few ideas from Web Summit 2021 about the future and where the Internet is going. Check the interviews we’ve done at the event (from the lack of Internet access to Web3). ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Global in-person events are back. We present a few ideas from Web Summit 2021 about the future and where the Internet is going. Check the interviews we’ve done at the event (from the lack of Internet access to Web3). "
 }

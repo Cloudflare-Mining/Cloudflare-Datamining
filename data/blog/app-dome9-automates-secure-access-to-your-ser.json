@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "John Roberts",
-		"image": "http://blog.cloudflare.com/content/images/2018/02/john.jpg",
 		"url": "https://blog.cloudflare.com/author/john-roberts/",
 		"sameAs": [
 			"https://twitter.com/pencoyd"
@@ -26,9 +12,5 @@
 	"dateModified": "2018-01-31T23:54:52.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/01/dome9-basic-ui.png.scaled500.png",
 	"keywords": "Cloudflare Apps",
-	"description": "CloudFlare protects your website, scrubbing your web traffic from unwanted visitors and attacks. But not all traffic to a server is web traffic. For instance, SSH, FTP and other administrative ports may be needed at different times. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "CloudFlare protects your website, scrubbing your web traffic from unwanted visitors and attacks. But not all traffic to a server is web traffic. For instance, SSH, FTP and other administrative ports may be needed at different times. "
 }

@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Rita Kozlov",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/05/Rita-Kozlov.jpeg",
-			"width": 200,
-			"height": 200
-		},
 		"url": "https://blog.cloudflare.com/author/rita/",
 		"sameAs": [
 			"https://twitter.com/ritakozlov_"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/platform-week-2022/",
 	"datePublished": "2022-05-08T16:59:38.000Z",
 	"dateModified": "2022-05-09T21:38:01.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/05/Screen-Shot-2022-05-09-at-1.28.13-PM-1.png",
-		"width": 1318,
-		"height": 672
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/05/Screen-Shot-2022-05-09-at-1.28.13-PM-1.png",
 	"keywords": "Platform Week, Developers, Product News",
-	"description": "This Platform Week, we don’t want to deliver on just new and shiny things (though there will be a few of those, too!). We want to deliver on principles. On letting the best solution win. On breaking developers out of lock in: whether because of code, or because of economics",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "This Platform Week, we don’t want to deliver on just new and shiny things (though there will be a few of those, too!). We want to deliver on principles. On letting the best solution win. On breaking developers out of lock in: whether because of code, or because of economics"
 }

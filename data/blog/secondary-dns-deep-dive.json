@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Alex Fattouche",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/09/portrait.png",
-			"width": 665,
-			"height": 704
-		},
 		"url": "https://blog.cloudflare.com/author/alex-fattouche/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/secondary-dns-deep-dive/",
 	"datePublished": "2020-09-15T11:00:00.000Z",
 	"dateModified": "2021-05-19T18:29:15.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2020/09/image3-thumb.png",
-		"width": 1200,
-		"height": 758
-	},
+	"image": "https://blog.cloudflare.com/content/images/2020/09/image3-thumb.png",
 	"keywords": "DNS, Growth, Kubernetes, Speed & Reliability, Deep Dive",
-	"description": "The goal of Cloudflare operated Secondary DNS is to allow our customers with custom DNS solutions, be it on-premise or some other DNS provider, to be able to take advantage of Cloudflare&#x27;s DNS performance and more recently, through Secondary Override, our proxying and security capabilities too.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "The goal of Cloudflare operated Secondary DNS is to allow our customers with custom DNS solutions, be it on-premise or some other DNS provider, to be able to take advantage of Cloudflare&#x27;s DNS performance and more recently, through Secondary Override, our proxying and security capabilities too."
 }

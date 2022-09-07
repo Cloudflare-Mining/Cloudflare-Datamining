@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "John Graham-Cumming",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
 		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
 		"sameAs": [
 			"https://twitter.com/jgrahamc"
@@ -26,9 +12,5 @@
 	"dateModified": "2018-08-03T22:37:55.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/08/introducing-im-under-attack-mode.png.scaled500-1.png",
 	"keywords": "Product News, Reliability, I'm Under Attack Mode, Attacks, DDoS",
-	"description": "CloudFlare&#x27;s I&#x27;m Under Attack mode allows our customers to, at the click of a button, tell us that they are experiencing an attack and enable automatic protection. It works by slowing down visits to the web site that&#x27;s under attack and performing extra work to identify malicious visitors. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "CloudFlare&#x27;s I&#x27;m Under Attack mode allows our customers to, at the click of a button, tell us that they are experiencing an attack and enable automatic protection. It works by slowing down visits to the web site that&#x27;s under attack and performing extra work to identify malicious visitors. "
 }

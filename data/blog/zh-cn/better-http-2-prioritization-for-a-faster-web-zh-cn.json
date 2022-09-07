@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Patrick Meenan",
-		"image": "http://blog.cloudflare.com/content/images/2018/08/PatPerfCalendar.jpg",
 		"url": "https://blog.cloudflare.com/author/patrick-meenan/",
 		"sameAs": [
 			"https://www.webpagetest.org/",
@@ -25,16 +11,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/better-http-2-prioritization-for-a-faster-web-zh-cn/",
 	"datePublished": "2019-05-14T13:00:00.000Z",
 	"dateModified": "2021-01-28T18:52:46.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2019/11/http2-prioritization-1.png",
-		"width": 1600,
-		"height": 1122
-	},
+	"image": "https://blog.cloudflare.com/content/images/2019/11/http2-prioritization-1.png",
 	"keywords": "产品新闻, 速度和可靠性 (CN), 速度周 (CN), 简体中文 (CN)",
-	"description": "HTTP/2承诺了一个更快的网络，而Cloudflare很久以前就为我们所有的客户推出了HTTP/2访问。但是HTTP/2的一个特性——优先级，并没有达到预期的效果。问题不在于它从根本上被破坏了，而在于浏览器实现它的方式。",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "HTTP/2承诺了一个更快的网络，而Cloudflare很久以前就为我们所有的客户推出了HTTP/2访问。但是HTTP/2的一个特性——优先级，并没有达到预期的效果。问题不在于它从根本上被破坏了，而在于浏览器实现它的方式。"
 }

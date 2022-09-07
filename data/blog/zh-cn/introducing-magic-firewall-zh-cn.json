@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Achiel van der Mandele",
-		"image": "http://blog.cloudflare.com/content/images/2019/04/avatar.png",
 		"url": "https://blog.cloudflare.com/author/achiel/",
 		"sameAs": []
 	},
@@ -22,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/introducing-magic-firewall-zh-cn/",
 	"datePublished": "2020-10-16T15:00:00.000Z",
 	"dateModified": "2021-01-27T02:52:09.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2020/12/Image_20201016_072224-1.jpeg",
-		"width": 2000,
-		"height": 1000
-	},
+	"image": "http://blog.cloudflare.com/content/images/2020/12/Image_20201016_072224-1.jpeg",
 	"keywords": "简体中文 (CN), Magic Firewall (CN), Cloudflare One (CN), Magic Transit (CN), 零信任周 (CN), 零信任 (CN)",
-	"description": "今天，我们很高兴地发布 Magic Firewall™，这款通过 Cloudflare 提供的网络级防火墙能够保护您的企业安全。Magic Firewall 为您的远程用户、分支机构、数据中心和云基础结构提供安全保障。",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "今天，我们很高兴地发布 Magic Firewall™，这款通过 Cloudflare 提供的网络级防火墙能够保护您的企业安全。Magic Firewall 为您的远程用户、分支机构、数据中心和云基础结构提供安全保障。"
 }

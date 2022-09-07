@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Aly Cabral",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/aly.jpeg",
-			"width": 500,
-			"height": 500
-		},
 		"url": "https://blog.cloudflare.com/author/alyson/",
 		"sameAs": [
 			"https://twitter.com/Aly_Cabral"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/announcing-green-compute/",
 	"datePublished": "2021-07-27T12:59:26.000Z",
 	"dateModified": "2021-07-27T12:59:25.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/07/Green-Compute.png",
-		"width": 1200,
-		"height": 675
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/07/Green-Compute.png",
 	"keywords": "Impact Week, Serverless, Developers, Cloudflare Workers, Sustainability",
-	"description": "At Cloudflare, our goal is to bring sustainable computing to you without the need for any additional time, work, or complexity.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "At Cloudflare, our goal is to bring sustainable computing to you without the need for any additional time, work, or complexity."
 }

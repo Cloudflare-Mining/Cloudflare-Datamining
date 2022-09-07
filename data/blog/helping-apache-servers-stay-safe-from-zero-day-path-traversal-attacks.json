@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Michael Tremante",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/url-3.jpg",
 		"url": "https://blog.cloudflare.com/author/michael-tremante/",
 		"sameAs": [
 			"https://twitter.com/MichaelTremante"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/helping-apache-servers-stay-safe-from-zero-day-path-traversal-attacks/",
 	"datePublished": "2021-10-08T10:29:26.000Z",
 	"dateModified": "2021-10-11T10:50:15.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/10/Helping-Apache-Servers-stay-safe-from-zero-day-path-traversal-attacks-header.png",
-		"width": 1200,
-		"height": 628
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/10/Helping-Apache-Servers-stay-safe-from-zero-day-path-traversal-attacks-header.png",
 	"keywords": "WAF Rules, Security, Vulnerabilities, Cloudflare Access",
-	"description": "On September 29th 2021, the Apache Security team was alerted of a path traversal vulnerability being actively exploited (zero-day) against Apache HTTP Server version 2.4.49. Customers running the affected Apache version, should update to 2.5.51 as soon as possible.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "On September 29th 2021, the Apache Security team was alerted of a path traversal vulnerability being actively exploited (zero-day) against Apache HTTP Server version 2.4.49. Customers running the affected Apache version, should update to 2.5.51 as soon as possible."
 }

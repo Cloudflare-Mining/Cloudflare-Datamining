@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Omer Yoachimik",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/Omer-1.png",
-			"width": 773,
-			"height": 653
-		},
 		"url": "https://blog.cloudflare.com/author/omer/",
 		"sameAs": [
 			"https://twitter.com/OmerYoahimik"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/cloudflare-thwarts-17-2m-rps-ddos-attack-the-largest-ever-reported-zh-cn/",
 	"datePublished": "2021-08-19T12:58:00.000Z",
 	"dateModified": "2021-08-31T00:03:16.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/08/graph-og-1-3.png",
-		"width": 1609,
-		"height": 844
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/08/graph-og-1-3.png",
 	"keywords": "DDoS (CN), dosd (CN), Mirai (CN), 趋势 (CN), 僵尸网络",
-	"description": "今年初夏，Cloudflare 的自主边缘 DDoS 保护系统自动检测并缓解了一次每秒 1720 万个请求 (rps) 的 DDoS 攻击，这个攻击规模相当于我们过去已知任何一次攻击的近三倍。作为对比，",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "今年初夏，Cloudflare 的自主边缘 DDoS 保护系统自动检测并缓解了一次每秒 1720 万个请求 (rps) 的 DDoS 攻击，这个攻击规模相当于我们过去已知任何一次攻击的近三倍。作为对比，"
 }

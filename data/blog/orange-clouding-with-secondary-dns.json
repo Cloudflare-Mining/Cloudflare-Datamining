@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Alex Fattouche",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/09/portrait.png",
-			"width": 665,
-			"height": 704
-		},
 		"url": "https://blog.cloudflare.com/author/alex-fattouche/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/orange-clouding-with-secondary-dns/",
 	"datePublished": "2020-08-20T11:00:00.000Z",
 	"dateModified": "2020-08-20T11:00:00.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2020/08/feat.png",
-		"width": 1200,
-		"height": 650
-	},
+	"image": "https://blog.cloudflare.com/content/images/2020/08/feat.png",
 	"keywords": "DNS, Product News, Proxying, CNAME",
-	"description": "Secondary DNS Override is a great option for any users that want to take advantage of the Cloudflare network, without transferring all of their zones to Cloudflare DNS as a primary provider.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Secondary DNS Override is a great option for any users that want to take advantage of the Cloudflare network, without transferring all of their zones to Cloudflare DNS as a primary provider."
 }

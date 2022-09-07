@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Matthew Prince",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
-			"width": 1196,
-			"height": 1190
-		},
 		"url": "https://blog.cloudflare.com/author/matthew-prince/",
 		"sameAs": [
 			"https://twitter.com/eastdakota"
@@ -29,10 +10,7 @@
 	"url": "https://blog.cloudflare.com/why-we-terminated-daily-stormer/",
 	"datePublished": "2017-08-16T22:29:04.000Z",
 	"dateModified": "2019-08-16T18:34:48.000Z",
+	"image": null,
 	"keywords": "Freedom of Speech, Community, DDoS, Legal, Politics",
-	"description": "Earlier today, Cloudflare terminated the account of the Daily Stormer. We&#x27;ve stopped proxying their traffic and stopped answering DNS requests for their sites. We&#x27;ve taken measures to ensure that they cannot sign up for Cloudflare&#x27;s services ever again.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Earlier today, Cloudflare terminated the account of the Daily Stormer. We&#x27;ve stopped proxying their traffic and stopped answering DNS requests for their sites. We&#x27;ve taken measures to ensure that they cannot sign up for Cloudflare&#x27;s services ever again."
 }

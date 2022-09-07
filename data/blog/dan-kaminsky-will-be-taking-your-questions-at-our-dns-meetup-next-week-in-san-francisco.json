@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Dani Grant",
-		"image": "http://blog.cloudflare.com/content/images/2018/08/efVJR3rj_400x400.jpg",
 		"url": "https://blog.cloudflare.com/author/dani/",
 		"sameAs": [
 			"https://twitter.com/thedanigrant"
@@ -26,9 +12,5 @@
 	"dateModified": "2018-08-27T19:19:36.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/08/600_448877792.jpg",
 	"keywords": "DNS, MeetUp, Cloudflare Meetups, Events, Reliability",
-	"description": "Our last DNS meetup was a packed house with Paul Mockapetris, the original inventor of DNS. We learned why DNS answers have a question count but always only one question, why underscores aren’t allowed in domain names, and the history of how DNS came to be.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Our last DNS meetup was a packed house with Paul Mockapetris, the original inventor of DNS. We learned why DNS answers have a question count but always only one question, why underscores aren’t allowed in domain names, and the history of how DNS came to be."
 }

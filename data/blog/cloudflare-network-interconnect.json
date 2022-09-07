@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "David Tuber",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/07/kutiya-face.png",
-			"width": 983,
-			"height": 1049
-		},
 		"url": "https://blog.cloudflare.com/author/tubes/",
 		"sameAs": [
 			"https://twitter.com/tubes__"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/cloudflare-network-interconnect/",
 	"datePublished": "2020-08-04T13:00:00.000Z",
 	"dateModified": "2020-08-05T09:42:54.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2020/08/Cloudflare-Network-Interconnect-@2x.png",
-		"width": 1600,
-		"height": 856
-	},
+	"image": "https://blog.cloudflare.com/content/images/2020/08/Cloudflare-Network-Interconnect-@2x.png",
 	"keywords": "Product News, CNI, Network",
-	"description": "Today we’re excited to announce Cloudflare Network Interconnect (CNI). CNI allows our customers to interconnect branch and HQ locations directly with Cloudflare wherever they are, bringing Cloudflare’s full suite of network functions to their physical network edge.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Today we’re excited to announce Cloudflare Network Interconnect (CNI). CNI allows our customers to interconnect branch and HQ locations directly with Cloudflare wherever they are, bringing Cloudflare’s full suite of network functions to their physical network edge."
 }

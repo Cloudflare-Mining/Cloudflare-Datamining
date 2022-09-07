@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Alex Fattouche",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/09/portrait.png",
-			"width": 665,
-			"height": 704
-		},
 		"url": "https://blog.cloudflare.com/author/alex-fattouche/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/ja-jp/orange-clouding-with-secondary-dns-ja-jp/",
 	"datePublished": "2020-08-20T11:16:00.000Z",
 	"dateModified": "2021-01-21T18:47:36.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2020/11/feat.png",
-		"width": 1200,
-		"height": 650
-	},
+	"image": "http://blog.cloudflare.com/content/images/2020/11/feat.png",
 	"keywords": "日本語, DNS (JP), Product News, 製品ニュース (JP)",
-	"description": "セカンダリDNSを活用する共通の方法がいくつもありますが、その中に次のような方法があります。",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "セカンダリDNSを活用する共通の方法がいくつもありますが、その中に次のような方法があります。"
 }

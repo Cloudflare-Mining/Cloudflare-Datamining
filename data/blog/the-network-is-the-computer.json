@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "John Graham-Cumming",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
 		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
 		"sameAs": [
 			"https://twitter.com/jgrahamc"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/the-network-is-the-computer/",
 	"datePublished": "2019-07-11T13:00:00.000Z",
 	"dateModified": "2019-07-25T21:23:46.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2019/07/NetworkIsTheComputer-Alt1-1.png",
-		"width": 1500,
-		"height": 1305
-	},
+	"image": "https://blog.cloudflare.com/content/images/2019/07/NetworkIsTheComputer-Alt1-1.png",
 	"keywords": "Network, Brand, Serverless, Cloudflare Workers",
-	"description": "We recently registered the trademark for “The Network is the Computer,” to encompass how Cloudflare is utilizing its network to pave the way for the future of the Internet. The phrase was first coined in 1984 by John Gage, the 21st employee of Sun Microsystems,  ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "We recently registered the trademark for “The Network is the Computer,” to encompass how Cloudflare is utilizing its network to pave the way for the future of the Internet. The phrase was first coined in 1984 by John Gage, the 21st employee of Sun Microsystems,  "
 }

@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "John Graham-Cumming",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
 		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
 		"sameAs": [
 			"https://twitter.com/jgrahamc"
@@ -26,9 +12,5 @@
 	"dateModified": "2018-09-13T21:56:31.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/08/railgun.png.scaled500_1.png",
 	"keywords": "RRDNS, Go, Railgun, Reliability, Speed & Reliability, Speed, Birthday Week, Product News",
-	"description": "Almost two years ago CloudFlare started working with Go. What started as an experiment on one network and concurrency heavy project has turned into full, production use of Go for multiple services.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Almost two years ago CloudFlare started working with Go. What started as an experiment on one network and concurrency heavy project has turned into full, production use of Go for multiple services."
 }

@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Bas Westerbaan",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/11/me.png",
-			"width": 100,
-			"height": 100
-		},
 		"url": "https://blog.cloudflare.com/author/bas/",
 		"sameAs": [
 			"https://bas.westerbaan.name",
@@ -30,16 +11,7 @@
 	"url": "https://blog.cloudflare.com/sizing-up-post-quantum-signatures/",
 	"datePublished": "2021-11-08T15:39:18.000Z",
 	"dateModified": "2021-11-22T13:17:32.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/11/image4-7.png",
-		"width": 1801,
-		"height": 1013
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/11/image4-7.png",
 	"keywords": "Research, Crypto, TLS, Post-Quantum",
-	"description": "How much room does TLS have for the big post-quantum signatures? We had a look: it’s tight.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "How much room does TLS have for the big post-quantum signatures? We had a look: it’s tight."
 }

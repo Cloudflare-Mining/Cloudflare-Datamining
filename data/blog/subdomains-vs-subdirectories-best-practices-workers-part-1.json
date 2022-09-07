@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Michael Pinter",
-		"image": "http://blog.cloudflare.com/content/images/2018/11/g5QoJmQKS5iJdbcxHJXg_1204a20b3d1d96bba523a6a2a5fa3cd73bd4fe59240a27ad6eb8c064c6792446.png",
 		"url": "https://blog.cloudflare.com/author/michael-pinter/",
 		"sameAs": []
 	},
@@ -24,9 +10,5 @@
 	"dateModified": "2019-02-22T01:13:26.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2019/02/pexels-photo-270637.jpeg",
 	"keywords": "Cloudflare Workers, SEO, NGINX, Serverless",
-	"description": "Alice and Bob are budding blogger buddies who met up at a meetup and purchased some root domains to start writing.  Alice bought aliceblogs.com and Bob scooped up bobtopia.com.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Alice and Bob are budding blogger buddies who met up at a meetup and purchased some root domains to start writing.  Alice bought aliceblogs.com and Bob scooped up bobtopia.com."
 }

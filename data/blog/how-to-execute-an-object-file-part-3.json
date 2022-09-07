@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Ignat Korchagin",
-		"image": "http://blog.cloudflare.com/content/images/2018/02/AAEAAQAAAAAAAAepAAAAJGI3NzA4ZDQxLTE1NTYtNDNlNi05M2NjLTE4NDE3ZTE3OWEyZg.jpg",
 		"url": "https://blog.cloudflare.com/author/ignat/",
 		"sameAs": [
 			"https://twitter.com/ignatkn"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/how-to-execute-an-object-file-part-3/",
 	"datePublished": "2021-09-10T12:58:20.000Z",
 	"dateModified": "2021-09-10T12:58:20.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/09/image1.jpg",
-		"width": 1200,
-		"height": 627
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/09/image1.jpg",
 	"keywords": "Linux, Compiler, Programming, Software, Deep Dive",
-	"description": "Continue learning how to import and execute code from an object file. In this part we will handle external library dependencies.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Continue learning how to import and execute code from an object file. In this part we will handle external library dependencies."
 }

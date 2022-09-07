@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Zaid Farooqui",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/05/Screen-Shot-2022-05-12-at-5.21.40-PM.png",
-			"width": 406,
-			"height": 370
-		},
 		"url": "https://blog.cloudflare.com/author/zaid/",
 		"sameAs": [
 			"https://twitter.com/zaid"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/remote-work-isnt-just-video-conferencing-how-we-built-cloudflaretv/",
 	"datePublished": "2020-03-20T12:00:00.000Z",
 	"dateModified": "2020-03-20T12:00:00.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2020/03/1-2.png",
-		"width": 987,
-		"height": 787
-	},
+	"image": "https://blog.cloudflare.com/content/images/2020/03/1-2.png",
 	"keywords": "Cloudflare Stream, Product News, Video",
-	"description": "At Cloudflare, we produce all types of video content, ranging from recordings of our Weekly All-hands to product demos. Being able to stream video on demand has two major advantages when compared to live video.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "At Cloudflare, we produce all types of video content, ranging from recordings of our Weekly All-hands to product demos. Being able to stream video on demand has two major advantages when compared to live video."
 }

@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Marek Majkowski",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/b5967d6c687939594adb6992723d0529.jpeg",
 		"url": "https://blog.cloudflare.com/author/marek-majkowski/",
 		"sameAs": [
 			"https://twitter.com/majek04"
@@ -26,9 +12,5 @@
 	"dateModified": "2021-01-22T21:24:02.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2019/03/3829936641_f112ed1665_b-2.jpg",
 	"keywords": "DDoS (DE), Entwickler, Entschärfung, Angriffe (DE), Schwachstellen, Deutsch",
-	"description": "In den letzten Tagen haben wir einen großen Anstieg von Amplification-Angriffen (Verstärkungsangriffen) mit einem obskuren Angriffsvektor festgestellt, die unter Nutzung des Memcached-Protokolls von UDP-Port 11211 kamen.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "In den letzten Tagen haben wir einen großen Anstieg von Amplification-Angriffen (Verstärkungsangriffen) mit einem obskuren Angriffsvektor festgestellt, die unter Nutzung des Memcached-Protokolls von UDP-Port 11211 kamen."
 }

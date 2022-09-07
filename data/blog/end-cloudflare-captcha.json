@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Reid Tatoris",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/03/reid-headshot.jpeg",
-			"width": 960,
-			"height": 960
-		},
 		"url": "https://blog.cloudflare.com/author/reid/",
 		"sameAs": [
 			"https://twitter.com/reidtatoris"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/end-cloudflare-captcha/",
 	"datePublished": "2022-04-01T13:31:08.000Z",
 	"dateModified": "2022-07-29T18:36:54.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/04/image1-1.png",
-		"width": 1800,
-		"height": 1013
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/04/image1-1.png",
 	"keywords": "Managed Challenge, CAPTCHA, WAF, Security, Bots, Product News",
-	"description": "We decided we’re going to stop using CAPTCHAs. Before we talk about how we did it, and how you can help, let&#x27;s first start with a simple question. Why in the world is CAPTCHA still used anyway?",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "We decided we’re going to stop using CAPTCHAs. Before we talk about how we did it, and how you can help, let&#x27;s first start with a simple question. Why in the world is CAPTCHA still used anyway?"
 }

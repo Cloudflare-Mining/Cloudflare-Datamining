@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Chris J Arges",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/12/chris.jpg",
-			"width": 1342,
-			"height": 1342
-		},
 		"url": "https://blog.cloudflare.com/author/arges/",
 		"sameAs": [
 			"https://twitter.com/ChrisArges"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/programmable-packet-filtering-with-magic-firewall/",
 	"datePublished": "2021-12-06T13:59:53.000Z",
 	"dateModified": "2021-12-29T23:47:43.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/12/image3-7.png",
-		"width": 1801,
-		"height": 1013
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/12/image3-7.png",
 	"keywords": "CIO Week, Magic Firewall, Magic Transit, Security, VoIP, eBPF",
-	"description": "By combining the power of eBPF and Nftables, Magic Firewall can mitigate sophisticated attacks on infrastructure by enforcing a positive security model.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "By combining the power of eBPF and Nftables, Magic Firewall can mitigate sophisticated attacks on infrastructure by enforcing a positive security model."
 }

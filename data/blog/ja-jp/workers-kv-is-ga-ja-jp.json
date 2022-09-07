@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Ashcon Partovi",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/04/117158947_4858836477475662_2532132460047140852_o.jpeg",
-			"width": 280,
-			"height": 280
-		},
 		"url": "https://blog.cloudflare.com/author/ashcon/",
 		"sameAs": [
 			"https://twitter.com/ashconpartovi"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/ja-jp/workers-kv-is-ga-ja-jp/",
 	"datePublished": "2019-05-21T13:00:00.000Z",
 	"dateModified": "2021-01-21T18:53:47.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2019/12/Workers-KV-GA@2x.png",
-		"width": 1517,
-		"height": 776
-	},
+	"image": "https://blog.cloudflare.com/content/images/2019/12/Workers-KV-GA@2x.png",
 	"keywords": "日本語, サーバーレス, JavaScript (JP), Cloudflare Workers (JP), Cloudflare Workers KV (JP)",
-	"description": "本日、Workers KVの一般利用が開始し、業務目的の利用準備が完了したことをお知らせします！",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "本日、Workers KVの一般利用が開始し、業務目的の利用準備が完了したことをお知らせします！"
 }

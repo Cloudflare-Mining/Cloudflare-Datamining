@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Alex Cruz Farmer",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/12/_DSC4744--2-.jpg",
-			"width": 600,
-			"height": 600
-		},
 		"url": "https://blog.cloudflare.com/author/alex-cruz-farmer/",
 		"sameAs": [
 			"https://twitter.com/alexcf"
@@ -31,9 +12,5 @@
 	"dateModified": "2021-02-05T01:19:25.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2019/05/Firewall-rules-white-back-1.png",
 	"keywords": "Seguridad, Fiabilidad, Regla de WAF, Noticias de productos, Español, Firewall (ES)",
-	"description": "Las posibles situaciones de amenaza cambian cada segundo. A medida que los atacantes evolucionan, haciéndose más dinámicos y retorcidos, las vulnerabilidades se materializan más rápidamente que los parcheados creados por los ingenieros para las aplicaciones.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Las posibles situaciones de amenaza cambian cada segundo. A medida que los atacantes evolucionan, haciéndose más dinámicos y retorcidos, las vulnerabilidades se materializan más rápidamente que los parcheados creados por los ingenieros para las aplicaciones."
 }

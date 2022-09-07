@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Alice Bracchi",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/03/Screenshot-2021-03-04-at-11.24.42.png",
-			"width": 1192,
-			"height": 1226
-		},
 		"url": "https://blog.cloudflare.com/author/alice-bracchi/",
 		"sameAs": [
 			"https://twitter.com/thewiiings"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/content-design-at-cloudflare/",
 	"datePublished": "2022-05-30T12:56:03.000Z",
 	"dateModified": "2022-05-30T14:10:51.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/05/image1-61.png",
-		"width": 1350,
-		"height": 838
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/05/image1-61.png",
 	"keywords": "Technical Writing",
-	"description": "Great content on an interface “just works”; it disappears into a delightful user experience while leading happy users to success, whatever it is they’re trying to get done with a given product",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Great content on an interface “just works”; it disappears into a delightful user experience while leading happy users to success, whatever it is they’re trying to get done with a given product"
 }

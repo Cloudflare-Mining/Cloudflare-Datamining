@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Marek Majkowski",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/b5967d6c687939594adb6992723d0529.jpeg",
 		"url": "https://blog.cloudflare.com/author/marek-majkowski/",
 		"sameAs": [
 			"https://twitter.com/majek04"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/zh-tw/when-the-window-is-not-fully-open-your-tcp-stack-is-doing-more-than-you-think-zh-tw/",
 	"datePublished": "2022-07-26T13:00:00.000Z",
 	"dateModified": "2022-08-25T11:05:27.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/08/image3-10.png",
-		"width": 1000,
-		"height": 600
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/08/image3-10.png",
 	"keywords": "Linux (TW), TCP (TW), 繁體中文 (TW)",
-	"description": "在本篇部落格貼文中，我將與大家分享我深入 Linux 網路堆疊的旅程，試著去瞭解 TCP 連線接收端的記憶體及視窗管理情況",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "在本篇部落格貼文中，我將與大家分享我深入 Linux 網路堆疊的旅程，試著去瞭解 TCP 連線接收端的記憶體及視窗管理情況"
 }

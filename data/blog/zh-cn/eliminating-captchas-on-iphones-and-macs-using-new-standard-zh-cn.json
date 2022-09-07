@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Reid Tatoris",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/03/reid-headshot.jpeg",
-			"width": 960,
-			"height": 960
-		},
 		"url": "https://blog.cloudflare.com/author/reid/",
 		"sameAs": [
 			"https://twitter.com/reidtatoris"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/eliminating-captchas-on-iphones-and-macs-using-new-standard-zh-cn/",
 	"datePublished": "2022-06-08T16:01:00.000Z",
 	"dateModified": "2022-06-09T10:43:34.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/06/Screenshot-2022-06-08-at-16.48.35-1.png",
-		"width": 1006,
-		"height": 838
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/06/Screenshot-2022-06-08-at-16.48.35-1.png",
 	"keywords": "安全, CAPTCHA (CN), 产品新闻, 简体中文, Partners (CN)",
-	"description": "今天我们隆重推出 Private Attestation Token（PAT），这是一种完全无形和隐私的方式，用于验证访问网站的是真实的用户",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "今天我们隆重推出 Private Attestation Token（PAT），这是一种完全无形和隐私的方式，用于验证访问网站的是真实的用户"
 }

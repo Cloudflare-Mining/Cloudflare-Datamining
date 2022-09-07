@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "John Roberts",
-		"image": "http://blog.cloudflare.com/content/images/2018/02/john.jpg",
 		"url": "https://blog.cloudflare.com/author/john-roberts/",
 		"sameAs": [
 			"https://twitter.com/pencoyd"
@@ -26,9 +12,5 @@
 	"dateModified": "2018-01-31T23:27:15.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/01/blitz-logo-200.jpg.scaled500.jpg",
 	"keywords": "Cloudflare Apps, Testing",
-	"description": "Blitz.io is a self service load and performance testing platform. It&#x27;s a new offering from Mu Dynamics, leaders in the application testing space, and we&#x27;re thrilled to make Blitz instantly available to CloudFlare customers right now as a CloudFlare App.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Blitz.io is a self service load and performance testing platform. It&#x27;s a new offering from Mu Dynamics, leaders in the application testing space, and we&#x27;re thrilled to make Blitz instantly available to CloudFlare customers right now as a CloudFlare App."
 }

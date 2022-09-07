@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Omer Yoachimik",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/Omer-1.png",
-			"width": 773,
-			"height": 653
-		},
 		"url": "https://blog.cloudflare.com/author/omer/",
 		"sameAs": [
 			"https://twitter.com/OmerYoahimik"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/rolling-with-the-punches-shifting-attack-tactics-dropping-packets-faster-cheaper-at-the-edge/",
 	"datePublished": "2020-04-10T11:00:00.000Z",
 	"dateModified": "2021-03-02T12:16:33.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2020/04/rolling-with-the-punches.png",
-		"width": 1600,
-		"height": 859
-	},
+	"image": "https://blog.cloudflare.com/content/images/2020/04/rolling-with-the-punches.png",
 	"keywords": "DDoS, Security, Magic Transit, Trends",
-	"description": "Over the past 6 months, volumetric DDoS attacks decreased by 82%. However volumetric attacks are not gone yet, still peaking as high as 418 Gbps. In this post, we cover the changing attack landscape and how Cloudflare adapts and evolves to keep the internet safe.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Over the past 6 months, volumetric DDoS attacks decreased by 82%. However volumetric attacks are not gone yet, still peaking as high as 418 Gbps. In this post, we cover the changing attack landscape and how Cloudflare adapts and evolves to keep the internet safe."
 }

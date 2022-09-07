@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Albert Zhao",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/01/Ghost-Blog-DP.jpg",
-			"width": 398,
-			"height": 366
-		},
 		"url": "https://blog.cloudflare.com/author/albert/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/node-js-support-cloudflare-workers/",
 	"datePublished": "2021-04-16T13:00:00.000Z",
 	"dateModified": "2021-04-16T16:22:26.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/04/Screen-Shot-2021-04-16-at-9.21.42-AM-1.png",
-		"width": 1344,
-		"height": 708
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/04/Screen-Shot-2021-04-16-at-9.21.42-AM-1.png",
 	"keywords": "Developer Week, Developers, Cloudflare Workers, JavaScript, Serverless, Node.js, Product News",
-	"description": "Check out the current state of Node.js compatibility with Workers. We want to hear from you on which Node.js-dependent libraries and APIs we should support.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Check out the current state of Node.js compatibility with Workers. We want to hear from you on which Node.js-dependent libraries and APIs we should support."
 }

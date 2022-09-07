@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Jake Riesterer",
-		"image": {
-			"@type": "ImageObject",
-			"url": "//www.gravatar.com/avatar/2f11083e88cf259c7be7e20e3462a31e?s=250&d=mm&r=x",
-			"width": 250,
-			"height": 250
-		},
 		"url": "https://blog.cloudflare.com/author/jake-riesterer/",
 		"sameAs": []
 	},
@@ -29,9 +10,5 @@
 	"dateModified": "2018-09-13T16:03:15.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/09/Screen-Shot-2018-09-12-at-2.48.30-PM.png",
 	"keywords": "Cloudflare Workers, Serverless, JavaScript, Terraform, Product News, Programming",
-	"description": "Today we&#x27;re excited to announce that Cloudflare Workers are now supported in the Cloudflare Terraform Provider. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Today we&#x27;re excited to announce that Cloudflare Workers are now supported in the Cloudflare Terraform Provider. "
 }

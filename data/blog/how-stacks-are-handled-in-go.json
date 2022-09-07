@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Daniel Morsing",
-		"image": "http://blog.cloudflare.com/content/images/2018/02/d4HihmUn_400x400.jpg",
 		"url": "https://blog.cloudflare.com/author/daniel/",
 		"sameAs": []
 	},
@@ -22,10 +8,7 @@
 	"url": "https://blog.cloudflare.com/how-stacks-are-handled-in-go/",
 	"datePublished": "2014-09-15T14:08:16.000Z",
 	"dateModified": "2018-08-22T01:39:48.000Z",
+	"image": null,
 	"keywords": "Speed & Reliability, Go",
-	"description": "At CloudFlare, We use Go for a variety of services and applications. In this blog post, We&#x27;re going to take a deep dive into some of the technical intricacies of Go.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "At CloudFlare, We use Go for a variety of services and applications. In this blog post, We&#x27;re going to take a deep dive into some of the technical intricacies of Go."
 }

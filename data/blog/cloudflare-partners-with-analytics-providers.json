@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Simon Steiner",
-		"image": "http://blog.cloudflare.com/content/images/2019/06/Head-shot.jpg",
 		"url": "https://blog.cloudflare.com/author/simon/",
 		"sameAs": []
 	},
@@ -24,9 +10,5 @@
 	"dateModified": "2019-07-01T18:56:19.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2019/06/image7-4.png",
 	"keywords": "Analytics, Product News, Insights, Partners",
-	"description": "Today we’re excited to announce our partnerships with Chronicle Security, Datadog, Elastic, Looker, Splunk, and Sumo Logic to make it easy for our customers to analyze Cloudflare logs and metrics using their analytics provider of choice.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Today we’re excited to announce our partnerships with Chronicle Security, Datadog, Elastic, Looker, Splunk, and Sumo Logic to make it easy for our customers to analyze Cloudflare logs and metrics using their analytics provider of choice."
 }

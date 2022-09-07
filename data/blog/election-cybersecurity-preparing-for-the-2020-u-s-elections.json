@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Jocelyn Woolbright",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/12/0-1.jpg",
-			"width": 450,
-			"height": 450
-		},
 		"url": "https://blog.cloudflare.com/author/jocelyn/",
 		"sameAs": [
 			"https://twitter.com/jo_woolbright"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/election-cybersecurity-preparing-for-the-2020-u-s-elections/",
 	"datePublished": "2020-08-17T12:30:00.000Z",
 	"dateModified": "2020-11-02T16:38:50.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2020/08/3F16C254-6DB6-45AD-BE9D-92677BA167D3.jpeg",
-		"width": 1201,
-		"height": 801
-	},
+	"image": "https://blog.cloudflare.com/content/images/2020/08/3F16C254-6DB6-45AD-BE9D-92677BA167D3.jpeg",
 	"keywords": "Athenian Project, Election Security, Elections",
-	"description": "At Cloudflare, we believe that expanding access to tools that election officials and political candidates need to combat a range of online threats both serves our mission to help build a better Internet and strengthens our democracy.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "At Cloudflare, we believe that expanding access to tools that election officials and political candidates need to combat a range of online threats both serves our mission to help build a better Internet and strengthens our democracy."
 }

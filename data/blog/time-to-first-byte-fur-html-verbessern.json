@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Patrick Meenan",
-		"image": "http://blog.cloudflare.com/content/images/2018/08/PatPerfCalendar.jpg",
 		"url": "https://blog.cloudflare.com/author/patrick-meenan/",
 		"sameAs": [
 			"https://www.webpagetest.org/",
@@ -27,9 +13,5 @@
 	"dateModified": "2019-08-06T21:12:11.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2019/04/tweet-1-2.png",
 	"keywords": "Speed & Reliability, Cloudflare Workers, Cloudflare Workers KV, WordPress, Cache, Serverlos, Programmierung",
-	"description": "Die Time to First Byte (TTFB) einer Website ist die Zeit von dem Zeitpunkt, an dem der Benutzer mit der Navigation beginnt, bis der erste HTML-Code für die von ihm angeforderte Seite ankommt.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Die Time to First Byte (TTFB) einer Website ist die Zeit von dem Zeitpunkt, an dem der Benutzer mit der Navigation beginnt, bis der erste HTML-Code für die von ihm angeforderte Seite ankommt."
 }

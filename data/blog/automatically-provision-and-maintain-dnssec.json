@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Sergi Isasi",
-		"image": "http://blog.cloudflare.com/content/images/2017/11/FullSizeRender_jpeg.png",
 		"url": "https://blog.cloudflare.com/author/sergi/",
 		"sameAs": [
 			"https://twitter.com/sgisasi"
@@ -26,9 +12,5 @@
 	"dateModified": "2018-09-20T18:33:11.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/09/DNSSEC-1.png",
 	"keywords": "Crypto Week, Crypto, Security, DNSSEC, DNS, Product News, Reliability",
-	"description": "Cloudflare first started talking about DNSSEC in 2014 and at the time, Nick Sullivan wrote: “DNSSEC is a valuable tool for improving the trust and integrity of DNS, the backbone of the modern Internet.”",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Cloudflare first started talking about DNSSEC in 2014 and at the time, Nick Sullivan wrote: “DNSSEC is a valuable tool for improving the trust and integrity of DNS, the backbone of the modern Internet.”"
 }

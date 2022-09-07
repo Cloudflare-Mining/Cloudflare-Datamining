@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Annika Garbers",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/annika.png",
-			"width": 400,
-			"height": 400
-		},
 		"url": "https://blog.cloudflare.com/author/annika/",
 		"sameAs": [
 			"https://twitter.com/annikagarbers"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/fr-fr/protect-all-network-traffic-fr-fr/",
 	"datePublished": "2022-03-15T12:59:00.000Z",
 	"dateModified": "2022-06-07T15:24:02.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/06/Screenshot-2022-06-07-at-09.16.28-5.png",
-		"width": 1502,
-		"height": 836
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/06/Screenshot-2022-06-07-at-09.16.28-5.png",
 	"keywords": "Sécurité, Nouveautés produits, Magic Transit (FR), Security Week (FR)",
-	"description": "Aujourd&#x27;hui, nous élargissons la disponibilité de Magic Transit aux clients disposant de petits réseaux en offrant un espace IP géré par Cloudflare et protégé par Magic Transit",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Aujourd&#x27;hui, nous élargissons la disponibilité de Magic Transit aux clients disposant de petits réseaux en offrant un espace IP géré par Cloudflare et protégé par Magic Transit"
 }

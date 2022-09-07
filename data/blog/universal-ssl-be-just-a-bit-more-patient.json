@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Matthew Prince",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
-			"width": 1196,
-			"height": 1190
-		},
 		"url": "https://blog.cloudflare.com/author/matthew-prince/",
 		"sameAs": [
 			"https://twitter.com/eastdakota"
@@ -31,9 +12,5 @@
 	"dateModified": "2018-08-27T21:38:28.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/08/cloudflare-illustration-universal-ssl--1--1.png",
 	"keywords": "Universal SSL, SSL, Security",
-	"description": "It turns out it takes a while to deploy SSL certificates for 2 million websites. :-) Even longer when you get a flood of new sign ups. While we&#x27;d hoped to have the deployment complete within 24 hours of the announcement, it now looks like it&#x27;s going to take a bit longer.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "It turns out it takes a while to deploy SSL certificates for 2 million websites. :-) Even longer when you get a flood of new sign ups. While we&#x27;d hoped to have the deployment complete within 24 hours of the announcement, it now looks like it&#x27;s going to take a bit longer."
 }

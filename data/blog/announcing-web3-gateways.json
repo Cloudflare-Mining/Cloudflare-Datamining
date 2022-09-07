@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Wesley Evans",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/08/Headshot.jpeg",
-			"width": 960,
-			"height": 960
-		},
 		"url": "https://blog.cloudflare.com/author/wesley/",
 		"sameAs": [
 			"https://twitter.com/whywevans"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/announcing-web3-gateways/",
 	"datePublished": "2021-10-01T12:59:48.000Z",
 	"dateModified": "2021-10-26T22:49:23.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/10/image8-1.png",
-		"width": 1200,
-		"height": 675
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/10/image8-1.png",
 	"keywords": "Birthday Week, Web3, Distributed Web, IPFS, Ethereum, Research",
-	"description": "Cloudflare announces the Private Beta of their Web3 gateways for Ethereum and IPFS. Unlocking the Metaverse, Web3, and Decentralized Finance for every developer.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Cloudflare announces the Private Beta of their Web3 gateways for Ethereum and IPFS. Unlocking the Metaverse, Web3, and Decentralized Finance for every developer."
 }

@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Giuliana DeAngelis",
-		"image": "http://blog.cloudflare.com/content/images/2019/06/headshot-1.jpg",
 		"url": "https://blog.cloudflare.com/author/giuliana/",
 		"sameAs": []
 	},
@@ -24,9 +10,5 @@
 	"dateModified": "2019-06-24T12:59:59.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2019/06/photo-1538097304804-2a1b932466a9.jpeg",
 	"keywords": "Serverless, Cloudflare Workers, Cloudflare Workers KV, JavaScript, Programming, Developers, Cloudflare Meetups, MeetUp, Events",
-	"description": "Cloudflare is organizing a meetup in Seattle on Tuesday, June 25th and we hope you can join. We’ll be bringing together members of the developers community and Cloudflare users for an evening of discussion about serverless compute and the infinite number of use cases for deploying code at the edge. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Cloudflare is organizing a meetup in Seattle on Tuesday, June 25th and we hope you can join. We’ll be bringing together members of the developers community and Cloudflare users for an evening of discussion about serverless compute and the infinite number of use cases for deploying code at the edge. "
 }

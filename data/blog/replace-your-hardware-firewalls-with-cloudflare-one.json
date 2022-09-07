@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Ankur Aggarwal",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/11/00100lPORTRAIT_00100_BURST20181020175123196_COVER-01.jpeg",
-			"width": 110,
-			"height": 100
-		},
 		"url": "https://blog.cloudflare.com/author/ankur/",
 		"sameAs": [
 			"https://twitter.com/Encore_Encore"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/replace-your-hardware-firewalls-with-cloudflare-one/",
 	"datePublished": "2021-12-06T14:00:01.000Z",
 	"dateModified": "2022-01-21T16:58:29.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/12/image2-5.png",
-		"width": 1800,
-		"height": 1013
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/12/image2-5.png",
 	"keywords": "CIO Week, Cloudflare One, Firewall, Cloudflare Gateway, Security, Zero Trust",
-	"description": "Today, we’re excited to announce new capabilities to help customers make the switch from hardware firewall appliances to a true cloud-native firewall built for next-generation networks.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Today, we’re excited to announce new capabilities to help customers make the switch from hardware firewall appliances to a true cloud-native firewall built for next-generation networks."
 }

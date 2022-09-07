@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Corey Mahan",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/02/CoreyMahan_ProfilePhoto.jpg",
-			"width": 2000,
-			"height": 1659
-		},
 		"url": "https://blog.cloudflare.com/author/corey-mahan/",
 		"sameAs": [
 			"https://twitter.com/coreymahan"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/zh-tw/managing-clouds-cloudflare-casb-zh-tw/",
 	"datePublished": "2022-03-18T13:00:00.000Z",
 	"dateModified": "2022-06-13T12:57:01.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/06/image1-70-7.png",
-		"width": 1200,
-		"height": 675
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/06/image1-70-7.png",
 	"keywords": "安全週 (ZH), CASB (TW), Zero Trust (TW), 防守, SaaS Security (TW), Cloudflare Zero Trust (TW), 產品新聞 (TW), 繁體中文 (TW)",
-	"description": "在 CASB 測試版中，您可以在第一天就部署 Google Workspace 這類的熱門整合。您也將能夠直接聯繫我們的產品團隊，以協助後續發展的規劃",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "在 CASB 測試版中，您可以在第一天就部署 Google Workspace 這類的熱門整合。您也將能夠直接聯繫我們的產品團隊，以協助後續發展的規劃"
 }

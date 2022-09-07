@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Ivan Babrou",
-		"image": {
-			"@type": "ImageObject",
-			"url": "//www.gravatar.com/avatar/e2ee800c1f69d88acdfea37994b87276?s=250&d=mm&r=x",
-			"width": 250,
-			"height": 250
-		},
 		"url": "https://blog.cloudflare.com/author/ivan/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/keepalives-considered-harmful/",
 	"datePublished": "2020-03-19T12:57:35.000Z",
 	"dateModified": "2020-08-20T23:32:55.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2020/03/featured.png",
-		"width": 1999,
-		"height": 1276
-	},
+	"image": "https://blog.cloudflare.com/content/images/2020/03/featured.png",
 	"keywords": "NGINX, Linux, Performance",
-	"description": "You’d think keepalives would always be helpful, but turns out reality isn’t always what you expect it to be. It really helps if you read Why does one NGINX worker take all the load? first.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "You’d think keepalives would always be helpful, but turns out reality isn’t always what you expect it to be. It really helps if you read Why does one NGINX worker take all the load? first."
 }

@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Jonathan Bruce",
-		"image": "http://blog.cloudflare.com/content/images/2018/08/Screen-Shot-2018-08-03-at-10.55.24-AM.png",
 		"url": "https://blog.cloudflare.com/author/jonathan/",
 		"sameAs": [
 			"https://twitter.com/jonbruce"
@@ -26,9 +12,5 @@
 	"dateModified": "2018-12-13T22:52:57.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/08/unspecified.png",
 	"keywords": "Cloudflare Workers, Serverless, Cloudflare Apps, Developers, Product News",
-	"description": "Starting today we are announcing the availability of two key pilot programs: Cloudflare Apps with Workers and \nCloudflare Workers Service Providers. Over the course of past few months we&#x27;ve seen an accelerating interest in Workers.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Starting today we are announcing the availability of two key pilot programs: Cloudflare Apps with Workers and \nCloudflare Workers Service Providers. Over the course of past few months we&#x27;ve seen an accelerating interest in Workers."
 }

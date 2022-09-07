@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Alissa Starzak",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2020/12/image--1-.png",
-			"width": 600,
-			"height": 600
-		},
 		"url": "https://blog.cloudflare.com/author/alissa-starzak/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/global-network-that-complies-with-local-law/",
 	"datePublished": "2020-12-11T12:00:00.000Z",
 	"dateModified": "2020-12-11T12:00:01.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2020/12/image2-33.png",
-		"width": 1999,
-		"height": 966
-	},
+	"image": "http://blog.cloudflare.com/content/images/2020/12/image2-33.png",
 	"keywords": "Privacy Week, Legal",
-	"description": "Running a global network that complies with different privacy laws around the world requires coming back to the values that we have championed since our founding.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Running a global network that complies with different privacy laws around the world requires coming back to the values that we have championed since our founding."
 }

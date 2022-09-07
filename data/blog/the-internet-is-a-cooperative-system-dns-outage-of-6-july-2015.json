@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Ryan Lackey",
-		"image": "http://blog.cloudflare.com/content/images/2018/02/x_400x400.jpg",
 		"url": "https://blog.cloudflare.com/author/rdl/",
 		"sameAs": [
 			"https://twitter.com/octal"
@@ -24,10 +10,7 @@
 	"url": "https://blog.cloudflare.com/the-internet-is-a-cooperative-system-dns-outage-of-6-july-2015/",
 	"datePublished": "2015-07-06T21:30:46.000Z",
 	"dateModified": "2018-08-24T18:17:38.000Z",
+	"image": null,
 	"keywords": "CNAME, DNS, Post Mortem",
-	"description": "Today, shortly after 21:00 UTC, on our internal operations chat there was a scary message from one of our senior support staff: &quot;getting DNS resolution errors on support.cloudflare.com&quot;, at the same time as automated monitoring indicated a problem.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Today, shortly after 21:00 UTC, on our internal operations chat there was a scary message from one of our senior support staff: &quot;getting DNS resolution errors on support.cloudflare.com&quot;, at the same time as automated monitoring indicated a problem."
 }

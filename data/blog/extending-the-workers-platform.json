@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Ashley Williams",
-		"image": "http://blog.cloudflare.com/content/images/2019/04/photo.jpg",
 		"url": "https://blog.cloudflare.com/author/ashley-williams/",
 		"sameAs": []
 	},
@@ -22,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/extending-the-workers-platform/",
 	"datePublished": "2019-09-27T13:01:00.000Z",
 	"dateModified": "2019-09-27T13:01:00.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2019/09/WorkersSitesTechincalSocialImage.png",
-		"width": 1920,
-		"height": 1080
-	},
+	"image": "https://blog.cloudflare.com/content/images/2019/09/WorkersSitesTechincalSocialImage.png",
 	"keywords": "Cloudflare Workers, Serverless, Product News, Birthday Week, Deep Dive",
-	"description": "As of today, with the Wrangler CLI, you can now deploy entire websites directly to Cloudflare Workers and Workers KV. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "As of today, with the Wrangler CLI, you can now deploy entire websites directly to Cloudflare Workers and Workers KV. "
 }

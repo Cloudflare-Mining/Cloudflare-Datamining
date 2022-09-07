@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Ryan Knight",
-		"image": "http://blog.cloudflare.com/content/images/2018/05/Me_Beer_Right.jpg",
 		"url": "https://blog.cloudflare.com/author/ryank/",
 		"sameAs": [
 			"https://freebaxter.com",
@@ -26,10 +12,7 @@
 	"url": "https://blog.cloudflare.com/webcast-hardening-microservices-security/",
 	"datePublished": "2016-09-16T19:23:07.000Z",
 	"dateModified": "2018-08-28T20:39:46.000Z",
+	"image": null,
 	"keywords": "Events, API, Best Practices, Webinars",
-	"description": "Microservices is one of the buzz words of the moment. Beyond the buzz, microservices architecture offers a great opportunity for developers to rethink how they design, develop, and secure applications.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Microservices is one of the buzz words of the moment. Beyond the buzz, microservices architecture offers a great opportunity for developers to rethink how they design, develop, and secure applications."
 }

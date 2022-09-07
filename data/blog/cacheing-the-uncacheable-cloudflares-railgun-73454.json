@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "John Graham-Cumming",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
 		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
 		"sameAs": [
 			"https://twitter.com/jgrahamc"
@@ -26,9 +12,5 @@
 	"dateModified": "2021-01-28T23:26:22.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/02/railgun.png.scaled500.png",
 	"keywords": "Speed & Reliability, Railgun, Product News, Cache",
-	"description": "CloudFlare recently rolled out a premium service called Railgun that&#x27;s available to CloudFlare Business and Enterprise customers. Railgun is web optimization software that&#x27;s designed to speed up the delivery of content that cannot be cached.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "CloudFlare recently rolled out a premium service called Railgun that&#x27;s available to CloudFlare Business and Enterprise customers. Railgun is web optimization software that&#x27;s designed to speed up the delivery of content that cannot be cached."
 }

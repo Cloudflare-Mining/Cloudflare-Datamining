@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Omer Yoachimik",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/Omer-1.png",
-			"width": 773,
-			"height": 653
-		},
 		"url": "https://blog.cloudflare.com/author/omer/",
 		"sameAs": [
 			"https://twitter.com/OmerYoahimik"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/ko-kr/cloudflare-blocks-an-almost-2-tbps-multi-vector-ddos-attack-ko-kr/",
 	"datePublished": "2021-11-13T14:33:00.000Z",
 	"dateModified": "2022-08-23T16:27:57.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/08/image2-2-3.jpeg",
-		"width": 1200,
-		"height": 627
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/08/image2-2-3.jpeg",
 	"keywords": "DDoS (KO), 공격, Mirai (KO), 봇넷, DNS (KO), UDP (KO), 한국어",
-	"description": "이번 주 초, Cloudflare는 사상 최대 규모로 약 2Tbps급에 해당하는 DDoS 공격을 자동으로 감지해 완화했습니다",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "이번 주 초, Cloudflare는 사상 최대 규모로 약 2Tbps급에 해당하는 DDoS 공격을 자동으로 감지해 완화했습니다"
 }

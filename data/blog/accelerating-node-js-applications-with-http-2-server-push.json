@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Terin Stock",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/08/terin-stock.png",
-			"width": 496,
-			"height": 486
-		},
 		"url": "https://blog.cloudflare.com/author/terin-stock/",
 		"sameAs": [
 			"https://twitter.com/terinjokes"
@@ -31,9 +12,5 @@
 	"dateModified": "2020-08-14T09:43:40.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/08/489477622_594bf9e3d9_z.jpg",
 	"keywords": "HTTP2, php, Server Push, Speed & Reliability, JavaScript",
-	"description": "In April, we announced support for HTTP/2 Server Push via the HTTP Link header. My coworker John has demonstrated how easy it is to add Server Push to an example PHP application.  We wanted to make it easy to improve the performance of contemporary websites built with Node.js. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "In April, we announced support for HTTP/2 Server Push via the HTTP Link header. My coworker John has demonstrated how easy it is to add Server Push to an example PHP application.  We wanted to make it easy to improve the performance of contemporary websites built with Node.js. "
 }

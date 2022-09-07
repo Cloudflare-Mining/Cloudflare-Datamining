@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Elenitsa Staykova",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/5771a23bfebe49752a4c4ea0cfa20b5c.jpeg",
 		"url": "https://blog.cloudflare.com/author/elenitsa/",
 		"sameAs": []
 	},
@@ -24,9 +10,5 @@
 	"dateModified": "2018-08-28T20:29:19.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/08/FB-banner-webinar-1200x628px_wBorder_v1.jpg",
 	"keywords": "HTTP2, Webinars, Events, Server Push, Speed & Reliability",
-	"description": "We&#x27;re big fans of HTTP/2 and our customers make up the majority of HTTP/2 enabled domains today. HTTP/2 is a key part of the modern web, and its growth and adoption is changing how websites and applications are built.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "We&#x27;re big fans of HTTP/2 and our customers make up the majority of HTTP/2 enabled domains today. HTTP/2 is a key part of the modern web, and its growth and adoption is changing how websites and applications are built."
 }

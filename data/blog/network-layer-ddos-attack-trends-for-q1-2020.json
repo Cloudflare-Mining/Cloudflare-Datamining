@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Omer Yoachimik",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/Omer-1.png",
-			"width": 773,
-			"height": 653
-		},
 		"url": "https://blog.cloudflare.com/author/omer/",
 		"sameAs": [
 			"https://twitter.com/OmerYoahimik"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/network-layer-ddos-attack-trends-for-q1-2020/",
 	"datePublished": "2020-05-15T11:00:00.000Z",
 	"dateModified": "2022-04-12T09:00:56.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2020/05/BDES-618_Infographic-for-Network-Level-DDoS_BlogHeader.png",
-		"width": 1600,
-		"height": 759
-	},
+	"image": "https://blog.cloudflare.com/content/images/2020/05/BDES-618_Infographic-for-Network-Level-DDoS_BlogHeader.png",
 	"keywords": "DDoS, Trends, COVID-19, Magic Transit, Speed & Reliability, DDoS Reports",
-	"description": "In Q1 2020, traffic levels have increased by over 50% in many countries, but have DDoS attacks increased as well?",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "In Q1 2020, traffic levels have increased by over 50% in many countries, but have DDoS attacks increased as well?"
 }

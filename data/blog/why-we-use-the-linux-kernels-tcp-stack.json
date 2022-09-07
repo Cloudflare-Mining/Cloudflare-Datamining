@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Marek Majkowski",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/b5967d6c687939594adb6992723d0529.jpeg",
 		"url": "https://blog.cloudflare.com/author/marek-majkowski/",
 		"sameAs": [
 			"https://twitter.com/majek04"
@@ -26,9 +12,5 @@
 	"dateModified": "2020-08-17T18:19:54.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/08/225724064_46fec2a98c_b.jpg",
 	"keywords": "TCP, Reliability, Linux",
-	"description": "A recent blog post posed the question Why do we use the Linux kernel&#x27;s TCP stack?. It triggered a very interesting discussion on Hacker News.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "A recent blog post posed the question Why do we use the Linux kernel&#x27;s TCP stack?. It triggered a very interesting discussion on Hacker News."
 }

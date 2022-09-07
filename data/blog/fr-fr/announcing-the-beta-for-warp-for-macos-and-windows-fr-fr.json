@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Matthew Prince",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
-			"width": 1196,
-			"height": 1190
-		},
 		"url": "https://blog.cloudflare.com/author/matthew-prince/",
 		"sameAs": [
 			"https://twitter.com/eastdakota"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/fr-fr/announcing-the-beta-for-warp-for-macos-and-windows-fr-fr/",
 	"datePublished": "2020-04-01T13:00:00.000Z",
 	"dateModified": "2021-01-27T01:54:21.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2020/12/warp-desktop-comet-1.png",
-		"width": 1024,
-		"height": 513
-	},
+	"image": "http://blog.cloudflare.com/content/images/2020/12/warp-desktop-comet-1.png",
 	"keywords": "Français, 1.1.1.1 (FR), WARP (FR), Sécurité, Confidentialité",
-	"description": "Le 1er avril dernier, nous avons lancé WARP, une option de l’application 1.1.1.1 sur iOS et Android permettant de sécuriser et d’accélérer les connexions Internet. Aujourd’hui, WARP sécurise les connexions de millions d’utilisateurs mobiles.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Le 1er avril dernier, nous avons lancé WARP, une option de l’application 1.1.1.1 sur iOS et Android permettant de sécuriser et d’accélérer les connexions Internet. Aujourd’hui, WARP sécurise les connexions de millions d’utilisateurs mobiles."
 }

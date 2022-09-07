@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Nick Wondra",
-		"image": "http://blog.cloudflare.com/content/images/2018/02/3a99784.jpg",
 		"url": "https://blog.cloudflare.com/author/nick-wondra/",
 		"sameAs": []
 	},
@@ -22,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/magic-transit-network-functions/",
 	"datePublished": "2019-08-13T13:00:00.000Z",
 	"dateModified": "2021-08-27T01:04:49.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2019/08/Screen-Shot-2019-08-12-at-1.53.42-PM.png",
-		"width": 2000,
-		"height": 945
-	},
+	"image": "https://blog.cloudflare.com/content/images/2019/08/Screen-Shot-2019-08-12-at-1.53.42-PM.png",
 	"keywords": "Speed & Reliability, Magic Transit, Network, Anycast, TCP, Product News",
-	"description": "Today we announced Cloudflare Magic Transit, which makes Cloudflare’s network available to any IP traffic on the Internet. Up until now, Cloudflare has primarily operated proxy services: our servers terminate HTTP, TCP, and UDP sessions",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Today we announced Cloudflare Magic Transit, which makes Cloudflare’s network available to any IP traffic on the Internet. Up until now, Cloudflare has primarily operated proxy services: our servers terminate HTTP, TCP, and UDP sessions"
 }

@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Yevgen Safronov",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/10/avatar_blog.jpg",
-			"width": 351,
-			"height": 350
-		},
 		"url": "https://blog.cloudflare.com/author/yevgen/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/building-automatic-platform-optimization-for-wordpress-using-cloudflare-workers/",
 	"datePublished": "2020-10-02T13:00:00.000Z",
 	"dateModified": "2020-10-02T13:00:00.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2020/10/BDES-1047_Cloudflare_Wordpress_Optimization_Birthday_Week_Blog_Hero2.png",
-		"width": 2000,
-		"height": 949
-	},
+	"image": "https://blog.cloudflare.com/content/images/2020/10/BDES-1047_Cloudflare_Wordpress_Optimization_Birthday_Week_Blog_Hero2.png",
 	"keywords": "Automatic Platform Optimization, Birthday Week, Speed & Reliability, WordPress, Cloudflare Workers, Serverless",
-	"description": "zero-config edge caching and optimizations for improved performance for WordPress. Reduce WordPress plugin burden.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "zero-config edge caching and optimizations for improved performance for WordPress. Reduce WordPress plugin burden."
 }

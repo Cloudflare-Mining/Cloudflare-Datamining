@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Dani Grant",
-		"image": "http://blog.cloudflare.com/content/images/2018/08/efVJR3rj_400x400.jpg",
 		"url": "https://blog.cloudflare.com/author/dani/",
 		"sameAs": [
 			"https://twitter.com/thedanigrant"
@@ -26,9 +12,5 @@
 	"dateModified": "2018-08-29T01:45:10.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2017/10/Screen-Shot-2017-03-30-at-5.03.20-PM.png",
 	"keywords": "Product News, DNS, Anycast, Reliability, Speed & Reliability, Optimization",
-	"description": "Since March 30, 2017, Cloudflare has been providing DNS Anycast service as\nadditional F-Root instances under contract with ISC (the F-Root operator).\n\nF-Root is a single IPv4 address plus a single IPv6 address which both ISC and\nCloudflare announce to the global Internet as a shared Anycast. This document\nreviews how F-Root has performed since that date in March 2017.\n\nThe DNS root servers are an important utility provided to all clients on the\nInternet for free - all F root instances including ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Since March 30, 2017, Cloudflare has been providing DNS Anycast service as\nadditional F-Root instances under contract with ISC (the F-Root operator).\n\nF-Root is a single IPv4 address plus a single IPv6 address which both ISC and\nCloudflare announce to the global Internet as a shared Anycast. This document\nreviews how F-Root has performed since that date in March 2017.\n\nThe DNS root servers are an important utility provided to all clients on the\nInternet for free - all F root instances including "
 }

@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Sam Rhea",
-		"image": "http://blog.cloudflare.com/content/images/2018/07/photo-for-profile.jpg",
 		"url": "https://blog.cloudflare.com/author/sam/",
 		"sameAs": [
 			"https://twitter.com/LakeAustinBlvd"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/cloudflare-access-for-saas/",
 	"datePublished": "2020-10-13T13:00:00.000Z",
 	"dateModified": "2020-12-09T00:31:48.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2020/10/Teams-for-SAAS-thumb-1.png",
-		"width": 1854,
-		"height": 1059
-	},
+	"image": "http://blog.cloudflare.com/content/images/2020/10/Teams-for-SAAS-thumb-1.png",
 	"keywords": "Cloudflare Access, Product News, Zero Trust Week, Zero Trust, Identity",
-	"description": "Teams can now secure SaaS applications with Zero Trust rules using Cloudflare Access.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Teams can now secure SaaS applications with Zero Trust rules using Cloudflare Access."
 }

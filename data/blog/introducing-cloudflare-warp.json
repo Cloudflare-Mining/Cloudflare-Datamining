@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Dani Grant",
-		"image": "http://blog.cloudflare.com/content/images/2018/08/efVJR3rj_400x400.jpg",
 		"url": "https://blog.cloudflare.com/author/dani/",
 		"sameAs": [
 			"https://twitter.com/thedanigrant"
@@ -26,9 +12,5 @@
 	"dateModified": "2021-06-02T17:30:35.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2017/09/5934405346_edd94956e8_b-1.jpg",
 	"keywords": "Product News, Speed & Reliability, Argo Smart Routing, Cloudflare Tunnel",
-	"description": "I work at a company whose job it is to be attacked. As I’m writing this, an automatic mitigation is fighting two ongoing DDoS attacks. Any machine that’s publicly routable on the internet today can be a vector for attack, and that’s a problem.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "I work at a company whose job it is to be attacked. As I’m writing this, an automatic mitigation is fighting two ongoing DDoS attacks. Any machine that’s publicly routable on the internet today can be a vector for attack, and that’s a problem."
 }

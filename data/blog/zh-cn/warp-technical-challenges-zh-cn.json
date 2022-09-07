@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Zack Bloom",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/YZCINbF6.jpg",
 		"url": "https://blog.cloudflare.com/author/zack-bloom/",
 		"sameAs": []
 	},
@@ -22,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/warp-technical-challenges-zh-cn/",
 	"datePublished": "2019-09-25T13:00:00.000Z",
 	"dateModified": "2021-01-28T19:18:31.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2020/01/image6-1-1.png",
-		"width": 1980,
-		"height": 1006
-	},
+	"image": "https://blog.cloudflare.com/content/images/2020/01/image6-1-1.png",
 	"keywords": "简体中文 (CN), WARP (CN), VPN (CN), 1.1.1.1 (CN), 生日周 (CN)",
-	"description": "如果你看过我们的其他帖子，你就会知道我们今天将WARP交付给了我们等候队列中的最后一名成员。通过WARP，我们的目标是保护和改善你的移动设备和互联网之间的连接。在这个过程中，我们遇到了电话和操作系统版本、不同的网络和我们自己的基础设施方面的问题，而这一切工作都是为了满足等待名单上近200万人被压抑的需求。",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "如果你看过我们的其他帖子，你就会知道我们今天将WARP交付给了我们等候队列中的最后一名成员。通过WARP，我们的目标是保护和改善你的移动设备和互联网之间的连接。在这个过程中，我们遇到了电话和操作系统版本、不同的网络和我们自己的基础设施方面的问题，而这一切工作都是为了满足等待名单上近200万人被压抑的需求。"
 }

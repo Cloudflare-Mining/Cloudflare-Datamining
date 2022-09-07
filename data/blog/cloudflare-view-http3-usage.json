@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Lucas Pardue",
-		"image": "http://blog.cloudflare.com/content/images/2018/12/Lucas---KIN01111.jpg",
 		"url": "https://blog.cloudflare.com/author/lucas/",
 		"sameAs": [
 			"https://twitter.com/SimmerVigor"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/cloudflare-view-http3-usage/",
 	"datePublished": "2022-06-06T20:49:17.000Z",
 	"dateModified": "2022-06-15T17:58:26.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/05/http3-tube@2x-1.png",
-		"width": 2194,
-		"height": 1211
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/05/http3-tube@2x-1.png",
 	"keywords": "HTTP3, QUIC, Speed & Reliability, Security, IEFT",
-	"description": "HTTP/3 is now RFC 9114. We explore Cloudflare&#x27;s view of how it is being used",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "HTTP/3 is now RFC 9114. We explore Cloudflare&#x27;s view of how it is being used"
 }

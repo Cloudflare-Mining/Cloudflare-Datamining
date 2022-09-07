@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Felix Hanau",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2020/11/twitter-profile-photo.jpeg",
-			"width": 400,
-			"height": 400
-		},
 		"url": "https://blog.cloudflare.com/author/felix/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/brotli-compression-using-a-reduced-dictionary/",
 	"datePublished": "2020-11-11T16:32:39.000Z",
 	"dateModified": "2020-11-11T16:32:39.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2020/11/image1-1.png",
-		"width": 1556,
-		"height": 912
-	},
+	"image": "http://blog.cloudflare.com/content/images/2020/11/image1-1.png",
 	"keywords": "Compression, Optimization, Speed & Reliability, Careers",
-	"description": "Using the brotli dictionary to improve compression of web content without sacrificing performance.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Using the brotli dictionary to improve compression of web content without sacrificing performance."
 }

@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Kenton Varda",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/08/avatar-github.jpg",
-			"width": 460,
-			"height": 460
-		},
 		"url": "https://blog.cloudflare.com/author/kenton-varda/",
 		"sameAs": [
 			"https://twitter.com/kentonvarda"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/cloudflare-workers-unleashed-zh-cn/",
 	"datePublished": "2018-03-13T13:00:00.000Z",
 	"dateModified": "2021-01-28T18:32:49.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2019/07/workers-social-1.png",
-		"width": 1758,
-		"height": 879
-	},
+	"image": "https://blog.cloudflare.com/content/images/2019/07/workers-social-1.png",
 	"keywords": "产品新闻, 开发人员, 无服务器, 速度和可靠性 (CN), 简体中文 (CN)",
-	"description": "就在一年前的今天，Cloudflare给了我一个使命：允许人们在Cloudflare的网路运行代码。当时，我们还不知道这意味着什么。它会以容器为基础吗？一种新的图灵不完全的领域特定语言？Lua语言？“函数”？我的脑中涌出很多想法。\n最终，我们做出了现在看似理所当然的选择：JavaScript，使用标准的Service Workers API，在基于V8构建的新环境中运行。五个月前，我们向您预览了我们正在构建的内容，并开始了测试。",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "就在一年前的今天，Cloudflare给了我一个使命：允许人们在Cloudflare的网路运行代码。当时，我们还不知道这意味着什么。它会以容器为基础吗？一种新的图灵不完全的领域特定语言？Lua语言？“函数”？我的脑中涌出很多想法。\n最终，我们做出了现在看似理所当然的选择：JavaScript，使用标准的Service Workers API，在基于V8构建的新环境中运行。五个月前，我们向您预览了我们正在构建的内容，并开始了测试。"
 }

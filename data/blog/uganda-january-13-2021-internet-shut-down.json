@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Celso Martinho",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/08/Celso-Martinho.png",
-			"width": 486,
-			"height": 488
-		},
 		"url": "https://blog.cloudflare.com/author/celso/",
 		"sameAs": [
 			"https://celso.io/",
@@ -30,16 +11,7 @@
 	"url": "https://blog.cloudflare.com/uganda-january-13-2021-internet-shut-down/",
 	"datePublished": "2021-01-15T17:54:43.000Z",
 	"dateModified": "2021-01-18T17:02:25.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/01/Uganda-s-January-15th--2020--Internet-Shut-Down-OG.png",
-		"width": 1956,
-		"height": 1078
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/01/Uganda-s-January-15th--2020--Internet-Shut-Down-OG.png",
 	"keywords": "Cloudflare Radar, Internet Usage, Traffic",
-	"description": "Two days ago, through its communications regulator, Uganda&#x27;s government ordered the &quot;Suspension Of The Operation Of Internet Gateways&quot; hours before the country&#x27;s general election. This action was confirmed by several users and journalists who got access to the letter sent to Internet providers. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Two days ago, through its communications regulator, Uganda&#x27;s government ordered the &quot;Suspension Of The Operation Of Internet Gateways&quot; hours before the country&#x27;s general election. This action was confirmed by several users and journalists who got access to the letter sent to Internet providers. "
 }

@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Sam Mason de Caires",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/12/Headshot-2019-square.jpg",
-			"width": 853,
-			"height": 853
-		},
 		"url": "https://blog.cloudflare.com/author/sam-mason-de-caires/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/thinking-about-color/",
 	"datePublished": "2019-12-05T07:28:00.000Z",
 	"dateModified": "2019-12-05T16:00:18.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2019/12/balanced-palette.png",
-		"width": 2000,
-		"height": 1003
-	},
+	"image": "https://blog.cloudflare.com/content/images/2019/12/balanced-palette.png",
 	"keywords": "Deep Dive, Design, Dashboard",
-	"description": "An exploration of building accessible color systems for flexible UI theming. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "An exploration of building accessible color systems for flexible UI theming. "
 }

@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Damon Billian",
-		"image": "http://blog.cloudflare.com/content/images/2018/02/1b3fcea.jpg",
 		"url": "https://blog.cloudflare.com/author/damon-billian/",
 		"sameAs": []
 	},
@@ -24,9 +10,5 @@
 	"dateModified": "2020-08-20T14:48:47.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/02/Andy_Troubleshooting.jpg.scaled500.jpg",
 	"keywords": "Bugs, Tips, Ninjas",
-	"description": "Debugging technical issues online can be tricky. There are many moving pieces; it can be an isolated network connection with the ISP, an issue with your server or one of CloudFlare&#x27;s data centers could be temporarily having a problem.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Debugging technical issues online can be tricky. There are many moving pieces; it can be an isolated network connection with the ISP, an issue with your server or one of CloudFlare&#x27;s data centers could be temporarily having a problem."
 }

@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Sam Rhea",
-		"image": "http://blog.cloudflare.com/content/images/2018/07/photo-for-profile.jpg",
 		"url": "https://blog.cloudflare.com/author/sam/",
 		"sameAs": [
 			"https://twitter.com/LakeAustinBlvd"
@@ -26,9 +12,5 @@
 	"dateModified": "2021-01-27T01:20:13.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2019/04/Laptop-Ribbon-2.png",
 	"keywords": "Français, Bureau d’enregistrement, Semaine d’anniversaire, Actualités produits",
-	"description": "Chaque site Web, quelle que soit sa taille, est né d&#x27;une idée, suivie rapidement par l&#x27;enregistrement de son nom de domaine. La plupart des bureaux d&#x27;enregistrement offrent des promotions pour l&#x27;enregistrement initial de votre domaine, puis augmentent graduellement le tarif à chaque renouvellement.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Chaque site Web, quelle que soit sa taille, est né d&#x27;une idée, suivie rapidement par l&#x27;enregistrement de son nom de domaine. La plupart des bureaux d&#x27;enregistrement offrent des promotions pour l&#x27;enregistrement initial de votre domaine, puis augmentent graduellement le tarif à chaque renouvellement."
 }

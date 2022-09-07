@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Garrett Galow",
-		"image": "http://blog.cloudflare.com/content/images/2018/04/14729279_10207227100946205_2625241094472568444_n.jpg",
 		"url": "https://blog.cloudflare.com/author/garrett/",
 		"sameAs": []
 	},
@@ -22,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/ja-jp/domain-scoped-roles-early-access-ja-jp/",
 	"datePublished": "2022-03-18T21:04:00.000Z",
 	"dateModified": "2022-06-28T08:35:14.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/06/image3-30-2.png",
-		"width": 1801,
-		"height": 1013
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/06/image3-30-2.png",
 	"keywords": "Security Week (JP), セキュリティ, 製品ニュース, 早期アクセス, ドメインスコープ指定ロール, 日本語",
-	"description": "本日、Cloudflareは、ドメイン群へのユーザーアクセスのスコープ設定を可能にすることで、Enterpriseアカウントをお持ちのお客様へチCloudflareに対するチームのアクセス管理を容易にします。ユーザーのアクセス権を必要な分にとどめることは非常に重要であり、ドメインスコープ指定ロールは大きな前進をもたらします。さらに、ドメイングループの導入により、アカウント所有者はユーザーにドメインへのアクセス権を個別ではなくグループ単位で付与することができます。これらのグループにドメインを追加または削除することができ、グループへのアクセス権を持つ人のアクセスは自動的に更新されます。これにより、ユーザーアクセス管理の手間が軽減されます。\n\nドメインスコープ指定ロールの最も一般的な使い方の1つは、一部のメンバーに限定して本番用ドメインへのアクセス権を開放し、その他のメンバーに開発用ドメインとステージング用のドメインを開放することです。この方法では、アクセス権が与えられていない限り、誰かが本番用ドメインに変更を加えることはできません。\n\nドメインスコープ指定ロールの使い方\n企業のお客様は、C",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "本日、Cloudflareは、ドメイン群へのユーザーアクセスのスコープ設定を可能にすることで、Enterpriseアカウントをお持ちのお客様へチCloudflareに対するチームのアクセス管理を容易にします。ユーザーのアクセス権を必要な分にとどめることは非常に重要であり、ドメインスコープ指定ロールは大きな前進をもたらします。さらに、ドメイングループの導入により、アカウント所有者はユーザーにドメインへのアクセス権を個別ではなくグループ単位で付与することができます。これらのグループにドメインを追加または削除することができ、グループへのアクセス権を持つ人のアクセスは自動的に更新されます。これにより、ユーザーアクセス管理の手間が軽減されます。\n\nドメインスコープ指定ロールの最も一般的な使い方の1つは、一部のメンバーに限定して本番用ドメインへのアクセス権を開放し、その他のメンバーに開発用ドメインとステージング用のドメインを開放することです。この方法では、アクセス権が与えられていない限り、誰かが本番用ドメインに変更を加えることはできません。\n\nドメインスコープ指定ロールの使い方\n企業のお客様は、C"
 }

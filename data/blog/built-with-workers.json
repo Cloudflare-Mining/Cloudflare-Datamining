@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Adam Schwartz",
-		"image": {
-			"@type": "ImageObject",
-			"url": "//www.gravatar.com/avatar/1d0ddfcbd1941044aecd08e635b6b5af?s=250&d=mm&r=x",
-			"width": 250,
-			"height": 250
-		},
 		"url": "https://blog.cloudflare.com/author/adam/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/built-with-workers/",
 	"datePublished": "2020-01-29T13:00:00.000Z",
 	"dateModified": "2020-08-14T16:46:30.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2020/01/built-with-workers-1.png",
-		"width": 2000,
-		"height": 1250
-	},
+	"image": "https://blog.cloudflare.com/content/images/2020/01/built-with-workers-1.png",
 	"keywords": "Cloudflare Workers, Serverless, JAMstack",
-	"description": "Ever since its initial release, Cloudflare Workers has given JavaScript developers a platform to enable building high-performance applications with automatic scaling.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Ever since its initial release, Cloudflare Workers has given JavaScript developers a platform to enable building high-performance applications with automatic scaling."
 }

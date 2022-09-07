@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Renan Dincer",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/03/renan-kid.jpg",
-			"width": 1024,
-			"height": 1032
-		},
 		"url": "https://blog.cloudflare.com/author/renan/",
 		"sameAs": [
 			"https://twitter.com/rrnn"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/cloudflare-stream-now-supports-nfts/",
 	"datePublished": "2021-04-16T13:00:00.000Z",
 	"dateModified": "2021-04-22T18:22:40.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/04/image5-8.png",
-		"width": 1547,
-		"height": 820
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/04/image5-8.png",
 	"keywords": "Developer Week, Developers, NFT, Cloudflare Stream, API, Product News",
-	"description": "Today, we’re introducing a new API that takes an ERC-721 token ID and contact address and sets it on a video so every video on Stream can be represented with an NFT. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Today, we’re introducing a new API that takes an ERC-721 token ID and contact address and sets it on a video so every video on Stream can be represented with an NFT. "
 }

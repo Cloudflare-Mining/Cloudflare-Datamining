@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Kristian Freeman",
-		"image": "http://blog.cloudflare.com/content/images/2019/05/2fGb07-c_400x400.jpg",
 		"url": "https://blog.cloudflare.com/author/kristian/",
 		"sameAs": [
 			"https://www.signalnerve.com",
@@ -25,16 +11,7 @@
 	"url": "https://blog.cloudflare.com/ja-jp/announcing-stripe-support-in-workers-ja-jp/",
 	"datePublished": "2021-11-19T14:00:01.000Z",
 	"dateModified": "2021-11-19T14:00:01.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/11/image1-48.png",
-		"width": 1200,
-		"height": 675
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/11/image1-48.png",
 	"keywords": "製品ニュース (JP), 開発者 (JP), フルスタックウィーク, 日本語",
-	"description": "アプリの中で支払いを処理することは、オンラインビジネスを構築する上で非常に重要です。多くの開発者が決済のプラットフォームに選ぶのがStripeです。私が初めてStripeに出会ったのは約7年前ですが、このサービスは単純な支払い処理をはるかに超えて進化しています。",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "アプリの中で支払いを処理することは、オンラインビジネスを構築する上で非常に重要です。多くの開発者が決済のプラットフォームに選ぶのがStripeです。私が初めてStripeに出会ったのは約7年前ですが、このサービスは単純な支払い処理をはるかに超えて進化しています。"
 }

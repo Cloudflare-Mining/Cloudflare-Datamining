@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Matthew Prince",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
-			"width": 1196,
-			"height": 1190
-		},
 		"url": "https://blog.cloudflare.com/author/matthew-prince/",
 		"sameAs": [
 			"https://twitter.com/eastdakota"
@@ -31,9 +12,5 @@
 	"dateModified": "2018-01-31T00:25:03.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/01/pronounce-screenshot.png.scaled500.png",
 	"keywords": "Cloudflare Apps, Free",
-	"description": "CloudFlare&#x27;s latest app lets your users read your website aloud. Pronounce is a free app that takes advantage of Microsoft&#x27;s translation tools. Once enabled, your users can select any block of text up to 512 characters long and see a small popup icon.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "CloudFlare&#x27;s latest app lets your users read your website aloud. Pronounce is a free app that takes advantage of Microsoft&#x27;s translation tools. Once enabled, your users can select any block of text up to 512 characters long and see a small popup icon."
 }

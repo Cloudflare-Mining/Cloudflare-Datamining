@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Sreeni Tellakula",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/03/Sreeni_picture.jpg",
-			"width": 600,
-			"height": 600
-		},
 		"url": "https://blog.cloudflare.com/author/sreeni-tellakula/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/http-3-vs-http-2/",
 	"datePublished": "2020-04-14T11:00:00.000Z",
 	"dateModified": "2020-04-14T11:29:27.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2020/04/image8-2.png",
-		"width": 1999,
-		"height": 1085
-	},
+	"image": "https://blog.cloudflare.com/content/images/2020/04/image8-2.png",
 	"keywords": "HTTP2, HTTP3, Better Internet, QUIC, Performance",
-	"description": "We announced support for HTTP/3, the successor to HTTP/2, during Cloudflare’s birthday week last year. Our goal is and has always been to help build a better Internet. Even though HTTP/3 is still in draft status, we&#x27;ve seen a lot of interest from our users.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "We announced support for HTTP/3, the successor to HTTP/2, during Cloudflare’s birthday week last year. Our goal is and has always been to help build a better Internet. Even though HTTP/3 is still in draft status, we&#x27;ve seen a lot of interest from our users."
 }

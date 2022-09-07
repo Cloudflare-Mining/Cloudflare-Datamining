@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Erwin van der Koogh",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/04/twitter-profile-photo.jpeg",
-			"width": 400,
-			"height": 400
-		},
 		"url": "https://blog.cloudflare.com/author/erwin/",
 		"sameAs": [
 			"https://twitter.com/evanderkoogh"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/zai-cloudflare-workers-shang-qi-dong-yi-jia-chu-chuang-gong-si/",
 	"datePublished": "2021-11-19T13:59:00.000Z",
 	"dateModified": "2021-12-28T21:59:58.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/12/Workers-Spotlight.png",
-		"width": 1600,
-		"height": 899
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/12/Workers-Spotlight.png",
 	"keywords": "无服务器, Full Stack Week (CN), 简体中文 (CN), 开发者聚焦 (CN), Cloudflare Workers (CN)",
-	"description": "本周开发人员聚焦系列最后的故事将由 Tejas Mehta 来讲述，他将分享其制作 cClip 的过程",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "本周开发人员聚焦系列最后的故事将由 Tejas Mehta 来讲述，他将分享其制作 cClip 的过程"
 }

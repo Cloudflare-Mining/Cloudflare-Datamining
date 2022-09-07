@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Zhiyuan Zheng",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/03/square.jpg",
-			"width": 1479,
-			"height": 1479
-		},
 		"url": "https://blog.cloudflare.com/author/xmflsct/",
 		"sameAs": [
 			"https://xmflsct.com"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/new-waf-experience-zh-cn/",
 	"datePublished": "2022-03-15T12:59:00.000Z",
 	"dateModified": "2022-06-03T16:38:27.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/05/image2-28-5.png",
-		"width": 1800,
-		"height": 1013
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/05/image2-28-5.png",
 	"keywords": "安全周 (CN), WAF (CN), 安全",
-	"description": "今天开始，我们将向所有客户推出全新设计的 WAF！与此同时，我们正在更新文档，以指引您最大限度发挥 Cloudflare WAF 的力量",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "今天开始，我们将向所有客户推出全新设计的 WAF！与此同时，我们正在更新文档，以指引您最大限度发挥 Cloudflare WAF 的力量"
 }

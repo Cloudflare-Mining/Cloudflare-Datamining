@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Kabir Sikand",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/05/0.jpeg",
-			"width": 800,
-			"height": 800
-		},
 		"url": "https://blog.cloudflare.com/author/kabir/",
 		"sameAs": [
 			"https://twitter.com/kabirsikand"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/ja-jp/workers-now-even-more-unbound-ja-jp/",
 	"datePublished": "2021-11-18T14:00:00.000Z",
 	"dateModified": "2021-11-19T23:25:43.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/11/unbound.png",
-		"width": 1200,
-		"height": 675
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/11/unbound.png",
 	"keywords": "Workers Unbound (JP), Cloudflare Workers (JP), フルスタックウィーク, 製品ニュース (JP)",
-	"description": "Cloudflareの使命は、開発者が当社のプラットフォーム上でアプリケーションをエンド・ツー・エンドで構築できるようにすること、そして、それを阻む制限を徹底的に排除することです。今日、私たちは、大規模なデータ集約型のアプリケーションを、大枚をはたかずに、私たちのネットワーク上で構築できることを発表します。 ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Cloudflareの使命は、開発者が当社のプラットフォーム上でアプリケーションをエンド・ツー・エンドで構築できるようにすること、そして、それを阻む制限を徹底的に排除することです。今日、私たちは、大規模なデータ集約型のアプリケーションを、大枚をはたかずに、私たちのネットワーク上で構築できることを発表します。 "
 }

@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Alessandro Ghedini",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/09/Ii4TgsoTda2layE131Dk_1204a20b3d1d96bba523a6a2a5fa3cd73bd4fe59240a27ad6eb8c064c6792446.jpg",
-			"width": 600,
-			"height": 600
-		},
 		"url": "https://blog.cloudflare.com/author/alessandro-ghedini/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/speeding-up-https-and-http-3-negotiation-with-dns/",
 	"datePublished": "2020-09-30T13:00:00.000Z",
 	"dateModified": "2022-06-10T12:27:05.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2020/09/HTTP3-DNS-Blog@2x.png",
-		"width": 1566,
-		"height": 826
-	},
+	"image": "https://blog.cloudflare.com/content/images/2020/09/HTTP3-DNS-Blog@2x.png",
 	"keywords": "Birthday Week, HTTPS, HTTP3, Security, Performance",
-	"description": "A look at a new DNS resource record intended to speed-up negotiation of HTTP security and performance features and how it will help make the web faster.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "A look at a new DNS resource record intended to speed-up negotiation of HTTP security and performance features and how it will help make the web faster."
 }

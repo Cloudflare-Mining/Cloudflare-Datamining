@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Yo&#x27;av Moshe",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/11/IMG_4345-01-01.jpeg",
-			"width": 1392,
-			"height": 1393
-		},
 		"url": "https://blog.cloudflare.com/author/yoav/",
 		"sameAs": [
 			"https://twitter.com/yoavmoshe"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/zaraz-use-workers-to-make-third-party-tools-secure-and-fast-zh-cn/",
 	"datePublished": "2021-12-08T14:00:00.000Z",
 	"dateModified": "2021-12-29T00:43:32.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/12/zaraz_w.png",
-		"width": 1801,
-		"height": 1013
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/12/zaraz_w.png",
 	"keywords": "CIO Week (CN), Zaraz (CN), 简体中文 (CN)",
-	"description": "我们在 2020 年 3 月底左右决定创建 Zaraz。我们当时正在处理另一个产品，并注意到大家都在向我们询问在其网站上有许多第三方会带来什么性能影响。第三方内容是当今大多数网站的重要组成部分",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "我们在 2020 年 3 月底左右决定创建 Zaraz。我们当时正在处理另一个产品，并注意到大家都在向我们询问在其网站上有许多第三方会带来什么性能影响。第三方内容是当今大多数网站的重要组成部分"
 }

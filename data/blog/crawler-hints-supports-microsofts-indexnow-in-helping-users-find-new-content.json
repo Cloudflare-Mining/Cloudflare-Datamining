@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Alex Krivit",
-		"image": "http://blog.cloudflare.com/content/images/2018/08/RE0BQ6EF_400x400.jpg",
 		"url": "https://blog.cloudflare.com/author/alex/",
 		"sameAs": [
 			"https://twitter.com/ackriv"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/crawler-hints-supports-microsofts-indexnow-in-helping-users-find-new-content/",
 	"datePublished": "2022-08-12T16:30:20.000Z",
 	"dateModified": "2022-08-12T16:30:20.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/08/image2-8.png",
-		"width": 1200,
-		"height": 675
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/08/image2-8.png",
 	"keywords": "Crawler Hints, Search Engine, Bots, Cache, Product News",
-	"description": "Cloudflare is uniquely positioned to help give crawlers hints about when they should recrawl, if new content has been added, or if content on a site has recently changed",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Cloudflare is uniquely positioned to help give crawlers hints about when they should recrawl, if new content has been added, or if content on a site has recently changed"
 }

@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Brendan Coll",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/11/brendan-coll.png",
-			"width": 406,
-			"height": 406
-		},
 		"url": "https://blog.cloudflare.com/author/brendan-coll/",
 		"sameAs": [
 			"https://twitter.com/_mrbbot"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/miniflare/",
 	"datePublished": "2022-01-07T13:58:33.000Z",
 	"dateModified": "2022-06-21T00:36:59.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/01/image1-5.png",
-		"width": 1201,
-		"height": 675
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/01/image1-5.png",
 	"keywords": "Miniflare, Cloudflare Workers, Product News, Developers",
-	"description": "We&#x27;re thrilled to announce the release of the next major version: a more modular, lightweight and accurate Miniflare 2.0",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "We&#x27;re thrilled to announce the release of the next major version: a more modular, lightweight and accurate Miniflare 2.0"
 }

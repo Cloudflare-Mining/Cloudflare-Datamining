@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Alex Cruz Farmer",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/12/_DSC4744--2-.jpg",
-			"width": 600,
-			"height": 600
-		},
 		"url": "https://blog.cloudflare.com/author/alex-cruz-farmer/",
 		"sameAs": [
 			"https://twitter.com/alexcf"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/announcing-firewall-rules-zh-cn/",
 	"datePublished": "2018-10-03T20:20:00.000Z",
 	"dateModified": "2021-01-28T18:43:44.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2019/08/Firewall-rules-white-back-1.png",
-		"width": 650,
-		"height": 519
-	},
+	"image": "https://blog.cloudflare.com/content/images/2019/08/Firewall-rules-white-back-1.png",
 	"keywords": "安全, 防火墙 (CN), WAF规则 (CN), 产品新闻, 简体中文 (CN)",
-	"description": "网络威胁的景观每秒钟都在变化。随着攻击者的进步，他们变得更加活跃和狡猾，漏洞出现的速度比工程师修补应用程序的速度还要快。Cloudflare的部分使命就是确保您和您的应用程序的安全。今天，Cloudflare推出了一项新功能，为客户提供他们一直在要求的东西——对他们的传入请求进行细粒度控制",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "网络威胁的景观每秒钟都在变化。随着攻击者的进步，他们变得更加活跃和狡猾，漏洞出现的速度比工程师修补应用程序的速度还要快。Cloudflare的部分使命就是确保您和您的应用程序的安全。今天，Cloudflare推出了一项新功能，为客户提供他们一直在要求的东西——对他们的传入请求进行细粒度控制"
 }

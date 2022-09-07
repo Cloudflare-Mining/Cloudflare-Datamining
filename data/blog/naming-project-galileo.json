@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Kenneth R. Carter",
-		"image": "http://blog.cloudflare.com/content/images/2018/02/AAEAAQAAAAAAAApnAAAAJDdjZjY5ODhkLTU2ZjEtNDEzZi04MzBlLTAyNzgwMWMwZjIzNw.jpg",
 		"url": "https://blog.cloudflare.com/author/kenneth-carter/",
 		"sameAs": [
 			"https://twitter.com/carterkr"
@@ -26,9 +12,5 @@
 	"dateModified": "2018-08-22T23:27:48.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/08/Screen-Shot-2018-08-22-at-4.26.35-PM.png",
 	"keywords": "Project Galileo, Cloudflare's Mission, Legal, Community, Freedom of Speech, Reliability",
-	"description": "Earlier today, CloudFlare announced Project Galileo to protect free speech on the Web by using its sophisticated anti-DDoS resources. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Earlier today, CloudFlare announced Project Galileo to protect free speech on the Web by using its sophisticated anti-DDoS resources. "
 }

@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Alex Davidson",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/10/pic_of_me.jpg",
-			"width": 600,
-			"height": 600
-		},
 		"url": "https://blog.cloudflare.com/author/alex-davidson/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/supporting-the-latest-version-of-the-privacy-pass-protocol-zh-cn/",
 	"datePublished": "2019-10-28T13:00:00.000Z",
 	"dateModified": "2021-01-28T19:26:05.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2020/01/Privacy-Pass-@2x-2-1.png",
-		"width": 1600,
-		"height": 1017
-	},
+	"image": "https://blog.cloudflare.com/content/images/2020/01/Privacy-Pass-@2x-2-1.png",
 	"keywords": "加密周, 简体中文 (CN), 加密, 隐私通行证 (CN), Cloudflare Workers (CN)",
-	"description": "在Cloudflare，我们致力于支持和开发新的隐私保护技术，使所有互联网用户受益。在2017年11月，我们宣布了对Privacy Pass协议的服务器端支持，这是我们与学术界合作开发的一项工作。简单地说，Privacy Pass允许客户提供信任证明，而无需透露提供信任的时间和地点。该协议的目的是让任何人都可以证明自己受到服务器的信任，而该服务器无法通过分配好的信任来跟踪用户。",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "在Cloudflare，我们致力于支持和开发新的隐私保护技术，使所有互联网用户受益。在2017年11月，我们宣布了对Privacy Pass协议的服务器端支持，这是我们与学术界合作开发的一项工作。简单地说，Privacy Pass允许客户提供信任证明，而无需透露提供信任的时间和地点。该协议的目的是让任何人都可以证明自己受到服务器的信任，而该服务器无法通过分配好的信任来跟踪用户。"
 }

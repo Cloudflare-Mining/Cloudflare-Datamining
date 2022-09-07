@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Alex Fattouche",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/09/portrait.png",
-			"width": 665,
-			"height": 704
-		},
 		"url": "https://blog.cloudflare.com/author/alex-fattouche/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/dns-build-improvement-zh-cn/",
 	"datePublished": "2022-05-25T13:00:00.000Z",
 	"dateModified": "2022-06-03T16:47:34.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/05/Screenshot-2022-05-25-at-08.59.17-1.png",
-		"width": 1518,
-		"height": 854
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/05/Screenshot-2022-05-25-at-08.59.17-1.png",
 	"keywords": "DNS (CN), PGQ (CN), Kafka (CN), 速度和可靠性 (CN), 简体中文 (CN), 产品新闻",
-	"description": "我们如何重新设计 DNS 管道，以显著提高所有区域的 DNS 传播速度",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "我们如何重新设计 DNS 管道，以显著提高所有区域的 DNS 传播速度"
 }

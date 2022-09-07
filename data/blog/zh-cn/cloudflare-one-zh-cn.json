@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Sam Rhea",
-		"image": "http://blog.cloudflare.com/content/images/2018/07/photo-for-profile.jpg",
 		"url": "https://blog.cloudflare.com/author/sam/",
 		"sameAs": [
 			"https://twitter.com/LakeAustinBlvd"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/cloudflare-one-zh-cn/",
 	"datePublished": "2020-10-12T13:00:00.000Z",
 	"dateModified": "2021-01-28T20:29:48.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/01/image3-8.png",
-		"width": 1239,
-		"height": 598
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/01/image3-8.png",
 	"keywords": "简体中文 (CN), 产品新闻, 零信任周 (CN), 零信任 (CN), Cloudflare One (CN), Cloudflare Gateway (CN), Magic Transit (CN), Cloudflare Access (CN)",
-	"description": "运行安全的企业网络是非常困难的。世界各地的员工都在家里工作。应用程序在数据中心内运行，托管在公共云中，并作为服务交付。执着而有动机的攻击者会利用任何漏洞。",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "运行安全的企业网络是非常困难的。世界各地的员工都在家里工作。应用程序在数据中心内运行，托管在公共云中，并作为服务交付。执着而有动机的攻击者会利用任何漏洞。"
 }

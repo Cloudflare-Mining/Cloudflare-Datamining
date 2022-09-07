@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Stanley Chiang",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/05/image000001-copy.jpg",
-			"width": 200,
-			"height": 200
-		},
 		"url": "https://blog.cloudflare.com/author/stanley/",
 		"sameAs": [
 			"https://twitter.com/stanleyxchiang"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/dig-through-servfails-with-ede/",
 	"datePublished": "2022-05-25T12:59:18.000Z",
 	"dateModified": "2022-05-25T12:59:18.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/05/download-1.png",
-		"width": 1800,
-		"height": 1013
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/05/download-1.png",
 	"keywords": "1.1.1.1, DNS, Resolver",
-	"description": "Now we’re happy to announce we will return more error code types and include additional helpful information to further improve your debugging experience.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Now we’re happy to announce we will return more error code types and include additional helpful information to further improve your debugging experience."
 }

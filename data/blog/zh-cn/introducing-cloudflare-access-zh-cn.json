@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Venkat Viswanathan",
-		"image": "http://blog.cloudflare.com/content/images/2018/01/AAEAAQAAAAAAAAkkAAAAJGExM2M4ZjM1LTEzZjQtNDIyYi1hMDBmLTRhMWIxNGY1MGFmZQ.jpg",
 		"url": "https://blog.cloudflare.com/author/venkat/",
 		"sameAs": []
 	},
@@ -22,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/introducing-cloudflare-access-zh-cn/",
 	"datePublished": "2018-01-17T14:00:00.000Z",
 	"dateModified": "2021-01-28T18:31:16.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2019/08/4859761438_0778df5e52_o-3.jpg",
-		"width": 2000,
-		"height": 1500
-	},
+	"image": "https://blog.cloudflare.com/content/images/2019/08/4859761438_0778df5e52_o-3.jpg",
 	"keywords": "简体中文 (CN), 产品新闻, 安全, Cloudflare Access (CN)",
-	"description": "告诉我这听起来是不是很熟悉：公司内部网络的任何连接都是可信的，而外部的任何连接都不可信。这是当今大多数企业使用的安全策略。问题是，一旦破坏了创建此边界的防火墙，网关或VPN服务器，攻击者就可以立即，轻松，以被受信任的状态访问所有内容。",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "告诉我这听起来是不是很熟悉：公司内部网络的任何连接都是可信的，而外部的任何连接都不可信。这是当今大多数企业使用的安全策略。问题是，一旦破坏了创建此边界的防火墙，网关或VPN服务器，攻击者就可以立即，轻松，以被受信任的状态访问所有内容。"
 }

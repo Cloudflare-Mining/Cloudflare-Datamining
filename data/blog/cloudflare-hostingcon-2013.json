@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Kristin Tarr",
-		"image": "http://blog.cloudflare.com/content/images/2018/08/0.jpg",
 		"url": "https://blog.cloudflare.com/author/kristin-tarr/",
 		"sameAs": []
 	},
@@ -24,9 +10,5 @@
 	"dateModified": "2018-08-17T21:06:27.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/08/railgunboxes.jpg",
 	"keywords": "Events, Austin, Hosting Con, SWAG, Railgun, Texas",
-	"description": "The CloudFlare team will be at HostingCon 2013 in Austin next week. This is our third year at the show and we have a lot of things in store for partners.\n\n",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "The CloudFlare team will be at HostingCon 2013 in Austin next week. This is our third year at the show and we have a lot of things in store for partners.\n\n"
 }

@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Michael Tremante",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/url-3.jpg",
 		"url": "https://blog.cloudflare.com/author/michael-tremante/",
 		"sameAs": [
 			"https://twitter.com/MichaelTremante"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/get-notified-when-your-site-is-under-attack-zh-cn/",
 	"datePublished": "2021-12-03T18:05:00.000Z",
 	"dateModified": "2021-12-21T18:08:44.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/12/image1-98.png",
-		"width": 1200,
-		"height": 628
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/12/image1-98.png",
 	"keywords": "WAF 规则, 安全性",
-	"description": "我们的核心应用程序安全性功能（例如 WAF、防火墙规则和速率限制）有助于确保数百万互联网资产的安全。当攻击流量被阻止时，它们都会安静地执行此操作，而不会产生任何通知，因为我们的重点始终是首先停止恶意请求。",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "我们的核心应用程序安全性功能（例如 WAF、防火墙规则和速率限制）有助于确保数百万互联网资产的安全。当攻击流量被阻止时，它们都会安静地执行此操作，而不会产生任何通知，因为我们的重点始终是首先停止恶意请求。"
 }

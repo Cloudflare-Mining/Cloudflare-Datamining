@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Matthew Prince",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
-			"width": 1196,
-			"height": 1190
-		},
 		"url": "https://blog.cloudflare.com/author/matthew-prince/",
 		"sameAs": [
 			"https://twitter.com/eastdakota"
@@ -31,9 +12,5 @@
 	"dateModified": "2019-06-29T21:04:19.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/01/galt_blog.png.scaled.500.jpg",
 	"keywords": "Cloudflare Apps, Speed & Reliability, Google",
-	"description": "Last week Google Analytics announced that they would begin integrating Site Speed tracking. This is an awesome new way for site administrators to see how well their pages are performing. CloudFlare has always been a fan of Google Analytics. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Last week Google Analytics announced that they would begin integrating Site Speed tracking. This is an awesome new way for site administrators to see how well their pages are performing. CloudFlare has always been a fan of Google Analytics. "
 }

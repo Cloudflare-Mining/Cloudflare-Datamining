@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Lucas Pardue",
-		"image": "http://blog.cloudflare.com/content/images/2018/12/Lucas---KIN01111.jpg",
 		"url": "https://blog.cloudflare.com/author/lucas/",
 		"sameAs": [
 			"https://twitter.com/SimmerVigor"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/ko-kr/how-to-test-http-3-and-quic-with-firefox-nightly-ko-kr/",
 	"datePublished": "2020-06-30T11:00:00.000Z",
 	"dateModified": "2021-01-21T21:01:48.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2020/09/HTTP3-partnership-nightly-@3x.png",
-		"width": 2000,
-		"height": 1256
-	},
+	"image": "https://blog.cloudflare.com/content/images/2020/09/HTTP3-partnership-nightly-@3x.png",
 	"keywords": "한국어, Security (KO), 제품 뉴스, QUIC (KO), HTTP3 (KO)",
-	"description": "Firefox가 HTTP/3 을 지원합니다. 이 기능을 설정하고 직접 테스트해 볼 수 있도록 하는 방법을 알려 드리고자 합니다.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Firefox가 HTTP/3 을 지원합니다. 이 기능을 설정하고 직접 테스트해 볼 수 있도록 하는 방법을 알려 드리고자 합니다."
 }

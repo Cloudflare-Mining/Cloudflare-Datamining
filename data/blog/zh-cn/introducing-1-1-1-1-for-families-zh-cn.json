@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Matthew Prince",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
-			"width": 1196,
-			"height": 1190
-		},
 		"url": "https://blog.cloudflare.com/author/matthew-prince/",
 		"sameAs": [
 			"https://twitter.com/eastdakota"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/introducing-1-1-1-1-for-families-zh-cn/",
 	"datePublished": "2020-04-01T13:00:00.000Z",
 	"dateModified": "2021-01-28T19:59:46.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2020/11/image3-1-1.png",
-		"width": 1550,
-		"height": 786
-	},
+	"image": "http://blog.cloudflare.com/content/images/2020/11/image3-1-1.png",
 	"keywords": "1.1.1.1 (CN), 隐私 (CN), 安全, DNS (CN), 简体中文 (CN)",
-	"description": "两年前的今天，我们推出了1.1.1.1，这是一个安全、快速、隐私至上的 DNS 解析器，人人都能免费使用。1.1.1.1 在这两年中的成长远超我们的想象。我们每天处理的 DNS 请求数目前已达 2000 多亿，成为仅次于 Google 的全球第二大公共 DNS 解析器。",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "两年前的今天，我们推出了1.1.1.1，这是一个安全、快速、隐私至上的 DNS 解析器，人人都能免费使用。1.1.1.1 在这两年中的成长远超我们的想象。我们每天处理的 DNS 请求数目前已达 2000 多亿，成为仅次于 Google 的全球第二大公共 DNS 解析器。"
 }

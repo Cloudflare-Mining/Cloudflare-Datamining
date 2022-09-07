@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Kevin Dompig",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/07/A032A8B9-DA8F-41DE-A20D-8A8EF935D303_1_201_a.jpeg",
-			"width": 1678,
-			"height": 2234
-		},
 		"url": "https://blog.cloudflare.com/author/kevin-dompig/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/cloudflare-network-expands-to-more-than-100-countries/",
 	"datePublished": "2020-07-15T15:43:17.000Z",
 	"dateModified": "2020-07-15T23:35:51.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2020/07/image3-7.png",
-		"width": 1999,
-		"height": 1000
-	},
+	"image": "https://blog.cloudflare.com/content/images/2020/07/image3-7.png",
 	"keywords": "Cloudflare Network, Data Center",
-	"description": "We have expanded our global network to 206 cities across more than 100 countries. This is in addition to completing 40+ datacenter expansion projects and adding over 1Tbps of bandwidth capacity to our global backbone so-far in 2020. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "We have expanded our global network to 206 cities across more than 100 countries. This is in addition to completing 40+ datacenter expansion projects and adding over 1Tbps of bandwidth capacity to our global backbone so-far in 2020. "
 }

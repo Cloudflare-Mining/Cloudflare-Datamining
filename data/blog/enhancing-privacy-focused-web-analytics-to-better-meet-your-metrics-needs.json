@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Marc Lamik",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/09/unnamed-2.jpg",
-			"width": 1974,
-			"height": 1974
-		},
 		"url": "https://blog.cloudflare.com/author/marc-lamik/",
 		"sameAs": [
 			"https://twitter.com/marclamik"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/enhancing-privacy-focused-web-analytics-to-better-meet-your-metrics-needs/",
 	"datePublished": "2021-03-15T12:00:00.000Z",
 	"dateModified": "2022-08-09T14:32:42.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/03/image2-9.png",
-		"width": 1406,
-		"height": 726
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/03/image2-9.png",
 	"keywords": "Privacy, Web Analytics, Analytics",
-	"description": "Today, we’re excited to announce the release of three of the most requested features: adding multiple websites to an account, supporting Single-page Applications (SPA) as well as showing Core Web Vitals in Web Analytics.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Today, we’re excited to announce the release of three of the most requested features: adding multiple websites to an account, supporting Single-page Applications (SPA) as well as showing Core Web Vitals in Web Analytics."
 }

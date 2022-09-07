@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "John Graham-Cumming",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
 		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
 		"sameAs": [
 			"https://twitter.com/jgrahamc"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/ssh-raspberry-pi-400-cloudflare-tunnel-auditable-terminal/",
 	"datePublished": "2021-04-27T13:00:00.000Z",
 	"dateModified": "2021-05-19T18:10:52.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/04/image19-2.png",
-		"width": 1000,
-		"height": 612
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/04/image19-2.png",
 	"keywords": "Raspberry Pi, SSH, Zero Trust, Developers",
-	"description": "This is how I set up a Pi 400 on my home network, used Cloudflare Tunnel to connect it to the Cloudflare network, used Auditable Terminal to connect to the Pi 400 via Cloudflare and the tunnel using nothing more than a browser.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "This is how I set up a Pi 400 on my home network, used Cloudflare Tunnel to connect it to the Cloudflare network, used Auditable Terminal to connect to the Pi 400 via Cloudflare and the tunnel using nothing more than a browser."
 }

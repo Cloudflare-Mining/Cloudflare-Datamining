@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Alex Krivit",
-		"image": "http://blog.cloudflare.com/content/images/2018/08/RE0BQ6EF_400x400.jpg",
 		"url": "https://blog.cloudflare.com/author/alex/",
 		"sameAs": [
 			"https://twitter.com/ackriv"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/part1-coreless-purge/",
 	"datePublished": "2022-05-14T14:50:50.000Z",
 	"dateModified": "2022-05-14T14:55:29.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/05/image2-13.png",
-		"width": 1801,
-		"height": 1013
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/05/image2-13.png",
 	"keywords": "Platform Week, Product News, Cache Purge, Speed & Reliability",
-	"description": "This is Part 1 of what will be a year-long series documenting our journey to re-architect our systems to be the best, fastest, most-scalable purge in the industry ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "This is Part 1 of what will be a year-long series documenting our journey to re-architect our systems to be the best, fastest, most-scalable purge in the industry "
 }

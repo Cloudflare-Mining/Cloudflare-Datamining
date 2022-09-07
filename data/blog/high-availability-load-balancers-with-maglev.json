@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Terin Stock",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/08/terin-stock.png",
-			"width": 496,
-			"height": 486
-		},
 		"url": "https://blog.cloudflare.com/author/terin-stock/",
 		"sameAs": [
 			"https://twitter.com/terinjokes"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/high-availability-load-balancers-with-maglev/",
 	"datePublished": "2020-06-10T11:00:00.000Z",
 	"dateModified": "2022-06-10T12:26:23.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2020/06/image1-3.png",
-		"width": 1200,
-		"height": 688
-	},
+	"image": "https://blog.cloudflare.com/content/images/2020/06/image1-3.png",
 	"keywords": "Load Balancing, Maglev, Availability, Product News, Speed & Reliability",
-	"description": "We own and operate physical infrastructure for our backend services. We need an effective way to route arbitrary TCP and UDP traffic between services and also from outside these data centers.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "We own and operate physical infrastructure for our backend services. We need an effective way to route arbitrary TCP and UDP traffic between services and also from outside these data centers."
 }

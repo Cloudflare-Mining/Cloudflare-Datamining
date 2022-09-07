@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Dani Grant",
-		"image": "http://blog.cloudflare.com/content/images/2018/08/efVJR3rj_400x400.jpg",
 		"url": "https://blog.cloudflare.com/author/dani/",
 		"sameAs": [
 			"https://twitter.com/thedanigrant"
@@ -26,9 +12,5 @@
 	"dateModified": "2020-08-20T23:46:24.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2017/10/image_0-1.png",
 	"keywords": "DNSSEC, Product News, DNS, Speed & Reliability, Reliability",
-	"description": "CloudFlare launched just five years ago with the goal of building a better Internet. That’s why we are excited to announce that beginning today, anyone on CloudFlare can secure their traffic with DNSSEC in just one simple step.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "CloudFlare launched just five years ago with the goal of building a better Internet. That’s why we are excited to announce that beginning today, anyone on CloudFlare can secure their traffic with DNSSEC in just one simple step."
 }

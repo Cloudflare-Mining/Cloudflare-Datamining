@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Aly Cabral",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/aly.jpeg",
-			"width": 500,
-			"height": 500
-		},
 		"url": "https://blog.cloudflare.com/author/alyson/",
 		"sameAs": [
 			"https://twitter.com/Aly_Cabral"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/announcing-green-compute-zh-cn/",
 	"datePublished": "2021-07-27T12:59:00.000Z",
 	"dateModified": "2021-09-17T20:41:50.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/09/Green-Compute.png",
-		"width": 1200,
-		"height": 675
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/09/Green-Compute.png",
 	"keywords": "无服务器, 影响周, 开发者, Cloudflare Workers (CN)",
-	"description": "我们经常面临快速行动或负责任地行动的选择。无论主题是安全、安全性，还是在这种情况下的可持续性，我们都被要求权衡停止创新以保护我们自己、我们的用户或地球。但是，如果情况并非总是如此呢？在 Cloudflare，我们的目标是为您带来可持续的计算，而无需任何额外的时间、工作或复杂性。",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "我们经常面临快速行动或负责任地行动的选择。无论主题是安全、安全性，还是在这种情况下的可持续性，我们都被要求权衡停止创新以保护我们自己、我们的用户或地球。但是，如果情况并非总是如此呢？在 Cloudflare，我们的目标是为您带来可持续的计算，而无需任何额外的时间、工作或复杂性。"
 }

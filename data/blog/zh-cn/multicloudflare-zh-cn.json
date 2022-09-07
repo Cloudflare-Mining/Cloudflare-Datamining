@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Zack Bloom",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/YZCINbF6.jpg",
 		"url": "https://blog.cloudflare.com/author/zack-bloom/",
 		"sameAs": []
 	},
@@ -22,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/multicloudflare-zh-cn/",
 	"datePublished": "2019-06-02T21:04:00.000Z",
 	"dateModified": "2021-01-28T19:04:36.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2019/11/Workers-General.png",
-		"width": 935,
-		"height": 654
-	},
+	"image": "https://blog.cloudflare.com/content/images/2019/11/Workers-General.png",
 	"keywords": "无服务器, Argo隧道 (CN), 负载均衡 (CN), 简体中文 (CN), Cloudflare Workers (CN)",
-	"description": "你想在Cloudflare的大厅里开始一场激烈的争论吗，那就试着把我们描述成一个“CDN”吧。CDN通常不提供负载平衡，它们不允许部署无服务器的应用程序，当然它们也不会安装到您的手机上。这种混乱的代价之一是，许多人没有意识到Cloudflare可以为那些希望在多个公共云中操作，或者希望同时在云和自己的硬件上操作的人所做的一切。",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "你想在Cloudflare的大厅里开始一场激烈的争论吗，那就试着把我们描述成一个“CDN”吧。CDN通常不提供负载平衡，它们不允许部署无服务器的应用程序，当然它们也不会安装到您的手机上。这种混乱的代价之一是，许多人没有意识到Cloudflare可以为那些希望在多个公共云中操作，或者希望同时在云和自己的硬件上操作的人所做的一切。"
 }

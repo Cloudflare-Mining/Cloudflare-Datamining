@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Alessandro Ghedini",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/09/Ii4TgsoTda2layE131Dk_1204a20b3d1d96bba523a6a2a5fa3cd73bd4fe59240a27ad6eb8c064c6792446.jpg",
-			"width": 600,
-			"height": 600
-		},
 		"url": "https://blog.cloudflare.com/author/alessandro-ghedini/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/http3-the-past-present-and-future/",
 	"datePublished": "2019-09-26T13:00:00.000Z",
 	"dateModified": "2022-07-27T18:08:04.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2019/09/http3-option-tunnel@2x-1-1.png",
-		"width": 2356,
-		"height": 1493
-	},
+	"image": "https://blog.cloudflare.com/content/images/2019/09/http3-option-tunnel@2x-1-1.png",
 	"keywords": "Birthday Week, Product News, HTTP3, QUIC, Security",
-	"description": "We are now happy to announce that QUIC and HTTP/3 support is available on the Cloudflare edge network. We’re excited to be joined in this announcement by Google Chrome and Mozilla Firefox, two of the leading browser vendors and partners in our effort to make the web faster and more reliable for all.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "We are now happy to announce that QUIC and HTTP/3 support is available on the Cloudflare edge network. We’re excited to be joined in this announcement by Google Chrome and Mozilla Firefox, two of the leading browser vendors and partners in our effort to make the web faster and more reliable for all."
 }

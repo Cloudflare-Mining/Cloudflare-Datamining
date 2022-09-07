@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Alex Krivit",
-		"image": "http://blog.cloudflare.com/content/images/2018/08/RE0BQ6EF_400x400.jpg",
 		"url": "https://blog.cloudflare.com/author/alex/",
 		"sameAs": [
 			"https://twitter.com/ackriv"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/ja-jp/introducing-smarter-tiered-cache-topology-generation-ja-jp/",
 	"datePublished": "2021-02-18T00:00:00.000Z",
 	"dateModified": "2021-10-08T09:53:49.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/06/1-4.png",
-		"width": 1200,
-		"height": 619
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/06/1-4.png",
 	"keywords": "Tiered Cache (JP), 日本語, スピードと信頼性",
-	"description": "Cachingはマジックのトリックです。お客様のオリジンがすべてのリクエストに応答する代わりに、世界中にあるCloudflareの200以上のデータセンターが、訪問者の近くで地理的にキャッシュされたコンテンツに応答します。Cloudflareがキャッシュされたコンテンツを含むリクエストに応答することで、帯域幅の費用を削減しながら、Webページの負荷パフォーマンスを劇的に向上させます。",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Cachingはマジックのトリックです。お客様のオリジンがすべてのリクエストに応答する代わりに、世界中にあるCloudflareの200以上のデータセンターが、訪問者の近くで地理的にキャッシュされたコンテンツに応答します。Cloudflareがキャッシュされたコンテンツを含むリクエストに応答することで、帯域幅の費用を削減しながら、Webページの負荷パフォーマンスを劇的に向上させます。"
 }

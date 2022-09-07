@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Guest Author",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/10/Screen-Shot-2019-10-09-at-11.21.59-AM.png",
-			"width": 362,
-			"height": 364
-		},
 		"url": "https://blog.cloudflare.com/author/guest-author/",
 		"sameAs": []
 	},
@@ -29,9 +10,5 @@
 	"dateModified": "2019-01-10T19:37:49.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/12/Screen-Shot-2018-11-12-at-11.22.14-AM.png",
 	"keywords": "Cloudflare Apps, Developers, Programming",
-	"description": "I like my code the same way I like my team of POWr Rangers… DRY. And no, I don’t mean dull and unexciting! (If you haven’t heard this acronym before, DRY stands for Don’t Repeat Yourself)",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "I like my code the same way I like my team of POWr Rangers… DRY. And no, I don’t mean dull and unexciting! (If you haven’t heard this acronym before, DRY stands for Don’t Repeat Yourself)"
 }

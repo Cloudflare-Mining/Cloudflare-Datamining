@@ -19,6 +19,11 @@ await fs.ensureDir(dir);
 
 const blogURLs = new Set([]);
 
+// slugs that we ignore content changes for. Unstable image changes, etc
+const ignoreContent = [
+	'tales-from-the-crypt-o-team',
+];
+
 // load from coveo
 try{
 	const coveoBlog = await fs.readJson(path.resolve(`../data/coveo/blog.json`));
@@ -114,11 +119,16 @@ await fs.writeFile(path.resolve(dir, 'sitemap.json'), JSON.stringify([...blogURL
 console.log('Processing blog posts...', blogURLs.size);
 
 const promises = [];
+let publisher = null;
 for(const url of [...blogURLs].sort()){
 	promises.push(limit(async () => {
 		console.log('Fetching', url);
 		const parsedURL = new URL(url);
 		const slug = path.resolve(dir, parsedURL.pathname.replace(/\/$/, '').slice(1));
+		if(ignoreContent.some(checkSlug => slug.includes(checkSlug))){
+			console.log('Ignoring content changes', slug);
+			return;
+		}
 		await fs.ensureDir(path.dirname(slug));
 
 		const data = await fetchURL(url, 'section.post-full-content', slug);
@@ -187,7 +197,24 @@ for(const url of [...blogURLs].sort()){
 				}catch{}
 			});
 			if(ldJsonData){
-				await fs.writeFile(slug + '.json', JSON.stringify(ldJsonData, null, '\t'));
+				const trimmed = {
+					'author': {
+						name: ldJsonData.author?.name,
+						url: ldJsonData.author?.url,
+						sameAs: ldJsonData.author?.sameAs,
+					},
+					'headline': ldJsonData.headline,
+					'url': ldJsonData.url,
+					'datePublished': ldJsonData.datePublished,
+					'dateModified': ldJsonData.dateModified,
+					'image': ldJsonData.image?.url ?? ldJsonData.image ?? null,
+					'keywords': ldJsonData.keywords,
+					'description': ldJsonData.description,
+				};
+				await fs.writeFile(slug + '.json', JSON.stringify(trimmed, null, '\t'));
+				if(!publisher && ldJsonData.publisher){
+					publisher = ldJsonData.publisher;
+				}
 			}
 		}
 		console.log('write', slug);
@@ -199,6 +226,9 @@ for(const url of [...blogURLs].sort()){
 	}));
 }
 await Promise.all(promises);
+if(publisher){
+	await fs.writeFile(path.resolve(dir, '_publisher.json'), JSON.stringify(publisher, null, '\t'));
+}
 
 await browser.close();
 

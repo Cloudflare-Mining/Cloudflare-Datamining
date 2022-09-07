@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Michael Pinter",
-		"image": "http://blog.cloudflare.com/content/images/2018/11/g5QoJmQKS5iJdbcxHJXg_1204a20b3d1d96bba523a6a2a5fa3cd73bd4fe59240a27ad6eb8c064c6792446.png",
 		"url": "https://blog.cloudflare.com/author/michael-pinter/",
 		"sameAs": []
 	},
@@ -24,9 +10,5 @@
 	"dateModified": "2021-05-19T18:51:54.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/12/audience-blur-carry-954623.jpg",
 	"keywords": "DNS, Cloudflare Apps, Speed & Reliability, Developers",
-	"description": "DNS records are hard.  Many people, even the technically competent, don’t bother to learn more than the basics.  Let Cloudflare Apps manage them for you.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "DNS records are hard.  Many people, even the technically competent, don’t bother to learn more than the basics.  Let Cloudflare Apps manage them for you."
 }

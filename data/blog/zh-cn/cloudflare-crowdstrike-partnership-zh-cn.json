@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Deeksha Lamba",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/03/Deeksha-Lamba-1.jpg",
-			"width": 600,
-			"height": 600
-		},
 		"url": "https://blog.cloudflare.com/author/deeksha/",
 		"sameAs": [
 			"https://twitter.com/deekshalamba"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/cloudflare-crowdstrike-partnership-zh-cn/",
 	"datePublished": "2022-03-17T09:59:00.000Z",
 	"dateModified": "2022-08-24T14:57:56.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/06/Crowdstrike-Partnership-6.png",
-		"width": 1600,
-		"height": 900
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/06/Crowdstrike-Partnership-6.png",
 	"keywords": "Security Week (CN), 合作伙伴, CrowdStrike (CN), Cloudflare Zero Trust (CN), 安全, Zero Trust (CN), 产品新闻, 简体中文 (CN)",
-	"description": "隆重宣布与 CrowdStrike 的多项新集成。这些集成将 Cloudflare 庞大的网络和 Zero Trust 套件与 CrowdStrike 的端点检测和响应 (EDR) 及事件补救产品的力量结合在一起",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "隆重宣布与 CrowdStrike 的多项新集成。这些集成将 Cloudflare 庞大的网络和 Zero Trust 套件与 CrowdStrike 的端点检测和响应 (EDR) 及事件补救产品的力量结合在一起"
 }

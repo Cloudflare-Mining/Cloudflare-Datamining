@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Dani Grant",
-		"image": "http://blog.cloudflare.com/content/images/2018/08/efVJR3rj_400x400.jpg",
 		"url": "https://blog.cloudflare.com/author/dani/",
 		"sameAs": [
 			"https://twitter.com/thedanigrant"
@@ -24,10 +10,7 @@
 	"url": "https://blog.cloudflare.com/come-geek-out-with-the-original-inventor-of-dns-at-cloudflare/",
 	"datePublished": "2016-04-01T16:43:48.000Z",
 	"dateModified": "2018-08-27T18:25:43.000Z",
+	"image": null,
 	"keywords": "DNS, Events, Reliability",
-	"description": "We like DNS, we think you might too. CloudFlare and Gandi are hosting a three-part series on DNS. Our first event will be at the CloudFlare office with Paul Mockapetris, the original inventor of the Domain Name System.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "We like DNS, we think you might too. CloudFlare and Gandi are hosting a three-part series on DNS. Our first event will be at the CloudFlare office with Paul Mockapetris, the original inventor of the Domain Name System."
 }

@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Jon Levine",
-		"image": "http://blog.cloudflare.com/content/images/2018/04/prof-crop.jpg",
 		"url": "https://blog.cloudflare.com/author/jpl/",
 		"sameAs": [
 			"https://twitter.com/jplevine"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/de-de/log4j-cloudflare-logs-mitigation-de-de/",
 	"datePublished": "2021-12-14T11:39:00.000Z",
 	"dateModified": "2022-01-11T23:44:17.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/01/Bereinigung-von-Cloudflare-Protokolle-zum-Schutz-der-Kunden-vor-der-Log4j-Sicherheitslu-cke.png",
-		"width": 1200,
-		"height": 628
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/01/Bereinigung-von-Cloudflare-Protokolle-zum-Schutz-der-Kunden-vor-der-Log4j-Sicherheitslu-cke.png",
 	"keywords": "Deutsch, Log4J (DE), Log4Shell (DE), Cloudflare Zero Trust (DE), Sicherheit, Bedrohungserkennung",
-	"description": "Ab sofort können Kunden ihre Logpush-Jobs aktualisieren, um Token, die diese Sicherheitslücke auslösen könnten, automatisch zu entfernen. Weitere Informationen hierzu finden Sie in unserer Dokumentation für Entwickler oder weiter unten",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Ab sofort können Kunden ihre Logpush-Jobs aktualisieren, um Token, die diese Sicherheitslücke auslösen könnten, automatisch zu entfernen. Weitere Informationen hierzu finden Sie in unserer Dokumentation für Entwickler oder weiter unten"
 }

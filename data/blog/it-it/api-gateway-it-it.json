@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Ben Solomon",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/08/Personal-Pic.jpg",
-			"width": 2000,
-			"height": 2000
-		},
 		"url": "https://blog.cloudflare.com/author/bensol/",
 		"sameAs": [
 			"https://twitter.com/bensol"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/it-it/api-gateway-it-it/",
 	"datePublished": "2022-03-16T12:59:00.000Z",
 	"dateModified": "2022-05-19T23:22:59.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/05/image5-4-4.png",
-		"width": 1800,
-		"height": 1013
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/05/image5-4-4.png",
 	"keywords": "Settimana della sicurezza (IT), API Gateway (IT), Novità sui prodotti, API (IT), Sicurezza",
-	"description": "Oggi annunciamo il gateway API Cloudflare. Sostituiremo completamente il tuo gateway esistente a una frazione del costo. E la nostra soluzione utilizza la tecnologia alla base di Workers, Bot Management, Access e Transform Rules per fornire il set di strumenti API più avanzato sul mercato.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Oggi annunciamo il gateway API Cloudflare. Sostituiremo completamente il tuo gateway esistente a una frazione del costo. E la nostra soluzione utilizza la tecnologia alla base di Workers, Bot Management, Access e Transform Rules per fornire il set di strumenti API più avanzato sul mercato."
 }

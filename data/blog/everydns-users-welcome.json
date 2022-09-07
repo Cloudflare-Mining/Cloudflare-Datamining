@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Matthew Prince",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
-			"width": 1196,
-			"height": 1190
-		},
 		"url": "https://blog.cloudflare.com/author/matthew-prince/",
 		"sameAs": [
 			"https://twitter.com/eastdakota"
@@ -31,9 +12,5 @@
 	"dateModified": "2018-02-01T00:14:19.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/01/everydns-no-more-countdowns.jpg.scaled500.jpg",
 	"keywords": "Free",
-	"description": "Much of what I know about DNS I learned from David Ulevitch, the CEO of OpenDNS. We&#x27;re a big supporter of OpenDNS at CloudFlare, and John Roberts, an early OpenDNS employee, now works on our team. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Much of what I know about DNS I learned from David Ulevitch, the CEO of OpenDNS. We&#x27;re a big supporter of OpenDNS at CloudFlare, and John Roberts, an early OpenDNS employee, now works on our team. "
 }

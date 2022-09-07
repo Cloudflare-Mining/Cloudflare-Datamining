@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Alex Cruz Farmer",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/12/_DSC4744--2-.jpg",
-			"width": 600,
-			"height": 600
-		},
 		"url": "https://blog.cloudflare.com/author/alex-cruz-farmer/",
 		"sameAs": [
 			"https://twitter.com/alexcf"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/es-es/updates-to-firewall-analytics-es-es/",
 	"datePublished": "2019-12-09T15:16:00.000Z",
 	"dateModified": "2021-01-21T19:10:18.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2019/12/image2-13.png",
-		"width": 1999,
-		"height": 973
-	},
+	"image": "https://blog.cloudflare.com/content/images/2019/12/image2-13.png",
 	"keywords": "Español, Perspectivas, Noticias de productos, Analítica (ES), Firewall (ES)",
-	"description": "Nuestra herramienta Firewall Analytics permite que los clientes identifiquen e investiguen rápidamente las amenazas de seguridad a través de una interfaz intuitiva.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Nuestra herramienta Firewall Analytics permite que los clientes identifiquen e investiguen rápidamente las amenazas de seguridad a través de una interfaz intuitiva."
 }

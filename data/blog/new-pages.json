@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Matthew Prince",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
-			"width": 1196,
-			"height": 1190
-		},
 		"url": "https://blog.cloudflare.com/author/matthew-prince/",
 		"sameAs": [
 			"https://twitter.com/eastdakota"
@@ -31,9 +12,5 @@
 	"dateModified": "2018-02-01T00:18:17.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/02/network_map.png.scaled500.png",
 	"keywords": "Analytics, Cloudflare Apps, Cloudflare Network, Our History",
-	"description": "We like the Spartan feel of our site, but one of the requests that a number of people have requested is more detail on how CloudFlare works. We&#x27;ve quietly been adding more detail on various pages linked off the footer of the pages on the site. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "We like the Spartan feel of our site, but one of the requests that a number of people have requested is more detail on how CloudFlare works. We&#x27;ve quietly been adding more detail on various pages linked off the footer of the pages on the site. "
 }

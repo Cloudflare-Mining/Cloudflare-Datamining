@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Joshua Liebow-Feeser",
-		"image": "http://blog.cloudflare.com/content/images/2017/04/1046063-1.jpg",
 		"url": "https://blog.cloudflare.com/author/joshlf/",
 		"sameAs": []
 	},
@@ -24,9 +10,5 @@
 	"dateModified": "2018-08-29T06:08:31.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2017/11/lava-lamps-1.jpg",
 	"keywords": "LavaRand, Entropy, Security, Crypto",
-	"description": "As some of you may know, there&#x27;s a wall of lava lamps in the lobby of our San Francisco office that we use for cryptography. In this post, we’re going to explore how that works. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "As some of you may know, there&#x27;s a wall of lava lamps in the lobby of our San Francisco office that we use for cryptography. In this post, we’re going to explore how that works. "
 }

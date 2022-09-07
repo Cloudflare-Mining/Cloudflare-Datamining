@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Alex Fattouche",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/09/portrait.png",
-			"width": 665,
-			"height": 704
-		},
 		"url": "https://blog.cloudflare.com/author/alex-fattouche/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/es-es/dns-build-improvement-es-es/",
 	"datePublished": "2022-05-25T13:00:00.000Z",
 	"dateModified": "2022-06-03T16:50:24.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/05/Screenshot-2022-05-25-at-08.59.17.png",
-		"width": 1518,
-		"height": 854
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/05/Screenshot-2022-05-25-at-08.59.17.png",
 	"keywords": "DNS (ES), PGQ (ES), Velocidad y confiabilidad, Kafka (ES), Noticias de productos, Español",
-	"description": "Cómo hemos rediseñado nuestra canalización del DNS para mejorar significativamente su velocidad de propagación en todas las zonas",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Cómo hemos rediseñado nuestra canalización del DNS para mejorar significativamente su velocidad de propagación en todas las zonas"
 }

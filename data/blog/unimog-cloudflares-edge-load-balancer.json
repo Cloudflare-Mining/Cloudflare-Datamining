@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "David Wragg",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/davidface2.jpg",
 		"url": "https://blog.cloudflare.com/author/david-wragg/",
 		"sameAs": []
 	},
@@ -22,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/unimog-cloudflares-edge-load-balancer/",
 	"datePublished": "2020-09-09T11:00:00.000Z",
 	"dateModified": "2021-07-09T21:34:46.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2020/09/image3-2.png",
-		"width": 1999,
-		"height": 956
-	},
+	"image": "https://blog.cloudflare.com/content/images/2020/09/image3-2.png",
 	"keywords": "Deep Dive, Load Balancing, Edge, Availability, Speed & Reliability, Product News",
-	"description": "Unimog is the Layer 4 Load Balancer for Cloudflare’s edge data centers.  This post explains the problems it solves and how it works.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Unimog is the Layer 4 Load Balancer for Cloudflare’s edge data centers.  This post explains the problems it solves and how it works."
 }

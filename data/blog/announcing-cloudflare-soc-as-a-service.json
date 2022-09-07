@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Otto Imken",
-		"image": {
-			"@type": "ImageObject",
-			"url": "//www.gravatar.com/avatar/17e2bc59c8fb389453f807382c95c450?s=250&d=mm&r=x",
-			"width": 250,
-			"height": 250
-		},
 		"url": "https://blog.cloudflare.com/author/otto/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/announcing-cloudflare-soc-as-a-service/",
 	"datePublished": "2021-05-25T18:32:45.000Z",
 	"dateModified": "2021-05-26T15:43:09.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/05/image1-11.png",
-		"width": 1365,
-		"height": 715
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/05/image1-11.png",
 	"keywords": "Security, SOC as a Service, Product News",
-	"description": "Cloudflare SOC as a Service combines our best-in-class security products and a team of cybersecurity experts within Cloudflare that augment your security and network teams",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Cloudflare SOC as a Service combines our best-in-class security products and a team of cybersecurity experts within Cloudflare that augment your security and network teams"
 }

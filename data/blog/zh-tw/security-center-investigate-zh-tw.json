@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Patrick R. Donahue",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/me0-1.png",
-			"width": 300,
-			"height": 291
-		},
 		"url": "https://blog.cloudflare.com/author/patrick/",
 		"sameAs": [
 			"https://www.cloudflare.com",
@@ -30,16 +11,7 @@
 	"url": "https://blog.cloudflare.com/zh-tw/security-center-investigate-zh-tw/",
 	"datePublished": "2022-03-14T12:59:00.000Z",
 	"dateModified": "2022-06-30T07:28:45.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/06/image1-12-2.png",
-		"width": 1801,
-		"height": 1013
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/06/image1-12-2.png",
 	"keywords": "Security Week (TW), 威脅情報, 安全中心, 威脅資料",
-	"description": "我們從這些攻擊收集而來的資料會訓練我們的機器學習模型，並提升我們網路和應用程式安全產品的效用，但是以往一直都無法直接查詢。這一週，我們即將改變此情況",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "我們從這些攻擊收集而來的資料會訓練我們的機器學習模型，並提升我們網路和應用程式安全產品的效用，但是以往一直都無法直接查詢。這一週，我們即將改變此情況"
 }

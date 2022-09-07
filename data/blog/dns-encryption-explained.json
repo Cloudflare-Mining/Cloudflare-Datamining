@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Peter Wu",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/10/gravatar.png",
-			"width": 512,
-			"height": 512
-		},
 		"url": "https://blog.cloudflare.com/author/peter-wu/",
 		"sameAs": [
 			"https://lekensteyn.nl/",
@@ -30,16 +11,7 @@
 	"url": "https://blog.cloudflare.com/dns-encryption-explained/",
 	"datePublished": "2019-10-29T13:00:00.000Z",
 	"dateModified": "2022-07-27T17:45:24.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2019/10/Screen-Shot-2019-10-28-at-12.46.36-PM.png",
-		"width": 2000,
-		"height": 709
-	},
+	"image": "https://blog.cloudflare.com/content/images/2019/10/Screen-Shot-2019-10-28-at-12.46.36-PM.png",
 	"keywords": "Crypto Week, Crypto, DNS, DoH, DoT, Security, Research",
-	"description": "The Domain Name System (DNS) is the address book of the Internet. When you visit cloudflare.com or any other site, your browser will ask a DNS resolver for the IP address where the website can be found. Unfortunately, these DNS queries and answers are typically unprotected.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "The Domain Name System (DNS) is the address book of the Internet. When you visit cloudflare.com or any other site, your browser will ask a DNS resolver for the IP address where the website can be found. Unfortunately, these DNS queries and answers are typically unprotected."
 }

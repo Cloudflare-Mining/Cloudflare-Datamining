@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Nuno Diegues",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/04/xlarge-1.jpg",
-			"width": 600,
-			"height": 600
-		},
 		"url": "https://blog.cloudflare.com/author/nuno/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/building-many-private-virtual-networks-through-cloudflare-zero-trust/",
 	"datePublished": "2022-04-26T13:01:08.000Z",
 	"dateModified": "2022-04-26T13:04:40.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/04/942-1-1.png",
-		"width": 1600,
-		"height": 753
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/04/942-1-1.png",
 	"keywords": "Product News, Zero Trust, Security, WARP, Private Network, Cloudflare Zero Trust",
-	"description": "Starting today, we are thrilled to announce that you can start building many segregated virtual private networks over Cloudflare Zero Trust, beginning with virtualized connectivity for the connectors Cloudflare WARP and Cloudflare Tunnel",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Starting today, we are thrilled to announce that you can start building many segregated virtual private networks over Cloudflare Zero Trust, beginning with virtualized connectivity for the connectors Cloudflare WARP and Cloudflare Tunnel"
 }

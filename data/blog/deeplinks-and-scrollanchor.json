@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Drew Dowling",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/drew.jpg",
-			"width": 600,
-			"height": 600
-		},
 		"url": "https://blog.cloudflare.com/author/drew/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/deeplinks-and-scrollanchor/",
 	"datePublished": "2020-05-18T11:02:30.000Z",
 	"dateModified": "2020-05-18T18:37:16.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2020/05/deeplinks-and-scroll-anchor-@2x.png",
-		"width": 3146,
-		"height": 1589
-	},
+	"image": "https://blog.cloudflare.com/content/images/2020/05/deeplinks-and-scroll-anchor-@2x.png",
 	"keywords": "Dashboard, DeepLinks",
-	"description": "One of the interesting challenges with deep linking in the Cloudflare Dashboard is that most interesting resources are “locked” behind the context of an account and a zone/domain/website. To illustrate this, look at a tree of possible URL paths into Cloudflare’s Dashboard.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "One of the interesting challenges with deep linking in the Cloudflare Dashboard is that most interesting resources are “locked” behind the context of an account and a zone/domain/website. To illustrate this, look at a tree of possible URL paths into Cloudflare’s Dashboard."
 }

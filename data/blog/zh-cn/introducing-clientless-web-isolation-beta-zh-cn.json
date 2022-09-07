@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Tim Obezuk",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/05/0-1.jpeg",
-			"width": 200,
-			"height": 200
-		},
 		"url": "https://blog.cloudflare.com/author/tim-obezuk/",
 		"sameAs": [
 			"https://twitter.com/obezuk"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/introducing-clientless-web-isolation-beta-zh-cn/",
 	"datePublished": "2021-12-08T13:59:00.000Z",
 	"dateModified": "2021-12-29T23:59:48.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/12/image1-38-1.png",
-		"width": 1200,
-		"height": 675
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/12/image1-38-1.png",
 	"keywords": "简体中文 (CN), 安全, 产品新闻, CIO Week (CN), RBI (CN), Cloudflare Access (CN)",
-	"description": "今天，我们隆重宣布推出 Cloudflare 的无客户端 web 隔离测试版。这是一款用于浏览器隔离的新入口，原生集成了 Zero Trust Network Access (ZTNA)",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "今天，我们隆重宣布推出 Cloudflare 的无客户端 web 隔离测试版。这是一款用于浏览器隔离的新入口，原生集成了 Zero Trust Network Access (ZTNA)"
 }

@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Molly Cinnamon",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/08/Screenshot-2021-08-10-at-6.56.05-PM.png",
-			"width": 1170,
-			"height": 892
-		},
 		"url": "https://blog.cloudflare.com/author/molly/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/access-purpose-justification/",
 	"datePublished": "2021-08-18T12:59:42.000Z",
 	"dateModified": "2022-04-26T23:08:39.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/08/image2-23.png",
-		"width": 1200,
-		"height": 628
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/08/image2-23.png",
 	"keywords": "Cloudflare Access, Cloudflare Zero Trust, Product News, Zero Trust, Privacy, Road to Zero Trust, Security",
-	"description": "Starting today, Cloudflare for Teams administrators can prompt users to enter a justification for accessing an application prior to login.  ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Starting today, Cloudflare for Teams administrators can prompt users to enter a justification for accessing an application prior to login.  "
 }

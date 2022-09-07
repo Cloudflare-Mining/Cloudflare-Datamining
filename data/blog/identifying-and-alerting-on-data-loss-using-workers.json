@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Rita Kozlov",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/05/Rita-Kozlov.jpeg",
-			"width": 200,
-			"height": 200
-		},
 		"url": "https://blog.cloudflare.com/author/rita/",
 		"sameAs": [
 			"https://twitter.com/ritakozlov_"
@@ -31,9 +12,5 @@
 	"dateModified": "2018-08-30T17:49:59.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/08/photo-1510511459019-5dda7724fd87.jpg",
 	"keywords": "Serverless, GDPR, Legal, Cloudflare Workers, Programming, JavaScript",
-	"description": "Becoming aware and identifying data breaches as they happen, however, is not an easy task. It is often challenging for companies to become aware of their own data breaches and losses. Workers allow you to identify and get alerted on data breaches as they occur.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Becoming aware and identifying data breaches as they happen, however, is not an easy task. It is often challenging for companies to become aware of their own data breaches and losses. Workers allow you to identify and get alerted on data breaches as they occur."
 }

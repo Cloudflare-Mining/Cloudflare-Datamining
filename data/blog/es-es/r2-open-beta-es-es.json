@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Greg McKeon",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/05/Screen-Shot-2022-05-10-at-2.50.56-PM.png",
-			"width": 692,
-			"height": 662
-		},
 		"url": "https://blog.cloudflare.com/author/greg/",
 		"sameAs": [
 			"https://twitter.com/wegmckeon"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/es-es/r2-open-beta-es-es/",
 	"datePublished": "2022-05-11T13:01:00.000Z",
 	"dateModified": "2022-05-26T12:52:34.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/05/image1-20-2.png",
-		"width": 1801,
-		"height": 1013
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/05/image1-20-2.png",
 	"keywords": "Platform Week (ES), Cloudflare R2 (ES), Noticias de productos, Storage (ES), Desarrolladores",
-	"description": "El almacenamiento de objetos de R2 está ahora disponible en versión beta abierta para que todos los clientes lo prueben e implementen",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "El almacenamiento de objetos de R2 está ahora disponible en versión beta abierta para que todos los clientes lo prueben e implementen"
 }

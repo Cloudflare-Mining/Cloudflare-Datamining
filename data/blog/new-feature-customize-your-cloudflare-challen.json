@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Damon Billian",
-		"image": "http://blog.cloudflare.com/content/images/2018/02/1b3fcea.jpg",
 		"url": "https://blog.cloudflare.com/author/damon-billian/",
 		"sameAs": []
 	},
@@ -22,10 +8,7 @@
 	"url": "https://blog.cloudflare.com/new-feature-customize-your-cloudflare-challen/",
 	"datePublished": "2011-01-05T22:43:00.000Z",
 	"dateModified": "2018-01-16T21:24:45.000Z",
+	"image": null,
 	"keywords": "Challenge Page, Product News",
-	"description": "CloudFlare protects your website from malicious attacks by stopping the request before it reaches your server. Often these requests are from automated bots crawling your website looking for a vulnerability. Sometimes, the threat is a web surfer whose computer has been compromised.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "CloudFlare protects your website from malicious attacks by stopping the request before it reaches your server. Often these requests are from automated bots crawling your website looking for a vulnerability. Sometimes, the threat is a web surfer whose computer has been compromised."
 }

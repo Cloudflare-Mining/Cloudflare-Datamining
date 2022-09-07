@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Nafeez",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/08/Headshot.jpeg",
-			"width": 400,
-			"height": 400
-		},
 		"url": "https://blog.cloudflare.com/author/nafeez/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/on-the-recent-http-2-dos-attacks/",
 	"datePublished": "2019-08-13T17:00:00.000Z",
 	"dateModified": "2019-08-13T19:10:10.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2019/08/h2-dos-1.png",
-		"width": 600,
-		"height": 600
-	},
+	"image": "https://blog.cloudflare.com/content/images/2019/08/h2-dos-1.png",
 	"keywords": "Vulnerabilities, DDoS, HTTP2",
-	"description": "Today, multiple Denial of Service (DoS) vulnerabilities were disclosed for a number of HTTP/2 server implementations. Cloudflare uses NGINX for HTTP/2. Customers using Cloudflare are already protected against these attacks.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Today, multiple Denial of Service (DoS) vulnerabilities were disclosed for a number of HTTP/2 server implementations. Cloudflare uses NGINX for HTTP/2. Customers using Cloudflare are already protected against these attacks."
 }

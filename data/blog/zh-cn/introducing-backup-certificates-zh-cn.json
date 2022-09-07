@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Dina Kozlov",
-		"image": "http://blog.cloudflare.com/content/images/2019/06/headshot.jpg",
 		"url": "https://blog.cloudflare.com/author/dina/",
 		"sameAs": [
 			"https://twitter.com/dinasaur_404"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/introducing-backup-certificates-zh-cn/",
 	"datePublished": "2022-03-14T12:59:00.000Z",
 	"dateModified": "2022-03-22T11:35:49.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/03/image1-header-4.png",
-		"width": 512,
-		"height": 288
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/03/image1-header-4.png",
 	"keywords": "安全周 (CN)",
-	"description": "Cloudflare 使每一位客户都能为自己的互联网应用程序配置 TLS 证书，而且费用全免，对此我们引以为豪。今天，我们负责管理近 4500 万份证书从颁发到部署到更新的整个生命周期",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Cloudflare 使每一位客户都能为自己的互联网应用程序配置 TLS 证书，而且费用全免，对此我们引以为豪。今天，我们负责管理近 4500 万份证书从颁发到部署到更新的整个生命周期"
 }

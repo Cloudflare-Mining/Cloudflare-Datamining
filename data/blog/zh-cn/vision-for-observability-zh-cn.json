@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Tanushree Sharma",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/09/IMG_1328-1.jpg",
-			"width": 1895,
-			"height": 1874
-		},
 		"url": "https://blog.cloudflare.com/author/tanushree/",
 		"sameAs": [
 			"https://twitter.com/TanushreeS5"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/vision-for-observability-zh-cn/",
 	"datePublished": "2022-03-18T21:03:00.000Z",
 	"dateModified": "2022-06-28T07:08:38.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/06/Observability---Bringing-Logs-in-Dash.png",
-		"width": 1600,
-		"height": 900
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/06/Observability---Bringing-Logs-in-Dash.png",
 	"keywords": "Security Week (CN), 安全, 产品新闻, 警报, 分析 (CN), 机器人, 简体中文 (CN)",
-	"description": "成为所有网络活动的单一控制面板始终是 Cloudflare 的目标之一。今天，我们要概述 Cloudflare 可观察性的未来愿景",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "成为所有网络活动的单一控制面板始终是 Cloudflare 的目标之一。今天，我们要概述 Cloudflare 可观察性的未来愿景"
 }

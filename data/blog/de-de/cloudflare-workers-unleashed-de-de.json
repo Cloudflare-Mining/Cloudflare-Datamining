@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Kenton Varda",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/08/avatar-github.jpg",
-			"width": 460,
-			"height": 460
-		},
 		"url": "https://blog.cloudflare.com/author/kenton-varda/",
 		"sameAs": [
 			"https://twitter.com/kentonvarda"
@@ -31,9 +12,5 @@
 	"dateModified": "2021-01-22T21:24:18.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2019/05/Workers-General-3.png",
 	"keywords": "Cloudflare Workers (DE), Produktneuigkeiten, Entwickler, Serverlos, Kompression, Deutsch, JavaScript (DE), Geschwindigkeit & Zuverlässigkeit",
-	"description": "Vor genau vor einem Jahr gab mir Cloudflare einen Auftrag: Mach es möglich, dass man an Cloudflares Edge Code ausführen kann. Damals wussten wir noch nicht, wie das aussehen würde. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Vor genau vor einem Jahr gab mir Cloudflare einen Auftrag: Mach es möglich, dass man an Cloudflares Edge Code ausführen kann. Damals wussten wir noch nicht, wie das aussehen würde. "
 }

@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Andrew Fitch",
-		"image": "http://blog.cloudflare.com/content/images/2017/10/AJF-Headshot.jpg",
 		"url": "https://blog.cloudflare.com/author/andrew/",
 		"sameAs": [
 			"https://www.cloudflare.com",
@@ -26,10 +12,7 @@
 	"url": "https://blog.cloudflare.com/real-world-serverless-the-video/",
 	"datePublished": "2018-09-30T07:54:00.000Z",
 	"dateModified": "2020-08-18T18:09:17.000Z",
+	"image": null,
 	"keywords": "Cloudflare Workers, Serverless, Developers, Events, Video, JavaScript",
-	"description": "We held our second Real World Serverless event in London last week and filmed the four talks about Serverless technology to share with you here, on the Cloudflare blog. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "We held our second Real World Serverless event in London last week and filmed the four talks about Serverless technology to share with you here, on the Cloudflare blog. "
 }

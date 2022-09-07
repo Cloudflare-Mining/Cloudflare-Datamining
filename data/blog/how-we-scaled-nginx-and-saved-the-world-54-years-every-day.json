@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Ka-Hing Cheung",
-		"image": "http://blog.cloudflare.com/content/images/2018/01/AAEAAQAAAAAAAAJjAAAAJGRkYmFkY2Q2LTE3NmItNDgwZS04OWNlLTM2MzcwMzZiZTgwNQ.jpg",
 		"url": "https://blog.cloudflare.com/author/khc/",
 		"sameAs": [
 			"https://twitter.com/kahingcheung"
@@ -26,9 +12,5 @@
 	"dateModified": "2018-08-29T07:49:08.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/07/Screenshot-from-2018-07-25-16-23-10-1.png",
 	"keywords": "NGINX, Speed & Reliability, Developers, Cache, Programming",
-	"description": "10 million websites, apps and APIs use Cloudflare to give their users a speed boost. At peak we serve more than 10 million requests a second across our 151 data centers. Over the years we’ve made many modifications to our version of NGINX to handle our growth. This is blog post is about one of them.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "10 million websites, apps and APIs use Cloudflare to give their users a speed boost. At peak we serve more than 10 million requests a second across our 151 data centers. Over the years we’ve made many modifications to our version of NGINX to handle our growth. This is blog post is about one of them."
 }

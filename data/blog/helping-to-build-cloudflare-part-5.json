@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "John Graham-Cumming",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
 		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
 		"sameAs": [
 			"https://twitter.com/jgrahamc"
@@ -24,10 +10,7 @@
 	"url": "https://blog.cloudflare.com/helping-to-build-cloudflare-part-5/",
 	"datePublished": "2019-02-05T08:41:00.000Z",
 	"dateModified": "2019-02-06T08:29:15.000Z",
+	"image": null,
 	"keywords": "Life @ Cloudflare, Our History",
-	"description": "So, let me talk a bit about people. Software is made by people. Sometimes individuals but more likely by teams. I’ve talked earlier about some aspects of our architecture and our frequent rewrites but it’s people that make all that work. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "So, let me talk a bit about people. Software is made by people. Sometimes individuals but more likely by teams. I’ve talked earlier about some aspects of our architecture and our frequent rewrites but it’s people that make all that work. "
 }

@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Sergi Isasi",
-		"image": "http://blog.cloudflare.com/content/images/2017/11/FullSizeRender_jpeg.png",
 		"url": "https://blog.cloudflare.com/author/sergi/",
 		"sameAs": [
 			"https://twitter.com/sgisasi"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/it-it/deprecating-cfduid-cookie-it-it/",
 	"datePublished": "2020-12-09T12:00:00.000Z",
 	"dateModified": "2021-01-21T20:44:41.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2020/12/image1-20.png",
-		"width": 1295,
-		"height": 686
-	},
+	"image": "http://blog.cloudflare.com/content/images/2020/12/image1-20.png",
 	"keywords": "Italiano, Bots (IT), Settimana della privacy, Privacy (IT)",
-	"description": "Cloudflare è in procinto di disattivare il cookie __cfduid. Anche se non abbiamo mai eseguito il tracciamento degli utenti finali sui siti né venduto i loro dati personali, non vogliamo che un cliente pensi di aver bisogno di un cookie banner per ciò che facciamo.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Cloudflare è in procinto di disattivare il cookie __cfduid. Anche se non abbiamo mai eseguito il tracciamento degli utenti finali sui siti né venduto i loro dati personali, non vogliamo che un cliente pensi di aver bisogno di un cookie banner per ciò che facciamo."
 }

@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Omer Yoachimik",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/Omer-1.png",
-			"width": 773,
-			"height": 653
-		},
 		"url": "https://blog.cloudflare.com/author/omer/",
 		"sameAs": [
 			"https://twitter.com/OmerYoahimik"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/l34-ddos-managed-rules-zh-cn/",
 	"datePublished": "2021-12-09T13:59:00.000Z",
 	"dateModified": "2021-12-29T22:17:21.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/12/image2-27-4.png",
-		"width": 1800,
-		"height": 1013
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/12/image2-27-4.png",
 	"keywords": "CIO Week (CN), DDoS (CN), Magic Transit (CN), Cloudflare Spectrum (CN), Spectrum (ZH), 简体中文 (CN), 产品新闻",
-	"description": "在今年早些时候，在为我们的客户提供了 对 HTTP 层 DDoS 保护设置的控制之后，我们现在很高兴能将客户的控制扩展到数据包层。借助这些新的控制，Cloudflare",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "在今年早些时候，在为我们的客户提供了 对 HTTP 层 DDoS 保护设置的控制之后，我们现在很高兴能将客户的控制扩展到数据包层。借助这些新的控制，Cloudflare"
 }

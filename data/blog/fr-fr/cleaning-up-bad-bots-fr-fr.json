@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "John Graham-Cumming",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
 		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
 		"sameAs": [
 			"https://twitter.com/jgrahamc"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/fr-fr/cleaning-up-bad-bots-fr-fr/",
 	"datePublished": "2019-09-23T13:00:00.000Z",
 	"dateModified": "2021-01-21T22:39:40.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2019/10/a-1.png",
-		"width": 2000,
-		"height": 1263
-	},
+	"image": "https://blog.cloudflare.com/content/images/2019/10/a-1.png",
 	"keywords": "Semaine d’anniversaire, Sécurité, Français, Bots (FR), Actualités produits",
-	"description": "Depuis le début, Cloudflare bloque les bots malveillants qui tentent de scraper les données de sites Web ou d&#x27;utiliser les API à mauvais escient. Au fil du temps, nous avons amélioré nos méthodes de détection des bots et déployé de grands ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Depuis le début, Cloudflare bloque les bots malveillants qui tentent de scraper les données de sites Web ou d&#x27;utiliser les API à mauvais escient. Au fil du temps, nous avons amélioré nos méthodes de détection des bots et déployé de grands "
 }

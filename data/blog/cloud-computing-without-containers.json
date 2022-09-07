@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Zack Bloom",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/YZCINbF6.jpg",
 		"url": "https://blog.cloudflare.com/author/zack-bloom/",
 		"sameAs": []
 	},
@@ -24,9 +10,5 @@
 	"dateModified": "2022-08-01T16:23:22.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/10/no-VM-@3x-2.png",
 	"keywords": "Cloudflare Workers, Serverless, Programming",
-	"description": "We have a cloud computing platform called Workers. Unlike essentially every other cloud computing platform I know of, it doesn’t use containers or virtual machines. We believe that is the future of Serverless and cloud computing in general, and I’ll try to convince you why.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "We have a cloud computing platform called Workers. Unlike essentially every other cloud computing platform I know of, it doesn’t use containers or virtual machines. We believe that is the future of Serverless and cloud computing in general, and I’ll try to convince you why."
 }

@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Matthew Prince",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
-			"width": 1196,
-			"height": 1190
-		},
 		"url": "https://blog.cloudflare.com/author/matthew-prince/",
 		"sameAs": [
 			"https://twitter.com/eastdakota"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/announcing-the-beta-for-warp-for-macos-and-windows-zh-cn/",
 	"datePublished": "2020-04-01T13:00:00.000Z",
 	"dateModified": "2021-01-28T19:59:34.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2020/11/warp-desktop-comet.png",
-		"width": 1024,
-		"height": 513
-	},
+	"image": "http://blog.cloudflare.com/content/images/2020/11/warp-desktop-comet.png",
 	"keywords": "WARP (CN), 1.1.1.1 (CN), 安全, 隐私 (CN), 简体中文 (CN), 速度和可靠性 (CN)",
-	"description": "去年 4 月 1 日，我们发布了 WARP，这是 1.1.1.1 iOS 和 Android 应用中的一个选项，用于保护和加速互联网连接。如今，数百万用户已通过 WARP 保护他们的移动互联网连接。",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "去年 4 月 1 日，我们发布了 WARP，这是 1.1.1.1 iOS 和 Android 应用中的一个选项，用于保护和加速互联网连接。如今，数百万用户已通过 WARP 保护他们的移动互联网连接。"
 }

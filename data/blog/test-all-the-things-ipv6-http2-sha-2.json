@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "John Graham-Cumming",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
 		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
 		"sameAs": [
 			"https://twitter.com/jgrahamc"
@@ -26,9 +12,5 @@
 	"dateModified": "2019-05-23T01:35:50.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2017/10/1490956.jpg",
 	"keywords": "HTTP2, IPv6, IPv4, Speed & Reliability",
-	"description": "CloudFlare constantly tries to stay on the leading edge of Internet technologies so that our customers&#x27; web sites use the latest, fastest, most secure protocols. For example, in the past we&#x27;ve enabled IPv6 and SPDY/3.1.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "CloudFlare constantly tries to stay on the leading edge of Internet technologies so that our customers&#x27; web sites use the latest, fastest, most secure protocols. For example, in the past we&#x27;ve enabled IPv6 and SPDY/3.1."
 }

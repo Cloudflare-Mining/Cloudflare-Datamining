@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Abe Carryl",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2020/10/3A8B82DA-79A1-44EB-873A-B56773A4F764.jpeg",
-			"width": 900,
-			"height": 900
-		},
 		"url": "https://blog.cloudflare.com/author/abe/",
 		"sameAs": [
 			"https://twitter.com/mrlincolnlogs"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/observe-and-manage-cloudflare-tunnel/",
 	"datePublished": "2021-10-18T13:46:00.000Z",
 	"dateModified": "2021-11-24T09:01:07.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/10/Screen-Shot-2021-10-14-at-1.07.21-PM-1.png",
-		"width": 1664,
-		"height": 908
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/10/Screen-Shot-2021-10-14-at-1.07.21-PM-1.png",
 	"keywords": "Reseearch, Cloudflare Tunnel, Zero Trust, Product News, Cloudflare Zero Trust, Connector",
-	"description": "Starting today, users who deploy and manage Cloudflare Tunnel at scale now have easier visibility into their Tunnel’s respective status, routes, uptime, connectors, cloudflared version, and much more through our new UI in the Cloudflare for Teams Dashboard. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Starting today, users who deploy and manage Cloudflare Tunnel at scale now have easier visibility into their Tunnel’s respective status, routes, uptime, connectors, cloudflared version, and much more through our new UI in the Cloudflare for Teams Dashboard. "
 }

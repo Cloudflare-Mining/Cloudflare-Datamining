@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Tim Hoffman",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/08/BLOG-Default-Male-18.png",
-			"width": 276,
-			"height": 250
-		},
 		"url": "https://blog.cloudflare.com/author/tim-hoffman/",
 		"sameAs": []
 	},
@@ -29,9 +10,5 @@
 	"dateModified": "2018-08-23T00:03:17.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/03/aus_kang_1.jpg",
 	"keywords": "Cloudflare Network, Peering, Data Center, Oceania, Australia",
-	"description": "In the coming weeks, connectivity to CloudFlare in Australia is going to a new level. As part of CloudFlare’s ongoing upgrades program, we established connections to three new Internet exchanges: the Megaport Internet exchanges in Sydney, Brisbane, and Melbourne. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "In the coming weeks, connectivity to CloudFlare in Australia is going to a new level. As part of CloudFlare’s ongoing upgrades program, we established connections to three new Internet exchanges: the Megaport Internet exchanges in Sydney, Brisbane, and Melbourne. "
 }

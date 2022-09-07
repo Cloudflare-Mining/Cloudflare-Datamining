@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "John Graham-Cumming",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
 		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
 		"sameAs": [
 			"https://twitter.com/jgrahamc"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/cleaning-up-bad-bots-zh-cn/",
 	"datePublished": "2019-09-23T13:00:00.000Z",
 	"dateModified": "2021-01-28T19:17:41.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2020/01/linkedin-In-Stream_Wide___Screen-Shot-2019-10-24-at-9.32.13-AM.png",
-		"width": 1161,
-		"height": 612
-	},
+	"image": "https://blog.cloudflare.com/content/images/2020/01/linkedin-In-Stream_Wide___Screen-Shot-2019-10-24-at-9.32.13-AM.png",
 	"keywords": "简体中文 (CN), 安全, 产品新闻, 生日周 (CN), Bots (CN)",
-	"description": "从一开始，Cloudflare就一直在阻止恶意Bot抓取网站，或滥用API。随着时间的推移，我们已经改进了我们的Bot检测方法，并部署了大型机器学习模型，能够区分真实的流量（无论是来自人类的还是应用程序的）和恶意Bot。我们还构建了一个大型的善意Bot目录，以检测诸如搜索引擎索引之类的东西。",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "从一开始，Cloudflare就一直在阻止恶意Bot抓取网站，或滥用API。随着时间的推移，我们已经改进了我们的Bot检测方法，并部署了大型机器学习模型，能够区分真实的流量（无论是来自人类的还是应用程序的）和恶意Bot。我们还构建了一个大型的善意Bot目录，以检测诸如搜索引擎索引之类的东西。"
 }

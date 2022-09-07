@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Sofía Celi",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/01/me.jpg",
-			"width": 192,
-			"height": 192
-		},
 		"url": "https://blog.cloudflare.com/author/sofia/",
 		"sameAs": [
 			"http://claucece.github.io/",
@@ -30,16 +11,7 @@
 	"url": "https://blog.cloudflare.com/post-quantum-future/",
 	"datePublished": "2022-02-25T16:03:25.000Z",
 	"dateModified": "2022-02-28T16:16:36.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/02/image1-29.png",
-		"width": 1801,
-		"height": 1013
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/02/image1-29.png",
 	"keywords": "Research, Cryptography, Post-Quantum",
-	"description": "The story and path of post-quantum cryptography is clear. But, what are the future challenges? In this blog post, we explore them",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "The story and path of post-quantum cryptography is clear. But, what are the future challenges? In this blog post, we explore them"
 }

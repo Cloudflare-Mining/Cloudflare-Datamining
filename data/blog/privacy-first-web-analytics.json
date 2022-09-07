@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Jon Levine",
-		"image": "http://blog.cloudflare.com/content/images/2018/04/prof-crop.jpg",
 		"url": "https://blog.cloudflare.com/author/jpl/",
 		"sameAs": [
 			"https://twitter.com/jplevine"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/privacy-first-web-analytics/",
 	"datePublished": "2020-12-09T14:00:00.000Z",
 	"dateModified": "2021-04-09T14:22:12.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2020/12/image1-18.png",
-		"width": 1406,
-		"height": 726
-	},
+	"image": "http://blog.cloudflare.com/content/images/2020/12/image1-18.png",
 	"keywords": "Privacy Week, Analytics, Privacy, Free",
-	"description": "Anyone can now sign up to use Cloudflare’s new privacy-first Web Analytics -- even without changing your DNS settings.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Anyone can now sign up to use Cloudflare’s new privacy-first Web Analytics -- even without changing your DNS settings."
 }

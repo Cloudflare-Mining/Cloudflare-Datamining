@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Suleman Ahmad",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/09/profile_pic.png",
-			"width": 600,
-			"height": 600
-		},
 		"url": "https://blog.cloudflare.com/author/suleman/",
 		"sameAs": [
 			"https://twitter.com/sulemanahmadd"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/ssl-tls-recommender/",
 	"datePublished": "2021-10-12T13:01:00.000Z",
 	"dateModified": "2021-10-12T13:01:16.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/10/image1-33.png",
-		"width": 1200,
-		"height": 625
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/10/image1-33.png",
 	"keywords": "Research, Security, SSL, TLS, Product News",
-	"description": "Introducing customized recommendations to improve the security of your website.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Introducing customized recommendations to improve the security of your website."
 }

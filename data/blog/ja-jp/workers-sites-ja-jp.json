@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Rita Kozlov",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/05/Rita-Kozlov.jpeg",
-			"width": 200,
-			"height": 200
-		},
 		"url": "https://blog.cloudflare.com/author/rita/",
 		"sameAs": [
 			"https://twitter.com/ritakozlov_"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/ja-jp/workers-sites-ja-jp/",
 	"datePublished": "2019-09-27T13:00:00.000Z",
 	"dateModified": "2021-01-21T18:53:18.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2019/12/Screen-Shot-2019-09-26-at-1.39.06-PM.png",
-		"width": 967,
-		"height": 551
-	},
+	"image": "https://blog.cloudflare.com/content/images/2019/12/Screen-Shot-2019-09-26-at-1.39.06-PM.png",
 	"keywords": "日本語, Birthday Week (JP), 製品ニュース (JP), サーバーレス, Cloudflare Workers (JP), JavaScript (JP), Workers Sites (JP)",
-	"description": "ウェブ上のパフォーマンスは常に光速との戦いでした。ワシントン州シアトルにサーバーがあるサイトにロンドンからアクセスする場合、すべてのアセットリクエストは11,200km以上も移動する必要があります。ウェブパフォーマンスの戦いにおける最初の突破口となったのは、HTTP/1.1のキープアライブと複数の接続を開けることができるブラウザでした。次の突破口はCDNでした。",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "ウェブ上のパフォーマンスは常に光速との戦いでした。ワシントン州シアトルにサーバーがあるサイトにロンドンからアクセスする場合、すべてのアセットリクエストは11,200km以上も移動する必要があります。ウェブパフォーマンスの戦いにおける最初の突破口となったのは、HTTP/1.1のキープアライブと複数の接続を開けることができるブラウザでした。次の突破口はCDNでした。"
 }

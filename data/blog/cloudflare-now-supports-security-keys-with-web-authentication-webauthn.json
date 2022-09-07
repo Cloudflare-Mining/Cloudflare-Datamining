@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Anita Tenjarla",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/03/anita_tenjarla.png",
-			"width": 278,
-			"height": 280
-		},
 		"url": "https://blog.cloudflare.com/author/anita/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/cloudflare-now-supports-security-keys-with-web-authentication-webauthn/",
 	"datePublished": "2020-04-01T10:00:00.000Z",
 	"dateModified": "2020-08-19T18:35:38.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2020/03/Harware-security-keys@2x-4.png",
-		"width": 2732,
-		"height": 1536
-	},
+	"image": "https://blog.cloudflare.com/content/images/2020/03/Harware-security-keys@2x-4.png",
 	"keywords": "WebAuthn, Security, 2FA, FIDO, U2F, Product News",
-	"description": "We’re excited to announce that Cloudflare now supports security keys as a two factor authentication (2FA) method for all users.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "We’re excited to announce that Cloudflare now supports security keys as a two factor authentication (2FA) method for all users."
 }

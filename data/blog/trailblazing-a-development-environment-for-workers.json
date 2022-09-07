@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Avery Harnish",
-		"image": "http://blog.cloudflare.com/content/images/2018/11/portrait-1627.jpg",
 		"url": "https://blog.cloudflare.com/author/avery/",
 		"sameAs": [
 			"https://averyharnish.com"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/trailblazing-a-development-environment-for-workers/",
 	"datePublished": "2020-04-03T11:03:00.000Z",
 	"dateModified": "2020-04-03T19:12:34.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2020/04/wrangler.dev@2x--1--1.png",
-		"width": 2000,
-		"height": 1117
-	},
+	"image": "https://blog.cloudflare.com/content/images/2020/04/wrangler.dev@2x--1--1.png",
 	"keywords": "Cloudflare Workers, Wrangler, Developers, Internship Experience, Serverless",
-	"description": "When I arrived at Cloudflare for an internship in the summer of 2018, I was taken on a tour, introduced to my mentor who took me out for coffee (shoutout to Preston), and given a quick whiteboard overview of how Cloudflare works.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "When I arrived at Cloudflare for an internship in the summer of 2018, I was taken on a tour, introduced to my mentor who took me out for coffee (shoutout to Preston), and given a quick whiteboard overview of how Cloudflare works."
 }

@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Derek Chamorro",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2020/11/dc-01.png",
-			"width": 3001,
-			"height": 3000
-		},
 		"url": "https://blog.cloudflare.com/author/derek-chamorro/",
 		"sameAs": [
 			"https://randomsecurity.dev",
@@ -30,16 +11,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/bmc-vuln-zh-cn/",
 	"datePublished": "2022-05-26T13:17:00.000Z",
 	"dateModified": "2022-06-03T16:53:17.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/06/image3-43-1.png",
-		"width": 1868,
-		"height": 1050
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/06/image3-43-1.png",
 	"keywords": "漏洞 (CN), 硬件, 简体中文 (CN), 产品新闻",
-	"description": "Cloudflare 处理固件漏洞的方法以及我们如何保护内部数据",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Cloudflare 处理固件漏洞的方法以及我们如何保护内部数据"
 }

@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Marc Rogers",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/marcwrogers_400x400.jpg",
 		"url": "https://blog.cloudflare.com/author/marc-rogers/",
 		"sameAs": [
 			"https://twitter.com/marcwrogers"
@@ -26,9 +12,5 @@
 	"dateModified": "2020-08-20T23:32:11.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/02/Screen-Shot-2018-02-09-at-11.30.22-PM-1.png",
 	"keywords": "Attacks, API, Security, Phishing, 2FA",
-	"description": "To everyone in Cloudflare, account security is one of our most important tasks. We recognize that to every customer on our platform, we are critical infrastructure. We also know that the simplest attacks often lead to the most devastating of outcomes. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "To everyone in Cloudflare, account security is one of our most important tasks. We recognize that to every customer on our platform, we are critical infrastructure. We also know that the simplest attacks often lead to the most devastating of outcomes. "
 }

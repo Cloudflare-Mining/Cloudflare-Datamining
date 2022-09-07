@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Max Nystrom",
-		"image": {
-			"@type": "ImageObject",
-			"url": "//www.gravatar.com/avatar/e144ba503bc9593909bdda6d0c041ccc?s=250&d=mm&r=x",
-			"width": 250,
-			"height": 250
-		},
 		"url": "https://blog.cloudflare.com/author/max-nystrom/",
 		"sameAs": []
 	},
@@ -29,9 +10,5 @@
 	"dateModified": "2020-08-14T16:47:30.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2017/12/illustration-ssl-certificate.png",
 	"keywords": "Product News, SSL, DNS, Security, TLS 1.3, TLS, Reliability, Universal SSL, Certificate Authority",
-	"description": "One thing we take pride in at Cloudflare is embracing new protocols and standards that help make the Internet faster and safer. Sometimes this means that we’ll launch support for experimental features or standards still under active development, as we did with TLS 1.3.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "One thing we take pride in at Cloudflare is embracing new protocols and standards that help make the Internet faster and safer. Sometimes this means that we’ll launch support for experimental features or standards still under active development, as we did with TLS 1.3."
 }

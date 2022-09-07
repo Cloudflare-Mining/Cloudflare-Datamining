@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Doug Kramer",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/12/148D6BBD-2D14-4462-B253-954E979A032C.jpeg",
-			"width": 828,
-			"height": 825
-		},
 		"url": "https://blog.cloudflare.com/author/doug-kramer/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/fr-fr/cloudflares-response-to-csam-online-fr-fr/",
 	"datePublished": "2019-12-06T14:06:00.000Z",
 	"dateModified": "2021-01-21T23:13:50.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2019/12/image4-38.png",
-		"width": 1600,
-		"height": 754
-	},
+	"image": "https://blog.cloudflare.com/content/images/2019/12/image4-38.png",
 	"keywords": "Français, Confiance et sécurité",
-	"description": "Depuis le début, Cloudflare s&#x27;est donné comme priorité de répondre aux incidents impliquant des contenus en ligne d’abus sexuels sur des enfants (contenu CSAM).",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Depuis le début, Cloudflare s&#x27;est donné comme priorité de répondre aux incidents impliquant des contenus en ligne d’abus sexuels sur des enfants (contenu CSAM)."
 }

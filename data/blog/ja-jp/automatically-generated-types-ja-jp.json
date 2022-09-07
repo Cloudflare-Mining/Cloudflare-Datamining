@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Brendan Coll",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/11/brendan-coll.png",
-			"width": 406,
-			"height": 406
-		},
 		"url": "https://blog.cloudflare.com/author/brendan-coll/",
 		"sameAs": [
 			"https://twitter.com/_mrbbot"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/ja-jp/automatically-generated-types-ja-jp/",
 	"datePublished": "2021-11-16T13:58:00.000Z",
 	"dateModified": "2021-12-30T01:00:19.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/12/image1-28-2.png",
-		"width": 1200,
-		"height": 675
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/12/image1-28-2.png",
 	"keywords": "Cloudflare Workers (JP), サーバーレス, 製品ニュース (JP), 日本語, Full Stack Week (JP)",
-	"description": "これまでは、RustおよびTypeScriptのタイプリポジトリを最新に保つことは困難でした。それらは手動で生成されたため、その結果不正確または期限切れになるリスクがありました",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "これまでは、RustおよびTypeScriptのタイプリポジトリを最新に保つことは困難でした。それらは手動で生成されたため、その結果不正確または期限切れになるリスクがありました"
 }

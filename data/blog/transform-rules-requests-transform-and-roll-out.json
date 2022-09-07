@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Ming Xue",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/05/1566891651556.jpg",
-			"width": 500,
-			"height": 500
-		},
 		"url": "https://blog.cloudflare.com/author/ming/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/transform-rules-requests-transform-and-roll-out/",
 	"datePublished": "2021-07-07T12:59:42.000Z",
 	"dateModified": "2021-07-07T12:59:42.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/07/image10-3.png",
-		"width": 1493,
-		"height": 716
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/07/image10-3.png",
 	"keywords": "Transform Rules, Product News, Edge Rules",
-	"description": "Perform URL Normalization, URL Rewriting, or Header Modification without having to write a line of code!",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Perform URL Normalization, URL Rewriting, or Header Modification without having to write a line of code!"
 }

@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Guest Author",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/10/Screen-Shot-2019-10-09-at-11.21.59-AM.png",
-			"width": 362,
-			"height": 364
-		},
 		"url": "https://blog.cloudflare.com/author/guest-author/",
 		"sameAs": []
 	},
@@ -29,9 +10,5 @@
 	"dateModified": "2019-01-24T05:10:30.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2019/01/Screen-Shot-2019-01-18-at-11.46.36-AM-1.png",
 	"keywords": "Cloudflare Workers, Serverless",
-	"description": "At Quintype, we are continually looking for new and innovative ways to use our CDN. Quintype moved to Cloudflare last year, partly because of the power of Cloudflare Workers.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "At Quintype, we are continually looking for new and innovative ways to use our CDN. Quintype moved to Cloudflare last year, partly because of the power of Cloudflare Workers."
 }

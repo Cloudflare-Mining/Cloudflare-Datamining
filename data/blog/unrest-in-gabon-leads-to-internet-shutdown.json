@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "John Graham-Cumming",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
 		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
 		"sameAs": [
 			"https://twitter.com/jgrahamc"
@@ -26,9 +12,5 @@
 	"dateModified": "2018-08-28T20:38:09.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/08/Screen-Shot-2018-08-28-at-1.37.55-PM.png",
 	"keywords": "Legal, Politics",
-	"description": "A second day of rioting in Gabon after the recent election is accompanied by an Internet blackout. Residents of the capital, Libreville, reported that Internet access had been cut and we can confirm that we saw a sudden shutdown of Internet access from Gabon to sites that use CloudFlare.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "A second day of rioting in Gabon after the recent election is accompanied by an Internet blackout. Residents of the capital, Libreville, reported that Internet access had been cut and we can confirm that we saw a sudden shutdown of Internet access from Gabon to sites that use CloudFlare."
 }

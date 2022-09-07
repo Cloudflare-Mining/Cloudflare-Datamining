@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Nick Jones",
-		"image": "http://blog.cloudflare.com/content/images/2018/10/nick-jones.jpg",
 		"url": "https://blog.cloudflare.com/author/nick-jones/",
 		"sameAs": []
 	},
@@ -22,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/fr-fr/nginx-structural-enhancements-for-http-2-performance-fr-fr/",
 	"datePublished": "2019-05-22T17:14:00.000Z",
 	"dateModified": "2021-01-21T23:35:41.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2019/10/http2prioritization-copy@2x-4.png",
-		"width": 2000,
-		"height": 1025
-	},
+	"image": "https://blog.cloudflare.com/content/images/2019/10/http2prioritization-copy@2x-4.png",
 	"keywords": "Français, Vitesse et fiabilité, HTTP2 (FR), Semaine de la vitesse, NGINX (FR), Actualités produits",
-	"description": "Mon équipe : l&#x27;équipe Cloudflare PROTOCOLS est responsable de la terminaison du trafic HTTP à la périphérie du réseau Cloudflare. Nous traitons avec des fonctionnalités liées à : Gestion des protocoles TCP, QUIC, TLS et des certificats sécurisés, HTTP/1 et HTTP/2.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Mon équipe : l&#x27;équipe Cloudflare PROTOCOLS est responsable de la terminaison du trafic HTTP à la périphérie du réseau Cloudflare. Nous traitons avec des fonctionnalités liées à : Gestion des protocoles TCP, QUIC, TLS et des certificats sécurisés, HTTP/1 et HTTP/2."
 }

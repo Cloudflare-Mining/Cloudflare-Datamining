@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "John Fawcett",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/767070.jpg",
 		"url": "https://blog.cloudflare.com/author/john-fawcett/",
 		"sameAs": []
 	},
@@ -24,9 +10,5 @@
 	"dateModified": "2018-08-28T21:18:19.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/08/511102367_1ce398ad1d_o.png",
 	"keywords": "JavaScript, AMP, Open Source, Programming, Typescript",
-	"description": "Documentation for JavaScript projects has traditionally been generated via annotations inserted as code comments. While this gets the job done, it seems far from ideal. In this post, I’ll explore how to use TypeScript to generate documentation from source code alone.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Documentation for JavaScript projects has traditionally been generated via annotations inserted as code comments. While this gets the job done, it seems far from ideal. In this post, I’ll explore how to use TypeScript to generate documentation from source code alone."
 }

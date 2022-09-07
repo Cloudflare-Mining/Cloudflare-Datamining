@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Michelle Zatlyn",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/08/Michelle-Zatlyn-2.png",
-			"width": 492,
-			"height": 488
-		},
 		"url": "https://blog.cloudflare.com/author/michelle-zatlyn/",
 		"sameAs": [
 			"https://twitter.com/zatlyn"
@@ -31,9 +12,5 @@
 	"dateModified": "2019-01-16T02:09:47.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/03/SriDC.jpg.scaled500.jpg",
 	"keywords": "Data Center, United States, California, Cloudflare Network, North America",
-	"description": "Cloudflare has expanded its data centers to three adding a new location in San Jose this week. By adding data centers to our platform, Cloudflare can deliver even faster site performance.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Cloudflare has expanded its data centers to three adding a new location in San Jose this week. By adding data centers to our platform, Cloudflare can deliver even faster site performance."
 }

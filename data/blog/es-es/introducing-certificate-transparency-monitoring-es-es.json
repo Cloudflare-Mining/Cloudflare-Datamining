@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Ben Solomon",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/08/Personal-Pic.jpg",
-			"width": 2000,
-			"height": 2000
-		},
 		"url": "https://blog.cloudflare.com/author/bensol/",
 		"sameAs": [
 			"https://twitter.com/bensol"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/es-es/introducing-certificate-transparency-monitoring-es-es/",
 	"datePublished": "2019-08-08T22:00:00.000Z",
 	"dateModified": "2021-01-21T19:08:13.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2019/10/image10-1-1.png",
-		"width": 1327,
-		"height": 879
-	},
+	"image": "https://blog.cloudflare.com/content/images/2019/10/image10-1-1.png",
 	"keywords": "Noticias de productos, Seguridad, Español, SSL (ES)",
-	"description": "Hoy estamos lanzando la Supervisión de transparencia de certificados (¡mi proyecto de verano como pasante!) para ayudar a los clientes a detectar certificados maliciosos. Si opta por CT Monitoring, le enviaremos un correo electrónico cada vez que se emita un certificado para uno de sus dominios. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Hoy estamos lanzando la Supervisión de transparencia de certificados (¡mi proyecto de verano como pasante!) para ayudar a los clientes a detectar certificados maliciosos. Si opta por CT Monitoring, le enviaremos un correo electrónico cada vez que se emita un certificado para uno de sus dominios. "
 }

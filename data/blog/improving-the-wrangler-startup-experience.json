@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Joshua Johnson",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/08/Gateway-logs-IG-@2x--1-.jpeg",
-			"width": 245,
-			"height": 245
-		},
 		"url": "https://blog.cloudflare.com/author/joshua-johnson/",
 		"sameAs": [
 			"https://www.linkedin.com/in/joshua-johnson-04418182/"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/improving-the-wrangler-startup-experience/",
 	"datePublished": "2020-08-25T11:00:00.000Z",
 	"dateModified": "2020-08-25T11:00:00.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2020/08/image1-16.png",
-		"width": 1999,
-		"height": 1142
-	},
+	"image": "https://blog.cloudflare.com/content/images/2020/08/image1-16.png",
 	"keywords": "Wrangler, Product News, Serverless, Cloudflare Workers",
-	"description": "You can now write any behaviour on requests heading to your site or even run fully fledged applications directly on the edge. Wrangler is the open-source CLI tool used to manage your Workers and has a big focus on enabling a smooth developer experience. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "You can now write any behaviour on requests heading to your site or even run fully fledged applications directly on the edge. Wrangler is the open-source CLI tool used to manage your Workers and has a big focus on enabling a smooth developer experience. "
 }

@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Ashcon Partovi",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/04/117158947_4858836477475662_2532132460047140852_o.jpeg",
-			"width": 280,
-			"height": 280
-		},
 		"url": "https://blog.cloudflare.com/author/ashcon/",
 		"sameAs": [
 			"https://twitter.com/ashconpartovi"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/wrangler-v2-beta/",
 	"datePublished": "2021-11-16T13:59:22.000Z",
 	"dateModified": "2021-11-26T06:40:13.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/11/image1-24.png",
-		"width": 1200,
-		"height": 675
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/11/image1-24.png",
 	"keywords": "Full Stack Week, Cloudflare Workers, Developers, Wrangler",
-	"description": "We&#x27;re excited to announce the second-generation of our developer tooling for Cloudflare Workers. It’s a new developer experience that’s out-of-the-box, lightning fast, and can even run Workers on a local machine. (Yes!)",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "We&#x27;re excited to announce the second-generation of our developer tooling for Cloudflare Workers. It’s a new developer experience that’s out-of-the-box, lightning fast, and can even run Workers on a local machine. (Yes!)"
 }

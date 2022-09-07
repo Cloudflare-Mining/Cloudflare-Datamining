@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Jiale Zhi",
-		"image": "http://blog.cloudflare.com/content/images/2018/02/0e3ed6e.jpg",
 		"url": "https://blog.cloudflare.com/author/jiale-zhi/",
 		"sameAs": []
 	},
@@ -24,9 +10,5 @@
 	"dateModified": "2018-08-22T00:57:27.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/08/lua-capnproto.png",
 	"keywords": "Data, Speed & Reliability, Cap'n Proto, LUA",
-	"description": "When we need to transfer data from one program to another program, either within a machine or from one data center to another some form of serialization is needed.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "When we need to transfer data from one program to another program, either within a machine or from one data center to another some form of serialization is needed."
 }

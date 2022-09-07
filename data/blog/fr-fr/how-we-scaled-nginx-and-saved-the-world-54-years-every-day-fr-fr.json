@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Ka-Hing Cheung",
-		"image": "http://blog.cloudflare.com/content/images/2018/01/AAEAAQAAAAAAAAJjAAAAJGRkYmFkY2Q2LTE3NmItNDgwZS04OWNlLTM2MzcwMzZiZTgwNQ.jpg",
 		"url": "https://blog.cloudflare.com/author/khc/",
 		"sameAs": [
 			"https://twitter.com/kahingcheung"
@@ -26,9 +12,5 @@
 	"dateModified": "2021-01-27T01:18:33.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2019/04/Matthew-Tweet-1.png",
 	"keywords": "Performances, Développeurs, La programmation, NGINX (FR), Cache (FR), Français",
-	"description": "10 millions de sites Web, d&#x27;applications et d&#x27;API utilisent Cloudflare pour accélérer la vitesse de navigation de leurs utilisateurs. En période de pointe, nos 151 datacenters répondent à plus de 10 millions de requêtes par seconde.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "10 millions de sites Web, d&#x27;applications et d&#x27;API utilisent Cloudflare pour accélérer la vitesse de navigation de leurs utilisateurs. En période de pointe, nos 151 datacenters répondent à plus de 10 millions de requêtes par seconde."
 }

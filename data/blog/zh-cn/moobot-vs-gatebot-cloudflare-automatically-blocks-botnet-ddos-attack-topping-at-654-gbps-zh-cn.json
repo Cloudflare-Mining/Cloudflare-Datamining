@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Omer Yoachimik",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/Omer-1.png",
-			"width": 773,
-			"height": 653
-		},
 		"url": "https://blog.cloudflare.com/author/omer/",
 		"sameAs": [
 			"https://twitter.com/OmerYoahimik"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/moobot-vs-gatebot-cloudflare-automatically-blocks-botnet-ddos-attack-topping-at-654-gbps-zh-cn/",
 	"datePublished": "2020-09-16T11:00:00.000Z",
 	"dateModified": "2021-01-28T20:16:28.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2020/12/image2-4-1.png",
-		"width": 1999,
-		"height": 964
-	},
+	"image": "http://blog.cloudflare.com/content/images/2020/12/image2-4-1.png",
 	"keywords": "简体中文 (CN), DDoS (CN), Magic Transit (CN), Moobot (ZH), Gatebot (ZH), 僵尸网络",
-	"description": "7月3日，Cloudflare的全球DDoS保护系统Gatebot自动检测并缓解了一次基于UDP的DDoS攻击，攻击的峰值达到了654 Gbps。该攻击属于针对Magic Transit客户的为期十天的多媒介DDoS活动的一部分，在无任何人工干预的情况下即被缓解。据信，此次DDoS活动是由基于Mirai的僵尸网络Moobot发起的。客户未报告停机，服务降级或误报。",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "7月3日，Cloudflare的全球DDoS保护系统Gatebot自动检测并缓解了一次基于UDP的DDoS攻击，攻击的峰值达到了654 Gbps。该攻击属于针对Magic Transit客户的为期十天的多媒介DDoS活动的一部分，在无任何人工干预的情况下即被缓解。据信，此次DDoS活动是由基于Mirai的僵尸网络Moobot发起的。客户未报告停机，服务降级或误报。"
 }

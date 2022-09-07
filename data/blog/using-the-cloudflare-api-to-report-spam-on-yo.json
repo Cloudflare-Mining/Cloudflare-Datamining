@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Damon Billian",
-		"image": "http://blog.cloudflare.com/content/images/2018/02/1b3fcea.jpg",
 		"url": "https://blog.cloudflare.com/author/damon-billian/",
 		"sameAs": []
 	},
@@ -24,9 +10,5 @@
 	"dateModified": "2018-01-26T18:31:40.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/01/5617253313_44c4175e4a.jpg",
 	"keywords": "WordPress, API",
-	"description": "CloudFlare loves threat data. CloudFlare&#x27;s sytem continually gets smarter through a variety of ways, including through user-reported data. So for example, users can add IP and IP ranges to their Block List. This information is fed back to the CloudFlare system benefiting the entire community.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "CloudFlare loves threat data. CloudFlare&#x27;s sytem continually gets smarter through a variety of ways, including through user-reported data. So for example, users can add IP and IP ranges to their Block List. This information is fed back to the CloudFlare system benefiting the entire community."
 }

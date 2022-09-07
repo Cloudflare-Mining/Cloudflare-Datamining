@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Mahrud Sayrafi",
-		"image": "http://blog.cloudflare.com/content/images/2018/05/7Ivdj5-6.jpg",
 		"url": "https://blog.cloudflare.com/author/mahrud/",
 		"sameAs": []
 	},
@@ -22,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/welcome-hidden-resolver-zh-cn/",
 	"datePublished": "2018-06-05T14:46:00.000Z",
 	"dateModified": "2021-01-28T18:34:21.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2019/07/tor-address-1.gif",
-		"width": 800,
-		"height": 601
-	},
+	"image": "https://blog.cloudflare.com/content/images/2019/07/tor-address-1.gif",
 	"keywords": "加密, 隐私 (CN), 简体中文 (CN), 1.1.1.1 (CN), DNS (CN), Tor (CN)",
-	"description": "如果您还没有听说过，那么我来为你介绍：Cloudflare 在4月1日推出了隐私优先的DNS解析器服务。这不是开玩笑！该服务是我们的第一个以消费者为中心的服务，支持新兴的DNS标准，例如DNS over HTTPS：443和TLS：853以及UDP：53和TCP：53上的传统协议，所有的这些都在一个容易记住的地址中：1.1.1.1。",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "如果您还没有听说过，那么我来为你介绍：Cloudflare 在4月1日推出了隐私优先的DNS解析器服务。这不是开玩笑！该服务是我们的第一个以消费者为中心的服务，支持新兴的DNS标准，例如DNS over HTTPS：443和TLS：853以及UDP：53和TCP：53上的传统协议，所有的这些都在一个容易记住的地址中：1.1.1.1。"
 }

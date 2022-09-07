@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Alex Cruz Farmer",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/12/_DSC4744--2-.jpg",
-			"width": 600,
-			"height": 600
-		},
 		"url": "https://blog.cloudflare.com/author/alex-cruz-farmer/",
 		"sameAs": [
 			"https://twitter.com/alexcf"
@@ -31,9 +12,5 @@
 	"dateModified": "2021-01-22T03:45:44.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/10/Firewall-rules-white-back-1.png",
 	"keywords": "Security, Firewall, WAF Rules, Product News, Speed & Reliability",
-	"description": "Threat landscapes change every second. As attackers evolve, vulnerabilities materialise faster than engineers can patch systems becoming more dynamic and devious. Part of Cloudflare’s mission is to keep you and your applications safe.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Threat landscapes change every second. As attackers evolve, vulnerabilities materialise faster than engineers can patch systems becoming more dynamic and devious. Part of Cloudflare’s mission is to keep you and your applications safe."
 }

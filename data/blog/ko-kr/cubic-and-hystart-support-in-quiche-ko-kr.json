@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Junho Choi",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/05/junho_profile_300x300--1-.jpg",
-			"width": 300,
-			"height": 300
-		},
 		"url": "https://blog.cloudflare.com/author/junho/",
 		"sameAs": [
 			"https://saturnsoft.net",
@@ -30,16 +11,7 @@
 	"url": "https://blog.cloudflare.com/ko-kr/cubic-and-hystart-support-in-quiche-ko-kr/",
 	"datePublished": "2020-05-08T12:46:00.000Z",
 	"dateModified": "2021-01-21T21:02:49.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2020/05/image6-2-1.png",
-		"width": 835,
-		"height": 486
-	},
+	"image": "https://blog.cloudflare.com/content/images/2020/05/image6-2-1.png",
 	"keywords": "한국어, 속도 및 신뢰성, QUIC (KO), CUBIC (KO), HyStart++ (KO), Quiche (KO)",
-	"description": "혼잡 제어와 손실 복구는 QUIC 전송 프로토콜 성능에서 큰 역할을 차지 합니다. 우리는 최근에 Cloudflare 의 QUIC 라이브러리인 quiche 에 CUBIC과 HyStart++을 추가하였으며, 테스트 환경에서의 성능 테스트 결과는 손실 있는 네트워크 환경에서 좋은 결과를 보여 주고 있습니다.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "혼잡 제어와 손실 복구는 QUIC 전송 프로토콜 성능에서 큰 역할을 차지 합니다. 우리는 최근에 Cloudflare 의 QUIC 라이브러리인 quiche 에 CUBIC과 HyStart++을 추가하였으며, 테스트 환경에서의 성능 테스트 결과는 손실 있는 네트워크 환경에서 좋은 결과를 보여 주고 있습니다."
 }

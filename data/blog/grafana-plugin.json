@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Marek Vavruša",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/08/Marek-Vavrus-a-1.png",
-			"width": 500,
-			"height": 502
-		},
 		"url": "https://blog.cloudflare.com/author/marek/",
 		"sameAs": []
 	},
@@ -29,9 +10,5 @@
 	"dateModified": "2018-09-20T23:52:24.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/08/Screen-Shot-2017-02-09-at-11.34.40-AM.png",
 	"keywords": "Analytics, DNS, Grafana, DDoS, Reliability, Security, Plugins",
-	"description": "Curious where your DNS traffic is coming from, how much DNS traffic is on your domain, and what records people are querying for that don’t exist? We now have a Grafana plugin for you.\n\n",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Curious where your DNS traffic is coming from, how much DNS traffic is on your domain, and what records people are querying for that don’t exist? We now have a Grafana plugin for you.\n\n"
 }

@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Sam Rhea",
-		"image": "http://blog.cloudflare.com/content/images/2018/07/photo-for-profile.jpg",
 		"url": "https://blog.cloudflare.com/author/sam/",
 		"sameAs": [
 			"https://twitter.com/LakeAustinBlvd"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/seamless-remote-work-with-cloudflare-access/",
 	"datePublished": "2020-02-24T20:27:21.000Z",
 	"dateModified": "2020-02-25T17:40:30.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2020/02/access-diagram-1.png",
-		"width": 1334,
-		"height": 844
-	},
+	"image": "https://blog.cloudflare.com/content/images/2020/02/access-diagram-1.png",
 	"keywords": "Cloudflare Access, Cloudflare Zero Trust, VPN, Security, Product News",
-	"description": "The novel coronavirus is actively changing how organizations work in real-time. According to Fortune, the virus has led to the “world’s largest work-from-home experiment.” As the epidemic crosses borders, employees are staying home and putting new stress on how companies manage remote work.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "The novel coronavirus is actively changing how organizations work in real-time. According to Fortune, the virus has led to the “world’s largest work-from-home experiment.” As the epidemic crosses borders, employees are staying home and putting new stress on how companies manage remote work."
 }

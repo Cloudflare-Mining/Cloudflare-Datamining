@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Omer Yoachimik",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/Omer-1.png",
-			"width": 773,
-			"height": 653
-		},
 		"url": "https://blog.cloudflare.com/author/omer/",
 		"sameAs": [
 			"https://twitter.com/OmerYoahimik"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/es-es/cloudflare-blocks-an-almost-2-tbps-multi-vector-ddos-attack-es-es/",
 	"datePublished": "2021-11-13T14:33:00.000Z",
 	"dateModified": "2022-08-23T16:28:26.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/08/image2-2-6.jpeg",
-		"width": 1200,
-		"height": 627
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/08/image2-2-6.jpeg",
 	"keywords": "DDoS (ES), Ataques, Mirai (ES), Botnet (ES), DNS (ES), UDP (ES), Español",
-	"description": "A principios de esta semana, Cloudflare detectó y mitigó de manera automática un ataque DDoS que alcanzó un pico de tráfico apenas debajo de 2 TB/s, el mayor que hemos visto hasta la fecha",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "A principios de esta semana, Cloudflare detectó y mitigó de manera automática un ataque DDoS que alcanzó un pico de tráfico apenas debajo de 2 TB/s, el mayor que hemos visto hasta la fecha"
 }

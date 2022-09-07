@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Sam Rhea",
-		"image": "http://blog.cloudflare.com/content/images/2018/07/photo-for-profile.jpg",
 		"url": "https://blog.cloudflare.com/author/sam/",
 		"sameAs": [
 			"https://twitter.com/LakeAustinBlvd"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/tanium-cloudflare-teams/",
 	"datePublished": "2020-05-27T13:12:26.000Z",
 	"dateModified": "2022-04-26T23:23:33.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2020/05/BDES-679_Tanium-Cloudflare-Web-Image.png",
-		"width": 2001,
-		"height": 1126
-	},
+	"image": "https://blog.cloudflare.com/content/images/2020/05/BDES-679_Tanium-Cloudflare-Web-Image.png",
 	"keywords": "Cloudflare Zero Trust, Cloudflare Access, Endpoint, Zero Trust, Device posture, Security",
-	"description": "Deploy comprehensive zero-trust security by integrating Tanium with Cloudflare for Teams.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Deploy comprehensive zero-trust security by integrating Tanium with Cloudflare for Teams."
 }

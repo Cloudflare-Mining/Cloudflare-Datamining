@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "John Graham-Cumming",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
 		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
 		"sameAs": [
 			"https://twitter.com/jgrahamc"
@@ -26,9 +12,5 @@
 	"dateModified": "2020-08-19T16:05:14.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2017/12/4532962327_c5a219d992_b-1.jpg",
 	"keywords": "Product News, Kubernetes, Argo Smart Routing, Optimization, Speed & Reliability, Cloudflare Tunnel",
-	"description": "It’s ironic that the one thing most programmers would really rather not have to spend time dealing with is... a computer. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "It’s ironic that the one thing most programmers would really rather not have to spend time dealing with is... a computer. "
 }

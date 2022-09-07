@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Sam Rhea",
-		"image": "http://blog.cloudflare.com/content/images/2018/07/photo-for-profile.jpg",
 		"url": "https://blog.cloudflare.com/author/sam/",
 		"sameAs": [
 			"https://twitter.com/LakeAustinBlvd"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/secure-how-your-servers-connect-to-the-internet-today/",
 	"datePublished": "2021-12-10T21:24:45.000Z",
 	"dateModified": "2022-08-14T16:57:05.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/12/image2-44.png",
-		"width": 1800,
-		"height": 1013
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/12/image2-44.png",
 	"keywords": "Cloudflare Zero Trust, Cloudflare One, Zero Trust, Cloudflare Gateway, Zero Day Threats, Security, WAF, Log4J",
-	"description": "The vulnerability disclosed yesterday in the Java-based logging package, log4j, allows attackers to execute code on a remote server. We’ve updated Cloudflare’s WAF to defend your infrastructure against this 0-day attack. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "The vulnerability disclosed yesterday in the Java-based logging package, log4j, allows attackers to execute code on a remote server. We’ve updated Cloudflare’s WAF to defend your infrastructure against this 0-day attack. "
 }

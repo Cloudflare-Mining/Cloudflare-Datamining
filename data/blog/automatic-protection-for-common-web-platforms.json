@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "John Graham-Cumming",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
 		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
 		"sameAs": [
 			"https://twitter.com/jgrahamc"
@@ -26,9 +12,5 @@
 	"dateModified": "2018-08-23T16:32:34.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/08/Screen-Shot-2014-10-14-at-13-39-46.png",
 	"keywords": "WordPress, Drupal, joomla, WHMCS, Vulnerabilities, Reliability, WAF",
-	"description": "If you are a CloudFlare Pro or above customer you enjoy the protection of the CloudFlare WAF. If you use one of the common web platforms, such as WordPress, Drupal, Plone, WHMCS, or Joomla, then it&#x27;s worth checking if the relevant CloudFlare WAF ruleset is enabled.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "If you are a CloudFlare Pro or above customer you enjoy the protection of the CloudFlare WAF. If you use one of the common web platforms, such as WordPress, Drupal, Plone, WHMCS, or Joomla, then it&#x27;s worth checking if the relevant CloudFlare WAF ruleset is enabled."
 }

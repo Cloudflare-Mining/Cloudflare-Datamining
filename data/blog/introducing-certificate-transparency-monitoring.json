@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Ben Solomon",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/08/Personal-Pic.jpg",
-			"width": 2000,
-			"height": 2000
-		},
 		"url": "https://blog.cloudflare.com/author/bensol/",
 		"sameAs": [
 			"https://twitter.com/bensol"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/introducing-certificate-transparency-monitoring/",
 	"datePublished": "2019-08-08T22:00:00.000Z",
 	"dateModified": "2020-01-09T20:09:28.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2019/12/twitter-In-Stream_Wide___Introducing-Certificate-Transparency-Monitoring.png",
-		"width": 1945,
-		"height": 973
-	},
+	"image": "https://blog.cloudflare.com/content/images/2019/12/twitter-In-Stream_Wide___Introducing-Certificate-Transparency-Monitoring.png",
 	"keywords": "Product News, Security, SSL",
-	"description": "With CT Monitoring, we’ll send you an email whenever a certificate is issued for one of your domains. When you get an alert, don’t panic; we err on the side of caution by sending alerts whenever a possible domain match is found. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "With CT Monitoring, we’ll send you an email whenever a certificate is issued for one of your domains. When you get an alert, don’t panic; we err on the side of caution by sending alerts whenever a possible domain match is found. "
 }

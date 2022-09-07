@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Jeffrey Tang",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/03/jeffrey-tang-cloudflare.jpeg",
-			"width": 600,
-			"height": 600
-		},
 		"url": "https://blog.cloudflare.com/author/jeffrey/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/lessons-learned-from-scaling-up-cloudflare-anomaly-detection-platform/",
 	"datePublished": "2021-03-12T15:48:32.000Z",
 	"dateModified": "2021-03-12T15:48:32.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/03/twitter-shared-link-7.png",
-		"width": 1200,
-		"height": 628
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/03/twitter-shared-link-7.png",
 	"keywords": "Kubernetes, Bots, Redis, HBOS, HyperLogLog",
-	"description": "Anomaly Detection uses an algorithm called Histogram-Based Outlier Scoring (HBOS) to detect anomalous traffic in a scalable way. While HBOS is less precise than algorithms like kNN when it comes to local outliers, it is able to score global outliers quickly (in linear time).",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Anomaly Detection uses an algorithm called Histogram-Based Outlier Scoring (HBOS) to detect anomalous traffic in a scalable way. While HBOS is less precise than algorithms like kNN when it comes to local outliers, it is able to score global outliers quickly (in linear time)."
 }

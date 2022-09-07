@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Ashcon Partovi",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/04/117158947_4858836477475662_2532132460047140852_o.jpeg",
-			"width": 280,
-			"height": 280
-		},
 		"url": "https://blog.cloudflare.com/author/ashcon/",
 		"sameAs": [
 			"https://twitter.com/ashconpartovi"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/eliminating-cold-starts-with-cloudflare-workers/",
 	"datePublished": "2020-07-30T13:00:00.000Z",
 	"dateModified": "2020-11-10T12:54:12.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2020/07/Screen-Shot-2020-07-29-at-5.59.10-PM.png",
-		"width": 1290,
-		"height": 592
-	},
+	"image": "https://blog.cloudflare.com/content/images/2020/07/Screen-Shot-2020-07-29-at-5.59.10-PM.png",
 	"keywords": "Serverless Week, Serverless, Cloudflare Workers, JavaScript, Product News",
-	"description": "A “cold start” is the time it takes to load and execute a new copy of a serverless function for the first time. It’s a problem that’s both complicated to solve and costly to fix.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "A “cold start” is the time it takes to load and execute a new copy of a serverless function for the first time. It’s a problem that’s both complicated to solve and costly to fix."
 }

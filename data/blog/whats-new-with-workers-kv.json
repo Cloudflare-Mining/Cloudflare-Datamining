@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Steve Klabnik",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/10/photo.jpg",
-			"width": 600,
-			"height": 600
-		},
 		"url": "https://blog.cloudflare.com/author/steve/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/whats-new-with-workers-kv/",
 	"datePublished": "2019-11-06T14:00:00.000Z",
 	"dateModified": "2019-11-12T17:57:07.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2019/11/Workers-KV-with-Logo.png",
-		"width": 2542,
-		"height": 1411
-	},
+	"image": "https://blog.cloudflare.com/content/images/2019/11/Workers-KV-with-Logo.png",
 	"keywords": "Cloudflare Workers KV, Cloudflare Workers, Serverless, Product News, API",
-	"description": "The Storage team has shipped some new features for Workers KV that folks have been asking for. In this post, we&#x27;ll talk about some of these new features and how to use them.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "The Storage team has shipped some new features for Workers KV that folks have been asking for. In this post, we&#x27;ll talk about some of these new features and how to use them."
 }

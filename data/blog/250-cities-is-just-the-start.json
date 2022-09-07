@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Jon Rolfe",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/08/download.png",
-			"width": 600,
-			"height": 600
-		},
 		"url": "https://blog.cloudflare.com/author/jon-rolfe/",
 		"sameAs": [
 			"https://twitter.com/jrolfoid"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/250-cities-is-just-the-start/",
 	"datePublished": "2021-09-13T12:59:02.000Z",
 	"dateModified": "2021-09-18T14:20:46.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/09/image2-9.png",
-		"width": 1801,
-		"height": 1013
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/09/image2-9.png",
 	"keywords": "Speed Week, Cloudflare Network, Internet Performance",
-	"description": "Today, I have three speedy infrastructure updates: we’ve passed 250 on-network cities, more than tripled our external network capacity, and increased our long-haul internal backbone network by over 800% since the start of 2020.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Today, I have three speedy infrastructure updates: we’ve passed 250 on-network cities, more than tripled our external network capacity, and increased our long-haul internal backbone network by over 800% since the start of 2020."
 }

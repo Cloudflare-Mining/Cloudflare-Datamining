@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Marek Majkowski",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/b5967d6c687939594adb6992723d0529.jpeg",
 		"url": "https://blog.cloudflare.com/author/marek-majkowski/",
 		"sameAs": [
 			"https://twitter.com/majek04"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/es-es/cloudflare-architecture-and-how-bpf-eats-the-world-es-es/",
 	"datePublished": "2019-05-18T15:00:00.000Z",
 	"dateModified": "2021-01-21T19:18:03.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2019/10/13_BPF-is-everywhere-1.jpg",
-		"width": 950,
-		"height": 512
-	},
+	"image": "https://blog.cloudflare.com/content/images/2019/10/13_BPF-is-everywhere-1.jpg",
 	"keywords": "Programación, Desarrolladores, Español, eBPF (ES), Linux (ES), Anycast (ES)",
-	"description": "Recientemente, en Netdev 0x13, la conferencia sobre Redes en Linux en Praga, di una breve charla titulada “Linux en Cloudflare”. La charla terminó siendo casi en su totalidad sobre el BPF. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Recientemente, en Netdev 0x13, la conferencia sobre Redes en Linux en Praga, di una breve charla titulada “Linux en Cloudflare”. La charla terminó siendo casi en su totalidad sobre el BPF. "
 }

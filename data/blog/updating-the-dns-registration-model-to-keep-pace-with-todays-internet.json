@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Ólafur Guðmundsson",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/3a917b8.jpg",
 		"url": "https://blog.cloudflare.com/author/olafur-gudmundsson/",
 		"sameAs": []
 	},
@@ -24,9 +10,5 @@
 	"dateModified": "2018-08-23T21:41:52.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/08/image00.gif",
 	"keywords": "ICANN, DNSSEC, DNS, Reliability",
-	"description": "CloudFlare is, arguably, the largest third-party DNS Authoritative operator in the world. We manage well over 1 million domains and have registrations in almost every TLD open for registrations.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "CloudFlare is, arguably, the largest third-party DNS Authoritative operator in the world. We manage well over 1 million domains and have registrations in almost every TLD open for registrations."
 }

@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Achiel van der Mandele",
-		"image": "http://blog.cloudflare.com/content/images/2019/04/avatar.png",
 		"url": "https://blog.cloudflare.com/author/achiel/",
 		"sameAs": []
 	},
@@ -22,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/announcing-grpc/",
 	"datePublished": "2020-10-01T13:00:00.000Z",
 	"dateModified": "2020-10-01T16:08:23.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2020/10/gRPC-OG.png",
-		"width": 1200,
-		"height": 785
-	},
+	"image": "https://blog.cloudflare.com/content/images/2020/10/gRPC-OG.png",
 	"keywords": "Birthday Week, Product News, gRPC",
-	"description": "Today we&#x27;re excited to announce beta support for proxying gRPC, a next-generation protocol that allows you to build APIs at scale. With gRPC on Cloudflare, you get access to the security, reliability and performance features that you&#x27;re used to having at your fingertips for traditional APIs.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Today we&#x27;re excited to announce beta support for proxying gRPC, a next-generation protocol that allows you to build APIs at scale. With gRPC on Cloudflare, you get access to the security, reliability and performance features that you&#x27;re used to having at your fingertips for traditional APIs."
 }

@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Sam Rhea",
-		"image": "http://blog.cloudflare.com/content/images/2018/07/photo-for-profile.jpg",
 		"url": "https://blog.cloudflare.com/author/sam/",
 		"sameAs": [
 			"https://twitter.com/LakeAustinBlvd"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/es-es/log-every-request-to-corporate-apps-no-code-changes-required-es-es/",
 	"datePublished": "2019-11-17T14:00:00.000Z",
 	"dateModified": "2021-01-21T19:12:09.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2019/12/image2-24.png",
-		"width": 686,
-		"height": 202
-	},
+	"image": "https://blog.cloudflare.com/content/images/2019/12/image2-24.png",
 	"keywords": "Cloudflare Access (ES), Español, Noticias de productos, Seguridad, VPN (ES), Registros",
-	"description": "Cuando un usuario se conecta a una red corporativa a través de un cliente VPN empresa, esto es lo que registra el dispositivo VPN:",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Cuando un usuario se conecta a una red corporativa a través de un cliente VPN empresa, esto es lo que registra el dispositivo VPN:"
 }

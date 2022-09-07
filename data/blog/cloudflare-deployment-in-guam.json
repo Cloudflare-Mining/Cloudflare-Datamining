@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "David Antunes",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/07/Screenshot-2022-07-22-at-18.30.47-1.png",
-			"width": 309,
-			"height": 378
-		},
 		"url": "https://blog.cloudflare.com/author/david-antunes/",
 		"sameAs": [
 			"https://twitter.com/dscantunes"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/cloudflare-deployment-in-guam/",
 	"datePublished": "2022-07-25T13:00:00.000Z",
 	"dateModified": "2022-07-25T19:47:09.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/07/image7-8.png",
-		"width": 1800,
-		"height": 1013
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/07/image7-8.png",
 	"keywords": "Cloudflare Network, Data Center, Guam, APAC",
-	"description": "Cloudflare Deployment in Guam - Delivering a Better Internet for Faraway Pacific Ocean Archipelagos Residents",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Cloudflare Deployment in Guam - Delivering a Better Internet for Faraway Pacific Ocean Archipelagos Residents"
 }

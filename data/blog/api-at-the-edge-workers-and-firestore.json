@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Ashley M Lewis",
-		"image": "http://blog.cloudflare.com/content/images/2019/03/ashley.jpg",
 		"url": "https://blog.cloudflare.com/author/ashley/",
 		"sameAs": []
 	},
@@ -22,10 +8,7 @@
 	"url": "https://blog.cloudflare.com/api-at-the-edge-workers-and-firestore/",
 	"datePublished": "2019-03-21T15:00:00.000Z",
 	"dateModified": "2020-08-11T17:00:27.000Z",
+	"image": null,
 	"keywords": "Firestore, Cloudflare Workers, API, Serverless, Programming",
-	"description": "We’re super stoked about bringing you Workers.dev, and we’re even more stoked at every opportunity we have to dogfood Workers. Using what we create keeps us tuned in to the developer experience, which takes a good deal of guesswork out of drawing our roadmaps.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "We’re super stoked about bringing you Workers.dev, and we’re even more stoked at every opportunity we have to dogfood Workers. Using what we create keeps us tuned in to the developer experience, which takes a good deal of guesswork out of drawing our roadmaps."
 }

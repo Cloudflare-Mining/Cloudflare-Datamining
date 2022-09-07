@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Matthew Prince",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
-			"width": 1196,
-			"height": 1190
-		},
 		"url": "https://blog.cloudflare.com/author/matthew-prince/",
 		"sameAs": [
 			"https://twitter.com/eastdakota"
@@ -31,9 +12,5 @@
 	"dateModified": "2018-08-27T20:22:08.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/02/we_love_ssl.png.scaled500.png",
 	"keywords": "HTTPS, SSL, Product News, Security",
-	"description": "SSL today is too hard. While it&#x27;s something every website should support, even for the technically savvy, getting a SSL certificate properly installed on your web server can be daunting. Moreover, several platforms like Google AppEngine don&#x27;t fully support SSL so it&#x27;s not a possibility.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "SSL today is too hard. While it&#x27;s something every website should support, even for the technically savvy, getting a SSL certificate properly installed on your web server can be daunting. Moreover, several platforms like Google AppEngine don&#x27;t fully support SSL so it&#x27;s not a possibility."
 }

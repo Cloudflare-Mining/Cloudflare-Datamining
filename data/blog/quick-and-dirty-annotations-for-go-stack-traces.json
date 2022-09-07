@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Filippo Valsorda",
-		"image": "http://blog.cloudflare.com/content/images/2018/02/K6rX3ZSn_400x400.jpg",
 		"url": "https://blog.cloudflare.com/author/filippo/",
 		"sameAs": [
 			"https://twitter.com/filosottile"
@@ -26,9 +12,5 @@
 	"dateModified": "2018-08-24T18:24:41.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2017/10/6372385465_014a4e56af_z.jpg",
 	"keywords": "RRDNS, Reliability, DNS, Go, Programming",
-	"description": "CloudFlare’s DNS server, RRDNS, is entirely written in Go and typically runs tens of thousands goroutines. Since goroutines are cheap and Go I/O is blocking we run one goroutine per file descriptor we listen on and queue new packets for processing.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "CloudFlare’s DNS server, RRDNS, is entirely written in Go and typically runs tens of thousands goroutines. Since goroutines are cheap and Go I/O is blocking we run one goroutine per file descriptor we listen on and queue new packets for processing."
 }

@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Brendan Coll",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/11/brendan-coll.png",
-			"width": 406,
-			"height": 406
-		},
 		"url": "https://blog.cloudflare.com/author/brendan-coll/",
 		"sameAs": [
 			"https://twitter.com/_mrbbot"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/ja-jp/miniflare-ja-jp/",
 	"datePublished": "2022-01-07T13:58:00.000Z",
 	"dateModified": "2022-06-20T14:08:18.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/06/image1-6-1.png",
-		"width": 1201,
-		"height": 675
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/06/image1-6-1.png",
 	"keywords": "Miniflare (JP), Cloudflare Workers (JP), 日本語",
-	"description": "本日、次のメジャーバージョンである、よりモジュール化された、軽量で正確なMiniflare 2.0のリリースを発表できることを嬉しく思います",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "本日、次のメジャーバージョンである、よりモジュール化された、軽量で正確なMiniflare 2.0のリリースを発表できることを嬉しく思います"
 }

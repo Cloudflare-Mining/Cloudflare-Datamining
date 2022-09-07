@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Filippo Valsorda",
-		"image": "http://blog.cloudflare.com/content/images/2018/02/K6rX3ZSn_400x400.jpg",
 		"url": "https://blog.cloudflare.com/author/filippo/",
 		"sameAs": [
 			"https://twitter.com/filosottile"
@@ -26,9 +12,5 @@
 	"dateModified": "2020-08-20T16:58:01.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2017/10/11597106396_a1927f8c71_z.jpg",
 	"keywords": "RRDNS, DNS, Reliability, Tools, Go",
-	"description": "Here at CloudFlare we are heavy users of the github.com/miekg/dns Go DNS library and we make sure to contribute to its development as much as possible. Therefore when Dmitry Vyukov published go-fuzz and started to uncover tens of bugs in the Go standard library, our task was clear.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Here at CloudFlare we are heavy users of the github.com/miekg/dns Go DNS library and we make sure to contribute to its development as much as possible. Therefore when Dmitry Vyukov published go-fuzz and started to uncover tens of bugs in the Go standard library, our task was clear."
 }

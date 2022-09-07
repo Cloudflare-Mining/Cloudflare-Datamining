@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "John Graham-Cumming",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
 		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
 		"sameAs": [
 			"https://twitter.com/jgrahamc"
@@ -26,9 +12,5 @@
 	"dateModified": "2018-08-28T20:56:30.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/08/5967052342_fb2d135c4e_b.jpg",
 	"keywords": "Predictions, DDoS, Attacks, TLS, Security, Reliability, Open Source",
-	"description": "Looking back over 2016, we saw the good and bad that comes with widespread use and abuse of the Internet.\n\n",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Looking back over 2016, we saw the good and bad that comes with widespread use and abuse of the Internet.\n\n"
 }

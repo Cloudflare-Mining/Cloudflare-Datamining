@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Rita Kozlov",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/05/Rita-Kozlov.jpeg",
-			"width": 200,
-			"height": 200
-		},
 		"url": "https://blog.cloudflare.com/author/rita/",
 		"sameAs": [
 			"https://twitter.com/ritakozlov_"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/es-es/workers-sites-es-es/",
 	"datePublished": "2019-09-27T13:00:00.000Z",
 	"dateModified": "2021-01-21T19:19:40.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2019/10/00-1.png",
-		"width": 967,
-		"height": 551
-	},
+	"image": "https://blog.cloudflare.com/content/images/2019/10/00-1.png",
 	"keywords": "Semana de cumpleaños, Noticias de productos, Español, Sin servidor, JavaScript (ES), Cloudflare Workers (ES)",
-	"description": "El rendimiento en la web siempre ha sido una batalla contra la velocidad de la luz: acceder a un sitio desde Londres que se sirve desde Seattle, WA, significa que cada solicitud de activos tiene que viajar más de once mil kilómetros. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "El rendimiento en la web siempre ha sido una batalla contra la velocidad de la luz: acceder a un sitio desde Londres que se sirve desde Seattle, WA, significa que cada solicitud de activos tiene que viajar más de once mil kilómetros. "
 }

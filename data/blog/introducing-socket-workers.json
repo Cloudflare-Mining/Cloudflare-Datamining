@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "James M Snell",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/11/mecoffee.jpg",
-			"width": 400,
-			"height": 400
-		},
 		"url": "https://blog.cloudflare.com/author/jasnell/",
 		"sameAs": [
 			"https://twitter.com/jasnell"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/introducing-socket-workers/",
 	"datePublished": "2021-11-15T13:59:16.000Z",
 	"dateModified": "2021-12-30T01:13:50.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/11/unnamed--1--5.png",
-		"width": 1200,
-		"height": 675
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/11/unnamed--1--5.png",
 	"keywords": "Full Stack Week, Cloudflare Workers, QUIC",
-	"description": "The ability to make TCP and QUIC client connections from within Workers and Durable Objects, as well as the ability to connect to Workers over TCP and QUIC without using HTTP, will be coming to Cloudflare Workers. Here’s a peek at what we’re working on.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "The ability to make TCP and QUIC client connections from within Workers and Durable Objects, as well as the ability to connect to Workers over TCP and QUIC without using HTTP, will be coming to Cloudflare Workers. Here’s a peek at what we’re working on."
 }

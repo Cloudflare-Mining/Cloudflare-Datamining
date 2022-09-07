@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Omer Yoachimik",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/Omer-1.png",
-			"width": 773,
-			"height": 653
-		},
 		"url": "https://blog.cloudflare.com/author/omer/",
 		"sameAs": [
 			"https://twitter.com/OmerYoahimik"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/deep-dive-cloudflare-autonomous-edge-ddos-protection-zh-cn/",
 	"datePublished": "2021-03-18T15:21:00.000Z",
 	"dateModified": "2021-09-02T19:06:04.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/04/1-22.png",
-		"width": 1572,
-		"height": 839
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/04/1-22.png",
 	"keywords": "DDoS (CN), Gatebot (ZH)",
-	"description": "今天，我很高兴能谈一下我们的自主 DDoS (分布式拒绝服务（DDoS）) 防护系统。这个系统已部署到 Cloudflare 全球所有 200 多个数据中心，正在积极保护我们的所有客户，防御 3-7 层 （OSI 模型）上的 DDoS 攻击，无需人工干预。作为我们不计量 DDoS 防护承诺的一部分，我们不会因为客户受到 DDoS 攻击而增加对客户的收费。",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "今天，我很高兴能谈一下我们的自主 DDoS (分布式拒绝服务（DDoS）) 防护系统。这个系统已部署到 Cloudflare 全球所有 200 多个数据中心，正在积极保护我们的所有客户，防御 3-7 层 （OSI 模型）上的 DDoS 攻击，无需人工干预。作为我们不计量 DDoS 防护承诺的一部分，我们不会因为客户受到 DDoS 攻击而增加对客户的收费。"
 }
