@@ -7,7 +7,7 @@
 		renew: "Renew",
 		retry: "Retry",
 		addCard: "Add card",
-		back_to_zone: (0, n.d)(d(), "zoneName"),
+		back_to_zone: (0, a.d)(v(), "zoneName"),
 		email_notification: "Please <0>verify your account email address</0> to access all Registrar features such as Registration and Transfer.",
 		invalid_auth_code: "The registry has indicated that the authorization code is not correct. Please re-enter the code again. If you continue to receive an authorization code error, please request a new code from your current registrar.",
 		registrar_managed: "As this is a Cloudflare Registrar managed account, no payment is needed."
@@ -54,8 +54,8 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 		},
 		complete_purchase: "Complete purchase",
 		purchase_security: "All transactions are secure and encrypted.",
-		purchase_agreement: (0, n.d)(N()),
-		purchase_agreement_with_icloud: (0, n.d)(r()),
+		purchase_agreement: (0, a.d)(b()),
+		purchase_agreement_with_icloud: (0, a.d)(y()),
 		automatic_renewal_agreement: "Automatic renewals may be cancelled at any time via the Domain Management page in your account. Automatic renewals will be billed to the payment method on file, until cancelled.",
 		automatic_renewal_agreement_enabled: "You are consenting to the automatic renewal of your domain names(s)."
 	},
@@ -84,7 +84,7 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 		overview: {
 			transfer_in: {
 				title: "Complete your transfer",
-				subtitle: (0, n.d)(L(), "domainName"),
+				subtitle: (0, a.d)(w(), "domainName"),
 				body: "Complete the following tasks to finish your domain transfer and activate on Cloudflare.",
 				refresh: "Refresh transfer status"
 			},
@@ -101,24 +101,24 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 		pending_foa: "Transfer is pending FOA. Please check your email.",
 		invalid_auth_code: "Invalid auth code",
 		auth_code: "Enter auth code",
-		payment: (0, n.d)(E(), "amount"),
-		approve: (0, n.d)(g(), "registrar"),
+		payment: (0, a.d)(g(), "amount"),
+		approve: (0, a.d)(p(), "registrar"),
 		success: "Transfer successful"
 	},
 	registration_card: {
 		title: "Registration",
-		pending_deletion: (0, n.d)(l(), "expired_on", "purchaseable_on"),
+		pending_deletion: (0, a.d)(h(), "expired_on", "purchaseable_on"),
 		renew_btn: "Renew your domain",
 		auto_renew_on: "Auto Renew is on",
 		auto_renew_off: "Auto Renew is off",
 		auto_renew_description: "Your domain will automatically renew every year.",
-		expires_on: (0, n.d)(p(), "expires_on"),
+		expires_on: (0, a.d)(f(), "expires_on"),
 		deleted_description: "This domain was deleted",
 		check_availability: "Check availability",
 		not_on_cloudflare: {
-			expiration: (0, n.d)(y(), "expiration"),
+			expiration: (0, a.d)(m(), "expiration"),
 			transfer_cta: "Transfer to Cloudflare",
-			transfer_cta_subext: (0, n.d)(h(), "price")
+			transfer_cta_subext: (0, a.d)(u(), "price")
 		},
 		transfer_in_progress: {
 			title: "Transfer Progress",
@@ -134,7 +134,7 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 	add_years: {
 		toggle_view: "Renew/Extend Domain",
 		renew: "Renew for",
-		due: (0, n.d)(M(), "amount"),
+		due: (0, a.d)(_(), "amount"),
 		disabled_tooltip: "Domain state does not permit renewal. Please contact support for assistance."
 	},
 	domainPageNotifications: {
@@ -171,14 +171,14 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 	cor_resent_email: "Email sent",
 	cor_resend_email: "Resend email",
 	renewal_info: {
-		expires_on: (0, n.d)(P(), "expiresOn"),
-		renews_on: (0, n.d)(o(), "renewsOn"),
+		expires_on: (0, a.d)(c(), "expiresOn"),
+		renews_on: (0, a.d)(l(), "renewsOn"),
 		price: "Price",
 		per_year: "/ year",
-		billing: (0, n.d)(i(), "last4"),
-		billing_cloud: (0, n.d)(s(), "last4")
+		billing: (0, a.d)(d(), "last4"),
+		billing_cloud: (0, a.d)(s(), "last4")
 	},
-	registered_on: (0, n.d)(S(), "registration_date"),
+	registered_on: (0, a.d)(i(), "registration_date"),
 	renewals_billing_modal_title: "Confirm domain renewal for %{domain}",
 	renewals_billing_line_item_1: "%{smart_count} year %{tld} renewal |||| %{smart_count} years %{tld} renewal",
 	renewals_billing_line_item_1_meta: "Expires %{expiration}",
@@ -283,14 +283,14 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 	eligibility_unknown_domains_show: "Show %{smart_count} domain with unknown transfer eligibility* |||| Show %{smart_count} domains with unknown transfer eligibility*",
 	eligibility_unknown_domains_hide: "Hide %{smart_count} domain with unknown transfer eligibility* |||| Hide %{smart_count} domains with unknown transfer eligibility*",
 	unknown_eligibility_domains_description: "*These domains MAY be available for transfer, however we don't have enough information to make a determination at this moment.  Don't worry, we're attempting to determine the current state of each  domain.  This process may take some time so please try back in 5 minutes.  If we are still unable to make a determination please contact support for assistance.",
-	instructions_enom: c,
-	instructions_godaddy: O,
-	instructions_namecheap: T,
-	instructions_network_solutions: C,
-	instructions_one_and_one: z,
-	instructions_unknown: v,
-	instructions_uk: U,
-	instructions_restrictions: a,
+	instructions_enom: S,
+	instructions_godaddy: D,
+	instructions_namecheap: x,
+	instructions_network_solutions: R,
+	instructions_one_and_one: A,
+	instructions_unknown: T,
+	instructions_uk: I,
+	instructions_restrictions: z,
 	instructions_restrictions_title: "Show restrictions",
 	instructions_known_title: "Transfer your domain from %{registrar}",
 	instructions_unknown_title: "Follow these instructions to transfer your domain",
@@ -529,6 +529,13 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 	pricing_table_header_current_fee: "Current Fee (per year)",
 	pricing_table_header_new_fee: "New Fee (per year)",
 	pricing_table_header_date: "Effective Date",
+	protection_num_of_approvals_title: "Required number of approvals",
+	protection_num_of_approvals_subtitle: "This is the body copy under the title",
+	protection_num_of_approvals_list: "For changes made to the approvers list",
+	protection_num_of_approvals_list_num: "1 approver",
+	protection_num_of_approvals_unlock: "To unlock a domain",
+	protection_num_of_approvals_unlock_option: "At least %{number} approvers",
 	protection_auto_lock_title: "Automatic locking",
-	protection_auto_lock_description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dolor magna eget est lorem ipsum dolor sit amet."
+	protection_auto_lock_description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dolor magna eget est lorem ipsum dolor sit amet.",
+	protection_auto_lock_always_lock: "Always lock"
 }
