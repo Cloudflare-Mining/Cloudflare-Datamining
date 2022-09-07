@@ -22,7 +22,12 @@
 	"url": "https://blog.cloudflare.com/app-a-day-3-google-analytics-as-an-app/",
 	"datePublished": "2011-06-02T23:33:00.000Z",
 	"dateModified": "2020-02-18T23:27:05.000Z",
-	"image": "https://blog.cloudflare.com/content/images/2020/02/Screen_shot_2011-06-02_at_4.53.25_PM.png.scaled500.png",
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://blog.cloudflare.com/content/images/2020/02/Screen_shot_2011-06-02_at_4.53.25_PM.png.scaled500.png",
+		"width": 500,
+		"height": 179
+	},
 	"keywords": "Analytics, Cloudflare Apps, Google",
 	"description": "This post offers details about an older Google Analytics app that was available via Cloudflare but is no longer supported.",
 	"mainEntityOfPage": {
