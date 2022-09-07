@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Zaid Farooqui",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/05/Screen-Shot-2022-05-12-at-5.21.40-PM.png",
-			"width": 406,
-			"height": 370
-		},
 		"url": "https://blog.cloudflare.com/author/zaid/",
 		"sameAs": [
 			"https://twitter.com/zaid"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/ko-kr/announcing-cloudflare-images-ko-kr/",
 	"datePublished": "2021-09-15T13:02:00.000Z",
 	"dateModified": "2022-03-30T11:50:00.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/03/image3-16-4.png",
-		"width": 1800,
-		"height": 1013
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/03/image3-16-4.png",
 	"keywords": "스피드 위크, 이미지 크기 조정, 이미지 스토리지, 이미지 최적화, AVIF (KO)",
-	"description": "오늘 모든 고객을 위해 Cloudflare Images가 출시됩니다. Images는 이미지를 저장하고, 크기 조정, 최적화 등을 제공하는 올인원 제품입니다. 모든 규모의 고객이 몇 분만에 확장 가능하며 비용 최적화된  이미지 파이프라인을 구축할 수 있도록 Cloudflare Images를 마련했습니다.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "오늘 모든 고객을 위해 Cloudflare Images가 출시됩니다. Images는 이미지를 저장하고, 크기 조정, 최적화 등을 제공하는 올인원 제품입니다. 모든 규모의 고객이 몇 분만에 확장 가능하며 비용 최적화된  이미지 파이프라인을 구축할 수 있도록 Cloudflare Images를 마련했습니다."
 }

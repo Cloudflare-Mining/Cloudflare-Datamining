@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Shalabh Mohan",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/03/Shalabh-Mohan.jpeg",
-			"width": 450,
-			"height": 450
-		},
 		"url": "https://blog.cloudflare.com/author/shalabh/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/replace-your-email-gateway-with-area-1/",
 	"datePublished": "2022-06-20T13:14:55.000Z",
 	"dateModified": "2022-06-20T23:56:35.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/06/image3-15.png",
-		"width": 1800,
-		"height": 1013
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/06/image3-15.png",
 	"keywords": "Cloudflare Zero Trust, Cloudflare One Week, Email Security, Phishing, Cloud Email Security, Zero Trust, Security, Cloudflare Area 1",
-	"description": "Traditional SEG architectures were built for the email environments of yesterday. Learn how to seamlessly transition to cloud-native, preemptive email security",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Traditional SEG architectures were built for the email environments of yesterday. Learn how to seamlessly transition to cloud-native, preemptive email security"
 }

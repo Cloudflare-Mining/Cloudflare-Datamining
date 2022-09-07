@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Dina Kozlov",
-		"image": "http://blog.cloudflare.com/content/images/2019/06/headshot.jpg",
 		"url": "https://blog.cloudflare.com/author/dina/",
 		"sameAs": [
 			"https://twitter.com/dinasaur_404"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/ja-jp/secure-certificate-issuance-ja-jp/",
 	"datePublished": "2019-06-18T13:00:00.000Z",
 	"dateModified": "2021-01-21T18:57:17.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2019/12/Screen-Shot-2019-06-17-at-8.46.28-AM-1.png",
-		"width": 922,
-		"height": 644
-	},
+	"image": "https://blog.cloudflare.com/content/images/2019/12/Screen-Shot-2019-06-17-at-8.46.28-AM-1.png",
 	"keywords": "日本語, DNS (JP), BGP (JP), 暗号化",
-	"description": "インターネット上の信頼性は、公開鍵暗号基盤（PKI）に支えられています。PKIがデジタル証明書を発行することでサーバーはWebサイトをセキュアに保つことができ、暗号化された信頼できる通信の基盤を提供します。",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "インターネット上の信頼性は、公開鍵暗号基盤（PKI）に支えられています。PKIがデジタル証明書を発行することでサーバーはWebサイトをセキュアに保つことができ、暗号化された信頼できる通信の基盤を提供します。"
 }

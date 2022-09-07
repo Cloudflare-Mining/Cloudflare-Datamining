@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Jacob Zollinger",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/03/IMG_7418.jpg",
-			"width": 600,
-			"height": 600
-		},
 		"url": "https://blog.cloudflare.com/author/jacob/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/using-cloudflare-to-secure-your-cardholder-data-environment/",
 	"datePublished": "2020-03-27T12:00:00.000Z",
 	"dateModified": "2020-05-15T18:56:30.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2020/03/credit-cards@2x-1.png",
-		"width": 3321,
-		"height": 1684
-	},
+	"image": "https://blog.cloudflare.com/content/images/2020/03/credit-cards@2x-1.png",
 	"keywords": "PCI Certified, Security, Better Internet",
-	"description": "As part of our ongoing compliance efforts Cloudflare’s PCI scope is reviewed quarterly and after any significant changes to ensure all in-scope systems are operating in accordance with the PCI DSS.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "As part of our ongoing compliance efforts Cloudflare’s PCI scope is reviewed quarterly and after any significant changes to ensure all in-scope systems are operating in accordance with the PCI DSS."
 }

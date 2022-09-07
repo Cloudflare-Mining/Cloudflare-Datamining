@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Mia Malden",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/08/headshot.png",
-			"width": 200,
-			"height": 200
-		},
 		"url": "https://blog.cloudflare.com/author/mia/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/introducing-new-cloudflare-for-saas-documentation/",
 	"datePublished": "2022-08-09T13:00:00.000Z",
 	"dateModified": "2022-08-09T12:58:48.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/08/image3-3.png",
-		"width": 1585,
-		"height": 716
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/08/image3-3.png",
 	"keywords": "Technical Writing, Developer Documentation, Cloudflare for SaaS, SSL, SaaS",
-	"description": "Cloudflare for SaaS offers a suite of Cloudflare products and add-ons to improve the security, performance, and reliability of SaaS providers. Now, the Cloudflare for SaaS documentation outlines how to optimize it in order to meet your goals",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Cloudflare for SaaS offers a suite of Cloudflare products and add-ons to improve the security, performance, and reliability of SaaS providers. Now, the Cloudflare for SaaS documentation outlines how to optimize it in order to meet your goals"
 }

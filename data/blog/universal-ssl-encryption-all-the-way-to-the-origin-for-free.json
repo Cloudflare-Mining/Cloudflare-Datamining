@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Nick Sullivan",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/09/BJ4NgXVj_400x400.jpg",
-			"width": 400,
-			"height": 400
-		},
 		"url": "https://blog.cloudflare.com/author/nick-sullivan/",
 		"sameAs": [
 			"https://crypto.dance",
@@ -32,9 +13,5 @@
 	"dateModified": "2018-08-27T21:39:21.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2015/02/illustration-strict-ssl--2--1.png",
 	"keywords": "HTTPS, CFSSL, Universal SSL, Encryption, Certificate Authority, Security",
-	"description": "Last September, CloudFlare unveiled Universal SSL, enabling HTTPS support for all sites by default. All sites using CloudFlare now support strong cryptography from the browser to CloudFlare’s servers.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Last September, CloudFlare unveiled Universal SSL, enabling HTTPS support for all sites by default. All sites using CloudFlare now support strong cryptography from the browser to CloudFlare’s servers."
 }

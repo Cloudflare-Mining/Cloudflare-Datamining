@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Michael Keane",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/06/Michael-Keane-Headshot-Square.jpg",
-			"width": 2000,
-			"height": 2293
-		},
 		"url": "https://blog.cloudflare.com/author/michael-keane/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/how-to-augment-or-replace-your-vpn/",
 	"datePublished": "2022-06-22T13:27:57.000Z",
 	"dateModified": "2022-06-22T13:27:56.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/06/image2-30.png",
-		"width": 1800,
-		"height": 1013
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/06/image2-30.png",
 	"keywords": "Cloudflare One Week, Zero Trust, VPN, ZTNA, Cloudflare Access",
-	"description": "Offloading key applications from your traditional VPN to a cloud-native ZTNA solution like Cloudflare Access is a great place to start with Zero Trust and provides an approachable, meaningful upgrade for your business",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Offloading key applications from your traditional VPN to a cloud-native ZTNA solution like Cloudflare Access is a great place to start with Zero Trust and provides an approachable, meaningful upgrade for your business"
 }

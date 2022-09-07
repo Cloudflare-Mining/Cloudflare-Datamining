@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Rita Kozlov",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/05/Rita-Kozlov.jpeg",
-			"width": 200,
-			"height": 200
-		},
 		"url": "https://blog.cloudflare.com/author/rita/",
 		"sameAs": [
 			"https://twitter.com/ritakozlov_"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/workers-for-platforms/",
 	"datePublished": "2022-05-10T13:01:20.000Z",
 	"dateModified": "2022-07-27T18:09:51.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/05/image4-3.png",
-		"width": 1200,
-		"height": 675
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/05/image4-3.png",
 	"keywords": "Platform Week, Cloudflare Workers, Serverless, Developers",
-	"description": "Announcing Workers for Platforms, our tool suite to help make any product programmable, and help our customers deliver value to their customers and developers instantaneously",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Announcing Workers for Platforms, our tool suite to help make any product programmable, and help our customers deliver value to their customers and developers instantaneously"
 }

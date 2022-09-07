@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "John Graham-Cumming",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
 		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
 		"sameAs": [
 			"https://twitter.com/jgrahamc"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/fixing-the-mixed-content-problem-with-automatic-https-rewrites-zh-cn/",
 	"datePublished": "2016-09-22T14:34:00.000Z",
 	"dateModified": "2021-01-28T18:21:58.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2019/07/6714200883_2ba8167533_b-1.jpg",
-		"width": 1024,
-		"height": 768
-	},
+	"image": "https://blog.cloudflare.com/content/images/2019/07/6714200883_2ba8167533_b-1.jpg",
 	"keywords": "自动HTTPS (CN), 混合内容错误, 产品新闻, 安全, 加密周, 简体中文 (CN), SSL (CN), HTTPS (ZH)",
-	"description": "CloudFlare旨在终结未加密的互联网。但我们在网络上一谈论到HTTPS就会面临一个先有鸡还是先有蛋的问题。\n很久以前，建立支持HTTPS的网站很困难，昂贵且速度慢。后来出现了像CloudFlare的Universal SSL这样的服务，它使得从http：//切换到https：//就像点击按钮一样简单。只需点击一下网址，就可以通过HTTPS提供一个新建的免费SSL证书。",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "CloudFlare旨在终结未加密的互联网。但我们在网络上一谈论到HTTPS就会面临一个先有鸡还是先有蛋的问题。\n很久以前，建立支持HTTPS的网站很困难，昂贵且速度慢。后来出现了像CloudFlare的Universal SSL这样的服务，它使得从http：//切换到https：//就像点击按钮一样简单。只需点击一下网址，就可以通过HTTPS提供一个新建的免费SSL证书。"
 }

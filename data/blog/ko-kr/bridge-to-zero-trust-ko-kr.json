@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Annika Garbers",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/annika.png",
-			"width": 400,
-			"height": 400
-		},
 		"url": "https://blog.cloudflare.com/author/annika/",
 		"sameAs": [
 			"https://twitter.com/annikagarbers"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/ko-kr/bridge-to-zero-trust-ko-kr/",
 	"datePublished": "2022-03-18T13:00:00.000Z",
 	"dateModified": "2022-05-21T17:59:04.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/05/unnamed-3-4.png",
-		"width": 1600,
-		"height": 900
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/05/unnamed-3-4.png",
 	"keywords": "보안 주간, Cloudflare Zero Trust (KO), 제로 트러스트, 보안, 제품 뉴스",
-	"description": "오늘 또 다른 퍼즐 조각을 발표하여 기존 네트워크 아키텍처에서 Zero Trust로의 여정에 있는 조직을 돕게 되어 기쁩니다. 여기에는 Magic IP 계층 터널(Anycast GRE, IPsec, 또는 CNI)에 연결된 모든 네트워크에 설치된 경량 로밍 에이전트(WARP)를 갖춘 사용자 장치의 트래픽을 라우팅하는 기능이 포함됩니다",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "오늘 또 다른 퍼즐 조각을 발표하여 기존 네트워크 아키텍처에서 Zero Trust로의 여정에 있는 조직을 돕게 되어 기쁩니다. 여기에는 Magic IP 계층 터널(Anycast GRE, IPsec, 또는 CNI)에 연결된 모든 네트워크에 설치된 경량 로밍 에이전트(WARP)를 갖춘 사용자 장치의 트래픽을 라우팅하는 기능이 포함됩니다"
 }

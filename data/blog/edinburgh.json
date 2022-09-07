@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Marty Strong",
-		"image": "http://blog.cloudflare.com/content/images/2018/08/aa1_EkRB_400x400.jpg",
 		"url": "https://blog.cloudflare.com/author/marty-strong/",
 		"sameAs": [
 			"https://twitter.com/martystronguk"
@@ -26,9 +12,5 @@
 	"dateModified": "2018-08-29T07:23:05.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/04/Social---PoP-Announcements-template-1.png",
 	"keywords": "March of Cloudflare, Data Center, Cloudflare Network, Europe",
-	"description": "Our newest data center in Edinburgh expands our current total to 139 cities globally with a Cloudflare deployment. It also brings our UK total to 3 cities, after London and Manchester.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Our newest data center in Edinburgh expands our current total to 139 cities globally with a Cloudflare deployment. It also brings our UK total to 3 cities, after London and Manchester."
 }

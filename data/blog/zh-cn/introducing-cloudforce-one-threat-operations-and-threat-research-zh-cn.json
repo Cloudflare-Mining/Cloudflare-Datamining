@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Blake Darché",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/06/30DC176C-CDE6-4271-AD8C-CC27B2A9E730.jpeg",
-			"width": 400,
-			"height": 400
-		},
 		"url": "https://blog.cloudflare.com/author/blake/",
 		"sameAs": [
 			"https://twitter.com/blakedarche"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/introducing-cloudforce-one-threat-operations-and-threat-research-zh-cn/",
 	"datePublished": "2022-06-21T12:55:08.000Z",
 	"dateModified": "2022-06-21T12:55:08.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/06/image1-19-3.png",
-		"width": 1800,
-		"height": 1013
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/06/image1-19-3.png",
 	"keywords": "Cloudflare One Week (CN), 产品新闻, 威胁情报, Cloudforce One (CN), Threat Operations (CN), Malware Analysis (CN), Threat Research (CN), 简体中文 (CN)",
-	"description": "Cloudforce One 是我们的全新威胁运营和研究团队。该团队将会发布研究报告，但这并非其存在的原因。它的主要目标是：追查和制止威胁行为者",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Cloudforce One 是我们的全新威胁运营和研究团队。该团队将会发布研究报告，但这并非其存在的原因。它的主要目标是：追查和制止威胁行为者"
 }

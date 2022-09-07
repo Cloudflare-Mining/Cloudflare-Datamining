@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Nadin El-Yabroudi",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/11/Screen-Shot-2019-11-21-at-12.26.44-PM.png",
-			"width": 666,
-			"height": 650
-		},
 		"url": "https://blog.cloudflare.com/author/nadin/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/de-de/introducing-flan-scan-de-de/",
 	"datePublished": "2019-11-21T14:00:00.000Z",
 	"dateModified": "2021-01-22T19:00:28.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/01/flan-scan-light@3x-1-.png",
-		"width": 2964,
-		"height": 1494
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/01/flan-scan-light@3x-1-.png",
 	"keywords": "Produktneuigkeiten, Deutsch, Sicherheit, Entwickler, Python (DE), Latex (DE)",
-	"description": "Flan Scan, der schlanke Netzwerk-Schwachstellenscanner von Cloudflare, der bisher nur intern verwendet wurde, ist ab heute ein Open-Source-Produkt.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Flan Scan, der schlanke Netzwerk-Schwachstellenscanner von Cloudflare, der bisher nur intern verwendet wurde, ist ab heute ein Open-Source-Produkt."
 }

@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "David Belson",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/01/headshot-grayscale-crop.jpeg",
-			"width": 526,
-			"height": 480
-		},
 		"url": "https://blog.cloudflare.com/author/david-belson/",
 		"sameAs": [
 			"https://twitter.com/dbelson"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/dnssec-issues-fiji/",
 	"datePublished": "2022-03-09T10:11:24.000Z",
 	"dateModified": "2022-03-09T10:11:24.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/03/image2-7.png",
-		"width": 1200,
-		"height": 675
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/03/image2-7.png",
 	"keywords": "Cloudflare Radar, Internet Traffic, Fiji, DNSSEC, Outage",
-	"description": "DNSSEC issues with the .fj ccTLD caused problems reaching websites on the island nation",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "DNSSEC issues with the .fj ccTLD caused problems reaching websites on the island nation"
 }

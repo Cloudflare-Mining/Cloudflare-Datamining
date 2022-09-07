@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Nick Sullivan",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/09/BJ4NgXVj_400x400.jpg",
-			"width": 400,
-			"height": 400
-		},
 		"url": "https://blog.cloudflare.com/author/nick-sullivan/",
 		"sameAs": [
 			"https://crypto.dance",
@@ -32,9 +13,5 @@
 	"dateModified": "2020-08-20T23:11:49.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/08/23390123_b6caaefc16_z.jpg",
 	"keywords": "TLS, HTTPS, Encryption, Certificate Authority, SSL, CFSSL, Security",
-	"description": "A major part of securing a network as geographically diverse as CloudFlare’s is protecting data as it travels between datacenters. Customer data and logs are important to protect but so is all the control data that our applications use to communicate with each other. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "A major part of securing a network as geographically diverse as CloudFlare’s is protecting data as it travels between datacenters. Customer data and logs are important to protect but so is all the control data that our applications use to communicate with each other. "
 }

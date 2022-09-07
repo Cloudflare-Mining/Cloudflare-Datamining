@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Andrew Fitch",
-		"image": "http://blog.cloudflare.com/content/images/2017/10/AJF-Headshot.jpg",
 		"url": "https://blog.cloudflare.com/author/andrew/",
 		"sameAs": [
 			"https://www.cloudflare.com",
@@ -28,9 +14,5 @@
 	"dateModified": "2018-11-21T23:43:40.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/05/Screen-Shot-2018-05-08-at-2.27.21-PM.png",
 	"keywords": "Developers, Community, Events, Video, Cloudflare Apps, Cloudflare Meetups, Serverless, Cloudflare Workers, MeetUp",
-	"description": "At the end of March, Kenton Varda, tech lead and architect for Cloudflare Workers, traveled to London and led a talk about the Rise of Edge Compute where he laid out our vision for the future of the Internet as a platform.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "At the end of March, Kenton Varda, tech lead and architect for Cloudflare Workers, traveled to London and led a talk about the Rise of Edge Compute where he laid out our vision for the future of the Internet as a platform."
 }

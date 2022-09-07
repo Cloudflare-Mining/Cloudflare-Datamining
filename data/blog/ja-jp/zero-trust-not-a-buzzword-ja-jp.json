@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Fernando Serto",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/10/xlarge.jpg",
-			"width": 600,
-			"height": 600
-		},
 		"url": "https://blog.cloudflare.com/author/fernando/",
 		"sameAs": [
 			"https://twitter.com/fserto"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/ja-jp/zero-trust-not-a-buzzword-ja-jp/",
 	"datePublished": "2021-10-12T01:00:00.000Z",
 	"dateModified": "2021-10-26T16:50:02.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/10/Screen-Shot-2021-10-19-at-10.37.44-AM-2.png",
-		"width": 1484,
-		"height": 762
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/10/Screen-Shot-2021-10-19-at-10.37.44-AM-2.png",
 	"keywords": "ゼロトラスト, VPN (JP), 日本語, セキュリティ",
-	"description": "ここ数年、「ゼロトラスト」という言葉が大きな注目を集めてきました。",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "ここ数年、「ゼロトラスト」という言葉が大きな注目を集めてきました。"
 }

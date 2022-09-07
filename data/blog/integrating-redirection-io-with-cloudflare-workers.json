@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Guest Author",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/10/Screen-Shot-2019-10-09-at-11.21.59-AM.png",
-			"width": 362,
-			"height": 364
-		},
 		"url": "https://blog.cloudflare.com/author/guest-author/",
 		"sameAs": []
 	},
@@ -29,9 +10,5 @@
 	"dateModified": "2018-08-21T17:57:23.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/08/Screen-Shot-2018-08-21-at-10.55.42-AM.png",
 	"keywords": "Serverless, Cloudflare Workers, JavaScript, SEO",
-	"description": "Redirection.io is a Web traffic redirection manager. It provides a collection of tools for website administrators, SEO agencies, and developers, which help analyze HTTP errors, setup HTTP redirections, customize HTTP responses, and monitor the traffic efficiently.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Redirection.io is a Web traffic redirection manager. It provides a collection of tools for website administrators, SEO agencies, and developers, which help analyze HTTP errors, setup HTTP redirections, customize HTTP responses, and monitor the traffic efficiently."
 }

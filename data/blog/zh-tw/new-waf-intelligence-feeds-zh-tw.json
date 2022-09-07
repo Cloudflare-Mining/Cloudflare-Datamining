@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Daniele Molteni",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/10/meProfessional-1-flipped.jpg",
-			"width": 1732,
-			"height": 1732
-		},
 		"url": "https://blog.cloudflare.com/author/daniele/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/zh-tw/new-waf-intelligence-feeds-zh-tw/",
 	"datePublished": "2022-07-07T12:57:00.000Z",
 	"dateModified": "2022-08-12T07:34:19.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/08/unnamed-3.png",
-		"width": 1600,
-		"height": 900
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/08/unnamed-3.png",
 	"keywords": "產品新聞 (TW), 防火牆規則, WAF (TW), 自訂規則, 威脅情報, IP (TW), VPN (TW), 殭屍網絡, 繁體中文 (TW)",
-	"description": "Cloudflare 透過新增四個新的受管理 IP 清單用作任何自訂防火牆規則的一部分，來擴展 WAF 的威脅情報功能",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Cloudflare 透過新增四個新的受管理 IP 清單用作任何自訂防火牆規則的一部分，來擴展 WAF 的威脅情報功能"
 }

@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Louis Poinsignon",
-		"image": "http://blog.cloudflare.com/content/images/2017/09/AAEAAQAAAAAAAAYXAAAAJGE5YjM0YmVmLWJhMTItNDExZS1iNTcwLTdmNTg1YzZjMjBiNg.jpg",
 		"url": "https://blog.cloudflare.com/author/louis-poinsignon/",
 		"sameAs": [
 			"https://twitter.com/lpoinsig"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/bgp-leaks-and-crypto-currencies-zh-cn/",
 	"datePublished": "2018-06-24T22:31:00.000Z",
 	"dateModified": "2021-05-25T02:59:58.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2019/07/6818192898_c132e81824_z-1.jpg",
-		"width": 640,
-		"height": 480
-	},
+	"image": "https://blog.cloudflare.com/content/images/2019/07/6818192898_c132e81824_z-1.jpg",
 	"keywords": "BGP (CN), 加密, 安全, 简体中文 (CN), TLS (ZH), HTTPS (ZH)",
-	"description": "在过去的几个小时里，已经有十几个新闻报道揭露了有攻击者企图（也许已经完成了）使用BGP泄漏来窃取加密货币。",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "在过去的几个小时里，已经有十几个新闻报道揭露了有攻击者企图（也许已经完成了）使用BGP泄漏来窃取加密货币。"
 }

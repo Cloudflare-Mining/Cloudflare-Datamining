@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Ashcon Partovi",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/04/117158947_4858836477475662_2532132460047140852_o.jpeg",
-			"width": 280,
-			"height": 280
-		},
 		"url": "https://blog.cloudflare.com/author/ashcon/",
 		"sameAs": [
 			"https://twitter.com/ashconpartovi"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/workers-javascript-modules-zh-cn/",
 	"datePublished": "2021-11-16T11:47:00.000Z",
 	"dateModified": "2021-12-22T11:59:46.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/12/image1-102.png",
-		"width": 1200,
-		"height": 675
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/12/image1-102.png",
 	"keywords": "Full Stack Week (CN), Cloudflare Workers (CN), 开发人员",
-	"description": "我们很高兴地宣布，Cloudflare Workers 上现已支持 JavaScript 模块。如果您看过使用 JavaScript 编写的示例 Worker，您可能能够认出过去几年一直在互联网上流传的以下代码片段：",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "我们很高兴地宣布，Cloudflare Workers 上现已支持 JavaScript 模块。如果您看过使用 JavaScript 编写的示例 Worker，您可能能够认出过去几年一直在互联网上流传的以下代码片段："
 }

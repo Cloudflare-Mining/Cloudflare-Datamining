@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Kyle Krum",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2020/10/KylePhoto.jpg",
-			"width": 2000,
-			"height": 2000
-		},
 		"url": "https://blog.cloudflare.com/author/kyle-krum/",
 		"sameAs": [
 			"https://www.linkedin.com/in/kylekrum/",
@@ -30,16 +11,7 @@
 	"url": "https://blog.cloudflare.com/announcing-warp-for-linux-and-proxy-mode/",
 	"datePublished": "2021-06-17T13:00:02.000Z",
 	"dateModified": "2022-04-26T23:10:02.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/05/image4-5.png",
-		"width": 1668,
-		"height": 834
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/05/image4-5.png",
 	"keywords": "WARP, Product News, Cloudflare Zero Trust, 1.1.1.1, Cloudflare Gateway, Security, Zero Trust",
-	"description": "Starting today Cloudflare WARP is available for Linux and comes with the ability to run as a local proxy.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Starting today Cloudflare WARP is available for Linux and comes with the ability to run as a local proxy."
 }

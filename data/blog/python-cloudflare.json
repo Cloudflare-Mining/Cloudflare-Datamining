@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Martin J Levy",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/07/A03361C5-7DAD-4D01-8A98-A1400DF38E31.jpeg",
-			"width": 750,
-			"height": 744
-		},
 		"url": "https://blog.cloudflare.com/author/martin-levy/",
 		"sameAs": [
 			"https://twitter.com/mahtin"
@@ -31,9 +12,5 @@
 	"dateModified": "2018-08-27T19:52:44.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/08/1-list_rules.png",
 	"keywords": "API, WAF Rules, WAF, DNSSEC, DNS, Python, Programming",
-	"description": "Very early on in the company’s history we decided that everything that CloudFlare does on behalf of its customer-base should be controllable via an API. In fact, when you login to the CloudFlare control panel, you’re really just making API calls to our backend services.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Very early on in the company’s history we decided that everything that CloudFlare does on behalf of its customer-base should be controllable via an API. In fact, when you login to the CloudFlare control panel, you’re really just making API calls to our backend services."
 }

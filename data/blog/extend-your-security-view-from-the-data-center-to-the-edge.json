@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Kamilla Amirova",
-		"image": "http://blog.cloudflare.com/content/images/2017/11/photo.jpg",
 		"url": "https://blog.cloudflare.com/author/kamilla-amirova/",
 		"sameAs": []
 	},
@@ -24,9 +10,5 @@
 	"dateModified": "2018-08-29T07:29:34.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/04/google-cloud-security-command-center-1-1.png",
 	"keywords": "Google Cloud, Security, Beta",
-	"description": "How great would it be to have a dashboard with a holistic view of threats, malicious server activity, vulnerabilities, sensitive data access levels and a daily scan of resources across all of your applications and services? Now you can. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "How great would it be to have a dashboard with a holistic view of threats, malicious server activity, vulnerabilities, sensitive data access levels and a daily scan of resources across all of your applications and services? Now you can. "
 }

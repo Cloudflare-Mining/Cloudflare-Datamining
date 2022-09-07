@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Guest Author",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/10/Screen-Shot-2019-10-09-at-11.21.59-AM.png",
-			"width": 362,
-			"height": 364
-		},
 		"url": "https://blog.cloudflare.com/author/guest-author/",
 		"sameAs": []
 	},
@@ -29,9 +10,5 @@
 	"dateModified": "2019-03-07T16:05:41.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2019/03/request-filter-chain-1.png",
 	"keywords": "SEO, Serverless, Cloudflare Workers, Cloudflare Workers KV",
-	"description": "With this post we illustrate the potential applications of Cloudflare Workers in relation to search engine optimization, which is more commonly referred to as ‘SEO’ using our research and testing over the past year making Sloth.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "With this post we illustrate the potential applications of Cloudflare Workers in relation to search engine optimization, which is more commonly referred to as ‘SEO’ using our research and testing over the past year making Sloth."
 }

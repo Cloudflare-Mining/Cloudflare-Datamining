@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Dani Grant",
-		"image": "http://blog.cloudflare.com/content/images/2018/08/efVJR3rj_400x400.jpg",
 		"url": "https://blog.cloudflare.com/author/dani/",
 		"sameAs": [
 			"https://twitter.com/thedanigrant"
@@ -26,9 +12,5 @@
 	"dateModified": "2020-01-13T21:56:37.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/08/icon_mobile-interface-1.png",
 	"keywords": "AMP, Cache, Firebolt",
-	"description": "Cloudflare has been a long time supporter of AMP, an open-source markup language 1.5 billion web pages are using to accelerate their mobile web performance. Cloudflare runs Ampersand.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Cloudflare has been a long time supporter of AMP, an open-source markup language 1.5 billion web pages are using to accelerate their mobile web performance. Cloudflare runs Ampersand."
 }

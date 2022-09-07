@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Marc Bodmer",
-		"image": "http://blog.cloudflare.com/content/images/2018/09/0-3.jpg",
 		"url": "https://blog.cloudflare.com/author/marc/",
 		"sameAs": []
 	},
@@ -24,9 +10,5 @@
 	"dateModified": "2018-08-24T21:52:17.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/08/http2-demo.png",
 	"keywords": "HTTP2, spdy, Speed & Reliability",
-	"description": "At first glance, the potential performance improvements of HTTP/1.1 versus HTTP/2 on our demo page may seem a bit hard to believe. So, we put together a technical explanation of how this demo actually works. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "At first glance, the potential performance improvements of HTTP/1.1 versus HTTP/2 on our demo page may seem a bit hard to believe. So, we put together a technical explanation of how this demo actually works. "
 }

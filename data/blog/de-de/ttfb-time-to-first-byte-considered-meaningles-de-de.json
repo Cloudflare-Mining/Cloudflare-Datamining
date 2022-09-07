@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "John Graham-Cumming",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
 		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
 		"sameAs": [
 			"https://twitter.com/jgrahamc"
@@ -26,9 +12,5 @@
 	"dateModified": "2021-01-22T20:10:15.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2019/05/Screen_Shot_2012-07-02_at_9.49.22_AM.png.scaled500-2.png",
 	"keywords": "Deutsch, Geschwindigkeit & Zuverlässigkeit, TTFB (DE)",
-	"description": "„Time To First Byte“ wird oft als Maßstab dafür verwendet, wie schnell ein Webserver auf eine Anfrage reagiert, und von gängigen Webtest-Anbietern gemessen.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "„Time To First Byte“ wird oft als Maßstab dafür verwendet, wie schnell ein Webserver auf eine Anfrage reagiert, und von gängigen Webtest-Anbietern gemessen."
 }

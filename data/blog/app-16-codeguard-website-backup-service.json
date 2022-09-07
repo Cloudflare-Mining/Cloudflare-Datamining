@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "John Roberts",
-		"image": "http://blog.cloudflare.com/content/images/2018/02/john.jpg",
 		"url": "https://blog.cloudflare.com/author/john-roberts/",
 		"sameAs": [
 			"https://twitter.com/pencoyd"
@@ -26,9 +12,5 @@
 	"dateModified": "2018-01-29T20:49:46.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/01/codeguard-logo.png.scaled500.png",
 	"keywords": "Cloudflare Apps, Monitoring",
-	"description": "CodeGuard takes a compelling idea -- automatic website backup -- and makes it happen without further thought. That peace of mind keeps site owners sleeping easily, and it&#x27;s just the most compelling of the service&#x27;s offerings. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "CodeGuard takes a compelling idea -- automatic website backup -- and makes it happen without further thought. That peace of mind keeps site owners sleeping easily, and it&#x27;s just the most compelling of the service&#x27;s offerings. "
 }

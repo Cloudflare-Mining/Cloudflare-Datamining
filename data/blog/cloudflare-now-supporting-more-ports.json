@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Matthew Prince",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
-			"width": 1196,
-			"height": 1190
-		},
 		"url": "https://blog.cloudflare.com/author/matthew-prince/",
 		"sameAs": [
 			"https://twitter.com/eastdakota"
@@ -31,9 +12,5 @@
 	"dateModified": "2018-02-01T23:30:27.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/02/porthole.jpg.scaled500.jpg",
 	"keywords": "Plesk, Product News",
-	"description": "CloudFlare protects and accelerates web traffic. As a result, we initially only proxied traffic for the two main web ports: 80 (HTTP) and 443 (HTTPS). One of the top customer service questions we receive is: &quot;Why did my control panel stop working after I signed up?&quot; ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "CloudFlare protects and accelerates web traffic. As a result, we initially only proxied traffic for the two main web ports: 80 (HTTP) and 443 (HTTPS). One of the top customer service questions we receive is: &quot;Why did my control panel stop working after I signed up?&quot; "
 }

@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Pop Chunhapanya",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/10/Haxxpop-avatar-1.jpg",
-			"width": 600,
-			"height": 600
-		},
 		"url": "https://blog.cloudflare.com/author/pop-chun/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/ipfs-measurements/",
 	"datePublished": "2022-05-16T12:57:39.000Z",
 	"dateModified": "2022-05-16T21:11:39.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/05/image2-35.png",
-		"width": 1801,
-		"height": 1013
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/05/image2-35.png",
 	"keywords": "Platform Week, Distributed Web, Research, IPFS",
-	"description": "We&#x27;ve developed the IPFS Gateway monitor, an observability tool that runs various IPFS scenarios on a given gateway endpoint. In this post, you&#x27;ll learn how we use this tool and go over discoveries we made along the way",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "We&#x27;ve developed the IPFS Gateway monitor, an observability tool that runs various IPFS scenarios on a given gateway endpoint. In this post, you&#x27;ll learn how we use this tool and go over discoveries we made along the way"
 }

@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Julie A. Sparks",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/08/IMG_1517.jpg",
-			"width": 640,
-			"height": 480
-		},
 		"url": "https://blog.cloudflare.com/author/julie/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/th-th/account-compromise-security-overview-th-th/",
 	"datePublished": "2021-03-29T23:00:00.000Z",
 	"dateModified": "2022-01-20T18:10:37.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/01/image1-63.png",
-		"width": 1585,
-		"height": 740
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/01/image1-63.png",
 	"keywords": "สัปดาห์ความปลอดภัย, การแอบอ้างเป็นเจ้าของบัญชี, ทีมความปลอดภัย, Cloudflare Gateway (TH), Cloudflare Access (TH)",
-	"description": "ตลอดสัปดาห์ที่ผ่านมา Cloudflare ได้เผยแพร่บล็อกโพสต์เกี่ยวกับผลิตภัณฑ์ที่สร้างขึ้นเพื่อรักษาความปลอดภัยลูกค้าของเราจากบ็อต credentials stuffing , ตรวจจับผู้ใช้ที่มีข้อมูลประจำตัวที่ถูกบุกรุก และปิดกั้นผู้ใช้จากบริการพร็อกซี แต่เราจะทำอย่างไรภายใน",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "ตลอดสัปดาห์ที่ผ่านมา Cloudflare ได้เผยแพร่บล็อกโพสต์เกี่ยวกับผลิตภัณฑ์ที่สร้างขึ้นเพื่อรักษาความปลอดภัยลูกค้าของเราจากบ็อต credentials stuffing , ตรวจจับผู้ใช้ที่มีข้อมูลประจำตัวที่ถูกบุกรุก และปิดกั้นผู้ใช้จากบริการพร็อกซี แต่เราจะทำอย่างไรภายใน"
 }

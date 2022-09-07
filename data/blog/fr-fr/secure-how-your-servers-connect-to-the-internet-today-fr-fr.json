@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Sam Rhea",
-		"image": "http://blog.cloudflare.com/content/images/2018/07/photo-for-profile.jpg",
 		"url": "https://blog.cloudflare.com/author/sam/",
 		"sameAs": [
 			"https://twitter.com/LakeAustinBlvd"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/fr-fr/secure-how-your-servers-connect-to-the-internet-today-fr-fr/",
 	"datePublished": "2021-12-10T00:00:00.000Z",
 	"dateModified": "2022-02-01T12:03:51.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/02/image2-6-1.png",
-		"width": 1800,
-		"height": 1013
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/02/image2-6-1.png",
 	"keywords": "Français, Cloudflare Zero Trust (FR), Sécurité, Cloudflare Gateway (FR)",
-	"description": "La vulnérabilité révélée hier dans Log4j, une bibliothèque de journalisation basée sur Java, permet aux acteurs malveillants d&#x27;exécuter du code sur un serveur distant",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "La vulnérabilité révélée hier dans Log4j, une bibliothèque de journalisation basée sur Java, permet aux acteurs malveillants d&#x27;exécuter du code sur un serveur distant"
 }

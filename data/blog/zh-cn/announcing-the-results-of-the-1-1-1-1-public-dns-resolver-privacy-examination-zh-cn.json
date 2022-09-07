@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "John Graham-Cumming",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
 		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
 		"sameAs": [
 			"https://twitter.com/jgrahamc"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/announcing-the-results-of-the-1-1-1-1-public-dns-resolver-privacy-examination-zh-cn/",
 	"datePublished": "2020-03-31T13:01:00.000Z",
 	"dateModified": "2021-01-28T19:59:08.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2020/11/1.1.1.1-audit-@2x-1-1.png",
-		"width": 1676,
-		"height": 849
-	},
+	"image": "http://blog.cloudflare.com/content/images/2020/11/1.1.1.1-audit-@2x-1-1.png",
 	"keywords": "1.1.1.1 (CN), DNS (CN), DoH (CN), 隐私 (CN), 简体中文 (CN)",
-	"description": "2018 年 4 月1 日，我们在改进互联网隐私保护和安全防护的道路上迈出了一大步：正式推出 1.1.1.1 公共 DNS 解析器 — 互联网上速度最快并以隐私为先的公共 DNS 解析器。我们真正做到以隐私为先。",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "2018 年 4 月1 日，我们在改进互联网隐私保护和安全防护的道路上迈出了一大步：正式推出 1.1.1.1 公共 DNS 解析器 — 互联网上速度最快并以隐私为先的公共 DNS 解析器。我们真正做到以隐私为先。"
 }

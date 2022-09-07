@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Ashcon Partovi",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/04/117158947_4858836477475662_2532132460047140852_o.jpeg",
-			"width": 280,
-			"height": 280
-		},
 		"url": "https://blog.cloudflare.com/author/ashcon/",
 		"sameAs": [
 			"https://twitter.com/ashconpartovi"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/workers-kv-is-ga-zh-cn/",
 	"datePublished": "2019-05-21T13:00:00.000Z",
 	"dateModified": "2021-01-28T19:02:04.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2019/10/Workers-KV-GA@2x-1.png",
-		"width": 1517,
-		"height": 776
-	},
+	"image": "https://blog.cloudflare.com/content/images/2019/10/Workers-KV-GA@2x-1.png",
 	"keywords": "无服务器, 简体中文 (CN), Cloudflare Workers (CN), JavaScript (CN), Cloudflare Workers KV (CN)",
-	"description": "今天，我们很高兴地宣布Workers KV即将普遍可用并为生产使用做好了准备！",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "今天，我们很高兴地宣布Workers KV即将普遍可用并为生产使用做好了准备！"
 }

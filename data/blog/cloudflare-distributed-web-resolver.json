@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Thibault Meunier",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2020/12/profile_picture.png",
-			"width": 224,
-			"height": 224
-		},
 		"url": "https://blog.cloudflare.com/author/thibault/",
 		"sameAs": [
 			"https://twitter.com/thibmeu"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/cloudflare-distributed-web-resolver/",
 	"datePublished": "2021-01-13T12:00:00.000Z",
 	"dateModified": "2021-01-13T12:00:00.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/01/image4.png",
-		"width": 1999,
-		"height": 1142
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/01/image4.png",
 	"keywords": "Research, IPFS, Ethereum, Distributed Web",
-	"description": "At Cloudflare, we have been exploring alternative ways to resolve queries to responses that align with these attributes. We are proud to announce a new resolver for the Distributed Web, where IPFS content indexed by the Ethereum Name Service (ENS) can be accessed.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "At Cloudflare, we have been exploring alternative ways to resolve queries to responses that align with these attributes. We are proud to announce a new resolver for the Distributed Web, where IPFS content indexed by the Ethereum Name Service (ENS) can be accessed."
 }

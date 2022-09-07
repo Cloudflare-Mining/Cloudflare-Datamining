@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Filippo Valsorda",
-		"image": "http://blog.cloudflare.com/content/images/2018/02/K6rX3ZSn_400x400.jpg",
 		"url": "https://blog.cloudflare.com/author/filippo/",
 		"sameAs": [
 			"https://twitter.com/filosottile"
@@ -26,9 +12,5 @@
 	"dateModified": "2018-08-27T21:23:07.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/08/Timeouts.png",
 	"keywords": "Crypto, TLS, HTTP2, Security, Programming",
-	"description": "Back when crypto/tls was slow and net/http young, the general wisdom was to always put Go servers behind a reverse proxy like NGINX. That&#x27;s not necessary anymore!",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Back when crypto/tls was slow and net/http young, the general wisdom was to always put Go servers behind a reverse proxy like NGINX. That&#x27;s not necessary anymore!"
 }

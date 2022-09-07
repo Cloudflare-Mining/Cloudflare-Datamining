@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Christopher Wood",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/05/Chris_Wood.png",
-			"width": 200,
-			"height": 199
-		},
 		"url": "https://blog.cloudflare.com/author/christopher/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/announcing-ddr-support/",
 	"datePublished": "2022-03-08T20:55:00.000Z",
 	"dateModified": "2022-07-29T18:40:06.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/03/Screen-Shot-2022-03-08-at-11.36.08-AM.png",
-		"width": 2000,
-		"height": 961
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/03/Screen-Shot-2022-03-08-at-11.36.08-AM.png",
 	"keywords": "Research, DNS, Privacy",
-	"description": "The majority of DNS queries on the Internet today are unencrypted. This post describes a new protocol, called Discovery of Designated Resolvers (DDR), that allows clients to upgrade from unencrypted DNS to encrypted DNS when only the IP address of a resolver is known. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "The majority of DNS queries on the Internet today are unencrypted. This post describes a new protocol, called Discovery of Designated Resolvers (DDR), that allows clients to upgrade from unencrypted DNS to encrypted DNS when only the IP address of a resolver is known. "
 }

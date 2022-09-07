@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "John Graham-Cumming",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
 		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
 		"sameAs": [
 			"https://twitter.com/jgrahamc"
@@ -26,9 +12,5 @@
 	"dateModified": "2018-08-21T20:08:22.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/08/two-way-street.png",
 	"keywords": "Open Source, Programming, NGINX, GitHub, LUA",
-	"description": "CloudFlare uses a great deal of open source and free software. Our core server platform is nginx (which is released using a two-clause BSD license) and our primary database of choice is postgresql (which is released using their own BSD-like license). ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "CloudFlare uses a great deal of open source and free software. Our core server platform is nginx (which is released using a two-clause BSD license) and our primary database of choice is postgresql (which is released using their own BSD-like license). "
 }

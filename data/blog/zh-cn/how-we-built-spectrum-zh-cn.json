@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Marek Majkowski",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/b5967d6c687939594adb6992723d0529.jpeg",
 		"url": "https://blog.cloudflare.com/author/marek-majkowski/",
 		"sameAs": [
 			"https://twitter.com/majek04"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/how-we-built-spectrum-zh-cn/",
 	"datePublished": "2018-04-12T13:00:00.000Z",
 	"dateModified": "2021-01-28T18:33:37.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2019/11/13334109713_0b32435032_z-1.jpg",
-		"width": 640,
-		"height": 425
-	},
+	"image": "https://blog.cloudflare.com/content/images/2019/11/13334109713_0b32435032_z-1.jpg",
 	"keywords": "产品新闻, 安全, 简体中文 (CN), DDoS (CN), Cloudflare Spectrum (CN)",
-	"description": "今天，我们将介绍Spectrum：一个可为任意基于TCP的协议提供DDoS保护、负载均衡和内容加速的Cloudflare新特性。",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "今天，我们将介绍Spectrum：一个可为任意基于TCP的协议提供DDoS保护、负载均衡和内容加速的Cloudflare新特性。"
 }

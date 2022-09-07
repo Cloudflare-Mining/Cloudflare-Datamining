@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Sam Rhea",
-		"image": "http://blog.cloudflare.com/content/images/2018/07/photo-for-profile.jpg",
 		"url": "https://blog.cloudflare.com/author/sam/",
 		"sameAs": [
 			"https://twitter.com/LakeAustinBlvd"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/ja-jp/one-more-zero-trust-thing-cloudflare-intrusion-detection-ja-jp/",
 	"datePublished": "2020-10-17T13:00:00.000Z",
 	"dateModified": "2021-09-03T21:59:37.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/01/3-1.png",
-		"width": 1600,
-		"height": 914
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/01/3-1.png",
 	"keywords": "日本語, 侵入検出, セキュリティ, Magic Firewall (JP), Cloudflare IDS (JP), ゼロトラストウィーク, ゼロトラスト",
-	"description": "本日、Cloudflare 侵入検出システムの計画について発表できることをうれしく思います。この新製品は、ネットワークを監視し、攻撃が疑われるときに警告するものです。",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "本日、Cloudflare 侵入検出システムの計画について発表できることをうれしく思います。この新製品は、ネットワークを監視し、攻撃が疑われるときに警告するものです。"
 }

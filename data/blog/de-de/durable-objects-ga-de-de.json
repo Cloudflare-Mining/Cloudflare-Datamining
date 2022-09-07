@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Greg McKeon",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/05/Screen-Shot-2022-05-10-at-2.50.56-PM.png",
-			"width": 692,
-			"height": 662
-		},
 		"url": "https://blog.cloudflare.com/author/greg/",
 		"sameAs": [
 			"https://twitter.com/wegmckeon"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/de-de/durable-objects-ga-de-de/",
 	"datePublished": "2021-11-15T13:59:00.000Z",
 	"dateModified": "2021-11-30T00:02:47.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/11/Durable2-1.png",
-		"width": 1200,
-		"height": 675
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/11/Durable2-1.png",
 	"keywords": "Full-Stack-Woche, Deutsch, Produktneuigkeiten, Durable Objects (DE)",
-	"description": "Die Full Stack Week geht der Frage nach, wie Entwickler die Leistungsfähigkeit des Cloudflare-Netzwerks einsetzen, um vollständige und automatisch weltweit nutzbare Anwendungen zu erstellen. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Die Full Stack Week geht der Frage nach, wie Entwickler die Leistungsfähigkeit des Cloudflare-Netzwerks einsetzen, um vollständige und automatisch weltweit nutzbare Anwendungen zu erstellen. "
 }

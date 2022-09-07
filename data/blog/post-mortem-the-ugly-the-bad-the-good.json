@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Matthew Prince",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
-			"width": 1196,
-			"height": 1190
-		},
 		"url": "https://blog.cloudflare.com/author/matthew-prince/",
 		"sameAs": [
 			"https://twitter.com/eastdakota"
@@ -31,9 +12,5 @@
 	"dateModified": "2020-08-18T18:18:16.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/02/FUBAR.jpg.scaled500.jpg",
 	"keywords": "Post Mortem, DNS",
-	"description": "Last night was not our finest hour. Around 07:30 GMT, we were finishing up a push of a new DNS infrastructure. The core of what this new update was built to do is make DNS updates even faster. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Last night was not our finest hour. Around 07:30 GMT, we were finishing up a push of a new DNS infrastructure. The core of what this new update was built to do is make DNS updates even faster. "
 }

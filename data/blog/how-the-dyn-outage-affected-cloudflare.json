@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "John Graham-Cumming",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
 		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
 		"sameAs": [
 			"https://twitter.com/jgrahamc"
@@ -26,9 +12,5 @@
 	"dateModified": "2018-08-28T21:05:03.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/08/3685880130_c6d9102cba_b.jpg",
 	"keywords": "DNS, DDoS, Attacks, Outage, Reliability, CNAME, China, Asia, Security",
-	"description": "Last Friday the popular DNS service Dyn suffered three waves of DDoS attacks that affected users first on the East Coast of the US, and later users worldwide. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Last Friday the popular DNS service Dyn suffered three waves of DDoS attacks that affected users first on the East Coast of the US, and later users worldwide. "
 }

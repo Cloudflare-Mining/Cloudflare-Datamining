@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Achiel van der Mandele",
-		"image": "http://blog.cloudflare.com/content/images/2019/04/avatar.png",
 		"url": "https://blog.cloudflare.com/author/achiel/",
 		"sameAs": []
 	},
@@ -22,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/cloudflare-for-ssh-rdp-and-minecraft/",
 	"datePublished": "2020-04-13T19:06:38.000Z",
 	"dateModified": "2020-08-19T09:05:26.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2020/04/New_Spectrum_light_back_4x.png",
-		"width": 2000,
-		"height": 1228
-	},
+	"image": "https://blog.cloudflare.com/content/images/2020/04/New_Spectrum_light_back_4x.png",
 	"keywords": "Spectrum, SSH, RDP, Minecraft, DDoS, Speed & Reliability, Product News, Security",
-	"description": "Cloudflare now covers SSH, RDP and Minecraft, offering DDoS protection and increased network performance. Spectrum pay-as-you-go now available on all paid plans.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Cloudflare now covers SSH, RDP and Minecraft, offering DDoS protection and increased network performance. Spectrum pay-as-you-go now available on all paid plans."
 }

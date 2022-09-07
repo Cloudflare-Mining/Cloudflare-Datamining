@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Matthew Prince",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
-			"width": 1196,
-			"height": 1190
-		},
 		"url": "https://blog.cloudflare.com/author/matthew-prince/",
 		"sameAs": [
 			"https://twitter.com/eastdakota"
@@ -31,9 +12,5 @@
 	"dateModified": "2018-08-27T21:08:20.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/02/rocket_loader_diagram.png.scaled500.png",
 	"keywords": "TLS, Rocket Loader, spdy, HTTPS, Security",
-	"description": "In 2009, Google began work on a new network protocol to make web pages faster. Dubbed SPDY (pronounced &quot;speedy&quot;), the protocol is designed to solve many of the bottlenecks that slow HTTP down. Beginning today, we&#x27;re rolling out a beta of SPDY to CloudFlare customers. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "In 2009, Google began work on a new network protocol to make web pages faster. Dubbed SPDY (pronounced &quot;speedy&quot;), the protocol is designed to solve many of the bottlenecks that slow HTTP down. Beginning today, we&#x27;re rolling out a beta of SPDY to CloudFlare customers. "
 }

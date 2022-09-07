@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "David Tuber",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/07/kutiya-face.png",
-			"width": 983,
-			"height": 1049
-		},
 		"url": "https://blog.cloudflare.com/author/tubes/",
 		"sameAs": [
 			"https://twitter.com/tubes__"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/orpheus/",
 	"datePublished": "2021-09-14T12:59:13.000Z",
 	"dateModified": "2021-09-18T14:24:58.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/09/Orpheus-1.png",
-		"width": 1801,
-		"height": 1013
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/09/Orpheus-1.png",
 	"keywords": "Speed Week, Orpheus, Speed & Reliability, Product News, Argo Smart Routing, Tiered Cache",
-	"description": "Building a better Internet means helping build more reliable and efficient services that everyone can use. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Building a better Internet means helping build more reliable and efficient services that everyone can use. "
 }

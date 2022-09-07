@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Goutam Tamvada",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/02/goutam-tamvada.jpg",
-			"width": 400,
-			"height": 400
-		},
 		"url": "https://blog.cloudflare.com/author/goutam-tamvada/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/post-quantum-signatures/",
 	"datePublished": "2022-02-22T13:59:15.000Z",
 	"dateModified": "2022-02-23T09:37:10.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/02/image6-4.png",
-		"width": 1800,
-		"height": 1013
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/02/image6-4.png",
 	"keywords": "Research, Cryptography, Post-Quantum",
-	"description": "How can one attest to an identity and prove it belongs to one self? And how can one do it in the face of quantum computers? In this blog post, we examine these questions and explain what post-quantum signatures are",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "How can one attest to an identity and prove it belongs to one self? And how can one do it in the face of quantum computers? In this blog post, we examine these questions and explain what post-quantum signatures are"
 }

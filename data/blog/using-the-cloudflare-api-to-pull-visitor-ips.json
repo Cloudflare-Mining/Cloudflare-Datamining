@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Damon Billian",
-		"image": "http://blog.cloudflare.com/content/images/2018/02/1b3fcea.jpg",
 		"url": "https://blog.cloudflare.com/author/damon-billian/",
 		"sameAs": []
 	},
@@ -24,9 +10,5 @@
 	"dateModified": "2018-01-26T18:41:04.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/01/5641360814_be4d992db4.jpg",
 	"keywords": "Analytics, API, Visitor IPs",
-	"description": "Many of our customers love CloudFlare&#x27;s statistics report because the information available differs from other services providing analytics.\n\nOne frequent request is that customers would like to be able to look at the individual IP hits coming to their site. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Many of our customers love CloudFlare&#x27;s statistics report because the information available differs from other services providing analytics.\n\nOne frequent request is that customers would like to be able to look at the individual IP hits coming to their site. "
 }

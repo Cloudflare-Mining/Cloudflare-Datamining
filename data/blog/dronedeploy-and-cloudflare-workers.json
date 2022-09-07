@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Jonathan Bruce",
-		"image": "http://blog.cloudflare.com/content/images/2018/08/Screen-Shot-2018-08-03-at-10.55.24-AM.png",
 		"url": "https://blog.cloudflare.com/author/jonathan/",
 		"sameAs": [
 			"https://twitter.com/jonbruce"
@@ -26,9 +12,5 @@
 	"dateModified": "2018-08-29T07:42:13.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/06/image4-1.jpg",
 	"keywords": "Cloudflare Workers, JavaScript, API, Serverless",
-	"description": "When we launched Workers much of the focus was on use cases surrounding websites running on origins that needed extra oomph. With Workers you can easily take a site and introduce a raft of personalization capabilities around a range of services.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "When we launched Workers much of the focus was on use cases surrounding websites running on origins that needed extra oomph. With Workers you can easily take a site and introduce a raft of personalization capabilities around a range of services."
 }

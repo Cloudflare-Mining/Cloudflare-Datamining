@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Kabir Sikand",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/05/0.jpeg",
-			"width": 800,
-			"height": 800
-		},
 		"url": "https://blog.cloudflare.com/author/kabir/",
 		"sameAs": [
 			"https://twitter.com/kabirsikand"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/serverless-rendering-with-cloudflare-workers/",
 	"datePublished": "2020-07-17T11:00:00.000Z",
 	"dateModified": "2020-07-17T11:02:45.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2020/07/image1-10.png",
-		"width": 1999,
-		"height": 1014
-	},
+	"image": "https://blog.cloudflare.com/content/images/2020/07/image1-10.png",
 	"keywords": "Cloudflare Workers",
-	"description": "Learning how to do server-side rendering at the network edge using Workers Sites, Wrangler, HTMLRewriter, and tools from the broader Workers platform.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Learning how to do server-side rendering at the network edge using Workers Sites, Wrangler, HTMLRewriter, and tools from the broader Workers platform."
 }

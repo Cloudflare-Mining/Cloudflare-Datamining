@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Dina Aluzri",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/09/C6CFF47A-3E43-49A3-BE39-CEACC7918B90.jpeg",
-			"width": 1125,
-			"height": 1383
-		},
 		"url": "https://blog.cloudflare.com/author/dinaaluzri/",
 		"sameAs": [
 			"https://twitter.com/dinaaluzri"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/what-happens-when-the-whole-world-goes-remote-not-to-worry-we-were-built-for-this/",
 	"datePublished": "2020-09-14T11:00:00.000Z",
 	"dateModified": "2022-04-26T23:21:40.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2020/09/image1-3.png",
-		"width": 1999,
-		"height": 1000
-	},
+	"image": "https://blog.cloudflare.com/content/images/2020/09/image1-3.png",
 	"keywords": "Cloudflare Zero Trust, Cloudflare Access, Zero Trust, Customer Success, Security",
-	"description": "Monday Mornings with Customer Success: A monthly series brought to you by our Customer Success Team. This month&#x27;s post is all about how a telemedicine provider used Cloudflare to stay connected when the world went remote.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Monday Mornings with Customer Success: A monthly series brought to you by our Customer Success Team. This month&#x27;s post is all about how a telemedicine provider used Cloudflare to stay connected when the world went remote."
 }

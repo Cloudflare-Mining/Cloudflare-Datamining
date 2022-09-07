@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Daniele Molteni",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/10/meProfessional-1-flipped.jpg",
-			"width": 1732,
-			"height": 1732
-		},
 		"url": "https://blog.cloudflare.com/author/daniele/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/ja-jp/advanced-rate-limiting-ja-jp/",
 	"datePublished": "2022-03-16T12:58:00.000Z",
 	"dateModified": "2022-06-03T09:03:02.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/05/image1-51-1.png",
-		"width": 1800,
-		"height": 1013
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/05/image1-51-1.png",
 	"keywords": "セキュリティウィーク, レート制限",
-	"description": "高度なレート制限（Advanced Rate Limiting）はスロットリング技術の大前進であり、ローンチできることを嬉しく思います。高度なレート制限によって、送信元IPにかかわらず、HTTPリクエストのあらゆる特性に基づいてリクエストをカウントすることができます",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "高度なレート制限（Advanced Rate Limiting）はスロットリング技術の大前進であり、ローンチできることを嬉しく思います。高度なレート制限によって、送信元IPにかかわらず、HTTPリクエストのあらゆる特性に基づいてリクエストをカウントすることができます"
 }

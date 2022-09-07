@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Marc Lamik",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/09/unnamed-2.jpg",
-			"width": 1974,
-			"height": 1974
-		},
 		"url": "https://blog.cloudflare.com/author/marc-lamik/",
 		"sameAs": [
 			"https://twitter.com/marclamik"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/images-avif-blur-bundle-zh-cn/",
 	"datePublished": "2021-11-18T14:00:00.000Z",
 	"dateModified": "2022-01-01T03:29:57.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/01/image3-29-1.png",
-		"width": 1800,
-		"height": 1013
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/01/image3-29-1.png",
 	"keywords": "Full Stack Week (CN), 简体中文 (CN), 产品新闻, 速度周 (CN)",
-	"description": "两个月前，我们全面推出了 Cloudflare Images，采用情况和我们收到的反馈令人感到惊讶。",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "两个月前，我们全面推出了 Cloudflare Images，采用情况和我们收到的反馈令人感到惊讶。"
 }

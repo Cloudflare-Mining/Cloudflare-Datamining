@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Junho Choi",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/05/junho_profile_300x300--1-.jpg",
-			"width": 300,
-			"height": 300
-		},
 		"url": "https://blog.cloudflare.com/author/junho/",
 		"sameAs": [
 			"https://saturnsoft.net",
@@ -30,16 +11,7 @@
 	"url": "https://blog.cloudflare.com/delivering-http-2-upload-speed-improvements/",
 	"datePublished": "2020-08-24T11:00:00.000Z",
 	"dateModified": "2020-08-28T08:22:00.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2020/08/Speed-header@2x.png",
-		"width": 2832,
-		"height": 1472
-	},
+	"image": "https://blog.cloudflare.com/content/images/2020/08/Speed-header@2x.png",
 	"keywords": "HTTP2, Cloudflare Network, Network",
-	"description": "Cloudflare recently shipped improved upload speeds across our network for clients using HTTP/2. This post describes our journey from troubleshooting an issue to fixing it and delivering faster upload speeds to the global Internet.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Cloudflare recently shipped improved upload speeds across our network for clients using HTTP/2. This post describes our journey from troubleshooting an issue to fixing it and delivering faster upload speeds to the global Internet."
 }

@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "David Tuber",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/07/kutiya-face.png",
-			"width": 983,
-			"height": 1049
-		},
 		"url": "https://blog.cloudflare.com/author/tubes/",
 		"sameAs": [
 			"https://twitter.com/tubes__"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/argo-for-packets-generally-available/",
 	"datePublished": "2021-12-10T13:58:45.000Z",
 	"dateModified": "2021-12-30T20:51:58.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/12/image5-13.png",
-		"width": 1800,
-		"height": 1013
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/12/image5-13.png",
 	"keywords": "CIO Week, Argo Smart Routing, Speed & Reliability",
-	"description": "Today, we’re announcing the general availability of Argo for Packets, which provides IP layer network optimizations to supercharge your Cloudflare network services products.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Today, we’re announcing the general availability of Argo for Packets, which provides IP layer network optimizations to supercharge your Cloudflare network services products."
 }

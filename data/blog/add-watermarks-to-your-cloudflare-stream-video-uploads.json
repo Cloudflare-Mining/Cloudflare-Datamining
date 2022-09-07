@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Rachel Chen",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/09/Rachel-Chen-Intern.jpeg",
-			"width": 720,
-			"height": 720
-		},
 		"url": "https://blog.cloudflare.com/author/rachel/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/add-watermarks-to-your-cloudflare-stream-video-uploads/",
 	"datePublished": "2020-09-11T11:00:00.000Z",
 	"dateModified": "2020-09-11T11:03:38.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2020/09/stream-watermarks@2x-1.png",
-		"width": 2733,
-		"height": 1537
-	},
+	"image": "https://blog.cloudflare.com/content/images/2020/09/stream-watermarks@2x-1.png",
 	"keywords": "Cloudflare Stream, API, Watermarks API",
-	"description": "The Watermark API lets you add a watermark to a video at the time of uploading. It consists of two new features to the Stream API.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "The Watermark API lets you add a watermark to a video at the time of uploading. It consists of two new features to the Stream API."
 }

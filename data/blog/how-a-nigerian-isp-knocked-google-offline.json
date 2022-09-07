@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Tom Paseka",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/1120d8a.jpg",
 		"url": "https://blog.cloudflare.com/author/tom-paseka/",
 		"sameAs": []
 	},
@@ -24,9 +10,5 @@
 	"dateModified": "2018-11-16T00:31:42.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/11/image-1-1.png",
 	"keywords": "BGP, Security, Peering, Outage",
-	"description": "Last Monday evening — 12 November 2018 — Google and a number of other services experienced a 74 minute outage. Incidents like this only serve to demonstrate just how much frailty is involved in how packets get from one point on the Internet to another.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Last Monday evening — 12 November 2018 — Google and a number of other services experienced a 74 minute outage. Incidents like this only serve to demonstrate just how much frailty is involved in how packets get from one point on the Internet to another."
 }

@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Tom Paseka",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/1120d8a.jpg",
 		"url": "https://blog.cloudflare.com/author/tom-paseka/",
 		"sameAs": []
 	},
@@ -24,9 +10,5 @@
 	"dateModified": "2018-02-01T22:46:45.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/02/4192_16966.jpg.scaled500.jpg",
 	"keywords": "Hong Kong, Peering, Speed & Reliability, Speed, Cloudflare Network",
-	"description": "CloudFlare is now connected to HKIX (Hong Kong Internet Exchange). HKIX is the largest Internet Exchange in Asia transferring around 200Gbit to its 160 ISP, Carrier and Content networks. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "CloudFlare is now connected to HKIX (Hong Kong Internet Exchange). HKIX is the largest Internet Exchange in Asia transferring around 200Gbit to its 160 ISP, Carrier and Content networks. "
 }

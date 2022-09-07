@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Omer Yoachimik",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/Omer-1.png",
-			"width": 773,
-			"height": 653
-		},
 		"url": "https://blog.cloudflare.com/author/omer/",
 		"sameAs": [
 			"https://twitter.com/OmerYoahimik"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/mitigating-a-754-million-pps-ddos-attack-automatically/",
 	"datePublished": "2020-07-09T11:00:00.000Z",
 	"dateModified": "2021-04-09T16:01:15.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2020/07/image3-4.png",
-		"width": 1965,
-		"height": 1162
-	},
+	"image": "https://blog.cloudflare.com/content/images/2020/07/image3-4.png",
 	"keywords": "DDoS, Security, Gatebot, Attacks, SYN, Network Layer",
-	"description": "On June 20, Cloudflare automatically mitigated a highly volumetric DDoS attack that peaked above 754 million packets per second. The attack was part of an organized four day campaign starting on June 18 and ending on June 21.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "On June 20, Cloudflare automatically mitigated a highly volumetric DDoS attack that peaked above 754 million packets per second. The attack was part of an organized four day campaign starting on June 18 and ending on June 21."
 }

@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Sam Rhea",
-		"image": "http://blog.cloudflare.com/content/images/2018/07/photo-for-profile.jpg",
 		"url": "https://blog.cloudflare.com/author/sam/",
 		"sameAs": [
 			"https://twitter.com/LakeAustinBlvd"
@@ -26,9 +12,5 @@
 	"dateModified": "2021-06-02T17:26:15.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/08/Screen-Shot-2018-07-24-at-9.39.49-AM.png",
 	"keywords": "Cloudflare Access, VPN, Authentication, Security, Cloudflare Tunnel",
-	"description": "Since leaving beta three weeks ago, Cloudflare Access has become our fastest-growing subscription service. Every day, more teams are using Access to leave their VPN behind and connect to applications quickly and securely from anywhere in the world.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Since leaving beta three weeks ago, Cloudflare Access has become our fastest-growing subscription service. Every day, more teams are using Access to leave their VPN behind and connect to applications quickly and securely from anywhere in the world."
 }

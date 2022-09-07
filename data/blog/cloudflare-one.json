@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Rustam Lalkaka",
-		"image": "http://blog.cloudflare.com/content/images/2017/05/AAEAAQAAAAAAAAc9AAAAJDg0MzBkZTg1LTNkOTUtNGFlYy1hMjJiLTQxMjlmYzkyNjJjMA.jpg",
 		"url": "https://blog.cloudflare.com/author/rustam/",
 		"sameAs": [
 			"https://twitter.com/lalkaka"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/cloudflare-one/",
 	"datePublished": "2020-10-12T13:00:00.000Z",
 	"dateModified": "2021-03-22T14:29:08.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2020/10/image3-8.png",
-		"width": 1239,
-		"height": 598
-	},
+	"image": "http://blog.cloudflare.com/content/images/2020/10/image3-8.png",
 	"keywords": "Cloudflare One, Product News, Zero Trust Week, Zero Trust, SASE, Cloudflare Access, Cloudflare Gateway, Magic Transit, Deep Dive",
-	"description": "Today, we’re excited to share Cloudflare One™, our vision to tackle the intractable job of corporate security and networking. Run your network on Cloudflare and keep it secure.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Today, we’re excited to share Cloudflare One™, our vision to tackle the intractable job of corporate security and networking. Run your network on Cloudflare and keep it secure."
 }

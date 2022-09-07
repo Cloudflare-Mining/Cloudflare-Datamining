@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "John Graham-Cumming",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
 		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
 		"sameAs": [
 			"https://twitter.com/jgrahamc"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/ja-jp/cleaning-up-bad-bots-ja-jp/",
 	"datePublished": "2019-09-23T13:00:00.000Z",
 	"dateModified": "2021-01-21T18:56:49.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2019/12/linkedin-In-Stream_Wide___Screen-Shot-2019-10-24-at-9.32.13-AM.png",
-		"width": 1161,
-		"height": 612
-	},
+	"image": "https://blog.cloudflare.com/content/images/2019/12/linkedin-In-Stream_Wide___Screen-Shot-2019-10-24-at-9.32.13-AM.png",
 	"keywords": "Birthday Week (JP), 製品ニュース (JP), ボット, セキュリティ, 日本語",
-	"description": "Cloudflareは、当初から、悪意のあるボットによるWebサイトのスクレイピングや、API悪用を阻止してきました。これまで当社のボット検出方法を改善し、正当なトラフィック（発送元が人間であってもアプリからであっても）悪意のあるボットと区別することができる大規模な機械学習モデルを展開してきました。また、検索エンジンによる有用なインデックス化などを検出するために、有益なボットの大規模なカタログも作成しました。",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Cloudflareは、当初から、悪意のあるボットによるWebサイトのスクレイピングや、API悪用を阻止してきました。これまで当社のボット検出方法を改善し、正当なトラフィック（発送元が人間であってもアプリからであっても）悪意のあるボットと区別することができる大規模な機械学習モデルを展開してきました。また、検索エンジンによる有用なインデックス化などを検出するために、有益なボットの大規模なカタログも作成しました。"
 }

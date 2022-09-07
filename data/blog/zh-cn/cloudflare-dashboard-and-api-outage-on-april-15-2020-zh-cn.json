@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "John Graham-Cumming",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
 		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
 		"sameAs": [
 			"https://twitter.com/jgrahamc"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/cloudflare-dashboard-and-api-outage-on-april-15-2020-zh-cn/",
 	"datePublished": "2020-04-16T00:28:00.000Z",
 	"dateModified": "2021-01-28T20:04:46.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2020/11/cf-logo-social-media-1.png",
-		"width": 1024,
-		"height": 512
-	},
+	"image": "http://blog.cloudflare.com/content/images/2020/11/cf-logo-social-media-1.png",
 	"keywords": "简体中文 (CN)",
-	"description": "从 1531 UTC 开始一直持续到 1952 UTC，我们两个核心数据中心中有一个发生多路冗余光纤连接中断，导致 Cloudflare 仪表板和 API 无法使用。",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "从 1531 UTC 开始一直持续到 1952 UTC，我们两个核心数据中心中有一个发生多路冗余光纤连接中断，导致 Cloudflare 仪表板和 API 无法使用。"
 }

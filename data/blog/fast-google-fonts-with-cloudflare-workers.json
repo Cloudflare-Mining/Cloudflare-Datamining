@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Patrick Meenan",
-		"image": "http://blog.cloudflare.com/content/images/2018/08/PatPerfCalendar.jpg",
 		"url": "https://blog.cloudflare.com/author/patrick-meenan/",
 		"sameAs": [
 			"https://www.webpagetest.org/",
@@ -27,9 +13,5 @@
 	"dateModified": "2020-08-20T17:31:02.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/11/Fonts-3.png",
 	"keywords": "Speed & Reliability, Cloudflare Workers, Serverless, Programming, HTTP2",
-	"description": "Code walkthrough on using Cloudflare workers to improve the performance of sites using Google Fonts. The improvements can be quite dramatic and the sample provides a real-world use case of doing streaming HTML modification in a Cloudflare Worker.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Code walkthrough on using Cloudflare workers to improve the performance of sites using Google Fonts. The improvements can be quite dramatic and the sample provides a real-world use case of doing streaming HTML modification in a Cloudflare Worker."
 }

@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Matthew Prince",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
-			"width": 1196,
-			"height": 1190
-		},
 		"url": "https://blog.cloudflare.com/author/matthew-prince/",
 		"sameAs": [
 			"https://twitter.com/eastdakota"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/analysis-of-todays-centurylink-level-3-outage-zh-cn/",
 	"datePublished": "2020-08-30T20:55:00.000Z",
 	"dateModified": "2021-01-28T20:13:06.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2020/09/4-2-1.png",
-		"width": 1428,
-		"height": 880
-	},
+	"image": "https://blog.cloudflare.com/content/images/2020/09/4-2-1.png",
 	"keywords": "简体中文 (CN)",
-	"description": "今天，主要互联网服务提供商（ISP）和带宽提供商 CenturyLink/Level(3) 遭受严重中断，不仅影响了 Cloudflare 的一些客户，还影响到互联网上的许多其他服务和提供商。",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "今天，主要互联网服务提供商（ISP）和带宽提供商 CenturyLink/Level(3) 遭受严重中断，不仅影响了 Cloudflare 的一些客户，还影响到互联网上的许多其他服务和提供商。"
 }

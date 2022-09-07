@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Omer Yoachimik",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/Omer-1.png",
-			"width": 773,
-			"height": 653
-		},
 		"url": "https://blog.cloudflare.com/author/omer/",
 		"sameAs": [
 			"https://twitter.com/OmerYoahimik"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/moobot-vs-gatebot-cloudflare-automatically-blocks-botnet-ddos-attack-topping-at-654-gbps/",
 	"datePublished": "2020-09-16T11:00:00.000Z",
 	"dateModified": "2021-05-19T18:21:12.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2020/09/image2-4.png",
-		"width": 1999,
-		"height": 964
-	},
+	"image": "https://blog.cloudflare.com/content/images/2020/09/image2-4.png",
 	"keywords": "DDoS, Mirai, Moobot, Gatebot, Magic Transit, Bots, Attacks",
-	"description": "On July 3, Cloudflare’s global DDoS protection system, Gatebot, automatically detected and mitigated a UDP-based DDoS attack that peaked at 654 Gbps. The attack was part of a ten-day multi-vector DDoS campaign targeting a Magic Transit customer and was mitigated without any human intervention.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "On July 3, Cloudflare’s global DDoS protection system, Gatebot, automatically detected and mitigated a UDP-based DDoS attack that peaked at 654 Gbps. The attack was part of a ten-day multi-vector DDoS campaign targeting a Magic Transit customer and was mitigated without any human intervention."
 }

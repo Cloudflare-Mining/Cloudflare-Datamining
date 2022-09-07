@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Garrett Galow",
-		"image": "http://blog.cloudflare.com/content/images/2018/04/14729279_10207227100946205_2625241094472568444_n.jpg",
 		"url": "https://blog.cloudflare.com/author/garrett/",
 		"sameAs": []
 	},
@@ -22,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/version-and-stage-configuration-changes-with-http-applications-in-beta-zh-cn/",
 	"datePublished": "2021-12-11T13:59:00.000Z",
 	"dateModified": "2021-12-31T05:50:46.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/12/image7-9-4.png",
-		"width": 1200,
-		"height": 676
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/12/image7-9-4.png",
 	"keywords": "CIO Week (CN), 简体中文 (CN), 产品新闻, 安全",
-	"description": "我们今天隆重宣布有关一个 HTTP 应用程序的封测。这是对 HTTP 流量进行安全测试和部署更改的新方式。HTTP 应用程序引入了配置版本控制，以及控制何时在 Cloudflare 的全球边缘网络上对 HTTP 流量进行更改的能力。",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "我们今天隆重宣布有关一个 HTTP 应用程序的封测。这是对 HTTP 流量进行安全测试和部署更改的新方式。HTTP 应用程序引入了配置版本控制，以及控制何时在 Cloudflare 的全球边缘网络上对 HTTP 流量进行更改的能力。"
 }

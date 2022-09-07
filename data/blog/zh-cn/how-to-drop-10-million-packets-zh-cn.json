@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Marek Majkowski",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/b5967d6c687939594adb6992723d0529.jpeg",
 		"url": "https://blog.cloudflare.com/author/marek-majkowski/",
 		"sameAs": [
 			"https://twitter.com/majek04"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/how-to-drop-10-million-packets-zh-cn/",
 	"datePublished": "2018-07-06T13:00:00.000Z",
 	"dateModified": "2021-01-28T18:35:16.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2019/12/38464589350_d00908ee98_b-1.jpg",
-		"width": 1024,
-		"height": 820
-	},
+	"image": "https://blog.cloudflare.com/content/images/2019/12/38464589350_d00908ee98_b-1.jpg",
 	"keywords": "简体中文 (CN), 安全, DDoS (CN)",
-	"description": "在公司内部，我们的DDoS缓解团队有时被称为“丢包者”。其他团队在构建令人兴奋的产品来处理通过我们网络的流量，而我们却乐于发现丢弃这些流量的新方法。",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "在公司内部，我们的DDoS缓解团队有时被称为“丢包者”。其他团队在构建令人兴奋的产品来处理通过我们网络的流量，而我们却乐于发现丢弃这些流量的新方法。"
 }

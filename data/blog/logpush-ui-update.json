@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Bharat Nallan Chakravarthy",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/06/_DSC0538.jpeg",
-			"width": 600,
-			"height": 600
-		},
 		"url": "https://blog.cloudflare.com/author/bharat/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/logpush-ui-update/",
 	"datePublished": "2021-06-22T13:00:04.000Z",
 	"dateModified": "2021-06-22T13:00:03.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/06/Cloudflare-OG-generic-logo.png",
-		"width": 1224,
-		"height": 688
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/06/Cloudflare-OG-generic-logo.png",
 	"keywords": "Logs, Product News, Security, SIEM",
-	"description": "Customers can now use our dashboard to push HTTP, Spectrum, Firewall, and NEL Events directly to Datadog, Sumo Logic, Splunk, or an S3-compatible storage provider.\n",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Customers can now use our dashboard to push HTTP, Spectrum, Firewall, and NEL Events directly to Datadog, Sumo Logic, Splunk, or an S3-compatible storage provider.\n"
 }

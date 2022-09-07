@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Marek Majkowski",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/b5967d6c687939594adb6992723d0529.jpeg",
 		"url": "https://blog.cloudflare.com/author/marek-majkowski/",
 		"sameAs": [
 			"https://twitter.com/majek04"
@@ -26,9 +12,5 @@
 	"dateModified": "2021-01-22T01:26:58.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2019/03/3829936641_f112ed1665_b.jpg",
 	"keywords": "Français, Développeurs, Atténuation (FR), Attaques (FR), Vulnérabilités, DDoS (FR), Vitesse et fiabilité",
-	"description": "Ces derniers jours, nous avons constaté une forte augmentation d&#x27;un dangereux vecteur d&#x27;attaque par amplification utilisant le protocole memcached, provenant du port UDP 11211.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Ces derniers jours, nous avons constaté une forte augmentation d&#x27;un dangereux vecteur d&#x27;attaque par amplification utilisant le protocole memcached, provenant du port UDP 11211."
 }

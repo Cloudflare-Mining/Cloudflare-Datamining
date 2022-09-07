@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Rita Kozlov",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/05/Rita-Kozlov.jpeg",
-			"width": 200,
-			"height": 200
-		},
 		"url": "https://blog.cloudflare.com/author/rita/",
 		"sameAs": [
 			"https://twitter.com/ritakozlov_"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/html-rewriter-beta-zh-cn/",
 	"datePublished": "2019-09-30T17:00:00.000Z",
 	"dateModified": "2021-01-28T19:25:18.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2020/01/HTML-rewrriter-beta@2x.png",
-		"width": 3111,
-		"height": 1594
-	},
+	"image": "https://blog.cloudflare.com/content/images/2020/01/HTML-rewrriter-beta@2x.png",
 	"keywords": "无服务器, Cloudflare Workers (CN), Workers Sites (CN), 简体中文 (CN)",
-	"description": "今天，我们很高兴地发布HTMLRewriter beta——一种流HTML解析器，它有一个易于使用的基于JavaScript API的DOM操作选择器，可以在Cloudflare Workers运行时使用。",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "今天，我们很高兴地发布HTMLRewriter beta——一种流HTML解析器，它有一个易于使用的基于JavaScript API的DOM操作选择器，可以在Cloudflare Workers运行时使用。"
 }

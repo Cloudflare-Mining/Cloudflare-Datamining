@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Rob Dinh",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2020/12/Screen-Shot-2020-12-08-at-07.04.53.png",
-			"width": 266,
-			"height": 256
-		},
 		"url": "https://blog.cloudflare.com/author/robdinh/",
 		"sameAs": [
 			"https://twitter.com/rob_dinh"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/an-introduction-to-three-phase-power-and-pdus/",
 	"datePublished": "2020-12-04T14:05:37.000Z",
 	"dateModified": "2020-12-18T19:54:28.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2020/12/image9-2.jpg",
-		"width": 811,
-		"height": 782
-	},
+	"image": "http://blog.cloudflare.com/content/images/2020/12/image9-2.jpg",
 	"keywords": "Hardware, Data Center, Network, Edge, Edge Computing",
-	"description": "This blog is a quick Electrical Engineering 101 session going over specifically how 3-phase PDUs work, along with some good practices on how we use them",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "This blog is a quick Electrical Engineering 101 session going over specifically how 3-phase PDUs work, along with some good practices on how we use them"
 }

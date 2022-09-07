@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Guest Author",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/10/Screen-Shot-2019-10-09-at-11.21.59-AM.png",
-			"width": 362,
-			"height": 364
-		},
 		"url": "https://blog.cloudflare.com/author/guest-author/",
 		"sameAs": []
 	},
@@ -29,9 +10,5 @@
 	"dateModified": "2018-08-29T07:25:37.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/03/Ressort_de_compression-9.jpg",
 	"keywords": "Crypto, Compression, HTTPS, Security",
-	"description": "Compression is often considered an essential tool when reducing the bandwidth usage of internet services. The impact that the use of such compression schemes can have on security, however, has often been overlooked. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Compression is often considered an essential tool when reducing the bandwidth usage of internet services. The impact that the use of such compression schemes can have on security, however, has often been overlooked. "
 }

@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "John Roberts",
-		"image": "http://blog.cloudflare.com/content/images/2018/02/john.jpg",
 		"url": "https://blog.cloudflare.com/author/john-roberts/",
 		"sameAs": [
 			"https://twitter.com/pencoyd"
@@ -24,10 +10,7 @@
 	"url": "https://blog.cloudflare.com/apps-second-week-recap/",
 	"datePublished": "2011-06-13T03:25:00.000Z",
 	"dateModified": "2018-01-29T19:40:30.000Z",
+	"image": null,
 	"keywords": "Cloudflare Apps, Support",
-	"description": "This past week, we introduced five new CloudFlare Apps. Ranging from webmaster tools to analytics, with live chat, monitoring, and support as new options for good measure, it&#x27;s a great collection. Each one is available from the CloudFlare dashboard.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "This past week, we introduced five new CloudFlare Apps. Ranging from webmaster tools to analytics, with live chat, monitoring, and support as new options for good measure, it&#x27;s a great collection. Each one is available from the CloudFlare dashboard."
 }

@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "John Graham-Cumming",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
 		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
 		"sameAs": [
 			"https://twitter.com/jgrahamc"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/de-de/cleaning-up-bad-bots-de-de/",
 	"datePublished": "2019-09-23T13:00:00.000Z",
 	"dateModified": "2021-01-22T18:47:38.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2019/10/a-2.png",
-		"width": 2000,
-		"height": 1263
-	},
+	"image": "https://blog.cloudflare.com/content/images/2019/10/a-2.png",
 	"keywords": "Geburtstagswoche, Produktneuigkeiten, Sicherheit, Deutsch, Bots (DE)",
-	"description": "Von Anfang an hat Cloudflare böswillige Bots am Scraping von Websites und Missbrauch von APIs gehindert. Im Laufe der Zeit haben wir unsere Bot-Erkennungsmethoden verbessert und umfassende Maschinenlernmodelle eingesetzt, ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Von Anfang an hat Cloudflare böswillige Bots am Scraping von Websites und Missbrauch von APIs gehindert. Im Laufe der Zeit haben wir unsere Bot-Erkennungsmethoden verbessert und umfassende Maschinenlernmodelle eingesetzt, "
 }

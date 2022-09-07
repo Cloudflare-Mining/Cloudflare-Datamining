@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "João Sousa Botto",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/07/profile2.jpg",
-			"width": 2000,
-			"height": 2026
-		},
 		"url": "https://blog.cloudflare.com/author/joao/",
 		"sameAs": [
 			"https://twitter.com/jsbotto"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/announcing-route-to-workers/",
 	"datePublished": "2022-05-13T12:59:17.000Z",
 	"dateModified": "2022-05-13T12:59:17.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/05/image4-16.png",
-		"width": 1801,
-		"height": 1013
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/05/image4-16.png",
 	"keywords": "Platform Week, Email, Cloudflare Workers, Product News, Developers",
-	"description": "With Cloudflare Workers and Email Routing you now have a developer platform to implement any logic you ever wanted for programmatically handling incoming Emails.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "With Cloudflare Workers and Email Routing you now have a developer platform to implement any logic you ever wanted for programmatically handling incoming Emails."
 }

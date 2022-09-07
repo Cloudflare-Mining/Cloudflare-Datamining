@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Tanya Verma",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2020/11/DSC00267-2.png",
-			"width": 2000,
-			"height": 1645
-		},
 		"url": "https://blog.cloudflare.com/author/tanya/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/it-it/oblivious-dns-it-it/",
 	"datePublished": "2020-12-08T13:09:55.000Z",
 	"dateModified": "2021-01-21T20:43:59.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2020/12/image2-7.png",
-		"width": 1999,
-		"height": 1068
-	},
+	"image": "http://blog.cloudflare.com/content/images/2020/12/image2-7.png",
 	"keywords": "Italiano, DNS (IT), DoH (IT), 1.1.1.1 (IT), Settimana della privacy, Sicurezza, Ricerca",
-	"description": "Oblivious DoH trasforma le query su HTTPS sicure (DoH) anche in query private. Si tratta di un nuovo standard proposto che separa gli indirizzi IP dalle query, per fare in modo che nessuna entità individuale possa essere contemporaneamente entrambe le cose.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Oblivious DoH trasforma le query su HTTPS sicure (DoH) anche in query private. Si tratta di un nuovo standard proposto che separa gli indirizzi IP dalle query, per fare in modo che nessuna entità individuale possa essere contemporaneamente entrambe le cose."
 }

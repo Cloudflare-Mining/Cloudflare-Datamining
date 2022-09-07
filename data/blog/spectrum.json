@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Dani Grant",
-		"image": "http://blog.cloudflare.com/content/images/2018/08/efVJR3rj_400x400.jpg",
 		"url": "https://blog.cloudflare.com/author/dani/",
 		"sameAs": [
 			"https://twitter.com/thedanigrant"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/spectrum/",
 	"datePublished": "2018-04-12T13:01:00.000Z",
 	"dateModified": "2020-02-03T19:51:53.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2018/04/spectrum-attack-1.svg",
-		"width": 713,
-		"height": 370
-	},
+	"image": "http://blog.cloudflare.com/content/images/2018/04/spectrum-attack-1.svg",
 	"keywords": "Product News, Spectrum, DDoS, IoT, Security",
-	"description": "We are introducing Spectrum, which brings Cloudflare’s security and acceleration to the whole spectrum of TCP ports and protocols for our Enterprise customers. It’s DDoS protection for any box, container or VM that connects to the internet.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "We are introducing Spectrum, which brings Cloudflare’s security and acceleration to the whole spectrum of TCP ports and protocols for our Enterprise customers. It’s DDoS protection for any box, container or VM that connects to the internet."
 }

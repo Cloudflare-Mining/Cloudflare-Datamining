@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "John Graham-Cumming",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
 		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
 		"sameAs": [
 			"https://twitter.com/jgrahamc"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/creating-serendipity-with-python/",
 	"datePublished": "2021-02-25T16:30:59.000Z",
 	"dateModified": "2021-02-25T16:31:41.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/02/Coffee-chat.png",
-		"width": 1199,
-		"height": 638
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/02/Coffee-chat.png",
 	"keywords": "Python",
-	"description": "We&#x27;ve been experimenting with breaking up employees into random groups (of size 4) and setting up video hangouts between them. We&#x27;re doing this to replace the serendipitous meetings that sometimes occur around coffee machines, in lunch lines or while waiting for the printer.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "We&#x27;ve been experimenting with breaking up employees into random groups (of size 4) and setting up video hangouts between them. We&#x27;re doing this to replace the serendipitous meetings that sometimes occur around coffee machines, in lunch lines or while waiting for the printer."
 }

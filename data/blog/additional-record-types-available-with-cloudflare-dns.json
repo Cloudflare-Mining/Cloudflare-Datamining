@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Sergi Isasi",
-		"image": "http://blog.cloudflare.com/content/images/2017/11/FullSizeRender_jpeg.png",
 		"url": "https://blog.cloudflare.com/author/sergi/",
 		"sameAs": [
 			"https://twitter.com/sgisasi"
@@ -26,9 +12,5 @@
 	"dateModified": "2020-08-14T09:45:27.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/08/photo-1468164016595-6108e4c60c8b.jpg",
 	"keywords": "Reliability, Speed & Reliability, DNS, DNSSEC, Product News",
-	"description": "Cloudflare recently updated the authoritative DNS service to support nine new record types. Since these records are less commonly used than what we previously supported, we thought it would be a good idea to do a brief explanation of each record type and how it is used.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Cloudflare recently updated the authoritative DNS service to support nine new record types. Since these records are less commonly used than what we previously supported, we thought it would be a good idea to do a brief explanation of each record type and how it is used."
 }

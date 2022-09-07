@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Junade Ali",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/G1VwuaxB.jpg",
 		"url": "https://blog.cloudflare.com/author/junade-ali/",
 		"sameAs": [
 			"https://twitter.com/IcyApril"
@@ -26,9 +12,5 @@
 	"dateModified": "2020-08-14T15:51:58.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2016/06/IMG_0651-1.JPG",
 	"keywords": "GitHub, Security, SSL, HTTP2",
-	"description": "GitHub offers a web hosting service whereby you can serve a static website from a GitHub repository. This platform, GitHub Pages, can be used with CloudFlare whilst using a custom domain name.\n\n",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "GitHub offers a web hosting service whereby you can serve a static website from a GitHub repository. This platform, GitHub Pages, can be used with CloudFlare whilst using a custom domain name.\n\n"
 }

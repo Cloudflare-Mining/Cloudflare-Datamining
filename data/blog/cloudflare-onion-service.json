@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Mahrud Sayrafi",
-		"image": "http://blog.cloudflare.com/content/images/2018/05/7Ivdj5-6.jpg",
 		"url": "https://blog.cloudflare.com/author/mahrud/",
 		"sameAs": []
 	},
@@ -24,9 +10,5 @@
 	"dateModified": "2018-12-13T22:25:14.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/09/unnamed-2.png",
 	"keywords": "Crypto Week, Crypto, Security, Tor, Privacy, Privacy Pass",
-	"description": "Two years ago this week Cloudflare introduced Opportunistic Encryption, a feature that provided additional security and performance benefits to websites that had not yet moved to HTTPS.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Two years ago this week Cloudflare introduced Opportunistic Encryption, a feature that provided additional security and performance benefits to websites that had not yet moved to HTTPS."
 }

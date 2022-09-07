@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Guest Author",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/10/Screen-Shot-2019-10-09-at-11.21.59-AM.png",
-			"width": 362,
-			"height": 364
-		},
 		"url": "https://blog.cloudflare.com/author/guest-author/",
 		"sameAs": []
 	},
@@ -29,9 +10,5 @@
 	"dateModified": "2018-02-20T20:44:25.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/02/Dome9_Logo_PNG.png.scaled500.png",
 	"keywords": "Cloudflare Apps",
-	"description": "Dome9 is a new kind of security management service that protects your cloud or hosted server firewall, including all the admin services for all your server&#x27;s applications (e.g., phpMyAdmin). It&#x27;s a great complement to the web security that CloudFlare provides.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Dome9 is a new kind of security management service that protects your cloud or hosted server firewall, including all the admin services for all your server&#x27;s applications (e.g., phpMyAdmin). It&#x27;s a great complement to the web security that CloudFlare provides."
 }

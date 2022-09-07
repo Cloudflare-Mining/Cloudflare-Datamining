@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Nitin Rao",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/08/WtxhLSEUSgqYRMdQUwWp_1204a20b3d1d96bba523a6a2a5fa3cd73bd4fe59240a27ad6eb8c064c6792446.jpg",
-			"width": 600,
-			"height": 600
-		},
 		"url": "https://blog.cloudflare.com/author/nitin-rao/",
 		"sameAs": [
 			"https://twitter.com/NitinBRao"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/designing-edge-servers-with-arm-cpus/",
 	"datePublished": "2021-07-27T12:59:23.000Z",
 	"dateModified": "2021-07-30T01:33:20.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/07/Arm-CPUs.png",
-		"width": 1200,
-		"height": 675
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/07/Arm-CPUs.png",
 	"keywords": "Impact Week, Arm, Server, CPU, Performance, Sustainability",
-	"description": "Using Arm, Cloudflare can now securely process over ten times as many Internet requests for every watt of power consumed, than we did for servers designed in 2013. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Using Arm, Cloudflare can now securely process over ten times as many Internet requests for every watt of power consumed, than we did for servers designed in 2013. "
 }

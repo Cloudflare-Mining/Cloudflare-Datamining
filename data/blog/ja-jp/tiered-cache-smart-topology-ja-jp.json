@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Brian Bradley",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/02/twitter-profile-photo-1.jpeg",
-			"width": 400,
-			"height": 400
-		},
 		"url": "https://blog.cloudflare.com/author/brian-bradley/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/ja-jp/tiered-cache-smart-topology-ja-jp/",
 	"datePublished": "2021-02-18T00:00:00.000Z",
 	"dateModified": "2021-08-31T20:50:24.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/06/image5-8-1.png",
-		"width": 1200,
-		"height": 619
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/06/image5-8-1.png",
 	"keywords": "日本語, CDN (JP), Tiered Cache (JP), Cache (JP), パフォーマンス",
-	"description": "数年前、より高速で効率の良いインターネットの実現に向けて、Argoをリリースしました。Argoはネットワーク状態を監視し、オリジンサーバーリクエストのためのインターネット上の最適なルートを検出し、途中で輻輳を回避します。",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "数年前、より高速で効率の良いインターネットの実現に向けて、Argoをリリースしました。Argoはネットワーク状態を監視し、オリジンサーバーリクエストのためのインターネット上の最適なルートを検出し、途中で輻輳を回避します。"
 }

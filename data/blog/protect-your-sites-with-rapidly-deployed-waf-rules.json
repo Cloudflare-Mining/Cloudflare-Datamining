@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "John Graham-Cumming",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
 		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
 		"sameAs": [
 			"https://twitter.com/jgrahamc"
@@ -24,10 +10,7 @@
 	"url": "https://blog.cloudflare.com/protect-your-sites-with-rapidly-deployed-waf-rules/",
 	"datePublished": "2014-01-21T16:00:00.000Z",
 	"dateModified": "2020-11-10T18:44:11.000Z",
+	"image": null,
 	"keywords": "WAF Rules, Tech Talks, WAF, Deep Dive",
-	"description": "An attack on your site could be catastrophic. Even a small attack can have major implications. Responding quickly to an attack is imperative.\n\n",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "An attack on your site could be catastrophic. Even a small attack can have major implications. Responding quickly to an attack is imperative.\n\n"
 }

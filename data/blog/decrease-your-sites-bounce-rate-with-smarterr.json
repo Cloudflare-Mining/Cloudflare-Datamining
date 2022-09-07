@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Joshua Motta",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/08/BLOG-Default-Male-21.png",
-			"width": 276,
-			"height": 250
-		},
 		"url": "https://blog.cloudflare.com/author/joshua-motta/",
 		"sameAs": []
 	},
@@ -29,9 +10,5 @@
 	"dateModified": "2018-08-03T22:51:22.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/08/smarterrors-logo.png.scaled500.png",
 	"keywords": "Cloudflare Apps, Reliability",
-	"description": "Visitors dread them, publishers fear them and we&#x27;ve all seen them. Page Not Found errors (also known as 404s) are a common occurrence on the web where content is constantly created and discarded. However, few things increase a site&#x27;s bounce rate faster. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Visitors dread them, publishers fear them and we&#x27;ve all seen them. Page Not Found errors (also known as 404s) are a common occurrence on the web where content is constantly created and discarded. However, few things increase a site&#x27;s bounce rate faster. "
 }

@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Wesley Evans",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/08/Headshot.jpeg",
-			"width": 960,
-			"height": 960
-		},
 		"url": "https://blog.cloudflare.com/author/wesley/",
 		"sameAs": [
 			"https://twitter.com/whywevans"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/ja-jp/cap-expands-support-ja-jp/",
 	"datePublished": "2021-08-12T13:00:00.000Z",
 	"dateModified": "2022-06-15T15:27:19.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/06/image1-23.png",
-		"width": 1600,
-		"height": 826
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/06/image1-23.png",
 	"keywords": "研究 (JA), セキュリティ, 製品ニュース (JP), アクセシビリティ, 日本語",
-	"description": "今日私たちは、あなたがロボットではないことを証明するための、インターネットのCAPTCHAへの依存を減らすために、新たな一歩を踏み出しました",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "今日私たちは、あなたがロボットではないことを証明するための、インターネットのCAPTCHAへの依存を減らすために、新たな一歩を踏み出しました"
 }

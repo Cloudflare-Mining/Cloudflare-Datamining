@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Derek Chamorro",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2020/11/dc-01.png",
-			"width": 3001,
-			"height": 3000
-		},
 		"url": "https://blog.cloudflare.com/author/derek-chamorro/",
 		"sameAs": [
 			"https://randomsecurity.dev",
@@ -30,16 +11,7 @@
 	"url": "https://blog.cloudflare.com/securing-memory-at-epyc-scale/",
 	"datePublished": "2020-02-28T14:00:00.000Z",
 	"dateModified": "2020-03-03T17:47:17.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2020/02/Gen-XSecuring-Memory-at-EPYC-Scale.png",
-		"width": 623,
-		"height": 352
-	},
+	"image": "https://blog.cloudflare.com/content/images/2020/02/Gen-XSecuring-Memory-at-EPYC-Scale.png",
 	"keywords": "EPYC, Hardware, Data Center, Cloudflare Network, Security",
-	"description": "At Cloudflare, we encrypt data both in transit (on the network) and at rest (on the disk). Both practices address some of the most common vectors used to exfiltrate information and these measures serve to protect sensitive data from attackers but, what about data currently in use?",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "At Cloudflare, we encrypt data both in transit (on the network) and at rest (on the disk). Both practices address some of the most common vectors used to exfiltrate information and these measures serve to protect sensitive data from attackers but, what about data currently in use?"
 }

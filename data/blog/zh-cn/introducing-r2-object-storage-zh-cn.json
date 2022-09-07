@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Greg McKeon",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/05/Screen-Shot-2022-05-10-at-2.50.56-PM.png",
-			"width": 692,
-			"height": 662
-		},
 		"url": "https://blog.cloudflare.com/author/greg/",
 		"sameAs": [
 			"https://twitter.com/wegmckeon"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/introducing-r2-object-storage-zh-cn/",
 	"datePublished": "2021-09-27T13:00:00.000Z",
 	"dateModified": "2021-10-04T14:07:56.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/09/R2-1.png",
-		"width": 1800,
-		"height": 1013
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/09/R2-1.png",
 	"keywords": "Cloudflare Workers (CN), 生日周 (CN), 产品新闻, 简体中文 (CN)",
-	"description": "隆重推出 Cloudflare 的 S3 兼容对象存储服务，不仅出口带宽费用为零，还可自动从 S3 兼容服务迁移。",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "隆重推出 Cloudflare 的 S3 兼容对象存储服务，不仅出口带宽费用为零，还可自动从 S3 兼容服务迁移。"
 }

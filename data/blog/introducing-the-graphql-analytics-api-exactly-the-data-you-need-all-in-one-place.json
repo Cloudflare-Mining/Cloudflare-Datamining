@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Filipp Nisenzoun",
-		"image": "http://blog.cloudflare.com/content/images/2019/03/filipp.png",
 		"url": "https://blog.cloudflare.com/author/filipp/",
 		"sameAs": []
 	},
@@ -22,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/introducing-the-graphql-analytics-api-exactly-the-data-you-need-all-in-one-place/",
 	"datePublished": "2019-12-12T15:41:04.000Z",
 	"dateModified": "2021-05-21T11:57:32.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2019/09/facebook-Linked_Image___analytics-API-@2x.png",
-		"width": 1600,
-		"height": 837
-	},
+	"image": "https://blog.cloudflare.com/content/images/2019/09/facebook-Linked_Image___analytics-API-@2x.png",
 	"keywords": "Analytics, Product News, API, GraphQL, Developers",
-	"description": "With our new GraphQL Analytics API, all of your performance, security, and reliability data is available from one endpoint, and you can select exactly what you need.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "With our new GraphQL Analytics API, all of your performance, security, and reliability data is available from one endpoint, and you can select exactly what you need."
 }

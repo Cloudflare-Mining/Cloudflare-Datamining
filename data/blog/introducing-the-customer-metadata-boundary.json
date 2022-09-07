@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Jon Levine",
-		"image": "http://blog.cloudflare.com/content/images/2018/04/prof-crop.jpg",
 		"url": "https://blog.cloudflare.com/author/jpl/",
 		"sameAs": [
 			"https://twitter.com/jplevine"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/introducing-the-customer-metadata-boundary/",
 	"datePublished": "2021-12-07T13:59:15.000Z",
 	"dateModified": "2022-06-21T16:10:06.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/12/image1-23.png",
-		"width": 1186,
-		"height": 573
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/12/image1-23.png",
 	"keywords": "CIO Week, Privacy, Compliance, Data, Europe, Legal",
-	"description": "Cloudflare’s Data Localisation Suite now helps customers localise metadata about their HTTP traffic.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Cloudflare’s Data Localisation Suite now helps customers localise metadata about their HTTP traffic."
 }

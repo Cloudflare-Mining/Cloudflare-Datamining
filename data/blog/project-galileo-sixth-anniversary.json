@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Jocelyn Woolbright",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/12/0-1.jpg",
-			"width": 450,
-			"height": 450
-		},
 		"url": "https://blog.cloudflare.com/author/jocelyn/",
 		"sameAs": [
 			"https://twitter.com/jo_woolbright"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/project-galileo-sixth-anniversary/",
 	"datePublished": "2020-06-11T13:00:00.000Z",
 	"dateModified": "2020-06-11T18:11:08.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2020/06/Galileo-6-years-Galileo-6-years-Header-Tile@2x.png",
-		"width": 2322,
-		"height": 1333
-	},
+	"image": "https://blog.cloudflare.com/content/images/2020/06/Galileo-6-years-Galileo-6-years-Header-Tile@2x.png",
 	"keywords": "Project Galileo, Legal",
-	"description": "Six years ago, Cloudflare started Project Galileo to provide free services to vulnerable nonprofits, journalism and independent media voices online who might otherwise be in danger of being silenced by cyberattacks. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Six years ago, Cloudflare started Project Galileo to provide free services to vulnerable nonprofits, journalism and independent media voices online who might otherwise be in danger of being silenced by cyberattacks. "
 }

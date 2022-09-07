@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Matt Silverlock",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/08/profile-1500px-square.jpeg",
-			"width": 1500,
-			"height": 1500
-		},
 		"url": "https://blog.cloudflare.com/author/silverlock/",
 		"sameAs": [
 			"https://twitter.com/elithrar"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/announcing-pubsub-programmable-mqtt-messaging/",
 	"datePublished": "2022-05-12T12:59:22.000Z",
 	"dateModified": "2022-05-13T19:35:32.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/05/image1-24.png",
-		"width": 1920,
-		"height": 1013
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/05/image1-24.png",
 	"keywords": "Platform Week, IoT, MQTT",
-	"description": "Announcing the beta of Cloudflare Pub/Sub, our programmable, serverless message broker built on the open MQTT messaging standard",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Announcing the beta of Cloudflare Pub/Sub, our programmable, serverless message broker built on the open MQTT messaging standard"
 }

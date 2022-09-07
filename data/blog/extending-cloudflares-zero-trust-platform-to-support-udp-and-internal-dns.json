@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Abe Carryl",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2020/10/3A8B82DA-79A1-44EB-873A-B56773A4F764.jpeg",
-			"width": 900,
-			"height": 900
-		},
 		"url": "https://blog.cloudflare.com/author/abe/",
 		"sameAs": [
 			"https://twitter.com/mrlincolnlogs"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/extending-cloudflares-zero-trust-platform-to-support-udp-and-internal-dns/",
 	"datePublished": "2021-12-08T13:59:15.000Z",
 	"dateModified": "2021-12-30T22:46:01.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/12/image2-19.png",
-		"width": 1801,
-		"height": 1013
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/12/image2-19.png",
 	"keywords": "CIO Week, Cloudflare One, Cloudflare Tunnel, Zero Trust, UDP, Product News",
-	"description": "Last year, we launched a new feature which empowered users to begin building a private network on Cloudflare. Today, we’re excited to announce even more features which make your Zero Trust migration easier than ever. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Last year, we launched a new feature which empowered users to begin building a private network on Cloudflare. Today, we’re excited to announce even more features which make your Zero Trust migration easier than ever. "
 }

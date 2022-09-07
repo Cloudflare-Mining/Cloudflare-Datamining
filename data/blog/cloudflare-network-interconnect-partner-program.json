@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Steven Pack",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/08/steven-pack.png",
-			"width": 496,
-			"height": 492
-		},
 		"url": "https://blog.cloudflare.com/author/stevenpack/",
 		"sameAs": [
 			"https://twitter.com/steven_pack"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/cloudflare-network-interconnect-partner-program/",
 	"datePublished": "2020-08-04T13:00:00.000Z",
 	"dateModified": "2020-08-04T18:10:17.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2020/08/Screen-Shot-2020-08-03-at-10.11.43-AM.png",
-		"width": 902,
-		"height": 530
-	},
+	"image": "https://blog.cloudflare.com/content/images/2020/08/Screen-Shot-2020-08-03-at-10.11.43-AM.png",
 	"keywords": "Better Internet, Internet Exchange, Internet Performance, Magic Transit, Bandwidth Alliance, Partners",
-	"description": "Today we’re excited to announce Cloudflare’s Network Interconnection Partner Program, in support of our new CNI product. As ever more enterprises turn to Cloudflare to secure and accelerate their branch and core networks, the ability to connect privately and securely becomes increasingly important.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Today we’re excited to announce Cloudflare’s Network Interconnection Partner Program, in support of our new CNI product. As ever more enterprises turn to Cloudflare to secure and accelerate their branch and core networks, the ability to connect privately and securely becomes increasingly important."
 }

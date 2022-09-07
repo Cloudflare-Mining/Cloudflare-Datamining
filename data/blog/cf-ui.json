@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "James Kyle",
-		"image": "http://blog.cloudflare.com/content/images/2018/02/AAEAAQAAAAAAAAk4AAAAJDhiZmFkNDA2LThmMjktNDkwOC05MjlkLWJjZjllMjdlMzA2MQ.jpg",
 		"url": "https://blog.cloudflare.com/author/james/",
 		"sameAs": []
 	},
@@ -24,9 +10,5 @@
 	"dateModified": "2018-08-27T20:06:52.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2016/06/cf-ui-turned-ghost-1.png",
 	"keywords": "JavaScript, Programming, Reliability",
-	"description": "Late last year, the CloudFlare UI team made a huge decision: to change JavaScript frameworks from Backbone &amp; Marionette to React &amp; Redux.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Late last year, the CloudFlare UI team made a huge decision: to change JavaScript frameworks from Backbone &amp; Marionette to React &amp; Redux."
 }

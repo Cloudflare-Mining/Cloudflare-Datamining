@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Guest Author",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/10/Screen-Shot-2019-10-09-at-11.21.59-AM.png",
-			"width": 362,
-			"height": 364
-		},
 		"url": "https://blog.cloudflare.com/author/guest-author/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/fifty-years-ago/",
 	"datePublished": "2019-10-29T07:15:00.000Z",
 	"dateModified": "2019-10-30T14:45:53.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2019/10/Len-Kleinrock-and-IMP-1-at-UCLA-1.png",
-		"width": 1250,
-		"height": 900
-	},
+	"image": "https://blog.cloudflare.com/content/images/2019/10/Len-Kleinrock-and-IMP-1-at-UCLA-1.png",
 	"keywords": "History",
-	"description": "On 29 October 2019, Professor Leonard (“Len”) Kleinrock is chairing a celebration at the University of California, Los Angeles (UCLA).  The date is the fiftieth anniversary of the first full system test and remote host-to-host login over the Arpanet.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "On 29 October 2019, Professor Leonard (“Len”) Kleinrock is chairing a celebration at the University of California, Los Angeles (UCLA).  The date is the fiftieth anniversary of the first full system test and remote host-to-host login over the Arpanet."
 }

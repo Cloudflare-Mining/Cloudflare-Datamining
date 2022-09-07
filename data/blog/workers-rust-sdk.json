@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Steve Manuel",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/09/steve.jpeg",
-			"width": 460,
-			"height": 460
-		},
 		"url": "https://blog.cloudflare.com/author/steve-manuel/",
 		"sameAs": [
 			"https://nilslice.xyz/",
@@ -30,16 +11,7 @@
 	"url": "https://blog.cloudflare.com/workers-rust-sdk/",
 	"datePublished": "2021-09-09T13:00:02.000Z",
 	"dateModified": "2021-09-09T13:00:02.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/09/Ferris-Wields-a-Worker-1.png",
-		"width": 1280,
-		"height": 640
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/09/Ferris-Wields-a-Worker-1.png",
 	"keywords": "Cloudflare Workers, Serverless, WebAssembly, Rust, WASM",
-	"description": "Introducing the Cloudflare Workers Rust SDK: write your entire Worker in Rust, no JavaScript required.\n",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Introducing the Cloudflare Workers Rust SDK: write your entire Worker in Rust, no JavaScript required.\n"
 }

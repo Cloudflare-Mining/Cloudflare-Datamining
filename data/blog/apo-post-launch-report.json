@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Yevgen Safronov",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/10/avatar_blog.jpg",
-			"width": 351,
-			"height": 350
-		},
 		"url": "https://blog.cloudflare.com/author/yevgen/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/apo-post-launch-report/",
 	"datePublished": "2021-03-16T12:00:00.000Z",
 	"dateModified": "2021-03-16T12:00:00.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/03/Automatic-Platform-Optimization-post-launch-report-OG-2.png",
-		"width": 1439,
-		"height": 802
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/03/Automatic-Platform-Optimization-post-launch-report-OG-2.png",
 	"keywords": "Automatic Platform Optimization, WordPress, Speed & Reliability, Cache, Performance",
-	"description": "We explored almost 200 websites with the activated Automatic Platform Optimization feature in Chrome User Experience Report data. Automatic Platform Optimization consistently demonstrated better aggregate performance among sites we analyzed in TTFB, First Paint, FCP, and LCP metrics.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "We explored almost 200 websites with the activated Automatic Platform Optimization feature in Chrome User Experience Report data. Automatic Platform Optimization consistently demonstrated better aggregate performance among sites we analyzed in TTFB, First Paint, FCP, and LCP metrics."
 }

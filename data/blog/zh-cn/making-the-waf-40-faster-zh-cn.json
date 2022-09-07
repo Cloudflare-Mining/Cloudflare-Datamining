@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Miguel de Moura",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/03/9093796.jpg",
-			"width": 600,
-			"height": 600
-		},
 		"url": "https://blog.cloudflare.com/author/miguel/",
 		"sameAs": [
 			"https://migueldemoura.com",
@@ -30,16 +11,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/making-the-waf-40-faster-zh-cn/",
 	"datePublished": "2020-07-01T05:03:00.000Z",
 	"dateModified": "2021-02-03T23:24:54.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/01/waf-spot-illustration-3x-8.png",
-		"width": 1348,
-		"height": 766
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/01/waf-spot-illustration-3x-8.png",
 	"keywords": "简体中文 (CN), 速度和可靠性 (CN), WAF (CN)",
-	"description": "Cloudflare 的 应用程序防火墙 (WAF) 可以防止针对 Web 应用程序漏洞的恶意攻击。它不断更新以提供针对最新威胁的全面覆盖，同时确保低误报率。",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Cloudflare 的 应用程序防火墙 (WAF) 可以防止针对 Web 应用程序漏洞的恶意攻击。它不断更新以提供针对最新威胁的全面覆盖，同时确保低误报率。"
 }

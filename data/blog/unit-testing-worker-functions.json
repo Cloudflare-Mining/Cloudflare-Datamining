@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Tom Brightbill",
-		"image": "http://blog.cloudflare.com/content/images/2019/03/tomb.jpg",
 		"url": "https://blog.cloudflare.com/author/tom-brightbill/",
 		"sameAs": []
 	},
@@ -24,9 +10,5 @@
 	"dateModified": "2020-08-14T19:32:42.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2019/03/local-worker@2x.png",
 	"keywords": "Serverless, Cloudflare Workers, JavaScript",
-	"description": "If you were not aware, Cloudflare Workers lets you run Javascript in all 165+ of our Data Centers. We’re delighted to see some of the creative applications of Workers. As the use cases grow in complexity, the need to smoke test your code also grows. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "If you were not aware, Cloudflare Workers lets you run Javascript in all 165+ of our Data Centers. We’re delighted to see some of the creative applications of Workers. As the use cases grow in complexity, the need to smoke test your code also grows. "
 }

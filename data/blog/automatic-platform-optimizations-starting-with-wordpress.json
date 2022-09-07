@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Garrett Galow",
-		"image": "http://blog.cloudflare.com/content/images/2018/04/14729279_10207227100946205_2625241094472568444_n.jpg",
 		"url": "https://blog.cloudflare.com/author/garrett/",
 		"sameAs": []
 	},
@@ -22,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/automatic-platform-optimizations-starting-with-wordpress/",
 	"datePublished": "2020-10-02T13:01:00.000Z",
 	"dateModified": "2022-07-27T17:51:58.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2020/09/Birthday-Week-OG-images_WordPress_Optimization.png",
-		"width": 3334,
-		"height": 1668
-	},
+	"image": "https://blog.cloudflare.com/content/images/2020/09/Birthday-Week-OG-images_WordPress_Optimization.png",
 	"keywords": "Birthday Week, WordPress, Product News, Speed & Reliability, TTFB, Automatic Platform Optimization",
-	"description": "Today, we are announcing a new service to serve more than just the static content of your website with the Automatic Platform Optimization (APO) service. With this launch, we are supporting WordPress, the most popular website hosting solution serving 38% of all websites. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Today, we are announcing a new service to serve more than just the static content of your website with the Automatic Platform Optimization (APO) service. With this launch, we are supporting WordPress, the most popular website hosting solution serving 38% of all websites. "
 }

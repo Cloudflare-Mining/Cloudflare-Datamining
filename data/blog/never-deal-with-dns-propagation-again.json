@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "John Roberts",
-		"image": "http://blog.cloudflare.com/content/images/2018/02/john.jpg",
 		"url": "https://blog.cloudflare.com/author/john-roberts/",
 		"sameAs": [
 			"https://twitter.com/pencoyd"
@@ -26,9 +12,5 @@
 	"dateModified": "2018-02-03T00:46:37.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/02/dns.png.scaled500.png",
 	"keywords": "TTL",
-	"description": "At CloudFlare, we think a lot about the Domain Name Service -- better known as DNS, the Internet&#x27;s address book. CloudFlare uses DNS to bring performance and security to our customers. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "At CloudFlare, we think a lot about the Domain Name Service -- better known as DNS, the Internet&#x27;s address book. CloudFlare uses DNS to bring performance and security to our customers. "
 }

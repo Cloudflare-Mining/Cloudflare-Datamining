@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Tom Strickx",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/07/Headshot_Lisbon.png",
-			"width": 150,
-			"height": 176
-		},
 		"url": "https://blog.cloudflare.com/author/tom-strickx/",
 		"sameAs": [
 			"https://twitter.com/tstrickx"
@@ -31,9 +12,5 @@
 	"dateModified": "2021-01-27T01:30:30.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2019/06/leak2-2-1-1.png",
 	"keywords": "Français, BGP (FR), RPKI (FR)",
-	"description": "Aujourd&#x27;hui à 10h30 UTC, Internet a connu une sorte de mini crise cardiaque. Une petite entreprise du nord de la Pennsylvanie est devenue le chemin privilégié de nombreuses routes Internet à cause de Verizon (AS701), un important fournisseur de transit Internet. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Aujourd&#x27;hui à 10h30 UTC, Internet a connu une sorte de mini crise cardiaque. Une petite entreprise du nord de la Pennsylvanie est devenue le chemin privilégié de nombreuses routes Internet à cause de Verizon (AS701), un important fournisseur de transit Internet. "
 }

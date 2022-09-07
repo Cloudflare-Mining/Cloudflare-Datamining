@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Irtefa",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/03/irtefa-profile-picture.jpg",
-			"width": 600,
-			"height": 600
-		},
 		"url": "https://blog.cloudflare.com/author/irtefa/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/how-to-use-1-1-1-1-w-warp-app-and-cloudflare-gateway-to-protect-your-phone-from-security-threats/",
 	"datePublished": "2020-04-08T11:00:00.000Z",
 	"dateModified": "2020-04-13T22:15:57.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2020/04/DNS-over-HTTPS-featured.png",
-		"width": 1486,
-		"height": 958
-	},
+	"image": "https://blog.cloudflare.com/content/images/2020/04/DNS-over-HTTPS-featured.png",
 	"keywords": "1.1.1.1, WARP, Cloudflare Gateway, Security, Mobile",
-	"description": "Starting today, you can get even more out of your 1.1.1.1 app. By adding Cloudflare Gateway’s secure DNS filtering to your 1.1.1.1 app, you can add a layer of security and block malicious domains flagged as phishing, command and control, or spam.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Starting today, you can get even more out of your 1.1.1.1 app. By adding Cloudflare Gateway’s secure DNS filtering to your 1.1.1.1 app, you can add a layer of security and block malicious domains flagged as phishing, command and control, or spam."
 }

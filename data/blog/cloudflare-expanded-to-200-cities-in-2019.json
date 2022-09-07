@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Jon Rolfe",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/08/download.png",
-			"width": 600,
-			"height": 600
-		},
 		"url": "https://blog.cloudflare.com/author/jon-rolfe/",
 		"sameAs": [
 			"https://twitter.com/jrolfoid"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/cloudflare-expanded-to-200-cities-in-2019/",
 	"datePublished": "2020-01-04T17:00:00.000Z",
 	"dateModified": "2020-01-13T20:51:46.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2020/01/200-map-01.png",
-		"width": 2000,
-		"height": 1237
-	},
+	"image": "https://blog.cloudflare.com/content/images/2020/01/200-map-01.png",
 	"keywords": "Cloudflare Network, Data Center, United States, Middle East, Australia, APJC",
-	"description": "We have some exciting news to ring in the new decade: Cloudflare’s global network has expanded to 200 cities across 90+ countries.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "We have some exciting news to ring in the new decade: Cloudflare’s global network has expanded to 200 cities across 90+ countries."
 }

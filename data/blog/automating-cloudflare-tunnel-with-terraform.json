@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Chris De La Garza",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/05/headshot.jpg",
-			"width": 600,
-			"height": 600
-		},
 		"url": "https://blog.cloudflare.com/author/chris-de-la-garza/",
 		"sameAs": [
 			"https://twitter.com/tenaciousdlg"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/automating-cloudflare-tunnel-with-terraform/",
 	"datePublished": "2021-05-14T13:00:00.000Z",
 	"dateModified": "2021-05-14T13:00:26.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/05/Terraform-tunnels-1.png",
-		"width": 1600,
-		"height": 766
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/05/Terraform-tunnels-1.png",
 	"keywords": "Tunnel, Terraform, Cloudflare Tunnel",
-	"description": "An overview on how to use Terraform to automatically deploy Named Tunnels into your infrastructure with Cloudflare. \n",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "An overview on how to use Terraform to automatically deploy Named Tunnels into your infrastructure with Cloudflare. \n"
 }

@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Zaid Farooqui",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/05/Screen-Shot-2022-05-12-at-5.21.40-PM.png",
-			"width": 406,
-			"height": 370
-		},
 		"url": "https://blog.cloudflare.com/author/zaid/",
 		"sameAs": [
 			"https://twitter.com/zaid"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/stream-live/",
 	"datePublished": "2021-09-30T12:59:23.000Z",
 	"dateModified": "2021-10-02T20:17:48.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/09/unnamed-3.png",
-		"width": 1801,
-		"height": 1013
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/09/unnamed-3.png",
 	"keywords": "Birthday Week, Live Streaming, RTMP, WebRTC, Video, Cloudflare Stream, Serverless, Product News",
-	"description": "You can now use Cloudflare to do serverless end-to-end live-streaming. Stream Live offers video ingestion, encoding, recording and a player in a single product.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "You can now use Cloudflare to do serverless end-to-end live-streaming. Stream Live offers video ingestion, encoding, recording and a player in a single product."
 }

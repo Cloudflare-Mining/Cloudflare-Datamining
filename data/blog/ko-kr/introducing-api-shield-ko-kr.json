@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Patrick R. Donahue",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/me0-1.png",
-			"width": 300,
-			"height": 291
-		},
 		"url": "https://blog.cloudflare.com/author/patrick/",
 		"sameAs": [
 			"https://www.cloudflare.com",
@@ -30,16 +11,7 @@
 	"url": "https://blog.cloudflare.com/ko-kr/introducing-api-shield-ko-kr/",
 	"datePublished": "2020-10-01T13:01:00.000Z",
 	"dateModified": "2022-05-13T00:37:06.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/05/Birthday-Week-OG-images_API_Shield-1.png",
-		"width": 3334,
-		"height": 1667
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/05/Birthday-Week-OG-images_API_Shield-1.png",
 	"keywords": "생일 주 (KO), 제품 뉴스, API Shield (KO), 보안",
-	"description": "Cloudflare의 네트워크를 통과하는 요청은 초당 1800만 개 정도이고 그중 50%는 바로 API로 향하며 이 요청 중 대부분은 악의적인 요청으로 판단되어 차단됩니다. 이러한 위협에 대응하기 위해 Cloudflare는 강력한 클라이언트 인증서 기반의 ID와 스키마 기반의 유효성 검사를 통해 API의 보안을 간소화하고 있습니다",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Cloudflare의 네트워크를 통과하는 요청은 초당 1800만 개 정도이고 그중 50%는 바로 API로 향하며 이 요청 중 대부분은 악의적인 요청으로 판단되어 차단됩니다. 이러한 위협에 대응하기 위해 Cloudflare는 강력한 클라이언트 인증서 기반의 ID와 스키마 기반의 유효성 검사를 통해 API의 보안을 간소화하고 있습니다"
 }

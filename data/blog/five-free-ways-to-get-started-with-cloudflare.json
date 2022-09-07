@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "John Engates",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/12/twitter-profile-photo.jpeg",
-			"width": 400,
-			"height": 400
-		},
 		"url": "https://blog.cloudflare.com/author/john-engates/",
 		"sameAs": [
 			"https://twitter.com/jengates"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/five-free-ways-to-get-started-with-cloudflare/",
 	"datePublished": "2021-11-12T12:59:34.000Z",
 	"dateModified": "2022-04-26T22:17:20.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/11/image4-9.png",
-		"width": 1200,
-		"height": 628
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/11/image4-9.png",
 	"keywords": "Cloudflare Zero Trust, DNS, Registrar, Cloudflare Pages, 1.1.1.1, Zero Trust, Security",
-	"description": "New to Cloudflare and don’t know where to begin? Here are five things you can do to get started with Cloudflare right now...",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "New to Cloudflare and don’t know where to begin? Here are five things you can do to get started with Cloudflare right now..."
 }

@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Ben Cartwright-Cox",
-		"image": {
-			"@type": "ImageObject",
-			"url": "//www.gravatar.com/avatar/d5db60cf5df0b226c4c0e48e0f04e7bf?s=250&d=mm&r=x",
-			"width": 250,
-			"height": 250
-		},
 		"url": "https://blog.cloudflare.com/author/ben-cartwright-cox/",
 		"sameAs": []
 	},
@@ -29,9 +10,5 @@
 	"dateModified": "2018-08-28T21:30:05.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/08/12977337115_19ea7233c8_z.jpg",
 	"keywords": "WordPress, WAF, Vulnerabilities",
-	"description": "Today a severe vulnerability was announced by the WordPress Security Team that allows unauthenticated users to change content on a site using unpatched (below version 4.7.2) WordPress.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Today a severe vulnerability was announced by the WordPress Security Team that allows unauthenticated users to change content on a site using unpatched (below version 4.7.2) WordPress."
 }

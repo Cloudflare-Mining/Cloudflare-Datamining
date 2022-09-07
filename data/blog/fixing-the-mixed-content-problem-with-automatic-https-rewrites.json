@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "John Graham-Cumming",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
 		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
 		"sameAs": [
 			"https://twitter.com/jgrahamc"
@@ -26,9 +12,5 @@
 	"dateModified": "2018-08-28T20:18:51.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/03/6714200883_2ba8167533_b.jpg",
 	"keywords": "HTTPS, Automatic HTTPS, SSL, Mixed Content Errors, Product News, Security, Crypto Week",
-	"description": "Long ago it was difficult, expensive, and slow to set up an HTTPS capable web site. Then along came services like CloudFlare’s Universal SSL that made switching from http:// to https:// as easy as clicking a button. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Long ago it was difficult, expensive, and slow to set up an HTTPS capable web site. Then along came services like CloudFlare’s Universal SSL that made switching from http:// to https:// as easy as clicking a button. "
 }

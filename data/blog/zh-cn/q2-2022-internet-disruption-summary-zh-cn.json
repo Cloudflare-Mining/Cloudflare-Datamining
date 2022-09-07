@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "David Belson",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/01/headshot-grayscale-crop.jpeg",
-			"width": 526,
-			"height": 480
-		},
 		"url": "https://blog.cloudflare.com/author/david-belson/",
 		"sameAs": [
 			"https://twitter.com/dbelson"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/q2-2022-internet-disruption-summary-zh-cn/",
 	"datePublished": "2022-07-05T13:26:00.000Z",
 	"dateModified": "2022-08-12T07:14:32.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/08/unnamed--1--1.png",
-		"width": 1200,
-		"height": 675
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/08/unnamed--1--1.png",
 	"keywords": "Cloudflare Radar (CN), 互联网流量, 中断, 互联网中断, 简体中文 (CN)",
-	"description": "本文中，我们回顾 Cloudflare 在 2022 年第二季度期间观察到的部分互联网中断，以来自 Cloudflare Radar 和其他 Cloudflare 内部工具的流量图表作为佐证，并按照相关原因或相同地理位置对其进行分类",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "本文中，我们回顾 Cloudflare 在 2022 年第二季度期间观察到的部分互联网中断，以来自 Cloudflare Radar 和其他 Cloudflare 内部工具的流量图表作为佐证，并按照相关原因或相同地理位置对其进行分类"
 }

@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Matthew Prince",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
-			"width": 1196,
-			"height": 1190
-		},
 		"url": "https://blog.cloudflare.com/author/matthew-prince/",
 		"sameAs": [
 			"https://twitter.com/eastdakota"
@@ -31,9 +12,5 @@
 	"dateModified": "2020-08-20T23:04:50.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/01/rocket.png.scaled500-1.png",
 	"keywords": "Cache, Rocket Loader, spdy",
-	"description": "At CloudFlare, we built our own CDN from the ground up. We used the latest technologies like solid state drives for screaming I/O and Anycast routing and geo load balancing to make it as fast and efficient as possible. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "At CloudFlare, we built our own CDN from the ground up. We used the latest technologies like solid state drives for screaming I/O and Anycast routing and geo load balancing to make it as fast and efficient as possible. "
 }

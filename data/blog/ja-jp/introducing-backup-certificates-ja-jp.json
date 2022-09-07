@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Dina Kozlov",
-		"image": "http://blog.cloudflare.com/content/images/2019/06/headshot.jpg",
 		"url": "https://blog.cloudflare.com/author/dina/",
 		"sameAs": [
 			"https://twitter.com/dinasaur_404"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/ja-jp/introducing-backup-certificates-ja-jp/",
 	"datePublished": "2022-03-14T12:59:00.000Z",
 	"dateModified": "2022-03-30T10:13:07.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/03/image1-header-1-1.png",
-		"width": 512,
-		"height": 288
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/03/image1-header-1-1.png",
 	"keywords": "セキュリティウィーク, SSL (JP), 製品ニュース (JP)",
-	"description": "Cloudflareでは、すべてのお客様にインターネットアプリケーション用のTLS証明書を無料でプロビジョニングしていることを誇りに思います。現在では、約4,500万件の証明書の発行から導入、更新までのライフサイクル管理を担っています。最も耐障害性に優れた堅牢なプラットフォームを構築するうえで、それが「未来志向」であり、予測不可能な事象に対する弾力性を有していることを望んでいます",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Cloudflareでは、すべてのお客様にインターネットアプリケーション用のTLS証明書を無料でプロビジョニングしていることを誇りに思います。現在では、約4,500万件の証明書の発行から導入、更新までのライフサイクル管理を担っています。最も耐障害性に優れた堅牢なプラットフォームを構築するうえで、それが「未来志向」であり、予測不可能な事象に対する弾力性を有していることを望んでいます"
 }

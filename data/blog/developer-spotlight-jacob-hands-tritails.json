@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Erwin van der Koogh",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/04/twitter-profile-photo.jpeg",
-			"width": 400,
-			"height": 400
-		},
 		"url": "https://blog.cloudflare.com/author/erwin/",
 		"sameAs": [
 			"https://twitter.com/evanderkoogh"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/developer-spotlight-jacob-hands-tritails/",
 	"datePublished": "2021-11-18T14:00:05.000Z",
 	"dateModified": "2022-05-05T14:07:08.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/11/image1-47.png",
-		"width": 1800,
-		"height": 1012
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/11/image1-47.png",
 	"keywords": "Full Stack Week, Cloudflare Workers, Developer Spotlight",
-	"description": "Jacob operates TriTails Premium Beef, an online store for meat, a very perishable good. So he has a unique set of challenges with shipping. As a developer, he turned to Airtable and Cloudflare Workers to automate large parts of the process to be able to deal with their rapid growth.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Jacob operates TriTails Premium Beef, an online store for meat, a very perishable good. So he has a unique set of challenges with shipping. As a developer, he turned to Airtable and Cloudflare Workers to automate large parts of the process to be able to deal with their rapid growth."
 }

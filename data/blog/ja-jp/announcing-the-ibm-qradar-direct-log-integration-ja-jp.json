@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Tanushree Sharma",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/09/IMG_1328-1.jpg",
-			"width": 1895,
-			"height": 1874
-		},
 		"url": "https://blog.cloudflare.com/author/tanushree/",
 		"sameAs": [
 			"https://twitter.com/TanushreeS5"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/ja-jp/announcing-the-ibm-qradar-direct-log-integration-ja-jp/",
 	"datePublished": "2022-03-14T12:59:00.000Z",
 	"dateModified": "2022-05-18T22:35:35.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/05/image2-12-4.png",
-		"width": 1800,
-		"height": 1013
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/05/image2-12-4.png",
 	"keywords": "セキュリティウィーク, パートナー, 日本語, 分析",
-	"description": "Cloudflareのお客様が、ログをIBM Security QRadar SIEMへ直接プッシュできるようになったことを発表でき、嬉しく思います。この直接統合で、クラウドストレージを介する必要がなくなるため、CloudflareとQRadar SIEMのお客様にとってはコスト削減と迅速なログ配信が実現します",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Cloudflareのお客様が、ログをIBM Security QRadar SIEMへ直接プッシュできるようになったことを発表でき、嬉しく思います。この直接統合で、クラウドストレージを介する必要がなくなるため、CloudflareとQRadar SIEMのお客様にとってはコスト削減と迅速なログ配信が実現します"
 }

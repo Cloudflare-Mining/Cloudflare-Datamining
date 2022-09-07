@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Greg McKeon",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/05/Screen-Shot-2022-05-10-at-2.50.56-PM.png",
-			"width": 692,
-			"height": 662
-		},
 		"url": "https://blog.cloudflare.com/author/greg/",
 		"sameAs": [
 			"https://twitter.com/wegmckeon"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/ja-jp/r2-open-beta-ja-jp/",
 	"datePublished": "2022-05-11T13:01:00.000Z",
 	"dateModified": "2022-08-19T09:43:10.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/05/image1-20-5.png",
-		"width": 1801,
-		"height": 1013
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/05/image1-20-5.png",
 	"keywords": "Platform Week (JP), Cloudflare R2 (JP), 製品ニュース (JP), 開発者 (JP)",
-	"description": "R2オブジェクトストレージは現在データ版で、すべてのお客様に試験展開していただけます",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "R2オブジェクトストレージは現在データ版で、すべてのお客様に試験展開していただけます"
 }

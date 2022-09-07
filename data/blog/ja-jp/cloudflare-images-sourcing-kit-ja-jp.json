@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Paulo Costa",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/04/ProfilePicture_square_100px-1.jpg",
-			"width": 100,
-			"height": 100
-		},
 		"url": "https://blog.cloudflare.com/author/paulo/",
 		"sameAs": [
 			"https://twitter.com/biscadosnove"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/ja-jp/cloudflare-images-sourcing-kit-ja-jp/",
 	"datePublished": "2022-05-13T12:59:00.000Z",
 	"dateModified": "2022-05-17T06:58:01.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/05/image8-2-1.png",
-		"width": 1801,
-		"height": 1013
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/05/image8-2-1.png",
 	"keywords": "Platform Week (JP), 製品ニュース (JP), Cloudflare Images (JP), 開発者 (JP)",
-	"description": "本日は、Cloudflare Imagesに移行したいオブジェクトを含む1つ以上のソースを定義できるSourcing Kitをご紹介します",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "本日は、Cloudflare Imagesに移行したいオブジェクトを含む1つ以上のソースを定義できるSourcing Kitをご紹介します"
 }

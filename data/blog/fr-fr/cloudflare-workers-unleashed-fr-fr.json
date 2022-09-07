@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Kenton Varda",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/08/avatar-github.jpg",
-			"width": 460,
-			"height": 460
-		},
 		"url": "https://blog.cloudflare.com/author/kenton-varda/",
 		"sameAs": [
 			"https://twitter.com/kentonvarda"
@@ -31,9 +12,5 @@
 	"dateModified": "2021-01-22T01:26:34.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2019/05/Workers-General-5.png",
 	"keywords": "Français, Développeurs, Cloudflare Workers (FR), Sans serveur, JavaScript (FR), Actualités produits",
-	"description": "Il y a exactement un an aujourd&#x27;hui, Cloudflare m&#x27;a donné une mission : Faites en sorte que les gens puissent exécuter du code dans la périphérie de Cloudflare.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Il y a exactement un an aujourd&#x27;hui, Cloudflare m&#x27;a donné une mission : Faites en sorte que les gens puissent exécuter du code dans la périphérie de Cloudflare."
 }

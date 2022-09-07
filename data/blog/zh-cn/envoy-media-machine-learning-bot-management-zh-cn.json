@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Ryan Marlow (Guest Blogger)",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/03/Ryan-Marlow.jpg",
-			"width": 200,
-			"height": 200
-		},
 		"url": "https://blog.cloudflare.com/author/ryan-marlow/",
 		"sameAs": [
 			"https://twitter.com/MyanRarlow"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/envoy-media-machine-learning-bot-management-zh-cn/",
 	"datePublished": "2022-03-16T12:59:00.000Z",
 	"dateModified": "2022-06-13T14:03:51.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/06/image1-54-1.png",
-		"width": 1800,
-		"height": 1013
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/06/image1-54-1.png",
 	"keywords": "Security Week (CN), Bot Management (CN), 机器学习, 简体中文 (CN)",
-	"description": "我叫 Ryan Marlow，是 Envoy Media Group 的首席技术官。我很高兴与您分享关于 Envoy、Cloudflare 的故事，以及我们是如何使用自动程序管理来监控自动化流量的",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "我叫 Ryan Marlow，是 Envoy Media Group 的首席技术官。我很高兴与您分享关于 Envoy、Cloudflare 的故事，以及我们是如何使用自动程序管理来监控自动化流量的"
 }

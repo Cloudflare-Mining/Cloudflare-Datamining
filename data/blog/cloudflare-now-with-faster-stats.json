@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Matthew Prince",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
-			"width": 1196,
-			"height": 1190
-		},
 		"url": "https://blog.cloudflare.com/author/matthew-prince/",
 		"sameAs": [
 			"https://twitter.com/eastdakota"
@@ -29,10 +10,7 @@
 	"url": "https://blog.cloudflare.com/cloudflare-now-with-faster-stats/",
 	"datePublished": "2010-12-17T19:14:00.000Z",
 	"dateModified": "2018-01-14T21:46:00.000Z",
+	"image": null,
 	"keywords": "Logs, Project Honey Pot, Our History",
-	"description": "We generate a lot of logs. To give you some sense, across the CloudFlare network every minute we write a half a Gigabyte of just log data. Collecting, reducing, sorting, and displaying that data back to you is one of the biggest challenges of running a service like CloudFlare.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "We generate a lot of logs. To give you some sense, across the CloudFlare network every minute we write a half a Gigabyte of just log data. Collecting, reducing, sorting, and displaying that data back to you is one of the biggest challenges of running a service like CloudFlare."
 }

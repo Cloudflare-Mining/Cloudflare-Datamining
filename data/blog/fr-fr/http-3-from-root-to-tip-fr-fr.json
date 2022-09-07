@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Lucas Pardue",
-		"image": "http://blog.cloudflare.com/content/images/2018/12/Lucas---KIN01111.jpg",
 		"url": "https://blog.cloudflare.com/author/lucas/",
 		"sameAs": [
 			"https://twitter.com/SimmerVigor"
@@ -26,9 +12,5 @@
 	"dateModified": "2021-01-22T01:26:19.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2019/04/layer-cake-diagram-copy-2@2x-1.png",
 	"keywords": "Sécurité, QUIC (FR), TLS (FR), Français",
-	"description": "HTTP est le protocole d&#x27;application sur lequel repose le Web. Il a vu le jour en 1991 sous le nom de protocole HTTP/0.9 et, en 1999, a évolué vers HTTP/1.1, qui a été normalisé par l&#x27;IETF (Internet Engineering Task Force).",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "HTTP est le protocole d&#x27;application sur lequel repose le Web. Il a vu le jour en 1991 sous le nom de protocole HTTP/0.9 et, en 1999, a évolué vers HTTP/1.1, qui a été normalisé par l&#x27;IETF (Internet Engineering Task Force)."
 }

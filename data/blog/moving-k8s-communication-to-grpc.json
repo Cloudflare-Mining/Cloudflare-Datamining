@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Alex Fattouche",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/09/portrait.png",
-			"width": 665,
-			"height": 704
-		},
 		"url": "https://blog.cloudflare.com/author/alex-fattouche/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/moving-k8s-communication-to-grpc/",
 	"datePublished": "2021-03-20T14:00:00.000Z",
 	"dateModified": "2021-03-22T09:30:02.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/03/Group.png",
-		"width": 1571,
-		"height": 839
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/03/Group.png",
 	"keywords": "DNS, gRPC, Kubernetes, HTTP2, QUIC",
-	"description": "How we use gRPC in combination with Kubernetes to improve the performance and usability of internal APIs.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "How we use gRPC in combination with Kubernetes to improve the performance and usability of internal APIs."
 }

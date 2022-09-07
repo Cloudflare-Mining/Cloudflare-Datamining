@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Vlad Krasnov",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/165e069.jpg",
 		"url": "https://blog.cloudflare.com/author/vlad-krasnov/",
 		"sameAs": []
 	},
@@ -24,9 +10,5 @@
 	"dateModified": "2018-08-27T21:21:55.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/08/6129093355_9434beed25_z.jpg",
 	"keywords": "HTTP2, TLS, Security, NGINX",
-	"description": "If you have experienced HTTP/2 for yourself, you are probably aware of the visible performance gains possible with HTTP/2 due to features like stream multiplexing, explicit stream dependencies, and Server Push.\n\n",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "If you have experienced HTTP/2 for yourself, you are probably aware of the visible performance gains possible with HTTP/2 due to features like stream multiplexing, explicit stream dependencies, and Server Push.\n\n"
 }

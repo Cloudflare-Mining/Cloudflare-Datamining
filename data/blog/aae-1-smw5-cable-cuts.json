@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "David Belson",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/01/headshot-grayscale-crop.jpeg",
-			"width": 526,
-			"height": 480
-		},
 		"url": "https://blog.cloudflare.com/author/david-belson/",
 		"sameAs": [
 			"https://twitter.com/dbelson"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/aae-1-smw5-cable-cuts/",
 	"datePublished": "2022-06-10T10:01:29.000Z",
 	"dateModified": "2022-06-10T10:01:29.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/06/image2-7.png",
-		"width": 1200,
-		"height": 675
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/06/image2-7.png",
 	"keywords": "Cloudflare Radar, Internet Traffic, Outage, Africa, Asia",
-	"description": "On June 7, the Africa-Asia-Europe-1 (AAE-1) and SEA-ME-WE-5 (SMW-5) submarine cables suffered cable cuts, impactingInternet connectivity for millions of Internet users across multiple countries in the Middle East, Africa, and Asia",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "On June 7, the Africa-Asia-Europe-1 (AAE-1) and SEA-ME-WE-5 (SMW-5) submarine cables suffered cable cuts, impactingInternet connectivity for millions of Internet users across multiple countries in the Middle East, Africa, and Asia"
 }

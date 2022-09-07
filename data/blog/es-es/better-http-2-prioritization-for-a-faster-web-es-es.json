@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Patrick Meenan",
-		"image": "http://blog.cloudflare.com/content/images/2018/08/PatPerfCalendar.jpg",
 		"url": "https://blog.cloudflare.com/author/patrick-meenan/",
 		"sameAs": [
 			"https://www.webpagetest.org/",
@@ -25,16 +11,7 @@
 	"url": "https://blog.cloudflare.com/es-es/better-http-2-prioritization-for-a-faster-web-es-es/",
 	"datePublished": "2019-05-14T13:00:00.000Z",
 	"dateModified": "2021-01-21T19:06:57.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2019/10/image16-2.png",
-		"width": 1600,
-		"height": 1122
-	},
+	"image": "https://blog.cloudflare.com/content/images/2019/10/image16-2.png",
 	"keywords": "Semana de la Velocidad, Velocidad y confiabilidad, Español, Noticias de productos, HTTP2 (ES)",
-	"description": "HTTP/2 prometió una web mucho más rápida y Cloudflare lanzó el acceso HTTP/2 para todos nuestros clientes hace mucho, mucho tiempo. Pero una característica de HTTP/2, la priorización, no cumplió con las expectativas. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "HTTP/2 prometió una web mucho más rápida y Cloudflare lanzó el acceso HTTP/2 para todos nuestros clientes hace mucho, mucho tiempo. Pero una característica de HTTP/2, la priorización, no cumplió con las expectativas. "
 }

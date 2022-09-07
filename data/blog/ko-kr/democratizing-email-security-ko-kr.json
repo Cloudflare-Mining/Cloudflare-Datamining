@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Patrick R. Donahue",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/me0-1.png",
-			"width": 300,
-			"height": 291
-		},
 		"url": "https://blog.cloudflare.com/author/patrick/",
 		"sameAs": [
 			"https://www.cloudflare.com",
@@ -30,16 +11,7 @@
 	"url": "https://blog.cloudflare.com/ko-kr/democratizing-email-security-ko-kr/",
 	"datePublished": "2022-03-14T12:59:00.000Z",
 	"dateModified": "2022-06-24T09:57:35.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/06/image1-10-1.png",
-		"width": 1800,
-		"height": 1013
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/06/image1-10-1.png",
 	"keywords": "Security Week (KO), 이메일, 보안, Zero Trust (KO), 피싱, 멀웨어, Cloudflare Zero Trust (KO), 한국어",
-	"description": "Area 1 인수가 완료되면, 2022년 2분기 초에 예상하는 대로 모든 유료 셀프 서비스 요금제에 추가 비용 없이 이메일 보안 기술에 대한 액세스 권한을 부여할 계획입니다",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Area 1 인수가 완료되면, 2022년 2분기 초에 예상하는 대로 모든 유료 셀프 서비스 요금제에 추가 비용 없이 이메일 보안 기술에 대한 액세스 권한을 부여할 계획입니다"
 }

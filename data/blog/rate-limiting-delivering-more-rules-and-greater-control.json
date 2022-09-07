@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Alex Cruz Farmer",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/12/_DSC4744--2-.jpg",
-			"width": 600,
-			"height": 600
-		},
 		"url": "https://blog.cloudflare.com/author/alex-cruz-farmer/",
 		"sameAs": [
 			"https://twitter.com/alexcf"
@@ -31,9 +12,5 @@
 	"dateModified": "2018-05-22T23:46:46.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/05/Screen-Shot-2018-05-21-at-10.36.27-AM-1.png",
 	"keywords": "Rate Limiting, Product News, Reliability, Speed & Reliability, Attacks, DDoS, Mitigation",
-	"description": "With more and more platforms taking the necessary precautions against DDoS attacks like integrating DDoS mitigation services and increasing bandwidth at weak points, Layer 3 and 4 attacks are just not as effective anymore. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "With more and more platforms taking the necessary precautions against DDoS attacks like integrating DDoS mitigation services and increasing bandwidth at weak points, Layer 3 and 4 attacks are just not as effective anymore. "
 }

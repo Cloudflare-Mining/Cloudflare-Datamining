@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Rita Kozlov",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/05/Rita-Kozlov.jpeg",
-			"width": 200,
-			"height": 200
-		},
 		"url": "https://blog.cloudflare.com/author/rita/",
 		"sameAs": [
 			"https://twitter.com/ritakozlov_"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/introducing-htmlrewriter/",
 	"datePublished": "2019-11-28T08:00:00.000Z",
 	"dateModified": "2019-11-28T10:02:03.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2019/11/cloudflare-workers-htmlrewriter.png",
-		"width": 1999,
-		"height": 1025
-	},
+	"image": "https://blog.cloudflare.com/content/images/2019/11/cloudflare-workers-htmlrewriter.png",
 	"keywords": "Cloudflare Workers, Workers Sites, Serverless, JAMstack, JavaScript, Product News",
-	"description": "The HTMLRewriter can help solve two big problems web developers face today: making changes to the HTML, when they are hard to make at the server level, and making it possible for HTML to live on the edge, closer to the user — without sacrificing dynamic functionality.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "The HTMLRewriter can help solve two big problems web developers face today: making changes to the HTML, when they are hard to make at the server level, and making it possible for HTML to live on the edge, closer to the user — without sacrificing dynamic functionality."
 }

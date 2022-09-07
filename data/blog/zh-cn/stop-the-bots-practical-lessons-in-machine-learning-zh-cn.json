@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Nikon Rasumov",
-		"image": "http://blog.cloudflare.com/content/images/2019/03/Nikon-photo.jpg",
 		"url": "https://blog.cloudflare.com/author/nikon/",
 		"sameAs": []
 	},
@@ -22,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/stop-the-bots-practical-lessons-in-machine-learning-zh-cn/",
 	"datePublished": "2019-02-20T15:14:00.000Z",
 	"dateModified": "2021-01-28T18:51:06.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2019/11/Stop-the-Bots-2.png",
-		"width": 1999,
-		"height": 1345
-	},
+	"image": "https://blog.cloudflare.com/content/images/2019/11/Stop-the-Bots-2.png",
 	"keywords": "攻击, 安全, 简体中文 (CN)",
-	"description": "由Bot驱动的凭证填充是现代互联网上的一大祸害。这些攻击会试图登录并接管一个用户的帐户，使用大量字典单词和以前被盗的帐户凭证攻击密码表单，其目的是执行欺诈性交易、窃取敏感数据和损害个人信息。",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "由Bot驱动的凭证填充是现代互联网上的一大祸害。这些攻击会试图登录并接管一个用户的帐户，使用大量字典单词和以前被盗的帐户凭证攻击密码表单，其目的是执行欺诈性交易、窃取敏感数据和损害个人信息。"
 }

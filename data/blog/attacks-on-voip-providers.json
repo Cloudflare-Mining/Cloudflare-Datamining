@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Omer Yoachimik",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/Omer-1.png",
-			"width": 773,
-			"height": 653
-		},
 		"url": "https://blog.cloudflare.com/author/omer/",
 		"sameAs": [
 			"https://twitter.com/OmerYoahimik"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/attacks-on-voip-providers/",
 	"datePublished": "2021-10-01T00:05:42.000Z",
 	"dateModified": "2022-07-21T17:10:12.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/10/3A3A8D3C-19A6-4630-9A4C-476469801D2C.png",
-		"width": 1360,
-		"height": 772
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/10/3A3A8D3C-19A6-4630-9A4C-476469801D2C.png",
 	"keywords": "Device Security, Security, DDoS, VoIP, Ransom DDoS, Trends",
-	"description": "Over the past month, multiple Voice over Internet Protocol (VoIP) providers have been targeted by Distributed Denial of Service (DDoS) attacks from entities claiming to be REvil. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Over the past month, multiple Voice over Internet Protocol (VoIP) providers have been targeted by Distributed Denial of Service (DDoS) attacks from entities claiming to be REvil. "
 }

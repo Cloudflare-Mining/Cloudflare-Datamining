@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "John Graham-Cumming",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
 		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
 		"sameAs": [
 			"https://twitter.com/jgrahamc"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/this-holidays-biggest-online-shopping-day-was-black-friday/",
 	"datePublished": "2019-12-24T18:04:41.000Z",
 	"dateModified": "2020-02-05T18:28:12.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2019/12/checkout-1.png",
-		"width": 1730,
-		"height": 1454
-	},
+	"image": "https://blog.cloudflare.com/content/images/2019/12/checkout-1.png",
 	"keywords": "eCommerce, Speed & Reliability",
-	"description": "What’s the biggest day of the holiday season for holiday shopping? Black Friday, the day after US Thanksgiving, has been embraced globally as the day retail stores announce their sales.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "What’s the biggest day of the holiday season for holiday shopping? Black Friday, the day after US Thanksgiving, has been embraced globally as the day retail stores announce their sales."
 }

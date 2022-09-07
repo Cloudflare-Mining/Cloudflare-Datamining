@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Mari Galicer",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/02/Screen-Shot-2022-01-07-at-1.06.44-PM.png",
-			"width": 1060,
-			"height": 1060
-		},
 		"url": "https://blog.cloudflare.com/author/mari/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/geoexit-improving-warp-user-experience-larger-network/",
 	"datePublished": "2022-08-06T16:15:03.000Z",
 	"dateModified": "2022-08-06T16:15:03.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/08/WARP-Geoexit-1.png",
-		"width": 1200,
-		"height": 675
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/08/WARP-Geoexit-1.png",
 	"keywords": "WARP, Privacy, 1.1.1.1, Security",
-	"description": "We’re announcing two major improvements to our 1.1.1.1 + WARP apps",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "We’re announcing two major improvements to our 1.1.1.1 + WARP apps"
 }

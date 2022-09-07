@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Brian Batraski",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/12/brian.jpg",
-			"width": 600,
-			"height": 600
-		},
 		"url": "https://blog.cloudflare.com/author/brian/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/load-balancing-with-weighted-pools-zh-cn/",
 	"datePublished": "2022-08-02T13:00:00.000Z",
 	"dateModified": "2022-08-19T09:55:16.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/08/image1-1-1.png",
-		"width": 1801,
-		"height": 1014
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/08/image1-1-1.png",
 	"keywords": "负载平衡, 加权池, 简体中文 (CN)",
-	"description": "今天，我们很高兴地宣布为我们的负载平衡器推出大家盼望已久的功能 – 加权池",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "今天，我们很高兴地宣布为我们的负载平衡器推出大家盼望已久的功能 – 加权池"
 }

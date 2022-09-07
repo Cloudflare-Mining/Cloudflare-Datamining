@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Zack Bloom",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/YZCINbF6.jpg",
 		"url": "https://blog.cloudflare.com/author/zack-bloom/",
 		"sameAs": []
 	},
@@ -24,9 +10,5 @@
 	"dateModified": "2021-01-22T03:40:21.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2019/04/no-VM-@3x-2.png",
 	"keywords": "Français, La programmation, Cloudflare Workers (FR), Sans serveur",
-	"description": "Cloudflare dispose d&#x27;une plate-forme de cloud computing appeléeWorkers. Contrairement à toutes les autres plates-formes de cloud computing que je connais, elle n&#x27;utilise pas de conteneurs ou de machines virtuelles. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Cloudflare dispose d&#x27;une plate-forme de cloud computing appeléeWorkers. Contrairement à toutes les autres plates-formes de cloud computing que je connais, elle n&#x27;utilise pas de conteneurs ou de machines virtuelles. "
 }

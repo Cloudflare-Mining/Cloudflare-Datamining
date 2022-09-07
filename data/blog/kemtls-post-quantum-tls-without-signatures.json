@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Sofía Celi",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/01/me.jpg",
-			"width": 192,
-			"height": 192
-		},
 		"url": "https://blog.cloudflare.com/author/sofia/",
 		"sameAs": [
 			"http://claucece.github.io/",
@@ -30,16 +11,7 @@
 	"url": "https://blog.cloudflare.com/kemtls-post-quantum-tls-without-signatures/",
 	"datePublished": "2021-01-15T12:00:00.000Z",
 	"dateModified": "2021-09-20T17:50:24.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/01/KEMTLS--Post-quantum-TLS-without-signatures-blog-home.png",
-		"width": 1314,
-		"height": 724
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/01/KEMTLS--Post-quantum-TLS-without-signatures-blog-home.png",
 	"keywords": "Cryptography, TLS, KEMs, Research, Post-Quantum",
-	"description": "The TLS 1.3 protocol has been around for quite some time, but it will be broken once quantum computers arrive. What can we do? In this blog post, we will examine a technique for achieving full post-quantum security for TLS 1.3 in the face of quantum computers: KEMTLS.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "The TLS 1.3 protocol has been around for quite some time, but it will be broken once quantum computers arrive. What can we do? In this blog post, we will examine a technique for achieving full post-quantum security for TLS 1.3 in the face of quantum computers: KEMTLS."
 }

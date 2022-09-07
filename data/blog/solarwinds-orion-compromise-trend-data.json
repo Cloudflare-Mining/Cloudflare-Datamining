@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Malavika Balachandran Tadeusz",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/12/IMG_7208Malavika-Balachandran-Tadeusz.png",
-			"width": 200,
-			"height": 200
-		},
 		"url": "https://blog.cloudflare.com/author/malavika/",
 		"sameAs": [
 			"https://twitter.com/malavikabala"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/solarwinds-orion-compromise-trend-data/",
 	"datePublished": "2020-12-16T17:00:41.000Z",
 	"dateModified": "2022-04-26T23:19:01.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2020/12/image5-25.png",
-		"width": 2000,
-		"height": 949
-	},
+	"image": "http://blog.cloudflare.com/content/images/2020/12/image5-25.png",
 	"keywords": "Cloudflare Zero Trust, Cloudflare Gateway, Zero Trust, Security, Trends",
-	"description": "Analyzing SUNBURST malware activity seen on Cloudflare’s public DNS resolver.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Analyzing SUNBURST malware activity seen on Cloudflare’s public DNS resolver."
 }

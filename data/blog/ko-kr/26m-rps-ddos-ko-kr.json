@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Omer Yoachimik",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/Omer-1.png",
-			"width": 773,
-			"height": 653
-		},
 		"url": "https://blog.cloudflare.com/author/omer/",
 		"sameAs": [
 			"https://twitter.com/OmerYoahimik"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/ko-kr/26m-rps-ddos-ko-kr/",
 	"datePublished": "2022-06-14T12:56:00.000Z",
 	"dateModified": "2022-07-08T02:06:23.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/07/image1-2-1-1.png",
-		"width": 1830,
-		"height": 850
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/07/image1-2-1-1.png",
 	"keywords": "DDoS (KO), 봇넷, 공격, 보안",
-	"description": "지난주에 Cloudflare는 역대 최대 규모의 HTTPS DDoS 공격인 26M rps DDoS 공격을 자동으로 감지하고 완화했습니다",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "지난주에 Cloudflare는 역대 최대 규모의 HTTPS DDoS 공격인 26M rps DDoS 공격을 자동으로 감지하고 완화했습니다"
 }

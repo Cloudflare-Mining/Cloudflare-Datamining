@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Evan Johnson",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/11/Screen-Shot-2018-08-13-at-11.11.11-AM.png",
-			"width": 600,
-			"height": 600
-		},
 		"url": "https://blog.cloudflare.com/author/evan-johnson/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/dogfooding-from-home/",
 	"datePublished": "2020-03-28T12:00:00.000Z",
 	"dateModified": "2020-05-27T21:22:24.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2020/03/Dogfooding-access@2x-1.png",
-		"width": 2000,
-		"height": 1141
-	},
+	"image": "https://blog.cloudflare.com/content/images/2020/03/Dogfooding-access@2x-1.png",
 	"keywords": "Cloudflare Access, VPN, Cloudflare Zero Trust",
-	"description": "Rewind to 2015. Back then, as with many other companies, all of Cloudflare’s internally-hosted applications were reached via a hardware-based VPN. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Rewind to 2015. Back then, as with many other companies, all of Cloudflare’s internally-hosted applications were reached via a hardware-based VPN. "
 }

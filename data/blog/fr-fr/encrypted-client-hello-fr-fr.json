@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Christopher Patton",
-		"image": "http://blog.cloudflare.com/content/images/2018/09/0-8.jpg",
 		"url": "https://blog.cloudflare.com/author/christopher-patton/",
 		"sameAs": []
 	},
@@ -22,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/fr-fr/encrypted-client-hello-fr-fr/",
 	"datePublished": "2020-12-08T12:43:36.000Z",
 	"dateModified": "2021-01-27T02:14:13.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2020/12/Good-bye-ESNI--hello-ECH-blog-header-10.png",
-		"width": 1200,
-		"height": 569
-	},
+	"image": "http://blog.cloudflare.com/content/images/2020/12/Good-bye-ESNI--hello-ECH-blog-header-10.png",
 	"keywords": "Français, Semaine de la confidentialité, Confidentialité",
-	"description": "Une étude approfondie de l’extension Encrypted Client Hello, une norme de chiffrement des paramètres sensibles à la confidentialité envoyés par le client dans le cadre de la négociation TLS.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Une étude approfondie de l’extension Encrypted Client Hello, une norme de chiffrement des paramètres sensibles à la confidentialité envoyés par le client dans le cadre de la négociation TLS."
 }

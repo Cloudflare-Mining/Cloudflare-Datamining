@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Kristian Freeman",
-		"image": "http://blog.cloudflare.com/content/images/2019/05/2fGb07-c_400x400.jpg",
 		"url": "https://blog.cloudflare.com/author/kristian/",
 		"sameAs": [
 			"https://www.signalnerve.com",
@@ -25,16 +11,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/get-started-web3-zh-cn/",
 	"datePublished": "2021-10-01T12:59:00.000Z",
 	"dateModified": "2021-10-14T22:57:47.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/10/Solar-7.png",
-		"width": 1200,
-		"height": 675
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/10/Solar-7.png",
 	"keywords": "Web3 (CN), Cloudflare Pages (CN)), 简体中文 (CN), 生日周 (CN)",
-	"description": "了解如何使用 Cloudflare 的新开源模板构建 Web3 应用。",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "了解如何使用 Cloudflare 的新开源模板构建 Web3 应用。"
 }

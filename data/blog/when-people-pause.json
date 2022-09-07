@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "John Graham-Cumming",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
 		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
 		"sameAs": [
 			"https://twitter.com/jgrahamc"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/when-people-pause/",
 	"datePublished": "2020-05-01T11:00:00.000Z",
 	"dateModified": "2020-06-26T20:37:43.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2020/04/facebook-Linked_Image___Screenshot-2020-04-29-at-11.33.46.png",
-		"width": 2447,
-		"height": 1281
-	},
+	"image": "https://blog.cloudflare.com/content/images/2020/04/facebook-Linked_Image___Screenshot-2020-04-29-at-11.33.46.png",
 	"keywords": "Internet Performance, Internet Usage, Trends",
-	"description": "As human behaviour has changed in response to the pandemic, it&#x27;s left a mark on the charts that network operators look at day in, day out to ensure that their networks are running correctly.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "As human behaviour has changed in response to the pandemic, it&#x27;s left a mark on the charts that network operators look at day in, day out to ensure that their networks are running correctly."
 }

@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Alessandro Ghedini",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/09/Ii4TgsoTda2layE131Dk_1204a20b3d1d96bba523a6a2a5fa3cd73bd4fe59240a27ad6eb8c064c6792446.jpg",
-			"width": 600,
-			"height": 600
-		},
 		"url": "https://blog.cloudflare.com/author/alessandro-ghedini/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/ko-kr/experiment-with-http-3-using-nginx-and-quiche-ko-kr/",
 	"datePublished": "2019-10-17T14:00:00.000Z",
 	"dateModified": "2021-01-21T21:03:11.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2019/12/Screen-Shot-2019-10-16-at-3.42.02-PM-1.png",
-		"width": 1112,
-		"height": 564
-	},
+	"image": "https://blog.cloudflare.com/content/images/2019/12/Screen-Shot-2019-10-16-at-3.42.02-PM-1.png",
 	"keywords": "한국어, 개발자, NGINX (KO), QUIC (KO), HTTP3 (KO)",
-	"description": "얼마 전에 HTTP/3 을 저희 엣지 네트워크에서 이용 가능함을 발표한 바 있습니다. HTTP/3은 인터넷의 보안과 성능을 향상시키도록 만들어진 HTTP의 새로운 버전입니다. 이제 여러분의 클라우드플레어 존에서 HTTP/3 을 켜 두고 Chrome Canary나 curl 과 같은 클라이언트를 사용하여 시험해 볼 수 있습니다.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "얼마 전에 HTTP/3 을 저희 엣지 네트워크에서 이용 가능함을 발표한 바 있습니다. HTTP/3은 인터넷의 보안과 성능을 향상시키도록 만들어진 HTTP의 새로운 버전입니다. 이제 여러분의 클라우드플레어 존에서 HTTP/3 을 켜 두고 Chrome Canary나 curl 과 같은 클라이언트를 사용하여 시험해 볼 수 있습니다."
 }

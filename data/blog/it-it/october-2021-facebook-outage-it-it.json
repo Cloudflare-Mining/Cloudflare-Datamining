@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Celso Martinho",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/08/Celso-Martinho.png",
-			"width": 486,
-			"height": 488
-		},
 		"url": "https://blog.cloudflare.com/author/celso/",
 		"sameAs": [
 			"https://celso.io/",
@@ -30,16 +11,7 @@
 	"url": "https://blog.cloudflare.com/it-it/october-2021-facebook-outage-it-it/",
 	"datePublished": "2021-10-04T21:08:00.000Z",
 	"dateModified": "2021-10-26T21:48:32.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/10/Screen-Shot-2021-10-26-at-2.44.18-PM-15.png",
-		"width": 896,
-		"height": 466
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/10/Screen-Shot-2021-10-26-at-2.44.18-PM-15.png",
 	"keywords": "DNS (IT), Italiano",
-	"description": "“Facebook non può essere down, vero?”, abbiamo pensato per un secondo.\nOggi alle 15:51 UTC, abbiamo aperto un incidente interno intitolato &quot;Ricerca DNS di Facebook che restituisce SERVFAIL&quot; perché eravamo preoccupati che qualcosa non andasse con il nostro resolver DNS 1.1.1.1.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "“Facebook non può essere down, vero?”, abbiamo pensato per un secondo.\nOggi alle 15:51 UTC, abbiamo aperto un incidente interno intitolato &quot;Ricerca DNS di Facebook che restituisce SERVFAIL&quot; perché eravamo preoccupati che qualcosa non andasse con il nostro resolver DNS 1.1.1.1."
 }

@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Matthew Prince",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
-			"width": 1196,
-			"height": 1190
-		},
 		"url": "https://blog.cloudflare.com/author/matthew-prince/",
 		"sameAs": [
 			"https://twitter.com/eastdakota"
@@ -31,9 +12,5 @@
 	"dateModified": "2018-08-10T20:25:50.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/08/wp_bruteforce_opt1.png.scaled500.png",
 	"keywords": "WordPress, Attacks, Reliability",
-	"description": "There is currently a significant attack being launched at a large number of WordPress blogs across the Internet. The attacker is brute force attacking the WordPress administrative portals, using the username &quot;admin&quot; and trying thousands of passwords. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "There is currently a significant attack being launched at a large number of WordPress blogs across the Internet. The attacker is brute force attacking the WordPress administrative portals, using the username &quot;admin&quot; and trying thousands of passwords. "
 }

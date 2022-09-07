@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Marek Majkowski",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/b5967d6c687939594adb6992723d0529.jpeg",
 		"url": "https://blog.cloudflare.com/author/marek-majkowski/",
 		"sameAs": [
 			"https://twitter.com/majek04"
@@ -26,9 +12,5 @@
 	"dateModified": "2020-08-11T17:25:37.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/03/3845353725_7d7c624f34_z-1.jpg",
 	"keywords": "TTL, TCP, IPv4, IPv6, eBPF",
-	"description": "A friend gave me an interesting task: extract IP TTL values from TCP connections established by a userspace program. This seemingly simple task quickly exploded into an epic Linux system programming hack. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "A friend gave me an interesting task: extract IP TTL values from TCP connections established by a userspace program. This seemingly simple task quickly exploded into an epic Linux system programming hack. "
 }

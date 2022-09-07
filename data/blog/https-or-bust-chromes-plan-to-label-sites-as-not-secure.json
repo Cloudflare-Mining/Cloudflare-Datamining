@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Patrick R. Donahue",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/me0-1.png",
-			"width": 300,
-			"height": 291
-		},
 		"url": "https://blog.cloudflare.com/author/patrick/",
 		"sameAs": [
 			"https://www.cloudflare.com",
@@ -32,9 +13,5 @@
 	"dateModified": "2021-12-21T17:27:38.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/02/eventual-treatment.png",
 	"keywords": "HTTPS, SSL, Chrome, Security",
-	"description": "Google just announced that beginning in July 2018, with the release of Chrome 68, web pages loaded without HTTPS will be marked as “not secure”.  More than half of web visitors will soon see this warning when visiting unencrypted HTTP sites.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Google just announced that beginning in July 2018, with the release of Chrome 68, web pages loaded without HTTPS will be marked as “not secure”.  More than half of web visitors will soon see this warning when visiting unencrypted HTTP sites."
 }

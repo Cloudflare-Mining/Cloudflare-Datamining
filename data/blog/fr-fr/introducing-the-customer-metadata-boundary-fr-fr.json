@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Jon Levine",
-		"image": "http://blog.cloudflare.com/content/images/2018/04/prof-crop.jpg",
 		"url": "https://blog.cloudflare.com/author/jpl/",
 		"sameAs": [
 			"https://twitter.com/jplevine"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/fr-fr/introducing-the-customer-metadata-boundary-fr-fr/",
 	"datePublished": "2021-12-07T13:59:00.000Z",
 	"dateModified": "2022-06-20T16:48:52.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/06/Screenshot-2022-06-20-at-17.39.46.png",
-		"width": 832,
-		"height": 720
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/06/Screenshot-2022-06-20-at-17.39.46.png",
 	"keywords": "Confidentialité, Conformité, Juridique, CIO Week (FR), Français",
-	"description": "Nous sommes heureux de vous présenter aujourd&#x27;hui notre fonctionnalité d&#x27;isolement géographique des métadonnées du client, qui étend les possibilités de la Data Localisation Suite dans l&#x27;objectif de s&#x27;assurer que les métadonnées du trafic des utilisateurs finaux d&#x27;un client demeurent au sein de l&#x27;UE",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Nous sommes heureux de vous présenter aujourd&#x27;hui notre fonctionnalité d&#x27;isolement géographique des métadonnées du client, qui étend les possibilités de la Data Localisation Suite dans l&#x27;objectif de s&#x27;assurer que les métadonnées du trafic des utilisateurs finaux d&#x27;un client demeurent au sein de l&#x27;UE"
 }

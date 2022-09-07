@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Oliver Yu",
-		"image": "http://blog.cloudflare.com/content/images/2017/09/387030.jpg",
 		"url": "https://blog.cloudflare.com/author/oliver/",
 		"sameAs": []
 	},
@@ -24,9 +10,5 @@
 	"dateModified": "2018-08-29T02:06:32.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2017/10/Screen-Shot-2017-10-18-at-10.00.07-AM.png",
 	"keywords": "Product News, Birthday Week, Cloudflare Stream, Video, Speed & Reliability",
-	"description": "Every day, close to 1 billion people watch video through Cloudflare. That’s 100 petabytes of video every month. Last year, video made up 73% of all internet traffic, which is why earlier today we announced Cloudflare Stream.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Every day, close to 1 billion people watch video through Cloudflare. That’s 100 petabytes of video every month. Last year, video made up 73% of all internet traffic, which is why earlier today we announced Cloudflare Stream."
 }

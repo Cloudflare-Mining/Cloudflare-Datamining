@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Tom Brightbill",
-		"image": "http://blog.cloudflare.com/content/images/2019/03/tomb.jpg",
 		"url": "https://blog.cloudflare.com/author/tom-brightbill/",
 		"sameAs": []
 	},
@@ -22,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/ja-jp/bringing-your-own-ips-to-cloudflare-byoip-ja-jp/",
 	"datePublished": "2020-07-30T15:00:00.000Z",
 	"dateModified": "2021-01-21T18:48:45.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2020/11/Screen-Shot-2020-07-29-at-3.18.59-PM.png",
-		"width": 1502,
-		"height": 808
-	},
+	"image": "http://blog.cloudflare.com/content/images/2020/11/Screen-Shot-2020-07-29-at-3.18.59-PM.png",
 	"keywords": "製品ニュース (JP), 日本語, DNS (JP), Magic Transit (JP), Spectrum (JP), Cloudflare Spectrum (JP)",
-	"description": "本日、Bring Your Own IP (BYOIP）がレイヤー７製品、およびSpectrum、Magic Transitサービスで一般利用できるようになったことを発表いたします。BYOIPを設定する時、Cloudflareエッジはお客様ご自身のIPプレフィックスを通知し、そのプレフィックスがレイヤー７サービス、Spectrum",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "本日、Bring Your Own IP (BYOIP）がレイヤー７製品、およびSpectrum、Magic Transitサービスで一般利用できるようになったことを発表いたします。BYOIPを設定する時、Cloudflareエッジはお客様ご自身のIPプレフィックスを通知し、そのプレフィックスがレイヤー７サービス、Spectrum"
 }

@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Michael Tremante",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/url-3.jpg",
 		"url": "https://blog.cloudflare.com/author/michael-tremante/",
 		"sameAs": [
 			"https://twitter.com/MichaelTremante"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/th-th/account-takeover-protection-th-th/",
 	"datePublished": "2021-03-30T13:00:00.000Z",
 	"dateModified": "2022-01-20T01:50:31.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/01/Account-Takeover-Protection-1.png",
-		"width": 1585,
-		"height": 755
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/01/Account-Takeover-Protection-1.png",
 	"keywords": "Cloudflare Access (TH), Cloudflare Gateway (TH), ไทย, ข่าวผลิตภัณฑ์, ความปลอดภัย, สัปดาห์ความปลอดภัย",
-	"description": "ความปลอดภัยของบัญชีผู้ใช้ปลายทาง คือ งานสำคัญที่สุดเสมอ แต่ก็เป็นปัญหาที่แก้ได้ยาก และที่แย่ไปกว่านั้นก็คือ การยืนยันตัวตนผู้ใช้ก็เป็นเรื่องที่ทำได้ยากเช่นกัน เมื่อชุดข้อมูลประจำตัวที่ถูกละเมิดกลายเป็นเรื่องปกติ และบอทที่ล้ำหน้ายิ่งขึ้นก็คืบคลานเข้ามาในเว็บเพื่อพยายามโจมตีแบบ Credential Stuffing",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "ความปลอดภัยของบัญชีผู้ใช้ปลายทาง คือ งานสำคัญที่สุดเสมอ แต่ก็เป็นปัญหาที่แก้ได้ยาก และที่แย่ไปกว่านั้นก็คือ การยืนยันตัวตนผู้ใช้ก็เป็นเรื่องที่ทำได้ยากเช่นกัน เมื่อชุดข้อมูลประจำตัวที่ถูกละเมิดกลายเป็นเรื่องปกติ และบอทที่ล้ำหน้ายิ่งขึ้นก็คืบคลานเข้ามาในเว็บเพื่อพยายามโจมตีแบบ Credential Stuffing"
 }

@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Marek Majkowski",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/b5967d6c687939594adb6992723d0529.jpeg",
 		"url": "https://blog.cloudflare.com/author/marek-majkowski/",
 		"sameAs": [
 			"https://twitter.com/majek04"
@@ -26,9 +12,5 @@
 	"dateModified": "2019-06-29T21:16:19.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/04/Address-machine-1_-ru-tech-enc--2.png",
 	"keywords": "Linux, Tech Talks, Reliability, Spectrum, Product News, Security, Deep Dive",
-	"description": "In previous blog post we discussed how we use the TPROXY iptables module to power Cloudflare Spectrum. With TPROXY we solved a major technical issue on the server side, and we thought we might find another use for it on the client side of our product.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "In previous blog post we discussed how we use the TPROXY iptables module to power Cloudflare Spectrum. With TPROXY we solved a major technical issue on the server side, and we thought we might find another use for it on the client side of our product."
 }

@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "John Graham-Cumming",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
 		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
 		"sameAs": [
 			"https://twitter.com/jgrahamc"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/fr-fr/comparatif-des-performances-des-reseaux-peripheriques-akamai-cloudflare-amazon-cloudfront-fastly-et-google/",
 	"datePublished": "2021-09-16T23:00:00.000Z",
 	"dateModified": "2022-02-01T15:42:34.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/02/image20.png",
-		"width": 1800,
-		"height": 1013
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/02/image20.png",
 	"keywords": "Français, Speed Week (FR), Performances, TTFB (FR)",
-	"description": "Pendant la Speed Week, nous avons beaucoup parlé des services qui rendent le web plus rapide : Argo 2.0 pour un meilleur routage en cas de perturbations sur le réseau Internet, Orpheus pour assurer la disponibilité des serveurs d&#x27;origine depuis n&#x27;importe quel site",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Pendant la Speed Week, nous avons beaucoup parlé des services qui rendent le web plus rapide : Argo 2.0 pour un meilleur routage en cas de perturbations sur le réseau Internet, Orpheus pour assurer la disponibilité des serveurs d&#x27;origine depuis n&#x27;importe quel site"
 }

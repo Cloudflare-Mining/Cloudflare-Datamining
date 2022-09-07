@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Sam Rhea",
-		"image": "http://blog.cloudflare.com/content/images/2018/07/photo-for-profile.jpg",
 		"url": "https://blog.cloudflare.com/author/sam/",
 		"sameAs": [
 			"https://twitter.com/LakeAustinBlvd"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/public-keys-are-not-enough-for-ssh-security/",
 	"datePublished": "2019-10-25T13:00:00.000Z",
 	"dateModified": "2019-10-25T13:00:00.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2019/10/Short-lived-Cert-copy@2x.png",
-		"width": 1812,
-		"height": 1015
-	},
+	"image": "https://blog.cloudflare.com/content/images/2019/10/Short-lived-Cert-copy@2x.png",
 	"keywords": "Cloudflare Access, Product News, Security",
-	"description": "If your organization uses SSH public keys, it’s entirely possible you have already lost one. There is a file sitting in a backup or on a former employees computer which grants the holder access to your infrastructure.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "If your organization uses SSH public keys, it’s entirely possible you have already lost one. There is a file sitting in a backup or on a former employees computer which grants the holder access to your infrastructure."
 }

@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Steven Pack",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/08/steven-pack.png",
-			"width": 496,
-			"height": 492
-		},
 		"url": "https://blog.cloudflare.com/author/stevenpack/",
 		"sameAs": [
 			"https://twitter.com/steven_pack"
@@ -31,9 +12,5 @@
 	"dateModified": "2018-12-13T22:43:31.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/10/server-and-chord-@4x.png",
 	"keywords": "Network, Speed & Reliability, Peering, Cache",
-	"description": "Cloudflare launches Peering Portal - Beta to allow network operators and hosting providers to explore transit savings, performance benefits and traffic Management opportunities for peering with Cloudflare or hosting a node",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Cloudflare launches Peering Portal - Beta to allow network operators and hosting providers to explore transit savings, performance benefits and traffic Management opportunities for peering with Cloudflare or hosting a node"
 }

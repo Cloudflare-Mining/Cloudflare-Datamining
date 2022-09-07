@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "J. Scott Miller",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/05/e9947593-dabd-4d23-bd55-7bf424e3c433_edited.jpg",
-			"width": 1494,
-			"height": 1425
-		},
 		"url": "https://blog.cloudflare.com/author/smiller/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/magic-hdmi-cable/",
 	"datePublished": "2022-05-13T12:59:12.000Z",
 	"dateModified": "2022-07-27T18:05:57.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/05/image2-27.png",
-		"width": 1801,
-		"height": 1013
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/05/image2-27.png",
 	"keywords": "Platform Week, Cloudflare Stream, Product News, Video",
-	"description": "Starting today, in open beta, Cloudflare Stream supports video playback with sub-second latency over SRT or RTMPS at scale",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Starting today, in open beta, Cloudflare Stream supports video playback with sub-second latency over SRT or RTMPS at scale"
 }

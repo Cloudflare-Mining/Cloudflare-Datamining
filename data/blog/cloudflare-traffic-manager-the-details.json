@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Matt Silverlock",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/08/profile-1500px-square.jpeg",
-			"width": 1500,
-			"height": 1500
-		},
 		"url": "https://blog.cloudflare.com/author/silverlock/",
 		"sameAs": [
 			"https://twitter.com/elithrar"
@@ -31,9 +12,5 @@
 	"dateModified": "2018-08-28T20:42:49.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/08/load-balancing.png",
 	"keywords": "Traffic, Product News, Traffic Manager, Reliability, DDoS",
-	"description": "Cloudflare&#x27;s investment into building a large global network protects our customers from DDoS attacks, secures them with our Web Application Firewall and Universal SSL, as well as improving performance through our CDN and the many network-level optimizations we&#x27;re constantly iterating on.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Cloudflare&#x27;s investment into building a large global network protects our customers from DDoS attacks, secures them with our Web Application Firewall and Universal SSL, as well as improving performance through our CDN and the many network-level optimizations we&#x27;re constantly iterating on."
 }

@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Sam Marsh",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/12/1637323544042.jpeg",
-			"width": 400,
-			"height": 400
-		},
 		"url": "https://blog.cloudflare.com/author/sam-marsh/",
 		"sameAs": [
 			"https://twitter.com/marshnet_social"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/transform-http-request-headers/",
 	"datePublished": "2021-06-08T13:12:50.000Z",
 	"dateModified": "2021-06-08T13:12:50.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/06/image2-5.png",
-		"width": 1584,
-		"height": 716
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/06/image2-5.png",
 	"keywords": "Transform Rules",
-	"description": "HTTP request headers can now be modified with Cloudflare Transform Rules.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "HTTP request headers can now be modified with Cloudflare Transform Rules."
 }

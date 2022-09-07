@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "David Haynes",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/03/wmasj4Kr_400x400.jpg",
-			"width": 399,
-			"height": 399
-		},
 		"url": "https://blog.cloudflare.com/author/dhaynes/",
 		"sameAs": [
 			"http://dhaynes.io",
@@ -30,16 +11,7 @@
 	"url": "https://blog.cloudflare.com/security-dot-txt/",
 	"datePublished": "2020-03-23T12:00:00.000Z",
 	"dateModified": "2020-03-23T12:00:00.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2020/03/deploying-security.txt-copy@2x.png",
-		"width": 4085,
-		"height": 2281
-	},
+	"image": "https://blog.cloudflare.com/content/images/2020/03/deploying-security.txt-copy@2x.png",
 	"keywords": "Cloudflare Workers, Serverless, Security",
-	"description": "Today, we’re launching support for the security.txt initiative through Workers to help give security researchers a common location to learn about how to communicate with our team.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Today, we’re launching support for the security.txt initiative through Workers to help give security researchers a common location to learn about how to communicate with our team."
 }

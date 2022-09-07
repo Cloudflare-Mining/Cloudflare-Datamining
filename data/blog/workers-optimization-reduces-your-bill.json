@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Kenton Varda",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/08/avatar-github.jpg",
-			"width": 460,
-			"height": 460
-		},
 		"url": "https://blog.cloudflare.com/author/kenton-varda/",
 		"sameAs": [
 			"https://twitter.com/kentonvarda"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/workers-optimization-reduces-your-bill/",
 	"datePublished": "2022-01-14T13:58:51.000Z",
 	"dateModified": "2022-01-14T13:58:51.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/01/image2-19.png",
-		"width": 1200,
-		"height": 675
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/01/image2-19.png",
 	"keywords": "Cloudflare Workers, Workers Unbound, Unbound",
-	"description": "Recently, we made an optimization to the Cloudflare Workers runtime which reduces the amount of time Workers need to spend in memory. We&#x27;re passing the savings on to you for all your Unbound Workers",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Recently, we made an optimization to the Cloudflare Workers runtime which reduces the amount of time Workers need to spend in memory. We&#x27;re passing the savings on to you for all your Unbound Workers"
 }

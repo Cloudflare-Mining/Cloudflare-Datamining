@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Thibault Meunier",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2020/12/profile_picture.png",
-			"width": 224,
-			"height": 224
-		},
 		"url": "https://blog.cloudflare.com/author/thibault/",
 		"sameAs": [
 			"https://twitter.com/thibmeu"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/introducing-cryptographic-attestation-of-personhood/",
 	"datePublished": "2021-05-13T13:00:00.000Z",
 	"dateModified": "2022-07-12T18:40:09.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/04/image2-35.png",
-		"width": 1999,
-		"height": 963
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/04/image2-35.png",
 	"keywords": "Product News, Security, Research, Accessibility, CAPTCHA",
-	"description": "An experiment that uses hardware security keys (like a YubiKey) to replace CAPTCHAs completely. The idea is rather simple: if a real human is sitting at their keyboard or uses their phone, they can touch their security key’s button or bring it near their phone to demonstrate that they are human.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "An experiment that uses hardware security keys (like a YubiKey) to replace CAPTCHAs completely. The idea is rather simple: if a real human is sitting at their keyboard or uses their phone, they can touch their security key’s button or bring it near their phone to demonstrate that they are human."
 }

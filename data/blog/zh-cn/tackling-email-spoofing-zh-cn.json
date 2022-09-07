@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Hannes Gerhart",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/09/Profile.jpg",
-			"width": 600,
-			"height": 600
-		},
 		"url": "https://blog.cloudflare.com/author/hannes/",
 		"sameAs": [
 			"https://linkedin.com/in/hannesgerhart"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/tackling-email-spoofing-zh-cn/",
 	"datePublished": "2021-09-27T12:59:00.000Z",
 	"dateModified": "2021-09-30T20:26:14.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/09/Email-Spoofing.png",
-		"width": 1800,
-		"height": 1013
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/09/Email-Spoofing.png",
 	"keywords": "简体中文 (CN), 生日周 (CN), 产品新闻, 安全",
-	"description": "今天，我们推出了一个新的工具来对付电子邮件欺骗和网络钓鱼，并改善电子邮件的发送情况：全新电子邮件安全 DNS 向导可用于创建 DNS 记录，",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "今天，我们推出了一个新的工具来对付电子邮件欺骗和网络钓鱼，并改善电子邮件的发送情况：全新电子邮件安全 DNS 向导可用于创建 DNS 记录，"
 }

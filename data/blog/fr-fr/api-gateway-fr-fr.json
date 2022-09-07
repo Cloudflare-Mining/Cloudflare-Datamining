@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Ben Solomon",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/08/Personal-Pic.jpg",
-			"width": 2000,
-			"height": 2000
-		},
 		"url": "https://blog.cloudflare.com/author/bensol/",
 		"sameAs": [
 			"https://twitter.com/bensol"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/fr-fr/api-gateway-fr-fr/",
 	"datePublished": "2022-03-16T12:59:00.000Z",
 	"dateModified": "2022-05-19T23:23:11.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/05/image5-4-3.png",
-		"width": 1800,
-		"height": 1013
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/05/image5-4-3.png",
 	"keywords": "Semaine de la sécurité, API Gateway (FR), Actualités produits, API (FR), Sécurité",
-	"description": "Aujourd&#x27;hui, nous annonçons la passerelle Cloudflare API Gateway. Nous allons remplacer entièrement votre passerelle existante pour un coût bien moindre. Et notre solution utilise la technologie sur laquelle reposent Workers, Bot Management, Access et les Règles de transformation",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Aujourd&#x27;hui, nous annonçons la passerelle Cloudflare API Gateway. Nous allons remplacer entièrement votre passerelle existante pour un coût bien moindre. Et notre solution utilise la technologie sur laquelle reposent Workers, Bot Management, Access et les Règles de transformation"
 }

@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Vlad Krasnov",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/165e069.jpg",
 		"url": "https://blog.cloudflare.com/author/vlad-krasnov/",
 		"sameAs": []
 	},
@@ -24,9 +10,5 @@
 	"dateModified": "2018-08-29T06:13:38.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/08/25704115174_061e907e57_o.jpg",
 	"keywords": "SSL, OpenSSL, Compression, Speed & Reliability, LUA, Security, Crypto, Go",
-	"description": "One of the nicer perks I have here at Cloudflare is access to the latest hardware, long before it even reaches the market. Until recently I mostly played with Intel hardware. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "One of the nicer perks I have here at Cloudflare is access to the latest hardware, long before it even reaches the market. Until recently I mostly played with Intel hardware. "
 }

@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Rita Kozlov",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/05/Rita-Kozlov.jpeg",
-			"width": 200,
-			"height": 200
-		},
 		"url": "https://blog.cloudflare.com/author/rita/",
 		"sameAs": [
 			"https://twitter.com/ritakozlov_"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/cloudflare-pages/",
 	"datePublished": "2020-12-17T14:00:00.000Z",
 	"dateModified": "2021-05-18T19:11:54.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2020/12/Cloudflare-Pages-1.png",
-		"width": 1600,
-		"height": 829
-	},
+	"image": "http://blog.cloudflare.com/content/images/2020/12/Cloudflare-Pages-1.png",
 	"keywords": "Serverless, Cloudflare Workers, Cloudflare Pages, JAMstack, Product News",
-	"description": "Across multiple cultures around the world, this time of year is a time of celebration and sharing of gifts with the people we care the most about.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Across multiple cultures around the world, this time of year is a time of celebration and sharing of gifts with the people we care the most about."
 }

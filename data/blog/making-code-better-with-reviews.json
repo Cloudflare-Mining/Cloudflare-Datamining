@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "John Graham-Cumming",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
 		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
 		"sameAs": [
 			"https://twitter.com/jgrahamc"
@@ -24,10 +10,7 @@
 	"url": "https://blog.cloudflare.com/making-code-better-with-reviews/",
 	"datePublished": "2014-07-02T00:14:00.000Z",
 	"dateModified": "2018-08-22T23:37:57.000Z",
+	"image": null,
 	"keywords": "Programming, Developers, DNS, Reliability",
-	"description": "In the past we&#x27;ve written about how CloudFlare isn&#x27;t afraid to rip out and replace chunks of code that have proved to be hard to maintain or have simply reach end of life. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "In the past we&#x27;ve written about how CloudFlare isn&#x27;t afraid to rip out and replace chunks of code that have proved to be hard to maintain or have simply reach end of life. "
 }

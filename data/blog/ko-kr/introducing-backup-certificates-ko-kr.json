@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Dina Kozlov",
-		"image": "http://blog.cloudflare.com/content/images/2019/06/headshot.jpg",
 		"url": "https://blog.cloudflare.com/author/dina/",
 		"sameAs": [
 			"https://twitter.com/dinasaur_404"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/ko-kr/introducing-backup-certificates-ko-kr/",
 	"datePublished": "2022-03-14T12:59:00.000Z",
 	"dateModified": "2022-06-30T07:44:04.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/06/image1-header-1.png",
-		"width": 512,
-		"height": 288
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/06/image1-header-1.png",
 	"keywords": "Security Week (KO), TLS (KO), SSL (KO), 제품 뉴스, 한국어",
-	"description": "Cloudflare에서는 고객의 인터넷 응용 프로그램을 위해 모든 고객에게 TLS 인증서 프로비저닝 기능을 무료로 제공한다는 사실을 자랑스럽게 여기고 있습니다. 현재 우리는 인증서 발급에서 배포와 갱신까지 4,500만 개에 달하는 인증서를 대상으로 인증서 수명주기 관리를 책임지고 있습니다",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Cloudflare에서는 고객의 인터넷 응용 프로그램을 위해 모든 고객에게 TLS 인증서 프로비저닝 기능을 무료로 제공한다는 사실을 자랑스럽게 여기고 있습니다. 현재 우리는 인증서 발급에서 배포와 갱신까지 4,500만 개에 달하는 인증서를 대상으로 인증서 수명주기 관리를 책임지고 있습니다"
 }

@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Sam Marsh",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/12/1637323544042.jpeg",
-			"width": 400,
-			"height": 400
-		},
 		"url": "https://blog.cloudflare.com/author/sam-marsh/",
 		"sameAs": [
 			"https://twitter.com/marshnet_social"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/maximum-redirects-minimum-effort-announcing-bulk-redirects/",
 	"datePublished": "2021-12-13T13:57:23.000Z",
 	"dateModified": "2021-12-13T13:57:23.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/12/image3-16.png",
-		"width": 921,
-		"height": 445
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/12/image3-16.png",
 	"keywords": "Product News, Bulk Redirects, Cloudflare Workers, Page Rules, API",
-	"description": "Bulk Redirects is a new product that allows an administrator to upload and enable hundreds of thousands of URL redirects within minutes, without having to write a single line of code.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Bulk Redirects is a new product that allows an administrator to upload and enable hundreds of thousands of URL redirects within minutes, without having to write a single line of code."
 }

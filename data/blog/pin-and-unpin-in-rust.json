@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Adam Chalmers",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/08/Adam-Chalmers.png",
-			"width": 494,
-			"height": 490
-		},
 		"url": "https://blog.cloudflare.com/author/adam-chalmers/",
 		"sameAs": [
 			"https://twitter.com/adam_chal"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/pin-and-unpin-in-rust/",
 	"datePublished": "2021-08-26T15:04:04.000Z",
 	"dateModified": "2021-08-26T15:04:04.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/08/Screen-Shot-2021-08-25-at-11.43.24-PM-1.png",
-		"width": 1209,
-		"height": 761
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/08/Screen-Shot-2021-08-25-at-11.43.24-PM-1.png",
 	"keywords": "Rust, Developers, JavaScript, Deep Dive",
-	"description": "Using async Rust libraries is usually easy. It&#x27;s just like using normal Rust code, with a little async or .await here and there. But writing your own async libraries can be hard. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Using async Rust libraries is usually easy. It&#x27;s just like using normal Rust code, with a little async or .await here and there. But writing your own async libraries can be hard. "
 }

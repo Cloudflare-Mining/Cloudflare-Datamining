@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Achiel van der Mandele",
-		"image": "http://blog.cloudflare.com/content/images/2019/04/avatar.png",
 		"url": "https://blog.cloudflare.com/author/achiel/",
 		"sameAs": []
 	},
@@ -22,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/announcing-grpc-zh-cn/",
 	"datePublished": "2020-10-01T13:00:00.000Z",
 	"dateModified": "2021-01-28T20:20:15.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2020/12/gRPC-OG.png",
-		"width": 1200,
-		"height": 785
-	},
+	"image": "http://blog.cloudflare.com/content/images/2020/12/gRPC-OG.png",
 	"keywords": "简体中文 (CN), 产品新闻, gRPC (CN)",
-	"description": "今天，我们很高兴宣布对代理gRPC提供Beta支持，gRPC是下一代协议，允许您大规模地构建API。借助Cloudflare上的gRPC，您可以轻松获得传统API的安全、可靠性和性能特性。快来Cloudflare控制面板的网络选项卡中注册Beta版gRPC吧。",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "今天，我们很高兴宣布对代理gRPC提供Beta支持，gRPC是下一代协议，允许您大规模地构建API。借助Cloudflare上的gRPC，您可以轻松获得传统API的安全、可靠性和性能特性。快来Cloudflare控制面板的网络选项卡中注册Beta版gRPC吧。"
 }

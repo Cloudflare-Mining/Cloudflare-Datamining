@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Yo&#x27;av Moshe",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/11/IMG_4345-01-01.jpeg",
-			"width": 1392,
-			"height": 1393
-		},
 		"url": "https://blog.cloudflare.com/author/yoav/",
 		"sameAs": [
 			"https://twitter.com/yoavmoshe"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/zaraz-use-workers-to-make-third-party-tools-secure-and-fast/",
 	"datePublished": "2021-12-08T14:00:00.000Z",
 	"dateModified": "2022-02-18T15:49:50.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/12/image4-15.png",
-		"width": 1801,
-		"height": 1013
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/12/image4-15.png",
 	"keywords": "CIO Week, Cloudflare Workers",
-	"description": "Zaraz fundamentally changes how third-parties are loaded on the web. Learn how we built it from the ground up, and why we chose Cloudflare Worker to power it.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Zaraz fundamentally changes how third-parties are loaded on the web. Learn how we built it from the ground up, and why we chose Cloudflare Worker to power it."
 }

@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Dina Kozlov",
-		"image": "http://blog.cloudflare.com/content/images/2019/06/headshot.jpg",
 		"url": "https://blog.cloudflare.com/author/dina/",
 		"sameAs": [
 			"https://twitter.com/dinasaur_404"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/staging-tls-certificate-every-deployment-safe-deployment/",
 	"datePublished": "2021-10-06T12:56:13.000Z",
 	"dateModified": "2021-10-06T14:57:47.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/10/staging-tls-certificate-every-deployment-safe-deployment-OG-1.png",
-		"width": 1200,
-		"height": 628
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/10/staging-tls-certificate-every-deployment-safe-deployment-OG-1.png",
 	"keywords": "TLS, SSL",
-	"description": "We are excited to announce that Enterprise customers now have the ability to test custom uploaded certificates in a staging environment before pushing them to production. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "We are excited to announce that Enterprise customers now have the ability to test custom uploaded certificates in a staging environment before pushing them to production. "
 }

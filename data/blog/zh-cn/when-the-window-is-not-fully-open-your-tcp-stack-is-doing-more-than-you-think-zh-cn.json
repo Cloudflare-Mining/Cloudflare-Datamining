@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Marek Majkowski",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/b5967d6c687939594adb6992723d0529.jpeg",
 		"url": "https://blog.cloudflare.com/author/marek-majkowski/",
 		"sameAs": [
 			"https://twitter.com/majek04"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/when-the-window-is-not-fully-open-your-tcp-stack-is-doing-more-than-you-think-zh-cn/",
 	"datePublished": "2022-07-26T13:00:00.000Z",
 	"dateModified": "2022-09-01T08:38:25.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/08/image3-10-1.png",
-		"width": 1000,
-		"height": 600
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/08/image3-10-1.png",
 	"keywords": "Linux (CN), TCP (CN), 简体中文 (CN)",
-	"description": "在这篇博客文章中，我准备谈一谈自己钻研 Linux 网络堆栈的过程，在这期间，我认真学习了 TCP 连接接收端的内存和窗口管理",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "在这篇博客文章中，我准备谈一谈自己钻研 Linux 网络堆栈的过程，在这期间，我认真学习了 TCP 连接接收端的内存和窗口管理"
 }

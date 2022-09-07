@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Armando Faz-Hernández",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/10/armfazh.png",
-			"width": 498,
-			"height": 516
-		},
 		"url": "https://blog.cloudflare.com/author/armfazh/",
 		"sameAs": [
 			"https://research.cloudflare.com/people/armando-faz/",
@@ -30,16 +11,7 @@
 	"url": "https://blog.cloudflare.com/circl-pairings-update/",
 	"datePublished": "2021-10-13T12:59:30.000Z",
 	"dateModified": "2021-10-13T22:15:47.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/10/image4-14.png",
-		"width": 1999,
-		"height": 1125
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/10/image4-14.png",
 	"keywords": "Research, Cryptography, Go, Pairings",
-	"description": "Our Go cryptographic library CIRCL announces support for pairing-based cryptography.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Our Go cryptographic library CIRCL announces support for pairing-based cryptography."
 }

@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Celso Martinho",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/08/Celso-Martinho.png",
-			"width": 486,
-			"height": 488
-		},
 		"url": "https://blog.cloudflare.com/author/celso/",
 		"sameAs": [
 			"https://celso.io/",
@@ -30,16 +11,7 @@
 	"url": "https://blog.cloudflare.com/october-2021-facebook-outage/",
 	"datePublished": "2021-10-04T21:08:52.000Z",
 	"dateModified": "2022-07-12T18:28:08.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/10/Screen-Shot-2021-10-26-at-2.44.18-PM-18.png",
-		"width": 896,
-		"height": 466
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/10/Screen-Shot-2021-10-26-at-2.44.18-PM-18.png",
 	"keywords": "Trends, Outage, BGP, DNS, Facebook",
-	"description": "Today at 1651 UTC, we opened an internal incident entitled &quot;Facebook DNS lookup returning SERVFAIL&quot; because we were worried that something was wrong with our DNS resolver 1.1.1.1.  But as we were about to post on our public status page we realized something else more serious was going on.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Today at 1651 UTC, we opened an internal incident entitled &quot;Facebook DNS lookup returning SERVFAIL&quot; because we were worried that something was wrong with our DNS resolver 1.1.1.1.  But as we were about to post on our public status page we realized something else more serious was going on."
 }

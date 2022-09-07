@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Nancy Gao",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/07/Screen-Shot-2020-05-19-at-12.14.42-AM.png",
-			"width": 1250,
-			"height": 1512
-		},
 		"url": "https://blog.cloudflare.com/author/nancy-gao/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/introducing-workers-unbound-zh-cn/",
 	"datePublished": "2020-07-27T11:00:00.000Z",
 	"dateModified": "2021-01-28T20:09:29.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2020/11/Serverless-week-Day-0--copy-2@2x-1-1.png",
-		"width": 2800,
-		"height": 1285
-	},
+	"image": "http://blog.cloudflare.com/content/images/2020/11/Serverless-week-Day-0--copy-2@2x-1-1.png",
 	"keywords": "简体中文 (CN), Cloudflare Workers (CN), 无服务器, 无服务器周, Workers Unbound (CN)",
-	"description": "从第一行代码，到第一个应用程序，一直到扩展至全球的产品，Workers 一路伴您左右。我们让 Edge 网络具有可编程性，并在全球 200 多个地点部署服务器，为您提供甚至能实现最伟大创意的巨大力量。",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "从第一行代码，到第一个应用程序，一直到扩展至全球的产品，Workers 一路伴您左右。我们让 Edge 网络具有可编程性，并在全球 200 多个地点部署服务器，为您提供甚至能实现最伟大创意的巨大力量。"
 }

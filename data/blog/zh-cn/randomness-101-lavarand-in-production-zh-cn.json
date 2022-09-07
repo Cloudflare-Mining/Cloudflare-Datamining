@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Joshua Liebow-Feeser",
-		"image": "http://blog.cloudflare.com/content/images/2017/04/1046063-1.jpg",
 		"url": "https://blog.cloudflare.com/author/joshlf/",
 		"sameAs": []
 	},
@@ -22,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/randomness-101-lavarand-in-production-zh-cn/",
 	"datePublished": "2017-11-06T05:54:00.000Z",
 	"dateModified": "2021-01-28T18:25:45.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2019/07/lava-lamps-1.jpg",
-		"width": 2000,
-		"height": 1125
-	},
+	"image": "https://blog.cloudflare.com/content/images/2019/07/lava-lamps-1.jpg",
 	"keywords": "简体中文 (CN), 熵 (CN), 安全, 加密, LavaRand (CN)",
-	"description": "你们当中的一些人应该知道，我们旧金山办公室的大厅里有一堵用于密码学的熔岩灯墙。在这篇文章中，我们将探讨它是如何工作的。本文不涉及技术背景知识。如果你想对有关技术细节做更深入的了解，请参阅 LavaRand in Production: The Nitty-Gritty Technical Details。",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "你们当中的一些人应该知道，我们旧金山办公室的大厅里有一堵用于密码学的熔岩灯墙。在这篇文章中，我们将探讨它是如何工作的。本文不涉及技术背景知识。如果你想对有关技术细节做更深入的了解，请参阅 LavaRand in Production: The Nitty-Gritty Technical Details。"
 }

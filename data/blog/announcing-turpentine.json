@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "João Sousa Botto",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/07/profile2.jpg",
-			"width": 2000,
-			"height": 2026
-		},
 		"url": "https://blog.cloudflare.com/author/joao/",
 		"sameAs": [
 			"https://twitter.com/jsbotto"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/announcing-turpentine/",
 	"datePublished": "2021-09-17T12:59:37.000Z",
 	"dateModified": "2021-09-18T14:13:50.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/09/Turpintine-1.png",
-		"width": 1912,
-		"height": 1024
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/09/Turpintine-1.png",
 	"keywords": "Speed Week, Speed & Reliability, Project Turpentine, Product News",
-	"description": "Project Turpentine is the easiest way to replicate a varnish configuration on Cloudflare. Just export your full VCL from another provider and use Turpentine to move to a TypeScript-based runtime for varnish on Cloudflare Workers.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Project Turpentine is the easiest way to replicate a varnish configuration on Cloudflare. Just export your full VCL from another provider and use Turpentine to move to a TypeScript-based runtime for varnish on Cloudflare Workers."
 }

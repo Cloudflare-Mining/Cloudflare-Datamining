@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Patrick R. Donahue",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/me0-1.png",
-			"width": 300,
-			"height": 291
-		},
 		"url": "https://blog.cloudflare.com/author/patrick/",
 		"sameAs": [
 			"https://www.cloudflare.com",
@@ -32,9 +13,5 @@
 	"dateModified": "2018-08-28T21:43:22.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/08/Screen-Shot-2018-08-28-at-1.14.39-PM.png",
 	"keywords": "SaaS, CNAME, SSL, Attacks, Product News, Security",
-	"description": "If you’re running a SaaS company, you know how important it is that your application is performant, highly available, and hardened against attack. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "If you’re running a SaaS company, you know how important it is that your application is performant, highly available, and hardened against attack. "
 }

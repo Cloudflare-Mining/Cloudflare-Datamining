@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Sam Rhea",
-		"image": "http://blog.cloudflare.com/content/images/2018/07/photo-for-profile.jpg",
 		"url": "https://blog.cloudflare.com/author/sam/",
 		"sameAs": [
 			"https://twitter.com/LakeAustinBlvd"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/cloudflare-access-now-teams-of-any-size-can-turn-off-their-vpn/",
 	"datePublished": "2018-07-24T16:15:28.000Z",
 	"dateModified": "2020-08-14T17:02:24.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2018/07/access-illustration-v2.svg",
-		"width": 625,
-		"height": 506
-	},
+	"image": "http://blog.cloudflare.com/content/images/2018/07/access-illustration-v2.svg",
 	"keywords": "Cloudflare Access, Product News, VPN, Authentication, Security",
-	"description": "Using a VPN is painful: Logging-in interrupts your workflow. You have to remember a separate set of credentials, which your administrator has to manage. If you are away from the office, the VPN slows you down. Beyond just inconvenience, a VPN can pose a real security risk.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Using a VPN is painful: Logging-in interrupts your workflow. You have to remember a separate set of credentials, which your administrator has to manage. If you are away from the office, the VPN slows you down. Beyond just inconvenience, a VPN can pose a real security risk."
 }

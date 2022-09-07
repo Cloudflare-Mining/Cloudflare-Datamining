@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Pedro Sousa",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/07/PedroSousa_foto_passe.jpg",
-			"width": 600,
-			"height": 600
-		},
 		"url": "https://blog.cloudflare.com/author/pedro/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/our-docs-as-code-approach-zh-cn/",
 	"datePublished": "2022-07-15T13:02:00.000Z",
 	"dateModified": "2022-08-25T10:24:52.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/08/image2-11.png",
-		"width": 1615,
-		"height": 869
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/08/image2-11.png",
 	"keywords": "技术写作, 开发人员文档, 简体中文 (CN)",
-	"description": "除了采用 docs-as-code 方法之外，Cloudflare 还会在存储库中公开处理文档更改。我们允许外部人员参与编辑我们的文档，这种做法帮助我们逐渐改进了文档",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "除了采用 docs-as-code 方法之外，Cloudflare 还会在存储库中公开处理文档更改。我们允许外部人员参与编辑我们的文档，这种做法帮助我们逐渐改进了文档"
 }

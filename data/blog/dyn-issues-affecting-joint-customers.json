@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Filippo Valsorda",
-		"image": "http://blog.cloudflare.com/content/images/2018/02/K6rX3ZSn_400x400.jpg",
 		"url": "https://blog.cloudflare.com/author/filippo/",
 		"sameAs": [
 			"https://twitter.com/filosottile"
@@ -26,9 +12,5 @@
 	"dateModified": "2018-08-28T21:01:53.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/08/Screen-Shot-2016-10-21-at-19.08.14.png",
 	"keywords": "DDoS, Attacks, Outage, Reliability, Security",
-	"description": "Today there is an ongoing, large scale Denial-of-Service attack directed against Dyn DNS. While Cloudflare services are operating normally, if you are using both Cloudflare and Dyn services, your website may be affected.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Today there is an ongoing, large scale Denial-of-Service attack directed against Dyn DNS. While Cloudflare services are operating normally, if you are using both Cloudflare and Dyn services, your website may be affected."
 }

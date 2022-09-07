@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Darren Remington",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/01/CAB16BB8-BE17-4EE0-B9AD-7AE6E20BCBBD.jpeg",
-			"width": 632,
-			"height": 720
-		},
 		"url": "https://blog.cloudflare.com/author/darren/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/es-es/cloudflare-and-remote-browser-isolation-es-es/",
 	"datePublished": "2020-01-07T14:00:00.000Z",
 	"dateModified": "2021-01-28T23:57:54.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2020/01/image2-31.png",
-		"width": 1600,
-		"height": 1089
-	},
+	"image": "https://blog.cloudflare.com/content/images/2020/01/image2-31.png",
 	"keywords": "Noticias de productos, Cloudflare Access (ES), Seguridad, VPN (ES), Español, Cloudflare Zero Trust (ES), Aislamiento remoto del navegador (ES)",
-	"description": "Cloudflare anunció hoy la compra de S2 Systems Corporation, una empresa emergente de la zona de Seattle que creó una solución innovadora de aislamiento remoto de navegador diferente a cualquier otra actualmente disponible en el mercado.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Cloudflare anunció hoy la compra de S2 Systems Corporation, una empresa emergente de la zona de Seattle que creó una solución innovadora de aislamiento remoto de navegador diferente a cualquier otra actualmente disponible en el mercado."
 }

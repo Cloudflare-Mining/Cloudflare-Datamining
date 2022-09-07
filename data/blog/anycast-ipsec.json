@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Annika Garbers",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/annika.png",
-			"width": 400,
-			"height": 400
-		},
 		"url": "https://blog.cloudflare.com/author/annika/",
 		"sameAs": [
 			"https://twitter.com/annikagarbers"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/anycast-ipsec/",
 	"datePublished": "2021-12-06T13:59:45.000Z",
 	"dateModified": "2021-12-30T19:48:21.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/12/image2-8.png",
-		"width": 1800,
-		"height": 1013
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/12/image2-8.png",
 	"keywords": "CIO Week, Cloudflare One, Anycast, Magic",
-	"description": "Today, we&#x27;re excited to announce support for IPsec as an on-ramp to Cloudflare One.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Today, we&#x27;re excited to announce support for IPsec as an on-ramp to Cloudflare One."
 }

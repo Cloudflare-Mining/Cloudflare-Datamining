@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Pete Zimmerman",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/09/unnamed-1.jpg",
-			"width": 600,
-			"height": 600
-		},
 		"url": "https://blog.cloudflare.com/author/pete/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/gateway-swg-zh-cn/",
 	"datePublished": "2020-10-14T15:00:00.000Z",
 	"dateModified": "2021-01-27T02:48:51.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2020/12/Cloudflare-Gateway-now-protects-teams--wherever-they-are-thumbnail-1.png",
-		"width": 1200,
-		"height": 628
-	},
+	"image": "http://blog.cloudflare.com/content/images/2020/12/Cloudflare-Gateway-now-protects-teams--wherever-they-are-thumbnail-1.png",
 	"keywords": "简体中文 (CN), 零信任 (CN), 零信任周 (CN), 1.1.1.1 (CN), WARP (CN), 产品新闻, Cloudflare Gateway (CN)",
-	"description": "2020 年 1 月，我们发布了 Cloudflare for Teams，这是一种在不牺牲性能的前提下保护组织及其遍布全球的员工的新方式。Cloudflare for Teams 内含 Cloudflare Access 和 Cloudflare Gateway 这两大和核心产品。",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "2020 年 1 月，我们发布了 Cloudflare for Teams，这是一种在不牺牲性能的前提下保护组织及其遍布全球的员工的新方式。Cloudflare for Teams 内含 Cloudflare Access 和 Cloudflare Gateway 这两大和核心产品。"
 }

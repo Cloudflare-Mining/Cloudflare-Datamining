@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Kristian Freeman",
-		"image": "http://blog.cloudflare.com/content/images/2019/05/2fGb07-c_400x400.jpg",
 		"url": "https://blog.cloudflare.com/author/kristian/",
 		"sameAs": [
 			"https://www.signalnerve.com",
@@ -25,16 +11,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/announcing-stripe-support-in-workers-zh-cn/",
 	"datePublished": "2021-11-19T14:05:51.000Z",
 	"dateModified": "2021-11-19T14:05:51.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/11/image1-58.png",
-		"width": 1200,
-		"height": 675
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/11/image1-58.png",
 	"keywords": "Full Stack Week (CN), Cloudflare Workers (CN)",
-	"description": "在应用中处理支付是建立在线业务的关键。对于许多开发者来说，处理支付的主要选择是 Stripe。自从大约七年前我第一次接触 Stripe 以来，这项服务的发展已经远远超出了简单的支付处理。在我去年分享的电子商务示例应用程序中，Stripe使用 Connect 产品管理了一个完整的卖家市场。对于那些不满足于接受支付功能的开发者来说，Stripe 的产品套件非常适用。",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "在应用中处理支付是建立在线业务的关键。对于许多开发者来说，处理支付的主要选择是 Stripe。自从大约七年前我第一次接触 Stripe 以来，这项服务的发展已经远远超出了简单的支付处理。在我去年分享的电子商务示例应用程序中，Stripe使用 Connect 产品管理了一个完整的卖家市场。对于那些不满足于接受支付功能的开发者来说，Stripe 的产品套件非常适用。"
 }

@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Gilberto Bertin",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/fVckmgHM.jpg",
 		"url": "https://blog.cloudflare.com/author/gilberto-bertin/",
 		"sameAs": []
 	},
@@ -22,10 +8,7 @@
 	"url": "https://blog.cloudflare.com/partial-kernel-bypass-merged-netmap/",
 	"datePublished": "2015-12-17T14:15:37.000Z",
 	"dateModified": "2020-08-18T18:21:37.000Z",
+	"image": null,
 	"keywords": "Programming, Linux",
-	"description": "In a previous post we described our work on a new netmap mode called single-rx-queue. After submitting the pull request, the netmap maintainers told us that the patch was interesting, but they would prefer something more configurable instead of a tailored custom mode.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "In a previous post we described our work on a new netmap mode called single-rx-queue. After submitting the pull request, the netmap maintainers told us that the patch was interesting, but they would prefer something more configurable instead of a tailored custom mode."
 }

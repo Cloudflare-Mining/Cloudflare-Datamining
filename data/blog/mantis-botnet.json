@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Omer Yoachimik",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/Omer-1.png",
-			"width": 773,
-			"height": 653
-		},
 		"url": "https://blog.cloudflare.com/author/omer/",
 		"sameAs": [
 			"https://twitter.com/OmerYoahimik"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/mantis-botnet/",
 	"datePublished": "2022-07-14T13:00:00.000Z",
 	"dateModified": "2022-08-19T09:38:10.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/07/image5-6.png",
-		"width": 1999,
-		"height": 1125
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/07/image5-6.png",
 	"keywords": "Mantis, Botnet, DDoS, Trends",
-	"description": "We named the botnet that launched the 26M rps (requests per second) DDoS attack &quot;Mantis&quot; as it is also like the Mantis shrimp, small but very powerful",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "We named the botnet that launched the 26M rps (requests per second) DDoS attack &quot;Mantis&quot; as it is also like the Mantis shrimp, small but very powerful"
 }

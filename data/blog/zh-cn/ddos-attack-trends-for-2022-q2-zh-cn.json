@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Omer Yoachimik",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/Omer-1.png",
-			"width": 773,
-			"height": 653
-		},
 		"url": "https://blog.cloudflare.com/author/omer/",
 		"sameAs": [
 			"https://twitter.com/OmerYoahimik"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/ddos-attack-trends-for-2022-q2-zh-cn/",
 	"datePublished": "2022-07-06T12:55:00.000Z",
 	"dateModified": "2022-07-08T10:55:11.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/07/image22-2-2.png",
-		"width": 1801,
-		"height": 1013
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/07/image22-2-2.png",
 	"keywords": "DDoS (CN), DDoS 报告, 攻击, 趋势 (CN), Cloudflare Radar (CN), 勒索攻击, 勒索 DDoS, 乌克兰, 俄罗斯, BitTorrent (CN), CHARGEN (CN), TeeWorlds (CN), 简体中文",
-	"description": "欢迎阅读我们的 2022 年第二季度 DDoS 攻击报告。本报告介绍有关 DDoS 威胁格局的洞察和趋势——反映了在 Cloudflare 全球网络中观察到的情况。本报告的交互式版本可在 Radar 上查看",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "欢迎阅读我们的 2022 年第二季度 DDoS 攻击报告。本报告介绍有关 DDoS 威胁格局的洞察和趋势——反映了在 Cloudflare 全球网络中观察到的情况。本报告的交互式版本可在 Radar 上查看"
 }

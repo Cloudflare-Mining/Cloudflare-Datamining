@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Sam Howson",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/08/BLOG-Default-Male-20.png",
-			"width": 276,
-			"height": 250
-		},
 		"url": "https://blog.cloudflare.com/author/sam-howson/",
 		"sameAs": []
 	},
@@ -29,9 +10,5 @@
 	"dateModified": "2018-08-22T23:30:20.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/08/uk.jpg",
 	"keywords": "United Kingdom, Product News, DNS, Reliability",
-	"description": "On the 10th of June, the UK domain registry Nominet made available second-level domain namespace to the public, allowing anyone to register a domain ending with simply .uk",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "On the 10th of June, the UK domain registry Nominet made available second-level domain namespace to the public, allowing anyone to register a domain ending with simply .uk"
 }

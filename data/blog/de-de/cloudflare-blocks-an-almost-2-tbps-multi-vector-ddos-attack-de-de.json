@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Omer Yoachimik",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/Omer-1.png",
-			"width": 773,
-			"height": 653
-		},
 		"url": "https://blog.cloudflare.com/author/omer/",
 		"sameAs": [
 			"https://twitter.com/OmerYoahimik"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/de-de/cloudflare-blocks-an-almost-2-tbps-multi-vector-ddos-attack-de-de/",
 	"datePublished": "2021-11-13T14:33:00.000Z",
 	"dateModified": "2022-08-23T16:29:50.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/08/image2-2-4.jpeg",
-		"width": 1200,
-		"height": 627
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/08/image2-2-4.jpeg",
 	"keywords": "DDoS (DE), Angriffe, Mirai (DE), Botnetz, DNS (DE), UDP (DE), Deutsch",
-	"description": "Anfang dieser Woche hat Cloudflare einen DDoS-Angriff automatisch erkannt und abgewehrt, der bei knapp 2 Tbit/s seinen Höhepunkt erreichte",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Anfang dieser Woche hat Cloudflare einen DDoS-Angriff automatisch erkannt und abgewehrt, der bei knapp 2 Tbit/s seinen Höhepunkt erreichte"
 }

@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Alessandro Ghedini",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/09/Ii4TgsoTda2layE131Dk_1204a20b3d1d96bba523a6a2a5fa3cd73bd4fe59240a27ad6eb8c064c6792446.jpg",
-			"width": 600,
-			"height": 600
-		},
 		"url": "https://blog.cloudflare.com/author/alessandro-ghedini/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/fr-fr/encrypted-sni-fr-fr/",
 	"datePublished": "2018-09-24T12:01:00.000Z",
 	"dateModified": "2021-01-22T01:23:29.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2019/10/esni-3@3.5x-1-2.png",
-		"width": 1999,
-		"height": 870
-	},
+	"image": "https://blog.cloudflare.com/content/images/2019/10/esni-3@3.5x-1-2.png",
 	"keywords": "Français, Cryptographie (FR), Semaine d’anniversaire, TLS (FR), Actualités produits",
-	"description": "Aujourd’hui, nous avons annoncé la prise en charge de la SNI cryptée, une extension du protocole TLS 1.3 qui améliore la vie privée des utilisateurs Internet en empêchant les observateurs sur le trajet, notamment les ISP",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Aujourd’hui, nous avons annoncé la prise en charge de la SNI cryptée, une extension du protocole TLS 1.3 qui améliore la vie privée des utilisateurs Internet en empêchant les observateurs sur le trajet, notamment les ISP"
 }

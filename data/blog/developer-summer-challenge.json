@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Jenanne Vaccaro",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/08/jen-headshot.jpeg",
-			"width": 321,
-			"height": 321
-		},
 		"url": "https://blog.cloudflare.com/author/jvaccaro/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/developer-summer-challenge/",
 	"datePublished": "2021-08-13T13:00:03.000Z",
 	"dateModified": "2021-08-13T13:00:03.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/08/image4-3.png",
-		"width": 1618,
-		"height": 800
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/08/image4-3.png",
 	"keywords": "Serverless, Developers, Cloudflare Workers",
-	"description": "We’re giving away 300+ boxes of our most popular swag, while enabling collaboration with other participants through our Workers Discord channel.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "We’re giving away 300+ boxes of our most popular swag, while enabling collaboration with other participants through our Workers Discord channel."
 }

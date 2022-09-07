@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Achiel van der Mandele",
-		"image": "http://blog.cloudflare.com/content/images/2019/04/avatar.png",
 		"url": "https://blog.cloudflare.com/author/achiel/",
 		"sameAs": []
 	},
@@ -22,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/introducing-magic-firewall/",
 	"datePublished": "2020-10-16T15:00:00.000Z",
 	"dateModified": "2020-10-16T21:28:14.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2020/10/Image_20201016_072224-1.jpeg",
-		"width": 2000,
-		"height": 1000
-	},
+	"image": "http://blog.cloudflare.com/content/images/2020/10/Image_20201016_072224-1.jpeg",
 	"keywords": "Zero Trust Week, Zero Trust, Magic Firewall, Cloudflare One, Magic Transit, Security",
-	"description": "Today we’re excited to announce Magic Firewall™, a network-level firewall delivered through Cloudflare to secure your enterprise. Magic Firewall covers your remote users, branch offices, data centers and cloud infrastructure.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Today we’re excited to announce Magic Firewall™, a network-level firewall delivered through Cloudflare to secure your enterprise. Magic Firewall covers your remote users, branch offices, data centers and cloud infrastructure."
 }

@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Yingchen Wang",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/06/profile.JPG",
-			"width": 855,
-			"height": 858
-		},
 		"url": "https://blog.cloudflare.com/author/yingchen/",
 		"sameAs": [
 			"https://twitter.com/YingchenWang96"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/hertzbleed-explained/",
 	"datePublished": "2022-06-28T12:57:06.000Z",
 	"dateModified": "2022-08-08T17:25:27.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/06/image9-7.png",
-		"width": 1801,
-		"height": 1013
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/06/image9-7.png",
 	"keywords": "Deep Dive, Side Channel, Hertzbleed, SIKE, Research, Cryptography",
-	"description": "Hertzbleed is a brand-new family of side-channel attacks that monitors changes on CPU frequency",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Hertzbleed is a brand-new family of side-channel attacks that monitors changes on CPU frequency"
 }

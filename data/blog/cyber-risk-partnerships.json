@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Deeksha Lamba",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/03/Deeksha-Lamba-1.jpg",
-			"width": 600,
-			"height": 600
-		},
 		"url": "https://blog.cloudflare.com/author/deeksha/",
 		"sameAs": [
 			"https://twitter.com/deekshalamba"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/cyber-risk-partnerships/",
 	"datePublished": "2021-12-09T13:59:59.000Z",
 	"dateModified": "2022-01-21T00:16:20.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/12/Cyber-Insurence-1.png",
-		"width": 1208,
-		"height": 672
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/12/Cyber-Insurence-1.png",
 	"keywords": "CIO Week, Partners, Insurance, Security",
-	"description": "Cloudflare partners with leading cyber insurers and incident response providers to help customers reduce their insurance premiums and improve cyber risk.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Cloudflare partners with leading cyber insurers and incident response providers to help customers reduce their insurance premiums and improve cyber risk."
 }

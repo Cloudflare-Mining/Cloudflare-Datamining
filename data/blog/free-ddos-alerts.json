@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Omer Yoachimik",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/Omer-1.png",
-			"width": 773,
-			"height": 653
-		},
 		"url": "https://blog.cloudflare.com/author/omer/",
 		"sameAs": [
 			"https://twitter.com/OmerYoahimik"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/free-ddos-alerts/",
 	"datePublished": "2022-01-17T14:19:26.000Z",
 	"dateModified": "2022-07-27T17:12:26.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/01/unnamed-14.png",
-		"width": 1600,
-		"height": 900
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/01/unnamed-14.png",
 	"keywords": "DDoS, Alerts, Notifications, Free",
-	"description": "We’re excited to announce that customers using our Free plan can now get real-time alerts about HTTP DDoS attacks that were automatically detected and mitigated by Cloudflare",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "We’re excited to announce that customers using our Free plan can now get real-time alerts about HTTP DDoS attacks that were automatically detected and mitigated by Cloudflare"
 }

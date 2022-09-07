@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Ólafur Guðmundsson",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/3a917b8.jpg",
 		"url": "https://blog.cloudflare.com/author/olafur-gudmundsson/",
 		"sameAs": []
 	},
@@ -24,9 +10,5 @@
 	"dateModified": "2021-06-22T13:53:03.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/03/1.1.1.1.png",
 	"keywords": "DNS, 1.1.1.1, Privacy, Resolver, Product News",
-	"description": "Cloudflare’s mission is to help build a better Internet and today we are releasing our DNS resolver, 1.1.1.1 - a recursive DNS service. With this offering, we’re fixing the foundation of the Internet by building a faster, more secure and privacy-centric public DNS resolver. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Cloudflare’s mission is to help build a better Internet and today we are releasing our DNS resolver, 1.1.1.1 - a recursive DNS service. With this offering, we’re fixing the foundation of the Internet by building a faster, more secure and privacy-centric public DNS resolver. "
 }

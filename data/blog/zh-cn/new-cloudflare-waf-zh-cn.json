@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Michael Tremante",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/url-3.jpg",
 		"url": "https://blog.cloudflare.com/author/michael-tremante/",
 		"sameAs": [
 			"https://twitter.com/MichaelTremante"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/new-cloudflare-waf-zh-cn/",
 	"datePublished": "2021-03-29T13:50:00.000Z",
 	"dateModified": "2021-09-02T19:06:22.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/04/1-17.png",
-		"width": 1200,
-		"height": 628
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/04/1-17.png",
 	"keywords": "产品新闻, 安全周 (CN), WAF (CN), 防火墙 (CN)",
-	"description": "Cloudflare Web 应用程序防火墙（WAF）每天阻止超过 570 亿次 HTTP 请求，按照没秒计算可达到65万次。过滤这些流量的原始代码是由 Cloudflare 现任 CTO 编写的，迄今 WAF 已享誉无数，包括在 2020 年度 Gartner Magic Quadrant WAF 评测中获得“执行能力”最高分。",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Cloudflare Web 应用程序防火墙（WAF）每天阻止超过 570 亿次 HTTP 请求，按照没秒计算可达到65万次。过滤这些流量的原始代码是由 Cloudflare 现任 CTO 编写的，迄今 WAF 已享誉无数，包括在 2020 年度 Gartner Magic Quadrant WAF 评测中获得“执行能力”最高分。"
 }

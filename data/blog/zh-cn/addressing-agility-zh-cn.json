@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Marwan Fayed",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/09/sta-profile.jpg",
-			"width": 600,
-			"height": 600
-		},
 		"url": "https://blog.cloudflare.com/author/marwan/",
 		"sameAs": [
 			"https://twitter.com/marwanfayed"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/addressing-agility-zh-cn/",
 	"datePublished": "2021-10-14T17:15:00.000Z",
 	"dateModified": "2021-11-02T17:00:27.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/10/image6-19-1.png",
-		"width": 1200,
-		"height": 628
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/10/image6-19-1.png",
 	"keywords": "研究 (CN), 简体中文 (CN)",
-	"description": "对大规模运营而言，IP 寻址抑制了网络和 web 导向服务的创新。对于每一个架构更改，当然在开始设计新系统时，我们被迫问的第一组问题就是：",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "对大规模运营而言，IP 寻址抑制了网络和 web 导向服务的创新。对于每一个架构更改，当然在开始设计新系统时，我们被迫问的第一组问题就是："
 }

@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Wesley Evans",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/08/Headshot.jpeg",
-			"width": 960,
-			"height": 960
-		},
 		"url": "https://blog.cloudflare.com/author/wesley/",
 		"sameAs": [
 			"https://twitter.com/whywevans"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/next-gen-web3-network/",
 	"datePublished": "2022-05-16T12:58:01.000Z",
 	"dateModified": "2022-07-29T18:35:17.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/05/image3-25.png",
-		"width": 1999,
-		"height": 1123
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/05/image3-25.png",
 	"keywords": "Platform Week, Web3, Research",
-	"description": "Cloudflare is going to participate in the research and development of the core infrastructure that helps keep Ethereum secure, fast, as well as energy efficient for everyone",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Cloudflare is going to participate in the research and development of the core infrastructure that helps keep Ethereum secure, fast, as well as energy efficient for everyone"
 }

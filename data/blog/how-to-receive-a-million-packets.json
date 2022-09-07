@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Marek Majkowski",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/b5967d6c687939594adb6992723d0529.jpeg",
 		"url": "https://blog.cloudflare.com/author/marek-majkowski/",
 		"sameAs": [
 			"https://twitter.com/majek04"
@@ -26,9 +12,5 @@
 	"dateModified": "2019-06-29T21:18:56.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/03/3208129302_7e14f00492_z.jpg",
 	"keywords": "Linux, Tech Talks, Deep Dive",
-	"description": "Last week during a casual conversation I overheard a colleague saying: &quot;The Linux network stack is slow! You can&#x27;t expect it to do more than 50 thousand packets per second per core!&quot;",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Last week during a casual conversation I overheard a colleague saying: &quot;The Linux network stack is slow! You can&#x27;t expect it to do more than 50 thousand packets per second per core!&quot;"
 }

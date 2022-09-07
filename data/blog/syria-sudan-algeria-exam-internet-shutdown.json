@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "David Belson",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/01/headshot-grayscale-crop.jpeg",
-			"width": 526,
-			"height": 480
-		},
 		"url": "https://blog.cloudflare.com/author/david-belson/",
 		"sameAs": [
 			"https://twitter.com/dbelson"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/syria-sudan-algeria-exam-internet-shutdown/",
 	"datePublished": "2022-06-14T12:55:53.000Z",
 	"dateModified": "2022-06-14T12:55:53.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/06/East-Africa-or-Middle-East-Outage.png",
-		"width": 1200,
-		"height": 675
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/06/East-Africa-or-Middle-East-Outage.png",
 	"keywords": "Cloudflare Radar, Internet Shutdown, Outage",
-	"description": "As they have done over the past several years, Syria and Sudan are implementing multi-hour nationwide Internet shutdowns. Algeria has also taken a similar approach in the past, but this year appears to be implementing more targeted website/app blocking",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "As they have done over the past several years, Syria and Sudan are implementing multi-hour nationwide Internet shutdowns. Algeria has also taken a similar approach in the past, but this year appears to be implementing more targeted website/app blocking"
 }

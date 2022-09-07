@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Guest Author",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/10/Screen-Shot-2019-10-09-at-11.21.59-AM.png",
-			"width": 362,
-			"height": 364
-		},
 		"url": "https://blog.cloudflare.com/author/guest-author/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/castle-building-codeless-customer-account-protection/",
 	"datePublished": "2019-09-11T16:00:00.000Z",
 	"dateModified": "2020-08-14T16:49:51.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2019/09/Asset-1ldpi-01-1.png",
-		"width": 1911,
-		"height": 1001
-	},
+	"image": "https://blog.cloudflare.com/content/images/2019/09/Asset-1ldpi-01-1.png",
 	"keywords": "Serverless, Cloudflare Workers, Security, API",
-	"description": "Strong security should be easy. \nAsking your consumers again and again to take responsibility for their security through robust passwords and other security measures doesn’t work. The responsibility of security needs to shift from end users to the companies who serve them. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Strong security should be easy. \nAsking your consumers again and again to take responsibility for their security through robust passwords and other security measures doesn’t work. The responsibility of security needs to shift from end users to the companies who serve them. "
 }

@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Junho Choi",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/05/junho_profile_300x300--1-.jpg",
-			"width": 300,
-			"height": 300
-		},
 		"url": "https://blog.cloudflare.com/author/junho/",
 		"sameAs": [
 			"https://saturnsoft.net",
@@ -30,16 +11,7 @@
 	"url": "https://blog.cloudflare.com/cubic-and-hystart-support-in-quiche/",
 	"datePublished": "2020-05-08T12:46:12.000Z",
 	"dateModified": "2021-05-05T15:17:14.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2020/05/image6-1.png",
-		"width": 835,
-		"height": 486
-	},
+	"image": "https://blog.cloudflare.com/content/images/2020/05/image6-1.png",
 	"keywords": "QUIC, HyStart++, QUICHE, Performance, IETF",
-	"description": "Congestion control and loss recovery play a big role in the QUIC transport protocol performance. We recently added support for CUBIC and HyStart++ to quiche, the library powering Cloudflare&#x27;s QUIC, and lab-based testing shows promising results for performance in lossy network conditions.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Congestion control and loss recovery play a big role in the QUIC transport protocol performance. We recently added support for CUBIC and HyStart++ to quiche, the library powering Cloudflare&#x27;s QUIC, and lab-based testing shows promising results for performance in lossy network conditions."
 }

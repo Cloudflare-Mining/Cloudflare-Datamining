@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Martin J Levy",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/07/A03361C5-7DAD-4D01-8A98-A1400DF38E31.jpeg",
-			"width": 750,
-			"height": 744
-		},
 		"url": "https://blog.cloudflare.com/author/martin-levy/",
 		"sameAs": [
 			"https://twitter.com/mahtin"
@@ -31,9 +12,5 @@
 	"dateModified": "2018-08-28T21:30:49.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2017/02/NANOG_logo.jpg",
 	"keywords": "BGP, Peering, Bandwidth, Tips, Events, NANOG",
-	"description": "The North American Network Operators Group (NANOG) is the loci of modern Internet innovation and the day-to-day cumulative network-operational knowledge of thousands and thousands of network engineers.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "The North American Network Operators Group (NANOG) is the loci of modern Internet innovation and the day-to-day cumulative network-operational knowledge of thousands and thousands of network engineers."
 }

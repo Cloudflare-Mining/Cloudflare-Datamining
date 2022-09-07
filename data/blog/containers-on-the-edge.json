@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Kenton Varda",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/08/avatar-github.jpg",
-			"width": 460,
-			"height": 460
-		},
 		"url": "https://blog.cloudflare.com/author/kenton-varda/",
 		"sameAs": [
 			"https://twitter.com/kentonvarda"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/containers-on-the-edge/",
 	"datePublished": "2021-04-17T13:00:00.000Z",
 	"dateModified": "2021-04-17T19:32:44.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/04/image1-28.png",
-		"width": 1539,
-		"height": 682
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/04/image1-28.png",
 	"keywords": "Developer Week, Developers, Isolates, Remote Browser Isolation, Product News",
-	"description": "Today, we’re thrilled to announce that we’re exploring a new type of service at the edge: containers. If you have a use case for running containers at our edge, we’d love to know about it!",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Today, we’re thrilled to announce that we’re exploring a new type of service at the edge: containers. If you have a use case for running containers at our edge, we’d love to know about it!"
 }

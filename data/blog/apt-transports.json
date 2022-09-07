@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Ryan Djurovich",
-		"image": "http://blog.cloudflare.com/content/images/2017/09/AAEAAQAAAAAAAA16AAAAJDlkMzM2ZDc4LWNkYjgtNDJhOS1hM2VkLTU1ZjA1OGNlYWFkOA.jpg",
 		"url": "https://blog.cloudflare.com/author/ryan-djurovich/",
 		"sameAs": [
 			"https://www.ryan0x44.com",
@@ -25,16 +11,7 @@
 	"url": "https://blog.cloudflare.com/apt-transports/",
 	"datePublished": "2019-07-18T14:12:38.000Z",
 	"dateModified": "2020-08-14T15:59:18.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2019/07/apt-transport-internals-2.png",
-		"width": 2005,
-		"height": 1047
-	},
+	"image": "https://blog.cloudflare.com/content/images/2019/07/apt-transport-internals-2.png",
 	"keywords": "Cloudflare Access, Linux, HTTPS, Security",
-	"description": "Securing access to your APT repositories is critical. At Cloudflare, like in most organizations, we used a legacy VPN to lock down who could reach our internal software repositories. However, a network perimeter model lacks a number of features that we consider critical to a team’s security.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Securing access to your APT repositories is critical. At Cloudflare, like in most organizations, we used a legacy VPN to lock down who could reach our internal software repositories. However, a network perimeter model lacks a number of features that we consider critical to a team’s security."
 }

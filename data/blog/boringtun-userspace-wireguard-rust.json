@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Vlad Krasnov",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/165e069.jpg",
 		"url": "https://blog.cloudflare.com/author/vlad-krasnov/",
 		"sameAs": []
 	},
@@ -24,9 +10,5 @@
 	"dateModified": "2019-03-27T17:08:17.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2019/03/boringtun-twitter@3x.png",
 	"keywords": "Rust, Programming",
-	"description": "Today we are happy to release the source code of a project we’ve been working on for the past few months. It is called BoringTun, and is a userspace implementation of the WireGuard® protocol written in Rust.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Today we are happy to release the source code of a project we’ve been working on for the past few months. It is called BoringTun, and is a userspace implementation of the WireGuard® protocol written in Rust."
 }

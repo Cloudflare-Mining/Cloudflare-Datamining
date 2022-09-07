@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Omer Yoachimik",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/Omer-1.png",
-			"width": 773,
-			"height": 653
-		},
 		"url": "https://blog.cloudflare.com/author/omer/",
 		"sameAs": [
 			"https://twitter.com/OmerYoahimik"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/zh-tw/deep-dive-cloudflare-autonomous-edge-ddos-protection-zh-tw/",
 	"datePublished": "2021-03-18T15:22:00.000Z",
 	"dateModified": "2021-09-02T19:05:51.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/04/1-24.png",
-		"width": 1572,
-		"height": 839
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/04/1-24.png",
 	"keywords": "DDoS (TW), dosd (TW)",
-	"description": "很高興來談談我們的 DDoS (分散式阻斷服務) 保護系統。這套系統現已部署到 Cloudflare 全球所有 200 多個資料中心，正在積極為所有客戶提供保護，防禦第 3-7 層 (OSI 模型) 上的 DDoS 攻擊，無需人工干預。這還顯著提高了我們網路的韌性。作為我們非計量 DDoS 保護承諾的一部分，我們不會因客戶受到 DDoS 攻擊就增加收費。",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "很高興來談談我們的 DDoS (分散式阻斷服務) 保護系統。這套系統現已部署到 Cloudflare 全球所有 200 多個資料中心，正在積極為所有客戶提供保護，防禦第 3-7 層 (OSI 模型) 上的 DDoS 攻擊，無需人工干預。這還顯著提高了我們網路的韌性。作為我們非計量 DDoS 保護承諾的一部分，我們不會因客戶受到 DDoS 攻擊就增加收費。"
 }

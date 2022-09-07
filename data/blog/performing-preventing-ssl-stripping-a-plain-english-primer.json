@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Junade Ali",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/G1VwuaxB.jpg",
 		"url": "https://blog.cloudflare.com/author/junade-ali/",
 		"sameAs": [
 			"https://twitter.com/IcyApril"
@@ -26,9 +12,5 @@
 	"dateModified": "2020-08-18T18:20:03.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2017/10/Stripped_wire.jpg",
 	"keywords": "SSL, Crypto, HTTPS, Security, Attacks, TLS",
-	"description": "Over the past few days we learnt about a new attack that posed a serious weakness in the encryption protocol used to secure all modern Wi-Fi networks.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Over the past few days we learnt about a new attack that posed a serious weakness in the encryption protocol used to secure all modern Wi-Fi networks."
 }

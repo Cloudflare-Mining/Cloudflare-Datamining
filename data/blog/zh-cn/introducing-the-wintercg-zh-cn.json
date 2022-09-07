@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "James M Snell",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/11/mecoffee.jpg",
-			"width": 400,
-			"height": 400
-		},
 		"url": "https://blog.cloudflare.com/author/jasnell/",
 		"sameAs": [
 			"https://twitter.com/jasnell"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/introducing-the-wintercg-zh-cn/",
 	"datePublished": "2022-05-09T13:00:00.000Z",
 	"dateModified": "2022-05-12T16:21:02.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/05/image1-10-3.png",
-		"width": 1800,
-		"height": 1013
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/05/image1-10-3.png",
 	"keywords": "Platform Week (CN), JavaScript (CN), Cloudflare Workers (CN), Node.js (CN), 无服务器",
-	"description": "Cloudflare 很高兴能参与推出 Web 互操作性运行时社区小组，这是一项新的工作，它聚集了来自 Cloudflare Workers、Deno 和 Node.js 的贡献者，就共同的网络平台 API 标准开展合作",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Cloudflare 很高兴能参与推出 Web 互操作性运行时社区小组，这是一项新的工作，它聚集了来自 Cloudflare Workers、Deno 和 Node.js 的贡献者，就共同的网络平台 API 标准开展合作"
 }

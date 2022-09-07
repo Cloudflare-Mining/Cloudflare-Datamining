@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Jakub Sitnicki",
-		"image": "http://blog.cloudflare.com/content/images/2019/05/4_300698554542850065.jpg",
 		"url": "https://blog.cloudflare.com/author/jakub/",
 		"sameAs": []
 	},
@@ -22,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/missing-manuals-io_uring-worker-pool/",
 	"datePublished": "2022-02-04T13:58:05.000Z",
 	"dateModified": "2022-02-04T13:58:05.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/02/image3-4.png",
-		"width": 1999,
-		"height": 820
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/02/image3-4.png",
 	"keywords": "Kernel, Linux, io_uring, aio, Deep Dive",
-	"description": "Chances are you might have heard of io_uring. It first appeared in Linux 5.1, back in 2019, and was advertised as the new API for asynchronous I/O. Its goal was to be an alternative to the deemed-to-be-broken-beyond-repair AIO, the “old” asynchronous I/O API",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Chances are you might have heard of io_uring. It first appeared in Linux 5.1, back in 2019, and was advertised as the new API for asynchronous I/O. Its goal was to be an alternative to the deemed-to-be-broken-beyond-repair AIO, the “old” asynchronous I/O API"
 }

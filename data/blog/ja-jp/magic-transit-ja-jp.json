@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Rustam Lalkaka",
-		"image": "http://blog.cloudflare.com/content/images/2017/05/AAEAAQAAAAAAAAc9AAAAJDg0MzBkZTg1LTNkOTUtNGFlYy1hMjJiLTQxMjlmYzkyNjJjMA.jpg",
 		"url": "https://blog.cloudflare.com/author/rustam/",
 		"sameAs": [
 			"https://twitter.com/lalkaka"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/ja-jp/magic-transit-ja-jp/",
 	"datePublished": "2019-08-13T13:01:00.000Z",
 	"dateModified": "2021-01-21T18:48:12.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2019/12/Magic-Transit-Network-Diagram-3.gif",
-		"width": 1920,
-		"height": 860
-	},
+	"image": "https://blog.cloudflare.com/content/images/2019/12/Magic-Transit-Network-Diagram-3.gif",
 	"keywords": "日本語, 製品ニュース (JP), スピードと信頼性, Magic Transit (JP)",
-	"description": "本日は、Cloudflare Magic Transitのご紹介ができ、大変嬉しく思います。Magic Transitは、セキュアでパフォーマンスが高く、信頼性の高いインターネットへのIP接続を提供します。追加設定の必要もなく、オンプレミスのネットワークの前にMagic Transitを展開すると、DDoS攻撃から保護し、高度なパケットフィルタリング、負荷分散、トラフィック管理ツールなど仮想ネットワーク機能一式全てのプロビジョニングを可能にします。",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "本日は、Cloudflare Magic Transitのご紹介ができ、大変嬉しく思います。Magic Transitは、セキュアでパフォーマンスが高く、信頼性の高いインターネットへのIP接続を提供します。追加設定の必要もなく、オンプレミスのネットワークの前にMagic Transitを展開すると、DDoS攻撃から保護し、高度なパケットフィルタリング、負荷分散、トラフィック管理ツールなど仮想ネットワーク機能一式全てのプロビジョニングを可能にします。"
 }

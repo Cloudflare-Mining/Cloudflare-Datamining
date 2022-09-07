@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Zak Cutner",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/09/IMG_20200814_120215-2.jpg",
-			"width": 2000,
-			"height": 2000
-		},
 		"url": "https://blog.cloudflare.com/author/zak/",
 		"sameAs": [
 			"https://zakcutner.uk"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/building-even-faster-interpreters-in-rust/",
 	"datePublished": "2020-09-24T11:00:00.000Z",
 	"dateModified": "2020-09-24T21:33:34.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2020/09/Screen-Shot-2020-09-24-at-2.33.23-PM.png",
-		"width": 970,
-		"height": 598
-	},
+	"image": "https://blog.cloudflare.com/content/images/2020/09/Screen-Shot-2020-09-24-at-2.33.23-PM.png",
 	"keywords": "Firewall, Performance, Rust, SIMD, WAF",
-	"description": "Firewall Rules lets customers filter the traffic hitting their site, powered by our Wirefilter engine. We’re excited to share some in-depth optimizations we have recently made to improve the performance of our edge.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Firewall Rules lets customers filter the traffic hitting their site, powered by our Wirefilter engine. We’re excited to share some in-depth optimizations we have recently made to improve the performance of our edge."
 }

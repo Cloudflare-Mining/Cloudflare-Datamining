@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Sam Rhea",
-		"image": "http://blog.cloudflare.com/content/images/2018/07/photo-for-profile.jpg",
 		"url": "https://blog.cloudflare.com/author/sam/",
 		"sameAs": [
 			"https://twitter.com/LakeAustinBlvd"
@@ -26,9 +12,5 @@
 	"dateModified": "2021-05-19T18:50:31.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/11/IMG-0281-1.JPG",
 	"keywords": "Cloudflare Access, VPN, Security, Speed & Reliability",
-	"description": "You can now place applications that require SSH connections, like your source control repository, behind Cloudflare Access. We’re excited to release that same feature so that your team can also destroy your own VPN.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "You can now place applications that require SSH connections, like your source control repository, behind Cloudflare Access. We’re excited to release that same feature so that your team can also destroy your own VPN."
 }

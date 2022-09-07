@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Marc Lamik",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/09/unnamed-2.jpg",
-			"width": 1974,
-			"height": 1974
-		},
 		"url": "https://blog.cloudflare.com/author/marc-lamik/",
 		"sameAs": [
 			"https://twitter.com/marclamik"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/automatic-signed-exchanges/",
 	"datePublished": "2021-09-14T12:59:06.000Z",
 	"dateModified": "2022-08-09T14:32:07.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/09/image2-13.png",
-		"width": 1801,
-		"height": 1013
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/09/image2-13.png",
 	"keywords": "Speed Week, Web Performance, Signed Exchanges (SXG), Web Vitals",
-	"description": "Starting today, Cloudflare customers will be able to generate Signed Exchanges (SXG) for Google Search with just one click.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Starting today, Cloudflare customers will be able to generate Signed Exchanges (SXG) for Google Search with just one click."
 }

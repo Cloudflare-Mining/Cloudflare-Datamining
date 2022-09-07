@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Cristhian Motoche",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/09/twitter-profile-photo.png",
-			"width": 400,
-			"height": 400
-		},
 		"url": "https://blog.cloudflare.com/author/cristhian-motoche/",
 		"sameAs": [
 			"https://www.linkedin.com/in/cristhian-alberto-motoche-macas-706b86127",
@@ -30,16 +11,7 @@
 	"url": "https://blog.cloudflare.com/cloudflare-worker-with-webassembly-and-haskell/",
 	"datePublished": "2020-10-06T11:00:00.000Z",
 	"dateModified": "2020-10-09T09:36:10.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2020/10/Stack-Builders---Cloudflare-Post--.png",
-		"width": 2000,
-		"height": 1050
-	},
+	"image": "http://blog.cloudflare.com/content/images/2020/10/Stack-Builders---Cloudflare-Post--.png",
 	"keywords": "Cloudflare Workers, WebAssembly, WASM, Serverless",
-	"description": "Let&#x27;s combine the power of Haskell and WebAssembly in a Cloudflare Worker!",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Let&#x27;s combine the power of Haskell and WebAssembly in a Cloudflare Worker!"
 }

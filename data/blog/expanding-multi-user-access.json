@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Garrett Galow",
-		"image": "http://blog.cloudflare.com/content/images/2018/04/14729279_10207227100946205_2625241094472568444_n.jpg",
 		"url": "https://blog.cloudflare.com/author/garrett/",
 		"sameAs": []
 	},
@@ -24,9 +10,5 @@
 	"dateModified": "2018-08-27T21:54:04.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/05/orange_keyboard-1.jpg",
 	"keywords": "Product News, Multi-User, Dashboard, 2FA, Security",
-	"description": "One of the most common feature requests we get is to allow customers to share access to their account. This has been supported at our Enterprise level of service, but is now expanding to all customers. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "One of the most common feature requests we get is to allow customers to share access to their account. This has been supported at our Enterprise level of service, but is now expanding to all customers. "
 }

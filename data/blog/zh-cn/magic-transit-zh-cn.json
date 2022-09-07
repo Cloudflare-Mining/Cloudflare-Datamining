@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Rustam Lalkaka",
-		"image": "http://blog.cloudflare.com/content/images/2017/05/AAEAAQAAAAAAAAc9AAAAJDg0MzBkZTg1LTNkOTUtNGFlYy1hMjJiLTQxMjlmYzkyNjJjMA.jpg",
 		"url": "https://blog.cloudflare.com/author/rustam/",
 		"sameAs": [
 			"https://twitter.com/lalkaka"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/magic-transit-zh-cn/",
 	"datePublished": "2019-08-13T13:01:00.000Z",
 	"dateModified": "2021-01-28T19:12:39.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2019/09/Magic_transit_network_diagram_with_Cloudflare.png",
-		"width": 1520,
-		"height": 855
-	},
+	"image": "https://blog.cloudflare.com/content/images/2019/09/Magic_transit_network_diagram_with_Cloudflare.png",
 	"keywords": "速度和可靠性 (CN), 简体中文 (CN), 产品新闻, Magic Transit (CN)",
-	"description": "今天我们很高兴能发布Cloudflare Magic Transit。Magic Transit为互联网提供安全，高性能和可靠的IP连接。在您的内部网络前部署Magic Transit即可立即进行使用，它可以保护您免受DDoS攻击，并支持配置全套虚拟网络功能，包括高级数据包过滤，负载平衡和流量管理工具。",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "今天我们很高兴能发布Cloudflare Magic Transit。Magic Transit为互联网提供安全，高性能和可靠的IP连接。在您的内部网络前部署Magic Transit即可立即进行使用，它可以保护您免受DDoS攻击，并支持配置全套虚拟网络功能，包括高级数据包过滤，负载平衡和流量管理工具。"
 }

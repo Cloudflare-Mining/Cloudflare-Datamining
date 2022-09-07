@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Michael Tremante",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/url-3.jpg",
 		"url": "https://blog.cloudflare.com/author/michael-tremante/",
 		"sameAs": [
 			"https://twitter.com/MichaelTremante"
@@ -26,9 +12,5 @@
 	"dateModified": "2020-10-08T12:31:45.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/08/6089266689_ea391d6a6d_o.jpg",
 	"keywords": "API, Security, Privacy",
-	"description": "While working to make the Internet a better place, we also want to make it easier for our customers to have control of their content and APIs, and who has access to them. Using Cloudflare’s Token Authentication features, customers can implement access control via URL tokens or HTTP request headers.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "While working to make the Internet a better place, we also want to make it easier for our customers to have control of their content and APIs, and who has access to them. Using Cloudflare’s Token Authentication features, customers can implement access control via URL tokens or HTTP request headers."
 }

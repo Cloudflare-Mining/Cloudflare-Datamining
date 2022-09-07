@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Adam Chalmers",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/08/Adam-Chalmers.png",
-			"width": 494,
-			"height": 490
-		},
 		"url": "https://blog.cloudflare.com/author/adam-chalmers/",
 		"sameAs": [
 			"https://twitter.com/adam_chal"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/highly-available-and-highly-scalable-cloudflare-tunnels/",
 	"datePublished": "2021-05-12T13:00:00.000Z",
 	"dateModified": "2021-05-19T18:07:27.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/05/image4-1.png",
-		"width": 1800,
-		"height": 942
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/05/image4-1.png",
 	"keywords": "Product News, Cloudflare Tunnel, Security",
-	"description": "Starting today, we’re thrilled to announce you can run the same tunnel from multiple different cloudflareds simultaneously. This enables graceful restarts, elastic auto-scaling, easier Kubernetes integration, and more reliable tunnels.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Starting today, we’re thrilled to announce you can run the same tunnel from multiple different cloudflareds simultaneously. This enables graceful restarts, elastic auto-scaling, easier Kubernetes integration, and more reliable tunnels."
 }

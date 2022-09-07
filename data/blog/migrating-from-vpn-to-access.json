@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Achiel van der Mandele",
-		"image": "http://blog.cloudflare.com/content/images/2019/04/avatar.png",
 		"url": "https://blog.cloudflare.com/author/achiel/",
 		"sameAs": []
 	},
@@ -22,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/migrating-from-vpn-to-access/",
 	"datePublished": "2020-03-28T12:00:00.000Z",
 	"dateModified": "2020-08-20T17:56:00.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2020/03/access-plus-Spectrum@2x.png",
-		"width": 2312,
-		"height": 1190
-	},
+	"image": "https://blog.cloudflare.com/content/images/2020/03/access-plus-Spectrum@2x.png",
 	"keywords": "Cloudflare Access, VPN, Cloudflare Zero Trust, Election Security",
-	"description": "With so many people at Cloudflare now working remotely, it&#x27;s worth stepping back and looking at the systems we use to get work done and how we protect them. Over the years we&#x27;ve migrated from a traditional &quot;put it behind the VPN!&quot; company to a modern zero-trust architecture. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "With so many people at Cloudflare now working remotely, it&#x27;s worth stepping back and looking at the systems we use to get work done and how we protect them. Over the years we&#x27;ve migrated from a traditional &quot;put it behind the VPN!&quot; company to a modern zero-trust architecture. "
 }

@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Andy Parker",
-		"image": "http://blog.cloudflare.com/content/images/2018/08/_DSC8743.jpg",
 		"url": "https://blog.cloudflare.com/author/andy/",
 		"sameAs": []
 	},
@@ -24,9 +10,5 @@
 	"dateModified": "2021-09-20T18:09:46.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/09/ipfs-gateway-header@3.5x-2.png",
 	"keywords": "Crypto Week, Crypto, Security, IPFS, Universal SSL, SSL, DNSSEC, HTTPS, Research",
-	"description": "Today we’re excited to introduce Cloudflare’s IPFS Gateway, an easy way to access content from the the InterPlanetary File System (IPFS) that doesn’t require installing and running any special software on your computer.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Today we’re excited to introduce Cloudflare’s IPFS Gateway, an easy way to access content from the the InterPlanetary File System (IPFS) that doesn’t require installing and running any special software on your computer."
 }

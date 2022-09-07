@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Tom Brightbill",
-		"image": "http://blog.cloudflare.com/content/images/2019/03/tomb.jpg",
 		"url": "https://blog.cloudflare.com/author/tom-brightbill/",
 		"sameAs": []
 	},
@@ -24,9 +10,5 @@
 	"dateModified": "2020-11-10T13:15:15.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2019/02/Screen-Shot-2019-02-19-at-11.06.04-AM.png",
 	"keywords": "GitHub, Developers, Cloudflare Workers, Serverless, JavaScript, Programming",
-	"description": "If you weren’t aware, Cloudware Workers, our serverless programming platform, allows you to deploy code onto our 165 data centers around the world. \nWant to automatically deploy Workers directly from a GitHub repository? Now you can with our official GitHub Action. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "If you weren’t aware, Cloudware Workers, our serverless programming platform, allows you to deploy code onto our 165 data centers around the world. \nWant to automatically deploy Workers directly from a GitHub repository? Now you can with our official GitHub Action. "
 }

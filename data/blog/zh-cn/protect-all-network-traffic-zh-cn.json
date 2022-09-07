@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Annika Garbers",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/annika.png",
-			"width": 400,
-			"height": 400
-		},
 		"url": "https://blog.cloudflare.com/author/annika/",
 		"sameAs": [
 			"https://twitter.com/annikagarbers"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/protect-all-network-traffic-zh-cn/",
 	"datePublished": "2022-03-17T12:59:00.000Z",
 	"dateModified": "2022-06-07T11:21:09.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/06/Screenshot-2022-06-07-at-09.16.28-1.png",
-		"width": 1502,
-		"height": 836
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/06/Screenshot-2022-06-07-at-09.16.28-1.png",
 	"keywords": "安全, Cloudflare 网络, Magic Transit (CN), Security Week (CN), 产品新闻",
-	"description": "今天，通过提供受 Magic Transit 保护、Cloudflare 代管的 IP 空间，我们将 Magic Transit 的可用性扩展到拥有较小网络的客户",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "今天，通过提供受 Magic Transit 保护、Cloudflare 代管的 IP 空间，我们将 Magic Transit 的可用性扩展到拥有较小网络的客户"
 }

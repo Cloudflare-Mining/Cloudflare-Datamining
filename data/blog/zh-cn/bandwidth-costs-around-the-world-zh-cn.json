@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Nitin Rao",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/08/WtxhLSEUSgqYRMdQUwWp_1204a20b3d1d96bba523a6a2a5fa3cd73bd4fe59240a27ad6eb8c064c6792446.jpg",
-			"width": 600,
-			"height": 600
-		},
 		"url": "https://blog.cloudflare.com/author/nitin-rao/",
 		"sameAs": [
 			"https://twitter.com/NitinBRao"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/bandwidth-costs-around-the-world-zh-cn/",
 	"datePublished": "2016-08-17T16:50:00.000Z",
 	"dateModified": "2021-01-28T18:20:53.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2019/08/CoinOperatedInternet-1.jpg",
-		"width": 427,
-		"height": 640
-	},
+	"image": "https://blog.cloudflare.com/content/images/2019/08/CoinOperatedInternet-1.jpg",
 	"keywords": "简体中文 (CN), 带宽, 数据中心, Cloudflare 网络 (CN), 带宽成本",
-	"description": "CloudFlare利用遍布45个国家86个城市的全球网络保护了400多万个互联网资产。运行这一网络为我们提供了一个独特的优势，即是可以跟踪全球带宽的不断变化的成本。\n（注：截止至2019年8月，Cloudflare的全球网络已覆盖90多个国家的193个城市；本文后续数据统计于2016年8月前。）",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "CloudFlare利用遍布45个国家86个城市的全球网络保护了400多万个互联网资产。运行这一网络为我们提供了一个独特的优势，即是可以跟踪全球带宽的不断变化的成本。\n（注：截止至2019年8月，Cloudflare的全球网络已覆盖90多个国家的193个城市；本文后续数据统计于2016年8月前。）"
 }

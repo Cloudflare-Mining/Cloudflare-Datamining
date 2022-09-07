@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Kenton Varda",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/08/avatar-github.jpg",
-			"width": 460,
-			"height": 460
-		},
 		"url": "https://blog.cloudflare.com/author/kenton-varda/",
 		"sameAs": [
 			"https://twitter.com/kentonvarda"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/introducing-workers-durable-objects-zh-cn/",
 	"datePublished": "2020-09-28T13:00:00.000Z",
 	"dateModified": "2021-01-27T02:40:32.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2020/12/Birthday-Week-OG-images_Object_Workers.png",
-		"width": 3334,
-		"height": 1668
-	},
+	"image": "http://blog.cloudflare.com/content/images/2020/12/Birthday-Week-OG-images_Object_Workers.png",
 	"keywords": "简体中文 (CN), Cloudflare Workers (CN), 产品新闻, 无服务器",
-	"description": "在 2017 年推出 Cloudflare Workers® 时，我们心怀着一个激进的愿景：在网络边缘运行的代码不仅要能够提高性能，而且比在单个数据中心运行的代码更容易部署，运行成本也要更低。",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "在 2017 年推出 Cloudflare Workers® 时，我们心怀着一个激进的愿景：在网络边缘运行的代码不仅要能够提高性能，而且比在单个数据中心运行的代码更容易部署，运行成本也要更低。"
 }

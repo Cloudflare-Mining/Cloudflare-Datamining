@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Andrew Galloni",
-		"image": "http://blog.cloudflare.com/content/images/2018/02/4Dzpw0TrQAmQGEaubqch_1204a20b3d1d96bba523a6a2a5fa3cd73bd4fe59240a27ad6eb8c064c6792446.jpg",
 		"url": "https://blog.cloudflare.com/author/andrew-galloni/",
 		"sameAs": []
 	},
@@ -22,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/new-speed-page/",
 	"datePublished": "2019-05-20T13:00:00.000Z",
 	"dateModified": "2019-12-04T21:36:51.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2019/10/new-speed-page@3x.png",
-		"width": 3692,
-		"height": 1847
-	},
+	"image": "https://blog.cloudflare.com/content/images/2019/10/new-speed-page@3x.png",
 	"keywords": "Speed Week, Speed & Reliability, HTTP2, Product News, Dashboard",
-	"description": "With the Speed Page redesign, we are emphasizing the performance benefits of using Cloudflare and the additional improvements possible from our features.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "With the Speed Page redesign, we are emphasizing the performance benefits of using Cloudflare and the additional improvements possible from our features."
 }

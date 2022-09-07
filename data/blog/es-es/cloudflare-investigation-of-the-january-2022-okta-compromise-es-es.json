@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "John Graham-Cumming",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
 		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
 		"sameAs": [
 			"https://twitter.com/jgrahamc"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/es-es/cloudflare-investigation-of-the-january-2022-okta-compromise-es-es/",
 	"datePublished": "2022-03-22T16:57:00.000Z",
 	"dateModified": "2022-06-14T13:35:54.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/06/Okta-Breach-1.png",
-		"width": 1200,
-		"height": 675
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/06/Okta-Breach-1.png",
 	"keywords": "Okta (ES), Seguridad, Español",
-	"description": "Durante el mes de enero de 2022, un grupo de hackers ajenos a Okta tuvieron acceso a la cuenta de un empleado subcontratado de Okta y pudieron realizar acciones como si se tratara del propio empleado",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Durante el mes de enero de 2022, un grupo de hackers ajenos a Okta tuvieron acceso a la cuenta de un empleado subcontratado de Okta y pudieron realizar acciones como si se tratara del propio empleado"
 }

@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Ingvar Stepanyan",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/rYPVgOqN.jpg",
 		"url": "https://blog.cloudflare.com/author/ingvar-stepanyan/",
 		"sameAs": []
 	},
@@ -22,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/writing-complex-macros-in-rust-reverse-polish-notation-zh-cn/",
 	"datePublished": "2018-01-31T12:11:00.000Z",
 	"dateModified": "2021-01-28T18:31:54.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2020/01/25057125240_939a41249f_z-1.jpg",
-		"width": 640,
-		"height": 427
-	},
+	"image": "https://blog.cloudflare.com/content/images/2020/01/25057125240_939a41249f_z-1.jpg",
 	"keywords": "Rust (CN), 开发人员, 波兰式 (CN), 简体中文 (CN)",
-	"description": "除其他有趣的功能外，Rust还具有强大的宏系统。不幸的是，即使在阅读了《The Book》和各种教程之后，当涉及到尝试实现一个涉及处理不同元素的复杂列表的宏时，我仍然很难理解应该如何做，并且在花了一些时间后，我才突然灵光一闪，开始对所有内容使用宏 :） (好吧，",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "除其他有趣的功能外，Rust还具有强大的宏系统。不幸的是，即使在阅读了《The Book》和各种教程之后，当涉及到尝试实现一个涉及处理不同元素的复杂列表的宏时，我仍然很难理解应该如何做，并且在花了一些时间后，我才突然灵光一闪，开始对所有内容使用宏 :） (好吧，"
 }

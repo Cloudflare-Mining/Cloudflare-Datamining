@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Steven Pack",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/08/steven-pack.png",
-			"width": 496,
-			"height": 492
-		},
 		"url": "https://blog.cloudflare.com/author/stevenpack/",
 		"sameAs": [
 			"https://twitter.com/steven_pack"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/cloudflare-and-wordpress/",
 	"datePublished": "2021-03-19T14:00:00.000Z",
 	"dateModified": "2021-03-19T20:54:16.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/03/Group-1284-1.png",
-		"width": 1736,
-		"height": 896
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/03/Group-1284-1.png",
 	"keywords": "Product News, WordPress, Privacy, Analytics",
-	"description": "Today we’re excited to announce a number of initiatives, starting with the integration of Cloudflare’s privacy-first web analytics into WordPress.com. This integration gives WordPress.com publishers choice in how they collect usage data and derive insights about their visitors. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Today we’re excited to announce a number of initiatives, starting with the integration of Cloudflare’s privacy-first web analytics into WordPress.com. This integration gives WordPress.com publishers choice in how they collect usage data and derive insights about their visitors. "
 }

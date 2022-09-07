@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Hannes Gerhart",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/09/Profile.jpg",
-			"width": 600,
-			"height": 600
-		},
 		"url": "https://blog.cloudflare.com/author/hannes/",
 		"sameAs": [
 			"https://linkedin.com/in/hannesgerhart"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/ja-jp/tackling-email-spoofing-ja-jp/",
 	"datePublished": "2021-09-27T15:15:00.000Z",
 	"dateModified": "2021-10-05T23:45:44.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/10/1-15.png",
-		"width": 1800,
-		"height": 1013
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/10/1-15.png",
 	"keywords": "Birthday Week (JP), DNS (JP), Phishing (JP), 日本語",
-	"description": "当社は本日、メールのスプーフィングやフィッシングに対抗し、メールの到達性を向上させる新たな対策ツールを発表します。新しいEmail Security DNS Wizardを使って、お客様のドメインに代わって他者が悪意あるメールを送信するのを防ぐDNSレコードを作成できます。この新しい機能は、ドメイン上のセキュアではないDNS設定についてユーザーに警告し、その解決方法についてアドバイスも提供します。この機能はまずFreeプランのユーザーを対象に展開され、今後数週間でProプラン、Businessプラン、Enterpriseプランのお客様にもご利用いただけるようになります。",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "当社は本日、メールのスプーフィングやフィッシングに対抗し、メールの到達性を向上させる新たな対策ツールを発表します。新しいEmail Security DNS Wizardを使って、お客様のドメインに代わって他者が悪意あるメールを送信するのを防ぐDNSレコードを作成できます。この新しい機能は、ドメイン上のセキュアではないDNS設定についてユーザーに警告し、その解決方法についてアドバイスも提供します。この機能はまずFreeプランのユーザーを対象に展開され、今後数週間でProプラン、Businessプラン、Enterpriseプランのお客様にもご利用いただけるようになります。"
 }

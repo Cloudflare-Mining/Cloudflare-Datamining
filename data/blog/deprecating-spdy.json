@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Max Nystrom",
-		"image": {
-			"@type": "ImageObject",
-			"url": "//www.gravatar.com/avatar/e144ba503bc9593909bdda6d0c041ccc?s=250&d=mm&r=x",
-			"width": 250,
-			"height": 250
-		},
 		"url": "https://blog.cloudflare.com/author/max-nystrom/",
 		"sameAs": []
 	},
@@ -29,9 +10,5 @@
 	"dateModified": "2019-06-29T21:07:17.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/01/0910152_02-A4-at-144-dpi.jpg",
 	"keywords": "SSL, Product News, spdy, HTTP2, Security, Speed & Reliability",
-	"description": "Participating in the Internet democracy occasionally means that technologies that were once popular lose their utility as newer technologies emerge. SPDY is one such technology.  As a result, we&#x27;re announcing our intention to deprecate the use of SPDY for connections made to Cloudflare&#x27;s edge.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Participating in the Internet democracy occasionally means that technologies that were once popular lose their utility as newer technologies emerge. SPDY is one such technology.  As a result, we&#x27;re announcing our intention to deprecate the use of SPDY for connections made to Cloudflare&#x27;s edge."
 }

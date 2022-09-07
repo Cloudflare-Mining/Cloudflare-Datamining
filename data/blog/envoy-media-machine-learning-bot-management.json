@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Ryan Marlow (Guest Blogger)",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/03/Ryan-Marlow.jpg",
-			"width": 200,
-			"height": 200
-		},
 		"url": "https://blog.cloudflare.com/author/ryan-marlow/",
 		"sameAs": [
 			"https://twitter.com/MyanRarlow"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/envoy-media-machine-learning-bot-management/",
 	"datePublished": "2022-03-16T12:59:05.000Z",
 	"dateModified": "2022-06-13T14:06:07.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/03/image1-53.png",
-		"width": 1800,
-		"height": 1013
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/03/image1-53.png",
 	"keywords": "Security Week, Bot Management, Machine Learning",
-	"description": "How Envoy Media uses Bot Score and Machine Learning to improve business outcomes",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "How Envoy Media uses Bot Score and Machine Learning to improve business outcomes"
 }

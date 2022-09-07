@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Erwin van der Koogh",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/04/twitter-profile-photo.jpeg",
-			"width": 400,
-			"height": 400
-		},
 		"url": "https://blog.cloudflare.com/author/erwin/",
 		"sameAs": [
 			"https://twitter.com/evanderkoogh"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/developer-spotlight-tejas-metha-cclip/",
 	"datePublished": "2021-11-19T13:59:27.000Z",
 	"dateModified": "2021-11-19T13:59:27.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/11/image2-21.png",
-		"width": 1801,
-		"height": 1012
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/11/image2-21.png",
 	"keywords": "Full Stack Week, Developer Spotlight, Flutter",
-	"description": "One of the most exciting things about serverless is not that you can now build everything in serverless, but that it becomes really easy to connect multiple managed services. Tejas Mehta built cClip by connecting services like RevenueCat, Stripe and Firebase into a fully fledged product.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "One of the most exciting things about serverless is not that you can now build everything in serverless, but that it becomes really easy to connect multiple managed services. Tejas Mehta built cClip by connecting services like RevenueCat, Stripe and Firebase into a fully fledged product."
 }

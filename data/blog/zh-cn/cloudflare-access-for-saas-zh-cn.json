@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Sam Rhea",
-		"image": "http://blog.cloudflare.com/content/images/2018/07/photo-for-profile.jpg",
 		"url": "https://blog.cloudflare.com/author/sam/",
 		"sameAs": [
 			"https://twitter.com/LakeAustinBlvd"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/cloudflare-access-for-saas-zh-cn/",
 	"datePublished": "2020-10-13T13:00:00.000Z",
 	"dateModified": "2021-01-28T20:31:13.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/01/Teams-for-SAAS-thumb-1.png",
-		"width": 1854,
-		"height": 1059
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/01/Teams-for-SAAS-thumb-1.png",
 	"keywords": "简体中文 (CN), 产品新闻, 零信任 (CN), 安全, 零信任周 (CN), Cloudflare Access (CN)",
-	"description": "我们将Cloudflare Access™构建为解决Cloudflare内部问题的工具。我们依靠一组应用程序来管理和监视我们的网络。其中一些是我们自己托管的受欢迎产品，例如Atlassian套件，",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "我们将Cloudflare Access™构建为解决Cloudflare内部问题的工具。我们依靠一组应用程序来管理和监视我们的网络。其中一些是我们自己托管的受欢迎产品，例如Atlassian套件，"
 }

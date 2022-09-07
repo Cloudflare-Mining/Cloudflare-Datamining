@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Julie A. Sparks",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/08/IMG_1517.jpg",
-			"width": 640,
-			"height": 480
-		},
 		"url": "https://blog.cloudflare.com/author/julie/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/id-id/account-compromise-security-overview-id-id/",
 	"datePublished": "2021-03-29T23:00:00.000Z",
 	"dateModified": "2022-01-20T18:11:06.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/01/image1-63-1.png",
-		"width": 1585,
-		"height": 740
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/01/image1-63-1.png",
 	"keywords": "Minggu Keamanan, Pengambilalihan Akun, Tim Keamanan, Cloudflare Gateway (ID), Cloudflare Access (ID)",
-	"description": "Selama seminggu terakhir, Cloudflare telah menerbitkan postingan blog tentang produk yang dibuat untuk mengamankan pelanggan kami dari bot penjejalan kredensial, mendeteksi pengguna dengan kredensial yang disusupi, dan memblokir pengguna dari layanan proxy",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Selama seminggu terakhir, Cloudflare telah menerbitkan postingan blog tentang produk yang dibuat untuk mengamankan pelanggan kami dari bot penjejalan kredensial, mendeteksi pengguna dengan kredensial yang disusupi, dan memblokir pengguna dari layanan proxy"
 }

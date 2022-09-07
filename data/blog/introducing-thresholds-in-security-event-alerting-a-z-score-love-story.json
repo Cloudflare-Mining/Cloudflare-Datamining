@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Kristina Galicova",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/08/D9C25482-7311-426C-BE08-C1E2A712EBB1_1_201_a.jpeg",
-			"width": 2000,
-			"height": 2000
-		},
 		"url": "https://blog.cloudflare.com/author/kristina-galicova/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/introducing-thresholds-in-security-event-alerting-a-z-score-love-story/",
 	"datePublished": "2022-08-30T14:00:00.000Z",
 	"dateModified": "2022-08-30T13:58:36.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/08/pasted-image-0--1--2.png",
-		"width": 1200,
-		"height": 628
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/08/pasted-image-0--1--2.png",
 	"keywords": "Notifications, Alerts, WAF, Product News, Security",
-	"description": "Today we are excited to announce thresholds for our Security Event Alerts: a new and improved way of detecting anomalous spikes of security events on your Internet properties. By introducing a threshold, we are able to make alerts more accurate and only notify you when it truly matters",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Today we are excited to announce thresholds for our Security Event Alerts: a new and improved way of detecting anomalous spikes of security events on your Internet properties. By introducing a threshold, we are able to make alerts more accurate and only notify you when it truly matters"
 }

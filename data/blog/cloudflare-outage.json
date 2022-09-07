@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "John Graham-Cumming",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
 		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
 		"sameAs": [
 			"https://twitter.com/jgrahamc"
@@ -24,10 +10,7 @@
 	"url": "https://blog.cloudflare.com/cloudflare-outage/",
 	"datePublished": "2019-07-02T15:50:00.000Z",
 	"dateModified": "2020-08-20T12:45:57.000Z",
+	"image": null,
 	"keywords": "Post Mortem, Outage, Deep Dive",
-	"description": "Starting at 1342 UTC today we experienced a global outage across our network that resulted in visitors to Cloudflare-proxied domains being shown 502 errors (“Bad Gateway”). The cause of this outage was deployment of a single misconfigured rule within the Cloudflare Web Application Firewall (WAF) ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Starting at 1342 UTC today we experienced a global outage across our network that resulted in visitors to Cloudflare-proxied domains being shown 502 errors (“Bad Gateway”). The cause of this outage was deployment of a single misconfigured rule within the Cloudflare Web Application Firewall (WAF) "
 }

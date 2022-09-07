@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Rob Dinh",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2020/12/Screen-Shot-2020-12-08-at-07.04.53.png",
-			"width": 266,
-			"height": 256
-		},
 		"url": "https://blog.cloudflare.com/author/robdinh/",
 		"sameAs": [
 			"https://twitter.com/rob_dinh"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/an-epyc-trip-to-rome-amd-is-cloudflares-10th-generation-edge-server-cpu/",
 	"datePublished": "2020-02-25T14:00:00.000Z",
 	"dateModified": "2020-04-07T21:33:05.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2020/02/gen-x-color-Tuesday--twitter@2x-1.png",
-		"width": 1249,
-		"height": 704
-	},
+	"image": "https://blog.cloudflare.com/content/images/2020/02/gen-x-color-Tuesday--twitter@2x-1.png",
 	"keywords": "Hardware, Cloudflare Network, Data Center, EPYC, Partners, Speed & Reliability",
-	"description": "As we started looking at production ready systems to power our Gen X solution, we took a long look at what is available to us in the market today and we’ve made our decision. We’re moving on from Gen 9&#x27;s 48-core setup of dual socket Intel Xeon Platinum 6162&#x27;s to a 48-core single socket AMD EPYC 7642",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "As we started looking at production ready systems to power our Gen X solution, we took a long look at what is available to us in the market today and we’ve made our decision. We’re moving on from Gen 9&#x27;s 48-core setup of dual socket Intel Xeon Platinum 6162&#x27;s to a 48-core single socket AMD EPYC 7642"
 }

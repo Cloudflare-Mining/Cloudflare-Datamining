@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Ashcon Partovi",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/04/117158947_4858836477475662_2532132460047140852_o.jpeg",
-			"width": 280,
-			"height": 280
-		},
 		"url": "https://blog.cloudflare.com/author/ashcon/",
 		"sameAs": [
 			"https://twitter.com/ashconpartovi"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/ja-jp/workers-javascript-modules-ja-jp/",
 	"datePublished": "2021-11-16T13:58:00.000Z",
 	"dateModified": "2021-12-29T20:42:48.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/12/image1-26-1.png",
-		"width": 1200,
-		"height": 675
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/12/image1-26-1.png",
 	"keywords": "Full Stack Week (JP), 日本語, JavaScript (JP), Cloudflare Workers (JP), 製品ニュース (JP), 開発者 (JP)",
-	"description": "Cloudflare WorkersでJavaScriptモジュールのサポートを開始します。JavaScriptで記述されたWorkerの例を見れば、過去数年間にインターネット上で出現するようになった次のコードスニペットに気付くかもしれませ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Cloudflare WorkersでJavaScriptモジュールのサポートを開始します。JavaScriptで記述されたWorkerの例を見れば、過去数年間にインターネット上で出現するようになった次のコードスニペットに気付くかもしれませ"
 }

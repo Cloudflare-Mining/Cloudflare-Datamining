@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Meyer Zinn",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/08/Profile-Photo.jpeg",
-			"width": 328,
-			"height": 390
-		},
 		"url": "https://blog.cloudflare.com/author/meyer/",
 		"sameAs": [
 			"https://meyerzinn.tech/",
@@ -30,16 +11,7 @@
 	"url": "https://blog.cloudflare.com/making-magic-transit-health-checks-faster-and-more-responsive/",
 	"datePublished": "2021-08-23T13:08:32.000Z",
 	"dateModified": "2021-08-23T13:08:31.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/08/Magic-Transit-Heath-Checks-1.png",
-		"width": 1600,
-		"height": 801
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/08/Magic-Transit-Heath-Checks-1.png",
 	"keywords": "Magic Transit, Security, Network Interconnect, Network Services",
-	"description": "Magic Transit advertises our customer’s IP prefixes directly from our edge network, applying DDoS mitigation and firewall policies to all traffic destined for the customer’s network. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Magic Transit advertises our customer’s IP prefixes directly from our edge network, applying DDoS mitigation and firewall policies to all traffic destined for the customer’s network. "
 }

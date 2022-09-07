@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Matthew Prince",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
-			"width": 1196,
-			"height": 1190
-		},
 		"url": "https://blog.cloudflare.com/author/matthew-prince/",
 		"sameAs": [
 			"https://twitter.com/eastdakota"
@@ -31,9 +12,5 @@
 	"dateModified": "2018-08-10T20:21:36.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/08/logs.jpg.scaled500.jpg",
 	"keywords": "Analytics, Data, Privacy",
-	"description": "We&#x27;ve had a number of requests for information about what data CloudFlare logs when someone visits a site on our network. While we have provided a Privacy Policy that outlines how we keep information private, I wanted to take the time to clarify our customer log retention policies.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "We&#x27;ve had a number of requests for information about what data CloudFlare logs when someone visits a site on our network. While we have provided a Privacy Policy that outlines how we keep information private, I wanted to take the time to clarify our customer log retention policies."
 }

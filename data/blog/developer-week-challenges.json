@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Gretchen Scott",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/04/HeadshotTekapo.jpg",
-			"width": 400,
-			"height": 400
-		},
 		"url": "https://blog.cloudflare.com/author/gretchen/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/developer-week-challenges/",
 	"datePublished": "2021-04-12T14:00:00.000Z",
 	"dateModified": "2021-04-22T18:17:30.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/04/image1-6.png",
-		"width": 1685,
-		"height": 1000
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/04/image1-6.png",
 	"keywords": "Developer Week, Cloudflare Workers, Developers, Wrangler, Serverless",
-	"description": "Developer week is here! Throughout the week we are running a series of Developer Challenges that give you the perfect excuse to play with our new features. See how many of the challenges you can get through.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Developer week is here! Throughout the week we are running a series of Developer Challenges that give you the perfect excuse to play with our new features. See how many of the challenges you can get through."
 }

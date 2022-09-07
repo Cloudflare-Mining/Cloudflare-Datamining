@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Tanushree Sharma",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/09/IMG_1328-1.jpg",
-			"width": 1895,
-			"height": 1874
-		},
 		"url": "https://blog.cloudflare.com/author/tanushree/",
 		"sameAs": [
 			"https://twitter.com/TanushreeS5"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/logpush-for-workers/",
 	"datePublished": "2022-05-10T13:01:14.000Z",
 	"dateModified": "2022-05-18T13:56:58.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/05/image1-16.png",
-		"width": 1800,
-		"height": 1013
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/05/image1-16.png",
 	"keywords": "Platform Week, Cloudflare Workers, Product News, Serverless",
-	"description": "Customers are using Cloudlfare Workers to create the next big thing, we’re building tools to make that happen successfully. We’re excited to announce Logpush for Worker’s Trace Events, making it easier than ever to gain visibility into applications built on Workers",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Customers are using Cloudlfare Workers to create the next big thing, we’re building tools to make that happen successfully. We’re excited to announce Logpush for Worker’s Trace Events, making it easier than ever to gain visibility into applications built on Workers"
 }

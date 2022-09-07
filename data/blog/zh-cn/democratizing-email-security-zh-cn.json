@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Patrick R. Donahue",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/me0-1.png",
-			"width": 300,
-			"height": 291
-		},
 		"url": "https://blog.cloudflare.com/author/patrick/",
 		"sameAs": [
 			"https://www.cloudflare.com",
@@ -30,16 +11,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/democratizing-email-security-zh-cn/",
 	"datePublished": "2022-03-14T12:59:00.000Z",
 	"dateModified": "2022-03-24T14:03:40.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/03/image1-104.png",
-		"width": 1800,
-		"height": 1013
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/03/image1-104.png",
 	"keywords": "安全周 (CN), 安全, 零信任 (CN)",
-	"description": "我们预计在 2022 年第二季度初会完成对 Area 1 的收购，此后，我们打算允许所有付费自助服务套餐采用其电子邮件安全技术，不收取额外费用",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "我们预计在 2022 年第二季度初会完成对 Area 1 的收购，此后，我们打算允许所有付费自助服务套餐采用其电子邮件安全技术，不收取额外费用"
 }

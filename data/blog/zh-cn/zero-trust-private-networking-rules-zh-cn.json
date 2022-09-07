@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Kenny Johnson",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2020/12/0DA903DE-E315-43D5-B0DE-39870448303D.jpeg",
-			"width": 265,
-			"height": 252
-		},
 		"url": "https://blog.cloudflare.com/author/kenny/",
 		"sameAs": [
 			"https://twitter.com/KennyJohnsonATX"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/zero-trust-private-networking-rules-zh-cn/",
 	"datePublished": "2021-12-08T13:59:00.000Z",
 	"dateModified": "2021-12-31T04:17:42.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/12/image3-12-4.png",
-		"width": 1761,
-		"height": 1011
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/12/image3-12-4.png",
 	"keywords": "CIO Week (CN), 简体中文 (CN), 产品新闻, 零信任 (CN)",
-	"description": "我们年初宣布了一种新功能，其可通过身份驱动的访问控制在 Cloudflare 网络上构建一个专用网络。很高兴地告诉大家，这种访问控制很快就能扩展到会话和登录间隔了。",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "我们年初宣布了一种新功能，其可通过身份驱动的访问控制在 Cloudflare 网络上构建一个专用网络。很高兴地告诉大家，这种访问控制很快就能扩展到会话和登录间隔了。"
 }

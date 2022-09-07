@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "John Graham-Cumming",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
 		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
 		"sameAs": [
 			"https://twitter.com/jgrahamc"
@@ -26,9 +12,5 @@
 	"dateModified": "2018-08-28T21:19:57.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/08/13368326574_3766538c08_z.jpg",
 	"keywords": "DDoS, Attacks, Protection, Reliability, Security, Mitigation",
-	"description": "Back in March my colleague Marek wrote about a Winter of Whopping Weekend DDoS Attacks where we were seeing 400Gbps attacks occurring mostly at the weekends. We speculated that attackers were busy with something else during the week.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Back in March my colleague Marek wrote about a Winter of Whopping Weekend DDoS Attacks where we were seeing 400Gbps attacks occurring mostly at the weekends. We speculated that attackers were busy with something else during the week."
 }

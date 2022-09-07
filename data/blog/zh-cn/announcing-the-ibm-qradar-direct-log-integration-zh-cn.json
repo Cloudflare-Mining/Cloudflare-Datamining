@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Tanushree Sharma",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/09/IMG_1328-1.jpg",
-			"width": 1895,
-			"height": 1874
-		},
 		"url": "https://blog.cloudflare.com/author/tanushree/",
 		"sameAs": [
 			"https://twitter.com/TanushreeS5"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/announcing-the-ibm-qradar-direct-log-integration-zh-cn/",
 	"datePublished": "2022-03-14T12:59:00.000Z",
 	"dateModified": "2022-05-18T22:31:43.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/05/image2-12-5.png",
-		"width": 1800,
-		"height": 1013
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/05/image2-12-5.png",
 	"keywords": "安全周 (CN), 简体中文 (CN), 日志 (CN), 合作伙伴",
-	"description": "我们很高兴能宣布，Cloudflare 客户现能将其日志直接推送到 IBM Security QRadar SIEM。这一直接集成为 Cloudflare 和 QRadar SIEM 客户节省了成本，加快了日志交付速度，因为不需要中间云存储",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "我们很高兴能宣布，Cloudflare 客户现能将其日志直接推送到 IBM Security QRadar SIEM。这一直接集成为 Cloudflare 和 QRadar SIEM 客户节省了成本，加快了日志交付速度，因为不需要中间云存储"
 }

@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Matthew Prince",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
-			"width": 1196,
-			"height": 1190
-		},
 		"url": "https://blog.cloudflare.com/author/matthew-prince/",
 		"sameAs": [
 			"https://twitter.com/eastdakota"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/aws-egregious-egress/",
 	"datePublished": "2021-07-23T13:01:00.000Z",
 	"dateModified": "2021-07-23T14:49:40.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/07/image2-20.png",
-		"width": 1674,
-		"height": 838
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/07/image2-20.png",
 	"keywords": "Bandwidth Alliance, Egress, AWS",
-	"description": "Amazon’s mission statement is: “We strive to offer our customers the lowest possible prices, the best available selection, and the utmost convenience.” And yet, when it comes to egress, their prices are far from the lowest possible.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Amazon’s mission statement is: “We strive to offer our customers the lowest possible prices, the best available selection, and the utmost convenience.” And yet, when it comes to egress, their prices are far from the lowest possible."
 }

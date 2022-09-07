@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Henry de Valence",
-		"image": "http://blog.cloudflare.com/content/images/2017/09/iVh_MJij_400x400.jpg",
 		"url": "https://blog.cloudflare.com/author/henry/",
 		"sameAs": []
 	},
@@ -24,9 +10,5 @@
 	"dateModified": "2021-08-19T03:41:19.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2017/09/sidh_diagram_1024-2-1.jpg",
 	"keywords": "Crypto, TLS 1.3, TLS, Security, Programming",
-	"description": "Most of today&#x27;s cryptography is designed to be secure against an adversary with enormous amounts of computational power. This means estimating how much work certain computations require, and choosing cryptographic parameters based on our best estimates.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Most of today&#x27;s cryptography is designed to be secure against an adversary with enormous amounts of computational power. This means estimating how much work certain computations require, and choosing cryptographic parameters based on our best estimates."
 }

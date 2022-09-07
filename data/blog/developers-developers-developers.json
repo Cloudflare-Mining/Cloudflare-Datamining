@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "John Graham-Cumming",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
 		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
 		"sameAs": [
 			"https://twitter.com/jgrahamc"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/developers-developers-developers/",
 	"datePublished": "2021-04-11T13:00:00.000Z",
 	"dateModified": "2021-04-22T15:43:23.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/04/Developer-Week-Blog-preview-JGC-1.png",
-		"width": 1200,
-		"height": 628
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/04/Developer-Week-Blog-preview-JGC-1.png",
 	"keywords": "Developer Week, Developers, Product News",
-	"description": "This week, like we have done in previous Innovation Weeks (such as Security Week or Privacy Week), we will be making many (about 20) announcements of products and features to make developers’ lives easier.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "This week, like we have done in previous Innovation Weeks (such as Security Week or Privacy Week), we will be making many (about 20) announcements of products and features to make developers’ lives easier."
 }

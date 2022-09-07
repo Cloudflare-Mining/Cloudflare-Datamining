@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Mengqi Chen",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/09/pic.jpg",
-			"width": 600,
-			"height": 600
-		},
 		"url": "https://blog.cloudflare.com/author/mengqi/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/wrangler-oauth/",
 	"datePublished": "2021-09-23T12:59:07.000Z",
 	"dateModified": "2021-09-23T12:59:07.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/09/Developer-Experience.png",
-		"width": 1618,
-		"height": 800
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/09/Developer-Experience.png",
 	"keywords": "Wrangler, Cloudflare Workers, Serverless",
-	"description": "In this blog, we will look into what the OAuth 2.0 protocol is, and how it can help improve the authorization process in the command-line interface tool Wrangler used to manage your Cloudflare Workers.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "In this blog, we will look into what the OAuth 2.0 protocol is, and how it can help improve the authorization process in the command-line interface tool Wrangler used to manage your Cloudflare Workers."
 }

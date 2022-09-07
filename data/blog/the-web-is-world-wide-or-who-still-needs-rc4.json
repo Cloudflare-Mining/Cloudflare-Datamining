@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "John Graham-Cumming",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
 		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
 		"sameAs": [
 			"https://twitter.com/jgrahamc"
@@ -26,9 +12,5 @@
 	"dateModified": "2020-08-14T18:25:29.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/08/Screen_Shot_2014-05-09_at_13.31.16.png",
 	"keywords": "TLS, RC4, Crypto, Security",
-	"description": "Two weeks ago we changed our TLS configuration to deprioritize the RC4 encryption method because it is widely thought to be vulnerable to attack. At the time we had an internal debate about turning off RC4 altogether, but statistics showed that we couldn&#x27;t.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Two weeks ago we changed our TLS configuration to deprioritize the RC4 encryption method because it is widely thought to be vulnerable to attack. At the time we had an internal debate about turning off RC4 altogether, but statistics showed that we couldn&#x27;t."
 }

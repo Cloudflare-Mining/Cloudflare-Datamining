@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Nancy Gao",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/07/Screen-Shot-2020-05-19-at-12.14.42-AM.png",
-			"width": 1250,
-			"height": 1512
-		},
 		"url": "https://blog.cloudflare.com/author/nancy-gao/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/workers-unbound-ga/",
 	"datePublished": "2021-04-14T13:00:00.000Z",
 	"dateModified": "2021-04-14T21:01:11.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/04/image5-4.png",
-		"width": 1582,
-		"height": 732
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/04/image5-4.png",
 	"keywords": "Developer Week, Developers, Serverless, Cloudflare Workers, Product News, Workers Unbound",
-	"description": "Since the Workers Unbound beta announcement last year, we’ve been hard at work tuning our systems to prepare for the public launch for Workers Unbound. We’ve seen enormous demand from developers, customers, and the Cloudflare community at large. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Since the Workers Unbound beta announcement last year, we’ve been hard at work tuning our systems to prepare for the public launch for Workers Unbound. We’ve seen enormous demand from developers, customers, and the Cloudflare community at large. "
 }

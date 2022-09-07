@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Damon Billian",
-		"image": "http://blog.cloudflare.com/content/images/2018/02/1b3fcea.jpg",
 		"url": "https://blog.cloudflare.com/author/damon-billian/",
 		"sameAs": []
 	},
@@ -22,10 +8,7 @@
 	"url": "https://blog.cloudflare.com/introducing-the-cloudflare-cache-purge-featur/",
 	"datePublished": "2010-11-12T01:34:00.000Z",
 	"dateModified": "2021-01-28T23:24:30.000Z",
+	"image": null,
 	"keywords": "Cache, Speed & Reliability, Product News",
-	"description": "Caching is great. Cloudflare makes sites faster in part by taking the static portions of your site and moving them closer to the visitors to your site. Cloudflare is smart about only caching static objects so you can run a dynamic, database-driven site and it will behave as you expect.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Caching is great. Cloudflare makes sites faster in part by taking the static portions of your site and moving them closer to the visitors to your site. Cloudflare is smart about only caching static objects so you can run a dynamic, database-driven site and it will behave as you expect."
 }

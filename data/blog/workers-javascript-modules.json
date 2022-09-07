@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Ashcon Partovi",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/04/117158947_4858836477475662_2532132460047140852_o.jpeg",
-			"width": 280,
-			"height": 280
-		},
 		"url": "https://blog.cloudflare.com/author/ashcon/",
 		"sameAs": [
 			"https://twitter.com/ashconpartovi"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/workers-javascript-modules/",
 	"datePublished": "2021-11-16T13:58:42.000Z",
 	"dateModified": "2021-12-29T20:44:12.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/11/image1-26.png",
-		"width": 1200,
-		"height": 675
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/11/image1-26.png",
 	"keywords": "Full Stack Week, Cloudflare Workers, JavaScript, Developers",
-	"description": "Now you can use JavaScript modules, also known as ECMAScript or “ES” modules, on Cloudflare Workers. This replaces the old “addEventListener” syntax with a new “import” and “export” semantics that makes it really easy to write reusable, modular code.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Now you can use JavaScript modules, also known as ECMAScript or “ES” modules, on Cloudflare Workers. This replaces the old “addEventListener” syntax with a new “import” and “export” semantics that makes it really easy to write reusable, modular code."
 }

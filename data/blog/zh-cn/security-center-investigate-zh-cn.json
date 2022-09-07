@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Patrick R. Donahue",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/me0-1.png",
-			"width": 300,
-			"height": 291
-		},
 		"url": "https://blog.cloudflare.com/author/patrick/",
 		"sameAs": [
 			"https://www.cloudflare.com",
@@ -30,16 +11,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/security-center-investigate-zh-cn/",
 	"datePublished": "2022-03-14T12:59:00.000Z",
 	"dateModified": "2022-03-18T18:36:26.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/03/image1-81.png",
-		"width": 1801,
-		"height": 1013
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/03/image1-81.png",
 	"keywords": "安全周 (CN), Threat Intelligence, Security Center, Threat Data",
-	"description": "Cloudflare 拦截大量各种各样的安全威胁，其中一些更引人注目的攻击目标是我们所保护的数千万互联网资产中的“长尾部分”",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Cloudflare 拦截大量各种各样的安全威胁，其中一些更引人注目的攻击目标是我们所保护的数千万互联网资产中的“长尾部分”"
 }

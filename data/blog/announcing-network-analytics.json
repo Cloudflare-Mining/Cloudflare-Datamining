@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Omer Yoachimik",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/Omer-1.png",
-			"width": 773,
-			"height": 653
-		},
 		"url": "https://blog.cloudflare.com/author/omer/",
 		"sameAs": [
 			"https://twitter.com/OmerYoahimik"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/announcing-network-analytics/",
 	"datePublished": "2020-03-16T12:00:00.000Z",
 	"dateModified": "2020-07-29T17:07:59.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2020/03/network-analytics-map.png",
-		"width": 994,
-		"height": 553
-	},
+	"image": "https://blog.cloudflare.com/content/images/2020/03/network-analytics-map.png",
 	"keywords": "DDoS, Analytics, Magic Transit, GraphQL, Security, Network, Product News",
-	"description": "Back in March 2019, we released Firewall Analytics which provides insights into HTTP security events across all of Cloudflare&#x27;s protection suite; Firewall rule matches, HTTP DDoS Attacks, Site Security Level which harnesses Cloudflare&#x27;s threat intelligence, and more.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Back in March 2019, we released Firewall Analytics which provides insights into HTTP security events across all of Cloudflare&#x27;s protection suite; Firewall rule matches, HTTP DDoS Attacks, Site Security Level which harnesses Cloudflare&#x27;s threat intelligence, and more."
 }

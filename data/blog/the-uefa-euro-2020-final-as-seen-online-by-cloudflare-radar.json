@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "John Graham-Cumming",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
 		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
 		"sameAs": [
 			"https://twitter.com/jgrahamc"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/the-uefa-euro-2020-final-as-seen-online-by-cloudflare-radar/",
 	"datePublished": "2021-07-12T16:41:13.000Z",
 	"dateModified": "2021-07-12T21:03:59.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/07/Euro-Final--1--1.png",
-		"width": 1798,
-		"height": 866
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/07/Euro-Final--1--1.png",
 	"keywords": "Europe, Cloudflare Radar, Data",
-	"description": "Cloudflare has been publishing statistics about all the teams involved in EURO 2020 and traffic to betting websites, sports newspapers, streaming services and sponsors. Here’s a quick look at some specific highlights from England’s and Italy’s EURO 2020.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Cloudflare has been publishing statistics about all the teams involved in EURO 2020 and traffic to betting websites, sports newspapers, streaming services and sponsors. Here’s a quick look at some specific highlights from England’s and Italy’s EURO 2020."
 }

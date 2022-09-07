@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Corey Mahan",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/02/CoreyMahan_ProfilePhoto.jpg",
-			"width": 2000,
-			"height": 1659
-		},
 		"url": "https://blog.cloudflare.com/author/corey-mahan/",
 		"sameAs": [
 			"https://twitter.com/coreymahan"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/ja-jp/announcing-gateway-and-casb-ja-jp/",
 	"datePublished": "2022-06-24T13:00:38.000Z",
 	"dateModified": "2022-06-24T13:06:45.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/06/Screenshot-2022-06-22-at-17.17.01-1.png",
-		"width": 1234,
-		"height": 704
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/06/Screenshot-2022-06-22-at-17.17.01-1.png",
 	"keywords": "Cloudflare One Week (JP), Zero Trust (JP), 製品ニュース, CASB (JP), Secure Web Gateway (JA), 日本語",
-	"description": "CloudflareのセキュアWebゲートウェイとAPI駆動型Cloud Access Security Broker（CASB）でシャドーITを見つけて解消します",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "CloudflareのセキュアWebゲートウェイとAPI駆動型Cloud Access Security Broker（CASB）でシャドーITを見つけて解消します"
 }

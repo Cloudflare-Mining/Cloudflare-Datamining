@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Dina Kozlov",
-		"image": "http://blog.cloudflare.com/content/images/2019/06/headshot.jpg",
 		"url": "https://blog.cloudflare.com/author/dina/",
 		"sameAs": [
 			"https://twitter.com/dinasaur_404"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/es-es/secure-certificate-issuance-es-es/",
 	"datePublished": "2019-06-18T13:00:00.000Z",
 	"dateModified": "2021-01-21T19:06:32.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2019/09/Screen-Shot-2019-06-17-at-8.46.28-AM-1.png",
-		"width": 922,
-		"height": 644
-	},
+	"image": "https://blog.cloudflare.com/content/images/2019/09/Screen-Shot-2019-06-17-at-8.46.28-AM-1.png",
 	"keywords": "Semana de la criptografía, Criptografía, Seguridad, Español, DNS (ES), BGP (ES)",
-	"description": "La confianza en internet se debe fundamentalmente a la infraestructura de clave pública (PKI, Public Key Infrastructure). La PKI ofrece a los servidores la capacidad de brindar servicios a sitios web de forma segura mediante la emisión de certificados digitales, ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "La confianza en internet se debe fundamentalmente a la infraestructura de clave pública (PKI, Public Key Infrastructure). La PKI ofrece a los servidores la capacidad de brindar servicios a sitios web de forma segura mediante la emisión de certificados digitales, "
 }

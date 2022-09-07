@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Ben Solomon",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/08/Personal-Pic.jpg",
-			"width": 2000,
-			"height": 2000
-		},
 		"url": "https://blog.cloudflare.com/author/bensol/",
 		"sameAs": [
 			"https://twitter.com/bensol"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/friendly-bots-zh-cn/",
 	"datePublished": "2022-03-16T12:58:00.000Z",
 	"dateModified": "2022-06-03T20:49:51.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/06/image6-3.png",
-		"width": 1801,
-		"height": 1013
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/06/image6-3.png",
 	"keywords": "Security Week (CN), 机器人, 安全, 简体中文 (CN), 产品新闻",
-	"description": "客户可以选择将通过验证的任何机器人加入允许列表。遗憾的是，新的机器人层出不穷，令我们应接不暇，无法及时验证。所以，今天我们宣布推出一种解决方案：友好机器人",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "客户可以选择将通过验证的任何机器人加入允许列表。遗憾的是，新的机器人层出不穷，令我们应接不暇，无法及时验证。所以，今天我们宣布推出一种解决方案：友好机器人"
 }

@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Syeef Karim",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/05/600x600-ProfilePhotoSyeef-1.png",
-			"width": 600,
-			"height": 600
-		},
 		"url": "https://blog.cloudflare.com/author/syeef/",
 		"sameAs": [
 			"https://twitter.com/syeefk"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/designing-the-new-cloudflare-waf/",
 	"datePublished": "2021-05-11T13:00:00.000Z",
 	"dateModified": "2021-05-19T18:07:53.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/05/Designing-the-new-WAF-1.png",
-		"width": 1363,
-		"height": 728
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/05/Designing-the-new-WAF-1.png",
 	"keywords": "WAF, Design, Product Design",
-	"description": "The Cloudflare Web Application Firewall (WAF) protects websites and applications from malicious traffic attempting to exploit vulnerabilities in server software. It’s a critical piece of the broader security posture of your application.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "The Cloudflare Web Application Firewall (WAF) protects websites and applications from malicious traffic attempting to exploit vulnerabilities in server software. It’s a critical piece of the broader security posture of your application."
 }

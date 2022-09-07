@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Brian Bassett",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/03/brian.jpg",
-			"width": 600,
-			"height": 600
-		},
 		"url": "https://blog.cloudflare.com/author/brian-bassett/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/getting-to-the-core/",
 	"datePublished": "2020-11-20T12:00:00.000Z",
 	"dateModified": "2020-12-16T18:06:45.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2020/11/image1-15.png",
-		"width": 1201,
-		"height": 627
-	},
+	"image": "http://blog.cloudflare.com/content/images/2020/11/image1-15.png",
 	"keywords": "Hardware, Genx, Kafka, Kubernetes, ClickHouse",
-	"description": "A refresh of the hardware that Cloudflare uses to run analytics provided big efficiency improvements.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "A refresh of the hardware that Cloudflare uses to run analytics provided big efficiency improvements."
 }

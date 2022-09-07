@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Nick Jones",
-		"image": "http://blog.cloudflare.com/content/images/2018/10/nick-jones.jpg",
 		"url": "https://blog.cloudflare.com/author/nick-jones/",
 		"sameAs": []
 	},
@@ -24,9 +10,5 @@
 	"dateModified": "2018-09-26T18:35:54.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/09/QUIC-Illustration--copy@2x.png",
 	"keywords": "Birthday Week, Product News, QUIC, Programming, Speed & Reliability",
-	"description": "Today Cloudflare opened the door on our beta deployment of QUIC with the announcement of our test site: cloudflare-quic.com. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Today Cloudflare opened the door on our beta deployment of QUIC with the announcement of our test site: cloudflare-quic.com. "
 }

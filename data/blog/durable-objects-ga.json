@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Greg McKeon",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/05/Screen-Shot-2022-05-10-at-2.50.56-PM.png",
-			"width": 692,
-			"height": 662
-		},
 		"url": "https://blog.cloudflare.com/author/greg/",
 		"sameAs": [
 			"https://twitter.com/wegmckeon"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/durable-objects-ga/",
 	"datePublished": "2021-11-15T13:59:12.000Z",
 	"dateModified": "2021-12-02T16:21:02.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/11/image1-15.png",
-		"width": 1200,
-		"height": 675
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/11/image1-15.png",
 	"keywords": "Full Stack Week, Durable Objects",
-	"description": "Today, we’re announcing that Durable Objects are generally available and production-ready for you to use!",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Today, we’re announcing that Durable Objects are generally available and production-ready for you to use!"
 }

@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Sam Rhea",
-		"image": "http://blog.cloudflare.com/content/images/2018/07/photo-for-profile.jpg",
 		"url": "https://blog.cloudflare.com/author/sam/",
 		"sameAs": [
 			"https://twitter.com/LakeAustinBlvd"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/ja-jp/cloudflare-for-teams-products-ja-jp/",
 	"datePublished": "2020-01-07T14:00:00.000Z",
 	"dateModified": "2021-01-21T18:56:31.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2020/01/Screen-Shot-2020-01-07-at-1.53.14-PM-3.png",
-		"width": 472,
-		"height": 230
-	},
+	"image": "https://blog.cloudflare.com/content/images/2020/01/Screen-Shot-2020-01-07-at-1.53.14-PM-3.png",
 	"keywords": "製品ニュース (JP), Cloudflare Access (JP), セキュリティ, 日本語",
-	"description": "インターネットの利用体験は、時間の経過とともに改善され続けており、速度、安全性、信頼性がより高まってきました。",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "インターネットの利用体験は、時間の経過とともに改善され続けており、速度、安全性、信頼性がより高まってきました。"
 }

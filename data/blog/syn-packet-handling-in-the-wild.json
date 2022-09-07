@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Marek Majkowski",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/b5967d6c687939594adb6992723d0529.jpeg",
 		"url": "https://blog.cloudflare.com/author/marek-majkowski/",
 		"sameAs": [
 			"https://twitter.com/majek04"
@@ -26,9 +12,5 @@
 	"dateModified": "2018-11-15T01:26:38.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/01/all-1-1.jpeg",
 	"keywords": "SYN, TCP, Programming",
-	"description": "Here at Cloudflare, we have a lot of experience of operating servers on the wild Internet. But we are always improving our mastery of this black art. On this very blog we have touched on multiple dark corners of the Internet protocols: like understanding FIN-WAIT-2 or receive buffer tuning.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Here at Cloudflare, we have a lot of experience of operating servers on the wild Internet. But we are always improving our mastery of this black art. On this very blog we have touched on multiple dark corners of the Internet protocols: like understanding FIN-WAIT-2 or receive buffer tuning."
 }

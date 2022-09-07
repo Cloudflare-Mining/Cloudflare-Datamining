@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Alex Cruz Farmer",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/12/_DSC4744--2-.jpg",
-			"width": 600,
-			"height": 600
-		},
 		"url": "https://blog.cloudflare.com/author/alex-cruz-farmer/",
 		"sameAs": [
 			"https://twitter.com/alexcf"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/supercharging-firewall-events-for-self-serve/",
 	"datePublished": "2019-08-22T13:00:00.000Z",
 	"dateModified": "2019-10-18T00:34:30.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2019/08/image1-7.png",
-		"width": 1999,
-		"height": 1315
-	},
+	"image": "https://blog.cloudflare.com/content/images/2019/08/image1-7.png",
 	"keywords": "Product News, Firewall, Security, WAF, Dashboard",
-	"description": "Today, I’m very pleased to announce the release of a completely overhauled version of our Firewall Event log to our Free, Pro and Business customers. This new Firewall Events log is now available in your Dashboard, and you are not required to do anything to receive this new capability.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Today, I’m very pleased to announce the release of a completely overhauled version of our Firewall Event log to our Free, Pro and Business customers. This new Firewall Events log is now available in your Dashboard, and you are not required to do anything to receive this new capability."
 }

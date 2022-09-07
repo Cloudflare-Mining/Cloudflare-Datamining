@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Tom Lianza",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/tom.jpg",
-			"width": 600,
-			"height": 600
-		},
 		"url": "https://blog.cloudflare.com/author/tom-lianza/",
 		"sameAs": [
 			"https://twitter.com/tlianza"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/a-byzantine-failure-in-the-real-world/",
 	"datePublished": "2020-11-27T12:00:00.000Z",
 	"dateModified": "2020-11-30T17:20:31.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2020/11/image1-21.png",
-		"width": 1999,
-		"height": 1006
-	},
+	"image": "http://blog.cloudflare.com/content/images/2020/11/image1-21.png",
 	"keywords": "Post Mortem, API, Postgres, Outage, Engineering",
-	"description": "When we review design documents at Cloudflare, we are always on the lookout for Single Points of Failure (SPOFs). In this post, we present a timeline of a real-world incident, and how an interesting failure mode known as a Byzantine fault played a role in a cascading series of events.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "When we review design documents at Cloudflare, we are always on the lookout for Single Points of Failure (SPOFs). In this post, we present a timeline of a real-world incident, and how an interesting failure mode known as a Byzantine fault played a role in a cascading series of events."
 }

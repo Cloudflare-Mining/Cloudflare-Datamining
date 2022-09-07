@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Matthew Prince",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
-			"width": 1196,
-			"height": 1190
-		},
 		"url": "https://blog.cloudflare.com/author/matthew-prince/",
 		"sameAs": [
 			"https://twitter.com/eastdakota"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/es-es/introducing-cloudflare-for-teams-es-es/",
 	"datePublished": "2020-01-07T14:00:00.000Z",
 	"dateModified": "2021-01-21T19:12:42.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2020/01/image2-5-1-3.png",
-		"width": 2101,
-		"height": 1345
-	},
+	"image": "https://blog.cloudflare.com/content/images/2020/01/image2-5-1-3.png",
 	"keywords": "Noticias de productos, Cloudflare Access (ES), Seguridad, VPN (ES), Español, Cloudflare Zero Trust (ES)",
-	"description": "Hace diez años, cuando se creó Cloudflare, Internet era un lugar al que la gente simplemente visitaba.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Hace diez años, cuando se creó Cloudflare, Internet era un lugar al que la gente simplemente visitaba."
 }

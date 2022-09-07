@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Jon Rolfe",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/08/download.png",
-			"width": 600,
-			"height": 600
-		},
 		"url": "https://blog.cloudflare.com/author/jon-rolfe/",
 		"sameAs": [
 			"https://twitter.com/jrolfoid"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/ten-new-cities-four-new-countries/",
 	"datePublished": "2021-06-30T12:59:45.000Z",
 	"dateModified": "2021-06-30T18:37:20.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/06/image1-13.png",
-		"width": 1610,
-		"height": 810
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/06/image1-13.png",
 	"keywords": "Internet Performance, Cloudflare Network",
-	"description": "Cloudflare&#x27;s global network is always expanding. We&#x27;ve recently added ten new cities and four new countries to our network.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Cloudflare&#x27;s global network is always expanding. We&#x27;ve recently added ten new cities and four new countries to our network."
 }

@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Christopher Patton",
-		"image": "http://blog.cloudflare.com/content/images/2018/09/0-8.jpg",
 		"url": "https://blog.cloudflare.com/author/christopher-patton/",
 		"sameAs": []
 	},
@@ -22,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/es-es/encrypted-client-hello-es-es/",
 	"datePublished": "2020-12-08T12:00:00.000Z",
 	"dateModified": "2021-01-21T20:29:48.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2020/12/Good-bye-ESNI--hello-ECH-blog-header-4.png",
-		"width": 1200,
-		"height": 569
-	},
+	"image": "http://blog.cloudflare.com/content/images/2020/12/Good-bye-ESNI--hello-ECH-blog-header-4.png",
 	"keywords": "Español, DNS (ES), TLS (ES), Privacidad, Semana de la privacidad, Protocolos (ES)",
-	"description": "Un recorrido exhaustivo por Encrypted Client Hello, un estándar que encripta parámetros confidenciales enviados por el cliente como parte del protocolo de enlace TLS.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Un recorrido exhaustivo por Encrypted Client Hello, un estándar que encripta parámetros confidenciales enviados por el cliente como parte del protocolo de enlace TLS."
 }

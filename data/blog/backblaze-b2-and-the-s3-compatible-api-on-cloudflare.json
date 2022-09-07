@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Tim Obezuk",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/05/0-1.jpeg",
-			"width": 200,
-			"height": 200
-		},
 		"url": "https://blog.cloudflare.com/author/tim-obezuk/",
 		"sameAs": [
 			"https://twitter.com/obezuk"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/backblaze-b2-and-the-s3-compatible-api-on-cloudflare/",
 	"datePublished": "2020-05-13T11:00:00.000Z",
 	"dateModified": "2020-12-09T00:40:17.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2020/05/bandwidth-alliance-Blog.png",
-		"width": 1661,
-		"height": 842
-	},
+	"image": "https://blog.cloudflare.com/content/images/2020/05/bandwidth-alliance-Blog.png",
 	"keywords": "Bandwidth Alliance, Cloudflare Workers, API",
-	"description": "In May 2020, Backblaze, a founding Bandwidth Alliance partner announced S3 compatible APIs for their B2 Cloud Storage service. We are excited to see Backblaze introduce a new level of compatibility in their Cloud Storage service.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "In May 2020, Backblaze, a founding Bandwidth Alliance partner announced S3 compatible APIs for their B2 Cloud Storage service. We are excited to see Backblaze introduce a new level of compatibility in their Cloud Storage service."
 }

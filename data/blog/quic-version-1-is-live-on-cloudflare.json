@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Lucas Pardue",
-		"image": "http://blog.cloudflare.com/content/images/2018/12/Lucas---KIN01111.jpg",
 		"url": "https://blog.cloudflare.com/author/lucas/",
 		"sameAs": [
 			"https://twitter.com/SimmerVigor"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/quic-version-1-is-live-on-cloudflare/",
 	"datePublished": "2021-05-28T21:06:55.000Z",
 	"dateModified": "2021-05-28T21:11:56.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/05/Screen-Shot-2021-05-28-at-1.46.30-PM.png",
-		"width": 1938,
-		"height": 984
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/05/Screen-Shot-2021-05-28-at-1.46.30-PM.png",
 	"keywords": "QUIC, Speed & Reliability, Security, IETF",
-	"description": "QUIC is a new fast and secure transport protocol. Version 1 has just been published as RFC 9000 and today Cloudflare has enabled support for all customers, come try it out.   ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "QUIC is a new fast and secure transport protocol. Version 1 has just been published as RFC 9000 and today Cloudflare has enabled support for all customers, come try it out.   "
 }

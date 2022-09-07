@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Rita Kozlov",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/05/Rita-Kozlov.jpeg",
-			"width": 200,
-			"height": 200
-		},
 		"url": "https://blog.cloudflare.com/author/rita/",
 		"sameAs": [
 			"https://twitter.com/ritakozlov_"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/workers-sites-zh-cn/",
 	"datePublished": "2019-09-27T13:00:00.000Z",
 	"dateModified": "2021-01-28T19:23:29.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2020/01/Screen-Shot-2019-09-26-at-1.39.06-PM-2.png",
-		"width": 967,
-		"height": 551
-	},
+	"image": "https://blog.cloudflare.com/content/images/2020/01/Screen-Shot-2019-09-26-at-1.39.06-PM-2.png",
 	"keywords": "简体中文 (CN), Cloudflare Workers (CN), JavaScript (CN), 无服务器, 产品新闻, 生日周 (CN), Workers Sites (CN)",
-	"description": "网络性能一直是一场与光速的战斗——从伦敦访问一个从西雅图提供服务的网站，意味着每一个资源请求都要经过7000多英里。web性能之争的第一个突破是HTTP/1.1连接保持在线和浏览器打开多个连接。下一个突破是CDN，通过将静态资源缓存到离终端用户更近的数据中心，使它们更靠近终端用户。今天，有了Workers Sites，我们可以很兴奋地宣布下一个重大突破——将整个网站直接分布在互联网的边缘。",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "网络性能一直是一场与光速的战斗——从伦敦访问一个从西雅图提供服务的网站，意味着每一个资源请求都要经过7000多英里。web性能之争的第一个突破是HTTP/1.1连接保持在线和浏览器打开多个连接。下一个突破是CDN，通过将静态资源缓存到离终端用户更近的数据中心，使它们更靠近终端用户。今天，有了Workers Sites，我们可以很兴奋地宣布下一个重大突破——将整个网站直接分布在互联网的边缘。"
 }

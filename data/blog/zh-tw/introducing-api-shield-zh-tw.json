@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Patrick R. Donahue",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/me0-1.png",
-			"width": 300,
-			"height": 291
-		},
 		"url": "https://blog.cloudflare.com/author/patrick/",
 		"sameAs": [
 			"https://www.cloudflare.com",
@@ -30,16 +11,7 @@
 	"url": "https://blog.cloudflare.com/zh-tw/introducing-api-shield-zh-tw/",
 	"datePublished": "2020-10-01T13:01:00.000Z",
 	"dateModified": "2022-05-13T00:37:25.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/05/Birthday-Week-OG-images_API_Shield.png",
-		"width": 3334,
-		"height": 1667
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/05/Birthday-Week-OG-images_API_Shield.png",
 	"keywords": "生日週 (TW), 產品新聞 (TW), API Shield (TW), 防守 (CN)",
-	"description": "在每秒流經 Cloudflare 網路的 1800 萬個請求中，有 50% 是導向 API，且其中大多數被確認為惡意請求而遭到封鎖。為了打擊這些威脅，Cloudflare 透過強大的用戶端憑證型身分識別以及嚴格的結構描述驗證，簡化了保護 API 的方法",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "在每秒流經 Cloudflare 網路的 1800 萬個請求中，有 50% 是導向 API，且其中大多數被確認為惡意請求而遭到封鎖。為了打擊這些威脅，Cloudflare 透過強大的用戶端憑證型身分識別以及嚴格的結構描述驗證，簡化了保護 API 的方法"
 }

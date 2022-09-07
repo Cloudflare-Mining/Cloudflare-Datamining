@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Rita Kozlov",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/05/Rita-Kozlov.jpeg",
-			"width": 200,
-			"height": 200
-		},
 		"url": "https://blog.cloudflare.com/author/rita/",
 		"sameAs": [
 			"https://twitter.com/ritakozlov_"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/introducing-d1-zh-cn/",
 	"datePublished": "2022-05-11T21:17:00.000Z",
 	"dateModified": "2022-05-17T03:40:09.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/05/image1-46.png",
-		"width": 1801,
-		"height": 1013
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/05/image1-46.png",
 	"keywords": "开发者, 产品新闻",
-	"description": "我们在 2017 年推出了 Cloudflare Workers，让开发人员能够在我们的网络上进行计算。我们对这一产品解锁的可能性感到兴奋，但我们很快意识到——大多数现实世界的应用程序都是有状态的。从那时起，我们交付了 KV、Durable Objects 和 R2，让开发人员可以访问各种类型的存储",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "我们在 2017 年推出了 Cloudflare Workers，让开发人员能够在我们的网络上进行计算。我们对这一产品解锁的可能性感到兴奋，但我们很快意识到——大多数现实世界的应用程序都是有状态的。从那时起，我们交付了 KV、Durable Objects 和 R2，让开发人员可以访问各种类型的存储"
 }

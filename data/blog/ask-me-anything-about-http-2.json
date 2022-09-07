@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "John Roberts",
-		"image": "http://blog.cloudflare.com/content/images/2018/02/john.jpg",
 		"url": "https://blog.cloudflare.com/author/john-roberts/",
 		"sameAs": [
 			"https://twitter.com/pencoyd"
@@ -26,9 +12,5 @@
 	"dateModified": "2020-08-14T16:03:26.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/08/image_0-2.png",
 	"keywords": "HTTP2, spdy, Events, Reliability",
-	"description": "We&#x27;re big fans of HTTP/2 at CloudFlare. Our customers make up the majority of HTTP/2 enabled domains today. HTTP/2 is a key part of the modern web, and its growth and adoption is changing how websites and applications are built.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "We&#x27;re big fans of HTTP/2 at CloudFlare. Our customers make up the majority of HTTP/2 enabled domains today. HTTP/2 is a key part of the modern web, and its growth and adoption is changing how websites and applications are built."
 }

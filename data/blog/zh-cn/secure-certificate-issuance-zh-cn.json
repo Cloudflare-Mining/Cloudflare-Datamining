@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Dina Kozlov",
-		"image": "http://blog.cloudflare.com/content/images/2019/06/headshot.jpg",
 		"url": "https://blog.cloudflare.com/author/dina/",
 		"sameAs": [
 			"https://twitter.com/dinasaur_404"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/secure-certificate-issuance-zh-cn/",
 	"datePublished": "2019-06-18T13:00:00.000Z",
 	"dateModified": "2021-01-28T19:07:50.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2019/09/Screen-Shot-2019-06-17-at-8.46.28-AM-1-1-1.png",
-		"width": 922,
-		"height": 644
-	},
+	"image": "https://blog.cloudflare.com/content/images/2019/09/Screen-Shot-2019-06-17-at-8.46.28-AM-1-1-1.png",
 	"keywords": "简体中文 (CN), 加密周, 加密, 密码学, DNS (CN), BGP (CN)",
-	"description": "公众对互联网的信任是以公钥基础设施（PKI）为基础的。PKI通过签发数字证书，授予服务器安全服务网站的能力，为加密和真实的通信提供了基础。",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "公众对互联网的信任是以公钥基础设施（PKI）为基础的。PKI通过签发数字证书，授予服务器安全服务网站的能力，为加密和真实的通信提供了基础。"
 }

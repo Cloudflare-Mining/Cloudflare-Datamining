@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Annika Garbers",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/annika.png",
-			"width": 400,
-			"height": 400
-		},
 		"url": "https://blog.cloudflare.com/author/annika/",
 		"sameAs": [
 			"https://twitter.com/annikagarbers"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/magic-nat/",
 	"datePublished": "2022-05-12T12:58:42.000Z",
 	"dateModified": "2022-05-12T12:58:42.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/05/image2-16.png",
-		"width": 1812,
-		"height": 1008
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/05/image2-16.png",
 	"keywords": "Platform Week, NAT",
-	"description": "Today, we’re delighted to introduce a new approach to NAT that solves the problems of traditional hardware and virtual solutions",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Today, we’re delighted to introduce a new approach to NAT that solves the problems of traditional hardware and virtual solutions"
 }

@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Sam Rhea",
-		"image": "http://blog.cloudflare.com/content/images/2018/07/photo-for-profile.jpg",
 		"url": "https://blog.cloudflare.com/author/sam/",
 		"sameAs": [
 			"https://twitter.com/LakeAustinBlvd"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/releasing-kubectl-support-in-access/",
 	"datePublished": "2020-04-27T11:00:00.000Z",
 	"dateModified": "2020-10-12T21:22:04.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2020/04/cloudflare-access-kubernetes@2x-2.png",
-		"width": 1600,
-		"height": 966
-	},
+	"image": "https://blog.cloudflare.com/content/images/2020/04/cloudflare-access-kubernetes@2x-2.png",
 	"keywords": "Kubernetes, kubectl, Identity, Product News, Security, Cloudflare Access, Zero Trust",
-	"description": "Starting today, you can use Cloudflare Access and Argo Tunnel to securely manage your Kubernetes cluster with the kubectl command-line tool. SSO requirements and a zero-trust model to your Kubernetes management in under 30 minutes.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Starting today, you can use Cloudflare Access and Argo Tunnel to securely manage your Kubernetes cluster with the kubectl command-line tool. SSO requirements and a zero-trust model to your Kubernetes management in under 30 minutes."
 }

@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "John Graham-Cumming",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
 		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
 		"sameAs": [
 			"https://twitter.com/jgrahamc"
@@ -24,10 +10,7 @@
 	"url": "https://blog.cloudflare.com/tracking-our-ssl-configuration/",
 	"datePublished": "2014-05-03T11:23:00.000Z",
 	"dateModified": "2018-08-22T22:28:05.000Z",
+	"image": null,
 	"keywords": "OpenSSL, SSL",
-	"description": "Over time we&#x27;ve updated the SSL configuration we use for serving HTTPS as the security landscape has changed. In the past we&#x27;ve documented those changes in blog posts.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Over time we&#x27;ve updated the SSL configuration we use for serving HTTPS as the security landscape has changed. In the past we&#x27;ve documented those changes in blog posts."
 }

@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "John Graham-Cumming",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
 		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
 		"sameAs": [
 			"https://twitter.com/jgrahamc"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/july-4-2022-reading-list/",
 	"datePublished": "2022-07-04T12:55:08.000Z",
 	"dateModified": "2022-07-12T10:40:20.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/06/image1-60.png",
-		"width": 1801,
-		"height": 1014
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/06/image1-60.png",
 	"keywords": "Reading List, Cloudflare Radar, Linux, TCP, Hertzbleed, eBPF",
-	"description": "Here’s a short list of recent technical blog posts to give you something to read today",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Here’s a short list of recent technical blog posts to give you something to read today"
 }

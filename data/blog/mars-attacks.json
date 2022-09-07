@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "John Graham-Cumming",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
 		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
 		"sameAs": [
 			"https://twitter.com/jgrahamc"
@@ -26,9 +12,5 @@
 	"dateModified": "2018-08-03T21:20:01.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/08/spinal_tap_but_it_goes_to_eleven1.jpeg.scaled500.jpg",
 	"keywords": "Reliability, Speed & Reliability, Attacks, DDoS",
-	"description": "Following on from my recent post about when attacks hit CloudFlare, here&#x27;s a follow up looking at where they come from. Or at least where they say they come from. Looking at attack statistics for the month of July 2012 the largest source of attacks is Mars.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Following on from my recent post about when attacks hit CloudFlare, here&#x27;s a follow up looking at where they come from. Or at least where they say they come from. Looking at attack statistics for the month of July 2012 the largest source of attacks is Mars."
 }

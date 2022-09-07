@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Tom Strickx",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/07/Headshot_Lisbon.png",
-			"width": 150,
-			"height": 176
-		},
 		"url": "https://blog.cloudflare.com/author/tom-strickx/",
 		"sameAs": [
 			"https://twitter.com/tstrickx"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/zh-tw/cloudflare-outage-on-june-21-2022-zh-tw/",
 	"datePublished": "2022-06-21T12:38:00.000Z",
 	"dateModified": "2022-06-22T15:01:06.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/06/BLOG-1226-Global-Latency-1-3.png",
-		"width": 1200,
-		"height": 675
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/06/BLOG-1226-Global-Latency-1-3.png",
 	"keywords": "停電, 驗屍, 繁體中文 (TW)",
-	"description": "今天，2022 年 6 月 21 日，Cloudflare 遭遇一次服務中斷，影響了我們 19 個資料中心的流量",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "今天，2022 年 6 月 21 日，Cloudflare 遭遇一次服務中斷，影響了我們 19 個資料中心的流量"
 }

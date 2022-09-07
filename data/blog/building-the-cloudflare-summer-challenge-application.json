@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Luke Edwards",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/08/887b052b9a3d2b39837750058d949b82_400x400.jpg",
-			"width": 400,
-			"height": 400
-		},
 		"url": "https://blog.cloudflare.com/author/lukeed/",
 		"sameAs": [
 			"https://lukeed.com",
@@ -30,16 +11,7 @@
 	"url": "https://blog.cloudflare.com/building-the-cloudflare-summer-challenge-application/",
 	"datePublished": "2021-08-13T12:59:56.000Z",
 	"dateModified": "2021-08-13T12:59:56.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/08/Developer-Challenge-1.png",
-		"width": 1618,
-		"height": 800
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/08/Developer-Challenge-1.png",
 	"keywords": "Cloudflare Workers, Serverless, Developers",
-	"description": "If you haven’t already heard, we’re hosting the Cloudflare Summer Developer Challenge, a contest for the Cloudflare community at large. Anybody – yes, including you – can sign up for free and compete for a chance to win one of 300 available prizes. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "If you haven’t already heard, we’re hosting the Cloudflare Summer Developer Challenge, a contest for the Cloudflare community at large. Anybody – yes, including you – can sign up for free and compete for a chance to win one of 300 available prizes. "
 }

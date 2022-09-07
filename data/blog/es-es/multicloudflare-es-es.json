@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Zack Bloom",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/YZCINbF6.jpg",
 		"url": "https://blog.cloudflare.com/author/zack-bloom/",
 		"sameAs": []
 	},
@@ -22,10 +8,7 @@
 	"url": "https://blog.cloudflare.com/es-es/multicloudflare-es-es/",
 	"datePublished": "2019-06-02T21:04:00.000Z",
 	"dateModified": "2021-01-21T19:06:40.000Z",
+	"image": null,
 	"keywords": "Sin servidor, Equilibrio de carga, Velocidad y confiabilidad, Español, Cloudflare Workers (ES), Túnel de Argo",
-	"description": "Si quiere iniciar una conversación intensa en los pasillos de Cloudflare, intente describirnos como una red de entrega de contenido “CDN”. Las CDN, por lo general, no le brindan equilibrio de carga, no le permiten implementar aplicaciones sin servidor y, ciertamente, no se instalan en su teléfono. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Si quiere iniciar una conversación intensa en los pasillos de Cloudflare, intente describirnos como una red de entrega de contenido “CDN”. Las CDN, por lo general, no le brindan equilibrio de carga, no le permiten implementar aplicaciones sin servidor y, ciertamente, no se instalan en su teléfono. "
 }

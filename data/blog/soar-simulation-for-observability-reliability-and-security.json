@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Yan Zhai",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/01/twitter-profile-photo.jpeg",
-			"width": 400,
-			"height": 400
-		},
 		"url": "https://blog.cloudflare.com/author/yan/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/soar-simulation-for-observability-reliability-and-security/",
 	"datePublished": "2021-01-14T12:00:00.000Z",
 	"dateModified": "2021-08-03T10:08:31.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/01/Soar.png",
-		"width": 1224,
-		"height": 622
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/01/Soar.png",
 	"keywords": "Testing, Observability, Security, Speed & Reliability",
-	"description": "In this article, we will discuss one of the techniques we use to fight such software complexity: simulations. Simulations are basically system tests that run with synthesized customer traffic and applications.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "In this article, we will discuss one of the techniques we use to fight such software complexity: simulations. Simulations are basically system tests that run with synthesized customer traffic and applications."
 }

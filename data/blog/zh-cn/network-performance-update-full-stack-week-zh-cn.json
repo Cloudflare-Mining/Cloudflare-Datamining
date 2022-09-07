@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "David Tuber",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/07/kutiya-face.png",
-			"width": 983,
-			"height": 1049
-		},
 		"url": "https://blog.cloudflare.com/author/tubes/",
 		"sameAs": [
 			"https://twitter.com/tubes__"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/zh-cn/network-performance-update-full-stack-week-zh-cn/",
 	"datePublished": "2021-11-20T13:59:00.000Z",
 	"dateModified": "2022-01-01T03:05:00.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/01/Network-Performance-Update--Full-Stack-Week-header.png",
-		"width": 1800,
-		"height": 804
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/01/Network-Performance-Update--Full-Stack-Week-header.png",
 	"keywords": "Full Stack Week (CN), 简体中文 (CN), 产品新闻, 速度和可靠性 (CN)",
-	"description": "两个多月前，我们分享了全球最后一英里网络的广泛基准测试结果。结果显示，基于一系列的测试（TCP 连接时间、接收第一个字节的时间、接收最后一个字节的时间）和一系列测量值（平均值为 p95），Cloudflare 是全球 49% 的网络中最快的提供商。从那时起，我们一直在不断努力",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "两个多月前，我们分享了全球最后一英里网络的广泛基准测试结果。结果显示，基于一系列的测试（TCP 连接时间、接收第一个字节的时间、接收最后一个字节的时间）和一系列测量值（平均值为 p95），Cloudflare 是全球 49% 的网络中最快的提供商。从那时起，我们一直在不断努力"
 }

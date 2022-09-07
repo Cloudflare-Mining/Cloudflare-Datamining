@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Andrew Fitch",
-		"image": "http://blog.cloudflare.com/content/images/2017/10/AJF-Headshot.jpg",
 		"url": "https://blog.cloudflare.com/author/andrew/",
 		"sameAs": [
 			"https://www.cloudflare.com",
@@ -28,9 +14,5 @@
 	"dateModified": "2018-10-03T17:56:48.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/09/Workers-EB-Image.png",
 	"keywords": "Cloudflare Workers, Serverless, Cloudflare Meetups, Developers, JavaScript",
-	"description": "We’re getting the best minds on serverless technology from Cloudflare together to lead a series of talks on practical use cases for Cloudflare Workers. Join any of these six global talks for stories of how companies and developers are using serverless in the real world. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "We’re getting the best minds on serverless technology from Cloudflare together to lead a series of talks on practical use cases for Cloudflare Workers. Join any of these six global talks for stories of how companies and developers are using serverless in the real world. "
 }

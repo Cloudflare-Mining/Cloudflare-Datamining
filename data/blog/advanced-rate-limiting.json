@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Daniele Molteni",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/10/meProfessional-1-flipped.jpg",
-			"width": 1732,
-			"height": 1732
-		},
 		"url": "https://blog.cloudflare.com/author/daniele/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/advanced-rate-limiting/",
 	"datePublished": "2022-03-16T12:58:53.000Z",
 	"dateModified": "2022-07-28T22:07:50.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/03/image1-50.png",
-		"width": 1800,
-		"height": 1013
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/03/image1-50.png",
 	"keywords": "Security Week, Rate Limiting",
-	"description": "Advance Rate Limiting allows counting requests based on virtually any characteristics of the HTTP request, regardless of its source IP",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Advance Rate Limiting allows counting requests based on virtually any characteristics of the HTTP request, regardless of its source IP"
 }

@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Kenton Varda",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/08/avatar-github.jpg",
-			"width": 460,
-			"height": 460
-		},
 		"url": "https://blog.cloudflare.com/author/kenton-varda/",
 		"sameAs": [
 			"https://twitter.com/kentonvarda"
@@ -31,9 +12,5 @@
 	"dateModified": "2018-12-20T18:22:19.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/09/cloudflare-workers-webassembly-share.png",
 	"keywords": "Cloudflare Workers, Serverless, Developers",
-	"description": "Today, we&#x27;re extending Cloudflare Workers with support for WebAssembly. All Workers customers can now augment their applications with WASM at no additional cost.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Today, we&#x27;re extending Cloudflare Workers with support for WebAssembly. All Workers customers can now augment their applications with WASM at no additional cost."
 }

@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Ben Solomon",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/08/Personal-Pic.jpg",
-			"width": 2000,
-			"height": 2000
-		},
 		"url": "https://blog.cloudflare.com/author/bensol/",
 		"sameAs": [
 			"https://twitter.com/bensol"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/ko-kr/api-gateway-ko-kr/",
 	"datePublished": "2022-03-16T12:59:00.000Z",
 	"dateModified": "2022-06-30T08:35:08.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/06/image5-4-1.png",
-		"width": 1800,
-		"height": 1013
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/06/image5-4-1.png",
 	"keywords": "Security Week (KO), API Gateway (KO), 제품 뉴스, API (KO), 보안, 한국어",
-	"description": "오늘 우리는 Cloudflare API Gateway를 발표합니다. 여러분의 기존 게이트웨이를 몇 분의 일의 비용으로 우리가 완벽하게 대체하게 됩니다",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "오늘 우리는 Cloudflare API Gateway를 발표합니다. 여러분의 기존 게이트웨이를 몇 분의 일의 비용으로 우리가 완벽하게 대체하게 됩니다"
 }

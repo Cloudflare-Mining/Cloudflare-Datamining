@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Ashcon Partovi",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/04/117158947_4858836477475662_2532132460047140852_o.jpeg",
-			"width": 280,
-			"height": 280
-		},
 		"url": "https://blog.cloudflare.com/author/ashcon/",
 		"sameAs": [
 			"https://twitter.com/ashconpartovi"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/introducing-workers-dashboard-logs/",
 	"datePublished": "2021-08-24T14:00:00.000Z",
 	"dateModified": "2021-08-24T16:11:55.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/08/Workers-Observability-Shim-Github-Header-1.png",
-		"width": 1056,
-		"height": 477
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/08/Workers-Observability-Shim-Github-Header-1.png",
 	"keywords": "Cloudflare Workers, Logs, Developers, Product News, Dashboard, Wrangler",
-	"description": "Many developers know the feeling: “It worked in the local testing suite, it worked in our staging environment, but… it’s broken in production?” Testing can reduce mistakes and debugging can help find them, but logs give us the tools to understand and improve what we are creating.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Many developers know the feeling: “It worked in the local testing suite, it worked in our staging environment, but… it’s broken in production?” Testing can reduce mistakes and debugging can help find them, but logs give us the tools to understand and improve what we are creating."
 }

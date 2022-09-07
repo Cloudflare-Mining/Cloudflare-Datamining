@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Tom Strickx",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/07/Headshot_Lisbon.png",
-			"width": 150,
-			"height": 176
-		},
 		"url": "https://blog.cloudflare.com/author/tom-strickx/",
 		"sameAs": [
 			"https://twitter.com/tstrickx"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/asics-at-the-edge/",
 	"datePublished": "2020-11-27T13:00:00.000Z",
 	"dateModified": "2022-03-29T19:58:54.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2020/11/MPC4E-3D-32XGE-on-blog-home.png",
-		"width": 1200,
-		"height": 627
-	},
+	"image": "http://blog.cloudflare.com/content/images/2020/11/MPC4E-3D-32XGE-on-blog-home.png",
 	"keywords": "Network, Hardware, Deep Dive",
-	"description": "At Cloudflare, we pride ourselves in our global network that spans more than 200 cities in over 100 countries. To accelerate all that traffic through our network, there are multiple technologies at play. So let’s have a look at one of the cornerstones that makes all of this work.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "At Cloudflare, we pride ourselves in our global network that spans more than 200 cities in over 100 countries. To accelerate all that traffic through our network, there are multiple technologies at play. So let’s have a look at one of the cornerstones that makes all of this work."
 }

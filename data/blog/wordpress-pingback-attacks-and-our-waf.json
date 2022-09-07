@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Simon Moore",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/08/simon-moore.png",
-			"width": 494,
-			"height": 500
-		},
 		"url": "https://blog.cloudflare.com/author/simon-moore/",
 		"sameAs": []
 	},
@@ -29,9 +10,5 @@
 	"dateModified": "2020-08-17T18:17:35.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/08/cloudflare_waf_wordpress_ruleset_1.png",
 	"keywords": "WordPress, WAF, Attacks",
-	"description": "At CloudFlare a lot of our customers use WordPress, that&#x27;s why we have our own plugin, we hang out at WordCamp and we wrote a WordPress specific ruleset for our Web Application Firewall.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "At CloudFlare a lot of our customers use WordPress, that&#x27;s why we have our own plugin, we hang out at WordCamp and we wrote a WordPress specific ruleset for our Web Application Firewall."
 }

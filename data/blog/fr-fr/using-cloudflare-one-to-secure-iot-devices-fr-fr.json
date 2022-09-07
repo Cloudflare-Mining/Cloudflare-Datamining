@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Molly Cinnamon",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/08/Screenshot-2021-08-10-at-6.56.05-PM.png",
-			"width": 1170,
-			"height": 892
-		},
 		"url": "https://blog.cloudflare.com/author/molly/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/fr-fr/using-cloudflare-one-to-secure-iot-devices-fr-fr/",
 	"datePublished": "2022-03-18T21:03:00.000Z",
 	"dateModified": "2022-06-13T15:59:00.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/06/Magic-IoT-2.png",
-		"width": 1600,
-		"height": 900
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/06/Magic-IoT-2.png",
 	"keywords": "Cloudflare One (FR), Cloudflare Zero Trust (FR), Zero Trust (FR), Nouveautés produits, IoT (FR), Sécurité, Français",
-	"description": "Nous nous sommes donc posé la question suivante : pouvons-nous utiliser nos propres produits pour sécuriser les appareils IdO (même si ces derniers se situent sur le même réseau que les systèmes de production) afin de nous assurer ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Nous nous sommes donc posé la question suivante : pouvons-nous utiliser nos propres produits pour sécuriser les appareils IdO (même si ces derniers se situent sur le même réseau que les systèmes de production) afin de nous assurer "
 }

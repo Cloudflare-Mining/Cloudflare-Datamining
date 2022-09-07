@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Patrick R. Donahue",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/me0-1.png",
-			"width": 300,
-			"height": 291
-		},
 		"url": "https://blog.cloudflare.com/author/patrick/",
 		"sameAs": [
 			"https://www.cloudflare.com",
@@ -32,9 +13,5 @@
 	"dateModified": "2018-08-28T20:17:57.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/08/3574716051_8d8c6c7eec_b.jpg",
 	"keywords": "SSL, Product News, Add-ons, Universal SSL, Security, Dedicated Certificates",
-	"description": "When we launched Universal SSL in September 2014 we eliminated the costly and confusing process of securing a website or application with SSL, and replaced it with one free step: sign up for Cloudflare.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "When we launched Universal SSL in September 2014 we eliminated the costly and confusing process of securing a website or application with SSL, and replaced it with one free step: sign up for Cloudflare."
 }

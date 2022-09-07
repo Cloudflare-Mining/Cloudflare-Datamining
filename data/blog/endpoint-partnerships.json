@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Simon Steiner",
-		"image": "http://blog.cloudflare.com/content/images/2019/06/Head-shot.jpg",
 		"url": "https://blog.cloudflare.com/author/simon/",
 		"sameAs": []
 	},
@@ -22,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/endpoint-partnerships/",
 	"datePublished": "2021-03-23T13:00:00.000Z",
 	"dateModified": "2022-04-26T23:11:58.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/03/image2-26.png",
-		"width": 1076,
-		"height": 579
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/03/image2-26.png",
 	"keywords": "Zero Trust, Cloudflare Zero Trust, Device Security, Device posture, Cloudflare Access, Cloudflare One, Security Week, Security",
-	"description": "Cloudflare launches new integrations with CrowdStrike, SentinelOne, and VMware Carbon Black. Cloudflare for Teams customers can now restrict access to their applications based on security signals from their devices.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Cloudflare launches new integrations with CrowdStrike, SentinelOne, and VMware Carbon Black. Cloudflare for Teams customers can now restrict access to their applications based on security signals from their devices."
 }

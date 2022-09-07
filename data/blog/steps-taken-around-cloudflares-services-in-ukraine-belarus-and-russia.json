@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Matthew Prince",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
-			"width": 1196,
-			"height": 1190
-		},
 		"url": "https://blog.cloudflare.com/author/matthew-prince/",
 		"sameAs": [
 			"https://twitter.com/eastdakota"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/steps-taken-around-cloudflares-services-in-ukraine-belarus-and-russia/",
 	"datePublished": "2022-03-07T05:03:59.000Z",
 	"dateModified": "2022-03-22T06:26:19.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/03/Cloudflare-logo-generic-blog-OG.png",
-		"width": 1200,
-		"height": 628
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/03/Cloudflare-logo-generic-blog-OG.png",
 	"keywords": "Ukraine, Russia, Belarus, Internet Traffic, Security",
-	"description": "At Cloudflare, we&#x27;ve watched in horror the Russian invasion of Ukraine. As the possibility of war looked more likely, we began to carefully monitor the situation on the ground, with the goal of keeping our employees, our customers, and our network safe",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "At Cloudflare, we&#x27;ve watched in horror the Russian invasion of Ukraine. As the possibility of war looked more likely, we began to carefully monitor the situation on the ground, with the goal of keeping our employees, our customers, and our network safe"
 }

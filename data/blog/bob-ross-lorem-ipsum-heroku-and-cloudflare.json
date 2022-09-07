@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Steven Pack",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/08/steven-pack.png",
-			"width": 496,
-			"height": 492
-		},
 		"url": "https://blog.cloudflare.com/author/stevenpack/",
 		"sameAs": [
 			"https://twitter.com/steven_pack"
@@ -31,9 +12,5 @@
 	"dateModified": "2018-09-10T16:45:05.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/09/Screenshot-2018-09-04-13.06.11.png",
 	"keywords": "Fun, Programming",
-	"description": "It may not be immediately obvious how these things are related, but bear with me... It was 4pm Friday and one of the engineers on the Cloudflare Tools team came to me with an emergency. &quot;Steve! The Bob Ross Ipsum generator is down!&quot;.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "It may not be immediately obvious how these things are related, but bear with me... It was 4pm Friday and one of the engineers on the Cloudflare Tools team came to me with an emergency. &quot;Steve! The Bob Ross Ipsum generator is down!&quot;."
 }

@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Rita Kozlov",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/05/Rita-Kozlov.jpeg",
-			"width": 200,
-			"height": 200
-		},
 		"url": "https://blog.cloudflare.com/author/rita/",
 		"sameAs": [
 			"https://twitter.com/ritakozlov_"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/de-de/workers-sites-de-de/",
 	"datePublished": "2019-09-27T13:00:00.000Z",
 	"dateModified": "2021-01-22T18:46:56.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2019/10/00.png",
-		"width": 967,
-		"height": 551
-	},
+	"image": "https://blog.cloudflare.com/content/images/2019/10/00.png",
 	"keywords": "Cloudflare Workers (DE), Geburtstagswoche, Produktneuigkeiten, Serverlos, Deutsch, JavaScript (DE)",
-	"description": "Internet-Performance war schon immer ein Kampf gegen die Lichtgeschwindigkeit. Wenn man in London eine Website aufruft, die in Seattle betrieben wird, dann muss jede einzelne Anfrage mehr als elftausend Kilometer zurücklegen.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Internet-Performance war schon immer ein Kampf gegen die Lichtgeschwindigkeit. Wenn man in London eine Website aufruft, die in Seattle betrieben wird, dann muss jede einzelne Anfrage mehr als elftausend Kilometer zurücklegen."
 }

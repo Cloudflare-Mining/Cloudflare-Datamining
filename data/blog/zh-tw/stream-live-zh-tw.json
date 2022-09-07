@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Zaid Farooqui",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/05/Screen-Shot-2022-05-12-at-5.21.40-PM.png",
-			"width": 406,
-			"height": 370
-		},
 		"url": "https://blog.cloudflare.com/author/zaid/",
 		"sameAs": [
 			"https://twitter.com/zaid"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/zh-tw/stream-live-zh-tw/",
 	"datePublished": "2021-09-30T14:39:00.000Z",
 	"dateModified": "2021-10-05T14:40:05.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/10/1-10.png",
-		"width": 1801,
-		"height": 1013
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/10/1-10.png",
 	"keywords": "即時串流, 生日週 (TW), 無伺服器, 串流, 視訊",
-	"description": "您現在可以使用 Cloudflare 進行無伺服器端對端即時串流。Stream Live 將視訊攝取、編碼、錄影和播放器等功能融匯在一款產品中。",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "您現在可以使用 Cloudflare 進行無伺服器端對端即時串流。Stream Live 將視訊攝取、編碼、錄影和播放器等功能融匯在一款產品中。"
 }

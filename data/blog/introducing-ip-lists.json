@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Patrick R. Donahue",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/me0-1.png",
-			"width": 300,
-			"height": 291
-		},
 		"url": "https://blog.cloudflare.com/author/patrick/",
 		"sameAs": [
 			"https://www.cloudflare.com",
@@ -30,16 +11,7 @@
 	"url": "https://blog.cloudflare.com/introducing-ip-lists/",
 	"datePublished": "2020-07-22T09:41:00.000Z",
 	"dateModified": "2021-03-03T11:18:30.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2020/07/Firewall-rule--blocklist@2x-1.png",
-		"width": 1817,
-		"height": 1107
-	},
+	"image": "https://blog.cloudflare.com/content/images/2020/07/Firewall-rule--blocklist@2x-1.png",
 	"keywords": "Cloudflare Access, Cloudflare Network, Product News",
-	"description": "IP Lists can now be stored with metadata at the Cloudflare edge, replicated within seconds to our data centers in 200+ cities, and used as part of our powerful, expressive Firewall Rules engine to take action on incoming requests.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "IP Lists can now be stored with metadata at the Cloudflare edge, replicated within seconds to our data centers in 200+ cities, and used as part of our powerful, expressive Firewall Rules engine to take action on incoming requests."
 }

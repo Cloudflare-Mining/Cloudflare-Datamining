@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Guest Author",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/10/Screen-Shot-2019-10-09-at-11.21.59-AM.png",
-			"width": 362,
-			"height": 364
-		},
 		"url": "https://blog.cloudflare.com/author/guest-author/",
 		"sameAs": []
 	},
@@ -29,9 +10,5 @@
 	"dateModified": "2018-10-31T17:44:19.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/10/workers-kv-for-jgc-s-post-@2x-1.png",
 	"keywords": "Cloudflare Workers, Cloudflare Workers KV, Open Source, Page Rules",
-	"description": "RubyDocs is an open-source service that generates and hosts “fancy docs for any Ruby project”, most notably for the Ruby language itself and for Rails, the most popular Ruby framework. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "RubyDocs is an open-source service that generates and hosts “fancy docs for any Ruby project”, most notably for the Ruby language itself and for Rails, the most popular Ruby framework. "
 }

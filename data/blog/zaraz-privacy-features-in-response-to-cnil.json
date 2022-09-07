@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Yair Dovrat",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/11/profile.jpeg",
-			"width": 400,
-			"height": 400
-		},
 		"url": "https://blog.cloudflare.com/author/yair-dovrat/",
 		"sameAs": [
 			"https://twitter.com/YDovrat"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/zaraz-privacy-features-in-response-to-cnil/",
 	"datePublished": "2022-06-15T16:08:34.000Z",
 	"dateModified": "2022-06-20T23:58:07.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/06/image4-5.png",
-		"width": 1801,
-		"height": 1013
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/06/image4-5.png",
 	"keywords": "Zaraz, Privacy, Google Analytics, CNIL, France, Product News",
-	"description": "Last week, the French National Data Protection Authority, CNIL, published guidelines for a GDPR-compliant way of loading Google Analytics. Today, Zaraz is launching a new set of features to help our customers use Google Analytics and similar tools, while meeting those strict standards",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Last week, the French National Data Protection Authority, CNIL, published guidelines for a GDPR-compliant way of loading Google Analytics. Today, Zaraz is launching a new set of features to help our customers use Google Analytics and similar tools, while meeting those strict standards"
 }

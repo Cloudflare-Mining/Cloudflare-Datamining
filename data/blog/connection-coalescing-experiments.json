@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Talha Paracha",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/09/D8pNzUuZ_400x400.jpeg",
-			"width": 400,
-			"height": 400
-		},
 		"url": "https://blog.cloudflare.com/author/talha/",
 		"sameAs": [
 			"https://talhaparacha.com/",
@@ -30,16 +11,7 @@
 	"url": "https://blog.cloudflare.com/connection-coalescing-experiments/",
 	"datePublished": "2021-10-13T12:59:25.000Z",
 	"dateModified": "2021-10-13T12:59:25.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/10/Untitled-1.png",
-		"width": 1200,
-		"height": 628
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/10/Untitled-1.png",
 	"keywords": "Research, Privacy, Performance, Browser Insights, Better Internet, CDNJS",
-	"description": "Real world experiments for evaluating connection coalescing effects.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Real world experiments for evaluating connection coalescing effects."
 }

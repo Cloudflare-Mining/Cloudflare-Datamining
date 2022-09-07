@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Louis Poinsignon",
-		"image": "http://blog.cloudflare.com/content/images/2017/09/AAEAAQAAAAAAAAYXAAAAJGE5YjM0YmVmLWJhMTItNDExZS1iNTcwLTdmNTg1YzZjMjBiNg.jpg",
 		"url": "https://blog.cloudflare.com/author/louis-poinsignon/",
 		"sameAs": [
 			"https://twitter.com/lpoinsig"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/fr-fr/is-bgp-safe-yet-rpki-routing-security-initiative-fr-fr/",
 	"datePublished": "2020-04-17T15:00:00.000Z",
 	"dateModified": "2021-01-27T01:58:23.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2020/12/image--2---1--1-2.png",
-		"width": 1510,
-		"height": 950
-	},
+	"image": "http://blog.cloudflare.com/content/images/2020/12/image--2---1--1-2.png",
 	"keywords": "Français, BGP (FR), Sécurité, DNSSEC (FR), ICPR (FR)",
-	"description": "Cela fait bien trop longtemps que les fuites et les détournements BGP sont considérés comme inévitables sur Internet.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Cela fait bien trop longtemps que les fuites et les détournements BGP sont considérés comme inévitables sur Internet."
 }

@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Ben Solomon",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/08/Personal-Pic.jpg",
-			"width": 2000,
-			"height": 2000
-		},
 		"url": "https://blog.cloudflare.com/author/bensol/",
 		"sameAs": [
 			"https://twitter.com/bensol"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/de-de/introducing-certificate-transparency-monitoring-de-de/",
 	"datePublished": "2019-08-08T22:00:00.000Z",
 	"dateModified": "2021-01-22T20:00:52.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/01/twitter-In-Stream_Wide___Introducing-Certificate-Transparency-Monitoring.png",
-		"width": 1945,
-		"height": 973
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/01/twitter-In-Stream_Wide___Introducing-Certificate-Transparency-Monitoring.png",
 	"keywords": "Produktneuigkeiten, Sicherheit, Deutsch, SSL (DE)",
-	"description": "Heute starten wir Certificate Transparency Monitoring (mein Sommerprojekt als Praktikant!). Damit können Kunden böswillige Zertifikate erkennen. Wenn Sie sich für CT Monitoring entscheiden, bekommen Sie von uns jedes Mal eine E-Mail, wenn für eine Ihrer Domains ein Zertifikat ausgestellt wird. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Heute starten wir Certificate Transparency Monitoring (mein Sommerprojekt als Praktikant!). Damit können Kunden böswillige Zertifikate erkennen. Wenn Sie sich für CT Monitoring entscheiden, bekommen Sie von uns jedes Mal eine E-Mail, wenn für eine Ihrer Domains ein Zertifikat ausgestellt wird. "
 }

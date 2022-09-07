@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Steven Pack",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/08/steven-pack.png",
-			"width": 496,
-			"height": 492
-		},
 		"url": "https://blog.cloudflare.com/author/stevenpack/",
 		"sameAs": [
 			"https://twitter.com/steven_pack"
@@ -29,10 +10,7 @@
 	"url": "https://blog.cloudflare.com/cryptocurrency-api-gateway-typescript-workers/",
 	"datePublished": "2018-06-29T13:00:00.000Z",
 	"dateModified": "2018-08-29T07:43:41.000Z",
+	"image": null,
 	"keywords": "Typescript, JavaScript, Serverless, Cloudflare Workers, Crypto, Programming",
-	"description": "If you followed part one, I have an environment setup where I can write Typescript with tests and deploy to the Cloudflare Edge with npm run upload. For this post, I want to take one of the Worker Recipes further.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "If you followed part one, I have an environment setup where I can write Typescript with tests and deploy to the Cloudflare Edge with npm run upload. For this post, I want to take one of the Worker Recipes further."
 }

@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Omer Yoachimik",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/Omer-1.png",
-			"width": 773,
-			"height": 653
-		},
 		"url": "https://blog.cloudflare.com/author/omer/",
 		"sameAs": [
 			"https://twitter.com/OmerYoahimik"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/deep-dive-cloudflare-autonomous-edge-ddos-protection/",
 	"datePublished": "2021-03-18T14:18:20.000Z",
 	"dateModified": "2022-01-07T02:32:43.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/03/image1-19.png",
-		"width": 1572,
-		"height": 839
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/03/image1-19.png",
 	"keywords": "DDoS, Gatebot, dosd, Linux, XDP",
-	"description": "Introducing our autonomous DDoS (Distributed Denial of Service) protection system, globally deployed to all of Cloudflare’s 200+ data centers, and is actively protecting all our customers against DDoS attacks across layers 3 to 7 (in the OSI model) without requiring any human intervention.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Introducing our autonomous DDoS (Distributed Denial of Service) protection system, globally deployed to all of Cloudflare’s 200+ data centers, and is actively protecting all our customers against DDoS attacks across layers 3 to 7 (in the OSI model) without requiring any human intervention."
 }

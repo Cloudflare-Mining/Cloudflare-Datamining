@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Jon Levine",
-		"image": "http://blog.cloudflare.com/content/images/2018/04/prof-crop.jpg",
 		"url": "https://blog.cloudflare.com/author/jpl/",
 		"sameAs": [
 			"https://twitter.com/jplevine"
@@ -26,9 +12,5 @@
 	"dateModified": "2019-04-26T00:01:01.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2019/01/caching@3x.png",
 	"keywords": "Cloudflare Workers, Serverless, Cache, Speed & Reliability, JavaScript, Developers",
-	"description": "At Cloudflare, we aim to make the Internet faster and safer for everyone. One way we do this is through caching: we keep a copy of our customer content in our 165 data centers around the world. This brings content  closer to users and reduces traffic back to origin servers.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "At Cloudflare, we aim to make the Internet faster and safer for everyone. One way we do this is through caching: we keep a copy of our customer content in our 165 data centers around the world. This brings content  closer to users and reduces traffic back to origin servers."
 }

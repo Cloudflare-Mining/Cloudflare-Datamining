@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Matthew Prince",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/08/Matthew-Prince-2.png",
-			"width": 1196,
-			"height": 1190
-		},
 		"url": "https://blog.cloudflare.com/author/matthew-prince/",
 		"sameAs": [
 			"https://twitter.com/eastdakota"
@@ -31,9 +12,5 @@
 	"dateModified": "2020-08-20T17:18:19.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/08/50522885.jpg",
 	"keywords": "IPv6, IPv4, World IPv6 Day",
-	"description": "Today is June 6. For the last two years, the date has been celebrated as World IPv6 Day. CloudFlare has offered full IPv6 support as well as our IPv6-to-IPv4 gateway since 2012.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Today is June 6. For the last two years, the date has been celebrated as World IPv6 Day. CloudFlare has offered full IPv6 support as well as our IPv6-to-IPv4 gateway since 2012."
 }

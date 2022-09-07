@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Omer Yoachimik",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/04/Omer-1.png",
-			"width": 773,
-			"height": 653
-		},
 		"url": "https://blog.cloudflare.com/author/omer/",
 		"sameAs": [
 			"https://twitter.com/OmerYoahimik"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/zh-tw/mantis-botnet-zh-tw/",
 	"datePublished": "2022-07-14T13:00:00.000Z",
 	"dateModified": "2022-08-25T08:15:37.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/08/image5-7-1.png",
-		"width": 1999,
-		"height": 1125
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/08/image5-7-1.png",
 	"keywords": "Mantis (TW), 殭屍網絡, DDoS (TW), 趨勢, 繁體中文 (TW)",
-	"description": "我們將這個每秒發動 2600 萬個請求之 DDoS 攻擊的殭屍網路命名為「Mantis（螳螂）」，因為它就像 Mantis shrimp（螳螂蝦）一樣，體型小但卻十分強大",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "我們將這個每秒發動 2600 萬個請求之 DDoS 攻擊的殭屍網路命名為「Mantis（螳螂）」，因為它就像 Mantis shrimp（螳螂蝦）一樣，體型小但卻十分強大"
 }

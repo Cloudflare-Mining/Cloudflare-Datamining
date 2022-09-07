@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Marek Majkowski",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/b5967d6c687939594adb6992723d0529.jpeg",
 		"url": "https://blog.cloudflare.com/author/marek-majkowski/",
 		"sameAs": [
 			"https://twitter.com/majek04"
@@ -26,9 +12,5 @@
 	"dateModified": "2019-03-01T15:51:13.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2019/02/31958194737_e06ecd6fcc_o-1.jpg",
 	"keywords": "TCP, API, Security",
-	"description": "Proper TCP socket splicing reduces the load on userspace processes and enables more efficient data forwarding. We realized that Linux Kernel&#x27;s SOCKMAP infrastructure can be reused for this purpose.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Proper TCP socket splicing reduces the load on userspace processes and enables more efficient data forwarding. We realized that Linux Kernel&#x27;s SOCKMAP infrastructure can be reused for this purpose."
 }

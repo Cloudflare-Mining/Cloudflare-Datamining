@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "John Graham-Cumming",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
 		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
 		"sameAs": [
 			"https://twitter.com/jgrahamc"
@@ -24,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/cloudflare-investigation-of-the-january-2022-okta-compromise/",
 	"datePublished": "2022-03-22T16:57:44.000Z",
 	"dateModified": "2022-06-14T13:36:08.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/03/Okta-Breach.png",
-		"width": 1200,
-		"height": 675
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/03/Okta-Breach.png",
 	"keywords": "Okta, Security, Post Mortem",
-	"description": "Today at 03:30 UTC we learnt of a compromise of Okta. We use Okta internally for employee identity as part of our authentication stack. We have investigated this compromise carefully and do not believe we have been compromised as a result",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Today at 03:30 UTC we learnt of a compromise of Okta. We use Okta internally for employee identity as part of our authentication stack. We have investigated this compromise carefully and do not believe we have been compromised as a result"
 }

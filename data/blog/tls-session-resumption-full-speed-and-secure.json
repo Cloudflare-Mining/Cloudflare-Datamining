@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Zi Lin",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/1222706.png",
 		"url": "https://blog.cloudflare.com/author/zi-lin/",
 		"sameAs": []
 	},
@@ -24,9 +10,5 @@
 	"dateModified": "2020-08-14T19:15:56.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/08/7439386300_837724fe8e_z.jpg",
 	"keywords": "TLS, Speed & Reliability, Universal SSL, Encryption, Speed, SSL, Security",
-	"description": "At CloudFlare, making web sites faster and safer at scale is always a driving force for innovation. We introduced “Universal SSL” to dramatically increase the size of the encrypted web.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "At CloudFlare, making web sites faster and safer at scale is always a driving force for innovation. We introduced “Universal SSL” to dramatically increase the size of the encrypted web."
 }

@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "John Graham-Cumming",
-		"image": "http://blog.cloudflare.com/content/images/2017/03/url-2.jpg",
 		"url": "https://blog.cloudflare.com/author/john-graham-cumming/",
 		"sameAs": [
 			"https://twitter.com/jgrahamc"
@@ -26,9 +12,5 @@
 	"dateModified": "2018-10-01T16:31:28.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/10/download-1-1.jpg",
 	"keywords": "Serverless, Cloudflare Workers, Internet Summit, Programming",
-	"description": "This week at the Cloudflare Internet Summit I have the honour of sitting down and talking with Sophie Wilson. She designed the very first ARM processor instruction set in the mid-1980s and was part of the small team that built the foundations for the mobile world we live in.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "This week at the Cloudflare Internet Summit I have the honour of sitting down and talking with Sophie Wilson. She designed the very first ARM processor instruction set in the mid-1980s and was part of the small team that built the foundations for the mobile world we live in."
 }

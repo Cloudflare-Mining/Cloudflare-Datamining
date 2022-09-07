@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Achiel van der Mandele",
-		"image": "http://blog.cloudflare.com/content/images/2019/04/avatar.png",
 		"url": "https://blog.cloudflare.com/author/achiel/",
 		"sameAs": []
 	},
@@ -22,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/magic-wan-firewall/",
 	"datePublished": "2021-03-22T13:00:00.000Z",
 	"dateModified": "2022-01-24T05:39:41.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/03/Magic-WAN-blog-preview.png",
-		"width": 1200,
-		"height": 628
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/03/Magic-WAN-blog-preview.png",
 	"keywords": "Cloudflare One, Product News, Security Week, Firewall, Network",
-	"description": "Magic WAN provides secure, performant connectivity and routing for your entire corporate network, reducing cost and operational complexity.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Magic WAN provides secure, performant connectivity and routing for your entire corporate network, reducing cost and operational complexity."
 }

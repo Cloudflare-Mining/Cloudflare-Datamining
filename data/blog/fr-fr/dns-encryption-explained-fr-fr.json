@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Peter Wu",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/10/gravatar.png",
-			"width": 512,
-			"height": 512
-		},
 		"url": "https://blog.cloudflare.com/author/peter-wu/",
 		"sameAs": [
 			"https://lekensteyn.nl/",
@@ -30,16 +11,7 @@
 	"url": "https://blog.cloudflare.com/fr-fr/dns-encryption-explained-fr-fr/",
 	"datePublished": "2019-10-29T13:00:00.000Z",
 	"dateModified": "2021-01-21T23:09:42.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2019/11/Screen-Shot-2019-10-28-at-12.46.36-PM-1.png",
-		"width": 2000,
-		"height": 709
-	},
+	"image": "https://blog.cloudflare.com/content/images/2019/11/Screen-Shot-2019-10-28-at-12.46.36-PM-1.png",
 	"keywords": "Français, DNS (FR), DoT (FR), DoH (FR), Cryptographie (FR), Semaine de la crypto",
-	"description": "Le Domain Name System (DNS) est le carnet d&#x27;adresses d&#x27;Internet. Lorsque vous consultez cloudflare.com ou tout autre site, votre navigateur demandera à un résolveur DNS l&#x27;adresse IP où se trouve le site. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Le Domain Name System (DNS) est le carnet d&#x27;adresses d&#x27;Internet. Lorsque vous consultez cloudflare.com ou tout autre site, votre navigateur demandera à un résolveur DNS l&#x27;adresse IP où se trouve le site. "
 }

@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Ivan Babrou",
-		"image": {
-			"@type": "ImageObject",
-			"url": "//www.gravatar.com/avatar/e2ee800c1f69d88acdfea37994b87276?s=250&d=mm&r=x",
-			"width": 250,
-			"height": 250
-		},
 		"url": "https://blog.cloudflare.com/author/ivan/",
 		"sameAs": []
 	},
@@ -29,9 +10,5 @@
 	"dateModified": "2020-08-14T16:08:03.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/03/20498505113_edb59b7408_z.jpg",
 	"keywords": "Compression, Speed & Reliability, Kafka",
-	"description": "How Cloudflare was able to save hundreds of gigabits of network bandwidth and terabytes of storage from Kafka.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "How Cloudflare was able to save hundreds of gigabits of network bandwidth and terabytes of storage from Kafka."
 }

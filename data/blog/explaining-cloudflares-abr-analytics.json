@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Jamie Herre",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2020/09/jherre.jpg",
-			"width": 771,
-			"height": 687
-		},
 		"url": "https://blog.cloudflare.com/author/jamie/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/explaining-cloudflares-abr-analytics/",
 	"datePublished": "2020-09-29T13:00:00.000Z",
 	"dateModified": "2020-09-29T17:18:13.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2020/09/abr_storage--thumb-.png",
-		"width": 876,
-		"height": 504
-	},
+	"image": "https://blog.cloudflare.com/content/images/2020/09/abr_storage--thumb-.png",
 	"keywords": "Birthday Week, Analytics, Product News, Logs, Developers",
-	"description": "Cloudflare’s analytics products help customers answer questions about their traffic by analyzing the mind-boggling, ever-increasing number of events (HTTP requests, Workers requests, Spectrum events) logged by Cloudflare products every day. ",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Cloudflare’s analytics products help customers answer questions about their traffic by analyzing the mind-boggling, ever-increasing number of events (HTTP requests, Workers requests, Spectrum events) logged by Cloudflare products every day. "
 }

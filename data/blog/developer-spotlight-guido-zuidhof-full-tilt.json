@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Erwin van der Koogh",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2021/04/twitter-profile-photo.jpeg",
-			"width": 400,
-			"height": 400
-		},
 		"url": "https://blog.cloudflare.com/author/erwin/",
 		"sameAs": [
 			"https://twitter.com/evanderkoogh"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/developer-spotlight-guido-zuidhof-full-tilt/",
 	"datePublished": "2021-11-15T13:59:19.000Z",
 	"dateModified": "2021-11-15T13:59:19.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/11/image1-19.png",
-		"width": 1800,
-		"height": 1012
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/11/image1-19.png",
 	"keywords": "Full Stack Week, Developer Spotlight, Cloudflare Workers, Durable Objects",
-	"description": "Guido won the innovative category in one of the biggest Game Jams with a combination of Pages, Durable Objects, modern browser APIs, and a hefty amount of ingenuity.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Guido won the innovative category in one of the biggest Game Jams with a combination of Pages, Durable Objects, modern browser APIs, and a hefty amount of ingenuity."
 }

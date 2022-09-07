@@ -1,20 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Patrick Meenan",
-		"image": "http://blog.cloudflare.com/content/images/2018/08/PatPerfCalendar.jpg",
 		"url": "https://blog.cloudflare.com/author/patrick-meenan/",
 		"sameAs": [
 			"https://www.webpagetest.org/",
@@ -27,9 +13,5 @@
 	"dateModified": "2018-10-22T23:34:00.000Z",
 	"image": "http://blog.cloudflare.com/content/images/2018/10/H2Prioritization-1.gif",
 	"keywords": "NGINX, Speed & Reliability, HTTP2, TCP",
-	"description": "Getting the best end-user performance from HTTP/2 requires good support for resource prioritization.  While most web servers support HTTP/2 prioritization, getting it to work well all the way to the browser requires a fair bit of coordination across the networking stack.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Getting the best end-user performance from HTTP/2 requires good support for resource prioritization.  While most web servers support HTTP/2 prioritization, getting it to work well all the way to the browser requires a fair bit of coordination across the networking stack."
 }

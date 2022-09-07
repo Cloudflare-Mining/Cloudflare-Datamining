@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Nick Sullivan",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/09/BJ4NgXVj_400x400.jpg",
-			"width": 400,
-			"height": 400
-		},
 		"url": "https://blog.cloudflare.com/author/nick-sullivan/",
 		"sameAs": [
 			"https://crypto.dance",
@@ -30,16 +11,7 @@
 	"url": "https://blog.cloudflare.com/ja-jp/going-keyless-everywhere-ja-jp/",
 	"datePublished": "2019-11-01T13:01:00.000Z",
 	"dateModified": "2021-01-21T18:42:07.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2019/11/keyless-everywhere-no-text@2x-4.png",
-		"width": 3727,
-		"height": 2436
-	},
+	"image": "https://blog.cloudflare.com/content/images/2019/11/keyless-everywhere-no-text@2x-4.png",
 	"keywords": "日本語, クリプトウィーク, SSL (JP), セキュリティ",
-	"description": "時が経つのは早いものです。Heartbleedの脆弱性が発見されたのは5年半前です。Heartbleedの名が広く世間に知れわたったのは、専用のWebページとロゴが作られた最初のバグだったからだけではなく、インターネットそのものの脆さを露呈したからです。暗号ライブラリの小さなバグであるHeartbleedは、オンライン上のほとんどすべてのWebサイトのユーザーの個人情報を漏洩する可能性がありました。",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "時が経つのは早いものです。Heartbleedの脆弱性が発見されたのは5年半前です。Heartbleedの名が広く世間に知れわたったのは、専用のWebページとロゴが作られた最初のバグだったからだけではなく、インターネットそのものの脆さを露呈したからです。暗号ライブラリの小さなバグであるHeartbleedは、オンライン上のほとんどすべてのWebサイトのユーザーの個人情報を漏洩する可能性がありました。"
 }

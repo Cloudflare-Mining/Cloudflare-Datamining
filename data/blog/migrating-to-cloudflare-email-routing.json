@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Celso Martinho",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/08/Celso-Martinho.png",
-			"width": 486,
-			"height": 488
-		},
 		"url": "https://blog.cloudflare.com/author/celso/",
 		"sameAs": [
 			"https://celso.io/",
@@ -30,16 +11,7 @@
 	"url": "https://blog.cloudflare.com/migrating-to-cloudflare-email-routing/",
 	"datePublished": "2022-01-27T17:22:00.000Z",
 	"dateModified": "2022-07-29T18:55:19.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2022/01/image2-35.png",
-		"width": 1800,
-		"height": 1013
-	},
+	"image": "http://blog.cloudflare.com/content/images/2022/01/image2-35.png",
 	"keywords": "Email Routing",
-	"description": "With Email Routing, you can effectively start receiving Emails in any of your domains for any number of custom addresses you want and forward the messages to any existing destination mailboxes",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "With Email Routing, you can effectively start receiving Emails in any of your domains for any number of custom addresses you want and forward the messages to any existing destination mailboxes"
 }

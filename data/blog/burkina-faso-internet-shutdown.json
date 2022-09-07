@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "João Tomé",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/08/V0x3WKfJ_400x400-1.jpeg",
-			"width": 400,
-			"height": 400
-		},
 		"url": "https://blog.cloudflare.com/author/joao-tome/",
 		"sameAs": [
 			"https://twitter.com/emot"
@@ -29,16 +10,7 @@
 	"url": "https://blog.cloudflare.com/burkina-faso-internet-shutdown/",
 	"datePublished": "2021-11-22T16:11:42.000Z",
 	"dateModified": "2021-11-22T16:11:42.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/11/image5-12.png",
-		"width": 1200,
-		"height": 675
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/11/image5-12.png",
 	"keywords": "Cloudflare Radar, Internet Shutdown",
-	"description": "People living in Burkina Faso are facing an Internet shutdown. Cloudflare Radar shows that after 22:00 UTC (the same local time) Internet traffic went down significantly, something that has happened in the context of social tensions in the country that started on November 14, 2021.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "People living in Burkina Faso are facing an Internet shutdown. Cloudflare Radar shows that after 22:00 UTC (the same local time) Internet traffic went down significantly, something that has happened in the context of social tensions in the country that started on November 14, 2021."
 }

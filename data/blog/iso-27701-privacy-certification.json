@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Rory Malone",
-		"image": {
-			"@type": "ImageObject",
-			"url": "http://blog.cloudflare.com/content/images/2022/05/Rory-Malone---square.png",
-			"width": 432,
-			"height": 452
-		},
 		"url": "https://blog.cloudflare.com/author/rory/",
 		"sameAs": [
 			"https://www.cloudflare.com/trust-hub/compliance-resources",
@@ -30,16 +11,7 @@
 	"url": "https://blog.cloudflare.com/iso-27701-privacy-certification/",
 	"datePublished": "2021-04-21T13:00:00.000Z",
 	"dateModified": "2021-10-01T21:52:38.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "http://blog.cloudflare.com/content/images/2021/04/image3-14.png",
-		"width": 1736,
-		"height": 896
-	},
+	"image": "http://blog.cloudflare.com/content/images/2021/04/image3-14.png",
 	"keywords": "Certification, Privacy, Compliance, GDPR, Security",
-	"description": "Cloudflare is one of the first organisations in our industry to have achieved ISO/IEC 27701:2019 certification, and the first web performance &amp; security company to be certified to the new ISO privacy standard as both a data processor and controller.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Cloudflare is one of the first organisations in our industry to have achieved ISO/IEC 27701:2019 certification, and the first web performance &amp; security company to be certified to the new ISO privacy standard as both a data processor and controller."
 }

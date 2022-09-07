@@ -1,25 +1,6 @@
 {
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"publisher": {
-		"@type": "Organization",
-		"name": "The Cloudflare Blog",
-		"logo": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/06/logo-cloudflare-dark-1.svg",
-			"width": 109,
-			"height": 40.5
-		}
-	},
 	"author": {
-		"@type": "Person",
 		"name": "Nick Downie",
-		"image": {
-			"@type": "ImageObject",
-			"url": "https://blog-cloudflare-com-assets.storage.googleapis.com/2019/09/IMG_0035.jpg",
-			"width": 600,
-			"height": 600
-		},
 		"url": "https://blog.cloudflare.com/author/nick-downie/",
 		"sameAs": []
 	},
@@ -27,16 +8,7 @@
 	"url": "https://blog.cloudflare.com/de-de/how-we-used-our-new-graphql-api-to-build-firewall-analytics-de-de/",
 	"datePublished": "2019-12-12T15:41:00.000Z",
 	"dateModified": "2021-01-22T18:41:13.000Z",
-	"image": {
-		"@type": "ImageObject",
-		"url": "https://blog.cloudflare.com/content/images/2019/12/image3-12.png",
-		"width": 1600,
-		"height": 995
-	},
+	"image": "https://blog.cloudflare.com/content/images/2019/12/image3-12.png",
 	"keywords": "Analytik (DE), Deutsch, Produktneuigkeiten, GraphQL (DE), API (DE)",
-	"description": "Firewall Analytics ist das erste Produkt im Cloudflare-Dashboard, das die neue GraphQL Analytics API verwendet. Alle Produkte im Cloudflare-Dashboard werden mit denselben öffentlichen APIs entwickelt, die wir auch unseren Kunden zur Verfügung stellen.",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": "http://blog.cloudflare.com/"
-	}
+	"description": "Firewall Analytics ist das erste Produkt im Cloudflare-Dashboard, das die neue GraphQL Analytics API verwendet. Alle Produkte im Cloudflare-Dashboard werden mit denselben öffentlichen APIs entwickelt, die wir auch unseren Kunden zur Verfügung stellen."
 }
