@@ -145,7 +145,7 @@
 		]
 	},
 	"sign-up-background-image": {
-		"enabled": false,
+		"enabled": true,
 		"branches": [
 			"control",
 			"variant-image"
@@ -198,6 +198,9 @@
 	},
 	"unintended-registration": {
 		"enabled": true
+	},
+	"workers-for-platforms": {
+		"enabled": false
 	},
 	"zac-dummy-flag": {
 		"enabled": false
