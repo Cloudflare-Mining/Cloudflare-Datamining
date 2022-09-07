@@ -97,8 +97,12 @@ while(waiting){
 		continue;
 	}
 	const deploymentJson = await deploymentRes.json();
-	if(deploymentJson?.result?.latest_stage?.name === 'deploy' && deploymentJson?.result?.latest_stage?.status === 'success'){
-		waiting = false;
+	if(deploymentJson?.result?.latest_stage?.name === 'deploy'){
+		if(deploymentJson?.result?.latest_stage?.status === 'success'){
+			waiting = false;
+		}else if(deploymentJson?.result?.latest_stage?.status === 'failure'){
+			throw new Error('Deployment failed, exiting.');
+		}
 	}
 	console.log('Still deploying...', deploymentJson?.result?.latest_stage?.name, deploymentJson?.result?.latest_stage?.status);
 	await sleep(5000);
