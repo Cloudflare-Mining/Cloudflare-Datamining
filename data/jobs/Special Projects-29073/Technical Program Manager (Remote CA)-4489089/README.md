@@ -5,9 +5,6 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>Hiring Manager:</strong> Da Han</p>
-<p><strong>Recruiter:</strong> Sarah Morris</p>
-<hr>
 <h4>About the Role</h4>
 <p><span style="font-weight: 400;">We are looking for a mandarin speaking Technical Program Manager to focus on our international expansion into China. This role will involve close collaboration with the technical team of our China-based partner, as well as cross-functional collaboration across Cloudflare’s product, engineering, technical operations, and special project teams. This role offers an incredible opportunity to make a meaningful contribution to a high growth company in one of the world’s fastest-growing economies.</span></p>
 <h4>What you'll do</h4>
