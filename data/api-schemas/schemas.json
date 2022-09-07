@@ -4,7 +4,7 @@
 		"title": "Cloudflare Client API",
 		"description": "The Cloudflare Client API",
 		"version": "4.0.0",
-		"x-revision": "232-9738461"
+		"x-revision": "236-527aa1b"
 	},
 	"servers": [
 		{
@@ -43609,69 +43609,6 @@
 					]
 				}
 			},
-			"put": {
-				"summary": "Write key-value pair",
-				"description": "Write a value identified by a key. Use URL-encoding to use special characters (e.g. :, !, %) in the key name. Body should be the value to be stored. Existing values and expirations will be overwritten. If neither `expiration` nor `expiration_ttl` is specified, the key-value pair will never expire. If both are set, `expiration_ttl` is used and `expiration` is ignored.",
-				"parameters": [
-					{
-						"name": "key_name",
-						"in": "path",
-						"required": true,
-						"schema": {
-							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1storage~1kv~1namespaces~1%7Bnamespace_identifier%7D~1values~1%7Bkey_name%7D/get/parameters/0/schema"
-						}
-					},
-					{
-						"name": "namespace_identifier",
-						"in": "path",
-						"required": true,
-						"schema": {
-							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1storage~1kv~1namespaces~1%7Bnamespace_identifier%7D~1values~1%7Bkey_name%7D/get/parameters/1/schema"
-						}
-					},
-					{
-						"name": "account_identifier",
-						"in": "path",
-						"required": true,
-						"schema": {
-							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1storage~1kv~1namespaces~1%7Bnamespace_identifier%7D~1values~1%7Bkey_name%7D/get/parameters/2/schema"
-						}
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "Write key-value pair response",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/paths/~1user/get/responses/200/content/application~1json/schema/allOf/0"
-								}
-							}
-						}
-					}
-				},
-				"security": [
-					{
-						"api_key": [],
-						"api_email": []
-					}
-				],
-				"x-cfPermissionsRequired": {
-					"enum": [
-						"com.cloudflare.edge.storage.kv.key.update"
-					]
-				},
-				"requestBody": {
-					"required": true,
-					"content": {
-						"text/plain": {
-							"schema": {
-								"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1storage~1kv~1namespaces~1%7Bnamespace_identifier%7D~1values~1%7Bkey_name%7D/get/responses/200/content/application~1json/schema"
-							}
-						}
-					}
-				}
-			},
 			"delete": {
 				"summary": "Delete key-value pair",
 				"description": "Remove a KV pair from the Namespace. Use URL-encoding to use special characters (e.g. :, !, %) in the key name.",
@@ -84406,10 +84343,9 @@
 																"description": "UUID of the tunnel",
 																"readOnly": true,
 																"type": "string",
+																"format": "uuid",
 																"maxLength": 36,
-																"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
-																"pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-																"minLength": 36
+																"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415"
 															},
 															"name": {
 																"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1tunnels/post/requestBody/content/application~1json/schema/properties/name"
@@ -84572,10 +84508,9 @@
 							"description": "UUID of the tunnel",
 							"readOnly": true,
 							"type": "string",
+							"format": "uuid",
 							"maxLength": 36,
-							"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
-							"pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-							"minLength": 36
+							"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415"
 						}
 					},
 					{
@@ -84694,10 +84629,9 @@
 							"description": "UUID of the tunnel",
 							"readOnly": true,
 							"type": "string",
+							"format": "uuid",
 							"maxLength": 36,
-							"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
-							"pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-							"minLength": 36
+							"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415"
 						}
 					},
 					{
@@ -84796,10 +84730,9 @@
 																"description": "UUID of the tunnel",
 																"readOnly": true,
 																"type": "string",
+																"format": "uuid",
 																"maxLength": 36,
-																"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
-																"pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-																"minLength": 36
+																"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415"
 															},
 															"account_tag": {
 																"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1cfd_tunnel/get/parameters/0/schema"
@@ -84834,10 +84767,9 @@
 																			"description": "UUID of the tunnel's connection",
 																			"readOnly": true,
 																			"type": "string",
+																			"format": "uuid",
 																			"maxLength": 36,
-																			"example": "1bedc50d-42b3-473c-b108-ff3d10c0d925",
-																			"pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-																			"minLength": 36
+																			"example": "1bedc50d-42b3-473c-b108-ff3d10c0d925"
 																		},
 																		"is_pending_reconnect": {
 																			"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting. If this field is true, the connection has disconnected but is still being tracked for these optimized reconnects. If false, the connection is still actively serving",
@@ -84992,10 +84924,9 @@
 							"description": "UUID of the tunnel",
 							"readOnly": true,
 							"type": "string",
+							"format": "uuid",
 							"maxLength": 36,
-							"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
-							"pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-							"minLength": 36
+							"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415"
 						}
 					},
 					{
@@ -85060,10 +84991,9 @@
 																		"description": "UUID of the tunnel's connection",
 																		"readOnly": true,
 																		"type": "string",
+																		"format": "uuid",
 																		"maxLength": 36,
-																		"example": "1bedc50d-42b3-473c-b108-ff3d10c0d925",
-																		"pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-																		"minLength": 36
+																		"example": "1bedc50d-42b3-473c-b108-ff3d10c0d925"
 																	},
 																	"is_pending_reconnect": {
 																		"description": "Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting. If this field is true, the connection has disconnected but is still being tracked for these optimized reconnects. If false, the connection is still actively serving",
@@ -85260,10 +85190,9 @@
 							"description": "UUID of the tunnel",
 							"readOnly": true,
 							"type": "string",
+							"format": "uuid",
 							"maxLength": 36,
-							"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
-							"pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-							"minLength": 36
+							"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415"
 						}
 					},
 					{
@@ -85298,10 +85227,9 @@
 																"description": "UUID of the tunnel's connection",
 																"readOnly": true,
 																"type": "string",
+																"format": "uuid",
 																"maxLength": 36,
-																"example": "1bedc50d-42b3-473c-b108-ff3d10c0d925",
-																"pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-																"minLength": 36
+																"example": "1bedc50d-42b3-473c-b108-ff3d10c0d925"
 															},
 															"features": {
 																"description": "Contents of a Cloudflare Tunnel",
@@ -85460,10 +85388,9 @@
 							"description": "UUID of the tunnel",
 							"readOnly": true,
 							"type": "string",
+							"format": "uuid",
 							"maxLength": 36,
-							"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
-							"pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-							"minLength": 36
+							"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415"
 						}
 					},
 					{
@@ -85520,10 +85447,9 @@
 							"description": "UUID of the tunnel",
 							"readOnly": true,
 							"type": "string",
+							"format": "uuid",
 							"maxLength": 36,
-							"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
-							"pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-							"minLength": 36
+							"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415"
 						}
 					},
 					{
@@ -85989,10 +85915,9 @@
 																"description": "UUID of the virtual network",
 																"readOnly": true,
 																"type": "string",
+																"format": "uuid",
 																"maxLength": 36,
-																"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
-																"pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-																"minLength": 36
+																"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415"
 															},
 															"name": {
 																"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1teamnet~1virtual_networks/post/requestBody/content/application~1json/schema/properties/name"
@@ -86127,10 +86052,9 @@
 							"description": "UUID of the virtual network",
 							"readOnly": true,
 							"type": "string",
+							"format": "uuid",
 							"maxLength": 36,
-							"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
-							"pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
-							"minLength": 36
+							"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415"
 						}
 					},
 					{
@@ -86379,188 +86303,6 @@
 					"business": false,
 					"enterprise": true
 				}
-			},
-			"post": {
-				"summary": "Create Routes",
-				"description": "Creates a new Magic static route. Use `?validate_only=true` as an optional query parameter to run validation only without persisting changes",
-				"parameters": [
-					{
-						"name": "account_identifier",
-						"in": "path",
-						"required": true,
-						"schema": {
-							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1routes/get/parameters/0/schema"
-						}
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "Create Routes response",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1routes/get/responses/200/content/application~1json/schema"
-								}
-							}
-						}
-					}
-				},
-				"security": [
-					{
-						"api_key": [],
-						"api_email": []
-					}
-				],
-				"x-cfPermissionsRequired": {
-					"enum": [
-						"#organization:edit"
-					]
-				},
-				"x-cfPlanAvailability": {
-					"free": false,
-					"pro": false,
-					"business": false,
-					"enterprise": true
-				},
-				"requestBody": {
-					"required": true,
-					"content": {
-						"application/json": {
-							"schema": {
-								"required": [
-									"prefix",
-									"nexthop",
-									"priority"
-								]
-							}
-						}
-					}
-				}
-			},
-			"put": {
-				"summary": "Update Many Routes",
-				"description": "Update multiple Magic static routes. Use `?validate_only=true` as an optional query parameter to run validation only without persisting changes. Only fields for a route that need to be changed need be provided.",
-				"parameters": [
-					{
-						"name": "account_identifier",
-						"in": "path",
-						"required": true,
-						"schema": {
-							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1routes/get/parameters/0/schema"
-						}
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "Update Many Routes response",
-						"content": {
-							"application/json": {
-								"schema": {
-									"allOf": [
-										{
-											"$ref": "#/paths/~1user/get/responses/200/content/application~1json/schema/allOf/0"
-										},
-										{
-											"properties": {
-												"result": {
-													"properties": {
-														"modified": {
-															"type": "boolean",
-															"example": true
-														},
-														"modified_routes": {
-															"type": "array",
-															"items": {
-																"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1routes/get/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/routes/items"
-															}
-														}
-													}
-												}
-											}
-										}
-									]
-								}
-							}
-						}
-					}
-				},
-				"security": [
-					{
-						"api_key": [],
-						"api_email": []
-					}
-				],
-				"x-cfPermissionsRequired": {
-					"enum": [
-						"#organization:edit"
-					]
-				},
-				"x-cfPlanAvailability": {
-					"free": false,
-					"pro": false,
-					"business": false,
-					"enterprise": true
-				},
-				"requestBody": {
-					"required": true,
-					"content": {
-						"application/json": {
-							"schema": {
-								"type": "object",
-								"required": [
-									"routes"
-								],
-								"properties": {
-									"routes": {
-										"type": "array",
-										"items": {
-											"allOf": [
-												{
-													"required": [
-														"id"
-													],
-													"properties": {
-														"id": {
-															"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1subscriptions/get/parameters/0/schema"
-														}
-													}
-												},
-												{
-													"type": "object",
-													"required": [
-														"prefix",
-														"nexthop",
-														"priority"
-													],
-													"properties": {
-														"prefix": {
-															"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1routes/get/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/routes/items/properties/prefix"
-														},
-														"nexthop": {
-															"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1routes/get/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/routes/items/properties/nexthop"
-														},
-														"priority": {
-															"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1routes/get/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/routes/items/properties/priority"
-														},
-														"description": {
-															"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1routes/get/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/routes/items/properties/description"
-														},
-														"weight": {
-															"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1routes/get/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/routes/items/properties/weight"
-														},
-														"scope": {
-															"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1routes/get/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/routes/items/properties/scope"
-														}
-													}
-												}
-											]
-										}
-									}
-								}
-							}
-						}
-					}
-				}
 			}
 		},
 		"/accounts/{account_identifier}/magic/routes/{route_identifier}": {
@@ -86630,9 +86372,9 @@
 					"enterprise": true
 				}
 			},
-			"put": {
-				"summary": "Update Route",
-				"description": "Update a specific Magic static route. Use `?validate_only=true` as an optional query parameter to run validation only without persisting changes",
+			"delete": {
+				"summary": "Delete Route",
+				"description": "Disable and remove a specific Magic static route",
 				"parameters": [
 					{
 						"name": "route_identifier",
@@ -86648,6 +86390,390 @@
 						"required": true,
 						"schema": {
 							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1routes~1%7Broute_identifier%7D/get/parameters/1/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Delete Route response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"deleted": {
+															"type": "boolean",
+															"example": true
+														},
+														"deleted_route": {
+															"type": "object"
+														}
+													}
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"#organization:edit"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": false,
+					"pro": false,
+					"business": false,
+					"enterprise": true
+				},
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {}
+					}
+				}
+			}
+		},
+		"/accounts/{account_identifier}/magic/routes?validate_only={validate_only}": {
+			"post": {
+				"summary": "Create Routes",
+				"description": "Creates a new Magic static route. Use `?validate_only=true` as an optional query parameter to run validation only without persisting changes",
+				"parameters": [
+					{
+						"name": "validate_only",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "boolean",
+							"description": "If provided API will only validate change without persisting them.",
+							"default": true
+						}
+					},
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1subscriptions/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Create Routes response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"routes": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"required": [
+																	"prefix",
+																	"nexthop",
+																	"priority"
+																],
+																"properties": {
+																	"id": {
+																		"type": "string",
+																		"readOnly": true,
+																		"maxLength": 32,
+																		"description": "Route identifier tag",
+																		"example": "c4a7362d577a6c3019a474fd6f485821"
+																	},
+																	"created_on": {
+																		"type": "string",
+																		"readOnly": true,
+																		"format": "date-time",
+																		"example": "2017-06-14T00:00:00+00:00",
+																		"description": "When the route was created"
+																	},
+																	"modified_on": {
+																		"type": "string",
+																		"readOnly": true,
+																		"format": "date-time",
+																		"example": "2017-06-14T05:20:00+00:00",
+																		"description": "When the route was last modified"
+																	},
+																	"prefix": {
+																		"type": "string",
+																		"description": "IP Prefix in Classless Inter-Domain Routing format",
+																		"example": "192.0.2.0/24"
+																	},
+																	"nexthop": {
+																		"type": "string",
+																		"description": "The next-hop IP Address for the static route",
+																		"example": "203.0.113.1"
+																	},
+																	"priority": {
+																		"type": "integer",
+																		"description": "Priority of the static route"
+																	},
+																	"description": {
+																		"type": "string",
+																		"description": "An optional human provided description of the static route",
+																		"example": "New route for new prefix 203.0.113.1"
+																	},
+																	"weight": {
+																		"type": "integer",
+																		"description": "Optional weight of the ECMP scope - if provided"
+																	},
+																	"scope": {
+																		"type": "object",
+																		"description": "Used only for ECMP routes",
+																		"properties": {
+																			"colo_regions": {
+																				"type": "array",
+																				"description": "List of colo regions for the ECMP scope",
+																				"items": {
+																					"type": "string",
+																					"description": "Scope colo region",
+																					"example": "APAC"
+																				}
+																			},
+																			"colo_names": {
+																				"type": "array",
+																				"description": "List of colo names for the ECMP scope",
+																				"items": {
+																					"type": "string",
+																					"description": "Scope colo name",
+																					"example": "den01"
+																				}
+																			}
+																		}
+																	}
+																},
+																"x-cfLinkErrors": {}
+															}
+														}
+													}
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"#organization:edit"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": false,
+					"pro": false,
+					"business": false,
+					"enterprise": true
+				},
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"required": [
+									"prefix",
+									"nexthop",
+									"priority"
+								]
+							}
+						}
+					}
+				}
+			},
+			"put": {
+				"summary": "Update Many Routes",
+				"description": "Update multiple Magic static routes. Use `?validate_only=true` as an optional query parameter to run validation only without persisting changes. Only fields for a route that need to be changed need be provided.",
+				"parameters": [
+					{
+						"name": "validate_only",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1routes%3Fvalidate_only%3D%7Bvalidate_only%7D/post/parameters/0/schema"
+						}
+					},
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1routes%3Fvalidate_only%3D%7Bvalidate_only%7D/post/parameters/1/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Update Many Routes response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"modified": {
+															"type": "boolean",
+															"example": true
+														},
+														"modified_routes": {
+															"type": "array",
+															"items": {
+																"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1routes%3Fvalidate_only%3D%7Bvalidate_only%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/routes/items"
+															}
+														}
+													}
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"#organization:edit"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": false,
+					"pro": false,
+					"business": false,
+					"enterprise": true
+				},
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"required": [
+									"routes"
+								],
+								"properties": {
+									"routes": {
+										"type": "array",
+										"items": {
+											"allOf": [
+												{
+													"required": [
+														"id"
+													],
+													"properties": {
+														"id": {
+															"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1subscriptions/get/parameters/0/schema"
+														}
+													}
+												},
+												{
+													"type": "object",
+													"required": [
+														"prefix",
+														"nexthop",
+														"priority"
+													],
+													"properties": {
+														"prefix": {
+															"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1routes%3Fvalidate_only%3D%7Bvalidate_only%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/routes/items/properties/prefix"
+														},
+														"nexthop": {
+															"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1routes%3Fvalidate_only%3D%7Bvalidate_only%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/routes/items/properties/nexthop"
+														},
+														"priority": {
+															"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1routes%3Fvalidate_only%3D%7Bvalidate_only%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/routes/items/properties/priority"
+														},
+														"description": {
+															"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1routes%3Fvalidate_only%3D%7Bvalidate_only%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/routes/items/properties/description"
+														},
+														"weight": {
+															"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1routes%3Fvalidate_only%3D%7Bvalidate_only%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/routes/items/properties/weight"
+														},
+														"scope": {
+															"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1routes%3Fvalidate_only%3D%7Bvalidate_only%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/routes/items/properties/scope"
+														}
+													}
+												}
+											]
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/accounts/{account_identifier}/magic/routes/{route_identifier}?validate_only={validate_only}": {
+			"put": {
+				"summary": "Update Route",
+				"description": "Update a specific Magic static route. Use `?validate_only=true` as an optional query parameter to run validation only without persisting changes",
+				"parameters": [
+					{
+						"name": "validate_only",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "boolean",
+							"description": "If provided API will only validate change without persisting them.",
+							"default": true
+						}
+					},
+					{
+						"name": "route_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1subscriptions/get/parameters/0/schema"
+						}
+					},
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1subscriptions/get/parameters/0/schema"
 						}
 					}
 				],
@@ -86765,82 +86891,6 @@
 								]
 							}
 						}
-					}
-				}
-			},
-			"delete": {
-				"summary": "Delete Route",
-				"description": "Disable and remove a specific Magic static route",
-				"parameters": [
-					{
-						"name": "route_identifier",
-						"in": "path",
-						"required": true,
-						"schema": {
-							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1routes~1%7Broute_identifier%7D/get/parameters/0/schema"
-						}
-					},
-					{
-						"name": "account_identifier",
-						"in": "path",
-						"required": true,
-						"schema": {
-							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1routes~1%7Broute_identifier%7D/get/parameters/1/schema"
-						}
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "Delete Route response",
-						"content": {
-							"application/json": {
-								"schema": {
-									"allOf": [
-										{
-											"$ref": "#/paths/~1user/get/responses/200/content/application~1json/schema/allOf/0"
-										},
-										{
-											"properties": {
-												"result": {
-													"properties": {
-														"deleted": {
-															"type": "boolean",
-															"example": true
-														},
-														"deleted_route": {
-															"type": "object"
-														}
-													}
-												}
-											}
-										}
-									]
-								}
-							}
-						}
-					}
-				},
-				"security": [
-					{
-						"api_key": [],
-						"api_email": []
-					}
-				],
-				"x-cfPermissionsRequired": {
-					"enum": [
-						"#organization:edit"
-					]
-				},
-				"x-cfPlanAvailability": {
-					"free": false,
-					"pro": false,
-					"business": false,
-					"enterprise": true
-				},
-				"requestBody": {
-					"required": true,
-					"content": {
-						"application/json": {}
 					}
 				}
 			}
@@ -86992,131 +87042,6 @@
 					"business": false,
 					"enterprise": true
 				}
-			},
-			"post": {
-				"summary": "Create GRE tunnels",
-				"description": "Creates new GRE tunnels. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes.",
-				"parameters": [
-					{
-						"name": "account_identifier",
-						"in": "path",
-						"required": true,
-						"schema": {
-							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1gre_tunnels/get/parameters/0/schema"
-						}
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "Create GRE tunnels response",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1gre_tunnels/get/responses/200/content/application~1json/schema"
-								}
-							}
-						}
-					}
-				},
-				"security": [
-					{
-						"api_key": [],
-						"api_email": []
-					}
-				],
-				"x-cfPlanAvailability": {
-					"free": false,
-					"pro": false,
-					"business": false,
-					"enterprise": true
-				},
-				"requestBody": {
-					"required": true,
-					"content": {
-						"application/json": {
-							"schema": {
-								"required": [
-									"name",
-									"customer_gre_endpoint",
-									"cloudflare_gre_endpoint",
-									"interface_address"
-								]
-							}
-						}
-					}
-				}
-			},
-			"put": {
-				"summary": "Update multiple GRE tunnels",
-				"description": "Updates multiple GRE tunnels. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes.",
-				"parameters": [
-					{
-						"name": "account_identifier",
-						"in": "path",
-						"required": true,
-						"schema": {
-							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1gre_tunnels/get/parameters/0/schema"
-						}
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "Update multiple GRE tunnels response",
-						"content": {
-							"application/json": {
-								"schema": {
-									"allOf": [
-										{
-											"$ref": "#/paths/~1user/get/responses/200/content/application~1json/schema/allOf/0"
-										},
-										{
-											"properties": {
-												"result": {
-													"properties": {
-														"modified": {
-															"type": "boolean",
-															"example": true
-														},
-														"modified_gre_tunnels": {
-															"type": "array",
-															"items": {
-																"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1gre_tunnels/get/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/gre_tunnels/items"
-															}
-														}
-													}
-												}
-											}
-										}
-									]
-								}
-							}
-						}
-					}
-				},
-				"security": [
-					{
-						"api_key": [],
-						"api_email": []
-					}
-				],
-				"x-cfPlanAvailability": {
-					"free": false,
-					"pro": false,
-					"business": false,
-					"enterprise": true
-				},
-				"requestBody": {
-					"required": true,
-					"content": {
-						"application/json": {
-							"schema": {
-								"required": [
-									"id"
-								]
-							}
-						}
-					}
-				}
 			}
 		},
 		"/accounts/{account_identifier}/magic/gre_tunnels/{tunnel_identifier}": {
@@ -87180,17 +87105,21 @@
 					"business": false,
 					"enterprise": true
 				}
-			},
-			"put": {
-				"summary": "Update GRE Tunnel",
-				"description": "Updates a specific GRE tunnel. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes.",
+			}
+		},
+		"/accounts/{account_identifier}/magic/gre_tunnels?validate_only={validate_only}": {
+			"post": {
+				"summary": "Create GRE tunnels",
+				"description": "Creates new GRE tunnels. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes.",
 				"parameters": [
 					{
-						"name": "tunnel_identifier",
+						"name": "validate_only",
 						"in": "path",
 						"required": true,
 						"schema": {
-							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1gre_tunnels~1%7Btunnel_identifier%7D/get/parameters/0/schema"
+							"type": "boolean",
+							"description": "When provided, validates changes without persisting them.",
+							"default": true
 						}
 					},
 					{
@@ -87198,7 +87127,255 @@
 						"in": "path",
 						"required": true,
 						"schema": {
-							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1gre_tunnels~1%7Btunnel_identifier%7D/get/parameters/1/schema"
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1subscriptions/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Create GRE tunnels response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"gre_tunnels": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"required": [
+																	"name",
+																	"customer_gre_endpoint",
+																	"cloudflare_gre_endpoint",
+																	"interface_address"
+																],
+																"properties": {
+																	"id": {
+																		"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1gre_tunnels/get/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/gre_tunnels/items/properties/id"
+																	},
+																	"created_on": {
+																		"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1gre_tunnels/get/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/gre_tunnels/items/properties/created_on"
+																	},
+																	"modified_on": {
+																		"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1gre_tunnels/get/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/gre_tunnels/items/properties/modified_on"
+																	},
+																	"name": {
+																		"type": "string",
+																		"description": "The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel.",
+																		"example": "GRE_1"
+																	},
+																	"customer_gre_endpoint": {
+																		"type": "string",
+																		"description": "The IP address assigned to the customer side of the GRE tunnel.",
+																		"example": "203.0.113.1"
+																	},
+																	"cloudflare_gre_endpoint": {
+																		"type": "string",
+																		"description": "The IP address assigned to the Cloudflare side of the GRE tunnel.",
+																		"example": "203.0.113.1"
+																	},
+																	"interface_address": {
+																		"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1gre_tunnels/get/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/gre_tunnels/items/properties/interface_address"
+																	},
+																	"description": {
+																		"type": "string",
+																		"description": "An optional description of the GRE tunnel.",
+																		"example": "Tunnel for ISP X"
+																	},
+																	"ttl": {
+																		"type": "integer",
+																		"description": "Time To Live (TTL) in number of hops of the GRE tunnel.",
+																		"default": 64
+																	},
+																	"mtu": {
+																		"type": "integer",
+																		"description": "Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576.",
+																		"default": 1476
+																	},
+																	"health_check": {
+																		"type": "object",
+																		"properties": {
+																			"enabled": {
+																				"description": "Determines whether to run healthchecks for a tunnel.",
+																				"type": "boolean",
+																				"example": true,
+																				"default": true
+																			},
+																			"target": {
+																				"type": "string",
+																				"description": "The address used to run healthchecks for a tunnel. This field defaults to `customer_gre_endpoint address`.",
+																				"example": "203.0.113.1"
+																			},
+																			"type": {
+																				"type": "string",
+																				"description": "The type of healthcheck to run, reply or request. The default value is `reply`.",
+																				"example": "request",
+																				"default": "reply",
+																				"enum": [
+																					"reply",
+																					"request"
+																				]
+																			}
+																		}
+																	}
+																},
+																"x-cfLinkErrors": {}
+															}
+														}
+													}
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPlanAvailability": {
+					"free": false,
+					"pro": false,
+					"business": false,
+					"enterprise": true
+				},
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"required": [
+									"name",
+									"customer_gre_endpoint",
+									"cloudflare_gre_endpoint",
+									"interface_address"
+								]
+							}
+						}
+					}
+				}
+			},
+			"put": {
+				"summary": "Update multiple GRE tunnels",
+				"description": "Updates multiple GRE tunnels. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes.",
+				"parameters": [
+					{
+						"name": "validate_only",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1gre_tunnels%3Fvalidate_only%3D%7Bvalidate_only%7D/post/parameters/0/schema"
+						}
+					},
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1gre_tunnels%3Fvalidate_only%3D%7Bvalidate_only%7D/post/parameters/1/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Update multiple GRE tunnels response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"modified": {
+															"type": "boolean",
+															"example": true
+														},
+														"modified_gre_tunnels": {
+															"type": "array",
+															"items": {
+																"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1gre_tunnels%3Fvalidate_only%3D%7Bvalidate_only%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/gre_tunnels/items"
+															}
+														}
+													}
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPlanAvailability": {
+					"free": false,
+					"pro": false,
+					"business": false,
+					"enterprise": true
+				},
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"required": [
+									"id"
+								]
+							}
+						}
+					}
+				}
+			}
+		},
+		"/accounts/{account_identifier}/magic/gre_tunnels/{tunnel_identifier}?validate_only={validate_only}": {
+			"put": {
+				"summary": "Update GRE Tunnel",
+				"description": "Updates a specific GRE tunnel. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes.",
+				"parameters": [
+					{
+						"name": "validate_only",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "boolean",
+							"description": "When provided, validates changes without persisting them.",
+							"default": true
+						}
+					},
+					{
+						"name": "tunnel_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1subscriptions/get/parameters/0/schema"
+						}
+					},
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1subscriptions/get/parameters/0/schema"
 						}
 					}
 				],
@@ -87332,11 +87509,19 @@
 				"description": "Disables and removes a specific static GRE tunnel. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes.",
 				"parameters": [
 					{
+						"name": "validate_only",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1gre_tunnels~1%7Btunnel_identifier%7D%3Fvalidate_only%3D%7Bvalidate_only%7D/put/parameters/0/schema"
+						}
+					},
+					{
 						"name": "tunnel_identifier",
 						"in": "path",
 						"required": true,
 						"schema": {
-							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1gre_tunnels~1%7Btunnel_identifier%7D/get/parameters/0/schema"
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1gre_tunnels~1%7Btunnel_identifier%7D%3Fvalidate_only%3D%7Bvalidate_only%7D/put/parameters/1/schema"
 						}
 					},
 					{
@@ -87344,7 +87529,7 @@
 						"in": "path",
 						"required": true,
 						"schema": {
-							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1gre_tunnels~1%7Btunnel_identifier%7D/get/parameters/1/schema"
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1gre_tunnels~1%7Btunnel_identifier%7D%3Fvalidate_only%3D%7Bvalidate_only%7D/put/parameters/2/schema"
 						}
 					}
 				],
@@ -87535,131 +87720,6 @@
 					"business": false,
 					"enterprise": true
 				}
-			},
-			"post": {
-				"summary": "Create IPsec tunnels",
-				"description": "Creates new IPsec tunnels associated with an account. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes.",
-				"parameters": [
-					{
-						"name": "account_identifier",
-						"in": "path",
-						"required": true,
-						"schema": {
-							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1ipsec_tunnels/get/parameters/0/schema"
-						}
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "Create IPsec tunnels response",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1ipsec_tunnels/get/responses/200/content/application~1json/schema"
-								}
-							}
-						}
-					}
-				},
-				"security": [
-					{
-						"api_key": [],
-						"api_email": []
-					}
-				],
-				"x-cfPlanAvailability": {
-					"free": false,
-					"pro": false,
-					"business": false,
-					"enterprise": true
-				},
-				"requestBody": {
-					"required": true,
-					"content": {
-						"application/json": {
-							"schema": {
-								"required": [
-									"name",
-									"customer_ipsec_endpoint",
-									"cloudflare_ipsec_endpoint",
-									"interface_address"
-								]
-							}
-						}
-					}
-				}
-			},
-			"put": {
-				"summary": "Update multiple IPsec tunnels",
-				"description": "Update multiple IPsec tunnels associated with an account. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes.",
-				"parameters": [
-					{
-						"name": "account_identifier",
-						"in": "path",
-						"required": true,
-						"schema": {
-							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1ipsec_tunnels/get/parameters/0/schema"
-						}
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "Update multiple IPsec tunnels response",
-						"content": {
-							"application/json": {
-								"schema": {
-									"allOf": [
-										{
-											"$ref": "#/paths/~1user/get/responses/200/content/application~1json/schema/allOf/0"
-										},
-										{
-											"properties": {
-												"result": {
-													"properties": {
-														"modified": {
-															"type": "boolean",
-															"example": true
-														},
-														"modified_ipsec_tunnels": {
-															"type": "array",
-															"items": {
-																"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1ipsec_tunnels/get/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/ipsec_tunnels/items"
-															}
-														}
-													}
-												}
-											}
-										}
-									]
-								}
-							}
-						}
-					}
-				},
-				"security": [
-					{
-						"api_key": [],
-						"api_email": []
-					}
-				],
-				"x-cfPlanAvailability": {
-					"free": false,
-					"pro": false,
-					"business": false,
-					"enterprise": true
-				},
-				"requestBody": {
-					"required": true,
-					"content": {
-						"application/json": {
-							"schema": {
-								"required": [
-									"id"
-								]
-							}
-						}
-					}
-				}
 			}
 		},
 		"/accounts/{account_identifier}/magic/ipsec_tunnels/{tunnel_identifier}": {
@@ -87723,17 +87783,21 @@
 					"business": false,
 					"enterprise": true
 				}
-			},
-			"put": {
-				"summary": "Update IPsec Tunnel",
-				"description": "Updates a specific IPsec tunnel associated with an account. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes.",
+			}
+		},
+		"/accounts/{account_identifier}/magic/ipsec_tunnels?validate_only={validate_only}": {
+			"post": {
+				"summary": "Create IPsec tunnels",
+				"description": "Creates new IPsec tunnels associated with an account. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes.",
 				"parameters": [
 					{
-						"name": "tunnel_identifier",
+						"name": "validate_only",
 						"in": "path",
 						"required": true,
 						"schema": {
-							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1ipsec_tunnels~1%7Btunnel_identifier%7D/get/parameters/0/schema"
+							"type": "boolean",
+							"description": "When provided, validates changes without persisting them.",
+							"default": true
 						}
 					},
 					{
@@ -87741,7 +87805,328 @@
 						"in": "path",
 						"required": true,
 						"schema": {
-							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1ipsec_tunnels~1%7Btunnel_identifier%7D/get/parameters/1/schema"
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1subscriptions/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Create IPsec tunnels response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"ipsec_tunnels": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"required": [
+																	"name",
+																	"cloudflare_endpoint",
+																	"interface_address"
+																],
+																"properties": {
+																	"id": {
+																		"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1gre_tunnels/get/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/gre_tunnels/items/properties/id"
+																	},
+																	"created_on": {
+																		"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1gre_tunnels/get/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/gre_tunnels/items/properties/created_on"
+																	},
+																	"modified_on": {
+																		"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1gre_tunnels/get/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/gre_tunnels/items/properties/modified_on"
+																	},
+																	"name": {
+																		"type": "string",
+																		"description": "The name of the IPsec tunnel. The name cannot share a name with other tunnels.",
+																		"example": "IPsec_1"
+																	},
+																	"customer_endpoint": {
+																		"type": "string",
+																		"description": "The IP address assigned to the customer side of the IPsec tunnel",
+																		"example": "203.0.113.1"
+																	},
+																	"cloudflare_endpoint": {
+																		"type": "string",
+																		"description": "The IP address assigned to the Cloudflare side of the IPsec tunnel",
+																		"example": "203.0.113.1"
+																	},
+																	"interface_address": {
+																		"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1gre_tunnels/get/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/gre_tunnels/items/properties/interface_address"
+																	},
+																	"description": {
+																		"type": "string",
+																		"description": "An optional description forthe IPsec tunnel.",
+																		"example": "Tunnel for ISP X"
+																	},
+																	"psk_metadata": {
+																		"type": "object",
+																		"description": "The PSK metadata that includes when the PSK was generated.",
+																		"properties": {
+																			"last_generated_on": {
+																				"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1gre_tunnels/get/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/gre_tunnels/items/properties/modified_on"
+																			}
+																		}
+																	},
+																	"tunnel_health_check": {
+																		"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1ipsec_tunnels/get/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/ipsec_tunnels/items/properties/tunnel_health_check"
+																	},
+																	"allow_null_cipher": {
+																		"type": "boolean",
+																		"description": "When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2).",
+																		"example": true
+																	}
+																},
+																"x-cfLinkErrors": {}
+															}
+														}
+													}
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPlanAvailability": {
+					"free": false,
+					"pro": false,
+					"business": false,
+					"enterprise": true
+				},
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"required": [
+									"name",
+									"customer_ipsec_endpoint",
+									"cloudflare_ipsec_endpoint",
+									"interface_address"
+								]
+							}
+						}
+					}
+				}
+			},
+			"put": {
+				"summary": "Update multiple IPsec tunnels",
+				"description": "Update multiple IPsec tunnels associated with an account. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes.",
+				"parameters": [
+					{
+						"name": "validate_only",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1ipsec_tunnels%3Fvalidate_only%3D%7Bvalidate_only%7D/post/parameters/0/schema"
+						}
+					},
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1ipsec_tunnels%3Fvalidate_only%3D%7Bvalidate_only%7D/post/parameters/1/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Update multiple IPsec tunnels response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"modified": {
+															"type": "boolean",
+															"example": true
+														},
+														"modified_ipsec_tunnels": {
+															"type": "array",
+															"items": {
+																"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1ipsec_tunnels%3Fvalidate_only%3D%7Bvalidate_only%7D/post/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/ipsec_tunnels/items"
+															}
+														}
+													}
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPlanAvailability": {
+					"free": false,
+					"pro": false,
+					"business": false,
+					"enterprise": true
+				},
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"required": [
+									"id"
+								]
+							}
+						}
+					}
+				}
+			}
+		},
+		"/accounts/{account_identifier}/magic/ipsec_tunnels/{tunnel_identifier}/psk_generate?validate_only={validate_only}": {
+			"post": {
+				"summary": "Generate Pre Shared Key (PSK) for IPsec tunnels",
+				"description": "Generates a Pre Shared Key for a specific IPsec tunnel used in the IKE session. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes. After a PSK is generated, the PSK is immediately persisted to Cloudflare's edge and cannot be retrieved later. Note the PSK in a safe place.",
+				"parameters": [
+					{
+						"name": "validate_only",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "boolean",
+							"description": "When provided, validates changes without persisting them.",
+							"default": true
+						}
+					},
+					{
+						"name": "tunnel_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1subscriptions/get/parameters/0/schema"
+						}
+					},
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1subscriptions/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Generate Pre Shared Key (PSK) for IPsec tunnels response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"psk_metadata": {
+															"type": "object",
+															"description": "The PSK metadata that includes when the PSK was generated.",
+															"properties": {
+																"last_generated_on": {
+																	"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1gre_tunnels/get/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/gre_tunnels/items/properties/modified_on"
+																}
+															}
+														},
+														"psk": {
+															"type": "string",
+															"description": "A randomly generated or provided string for use in the IPsec tunnel",
+															"example": "O3bwKSjnaoCxDoUxjcq4Rk8ZKkezQUiy"
+														},
+														"ipsec_tunnel_id": {
+															"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1ipsec_tunnels~1%7Btunnel_identifier%7D~1psk_generate%3Fvalidate_only%3D%7Bvalidate_only%7D/post/parameters/1/schema"
+														}
+													}
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPlanAvailability": {
+					"free": false,
+					"pro": false,
+					"business": false,
+					"enterprise": true
+				},
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {}
+					}
+				}
+			}
+		},
+		"/accounts/{account_identifier}/magic/ipsec_tunnels/{tunnel_identifier}?validate_only={validate_only}": {
+			"put": {
+				"summary": "Update IPsec Tunnel",
+				"description": "Updates a specific IPsec tunnel associated with an account. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes.",
+				"parameters": [
+					{
+						"name": "validate_only",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "boolean",
+							"description": "When provided, validates changes without persisting them.",
+							"default": true
+						}
+					},
+					{
+						"name": "tunnel_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1subscriptions/get/parameters/0/schema"
+						}
+					},
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1subscriptions/get/parameters/0/schema"
 						}
 					}
 				],
@@ -87843,11 +88228,19 @@
 				"description": "Disables and removes a specific static IPsec Tunnel associated with an account. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes.",
 				"parameters": [
 					{
+						"name": "validate_only",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1ipsec_tunnels~1%7Btunnel_identifier%7D%3Fvalidate_only%3D%7Bvalidate_only%7D/put/parameters/0/schema"
+						}
+					},
+					{
 						"name": "tunnel_identifier",
 						"in": "path",
 						"required": true,
 						"schema": {
-							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1ipsec_tunnels~1%7Btunnel_identifier%7D/get/parameters/0/schema"
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1ipsec_tunnels~1%7Btunnel_identifier%7D%3Fvalidate_only%3D%7Bvalidate_only%7D/put/parameters/1/schema"
 						}
 					},
 					{
@@ -87855,7 +88248,7 @@
 						"in": "path",
 						"required": true,
 						"schema": {
-							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1ipsec_tunnels~1%7Btunnel_identifier%7D/get/parameters/1/schema"
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1ipsec_tunnels~1%7Btunnel_identifier%7D%3Fvalidate_only%3D%7Bvalidate_only%7D/put/parameters/2/schema"
 						}
 					}
 				],
@@ -87879,89 +88272,6 @@
 														},
 														"deleted_ipsec_tunnel": {
 															"type": "object"
-														}
-													}
-												}
-											}
-										}
-									]
-								}
-							}
-						}
-					}
-				},
-				"security": [
-					{
-						"api_key": [],
-						"api_email": []
-					}
-				],
-				"x-cfPlanAvailability": {
-					"free": false,
-					"pro": false,
-					"business": false,
-					"enterprise": true
-				},
-				"requestBody": {
-					"required": true,
-					"content": {
-						"application/json": {}
-					}
-				}
-			}
-		},
-		"/accounts/{account_identifier}/magic/ipsec_tunnels/{tunnel_identifier}/psk_generate": {
-			"post": {
-				"summary": "Generate Pre Shared Key (PSK) for IPsec tunnels",
-				"description": "Generates a Pre Shared Key for a specific IPsec tunnel used in the IKE session. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes. After a PSK is generated, the PSK is immediately persisted to Cloudflare's edge and cannot be retrieved later. Note the PSK in a safe place.",
-				"parameters": [
-					{
-						"name": "tunnel_identifier",
-						"in": "path",
-						"required": true,
-						"schema": {
-							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1subscriptions/get/parameters/0/schema"
-						}
-					},
-					{
-						"name": "account_identifier",
-						"in": "path",
-						"required": true,
-						"schema": {
-							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1subscriptions/get/parameters/0/schema"
-						}
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "Generate Pre Shared Key (PSK) for IPsec tunnels response",
-						"content": {
-							"application/json": {
-								"schema": {
-									"allOf": [
-										{
-											"$ref": "#/paths/~1user/get/responses/200/content/application~1json/schema/allOf/0"
-										},
-										{
-											"properties": {
-												"result": {
-													"properties": {
-														"psk_metadata": {
-															"type": "object",
-															"description": "The PSK metadata that includes when the PSK was generated.",
-															"properties": {
-																"last_generated_on": {
-																	"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1gre_tunnels/get/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/gre_tunnels/items/properties/modified_on"
-																}
-															}
-														},
-														"psk": {
-															"type": "string",
-															"description": "A randomly generated or provided string for use in the IPsec tunnel",
-															"example": "O3bwKSjnaoCxDoUxjcq4Rk8ZKkezQUiy"
-														},
-														"ipsec_tunnel_id": {
-															"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1ipsec_tunnels~1%7Btunnel_identifier%7D~1psk_generate/post/parameters/0/schema"
 														}
 													}
 												}
@@ -88129,78 +88439,6 @@
 					"business": false,
 					"enterprise": true
 				}
-			},
-			"put": {
-				"summary": "Update multiple interconnects",
-				"description": "Updates multiple interconnects associated with an account. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes.",
-				"parameters": [
-					{
-						"name": "account_identifier",
-						"in": "path",
-						"required": true,
-						"schema": {
-							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1cf_interconnects/get/parameters/0/schema"
-						}
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "Update multiple interconnects response",
-						"content": {
-							"application/json": {
-								"schema": {
-									"allOf": [
-										{
-											"$ref": "#/paths/~1user/get/responses/200/content/application~1json/schema/allOf/0"
-										},
-										{
-											"properties": {
-												"result": {
-													"properties": {
-														"modified": {
-															"type": "boolean",
-															"example": true
-														},
-														"modified_interconnects": {
-															"type": "array",
-															"items": {
-																"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1cf_interconnects/get/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/interconnects/items"
-															}
-														}
-													}
-												}
-											}
-										}
-									]
-								}
-							}
-						}
-					}
-				},
-				"security": [
-					{
-						"api_key": [],
-						"api_email": []
-					}
-				],
-				"x-cfPlanAvailability": {
-					"free": false,
-					"pro": false,
-					"business": false,
-					"enterprise": true
-				},
-				"requestBody": {
-					"required": true,
-					"content": {
-						"application/json": {
-							"schema": {
-								"required": [
-									"id"
-								]
-							}
-						}
-					}
-				}
 			}
 		},
 		"/accounts/{account_identifier}/magic/cf_interconnects/{tunnel_identifier}": {
@@ -88264,17 +88502,29 @@
 					"business": false,
 					"enterprise": true
 				}
-			},
+			}
+		},
+		"/accounts/{account_identifier}/magic/cf_interconnects/{tunnel_identifier}?validate_only={validate_only}": {
 			"put": {
 				"summary": "Update interconnect",
 				"description": "Updates a specific interconnect associated with an account. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes.",
 				"parameters": [
 					{
+						"name": "validate_only",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "boolean",
+							"description": "When provided, validates changes without persisting them.",
+							"default": true
+						}
+					},
+					{
 						"name": "tunnel_identifier",
 						"in": "path",
 						"required": true,
 						"schema": {
-							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1cf_interconnects~1%7Btunnel_identifier%7D/get/parameters/0/schema"
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1subscriptions/get/parameters/0/schema"
 						}
 					},
 					{
@@ -88282,7 +88532,7 @@
 						"in": "path",
 						"required": true,
 						"schema": {
-							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1cf_interconnects~1%7Btunnel_identifier%7D/get/parameters/1/schema"
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1subscriptions/get/parameters/0/schema"
 						}
 					}
 				],
@@ -88371,6 +88621,170 @@
 										}
 									}
 								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/accounts/{account_identifier}/magic/cf_interconnects?validate_only={validate_only}": {
+			"put": {
+				"summary": "Update multiple interconnects",
+				"description": "Updates multiple interconnects associated with an account. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes.",
+				"parameters": [
+					{
+						"name": "validate_only",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "boolean",
+							"description": "When provided, validates changes without persisting them.",
+							"default": true
+						}
+					},
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1subscriptions/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Update multiple interconnects response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"modified": {
+															"type": "boolean",
+															"example": true
+														},
+														"modified_interconnects": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"properties": {
+																	"id": {
+																		"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1gre_tunnels/get/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/gre_tunnels/items/properties/id"
+																	},
+																	"created_on": {
+																		"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1gre_tunnels/get/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/gre_tunnels/items/properties/created_on"
+																	},
+																	"modified_on": {
+																		"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1gre_tunnels/get/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/gre_tunnels/items/properties/modified_on"
+																	},
+																	"name": {
+																		"type": "string",
+																		"description": "The name of the interconnect. The name cannot share a name with other tunnels.",
+																		"example": "pni_ord"
+																	},
+																	"interface_address": {
+																		"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1gre_tunnels/get/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/gre_tunnels/items/properties/interface_address"
+																	},
+																	"description": {
+																		"type": "string",
+																		"description": "An optional description of the interconnect",
+																		"example": "Tunnel for Interconnect to ORD"
+																	},
+																	"health_check": {
+																		"type": "object",
+																		"properties": {
+																			"enabled": {
+																				"description": "Determines whether to run healthchecks for a tunnel.",
+																				"type": "boolean",
+																				"example": true,
+																				"default": true
+																			},
+																			"target": {
+																				"type": "string",
+																				"description": "The address used to run healthchecks for a tunnel.",
+																				"example": "203.0.113.1"
+																			},
+																			"type": {
+																				"type": "string",
+																				"description": "The type of healthcheck to run, reply or request. The default value is `reply`.",
+																				"example": "request",
+																				"default": "reply",
+																				"enum": [
+																					"reply",
+																					"request"
+																				]
+																			}
+																		}
+																	},
+																	"gre": {
+																		"type": "object",
+																		"description": "The configuration specific to GRE interconnects.",
+																		"properties": {
+																			"cloudflare_endpoint": {
+																				"type": "string",
+																				"description": "The IP address assigned to the Cloudflare side of the GRE tunnel created as part of the Interconnect",
+																				"example": "203.0.113.1"
+																			},
+																			"customer_endpoint": {
+																				"type": "string",
+																				"description": "The IP address assigned to the customer side of the GRE tunnel created as part of the Interconnect",
+																				"example": "203.0.113.1"
+																			},
+																			"is_colo_cast": {
+																				"type": "boolean",
+																				"description": "Determines whether to support multiple interconnects to the same data center for a useer.",
+																				"default": true
+																			}
+																		}
+																	},
+																	"mtu": {
+																		"type": "integer",
+																		"description": "The Maximum Transmission Unit (MTU) in bytes for the interconnect. The minimum value is 576.",
+																		"default": 1476
+																	},
+																	"colo_name": {
+																		"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1magic~1cf_interconnects%3Fvalidate_only%3D%7Bvalidate_only%7D/put/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/modified_interconnects/items/properties/name"
+																	}
+																},
+																"x-cfLinkErrors": {}
+															}
+														}
+													}
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPlanAvailability": {
+					"free": false,
+					"pro": false,
+					"business": false,
+					"enterprise": true
+				},
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"required": [
+									"id"
+								]
 							}
 						}
 					}
