@@ -13,7 +13,7 @@
 			"cfOwnership": "stream",
 			"html_id": "stream-live-inputs-create-live-inputs",
 			"uri": "accounts/:account_identifier/stream/live_inputs",
-			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/stream/live_inputs\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"meta\":{\"name\":\"test stream 1\"},\"recording\":{\"mode\":\"automatic\",\"requireSignedURLs\":true,\"allowedOrigins\":[\"example.com\"],\"timeoutSeconds\":0}}'",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/stream/live_inputs\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"meta\":{\"name\":\"test stream 1\"},\"recording\":{\"mode\":\"automatic\",\"requireSignedURLs\":true,\"allowedOrigins\":[\"example.com\"],\"timeoutSeconds\":0},\"defaultCreator\":null}'",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}
@@ -60,15 +60,22 @@
 							}
 						},
 						"description": "Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied."
+					},
+					"defaultCreator": {
+						"type": "string",
+						"example": "null",
+						"description": "Sets the creator ID asssociated with this live input.",
+						"default": null
 					}
 				},
 				"required_props": [],
 				"optional_props": [
 					"meta",
-					"recording"
+					"recording",
+					"defaultCreator"
 				],
 				"objects": [],
-				"example": "{\n  \"meta\": {\n    \"name\": \"test stream 1\"\n  },\n  \"recording\": {\n    \"mode\": \"automatic\",\n    \"requireSignedURLs\": true,\n    \"allowedOrigins\": [\n      \"example.com\"\n    ],\n    \"timeoutSeconds\": 0\n  }\n}"
+				"example": "{\n  \"meta\": {\n    \"name\": \"test stream 1\"\n  },\n  \"recording\": {\n    \"mode\": \"automatic\",\n    \"requireSignedURLs\": true,\n    \"allowedOrigins\": [\n      \"example.com\"\n    ],\n    \"timeoutSeconds\": 0\n  },\n  \"defaultCreator\": null\n}"
 			},
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"uid\": \"66be4bf738797e01e1fca35a7bdecdcd\",\n    \"meta\": {\n      \"name\": \"test stream 1\"\n    },\n    \"created\": \"2014-01-02T02:20:00Z\",\n    \"modified\": \"2014-01-02T02:20:00Z\",\n    \"rtmps\": {\n      \"url\": \"rtmps://live.cloudflare.com:443/live/\",\n      \"streamKey\": \"MjE2OTAxNzQyMjQxNDkyNDYyNTAxNjc3MzE3NzY4MjAwMTYxODMxMjMxOTc66be4bf738797e01e1fca35a7bdecdcd\"\n    },\n    \"recording\": {\n      \"mode\": \"automatic\",\n      \"requireSignedURLs\": true,\n      \"allowedOrigins\": [\n        \"example.com\"\n      ],\n      \"timeoutSeconds\": 0\n    }\n  }\n}"
 		},
@@ -158,7 +165,7 @@
 			"cfOwnership": "stream",
 			"html_id": "stream-live-inputs-update-a-single-live-input",
 			"uri": "accounts/:account_identifier/stream/live_inputs/:live_input_identifier",
-			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/stream/live_inputs/66be4bf738797e01e1fca35a7bdecdcd\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"meta\":{\"name\":\"test stream 1\"},\"recording\":{\"mode\":\"automatic\",\"requireSignedURLs\":true,\"allowedOrigins\":[\"example.com\"],\"timeoutSeconds\":0}}'",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/stream/live_inputs/66be4bf738797e01e1fca35a7bdecdcd\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"meta\":{\"name\":\"test stream 1\"},\"recording\":{\"mode\":\"automatic\",\"requireSignedURLs\":true,\"allowedOrigins\":[\"example.com\"],\"timeoutSeconds\":0},\"defaultCreator\":null}'",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}
@@ -205,15 +212,22 @@
 							}
 						},
 						"description": "Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied."
+					},
+					"defaultCreator": {
+						"type": "string",
+						"example": "null",
+						"description": "Sets the creator ID asssociated with this live input.",
+						"default": null
 					}
 				},
 				"required_props": [],
 				"optional_props": [
 					"meta",
-					"recording"
+					"recording",
+					"defaultCreator"
 				],
 				"objects": [],
-				"example": "{\n  \"meta\": {\n    \"name\": \"test stream 1\"\n  },\n  \"recording\": {\n    \"mode\": \"automatic\",\n    \"requireSignedURLs\": true,\n    \"allowedOrigins\": [\n      \"example.com\"\n    ],\n    \"timeoutSeconds\": 0\n  }\n}"
+				"example": "{\n  \"meta\": {\n    \"name\": \"test stream 1\"\n  },\n  \"recording\": {\n    \"mode\": \"automatic\",\n    \"requireSignedURLs\": true,\n    \"allowedOrigins\": [\n      \"example.com\"\n    ],\n    \"timeoutSeconds\": 0\n  },\n  \"defaultCreator\": null\n}"
 			},
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"uid\": \"66be4bf738797e01e1fca35a7bdecdcd\",\n    \"meta\": {\n      \"name\": \"test stream 1\"\n    },\n    \"created\": \"2014-01-02T02:20:00Z\",\n    \"modified\": \"2014-01-02T02:20:00Z\",\n    \"rtmps\": {\n      \"url\": \"rtmps://live.cloudflare.com:443/live/\",\n      \"streamKey\": \"MjE2OTAxNzQyMjQxNDkyNDYyNTAxNjc3MzE3NzY4MjAwMTYxODMxMjMxOTc66be4bf738797e01e1fca35a7bdecdcd\"\n    },\n    \"recording\": {\n      \"mode\": \"automatic\",\n      \"requireSignedURLs\": true,\n      \"allowedOrigins\": [\n        \"example.com\"\n      ],\n      \"timeoutSeconds\": 0\n    }\n  }\n}"
 		},
