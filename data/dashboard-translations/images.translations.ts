@@ -99,6 +99,7 @@ You will only be billed for number of images served.`
 		}
 	},
 	curl_command: "cURL command",
+	edit_image_custom_id_error: "Images with a custom ID can not be private",
 	drop_here_or_browse: "Drop images here or click to browse",
 	image_url: "Image URL",
 	video_url: "Video URL",
@@ -136,8 +137,8 @@ If checked, images that require signed URLs can be accessed publicly.`,
 	},
 	modal_add_storage_custom_calculation: (0, a.d)(C(), "value"),
 	modal_add_extra_storage_custom_calculation: (0, a.d)(O(), "value"),
-	modal_extra_minutes_of_video: (0, a.d)(I(), "value"),
-	modal_total_storage: (0, a.d)(S(), "value"),
+	modal_extra_minutes_of_video: (0, a.d)(S(), "value"),
+	modal_total_storage: (0, a.d)(I(), "value"),
 	subscription: {
 		error: "There was an error enabling Images",
 		success: "Created Images subscription successfully",
