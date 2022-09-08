@@ -22,7 +22,7 @@
 	<p>众所周知，<a href="https://radar.cloudflare.com/" target="_blank">Web 流量的很大一部分是自动流量</a>，虽然并非所有自动流量都是恶意的，但有一些流量是不必要的，还可能是恶意的。</p>
 	<p>我们的<a href="https://www.cloudflare.com/products/bot-management/" target="_blank">机器人管理</a>产品与我们的 WAF 并行工作，对每次请求进行评分，评估请求由机器人生成的可能性，这样您就可以通过部署 WAF 自定义规则来轻松过滤有害流量，而这一切都有赖于强大的分析功能支持。我们还维护了<a href="https://radar.cloudflare.com/verified-bots" target="_blank">已验证机器人</a>列表，您可以利用该列表进一步改进安全策略，从而简化工作。</p>
 	<p>如果您想阻止自动流量，则可借助 <a href="https://blog.cloudflare.com/end-cloudflare-captcha/">Cloudflare 的托管质询</a>确保只会将机器人拒之门外，而不会影响真实用户的体验。</p>
-	<h3 id="api-gateway">API GATEWAY</h3>
+	<h3 id="api-">API 网关</h3>
 	<p>按照定义，相对于浏览器使用的标准网页而言，API 流量的结构非常良好。而且，API 往往更贴合抽象的后端数据库和服务，更容易引起恶意行为者的注意，却常常被内部安全团队所忽视（影子 API）。</p>
 	<p><a href="https://blog.cloudflare.com/zh-cn/api-gateway-zh-cn/">API 网关</a>可以叠加在我们的 WAF 之上，帮助您<a href="https://developers.cloudflare.com/api-shield/security/api-discovery/" target="_blank">发现基础设施提供的 API 端点</a>以及检测流量流中可能表明存在破坏情况的潜在异常，包括<a href="https://developers.cloudflare.com/api-shield/security/volumetric-abuse-detection/" target="_blank">容量</a>和<a href="https://developers.cloudflare.com/api-shield/security/sequential-abuse-detection/" target="_blank">连续</a>角度。</p>
 	<p>由于 API 的性质，API 网关也能够更轻松地提供不同于我们的 WAF 的积极安全模型：仅允许已知善意流量，而阻止其他一切内容。客户可以利用<a href="https://developers.cloudflare.com/api-shield/security/schema-validation/" target="_blank">模式保护</a>和<a href="https://developers.cloudflare.com/api-shield/security/mtls/" target="_blank">相互 TLS 身份验证 (mTLS)</a> 轻松实现这一点。</p>
