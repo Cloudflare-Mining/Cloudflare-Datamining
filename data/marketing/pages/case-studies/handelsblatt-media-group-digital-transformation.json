@@ -63,7 +63,11 @@
 					}
 				},
 				"ref_streamVideoThumbnail": null,
-				"logo": null,
+				"logo": {
+					"file": {
+						"publicURL": "[path]/handelsblatt_media_group_logo.png"
+					}
+				},
 				"customCanonicalTag": null
 			},
 			"site": {
@@ -77,7 +81,9 @@
 			"contentfulId": "74Ji3D2kXNxWdIwGZwiZO7",
 			"pathname": "/case-studies/handelsblatt-media-group-digital-transformation/",
 			"baseURL": "https://www.cloudflare.com",
-			"allowedHrefLangs": null
+			"allowedHrefLangs": [
+				"en-US"
+			]
 		}
 	}
 }
