@@ -85884,7 +85884,21 @@
 				"requestBody": {
 					"required": true,
 					"content": {
-						"application/json": {}
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"virtual_network_id": {
+										"description": "UUID of the virtual network",
+										"readOnly": true,
+										"type": "string",
+										"format": "uuid",
+										"maxLength": 36,
+										"example": "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415"
+									}
+								}
+							}
+						}
 					}
 				}
 			}
