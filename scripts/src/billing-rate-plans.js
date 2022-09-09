@@ -17,6 +17,7 @@ const knownSuffixes = new Set([
 	'_advanced',
 	'_advanced_no_cost',
 	'_advanced_nocost',
+	'_api',
 	'_athenian',
 	'_basic',
 	'_basic_no_cost',
@@ -59,6 +60,7 @@ const knownRatePlans = new Set([
 	'api_gateway_zone',
 	'api_shield',
 	'api_shield_zone',
+	'analytics_engine',
 	'biz',
 	'bot_management',
 	'bot_zone',
@@ -121,6 +123,7 @@ const addRatePlan = function(ratePlan){
 		usePlan = ratePlan.slice(0, Math.max(0, ratePlan.length - endsWithSuffix.length));
 	}
 	ratePlans.add(usePlan);
+	ratePlans.add(`beta_${usePlan}`);
 	// partner/smp rate plans are usually just prefixed with partners_/msp_
 	ratePlans.add(`partners_${usePlan}`);
 	//ratePlans.add(`msp_${usePlan}`);
@@ -128,6 +131,7 @@ const addRatePlan = function(ratePlan){
 		const toAdd = `${usePlan}${suffix}`;
 		ratePlans.add(toAdd);
 		ratePlans.add(`partners_${toAdd}`);
+		ratePlans.add(`beta_${toAdd}`);
 		//ratePlans.add(`msp_${toAdd}`);
 	}
 };
@@ -155,6 +159,9 @@ try{
 	const dir = await fs.readdir(path.resolve('../data/billing-rate-plans'));
 	for(const file of dir){
 		const ratePlan = file.replace('.json', '');
+		if(ratePlan === '_list'){
+			continue;
+		}
 		addRatePlan(ratePlan);
 	}
 }catch(err){
