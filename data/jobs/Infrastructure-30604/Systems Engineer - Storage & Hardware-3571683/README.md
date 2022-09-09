@@ -5,22 +5,30 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>About the Role</strong></p>
-<p><span style="font-weight: 400;">Cloudflare is looking for an experienced and energetic Manager for its Hardware Systems Engineering Data Center Transport team. In pursuit of its goal to “help build a better Internet,” Cloudflare operates one of the world’s largest and most important cloud networks. Spanning more than 250 cities across the globe, Cloudflare’s network is a key strategic asset and supports all customers and products. The Hardware Systems Engineering team is charged with identifying, developing, delivering, and scaling the next generation of hardware that powers the Cloudflare network and the 19% of the web who depend on it.</span></p>
-<p>&nbsp;</p>
-<p><span style="font-weight: 400;">In this role, you will lead a team of talented engineers focused on the selection and qualification of data center interconnection technologies that will allow us to scale out to every corner of the map. Our highly distributed global network uses state of the art metro area connectivity technologies to scale out widely to be as close as possible to every user on the Internet. As one of the most advanced networks on the Internet, our unique networking requirements will allow you to use your creativity and technical know-how to solve previously unsolved problems as we move toward hyperscale. You and your team will push technologies such as DWDM, ROADMs, and open line systems to the limit. Your team will be encouraged to experiment and explore other technologies such as OpenZR+ and coherent optics in your pursuit of the highest performing data center transport solutions. In this position, you will have a direct role in shaping the future of networking at Cloudflare, and the industry.</span></p>
-<p>&nbsp;</p>
-<p><span style="font-weight: 400;">Reporting to the Director of Hardware Systems Engineering (Network), you will help design hardware solutions that are efficient, secure, reliable, and serviceable. You will partner closely across the Infrastructure and Production Engineering teams. We are looking for a hands-on leader who can rapidly apply previous learnings to enable and build a world-class network hardware engineering team. As an experienced leader, you will set strategy, establish priorities, hire and mentor a group of top technical talent, and implement new systems and processes that make Cloudflare–and the internet–better. You will be expected to solve hard problems under pressure, provide clear direction, and foster an energetic work environment.</span></p>
-<p>&nbsp;</p>
+<h4>About the department</h4>
+<h4><span style="font-weight: 400;">Cloudflare’s Infrastructure group is responsible for building our global network. Our Hardware Engineering team helps research, test, and deploy new equipment enabling compute, storage, and network. Deployed across 200+ cities in 100+ countries, the hardware we select helps improve the security, reliability, and performance of the Internet.</span></h4>
+<h4>What you'll do</h4>
+<p><span style="font-weight: 400;">We need to make thoughtful infrastructure choices affecting a significant portion of the Internet. Hardware we work with includes servers, routers, switches, optical equipment, power distribution units, cables, optics, and more. As a Storage Hardware Engineer, you will work with colleagues on the Hardware Engineering, Product teams, and Hardware Sourcing teams to evaluate and inform decisions around new storage equipment.</span></p>
+<h4><strong>What you'll do</strong></h4>
+<ul>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Develop systems for Cloudflare’s next generations of storage hardware. Cloudflare purchases both rotational HDDs and solid state SSDs depending on the use case</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experiment with different designs and solutions for Cloudflare’s storage hardware and work cross-functionally with Product teams and Hardware Sourcing to enact your suggestions globally</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Work with vendors to obtain, debug, and maintain the most efficient and effective next-generation storage hardware and software for Cloudflare’s workloads</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Develop tools and automation to evaluate storage hardware performance</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Communicate your results and updates through blog posts, internal talks, and tickets</span></li>
+</ul>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">6+ years experience managing a network engineering and/or hardware engineering team, preferably at a hyperscale or cloud company</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Demonstrated expertise in optical interconnection technologies such as DWDM</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience developing low-latency, high performance hardware solutions</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Deep knowledge of industry trends and developments</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Exceptional at attracting, hiring, coaching, and retaining engineering talent globally</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">A positive “get it done” attitude and the ability to effectively prioritize and advance a large number of projects simultaneously</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">An earned reputation for fairness, dependability, and adherence to high ethical standards</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Extensive experience with storage hardware architecture, validation, performance benchmarking, debugging, and deployment</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Previous experience in testing, measuring, and/or simulating hardware performance and an understanding of no-stone-left-unturned experimentation</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Deep knowledge of storage engineering and protocols used in data center storage hardware</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Track record of driving engineering projects from idea to experiment to implementation</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Demonstrated success in working with ODMs and technology vendors</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Professional-level proficiency in Python, Go, or similar programming and/or scripting languages</span></li>
+</ul>
+<p><strong>Bonus Points</strong></p>
+<ul>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Operational experience as a storage engineer in a hyperscale cloud infrastructure</span></li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
