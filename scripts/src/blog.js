@@ -169,7 +169,7 @@ for(const url of [...blogURLs].sort()){
 			const html = el.html();
 			if(/\[email protected]\w+/.test(html)){
 				console.log('Found weird email protection', html);
-				el.html(html.replaceAll(/\[email protected]\w+/g, '[email protected]'));
+				el.html(html.replaceAll(/\[email protected]\.?\w+/g, '[email protected]'));
 			}
 		});
 
