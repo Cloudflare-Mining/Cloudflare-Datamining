@@ -163,11 +163,11 @@ for(const url of [...blogURLs].sort()){
 		}
 
 		// handle weird email protection edge-cases
-		const paragraphs = dom('p, code');
+		const paragraphs = dom('p, code, pre');
 		paragraphs.each((i, node) => {
 			const el = dom(node);
 			const html = el.html();
-			if(/\[email protected]\w+/.test(html)){
+			if(/\[email protected]\.?\w+/.test(html)){
 				console.log('Found weird email protection', html);
 				el.html(html.replaceAll(/\[email protected]\.?\w+/g, '[email protected]'));
 			}
