@@ -4,7 +4,7 @@
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "Transparency Report CURRENT H1 2021",
+				"pageName": "Transparency Report CURRENT H2 2021",
 				"localeList": {
 					"enUS": "English for Locale",
 					"zhCN": "English for Locale",
@@ -12,7 +12,7 @@
 					"frFR": "English for Locale",
 					"deDE": "English for Locale",
 					"itIT": "English for Locale",
-					"jaJP": "Translated for Locale",
+					"jaJP": "English for Locale",
 					"koKR": "English for Locale",
 					"ptBR": "English for Locale",
 					"esES": "English for Locale",
@@ -20,14 +20,14 @@
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
 					"enGB": "English for Locale",
-					"nlNL": "No Page for Locale",
+					"nlNL": "English for Locale",
 					"idID": "No Page for Locale",
 					"thTH": "No Page for Locale",
 					"ruRU": "No Page for Locale",
 					"svSE": "No Page for Locale",
 					"viVN": "No Page for Locale",
 					"trTR": "No Page for Locale",
-					"zhHansCN": null
+					"zhHansCN": "English for Locale"
 				},
 				"relativePath": "transparency",
 				"topNavOptions": "default",
@@ -44,7 +44,7 @@
 					},
 					"facebookCustomImage": null
 				},
-				"contentfulId": "28Xisb7lyWogXhbtxDpC6n",
+				"contentfulId": "Yu3e1p1PPG1QrZWi2nPTI",
 				"contentTypeId": "page",
 				"promotionalBanner": null,
 				"psaBanner": null,
@@ -74,6 +74,12 @@
 								"url": null,
 								"subMenuItems": [
 									{
+										"contentfulId": "73pubSyqajcK5ChsIyz9Tg",
+										"linkText": "H1 2021",
+										"page": null,
+										"url": "transparency/h1-2021"
+									},
+									{
 										"contentfulId": "3SxmyMlm9AFh0x7XqU4IIi",
 										"linkText": "H2 2020",
 										"page": null,
@@ -102,9 +108,9 @@
 						]
 					},
 					{
-						"contentfulId": "3UiS43Ey9jnR4YyfRdvYwn",
+						"contentfulId": "3odxrs4GWplI9kNpvZEJSw",
 						"contentTypeId": "bladeHeroAnimation",
-						"title": "CLOUDFLARE TRANSPARENCY REPORT - H1 2021",
+						"title": "CLOUDFLARE TRANSPARENCY REPORT - H2 2021",
 						"subtitle": null,
 						"copy": "An essential part of earning and maintaining the trust of our customers is being transparent about the requests we receive from law enforcement and other governmental entities. To this end, Cloudflare publishes semi-annual updates to our Transparency Report on the requests we have received to disclose information about our customers.",
 						"buttonColor": "orange",
@@ -549,17 +555,17 @@
 					},
 					{
 						"contentTypeId": "bladeRichTextColumnGroup",
-						"contentfulId": "48TqICMjBG1P4gr00PLExw",
+						"contentfulId": "7idpZcdkMgh2vuGPNoYUzE",
 						"htmlId": null,
 						"mainHeadline": null,
 						"backgroundColor": "white",
 						"bladeBorder": "none",
-						"sectionPadding": "tile--no-bottom-padding",
+						"sectionPadding": "tile--no-top-bottom-padding",
 						"columnLayout": "One Column Wide",
 						"columns": [
 							{
 								"contentTypeId": "elementRichText",
-								"contentfulId": "5i8dIjkbZILqGo8y9yP9ep",
+								"contentfulId": "71hKMLlmpIcPVjlBZa2TIp",
 								"title": null,
 								"column": {
 									"nodeType": "document",
@@ -600,7 +606,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "The data presented below covers the period from January 1, 2021, to June 30, 2021. A request received in June 2021, but not processed until July 2021 will show as both \"Requests received\" and \"Requests in process.\" Also, requests for which we are waiting for a response from law enforcement before moving forward may also be reflected in \"Requests in process.\" The total number of domains affected and the total number of accounts affected refer only to requests which have been answered.",
+													"value": "The data presented below covers the period from July 1, 2021, to December 31, 2021. A request received in December 2021, but not processed until January 2022 will show as both \"Requests received\" and \"Requests in process.\" Also, requests for which we are waiting for a response from law enforcement before moving forward may also be reflected in \"Requests in process.\" The total number of domains affected and the total number of accounts affected refer only to requests which have been answered.",
 													"marks": [],
 													"content": null
 												}
@@ -611,7 +617,7 @@
 											"data": {
 												"target": {
 													"sys": {
-														"id": "6sRsTWUaqu0B4F1e1dvXbq",
+														"id": "5L677pSmI1JHCodEPGqTDw",
 														"type": "Link",
 														"linkType": "Entry"
 													},
@@ -625,11 +631,11 @@
 															"buttonColor": "blue",
 															"buttonTextLoggedIn": null,
 															"contentTypeId": "button",
-															"contentfulId": "6sRsTWUaqu0B4F1e1dvXbq",
-															"elementName": "Transparency Report PDF - H1 2021",
+															"contentfulId": "5L677pSmI1JHCodEPGqTDw",
+															"elementName": "Transparency Report PDF - H2 2021",
 															"standardText": null,
 															"text": "Download Transparency Report",
-															"url": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7zpcP8gSOsFmvPLzriNINM/4a2f83a4e825e828371f54e5d078f777/Transparency-Report-1H2021.pdf",
+															"url": "https://cf-assets.www.cloudflare.com/slt3lc6tev37/7JOzEbaUD1HVuYjqm1Ymc7/cbbe0deaa4f11b55b4f73e3b18643b2c/Transparency-Report-2H-2021.pdf",
 															"loggedInUrl": null,
 															"modal": null,
 															"openInNewTab": true,
@@ -648,6 +654,27 @@
 											"value": null,
 											"marks": null,
 											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
 										},
 										{
 											"nodeType": "paragraph",
@@ -716,7 +743,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "",
+													"value": "\n",
 													"marks": [],
 													"content": null
 												}
@@ -729,8 +756,8 @@
 					},
 					{
 						"contentTypeId": "bladeAccordion",
-						"contentfulId": "3BzX5bETvB7H5x7f0FFv5w",
-						"bladeName": "Transparency Report H1 2021 - Information Section",
+						"contentfulId": "6fokrybcIiHdYXOGNURNiT",
+						"bladeName": "Transparency Report H2 2021 - Information Section",
 						"title": null,
 						"htmlId": null,
 						"sectionTitle": null,
@@ -738,7 +765,7 @@
 						"accordionElements": [
 							{
 								"contentTypeId": "elementRichText",
-								"contentfulId": "6ueOVbKTa4LPXZKpvJKeCa",
+								"contentfulId": "3JBfBYXQbgqtZQhoMaWauC",
 								"title": "BACKGROUND ON REQUESTS FOR USER DATA",
 								"column": {
 									"nodeType": "document",
@@ -758,7 +785,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Cloudflare receives requests for different kinds of data on its users from U.S. and foreign governments, courts and those involved in civil litigation. To provide additional transparency about the type of information Cloudflare might provide, we have broken down the types of requests we receive, as well as the legal process we require before providing particular types of information. We review every request for legal sufficiency before responding with data.",
+													"value": "Cloudflare receives requests for different kinds of data on its users from U.S. and foreign governments, courts and those involved in civil litigation. To provide additional transparency about the type of information Cloudflare might provide, we have broken down the types of requests we receive, as well as the legal process we require before providing particular types of information. We review every request for legal sufficiency before responding with data.  ",
 													"marks": [],
 													"content": null
 												}
@@ -779,7 +806,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "We also recognize that a government's request for data might be inconsistent with another government's regulatory regime for protecting the personal data of its citizens. Cloudflare believes that government requests for the personal data of a person that conflict with the privacy laws of that person's country of residence should be legally challenged. We have yet to receive a government request that we have identified as posing such a conflict.",
+													"value": "We also recognize that a government's request for data might be inconsistent with another government's regulatory regime for protecting the personal data of its citizens. Cloudflare believes that government requests for the personal data of a person that conflict with the privacy laws of that person's country of residence should be legally challenged. We have yet to receive a government request that we have identified as posing such a conflict. ",
 													"marks": [],
 													"content": null
 												}
@@ -800,7 +827,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "This report does not include information about government requests for data that may be received by Cloudflare's partners.",
+													"value": "This report does not include information about government requests for data that may be received by Cloudflare's partners. ",
 													"marks": [],
 													"content": null
 												}
@@ -842,7 +869,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "The most frequent requests Cloudflare receives are requests for information that might be used to identify a Cloudflare customer. This basic subscriber data would include the information our customers provide at the time they sign up for our service, like name; email address; physical address; phone number; the means or source of payment of service; and non-content information about a customer's account, such as data about login times and IP addresses used to login to the account. Unless there is an emergency, Cloudflare requires valid legal process such as a subpoena or a foreign government equivalent of a subpoena before providing this type of information to either foreign or domestic government authorities or civil litigants.",
+													"value": "The most frequent requests Cloudflare receives are requests for information that might be used to identify a Cloudflare customer.  This basic subscriber data would include the information our customers provide at the time they sign up for our service, like name; email address; physical address; phone number; the means or source of payment of service; and non-content information about a customer's account, such as data about login times and IP addresses used to login to the account. Unless there is an emergency, Cloudflare requires valid legal process such as a subpoena or a foreign government equivalent of a subpoena before providing this type of information to either foreign or domestic government authorities or civil litigants. ",
 													"marks": [],
 													"content": null
 												}
@@ -877,7 +904,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " Under the Electronic Communications Privacy Act (ECPA), the U.S. government can compel disclosure of subscriber information with a subpoena, a type of legal process that does not require prior judicial review. Although Cloudflare typically requires a subpoena before providing subscriber information, consistent with ECPA, Cloudflare may disclose information without delay to law enforcement if the request involves imminent danger of death or serious injury to any person. Cloudflare will evaluate emergency disclosure requests on a case-by-case basis as we receive them. For emergency disclosure requests, we request that law enforcement obtain legal process when time permits",
+													"value": "Under the Electronic Communications Privacy Act (ECPA), the U.S. government can compel disclosure of subscriber information with a subpoena, a type of legal process that does not require prior judicial review. Although Cloudflare typically requires a subpoena before providing subscriber information, consistent with ECPA, Cloudflare may disclose information without delay to law enforcement if the request involves imminent danger of death or serious injury to any person.  Cloudflare will evaluate emergency disclosure requests on a case-by-case basis as we receive them. For emergency disclosure requests, we request that law enforcement obtain legal process when time permits. ",
 													"marks": [],
 													"content": null
 												}
@@ -898,7 +925,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Beyond subpoenas issued under ECPA, some U.S. government agencies may issue administrative subpoenas for subscriber data. Cloudflare has received a number of such subpoenas from the Securities and Exchange Commission (SEC).",
+													"value": "Beyond subpoenas issued under ECPA, some U.S. government agencies may issue administrative subpoenas for subscriber data. Cloudflare has received a number of such subpoenas from the Securities and Exchange Commission (SEC).  ",
 													"marks": [],
 													"content": null
 												}
@@ -919,7 +946,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "National Security Process.",
+													"value": "National Security Process. ",
 													"marks": [
 														{
 															"type": "bold"
@@ -933,7 +960,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " The U.S. government can also issue a variety of different types of national security requests for data. Under the Foreign Intelligence Surveillance Act (FISA), the U.S. government may apply for court orders from the FISA Court to, among other actions, require U.S. companies to hand over users' personal information. The U.S. government can also issue National Security Letters (NSLs), which are similar to subpoenas, for subscriber and non-content data. Both FISA court orders and NSLs typically come with a non-disclosure obligation.",
+													"value": "The U.S. government can also issue a variety of different types of national security requests for data. Under the Foreign Intelligence Surveillance Act (FISA), the U.S. government may apply for court orders from the FISA Court to, among other actions, require U.S. companies to provide users' personal information. The U.S. government can also issue National Security Letters (NSLs), which are similar to subpoenas, for subscriber and limited non-content data. Both FISA court orders and NSLs typically come with a non-disclosure obligation. ",
 													"marks": [],
 													"content": null
 												}
@@ -954,7 +981,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Cloudflare has long had concerns about these types of non-disclosure obligations, particularly when they are indefinite in nature. In 2013, after receiving such an NSL, Cloudflare objected to an administratively imposed gag which prohibited Cloudflare from disclosing information about this NSL to anyone other than our attorneys and a limited number of our staff, under threat of criminal liability. Cloudflare provided no customer information subject to NSL-12-358696; but the NSL's nondisclosure provisions remained in effect for nearly four years, until December 2016, after which Cloudflare ",
+													"value": "Cloudflare has long had concerns about these types of non-disclosure obligations, particularly when they are indefinite in nature. In 2013, after receiving such an NSL, Cloudflare objected to an administratively imposed gag which prohibited Cloudflare from disclosing information about this NSL to anyone other than our attorneys and a limited number of our staff, under threat of criminal liability. Cloudflare provided no customer information subject to NSL-12-358696; but the NSL's nondisclosure provisions remained in effect for nearly four years, until December 2016, after which Cloudflare ",
 													"marks": [],
 													"content": null
 												},
@@ -974,7 +1001,11 @@
 																"uri": null
 															},
 															"value": "disclosed receipt",
-															"marks": [],
+															"marks": [
+																{
+																	"type": "underline"
+																}
+															],
 															"content": null
 														}
 													]
@@ -985,7 +1016,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " of the NSL, along with a redacted ",
+													"value": " of the NSL, along with a redacted ",
 													"marks": [],
 													"content": null
 												},
@@ -1005,7 +1036,11 @@
 																"uri": null
 															},
 															"value": "copy",
-															"marks": [],
+															"marks": [
+																{
+																	"type": "underline"
+																}
+															],
 															"content": null
 														}
 													]
@@ -1016,7 +1051,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " of the NSL.",
+													"value": " of the NSL.",
 													"marks": [],
 													"content": null
 												}
@@ -1051,7 +1086,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " Cloudflare responds to requests from governments outside the United States for all types of information, including subscriber data, that are issued through a U.S. court by way of diplomatic process like a mutual legal assistance treaty (MLAT) request. The information produced to governments outside the United States in response to these requests is the same as would be produced to the U.S. government in response to a similar U.S. court order.",
+													"value": "Cloudflare responds to requests from governments outside the United States for all types of information, including subscriber data, that are issued through a U.S. court by way of diplomatic process like a mutual legal assistance treaty (MLAT) request. The information produced to governments outside the United States in response to these requests is the same as would be produced to the U.S. government in response to a similar U.S. court order. ",
 													"marks": [],
 													"content": null
 												}
@@ -1072,7 +1107,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Cloudflare evaluates on a case-by-case basis requests for subscriber information from governments outside the United States that do not come through the U.S. court system. Cloudflare may, in our discretion, provide subscriber data to in response to a local equivalent of a subpoena, provided that the request complies with local law, and is consistent with international norms and Cloudflare policies.",
+													"value": "Cloudflare evaluates on a case-by-case basis requests for subscriber information from governments outside the United States that do not come through the U.S. court system. Cloudflare may, in our discretion, provide subscriber data in response to a local equivalent of a subpoena, provided that the request complies with local law, and is consistent with international norms and Cloudflare policiesies.  ",
 													"marks": [],
 													"content": null
 												}
@@ -1093,7 +1128,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "In March 2018, the United States passed the Clarifying Lawful Overseas Use of Data (CLOUD) Act, which permits the U.S. government to enter into Executive Agreements with other governments to allow direct law enforcement access for both governments to data stored in the other country to investigate and prosecute certain crimes. The law permits countries that enter into such Agreements with the United States to seek content data from U.S. companies directly, using that country's legal process, rather than requiring the country's law enforcement agencies to work with U.S. law enforcement to get U.S. legal process such as a court order.",
+													"value": "In March 2018, the United States passed the Clarifying Lawful Overseas Use of Data (CLOUD) Act, which permits the U.S. government to enter into Executive Agreements with other governments to allow direct law enforcement access for both governments to data stored in the other country to investigate and prosecute certain crimes. The law permits countries that enter into such Agreements with the United States to seek content data from U.S. companies directly, using that country's legal process, rather than requiring the country's law enforcement agencies to work with U.S. law enforcement to get U.S. legal process such as a court order. ",
 													"marks": [],
 													"content": null
 												}
@@ -1114,7 +1149,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Cloudflare believes that government access to data must be consistent with principles of rule of law and due process, including prior independent judicial review of requests for content; that users are entitled to notice when the government accesses their data; and that companies must have procedural mechanisms to raise legal challenges to access requests. Whether inside or outside the United States, we will fight law enforcement requests that we believe are overbroad, illegal, or wrongly issued, or that unnecessarily restrict our ability to be transparent with our users.",
+													"value": "Cloudflare believes that government access to data must be consistent with the principles of rule of law and due process, including prior independent judicial review of requests for content; that users are entitled to notice when the government accesses their data; and that companies must have procedural mechanisms to raise legal challenges to access requests. Whether inside or outside the United States, we will fight law enforcement requests that we believe are overbroad, illegal, or wrongly issued, or that unnecessarily restrict our ability to be transparent with our users.",
 													"marks": [],
 													"content": null
 												}
@@ -1135,7 +1170,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Civil Process. ",
+													"value": "Civil Process. ",
 													"marks": [
 														{
 															"type": "bold"
@@ -1149,7 +1184,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Cloudflare responds to legal process requesting subscriber data from civil litigants, such as subpoenas issued pursuant to the Digital Millennium Copyright Act (DMCA) seeking information on users alleged to be infringing copyright",
+													"value": "Cloudflare responds to legal process requesting subscriber data from civil litigants, such as subpoenas issued pursuant to the Digital Millennium Copyright Act (DMCA) seeking information on users alleged to be infringing copyright.",
 													"marks": [],
 													"content": null
 												}
@@ -1170,7 +1205,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Emergency Requests.",
+													"value": "Emergency Requests. ",
 													"marks": [
 														{
 															"type": "bold"
@@ -1184,7 +1219,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " Cloudflare receives emergency requests for data from time to time from law enforcement and governments. Cloudflare will respond on a voluntary basis if we have a good faith belief that there is an emergency involving the danger of death or serious physical injury.",
+													"value": "Cloudflare receives emergency requests for data from time to time from law enforcement and governments. Cloudflare will respond on a voluntary basis if we have a good faith belief that there is an emergency involving the danger of death or serious physical injury. ",
 													"marks": [],
 													"content": null
 												}
@@ -1226,7 +1261,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Beyond requests for the types of subscriber data described above, Cloudflare sometimes receives court orders for transactional data related to a customer's account or a customer's website, such as logs of the IP addresses visiting a customer's website or the dates and times a customer may have contacted support. Because Cloudflare retains such data for only a limited period of time, Cloudflare rarely has responsive data to provide to such requests.",
+													"value": "Beyond requests for the types of subscriber data described above, Cloudflare sometimes receives court orders for transactional data related to a customer's account or a customer's website, such as logs of the IP addresses visiting a customer's website or the dates and times a customer may have contacted support.  Because Cloudflare retains such data for only a limited period of time, Cloudflare rarely has responsive data to provide to such requests.  ",
 													"marks": [],
 													"content": null
 												}
@@ -1261,7 +1296,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " Court orders are requests for data issued by a judge or magistrate. With a court order, Cloudflare may provide both the basic subscriber information that might be provided in response to a subpoena and other non-content information. The court orders that Cloudflare receives typically include a temporary non-disclosure requirement.",
+													"value": "Court orders are requests for data issued by a judge or magistrate.  With a court order, Cloudflare may provide both the basic subscriber information that might be provided in response to a subpoena and other non-content information. The court orders that Cloudflare receives typically include a temporary non-disclosure requirement.",
 													"marks": [],
 													"content": null
 												}
@@ -1296,14 +1331,31 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " Cloudflare periodically receives pen register/trap and trace orders, issued by a court, seeking real-time disclosure of non-content information, such as IP addresses of visitors to an account or website. We provide limited forward looking data in response to those requests.",
+													"value": "  ",
+													"marks": [
+														{
+															"type": "italic"
+														},
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare periodically receives pen register/trap and trace orders, issued by a court, seeking real-time disclosure of non-content information, such as the IP addresses of visitors to an account or website.  We provide limited forward looking data in response to those requests.   ",
 													"marks": [],
 													"content": null
 												}
 											]
 										},
 										{
-											"nodeType": "heading-3",
+											"nodeType": "heading-4",
 											"data": {
 												"target": null,
 												"uri": null
@@ -1338,7 +1390,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Cloudflare is not generally a hosting provider or an email service provider and does not have customer content -- like email or other types of customer-generated material -- in the traditional sense. In the rare instances where law enforcement has sought content such as abuse complaints or support communications, Cloudflare has insisted on a search warrant for those electronic communications, consistent with the principles laid out in",
+													"value": "Cloudflare does not store customer content -- like email or other types of customer-generated material --  for websites using Cloudflare's pass-through security and performance services. In the rare instances where law enforcement has sought content such as abuse complaints or support communications, Cloudflare has insisted on a search warrant for those electronic communications, consistent with the principles laid out in ",
 													"marks": [],
 													"content": null
 												},
@@ -1346,7 +1398,7 @@
 													"nodeType": "hyperlink",
 													"data": {
 														"target": null,
-														"uri": "https://en.wikipedia.org/wiki/United_States_v._Warshak"
+														"uri": "http://en.wikipedia.org/wiki/United_States_v._Warshak"
 													},
 													"value": null,
 													"marks": null,
@@ -1357,8 +1409,15 @@
 																"target": null,
 																"uri": null
 															},
-															"value": " U.S. v. Warshak.",
-															"marks": [],
+															"value": "U.S. v. Warshak",
+															"marks": [
+																{
+																	"type": "underline"
+																},
+																{
+																	"type": "italic"
+																}
+															],
 															"content": null
 														}
 													]
@@ -1369,7 +1428,31 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " To date, we have received no such warrants.",
+													"value": ". To date, we have received no such warrants",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": ". ",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare would also insist on a search warrant in the case of any law enforcement request for customer content related to our storage services, and we have received no such warrants to date.",
 													"marks": [],
 													"content": null
 												}
@@ -1404,7 +1487,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " Search warrants require judicial review, a finding of probable cause, inclusion of a location to be searched, and a detail of items requested. Although we have received a number of search warrants, as noted above, we have not had customer content to provide in response to those warrants.",
+													"value": " Search warrants require judicial review, a finding of probable cause, inclusion of a location to be searched, and a detail of items requested. Although we have received  a number of search warrants, as noted above, we have not had customer content to provide in response to those warrants.",
 													"marks": [],
 													"content": null
 												}
@@ -1425,7 +1508,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Wiretap.",
+													"value": "Wiretap",
 													"marks": [
 														{
 															"type": "bold"
@@ -1439,7 +1522,24 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " A wiretap order is a court order that requires a company to turn over the content of communications in real time. Law enforcement must comply with very detailed legal ",
+													"value": ".",
+													"marks": [
+														{
+															"type": "italic"
+														},
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " A wiretap order is a court order that requires a company to turn over the content of communications in real time. Law enforcement must comply with very detailed legal ",
 													"marks": [],
 													"content": null
 												},
@@ -1459,7 +1559,11 @@
 																"uri": null
 															},
 															"value": "requirements",
-															"marks": [],
+															"marks": [
+																{
+																	"type": "underline"
+																}
+															],
 															"content": null
 														}
 													]
@@ -1470,7 +1574,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " to obtain such an order. Cloudflare has never received such a wiretap order",
+													"value": " to obtain such an order. Cloudflare has never received such a wiretap order. ",
 													"marks": [],
 													"content": null
 												}
@@ -1491,7 +1595,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "National Security Process.",
+													"value": "National Security Process. ",
 													"marks": [
 														{
 															"type": "bold"
@@ -1505,7 +1609,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": " The U.S. government may apply for court orders from the FISA Court to require U.S. companies to turn over the content of users' communications to the government. As noted above, Cloudflare does not have access to the type of traditional customer content generally sought by FISA court orders. Because the public reporting of all national security process is highly regulated, if Cloudflare were to receive such an order, it would be reported as part of a combined number of NSLs and content and non-content FISA orders, in a band of 250, beginning with 0-250.",
+													"value": "The U.S. government may apply for court orders from the FISA Court to require U.S. companies to turn over the content of users' communications to the government. As noted above, Cloudflare does not have access to the type of traditional customer content generally sought by FISA court orders. Because the public reporting of all national security process is highly regulated, if Cloudflare were to receive such an order, it would be reported as part of a combined number of NSLs and content and non-content FISA orders, in a band of 250, beginning with 0-250.",
 													"marks": [],
 													"content": null
 												}
@@ -1516,7 +1620,7 @@
 							},
 							{
 								"contentTypeId": "elementRichText",
-								"contentfulId": "2Bk9WQss3G07qzJHB3mlGr",
+								"contentfulId": "6o1Q2pbJGRMcJDsGrg4zFD",
 								"title": "BACKGROUND ON REQUESTS FOR CONTENT REMOVAL OR BLOCKING",
 								"column": {
 									"nodeType": "document",
@@ -1536,7 +1640,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Cloudflare runs a global network that provides security and performance enhancements for Internet-facing websites and applications around the world. Because Cloudflare's infrastructure sits between our customers' websites and internet users in order to protect those websites from direct attack and serve requests to and from those servers, Cloudflare's nameservers may appear in WHOIS data and Cloudflare's IP addresses may appear in the DNS records for websites using our service",
+													"value": "Cloudflare runs a global network that provides security and performance enhancements for Internet-facing websites and applications around the world. Because Cloudflare's infrastructure sits between our customers' websites and Internet users in order to protect those websites from direct attack and serve requests to and from those servers, Cloudflare's nameservers may appear in the WHOIS records and Cloudflare's IP addresses may appear in the DNS records for websites using our service. ",
 													"marks": [],
 													"content": null
 												}
@@ -1557,7 +1661,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "As the point of contact listed on relevant records, Cloudflare receives requests to remove content from our network from copyright holders alleging infringement or from governments taking the position that the content is unlawful. As Cloudflare cannot remove material from the Internet that is hosted by others, we generally forward requests for removal of content to the website hosting provider, who has access to the website content and the ability to address the underlying concern.",
+													"value": "As the point of contact listed on relevant records,  Cloudflare receives requests to remove content from our network from copyright holders alleging infringement, or from governments taking the position that the content is unlawful. As Cloudflare cannot remove material from the Internet that is hosted by others, we generally forward requests for removal of content to the website hosting provider, who has access to the website content and the ability to address the underlying concern. ",
 													"marks": [],
 													"content": null
 												}
@@ -1578,28 +1682,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "A small but growing number of Cloudflare's products include storage. For content that is stored definitively on the Cloudflare network, as opposed to transiting or being temporarily cached on the network, we review the complaint carefully to determine whether additional action needs to be taken.",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "A small but growing number of Cloudflare's products include storage. Cloudflare has different terms of service and a different process for responding to abuse complaints about content stored on our network, as opposed to transiting or being temporarily cached on the network, reflecting the distinct legal requirements and expectations for definitively hosted content If Cloudflare receives a valid takedown request content that is stored on the Cloudflare network, Cloudflare will disable access to the content, as appropriate. This report includes details on the requests we receive to disable access to content stored on our network.",
+													"value": "A small but growing number of Cloudflare's products include storage. Cloudflare has different terms of service and a different process for responding to abuse complaints about content stored on our network, as opposed to transiting or being temporarily cached on the network, reflecting the distinct legal requirements and expectations for definitively hosted content  If Cloudflare receives a valid takedown request content that is stored on the Cloudflare network, Cloudflare will disable access to the content, as appropriate. This report includes details on the  requests we receive to disable access to content stored on our network.",
 													"marks": [],
 													"content": null
 												}
@@ -1641,7 +1724,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Cloudflare carefully reviews requests that we receive for content removal under the Digital Millennium Copyright Act (DMCA). If we receive a DMCA complaint regarding the limited amount of content that we host, we will notify the user of the alleged infringement, allow for the user to provide a counter notice contesting the infringement allegation, and remove content consistent with the DMCA.",
+													"value": "Cloudflare carefully reviews requests that we receive for content removal under the Digital Millennium Copyright Act (DMCA).  If we receive a DMCA complaint regarding the limited amount of content that we host, we will notify the user of the alleged infringement, allow for the user to provide a counter notice contesting the infringement allegation, and remove content consistent with the DMCA.",
 													"marks": [],
 													"content": null
 												}
@@ -1683,7 +1766,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Cloudflare also may receive written requests from law enforcement, government agencies, or foreign courts to block access to content based on the local law of the jurisdiction. Because of the significant potential impact on freedom of expression, Cloudflare will evaluate each content blocking request on a case-by-case basis, analyzing the factual basis and legal authority for the request.",
+													"value": "Cloudflare also may receive written requests from law enforcement, government agencies, or foreign courts to block access to content based on the local law of the jurisdiction. Because of the significant potential impact on freedom of expression, Cloudflare will evaluate each content blocking request on a case-by-case basis, analyzing the factual basis and legal authority for the request. ",
 													"marks": [],
 													"content": null
 												}
@@ -1704,7 +1787,133 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "If we determine that the order is valid and requires Cloudflare action, we may limit blocking of access to the content to those areas where it violates local law, a practice known as \"geo-blocking\". We will attempt to clarify and narrow overbroad requests when possible.",
+													"value": "If we determine that the order is valid and requires Cloudflare action, we may limit blocking of access to the content to those areas where it violates local law, a practice known as \"geo-blocking\".  We will attempt to clarify and narrow overbroad requests when possible.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare has also received a small number of legal requests related to blocking or filtering content through the 1.1.1.1 Public DNS Resolver. Because such a block would apply globally to all users of the resolver, regardless of where they are located, it would affect end users outside of the blocking government's jurisdiction.  We therefore evaluate any government requests or court orders to block content through a globally available public recursive resolver as requests or orders to block content globally. ",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Given the broad extraterritorial effect, as well as the different global approaches to DNS-based blocking, Cloudflare has pursued legal remedies before complying with requests to block access to domains or content through the 1.1.1.1 Public DNS Resolver or identified alternate mechanisms to comply with relevant court orders. To date, Cloudflare has not blocked content through the 1.1.1.1 Public DNS Resolver.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "heading-4",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Child Safety",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare has viewed responding to incidents of child sexual abuse material (CSAM) online as a priority since the company's earliest days. When it comes to CSAM, our position is simple: We don't tolerate it. We abhor it. It's a crime, and we do what we can to support the processes to identify and remove that content.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare is committed to providing tools to helping website operators to keep their sites free from child sexual abuse material (CSAM). To do that, we created our CSAM Scanning Tool and made it generally available for free in the second half of 2021 to all customers, regardless of plan level. Once enabled, the CSAM Scanning Tool identifies potential CSAM material on a website using fuzzy hashing technology, takes steps to block that content from being accessed, helps ensure the customer reports the content to the National Center for Missing and Exploited Children (NCMEC), and notifies the customer so that they can take appropriate additional steps. Under the scanning tool's original configuration in place in the first half of 2021, Cloudflare submitted reports to NCMEC from the tool on our customers' behalf. Incorporating input from NCMEC, we subsequently updated the tool to allow our customers to submit the reports themselves to enable more direct follow up.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cloudflare also prioritizes responding to reports of CSAM. Although we are not in a position to remove content from the Internet that we do not host, we do everything we can to assist in getting that content taken offline. Abuse reports filed under the CSAM category are treated as the highest priority for our Trust & Safety team and moved to the front of the abuse response queue. Whenever we receive such a report, generally within minutes regardless of time of day or day of the week, we forward the report to NCMEC, as well as to the hosting provider and/or website operator, along with some additional information to help them locate the content quickly. We also respond to the reporter with additional details so that they can follow up as necessary.",
 													"marks": [],
 													"content": null
 												}
@@ -1746,7 +1955,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "As an ICANN-accredited domain registrar, Cloudflare follows ICANN's Uniform Domain-Name Dispute Resolution Policy (UDRP) for trademark-based domain name disputes. Consistent with the policy, Cloudflare will, upon receipt of a valid UDRP verification request from an ICANN approved dispute board: (1) Lock the disputed domain name(s) to prevent modification to the registrant and registrar information for the duration of the dispute, and (2) Unmask or provide the underlying WHOIS information to the dispute board.",
+													"value": "As an ICANN-accredited domain registrar, Cloudflare follows ICANN's Uniform Domain-Name Dispute Resolution Policy (UDRP) for trademark-based domain name disputes.  Consistent with the policy, Cloudflare will, upon receipt of a valid UDRP verification request from an ICANN approved dispute board: (1)  Lock the disputed domain name(s) to prevent modification to the registrant and registrar information for the duration of the dispute, and (2) Unmask or provide the underlying WHOIS information to the dispute board.",
 													"marks": [],
 													"content": null
 												}
@@ -1767,7 +1976,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Upon receipt of a valid notice of decision from an ICANN approved dispute board, and based on the decision, Cloudflare will, as appropriate, unlock the domain to allow the Respondent to manage the domain, transfer the domain to the Complainant at a predetermined time to allow the Respondent to initiate legal dispute with their local legal system that is within the jurisdiction of the Registrar, or delete the domain.",
+													"value": "Upon receipt of a valid notice of decision from an ICANN approved dispute board, and based on the decision, Cloudflare will, as appropriate,  unlock the domain to allow the Respondent to manage the domain, transfer the domain to the Complainant at a predetermined time to allow the Respondent to initiate legal dispute with their local legal system that is within the jurisdiction of the Registrar, or delete the domain.",
 													"marks": [],
 													"content": null
 												}
@@ -1783,9 +1992,9 @@
 					}
 				],
 				"noindex": true,
-				"enableZendeskChat": null,
+				"enableZendeskChat": false,
 				"formModal": null,
-				"keepHashUrlSyncedWithScrollPosition": null
+				"keepHashUrlSyncedWithScrollPosition": false
 			},
 			"site": {
 				"siteMetadata": {
@@ -1796,10 +2005,9 @@
 		"pageContext": {
 			"locale": "en-US",
 			"pathname": "/transparency/",
-			"contentfulId": "28Xisb7lyWogXhbtxDpC6n",
+			"contentfulId": "Yu3e1p1PPG1QrZWi2nPTI",
 			"allowedHrefLangs": [
-				"en-US",
-				"ja-JP"
+				"en-US"
 			],
 			"baseURL": "https://www.cloudflare.com"
 		}
