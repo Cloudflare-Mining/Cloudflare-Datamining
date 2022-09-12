@@ -5693,12 +5693,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			};
 			try {
 				e.g.build = Vu({}, {
-					branch: "release-1662991421",
+					branch: "hotifx-reg-us-apple-pay",
 					isReleaseCandidate: "true",
-					commit: "5cc897923461f956e2ffbd8749e253b394c65157",
+					commit: "3a1eb8b6428fb438533a8f18c2d172b38724e49f",
 					env: "production",
-					builtAt: 1662992783418,
-					dashVersion: "6324338ad6d615be608c325f5414ebbf43f58f5b",
+					builtAt: 1663023362795,
+					dashVersion: "0d8e986d0eccc8e39c3f63816aae3ce868fa0695",
 					versions: {
 						"@cloudflare/app-dash": "25.74.11",
 						node: "14.18.3",
@@ -71672,4 +71672,4 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 	}
 ]);
 
-//# sourceMappingURL=256d4fef76232fb03b37.js.map
+//# sourceMappingURL=9e16dc3c267a70fe4f86.js.map
