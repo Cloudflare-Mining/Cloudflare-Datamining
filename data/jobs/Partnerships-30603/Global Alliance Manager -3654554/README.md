@@ -48,7 +48,7 @@
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Superb organizational skills and demonstrated history outlining and establishing sales strategies.</span></li>
 </ul>
 <p><strong>Compensation</strong></p>
-<p><span style="font-weight: 400;">Compensation may be adjusted depending on work location. For Colorado-based hires: Estimated annual salary of $214,000 - $262,000.</span></p>
+<p><span style="font-weight: 400;">Compensation may be adjusted depending on work location. For Colorado-based hires: Estimated annual salary of $<span data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:190000}" data-sheets-userformat="{&quot;2&quot;:515,&quot;3&quot;:{&quot;1&quot;:0},&quot;4&quot;:{&quot;1&quot;:2,&quot;2&quot;:15724527},&quot;12&quot;:0}">190,000</span> - $<span data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:286000}" data-sheets-userformat="{&quot;2&quot;:515,&quot;3&quot;:{&quot;1&quot;:0},&quot;4&quot;:{&quot;1&quot;:2,&quot;2&quot;:15724527},&quot;12&quot;:0}">286,000</span>.</span></p>
 <p><strong>Equity</strong></p>
 <p><span style="font-weight: 400;">This role is eligible to participate in Cloudflare’s equity plan.</span></p>
 <p><strong>Benefits</strong></p>
