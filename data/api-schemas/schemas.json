@@ -77463,6 +77463,9 @@
 									"filters": {
 										"type": "array",
 										"description": "The protocol or layer to evaluate the traffic, identity, and device posture expressions",
+										"example": [
+											"http"
+										],
 										"items": {
 											"type": "string",
 											"enum": [
@@ -77486,7 +77489,7 @@
 									"traffic": {
 										"type": "string",
 										"description": "The wirefilter expression to be used for traffic matching",
-										"example": "http.request.host == \"example.com\""
+										"example": "http.request.uri matches \".*a/partial/uri.*\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10"
 									},
 									"identity": {
 										"type": "string",
@@ -77519,6 +77522,10 @@
 											"override_ips": {
 												"type": "array",
 												"description": "Override matching DNS queries with this",
+												"example": [
+													"1.1.1.1",
+													"2.2.2.2"
+												],
 												"items": {
 													"type": "string",
 													"example": "1.1.1.1",
@@ -77536,7 +77543,6 @@
 													},
 													"port": {
 														"type": "integer",
-														"example": 80,
 														"description": "A port number to use for TCP/UDP overrides"
 													}
 												}
@@ -77806,6 +77812,9 @@
 									"filters": {
 										"type": "array",
 										"description": "The protocol or layer to evaluate the traffic, identity, and device posture expressions",
+										"example": [
+											"http"
+										],
 										"items": {
 											"type": "string",
 											"enum": [
@@ -77829,7 +77838,7 @@
 									"traffic": {
 										"type": "string",
 										"description": "The wirefilter expression to be used for traffic matching",
-										"example": "http.request.host == \"example.com\""
+										"example": "http.request.uri matches \".*a/partial/uri.*\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10"
 									},
 									"identity": {
 										"type": "string",
@@ -77862,6 +77871,10 @@
 											"override_ips": {
 												"type": "array",
 												"description": "Override matching DNS queries with this",
+												"example": [
+													"1.1.1.1",
+													"2.2.2.2"
+												],
 												"items": {
 													"type": "string",
 													"example": "1.1.1.1",
@@ -77879,7 +77892,6 @@
 													},
 													"port": {
 														"type": "integer",
-														"example": 80,
 														"description": "A port number to use for TCP/UDP overrides"
 													}
 												}
