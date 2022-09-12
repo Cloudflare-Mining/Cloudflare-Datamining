@@ -31,7 +31,35 @@
 	<li><span style="font-weight: 400;">Data integrations experience with CRM, HCM, ERP, etc. is a plus.</span></li>
 	<li><span style="font-weight: 400;">Ability to develop documentation for training</span></li>
 </ul>
-<p>&nbsp;</p>
+<p><strong>Compensation</strong></p>
+<p><span style="font-weight: 400;">Compensation may be adjusted depending on work location. For Colorado-based hires: Estimated annual salary of $<span data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:103000}" data-sheets-userformat="{&quot;2&quot;:515,&quot;3&quot;:{&quot;1&quot;:0},&quot;4&quot;:{&quot;1&quot;:2,&quot;2&quot;:15724527},&quot;12&quot;:0}">103,000</span> - $<span data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:125000}" data-sheets-userformat="{&quot;2&quot;:515,&quot;3&quot;:{&quot;1&quot;:0},&quot;4&quot;:{&quot;1&quot;:2,&quot;2&quot;:15724527},&quot;12&quot;:0}">125,000.</span></span></p>
+<p><strong>Equity</strong></p>
+<p><span style="font-weight: 400;">This role is eligible to participate in Cloudflare’s equity plan.</span></p>
+<p><strong>Benefits</strong></p>
+<p><span style="font-weight: 400;">Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</span></p>
+<p><strong>Health &amp; Welfare Benefits</strong></p>
+<ul>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Medical/Rx Insurance</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Dental Insurance</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Vision Insurance</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Flexible Spending Accounts</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Commuter Spending Accounts</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Fertility &amp; Family Forming Benefits</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">On-demand mental health support and Employee Assistance Program</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Global Travel Medical Insurance</span></li>
+</ul>
+<p><strong>Financial Benefits</strong></p>
+<ul>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Short and Long Term Disability Insurance</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Life &amp; Accident Insurance</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">401(k) Retirement Savings Plan</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Employee Stock Participation Plan</span></li>
+</ul>
+<p><strong>Time Off</strong></p>
+<ul>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Flexible paid time off covering vacation and sick leave</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Leave programs, including parental, pregnancy health, medical, and bereavement leave</span></li>
+</ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
