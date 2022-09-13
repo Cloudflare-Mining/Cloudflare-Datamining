@@ -152,6 +152,11 @@
 			]
 		},
 		{
+			"title": "navigation.account.workers_for_platforms",
+			"url": "/workers-for-platforms",
+			"iconType": "edgeworker"
+		},
+		{
 			"title": "navigation.account.r2",
 			"url": "/r2",
 			"iconType": "r2",
@@ -551,6 +556,13 @@
 				{
 					"title": "navigation.zone.rules.page_rules",
 					"url": "/rules"
+				},
+				{
+					"title": "navigation.zone.rules.configuration_rules",
+					"labels": [
+						"beta"
+					],
+					"url": "/rules/configuration-rules"
 				},
 				{
 					"title": "navigation.zone.rules.transform_rules",
