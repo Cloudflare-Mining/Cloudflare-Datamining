@@ -88,7 +88,29 @@
 			"cfOwnership": "argo_tunnel",
 			"html_id": "tunnel-route-get-tunnel-route-by-ip",
 			"uri": "accounts/:account_identifier/teamnet/routes/ip/:ip",
-			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/teamnet/routes/ip/10.1.0.137\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/teamnet/routes/ip/10.1.0.137?virtual_network_id=f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"virtual_network_id": {
+						"type": "string",
+						"example": "\"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\"",
+						"description": "UUID of the virtual network",
+						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+						"readOnly": true,
+						"format": "uuid",
+						"maxLength": 36
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"virtual_network_id"
+				],
+				"objects": [],
+				"example": "{\n  \"virtual_network_id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\"\n}"
+			},
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"network\": \"172.16.0.0/16\",\n    \"tunnel_id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\",\n    \"tunnel_name\": \"blog\",\n    \"comment\": \"Example comment for this route\",\n    \"created_at\": \"2021-01-25T18:22:34.317854Z\",\n    \"deleted_at\": \"2021-01-25T18:22:34.317854Z\",\n    \"virtual_network_id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\"\n  }\n}"
 		},
 		{
@@ -207,7 +229,29 @@
 			"cfOwnership": "argo_tunnel",
 			"html_id": "tunnel-route-delete-route",
 			"uri": "accounts/:account_identifier/teamnet/routes/network/:ip_network_encoded",
-			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/teamnet/routes/network/172.16.0.0%2F16\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/teamnet/routes/network/172.16.0.0%2F16\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"virtual_network_id\":\"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"virtual_network_id": {
+						"type": "string",
+						"example": "\"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\"",
+						"description": "UUID of the virtual network",
+						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+						"readOnly": true,
+						"format": "uuid",
+						"maxLength": 36
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"virtual_network_id"
+				],
+				"objects": [],
+				"example": "{\n  \"virtual_network_id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\"\n}"
+			},
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"network\": \"172.16.0.0/16\",\n    \"tunnel_id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\",\n    \"tunnel_name\": \"blog\",\n    \"comment\": \"Example comment for this route\",\n    \"created_at\": \"2021-01-25T18:22:34.317854Z\",\n    \"deleted_at\": \"2021-01-25T18:22:34.317854Z\",\n    \"virtual_network_id\": \"f70ff985-a4ef-4643-bbbc-4a0ed4fc8415\"\n  }\n}"
 		}
 	],

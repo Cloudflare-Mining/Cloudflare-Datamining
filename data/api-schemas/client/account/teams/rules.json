@@ -14,7 +14,7 @@
 			"html_id": "zero-trust-gateway-rules-list-zero-trust-gateway-rules",
 			"uri": "accounts/:identifier/gateway/rules",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/gateway/rules\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n      \"name\": \"block bad websites\",\n      \"description\": \"Block the bad websites based on host name\",\n      \"precedence\": 1,\n      \"enabled\": true,\n      \"action\": \"allow\",\n      \"filters\": \"[\\\"http\\\"]\",\n      \"traffic\": \"http.request.host == \\\"example.com\\\"\",\n      \"identity\": \"any(identity.groups.name[*] in {\\\"finance\\\"})\",\n      \"device_posture\": \"any(device_posture.checks.passed[*] in {\\\"1308749e-fcfb-4ebc-b051-fe022b632644\\\"})\",\n      \"rule_settings\": {\n        \"block_page_enabled\": \"true\",\n        \"block_reason\": \"This website is a security risk\",\n        \"override_host\": \"example.com\",\n        \"override_ips\": \"[1.1.1.1, 2.2.2.2]\",\n        \"l4override\": {\n          \"ip\": \"1.1.1.1\",\n          \"port\": \"80\"\n        },\n        \"add_headers\": {\n          \"X-Custom-Header-Name\": [\n            \"somecustomvalue\"\n          ],\n          \"My-Next-Header\": [\n            \"foo\",\n            \"bar\"\n          ]\n        },\n        \"ip_categories\": true,\n        \"biso_admin_controls\": {\n          \"dp\": false,\n          \"dcp\": false,\n          \"dd\": false,\n          \"du\": false,\n          \"dk\": false\n        },\n        \"check_session\": {\n          \"enforce\": true,\n          \"duration\": \"300s\"\n        },\n        \"insecure_disable_dnssec_validation\": false\n      },\n      \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n      \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n      \"deleted_at\": null\n    }\n  ]\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n      \"name\": \"block bad websites\",\n      \"description\": \"Block the bad websites based on host name\",\n      \"precedence\": 1,\n      \"enabled\": true,\n      \"action\": \"allow\",\n      \"filters\": [\n        \"http\"\n      ],\n      \"traffic\": \"http.request.uri matches \\\".*a/partial/uri.*\\\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10\",\n      \"identity\": \"any(identity.groups.name[*] in {\\\"finance\\\"})\",\n      \"device_posture\": \"any(device_posture.checks.passed[*] in {\\\"1308749e-fcfb-4ebc-b051-fe022b632644\\\"})\",\n      \"rule_settings\": {\n        \"block_page_enabled\": true,\n        \"block_reason\": \"This website is a security risk\",\n        \"override_host\": \"example.com\",\n        \"override_ips\": [\n          \"1.1.1.1\",\n          \"2.2.2.2\"\n        ],\n        \"l4override\": {\n          \"ip\": \"1.1.1.1\",\n          \"port\": 80\n        },\n        \"add_headers\": {\n          \"X-Custom-Header-Name\": [\n            \"somecustomvalue\"\n          ],\n          \"My-Next-Header\": [\n            \"foo\",\n            \"bar\"\n          ]\n        },\n        \"ip_categories\": true,\n        \"biso_admin_controls\": {\n          \"dp\": false,\n          \"dcp\": false,\n          \"dd\": false,\n          \"du\": false,\n          \"dk\": false\n        },\n        \"check_session\": {\n          \"enforce\": true,\n          \"duration\": \"300s\"\n        },\n        \"insecure_disable_dnssec_validation\": false\n      },\n      \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n      \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n      \"deleted_at\": null\n    }\n  ]\n}"
 		},
 		{
 			"title": "Zero Trust Gateway Rule Details",
@@ -26,7 +26,7 @@
 			"html_id": "zero-trust-gateway-rules-zero-trust-gateway-rule-details",
 			"uri": "accounts/:identifier/gateway/rules/:uuid",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/gateway/rules/f174e90a-fafe-4643-bbbc-4a0ed4fc8415\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"name\": \"block bad websites\",\n    \"description\": \"Block the bad websites based on host name\",\n    \"precedence\": 1,\n    \"enabled\": true,\n    \"action\": \"allow\",\n    \"filters\": \"[\\\"http\\\"]\",\n    \"traffic\": \"http.request.host == \\\"example.com\\\"\",\n    \"identity\": \"any(identity.groups.name[*] in {\\\"finance\\\"})\",\n    \"device_posture\": \"any(device_posture.checks.passed[*] in {\\\"1308749e-fcfb-4ebc-b051-fe022b632644\\\"})\",\n    \"rule_settings\": {\n      \"block_page_enabled\": \"true\",\n      \"block_reason\": \"This website is a security risk\",\n      \"override_host\": \"example.com\",\n      \"override_ips\": \"[1.1.1.1, 2.2.2.2]\",\n      \"l4override\": {\n        \"ip\": \"1.1.1.1\",\n        \"port\": \"80\"\n      },\n      \"add_headers\": {\n        \"X-Custom-Header-Name\": [\n          \"somecustomvalue\"\n        ],\n        \"My-Next-Header\": [\n          \"foo\",\n          \"bar\"\n        ]\n      },\n      \"ip_categories\": true,\n      \"biso_admin_controls\": {\n        \"dp\": false,\n        \"dcp\": false,\n        \"dd\": false,\n        \"du\": false,\n        \"dk\": false\n      },\n      \"check_session\": {\n        \"enforce\": true,\n        \"duration\": \"300s\"\n      },\n      \"insecure_disable_dnssec_validation\": false\n    },\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"deleted_at\": null\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"name\": \"block bad websites\",\n    \"description\": \"Block the bad websites based on host name\",\n    \"precedence\": 1,\n    \"enabled\": true,\n    \"action\": \"allow\",\n    \"filters\": [\n      \"http\"\n    ],\n    \"traffic\": \"http.request.uri matches \\\".*a/partial/uri.*\\\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10\",\n    \"identity\": \"any(identity.groups.name[*] in {\\\"finance\\\"})\",\n    \"device_posture\": \"any(device_posture.checks.passed[*] in {\\\"1308749e-fcfb-4ebc-b051-fe022b632644\\\"})\",\n    \"rule_settings\": {\n      \"block_page_enabled\": true,\n      \"block_reason\": \"This website is a security risk\",\n      \"override_host\": \"example.com\",\n      \"override_ips\": [\n        \"1.1.1.1\",\n        \"2.2.2.2\"\n      ],\n      \"l4override\": {\n        \"ip\": \"1.1.1.1\",\n        \"port\": 80\n      },\n      \"add_headers\": {\n        \"X-Custom-Header-Name\": [\n          \"somecustomvalue\"\n        ],\n        \"My-Next-Header\": [\n          \"foo\",\n          \"bar\"\n        ]\n      },\n      \"ip_categories\": true,\n      \"biso_admin_controls\": {\n        \"dp\": false,\n        \"dcp\": false,\n        \"dd\": false,\n        \"du\": false,\n        \"dk\": false\n      },\n      \"check_session\": {\n        \"enforce\": true,\n        \"duration\": \"300s\"\n      },\n      \"insecure_disable_dnssec_validation\": false\n    },\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"deleted_at\": null\n  }\n}"
 		},
 		{
 			"title": "Create Zero Trust Gateway Rule",
@@ -37,7 +37,7 @@
 			"cfOwnership": "gateway",
 			"html_id": "zero-trust-gateway-rules-create-zero-trust-gateway-rule",
 			"uri": "accounts/:identifier/gateway/rules",
-			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/gateway/rules\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"name\":\"block bad websites\",\"description\":\"Block the bad websites based on host name\",\"action\":\"allow\",\"filters\":\"[\\\"http\\\"]\",\"enabled\":true,\"precedence\":1,\"traffic\":\"http.request.host == \\\"example.com\\\"\",\"identity\":\"any(identity.groups.name[*] in {\\\"finance\\\"})\",\"device_posture\":\"any(device_posture.checks.passed[*] in {\\\"1308749e-fcfb-4ebc-b051-fe022b632644\\\"})\",\"rule_settings\":{\"block_page_enabled\":\"true\",\"block_reason\":\"This website is a security risk\",\"override_host\":\"example.com\",\"override_ips\":\"[1.1.1.1, 2.2.2.2]\",\"l4override\":{\"ip\":\"1.1.1.1\",\"port\":\"80\"},\"add_headers\":{\"X-Custom-Header-Name\":[\"somecustomvalue\"],\"My-Next-Header\":[\"foo\",\"bar\"]},\"ip_categories\":true,\"biso_admin_controls\":{\"dp\":false,\"dcp\":false,\"dd\":false,\"du\":false,\"dk\":false},\"check_session\":{\"enforce\":true,\"duration\":\"300s\"},\"insecure_disable_dnssec_validation\":false}}'",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/gateway/rules\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"name\":\"block bad websites\",\"description\":\"Block the bad websites based on host name\",\"action\":\"allow\",\"filters\":[\"http\"],\"enabled\":true,\"precedence\":1,\"traffic\":\"http.request.uri matches \\\".*a/partial/uri.*\\\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10\",\"identity\":\"any(identity.groups.name[*] in {\\\"finance\\\"})\",\"device_posture\":\"any(device_posture.checks.passed[*] in {\\\"1308749e-fcfb-4ebc-b051-fe022b632644\\\"})\",\"rule_settings\":{\"block_page_enabled\":true,\"block_reason\":\"This website is a security risk\",\"override_host\":\"example.com\",\"override_ips\":[\"1.1.1.1\",\"2.2.2.2\"],\"l4override\":{\"ip\":\"1.1.1.1\",\"port\":80},\"add_headers\":{\"X-Custom-Header-Name\":[\"somecustomvalue\"],\"My-Next-Header\":[\"foo\",\"bar\"]},\"ip_categories\":true,\"biso_admin_controls\":{\"dp\":false,\"dcp\":false,\"dd\":false,\"du\":false,\"dk\":false},\"check_session\":{\"enforce\":true,\"duration\":\"300s\"},\"insecure_disable_dnssec_validation\":false}}'",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}
@@ -74,7 +74,7 @@
 					},
 					"filters": {
 						"type": "array",
-						"example": "\"[\\\"http\\\"]\"",
+						"example": "[\n  \"http\"\n]",
 						"description": "The protocol or layer to evaluate the traffic, identity, and device posture expressions",
 						"items": {
 							"type": "string",
@@ -99,7 +99,7 @@
 					},
 					"traffic": {
 						"type": "string",
-						"example": "\"http.request.host == \\\"example.com\\\"\"",
+						"example": "\"http.request.uri matches \\\".*a/partial/uri.*\\\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10\"",
 						"description": "The wirefilter expression to be used for traffic matching"
 					},
 					"identity": {
@@ -114,11 +114,11 @@
 					},
 					"rule_settings": {
 						"type": "object",
-						"example": "{\n  \"block_page_enabled\": \"true\",\n  \"block_reason\": \"This website is a security risk\",\n  \"override_host\": \"example.com\",\n  \"override_ips\": \"[1.1.1.1, 2.2.2.2]\",\n  \"l4override\": {\n    \"ip\": \"1.1.1.1\",\n    \"port\": \"80\"\n  },\n  \"add_headers\": {\n    \"X-Custom-Header-Name\": [\n      \"somecustomvalue\"\n    ],\n    \"My-Next-Header\": [\n      \"foo\",\n      \"bar\"\n    ]\n  },\n  \"ip_categories\": true,\n  \"biso_admin_controls\": {\n    \"dp\": false,\n    \"dcp\": false,\n    \"dd\": false,\n    \"du\": false,\n    \"dk\": false\n  },\n  \"check_session\": {\n    \"enforce\": true,\n    \"duration\": \"300s\"\n  },\n  \"insecure_disable_dnssec_validation\": false\n}",
+						"example": "{\n  \"block_page_enabled\": true,\n  \"block_reason\": \"This website is a security risk\",\n  \"override_host\": \"example.com\",\n  \"override_ips\": [\n    \"1.1.1.1\",\n    \"2.2.2.2\"\n  ],\n  \"l4override\": {\n    \"ip\": \"1.1.1.1\",\n    \"port\": 80\n  },\n  \"add_headers\": {\n    \"X-Custom-Header-Name\": [\n      \"somecustomvalue\"\n    ],\n    \"My-Next-Header\": [\n      \"foo\",\n      \"bar\"\n    ]\n  },\n  \"ip_categories\": true,\n  \"biso_admin_controls\": {\n    \"dp\": false,\n    \"dcp\": false,\n    \"dd\": false,\n    \"du\": false,\n    \"dk\": false\n  },\n  \"check_session\": {\n    \"enforce\": true,\n    \"duration\": \"300s\"\n  },\n  \"insecure_disable_dnssec_validation\": false\n}",
 						"properties": {
 							"block_page_enabled": {
 								"type": "boolean",
-								"example": "\"true\"",
+								"example": "true",
 								"description": "Enable the custom block page"
 							},
 							"block_reason": {
@@ -133,7 +133,7 @@
 							},
 							"override_ips": {
 								"type": "array",
-								"example": "\"[1.1.1.1, 2.2.2.2]\"",
+								"example": "[\n  \"1.1.1.1\",\n  \"2.2.2.2\"\n]",
 								"description": "Override matching DNS queries with this",
 								"items": {
 									"type": "string",
@@ -143,7 +143,7 @@
 							},
 							"l4override": {
 								"type": "object",
-								"example": "{\n  \"ip\": \"1.1.1.1\",\n  \"port\": \"80\"\n}",
+								"example": "{\n  \"ip\": \"1.1.1.1\",\n  \"port\": 80\n}",
 								"properties": {
 									"ip": {
 										"type": "string",
@@ -152,7 +152,7 @@
 									},
 									"port": {
 										"type": "integer",
-										"example": "\"80\"",
+										"example": "80",
 										"description": "A port number to use for TCP/UDP overrides"
 									}
 								},
@@ -241,9 +241,9 @@
 					"rule_settings"
 				],
 				"objects": [],
-				"example": "{\n  \"name\": \"block bad websites\",\n  \"description\": \"Block the bad websites based on host name\",\n  \"action\": \"allow\",\n  \"filters\": \"[\\\"http\\\"]\",\n  \"enabled\": true,\n  \"precedence\": 1,\n  \"traffic\": \"http.request.host == \\\"example.com\\\"\",\n  \"identity\": \"any(identity.groups.name[*] in {\\\"finance\\\"})\",\n  \"device_posture\": \"any(device_posture.checks.passed[*] in {\\\"1308749e-fcfb-4ebc-b051-fe022b632644\\\"})\",\n  \"rule_settings\": {\n    \"block_page_enabled\": \"true\",\n    \"block_reason\": \"This website is a security risk\",\n    \"override_host\": \"example.com\",\n    \"override_ips\": \"[1.1.1.1, 2.2.2.2]\",\n    \"l4override\": {\n      \"ip\": \"1.1.1.1\",\n      \"port\": \"80\"\n    },\n    \"add_headers\": {\n      \"X-Custom-Header-Name\": [\n        \"somecustomvalue\"\n      ],\n      \"My-Next-Header\": [\n        \"foo\",\n        \"bar\"\n      ]\n    },\n    \"ip_categories\": true,\n    \"biso_admin_controls\": {\n      \"dp\": false,\n      \"dcp\": false,\n      \"dd\": false,\n      \"du\": false,\n      \"dk\": false\n    },\n    \"check_session\": {\n      \"enforce\": true,\n      \"duration\": \"300s\"\n    },\n    \"insecure_disable_dnssec_validation\": false\n  }\n}"
+				"example": "{\n  \"name\": \"block bad websites\",\n  \"description\": \"Block the bad websites based on host name\",\n  \"action\": \"allow\",\n  \"filters\": [\n    \"http\"\n  ],\n  \"enabled\": true,\n  \"precedence\": 1,\n  \"traffic\": \"http.request.uri matches \\\".*a/partial/uri.*\\\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10\",\n  \"identity\": \"any(identity.groups.name[*] in {\\\"finance\\\"})\",\n  \"device_posture\": \"any(device_posture.checks.passed[*] in {\\\"1308749e-fcfb-4ebc-b051-fe022b632644\\\"})\",\n  \"rule_settings\": {\n    \"block_page_enabled\": true,\n    \"block_reason\": \"This website is a security risk\",\n    \"override_host\": \"example.com\",\n    \"override_ips\": [\n      \"1.1.1.1\",\n      \"2.2.2.2\"\n    ],\n    \"l4override\": {\n      \"ip\": \"1.1.1.1\",\n      \"port\": 80\n    },\n    \"add_headers\": {\n      \"X-Custom-Header-Name\": [\n        \"somecustomvalue\"\n      ],\n      \"My-Next-Header\": [\n        \"foo\",\n        \"bar\"\n      ]\n    },\n    \"ip_categories\": true,\n    \"biso_admin_controls\": {\n      \"dp\": false,\n      \"dcp\": false,\n      \"dd\": false,\n      \"du\": false,\n      \"dk\": false\n    },\n    \"check_session\": {\n      \"enforce\": true,\n      \"duration\": \"300s\"\n    },\n    \"insecure_disable_dnssec_validation\": false\n  }\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"name\": \"block bad websites\",\n    \"description\": \"Block the bad websites based on host name\",\n    \"precedence\": 1,\n    \"enabled\": true,\n    \"action\": \"allow\",\n    \"filters\": \"[\\\"http\\\"]\",\n    \"traffic\": \"http.request.host == \\\"example.com\\\"\",\n    \"identity\": \"any(identity.groups.name[*] in {\\\"finance\\\"})\",\n    \"device_posture\": \"any(device_posture.checks.passed[*] in {\\\"1308749e-fcfb-4ebc-b051-fe022b632644\\\"})\",\n    \"rule_settings\": {\n      \"block_page_enabled\": \"true\",\n      \"block_reason\": \"This website is a security risk\",\n      \"override_host\": \"example.com\",\n      \"override_ips\": \"[1.1.1.1, 2.2.2.2]\",\n      \"l4override\": {\n        \"ip\": \"1.1.1.1\",\n        \"port\": \"80\"\n      },\n      \"add_headers\": {\n        \"X-Custom-Header-Name\": [\n          \"somecustomvalue\"\n        ],\n        \"My-Next-Header\": [\n          \"foo\",\n          \"bar\"\n        ]\n      },\n      \"ip_categories\": true,\n      \"biso_admin_controls\": {\n        \"dp\": false,\n        \"dcp\": false,\n        \"dd\": false,\n        \"du\": false,\n        \"dk\": false\n      },\n      \"check_session\": {\n        \"enforce\": true,\n        \"duration\": \"300s\"\n      },\n      \"insecure_disable_dnssec_validation\": false\n    },\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"deleted_at\": null\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"name\": \"block bad websites\",\n    \"description\": \"Block the bad websites based on host name\",\n    \"precedence\": 1,\n    \"enabled\": true,\n    \"action\": \"allow\",\n    \"filters\": [\n      \"http\"\n    ],\n    \"traffic\": \"http.request.uri matches \\\".*a/partial/uri.*\\\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10\",\n    \"identity\": \"any(identity.groups.name[*] in {\\\"finance\\\"})\",\n    \"device_posture\": \"any(device_posture.checks.passed[*] in {\\\"1308749e-fcfb-4ebc-b051-fe022b632644\\\"})\",\n    \"rule_settings\": {\n      \"block_page_enabled\": true,\n      \"block_reason\": \"This website is a security risk\",\n      \"override_host\": \"example.com\",\n      \"override_ips\": [\n        \"1.1.1.1\",\n        \"2.2.2.2\"\n      ],\n      \"l4override\": {\n        \"ip\": \"1.1.1.1\",\n        \"port\": 80\n      },\n      \"add_headers\": {\n        \"X-Custom-Header-Name\": [\n          \"somecustomvalue\"\n        ],\n        \"My-Next-Header\": [\n          \"foo\",\n          \"bar\"\n        ]\n      },\n      \"ip_categories\": true,\n      \"biso_admin_controls\": {\n        \"dp\": false,\n        \"dcp\": false,\n        \"dd\": false,\n        \"du\": false,\n        \"dk\": false\n      },\n      \"check_session\": {\n        \"enforce\": true,\n        \"duration\": \"300s\"\n      },\n      \"insecure_disable_dnssec_validation\": false\n    },\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"deleted_at\": null\n  }\n}"
 		},
 		{
 			"title": "Update Zero Trust Gateway Rule",
@@ -254,7 +254,7 @@
 			"cfOwnership": "gateway",
 			"html_id": "zero-trust-gateway-rules-update-zero-trust-gateway-rule",
 			"uri": "accounts/:identifier/gateway/rules/:uuid",
-			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/gateway/rules/f174e90a-fafe-4643-bbbc-4a0ed4fc8415\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"name\":\"block bad websites\",\"description\":\"Block the bad websites based on host name\",\"action\":\"allow\",\"filters\":\"[\\\"http\\\"]\",\"enabled\":true,\"precedence\":1,\"traffic\":\"http.request.host == \\\"example.com\\\"\",\"identity\":\"any(identity.groups.name[*] in {\\\"finance\\\"})\",\"device_posture\":\"any(device_posture.checks.passed[*] in {\\\"1308749e-fcfb-4ebc-b051-fe022b632644\\\"})\",\"rule_settings\":{\"block_page_enabled\":\"true\",\"block_reason\":\"This website is a security risk\",\"override_host\":\"example.com\",\"override_ips\":\"[1.1.1.1, 2.2.2.2]\",\"l4override\":{\"ip\":\"1.1.1.1\",\"port\":\"80\"},\"add_headers\":{\"X-Custom-Header-Name\":[\"somecustomvalue\"],\"My-Next-Header\":[\"foo\",\"bar\"]},\"ip_categories\":true,\"biso_admin_controls\":{\"dp\":false,\"dcp\":false,\"dd\":false,\"du\":false,\"dk\":false},\"check_session\":{\"enforce\":true,\"duration\":\"300s\"},\"insecure_disable_dnssec_validation\":false}}'",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/gateway/rules/f174e90a-fafe-4643-bbbc-4a0ed4fc8415\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"name\":\"block bad websites\",\"description\":\"Block the bad websites based on host name\",\"action\":\"allow\",\"filters\":[\"http\"],\"enabled\":true,\"precedence\":1,\"traffic\":\"http.request.uri matches \\\".*a/partial/uri.*\\\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10\",\"identity\":\"any(identity.groups.name[*] in {\\\"finance\\\"})\",\"device_posture\":\"any(device_posture.checks.passed[*] in {\\\"1308749e-fcfb-4ebc-b051-fe022b632644\\\"})\",\"rule_settings\":{\"block_page_enabled\":true,\"block_reason\":\"This website is a security risk\",\"override_host\":\"example.com\",\"override_ips\":[\"1.1.1.1\",\"2.2.2.2\"],\"l4override\":{\"ip\":\"1.1.1.1\",\"port\":80},\"add_headers\":{\"X-Custom-Header-Name\":[\"somecustomvalue\"],\"My-Next-Header\":[\"foo\",\"bar\"]},\"ip_categories\":true,\"biso_admin_controls\":{\"dp\":false,\"dcp\":false,\"dd\":false,\"du\":false,\"dk\":false},\"check_session\":{\"enforce\":true,\"duration\":\"300s\"},\"insecure_disable_dnssec_validation\":false}}'",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}
@@ -291,7 +291,7 @@
 					},
 					"filters": {
 						"type": "array",
-						"example": "\"[\\\"http\\\"]\"",
+						"example": "[\n  \"http\"\n]",
 						"description": "The protocol or layer to evaluate the traffic, identity, and device posture expressions",
 						"items": {
 							"type": "string",
@@ -316,7 +316,7 @@
 					},
 					"traffic": {
 						"type": "string",
-						"example": "\"http.request.host == \\\"example.com\\\"\"",
+						"example": "\"http.request.uri matches \\\".*a/partial/uri.*\\\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10\"",
 						"description": "The wirefilter expression to be used for traffic matching"
 					},
 					"identity": {
@@ -331,11 +331,11 @@
 					},
 					"rule_settings": {
 						"type": "object",
-						"example": "{\n  \"block_page_enabled\": \"true\",\n  \"block_reason\": \"This website is a security risk\",\n  \"override_host\": \"example.com\",\n  \"override_ips\": \"[1.1.1.1, 2.2.2.2]\",\n  \"l4override\": {\n    \"ip\": \"1.1.1.1\",\n    \"port\": \"80\"\n  },\n  \"add_headers\": {\n    \"X-Custom-Header-Name\": [\n      \"somecustomvalue\"\n    ],\n    \"My-Next-Header\": [\n      \"foo\",\n      \"bar\"\n    ]\n  },\n  \"ip_categories\": true,\n  \"biso_admin_controls\": {\n    \"dp\": false,\n    \"dcp\": false,\n    \"dd\": false,\n    \"du\": false,\n    \"dk\": false\n  },\n  \"check_session\": {\n    \"enforce\": true,\n    \"duration\": \"300s\"\n  },\n  \"insecure_disable_dnssec_validation\": false\n}",
+						"example": "{\n  \"block_page_enabled\": true,\n  \"block_reason\": \"This website is a security risk\",\n  \"override_host\": \"example.com\",\n  \"override_ips\": [\n    \"1.1.1.1\",\n    \"2.2.2.2\"\n  ],\n  \"l4override\": {\n    \"ip\": \"1.1.1.1\",\n    \"port\": 80\n  },\n  \"add_headers\": {\n    \"X-Custom-Header-Name\": [\n      \"somecustomvalue\"\n    ],\n    \"My-Next-Header\": [\n      \"foo\",\n      \"bar\"\n    ]\n  },\n  \"ip_categories\": true,\n  \"biso_admin_controls\": {\n    \"dp\": false,\n    \"dcp\": false,\n    \"dd\": false,\n    \"du\": false,\n    \"dk\": false\n  },\n  \"check_session\": {\n    \"enforce\": true,\n    \"duration\": \"300s\"\n  },\n  \"insecure_disable_dnssec_validation\": false\n}",
 						"properties": {
 							"block_page_enabled": {
 								"type": "boolean",
-								"example": "\"true\"",
+								"example": "true",
 								"description": "Enable the custom block page"
 							},
 							"block_reason": {
@@ -350,7 +350,7 @@
 							},
 							"override_ips": {
 								"type": "array",
-								"example": "\"[1.1.1.1, 2.2.2.2]\"",
+								"example": "[\n  \"1.1.1.1\",\n  \"2.2.2.2\"\n]",
 								"description": "Override matching DNS queries with this",
 								"items": {
 									"type": "string",
@@ -360,7 +360,7 @@
 							},
 							"l4override": {
 								"type": "object",
-								"example": "{\n  \"ip\": \"1.1.1.1\",\n  \"port\": \"80\"\n}",
+								"example": "{\n  \"ip\": \"1.1.1.1\",\n  \"port\": 80\n}",
 								"properties": {
 									"ip": {
 										"type": "string",
@@ -369,7 +369,7 @@
 									},
 									"port": {
 										"type": "integer",
-										"example": "\"80\"",
+										"example": "80",
 										"description": "A port number to use for TCP/UDP overrides"
 									}
 								},
@@ -458,9 +458,9 @@
 					"rule_settings"
 				],
 				"objects": [],
-				"example": "{\n  \"name\": \"block bad websites\",\n  \"description\": \"Block the bad websites based on host name\",\n  \"action\": \"allow\",\n  \"filters\": \"[\\\"http\\\"]\",\n  \"enabled\": true,\n  \"precedence\": 1,\n  \"traffic\": \"http.request.host == \\\"example.com\\\"\",\n  \"identity\": \"any(identity.groups.name[*] in {\\\"finance\\\"})\",\n  \"device_posture\": \"any(device_posture.checks.passed[*] in {\\\"1308749e-fcfb-4ebc-b051-fe022b632644\\\"})\",\n  \"rule_settings\": {\n    \"block_page_enabled\": \"true\",\n    \"block_reason\": \"This website is a security risk\",\n    \"override_host\": \"example.com\",\n    \"override_ips\": \"[1.1.1.1, 2.2.2.2]\",\n    \"l4override\": {\n      \"ip\": \"1.1.1.1\",\n      \"port\": \"80\"\n    },\n    \"add_headers\": {\n      \"X-Custom-Header-Name\": [\n        \"somecustomvalue\"\n      ],\n      \"My-Next-Header\": [\n        \"foo\",\n        \"bar\"\n      ]\n    },\n    \"ip_categories\": true,\n    \"biso_admin_controls\": {\n      \"dp\": false,\n      \"dcp\": false,\n      \"dd\": false,\n      \"du\": false,\n      \"dk\": false\n    },\n    \"check_session\": {\n      \"enforce\": true,\n      \"duration\": \"300s\"\n    },\n    \"insecure_disable_dnssec_validation\": false\n  }\n}"
+				"example": "{\n  \"name\": \"block bad websites\",\n  \"description\": \"Block the bad websites based on host name\",\n  \"action\": \"allow\",\n  \"filters\": [\n    \"http\"\n  ],\n  \"enabled\": true,\n  \"precedence\": 1,\n  \"traffic\": \"http.request.uri matches \\\".*a/partial/uri.*\\\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10\",\n  \"identity\": \"any(identity.groups.name[*] in {\\\"finance\\\"})\",\n  \"device_posture\": \"any(device_posture.checks.passed[*] in {\\\"1308749e-fcfb-4ebc-b051-fe022b632644\\\"})\",\n  \"rule_settings\": {\n    \"block_page_enabled\": true,\n    \"block_reason\": \"This website is a security risk\",\n    \"override_host\": \"example.com\",\n    \"override_ips\": [\n      \"1.1.1.1\",\n      \"2.2.2.2\"\n    ],\n    \"l4override\": {\n      \"ip\": \"1.1.1.1\",\n      \"port\": 80\n    },\n    \"add_headers\": {\n      \"X-Custom-Header-Name\": [\n        \"somecustomvalue\"\n      ],\n      \"My-Next-Header\": [\n        \"foo\",\n        \"bar\"\n      ]\n    },\n    \"ip_categories\": true,\n    \"biso_admin_controls\": {\n      \"dp\": false,\n      \"dcp\": false,\n      \"dd\": false,\n      \"du\": false,\n      \"dk\": false\n    },\n    \"check_session\": {\n      \"enforce\": true,\n      \"duration\": \"300s\"\n    },\n    \"insecure_disable_dnssec_validation\": false\n  }\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"name\": \"block bad websites\",\n    \"description\": \"Block the bad websites based on host name\",\n    \"precedence\": 1,\n    \"enabled\": true,\n    \"action\": \"allow\",\n    \"filters\": \"[\\\"http\\\"]\",\n    \"traffic\": \"http.request.host == \\\"example.com\\\"\",\n    \"identity\": \"any(identity.groups.name[*] in {\\\"finance\\\"})\",\n    \"device_posture\": \"any(device_posture.checks.passed[*] in {\\\"1308749e-fcfb-4ebc-b051-fe022b632644\\\"})\",\n    \"rule_settings\": {\n      \"block_page_enabled\": \"true\",\n      \"block_reason\": \"This website is a security risk\",\n      \"override_host\": \"example.com\",\n      \"override_ips\": \"[1.1.1.1, 2.2.2.2]\",\n      \"l4override\": {\n        \"ip\": \"1.1.1.1\",\n        \"port\": \"80\"\n      },\n      \"add_headers\": {\n        \"X-Custom-Header-Name\": [\n          \"somecustomvalue\"\n        ],\n        \"My-Next-Header\": [\n          \"foo\",\n          \"bar\"\n        ]\n      },\n      \"ip_categories\": true,\n      \"biso_admin_controls\": {\n        \"dp\": false,\n        \"dcp\": false,\n        \"dd\": false,\n        \"du\": false,\n        \"dk\": false\n      },\n      \"check_session\": {\n        \"enforce\": true,\n        \"duration\": \"300s\"\n      },\n      \"insecure_disable_dnssec_validation\": false\n    },\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"deleted_at\": null\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"name\": \"block bad websites\",\n    \"description\": \"Block the bad websites based on host name\",\n    \"precedence\": 1,\n    \"enabled\": true,\n    \"action\": \"allow\",\n    \"filters\": [\n      \"http\"\n    ],\n    \"traffic\": \"http.request.uri matches \\\".*a/partial/uri.*\\\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10\",\n    \"identity\": \"any(identity.groups.name[*] in {\\\"finance\\\"})\",\n    \"device_posture\": \"any(device_posture.checks.passed[*] in {\\\"1308749e-fcfb-4ebc-b051-fe022b632644\\\"})\",\n    \"rule_settings\": {\n      \"block_page_enabled\": true,\n      \"block_reason\": \"This website is a security risk\",\n      \"override_host\": \"example.com\",\n      \"override_ips\": [\n        \"1.1.1.1\",\n        \"2.2.2.2\"\n      ],\n      \"l4override\": {\n        \"ip\": \"1.1.1.1\",\n        \"port\": 80\n      },\n      \"add_headers\": {\n        \"X-Custom-Header-Name\": [\n          \"somecustomvalue\"\n        ],\n        \"My-Next-Header\": [\n          \"foo\",\n          \"bar\"\n        ]\n      },\n      \"ip_categories\": true,\n      \"biso_admin_controls\": {\n        \"dp\": false,\n        \"dcp\": false,\n        \"dd\": false,\n        \"du\": false,\n        \"dk\": false\n      },\n      \"check_session\": {\n        \"enforce\": true,\n        \"duration\": \"300s\"\n      },\n      \"insecure_disable_dnssec_validation\": false\n    },\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"deleted_at\": null\n  }\n}"
 		},
 		{
 			"title": "Delete Zero Trust Gateway Rule",
@@ -528,7 +528,7 @@
 			},
 			"filters": {
 				"type": "array",
-				"example": "\"[\\\"http\\\"]\"",
+				"example": "[\n  \"http\"\n]",
 				"description": "The protocol or layer to evaluate the traffic, identity, and device posture expressions",
 				"items": {
 					"type": "string",
@@ -543,7 +543,7 @@
 			},
 			"traffic": {
 				"type": "string",
-				"example": "\"http.request.host == \\\"example.com\\\"\"",
+				"example": "\"http.request.uri matches \\\".*a/partial/uri.*\\\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10\"",
 				"description": "The wirefilter expression to be used for traffic matching"
 			},
 			"identity": {
@@ -558,11 +558,11 @@
 			},
 			"rule_settings": {
 				"type": "object",
-				"example": "{\n  \"block_page_enabled\": \"true\",\n  \"block_reason\": \"This website is a security risk\",\n  \"override_host\": \"example.com\",\n  \"override_ips\": \"[1.1.1.1, 2.2.2.2]\",\n  \"l4override\": {\n    \"ip\": \"1.1.1.1\",\n    \"port\": \"80\"\n  },\n  \"add_headers\": {\n    \"X-Custom-Header-Name\": [\n      \"somecustomvalue\"\n    ],\n    \"My-Next-Header\": [\n      \"foo\",\n      \"bar\"\n    ]\n  },\n  \"ip_categories\": true,\n  \"biso_admin_controls\": {\n    \"dp\": false,\n    \"dcp\": false,\n    \"dd\": false,\n    \"du\": false,\n    \"dk\": false\n  },\n  \"check_session\": {\n    \"enforce\": true,\n    \"duration\": \"300s\"\n  },\n  \"insecure_disable_dnssec_validation\": false\n}",
+				"example": "{\n  \"block_page_enabled\": true,\n  \"block_reason\": \"This website is a security risk\",\n  \"override_host\": \"example.com\",\n  \"override_ips\": [\n    \"1.1.1.1\",\n    \"2.2.2.2\"\n  ],\n  \"l4override\": {\n    \"ip\": \"1.1.1.1\",\n    \"port\": 80\n  },\n  \"add_headers\": {\n    \"X-Custom-Header-Name\": [\n      \"somecustomvalue\"\n    ],\n    \"My-Next-Header\": [\n      \"foo\",\n      \"bar\"\n    ]\n  },\n  \"ip_categories\": true,\n  \"biso_admin_controls\": {\n    \"dp\": false,\n    \"dcp\": false,\n    \"dd\": false,\n    \"du\": false,\n    \"dk\": false\n  },\n  \"check_session\": {\n    \"enforce\": true,\n    \"duration\": \"300s\"\n  },\n  \"insecure_disable_dnssec_validation\": false\n}",
 				"properties": {
 					"block_page_enabled": {
 						"type": "boolean",
-						"example": "\"true\"",
+						"example": "true",
 						"description": "Enable the custom block page"
 					},
 					"block_reason": {
@@ -577,7 +577,7 @@
 					},
 					"override_ips": {
 						"type": "array",
-						"example": "\"[1.1.1.1, 2.2.2.2]\"",
+						"example": "[\n  \"1.1.1.1\",\n  \"2.2.2.2\"\n]",
 						"description": "Override matching DNS queries with this",
 						"items": {
 							"type": "string",
@@ -587,7 +587,7 @@
 					},
 					"l4override": {
 						"type": "object",
-						"example": "{\n  \"ip\": \"1.1.1.1\",\n  \"port\": \"80\"\n}",
+						"example": "{\n  \"ip\": \"1.1.1.1\",\n  \"port\": 80\n}",
 						"properties": {
 							"ip": {
 								"type": "string",
@@ -596,7 +596,7 @@
 							},
 							"port": {
 								"type": "integer",
-								"example": "\"80\"",
+								"example": "80",
 								"description": "A port number to use for TCP/UDP overrides"
 							}
 						},
@@ -716,7 +716,7 @@
 			"deleted_at"
 		],
 		"objects": [],
-		"example": "{\n  \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n  \"name\": \"block bad websites\",\n  \"description\": \"Block the bad websites based on host name\",\n  \"precedence\": 1,\n  \"enabled\": true,\n  \"action\": \"allow\",\n  \"filters\": \"[\\\"http\\\"]\",\n  \"traffic\": \"http.request.host == \\\"example.com\\\"\",\n  \"identity\": \"any(identity.groups.name[*] in {\\\"finance\\\"})\",\n  \"device_posture\": \"any(device_posture.checks.passed[*] in {\\\"1308749e-fcfb-4ebc-b051-fe022b632644\\\"})\",\n  \"rule_settings\": {\n    \"block_page_enabled\": \"true\",\n    \"block_reason\": \"This website is a security risk\",\n    \"override_host\": \"example.com\",\n    \"override_ips\": \"[1.1.1.1, 2.2.2.2]\",\n    \"l4override\": {\n      \"ip\": \"1.1.1.1\",\n      \"port\": \"80\"\n    },\n    \"add_headers\": {\n      \"X-Custom-Header-Name\": [\n        \"somecustomvalue\"\n      ],\n      \"My-Next-Header\": [\n        \"foo\",\n        \"bar\"\n      ]\n    },\n    \"ip_categories\": true,\n    \"biso_admin_controls\": {\n      \"dp\": false,\n      \"dcp\": false,\n      \"dd\": false,\n      \"du\": false,\n      \"dk\": false\n    },\n    \"check_session\": {\n      \"enforce\": true,\n      \"duration\": \"300s\"\n    },\n    \"insecure_disable_dnssec_validation\": false\n  },\n  \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n  \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n  \"deleted_at\": null\n}",
+		"example": "{\n  \"id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n  \"name\": \"block bad websites\",\n  \"description\": \"Block the bad websites based on host name\",\n  \"precedence\": 1,\n  \"enabled\": true,\n  \"action\": \"allow\",\n  \"filters\": [\n    \"http\"\n  ],\n  \"traffic\": \"http.request.uri matches \\\".*a/partial/uri.*\\\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10\",\n  \"identity\": \"any(identity.groups.name[*] in {\\\"finance\\\"})\",\n  \"device_posture\": \"any(device_posture.checks.passed[*] in {\\\"1308749e-fcfb-4ebc-b051-fe022b632644\\\"})\",\n  \"rule_settings\": {\n    \"block_page_enabled\": true,\n    \"block_reason\": \"This website is a security risk\",\n    \"override_host\": \"example.com\",\n    \"override_ips\": [\n      \"1.1.1.1\",\n      \"2.2.2.2\"\n    ],\n    \"l4override\": {\n      \"ip\": \"1.1.1.1\",\n      \"port\": 80\n    },\n    \"add_headers\": {\n      \"X-Custom-Header-Name\": [\n        \"somecustomvalue\"\n      ],\n      \"My-Next-Header\": [\n        \"foo\",\n        \"bar\"\n      ]\n    },\n    \"ip_categories\": true,\n    \"biso_admin_controls\": {\n      \"dp\": false,\n      \"dcp\": false,\n      \"dd\": false,\n      \"du\": false,\n      \"dk\": false\n    },\n    \"check_session\": {\n      \"enforce\": true,\n      \"duration\": \"300s\"\n    },\n    \"insecure_disable_dnssec_validation\": false\n  },\n  \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n  \"updated_at\": \"2014-01-01T05:20:00.12345Z\",\n  \"deleted_at\": null\n}",
 		"title": "Zero Trust Gateway Rules",
 		"description": "Secure Web Gateway rules are a set of expressions(conditions) that evaluate at various phases of your internet traffic, to determine if a specific action has to be performed. These expressions can be evaluated to a true/false value and based on the evaluation result, an associated action, like whether to reject the request, or allow it, or override it, or browser isolate it is applied."
 	}
