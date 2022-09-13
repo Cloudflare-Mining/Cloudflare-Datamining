@@ -1,4 +1,13 @@
 [
 	"/accounts/[id]/magic/advanced_tcp_protection",
+	"/accounts/[id]/magic/advanced_tcp_protection/configs/allowlist",
+	"/accounts/[id]/magic/advanced_tcp_protection/configs/allowlist/[id]/*",
+	"/accounts/[id]/magic/advanced_tcp_protection/configs/prefixes",
+	"/accounts/[id]/magic/advanced_tcp_protection/configs/prefixes/[id]/*",
+	"/accounts/[id]/magic/advanced_tcp_protection/configs/prefixes/bulk",
+	"/accounts/[id]/magic/advanced_tcp_protection/configs/syn_protection/rules",
+	"/accounts/[id]/magic/advanced_tcp_protection/configs/syn_protection/rules/[id]/*",
+	"/accounts/[id]/magic/advanced_tcp_protection/configs/tcp_flow_protection/rules",
+	"/accounts/[id]/magic/advanced_tcp_protection/configs/tcp_flow_protection/rules/[id]/*",
 	"/accounts/[id]/rulesets/phases/[id]/entrypoint"
 ]
