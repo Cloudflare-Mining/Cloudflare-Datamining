@@ -5,70 +5,33 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4>About the department</h4>
-<p>Cloudflare is seeking an Equity and Technical Accountant to join our Accounting team. Our team consists of experienced, motivated, and self-sufficient high performers. The ideal candidate will have strong technical skills, attention to detail and be able to work in a fast-paced high-volume environment.</p>
-<h4>What you'll do</h4>
+<h4><strong>Systems Engineer - Compute Hardware</strong></h4>
+<h4><span style="font-weight: 400;">Cloudflare’s Infrastructure group is responsible for building our global network. Our Hardware Engineering team helps research, design, test, and deploy new equipment enabling compute, storage, and network. Deployed across 200+ cities in 100+ countries, the hardware we select helps improve the security, reliability, and performance of the Internet.</span></h4>
+<h4><strong>What you'll do</strong></h4>
+<p><span style="font-weight: 400;">We need to make thoughtful infrastructure choices affecting a significant portion of the Internet. Hardware we work with includes servers, routers, switches, optical equipment, power distribution units, cables, optics, and more. As a Hardware Systems Engineer, you will work with colleagues on the Hardware Engineering, Product teams, and Hardware Sourcing teams to evaluate and inform decisions around new hardware.</span></p>
 <ul>
-	<li>Responsible for month-end financial reporting and accounting tasks related to equity, stock-based compensation, and capitalized software.</li>
-	<li>Work cross functionally with the stock plan administrator to reconcile the stock admin platform to the general ledger.</li>
-	<li>Prepare all footnotes as well as work papers, tie out and analysis supporting the financial statements, including the Statement of Stockholders’ Equity (SoSE), equity share roll-forward and net earnings (loss) per share calculation.</li>
-	<li>Provide detailed support to the outside auditors and other consultants.</li>
-	<li>Manage multiple tasks under tight deadlines with strong attention to detail and accuracy.</li>
-	<li>Work on ad hoc research tasks to support our business partners.</li>
-	<li>Responsible for impairment analyses related to goodwill, intangible assets, and long-lived assets.</li>
-	<li>Work on nonrecurring transactions, including but not limited to, business combinations, asset acquisitions, equity modifications, and debt issuances and repurchases.</li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Design hardware (Compute, AI/ML, and accelerators across traditional system boundaries which are efficient, secure, reliable and serviceable) for cloud customer workloads</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Develop and deploy Cloudflare’s next generation of servers, and other innovative technologies as part of Cloudflare’s data center infrastructure&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experiment with different designs and solutions for Cloudflare’s hardware and work cross-functionally with Product teams and Hardware Sourcing to enact your suggestions globally</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Work with vendors to obtain, debug, and maintain the most performant, power efficient and cost effective next-generation compute hardware and firmware for Cloudflare’s workloads</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Develop tools and automation to evaluate and optimize hardware performance</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Communicate your results and updates through blog posts, internal talks, and tickets</span></li>
 </ul>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li>5+ years of progressive accounting experience, with 1+ years in a role focused on equity accounting and/or technical accounting</li>
-	<li>Bachelor's degree in Accounting</li>
-	<li>Detail oriented: able to work with large volumes of data with speed and accuracy. Ability to self- check work.</li>
-	<li>Track record of working independently with limited required direction and guidance on simultaneous projects and teams</li>
-	<li>Ability to respond to internal requests for support and assistance in a prompt and professional manner</li>
-	<li>Strong organizational skills to manage multiple projects and collaborate effectively with cross- functional teams</li>
-	<li>Ability to work in a confidential manner due to access to information of a sensitive nature</li>
-	<li>Strong time management, problem-solving, technical, and analytical skills</li>
-	<li>Advanced proficiency in Excel</li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Extensive experience with computer hardware architecture, design engineering, validation, performance benchmarking, debugging, and deployment used in the data center</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Relevant engineering disciplines include ASIC development, Computer hardware engineering and Electrical engineering.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Previous experience in testing, measuring, and/or simulating hardware performance and an understanding of no-stone-left-unturned experimentation</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Track record of driving engineering projects from idea to experiment to implementation</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Demonstrated success in working with ODMs and technology vendors</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Professional-level proficiency in Python, Go, or similar programming and/or scripting languages</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Good Linux systems knowledge</span></li>
 </ul>
-<p>Preferred Qualifications:</p>
+<h4>&nbsp;</h4>
+<p><strong>Bonus Points</strong></p>
 <ul>
-	<li>
-		<ul>
-			<li>Prior experience working in an internet/ecommerce company</li>
-			<li>Prior experience working in NetSuite</li>
-			<li>Public accounting experience</li>
-			<li>Prior experience with Google Apps and other cloud computing applications</li>
-		</ul>
-	</li>
-</ul>
-<p><strong>Compensation</strong></p>
-<p><span style="font-weight: 400;">Compensation may be adjusted depending on work location. For Colorado-based hires: Estimated annual salary of $<span data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:83000}" data-sheets-userformat="{&quot;2&quot;:515,&quot;3&quot;:{&quot;1&quot;:0},&quot;4&quot;:{&quot;1&quot;:2,&quot;2&quot;:15724527},&quot;12&quot;:0}">83,000</span> - $<span data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:125000}" data-sheets-userformat="{&quot;2&quot;:515,&quot;3&quot;:{&quot;1&quot;:0},&quot;4&quot;:{&quot;1&quot;:2,&quot;2&quot;:15724527},&quot;12&quot;:0}">125,000</span>.</span></p>
-<p><strong>Equity</strong></p>
-<p><span style="font-weight: 400;">This role is eligible to participate in Cloudflare’s equity plan.</span></p>
-<p><strong>Benefits</strong></p>
-<p><span style="font-weight: 400;">Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</span></p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
-<ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Medical/Rx Insurance</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Dental Insurance</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Vision Insurance</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Flexible Spending Accounts</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Commuter Spending Accounts</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Fertility &amp; Family Forming Benefits</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">On-demand mental health support and Employee Assistance Program</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Global Travel Medical Insurance</span></li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Short and Long Term Disability Insurance</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Life &amp; Accident Insurance</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">401(k) Retirement Savings Plan</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Employee Stock Participation Plan</span></li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Flexible paid time off covering vacation and sick leave</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Leave programs, including parental, pregnancy health, medical, and bereavement leave</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Knowledge of XPU/accelerator architectures is a plus.&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience in a hyperscale cloud infrastructure role also valuable</span></li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
