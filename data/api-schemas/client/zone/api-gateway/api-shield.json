@@ -75,7 +75,7 @@
 			"cfPrivate": true,
 			"html_id": "api-shield-endpoint-management-retrieve-information-about-all-operations-on-a-zone",
 			"uri": "zones/:zone_id/api_gateway/operations",
-			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/api_gateway/operations?page=1&per_page=20&feature=thresholds&order=method&direction=desc\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/api_gateway/operations?page=1&per_page=20&feature=thresholds&order=method&direction=desc&host=api.cloudflare.com&method=GET&endpoint=/api/v1\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}
@@ -128,6 +128,31 @@
 							"desc"
 						],
 						"description": "Direction to order results"
+					},
+					"host": {
+						"type": "array",
+						"example": "[\n  \"api.cloudflare.com\"\n]",
+						"uniqueItems": true,
+						"items": {
+							"type": "string",
+							"example": "api.cloudflare.com"
+						},
+						"description": "Filter results to only include the specified hosts."
+					},
+					"method": {
+						"type": "array",
+						"example": "[\n  \"GET\"\n]",
+						"uniqueItems": true,
+						"items": {
+							"type": "string",
+							"example": "GET"
+						},
+						"description": "Filter results to only include the specified HTTP methods."
+					},
+					"endpoint": {
+						"type": "string",
+						"example": "\"/api/v1\"",
+						"description": "Filter results to only include endpoints containing this pattern."
 					}
 				},
 				"required_props": [],
@@ -136,10 +161,13 @@
 					"per_page",
 					"feature",
 					"order",
-					"direction"
+					"direction",
+					"host",
+					"method",
+					"endpoint"
 				],
 				"objects": [],
-				"example": "{\n  \"page\": 1,\n  \"per_page\": 20,\n  \"feature\": [\n    \"thresholds\"\n  ],\n  \"order\": \"method\",\n  \"direction\": \"desc\"\n}"
+				"example": "{\n  \"page\": 1,\n  \"per_page\": 20,\n  \"feature\": [\n    \"thresholds\"\n  ],\n  \"order\": \"method\",\n  \"direction\": \"desc\",\n  \"host\": [\n    \"api.cloudflare.com\"\n  ],\n  \"method\": [\n    \"GET\"\n  ],\n  \"endpoint\": \"/api/v1\"\n}"
 			},
 			"response": "{\n  \"success\": true,\n  \"errors\": null,\n  \"messages\": null,\n  \"result\": [\n    {\n      \"operation_id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n      \"method\": \"GET\",\n      \"host\": \"www.example.com\",\n      \"endpoint\": \"/api/v1/users/{var1}\",\n      \"last_updated\": \"2014-01-01T05:20:00.12345Z\",\n      \"features\": {\n        \"thresholds\": {\n          \"period_seconds\": 600,\n          \"suggested_threshold\": 18,\n          \"p50\": 3,\n          \"p90\": 7,\n          \"p99\": 11,\n          \"requests\": 65890,\n          \"auth_id_tokens\": 7236,\n          \"data_points\": 10100,\n          \"last_updated\": \"2014-01-01T05:20:00.12345Z\"\n        }\n      }\n    }\n  ],\n  \"result_info\": {\n    \"page\": 1,\n    \"per_page\": 20,\n    \"count\": 1,\n    \"total_count\": 500\n  }\n}"
 		},
