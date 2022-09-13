@@ -5,35 +5,37 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>About the Department</strong></p>
-<p>Account Executives, Business Development Representatives, Solution Engineers, and Customer Success - all working together to help our customers adopt Cloudflare and build great Internet-enabled experiences. The sales team at Cloudflare helps customers take on real, technical problems while building the revenue streams that help the company provide free service to millions in our community.</p>
-<p><strong>About the Role</strong></p>
-<p>Based in one of our EMEA locations, you will drive sales into gaming &amp; igaming accounts headquartered in the Nordics &amp; Benelux regions. You will employ both a ‘hunter’ and a ‘farmer’ mindset i.e. proactively penetrate target gaming/igaming prospect accounts, whilst leveraging relationships with existing customers and working cross-functionally with customer success to identify and execute on upsell opportunities within these accounts. You will build strong relationships internally (finance, compliance, legal, product, marketing, partners, etc.) and champion the ever-adapting requirements of customers in this segment to all internal stakeholders involved - so as to help deliver a best-of-breed solution to gaming &amp; igaming customers in your target regions.</p>
-<h4>Additional responsibilities will include</h4>
+<p><strong>About Cloudflare's Engineering teams</strong></p>
+<p>Anytime we push code, it automatically affects the millions of Internet properties (powering websites, remote teams, APIs, mobile apps, etc.) running on our global network. Cloudflare's network is one of the largest in the world and spans over 275 cities in more than 100 countries. What's more, Cloudflare operates within 50 milliseconds of 95% of the Internet-connected population globally (for context, the blink of an eye is 300-400 milliseconds!). We are passionate about making the Internet more secure, reliable, and faster for everyone.</p>
+<p><span style="font-weight: 400;">Cloudflare’s Engineering teams build and run the software that handles the massive amount of traffic that flows through our network. We also have teams that build the UI and control plane for our software, using modern patterns and libraries in a microservices-based architecture. Technologies include: C/C++, Rust, Go, Lua, Nginx, Go, Python, Typescript, JavaScript and ReactJS.</span></p>
+<p><strong>About the Internship Program</strong></p>
+<p><span style="font-weight: 400;">The ideal summer intern is passionate about making the internet a better place. You will work with strong engineers. You will push code this summer that touches hundreds of millions of web surfers. We like to get things done, so we are looking for interns who are curious and can take on and complete projects. This is a great opportunity for engineers that want to learn to develop at Internet scale.</span></p>
+<p>What would you do as a Cloudflare intern?</p>
 <ul>
-	<li>Carry &amp; exceed individual quarterly quotas</li>
-	<li>Leads contract negotiations</li>
-	<li>Build a robust sales pipeline</li>
-	<li>Develop long-term strategic relationships with key accounts</li>
-	<li>&lt; 50% travel</li>
+	<li>Ship and deliver projects over 12 weeks with autonomy and support.</li>
+	<li>Work cross-functionally with various teams.</li>
+	<li>Be assigned a mentor to guide you through the internship and help with career goals.</li>
+	<li>Make friends across the company through our Buddy Program, Employee Resource Group (ERG) programs, and Activity Groups (Cat or dog lovers, we’ve got communities for you! @Catflare @Doggos).</li>
+	<li>Present your project to the entire company at the end of the internship.</li>
+	<li>Get direct access to our executives and leadership team including our co-founders.</li>
+	<li>Write for our&nbsp;<a href="https://blog.cloudflare.com/" target="_blank">Cloudflare blog</a>&nbsp;and be featured on&nbsp;<a class="oiM5sf" href="http://cloudflare.tv/" target="_blank">Cloudflare.tv</a>&nbsp;sessions.&nbsp;</li>
+	<li>Receive Cloudflare swag and free Cloudflare products!</li>
 </ul>
+<p>You can check out our&nbsp;<a href="https://blog.cloudflare.com/tag/internship-experience/" target="_blank">internship blogs</a>&nbsp;to learn more about our program and hear directly from our past interns.</p>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li><strong>7+ years of direct B2B selling experience, 3+ years selling to gaming &amp; igaming customers in EMEA</strong></li>
-	<li>Bachelor's degree required</li>
-	<li>English &amp; second language preferred</li>
-	<li>Closing experience and track-record of exceeding quota</li>
-	<li>Deep understanding of the sales process as it relates to Enterprise, Mid-Market, &amp; SMB companies</li>
-	<li>Relevant direct experience, track record, and relationships within gaming &amp; igaming accounts in Israel&nbsp;</li>
-	<li>Exemplary communication skills, both written and verbal, with confidence to develop and present ideas to varying levels of audiences</li>
-	<li>Experience directly managing a pipeline of complex, large deals</li>
-	<li>Direct experience selling network security and/or CDN solutions and services preferred</li>
-	<li>Basic understanding of computer networking and “how the internet works”</li>
-	<li>Aptitude for learning technical concepts/terms (Technical background in engineering, computer science, or MIS a plus)</li>
-	<li>Strong interpersonal communication (verbal and written) and organisational skills.</li>
-	<li>Self-motivated; entrepreneurial spirit</li>
-	<li>Comfortable working in a fast paced dynamic environment</li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Currently pursuing a degree or program in Computer Science, Engineering, Mathematics, Statistics or relevant field to the role.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Demonstrated critical thinking skills and drive to learn and adapt new technologies.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Curiosity, empathy and ability to get things done.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Ability to commit to a 12 week summer internship.</span></li>
 </ul>
+<p><strong>Please note</strong></p>
+<ul>
+	<li><span style="font-weight: 400;">We will be hiring interns through the fall and early spring on a rolling basis until all roles are complete. Due to the volume of applicants, we may not get back to every candidate until December 1, 2022.&nbsp;</span></li>
+	<li><span style="font-weight: 400;">Depending on the COVID-19 situation in 2023, our internship will be remote or located in our San Francisco, Austin, Champaign, Kirkland, or New York offices.</span></li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
