@@ -25,6 +25,7 @@ const reqs = [
 		name: 'projects-list',
 		url: `https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/pages/projects`,
 		method: 'GET',
+		reequired: true,
 	},
 	{
 		name: 'projects-get',
@@ -81,6 +82,13 @@ for(const req of reqs){
 	}
 }
 
+if(!results['deployments-create']?.result?.id){
+	// no deployment created. What did Walshy break now?
+	console.log('Missing deployment. Can\'t get any more Pages details');
+	// eslint-disable-next-line no-process-exit
+	process.exit(0);
+}
+
 // get and parse logs for deploy, after deployed
 const maxAttempts = 30;
 let waiting = true;
@@ -117,10 +125,12 @@ const deployiD = results['deployments-create']?.result?.id;
 const logsReq = await cfRequest(`https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/pages/projects/${projectName}/deployments/${deployiD}/history/logs`);
 const logsRes = await logsReq.json();
 const logs = logsRes.result.data ?? [];
-const startIndex = logs.findIndex(log => log.line === '---start-env---');
-const endIndex = logs.findIndex(log => log.line === '---end-env---');
-if(startIndex && endIndex){
-	const envLogs = logs.slice(startIndex + 1, endIndex);
+
+// get env
+const startEnvIndex = logs.findIndex(log => log.line === '---start-env---');
+const endEnvIndex = logs.findIndex(log => log.line === '---end-env---');
+if(startEnvIndex && endEnvIndex){
+	const envLogs = logs.slice(startEnvIndex + 1, endEnvIndex);
 	const env = {};
 	for(const log of envLogs){
 		const split = log.line.split('=');
@@ -154,6 +164,24 @@ if(startIndex && endIndex){
 	}
 }
 
+// get lscpu
+const startLscpuIndex = logs.findIndex(log => log.line === '---start-lscpu---');
+const endLscpuIndex = logs.findIndex(log => log.line === '---end-lscpu---');
+if(startLscpuIndex && endLscpuIndex){
+	const lscpuLogs = logs.slice(startLscpuIndex + 1, endLscpuIndex);
+	const lscpu = lscpuLogs.map(log => log.line).join('\n').trim();
+	await fs.writeFile(path.resolve(dir, 'deployments-logs-lscpu.txt'), lscpu);
+}
+
+// get memtotal
+const startMemtotalIndex = logs.findIndex(log => log.line === '---start-memtotal---');
+const endMemtotalIndex = logs.findIndex(log => log.line === '---end-memtotal---');
+if(startMemtotalIndex && endMemtotalIndex){
+	const memtotalLogs = logs.slice(startMemtotalIndex + 1, endMemtotalIndex);
+	const memtotal = memtotalLogs.map(log => log.line).join('\n').trim();
+	await fs.writeFile(path.resolve(dir, 'deployments-logs-memtotal.txt'), memtotal);
+}
+
 // delete all previous deployments
 console.log('Cleaning up old deployments...');
 for(const deployment of results['deployments-list'].result){
@@ -172,6 +200,7 @@ const prefix = dateFormat(new Date(), 'd mmmm yyyy');
 await tryAndPush(
 	[
 		'data/products/pages/*.json',
+		'data/products/pages/*.txt',
 	],
 	`${prefix} - Product: Pages Data was updated!`,
 	'CFData - Product: Pages Data Update',
