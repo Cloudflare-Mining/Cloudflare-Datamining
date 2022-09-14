@@ -7,13 +7,13 @@
 				"pageName": "Product Hub — Application Services (Q3.2022)",
 				"localeList": {
 					"enUS": "English for Locale",
-					"zhCN": "English for Locale",
-					"zhTW": "English for Locale",
+					"zhCN": "Translated for Locale",
+					"zhTW": "Translated for Locale",
 					"frFR": "English for Locale",
 					"deDE": "English for Locale",
 					"itIT": "English for Locale",
-					"jaJP": "English for Locale",
-					"koKR": "English for Locale",
+					"jaJP": "Translated for Locale",
+					"koKR": "Translated for Locale",
 					"ptBR": "English for Locale",
 					"esES": "English for Locale",
 					"enAU": "English for Locale",
@@ -27,7 +27,7 @@
 					"svSE": "No Page for Locale",
 					"viVN": "No Page for Locale",
 					"trTR": "No Page for Locale",
-					"zhHansCN": "English for Locale"
+					"zhHansCN": "Translated for Locale"
 				},
 				"relativePath": "application-services-hub",
 				"topNavOptions": "default",
@@ -92,7 +92,7 @@
 						"imagePosition": null,
 						"leftLinkUrl": null,
 						"leftLink": "[Compare plans and pricing](#price-matrix)",
-						"leftLinkLoggedIn": null,
+						"leftLinkLoggedIn": "[Compare plans and pricing](#price-matrix)",
 						"leftLinkOptions": "show",
 						"backgroundColor": "white",
 						"textlayoutMode": null,
@@ -494,6 +494,100 @@
 								"streamId": null,
 								"streamThumbnail": null,
 								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "24z5AFQfwQ1AZcgJ2VAHrO",
+								"title": "Security Center",
+								"titleSize": "medium",
+								"description": "Attack surface management and mitigate threats in a few clicks.",
+								"learnMoreUrl": "/securitycenter/",
+								"learnMoreText": "Learn more",
+								"displayBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "06bda335-7b54-5535-aa80-7345da70924b",
+									"altText": "Security Shield Protection Icon",
+									"title": "Security Shield Protection Icon",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/security-shield-protection.svg"
+										}
+									},
+									"brandfolderAsset": {
+										"size": 806,
+										"height": 3446,
+										"width": 2639,
+										"file": {
+											"publicURL": "[path]/security-shield-protection.svg"
+										}
+									},
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "3ZP8ho5QYXCO5W1YRxHftv",
+								"title": "Analytics",
+								"titleSize": "small",
+								"description": "Granular lens into network traffic.",
+								"learnMoreUrl": "/analytics/",
+								"learnMoreText": "Learn more",
+								"displayBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "082acf6d-2836-52a9-a97d-f6a571c67183",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/analytics-data.svg"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "3w5oLFkNUiQVgAvVumfOt",
+								"title": "Logs",
+								"titleSize": "small",
+								"description": "Detailed logs of HTTP requests, Spectrum events, or Firewall events.",
+								"learnMoreUrl": "/products/cloudflare-logs/",
+								"learnMoreText": "Learn more",
+								"displayBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "85c4fbc4-0db5-571b-8e57-5e56edf68d42",
+									"altText": "Cloudflare Logs",
+									"title": "Logs Icon",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/logicon.svg"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
 							}
 						]
 					},
@@ -816,6 +910,64 @@
 									"contentfulAsset": {
 										"file": {
 											"publicURL": "[path]/performance-wrench.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "3ZP8ho5QYXCO5W1YRxHftv",
+								"title": "Analytics",
+								"titleSize": "small",
+								"description": "Granular lens into network traffic.",
+								"learnMoreUrl": "/analytics/",
+								"learnMoreText": "Learn more",
+								"displayBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "082acf6d-2836-52a9-a97d-f6a571c67183",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/analytics-data.svg"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "3w5oLFkNUiQVgAvVumfOt",
+								"title": "Logs",
+								"titleSize": "small",
+								"description": "Detailed logs of HTTP requests, Spectrum events, or Firewall events.",
+								"learnMoreUrl": "/products/cloudflare-logs/",
+								"learnMoreText": "Learn more",
+								"displayBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "85c4fbc4-0db5-571b-8e57-5e56edf68d42",
+									"altText": "Cloudflare Logs",
+									"title": "Logs Icon",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/logicon.svg"
 										}
 									},
 									"brandfolderAsset": null,
@@ -2730,7 +2882,12 @@
 			"pathname": "/application-services-hub/",
 			"contentfulId": "4TLQk20Tayywazhf6tBeC0",
 			"allowedHrefLangs": [
-				"en-US"
+				"en-US",
+				"zh-CN",
+				"zh-TW",
+				"ja-JP",
+				"ko-KR",
+				"zh-Hans-CN"
 			],
 			"baseURL": "https://www.cloudflare.com"
 		}
