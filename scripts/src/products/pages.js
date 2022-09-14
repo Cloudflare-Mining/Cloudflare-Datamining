@@ -169,8 +169,21 @@ const startLscpuIndex = logs.findIndex(log => log.line === '---start-lscpu---');
 const endLscpuIndex = logs.findIndex(log => log.line === '---end-lscpu---');
 if(startLscpuIndex && endLscpuIndex){
 	const lscpuLogs = logs.slice(startLscpuIndex + 1, endLscpuIndex);
-	const lscpu = lscpuLogs.map(log => log.line).join('\n').trim();
-	await fs.writeFile(path.resolve(dir, 'deployments-logs-lscpu.txt'), lscpu);
+	const cpuinfo = {};
+	for(const log of lscpuLogs){
+		const regex = /^(?<key>[\w()-\s]+):\s+(?<val>.*)$/;
+		const match = log.line.match(regex);
+		if(!match?.groups?.key || !match?.groups?.val){
+			continue;
+		}
+		// round a few things to prevent unstable diffs
+		if(match.groups.key === 'CPU MHz' || match.groups.key === 'BogoMIPS'){
+			cpuinfo[match.groups.key] = String(Math.round(Number.parseFloat(match.groups.val)));
+		}else{
+			cpuinfo[match.groups.key] = match.groups.val;
+		}
+	}
+	await fs.writeJSON(path.resolve(dir, 'deployments-logs-lscpu.json'), cpuinfo, {spaces: '\t'});
 }
 
 // get memtotal
