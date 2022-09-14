@@ -23511,7 +23511,12 @@
 						"api_key": [],
 						"api_email": []
 					}
-				]
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"#analytics:read"
+					]
+				}
 			}
 		},
 		"/zones/{identifier}/dns_analytics/report/bytime": {
@@ -23557,7 +23562,12 @@
 						"api_key": [],
 						"api_email": []
 					}
-				]
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"#analytics:read"
+					]
+				}
 			}
 		},
 		"/zones/{zone_identifier}/dnssec": {
@@ -25354,7 +25364,12 @@
 						"api_key": [],
 						"api_email": []
 					}
-				]
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"#analytics:read"
+					]
+				}
 			}
 		},
 		"/accounts/{account_identifier}/dns_firewall/{identifier}/dns_analytics/report/bytime": {
@@ -25408,7 +25423,12 @@
 						"api_key": [],
 						"api_email": []
 					}
-				]
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"#analytics:read"
+					]
+				}
 			}
 		},
 		"/accounts/{account_identifier}/virtual_dns/{identifier}/dns_analytics/report": {
@@ -25462,7 +25482,12 @@
 						"api_key": [],
 						"api_email": []
 					}
-				]
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"#analytics:read"
+					]
+				}
 			}
 		},
 		"/accounts/{account_identifier}/virtual_dns/{identifier}/dns_analytics/report/bytime": {
@@ -25516,7 +25541,12 @@
 						"api_key": [],
 						"api_email": []
 					}
-				]
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"#analytics:read"
+					]
+				}
 			}
 		},
 		"/zones/{identifier}/secondary_dns/incoming": {
