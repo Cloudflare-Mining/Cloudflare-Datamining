@@ -39,7 +39,7 @@ export const PolicyPermissionGroup = eg.object({
     label: eg.string,
     scopes: eg.string
   }),
-  permissions: eg.array(MembershipsPermission)
+  permissions: eg.array(MembershipsPermission).optional
 });
 
 const MembershipsScope = eg.object({
