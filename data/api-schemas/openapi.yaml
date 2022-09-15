@@ -4137,7 +4137,7 @@ components:
     components-schemas-rules:
       description: The rules in the ruleset
       items:
-        $ref: '#/components/schemas/ruleset-rules_components-schemas-rule'
+        $ref: '#/components/schemas/rules_components-schemas-rule'
       type: array
     components-schemas-ruleset:
       properties:
@@ -4508,8 +4508,6 @@ components:
       description: UUID of the tunnel's connection
       example: 1bedc50d-42b3-473c-b108-ff3d10c0d925
       maxLength: 36
-      minLength: 36
-      pattern: ^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$
       readOnly: true
       type: string
     connection_single_id_response:
@@ -4843,6 +4841,8 @@ components:
       type: object
     create_input_request:
       properties:
+        defaultCreator:
+          $ref: '#/components/schemas/live_input_default_creator'
         meta:
           $ref: '#/components/schemas/live_input_metadata'
         recording:
@@ -4952,13 +4952,13 @@ components:
       description: A rule
       properties:
         action:
-          $ref: '#/components/schemas/ruleset-rules_components-schemas-action'
+          $ref: '#/components/schemas/rules_components-schemas-action'
         action_parameters:
           $ref: '#/components/schemas/action_parameters'
         description:
-          $ref: '#/components/schemas/ruleset-rules_components-schemas-description'
+          $ref: '#/components/schemas/rules_components-schemas-description'
         enabled:
-          $ref: '#/components/schemas/ruleset-rules_components-schemas-enabled'
+          $ref: '#/components/schemas/rules_components-schemas-enabled-2'
         expression:
           $ref: '#/components/schemas/schemas-expression'
         logging:
@@ -10268,6 +10268,9 @@ components:
       description: The value of the item in a List.
       example: 8GE8721REF
       type: string
+    live_input_default_creator:
+      description: Sets the creator ID asssociated with this live input.
+      type: string
     live_input_identifier:
       description: A unique identifier for a live input.
       example: 66be4bf738797e01e1fca35a7bdecdcd
@@ -12090,8 +12093,12 @@ components:
         url:
           $ref: '#/components/schemas/output_url'
     output_enabled:
-      description: Indicates whether the output will be restreamed to when the live
-        input is connected
+      default: true
+      description: When enabled, live video streamed to the associated live input
+        will be sent to the output URL. When disabled, live video will not be sent
+        to the output URL, even when streaming to the associated live input. Use this
+        to control precisely when you start and stop simulcasting to specific destinations
+        like YouTube and Twitch.
       example: true
       type: boolean
     output_identifier:
@@ -15139,7 +15146,6 @@ components:
               type: string
             port:
               description: A port number to use for TCP/UDP overrides
-              example: 80
               type: integer
           type: object
         override_host:
@@ -15148,6 +15154,9 @@ components:
           type: string
         override_ips:
           description: Override matching DNS queries with this
+          example:
+          - 1.1.1.1
+          - 2.2.2.2
           items:
             description: IPv4 or IPv6 address
             example: 1.1.1.1
@@ -15290,6 +15299,11 @@ components:
       - $ref: '#/components/schemas/rule_properties'
       type: object
     rules_components-schemas-action:
+      description: The action to take when the rule matches
+      example: execute
+      pattern: ^[a-z_]+$
+      type: string
+    rules_components-schemas-action-2:
       description: The action to preform when the associated traffic, identity, and
         device posture expressions are either absent or evaluate to 'true'
       enum:
@@ -15308,6 +15322,11 @@ components:
       example: allow
       type: string
     rules_components-schemas-description:
+      default: ""
+      description: A description of the rule
+      example: Execute the OWASP ruleset when the IP address is not 1.1.1.1
+      type: string
+    rules_components-schemas-description-2:
       description: The description of the Rule
       example: Block the bad websites based on host name
       type: string
@@ -15326,9 +15345,18 @@ components:
       example: true
       type: boolean
     rules_components-schemas-enabled-2:
+      default: "true"
+      description: Whether the rule should be run
+      example: true
+      type: boolean
+    rules_components-schemas-enabled-3:
       description: Set if the rule is enabled
       example: true
       type: boolean
+    rules_components-schemas-id:
+      description: The ID of the rule
+      example: 3a03d665bac047339bb530ecb439a90d
+      type: string
     rules_components-schemas-identifier:
       example: 699d98642c564d2e855e9661899b7252
     rules_components-schemas-name:
@@ -15348,20 +15376,44 @@ components:
             items:
               $ref: '#/components/schemas/rules_components-schemas-rules'
             type: array
-    rules_components-schemas-rules:
+    rules_components-schemas-rule:
+      description: The rule
       properties:
         action:
           $ref: '#/components/schemas/rules_components-schemas-action'
+        action_parameters:
+          $ref: '#/components/schemas/action_parameters'
+        description:
+          $ref: '#/components/schemas/rules_components-schemas-description'
+        enabled:
+          $ref: '#/components/schemas/rules_components-schemas-enabled-2'
+        expression:
+          $ref: '#/components/schemas/schemas-expression'
+        id:
+          $ref: '#/components/schemas/rules_components-schemas-id'
+        last_updated:
+          $ref: '#/components/schemas/schemas-last_updated'
+        logging:
+          $ref: '#/components/schemas/logging'
+        ref:
+          $ref: '#/components/schemas/components-schemas-ref'
+        version:
+          $ref: '#/components/schemas/schemas-version'
+      type: object
+    rules_components-schemas-rules:
+      properties:
+        action:
+          $ref: '#/components/schemas/rules_components-schemas-action-2'
         created_at:
           $ref: '#/components/schemas/timestamp'
         deleted_at:
           $ref: '#/components/schemas/deleted_at'
         description:
-          $ref: '#/components/schemas/rules_components-schemas-description'
+          $ref: '#/components/schemas/rules_components-schemas-description-2'
         device_posture:
           $ref: '#/components/schemas/device_posture'
         enabled:
-          $ref: '#/components/schemas/rules_components-schemas-enabled-2'
+          $ref: '#/components/schemas/rules_components-schemas-enabled-3'
         filters:
           $ref: '#/components/schemas/schemas-filters'
         id:
@@ -15434,49 +15486,6 @@ components:
           $ref: '#/components/schemas/components-schemas-rules'
         version:
           $ref: '#/components/schemas/version'
-      type: object
-    ruleset-rules_components-schemas-action:
-      description: The action to take when the rule matches
-      example: execute
-      pattern: ^[a-z_]+$
-      type: string
-    ruleset-rules_components-schemas-description:
-      default: ""
-      description: A description of the rule
-      example: Execute the OWASP ruleset when the IP address is not 1.1.1.1
-      type: string
-    ruleset-rules_components-schemas-enabled:
-      default: "true"
-      description: Whether the rule should be run
-      example: true
-      type: boolean
-    ruleset-rules_components-schemas-id:
-      description: The ID of the rule
-      example: 3a03d665bac047339bb530ecb439a90d
-      type: string
-    ruleset-rules_components-schemas-rule:
-      description: The rule
-      properties:
-        action:
-          $ref: '#/components/schemas/ruleset-rules_components-schemas-action'
-        action_parameters:
-          $ref: '#/components/schemas/action_parameters'
-        description:
-          $ref: '#/components/schemas/ruleset-rules_components-schemas-description'
-        enabled:
-          $ref: '#/components/schemas/ruleset-rules_components-schemas-enabled'
-        expression:
-          $ref: '#/components/schemas/schemas-expression'
-        id:
-          $ref: '#/components/schemas/ruleset-rules_components-schemas-id'
-        last_updated:
-          $ref: '#/components/schemas/schemas-last_updated'
-        logging:
-          $ref: '#/components/schemas/logging'
-        ref:
-          $ref: '#/components/schemas/components-schemas-ref'
-        version:
-          $ref: '#/components/schemas/schemas-version'
       type: object
     ruleset_response:
       allOf:
@@ -16316,6 +16325,8 @@ components:
     schemas-filters:
       description: The protocol or layer to evaluate the traffic, identity, and device
         posture expressions
+      example:
+      - http
       items:
         description: The protocol or layer to use
         enum:
@@ -19578,7 +19589,8 @@ components:
       title: Traditional (deny) WAF rule
     traffic:
       description: The wirefilter expression to be used for traffic matching
-      example: http.request.host == "example.com"
+      example: http.request.uri matches ".*a/partial/uri.*" and http.request.host
+        in $01302951-49f9-47c9-a400-0297e60b6a10
       type: string
     traffic_type:
       default: direct
@@ -19808,8 +19820,6 @@ components:
       description: UUID of the tunnel
       example: f70ff985-a4ef-4643-bbbc-4a0ed4fc8415
       maxLength: 36
-      minLength: 36
-      pattern: ^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$
       readOnly: true
       type: string
     tunnel_modified_response:
@@ -19973,6 +19983,8 @@ components:
       type: object
     update_input_request:
       properties:
+        defaultCreator:
+          $ref: '#/components/schemas/live_input_default_creator'
         meta:
           $ref: '#/components/schemas/live_input_metadata'
         recording:
@@ -20820,8 +20832,6 @@ components:
       description: UUID of the virtual network
       example: f70ff985-a4ef-4643-bbbc-4a0ed4fc8415
       maxLength: 36
-      minLength: 36
-      pattern: ^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$
       readOnly: true
       type: string
     vnet_name:
@@ -21863,7 +21873,7 @@ paths:
         name: rule_id
         required: true
         schema:
-          $ref: '#/components/schemas/ruleset-rules_components-schemas-id'
+          $ref: '#/components/schemas/rules_components-schemas-id'
       - in: path
         name: ruleset_id
         required: true
@@ -21910,7 +21920,7 @@ paths:
         name: rule_id
         required: true
         schema:
-          $ref: '#/components/schemas/ruleset-rules_components-schemas-id'
+          $ref: '#/components/schemas/rules_components-schemas-id'
       - in: path
         name: ruleset_id
         required: true
@@ -23542,6 +23552,9 @@ paths:
       - api_email: []
         api_key: []
       summary: Table
+      x-cfPermissionsRequired:
+        enum:
+        - '#analytics:read'
   /accounts/{account_identifier}/dns_firewall/{identifier}/dns_analytics/report/bytime:
     get:
       description: Retrieves a list of aggregate metrics grouped by time interval.
@@ -23586,6 +23599,9 @@ paths:
       - api_email: []
         api_key: []
       summary: By Time
+      x-cfPermissionsRequired:
+        enum:
+        - '#analytics:read'
   /accounts/{account_identifier}/email/routing/addresses:
     get:
       description: Lists existing destination addresses.
@@ -30494,74 +30510,12 @@ paths:
     put:
       description: Write a value identified by a key. Use URL-encoding to use special
         characters (e.g. :, !, %) in the key name. Body should be the value to be
-        stored. Existing values and expirations will be overwritten. If neither `expiration`
-        nor `expiration_ttl` is specified, the key-value pair will never expire. If
-        both are set, `expiration_ttl` is used and `expiration` is ignored.
-      operationId: workers-kv-namespace-write-key-value-pair
-      parameters:
-      - in: path
-        name: key_name
-        required: true
-        schema:
-          $ref: '#/components/schemas/key_name'
-      - in: path
-        name: namespace_identifier
-        required: true
-        schema:
-          $ref: '#/components/schemas/namespace_identifier'
-      - in: path
-        name: account_identifier
-        required: true
-        schema:
-          $ref: '#/components/schemas/common_components-schemas-identifier'
-      requestBody:
-        content:
-          text/plain:
-            schema:
-              $ref: '#/components/schemas/kv_components-schemas-value'
-        required: true
-      responses:
-        4xx:
-          content:
-            application/json:
-              schema:
-                allOf:
-                - $ref: '#/components/schemas/api-response-single'
-                - $ref: '#/components/schemas/api-response-common-failure'
-          description: Write key-value pair response failure
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/api-response-single'
-          description: Write key-value pair response
-      security:
-      - api_email: []
-        api_key: []
-      summary: Write key-value pair
-      x-cfPermissionsRequired:
-        enum:
-        - com.cloudflare.edge.storage.kv.key.update
-  ? /accounts/{account_identifier}/storage/kv/namespaces/{namespace_identifier}/values/{key_name}?expiration={expiration}&expiration_ttl={expiration_ttl}
-  : put:
-      description: Write a value identified by a key. Use URL-encoding to use special
-        characters (e.g. :, !, %) in the key name. Body should be the value to be
         stored along with json metadata to be associated with the key/value pair.
         Existing values, expirations and metadata will be overwritten. If neither
         `expiration` nor `expiration_ttl` is specified, the key-value pair will never
         expire. If both are set, `expiration_ttl` is used and `expiration` is ignored.
       operationId: workers-kv-namespace-write-key-value-pair-with-metadata
       parameters:
-      - in: path
-        name: expiration_ttl
-        required: true
-        schema:
-          $ref: '#/components/schemas/expiration_ttl'
-      - in: path
-        name: expiration
-        required: true
-        schema:
-          $ref: '#/components/schemas/expiration'
       - in: path
         name: key_name
         required: true
@@ -31287,8 +31241,8 @@ paths:
       summary: Delete signing keys
   /accounts/{account_identifier}/stream/live_inputs:
     get:
-      description: Lists the live inputs created for an account. To get the URL used
-        for streaming, request a single live input.
+      description: Lists the live inputs created for an account. To get the credentials
+        needed to stream to a specific live input, request a single live input.
       operationId: stream-live-inputs-list-live-inputs
       parameters:
       - in: path
@@ -31316,8 +31270,9 @@ paths:
         api_key: []
       summary: List live inputs
     post:
-      description: Creates a live input to use for live streaming.
-      operationId: stream-live-inputs-create-live-inputs
+      description: Creates a live input, and returns credentials that you or your
+        users can use to stream live video to Cloudflare Stream.
+      operationId: stream-live-inputs-create-a-live-input
       parameters:
       - in: path
         name: account_identifier
@@ -31338,22 +31293,22 @@ paths:
                 allOf:
                 - $ref: '#/components/schemas/live_input_response_single'
                 - $ref: '#/components/schemas/api-response-common-failure'
-          description: Create live inputs response failure
+          description: Create a live input response failure
         "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/live_input_response_single'
-          description: Create live inputs response
+          description: Create a live input response
       security:
       - api_email: []
         api_key: []
-      summary: Create live inputs
+      summary: Create a live input
   /accounts/{account_identifier}/stream/live_inputs/{live_input_identifier}:
     delete:
       description: Prevents a live input from being streamed to and makes the live
-        input inaccessible to any future API calls or RTMPS transmissions.
-      operationId: stream-live-inputs-delete-live-inputs
+        input inaccessible to any future API calls.
+      operationId: stream-live-inputs-delete-a-live-input
       parameters:
       - in: path
         name: live_input_identifier
@@ -31373,18 +31328,18 @@ paths:
         4xx:
           content:
             application/json: {}
-          description: Delete live inputs response failure
+          description: Delete a live input response failure
         "200":
           content:
             application/json: {}
-          description: Delete live inputs response
+          description: Delete a live input response
       security:
       - api_email: []
         api_key: []
-      summary: Delete live inputs
+      summary: Delete a live input
     get:
-      description: Lists details about a single live input.
-      operationId: stream-live-inputs-list-a-single-live-input
+      description: Retrieves details of an existing live input.
+      operationId: stream-live-inputs-retrieve-a-live-input
       parameters:
       - in: path
         name: live_input_identifier
@@ -31404,20 +31359,20 @@ paths:
                 allOf:
                 - $ref: '#/components/schemas/live_input_response_single'
                 - $ref: '#/components/schemas/api-response-common-failure'
-          description: List a single live input  response failure
+          description: Retrieve a live input response failure
         "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/live_input_response_single'
-          description: List a single live input  response
+          description: Retrieve a live input response
       security:
       - api_email: []
         api_key: []
-      summary: 'List a single live input '
+      summary: Retrieve a live input
     put:
-      description: Updates information for a single live input.
-      operationId: stream-live-inputs-update-a-single-live-input
+      description: Updates a specified live input.
+      operationId: stream-live-inputs-update-a-live-input
       parameters:
       - in: path
         name: live_input_identifier
@@ -31443,21 +31398,21 @@ paths:
                 allOf:
                 - $ref: '#/components/schemas/live_input_response_single'
                 - $ref: '#/components/schemas/api-response-common-failure'
-          description: Update a single live input response failure
+          description: Update a live input response failure
         "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/live_input_response_single'
-          description: Update a single live input response
+          description: Update a live input response
       security:
       - api_email: []
         api_key: []
-      summary: Update a single live input
+      summary: Update a live input
   /accounts/{account_identifier}/stream/live_inputs/{live_input_identifier}/outputs:
     get:
-      description: Retrieves a list of outputs associated with a live input.
-      operationId: stream-live-inputs-list-outputs-associated-with-a-live-input
+      description: Retrieves all outputs associated with a specified live input.
+      operationId: stream-live-inputs-list-all-outputs-associated-with-a-specified-live-input
       parameters:
       - in: path
         name: live_input_identifier
@@ -31477,20 +31432,23 @@ paths:
                 allOf:
                 - $ref: '#/components/schemas/output_response_collection'
                 - $ref: '#/components/schemas/api-response-common-failure'
-          description: List outputs associated with a live input response failure
+          description: List all outputs associated with a specified live input response
+            failure
         "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/output_response_collection'
-          description: List outputs associated with a live input response
+          description: List all outputs associated with a specified live input response
       security:
       - api_email: []
         api_key: []
-      summary: List outputs associated with a live input
+      summary: List all outputs associated with a specified live input
     post:
-      description: Creates a new output that a live input will use for streaming.
-      operationId: stream-live-inputs-add-outputs-to-a-live-input
+      description: Creates a new output that can be used to simulcast or restream
+        live video to other RTMP or SRT destinations. Outputs are always linked to
+        a specific live input — one live input can have many outputs.
+      operationId: stream-live-inputs-create-a-new-output,-connected-to-a-live-input
       parameters:
       - in: path
         name: live_input_identifier
@@ -31516,21 +31474,21 @@ paths:
                 allOf:
                 - $ref: '#/components/schemas/output_response_single'
                 - $ref: '#/components/schemas/api-response-common-failure'
-          description: Add outputs to a live input response failure
+          description: Create a new output, connected to a live input response failure
         "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/output_response_single'
-          description: Add outputs to a live input response
+          description: Create a new output, connected to a live input response
       security:
       - api_email: []
         api_key: []
-      summary: Add outputs to a live input
+      summary: Create a new output, connected to a live input
   /accounts/{account_identifier}/stream/live_inputs/{live_input_identifier}/outputs/{output_identifier}:
     delete:
-      description: Removes an output from a live input.
-      operationId: stream-live-inputs-remove-an-output-from-a-live-input
+      description: Deletes an output and removes it from the associated live input.
+      operationId: stream-live-inputs-delete-an-output
       parameters:
       - in: path
         name: output_identifier
@@ -31555,18 +31513,18 @@ paths:
         4xx:
           content:
             application/json: {}
-          description: Remove an output from a live input response failure
+          description: Delete an output response failure
         "200":
           content:
             application/json: {}
-          description: Remove an output from a live input response
+          description: Delete an output response
       security:
       - api_email: []
         api_key: []
-      summary: Remove an output from a live input
+      summary: Delete an output
     put:
-      description: Updates an output's details associated with a live input.
-      operationId: stream-live-inputs-update-a-single-output-on-a-live-input
+      description: Updates the state of an output.
+      operationId: stream-live-inputs-update-an-output
       parameters:
       - in: path
         name: output_identifier
@@ -31597,17 +31555,17 @@ paths:
                 allOf:
                 - $ref: '#/components/schemas/output_response_single'
                 - $ref: '#/components/schemas/api-response-common-failure'
-          description: Update a single output on a live input response failure
+          description: Update an output response failure
         "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/output_response_single'
-          description: Update a single output on a live input response
+          description: Update an output response
       security:
       - api_email: []
         api_key: []
-      summary: Update a single output on a live input
+      summary: Update an output
   /accounts/{account_identifier}/stream/watermarks:
     get:
       description: Lists all watermark profiles for an account.
@@ -32111,7 +32069,12 @@ paths:
           $ref: '#/components/schemas/common_components-schemas-identifier'
       requestBody:
         content:
-          application/json: {}
+          application/json:
+            schema:
+              properties:
+                virtual_network_id:
+                  $ref: '#/components/schemas/vnet_id'
+              type: object
         required: true
       responses:
         4xx:
@@ -32881,6 +32844,9 @@ paths:
       - api_email: []
         api_key: []
       summary: Table
+      x-cfPermissionsRequired:
+        enum:
+        - '#analytics:read'
   /accounts/{account_identifier}/virtual_dns/{identifier}/dns_analytics/report/bytime:
     get:
       description: Retrieves a list of aggregate metrics grouped by time interval.
@@ -32925,6 +32891,9 @@ paths:
       - api_email: []
         api_key: []
       summary: By Time
+      x-cfPermissionsRequired:
+        enum:
+        - '#analytics:read'
   /accounts/{account_identifier}/workers/account-settings:
     get:
       description: Fetches Worker Account Settings for an account.
@@ -38352,13 +38321,13 @@ paths:
             schema:
               properties:
                 action:
-                  $ref: '#/components/schemas/rules_components-schemas-action'
+                  $ref: '#/components/schemas/rules_components-schemas-action-2'
                 description:
-                  $ref: '#/components/schemas/rules_components-schemas-description'
+                  $ref: '#/components/schemas/rules_components-schemas-description-2'
                 device_posture:
                   $ref: '#/components/schemas/device_posture'
                 enabled:
-                  $ref: '#/components/schemas/rules_components-schemas-enabled-2'
+                  $ref: '#/components/schemas/rules_components-schemas-enabled-3'
                 filters:
                   $ref: '#/components/schemas/schemas-filters'
                 identity:
@@ -38485,13 +38454,13 @@ paths:
             schema:
               properties:
                 action:
-                  $ref: '#/components/schemas/rules_components-schemas-action'
+                  $ref: '#/components/schemas/rules_components-schemas-action-2'
                 description:
-                  $ref: '#/components/schemas/rules_components-schemas-description'
+                  $ref: '#/components/schemas/rules_components-schemas-description-2'
                 device_posture:
                   $ref: '#/components/schemas/device_posture'
                 enabled:
-                  $ref: '#/components/schemas/rules_components-schemas-enabled-2'
+                  $ref: '#/components/schemas/rules_components-schemas-enabled-3'
                 filters:
                   $ref: '#/components/schemas/schemas-filters'
                 identity:
@@ -43588,6 +43557,9 @@ paths:
       - api_email: []
         api_key: []
       summary: Table
+      x-cfPermissionsRequired:
+        enum:
+        - '#analytics:read'
   /zones/{identifier}/dns_analytics/report/bytime:
     get:
       description: Retrieves a list of aggregate metrics grouped by time interval.
@@ -43627,6 +43599,9 @@ paths:
       - api_email: []
         api_key: []
       summary: By Time
+      x-cfPermissionsRequired:
+        enum:
+        - '#analytics:read'
   /zones/{identifier}/load_balancers:
     get:
       description: List configured load balancers
@@ -45522,7 +45497,7 @@ paths:
         name: rule_id
         required: true
         schema:
-          $ref: '#/components/schemas/ruleset-rules_components-schemas-id'
+          $ref: '#/components/schemas/rules_components-schemas-id'
       - in: path
         name: ruleset_id
         required: true
@@ -45569,7 +45544,7 @@ paths:
         name: rule_id
         required: true
         schema:
-          $ref: '#/components/schemas/ruleset-rules_components-schemas-id'
+          $ref: '#/components/schemas/rules_components-schemas-id'
       - in: path
         name: ruleset_id
         required: true
@@ -47225,10 +47200,10 @@ paths:
         enum:
         - '#ssl:read'
       x-cfPlanAvailability:
-        business: false
+        business: true
         enterprise: true
-        free: false
-        pro: false
+        free: true
+        pro: true
     post:
       description: Add a new custom hostname and request that an SSL certificate be
         issued for it. One of three validation methods—http, txt, email—should be
@@ -47281,10 +47256,10 @@ paths:
         enum:
         - '#ssl:edit'
       x-cfPlanAvailability:
-        business: false
+        business: true
         enterprise: true
-        free: false
-        pro: false
+        free: true
+        pro: true
   /zones/{zone_identifier}/custom_hostnames/{identifier}:
     delete:
       operationId: custom-hostname-for-a-zone-delete-custom-hostname-(-and-any-issued-ssl-certificates)
@@ -47333,10 +47308,10 @@ paths:
         enum:
         - '#ssl:edit'
       x-cfPlanAvailability:
-        business: false
+        business: true
         enterprise: true
-        free: false
-        pro: false
+        free: true
+        pro: true
     get:
       operationId: custom-hostname-for-a-zone-custom-hostname-details
       parameters:
@@ -47373,10 +47348,10 @@ paths:
         enum:
         - '#ssl:read'
       x-cfPlanAvailability:
-        business: false
+        business: true
         enterprise: true
-        free: false
-        pro: false
+        free: true
+        pro: true
     patch:
       description: Modify SSL configuration for a custom hostname. When sent with
         SSL config that matches existing config, used to indicate that hostname should
@@ -47432,10 +47407,10 @@ paths:
         enum:
         - '#ssl:edit'
       x-cfPlanAvailability:
-        business: false
+        business: true
         enterprise: true
-        free: false
-        pro: false
+        free: true
+        pro: true
   /zones/{zone_identifier}/custom_hostnames/fallback_origin:
     delete:
       operationId: custom-hostname-fallback-origin-for-a-zone-delete-fallback-origin-for-custom-hostnames
@@ -47472,10 +47447,10 @@ paths:
         enum:
         - '#ssl:edit'
       x-cfPlanAvailability:
-        business: false
+        business: true
         enterprise: true
-        free: false
-        pro: false
+        free: true
+        pro: true
     get:
       operationId: custom-hostname-fallback-origin-for-a-zone-get-fallback-origin-for-custom-hostnames
       parameters:
@@ -47507,10 +47482,10 @@ paths:
         enum:
         - '#ssl:read'
       x-cfPlanAvailability:
-        business: false
+        business: true
         enterprise: true
-        free: false
-        pro: false
+        free: true
+        pro: true
     put:
       operationId: custom-hostname-fallback-origin-for-a-zone-update-fallback-origin-for-custom-hostnames
       parameters:
@@ -47553,10 +47528,10 @@ paths:
         enum:
         - '#ssl:edit'
       x-cfPlanAvailability:
-        business: false
+        business: true
         enterprise: true
-        free: false
-        pro: false
+        free: true
+        pro: true
   /zones/{zone_identifier}/custom_ns:
     get:
       operationId: account-level-custom-nameservers-usage-for-a-zone-get-account-custom-nameserver-related-zone-metadata
