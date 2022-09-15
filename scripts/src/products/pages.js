@@ -186,13 +186,25 @@ if(startLscpuIndex && endLscpuIndex){
 	await fs.writeJSON(path.resolve(dir, 'deployments-logs-lscpu.json'), cpuinfo, {spaces: '\t'});
 }
 
-// get memtotal
-const startMemtotalIndex = logs.findIndex(log => log.line === '---start-memtotal---');
-const endMemtotalIndex = logs.findIndex(log => log.line === '---end-memtotal---');
+// get memory
+const startMemtotalIndex = logs.findIndex(log => log.line === '---start-memory---');
+const endMemtotalIndex = logs.findIndex(log => log.line === '---end-memory---');
 if(startMemtotalIndex && endMemtotalIndex){
-	const memtotalLogs = logs.slice(startMemtotalIndex + 1, endMemtotalIndex);
-	const memtotal = memtotalLogs.map(log => log.line).join('\n').trim();
-	await fs.writeFile(path.resolve(dir, 'deployments-logs-memtotal.txt'), memtotal);
+	const memLogs = logs.slice(startMemtotalIndex + 1, endMemtotalIndex);
+	const memInfo = {};
+	for(const log of memLogs){
+		const line = log.line.split(':');
+		if(line.length !== 2){
+			continue;
+		}
+		memInfo[line[0]] = line[1].trim();
+	}
+	const wantedKeys = new Set(['MemTotal', 'SwapTotal']);
+	const filteredMemInfo = Object.keys(memInfo).filter(key => wantedKeys.has(key)).reduce((obj, key) => {
+		obj[key] = memInfo[key];
+		return obj;
+	}, {});
+	await fs.writeJson(path.resolve(dir, 'deployments-logs-memory.json'), filteredMemInfo, {spaces: '\t'});
 }
 
 // delete all previous deployments
