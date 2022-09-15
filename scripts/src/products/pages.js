@@ -90,7 +90,7 @@ if(!results['deployments-create']?.result?.id){
 }
 
 // get and parse logs for deploy, after deployed
-const maxAttempts = 30;
+const maxAttempts = 60;
 let waiting = true;
 let attempts = 0;
 
@@ -105,13 +105,12 @@ while(waiting){
 		continue;
 	}
 	const deploymentJson = await deploymentRes.json();
-	if(deploymentJson?.result?.latest_stage?.name === 'deploy'){
-		if(deploymentJson?.result?.latest_stage?.status === 'success'){
-			waiting = false;
-		}else if(deploymentJson?.result?.latest_stage?.status === 'failure'){
-			throw new Error('Deployment failed, exiting.');
-		}
+	if(deploymentJson?.result?.latest_stage?.status === 'failure'){
+		throw new Error('Deployment failed, exiting.');
+	}else if(deploymentJson?.result?.latest_stage?.name === 'deploy' && deploymentJson?.result?.latest_stage?.status === 'success'){
+		waiting = false;
 	}
+
 	console.log('Still deploying...', deploymentJson?.result?.latest_stage?.name, deploymentJson?.result?.latest_stage?.status);
 	await sleep(5000);
 }
@@ -205,6 +204,50 @@ if(startMemtotalIndex && endMemtotalIndex){
 		return obj;
 	}, {});
 	await fs.writeJson(path.resolve(dir, 'deployments-logs-memory.json'), filteredMemInfo, {spaces: '\t'});
+}
+
+// get os-release
+const startOsReleaseIndex = logs.findIndex(log => log.line === '---start-os-release---');
+const endOsReleaseIndex = logs.findIndex(log => log.line === '---end-os-release---');
+if(startOsReleaseIndex && endOsReleaseIndex){
+	const osReleaseLogs = logs.slice(startOsReleaseIndex + 1, endOsReleaseIndex);
+	const osRelease = {};
+	for(const log of osReleaseLogs){
+		const line = log.line.split('=');
+		if(line.length !== 2){
+			continue;
+		}
+		osRelease[line[0]] = line.slice(1).join('=');
+	}
+	await fs.writeJson(path.resolve(dir, 'deployments-logs-os-release.json'), osRelease, {spaces: '\t'});
+}
+
+// get dpkg
+const startDpkgIndex = logs.findIndex(log => log.line === '---start-dpkg---');
+const endDpkgIndex = logs.findIndex(log => log.line === '---end-dpkg---');
+if(startDpkgIndex && endDpkgIndex){
+	const dpkgLogs = logs.slice(startDpkgIndex + 1, endDpkgIndex);
+	const dpkg = {};
+	for(const log of dpkgLogs){
+		const line = log.line.split('#;SPLIT;#');
+		console.log(line);
+		if(line.length < 3){
+			continue;
+		}
+		dpkg[line[0]] = {
+			version: line[1],
+			short_description: line[2],
+			author: line[3],
+		};
+	}
+	const sorted = Object.keys(dpkg).sort().reduce(
+		(obj, key) => {
+			obj[key] = dpkg[key];
+			return obj;
+		},
+		{},
+	);
+	await fs.writeJson(path.resolve(dir, 'deployments-logs-dpkg.json'), sorted, {spaces: '\t'});
 }
 
 // delete all previous deployments
