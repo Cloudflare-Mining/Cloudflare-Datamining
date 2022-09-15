@@ -123,7 +123,7 @@ conntrack v1.4.5 (conntrack-tools): 1 flow entries have been shown.
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2021/03/image3-3.png" class="kg-image"></figure>
 	<p>With <a href="https://github.com/osandov/drgn" target="_blank">drgn</a>, a programmable C debugger tailored for the Linux kernel, we can locate the Netfilter state in kernel memory, and walk its contents relatively easily. Given we know what we are looking for.</p>
 	<!--kg-card-begin: markdown-->
-	<pre><code class="language-ssh">[v[email protected] ~]$ sudo drgn
+	<pre><code class="language-ssh">[[email protected] ~]$ sudo drgn
 drgn 0.0.8 (using Python 3.9.1, without libkdumpfile)
 …
 &gt;&gt;&gt; pre_routing_hook = prog['init_net'].nf.hooks_ipv4[0]
