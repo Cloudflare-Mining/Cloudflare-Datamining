@@ -1,0 +1,398 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image5-20.png" class="kg-image" alt="애플리케이션 보안: Cloudflare의 관점"></figure>
+	<p>개발자, 블로거, 비즈니스 소유자, 대기업을 비롯한 다양한 주체들이 Cloudflare를 사용하여 애플리케이션을 보호하고, 제공하며, 적절한 성능을 유지합니다.</p>
+	<p>Cloudflare는 이들이 목표를 달성할 수 있도록 지난 12여 년간 수많은 인터넷 자산을 보호할 수 있는 스마트 네트워크를 구축했습니다. 2022년 3월에 <a href="https://w3techs.com/technologies/details/cn-cloudflare" target="_blank">W3Techs</a>는 다음과 같이 보도했습니다.</p>
+	<blockquote><em>“역방향 프록시 서비스를 사용하는 것으로 알려진 전체 웹 사이트의 80.6%에서 Cloudflare를 사용합니다. 이는 전체 웹 사이트의 19.7%입니다”</em></blockquote>
+	<p>웹을 크롤링하여 도입률을 모니터링하는 공급자인 Netcraft는 최신 <a href="https://news.netcraft.com/archives/2022/02/28/february-2022-web-server-survey.html" target="_blank">웹 서버 조사(2022년 2월)</a>에서 그 숫자가 활성 웹사이트 2,000만 개 이상이라고 추정했습니다.</p>
+	<blockquote><em>“Cloudflare는 트래픽이 가장 많은 웹 사이트 100만 개 중에서 고객이 지속적으로 늘어 눈에 띄게 성장했습니다. 3,200개의 사이트가 추가되어 시장 점유율이 19.4%까지 상승했습니다”</em></blockquote>
+	<p>Cloudflare는 자사에서 보호하는 폭넓고 다양한 웹 사이트, 이들과 상호작용하는 수십억 개의 브라우저와 기기 덕분에 인터넷에서 끊임없이 변화하는 애플리케이션 보안 트렌드에 대한 고유한 인사이트를 얻을 수 있습니다. 이 게시물에서는 Cloudflare 네트워크를 통과하는 초당 3,200만 건의 HTTP 요청에서 수집한 몇 가지 인사이트를 공유합니다.</p>
+	<h2 id="-">정의</h2>
+	<p>데이터를 살펴보기에 앞서 사용할 용어를 정의하는 것이 도움이 되겠습니다. 이 게시물에서는 다음과 같은 용어를 사용합니다.</p>
+	<ul>
+		<li><strong>완화된 트래픽</strong>: Cloudflare 플랫폼에서 적용한 "종료" 작업이 있는 대략적 HTTP* 요청. 여기에는 <code>BLOCK</code>, <code>CHALLENGE</code>(예: 캡차, JavaScript 기반 질문) 등이 포함됩니다. <code>LOG</code>, <code>SKIP</code>, <code>ALLOW</code> 작업이 적용된 요청은 포함하지 않습니다.</li>
+		<li><strong>봇 트래픽/자동화된 트래픽</strong>: Cloudflare의 <a href="https://www.cloudflare.com/products/bot-management/" target="_blank">봇 관리</a> 시스템에서 봇이 생성한 것으로 확인된 모든 HTTP 요청. 여기에는 <a href="https://developers.cloudflare.com/bots/concepts/bot-score/" target="_blank">1~29</a>점 사이의 요청이 포함됩니다.</li>
+		<li><strong>API 트래픽</strong>: 응답 콘텐츠 유형이 <code>XML</code>, <code>JSON</code>, <code>gRPC</code> 등인 모든 HTTP 요청. 완화된 요청과 같이 응답 콘텐츠 유형을 알 수 없는 경우 대신 그에 준하는 <code>Accept</code> 콘텐츠 유형(사용자 에이전트가 지정)을 사용합니다. 후자의 경우, API 트래픽이 완전히 반영되지 않지만, 이 인사이트에서는 여전히 적절한 대표성을 제공합니다.</li>
+	</ul>
+	<p>별도의 언급이 없을 경우, 이 게시물의 평가 기간은 2021년 12월 1일부터 2022년 3월 1일까지 3개월입니다.</p>
+	<p>마지막으로 데이터는 Cloudflare 네트워크에서 관찰된 트래픽만을 기준으로 계산하며, 인터넷 전체의 HTTP 트래픽 패턴을 대표하지 않을 수도 있습니다.</p>
+	<!--kg-card-begin: markdown-->
+	<p><small>*HTTP 트래픽은 HTTP와 HTTPS를 모두 의미합니다.</small></p>
+	<!--kg-card-end: markdown-->
+	<h2 id="--1">전역 트래픽 인사이트</h2>
+	<p>먼저, Cloudflare 네트워크에서 프록시 설정된 모든 HTTP 요청에서 완화된 트래픽을 살펴볼 것입니다. 그러면 봇 트래픽, API 트래픽 등의 특정한 트래픽 유형을 자세히 살펴보기 전에 좋은 기준으로 삼을 수 있습니다.</p>
+	<h3 id="-cloudflare-http-8-">전체 Cloudflare HTTP 트래픽의 8%가 완화됨</h3>
+	<p>Cloudflare는 평균적으로 초당 3,200만 건의 HTTP 요청을 프록시 설정하며 초당 최대 4,400만 건의 HTTP 요청을 프록시 설정하기도 합니다. 전체적으로, Cloudflare 전역 네트워크에서 초당 최대 250만 건의 요청이 완화되어 캐시 또는 원본 서버에 도달하지 않습니다. 따라서 고객의 대역폭과 컴퓨팅 성능은 깨끗한 트래픽에만 사용됩니다.</p>
+	<p>Cloudflare를 이용하는 사이트 소유자는 원치 않는 트래픽이나 악의적 트래픽을 완화하는 도구에 액세스하고, 요청이 깨끗한 것으로 확인된 경우에만 애플리케이션에 대한 액세스를 허용합니다. 이 작업은 완전 관리형 주요 기능(예: <a href="https://www.cloudflare.com/ddos/" target="_blank">DDoS 완화</a>, <a href="https://www.cloudflare.com/waf/" target="_blank">WAF</a> 관리형 규칙 세트, 스키마 유효성 검사)과 사용자가 트래픽 차단을 위한 자체 필터를 정의할 수 있는 사용자 설정 규칙을 사용하여 수행할 수 있습니다.</p>
+	<p>트래픽을 완화한 상위 5개 Cloudflare 주요 기능(소스)을 보면, 각 Cloudflare 주요 기능이 고객 사이트와 애플리케이션을 온라인 상태로 유지하고 보호하는 데 얼마나 기여하는지 명확히 알 수 있습니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image7-1.png" class="kg-image" title="Chart"></figure>
+	<p>참고 표:</p>
+	<!--kg-card-begin: markdown-->
+	<style>
+		table {
+			width: 100%;
+		}
+	</style>
+	<table>
+		<thead>
+			<tr>
+				<th>소스</th>
+				<th>백분율 %</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>계층 7 DDoS 완화</td>
+				<td>66.0%</td>
+			</tr>
+			<tr>
+				<td>사용자 지정 WAF 규칙</td>
+				<td>19.0%</td>
+			</tr>
+			<tr>
+				<td>속도 제한 (Rate Limiting)</td>
+				<td>10.5%</td>
+			</tr>
+			<tr>
+				<td>IP 위협 평판</td>
+				<td>2.5%</td>
+			</tr>
+			<tr>
+				<td>관리형 WAF 규칙</td>
+				<td>1.5%</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<p>각 완화 소스를 하나씩 살펴보겠습니다.</p>
+	<ul>
+		<li><strong>계층 7 DDoS 완화</strong>는, 당연하겠지만, 총 개수 기준으로 완화된 HTTP 요청에 가장 많이 기여하는 기능입니다(전체 66%). Cloudflare 계층 7 DDoS 규칙은 완전 관리형이고 사용자가 구성할 필요는 없습니다. <a href="https://blog.cloudflare.com/meris-botnet/">Meris 봇넷</a>, <a href="https://blog.cloudflare.com/ko-kr/cloudflare-blocks-an-almost-2-tbps-multi-vector-ddos-attack-ko-kr/">Mirai 봇넷</a>과 같이 알려진 공격 도구로 생성된 공격을 포함한 여러 가지 HTTP DDoS 공격을 자동으로 감지합니다. 기본적으로, 볼류메트릭 DDoS 공격은 수많은 악의적 트래픽을 만들어냅니다!</li>
+		<li><strong>사용자 설정 WAF 규칙</strong>은 완화된 HTTP 트래픽의 19% 이상에 기여합니다. 이들은 Cloudflare의 <a href="https://developers.cloudflare.com/ruleset-engine/rules-language/" target="_blank">wirefilter 구문</a>을 사용하여 정의된 사용자 구성 규칙입니다. 이 게시물의 후반부에서 공통적인 규칙 패턴을 자세히 살펴보겠습니다.</li>
+		<li><strong>레이트 리미팅</strong> 기능을 사용하는 고객은 애플리케이션 기본 설정에 따라 사용자 설정 임계값을 정의할 수 있습니다. 이는 DDoS 공격처럼 너무 낮아서 탐지되지 않는 트래픽 패턴으로부터 애플리케이션을 보호하는 추가적 계층으로 사용하는 경우가 많습니다. 분석 기간 범위에서 레이트 리미팅은 완화된 HTTP 요청의 10.5%를 차지했습니다.</li>
+		<li><strong>IP 위협 평판</strong>은 Cloudflare 대시보드에서 보안 수준으로 표시됩니다. Cloudflare는 네트워크에서 관찰한 동작을 기반으로 각 IP 주소에 위협 점수를 자동 할당합니다. 위협 점수가 지정된 임계값보다 높을 경우, 트래픽에 인증 질문을 실행합니다. 이는 전체 완화된 HTTP 요청의 2.5%를 차지합니다.</li>
+		<li><strong>관리형 WAF 규칙</strong>은 Cloudflare의 내부 보안 분석팀이 유효한 악의적 페이로드에 대해서만 매칭하기 위해 직접 작성한 규칙입니다. 이들은 전체 완화된 요청의 약 1.5%를 차지합니다.</li>
+	</ul>
+	<h3 id="http-">HTTP 이상은 가장 일반적인 공격 벡터임</h3>
+	<p>관리형 WAF 규칙을 자세히 살펴보면, 악의적 사용자가 Cloudflare에서 보호하는 인터넷 자산에 대해 어떤 유형의 공격 벡터를 시도하는지 명확히 알 수 있습니다.</p>
+	<p>관리형 WAF 규칙에서 차단한 HTTP 요청의 대부분(54% 이상)에는 HTTP 이상(예: 형식이 잘못된 메서드 이름, 헤더의 null 바이트 문자, 비표준 포트, <code>POST</code> 요청에서 내용 없음)이 포함됩니다.</p>
+	<p>이 분류의 공통적인 공격 유형은 아래와 같으며, 이들을 관련성에 따라 그룹화했습니다.</p>
+	<!--kg-card-begin: markdown-->
+	<style>
+		table {
+			width: 100%;
+		}
+	</style>
+	<table>
+		<thead>
+			<tr>
+				<th>규칙 유형</th>
+				<th>설명</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>사용자 에이전트 누락</td>
+				<td>이 규칙에 따라 <code>User-Agent</code> 헤더가 없는 요청은 모두 차단됩니다. 모든 브라우저와 정상적인 크롤러는 사이트에 연결할 때 이 헤더를 표시해야 합니다. 사용자 에이전트가 없는 것은 악의적 요청임을 알 수 있는 일반적 신호입니다.</td>
+			</tr>
+			<tr>
+				<td><code>GET</code>, <code>POST</code> 또는 <code>HEAD</code> 메서드가 아닌 경우</td>
+				<td>대부분의 애플리케이션은 표준 <code>GET</code> 또는 <code>POST</code> 요청만 허용합니다(일반적으로는 페이지 조회, 양식 제출에 사용). 또한, <code>HEAD</code> 요청은 보안을 목적으로 브라우저에서 전송되는 경우가 많습니다. 관리형 규칙을 사용하는 고객은 다른 메서드를 쉽게 차단할 수 있으며, 이는 대개 많은 취약성 스캐너를 차단하게 됩니다.</td>
+			</tr>
+			<tr>
+				<td>Referer 누락</td>
+				<td>사용자가 애플리케이션을 탐색할 때 브라우저는 <code>Referer</code> 헤더를 사용하여 출처를 표시합니다. 어떤 애플리케이션은 이 헤더가 항상 있어야 합니다.</td>
+			</tr>
+			<tr>
+				<td>비표준 포트</td>
+				<td>고객은 Cloudflare 관리형 규칙을 구성하면 비표준 포트(예: 80, 443)에 액세스하려는 HTTP 요청을 차단할 수 있습니다. 이는 일반적으로 취약성 스캐너에서 확인되는 활동입니다.</td>
+			</tr>
+			<tr>
+				<td>잘못된 UTF-8 인코딩</td>
+				<td>공격자가 UTF-8 인코딩에서 유효하지 않은 "특수" 문자를 전송하여 애플리케이션 서버를 중단시키려고 하는 것은 흔한 일입니다.</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<p>전체 완화된 요청에서 XSS, SQLi와 같이 더욱 널리 알려져 있고 참조되는 공격 벡터의 기여도는 약 13%에 불과합니다. 흥미롭게도, 정보 노출을 목적으로 하는 공격은 세 번째로 가장 많은 비중(10%)을 차지하고 소프트웨어별 CVE 기반 공격은 완화된 요청의 약 12%를 차지합니다(SQLi를 단독으로 계산했을 때보다 더 많음). 소프트웨어를 신속하게 패치해야 할 중요성과, 애플리케이션을 해킹하는 데 CVE 개념 증명(PoC)이 사용될 가능성(예: 최근발견된 <a href="https://blog.cloudflare.com/tag/log4j/">Log4J</a> 취약성)을 잘 느낄 수 있습니다. 완화된 요청 백분율 기준의 상위 10개 공격 벡터는 아래와 같습니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image1-96.png" class="kg-image" title="Chart"></figure>
+	<p>참고 표:</p>
+	<!--kg-card-begin: markdown-->
+	<style>
+		table {
+			width: 100%;
+		}
+	</style>
+	<table>
+		<thead>
+			<tr>
+				<th>소스</th>
+				<th>백분율 %</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>HTTP 이상</td>
+				<td>54.5%</td>
+			</tr>
+			<tr>
+				<td>공급업체별 CVE</td>
+				<td>11.8%</td>
+			</tr>
+			<tr>
+				<td>정보 공개</td>
+				<td>10.4%</td>
+			</tr>
+			<tr>
+				<td>SQLi</td>
+				<td>7.0%</td>
+			</tr>
+			<tr>
+				<td>XSS</td>
+				<td>6.1%</td>
+			</tr>
+			<tr>
+				<td>파일 포함</td>
+				<td>3.3%</td>
+			</tr>
+			<tr>
+				<td>가짜 봇</td>
+				<td>3.0%</td>
+			</tr>
+			<tr>
+				<td>명령 삽입</td>
+				<td>2.7%</td>
+			</tr>
+			<tr>
+				<td>개방적 리디렉션</td>
+				<td>0.1%</td>
+			</tr>
+			<tr>
+				<td>기타</td>
+				<td>1.5%</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<h3 id="-ip-">기업은 여전히 IP 주소 기반 액세스 목록을 사용하여 자산을 보호함</h3>
+	<p>이전의 섹션에서는 사용자 설정 WAF 규칙에서 완화된 요청의 19% 이상이 발생함을 살펴보았습니다. 이들은 Cloudflare 고객이 <a href="https://developers.cloudflare.com/ruleset-engine/rules-language/" target="_blank">wirefilter 구문</a>을 사용하여 구현한 규칙입니다. 이 게시물을 작성하는 시점을 기준으로, Cloudflare 고객은 사용자 설정 WAF 규칙을 총 650만 개 배포했습니다.</p>
+	<p>고객이 어떤 규칙 필드를 사용하여 악의적 트래픽을 식별하는 는지 살펴보면 흥미로운 점을 발견할 수 있습니다. Cloudflare 플랫폼을 개선하기 위해 어떤 완전 자동화 완화 기능을 구현해야 할지 아는 데 노력을 집중할 수 있기 때문입니다.</p>
+	<p>가장 일반적인 필드(전체 사용자 설정 규칙 중 약 64%에서 발견)는 소스 IP 주소이거나 IP 주소에서 쉽게 도출할 수 있는 필드(예: 클라이언트 국가 위치)입니다. IP 주소가 보안 정책에서 <a href="https://blog.cloudflare.com/icloud-private-relay/">유용성이 떨어지는</a> 신호가 되고 있지만, IP 주소는 공격 중에 구현하기에는 가장 빠르고 단순한 필터 유형인 경우가 많습니다. 또한, 고객들은 <a href="https://www.cloudflare.com/products/zero-trust/zero-trust-network-access/" target="_blank">Zero Trust 포트폴리오</a> 등에서 제공되는 더 나은 방식을 도입하여 IP 주소 기반 필드에 대한 의존도를 낮추고 있습니다.</p>
+	<p>상위 10개 필드는 아래와 같습니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image2-79.png" class="kg-image" title="Chart"></figure>
+	<p>참고 표:</p>
+	<!--kg-card-begin: markdown-->
+	<style>
+		table {
+			width: 100%;
+		}
+	</style>
+	<table>
+		<thead>
+			<tr>
+				<th>필드 이름</th>
+				<th>규칙에서의 사용 비율 %</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>ip</td>
+				<td>64.9%</td>
+			</tr>
+			<tr>
+				<td>ip_geoip_country</td>
+				<td>27.3%</td>
+			</tr>
+			<tr>
+				<td>http_request_uri</td>
+				<td>24.1%</td>
+			</tr>
+			<tr>
+				<td>http_user_agent</td>
+				<td>21.8%</td>
+			</tr>
+			<tr>
+				<td>http_request_uri_path</td>
+				<td>17.8%</td>
+			</tr>
+			<tr>
+				<td>http_referer</td>
+				<td>8.6%</td>
+			</tr>
+			<tr>
+				<td>cf_client_bot</td>
+				<td>8.3%</td>
+			</tr>
+			<tr>
+				<td>http_host</td>
+				<td>7.8%</td>
+			</tr>
+			<tr>
+				<td>ip_geoip_asnum</td>
+				<td>5.8%</td>
+			</tr>
+			<tr>
+				<td>cf_threat_score</td>
+				<td>4.4%</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<p>IP 주소 외에도 표준 HTTP 요청 필드(<code>URI</code>, <code>User-Agent</code>, <code>Path</code>, <code>Referer</code>)가 가장 많이 사용되는 편입니다. 또한, 전체 규칙 코퍼스에서 일반적인 규칙은 3개 이상의 독립적 필드를 결합합니다.</p>
+	<h2 id="--2">봇 트래픽 인사이트</h2>
+	<p>Cloudflare는 오래전부터 고객이 애플리케이션에 액세스하는 자동화된 트래픽에 대한 인사이트를 얻을 수 있도록 <a href="https://www.cloudflare.com/products/bot-management/" target="_blank">봇 관리</a> 솔루션을 제공하고 있습니다. 봇 관리 분류 데이터를 사용하면 봇에 대해서 더욱 자세히 분석할 수 있습니다.</p>
+	<h3 id="http-38-">HTTP 트래픽의 38%가 자동화됨</h3>
+	<p>분석 기간 범위 내에서 봇 트래픽은 전체 HTTP 요청의 약 38%를 차지합니다. 이 트래픽에는 <a href="https://radar.cloudflare.com/verified-bots" target="_blank">Cloudflare가 추적하는 확인된 봇</a> 수백 개와 봇 점수 30점 미만(자동화되었을 가능성이 높음)의 요청에서 발생하는 봇 트래픽이 포함되어 있습니다.</p>
+	<p>전반적으로, 봇 트래픽이 보안 구성과 일치할 경우, 고객은 봇 트래픽의 41%가 원점을 통과하게 하여 자동화된 요청의 6.4%만 차단합니다. 여기에는 GoogleBot과 같은 <a href="https://blog.cloudflare.com/friendly-bots/">확인된 봇</a>에서 발생한 트래픽이 포함되어 있어, 궁극적으로는 사이트 소유자와 최종 사용자에게 모두 도움이 됩니다. 즉, 사이트 내부와 사이트 자체를 자동화하는 것이 사이트에 반드시 해로운 것만은 아닙니다. 그래서 우리는 확인된 봇 트래픽을 따로 분류하고, "봇인지 아닌지" 판명하는 이분법적 지표가 아니라 세분화된 봇 점수를 고객에게 제공합니다. 웹 사이트 운영자는 각 봇 트래픽 유형에 대해 정밀하게 대응할 수 있는 유연성을 원하고, 실제로도 웹 사이트 운영자는 이런 유연성을 사용합니다. Cloudflare의 셀프 서비스 고객은 <a href="https://blog.cloudflare.com/super-bot-fight-mode/">슈퍼 봇 차단 모드</a> 기능을 사용하여 봇 트래픽을 처리할 방법을 결정합니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image6-6.png" class="kg-image" title="Chart"></figure>
+	<p>참고 표 데이터:</p>
+	<!--kg-card-begin: markdown-->
+	<style>
+		table {
+			width: 100%;
+		}
+	</style>
+	<table>
+		<thead>
+			<tr>
+				<th>모든 봇 트래픽에 대한 조치</th>
+				<th>백분율 %</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>허용</td>
+				<td>40.9%</td>
+			</tr>
+			<tr>
+				<td>로그</td>
+				<td>31.9%</td>
+			</tr>
+			<tr>
+				<td>우회</td>
+				<td>19.0%</td>
+			</tr>
+			<tr>
+				<td>차단</td>
+				<td>6.4%</td>
+			</tr>
+			<tr>
+				<td>jschallenge</td>
+				<td>0.5%</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<h3 id="-http-1-3-">확인되지 않은 봇 HTTP 트래픽의 1/3 이상이 완화됨</h3>
+	<p>Cloudflare에서 관찰한 전체 봇 트래픽의 31%는 확인되지 않은 트래픽이고, 이들은 스캐너, 크롤러, 해커가 구축한 봇과 같이 맞춤형 자동화 도구 수천 개에서 발생합니다. 앞서 언급했듯이, 자동화를 하더라도 봇들이 반드시 악의적 동작을 수행하는 것은 아닙니다. 식별된 봇 트래픽에 대한 고객의 대응을 살펴보면, 확인되지 않은 봇에서 발생한 HTTP 요청의 38.5%가 완화됩니다. 이는 위에서 확인한 전체 봇 트래픽에 대한 조치에 비해 훨씬 더 방어적인 구성인 것은 확실합니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image4-17.png" class="kg-image" title="Chart"></figure>
+	<p>참고 표 데이터:</p>
+	<!--kg-card-begin: markdown-->
+	<style>
+		table {
+			width: 100%;
+		}
+	</style>
+	<table>
+		<thead>
+			<tr>
+				<th>확인되지 않은 봇 트래픽에 대한 조치</th>
+				<th>백분율 %</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>차단</td>
+				<td>34.0%</td>
+			</tr>
+			<tr>
+				<td>로그</td>
+				<td>28.6%</td>
+			</tr>
+			<tr>
+				<td>허용</td>
+				<td>14.5%</td>
+			</tr>
+			<tr>
+				<td>우회</td>
+				<td>13.2%</td>
+			</tr>
+			<tr>
+				<td>managed_challenge</td>
+				<td>3.7%</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<p>30%에 가까운 고객이 즉각적인 조치를 취하기보다는 트래픽을 로깅합니다. 많은 엔터프라이즈 고객이 봇 트래픽 차단을 미루어서 공격자에게 피드백 신호를 보내지 않도록 합니다. 오히려 이 트래픽을 태깅하고 모니터링함으로써, 나중에 실패시키거나 다른 콘텐츠로 리디렉션하는 쪽을 선택합니다. 표적화된 공격 벡터가 진화함에 따라, 이러한 공격에 대한 대응도 발전해야 했고 마찬가지로 지능화되었습니다. 또한, 확인되지 않은 봇 트래픽의 약 3%가 DDoS 방어(<code>connection_close</code>)에서 자동 완화됩니다. 이러한 요청은 고객 애플리케이션을 공격하는 데 사용하는 봇넷에 포함되는 경향이 있습니다.</p>
+	<h2 id="api-">API 트래픽 인사이트</h2>
+	<p>오늘날 인터넷을 기반으로 한 대부분의 애플리케이션은 인간이 사용하는 용도가 아닙니다. 컴퓨터 간 통신을 목적으로 개발된 경우가 많습니다. 이 목적으로 애플리케이션을 노출하는 가장 일반적인 방법은 HTTP를 사용하여 액세스할 수 있는 <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api/" target="_blank">API(Application Programming Interface)</a>를 구축하는 것입니다.</p>
+	<p>전송 중인 데이터의 기본 형식이 있기 때문에 API 트래픽은 표준 웹 애플리케이션보다 훨씬 구조화되어 있는 경우가 많아서, 보안의 관점에서 온갖 문제를 일으킵니다. 첫째, 구조화된 데이터는 웹 애플리케이션 방화벽(WAF)에서 대량의 오탐을 발생시킵니다. 둘째, API의 성격으로 인해 구조화된 데이터가 인식되지 않는 경우가 많으며, 많은 기업이 자체에서도 모르는 사이에 오래되고 관리되지 않는 API를 노출하게 됩니다. 이를 일컬어 "섀도우 API"라고 합니다.</p>
+	<p>앞서 살펴본 전역 트래픽 인사이트와 비교하여 API 트렌드에는 어떤 차이가 있는지 알아보겠습니다.</p>
+	<h3 id="api-10-">API 트래픽의 10%가 완화됨</h3>
+	<p>봇 트래픽은 상당수가 API 엔드포인트에 액세스하고, <a href="https://blog.cloudflare.com/landscape-of-api-traffic/">앞서 설명하였듯이</a>, API 트래픽은 Cloudflare 네트워크에서 가장 빠르게 늘어나는 트래픽 유형으로, 현재 전체 요청의 55%를 차지합니다.</p>
+	<p>API 엔드포인트는 표준 웹 애플리케이션보다 전체적으로 더 많은 악의적 요청을 수신하므로(10% 대 8%), 공격자들이 공격 표면으로 표준 웹 앱보다는 API에 더욱 집중한다는 의미일 수 있습니다.</p>
+	<p>Cloudflare의 DDoS 완화는 여전히 API 엔드포인트의 완화된 이벤트에 가장 많이 기여하며, 전체 완화된 요청의 63%를 웃도는 수준입니다. 특히 흥미로운 점은 사용자 설정 WAF 규칙이 전역 트래픽에서 19%를 차지했지만, API에서는 35%를 차지합니다. 지금까지 고객들은 주로 WAF 사용자 설정 규칙을 사용하여 API 엔드포인트에 대한 트래픽을 잠그고 유효성을 검사했지만, <a href="https://blog.cloudflare.com/ko-kr/api-gateway-ko-kr/">API Gateway</a> 스키마 유효성 검사 기능이 조만간 완화된 트래픽 측면에서 사용자 설정 WAF 규칙을 넘어설 것으로 예상합니다.</p>
+	<h3 id="sqli-api-">SQLi는 API 엔드포인트에 대한 가장 일반적인 공격 벡터입니다</h3>
+	<p>API 트래픽의 WAF 관리형 규칙 완화만 살펴보았을 경우, 전역 트래픽의 추세에 비해 확연한 차이점이 보입니다. 이러한 차이점은 다양한 유형의 공격에 걸쳐 훨씬 더 균등하게 분포되어 있지만, 가장 눈에 띄는 것은 SQL 삽입 공격이 최상위에 있다는 점입니다.</p>
+	<p>명령 삽입 공격도 훨씬 두드러지게 나타나며(14.3%), 역직렬화와 같은 벡터가 나타나서, 완화된 요청 전체의 1% 이상을 차지합니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image3-36.png" class="kg-image" title="Chart"></figure>
+	<p>참고 표 데이터:</p>
+	<!--kg-card-begin: markdown-->
+	<style>
+		table {
+			width: 100%;
+		}
+	</style>
+	<table>
+		<thead>
+			<tr>
+				<th>소스</th>
+				<th>백분율 %</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>SQLi</td>
+				<td>34.5%</td>
+			</tr>
+			<tr>
+				<td>HTTP 이상</td>
+				<td>18.2%</td>
+			</tr>
+			<tr>
+				<td>공급업체별 CVE</td>
+				<td>14.5%</td>
+			</tr>
+			<tr>
+				<td>명령 삽입</td>
+				<td>14.3%</td>
+			</tr>
+			<tr>
+				<td>XSS</td>
+				<td>7.3%</td>
+			</tr>
+			<tr>
+				<td>가짜 봇</td>
+				<td>5.8%</td>
+			</tr>
+			<tr>
+				<td>파일 포함</td>
+				<td>2.3%</td>
+			</tr>
+			<tr>
+				<td>역직렬화</td>
+				<td>1.2%</td>
+			</tr>
+			<tr>
+				<td>정보 공개</td>
+				<td>0.6%</td>
+			</tr>
+			<tr>
+				<td>기타</td>
+				<td>1.3%</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<h2 id="--3">향후 전망</h2>
+	<p>이 게시물에서는 Cloudflare 네트워크에 대한 트래픽을 기반으로 인터넷 애플리케이션 보안 트래픽에 대한 몇 가지 첫 인사이트를 공유했습니다. 물론, 아직은 그저 겉모습을 살펴보는 정도에 지나지 않습니다. 앞으로는 <a href="https://radar.cloudflare.com/" target="_blank">Cloudflare Radar</a>에 직접 동적 필터를 포함한 분기별 보고서를 게시하고 더욱 심층적인 인사이트와 조사를 제공할 계획입니다.</p>
+</div>
