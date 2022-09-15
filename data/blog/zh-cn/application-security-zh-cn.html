@@ -1,0 +1,398 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image5-20.png" class="kg-image" alt="应用程序安全：Cloudflare 的观点"></figure>
+	<p>开发人员、博客作者、企业主和大型企业都依赖 Cloudflare 来确保其应用程序的安全性、可用性和性能。</p>
+	<p>为实现这些目标，在过去 12 年来，我们建成了一个能够保护数千万个互联网资产的智能网络。截至 2022 年 3 月，<a href="https://w3techs.com/technologies/details/cn-cloudflare" target="_blank">W3Techs 报告称</a>：</p>
+	<blockquote><em>“在所用反向代理为我们所知的网站中，80.6% 使用了 Cloudflare。这占全部网站的 19.7%。”</em></blockquote>
+	<p>Netcraft 是另一家爬行 Web 和监测采用情况的提供商，在其最新的<a href="https://news.netcraft.com/archives/2022/02/28/february-2022-web-server-survey.html" target="_blank"> Web 服务器调查(2022 年 2 月）</a>中指出这个数字为 2000 万个活跃站点：</p>
+	<blockquote><em>“Cloudflare 继续在百万最活跃的网站中取得强劲增长，这是其唯一显著的增长，另外 3200 个站点帮助将其市场份额提高至 19.4%。”</em></blockquote>
+	<p>我们所保护网站的广度和多样性，以及与之交互的数十亿浏览器和设备，让我们对互联网上不断变化的应用程序安全趋势获得独特的见解。我们的网络每秒处理 3200 万个 HTTP 请求，我们将在本文中分享从中获得的一些洞察。</p>
+	<h2 id="-">定义</h2>
+	<p>在研究这些数据前，有必要定义我们使用的术语。本文中，我们将使用如下术语：</p>
+	<ul>
+		<li><strong>被缓解流量</strong>： 被 Cloudflare 平台应用”终止“操作的任何浏览器 HTTP* 请求。有关操作包括 <code>BLOCK</code>、<code>CHALLENGE</code> (例如验证码或基于 JavaScript 的质询）。不包括应用了如下操作的请求：<code>LOG</code>、<code>SKIP</code> 和 <code>ALLOW</code>。</li>
+		<li><strong>机器人流量/自动化流量</strong>：被 Cloudflare <a href="https://www.cloudflare.com/products/bot-management/" target="_blank">Bot Management</a> 系统识别为由机器人（bot）生成的任何流量。其中包括评分介于 <a href="https://developers.cloudflare.com/bots/concepts/bot-score/" target="_blank">1 和 29 </a>的请求。</li>
+		<li><strong>API 流量</strong>：响应内容类型为 <code>XML</code>、<code>JSON</code> 和 <code>gRPC</code> 或类似类型的任何 HTTP 请求。在响应内容类型不可用的情况下，例如被缓解请求，则使用等效的 <code>Accept</code> 内容类型（由用户代理指定）。在后一种情况下，API 流量不会被完全计算在内，但出于洞察的目的，它仍然提供了一个很好的代表性。</li>
+	</ul>
+	<p>除非另有说明，本文所评估的时间范围是 2021 年 12 月 1 日至 2022 年 3 月 1 日的三个月。</p>
+	<p>最后，请注意，这些数据仅根据在 Cloudflare 网络上观察到的流量计算，不一定代表整个互联网的 HTTP 流量模式。</p>
+	<!--kg-card-begin: markdown-->
+	<p><small>*文中的 HTTP 流量包括 HTTP 和 HTTPS。</small></p>
+	<!--kg-card-end: markdown-->
+	<h2 id="--1">全球流量洞察</h2>
+	<p>我们首先查看一下 Cloudflare 代理的所有 HTTP 请求中被缓解的流量。这会给我们提供一个良好的基线视图，以便随后深入分析具体的流量类型，例如机器人和 API 流量。</p>
+	<h3 id="8-cloudflare-http-">8% 的 Cloudflare HTTP 流量被缓解</h3>
+	<p>Cloudflare 网络平均每秒代理约 3200 万个 HTTP 请求，峰值达到每秒约 4400 万个 HTTP 请求。总体而言，每秒约 250 万个请求被我们的全球网络缓解，根本没有到达我们的缓存或源服务器，从而确保我们的客户的带宽和计算能力仅用于处理干净的流量。</p>
+	<p>使用 Cloudflare 的网站所有者可以使用各种工具来缓解不需要或恶意的流量，只有在请求被认为是干净的情况下才被允许访问其应用程序。要做到这一点，既可以使用全托管功能，例如我们的 <a href="https://www.cloudflare.com/ddos/" target="_blank">DDoS 缓解</a>、<a href="https://www.cloudflare.com/waf/" target="_blank">WAF </a>托管规则集或模式验证，也可以使用自定义规则，后者允许用户定义自己的过滤器以阻止流量。</p>
+	<p>在 Cloudflare 缓解流量的五大功能（来源）中，我们可以清晰地看到每一个 Cloudflare 功能在帮助客户网站和应用保持在线和安全所做出的贡献：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image7-1.png" class="kg-image" title="Chart"></figure>
+	<p>表格形式供参考：</p>
+	<!--kg-card-begin: markdown-->
+	<style>
+		table {
+			width: 100%;
+		}
+	</style>
+	<table>
+		<thead>
+			<tr>
+				<th>来源</th>
+				<th>百分比 %</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>第 7 层 DDoS 缓解</td>
+				<td>66.0%</td>
+			</tr>
+			<tr>
+				<td>自定义 WAF 规则</td>
+				<td>19.0%</td>
+			</tr>
+			<tr>
+				<td>速率限制</td>
+				<td>10.5%</td>
+			</tr>
+			<tr>
+				<td>IP 威胁声誉</td>
+				<td>2.5%</td>
+			</tr>
+			<tr>
+				<td>托管 WAF 规则</td>
+				<td>1.5%</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<p>单独查看每个缓解来源：</p>
+	<ul>
+		<li><strong>第 7 层 DDoS 缓解</strong>是最大的贡献者，缓解的 HTTP 请求数占总数的 66%。这也许并不令人意外。 Cloudflare 的第 7 层 DDoS 规则是完全托管的，不需要用户配置：它们自动检测大量 HTTP DDoS 攻击，包括 <a href="https://blog.cloudflare.com/meris-botnet/">Meris 僵尸网络</a>、<a href="https://blog.cloudflare.com/zh-cn/cloudflare-blocks-an-almost-2-tbps-multi-vector-ddos-attack-zh-cn/">Mirai 僵尸网络</a>、已知攻击工具等产生的 HTTP DDoS 攻击。按照定义，容量耗尽型 DDoS 攻击会产生大量恶意流量。</li>
+		<li><strong>自定义 WAF 规则</strong> 缓解超过 19% 的 HTTP 流量。这些是用户使用 Cloudflare <a href="https://developers.cloudflare.com/ruleset-engine/rules-language/" target="_blank">wirefilter 语法</a>配置的规则。下文将进一步探索常见的规则模式。</li>
+		<li>我们的<strong>速率限制</strong>功能允许用户基于应用程序首选项的自定义阈值。该功能常被用作额外的保护层，以防止因过低而未被检测为 DDoS 攻击的流量模式。在所分析的时间范围内，速率限制缓解的 HTTP 请求占 10.5%。</li>
+		<li><strong>IP 威胁声誉</strong>作为安全级别显示在 Cloudflare 仪表板中。根据我们在整个网络上观察到的行为，Cloudflare 自动对每个 IP 地址分配一个威胁分数。当威胁分数超过特定阈值时，我们就会对流量进行质询。这占被缓解 HTTP 请求总数的 2.5%。</li>
+		<li><strong>托管 WAF 规则</strong>是我们内部安全分析师团队精心编制的规则，旨在匹配有效的恶意负载。这占被缓解 HTTP 请求总数的大约 1.5%。</li>
+	</ul>
+	<h3 id="http-">HTTP 异常是最常见的攻击手段</h3>
+	<p>通过深入研究托管 WAF 规则，我们可以清晰看到恶意用户尝试对我们保护的互联网资产使用什么攻击手段。</p>
+	<p>托管 WAF 规则阻止的 HTTP 请求中，绝大部分包含 HTTP 异常，例如格式不规范的方法名称，头部为零字节字符，非标准端口或 <code>POST</code> 请求的内容长度为零。</p>
+	<p>此类别中常见的攻击类型如下所示。这些类型已按相关性分组：</p>
+	<!--kg-card-begin: markdown-->
+	<style>
+		table {
+			width: 100%;
+		}
+	</style>
+	<table>
+		<thead>
+			<tr>
+				<th>规则类型</th>
+				<th>描述</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>缺失 User-Agent</td>
+				<td>这些规则将阻止任何缺少 User-Agent标头的请求。所有浏览器和合法爬虫在连接到网站时都会显示此标头。没有 <code>User-Agent</code> 是恶意请求的常见信号。</td>
+			</tr>
+			<tr>
+				<td>非 <code>GET</code>、<code>POST</code> 或 <code>HEAD</code> 方法</td>
+				<td>大多数应用程序仅允许标准的 <code>GET</code> 或 <code>POST</code> 请求（通常用于查看网页或提交表单）。出于安全目的，浏览器也经常发送 <code>HEAD</code> 请求。使用托管规则的客户可轻松阻止任何其他方法——这通常会导致大量漏洞扫描器被拦截。</td>
+			</tr>
+			<tr>
+				<td>缺失 Referer</td>
+				<td>用户访问应用程序时，浏览器使用 <code>Referer</code> 标头来指示他们来自何处。一些应用程序要求始终包含这个标头。</td>
+			</tr>
+			<tr>
+				<td>非标准端口</td>
+				<td>通过配置 Cloudflare 托管规则，客户可以阻止试图访问非标准端口（例如 80 和 443）的 HTTP 请求。这是漏洞扫描器常进行的活动。</td>
+			</tr>
+			<tr>
+				<td>无效的 UTF-8 编码</td>
+				<td>攻击者经常通过发送 UTF-8 编码中无效的“特殊”字符来尝试破坏应用程序服务器。</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<p>较常见和更多被提及的攻击类型，例如 XSS 和 SQLi，仅占被缓解请求总数的大约 13%。更引人注目的是，旨在泄露信息的攻击占第三位（10%），而软件特定、基于 CVE 的攻击占被缓解请求总数的大约 12%（超过 SQLi 单独所占比例），凸显了快速修补软件漏洞的重要性，以及 CVE 概念验证（PoC）被用于破坏应用程序的可能性，例如最近的<a href="https://blog.cloudflare.com/tag/log4j/"> Log4J</a> 漏洞。按占被缓解请求总数百分比的十大攻击手段如下：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image1-96.png" class="kg-image" title="Chart"></figure>
+	<p>表格形式供参考：</p>
+	<!--kg-card-begin: markdown-->
+	<style>
+		table {
+			width: 100%;
+		}
+	</style>
+	<table>
+		<thead>
+			<tr>
+				<th>来源</th>
+				<th>百分比 %</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>HTTP 异常</td>
+				<td>54.5%</td>
+			</tr>
+			<tr>
+				<td>厂商特定 CVE</td>
+				<td>11.8%</td>
+			</tr>
+			<tr>
+				<td>信息泄露</td>
+				<td>10.4%</td>
+			</tr>
+			<tr>
+				<td>SQLi</td>
+				<td>7.0%</td>
+			</tr>
+			<tr>
+				<td>XSS</td>
+				<td>6.1%</td>
+			</tr>
+			<tr>
+				<td>文件包含</td>
+				<td>3.3%</td>
+			</tr>
+			<tr>
+				<td>虚假机器人</td>
+				<td>3.0%</td>
+			</tr>
+			<tr>
+				<td>命令注入</td>
+				<td>2.7%</td>
+			</tr>
+			<tr>
+				<td>开放重定向</td>
+				<td>0.1%</td>
+			</tr>
+			<tr>
+				<td>其他</td>
+				<td>1.5%</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<h3 id="-ip-">企业仍然依赖基于 IP 地址的访问列表来保护他们的资产</h3>
+	<p>上一节中，我们指出 19% 的被缓解请求来自自定义 WAF 规则。这些是 Cloudflare 使用 <a href="https://developers.cloudflare.com/ruleset-engine/rules-language/" target="_blank">wirefilter 语法</a>实施的规则。截至本文撰写时，Cloudflare 客户已部署共计约 650 万条自定义 WAF 规则。</p>
+	<p>客户使用什么字段来识别恶意流量值得关注，这有助于我们集中精力研究能实施其他什么完全自动化的缓解措施来改进 Cloudflare 平台。</p>
+	<p>最常见的字段（出现在大约 64% 的自定义规则中）依然是源 IP 地址或很容易从 IP 地址推演的字段，例如客户端国家位置。请注意，IP 地址作为安全策略信号的<a href="https://blog.cloudflare.com/icloud-private-relay/">作用正在下降</a>，但它们常常是遭到攻击期间最快实施、最简单的过滤类型。客户也开始采用更好的方式，例如我们的 <a href="https://www.cloudflare.com/products/zero-trust/zero-trust-network-access/" target="_blank">Zero Trust 产品组合</a>所提供的方法，以进一步减少对基于 IP 地址的字段的依赖。</p>
+	<p>十大字段如下：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image2-79.png" class="kg-image" title="Chart"></figure>
+	<p>表格形式供参考：</p>
+	<!--kg-card-begin: markdown-->
+	<style>
+		table {
+			width: 100%;
+		}
+	</style>
+	<table>
+		<thead>
+			<tr>
+				<th>字段名称</th>
+				<th>使用的字段占比</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>ip</td>
+				<td>64.9%</td>
+			</tr>
+			<tr>
+				<td>ip_geoip_country</td>
+				<td>27.3%</td>
+			</tr>
+			<tr>
+				<td>http_request_uri</td>
+				<td>24.1%</td>
+			</tr>
+			<tr>
+				<td>http_user_agent</td>
+				<td>21.8%</td>
+			</tr>
+			<tr>
+				<td>http_request_uri_path</td>
+				<td>17.8%</td>
+			</tr>
+			<tr>
+				<td>http_referer</td>
+				<td>8.6%</td>
+			</tr>
+			<tr>
+				<td>cf_client_bot</td>
+				<td>8.3%</td>
+			</tr>
+			<tr>
+				<td>http_host</td>
+				<td>7.8%</td>
+			</tr>
+			<tr>
+				<td>ip_geoip_asnum</td>
+				<td>5.8%</td>
+			</tr>
+			<tr>
+				<td>cf_threat_score</td>
+				<td>4.4%</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<p>除了 IP 地址，标准 HTTP 请求字段（<code>URI</code>，<code>User-Agent</code>，<code>Path</code>，<code>Referer</code>）也十分常用。请注意，在整个规则语料库中，平均每条规则结合使用至少 3 个独立字段。</p>
+	<h2 id="--2">机器人流量洞察</h2>
+	<p>Cloudflare 长期以来一直提供<a href="https://www.cloudflare.com/products/bot-management/" target="_blank">机器人管理（Bot Management）</a>方案，让客户能够深入了解访问其应用程序的自动化流量。使用机器人管理分类数据，我们可以深入分析机器人的世界。</p>
+	<h3 id="38-http-">38% 的 HTTP 流量是自动化的</h3>
+	<p>在所分析的时间段内，机器人流量占 HTTP 请求总数的大约 38%。这些流量的一部分来自数以百计 <a href="https://radar.cloudflare.com/verified-bots" target="_blank">Cloudflare 跟踪的经验证机器人</a>，以及机器人评分低于 30 的任何请求——表明这些请求很可能是自动生成的。</p>
+	<p>总体而言，当机器人流量匹配某个安全配置时，客户允许 41% 的机器人流量通过其源服务器，仅阻止 6.4% 的自动化请求。请记住，这包括来自<a href="https://blog.cloudflare.com/zh-cn/friendly-bots-zh-cn/">经验证机器人</a>的流量（例如 GoogleBot），这些机器人最终有益于站点所有者和最终用户。这提醒我们，自动化本身并不一定对网站有害。因此我们对经验证的机器人流量进行分隔，并为客户提供一个细粒度的机器人分数，而不是二元的“是/否机器人”指标。网站运营商希望能够灵活地对不同类型的机器人流量作出精确的反应，我们可以看到，他们确实利用了这种灵活性。请注意，我们的自助服务客户也可以使用我们的 <a href="https://blog.cloudflare.com/zh-cn/super-bot-fight-mode-zh-cn/">Super Bot Fight Mode</a> 功能决定如何处理机器人流量。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image6-6.png" class="kg-image" title="Chart"></figure>
+	<p>表格形式供参考：</p>
+	<!--kg-card-begin: markdown-->
+	<style>
+		table {
+			width: 100%;
+		}
+	</style>
+	<table>
+		<thead>
+			<tr>
+				<th>对所有机器人流量采取的行动</th>
+				<th>百分比 %</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>允许</td>
+				<td>40.9%</td>
+			</tr>
+			<tr>
+				<td>记录</td>
+				<td>31.9%</td>
+			</tr>
+			<tr>
+				<td>绕过</td>
+				<td>19.0%</td>
+			</tr>
+			<tr>
+				<td>阻止</td>
+				<td>6.4%</td>
+			</tr>
+			<tr>
+				<td>jschallenge</td>
+				<td>0.5%</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<h3 id="-1-3-http-">超过 1/3 的未经验证机器人 HTTP 流量被缓解</h3>
+	<p>Cloudflare 观察到的机器人流量中有 31% 是未经验证的，来自数千个定制的自动化工具，例如扫描器、爬虫和黑客构建的机器人。如上所述，自动化不一定意味着这些机器人正在执行恶意操作。从客户对已识别机器人流量的反应来看，我们发现， 38.5% 来自未经验证机器人的 HTTP 流量被缓解。与上面所示针对总体机器人流量的行动相比，这种配置的防御性明显高得多：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image4-17.png" class="kg-image" title="Chart"></figure>
+	<p>表格形式供参考：</p>
+	<!--kg-card-begin: markdown-->
+	<style>
+		table {
+			width: 100%;
+		}
+	</style>
+	<table>
+		<thead>
+			<tr>
+				<th>对未经验证机器人流量采取的行动</th>
+				<th>百分比 %</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>阻止</td>
+				<td>34.0%</td>
+			</tr>
+			<tr>
+				<td>记录</td>
+				<td>28.6%</td>
+			</tr>
+			<tr>
+				<td>允许</td>
+				<td>14.5%</td>
+			</tr>
+			<tr>
+				<td>绕过</td>
+				<td>13.2%</td>
+			</tr>
+			<tr>
+				<td>managed_challenge</td>
+				<td>3.7%</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<p>您会注意到，近 30% 的客户记录流量，而不是立即采取行动。我们发现，许多企业客户选择不立即阻止机器人流量，以免给攻击者提供反馈信号。相反，他们更倾向于标记和监控这些流量，并在随后将其丢弃或重定向到替代内容。随着针对性的攻击手段演变，对这些攻击的响应也必须演变，变得更加复杂。此外，近 3% 的未经验证机器人流量被我们的 DDoS 保护自动缓解（<code>connection_close</code>）。这些请求往往是用于攻击客户应用程序的僵尸网络的一部分。</p>
+	<h2 id="api-">API 流量洞察</h2>
+	<p>如今互联网上构建的很多应用程序并非供人类使用。相反，这些应用用于计算机与计算机之间的通信。为此目的暴露一个应用的常见方法是构建一个可通过 HTTP 访问的<a href="https://www.cloudflare.com/learning/security/api/what-is-an-api/" target="_blank">应用程序编程接口（API）</a>。</p>
+	<p>由于传输中数据的底层格式，API 流量的结构化程度往往远高于标准 Web 应用，从而导致各种安全问题。首先，结构化数据常常导致 Web 应用程序防火墙（WAF）产生大量误报。第二，由于 API 的性质，它们往往不引人注目，很多公司最终不知不觉地暴露了过时和缺乏维护的 API，这些 API 常被称为“影子 API”。</p>
+	<p>如下，我们看一下 API 趋势与上述全球流量洞察有何不同之处。</p>
+	<h3 id="10-api-">10% 的 API 流量被缓解</h3>
+	<p>相当一部分的机器人流量访问 API 端口， <a href="https://blog.cloudflare.com/landscape-of-api-traffic/">而且如上所述</a>，API 流量是 Cloudflare 网络上增长最快的流量类型，目前占总请求的 55%。</p>
+	<p>与标准 Web 应用程序相比，全球 API 端点接收到更多恶意请求（10% 对 8%），这可能表明，相对于标准 Web 应用程序，攻击者更重视 API。</p>
+	<p>我们的 DDoS 缓解依然是 API 端点缓解活动的最主要来源，占被缓解请求总数的 63% 强。更值得关注的是，自定义 WAF 规则占 35%，而在全球流量中占 19%。迄今为止，客户大量使用自定义 WAF 规则来封锁和验证对 API 端点的流量，但我们预计，在缓解流量方面，我们的 <a href="https://blog.cloudflare.com/zh-cn/api-gateway-zh-cn/">API Gateway</a> 模式验证功能将很快超越自定义 WAF 规则。</p>
+	<h3 id="sqli-api-">SQLi 是 API 端点上最常见的攻击手段</h3>
+	<p>仅看我们的 WAF 托管规则对 API 流量的缓解，与全球趋势相比有明显差异。其中包括，不同攻击类型分布更加平均，但更明显的是，SQL 注入攻击排在首位。</p>
+	<p>命令注入攻击也更加突出（14.3%），反序列化等手段也出现了，占被缓解请求总数的 1% 以上。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image3-36.png" class="kg-image" title="Chart"></figure>
+	<p>表格形式供参考：</p>
+	<!--kg-card-begin: markdown-->
+	<style>
+		table {
+			width: 100%;
+		}
+	</style>
+	<table>
+		<thead>
+			<tr>
+				<th>来源</th>
+				<th>百分比 %</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>SQLi</td>
+				<td>34.5%</td>
+			</tr>
+			<tr>
+				<td>HTTP 异常</td>
+				<td>18.2%</td>
+			</tr>
+			<tr>
+				<td>厂商特定 CVE</td>
+				<td>14.5%</td>
+			</tr>
+			<tr>
+				<td>命令注入</td>
+				<td>14.3%</td>
+			</tr>
+			<tr>
+				<td>XSS</td>
+				<td>7.3%</td>
+			</tr>
+			<tr>
+				<td>虚假机器人</td>
+				<td>5.8%</td>
+			</tr>
+			<tr>
+				<td>文件包含</td>
+				<td>2.3%</td>
+			</tr>
+			<tr>
+				<td>反序列化</td>
+				<td>1.2%</td>
+			</tr>
+			<tr>
+				<td>信息泄露</td>
+				<td>0.6%</td>
+			</tr>
+			<tr>
+				<td>其他</td>
+				<td>1.3%</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<h2 id="--3">展望</h2>
+	<p>本文中，基于到达 Cloudflare 网络的流量，我们就互联网应用安全趋势分享了一些初步的见解。当然，我们仅仅触及了表面。今后，我们计划在 <a href="https://radar.cloudflare.com/" target="_blank">Cloudflare Radar</a>上直接发布带有动态过滤器的季度报告，并提供更深入的洞察和研究。</p>
+</div>

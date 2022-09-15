@@ -1,0 +1,398 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image5-20.png" class="kg-image" alt="應用程式安全：Cloudflare 的觀點"></figure>
+	<p>開發人員、部落客、企業負責人和大型企業等，都仰賴 Cloudflare 來維持其應用程式的安全性、可用性和效能。</p>
+	<p>為符合這些目標，我們在過去十二年打造了一個能夠保護數百萬部網際網路設備的智慧網路。截至 2022 年 3 月，<a href="https://w3techs.com/technologies/details/cn-cloudflare" target="_blank">W3Techs 報告指出</a>：</p>
+	<blockquote><em>「在使用我們已知的反向 Proxy 服務的網站中，有 80.6% 使用 Cloudflare。這個比率等於所有網站的 19.7%」</em></blockquote>
+	<p>Netcraft 是另一個爬行網路並監控採用情形的服務提供者 ，在其最新的<a href="https://news.netcraft.com/archives/2022/02/28/february-2022-web-server-survey.html" target="_blank">《網路伺服器調查》（Web Server Survey，2022 年 2 月）</a>中推測，活躍網站數量超過 2000 萬個：</p>
+	<blockquote><em>「Cloudflare 持續在百萬個最繁忙的網站中強勁成長，其中唯一顯著的增長是網站增加了 3,200 個，使其市占率提升到 19.4%」</em></blockquote>
+	<p>我們保護的網站廣度和多元性，以及與這些網站互動的數十億個瀏覽器和裝置等等，都讓我們取得獨特的深入解析，能夠瞭解網際網路上瞬息萬變的應用程式安全趨勢。在這篇文章中，我們分享了從透過我們網路每秒 3200 萬個 HTTP 要求中收集的一些深入解析。</p>
+	<h2 id="-">定義</h2>
+	<p>在我們檢閱資料之前，定義我們使用的字詞術語會相當實用。在這篇文章中，我們將提及以下字詞：</p>
+	<ul>
+		<li><strong>已緩解的流量</strong>：曾經由 Cloudflare 平台套用過「終止」動作的任何瀏覽型 HTTP* 要求，包括 <code>BLOCK</code>、<code>CHALLENGE</code>（例如 CAPTCHA 或 JavaScript 型挑戰）。此流量不包括套用過以下動作的要求：<code>LOG</code>、<code>SKIP</code>、<code>ALLOW</code>。</li>
+		<li><strong>傀儡程式流量/自動化流量</strong>：任何由 Cloudflare 的<a href="https://www.cloudflare.com/products/bot-management/" target="_blank">傀儡程式管理</a>系統識別為由傀儡程式產生的 HTTP 要求，包括分數介於 <a href="https://developers.cloudflare.com/bots/concepts/bot-score/" target="_blank">1 和 29</a> 之間的要求。</li>
+		<li><strong>API 流量</strong>：任何含有 <code>XML</code>、<code>JSON</code>、<code>gRPC</code> 或類似回應內容類型的 HTTP 要求。其中回應內容類型（由使用者代理指定）無法用於緩解的要求，因此會改為使用同等的 <code>Accept</code>。在後者的案例中，不會完全將 API 流量列入考量，但是為了深入解析之用，還是具有相當不錯的代表性。</li>
+	</ul>
+	<p>除非另有說明，否則本文中評估的時間範圍為 2021 年 12 月 1 日至 2022 年 3 月 1 日的三個月期間。</p>
+	<p>最後要注意的是，此資料僅依據在 Cloudflare 網路中觀察到的流量來計算，不一定代表網際網路中的整體 HTTP 流量模式。</p>
+	<!--kg-card-begin: markdown-->
+	<p><small>*提及 HTTP 流量時，同時意即 HTTP 和 HTTPS。</small></p>
+	<!--kg-card-end: markdown-->
+	<h2 id="--1">全球流量深入解析</h2>
+	<p>我們可以觀察的第一件事，就是在 Cloudflare 網路代理之所有 HTTP 要求中緩解的流量。這樣可讓我們在深入鑽研特定流量類型之前（例如傀儡程式和 API 流量）有一個適當的基準觀點。</p>
+	<h3 id="-cloudflare-http-8-">在所有 Cloudflare HTTP 流量中，有 8% 獲得緩解</h3>
+	<p>Cloudflare 平均每秒代理約 3200 萬個 HTTP 要求，峰值高達每秒超過 4400 萬個 HTTP 要求。整體而言，每秒約有 250 萬個要求會由我們的全球網路緩解，而且絕對不會抵達我們的快取或原始伺服器，因此能夠確保我們客戶的頻寬和運算能力僅用於乾淨的流量。</p>
+	<p>使用 Cloudflare 的網站擁有者可存取工具來緩解不需要或惡意的流量，並僅在要求視為乾淨要求時，才允許存取其應用程式。使用全受管功能（例如 <a href="https://www.cloudflare.com/ddos/" target="_blank">DDoS 緩解</a>、<a href="https://www.cloudflare.com/waf/" target="_blank">WAF</a> 受管規則集或結構描述驗證），以及透過可允許使用者定義自有的篩選條件來封鎖流量等，就可以實現此目標。</p>
+	<p>如果我們觀察緩解流量的前五大 Cloudflare 功能（來源），就會清楚瞭解各個 Cloudflare 功能在協助客戶網站與應用程式保持連線和維持安全方面所佔多少：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image7-1.png" class="kg-image" title="Chart"></figure>
+	<p>供參考的表格格式：</p>
+	<!--kg-card-begin: markdown-->
+	<style>
+		table {
+			width: 100%;
+		}
+	</style>
+	<table>
+		<thead>
+			<tr>
+				<th>來源</th>
+				<th>百分比 (%)</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>第 7 層 DDoS 緩解</td>
+				<td>66.0%</td>
+			</tr>
+			<tr>
+				<td>自訂 WAF 規則</td>
+				<td>19.0%</td>
+			</tr>
+			<tr>
+				<td>限速</td>
+				<td>10.5%</td>
+			</tr>
+			<tr>
+				<td>IP 威脅信譽</td>
+				<td>2.5%</td>
+			</tr>
+			<tr>
+				<td>受管 WAF 規則</td>
+				<td>1.5%</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<p>個別觀察每個緩解來源：</p>
+	<ul>
+		<li>可能不足為奇的是，<strong>第 7 層 DDoS 緩解</strong>對於緩解的 HTTP 要求所佔的總計數量最多（整體為 66%）。Cloudflare 第 7 層 DDoS 規則為全受管，且不需要使用者進行組態設定：它們會自動偵測龐大陣列的 HTTP DDoS 攻擊，包括由 <a href="https://blog.cloudflare.com/meris-botnet/">Meris 殭屍網路</a>、<a href="https://blog.cloudflare.com/zh-tw/cloudflare-blocks-an-almost-2-tbps-multi-vector-ddos-attack-zh-tw/">Mirai 殭屍網路</a>、已知的攻擊工具和其他來源所產生的攻擊。巨流量 DDoS 攻擊正如其名，會產生大量的惡意流量！</li>
+		<li><strong>自訂 WAF 規則</strong>在已緩解 HTTP 流量中佔比超過 19%。這些是透過 Cloudflare <a href="https://developers.cloudflare.com/ruleset-engine/rules-language/" target="_blank">wirefilter 語法</a>定義的使用者設定規則。我們稍後會在本文中進一步探索常見的規則模式。</li>
+		<li>使用我們的<strong>限速</strong>功能，客戶可依據應用程式偏好來定義自訂閾值。此功能經常用作應用程式的額外保護，能夠防止不足以視為 DDoS 攻擊的流量模式。在分析的時段中，限速在已緩解的 HTTP 要求中佔 10.5%。</li>
+		<li>在 Cloudflare 儀表板中，<strong>IP 威脅信譽</strong>以「安全性層級」揭露。根據我們在網路中觀察到的行為，Cloudflare 會自動指派威脅分數給每個 IP 位址。威脅分數超過指定的閾值時，我們就會查問該流量。此功能在所有已緩解 HTTP 要求中佔 2.5%。</li>
+		<li>我們的<strong>受管 WAF 規則</strong>是指由我們內部網路安全分析師團隊親自打造的規則，目標僅在比對有效的惡意負載。這些規則在所有已緩解要求中佔了約 15%。</li>
+	</ul>
+	<h3 id="http-">HTTP 異常是最常見的攻擊媒介</h3>
+	<p>如果我們深入鑽研受管 WAF 規則，就能夠清楚瞭解，惡意使用者會嘗試使用哪些類型的攻擊媒介來入侵我們保護的網際網路設備。</p>
+	<p>我們的受管 WAF 規則所阻擋的絕大多數（超過 54%）HTTP 要求含有 HTTP 異常，例如格式錯誤的方法名稱、標頭中有空值位元組字元、非標準連接埠，或是含有 <code>POST</code> 要求且長度為零的內容。</p>
+	<p>此類別中的常見攻擊類型如下所示。這些類型已依照相關性分組：</p>
+	<!--kg-card-begin: markdown-->
+	<style>
+		table {
+			width: 100%;
+		}
+	</style>
+	<table>
+		<thead>
+			<tr>
+				<th>規則類型</th>
+				<th>描述</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>缺少使用者代理程式</td>
+				<td>這些規則會封鎖任何缺少 <code>User-Agent</code> 標頭的所有要求。連線到網站時，所有瀏覽器和合法的網路爬蟲都會顯示此標頭。缺少使用者代理程式就是惡意要求的常見跡象。</td>
+			</tr>
+			<tr>
+				<td>非 <code>GET</code>、<code>POST</code> 或 <code>HEAD</code> 方法</td>
+				<td>大部分的應用程式僅允許標準的 <code>GET</code> 或 <code>POST</code> 要求（通常用於檢視頁面或提交表單）。瀏覽器也會經常因為網路安全目的而傳送 <code>HEAD</code> 要求。客戶使用我們的受管規則，能夠輕鬆封鎖任何其他方法，而這通常會導致封鎖大量的漏洞掃描程式。</td>
+			</tr>
+			<tr>
+				<td>缺少 Referer</td>
+				<td>使用者導覽時，應用程式、瀏覽器會使用 <code>Referer</code> 標頭來指出他們的來源。有些應用程式會期望一律顯示此標頭。</td>
+			</tr>
+			<tr>
+				<td>非標準連接埠</td>
+				<td>客戶可以設定 Cloudflare 受管規則，以封鎖嘗試存取非標準連接埠（例如 80 和 443）的 HTTP 要求。此活動通常會被漏洞掃描程式發現。</td>
+			</tr>
+			<tr>
+				<td>無效的 UTF-8 編碼</td>
+				<td>攻擊者經常會傳送在 UTF-8 編碼中無效的「特殊」字元，以嘗試入侵應用程式伺服器。</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<p>XSS 和 SQLi 這類較常見且較常參照的攻擊媒介在整體已緩解的要求中佔比約 13%。更有趣的是，目標鎖定為資訊揭露的攻擊排名第三 (10%)，而軟體特定的 CVE 型攻擊在已緩解的要求中佔比約 12%（比單 SQLi 更多），這強調了需要快速修補軟體的重要性，以及將 CVE 概念驗證 (PoC) 用於入侵應用程式的可能性，例如使用近期的 <a href="https://blog.cloudflare.com/tag/log4j/">Log4J</a> 漏洞。依照已緩解要求百分比的十大攻擊媒介如下所示：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image1-96.png" class="kg-image" title="Chart"></figure>
+	<p>供參考的表格格式：</p>
+	<!--kg-card-begin: markdown-->
+	<style>
+		table {
+			width: 100%;
+		}
+	</style>
+	<table>
+		<thead>
+			<tr>
+				<th>來源</th>
+				<th>百分比 (%)</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>HTTP 異常</td>
+				<td>54.5%</td>
+			</tr>
+			<tr>
+				<td>廠商特定的 CVE</td>
+				<td>11.8%</td>
+			</tr>
+			<tr>
+				<td>資訊揭露</td>
+				<td>10.4%</td>
+			</tr>
+			<tr>
+				<td>SQLi</td>
+				<td>7.0%</td>
+			</tr>
+			<tr>
+				<td>XSS</td>
+				<td>6.1%</td>
+			</tr>
+			<tr>
+				<td>檔案包含</td>
+				<td>3.3%</td>
+			</tr>
+			<tr>
+				<td>虛假傀儡程式</td>
+				<td>3.0%</td>
+			</tr>
+			<tr>
+				<td>命令資料隱碼</td>
+				<td>2.7%</td>
+			</tr>
+			<tr>
+				<td>開放式重新導向</td>
+				<td>0.1%</td>
+			</tr>
+			<tr>
+				<td>其他</td>
+				<td>1.5%</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<h3 id="-ip-">企業仍然仰賴以 IP 位址為基礎的存取清單來保護其資產</h3>
+	<p>在先前的段落中，我們提到 19% 的已緩解要求來自自訂 WAF 規則；這些是指 Cloudflare 客戶使用 <a href="https://developers.cloudflare.com/ruleset-engine/rules-language/" target="_blank">wirefilter 語法</a>實作的規則。在撰寫本文時，Cloudflare 客戶已部署總計約 650 萬個自訂 WAF 規則。</p>
+	<p>瞭解客戶使用哪些規則欄位來識別惡意流量相當有趣，因為這樣可幫助我們將心力專注於能夠實作哪些其他自動化緩解，以改善 Cloudflare 平台。</p>
+	<p>在所有自訂規則中，最常見的欄位仍然是來源 IP 位址或是從 IP 位址輕鬆衍生的欄位，約佔 64%，如用戶端國家/地區位置。值得注意的是，對於網路安全原則而言，IP 位址變成<a href="https://blog.cloudflare.com/icloud-private-relay/">實用性較低</a>的訊號，但經常是攻擊期間實作的最快速且最簡易的篩選條件類型。客戶也開始採用更完善的方法（例如我們 <a href="https://www.cloudflare.com/products/zero-trust/zero-trust-network-access/" target="_blank">Zero Trust 產品組合</a>中提供的方法），以進一步降低對 IP 位址型欄位的依賴。</p>
+	<p>十大欄位如下所示：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image2-79.png" class="kg-image" title="Chart"></figure>
+	<p>供參考的表格格式：</p>
+	<!--kg-card-begin: markdown-->
+	<style>
+		table {
+			width: 100%;
+		}
+	</style>
+	<table>
+		<thead>
+			<tr>
+				<th>欄位名稱</th>
+				<th>在規則中使用的百分比</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>ip</td>
+				<td>64.9%</td>
+			</tr>
+			<tr>
+				<td>ip_geoip_country</td>
+				<td>27.3%</td>
+			</tr>
+			<tr>
+				<td>http_request_uri</td>
+				<td>24.1%</td>
+			</tr>
+			<tr>
+				<td>http_user_agent</td>
+				<td>21.8%</td>
+			</tr>
+			<tr>
+				<td>http_request_uri_path</td>
+				<td>17.8%</td>
+			</tr>
+			<tr>
+				<td>http_referer</td>
+				<td>8.6%</td>
+			</tr>
+			<tr>
+				<td>cf_client_bot</td>
+				<td>8.3%</td>
+			</tr>
+			<tr>
+				<td>http_host</td>
+				<td>7.8%</td>
+			</tr>
+			<tr>
+				<td>ip_geoip_asnum</td>
+				<td>5.8%</td>
+			</tr>
+			<tr>
+				<td>cf_threat_score</td>
+				<td>4.4%</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<p>除了 IP 位址以外，標準 HTTP 要求欄位　(<code>URI</code>、<code>User-Agent</code>、<code>Path</code>、<code>Referer</code>) 也有成為最熱門欄位的傾向。此外也請注意，在整個規則主體中，一般規則會結合至少三個獨立欄位。</p>
+	<h2 id="--2">傀儡程式流量深入解析</h2>
+	<p>Cloudflare 早已提供<a href="https://www.cloudflare.com/products/bot-management/" target="_blank">傀儡程式管理</a>解決方案，讓客戶能夠取得可能存取其應用程式之自動化流量的深入解析。透過傀儡程式管理分類資料，我們得以對傀儡程式的世界進行深入的探討。</p>
+	<h3 id="38-http-">38% 的 HTTP 流量為自動化流量</h3>
+	<p>在分析的時段中，傀儡程式佔所有 HTTP 要求約 38%。此流量包括來自數百個 <a href="https://radar.cloudflare.com/verified-bots" target="_blank">Cloudflare 追蹤的已驗證傀儡程式</a>的傀儡程式流量，以及獲得的傀儡程式分數低於 30 的任何要求（意即有很高的可能性是自動化）。</p>
+	<p>整體而言，傀儡程式流量與某個網路安全組態相符時，客戶會允許 41% 的傀儡程式流量傳送至其原點，因此僅封鎖 6.4% 的自動化要求。請記住，這包括來自 GoogleBot 這類<a href="https://blog.cloudflare.com/friendly-bots/">已驗證傀儡程式</a>的流量；而這類傀儡程式最終會使網站擁有者和最終使用者受益。這也提醒著我們，其中和本身的自動化不一定會對網站有害。這就是為什麼我們將已驗證傀儡程式流量區隔出來，也是為什麼我們會為客戶提供精細的傀儡程式分數，而不是二進位的「傀儡程式或非傀儡程式」指標。在應對不同類型的傀儡程式流量時，網站操作人員會希望所擁有的彈性能夠嚴謹，而我們可以看到他們事實上的確會運用這種彈性。請注意，我們的自助客戶也能夠使用我們的 <a href="https://blog.cloudflare.com/zh-tw/super-bot-fight-mode-zh-tw/">Super Bot Fight Mode</a> 功能來決定如何處理傀儡程式流量。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image6-6.png" class="kg-image" title="Chart"></figure>
+	<p>供參考的表格資料：</p>
+	<!--kg-card-begin: markdown-->
+	<style>
+		table {
+			width: 100%;
+		}
+	</style>
+	<table>
+		<thead>
+			<tr>
+				<th>對所有傀儡程式流量採取的動作</th>
+				<th>百分比 (%)</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>允許</td>
+				<td>40.9%</td>
+			</tr>
+			<tr>
+				<td>記錄</td>
+				<td>31.9%</td>
+			</tr>
+			<tr>
+				<td>繞過</td>
+				<td>19.0%</td>
+			</tr>
+			<tr>
+				<td>封鎖</td>
+				<td>6.4%</td>
+			</tr>
+			<tr>
+				<td>jschallenge</td>
+				<td>0.5%</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<h3 id="-http-">超過三分之一的非驗證傀儡程式 HTTP 流量獲得緩解</h3>
+	<p>在 Cloudflare 觀察到的所有傀儡程式流量中，有 31% 未經驗證，且來自數千個自訂建置的自動化工具，例如掃描程式、網路爬蟲和駭客打造的傀儡程式。如同上方所提到的，自動化不一定代表這些傀儡程式會執行惡意動作。如果我們觀察客戶對於已識別之傀儡程式流量的回應，就會發現來自非驗證傀儡程式的 HTTP 要求中，有 38.5% 獲得緩解。與上方所示的整體傀儡程式流量動作相比，這顯然是更具防禦力的組態：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image4-17.png" class="kg-image" title="Chart"></figure>
+	<p>供參考的表格資料：</p>
+	<!--kg-card-begin: markdown-->
+	<style>
+		table {
+			width: 100%;
+		}
+	</style>
+	<table>
+		<thead>
+			<tr>
+				<th>對非驗證傀儡程式流量採取的動作</th>
+				<th>百分比 (%)</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>封鎖</td>
+				<td>34.0%</td>
+			</tr>
+			<tr>
+				<td>記錄</td>
+				<td>28.6%</td>
+			</tr>
+			<tr>
+				<td>允許</td>
+				<td>14.5%</td>
+			</tr>
+			<tr>
+				<td>繞過</td>
+				<td>13.2%</td>
+			</tr>
+			<tr>
+				<td>managed_challenge</td>
+				<td>3.7%</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<p>您會注意到，將近 30% 的客戶會記錄流量，而不是立即採取措施。我們發現，許多企業客戶選擇不立即封鎖傀儡程式流量，因此不會提供回饋訊號給攻擊者。取而代之的是，他們會偏好標記並監控該流量，以及之後再加以捨棄，或是將其重新導向至替代內容。隨著鎖定目標的攻擊媒介演進，對這些攻擊的回應也跟著演進，且變得更為成熟。此外，將近 3% 的非驗證傀儡程式流量會自動由我們的 DDoS 防護 (<code>connection_close</code>) 緩解。這些要求已漸漸成為用於攻擊客戶應用程式之殭屍網路的一部分。</p>
+	<h2 id="api-">API 流量深入解析</h2>
+	<p>時至今日，許多建置在網際網路上的應用程式並不適合由人類取用，而是針對電腦對電腦的通訊之用。揭露此用途之應用程式的常見方法是建置可透過 HTTP 存取的<a href="https://www.cloudflare.com/learning/security/api/what-is-an-api/" target="_blank">應用程式開發介面</a> (API)。</p>
+	<p>基於傳輸中資料的基礎格式，API 流量會逐漸變得比標準 Web 應用程式更具結構化，因此從網路安全角度而言，會產生各式各樣的問題。首先，結構化資料經常會導致 Web 應用程式防火牆 (WAF) 產生大量的誤判。其次，因為 API 的性質，它們經常不會被察覺到，而且許多公司最終會不自覺地揭露出舊式且未維護的 API，這些 API 經常稱為「影子 API」。</p>
+	<p>接下來，我們將瞭解 API 趨勢與上方全球流量深入解析相較的一些差異。</p>
+	<h3 id="10-api-">10% 的 API 流量獲得緩解</h3>
+	<p>有相當大部分的傀儡程式流量會存取 API 端點，而且<a href="https://blog.cloudflare.com/landscape-of-api-traffic/">正如先前討論</a>，API 流量是 Cloudflare 網路上成長最快速的流量類型，目前佔整體要求的 55%。</p>
+	<p>API 端點在全球接收的惡意要求比標準 Web 應用程式更多（10% 比 8%）；這可能表示，相較於標準 Web 應用程式，攻擊者會因為攻擊表面而較為集中在 API 上。</p>
+	<p>我們的 DDoS 緩解仍然是 API 端點已緩解事件的首要來源，在整體已緩解要求中佔比超過 63%。更有趣的是，自訂 WAF 規則佔 35%，與觀察全球流量時的 19% 不同。雖然我們期望 <a href="https://blog.cloudflare.com/zh-tw/api-gateway-zh-tw/">API 閘道</a>結構描述驗證功能在已緩解流量方面很快會超越自訂 WAF 規則，但客戶目前已大量使用 WAF 自訂規則來鎖定和驗證對 API 端點的流量。</p>
+	<h3 id="sqli-api-">SQLi 是 API 端點上最常見的攻擊媒介</h3>
+	<p>如果我們只觀察在 API 端點上的 WAF 受管規則緩解，我們會看到與全球趨勢相比有顯著的不同。這些差異包括在不同類型攻擊之間的分佈更為平均；但更顯著的是，SQL 資料隱碼攻擊位居首位。</p>
+	<p>命令資料隱碼攻擊也更為顯著 (14.3%)，而且還原序列化這類的媒介出現了，在整體已緩解的要求中佔了超過 1%。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/03/image3-36.png" class="kg-image" title="Chart"></figure>
+	<p>供參考的表格資料：</p>
+	<!--kg-card-begin: markdown-->
+	<style>
+		table {
+			width: 100%;
+		}
+	</style>
+	<table>
+		<thead>
+			<tr>
+				<th>來源</th>
+				<th>百分比 (%)</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>SQLi</td>
+				<td>34.5%</td>
+			</tr>
+			<tr>
+				<td>HTTP 異常</td>
+				<td>18.2%</td>
+			</tr>
+			<tr>
+				<td>廠商特定的 CVE</td>
+				<td>14.5%</td>
+			</tr>
+			<tr>
+				<td>命令資料隱碼</td>
+				<td>14.3%</td>
+			</tr>
+			<tr>
+				<td>XSS</td>
+				<td>7.3%</td>
+			</tr>
+			<tr>
+				<td>虛假傀儡程式</td>
+				<td>5.8%</td>
+			</tr>
+			<tr>
+				<td>檔案包含</td>
+				<td>2.3%</td>
+			</tr>
+			<tr>
+				<td>還原序列化</td>
+				<td>1.2%</td>
+			</tr>
+			<tr>
+				<td>資訊揭露</td>
+				<td>0.6%</td>
+			</tr>
+			<tr>
+				<td>其他</td>
+				<td>1.3%</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: markdown-->
+	<h2 id="--3">展望未來</h2>
+	<p>在本文中，我們根據傳送到 Cloudflare 網路的流量分享了一些有關網際網路應用程式安全趨勢的初始深入解析。當然，這些資訊僅是粗淺的解析。未來我們打算直接在 <a href="https://radar.cloudflare.com/" target="_blank">Cloudflare Radar</a> 上發佈含有動態篩選的季度報告，並提供更為深入的洞察與調查。</p>
+</div>
