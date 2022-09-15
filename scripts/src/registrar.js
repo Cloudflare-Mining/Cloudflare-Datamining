@@ -4,18 +4,27 @@ import {randomUUID} from 'node:crypto';
 import fs from 'fs-extra';
 import dateFormat from 'dateformat';
 import {markdownTable} from 'markdown-table';
+import pLimit from 'p-limit';
 import {createRequire} from "node:module";
+
 const require = createRequire(import.meta.url);
 const tlds = require('tlds');
-const psl = require('psl/data/rules.json');
 const lookupList = new Set(tlds);
-for(const tld of psl){
-	let pushTld = tld;
-	if(tld.startsWith('*.')){
-		pushTld = tld.slice(2);
-	}
-	lookupList.add(pushTld);
-}
+// DISABLE PSL FOR NOW
+// TOO SLOW, SO JUST ADD A COUPLE WE KNOW FOR SURE
+//const psl = require('psl/data/rules.json');
+// for(const tld of psl){
+// 	let pushTld = tld;
+// 	if(tld.startsWith('*.')){
+// 		pushTld = tld.slice(2);
+// 	}
+// 	lookupList.add(pushTld);
+// }
+
+lookupList.add('co.uk');
+lookupList.add('me.uk');
+lookupList.add('net.uk');
+lookupList.add('org.uk');
 const randomDomain = randomUUID();
 
 import {tryAndPush, cfRequest} from './utils.js';
@@ -24,48 +33,60 @@ const dir = path.resolve(`../data/registrar`);
 await fs.ensureDir(dir);
 
 const results = {};
-const batchSize = 30;
-const splicedArrays = [];
 const fullList = [...lookupList].sort();
-for(let i = 0; i < fullList.length; i += batchSize){
-	splicedArrays.push(fullList.slice(i, i + batchSize));
+
+const limit = pLimit(4);
+const promises = [];
+
+console.log(`Fetching domains. Total: ${fullList.length}`);
+for(const tld of fullList){
+	promises.push(limit(async () => {
+		const lookupDomain = `${randomDomain}.${tld}`;
+		if(results[tld]){
+			console.log(`Skipping ${tld} as it's already been fetched`);
+			return;
+		}
+		console.log(`Fetching for ${lookupDomain}`);
+		const res = await cfRequest(`https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/registrar/domains/search`, {
+			method: 'POST',
+			body: JSON.stringify({
+				query: lookupDomain,
+			}),
+		});
+		if(!res.ok){
+			console.warn(`Failed to fetch domains for ${lookupDomain}. Response code: ${res.status}`);
+			return;
+		}
+		const json = await res.json();
+		if(!json.result || !json.success){
+			return;
+		}
+		if(json.result?.check_result?.supported_tld === false){
+			return;
+		}
+		for(const domain of json.result?.domains ?? []){
+			const otherTld = domain.name.slice(Math.max(0, domain.name.indexOf('.') + 1));
+			if(results[otherTld]){
+				continue;
+			}
+			console.log(`Found supported TLD: ${otherTld}`);
+			results[otherTld] = {
+				price: domain.price,
+				renewal: domain.renewal,
+				icann_fee: domain.icann_fee,
+			};
+			const file = path.resolve(`${dir}/${otherTld}.json`);
+			await fs.writeFile(file, JSON.stringify(results[otherTld], null, '\t'));
+		}
+	}));
 }
 
-console.log(`Fetching in batches of ${batchSize}. Total batches: ${splicedArrays.length}`);
-for(const [index, batch] of splicedArrays.entries()){
-	console.log(`Fetching for batch ${index + 1} of ${splicedArrays.length}...`);
-	const res = await cfRequest(`https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/registrar/domains`, {
-		method: 'POST',
-		body: JSON.stringify({
-			id: batch.map(tld => `${randomDomain}.${tld}`),
-		}),
-	});
-	if(!res.ok){
-		throw new Error(`Failed to fetch domains for batch ${index + 1} of ${splicedArrays.length}. Response code: ${res.status}`);
-	}
-	const json = await res.json();
-	if(!json.result || !json.success){
-		continue;
-	}
-	for(const domain of json.result ?? []){
-		const otherTld = domain.name.slice(Math.max(0, domain.name.indexOf('.') + 1));
-		if(results[otherTld]){
-			continue;
-		}
-		if(!domain.fees.renewal_fee || domain.fees.renewal_fee?.toLowerCase?.() === 'unsupported'){
-			continue;
-		}
-		console.log(`Found supported TLD: ${otherTld}`);
-		results[otherTld] = domain.fees;
-		const file = path.resolve(`${dir}/${otherTld}.json`);
-		await fs.writeFile(file, JSON.stringify(domain.fees, null, '\t'));
-	}
-}
+await Promise.all(promises);
 
 // generate markdown table
 const files = await fs.readdir(dir);
 const rows = [
-	['TLD', 'ICANN fee', 'Redemption fee', 'Registrar fee', 'Renewal fee', 'Transfer fee'],
+	['TLD', 'ICANN fee', 'Price', 'Renewal'],
 ];
 for(const file of files){
 	if(!file.endsWith('.json')){
@@ -75,10 +96,8 @@ for(const file of files){
 	rows.push([
 		file.replace('.json', ''),
 		data.icann_fee,
-		data.redemption_fee,
-		data.registration_fee,
-		data.renewal_fee,
-		data.transfer_fee,
+		data.price,
+		data.renewal,
 	]);
 }
 const table = markdownTable(rows);
