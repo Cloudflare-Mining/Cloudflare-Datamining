@@ -5,28 +5,27 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<p><strong>About the Role</strong></p>
-<p>We are looking for a software engineer to join our DevTools team; an energetic team focused on improving developer velocity and productivity through tooling and automation.</p>
-<p>You will work on a range of tools, infrastructure, and services - new and existing - with an aim to elegantly and efficiently solve problems and deliver practical, maintainable, and scalable solutions.</p>
-<p>Reliability, performance, and developer experience (DX) are critical factors to our CI/CD pipeline which you will help monitor, operate, and improve/optimize.&nbsp;</p>
-<p>Our tech stack includes modern DevOps tooling like Docker, Kubernetes, Salt, Go (golang), Python, PostgreSQL, Kafka, and the usual Unix/Linux tools and workflows.</p>
-<p><strong>Requirements</strong></p>
+<h3 id="SystemsEngineer-R2Storage-Austin,TX-AbouttheDepartment"><strong>About the Department</strong></h3>
+<p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.&nbsp;</p>
+<h3 id="SystemsEngineer-R2Storage-Austin,TX-Whatyou'lldo"><strong>What you'll do</strong></h3>
+<p>Cloudflare's R2 Storage is distributed object storage accessible through Cloudflare's infrastructure allowing customers–both internal and external–the convenience of accessing their data from anywhere with the reliability and performance of Cloudflare infrastructure. In this role, you'll work with a top-notch engineering team to drive R2 Storage forward by ensuring continual reliability, maintaining best-in-class performance, and implementing new features and functionality.</p>
+<p>You will own your code from inception to release, delivering solutions at all layers of the software stack to empower Cloudflare customers. On any given day, you might write a design document that outlines how you plan to solve a specific problem, modify how R2 Storage processes requests, or fix a bug in how our user experience renders. You can expect to interact with a variety of languages and technologies including, but not limited to JavaScript, Typescript, Rust, and C++.</p>
+<h3 id="SystemsEngineer-R2Storage-Austin,TX-Examplesofdesirableskills,knowledgeandexperience"><strong>Examples of desirable skills, knowledge and experience</strong></h3>
 <ul>
-	<li>BA/BS in Computer Science or equivalent experience</li>
-	<li>2+ years professional experience as a Software Developer/Engineer</li>
-	<li>Knowledge of two or more mainstream programming languages (Go, C/C++, Python, PHP)</li>
-	<li>Proficiency with modern Unix/Linux operating systems/distributions</li>
-	<li>Experience with CI/CD, containers and/or virtualization, web servers, and databases</li>
+	<li>Experience building and managing high volume software applications.</li>
+	<li>Solid understanding of computer science fundamentals including data structures, algorithms, and object-oriented or functional design.</li>
+	<li>Knowledge of at least one modern strongly-typed programming language such as Go, Java, C#, Rust, or C++.</li>
+	<li>Experience debugging, optimizing and identifying failure modes in&nbsp;<span class="inline-comment-marker" data-ref="54d10e3b-73c1-4af9-8da4-e619f015c3b0">a large-scale Linux-based distributed system</span>.</li>
+	<li>Deep understanding of the web and technologies such as web browsers, HTTP, JavaScript and WebAssembly.</li>
 </ul>
-<p><strong>Bonus</strong></p>
+<h3 id="SystemsEngineer-R2Storage-Austin,TX-BonusPoints"><strong><span class="inline-comment-marker" data-ref="9d2723d0-7d67-4963-9e09-d584d29788bf">Bonus Points</span></strong></h3>
 <ul>
-	<li>Strong interpersonal and communication skills with a bias towards action</li>
-	<li>Professional experience as a Site Reliability Engineer (SRE)</li>
-	<li>Demonstrable experience with high-quality technical writing</li>
-	<li>Experience managing internal and/or external customer requirements and expectations</li>
-	<li>Experience defining SLOs/SLIs and implementing monitoring, alerting, and runbooks</li>
+	<li>Experience building and managing a large scale object storage platform.&nbsp;</li>
+	<li>Experience working in low-latency real time environments such as game streaming, game engine architecture, high frequency trading, payment systems</li>
+	<li>Experience working in a non-garbage collected language such as Rust or C++.</li>
+	<li>Experience writing Javascript and Typescript.&nbsp;</li>
+	<li>Deep Linux / UNIX systems knowledge.</li>
 </ul>
-<p>&nbsp;</p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
