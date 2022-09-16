@@ -3,7 +3,7 @@
 	"dist-tags": {
 		"latest": "2.1.4",
 		"pages": "0.0.0-96e612b",
-		"beta": "0.0.0-3d51d553",
+		"beta": "0.0.0-5a6ccc58",
 		"wasm": "0.0.0-c0d7699",
 		"d1": "0.0.0-c4c27925",
 		"queues": "0.0.0-52ce6df3"
@@ -93092,6 +93092,109 @@
 					}
 				],
 				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjI1V2ACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmoVtw//RH65z1/TkqqL5U4AGq05oKnvum1ikS+jIaLKZJCWCl9SkD1y\r\nSgG3HmSECRWFbEsJMQsmIoiZaQqy05MfD6miJ7A0yRVcPj5aE6/uLesAxr+o\r\nuYeeF2MxsGy0ACQfkIWKV33Uq6cAGyD7PNRtkaY+2Zus7G5L7RYZ694NebTk\r\nQP3DVU9EM9nVT7ep81/Qw5RKpAz0wVPUp0t4U9Z2tFADxs57UskzomoQjCx5\r\n7Lgl3HEQsmgwk38NpsOyGBh7e81CZWfdddxjwadRG1bJ+vypYGIorqMEWcHX\r\nQ4suLRm4IJb2Iw0gLRrqiEUgEIsNZtLUNvX9dyTepkrw6uTzUaYUFoHBj2Fw\r\npC6U9SSwzVUzOEAFrIFP+3NC9iaaSUsiZ62jAPzx8KVoM/qN03pRrxDDGf1Q\r\n3Fvjo1uYnXhnopwcf/6Qy/3crW9x0Awz/nbb2MVtuCdjwjxOxubAnTW0w/ca\r\n7/+xnRXo2s46GDMxWt0i99qzTTTTtnHdSf5vIUYTS28TE6fdlDjnvRi4l0iX\r\nOUTxHUGW5z/zQILzpb62zzI/S80RQrB3aQ2vIBAnG6PuOOtmpNXR/yK39U3z\r\nGxyDDEBgjkUxDaR6SNE0vT+uqDI2nTHlTrIckcUF/0fkA9TvT8koWSf/gxiQ\r\nL0SundvzQVTVj0d0Ci46XW7sV0bd54l9wl4=\r\n=K3aB\r\n-----END PGP SIGNATURE-----\r\n"
+			},
+			"engines": {
+				"node": ">=16.13.0"
+			}
+		},
+		"0.0.0-5a6ccc58": {
+			"name": "wrangler",
+			"version": "0.0.0-5a6ccc58",
+			"dependencies": {
+				"@cloudflare/kv-asset-handler": "^0.2.0",
+				"@esbuild-plugins/node-globals-polyfill": "^0.1.1",
+				"@esbuild-plugins/node-modules-polyfill": "^0.1.4",
+				"blake3-wasm": "^2.1.5",
+				"chokidar": "^3.5.3",
+				"esbuild": "0.14.51",
+				"miniflare": "^2.8.1",
+				"nanoid": "^3.3.3",
+				"path-to-regexp": "^6.2.0",
+				"selfsigned": "^2.0.1",
+				"source-map": "^0.7.4",
+				"xxhash-wasm": "^1.0.1",
+				"fsevents": "~2.3.2"
+			},
+			"devDependencies": {
+				"@iarna/toml": "^3.0.0",
+				"@microsoft/api-extractor": "^7.28.3",
+				"@types/busboy": "^1.5.0",
+				"@types/command-exists": "^1.2.0",
+				"@types/express": "^4.17.13",
+				"@types/glob-to-regexp": "0.4.1",
+				"@types/mime": "^2.0.3",
+				"@types/prompts": "^2.0.14",
+				"@types/react": "^17.0.37",
+				"@types/serve-static": "^1.13.10",
+				"@types/signal-exit": "^3.0.1",
+				"@types/supports-color": "^8.1.1",
+				"@types/ws": "^8.5.3",
+				"@types/yargs": "^17.0.10",
+				"@webcontainer/env": "^1.0.1",
+				"body-parser": "^1.20.0",
+				"busboy": "^1.6.0",
+				"clipboardy": "^3.0.0",
+				"cmd-shim": "^4.1.0",
+				"command-exists": "^1.2.9",
+				"concurrently": "^7.2.2",
+				"create-cloudflare": "^1.0.0",
+				"devtools-protocol": "^0.0.955664",
+				"dotenv": "^16.0.0",
+				"execa": "^6.1.0",
+				"express": "^4.18.1",
+				"faye-websocket": "^0.11.4",
+				"finalhandler": "^1.2.0",
+				"find-up": "^6.3.0",
+				"get-port": "^6.1.2",
+				"glob-to-regexp": "0.4.1",
+				"http-terminator": "^3.2.0",
+				"ignore": "^5.2.0",
+				"ink": "^3.2.0",
+				"ink-select-input": "^4.2.1",
+				"ink-spinner": "^4.0.3",
+				"ink-table": "^3.0.0",
+				"ink-testing-library": "^2.1.0",
+				"ink-text-input": "^4.0.3",
+				"is-ci": "^3.0.1",
+				"jest-fetch-mock": "^3.0.3",
+				"jest-websocket-mock": "^2.3.0",
+				"mime": "^3.0.0",
+				"msw": "^0.47.1",
+				"open": "^8.4.0",
+				"p-queue": "^7.2.0",
+				"pretty-bytes": "^6.0.0",
+				"prompts": "^2.4.2",
+				"react": "^17.0.2",
+				"react-error-boundary": "^3.1.4",
+				"serve-static": "^1.15.0",
+				"signal-exit": "^3.0.7",
+				"supports-color": "^9.2.2",
+				"timeago.js": "^4.0.2",
+				"tmp-promise": "^3.0.3",
+				"ts-dedent": "^2.2.0",
+				"undici": "^5.9.1",
+				"update-check": "^1.5.4",
+				"ws": "^8.5.0",
+				"xdg-app-paths": "^7.3.0",
+				"yargs": "^17.4.1"
+			},
+			"bin": {
+				"wrangler": "bin/wrangler.js",
+				"wrangler2": "bin/wrangler.js"
+			},
+			"dist": {
+				"integrity": "sha512-dw0xgzvD3C50dd9upIdrSoKJP/nec3vEJ7gUVY/n0e8hPXT782a3pC4/hAgA2wOAfVKMNKaLj55+Ila8A6/ZfQ==",
+				"shasum": "d36f84612ba28a1d4713248f78c5c77808f1b83e",
+				"tarball": "https://registry.npmjs.org/wrangler/-/wrangler-0.0.0-5a6ccc58.tgz",
+				"fileCount": 204,
+				"unpackedSize": 7950319,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIDOae7tNjb8GixaknKb2qZ+FY4MOO+oq7hNRAGjNT8puAiEA7GEI6dEkBFy3zVg5R4QREORsrFnKYMu+E3JWPyImFQM="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjJHrmACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmpz1BAAhxCEDolJG8qR/XYA82TD4m5ipL7QqZ8lJIIDJQsMp5VB8w6D\r\nIRCYdnxQaup43XynuTC+HpeJjH5U/y2zM5PjkYezQKKdQCQbw53mGrVS5xlw\r\nA4HSR12JyIE0WFDeJf2/SmqIPNpGaCZndkE+xa6PC3q5t9Ka+Dq5RR5vxtPt\r\nZj54Al6la39RAqpHfIT1cti8wsnUA57S+LKUOKdA+xdS5MlL93v756w6EZBi\r\ncQ16rSp84iVleJivrXRvAJZCqxE/a8YenvHokB2oluZdILxRrSX0iJR21TsS\r\nR1ahv6kjsrWsWeAd5AfutlYjv5piLDRi1lwhC/a3nmp5bBbEFPIoyP7QWRvz\r\nrdSvGMLrVkxWIJixCBvukEfq7IXORYETpdXamAf3IVtUvdKhKAM+Xwas4VWC\r\n8WkMUv15uA4HuF6LUSNRAkTHpYqYdqFfdHMqkZEZi3rj6skdD+dvXFyC/LG5\r\ngYLijbYgKxMbRP3LlGQbWusJMqhaLcxuTmRVGTj/dd/JEecwFNo8srMgFZvU\r\nmvZzEFmw6HOr/sTFtC0BAJz/EWZROHH4CRhIe4OGGHJPU8KFw9OltXWUchaE\r\n5wUORGjG4mGBD0zwV2KWQgACVPvDutviFgFFiwGiCUgnvGMHSdu3MuBTO1O9\r\nnmQkbi2XNRVk0ceeUVvYV3VLLTCxHK6DVW4=\r\n=Q7VH\r\n-----END PGP SIGNATURE-----\r\n"
 			},
 			"engines": {
 				"node": ">=16.13.0"
