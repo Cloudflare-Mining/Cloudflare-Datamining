@@ -161,7 +161,9 @@ export const ProductPlanId = eg.union([
   eg.literal('web3_ethereum_basic'),
   eg.literal('WEB3_ETHEREUM_BASIC'),
   eg.literal('web3_ethereum_premium'),
-  eg.literal('WEB3_ETHEREUM_PREMIUM')
+  eg.literal('WEB3_ETHEREUM_PREMIUM'),
+  eg.literal('beta_analytics_engine_api'),
+  eg.literal('BETA_ANALYTICS_ENGINE_API')
 ]);
 export type ProductPlanId = TypeFromCodec<typeof ProductPlanId>;
 
