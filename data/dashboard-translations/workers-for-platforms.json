@@ -31,5 +31,19 @@
 	"w4p.cli.done.title": "That's it! u{1F389}",
 	"w4p.cli.done.description": "You've installed Wrangler and deployed your project to Cloudflare. To support you along your journey developing with Workers for Platforms here are some resources:",
 	"w4p.cli.done.resources0": "Workers for Platforms docs",
-	"w4p.cli.done.continue_to_dashboard": "Continue to Dashboard"
+	"w4p.cli.done.continue_to_dashboard": "Continue to Dashboard",
+	"w4p.namespaces.title": "Dispatch Namespaces",
+	"w4p.namespaces_card.metrics.title": "Last 24 hrs",
+	"w4p.namespaces_card.metrics.requests": "Requests",
+	"w4p.namespaces_card.metrics.scripts": "Scripts",
+	"w4p.namespace_details.number_of_scripts": "Number of Scripts",
+	"w4p.namespace_details.number_of_requests": "Number of Requests",
+	"w4p.namespace_details.search_by_tags": "Search by tags",
+	"w4p.namespace_details.table.script_name": "Script Name",
+	"w4p.namespace_details.table.tags": "Tags",
+	"w4p.namespace_details.table.more_tag": "+ %{smart_count} more tag |||| + %{smart_count} more tags",
+	"w4p.namespace_details.delete_success": "%{script_id} was successfully deleted",
+	"w4p.namespace_details.no_scripts": "There are no scripts yet, create your Dispatch Worker and add a script, <0>start here</0>",
+	"w4p.namespace_details.no_search_results": "No tags matched your search. Try searching for a different name.",
+	"w4p.404.back": "Back to Workers for Platforms"
 }
