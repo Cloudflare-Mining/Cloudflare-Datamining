@@ -1,0 +1,13 @@
+---
+import Layout from '../layouts/Layout.astro';
+import FlagsTable from '../components/FlagsTable.astro';
+
+const importFiles = await Astro.glob('../../../data/account/zone_flags.json');
+const flags = importFiles[0].default;
+---
+<Layout title="Zone Flags - Cloudflare Datamining">
+	<main class="m-auto p-4 max-w-5xl">
+		<FlagsTable title="Zone Flags" data={flags}></FlagsTable>
+	</main>
+</Layout>
+

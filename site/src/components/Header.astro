@@ -1,0 +1,47 @@
+---
+const navItems = [
+	{
+		label: 'Account Flags',
+		path: '/account-flags',
+	},
+	{
+		label: 'Account Entitlements',
+		path: '/account-entitlements',
+	},
+	{
+		label: 'Zone Flags',
+		path: '/zone-flags',
+	},
+	{
+		label: 'Zone Entitlements',
+		path: '/zone-entitlements',
+	},
+	{
+		label: 'Registrar',
+		path: '/registrar',
+	},
+	{
+		label: 'Product: Pages',
+		path: '/product-pages',
+	},
+];
+---
+
+<header>
+	<nav class="flex items-center justify-between flex-wrap bg-blue-800 p-6">
+		<div class="flex items-center flex-shrink-0 text-white mr-6">
+			<span class="font-semibold text-xl tracking-tight">Cloudflare Datamining</span>
+		</div>
+
+		<nav class="w-full block flex-grow lg:flex lg:items-center lg:w-auto gap-4">
+			{navItems.map(item => (
+				<a
+					href={item.path}
+					class="block mt-4 lg:inline-block lg:mt-0 text-blue-100 hover:text-white"
+				>
+					{item.label}
+				</a>
+			))}
+		</nav>
+	</nav>
+</header>

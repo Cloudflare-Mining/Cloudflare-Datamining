@@ -1,0 +1,35 @@
+---
+export interface Props {
+	data: object;
+	title: string;
+}
+
+const {data, title}:{data: any, title:string} = Astro.props;
+
+function getValue(data:string|object){
+	if(typeof data === 'string'){
+		return data;
+	}
+	return JSON.stringify(data);
+}
+---
+<h1 class="my-4 text-3xl">{title}</h1>
+{Object.keys(data).map(category => (
+	<h2 class="text-xl mb-2">{category}</h2>
+	<table class="table-auto w-full mb-8 p-2">
+		<thead class="text-left border-b-2 border-b-gray-700 bg-gray-800 border-solid">
+			<tr>
+				<th class="p-1">Entitlement</th>
+				<th class="p-1">Default Value</th>
+			</tr>
+		</thead>
+		<tbody>
+			{Object.keys(data[category]).map((item:string) => (
+				<tr class="border-b border-b-gray-600 border-solid">
+					<td class="p-1 w-1/2">{item}</td>
+					<td class="p-1 w-1/2">{getValue(data[category][item])}</td>
+				</tr>
+			))}
+		</tbody>
+	</table>
+))}
