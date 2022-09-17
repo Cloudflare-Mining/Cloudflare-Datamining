@@ -55,6 +55,9 @@ const fetchURL = async function(url, waitFor, slug){
 	await page.setRequestInterception(true);
 	page.on('request', (request) => {
 		if(!slug){ return request.continue(); } // only disable this when hitting posts
+		if(request.url().includes('email-decode')){
+			return request.continue();
+		}
 		// effectively disable JS/CSS for faster loads
 		const resourceType = request.resourceType();
 		if(resourceType !== 'document'){
