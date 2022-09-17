@@ -234,7 +234,7 @@ if(startDpkgIndex && endDpkgIndex){
 			author: line[3],
 		};
 	}
-	const sorted = sortObjectByKeys(dkpg);
+	const sorted = sortObjectByKeys(dpkg);
 	await fs.writeJson(path.resolve(dir, 'deployments-logs-dpkg.json'), sorted, {spaces: '\t'});
 }
 
