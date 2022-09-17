@@ -1,0 +1,55 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Table from '../components/Table.astro';
+
+const importFiles = await import.meta.glob('../../../data/products/pages/*.json');
+
+const packageVersions: any = await importFiles[Object.keys(importFiles).find(path => path.endsWith('deployments-logs-dpkg.json')) as string]();
+const CPU: any = await importFiles[Object.keys(importFiles).find(path => path.endsWith('deployments-logs-lscpu.json')) as string]();
+const env: any = await importFiles[Object.keys(importFiles).find(path => path.endsWith('deployments-logs-env.json')) as string]();
+const OS: any = await importFiles[Object.keys(importFiles).find(path => path.endsWith('deployments-logs-os-release.json')) as string]();
+---
+<Layout title="Product: Pages - Cloudflare Datamining">
+	<main class="m-auto p-4 max-w-5xl">
+		<h1 class="my-4 text-3xl">Product: Pages</h1>
+
+		<!-- Environment -->
+		<h2 class="my-4 text-xl">Environment</h2>
+		<Table
+			headers = {["Key", "Value"]}
+			data = {Object.keys(env.default).map((item:string) => [item, JSON.stringify(env.default[item], null, '\t')])}
+		></Table>
+
+		<!-- OS -->
+		<h2 class="my-4 text-xl">OS Info</h2>
+		<Table
+			headers = {["Key", "Value"]}
+			data = {Object.keys(OS.default).map((item:string) => [item, OS.default[item]])}
+		></Table>
+
+		<!-- CPU -->
+		<h2 class="my-4 text-xl">CPU Info</h2>
+		<Table
+			headers = {["Key", "Value"]}
+			data = {Object.keys(CPU.default).map((item:string) => [item, CPU.default[item]])}
+		></Table>
+
+		<!-- Package versions -->
+		<h2 class="my-4 text-xl">Package Versions</h2>
+		<Table
+			headers = {["Package", "Version", "Description", "Author"]}
+			data = {Object.keys(packageVersions.default).map((item:string) => [
+				item,
+				packageVersions.default[item]?.version,
+				packageVersions.default[item]?.short_description,
+				packageVersions.default[item]?.author,
+			])}
+		></Table>
+	</main>
+</Layout>
+
+<style>
+	dt:after {
+		content: ': ';
+	}
+</style>

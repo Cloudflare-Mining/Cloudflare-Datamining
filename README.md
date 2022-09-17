@@ -4,6 +4,8 @@
 
 This repository mines a lot of publicly available data from Cloudflare, including their customer dashboard, NPM/GitHub repos, marketing site, and more. Automated commits will be made frequently and will show how the data changes over time.
 
+Some of the data can be visualised on the website at https://cfdata.lol.
+
 You can join the Discord at https://discord.gg/Z94Hn6qVDm for notifications of changes.
 
 ## Structure

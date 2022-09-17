@@ -17,6 +17,10 @@ const navItems = [
 		path: '/zone-entitlements',
 	},
 	{
+		label: 'GraphQL',
+		path: '/graphql',
+	},
+	{
 		label: 'Registrar',
 		path: '/registrar',
 	},
@@ -30,18 +34,22 @@ const navItems = [
 <header>
 	<nav class="flex items-center justify-between flex-wrap bg-blue-800 p-6">
 		<div class="flex items-center flex-shrink-0 text-white mr-6">
-			<span class="font-semibold text-xl tracking-tight">Cloudflare Datamining</span>
+			<a href="/" class="font-semibold text-xl tracking-tight">Cloudflare Datamining</a>
 		</div>
 
 		<nav class="w-full block flex-grow lg:flex lg:items-center lg:w-auto gap-4">
 			{navItems.map(item => (
 				<a
 					href={item.path}
-					class="block mt-4 lg:inline-block lg:mt-0 text-blue-100 hover:text-white"
+					class={[
+						Astro.url.href.endsWith(item.path) ? 'underline underline-offset-4	' : '',
+						"block mt-4 lg:inline-block lg:mt-0 text-blue-100 hover:text-white",
+					].join(' ').trim()}
 				>
 					{item.label}
 				</a>
 			))}
+			<a href="https://discord.gg/Z94Hn6qVDm" target="_blank" class="ml-auto block mt-4 lg:inline-block lg:mt-0 text-blue-100 hover:text-white">Discord</a>
 		</nav>
 	</nav>
 </header>

@@ -1,0 +1,13 @@
+---
+import Layout from '../layouts/Layout.astro';
+import FlagsTable from '../components/FlagsTable.astro';
+
+const importFiles = await Astro.glob('../../../data/other/graphql.json');
+const flags = importFiles[0].default;
+
+---
+<Layout title="GraphQL - Cloudflare Datamining">
+	<main class="m-auto p-4 max-w-5xl">
+		<FlagsTable title="GraphQL" data={flags}></FlagsTable>
+	</main>
+</Layout>
