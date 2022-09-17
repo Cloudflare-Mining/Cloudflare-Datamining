@@ -42,7 +42,7 @@ const navItems = [
 				<a
 					href={item.path}
 					class={[
-						Astro.url.href.endsWith(item.path) ? 'underline underline-offset-4	' : '',
+						Astro.url.href.endsWith(item.path) || Astro.url.href.endsWith(item.path + '/') ? 'underline underline-offset-4	' : '',
 						"block mt-4 lg:inline-block lg:mt-0 text-blue-100 hover:text-white",
 					].join(' ').trim()}
 				>
