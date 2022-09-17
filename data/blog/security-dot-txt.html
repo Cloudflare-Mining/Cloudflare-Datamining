@@ -51,10 +51,10 @@ const main = async () =&gt; {
 }
 </code></pre>
 	<!--kg-card-end: markdown-->
-	<p>We’ve also leveraged this benefit in our Make targets where at build time we ensure that the deployed security.txt is clearsigned with the [email protected]:</p>
+	<p>We’ve also leveraged this benefit in our Make targets where at build time we ensure that the deployed security.txt is clearsigned with the <a href="https://www.cloudflare.com/gpg/security-at-cloudflare-pubkey-06A67236.txt" target="_blank">security@cloudflare.com PGP key</a>:</p>
 	<!--kg-card-begin: markdown-->
 	<pre><code>sign:
-	gpg --local-user [email protected] -o src/txt/security.txt --clearsign src/txt/security.txt.temp
+	gpg --local-user security@cloudflare.com -o src/txt/security.txt --clearsign src/txt/security.txt.temp
 	rm src/txt/security.txt.temp
 </code></pre>
 	<!--kg-card-end: markdown-->

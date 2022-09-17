@@ -17,11 +17,11 @@
       body: JSON.stringify({
         personalizations: [
           {
-            to: [{ email: '[email protected]', name: 'Test Recipient' }],
+            to: [{ email: 'test@example.com', name: 'Test Recipient' }],
           },
         ],
         from: {
-          email: '[email protected]',
+          email: 'sender@example.com',
           name: 'Workers - MailChannels integration',
         },
         subject: 'Look! No servers',
@@ -45,10 +45,10 @@
 export const onRequest = mailchannelsPlugin({
   personalizations: [
     {
-      to: [{ name: "ACME Support", email: "[email protected]" }],
+      to: [{ name: "ACME Support", email: "hello@example.com" }],
     },
   ],
-  from: { name: "Enquiry", email: "[email protected]" },
+  from: { name: "Enquiry", email: "no-reply@example.com" },
   respondWith: () =&gt;
     new Response(null, {
       status: 302,

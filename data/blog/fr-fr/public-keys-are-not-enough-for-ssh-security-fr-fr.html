@@ -40,7 +40,7 @@
 	<pre><code class="language-ssh">cloudflared access ssh-config --hostname vm.example.com --short-lived-cert</code></pre>
 	<p>Le champ <code>--hostname</code> contiendra le nom d'hôte ou le sous-domaine générique de la ressource protégée par Access. Une fois exécuté, <code>cloudflared</code> imprimera les détails des configurations suivantes :</p>
 	<pre><code class="language-ssh">Host vm.example.com
-    ProxyCommand bash -c '/usr/local/bin/cloudflared access ssh-gen --hostname %h; ssh -tt %[email protected] &gt;&amp;2 &lt;&amp;1'
+    ProxyCommand bash -c '/usr/local/bin/cloudflared access ssh-gen --hostname %h; ssh -tt %r@cfpipe-vm.example.com &gt;&amp;2 &lt;&amp;1'
     
 Host cfpipe-vm.example.com
     HostName vm.example.com
@@ -51,7 +51,6 @@ Host cfpipe-vm.example.com
 	<p>Dans leur appareil, <code>cloudflared</code> créera la session et délivrera le certificat client correspondant à leur identité.</p>
 	<!--kg-card-begin: html-->
 	<stream src="bb9667207c9686037858c6534ff7d6bc" controls=""></stream>
-	<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 	<script data-cfasync="false" defer="" type="text/javascript" src="https://embed.videodelivery.net/embed/r4xu.fla9.latest.js?video=bb9667207c9686037858c6534ff7d6bc"></script>
 	<!--kg-card-end: html-->
 	<h2 id="et-ensuite"><strong>Et ensuite ?</strong></h2>

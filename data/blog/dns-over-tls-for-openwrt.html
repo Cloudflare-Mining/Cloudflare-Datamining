@@ -46,10 +46,10 @@ opkg remove dnsmasq
 	</p>
 	<pre><code>forward-zone:
   name: "."
-  forward-addr: [email protected]                   
-  forward-addr: [email protected]                             
-  forward-addr: 2606:4700:4700::[email protected]
-  forward-addr: 2606:4700:4700::[email protected]
+  forward-addr: 1.1.1.1@853                   
+  forward-addr: 1.0.0.1@853                             
+  forward-addr: 2606:4700:4700::1111@853
+  forward-addr: 2606:4700:4700::1001@853
   forward-ssl-upstream: yes   
 </code></pre>
 	<p>In the Unbound configuration file at <code>/etc/config/unbound</code>, I've added some required configuration parameters as outlined in the package documentation. In my case, I backed up the configuration file and simply used the following:</p>

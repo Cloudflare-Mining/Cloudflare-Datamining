@@ -34,7 +34,7 @@
 	<p>Untuk membuat aturan penyertaan berbasis domain untuk example.com:</p>
 	<!--kg-card-begin: markdown-->
 	<pre><code>curl -X PUT "https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/devices/policy/include" \
-     -H "X-Auth-Email: [email protected]" \
+     -H "X-Auth-Email: user@example.com" \
      -H "X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41" \
      -H "Content-Type: application/json" \
      --data '[{"host":"*.example","description":"Include all traffic to example.com in the tunnel"}]'
@@ -77,7 +77,7 @@ resource "cloudflare_split_tunnel" "example_split_tunnel_include" {
             "serial_number": "VMware-56",
             "updated": "2021-12-01T17:14:30.110663Z",
             "user": {
-                "email": "[email protected]",
+                "email": "user@example.com",
                 "id": "6a8e079d-8a33-4677-b610-a5e361c0c959"
             },
             "version": "2021.11.278"
@@ -96,7 +96,7 @@ resource "cloudflare_split_tunnel" "example_split_tunnel_include" {
             "serial_number": "7CHR3Z2",
             "updated": "2021-11-23T20:03:12.046067Z",
             "user": {
-                "email": "[email protected]",
+                "email": "user2@example.com",
                 "id": "39663a0d-9f7c-4a24-ae7f-f869a8cf07f1"
             },
             "version": "2021.11.34"

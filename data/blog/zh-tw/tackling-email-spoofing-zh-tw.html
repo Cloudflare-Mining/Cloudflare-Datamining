@@ -9,8 +9,8 @@
 	<p>然後，也有<strong>電子郵件詐騙</strong>。為了瞭解它是如何工作的，請看一下我通過自己的個人電子郵件地址收到的一封 Cloudflare 產品更新電子郵件。對於大多數電子郵件提供者，您可以查看電子郵件的完整源代碼，其中包含多個標頭以及電子郵件的主體。</p>
 	<!--kg-card-begin: markdown-->
 	<pre><code>Date: Thu, 23 Sep 2021 10:30:02 -0500 (CDT)
-From: Cloudflare &lt;[email protected]&gt;
-Reply-To: [email protected]
+From: Cloudflare &lt;product-updates@cloudflare.com&gt;
+Reply-To: product-updates@cloudflare.com
 To: &lt;my_personal_email_address&gt;
 </code></pre>
 	<!--kg-card-end: markdown-->
@@ -43,7 +43,7 @@ To: &lt;my_personal_email_address&gt;
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/09/image12-7.png" class="kg-image"></figure>
 	<p>上圖顯示了爲確保收到的郵件符合 SPF 原則所採取的步驟。</p>
 	<ol>
-		<li>電子郵件發送自 IP 位址 203.0.113.10，包含的 From 標頭值為[email protected]。</li>
+		<li>電子郵件發送自 IP 位址 203.0.113.10，包含的 From 標頭值為hannes@mycoolwebpage.xyz。</li>
 		<li>收到這封電子郵件后，接收者查詢 mycoolwebpage.xyz 上 SPF 記錄，以獲得這個網域的 SPF 原則。</li>
 		<li>接收者檢查發送 IP 位址203.0.113.10 是否列於 SPF 記錄中。如是，該電子郵件成功完成 SPF 檢查。否則，all機制的限定詞定義結果。</li>
 	</ol>
@@ -71,7 +71,7 @@ To: &lt;my_personal_email_address&gt;
 	<p>基於網域的訊息驗證報告和合格性，讀起來絕對很拗口。我們只要將重點放在兩個詞即可：<em>報告</em>和<em>合格性</em>。DMARC 正是提供這兩者。一般報告可讓電子郵件寄件者知道有多少電子郵件不合格並且可能遭到假冒。合格性有助於向電子郵件收件者提供清楚的訊號，瞭解如何處理不合格的電子郵件。電子郵件收件者可能會針對未通過 SPF 或 DKIM 檢查的電子郵件強制執行自己的原則，甚至在沒有 DMARC 記錄的情況下進行。不過，在 DMARC 記錄上設定的原則是電子郵件寄件者的明確指示，因此這會讓電子郵件收件者在處理不合格的電子郵件時提升信心。</p>
 	<p>以下是 cloudflare.com 的 DMARC 記錄</p>
 	<!--kg-card-begin: markdown-->
-	<pre><code>_dmarc.cloudflare.com.   TXT   "v=DMARC1; p=reject; pct=100; rua=mailto:[email protected]"
+	<pre><code>_dmarc.cloudflare.com.   TXT   "v=DMARC1; p=reject; pct=100; rua=mailto:rua@cloudflare.com"
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>DMARC TXT 記錄永遠設定在電子郵件網域的 _dmarc 子網域，而且——類似於 SPF 和 DKIM ——內容需要以 v=DMARC1 開始。然後，我們會看見其他三個標記：</p>
@@ -81,7 +81,7 @@ To: &lt;my_personal_email_address&gt;
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/09/unnamed3.png" class="kg-image"></figure>
 	<p>以上，我們可以看到 DMARC 是如何逐步工作的。<br></p>
 	<ol>
-		<li>From 標頭包含[email protected] 的電子郵件被發出。</li>
+		<li>From 標頭包含hannes@mycoolwebpage.xyz 的電子郵件被發出。</li>
 		<li>接收者查詢網域 mycoolwebpage.xyz 的 SPF、DKIM 和 DMARC 記錄以獲取所需原則和 DKIM 公開金鑰。</li>
 		<li>接收者執行如上所述的 SPF 和 DKIM 檢查。如兩者均通過，該電子郵件被接受並投遞到收件箱。如果 SPF 或 DKIM 檢查失敗，將遵循 DMARC 原則並確定郵件是否仍被接受、丟棄或發送到垃圾郵件資料夾。</li>
 		<li>最後，接收者返回一個彙總報告。根據 rua 標記中指定的電子郵件，報告也可能被發送到負責該電子郵件的另一個電子郵件伺服器。</li>

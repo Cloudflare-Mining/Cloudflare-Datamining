@@ -55,7 +55,7 @@
 -X PUT \
 -H "X-Auth-Email: $CF_EMAIL" \
 -H "X-Auth-Key: $CF_KEY" \
--F '[email protected];type=application/javascript' -F 'metadata={"body_part": "script", "bindings": [{"name": "LOGCARD", "type": "kv_namespace", "namespace_id": "&lt;REDACTED NAMESPACE ID&gt;"}]};type=application/json' &lt; babbage.js
+-F 'script=@-;type=application/javascript' -F 'metadata={"body_part": "script", "bindings": [{"name": "LOGCARD", "type": "kv_namespace", "namespace_id": "&lt;REDACTED NAMESPACE ID&gt;"}]};type=application/json' &lt; babbage.js
 
 {
   "result": {

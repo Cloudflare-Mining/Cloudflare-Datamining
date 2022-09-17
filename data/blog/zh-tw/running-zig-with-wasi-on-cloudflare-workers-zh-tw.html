@@ -76,7 +76,7 @@ $ echo "Hello\nWorld" | wasmtime ./zig-out/bin/print-with-line-numbers.wasm
 	<p>在二進位檔準備就緒後，最後一件事是使用 <a href="https://blog.cloudflare.com/wrangler-v2-beta/">wrangler2</a> 在 Cloudflare Workers 上執行它。這就像在 workers.dev 上發佈 .wasm 檔案一樣簡單。如果您沒有 <a href="https://workers.dev/" target="_blank">workers.dev</a> 帳戶，則可以遵循<a href="https://developers.cloudflare.com/workers/get-started/guide/" target="_blank">入門指南</a>中的教學課程進行操作，這將幫助您在幾分鐘內完成從編寫程式碼到部署的過程！</p>
 	<p>事實上，在我注册帳戶後，只需要完成前兩個步驟即可：即安裝 Wrangler 和登入。</p>
 	<!--kg-card-begin: markdown-->
-	<pre><code>$ npx [email protected] login
+	<pre><code>$ npx wrangler@wasm login
 Attempting to login via OAuth...
 Opening a link in your default browser: https://dash.cloudflare.com/oauth2/auth
 Successfully logged in.
@@ -84,7 +84,7 @@ Successfully logged in.
 	<!--kg-card-end: markdown-->
 	<p>然後，我執行了下列命令來發佈 Worker：</p>
 	<!--kg-card-begin: markdown-->
-	<pre><code>$ npx [email protected] publish --name print-with-line-numbers --compatibility-date=2022-07-07 zig-out/bin/print-with-line-numbers.wasm
+	<pre><code>$ npx wrangler@wasm publish --name print-with-line-numbers --compatibility-date=2022-07-07 zig-out/bin/print-with-line-numbers.wasm
 Uploaded print-with-line-numbers (3.04 sec)
 Published print-with-line-numbers (6.28 sec)
   print-with-line-numbers.workers.dev

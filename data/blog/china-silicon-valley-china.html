@@ -123,7 +123,7 @@
 	<p>Once I had my site up and running on Cloudflare, I learned how to make API calls to pull down the our Enterprise raw logs and use jq to sort them (jq, I learned, is “a lightweight and flexible command-line JSON processor”):</p>
 	<p></p>
 	<!--kg-card-begin: markdown-->
-	<pre><code>curl -H "X-Auth-Email: [email protected]" -H "X-Auth-Key:
+	<pre><code>curl -H "X-Auth-Email: aschafer@cloudflare.com" -H "X-Auth-Key:
 cc1e78b22222229b9d72643fbda69655579d" -H "Content-Type: application/json" 
 "https://api.cloudflare.com/client/v4/zones/f5fb827cf31f628c1c0730bc4b0792d
 d/logs/requests?start=0&amp;count=1" | jq 'select(.clientRequest.uri == 
@@ -178,7 +178,6 @@ d/logs/requests?start=0&amp;count=1" | jq 'select(.clientRequest.uri ==
 		<blockquote class="twitter-tweet">
 			<p lang="en" dir="ltr">"For a reason I don’t understand yet, members of the Cloudflare engineering team own over 2% of all active .horse domains in the world" &gt; <a href="https://t.co/IhGW55Oi2h" target="_blank">https://t.co/IhGW55Oi2h</a></p>— Neil Levine (@neilwlevine) <a href="https://twitter.com/neilwlevine/status/1099051366079619072?ref_src=twsrc%5Etfw" target="_blank">February 22, 2019</a>
 		</blockquote>
-		<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 		<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 	</figure>
 	<p>Well, Neil, the reason for this is that a few engineers and myself had big plans of launching a website around the Big Horse Award, we bought big.horse and a few others, but we didn’t follow through—yet. Stay tuned.</p>

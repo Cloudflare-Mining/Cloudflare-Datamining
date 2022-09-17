@@ -20,7 +20,7 @@ workers.dev.    161  IN  A  198.41.214.162
 	<p>Once a packet hits our data center it is processed by a router. That router sends the traffic to one of a set of servers responsible for handling that address using a routing strategy called ECMP (Equal-Cost Multi-Path). ECMP refers to the situation where the router doesn’t have a clear ‘winner’ between multiple routes, it has multiple good next hops, all to the same ultimate destination. In our case we hack that concept a bit, rather than using ECMP to balance across multiple intermediary links, we make the intermediary link addresses the final destination of our traffic: our servers.</p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/09/image6.png" class="kg-image"></figure>
 	<p>Here's the configuration of a Juniper-brand router of the type which might be in one of our data centers, and which is configured to balance traffic across three destinations:</p>
-	<pre><code class="language-ini">[email protected]# show routing-options
+	<pre><code class="language-ini">user@host# show routing-options
 
 static {
   route 172.16.1.0/24 next-hop [ 172.16.2.1 172.16.2.2 172.16.2.3 ];

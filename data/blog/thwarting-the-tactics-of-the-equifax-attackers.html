@@ -20,7 +20,7 @@
 	<p>The Struts vulnerability, <a href="https://nvd.nist.gov/vuln/detail/CVE-2017-5638" target="_blank">CVE-2017-5638</a>, which is protected by rule 100054 in Cloudflare Specials, was quite simple. In a payload targeted at the web-server, a specific command could be executed which can be seen in the example below:</p>
 	<pre><code>"(#context.setMemberAccess(#dm))))."
 "(#cmd='touch /tmp/hacked')."
-"(#iswin=(@[email protected]('os.name').toLowerCase().contains('win')))."
+"(#iswin=(@java.lang.System@getProperty('os.name').toLowerCase().contains('win')))."
 "(#cmds=(#iswin?{'cmd.exe','/c',#cmd}:{'/bin/bash','-c',#cmd}))."
 "(#p=new java.lang.ProcessBuilder(#cmds))."
 </code></pre>
@@ -33,36 +33,36 @@
 &lt;/next&gt;
 </code></pre>
 	<p>And the result from the test:</p>
-	<pre><code>[email protected]:~$ ls /tmp
+	<pre><code>root@struts-demo:~$ ls /tmp
 hacked
-[email protected]:~$
+root@struts-demo:~$
 </code></pre>
 	<p>In the last week, we have seen over 180,000 hits on our WAF rules protecting against Apache Struts across the Cloudflare network.</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2017/11/Struts-1.png" alt=""></p>
 	<h3 id="sqlinjection">SQL Injection</h3>
 	<p>SQL Injection (SQLi) is an attempt to inject nefarious queries into a GET or POST dynamic variable, which is used to query a database. Cloudflare, on a day to day basis will see over 2.3m SQLi attempts on our network. Most commonly, we see SQLi attacks against Wordpress sites, as it is one of the biggest web applications used on Cloudflare today. Wordpress is used by some of the world's giants, like Sony Music, all the way down to "mom &amp; pop" businesses. The challenge with being the leader in the space, is you then become a hot target. Looking at the CVE list as we near the close of 2017, there have been 41 vulnerabilities found in multiple versions of Wordpress which would force people to upgrade to the latest versions. To protect our customers, and buy them time to upgrade, Cloudflare works with a number of vendors to address vulnerabilities and then virtual-patching using our WAF to prevent these vulnerabilities being exploited.</p>
 	<p>The way a SQL injection works is by "breaking out" or malforming a query when a web application is needing data from a database. As an example, a Forgotten Password page has a single email input field, which will be used to validate whether the username exists, and if so, sends the user a “Forgotten Password” link. Below is a straightforward SQL query example, which could be used in a web application:</p>
-	<pre><code>SELECT user, password FROM users WHERE user = '[email protected]';
+	<pre><code>SELECT user, password FROM users WHERE user = 'john@smith';
 </code></pre>
 	<p>Which results in:</p>
 	<pre><code>+------------+------------------------------+
 |    user   |           password           |
 +------------+------------------------------+
-| [email protected] | $2y$10$h9XJRX.EBnGFrWQlnt... |
+| john@smith | $2y$10$h9XJRX.EBnGFrWQlnt... |
 +------------+------------------------------+
 </code></pre>
 	<p>Without the right query validation, an attacker could escape out of this query, and carry out some extremely malicious queries. For example, if an attacker was looking to takeover another user’s account, and an attacker found that the query validation was inadequate, he could escape the query, and UPDATE the username, which is an email address in this instance, to his own. This can simply be done by entering the query string below into the email input field, instead of an email address.</p>
-	<pre><code>[email protected]’;UPDATE users SET user = ‘[email protected]’ WHERE user = ‘[email protected]’;
+	<pre><code>dontcare@bla.com’;UPDATE users SET user = ‘mr@robot’ WHERE user = ‘john@smith’;
 </code></pre>
 	<p><img src="https://blog.cloudflare.com/content/images/2017/11/emaileg.png" alt=""><br>
 		Due to the lack of validation, the query which the web application sends to the database will be:</p>
-	<pre><code>SELECT user, password FROM users WHERE user = '[email protected]’;UPDATE users SET user = ‘[email protected]’ WHERE user = ‘[email protected]’;
+	<pre><code>SELECT user, password FROM users WHERE user = 'dontcare@bla.com’;UPDATE users SET user = ‘mr@robot’ WHERE user = ‘john@smith’;
 </code></pre>
 	<p>Now this has been updated, the attacker can now request a password reset using his own email address, gaining him access to the victim’s account.</p>
 	<pre><code>+----------+------------------------------+
 |  user   |           password           |
 +----------+------------------------------+
-| [email protected] | $2y$10$h9XJRX.EBnGFrWQlnt... |
+| mr@robot | $2y$10$h9XJRX.EBnGFrWQlnt... |
 +----------+------------------------------+
 </code></pre>
 	<p>Many SQLi attacks are often on fields which are not often considered high risk, like an authentication form for example. To put the seriousness of SQLi attacks in perspective, in the last week, we have seen over 2.4 million matches.</p>
@@ -70,6 +70,6 @@ hacked
 	<p>The Cloudflare WAF is built to not only protect customers against SQLi and RCE based attacks, but also add protection against Cross Site Scripting (XSS) and a number of other known attacks. On an average week, just on our Cloudflare Specials WAF ruleset, we see over 138 million matches.</p>
 	<p><img src="https://blog.cloudflare.com/content/images/2017/11/WAF.png" alt=""></p>
 	<p>The next important part is communication and awareness; understanding what you have installed, what versions you are running, and most importantly, what announcements your vendor is making. Generally, most notifications are received via email, and are usually quite cumbersome to digest, regardless of their complexity, it is crucial to try and understand them.</p>
-	<p>And, finally, the last line of defense is to have protection in front of your application, which is where Cloudflare can help. At Cloudflare, Security is very core to our values, and was one of the foundation pillars we were founded upon. Even to this day, we are known as one of the most cost effective ways of being able to shore up your Web Applications with just our Pro [email protected]$20/mo.</p>
+	<p>And, finally, the last line of defense is to have protection in front of your application, which is where Cloudflare can help. At Cloudflare, Security is very core to our values, and was one of the foundation pillars we were founded upon. Even to this day, we are known as one of the most cost effective ways of being able to shore up your Web Applications with just our Pro Plan@$20/mo.</p>
 	<!--kg-card-end: markdown-->
 </div>
