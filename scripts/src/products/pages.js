@@ -3,7 +3,7 @@ import path from 'node:path';
 import fs from 'fs-extra';
 import dateFormat from 'dateformat';
 
-import {tryAndPush, propertiesToArray, cfRequest, sleep} from '../utils.js';
+import {tryAndPush, propertiesToArray, cfRequest, sleep, sortObjectByKeys} from '../utils.js';
 
 const dir = path.resolve(`../data/products/pages`);
 await fs.ensureDir(dir);
@@ -150,13 +150,7 @@ if(startEnvIndex && endEnvIndex){
 			env[split[0]] = split.slice(1).join('=');
 		}
 	}
-	const sorted = Object.keys(env).sort().reduce(
-		(obj, key) => {
-			obj[key] = env[key];
-			return obj;
-		},
-		{},
-	);
+	const sorted = sortObjectByKeys(env);
 	// check a common env var like `PATH` to make sure we have a valid object
 	if(sorted.PATH){
 		await fs.writeJson(path.resolve(dir, 'deployments-logs-env.json'), sorted, {spaces: '\t'});
@@ -240,13 +234,7 @@ if(startDpkgIndex && endDpkgIndex){
 			author: line[3],
 		};
 	}
-	const sorted = Object.keys(dpkg).sort().reduce(
-		(obj, key) => {
-			obj[key] = dpkg[key];
-			return obj;
-		},
-		{},
-	);
+	const sorted = sortObjectByKeys(dkpg);
 	await fs.writeJson(path.resolve(dir, 'deployments-logs-dpkg.json'), sorted, {spaces: '\t'});
 }
 
