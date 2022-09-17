@@ -27,7 +27,7 @@ lookupList.add('net.uk');
 lookupList.add('org.uk');
 const randomDomain = randomUUID();
 
-import {tryAndPush, cfRequest} from './utils.js';
+import {tryAndPush, cfRequest, sortObjectByKeys} from './utils.js';
 
 const dir = path.resolve(`../data/registrar`);
 await fs.ensureDir(dir);
@@ -89,7 +89,7 @@ const rows = [
 	['TLD', 'ICANN fee', 'Price', 'Renewal'],
 ];
 for(const file of files){
-	if(!file.endsWith('.json')){
+	if(!file.endsWith('.json') || file === '_list.json'){
 		continue;
 	}
 	const data = await fs.readJson(path.resolve(`${dir}/${file}`));
@@ -102,6 +102,9 @@ for(const file of files){
 }
 const table = markdownTable(rows);
 await fs.writeFile(path.resolve(`${dir}/README.md`), table);
+
+const sorted = sortObjectByKeys(results);
+await fs.writeFile(path.resolve(`${dir}/_list.json`), JSON.stringify(sorted, null, '\t'));
 
 const prefix = dateFormat(new Date(), 'd mmmm yyyy');
 await tryAndPush(

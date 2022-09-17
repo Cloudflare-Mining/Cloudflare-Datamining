@@ -174,3 +174,7 @@ export async function getBMCookie(url){
 
 	return bmCookie;
 }
+
+export function sortObjectByKeys(obj){
+	return Object.fromEntries(Object.entries(obj).sort((keyA, keyB) => keyA[0].localeCompare(keyB[0])));
+}

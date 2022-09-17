@@ -9,7 +9,7 @@ import isValidCSSUnit from 'is-valid-css-unit';
 import hexColorRegex from 'hex-color-regex';
 import cssProperties from 'known-css-properties';
 
-import {tryAndPush, beautify, getHttpsAgent} from './utils.js';
+import {tryAndPush, beautify, getHttpsAgent, sortObjectByKeys} from './utils.js';
 
 const mainScript = /(main\.bundle\.[\da-z]+\.js)/;
 const staticDashURL = 'https://dash.teams.cloudflare.com/';
@@ -351,13 +351,7 @@ async function run(){
 	for(const [translationName, translation] of Object.entries(chunks.app.translations)){
 		const file = path.resolve(`${translationsDir}/${translationName}.json`);
 		await fs.ensureDir(path.dirname(file));
-		const sorted = Object.keys(translation).sort().reduce(
-			(obj, key) => {
-				obj[key] = translation[key];
-				return obj;
-			},
-			{},
-		);
+		const sorted = sortObjectByKeys(translation);
 		await fs.writeFile(file, JSON.stringify(sorted, null, '\t'));
 	}
 
