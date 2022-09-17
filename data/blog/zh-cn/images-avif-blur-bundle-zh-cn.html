@@ -72,7 +72,7 @@ async function handleRequest(event) {
 	<!--kg-card-begin: markdown-->
 	<pre><code>curl -X POST "https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/images/v1" \
      -H "Authorization: Bearer &lt;api_token&gt;"
-     --form '[email protected]/&lt;file_name&gt;' \
+     --form 'file=@./&lt;file_name&gt;' \
      --form 'requireSignedURLs=true'
 </code></pre>
 	<!--kg-card-end: markdown-->

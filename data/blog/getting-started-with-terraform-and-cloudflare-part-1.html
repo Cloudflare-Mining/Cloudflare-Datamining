@@ -43,7 +43,7 @@ Terraform v0.11.7
 	<p>First we'll create a initial Terraform config file. Any files ending in <code>.tf</code> will be processed by Terraform. As you configuration gets more complex you'll want to split the config into separate files and modules, but for now we'll proceed with a single file:</p>
 	<pre><code>$ cat &gt; cloudflare.tf &lt;&lt;'EOF'
 provider "cloudflare" {
-  email = "[email protected]"
+  email = "you@example.com"
   token = "your-api-key"
 }
 
@@ -190,7 +190,7 @@ Hello, this is 203.0.113.10!
 	<p>In the <code>terraform apply</code> step above, you created and applied some basic Cloudflare configuration. Terraform was able to apply this configuration to your account because you provided your email address and API token at the top of the cloudflare.tf file:</p>
 	<pre><code>$ head -n4 cloudflare.tf 
 provider "cloudflare" {
-  email = "[email protected]"
+  email = "you@example.com"
   token = "your-api-key"
 }
 </code></pre>
@@ -206,7 +206,7 @@ provider "cloudflare" {
   # token pulled from $CLOUDFLARE_TOKEN
 }
 
-$ export [email protected]
+$ export CLOUDFLARE_EMAIL=you@example.com
 $ export CLOUDFLARE_TOKEN=your-api-key
 </code></pre>
 	<p>Note that you need to leave the empty provider definition in the file, so that Terraform knows to install the Cloudflare plugin.</p>
@@ -238,7 +238,7 @@ $ export GITHUB_URL=$(curl -sSXPOST https://api.github.com/user/repos?access_tok
 -d '{"name": "cf-config", "private":"true"}' 2&gt;/dev/null | jq -r .ssh_url)
 
 $ echo $GITHUB_URL
-[email protected]:$GITHUB_USER/cf-config.git
+git@github.com:$GITHUB_USER/cf-config.git
 </code></pre>
 	<p>Now we'll initialize a git repository and make our first commit:</p>
 	<pre><code>$ git init
@@ -272,7 +272,7 @@ Delta compression using up to 8 threads.
 Compressing objects: 100% (4/4), done.
 Writing objects: 100% (6/6), 762 bytes | 0 bytes/s, done.
 Total 6 (delta 0), reused 0 (delta 0)
-To [email protected]:$GITHUB_USER/cf-config.git
+To git@github.com:$GITHUB_USER/cf-config.git
  * [new branch]      master -&gt; master
 </code></pre>
 	<h3 id="applyingzonesettings">Applying zone settings</h3>
@@ -347,7 +347,7 @@ Compressing objects: 100% (3/3), done.
 Writing objects: 100% (3/3), 501 bytes | 0 bytes/s, done.
 Total 3 (delta 1), reused 0 (delta 0)
 remote: Resolving deltas: 100% (1/1), completed with 1 local object.
-To [email protected]:$GITHUB_USER/cf-config.git
+To git@github.com:$GITHUB_USER/cf-config.git
    d26f40b..d540600  master -&gt; master
 </code></pre>
 	<h4 id="3applyandverifythechanges">3. Apply and verify the changes</h4>
@@ -643,7 +643,7 @@ Compressing objects: 100% (3/3), done.
 Writing objects: 100% (3/3), 361 bytes | 0 bytes/s, done.
 Total 3 (delta 1), reused 0 (delta 0)
 remote: Resolving deltas: 100% (1/1), completed with 1 local object.
-To [email protected]:$GITHUB_USER/cf-config.git
+To git@github.com:$GITHUB_USER/cf-config.git
    0f7e499..e1c38cf  master -&gt; master
 </code></pre>
 	<pre><code>$ terraform apply --auto-approve

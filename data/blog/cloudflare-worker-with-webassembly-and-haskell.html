@@ -139,9 +139,9 @@ addEventListener("fetch", event =&gt; {
 	<pre><code class="language-sh">cd worker
 curl -X PUT "https://api.cloudflare.com/client/v4/accounts/$CF_ACCOUNT_ID/workers/scripts/$SCRIPT_NAME" \
      -H  "Authorization: Bearer $CF_API_TOKEN" \
-     -F "[email protected];type=application/json" \
-     -F "[email protected];type=application/javascript" \
-     -F "[email protected];type=application/wasm"
+     -F "metadata=@metadata.json;type=application/json" \
+     -F "script=@fact.js;type=application/javascript" \
+     -F "wasm=@fact.wasm;type=application/wasm"
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>Now, visit the Workers UI, where you can use the editor to view, edit, and test the script. Also, you can enable it to on a <code>workers.dev</code> subdomain (<code>$CFW_SUBDOMAIN</code>); in that case, you could then simply:</p>

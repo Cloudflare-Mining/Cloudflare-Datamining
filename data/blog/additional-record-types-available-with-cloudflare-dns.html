@@ -31,7 +31,7 @@ _443._tcp.hasvickygoneonholiday.com. 300	IN	RRSIG	TLSA 13 4 300 20180803233834 2
 
 ;; Received 232 B
 ;; Time 2018-08-02 15:38:34 PDT
-;; From [email protected](UDP) in 28.5 ms
+;; From 192.168.1.1@53(UDP) in 28.5 ms
 </code></pre>
 	<p>From the above request and response, we can see that a) the response for the zone is secured and signed with DNSSEC (Flag: <b><em>ad</em></b>) and that I should be verifying a certificate with the public key (3 <b><em>1</em></b> 1) SHA256 hash (3 1 <b><em>1</em></b>) of 4E48ED671DFCDF6CBF55E52DBC8B9C9CC21121BD149BC24849D1398DA56FB242. We can use openssl (v1.1.x or higher) to verify the results:</p>
 	<pre><code>❯ openssl s_client  -connect hasvickygoneonholiday.com:443 -dane_tlsa_domain "hasvickygoneonholiday.com" -dane_tlsa_rrdata "
@@ -56,7 +56,7 @@ Verification: OK
 Verified peername: hasvickygoneonholiday.com
 DANE TLSA 3 1 1 ...149bc24849d1398da56fb242 matched EE certificate at depth 0
 </code></pre>
-	<p><a href="https://tools.ietf.org/html/rfc8162" target="_blank">SMIMEA</a> records function similar to TLSA but are specific to email addresses. The domain for these records should be prefixed by “_smimecert.” and specific formatting is required to attach a SMIMEA record to an email address. The local-part (username) of the email address must be treated in a specific format and SHA-256 hashed as detailed in the RFC. From the RFC example: “ For example, to request an SMIMEA resource record for a user whose email address is "[email protected]", an SMIMEA query would be placed for the following QNAME: <code>c93f1e400f26708f98cb19d936620da35eec8f72e57f9eec01c1afd6._smimecert.example.com</code></p>
+	<p><a href="https://tools.ietf.org/html/rfc8162" target="_blank">SMIMEA</a> records function similar to TLSA but are specific to email addresses. The domain for these records should be prefixed by “_smimecert.” and specific formatting is required to attach a SMIMEA record to an email address. The local-part (username) of the email address must be treated in a specific format and SHA-256 hashed as detailed in the RFC. From the RFC example: “ For example, to request an SMIMEA resource record for a user whose email address is "<a href="mailto:hugh@example.com" target="_blank">hugh@example.com</a>", an SMIMEA query would be placed for the following QNAME: <code>c93f1e400f26708f98cb19d936620da35eec8f72e57f9eec01c1afd6._smimecert.example.com</code></p>
 	<h4 id="cert"><a href="https://tools.ietf.org/html/rfc4398" target="_blank">CERT</a></h4>
 	<p>CERT records are used for generically storing certificates within DNS and are most commonly used by systems for email encryption. To create a CERT record, you must specify the certificate type, the key tag, the algorithm, and then the certificate, which is either the certificate itself, the CRL, a URL of the certificate, or fingerprint and a URL.</p>
 	<h3 id="othernewlysupportedrecordtypes">Other Newly Supported Record Types</h3>
@@ -121,12 +121,12 @@ in-addr.arpa.		172800	IN	NS	a.in-addr-servers.arpa.
 	<h4 id="naptr"><a href="https://tools.ietf.org/html/rfc2915" target="_blank">NAPTR</a></h4>
 	<p>Naming Authority Pointer Records are used in conjunction with SRV records, generally as a part of the SIP protocol. NAPTR records point to domains to specific services, if available for that domain. <a href="https://twitter.com/anders94" target="_blank">Anders Brownworth</a> has an excellent description in detail on his <a href="https://anders.com/cms/264/" target="_blank">blog</a>. The start of his example, with his permission:</p>
 	<blockquote>
-		<p>Let’s consider a call to [email protected]. Given only this address though, we don't know what IP address, port or protocol to send this call to. We don't even know if example.com supports SIP or some other VoIP protocol like H.323 or IAX2. I'm implying that we're interested in placing a call to this URL but if no VoIP service is supported, we could just as easily fall back to emailing this user instead. To find out, we start with a NAPTR record lookup for the domain we were given:</p>
+		<p>Let’s consider a call to <a href="mailto:2125551212@example.com" target="_blank">2125551212@example.com</a>. Given only this address though, we don't know what IP address, port or protocol to send this call to. We don't even know if example.com supports SIP or some other VoIP protocol like H.323 or IAX2. I'm implying that we're interested in placing a call to this URL but if no VoIP service is supported, we could just as easily fall back to emailing this user instead. To find out, we start with a NAPTR record lookup for the domain we were given:</p>
 	</blockquote>
 	<pre><code>#host -t NAPTR example.com
 example.com NAPTR 10 100 "S" "SIP+D2U" "" _sip._udp.example.com.
 example.com NAPTR 20 100 "S" "SIP+D2T" "" _sip._tcp.example.com.
-example.com NAPTR 30 100 "S" "E2U+email" "!^.*$!mailto:[email protected]!i" _sip._tcp.example.com.
+example.com NAPTR 30 100 "S" "E2U+email" "!^.*$!mailto:info@example.com!i" _sip._tcp.example.com.
 </code></pre>
 	<blockquote>
 		<p>Here we find that example.com gives us three ways to contact example.com, the first of which is "SIP+D2U" which would imply SIP over UDP at _sip._udp.example.com.</p>

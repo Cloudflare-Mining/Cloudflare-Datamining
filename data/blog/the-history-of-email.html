@@ -32,7 +32,7 @@ write: mark is logged in more than once; writing to ttys002
 Hi, wanna grab lunch?
 </code></pre>
 		<p>He will see:</p>
-		<pre><code>Message from [email protected] on ttys003 at 10:36 ...
+		<pre><code>Message from zack@Awesome-Mainframe.local on ttys003 at 10:36 ...
 Hi, wanna grab lunch?
 </code></pre>
 		<p>This is absolutely hilarious if your coworker happens to be using a graphical tool like vim which will not take kindly to random output on the screen.</p>
@@ -62,7 +62,7 @@ chmod 0442 ~/messages
 		<h3 id="arpanet">ARPANET</h3>
 		<p>In 1971, the Tenex team had just gotten access to the ARPANET, the network of computers which was a main precursor to the Internet. The team quickly created a program called CPYNET which could be used to send files to remote computers, similar to FTP today.</p>
 		<p>One of these engineers, Ray Tomlinson, had the idea to combine the message files with <a href="https://tools.ietf.org/html/rfc310" target="_blank">CPYNET</a>. He added a command which allowed you to append to a file. He also wired things up such that you could add an <code>@</code> symbol and a remote machine name to your messages and the machine would automatically connect to that host and append to the right file. In other words, running:</p>
-		<pre><code>SNDMSG [email protected]
+		<pre><code>SNDMSG zack@cloudflare
 </code></pre>
 		<p>Would append to the <code>/Users/zack/messages</code> file on the host <code>cloudflare</code>. And email was born!</p>
 		<h3 id="ftp">FTP</h3>
@@ -96,15 +96,15 @@ There’s no way this is ever going anywhere...
 		<p>Note that at this time the ‘at’ word could be used rather than the ‘@’ symbol. Also note that this use of headers before the message predates HTTP by almost fifteen years. This format remains nearly identical today.</p>
 		<p>The Fifth Edition of Unix used a very similar <a href="https://en.wikipedia.org/wiki/Mbox" target="_blank">format</a> for storing a users email messages on disk. Each user would have a file which contained their messages:</p>
 		<pre><code>From MAILER-DAEMON Fri Jul  8 12:08:34 1974
-From: Author &lt;[email protected]&gt;
-To: Recipient &lt;[email protected]&gt;
+From: Author &lt;author@example.com&gt;
+To: Recipient &lt;recipient@example.com&gt;
 Subject: Save $100 on floppy disks
 
 They’re never gonna go out of style!
 
 From MAILER-DAEMON Fri Jul  8 12:08:34 1974
-From: Author &lt;[email protected]&gt;
-To: Recipient &lt;[email protected]&gt;
+From: Author &lt;author@example.com&gt;
+To: Recipient &lt;recipient@example.com&gt;
 Subject: Seriously, buy AAPL
 
 You’ve never heard of it, you’ve never heard of me, but when you see
@@ -114,8 +114,8 @@ that stock symbol appear.  Buy it.
 </code></pre>
 		<p>Each message began with the word ‘From’, meaning if a message happened to contain From at the beginning of a line it needed to be escaped lest the system think that’s the start of a new message:</p>
 		<pre><code>From MAILER-DAEMON Fri Jul  8 12:08:34 2011
-From: Author &lt;[email protected]&gt;
-To: Recipient &lt;[email protected]&gt;
+From: Author &lt;author@example.com&gt;
+To: Recipient &lt;recipient@example.com&gt;
 Subject: Sample message 1
 
 This is the body.
@@ -146,7 +146,7 @@ There are 3 lines.
 Return-Path: joed
 Received: by mysun.xyz.edu (5.54/ACS)
         id AA08581; Mon, 09 Jan 1995 16:56:39 EST
-Message-Id: &lt;[email protected]&gt;
+Message-Id: &lt;9501092156.AA08581@mysun.xyz.edu&gt;
 To: angelac
 Subject: Here’s the first message you asked for
 Date: Mon, 09 Jan 1995 16:56:37 -0600
@@ -165,7 +165,7 @@ To: "Joe Doe" &lt;joed&gt;
 cc: angelac
 Subject: Re: Here’s the first message you asked for
 In-reply-to: Your message of "Mon, 09 Jan 1995 16:56:37 -0600."
-        &lt;[email protected]&gt;
+        &lt;9501092156.AA08581@mysun.xyz.edu&gt;
 -------
 
 % edit vi
@@ -296,7 +296,6 @@ In-reply-to: Your message of "Mon, 09 Jan 1995 16:56:37 -0600."
 				</form>
 			</li>
 		</ul>
-		<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 		<script type="text/javascript" src="//cloudflare.works/files/mc-validate.js"></script>
 		<script type="text/javascript">
 			(function($) {

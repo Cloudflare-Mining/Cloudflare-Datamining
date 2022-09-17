@@ -92,7 +92,7 @@
 </code></pre>
 	<p>environments/qa/main.tf</p>
 	<pre><code>module "zone_settings" {
-  source        = "[email protected]:foo/modules/zone_settings"
+  source        = "git@github.com:foo/modules/zone_settings"
   zone_name     = var.zone_name
   browser_check = var.zone_settings_browser_check
   [...]
@@ -137,11 +137,11 @@ variable "member_roles" {
   super_admin = "00001534sd1a2123781j5gj18gj511321"
 }
 users = {
-  "[email protected]"  = ["super_admin"]
-  "[email protected]"  = ["analytics", "audit_logs", "cache_purge", "cf_workers"]
-  "[email protected]"  = ["cf_stream"]
+  "user1@workable.com"  = ["super_admin"]
+  "user2@workable.com"  = ["analytics", "audit_logs", "cache_purge", "cf_workers"]
+  "user3@workable.com"  = ["cf_stream"]
   [...]
-  "[email protected]" = ["cf_stream"]
+  "robot1@workable.com" = ["cf_stream"]
 }
 </code></pre>
 	<p>Another interesting case we dealt with was the <em>rate_limit</em> resource; the variable declaration (list of objects) &amp; implementation goes as follows:<br>

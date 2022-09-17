@@ -281,9 +281,9 @@ THCNT
 	<pre><code>$ systemd-run --user -p TasksMax=128 --same-dir --collect --service-type=exec ./udp-read --async
 Running as unit: run-ra0336ff405f54ad29726f1e48d6a3237.service
 $ systemd-cgls --user-unit run-ra0336ff405f54ad29726f1e48d6a3237.service
-Unit run-ra0336ff405f54ad29726f1e48d6a3237.service (/user.slice/user-1000.slice/[email protected]/app.slice/run-ra0336ff405f54ad29726f1e48d6a3237.service):
+Unit run-ra0336ff405f54ad29726f1e48d6a3237.service (/user.slice/user-1000.slice/user@1000.service/app.slice/run-ra0336ff405f54ad29726f1e48d6a3237.service):
 └─823727 /blog/io-uring-worker-pool/./udp-read --async
-$ cat /sys/fs/cgroup/user.slice/user-1000.slice/[email protected]/app.slice/run-ra0336ff405f54ad29726f1e48d6a3237.service/pids.max
+$ cat /sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/run-ra0336ff405f54ad29726f1e48d6a3237.service/pids.max
 128
 $ ps -o thcount 823727
 THCNT
@@ -360,7 +360,7 @@ lrwx------ 1 vagrant vagrant 64 Dec 26 02:53 6 -&gt; 'anon_inode:[io_uring]'
 	<!--kg-card-begin: markdown-->
 	<pre><code>$ unshare -U prlimit --nproc=4 ./udp-read --async --threads 2 --rings 1 &amp;
 [1] 26249
-[email protected]:/blog/io-uring-worker-pool$ pstree -pt $!
+vagrant@bullseye:/blog/io-uring-worker-pool$ pstree -pt $!
 udp-read(26249)─┬─{iou-wrk-26251}(26252)
                 ├─{iou-wrk-26251}(26253)
                 ├─{udp-read}(26250)

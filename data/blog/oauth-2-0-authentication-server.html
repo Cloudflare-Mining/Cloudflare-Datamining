@@ -18,7 +18,7 @@
 	<p><img src="https://blog.cloudflare.com/content/images/2018/12/Screen-Shot-2018-12-11-at-3.46.15-PM.png" alt="Screen-Shot-2018-12-11-at-3.46.15-PM"></p>
 	<p>To put and get items from storage using KV Storage syntax:</p>
 	<pre><code class="language-javascript">// @ts-ignore 
-CODES.get(“[email protected]”) 
+CODES.get(“user@ex.com”) 
 </code></pre>
 	<p>We include <code>// @ts-ignore</code> preceding all KV storage commands. We do not have type definitions for these variables locally, so Typescript would throw an error at compile time otherwise.</p>
 	<p>To set up a project using Typescript and the Cloudflare Previewer, follow this <a href="https://blog.cloudflare.com/using-webpack-to-bundle-workers/">blog post</a>. Webpack will allow us to <code>import</code> which we will need to use the JWT library <code>jsonwebtoken</code>.</p>

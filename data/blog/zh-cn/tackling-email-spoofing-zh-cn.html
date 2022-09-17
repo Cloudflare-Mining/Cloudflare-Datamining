@@ -9,8 +9,8 @@
 	<p>此外还有<strong>电子邮件欺骗</strong>。为了了解它是如何工作的，请看一下我通过自己的个人电子邮件地址收到的一封 Cloudflare 产品更新电子邮件。对于大多数电子邮件提供者，您可以查看电子邮件的完整源代码，其中包含多个标头以及电子邮件的主体。</p>
 	<!--kg-card-begin: markdown-->
 	<pre><code>Date: Thu, 23 Sep 2021 10:30:02 -0500 (CDT)
-From: Cloudflare &lt;[email protected]&gt;
-Reply-To: [email protected]
+From: Cloudflare &lt;product-updates@cloudflare.com&gt;
+Reply-To: product-updates@cloudflare.com
 To: &lt;my_personal_email_address&gt;
 </code></pre>
 	<!--kg-card-end: markdown-->
@@ -43,7 +43,7 @@ To: &lt;my_personal_email_address&gt;
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/09/image12-7.png" class="kg-image"></figure>
 	<p>上图显示了为确保收到的邮件符合 SPF 策略所采取的步骤。</p>
 	<ol>
-		<li>电子邮件发送自 IP 地址 203.0.113.10，包含的 From 标头值为[email protected]。</li>
+		<li>电子邮件发送自 IP 地址 203.0.113.10，包含的 From 标头值为hannes@mycoolwebpage.xyz。</li>
 		<li>收到这封电子邮件后，接收者查询 mycoolwebpage.xyz 上的 SPF 记录，以获得这个网域的 SPF 策略。</li>
 		<li>接收者检查发送 IP 地址 203.0.113.10 是否列于 SPF 记录中。如是，该电子邮件成功完成 SPF 检查。否则，all 机制的限定符定义结果。</li>
 	</ol>
@@ -71,7 +71,7 @@ To: &lt;my_personal_email_address&gt;
 	<p>基于域名的邮件身份验证报告和一致性，这个名称确实很拗口。我们来关注两个词：<em>报告</em>和<em>一致性</em>。这正是 DMARC 提供的内容。定期报告让邮件发送者知道有多少邮件不符合要求，可能受到欺骗。一致性有助于向邮件接收者提供一个明确的信号，告诉他们如何处理不符合要求的邮件。即使没有 DMARC 记录，邮件接收者也可能会对 SPF 或 DKIM 检查不通过的邮件施加自己的策略。但是，在 DMARC 记录上配置的策略是电子邮件发送者的显式指令，因此它增强了电子邮件接收者处理不符合要求电子邮件的信心。</p>
 	<p>这是 cloudflare.com 的 DMARC 记录</p>
 	<!--kg-card-begin: markdown-->
-	<pre><code>_dmarc.cloudflare.com.   TXT   "v=DMARC1; p=reject; pct=100; rua=mailto:[email protected]"
+	<pre><code>_dmarc.cloudflare.com.   TXT   "v=DMARC1; p=reject; pct=100; rua=mailto:rua@cloudflare.com"
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>DMARC TXT 记录始终在电子邮件域名的 _dmarc 子域上设置 — 类似于 SPF 和 DKIM — 内容需要以 v=DMARC1 开头。之后是三个附加标记：</p>
@@ -81,7 +81,7 @@ To: &lt;my_personal_email_address&gt;
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2021/09/unnamed3.png" class="kg-image"></figure>
 	<p>以上，我们可以看到 DMARC 是如何逐步工作的。</p>
 	<ol>
-		<li>From 标头值为 [email protected] 的电子邮件被发出。</li>
+		<li>From 标头值为 hannes@mycoolwebpage.xyz 的电子邮件被发出。</li>
 		<li>接收者查询网域 mycoolwebpage.xyz 的 SPF、DKIM 和 DMARC 记录以获取所需原则和 DKIM 公钥。</li>
 		<li>接收者执行如上所述的 SPF 和 DKIM 检查。如两者均通过，该电子邮件被接受并投递到收件箱。如果 SPF 或 DKIM 检查失败，将遵循 DMARC 原则并确定邮件是否仍被接受、丢弃或发送到垃圾邮件文件夹。</li>
 		<li>最后，接收者返回一个汇总报告。根据 rua 标记中指定的电子邮件，报告也可能被发送到负责该电子邮件的另一个电子邮件服务器。</li>

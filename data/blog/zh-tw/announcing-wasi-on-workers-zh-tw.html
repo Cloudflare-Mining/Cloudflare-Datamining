@@ -33,7 +33,7 @@ Hello, world!
 	<!--kg-card-end: markdown-->
 	<p>現在，我們使用完全相同的程式，並針對 wasm32-wasi 目標進行編譯，然後在「現成」的 wasm 執行階段（如 Wasmtime）中執行 <a href="https://wasmtime.dev/" target="_blank">Wasmtime</a>。</p>
 	<!--kg-card-begin: markdown-->
-	<pre><code class="language-bash">$ npx [email protected] dev target/wasm32-wasi/release/hello_world.wasm
+	<pre><code class="language-bash">$ npx wrangler@wasm dev target/wasm32-wasi/release/hello_world.wasm
 $ curl http://localhost:8787/
 
 Hello, world!
@@ -42,7 +42,7 @@ Hello, world!
 	<p>非常乾淨利落！相同的程式碼在多個 POSIX 環境中編譯和執行。</p>
 	<p>最後，我們使用剛剛為 Wasmtime 產生的二進位檔案，但是使用 Wrangler2 將其發佈到 Workers。</p>
 	<!--kg-card-begin: markdown-->
-	<pre><code class="language-bash">$ npx [email protected] dev target/wasm32-wasi/release/hello_world.wasm
+	<pre><code class="language-bash">$ npx wrangler@wasm dev target/wasm32-wasi/release/hello_world.wasm
 $ curl http://localhost:8787/
 
 Hello, world!
@@ -53,14 +53,14 @@ Hello, world!
 	<p>細心的讀者可能會注意到，我們對透過 cURL 發出的 HTTP 請求玩了個小把戲。在此範例中，我們實際上分別使用 HTTP 請求和回應正文，對往/返 Worker 的標準輸入和標準輸出進行串流。此模式可實現一些非常有趣的使用案例，尤其是，設計用於在命令列上執行的程式，可以作為「服務」部署至雲端。</p>
 	<p>「Hexyl」是一個完全現成可用的範例。在這裡，我們在本地機器上對一個二進位檔案執行「cat」，並將輸出「pipe」到 curl，然後將該輸出 POST 到我們的服務並串流傳回結果。我們可以使用編譯「Hello World!」的步驟，來編譯 hexyl。</p>
 	<!--kg-card-begin: markdown-->
-	<pre><code class="language-bash">$ git clone [email protected]:sharkdp/hexyl.git
+	<pre><code class="language-bash">$ git clone git@github.com:sharkdp/hexyl.git
 $ cd ./hexyl
 $ cargo build --target wasm32-wasi --release
 </code></pre>
 	<!--kg-card-end: markdown-->
 	<p>無需進一步修改，我們即可採用真實世界的程式，並建立我們現在可以執行或部署的內容。同樣，我們告訴 wrangler2 預覽 hexyl，但這次向它提供一些輸入。</p>
 	<!--kg-card-begin: markdown-->
-	<pre><code class="language-bash">$ npx [email protected] dev target/wasm32-wasi/release/hexyl.wasm
+	<pre><code class="language-bash">$ npx wrangler@wasm dev target/wasm32-wasi/release/hexyl.wasm
 $ echo "Hello, world\!" | curl -X POST --data-binary @- http://localhost:8787
 
 ┌────────┬─────────────────────────┬─────────────────────────┬────────┬────────┐
