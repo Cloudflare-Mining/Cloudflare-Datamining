@@ -10,10 +10,10 @@ const formatter = new Intl.NumberFormat('en-US', {
 });
 ---
 <Layout title="Registrar - Cloudflare Datamining">
-	<main class="m-auto p-4 max-w-5xl">
+	<main class="m-auto max-w-5xl p-4">
 		<h1 class="my-4 text-3xl">Registrar</h1>
-		<table class="table-auto w-full mb-8 p-2">
-			<thead class="text-left border-b-2 border-b-gray-700 bg-gray-800 border-solid">
+		<table class="mb-8 w-full table-auto p-2">
+			<thead class="border-b-2 border-solid border-b-gray-700 bg-gray-800 text-left">
 				<tr>
 					<th class="p-1">TLD</th>
 					<th class="p-1">Price</th>
@@ -23,11 +23,11 @@ const formatter = new Intl.NumberFormat('en-US', {
 			</thead>
 			<tbody>
 				{Object.keys(registrar).map(tld => (
-					<tr class="border-b border-b-gray-600 border-solid">
-						<td class="p-1 w-1/4">{tld}</td>
-						<td class="p-1 w-1/4">{formatter.format(registrar[tld].price)}</td>
-						<td class="p-1 w-1/4">{formatter.format(registrar[tld].renewal)}</td>
-						<td class="p-1 w-1/4">{formatter.format(registrar[tld].icann_fee)}</td>
+					<tr class="border-b border-solid border-b-gray-600">
+						<td class="w-1/4 p-1">{tld}</td>
+						<td class="w-1/4 p-1">{formatter.format(registrar[tld].price)}</td>
+						<td class="w-1/4 p-1">{formatter.format(registrar[tld].renewal)}</td>
+						<td class="w-1/4 p-1">{formatter.format(registrar[tld].icann_fee)}</td>
 					</tr>
 				))}
 			</tbody>

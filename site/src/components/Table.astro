@@ -9,8 +9,8 @@ const {headers, data, widths} = Astro.props;
 
 ---
 <div class="overflow-x-auto">
-	<table class="table-auto w-full mb-8 p-2  overflow-scroll">
-		<thead class="text-left border-b-2 border-b-gray-700 bg-gray-800 border-solid">
+	<table class="mb-8 w-full table-auto overflow-scroll  p-2">
+		<thead class="border-b-2 border-solid border-b-gray-700 bg-gray-800 text-left">
 			<tr>
 				{headers.map((header:string) => (
 					<th class="p-1">{header}</th>
@@ -19,7 +19,7 @@ const {headers, data, widths} = Astro.props;
 		</thead>
 		<tbody>
 			{data.map((item:string[]) => (
-				<tr class="border-b border-b-gray-600 border-solid">
+				<tr class="border-b border-solid border-b-gray-600">
 					{item.map((value: string, index: number) => (
 						<td class={["p-1", widths?.[index]].join(' ')}>{value}</td>
 					))}

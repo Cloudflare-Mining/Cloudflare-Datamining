@@ -32,12 +32,12 @@ const navItems = [
 ---
 
 <header>
-	<nav class="flex items-center justify-between flex-wrap bg-blue-800 p-6">
-		<div class="flex items-center flex-shrink-0 text-white mr-6">
-			<a href="/" class="font-semibold text-xl tracking-tight">Cloudflare Datamining</a>
+	<nav class="flex flex-wrap items-center justify-between bg-blue-800 p-6">
+		<div class="mr-6 flex shrink-0 items-center text-white">
+			<a href="/" class="text-xl font-semibold tracking-tight">Cloudflare Datamining</a>
 		</div>
 
-		<nav class="w-full block flex-grow lg:flex lg:items-center lg:w-auto gap-4">
+		<nav class="block w-full grow gap-4 lg:flex lg:w-auto lg:items-center">
 			{navItems.map(item => (
 				<a
 					href={item.path}
@@ -49,7 +49,7 @@ const navItems = [
 					{item.label}
 				</a>
 			))}
-			<a href="https://discord.gg/Z94Hn6qVDm" target="_blank" class="ml-auto block mt-4 lg:inline-block lg:mt-0 text-blue-100 hover:text-white">Discord</a>
+			<a href="https://discord.gg/Z94Hn6qVDm" target="_blank" class="ml-auto mt-4 block text-blue-100 hover:text-white lg:mt-0 lg:inline-block">Discord</a>
 		</nav>
 	</nav>
 </header>

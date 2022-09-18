@@ -2,11 +2,13 @@
 	"root": true,
 	"extends": [
 		"@nodecraft",
-		"plugin:astro/recommended"
+		"plugin:astro/recommended",
+		"plugin:tailwindcss/recommended"
 	],
 	"plugins": [
 		"json",
-		"@typescript-eslint"
+		"@typescript-eslint",
+		"tailwindcss"
 	],
 	"rules": {
 		"node/no-unsupported-features/es-syntax": "off",
