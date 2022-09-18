@@ -3,9 +3,11 @@ import Table from './Table.astro';
 export interface Props {
 	data: object;
 	title: string;
+	headers?: string[]
 }
 
-const {data, title}:{data: any, title:string} = Astro.props;
+const {data, title, headers}: {data: any, title: string, headers?: string[]} = Astro.props;
+const tableHeaders = headers ?? ["Entitlement", "Default Value"];
 
 function getValue(data:string|object){
 	if(typeof data === 'string'){
@@ -18,7 +20,7 @@ function getValue(data:string|object){
 {Object.keys(data).map(category => (
 	<h2 class="mb-2 text-xl" id={category}><a href={`#${category}`}>{category}</a></h2>
 	<Table
-		headers = {["Entitlement", "Default Value"]}
+		headers = {tableHeaders}
 		widths={["w-1/2", "w-1/2"]}
 		data = {Object.keys(data[category]).map((item:string) => [item, getValue(data[category][item])])}
 	></Table>

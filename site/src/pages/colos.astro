@@ -1,0 +1,17 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Table from '../components/Table.astro';
+
+const importFiles = await Astro.glob('../../../data/other/colos-id-map.json');
+const colos = importFiles[0].default;
+
+---
+<Layout title="Colos - Cloudflare Datamining">
+	<main class="m-auto max-w-5xl p-4">
+		<h2 class="mb-2 text-xl">Colos</h2>
+		<Table
+			headers = {["ID", "Colo"]}
+			data = {Object.keys(colos).map((id:string) => [id, colos[id]])}
+		></Table>
+	</main>
+</Layout>

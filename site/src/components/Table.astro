@@ -1,6 +1,6 @@
 ---
 export interface Props {
-	headers: string[];
+	headers: string[] | undefined;
 	widths?: string[];
 	data: any;
 }
@@ -12,7 +12,7 @@ const {headers, data, widths} = Astro.props;
 	<table class="mb-8 w-full table-auto overflow-scroll  p-2">
 		<thead class="border-b-2 border-solid border-b-gray-700 bg-gray-800 text-left">
 			<tr>
-				{headers.map((header:string) => (
+				{(headers ?? []).map((header:string) => (
 					<th class="p-1">{header}</th>
 				))}
 			</tr>

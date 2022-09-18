@@ -1,0 +1,22 @@
+---
+import Layout from '../layouts/Layout.astro';
+import FlagsTable from '../components/FlagsTable.astro';
+import {sortObjectByKeys} from '../utils.js';
+
+const importFiles = await Astro.glob('../../../data/entitlements/zone.json');
+const rawCategories:any = {};
+for(const entitlement of importFiles[0].default){
+	const category = rawCategories[entitlement.feature.feature_set] ?? {};
+	category[entitlement.id] = entitlement.allocation.type;
+	rawCategories[entitlement.feature.feature_set] = category;
+}
+const categories = sortObjectByKeys(rawCategories);
+
+---
+<Layout title="Known Zone Entitlements - Cloudflare Datamining">
+	<main class="m-auto max-w-5xl p-4">
+		<FlagsTable title="Known Zone Entitlements" data={categories} headers={["Entitlement", "Type"]}></FlagsTable>
+		<p>Have an entitlement not covered on the list? Reach out to <a href="https://twitter.com/CherryJimbo">@CherryJimbo</a> on Twitter or <code>CherryJimbo#0001</code> on Discord.</p>
+	</main>
+</Layout>
+
