@@ -16,7 +16,7 @@ function getValue(data:string|object){
 ---
 <h1 class="my-4 text-3xl">{title}</h1>
 {Object.keys(data).map(category => (
-	<h2 class="text-xl mb-2" id={category}><a href={`#${category}`}>{category}</a></h2>
+	<h2 class="mb-2 text-xl" id={category}><a href={`#${category}`}>{category}</a></h2>
 	<Table
 		headers = {["Entitlement", "Default Value"]}
 		widths={["w-1/2", "w-1/2"]}
