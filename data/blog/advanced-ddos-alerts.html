@@ -1,0 +1,52 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image9-2.png" class="kg-image" alt="Introducing Advanced DDoS Alerts"></figure>
+	<p>We’re pleased to introduce Advanced DDoS Alerts. Advanced DDoS Alerts are customizable and provide users the flexibility they need when managing many Internet properties. Users can easily define which alerts they want to receive — for which DDoS attack sizes, protocols and for which Internet properties.</p>
+	<p>This release includes two types of Advanced DDoS Alerts:</p>
+	<ol>
+		<li><strong>Advanced HTTP DDoS Attack Alerts</strong> - Available to WAF/CDN customers on the Enterprise plan, who have also subscribed to the Advanced DDoS Protection service.</li>
+		<li><strong>Advanced L3/4 DDoS Attack Alerts</strong> - Available to Magic Transit and Spectrum BYOIP customers on the Enterprise plan.</li>
+	</ol>
+	<p>Standard DDoS Alerts are available to customers on all plans, including the Free plan. Advanced DDoS Alerts are part of Cloudflare’s Advanced DDoS service.</p>
+	<h3 id="why-alerts">Why alerts?</h3>
+	<p><a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/" target="_blank">Distributed Denial of Service attacks</a> are cyber attacks that aim to take down your Internet properties and make them unavailable for your users. As early as 2017, Cloudflare pioneered the <a href="https://blog.cloudflare.com/unmetered-mitigation/">Unmetered DDoS Protection</a> to provide all customers with DDoS protection, without limits, to ensure that their Internet properties remain available. We’re able to provide this level of commitment to our customers thanks to our <a href="https://blog.cloudflare.com/deep-dive-cloudflare-autonomous-edge-ddos-protection/">automated DDoS protection systems</a>. But if the systems operate automatically, why even be alerted?</p>
+	<p>Well, to put it plainly, when our DDoS protection systems kick in, they insert ephemeral rules inline to mitigate the attack. Many of our customers operate business critical applications and services. When our systems make a decision to insert a rule, customers might want to be able to verify that all the malicious traffic is mitigated, and that legitimate user traffic is not. Our DDoS alerts begin firing as soon as our systems make a mitigation decision. Therefore, by informing our customers about a decision to insert a rule in real time, they can observe and verify that their Internet properties are both protected and available.</p>
+	<h3 id="managing-many-internet-properties">Managing many Internet properties</h3>
+	<p>The <em>standard</em> DDoS Alerts alert you on DDoS attacks that target any and all of your Cloudflare-protected Internet properties. However, some of our customers may manage large numbers of Internet properties ranging from hundreds to hundreds of thousands. The <em>standard</em> DDoS Alerts would notify users every time one of those properties would come under attack — which could become very noisy.</p>
+	<p>The Advanced DDoS Alerts address this concern by allowing users to select the specific Internet properties that they want to be notified about; zones and hostnames for WAF/CDN customers, and IP prefixes for Magic Transit and Spectrum BYOIP customers.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/09/image5-3.png" class="kg-image" alt="Screenshot of the Advanced HTTP DDoS Attack Alert creation screen: selecting zones and hostnames">
+		<figcaption>Creating an Advanced HTTP DDoS Attack Alert: selecting zones and hostnames</figcaption>
+	</figure>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/09/image8-1.png" class="kg-image" alt="Screenshot of the Advanced L3/4 DDoS Attack Alert creation screen: selecting prefixes">
+		<figcaption>Creating an Advanced L3/4 DDoS Attack Alert: selecting prefixes</figcaption>
+	</figure>
+	<h3 id="one-attack-size-doesn-t-fit-all">One (attack) size doesn’t fit all</h3>
+	<p>The <em>standard</em> DDoS Alerts alert you on DDoS attacks of any size. Well, almost any size. We implemented minimal alert thresholds to avoid spamming our customers’ email inboxes. Those limits are very small and not customer-configurable. As we’ve seen in the recent <a href="https://blog.cloudflare.com/ddos-attack-trends-for-2022-q2/">DDoS trends report</a>, most of the attacks are very small — another reason why the <em>standard</em> DDoS Alert could become noisy for customers that only care about very large attacks. On the opposite end of the spectrum, choosing not to alert may become too quiet for customers that do want to be notified about smaller attacks.</p>
+	<p>The Advanced DDoS Alerts let customers choose their own alert threshold. WAF/CDN customers can define the minimum request-per-second rate of an HTTP DDoS attack alert. Magic Transit and Spectrum BYOIP customers can define the packet-per-second and Megabit-per-second rates of a L3/4 DDoS attack alert.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/09/image1-13.png" class="kg-image" alt="Screenshot of the Advanced HTTP DDoS Attack Alert creation screen: defining request rate">
+		<figcaption>Creating an Advanced HTTP DDoS Attack Alert: defining request rate</figcaption>
+	</figure>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/09/image4-4.png" class="kg-image" alt="Screenshot of the Advanced L3/4 DDoS Attack Alert creation screen: defining packet/bit rate">
+		<figcaption>Creating an Advanced L3/4 DDoS Attack Alert: defining packet/bit rate</figcaption>
+	</figure>
+	<h3 id="not-all-protocols-are-created-equal">Not all protocols are created equal</h3>
+	<p>As part of the Advanced L3/4 DDoS Alerts, we also let our users define the protocols to be alerted on. If a Magic Transit customer manages mostly UDP applications, they may not care if TCP-based DDoS attacks target it. Similarly, if a Spectrum BYOIP customer only cares about HTTP/TCP traffic, other-protocol-based attacks could be of no concern to them.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image2-12.png" class="kg-image" alt="Screenshot of the Advanced L3/4 DDoS Attack Alert creation screen: selecting the protocols"></figure>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/09/image6-1.png" class="kg-image" alt="Screenshot of the Advanced L3/4 DDoS Attack Alert creation screen: selecting the protocols">
+		<figcaption>Creating an Advanced L3/4 DDoS Attack Alert: selecting the protocols</figcaption>
+	</figure>
+	<h3 id="creating-an-advanced-ddos-alert">Creating an Advanced DDoS Alert</h3>
+	<p>We’ll show here how to create an Advanced <em>HTTP</em> DDoS Alert, but the process to create a L3/4 alert is similar. You can view a more detailed guide on our <a href="https://developers.cloudflare.com/ddos-protection/reference/alerts/" target="_blank">developers website</a>.</p>
+	<p>First, click <a href="https://dash.cloudflare.com/?to=/:account/notifications/create" target="_blank">here</a> or log in to your Cloudflare account, navigate to <strong>Notifications</strong> and click <strong>Add.</strong> Then select the <strong>Advanced HTTP DDoS Attack Alert</strong> or<strong> Advanced L3/4 DDoS Attack Alert</strong> (based on your eligibility). Give your alert a name, an optional description, add your preferred delivery method (e.g., Webhook) and click <strong>Next</strong>.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/09/image7-1.png" class="kg-image" alt="Screenshot of the Advanced HTTP DDoS Attack Alert creation screen">
+		<figcaption>Step 1: Creating an Advanced HTTP DDoS Attack Alert</figcaption>
+	</figure>
+	<p>Second, select the domains you’d like to be alerted on. You can also narrow it down to specific hostnames. Define the minimum request-per-second rate to be alerted on, click <strong>Save,</strong> and voilà.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/09/image3-8.png" class="kg-image" alt="Screenshot of the Advanced HTTP DDoS Attack Alert creation screen">
+		<figcaption>Step 2: Defining the Advanced HTTP DDoS Attack Alert conditions</figcaption>
+	</figure>
+	<h3 id="actionable-alerts-for-making-better-decisions">Actionable alerts for making better decisions</h3>
+	<p>Cloudflare Advanced DDoS Alerts aim to provide our customers with configurable controls to make better decisions for their own environments. Customers can now be alerted on attacks based on which domain/prefix is being attacked, the size of the attack, and the protocol of the attack. We recognize that the power to configure and control DDoS attack alerts should ultimately be left up to our customers, and we are excited to announce the availability of this functionality.</p>
+	<p>Want to learn more about Advanced DDoS Alerts? Visit our <a href="https://developers.cloudflare.com/ddos-protection/reference/alerts/" target="_blank">developer site</a>.</p>
+	<p>Interested in upgrading to get Advanced DDoS Alerts? Contact your account team.</p>
+	<p>New to Cloudflare? <a href="https://www.cloudflare.com/plans/enterprise/discover/contact/" target="_blank">Speak to a Cloudflare expert</a>.</p>
+</div>
