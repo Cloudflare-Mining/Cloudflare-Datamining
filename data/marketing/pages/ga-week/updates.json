@@ -1,10 +1,10 @@
 {
 	"componentChunkName": "component---src-components-page-page-template-tsx",
-	"path": "/ga-week/",
+	"path": "/ga-week/updates/",
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "GA Week - Today",
+				"pageName": "GA Week - Updates and Announcements",
 				"localeList": {
 					"enUS": "English for Locale",
 					"zhCN": "Translated for Locale",
@@ -29,7 +29,7 @@
 					"trTR": "No Page for Locale",
 					"zhHansCN": "Translated for Locale"
 				},
-				"relativePath": "ga-week",
+				"relativePath": "ga-week/updates",
 				"topNavOptions": null,
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
@@ -44,7 +44,7 @@
 					},
 					"facebookCustomImage": null
 				},
-				"contentfulId": "7cYmb80HMQnfZ9ZUP8d2S7",
+				"contentfulId": "1WEWkWK9W3E2mhRwc6IxC0",
 				"contentTypeId": "page",
 				"promotionalBanner": null,
 				"psaBanner": null,
@@ -145,16 +145,16 @@
 						}
 					},
 					{
-						"contentfulId": "3FyCW8r5j2q8iNf0AkUIys",
+						"contentfulId": "01ftRqEdFMwRvqvutfLxQ3",
 						"backgroundColor": "white",
 						"contentTypeId": "bladeFourFeatures",
 						"htmlId": null,
 						"copy": null,
-						"title": null,
+						"title": "Updates and announcements",
 						"subtitle": null,
-						"bladeStyle": "Feature Blocks - 3 columns",
+						"bladeStyle": "Feature Blocks - 4 columns",
 						"bladeBorder": "none",
-						"sectionPadding": "tile--no-top-padding",
+						"sectionPadding": null,
 						"carouselSlidesToShow": null,
 						"carouselSlidesToScroll": null,
 						"locale": "en-US",
@@ -332,147 +332,6 @@
 								"streamId": null,
 								"streamThumbnail": null,
 								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "3PG4wou63bTub6kGuvo4kn",
-								"title": "CloudflareTV- Welcome to GA week ",
-								"titleSize": null,
-								"description": "__Monday, September 19 6:30 AM PT__\n\nJohn Graham-Cumming & João Tomé ",
-								"learnMoreUrl": "https://cloudflare.tv/event/pgxBAJal",
-								"learnMoreText": "Tune In",
-								"displayBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageAssetFile": {
-									"id": "196f472e-7a2a-56e8-8a34-adf96a0d51bc",
-									"altText": "Cloudflare TV Header",
-									"title": "Cloudflare TV Header",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "[path]/CFTV.png"
-										}
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "rljFP1bvu3SKuv8TThikK",
-								"title": "CloudflareTV- GA CloudforceOne ",
-								"titleSize": null,
-								"description": "__Monday, September 19\t11:30 AM PT__\n\nPatrick Donahue, Jesse Kipp & Blake Darche ",
-								"learnMoreUrl": "https://cloudflare.tv/event/DZy3bEvr",
-								"learnMoreText": "Tune In",
-								"displayBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageAssetFile": {
-									"id": "196f472e-7a2a-56e8-8a34-adf96a0d51bc",
-									"altText": "Cloudflare TV Header",
-									"title": "Cloudflare TV Header",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "[path]/CFTV.png"
-										}
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "6kxoefFYdaBblunUOEPB16",
-								"title": "CloudflareTV- Domain Scoped Roles GA",
-								"titleSize": null,
-								"description": "__Monday September 19 12:30 PM PT__\n\nJoseph So & Garrett Galow ",
-								"learnMoreUrl": "https://cloudflare.tv/event/3vVV7evq",
-								"learnMoreText": "Tune In",
-								"displayBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageAssetFile": {
-									"id": "196f472e-7a2a-56e8-8a34-adf96a0d51bc",
-									"altText": "Cloudflare TV Header",
-									"title": "Cloudflare TV Header",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "[path]/CFTV.png"
-										}
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "5mkyMtRkgwEDEjpA9j5eGk",
-								"title": "Customer Story- NCR",
-								"titleSize": null,
-								"description": "Cloudflare empowers NCR to fight sophisticated payment fraud and protect customers across multiple industries",
-								"learnMoreUrl": "case-studies/ncr/",
-								"learnMoreText": "Learn More",
-								"displayBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageAssetFile": {
-									"id": "22ab9778-836b-593c-9a01-0aa801654055",
-									"altText": null,
-									"title": null,
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "[path]/NCR_meta.png"
-										}
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "5Ce3bAN4NAdZtXBoBHAJiH",
-								"title": "Customer Story- Werner Enterprises",
-								"titleSize": null,
-								"description": "Werner Enterprises uses Cloudflare Area 1 Email Security to eliminate inbox threats",
-								"learnMoreUrl": "case-studies/werner-enterprises/",
-								"learnMoreText": "Learn More",
-								"displayBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageAssetFile": {
-									"id": "1e38873b-25aa-5f9f-85cb-435a0dd7f4f8",
-									"altText": "Werner Case Study",
-									"title": "Werner Case Study",
-									"activeAsset": "Brandfolder Asset",
-									"locale": "en-US",
-									"contentfulAsset": null,
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
 							}
 						]
 					}
@@ -490,8 +349,8 @@
 		},
 		"pageContext": {
 			"locale": "en-US",
-			"pathname": "/ga-week/",
-			"contentfulId": "7cYmb80HMQnfZ9ZUP8d2S7",
+			"pathname": "/ga-week/updates/",
+			"contentfulId": "1WEWkWK9W3E2mhRwc6IxC0",
 			"allowedHrefLangs": [
 				"en-US",
 				"zh-CN",
