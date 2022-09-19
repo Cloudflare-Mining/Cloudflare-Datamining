@@ -903,7 +903,7 @@ Block traffic from devices that do not have a valid client SSL/TLS certificate w
 		cloudflare_ca: "Cloudflare Managed CA",
 		cloudflare_ca_account: "Cloudflare Managed CA for %{accountName}",
 		usage_instructions_header: "Usage Instructions",
-		usage_instructions_body: "For installation and usage instructions, visit our developer documentation on [using client certificates with API Shield](https://developers.cloudflare.com/ssl/client-certificates)",
+		usage_instructions_body: 'For installation and usage instructions, visit our developer documentation on <a href="https://developers.cloudflare.com/ssl/client-certificates" target="_blank">using client certificates with API Shield</a>',
 		hosts_title: "Hosts",
 		hosts_description: "Choose which host(s) you wish to enable mTLS",
 		hosts_request_error: "This request failed, please try again",
