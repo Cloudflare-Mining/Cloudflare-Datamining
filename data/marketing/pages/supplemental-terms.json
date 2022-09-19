@@ -109,7 +109,7 @@
 															"target": null,
 															"uri": null
 														},
-														"value": "Last Updated August 4, 2022",
+														"value": "Last Updated September 19, 2022",
 														"marks": [
 															{
 																"type": "italic"
@@ -2426,7 +2426,7 @@
 															"target": null,
 															"uri": null
 														},
-														"value": "\" is a Request that may make changes to or retrieve information about resources such as buckets and objects stored by Cloudflare.",
+														"value": "\" is a Request that may make changes to or retrieve information about resources.",
 														"marks": [],
 														"content": null
 													}
@@ -2702,7 +2702,7 @@
 															"target": null,
 															"uri": null
 														},
-														"value": "\" is a single HTTP/S request that is received by Cloudflare's edge. For Cloudflare Workers, a Request is a single HTTP/S request that is received by Cloudflare's edge and hits a Worker.",
+														"value": "\" is a single HTTP/S request that is received by Cloudflare's edge. For the Cloudflare Developer Platform, a Request is a single HTTP/S request that is received by Cloudflare's edge and hits a Worker.",
 														"marks": [],
 														"content": null
 													}
@@ -3870,7 +3870,7 @@
 															"target": null,
 															"uri": null
 														},
-														"value": "Cloudflare Developer Platform (Cloudflare Workers; Cloudflare Pages; Workers KV; Durable Objects; and R2)",
+														"value": "Cloudflare Developer Platform (Cloudflare Workers; Cloudflare Pages; Workers KV; Durable Objects; Cloudflare Queues; and R2)",
 														"marks": [],
 														"content": null
 													}
@@ -3933,7 +3933,7 @@
 																			"target": null,
 																			"uri": null
 																		},
-																		"value": "\") on Cloudflare's edge servers; (ii) Cloudflare Pages, a JAMstack platform for frontend developers to collaborate and deploy websites; and (iii) Workers KV, Durable Objects, and R2, storage offerings used to serve HTML and non-HTML content.",
+																		"value": "\") on Cloudflare's edge servers; (ii) Cloudflare Pages, a JAMstack platform for frontend developers to collaborate and deploy websites; (iii) Cloudflare Queues, a managed message queuing service; and (iv) Workers KV, Durable Objects, and R2, storage offerings used to serve HTML and non-HTML content.",
 																		"marks": [],
 																		"content": null
 																	}
@@ -4782,7 +4782,7 @@
 																			"target": null,
 																			"uri": null
 																		},
-																		"value": "Cloudflare Zero Trust is a suite of cloud-based security solutions made available by Cloudflare to its Customers for use by their authorized End Users. Depending on the Cloudflare Zero Trust Services you have purchased and enabled, Cloudflare Zero Trust may include Cloudflare's zero trust access solution for your applications (Cloudflare Access), Cloudflare's secure web gateway and DNS filtering solution (Cloudflare Gateway), Cloudflare's remote browser isolation solution, and Cloudflare's email protection solution (Area 1 Security).",
+																		"value": "Cloudflare Zero Trust is a suite of cloud-based security solutions made available by Cloudflare to its Customers for use by their authorized End Users. Depending on the Cloudflare Zero Trust Services you have purchased and enabled, Cloudflare Zero Trust may include Cloudflare's zero trust access solution for your applications (Cloudflare Access), Cloudflare's secure web gateway and DNS filtering solution (Cloudflare Gateway), Cloudflare's remote browser isolation solution, Cloudflare's email protection solution (Area 1 Security), Cloudflare's cloud access security broker (CASB) solution, and Cloudflare's data loss prevention solution.",
 																		"marks": [],
 																		"content": null
 																	}
@@ -5140,32 +5140,7 @@
 																			"target": null,
 																			"uri": null
 																		},
-																		"value": "Customer Responsibilities",
-																		"marks": [
-																			{
-																				"type": "bold"
-																			}
-																		],
-																		"content": null
-																	}
-																]
-															},
-															{
-																"nodeType": "paragraph",
-																"data": {
-																	"target": null,
-																	"uri": null
-																},
-																"value": null,
-																"marks": null,
-																"content": [
-																	{
-																		"nodeType": "text",
-																		"data": {
-																			"target": null,
-																			"uri": null
-																		},
-																		"value": "\n",
+																		"value": "Customer Responsibilities\n",
 																		"marks": [
 																			{
 																				"type": "bold"
@@ -5179,7 +5154,7 @@
 																			"target": null,
 																			"uri": null
 																		},
-																		"value": "You acknowledge and agree that you are responsible for: (i) all activity of your End Users and for your End Users' compliance with this Agreement; (ii) complying with all applicable laws and/or regulations in using the Service, including, but not limited to, providing clear and conspicuous notice to all End Users that you may monitor their Internet activities through Cloudflare Zero Trust; (iii) for forwarding your End Users' DNS queries, web traffic and/or internal traffic, as applicable, to Cloudflare via valid forwarding mechanisms described in the Cloudflare documentation (e.g., the WARP Client, GRE tunnels); and (iv) configuring and maintaining your third-party identity provider for use in connection with Cloudflare Zero Trust.\n\nThe creation of Cloudflare Access authentication subdomains that include deceptive or offensive terms or names of other businesses, organizations, or individuals is prohibited. If Cloudflare determines that you are engaging in this activity it may suspend or terminate your account and/or project(s) immediately. The use of the Services for phishing schemes is prohibited.\n",
+																		"value": "You acknowledge and agree that you are responsible for: (i) all activity of your End Users and your End Users' compliance with this Agreement; (ii) complying with all relevant third-party terms of service and applicable laws and/or regulations in using the Service, including, but not limited to, providing clear and conspicuous notice to all End Users that you may monitor their Internet activities through Cloudflare Zero Trust; (iii) forwarding your End Users' DNS queries, web traffic and/or internal traffic, as applicable, to Cloudflare via valid forwarding mechanisms described in the Cloudflare documentation (e.g., the WARP Client, GRE tunnels); and (iv) configuring and maintaining your third-party identity provider for use in connection with Cloudflare Zero Trust.\n\nThe creation of Cloudflare Access authentication subdomains that include deceptive or offensive terms or names of other businesses, organizations, or individuals is prohibited. If Cloudflare determines that you are engaging in this activity it may suspend or terminate your account and/or project(s) immediately. The use of the Services for phishing schemes is prohibited.",
 																		"marks": [],
 																		"content": null
 																	}
@@ -5211,27 +5186,125 @@
 																			"target": null,
 																			"uri": null
 																		},
-																		"value": "Disclaimer\n\n",
+																		"value": "CASB",
 																		"marks": [
 																			{
 																				"type": "bold"
 																			}
 																		],
 																		"content": null
-																	},
-																	{
-																		"nodeType": "text",
-																		"data": {
-																			"target": null,
-																			"uri": null
-																		},
-																		"value": "CLOUDFLARE DOES NOT REPRESENT OR WARRANT THAT CLOUDFLARE ZERO TRUST WILL GUARANTEE ABSOLUTE SECURITY DUE TO THE CONTINUAL DEVELOPMENT OF NEW TECHNIQUES FOR INTRUDING UPON AND ATTACKING FILES, NETWORKS AND ENDPOINTS. CLOUDFLARE DOES NOT REPRESENT OR WARRANT THAT CLOUDFLARE ZERO TRUST WILL PROTECT ALL YOUR AND YOUR USERS' FILES, DEVICES, NETWORK, OR ENDPOINTS FROM ALL MALWARE, VIRUSES, OR THIRD PARTY MALICIOUS ATTACKS.\n\n",
-																		"marks": [],
-																		"content": null
 																	}
 																]
 															}
 														]
+													}
+												]
+											},
+											{
+												"nodeType": "paragraph",
+												"data": {
+													"target": null,
+													"uri": null
+												},
+												"value": null,
+												"marks": null,
+												"content": [
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "You authorize and instruct Cloudflare to scan, analyze, retrieve information from, or             otherwise access and use your third-party applications and services that you have integrated with Cloudflare's CASB solution, including the accounts, settings, data, and other materials available therein, to provide the Services.",
+														"marks": [],
+														"content": null
+													}
+												]
+											},
+											{
+												"nodeType": "paragraph",
+												"data": {
+													"target": null,
+													"uri": null
+												},
+												"value": null,
+												"marks": null,
+												"content": [
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "You represent and warrant that (i) your use of Cloudflare's CASB solution shall at all times comply with any relevant third-party terms of service or other agreements; and (ii) you and each of your End Users are authorized to provide Cloudflare with the requisite access to your third-party applications and services, including the accounts, settings, data, and other materials available therein.",
+														"marks": [],
+														"content": null
+													}
+												]
+											},
+											{
+												"nodeType": "paragraph",
+												"data": {
+													"target": null,
+													"uri": null
+												},
+												"value": null,
+												"marks": null,
+												"content": [
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "8.",
+														"marks": [],
+														"content": null
+													},
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": " Disclaimer\n\n",
+														"marks": [
+															{
+																"type": "bold"
+															}
+														],
+														"content": null
+													},
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "CLOUDFLARE DOES NOT REPRESENT OR WARRANT THAT CLOUDFLARE ZERO TRUST WILL (I) GUARANTEE ABSOLUTE SECURITY DUE TO THE CONTINUAL DEVELOPMENT OF NEW TECHNIQUES FOR INTRUDING UPON AND ATTACKING FILES, NETWORKS AND ENDPOINTS; OR (II) PROTECT ALL YOUR AND YOUR END USERS' FILES, DEVICES, NETWORK, OR ENDPOINTS FROM ALL MALICIOUS CODE, DATA EXFILTRATION, OR OTHER ATTACKS.\n",
+														"marks": [],
+														"content": null
+													}
+												]
+											},
+											{
+												"nodeType": "paragraph",
+												"data": {
+													"target": null,
+													"uri": null
+												},
+												"value": null,
+												"marks": null,
+												"content": [
+													{
+														"nodeType": "text",
+														"data": {
+															"target": null,
+															"uri": null
+														},
+														"value": "",
+														"marks": [],
+														"content": null
 													}
 												]
 											},
@@ -6069,7 +6142,7 @@
 																			"target": null,
 																			"uri": null
 																		},
-																		"value": "\") for any Services identified on the Data Localization Suite page ",
+																		"value": "\") for any Services identified on the ",
 																		"marks": [],
 																		"content": null
 																	},
@@ -6077,7 +6150,7 @@
 																		"nodeType": "hyperlink",
 																		"data": {
 																			"target": null,
-																			"uri": "https://support.cloudflare.com/hc/en-us/articles/360061946171-Data-Localization-Services"
+																			"uri": "https://www.cloudflare.com/data-localization/"
 																		},
 																		"value": null,
 																		"marks": null,
@@ -6088,7 +6161,7 @@
 																					"target": null,
 																					"uri": null
 																				},
-																				"value": "here",
+																				"value": "Data Localization Suite",
 																				"marks": [],
 																				"content": null
 																			}
@@ -6100,7 +6173,7 @@
 																			"target": null,
 																			"uri": null
 																		},
-																		"value": " (each such Service, a \"",
+																		"value": " list (each such Service, a \"",
 																		"marks": [],
 																		"content": null
 																	},
@@ -6170,7 +6243,7 @@
 																			"target": null,
 																			"uri": null
 																		},
-																		"value": "As a Data Localization Suite customer, you may configure Regional Services for your Enterprise primary domain and your Enterprise secondary domain(s). If you have enabled Regional Services for your Domain(s), Cloudflare will terminate TLS and apply application layer services to Customer Content for HTTPS traffic transmitted between End Users and the origin web server(s) for such a Domain only in Cloudflare data centers located in the geographic region you have selected. The geographic regions available for the Regional Service are listed on the Data Localization Suite page ",
+																		"value": "As a Data Localization Suite customer, you may configure Regional Services for your Enterprise primary domain and your Enterprise secondary domain(s). If you have enabled Regional Services for your Domain(s), Cloudflare will terminate TLS and apply application layer services to Customer Content for HTTPS traffic transmitted between End Users and the origin web server(s) for such a Domain only in Cloudflare data centers located in the geographic region you have selected. The geographic regions available for the Regional Service are listed on the ",
 																		"marks": [],
 																		"content": null
 																	},
@@ -6178,7 +6251,7 @@
 																		"nodeType": "hyperlink",
 																		"data": {
 																			"target": null,
-																			"uri": "https://support.cloudflare.com/hc/en-us/articles/360061946171-Data-Localization-Services"
+																			"uri": "https://www.cloudflare.com/data-localization/"
 																		},
 																		"value": null,
 																		"marks": null,
@@ -6189,7 +6262,7 @@
 																					"target": null,
 																					"uri": null
 																				},
-																				"value": "here",
+																				"value": "Data Localization Suite support page",
 																				"marks": [],
 																				"content": null
 																			}
@@ -8281,7 +8354,7 @@
 																			"target": null,
 																			"uri": null
 																		},
-																		"value": "Cloudflare may include Security Insights in logs and reports made available in your Cloudflare account dashboard. You may access, download, and use such logs and reports for your own internal use only.\n",
+																		"value": "Cloudflare may include (i) Security Insights in logs and reports made available in your Cloudflare account dashboard and (ii) security data made available via an API, each of which shall constitute Cloudflare Technology. You may access, download, and use such Cloudflare Technology for your own internal use only.\n",
 																		"marks": [],
 																		"content": null
 																	}
