@@ -1,0 +1,94 @@
+{
+	"componentChunkName": "component---src-components-case-studies-templates-case-study-template-tsx",
+	"path": "/case-studies/forbes-global-2000-media-and-advertising-conglomerate/",
+	"result": {
+		"data": {
+			"caseStudy": {
+				"name": "Forbes Global 2000 media & advertising conglomerate",
+				"contentfulId": "1YaqDwpKhEq7mdXRlTrNpG",
+				"nameUrlSlug": "forbes-global-2000-media-and-advertising-conglomerate",
+				"metaTags": {
+					"metaTitle": "Forbes Global 2000 media & advertising conglomerate | Cloudflare Case Study",
+					"metaDescription": "Cloudflare Zero Trust secures hybrid work for tens of thousands of employees at a market-leading media and advertising company",
+					"twitterCustomImage": {
+						"file": {
+							"publicURL": "[path]/teams-access-zero-trust_1.svg"
+						}
+					},
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/teams-access-zero-trust-hero__2_.png"
+						}
+					},
+					"facebookCustomImage": {
+						"file": {
+							"publicURL": "[path]/teams-access-zero-trust-hero__2_.png"
+						}
+					}
+				},
+				"orderDate": "2022-09-16",
+				"homepageUrl": "https://www.cloudflare.com/products/zero-trust/",
+				"hideFromCaseStudiesPage": false,
+				"shortDescription": "Cloudflare Zero Trust secures hybrid work for tens of thousands of employees at a market-leading media and advertising company",
+				"longDescription": "## __Global media conglomerate responds to cyber threats and modernizes application access with Cloudflare Zero Trust__\n\nA Forbes Global 2000 media and advertising company recently adopted Cloudflare to reimagine how it secured application access for its hybrid workforce. This company operates some of the most recognizable subsidiaries and brands in over 100 countries, employs tens of thousands people, and brings in billions in annual revenue.\n\nIn the spring of 2022, the company faced urgent concerns about cyber threats and turned to Cloudflare to address vulnerabilities in how employees accessed internal applications. Within three months, the company deployed Cloudflare to adopt identity-aware Zero Trust best practices in front of hundreds of critical apps for nearly 50,000 users. \n\nThis swift rollout has not only mitigated attacks on the company's resources, but also has helped its administrators be more productive by offering a simpler approach to set access policies across its global workforce. \n\nThe company estimates that modernizing their security with Cloudflare Zero Trust across its entire organization can potentially reduce costs by over $5 million annually, thanks to time savings on IT administration, productivity gains for end users, lower spending on VPN and other legacy tooling, and the lower likelihood and reduced potential impacts of a data breach.\n\n### __Restoring business operations within 48 hours after a crisis__\n\nIn March 2022, the company decided to withdraw its operations from Russia following Russia's invasion of Ukraine. Shortly thereafter, the company began experiencing attempts to attack its public websites and to compromise internal applications via its preexisting VPNs. Concerns about these threats — including becoming a target for state-backed actors — escalated to the point that the company shut down all web properties and several critical internal applications on a Sunday evening.\n\nCloudflare, in collaboration with a major implementation partner, initiated a rapid response. The first step was rolling out Cloudflare's L7 security services — including DDoS protection, WAF, and later Bot Management and Load Balancing — to mitigate threats directed at external websites. \n\nAs a next step, the company rolled out Cloudflare Access, a [Zero Trust Network Access (ZTNA)](https://www.cloudflare.com/learning/access-management/what-is-ztna/) service, to secure a handful of critical web-based applications that had been most severely disrupted (including an ERP app used every day) for thousands of users. Deployment was particularly swift because the company did not need to roll out any device clients to user endpoints, taking advantage of Cloudflare's highly scalable reverse proxy motion.\n\nThe company integrated Cloudflare Access with its identity provider (Okta), enabling administrators to create identity-based authentication policies for each application. This approach equipped administrators with greater visibility and more granular controls across user groups than its previous architecture, which relied on a mix of VPN configurations that differed across subsidiaries.\n\nWithin 48 hours, the company was able to resume critical business operations. And within a few days, the company rolled out Cloudflare Access to several thousand additional employees.\n\n### __Scaling protections to 50,000 users__\n\nAfter reestablishing stable business operations, the company began to reconsider its longer term approach to securing access. Shifting access policy enforcement to a globally distributed cloud network offered an opportunity to deliver a more consistent experience for employees, who worked across many countries in both remote and in-office settings.\n\nOver the next few months, the company extended identity-based and group-based policies for hundreds more applications and thousands of users. By May 2022, nearly 50,000 users were using Cloudflare to authenticate to their most-used applications, offloading the majority of traffic from the company's existing VPNs. \n\n### __Unlocking productivity across the workforce__\n\nThis transition to a cloud-delivered Zero Trust model has helped IT and security teams be more productive. They are no longer managing disparate VPN configurations, and now have a single platform to manage policies across their global workforce. Plus, implementing default-deny, least-privilege best practices helps the company mitigate the risks from both insider and external threats. \n\nThese day-to-day productivity gains were meaningful factors in the company's estimated overall cost savings.\n\nIn particular, Cloudflare's seamless integration with Okta as an identity provider (IdP) helped save significant maintenance and configuration costs. Developers and IT administrators no longer had to worry about configuring SAML support for each individual self-hosted app to integrate with their IdP. Instead, enabling single sign-on (SSO) authentication required just a few clicks in the Cloudflare dashboard.  \n\nGoing forward, the company has ambitions to extend these Zero Trust protections across the entire global workforce, and to eventually retire its VPNs by putting Cloudflare in front of all its applications.\n",
+				"cloudflareStreamVideoId": null,
+				"keyResults": "- 50,000 users and hundreds of applications secured with Zero Trust rules within 3 months\n\n- Critical business operations restored within 48 hours after all public websites and internal applications were shut down\n\n- Estimated $5 million in potential annual savings by rolling out Zero Trust across the entire organization, driven by improved staff productivity and reduced likelihood and impact of a breach",
+				"relatedCaseStudies": [
+					{
+						"name": "Lawrence Berkeley National Laboratory",
+						"nameUrlSlug": "lawrence-berkeley-national-laboratory"
+					},
+					{
+						"name": "BlockFi",
+						"nameUrlSlug": "blockfi"
+					},
+					{
+						"name": "Axios",
+						"nameUrlSlug": "axios-thwarts-attacks-and-future-proofs-infrastructure"
+					}
+				],
+				"inPartnershipWith": null,
+				"relatedCloudflareProducts": [
+					{
+						"title": "Access",
+						"url": "/teams/access"
+					}
+				],
+				"employeeHeadshot": null,
+				"employeeQuoteName": null,
+				"employeeQuoteText": null,
+				"employeeQuoteJobTitle": null,
+				"employeeQuoteName2": null,
+				"employeeQuoteText2": null,
+				"employeeQuoteJobTitle2": null,
+				"downloadPdfButtonLink": null,
+				"ref_streamVideoThumbnail": null,
+				"logo": {
+					"file": {
+						"publicURL": "[path]/forbes_global_2000_media_logo.png"
+					}
+				},
+				"customCanonicalTag": null
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "1YaqDwpKhEq7mdXRlTrNpG",
+			"pathname": "/case-studies/forbes-global-2000-media-and-advertising-conglomerate/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": [
+				"en-US",
+				"zh-CN",
+				"zh-TW",
+				"ja-JP",
+				"ko-KR",
+				"zh-Hans-CN"
+			]
+		}
+	}
+}
