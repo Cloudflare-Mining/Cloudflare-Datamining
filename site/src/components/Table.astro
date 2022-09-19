@@ -10,7 +10,7 @@ const {headers, data, widths} = Astro.props;
 ---
 <div class="overflow-x-auto">
 	<table class="mb-8 w-full table-auto overflow-scroll  p-2">
-		<thead class="border-b-2 border-solid border-b-gray-700 bg-gray-800 text-left">
+		<thead class="border-b-2 border-solid border-b-gray-700 bg-gray-200 text-left dark:bg-gray-800">
 			<tr>
 				{(headers ?? []).map((header:string) => (
 					<th class="p-1">{header}</th>
