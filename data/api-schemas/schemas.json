@@ -62161,6 +62161,9 @@
 															"session_affinity_ttl": {
 																"$ref": "#/paths/~1zones~1%7Bidentifier%7D~1load_balancers/post/requestBody/content/application~1json/schema/properties/session_affinity_ttl"
 															},
+															"adaptive_routing": {
+																"$ref": "#/paths/~1zones~1%7Bidentifier%7D~1load_balancers/post/requestBody/content/application~1json/schema/properties/adaptive_routing"
+															},
 															"random_steering": {
 																"$ref": "#/paths/~1zones~1%7Bidentifier%7D~1load_balancers/post/requestBody/content/application~1json/schema/properties/random_steering"
 															},
@@ -62378,7 +62381,7 @@
 											},
 											"zero_downtime_failover": {
 												"type": "string",
-												"description": "Configures the zero downtime failover between origins within a pool when session affinity is enabled. Value \"none\" means no failover takes place for sessions pinned to the origin (default). Value \"temporary\" means traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. Value \"sticky\" means the session affinity cookie is updated and subsequent requests are sent to the new origin. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance.",
+												"description": "Configures the zero-downtime failover between origins within a pool when session affinity is enabled. Value \"none\" means no failover takes place for sessions pinned to the origin (default). Value \"temporary\" means traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. Value \"sticky\" means the session affinity cookie is updated and subsequent requests are sent to the new origin. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance.",
 												"enum": [
 													"none",
 													"temporary",
@@ -62393,6 +62396,18 @@
 										"type": "number",
 										"description": "Time, in seconds, until this load balancer's session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of 23 hours will be used unless session_affinity_ttl is explicitly set. The accepted range of values is between [1800, 604800]. Once the expiry time has been reached, subsequent requests may get sent to a different origin server.",
 										"example": 5000
+									},
+									"adaptive_routing": {
+										"type": "object",
+										"description": "Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin.",
+										"properties": {
+											"failover_across_pools": {
+												"type": "boolean",
+												"description": "Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set false (the default) zero-downtime failover will only occur between origins within the same pool. See `session_affinity_attributes` for control over when sessions are broken or reassigned.",
+												"example": true,
+												"default": false
+											}
+										}
 									},
 									"random_steering": {
 										"type": "object",
@@ -62448,6 +62463,9 @@
 														},
 														"session_affinity_attributes": {
 															"$ref": "#/paths/~1zones~1%7Bidentifier%7D~1load_balancers/post/requestBody/content/application~1json/schema/properties/session_affinity_attributes"
+														},
+														"adaptive_routing": {
+															"$ref": "#/paths/~1zones~1%7Bidentifier%7D~1load_balancers/post/requestBody/content/application~1json/schema/properties/adaptive_routing"
 														},
 														"ttl": {
 															"$ref": "#/paths/~1zones~1%7Bidentifier%7D~1load_balancers/post/requestBody/content/application~1json/schema/properties/ttl"
@@ -62615,6 +62633,9 @@
 														},
 														"session_affinity_ttl": {
 															"$ref": "#/paths/~1zones~1%7Bidentifier1%7D~1load_balancers~1%7Bidentifier%7D/put/requestBody/content/application~1json/schema/properties/session_affinity_ttl"
+														},
+														"adaptive_routing": {
+															"$ref": "#/paths/~1zones~1%7Bidentifier1%7D~1load_balancers~1%7Bidentifier%7D/put/requestBody/content/application~1json/schema/properties/adaptive_routing"
 														},
 														"random_steering": {
 															"$ref": "#/paths/~1zones~1%7Bidentifier1%7D~1load_balancers~1%7Bidentifier%7D/put/requestBody/content/application~1json/schema/properties/random_steering"
@@ -62835,7 +62856,7 @@
 											},
 											"zero_downtime_failover": {
 												"type": "string",
-												"description": "Configures the zero downtime failover between origins within a pool when session affinity is enabled. Value \"none\" means no failover takes place for sessions pinned to the origin (default). Value \"temporary\" means traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. Value \"sticky\" means the session affinity cookie is updated and subsequent requests are sent to the new origin. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance.",
+												"description": "Configures the zero-downtime failover between origins within a pool when session affinity is enabled. Value \"none\" means no failover takes place for sessions pinned to the origin (default). Value \"temporary\" means traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. Value \"sticky\" means the session affinity cookie is updated and subsequent requests are sent to the new origin. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance.",
 												"enum": [
 													"none",
 													"temporary",
@@ -62850,6 +62871,18 @@
 										"type": "number",
 										"description": "Time, in seconds, until this load balancer's session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of 23 hours will be used unless session_affinity_ttl is explicitly set. The accepted range of values is between [1800, 604800]. Once the expiry time has been reached, subsequent requests may get sent to a different origin server.",
 										"example": 5000
+									},
+									"adaptive_routing": {
+										"type": "object",
+										"description": "Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin.",
+										"properties": {
+											"failover_across_pools": {
+												"type": "boolean",
+												"description": "Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set false (the default) zero-downtime failover will only occur between origins within the same pool. See `session_affinity_attributes` for control over when sessions are broken or reassigned.",
+												"example": true,
+												"default": false
+											}
+										}
 									},
 									"random_steering": {
 										"type": "object",
@@ -62905,6 +62938,9 @@
 														},
 														"session_affinity_attributes": {
 															"$ref": "#/paths/~1zones~1%7Bidentifier1%7D~1load_balancers~1%7Bidentifier%7D/put/requestBody/content/application~1json/schema/properties/session_affinity_attributes"
+														},
+														"adaptive_routing": {
+															"$ref": "#/paths/~1zones~1%7Bidentifier1%7D~1load_balancers~1%7Bidentifier%7D/put/requestBody/content/application~1json/schema/properties/adaptive_routing"
 														},
 														"ttl": {
 															"$ref": "#/paths/~1zones~1%7Bidentifier1%7D~1load_balancers~1%7Bidentifier%7D/put/requestBody/content/application~1json/schema/properties/ttl"
@@ -63070,6 +63106,9 @@
 									},
 									"session_affinity_ttl": {
 										"$ref": "#/paths/~1zones~1%7Bidentifier1%7D~1load_balancers~1%7Bidentifier%7D/put/requestBody/content/application~1json/schema/properties/session_affinity_ttl"
+									},
+									"adaptive_routing": {
+										"$ref": "#/paths/~1zones~1%7Bidentifier1%7D~1load_balancers~1%7Bidentifier%7D/put/requestBody/content/application~1json/schema/properties/adaptive_routing"
 									},
 									"random_steering": {
 										"$ref": "#/paths/~1zones~1%7Bidentifier1%7D~1load_balancers~1%7Bidentifier%7D/put/requestBody/content/application~1json/schema/properties/random_steering"
@@ -88524,7 +88563,7 @@
 										},
 										"colo_name": {
 											"type": "string",
-											"description": "The name of the data center used for the packet capture. This field only applies to `full` packet captures.",
+											"description": "The name of the data center used for the packet capture. This can be a specific colo (ord02) or a multi-colo name (ORD). This field only applies to `full` packet captures.",
 											"example": "ord02"
 										},
 										"destination_conf": {
@@ -88760,7 +88799,7 @@
 																},
 																"colo_name": {
 																	"type": "string",
-																	"description": "The name of the data center used for the packet capture. This field only applies to `full` packet captures.",
+																	"description": "The name of the data center used for the packet capture. This can be a specific colo (ord02) or a multi-colo name (ORD). This field only applies to `full` packet captures.",
 																	"example": "ord02"
 																},
 																"destination_conf": {
@@ -92244,6 +92283,5435 @@
 					"content": {
 						"application/json": {}
 					}
+				}
+			}
+		},
+		"/radar/netflows/top/ases": {
+			"get": {
+				"summary": "Get top autonomous systems",
+				"description": "Get the top autonomous systems (AS) by network traffic. Values are a percentage out of the total network traffic.",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "Get top autonomous systems response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"data": {
+											"type": "object",
+											"properties": {
+												"top_0": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"clientASN": {
+																"type": "number",
+																"example": 16509
+															},
+															"clientASName": {
+																"type": "string",
+																"example": "AMAZON-02"
+															},
+															"value": {
+																"type": "string",
+																"example": "0.73996"
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.user.read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			}
+		},
+		"/radar/netflows/top/locations": {
+			"get": {
+				"summary": "Get top locations",
+				"description": "Get the top locations by network traffic. Values are a percentage out of the total network traffic.",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "Get top locations response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"data": {
+											"type": "object",
+											"properties": {
+												"top_0": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"clientCountryName": {
+																"type": "string",
+																"example": "United States"
+															},
+															"clientCountryAlpha2": {
+																"type": "string",
+																"example": "US"
+															},
+															"value": {
+																"type": "string",
+																"example": "0.73996"
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.user.read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			}
+		},
+		"/radar/netflows/timeseries": {
+			"get": {
+				"summary": "Get NetFlow time series",
+				"description": "Get network traffic change over time. Values are normalized using min-max by default, with the minimum set to 0. When asking for multiple time series, you can also get the percentage relative change of the first/main series, with respect to the second/control series - for example, to get the relative change of this week from the previous week, the first series would have a date range of `7d`, the second, a date range of `7dControl`, and the normalization would be set to `PERCENTAGE_CHANGE`.",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "Get NetFlow time series response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"meta": {
+											"type": "object",
+											"properties": {
+												"confidenceInfo": {
+													"type": "object",
+													"properties": {
+														"level": {
+															"type": "integer"
+														},
+														"annotations": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"properties": {
+																	"dataSource": {
+																		"type": "string",
+																		"example": "ALL"
+																	},
+																	"eventType": {
+																		"type": "string",
+																		"example": "OUTAGE"
+																	},
+																	"description": {
+																		"type": "string",
+																		"example": "Cable cut in Tonga"
+																	},
+																	"startTime": {
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2022-09-17T10:22:57.555000+00:00"
+																	},
+																	"endTime": {
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2022-09-17T10:22:57.555000+00:00"
+																	}
+																}
+															}
+														}
+													}
+												},
+												"dateRange": {
+													"type": "object",
+													"properties": {
+														"startTime": {
+															"type": "string",
+															"format": "date-time",
+															"example": "2022-09-16T10:22:57.555000+00:00",
+															"description": "Adjusted start of date range"
+														},
+														"endTime": {
+															"type": "string",
+															"format": "date-time",
+															"example": "2022-09-17T10:22:57.555000+00:00",
+															"description": "Adjusted end of date range"
+														}
+													}
+												},
+												"aggInterval": {
+													"type": "string",
+													"example": "1h"
+												},
+												"lastUpdated": {
+													"type": "string",
+													"format": "date-time",
+													"example": "2022-09-17T10:22:57.555000+00:00"
+												}
+											}
+										},
+										"series": {
+											"type": "object",
+											"properties": {
+												"timestamps": {
+													"type": "array",
+													"items": {
+														"type": "string",
+														"format": "date-time",
+														"example": "2022-09-17T10:22:57.555000+00:00"
+													}
+												},
+												"values": {
+													"type": "array",
+													"items": {
+														"type": "string"
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.user.read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			}
+		},
+		"/radar/http/summary/device_type": {
+			"get": {
+				"summary": "Get a summary of device types",
+				"description": "Percentage distribution of traffic per device type.",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "Get a summary of device types response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"meta": {
+											"type": "object",
+											"properties": {}
+										},
+										"data": {
+											"type": "object",
+											"properties": {
+												"summary_0": {
+													"type": "object",
+													"properties": {
+														"desktop": {
+															"type": "string",
+															"example": "65"
+														},
+														"mobile": {
+															"type": "string",
+															"example": "30"
+														},
+														"other": {
+															"type": "string",
+															"example": "5"
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.user.read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			}
+		},
+		"/radar/http/summary/http_protocol": {
+			"get": {
+				"summary": "Get a summary of HTTP protocols",
+				"description": "Percentage distribution of traffic per HTTP protocol.",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "Get a summary of HTTP protocols response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"meta": {
+											"type": "object",
+											"properties": {}
+										},
+										"data": {
+											"type": "object",
+											"properties": {
+												"summary_0": {
+													"type": "object",
+													"properties": {
+														"http": {
+															"type": "string",
+															"example": "99"
+														},
+														"https": {
+															"type": "string",
+															"example": "1"
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.user.read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			}
+		},
+		"/radar/http/summary/http_version": {
+			"get": {
+				"summary": "Get a summary of HTTP versions",
+				"description": "Percentage distribution of traffic per HTTP protocol version.",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "Get a summary of HTTP versions response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"meta": {
+											"type": "object",
+											"properties": {}
+										},
+										"data": {
+											"type": "object",
+											"properties": {
+												"summary_0": {
+													"type": "object",
+													"properties": {
+														"HTTP/1.x": {
+															"type": "string",
+															"example": "1"
+														},
+														"HTTP/2": {
+															"type": "string",
+															"example": "39"
+														},
+														"HTTP/3": {
+															"type": "string",
+															"example": "60"
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.user.read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			}
+		},
+		"/radar/http/summary/bot_class": {
+			"get": {
+				"summary": "Get a summary of bot classes",
+				"description": "Percentage distribution of traffic classified as automated or human.",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "Get a summary of bot classes response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"meta": {
+											"type": "object",
+											"properties": {}
+										},
+										"data": {
+											"type": "object",
+											"properties": {
+												"summary_0": {
+													"type": "object",
+													"properties": {
+														"human": {
+															"type": "string",
+															"example": "65"
+														},
+														"bot": {
+															"type": "string",
+															"example": "35"
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.user.read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			}
+		},
+		"/radar/http/summary/ip_version": {
+			"get": {
+				"summary": "Get a summary of IP versions",
+				"description": "Percentage distribution of traffic per IP protocol version.",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "Get a summary of IP versions response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"meta": {
+											"type": "object",
+											"properties": {}
+										},
+										"data": {
+											"type": "object",
+											"properties": {
+												"summary_0": {
+													"type": "object",
+													"properties": {
+														"IPv4": {
+															"type": "string",
+															"example": "65"
+														},
+														"IPv6": {
+															"type": "string",
+															"example": "35"
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.user.read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			}
+		},
+		"/radar/http/summary/tls_version": {
+			"get": {
+				"summary": "Get a summary of TLS versions",
+				"description": "Percentage distribution of traffic per TLS protocol version.",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "Get a summary of TLS versions response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"meta": {
+											"type": "object",
+											"properties": {}
+										},
+										"data": {
+											"type": "object",
+											"properties": {
+												"summary_0": {
+													"type": "object",
+													"properties": {
+														"TLS 1.0": {
+															"type": "string",
+															"example": "0.5"
+														},
+														"TLS 1.1": {
+															"type": "string",
+															"example": "0.5"
+														},
+														"TLS 1.2": {
+															"type": "string",
+															"example": "60"
+														},
+														"TLS 1.3": {
+															"type": "string",
+															"example": "10"
+														},
+														"TLS QUIC": {
+															"type": "string",
+															"example": "29"
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.user.read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			}
+		},
+		"/radar/http/timeseries/device_type": {
+			"get": {
+				"summary": "Get time series of device types",
+				"description": "Percentage distribution of traffic per device type over time.",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "Get time series of device types response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"meta": {
+											"type": "object",
+											"properties": {}
+										},
+										"data": {
+											"type": "object",
+											"properties": {
+												"serie_0": {
+													"type": "object",
+													"properties": {
+														"timestamps": {
+															"type": "array",
+															"items": {
+																"type": "string"
+															}
+														},
+														"desktop": {
+															"type": "array",
+															"items": {
+																"type": "string"
+															}
+														},
+														"mobile": {
+															"type": "array",
+															"items": {
+																"type": "string"
+															}
+														},
+														"other": {
+															"type": "array",
+															"items": {
+																"type": "string"
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.user.read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			}
+		},
+		"/radar/http/timeseries/http_protocol": {
+			"get": {
+				"summary": "Get time series of HTTP protocols",
+				"description": "Percentage distribution of traffic per HTTP protocol over time.",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "Get time series of HTTP protocols response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"meta": {
+											"type": "object",
+											"properties": {}
+										},
+										"data": {
+											"type": "object",
+											"properties": {
+												"serie_0": {
+													"type": "object",
+													"properties": {
+														"timestamps": {
+															"type": "array",
+															"items": {
+																"type": "string"
+															}
+														},
+														"http": {
+															"type": "array",
+															"items": {
+																"type": "string"
+															}
+														},
+														"https": {
+															"type": "array",
+															"items": {
+																"type": "string"
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.user.read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			}
+		},
+		"/radar/http/timeseries/http_version": {
+			"get": {
+				"summary": "Get time series of HTTP versions",
+				"description": "Percentage distribution of traffic per HTTP protocol version over time.",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "Get time series of HTTP versions response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"meta": {
+											"type": "object",
+											"properties": {}
+										},
+										"data": {
+											"type": "object",
+											"properties": {
+												"serie_0": {
+													"type": "object",
+													"properties": {
+														"timestamps": {
+															"type": "array",
+															"items": {
+																"type": "string"
+															}
+														},
+														"HTTP/1.x": {
+															"type": "array",
+															"items": {
+																"type": "string"
+															}
+														},
+														"HTTP/2": {
+															"type": "array",
+															"items": {
+																"type": "string"
+															}
+														},
+														"HTTP/3": {
+															"type": "array",
+															"items": {
+																"type": "string"
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.user.read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			}
+		},
+		"/radar/http/timeseries/bot_class": {
+			"get": {
+				"summary": "Get time series of bot classes",
+				"description": "Percentage distribution of traffic classified as automated or human over time.",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "Get time series of bot classes response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"meta": {
+											"type": "object",
+											"properties": {}
+										},
+										"data": {
+											"type": "object",
+											"properties": {
+												"serie_0": {
+													"type": "object",
+													"properties": {
+														"timestamps": {
+															"type": "array",
+															"items": {
+																"type": "string"
+															}
+														},
+														"human": {
+															"type": "array",
+															"items": {
+																"type": "string"
+															}
+														},
+														"bot": {
+															"type": "array",
+															"items": {
+																"type": "string"
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.user.read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			}
+		},
+		"/radar/http/timeseries/ip_version": {
+			"get": {
+				"summary": "Get time series of IP versions",
+				"description": "Percentage distribution of traffic per IP protocol version over time.",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "Get time series of IP versions response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"meta": {
+											"type": "object",
+											"properties": {}
+										},
+										"data": {
+											"type": "object",
+											"properties": {
+												"serie_0": {
+													"type": "object",
+													"properties": {
+														"timestamps": {
+															"type": "array",
+															"items": {
+																"type": "string"
+															}
+														},
+														"IPv4": {
+															"type": "array",
+															"items": {
+																"type": "string"
+															}
+														},
+														"IPv6": {
+															"type": "array",
+															"items": {
+																"type": "string"
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.user.read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			}
+		},
+		"/radar/http/timeseries/tls_version": {
+			"get": {
+				"summary": "Get time series of TLS versions",
+				"description": "Percentage distribution of traffic per TLS protocol version over time.",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "Get time series of TLS versions response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"meta": {
+											"type": "object",
+											"properties": {}
+										},
+										"data": {
+											"type": "object",
+											"properties": {
+												"serie_0": {
+													"type": "object",
+													"properties": {
+														"timestamps": {
+															"type": "array",
+															"items": {
+																"type": "string"
+															}
+														},
+														"TLS 1.0": {
+															"type": "array",
+															"items": {
+																"type": "string"
+															}
+														},
+														"TLS 1.1": {
+															"type": "array",
+															"items": {
+																"type": "string"
+															}
+														},
+														"TLS 1.2": {
+															"type": "array",
+															"items": {
+																"type": "string"
+															}
+														},
+														"TLS 1.3": {
+															"type": "array",
+															"items": {
+																"type": "string"
+															}
+														},
+														"TLS QUIC": {
+															"type": "array",
+															"items": {
+																"type": "string"
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.user.read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			}
+		},
+		"/radar/http/timeseries/browser": {
+			"get": {
+				"summary": "Get time series of user agents",
+				"description": "Percentage distribution of traffic of the top user agents in the selected time range, over time.",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "Get time series of user agents response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"meta": {
+											"type": "object",
+											"properties": {}
+										},
+										"data": {
+											"type": "object",
+											"properties": {
+												"serie_0": {
+													"type": "object",
+													"properties": {
+														"timestamps": {
+															"type": "array",
+															"items": {
+																"type": "string"
+															}
+														},
+														"<browser name>": {
+															"type": "array",
+															"items": {
+																"type": "string"
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.user.read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			}
+		},
+		"/radar/http/top/locations/bot_class/{bot_class}": {
+			"get": {
+				"summary": "Get top locations by bot class",
+				"description": "Get the top locations, by HTTP traffic, of the requested bot class. These two categories use Cloudflare's bot score - refer to [Bot scores])https://developers.cloudflare.com/bots/concepts/bot-score). Values are a percentage out of the total traffic.",
+				"parameters": [
+					{
+						"name": "bot_class",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Get top locations by bot class response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"meta": {
+											"type": "object",
+											"properties": {
+												"confidenceInfo": {
+													"type": "object",
+													"properties": {
+														"level": {
+															"type": "integer"
+														},
+														"annotations": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"properties": {
+																	"dataSource": {
+																		"type": "string"
+																	},
+																	"eventType": {
+																		"type": "string"
+																	},
+																	"description": {
+																		"type": "string"
+																	},
+																	"startTime": {
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2022-09-17T10:22:57.555000+00:00"
+																	},
+																	"endTime": {
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2022-09-17T10:22:57.555000+00:00"
+																	}
+																}
+															}
+														}
+													}
+												},
+												"dateRange": {
+													"type": "object",
+													"properties": {
+														"startTime": {
+															"type": "string",
+															"format": "date-time",
+															"example": "2022-09-17T10:22:57.555000+00:00"
+														},
+														"endTime": {
+															"type": "string",
+															"format": "date-time",
+															"example": "2022-09-17T10:22:57.555000+00:00"
+														}
+													}
+												}
+											}
+										},
+										"data": {
+											"type": "object",
+											"properties": {
+												"top_0": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"clientCountryAlpha2": {
+																"type": "string",
+																"example": "US"
+															},
+															"clientCountryName": {
+																"type": "string",
+																"example": "United States"
+															},
+															"value": {
+																"type": "string",
+																"example": "65"
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.user.read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			}
+		},
+		"/radar/http/top/locations/device_type/{device_type}": {
+			"get": {
+				"summary": "Get top locations by device type",
+				"description": "Get the top locations, by HTTP traffic, of the requested device type. Values are a percentage out of the total traffic.",
+				"parameters": [
+					{
+						"name": "device_type",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Get top locations by device type response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"meta": {
+											"type": "object",
+											"properties": {
+												"confidenceInfo": {
+													"type": "object",
+													"properties": {
+														"level": {
+															"type": "integer"
+														},
+														"annotations": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"properties": {
+																	"dataSource": {
+																		"type": "string"
+																	},
+																	"eventType": {
+																		"type": "string"
+																	},
+																	"description": {
+																		"type": "string"
+																	},
+																	"startTime": {
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2022-09-17T10:22:57.555000+00:00"
+																	},
+																	"endTime": {
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2022-09-17T10:22:57.555000+00:00"
+																	}
+																}
+															}
+														}
+													}
+												},
+												"dateRange": {
+													"type": "object",
+													"properties": {
+														"startTime": {
+															"type": "string",
+															"format": "date-time",
+															"example": "2022-09-17T10:22:57.555000+00:00"
+														},
+														"endTime": {
+															"type": "string",
+															"format": "date-time",
+															"example": "2022-09-17T10:22:57.555000+00:00"
+														}
+													}
+												}
+											}
+										},
+										"data": {
+											"type": "object",
+											"properties": {
+												"top_0": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"clientCountryAlpha2": {
+																"type": "string",
+																"example": "US"
+															},
+															"clientCountryName": {
+																"type": "string",
+																"example": "United States"
+															},
+															"value": {
+																"type": "string",
+																"example": "65"
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.user.read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			}
+		},
+		"/radar/http/top/locations/tls_version/{tls_version}": {
+			"get": {
+				"summary": "Get top locations by TLS version",
+				"description": "Get the top locations, by HTTP traffic, of the requested TLS protocol version. Values are a percentage out of the total traffic.",
+				"parameters": [
+					{
+						"name": "tls_version",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Get top locations by TLS version response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"meta": {
+											"type": "object",
+											"properties": {
+												"confidenceInfo": {
+													"type": "object",
+													"properties": {
+														"level": {
+															"type": "integer"
+														},
+														"annotations": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"properties": {
+																	"dataSource": {
+																		"type": "string"
+																	},
+																	"eventType": {
+																		"type": "string"
+																	},
+																	"description": {
+																		"type": "string"
+																	},
+																	"startTime": {
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2022-09-17T10:22:57.555000+00:00"
+																	},
+																	"endTime": {
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2022-09-17T10:22:57.555000+00:00"
+																	}
+																}
+															}
+														}
+													}
+												},
+												"dateRange": {
+													"type": "object",
+													"properties": {
+														"startTime": {
+															"type": "string",
+															"format": "date-time",
+															"example": "2022-09-17T10:22:57.555000+00:00"
+														},
+														"endTime": {
+															"type": "string",
+															"format": "date-time",
+															"example": "2022-09-17T10:22:57.555000+00:00"
+														}
+													}
+												}
+											}
+										},
+										"data": {
+											"type": "object",
+											"properties": {
+												"top_0": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"clientCountryAlpha2": {
+																"type": "string",
+																"example": "US"
+															},
+															"clientCountryName": {
+																"type": "string",
+																"example": "United States"
+															},
+															"value": {
+																"type": "string",
+																"example": "65"
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.user.read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			}
+		},
+		"/radar/http/top/locations/http_protocol/{http_protocol}": {
+			"get": {
+				"summary": "Get top locations by HTTP protocol",
+				"description": "Get the top locations, by HTTP traffic, of the requested HTTP protocol. Values are a percentage out of the total traffic.",
+				"parameters": [
+					{
+						"name": "http_protocol",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Get top locations by HTTP protocol response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"meta": {
+											"type": "object",
+											"properties": {
+												"confidenceInfo": {
+													"type": "object",
+													"properties": {
+														"level": {
+															"type": "integer"
+														},
+														"annotations": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"properties": {
+																	"dataSource": {
+																		"type": "string"
+																	},
+																	"eventType": {
+																		"type": "string"
+																	},
+																	"description": {
+																		"type": "string"
+																	},
+																	"startTime": {
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2022-09-17T10:22:57.555000+00:00"
+																	},
+																	"endTime": {
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2022-09-17T10:22:57.555000+00:00"
+																	}
+																}
+															}
+														}
+													}
+												},
+												"dateRange": {
+													"type": "object",
+													"properties": {
+														"startTime": {
+															"type": "string",
+															"format": "date-time",
+															"example": "2022-09-17T10:22:57.555000+00:00"
+														},
+														"endTime": {
+															"type": "string",
+															"format": "date-time",
+															"example": "2022-09-17T10:22:57.555000+00:00"
+														}
+													}
+												}
+											}
+										},
+										"data": {
+											"type": "object",
+											"properties": {
+												"top_0": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"clientCountryAlpha2": {
+																"type": "string",
+																"example": "US"
+															},
+															"clientCountryName": {
+																"type": "string",
+																"example": "United States"
+															},
+															"value": {
+																"type": "string",
+																"example": "65"
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.user.read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			}
+		},
+		"/radar/http/top/locations/http_version/{http_version}": {
+			"get": {
+				"summary": "Get top locations by HTTP version",
+				"description": "Get the top locations, by HTTP traffic, of the requested HTTP protocol. Values are a percentage out of the total traffic.",
+				"parameters": [
+					{
+						"name": "http_version",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Get top locations by HTTP version response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"meta": {
+											"type": "object",
+											"properties": {
+												"confidenceInfo": {
+													"type": "object",
+													"properties": {
+														"level": {
+															"type": "integer"
+														},
+														"annotations": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"properties": {
+																	"dataSource": {
+																		"type": "string"
+																	},
+																	"eventType": {
+																		"type": "string"
+																	},
+																	"description": {
+																		"type": "string"
+																	},
+																	"startTime": {
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2022-09-17T10:22:57.555000+00:00"
+																	},
+																	"endTime": {
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2022-09-17T10:22:57.555000+00:00"
+																	}
+																}
+															}
+														}
+													}
+												},
+												"dateRange": {
+													"type": "object",
+													"properties": {
+														"startTime": {
+															"type": "string",
+															"format": "date-time",
+															"example": "2022-09-17T10:22:57.555000+00:00"
+														},
+														"endTime": {
+															"type": "string",
+															"format": "date-time",
+															"example": "2022-09-17T10:22:57.555000+00:00"
+														}
+													}
+												}
+											}
+										},
+										"data": {
+											"type": "object",
+											"properties": {
+												"top_0": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"clientCountryAlpha2": {
+																"type": "string",
+																"example": "US"
+															},
+															"clientCountryName": {
+																"type": "string",
+																"example": "United States"
+															},
+															"value": {
+																"type": "string",
+																"example": "65"
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.user.read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			}
+		},
+		"/radar/http/top/locations/ip_version/{ip_version}": {
+			"get": {
+				"summary": "Get top locations by IP version",
+				"description": "Get the top locations, by HTTP traffic, of the requested IP protocol version. Values are a percentage out of the total traffic.",
+				"parameters": [
+					{
+						"name": "ip_version",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Get top locations by IP version response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"meta": {
+											"type": "object",
+											"properties": {
+												"confidenceInfo": {
+													"type": "object",
+													"properties": {
+														"level": {
+															"type": "integer"
+														},
+														"annotations": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"properties": {
+																	"dataSource": {
+																		"type": "string"
+																	},
+																	"eventType": {
+																		"type": "string"
+																	},
+																	"description": {
+																		"type": "string"
+																	},
+																	"startTime": {
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2022-09-17T10:22:57.555000+00:00"
+																	},
+																	"endTime": {
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2022-09-17T10:22:57.555000+00:00"
+																	}
+																}
+															}
+														}
+													}
+												},
+												"dateRange": {
+													"type": "object",
+													"properties": {
+														"startTime": {
+															"type": "string",
+															"format": "date-time",
+															"example": "2022-09-17T10:22:57.555000+00:00"
+														},
+														"endTime": {
+															"type": "string",
+															"format": "date-time",
+															"example": "2022-09-17T10:22:57.555000+00:00"
+														}
+													}
+												}
+											}
+										},
+										"data": {
+											"type": "object",
+											"properties": {
+												"top_0": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"clientCountryAlpha2": {
+																"type": "string",
+																"example": "US"
+															},
+															"clientCountryName": {
+																"type": "string",
+																"example": "United States"
+															},
+															"value": {
+																"type": "string",
+																"example": "65"
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.user.read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			}
+		},
+		"/radar/http/top/locations": {
+			"get": {
+				"summary": "Get top locations by HTTP requests",
+				"description": "Get the top locations by HTTP traffic. Values are a percentage out of the total traffic.",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "Get top locations by HTTP requests response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"meta": {
+											"type": "object",
+											"properties": {
+												"confidenceInfo": {
+													"type": "object",
+													"properties": {
+														"level": {
+															"type": "integer"
+														},
+														"annotations": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"properties": {
+																	"dataSource": {
+																		"type": "string"
+																	},
+																	"eventType": {
+																		"type": "string"
+																	},
+																	"description": {
+																		"type": "string"
+																	},
+																	"startTime": {
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2022-09-17T10:22:57.555000+00:00"
+																	},
+																	"endTime": {
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2022-09-17T10:22:57.555000+00:00"
+																	}
+																}
+															}
+														}
+													}
+												},
+												"dateRange": {
+													"type": "object",
+													"properties": {
+														"startTime": {
+															"type": "string",
+															"format": "date-time",
+															"example": "2022-09-17T10:22:57.555000+00:00"
+														},
+														"endTime": {
+															"type": "string",
+															"format": "date-time",
+															"example": "2022-09-17T10:22:57.555000+00:00"
+														}
+													}
+												}
+											}
+										},
+										"data": {
+											"type": "object",
+											"properties": {
+												"top_0": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"clientCountryAlpha2": {
+																"type": "string",
+																"example": "US"
+															},
+															"clientCountryName": {
+																"type": "string",
+																"example": "United States"
+															},
+															"value": {
+																"type": "string",
+																"example": "65"
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.user.read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			}
+		},
+		"/radar/http/top/ases/bot_class/{bot_class}": {
+			"get": {
+				"summary": "Get top autonomous systems by bot class",
+				"description": "Get the top autonomous systems (AS), by HTTP traffic, of the requested bot class. These two categories use Cloudflare's bot score - refer to [Bot Scores](https://developers.cloudflare.com/bots/concepts/bot-score) for more information. Values are a percentage out of the total traffic.",
+				"parameters": [
+					{
+						"name": "bot_class",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Get top autonomous systems by bot class response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"meta": {
+											"type": "object",
+											"properties": {
+												"confidenceInfo": {
+													"type": "object",
+													"properties": {
+														"level": {
+															"type": "integer"
+														},
+														"annotations": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"properties": {
+																	"dataSource": {
+																		"type": "string"
+																	},
+																	"eventType": {
+																		"type": "string"
+																	},
+																	"description": {
+																		"type": "string"
+																	},
+																	"startTime": {
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2022-09-17T10:22:57.555000+00:00"
+																	},
+																	"endTime": {
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2022-09-17T10:22:57.555000+00:00"
+																	}
+																}
+															}
+														}
+													}
+												},
+												"dateRange": {
+													"type": "object",
+													"properties": {
+														"startTime": {
+															"type": "string",
+															"format": "date-time",
+															"example": "2022-09-17T10:22:57.555000+00:00"
+														},
+														"endTime": {
+															"type": "string",
+															"format": "date-time",
+															"example": "2022-09-17T10:22:57.555000+00:00"
+														}
+													}
+												}
+											}
+										},
+										"data": {
+											"type": "object",
+											"properties": {
+												"top_0": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"clientASN": {
+																"type": "string",
+																"example": "3243"
+															},
+															"clientASName": {
+																"type": "string",
+																"example": "MEO"
+															},
+															"value": {
+																"type": "string",
+																"example": "3"
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.user.read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			}
+		},
+		"/radar/http/top/ases/device_type/{device_type}": {
+			"get": {
+				"summary": "Get top autonomous systems by device type",
+				"description": "Get the top autonomous systems (AS), by HTTP traffic, of the requested device type. Values are a percentage out of the total traffic.",
+				"parameters": [
+					{
+						"name": "device_type",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Get top autonomous systems by device type response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"meta": {
+											"type": "object",
+											"properties": {
+												"confidenceInfo": {
+													"type": "object",
+													"properties": {
+														"level": {
+															"type": "integer"
+														},
+														"annotations": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"properties": {
+																	"dataSource": {
+																		"type": "string"
+																	},
+																	"eventType": {
+																		"type": "string"
+																	},
+																	"description": {
+																		"type": "string"
+																	},
+																	"startTime": {
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2022-09-17T10:22:57.555000+00:00"
+																	},
+																	"endTime": {
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2022-09-17T10:22:57.555000+00:00"
+																	}
+																}
+															}
+														}
+													}
+												},
+												"dateRange": {
+													"type": "object",
+													"properties": {
+														"startTime": {
+															"type": "string",
+															"format": "date-time",
+															"example": "2022-09-17T10:22:57.555000+00:00"
+														},
+														"endTime": {
+															"type": "string",
+															"format": "date-time",
+															"example": "2022-09-17T10:22:57.555000+00:00"
+														}
+													}
+												}
+											}
+										},
+										"data": {
+											"type": "object",
+											"properties": {
+												"top_0": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"clientASN": {
+																"type": "string",
+																"example": "3243"
+															},
+															"clientASName": {
+																"type": "string",
+																"example": "MEO"
+															},
+															"value": {
+																"type": "string",
+																"example": "3"
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.user.read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			}
+		},
+		"/radar/http/top/ases/tls_version/{tls_version}": {
+			"get": {
+				"summary": "Get top autonomous systems by TLS version",
+				"description": "Get the top autonomous systems (AS), by HTTP traffic, of the requested TLS protocol version. Values are a percentage out of the total traffic.",
+				"parameters": [
+					{
+						"name": "tls_version",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Get top autonomous systems by TLS version response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"meta": {
+											"type": "object",
+											"properties": {
+												"confidenceInfo": {
+													"type": "object",
+													"properties": {
+														"level": {
+															"type": "integer"
+														},
+														"annotations": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"properties": {
+																	"dataSource": {
+																		"type": "string"
+																	},
+																	"eventType": {
+																		"type": "string"
+																	},
+																	"description": {
+																		"type": "string"
+																	},
+																	"startTime": {
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2022-09-17T10:22:57.555000+00:00"
+																	},
+																	"endTime": {
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2022-09-17T10:22:57.555000+00:00"
+																	}
+																}
+															}
+														}
+													}
+												},
+												"dateRange": {
+													"type": "object",
+													"properties": {
+														"startTime": {
+															"type": "string",
+															"format": "date-time",
+															"example": "2022-09-17T10:22:57.555000+00:00"
+														},
+														"endTime": {
+															"type": "string",
+															"format": "date-time",
+															"example": "2022-09-17T10:22:57.555000+00:00"
+														}
+													}
+												}
+											}
+										},
+										"data": {
+											"type": "object",
+											"properties": {
+												"top_0": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"clientASN": {
+																"type": "string",
+																"example": "3243"
+															},
+															"clientASName": {
+																"type": "string",
+																"example": "MEO"
+															},
+															"value": {
+																"type": "string",
+																"example": "3"
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.user.read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			}
+		},
+		"/radar/http/top/ases/http_protocol/{http_protocol}": {
+			"get": {
+				"summary": "Get top autonomous systems by HTTP protocol",
+				"description": "Get the top autonomous systems (AS), by HTTP traffic, of the requested HTTP protocol. Values are a percentage out of the total traffic.",
+				"parameters": [
+					{
+						"name": "http_protocol",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Get top autonomous systems by HTTP protocol response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"meta": {
+											"type": "object",
+											"properties": {
+												"confidenceInfo": {
+													"type": "object",
+													"properties": {
+														"level": {
+															"type": "integer"
+														},
+														"annotations": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"properties": {
+																	"dataSource": {
+																		"type": "string"
+																	},
+																	"eventType": {
+																		"type": "string"
+																	},
+																	"description": {
+																		"type": "string"
+																	},
+																	"startTime": {
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2022-09-17T10:22:57.555000+00:00"
+																	},
+																	"endTime": {
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2022-09-17T10:22:57.555000+00:00"
+																	}
+																}
+															}
+														}
+													}
+												},
+												"dateRange": {
+													"type": "object",
+													"properties": {
+														"startTime": {
+															"type": "string",
+															"format": "date-time",
+															"example": "2022-09-17T10:22:57.555000+00:00"
+														},
+														"endTime": {
+															"type": "string",
+															"format": "date-time",
+															"example": "2022-09-17T10:22:57.555000+00:00"
+														}
+													}
+												}
+											}
+										},
+										"data": {
+											"type": "object",
+											"properties": {
+												"top_0": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"clientASN": {
+																"type": "string",
+																"example": "3243"
+															},
+															"clientASName": {
+																"type": "string",
+																"example": "MEO"
+															},
+															"value": {
+																"type": "string",
+																"example": "3"
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.user.read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			}
+		},
+		"/radar/http/top/ases/http_version/{http_version}": {
+			"get": {
+				"summary": "Get top autonomous systems by HTTP version",
+				"description": "Get the top autonomous systems (AS), by HTTP traffic, of the requested HTTP protocol version. Values are a percentage out of the total traffic.",
+				"parameters": [
+					{
+						"name": "http_version",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Get top autonomous systems by HTTP version response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"meta": {
+											"type": "object",
+											"properties": {
+												"confidenceInfo": {
+													"type": "object",
+													"properties": {
+														"level": {
+															"type": "integer"
+														},
+														"annotations": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"properties": {
+																	"dataSource": {
+																		"type": "string"
+																	},
+																	"eventType": {
+																		"type": "string"
+																	},
+																	"description": {
+																		"type": "string"
+																	},
+																	"startTime": {
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2022-09-17T10:22:57.555000+00:00"
+																	},
+																	"endTime": {
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2022-09-17T10:22:57.555000+00:00"
+																	}
+																}
+															}
+														}
+													}
+												},
+												"dateRange": {
+													"type": "object",
+													"properties": {
+														"startTime": {
+															"type": "string",
+															"format": "date-time",
+															"example": "2022-09-17T10:22:57.555000+00:00"
+														},
+														"endTime": {
+															"type": "string",
+															"format": "date-time",
+															"example": "2022-09-17T10:22:57.555000+00:00"
+														}
+													}
+												}
+											}
+										},
+										"data": {
+											"type": "object",
+											"properties": {
+												"top_0": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"clientASN": {
+																"type": "string",
+																"example": "3243"
+															},
+															"clientASName": {
+																"type": "string",
+																"example": "MEO"
+															},
+															"value": {
+																"type": "string",
+																"example": "3"
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.user.read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			}
+		},
+		"/radar/http/top/ases/ip_version/{ip_version}": {
+			"get": {
+				"summary": "Get top autonomous systems by IP version",
+				"description": "Get the top autonomous systems, by HTTP traffic, of the requested IP protocol version. Values are a percentage out of the total traffic.",
+				"parameters": [
+					{
+						"name": "ip_version",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Get top autonomous systems by IP version response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"meta": {
+											"type": "object",
+											"properties": {
+												"confidenceInfo": {
+													"type": "object",
+													"properties": {
+														"level": {
+															"type": "integer"
+														},
+														"annotations": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"properties": {
+																	"dataSource": {
+																		"type": "string"
+																	},
+																	"eventType": {
+																		"type": "string"
+																	},
+																	"description": {
+																		"type": "string"
+																	},
+																	"startTime": {
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2022-09-17T10:22:57.555000+00:00"
+																	},
+																	"endTime": {
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2022-09-17T10:22:57.555000+00:00"
+																	}
+																}
+															}
+														}
+													}
+												},
+												"dateRange": {
+													"type": "object",
+													"properties": {
+														"startTime": {
+															"type": "string",
+															"format": "date-time",
+															"example": "2022-09-17T10:22:57.555000+00:00"
+														},
+														"endTime": {
+															"type": "string",
+															"format": "date-time",
+															"example": "2022-09-17T10:22:57.555000+00:00"
+														}
+													}
+												}
+											}
+										},
+										"data": {
+											"type": "object",
+											"properties": {
+												"top_0": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"clientASN": {
+																"type": "string",
+																"example": "3243"
+															},
+															"clientASName": {
+																"type": "string",
+																"example": "MEO"
+															},
+															"value": {
+																"type": "string",
+																"example": "3"
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.user.read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			}
+		},
+		"/radar/http/top/ases": {
+			"get": {
+				"summary": "Get top autonomous systems by HTTP requests",
+				"description": "Get the top autonomous systems (AS) by HTTP traffic. Values are a percentage out of the total traffic.",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "Get top autonomous systems by HTTP requests response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"meta": {
+											"type": "object",
+											"properties": {
+												"confidenceInfo": {
+													"type": "object",
+													"properties": {
+														"level": {
+															"type": "integer"
+														},
+														"annotations": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"properties": {
+																	"dataSource": {
+																		"type": "string"
+																	},
+																	"eventType": {
+																		"type": "string"
+																	},
+																	"description": {
+																		"type": "string"
+																	},
+																	"startTime": {
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2022-09-17T10:22:57.555000+00:00"
+																	},
+																	"endTime": {
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2022-09-17T10:22:57.555000+00:00"
+																	}
+																}
+															}
+														}
+													}
+												},
+												"dateRange": {
+													"type": "object",
+													"properties": {
+														"startTime": {
+															"type": "string",
+															"format": "date-time",
+															"example": "2022-09-17T10:22:57.555000+00:00"
+														},
+														"endTime": {
+															"type": "string",
+															"format": "date-time",
+															"example": "2022-09-17T10:22:57.555000+00:00"
+														}
+													}
+												}
+											}
+										},
+										"data": {
+											"type": "object",
+											"properties": {
+												"top_0": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"clientASN": {
+																"type": "string",
+																"example": "3243"
+															},
+															"clientASName": {
+																"type": "string",
+																"example": "MEO"
+															},
+															"value": {
+																"type": "string",
+																"example": "3"
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.user.read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			}
+		},
+		"/radar/http/top/browsers": {
+			"get": {
+				"summary": "Get top user agents by HTTP requests",
+				"description": "Get the top user agents by HTTP traffic. Values are a percentage out of the total traffic.",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "Get top user agents by HTTP requests response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"meta": {
+											"type": "object",
+											"properties": {
+												"confidenceInfo": {
+													"type": "object",
+													"properties": {
+														"level": {
+															"type": "integer"
+														},
+														"annotations": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"properties": {
+																	"dataSource": {
+																		"type": "string"
+																	},
+																	"eventType": {
+																		"type": "string"
+																	},
+																	"description": {
+																		"type": "string"
+																	},
+																	"startTime": {
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2022-09-17T10:22:57.555000+00:00"
+																	},
+																	"endTime": {
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2022-09-17T10:22:57.555000+00:00"
+																	}
+																}
+															}
+														}
+													}
+												},
+												"dateRange": {
+													"type": "object",
+													"properties": {
+														"startTime": {
+															"type": "string",
+															"format": "date-time",
+															"example": "2022-09-17T10:22:57.555000+00:00"
+														},
+														"endTime": {
+															"type": "string",
+															"format": "date-time",
+															"example": "2022-09-17T10:22:57.555000+00:00"
+														}
+													}
+												}
+											}
+										},
+										"data": {
+											"type": "object",
+											"properties": {
+												"top_0": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"name": {
+																"type": "string"
+															},
+															"value": {
+																"type": "string"
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.user.read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			}
+		},
+		"/radar/verified_bots/top/bots": {
+			"get": {
+				"summary": "Get top verified bots by HTTP requests",
+				"description": "Get top verified bots by HTTP requests, with owner and category.",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "Get top verified bots by HTTP requests response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"meta": {
+											"type": "object",
+											"properties": {
+												"confidenceInfo": {
+													"type": "object",
+													"properties": {
+														"level": {
+															"type": "integer"
+														},
+														"annotations": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"properties": {
+																	"dataSource": {
+																		"type": "string"
+																	},
+																	"eventType": {
+																		"type": "string"
+																	},
+																	"description": {
+																		"type": "string"
+																	},
+																	"startTime": {
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2022-09-17T10:22:57.555000+00:00"
+																	},
+																	"endTime": {
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2022-09-17T10:22:57.555000+00:00"
+																	}
+																}
+															}
+														}
+													}
+												},
+												"dateRange": {
+													"type": "object",
+													"properties": {
+														"startTime": {
+															"type": "string",
+															"format": "date-time",
+															"example": "2022-09-17T10:22:57.555000+00:00"
+														},
+														"endTime": {
+															"type": "string",
+															"format": "date-time",
+															"example": "2022-09-17T10:22:57.555000+00:00"
+														}
+													}
+												}
+											}
+										},
+										"data": {
+											"type": "object",
+											"properties": {
+												"top_0": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"botName": {
+																"type": "string",
+																"example": "GoogleBot"
+															},
+															"botCategory": {
+																"type": "string",
+																"example": "Search Engine Crawler"
+															},
+															"botOwner": {
+																"type": "string",
+																"example": "Google"
+															},
+															"value": {
+																"type": "string",
+																"example": "29.034407"
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.user.read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			}
+		},
+		"/radar/verified_bots/top/categories": {
+			"get": {
+				"summary": "Get top verified bot categories by HTTP requests",
+				"description": "Get top verified bot categories by HTTP requests, along with their corresponding percentage, over the total verified bot HTTP requests.",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "Get top verified bot categories by HTTP requests response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"meta": {
+											"type": "object",
+											"properties": {
+												"confidenceInfo": {
+													"type": "object",
+													"properties": {
+														"level": {
+															"type": "integer"
+														},
+														"annotations": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"properties": {
+																	"dataSource": {
+																		"type": "string"
+																	},
+																	"eventType": {
+																		"type": "string"
+																	},
+																	"description": {
+																		"type": "string"
+																	},
+																	"startTime": {
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2022-09-17T10:22:57.555000+00:00"
+																	},
+																	"endTime": {
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2022-09-17T10:22:57.555000+00:00"
+																	}
+																}
+															}
+														}
+													}
+												},
+												"dateRange": {
+													"type": "object",
+													"properties": {
+														"startTime": {
+															"type": "string",
+															"format": "date-time",
+															"example": "2022-09-17T10:22:57.555000+00:00"
+														},
+														"endTime": {
+															"type": "string",
+															"format": "date-time",
+															"example": "2022-09-17T10:22:57.555000+00:00"
+														}
+													}
+												}
+											}
+										},
+										"data": {
+											"type": "object",
+											"properties": {
+												"top_0": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"botCategory": {
+																"type": "string",
+																"example": "Search"
+															},
+															"value": {
+																"type": "string",
+																"example": "65"
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.user.read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			}
+		},
+		"/radar/entities/locations/{location}": {
+			"get": {
+				"summary": "Get location",
+				"description": "Get the requested location information. A confidence level below `5` indicates a low level of confidence in the traffic data - normally this happens because Cloudflare has a small amount of traffic from/to this location).",
+				"parameters": [
+					{
+						"name": "location",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string",
+							"example": "AF",
+							"description": "Alpha-2 country code"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Get location response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"location": {
+											"type": "object",
+											"properties": {
+												"name": {
+													"type": "string",
+													"example": "Afghanistan"
+												},
+												"region": {
+													"type": "string",
+													"example": "Middle East"
+												},
+												"subregion": {
+													"type": "string",
+													"example": "Southern Asia"
+												},
+												"latitude": {
+													"type": "string"
+												},
+												"longitude": {
+													"type": "string"
+												},
+												"alpha2": {
+													"type": "string",
+													"example": "AF"
+												},
+												"confidenceLvel": {
+													"type": "integer"
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.user.read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			}
+		},
+		"/radar/entities/locations": {
+			"get": {
+				"summary": "Get locations",
+				"description": "Get a list of locations.",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "Get locations response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"locations": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"name": {
+														"type": "string",
+														"example": "Afghanistan"
+													},
+													"latitude": {
+														"type": "string"
+													},
+													"longitude": {
+														"type": "string"
+													},
+													"alpha2": {
+														"type": "string",
+														"example": "AF"
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.user.read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			}
+		},
+		"/radar/entities/asns/ip": {
+			"get": {
+				"summary": "Get autonomous system information by IP address",
+				"description": "",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "Get autonomous system information by IP address response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"asn": {
+											"type": "object",
+											"properties": {
+												"name": {
+													"type": "string",
+													"example": "Apple Inc."
+												},
+												"nameLong": {
+													"type": "string"
+												},
+												"aka": {
+													"type": "string"
+												},
+												"country": {
+													"type": "string"
+												},
+												"related": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"name": {
+																"type": "string"
+															},
+															"aka": {
+																"type": "string"
+															},
+															"asn": {
+																"type": "integer"
+															}
+														}
+													}
+												},
+												"asn": {
+													"type": "integer"
+												},
+												"website": {
+													"type": "string",
+													"example": "https://www.apple.com/support/systemstatus/"
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.user.read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			}
+		},
+		"/radar/entities/asns/{asn}": {
+			"get": {
+				"summary": "Get autonomous system (AS) by ID",
+				"description": "Get the requested autonomous system information. A confidence level below `5` indicates a low level of confidence in the traffic data - normally this happens because Cloudflare has a small amount of traffic from/to this AS).",
+				"parameters": [
+					{
+						"name": "asn",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "integer"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Get autonomous system (AS) by ID response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"asn": {
+											"type": "object",
+											"properties": {
+												"name": {
+													"type": "string",
+													"example": "Apple Inc."
+												},
+												"nameLong": {
+													"type": "string"
+												},
+												"aka": {
+													"type": "string"
+												},
+												"country": {
+													"type": "string"
+												},
+												"confidenceLevel": {
+													"type": "integer"
+												},
+												"related": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"name": {
+																"type": "string",
+																"example": "Cogent-174"
+															},
+															"aka": {
+																"type": "string"
+															},
+															"asn": {
+																"type": "integer"
+															}
+														}
+													}
+												},
+												"asn": {
+													"type": "integer"
+												},
+												"website": {
+													"type": "string",
+													"example": "https://www.apple.com/support/systemstatus/"
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.user.read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			}
+		},
+		"/radar/entities/asns": {
+			"get": {
+				"summary": "Get autonomous systems",
+				"description": "Gets a list of autonomous systems (AS).",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "Get autonomous systems response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"ases": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"name": {
+														"type": "string",
+														"example": "Apple Inc."
+													},
+													"nameLong": {
+														"type": "string"
+													},
+													"aka": {
+														"type": "string"
+													},
+													"asn": {
+														"type": "integer"
+													},
+													"website": {
+														"type": "string",
+														"example": "https://www.apple.com/support/systemstatus/"
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.user.read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			}
+		},
+		"/radar/attacks/layer3/timeseries": {
+			"get": {
+				"summary": "Get layer 3 attacks time series",
+				"description": "Get layer 3/4 attacks change over time. Values are normalized using min-max by default, with the minimum set to 0. When asking for multiple time series, you can also get the percentual relative change of the 1st/main series, with respect to the 2nd/control series - for example, to get the relative change of this week from the previous week, the 1st series would have a date range of 7d, the 2nd, a date range of 7dControl, and the normalization would be set to PERCENTAGE_CHANGE.",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "Get layer 3 attacks time series response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"meta": {
+											"type": "object",
+											"properties": {
+												"confidenceInfo": {
+													"type": "object",
+													"properties": {
+														"startTime": {
+															"type": "string",
+															"format": "date-time",
+															"example": "2022-09-16T10:22:57.555000+00:00",
+															"description": "Adjusted start of date range"
+														},
+														"endTime": {
+															"type": "string",
+															"format": "date-time",
+															"example": "2022-09-17T10:22:57.555000+00:00",
+															"description": "Adjusted end of date range"
+														}
+													}
+												},
+												"dateRange": {
+													"type": "object",
+													"properties": {
+														"startTime": {
+															"type": "string",
+															"format": "date-time",
+															"example": "2022-09-16T10:22:57.555000+00:00",
+															"description": "Adjusted start of date range"
+														},
+														"endTime": {
+															"type": "string",
+															"format": "date-time",
+															"example": "2022-09-17T10:22:57.555000+00:00",
+															"description": "Adjusted end of date range"
+														}
+													}
+												},
+												"aggInterval": {
+													"type": "string",
+													"example": "1h"
+												},
+												"lastUpdated": {
+													"type": "string",
+													"format": "date-time",
+													"example": "2022-09-17T10:22:57.555000+00:00"
+												}
+											}
+										},
+										"series": {
+											"type": "object",
+											"properties": {
+												"timestamps": {
+													"type": "array",
+													"items": {
+														"type": "string",
+														"format": "date-time",
+														"example": "2022-09-17T10:22:57.555000+00:00"
+													}
+												},
+												"values": {
+													"type": "array",
+													"items": {
+														"type": "string"
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.user.read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			}
+		},
+		"/radar/attacks/layer3/timeseries_groups": {
+			"get": {
+				"summary": "Get layer 3 attacks by network protocol, over time",
+				"description": "Get percentage of what type of network protocols are used in layer 3/4 attacks, over time.",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "Get layer 3 attacks by network protocol, over time response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"meta": {
+											"type": "object",
+											"properties": {
+												"confidenceInfo": {
+													"type": "object",
+													"properties": {
+														"level": {
+															"type": "integer"
+														},
+														"annotations": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"properties": {
+																	"dataSource": {
+																		"type": "string",
+																		"example": "ALL"
+																	},
+																	"eventType": {
+																		"type": "string",
+																		"example": "OUTAGE"
+																	},
+																	"description": {
+																		"type": "string",
+																		"example": "Cable cut in Tonga"
+																	},
+																	"startTime": {
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2022-09-17T10:22:57.555000+00:00"
+																	},
+																	"endTime": {
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2022-09-17T10:22:57.555000+00:00"
+																	}
+																}
+															}
+														}
+													}
+												},
+												"dateRange": {
+													"type": "object",
+													"properties": {
+														"startTime": {
+															"type": "string",
+															"format": "date-time",
+															"example": "2022-09-16T10:22:57.555000+00:00",
+															"description": "Adjusted start of date range"
+														},
+														"endTime": {
+															"type": "string",
+															"format": "date-time",
+															"example": "2022-09-17T10:22:57.555000+00:00",
+															"description": "Adjusted end of date range"
+														}
+													}
+												},
+												"aggInterval": {
+													"type": "string",
+													"example": "1h"
+												},
+												"lastUpdated": {
+													"type": "string",
+													"format": "date-time",
+													"example": "2022-09-17T10:22:57.555000+00:00"
+												}
+											}
+										},
+										"data": {
+											"type": "object",
+											"properties": {
+												"serie_0": {
+													"type": "object",
+													"properties": {
+														"timeseries": {
+															"type": "array",
+															"items": {
+																"type": "string"
+															}
+														},
+														"udp": {
+															"type": "array",
+															"items": {
+																"type": "string",
+																"example": "29"
+															}
+														},
+														"tcp": {
+															"type": "array",
+															"items": {
+																"type": "string",
+																"example": "70"
+															}
+														},
+														"gre": {
+															"type": "array",
+															"items": {
+																"type": "string",
+																"example": "0.9"
+															}
+														},
+														"icmp": {
+															"type": "array",
+															"items": {
+																"type": "string",
+																"example": "0.1"
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.user.read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			}
+		},
+		"/radar/attacks/layer3/summary": {
+			"get": {
+				"summary": "Get a summary of layer 3 attacks",
+				"description": "Percentage distribution of network protocols in layer 3/4 attacks.",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "Get a summary of layer 3 attacks response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"data": {
+											"type": "object",
+											"properties": {
+												"meta": {
+													"type": "object",
+													"properties": {
+														"confidenceInfo": {
+															"type": "object",
+															"properties": {
+																"level": {
+																	"type": "integer"
+																},
+																"annotations": {
+																	"type": "array",
+																	"items": {
+																		"type": "object",
+																		"properties": {
+																			"dataSource": {
+																				"type": "string",
+																				"example": "ALL"
+																			},
+																			"eventType": {
+																				"type": "string",
+																				"example": "OUTAGE"
+																			},
+																			"description": {
+																				"type": "string",
+																				"example": "Cable cut in Tonga"
+																			},
+																			"startTime": {
+																				"type": "string",
+																				"format": "date-time",
+																				"example": "2022-09-17T10:22:57.555000+00:00"
+																			},
+																			"endTime": {
+																				"type": "string",
+																				"format": "date-time",
+																				"example": "2022-09-17T10:22:57.555000+00:00"
+																			}
+																		}
+																	}
+																}
+															}
+														},
+														"dateRange": {
+															"type": "object",
+															"properties": {
+																"startTime": {
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2022-09-16T10:22:57.555000+00:00",
+																	"description": "Adjusted start of date range"
+																},
+																"endTime": {
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2022-09-17T10:22:57.555000+00:00",
+																	"description": "Adjusted end of date range"
+																}
+															}
+														}
+													}
+												},
+												"summary_0": {
+													"type": "object",
+													"properties": {
+														"tcp": {
+															"type": "string",
+															"example": "60"
+														},
+														"udp": {
+															"type": "string",
+															"example": "39"
+														},
+														"gre": {
+															"type": "string",
+															"example": "0.9"
+														},
+														"icmp": {
+															"type": "string",
+															"example": "0.1"
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.user.read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			}
+		},
+		"/radar/attacks/layer7/timeseries": {
+			"get": {
+				"summary": "Get attacks layer 7 time series",
+				"description": "Get layer 7 attacks change over time. Values are normalized using min-max by default, with the minimum set to 0. When asking for multiple time series, you can also get the percentage relative change of the first/main series, with respect to the second/control series - for example, to get the relative change of this week from the previous week, the first series would have a date range of `7d`, the second, a date range of `7dControl`, and the normalization would be set to `PERCENTAGE_CHANGE`.",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "Get attacks layer 7 time series response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"meta": {
+											"type": "object",
+											"properties": {
+												"confidenceInfo": {
+													"type": "object",
+													"properties": {
+														"level": {
+															"type": "integer"
+														},
+														"annotations": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"properties": {
+																	"dataSource": {
+																		"type": "string",
+																		"example": "ALL"
+																	},
+																	"eventType": {
+																		"type": "string",
+																		"example": "OUTAGE"
+																	},
+																	"description": {
+																		"type": "string",
+																		"example": "Cable cut in Tonga"
+																	},
+																	"startTime": {
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2022-09-17T10:22:57.555000+00:00"
+																	},
+																	"endTime": {
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2022-09-17T10:22:57.555000+00:00"
+																	}
+																}
+															}
+														}
+													}
+												},
+												"dateRange": {
+													"type": "object",
+													"properties": {
+														"startTime": {
+															"type": "string",
+															"format": "date-time",
+															"example": "2022-09-16T10:22:57.555000+00:00",
+															"description": "Adjusted start of date range"
+														},
+														"endTime": {
+															"type": "string",
+															"format": "date-time",
+															"example": "2022-09-17T10:22:57.555000+00:00",
+															"description": "Adjusted end of date range"
+														}
+													}
+												},
+												"aggInterval": {
+													"type": "string",
+													"example": "1h"
+												},
+												"lastUpdated": {
+													"type": "string",
+													"format": "date-time",
+													"example": "2022-09-17T10:22:57.555000+00:00"
+												}
+											}
+										},
+										"series": {
+											"type": "object",
+											"properties": {
+												"timestamps": {
+													"type": "array",
+													"items": {
+														"type": "string",
+														"format": "date-time",
+														"example": "2022-09-17T10:22:57.555000+00:00"
+													}
+												},
+												"values": {
+													"type": "array",
+													"items": {
+														"type": "string"
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.user.read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			}
+		},
+		"/radar/attacks/layer7/timeseries_groups": {
+			"get": {
+				"summary": "Get layer 7 attacks by mitigation technique, over time",
+				"description": "Get percentage of what type of mitigation techniques are used to block layer 7 attacks, over time.",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "Get layer 7 attacks by mitigation technique, over time response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"meta": {
+											"type": "object",
+											"properties": {
+												"confidenceInfo": {
+													"type": "object",
+													"properties": {
+														"level": {
+															"type": "integer"
+														},
+														"annotations": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"properties": {
+																	"dataSource": {
+																		"type": "string",
+																		"example": "ALL"
+																	},
+																	"eventType": {
+																		"type": "string",
+																		"example": "OUTAGE"
+																	},
+																	"description": {
+																		"type": "string",
+																		"example": "Cable cut in Tonga"
+																	},
+																	"startTime": {
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2022-09-17T10:22:57.555000+00:00"
+																	},
+																	"endTime": {
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2022-09-17T10:22:57.555000+00:00"
+																	}
+																}
+															}
+														}
+													}
+												},
+												"dateRange": {
+													"type": "object",
+													"properties": {
+														"startTime": {
+															"type": "string",
+															"format": "date-time",
+															"example": "2022-09-16T10:22:57.555000+00:00",
+															"description": "Adjusted start of date range"
+														},
+														"endTime": {
+															"type": "string",
+															"format": "date-time",
+															"example": "2022-09-17T10:22:57.555000+00:00",
+															"description": "Adjusted end of date range"
+														}
+													}
+												},
+												"aggInterval": {
+													"type": "string",
+													"example": "1h"
+												},
+												"lastUpdated": {
+													"type": "string",
+													"format": "date-time",
+													"example": "2022-09-17T10:22:57.555000+00:00"
+												}
+											}
+										},
+										"data": {
+											"type": "object",
+											"properties": {
+												"serie_0": {
+													"type": "object",
+													"properties": {
+														"timeseries": {
+															"type": "array",
+															"items": {
+																"type": "string",
+																"format": "date-time",
+																"example": "2022-09-17T10:22:57.555000+00:00"
+															}
+														},
+														"udp": {
+															"type": "array",
+															"items": {
+																"type": "string",
+																"example": "30"
+															}
+														},
+														"tcp": {
+															"type": "array",
+															"items": {
+																"type": "string",
+																"example": "60"
+															}
+														},
+														"gre": {
+															"type": "array",
+															"items": {
+																"type": "string",
+																"example": "5"
+															}
+														},
+														"icmp": {
+															"type": "array",
+															"items": {
+																"type": "string",
+																"example": "5"
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.user.read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			}
+		},
+		"/radar/attacks/layer7/summary": {
+			"get": {
+				"summary": "Get a summary of layer 7 attacks",
+				"description": "Percentage distribution of mitigation techniques in layer 7 attacks.",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "Get a summary of layer 7 attacks response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"data": {
+											"type": "object",
+											"properties": {
+												"meta": {
+													"type": "object",
+													"properties": {
+														"confidenceInfo": {
+															"type": "object",
+															"properties": {
+																"level": {
+																	"type": "integer"
+																},
+																"annotations": {
+																	"type": "array",
+																	"items": {
+																		"type": "object",
+																		"properties": {
+																			"dataSource": {
+																				"type": "string",
+																				"example": "ALL"
+																			},
+																			"eventType": {
+																				"type": "string",
+																				"example": "OUTAGE"
+																			},
+																			"description": {
+																				"type": "string",
+																				"example": "Cable cut in Tonga"
+																			},
+																			"startTime": {
+																				"type": "string",
+																				"format": "date-time",
+																				"example": "2022-09-17T10:22:57.555000+00:00"
+																			},
+																			"endTime": {
+																				"type": "string",
+																				"format": "date-time",
+																				"example": "2022-09-17T10:22:57.555000+00:00"
+																			}
+																		}
+																	}
+																}
+															}
+														},
+														"dateRange": {
+															"type": "object",
+															"properties": {
+																"startTime": {
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2022-09-16T10:22:57.555000+00:00",
+																	"description": "Adjusted start of date range"
+																},
+																"endTime": {
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2022-09-17T10:22:57.555000+00:00",
+																	"description": "Adjusted end of date range"
+																}
+															}
+														}
+													}
+												},
+												"summary_0": {
+													"type": "object",
+													"properties": {
+														"tcp": {
+															"type": "string",
+															"example": "65"
+														},
+														"udp": {
+															"type": "string",
+															"example": "34"
+														},
+														"gre": {
+															"type": "string",
+															"example": "0.1"
+														},
+														"icmp": {
+															"type": "string",
+															"example": "0.9"
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.user.read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			}
+		},
+		"/radar/attacks/layer7/top/locations/origin": {
+			"get": {
+				"summary": "Get layer 7 top origin locations",
+				"description": "Get the top origin locations of and by layer 7 attacks. Values are a percentage out of the total layer 7 attacks. The origin location is determined by the client IP.",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "Get layer 7 top origin locations response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"data": {
+											"type": "object",
+											"properties": {
+												"top_0": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"originCountryName": {
+																"type": "string",
+																"example": "United States"
+															},
+															"originCountryAlpha2": {
+																"type": "string",
+																"example": "US"
+															},
+															"value": {
+																"type": "string",
+																"example": "0.73996"
+															},
+															"rank": {
+																"type": "string",
+																"example": "1"
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.user.read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			}
+		},
+		"/radar/attacks/layer7/top/locations/target": {
+			"get": {
+				"summary": "Get layer 7 top target locations",
+				"description": "Get the top target locations of and by layer 7 attacks. Values are a percentage out of the total layer 7 attacks. The target location is determined by the attacked zone's billing country, when available.",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "Get layer 7 top target locations response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"data": {
+											"type": "object",
+											"properties": {
+												"top_0": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"targetCountryName": {
+																"type": "string",
+																"example": "United States"
+															},
+															"targetCountryAlpha2": {
+																"type": "string",
+																"example": "US"
+															},
+															"value": {
+																"type": "string",
+																"example": "0.73996"
+															},
+															"rank": {
+																"type": "string",
+																"example": "1"
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.user.read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			}
+		},
+		"/radar/attacks/layer7/top/attacks": {
+			"get": {
+				"summary": "Get layer 7 top attack pairs (origin and target locations)",
+				"description": "Get the top attacks from origin to target location. Values are a percentage out of the total layer 7 attacks (with billing country). The attack magnitude can be defined by the number of mitigated requests or by the number of zones affected. You can optionally limit the number of attacks per origin/target location (useful if all the top attacks are from or to the same location).",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "Get layer 7 top attack pairs (origin and target locations) response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"data": {
+											"type": "object",
+											"properties": {
+												"top_0": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"originCountryName": {
+																"type": "string",
+																"example": "United States"
+															},
+															"originCountryAlpha2": {
+																"type": "string",
+																"example": "US"
+															},
+															"targetCountryName": {
+																"type": "string",
+																"example": "Portugal"
+															},
+															"targetCountryAlpha2": {
+																"type": "string",
+																"example": "PT"
+															},
+															"value": {
+																"type": "string",
+																"example": "0.73996"
+															},
+															"rank": {
+																"type": "string",
+																"example": "1"
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.user.read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			}
+		},
+		"/radar/bgp/timeseries": {
+			"get": {
+				"summary": "Get BGP time series",
+				"description": "Gets BGP updates change over time. Raw values are returned. When requesting updates of an autonomous system (AS), only BGP updates of type announcement are returned.",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "Get BGP time series response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"meta": {
+											"type": "object",
+											"properties": {
+												"confidenceInfo": {
+													"type": "object",
+													"properties": {
+														"level": {
+															"type": "integer"
+														},
+														"annotations": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"properties": {
+																	"dataSource": {
+																		"type": "string",
+																		"example": "ALL"
+																	},
+																	"eventType": {
+																		"type": "string",
+																		"example": "OUTAGE"
+																	},
+																	"description": {
+																		"type": "string",
+																		"example": "Cable cut in Tonga"
+																	},
+																	"startTime": {
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2022-09-17T10:22:57.555000+00:00"
+																	},
+																	"endTime": {
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2022-09-17T10:22:57.555000+00:00"
+																	}
+																}
+															}
+														}
+													}
+												},
+												"dateRange": {
+													"type": "object",
+													"properties": {
+														"startTime": {
+															"type": "string",
+															"format": "date-time",
+															"example": "2022-09-16T10:22:57.555000+00:00",
+															"description": "Adjusted start of date range"
+														},
+														"endTime": {
+															"type": "string",
+															"format": "date-time",
+															"example": "2022-09-17T10:22:57.555000+00:00",
+															"description": "Adjusted end of date range"
+														}
+													}
+												},
+												"aggInterval": {
+													"type": "string",
+													"example": "1h"
+												},
+												"lastUpdated": {
+													"type": "string",
+													"format": "date-time",
+													"example": "2022-09-17T10:22:57.555000+00:00"
+												}
+											}
+										},
+										"series": {
+											"type": "object",
+											"properties": {
+												"timestamps": {
+													"type": "array",
+													"items": {
+														"type": "string",
+														"format": "date-time",
+														"example": "2022-09-17T10:22:57.555000+00:00"
+													}
+												},
+												"values": {
+													"type": "array",
+													"items": {
+														"type": "string"
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.user.read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			}
+		},
+		"/radar/bgp/top/prefixes": {
+			"get": {
+				"summary": "Get top prefixes",
+				"description": "Get the top network prefixes by BGP updates. Values are a percentage out of the total BGP updates.",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "Get top prefixes response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"meta": {
+											"type": "object",
+											"properties": {
+												"dateRange": {
+													"type": "object",
+													"properties": {
+														"startTime": {
+															"type": "string",
+															"format": "date-time",
+															"example": "2022-09-16T10:22:57.555000+00:00",
+															"description": "Adjusted start of date range"
+														},
+														"endTime": {
+															"type": "string",
+															"format": "date-time",
+															"example": "2022-09-17T10:22:57.555000+00:00",
+															"description": "Adjusted end of date range"
+														}
+													}
+												}
+											}
+										},
+										"data": {
+											"type": "object",
+											"properties": {
+												"top_0": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"prefix": {
+																"type": "string",
+																"example": "2804:77cc:8000::/33"
+															},
+															"value": {
+																"type": "string",
+																"example": "0.73996"
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.user.read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			}
+		},
+		"/radar/bgp/top/ases": {
+			"get": {
+				"summary": "Get top autonomous systems",
+				"description": "Get the top autonomous systems (AS) by BGP updates (announcements only). Values are a percentage out of the total updates.",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "Get top autonomous systems response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"meta": {
+											"type": "object",
+											"properties": {
+												"dateRange": {
+													"type": "object",
+													"properties": {
+														"startTime": {
+															"type": "string",
+															"format": "date-time",
+															"example": "2022-09-16T10:22:57.555000+00:00",
+															"description": "Adjusted start of date range"
+														},
+														"endTime": {
+															"type": "string",
+															"format": "date-time",
+															"example": "2022-09-17T10:22:57.555000+00:00",
+															"description": "Adjusted end of date range"
+														}
+													}
+												}
+											}
+										},
+										"data": {
+											"type": "object",
+											"properties": {
+												"top_0": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"asn": {
+																"type": "string",
+																"example": "714"
+															},
+															"ASName": {
+																"type": "string",
+																"example": "Apple-Engineering"
+															},
+															"value": {
+																"type": "string",
+																"example": "0.73996",
+																"description": "Percentage of updates by this AS out of the total updates by all autonomous systems."
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.user.read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			}
+		},
+		"/radar/search/global": {
+			"get": {
+				"summary": "Search for locations, autonomous systems (AS) and reports",
+				"description": "Lets you search for locations, autonomous systems (AS) and reports.",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "Search for locations, autonomous systems (AS) and reports response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"data": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "string",
+														"example": "13335"
+													},
+													"name": {
+														"type": "string",
+														"example": "Cloudflare"
+													},
+													"type": {
+														"type": "string",
+														"example": "asn"
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.user.read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			}
+		},
+		"/radar/dns/timeseries": {
+			"get": {
+				"summary": "Get DNS time series",
+				"description": "Get DNS queries change over time.",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "Get DNS time series response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"meta": {
+											"type": "object",
+											"properties": {
+												"confidenceInfo": {
+													"type": "object",
+													"properties": {
+														"level": {
+															"type": "integer"
+														},
+														"annotations": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"properties": {
+																	"dataSource": {
+																		"type": "string",
+																		"example": "ALL"
+																	},
+																	"eventType": {
+																		"type": "string",
+																		"example": "OUTAGE"
+																	},
+																	"description": {
+																		"type": "string",
+																		"example": "Cable cut in Tonga"
+																	},
+																	"startTime": {
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2022-09-17T10:22:57.555000+00:00"
+																	},
+																	"endTime": {
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2022-09-17T10:22:57.555000+00:00"
+																	}
+																}
+															}
+														}
+													}
+												},
+												"dateRange": {
+													"type": "object",
+													"properties": {
+														"startTime": {
+															"type": "string",
+															"format": "date-time",
+															"example": "2022-09-16T10:22:57.555000+00:00",
+															"description": "Adjusted start of date range"
+														},
+														"endTime": {
+															"type": "string",
+															"format": "date-time",
+															"example": "2022-09-17T10:22:57.555000+00:00",
+															"description": "Adjusted end of date range"
+														}
+													}
+												},
+												"aggInterval": {
+													"type": "string",
+													"example": "1h"
+												},
+												"lastUpdated": {
+													"type": "string",
+													"format": "date-time",
+													"example": "2022-09-17T10:22:57.555000+00:00"
+												}
+											}
+										},
+										"series": {
+											"type": "object",
+											"properties": {
+												"timestamps": {
+													"type": "array",
+													"items": {
+														"type": "string",
+														"format": "date-time",
+														"example": "2022-09-17T10:22:57.555000+00:00"
+													}
+												},
+												"values": {
+													"type": "array",
+													"items": {
+														"type": "string"
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.user.read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			}
+		},
+		"/radar/dns/top/ases": {
+			"get": {
+				"summary": "Get top autonomous systems by DNS queries.",
+				"description": "Get top autonomous systems by DNS queries made to Cloudflare's public DNS resolver.",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "Get top autonomous systems by DNS queries. response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"meta": {
+											"type": "object",
+											"properties": {
+												"confidenceInfo": {
+													"type": "object",
+													"properties": {
+														"level": {
+															"type": "integer"
+														},
+														"annotations": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"properties": {
+																	"dataSource": {
+																		"type": "string"
+																	},
+																	"eventType": {
+																		"type": "string"
+																	},
+																	"description": {
+																		"type": "string"
+																	},
+																	"startTime": {
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2022-09-17T10:22:57.555000+00:00"
+																	},
+																	"endTime": {
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2022-09-17T10:22:57.555000+00:00"
+																	}
+																}
+															}
+														}
+													}
+												},
+												"dateRange": {
+													"type": "object",
+													"properties": {
+														"startTime": {
+															"type": "string",
+															"format": "date-time",
+															"example": "2022-09-17T10:22:57.555000+00:00"
+														},
+														"endTime": {
+															"type": "string",
+															"format": "date-time",
+															"example": "2022-09-17T10:22:57.555000+00:00"
+														}
+													}
+												}
+											}
+										},
+										"data": {
+											"type": "object",
+											"properties": {
+												"top_0": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"clientASN": {
+																"type": "string",
+																"example": "174"
+															},
+															"clientASName": {
+																"type": "string",
+																"example": "Cogent-174"
+															},
+															"value": {
+																"type": "string",
+																"example": "65"
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.user.read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			}
+		},
+		"/radar/dns/top/locations": {
+			"get": {
+				"summary": "Get top locations by DNS queries",
+				"description": "Get top locations by DNS queries made to Cloudflare's public DNS resolver.",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "Get top locations by DNS queries response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"meta": {
+											"type": "object",
+											"properties": {
+												"confidenceInfo": {
+													"type": "object",
+													"properties": {
+														"level": {
+															"type": "integer"
+														},
+														"annotations": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"properties": {
+																	"dataSource": {
+																		"type": "string"
+																	},
+																	"eventType": {
+																		"type": "string"
+																	},
+																	"description": {
+																		"type": "string"
+																	},
+																	"startTime": {
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2022-09-17T10:22:57.555000+00:00"
+																	},
+																	"endTime": {
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2022-09-17T10:22:57.555000+00:00"
+																	}
+																}
+															}
+														}
+													}
+												},
+												"dateRange": {
+													"type": "object",
+													"properties": {
+														"startTime": {
+															"type": "string",
+															"format": "date-time",
+															"example": "2022-09-17T10:22:57.555000+00:00"
+														},
+														"endTime": {
+															"type": "string",
+															"format": "date-time",
+															"example": "2022-09-17T10:22:57.555000+00:00"
+														}
+													}
+												}
+											}
+										},
+										"data": {
+											"type": "object",
+											"properties": {
+												"top_0": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"clientCountryAlpha2": {
+																"type": "string",
+																"example": "PT"
+															},
+															"clientCountryName": {
+																"type": "string",
+																"example": "Portugal"
+															},
+															"value": {
+																"type": "string",
+																"example": "65"
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.user.read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			}
+		},
+		"/radar/annotations/outages": {
+			"get": {
+				"summary": "Get outages annotations",
+				"description": "",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "Get outages annotations response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"data": {
+											"type": "object",
+											"properties": {
+												"annotations": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"dataSource": {
+																"type": "string",
+																"example": "ALL"
+															},
+															"description": {
+																"type": "string",
+																"example": "example"
+															},
+															"startDate": {
+																"type": "string",
+																"example": "2022-09-06T10:00:28+00:00"
+															},
+															"endDate": {
+																"type": "string",
+																"example": "2022-09-08T10:00:28+00:00"
+															},
+															"entity": {
+																"type": "integer"
+															},
+															"entityType": {
+																"type": "string",
+																"example": "LOCATION"
+															},
+															"eventType": {
+																"type": "string",
+																"example": "OUTAGE"
+															},
+															"linkedUrl": {
+																"type": "string",
+																"example": "http://example.com"
+															},
+															"outage": {
+																"type": "object",
+																"properties": {
+																	"outageCause": {
+																		"type": "string",
+																		"example": "CABLE_CUT"
+																	},
+																	"outageType": {
+																		"type": "string",
+																		"example": "NATIONWIDE"
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.user.read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
 				}
 			}
 		}
