@@ -6,6 +6,7 @@ import { MembershipsPolicy } from './policy';
 export const Membership = eg.object({
   id: eg.string,
   status: eg.string,
+  api_access_enabled: eg.boolean.optional,
   permissions: Permissions,
   roles: eg.array(eg.string),
   account: Account,
