@@ -37,13 +37,13 @@ async function fetchAndWrite(apiPath, filePath){
 
 async function gitPush(){
 	const date = new Date();
-	const commitMessage = dateFormat(date, 'd mmmm yyyy') + ` - Updated flags`;
+	const commitMessage = dateFormat(date, 'd mmmm yyyy') + ` - Updated account (flags, entitlements, etc.)`;
 
 	await tryAndPush(
 		['data/account/*.json'],
 		commitMessage,
-		'CFData - Flags Update',
-		'Pushed flags update: ' + commitMessage,
+		'CFData - Account (Flags, Entitlements, etc.) Update',
+		'Pushed account (Flags, Entitlements, etc.) update: ' + commitMessage,
 	);
 }
 
@@ -59,6 +59,9 @@ async function run(){
 
 	// Roles
 	await fetchAndWrite(`/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/roles?per_page=100`, '../data/account/account_roles.json');
+
+	// API tokens permission groups
+	await fetchAndWrite(`/user/tokens/permission_groups`, '../data/account/token_permission_groups.json');
 
 	console.log('Pushing!');
 	await gitPush();

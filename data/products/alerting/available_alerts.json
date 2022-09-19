@@ -1,0 +1,239 @@
+{
+	"Access": [
+		{
+			"display_name": "Expiring Service Token Alert",
+			"type": "expiring_service_token_alert",
+			"description": "Cloudflare Access service token expiration notice, sent 7 days before token is set to expire",
+			"filter_options": []
+		}
+	],
+	"Billing": [
+		{
+			"display_name": "Billing Usage Alert",
+			"type": "billing_usage_alert",
+			"description": "Billing usage exceeds your configured threshold for a specific product",
+			"filter_options": [
+				{
+					"Key": "product",
+					"ComparisonOperator": "==",
+					"Optional": false
+				},
+				{
+					"Key": "limit",
+					"ComparisonOperator": ">=",
+					"Optional": false
+				}
+			]
+		}
+	],
+	"DoS Protection": [
+		{
+			"display_name": "HTTP DDoS Attack Alert",
+			"type": "dos_attack_l7",
+			"description": "Cloudflare detects and mitigates an HTTP DDoS attack against one of your domains",
+			"filter_options": []
+		}
+	],
+	"Health Checks": [
+		{
+			"display_name": "Health Checks status notifier",
+			"type": "health_check_status_notification",
+			"description": "Notifications generated on health check status changes",
+			"filter_options": [
+				{
+					"Key": "health_check_id",
+					"ComparisonOperator": "==",
+					"Optional": true
+				},
+				{
+					"Key": "status",
+					"ComparisonOperator": "==",
+					"Optional": false
+				}
+			]
+		}
+	],
+	"Load Balancing": [
+		{
+			"display_name": "Load Balancing Health Alert",
+			"type": "load_balancing_health_alert",
+			"description": "Load Balancing Health Alerts for Pools and Origins",
+			"filter_options": [
+				{
+					"Key": "pool_id",
+					"ComparisonOperator": "==",
+					"Optional": true
+				},
+				{
+					"Key": "event_source",
+					"ComparisonOperator": "==",
+					"Optional": true
+				},
+				{
+					"Key": "new_health",
+					"ComparisonOperator": "==",
+					"Optional": true
+				}
+			]
+		},
+		{
+			"display_name": "Pool Enablement",
+			"type": "load_balancing_pool_enablement_alert",
+			"description": "Pool alerts based on enable/disable toggle status",
+			"filter_options": [
+				{
+					"Key": "pool_id",
+					"ComparisonOperator": "==",
+					"Optional": true
+				},
+				{
+					"Key": "enabled",
+					"ComparisonOperator": "==",
+					"Optional": false
+				}
+			]
+		}
+	],
+	"Logpush": [
+		{
+			"display_name": "Failing Logpush Job Disabled",
+			"type": "failing_logpush_job_disabled_alert",
+			"description": "Logpush job failing to push successfully for > 24h disabled.",
+			"filter_options": []
+		}
+	],
+	"Magic Transit": [
+		{
+			"display_name": "Flow-based Monitoring: Auto Advertisement",
+			"type": "fbm_auto_advertisement",
+			"description": "Auto Advertisement of a set of predefined prefixes using Magic Transit, following a recent attack",
+			"filter_options": []
+		},
+		{
+			"display_name": "Flow-based Monitoring: Volumetric Attack",
+			"type": "fbm_volumetric_attack",
+			"description": "Volumetric DDoS attacks to your infrastructure based on flow data you export to Cloudflare",
+			"filter_options": []
+		}
+	],
+	"Origin Monitoring": [
+		{
+			"display_name": "Passive Origin Monitoring",
+			"type": "real_origin_monitoring",
+			"description": "Cloudflare is unable to reach your origin",
+			"filter_options": []
+		}
+	],
+	"Route Leak Detection": [
+		{
+			"display_name": "Route Leak Detection Alert",
+			"type": "bgp_hijack_notification",
+			"description": "Alerts for BGP Hijack",
+			"filter_options": []
+		}
+	],
+	"Script Monitor": [
+		{
+			"display_name": "Script Monitor New Code Change Detection Alert",
+			"type": "scriptmonitor_alert_new_code_change_detections",
+			"description": "Receive an alert whenever a code change is detected in a script getting monitored.",
+			"filter_options": []
+		},
+		{
+			"display_name": "Script Monitor New Domain Alert",
+			"type": "scriptmonitor_alert_new_hosts",
+			"description": "Receive an alert whenever your users load a JavaScript file from a new domain not previously seen.",
+			"filter_options": []
+		},
+		{
+			"display_name": "Script Monitor New Malicious Domain Alert",
+			"type": "scriptmonitor_alert_new_malicious_hosts",
+			"description": "Receive an alert whenever a JavaScript file loaded by your users is hosted under a domain reported as malicious.",
+			"filter_options": []
+		},
+		{
+			"display_name": "Script Monitor New Malicious Script Alert",
+			"type": "scriptmonitor_alert_new_malicious_scripts",
+			"description": "Receive an alert whenever a JavaScript file loaded by your users is classified as malicious.",
+			"filter_options": []
+		},
+		{
+			"display_name": "Script Monitor New Malicious URL Alert",
+			"type": "scriptmonitor_alert_new_malicious_url",
+			"description": "Receive an alert whenever a JavaScript file loaded by your users is from a URL reported as malicious.",
+			"filter_options": []
+		},
+		{
+			"display_name": "Script Monitor New Script URL Exceeds Max Length Alert",
+			"type": "scriptmonitor_alert_new_max_length_script_url",
+			"description": "Receive an alert whenever we detect a script with a very large URL",
+			"filter_options": []
+		},
+		{
+			"display_name": "Script Monitor New Scripts Alert",
+			"type": "scriptmonitor_alert_new_scripts",
+			"description": "Receive an alert whenever your users load a new JavaScript file that has not been previously seen.",
+			"filter_options": []
+		}
+	],
+	"SSL/TLS": [
+		{
+			"display_name": "Access mTLS Certificate Expiration Alert",
+			"type": "access_custom_certificate_expiration_type",
+			"description": "Expiration notices for Access custom uploaded certificates",
+			"filter_options": []
+		},
+		{
+			"display_name": "Advanced Certificate Alert",
+			"type": "dedicated_ssl_certificate_event_type",
+			"description": "Advanced Certificate validation status, issuance, renewal, and expiration notices",
+			"filter_options": []
+		},
+		{
+			"display_name": "Hostname-level Authenticated Origin Pulls Certificate Expiration Alert",
+			"type": "hostname_aop_custom_certificate_expiration_type",
+			"description": "Expiration notices for custom uploaded hostname-level Authenticated Origin Pulls certificates",
+			"filter_options": []
+		},
+		{
+			"display_name": "SSL for SaaS Custom Hostnames Alert",
+			"type": "custom_ssl_certificate_event_type",
+			"description": "Custom Hostname Certificate validation status, issuance, renewal, and expiration notices",
+			"filter_options": []
+		},
+		{
+			"display_name": "Universal SSL Alert",
+			"type": "universal_ssl_event_type",
+			"description": "Universal Certificate validation status, issuance, renewal, and expiration notices",
+			"filter_options": []
+		},
+		{
+			"display_name": "Zone-level Authenticated Origin Pulls Certificate Expiration Alert",
+			"type": "zone_aop_custom_certificate_expiration_type",
+			"description": "Expiration notices for custom uploaded zone-level Authenticated Origin Pulls certificates",
+			"filter_options": []
+		}
+	],
+	"Web Analytics": [
+		{
+			"display_name": "Web Analytics Metrics Update",
+			"type": "web_analytics_metrics_update",
+			"description": "Receive regular Web Analytics metrics updates by email",
+			"filter_options": []
+		}
+	],
+	"Workers": [
+		{
+			"display_name": "Workers Usage Report",
+			"type": "workers_alert",
+			"description": "Receive an alert whenever CPU usage or duration significantly exceeds average CPU usage or duration.",
+			"filter_options": []
+		},
+		{
+			"display_name": "Workers Weekly Summary",
+			"type": "weekly_account_overview",
+			"description": "Receive a weekly usage summary containing select information about your Workers account.",
+			"filter_options": []
+		}
+	]
+}
