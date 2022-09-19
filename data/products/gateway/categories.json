@@ -1,0 +1,1342 @@
+[
+	{
+		"name": "Ads",
+		"id": 1,
+		"description": "Sites that are providing ads for websites.",
+		"class": "premium",
+		"subcategories": [
+			{
+				"name": "Advertisements",
+				"id": 66,
+				"description": "Sites displaying advertisements for websites.",
+				"class": "removalPending",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			}
+		],
+		"beta": false,
+		"deprecated": true
+	},
+	{
+		"name": "Adult Themes",
+		"id": 2,
+		"description": "Sites that are related to pornography, nudity, sexuality, and other adult themes.",
+		"class": "free",
+		"subcategories": [
+			{
+				"name": "Adult Themes",
+				"id": 67,
+				"description": "Sites related to adult themes not included in other categories like Pornography and Nudity.",
+				"class": "free",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Nudity",
+				"id": 125,
+				"description": "Sites displaying nudity.",
+				"class": "free",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Pornography",
+				"id": 133,
+				"description": "Sites displaying pornography.",
+				"class": "free",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			}
+		],
+		"beta": false,
+		"deprecated": false
+	},
+	{
+		"name": "Business & Economy",
+		"id": 3,
+		"description": "Sites that are related to business, economy, finance, education, science and technology.",
+		"class": "premium",
+		"subcategories": [
+			{
+				"name": "Business",
+				"id": 75,
+				"description": "Sites related to business.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Economy & Finance",
+				"id": 89,
+				"description": "Sites related to economics and finance.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			}
+		],
+		"beta": false,
+		"deprecated": false
+	},
+	{
+		"name": "Deceptive Ads",
+		"id": 4,
+		"description": "Sites that spoof clicks, impressions, conversions for ads.",
+		"class": "premium",
+		"subcategories": null,
+		"beta": false,
+		"deprecated": true
+	},
+	{
+		"name": "Drugs",
+		"id": 5,
+		"description": "Sites related to the use and promotion of illegal drugs or illegal use of prescribed drugs.",
+		"class": "premium",
+		"subcategories": null,
+		"beta": false,
+		"deprecated": true
+	},
+	{
+		"name": "Education",
+		"id": 6,
+		"description": "Sites related to educational content that are not included in other categories like Science, Technology or Educational institutions.",
+		"class": "premium",
+		"subcategories": [
+			{
+				"name": "Education",
+				"id": 90,
+				"description": "Sites related to educational content that are not included in other categories like Science, Technology or Educational institutions.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Educational Institutions",
+				"id": 91,
+				"description": "Sites related to educational institutions.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Science",
+				"id": 144,
+				"description": "Sites related to scientific subjects like biology, chemistry, physics, geography, botany etc.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Space & Astronomy",
+				"id": 150,
+				"description": "Sites related to outer space and astronomy.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			}
+		],
+		"beta": false,
+		"deprecated": false
+	},
+	{
+		"name": "Entertainment",
+		"id": 7,
+		"description": "Sites related to entertainment that are not includeded in other categories like Comic books, Audio streaming, Video streaming etc.",
+		"class": "premium",
+		"subcategories": [
+			{
+				"name": "Arts",
+				"id": 70,
+				"description": "Sites containing information about arts & crafts.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Audio Streaming",
+				"id": 74,
+				"description": "Sites that offer streaming or downloadable audio.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Cartoons & Anime",
+				"id": 76,
+				"description": "Sites containing information, images and news about cartoons and anime.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Comic Books",
+				"id": 79,
+				"description": "Sites related to comic books.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Entertainment",
+				"id": 92,
+				"description": "Sites related to entertainment not included in other categories like Comic books, Audio streaming, Video streaming etc.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Fine Art",
+				"id": 96,
+				"description": "Sites related to fine art.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Gaming",
+				"id": 100,
+				"description": "Sites related to games.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Home Video/DVD",
+				"id": 106,
+				"description": "Sites where people can purchase DVDs.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Humor",
+				"id": 107,
+				"description": "Sites hosting humorous content.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Magazines",
+				"id": 116,
+				"description": "Sites that offer or promote digital magazines.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Movies",
+				"id": 120,
+				"description": "Sites containing information and news about movies. ",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Music",
+				"id": 121,
+				"description": "Sites containing information and news about music to bands, shows and fans.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "News & Media",
+				"id": 122,
+				"description": "Sites related to news and media.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Paranormal",
+				"id": 127,
+				"description": "Sites related to paranormal activities and phenomena.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Radio",
+				"id": 139,
+				"description": "Sites that offer streaming or downloadable radio programming.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Television",
+				"id": 156,
+				"description": "Sites related to television news and programming.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Video Streaming",
+				"id": 164,
+				"description": "Sites that offer streaming or downloadable videos.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			}
+		],
+		"beta": false,
+		"deprecated": false
+	},
+	{
+		"name": "Gambling",
+		"id": 8,
+		"description": "Sites that facilitate online gambling.",
+		"class": "premium",
+		"subcategories": [
+			{
+				"name": "Gambling",
+				"id": 99,
+				"description": "Sites that facilitate online gambling.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			}
+		],
+		"beta": false,
+		"deprecated": false
+	},
+	{
+		"name": "Government & Politics",
+		"id": 9,
+		"description": "Sites related to government and politics.",
+		"class": "premium",
+		"subcategories": [
+			{
+				"name": "Government",
+				"id": 101,
+				"description": "Sites related to Government.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Politics, Advocacy, and Government-Related",
+				"id": 137,
+				"description": "Sites related to politics, immigration, legal issues that are not included in the Government category.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			}
+		],
+		"beta": false,
+		"deprecated": false
+	},
+	{
+		"name": "Health",
+		"id": 10,
+		"description": "Sites containing information about health and fitness.",
+		"class": "premium",
+		"subcategories": [
+			{
+				"name": "Health & Fitness",
+				"id": 103,
+				"description": "Sites related to health and fitness.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Sex Education",
+				"id": 146,
+				"description": "Sites related to sex education.",
+				"class": "free",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			}
+		],
+		"beta": false,
+		"deprecated": false
+	},
+	{
+		"name": "Information Technology",
+		"id": 11,
+		"description": "Sites related to information technology.",
+		"class": "premium",
+		"subcategories": null,
+		"beta": false,
+		"deprecated": false
+	},
+	{
+		"name": "Internet Communication",
+		"id": 12,
+		"description": "Sites that are used for communication like chat, mail etc.",
+		"class": "premium",
+		"subcategories": [
+			{
+				"name": "Chat",
+				"id": 77,
+				"description": "Sites where users can chat in real time that are not included in other categories like Instant Messaging",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Forums",
+				"id": 98,
+				"description": "Sites with online forums.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Information Security",
+				"id": 108,
+				"description": "Sites related to information security.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Instant Messengers",
+				"id": 110,
+				"description": "Sites that faciliate instant messaging features like chat applications.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Internet Phone & VOIP",
+				"id": 111,
+				"description": "Sites that facilitate phone calls using the Internet.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Messaging",
+				"id": 118,
+				"description": "Sites facilitating messaging that are not included in the Instant Messengers category.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "P2P",
+				"id": 126,
+				"description": "Sites that provide client software to enable peer-to-peer file sharing and transfers.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Personal Blogs",
+				"id": 129,
+				"description": "Sites hosting personal blogs.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Photo Sharing",
+				"id": 172,
+				"description": "Sites used for sharing photography.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Webmail",
+				"id": 168,
+				"description": "Sites that provide email accounts.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			}
+		],
+		"beta": false,
+		"deprecated": false
+	},
+	{
+		"name": "Job Search & Careers",
+		"id": 13,
+		"description": "Sites that facilitate searching for jobs and careers.",
+		"class": "premium",
+		"subcategories": [
+			{
+				"name": "Job Search & Careers",
+				"id": 113,
+				"description": "Sites that facilitate searching for jobs and careers.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			}
+		],
+		"beta": false,
+		"deprecated": false
+	},
+	{
+		"name": "Login Screens",
+		"id": 14,
+		"description": "Sites displaying login screens that are not included in other categories.",
+		"class": "premium",
+		"subcategories": null,
+		"beta": false,
+		"deprecated": true
+	},
+	{
+		"name": "Miscellaneous",
+		"id": 15,
+		"description": "Sites that are not included in the listed security and content categories.",
+		"class": "premium",
+		"subcategories": [
+			{
+				"name": "Miscellaneous",
+				"id": 119,
+				"description": "Miscellaneous domains that don't fit another category",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Redirect",
+				"id": 141,
+				"description": "Domains that redirect to other sites.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			}
+		],
+		"beta": false,
+		"deprecated": false
+	},
+	{
+		"name": "No Content",
+		"id": 16,
+		"description": "Sites that have no content.",
+		"class": "premium",
+		"subcategories": null,
+		"beta": false,
+		"deprecated": true
+	},
+	{
+		"name": "Questionable Content",
+		"id": 17,
+		"description": "Sites related to hacking, piracy, profanity and other questionable activities.",
+		"class": "premium",
+		"subcategories": [
+			{
+				"name": "Deceptive Ads",
+				"id": 85,
+				"description": "Sites that spoof clicks, impressions, conversions for ads.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Drugs",
+				"id": 87,
+				"description": "Sites related to the use and promotion of illegal drugs or illegal use of prescribed drugs.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Hacking",
+				"id": 102,
+				"description": "Sites that promote unauthorized access via hacking.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Militancy, Hate & Extremism",
+				"id": 157,
+				"description": "Sites containing hate speech and extremism.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Profanity",
+				"id": 135,
+				"description": "Sites that contain profanity but are not included in categories like Adult Themes.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Questionable Activities",
+				"id": 138,
+				"description": "Sites related to questionable information and images.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Unreliable Information",
+				"id": 162,
+				"description": "Sites that may contain false information.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			}
+		],
+		"beta": false,
+		"deprecated": false
+	},
+	{
+		"name": "Real Estate",
+		"id": 18,
+		"description": "Sites related to real estate.",
+		"class": "premium",
+		"subcategories": [
+			{
+				"name": "Real Estate",
+				"id": 140,
+				"description": "Sites related to real estate.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			}
+		],
+		"beta": false,
+		"deprecated": false
+	},
+	{
+		"name": "Religion",
+		"id": 19,
+		"description": "Sites related to religion, alternative religion, religious teachings, religious groups and spirituality",
+		"class": "premium",
+		"subcategories": [
+			{
+				"name": "Religion",
+				"id": 142,
+				"description": "Sites related to religion, alternative religion, religious teachings, religious groups and spirituality.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			}
+		],
+		"beta": false,
+		"deprecated": false
+	},
+	{
+		"name": "Safe for Kids",
+		"id": 20,
+		"description": "Sites that are safe for kids to visit.",
+		"class": "removalPending",
+		"subcategories": [
+			{
+				"name": "Safe for Kids",
+				"id": 143,
+				"description": "Sites that are safe for kids to visit.",
+				"class": "removalPending",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			}
+		],
+		"beta": false,
+		"deprecated": false
+	},
+	{
+		"name": "Security threats",
+		"id": 21,
+		"description": "Sites that contain security threats like malware, phishing, cryptomining and other security threats.",
+		"class": "free",
+		"subcategories": [
+			{
+				"name": "Anonymizer",
+				"id": 68,
+				"description": "Sites that allow users to surf the Internet anonymously.",
+				"class": "free",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Brand Embedding",
+				"id": 178,
+				"description": "Embedding of external brand names",
+				"class": "free",
+				"subcategories": null,
+				"beta": true,
+				"deprecated": false
+			},
+			{
+				"name": "Command and Control & Botnet",
+				"id": 80,
+				"description": "Sites that are queried by compromised devices to exfiltrate information or potentially infect other devices in a network.",
+				"class": "free",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Cryptomining",
+				"id": 83,
+				"description": "Sites that mine cryptocurrency by taking over the user's computing resources.",
+				"class": "free",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "DGA Domains",
+				"id": 176,
+				"description": "Domains detected as generated by algorithms seen in malware.",
+				"class": "free",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "DNS Tunneling",
+				"id": 175,
+				"description": "Domains with detected DNS tunneling activity.",
+				"class": "free",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Malware",
+				"id": 117,
+				"description": "Sites hosting malicious content and other compromised websites.",
+				"class": "free",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Phishing",
+				"id": 131,
+				"description": "Domains that are known for stealing personal information.",
+				"class": "free",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Private IP Address",
+				"id": 134,
+				"description": "Domains that resolve to private IP Addresses",
+				"class": "free",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Spam",
+				"id": 151,
+				"description": "Sites that are known for targeting users with unwanted sweepstakes, surveys, and advertisements.",
+				"class": "free",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Spyware",
+				"id": 153,
+				"description": "Sites that are known to distribute or contain code that displays unwanted advertisements or that gathers user information without the user’s knowledge.",
+				"class": "free",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			}
+		],
+		"beta": false,
+		"deprecated": false
+	},
+	{
+		"name": "Shopping & Auctions",
+		"id": 22,
+		"description": "Sites related to ecommerce, coupons, shopping, auctions and marketplaces.",
+		"class": "premium",
+		"subcategories": [
+			{
+				"name": "Auctions & Marketplaces",
+				"id": 73,
+				"description": "Sites facilitating online auctions and marketplaces.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Coupons",
+				"id": 82,
+				"description": "Sites that have information about coupons and deals.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Ecommerce",
+				"id": 88,
+				"description": "Sites where you can buy products online.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Shopping",
+				"id": 148,
+				"description": "Sites that are providing information about shopping.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			}
+		],
+		"beta": false,
+		"deprecated": false
+	},
+	{
+		"name": "Social & Family ",
+		"id": 23,
+		"description": "Sites related to society and lifestyle.",
+		"class": "premium",
+		"subcategories": null,
+		"beta": false,
+		"deprecated": false
+	},
+	{
+		"name": "Society & Lifestyle",
+		"id": 24,
+		"description": "Sites related to lifestyle that are not included in other categories like fashion, food & drink etc.",
+		"class": "premium",
+		"subcategories": [
+			{
+				"name": "Abortion",
+				"id": 65,
+				"description": "Sites that provide information or services related to family planning and abortion.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": true
+			},
+			{
+				"name": "Arts & Crafts",
+				"id": 71,
+				"description": "Sites containing information about arts & crafts.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Astrology",
+				"id": 72,
+				"description": "Sites related to astrology.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Body Art",
+				"id": 173,
+				"description": "Sites displaying images of body art.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Clothing",
+				"id": 78,
+				"description": "Sites displaying or selling clothing",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Dating & Relationships",
+				"id": 84,
+				"description": "Sites that provide social networking for adults, including online dating services.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Digital Postcards",
+				"id": 86,
+				"description": "Sites related to digital postcards.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Fashion",
+				"id": 94,
+				"description": "Sites related to information and news about fashion and fashion accessories.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Food & Drink",
+				"id": 97,
+				"description": "Sites related to restaurants, bars, taverns, and pubs; including restaurant guides and reviews.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Hobbies & Interests",
+				"id": 104,
+				"description": "Sites related to general hobbies and interests.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Home & Garden",
+				"id": 105,
+				"description": "Sites related to home and garden.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Jewelry",
+				"id": 112,
+				"description": "Sites related to jewelry.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": true
+			},
+			{
+				"name": "LGBTQ",
+				"id": 171,
+				"description": "Sites related to Lesbian, Gay, Bisexual, Trans or Queer themes.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": true
+			},
+			{
+				"name": "Lifestyle",
+				"id": 114,
+				"description": "Sites related to lifestyle that are not included in other categories like Fashion, Food & drink etc.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Lingerie & Bikini",
+				"id": 174,
+				"description": "Sites displaying images of lingerie and bikinis.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Parenting",
+				"id": 93,
+				"description": "Sites related to family and parenting.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Pets",
+				"id": 130,
+				"description": "Sites related to pets.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Photography",
+				"id": 132,
+				"description": "Sites containing information, news and images about photography.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Professional Networking",
+				"id": 136,
+				"description": "Sites that enable people to form professional relationships.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Sexuality",
+				"id": 147,
+				"description": "Sites related to artistic sexual expressions.",
+				"class": "free",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Social Networks",
+				"id": 149,
+				"description": "Sites that facilitate interaction and networking between people.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Swimsuits",
+				"id": 154,
+				"description": "Sites displaying images of swimwear.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Tobacco",
+				"id": 158,
+				"description": "Sites about tobacco use and related products and commercials.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			}
+		],
+		"beta": false,
+		"deprecated": false
+	},
+	{
+		"name": "Sports",
+		"id": 25,
+		"description": "Sites related to sports & recreation.",
+		"class": "premium",
+		"subcategories": [
+			{
+				"name": "Sports",
+				"id": 152,
+				"description": "Sites related to sports & recreation.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			}
+		],
+		"beta": false,
+		"deprecated": false
+	},
+	{
+		"name": "Technology",
+		"id": 26,
+		"description": "Sites related to technology that are not included in the science category.",
+		"class": "premium",
+		"subcategories": [
+			{
+				"name": "APIs",
+				"id": 69,
+				"description": "Domains that are API endpoints.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Content Servers",
+				"id": 81,
+				"description": "Domains that are serving content.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "File Sharing",
+				"id": 95,
+				"description": "Sites that faciliate file sharing between users.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Information Technology",
+				"id": 109,
+				"description": "Sites related to information technology.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "News, Portal & Search",
+				"id": 123,
+				"description": "Sites that are news aggreggators.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Search Engines",
+				"id": 145,
+				"description": "Sites that allow users to search for content using keywords.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Technology",
+				"id": 155,
+				"description": "Sites related to technology that are not included in the science category.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Translator",
+				"id": 159,
+				"description": "Sites that facilitate translations.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			}
+		],
+		"beta": false,
+		"deprecated": false
+	},
+	{
+		"name": "Travel",
+		"id": 27,
+		"description": "Sites that contain information about listings, reservations, services for travel.",
+		"class": "premium",
+		"subcategories": [
+			{
+				"name": "Travel",
+				"id": 160,
+				"description": "Sites that contain information about listings, reservations, and services for travel.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			}
+		],
+		"beta": false,
+		"deprecated": false
+	},
+	{
+		"name": "Vehicles",
+		"id": 28,
+		"description": "Sites related to vehicles, automobiles, including news, reviews, and other hobbyist information.",
+		"class": "premium",
+		"subcategories": [
+			{
+				"name": "Vehicles",
+				"id": 163,
+				"description": "Sites related to vehicles, automobiles, including news, reviews, and other hobbyist information.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			}
+		],
+		"beta": false,
+		"deprecated": false
+	},
+	{
+		"name": "Violence",
+		"id": 29,
+		"description": "Sites displaying or promoting violent content.",
+		"class": "premium",
+		"subcategories": [
+			{
+				"name": "Violence",
+				"id": 165,
+				"description": "Sites displaying or promoting violent content.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Weapons",
+				"id": 166,
+				"description": "Sites related to weapons.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			}
+		],
+		"beta": false,
+		"deprecated": false
+	},
+	{
+		"name": "Weather",
+		"id": 30,
+		"description": "Sites related to weather.",
+		"class": "premium",
+		"subcategories": [
+			{
+				"name": "Weather",
+				"id": 167,
+				"description": "Sites related to weather.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			}
+		],
+		"beta": false,
+		"deprecated": false
+	},
+	{
+		"name": "Blocked",
+		"id": 31,
+		"description": "Sites that should be blocked by default, and whose sub-categories should not be displayed",
+		"class": "blocked",
+		"subcategories": [
+			{
+				"name": "Child Abuse",
+				"id": 170,
+				"description": "Sites that show the physical or sexual abuse of children",
+				"class": "blocked",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			}
+		],
+		"beta": false,
+		"deprecated": false
+	},
+	{
+		"name": "Security Risks",
+		"id": 32,
+		"description": "Sites that are not confirmed to be malicious but have a higher likelihood of containing security threats.",
+		"class": "premium",
+		"subcategories": [
+			{
+				"name": "Login Screens",
+				"id": 115,
+				"description": "Sites displaying login screens that are not included in other categories.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "New Domains",
+				"id": 169,
+				"description": "Domains that have been registered very recently.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Newly Seen Domains",
+				"id": 177,
+				"description": "Domains that have recently been resolved for the first time",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "No Content",
+				"id": 124,
+				"description": "Sites that have no content.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Parked & For Sale Domains",
+				"id": 128,
+				"description": "Domains that are parked or for sale. These domains may be malicious.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			},
+			{
+				"name": "Unreachable",
+				"id": 161,
+				"description": "Domains that resolve to unreachable IP addresses.",
+				"class": "premium",
+				"subcategories": null,
+				"beta": false,
+				"deprecated": false
+			}
+		],
+		"beta": false,
+		"deprecated": false
+	}
+]
