@@ -13,6 +13,7 @@ const {title} = Astro.props;
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
+		<meta name="color-scheme" content="dark light" />
 		<title>{title}</title>
 	</head>
 	<body>
@@ -20,9 +21,3 @@ const {title} = Astro.props;
 		<slot />
 	</body>
 </html>
-
-<style is:global>
-	:root {
-		color-scheme: dark;
-	}
-</style>

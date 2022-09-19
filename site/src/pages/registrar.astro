@@ -13,7 +13,7 @@ const formatter = new Intl.NumberFormat('en-US', {
 	<main class="m-auto max-w-5xl p-4">
 		<h1 class="my-4 text-3xl">Registrar</h1>
 		<table class="mb-8 w-full table-auto p-2">
-			<thead class="border-b-2 border-solid border-b-gray-700 bg-gray-800 text-left">
+			<thead class="border-b-2 border-solid border-b-gray-300 bg-gray-200 text-left dark:border-b-gray-700 dark:bg-gray-800">
 				<tr>
 					<th class="p-1">TLD</th>
 					<th class="p-1">Price</th>
@@ -23,7 +23,7 @@ const formatter = new Intl.NumberFormat('en-US', {
 			</thead>
 			<tbody>
 				{Object.keys(registrar).map(tld => (
-					<tr class="border-b border-solid border-b-gray-600">
+					<tr class="border-b border-solid border-b-gray-300 dark:border-b-gray-600">
 						<td class="w-1/4 p-1">{tld}</td>
 						<td class="w-1/4 p-1">{formatter.format(registrar[tld].price)}</td>
 						<td class="w-1/4 p-1">{formatter.format(registrar[tld].renewal)}</td>
