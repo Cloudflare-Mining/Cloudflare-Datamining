@@ -34,9 +34,9 @@ async function run(){
 		[
 			'data/products/rulesets/*.json',
 		],
-		`${prefix} - Product: Rules Data was updated!`,
-		'CFData - Product: Rules Data Update',
-		'Pushed Product: Rules Data: ' + prefix,
+		`${prefix} - Product: Rulesets Data was updated!`,
+		'CFData - Product: Rulesets Data Update',
+		'Pushed Product: Rulesets Data: ' + prefix,
 	);
 }
 
