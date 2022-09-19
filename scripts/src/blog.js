@@ -22,6 +22,7 @@ const blogURLs = new Set([]);
 // slugs that we ignore content changes for. Unstable image changes, etc
 const ignoreContent = [
 	'tales-from-the-crypt-o-team',
+	'-zh-tw', // too unstable diffs
 ];
 
 // load from coveo
@@ -181,6 +182,25 @@ for(const url of [...blogURLs].sort()){
 		if(cfBeacon){
 			cfBeacon.each((i, beacon) => {
 				dom(beacon).remove();
+			});
+		}
+
+		// remove cloudflare TV embed
+		const cloudflareTV = dom('iframe[src*="cloudflare.tv"]');
+		if(cloudflareTV){
+			cloudflareTV.each((i, tv) => {
+				dom(tv).remove();
+			});
+		}
+
+		// remove style elements with cloudflare TV
+		const styleElements = dom('style');
+		if(styleElements){
+			styleElements.each((i, style) => {
+				const el = dom(style);
+				if(el.html().includes('cloudflare.tv')){
+					el.remove();
+				}
 			});
 		}
 
