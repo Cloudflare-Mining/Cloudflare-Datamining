@@ -26,12 +26,16 @@ async function callApi(path){
 	return null;
 }
 
-async function fetchAndWrite(apiPath, filePath){
+async function fetchAndWrite(apiPath, filePath, sortFunc = null){
 	const json = await callApi(apiPath);
 
 	if(json !== null){
 		await fs.ensureDir(path.dirname(filePath));
-		await fs.writeFile(path.resolve(filePath), JSON.stringify(json, null, '\t'));
+		let data = json;
+		if(sortFunc !== null){
+			data = json.sort(sortFunc);
+		}
+		await fs.writeFile(path.resolve(filePath), JSON.stringify(data, null, '\t'));
 	}
 }
 
@@ -61,7 +65,7 @@ async function run(){
 	await fetchAndWrite(`/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/roles?per_page=100`, '../data/account/account_roles.json');
 
 	// API tokens permission groups
-	await fetchAndWrite(`/user/tokens/permission_groups`, '../data/account/token_permission_groups.json');
+	await fetchAndWrite(`/user/tokens/permission_groups`, '../data/account/token_permission_groups.json', (itemA, itemB) => (itemA.name + itemA.id).localeCompare(itemB.name + itemB.id));
 
 	console.log('Pushing!');
 	await gitPush();
