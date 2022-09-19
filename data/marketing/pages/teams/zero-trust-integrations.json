@@ -126,21 +126,8 @@
 								"contentfulId": "10X0LS8uVJOWBbeZkeI6ah",
 								"linkText": "Zero Trust platform",
 								"page": null,
-								"url": null,
-								"subMenuItems": [
-									{
-										"contentfulId": "4JOVfq0TlhxcyZWkAHvFZB",
-										"linkText": "Overview",
-										"page": null,
-										"url": "/products/zero-trust"
-									},
-									{
-										"contentfulId": "01FpIoGj85kxmR7udTx60B",
-										"linkText": "Interactive demo",
-										"page": null,
-										"url": "/products/zero-trust/interactive-demo"
-									}
-								]
+								"url": "/products/zero-trust",
+								"subMenuItems": null
 							},
 							{
 								"contentfulId": "1km56yP6vf7r4Nx1pgEs9H",
@@ -168,9 +155,15 @@
 									},
 									{
 										"contentfulId": "76s7oENCn73FZhugtuI9c6",
-										"linkText": "CASB (Beta)",
+										"linkText": "CASB",
 										"page": null,
 										"url": "https://www.cloudflare.com/products/zero-trust/casb/"
+									},
+									{
+										"contentfulId": "1aJ424vC1rwgiH4apcJhrr",
+										"linkText": "Data Loss Prevention (DLP)",
+										"page": null,
+										"url": "/products/zero-trust/dlp"
 									},
 									{
 										"contentfulId": "4fqU9qBCakRwiZ1mNr9Yrb",
@@ -221,6 +214,26 @@
 										"linkText": "Manage third party access ",
 										"page": null,
 										"url": "/products/zero-trust/third-party-access"
+									}
+								]
+							},
+							{
+								"contentfulId": "1pq3pR21pthqlTqX3GrVm8",
+								"linkText": "Demos",
+								"page": null,
+								"url": null,
+								"subMenuItems": [
+									{
+										"contentfulId": "01FpIoGj85kxmR7udTx60B",
+										"linkText": "Interactive demo",
+										"page": null,
+										"url": "/products/zero-trust/interactive-demo"
+									},
+									{
+										"contentfulId": "1gA7cCpxWVP25In2onzmBX",
+										"linkText": "Remote Browser Isolation (RBI) demo",
+										"page": null,
+										"url": "/products/zero-trust/browser-isolation/experience"
 									}
 								]
 							},
