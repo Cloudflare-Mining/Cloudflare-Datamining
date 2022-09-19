@@ -64,19 +64,19 @@
 		]
 	},
 	{
-		"id": "959972745952452f8be2452be8cbb9f2",
-		"name": "Access: Apps and Policies Write",
-		"description": "Grants write access to Cloudflare Access zone resources",
-		"scopes": [
-			"com.cloudflare.api.account.zone"
-		]
-	},
-	{
 		"id": "1e13c5124ca64b72b1969a67e8829049",
 		"name": "Access: Apps and Policies Write",
 		"description": "Grants write access to Cloudflare Access account resources",
 		"scopes": [
 			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "959972745952452f8be2452be8cbb9f2",
+		"name": "Access: Apps and Policies Write",
+		"description": "Grants write access to Cloudflare Access zone resources",
+		"scopes": [
+			"com.cloudflare.api.account.zone"
 		]
 	},
 	{
@@ -163,6 +163,22 @@
 		"id": "b89a480218d04ceb98b4fe57ca29dc1f",
 		"name": "Account Analytics Read",
 		"description": "Grants read access to analytics",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "c57ea647ef654b47bc8944fa739b570d",
+		"name": "Account Custom Pages Read",
+		"description": "Grants read access to account custom pages",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "8a9d35a7c8504208ad5c3e8d58e6162d",
+		"name": "Account Custom Pages Write",
+		"description": "Grants write access to account custom pages",
 		"scopes": [
 			"com.cloudflare.api.account"
 		]
@@ -395,6 +411,22 @@
 		"id": "a9dba34cf5814d4ab2007b4ada0045bd",
 		"name": "Custom Errors Write",
 		"description": "Grants write access to custom errors phase",
+		"scopes": [
+			"com.cloudflare.api.account.zone"
+		]
+	},
+	{
+		"id": "a2431ca73b7d41f99c53303027392586",
+		"name": "Custom Pages Read",
+		"description": "Grants read access to custom pages",
+		"scopes": [
+			"com.cloudflare.api.account.zone"
+		]
+	},
+	{
+		"id": "c244ec076974430a88bda1cdd992d0d9",
+		"name": "Custom Pages Write",
+		"description": "Grants write access to custom pages",
 		"scopes": [
 			"com.cloudflare.api.account.zone"
 		]
@@ -688,14 +720,6 @@
 		]
 	},
 	{
-		"id": "6a315a56f18441e59ed03352369ae956",
-		"name": "Logs Read",
-		"description": "Grants read access to logs and logpush jobs",
-		"scopes": [
-			"com.cloudflare.api.account"
-		]
-	},
-	{
 		"id": "c4a30cd58c5d42619c86a3c36c441e2d",
 		"name": "Logs Read",
 		"description": "Grants read access to logs and logpush jobs",
@@ -704,9 +728,9 @@
 		]
 	},
 	{
-		"id": "96163bd1b0784f62b3e44ed8c2ab1eb6",
-		"name": "Logs Write",
-		"description": "Grants write access to logpush jobs",
+		"id": "6a315a56f18441e59ed03352369ae956",
+		"name": "Logs Read",
+		"description": "Grants read access to logs and logpush jobs",
 		"scopes": [
 			"com.cloudflare.api.account"
 		]
@@ -717,6 +741,14 @@
 		"description": "Grants write access to logpush jobs",
 		"scopes": [
 			"com.cloudflare.api.account.zone"
+		]
+	},
+	{
+		"id": "96163bd1b0784f62b3e44ed8c2ab1eb6",
+		"name": "Logs Write",
+		"description": "Grants write access to logpush jobs",
+		"scopes": [
+			"com.cloudflare.api.account"
 		]
 	},
 	{
