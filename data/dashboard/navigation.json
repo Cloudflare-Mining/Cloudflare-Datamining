@@ -154,7 +154,8 @@
 		{
 			"title": "navigation.account.workers_for_platforms",
 			"url": "/workers-for-platforms",
-			"iconType": "edgeworker"
+			"iconType": "workers-for-platforms",
+			"testId": "workers-for-platforms"
 		},
 		{
 			"title": "navigation.account.r2",
@@ -408,6 +409,16 @@
 			"testId": "zone-navigation-link-email",
 			"labels": [
 				"beta"
+			],
+			"pages": [
+				{
+					"title": "navigation.zone.email.routing",
+					"url": "/email/routing"
+				},
+				{
+					"title": "navigation.zone.email.security",
+					"url": "/email/security"
+				}
 			]
 		},
 		{
@@ -549,7 +560,7 @@
 			]
 		},
 		{
-			"title": "navigation.account.workers",
+			"title": "navigation.zone.workers",
 			"url": "/workers",
 			"iconType": "edgeworker",
 			"testId": "zone-navigation-link-workers"
