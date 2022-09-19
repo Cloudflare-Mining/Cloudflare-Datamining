@@ -5,7 +5,8 @@ import { MembershipsPolicy } from './policy';
 
 export const AccountSettings = eg.object({
   access_approval_expiry: eg.union([eg.string, eg.null]),
-  enforce_twofactor: eg.boolean
+  enforce_twofactor: eg.boolean,
+  api_access_enabled: eg.boolean
 });
 
 export type AccountSettings = TypeFromCodec<typeof AccountSettings>;
@@ -117,6 +118,7 @@ export const AccountMember = eg.object({
     eg.literal('pending'),
     eg.literal('rejected')
   ]),
+  api_access_enabled: eg.union([eg.boolean, eg.null]).optional,
   roles: eg.array(AccountRole),
   policies: eg.array(MembershipsPolicy).optional
 });
