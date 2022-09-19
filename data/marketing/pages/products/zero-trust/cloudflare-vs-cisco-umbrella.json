@@ -1519,9 +1519,19 @@
 															"title": "CASB",
 															"description": "Easily secure workplace tools, granularly control user access, and protect sensitive data",
 															"url": "/products/zero-trust/casb/",
-															"badges": [
-																"Beta"
-															],
+															"badges": null,
+															"specialLinkType": null,
+															"openInNewWindow": false,
+															"isExternalUrl": null
+														},
+														{
+															"contentTypeId": "elementNavLink",
+															"contentfulId": "45pyjvWC8eAH4AeG77FICS",
+															"locale": "en-US",
+															"title": "Data Loss Prevention (DLP)",
+															"description": "Protect your organization's most sensitive data",
+															"url": "/products/zero-trust/dlp/",
+															"badges": null,
 															"specialLinkType": null,
 															"openInNewWindow": false,
 															"isExternalUrl": null
@@ -1940,11 +1950,11 @@
 												},
 												{
 													"contentTypeId": "elementNavLink",
-													"contentfulId": "7HOWsAUMZ6ZY1iOge1qbDz",
+													"contentfulId": "2vyoxSQ7jpjzpGOk1Ci9Ee",
 													"locale": "en-US",
-													"title": "Gateway",
-													"description": "Secure web gateway for protecting your users via device clients and your network",
-													"url": "/products/zero-trust/gateway",
+													"title": "CASB",
+													"description": "Easily secure workplace tools, granularly control user access, and protect sensitive data",
+													"url": "/products/zero-trust/casb/",
 													"badges": null,
 													"specialLinkType": null,
 													"openInNewWindow": false,
@@ -1952,14 +1962,12 @@
 												},
 												{
 													"contentTypeId": "elementNavLink",
-													"contentfulId": "2vyoxSQ7jpjzpGOk1Ci9Ee",
+													"contentfulId": "45pyjvWC8eAH4AeG77FICS",
 													"locale": "en-US",
-													"title": "CASB",
-													"description": "Easily secure workplace tools, granularly control user access, and protect sensitive data",
-													"url": "/products/zero-trust/casb/",
-													"badges": [
-														"Beta"
-													],
+													"title": "Data Loss Prevention (DLP)",
+													"description": "Protect your organization's most sensitive data",
+													"url": "/products/zero-trust/dlp/",
+													"badges": null,
 													"specialLinkType": null,
 													"openInNewWindow": false,
 													"isExternalUrl": null
@@ -1971,6 +1979,18 @@
 													"title": "Area 1 (Email Security)",
 													"description": "Cloud-native email security to protect your users from phishing and business email compromise",
 													"url": "products/zero-trust/email-security/",
+													"badges": null,
+													"specialLinkType": null,
+													"openInNewWindow": false,
+													"isExternalUrl": null
+												},
+												{
+													"contentTypeId": "elementNavLink",
+													"contentfulId": "7HOWsAUMZ6ZY1iOge1qbDz",
+													"locale": "en-US",
+													"title": "Gateway",
+													"description": "Secure web gateway for protecting your users via device clients and your network",
+													"url": "/products/zero-trust/gateway",
 													"badges": null,
 													"specialLinkType": null,
 													"openInNewWindow": false,
@@ -3908,21 +3928,8 @@
 								"contentfulId": "10X0LS8uVJOWBbeZkeI6ah",
 								"linkText": "Zero Trust platform",
 								"page": null,
-								"url": null,
-								"subMenuItems": [
-									{
-										"contentfulId": "4JOVfq0TlhxcyZWkAHvFZB",
-										"linkText": "Overview",
-										"page": null,
-										"url": "/products/zero-trust"
-									},
-									{
-										"contentfulId": "01FpIoGj85kxmR7udTx60B",
-										"linkText": "Interactive demo",
-										"page": null,
-										"url": "/products/zero-trust/interactive-demo"
-									}
-								]
+								"url": "/products/zero-trust",
+								"subMenuItems": null
 							},
 							{
 								"contentfulId": "1km56yP6vf7r4Nx1pgEs9H",
@@ -3950,9 +3957,15 @@
 									},
 									{
 										"contentfulId": "76s7oENCn73FZhugtuI9c6",
-										"linkText": "CASB (Beta)",
+										"linkText": "CASB",
 										"page": null,
 										"url": "https://www.cloudflare.com/products/zero-trust/casb/"
+									},
+									{
+										"contentfulId": "1aJ424vC1rwgiH4apcJhrr",
+										"linkText": "Data Loss Prevention (DLP)",
+										"page": null,
+										"url": "/products/zero-trust/dlp"
 									},
 									{
 										"contentfulId": "4fqU9qBCakRwiZ1mNr9Yrb",
@@ -4003,6 +4016,26 @@
 										"linkText": "Manage third party access ",
 										"page": null,
 										"url": "/products/zero-trust/third-party-access"
+									}
+								]
+							},
+							{
+								"contentfulId": "1pq3pR21pthqlTqX3GrVm8",
+								"linkText": "Demos",
+								"page": null,
+								"url": null,
+								"subMenuItems": [
+									{
+										"contentfulId": "01FpIoGj85kxmR7udTx60B",
+										"linkText": "Interactive demo",
+										"page": null,
+										"url": "/products/zero-trust/interactive-demo"
+									},
+									{
+										"contentfulId": "1gA7cCpxWVP25In2onzmBX",
+										"linkText": "Remote Browser Isolation (RBI) demo",
+										"page": null,
+										"url": "/products/zero-trust/browser-isolation/experience"
 									}
 								]
 							},
