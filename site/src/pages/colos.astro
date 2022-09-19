@@ -148,8 +148,76 @@ for(const coloId in colos){
 	<main class="m-auto max-w-5xl p-4">
 		<h2 class="mb-2 text-xl">Colos</h2>
 		<Table
-			headers = {["ID", "Colo", "Type"]}
-			data = {Object.keys(colos).map((id:string) => [id, colos[id], types[colos[id]]])}
+			headers = {["ID", "Colo", "Type", "Status"]}
+			widths={["w-[30%]", "w-[30%]", "w-[30%]", "w-[10%]"]}
+			data = {Object.keys(colos).map((id:string) => [
+				id,
+				colos[id],
+				types[colos[id]],
+				'loading...',
+			])}
 		></Table>
 	</main>
 </Layout>
+
+<script>
+
+async function getColosStatus(){
+	const table = document.querySelector('table');
+	if(!table){
+		return;
+	}
+	const headers = table.querySelectorAll('thead tr th');
+	if(!headers){
+		return;
+	}
+	let statusIndex = null;
+	for(const [index, header] of headers.entries()){
+		if(header.textContent === 'Status'){
+			statusIndex = index + 1;
+			break;
+		}
+	}
+	const tableRows = table.querySelectorAll('tbody tr');
+	if(!tableRows){
+		return;
+	}
+
+	const coloStatusRes = await fetch('https://colos-status.jross.workers.dev/');
+	const coloStatus = await coloStatusRes.json();
+
+	for(const row of tableRows){
+		const coloName = row.querySelector('td:nth-child(2)')?.textContent;
+		const status = row.querySelector(`td:nth-child(${statusIndex})`);
+		const type = row.querySelector('td:nth-child(3)')?.textContent;
+		if(!coloName || !status){
+			continue;
+		}
+		status.textContent = '';
+		let spanElement = status.querySelector('span');
+		if(!spanElement){
+			spanElement = document.createElement('span');
+			status.append(spanElement);
+		}
+		spanElement.classList.add('w-4', 'h-4', 'inline-block', 'rounded-full', 'mr-2');
+		const online = coloStatus[coloName] === true;
+		if(online){
+			spanElement.classList.add('bg-green-500');
+			spanElement.title = 'Online';
+		}else if(type === 'JDC'){
+			spanElement.classList.add('bg-gray-500');
+			spanElement.title = 'China network. Unknown status';
+		}else{
+			spanElement.classList.add('bg-red-500');
+			spanElement.title = 'Offline or non-responsive';
+		}
+	}
+}
+
+getColosStatus();
+
+setInterval(() => {
+	getColosStatus();
+}, 60000);
+
+</script>

@@ -21,7 +21,7 @@ const {headers, data, widths} = Astro.props;
 			{data.map((item:string[]) => (
 				<tr class="border-b border-solid border-b-gray-600">
 					{item.map((value: string, index: number) => (
-						<td class={["p-1", widths?.[index]].join(' ')}>{value}</td>
+						<td class={["p-1", widths?.[index]].join(' ').trim()}>{value}</td>
 					))}
 				</tr>
 			))}
