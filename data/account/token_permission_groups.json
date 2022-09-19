@@ -1,37 +1,5 @@
 [
 	{
-		"id": "6ced5d0d69b1422396909a62c38ab41b",
-		"name": "API Gateway Read",
-		"description": "Grants read access to API-Gateway Management",
-		"scopes": [
-			"com.cloudflare.api.account.zone"
-		]
-	},
-	{
-		"id": "f0235726de25444a84f704b7c93afadf",
-		"name": "API Gateway Write",
-		"description": "Grants write access to API-Gateway Management",
-		"scopes": [
-			"com.cloudflare.api.account.zone"
-		]
-	},
-	{
-		"id": "0cc3a61731504c89b99ec1be78b77aa0",
-		"name": "API Tokens Read",
-		"description": "Grants read access to user's API Tokens",
-		"scopes": [
-			"com.cloudflare.api.user"
-		]
-	},
-	{
-		"id": "686d18d5ac6c441c867cbf6771e58a0a",
-		"name": "API Tokens Write",
-		"description": "Grants write access to user's API Tokens",
-		"scopes": [
-			"com.cloudflare.api.user"
-		]
-	},
-	{
 		"id": "7ea222f6d5064cfa89ea366d7c1fee89",
 		"name": "Access: Apps and Policies Read",
 		"description": "Grants read access to Cloudflare Access account resources",
@@ -269,6 +237,38 @@
 		"description": "Grants read access to analytics",
 		"scopes": [
 			"com.cloudflare.api.account.zone"
+		]
+	},
+	{
+		"id": "6ced5d0d69b1422396909a62c38ab41b",
+		"name": "API Gateway Read",
+		"description": "Grants read access to API-Gateway Management",
+		"scopes": [
+			"com.cloudflare.api.account.zone"
+		]
+	},
+	{
+		"id": "f0235726de25444a84f704b7c93afadf",
+		"name": "API Gateway Write",
+		"description": "Grants write access to API-Gateway Management",
+		"scopes": [
+			"com.cloudflare.api.account.zone"
+		]
+	},
+	{
+		"id": "0cc3a61731504c89b99ec1be78b77aa0",
+		"name": "API Tokens Read",
+		"description": "Grants read access to user's API Tokens",
+		"scopes": [
+			"com.cloudflare.api.user"
+		]
+	},
+	{
+		"id": "686d18d5ac6c441c867cbf6771e58a0a",
+		"name": "API Tokens Write",
+		"description": "Grants write access to user's API Tokens",
+		"scopes": [
+			"com.cloudflare.api.user"
 		]
 	},
 	{
@@ -560,6 +560,22 @@
 		]
 	},
 	{
+		"id": "fac65912d42144aa86b7dd33281bf79e",
+		"name": "Health Checks Read",
+		"description": "Grants read access to Health Checks",
+		"scopes": [
+			"com.cloudflare.api.account.zone"
+		]
+	},
+	{
+		"id": "e0dc25a0fbdf4286b1ea100e3256b0e3",
+		"name": "Health Checks Write",
+		"description": "Grants write access to Health Checks",
+		"scopes": [
+			"com.cloudflare.api.account.zone"
+		]
+	},
+	{
 		"id": "6b60a5a87cae475da7e76e77e4209dd5",
 		"name": "HTTP Applications Read",
 		"description": "Grants read-only access to HTTP Applications",
@@ -592,19 +608,35 @@
 		]
 	},
 	{
-		"id": "fac65912d42144aa86b7dd33281bf79e",
-		"name": "Health Checks Read",
-		"description": "Grants read access to Health Checks",
+		"id": "0cf6473ad41449e7b7b743d14fc20c60",
+		"name": "Images Read",
+		"description": "Grants read access to Images",
 		"scopes": [
-			"com.cloudflare.api.account.zone"
+			"com.cloudflare.api.account"
 		]
 	},
 	{
-		"id": "e0dc25a0fbdf4286b1ea100e3256b0e3",
-		"name": "Health Checks Write",
-		"description": "Grants write access to Health Checks",
+		"id": "618ec6c64a3a42f8b08bdcb147ded4e4",
+		"name": "Images Write",
+		"description": "Grants write access to upload Images",
 		"scopes": [
-			"com.cloudflare.api.account.zone"
+			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "df1577df30ee46268f9470952d7b0cdf",
+		"name": "Intel Read",
+		"description": "Grants read access to Intel API",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "92209474242d459690e2cdb1985eaa6c",
+		"name": "Intel Write",
+		"description": "Grants write access to Intel API",
+		"scopes": [
+			"com.cloudflare.api.account"
 		]
 	},
 	{
@@ -635,38 +667,6 @@
 		"id": "92b8234e99f64e05bbbc59e1dc0f76b6",
 		"name": "IP Prefixes: Write",
 		"description": "Grants access to read/write ip prefix settings",
-		"scopes": [
-			"com.cloudflare.api.account"
-		]
-	},
-	{
-		"id": "0cf6473ad41449e7b7b743d14fc20c60",
-		"name": "Images Read",
-		"description": "Grants read access to Images",
-		"scopes": [
-			"com.cloudflare.api.account"
-		]
-	},
-	{
-		"id": "618ec6c64a3a42f8b08bdcb147ded4e4",
-		"name": "Images Write",
-		"description": "Grants write access to upload Images",
-		"scopes": [
-			"com.cloudflare.api.account"
-		]
-	},
-	{
-		"id": "df1577df30ee46268f9470952d7b0cdf",
-		"name": "Intel Read",
-		"description": "Grants read access to Intel API",
-		"scopes": [
-			"com.cloudflare.api.account"
-		]
-	},
-	{
-		"id": "92209474242d459690e2cdb1985eaa6c",
-		"name": "Intel Write",
-		"description": "Grants write access to Intel API",
 		"scopes": [
 			"com.cloudflare.api.account"
 		]
@@ -720,19 +720,19 @@
 		]
 	},
 	{
-		"id": "c4a30cd58c5d42619c86a3c36c441e2d",
-		"name": "Logs Read",
-		"description": "Grants read access to logs and logpush jobs",
-		"scopes": [
-			"com.cloudflare.api.account.zone"
-		]
-	},
-	{
 		"id": "6a315a56f18441e59ed03352369ae956",
 		"name": "Logs Read",
 		"description": "Grants read access to logs and logpush jobs",
 		"scopes": [
 			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "c4a30cd58c5d42619c86a3c36c441e2d",
+		"name": "Logs Read",
+		"description": "Grants read access to logs and logpush jobs",
+		"scopes": [
+			"com.cloudflare.api.account.zone"
 		]
 	},
 	{
@@ -952,22 +952,6 @@
 		]
 	},
 	{
-		"id": "7b7216b327b04b8fbc8f524e1f9b7531",
-		"name": "SSL and Certificates Read",
-		"description": "Grants read access to SSL configuration and cert management",
-		"scopes": [
-			"com.cloudflare.api.account.zone"
-		]
-	},
-	{
-		"id": "c03055bc037c4ea9afb9a9f104b7b721",
-		"name": "SSL and Certificates Write",
-		"description": "Grants write access to SSL configuration and cert management",
-		"scopes": [
-			"com.cloudflare.api.account.zone"
-		]
-	},
-	{
 		"id": "853643ed57244ed1a05a7c024af9ab5a",
 		"name": "Sanitize Read",
 		"description": "Grants read access to sanitization",
@@ -997,6 +981,22 @@
 		"description": "Grants write access to select configuration",
 		"scopes": [
 			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "7b7216b327b04b8fbc8f524e1f9b7531",
+		"name": "SSL and Certificates Read",
+		"description": "Grants read access to SSL configuration and cert management",
+		"scopes": [
+			"com.cloudflare.api.account.zone"
+		]
+	},
+	{
+		"id": "c03055bc037c4ea9afb9a9f104b7b721",
+		"name": "SSL and Certificates Write",
+		"description": "Grants write access to SSL configuration and cert management",
+		"scopes": [
+			"com.cloudflare.api.account.zone"
 		]
 	},
 	{
