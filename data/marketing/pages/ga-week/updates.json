@@ -87,6 +87,13 @@
 								"page": null,
 								"url": "ga-week/customer-stories",
 								"subMenuItems": null
+							},
+							{
+								"contentfulId": "2P6p8G7KTh2ibh1p1eAJCz",
+								"linkText": "Press Releases",
+								"page": null,
+								"url": "ga-week/press-releases",
+								"subMenuItems": null
 							}
 						]
 					},
@@ -168,24 +175,140 @@
 						"features": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "Os0zS0ZLxC3Y62Nt1clzg",
-								"title": "Welcome to GA Week",
+								"contentfulId": "2jFmlgHV6INs0mOwonSDwd",
+								"title": "Detect security issues in your SaaS apps with Cloudflare CASB",
 								"titleSize": null,
-								"description": "Over the course of the next week, you're going to hear about Cloudflare products that are out of beta and generally available",
-								"learnMoreUrl": "https://blog.cloudflare.com/welcome-to-ga-week",
+								"description": "Connect and scan your third-party SaaS apps for file leaks, misconfigurations, and Shadow IT, all in just a few clicks. Cloudflare CASB now Generally Available.",
+								"learnMoreUrl": "https://blog.cloudflare.com/casb-ga",
 								"learnMoreText": "Learn More",
 								"displayBorder": false,
 								"icon": null,
 								"iconAssetFile": null,
 								"imageAssetFile": {
-									"id": "3ff2da62-9c4d-59d0-b191-580e10e4c9d9",
-									"altText": "Welcome to GA Week",
-									"title": "Welcome to GA Week",
+									"id": "6f776885-b016-5bfc-a3fe-849c84b5ec76",
+									"altText": "CASB available in ZT Bundles ",
+									"title": "CASB available in ZT Bundles ",
 									"activeAsset": "Brandfolder Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "[path]/Week_Theme.png"
+											"publicURL": "[path]/CASB_available_in_ZT_Bundles.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "2THqrZJiPHCDKJjLOLbQ4s",
+								"title": "Cloudflare Data Loss Prevention now Generally Available",
+								"titleSize": null,
+								"description": "Data Loss Prevention is now available for Cloudflare contract customers, giving customers more options to protect their sensitive data.",
+								"learnMoreUrl": "https://blog.cloudflare.com/inline-dlp-ga",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "c216fdba-efac-5993-9c89-3e73c875531a",
+									"altText": "DLP available in ZT Bundles",
+									"title": "DLP available in ZT Bundles",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/DLP.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "2w73kmqVrGaoBj6I6xJyW5",
+								"title": "Cloudflare One Partner Program Acceleration",
+								"titleSize": null,
+								"description": "Cloudflare One Partner Program gains traction with existing and prospective partners.",
+								"learnMoreUrl": "https://blog.cloudflare.com/cloudflare-one-partner-program-acceleration",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "dc22c685-27ca-59d9-ab5e-a046bd1774b3",
+									"altText": "Cloudflare Channel Partner Program",
+									"title": "Cloudflare Channel Partner Program",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/Cloudflare_Channel_Partner_Program.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "7I7UeUGQPbGfMQ9sgSYgOL",
+								"title": "Isolate browser-borne threats on any network with WAN-as-a-Service",
+								"titleSize": null,
+								"description": "Defend any network from browser-borne threats with Cloudflare Browser Isolation by connecting legacy firewalls over IPSec / GRE",
+								"learnMoreUrl": "https://blog.cloudflare.com/magic-gateway-browser-isolation",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "84fe9aa3-093f-5bcf-9951-efa651df7703",
+									"altText": "Magic Gateway + BISO",
+									"title": "Magic Gateway + BISO",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/Clientless_BISO.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "4I2fioo3kdJIFzNSVBGqEz",
+								"title": "Cloudflare Area 1 - how the best Email Security keeps getting better",
+								"titleSize": null,
+								"description": "Cloudflare started using Area 1 in 2020 and proceeded with acquiring the company in 2022. We were most impressed how phishing, responsible for 90+% of cyberattacks, basically became a non-issue overnight when we deployed Area 1. But our vision is much bigger than preventing phishing attacks - read on.",
+								"learnMoreUrl": "https://blog.cloudflare.com/email-security",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "1284516b-8934-5420-8a72-022ddc4365a6",
+									"altText": "Cloudflare One Week 2022 - Replacing an email gateway with Area1",
+									"title": "Cloudflare One Week 2022 - Replacing an email gateway with Area1",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/Replacing_an_email_gateway_with_Area_1.png"
 										}
 									},
 									"brandfolderAsset": null,

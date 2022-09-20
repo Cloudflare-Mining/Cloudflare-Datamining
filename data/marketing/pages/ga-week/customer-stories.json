@@ -87,6 +87,13 @@
 								"page": null,
 								"url": "ga-week/customer-stories",
 								"subMenuItems": null
+							},
+							{
+								"contentfulId": "2P6p8G7KTh2ibh1p1eAJCz",
+								"linkText": "Press Releases",
+								"page": null,
+								"url": "ga-week/press-releases",
+								"subMenuItems": null
 							}
 						]
 					},
@@ -159,13 +166,71 @@
 						"copy": null,
 						"title": "Customer Stories",
 						"subtitle": null,
-						"bladeStyle": null,
+						"bladeStyle": "Feature Blocks - 2 columns",
 						"bladeBorder": "none",
 						"sectionPadding": "tile--no-top-padding",
 						"carouselSlidesToShow": null,
 						"carouselSlidesToScroll": null,
 						"locale": "en-US",
 						"features": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "6Whliand8U81ZPf1e6TReb",
+								"title": "Customer Story- Fortune 500 Telecommunications Provider",
+								"titleSize": null,
+								"description": "European telecommunications provider secures application and Internet access with Cloudflare Zero Trust to accelerate cloud migration and shed legacy tooling",
+								"learnMoreUrl": "https://www.cloudflare.com/case-studies/fortune-500-telecommunications-provider/",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "62958d41-f876-5799-8925-c2cbf810301b",
+									"altText": "Telecom",
+									"title": "Telecom",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/telcom_blinded_meta.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "56Lxm6dFgqZb5JGzrMFChe",
+								"title": "Customer Story- Forbes Global 2000 Media & Advertising",
+								"titleSize": null,
+								"description": "Cloudflare Zero Trust secures hybrid work for tens of thousands of employees at a market-leading media and advertising company",
+								"learnMoreUrl": "https://www.cloudflare.com/case-studies/forbes-global-2000-media-and-advertising-conglomerate/",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "3ed5bde0-63d2-5f57-bab9-7e11ca425b52",
+									"altText": "Forbes Global 2000 media & advertising conglomerate",
+									"title": "Forbes Global 2000 media & advertising conglomerate",
+									"activeAsset": "Brandfolder Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/global2000media_meta.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
 							{
 								"contentTypeId": "feature",
 								"contentfulId": "5mkyMtRkgwEDEjpA9j5eGk",
