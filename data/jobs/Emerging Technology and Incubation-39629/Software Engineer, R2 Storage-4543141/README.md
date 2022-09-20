@@ -11,6 +11,7 @@
 <p>Cloudflare's R2 Storage is distributed object storage accessible through Cloudflare's infrastructure allowing customers–both internal and external–the convenience of accessing their data from anywhere with the reliability and performance of Cloudflare infrastructure. In this role, you'll work with a top-notch engineering team to drive R2 Storage forward by ensuring continual reliability, maintaining best-in-class performance, and implementing new features and functionality.</p>
 <p>You will own your code from inception to release, delivering solutions at all layers of the software stack to empower Cloudflare customers. On any given day, you might write a design document that outlines how you plan to solve a specific problem, modify how R2 Storage processes requests, or fix a bug in how our user experience renders. You can expect to interact with a variety of languages and technologies including, but not limited to JavaScript, Typescript, Rust, and C++.</p>
 <ul>
+	<li>4+ years of experience working with distributed systems or developing on cloud platforms</li>
 	<li>Experience building and managing high volume software applications.</li>
 	<li>Solid understanding of computer science fundamentals including data structures, algorithms, and object-oriented or functional design.</li>
 	<li>Knowledge of at least one modern strongly-typed programming language such as Go, Java, C#, Rust, or C++.</li>
