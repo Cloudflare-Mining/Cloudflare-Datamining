@@ -1,0 +1,824 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/rulesets/rulesets.json",
+	"title": "Account Rulesets",
+	"description": "Rulesets at the account level",
+	"type": "object",
+	"links": [
+		{
+			"title": "List account rulesets",
+			"description": "List all rulesets for an account",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/account_id}/rulesets",
+			"method": "GET",
+			"cfOwnership": "rulesets",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "account-rulesets-list-account-rulesets",
+			"uri": "accounts/:account_id/rulesets",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/rulesets\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"2f2feab2026849078ba485f918791bdc\",\n      \"name\": \"My ruleset\",\n      \"description\": \"My ruleset to execute managed rulesets\",\n      \"kind\": \"root\",\n      \"phase\": \"http_request_firewall_managed\",\n      \"version\": \"1\",\n      \"last_updated\": \"2000-01-01T00:00:00.000000Z\"\n    }\n  ]\n}"
+		},
+		{
+			"title": "Create account ruleset",
+			"description": "Create an account ruleset",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/account_id}/rulesets",
+			"method": "POST",
+			"cfOwnership": "rulesets",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "account-rulesets-create-account-ruleset",
+			"uri": "accounts/:account_id/rulesets",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/rulesets\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"name\":\"My ruleset\",\"description\":\"My ruleset to execute managed rulesets\",\"kind\":\"root\",\"phase\":\"http_request_firewall_managed\",\"rules\":[{\"description\":\"Execute the OWASP ruleset when the IP address is not 1.1.1.1\",\"expression\":\"ip.src ne 1.1.1.1\",\"action\":\"execute\",\"action_parameters\":{\"id\":\"4814384a9e5d4991b9815dcfc25d2f1f\"},\"ref\":\"my_ref\",\"enabled\":\"true\",\"logging\":{\"enabled\":\"true\"}}]}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"name": {
+						"type": "string",
+						"example": "\"My ruleset\"",
+						"description": "The human readable name for the ruleset"
+					},
+					"description": {
+						"type": "string",
+						"example": "\"My ruleset to execute managed rulesets\"",
+						"description": "A description of the ruleset",
+						"default": ""
+					},
+					"kind": {
+						"type": "string",
+						"example": "\"root\"",
+						"description": "The kind of the ruleset",
+						"enum": [
+							"custom",
+							"root",
+							"zone"
+						]
+					},
+					"phase": {
+						"type": "string",
+						"example": "\"http_request_firewall_managed\"",
+						"description": "The phase of the ruleset",
+						"pattern": "^[a-z_]+$"
+					},
+					"rules": {
+						"type": "array",
+						"example": "[\n  {\n    \"description\": \"Execute the OWASP ruleset when the IP address is not 1.1.1.1\",\n    \"expression\": \"ip.src ne 1.1.1.1\",\n    \"action\": \"execute\",\n    \"action_parameters\": {\n      \"id\": \"4814384a9e5d4991b9815dcfc25d2f1f\"\n    },\n    \"ref\": \"my_ref\",\n    \"enabled\": \"true\",\n    \"logging\": {\n      \"enabled\": \"true\"\n    }\n  }\n]",
+						"description": "The rules in the ruleset",
+						"items": {
+							"anyOf": [
+								{
+									"description": "A rule",
+									"type": "object",
+									"required": [
+										"expression",
+										"action"
+									],
+									"properties": {
+										"description": {
+											"description": "A description of the rule",
+											"type": "string",
+											"default": "",
+											"example": "Execute the OWASP ruleset when the IP address is not 1.1.1.1"
+										},
+										"expression": {
+											"description": "The expression of the rule to match traffic on",
+											"type": "string",
+											"example": "ip.src ne 1.1.1.1"
+										},
+										"action": {
+											"description": "The action to take when the rule matches",
+											"type": "string",
+											"pattern": "^[a-z_]+$",
+											"example": "execute"
+										},
+										"action_parameters": {
+											"description": "The parameters to configure the given action",
+											"type": "object",
+											"example": {
+												"id": "4814384a9e5d4991b9815dcfc25d2f1f"
+											}
+										},
+										"ref": {
+											"description": "A reference for the rule, defaults to the ID",
+											"type": "string",
+											"example": "my_ref"
+										},
+										"enabled": {
+											"description": "Whether the rule should be run",
+											"type": "boolean",
+											"default": "true",
+											"example": "true"
+										},
+										"logging": {
+											"description": "The parameters to configure how the rule generates logs",
+											"type": "object",
+											"properties": {
+												"enabled": {
+													"description": "Whether a log should be generated when the rule matches",
+													"type": "boolean",
+													"example": "true"
+												}
+											},
+											"example": {
+												"enabled": true
+											}
+										}
+									}
+								},
+								{
+									"description": "An ID of a rule",
+									"type": "string",
+									"example": "3a03d665bac047339bb530ecb439a90d"
+								}
+							]
+						}
+					}
+				},
+				"required_props": [
+					"name",
+					"kind",
+					"phase",
+					"rules"
+				],
+				"optional_props": [
+					"description"
+				],
+				"objects": [],
+				"example": "{\n  \"name\": \"My ruleset\",\n  \"description\": \"My ruleset to execute managed rulesets\",\n  \"kind\": \"root\",\n  \"phase\": \"http_request_firewall_managed\",\n  \"rules\": [\n    {\n      \"description\": \"Execute the OWASP ruleset when the IP address is not 1.1.1.1\",\n      \"expression\": \"ip.src ne 1.1.1.1\",\n      \"action\": \"execute\",\n      \"action_parameters\": {\n        \"id\": \"4814384a9e5d4991b9815dcfc25d2f1f\"\n      },\n      \"ref\": \"my_ref\",\n      \"enabled\": \"true\",\n      \"logging\": {\n        \"enabled\": \"true\"\n      }\n    }\n  ]\n}",
+				"description": "A ruleset"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"2f2feab2026849078ba485f918791bdc\",\n    \"name\": \"My ruleset\",\n    \"description\": \"My ruleset to execute managed rulesets\",\n    \"kind\": \"root\",\n    \"phase\": \"http_request_firewall_managed\",\n    \"version\": \"1\",\n    \"rules\": [\n      {\n        \"id\": \"3a03d665bac047339bb530ecb439a90d\",\n        \"description\": \"Execute the OWASP ruleset when the IP address is not 1.1.1.1\",\n        \"version\": \"1\",\n        \"expression\": \"ip.src ne 1.1.1.1\",\n        \"action\": \"execute\",\n        \"action_parameters\": {\n          \"id\": \"4814384a9e5d4991b9815dcfc25d2f1f\"\n        },\n        \"ref\": \"my_ref\",\n        \"enabled\": \"true\",\n        \"logging\": {\n          \"enabled\": \"true\"\n        },\n        \"last_updated\": \"2000-01-01T00:00:00.000000Z\"\n      }\n    ],\n    \"last_updated\": \"2000-01-01T00:00:00.000000Z\"\n  }\n}"
+		},
+		{
+			"title": "Get account ruleset",
+			"description": "Get the latest version of an account ruleset",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_id}/rulesets/{#/definitions/ruleset_id}",
+			"method": "GET",
+			"cfOwnership": "rulesets",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "account-rulesets-get-account-ruleset",
+			"uri": "accounts/:account_id/rulesets/:ruleset_id",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/rulesets/2f2feab2026849078ba485f918791bdc\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"2f2feab2026849078ba485f918791bdc\",\n    \"name\": \"My ruleset\",\n    \"description\": \"My ruleset to execute managed rulesets\",\n    \"kind\": \"root\",\n    \"phase\": \"http_request_firewall_managed\",\n    \"version\": \"1\",\n    \"rules\": [\n      {\n        \"id\": \"3a03d665bac047339bb530ecb439a90d\",\n        \"description\": \"Execute the OWASP ruleset when the IP address is not 1.1.1.1\",\n        \"version\": \"1\",\n        \"expression\": \"ip.src ne 1.1.1.1\",\n        \"action\": \"execute\",\n        \"action_parameters\": {\n          \"id\": \"4814384a9e5d4991b9815dcfc25d2f1f\"\n        },\n        \"ref\": \"my_ref\",\n        \"enabled\": \"true\",\n        \"logging\": {\n          \"enabled\": \"true\"\n        },\n        \"last_updated\": \"2000-01-01T00:00:00.000000Z\"\n      }\n    ],\n    \"last_updated\": \"2000-01-01T00:00:00.000000Z\"\n  }\n}"
+		},
+		{
+			"title": "Update account ruleset",
+			"description": "Update an account ruleset, creating a new version",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_id}/rulesets/{#/definitions/ruleset_id}",
+			"method": "PUT",
+			"cfOwnership": "rulesets",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "account-rulesets-update-account-ruleset",
+			"uri": "accounts/:account_id/rulesets/:ruleset_id",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/rulesets/2f2feab2026849078ba485f918791bdc\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"description\":\"My ruleset to execute managed rulesets\",\"rules\":[{\"description\":\"Execute the OWASP ruleset when the IP address is not 1.1.1.1\",\"expression\":\"ip.src ne 1.1.1.1\",\"action\":\"execute\",\"action_parameters\":{\"id\":\"4814384a9e5d4991b9815dcfc25d2f1f\"},\"ref\":\"my_ref\",\"enabled\":\"true\",\"logging\":{\"enabled\":\"true\"}}]}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"description": {
+						"type": "string",
+						"example": "\"My ruleset to execute managed rulesets\"",
+						"description": "A description of the ruleset",
+						"default": ""
+					},
+					"rules": {
+						"type": "array",
+						"example": "[\n  {\n    \"description\": \"Execute the OWASP ruleset when the IP address is not 1.1.1.1\",\n    \"expression\": \"ip.src ne 1.1.1.1\",\n    \"action\": \"execute\",\n    \"action_parameters\": {\n      \"id\": \"4814384a9e5d4991b9815dcfc25d2f1f\"\n    },\n    \"ref\": \"my_ref\",\n    \"enabled\": \"true\",\n    \"logging\": {\n      \"enabled\": \"true\"\n    }\n  }\n]",
+						"description": "The rules in the ruleset",
+						"items": {
+							"anyOf": [
+								{
+									"description": "A rule",
+									"type": "object",
+									"required": [
+										"expression",
+										"action"
+									],
+									"properties": {
+										"description": {
+											"description": "A description of the rule",
+											"type": "string",
+											"default": "",
+											"example": "Execute the OWASP ruleset when the IP address is not 1.1.1.1"
+										},
+										"expression": {
+											"description": "The expression of the rule to match traffic on",
+											"type": "string",
+											"example": "ip.src ne 1.1.1.1"
+										},
+										"action": {
+											"description": "The action to take when the rule matches",
+											"type": "string",
+											"pattern": "^[a-z_]+$",
+											"example": "execute"
+										},
+										"action_parameters": {
+											"description": "The parameters to configure the given action",
+											"type": "object",
+											"example": {
+												"id": "4814384a9e5d4991b9815dcfc25d2f1f"
+											}
+										},
+										"ref": {
+											"description": "A reference for the rule, defaults to the ID",
+											"type": "string",
+											"example": "my_ref"
+										},
+										"enabled": {
+											"description": "Whether the rule should be run",
+											"type": "boolean",
+											"default": "true",
+											"example": "true"
+										},
+										"logging": {
+											"description": "The parameters to configure how the rule generates logs",
+											"type": "object",
+											"properties": {
+												"enabled": {
+													"description": "Whether a log should be generated when the rule matches",
+													"type": "boolean",
+													"example": "true"
+												}
+											},
+											"example": {
+												"enabled": true
+											}
+										}
+									}
+								},
+								{
+									"description": "An ID of a rule",
+									"type": "string",
+									"example": "3a03d665bac047339bb530ecb439a90d"
+								}
+							]
+						}
+					}
+				},
+				"required_props": [
+					"rules"
+				],
+				"optional_props": [
+					"description"
+				],
+				"objects": [],
+				"example": "{\n  \"description\": \"My ruleset to execute managed rulesets\",\n  \"rules\": [\n    {\n      \"description\": \"Execute the OWASP ruleset when the IP address is not 1.1.1.1\",\n      \"expression\": \"ip.src ne 1.1.1.1\",\n      \"action\": \"execute\",\n      \"action_parameters\": {\n        \"id\": \"4814384a9e5d4991b9815dcfc25d2f1f\"\n      },\n      \"ref\": \"my_ref\",\n      \"enabled\": \"true\",\n      \"logging\": {\n        \"enabled\": \"true\"\n      }\n    }\n  ]\n}",
+				"description": "A ruleset"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"2f2feab2026849078ba485f918791bdc\",\n    \"name\": \"My ruleset\",\n    \"description\": \"My ruleset to execute managed rulesets\",\n    \"kind\": \"root\",\n    \"phase\": \"http_request_firewall_managed\",\n    \"version\": \"1\",\n    \"rules\": [\n      {\n        \"id\": \"3a03d665bac047339bb530ecb439a90d\",\n        \"description\": \"Execute the OWASP ruleset when the IP address is not 1.1.1.1\",\n        \"version\": \"1\",\n        \"expression\": \"ip.src ne 1.1.1.1\",\n        \"action\": \"execute\",\n        \"action_parameters\": {\n          \"id\": \"4814384a9e5d4991b9815dcfc25d2f1f\"\n        },\n        \"ref\": \"my_ref\",\n        \"enabled\": \"true\",\n        \"logging\": {\n          \"enabled\": \"true\"\n        },\n        \"last_updated\": \"2000-01-01T00:00:00.000000Z\"\n      }\n    ],\n    \"last_updated\": \"2000-01-01T00:00:00.000000Z\"\n  }\n}"
+		},
+		{
+			"title": "Delete account ruleset",
+			"description": "Delete all versions of an account ruleset",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_id}/rulesets/{#/definitions/ruleset_id}",
+			"method": "DELETE",
+			"cfOwnership": "rulesets",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "account-rulesets-delete-account-ruleset",
+			"uri": "accounts/:account_id/rulesets/:ruleset_id",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/rulesets/2f2feab2026849078ba485f918791bdc\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\""
+		},
+		{
+			"title": "List account ruleset versions",
+			"description": "List the versions of an account ruleset",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/account_id}/rulesets/{#/definitions/ruleset_id}/versions",
+			"method": "GET",
+			"cfOwnership": "rulesets",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "account-rulesets-list-account-ruleset-versions",
+			"uri": "accounts/:account_id/rulesets/:ruleset_id/versions",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/rulesets/2f2feab2026849078ba485f918791bdc/versions\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"2f2feab2026849078ba485f918791bdc\",\n      \"name\": \"My ruleset\",\n      \"description\": \"My ruleset to execute managed rulesets\",\n      \"kind\": \"root\",\n      \"phase\": \"http_request_firewall_managed\",\n      \"version\": \"1\",\n      \"last_updated\": \"2000-01-01T00:00:00.000000Z\"\n    }\n  ]\n}"
+		},
+		{
+			"title": "Get account ruleset version",
+			"description": "Get a version of an account ruleset",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_id}/rulesets/{#/definitions/ruleset_id}/versions/{#/definitions/ruleset_version}",
+			"method": "GET",
+			"cfOwnership": "rulesets",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "account-rulesets-get-account-ruleset-version",
+			"uri": "accounts/:account_id/rulesets/:ruleset_id/versions/:ruleset_version",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/rulesets/2f2feab2026849078ba485f918791bdc/versions/1\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"2f2feab2026849078ba485f918791bdc\",\n    \"name\": \"My ruleset\",\n    \"description\": \"My ruleset to execute managed rulesets\",\n    \"kind\": \"root\",\n    \"phase\": \"http_request_firewall_managed\",\n    \"version\": \"1\",\n    \"rules\": [\n      {\n        \"id\": \"3a03d665bac047339bb530ecb439a90d\",\n        \"description\": \"Execute the OWASP ruleset when the IP address is not 1.1.1.1\",\n        \"version\": \"1\",\n        \"expression\": \"ip.src ne 1.1.1.1\",\n        \"action\": \"execute\",\n        \"action_parameters\": {\n          \"id\": \"4814384a9e5d4991b9815dcfc25d2f1f\"\n        },\n        \"ref\": \"my_ref\",\n        \"enabled\": \"true\",\n        \"logging\": {\n          \"enabled\": \"true\"\n        },\n        \"last_updated\": \"2000-01-01T00:00:00.000000Z\"\n      }\n    ],\n    \"last_updated\": \"2000-01-01T00:00:00.000000Z\"\n  }\n}"
+		},
+		{
+			"title": "Delete account ruleset version",
+			"description": "Delete a version of an account ruleset",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_id}/rulesets/{#/definitions/ruleset_id}/versions/{#/definitions/ruleset_version}",
+			"method": "DELETE",
+			"cfOwnership": "rulesets",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "account-rulesets-delete-account-ruleset-version",
+			"uri": "accounts/:account_id/rulesets/:ruleset_id/versions/:ruleset_version",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/rulesets/2f2feab2026849078ba485f918791bdc/versions/1\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\""
+		},
+		{
+			"title": "Create account ruleset rule",
+			"description": "Add a new rule to an account ruleset",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/account_id}/rulesets/{#/definitions/ruleset_id}/rules",
+			"method": "POST",
+			"cfOwnership": "rulesets",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "account-rulesets-create-account-ruleset-rule",
+			"uri": "accounts/:account_id/rulesets/:ruleset_id/rules",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/rulesets/2f2feab2026849078ba485f918791bdc/rules\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"description\":\"Execute the OWASP ruleset when the IP address is not 1.1.1.1\",\"expression\":\"ip.src ne 1.1.1.1\",\"action\":\"execute\",\"action_parameters\":{\"id\":\"4814384a9e5d4991b9815dcfc25d2f1f\"},\"ref\":\"my_ref\",\"enabled\":\"true\",\"logging\":{\"enabled\":\"true\"}}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"description": {
+						"type": "string",
+						"example": "\"Execute the OWASP ruleset when the IP address is not 1.1.1.1\"",
+						"description": "A description of the rule",
+						"default": ""
+					},
+					"expression": {
+						"type": "string",
+						"example": "\"ip.src ne 1.1.1.1\"",
+						"description": "The expression of the rule to match traffic on"
+					},
+					"action": {
+						"type": "string",
+						"example": "\"execute\"",
+						"description": "The action to take when the rule matches",
+						"pattern": "^[a-z_]+$"
+					},
+					"action_parameters": {
+						"type": "object",
+						"example": "{\n  \"id\": \"4814384a9e5d4991b9815dcfc25d2f1f\"\n}",
+						"description": "The parameters to configure the given action"
+					},
+					"ref": {
+						"type": "string",
+						"example": "\"my_ref\"",
+						"description": "A reference for the rule, defaults to the ID"
+					},
+					"enabled": {
+						"type": "boolean",
+						"example": "\"true\"",
+						"description": "Whether the rule should be run",
+						"default": "true"
+					},
+					"logging": {
+						"type": "object",
+						"example": "{\n  \"enabled\": \"true\"\n}",
+						"properties": {
+							"enabled": {
+								"type": "boolean",
+								"example": "\"true\"",
+								"description": "Whether a log should be generated when the rule matches"
+							}
+						},
+						"description": "The parameters to configure how the rule generates logs"
+					}
+				},
+				"required_props": [
+					"expression",
+					"action"
+				],
+				"optional_props": [
+					"description",
+					"action_parameters",
+					"ref",
+					"enabled",
+					"logging"
+				],
+				"objects": [],
+				"example": "{\n  \"description\": \"Execute the OWASP ruleset when the IP address is not 1.1.1.1\",\n  \"expression\": \"ip.src ne 1.1.1.1\",\n  \"action\": \"execute\",\n  \"action_parameters\": {\n    \"id\": \"4814384a9e5d4991b9815dcfc25d2f1f\"\n  },\n  \"ref\": \"my_ref\",\n  \"enabled\": \"true\",\n  \"logging\": {\n    \"enabled\": \"true\"\n  }\n}",
+				"description": "A rule"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"2f2feab2026849078ba485f918791bdc\",\n    \"name\": \"My ruleset\",\n    \"description\": \"My ruleset to execute managed rulesets\",\n    \"kind\": \"root\",\n    \"phase\": \"http_request_firewall_managed\",\n    \"version\": \"1\",\n    \"rules\": [\n      {\n        \"id\": \"3a03d665bac047339bb530ecb439a90d\",\n        \"description\": \"Execute the OWASP ruleset when the IP address is not 1.1.1.1\",\n        \"version\": \"1\",\n        \"expression\": \"ip.src ne 1.1.1.1\",\n        \"action\": \"execute\",\n        \"action_parameters\": {\n          \"id\": \"4814384a9e5d4991b9815dcfc25d2f1f\"\n        },\n        \"ref\": \"my_ref\",\n        \"enabled\": \"true\",\n        \"logging\": {\n          \"enabled\": \"true\"\n        },\n        \"last_updated\": \"2000-01-01T00:00:00.000000Z\"\n      }\n    ],\n    \"last_updated\": \"2000-01-01T00:00:00.000000Z\"\n  }\n}"
+		},
+		{
+			"title": "Update account ruleset rule",
+			"description": "Update a rule in an account ruleset",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_id}/rulesets/{#/definitions/ruleset_id}/rules/{#/definitions/rule_id}",
+			"method": "PATCH",
+			"cfOwnership": "rulesets",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "account-rulesets-update-account-ruleset-rule",
+			"uri": "accounts/:account_id/rulesets/:ruleset_id/rules/:rule_id",
+			"curl": "curl -X PATCH \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/rulesets/2f2feab2026849078ba485f918791bdc/rules/3a03d665bac047339bb530ecb439a90d\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"description\":\"Execute the OWASP ruleset when the IP address is not 1.1.1.1\",\"expression\":\"ip.src ne 1.1.1.1\",\"action\":\"execute\",\"action_parameters\":{\"id\":\"4814384a9e5d4991b9815dcfc25d2f1f\"},\"ref\":\"my_ref\",\"enabled\":\"true\",\"logging\":{\"enabled\":\"true\"}}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"description": {
+						"type": "string",
+						"example": "\"Execute the OWASP ruleset when the IP address is not 1.1.1.1\"",
+						"description": "A description of the rule",
+						"default": ""
+					},
+					"expression": {
+						"type": "string",
+						"example": "\"ip.src ne 1.1.1.1\"",
+						"description": "The expression of the rule to match traffic on"
+					},
+					"action": {
+						"type": "string",
+						"example": "\"execute\"",
+						"description": "The action to take when the rule matches",
+						"pattern": "^[a-z_]+$"
+					},
+					"action_parameters": {
+						"type": "object",
+						"example": "{\n  \"id\": \"4814384a9e5d4991b9815dcfc25d2f1f\"\n}",
+						"description": "The parameters to configure the given action"
+					},
+					"ref": {
+						"type": "string",
+						"example": "\"my_ref\"",
+						"description": "A reference for the rule, defaults to the ID"
+					},
+					"enabled": {
+						"type": "boolean",
+						"example": "\"true\"",
+						"description": "Whether the rule should be run",
+						"default": "true"
+					},
+					"logging": {
+						"type": "object",
+						"example": "{\n  \"enabled\": \"true\"\n}",
+						"properties": {
+							"enabled": {
+								"type": "boolean",
+								"example": "\"true\"",
+								"description": "Whether a log should be generated when the rule matches"
+							}
+						},
+						"description": "The parameters to configure how the rule generates logs"
+					}
+				},
+				"required_props": [
+					"expression",
+					"action"
+				],
+				"optional_props": [
+					"description",
+					"action_parameters",
+					"ref",
+					"enabled",
+					"logging"
+				],
+				"objects": [],
+				"example": "{\n  \"description\": \"Execute the OWASP ruleset when the IP address is not 1.1.1.1\",\n  \"expression\": \"ip.src ne 1.1.1.1\",\n  \"action\": \"execute\",\n  \"action_parameters\": {\n    \"id\": \"4814384a9e5d4991b9815dcfc25d2f1f\"\n  },\n  \"ref\": \"my_ref\",\n  \"enabled\": \"true\",\n  \"logging\": {\n    \"enabled\": \"true\"\n  }\n}",
+				"description": "A rule"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"2f2feab2026849078ba485f918791bdc\",\n    \"name\": \"My ruleset\",\n    \"description\": \"My ruleset to execute managed rulesets\",\n    \"kind\": \"root\",\n    \"phase\": \"http_request_firewall_managed\",\n    \"version\": \"1\",\n    \"rules\": [\n      {\n        \"id\": \"3a03d665bac047339bb530ecb439a90d\",\n        \"description\": \"Execute the OWASP ruleset when the IP address is not 1.1.1.1\",\n        \"version\": \"1\",\n        \"expression\": \"ip.src ne 1.1.1.1\",\n        \"action\": \"execute\",\n        \"action_parameters\": {\n          \"id\": \"4814384a9e5d4991b9815dcfc25d2f1f\"\n        },\n        \"ref\": \"my_ref\",\n        \"enabled\": \"true\",\n        \"logging\": {\n          \"enabled\": \"true\"\n        },\n        \"last_updated\": \"2000-01-01T00:00:00.000000Z\"\n      }\n    ],\n    \"last_updated\": \"2000-01-01T00:00:00.000000Z\"\n  }\n}"
+		},
+		{
+			"title": "Delete account ruleset rule",
+			"description": "Delete a rule from an account ruleset",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_id}/rulesets/{#/definitions/ruleset_id}/rules/{#/definitions/rule_id}",
+			"method": "DELETE",
+			"cfOwnership": "rulesets",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "account-rulesets-delete-account-ruleset-rule",
+			"uri": "accounts/:account_id/rulesets/:ruleset_id/rules/:rule_id",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/rulesets/2f2feab2026849078ba485f918791bdc/rules/3a03d665bac047339bb530ecb439a90d\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"2f2feab2026849078ba485f918791bdc\",\n    \"name\": \"My ruleset\",\n    \"description\": \"My ruleset to execute managed rulesets\",\n    \"kind\": \"root\",\n    \"phase\": \"http_request_firewall_managed\",\n    \"version\": \"1\",\n    \"rules\": [\n      {\n        \"id\": \"3a03d665bac047339bb530ecb439a90d\",\n        \"description\": \"Execute the OWASP ruleset when the IP address is not 1.1.1.1\",\n        \"version\": \"1\",\n        \"expression\": \"ip.src ne 1.1.1.1\",\n        \"action\": \"execute\",\n        \"action_parameters\": {\n          \"id\": \"4814384a9e5d4991b9815dcfc25d2f1f\"\n        },\n        \"ref\": \"my_ref\",\n        \"enabled\": \"true\",\n        \"logging\": {\n          \"enabled\": \"true\"\n        },\n        \"last_updated\": \"2000-01-01T00:00:00.000000Z\"\n      }\n    ],\n    \"last_updated\": \"2000-01-01T00:00:00.000000Z\"\n  }\n}"
+		},
+		{
+			"title": "Get account entrypoint ruleset",
+			"description": "Get the latest version of an account entrypoint ruleset",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_id}/rulesets/phases/{#/definitions/ruleset_phase}/entrypoint",
+			"method": "GET",
+			"cfOwnership": "rulesets",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "account-rulesets-get-account-entrypoint-ruleset",
+			"uri": "accounts/:account_id/rulesets/phases/:ruleset_phase/entrypoint",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/rulesets/phases/http_request_firewall_managed/entrypoint\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"2f2feab2026849078ba485f918791bdc\",\n    \"name\": \"My ruleset\",\n    \"description\": \"My ruleset to execute managed rulesets\",\n    \"kind\": \"root\",\n    \"phase\": \"http_request_firewall_managed\",\n    \"version\": \"1\",\n    \"rules\": [\n      {\n        \"id\": \"3a03d665bac047339bb530ecb439a90d\",\n        \"description\": \"Execute the OWASP ruleset when the IP address is not 1.1.1.1\",\n        \"version\": \"1\",\n        \"expression\": \"ip.src ne 1.1.1.1\",\n        \"action\": \"execute\",\n        \"action_parameters\": {\n          \"id\": \"4814384a9e5d4991b9815dcfc25d2f1f\"\n        },\n        \"ref\": \"my_ref\",\n        \"enabled\": \"true\",\n        \"logging\": {\n          \"enabled\": \"true\"\n        },\n        \"last_updated\": \"2000-01-01T00:00:00.000000Z\"\n      }\n    ],\n    \"last_updated\": \"2000-01-01T00:00:00.000000Z\"\n  }\n}"
+		},
+		{
+			"title": "Update account entrypoint ruleset",
+			"description": "Update an account entrypoint ruleset, creating a new version",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_id}/rulesets/phases/{#/definitions/ruleset_phase}/entrypoint",
+			"method": "PUT",
+			"cfOwnership": "rulesets",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "account-rulesets-update-account-entrypoint-ruleset",
+			"uri": "accounts/:account_id/rulesets/phases/:ruleset_phase/entrypoint",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/rulesets/phases/http_request_firewall_managed/entrypoint\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"description\":\"My ruleset to execute managed rulesets\",\"rules\":[{\"description\":\"Execute the OWASP ruleset when the IP address is not 1.1.1.1\",\"expression\":\"ip.src ne 1.1.1.1\",\"action\":\"execute\",\"action_parameters\":{\"id\":\"4814384a9e5d4991b9815dcfc25d2f1f\"},\"ref\":\"my_ref\",\"enabled\":\"true\",\"logging\":{\"enabled\":\"true\"}}]}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"description": {
+						"type": "string",
+						"example": "\"My ruleset to execute managed rulesets\"",
+						"description": "A description of the ruleset",
+						"default": ""
+					},
+					"rules": {
+						"type": "array",
+						"example": "[\n  {\n    \"description\": \"Execute the OWASP ruleset when the IP address is not 1.1.1.1\",\n    \"expression\": \"ip.src ne 1.1.1.1\",\n    \"action\": \"execute\",\n    \"action_parameters\": {\n      \"id\": \"4814384a9e5d4991b9815dcfc25d2f1f\"\n    },\n    \"ref\": \"my_ref\",\n    \"enabled\": \"true\",\n    \"logging\": {\n      \"enabled\": \"true\"\n    }\n  }\n]",
+						"description": "The rules in the ruleset",
+						"items": {
+							"anyOf": [
+								{
+									"description": "A rule",
+									"type": "object",
+									"required": [
+										"expression",
+										"action"
+									],
+									"properties": {
+										"description": {
+											"description": "A description of the rule",
+											"type": "string",
+											"default": "",
+											"example": "Execute the OWASP ruleset when the IP address is not 1.1.1.1"
+										},
+										"expression": {
+											"description": "The expression of the rule to match traffic on",
+											"type": "string",
+											"example": "ip.src ne 1.1.1.1"
+										},
+										"action": {
+											"description": "The action to take when the rule matches",
+											"type": "string",
+											"pattern": "^[a-z_]+$",
+											"example": "execute"
+										},
+										"action_parameters": {
+											"description": "The parameters to configure the given action",
+											"type": "object",
+											"example": {
+												"id": "4814384a9e5d4991b9815dcfc25d2f1f"
+											}
+										},
+										"ref": {
+											"description": "A reference for the rule, defaults to the ID",
+											"type": "string",
+											"example": "my_ref"
+										},
+										"enabled": {
+											"description": "Whether the rule should be run",
+											"type": "boolean",
+											"default": "true",
+											"example": "true"
+										},
+										"logging": {
+											"description": "The parameters to configure how the rule generates logs",
+											"type": "object",
+											"properties": {
+												"enabled": {
+													"description": "Whether a log should be generated when the rule matches",
+													"type": "boolean",
+													"example": "true"
+												}
+											},
+											"example": {
+												"enabled": true
+											}
+										}
+									}
+								},
+								{
+									"description": "An ID of a rule",
+									"type": "string",
+									"example": "3a03d665bac047339bb530ecb439a90d"
+								}
+							]
+						}
+					}
+				},
+				"required_props": [
+					"rules"
+				],
+				"optional_props": [
+					"description"
+				],
+				"objects": [],
+				"example": "{\n  \"description\": \"My ruleset to execute managed rulesets\",\n  \"rules\": [\n    {\n      \"description\": \"Execute the OWASP ruleset when the IP address is not 1.1.1.1\",\n      \"expression\": \"ip.src ne 1.1.1.1\",\n      \"action\": \"execute\",\n      \"action_parameters\": {\n        \"id\": \"4814384a9e5d4991b9815dcfc25d2f1f\"\n      },\n      \"ref\": \"my_ref\",\n      \"enabled\": \"true\",\n      \"logging\": {\n        \"enabled\": \"true\"\n      }\n    }\n  ]\n}",
+				"description": "A ruleset"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"2f2feab2026849078ba485f918791bdc\",\n    \"name\": \"My ruleset\",\n    \"description\": \"My ruleset to execute managed rulesets\",\n    \"kind\": \"root\",\n    \"phase\": \"http_request_firewall_managed\",\n    \"version\": \"1\",\n    \"rules\": [\n      {\n        \"id\": \"3a03d665bac047339bb530ecb439a90d\",\n        \"description\": \"Execute the OWASP ruleset when the IP address is not 1.1.1.1\",\n        \"version\": \"1\",\n        \"expression\": \"ip.src ne 1.1.1.1\",\n        \"action\": \"execute\",\n        \"action_parameters\": {\n          \"id\": \"4814384a9e5d4991b9815dcfc25d2f1f\"\n        },\n        \"ref\": \"my_ref\",\n        \"enabled\": \"true\",\n        \"logging\": {\n          \"enabled\": \"true\"\n        },\n        \"last_updated\": \"2000-01-01T00:00:00.000000Z\"\n      }\n    ],\n    \"last_updated\": \"2000-01-01T00:00:00.000000Z\"\n  }\n}"
+		}
+	],
+	"html_id": "account-rulesets",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"id": {
+				"type": "string",
+				"example": "\"2f2feab2026849078ba485f918791bdc\"",
+				"description": "The ID of the ruleset",
+				"pattern": "^[0-9a-f]{32}$"
+			},
+			"name": {
+				"type": "string",
+				"example": "\"My ruleset\"",
+				"description": "The human readable name for the ruleset"
+			},
+			"description": {
+				"type": "string",
+				"example": "\"My ruleset to execute managed rulesets\"",
+				"description": "A description of the ruleset",
+				"default": ""
+			},
+			"kind": {
+				"type": "string",
+				"example": "\"root\"",
+				"description": "The kind of the ruleset",
+				"enum": [
+					"custom",
+					"root",
+					"zone"
+				]
+			},
+			"phase": {
+				"type": "string",
+				"example": "\"http_request_firewall_managed\"",
+				"description": "The phase of the ruleset",
+				"pattern": "^[a-z_]+$"
+			},
+			"version": {
+				"type": "string",
+				"example": "\"1\"",
+				"description": "The version of the ruleset",
+				"pattern": "^[0-9]+$"
+			},
+			"rules": {
+				"type": "array",
+				"example": "[\n  {\n    \"id\": \"3a03d665bac047339bb530ecb439a90d\",\n    \"description\": \"Execute the OWASP ruleset when the IP address is not 1.1.1.1\",\n    \"version\": \"1\",\n    \"expression\": \"ip.src ne 1.1.1.1\",\n    \"action\": \"execute\",\n    \"action_parameters\": {\n      \"id\": \"4814384a9e5d4991b9815dcfc25d2f1f\"\n    },\n    \"ref\": \"my_ref\",\n    \"enabled\": \"true\",\n    \"logging\": {\n      \"enabled\": \"true\"\n    },\n    \"last_updated\": \"2000-01-01T00:00:00.000000Z\"\n  }\n]",
+				"description": "The rules in the ruleset",
+				"items": {
+					"description": "The rule",
+					"type": "object",
+					"properties": {
+						"id": {
+							"description": "The ID of the rule",
+							"type": "string",
+							"example": "3a03d665bac047339bb530ecb439a90d"
+						},
+						"description": {
+							"description": "A description of the rule",
+							"type": "string",
+							"default": "",
+							"example": "Execute the OWASP ruleset when the IP address is not 1.1.1.1"
+						},
+						"version": {
+							"description": "The version of the rule",
+							"type": "string",
+							"pattern": "^[0-9]+$",
+							"example": "1"
+						},
+						"expression": {
+							"description": "The expression of the rule to match traffic on",
+							"type": "string",
+							"example": "ip.src ne 1.1.1.1"
+						},
+						"action": {
+							"description": "The action to take when the rule matches",
+							"type": "string",
+							"pattern": "^[a-z_]+$",
+							"example": "execute"
+						},
+						"action_parameters": {
+							"description": "The parameters to configure the given action",
+							"type": "object",
+							"example": {
+								"id": "4814384a9e5d4991b9815dcfc25d2f1f"
+							}
+						},
+						"ref": {
+							"description": "A reference for the rule, defaults to the ID",
+							"type": "string",
+							"example": "my_ref"
+						},
+						"enabled": {
+							"description": "Whether the rule should be run",
+							"type": "boolean",
+							"default": "true",
+							"example": "true"
+						},
+						"logging": {
+							"description": "The parameters to configure how the rule generates logs",
+							"type": "object",
+							"properties": {
+								"enabled": {
+									"description": "Whether a log should be generated when the rule matches",
+									"type": "boolean",
+									"example": "true"
+								}
+							},
+							"example": {
+								"enabled": true
+							}
+						},
+						"last_updated": {
+							"description": "When the rule was last modified",
+							"type": "string",
+							"example": "2000-01-01T00:00:00.000000Z"
+						}
+					}
+				}
+			},
+			"last_updated": {
+				"type": "string",
+				"example": "\"2000-01-01T00:00:00.000000Z\"",
+				"description": "When the ruleset was last modified"
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"id",
+			"name",
+			"description",
+			"kind",
+			"phase",
+			"version",
+			"rules",
+			"last_updated"
+		],
+		"objects": [],
+		"example": "{\n  \"id\": \"2f2feab2026849078ba485f918791bdc\",\n  \"name\": \"My ruleset\",\n  \"description\": \"My ruleset to execute managed rulesets\",\n  \"kind\": \"root\",\n  \"phase\": \"http_request_firewall_managed\",\n  \"version\": \"1\",\n  \"rules\": [\n    {\n      \"id\": \"3a03d665bac047339bb530ecb439a90d\",\n      \"description\": \"Execute the OWASP ruleset when the IP address is not 1.1.1.1\",\n      \"version\": \"1\",\n      \"expression\": \"ip.src ne 1.1.1.1\",\n      \"action\": \"execute\",\n      \"action_parameters\": {\n        \"id\": \"4814384a9e5d4991b9815dcfc25d2f1f\"\n      },\n      \"ref\": \"my_ref\",\n      \"enabled\": \"true\",\n      \"logging\": {\n        \"enabled\": \"true\"\n      },\n      \"last_updated\": \"2000-01-01T00:00:00.000000Z\"\n    }\n  ],\n  \"last_updated\": \"2000-01-01T00:00:00.000000Z\"\n}",
+		"description": "Rulesets at the account level",
+		"title": "Account Rulesets"
+	}
+}

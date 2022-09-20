@@ -215,7 +215,7 @@
 					"colo_name": {
 						"type": "string",
 						"example": "\"ord02\"",
-						"description": "The name of the data center used for the packet capture. This field only applies to `full` packet captures."
+						"description": "The name of the data center used for the packet capture. This can be a specific colo (ord02) or a multi-colo name (ORD). This field only applies to `full` packet captures."
 					},
 					"destination_conf": {
 						"type": "string",
@@ -641,7 +641,7 @@
 					"colo_name": {
 						"type": "string",
 						"example": "\"ord02\"",
-						"description": "The name of the data center used for the packet capture. This field only applies to `full` packet captures."
+						"description": "The name of the data center used for the packet capture. This can be a specific colo (ord02) or a multi-colo name (ORD). This field only applies to `full` packet captures."
 					},
 					"destination_conf": {
 						"type": "string",
@@ -759,7 +759,7 @@
 					"colo_name": {
 						"type": "string",
 						"example": "\"ord02\"",
-						"description": "The name of the data center used for the packet capture. This field only applies to `full` packet captures."
+						"description": "The name of the data center used for the packet capture. This can be a specific colo (ord02) or a multi-colo name (ORD). This field only applies to `full` packet captures."
 					},
 					"destination_conf": {
 						"type": "string",
