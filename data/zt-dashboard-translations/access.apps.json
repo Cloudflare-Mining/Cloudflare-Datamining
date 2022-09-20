@@ -301,7 +301,7 @@
 	"settings_allow_origin_placeholder": "Add an origin",
 	"settings_app_session": "No duration, expires immediately",
 	"settings_binding_cookie": "Enable Binding Cookie",
-	"settings_binding_cookie_description": "Binds the user's browser to Cloudflare's edge. Protects against stolen authorization cookies.",
+	"settings_binding_cookie_description": "Protects against stolen authorization tokens. Do not use for non-HTTP applications that rely on protocols like SSH and RDP.",
 	"settings_card_header": "CORS settings",
 	"settings_control_cred": "Access-Control-Allow-Credentials",
 	"settings_cookie_card_header": "Cookie settings",
