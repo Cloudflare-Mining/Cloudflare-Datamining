@@ -161,10 +161,7 @@
 			"title": "navigation.account.r2",
 			"url": "/r2",
 			"iconType": "r2",
-			"testId": "sidenav-r2-link",
-			"labels": [
-				"beta"
-			]
+			"testId": "sidenav-r2-link"
 		},
 		{
 			"title": "navigation.account.firewall_rulesets",
@@ -407,9 +404,6 @@
 			"url": "/email",
 			"iconType": "email-forwarding",
 			"testId": "zone-navigation-link-email",
-			"labels": [
-				"beta"
-			],
 			"pages": [
 				{
 					"title": "navigation.zone.email.routing",
@@ -592,6 +586,13 @@
 						"beta",
 						"absolute"
 					]
+				},
+				{
+					"title": "navigation.zone.rules.dynamic_redirects",
+					"labels": [
+						"beta"
+					],
+					"url": "/rules/dynamic-redirects"
 				},
 				{
 					"title": "navigation.zone.rules.origin_rules",
