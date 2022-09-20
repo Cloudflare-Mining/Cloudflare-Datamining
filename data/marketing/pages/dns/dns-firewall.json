@@ -4,7 +4,7 @@
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "DNS Firewall",
+				"pageName": "DNS Firewall Product Page",
 				"localeList": {
 					"enUS": "English for Locale",
 					"zhCN": "Translated for Locale",
@@ -58,7 +58,7 @@
 						"contentfulId": "2jqynCvTzsVbWM5lKioaeC",
 						"htmlId": null,
 						"mainHeadline": null,
-						"backgroundColor": "white",
+						"backgroundColor": "light-blue",
 						"bladeBorder": "none",
 						"sectionPadding": "tile--no-bottom-padding",
 						"columnLayout": "Right Sidebar",
@@ -85,7 +85,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Shield Your DNS Infrastructure From DDoS Attacks With Cloudflare's DNS Firewall",
+													"value": "Cloudflare DNS Firewall",
 													"marks": [],
 													"content": null
 												}
@@ -106,7 +106,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Cloudflare's DNS Firewall is an advanced firewall for DNS infrastructure— keeping your DNS infrastructure online no matter what attacks are fired at your servers. DNS Firewall also improves your global DNS performance by giving you access to Cloudflare's robust DNS cache in over 200 cities on 6 continents around the world.",
+													"value": "Cloudflare DNS Firewall is a firewall-as-a-service that helps secure DNS infrastructure against online attacks while increasing uptime and ensuring lightning-fast performance.",
 													"marks": [],
 													"content": null
 												}
@@ -134,7 +134,7 @@
 															"contentfulId": "3KLdSMQbmjbtEqbNrRsuR2",
 															"elementName": "DNS Firewall - Contact our team CTA Button",
 															"standardText": null,
-															"text": "Contact Our Team",
+															"text": "Get DNS Firewall",
 															"url": "https://www.cloudflare.com/plans/enterprise/contact/",
 															"loggedInUrl": null,
 															"modal": null,
@@ -186,27 +186,6 @@
 								"column": {
 									"nodeType": "document",
 									"content": [
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "",
-													"marks": [],
-													"content": null
-												}
-											]
-										},
 										{
 											"nodeType": "heading-3",
 											"data": {
@@ -353,70 +332,7 @@
 																				"target": null,
 																				"uri": null
 																			},
-																			"value": "DNS",
-																			"marks": [],
-																			"content": null
-																		}
-																	]
-																},
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": "",
-																	"marks": [],
-																	"content": null
-																}
-															]
-														}
-													]
-												},
-												{
-													"nodeType": "list-item",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": null,
-													"marks": null,
-													"content": [
-														{
-															"nodeType": "paragraph",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": null,
-															"marks": null,
-															"content": [
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": "",
-																	"marks": [],
-																	"content": null
-																},
-																{
-																	"nodeType": "hyperlink",
-																	"data": {
-																		"target": null,
-																		"uri": "https://www.cloudflare.com/dns/dnssec/"
-																	},
-																	"value": null,
-																	"marks": null,
-																	"content": [
-																		{
-																			"nodeType": "text",
-																			"data": {
-																				"target": null,
-																				"uri": null
-																			},
-																			"value": "DNSSEC",
+																			"value": "Cloudflare DNS",
 																			"marks": [],
 																			"content": null
 																		}
@@ -479,7 +395,70 @@
 																				"target": null,
 																				"uri": null
 																			},
-																			"value": "DDoS",
+																			"value": "DDoS Protection",
+																			"marks": [],
+																			"content": null
+																		}
+																	]
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "hyperlink",
+																	"data": {
+																		"target": null,
+																		"uri": "https://www.cloudflare.com/dns/dnssec/"
+																	},
+																	"value": null,
+																	"marks": null,
+																	"content": [
+																		{
+																			"nodeType": "text",
+																			"data": {
+																				"target": null,
+																				"uri": null
+																			},
+																			"value": "DNSSEC Protection",
 																			"marks": [],
 																			"content": null
 																		}
@@ -521,27 +500,6 @@
 													"content": null
 												}
 											]
-										},
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "",
-													"marks": [],
-													"content": null
-												}
-											]
 										}
 									]
 								}
@@ -554,7 +512,7 @@
 						"contentTypeId": "bladeFourFeatures",
 						"htmlId": null,
 						"copy": null,
-						"title": "DNS Firewall Features",
+						"title": "Benefits of DNS Firewall",
 						"subtitle": null,
 						"bladeStyle": null,
 						"bladeBorder": "none",
@@ -565,80 +523,10 @@
 						"features": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "63XSvobfTAGzeDNBRxgbnf",
-								"title": "Rate Limiting",
-								"titleSize": null,
-								"description": "Rate limit the number of queries per second that hit your DNS servers.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "[path]/icon-rate-limiting-aqua.png"
-									}
-								},
-								"iconAssetFile": {
-									"id": "33d7be39-e735-5720-b9b5-adb3e706d3a0",
-									"altText": "Filtering",
-									"title": "Filtering",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "[path]/filtering.svg"
-										}
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "tydpTqtzxwqxLEdQzUXQl",
-								"title": "Bandwidth Savings",
-								"titleSize": null,
-								"description": "Save bandwidth to origin nameservers by serving cached DNS responses.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "[path]/icon-bandwidth-aqua.png"
-									}
-								},
-								"iconAssetFile": {
-									"id": "9a9f45e5-8256-5cff-bb15-7336fb732376",
-									"altText": "Performance 1 blue",
-									"title": "Performance 1 blue",
-									"activeAsset": "Brandfolder Asset",
-									"locale": "en-US",
-									"contentfulAsset": null,
-									"brandfolderAsset": {
-										"size": 1145,
-										"height": 192,
-										"width": 192,
-										"filename": "performance-1-blue.svg",
-										"file": {
-											"publicURL": "[path]/performance-1-blue.svg"
-										}
-									},
-									"brandfolderAssetMobile": null
-								},
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
 								"contentfulId": "5XLnSs8FwFCqgMEGbx5wdE",
-								"title": "DDoS Mitigation for DNS",
+								"title": "Integrated Security",
 								"titleSize": null,
-								"description": "Advanced DDoS mitigation is baked right into the core of DNS Firewall.",
+								"description": "DNS Firewall natively integrates with our Advanced DDoS Mitigation and Rate Limiting for best-in-class protection — enabling you to automatically mitigate DDoS attacks and limit the number of queries-per-second that hits your DNS servers.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": null,
@@ -669,35 +557,18 @@
 							{
 								"contentTypeId": "feature",
 								"contentfulId": "7ld5BQLkMbwPy20A2dI7Jk",
-								"title": "Always Available DNS",
+								"title": "Increased Availability",
 								"titleSize": null,
-								"description": "By stale serving stored DNS responses when origin nameservers are down your DNS is always online.",
+								"description": "Even if your DNS servers are down, DNS Firewall can answer on your behalf by serving a stale answer from cache. That means your website will be available and traffic continues to flow, even when your origin nameservers are compromised.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": null,
 								"icon": {
 									"file": {
-										"publicURL": "[path]/icon-dns-aqua.png"
+										"publicURL": "[path]/reliability-dns.png"
 									}
 								},
-								"iconAssetFile": {
-									"id": "6bb3285c-bf75-5bac-82dd-58c220479c42",
-									"altText": "Reliability dns blue",
-									"title": "Reliability dns blue",
-									"activeAsset": "Brandfolder Asset",
-									"locale": "en-US",
-									"contentfulAsset": null,
-									"brandfolderAsset": {
-										"size": 682,
-										"height": 192,
-										"width": 192,
-										"filename": "reliability-dns-blue.svg",
-										"file": {
-											"publicURL": "[path]/reliability-dns-blue.svg"
-										}
-									},
-									"brandfolderAssetMobile": null
-								},
+								"iconAssetFile": null,
 								"imageAssetFile": null,
 								"streamId": null,
 								"streamThumbnail": null,
@@ -706,72 +577,18 @@
 							{
 								"contentTypeId": "feature",
 								"contentfulId": "jcqfbrhPIxfJ9gYomydCe",
-								"title": "Lightning-Fast DNS Lookups",
+								"title": "Lightning-Fast Performance",
 								"titleSize": null,
-								"description": "By caching DNS responses on Cloudflare's global network, responses are just milliseconds away from any visitor, anywhere.",
+								"description": "Cloudflare caches DNS responses at the edge of our globally distributed network, ensuring that queries are resolved lightning-fast on every continent and in every major city regardless of origin server location. ",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": null,
 								"icon": {
 									"file": {
-										"publicURL": "[path]/icon-speed-aqua.png"
+										"publicURL": "[path]/performance-cloud-speed.png"
 									}
 								},
-								"iconAssetFile": {
-									"id": "4b8d0fd4-e74c-5191-a1ff-2887eb26d2fa",
-									"altText": "Performance acceleration bolt blue",
-									"title": "Performance acceleration bolt blue",
-									"activeAsset": "Brandfolder Asset",
-									"locale": "en-US",
-									"contentfulAsset": null,
-									"brandfolderAsset": {
-										"size": 387,
-										"height": 192,
-										"width": 192,
-										"filename": "performance-acceleration-bolt-blue.svg",
-										"file": {
-											"publicURL": "[path]/performance-acceleration-bolt-blue.svg"
-										}
-									},
-									"brandfolderAssetMobile": null
-								},
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "3ubsFNX2vbVp7301o1SFbR",
-								"title": "Easy Setup",
-								"titleSize": null,
-								"description": "Just point your nameserver IP's to Cloudflare.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": null,
-								"icon": {
-									"file": {
-										"publicURL": "[path]/icon-setting-aqua.png"
-									}
-								},
-								"iconAssetFile": {
-									"id": "0fe57de7-3ccf-5dce-9a13-71ed4f8fec44",
-									"altText": "Connect iot blue",
-									"title": "Connect iot blue",
-									"activeAsset": "Brandfolder Asset",
-									"locale": "en-US",
-									"contentfulAsset": null,
-									"brandfolderAsset": {
-										"size": 4558,
-										"height": 192,
-										"width": 192,
-										"filename": "connect-iot-blue.svg",
-										"file": {
-											"publicURL": "[path]/connect-iot-blue.svg"
-										}
-									},
-									"brandfolderAssetMobile": null
-								},
+								"iconAssetFile": null,
 								"imageAssetFile": null,
 								"streamId": null,
 								"streamThumbnail": null,
@@ -782,9 +599,9 @@
 					{
 						"contentTypeId": "bladeQuote",
 						"contentfulId": "31YfBfUQgxy6sOwK2hRmCP",
-						"quote": "\"Cloudflare's DNS Firewall is exactly what we needed to protect our DNS infrastructure. It is the leading company working in the DNS and web DDoS mitigation space.\"",
-						"quoteAuthor": "Sam Kottler",
-						"quoteTitle": "Platform Engineer",
+						"quote": "\"Your protection has enabled us to keep growing without worrying about attacks to our DNS infrastructure. Your services have also given our clients a chance to reduce their bandwidth usage and make their sites load faster.\"",
+						"quoteAuthor": "Juan Zolezzi",
+						"quoteTitle": "CEO of Duplika",
 						"learnMoreText": null,
 						"sectionPadding": null,
 						"backgroundColor": "blue",
@@ -793,27 +610,10 @@
 						"htmlId": null,
 						"image": {
 							"file": {
-								"publicURL": "[path]/logo-digital-ocean-600.png"
+								"publicURL": "[path]/duplika.png"
 							}
 						},
-						"imageAssetFile": {
-							"id": "9d657218-34af-5414-b045-48bc508de81a",
-							"altText": "Logo digital ocean gray",
-							"title": "Logo digital ocean gray",
-							"activeAsset": "Brandfolder Asset",
-							"locale": "en-US",
-							"contentfulAsset": null,
-							"brandfolderAsset": {
-								"size": 7875,
-								"height": 674,
-								"width": 3995,
-								"filename": "logo_digital-ocean_gray.svg",
-								"file": {
-									"publicURL": "[path]/logo_digital-ocean_gray.svg"
-								}
-							},
-							"brandfolderAssetMobile": null
-						},
+						"imageAssetFile": null,
 						"imageLinkUrl": null,
 						"logoList": null,
 						"logoListAssetFile": null,
@@ -821,8 +621,8 @@
 					},
 					{
 						"contentfulId": "23Cs0GJ9DJrLOOyV2VSDku",
-						"title": "How It Works",
-						"copy": "<p>\nDNS Firewall makes running reliable DNS easy by protecting and accelerating any organization's DNS infrastructure. With DNS Firewall enabled, DNS queries for your\nnameservers get sent to the nearest Cloudflare data center where the legitimacy of the requests are checked and malicious traffic is blocked.\nIf the proper DNS response is available in Cloudflare's cache, Cloudflare will return the response to the visitor. If the DNS response is not\navailable in cache, Cloudflare will query the provider's nameservers in the background to fetch the DNS response and send it back to the visitor.\n</p>\n<p>\nOnboarding DNS Firewall is easy, with a simple change of your nameservers' IP addresses, your DNS infrastructure can be protected in as little as 5 minutes.\n</p>",
+						"title": "Control What Hits Your Network",
+						"copy": "With robust rate limiting capabilities, DNS Firewall shields your infrastructure from malicious and unwanted traffic. Rate limits are configurable over API, so you can easily configure them based on the health of your origin servers.",
 						"toggleText": null,
 						"button": null,
 						"learnMoreUrl": null,
@@ -835,29 +635,18 @@
 						"button2Text": null,
 						"button2Url": null,
 						"button2Color": null,
-						"streamOptions": [
-							"controls"
-						],
+						"streamOptions": null,
 						"streamCaptions": null,
 						"streamVideoId": null,
 						"streamThumbnails": null,
 						"streamPoster": null,
 						"streamPosterAssetFile": null,
-						"image": null,
-						"imageAssetFile": {
-							"id": "01a64b9a-bf44-58a9-b3ec-8c775c9e2703",
-							"altText": null,
-							"title": null,
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "[path]/dns-overview.png"
-								}
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
+						"image": {
+							"file": {
+								"publicURL": "[path]/cloudflare-dns-filtering-spot-illustration.svg"
+							}
 						},
+						"imageAssetFile": null,
 						"featureList": null,
 						"contentTypeId": "bladeImageText",
 						"sectionTitle": null,
@@ -867,168 +656,91 @@
 						"backgroundColor": "white",
 						"bladeBorder": "none",
 						"imagePosition": false,
-						"imageSize": "large",
+						"imageSize": "small",
 						"imageTextAlignment": null,
 						"togglesTo": null
 					},
 					{
-						"contentTypeId": "bladeQuote",
-						"contentfulId": "7sRYfpMVQLkl5W7FcOoOmN",
-						"quote": "\"Your protection has enabled us to keep growing without worrying about attacks to our DNS infrastructure. Your services have also given our clients a chance to reduce their bandwidth usage, and make their sites load faster.\"",
-						"quoteAuthor": "Juan Zolezzi",
-						"quoteTitle": "CEO of Duplika",
-						"learnMoreText": null,
-						"sectionPadding": null,
-						"backgroundColor": "orange",
-						"bladeBorder": "none",
+						"contentfulId": "2t8QgqY2AjHtjXPZDGwtX6",
+						"title": "Automatically Mitigate DDoS Attacks",
+						"copy": "DDoS attacks on DNS infrastructure are becoming increasingly more common. Cloudflare reroutes malicious traffic away from your origin nameservers and absorbs it across our global network. DNS Firewall also comes with a dedicated automatic mitigation system that stops random prefix attacks.",
+						"toggleText": null,
+						"button": null,
 						"learnMoreUrl": null,
-						"htmlId": null,
+						"learnMoreText": null,
+						"link": null,
+						"subheadline": null,
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": null,
+						"streamCaptions": "en",
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
 						"image": {
 							"file": {
-								"publicURL": "[path]/duplika.png"
+								"publicURL": "[path]/ddos-protection-hero-illustration.svg"
 							}
 						},
-						"imageAssetFile": {
-							"id": "a4c52a48-30f4-50e7-8e84-ba1b92c0ea88",
-							"altText": "duplika-logo",
-							"title": "duplika-logo",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "[path]/duplika.png"
-								}
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
+						"imageAssetFile": null,
+						"featureList": null,
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": null,
+						"htmlId": null,
+						"titleSize": null,
+						"sectionPadding": null,
+						"backgroundColor": "white",
+						"bladeBorder": "border-top",
+						"imagePosition": true,
+						"imageSize": null,
+						"imageTextAlignment": null,
+						"togglesTo": null
+					},
+					{
+						"contentfulId": "7m9TQzgpjqdWfWZy3rV53Q",
+						"title": "Hide Your Origin IP From Attackers",
+						"copy": "DNS Firewall masks the origin IP addresses of providers' nameservers behind Cloudflare's IP addresses, keeping them safe from being targeted by attackers.",
+						"toggleText": null,
+						"button": null,
+						"learnMoreUrl": null,
+						"learnMoreText": null,
+						"link": null,
+						"subheadline": null,
+						"button1Text": null,
+						"button1Url": null,
+						"button1Color": null,
+						"button2Text": null,
+						"button2Url": null,
+						"button2Color": null,
+						"streamOptions": null,
+						"streamCaptions": "en",
+						"streamVideoId": null,
+						"streamThumbnails": null,
+						"streamPoster": null,
+						"streamPosterAssetFile": null,
+						"image": {
+							"file": {
+								"publicURL": "[path]/dns-unmetered-ddos-spot-illustration.svg"
+							}
 						},
-						"imageLinkUrl": null,
-						"logoList": null,
-						"logoListAssetFile": null,
-						"quoteCarousel": null
-					},
-					{
-						"contentfulId": "68pP40dCVZDaxKfBVj4eLZ",
-						"backgroundColor": "light-gray",
-						"contentTypeId": "bladeFourFeatures",
+						"imageAssetFile": null,
+						"featureList": null,
+						"contentTypeId": "bladeImageText",
+						"sectionTitle": null,
 						"htmlId": null,
-						"copy": null,
-						"title": null,
-						"subtitle": null,
-						"bladeStyle": "Feature Blocks - 2 columns",
-						"bladeBorder": "none",
+						"titleSize": null,
 						"sectionPadding": null,
-						"carouselSlidesToShow": null,
-						"carouselSlidesToScroll": null,
-						"locale": "en-US",
-						"features": [
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "7lBeEltem2k8EDm8lvJ98F",
-								"title": null,
-								"titleSize": null,
-								"description": "<h2 class=\"headline-2\">Security: Cloudflare's DNS Firewall Ensures 100% Clean Traffic</h2><br>\n\n<img class=\"responsive-image\" title=\"DNS Firewall security\" alt=\"DNS Firewall security\" src=\"/img/products/dns/dns-firewall/security.svg\">\n<h4 class=\"fw7 f2 ttu orange0 mb1\">\nControl What Hits Your Network\n</h4>\n<p>\nBecause DNS Firewall sits in front of your DNS nameservers, it shields your infrastructure, and only sends you\nthe traffic that you want to get. With the ability to rate limit traffic to your servers, you can specify\nhow much traffic Cloudflare should send to your nameservers. Rate limits are configurable over API, so you can\nconfigure them dynamically based on your origin health.\n</p>\n<h4 class=\"fw7 f2 ttu orange0 mb1\">\nAdvanced DDoS Mitigation for DNS\n</h4>\n<p>\nDDoS attacks on DNS infrastructure are becoming increasingly more common. Cloudflare's DNS Firewall has DDoS\nmitigation at its core, leveraging the the same DDoS protection that has mitigated some of the largest DDoS\nattacks to date. When malicious traffic is aimed at your origin nameservers, Cloudflare's DDoS protection\nreroutes that traffic and absorbs it across its global network.\n</p>\n<h4 class=\"fw7 f2 ttu orange0 mb1\">\nHide Your Origin IP Addresses From Attackers\n</h4>\n<p>\nDNS Firewall also masks the true origin IP addresses of providers' nameservers behind Cloudflare's IP addresses,\nkeeping them safe from being targeted by attackers.\n</p>",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "1Ao1DPOKehlwyVOoopPsGj",
-								"title": null,
-								"titleSize": null,
-								"description": "<h2 class=\"headline-2\">Speed and Global Distribution</h2>\n\n  <h4 class=\"fw7 f2 ttu orange0 mb1\">\nRespond Quickly From Anywhere\n</h4>\n<p>\nWith DNS Firewall, Cloudflare caches DNS records at the edge of our globally distributed network, ensuring that queries are resolved\nlightning-fast on every continent and in every major city regardless of origin server location.\n</p>\n<h4 class=\"fw7 f2 ttu orange0 mb1\">\nKeep DNS Online When Your Nameservers Are Down\n</h4>\n<p>\nEven if your DNS servers are down, DNS Firewall can answer on your behalf by serving a stale answer from cache. That means your website\nwill be available and traffic continues to flow, even when your origin nameservers are compromised.\n</p>\n",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							}
-						]
-					},
-					{
-						"contentTypeId": "bladeRichTextColumnGroup",
-						"contentfulId": "75P6u7FPY6xPfWyaJOhmdZ",
-						"htmlId": null,
-						"mainHeadline": "DNS Firewall Vs. Authoritative DNS",
-						"backgroundColor": "light-gray",
-						"bladeBorder": "none",
-						"sectionPadding": null,
-						"columnLayout": "One Column Wide",
-						"columns": [
-							{
-								"contentTypeId": "elementRichText",
-								"contentfulId": "4kCDlyOBuAIsOLuZbAvnlj",
-								"title": null,
-								"column": {
-									"nodeType": "document",
-									"content": [
-										{
-											"nodeType": "paragraph",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Both services offer advanced security and performance improvements for DNS infrastructure. ",
-													"marks": [],
-													"content": null
-												},
-												{
-													"nodeType": "hyperlink",
-													"data": {
-														"target": null,
-														"uri": "https://www.cloudflare.com/dns/"
-													},
-													"value": null,
-													"marks": null,
-													"content": [
-														{
-															"nodeType": "text",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": "Cloudflare Authoritative DNS",
-															"marks": [],
-															"content": null
-														}
-													]
-												},
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": " is a fully managed and hosted DNS service. On the other hand, DNS Firewall allows you to continue to run your own infrastructure and your DNS records stay on your own nameservers. DNS Firewall is great for hosting and cloud providers, DNS providers, SaaS providers, registrars, registries, ISP's and others running large authoritative DNS infrastructure.",
-													"marks": [],
-													"content": null
-												}
-											]
-										}
-									]
-								}
-							}
-						]
+						"backgroundColor": "white",
+						"bladeBorder": "border-top",
+						"imagePosition": false,
+						"imageSize": "small",
+						"imageTextAlignment": null,
+						"togglesTo": null
 					},
 					{
 						"contentTypeId": "bladeEnablement",
@@ -1056,10 +768,10 @@
 						"contentTypeId": "bladeRichTextColumnGroup",
 						"contentfulId": "5mQJSNcTPewmCLM4GXZ9bx",
 						"htmlId": null,
-						"mainHeadline": "Setting Up DNS Firewall Is Easy",
+						"mainHeadline": "Easy Setup",
 						"backgroundColor": "white",
-						"bladeBorder": "none",
-						"sectionPadding": null,
+						"bladeBorder": "border-bottom",
+						"sectionPadding": "tile--no-bottom-padding",
 						"columnLayout": "One Column Wide",
 						"columns": [
 							{
@@ -1069,6 +781,27 @@
 								"column": {
 									"nodeType": "document",
 									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "With a simple change of your nameservers' IP addresses, your DNS infrastructure can be protected in as little as 5 minutes.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
 										{
 											"nodeType": "embedded-asset-block",
 											"data": {
@@ -1123,7 +856,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Set up DNS Firewall in minutes with no code changes required!",
+													"value": "",
 													"marks": [],
 													"content": null
 												}
@@ -1133,6 +866,109 @@
 								}
 							}
 						]
+					},
+					{
+						"contentTypeId": "bladeRichTextColumnGroup",
+						"contentfulId": "75P6u7FPY6xPfWyaJOhmdZ",
+						"htmlId": null,
+						"mainHeadline": "Cloudflare DNS Firewall vs. Cloudflare Authoritative DNS",
+						"backgroundColor": "light-gray",
+						"bladeBorder": "none",
+						"sectionPadding": null,
+						"columnLayout": "One Column Wide",
+						"columns": [
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "4kCDlyOBuAIsOLuZbAvnlj",
+								"title": null,
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "With Cloudflare, you have two options for securing your DNS infrastructure. ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.cloudflare.com/dns/"
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "text",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": "Cloudflare Authoritative DNS",
+															"marks": [
+																{
+																	"type": "underline"
+																}
+															],
+															"content": null
+														}
+													]
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " is a fully managed and hosted DNS service. Cloudflare DNS Firewall, on the other hand, allows you to run your own infrastructure and keep your DNS records on your own nameservers. We recommend DNS Firewall for hosting and cloud providers, ISPs, registrars, and anyone running large authoritative DNS infrastructure.",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							}
+						]
+					},
+					{
+						"contentfulId": "5IrA8xtEMKNhUhLAbTX1cf",
+						"contentTypeId": "bladeKeyFeatures",
+						"backgroundColor": "light-blue",
+						"title": "Key Features",
+						"keyFeature": [
+							"DDoS mitigation",
+							"High availability",
+							"Global distribution",
+							"Enhanced performance",
+							"Bandwidth savings",
+							"DNS caching",
+							"Random prefix attack mitigation",
+							"Rate limiting per data center",
+							"Specify minimum and maximum TTL",
+							"Block any queries"
+						],
+						"bladeBorder": "none",
+						"sectionPadding": null,
+						"titleColor": null,
+						"variant": null,
+						"description": null,
+						"featuresTextStyle": "body1",
+						"htmlId": null
 					},
 					{
 						"contentTypeId": "bladeTrustedBy",
