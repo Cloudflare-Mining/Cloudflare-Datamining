@@ -46,6 +46,49 @@
 			]
 		},
 		{
+			"name": "casb",
+			"publicName": "Zero Trust CASB",
+			"type": "tieredPricingComponent",
+			"aggregate": "",
+			"features": [
+				"casb.casb_enabled"
+			],
+			"chargeType": "subscription",
+			"chargeModel": "tiered",
+			"defaultQuantity": 0,
+			"tiers": [
+				{
+					"lowerThreshold": 0,
+					"upperThreshold": 1,
+					"pricingType": "unit",
+					"price": 0,
+					"bucketSize": 0
+				}
+			]
+		},
+		{
+			"name": "dlp",
+			"publicName": "Zero Trust Data Loss Prevention",
+			"type": "tieredPricingComponent",
+			"aggregate": "",
+			"features": [
+				"dlp.dlp_enabled",
+				"dlp.max_custom_profiles"
+			],
+			"chargeType": "subscription",
+			"chargeModel": "tiered",
+			"defaultQuantity": 0,
+			"tiers": [
+				{
+					"lowerThreshold": 0,
+					"upperThreshold": 100000,
+					"pricingType": "unit",
+					"price": 0,
+					"bucketSize": 0
+				}
+			]
+		},
+		{
 			"name": "users",
 			"publicName": "Monthly Fee (Per User)",
 			"type": "tieredPricingComponent",
