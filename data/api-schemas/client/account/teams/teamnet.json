@@ -25,7 +25,6 @@
 						"description": "UUID of the tunnel",
 						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 						"readOnly": true,
-						"format": "uuid",
 						"maxLength": 36
 					},
 					"comment": {
@@ -60,7 +59,6 @@
 						"description": "UUID of the virtual network",
 						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 						"readOnly": true,
-						"format": "uuid",
 						"maxLength": 36
 					}
 				},
@@ -100,7 +98,6 @@
 						"description": "UUID of the virtual network",
 						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 						"readOnly": true,
-						"format": "uuid",
 						"maxLength": 36
 					}
 				},
@@ -134,7 +131,6 @@
 						"description": "UUID of the tunnel for which this route is being added",
 						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 						"readOnly": true,
-						"format": "uuid",
 						"maxLength": 36
 					},
 					"comment": {
@@ -148,7 +144,6 @@
 						"description": "optional UUID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided",
 						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 						"readOnly": true,
-						"format": "uuid",
 						"maxLength": 36
 					}
 				},
@@ -185,7 +180,6 @@
 						"description": "UUID of the tunnel this route should belong to",
 						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 						"readOnly": true,
-						"format": "uuid",
 						"maxLength": 36
 					},
 					"comment": {
@@ -204,7 +198,6 @@
 						"description": "UUID of the virtual network to which this route belongs to",
 						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 						"readOnly": true,
-						"format": "uuid",
 						"maxLength": 36
 					}
 				},
@@ -241,7 +234,6 @@
 						"description": "UUID of the virtual network",
 						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 						"readOnly": true,
-						"format": "uuid",
 						"maxLength": 36
 					}
 				},
@@ -272,7 +264,6 @@
 				"description": "UUID of the Tunnel the route belongs to",
 				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 				"readOnly": true,
-				"format": "uuid",
 				"maxLength": 36
 			},
 			"tunnel_name": {
@@ -307,7 +298,6 @@
 				"description": "UUID of the virtual network this route belongs to",
 				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 				"readOnly": true,
-				"format": "uuid",
 				"maxLength": 36
 			}
 		},

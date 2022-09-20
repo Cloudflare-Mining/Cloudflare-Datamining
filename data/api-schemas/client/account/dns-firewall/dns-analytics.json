@@ -11,6 +11,11 @@
 			"href": "accounts/{#/definitions/account_identifier}/dns_firewall/{#/definitions/identifier}/dns_analytics/report",
 			"method": "GET",
 			"cfOwnership": "dns",
+			"cfPermissionsRequired": {
+				"enum": [
+					"#analytics:read"
+				]
+			},
 			"html_id": "dns-firewall-analytics-table",
 			"uri": "accounts/:account_identifier/dns_firewall/:identifier/dns_analytics/report",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/dns_firewall/9a7806061c88ada191ed06f989cc3dac/dns_analytics/report?dimensions=responseCode,queryName&metrics=queryCount,responseTimeAvg&sort=+responseCode,-queryName&filters=responseCode==NOERROR&since=2016-11-11T12:00:00Z&until=2016-11-11T13:00:00Z&limit=100\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
@@ -96,6 +101,11 @@
 			"href": "accounts/{#/definitions/account_identifier}/dns_firewall/{#/definitions/identifier}/dns_analytics/report/bytime",
 			"method": "GET",
 			"cfOwnership": "dns",
+			"cfPermissionsRequired": {
+				"enum": [
+					"#analytics:read"
+				]
+			},
 			"html_id": "dns-firewall-analytics-by-time",
 			"uri": "accounts/:account_identifier/dns_firewall/:identifier/dns_analytics/report/bytime",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/dns_firewall/9a7806061c88ada191ed06f989cc3dac/dns_analytics/report/bytime?dimensions=responseCode,queryName&metrics=queryCount,responseTimeAvg&sort=+responseCode,-queryName&filters=responseCode==NOERROR&since=2016-11-11T12:00:00Z&until=2016-11-11T13:00:00Z&limit=100&time_delta=hour\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",

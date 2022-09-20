@@ -30,7 +30,6 @@
 						"description": "UUID of the tunnel",
 						"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 						"readOnly": true,
-						"format": "uuid",
 						"maxLength": 36
 					},
 					"is_deleted": {
@@ -252,7 +251,6 @@
 				"description": "UUID of the tunnel",
 				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 				"readOnly": true,
-				"format": "uuid",
 				"maxLength": 36
 			},
 			"name": {
@@ -314,7 +312,6 @@
 							"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 							"readOnly": true,
 							"type": "string",
-							"format": "uuid",
 							"maxLength": 36,
 							"example": "1bedc50d-42b3-473c-b108-ff3d10c0d925"
 						},
@@ -328,7 +325,6 @@
 							"$schema": "http://json-schema.org/draft-04/hyper-schema#",
 							"readOnly": true,
 							"type": "string",
-							"format": "uuid",
 							"maxLength": 36,
 							"example": "1bedc50d-42b3-473c-b108-ff3d10c0d925"
 						},
