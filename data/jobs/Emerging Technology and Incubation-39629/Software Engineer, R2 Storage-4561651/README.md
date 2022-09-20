@@ -12,6 +12,7 @@
 <p>You will own your code from inception to release, delivering solutions at all layers of the software stack to empower Cloudflare customers. On any given day, you might write a design document that outlines how you plan to solve a specific problem, modify how R2 Storage processes requests, or fix a bug in how our user experience renders. You can expect to interact with a variety of languages and technologies including, but not limited to JavaScript, Typescript, Rust, and C++.</p>
 <h3 id="SystemsEngineer-R2Storage-Austin,TX-Examplesofdesirableskills,knowledgeandexperience"><strong>Examples of desirable skills, knowledge and experience</strong></h3>
 <ul>
+	<li>4+ years of experience working with distributed systems or developing on cloud platforms</li>
 	<li>Experience building and managing high volume software applications.</li>
 	<li>Solid understanding of computer science fundamentals including data structures, algorithms, and object-oriented or functional design.</li>
 	<li>Knowledge of at least one modern strongly-typed programming language such as Go, Java, C#, Rust, or C++.</li>
