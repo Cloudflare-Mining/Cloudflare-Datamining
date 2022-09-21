@@ -1,5 +1,248 @@
 [
 	{
+		"id": "ctm.monitors",
+		"feature": {
+			"feature_set": "ctm",
+			"id": 9,
+			"key": "ctm.monitors",
+			"name": "CTM Monitors"
+		},
+		"allocation": {
+			"value": 5,
+			"type": "max_count"
+		},
+		"created_date": "2022-09-20T23:38:09.000000",
+		"edited_date": "2022-09-21T00:52:44.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "ctm.origins",
+		"feature": {
+			"feature_set": "ctm",
+			"id": 10,
+			"key": "ctm.origins",
+			"name": "CTM Origins"
+		},
+		"allocation": {
+			"value": 1,
+			"type": "max_count"
+		},
+		"created_date": "2022-09-20T23:38:09.000000",
+		"edited_date": "2022-09-21T00:52:44.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "ctm.pools",
+		"feature": {
+			"feature_set": "ctm",
+			"id": 11,
+			"key": "ctm.pools",
+			"name": "CTM Pools"
+		},
+		"allocation": {
+			"value": 100,
+			"type": "max_count"
+		},
+		"created_date": "2022-09-20T23:38:09.000000",
+		"edited_date": "2022-09-21T00:52:44.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "ctm.load_balancers",
+		"feature": {
+			"feature_set": "ctm",
+			"id": 13,
+			"key": "ctm.load_balancers",
+			"name": "CTM Load Balancers"
+		},
+		"allocation": {
+			"value": 100,
+			"type": "max_count"
+		},
+		"created_date": "2022-09-20T23:38:09.000000",
+		"edited_date": "2022-09-21T00:52:44.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "ctm.monitor_interval",
+		"feature": {
+			"feature_set": "ctm",
+			"id": 16,
+			"key": "ctm.monitor_interval",
+			"name": "CTM Monitor Interval"
+		},
+		"allocation": {
+			"value": {
+				"min": 10,
+				"max": 3600
+			},
+			"type": "range"
+		},
+		"created_date": "2022-09-20T23:38:09.000000",
+		"edited_date": "2022-09-21T00:52:44.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "ctm.probe_internal",
+		"feature": {
+			"feature_set": "ctm",
+			"id": 17,
+			"key": "ctm.probe_internal",
+			"name": "CTM Probe Internal"
+		},
+		"allocation": {
+			"value": false,
+			"type": "bool"
+		},
+		"created_date": "2022-09-20T23:38:09.000000",
+		"edited_date": "2022-09-21T00:52:44.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "ctm.enabled",
+		"feature": {
+			"feature_set": "ctm",
+			"id": 18,
+			"key": "ctm.enabled",
+			"name": "CTM Enabled"
+		},
+		"allocation": {
+			"value": true,
+			"type": "bool"
+		},
+		"created_date": "2022-09-20T23:38:09.000000",
+		"edited_date": "2022-09-21T00:52:44.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "ctm.allow_pop_pools",
+		"feature": {
+			"feature_set": "ctm",
+			"id": 20,
+			"key": "ctm.allow_pop_pools",
+			"name": "CTM Allow PoP Pools"
+		},
+		"allocation": {
+			"value": true,
+			"type": "bool"
+		},
+		"created_date": "2022-09-20T23:38:09.000000",
+		"edited_date": "2022-09-21T00:52:44.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "ctm.origins_per_pool",
+		"feature": {
+			"feature_set": "ctm",
+			"id": 21,
+			"key": "ctm.origins_per_pool",
+			"name": "CTM Origins Per Pool"
+		},
+		"allocation": {
+			"value": 10,
+			"type": "max_count"
+		},
+		"created_date": "2022-09-20T23:38:09.000000",
+		"edited_date": "2022-09-21T00:52:44.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "ctm.allow_region_pools",
+		"feature": {
+			"feature_set": "ctm",
+			"id": 22,
+			"key": "ctm.allow_region_pools",
+			"name": "CTM Allow Region Pools"
+		},
+		"allocation": {
+			"value": true,
+			"type": "bool"
+		},
+		"created_date": "2022-09-20T23:38:09.000000",
+		"edited_date": "2022-09-21T00:52:44.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "ctm.probe_regions",
+		"feature": {
+			"feature_set": "ctm",
+			"id": 37,
+			"key": "ctm.probe_regions",
+			"name": "CTM Probe Regions"
+		},
+		"allocation": {
+			"value": 65535,
+			"type": "max_count"
+		},
+		"created_date": "2022-09-20T23:38:09.000000",
+		"edited_date": "2022-09-21T00:52:44.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "workers.enabled",
+		"feature": {
+			"feature_set": "workers",
+			"id": 377,
+			"key": "workers.enabled",
+			"name": "Workers"
+		},
+		"allocation": {
+			"value": true,
+			"type": "bool"
+		},
+		"created_date": "2022-09-21T00:20:44.000000",
+		"edited_date": "2022-09-21T00:20:44.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "stream.video_storage_capacity",
+		"feature": {
+			"feature_set": "stream",
+			"id": 447,
+			"key": "stream.video_storage_capacity",
+			"name": "Stream - Video Storage Capacity"
+		},
+		"allocation": {
+			"value": 99999,
+			"type": "max_count"
+		},
+		"created_date": "2022-09-20T23:44:28.000000",
+		"edited_date": "2022-09-20T23:44:28.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "ctm.max_pools_per_set",
+		"feature": {
+			"feature_set": "ctm",
+			"id": 505,
+			"key": "ctm.max_pools_per_set",
+			"name": "CTM - Pools per set"
+		},
+		"allocation": {
+			"value": 16,
+			"type": "max_count"
+		},
+		"created_date": "2022-09-20T23:38:09.000000",
+		"edited_date": "2022-09-21T00:52:44.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "graphql_api.enabled_lb",
+		"feature": {
+			"feature_set": "secondary",
+			"id": 564,
+			"key": "graphql_api.enabled_lb",
+			"name": "GraphQL API - Load Balancing Enabled"
+		},
+		"allocation": {
+			"value": true,
+			"type": "bool"
+		},
+		"created_date": "2022-09-20T23:38:09.000000",
+		"edited_date": "2022-09-21T00:52:44.000000",
+		"deleted_date": ""
+	},
+	{
 		"id": "filters.max_lists",
 		"feature": {
 			"feature_set": "filters",
@@ -13,6 +256,54 @@
 		},
 		"created_date": "2022-08-16T17:48:05.000000",
 		"edited_date": "2022-08-16T17:57:54.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "ctm.rules_enabled",
+		"feature": {
+			"feature_set": "ctm",
+			"id": 766,
+			"key": "ctm.rules_enabled",
+			"name": "CTM Rules Enabled"
+		},
+		"allocation": {
+			"value": true,
+			"type": "bool"
+		},
+		"created_date": "2022-09-20T23:38:09.000000",
+		"edited_date": "2022-09-21T00:52:44.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "ctm.rules_per_lb",
+		"feature": {
+			"feature_set": "ctm",
+			"id": 767,
+			"key": "ctm.rules_per_lb",
+			"name": "CTM Rules Per LB"
+		},
+		"allocation": {
+			"value": 5,
+			"type": "max_count"
+		},
+		"created_date": "2022-09-20T23:38:09.000000",
+		"edited_date": "2022-09-21T00:52:44.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "workers.unbound_allowed",
+		"feature": {
+			"feature_set": "workers",
+			"id": 886,
+			"key": "workers.unbound_allowed",
+			"name": "Workers Unbound"
+		},
+		"allocation": {
+			"value": true,
+			"type": "bool"
+		},
+		"created_date": "2022-09-21T00:20:44.000000",
+		"edited_date": "2022-09-21T00:20:44.000000",
 		"deleted_date": ""
 	},
 	{
@@ -77,6 +368,38 @@
 		},
 		"created_date": "2022-08-16T17:51:10.000000",
 		"edited_date": "2022-08-16T17:51:10.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "ctm.premium_probes_enabled",
+		"feature": {
+			"feature_set": "ctm",
+			"id": 975,
+			"key": "ctm.premium_probes_enabled",
+			"name": "CTM Premium Probes Enabled"
+		},
+		"allocation": {
+			"value": true,
+			"type": "bool"
+		},
+		"created_date": "2022-09-20T23:38:09.000000",
+		"edited_date": "2022-09-21T00:52:44.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "ctm.allow_country_pools",
+		"feature": {
+			"feature_set": "ctm",
+			"id": 981,
+			"key": "ctm.allow_country_pools",
+			"name": "CTM Allow Country Pools"
+		},
+		"allocation": {
+			"value": true,
+			"type": "bool"
+		},
+		"created_date": "2022-09-20T23:38:09.000000",
+		"edited_date": "2022-09-21T00:52:44.000000",
 		"deleted_date": ""
 	}
 ]
