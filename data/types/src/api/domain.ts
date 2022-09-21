@@ -160,7 +160,43 @@ export const DomainEligibility = eg.object({
 
 export type DomainEligibility = TypeFromCodec<typeof DomainEligibility>;
 
-export const DomainProtectionConfigPostResult = eg.object({
+// Domain Protection services
+
+export enum ApproverStatus {
+  PENDING = 'pending',
+  VERIFIED = 'verified',
+  REJECTED = 'rejected',
+  PENDING_DELETE = 'pending_delete',
+  DELETED = 'deleted'
+}
+
+export const DesignatedApprover = eg.object({
+  email: eg.string,
+  first_name: eg.string.optional,
+  last_name: eg.string.optional,
+  phone_number: eg.string.optional,
+  status: eg.enum(ApproverStatus).optional
+});
+
+export type Approver = TypeFromCodec<typeof DesignatedApprover>;
+
+export const DomainProtectionConfig = eg.object({
+  auto_relock_after: eg.number,
+  number_of_designated_approvers: eg.number
+});
+
+export type DomainProtectionConfig = TypeFromCodec<
+  typeof DomainProtectionConfig
+>;
+
+export const DomainProtectionData = eg.intersection([
+  DomainProtectionConfig,
+  eg.object({ designated_approvers: eg.array(DesignatedApprover) })
+]);
+
+export type DomainProtectionData = TypeFromCodec<typeof DomainProtectionData>;
+
+export const DomainProtectionPostResult = eg.object({
   status: eg.number,
   message: eg.string
 });
