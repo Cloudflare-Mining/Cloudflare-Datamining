@@ -6329,12 +6329,6 @@
 											}
 										}
 									},
-									"jump_start": {
-										"description": "Automatically attempt to fetch existing DNS records. This field is deprecated, and will be removed on 2022-09-23.",
-										"type": "boolean",
-										"default": false,
-										"example": true
-									},
 									"type": {
 										"description": "A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup.",
 										"type": "string",
