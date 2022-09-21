@@ -87,7 +87,7 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 		overview: {
 			transfer_in: {
 				title: "Complete your transfer",
-				subtitle: (0, a.d)(y(), "domainName"),
+				subtitle: (0, a.d)(w(), "domainName"),
 				body: "Complete the following tasks to finish your domain transfer and activate on Cloudflare.",
 				refresh: "Refresh transfer status"
 			},
@@ -104,7 +104,7 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 		pending_foa: "Transfer is pending FOA. Please check your email.",
 		invalid_auth_code: "Invalid auth code",
 		auth_code: "Enter auth code",
-		payment: (0, a.d)(w(), "amount"),
+		payment: (0, a.d)(y(), "amount"),
 		approve: (0, a.d)(g(), "registrar"),
 		success: "Transfer successful"
 	},
@@ -292,8 +292,8 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 	unknown_eligibility_domains_description: "*These domains MAY be available for transfer, however we don't have enough information to make a determination at this moment.  Don't worry, we're attempting to determine the current state of each  domain.  This process may take some time so please try back in 5 minutes.  If we are still unable to make a determination please contact support for assistance.",
 	instructions_enom: T,
 	instructions_godaddy: A,
-	instructions_namecheap: x,
-	instructions_network_solutions: R,
+	instructions_namecheap: R,
+	instructions_network_solutions: x,
 	instructions_one_and_one: I,
 	instructions_unknown: D,
 	instructions_uk: O,
@@ -530,6 +530,14 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 	cannot_transfer_domain_premium: "Domain is premium",
 	cannot_transfer_domain_transfer_in_progress: "Transfer is already in progress",
 	cannot_transfer_domain_tld_not_supported: "TLD not supported",
+	cannot_transfer_domain_registry_status: {
+		clienthold: "Registry status: Client hold",
+		serverhold: "Registry status: Server hold",
+		servertransferprohibited: "Registry status: Server transfer prohibited",
+		pendingdelete: "Registry status: Pending delete",
+		pendingtransfer: "Registry status: Pending transfer",
+		clienttransferprohibited: "Registry status: Client transfer prohibited"
+	},
 	pricing_title: "Upcoming Price Changes",
 	pricing_description: "Due to changes in the Registry pricing, our fees for the following TLDs will be changing. All transactions, including auto-renewals, that occur on or after the effective date will be billed at the new price. As a reminder, renewals can be submitted manually at any time.",
 	pricing_table_header_tld: "TLD",

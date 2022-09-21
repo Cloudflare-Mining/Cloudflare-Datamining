@@ -1,3 +1,16 @@
 [
-	"/[id]/[id]/*"
+	"/[id]/[id]/*",
+	"/[id]/[id]/security/api-shield",
+	"/[id]/[id]/security/api-shield/add-endpoints",
+	"/[id]/[id]/security/api-shield/add-endpoints/discovery",
+	"/[id]/[id]/security/api-shield/discovery",
+	"/[id]/[id]/security/api-shield/discovery/session-identifiers",
+	"/[id]/[id]/security/api-shield/mtls",
+	"/[id]/[id]/security/api-shield/schema-validation",
+	"/zones/[id]/api_gateway/discovery",
+	"/zones/[id]/api_gateway/operations",
+	"/zones/[id]/api_gateway/operations/[id]/*",
+	"/zones/[id]/api_gateway/operations/hosts",
+	"/zones/[id]/api_gateway/schemas",
+	"/zones/[id]/api_thresholds"
 ]
