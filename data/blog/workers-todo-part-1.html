@@ -1,0 +1,173 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image1-29.png" class="kg-image" alt="Going originless with Cloudflare Workers – Building a Todo app – Part 1: The API"></figure>
+	<p>A few months ago we launched Custom Domains into an <a href="https://blog.cloudflare.com/custom-domains-for-workers/">open beta</a>. Custom Domains allow you to hook up your Workers to the Internet, without having to deal with DNS records or certificates – just enter a valid hostname and Cloudflare will do the rest! The beta’s over, and Custom Domains are now GA.</p>
+	<p>Custom Domains aren’t just about a seamless developer experience; they also allow you to build a globally distributed instantly scalable application on Cloudflare’s Developer Platform. That’s because Workers leveraging Custom Domains have no concept of an ‘Origin Server’. There’s no ‘home’ to phone to - and that also means your application can use the power of Cloudflare’s global network to run your application, well, everywhere. It’s truly serverless.</p>
+	<h3 id="let-s-build-todo-but-without-the-servers">Let’s build “Todo”, but without the servers</h3>
+	<p>Today we’ll start a series of posts outlining a simple todo list application. We’ll start with an API and hook it up to the Internet using Custom Domains.</p>
+	<p>With Custom Domains, you’re treating the whole network as the application server. Any time a request comes into a Cloudflare data center, Workers are triggered in that data center and connect to resources across the network as needed. Our developers don’t need to think about regions, or replication, or spinning up the right number of instances to handle unforeseen load. Instead, just deploy your Workers and Cloudflare will handle the rest.</p>
+	<p>For our todo application, we begin by building an API Gateway to perform routing, any authorization checks, and drop invalid requests. We then fan out to each individual use case in a separate Worker, so our teams can independently make updates or add features to each endpoint without a full redeploy of the whole application. Finally, each Worker has a D1 binding to be able to create, read, update, and delete records from the database. All of this happens on Cloudflare’s global network, so your API is truly available everywhere. The architecture will look something like this:</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image2-24.png" class="kg-image" alt="This application consists of a Custom Domain on our gateway Worker, a series of endpoint Workers, and a D1 database powering it all."></figure>
+	<h3 id="bootstrap-the-d1-database">Bootstrap the D1 Database</h3>
+	<p>First off, we’re going to need a D1 database set up, with a schema for our todo application to run on. If you’re not familiar with D1, it’s Cloudflare’s serverless database offering - explained in more detail <a href="https://blog.cloudflare.com/introducing-d1/">here</a>. To get started, we use the <code>wrangler d1</code> command to create a new database:</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>npx wrangler d1 create &lt;todo | custom-database-name&gt;
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>After executing this command, you will be asked to add a snippet of code to your <strong><code>wrangler.toml</code> </strong>file that looks something like this:</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>[[ d1_databases ]]
+binding = "db" # i.e. available in your Worker on env.db
+database_name = "&lt;todo | custom-database-name&gt;"
+database_id = "&lt;UUID&gt;"
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Let’s save that for now, and we’ll put these into each of our private microservices in a few moments. Next, we’re going to create our database schema. It’s a simple todo application, so it’ll look something like this, with some seeded data:</p>
+	<p><em><strong>db/schema.sql</strong></em></p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-sql">DROP TABLE IF EXISTS todos;
+CREATE TABLE todos (id INTEGER PRIMARY KEY, todo TEXT, todoStatus BOOLEAN NOT NULL CHECK (todoStatus IN (0, 1)));
+INSERT INTO todos (todo, todoStatus) VALUES ("Fold my laundry", 0),("Get flowers for mum’s birthday", 0),("Find Nemo", 0),("Water the monstera", 1);
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>You can bootstrap your new D1 database by running:</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>npx wrangler d1 execute &lt;todo | custom-database-name&gt; --file=./schema.sql
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Then validate your new data by running a query through Wrangler using the following command:</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>npx wrangler d1 execute &lt;todo | custom-database-name&gt; --command='SELECT * FROM todos';
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Great! We’ve now got a database running entirely on Cloudflare’s global network.</p>
+	<h3 id="build-the-endpoint-workers">Build the endpoint Workers</h3>
+	<p>To talk to your database, we’ll spin up a series of private microservices for each endpoint in our application. We want to be able to create, read, update, delete, and list our todos. The full source code for each is available <a href="https://github.com/kabirsikand/worker-todos-api" target="_blank">here</a>. Below is code from a Worker that lists all our todos from D1.</p>
+	<p><em><strong>list/src/list.js</strong></em></p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-js">export default {
+   async fetch(request, env) {
+     const { results } = await env.db.prepare(
+       "SELECT * FROM todos"
+     ).all();
+     return Response.json(results);
+   },
+ };
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>The Worker ‘todo-list’ needs to be able to access D1 from the environment variable <code>db</code>. To do this, we’ll define the D1 binding in our <code>wrangler.toml</code> file. We also specify that workers_dev is false, preventing a preview from being generated via workers.dev (we want this to be a <em>private</em> microservice).</p>
+	<p><em><strong>list/wrangler.toml</strong></em></p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-toml">name = "todo-list"
+main = "src/list.js"
+compatibility_date = "2022-09-07"
+workers_dev = false
+usage_model = "unbound"
+
+[[ d1_databases ]]
+binding = "db" # i.e. available in your Worker on env.db
+database_name = "&lt;todo | custom-database-name&gt;"
+database_id = "UUID"
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Finally, use wrangler publish to deploy this microservice.</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>todo/list on ∞main [!] 
+› wrangler publish
+ ⛅️ wrangler 0.0.0-893830aa
+-----------------------------------------------------------------------
+Retrieving cached values for account from ../../../node_modules/.cache/wrangler
+Your worker has access to the following bindings:
+- D1 Databases:
+  - db: todo (UUID)
+Total Upload: 4.71 KiB / gzip: 1.60 KiB
+Uploaded todo-list (0.96 sec)
+No publish targets for todo-list (0.00 sec)
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Notice that wrangler mentions there are no ‘publish targets’ for todo-list. That’s because we haven’t hooked todo-list up to any HTTP endpoints. That’s fine! We’re going to use Service Bindings to route requests through a gateway worker, as described in the architecture diagram above.</p>
+	<p>Next, reuse these steps to create similar microservices for each of our create, read, update, and delete endpoints. The source code is available to <a href="https://github.com/kabirsikand/worker-todos-api" target="_blank">follow along</a>.</p>
+	<h3 id="tying-it-all-together-with-an-api-gateway">Tying it all together with an API Gateway</h3>
+	<p>Each of our Workers are able to talk to the D1 database, but how can our application talk to our API? We’ll build out a simple API gateway to route incoming requests to the appropriate microservice. For the purposes of our application, we’re using a combination of URL pathname and request method to detect which endpoint is appropriate.</p>
+	<p><em><strong>gateway/src/gateway.js</strong></em></p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-js">export default {
+ async fetch(request, env) {
+   try{
+     const url = new URL(request.url)
+     const idPattern = new URLPattern({ pathname: '/:id' })
+     if (idPattern.test(request.url)) {
+       switch (request.method){
+         case 'GET':
+           return await env.get.fetch(request.clone())
+         case 'PATCH':
+           return await env.update.fetch(request.clone())
+         case 'DELETE':
+           return await env.delete.fetch(request.clone())
+         default:
+           return new Response("Unsupported method for endpoint /:id", {status: 405})
+       }
+     } else if (url.pathname == '/') {
+       switch (request.method){
+         case 'GET':
+           return await env.list.fetch(request.clone())
+         case 'POST':
+           return await env.create.fetch(request.clone())
+         default:
+           return new Response("Unsupported method for endpoint /", {status: 405})
+       }
+     }
+     return new Response("Not found. Supported endpoints are /:id and /", {status: 404})
+   } catch(e) {
+     return new Response(e, {status: 500})
+   }
+ },
+};
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>With our API gateway all set, we just need to expose our application to the Internet using a Custom Domain, and hook up our Service Bindings, so the gateway Worker can access each appropriate microservice. We’ll set this up in a <code>wrangler.toml</code>.</p>
+	<p><em><strong>gateway/wrangler.toml</strong></em></p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-toml">name = "todo-gateway"
+main = "src/gateway.js"
+compatibility_date = "2022-09-07"
+workers_dev = false
+usage_model = "unbound"
+ 
+routes =  [
+   {pattern="todos.radiobox.tv", custom_domain=true, zone_name="radiobox.tv"}
+]
+ 
+services = [
+   {binding = "get",service = "todo-get"},
+   {binding = "delete",service = "todo-delete"},
+   {binding = "create",service = "todo-create"},
+   {binding = "update",service = "todo-update"},
+   {binding = "list",service = "todo-list"}
+]
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Next, use <code>wrangler publish</code> to deploy your application to the Cloudflare network. Seconds later, you’ll have a simple, functioning todo API built entirely on Cloudflare’s Developer Platform!</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>› wrangler publish
+ ⛅️ wrangler 0.0.0-893830aa
+-----------------------------------------------------------------------
+Retrieving cached values for account from ../../../node_modules/.cache/wrangler
+Your worker has access to the following bindings:
+- Services:
+  - get: todo-get
+  - delete: todo-delete
+  - create: todo-create
+  - update: todo-update
+  - list: todo-list
+Total Upload: 1.21 KiB / gzip: 0.42 KiB
+Uploaded todo-gateway (0.62 sec)
+Published todo-gateway (0.51 sec)
+  todos.radiobox.tv (custom domain - zone name: radiobox.tv)
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<h3 id="natively-global">Natively Global</h3>
+	<p>Since it’s built natively on Cloudflare, you can also include Cloudflare’s security suite in front of the application. If we want to prevent SQL Injection attacks for this endpoint, we can enable the appropriate Managed WAF rules on our todos API endpoint. Alternatively, if we wanted to prevent global access to our API (only allowing privileged clients to access the application), we can simply put Cloudflare Access in front, with custom Access Rules.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image3-15.png" class="kg-image" alt="our application can have any number of Cloudflare services running in front of it"></figure>
+	<p>With Custom Domains on Workers, you’re able to easily create applications that are native to Cloudflare’s global network, instantly. Best of all, your developers don’t need to worry about maintaining DNS records or certificate renewal - Cloudflare handles it all on their behalf. We’d like to give a huge shout out to the 5,000+ developers who used Custom Domains during the open beta period, and those that gave feedback along the way to make this possible. Can’t wait to see what you build next! As always, if you have any questions or would like to get involved, please join us on <a href="https://discord.gg/cloudflaredev" target="_blank">Discord</a>.</p>
+	<p>Tune in next time to see how we can build a frontend for our application. In the meantime, you can play around with the todos API we built today at <a href="https://todos.radiobox.tv" target="_blank"><code>todos.radiobox.tv</code></a>.</p>
+</div>
