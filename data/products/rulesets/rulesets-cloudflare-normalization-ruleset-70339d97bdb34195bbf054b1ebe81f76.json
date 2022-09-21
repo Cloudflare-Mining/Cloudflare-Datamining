@@ -6,34 +6,17 @@
 	"version": "4",
 	"rules": [
 		{
-			"id": "78723a9e0c7c4c6dbec5684cb766231d",
-			"version": "4",
+			"id": "60444c0705d4438799584a15cca2cb7d",
+			"version": "2",
 			"action": "rewrite",
-			"description": "Normalization on the URL path, without propagating it to the origin",
+			"description": "Normalization (RFC-3986) on the URL path, propagating it to the origin",
 			"last_updated": "2022-02-28T15:28:46.009914Z",
-			"ref": "272936dc447b41fe976255ff6b768ec0",
-			"enabled": true,
-			"action_parameters": {
-				"uri": {
-					"path": {
-						"expression": "normalize_url_path(raw.http.request.uri.path)"
-					},
-					"origin": false
-				}
-			}
-		},
-		{
-			"id": "b232b534beea4e00a21dcbb7a8a545e9",
-			"version": "4",
-			"action": "rewrite",
-			"description": "Normalization on the URL path, propagating it to the origin",
-			"last_updated": "2022-02-28T15:28:46.009914Z",
-			"ref": "bbc8cc06105f4e1da898f54b30be6452",
+			"ref": "dac16808c9a549c28a5be86d5529b41f",
 			"enabled": false,
 			"action_parameters": {
 				"uri": {
 					"path": {
-						"expression": "normalize_url_path(raw.http.request.uri.path)"
+						"expression": "normalize_url_path_rfc3986(raw.http.request.uri.path)"
 					},
 					"origin": true
 				}
@@ -57,19 +40,36 @@
 			}
 		},
 		{
-			"id": "60444c0705d4438799584a15cca2cb7d",
-			"version": "2",
+			"id": "b232b534beea4e00a21dcbb7a8a545e9",
+			"version": "4",
 			"action": "rewrite",
-			"description": "Normalization (RFC-3986) on the URL path, propagating it to the origin",
+			"description": "Normalization on the URL path, propagating it to the origin",
 			"last_updated": "2022-02-28T15:28:46.009914Z",
-			"ref": "dac16808c9a549c28a5be86d5529b41f",
+			"ref": "bbc8cc06105f4e1da898f54b30be6452",
 			"enabled": false,
 			"action_parameters": {
 				"uri": {
 					"path": {
-						"expression": "normalize_url_path_rfc3986(raw.http.request.uri.path)"
+						"expression": "normalize_url_path(raw.http.request.uri.path)"
 					},
 					"origin": true
+				}
+			}
+		},
+		{
+			"id": "78723a9e0c7c4c6dbec5684cb766231d",
+			"version": "4",
+			"action": "rewrite",
+			"description": "Normalization on the URL path, without propagating it to the origin",
+			"last_updated": "2022-02-28T15:28:46.009914Z",
+			"ref": "272936dc447b41fe976255ff6b768ec0",
+			"enabled": true,
+			"action_parameters": {
+				"uri": {
+					"path": {
+						"expression": "normalize_url_path(raw.http.request.uri.path)"
+					},
+					"origin": false
 				}
 			}
 		}
