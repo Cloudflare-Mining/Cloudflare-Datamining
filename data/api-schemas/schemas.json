@@ -62164,6 +62164,9 @@
 															"adaptive_routing": {
 																"$ref": "#/paths/~1zones~1%7Bidentifier%7D~1load_balancers/post/requestBody/content/application~1json/schema/properties/adaptive_routing"
 															},
+															"location_strategy": {
+																"$ref": "#/paths/~1zones~1%7Bidentifier%7D~1load_balancers/post/requestBody/content/application~1json/schema/properties/location_strategy"
+															},
 															"random_steering": {
 																"$ref": "#/paths/~1zones~1%7Bidentifier%7D~1load_balancers/post/requestBody/content/application~1json/schema/properties/random_steering"
 															},
@@ -62323,7 +62326,7 @@
 									},
 									"steering_policy": {
 										"type": "string",
-										"description": "Steering Policy for this load balancer. \"off\": use default_pools, \"geo\": use region_pools/country_pools/pop_pools, \"random\": select a pool randomly, \"dynamic_latency\": use round trip time to select the closest pool in default_pools (requires pool health checks), \n\"proximity\": use the pools latitude and longitude to select the closest pool using the cloudflare pop location for proxied requests or geoip / edns0-client-subnet for non-proxied, \"\": will map to \"geo\" if you use region_pools/country_pools/pop_pools otherwise \"off\"",
+										"description": "Steering Policy for this load balancer.\n- `\"off\"`: Use `default_pools`.\n- `\"geo\"`: Use `region_pools`/`country_pools`/`pop_pools`. For non-proxied requests, the country for `country_pools` is determined by `location_strategy`.\n- `\"random\"`: Select a pool randomly.\n- `\"dynamic_latency\"`: Use round trip time to select the closest pool in default_pools (requires pool health checks).\n- `\"proximity\"`: Use the pools' latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `location_strategy` for non-proxied requests.\n- `\"\"`: Will map to `\"geo\"` if you use `region_pools`/`country_pools`/`pop_pools` otherwise `\"off\"`.",
 										"enum": [
 											false,
 											"geo",
@@ -62409,6 +62412,34 @@
 											}
 										}
 									},
+									"location_strategy": {
+										"type": "object",
+										"description": "Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected.",
+										"properties": {
+											"prefer_ecs": {
+												"type": "string",
+												"description": "Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location.\n- `\"always\"`: Always prefer ECS.\n- `\"never\"`: Never prefer ECS.\n- `\"proximity\"`: Prefer ECS only when `steering_policy=\"proximity\"`.\n- `\"geo\"`: Prefer ECS only when `steering_policy=\"geo\"`.",
+												"enum": [
+													"always",
+													"never",
+													"proximity",
+													"geo"
+												],
+												"example": "always",
+												"default": "proximity"
+											},
+											"mode": {
+												"type": "string",
+												"description": "Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful.\n- `\"pop\"`: Use the Cloudflare PoP location.\n- `\"resolver_ip\"`: Use the DNS resolver GeoIP location. If the GeoIP lookup is unsuccessful, use the Cloudflare PoP location.",
+												"enum": [
+													"pop",
+													"resolver_ip"
+												],
+												"example": "resolver_ip",
+												"default": "pop"
+											}
+										}
+									},
 									"random_steering": {
 										"type": "object",
 										"description": "Configures pool weights for random steering. When steering_policy is 'random', a random pool is selected with probability proportional to these pool weights.",
@@ -62466,6 +62497,9 @@
 														},
 														"adaptive_routing": {
 															"$ref": "#/paths/~1zones~1%7Bidentifier%7D~1load_balancers/post/requestBody/content/application~1json/schema/properties/adaptive_routing"
+														},
+														"location_strategy": {
+															"$ref": "#/paths/~1zones~1%7Bidentifier%7D~1load_balancers/post/requestBody/content/application~1json/schema/properties/location_strategy"
 														},
 														"ttl": {
 															"$ref": "#/paths/~1zones~1%7Bidentifier%7D~1load_balancers/post/requestBody/content/application~1json/schema/properties/ttl"
@@ -62637,6 +62671,9 @@
 														"adaptive_routing": {
 															"$ref": "#/paths/~1zones~1%7Bidentifier1%7D~1load_balancers~1%7Bidentifier%7D/put/requestBody/content/application~1json/schema/properties/adaptive_routing"
 														},
+														"location_strategy": {
+															"$ref": "#/paths/~1zones~1%7Bidentifier1%7D~1load_balancers~1%7Bidentifier%7D/put/requestBody/content/application~1json/schema/properties/location_strategy"
+														},
 														"random_steering": {
 															"$ref": "#/paths/~1zones~1%7Bidentifier1%7D~1load_balancers~1%7Bidentifier%7D/put/requestBody/content/application~1json/schema/properties/random_steering"
 														},
@@ -62798,7 +62835,7 @@
 									},
 									"steering_policy": {
 										"type": "string",
-										"description": "Steering Policy for this load balancer. \"off\": use default_pools, \"geo\": use region_pools/country_pools/pop_pools, \"random\": select a pool randomly, \"dynamic_latency\": use round trip time to select the closest pool in default_pools (requires pool health checks), \n\"proximity\": use the pools latitude and longitude to select the closest pool using the cloudflare pop location for proxied requests or geoip / edns0-client-subnet for non-proxied, \"\": will map to \"geo\" if you use region_pools/country_pools/pop_pools otherwise \"off\"",
+										"description": "Steering Policy for this load balancer.\n- `\"off\"`: Use `default_pools`.\n- `\"geo\"`: Use `region_pools`/`country_pools`/`pop_pools`. For non-proxied requests, the country for `country_pools` is determined by `location_strategy`.\n- `\"random\"`: Select a pool randomly.\n- `\"dynamic_latency\"`: Use round trip time to select the closest pool in default_pools (requires pool health checks).\n- `\"proximity\"`: Use the pools' latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `location_strategy` for non-proxied requests.\n- `\"\"`: Will map to `\"geo\"` if you use `region_pools`/`country_pools`/`pop_pools` otherwise `\"off\"`.",
 										"enum": [
 											false,
 											"geo",
@@ -62884,6 +62921,34 @@
 											}
 										}
 									},
+									"location_strategy": {
+										"type": "object",
+										"description": "Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected.",
+										"properties": {
+											"prefer_ecs": {
+												"type": "string",
+												"description": "Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location.\n- `\"always\"`: Always prefer ECS.\n- `\"never\"`: Never prefer ECS.\n- `\"proximity\"`: Prefer ECS only when `steering_policy=\"proximity\"`.\n- `\"geo\"`: Prefer ECS only when `steering_policy=\"geo\"`.",
+												"enum": [
+													"always",
+													"never",
+													"proximity",
+													"geo"
+												],
+												"example": "always",
+												"default": "proximity"
+											},
+											"mode": {
+												"type": "string",
+												"description": "Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful.\n- `\"pop\"`: Use the Cloudflare PoP location.\n- `\"resolver_ip\"`: Use the DNS resolver GeoIP location. If the GeoIP lookup is unsuccessful, use the Cloudflare PoP location.",
+												"enum": [
+													"pop",
+													"resolver_ip"
+												],
+												"example": "resolver_ip",
+												"default": "pop"
+											}
+										}
+									},
 									"random_steering": {
 										"type": "object",
 										"description": "Configures pool weights for random steering. When steering_policy is 'random', a random pool is selected with probability proportional to these pool weights.",
@@ -62941,6 +63006,9 @@
 														},
 														"adaptive_routing": {
 															"$ref": "#/paths/~1zones~1%7Bidentifier1%7D~1load_balancers~1%7Bidentifier%7D/put/requestBody/content/application~1json/schema/properties/adaptive_routing"
+														},
+														"location_strategy": {
+															"$ref": "#/paths/~1zones~1%7Bidentifier1%7D~1load_balancers~1%7Bidentifier%7D/put/requestBody/content/application~1json/schema/properties/location_strategy"
 														},
 														"ttl": {
 															"$ref": "#/paths/~1zones~1%7Bidentifier1%7D~1load_balancers~1%7Bidentifier%7D/put/requestBody/content/application~1json/schema/properties/ttl"
@@ -63109,6 +63177,9 @@
 									},
 									"adaptive_routing": {
 										"$ref": "#/paths/~1zones~1%7Bidentifier1%7D~1load_balancers~1%7Bidentifier%7D/put/requestBody/content/application~1json/schema/properties/adaptive_routing"
+									},
+									"location_strategy": {
+										"$ref": "#/paths/~1zones~1%7Bidentifier1%7D~1load_balancers~1%7Bidentifier%7D/put/requestBody/content/application~1json/schema/properties/location_strategy"
 									},
 									"random_steering": {
 										"$ref": "#/paths/~1zones~1%7Bidentifier1%7D~1load_balancers~1%7Bidentifier%7D/put/requestBody/content/application~1json/schema/properties/random_steering"

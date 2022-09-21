@@ -10444,6 +10444,8 @@ components:
           $ref: '#/components/schemas/fallback_pool'
         id:
           $ref: '#/components/schemas/load-balancer_components-schemas-identifier'
+        location_strategy:
+          $ref: '#/components/schemas/location_strategy'
         modified_on:
           $ref: '#/components/schemas/timestamp'
         name:
@@ -10564,6 +10566,8 @@ components:
                 $ref: '#/components/schemas/default_pools'
               fallback_pool:
                 $ref: '#/components/schemas/fallback_pool'
+              location_strategy:
+                $ref: '#/components/schemas/location_strategy'
               pop_pools:
                 $ref: '#/components/schemas/pop_pools'
               random_steering:
@@ -10641,6 +10645,37 @@ components:
       description: Alpha-2 country code
       example: AF
       type: string
+    location_strategy:
+      description: Controls location-based steering for non-proxied requests. See
+        `steering_policy` to learn how steering is affected.
+      properties:
+        mode:
+          default: pop
+          description: |-
+            Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful.
+            - `"pop"`: Use the Cloudflare PoP location.
+            - `"resolver_ip"`: Use the DNS resolver GeoIP location. If the GeoIP lookup is unsuccessful, use the Cloudflare PoP location.
+          enum:
+          - pop
+          - resolver_ip
+          example: resolver_ip
+          type: string
+        prefer_ecs:
+          default: proximity
+          description: |-
+            Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location.
+            - `"always"`: Always prefer ECS.
+            - `"never"`: Never prefer ECS.
+            - `"proximity"`: Prefer ECS only when `steering_policy="proximity"`.
+            - `"geo"`: Prefer ECS only when `steering_policy="geo"`.
+          enum:
+          - always
+          - never
+          - proximity
+          - geo
+          example: always
+          type: string
+      type: object
     locations:
       properties:
         client_default:
@@ -18979,14 +19014,14 @@ components:
       type: number
     steering_policy:
       default: '""'
-      description: "Steering Policy for this load balancer. \"off\": use default_pools,
-        \"geo\": use region_pools/country_pools/pop_pools, \"random\": select a pool
-        randomly, \"dynamic_latency\": use round trip time to select the closest pool
-        in default_pools (requires pool health checks), \n\"proximity\": use the pools
-        latitude and longitude to select the closest pool using the cloudflare pop
-        location for proxied requests or geoip / edns0-client-subnet for non-proxied,
-        \"\": will map to \"geo\" if you use region_pools/country_pools/pop_pools
-        otherwise \"off\""
+      description: |-
+        Steering Policy for this load balancer.
+        - `"off"`: Use `default_pools`.
+        - `"geo"`: Use `region_pools`/`country_pools`/`pop_pools`. For non-proxied requests, the country for `country_pools` is determined by `location_strategy`.
+        - `"random"`: Select a pool randomly.
+        - `"dynamic_latency"`: Use round trip time to select the closest pool in default_pools (requires pool health checks).
+        - `"proximity"`: Use the pools' latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `location_strategy` for non-proxied requests.
+        - `""`: Will map to `"geo"` if you use `region_pools`/`country_pools`/`pop_pools` otherwise `"off"`.
       enum:
       - "off"
       - geo
@@ -50085,6 +50120,8 @@ paths:
                   $ref: '#/components/schemas/load-balancer_components-schemas-description'
                 fallback_pool:
                   $ref: '#/components/schemas/fallback_pool'
+                location_strategy:
+                  $ref: '#/components/schemas/location_strategy'
                 name:
                   $ref: '#/components/schemas/load-balancer_components-schemas-name'
                 pop_pools:
@@ -50953,6 +50990,8 @@ paths:
                   $ref: '#/components/schemas/load-balancer_components-schemas-enabled'
                 fallback_pool:
                   $ref: '#/components/schemas/fallback_pool'
+                location_strategy:
+                  $ref: '#/components/schemas/location_strategy'
                 name:
                   $ref: '#/components/schemas/load-balancer_components-schemas-name'
                 pop_pools:
@@ -51026,6 +51065,8 @@ paths:
                   $ref: '#/components/schemas/load-balancer_components-schemas-enabled'
                 fallback_pool:
                   $ref: '#/components/schemas/fallback_pool'
+                location_strategy:
+                  $ref: '#/components/schemas/location_strategy'
                 name:
                   $ref: '#/components/schemas/load-balancer_components-schemas-name'
                 pop_pools:
