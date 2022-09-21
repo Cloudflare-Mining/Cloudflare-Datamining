@@ -26,6 +26,9 @@ async function run(){
 			console.error(`ruleset ${ruleset.id} failed: ${rulesetDetails.status} ${rulesetDetails.statusText}`);
 			continue;
 		}
+		const resultRaw = rulesetDetailsJson.result;
+		const resultSorted = resultRaw;
+		resultSorted.rules = resultRaw.rules.sort((ruleA, ruleB) => (ruleA.description + ruleA.id).localeCompare(ruleB.description + ruleB.id));
 		await fs.writeJson(path.resolve(dir, `rulesets-${slug(ruleset.name)}-${ruleset.id}.json`), rulesetDetailsJson.result, {spaces: '\t'});
 	}
 
