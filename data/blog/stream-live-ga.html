@@ -163,12 +163,11 @@ https://api.cloudflare.com/client/v4/accounts/&lt;YOUR_CLOUDFLARE_ACCOUNT_ID&gt;
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image5-7.png" class="kg-image"></figure>
 	<h3 id="step-3-preview-your-live-stream-in-the-cloudflare-dashboard">Step 3: Preview your live stream in the Cloudflare Dashboard</h3>
 	<p>In the Stream Dashboard, within seconds of going live, you will see a preview of what your viewers will see, along with the real-time connection status of your live stream.</p>
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image3-13.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/Screen-Shot-2022-09-21-at-12.34.35-PM.png" class="kg-image"></figure>
 	<h3 id="step-4-add-live-video-playback-to-your-website-or-app">Step 4: Add live video playback to your website or app</h3>
 	<p>Stream your video using our <a href="https://developers.cloudflare.com/stream/viewing-videos/using-the-stream-player/" target="_blank">Stream Player embed code</a>, or use <a href="https://developers.cloudflare.com/stream/viewing-videos/using-own-player/" target="_blank">any video player that supports HLS or DASH</a> — live streams can be played in both websites or native iOS and Android apps.</p>
 	<p>For example, on iOS, all you need to do is provide AVPlayer with the URL to the HLS manifest for your live input, which you can find <a href="https://developers.cloudflare.com/stream/stream-live/watch-live-stream/" target="_blank">via the API</a> or in the <a href="https://dash.cloudflare.com/?to=/:account/stream" target="_blank">Stream Dashboard</a>.</p>
-	<!--kg-card-begin: markdown-->
-	<pre><code>import SwiftUI
+	<pre><code class="language-swift">import SwiftUI
 import AVKit
 
 struct MyView: View {
@@ -187,9 +186,7 @@ struct MyView_Previews: PreviewProvider {
     static var previews: some View {
         MyView()
     }
-}
-</code></pre>
-	<!--kg-card-end: markdown-->
+}</code></pre>
 	<p>To run a complete example app in XCode, follow <a href="https://developers.cloudflare.com/stream/examples/ios/" target="_blank">this guide</a> in the Stream Developer docs.</p>
 	<h2 id="companies-are-building-whole-new-video-platforms-on-top-of-stream">Companies are building whole new video platforms on top of Stream</h2>
 	<p>Developers want control, but most don’t have time to become video experts. And even video experts building innovative new platforms don’t want to manage live streaming infrastructure.</p>
