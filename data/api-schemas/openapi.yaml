@@ -1863,16 +1863,17 @@ components:
           result:
             $ref: '#/components/schemas/schemas-apps'
     apps_components-schemas-type:
-      default: self_hosted
       description: The application type.
       enum:
       - self_hosted
       - saas
       - ssh
       - vnc
-      - file
+      - app_launcher
       - warp
+      - biso
       - bookmark
+      - dash_sso
       example: self_hosted
       type: string
     arch:
@@ -34580,6 +34581,7 @@ paths:
       summary: List short-lived certificate CAs
   /accounts/{identifier}/access/bookmarks:
     get:
+      deprecated: true
       description: Lists Bookmark applications.
       operationId: access-bookmark-applications-list-bookmark-applications
       parameters:
@@ -34607,8 +34609,11 @@ paths:
       - api_email: []
         api_key: []
       summary: List Bookmark applications
+      x-cfDeprecation:
+        $ref: '#/components/schemas/bookmarks/x-cfDeprecations/bookmarks_deprecation'
   /accounts/{identifier}/access/bookmarks/{uuid}:
     delete:
+      deprecated: true
       description: Deletes a Bookmark application.
       operationId: access-bookmark-applications-delete-a-bookmark-application
       parameters:
@@ -34645,7 +34650,10 @@ paths:
       - api_email: []
         api_key: []
       summary: Delete a Bookmark application
+      x-cfDeprecation:
+        $ref: '#/components/schemas/bookmarks/x-cfDeprecations/bookmarks_deprecation'
     get:
+      deprecated: true
       description: Fetches a single Bookmark application.
       operationId: access-bookmark-applications-get-a-bookmark-application
       parameters:
@@ -34678,7 +34686,10 @@ paths:
       - api_email: []
         api_key: []
       summary: Get a Bookmark application
+      x-cfDeprecation:
+        $ref: '#/components/schemas/bookmarks/x-cfDeprecations/bookmarks_deprecation'
     post:
+      deprecated: true
       description: Create a new Bookmark application.
       operationId: access-bookmark-applications-create-a-bookmark-application
       parameters:
@@ -34715,7 +34726,10 @@ paths:
       - api_email: []
         api_key: []
       summary: Create a Bookmark application
+      x-cfDeprecation:
+        $ref: '#/components/schemas/bookmarks/x-cfDeprecations/bookmarks_deprecation'
     put:
+      deprecated: true
       description: Updates a configured Bookmark application.
       operationId: access-bookmark-applications-update-a-bookmark-application
       parameters:
@@ -34752,6 +34766,8 @@ paths:
       - api_email: []
         api_key: []
       summary: Update a Bookmark application
+      x-cfDeprecation:
+        $ref: '#/components/schemas/bookmarks/x-cfDeprecations/bookmarks_deprecation'
   /accounts/{identifier}/access/certificates:
     get:
       description: Lists all mTLS certificates.

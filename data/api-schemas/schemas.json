@@ -69202,15 +69202,16 @@
 																						"type": "string",
 																						"description": "The application type.",
 																						"example": "self_hosted",
-																						"default": "self_hosted",
 																						"enum": [
 																							"self_hosted",
 																							"saas",
 																							"ssh",
 																							"vnc",
-																							"file",
+																							"app_launcher",
 																							"warp",
-																							"bookmark"
+																							"biso",
+																							"bookmark",
+																							"dash_sso"
 																						]
 																					},
 																					"name": {
@@ -69835,15 +69836,16 @@
 																					"type": "string",
 																					"description": "The application type.",
 																					"example": "self_hosted",
-																					"default": "self_hosted",
 																					"enum": [
 																						"self_hosted",
 																						"saas",
 																						"ssh",
 																						"vnc",
-																						"file",
+																						"app_launcher",
 																						"warp",
-																						"bookmark"
+																						"biso",
+																						"bookmark",
+																						"dash_sso"
 																					]
 																				},
 																				"name": {
@@ -71421,6 +71423,14 @@
 															"updated_at": {
 																"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1ssl~1recommendation/get/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/modified_on"
 															}
+														},
+														"x-cfDeprecations": {
+															"bookmarks_deprecation": {
+																"id": "bookmarks_deprecation",
+																"description": "This endpoint is deprecated in favor of using a specialized Access Application App Type.",
+																"eol": "2023-03-19",
+																"display": true
+															}
 														}
 													}
 												}
@@ -71437,7 +71447,14 @@
 						"api_key": [],
 						"api_email": []
 					}
-				]
+				],
+				"deprecated": true,
+				"x-cfDeprecation": {
+					"id": "bookmarks_deprecation",
+					"description": "This endpoint is deprecated in favor of using a specialized Access Application App Type.",
+					"eol": "2023-03-19",
+					"display": true
+				}
 			}
 		},
 		"/accounts/{identifier}/access/bookmarks/{uuid}": {
@@ -71506,6 +71523,14 @@
 														"updated_at": {
 															"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1ssl~1recommendation/get/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/modified_on"
 														}
+													},
+													"x-cfDeprecations": {
+														"bookmarks_deprecation": {
+															"id": "bookmarks_deprecation",
+															"description": "This endpoint is deprecated in favor of using a specialized Access Application App Type.",
+															"eol": "2023-03-19",
+															"display": true
+														}
 													}
 												}
 											}
@@ -71521,7 +71546,14 @@
 						"api_key": [],
 						"api_email": []
 					}
-				]
+				],
+				"deprecated": true,
+				"x-cfDeprecation": {
+					"id": "bookmarks_deprecation",
+					"description": "This endpoint is deprecated in favor of using a specialized Access Application App Type.",
+					"eol": "2023-03-19",
+					"display": true
+				}
 			},
 			"post": {
 				"summary": "Create a Bookmark application",
@@ -71562,6 +71594,10 @@
 						"api_email": []
 					}
 				],
+				"deprecated": true,
+				"x-cfDeprecation": {
+					"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1bookmarks~1%7Buuid%7D/get/x-cfDeprecation"
+				},
 				"requestBody": {
 					"required": true,
 					"content": {
@@ -71608,6 +71644,10 @@
 						"api_email": []
 					}
 				],
+				"deprecated": true,
+				"x-cfDeprecation": {
+					"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1bookmarks~1%7Buuid%7D/get/x-cfDeprecation"
+				},
 				"requestBody": {
 					"required": true,
 					"content": {
@@ -71670,6 +71710,10 @@
 						"api_email": []
 					}
 				],
+				"deprecated": true,
+				"x-cfDeprecation": {
+					"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1bookmarks~1%7Buuid%7D/get/x-cfDeprecation"
+				},
 				"requestBody": {
 					"required": true,
 					"content": {
@@ -73885,15 +73929,16 @@
 																						"type": "string",
 																						"description": "The application type.",
 																						"example": "self_hosted",
-																						"default": "self_hosted",
 																						"enum": [
 																							"self_hosted",
 																							"saas",
 																							"ssh",
 																							"vnc",
-																							"file",
+																							"app_launcher",
 																							"warp",
-																							"bookmark"
+																							"biso",
+																							"bookmark",
+																							"dash_sso"
 																						]
 																					},
 																					"name": {
@@ -74519,15 +74564,16 @@
 																					"type": "string",
 																					"description": "The application type.",
 																					"example": "self_hosted",
-																					"default": "self_hosted",
 																					"enum": [
 																						"self_hosted",
 																						"saas",
 																						"ssh",
 																						"vnc",
-																						"file",
+																						"app_launcher",
 																						"warp",
-																						"bookmark"
+																						"biso",
+																						"bookmark",
+																						"dash_sso"
 																					]
 																				},
 																				"name": {
