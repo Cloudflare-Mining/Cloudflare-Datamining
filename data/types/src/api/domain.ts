@@ -20,6 +20,11 @@ export const RegistrationStatus = eg.union([
   eg.literal('domainLocked')
 ]);
 
+export const LandingSettings = eg.object({
+  eligible: eg.boolean,
+  enabled: eg.boolean.optional
+});
+
 export type RegistrationStatus = TypeFromCodec<typeof RegistrationStatus>;
 
 export const RegistrantContact = eg.object({
@@ -98,6 +103,7 @@ export const Domain = eg.object({
   locked: eg.boolean.optional,
   name: eg.string,
   name_servers: eg.array(eg.string).optional,
+  landing: eg.union([LandingSettings, eg.boolean]).optional,
   partner_response: eg.union([eg.string, eg.null]).optional,
   payment_expires_at: eg.string.optional,
   pending_transfer: eg.boolean.optional,
