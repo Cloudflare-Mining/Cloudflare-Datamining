@@ -63,7 +63,7 @@
 						"buttonColor2": null,
 						"buttonText1": "Download the solution brief",
 						"buttonText1LoggedIn": null,
-						"buttonUrl1": "https://www.cloudflare.com/static/35f6f909d6bfdd60b828f196280aee41/Cloudflare_Zero_Trust_Integrations_Brief.pdf",
+						"buttonUrl1": "https://www.cloudflare.com/static/ebd4212dd4a06fce0077892af5cb1abd/Cloudflare_Zero_Trust_Integrations_Brief.pdf",
 						"buttonUrl1LoggedIn": null,
 						"button1ExtraClass": "teams-zero-trust-integrations-brief",
 						"buttonText2": null,
@@ -741,7 +741,7 @@
 								"title": "Our Zero Trust Integrations",
 								"titleSize": null,
 								"description": "Cloudflare empowers your organization with flexibility to build on the identity, endpoint protection, and cloud providers you already use and avoid vendor lock-in. Learn how we approach technology integrations and partnerships for our Zero Trust platform.",
-								"learnMoreUrl": "https://www.cloudflare.com/static/35f6f909d6bfdd60b828f196280aee41/Cloudflare_Zero_Trust_Integrations_Brief.pdf",
+								"learnMoreUrl": "https://www.cloudflare.com/static/ebd4212dd4a06fce0077892af5cb1abd/Cloudflare_Zero_Trust_Integrations_Brief.pdf",
 								"learnMoreText": "Read the solution brief",
 								"displayBorder": null,
 								"icon": null,
@@ -2626,7 +2626,70 @@
 																				"target": null,
 																				"uri": null
 																			},
-																			"value": "Crowdstrike",
+																			"value": "CrowdStrike",
+																			"marks": [],
+																			"content": null
+																		}
+																	]
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "hyperlink",
+																	"data": {
+																		"target": null,
+																		"uri": "https://developers.cloudflare.com/cloudflare-one/identity/devices/service-providers/microsoft/"
+																	},
+																	"value": null,
+																	"marks": null,
+																	"content": [
+																		{
+																			"nodeType": "text",
+																			"data": {
+																				"target": null,
+																				"uri": null
+																			},
+																			"value": "Microsoft Endpoint Manager",
 																			"marks": [],
 																			"content": null
 																		}
@@ -2804,6 +2867,69 @@
 																	"nodeType": "hyperlink",
 																	"data": {
 																		"target": null,
+																		"uri": "https://developers.cloudflare.com/cloudflare-one/identity/devices/service-providers/uptycs/"
+																	},
+																	"value": null,
+																	"marks": null,
+																	"content": [
+																		{
+																			"nodeType": "text",
+																			"data": {
+																				"target": null,
+																				"uri": null
+																			},
+																			"value": "Uptycs",
+																			"marks": [],
+																			"content": null
+																		}
+																	]
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "hyperlink",
+																	"data": {
+																		"target": null,
 																		"uri": "https://developers.cloudflare.com/cloudflare-one/identity/devices/carbon-black"
 																	},
 																	"value": null,
@@ -2815,7 +2941,7 @@
 																				"target": null,
 																				"uri": null
 																			},
-																			"value": "VMWare Carbon Black",
+																			"value": "VMware Carbon Black",
 																			"marks": [],
 																			"content": null
 																		}
@@ -2940,37 +3066,6 @@
 																				"uri": null
 																			},
 																			"value": "Hexnode",
-																			"marks": [],
-																			"content": null
-																		}
-																	]
-																},
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": "",
-																	"marks": [],
-																	"content": null
-																},
-																{
-																	"nodeType": "hyperlink",
-																	"data": {
-																		"target": null,
-																		"uri": "https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/deployment/mdm-deployment/partners/hexnode"
-																	},
-																	"value": null,
-																	"marks": null,
-																	"content": [
-																		{
-																			"nodeType": "text",
-																			"data": {
-																				"target": null,
-																				"uri": null
-																			},
-																			"value": "",
 																			"marks": [],
 																			"content": null
 																		}
@@ -3493,70 +3588,7 @@
 																				"target": null,
 																				"uri": null
 																			},
-																			"value": "Infovista",
-																			"marks": [],
-																			"content": null
-																		}
-																	]
-																},
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": "",
-																	"marks": [],
-																	"content": null
-																}
-															]
-														}
-													]
-												},
-												{
-													"nodeType": "list-item",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": null,
-													"marks": null,
-													"content": [
-														{
-															"nodeType": "paragraph",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": null,
-															"marks": null,
-															"content": [
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": "",
-																	"marks": [],
-																	"content": null
-																},
-																{
-																	"nodeType": "hyperlink",
-																	"data": {
-																		"target": null,
-																		"uri": "https://www.cloudflare.com/network-onramp-partners/"
-																	},
-																	"value": null,
-																	"marks": null,
-																	"content": [
-																		{
-																			"nodeType": "text",
-																			"data": {
-																				"target": null,
-																				"uri": null
-																			},
-																			"value": "VMWare (Velocloud)",
+																			"value": "VMware (Velocloud)",
 																			"marks": [],
 																			"content": null
 																		}
