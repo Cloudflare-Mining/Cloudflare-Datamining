@@ -1,0 +1,37 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image1-17.png" class="kg-image" alt="Cloudflare Data Loss Prevention now Generally Available"></figure>
+	<p>7月、Zero Trustの最新製品である Data Loss Prevention（DLP）のベータ版へのアクセスを<a href="https://blog.cloudflare.com/inline-data-loss-prevention/">発表</a>しました。そして本日、DLPが一般提供開始したことを発表できることを嬉しく思います。これにより、すべてのお客様が、企業ネットワークに出入りする機密データを可視化し、管理することができるようになりました。ご興味のある方は、この記事の最後をご覧ください。</p>
+	<h3 id="dlp-">DLPとは？</h3>
+	<p>Data Loss Prevention（データ損失防止）は、最大の課題の1つである機密データの特定と保護の解決に役立ちます。クラウドへの移行により、機密情報の追跡と管理はこれまで以上に困難になっています。従業員は、膨大な量のデータを操作するために、増え続けるツールの一覧を使用しています。その一方で、ITおよびセキュリティ管理者は、機密データにアクセス権を与えるべき人物、そのデータの保存方法、そのデータが許可された移動先の特定に困難を極めています。</p>
+	<p>Data Loss Prevention（データ損失防止）を使用すると、キーワードやパターンなどの特性を基にデータを保護することができます。トラフィックが企業インフラストラクチャに出入りする際に、機密データの指標がないかトラフィックが検査されます。指標が見つかった場合、トラフィックはお客様のルールに基づいて許可またはブロックされます。</p>
+	<p>DLPの最も一般的な用途は個人を特定できる情報（PII）の保護ですが、多くのお客様の関心は知的財産、ソースコード、企業の財務情報、その他ビジネスに不可欠な情報の保護にあります。適切なデータの使用方法として、誰がデータを使用したか、データがどこに送信されたか、データがどのように保存されているかなどを含めることができます。</p>
+	<h3 id="dlp--1">DLPは企業のトラフィックをどのように確認するのか？</h3>
+	<p>DLPは、Cloudflare Oneの一部であり、ユーザーと企業リソースをつなぐZero TrustのNetwork as a Serviceのプラットフォームです。Cloudflare Oneでは、データセンター、オフィス、リモートユーザーからのトラフィックをCloudflareネットワーク経由で実行します。これは、IDやデバイスポスチャ―の検証、マルウェアやフィッシングから保護するための企業内トラフィックのフィルタリング、SaaSアプリケーションの設定の確認、従業員がより安全にネットサーフィンできるようにするブラウザの分離など、トラフィックを保護するさまざまな機会を提供します。これらはすべて、当社のグローバルネットワーク上のパフォーマンスとして実行され、単一のコントロールプレーンで管理されます。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/Cloudflare-One-diagram----text-editable_jaJP.png" class="kg-image"></figure>
+	<h3 id="-">その仕組みは？</h3>
+	<p>DLPは、Cloudflare OneのHTTPフィルタリング機能を利用しています。トラフィックがネットワークを通過する際、HTTP要求の情報を基にルールを適用し、トラフィックをルーティングすることができます。ドメイン、URL、アプリケーション、HTTPメソッドなど、フィルタリングに使用できるオプションは多岐にわたります。これらのオプションを使用して、DLPで検査するトラフィックをセグメント化することができます。</p>
+	<p>DLPが適用されると、関連するHTTP要求が解凍、デコードされ、正規表現により一致がないかがスキャンされます。数値の正規表現の一致は、チェックサム計算や<a href="https://en.wikipedia.org/wiki/Luhn_algorithm" target="_blank">Luhnアルゴリズム</a>など、可能な限りアルゴリズムを使用して検証されます。ただし、米国の社会保障番号など、一部の数値検出はアルゴリズム検証に準拠していません。</p>
+	<p>検出によって機密データが特定された場合、お客様のルールセットに従ってデータ転送を許可またはブロックすることができます。 </p>
+	<h3 id="--1">使用方法は？</h3>
+	<p>では、これが実際にどのように実行されるのか、詳しく見ていきましょう。Zero TrustダッシュボードでDLPを使用するには、ゲートウェイの下にある[DLP Profiles]（DLPプロファイル）タブに移動します。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image2-14.png" class="kg-image"></figure>
+	<p>保護するデータのタイプを決定します。現在、クレジットカード番号と米国の社会保障番号を検出していますが、今後はDLP検出のための強力なライブラリの拡充を予定しています。私たちが考える次のステップは、カスタマイズ性と、より多くの国際的な識別子や財務記録番号などを検出できる事前定義を追加していくことであり、これはまもなく達成する予定です。 </p>
+	<p>決定したら、[Configure]（構成）を選択して、検出を有効にします。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image6-2.png" class="kg-image"></figure>
+	<p>使用する検出を有効にします。前述のように、これらのカード番号の検出は正規表現を使用したLuhnアルゴリズムで検証されます。カード番号の数値を検出したり、「American Express」などのカードの名称と一致する文字列を検出することができます。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image3-10.png" class="kg-image"></figure>
+	<p>次に、選択したトラフィックのゲートウェイ<a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering/http-policies/" target="_blank">HTTPポリシー</a>に検出を適用します。ここでは、GoogleドライブのトラフィックにDLPを適用しています。このポリシーにより、Google Driveへのアップロードとダウンロードに米国の社会保障番号が含まれるものはブロックされます。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image4-6.png" class="kg-image"></figure>
+	<h3 id="cloudflare-zero-trust-">Cloudflare Zero Trustを使用した総合的なデータ保護</h3>
+	<p>HTTPトラフィックに機密データが含まれていないかどうかをDLPで検査することは、企業がデータ流出のリスクを低減し、規制コンプライアンスを強化し、全体的なデータガバナンスを向上させるための重要な方法の 1 つです。</p>
+	<p>DLPの実装は、データ保護に対するより包括的なアプローチへの一歩に過ぎません。</p>
+	<p>そのため、当社の<a href="https://www.cloudflare.com/ja-jp/products/zero-trust/" target="_blank">Cloudflare Zero Trust</a>プラットフォームでは、あらゆるデバイスのあらゆるユーザーがデータにアクセスしてやり取りする方法を、単一の管理インターフェースからより包括的に制御できるようにしています。</p>
+	<ul>
+		<li>転送中のデータを保護するために、管理者は<a href="https://www.cloudflare.com/learning/access-management/what-is-ztna/" target="_blank">Zero Trust Network Access（ZTNA）</a>サービスでIDを意識したきめ細かいアクセスポリシーを適用したり、<a href="https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway/" target="_blank">インラインセキュアウェブゲートウェイ（SWG）</a>でアプリケーションごとに企業のテナント管理を適用することが可能です。</li>
+		<li>当社の<a href="https://www.cloudflare.com/learning/access-management/what-is-browser-isolation/" target="_blank">リモートブラウザ分離（RBI）</a>サービスは、ローカルデバイスへのデータのダウンロード、コピー／ペースト、印刷などのユーザーがブラウザ内で使用するデータの操作方法を制御することができます。</li>
+		<li>保存データについては、<a href="https://blog.cloudflare.com/casb-ga">本日より一般提供の開始を発表</a>した、APIベースのクラウド・アクセス・セキュリティ・ブローカー（CASB）が、データ漏洩につながるSaaSアプリケーションの設定ミスがあるかどうかを検出します。</li>
+	</ul>
+	<p>DLPサービスは、これらのZTNA、SWG、CASBなどのセキュリティサービスとシームレスに動作するように設計されています。DLPの機能を深めていく中で、このプラットフォームのアプローチは、お客様のニーズに柔軟に対応するための独自の内容です。 </p>
+	<h3 id="data-loss-prevention-">Data Loss Prevention（データ損失防止）にアクセスする</h3>
+	<p>DLPにアクセスするには、<a href="https://www.cloudflare.com/cloudflare-one/" target="_blank">コンサルタント</a>を利用するか、アカウントマネージャーまでお問合せください。</p>
+</div>

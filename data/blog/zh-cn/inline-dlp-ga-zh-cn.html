@@ -1,0 +1,37 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image1-17.png" class="kg-image" alt="Cloudflare Data Loss Prevention now Generally Available"></figure>
+	<p>今年 7 月，我们<a href="https://blog.cloudflare.com/inline-data-loss-prevention/">推出了</a>最新 Zero Trust 产品——数据丢失防护（DLP）的测试版。今天，我们怀着更加激动的心情，宣布 DLP 现已对客户普遍可用！任何客户现在都可以看到和控制进出其公司网络的敏感数据。如有兴趣，请查看文末。</p>
+	<h3 id="-dlp-">什么是 DLP？</h3>
+	<p>数据丢失防护帮助客户克服最大的挑战之一：识别和保护敏感数据。迁移到云导致跟踪和控制敏感信息比以往任何时候都要困难。员工们使用越来越多工具来操作大量的数据。同时，IT 和安全经理努力确定谁应该访问敏感数据、数据如何存储以及数据被允许前往何处。</p>
+	<p>数据丢失防护使您能够基于数据的特征(如关键字或模式)来保护数据。在流量进出企业基础设施时，系统会检查其中是否存在敏感数据的迹象。一旦发现有关迹象，系统即可根据客户的规则对流量执行允许或阻止操作。</p>
+	<p>DLP 最常见的用途是保护个人可识别信息(PII)，但许多客户感兴趣的是保护知识产权、源代码、公司财务信息或对业务至关重要的任何其他信息。数据的正确使用可包括谁使用了数据，数据发送到何处，以及数据如何存储。</p>
+	<h3 id="dlp-">DLP 如何看到我的公司流量？</h3>
+	<p>DLP 是 Cloudflare One 的一部分，而 Cloudflare One 是我们连接用户与企业资源的 Zero Trust 网络即服务平台。Cloudflare One 通过 Cloudflare 网络处理来自数据中心、办公室和远程用户的流量。这为保护流量提供广泛的机会，包括验证身份和设备姿势，过滤企业流量以防止恶意软件和网络钓鱼，检查 SaaS 应用程序的配置，以及利用浏览器隔离使员工上网更安全。这一切都通过我们高性能的全球网络完成，并使用单一控制平面管理。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/Cloudflare-One-diagram----text-editable_zhCN.png" class="kg-image"></figure>
+	<h3 id="-">工作原理</h3>
+	<p>DLP 利用 Cloudflare One 的 HTTP 过滤能力。在流量通过我们的网络时，可根据 HTTP 请求中的信息来应用规则和路由流量。有多种过滤选项，例如域、URL、应用程序、HTTP 方法，等等。客户可使用这些选项来分隔希望 DLP 检查的流量。</p>
+	<p>在应用 DLP 时，相关 HTTP 请求被解压缩，解码，并扫描正则表达式匹配。然后，在可能的情况下对数值型正则表达式匹配进行算法验证，例如使用校验和计算或<a href="https://en.wikipedia.org/wiki/Luhn_algorithm" target="_blank"> Luhn 算法</a>。然而，一些数字检测不支持算法验证，如美国社会安全号码。</p>
+	<p>如果检测识别出敏感数据，则可以根据客户的规则集允许或阻止数据传输。 </p>
+	<h3 id="--1">如何使用？</h3>
+	<p>下面进一步介绍如何使用这一功能。要在 Zero Trust 仪表板中使用 DLP，请转至 Gateway 下的 DLP Profiles：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image2-14.png" class="kg-image"></figure>
+	<p>决定要保护的数据类型。我们目前检测信用卡号码和美国社会保险号码，但我们计划在这里开发出一个强大的 DLP 检测库。我们的下一步是定制和额外的预定义检测，包括更多的国际标识符和财务记录号码，这些功能即将提供。 </p>
+	<p>决定数据类型后，选择 Configure 以启用检测：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image6-2.png" class="kg-image"></figure>
+	<p>启用希望使用的检测。如上所述，这些卡号检测是使用正则表达式进行的，并通过 Luhn 算法验证。可对卡号进行数字检测，或者检测匹配卡名称的字符串，例如“American Express”。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image3-10.png" class="kg-image"></figure>
+	<p>然后对所选流量将检测应用到一项 Gateway <a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering/http-policies/" target="_blank">HTTP 策略中</a>。此处我们对 Google Drive 流量应用 DLP。这项策略将阻止包含美国社会保险号码的文件在 Google Drive 中进行上传和下载。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image4-6.png" class="kg-image"></figure>
+	<h3 id="cloudflare-zero-trust-">Cloudflare Zero Trust 提供全方位数据保护</h3>
+	<p>使用 DLP 检查 HTTP 通信是否存在敏感数据，这是组织降低数据泄露风险、加强监管合规和改进整体数据治理的一种关键方法。</p>
+	<p>实现 DLP 只是朝着更全面的数据保护方法迈出的一步。</p>
+	<p>为此目的，针对任何设备上的任何用户如何访问数据和与数据交互的方式，我们的<a href="https://www.cloudflare.com/products/zero-trust/" target="_blank"> Cloudflare Zero Trust </a>平台提供更全面的控制，并全部通过单一管理界面实现：</p>
+	<ul>
+		<li>为了保护传输中的数据，管理员可以使用我们的 <a href="https://www.cloudflare.com/learning/access-management/what-is-ztna/" target="_blank">Zero Trust 网络访问（ZTNA）</a>服务执行身份感知的细粒度访问策略，或者利用我们的<a href="https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway/" target="_blank">内联安全 Web 网关（SWG）</a>对每个应用程序实施企业租户控制。<br></li>
+		<li>我们的<a href="https://www.cloudflare.com/learning/access-management/what-is-browser-isolation/" target="_blank">远程浏览器隔离（RBI）服务</a>可以控制用户与浏览器中所用数据的交互方式——例如，限制下载、复制/粘贴和将数据打印到本地设备上。<br></li>
+		<li>对于静态数据，我们基于 API 的云访问安全代理（CASB）——<a href="https://blog.cloudflare.com/casb-ga">今日开始普遍可用！</a>——检测 SaaS 应用程序中的错误配置是否会导致数据泄漏。</li>
+	</ul>
+	<p>我们的 DLP 服务从架构上设计成与这些 ZTNA、SWG、CASB 及其他安全服务无缝协同工作。随着我们的 DLP 能力继续深化，这种平台方式使我们能够以独特的灵活性满足客户的需求。 </p>
+	<h3 id="--2">立即申请使用数据丢失防护</h3>
+	<p>如要使用 DLP，请预约<a href="https://www.cloudflare.com/cloudflare-one/" target="_blank">咨询</a>或联系您的帐户经理。</p>
+</div>

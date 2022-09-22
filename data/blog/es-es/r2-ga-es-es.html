@@ -1,0 +1,128 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image1-25.png" class="kg-image" alt="R2 is now Generally Available"></figure>
+	<p>R2 ofrece a los desarrolladores almacenamiento de objetos sin las tarifas de salida. Antes de R2, los proveedores de nube nos enseñaron a esperar una tarifa de transferencia de datos cada vez que usábamos los datos que almacenaban para nosotros. ¿Quién almacena datos si no tiene previsto leerlos nunca? Nadie. Con todo, cada vez que lees los datos se aplica la tarifa de salida. R2 brinda a los desarrolladores la capacidad de acceder a los datos libremente, liberando a los creadores de aplicaciones de la dependencia del ecosistema que durante mucho tiempo les han tenido las manos atadas.</p>
+	<p>En mayo de 2022, lanzamos R2 en la versión beta abierta. En apenas cuatro meses, teníamos la abrumadora cifra de 12 000 desarrolladores que empezaban a utilizar R2 (y la cifra sigue creciendo). Estos desarrolladores acudieron a nosotros con una amplia variedad de casos de uso, desde aplicaciones de podcast a plataformas de vídeo a sitios web de comercio electrónico, y usuarios como <a href="https://www.vecteezy.com" target="_blank">Vecteezy</a>, cuyo gasto en tarifas de salida ascendía a cientos de miles de dólares. Hemos aprendido rápidamente, hemos recibido fantásticas opiniones y hoy nos complace anunciar que R2 ya está disponible de forma general. </p>
+	<p>No te pediríamos que apostaras por tecnología por la que no estuviéramos dispuestos a apostar nosotros mismos. Mientras estábamos en la versión beta abierta, nos dedicamos a mover nuestros propios productos a R2. Por ejemplo, Cloudflare Images, que da servicio a miles de clientes en producción, ya se basa en la tecnología de R2.</p>
+	<h2 id="-qu-puedes-esperar-de-r2">¿Qué puedes esperar de R2?</h2>
+	<h3 id="compatibilidad-con-s3">Compatibilidad con S3</h3>
+	<p>R2 brinda a los desarrolladores una interfaz conocida para el almacenamiento de objetos, la API de S3. Con la compatibilidad con S3, puedes migrar fácilmente tus aplicaciones y empezar a aprovechar lo que te ofrece R2 desde el principio.</p>
+	<p>Veamos algunas operaciones básicas de datos en javascript. Para probarlas por tu cuenta, necesitarás <a href="https://developers.cloudflare.com/r2/platform/s3-compatibility/tokens/" target="_blank">generar una clave de acceso</a>.</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">// First we import our bindings as usual
+import {
+  S3Client,
+  ListBucketsCommand,
+} from "@aws-sdk/client-s3";
+
+// Then we create a new client. Note that while R2 requires a region for S3 compatibility, only “auto” is supported
+const S3 = new S3Client({
+  region: "auto",
+  endpoint: `https://${ACCOUNT_ID}.r2.cloudflarestorage.com`,
+  credentials: {
+    accessKeyId: ACCESS_KEY_ID, //  fill in your own
+    secretAccessKey: SECRET_ACCESS_KEY, // fill in your own
+  },
+});
+
+// And now we can use our client to list associated buckets just like we would with any other S3 compatible object storage
+console.log(
+  await S3.send(
+    new ListBucketsCommand('')
+  )
+);
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Independientemente del lenguaje, la API de S3 ofrece familiaridad. Tenemos ejemplos en <a href="https://developers.cloudflare.com/r2/examples/aws-sdk-go/" target="_blank">Go</a>, <a href="https://developers.cloudflare.com/r2/examples/boto3/" target="_blank">Java</a>, <a href="https://developers.cloudflare.com/r2/examples/aws-sdk-php/" target="_blank">PHP</a> y <a href="https://developers.cloudflare.com/r2/examples/aws-sdk-ruby/" target="_blank">Ruby</a>.</p>
+	<h3 id="regi-n-autom-tica">Región: Automática</h3>
+	<p>No queremos vivir en un mundo donde los desarrolladores se dediquen a leer la bola de cristal para predecir de dónde procede el tráfico de las aplicaciones. La elección de una región como primer paso del desarrollo de aplicaciones fuerza las decisiones de optimización mucho antes de que aparezcan los primeros usuarios.</p>
+	<p>Aunque la compatibilidad con S3 solo requiere que especifiques una región, la única región admitida es "auto". Actualmente, R2 selecciona automáticamente una ubicación de bucket en la región disponible más próxima a la solicitud de creación de bucket. Si creo un bucket desde mi domicilio en Austin, ese bucket se alojará en la región R2 disponible más próxima a Austin. &nbsp; </p>
+	<p>En el futuro, R2 utilizará patrones de acceso a datos para optimizar automáticamente dónde se almacenarán los datos para lograr la mejor experiencia del usuario.</p>
+	<h3 id="integraci-n-de-cloudflare-workers">Integración de Cloudflare Workers</h3>
+	<p>La plataforma Workers brinda a los desarrolladores eficaz potencia informática en la red de Cloudflare. Cuando realizas la implementación en Workers, tu código se implementa en más de 280 ubicaciones de Cloudflare de todo el mundo. Cuando se empareja con R2, Workers permite a los desarrolladores añadir lógica personalizada en sus datos sin sobrecarga en el rendimiento. Workers se basa en aislamientos y no en contenedores y, como resultado, no tienes que esperar interminables arranques en frío.</p>
+	<p>Intentemos crear una API REST sencilla para un bucket R2. Primero, <a href="https://developers.cloudflare.com/r2/data-access/workers-api/workers-api-usage/#3-create-your-bucket" target="_blank">crea</a> tu bucket y luego añade un <a href="https://developers.cloudflare.com/r2/data-access/workers-api/workers-api-usage/#4-bind-your-bucket-to-a-worker" target="_blank">enlace</a> R2 a tu Worker.</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">export default {
+  async fetch(request, env) {
+    const url = new URL(request.url);
+    const key = url.pathname.slice(1); // we’ll derive a key from the url path
+
+    switch (request.method) {
+      // For writes, we capture the request body and write that out to our bucket under the associated key
+      case 'PUT':
+        await env.MY_BUCKET.put(key, request.body);
+        return new Response(`Put ${key} successfully!`);
+
+      // For reads, we’ll use our key to perform a lookup
+      case 'GET':
+        const object = await env.MY_BUCKET.get(key);
+
+        // if we don’t find the given key we’ll return a 404 error
+        if (object === null) {
+          return new Response('Object Not Found', { status: 404 });
+        }
+
+        const headers = new Headers();
+        object.writeHttpMetadata(headers);
+        headers.set('etag', object.httpEtag);
+
+        return new Response(object.body, {
+          headers,
+        });
+    }
+  },
+};
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Mediante esta API de Workers, podemos añadir todo tipo de lógica útil a la ruta en caliente de una solicitud R2.</p>
+	<h3 id="url-preasignados">URL preasignados</h3>
+	<p>A veces querrás dar a tus usuarios permisos a objetos específicos en R2 sin que deban pasar por todo el proceso. Mediante los URL preasignados, puedes delegar tus permisos a tus usuarios para una combinación única de objeto y acción. Crea un URL preasignado para permitir que un usuario cargue o comparta un archivo sin darle acceso a todo el bucket.</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">import {
+  S3Client,
+  PutObjectCommand
+} from "@aws-sdk/client-s3";
+
+import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
+
+const S3 = new S3Client({
+  region: "auto",
+  endpoint: `https://${ACCOUNT_ID}.r2.cloudflarestorage.com`,
+  credentials: {
+    accessKeyId: ACCESS_KEY_ID,
+    secretAccessKey: SECRET_ACCESS_KEY,
+  },
+});
+
+// With getSignedUrl we can produce a custom url with a one hour expiration which will allow our end user to upload their dog pic
+console.log(
+  await getSignedUrl(S3, new PutObjectCommand({Bucket: 'my-bucket-name', Key: 'dog.png'}), { expiresIn: 3600 })
+)
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Los URL preasignados facilitan a los desarrolladores la creación de aplicaciones que permiten a los usuarios finales acceder con seguridad directamente a R2.</p>
+	<h3 id="buckets-p-blicos">Buckets públicos</h3>
+	<p>La habilitación del <a href="https://developers.cloudflare.com/r2/data-access/public-buckets/" target="_blank">acceso público a un bucket R2</a> te permite exponer ese bucket a solicitudes no autenticadas. Aunque esto por sí solo tiene un uso limitado, cuando estos buckets están enlazados a un dominio con tu cuenta de Cloudflare, puedes habilitar otras funciones de Cloudflare, como por ejemplo Access, Cache y la gestión de bots con tus datos en R2. </p>
+	<p>Conclusión: los buckets públicos ayudan a salvar la distancia entre las funciones de Cloudflare orientadas a dominios y los buckets que tienes en R2.</p>
+	<h3 id="precio-transparente">Precio transparente</h3>
+	<p>R2 nunca aplicará cargos por la salida. El modelo de precios depende exclusivamente de tres factores: volumen de almacenamiento, <a href="https://developers.cloudflare.com/r2/platform/pricing/#class-a-operations" target="_blank">operaciones de clase A</a> (escrituras, listas) y <a href="https://developers.cloudflare.com/r2/platform/pricing/#class-b-operations" target="_blank">operaciones de clase B</a> (lecturas). </p>
+	<ul>
+		<li>El almacenamiento tiene un precio de 0,015 USD/GB por mes.</li>
+		<li>Las operaciones de clase A cuestan 4,50 USD /millón.</li>
+		<li>Las operaciones de clase B cuestan 0,36 USD /millón.</li>
+	</ul>
+	<p>No obstante, antes de que estés dispuesto a empezar a pagar por R2, te permitimos ponerte en marcha sin coste alguno. El uso incluido es el siguiente:</p>
+	<ul>
+		<li>10 GB - meses de datos almacenados.</li>
+		<li>1 000 000 operaciones de clase A al mes.</li>
+		<li>10 000 000 operaciones de clase B al mes.</li>
+	</ul>
+	<h2 id="-y-despu-s">¿Y después?</h2>
+	<p>La disponibilidad general de R2 es solo el principio de nuestro camino con el almacenamiento de objetos. Nos complace compartir lo que tenemos previsto crear a continuación.</p>
+	<h3 id="object-lifecycles">Object Lifecycles</h3>
+	<p>En el futuro, R2 permitirá a los desarrolladores establecer políticas sobre los objetos. Por ejemplo, establecer una política que suprima un objeto 60 días después de que se acceda a él por última vez. Con Object Lifecycles, la gestión de objetos se traslada al almacén de objetos.</p>
+	<h3 id="restricciones-jurisdiccionales">Restricciones jurisdiccionales</h3>
+	<p>Aunque no tenemos previsto dar soporte explícito a las regiones, sabemos que la ubicación de los datos es importante para muchos casos de uso de conformidad. Las restricciones jurisdiccionales permitirán a los desarrolladores establecer una jurisdicción como la "UE" que evitaría que los datos salieran de la jurisdicción.</p>
+	<h3 id="migraci-n-activa-sin-tiempo-de-inactividad">Migración activa sin tiempo de inactividad</h3>
+	<p>Para los conjuntos de datos grandes, las migraciones están activas y en curso, ya que lleva tiempo transferir los datos. Cache Reserve es una forma sencilla de migrar rápidamente tus activos a una instancia de R2 gestionada para reducir tus costes de salida, con solo un clic. En el futuro, ampliaremos este mecanismo para que puedas migrar cualquiera de tus buckets de almacenamiento de objetos S3 existentes a R2.</p>
+	<p>Invitamos a todos a registrarse y a empezar a utilizar R2 hoy mismo. Únete a la creciente comunidad de desarrolladores que están creando en Cloudflare. Si tienes algún comentario o pregunta, contacta con nosotros en nuestro servidor Discord <a href="https://discord.gg/c2eACA4qXA" target="_blank">aquí</a>. Estamos deseando ver lo que creas.</p>
+</div>
