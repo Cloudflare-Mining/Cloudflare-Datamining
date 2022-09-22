@@ -3,6 +3,14 @@
 	"title": "Access Bookmark applications",
 	"description": "Access Bookmark applications are applications displayed in the App Launcher, but are not secured behind Access.",
 	"cfExtendedDescription": "We recommend using the equivalent [Access applications](https://api.cloudflare.com/#access-applications-properties) API.",
+	"cfDeprecations": {
+		"bookmarks_deprecation": {
+			"id": "bookmarks_deprecation",
+			"description": "This endpoint is deprecated in favor of using a specialized Access Application App Type.",
+			"eol": "2023-03-19",
+			"display": true
+		}
+	},
 	"type": "object",
 	"links": [
 		{
@@ -12,6 +20,12 @@
 			"href": "accounts/{#/definitions/identifier}/access/bookmarks",
 			"method": "GET",
 			"cfOwnership": "access",
+			"cfDeprecation": {
+				"id": "bookmarks_deprecation",
+				"description": "This endpoint is deprecated in favor of using a specialized Access Application App Type.",
+				"eol": "2023-03-19",
+				"display": true
+			},
 			"html_id": "access-bookmark-applications-list-bookmark-applications",
 			"uri": "accounts/:identifier/access/bookmarks",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/access/bookmarks\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
@@ -24,6 +38,12 @@
 			"href": "accounts/{#/definitions/identifier}/access/bookmarks/{#/definitions/uuid}",
 			"method": "GET",
 			"cfOwnership": "access",
+			"cfDeprecation": {
+				"id": "bookmarks_deprecation",
+				"description": "This endpoint is deprecated in favor of using a specialized Access Application App Type.",
+				"eol": "2023-03-19",
+				"display": true
+			},
 			"html_id": "access-bookmark-applications-get-a-bookmark-application",
 			"uri": "accounts/:identifier/access/bookmarks/:uuid",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/access/bookmarks/f174e90a-fafe-4643-bbbc-4a0ed4fc8415\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
@@ -36,6 +56,12 @@
 			"href": "accounts/{#/definitions/identifier}/access/bookmarks/{#/definitions/uuid}",
 			"method": "POST",
 			"cfOwnership": "access",
+			"cfDeprecation": {
+				"id": "bookmarks_deprecation",
+				"description": "This endpoint is deprecated in favor of using a specialized Access Application App Type.",
+				"eol": "2023-03-19",
+				"display": true
+			},
 			"html_id": "access-bookmark-applications-create-a-bookmark-application",
 			"uri": "accounts/:identifier/access/bookmarks/:uuid",
 			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/access/bookmarks/f174e90a-fafe-4643-bbbc-4a0ed4fc8415\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
@@ -48,6 +74,12 @@
 			"href": "accounts/{#/definitions/identifier}/access/bookmarks/{#/definitions/uuid}",
 			"method": "PUT",
 			"cfOwnership": "access",
+			"cfDeprecation": {
+				"id": "bookmarks_deprecation",
+				"description": "This endpoint is deprecated in favor of using a specialized Access Application App Type.",
+				"eol": "2023-03-19",
+				"display": true
+			},
 			"html_id": "access-bookmark-applications-update-a-bookmark-application",
 			"uri": "accounts/:identifier/access/bookmarks/:uuid",
 			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/access/bookmarks/f174e90a-fafe-4643-bbbc-4a0ed4fc8415\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
@@ -60,6 +92,12 @@
 			"href": "accounts/{#/definitions/identifier}/access/bookmarks/{#/definitions/uuid}",
 			"method": "DELETE",
 			"cfOwnership": "access",
+			"cfDeprecation": {
+				"id": "bookmarks_deprecation",
+				"description": "This endpoint is deprecated in favor of using a specialized Access Application App Type.",
+				"eol": "2023-03-19",
+				"display": true
+			},
 			"html_id": "access-bookmark-applications-delete-a-bookmark-application",
 			"uri": "accounts/:identifier/access/bookmarks/:uuid",
 			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/access/bookmarks/f174e90a-fafe-4643-bbbc-4a0ed4fc8415\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",

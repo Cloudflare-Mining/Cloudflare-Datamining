@@ -64291,6 +64291,808 @@
 				}
 			}
 		},
+		"/accounts/{account_identifier}/addressing/address_maps": {
+			"get": {
+				"summary": "List Address Maps",
+				"description": "List all address maps owned by the account.",
+				"parameters": [
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1audit_logs/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "List Address Maps response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user~1tokens~1permission_groups/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"id": {
+																"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1available_plans~1%7Bplan_identifier%7D/get/parameters/0/schema"
+															},
+															"description": {
+																"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1addressing~1address_maps/post/requestBody/content/application~1json/schema/properties/description"
+															},
+															"can_delete": {
+																"type": "boolean",
+																"description": "If set to false, then the Address Map cannot be deleted via API. This is true for Cloudflare-managed maps",
+																"readOnly": true,
+																"example": true
+															},
+															"can_modify_ips": {
+																"type": "boolean",
+																"description": "If set to false, then the IPs on the Address Map cannot be modified via the API. This is true for Cloudflare-managed maps",
+																"readOnly": true,
+																"example": true
+															},
+															"default_sni": {
+																"type": "string",
+																"description": "If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map. If Cloudflare receives a TLS handshake from a client without an SNI, it will respond with the default SNI on those IPs. The default SNI can be any valid zone or subdomain owned by the account.",
+																"example": "*.example.com",
+																"nullable": true
+															},
+															"created_at": {
+																"$ref": "#/paths/~1user~1load_balancers~1monitors/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/properties/created_on"
+															},
+															"modified_at": {
+																"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1ssl~1recommendation/get/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/modified_on"
+															}
+														}
+													}
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				]
+			},
+			"post": {
+				"summary": "Create Address Map",
+				"description": "Create a new address map under the account.",
+				"parameters": [
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1addressing~1address_maps/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Create Address Map response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
+											"type": "object",
+											"properties": {
+												"result": {
+													"allOf": [
+														{
+															"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1addressing~1address_maps/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items"
+														},
+														{
+															"type": "object",
+															"properties": {
+																"ips": {
+																	"type": "array",
+																	"description": "The set of IPs on the Address Map",
+																	"items": {
+																		"type": "object",
+																		"properties": {
+																			"ip": {
+																				"type": "string",
+																				"description": "An IPv4 or IPv6 address",
+																				"example": "192.0.2.1"
+																			},
+																			"created_at": {
+																				"$ref": "#/paths/~1user~1load_balancers~1monitors/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/properties/created_on"
+																			}
+																		}
+																	}
+																},
+																"memberships": {
+																	"type": "array",
+																	"description": "Zones and Accounts which will be assigned IPs on this Address Map. A zone membership will take priority over an account membership.",
+																	"items": {
+																		"type": "object",
+																		"properties": {
+																			"kind": {
+																				"type": "string",
+																				"description": "The type of the membership",
+																				"enum": [
+																					"zone",
+																					"account"
+																				],
+																				"example": "zone"
+																			},
+																			"identifier": {
+																				"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1audit_logs/get/parameters/0/schema"
+																			},
+																			"can_delete": {
+																				"type": "boolean",
+																				"description": "Controls whether the membership can be deleted via the API or not.",
+																				"example": true
+																			},
+																			"created_at": {
+																				"$ref": "#/paths/~1user~1load_balancers~1monitors/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/properties/created_on"
+																			}
+																		}
+																	}
+																}
+															}
+														}
+													]
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"description": {
+										"type": "string",
+										"description": "An optional description field which may be used to describe the types of IPs or zones on the map",
+										"example": "My Ecommerce zones",
+										"nullable": true
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/accounts/{account_identifier}/addressing/address_maps/{address_map_identifier}": {
+			"get": {
+				"summary": "Address Map Details",
+				"description": "Show a particular address map owned by the account.",
+				"parameters": [
+					{
+						"name": "address_map_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1available_plans~1%7Bplan_identifier%7D/get/parameters/0/schema"
+						}
+					},
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1audit_logs/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Address Map Details response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
+											"type": "object",
+											"properties": {
+												"result": {
+													"allOf": [
+														{
+															"type": "object",
+															"properties": {
+																"id": {
+																	"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1addressing~1address_maps~1%7Baddress_map_identifier%7D/get/parameters/0/schema"
+																},
+																"description": {
+																	"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1addressing~1address_maps~1%7Baddress_map_identifier%7D/patch/requestBody/content/application~1json/schema/properties/description"
+																},
+																"can_delete": {
+																	"type": "boolean",
+																	"description": "If set to false, then the Address Map cannot be deleted via API. This is true for Cloudflare-managed maps",
+																	"readOnly": true,
+																	"example": true
+																},
+																"can_modify_ips": {
+																	"type": "boolean",
+																	"description": "If set to false, then the IPs on the Address Map cannot be modified via the API. This is true for Cloudflare-managed maps",
+																	"readOnly": true,
+																	"example": true
+																},
+																"default_sni": {
+																	"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1addressing~1address_maps~1%7Baddress_map_identifier%7D/patch/requestBody/content/application~1json/schema/properties/default_sni"
+																},
+																"created_at": {
+																	"$ref": "#/paths/~1user~1load_balancers~1monitors/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/properties/created_on"
+																},
+																"modified_at": {
+																	"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1ssl~1recommendation/get/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/modified_on"
+																}
+															}
+														},
+														{
+															"type": "object",
+															"properties": {
+																"ips": {
+																	"type": "array",
+																	"description": "The set of IPs on the Address Map",
+																	"items": {
+																		"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1addressing~1address_maps/post/responses/200/content/application~1json/schema/allOf/1/properties/result/allOf/1/properties/ips/items"
+																	}
+																},
+																"memberships": {
+																	"type": "array",
+																	"description": "Zones and Accounts which will be assigned IPs on this Address Map. A zone membership will take priority over an account membership.",
+																	"items": {
+																		"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1addressing~1address_maps/post/responses/200/content/application~1json/schema/allOf/1/properties/result/allOf/1/properties/memberships/items"
+																	}
+																}
+															}
+														}
+													]
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				]
+			},
+			"patch": {
+				"summary": "Update Address Map",
+				"description": "Modify the description or default SNI for an address map owned by the account.",
+				"parameters": [
+					{
+						"name": "address_map_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1addressing~1address_maps~1%7Baddress_map_identifier%7D/get/parameters/0/schema"
+						}
+					},
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1addressing~1address_maps~1%7Baddress_map_identifier%7D/get/parameters/1/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Update Address Map response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
+											"properties": {
+												"result": {
+													"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1addressing~1address_maps~1%7Baddress_map_identifier%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/result/allOf/0"
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"description": {
+										"type": "string",
+										"description": "An optional description field which may be used to describe the types of IPs or zones on the map",
+										"example": "My Ecommerce zones",
+										"nullable": true
+									},
+									"default_sni": {
+										"type": "string",
+										"description": "If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map. If Cloudflare receives a TLS handshake from a client without an SNI, it will respond with the default SNI on those IPs. The default SNI can be any valid zone or subdomain owned by the account.",
+										"example": "*.example.com",
+										"nullable": true
+									}
+								}
+							}
+						}
+					}
+				}
+			},
+			"delete": {
+				"summary": "Delete Address Map",
+				"description": "Delete a particular address map owned by the account.",
+				"parameters": [
+					{
+						"name": "address_map_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1addressing~1address_maps~1%7Baddress_map_identifier%7D/get/parameters/0/schema"
+						}
+					},
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1addressing~1address_maps~1%7Baddress_map_identifier%7D/get/parameters/1/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Delete Address Map response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
+											"properties": {
+												"result": {
+													"default": [],
+													"x-$comment": "This exists so the build renders a correctly formatted response object"
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {}
+					}
+				}
+			}
+		},
+		"/accounts/{account_identifier}/addressing/address_maps/{address_map_identifier}/ips/{ip_address}": {
+			"put": {
+				"summary": "Add an IP to an Address Map",
+				"description": "Add an IP from a prefix owned by the account to a particular address map.",
+				"parameters": [
+					{
+						"name": "ip_address",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string",
+							"description": "An IPv4 or IPv6 address",
+							"example": "192.0.2.1"
+						}
+					},
+					{
+						"name": "address_map_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1available_plans~1%7Bplan_identifier%7D/get/parameters/0/schema"
+						}
+					},
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1audit_logs/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Add an IP to an Address Map response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
+											"properties": {
+												"result": {
+													"default": [],
+													"x-$comment": "This exists so the build renders a correctly formatted response object"
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {}
+					}
+				}
+			},
+			"delete": {
+				"summary": "Remove an IP from an Address Map",
+				"description": "Remove an IP from a particular address map.",
+				"parameters": [
+					{
+						"name": "ip_address",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1addressing~1address_maps~1%7Baddress_map_identifier%7D~1ips~1%7Bip_address%7D/put/parameters/0/schema"
+						}
+					},
+					{
+						"name": "address_map_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1addressing~1address_maps~1%7Baddress_map_identifier%7D~1ips~1%7Bip_address%7D/put/parameters/1/schema"
+						}
+					},
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1addressing~1address_maps~1%7Baddress_map_identifier%7D~1ips~1%7Bip_address%7D/put/parameters/2/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Remove an IP from an Address Map response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1addressing~1address_maps~1%7Baddress_map_identifier%7D~1ips~1%7Bip_address%7D/put/responses/200/content/application~1json/schema"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {}
+					}
+				}
+			}
+		},
+		"/accounts/{account_identifier1}/addressing/address_maps/{address_map_identifier}/accounts/{account_identifier}": {
+			"put": {
+				"summary": "Add an account membership to an Address Map",
+				"description": "Add an account as a member of a particular address map.",
+				"parameters": [
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1audit_logs/get/parameters/0/schema"
+						}
+					},
+					{
+						"name": "address_map_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1available_plans~1%7Bplan_identifier%7D/get/parameters/0/schema"
+						}
+					},
+					{
+						"name": "account_identifier1",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier1%7D~1addressing~1address_maps~1%7Baddress_map_identifier%7D~1accounts~1%7Baccount_identifier%7D/put/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Add an account membership to an Address Map response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
+											"properties": {
+												"result": {
+													"default": [],
+													"x-$comment": "This exists so the build renders a correctly formatted response object"
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {}
+					}
+				}
+			},
+			"delete": {
+				"summary": "Remove an account membership from an Address Map",
+				"description": "Remove an account as a member of a particular address map.",
+				"parameters": [
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier1%7D~1addressing~1address_maps~1%7Baddress_map_identifier%7D~1accounts~1%7Baccount_identifier%7D/put/parameters/0/schema"
+						}
+					},
+					{
+						"name": "address_map_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier1%7D~1addressing~1address_maps~1%7Baddress_map_identifier%7D~1accounts~1%7Baccount_identifier%7D/put/parameters/1/schema"
+						}
+					},
+					{
+						"name": "account_identifier1",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier1%7D~1addressing~1address_maps~1%7Baddress_map_identifier%7D~1accounts~1%7Baccount_identifier%7D/put/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Remove an account membership from an Address Map response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/paths/~1accounts~1%7Baccount_identifier1%7D~1addressing~1address_maps~1%7Baddress_map_identifier%7D~1accounts~1%7Baccount_identifier%7D/put/responses/200/content/application~1json/schema"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {}
+					}
+				}
+			}
+		},
+		"/accounts/{account_identifier}/addressing/address_maps/{address_map_identifier}/zones/{zone_identifier}": {
+			"put": {
+				"summary": "Add a zone membership to an Address Map",
+				"description": "Add a zone as a member of a particular address map.",
+				"parameters": [
+					{
+						"name": "zone_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1argo~1smart_routing/get/parameters/0/schema"
+						}
+					},
+					{
+						"name": "address_map_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1available_plans~1%7Bplan_identifier%7D/get/parameters/0/schema"
+						}
+					},
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1audit_logs/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Add a zone membership to an Address Map response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
+											"properties": {
+												"result": {
+													"default": [],
+													"x-$comment": "This exists so the build renders a correctly formatted response object"
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {}
+					}
+				}
+			},
+			"delete": {
+				"summary": "Remove a zone membership from an Address Map",
+				"description": "Remove a zone as a member of a particular address map.",
+				"parameters": [
+					{
+						"name": "zone_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1addressing~1address_maps~1%7Baddress_map_identifier%7D~1zones~1%7Bzone_identifier%7D/put/parameters/0/schema"
+						}
+					},
+					{
+						"name": "address_map_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1addressing~1address_maps~1%7Baddress_map_identifier%7D~1zones~1%7Bzone_identifier%7D/put/parameters/1/schema"
+						}
+					},
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1addressing~1address_maps~1%7Baddress_map_identifier%7D~1zones~1%7Bzone_identifier%7D/put/parameters/2/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Remove a zone membership from an Address Map response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1addressing~1address_maps~1%7Baddress_map_identifier%7D~1zones~1%7Bzone_identifier%7D/put/responses/200/content/application~1json/schema"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {}
+					}
+				}
+			}
+		},
 		"/railguns": {
 			"get": {
 				"summary": "List Railguns",

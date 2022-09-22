@@ -753,15 +753,16 @@
 						"type": "string",
 						"example": "\"app_launcher\"",
 						"description": "The application type",
-						"default": "self_hosted",
 						"enum": [
 							"self_hosted",
 							"saas",
 							"ssh",
 							"vnc",
-							"file",
+							"app_launcher",
 							"warp",
-							"bookmark"
+							"biso",
+							"bookmark",
+							"dash_sso"
 						]
 					},
 					"name": {
@@ -834,15 +835,16 @@
 						"type": "string",
 						"example": "\"warp\"",
 						"description": "The application type",
-						"default": "self_hosted",
 						"enum": [
 							"self_hosted",
 							"saas",
 							"ssh",
 							"vnc",
-							"file",
+							"app_launcher",
 							"warp",
-							"bookmark"
+							"biso",
+							"bookmark",
+							"dash_sso"
 						]
 					},
 					"name": {
@@ -915,15 +917,16 @@
 						"type": "string",
 						"example": "\"biso\"",
 						"description": "The application type",
-						"default": "self_hosted",
 						"enum": [
 							"self_hosted",
 							"saas",
 							"ssh",
 							"vnc",
-							"file",
+							"app_launcher",
 							"warp",
-							"bookmark"
+							"biso",
+							"bookmark",
+							"dash_sso"
 						]
 					},
 					"name": {
@@ -1852,15 +1855,16 @@
 						"type": "string",
 						"example": "\"app_launcher\"",
 						"description": "The application type",
-						"default": "self_hosted",
 						"enum": [
 							"self_hosted",
 							"saas",
 							"ssh",
 							"vnc",
-							"file",
+							"app_launcher",
 							"warp",
-							"bookmark"
+							"biso",
+							"bookmark",
+							"dash_sso"
 						]
 					},
 					"name": {
@@ -1933,15 +1937,16 @@
 						"type": "string",
 						"example": "\"warp\"",
 						"description": "The application type",
-						"default": "self_hosted",
 						"enum": [
 							"self_hosted",
 							"saas",
 							"ssh",
 							"vnc",
-							"file",
+							"app_launcher",
 							"warp",
-							"bookmark"
+							"biso",
+							"bookmark",
+							"dash_sso"
 						]
 					},
 					"name": {
@@ -2014,15 +2019,16 @@
 						"type": "string",
 						"example": "\"biso\"",
 						"description": "The application type",
-						"default": "self_hosted",
 						"enum": [
 							"self_hosted",
 							"saas",
 							"ssh",
 							"vnc",
-							"file",
+							"app_launcher",
 							"warp",
-							"bookmark"
+							"biso",
+							"bookmark",
+							"dash_sso"
 						]
 					},
 					"name": {
@@ -3053,15 +3059,16 @@
 						"type": "string",
 						"example": "\"app_launcher\"",
 						"description": "The application type",
-						"default": "self_hosted",
 						"enum": [
 							"self_hosted",
 							"saas",
 							"ssh",
 							"vnc",
-							"file",
+							"app_launcher",
 							"warp",
-							"bookmark"
+							"biso",
+							"bookmark",
+							"dash_sso"
 						]
 					},
 					"name": {
@@ -3157,15 +3164,16 @@
 						"type": "string",
 						"example": "\"warp\"",
 						"description": "The application type",
-						"default": "self_hosted",
 						"enum": [
 							"self_hosted",
 							"saas",
 							"ssh",
 							"vnc",
-							"file",
+							"app_launcher",
 							"warp",
-							"bookmark"
+							"biso",
+							"bookmark",
+							"dash_sso"
 						]
 					},
 					"name": {
@@ -3261,15 +3269,16 @@
 						"type": "string",
 						"example": "\"biso\"",
 						"description": "The application type",
-						"default": "self_hosted",
 						"enum": [
 							"self_hosted",
 							"saas",
 							"ssh",
 							"vnc",
-							"file",
+							"app_launcher",
 							"warp",
-							"bookmark"
+							"biso",
+							"bookmark",
+							"dash_sso"
 						]
 					},
 					"name": {
