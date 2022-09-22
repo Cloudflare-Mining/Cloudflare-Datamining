@@ -31978,6 +31978,167 @@
 				}
 			}
 		},
+		"/zones/{zone_identifier}/acm/total_tls": {
+			"get": {
+				"summary": "Total TLS Settings Details",
+				"description": "Get Total TLS Settings for a Zone.",
+				"parameters": [
+					{
+						"name": "zone_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1argo~1smart_routing/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Total TLS Settings Details response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"enabled": {
+															"description": "If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone.",
+															"type": "boolean",
+															"example": true
+														},
+														"certificate_authority": {
+															"description": "The Certificate Authority that Total TLS certificates will be issued through.",
+															"type": "string",
+															"enum": [
+																"google",
+																"lets_encrypt"
+															],
+															"example": "google"
+														},
+														"validity_days": {
+															"description": "The validity period in days for the certificates ordered via Total TLS.",
+															"type": "integer",
+															"enum": [
+																90
+															]
+														},
+														"status": {
+															"description": "The current status for Total TLS. Pending states represent that all certificates have not yet had orders initiated or removed.",
+															"type": "string",
+															"enum": [
+																"enabled",
+																"disabled",
+																"pending_enabled",
+																"pending_disabled"
+															],
+															"example": "pending_enabled"
+														}
+													}
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"#ssl:read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			},
+			"post": {
+				"summary": "Enable or Disable Total TLS",
+				"description": "Set Total TLS Settings or disable the feature for a Zone.",
+				"parameters": [
+					{
+						"name": "zone_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1acm~1total_tls/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Enable or Disable Total TLS response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1acm~1total_tls/get/responses/200/content/application~1json/schema"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"#ssl:read",
+						"#ssl:edit"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				},
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"required": [
+									"enabled"
+								],
+								"properties": {
+									"enabled": {
+										"description": "If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone.",
+										"type": "boolean",
+										"example": true
+									},
+									"certificate_authority": {
+										"description": "The Certificate Authority that Total TLS certificates will be issued through.",
+										"type": "string",
+										"enum": [
+											"google",
+											"lets_encrypt"
+										],
+										"example": "google"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
 		"/certificates": {
 			"get": {
 				"summary": "List Certificates",
