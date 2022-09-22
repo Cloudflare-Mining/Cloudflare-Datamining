@@ -97,6 +97,13 @@
 				{
 					"title": "navigation.account.carbon",
 					"url": "/carbon"
+				},
+				{
+					"title": "account.magic.network_monitoring.navigation",
+					"url": "/network-monitoring",
+					"labels": [
+						"beta"
+					]
 				}
 			]
 		},
@@ -170,19 +177,16 @@
 			"pages": [
 				{
 					"title": "navigation.account.firewall_rulesets.ddos",
-					"url": "/rulesets"
+					"url": "/rulesets/ddos"
 				},
 				{
-					"title": "navigation.account.firewall_rulesets.application_firewall"
+					"title": "navigation.account.firewall_rulesets.application_firewall",
+					"url": "/rulesets/waf"
 				},
 				{
 					"title": "navigation.account.firewall_rulesets.magic_firewall",
 					"url": "/rulesets/magic_firewall",
 					"testId": "account-magic-firewall-rules"
-				},
-				{
-					"title": "navigation.account.firewall_rulesets.browse_rulesets",
-					"url": "/rulesets/custom"
 				}
 			]
 		},
