@@ -154,7 +154,7 @@
 			},
 			"html_id": "zone-create-zone",
 			"uri": "zones",
-			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/zones\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"name\":\"example.com\",\"account\":{\"id\":\"01a7362d577a6c3019a474fd6f485823\"},\"jump_start\":true,\"type\":\"full\"}'",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/zones\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"name\":\"example.com\",\"account\":{\"id\":\"01a7362d577a6c3019a474fd6f485823\"},\"type\":\"full\"}'",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}
@@ -182,12 +182,6 @@
 						},
 						"description": "Account of which the zone is created in"
 					},
-					"jump_start": {
-						"type": "boolean",
-						"example": "true",
-						"description": "Automatically attempt to fetch existing DNS records. This field is deprecated, and will be removed on 2022-09-23.",
-						"default": false
-					},
 					"type": {
 						"type": "string",
 						"example": "\"full\"",
@@ -203,11 +197,10 @@
 					"account"
 				],
 				"optional_props": [
-					"jump_start",
 					"type"
 				],
 				"objects": [],
-				"example": "{\n  \"name\": \"example.com\",\n  \"account\": {\n    \"id\": \"01a7362d577a6c3019a474fd6f485823\"\n  },\n  \"jump_start\": true,\n  \"type\": \"full\"\n}"
+				"example": "{\n  \"name\": \"example.com\",\n  \"account\": {\n    \"id\": \"01a7362d577a6c3019a474fd6f485823\"\n  },\n  \"type\": \"full\"\n}"
 			},
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"023e105f4ecef8ad9ca31a8372d0c353\",\n    \"name\": \"example.com\",\n    \"development_mode\": 7200,\n    \"original_name_servers\": [\n      \"ns1.originaldnshost.com\",\n      \"ns2.originaldnshost.com\"\n    ],\n    \"original_registrar\": \"GoDaddy\",\n    \"original_dnshost\": \"NameCheap\",\n    \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"activated_on\": \"2014-01-02T00:01:00.12345Z\",\n    \"owner\": {\n      \"id\": {},\n      \"email\": {},\n      \"type\": \"user\"\n    },\n    \"account\": {\n      \"id\": \"01a7362d577a6c3019a474fd6f485823\",\n      \"name\": \"Demo Account\"\n    },\n    \"permissions\": [\n      \"#zone:read\",\n      \"#zone:edit\"\n    ],\n    \"plan\": {\n      \"id\": \"e592fd9519420ba7405e1307bff33214\",\n      \"name\": \"Pro Plan\",\n      \"price\": 20,\n      \"currency\": \"USD\",\n      \"frequency\": \"monthly\",\n      \"legacy_id\": \"pro\",\n      \"is_subscribed\": true,\n      \"can_subscribe\": true\n    },\n    \"plan_pending\": {\n      \"id\": \"e592fd9519420ba7405e1307bff33214\",\n      \"name\": \"Pro Plan\",\n      \"price\": 20,\n      \"currency\": \"USD\",\n      \"frequency\": \"monthly\",\n      \"legacy_id\": \"pro\",\n      \"is_subscribed\": true,\n      \"can_subscribe\": true\n    },\n    \"status\": \"active\",\n    \"paused\": false,\n    \"type\": \"full\",\n    \"name_servers\": [\n      \"tony.ns.cloudflare.com\",\n      \"woz.ns.cloudflare.com\"\n    ]\n  }\n}"
 		},

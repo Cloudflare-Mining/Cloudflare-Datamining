@@ -1,0 +1,136 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/zone/ssl/total-tls.json",
+	"title": "Total TLS",
+	"description": "Total TLS will automatically issue an individual certificate for every proxied hostname in the zone.",
+	"type": "object",
+	"links": [
+		{
+			"title": "Total TLS Settings Details",
+			"description": "Get Total TLS Settings for a Zone.",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_identifier}/acm/total_tls",
+			"method": "GET",
+			"cfOwnership": "ssl",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#ssl:read"
+				]
+			},
+			"html_id": "total-tls-total-tls-settings-details",
+			"uri": "zones/:zone_identifier/acm/total_tls",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/acm/total_tls\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"enabled\": true,\n    \"certificate_authority\": \"google\",\n    \"validity_days\": 90,\n    \"status\": \"pending_enabled\"\n  }\n}"
+		},
+		{
+			"title": "Enable or Disable Total TLS",
+			"description": "Set Total TLS Settings or disable the feature for a Zone.",
+			"rel": "self",
+			"href": "zones/{#/definitions/zone_identifier}/acm/total_tls",
+			"method": "POST",
+			"cfOwnership": "ssl",
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"cfPermissionsRequired": {
+				"enum": [
+					"#ssl:read",
+					"#ssl:edit"
+				]
+			},
+			"html_id": "total-tls-enable-or-disable-total-tls",
+			"uri": "zones/:zone_identifier/acm/total_tls",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/acm/total_tls\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"enabled\":true,\"certificate_authority\":\"google\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"enabled": {
+						"type": "boolean",
+						"example": "true",
+						"description": "If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone."
+					},
+					"certificate_authority": {
+						"type": "string",
+						"example": "\"google\"",
+						"description": "The Certificate Authority that Total TLS certificates will be issued through.",
+						"enum": [
+							"google",
+							"lets_encrypt"
+						]
+					}
+				},
+				"required_props": [
+					"enabled"
+				],
+				"optional_props": [
+					"certificate_authority"
+				],
+				"objects": [],
+				"example": "{\n  \"enabled\": true,\n  \"certificate_authority\": \"google\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"enabled\": true,\n    \"certificate_authority\": \"google\",\n    \"validity_days\": 90,\n    \"status\": \"pending_enabled\"\n  }\n}"
+		}
+	],
+	"html_id": "total-tls",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"enabled": {
+				"type": "boolean",
+				"example": "true",
+				"description": "If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone."
+			},
+			"certificate_authority": {
+				"type": "string",
+				"example": "\"google\"",
+				"description": "The Certificate Authority that Total TLS certificates will be issued through.",
+				"enum": [
+					"google",
+					"lets_encrypt"
+				]
+			},
+			"validity_days": {
+				"type": "integer",
+				"example": "90",
+				"description": "The validity period in days for the certificates ordered via Total TLS.",
+				"enum": [
+					90
+				]
+			},
+			"status": {
+				"type": "string",
+				"example": "\"pending_enabled\"",
+				"description": "The current status for Total TLS. Pending states represent that all certificates have not yet had orders initiated or removed.",
+				"enum": [
+					"enabled",
+					"disabled",
+					"pending_enabled",
+					"pending_disabled"
+				]
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"enabled",
+			"certificate_authority",
+			"validity_days",
+			"status"
+		],
+		"objects": [],
+		"example": "{\n  \"enabled\": true,\n  \"certificate_authority\": \"google\",\n  \"validity_days\": 90,\n  \"status\": \"pending_enabled\"\n}",
+		"description": "Total TLS will automatically issue an individual certificate for every proxied hostname in the zone.",
+		"title": "Total TLS"
+	}
+}
