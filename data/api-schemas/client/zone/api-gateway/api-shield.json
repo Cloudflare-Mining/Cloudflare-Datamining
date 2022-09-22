@@ -22,7 +22,7 @@
 				"enterprise": true
 			},
 			"trakalIgnore": false,
-			"cfPrivate": true,
+			"cfPrivate": false,
 			"html_id": "api-shield-endpoint-management-retrieve-information-about-an-operation",
 			"uri": "zones/:zone_id/api_gateway/operations/:operation_id",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/api_gateway/operations/f174e90a-fafe-4643-bbbc-4a0ed4fc8415?feature=thresholds\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
@@ -72,7 +72,7 @@
 				"enterprise": true
 			},
 			"trakalIgnore": false,
-			"cfPrivate": true,
+			"cfPrivate": false,
 			"html_id": "api-shield-endpoint-management-retrieve-information-about-all-operations-on-a-zone",
 			"uri": "zones/:zone_id/api_gateway/operations",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/api_gateway/operations?page=1&per_page=20&feature=thresholds&order=method&direction=desc&host=api.cloudflare.com&method=GET&endpoint=/api/v1\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
@@ -189,7 +189,7 @@
 				"enterprise": true
 			},
 			"trakalIgnore": false,
-			"cfPrivate": true,
+			"cfPrivate": false,
 			"html_id": "api-shield-endpoint-management-delete-an-operation",
 			"uri": "zones/:zone_id/api_gateway/operations/:operation_id",
 			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/api_gateway/operations/f174e90a-fafe-4643-bbbc-4a0ed4fc8415\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
@@ -214,7 +214,7 @@
 				"enterprise": true
 			},
 			"trakalIgnore": false,
-			"cfPrivate": true,
+			"cfPrivate": false,
 			"html_id": "api-shield-endpoint-management-add-operations-to-a-zone",
 			"uri": "zones/:zone_id/api_gateway/operations",
 			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/api_gateway/operations\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '[{\"host\":\"www.example.com\",\"method\":\"GET\",\"endpoint\":\"/api/v1/users/{var1}\"}]'",
@@ -285,7 +285,7 @@
 				"enterprise": true
 			},
 			"trakalIgnore": false,
-			"cfPrivate": true,
+			"cfPrivate": false,
 			"html_id": "api-shield-endpoint-management-retrieve-operations-and-features-as-openapi-schemas",
 			"uri": "zones/:zone_id/api_gateway/schemas",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/api_gateway/schemas?feature=thresholds&host=www.example.com\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",

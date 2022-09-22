@@ -1863,17 +1863,16 @@ components:
           result:
             $ref: '#/components/schemas/schemas-apps'
     apps_components-schemas-type:
+      default: self_hosted
       description: The application type.
       enum:
       - self_hosted
       - saas
       - ssh
       - vnc
-      - app_launcher
+      - file
       - warp
-      - biso
       - bookmark
-      - dash_sso
       example: self_hosted
       type: string
     arch:
@@ -10445,8 +10444,6 @@ components:
           $ref: '#/components/schemas/fallback_pool'
         id:
           $ref: '#/components/schemas/load-balancer_components-schemas-identifier'
-        location_strategy:
-          $ref: '#/components/schemas/location_strategy'
         modified_on:
           $ref: '#/components/schemas/timestamp'
         name:
@@ -10567,8 +10564,6 @@ components:
                 $ref: '#/components/schemas/default_pools'
               fallback_pool:
                 $ref: '#/components/schemas/fallback_pool'
-              location_strategy:
-                $ref: '#/components/schemas/location_strategy'
               pop_pools:
                 $ref: '#/components/schemas/pop_pools'
               random_steering:
@@ -10646,37 +10641,6 @@ components:
       description: Alpha-2 country code
       example: AF
       type: string
-    location_strategy:
-      description: Controls location-based steering for non-proxied requests. See
-        `steering_policy` to learn how steering is affected.
-      properties:
-        mode:
-          default: pop
-          description: |-
-            Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful.
-            - `"pop"`: Use the Cloudflare PoP location.
-            - `"resolver_ip"`: Use the DNS resolver GeoIP location. If the GeoIP lookup is unsuccessful, use the Cloudflare PoP location.
-          enum:
-          - pop
-          - resolver_ip
-          example: resolver_ip
-          type: string
-        prefer_ecs:
-          default: proximity
-          description: |-
-            Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location.
-            - `"always"`: Always prefer ECS.
-            - `"never"`: Never prefer ECS.
-            - `"proximity"`: Prefer ECS only when `steering_policy="proximity"`.
-            - `"geo"`: Prefer ECS only when `steering_policy="geo"`.
-          enum:
-          - always
-          - never
-          - proximity
-          - geo
-          example: always
-          type: string
-      type: object
     locations:
       properties:
         client_default:
@@ -16113,6 +16077,12 @@ components:
             id:
               $ref: '#/components/schemas/common_components-schemas-identifier'
           type: object
+        jump_start:
+          default: false
+          description: Automatically attempt to fetch existing DNS records. This field
+            is deprecated, and will be removed on 2022-09-23.
+          example: true
+          type: boolean
         name:
           $ref: '#/components/schemas/properties-name'
         type:
@@ -19009,14 +18979,14 @@ components:
       type: number
     steering_policy:
       default: '""'
-      description: |-
-        Steering Policy for this load balancer.
-        - `"off"`: Use `default_pools`.
-        - `"geo"`: Use `region_pools`/`country_pools`/`pop_pools`. For non-proxied requests, the country for `country_pools` is determined by `location_strategy`.
-        - `"random"`: Select a pool randomly.
-        - `"dynamic_latency"`: Use round trip time to select the closest pool in default_pools (requires pool health checks).
-        - `"proximity"`: Use the pools' latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `location_strategy` for non-proxied requests.
-        - `""`: Will map to `"geo"` if you use `region_pools`/`country_pools`/`pop_pools` otherwise `"off"`.
+      description: "Steering Policy for this load balancer. \"off\": use default_pools,
+        \"geo\": use region_pools/country_pools/pop_pools, \"random\": select a pool
+        randomly, \"dynamic_latency\": use round trip time to select the closest pool
+        in default_pools (requires pool health checks), \n\"proximity\": use the pools
+        latitude and longitude to select the closest pool using the cloudflare pop
+        location for proxied requests or geoip / edns0-client-subnet for non-proxied,
+        \"\": will map to \"geo\" if you use region_pools/country_pools/pop_pools
+        otherwise \"off\""
       enum:
       - "off"
       - geo
@@ -34581,7 +34551,6 @@ paths:
       summary: List short-lived certificate CAs
   /accounts/{identifier}/access/bookmarks:
     get:
-      deprecated: true
       description: Lists Bookmark applications.
       operationId: access-bookmark-applications-list-bookmark-applications
       parameters:
@@ -34609,11 +34578,8 @@ paths:
       - api_email: []
         api_key: []
       summary: List Bookmark applications
-      x-cfDeprecation:
-        $ref: '#/components/schemas/bookmarks/x-cfDeprecations/bookmarks_deprecation'
   /accounts/{identifier}/access/bookmarks/{uuid}:
     delete:
-      deprecated: true
       description: Deletes a Bookmark application.
       operationId: access-bookmark-applications-delete-a-bookmark-application
       parameters:
@@ -34650,10 +34616,7 @@ paths:
       - api_email: []
         api_key: []
       summary: Delete a Bookmark application
-      x-cfDeprecation:
-        $ref: '#/components/schemas/bookmarks/x-cfDeprecations/bookmarks_deprecation'
     get:
-      deprecated: true
       description: Fetches a single Bookmark application.
       operationId: access-bookmark-applications-get-a-bookmark-application
       parameters:
@@ -34686,10 +34649,7 @@ paths:
       - api_email: []
         api_key: []
       summary: Get a Bookmark application
-      x-cfDeprecation:
-        $ref: '#/components/schemas/bookmarks/x-cfDeprecations/bookmarks_deprecation'
     post:
-      deprecated: true
       description: Create a new Bookmark application.
       operationId: access-bookmark-applications-create-a-bookmark-application
       parameters:
@@ -34726,10 +34686,7 @@ paths:
       - api_email: []
         api_key: []
       summary: Create a Bookmark application
-      x-cfDeprecation:
-        $ref: '#/components/schemas/bookmarks/x-cfDeprecations/bookmarks_deprecation'
     put:
-      deprecated: true
       description: Updates a configured Bookmark application.
       operationId: access-bookmark-applications-update-a-bookmark-application
       parameters:
@@ -34766,8 +34723,6 @@ paths:
       - api_email: []
         api_key: []
       summary: Update a Bookmark application
-      x-cfDeprecation:
-        $ref: '#/components/schemas/bookmarks/x-cfDeprecations/bookmarks_deprecation'
   /accounts/{identifier}/access/certificates:
     get:
       description: Lists all mTLS certificates.
@@ -50130,8 +50085,6 @@ paths:
                   $ref: '#/components/schemas/load-balancer_components-schemas-description'
                 fallback_pool:
                   $ref: '#/components/schemas/fallback_pool'
-                location_strategy:
-                  $ref: '#/components/schemas/location_strategy'
                 name:
                   $ref: '#/components/schemas/load-balancer_components-schemas-name'
                 pop_pools:
@@ -51000,8 +50953,6 @@ paths:
                   $ref: '#/components/schemas/load-balancer_components-schemas-enabled'
                 fallback_pool:
                   $ref: '#/components/schemas/fallback_pool'
-                location_strategy:
-                  $ref: '#/components/schemas/location_strategy'
                 name:
                   $ref: '#/components/schemas/load-balancer_components-schemas-name'
                 pop_pools:
@@ -51075,8 +51026,6 @@ paths:
                   $ref: '#/components/schemas/load-balancer_components-schemas-enabled'
                 fallback_pool:
                   $ref: '#/components/schemas/fallback_pool'
-                location_strategy:
-                  $ref: '#/components/schemas/location_strategy'
                 name:
                   $ref: '#/components/schemas/load-balancer_components-schemas-name'
                 pop_pools:
