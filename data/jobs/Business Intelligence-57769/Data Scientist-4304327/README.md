@@ -20,7 +20,7 @@
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">M.S or Ph.D in Computer Science, Statistics, Mathematics, or other quantitative fields.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">3+ years of data scientist experience with proven industry experience in a large scale environment (PBs scale &amp; globally distributed teams)&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">5+ years of data scientist experience with proven industry experience in a large scale environment (PBs scale &amp; globally distributed teams)&nbsp;</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong experience working with business functions such as Finance, Sales, and Marketing to build models and drive impactful business outcomes (eg: customer and revenue growth)</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">2+ years experience with a fast-growing SaaS business based company is preferred.</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong experience in scientific computing using Python, R, or Scala.</span></li>
