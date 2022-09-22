@@ -1,6 +1,6 @@
 <div class="post-content lh-copy gray1">
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image.png" class="kg-image"></figure>
-	<p>本日、当社はプライベート認証トークンを発表しました。これは、本物のユーザーがお客様のサイトを訪れていることを検証する、完全に不可視でプライベートな方法です。<a href="https://developer.apple.com/wwdc22/10077" target="_blank">macOSまたはiOSの次期バージョン</a>など、これらのトークンをサポートするオペレーティングシステムを使用している訪問者は、CAPTCHAを完了したり個人データを提供することなく、自分が人間であることを証明できるようになりました。これにより、これらのユーザーに提供されるCAPTCHAのほぼ100%が排除されます。<br></p>
+	<p>本日、当社はプライベートアクセストークンを発表しました。これは、本物のユーザーがお客様のサイトを訪れていることを検証する、完全に不可視でプライベートな方法です。<a href="https://developer.apple.com/wwdc22/10077" target="_blank">macOSまたはiOSの次期バージョン</a>など、これらのトークンをサポートするオペレーティングシステムを使用している訪問者は、CAPTCHAを完了したり個人データを提供することなく、自分が人間であることを証明できるようになりました。これにより、これらのユーザーに提供されるCAPTCHAのほぼ100%が排除されます。<br></p>
 	<p>これはどういうことなのでしょうか？ <br></p>
 	<p>インターネットユーザーの場合：</p>
 	<ul>
@@ -14,17 +14,17 @@
 	</ul>
 	<p>Cloudflareのお客様の場合：</p>
 	<ul>
-		<li>何もする必要はありません！Cloudflareは自動的にプライベート認証トークンを要求し、利用します</li>
+		<li>何もする必要はありません！Cloudflareは自動的にプライベートアクセストークンを要求し、利用します</li>
 		<li>訪問者にはCAPTCHAが表示されず、訪問者のデバイスからのデータ要求も少なくなります。</li>
 	</ul>
-	<h3 id="-">プライベート認証トークンの導入 </h3>
-	<p>過去1年間、CloudflareはApple、Google、その他の業界リーダーと協力し、<a href="https://www.ietf.org/archive/id/draft-ietf-privacypass-auth-scheme-01.html" target="_blank">プライバシーパスプロトコル</a>を拡張し、新しい暗号トークンをサポートするようになりました。これらのトークンは、開発者やセキュリティチームにとってアプリケーションのセキュリティを簡素化し、人がデバイスを使用しているかどうかを判断するための従来のサードパーティ製SDKベースのアプローチを陳腐化させます。これらのトークンは、ブラウザ、ブラウザから呼び出されるAPI、およびアプリケーション内で呼び出されるAPIで機能します。当社は、これらの新しいトークンをプライベート認証トークン(PAT)と呼んでいます。今朝、<a href="https://developer.apple.com/wwdc22/10077" target="_blank">Appleは、PATがiOS 16、iPad 16、macOS 13に組み込まれると発表しました。</a>近い将来、他のベンダーもサポートを発表すると思われます。</p>
+	<h3 id="-">プライベートアクセストークンの導入 </h3>
+	<p>過去1年間、CloudflareはApple、Google、その他の業界リーダーと協力し、<a href="https://www.ietf.org/archive/id/draft-ietf-privacypass-auth-scheme-01.html" target="_blank">プライバシーパスプロトコル</a>を拡張し、新しい暗号トークンをサポートするようになりました。これらのトークンは、開発者やセキュリティチームにとってアプリケーションのセキュリティを簡素化し、人がデバイスを使用しているかどうかを判断するための従来のサードパーティ製SDKベースのアプローチを陳腐化させます。これらのトークンは、ブラウザ、ブラウザから呼び出されるAPI、およびアプリケーション内で呼び出されるAPIで機能します。当社は、これらの新しいトークンをプライベートアクセストークン(PAT)と呼んでいます。今朝、<a href="https://developer.apple.com/wwdc22/10077" target="_blank">Appleは、PATがiOS 16、iPad 16、macOS 13に組み込まれると発表しました。</a>近い将来、他のベンダーもサポートを発表すると思われます。</p>
 	<p>CloudflareはすでにPATを<a href="https://blog.cloudflare.com/end-cloudflare-captcha/">Managed Challengeプラットフォーム</a>に組み込んでおり、この機能を利用するお客様は自動的にこの新しい技術を利用し、対応デバイスのブラウジング体験を向上させることができます。</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image2-4.png" class="kg-image"></figure>
 	<p><br>モバイル環境ではCAPTCHAは機能せず、PATがその必要性をなくします</p>
 	<p>当社は、CAPTCHAがいかにひどいユーザーエクスペリエンスであるかについて<a href="https://blog.cloudflare.com/ja-jp/introducing-cryptographic-attestation-of-personhood-ja-jp/">何</a><a href="https://blog.cloudflare.com/ja-jp/moving-from-recaptcha-to-hcaptcha-ja-jp/">度も</a><a href="https://blog.cloudflare.com/end-cloudflare-captcha/">書いてきました。</a>ただし、モバイル端末でのユーザーエクスペリエンスがどれほど悪いかについては、特に説明していません。技術としてのCAPTCHAは、ブラウザベースの世界向けに構築され、最適化されました。これらは、一般的に1つのサイズがすべてにフィットするウィジェットまたはiframeを介してデプロイされ、レンダリングの問題を引き起こしたり、入力ウィンドウがデバイス上で部分的にしか表示されません。モバイル画面上の面積が小さいため、本質的に技術のアクセス性が低下し、CAPTCHAの解決がより困難になり、JavaScriptと画像ファイルをレンダリングする必要があるため、画像の読み込みが遅くなり、お客様の帯域幅を過剰に消費します。<br></p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image5-2.png" class="kg-image"></figure>
-	<p>いやすさは別として、モバイル環境はAPI駆動型になりつつあるという点で、さらなる課題を抱えています。CAPTCHAは、JavaScriptがレンダリングできない、あるいはWebViewが呼び出せないAPI環境では、単純に機能しないのです。そのため、モバイルアプリの開発者は、必要なときにユーザーに挑戦するための簡単な選択肢を持っていないことがよくあります。不便なSDKを使ってCAPTCHAをアプリに直接埋め込むという手段を用いることもあります。この場合、CAPTCHAの埋め込みとカスタマイズに手間がかかり、メンテナンスと監視を続ける必要があり、その結果、放棄率が高くなります。このような理由から、現在、当社のお客様がCAPTCHAの表示を選択した場合、モバイルでは20％の割合でしか表示されません。</p>
+	<p>使いやすさは別として、モバイル環境はAPI駆動型になりつつあるという点で、さらなる課題を抱えています。CAPTCHAは、JavaScriptがレンダリングできない、あるいはWebViewが呼び出せないAPI環境では、単純に機能しないのです。そのため、モバイルアプリの開発者は、必要なときにユーザーに挑戦するための簡単な選択肢を持っていないことがよくあります。不便なSDKを使ってCAPTCHAをアプリに直接埋め込むという手段を用いることもあります。この場合、CAPTCHAの埋め込みとカスタマイズに手間がかかり、メンテナンスと監視を続ける必要があり、その結果、放棄率が高くなります。このような理由から、現在、当社のお客様がCAPTCHAの表示を選択した場合、モバイルでは20％の割合でしか表示されません。</p>
 	<p>先日、Managed Challengeのプラットフォームを利用して、<a href="https://blog.cloudflare.com/end-cloudflare-captcha/">CAPTCHAの使用量を91%削減</a>した方法をご紹介しました。しかし、モバイルでのCAPTCHA体験は非常に悪いので、特にモバイルでのCAPTCHA使用をさらに減らすことができる方法を別途検討しています。</p>
 	<h3 id="--1">サイトが訪問者に異議を唱えられない場合は、より多くのデータを収集します</h3>
 	<p>つまり、APIを保護するためにCAPTCHAを使うことはできないか、あるいはUXがひどすぎてモバイルWebサイトで使うことはできない、ということです。訪問者が本物かどうかを確認するためには、どのような選択肢が残されているのでしょうか。よくあるのは、一般にフィンガープリンティングとして知られている、クライアント固有のデータを見ることです。 <br></p>
@@ -46,7 +46,7 @@
 		<li>Cloudflareは、お客様が訪問したサイトは把握していますが、デバイスやインタラクションの情報は一切分かりません。<br></li>
 	</ul>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/06/image3-2.png" class="kg-image"></figure>
-	<p>当社は、このプロセスのために収集された基本的なデータを実際に必要としませんし、求めてもいません。ただ、訪問者がデバイスやユーザーエージェントを偽装しているのかどうかを検証したいだけです。プライベート認証トークンは、基本的なデータを一切必要とせず、その検証状態を直接取得することを可能にします。これにより、重要なシグナルを直接見ることなく、その信憑性をより確信することができます。</p>
+	<p>当社は、このプロセスのために収集された基本的なデータを実際に必要としませんし、求めてもいません。ただ、訪問者がデバイスやユーザーエージェントを偽装しているのかどうかを検証したいだけです。プライベートアクセストークンは、基本的なデータを一切必要とせず、その検証状態を直接取得することを可能にします。これにより、重要なシグナルを直接見ることなく、その信憑性をより確信することができます。</p>
 	<h3 id="--3">プライベートアクセストークンによるデータの区分け方法</h3>
 	<p><a href="https://www.ietf.org/archive/id/draft-ietf-privacypass-auth-scheme-01.html#name-security-considerations" target="_blank">プライベートアクセストークン</a>では、四者が共通のフレームワークで協力して、匿名かつ偽造不可能なトークンを生成・交換することに合意しています。このプロセスに四者すべてが参加しなければ、PATは機能しません。</p>
 	<ol>
