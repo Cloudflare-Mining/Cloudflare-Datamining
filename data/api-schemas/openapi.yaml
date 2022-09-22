@@ -1863,16 +1863,17 @@ components:
           result:
             $ref: '#/components/schemas/schemas-apps'
     apps_components-schemas-type:
-      default: self_hosted
       description: The application type.
       enum:
       - self_hosted
       - saas
       - ssh
       - vnc
-      - file
+      - app_launcher
       - warp
+      - biso
       - bookmark
+      - dash_sso
       example: self_hosted
       type: string
     arch:
@@ -10444,6 +10445,8 @@ components:
           $ref: '#/components/schemas/fallback_pool'
         id:
           $ref: '#/components/schemas/load-balancer_components-schemas-identifier'
+        location_strategy:
+          $ref: '#/components/schemas/location_strategy'
         modified_on:
           $ref: '#/components/schemas/timestamp'
         name:
@@ -10564,6 +10567,8 @@ components:
                 $ref: '#/components/schemas/default_pools'
               fallback_pool:
                 $ref: '#/components/schemas/fallback_pool'
+              location_strategy:
+                $ref: '#/components/schemas/location_strategy'
               pop_pools:
                 $ref: '#/components/schemas/pop_pools'
               random_steering:
@@ -10641,6 +10646,37 @@ components:
       description: Alpha-2 country code
       example: AF
       type: string
+    location_strategy:
+      description: Controls location-based steering for non-proxied requests. See
+        `steering_policy` to learn how steering is affected.
+      properties:
+        mode:
+          default: pop
+          description: |-
+            Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful.
+            - `"pop"`: Use the Cloudflare PoP location.
+            - `"resolver_ip"`: Use the DNS resolver GeoIP location. If the GeoIP lookup is unsuccessful, use the Cloudflare PoP location.
+          enum:
+          - pop
+          - resolver_ip
+          example: resolver_ip
+          type: string
+        prefer_ecs:
+          default: proximity
+          description: |-
+            Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location.
+            - `"always"`: Always prefer ECS.
+            - `"never"`: Never prefer ECS.
+            - `"proximity"`: Prefer ECS only when `steering_policy="proximity"`.
+            - `"geo"`: Prefer ECS only when `steering_policy="geo"`.
+          enum:
+          - always
+          - never
+          - proximity
+          - geo
+          example: always
+          type: string
+      type: object
     locations:
       properties:
         client_default:
@@ -15917,6 +15953,14 @@ components:
         uXtA8hWn6fK6eISD9HBdcAFToUvKNZ1BIDPvh9f95Ine8ar6yGd56TUNrHR8eHBs ESxz5ddVR/oWRysNJ+aGAyYqHS8S/ttmC7r4XCAHqXptkHPCGRqkAhsterYhd4I8
         /cBzejUobNCjjHFbtkAL/SjxZOLW+pNkZwfeYdM8iPkD54Uua1v2tdw= -----END CERTIFICATE-----'
       type: string
+    schemas-certificate_authority:
+      description: The Certificate Authority that Total TLS certificates will be issued
+        through.
+      enum:
+      - google
+      - lets_encrypt
+      example: google
+      type: string
     schemas-certificate_response_collection:
       allOf:
       - $ref: '#/components/schemas/api-response-collection'
@@ -16077,12 +16121,6 @@ components:
             id:
               $ref: '#/components/schemas/common_components-schemas-identifier'
           type: object
-        jump_start:
-          default: false
-          description: Automatically attempt to fetch existing DNS records. This field
-            is deprecated, and will be removed on 2022-09-23.
-          example: true
-          type: boolean
         name:
           $ref: '#/components/schemas/properties-name'
         type:
@@ -17641,6 +17679,12 @@ components:
       - txt
       example: txt
       type: string
+    schemas-validity_days:
+      description: The validity period in days for the certificates ordered via Total
+        TLS.
+      enum:
+      - 90
+      type: integer
     schemas-value:
       description: Enablement of Argo smart routing
       enum:
@@ -18979,14 +19023,14 @@ components:
       type: number
     steering_policy:
       default: '""'
-      description: "Steering Policy for this load balancer. \"off\": use default_pools,
-        \"geo\": use region_pools/country_pools/pop_pools, \"random\": select a pool
-        randomly, \"dynamic_latency\": use round trip time to select the closest pool
-        in default_pools (requires pool health checks), \n\"proximity\": use the pools
-        latitude and longitude to select the closest pool using the cloudflare pop
-        location for proxied requests or geoip / edns0-client-subnet for non-proxied,
-        \"\": will map to \"geo\" if you use region_pools/country_pools/pop_pools
-        otherwise \"off\""
+      description: |-
+        Steering Policy for this load balancer.
+        - `"off"`: Use `default_pools`.
+        - `"geo"`: Use `region_pools`/`country_pools`/`pop_pools`. For non-proxied requests, the country for `country_pools` is determined by `location_strategy`.
+        - `"random"`: Select a pool randomly.
+        - `"dynamic_latency"`: Use round trip time to select the closest pool in default_pools (requires pool health checks).
+        - `"proximity"`: Use the pools' latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `location_strategy` for non-proxied requests.
+        - `""`: Will map to `"geo"` if you use `region_pools`/`country_pools`/`pop_pools` otherwise `"off"`.
       enum:
       - "off"
       - geo
@@ -19515,6 +19559,21 @@ components:
       - status
       - policies
       type: object
+    total-tls_components-schemas-enabled:
+      description: If enabled, Total TLS will order a hostname specific TLS certificate
+        for any proxied A, AAAA, or CNAME record in your zone.
+      example: true
+      type: boolean
+    total-tls_components-schemas-status:
+      description: The current status for Total TLS. Pending states represent that
+        all certificates have not yet had orders initiated or removed.
+      enum:
+      - enabled
+      - disabled
+      - pending_enabled
+      - pending_disabled
+      example: pending_enabled
+      type: string
     total_active_users:
       description: Sets the total number of active user sessions on the route at a
         point in time. A route is a combination of host and path on which a waiting
@@ -19525,6 +19584,20 @@ components:
       maximum: 2147483647
       minimum: 200
       type: integer
+    total_tls_settings_response:
+      allOf:
+      - $ref: '#/components/schemas/api-response-single'
+      - properties:
+          result:
+            properties:
+              certificate_authority:
+                $ref: '#/components/schemas/schemas-certificate_authority'
+              enabled:
+                $ref: '#/components/schemas/total-tls_components-schemas-enabled'
+              status:
+                $ref: '#/components/schemas/total-tls_components-schemas-status'
+              validity_days:
+                $ref: '#/components/schemas/schemas-validity_days'
     totals:
       description: Breakdown of totals by data type
       properties:
@@ -34551,6 +34624,7 @@ paths:
       summary: List short-lived certificate CAs
   /accounts/{identifier}/access/bookmarks:
     get:
+      deprecated: true
       description: Lists Bookmark applications.
       operationId: access-bookmark-applications-list-bookmark-applications
       parameters:
@@ -34578,8 +34652,11 @@ paths:
       - api_email: []
         api_key: []
       summary: List Bookmark applications
+      x-cfDeprecation:
+        $ref: '#/components/schemas/bookmarks/x-cfDeprecations/bookmarks_deprecation'
   /accounts/{identifier}/access/bookmarks/{uuid}:
     delete:
+      deprecated: true
       description: Deletes a Bookmark application.
       operationId: access-bookmark-applications-delete-a-bookmark-application
       parameters:
@@ -34616,7 +34693,10 @@ paths:
       - api_email: []
         api_key: []
       summary: Delete a Bookmark application
+      x-cfDeprecation:
+        $ref: '#/components/schemas/bookmarks/x-cfDeprecations/bookmarks_deprecation'
     get:
+      deprecated: true
       description: Fetches a single Bookmark application.
       operationId: access-bookmark-applications-get-a-bookmark-application
       parameters:
@@ -34649,7 +34729,10 @@ paths:
       - api_email: []
         api_key: []
       summary: Get a Bookmark application
+      x-cfDeprecation:
+        $ref: '#/components/schemas/bookmarks/x-cfDeprecations/bookmarks_deprecation'
     post:
+      deprecated: true
       description: Create a new Bookmark application.
       operationId: access-bookmark-applications-create-a-bookmark-application
       parameters:
@@ -34686,7 +34769,10 @@ paths:
       - api_email: []
         api_key: []
       summary: Create a Bookmark application
+      x-cfDeprecation:
+        $ref: '#/components/schemas/bookmarks/x-cfDeprecations/bookmarks_deprecation'
     put:
+      deprecated: true
       description: Updates a configured Bookmark application.
       operationId: access-bookmark-applications-update-a-bookmark-application
       parameters:
@@ -34723,6 +34809,8 @@ paths:
       - api_email: []
         api_key: []
       summary: Update a Bookmark application
+      x-cfDeprecation:
+        $ref: '#/components/schemas/bookmarks/x-cfDeprecations/bookmarks_deprecation'
   /accounts/{identifier}/access/certificates:
     get:
       description: Lists all mTLS certificates.
@@ -50085,6 +50173,8 @@ paths:
                   $ref: '#/components/schemas/load-balancer_components-schemas-description'
                 fallback_pool:
                   $ref: '#/components/schemas/fallback_pool'
+                location_strategy:
+                  $ref: '#/components/schemas/location_strategy'
                 name:
                   $ref: '#/components/schemas/load-balancer_components-schemas-name'
                 pop_pools:
@@ -50953,6 +51043,8 @@ paths:
                   $ref: '#/components/schemas/load-balancer_components-schemas-enabled'
                 fallback_pool:
                   $ref: '#/components/schemas/fallback_pool'
+                location_strategy:
+                  $ref: '#/components/schemas/location_strategy'
                 name:
                   $ref: '#/components/schemas/load-balancer_components-schemas-name'
                 pop_pools:
@@ -51026,6 +51118,8 @@ paths:
                   $ref: '#/components/schemas/load-balancer_components-schemas-enabled'
                 fallback_pool:
                   $ref: '#/components/schemas/fallback_pool'
+                location_strategy:
+                  $ref: '#/components/schemas/location_strategy'
                 name:
                   $ref: '#/components/schemas/load-balancer_components-schemas-name'
                 pop_pools:
@@ -52776,6 +52870,92 @@ paths:
       x-cfPermissionsRequired:
         enum:
         - com.cloudflare.edge.worker.route.update
+  /zones/{zone_identifier}/acm/total_tls:
+    get:
+      description: Get Total TLS Settings for a Zone.
+      operationId: total-tls-total-tls-settings-details
+      parameters:
+      - in: path
+        name: zone_identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/total_tls_settings_response'
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: Total TLS Settings Details response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/total_tls_settings_response'
+          description: Total TLS Settings Details response
+      security:
+      - api_email: []
+        api_key: []
+      summary: Total TLS Settings Details
+      x-cfPermissionsRequired:
+        enum:
+        - '#ssl:read'
+      x-cfPlanAvailability:
+        business: true
+        enterprise: true
+        free: true
+        pro: true
+    post:
+      description: Set Total TLS Settings or disable the feature for a Zone.
+      operationId: total-tls-enable-or-disable-total-tls
+      parameters:
+      - in: path
+        name: zone_identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                certificate_authority:
+                  $ref: '#/components/schemas/schemas-certificate_authority'
+                enabled:
+                  $ref: '#/components/schemas/total-tls_components-schemas-enabled'
+              required:
+              - enabled
+        required: true
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/total_tls_settings_response'
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: Enable or Disable Total TLS response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/total_tls_settings_response'
+          description: Enable or Disable Total TLS response
+      security:
+      - api_email: []
+        api_key: []
+      summary: Enable or Disable Total TLS
+      x-cfPermissionsRequired:
+        enum:
+        - '#ssl:read'
+        - '#ssl:edit'
+      x-cfPlanAvailability:
+        business: true
+        enterprise: true
+        free: true
+        pro: true
   /zones/{zone_identifier}/analytics/colos:
     get:
       deprecated: true
