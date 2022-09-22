@@ -497,7 +497,7 @@ Multiple custom certificates with the same hostnames but different signature alg
 * **Certificates:** This column indicates how many certificates have been added to the pack. Mouse-over the info icon to reveal which certificates have been uploaded and when these certificates expire.`,
 	ssl_certs_keyless_name_keyless_server: "Key server label",
 	ssl_certs_modal_description: "You can upload multiple certificates for the hosts listed above and they will count as 1 of your certificate slots. Valid certificate types are listed below. Other certificate types can be uploaded in the primary SSL menu, but will not be included in this certificate package, and will count as one of your available SSL certificate slots.",
-	ssl_certs_modal_description_universal: "The certificates in the pack listed below are managed and auto-renewed by Cloudflare.",
+	ssl_certs_modal_description_managed: "The certificates in the pack listed below are managed and auto-renewed by Cloudflare.",
 	ssl_certs_remove_secondary: "You may not delete your primary certificate until all secondary certificates have been deleted",
 	ssl_certs_table_certificates: "certificates",
 	ssl_certs_table_auto_renewed: "Auto-renewed",
@@ -697,6 +697,7 @@ This feature requires additional configuration at your web server. Refer to our 
 	cert_type_universal: "Universal",
 	cert_type_advanced: "Advanced",
 	cert_type_backup: "Backup",
+	cert_type_total_tls: "Advanced - Total TLS",
 	wildcard_dcv_label: "Second DCV record is necessary due to wildcard.",
 	backup_row_toast: "This Backup certificate has not been deployed. It will be deployed automatically by Cloudflare in the event of a certificate revocation or key compromise. <0>Learn more</0>.",
 	status: {
