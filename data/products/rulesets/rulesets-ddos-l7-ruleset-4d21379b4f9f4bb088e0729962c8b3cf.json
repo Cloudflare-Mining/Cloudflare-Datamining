@@ -3,537 +3,537 @@
 	"name": "DDoS L7 ruleset",
 	"description": "Automatic mitigation of HTTP-based DDoS attacks. Cloudflare routinely adds signatures to address new attack vectors. Additional configuration allows you to customize the sensitivity of each rule and the performed mitigation action.",
 	"kind": "managed",
-	"version": "872",
+	"version": "873",
 	"rules": [
 		{
 			"id": "c9f18c647ae745c6b81b459d8ed59b32",
-			"version": "863",
+			"version": "864",
 			"action": "ddos_dynamic",
 			"categories": [
 				"gatebot"
 			],
 			"description": "Global L7 attack mitigations",
-			"last_updated": "2022-09-22T15:22:48.727178Z",
+			"last_updated": "2022-09-22T16:27:21.618746Z",
 			"ref": "GB0001",
 			"enabled": true
 		},
 		{
 			"id": "b35bee2bc7564b308d3a30b261e8d513",
-			"version": "863",
+			"version": "864",
 			"action": "ddos_dynamic",
 			"categories": [
 				"gatebot"
 			],
 			"description": "Global L7 Wordpress attack mitigations",
-			"last_updated": "2022-09-22T15:22:48.727178Z",
+			"last_updated": "2022-09-22T16:27:21.618746Z",
 			"ref": "GB0002",
 			"enabled": true
 		},
 		{
 			"id": "dd42da7baabe4e518eaf11c393596a9d",
-			"version": "871",
+			"version": "872",
 			"action": "ddos_dynamic",
 			"categories": [
 				"generic"
 			],
 			"description": "HTTP requests causing a high number of origin errors.",
-			"last_updated": "2022-09-22T15:22:48.727178Z",
+			"last_updated": "2022-09-22T16:27:21.618746Z",
 			"ref": "GEN0005",
 			"enabled": true
 		},
 		{
 			"id": "8ccc6e281e924141951791045fa43fd1",
-			"version": "871",
+			"version": "872",
 			"action": "ddos_dynamic",
 			"categories": [
 				"generic"
 			],
 			"description": "HTTP requests causing a high overall request rate (origin and cached).",
-			"last_updated": "2022-09-22T15:22:48.727178Z",
+			"last_updated": "2022-09-22T16:27:21.618746Z",
 			"ref": "GEN0002",
 			"enabled": true
 		},
 		{
 			"id": "a86652e8c5894c889e6bac777d4f6798",
-			"version": "871",
+			"version": "872",
 			"action": "block",
 			"categories": [
 				"generic"
 			],
 			"description": "HTTP requests causing a high request rate to authentication endpoints.",
-			"last_updated": "2022-09-22T15:22:48.727178Z",
+			"last_updated": "2022-09-22T16:27:21.618746Z",
 			"ref": "GEN0003",
 			"enabled": true
 		},
 		{
 			"id": "78da7447eca94fabbcb405fc923e2920",
-			"version": "871",
+			"version": "872",
 			"action": "ddos_dynamic",
 			"categories": [
 				"generic"
 			],
 			"description": "HTTP requests causing a high request rate to origin.",
-			"last_updated": "2022-09-22T15:22:48.727178Z",
+			"last_updated": "2022-09-22T16:27:21.618746Z",
 			"ref": "GEN0001",
 			"enabled": true
 		},
 		{
 			"id": "d38bbe6dc925461ca4e47e4cecd68c61",
-			"version": "871",
+			"version": "872",
 			"action": "ddos_dynamic",
 			"categories": [
 				"generic"
 			],
 			"description": "HTTP requests causing a high request rate to search endpoints.",
-			"last_updated": "2022-09-22T15:22:48.727178Z",
+			"last_updated": "2022-09-22T16:27:21.618746Z",
 			"ref": "GEN0004",
 			"enabled": true
 		},
 		{
 			"id": "ed651449c4a54f4b99c6e3bf863134d5",
-			"version": "260",
+			"version": "261",
 			"action": "block",
 			"categories": [
 				"generic"
 			],
 			"description": "HTTP requests from known bad user agents.",
-			"last_updated": "2022-09-22T15:22:48.727178Z",
+			"last_updated": "2022-09-22T16:27:21.618746Z",
 			"ref": "BOT0017",
 			"enabled": true
 		},
 		{
 			"id": "ec54235374294cce9a2fc732d5ab44b4",
-			"version": "871",
+			"version": "872",
 			"action": "block",
 			"categories": [
 				"botnets"
 			],
 			"description": "HTTP requests from known botnet (signature #1).",
-			"last_updated": "2022-09-22T15:22:48.727178Z",
+			"last_updated": "2022-09-22T16:27:21.618746Z",
 			"ref": "BOT0001",
 			"enabled": true
 		},
 		{
 			"id": "70624ad8d8f54950879270eb60c55da0",
-			"version": "557",
+			"version": "558",
 			"action": "block",
 			"categories": [
 				"unusual-requests"
 			],
 			"description": "HTTP requests from known botnet (signature #10).",
-			"last_updated": "2022-09-22T15:22:48.727178Z",
+			"last_updated": "2022-09-22T16:27:21.618746Z",
 			"ref": "BOT0010",
 			"enabled": true
 		},
 		{
 			"id": "dd4d0a93c065441fb7c99729d96c7c08",
-			"version": "557",
+			"version": "558",
 			"action": "block",
 			"categories": [
 				"botnets"
 			],
 			"description": "HTTP requests from known botnet (signature #11).",
-			"last_updated": "2022-09-22T15:22:48.727178Z",
+			"last_updated": "2022-09-22T16:27:21.618746Z",
 			"ref": "BOT0011",
 			"enabled": true
 		},
 		{
 			"id": "ba3cec38078d4942990b0176ba39bd3c",
-			"version": "557",
+			"version": "558",
 			"action": "block",
 			"categories": [
 				"botnets"
 			],
 			"description": "HTTP requests from known botnet (signature #12).",
-			"last_updated": "2022-09-22T15:22:48.727178Z",
+			"last_updated": "2022-09-22T16:27:21.618746Z",
 			"ref": "BOT0012",
 			"enabled": true
 		},
 		{
 			"id": "895cc3da570d44f4b7221acd5b0061ad",
-			"version": "455",
+			"version": "456",
 			"action": "block",
 			"categories": [
 				"botnets"
 			],
 			"description": "HTTP requests from known botnet (signature #13).",
-			"last_updated": "2022-09-22T15:22:48.727178Z",
+			"last_updated": "2022-09-22T16:27:21.618746Z",
 			"ref": "BOT0013",
 			"enabled": true
 		},
 		{
 			"id": "936cfa4a307a47abb9e4c6c92b8f84ac",
-			"version": "471",
+			"version": "472",
 			"action": "block",
 			"categories": [
 				"botnets"
 			],
 			"description": "HTTP requests from known botnet (signature #14).",
-			"last_updated": "2022-09-22T15:22:48.727178Z",
+			"last_updated": "2022-09-22T16:27:21.618746Z",
 			"ref": "BOT0014",
 			"enabled": true
 		},
 		{
 			"id": "a76230cd3a9b4a5cae2456dfc54e4ec5",
-			"version": "407",
+			"version": "408",
 			"action": "block",
 			"categories": [
 				"botnets"
 			],
 			"description": "HTTP requests from known botnet (signature #15).",
-			"last_updated": "2022-09-22T15:22:48.727178Z",
+			"last_updated": "2022-09-22T16:27:21.618746Z",
 			"ref": "BOT0015",
 			"enabled": true
 		},
 		{
 			"id": "21c5b4a19c444e7687a8f570d3ac2d1e",
-			"version": "309",
+			"version": "310",
 			"action": "block",
 			"categories": [
 				"unusual-requests"
 			],
 			"description": "HTTP requests from known botnet (signature #16).",
-			"last_updated": "2022-09-22T15:22:48.727178Z",
+			"last_updated": "2022-09-22T16:27:21.618746Z",
 			"ref": "BOT0016",
 			"enabled": true
 		},
 		{
 			"id": "88ea75246fb442e1b31149c0b61eb5b4",
-			"version": "871",
+			"version": "872",
 			"action": "block",
 			"categories": [
 				"botnets"
 			],
 			"description": "HTTP requests from known botnet (signature #2).",
-			"last_updated": "2022-09-22T15:22:48.727178Z",
+			"last_updated": "2022-09-22T16:27:21.618746Z",
 			"ref": "BOT0002",
 			"enabled": true
 		},
 		{
 			"id": "4b8c4e16bab54d428dd0af3b81b5405c",
-			"version": "871",
+			"version": "872",
 			"action": "block",
 			"categories": [
 				"botnets"
 			],
 			"description": "HTTP requests from known botnet (signature #3).",
-			"last_updated": "2022-09-22T15:22:48.727178Z",
+			"last_updated": "2022-09-22T16:27:21.618746Z",
 			"ref": "BOT0003",
 			"enabled": true
 		},
 		{
 			"id": "29d170ba2f004cc787b1ac272c9e04e7",
-			"version": "871",
+			"version": "872",
 			"action": "block",
 			"categories": [
 				"botnets"
 			],
 			"description": "HTTP requests from known botnet (signature #4).",
-			"last_updated": "2022-09-22T15:22:48.727178Z",
+			"last_updated": "2022-09-22T16:27:21.618746Z",
 			"ref": "BOT0004",
 			"enabled": true
 		},
 		{
 			"id": "9bc0d8e988e545dea9bd4843c4bef55c",
-			"version": "871",
+			"version": "872",
 			"action": "ddos_dynamic",
 			"categories": [
 				"botnets"
 			],
 			"description": "HTTP requests from known botnet (signature #5).",
-			"last_updated": "2022-09-22T15:22:48.727178Z",
+			"last_updated": "2022-09-22T16:27:21.618746Z",
 			"ref": "BOT0005",
 			"enabled": true
 		},
 		{
 			"id": "38d0f5f8a16644da943088d7f0f59d6b",
-			"version": "869",
+			"version": "870",
 			"action": "block",
 			"categories": [
 				"botnets"
 			],
 			"description": "HTTP requests from known botnet (signature #6).",
-			"last_updated": "2022-09-22T15:22:48.727178Z",
+			"last_updated": "2022-09-22T16:27:21.618746Z",
 			"ref": "BOT0006",
 			"enabled": true
 		},
 		{
 			"id": "ca582ff63cdc45bab18edbfae7dccda4",
-			"version": "751",
+			"version": "752",
 			"action": "block",
 			"categories": [
 				"botnets"
 			],
 			"description": "HTTP requests from known botnet (signature #7).",
-			"last_updated": "2022-09-22T15:22:48.727178Z",
+			"last_updated": "2022-09-22T16:27:21.618746Z",
 			"ref": "BOT0007",
 			"enabled": true
 		},
 		{
 			"id": "a551f5c45678464bac87b4b47f588984",
-			"version": "562",
+			"version": "563",
 			"action": "block",
 			"categories": [
 				"botnets"
 			],
 			"description": "HTTP requests from known botnet (signature #8).",
-			"last_updated": "2022-09-22T15:22:48.727178Z",
+			"last_updated": "2022-09-22T16:27:21.618746Z",
 			"ref": "BOT0008",
 			"enabled": true
 		},
 		{
 			"id": "aeb5687324bf472cb5c675966fa59d23",
-			"version": "338",
+			"version": "339",
 			"action": "managed_challenge",
 			"categories": [
 				"generic"
 			],
 			"description": "HTTP requests that are very likely coming from bots.",
-			"last_updated": "2022-09-22T15:22:48.727178Z",
+			"last_updated": "2022-09-22T16:27:21.618746Z",
 			"ref": "GEN0007",
 			"enabled": true
 		},
 		{
 			"id": "0a07c24f3cd44a57a5c19b73d2f294d7",
-			"version": "374",
+			"version": "375",
 			"action": "ddos_dynamic",
 			"categories": [
 				"unusual-requests"
 			],
 			"description": "HTTP requests trying to impersonate browsers.",
-			"last_updated": "2022-09-22T15:22:48.727178Z",
+			"last_updated": "2022-09-22T16:27:21.618746Z",
 			"ref": "UR0012",
 			"enabled": true
 		},
 		{
 			"id": "130c95a873af4db9bc4b55c691b2849e",
-			"version": "349",
+			"version": "350",
 			"action": "block",
 			"categories": [
 				"unusual-requests"
 			],
 			"description": "HTTP requests with unusual HTTP headers (signature #13).",
-			"last_updated": "2022-09-22T15:22:48.727178Z",
+			"last_updated": "2022-09-22T16:27:21.618746Z",
 			"ref": "UR0013",
 			"enabled": true
 		},
 		{
 			"id": "0b1e17bd25c74e38834f19043486aee1",
-			"version": "871",
+			"version": "872",
 			"action": "block",
 			"categories": [
 				"unusual-requests"
 			],
 			"description": "HTTP requests with unusual HTTP headers or URI path (signature #1).",
-			"last_updated": "2022-09-22T15:22:48.727178Z",
+			"last_updated": "2022-09-22T16:27:21.618746Z",
 			"ref": "UR0001",
 			"enabled": true
 		},
 		{
 			"id": "369567d4bd2a4526a55f92702a42e67f",
-			"version": "871",
+			"version": "872",
 			"action": "block",
 			"categories": [
 				"unusual-requests"
 			],
 			"description": "HTTP requests with unusual HTTP headers or URI path (signature #10).",
-			"last_updated": "2022-09-22T15:22:48.727178Z",
+			"last_updated": "2022-09-22T16:27:21.618746Z",
 			"ref": "UR0010",
 			"enabled": true
 		},
 		{
 			"id": "fdfdac75430c4c47a959592f0aa5e68a",
-			"version": "871",
+			"version": "872",
 			"action": "ddos_dynamic",
 			"categories": [
 				"unusual-requests"
 			],
 			"description": "HTTP requests with unusual HTTP headers or URI path (signature #11).",
-			"last_updated": "2022-09-22T15:22:48.727178Z",
+			"last_updated": "2022-09-22T16:27:21.618746Z",
 			"ref": "UR0011",
 			"enabled": true
 		},
 		{
 			"id": "6cddbc7daafc41a599b597c9bdd9121d",
-			"version": "309",
+			"version": "310",
 			"action": "block",
 			"categories": [
 				"unusual-requests"
 			],
 			"description": "HTTP requests with unusual HTTP headers or URI path (signature #14).",
-			"last_updated": "2022-09-22T15:22:48.727178Z",
+			"last_updated": "2022-09-22T16:27:21.618746Z",
 			"ref": "UR0014",
 			"enabled": true
 		},
 		{
 			"id": "6593c18fc1cf458f835acebd61b90333",
-			"version": "276",
+			"version": "277",
 			"action": "managed_challenge",
 			"categories": [
 				"unusual-requests"
 			],
 			"description": "HTTP requests with unusual HTTP headers or URI path (signature #15).",
-			"last_updated": "2022-09-22T15:22:48.727178Z",
+			"last_updated": "2022-09-22T16:27:21.618746Z",
 			"ref": "UR0015",
 			"enabled": true
 		},
 		{
 			"id": "60a48054bbcf4014ac63c44f1712a123",
-			"version": "155",
+			"version": "156",
 			"action": "block",
 			"categories": [
 				"unusual-requests"
 			],
 			"description": "HTTP requests with unusual HTTP headers or URI path (signature #16).",
-			"last_updated": "2022-09-22T15:22:48.727178Z",
+			"last_updated": "2022-09-22T16:27:21.618746Z",
 			"ref": "UR0016",
 			"enabled": true
 		},
 		{
 			"id": "d51933ed2bff4dca8a9db34081b13394",
-			"version": "871",
+			"version": "872",
 			"action": "block",
 			"categories": [
 				"unusual-requests"
 			],
 			"description": "HTTP requests with unusual HTTP headers or URI path (signature #2).",
-			"last_updated": "2022-09-22T15:22:48.727178Z",
+			"last_updated": "2022-09-22T16:27:21.618746Z",
 			"ref": "UR0002",
 			"enabled": true
 		},
 		{
 			"id": "83d41ba0dbde4122a1c950912de94fb2",
-			"version": "871",
+			"version": "872",
 			"action": "block",
 			"categories": [
 				"unusual-requests"
 			],
 			"description": "HTTP requests with unusual HTTP headers or URI path (signature #3).",
-			"last_updated": "2022-09-22T15:22:48.727178Z",
+			"last_updated": "2022-09-22T16:27:21.618746Z",
 			"ref": "UR0003",
 			"enabled": true
 		},
 		{
 			"id": "edfa03ac08f8491ca0ef40e16e7b0fd1",
-			"version": "871",
+			"version": "872",
 			"action": "block",
 			"categories": [
 				"unusual-requests"
 			],
 			"description": "HTTP requests with unusual HTTP headers or URI path (signature #4).",
-			"last_updated": "2022-09-22T15:22:48.727178Z",
+			"last_updated": "2022-09-22T16:27:21.618746Z",
 			"ref": "UR0004",
 			"enabled": true
 		},
 		{
 			"id": "580630228dfe48a9b1c7a28d43759ec2",
-			"version": "871",
+			"version": "872",
 			"action": "block",
 			"categories": [
 				"unusual-requests"
 			],
 			"description": "HTTP requests with unusual HTTP headers or URI path (signature #5).",
-			"last_updated": "2022-09-22T15:22:48.727178Z",
+			"last_updated": "2022-09-22T16:27:21.618746Z",
 			"ref": "UR0005",
 			"enabled": true
 		},
 		{
 			"id": "5f18e0e0c1b1459a874432c2ad07ec62",
-			"version": "871",
+			"version": "872",
 			"action": "block",
 			"categories": [
 				"unusual-requests"
 			],
 			"description": "HTTP requests with unusual HTTP headers or URI path (signature #6).",
-			"last_updated": "2022-09-22T15:22:48.727178Z",
+			"last_updated": "2022-09-22T16:27:21.618746Z",
 			"ref": "UR0006",
 			"enabled": true
 		},
 		{
 			"id": "a9f745951c0144b79e67e71afed9e6ca",
-			"version": "871",
+			"version": "872",
 			"action": "block",
 			"categories": [
 				"unusual-requests"
 			],
 			"description": "HTTP requests with unusual HTTP headers or URI path (signature #7).",
-			"last_updated": "2022-09-22T15:22:48.727178Z",
+			"last_updated": "2022-09-22T16:27:21.618746Z",
 			"ref": "UR0007",
 			"enabled": true
 		},
 		{
 			"id": "d2d8324e41f944c0835e487639260ed1",
-			"version": "871",
+			"version": "872",
 			"action": "block",
 			"categories": [
 				"unusual-requests"
 			],
 			"description": "HTTP requests with unusual HTTP headers or URI path (signature #8).",
-			"last_updated": "2022-09-22T15:22:48.727178Z",
+			"last_updated": "2022-09-22T16:27:21.618746Z",
 			"ref": "UR0008",
 			"enabled": true
 		},
 		{
 			"id": "765000c5c9dd44e3bb95c3de76debdc2",
-			"version": "562",
+			"version": "563",
 			"action": "block",
 			"categories": [
 				"botnets"
 			],
 			"description": "HTTP requests with unusual HTTP headers or URI path (signature #9).",
-			"last_updated": "2022-09-22T15:22:48.727178Z",
+			"last_updated": "2022-09-22T16:27:21.618746Z",
 			"ref": "BOT0009",
 			"enabled": true
 		},
 		{
 			"id": "865ab6caabf7478090e8c94f8a9eaa9d",
-			"version": "871",
+			"version": "872",
 			"action": "block",
 			"categories": [
 				"unusual-requests"
 			],
 			"description": "HTTP requests with unusual HTTP headers or URI path (signature #9).",
-			"last_updated": "2022-09-22T15:22:48.727178Z",
+			"last_updated": "2022-09-22T16:27:21.618746Z",
 			"ref": "UR0009",
 			"enabled": true
 		},
 		{
 			"id": "a8c6333711ff4b0a81371d1c444be2c3",
-			"version": "163",
+			"version": "164",
 			"action": "log",
 			"categories": [
 				"advanced"
 			],
 			"description": "Location-Aware DDoS Protection (Available only to Enterprise zones with Advanced DDoS service).",
-			"last_updated": "2022-09-22T15:22:48.727178Z",
+			"last_updated": "2022-09-22T16:27:21.618746Z",
 			"ref": "ADV0001",
 			"enabled": true
 		},
 		{
 			"id": "ca3c07df048b4c2c9c9350116f9d3516",
-			"version": "562",
+			"version": "563",
 			"action": "block",
 			"categories": [
 				"test"
 			],
 			"description": "Test rule: will quickly block URI containing 'blockme=npvenJAo9gMlnd5yD37xQ9P2qp3934'.",
-			"last_updated": "2022-09-22T15:22:48.727178Z",
+			"last_updated": "2022-09-22T16:27:21.618746Z",
 			"ref": "GEN0006",
 			"enabled": true
 		},
 		{
 			"id": "7709d496081e458899c1e3a6e4fe8e55",
-			"version": "60",
+			"version": "61",
 			"action": "log",
 			"categories": [
 				"advanced"
 			],
 			"description": "User-Agent-aware DDoS Protection (Available only to Enterprise zones with Advanced DDoS service).",
-			"last_updated": "2022-09-22T15:22:48.727178Z",
+			"last_updated": "2022-09-22T16:27:21.618746Z",
 			"ref": "ADV0002",
 			"enabled": true
 		}
 	],
-	"last_updated": "2022-09-22T15:22:48.727178Z",
+	"last_updated": "2022-09-22T16:27:21.618746Z",
 	"phase": "ddos_l7"
 }
