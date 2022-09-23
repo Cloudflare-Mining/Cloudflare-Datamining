@@ -13,7 +13,7 @@ for(const entitlement of importFiles[0].default){
 const categories = sortObjectByKeys(rawCategories);
 
 ---
-<Layout title="Known Account Entitlements - Cloudflare Datamining">
+<Layout title="Known Account Entitlements - Cloudflare Datamining" description="All known Cloudflare account entitlements">
 	<main class="m-auto max-w-5xl p-4">
 		<FlagsTable title="Known Account Entitlements" data={categories} headers={["Entitlement", "Type"]}></FlagsTable>
 		<p>Have an entitlement not covered on the list? Reach out to <a href="https://twitter.com/CherryJimbo">@CherryJimbo</a> on Twitter or <code>CherryJimbo#0001</code> on Discord.</p>
