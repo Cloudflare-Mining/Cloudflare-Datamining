@@ -1486,6 +1486,7 @@
 	"AccountPagesFunctionsInvocationsAdaptiveGroups": {
 		"avg": "",
 		"dimensions": "List of dimensions to group by",
+		"quantiles": "Quantiles of a metric per dimension",
 		"sum": "The sum of values for a metric per dimension"
 	},
 	"AccountPagesFunctionsInvocationsAdaptiveGroupsAvg": {
@@ -1497,10 +1498,17 @@
 		"datetimeHour": "Request datetime, truncated to start of an hour",
 		"datetimeMinute": "Request datetime, truncated to start of an minute",
 		"scriptName": "The name of the script",
-		"status": "Status of the worker invocation"
+		"status": "Status of the worker invocation",
+		"usageModel": "Usage model of the worker invocation"
 	},
 	"AccountPagesFunctionsInvocationsAdaptiveGroupsFilter_InputObject": {},
 	"AccountPagesFunctionsInvocationsAdaptiveGroupsOrderBy": {},
+	"AccountPagesFunctionsInvocationsAdaptiveGroupsQuantiles": {
+		"cpuTimeP50": "CPU time 50th percentile - microseconds",
+		"cpuTimeP75": "CPU time 75th percentile - microseconds",
+		"cpuTimeP99": "CPU time 99th percentile - microseconds",
+		"cpuTimeP999": "CPU time 99.9th percentile - microseconds"
+	},
 	"AccountPagesFunctionsInvocationsAdaptiveGroupsSum": {
 		"duration": "Sum of Duration - GB*s",
 		"errors": "Sum of Errors",
