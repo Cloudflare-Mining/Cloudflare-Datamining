@@ -94506,6 +94506,70 @@
 				}
 			}
 		},
+		"/radar/http/timeseries/browser_family": {
+			"get": {
+				"summary": "Get time series of user agents aggregated in families",
+				"description": "Percentage distribution of traffic of the top user agents aggregated in families in the selected time range, over time.",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "Get time series of user agents aggregated in families response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"meta": {
+											"type": "object",
+											"properties": {}
+										},
+										"data": {
+											"type": "object",
+											"properties": {
+												"serie_0": {
+													"type": "object",
+													"properties": {
+														"timestamps": {
+															"type": "array",
+															"items": {
+																"type": "string"
+															}
+														},
+														"<browser name>": {
+															"type": "array",
+															"items": {
+																"type": "string"
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.user.read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			}
+		},
 		"/radar/http/top/locations/bot_class/{bot_class}": {
 			"get": {
 				"summary": "Get top locations by bot class",
@@ -94516,7 +94580,13 @@
 						"in": "path",
 						"required": true,
 						"schema": {
-							"type": "string"
+							"type": "string",
+							"description": "Bot class",
+							"enum": [
+								"likely_automated",
+								"likely_human"
+							],
+							"default": "likely_automated"
 						}
 					}
 				],
@@ -94643,7 +94713,14 @@
 						"in": "path",
 						"required": true,
 						"schema": {
-							"type": "string"
+							"type": "string",
+							"description": "Device type",
+							"enum": [
+								"desktop",
+								"mobile",
+								"other"
+							],
+							"default": "desktop"
 						}
 					}
 				],
@@ -94770,7 +94847,16 @@
 						"in": "path",
 						"required": true,
 						"schema": {
-							"type": "string"
+							"type": "string",
+							"description": "TLS version",
+							"enum": [
+								"tlsv1_0",
+								"tlsv1_1",
+								"tlsv1_2",
+								"tlsv1_3",
+								"tlsvquic"
+							],
+							"default": "tlsv1_0"
 						}
 					}
 				],
@@ -94897,7 +94983,13 @@
 						"in": "path",
 						"required": true,
 						"schema": {
-							"type": "string"
+							"type": "string",
+							"description": "HTTP Protocol",
+							"enum": [
+								"http",
+								"https"
+							],
+							"default": "http"
 						}
 					}
 				],
@@ -95024,7 +95116,14 @@
 						"in": "path",
 						"required": true,
 						"schema": {
-							"type": "string"
+							"type": "string",
+							"description": "HTTP version",
+							"enum": [
+								"httpv1",
+								"httpv2",
+								"httpv3"
+							],
+							"default": "httpv1"
 						}
 					}
 				],
@@ -95151,7 +95250,13 @@
 						"in": "path",
 						"required": true,
 						"schema": {
-							"type": "string"
+							"type": "string",
+							"description": "IP version",
+							"enum": [
+								"ipv4",
+								"ipv6"
+							],
+							"default": "ipv4"
 						}
 					}
 				],
@@ -95396,7 +95501,13 @@
 						"in": "path",
 						"required": true,
 						"schema": {
-							"type": "string"
+							"type": "string",
+							"description": "Bot class",
+							"enum": [
+								"likely_automated",
+								"likely_human"
+							],
+							"default": "likely_automated"
 						}
 					}
 				],
@@ -95523,7 +95634,14 @@
 						"in": "path",
 						"required": true,
 						"schema": {
-							"type": "string"
+							"type": "string",
+							"description": "Device type",
+							"enum": [
+								"desktop",
+								"mobile",
+								"other"
+							],
+							"default": "desktop"
 						}
 					}
 				],
@@ -95650,7 +95768,16 @@
 						"in": "path",
 						"required": true,
 						"schema": {
-							"type": "string"
+							"type": "string",
+							"description": "TLS version",
+							"enum": [
+								"tlsv1_0",
+								"tlsv1_1",
+								"tlsv1_2",
+								"tlsv1_3",
+								"tlsvquic"
+							],
+							"default": "tlsv1_0"
 						}
 					}
 				],
@@ -95777,7 +95904,13 @@
 						"in": "path",
 						"required": true,
 						"schema": {
-							"type": "string"
+							"type": "string",
+							"description": "HTTP Protocol",
+							"enum": [
+								"http",
+								"https"
+							],
+							"default": "http"
 						}
 					}
 				],
@@ -95904,7 +96037,14 @@
 						"in": "path",
 						"required": true,
 						"schema": {
-							"type": "string"
+							"type": "string",
+							"description": "HTTP version",
+							"enum": [
+								"httpv1",
+								"httpv2",
+								"httpv3"
+							],
+							"default": "httpv1"
 						}
 					}
 				],
@@ -96031,7 +96171,13 @@
 						"in": "path",
 						"required": true,
 						"schema": {
-							"type": "string"
+							"type": "string",
+							"description": "IP version",
+							"enum": [
+								"ipv4",
+								"ipv6"
+							],
+							"default": "ipv4"
 						}
 					}
 				],
@@ -96342,7 +96488,119 @@
 													"items": {
 														"type": "object",
 														"properties": {
-															"name": {
+															"<browser name>": {
+																"type": "string"
+															},
+															"value": {
+																"type": "string"
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.user.read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			}
+		},
+		"/radar/http/top/browser_families": {
+			"get": {
+				"summary": "Get top user agents aggregated in families by HTTP requests",
+				"description": "Get the top user agents aggregated in families by HTTP traffic. Values are a percentage out of the total traffic.",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "Get top user agents aggregated in families by HTTP requests response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"meta": {
+											"type": "object",
+											"properties": {
+												"confidenceInfo": {
+													"type": "object",
+													"properties": {
+														"level": {
+															"type": "integer"
+														},
+														"annotations": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"properties": {
+																	"dataSource": {
+																		"type": "string"
+																	},
+																	"eventType": {
+																		"type": "string"
+																	},
+																	"description": {
+																		"type": "string"
+																	},
+																	"startTime": {
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2022-09-17T10:22:57.555000+00:00"
+																	},
+																	"endTime": {
+																		"type": "string",
+																		"format": "date-time",
+																		"example": "2022-09-17T10:22:57.555000+00:00"
+																	}
+																}
+															}
+														}
+													}
+												},
+												"dateRange": {
+													"type": "object",
+													"properties": {
+														"startTime": {
+															"type": "string",
+															"format": "date-time",
+															"example": "2022-09-17T10:22:57.555000+00:00"
+														},
+														"endTime": {
+															"type": "string",
+															"format": "date-time",
+															"example": "2022-09-17T10:22:57.555000+00:00"
+														}
+													}
+												}
+											}
+										},
+										"data": {
+											"type": "object",
+											"properties": {
+												"top_0": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"<browser name>": {
 																"type": "string"
 															},
 															"value": {
@@ -96625,7 +96883,7 @@
 						"required": true,
 						"schema": {
 							"type": "string",
-							"example": "AF",
+							"example": "US",
 							"description": "Alpha-2 country code"
 						}
 					}
@@ -96843,7 +97101,8 @@
 						"in": "path",
 						"required": true,
 						"schema": {
-							"type": "integer"
+							"type": "integer",
+							"description": "ASN"
 						}
 					}
 				],
@@ -98663,6 +98922,224 @@
 															"value": {
 																"type": "string",
 																"example": "65"
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.user.read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			}
+		},
+		"/radar/ranking/timeseries": {
+			"get": {
+				"summary": "Get Domains Rank time series",
+				"description": "Gets Domains Rank updates change over time. Raw values are returned.",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "Get Domains Rank time series response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"meta": {
+											"type": "object",
+											"properties": {
+												"dateRange": {
+													"type": "object",
+													"properties": {
+														"startTime": {
+															"type": "string",
+															"format": "date-time",
+															"example": "2022-09-16T10:22:57.555000+00:00",
+															"description": "Adjusted start of date range"
+														},
+														"endTime": {
+															"type": "string",
+															"format": "date-time",
+															"example": "2022-09-17T10:22:57.555000+00:00",
+															"description": "Adjusted end of date range"
+														}
+													}
+												}
+											}
+										},
+										"data": {
+											"type": "object",
+											"properties": {
+												"serie_0": {
+													"type": "object",
+													"properties": {
+														"timestamps": {
+															"type": "array",
+															"items": {
+																"type": "string",
+																"example": "2022-09-02"
+															}
+														},
+														"<domain name>": {
+															"type": "array",
+															"items": {
+																"type": "integer"
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.user.read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			}
+		},
+		"/radar/ranking/top": {
+			"get": {
+				"summary": "Get Domains Rank top",
+				"description": "Gets Top Domains Rank globally or by country.",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "Get Domains Rank top response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"meta": {
+											"type": "object",
+											"properties": {
+												"top_0": {
+													"type": "object",
+													"properties": {
+														"date": {
+															"type": "string",
+															"example": "2022-09-19"
+														}
+													}
+												}
+											}
+										},
+										"data": {
+											"type": "object",
+											"properties": {
+												"top_0": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"rank": {
+																"type": "integer"
+															},
+															"domain": {
+																"type": "string",
+																"example": "google.com"
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.user.read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			}
+		},
+		"/radar/annotations/top/outages": {
+			"get": {
+				"summary": "Get top outages annotations",
+				"description": "",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "Get top outages annotations response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"data": {
+											"type": "object",
+											"properties": {
+												"annotations": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"clientCountryAlpha2": {
+																"type": "string",
+																"example": "PT"
+															},
+															"clientCountryName": {
+																"type": "string",
+																"example": "Portugal"
+															},
+															"value": {
+																"type": "string",
+																"example": "5"
 															}
 														}
 													}
