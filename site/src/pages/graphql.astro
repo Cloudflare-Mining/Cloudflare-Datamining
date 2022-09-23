@@ -6,7 +6,7 @@ const importFiles = await Astro.glob('../../../data/other/graphql.json');
 const flags = importFiles[0].default;
 
 ---
-<Layout title="GraphQL - Cloudflare Datamining">
+<Layout title="GraphQL - Cloudflare Datamining" description="Discover Cloudflare's full GraphQL Schema">
 	<main class="m-auto max-w-5xl p-4">
 		<FlagsTable title="GraphQL" data={flags}></FlagsTable>
 	</main>
