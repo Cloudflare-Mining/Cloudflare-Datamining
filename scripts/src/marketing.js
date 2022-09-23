@@ -220,7 +220,7 @@ const processPage = async function(urlPath, bmCookie){
 async function run(){
 	const cfRes = await fetch('https://jross.me/cf.json');
 	const cf = await cfRes.json();
-	if(cf?.country !== 'US'){
+	if(cf?.country !== 'US' && process.env.CI){
 		console.log('Action isn\'t running in the US. Skipping marketing site processing.', cf);
 		return;
 	}
@@ -230,7 +230,7 @@ async function run(){
 	const sitemap = await fetch('https://www.cloudflare.com/sitemap.xml').then(res => res.text());
 	const sitemapXml = parser.parse(sitemap);
 	for(const url of sitemapXml.urlset.url){
-		if(url.loc){
+		if(url.loc && url.loc.startsWith('https://www.cloudflare.com/')){
 			const rawPath = url.loc.replace('https://www.cloudflare.com/', '');
 			addPath(rawPath);
 		}
