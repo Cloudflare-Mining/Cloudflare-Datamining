@@ -804,7 +804,7 @@ components:
         created_at:
           $ref: '#/components/schemas/timestamp'
         ip_address:
-          $ref: '#/components/schemas/components-schemas-ip'
+          $ref: '#/components/schemas/schemas-ip'
         ray_id:
           $ref: '#/components/schemas/ray_id'
         user_email:
@@ -1130,61 +1130,6 @@ components:
         not be a hostname proxied by Cloudflare.
       example: 0.0.0.0
       type: string
-    address-maps:
-      properties:
-        can_delete:
-          $ref: '#/components/schemas/can_delete'
-        can_modify_ips:
-          $ref: '#/components/schemas/can_modify_ips'
-        created_at:
-          $ref: '#/components/schemas/timestamp'
-        default_sni:
-          $ref: '#/components/schemas/default_sni'
-        description:
-          $ref: '#/components/schemas/address-maps_components-schemas-description'
-        id:
-          $ref: '#/components/schemas/common_components-schemas-identifier'
-        modified_at:
-          $ref: '#/components/schemas/timestamp'
-      type: object
-    address-maps-ip:
-      properties:
-        created_at:
-          $ref: '#/components/schemas/created-on'
-        ip:
-          $ref: '#/components/schemas/schemas-ip'
-      type: object
-    address-maps-membership:
-      properties:
-        can_delete:
-          $ref: '#/components/schemas/schemas-can_delete'
-        created_at:
-          $ref: '#/components/schemas/created-on'
-        identifier:
-          $ref: '#/components/schemas/common_components-schemas-identifier'
-        kind:
-          $ref: '#/components/schemas/components-schemas-kind'
-      type: object
-    address-maps_components-schemas-description:
-      description: An optional description field which may be used to describe the
-        types of IPs or zones on the map
-      example: My Ecommerce zones
-      nullable: true
-      type: string
-    address-maps_components-schemas-response_collection:
-      allOf:
-      - $ref: '#/components/schemas/api-response-collection'
-      - properties:
-          result:
-            items:
-              $ref: '#/components/schemas/address-maps'
-            type: array
-    address-maps_components-schemas-single_response:
-      allOf:
-      - $ref: '#/components/schemas/api-response-single'
-      - properties:
-          result:
-            $ref: '#/components/schemas/address-maps'
     address2:
       description: Optional address line for unit, floor, suite, etc.
       example: Suite 430
@@ -2639,11 +2584,6 @@ components:
           result:
             $ref: '#/components/schemas/bookmarks'
     bot_class:
-      default: likely_automated
-      description: Bot class
-      enum:
-      - likely_automated
-      - likely_human
       type: string
     brand_check:
       description: Certificate Authority is manually reviewing the order
@@ -2921,18 +2861,6 @@ components:
       - basic
       - simplified
       type: string
-    can_delete:
-      description: If set to false, then the Address Map cannot be deleted via API.
-        This is true for Cloudflare-managed maps
-      example: true
-      readOnly: true
-      type: boolean
-    can_modify_ips:
-      description: If set to false, then the IPs on the Address Map cannot be modified
-        via the API. This is true for Cloudflare-managed maps
-      example: true
-      readOnly: true
-      type: boolean
     can_register:
       description: Indicates if the domain can be registered as a new domain.
       example: false
@@ -3978,23 +3906,9 @@ components:
         on the origin as we check from multiple locations.
       type: integer
     components-schemas-ip:
-      description: The IP address of the authenticating user.
-      example: 198.41.129.166
-      type: string
-    components-schemas-ips:
-      description: A list of CIDRs to restrict ingress connections
-      items:
-        description: The IPv4 CIDR or IPv6 CIDR. IPv6 CIDRs are limited to a maximum
-          of /109. IPv4 CIDRs are limited to a maximum of /25
-        example: 192.0.2.1/32
-        type: string
-      type: array
-    components-schemas-kind:
-      description: The type of the membership
-      enum:
-      - zone
-      - account
-      example: zone
+      description: IPV6 destination ip assigned to this location. DNS requests sent
+        to this IP will counted as the request under this location. (auto-generated)
+      example: 2001:0db8:85a3:0000:0000:8a2e:0370:7334
       type: string
     components-schemas-member:
       properties:
@@ -5090,11 +5004,6 @@ components:
       format: date-time
       readOnly: true
       type: string
-    created-on:
-      example: "2014-01-01T05:20:00.12345Z"
-      format: date-time
-      readOnly: true
-      type: string
     created_at:
       description: This is the time the hostname was created.
       example: "2020-02-06T18:11:23.531995Z"
@@ -5568,15 +5477,6 @@ components:
         description: A pool ID
         type: string
       type: array
-    default_sni:
-      description: If you have legacy TLS clients which do not send the TLS server
-        name indicator, then you can specify one default SNI on the map. If Cloudflare
-        receives a TLS handshake from a client without an SNI, it will respond with
-        the default SNI on those IPs. The default SNI can be any valid zone or subdomain
-        owned by the account.
-      example: '*.example.com'
-      nullable: true
-      type: string
     default_template_language:
       default: en-US
       description: The language of the default page template. If no default_template_language
@@ -6409,12 +6309,6 @@ components:
           result:
             type: object
     device_type:
-      default: desktop
-      description: Device type
-      enum:
-      - desktop
-      - mobile
-      - other
       type: string
     devices:
       properties:
@@ -7362,14 +7256,6 @@ components:
             maxItems: 0
             type: array
         type: object
-    empty_result:
-      default: []
-    empty_success_response:
-      allOf:
-      - $ref: '#/components/schemas/api-response-single'
-      - properties:
-          result:
-            $ref: '#/components/schemas/empty_result'
     enable_binding_cookie:
       default: false
       description: Enables the binding cookie, which increases security against compromised
@@ -7408,9 +7294,6 @@ components:
     end_time_seconds:
       description: Specifies the end time for the video clip in seconds.
       readOnly: true
-      type: integer
-    entities_components-schemas-asn:
-      description: ASN
       type: integer
     environment:
       description: Worker environment associated with the zone and hostname
@@ -8141,20 +8024,6 @@ components:
       - yearly
       example: monthly
       type: string
-    full_response:
-      allOf:
-      - $ref: '#/components/schemas/api-response-single'
-      - properties:
-          result:
-            allOf:
-            - $ref: '#/components/schemas/address-maps'
-            - properties:
-                ips:
-                  $ref: '#/components/schemas/schemas-ips'
-                memberships:
-                  $ref: '#/components/schemas/memberships'
-              type: object
-        type: object
     gateway-account-device-settings:
       properties:
         gateway_proxy_enabled:
@@ -9016,19 +8885,8 @@ components:
       example: true
       type: boolean
     http_protocol:
-      default: http
-      description: HTTP Protocol
-      enum:
-      - http
-      - https
       type: string
     http_version:
-      default: httpv1
-      description: HTTP version
-      enum:
-      - httpv1
-      - httpv2
-      - httpv3
       type: string
     http2:
       allOf:
@@ -9374,10 +9232,6 @@ components:
         name:
           example: Malware
           type: string
-    ip_address:
-      description: An IPv4 or IPv6 address
-      example: 192.0.2.1
-      type: string
     ip_components-schemas-ip:
       properties:
         belongs_to_ref:
@@ -9495,11 +9349,6 @@ components:
       title: IP ranges
       type: object
     ip_version:
-      default: ipv4
-      description: IP version
-      enum:
-      - ipv4
-      - ipv6
       type: string
     ipam-delegations:
       properties:
@@ -10795,7 +10644,7 @@ components:
       type: object
     location:
       description: Alpha-2 country code
-      example: US
+      example: AF
       type: string
     location_strategy:
       description: Controls location-based steering for non-proxied requests. See
@@ -10841,7 +10690,7 @@ components:
         id:
           $ref: '#/components/schemas/locations_components-schemas-uuid'
         ip:
-          $ref: '#/components/schemas/locations_components-schemas-ip'
+          $ref: '#/components/schemas/components-schemas-ip'
         name:
           $ref: '#/components/schemas/locations_components-schemas-name'
         networks:
@@ -10857,11 +10706,6 @@ components:
             type: object
     locations_components-schemas-identifier:
       example: 699d98642c564d2e855e9661899b7252
-    locations_components-schemas-ip:
-      description: IPV6 destination ip assigned to this location. DNS requests sent
-        to this IP will counted as the request under this location. (auto-generated)
-      example: 2001:0db8:85a3:0000:0000:8a2e:0370:7334
-      type: string
     locations_components-schemas-name:
       description: The name of the Location
       example: Austin Office Location
@@ -11267,12 +11111,6 @@ components:
       maxLength: 32
       readOnly: true
       type: string
-    memberships:
-      description: Zones and Accounts which will be assigned IPs on this Address Map.
-        A zone membership will take priority over an account membership.
-      items:
-        $ref: '#/components/schemas/address-maps-membership'
-      type: array
     messages:
       example: []
       items:
@@ -13794,7 +13632,7 @@ components:
         id:
           $ref: '#/components/schemas/proxy-endpoints_components-schemas-uuid'
         ips:
-          $ref: '#/components/schemas/components-schemas-ips'
+          $ref: '#/components/schemas/schemas-ips'
         name:
           $ref: '#/components/schemas/proxy-endpoints_components-schemas-name'
         subdomain:
@@ -16101,10 +15939,6 @@ components:
           type: string
       title: Bookmark Application
       type: object
-    schemas-can_delete:
-      description: Controls whether the membership can be deleted via the API or not.
-      example: true
-      type: boolean
     schemas-certificate:
       description: The zone's SSL certificate or SSL certificate and intermediate(s)
       example: '-----BEGIN CERTIFICATE----- MIIDtTCCAp2gAwIBAgIJAM15n7fdxhRtMA0GCSqGSIb3DQEBBQUAMEUxCzAJBgNV
@@ -16721,8 +16555,8 @@ components:
       - $ref: '#/components/schemas/user_invite'
       type: object
     schemas-ip:
-      description: An IPv4 or IPv6 address
-      example: 192.0.2.1
+      description: The IP address of the authenticating user.
+      example: 198.41.129.166
       type: string
     schemas-ip_configuration:
       properties:
@@ -16739,9 +16573,12 @@ components:
           type: string
       title: An IP address configuration.
     schemas-ips:
-      description: The set of IPs on the Address Map
+      description: A list of CIDRs to restrict ingress connections
       items:
-        $ref: '#/components/schemas/address-maps-ip'
+        description: The IPv4 CIDR or IPv6 CIDR. IPv6 CIDRs are limited to a maximum
+          of /109. IPv4 CIDRs are limited to a maximum of /25
+        example: 192.0.2.1/32
+        type: string
       type: array
     schemas-ipv6:
       example: '2001:0DB8::'
@@ -19695,14 +19532,6 @@ components:
       - "off"
       type: string
     tls_version:
-      default: tlsv1_0
-      description: TLS version
-      enum:
-      - tlsv1_0
-      - tlsv1_1
-      - tlsv1_2
-      - tlsv1_3
-      - tlsvquic
       type: string
     token:
       properties:
@@ -22452,357 +22281,6 @@ paths:
         enterprise: true
         free: true
         pro: true
-  /accounts/{account_identifier}/addressing/address_maps:
-    get:
-      description: List all address maps owned by the account.
-      operationId: ip-address-management-address-maps-list-address-maps
-      parameters:
-      - in: path
-        name: account_identifier
-        required: true
-        schema:
-          $ref: '#/components/schemas/common_components-schemas-identifier'
-      responses:
-        4xx:
-          content:
-            application/json:
-              schema:
-                allOf:
-                - $ref: '#/components/schemas/address-maps_components-schemas-response_collection'
-                - $ref: '#/components/schemas/api-response-common-failure'
-          description: List Address Maps response failure
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/address-maps_components-schemas-response_collection'
-          description: List Address Maps response
-      security:
-      - api_email: []
-        api_key: []
-      summary: List Address Maps
-    post:
-      description: Create a new address map under the account.
-      operationId: ip-address-management-address-maps-create-address-map
-      parameters:
-      - in: path
-        name: account_identifier
-        required: true
-        schema:
-          $ref: '#/components/schemas/common_components-schemas-identifier'
-      requestBody:
-        content:
-          application/json:
-            schema:
-              properties:
-                description:
-                  $ref: '#/components/schemas/address-maps_components-schemas-description'
-        required: true
-      responses:
-        4xx:
-          content:
-            application/json:
-              schema:
-                allOf:
-                - $ref: '#/components/schemas/full_response'
-                - $ref: '#/components/schemas/api-response-common-failure'
-          description: Create Address Map response failure
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/full_response'
-          description: Create Address Map response
-      security:
-      - api_email: []
-        api_key: []
-      summary: Create Address Map
-  /accounts/{account_identifier}/addressing/address_maps/{address_map_identifier}:
-    delete:
-      description: Delete a particular address map owned by the account.
-      operationId: ip-address-management-address-maps-delete-address-map
-      parameters:
-      - in: path
-        name: address_map_identifier
-        required: true
-        schema:
-          $ref: '#/components/schemas/common_components-schemas-identifier'
-      - in: path
-        name: account_identifier
-        required: true
-        schema:
-          $ref: '#/components/schemas/common_components-schemas-identifier'
-      requestBody:
-        content:
-          application/json: {}
-        required: true
-      responses:
-        4xx:
-          content:
-            application/json:
-              schema:
-                allOf:
-                - $ref: '#/components/schemas/empty_success_response'
-                - $ref: '#/components/schemas/api-response-common-failure'
-          description: Delete Address Map response failure
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/empty_success_response'
-          description: Delete Address Map response
-      security:
-      - api_email: []
-        api_key: []
-      summary: Delete Address Map
-    get:
-      description: Show a particular address map owned by the account.
-      operationId: ip-address-management-address-maps-address-map-details
-      parameters:
-      - in: path
-        name: address_map_identifier
-        required: true
-        schema:
-          $ref: '#/components/schemas/common_components-schemas-identifier'
-      - in: path
-        name: account_identifier
-        required: true
-        schema:
-          $ref: '#/components/schemas/common_components-schemas-identifier'
-      responses:
-        4xx:
-          content:
-            application/json:
-              schema:
-                allOf:
-                - $ref: '#/components/schemas/full_response'
-                - $ref: '#/components/schemas/api-response-common-failure'
-          description: Address Map Details response failure
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/full_response'
-          description: Address Map Details response
-      security:
-      - api_email: []
-        api_key: []
-      summary: Address Map Details
-    patch:
-      description: Modify the description or default SNI for an address map owned
-        by the account.
-      operationId: ip-address-management-address-maps-update-address-map
-      parameters:
-      - in: path
-        name: address_map_identifier
-        required: true
-        schema:
-          $ref: '#/components/schemas/common_components-schemas-identifier'
-      - in: path
-        name: account_identifier
-        required: true
-        schema:
-          $ref: '#/components/schemas/common_components-schemas-identifier'
-      requestBody:
-        content:
-          application/json:
-            schema:
-              properties:
-                default_sni:
-                  $ref: '#/components/schemas/default_sni'
-                description:
-                  $ref: '#/components/schemas/address-maps_components-schemas-description'
-        required: true
-      responses:
-        4xx:
-          content:
-            application/json:
-              schema:
-                allOf:
-                - $ref: '#/components/schemas/address-maps_components-schemas-single_response'
-                - $ref: '#/components/schemas/api-response-common-failure'
-          description: Update Address Map response failure
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/address-maps_components-schemas-single_response'
-          description: Update Address Map response
-      security:
-      - api_email: []
-        api_key: []
-      summary: Update Address Map
-  /accounts/{account_identifier}/addressing/address_maps/{address_map_identifier}/ips/{ip_address}:
-    delete:
-      description: Remove an IP from a particular address map.
-      operationId: ip-address-management-address-maps-remove-an-ip-from-an-address-map
-      parameters:
-      - in: path
-        name: ip_address
-        required: true
-        schema:
-          $ref: '#/components/schemas/ip_address'
-      - in: path
-        name: address_map_identifier
-        required: true
-        schema:
-          $ref: '#/components/schemas/common_components-schemas-identifier'
-      - in: path
-        name: account_identifier
-        required: true
-        schema:
-          $ref: '#/components/schemas/common_components-schemas-identifier'
-      requestBody:
-        content:
-          application/json: {}
-        required: true
-      responses:
-        4xx:
-          content:
-            application/json:
-              schema:
-                allOf:
-                - $ref: '#/components/schemas/empty_success_response'
-                - $ref: '#/components/schemas/api-response-common-failure'
-          description: Remove an IP from an Address Map response failure
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/empty_success_response'
-          description: Remove an IP from an Address Map response
-      security:
-      - api_email: []
-        api_key: []
-      summary: Remove an IP from an Address Map
-    put:
-      description: Add an IP from a prefix owned by the account to a particular address
-        map.
-      operationId: ip-address-management-address-maps-add-an-ip-to-an-address-map
-      parameters:
-      - in: path
-        name: ip_address
-        required: true
-        schema:
-          $ref: '#/components/schemas/ip_address'
-      - in: path
-        name: address_map_identifier
-        required: true
-        schema:
-          $ref: '#/components/schemas/common_components-schemas-identifier'
-      - in: path
-        name: account_identifier
-        required: true
-        schema:
-          $ref: '#/components/schemas/common_components-schemas-identifier'
-      requestBody:
-        content:
-          application/json: {}
-        required: true
-      responses:
-        4xx:
-          content:
-            application/json:
-              schema:
-                allOf:
-                - $ref: '#/components/schemas/empty_success_response'
-                - $ref: '#/components/schemas/api-response-common-failure'
-          description: Add an IP to an Address Map response failure
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/empty_success_response'
-          description: Add an IP to an Address Map response
-      security:
-      - api_email: []
-        api_key: []
-      summary: Add an IP to an Address Map
-  /accounts/{account_identifier}/addressing/address_maps/{address_map_identifier}/zones/{zone_identifier}:
-    delete:
-      description: Remove a zone as a member of a particular address map.
-      operationId: ip-address-management-address-maps-remove-a-zone-membership-from-an-address-map
-      parameters:
-      - in: path
-        name: zone_identifier
-        required: true
-        schema:
-          $ref: '#/components/schemas/common_components-schemas-identifier'
-      - in: path
-        name: address_map_identifier
-        required: true
-        schema:
-          $ref: '#/components/schemas/common_components-schemas-identifier'
-      - in: path
-        name: account_identifier
-        required: true
-        schema:
-          $ref: '#/components/schemas/common_components-schemas-identifier'
-      requestBody:
-        content:
-          application/json: {}
-        required: true
-      responses:
-        4xx:
-          content:
-            application/json:
-              schema:
-                allOf:
-                - $ref: '#/components/schemas/empty_success_response'
-                - $ref: '#/components/schemas/api-response-common-failure'
-          description: Remove a zone membership from an Address Map response failure
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/empty_success_response'
-          description: Remove a zone membership from an Address Map response
-      security:
-      - api_email: []
-        api_key: []
-      summary: Remove a zone membership from an Address Map
-    put:
-      description: Add a zone as a member of a particular address map.
-      operationId: ip-address-management-address-maps-add-a-zone-membership-to-an-address-map
-      parameters:
-      - in: path
-        name: zone_identifier
-        required: true
-        schema:
-          $ref: '#/components/schemas/common_components-schemas-identifier'
-      - in: path
-        name: address_map_identifier
-        required: true
-        schema:
-          $ref: '#/components/schemas/common_components-schemas-identifier'
-      - in: path
-        name: account_identifier
-        required: true
-        schema:
-          $ref: '#/components/schemas/common_components-schemas-identifier'
-      requestBody:
-        content:
-          application/json: {}
-        required: true
-      responses:
-        4xx:
-          content:
-            application/json:
-              schema:
-                allOf:
-                - $ref: '#/components/schemas/empty_success_response'
-                - $ref: '#/components/schemas/api-response-common-failure'
-          description: Add a zone membership to an Address Map response failure
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/empty_success_response'
-          description: Add a zone membership to an Address Map response
-      security:
-      - api_email: []
-        api_key: []
-      summary: Add a zone membership to an Address Map
   /accounts/{account_identifier}/addressing/loa_documents:
     post:
       description: Submit LOA document (pdf format) under the account.
@@ -34405,91 +33883,6 @@ paths:
       x-cfPermissionsRequired:
         enum:
         - com.cloudflare.edge.worker.cron.subdomain.create
-  /accounts/{account_identifier1}/addressing/address_maps/{address_map_identifier}/accounts/{account_identifier}:
-    delete:
-      description: Remove an account as a member of a particular address map.
-      operationId: ip-address-management-address-maps-remove-an-account-membership-from-an-address-map
-      parameters:
-      - in: path
-        name: account_identifier
-        required: true
-        schema:
-          $ref: '#/components/schemas/common_components-schemas-identifier'
-      - in: path
-        name: address_map_identifier
-        required: true
-        schema:
-          $ref: '#/components/schemas/common_components-schemas-identifier'
-      - in: path
-        name: account_identifier1
-        required: true
-        schema:
-          $ref: '#/components/schemas/common_components-schemas-identifier'
-      requestBody:
-        content:
-          application/json: {}
-        required: true
-      responses:
-        4xx:
-          content:
-            application/json:
-              schema:
-                allOf:
-                - $ref: '#/components/schemas/empty_success_response'
-                - $ref: '#/components/schemas/api-response-common-failure'
-          description: Remove an account membership from an Address Map response failure
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/empty_success_response'
-          description: Remove an account membership from an Address Map response
-      security:
-      - api_email: []
-        api_key: []
-      summary: Remove an account membership from an Address Map
-    put:
-      description: Add an account as a member of a particular address map.
-      operationId: ip-address-management-address-maps-add-an-account-membership-to-an-address-map
-      parameters:
-      - in: path
-        name: account_identifier
-        required: true
-        schema:
-          $ref: '#/components/schemas/common_components-schemas-identifier'
-      - in: path
-        name: address_map_identifier
-        required: true
-        schema:
-          $ref: '#/components/schemas/common_components-schemas-identifier'
-      - in: path
-        name: account_identifier1
-        required: true
-        schema:
-          $ref: '#/components/schemas/common_components-schemas-identifier'
-      requestBody:
-        content:
-          application/json: {}
-        required: true
-      responses:
-        4xx:
-          content:
-            application/json:
-              schema:
-                allOf:
-                - $ref: '#/components/schemas/empty_success_response'
-                - $ref: '#/components/schemas/api-response-common-failure'
-          description: Add an account membership to an Address Map response failure
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/empty_success_response'
-          description: Add an account membership to an Address Map response
-      security:
-      - api_email: []
-        api_key: []
-      summary: Add an account membership to an Address Map
   /accounts/{identifier}:
     get:
       description: Get information about a specific account that you are a member
@@ -38868,7 +38261,7 @@ paths:
             schema:
               properties:
                 ips:
-                  $ref: '#/components/schemas/components-schemas-ips'
+                  $ref: '#/components/schemas/schemas-ips'
                 name:
                   $ref: '#/components/schemas/proxy-endpoints_components-schemas-name'
                 subdomain:
@@ -38987,7 +38380,7 @@ paths:
             schema:
               properties:
                 ips:
-                  $ref: '#/components/schemas/components-schemas-ips'
+                  $ref: '#/components/schemas/schemas-ips'
                 name:
                   $ref: '#/components/schemas/proxy-endpoints_components-schemas-name'
                 subdomain:
@@ -40601,72 +39994,6 @@ paths:
       - api_email: []
         api_key: []
       summary: Get outages annotations
-      x-cfPermissionsRequired:
-        enum:
-        - com.cloudflare.api.user.read
-      x-cfPlanAvailability:
-        business: true
-        enterprise: true
-        free: true
-        pro: true
-  /radar/annotations/top/outages:
-    get:
-      operationId: radar-annotations-get-top-outages-annotations
-      responses:
-        4xx:
-          content:
-            application/json:
-              schema:
-                allOf:
-                - properties:
-                    data:
-                      properties:
-                        annotations:
-                          items:
-                            properties:
-                              clientCountryAlpha2:
-                                example: PT
-                                type: string
-                              clientCountryName:
-                                example: Portugal
-                                type: string
-                              value:
-                                example: "5"
-                                type: string
-                            type: object
-                          type: array
-                      type: object
-                  type: object
-                - $ref: '#/components/schemas/api-response-common-failure'
-          description: Get top outages annotations response failure
-        "200":
-          content:
-            application/json:
-              schema:
-                properties:
-                  data:
-                    properties:
-                      annotations:
-                        items:
-                          properties:
-                            clientCountryAlpha2:
-                              example: PT
-                              type: string
-                            clientCountryName:
-                              example: Portugal
-                              type: string
-                            value:
-                              example: "5"
-                              type: string
-                          type: object
-                        type: array
-                    type: object
-                type: object
-          description: Get top outages annotations response
-      security:
-      - api_email: []
-        api_key: []
-      summary: Get top outages annotations
       x-cfPermissionsRequired:
         enum:
         - com.cloudflare.api.user.read
@@ -42808,7 +42135,7 @@ paths:
         name: asn
         required: true
         schema:
-          $ref: '#/components/schemas/entities_components-schemas-asn'
+          $ref: '#/components/schemas/components-schemas-asn'
       responses:
         4xx:
           content:
@@ -43662,73 +42989,6 @@ paths:
       - api_email: []
         api_key: []
       summary: Get time series of user agents
-      x-cfPermissionsRequired:
-        enum:
-        - com.cloudflare.api.user.read
-      x-cfPlanAvailability:
-        business: true
-        enterprise: true
-        free: true
-        pro: true
-  /radar/http/timeseries/browser_family:
-    get:
-      description: Percentage distribution of traffic of the top user agents aggregated
-        in families in the selected time range, over time.
-      operationId: radar-http-get-time-series-of-user-agents-aggregated-in-families
-      responses:
-        4xx:
-          content:
-            application/json:
-              schema:
-                allOf:
-                - properties:
-                    data:
-                      properties:
-                        serie_0:
-                          properties:
-                            <browser name>:
-                              items:
-                                type: string
-                              type: array
-                            timestamps:
-                              items:
-                                type: string
-                              type: array
-                          type: object
-                      type: object
-                    meta:
-                      type: object
-                  type: object
-                - $ref: '#/components/schemas/api-response-common-failure'
-          description: Get time series of user agents aggregated in families response
-            failure
-        "200":
-          content:
-            application/json:
-              schema:
-                properties:
-                  data:
-                    properties:
-                      serie_0:
-                        properties:
-                          <browser name>:
-                            items:
-                              type: string
-                            type: array
-                          timestamps:
-                            items:
-                              type: string
-                            type: array
-                        type: object
-                    type: object
-                  meta:
-                    type: object
-                type: object
-          description: Get time series of user agents aggregated in families response
-      security:
-      - api_email: []
-        api_key: []
-      summary: Get time series of user agents aggregated in families
       x-cfPermissionsRequired:
         enum:
         - com.cloudflare.api.user.read
@@ -45191,142 +44451,6 @@ paths:
         enterprise: true
         free: true
         pro: true
-  /radar/http/top/browser_families:
-    get:
-      description: Get the top user agents aggregated in families by HTTP traffic.
-        Values are a percentage out of the total traffic.
-      operationId: radar-http-get-top-user-agents-aggregated-in-families-by-http-requests
-      responses:
-        4xx:
-          content:
-            application/json:
-              schema:
-                allOf:
-                - properties:
-                    data:
-                      properties:
-                        top_0:
-                          items:
-                            properties:
-                              <browser name>:
-                                type: string
-                              value:
-                                type: string
-                            type: object
-                          type: array
-                      type: object
-                    meta:
-                      properties:
-                        confidenceInfo:
-                          properties:
-                            annotations:
-                              items:
-                                properties:
-                                  dataSource:
-                                    type: string
-                                  description:
-                                    type: string
-                                  endTime:
-                                    example: "2022-09-17T10:22:57.555Z"
-                                    format: date-time
-                                    type: string
-                                  eventType:
-                                    type: string
-                                  startTime:
-                                    example: "2022-09-17T10:22:57.555Z"
-                                    format: date-time
-                                    type: string
-                                type: object
-                              type: array
-                            level:
-                              type: integer
-                          type: object
-                        dateRange:
-                          properties:
-                            endTime:
-                              example: "2022-09-17T10:22:57.555Z"
-                              format: date-time
-                              type: string
-                            startTime:
-                              example: "2022-09-17T10:22:57.555Z"
-                              format: date-time
-                              type: string
-                          type: object
-                      type: object
-                  type: object
-                - $ref: '#/components/schemas/api-response-common-failure'
-          description: Get top user agents aggregated in families by HTTP requests
-            response failure
-        "200":
-          content:
-            application/json:
-              schema:
-                properties:
-                  data:
-                    properties:
-                      top_0:
-                        items:
-                          properties:
-                            <browser name>:
-                              type: string
-                            value:
-                              type: string
-                          type: object
-                        type: array
-                    type: object
-                  meta:
-                    properties:
-                      confidenceInfo:
-                        properties:
-                          annotations:
-                            items:
-                              properties:
-                                dataSource:
-                                  type: string
-                                description:
-                                  type: string
-                                endTime:
-                                  example: "2022-09-17T10:22:57.555Z"
-                                  format: date-time
-                                  type: string
-                                eventType:
-                                  type: string
-                                startTime:
-                                  example: "2022-09-17T10:22:57.555Z"
-                                  format: date-time
-                                  type: string
-                              type: object
-                            type: array
-                          level:
-                            type: integer
-                        type: object
-                      dateRange:
-                        properties:
-                          endTime:
-                            example: "2022-09-17T10:22:57.555Z"
-                            format: date-time
-                            type: string
-                          startTime:
-                            example: "2022-09-17T10:22:57.555Z"
-                            format: date-time
-                            type: string
-                        type: object
-                    type: object
-                type: object
-          description: Get top user agents aggregated in families by HTTP requests
-            response
-      security:
-      - api_email: []
-        api_key: []
-      summary: Get top user agents aggregated in families by HTTP requests
-      x-cfPermissionsRequired:
-        enum:
-        - com.cloudflare.api.user.read
-      x-cfPlanAvailability:
-        business: true
-        enterprise: true
-        free: true
-        pro: true
   /radar/http/top/browsers:
     get:
       description: Get the top user agents by HTTP traffic. Values are a percentage
@@ -45344,7 +44468,7 @@ paths:
                         top_0:
                           items:
                             properties:
-                              <browser name>:
+                              name:
                                 type: string
                               value:
                                 type: string
@@ -45402,7 +44526,7 @@ paths:
                       top_0:
                         items:
                           properties:
-                            <browser name>:
+                            name:
                               type: string
                             value:
                               type: string
@@ -46799,178 +45923,6 @@ paths:
       - api_email: []
         api_key: []
       summary: Get top locations
-      x-cfPermissionsRequired:
-        enum:
-        - com.cloudflare.api.user.read
-      x-cfPlanAvailability:
-        business: true
-        enterprise: true
-        free: true
-        pro: true
-  /radar/ranking/timeseries:
-    get:
-      description: Gets Domains Rank updates change over time. Raw values are returned.
-      operationId: radar-ranking-get-domains-rank-time-series
-      responses:
-        4xx:
-          content:
-            application/json:
-              schema:
-                allOf:
-                - properties:
-                    data:
-                      properties:
-                        serie_0:
-                          properties:
-                            <domain name>:
-                              items:
-                                type: integer
-                              type: array
-                            timestamps:
-                              items:
-                                example: "2022-09-02"
-                                type: string
-                              type: array
-                          type: object
-                      type: object
-                    meta:
-                      properties:
-                        dateRange:
-                          properties:
-                            endTime:
-                              description: Adjusted end of date range
-                              example: "2022-09-17T10:22:57.555Z"
-                              format: date-time
-                              type: string
-                            startTime:
-                              description: Adjusted start of date range
-                              example: "2022-09-16T10:22:57.555Z"
-                              format: date-time
-                              type: string
-                          type: object
-                      type: object
-                  type: object
-                - $ref: '#/components/schemas/api-response-common-failure'
-          description: Get Domains Rank time series response failure
-        "200":
-          content:
-            application/json:
-              schema:
-                properties:
-                  data:
-                    properties:
-                      serie_0:
-                        properties:
-                          <domain name>:
-                            items:
-                              type: integer
-                            type: array
-                          timestamps:
-                            items:
-                              example: "2022-09-02"
-                              type: string
-                            type: array
-                        type: object
-                    type: object
-                  meta:
-                    properties:
-                      dateRange:
-                        properties:
-                          endTime:
-                            description: Adjusted end of date range
-                            example: "2022-09-17T10:22:57.555Z"
-                            format: date-time
-                            type: string
-                          startTime:
-                            description: Adjusted start of date range
-                            example: "2022-09-16T10:22:57.555Z"
-                            format: date-time
-                            type: string
-                        type: object
-                    type: object
-                type: object
-          description: Get Domains Rank time series response
-      security:
-      - api_email: []
-        api_key: []
-      summary: Get Domains Rank time series
-      x-cfPermissionsRequired:
-        enum:
-        - com.cloudflare.api.user.read
-      x-cfPlanAvailability:
-        business: true
-        enterprise: true
-        free: true
-        pro: true
-  /radar/ranking/top:
-    get:
-      description: Gets Top Domains Rank globally or by country.
-      operationId: radar-ranking-get-domains-rank-top
-      responses:
-        4xx:
-          content:
-            application/json:
-              schema:
-                allOf:
-                - properties:
-                    data:
-                      properties:
-                        top_0:
-                          items:
-                            properties:
-                              domain:
-                                example: google.com
-                                type: string
-                              rank:
-                                type: integer
-                            type: object
-                          type: array
-                      type: object
-                    meta:
-                      properties:
-                        top_0:
-                          properties:
-                            date:
-                              example: "2022-09-19"
-                              type: string
-                          type: object
-                      type: object
-                  type: object
-                - $ref: '#/components/schemas/api-response-common-failure'
-          description: Get Domains Rank top response failure
-        "200":
-          content:
-            application/json:
-              schema:
-                properties:
-                  data:
-                    properties:
-                      top_0:
-                        items:
-                          properties:
-                            domain:
-                              example: google.com
-                              type: string
-                            rank:
-                              type: integer
-                          type: object
-                        type: array
-                    type: object
-                  meta:
-                    properties:
-                      top_0:
-                        properties:
-                          date:
-                            example: "2022-09-19"
-                            type: string
-                        type: object
-                    type: object
-                type: object
-          description: Get Domains Rank top response
-      security:
-      - api_email: []
-        api_key: []
-      summary: Get Domains Rank top
       x-cfPermissionsRequired:
         enum:
         - com.cloudflare.api.user.read
