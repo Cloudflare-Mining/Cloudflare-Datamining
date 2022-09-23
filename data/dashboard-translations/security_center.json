@@ -347,6 +347,8 @@
 	"security_center.security_insights.scan.actions.description": "Cloudflare will no longer actively scan for security threats. To turn the scans back on, click Scan now at the top of the Security Insights page.",
 	"security_center.security_insights.scan.actions.button": "Disable scans",
 	"security_center.security_insights.scan.timed_out": "Your scan seems to be taking a while. Check back in an hour.",
+	"security_center.security_insights.scan.limited_by_time": "The last scan completed successfully, but we were unable to scan some of your hostnames as the quantity exceeds your account maximum number of hosts.",
+	"security_center.security_insights.scan.limited_by_size": "The last scan completed successfully, but we were unable to scan some of your hostnames due to the quantity in your account. To learn more about increasing your maximum, reach out to your account team.",
 	"security_center.infrastructure.table.headers.proxied": "Proxied",
 	"security_center.infrastructure.table.headers.access": "Cloudflare Access policy",
 	"security_center.infrastructure.table.headers.domain": "Domain",
@@ -415,5 +417,10 @@
 	"security_center.categories.category_form.submit_button": "Submit request",
 	"security_center.categories.category_form.submitted": "Your request has been submitted.",
 	"security_center.categories.category_form.error": "There was an error with your request.",
-	"security_center.categories.category_form.limit": "You can submit up to 3 changes."
+	"security_center.categories.category_form.limit": "You can submit up to 3 changes.",
+	"security_center.reports.error": "We are unable to load this report at this time.",
+	"security_center.reports.preview": "To read more, please contact your sales representative regarding your plan.",
+	"security_center.reports.title": "Cloudforce One Reports",
+	"security_center.reports.reports_error": "Unable to retrieve reports.",
+	"security_center.reports.empty_state": "No reports available."
 }
