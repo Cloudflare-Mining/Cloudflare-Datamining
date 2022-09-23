@@ -64693,19 +64693,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"allOf": [
-										{
-											"$ref": "#/paths/~1user/get/responses/200/content/application~1json/schema/allOf/0"
-										},
-										{
-											"properties": {
-												"result": {
-													"default": [],
-													"x-$comment": "This exists so the build renders a correctly formatted response object"
-												}
-											}
-										}
-									]
+									"$ref": "#/paths/~1user~1tokens~1permission_groups/get/responses/200/content/application~1json/schema/allOf/0"
 								}
 							}
 						}
@@ -64763,19 +64751,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"allOf": [
-										{
-											"$ref": "#/paths/~1user/get/responses/200/content/application~1json/schema/allOf/0"
-										},
-										{
-											"properties": {
-												"result": {
-													"default": [],
-													"x-$comment": "This exists so the build renders a correctly formatted response object"
-												}
-											}
-										}
-									]
+									"$ref": "#/paths/~1user~1tokens~1permission_groups/get/responses/200/content/application~1json/schema/allOf/0"
 								}
 							}
 						}
@@ -64829,7 +64805,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1addressing~1address_maps~1%7Baddress_map_identifier%7D~1ips~1%7Bip_address%7D/put/responses/200/content/application~1json/schema"
+									"$ref": "#/paths/~1user~1tokens~1permission_groups/get/responses/200/content/application~1json/schema/allOf/0"
 								}
 							}
 						}
@@ -64885,19 +64861,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"allOf": [
-										{
-											"$ref": "#/paths/~1user/get/responses/200/content/application~1json/schema/allOf/0"
-										},
-										{
-											"properties": {
-												"result": {
-													"default": [],
-													"x-$comment": "This exists so the build renders a correctly formatted response object"
-												}
-											}
-										}
-									]
+									"$ref": "#/paths/~1user~1tokens~1permission_groups/get/responses/200/content/application~1json/schema/allOf/0"
 								}
 							}
 						}
@@ -64951,7 +64915,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/paths/~1accounts~1%7Baccount_identifier1%7D~1addressing~1address_maps~1%7Baddress_map_identifier%7D~1accounts~1%7Baccount_identifier%7D/put/responses/200/content/application~1json/schema"
+									"$ref": "#/paths/~1user~1tokens~1permission_groups/get/responses/200/content/application~1json/schema/allOf/0"
 								}
 							}
 						}
@@ -65007,19 +64971,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"allOf": [
-										{
-											"$ref": "#/paths/~1user/get/responses/200/content/application~1json/schema/allOf/0"
-										},
-										{
-											"properties": {
-												"result": {
-													"default": [],
-													"x-$comment": "This exists so the build renders a correctly formatted response object"
-												}
-											}
-										}
-									]
+									"$ref": "#/paths/~1user~1tokens~1permission_groups/get/responses/200/content/application~1json/schema/allOf/0"
 								}
 							}
 						}
@@ -65073,7 +65025,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1addressing~1address_maps~1%7Baddress_map_identifier%7D~1zones~1%7Bzone_identifier%7D/put/responses/200/content/application~1json/schema"
+									"$ref": "#/paths/~1user~1tokens~1permission_groups/get/responses/200/content/application~1json/schema/allOf/0"
 								}
 							}
 						}
