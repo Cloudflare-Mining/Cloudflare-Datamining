@@ -2639,6 +2639,11 @@ components:
           result:
             $ref: '#/components/schemas/bookmarks'
     bot_class:
+      default: likely_automated
+      description: Bot class
+      enum:
+      - likely_automated
+      - likely_human
       type: string
     brand_check:
       description: Certificate Authority is manually reviewing the order
@@ -6404,6 +6409,12 @@ components:
           result:
             type: object
     device_type:
+      default: desktop
+      description: Device type
+      enum:
+      - desktop
+      - mobile
+      - other
       type: string
     devices:
       properties:
@@ -7397,6 +7408,9 @@ components:
     end_time_seconds:
       description: Specifies the end time for the video clip in seconds.
       readOnly: true
+      type: integer
+    entities_components-schemas-asn:
+      description: ASN
       type: integer
     environment:
       description: Worker environment associated with the zone and hostname
@@ -9002,8 +9016,19 @@ components:
       example: true
       type: boolean
     http_protocol:
+      default: http
+      description: HTTP Protocol
+      enum:
+      - http
+      - https
       type: string
     http_version:
+      default: httpv1
+      description: HTTP version
+      enum:
+      - httpv1
+      - httpv2
+      - httpv3
       type: string
     http2:
       allOf:
@@ -9470,6 +9495,11 @@ components:
       title: IP ranges
       type: object
     ip_version:
+      default: ipv4
+      description: IP version
+      enum:
+      - ipv4
+      - ipv6
       type: string
     ipam-delegations:
       properties:
@@ -10765,7 +10795,7 @@ components:
       type: object
     location:
       description: Alpha-2 country code
-      example: AF
+      example: US
       type: string
     location_strategy:
       description: Controls location-based steering for non-proxied requests. See
@@ -19665,6 +19695,14 @@ components:
       - "off"
       type: string
     tls_version:
+      default: tlsv1_0
+      description: TLS version
+      enum:
+      - tlsv1_0
+      - tlsv1_1
+      - tlsv1_2
+      - tlsv1_3
+      - tlsvquic
       type: string
     token:
       properties:
@@ -40571,6 +40609,72 @@ paths:
         enterprise: true
         free: true
         pro: true
+  /radar/annotations/top/outages:
+    get:
+      operationId: radar-annotations-get-top-outages-annotations
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - properties:
+                    data:
+                      properties:
+                        annotations:
+                          items:
+                            properties:
+                              clientCountryAlpha2:
+                                example: PT
+                                type: string
+                              clientCountryName:
+                                example: Portugal
+                                type: string
+                              value:
+                                example: "5"
+                                type: string
+                            type: object
+                          type: array
+                      type: object
+                  type: object
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: Get top outages annotations response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    properties:
+                      annotations:
+                        items:
+                          properties:
+                            clientCountryAlpha2:
+                              example: PT
+                              type: string
+                            clientCountryName:
+                              example: Portugal
+                              type: string
+                            value:
+                              example: "5"
+                              type: string
+                          type: object
+                        type: array
+                    type: object
+                type: object
+          description: Get top outages annotations response
+      security:
+      - api_email: []
+        api_key: []
+      summary: Get top outages annotations
+      x-cfPermissionsRequired:
+        enum:
+        - com.cloudflare.api.user.read
+      x-cfPlanAvailability:
+        business: true
+        enterprise: true
+        free: true
+        pro: true
   /radar/attacks/layer3/summary:
     get:
       description: Percentage distribution of network protocols in layer 3/4 attacks.
@@ -42704,7 +42808,7 @@ paths:
         name: asn
         required: true
         schema:
-          $ref: '#/components/schemas/components-schemas-asn'
+          $ref: '#/components/schemas/entities_components-schemas-asn'
       responses:
         4xx:
           content:
@@ -43558,6 +43662,73 @@ paths:
       - api_email: []
         api_key: []
       summary: Get time series of user agents
+      x-cfPermissionsRequired:
+        enum:
+        - com.cloudflare.api.user.read
+      x-cfPlanAvailability:
+        business: true
+        enterprise: true
+        free: true
+        pro: true
+  /radar/http/timeseries/browser_family:
+    get:
+      description: Percentage distribution of traffic of the top user agents aggregated
+        in families in the selected time range, over time.
+      operationId: radar-http-get-time-series-of-user-agents-aggregated-in-families
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - properties:
+                    data:
+                      properties:
+                        serie_0:
+                          properties:
+                            <browser name>:
+                              items:
+                                type: string
+                              type: array
+                            timestamps:
+                              items:
+                                type: string
+                              type: array
+                          type: object
+                      type: object
+                    meta:
+                      type: object
+                  type: object
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: Get time series of user agents aggregated in families response
+            failure
+        "200":
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    properties:
+                      serie_0:
+                        properties:
+                          <browser name>:
+                            items:
+                              type: string
+                            type: array
+                          timestamps:
+                            items:
+                              type: string
+                            type: array
+                        type: object
+                    type: object
+                  meta:
+                    type: object
+                type: object
+          description: Get time series of user agents aggregated in families response
+      security:
+      - api_email: []
+        api_key: []
+      summary: Get time series of user agents aggregated in families
       x-cfPermissionsRequired:
         enum:
         - com.cloudflare.api.user.read
@@ -45020,6 +45191,142 @@ paths:
         enterprise: true
         free: true
         pro: true
+  /radar/http/top/browser_families:
+    get:
+      description: Get the top user agents aggregated in families by HTTP traffic.
+        Values are a percentage out of the total traffic.
+      operationId: radar-http-get-top-user-agents-aggregated-in-families-by-http-requests
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - properties:
+                    data:
+                      properties:
+                        top_0:
+                          items:
+                            properties:
+                              <browser name>:
+                                type: string
+                              value:
+                                type: string
+                            type: object
+                          type: array
+                      type: object
+                    meta:
+                      properties:
+                        confidenceInfo:
+                          properties:
+                            annotations:
+                              items:
+                                properties:
+                                  dataSource:
+                                    type: string
+                                  description:
+                                    type: string
+                                  endTime:
+                                    example: "2022-09-17T10:22:57.555Z"
+                                    format: date-time
+                                    type: string
+                                  eventType:
+                                    type: string
+                                  startTime:
+                                    example: "2022-09-17T10:22:57.555Z"
+                                    format: date-time
+                                    type: string
+                                type: object
+                              type: array
+                            level:
+                              type: integer
+                          type: object
+                        dateRange:
+                          properties:
+                            endTime:
+                              example: "2022-09-17T10:22:57.555Z"
+                              format: date-time
+                              type: string
+                            startTime:
+                              example: "2022-09-17T10:22:57.555Z"
+                              format: date-time
+                              type: string
+                          type: object
+                      type: object
+                  type: object
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: Get top user agents aggregated in families by HTTP requests
+            response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    properties:
+                      top_0:
+                        items:
+                          properties:
+                            <browser name>:
+                              type: string
+                            value:
+                              type: string
+                          type: object
+                        type: array
+                    type: object
+                  meta:
+                    properties:
+                      confidenceInfo:
+                        properties:
+                          annotations:
+                            items:
+                              properties:
+                                dataSource:
+                                  type: string
+                                description:
+                                  type: string
+                                endTime:
+                                  example: "2022-09-17T10:22:57.555Z"
+                                  format: date-time
+                                  type: string
+                                eventType:
+                                  type: string
+                                startTime:
+                                  example: "2022-09-17T10:22:57.555Z"
+                                  format: date-time
+                                  type: string
+                              type: object
+                            type: array
+                          level:
+                            type: integer
+                        type: object
+                      dateRange:
+                        properties:
+                          endTime:
+                            example: "2022-09-17T10:22:57.555Z"
+                            format: date-time
+                            type: string
+                          startTime:
+                            example: "2022-09-17T10:22:57.555Z"
+                            format: date-time
+                            type: string
+                        type: object
+                    type: object
+                type: object
+          description: Get top user agents aggregated in families by HTTP requests
+            response
+      security:
+      - api_email: []
+        api_key: []
+      summary: Get top user agents aggregated in families by HTTP requests
+      x-cfPermissionsRequired:
+        enum:
+        - com.cloudflare.api.user.read
+      x-cfPlanAvailability:
+        business: true
+        enterprise: true
+        free: true
+        pro: true
   /radar/http/top/browsers:
     get:
       description: Get the top user agents by HTTP traffic. Values are a percentage
@@ -45037,7 +45344,7 @@ paths:
                         top_0:
                           items:
                             properties:
-                              name:
+                              <browser name>:
                                 type: string
                               value:
                                 type: string
@@ -45095,7 +45402,7 @@ paths:
                       top_0:
                         items:
                           properties:
-                            name:
+                            <browser name>:
                               type: string
                             value:
                               type: string
@@ -46492,6 +46799,178 @@ paths:
       - api_email: []
         api_key: []
       summary: Get top locations
+      x-cfPermissionsRequired:
+        enum:
+        - com.cloudflare.api.user.read
+      x-cfPlanAvailability:
+        business: true
+        enterprise: true
+        free: true
+        pro: true
+  /radar/ranking/timeseries:
+    get:
+      description: Gets Domains Rank updates change over time. Raw values are returned.
+      operationId: radar-ranking-get-domains-rank-time-series
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - properties:
+                    data:
+                      properties:
+                        serie_0:
+                          properties:
+                            <domain name>:
+                              items:
+                                type: integer
+                              type: array
+                            timestamps:
+                              items:
+                                example: "2022-09-02"
+                                type: string
+                              type: array
+                          type: object
+                      type: object
+                    meta:
+                      properties:
+                        dateRange:
+                          properties:
+                            endTime:
+                              description: Adjusted end of date range
+                              example: "2022-09-17T10:22:57.555Z"
+                              format: date-time
+                              type: string
+                            startTime:
+                              description: Adjusted start of date range
+                              example: "2022-09-16T10:22:57.555Z"
+                              format: date-time
+                              type: string
+                          type: object
+                      type: object
+                  type: object
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: Get Domains Rank time series response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    properties:
+                      serie_0:
+                        properties:
+                          <domain name>:
+                            items:
+                              type: integer
+                            type: array
+                          timestamps:
+                            items:
+                              example: "2022-09-02"
+                              type: string
+                            type: array
+                        type: object
+                    type: object
+                  meta:
+                    properties:
+                      dateRange:
+                        properties:
+                          endTime:
+                            description: Adjusted end of date range
+                            example: "2022-09-17T10:22:57.555Z"
+                            format: date-time
+                            type: string
+                          startTime:
+                            description: Adjusted start of date range
+                            example: "2022-09-16T10:22:57.555Z"
+                            format: date-time
+                            type: string
+                        type: object
+                    type: object
+                type: object
+          description: Get Domains Rank time series response
+      security:
+      - api_email: []
+        api_key: []
+      summary: Get Domains Rank time series
+      x-cfPermissionsRequired:
+        enum:
+        - com.cloudflare.api.user.read
+      x-cfPlanAvailability:
+        business: true
+        enterprise: true
+        free: true
+        pro: true
+  /radar/ranking/top:
+    get:
+      description: Gets Top Domains Rank globally or by country.
+      operationId: radar-ranking-get-domains-rank-top
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - properties:
+                    data:
+                      properties:
+                        top_0:
+                          items:
+                            properties:
+                              domain:
+                                example: google.com
+                                type: string
+                              rank:
+                                type: integer
+                            type: object
+                          type: array
+                      type: object
+                    meta:
+                      properties:
+                        top_0:
+                          properties:
+                            date:
+                              example: "2022-09-19"
+                              type: string
+                          type: object
+                      type: object
+                  type: object
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: Get Domains Rank top response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    properties:
+                      top_0:
+                        items:
+                          properties:
+                            domain:
+                              example: google.com
+                              type: string
+                            rank:
+                              type: integer
+                          type: object
+                        type: array
+                    type: object
+                  meta:
+                    properties:
+                      top_0:
+                        properties:
+                          date:
+                            example: "2022-09-19"
+                            type: string
+                        type: object
+                    type: object
+                type: object
+          description: Get Domains Rank top response
+      security:
+      - api_email: []
+        api_key: []
+      summary: Get Domains Rank top
       x-cfPermissionsRequired:
         enum:
         - com.cloudflare.api.user.read
