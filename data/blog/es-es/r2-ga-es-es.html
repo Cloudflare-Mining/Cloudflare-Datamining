@@ -8,13 +8,13 @@
 	<p>R2 brinda a los desarrolladores una interfaz conocida para el almacenamiento de objetos, la API de S3. Con la compatibilidad con S3, puedes migrar fácilmente tus aplicaciones y empezar a aprovechar lo que te ofrece R2 desde el principio.</p>
 	<p>Veamos algunas operaciones básicas de datos en javascript. Para probarlas por tu cuenta, necesitarás <a href="https://developers.cloudflare.com/r2/platform/s3-compatibility/tokens/" target="_blank">generar una clave de acceso</a>.</p>
 	<!--kg-card-begin: markdown-->
-	<pre><code class="language-javascript">// First we import our bindings as usual
+	<pre><code class="language-javascript">// Primero, importamos nuestros enlaces de la forma habitual.
 import {
   S3Client,
   ListBucketsCommand,
 } from "@aws-sdk/client-s3";
 
-// Then we create a new client. Note that while R2 requires a region for S3 compatibility, only “auto” is supported
+// A continuación, creamos un nuevo cliente. Ten en cuenta que, para la compatibilidad con S3, R2 requiere una región, solo se admite "auto".
 const S3 = new S3Client({
   region: "auto",
   endpoint: `https://${ACCOUNT_ID}.r2.cloudflarestorage.com`,
@@ -24,7 +24,7 @@ const S3 = new S3Client({
   },
 });
 
-// And now we can use our client to list associated buckets just like we would with any other S3 compatible object storage
+// Y ahora podemos utilizar nuestro cliente para listar los buckets asociados exactamente como lo haríamos con cualquier otro almacenamiento de objetos compatible con S3.
 console.log(
   await S3.send(
     new ListBucketsCommand('')
@@ -44,19 +44,19 @@ console.log(
 	<pre><code class="language-javascript">export default {
   async fetch(request, env) {
     const url = new URL(request.url);
-    const key = url.pathname.slice(1); // we’ll derive a key from the url path
+    const key = url.pathname.slice(1); // Obtendremos una clave de la ruta url.
 
     switch (request.method) {
-      // For writes, we capture the request body and write that out to our bucket under the associated key
+       // Para las escrituras, capturamos el cuerpo de la solicitud y lo escribimos en nuestro bucket debajo de la clave asociada.
       case 'PUT':
         await env.MY_BUCKET.put(key, request.body);
         return new Response(`Put ${key} successfully!`);
 
-      // For reads, we’ll use our key to perform a lookup
+      // Para las lecturas, utilizaremos nuestra clave para realizar una búsqueda.
       case 'GET':
         const object = await env.MY_BUCKET.get(key);
 
-        // if we don’t find the given key we’ll return a 404 error
+         // Si no encontramos la clave especificada, devolveremos un error 404.
         if (object === null) {
           return new Response('Object Not Found', { status: 404 });
         }
@@ -93,7 +93,7 @@ const S3 = new S3Client({
   },
 });
 
-// With getSignedUrl we can produce a custom url with a one hour expiration which will allow our end user to upload their dog pic
+// Con getSignedUrl, podemos generar un URL personalizado con una caducidad de una hora que permitirá a nuestro usuario final cargar la imagen de su perro.
 console.log(
   await getSignedUrl(S3, new PutObjectCommand({Bucket: 'my-bucket-name', Key: 'dog.png'}), { expiresIn: 3600 })
 )
