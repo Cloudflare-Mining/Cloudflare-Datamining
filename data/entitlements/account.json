@@ -360,6 +360,18 @@
 		}
 	},
 	{
+		"id": "casb.casb_enabled",
+		"feature": {
+			"feature_set": "access",
+			"id": 1097,
+			"key": "casb.casb_enabled",
+			"name": "CASB - CASB Enabled"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "contract.customer_enabled",
 		"feature": {
 			"feature_set": "contract",
@@ -621,6 +633,30 @@
 		},
 		"allocation": {
 			"type": "bool"
+		}
+	},
+	{
+		"id": "dlp.dlp_enabled",
+		"feature": {
+			"feature_set": "access",
+			"id": 1098,
+			"key": "dlp.dlp_enabled",
+			"name": "DLP - Data Loss Prevention Enabled"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "dlp.max_custom_profiles",
+		"feature": {
+			"feature_set": "access",
+			"id": 1099,
+			"key": "dlp.max_custom_profiles",
+			"name": "DLP - Maximum number of Custom Profiles"
+		},
+		"allocation": {
+			"type": "max_count"
 		}
 	},
 	{
