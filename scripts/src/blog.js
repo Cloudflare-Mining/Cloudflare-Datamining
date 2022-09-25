@@ -11,6 +11,14 @@ import * as cheerio from 'cheerio';
 
 import {tryAndPush, userAgent} from './utils.js';
 
+const cfRes = await fetch('https://jross.me/cf.json');
+const cf = await cfRes.json();
+if(cf?.country !== 'US' && process.env.CI){
+	console.log('Action isn\'t running in the US. Skipping marketing site processing.', cf);
+	// eslint-disable-next-line no-process-exit
+	process.exit(0);
+}
+
 const parser = new XMLParser();
 
 const dir = path.resolve(`../data/blog`);
