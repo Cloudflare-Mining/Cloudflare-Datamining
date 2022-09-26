@@ -256,7 +256,6 @@ const prefix = dateFormat(new Date(), 'd mmmm yyyy');
 await tryAndPush(
 	[
 		'data/products/pages/*.json',
-		'data/products/pages/*.txt',
 	],
 	`${prefix} - Product: Pages Data was updated!`,
 	'CFData - Product: Pages Data Update',
