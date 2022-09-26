@@ -5,38 +5,23 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h3><strong>About the Department</strong></h3>
-<p><span style="font-weight: 400;">Emerging Tech and Innovation (ETI)</span><span style="font-weight: 400;"> is where new, bold, products are built and released within Cloudflare. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.&nbsp; </span><span style="font-weight: 400;">The Cloudflare for Teams group within ETI is taking on the mission of ensuring the people and teams within an organization can access the tools they need to do their job safe from malware and other online threats with the speed and reliability that Cloudflare is known for.</span></p>
-<h3><strong>What you’ll do</strong></h3>
-<p><span style="font-weight: 400;">In this role you’ll help us build Gateway, an ambitious product that aims to be the most secure and performant method for an organization’s devices to connect to the Internet. As an engineer on the Gateway team, you will focus on our high-performance global edge network data plane services and will also contribute to the control plane API’s that configure the edge services. You will be joining a </span><a href="https://blog.cloudflare.com/cloudflares-first-year-in-lisbon/"><span style="font-weight: 400;">global team</span></a><span style="font-weight: 400;"> of bright, hard-working, and supportive engineers who really care about their craft.</span></p>
-<p><strong>Example of systems that the team currently is building:</strong></p>
+<p><strong>About the department</strong></p>
+<p><span style="font-weight: 400;">The web team builds awareness by sharing how Cloudflare can make a positive impact for customers and prospects. This spans across all channels of customer communication: our website, docs, blog, emails, social media, events, ads, etc. We build the technology that allows internal customers to craft beautiful experiences and tell compelling stories about Cloudflare.</span></p>
+<p><strong>What you'll do</strong></p>
+<p><span style="font-weight: 400;">You will lead a team of passionate, talented engineers that build</span><a href="http://cloudflare.com/"><span style="font-weight: 400;"> </span><span style="font-weight: 400;">Cloudflare.com</span></a><span style="font-weight: 400;"> and connect it to various marketing systems. In this role, you will introduce tools and processes to make our engineer’s lives better. You will play an active part in shaping marketing strategy based on what’s technically possible. You will make sure our company hits our ambitious goals from an engineering standpoint.</span></p>
+<p><span style="font-weight: 400;">You bring a passion for meeting business needs with building technically innovative solutions and excel at shifting between the two—understanding how big-picture goals inform technical details. You thrive in a fast-paced iterative engineering environment and have experience in delivering web applications at scale. Most importantly, you will have a track record of having past teams respect you as both a technical leader and manager.</span></p>
+<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">A forward-proxy service running on every machine of Cloudflare’s extensive edge network, responsible for inspecting, filtering, and blocking device requests based on an organization’s configured policy.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">A DNS resolver running on our edge that leverages a Wirefilter based filtering rules engine.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Microservices that allow organizations to configure, manage, and observe their organization's devices and their respective traffic.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">4+ years experience in engineering management</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with front end frameworks and different programming languages</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Deep understanding of the web and technologies such as web browsers, HTTP, JavaScript, and the DOM.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Solid foundation in computer science, with strong competencies in algorithms, data structures, software design, and building large websites.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Excel at planning, creating teams and overseeing execution to meet commitments and deliver with predictability</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with agile/scrum and the ability to adapt to changing priorities</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Ability to interface with multiple stakeholders and help prioritize</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Previous work with multiple environments and multiple products is a plus</span></li>
 </ul>
-<p><strong><br>Technologies we use:</strong></p>
-<ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Gateway’s core edge services are written in Rust and deployed globally to 200+ data centers&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Our REST API is written in Go, runs on Kubernetes, and uses Postgres as a data store.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Our frontend is written in Typescript and React.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">For service monitoring we use Prometheus and Grafana.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">For service logging we use Elasticsearch and Kibana.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">For product analytics we use Clickhouse and BigQuery.&nbsp;</span></li>
-</ul>
-<p><span style="font-weight: 400;">Because you’ll be </span><a href="https://blog.cloudflare.com/gateway-swg/"><span style="font-weight: 400;">solving problems of massive scale and significance</span></a><span style="font-weight: 400;">, and </span><a href="https://blog.cloudflare.com/solarwinds-orion-compromise-trend-data/"><span style="font-weight: 400;">shaping the future of the Internet</span></a><span style="font-weight: 400;">, you are a growth-oriented individual who enjoys being outside of your comfort zone in a fast-paced environment.</span></p>
-<h3><strong>Examples of desirable skills, knowledge and experience</strong></h3>
-<p><span style="font-weight: 400;">As an ideal candidate for this position, you are curious, hard-working, and passionate.&nbsp; </span><span style="font-weight: 400;">A rough list of the skills we would love to see you bring:</span></p>
-<ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Programming experience in Rust, C++, or similar low level languages</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Programming experience in Go and/or Typescript is a plus, but not required</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">A strong grasp of networking protocols in any of Layers 3-7 of the OSI Model</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Solid understanding of HTTP protocols - including experience with HTTP/2 and HTTP/3</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Basic understanding of software security and encryption</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience in designing and implementing secure and highly-available distributed systems</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Willingness, curiosity, and enthusiasm to learn new programming languages, technologies, and systems</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong interpersonal and communication skills. Caring and empathy are coveted traits here!</span></li>
-</ul>
+<h4>&nbsp;</h4>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
