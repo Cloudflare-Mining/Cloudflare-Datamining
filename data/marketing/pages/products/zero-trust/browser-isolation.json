@@ -4,7 +4,7 @@
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "Browser Isolation - Solutions Page  [ZT PMM] - NEW /products/zero-trust",
+				"pageName": "Browser Isolation - Product Page  [ZT PMM] - NEW /products/zero-trust",
 				"localeList": {
 					"enUS": "English for Locale",
 					"zhCN": "Translated for Locale",
@@ -3892,12 +3892,12 @@
 						"copy": "Web browsers are more complex and sophisticated than ever before. They're also one of your biggest attack surfaces. \n\nCloudflare Browser Isolation is a Zero Trust browsing service. It runs in the cloud away from your networks and endpoints, insulating devices from attacks. \n",
 						"buttonColor": "orange",
 						"buttonColor2": "orange-outline",
-						"buttonText1": "Start now",
+						"buttonText1": "Experience it now",
 						"buttonText1LoggedIn": null,
-						"buttonUrl1": "https://dash.cloudflare.com/sign-up/teams",
+						"buttonUrl1": "https://www.cloudflare.com/products/zero-trust/browser-isolation/experience/",
 						"buttonUrl1LoggedIn": null,
 						"button1ExtraClass": null,
-						"buttonText2": "Contact Sales",
+						"buttonText2": "Talk to an expert",
 						"buttonText2LoggedIn": null,
 						"buttonUrl2": "#",
 						"button2ExtraClass": "teams-ent-plan-contact-us",
@@ -3911,7 +3911,7 @@
 						],
 						"streamCaptions": null,
 						"popupStreamId": "d027438723a2330b8808deda37686cb4",
-						"popupText": "Watch a demo (4 minutes)",
+						"popupText": "Watch a demo (2 minutes)",
 						"button1OpenInNewTab": null,
 						"button2OpenInNewTab": true,
 						"streamThumbnails": null,
@@ -3930,31 +3930,10 @@
 						"imageLayout": null,
 						"image": {
 							"file": {
-								"publicURL": "[path]/browser-hero-illustration.svg"
+								"publicURL": "[path]/RBI_Globe__1_.png"
 							}
 						},
-						"imageAssetFile": {
-							"id": "9d00e178-311c-5749-96d0-17d618126646",
-							"altText": null,
-							"title": "Browser Isolation Hero Image",
-							"activeAsset": "Brandfolder Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "[path]/browser-hero-illustration.svg"
-								}
-							},
-							"brandfolderAsset": {
-								"size": 11293,
-								"height": 3314,
-								"width": 3348,
-								"filename": "browser-hero-illustration.svg",
-								"file": {
-									"publicURL": "[path]/browser-hero-illustration.svg"
-								}
-							},
-							"brandfolderAssetMobile": null
-						}
+						"imageAssetFile": null
 					},
 					{
 						"contentTypeId": "bladeSubNav",
@@ -4264,9 +4243,9 @@
 						"backgroundColor": "white",
 						"contentTypeId": "bladeFourFeatures",
 						"htmlId": null,
-						"copy": null,
-						"title": "What makes protecting employees from Internet threats so difficult?",
-						"subtitle": null,
+						"copy": "Applying Zero Trust to browsing means that no code or interactions should be trusted to run on devices by default.\n\nCloudflare Browser Isolation runs all code at our edge — insulating users from untrusted web content and protecting data in browser interactions from untrusted users and devices.\n",
+						"title": "Secure users, devices, and data with Zero Trust browsing",
+						"subtitle": "Key benefits",
 						"bladeStyle": null,
 						"bladeBorder": "none",
 						"sectionPadding": null,
@@ -4372,62 +4351,98 @@
 						]
 					},
 					{
-						"contentfulId": "BttZpk4DNjhSI501kcQDG",
-						"title": "Attacks will strike. Mitigate the impact. ",
-						"copy": "Browser Isolation executes all browser code in the cloud, instead of on the endpoint. When users inevitably run into Internet threats, Zero Trust browsing stops malware from infecting their devices and causing chaos in your network. ",
-						"toggleText": null,
+						"contentfulId": "7ErXWRXAIERw0P0CuTUR45",
+						"title": "Minimize your attack surface",
+						"copy": "Filters and inspections will never catch 100% of threats, even with the best intel. Isolate browsing instead of applying overly restrictive blocking policies.\n\nOur Browser Isolation runs a headless version of the Chromium browser, which renders all browser code at our edge, instead of on your endpoints, to mitigate known and unknown threats like malware, ransomware and zero-day threats. The low-latency experience is invisible to end users and feels like a local browser.\n",
+						"toggleText": "Threat protection",
 						"button": null,
 						"learnMoreUrl": null,
 						"learnMoreText": null,
 						"link": null,
-						"subheadline": null,
+						"subheadline": "Isolate without compromising user experience",
 						"button1Text": null,
 						"button1Url": null,
 						"button1Color": null,
 						"button2Text": null,
 						"button2Url": null,
 						"button2Color": null,
-						"streamOptions": null,
-						"streamCaptions": null,
+						"streamOptions": [
+							"controls"
+						],
+						"streamCaptions": "en",
 						"streamVideoId": null,
 						"streamThumbnails": null,
 						"streamPoster": null,
 						"streamPosterAssetFile": null,
-						"image": {
-							"file": {
-								"publicURL": "[path]/ssl-tls-hero-illustration.svg"
-							}
-						},
+						"image": null,
 						"imageAssetFile": {
-							"id": "8636e356-13c9-520d-bed1-dd0eba100743",
-							"altText": "Ssl tls hero illustration",
-							"title": "Ssl tls hero illustration",
-							"activeAsset": "Brandfolder Asset",
+							"id": "f0df0ce5-e9d5-5266-b892-32f080710f79",
+							"altText": null,
+							"title": "Cloudflare Browser Isolation Threat Protection SVG",
+							"activeAsset": "Contentful Asset",
 							"locale": "en-US",
-							"contentfulAsset": null,
-							"brandfolderAsset": {
-								"size": 25354,
-								"height": 3262,
-								"width": 3740,
-								"filename": "ssl-tls-hero-illustration.svg",
+							"contentfulAsset": {
 								"file": {
-									"publicURL": "[path]/ssl-tls-hero-illustration.svg"
+									"publicURL": "[path]/RBI_--_Threat_Protection_SVG__1_.svg"
 								}
 							},
+							"brandfolderAsset": null,
 							"brandfolderAssetMobile": null
 						},
 						"featureList": null,
 						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
+						"sectionTitle": "Customer value",
 						"htmlId": null,
 						"titleSize": null,
 						"sectionPadding": null,
-						"backgroundColor": "light-blue",
-						"bladeBorder": "none",
+						"backgroundColor": "white",
+						"bladeBorder": "border-top",
 						"imagePosition": false,
-						"imageSize": null,
+						"imageSize": "large",
 						"imageTextAlignment": null,
-						"togglesTo": null
+						"togglesTo": [
+							{
+								"contentfulId": "4tRBFmnaEmYIOkRqpWCLYm",
+								"title": "Reduce risk of data leakage",
+								"copy": "Running an isolated browser restores control to admins to protect sensitive data on any website or SaaS application. With just a few clicks, admins can build granular rules preventing risky user actions within the browser. This includes restricting download, upload, copy-paste, keyboard input, and printing functionalities.\n\n- Secure contractor access with our clientless deployment\n- Control input on suspicious sites used for phishing\n- Send high risk clicks to an isolate browser from existing web or email gateways",
+								"toggleText": "Data protection",
+								"button": null,
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"link": null,
+								"subheadline": "Secure data in use within web browsers",
+								"button1Text": null,
+								"button1Url": null,
+								"button1Color": null,
+								"button2Text": null,
+								"button2Url": null,
+								"button2Color": null,
+								"streamOptions": [
+									"controls"
+								],
+								"streamCaptions": "en",
+								"streamVideoId": null,
+								"streamThumbnails": null,
+								"streamPoster": null,
+								"streamPosterAssetFile": null,
+								"image": null,
+								"imageAssetFile": {
+									"id": "fc8425aa-8aa9-58a0-9b18-d8f5b341f3d4",
+									"altText": null,
+									"title": "Cloudflare Browser Isolation Data Protection SVG",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/RBI_Data_Protection_SVG__1_.svg"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"featureList": null
+							}
+						]
 					},
 					{
 						"contentfulId": "1ktYGobVmRa9gFNuNbR301",
@@ -4472,12 +4487,12 @@
 					},
 					{
 						"contentTypeId": "bladeEnablement",
-						"contentfulId": "439xPq83oNOfC1W3FSiF8h",
+						"contentfulId": "1OclDHX06mF7MP5nJ25LYC",
 						"copy": null,
 						"buttonExtraClass": null,
-						"buttonColor": null,
-						"buttonColor2": null,
-						"title": "Ready to get started? Add Browser Isolation to any paid Zero Trust plan. ",
+						"buttonColor": "orange",
+						"buttonColor2": "orange",
+						"title": "Want to experience RBI in action?",
 						"backgroundColor": "blue",
 						"buttonText": null,
 						"buttonUrl": null,
@@ -4486,7 +4501,7 @@
 						"buttonUrl2": null,
 						"bladeSizeType": "small",
 						"htmlId": null,
-						"textColor": "black",
+						"textColor": "white",
 						"bladeBorder": "none",
 						"buttonOne": {
 							"buttonAssetFile": null,
@@ -4494,11 +4509,11 @@
 							"buttonColor": "orange",
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
-							"contentfulId": "5roxydV6l2nvlfWETtr70G",
-							"elementName": "View pricing",
+							"contentfulId": "2KNmpj7tT47ouywXCzOfXJ",
+							"elementName": "[ZT PMM] Browser Isolation Demo Experience",
 							"standardText": null,
-							"text": "View pricing",
-							"url": "https://www.cloudflare.com/teams-pricing/",
+							"text": "Experience it now",
+							"url": "https://www.cloudflare.com/products/zero-trust/browser-isolation/experience/",
 							"loggedInUrl": null,
 							"modal": null,
 							"openInNewTab": true,
@@ -4511,9 +4526,9 @@
 							"buttonTextLoggedIn": null,
 							"contentTypeId": "button",
 							"contentfulId": "6ebKQ8h3zUBDDEcEtRuYXd",
-							"elementName": "Talk to Sales ",
+							"elementName": "Talk to an expert",
 							"standardText": null,
-							"text": "Talk to Sales",
+							"text": "Talk to an expert",
 							"url": null,
 							"loggedInUrl": null,
 							"modal": {
@@ -4562,41 +4577,39 @@
 						"sectionPadding": null
 					},
 					{
-						"contentfulId": "6zWPd1vUXR6nCO8VoDN6Y1",
-						"title": "Verify. Filter. Inspect. Isolate.",
-						"copy": "With [Cloudflare Zero Trust](https://www.cloudflare.com/teams \"Cloudflare Zero Trust\"), administrators set Zero Trust browsing rules in the same place they design Zero Trust application access policies. Filtering, inspection and isolation rules are applied in one lightning-fast single pass inspection architecture, with minimal latency. ",
+						"contentfulId": "3U3DE60jk0kvE7N4PAWrm3",
+						"title": "Natively-integrated RBI",
+						"copy": "Unlike other providers, Cloudflare has natively-integrated browser isolation with all our Zero Trust services. \n\nOur browser isolation is built from the ground up with our other Zero Trust services on our network and designed to run across our %{DataCenterCount}+ locations. \n\nUse a single management interface for:\n- [Secure Web Gateway (SWG)](https://www.cloudflare.com/products/zero-trust/gateway/ \"Cloudflare Gateway\")\n- [Zero Trust Network Access (ZTNA)](https://www.cloudflare.com/products/zero-trust/access/ \"Cloudflare Access\")\n- [Cloud Access Security Broker (CASB)](https://www.cloudflare.com/products/zero-trust/casb/)\n- [and more](https://www.cloudflare.com/products/zero-trust/ \"Cloudflare Zero Trust\")\n",
 						"toggleText": null,
 						"button": null,
 						"learnMoreUrl": null,
 						"learnMoreText": null,
 						"link": null,
-						"subheadline": null,
+						"subheadline": "Extend Zero Trust with built-in, not bolt-on security",
 						"button1Text": null,
 						"button1Url": null,
 						"button1Color": null,
 						"button2Text": null,
 						"button2Url": null,
 						"button2Color": null,
-						"streamOptions": null,
-						"streamCaptions": null,
+						"streamOptions": [
+							"controls"
+						],
+						"streamCaptions": "en",
 						"streamVideoId": null,
 						"streamThumbnails": null,
 						"streamPoster": null,
 						"streamPosterAssetFile": null,
-						"image": {
-							"file": {
-								"publicURL": "[path]/DPL-hero-illustration.svg"
-							}
-						},
+						"image": null,
 						"imageAssetFile": {
-							"id": "0bc6adee-303e-59d9-92dc-84cccb38a2f9",
-							"altText": "Cloudflare DLP",
-							"title": "DLP Hero Image",
+							"id": "7723314b-886c-5b1d-a90b-d2e2506e054d",
+							"altText": null,
+							"title": "Cloudflare Browser Isolation: Zero Trust platform",
 							"activeAsset": "Contentful Asset",
 							"locale": "en-US",
 							"contentfulAsset": {
 								"file": {
-									"publicURL": "[path]/DPL-hero-illustration.svg"
+									"publicURL": "[path]/RBI_within_Zero_Trust_platform__1_.svg"
 								}
 							},
 							"brandfolderAsset": null,
@@ -4604,16 +4617,207 @@
 						},
 						"featureList": null,
 						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
+						"sectionTitle": "Cloudflare Zero Trust",
 						"htmlId": null,
 						"titleSize": null,
 						"sectionPadding": null,
-						"backgroundColor": "light-blue",
-						"bladeBorder": "none",
+						"backgroundColor": "white",
+						"bladeBorder": "border",
 						"imagePosition": false,
-						"imageSize": null,
+						"imageSize": "large",
 						"imageTextAlignment": null,
 						"togglesTo": null
+					},
+					{
+						"contentfulId": "6vSpaXtCNCT6d5KBQFtD0C",
+						"backgroundColor": "white",
+						"contentTypeId": "bladeFourFeatures",
+						"htmlId": null,
+						"copy": null,
+						"title": null,
+						"subtitle": "Use Cases",
+						"bladeStyle": "Feature Blocks - 3 columns",
+						"bladeBorder": "none",
+						"sectionPadding": null,
+						"carouselSlidesToShow": null,
+						"carouselSlidesToScroll": null,
+						"locale": "en-US",
+						"features": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "4U3cKBR7gS5H2u1aIYh0vK",
+								"title": "Ransomware",
+								"titleSize": "small",
+								"description": "Isolation effectively protects against ransomware infection. But even for non-isolated sites, that defense is bolstered by native integrations with services like our SWG to block risky sites and domains and our ZTNA to reduce lateral movement of threats.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "ef1a024e-4e53-567d-9ed8-bfb121071658",
+									"altText": null,
+									"title": "Ransomware",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/Ransomware_Icon.svg"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "3M2FL9l59D8X8HjxXA8VK6",
+								"title": "Phishing and email security",
+								"titleSize": "small",
+								"description": "Isolation not only stops harmful code in a phishing link from executing locally, but also prevents keyboard inputs of sensitive personal info. Plus, coming soon, admins will be able to activate email filtering with a single click – [powered by Area 1](https://www.cloudflare.com/products/zero-trust/email-security/).",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "7e7d463f-0987-5271-9a49-1e1ab5cb93f9",
+									"altText": null,
+									"title": "Phishing Icon",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/Phishing_Icon.svg"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "1XI2OlNYwBy8xUaf0s2qhW",
+								"title": "Zero-day attacks",
+								"titleSize": "small",
+								"description": "When a patch is available for the zero-day vulnerability, Cloudflare automatically deploys the patch to all remote browsers on our network. This means admins can protect devices while avoiding interruptions do not need to interrupt users from their work to force updates.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "60a7a53d-84ea-55f4-9a86-3d39f97c4d54",
+									"altText": null,
+									"title": "Malware",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/Malware_Icon.svg"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "6Fp1QWiyDVB42O3wUYrmg7",
+								"title": "Secure contractor access",
+								"titleSize": "small",
+								"description": "Isolate connections to specific hyperlinks — without installing any software on user devices. Use this clientless model to protect data that contractors interact with on unmanaged devices — without added configuration overhead.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "67a9f22c-f682-5b80-acff-9f4130dc0d24",
+									"altText": null,
+									"title": "Access Icon",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/icon_cloudflare-access_blue.svg"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "3xmXcZuqxCUi9PHqKZ3UZH",
+								"title": "Control input on suspicious sites",
+								"titleSize": "small",
+								"description": "Admins can protect teams by isolating these high-risk websites like 'Typosquatting' and 'Domains' often used for phishing. Cloudflare serves the site in read-only mode and disables file uploads, downloads and keyboard input.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "c1b7356e-8079-539a-b4d4-6b14dcccbe03",
+									"altText": null,
+									"title": "Arrow external SVG",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/arrow-external-link-2.svg"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "6H99REuJREy2WBgSGdMtA",
+								"title": "Integrate with third-party solutions",
+								"titleSize": "small",
+								"description": "With our clientless deployment, admins can integrate Cloudflare with existing web or email gateways for a more gradual transition from legacy services. Send high-risk clicks to our remote browser and apply a custom block page or other protections.",
+								"learnMoreUrl": null,
+								"learnMoreText": null,
+								"displayBorder": false,
+								"icon": null,
+								"iconAssetFile": {
+									"id": "9deb0cb8-e969-56de-be52-a5088d566b3c",
+									"altText": null,
+									"title": "pages-shield blue svg",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/pages-shield_blue_32_diagram.svg"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						]
 					},
 					{
 						"contentTypeId": "bladeQuote",
@@ -4678,6 +4882,97 @@
 								}
 							}
 						]
+					},
+					{
+						"contentTypeId": "bladeEnablement",
+						"contentfulId": "jXKoLgxhn0913njPbwtbu",
+						"copy": null,
+						"buttonExtraClass": null,
+						"buttonColor": "orange",
+						"buttonColor2": "orange",
+						"title": "Level up security with RBI today",
+						"backgroundColor": "blue",
+						"buttonText": null,
+						"buttonUrl": null,
+						"buttonText2": null,
+						"buttonModalId2": null,
+						"buttonUrl2": null,
+						"bladeSizeType": "small",
+						"htmlId": null,
+						"textColor": "white",
+						"bladeBorder": "none",
+						"buttonOne": {
+							"buttonAssetFile": null,
+							"buttonWidth": "narrow",
+							"buttonColor": "orange",
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "2KNmpj7tT47ouywXCzOfXJ",
+							"elementName": "[ZT PMM] Browser Isolation Demo Experience",
+							"standardText": null,
+							"text": "Experience it now",
+							"url": "https://www.cloudflare.com/products/zero-trust/browser-isolation/experience/",
+							"loggedInUrl": null,
+							"modal": null,
+							"openInNewTab": true,
+							"locale": "en-US"
+						},
+						"buttonTwo": {
+							"buttonAssetFile": null,
+							"buttonWidth": "narrow",
+							"buttonColor": "blue",
+							"buttonTextLoggedIn": null,
+							"contentTypeId": "button",
+							"contentfulId": "6ebKQ8h3zUBDDEcEtRuYXd",
+							"elementName": "Talk to an expert",
+							"standardText": null,
+							"text": "Talk to an expert",
+							"url": null,
+							"loggedInUrl": null,
+							"modal": {
+								"contentTypeId": "formModal",
+								"contentfulId": "32lRbGoNPloHxSaXZJnGh6",
+								"modalName": "Teams Ent Plan - Contact Us ",
+								"modalId": "teams-ent-plan-contact-us",
+								"modalType": "single-form",
+								"marketoForm": {
+									"contentTypeId": "marketoEmbeddedForm",
+									"contentfulId": "1ujDGExdXSfyindmg265xQ",
+									"bladeName": "Teams Ent Plan - Contact us",
+									"backgroundColor": "white",
+									"marketoFormId": 1341,
+									"marketoFormLeadSource": "Inbound - Web Form",
+									"marketoFormLeadSourceDetail": "[ACQ] Q3'20 WEB - Teams Contact Us - Ent Plan",
+									"marketoFormHeaderText": "Cloudflare Zero Trust",
+									"marketoFormDefaultComment": "Cloudflare Zero Trust demo request",
+									"showCommentBox": true,
+									"marketoFormThankYouText": null,
+									"marketoFormCustomSuccessMessage": null,
+									"marketoFormPdfDownload": null,
+									"marketoFormPdfDownloadI18n": null,
+									"marketoFormAssetDownloadButtonText": null,
+									"marketoFormSuccessRedirectUrl": null,
+									"sendAdRoll": null,
+									"meta_adRollCustomSegment": null,
+									"enableSandbox": null,
+									"marketoFormSubmitButtonText": "Contact us",
+									"marketoFormSubmitButtonColor": "blue",
+									"enableEmailVerification": null,
+									"disableEnterpriseEmailNotification": null,
+									"enableRingout": null
+								},
+								"title": "Request a demo of Cloudflare Zero Trust",
+								"regularCopy": "Fill out the form below, and an expert from our team will get in touch to schedule a customized tour of Cloudflare Zero Trust",
+								"splitFormDefaultTab": null,
+								"selfServeTabText": null,
+								"selfServeCopy": null,
+								"enterpriseTabText": null,
+								"enterpriseCopy": null
+							},
+							"openInNewTab": true,
+							"locale": "en-US"
+						},
+						"sectionPadding": null
 					},
 					{
 						"contentfulId": "6ZaZ74Uo4KhFP6wdg3RubD",
@@ -4793,54 +5088,165 @@
 						]
 					},
 					{
-						"contentfulId": "1AdM8pdrjZbCZrXBP5A2A9",
-						"title": "Start now",
-						"copy": "Browser Isolation is now natively integrated in the Cloudflare Zero Trust policy builder, allowing administrators to allow, block, or isolate any security or content category and application group. Integrates with groups from your identity provider for user and team-based isolation policies. Organizatins of any size can sign up now.",
-						"toggleText": null,
-						"button": null,
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": null,
-						"subheadline": null,
-						"button1Text": "Get started",
-						"button1Url": "https://dash.cloudflare.com/sign-up/teams",
-						"button1Color": "orange",
-						"button2Text": "View Pricing",
-						"button2Url": "https://www.cloudflare.com/teams-pricing/",
-						"button2Color": "orange",
-						"streamOptions": null,
-						"streamCaptions": null,
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": null,
-						"imageAssetFile": {
-							"id": "0dffb5ae-ba14-54a1-8194-8dc5fd597afb",
-							"altText": "Browser Isolation - Teams Overview ",
-							"title": "Browser Isolation - Teams Overview ",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "[path]/Overview.svg"
-								}
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						},
-						"featureList": null,
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": null,
+						"contentfulId": "9XrnP2XOhJVNBGqccYy1r",
 						"backgroundColor": "white",
+						"contentTypeId": "bladeFourFeatures",
+						"htmlId": null,
+						"copy": null,
+						"title": "Additional Resources",
+						"subtitle": null,
+						"bladeStyle": "Feature Blocks - 4 columns",
 						"bladeBorder": "none",
-						"imagePosition": false,
-						"imageSize": "large",
-						"imageTextAlignment": null,
-						"togglesTo": null
+						"sectionPadding": null,
+						"carouselSlidesToShow": 0,
+						"carouselSlidesToScroll": 1,
+						"locale": "en-US",
+						"features": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "51rpIG786ojtnhwumcKeeA",
+								"title": "Developer Docs: Browser Isolation",
+								"titleSize": null,
+								"description": "Review developer documentation for how to set up and configure Cloudflare Browser Isolation.",
+								"learnMoreUrl": "https://developers.cloudflare.com/cloudflare-one/policies/browser-isolation/",
+								"learnMoreText": "Read dev docs",
+								"displayBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "56vXwVqbBb0hCNveEKSmi3",
+								"title": "[2022 September] Blog: Isolate browser-borne threats on any network with WAN-as-a-Service",
+								"titleSize": null,
+								"description": "Learn how administrators can integrate Cloudflare Browser Isolation into their existing network from any traffic source such as IPsec and GRE via our WAN-as-a-service, Magic WAN.",
+								"learnMoreUrl": "https://blog.cloudflare.com/magic-gateway-browser-isolation/",
+								"learnMoreText": "Read the blog",
+								"displayBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "3XOMMIgw9t0bTsT7TL3aqk",
+								"title": "[2022 June] Blog: Connect to private network services with Browser Isolation",
+								"titleSize": null,
+								"description": "Learn how to connect users to your private network via Cloudflare Browser Isolation.",
+								"learnMoreUrl": "https://blog.cloudflare.com/browser-isolation-private-network/",
+								"learnMoreText": "Read the blog",
+								"displayBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "3sJNplxIblRk7amVcsElfL",
+								"title": "[2022 March] Blog: Protecting zero day browser vulnerabilities",
+								"titleSize": null,
+								"description": "Learn how How Cloudflare Zero Trust provides protection from zero day browser vulnerabilities, including the high severability vulernability (CVE-2022-1096)",
+								"learnMoreUrl": "https://blog.cloudflare.com/cve-2022-1096-zero-trust-protection-from-zero-day-browser-vulnerabilities/",
+								"learnMoreText": "Read the blog",
+								"displayBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "4Qo40p29tueMW7EGXdApyu",
+								"title": "[2022 March] Blog: Clientless web isolation is generally available",
+								"titleSize": null,
+								"description": "Learn how to deploy Cloudflare Browser Isolation without any endpoint software. This approach makes easier to secure contractor access, control data movement within specific applications, and more.",
+								"learnMoreUrl": "https://blog.cloudflare.com/clientless-web-isolation-general-availability/",
+								"learnMoreText": "Read the blog",
+								"displayBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "6EuTsTbNBM81rktfyGwLZp",
+								"title": "[2021 December] Blog: Control input on suspicious sites with Cloudflare Browser Isolation",
+								"titleSize": null,
+								"description": "Learn about data protection controls in Cloudflare Browser Isolation to protect against phishing attacks and credential theft inside a web browser.",
+								"learnMoreUrl": "https://blog.cloudflare.com/phishing-protection-browser/",
+								"learnMoreText": "Read the blog",
+								"displayBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "kZkZ0O31GoOEN4Ych52ea",
+								"title": "[2021 August] Blog: Data protection controls with Cloudflare Browser Isolation",
+								"titleSize": null,
+								"description": "Learn about features within Cloudflare Browser Isolation to protect sensitive data that users interact with in their web browsers.",
+								"learnMoreUrl": "https://blog.cloudflare.com/data-protection-browser/",
+								"learnMoreText": "Read the blog",
+								"displayBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "13qAWM7gbbxj70J1OuNmB1",
+								"title": "Wired Article: Browser Isolation Takes On Entrenched Web Threats",
+								"titleSize": null,
+								"description": "Read *Wired.com*'s coverage of Cloudflare Browser Isolation",
+								"learnMoreUrl": "https://www.wired.com/story/cloudflare-browser-isolation-entrenched-web-threats/",
+								"learnMoreText": "Read the article",
+								"displayBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "2Ot6DdEDcRJxjbKGwe9yMe",
+								"title": "[2021 March] Blog: Browser Isolation for teams of all sizes",
+								"titleSize": null,
+								"description": "Read the blog announcing the general availability of Cloudflare Browser Isolation.",
+								"learnMoreUrl": "https://blog.cloudflare.com/browser-isolation-for-teams-of-all-sizes/",
+								"learnMoreText": "Read the blog",
+								"displayBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": null,
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						]
 					}
 				],
 				"noindex": false,
