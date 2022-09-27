@@ -129,7 +129,7 @@
 						"button1OpenInNewTab": true,
 						"button2OpenInNewTab": null,
 						"streamThumbnails": null,
-						"sectionPadding": "tile--no-bottom-padding",
+						"sectionPadding": "tile--no-top-bottom-padding",
 						"streamPosterAssetFile": null,
 						"streamPoster": null,
 						"imageSize": null,
@@ -180,6 +180,35 @@
 								"titleSize": null,
 								"description": "Cloudflare announced the development of the Cloudflare Zero Trust SIM, the first solution that secures every packet of data leaving mobile devices. ",
 								"learnMoreUrl": "https://www.cloudflare.com/press-releases/2022/cloudflare-announces-the-first-zero-trust-sim/",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "c8992654-1850-5cbf-81c6-33b389fb98c1",
+									"altText": "Press Release Header",
+									"title": "Press Release Header",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/press-releases.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "ejIuhdbuBV9xkTvlugwRa",
+								"title": "Press Release- Cloudflare Announces $1.25 Billion \"Workers Launchpad\" Funding Program to Help Startups Grow Their Businesses",
+								"titleSize": null,
+								"description": "Partnership with 26 venture capital firms will provide support to startups building on Cloudflare Workers",
+								"learnMoreUrl": "/press-releases/2022/1-billion-workers-launchpad-funding",
 								"learnMoreText": "Learn More",
 								"displayBorder": false,
 								"icon": null,
