@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.15.27](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/types@6.15.26...@cloudflare/types@6.15.27) (2022-09-27)
+
+
+### Bug Fixes
+
+* **stratus:** UI-5470 writting update ([7838c1b](http://stash.cfops.it:7999/fe/stratus/commits/7838c1b))
+
+
+
+
+
 ## [6.15.26](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/types@6.15.25...@cloudflare/types@6.15.26) (2022-09-23)
 
 **Note:** Version bump only for package @cloudflare/types
