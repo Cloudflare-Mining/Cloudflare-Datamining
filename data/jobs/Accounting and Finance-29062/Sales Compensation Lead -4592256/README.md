@@ -5,29 +5,37 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4><strong>About the department</strong></h4>
-<p><span style="font-weight: 400;">The web team builds awareness by sharing how Cloudflare can make a positive impact for customers and prospects. This spans across all channels of customer communication: our website, docs, blog, emails, social media, events, ads, etc. We build the technology that allows internal customers to craft beautiful experiences and tell compelling stories about Cloudflare.</span></p>
-<h4><strong>What you'll do</strong></h4>
-<p><span style="font-weight: 400;">Cloudflare is the market leader in performance, security and reliability.&nbsp; We use our customer-facing properties both as a showcase for what is possible as well as a test bed for our latest technologies.&nbsp; You will push the boundaries of web performance, dabble in new methods for measuring audience while respecting privacy of the user and optimize the efficiency of site updates and design.</span></p>
-<p><span style="font-weight: 400;">As a Full Stack engineer on the Web team, you will be responsible for building and maintaining the systems that comprise our marketing website, developer docs, blog, marketing automation, and more. You will build Cloudflare Workers deployed on our edge network and Node.js and Golang services to Kubernetes. You’ll bring industry best practices for standing up and maintaining backend services plus a solid understanding of modern frontend development.</span></p>
+<p><strong>What You'll Do</strong></p>
+<p><span style="font-weight: 400;">We are looking for a Sales Compensation Lead to join our team as part of the Finance &amp; Business Operations Organization. As a key team member of a high-visibility organization, this role will provide both technical and operational support to Cloudflare’s Global Sales Compensation Program &amp; Strategy.&nbsp;</span></p>
+<p><strong>Responsibilities</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Build tools, frameworks and libraries to help build a better cloudflare.com</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Optimize our TypeScript/Gatsby build system</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Build Workers in TypeScript.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Build services and tooling in TypeScript and Golang.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Review work from your peers throughout all stages of the development lifecycle.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Plan and lead engineering work on large projects.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Mentor team members to help bring out their best work.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Own accuracy and timely distribution of commission payments and statement releases for multiple areas of the Cloudflare Sales Team&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Lead data management within Cloudflare’s Incentive Compensation Management (ICM) platform</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Drive alignment and project manage timely assignment of compensation plan, coverage and quota</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Own sales performance analytics for multiple areas of the Cloudflare Sales Team, surfacing for regular review with our leadership team</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Develop and maintain documentation or desktop procedures for all commissions processes</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Identify opportunities and propose additional controls, process standardization, or automation</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Lead Sales Team Issue resolution, partnering with Sales Operations, GTM Finance &amp; Sales Leadership</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Participate and take a leadership role in key projects:</span></li>
+	<ul>
+		<li style="font-weight: 400;"><span style="font-weight: 400;">Enhancements to the Anaplan ICM Model</span></li>
+		<li style="font-weight: 400;"><span style="font-weight: 400;">Implementation of automated compensation plan distribution</span></li>
+		<li style="font-weight: 400;"><span style="font-weight: 400;">Implementation of Anaplan SPM</span></li>
+		<li style="font-weight: 400;"><span style="font-weight: 400;">Path to higher frequency commission payments &amp; statements</span></li>
+		<li style="font-weight: 400;"><span style="font-weight: 400;">System-based analytics for GTM Finance, Sales Operations &amp; Sales Leadership&nbsp;</span></li>
+	</ul>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<p><span style="font-weight: 400;">About You:</span></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">More than 5 years of experience building and managing high volume software applications.&nbsp; Golang and Typescript are a plus</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience building, deploying and operating services.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">You enjoy getting things done and have a bias for action: you're a builder and a creator and are </span><span style="font-weight: 400;">able to complete a large project from start to finish, from technical specifications to code</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience managing or contributing to build systems for large JavaScript projects</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Contributions to open-source JavaScript tools and frameworks.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong interpersonal and communication skills. You will get to work with multiple teams with backgrounds from engineering to marketing. Curiosity and empathy are coveted traits here!</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Deep understanding of the web and technologies such as web browsers, HTTP, JavaScript, and the DOM.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">5+ years of Incentive Compensation program OR Commissions Finance experience in the High-Tech sector, with emphasis on program administration and tactical execution; experience with SaaS companies preferred</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Firm grasp of the commission administrative process flow, including plan document distribution and tracking; transaction crediting; incentive calculations; payment file preparation; and issue resolution&nbsp;&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with commissions-specific SOX Controls</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Highly proficient in Excel / GoogleSheets&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with SQL platforms and queries is a plus</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with sales compensation software and systems is a strong plus</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Communication: Clear, concise communicator; ability to synthesize complex data or business problems into actionable information to drive results</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Versatility: Ability to multitask and thrive in a fast-paced, high-growth environment, zooming in with good attention to detail while still keeping the big picture in mind</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Project Management: Results-oriented, self-starter, organized, team-focused, and a strong work ethic, leveraging relationships to ensure deadlines are met</span></li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
