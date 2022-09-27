@@ -27,8 +27,6 @@ await tryAndPush(
 	[
 		'data/other/*',
 		'data/other/*.json',
-		'data/other/**/*',
-		'data/other/**/*.json',
 	],
 	`${prefix} - IPs Data was updated!`,
 	'CFData - IPs Data Update',
