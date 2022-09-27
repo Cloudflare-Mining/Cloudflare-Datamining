@@ -1,5 +1,21 @@
 [
 	{
+		"id": "rate_limiting.enabled",
+		"feature": {
+			"feature_set": "rate_limiting",
+			"id": 19,
+			"key": "rate_limiting.enabled",
+			"name": "rate_limiting.enabled"
+		},
+		"allocation": {
+			"value": true,
+			"type": "bool"
+		},
+		"created_date": "2022-09-27T23:24:03.000000",
+		"edited_date": "2022-09-27T23:24:03.000000",
+		"deleted_date": ""
+	},
+	{
 		"id": "workers.enabled",
 		"feature": {
 			"feature_set": "workers",
@@ -125,6 +141,22 @@
 		},
 		"created_date": "2022-08-16T17:51:10.000000",
 		"edited_date": "2022-08-16T17:51:10.000000",
+		"deleted_date": ""
+	},
+	{
+		"id": "r2.enabled",
+		"feature": {
+			"feature_set": "r2",
+			"id": 1001,
+			"key": "r2.enabled",
+			"name": "R2 - Enabled"
+		},
+		"allocation": {
+			"value": true,
+			"type": "bool"
+		},
+		"created_date": "2022-09-27T22:35:47.000000",
+		"edited_date": "2022-09-27T22:35:47.000000",
 		"deleted_date": ""
 	}
 ]
