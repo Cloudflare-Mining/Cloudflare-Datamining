@@ -19,8 +19,9 @@
 	"managed_challenge.success.widget_created": "Successfully created widget for %{sitename}",
 	"managed_challenge.success.widget_updated": "Successfully updated site settings for %{sitename}",
 	"managed_challenge.success.widget_deleted": "Successfully deleted widget for %{sitename}",
+	"managed_challenge.success.widget_secret_rotated": "Successfully rotated widget secret",
 	"managed_challenge.page_title": "Turnstile Sites",
-	"managed_challenge.page_description": "Turnstile is a Cloudflare security product designed to stop non-human web visitors. It can be embedded into any website and works without showing visitors a CAPTCHA.",
+	"managed_challenge.page_description": "Turnstile is Cloudflareu2019s smart CAPTCHA alternative. It can be embedded into any website without sending traffic through Cloudflare, and works without showing visitors a CAPTCHA.",
 	"managed_challenge.analytics.challenges_issued.label": "Challenges Issued",
 	"managed_challenge.analytics.visitor_solve_rate.label": "Visitor Solve Rate",
 	"managed_challenge.analytics.api_solve_rate.label": "API Solve Rate",
@@ -52,6 +53,7 @@
 	"managed_challenge.edit_turnstile_widget_page.close_modal.description": "Deleting **%{sitename}** is permanent and cannot be undone.",
 	"managed_challenge.edit_turnstile_widget_page.close_modal.description_warning": "Make sure you stop using the sitekey before deleting the site to prevent your visitors from seeing an error message.",
 	"managed_challenge.edit_turnstile_widget_page.close_modal.confirm_delete_label": "Type in '%{sitename}' to confirm deletion",
+	"managed_challenge.edit_turnstile_widget_page.rotate_secret_button.label": "Rotate Secret Key",
 	"managed_challenge.turnstile_widget_analytics_page.view_widget_settings_button": "View Turnstile Keys",
 	"managed_challenge.turnstile_widget_analytics_page.help_description": "In order to get started with Turnstile, embed the JavaScript code",
 	"managed_challenge.widget_analytics_page.analytics_report.title": "Analytics for %{name}",
@@ -59,11 +61,12 @@
 	"managed_challenge.link.documentation": "Turnstile Developer Documentation",
 	"managed_challenge.widget.sitekey.label": "Site Key",
 	"managed_challenge.widget.secretkey.label": "Secret Key",
+	"managed_challenge.widget.secretkey.disclaimer": "Please note you can only rotate your secret key every 2 hours. Your old secret key will be valid while the new secrey key is being updated.",
 	"managed_challenge.widget.action.label": "Action",
 	"managed_challenge.widget.type.invisible.label": "Invisible",
 	"managed_challenge.widget.type.invisible.description": "Invisible challenge that does not require interaction.",
 	"managed_challenge.widget.type.non_interactive.label": "Non-interactive",
 	"managed_challenge.widget.type.non_interactive.description": "A purely non-interactive challenge. Users will see a widget with a loading bar while the browser challenge is run.",
 	"managed_challenge.widget.type.managed.label": "Managed",
-	"managed_challenge.widget.type.managed.description": "A challenge that *might* require interaction. Cloudflare will use information from the request and session to decide if an interactive challenge should be used."
+	"managed_challenge.widget.type.managed.description": "Cloudflare will use information from the visitor to decide if an interactive challenge should be used. If we do show an interaction, the user will be prompted to check a box (no images or text to decipher)."
 }

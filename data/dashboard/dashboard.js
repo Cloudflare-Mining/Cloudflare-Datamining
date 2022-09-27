@@ -5778,12 +5778,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			};
 			try {
 				e.g.build = tc({}, {
-					branch: "hotfix-AUTH-4629",
+					branch: "hotfix-LOUI-3675-turnstile-launch-fixes",
 					isReleaseCandidate: "true",
-					commit: "406a6f40efee2390db5cf8b3e558e3b5c3cf2570",
+					commit: "20a77d034353f3b68ab0241a4db399f6dbabef36",
 					env: "production",
-					builtAt: 1664295012365,
-					dashVersion: "d3024614e0e40b7f664817ef913429e0236b2122",
+					builtAt: 1664302780760,
+					dashVersion: "af9c1d9864f19a5d9292db0059abf6378b6de79e",
 					versions: {
 						"@cloudflare/app-dash": "25.85.0",
 						node: "14.18.3",
@@ -76203,4 +76203,4 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 	}
 ]);
 
-//# sourceMappingURL=a3e475cb3a112b8a3709.js.map
+//# sourceMappingURL=bd796a9f658527f97a4f.js.map
