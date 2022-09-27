@@ -10,23 +10,55 @@
 <p><span style="font-weight: 400;">&nbsp;</span><span style="font-weight: 400;">The candidate will be responsible for partnering with other Engineers, Business Analysts and Salesforce Administrators. A team player with a collaboration-oriented mindset is essential!</span></p>
 <h4>What you'll do</h4>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Design and develop solutions on Salesforce CPQ platform integrating with backend systems and working closely with our development, QA, product team and Architects</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Analyze complex business and systems requirements and provide technical solutions to meet the business needs</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Partner with application and data developers on designs, models and best in class implementation</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Develop applications using the Force.com platform (Apex classes/triggers, VisualForce pages, Web Services API), Angular JS, related web technologies (CSS3, HTML5, Ajax, JavaScript) and other enterprise programming languages such as Java</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Integrate enterprise applications such as Salesforce with analytical platforms and other applications via integration tools using SOAP or REST web service protocols</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Providing Tier 2 support for production issues, including fixes across platforms and on-call responsibilities working with production support team to ensure 24x7 availability of production systems</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Manage heavy workloads and projects, many on a time-sensitive basis while still maintaining accuracy and strong attention to detail</span></li>
+	<li>
+		<p>Design and develop solutions on Salesforce CPQ platform integrating with backend systems and working closely with our development, QA, product team and Architects</p>
+	</li>
+	<li>
+		<p>Analyze complex business and systems requirements and provide technical solutions to meet the business needs</p>
+	</li>
+	<li>
+		<p>Partner with application and data developers on designs, models and best in class implementation</p>
+	</li>
+	<li>
+		<p>Develop applications using the Force.com platform (Apex classes/triggers, VisualForce pages, Web Services API)</p>
+	</li>
+	<li>
+		<p>Hands on experience of Salesforce CPQ/Steelbrick functionality including various featuresets like Product setup, Product Options, Product configuration &amp; rules, Pricing, Discounting, Quote templates, Order management, Contract management and amendments</p>
+	</li>
+	<li>
+		<p>Experience with design and implementing the CPQ Amendment and Renewal framework.</p>
+	</li>
+	<li>
+		<p>Lead our agile development process with our team of Salesforce Business Analyst to design, test, and implement new features on CPQ Participate in peer reviewing and debugging existing source code&nbsp;</p>
+	</li>
+	<li>
+		<p>Providing Tier 2 support for production issues, including fixes across platforms and on-call responsibilities working with production support team to ensure 24x7 availability of production systems</p>
+	</li>
+	<li>
+		<p>Manage heavy workloads and projects, many on a time-sensitive basis while still maintaining accuracy and strong attention to detail</p>
+	</li>
 </ul>
-<p><span style="font-weight: 400;">&nbsp;</span></p>
+<p>&nbsp;</p>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Solid understanding of and detailed experience with Salesforce CPQ and SalesCloud architecture and API. 3+ years of development experience</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">B.S. in Computer Science or a related technical field involving coding</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong experience writing Visualforce, Lightning Component, Apex classes and triggers with a proficiency in HTML, XML, JavaScript, SQL, CSS, Java and REST-based web services</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Salesforce Certified Platform Developer(I, II) certification strongly desired</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with integrations such as: Salesforce CPQ, Apttus CLM, DocuSign, Dell Boomi, ZenDesk, Marketo, NetSuite, Tableau or other cloud business applications</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Excellent oral and written communication skills</span></li>
+	<li>
+		<p>Solid understanding of and detailed experience with Salesforce CPQ and SalesCloud architecture and API. 3+ years of development experience</p>
+	</li>
+	<li>
+		<p>B.S. in Computer Science or a related technical field involving coding</p>
+	</li>
+	<li>
+		<p>Strong experience writing Visualforce, Lightning Component, Apex classes and triggers with a proficiency in HTML, XML, JavaScript, SQL, CSS, Java and REST-based web services</p>
+	</li>
+	<li>
+		<p>Salesforce Certified Platform Developer(I, II) certification strongly desired</p>
+	</li>
+	<li>
+		<p>Experience with integrations such as: Salesforce CPQ, Apttus CLM, DocuSign, Dell Boomi, ZenDesk, Marketo, NetSuite, Tableau or other cloud business applications</p>
+	</li>
+	<li>
+		<p>Excellent oral and written communication skills</p>
+	</li>
 </ul>
 <p><span style="font-weight: 400;">&nbsp;</span></p>
 <p><strong>Compensation</strong></p>
