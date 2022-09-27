@@ -3773,18 +3773,7 @@
 									"showIconOnly": false,
 									"hideOnChinaSite": null,
 									"navigationItems": null,
-									"mainLink": {
-										"contentTypeId": "elementNavLink",
-										"contentfulId": "1xhWSK7DC4KkoxszXRgVuG",
-										"locale": "en-US",
-										"title": "Log In",
-										"description": null,
-										"url": "https://dash.cloudflare.com/login/",
-										"badges": null,
-										"specialLinkType": null,
-										"openInNewWindow": false,
-										"isExternalUrl": null
-									},
+									"mainLink": null,
 									"navigationLinks": null
 								},
 								{
@@ -4239,11 +4228,11 @@
 						]
 					},
 					{
-						"contentfulId": "11zfjLhFDcOhFf4WvXoCuB",
+						"contentfulId": "3ie2oLniCsqaIiwW9wg7Jo",
 						"backgroundColor": "white",
 						"contentTypeId": "bladeFourFeatures",
 						"htmlId": null,
-						"copy": "Applying Zero Trust to browsing means that no code or interactions should be trusted to run on devices by default.\n\nCloudflare Browser Isolation runs all code at our edge — insulating users from untrusted web content and protecting data in browser interactions from untrusted users and devices.\n",
+						"copy": "Applying Zero Trust to browsing means that no code or interactions should be trusted to run on devices by default. __Cloudflare Browser Isolation__ runs all code at our edge — insulating users from untrusted web content and protecting data in browser interactions from untrusted users and devices.\n",
 						"title": "Secure users, devices, and data with Zero Trust browsing",
 						"subtitle": "Key benefits",
 						"bladeStyle": null,
@@ -4255,95 +4244,60 @@
 						"features": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "2kU0DtVMNsn8WxNUVBiqi1",
-								"title": "SWG policies are too restrictive, or too relaxed",
+								"contentfulId": "2hqug6LPrn8u02xT6oVfQP",
+								"title": "Reduce attack surface",
 								"titleSize": null,
-								"description": "No [secure web gateway](https://www.cloudflare.com/teams/gateway/ \"Cloudflare Gateway\") can possibly block every threat on the Internet. In an attempt to limit risks, IT teams block too many websites, and employees feel overly restricted.",
+								"description": "Zero Trust browsing stops malicious code on uncategorized, risky, or even low-risk sites from infecting users' devices",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
-								"displayBorder": null,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageAssetFile": {
-									"id": "326d66b9-319c-522a-9a89-d79f3d382742",
-									"altText": "Security shield ddos protection blue",
-									"title": "Security shield ddos protection blue",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "[path]/security-shield-ddos-protection.svg"
-										}
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
+								"displayBorder": false,
+								"icon": {
+									"file": {
+										"publicURL": "[path]/security-shield-zero-trust-blue.svg"
+									}
 								},
+								"iconAssetFile": null,
+								"imageAssetFile": null,
 								"streamId": null,
 								"streamThumbnail": null,
 								"streamThumbnailAssetFile": null
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "1jOM3eXjYZhtFqSMVRlttw",
-								"title": "Malicious content is difficult to spot and costly to remediate",
+								"contentfulId": "1e4dLVUgeI02aaMLm1S9Em",
+								"title": "Simplify deployment",
 								"titleSize": null,
-								"description": "Innocuous webmail attachments, plugins, and software extensions can disguise harmful code. Once that code travels from a user's browser to their device, it can compromise sensitive data and infect other network devices.",
+								"description": "Set remote browser isolation policies from the same management dashboard where you manage application access, DNS/HTTP filtering, and more.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
-								"displayBorder": null,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageAssetFile": {
-									"id": "dea43cfb-dce2-574f-aed6-ff23c7b1769c",
-									"altText": "Router blue",
-									"title": "Router blue",
-									"activeAsset": "Brandfolder Asset",
-									"locale": "en-US",
-									"contentfulAsset": null,
-									"brandfolderAsset": {
-										"size": 1562,
-										"height": 192,
-										"width": 192,
-										"filename": "router-blue.svg",
-										"file": {
-											"publicURL": "[path]/router-blue.svg"
-										}
-									},
-									"brandfolderAssetMobile": null
+								"displayBorder": false,
+								"icon": {
+									"file": {
+										"publicURL": "[path]/performance-validator.svg"
+									}
 								},
+								"iconAssetFile": null,
+								"imageAssetFile": null,
 								"streamId": null,
 								"streamThumbnail": null,
 								"streamThumbnailAssetFile": null
 							},
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "7hl3Hrm5xq2xGPPvuqR3cZ",
-								"title": "IT teams have limited power to manage browser activity",
+								"contentfulId": "fRAsFwnob0F6XVa0k8v6I",
+								"title": "Protect data",
 								"titleSize": null,
-								"description": "Organizations often do not have full visibility into or control over the browsers their teams use, keeping them from meeting compliance standards and securing the users, devices, and data on their network.",
+								"description": "Stop data loss and phishing by controlling user actions (keyboard input, copy, print, up/download) within apps or risky sites.",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
-								"displayBorder": null,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageAssetFile": {
-									"id": "ac68da36-c0fc-5e54-aa3d-94dfb9e10bde",
-									"altText": "single user",
-									"title": "single user icon",
-									"activeAsset": "Brandfolder Asset",
-									"locale": "en-US",
-									"contentfulAsset": null,
-									"brandfolderAsset": {
-										"size": 1531,
-										"height": 3370,
-										"width": 3250,
-										"filename": "user.svg",
-										"file": {
-											"publicURL": "[path]/user.svg"
-										}
-									},
-									"brandfolderAssetMobile": null
+								"displayBorder": false,
+								"icon": {
+									"file": {
+										"publicURL": "[path]/security-safe-48px.svg"
+									}
 								},
+								"iconAssetFile": null,
+								"imageAssetFile": null,
 								"streamId": null,
 								"streamThumbnail": null,
 								"streamThumbnailAssetFile": null
