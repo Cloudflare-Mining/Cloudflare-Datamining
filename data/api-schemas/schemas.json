@@ -93325,7 +93325,25 @@
 								"schema": {
 									"type": "object",
 									"properties": {
-										"data": {
+										"success": {
+											"type": "boolean",
+											"example": true
+										},
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"result": {
 											"type": "object",
 											"properties": {
 												"top_0": {
@@ -93388,7 +93406,25 @@
 								"schema": {
 									"type": "object",
 									"properties": {
-										"data": {
+										"success": {
+											"type": "boolean",
+											"example": true
+										},
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"result": {
 											"type": "object",
 											"properties": {
 												"top_0": {
@@ -93451,6 +93487,24 @@
 								"schema": {
 									"type": "object",
 									"properties": {
+										"success": {
+											"type": "boolean",
+											"example": true
+										},
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
 										"meta": {
 											"type": "object",
 											"properties": {
@@ -93520,21 +93574,26 @@
 												}
 											}
 										},
-										"series": {
+										"result": {
 											"type": "object",
 											"properties": {
-												"timestamps": {
-													"type": "array",
-													"items": {
-														"type": "string",
-														"format": "date-time",
-														"example": "2022-09-17T10:22:57.555000+00:00"
-													}
-												},
-												"values": {
-													"type": "array",
-													"items": {
-														"type": "string"
+												"series": {
+													"type": "object",
+													"properties": {
+														"timestamps": {
+															"type": "array",
+															"items": {
+																"type": "string",
+																"format": "date-time",
+																"example": "2022-09-17T10:22:57.555000+00:00"
+															}
+														},
+														"values": {
+															"type": "array",
+															"items": {
+																"type": "string"
+															}
+														}
 													}
 												}
 											}
@@ -93577,11 +93636,29 @@
 								"schema": {
 									"type": "object",
 									"properties": {
+										"success": {
+											"type": "boolean",
+											"example": true
+										},
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
 										"meta": {
 											"type": "object",
 											"properties": {}
 										},
-										"data": {
+										"result": {
 											"type": "object",
 											"properties": {
 												"summary_0": {
@@ -93641,11 +93718,29 @@
 								"schema": {
 									"type": "object",
 									"properties": {
+										"success": {
+											"type": "boolean",
+											"example": true
+										},
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
 										"meta": {
 											"type": "object",
 											"properties": {}
 										},
-										"data": {
+										"result": {
 											"type": "object",
 											"properties": {
 												"summary_0": {
@@ -93701,11 +93796,29 @@
 								"schema": {
 									"type": "object",
 									"properties": {
+										"success": {
+											"type": "boolean",
+											"example": true
+										},
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
 										"meta": {
 											"type": "object",
 											"properties": {}
 										},
-										"data": {
+										"result": {
 											"type": "object",
 											"properties": {
 												"summary_0": {
@@ -93765,11 +93878,29 @@
 								"schema": {
 									"type": "object",
 									"properties": {
+										"success": {
+											"type": "boolean",
+											"example": true
+										},
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
 										"meta": {
 											"type": "object",
 											"properties": {}
 										},
-										"data": {
+										"result": {
 											"type": "object",
 											"properties": {
 												"summary_0": {
@@ -93825,11 +93956,29 @@
 								"schema": {
 									"type": "object",
 									"properties": {
+										"success": {
+											"type": "boolean",
+											"example": true
+										},
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
 										"meta": {
 											"type": "object",
 											"properties": {}
 										},
-										"data": {
+										"result": {
 											"type": "object",
 											"properties": {
 												"summary_0": {
@@ -93885,11 +94034,29 @@
 								"schema": {
 									"type": "object",
 									"properties": {
+										"success": {
+											"type": "boolean",
+											"example": true
+										},
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
 										"meta": {
 											"type": "object",
 											"properties": {}
 										},
-										"data": {
+										"result": {
 											"type": "object",
 											"properties": {
 												"summary_0": {
@@ -93957,11 +94124,29 @@
 								"schema": {
 									"type": "object",
 									"properties": {
+										"success": {
+											"type": "boolean",
+											"example": true
+										},
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
 										"meta": {
 											"type": "object",
 											"properties": {}
 										},
-										"data": {
+										"result": {
 											"type": "object",
 											"properties": {
 												"serie_0": {
@@ -94033,11 +94218,29 @@
 								"schema": {
 									"type": "object",
 									"properties": {
+										"success": {
+											"type": "boolean",
+											"example": true
+										},
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
 										"meta": {
 											"type": "object",
 											"properties": {}
 										},
-										"data": {
+										"result": {
 											"type": "object",
 											"properties": {
 												"serie_0": {
@@ -94103,11 +94306,29 @@
 								"schema": {
 									"type": "object",
 									"properties": {
+										"success": {
+											"type": "boolean",
+											"example": true
+										},
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
 										"meta": {
 											"type": "object",
 											"properties": {}
 										},
-										"data": {
+										"result": {
 											"type": "object",
 											"properties": {
 												"serie_0": {
@@ -94179,11 +94400,29 @@
 								"schema": {
 									"type": "object",
 									"properties": {
+										"success": {
+											"type": "boolean",
+											"example": true
+										},
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
 										"meta": {
 											"type": "object",
 											"properties": {}
 										},
-										"data": {
+										"result": {
 											"type": "object",
 											"properties": {
 												"serie_0": {
@@ -94249,11 +94488,29 @@
 								"schema": {
 									"type": "object",
 									"properties": {
+										"success": {
+											"type": "boolean",
+											"example": true
+										},
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
 										"meta": {
 											"type": "object",
 											"properties": {}
 										},
-										"data": {
+										"result": {
 											"type": "object",
 											"properties": {
 												"serie_0": {
@@ -94319,11 +94576,29 @@
 								"schema": {
 									"type": "object",
 									"properties": {
+										"success": {
+											"type": "boolean",
+											"example": true
+										},
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
 										"meta": {
 											"type": "object",
 											"properties": {}
 										},
-										"data": {
+										"result": {
 											"type": "object",
 											"properties": {
 												"serie_0": {
@@ -94407,11 +94682,29 @@
 								"schema": {
 									"type": "object",
 									"properties": {
+										"success": {
+											"type": "boolean",
+											"example": true
+										},
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
 										"meta": {
 											"type": "object",
 											"properties": {}
 										},
-										"data": {
+										"result": {
 											"type": "object",
 											"properties": {
 												"serie_0": {
@@ -94471,11 +94764,29 @@
 								"schema": {
 									"type": "object",
 									"properties": {
+										"success": {
+											"type": "boolean",
+											"example": true
+										},
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
 										"meta": {
 											"type": "object",
 											"properties": {}
 										},
-										"data": {
+										"result": {
 											"type": "object",
 											"properties": {
 												"serie_0": {
@@ -94550,6 +94861,24 @@
 								"schema": {
 									"type": "object",
 									"properties": {
+										"success": {
+											"type": "boolean",
+											"example": true
+										},
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
 										"meta": {
 											"type": "object",
 											"properties": {
@@ -94605,7 +94934,7 @@
 												}
 											}
 										},
-										"data": {
+										"result": {
 											"type": "object",
 											"properties": {
 												"top_0": {
@@ -94684,6 +95013,24 @@
 								"schema": {
 									"type": "object",
 									"properties": {
+										"success": {
+											"type": "boolean",
+											"example": true
+										},
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
 										"meta": {
 											"type": "object",
 											"properties": {
@@ -94739,7 +95086,7 @@
 												}
 											}
 										},
-										"data": {
+										"result": {
 											"type": "object",
 											"properties": {
 												"top_0": {
@@ -94820,6 +95167,24 @@
 								"schema": {
 									"type": "object",
 									"properties": {
+										"success": {
+											"type": "boolean",
+											"example": true
+										},
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
 										"meta": {
 											"type": "object",
 											"properties": {
@@ -94875,7 +95240,7 @@
 												}
 											}
 										},
-										"data": {
+										"result": {
 											"type": "object",
 											"properties": {
 												"top_0": {
@@ -94953,6 +95318,24 @@
 								"schema": {
 									"type": "object",
 									"properties": {
+										"success": {
+											"type": "boolean",
+											"example": true
+										},
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
 										"meta": {
 											"type": "object",
 											"properties": {
@@ -95008,7 +95391,7 @@
 												}
 											}
 										},
-										"data": {
+										"result": {
 											"type": "object",
 											"properties": {
 												"top_0": {
@@ -95087,6 +95470,24 @@
 								"schema": {
 									"type": "object",
 									"properties": {
+										"success": {
+											"type": "boolean",
+											"example": true
+										},
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
 										"meta": {
 											"type": "object",
 											"properties": {
@@ -95142,7 +95543,7 @@
 												}
 											}
 										},
-										"data": {
+										"result": {
 											"type": "object",
 											"properties": {
 												"top_0": {
@@ -95220,6 +95621,24 @@
 								"schema": {
 									"type": "object",
 									"properties": {
+										"success": {
+											"type": "boolean",
+											"example": true
+										},
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
 										"meta": {
 											"type": "object",
 											"properties": {
@@ -95275,7 +95694,7 @@
 												}
 											}
 										},
-										"data": {
+										"result": {
 											"type": "object",
 											"properties": {
 												"top_0": {
@@ -95338,6 +95757,24 @@
 								"schema": {
 									"type": "object",
 									"properties": {
+										"success": {
+											"type": "boolean",
+											"example": true
+										},
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
 										"meta": {
 											"type": "object",
 											"properties": {
@@ -95393,7 +95830,7 @@
 												}
 											}
 										},
-										"data": {
+										"result": {
 											"type": "object",
 											"properties": {
 												"top_0": {
@@ -95471,6 +95908,24 @@
 								"schema": {
 									"type": "object",
 									"properties": {
+										"success": {
+											"type": "boolean",
+											"example": true
+										},
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
 										"meta": {
 											"type": "object",
 											"properties": {
@@ -95526,7 +95981,7 @@
 												}
 											}
 										},
-										"data": {
+										"result": {
 											"type": "object",
 											"properties": {
 												"top_0": {
@@ -95605,6 +96060,24 @@
 								"schema": {
 									"type": "object",
 									"properties": {
+										"success": {
+											"type": "boolean",
+											"example": true
+										},
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
 										"meta": {
 											"type": "object",
 											"properties": {
@@ -95660,7 +96133,7 @@
 												}
 											}
 										},
-										"data": {
+										"result": {
 											"type": "object",
 											"properties": {
 												"top_0": {
@@ -95741,6 +96214,24 @@
 								"schema": {
 									"type": "object",
 									"properties": {
+										"success": {
+											"type": "boolean",
+											"example": true
+										},
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
 										"meta": {
 											"type": "object",
 											"properties": {
@@ -95796,7 +96287,7 @@
 												}
 											}
 										},
-										"data": {
+										"result": {
 											"type": "object",
 											"properties": {
 												"top_0": {
@@ -95874,6 +96365,24 @@
 								"schema": {
 									"type": "object",
 									"properties": {
+										"success": {
+											"type": "boolean",
+											"example": true
+										},
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
 										"meta": {
 											"type": "object",
 											"properties": {
@@ -95929,7 +96438,7 @@
 												}
 											}
 										},
-										"data": {
+										"result": {
 											"type": "object",
 											"properties": {
 												"top_0": {
@@ -96008,6 +96517,24 @@
 								"schema": {
 									"type": "object",
 									"properties": {
+										"success": {
+											"type": "boolean",
+											"example": true
+										},
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
 										"meta": {
 											"type": "object",
 											"properties": {
@@ -96063,7 +96590,7 @@
 												}
 											}
 										},
-										"data": {
+										"result": {
 											"type": "object",
 											"properties": {
 												"top_0": {
@@ -96141,6 +96668,24 @@
 								"schema": {
 									"type": "object",
 									"properties": {
+										"success": {
+											"type": "boolean",
+											"example": true
+										},
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
 										"meta": {
 											"type": "object",
 											"properties": {
@@ -96196,7 +96741,7 @@
 												}
 											}
 										},
-										"data": {
+										"result": {
 											"type": "object",
 											"properties": {
 												"top_0": {
@@ -96259,6 +96804,24 @@
 								"schema": {
 									"type": "object",
 									"properties": {
+										"success": {
+											"type": "boolean",
+											"example": true
+										},
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
 										"meta": {
 											"type": "object",
 											"properties": {
@@ -96314,7 +96877,7 @@
 												}
 											}
 										},
-										"data": {
+										"result": {
 											"type": "object",
 											"properties": {
 												"top_0": {
@@ -96377,6 +96940,24 @@
 								"schema": {
 									"type": "object",
 									"properties": {
+										"success": {
+											"type": "boolean",
+											"example": true
+										},
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
 										"meta": {
 											"type": "object",
 											"properties": {
@@ -96432,7 +97013,7 @@
 												}
 											}
 										},
-										"data": {
+										"result": {
 											"type": "object",
 											"properties": {
 												"top_0": {
@@ -96489,6 +97070,24 @@
 								"schema": {
 									"type": "object",
 									"properties": {
+										"success": {
+											"type": "boolean",
+											"example": true
+										},
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
 										"meta": {
 											"type": "object",
 											"properties": {
@@ -96544,7 +97143,7 @@
 												}
 											}
 										},
-										"data": {
+										"result": {
 											"type": "object",
 											"properties": {
 												"top_0": {
@@ -96601,6 +97200,24 @@
 								"schema": {
 									"type": "object",
 									"properties": {
+										"success": {
+											"type": "boolean",
+											"example": true
+										},
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
 										"meta": {
 											"type": "object",
 											"properties": {
@@ -96656,7 +97273,7 @@
 												}
 											}
 										},
-										"data": {
+										"result": {
 											"type": "object",
 											"properties": {
 												"top_0": {
@@ -96723,6 +97340,24 @@
 								"schema": {
 									"type": "object",
 									"properties": {
+										"success": {
+											"type": "boolean",
+											"example": true
+										},
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
 										"meta": {
 											"type": "object",
 											"properties": {
@@ -96778,7 +97413,7 @@
 												}
 											}
 										},
-										"data": {
+										"result": {
 											"type": "object",
 											"properties": {
 												"top_0": {
@@ -96848,33 +97483,56 @@
 								"schema": {
 									"type": "object",
 									"properties": {
-										"location": {
+										"success": {
+											"type": "boolean",
+											"example": true
+										},
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"result": {
 											"type": "object",
 											"properties": {
-												"name": {
-													"type": "string",
-													"example": "Afghanistan"
-												},
-												"region": {
-													"type": "string",
-													"example": "Middle East"
-												},
-												"subregion": {
-													"type": "string",
-													"example": "Southern Asia"
-												},
-												"latitude": {
-													"type": "string"
-												},
-												"longitude": {
-													"type": "string"
-												},
-												"alpha2": {
-													"type": "string",
-													"example": "AF"
-												},
-												"confidenceLvel": {
-													"type": "integer"
+												"location": {
+													"type": "object",
+													"properties": {
+														"name": {
+															"type": "string",
+															"example": "Afghanistan"
+														},
+														"region": {
+															"type": "string",
+															"example": "Middle East"
+														},
+														"subregion": {
+															"type": "string",
+															"example": "Southern Asia"
+														},
+														"latitude": {
+															"type": "string"
+														},
+														"longitude": {
+															"type": "string"
+														},
+														"alpha2": {
+															"type": "string",
+															"example": "AF"
+														},
+														"confidenceLvel": {
+															"type": "integer"
+														}
+													}
 												}
 											}
 										}
@@ -96916,24 +97574,47 @@
 								"schema": {
 									"type": "object",
 									"properties": {
-										"locations": {
+										"success": {
+											"type": "boolean",
+											"example": true
+										},
+										"errors": {
 											"type": "array",
 											"items": {
 												"type": "object",
 												"properties": {
-													"name": {
-														"type": "string",
-														"example": "Afghanistan"
-													},
-													"latitude": {
+													"code": {
 														"type": "string"
 													},
-													"longitude": {
+													"message": {
 														"type": "string"
-													},
-													"alpha2": {
-														"type": "string",
-														"example": "AF"
+													}
+												}
+											}
+										},
+										"result": {
+											"type": "object",
+											"properties": {
+												"locations": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"name": {
+																"type": "string",
+																"example": "Afghanistan"
+															},
+															"latitude": {
+																"type": "string"
+															},
+															"longitude": {
+																"type": "string"
+															},
+															"alpha2": {
+																"type": "string",
+																"example": "AF"
+															}
+														}
 													}
 												}
 											}
@@ -96976,45 +97657,68 @@
 								"schema": {
 									"type": "object",
 									"properties": {
-										"asn": {
+										"success": {
+											"type": "boolean",
+											"example": true
+										},
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"result": {
 											"type": "object",
 											"properties": {
-												"name": {
-													"type": "string",
-													"example": "Apple Inc."
-												},
-												"nameLong": {
-													"type": "string"
-												},
-												"aka": {
-													"type": "string"
-												},
-												"country": {
-													"type": "string"
-												},
-												"related": {
-													"type": "array",
-													"items": {
-														"type": "object",
-														"properties": {
-															"name": {
-																"type": "string"
-															},
-															"aka": {
-																"type": "string"
-															},
-															"asn": {
-																"type": "integer"
+												"asn": {
+													"type": "object",
+													"properties": {
+														"name": {
+															"type": "string",
+															"example": "Apple Inc."
+														},
+														"nameLong": {
+															"type": "string"
+														},
+														"aka": {
+															"type": "string"
+														},
+														"country": {
+															"type": "string"
+														},
+														"related": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"properties": {
+																	"name": {
+																		"type": "string"
+																	},
+																	"aka": {
+																		"type": "string"
+																	},
+																	"asn": {
+																		"type": "integer"
+																	}
+																}
 															}
+														},
+														"asn": {
+															"type": "integer"
+														},
+														"website": {
+															"type": "string",
+															"example": "https://www.apple.com/support/systemstatus/"
 														}
 													}
-												},
-												"asn": {
-													"type": "integer"
-												},
-												"website": {
-													"type": "string",
-													"example": "https://www.apple.com/support/systemstatus/"
 												}
 											}
 										}
@@ -97066,49 +97770,72 @@
 								"schema": {
 									"type": "object",
 									"properties": {
-										"asn": {
+										"success": {
+											"type": "boolean",
+											"example": true
+										},
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"result": {
 											"type": "object",
 											"properties": {
-												"name": {
-													"type": "string",
-													"example": "Apple Inc."
-												},
-												"nameLong": {
-													"type": "string"
-												},
-												"aka": {
-													"type": "string"
-												},
-												"country": {
-													"type": "string"
-												},
-												"confidenceLevel": {
-													"type": "integer"
-												},
-												"related": {
-													"type": "array",
-													"items": {
-														"type": "object",
-														"properties": {
-															"name": {
-																"type": "string",
-																"example": "Cogent-174"
-															},
-															"aka": {
-																"type": "string"
-															},
-															"asn": {
-																"type": "integer"
+												"asn": {
+													"type": "object",
+													"properties": {
+														"name": {
+															"type": "string",
+															"example": "Apple Inc."
+														},
+														"nameLong": {
+															"type": "string"
+														},
+														"aka": {
+															"type": "string"
+														},
+														"country": {
+															"type": "string"
+														},
+														"confidenceLevel": {
+															"type": "integer"
+														},
+														"related": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"properties": {
+																	"name": {
+																		"type": "string",
+																		"example": "Cogent-174"
+																	},
+																	"aka": {
+																		"type": "string"
+																	},
+																	"asn": {
+																		"type": "integer"
+																	}
+																}
 															}
+														},
+														"asn": {
+															"type": "integer"
+														},
+														"website": {
+															"type": "string",
+															"example": "https://www.apple.com/support/systemstatus/"
 														}
 													}
-												},
-												"asn": {
-													"type": "integer"
-												},
-												"website": {
-													"type": "string",
-													"example": "https://www.apple.com/support/systemstatus/"
 												}
 											}
 										}
@@ -97213,6 +97940,24 @@
 								"schema": {
 									"type": "object",
 									"properties": {
+										"success": {
+											"type": "boolean",
+											"example": true
+										},
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
 										"meta": {
 											"type": "object",
 											"properties": {
@@ -97261,21 +98006,26 @@
 												}
 											}
 										},
-										"series": {
+										"result": {
 											"type": "object",
 											"properties": {
-												"timestamps": {
-													"type": "array",
-													"items": {
-														"type": "string",
-														"format": "date-time",
-														"example": "2022-09-17T10:22:57.555000+00:00"
-													}
-												},
-												"values": {
-													"type": "array",
-													"items": {
-														"type": "string"
+												"series": {
+													"type": "object",
+													"properties": {
+														"timestamps": {
+															"type": "array",
+															"items": {
+																"type": "string",
+																"format": "date-time",
+																"example": "2022-09-17T10:22:57.555000+00:00"
+															}
+														},
+														"values": {
+															"type": "array",
+															"items": {
+																"type": "string"
+															}
+														}
 													}
 												}
 											}
@@ -97318,6 +98068,24 @@
 								"schema": {
 									"type": "object",
 									"properties": {
+										"success": {
+											"type": "boolean",
+											"example": true
+										},
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
 										"meta": {
 											"type": "object",
 											"properties": {
@@ -97387,7 +98155,7 @@
 												}
 											}
 										},
-										"data": {
+										"result": {
 											"type": "object",
 											"properties": {
 												"serie_0": {
@@ -97469,7 +98237,25 @@
 								"schema": {
 									"type": "object",
 									"properties": {
-										"data": {
+										"success": {
+											"type": "boolean",
+											"example": true
+										},
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"result": {
 											"type": "object",
 											"properties": {
 												"meta": {
@@ -97593,6 +98379,24 @@
 								"schema": {
 									"type": "object",
 									"properties": {
+										"success": {
+											"type": "boolean",
+											"example": true
+										},
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
 										"meta": {
 											"type": "object",
 											"properties": {
@@ -97662,21 +98466,26 @@
 												}
 											}
 										},
-										"series": {
+										"result": {
 											"type": "object",
 											"properties": {
-												"timestamps": {
-													"type": "array",
-													"items": {
-														"type": "string",
-														"format": "date-time",
-														"example": "2022-09-17T10:22:57.555000+00:00"
-													}
-												},
-												"values": {
-													"type": "array",
-													"items": {
-														"type": "string"
+												"series": {
+													"type": "object",
+													"properties": {
+														"timestamps": {
+															"type": "array",
+															"items": {
+																"type": "string",
+																"format": "date-time",
+																"example": "2022-09-17T10:22:57.555000+00:00"
+															}
+														},
+														"values": {
+															"type": "array",
+															"items": {
+																"type": "string"
+															}
+														}
 													}
 												}
 											}
@@ -97719,6 +98528,24 @@
 								"schema": {
 									"type": "object",
 									"properties": {
+										"success": {
+											"type": "boolean",
+											"example": true
+										},
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
 										"meta": {
 											"type": "object",
 											"properties": {
@@ -97788,7 +98615,7 @@
 												}
 											}
 										},
-										"data": {
+										"result": {
 											"type": "object",
 											"properties": {
 												"serie_0": {
@@ -97872,7 +98699,25 @@
 								"schema": {
 									"type": "object",
 									"properties": {
-										"data": {
+										"success": {
+											"type": "boolean",
+											"example": true
+										},
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"result": {
 											"type": "object",
 											"properties": {
 												"meta": {
@@ -97996,7 +98841,25 @@
 								"schema": {
 									"type": "object",
 									"properties": {
-										"data": {
+										"success": {
+											"type": "boolean",
+											"example": true
+										},
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"result": {
 											"type": "object",
 											"properties": {
 												"top_0": {
@@ -98130,7 +98993,25 @@
 								"schema": {
 									"type": "object",
 									"properties": {
-										"data": {
+										"success": {
+											"type": "boolean",
+											"example": true
+										},
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"result": {
 											"type": "object",
 											"properties": {
 												"top_0": {
@@ -98205,6 +99086,24 @@
 								"schema": {
 									"type": "object",
 									"properties": {
+										"success": {
+											"type": "boolean",
+											"example": true
+										},
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
 										"meta": {
 											"type": "object",
 											"properties": {
@@ -98274,21 +99173,26 @@
 												}
 											}
 										},
-										"series": {
+										"result": {
 											"type": "object",
 											"properties": {
-												"timestamps": {
-													"type": "array",
-													"items": {
-														"type": "string",
-														"format": "date-time",
-														"example": "2022-09-17T10:22:57.555000+00:00"
-													}
-												},
-												"values": {
-													"type": "array",
-													"items": {
-														"type": "string"
+												"series": {
+													"type": "object",
+													"properties": {
+														"timestamps": {
+															"type": "array",
+															"items": {
+																"type": "string",
+																"format": "date-time",
+																"example": "2022-09-17T10:22:57.555000+00:00"
+															}
+														},
+														"values": {
+															"type": "array",
+															"items": {
+																"type": "string"
+															}
+														}
 													}
 												}
 											}
@@ -98331,6 +99235,24 @@
 								"schema": {
 									"type": "object",
 									"properties": {
+										"success": {
+											"type": "boolean",
+											"example": true
+										},
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
 										"meta": {
 											"type": "object",
 											"properties": {
@@ -98353,7 +99275,7 @@
 												}
 											}
 										},
-										"data": {
+										"result": {
 											"type": "object",
 											"properties": {
 												"top_0": {
@@ -98412,6 +99334,24 @@
 								"schema": {
 									"type": "object",
 									"properties": {
+										"success": {
+											"type": "boolean",
+											"example": true
+										},
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
 										"meta": {
 											"type": "object",
 											"properties": {
@@ -98434,7 +99374,7 @@
 												}
 											}
 										},
-										"data": {
+										"result": {
 											"type": "object",
 											"properties": {
 												"top_0": {
@@ -98498,7 +99438,25 @@
 								"schema": {
 									"type": "object",
 									"properties": {
-										"data": {
+										"success": {
+											"type": "boolean",
+											"example": true
+										},
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"result": {
 											"type": "array",
 											"items": {
 												"type": "object",
@@ -98556,6 +99514,24 @@
 								"schema": {
 									"type": "object",
 									"properties": {
+										"success": {
+											"type": "boolean",
+											"example": true
+										},
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
 										"meta": {
 											"type": "object",
 											"properties": {
@@ -98625,21 +99601,26 @@
 												}
 											}
 										},
-										"series": {
+										"result": {
 											"type": "object",
 											"properties": {
-												"timestamps": {
-													"type": "array",
-													"items": {
-														"type": "string",
-														"format": "date-time",
-														"example": "2022-09-17T10:22:57.555000+00:00"
-													}
-												},
-												"values": {
-													"type": "array",
-													"items": {
-														"type": "string"
+												"series": {
+													"type": "object",
+													"properties": {
+														"timestamps": {
+															"type": "array",
+															"items": {
+																"type": "string",
+																"format": "date-time",
+																"example": "2022-09-17T10:22:57.555000+00:00"
+															}
+														},
+														"values": {
+															"type": "array",
+															"items": {
+																"type": "string"
+															}
+														}
 													}
 												}
 											}
@@ -98682,6 +99663,24 @@
 								"schema": {
 									"type": "object",
 									"properties": {
+										"success": {
+											"type": "boolean",
+											"example": true
+										},
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
 										"meta": {
 											"type": "object",
 											"properties": {
@@ -98737,7 +99736,7 @@
 												}
 											}
 										},
-										"data": {
+										"result": {
 											"type": "object",
 											"properties": {
 												"top_0": {
@@ -98800,6 +99799,24 @@
 								"schema": {
 									"type": "object",
 									"properties": {
+										"success": {
+											"type": "boolean",
+											"example": true
+										},
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
 										"meta": {
 											"type": "object",
 											"properties": {
@@ -98855,7 +99872,7 @@
 												}
 											}
 										},
-										"data": {
+										"result": {
 											"type": "object",
 											"properties": {
 												"top_0": {
@@ -98918,6 +99935,24 @@
 								"schema": {
 									"type": "object",
 									"properties": {
+										"success": {
+											"type": "boolean",
+											"example": true
+										},
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
 										"meta": {
 											"type": "object",
 											"properties": {
@@ -98940,7 +99975,7 @@
 												}
 											}
 										},
-										"data": {
+										"result": {
 											"type": "object",
 											"properties": {
 												"serie_0": {
@@ -99001,6 +100036,24 @@
 								"schema": {
 									"type": "object",
 									"properties": {
+										"success": {
+											"type": "boolean",
+											"example": true
+										},
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
 										"meta": {
 											"type": "object",
 											"properties": {
@@ -99015,7 +100068,7 @@
 												}
 											}
 										},
-										"data": {
+										"result": {
 											"type": "object",
 											"properties": {
 												"top_0": {
@@ -99060,7 +100113,7 @@
 				}
 			}
 		},
-		"/radar/annotations/top/outages": {
+		"/radar/annotations/outages/locations": {
 			"get": {
 				"summary": "Get top outages annotations",
 				"description": "",
@@ -99073,7 +100126,25 @@
 								"schema": {
 									"type": "object",
 									"properties": {
-										"data": {
+										"success": {
+											"type": "boolean",
+											"example": true
+										},
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"result": {
 											"type": "object",
 											"properties": {
 												"annotations": {
@@ -99136,7 +100207,25 @@
 								"schema": {
 									"type": "object",
 									"properties": {
-										"data": {
+										"success": {
+											"type": "boolean",
+											"example": true
+										},
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"result": {
 											"type": "object",
 											"properties": {
 												"annotations": {
@@ -99152,6 +100241,10 @@
 																"type": "string",
 																"example": "example"
 															},
+															"scope": {
+																"type": "string",
+																"example": "Colima, Michoacán, México"
+															},
 															"startDate": {
 																"type": "string",
 																"example": "2022-09-06T10:00:28+00:00"
@@ -99160,12 +100253,18 @@
 																"type": "string",
 																"example": "2022-09-08T10:00:28+00:00"
 															},
-															"entity": {
-																"type": "integer"
+															"asns": {
+																"type": "array",
+																"items": {
+																	"type": "integer"
+																}
 															},
-															"entityType": {
-																"type": "string",
-																"example": "LOCATION"
+															"locations": {
+																"type": "array",
+																"items": {
+																	"type": "string",
+																	"example": "MX"
+																}
 															},
 															"eventType": {
 																"type": "string",
@@ -99215,6 +100314,172 @@
 					"pro": true,
 					"business": true,
 					"enterprise": true
+				}
+			}
+		},
+		"/radar/reports/datasets": {
+			"get": {
+				"summary": "Get Datasets",
+				"description": "Get a list of datasets.",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "Get Datasets response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"success": {
+											"type": "boolean",
+											"example": true
+										},
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"result": {
+											"type": "object",
+											"properties": {
+												"datasets": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"id": {
+																"type": "integer"
+															},
+															"title": {
+																"type": "string",
+																"example": "Top bucket 20000 domains"
+															},
+															"description": {
+																"type": "string",
+																"example": "This dataset contains a list of the op 20000 domains globally"
+															},
+															"type": {
+																"type": "string",
+																"example": "RANKING_BUCKET"
+															},
+															"tags": {
+																"type": "array",
+																"items": {
+																	"type": "string",
+																	"example": "global"
+																}
+															},
+															"meta": {
+																"type": "object",
+																"properties": {}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.user.read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			}
+		},
+		"/radar/reports/datasets/download": {
+			"post": {
+				"summary": "Get Dataset download url",
+				"description": "Get a list of datasets.",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "Get Dataset download url response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"dataset": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"url": {
+														"type": "string",
+														"example": "https://example.com/download"
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.user.read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				},
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"format": {
+										"type": "string",
+										"default": "json",
+										"enum": [
+											"json",
+											"csv"
+										],
+										"description": "Format results are returned in."
+									}
+								}
+							}
+						}
+					}
 				}
 			}
 		}
