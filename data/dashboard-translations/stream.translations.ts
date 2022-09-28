@@ -529,6 +529,7 @@ To read the full docs, [click here](https://developers.cloudflare.com/stream/).`
 	player_api: "Player API",
 	react_component: "React Component",
 	angular_component: "Angular Component",
+	accessibility: "Accessibility",
 	community_forum: "Community Forum",
 	faqs: "FAQs",
 	request_a_feature: "Request a feature",
