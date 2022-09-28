@@ -80498,7 +80498,7 @@
 		"/accounts/{identifier}/devices/policy/fallback_domains": {
 			"put": {
 				"summary": "Set Local Domain Fallback List",
-				"description": "Set the list of domains resolved locally by WARP clients",
+				"description": "Set the list of domains to bypass Gateway for DNS resolution and instead use the specified server",
 				"parameters": [
 					{
 						"name": "identifier",
@@ -80578,7 +80578,7 @@
 			},
 			"get": {
 				"summary": "Get Local Domain Fallback List",
-				"description": "Get the list of domains resolved locally by WARP clients",
+				"description": "Get the list of domains to bypass Gateway for DNS resolution and instead use the specified server",
 				"parameters": [
 					{
 						"name": "identifier",
@@ -80596,6 +80596,139 @@
 							"application/json": {
 								"schema": {
 									"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1devices~1policy~1fallback_domains/put/responses/200/content/application~1json/schema"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				]
+			}
+		},
+		"/accounts/{identifier}/devices/policy/{uuid}/fallback_domains": {
+			"put": {
+				"summary": "Set Local Domain Fallback List for a Device Settings Policy",
+				"description": "Set the list of domains to bypass Gateway for DNS resolution and instead use the specified server",
+				"parameters": [
+					{
+						"name": "uuid",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string",
+							"maxLength": 36,
+							"description": "Device ID",
+							"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
+						}
+					},
+					{
+						"name": "identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"example": "699d98642c564d2e855e9661899b7252"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Set Local Domain Fallback List for a Device Settings Policy response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user~1tokens~1permission_groups/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "array",
+													"items": {
+														"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1devices~1policy~1%7Buuid%7D~1fallback_domains/put/requestBody/content/application~1json/schema/items"
+													}
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "object",
+									"required": [
+										"suffix"
+									],
+									"properties": {
+										"suffix": {
+											"type": "string",
+											"example": "example.com",
+											"description": "The domain suffix to match when resolving locally."
+										},
+										"description": {
+											"type": "string",
+											"maxLength": 100,
+											"example": "Domain bypass for local development",
+											"description": "A description of the fallback domain, displayed in the client UI"
+										},
+										"dns_server": {
+											"type": "array",
+											"description": "A list of IP addresses to handle domain resolution.",
+											"items": {}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			},
+			"get": {
+				"summary": "Get Local Domain Fallback List for a Device Settings Policy",
+				"description": "Get the list of domains to bypass Gateway for DNS resolution and instead use the specified server",
+				"parameters": [
+					{
+						"name": "uuid",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1devices~1policy~1%7Buuid%7D~1fallback_domains/put/parameters/0/schema"
+						}
+					},
+					{
+						"name": "identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1devices~1policy~1%7Buuid%7D~1fallback_domains/put/parameters/1/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Get Local Domain Fallback List for a Device Settings Policy response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1devices~1policy~1%7Buuid%7D~1fallback_domains/put/responses/200/content/application~1json/schema"
 								}
 							}
 						}
@@ -80724,6 +80857,140 @@
 				]
 			}
 		},
+		"/accounts/{identifier}/devices/policy/{uuid}/exclude": {
+			"put": {
+				"summary": "Set Split Tunnel Exclude List for a Device Settings Policy",
+				"description": "Set the list of routes excluded from the WARP client's tunnel for one specific device settings policy",
+				"parameters": [
+					{
+						"name": "uuid",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string",
+							"maxLength": 36,
+							"description": "Device ID",
+							"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
+						}
+					},
+					{
+						"name": "identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"example": "699d98642c564d2e855e9661899b7252"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Set Split Tunnel Exclude List for a Device Settings Policy response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user~1tokens~1permission_groups/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "array",
+													"items": {
+														"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1devices~1policy~1%7Buuid%7D~1exclude/put/requestBody/content/application~1json/schema/items"
+													}
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "object",
+									"properties": {
+										"address": {
+											"type": "string",
+											"example": "192.0.2.0/24",
+											"description": "The address in CIDR format to exclude from the tunnel. If address is present, host must not be present."
+										},
+										"description": {
+											"type": "string",
+											"maxLength": 100,
+											"example": "Exclude testing domains from the tunnel",
+											"description": "A description of the split tunnel item, displayed in the client UI."
+										},
+										"host": {
+											"type": "string",
+											"example": "*.example.com",
+											"description": "The domain name to exclude from the tunnel. If host is present, address must not be present."
+										}
+									},
+									"required": [
+										"address",
+										"description"
+									]
+								}
+							}
+						}
+					}
+				}
+			},
+			"get": {
+				"summary": "Get Split Tunnel Exclude List for a Device Settings Policy",
+				"description": "Get the list of routes excluded from the WARP client's tunnel for one specific device settings policy",
+				"parameters": [
+					{
+						"name": "uuid",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1devices~1policy~1%7Buuid%7D~1exclude/put/parameters/0/schema"
+						}
+					},
+					{
+						"name": "identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1devices~1policy~1%7Buuid%7D~1exclude/put/parameters/1/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Get Split Tunnel Exclude List for a Device Settings Policy response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1devices~1policy~1%7Buuid%7D~1exclude/put/responses/200/content/application~1json/schema"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				]
+			}
+		},
 		"/accounts/{identifier}/devices/policy/include": {
 			"put": {
 				"summary": "Set Split Tunnel Include List",
@@ -80826,6 +81093,1196 @@
 							"application/json": {
 								"schema": {
 									"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1devices~1policy~1include/put/responses/200/content/application~1json/schema"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				]
+			}
+		},
+		"/accounts/{identifier}/devices/policy/{uuid}/include": {
+			"put": {
+				"summary": "Set Split Tunnel Include List for a Device Settings Policy",
+				"description": "Set the list of routes included in the WARP client's tunnel for one specific device settings policy",
+				"parameters": [
+					{
+						"name": "uuid",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string",
+							"maxLength": 36,
+							"description": "Device ID",
+							"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
+						}
+					},
+					{
+						"name": "identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"example": "699d98642c564d2e855e9661899b7252"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Set Split Tunnel Include List for a Device Settings Policy response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user~1tokens~1permission_groups/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "array",
+													"items": {
+														"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1devices~1policy~1%7Buuid%7D~1include/put/requestBody/content/application~1json/schema/items"
+													}
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "object",
+									"properties": {
+										"address": {
+											"type": "string",
+											"example": "192.0.2.0/24",
+											"description": "The address in CIDR format to include in the tunnel. If address is present, host must not be present."
+										},
+										"description": {
+											"type": "string",
+											"maxLength": 100,
+											"example": "Include testing domains from the tunnel",
+											"description": "A description of the split tunnel item, displayed in the client UI"
+										},
+										"host": {
+											"type": "string",
+											"example": "*.example.com",
+											"description": "The domain name to include in the tunnel. If host is present, address must not be present."
+										}
+									},
+									"required": [
+										"address",
+										"description"
+									]
+								}
+							}
+						}
+					}
+				}
+			},
+			"get": {
+				"summary": "Get Split Tunnel Include List for a Device Settings Policy",
+				"description": "Get the list of routes included in the WARP client's tunnel for one specific device settings policy",
+				"parameters": [
+					{
+						"name": "uuid",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1devices~1policy~1%7Buuid%7D~1include/put/parameters/0/schema"
+						}
+					},
+					{
+						"name": "identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1devices~1policy~1%7Buuid%7D~1include/put/parameters/1/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Get Split Tunnel Include List for a Device Settings Policy response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1devices~1policy~1%7Buuid%7D~1include/put/responses/200/content/application~1json/schema"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				]
+			}
+		},
+		"/accounts/{identifier}/devices/policy": {
+			"post": {
+				"summary": "Create Device Settings Policy",
+				"description": "Create a device settings policy to be applied to certain devices matching the criteria",
+				"parameters": [
+					{
+						"name": "identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"example": "699d98642c564d2e855e9661899b7252"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Create Device Settings Policy response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user~1tokens~1permission_groups/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "object",
+													"properties": {
+														"service_mode_v2": {
+															"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1devices~1policy/post/requestBody/content/application~1json/schema/properties/service_mode_v2"
+														},
+														"disable_auto_fallback": {
+															"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1devices~1policy/post/requestBody/content/application~1json/schema/properties/disable_auto_fallback"
+														},
+														"fallback_domains": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"required": [
+																	"suffix"
+																],
+																"properties": {
+																	"suffix": {
+																		"type": "string",
+																		"example": "example.com",
+																		"description": "The domain suffix to match when resolving locally."
+																	},
+																	"description": {
+																		"type": "string",
+																		"maxLength": 100,
+																		"example": "Domain bypass for local development",
+																		"description": "A description of the fallback domain, displayed in the client UI"
+																	},
+																	"dns_server": {
+																		"type": "array",
+																		"description": "A list of IP addresses to handle domain resolution.",
+																		"items": {}
+																	}
+																}
+															}
+														},
+														"include": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"properties": {
+																	"address": {
+																		"type": "string",
+																		"example": "192.0.2.0/24",
+																		"description": "The address in CIDR format to include in the tunnel. If address is present, host must not be present."
+																	},
+																	"description": {
+																		"type": "string",
+																		"maxLength": 100,
+																		"example": "Include testing domains from the tunnel",
+																		"description": "A description of the split tunnel item, displayed in the client UI"
+																	},
+																	"host": {
+																		"type": "string",
+																		"example": "*.example.com",
+																		"description": "The domain name to include in the tunnel. If host is present, address must not be present."
+																	}
+																},
+																"required": [
+																	"address",
+																	"description"
+																]
+															}
+														},
+														"exclude": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"properties": {
+																	"address": {
+																		"type": "string",
+																		"example": "192.0.2.0/24",
+																		"description": "The address in CIDR format to exclude from the tunnel. If address is present, host must not be present."
+																	},
+																	"description": {
+																		"type": "string",
+																		"maxLength": 100,
+																		"example": "Exclude testing domains from the tunnel",
+																		"description": "A description of the split tunnel item, displayed in the client UI."
+																	},
+																	"host": {
+																		"type": "string",
+																		"example": "*.example.com",
+																		"description": "The domain name to exclude from the tunnel. If host is present, address must not be present."
+																	}
+																},
+																"required": [
+																	"address",
+																	"description"
+																]
+															}
+														},
+														"gateway_unique_id": {
+															"type": "string",
+															"example": "699d98642c564d2e855e9661899b7252"
+														},
+														"support_url": {
+															"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1devices~1policy/post/requestBody/content/application~1json/schema/properties/support_url"
+														},
+														"captive_portal": {
+															"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1devices~1policy/post/requestBody/content/application~1json/schema/properties/captive_portal"
+														},
+														"allow_mode_switch": {
+															"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1devices~1policy/post/requestBody/content/application~1json/schema/properties/allow_mode_switch"
+														},
+														"switch_locked": {
+															"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1devices~1policy/post/requestBody/content/application~1json/schema/properties/switch_locked"
+														},
+														"allow_updates": {
+															"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1devices~1policy/post/requestBody/content/application~1json/schema/properties/allow_updates"
+														},
+														"auto_connect": {
+															"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1devices~1policy/post/requestBody/content/application~1json/schema/properties/auto_connect"
+														},
+														"allowed_to_leave": {
+															"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1devices~1policy/post/requestBody/content/application~1json/schema/properties/allowed_to_leave"
+														},
+														"policy_id": {
+															"type": "string",
+															"maxLength": 36,
+															"description": "Device ID",
+															"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
+														},
+														"enabled": {
+															"type": "boolean",
+															"example": true,
+															"description": "Whether the policy will be applied to matching devices"
+														},
+														"name": {
+															"type": "string",
+															"maxLength": 100,
+															"example": "Allow Developers",
+															"description": "The name of the device settings policy"
+														},
+														"match": {
+															"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1devices~1policy/post/requestBody/content/application~1json/schema/properties/match"
+														},
+														"precedence": {
+															"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1devices~1policy/post/requestBody/content/application~1json/schema/properties/precedence"
+														},
+														"default": {
+															"type": "boolean",
+															"description": "Whether the policy is the default policy for an account",
+															"example": false
+														}
+													}
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"required": [
+									"name",
+									"precedence",
+									"match"
+								],
+								"properties": {
+									"service_mode_v2": {
+										"type": "object",
+										"properties": {
+											"mode": {
+												"type": "string",
+												"description": "The mode to run the WARP client under",
+												"example": "proxy"
+											},
+											"port": {
+												"type": "number",
+												"description": "The port number when used with proxy mode",
+												"example": 3000
+											}
+										}
+									},
+									"disable_auto_fallback": {
+										"type": "boolean",
+										"example": true,
+										"description": "If the dns_server field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers, unless this policy option is set"
+									},
+									"support_url": {
+										"type": "string",
+										"example": "https://1.1.1.1/help",
+										"description": "The URL to launch when the Send Feedback button is clicked"
+									},
+									"captive_portal": {
+										"type": "number",
+										"example": 180,
+										"description": "Turn on the captive portal after the specified amount of time"
+									},
+									"allow_mode_switch": {
+										"type": "boolean",
+										"example": true,
+										"description": "Whether to allow the user to switch WARP between modes"
+									},
+									"switch_locked": {
+										"type": "boolean",
+										"example": true,
+										"description": "Whether to allow the user to turn off the WARP switch and disconnect the client"
+									},
+									"allow_updates": {
+										"type": "boolean",
+										"example": true,
+										"description": "Whether to receive update notifications when a new version of the client is available"
+									},
+									"auto_connect": {
+										"type": "number",
+										"example": 0,
+										"description": "The amount of time in minutes to reconnect after having been disabled"
+									},
+									"allowed_to_leave": {
+										"type": "boolean",
+										"example": true,
+										"description": "Whether to allow devices to leave the organization"
+									},
+									"enabled": {
+										"type": "boolean",
+										"example": true,
+										"description": "Whether the policy will be applied to matching devices"
+									},
+									"name": {
+										"type": "string",
+										"maxLength": 100,
+										"example": "Allow Developers",
+										"description": "The name of the device settings policy"
+									},
+									"match": {
+										"type": "string",
+										"description": "The wirefilter expression to match devices",
+										"maxLength": 500,
+										"example": "user.identity == \"test@cloudflare.com\""
+									},
+									"precedence": {
+										"type": "number",
+										"example": 100,
+										"description": "The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field"
+									}
+								}
+							}
+						}
+					}
+				}
+			},
+			"patch": {
+				"summary": "Update Default Device Settings Policy",
+				"description": "Update the default device settings policy for an account",
+				"parameters": [
+					{
+						"name": "identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1devices~1policy/post/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Update Default Device Settings Policy response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user~1tokens~1permission_groups/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "object",
+													"properties": {
+														"service_mode_v2": {
+															"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1devices~1policy/post/requestBody/content/application~1json/schema/properties/service_mode_v2"
+														},
+														"disable_auto_fallback": {
+															"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1devices~1policy/post/requestBody/content/application~1json/schema/properties/disable_auto_fallback"
+														},
+														"fallback_domains": {
+															"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1devices~1policy/post/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/fallback_domains"
+														},
+														"include": {
+															"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1devices~1policy/post/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/include"
+														},
+														"exclude": {
+															"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1devices~1policy/post/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/exclude"
+														},
+														"gateway_unique_id": {
+															"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1devices~1policy/post/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/gateway_unique_id"
+														},
+														"support_url": {
+															"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1devices~1policy/post/requestBody/content/application~1json/schema/properties/support_url"
+														},
+														"captive_portal": {
+															"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1devices~1policy/post/requestBody/content/application~1json/schema/properties/captive_portal"
+														},
+														"allow_mode_switch": {
+															"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1devices~1policy/post/requestBody/content/application~1json/schema/properties/allow_mode_switch"
+														},
+														"switch_locked": {
+															"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1devices~1policy/post/requestBody/content/application~1json/schema/properties/switch_locked"
+														},
+														"allow_updates": {
+															"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1devices~1policy/post/requestBody/content/application~1json/schema/properties/allow_updates"
+														},
+														"auto_connect": {
+															"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1devices~1policy/post/requestBody/content/application~1json/schema/properties/auto_connect"
+														},
+														"allowed_to_leave": {
+															"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1devices~1policy/post/requestBody/content/application~1json/schema/properties/allowed_to_leave"
+														},
+														"enabled": {
+															"type": "boolean",
+															"example": true,
+															"description": "Whether the policy will be applied to matching devices"
+														},
+														"default": {
+															"type": "boolean",
+															"example": true,
+															"description": "Whether the policy will be applied to matching devices"
+														}
+													}
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"service_mode_v2": {
+										"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1devices~1policy/post/requestBody/content/application~1json/schema/properties/service_mode_v2"
+									},
+									"disable_auto_fallback": {
+										"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1devices~1policy/post/requestBody/content/application~1json/schema/properties/disable_auto_fallback"
+									},
+									"support_url": {
+										"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1devices~1policy/post/requestBody/content/application~1json/schema/properties/support_url"
+									},
+									"captive_portal": {
+										"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1devices~1policy/post/requestBody/content/application~1json/schema/properties/captive_portal"
+									},
+									"allow_mode_switch": {
+										"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1devices~1policy/post/requestBody/content/application~1json/schema/properties/allow_mode_switch"
+									},
+									"switch_locked": {
+										"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1devices~1policy/post/requestBody/content/application~1json/schema/properties/switch_locked"
+									},
+									"allow_updates": {
+										"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1devices~1policy/post/requestBody/content/application~1json/schema/properties/allow_updates"
+									},
+									"auto_connect": {
+										"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1devices~1policy/post/requestBody/content/application~1json/schema/properties/auto_connect"
+									},
+									"allowed_to_leave": {
+										"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1devices~1policy/post/requestBody/content/application~1json/schema/properties/allowed_to_leave"
+									}
+								}
+							}
+						}
+					}
+				}
+			},
+			"get": {
+				"summary": "Get Default Device Settings Policy",
+				"description": "Get the default device settings policy for an account",
+				"parameters": [
+					{
+						"name": "identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1devices~1policy/post/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Get Default Device Settings Policy response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1devices~1policy/patch/responses/200/content/application~1json/schema"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				]
+			}
+		},
+		"/accounts/{identifier}/devices/policy/{uuid}": {
+			"patch": {
+				"summary": "Update Device Settings Policy",
+				"description": "Update a device settings policy",
+				"parameters": [
+					{
+						"name": "uuid",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string",
+							"maxLength": 36,
+							"description": "Device ID",
+							"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
+						}
+					},
+					{
+						"name": "identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"example": "699d98642c564d2e855e9661899b7252"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Update Device Settings Policy response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user~1tokens~1permission_groups/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "object",
+													"properties": {
+														"service_mode_v2": {
+															"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1devices~1policy~1%7Buuid%7D/patch/requestBody/content/application~1json/schema/properties/service_mode_v2"
+														},
+														"disable_auto_fallback": {
+															"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1devices~1policy~1%7Buuid%7D/patch/requestBody/content/application~1json/schema/properties/disable_auto_fallback"
+														},
+														"fallback_domains": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"required": [
+																	"suffix"
+																],
+																"properties": {
+																	"suffix": {
+																		"type": "string",
+																		"example": "example.com",
+																		"description": "The domain suffix to match when resolving locally."
+																	},
+																	"description": {
+																		"type": "string",
+																		"maxLength": 100,
+																		"example": "Domain bypass for local development",
+																		"description": "A description of the fallback domain, displayed in the client UI"
+																	},
+																	"dns_server": {
+																		"type": "array",
+																		"description": "A list of IP addresses to handle domain resolution.",
+																		"items": {}
+																	}
+																}
+															}
+														},
+														"include": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"properties": {
+																	"address": {
+																		"type": "string",
+																		"example": "192.0.2.0/24",
+																		"description": "The address in CIDR format to include in the tunnel. If address is present, host must not be present."
+																	},
+																	"description": {
+																		"type": "string",
+																		"maxLength": 100,
+																		"example": "Include testing domains from the tunnel",
+																		"description": "A description of the split tunnel item, displayed in the client UI"
+																	},
+																	"host": {
+																		"type": "string",
+																		"example": "*.example.com",
+																		"description": "The domain name to include in the tunnel. If host is present, address must not be present."
+																	}
+																},
+																"required": [
+																	"address",
+																	"description"
+																]
+															}
+														},
+														"exclude": {
+															"type": "array",
+															"items": {
+																"type": "object",
+																"properties": {
+																	"address": {
+																		"type": "string",
+																		"example": "192.0.2.0/24",
+																		"description": "The address in CIDR format to exclude from the tunnel. If address is present, host must not be present."
+																	},
+																	"description": {
+																		"type": "string",
+																		"maxLength": 100,
+																		"example": "Exclude testing domains from the tunnel",
+																		"description": "A description of the split tunnel item, displayed in the client UI."
+																	},
+																	"host": {
+																		"type": "string",
+																		"example": "*.example.com",
+																		"description": "The domain name to exclude from the tunnel. If host is present, address must not be present."
+																	}
+																},
+																"required": [
+																	"address",
+																	"description"
+																]
+															}
+														},
+														"gateway_unique_id": {
+															"type": "string",
+															"example": "699d98642c564d2e855e9661899b7252"
+														},
+														"support_url": {
+															"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1devices~1policy~1%7Buuid%7D/patch/requestBody/content/application~1json/schema/properties/support_url"
+														},
+														"captive_portal": {
+															"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1devices~1policy~1%7Buuid%7D/patch/requestBody/content/application~1json/schema/properties/captive_portal"
+														},
+														"allow_mode_switch": {
+															"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1devices~1policy~1%7Buuid%7D/patch/requestBody/content/application~1json/schema/properties/allow_mode_switch"
+														},
+														"switch_locked": {
+															"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1devices~1policy~1%7Buuid%7D/patch/requestBody/content/application~1json/schema/properties/switch_locked"
+														},
+														"allow_updates": {
+															"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1devices~1policy~1%7Buuid%7D/patch/requestBody/content/application~1json/schema/properties/allow_updates"
+														},
+														"auto_connect": {
+															"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1devices~1policy~1%7Buuid%7D/patch/requestBody/content/application~1json/schema/properties/auto_connect"
+														},
+														"allowed_to_leave": {
+															"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1devices~1policy~1%7Buuid%7D/patch/requestBody/content/application~1json/schema/properties/allowed_to_leave"
+														},
+														"policy_id": {
+															"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1devices~1policy~1%7Buuid%7D/patch/parameters/0/schema"
+														},
+														"enabled": {
+															"type": "boolean",
+															"example": true,
+															"description": "Whether the policy will be applied to matching devices"
+														},
+														"name": {
+															"type": "string",
+															"maxLength": 100,
+															"example": "Allow Developers",
+															"description": "The name of the device settings policy"
+														},
+														"match": {
+															"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1devices~1policy~1%7Buuid%7D/patch/requestBody/content/application~1json/schema/properties/match"
+														},
+														"precedence": {
+															"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1devices~1policy~1%7Buuid%7D/patch/requestBody/content/application~1json/schema/properties/precedence"
+														},
+														"default": {
+															"type": "boolean",
+															"description": "Whether the policy is the default policy for an account",
+															"example": false
+														}
+													}
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"service_mode_v2": {
+										"type": "object",
+										"properties": {
+											"mode": {
+												"type": "string",
+												"description": "The mode to run the WARP client under",
+												"example": "proxy"
+											},
+											"port": {
+												"type": "number",
+												"description": "The port number when used with proxy mode",
+												"example": 3000
+											}
+										}
+									},
+									"disable_auto_fallback": {
+										"type": "boolean",
+										"example": true,
+										"description": "If the dns_server field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers, unless this policy option is set"
+									},
+									"support_url": {
+										"type": "string",
+										"example": "https://1.1.1.1/help",
+										"description": "The URL to launch when the Send Feedback button is clicked"
+									},
+									"captive_portal": {
+										"type": "number",
+										"example": 180,
+										"description": "Turn on the captive portal after the specified amount of time"
+									},
+									"allow_mode_switch": {
+										"type": "boolean",
+										"example": true,
+										"description": "Whether to allow the user to switch WARP between modes"
+									},
+									"switch_locked": {
+										"type": "boolean",
+										"example": true,
+										"description": "Whether to allow the user to turn off the WARP switch and disconnect the client"
+									},
+									"allow_updates": {
+										"type": "boolean",
+										"example": true,
+										"description": "Whether to receive update notifications when a new version of the client is available"
+									},
+									"auto_connect": {
+										"type": "number",
+										"example": 0,
+										"description": "The amount of time in minutes to reconnect after having been disabled"
+									},
+									"allowed_to_leave": {
+										"type": "boolean",
+										"example": true,
+										"description": "Whether to allow devices to leave the organization"
+									},
+									"enabled": {
+										"type": "boolean",
+										"example": true,
+										"description": "Whether the policy will be applied to matching devices"
+									},
+									"name": {
+										"type": "string",
+										"maxLength": 100,
+										"example": "Allow Developers",
+										"description": "The name of the device settings policy"
+									},
+									"match": {
+										"type": "string",
+										"description": "The wirefilter expression to match devices",
+										"maxLength": 500,
+										"example": "user.identity == \"test@cloudflare.com\""
+									},
+									"precedence": {
+										"type": "number",
+										"example": 100,
+										"description": "The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field"
+									}
+								}
+							}
+						}
+					}
+				}
+			},
+			"get": {
+				"summary": "Get Device Settings Policy by ID",
+				"description": "Get the device settings policy by ID",
+				"parameters": [
+					{
+						"name": "uuid",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1devices~1policy~1%7Buuid%7D/patch/parameters/0/schema"
+						}
+					},
+					{
+						"name": "identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1devices~1policy~1%7Buuid%7D/patch/parameters/1/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Get Device Settings Policy by ID response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1devices~1policy~1%7Buuid%7D/patch/responses/200/content/application~1json/schema"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				]
+			},
+			"delete": {
+				"summary": "Delete Device Settings Policy",
+				"description": "Delete a device settings policy. Returns the remaining policies for the account",
+				"parameters": [
+					{
+						"name": "uuid",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1devices~1policy~1%7Buuid%7D/patch/parameters/0/schema"
+						}
+					},
+					{
+						"name": "identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1devices~1policy~1%7Buuid%7D/patch/parameters/1/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Delete Device Settings Policy response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user~1tokens~1permission_groups/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "array",
+													"items": {
+														"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1devices~1policy~1%7Buuid%7D/patch/responses/200/content/application~1json/schema/allOf/1/properties/result"
+													}
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {}
+					}
+				}
+			}
+		},
+		"/accounts/{identifier}/devices/policies": {
+			"get": {
+				"summary": "List Device Settings Policies",
+				"description": "Lists the device settings policies for an account",
+				"parameters": [
+					{
+						"name": "identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"example": "699d98642c564d2e855e9661899b7252"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "List Device Settings Policies response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user~1tokens~1permission_groups/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"service_mode_v2": {
+																"type": "object",
+																"properties": {
+																	"mode": {
+																		"type": "string",
+																		"description": "The mode to run the WARP client under",
+																		"example": "proxy"
+																	},
+																	"port": {
+																		"type": "number",
+																		"description": "The port number when used with proxy mode",
+																		"example": 3000
+																	}
+																}
+															},
+															"disable_auto_fallback": {
+																"type": "boolean",
+																"example": true,
+																"description": "If the dns_server field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers, unless this policy option is set"
+															},
+															"fallback_domains": {
+																"type": "array",
+																"items": {
+																	"type": "object",
+																	"required": [
+																		"suffix"
+																	],
+																	"properties": {
+																		"suffix": {
+																			"type": "string",
+																			"example": "example.com",
+																			"description": "The domain suffix to match when resolving locally."
+																		},
+																		"description": {
+																			"type": "string",
+																			"maxLength": 100,
+																			"example": "Domain bypass for local development",
+																			"description": "A description of the fallback domain, displayed in the client UI"
+																		},
+																		"dns_server": {
+																			"type": "array",
+																			"description": "A list of IP addresses to handle domain resolution.",
+																			"items": {}
+																		}
+																	}
+																}
+															},
+															"include": {
+																"type": "array",
+																"items": {
+																	"type": "object",
+																	"properties": {
+																		"address": {
+																			"type": "string",
+																			"example": "192.0.2.0/24",
+																			"description": "The address in CIDR format to include in the tunnel. If address is present, host must not be present."
+																		},
+																		"description": {
+																			"type": "string",
+																			"maxLength": 100,
+																			"example": "Include testing domains from the tunnel",
+																			"description": "A description of the split tunnel item, displayed in the client UI"
+																		},
+																		"host": {
+																			"type": "string",
+																			"example": "*.example.com",
+																			"description": "The domain name to include in the tunnel. If host is present, address must not be present."
+																		}
+																	},
+																	"required": [
+																		"address",
+																		"description"
+																	]
+																}
+															},
+															"exclude": {
+																"type": "array",
+																"items": {
+																	"type": "object",
+																	"properties": {
+																		"address": {
+																			"type": "string",
+																			"example": "192.0.2.0/24",
+																			"description": "The address in CIDR format to exclude from the tunnel. If address is present, host must not be present."
+																		},
+																		"description": {
+																			"type": "string",
+																			"maxLength": 100,
+																			"example": "Exclude testing domains from the tunnel",
+																			"description": "A description of the split tunnel item, displayed in the client UI."
+																		},
+																		"host": {
+																			"type": "string",
+																			"example": "*.example.com",
+																			"description": "The domain name to exclude from the tunnel. If host is present, address must not be present."
+																		}
+																	},
+																	"required": [
+																		"address",
+																		"description"
+																	]
+																}
+															},
+															"gateway_unique_id": {
+																"type": "string",
+																"example": "699d98642c564d2e855e9661899b7252"
+															},
+															"support_url": {
+																"type": "string",
+																"example": "https://1.1.1.1/help",
+																"description": "The URL to launch when the Send Feedback button is clicked"
+															},
+															"captive_portal": {
+																"type": "number",
+																"example": 180,
+																"description": "Turn on the captive portal after the specified amount of time"
+															},
+															"allow_mode_switch": {
+																"type": "boolean",
+																"example": true,
+																"description": "Whether to allow the user to switch WARP between modes"
+															},
+															"switch_locked": {
+																"type": "boolean",
+																"example": true,
+																"description": "Whether to allow the user to turn off the WARP switch and disconnect the client"
+															},
+															"allow_updates": {
+																"type": "boolean",
+																"example": true,
+																"description": "Whether to receive update notifications when a new version of the client is available"
+															},
+															"auto_connect": {
+																"type": "number",
+																"example": 0,
+																"description": "The amount of time in minutes to reconnect after having been disabled"
+															},
+															"allowed_to_leave": {
+																"type": "boolean",
+																"example": true,
+																"description": "Whether to allow devices to leave the organization"
+															},
+															"policy_id": {
+																"type": "string",
+																"maxLength": 36,
+																"description": "Device ID",
+																"example": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
+															},
+															"enabled": {
+																"type": "boolean",
+																"example": true,
+																"description": "Whether the policy will be applied to matching devices"
+															},
+															"name": {
+																"type": "string",
+																"maxLength": 100,
+																"example": "Allow Developers",
+																"description": "The name of the device settings policy"
+															},
+															"match": {
+																"type": "string",
+																"description": "The wirefilter expression to match devices",
+																"maxLength": 500,
+																"example": "user.identity == \"test@cloudflare.com\""
+															},
+															"precedence": {
+																"type": "number",
+																"example": 100,
+																"description": "The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field"
+															},
+															"default": {
+																"type": "boolean",
+																"description": "Whether the policy is the default policy for an account",
+																"example": false
+															}
+														}
+													}
+												}
+											}
+										}
+									]
 								}
 							}
 						}
