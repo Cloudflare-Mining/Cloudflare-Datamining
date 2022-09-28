@@ -5778,12 +5778,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			};
 			try {
 				e.g.build = tc({}, {
-					branch: "hotfix-LOUI-3675-rotate-key-disclaimer-typo",
+					branch: "hotfix-LOUI-3730-documentation-link-404",
 					isReleaseCandidate: "true",
-					commit: "beb64f6067210cf38c3a97d539c781d6fe6b6e24",
+					commit: "36a865d13ad5b21e5e0eaff63f43612bed3aa079",
 					env: "production",
-					builtAt: 1664370544410,
-					dashVersion: "d8f4791b259dda51e7ee4bbe07b6d41d49449995",
+					builtAt: 1664379735575,
+					dashVersion: "2286b3aef5ec71023ebd035fa9487d48d1ffc903",
 					versions: {
 						"@cloudflare/app-dash": "25.85.0",
 						node: "14.18.3",
@@ -76259,4 +76259,4 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 	}
 ]);
 
-//# sourceMappingURL=a34a79763bee2385be7c.js.map
+//# sourceMappingURL=c3f3541260bf2ccd7ed9.js.map
