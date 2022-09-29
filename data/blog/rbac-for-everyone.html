@@ -1,0 +1,154 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image1-76.png" class="kg-image" alt="Role Based Access Controls for every plan"></figure>
+	<p>Cloudflare’s mission is to help build a better Internet. Pair that with our core belief that security is something that should be accessible to everyone and the outcome is a better and safer Internet for all. Previously, our FREE and PAYGO customers didn’t have the flexibility to give someone control of just part of their account, they had to give access to everything.</p>
+	<p>Starting today, role based access controls (RBAC), and all of our additional roles will be rolled out to users on every plan! Whether you are a small business or even a single user, you can ensure that you can add users only to parts of Cloudflare you deem appropriate.</p>
+	<h3 id="why-should-i-limit-access">Why should I limit access?</h3>
+	<p>It is good practice with security in general to limit access to what a team member needs to do a job. Restricting access limits the overall threat surface if a given user was compromised, and ensures that you limit the surface that mistakes can be made.</p>
+	<p>If a malicious user was able to gain access to an account, but it only had read access, you’ll find yourself with less of a headache than someone who had administrative access, and could change how your site operates. Likewise, you can prevent users outside their role from accidentally making changes to critical features like firewall or DNS configuration.</p>
+	<h3 id="what-are-roles">What are roles?</h3>
+	<p>Roles are a grouping of permissions that make sense together. At Cloudflare, this means grouping permissions together by access to a product suite.</p>
+	<p>Cloudflare is a critical piece of infrastructure for customers, and roles ensure that you can give your team the access they need, scoped to what they’ll do, and which products they interact with.</p>
+	<p>Once enabled for Role Based Access Controls, by going to “Manage Account” and “Members” in the left sidebar, you’ll have the following list of roles available, which each grant access to disparate subsets of the Cloudflare offering.</p>
+	<!--kg-card-begin: html-->
+	<table>
+		<thead>
+			<tr>
+				<th>Role Name</th>
+				<th>Role Description</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Administrator</td>
+				<td>Can access the full account, except for membership management and billing.</td>
+			</tr>
+			<tr>
+				<td>Administrator Read Only</td>
+				<td>Can access the full account in read-only mode.</td>
+			</tr>
+			<tr>
+				<td>Analytics</td>
+				<td>Can read Analytics.</td>
+			</tr>
+			<tr>
+				<td>Audit Logs Viewer</td>
+				<td>Can view Audit Logs.</td>
+			</tr>
+			<tr>
+				<td>Billing</td>
+				<td>Can edit the account’s billing profile and subscriptions.</td>
+			</tr>
+			<tr>
+				<td>Cache Purge</td>
+				<td>Can purge the edge cache.</td>
+			</tr>
+			<tr>
+				<td>Cloudflare Access</td>
+				<td>Can edit Cloudflare Access policies.</td>
+			</tr>
+			<tr>
+				<td>Cloudflare Gateway</td>
+				<td>Can edit Cloudflare Gateway and read Access.</td>
+			</tr>
+			<tr>
+				<td>Cloudflare Images</td>
+				<td>Can edit Cloudflare Images assets</td>
+			</tr>
+			<tr>
+				<td>Cloudflare Stream</td>
+				<td>Can edit Cloudflare Stream media.</td>
+			</tr>
+			<tr>
+				<td>Cloudflare Workers Admin</td>
+				<td>Can edit Cloudflare Workers.</td>
+			</tr>
+			<tr>
+				<td>Cloudflare Zero Trust</td>
+				<td>Can edit Cloudflare Zero Trust.</td>
+			</tr>
+			<tr>
+				<td>Cloudflare Zero Trust PII</td>
+				<td>Can access Cloudflare Zero Trust PII.</td>
+			</tr>
+			<tr>
+				<td>Cloudflare Zero Trust Read Only</td>
+				<td>Can access Cloudflare for Zero Trust read only mode.</td>
+			</tr>
+			<tr>
+				<td>Cloudflare Zero Trust Reporting</td>
+				<td>Can access Cloudflare for Zero Trust reporting data.</td>
+			</tr>
+			<tr>
+				<td>DNS</td>
+				<td>Can edit DNS records.</td>
+			</tr>
+			<tr>
+				<td>Firewall</td>
+				<td>Can edit WAF, IP Firewall, and Zone Lockdown settings.</td>
+			</tr>
+			<tr>
+				<td>HTTP Applications</td>
+				<td>Can view and edit HTTP Applications</td>
+			</tr>
+			<tr>
+				<td>HTTP Applications Read</td>
+				<td>Can view HTTP Applications</td>
+			</tr>
+			<tr>
+				<td>Load Balancer</td>
+				<td>Can edit Load Balancers, Pools, Origins, and Health Checks.</td>
+			</tr>
+			<tr>
+				<td>Log Share</td>
+				<td>Can edit Log Share configuration.</td>
+			</tr>
+			<tr>
+				<td>Log Share Reader</td>
+				<td>Can read Enterprise Log Share.</td>
+			</tr>
+			<tr>
+				<td>Magic Network Monitoring</td>
+				<td>Can view and edit MNM configuration</td>
+			</tr>
+			<tr>
+				<td>Magic Network Monitoring Admin</td>
+				<td>Can view, edit, create, and delete MNM configuration</td>
+			</tr>
+			<tr>
+				<td>Magic Network Monitoring Read-Only</td>
+				<td>Can view MNM configuration</td>
+			</tr>
+			<tr>
+				<td>Network Services Read (Magic)</td>
+				<td>Grants read access to network configurations for Magic services.</td>
+			</tr>
+			<tr>
+				<td>Network Services Write (Magic)</td>
+				<td>Grants write access to network configurations for Magic services.</td>
+			</tr>
+			<tr>
+				<td>SSL/TLS, Caching, Performance, Page Rules, and Customization</td>
+				<td>Can edit most Cloudflare settings except for DNS and Firewall.</td>
+			</tr>
+			<tr>
+				<td>Trust and Safety</td>
+				<td>Can view and request reviews for blocks</td>
+			</tr>
+			<tr>
+				<td>Zaraz Admin</td>
+				<td>Can edit Zaraz configuration.</td>
+			</tr>
+			<tr>
+				<td>Zaraz Readonly</td>
+				<td>Can read Zaraz configuration.</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: html-->
+	<p>If you find yourself on a team that is growing, you may want to grant firewall and DNS access to a delegated network admin, billing access to your bookkeeper, and Workers access to your developer.</p>
+	<p>Each of these roles provides specific access to a portion of your Cloudflare account, scoping them to the appropriate set of products. Even Super Administrator is now available, allowing you to provide this access to somebody without handing over your password and 2FA.</p>
+	<h3 id="how-to-use-our-roles">How to use our roles</h3>
+	<p>The first step to using RBAC is an analysis and review of the duties and tasks of your team. When a team member primarily interacts with a specific part of the Cloudflare offering, start off by giving them only access to that part(s). Our roles are built in a way that allows multiple to be assigned to a single user, such that when they require more access, you can grant them an additional role.</p>
+	<h3 id="rollout">Rollout</h3>
+	<p>At this point in time, we will be rolling out RBAC over the next few weeks. When the roles become available in your account, head over to our <a href="https://developers.cloudflare.com/fundamentals/account-and-billing/account-setup/account-roles/" target="_blank">documentation</a> to learn about each of the roles in detail.</p>
+</div>
