@@ -5950,12 +5950,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			};
 			try {
 				e.g.build = oc({}, {
-					branch: "dan/LOUI-3723-308-redirect-hotfix",
+					branch: "rachel/UI-5490",
 					isReleaseCandidate: "true",
-					commit: "c9dc8ef9f892727811bda1ceb0fcc148f79e914d",
+					commit: "a2a2d65f0fd6aafa7c91df2346a67f534565a0ba",
 					env: "production",
-					builtAt: 1664451388493,
-					dashVersion: "143834af37b39c4a933f2d5b58a952c2a67244dd",
+					builtAt: 1664473309991,
+					dashVersion: "3f843233b581163eda6ececbffe93d9ea29f9e5f",
 					versions: {
 						"@cloudflare/app-dash": "25.85.0",
 						node: "14.18.3",
@@ -76537,4 +76537,4 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 	}
 ]);
 
-//# sourceMappingURL=51dbb39e3fcd54ce6062.js.map
+//# sourceMappingURL=13505509dfd0a74c3d22.js.map
