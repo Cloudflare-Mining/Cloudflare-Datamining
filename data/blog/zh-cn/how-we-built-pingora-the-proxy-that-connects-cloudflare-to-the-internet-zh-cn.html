@@ -1,0 +1,67 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image1-4.png" class="kg-image" alt="How we built Pingora, the proxy that connects Cloudflare to the Internet"></figure>
+	<h2 id="-">简介</h2>
+	<p>今天，我们很高兴有机会在此介绍 Pingora，这是我们使用 <a href="https://www.rust-lang.org/" target="_blank">Rust</a> 在内部构建的新 HTTP 代理，它每天处理超过 1 万亿个请求，提高了我们的性能，并为 Cloudflare 客户带来了许多新功能，同时只需要我们以前代理基础架构的三分之一的 CPU 和内存资源。</p>
+	<p>随着 Cloudflare 规模的扩大，我们已经超越了 NGINX 的处理能力。多年来它一直运作良好，但随着时间的推移，它在我们规模上的局限性意味着我们有必要构建一些新的东西。我们无法再获得我们所需要的性能，NGINX 也没有我们在非常复杂的环境中所需要的功能。</p>
+	<p>许多 Cloudflare 客户和用户使用 Cloudflare 全球网络作为 HTTP 客户端（例如 Web 浏览器、应用程序、物联网设备等）和服务器之间的代理。过去，对于浏览器和其他用户代理如何连接到我们的网络，我们已进行过许多讨论，我们开发了很多技术并实施了新协议（参见 <a href="https://blog.cloudflare.com/the-road-to-quic/">QUIC</a> 和 <a href="https://blog.cloudflare.com/delivering-http-2-upload-speed-improvements/">http2 优化</a>）来使这段连接更高效。</p>
+	<p>今天，我们将关注这个等式的另一部分：代理我们的网络和互联网上服务器之间的流量的服务。这个代理服务为我们的 CDN、Workers fetch、Tunnel、Stream、R2 以及许多其他功能和产品提供了动力。</p>
+	<p>让我们研究为什么我们选择取代我们的旧版服务以及 Pingora 的开发过程，这是我们专门为 Cloudflare 的客户用例和规模而设计的新系统。</p>
+	<h2 id="--1">为什么要再建一个代理</h2>
+	<p>这些年来，我们对 NGINX 的使用遇到了限制。对于部分限制，我们进行了优化或选择绕过它们。但另一些限制则更难克服。</p>
+	<h3 id="--2">架构的限制损害了性能</h3>
+	<p>NGINX <a href="https://www.nginx.com/blog/inside-nginx-how-we-designed-for-performance-scale/" target="_blank">worker（进程）架构</a>对于我们的用例而言存在操作缺陷，这会损害我们的性能和效率。</p>
+	<p>首先，在 NGINX 中，每个请求只能由单个 worker 处理。这会导致<a href="https://blog.cloudflare.com/the-sad-state-of-linux-socket-balancing/">所有 CPU 内核之间的负载不平衡</a>，从而<a href="https://blog.cloudflare.com/keepalives-considered-harmful/">导致速度变慢</a>。</p>
+	<p>由于这种请求进程锁定效应，执行 <a href="https://blog.cloudflare.com/the-problem-with-event-loops/">CPU 繁重</a>或<a href="https://blog.cloudflare.com/how-we-scaled-nginx-and-saved-the-world-54-years-every-day/">阻止 IO 任务</a>的请求可能会减慢其他请求的速度。正如这些博客文章所表明的那样，我们已经花了很多时间来解决这些问题。</p>
+	<p>对于我们的用例来说，最关键的问题是糟糕的连接重用。我们的机器与原始服务器建立 TCP 连接，以代理 HTTP 请求。连接重用通过重用之前从连接池建立的连接，跳过新连接所需的 TCP 和 TLS 握手，来加快请求的 TTFB（首字节时间）。</p>
+	<p>但是，<a href="https://www.nginx.com/blog/load-balancing-with-nginx-plus-part-2/" target="_blank">NGINX 连接池</a>与单个 worker 相对应。当请求到达某个 worker 时，它只能重用该 worker 内的连接。当我们添加更多 NGINX worker 以进行扩展时，我们的连接重用率会变得更差，因为连接分散在所有进程的更多孤立的池中。这导致更慢的 TTFB 以及需要维护更多连接，进而消耗我们和客户的资源（和金钱）。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/Why-build-yet-another-proxy_zh-CN.png" class="kg-image"></figure>
+	<p>正如在过去的博客文章中所提到的，我们为其中一些问题提供了解决方法。但如果我们能够解决根本问题：worker/进程模型，我们将自然而然地解决所有这些问题。</p>
+	<p><strong>有些类型的功能难以添加</strong></p>
+	<p>NGINX 是一个非常好的 Web 服务器、负载均衡器或简单的网关。但 Cloudflare 的作用远不止于此。我们过去常常围绕 NGINX 构建我们需要的所有功能，但要尽量避免与 NGINX 上游代码库有太多分歧，这并不容易。</p>
+	<p>例如，当<a href="https://blog.cloudflare.com/new-tools-to-monitor-your-server-and-avoid-downtime/">重试请求/请求失败</a>时，有时我们希望将请求发送到具有不同请求标头集的不同源服务器。但 NGINX 并不允许执行此操作。在这种情况下，我们需要花费时间和精力来解决 NGINX 的限制。</p>
+	<p>同时，我们被迫使用的编程语言并没有帮助缓解这些困难。NGINX 纯粹是用 C 语言编写的，这在设计上不是内存安全的。使用这样的第 3 方代码库非常容易出错。即使对于经验丰富的工程师来说，也很容易陷入<a href="https://blog.cloudflare.com/incident-report-on-memory-leak-caused-by-cloudflare-parser-bug/">内存安全问题</a>，我们希望尽可能避免这些问题。</p>
+	<p>我们用来补充 C 语言的另一种语言是 Lua。它的风险较小，但性能也较差。此外，在处理复杂的 Lua 代码和业务逻辑时，我们经常发现自己缺少<a href="https://en.wikipedia.org/wiki/Type_system#Static_type_checking" target="_blank">静态类型</a>。</p>
+	<p>而且 NGINX 社区也不是很活跃，开发往往是<a href="https://dropbox.tech/infrastructure/how-we-migrated-dropbox-from-nginx-to-envoy" target="_blank">“闭门造车”</a>。</p>
+	<p><strong>选择建立我们自己的</strong></p>
+	<p>在过去的几年里，随着我们的客户群和功能集的持续增长，我们持续评估了三种选择：</p>
+	<ol>
+		<li>继续投资 NGINX，向其付款进行定制，使其 100% 满足我们的需求。我们拥有所需的专业知识，但鉴于上述架构限制，需要付出大量努力才能以完全支持我们需求的方式重建它。</li>
+		<li>迁移到另一个第三方代理代码库。肯定有好的项目，比如 <a href="https://dropbox.tech/infrastructure/how-we-migrated-dropbox-from-nginx-to-envoy" target="_blank">envoy</a> 和<a href="https://linkerd.io/2020/12/03/why-linkerd-doesnt-use-envoy/" target="_blank">其他一些</a>。但这条道路意味着在几年内可能会重复同样的循环。</li>
+		<li>从头开始建立一个内部平台和框架。这一选择需要在工程方面进行最大的前期投资。</li>
+	</ol>
+	<p>在过去的几年中，我们每个季度都会对这些选项进行评估。没有明显的公式来判断哪种选择是最好的。在几年的时间里，我们继续走阻力最小的道路，继续增强 NGINX。然而，在某些情况下，建立自有代理的投资回报率似乎更值得。我们呼吁从头开始建立一个代理，并开始设计我们梦想中的代理应用程序。</p>
+	<h2 id="pingora-">Pingora 项目</h2>
+	<h3 id="--3">设计决定</h3>
+	<p>为了打造一个每秒提供数百万次请求且快速、高效和安全的代理，我们必须首先做出一些重要的设计决定。</p>
+	<p>我们选择 <a href="https://www.rust-lang.org/" target="_blank">Rust</a> 作为项目的语言，因为它可以在不影响性能的情况下以内存安全的方式完成 C 语言可以做的事情。</p>
+	<p>尽管有一些很棒的现成第 3 方 HTTP 库，例如 <a href="https://github.com/hyperium/hyper" target="_blank">hyper</a>，我们选择构建自己的库是因为我们希望最大限度地提高处理 HTTP 流量的灵活性，并确保我们可以按照自己的节奏进行创新。</p>
+	<p>在 Cloudflare，我们处理整个互联网的流量。我们必须支持许多奇怪且不符合 RFC 的 HTTP 流量案例。这是 HTTP 社区和 Web 中的一个常见困境，在严格遵循 HTTP 规范，和适应潜在遗留客户端或服务器的广泛生态系统的细微差别之间存在矛盾和冲突，需要在其中作出艰难抉择。</p>
+	<p>HTTP 状态码在 <a href="https://www.rfc-editor.org/rfc/rfc9110.html#name-status-codes" target="_blank">RFC 9110 中定义为一个三位整数</a>，通常预期在 100 到 599 的范围内。Hyper 就是这样一种实现。但是，许多服务器支持使用 599 到 999 之间的状态代码。我们为此功能创建了一个<a href="https://github.com/hyperium/http/issues/144" target="_blank">问题</a>，探讨了争论的各个方面。虽然 hyper 团队最终确实接受了这一更改，但他们有充分的理由拒绝这样的要求，而这只是我们需要支持的众多不合规行为案例之一。</p>
+	<p>为了满足 Cloudflare 在 HTTP 生态系统中的地位要求，我们需要一个稳健、宽容、可定制的 HTTP 库，该库可以在互联网的各种风险环境中生存，并支持各种不合规的用例。保证这一点的最佳方法就是实施我们自己的架构。</p>
+	<p>下一个设计决策关于我们的工作负载调度系统。我们选择多线程而不是<a href="https://www.nginx.com/blog/inside-nginx-how-we-designed-for-performance-scale/#Inside-the-NGINX-Worker-Process" target="_blank">多处理</a>，以便轻松共享资源，尤其是连接池。我们认为还需要实施<a href="https://en.wikipedia.org/wiki/Work_stealing" target="_blank">工作窃取</a>来避免上面提到的某些类别的性能问题。Tokio 异步运行时结果<a href="https://tokio.rs/blog/2019-10-scheduler" target="_blank">非常适合</a>我们的需求。</p>
+	<p>最后，我们希望我们的项目直观且对开发人员友好。我们构建的不是最终产品，而是应该可以作为一个平台进行扩展，因为在它之上构建了更多的功能。我们决定实施一个<a href="https://openresty-reference.readthedocs.io/en/latest/Directives/" target="_blank">类似于 NGINX/OpenResty</a> 的基于“请求生命周期”事件的可编程接口。例如，“请求过滤器”阶段允许开发人员在收到请求标头时运行代码来修改或拒绝请求。通过这种设计，我们可以清晰地分离我们的业务逻辑和通用代理逻辑。之前从事 NGINX 工作的开发人员可以轻松切换到 Pingora 并迅速提高工作效率。</p>
+	<h2 id="pingora--1">Pingora 在生产中更快</h2>
+	<p>让我们快进到现在。Pingora 处理几乎所有需要与源服务器交互的 HTTP 请求（例如缓存未命中），我们在此过程中收集了很多性能数据。</p>
+	<p>首先，让我们看看 Pingora 如何加快我们客户的流量。Pingora 上的总体流量显示，TTFB 中位数减少了 5 毫秒，第 95 个百分位数减少了 80 毫秒。这不是因为我们运行代码更快。甚至我们的旧服务也可以处理亚毫秒范围内的请求。</p>
+	<p>时间节省来自我们的新架构，它可以跨所有线程共享连接。这意味着更好的连接重用率，在 TCP 和 TLS 握手上花费的时间更少。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/Pingora-is-faster-in-production_zh-CN.png" class="kg-image"></figure>
+	<p>在所有客户中，与旧服务相比，Pingora 每秒的新连接数只有三分之一。对于一个主要客户，它将连接重用率从 87.1% 提高到 99.92%，这将新连接减少了 160 倍。更直观地说，通过切换到 Pingora，我们每天为客户和用户节省了 434 年的握手时间。</p>
+	<h3 id="--4">更多功能</h3>
+	<p>拥有工程师熟悉的开发人员友好界面，同时消除以前的限制，让我们能够更快地开发更多功能。像新协议这样的核心功能充当我们为客户提供更多产品的基石。</p>
+	<p>例如，我们能够在没有重大障碍的情况下向 Pingora 添加 HTTP/2 上游支持。这使我们能够在不久之后向我们的客户提供 <a href="https://blog.cloudflare.com/road-to-grpc/">gRPC</a>。将相同的功能添加到 NGINX 将需要<a href="https://mailman.nginx.org/pipermail/nginx-devel/2017-July/010357.html" target="_blank">更多的工程工作，并且可能无法实现</a>。</p>
+	<p>最近，我们宣布推出了 <a href="https://blog.cloudflare.com/introducing-cache-reserve/">Cache Reserve</a>，其中 Pingora 使用 R2 存储作为缓存层。随着我们向 Pingora 添加更多功能，我们能够提供以前不可行的新产品。</p>
+	<h3 id="--5">更高效</h3>
+	<p>在生产环境中，与我们的旧服务相比，Pingora 在相同流量负载的情况下，消耗的 CPU 和内存减少了约 70% 和 67%。节省来自几个因素。</p>
+	<p>与旧的 <a href="https://benchmarksgame-team.pages.debian.net/benchmarksgame/fastest/lua.html" target="_blank">Lua 代码</a>相比，我们的 Rust 代码运行<a href="https://benchmarksgame-team.pages.debian.net/benchmarksgame/fastest/rust.html" target="_blank">效率更高</a>。最重要的是，它们的架构也存在效率差异。例如，在 NGINX/OpenResty 中，当 Lua 代码想要访问 HTTP 头时，它必须从 NGINX C 结构中读取它，分配一个 Lua 字符串，然后将其复制到 Lua 字符串中。之后，Lua 还对其新字符串进行垃圾回收。在 Pingora 中，它只是一个直接的字符串访问。</p>
+	<p>多线程模型还使得跨请求共享数据更加高效。NGINX 也有共享内存，但由于实施限制，每次共享内存访问都必须使用互斥锁，并且只能将字符串和数字放入共享内存。在 Pingora 中，大多数共享项目可以通过<a href="https://doc.rust-lang.org/std/sync/struct.Arc.html" target="_blank">原子引用计数器</a>后面的共享引用直接访问。</p>
+	<p>如上所述，CPU 节省的另一个重要部分是减少了新的连接。与仅通过已建立的连接发送和接收数据相比，TLS 握手成本显然更为高昂。</p>
+	<h3 id="--6">更安全</h3>
+	<p>在我们这样的规模下，快速安全地发布功能十分困难。很难预测在每秒处理数百万个请求的分布式环境中可能发生的每个边缘情况。模糊测试和静态分析只能缓解这么多。Rust 的内存安全语义保护我们免受未定义行为的影响，并让我们相信我们的服务将正确运行。</p>
+	<p>有了这些保证，我们可以更多地关注我们的服务更改将如何与其他服务或客户来源进行交互。我们能够以更高的节奏开发功能，而不用背负内存安全和难以诊断崩溃的问题。</p>
+	<p>当崩溃确实发生时，工程师需要花时间来诊断它是如何发生的以及是什么原因造成的。自 Pingora 创立以来，我们已经处理了数百万亿个请求，至今尚未因为我们的服务代码而崩溃。</p>
+	<p>事实上，Pingora 崩溃是如此罕见，当我们遇到一个问题时，我们通常会发现不相关的问题。最近，我们的服务开始崩溃后不久，我们发现了<a href="https://lkml.org/lkml/2022/3/15/6" target="_blank">一个内核错误</a>。我们还在一些机器上发现了硬件问题，过去排除了由我们的软件引起的罕见内存错误，即使在几乎不可能进行重大调试之后也是如此。</p>
+	<h2 id="--7">总结</h2>
+	<p>总而言之，我们已经建立了一个更快、更高效、更通用的内部代理，作为我们当前和未来产品的平台。</p>
+	<p>我们之后将介绍有关我们面临的问题和应用优化的更多技术细节，以及我们从构建 Pingora 并将其推出以支持互联网的重要部分的经验教训。同时还将介绍我们的开源计划。</p>
+	<p>Pingora 是我们重写系统的最新尝试，但它不会是我们的最后一次。它也只是我们系统重新架构的基石之一。有兴趣加入我们，帮助建立一个更好的互联网？<a href="https://www.cloudflare.com/zh-cn/careers/jobs/?department=Engineering" target="_blank">我们的工程团队正在招聘</a>。</p>
+</div>

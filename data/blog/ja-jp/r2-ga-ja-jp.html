@@ -1,0 +1,131 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image1-25.png" class="kg-image" alt="R2 is now Generally Available"></figure>
+	<p>R2は開発者にオブジェクトストレージを提供しますが、エグレス料金は発生しません。R2以前、私たちがクラウドプロバイダーから言われていたことは、利用者が当社に保存したデータを実際に使用するたびに、データ転送料金を要求するというものでした。決して読み取らないことを前提にデータを保存する人などいるでしょうか？そんな人はいないでしょう。とはいえ、データを読み取るたびに「エグレス料金」は適用されます。R2では、開発者はデータに自由にアクセスできるようになり、アプリケーション開発者を長く縛ってきたエコシステムのロックインを解消します。</p>
+	<p>2022年5月、当社はR2のオープンベータ版をリリースしました。わずか4か月の短い期間で、12,000を超える開発者（急速に増加中）がR2を使い始めたことに圧倒されています。ポッドキャストアプリケーションからビデオプラットフォーム、Eコマースウェブサイトまで、幅広いユースケースを持った開発者、そして<a href="https://www.vecteezy.com" target="_blank">Vecteezy</a>のような6桁（米ドル）ものエグレス料金を費やしているユーザーも当社を訪れました。私たちは学習を急速に進め、素晴らしいフィードバックを得て、本日R2の一般公開を発表できる運びとなったことを嬉しく思います。</p>
+	<p>当社はお客様に対して、自分たちが賭けることのできなかった技術に賭けてくださいとは言いません。オープンベータ期間中は、自社製品をR2に移行するために時間を費やしました。多数の顧客に本番環境でサービスを提供していることを誇りにしているCloudflare Imagesはその中の一例であり、現在R2で稼働しています。</p>
+	<h2 id="r2-">R2に期待できることは？</h2>
+	<h3 id="s3-">S3との互換性</h3>
+	<p>R2は開発者に、オブジェクトストレージのための使い慣れたインターフェースであるS3 APIを提供します。S3との互換性により、アプリケーションの移行が容易で、R2が提供する機能をすぐに利用することができます。</p>
+	<p>JavaScriptでの基本的なデータ操作を見てみましょう。これをお客様自身で試すには、<a href="https://developers.cloudflare.com/r2/platform/s3-compatibility/tokens/" target="_blank">アクセスキーを生成</a>する必要があります。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">// まず、通常通りにバインドをインポートします
+import {
+  S3Client,
+  ListBucketsCommand,
+} from "@aws-sdk/client-s3";
+
+// 次に、新しいクライアントを作成します。R2にはS3互換性のためのリージョンが必要ですが、サポートされているのは「auto」のみであることに注意が必要です
+const S3 = new S3Client({
+  region: "auto",
+  endpoint: `https://${ACCOUNT_ID}.r2.cloudflarestorage.com`,
+  credentials: {
+    accessKeyId: ACCESS_KEY_ID, //  fill in your own
+    secretAccessKey: SECRET_ACCESS_KEY, // fill in your own
+  },
+});
+
+// これで、他のS3互換のオブジェクトストレージと同じように、クライアントを使用して関連付けられたバケットを一覧表示できるようになりました
+console.log(
+  await S3.send(
+    new ListBucketsCommand('')
+  )
+);
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>S3 APIは、<a href="https://developers.cloudflare.com/r2/examples/aws-sdk-go/" target="_blank">Go</a>、<a href="https://developers.cloudflare.com/r2/examples/boto3/" target="_blank">Java</a>、<a href="https://developers.cloudflare.com/r2/examples/aws-sdk-php/" target="_blank">PHP</a>、<a href="https://developers.cloudflare.com/r2/examples/aws-sdk-ruby/" target="_blank">Ruby</a>などを例にしても、言語を問わずに親和性があります。</p>
+	<h3 id="-">リージョン：自動</h3>
+	<p>私たちは、開発者が時間をかけて水晶玉を覗き、アプリケーションのトラフィックがどこから来るかを予言するような世界には住みたくありません。アプリケーション開発の最初のステップとしてリージョンを選択することにより、最初のユーザーがアクセスしてくるずっと前に最適化の判断が行われ、実施されます。</p>
+	<p>S3互換ではリージョンを指定する必要がありますが、私たちがサポートするリージョンは「auto」のみです。現在R2は、バケットの場所をバケット作成リクエストに最も近い利用可能なリージョンを自動的に選択します。仮に私がオースティンの自宅からバケットを作成した場合、そのバケットはオースティンに最も近い利用可能なR2リージョンに置かれることになります。 &nbsp; </p>
+	<p>将来的に、R2はデータアクセスのパターンを使用してデータの保存場所を自動的に最適化し、最適なユーザーエクスペリエンスを実現する予定です。</p>
+	<h3 id="cloudflare-workers-">Cloudflare Workersの統合</h3>
+	<p>Workersプラットホームは、Cloudflareのネットワーク全体で強力な計算能力を開発者に提供します。Workersにデプロイすると、コー<a href="https://www.cloudflare.com/network/" target="_blank">ドはCloudflareの世界275以</a>上の拠点に自動的にデプロイされます。WorkersとR2の組み合わせによって、開発者はパフォーマンスのオーバーヘッドなしで、データに関するカスタムロジックを追加することができます。Workersはコンテナではなく独立した環境で構築されるため、長時間のコールドスタートに悩まされることはありません。</p>
+	<p>R2バケット用の簡単なREST APIを作成してみましょう。まず、バケットを<a href="https://developers.cloudflare.com/r2/data-access/workers-api/workers-api-usage/#3-create-your-bucket" target="_blank">作成</a>し、次にR2の<a href="https://developers.cloudflare.com/r2/data-access/workers-api/workers-api-usage/#4-bind-your-bucket-to-a-worker" target="_blank">バインド</a>をワーカーに追加します。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">export default {
+  async fetch(request, env) {
+    const url = new URL(request.url);
+    const key = url.pathname.slice(1); // URLパスからキーを取得します
+
+    switch (request.method) {
+      // 書き込みの場合、リクエスト本文をキャプチャし、関連付けられたキーでバケットに書き込みます
+      case 'PUT':
+        await env.MY_BUCKET.put(key, request.body);
+        return new Response(`Put ${key} successfully!`);
+
+      // 読み取りの場合は、キーを使用して参照を実行します
+      case 'GET':
+        const object = await env.MY_BUCKET.get(key);
+
+        // 指定されたキーが見つからない場合、404エラーを返します
+        if (object === null) {
+          return new Response('Object Not Found', { status: 404 });
+        }
+
+        const headers = new Headers();
+        object.writeHttpMetadata(headers);
+        headers.set('etag', object.httpEtag);
+
+        return new Response(object.body, {
+          headers,
+        });
+    }
+  },
+};
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>このWorkers APIを使用すると、R2要求のホットパスにあらゆる種類の便利なロジックを追加することができます。</p>
+	<h3 id="presigned-url-url-">Presigned URL（署名付きURL）</h3>
+	<p>R2内の特定のオブジェクトに対する権限を、ユーザーに煩雑な操作をさせることなく付与したい場合があります。署名付きURLを使用して、あらゆるオブジェクトと操作の一意の組み合わせに対するお客様の権限をユーザーに委任することができます。バケット全体へのアクセスを許可することなく、ユーザーがファイルをアップロードまたは共有できるように、署名付きURLを作成します。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">import {
+  S3Client,
+  PutObjectCommand
+} from "@aws-sdk/client-s3";
+
+import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
+
+const S3 = new S3Client({
+  region: "auto",
+  endpoint: `https://${ACCOUNT_ID}.r2.cloudflarestorage.com`,
+  credentials: {
+    accessKeyId: ACCESS_KEY_ID,
+    secretAccessKey: SECRET_ACCESS_KEY,
+  },
+});
+
+// getSignedUrlを使用すると、エンドユーザーが自分の犬の写真をアップロードできる、1時間の有効期限付きのカスタムURLを作成することができます
+console.log(
+  await getSignedUrl(S3, new PutObjectCommand({Bucket: 'my-bucket-name', Key: 'dog.png'}), { expiresIn: 3600 })
+)
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>署名付きURLを使用すると、開発者はエンドユーザーが安全にR2に直接アクセスできるアプリケーションを簡単に構築することができるようになります。</p>
+	<h3 id="--1">公開バケット</h3>
+	<p><a href="https://developers.cloudflare.com/r2/data-access/public-buckets/" target="_blank">R2バケットの公開アクセス</a>を有効にすると、そのバケットを認証されていないリクエストに対しても公開することができます。これだけでは用途が限られますが、これらのバケットがCloudflareのお客様のアカウントのドメインにリンクされている場合、R2のデータの上でAccess、Cache、ボット管理などのCloudflareの他の機能をシームレスに有効にすることが可能です。</p>
+	<p>結論として、公開バケットは、ドメイン指向のCloudflare機能とR2のバケットとの間にあるギャップを埋めるのに役立ちます。</p>
+	<h3 id="--2">透明性のある価格設定</h3>
+	<p>R2がエグレスに課金することはありません。価格モデルは、ストレージ容量、<a href="https://developers.cloudflare.com/r2/platform/pricing/#class-a-operations" target="_blank">クラスA操作</a>（書き込み、リスト）、<a href="https://developers.cloudflare.com/r2/platform/pricing/#class-b-operations" target="_blank">クラスB操作</a>（読み取り）の3つの要因のみで決定されます。</p>
+	<ul>
+		<li>ストレージ 月額 $0.015 / GB</li>
+		<li>クラスA操作 $4.50/ 100万回。</li>
+		<li>クラスB操作 $0.36/ 100万回</li>
+	</ul>
+	<p>ただし、R2への支払いを開始する前に、まったくコストをかけずに立ち上げて運用することができます。含まれる使用方法は次のとおりです：</p>
+	<ul>
+		<li>データ保存 10GB / 月</li>
+		<li>クラスA操作 100万回 / 月</li>
+		<li>クラスB操作 1000万回 / 月</li>
+	</ul>
+	<h2 id="--3">今後の展開は？</h2>
+	<p>R2の一般リリースは、オブジェクトストレージの旅の始まりに過ぎません。今後の当社の構築計画をお知らせします。</p>
+	<h3 id="--4">オブジェクトのライフサイクル</h3>
+	<p>将来的には、R2によって開発者はオブジェクトにポリシーを設定できるようになります。たとえば、最後にアクセスされてから60日後にオブジェクトを削除するポリシーを設定します。オブジェクトのライフサイクルを使用すると、オブジェクト管理をオブジェクトストアにまで引き下げます。</p>
+	<h3 id="--5">法域の制限</h3>
+	<p>リージョンを明示的にサポートする計画はありませんが、多くのコンプライアンスのユースケースにおいて、データの局所性が重要であることは認識しています。法域の制限により、開発者が「EU」のような法域を設定することで、データが法域を離れることを防ぐことができます。</p>
+	<h3 id="--6">ダウンタイムのないライブマイグレーション</h3>
+	<p>大規模なデータセットの場合、データの移動に時間がかかるため、移行はライブで継続的に行われます。キャッシュリザーブは、ボタン1つでお客様のアセットをマネージドR2インスタンスに素早く移行してエグレスコストを削減する簡単な方法です。今後、既存のS3オブジェクトストレージバケットをすべてR2に移行できるように、このメカニズムを拡張する予定です。<br>今すぐR2にサインアップして、使用を開始してください。Cloudflareを基盤とする成長を続ける開発者コミュニティに参加してください。ご意見やご質問がございましたら<a href="https://discord.gg/c2eACA4qXA" target="_blank">こちら</a>からDiscord serverをご覧ください。あなたが構築なさるものを見ることを楽しみにしています。</p>
+	<h3 id="cloudflare-tv-">Cloudflare TVで視聴する</h3>
+	<!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/bc29cb06e3dd2bcdf68977b7544d2084/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2Fbc29cb06e3dd2bcdf68977b7544d2084%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D1s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
+	<!--kg-card-end: html-->
+</div>

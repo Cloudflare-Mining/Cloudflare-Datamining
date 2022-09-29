@@ -1,0 +1,132 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image1-25.png" class="kg-image" alt="R2 is now Generally Available"></figure>
+	<p>R2 bietet Entwicklern Objektspeicher ohne Egress-Gebühren. Vor R2 haben uns die Cloud-Anbieter beigebracht, dass wir jedes Mal mit einer Datenübertragungssteuer rechnen müssen, wenn wir die bei ihnen gespeicherten Daten tatsächlich nutzen. Wer speichert Daten mit dem Ziel, niemals darauf zuzugreifen? Niemand. Doch jedes Mal, wenn Sie Daten lesen, wird die Egress-Steuer verrechnet. R2 gibt Entwicklern die Möglichkeit, frei auf Daten zuzugreifen. Schluss mit der Bindung an ein Ökosystem – endlich sind Anwendungsentwickler wieder frei.</p>
+	<p>Im Mai 2022 haben wir R2 in den offenen Betatest geschickt. In nur vier kurzen Monaten haben unglaubliche 12.000 Entwickler (Tendenz steigend) begonnen, R2 zu nutzen. Diese Entwickler kamen mit einer Vielzahl von Anwendungsfällen zu uns, von Podcast-Anwendungen über Videoplattformen bis hin zu E-Commerce-Websites, und Nutzern wie <a href="https://www.vecteezy.com" target="_blank">Vecteezy</a>, der sechsstellige Beträge für Egresss-Gebühren ausgab. Wir haben schnell gelernt, großartiges Feedback erhalten und freuen uns, heute ankündigen zu können, dass R2 jetzt allgemein verfügbar ist. </p>
+	<p>Wir würden Sie nicht bitten, auf eine Technologie zu setzen, die wir nicht selbst auch einsetzen. Während der offenen Beta-Phase haben wir Zeit damit verbracht, unsere eigenen Produkte auf R2 umzustellen. Ein solches Beispiel ist Cloudflare Images, das Tausende von Kunden in der Produktion bedient und jetzt von R2 unterstützt wird.</p>
+	<h2 id="was-k-nnen-sie-von-r2-erwarten">Was können Sie von R2 erwarten?</h2>
+	<h3 id="s3-kompatibilit-t">S3-Kompatibilität</h3>
+	<p>R2 bietet Entwicklern eine vertraute Schnittstelle für Objektspeicher, die S3-API. Dank der S3-Kompatibilität können Sie Ihre Anwendungen problemlos migrieren und die Vorteile, die R2 bietet, sofort nutzen.</p>
+	<p>Lassen Sie uns einen Blick auf einige grundlegende Datenoperationen in Javascript werfen. Um dies selbst auszuprobieren, müssen Sie <a href="https://developers.cloudflare.com/r2/platform/s3-compatibility/tokens/" target="_blank">einen Zugangsschlüssel generieren</a>.</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">// Zuerst importieren wir wie üblich unsere Bindungen
+import {
+  S3Client,
+  ListBucketsCommand,
+} from "@aws-sdk/client-s3";
+
+// Dann erstellen wir einen neuen Client. Beachten Sie, dass R2 zwar eine Region für die S3-Kompatibilität erfordert, aber nur „auto“ unterstützt wird
+const S3 = new S3Client({
+  region: "auto",
+  endpoint: `https://${ACCOUNT_ID}.r2.cloudflarestorage.com`,
+  credentials: {
+    accessKeyId: ACCESS_KEY_ID, //  fill in your own
+    secretAccessKey: SECRET_ACCESS_KEY, // fill in your own
+  },
+});
+
+// Und jetzt können wir unseren Client verwenden, um zugehörige Buckets aufzulisten, genau wie bei jedem anderen S3-kompatiblen Objektspeicher
+console.log(
+  await S3.send(
+    new ListBucketsCommand('')
+  )
+);
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Unabhängig der Programmiersprache, die S3-API wirkt vertraut. Wir haben Beispiele in <a href="https://developers.cloudflare.com/r2/examples/aws-sdk-go/" target="_blank">Go</a>, <a href="https://developers.cloudflare.com/r2/examples/boto3/" target="_blank">Java</a>, <a href="https://developers.cloudflare.com/r2/examples/aws-sdk-php/" target="_blank">PHP</a>, und <a href="https://developers.cloudflare.com/r2/examples/aws-sdk-ruby/" target="_blank">Ruby</a>.</p>
+	<h3 id="region-automatisch">Region: Automatisch</h3>
+	<p>Wir wollen nicht in einer Welt leben, in der Entwickler ihre Zeit damit verbringen, in eine Kristallkugel zu schauen und vorherzusagen, woher der Anwendungs-Traffic kommen könnte. Wenn Sie sich im ersten Schritt der Anwendungsentwicklung für eine Region entscheiden, müssen Sie Optimierungsentscheidungen treffen, lange bevor die ersten Nutzer eintreffen.</p>
+	<p>Bei der S3-Kompatibilität müssen Sie eine Region angeben, aber die einzige Region, die wir unterstützen, ist „auto“. Heute wählt R2 automatisch einen Bucket-Speicherort in der Region aus, die der Anforderung zum Erstellen eines Buckets am nächsten liegt. Wenn ich einen Bucket von meinem Wohnort Austin aus erstelle, wird dieser Bucket in der Austin am nächstgelegenen verfügbaren R2-Region gespeichert.</p>
+	<p>Künftig wird R2 Datenzugriffsmuster nutzen, um automatisch zu optimieren, wo Daten gespeichert werden, damit der Nutzer sie optimal nutzen kann.</p>
+	<h3 id="integration-mit-cloudflare-workers">Integration mit Cloudflare Workers</h3>
+	<p>Die Workers-Plattform bietet Entwicklern leistungsstarke Rechenleistung über das Netzwerk von Cloudflare. Wenn Sie mit Workers arbeiten, wird Ihr Code automatisch an <a href="https://www.cloudflare.com/network/" target="_blank">mehr als 275 Cloudflare-Standorten</a> auf der ganzen Welt bereitgestellt. In Verbindung mit R2 ermöglicht Workers Entwicklern das Hinzufügen benutzerdefinierter Logik zu ihren Daten ohne jegliche Kosten für die Performance. Workers ist auf Isolates und nicht auf Containern aufgebaut, so dass Sie sich nicht mit langwierigen Kaltstarts herumschlagen müssen.</p>
+	<p>Lassen Sie uns versuchen, eine einfache REST-API für einen R2-Bucket zu erstellen! <a href="https://developers.cloudflare.com/r2/data-access/workers-api/workers-api-usage/#3-create-your-bucket" target="_blank">Erstellen</a> Sie zunächst Ihren Bucket und fügen Sie dann eine R2-<a href="https://developers.cloudflare.com/r2/data-access/workers-api/workers-api-usage/#4-bind-your-bucket-to-a-worker" target="_blank">Bindung</a> zu ihrem Worker hinzu.</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">export default {
+  async fetch(request, env) {
+    const url = new URL(request.url);
+    const key = url.pathname.slice(1); // wir leiten einen Schlüssel aus dem Url-Pfad ab
+
+    switch (request.method) {
+       // Bei Schreibvorgängen erfassen wir den Text der Anfrage und schreiben ihn unter dem zugehörigen Schlüssel in unseren Bucket.
+      case 'PUT':
+        await env.MY_BUCKET.put(key, request.body);
+        return new Response(`Put ${key} successfully!`);
+
+       // Für Lesevorgänge verwenden wir unseren Schlüssel, um einen Lookup durchzuführen.
+      case 'GET':
+        const object = await env.MY_BUCKET.get(key);
+
+         // wenn wir den angegebenen Schlüssel nicht finden, geben wir einen 404-Fehler aus
+        if (object === null) {
+          return new Response('Object Not Found', { status: 404 });
+        }
+
+        const headers = new Headers();
+        object.writeHttpMetadata(headers);
+        headers.set('etag', object.httpEtag);
+
+        return new Response(object.body, {
+          headers,
+        });
+    }
+  },
+};
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Über diese Workers-API können wir alle Arten von nützlicher Logik in den Hot Path einer R2-Anfrage einfügen.</p>
+	<h3 id="vorsignierte-urls">Vorsignierte URLs</h3>
+	<p>Manchmal möchten Sie Ihren Nutzern Berechtigungen für bestimmte Objekte in R2 erteilen, ohne dass sie sich umständlich darum kümmern müssen. Über vorab signierte URLs können Sie Ihren Nutzern Berechtigungen für jede beliebige Kombination von Objekt und Aktion erteilen. Erstellen Sie eine vorab signierte URL, damit ein Nutzer eine Datei hochladen oder freigeben kann, ohne Zugriff auf den gesamten Bucket zu erhalten.</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">import {
+  S3Client,
+  PutObjectCommand
+} from "@aws-sdk/client-s3";
+
+import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
+
+const S3 = new S3Client({
+  region: "auto",
+  endpoint: `https://${ACCOUNT_ID}.r2.cloudflarestorage.com`,
+  credentials: {
+    accessKeyId: ACCESS_KEY_ID,
+    secretAccessKey: SECRET_ACCESS_KEY,
+  },
+});
+
+// Mit getSignedUrl können wir eine benutzerdefinierte URL mit einer Gültigkeitsdauer von einer Stunde erzeugen, die es unserem Nutzer ermöglicht, sein Hundebild hochzuladen
+console.log(
+  await getSignedUrl(S3, new PutObjectCommand({Bucket: 'my-bucket-name', Key: 'dog.png'}), { expiresIn: 3600 })
+)
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Vorgegebene URLs erleichtern Entwicklern die Erstellung von Anwendungen, mit denen Nutzer direkt und sicher auf R2 zugreifen können.</p>
+	<h3 id="-ffentliche-buckets">Öffentliche Buckets</h3>
+	<p>Wenn Sie <a href="https://developers.cloudflare.com/r2/data-access/public-buckets/" target="_blank">den öffentlichen Zugriff für einen R2-Bucket aktivieren</a>, können Sie diesen Bucket für nicht authentifizierte Anfragen freigeben. Dies allein ist zwar nur von begrenztem Nutzen, aber wenn diese Buckets mit einer Domain unter Ihrem Konto bei Cloudflare verknüpft sind, können Sie andere Cloudflare-Funktionen wie Access, Cache und Bot Management nahtlos zusätzlich zu Ihren Daten in R2 aktivieren. </p>
+	<p>Fazit: Öffentliche Buckets helfen, die Lücke zwischen den domainorientierten Cloudflare-Funktionen und den Buckets, die Sie in R2 haben, zu schließen.</p>
+	<h3 id="transparente-preise">Transparente Preise</h3>
+	<p>R2 wird niemals Egress-Gebühren verrechnen. Das Preismodell hängt allein von drei Faktoren ab: Speichervolumen, <a href="https://developers.cloudflare.com/r2/platform/pricing/#class-a-operations" target="_blank">Vorgänge Klasse-A</a> (Schreibvorgänge, Auflistungen) und <a href="https://developers.cloudflare.com/r2/platform/pricing/#class-b-operations" target="_blank">Vorgänge Klasse-B</a> (Lesevorgänge). </p>
+	<ul>
+		<li>Der Preis für Speicherplatz beträgt $ 0,015/GB, pro Monat.</li>
+		<li>Vorgänge der Klasse A kosten $ 4,50 /Million.</li>
+		<li>Vorgänge der Klasse B kosten $ 0,36 /Million.</li>
+	</ul>
+	<p>Aber bevor Sie für R2 bezahlen, können Sie sich kostenlos einarbeiten. Die enthaltene Nutzung ist wie folgt:</p>
+	<ul>
+		<li>10 GB-Monate an gespeicherten Daten</li>
+		<li>1.000.000 Vorgänge der Klasse A, pro Monat</li>
+		<li>10.000.000 Vorgänge der Klasse B, pro Monat</li>
+	</ul>
+	<h2 id="was-kommt-als-n-chstes">Was kommt als Nächstes?</h2>
+	<p>Die allgemeine Verfügbarkeit von R2 ist bloß unser erster Schritt in Sachen Objektspeicher. Wir freuen uns darauf, Ihnen mitzuteilen, was wir als nächstes vorhaben.</p>
+	<h3 id="object-lifecycles-lebenszyklen-f-r-objekte">Object Lifecycles – Lebenszyklen für Objekte</h3>
+	<p>In Zukunft werden Entwickler in R2 die Möglichkeit haben, Richtlinien für Objekte festzulegen. Zum Beispiel die Festlegung einer Richtlinie, die ein Objekt 60 Tage nach dem letzten Zugriff löscht. Mit Object Lifecycles wird die Objektverwaltung in den Objektspeicher verlagert.</p>
+	<h3 id="juristische-beschr-nkungen">Juristische Beschränkungen</h3>
+	<p>Wir haben zwar keine Pläne, Regionen explizit zu unterstützen, aber wir wissen, dass die Datenlokalisierung in vielen Fällen aus Compliance-Gründen wichtig und erforderlich ist. Juristische Beschränkungen ermöglichen es Entwicklern, eine Jurisdiktion wie die „EU“ festzulegen, die verhindert, dass Daten die Jurisdiktion verlassen.</p>
+	<h3 id="live-migration-ohne-ausfallzeiten">Live-Migration ohne Ausfallzeiten</h3>
+	<p>Bei großen Datensätzen erfolgt die Migration live und laufend, da die Datenübertragung einige Zeit in Anspruch nimmt. Die Cache-Reserve ist eine einfache Möglichkeit, Ihre Assets schnell in eine verwaltete R2-Instanz zu migrieren, um Ihre Egress-Kosten auf Knopfdruck zu senken. In Zukunft werden wir diesen Mechanismus erweitern, so dass Sie jeden Ihrer bestehenden S3-Objektspeicher-Buckets nach R2 migrieren können.</p>
+	<p>Wir laden alle ein, sich zu registrieren und noch heute mit R2 zu beginnen. Schließen Sie sich der wachsenden Community von Entwicklern an, die mit Cloudflare arbeiten. Wenn Sie Feedback oder Fragen haben, stehen wir Ihnen <a href="https://discord.gg/c2eACA4qXA" target="_blank">hier</a> auf unserem Discord-Server zur Verfügung! Wir können es kaum erwarten, zu sehen, was Sie entwickeln werden.</p>
+	<h3 id="auf-cloudflare-tv-ansehen">Auf Cloudflare TV ansehen</h3>
+	<!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/bc29cb06e3dd2bcdf68977b7544d2084/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2Fbc29cb06e3dd2bcdf68977b7544d2084%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D1s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
+	<!--kg-card-end: html-->
+</div>
