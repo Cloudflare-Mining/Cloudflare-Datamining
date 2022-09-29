@@ -5950,12 +5950,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			};
 			try {
 				e.g.build = oc({}, {
-					branch: "rachel/A11Y-785",
+					branch: "hturan/UI-5488",
 					isReleaseCandidate: "true",
-					commit: "d0151c78ad22da71757f2b868b78b2268297737a",
+					commit: "e285c6eb70c3d11eaab21f519b675b6bb604add6",
 					env: "production",
-					builtAt: 1664394855469,
-					dashVersion: "4705d342beaf0bd78eb4b5c63e77c36e818b44e7",
+					builtAt: 1664445830256,
+					dashVersion: "d5023c025331db282c817087e1bc2b7cad47e7e0",
 					versions: {
 						"@cloudflare/app-dash": "25.85.0",
 						node: "14.18.3",
@@ -8590,7 +8590,14 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					}, t().createElement(M.cC, {
 						id: "common.beta"
 					})), t().createElement("a", {
-						href: "https://docs.google.com/forms/d/e/1FAIpQLScAMLKMCcQ1hrZy810tbLnjpXSyWe4KI--8wawc_81bZesDiQ/viewform"
+						target: "_blank",
+						rel: "noopener noreferrer",
+						href: "https://docs.google.com/forms/d/e/1FAIpQLScAMLKMCcQ1hrZy810tbLnjpXSyWe4KI--8wawc_81bZesDiQ/viewform",
+						onClick: function() {
+							d().sendEvent("Survey opened", {
+								category: "search-feedback-link"
+							})
+						}
 					}, t().createElement(M.cC, {
 						id: "search.give_feedback"
 					})))))))
@@ -76530,4 +76537,4 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 	}
 ]);
 
-//# sourceMappingURL=672ad302e456e0f7066a.js.map
+//# sourceMappingURL=3bc815770e4becb72de8.js.map
