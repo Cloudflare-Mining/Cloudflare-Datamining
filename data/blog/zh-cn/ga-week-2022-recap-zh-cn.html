@@ -1,0 +1,147 @@
+<div class="post-content lh-copy gray1">
+	<p>早在 2019 年，我就为 Cloudflare 的 IPO S-1 文档绘制了图表，展示了 Cloudflare 自 2010 年推出以来的各个主版本。该图表如下所示：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image1-40.png" class="kg-image"></figure>
+	<p>当然，该图表并未呈现我们发布的所有内容，但其中的曲线表明了成长型公司的一个事实：我们会不断发布越来越多的产品和服务。其中一些从测试版开始，有时是开放的，有时是专属的。但它们全部都会在测试期之后正式发布。</p>
+	<p>例如，早在 2014 年，我们每年只推出了几个主版本。但几年之后，公司得到长足发展，我们不断推出更新、版本和更改。今年，有一系列产品在九月正式发布，因此很适合一起放到 GA Week 中。</p>
+	<p>GA Week 现已结束，团队正在加紧为生日周（就在本周星期日！）做最后的完善工作，但我们先回顾一下本周推出的所有内容。</p>
+	<!--kg-card-begin: html-->
+	<table style="font-size:16px">
+		<thead>
+			<tr>
+				<th>推出的内容</th>
+				<th>摘要</th>
+				<th>预期用途</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>周一（9 月 19 日）</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td><a href="https://blog.cloudflare.com/cloudforce-one-is-now-ga/">Cloudforce One</a></td>
+				<td>我们的威胁运营和研究团队 Cloudforce One 现已投入运行，并已开始展开威胁简报工作。</td>
+				<td>Enterprise</td>
+			</tr>
+			<tr>
+				<td><a href="https://blog.cloudflare.com/domain-scoped-roles-ga/">改进后的访问控制：域范围角色现已正式发布</a></td>
+				<td>可以用域范围角色限定用户对特定域的访问范围。这样一来，所有用户都可以访问角色，并能够在区域中访问。 </td>
+				<td>当前可用于所有 Free 计划，并将很快向 Enterprise 推出。</td>
+			</tr>
+			<tr>
+				<td><a href="https://blog.cloudflare.com/account-waf/">帐户 WAF 目前可供 Enterprise 客户使用</a></td>
+				<td>用户可以通过单一管理面板管理和配置其所有区域的 WAF。这包括自定义规则集和托管规则集（核心/OWASP 和托管）。</td>
+				<td>Enterprise</td>
+			</tr>
+			<tr>
+				<td><a href="https://blog.cloudflare.com/adaptive-ddos-protection/">隆重推出 Cloudflare 自适应 DDoS 防护系统 - 用于缓解 DDoS 攻击的新型流量分析系统</a></td>
+				<td>全新的 Cloudflare 自适应 DDoS 防护系统会了解您独有的流量模式并不断进行调整，以保护您免受复杂的 DDoS 攻击。</td>
+				<td>内置于我们的高级 DDoS 产品</td>
+			</tr>
+			<tr>
+				<td><a href="https://blog.cloudflare.com/advanced-ddos-alerts/">隆重推出高级 DDoS 警告</a></td>
+				<td>Cloudflare 高级 DDoS 警告实时提供可采取行动的定制通知。</td>
+				<td>内置于我们的高级 DDoS 产品</td>
+			</tr>
+			<tr>
+				<td>周二（9 月 20 日）</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td><a href="https://blog.cloudflare.com/casb-ga/">使用 Cloudflare CASB 检测 SaaS 应用中的安全问题</a></td>
+				<td>通过利用 API 驱动的集成，从全维度了解和控制 SaaS 应用程序，防止数据泄漏、检测影子 IT、阻止内部威胁并规避违规行为的发生。</td>
+				<td>Enterprise Zero Trust</td>
+			</tr>
+			<tr>
+				<td><a href="https://blog.cloudflare.com/inline-dlp-ga/">Cloudflare 数据丢失防护现已正式发布</a></td>
+				<td>数据丢失防护目前可供 Cloudflare 客户使用，为客户提供更多选项来保护其敏感数据。</td>
+				<td>Enterprise Zero Trust</td>
+			</tr>
+			<tr>
+				<td><a href="https://blog.cloudflare.com/cloudflare-one-partner-program-acceleration/">Cloudflare One 合作伙伴计划加速</a></td>
+				<td>Cloudflare One 合作伙伴计划受到现有和潜在合作伙伴的关注。</td>
+				<td>Enterprise Zero Trust</td>
+			</tr>
+			<tr>
+				<td><a href="https://blog.cloudflare.com/magic-gateway-browser-isolation/">使用广域网即服务隔离任何网络上由浏览器带来的威胁</a></td>
+				<td>通过 IPsec/GRE 连接旧防火墙，使用 Cloudflare 浏览器隔离让网络远离浏览器带来的威胁</td>
+				<td>Zero Trust</td>
+			</tr>
+			<tr>
+				<td><a href="https://blog.cloudflare.com/email-security/">Cloudflare Area 1 — 如何持续改进电子邮件安全性</a></td>
+				<td>Cloudflare 于 2020 年开始使用 Area 1，并于 2022 年收购该公司。令我们印象最深的是，当我们部署 Area 1 时，一夜之间，基本完全解决了网络钓鱼的问题（90% 以上的网络攻击都是由网络钓鱼造成的）。但我们的愿景远不止防止网络钓鱼攻击。</td>
+				<td>Enterprise Zero Trust</td>
+			</tr>
+			<tr>
+				<td>周三（9 月 21 日）</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td><a href="https://blog.cloudflare.com/r2-ga/">R2 现已正式发布</a></td>
+				<td>R2 为开发人员提供没有出口费用的对象存储。在 R2 正式发布之后，开发人员就能够专注于创新，而不用担心存储其数据的成本。</td>
+				<td>所有计划</td>
+			</tr>
+			<tr>
+				<td><a href="https://blog.cloudflare.com/stream-live-ga/">Stream Live 现已正式发布</a></td>
+				<td>向全球范围的观看者流传输实时视频。</td>
+				<td>所有计划</td>
+			</tr>
+			<tr>
+				<td><a href="https://blog.cloudflare.com/workers-for-platforms-ga/">构建现代 SaaS 应用程序的最轻松方式</a></td>
+				<td>利用 Workers for Platforms，您的客户可以直接在您的应用程序中构建自定义逻辑来满足其需要。</td>
+				<td>Enterprise</td>
+			</tr>
+			<tr>
+				<td><a href="https://blog.cloudflare.com/workers-todo-part-1/">利用 Cloudflare Workers 实现无源 — 构建 Todo 应用 — 第 1 部分：API</a></td>
+				<td>今天，我们将学习关于在 Cloudflare 开发人员平台上构建完全无服务器的应用程序系列之第 1 部分。</td>
+				<td>对所有 Workers 用户免费</td>
+			</tr>
+			<tr>
+				<td><a href="https://blog.cloudflare.com/store-and-retrieve-logs-on-r2/">在 R2 上存储和检索您的日志</a></td>
+				<td>R2 上的日志存储：一种存储我们任何产品的事件日志的经济高效解决方案！</td>
+				<td>Enterprise（作为 Logpush 的一部分）</td>
+			</tr>
+			<tr>
+				<td><a href="https://blog.cloudflare.com/svg-support-in-cloudflare-images/">Cloudflare Images 支持 SVG</a></td>
+				<td>Cloudflare Images 现在可以支持存储并交付 SVG 文件。</td>
+				<td>Cloudflare Images 的一部分</td>
+			</tr>
+			<tr>
+				<td>周四（9 月 22 日）</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td><a href="https://blog.cloudflare.com/regional-services-comes-to-apac/">地区服务扩张</a></td>
+				<td>Cloudflare 即将面向日本、印度和澳大利亚推出数据本地化套件。</td>
+				<td>Enterprise</td>
+			</tr>
+			<tr>
+				<td><a href="https://blog.cloudflare.com/api-management-metrics/">API Endpoint Management 和 Metrics 现已正式发布</a></td>
+				<td>API Shield 客户可以保存、更新并监控 API 端点的性能。</td>
+				<td>Enterprise</td>
+			</tr>
+			<tr>
+				<td><a href="https://blog.cloudflare.com/zaraz-uses-managed-components-and-dlp-to-make-tools-private/">Cloudflare Zaraz 支持托管组件和 DLP，实现第三方工具私有化</a></td>
+				<td>如果未在 Cloudflare Zaraz 中使用托管组件，则无法在网站上控制第三方工具。</td>
+				<td>可用于所有计划</td>
+			</tr>
+			<tr>
+				<td><a href="https://blog.cloudflare.com/logpush-filters-alerts/">Logpush：现在成本更低，可见性更高</a></td>
+				<td>现在，可以筛选日志推送作业，仅包含感兴趣的日志。此外，您还可以在作业失败时收到警报，并获取有关作业运行状况的统计信息。</td>
+				<td>Enterprise</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: html-->
+	<p>当然，您无需等待一年，即有更多产品正式发布。我们会在全年内不断发布测试版并正式发布产品。我们会继续对产品进行迭代，使其全部成为领先产品。</p>
+	<p>正如我在 <a href="https://blog.cloudflare.com/welcome-to-ga-week/">GA Week 开始</a>时所说：“但我们不仅仅要使产品有效工作和可用，还要构建一流产品。我们会尽早交付产品并快速迭代。多年来，我们的 WAF、DDoS 缓解、机器人管理、API 保护、CDN 以及我们的开发人员平台就是这样走过来的。今天，Gartner、Forrester 和 IDC 等分析公司都认为我们是以上领域的领导者。”</p>
+	<p>现在，继续介绍<a href="https://blog.cloudflare.com/tag/birthday-week/">生日周</a>！</p>
+	<h3 id="-cloudflare-tv-">在 Cloudflare TV 上观看<br></h3>
+	<!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/f6c2058c44f9977045d7a026ab8073ca/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2Ff6c2058c44f9977045d7a026ab8073ca%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D5s%26height%3D600&amp;startTime=4s" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
+	<!--kg-card-end: html-->
+</div>

@@ -1,0 +1,148 @@
+<div class="post-content lh-copy gray1">
+	<p>2019年当時、私はCloudflareのIPOに対するS-1資料のために、2010年にCloudflareが立ち上げられてからの主なリリースを示すグラフを作成しました。以下がそのグラフです。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image1-40.png" class="kg-image"></figure>
+	<p>もちろん、このグラフは私たちが出荷したすべてを表しているわけではありませんが、この曲線は、私たちがより多くの製品やサービスを出荷し続けているという、成長企業の真実を示しています。これらの中には、β版から始まるものもあり、オープンβの場合もあればプライベートβの物も含まれます。しかし、ベータ期間終了後にはすべてが一般公開されます。</p>
+	<p>例えば2014年当時、大きなリリースは年に数回しかありませんでした。しかし、年月が経ち、会社が成長するにつれ、私たちは継続的にアップデート、リリース、変更を繰り返し行っています。今年は、9月に一般発売される製品が集中したため、GA Weekにまとめることにしました。</p>
+	<p>GA Weekが終わり、チームはバースデーウィーク（今週の日曜日に開催！）の仕上げに取り掛かっているところですが、ここで今週発売したすべてのものを振り返ってみましょう。</p>
+	<!--kg-card-begin: html-->
+	<table style="font-size:16px">
+		<thead>
+			<tr>
+				<th>発売されたもの</th>
+				<th>まとめ</th>
+				<th>利用可能</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>月曜日（9月19日)</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td><a href="https://blog.cloudflare.com/cloudforce-one-is-now-ga/">Cloudforce One</a></td>
+				<td>当社の脅威対策・研究チーム「Cloudforce One」が、運営を開始。また、脅威に関するブリーフィングの指揮を執り始めています。</td>
+				<td>Enterprise</td>
+			</tr>
+			<tr>
+				<td><a href="https://blog.cloudflare.com/domain-scoped-roles-ga/">アクセス制御の向上：ドメインスコープ指定ロールが一般にご利用いただけるようになりました</a></td>
+				<td>ドメインスコープ指定ロールを使用して、ユーザーのアクセス範囲を特定のドメインに限定することができます。これにより、すべてのユーザーがロールにアクセスし、ゾーン内でアクセスすることができるようになります。 </td>
+				<td>現在はすべてのFreeプランで利用可能ですが、間もなくEnterpriseにも対応します。</td>
+			</tr>
+			<tr>
+				<td><a href="https://blog.cloudflare.com/account-waf/">アカウントWAFは、現在Enterpriseプランのお客様が利用可能です</a></td>
+				<td>ユーザーは、1つのパネルを通してすべてのゾーンのWAFを管理および設定することができます。これには、カスタムルールセットとマネージドルールセット（Core/OWASPとManaged）が含まれます。</td>
+				<td>Enterprise</td>
+			</tr>
+			<tr>
+				<td><a href="https://blog.cloudflare.com/adaptive-ddos-protection/">Cloudflare Adaptive DDoS攻撃対策の導入 - DDoS攻撃を軽減するための新しいトラフィックプロファイリングシステム</a></td>
+				<td>Cloudflareの新しいAdaptive DDoS攻撃対策システムは、お客様に固有のトラフィックパターンを学習し、高度なDDoS攻撃からお客様を保護するために絶えず適応を続けます。</td>
+				<td>アドバンストDDoS製品に搭載</td>
+			</tr>
+			<tr>
+				<td><a href="https://blog.cloudflare.com/advanced-ddos-alerts/">高度DDoSアラートの導入</a></td>
+				<td>Cloudflareの高度DDoSアラートは、リアルタイムで使う人に合わせた、実用的な通知を提供します。</td>
+				<td>アドバンストDDoS製品に搭載</td>
+			</tr>
+			<tr>
+				<td>火曜日（9月20日)</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td><a href="https://blog.cloudflare.com/casb-ga/">Cloudflare CASBを使用して、SaaSアプリケーション内のセキュリティの問題を検出する</a></td>
+				<td>APIを利用した統合によって、SaaSアプリの包括的な可視化と制御を実現し、データ漏洩の防止、シャドーITの検出、インサイダー脅威の阻止、コンプライアンス違反の防止を実現します。</td>
+				<td>Enterprise Zero Trust</td>
+			</tr>
+			<tr>
+				<td><a href="https://blog.cloudflare.com/inline-dlp-ga/">Cloudflare Data Loss Prevention（データ損失防止）が一般利用可能に</a></td>
+				<td>Cloudflareのお客様は、機密データを保護するためのより多くのオプションを提供するData Loss Prevention（データ損失防止）が利用できるようになりました。</td>
+				<td>Enterprise Zero Trust</td>
+			</tr>
+			<tr>
+				<td><a href="https://blog.cloudflare.com/cloudflare-one-partner-program-acceleration/">Cloudflare Oneパートナープログラム促進</a></td>
+				<td>Cloudflare Oneパートナープログラムは、既存パートナーや見込みパートナーの間で支持が広がっています。</td>
+				<td>Enterprise Zero Trust</td>
+			</tr>
+			<tr>
+				<td><a href="https://blog.cloudflare.com/magic-gateway-browser-isolation/">WAN as a Serviceを使用して、あらゆるネットワーク上のブラウザ経由の脅威を分離</a></td>
+				<td>IPSec / GREでレガシーファイアウォールに接続することで、Cloudflareのブラウザの分離でブラウザから発生する脅威からあらゆるネットワークを保護</td>
+				<td>Zero Trust</td>
+			</tr>
+			<tr>
+				<td><a href="https://blog.cloudflare.com/email-security/">Cloudflare Area 1 - 最高のメールセキュリティはどのように改善を続けているか</a></td>
+				<td>Cloudflareは2020年にArea 1の利用者となり、その後の2022年に同社を買収の道を進めました。最も印象的だったのは、「Area 1」を導入した際、サイバー攻撃の90%以上を占めるフィッシングが一夜で問題ではなくなったことです。しかし、当社のビジョンは、フィッシング攻撃を防ぐことよりも遥かに大きなところにあります。</td>
+				<td>Enterprise Zero Trust</td>
+			</tr>
+			<tr>
+				<td>水曜日（9月21日)</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td><a href="https://blog.cloudflare.com/r2-ga/">R2の一般提供を開始しました</a></td>
+				<td>R2は開発者にオブジェクトストレージを提供しますが、エグレス料金は発生しません。R2の一般公開により、開発者はデータ格納のコストを心配することなくイノベーションに注力できるようになります。</td>
+				<td>全プラン</td>
+			</tr>
+			<tr>
+				<td><a href="https://blog.cloudflare.com/stream-live-ga/">Stream Liveが一般にご利用いただけるようになりました</a></td>
+				<td>世界中の視聴者に向けたライブ動画の配信。</td>
+				<td>全プラン</td>
+			</tr>
+			<tr>
+				<td><a href="https://blog.cloudflare.com/workers-for-platforms-ga/">最新のSaaSアプリケーションを構築する最も簡単な方法</a></td>
+				<td>Workers for Platformsを使用することで、お客様のニーズに合わせたカスタムロジックをアプリケーションに組み込むことができます。</td>
+				<td>Enterprise</td>
+			</tr>
+			<tr>
+				<td><a href="https://blog.cloudflare.com/workers-todo-part-1/">Cloudflare Workersでオリジンレス化 – Todoアプリの構築 – パート1：API</a></td>
+				<td>本日は、Cloudflareの開発者用プラットフォームで行う「完全なサーバーレスアプリケーションの構築」シリーズのパート1をご紹介します。</td>
+				<td>Workersユーザーは全員無料</td>
+			</tr>
+			<tr>
+				<td><a href="https://blog.cloudflare.com/store-and-retrieve-logs-on-r2/">ログの保存と取得をR2で</a></td>
+				<td>R2上のログストレージ：あらゆる製品のイベントログを保存できるコストパフォーマンスに優れたソリューションです。</td>
+				<td>Enterprise（Logpushの一部として）</td>
+			</tr>
+			<tr>
+				<td><a href="https://blog.cloudflare.com/svg-support-in-cloudflare-images/">Cloudflare Images の SVG サポート</a></td>
+				<td>Cloudflare Images は、SVG ファイルの保存と配信をサポートするようになりました。</td>
+				<td>Cloudflare Imagesの一部</td>
+			</tr>
+			<tr>
+				<td>木曜日（9月22日)</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td><a href="https://blog.cloudflare.com/regional-services-comes-to-apac/">Regional Servicesの拡張</a></td>
+				<td>Cloudflareは、日本、インド、オーストラリア向けにData Localization Suiteの提供を開始します。</td>
+				<td>Enterprise</td>
+			</tr>
+			<tr>
+				<td><a href="https://blog.cloudflare.com/api-management-metrics/">API エンドポイント管理とメトリクスが GA になりました</a></td>
+				<td>API Shieldを使用すると、APIエンドポイントのパフォーマンスの保存、更新、モニタリングができます。</td>
+				<td>Enterprise</td>
+			</tr>
+			<tr>
+				<td><a href="https://blog.cloudflare.com/zaraz-uses-managed-components-and-dlp-to-make-tools-private/">Cloudflare Zarazが、Managed Componentsとサードパーティツールを非公開にするDLPをサポート</a></td>
+				<td>自社のWebサイトで管理できないのは、サードパーティツールのみでしょう。Cloudflare ZarazでManaged Componentsを使用すると、サードパーティのツールが管理できるようになります。</td>
+				<td>すべてのプランで利用可能</td>
+			</tr>
+			<tr>
+				<td><a href="https://blog.cloudflare.com/logpush-filters-alerts/">Logpush: 低コストおよびより高い知名度</a></td>
+				<td>Logpushジョブは興味があるログのみを含めるようにフィルタ処理できるようになりました。また、ジョブが失敗するとき、ジョブの健全性に関する統計の取得と共に、警告を受信することができます。</td>
+				<td>Enterprise</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: html-->
+	<p>もちろん、より多くの製品が一般公開されるまで1年待つ必要はありません。ベータ版の出荷や製品の一般公開は、年間を通じて行っていく予定です。そして、すべての製品が主流となるように、繰り返し開発を続けていきます。</p>
+	<p><em>次の内容を<a href="https://blog.cloudflare.com/ja-jp/welcome-to-ga-week-ja-jp/">GA Weekの冒頭</a>でお伝えしています。</em></p>
+	<blockquote>「しかし、それは単に製品を機能させ、利用可能にすることではなく、最高の品種を作ることです。当社は早期に出荷し、迅速に反復処理を行います。当社は、WAF、DDoS軽減、ボット管理、API保護、CDN、および開発者プラットフォームのために長年にわたってこれを行ってきました。今日、Gartner、Forrester、IDCなどのアナリスト企業は、これらすべての分野で当社をリーダーとして認識しています。」</blockquote>
+	<p>さあ、この次は<a href="https://blog.cloudflare.com/tag/birthday-week/">バースデーウィーク</a>です！</p>
+	<h3 id="cloudflare-tv-">Cloudflare TVで視聴する</h3>
+	<!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/f6c2058c44f9977045d7a026ab8073ca/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2Ff6c2058c44f9977045d7a026ab8073ca%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D5s%26height%3D600&amp;startTime=4s" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
+	<!--kg-card-end: html-->
+</div>

@@ -1,0 +1,42 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image2-37.png" class="kg-image" alt="The first Zero Trust SIM"></figure>
+	<p>不起眼的手机，现已成为现代工作场所的关键工具；随着现代工作场所从办公室转移出来，情况尤甚。鉴于全世界有几十亿台移动设备（其数量现已超过 PC 一个数量级），它们已成为那些企图攻破公司防御的攻击者首选的攻击手段，也就不足为奇了。</p>
+	<p>您在防御这种攻击时所面临的问题是，对于大部分 Zero Trust 解决方案，移动端常常处于二等公民般的地位。这些解决方案通常很难安装和管理。而且它们仅在软件层适用，例如 <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/" target="_blank">WARP</a>，这是将设备直接连接到我们的 Zero Trust 网络的移动（和桌面）应用。在此之外，再考虑到更多员工在使用的自带设备 (BYOD)，情况就更加复杂，因为这相当于试图在并不属于公司的设备上部署 Zero Trust。</p>
+	<p>这一问题解决起来比较棘手，并且其重要性与日俱增。但我们可以帮助解决该问题。</p>
+	<p>假若雇主向员工提出，只要员工同意让雇主将其工作相关流量定向通过直接内置了 Zero Trust 保护的网络，雇主就支付其每月数据成本，会怎么样？而且，我们会极大简化安装过程，事实上，要充分利用这一点，您只需通过手机摄像头扫描二维码即可，二维码可以嵌入在员工的入职培训材料中。</p>
+	<p>下面我们就向您隆重介绍 Cloudflare SIM：世界首款 Zero Trust SIM。</p>
+	<p>按照真正的 Cloudflare 方式，我们认为，将软件层与网络层相结合能实现更好的安全性、性能和可靠性。通过瞄准每台移动设备底层的基础技术，也就是看似毫不起眼的 <a href="https://en.wikipedia.org/wiki/SIM_card" target="_blank">SIM 卡</a>，我们致力于为移动世界带来前所未有水平的安全性（和性能）。</p>
+	<h3 id="-">威胁日趋转向移动端</h3>
+	<p>我们说移动端已是新的威胁手段，这绝非泛泛而谈。上个月，<a href="https://blog.cloudflare.com/zh-cn/2022-07-sms-phishing-attacks-zh-cn/">一次复杂的网络钓鱼攻击</a>瞄准了 130 家公司，而 Cloudflare 也是其中之一。移动端是这次攻击的基石，员工最初通过短信受到攻击，这次攻击主要依赖于泄露的双因素验证码。</p>
+	<p>目前据我们所知，我们是唯一一家未被攻破的公司。</p>
+	<p>很大一部分原因在于，我们一直持续不断推进多层 Zero Trust 防御体系。鉴于移动端对于如今的公司运营起着十分重要的基础性作用，我们一直在竭力巩固这方面的 Zero Trust 防御。我们将 Zero Trust SIM 视为堆栈不同级别的另一层防御，使攻击者更难渗透您的组织。通过 Zero Trust SIM，您将获得以下优势：</p>
+	<ul>
+		<li>防止员工访问网络钓鱼和恶意软件站点：离开设备的 DNS 请求可以自动、隐式使用 Cloudflare Gateway 进行 DNS 过滤。</li>
+		<li>缓解常见 SIM 攻击：利用 eSIM 优先的方法，我们可以防止 SIM 交换或克隆攻击，并通过将 SIM 锁定到单独的员工设备，为实体 SIM 引入相同的保护。</li>
+		<li>通过 Magic WAN 实现安全、基于身份的专用连接，以接入云服务、本地基础设施乃至其他设备（考虑：各种物联网设备）。每个 SIM 都可以强绑定到特定员工，并视为身份信号，与 WARP 已经支持的其他设备态势信号结合使用。</li>
+	</ul>
+	<p>通过在 SIM 级别集成 Cloudflare 的安全功能，团队能够更好地保护其各种移动设备，尤其是在 BYOD 成为常态而非特例的场景下。</p>
+	<h3 id="zero-trust-">Zero Trust 在用于软件 + 入口时效果更好</h3>
+	<p>除了我们能够为移动设备获得的所有安全优势之外，Zero Trust SIM 还将移动端变成 Cloudflare One 平台的另一个入口支柱。</p>
+	<p>Cloudflare One 提供了单一统一控制面板：允许组织在所有流入或流出其网络、设备和基础设施的流量中应用安全控制。日志记录也是如此：您想在一个地方获取日志，在另一个地方进行所有安全分析。使用 Cloudflare SIM 时，移动端如今被视为流量在您的企业网络中通行的另一种方式。</p>
+	<p>在入口而非软件级别工作还会带来另一项重大优势 — 我们可以灵活地允许设备连接到<em>不</em>在互联网上的服务，包括与我们的网络即服务平台 <a href="https://www.cloudflare.com/magic-wan/" target="_blank">Magic WAN</a> 连接的云基础设施、数据中心和分支机构。事实上，我们正在幕后使用客户用于构建 Zero Trust SIM 背后的连接层的相同软件联网基础。这样一来，我们也能支持新的网络隧道协议 <a href="https://www.rfc-editor.org/rfc/rfc8926.html" target="_blank">Geneve</a> 等新功能，进一步扩展客户将其基础设施连接到 Cloudflare One 的能力。</p>
+	<p>我们制定了<a href="https://www.gsma.com/iot/iot-safe/" target="_blank">物联网安全</a>（以及并行非物联网标准）等众多标准，使 SIM 卡能被用作信任根，从而在 Zero Trust SIM 与员工身份之间建立更强的联系，并有可能充当可信硬件令牌。</p>
+	<h3 id="-zero-trust">立即（轻松）在移动端启动并运行 Zero Trust</h3>
+	<p>当然，每个 Zero Trust 解决方案提供商都承诺保护移动端。但尤其是在 BYOD 的情况下，让员工正常运行会比较困难。要让设备上线，可以深度导览手机的“设置”应用：接受档案，信任证书，并（在大部分情况下）需要成熟的移动设备管理 (MDM) 解决方案。</p>
+	<p>安装十分繁琐。</p>
+	<p>现在，我们并不主张消除手机上的客户端软件，这一点与 PC 端的情形类似。防御层数总是多多益善。此外，仍有必要保护手机上建立的 Wi-Fi 连接。但一大优势是，Cloudflare SIM 可以立即针对所有移动端流量在 Cloudflare 的 Zero Trust 平台背后保护员工。</p>
+	<p>但是，我们要简化的并不仅仅是设备上的安装，还包括公司的 IT 供应链。</p>
+	<p>SIM 卡的传统挑战之一是，直到最近，它们一直是实体卡。卡片必须邮寄给员工（现代的一种供应链风险），有可能丢失、被盗，且仍有可能失效。对分布式劳动力队伍而言，这一切变得更加困难。我们知道，虽然安全性是至关重要的，但难以部署的安全性往往会被随意、临时地部署，甚至往往根本不部署。</p>
+	<p>近年来，几乎每一部现代手机都拥有可动态重新编程的 eSIM——更准确地说，<a href="https://www.emnify.com/iot-glossary/esim" target="_blank">一张 eUICC（嵌入式通用集成电路卡 )</a>。这是巨大的进步，有两大理由：</p>
+	<ol>
+		<li>可避免实体 SIM 卡的所有后勤问题（邮寄；供应链风险；让用户安装！）</li>
+		<li>可通过二维码、移动设备如今内置的<a href="https://support.apple.com/guide/deployment/deploy-devices-with-cellular-connections-dep36c581d6x/web" target="_blank">移动设备管理</a> (MDM) 功能或者通过应用（例如，<a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/" target="_blank">我们的 WARP 移动应用</a>）自动部署。</li>
+	</ol>
+	<p>我们也在探索推出实体 SIM 卡（如上图）：尽管我们相信 eSIM 是未来的趋势，特别是考虑到其部署和安全优势，但我们理解未来并不总是千篇一律的。我们会努力确保我们发布的实体 SIM 卡尽可能安全，并且我们会在接下来几个月分享关于其运作原理的更多信息。</p>
+	<h3 id="--1">员工的隐私和透明度</h3>
+	<p>当然，员工越来越多地在工作中使用自己的设备。虽然雇主希望确保其企业资源是安全的，但工作与非工作事务都混用同一设备时，员工也会产生隐私方面的顾虑。员工并不想让上司知道自己在 Tinder 上浏览照片。</p>
+	<p>我们希望体贴地处理这个问题，同时考虑双方的角度。我们在 Cloudflare One 中设置了复杂的日志记录，这会延伸到 Cloudflare SIM。如今，Cloudflare One 可以显式配置为仅记录它所阻止的资源，也就是它要为员工防御的威胁，除此之外，并不记录所访问的每个域。我们致力于让这一点对雇主和员工都显而易见且公开透明，以便按照真正的 Cloudflare 方式，保证安全性不必损害隐私。</p>
+	<h3 id="--2">接下来？</h3>
+	<p>一如 Cloudflare 的任何产品，我们正在自己身上进行测试（借用圈内术语来说，也称为内部测试）。鉴于我们为《财富》1000 强中超过 30% 的公司提供了服务，我们继续观察到日益复杂的网络安全攻击并成为其目标。我们相信，首先运行服务，是确保 Zero Trust SIM 在数千员工中安全且尽可能易于部署和管理的关键一步。</p>
+	<p>我们还将 Zero Trust SIM 引入<a href="https://blog.cloudflare.com/rethinking-internet-of-things-security/">物联网</a>：如今几乎每部车辆都预期配备有移动连接；越来越多的支付终端配备了 SIM 卡；制造与物流领域使用的工业设备与日俱增。IoT 设备安全性受到<a href="https://www.nist.gov/itl/applied-cybersecurity/nist-cybersecurity-iot-program" target="_blank">日益严格的审查</a>，确保设备的唯一连接方式是安全的（受到 Cloudflare 的 Zero Trust 功能保护）可以直接防止设备被下一个大型 DDoS 僵尸网络吞噬。我们将在全球构建我们的区域性连接时，按区域向客户推出 Zero Trust SIM（如果您是运营商，<a href="https://blog.cloudflare.com/zero-trust-for-mobile-operators/">请与我们联系</a>）。我们尤其期望与根本没有实施现有移动设备解决方案或在如今的商业局面中费力挣扎的组织沟通。如果您有兴趣，请<a href="https://www.cloudflare.com/announcing-the-zero-trust-sim-register-interest/" target="_blank">点击此处注册</a>。</p>
+</div>

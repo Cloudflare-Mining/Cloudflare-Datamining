@@ -1,0 +1,132 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image1-25.png" class="kg-image" alt="R2 is now Generally Available"></figure>
+	<p>R2 为开发者提供零出口费用的对象存储。在 R2 出现以前，云提供商告诉我们，每次使用其中存储的数据时都要支付传输费用。谁会存储数据而打算永远不再读取？没有人会这样做。然而，每次读取数据时，您都要支付出口费用。R2 为开发人员提供了免费访问数据的能力，打破了长期束缚应用程序构建者的生态系统锁定。</p>
+	<p>2022 年 5 月，我们发布了 R2 公测版。短短 4 个月时间，超过 1.2 万开发人员要开始使用 R2，而且人数还在不断增加，让我们应接不暇。这些开发者带着从播客应用到视频平台到电子商务网站的各种用例来找我们，还有像 <a href="https://www.vecteezy.com" target="_blank">Vecteezy</a> 这样正在支出高达 6 位数出口费用的用户。我们快速学习，获得了很好的反馈，今天很高兴能宣布 R2 现已普遍可用。</p>
+	<p>我们不会要求您押注我们自己不愿意押注的技术。在公测阶段，我们花时间将自己的产品迁移到 R2 上。Cloudflare Images 就是这样一个例子，它为成千上万的客户在生产中提供服务，现在也使用了 R2。</p>
+	<h2 id="r2-">R2 有何值得期待之处？</h2>
+	<h3 id="s3-">S3 兼容性</h3>
+	<p>R2 为开发人员提供了熟悉的对象存储接口，S3 API。借助 S3 兼容性，客户可轻松地迁移应用程序，并立即开始利用 R2 的优势。</p>
+	<p>我们来看一下 JavaScript 中的一些基本数据操作。如果要亲自尝试，您将需要<a href="https://developers.cloudflare.com/r2/platform/s3-compatibility/tokens/" target="_blank">生成一个 Access Key</a>。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">// 首先如常导入绑定
+import {
+  S3Client,
+  ListBucketsCommand,
+} from "@aws-sdk/client-s3";
+
+// 然后创建一个新客户端请注意，虽然 R2 为 S3 兼容性而要求一个区域，但目前仅支持 “auto”
+const S3 = new S3Client({
+  region: "auto",
+  endpoint: `https://${ACCOUNT_ID}.r2.cloudflarestorage.com`,
+  credentials: {
+    accessKeyId: ACCESS_KEY_ID, //  fill in your own
+    secretAccessKey: SECRET_ACCESS_KEY, // fill in your own
+  },
+});
+
+// 现在我们可以使用客户端来列出相关的存储桶，就像我们使用任何其他 S3 兼容的对象存储一样
+console.log(
+  await S3.send(
+    new ListBucketsCommand('')
+  )
+);
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>无论使用哪种语言，S3 API 都能提供熟悉的感觉。我们有这些语言的示例：<a href="https://developers.cloudflare.com/r2/examples/aws-sdk-go/" target="_blank">Go</a>，<a href="https://developers.cloudflare.com/r2/examples/boto3/" target="_blank">Java</a>，<a href="https://developers.cloudflare.com/r2/examples/aws-sdk-php/" target="_blank">PHP</a> 和 <a href="https://developers.cloudflare.com/r2/examples/aws-sdk-ruby/" target="_blank">Ruby</a>。</p>
+	<h3 id="-">区域：自动</h3>
+	<p>我们不想活在这样的一个世界里：开发人员需要盯着水晶球，预测应用程序流量可能来自哪里。在应用程序开发的第一步选择区域，迫使开发人员在首批用户出现很久以前就做出优化决定。</p>
+	<p>虽然 S3 兼容性要求您指定区域，我们支持的唯一区域是“auto”。今天，R2 自动在最接近创建存储桶请求的可用区域中选择一个存储桶位置。如果我从位于奥斯汀的家中创建一个存储桶，这个存储桶将位于距离奥斯汀最近的可用 R2 区域中。 &nbsp; </p>
+	<p>日后，R2 将使用数据访问模式来自动优化数据存储的位置，以提供最佳用户体验。</p>
+	<h3 id="cloudflare-workers-">Cloudflare Workers 集成</h3>
+	<p>Workers 平台为开发人员提供了跨 Cloudflare 网络的强大计算能力。当您在 Workers 上部署时，您的代码会自动部署到 Cloudflare <a href="https://www.cloudflare.com/network/" target="_blank">全球 275 多个数据中心</a>。当与 R2 配合使用时，Workers 允许开发人员围绕数据添加自定义逻辑，而没有任何性能开销。Workers 基于隔离而非容器构建，因此无需漫长的冷启动。</p>
+	<p>让我们尝试为 R2 存储桶创建一个简单的 REST API 吧。首先<a href="https://developers.cloudflare.com/r2/data-access/workers-api/workers-api-usage/#3-create-your-bucket" target="_blank">创建</a>存储桶，然后 Worker 中添加一个 R2 <a href="https://developers.cloudflare.com/r2/data-access/workers-api/workers-api-usage/#4-bind-your-bucket-to-a-worker" target="_blank">绑定</a>。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">export default {
+  async fetch(request, env) {
+    const url = new URL(request.url);
+    const key = url.pathname.slice(1); // 我们将从 url 路径获得键名
+
+    switch (request.method) {
+       // 对于写操作，我们捕获请求正文并按照相关键名写入到我们的存储桶
+      case 'PUT':
+        await env.MY_BUCKET.put(key, request.body);
+        return new Response(`Put ${key} successfully!`);
+
+      // 对于读操作，我们将使用键名来执行查询
+      case 'GET':
+        const object = await env.MY_BUCKET.get(key);
+
+        // 如果不能找到给定的键名，将返回 404 错误
+        if (object === null) {
+          return new Response('Object Not Found', { status: 404 });
+        }
+
+        const headers = new Headers();
+        object.writeHttpMetadata(headers);
+        headers.set('etag', object.httpEtag);
+
+        return new Response(object.body, {
+          headers,
+        });
+    }
+  },
+};
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>通过这个 Workers API，我们可以将各种有用的逻辑添加到 R2 请求的热路径中。</p>
+	<h3 id="-url">预签名 URL</h3>
+	<p>有时，您需要向您的用户授予 R2 中特定对象的权限，而不需要他们通过重重障碍。通过预签名 URL，您可以将任何对象和动作的独特组合的权限委托给用户。创建一个预签名 URL，让用户上传文件或共享文件，而无需访问整个存储桶。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-javascript">import {
+  S3Client,
+  PutObjectCommand
+} from "@aws-sdk/client-s3";
+
+import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
+
+const S3 = new S3Client({
+  region: "auto",
+  endpoint: `https://${ACCOUNT_ID}.r2.cloudflarestorage.com`,
+  credentials: {
+    accessKeyId: ACCESS_KEY_ID,
+    secretAccessKey: SECRET_ACCESS_KEY,
+  },
+});
+
+// 使用 getSignedUrl，我们可以生成一个有效时间为一小时的自定义 url，其将允许我们的最终用户上传他们的狗的照片
+console.log(
+  await getSignedUrl(S3, new PutObjectCommand({Bucket: 'my-bucket-name', Key: 'dog.png'}), { expiresIn: 3600 })
+)
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>通过预签名 URL，开发人员可以轻松构建让终端用户直接安全地访问 R2 的应用程序。</p>
+	<h3 id="--1">公共存储桶</h3>
+	<p>通过启用对一个 R2 存储桶的<a href="https://developers.cloudflare.com/r2/data-access/public-buckets/" target="_blank">公共访问权限</a>，您能够将该存储桶暴露给未经身份验证的请求。虽然这样做本身用途有限，当这些存储桶与您 Cloudflare 帐户下的某个域关联时，您可以对您在 R2 中的数据无缝启用其他 Cloudflare 功能，例如 Access、缓存和机器人管理。</p>
+	<p>底线是，公共存储桶帮助弥合面向域的 Cloudflare 功能与您的 R2 存储桶之间的空白。</p>
+	<h3 id="--2">透明定价</h3>
+	<p>R2 绝不会收取出口费用。定价模式仅取决于三个因素：存储量，<a href="https://developers.cloudflare.com/r2/platform/pricing/#class-a-operations" target="_blank">A 类操作</a>（写入，列出）和 <a href="https://developers.cloudflare.com/r2/platform/pricing/#class-b-operations" target="_blank">B 类操作</a>（读取）。 </p>
+	<ul>
+		<li>存储定价为 0.015 美元/GB/每月。</li>
+		<li>A 类操作费用为 4.50 美元/百万次</li>
+		<li>B 类操作费用为 0.36 美元/百万次。</li>
+	</ul>
+	<p>但是，在您准备好开始为 R2 付费以前，我们允许您完全免费地启动并运行。包含的使用量如下：</p>
+	<ul>
+		<li>10 GB/月的存储数据</li>
+		<li>A 类操作 100 万次/月</li>
+		<li>B 类操作 1000 万次/月</li>
+	</ul>
+	<h2 id="--3">接下来？</h2>
+	<p>使 R2 普遍可用只是我们对象存储旅程的开端。我们很高兴能分享下一步的构建计划。</p>
+	<h3 id="--4">对象生命周期</h3>
+	<p>未来，R2 将允许开发人员设置有关对象的策略。例如，设置一项策略来删除最后一次访问距今 60 天的对象。对象生命周期将对象管理向下延伸到对象存储。</p>
+	<h3 id="--5">司法管辖区限制</h3>
+	<p>虽然我们没有计划显式地支持区域，但我们知道数据位置对于许多合规用例都很重要。司法管辖区限制将允许开发人员设置类似“欧盟”的司法管辖区，从而防止数据离开该司法管辖区。</p>
+	<h3 id="--6">不停机实时迁移</h3>
+	<p>对于大型数据集而言，迁移是实时和持续进行的，因为移动数据需要时间。缓存储备是一键将资产迁移到托管 R2 示例以减少出口费用的简单方法。日后，我们将扩展这一机制，以便您能将任何现有 S3 对象存储桶迁移到 R2。</p>
+	<p>我们欢迎所有人立即注册并开始使用 R2。加入 Cloudflare 上不断扩大的开发人员社区。如有任何反馈或疑问，请点击<a href="https://discord.gg/c2eACA4qXA" target="_blank">这里</a>通过我们的 Discord 服务器联系我们。我们迫不及待要看到您构建的应用！</p>
+	<h3 id="-cloudflare-tv-">在 Cloudflare TV 上观看<br></h3>
+	<!--kg-card-begin: html-->
+	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/bc29cb06e3dd2bcdf68977b7544d2084/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2Fbc29cb06e3dd2bcdf68977b7544d2084%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D1s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
+	<!--kg-card-end: html-->
+</div>
