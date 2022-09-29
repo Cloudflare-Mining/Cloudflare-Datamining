@@ -1200,6 +1200,18 @@
 		}
 	},
 	{
+		"id": "rulesets.firewall_custom_phase_allowed",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 864,
+			"key": "rulesets.firewall_custom_phase_allowed",
+			"name": "Rulesets - Firewall Custom Phase Allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "rulesets.fw_global_rulesets_execute_ddos_l4_allowed",
 		"feature": {
 			"feature_set": "rulesets",
@@ -1218,6 +1230,42 @@
 			"id": 901,
 			"key": "rulesets.fw_global_rulesets_execute_ddos_l7_allowed",
 			"name": "Rulesets - Execute Global Cloudflare DDoS L7 Managed Rules Allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "rulesets.fw_global_rulesets_execute_firewall_managed_ceccr_allowed",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 872,
+			"key": "rulesets.fw_global_rulesets_execute_firewall_managed_ceccr_allowed",
+			"name": "Rulesets - Execute Global Cloudflare Exposed Credentials Check Rules Allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "rulesets.fw_global_rulesets_execute_firewall_managed_cmr_allowed",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 861,
+			"key": "rulesets.fw_global_rulesets_execute_firewall_managed_cmr_allowed",
+			"name": "Rulesets - Execute Global Cloudflare Managed Rules Allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "rulesets.fw_global_rulesets_execute_firewall_managed_cor_allowed",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 862,
+			"key": "rulesets.fw_global_rulesets_execute_firewall_managed_cor_allowed",
+			"name": "Rulesets - Execute Global Cloudflare OWASP Rules Allowed"
 		},
 		"allocation": {
 			"type": "bool"
@@ -1320,12 +1368,36 @@
 		}
 	},
 	{
+		"id": "rulesets.max_owned_custom_rulesets",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 783,
+			"key": "rulesets.max_owned_custom_rulesets",
+			"name": "Rulesets - Max Owned Custom Rulesets"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
 		"id": "rulesets.max_rules_per_ruleset",
 		"feature": {
 			"feature_set": "rulesets",
 			"id": 786,
 			"key": "rulesets.max_rules_per_ruleset",
 			"name": "Rulesets - Max Rules Per Ruleset"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "rulesets.max_versions_per_custom_ruleset",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 787,
+			"key": "rulesets.max_versions_per_custom_ruleset",
+			"name": "Rulesets - Max Versions Per Custom Ruleset"
 		},
 		"allocation": {
 			"type": "max_count"

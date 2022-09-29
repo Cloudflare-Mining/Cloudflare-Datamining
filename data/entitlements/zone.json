@@ -60,6 +60,42 @@
 		}
 	},
 	{
+		"id": "authoritative_dns.max_record_comment_length",
+		"feature": {
+			"feature_set": "dns",
+			"id": 1105,
+			"key": "authoritative_dns.max_record_comment_length",
+			"name": "Authoritative DNS - Maximum Record Comment Length"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "authoritative_dns.max_record_tag_value_length",
+		"feature": {
+			"feature_set": "dns",
+			"id": 1107,
+			"key": "authoritative_dns.max_record_tag_value_length",
+			"name": "Authoritative DNS - Maximum Record Tag Value Length"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "authoritative_dns.max_record_tags",
+		"feature": {
+			"feature_set": "dns",
+			"id": 1106,
+			"key": "authoritative_dns.max_record_tags",
+			"name": "Authoritative DNS - Maximum Tags Per Record"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
 		"id": "authoritative_dns.min_record_ttl_allowed",
 		"feature": {
 			"feature_set": "dns",
@@ -168,12 +204,36 @@
 		}
 	},
 	{
+		"id": "custom_pages.enabled",
+		"feature": {
+			"feature_set": "custom_pages",
+			"id": 1104,
+			"key": "custom_pages.enabled",
+			"name": "Custom Pages enabled"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "dns_records_api.bypass_anti_abuse_logic",
 		"feature": {
 			"feature_set": "dns",
 			"id": 727,
 			"key": "dns_records_api.bypass_anti_abuse_logic",
 			"name": "DNS API - Bypass Anti-Abuse Logic"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "endpoint_abuse_detection.parameter_learning_allowed",
+		"feature": {
+			"feature_set": "endpoint_abuse_detection",
+			"id": 1108,
+			"key": "endpoint_abuse_detection.parameter_learning_allowed",
+			"name": "Endpoint Abuse Detection - Parameter Schema Learning Allowed"
 		},
 		"allocation": {
 			"type": "bool"
@@ -756,6 +816,18 @@
 		}
 	},
 	{
+		"id": "page_shield.connection_monitor_allowed",
+		"feature": {
+			"feature_set": "page_shield",
+			"id": 1055,
+			"key": "page_shield.connection_monitor_allowed",
+			"name": "Page Shield - Connection Monitor usage allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "proxy_anything.argo_smart_routing",
 		"feature": {
 			"feature_set": "proxy_anything",
@@ -1062,6 +1134,18 @@
 			"id": 1037,
 			"key": "rulesets.config_rule_disable_railgun_allowed",
 			"name": "Rulesets - Config Rule Disable Railgun Allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "rulesets.config_rule_disable_waitroom_allowed",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 1064,
+			"key": "rulesets.config_rule_disable_waitroom_allowed",
+			"name": "Rulesets - Config Rule Disable Waiting Room Allowed"
 		},
 		"allocation": {
 			"type": "bool"
