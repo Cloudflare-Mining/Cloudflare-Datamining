@@ -57489,10 +57489,10 @@
 													"type": "array",
 													"items": {
 														"properties": {
-															"script_id": {
+															"id": {
 																"example": "c9ef84a6bf5e47138c75d95e2f933e8f"
 															},
-															"script_url": {
+															"url": {
 																"example": "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"
 															},
 															"added_at": {
@@ -57510,16 +57510,16 @@
 															"domain_reported_malicious": {
 																"example": false
 															},
-															"seen_on_first": {
+															"first_page_url": {
 																"example": "blog.cloudflare.com/page"
 															},
-															"seen_on": {
+															"page_urls": {
 																"example": [
 																	"blog.cloudflare.com/page1",
 																	"blog.cloudflare.com/page2"
 																]
 															},
-															"appears_in_cdn_cgi_path": {
+															"url_contains_cdn_cgi_path": {
 																"example": false
 															},
 															"hash": {
@@ -57581,17 +57581,17 @@
 				}
 			}
 		},
-		"/zones/{zone_id}/page_shield/scripts/{script_id}": {
+		"/zones/{zone_id}/page_shield/scripts/{id}": {
 			"get": {
 				"summary": "Get a Page Shield script",
 				"description": "Fetches a script detected by Page Shield by script ID.",
 				"parameters": [
 					{
-						"name": "script_id",
+						"name": "id",
 						"in": "path",
 						"required": true,
 						"schema": {
-							"description": "The ID of the script.",
+							"description": "The ID of the resource.",
 							"type": "string",
 							"minLength": 32,
 							"maxLength": 32,
@@ -57616,10 +57616,10 @@
 									"allOf": [
 										{
 											"properties": {
-												"script_id": {
+												"id": {
 													"example": "c9ef84a6bf5e47138c75d95e2f933e8f"
 												},
-												"script_url": {
+												"url": {
 													"example": "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"
 												},
 												"added_at": {
@@ -57637,16 +57637,16 @@
 												"domain_reported_malicious": {
 													"example": false
 												},
-												"seen_on_first": {
+												"first_page_url": {
 													"example": "blog.cloudflare.com/page"
 												},
-												"seen_on": {
+												"page_urls": {
 													"example": [
 														"blog.cloudflare.com/page1",
 														"blog.cloudflare.com/page2"
 													]
 												},
-												"appears_in_cdn_cgi_path": {
+												"url_contains_cdn_cgi_path": {
 													"example": false
 												},
 												"hash": {
@@ -57715,6 +57715,188 @@
 				"x-cfPlanAvailability": {
 					"free": false,
 					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			}
+		},
+		"/zones/{zone_id}/page_shield/connections": {
+			"get": {
+				"summary": "List Page Shield connections",
+				"description": "Lists all connections detected by Page Shield.",
+				"parameters": [
+					{
+						"name": "zone_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1argo~1smart_routing/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "List Page Shield connections response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user~1tokens~1permission_groups/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
+											"type": "object",
+											"properties": {
+												"result": {
+													"type": "array",
+													"items": {
+														"properties": {
+															"id": {
+																"example": "c9ef84a6bf5e47138c75d95e2f933e8f"
+															},
+															"url": {
+																"example": "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"
+															},
+															"added_at": {
+																"example": "2021-08-18T10:51:10.096150+00:00"
+															},
+															"first_seen_at": {
+																"example": "2021-08-18T10:51:08+00:00"
+															},
+															"last_seen_at": {
+																"example": "2021-09-02T09:57:54+00:00"
+															},
+															"host": {
+																"example": "blog.cloudflare.com"
+															},
+															"domain_reported_malicious": {
+																"example": false
+															},
+															"first_page_url": {
+																"example": "blog.cloudflare.com/page"
+															},
+															"page_urls": {
+																"example": [
+																	"blog.cloudflare.com/page1",
+																	"blog.cloudflare.com/page2"
+																]
+															},
+															"url_contains_cdn_cgi_path": {
+																"example": false
+															}
+														}
+													}
+												},
+												"result_info": {
+													"$ref": "#/paths/~1zones~1%7Bzone_id%7D~1page_shield~1scripts/get/responses/200/content/application~1json/schema/allOf/1/properties/result_info"
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPlanAvailability": {
+					"free": false,
+					"pro": false,
+					"business": true,
+					"enterprise": true
+				}
+			}
+		},
+		"/zones/{zone_id}/page_shield/connections/{id}": {
+			"get": {
+				"summary": "Get a Page Shield connection",
+				"description": "Fetches a connection detected by Page Shield by connection ID.",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"description": "The ID of the resource.",
+							"type": "string",
+							"minLength": 32,
+							"maxLength": 32,
+							"example": "c9ef84a6bf5e47138c75d95e2f933e8f"
+						}
+					},
+					{
+						"name": "zone_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1argo~1smart_routing/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Get a Page Shield connection response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"properties": {
+												"id": {
+													"example": "c9ef84a6bf5e47138c75d95e2f933e8f"
+												},
+												"url": {
+													"example": "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"
+												},
+												"added_at": {
+													"example": "2021-08-18T10:51:10.096150+00:00"
+												},
+												"first_seen_at": {
+													"example": "2021-08-18T10:51:08+00:00"
+												},
+												"last_seen_at": {
+													"example": "2021-09-02T09:57:54+00:00"
+												},
+												"host": {
+													"example": "blog.cloudflare.com"
+												},
+												"domain_reported_malicious": {
+													"example": false
+												},
+												"first_page_url": {
+													"example": "blog.cloudflare.com/page"
+												},
+												"page_urls": {
+													"example": [
+														"blog.cloudflare.com/page1",
+														"blog.cloudflare.com/page2"
+													]
+												},
+												"url_contains_cdn_cgi_path": {
+													"example": false
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPlanAvailability": {
+					"free": false,
+					"pro": false,
 					"business": true,
 					"enterprise": true
 				}
