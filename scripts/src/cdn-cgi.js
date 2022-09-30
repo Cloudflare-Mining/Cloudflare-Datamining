@@ -57,7 +57,7 @@ if(traceKeys.length >= 0){
 // colos with mostly stable versions across metals
 const colos = {
 	'pig': 'pig',
-	'canary': 'kul01',
+	'canary': 'lis01',
 	'mcp': 'lhr01',
 	// 'mcp-canary-candidate-01': 'gru05',
 	// 'mcp-canary-candidate-02': 'dac07',
