@@ -1,13 +1,16 @@
 {
 	"AccountAccessLoginRequestsAdaptiveGroups": {
+		"__description": "Access login requests",
 		"avg": "",
 		"count": "Number of access login API events processed",
 		"dimensions": "List of dimensions to group by"
 	},
 	"AccountAccessLoginRequestsAdaptiveGroupsAvg": {
+		"__description": "",
 		"sampleInterval": "Average sample interval"
 	},
 	"AccountAccessLoginRequestsAdaptiveGroupsDimensions": {
+		"__description": "",
 		"appId": "Access application ID",
 		"approvingPolicyId": "Policy ID that approved the user",
 		"cfRayId": "CF ray id",
@@ -28,14 +31,20 @@
 		"serviceTokenId": "Service token ID",
 		"userUuid": "User UUID"
 	},
-	"AccountAccessLoginRequestsAdaptiveGroupsFilter_InputObject": {},
-	"AccountAccessLoginRequestsAdaptiveGroupsOrderBy": {},
+	"AccountAccessLoginRequestsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountAccessLoginRequestsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
 	"AccountCdnNetworkAnalyticsAdaptiveGroups": {
+		"__description": "Network analytics data for Cloudflare CDN traffic",
 		"avg": "The average of values for a metric per dimension",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
 	},
 	"AccountCdnNetworkAnalyticsAdaptiveGroupsAvg": {
+		"__description": "",
 		"bitRate": "Sum of bits received, divided by 1 second, providing a per-second bit rate when grouped by datetime",
 		"bitRateDay": "Sum of bits received, divided by 86400 seconds, providing a per-second bit rate when grouped by date",
 		"bitRateFifteenMinutes": "Sum of bits received, divided by 900 seconds, providing a per-second bit rate when grouped by datetimeFifteenMinutes",
@@ -52,6 +61,7 @@
 		"packetRateTenSeconds": "Sum of packets received, divided by 10 seconds, providing a per-second packet rate when grouped by datetimeTenSeconds"
 	},
 	"AccountCdnNetworkAnalyticsAdaptiveGroupsDimensions": {
+		"__description": "",
 		"coloCity": "City where the Cloudflare datacenter that received the packet is located",
 		"coloCode": "Cloudflare datacenter that received the packet (nearest IATA airport code)",
 		"coloCountry": "Country where the Cloudflare datacenter that received the packet is located (ISO 3166-1 alpha-2)",
@@ -130,13 +140,19 @@
 		"udpChecksum": "Value of the Checkusm header field in the UDP packet",
 		"udpPayloadLength": "Value of the Payload Length header field in the UDP packet"
 	},
-	"AccountCdnNetworkAnalyticsAdaptiveGroupsFilter_InputObject": {},
-	"AccountCdnNetworkAnalyticsAdaptiveGroupsOrderBy": {},
+	"AccountCdnNetworkAnalyticsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountCdnNetworkAnalyticsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
 	"AccountCdnNetworkAnalyticsAdaptiveGroupsSum": {
+		"__description": "",
 		"bits": "Sum of bits received",
 		"packets": "Sum of packets received"
 	},
 	"AccountDosdAttackAnalyticsGroups": {
+		"__description": "Attack analytics metadata for attacks detected by dosd",
 		"attackId": "Unique identifier of the mitigation that matched the packet, if any",
 		"attackType": "Type of attack traffic",
 		"bits": "Sum of bits received during the attack",
@@ -157,14 +173,20 @@
 		"tcpFlags": "Fixed TCP flags used by attack traffic, if any",
 		"tcpFlagsNames": "Names of fixed TCP flags used by attack traffic, if any"
 	},
-	"AccountDosdAttackAnalyticsGroupsFilter_InputObject": {},
-	"AccountDosdAttackAnalyticsGroupsOrderBy": {},
+	"AccountDosdAttackAnalyticsGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountDosdAttackAnalyticsGroupsOrderBy": {
+		"__description": ""
+	},
 	"AccountDosdNetworkAnalyticsAdaptiveGroups": {
+		"__description": "Network analytics data for dosd",
 		"avg": "The average of values for a metric per dimension",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
 	},
 	"AccountDosdNetworkAnalyticsAdaptiveGroupsAvg": {
+		"__description": "",
 		"bitRate": "Sum of bits received, divided by 1 second, providing a per-second bit rate when grouped by datetime",
 		"bitRateDay": "Sum of bits received, divided by 86400 seconds, providing a per-second bit rate when grouped by date",
 		"bitRateFifteenMinutes": "Sum of bits received, divided by 900 seconds, providing a per-second bit rate when grouped by datetimeFifteenMinutes",
@@ -181,6 +203,7 @@
 		"packetRateTenSeconds": "Sum of packets received, divided by 10 seconds, providing a per-second packet rate when grouped by datetimeTenSeconds"
 	},
 	"AccountDosdNetworkAnalyticsAdaptiveGroupsDimensions": {
+		"__description": "",
 		"attackId": "Unique identifier of the mitigation that matched the packet, if any",
 		"coloCity": "City where the Cloudflare datacenter that received the packet is located",
 		"coloCode": "Cloudflare datacenter that received the packet (nearest IATA airport code)",
@@ -266,13 +289,19 @@
 		"udpPayloadLength": "Value of the Payload Length header field in the UDP packet",
 		"verdict": "The action that Cloudflare thinks should be taken on the packet (possible values: pass, drop)"
 	},
-	"AccountDosdNetworkAnalyticsAdaptiveGroupsFilter_InputObject": {},
-	"AccountDosdNetworkAnalyticsAdaptiveGroupsOrderBy": {},
+	"AccountDosdNetworkAnalyticsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountDosdNetworkAnalyticsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
 	"AccountDosdNetworkAnalyticsAdaptiveGroupsSum": {
+		"__description": "",
 		"bits": "Sum of bits received",
 		"packets": "Sum of packets received"
 	},
 	"AccountDurableObjectsInvocationsAdaptiveGroups": {
+		"__description": "Durable Objects invocations with adaptive sampling",
 		"avg": "The average value used for sample interval",
 		"dimensions": "List of dimensions to group by",
 		"max": "The max value for a metric",
@@ -281,9 +310,11 @@
 		"sum": "The sum of values for a metric per dimension"
 	},
 	"AccountDurableObjectsInvocationsAdaptiveGroupsAvg": {
+		"__description": "",
 		"sampleInterval": ""
 	},
 	"AccountDurableObjectsInvocationsAdaptiveGroupsDimensions": {
+		"__description": "",
 		"date": "Request datetime, truncated to start of a day",
 		"datetime": "Request datetime",
 		"datetimeHour": "Request datetime, truncated to start of an hour",
@@ -294,17 +325,24 @@
 		"scriptName": "The name of the script",
 		"status": "Status of the worker invocation"
 	},
-	"AccountDurableObjectsInvocationsAdaptiveGroupsFilter_InputObject": {},
+	"AccountDurableObjectsInvocationsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
 	"AccountDurableObjectsInvocationsAdaptiveGroupsMax": {
+		"__description": "",
 		"responseBodySize": "Maximum response body size for one request - bytes",
 		"wallTime": "Maximum wall time for one request - microseconds"
 	},
 	"AccountDurableObjectsInvocationsAdaptiveGroupsMin": {
+		"__description": "",
 		"responseBodySize": "Minimum response body size for one request - bytes",
 		"wallTime": "Minimum wall time for one request - microseconds"
 	},
-	"AccountDurableObjectsInvocationsAdaptiveGroupsOrderBy": {},
+	"AccountDurableObjectsInvocationsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
 	"AccountDurableObjectsInvocationsAdaptiveGroupsQuantiles": {
+		"__description": "",
 		"responseBodySizeP25": "Response body size 25th percentile - bytes",
 		"responseBodySizeP50": "Response body size 50th percentile - bytes",
 		"responseBodySizeP75": "Response body size 75th percentile - bytes",
@@ -319,29 +357,38 @@
 		"wallTimeP999": "Wall time 99.9th percentile - microseconds"
 	},
 	"AccountDurableObjectsInvocationsAdaptiveGroupsSum": {
+		"__description": "",
 		"errors": "Sum of errors",
 		"requests": "Sum of requests",
 		"responseBodySize": "Sum of response body sizes",
 		"wallTime": "Sum of wall time"
 	},
 	"AccountDurableObjectsPeriodicGroups": {
+		"__description": "Durable Objects periodic metrics",
 		"dimensions": "List of dimensions to group by",
 		"max": "The max value for a metric",
 		"sum": "The sum of values for a metric per dimension"
 	},
 	"AccountDurableObjectsPeriodicGroupsDimensions": {
+		"__description": "",
 		"date": "Datetime the metrics period started, truncated to start of a day",
 		"datetimeHour": "Datetime the metrics period started, truncated to start of an hour",
 		"datetimeMinute": "Datetime the metrics period started, truncated to start of a minute",
 		"namespaceId": "Durable Object namespace ID",
 		"objectId": "Durable Object ID as a hex string"
 	},
-	"AccountDurableObjectsPeriodicGroupsFilter_InputObject": {},
+	"AccountDurableObjectsPeriodicGroupsFilter_InputObject": {
+		"__description": ""
+	},
 	"AccountDurableObjectsPeriodicGroupsMax": {
+		"__description": "",
 		"activeWebsocketConnections": "Maximum active websocket connections in the time window"
 	},
-	"AccountDurableObjectsPeriodicGroupsOrderBy": {},
+	"AccountDurableObjectsPeriodicGroupsOrderBy": {
+		"__description": ""
+	},
 	"AccountDurableObjectsPeriodicGroupsSum": {
+		"__description": "",
 		"activeTime": "Sum of active time - microseconds",
 		"cpuTime": "Sum of CPU time - microseconds",
 		"exceededCpuErrors": "Sum of CPU exceeded errors",
@@ -355,23 +402,32 @@
 		"subrequests": "Sum of subrequests"
 	},
 	"AccountDurableObjectsStorageGroups": {
+		"__description": "Durable Objects storage metrics",
 		"dimensions": "List of dimensions to group by",
 		"max": "The sum of values for a metric per dimension"
 	},
 	"AccountDurableObjectsStorageGroupsDimensions": {
+		"__description": "",
 		"date": "Datetime that the storage usage was recorded, truncated to start of a day",
 		"datetimeHour": "Datetime that the storage usage was recorded, truncated to start of an hour"
 	},
-	"AccountDurableObjectsStorageGroupsFilter_InputObject": {},
+	"AccountDurableObjectsStorageGroupsFilter_InputObject": {
+		"__description": ""
+	},
 	"AccountDurableObjectsStorageGroupsMax": {
+		"__description": "",
 		"storedBytes": "Max of stored bytes"
 	},
-	"AccountDurableObjectsStorageGroupsOrderBy": {},
+	"AccountDurableObjectsStorageGroupsOrderBy": {
+		"__description": ""
+	},
 	"AccountDurableObjectsSubrequestsAdaptiveGroups": {
+		"__description": "Durable Objects subrequests with adaptive sampling",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
 	},
 	"AccountDurableObjectsSubrequestsAdaptiveGroupsDimensions": {
+		"__description": "",
 		"date": "Request datetime, truncated to start of a day",
 		"datetime": "Request datetime",
 		"datetimeHour": "Request datetime, truncated to start of an hour",
@@ -381,18 +437,27 @@
 		"objectId": "Durable Object ID as a hex string",
 		"scriptName": "The name of the script"
 	},
-	"AccountDurableObjectsSubrequestsAdaptiveGroupsFilter_InputObject": {},
-	"AccountDurableObjectsSubrequestsAdaptiveGroupsOrderBy": {},
+	"AccountDurableObjectsSubrequestsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountDurableObjectsSubrequestsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
 	"AccountDurableObjectsSubrequestsAdaptiveGroupsSum": {
+		"__description": "",
 		"requestBodySizeUncached": "Outgoing Durable Objects fetch request body size in bytes where the request was not cached"
 	},
-	"AccountFilter_InputObject": {},
+	"AccountFilter_InputObject": {
+		"__description": ""
+	},
 	"AccountFlowtrackdNetworkAnalyticsAdaptiveGroups": {
+		"__description": "Network analytics data for flowtrackd",
 		"avg": "The average of values for a metric per dimension",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
 	},
 	"AccountFlowtrackdNetworkAnalyticsAdaptiveGroupsAvg": {
+		"__description": "",
 		"bitRate": "Sum of bits received, divided by 1 second, providing a per-second bit rate when grouped by datetime",
 		"bitRateDay": "Sum of bits received, divided by 86400 seconds, providing a per-second bit rate when grouped by date",
 		"bitRateFifteenMinutes": "Sum of bits received, divided by 900 seconds, providing a per-second bit rate when grouped by datetimeFifteenMinutes",
@@ -409,6 +474,7 @@
 		"packetRateTenSeconds": "Sum of packets received, divided by 10 seconds, providing a per-second packet rate when grouped by datetimeTenSeconds"
 	},
 	"AccountFlowtrackdNetworkAnalyticsAdaptiveGroupsDimensions": {
+		"__description": "",
 		"coloCity": "City where the Cloudflare datacenter that received the packet is located",
 		"coloCode": "Cloudflare datacenter that received the packet (nearest IATA airport code)",
 		"coloCountry": "Country where the Cloudflare datacenter that received the packet is located (ISO 3166-1 alpha-2)",
@@ -490,19 +556,26 @@
 		"udpPayloadLength": "Value of the Payload Length header field in the UDP packet",
 		"verdict": "The action that Cloudflare thinks should be taken on the packet (possible values: pass, drop)"
 	},
-	"AccountFlowtrackdNetworkAnalyticsAdaptiveGroupsFilter_InputObject": {},
-	"AccountFlowtrackdNetworkAnalyticsAdaptiveGroupsOrderBy": {},
+	"AccountFlowtrackdNetworkAnalyticsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountFlowtrackdNetworkAnalyticsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
 	"AccountFlowtrackdNetworkAnalyticsAdaptiveGroupsSum": {
+		"__description": "",
 		"bits": "Sum of bits received",
 		"packets": "Sum of packets received"
 	},
 	"AccountGatewayL4DownstreamSessionsAdaptiveGroups": {
+		"__description": "Aggregated metrics about downstream (client to edge) L4 Gateway Sessions. Metrics are reported on TCP or UDP session close",
 		"count": "The number of downstream sessions",
 		"dimensions": "List of dimensions to group by",
 		"quantiles": "",
 		"sum": ""
 	},
 	"AccountGatewayL4DownstreamSessionsAdaptiveGroupsDimensions": {
+		"__description": "",
 		"coloCode": "IATA Airport code that represents the city in which a Cloudflare data center (colo) is located",
 		"coloCountry": "ISO 3166-1 alpha-2 code that represents the country in which a Cloudflare data center (colo) is located",
 		"date": "Start timestamp of this session, truncated to date",
@@ -520,13 +593,19 @@
 		"transportHandshakeDurationUs": "Time taken for TCP/TLS or QUIC handshake in microsecond",
 		"transportStatus": "Transport Status. Possible values are unknown | success | failure"
 	},
-	"AccountGatewayL4DownstreamSessionsAdaptiveGroupsFilter_InputObject": {},
-	"AccountGatewayL4DownstreamSessionsAdaptiveGroupsOrderBy": {},
+	"AccountGatewayL4DownstreamSessionsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountGatewayL4DownstreamSessionsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
 	"AccountGatewayL4DownstreamSessionsAdaptiveGroupsQuantiles": {
+		"__description": "",
 		"tokenAuthDurationUsP50": "Time taken for Client Token Authentication in microseconds",
 		"transportHandshakeDurationUsP50": "Time taken for TCP/TLS or QUIC handshake in microseconds"
 	},
 	"AccountGatewayL4DownstreamSessionsAdaptiveGroupsSum": {
+		"__description": "",
 		"bytesRecvd": "Total bytes received in this session",
 		"bytesSent": "Total bytes sent in this session",
 		"packetsRecvd": "Total number of packets received in this session",
@@ -534,10 +613,12 @@
 		"tokenAuthDurationUs": "Time taken for client token authentication in microseconds"
 	},
 	"AccountGatewayL4SessionsAdaptiveGroups": {
+		"__description": "BETA - Aggregate counts of Gateway L4 sessions with adaptive sampling",
 		"count": "The number of Gateway L4 sessions",
 		"dimensions": "List of dimensions to group by"
 	},
 	"AccountGatewayL4SessionsAdaptiveGroupsDimensions": {
+		"__description": "",
 		"action": "action taken by gateway",
 		"datetime": "Datetime that the session was started",
 		"datetimeHour": "Datetime that the session was started truncated to hours",
@@ -552,15 +633,21 @@
 		"transport": "The transport protocol used in the session, one of (0, tcp) (1, quic) (2, udp)",
 		"userId": "The ID of the gateway user who initiated the session"
 	},
-	"AccountGatewayL4SessionsAdaptiveGroupsFilter_InputObject": {},
-	"AccountGatewayL4SessionsAdaptiveGroupsOrderBy": {},
+	"AccountGatewayL4SessionsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountGatewayL4SessionsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
 	"AccountGatewayL4UpstreamSessionsAdaptiveGroups": {
+		"__description": "Aggregated metrics about upstream (edge to client) L4 Gateway Sessions. Metrics are reported on TCP, QUIC or UDP session close",
 		"count": "The number of upstream sessions",
 		"dimensions": "List of dimensions to group by",
 		"quantiles": "",
 		"sum": ""
 	},
 	"AccountGatewayL4UpstreamSessionsAdaptiveGroupsDimensions": {
+		"__description": "",
 		"coloCode": "IATA Airport code that represents the city in which a Cloudflare data center (colo) is located",
 		"coloCountry": "ISO 3166-1 alpha-2 code that represents the country in which a Cloudflare data center (colo) is located",
 		"date": "Start timestamp of this session, truncated to date",
@@ -579,14 +666,20 @@
 		"transport": "Transport protocol used for this session. Possible values are tcp | quic | udp",
 		"transportStatus": "Transport status. Possible values are unknown | success | failure"
 	},
-	"AccountGatewayL4UpstreamSessionsAdaptiveGroupsFilter_InputObject": {},
-	"AccountGatewayL4UpstreamSessionsAdaptiveGroupsOrderBy": {},
+	"AccountGatewayL4UpstreamSessionsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountGatewayL4UpstreamSessionsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
 	"AccountGatewayL4UpstreamSessionsAdaptiveGroupsQuantiles": {
+		"__description": "",
 		"connectReqHandlingDurationUsP50": "Time taken for CONNECT request handling in microseconds",
 		"totalTunnelSetupDurationUsP50": "Total time taken for tunnel setup in microseconds",
 		"tunnelSetupDurationUsP50": "Time taken to setup the tunnel in microseconds"
 	},
 	"AccountGatewayL4UpstreamSessionsAdaptiveGroupsSum": {
+		"__description": "",
 		"bytesRecvd": "Total bytes received in this session",
 		"bytesSent": "Total bytes sent in this session",
 		"connectReqHandlingDurationUs": "Time taken for CONNECT request handling in microseconds",
@@ -596,10 +689,12 @@
 		"tunnelSetupDurationUs": "Time taken for tunnel setup in microseconds"
 	},
 	"AccountGatewayL7RequestsAdaptiveGroups": {
+		"__description": "BETA - Aggregate counts of Gateway L7 requests with adaptive sampling",
 		"count": "The number of Gateway L7 requests",
 		"dimensions": "List of dimensions to group by"
 	},
 	"AccountGatewayL7RequestsAdaptiveGroupsDimensions": {
+		"__description": "",
 		"action": "action taken by gateway",
 		"datetime": "Datetime that the request happened",
 		"datetimeHour": "Datetime that the request happened truncated to hours",
@@ -610,13 +705,19 @@
 		"isIsolated": "Indicates whether this request was made through an isolated link",
 		"userId": "The ID of the gateway user who made the request"
 	},
-	"AccountGatewayL7RequestsAdaptiveGroupsFilter_InputObject": {},
-	"AccountGatewayL7RequestsAdaptiveGroupsOrderBy": {},
+	"AccountGatewayL7RequestsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountGatewayL7RequestsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
 	"AccountGatewayResolverByCategoryAdaptiveGroups": {
+		"__description": "BETA - Aggregate counts of Gateway Resolver queries by category with adaptive sampling",
 		"count": "The number of Gateway Resolver queries",
 		"dimensions": "List of dimensions to group by"
 	},
 	"AccountGatewayResolverByCategoryAdaptiveGroupsDimensions": {
+		"__description": "",
 		"categoryId": "ID of the category that was assigned to the domain",
 		"datetime": "The date and time the DNS query was resolved",
 		"datetimeHour": "The date and time the event occurred at the edge truncated to hours",
@@ -624,13 +725,19 @@
 		"locationId": "The uuid identifying the customer Location used when resolving",
 		"resolverDecision": "Enum identifier for the decision made by gateway-resolver, one of: (0, unknown) (1, allowedByQueryName) (2, blockedByQueryName) (3, blockedByCategory) (4, allowedOnNoLocation) (5, allowedOnNoPolicyMatch) (6, blockedAlwaysCategory) (7, overrideForSafeSearch) (8, overrideApplied) (9, blockedRule) (10, allowedRule)\n"
 	},
-	"AccountGatewayResolverByCategoryAdaptiveGroupsFilter_InputObject": {},
-	"AccountGatewayResolverByCategoryAdaptiveGroupsOrderBy": {},
+	"AccountGatewayResolverByCategoryAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountGatewayResolverByCategoryAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
 	"AccountGatewayResolverQueriesAdaptiveGroups": {
+		"__description": "BETA - Aggregate counts of Gateway Resolver queries with adaptive sampling",
 		"count": "The number of Gateway Resolver queries",
 		"dimensions": "List of dimensions to group by"
 	},
 	"AccountGatewayResolverQueriesAdaptiveGroupsDimensions": {
+		"__description": "",
 		"datetime": "The date and time the DNS query was resolved",
 		"datetimeHour": "The date and time the event occurred at the edge truncated to hours",
 		"datetimeMinute": "The date and time the event occurred at the edge truncated to minutes",
@@ -638,55 +745,74 @@
 		"queryNameReversed": "Name of the query in reverse order, e.g. com.cloudflare.teams.dash",
 		"resolverDecision": "Enum identifier for the decision made by gateway-resolver, one of: (0, unknown) (1, allowedByQueryName) (2, blockedByQueryName) (3, blockedByCategory) (4, allowedOnNoLocation) (5, allowedOnNoPolicyMatch) (6, blockedAlwaysCategory) (7, overrideForSafeSearch) (8, overrideApplied) (9, blockedRule) (10, allowedRule)\n"
 	},
-	"AccountGatewayResolverQueriesAdaptiveGroupsFilter_InputObject": {},
-	"AccountGatewayResolverQueriesAdaptiveGroupsOrderBy": {},
+	"AccountGatewayResolverQueriesAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountGatewayResolverQueriesAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
 	"AccountHttpRequests1dGroups": {
+		"__description": "Daily rollups of request data",
 		"avg": "The average value for a metric per dimension",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension",
 		"uniq": "The number of unique values for a metric per dimension"
 	},
 	"AccountHttpRequests1dGroupsAvg": {
+		"__description": "",
 		"bytes": "",
 		"sampleInterval": "Average sample interval"
 	},
 	"AccountHttpRequests1dGroupsBrowserMapElem": {
+		"__description": "",
 		"pageViews": "Successful requests for HTML content",
 		"uaBrowserFamily": "Browser type"
 	},
 	"AccountHttpRequests1dGroupsClientHTTPVersionMapElem": {
+		"__description": "",
 		"clientHTTPProtocol": "HTTP version",
 		"requests": ""
 	},
 	"AccountHttpRequests1dGroupsClientSSLMapElem": {
+		"__description": "",
 		"clientSSLProtocol": "Protocol version",
 		"requests": ""
 	},
 	"AccountHttpRequests1dGroupsContentTypeMapElem": {
+		"__description": "",
 		"bytes": "Bytes returned to client",
 		"edgeResponseContentTypeName": "Content type returned to client",
 		"requests": ""
 	},
 	"AccountHttpRequests1dGroupsCountryMapElem": {
+		"__description": "",
 		"bytes": "Bytes returned to client",
 		"clientCountryName": "Country from which request originated",
 		"requests": "",
 		"threats": "Requests classified as threats"
 	},
 	"AccountHttpRequests1dGroupsDimensions": {
+		"__description": "",
 		"date": "Request date"
 	},
-	"AccountHttpRequests1dGroupsFilter_InputObject": {},
+	"AccountHttpRequests1dGroupsFilter_InputObject": {
+		"__description": ""
+	},
 	"AccountHttpRequests1dGroupsIpClassMapElem": {
+		"__description": "",
 		"ipType": "IP class",
 		"requests": ""
 	},
-	"AccountHttpRequests1dGroupsOrderBy": {},
+	"AccountHttpRequests1dGroupsOrderBy": {
+		"__description": ""
+	},
 	"AccountHttpRequests1dGroupsResponseStatusMapElem": {
+		"__description": "",
 		"edgeResponseStatus": "HTTP response status code returned to client",
 		"requests": ""
 	},
 	"AccountHttpRequests1dGroupsSum": {
+		"__description": "",
 		"browserMap": "",
 		"bytes": "Bytes returned to client",
 		"cachedBytes": "Bytes returned to client from cache",
@@ -705,60 +831,77 @@
 		"threats": "Requests classified as threats"
 	},
 	"AccountHttpRequests1dGroupsThreatPathingMapElem": {
+		"__description": "",
 		"requests": "",
 		"threatPathingName": "Threat type"
 	},
 	"AccountHttpRequests1dGroupsUniq": {
+		"__description": "",
 		"uniques": "A number of unique IPs"
 	},
 	"AccountHttpRequests1hGroups": {
+		"__description": "Hourly rollups of request data",
 		"avg": "The average value for a metric per dimension",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension",
 		"uniq": "The number of unique values for a metric per dimension"
 	},
 	"AccountHttpRequests1hGroupsAvg": {
+		"__description": "",
 		"bytes": "",
 		"sampleInterval": "Average sample interval"
 	},
 	"AccountHttpRequests1hGroupsBrowserMapElem": {
+		"__description": "",
 		"pageViews": "Successful requests for HTML content",
 		"uaBrowserFamily": "Browser type"
 	},
 	"AccountHttpRequests1hGroupsClientHTTPVersionMapElem": {
+		"__description": "",
 		"clientHTTPProtocol": "HTTP version",
 		"requests": ""
 	},
 	"AccountHttpRequests1hGroupsClientSSLMapElem": {
+		"__description": "",
 		"clientSSLProtocol": "Protocol version",
 		"requests": ""
 	},
 	"AccountHttpRequests1hGroupsContentTypeMapElem": {
+		"__description": "",
 		"bytes": "Bytes returned to client",
 		"edgeResponseContentTypeName": "Content type returned to client",
 		"requests": ""
 	},
 	"AccountHttpRequests1hGroupsCountryMapElem": {
+		"__description": "",
 		"bytes": "Bytes returned to client",
 		"clientCountryName": "Country from which request originated",
 		"requests": "",
 		"threats": "Requests classified as threats"
 	},
 	"AccountHttpRequests1hGroupsDimensions": {
+		"__description": "",
 		"date": "Request date",
 		"datetime": "Request datetime truncated to the hour"
 	},
-	"AccountHttpRequests1hGroupsFilter_InputObject": {},
+	"AccountHttpRequests1hGroupsFilter_InputObject": {
+		"__description": ""
+	},
 	"AccountHttpRequests1hGroupsIpClassMapElem": {
+		"__description": "",
 		"ipType": "IP class",
 		"requests": ""
 	},
-	"AccountHttpRequests1hGroupsOrderBy": {},
+	"AccountHttpRequests1hGroupsOrderBy": {
+		"__description": ""
+	},
 	"AccountHttpRequests1hGroupsResponseStatusMapElem": {
+		"__description": "",
 		"edgeResponseStatus": "HTTP response status code returned to client",
 		"requests": ""
 	},
 	"AccountHttpRequests1hGroupsSum": {
+		"__description": "",
 		"browserMap": "",
 		"bytes": "Bytes returned to client",
 		"cachedBytes": "Bytes returned to client from cache",
@@ -777,46 +920,56 @@
 		"threats": "Requests classified as threats"
 	},
 	"AccountHttpRequests1hGroupsThreatPathingMapElem": {
+		"__description": "",
 		"requests": "",
 		"threatPathingName": "Threat type"
 	},
 	"AccountHttpRequests1hGroupsUniq": {
+		"__description": "",
 		"uniques": "A number of unique IPs"
 	},
 	"AccountHttpRequests1mGroups": {
+		"__description": "Minutely rollups of request data",
 		"avg": "The average value for a metric per dimension",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension",
 		"uniq": "The number of unique values for a metric per dimension"
 	},
 	"AccountHttpRequests1mGroupsAvg": {
+		"__description": "",
 		"bytes": "",
 		"sampleInterval": "Average sample interval"
 	},
 	"AccountHttpRequests1mGroupsBrowserMapElem": {
+		"__description": "",
 		"pageViews": "Successful requests for HTML content",
 		"uaBrowserFamily": "Browser type"
 	},
 	"AccountHttpRequests1mGroupsClientHTTPVersionMapElem": {
+		"__description": "",
 		"clientHTTPProtocol": "HTTP version",
 		"requests": ""
 	},
 	"AccountHttpRequests1mGroupsClientSSLMapElem": {
+		"__description": "",
 		"clientSSLProtocol": "Protocol version",
 		"requests": ""
 	},
 	"AccountHttpRequests1mGroupsContentTypeMapElem": {
+		"__description": "",
 		"bytes": "Bytes returned to client",
 		"edgeResponseContentTypeName": "Content type returned to client",
 		"requests": ""
 	},
 	"AccountHttpRequests1mGroupsCountryMapElem": {
+		"__description": "",
 		"bytes": "Bytes returned to client",
 		"clientCountryName": "Country from which request originated",
 		"requests": "",
 		"threats": "Requests classified as threats"
 	},
 	"AccountHttpRequests1mGroupsDimensions": {
+		"__description": "",
 		"date": "Request date",
 		"datetime": "Request datetime, truncated to the minute",
 		"datetimeDay": "Request datetime truncated to the day",
@@ -826,17 +979,24 @@
 		"datetimeHour": "Request datetime truncated to the hour",
 		"datetimeMinute": "Request datetime truncated to the minute. Deprecated, use datetime instead"
 	},
-	"AccountHttpRequests1mGroupsFilter_InputObject": {},
+	"AccountHttpRequests1mGroupsFilter_InputObject": {
+		"__description": ""
+	},
 	"AccountHttpRequests1mGroupsIpClassMapElem": {
+		"__description": "",
 		"ipType": "IP class",
 		"requests": ""
 	},
-	"AccountHttpRequests1mGroupsOrderBy": {},
+	"AccountHttpRequests1mGroupsOrderBy": {
+		"__description": ""
+	},
 	"AccountHttpRequests1mGroupsResponseStatusMapElem": {
+		"__description": "",
 		"edgeResponseStatus": "HTTP response status code returned to client",
 		"requests": ""
 	},
 	"AccountHttpRequests1mGroupsSum": {
+		"__description": "",
 		"browserMap": "",
 		"bytes": "Bytes returned to client",
 		"cachedBytes": "Bytes returned to client from cache",
@@ -855,23 +1015,28 @@
 		"threats": "Requests classified as threats"
 	},
 	"AccountHttpRequests1mGroupsThreatPathingMapElem": {
+		"__description": "",
 		"requests": "",
 		"threatPathingName": "Threat type"
 	},
 	"AccountHttpRequests1mGroupsUniq": {
+		"__description": "",
 		"uniques": "A number of unique IPs"
 	},
 	"AccountHttpRequestsOverviewAdaptiveGroups": {
+		"__description": "A high-level summary of HTTP requests made by end users.",
 		"avg": "The average value for a metric per dimension",
 		"dimensions": "List of dimensions to group by",
 		"ratio": "The ratio of a range of status codes, between 0 and 1",
 		"sum": "The sum of values for a metric per dimension"
 	},
 	"AccountHttpRequestsOverviewAdaptiveGroupsAvg": {
+		"__description": "",
 		"originResponseDurationMs": "The average originResponseDuration, in milliseconds, excluding 0 values (i.e. cached ones)",
 		"sampleInterval": "Average sample interval"
 	},
 	"AccountHttpRequestsOverviewAdaptiveGroupsDimensions": {
+		"__description": "",
 		"clientCountryName": "Country from which request originated",
 		"clientRequestHTTPProtocol": "HTTP protocol version",
 		"clientSSLProtocol": "SSL protocol version",
@@ -887,13 +1052,19 @@
 		"httpApplicationVersion": "Version associated with HTTP Application",
 		"userAgentBrowser": "Browser parsed from the user agent"
 	},
-	"AccountHttpRequestsOverviewAdaptiveGroupsFilter_InputObject": {},
-	"AccountHttpRequestsOverviewAdaptiveGroupsOrderBy": {},
+	"AccountHttpRequestsOverviewAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountHttpRequestsOverviewAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
 	"AccountHttpRequestsOverviewAdaptiveGroupsRatio": {
+		"__description": "",
 		"status4xx": "",
 		"status5xx": ""
 	},
 	"AccountHttpRequestsOverviewAdaptiveGroupsSum": {
+		"__description": "",
 		"bytes": "",
 		"cachedBytes": "Bytes returned to client from cache",
 		"cachedRequests": "Requests served from cache",
@@ -902,14 +1073,17 @@
 		"visits": "The number of requests by end-users that were initiated from a different website (i.e. where the request HTTP Referer header does not match the host in the HTTP Host header)"
 	},
 	"AccountImagesRequestsAdaptiveGroups": {
+		"__description": "A high-level summary of Cloudflare Images served to end users.",
 		"avg": "The average value for a metric per dimension",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
 	},
 	"AccountImagesRequestsAdaptiveGroupsAvg": {
+		"__description": "",
 		"sampleInterval": ""
 	},
 	"AccountImagesRequestsAdaptiveGroupsDimensions": {
+		"__description": "",
 		"date": "The date the event occurred at the edge",
 		"datetime": "The date and time the event occurred at the edge",
 		"datetimeFifteenMinutes": "The date and time the event occurred at the edge truncated to a multiple of 15 minutes",
@@ -917,20 +1091,28 @@
 		"datetimeHour": "The date and time the event occurred at the edge truncated to hours",
 		"datetimeMinute": "The date and time the event occurred at the edge truncated to the minute"
 	},
-	"AccountImagesRequestsAdaptiveGroupsFilter_InputObject": {},
-	"AccountImagesRequestsAdaptiveGroupsOrderBy": {},
+	"AccountImagesRequestsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountImagesRequestsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
 	"AccountImagesRequestsAdaptiveGroupsSum": {
+		"__description": "",
 		"requests": ""
 	},
 	"AccountIpFlows1dGroups": {
+		"__description": "Beta. Daily rollups of IP flows",
 		"avg": "The average value for a metric",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
 	},
 	"AccountIpFlows1dGroupsAvg": {
+		"__description": "",
 		"sampleInterval": "ipFlows sample interval. Data for this node is sampled at a rate of 1/8192."
 	},
 	"AccountIpFlows1dGroupsDimensions": {
+		"__description": "",
 		"attackDestinationIP": "Destination IP used by packets during an attack",
 		"attackDestinationPort": "Destination port used by packets during an attack",
 		"attackId": "The Cloudflare unique attack identifier this packet was part of",
@@ -951,21 +1133,29 @@
 		"ipProtocol": "IP protocol",
 		"ipVersion": "IP version"
 	},
-	"AccountIpFlows1dGroupsFilter_InputObject": {},
-	"AccountIpFlows1dGroupsOrderBy": {},
+	"AccountIpFlows1dGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountIpFlows1dGroupsOrderBy": {
+		"__description": ""
+	},
 	"AccountIpFlows1dGroupsSum": {
+		"__description": "",
 		"bits": "Total number of bits received",
 		"packets": "Total number of packets received"
 	},
 	"AccountIpFlows1hGroups": {
+		"__description": "Beta. Hourly rollups of IP flows",
 		"avg": "The average value for a metric",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
 	},
 	"AccountIpFlows1hGroupsAvg": {
+		"__description": "",
 		"sampleInterval": "ipFlows sample interval. Data for this node is sampled at a rate of 1/8192."
 	},
 	"AccountIpFlows1hGroupsDimensions": {
+		"__description": "",
 		"attackDestinationIP": "Destination IP used by packets during an attack",
 		"attackDestinationPort": "Destination port used by packets during an attack",
 		"attackId": "The Cloudflare unique attack identifier this packet was part of",
@@ -992,13 +1182,19 @@
 		"sourcePort": "Source port of the TCP/UDP packet",
 		"tcpFlags": "List of TCP flags"
 	},
-	"AccountIpFlows1hGroupsFilter_InputObject": {},
-	"AccountIpFlows1hGroupsOrderBy": {},
+	"AccountIpFlows1hGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountIpFlows1hGroupsOrderBy": {
+		"__description": ""
+	},
 	"AccountIpFlows1hGroupsSum": {
+		"__description": "",
 		"bits": "Total number of bits received",
 		"packets": "Total number of packets received"
 	},
 	"AccountIpFlows1mAttacksGroups": {
+		"__description": "Beta. Minutely rollups of IP flows including only attack traffic",
 		"avg": "The average value for a metric",
 		"dimensions": "List of dimensions to group by",
 		"max": "The max value for a metric",
@@ -1006,11 +1202,13 @@
 		"sum": "The sum of values for a metric per dimension"
 	},
 	"AccountIpFlows1mAttacksGroupsAvg": {
+		"__description": "",
 		"bitsPerSecond": "Average rate of bits received",
 		"packetsPerSecond": "Average rate of packets received",
 		"sampleInterval": "ipFlows sample interval. Data for this node is sampled at a rate of 1/8192."
 	},
 	"AccountIpFlows1mAttacksGroupsDimensions": {
+		"__description": "",
 		"attackDestinationIP": "Destination IP used by packets during an attack",
 		"attackDestinationPort": "Destination port used by packets during an attack",
 		"attackId": "The Cloudflare unique attack identifier this packet was part of",
@@ -1023,23 +1221,31 @@
 		"destinationIP": "Destination IP of the packet",
 		"destinationPort": "Destination port of the TCP/UDP packet"
 	},
-	"AccountIpFlows1mAttacksGroupsFilter_InputObject": {},
+	"AccountIpFlows1mAttacksGroupsFilter_InputObject": {
+		"__description": ""
+	},
 	"AccountIpFlows1mAttacksGroupsMax": {
+		"__description": "",
 		"bitsPerSecond": "Max rate of bits received",
 		"datetimeMinute": "Max datetime truncated to minute a packet was received",
 		"packetsPerSecond": "Max rate of packets received"
 	},
 	"AccountIpFlows1mAttacksGroupsMin": {
+		"__description": "",
 		"bitsPerSecond": "Min rate of bits received",
 		"datetimeMinute": "Min datetime truncated to minute a packet was received",
 		"packetsPerSecond": "Min rate of packets received"
 	},
-	"AccountIpFlows1mAttacksGroupsOrderBy": {},
+	"AccountIpFlows1mAttacksGroupsOrderBy": {
+		"__description": ""
+	},
 	"AccountIpFlows1mAttacksGroupsSum": {
+		"__description": "",
 		"bits": "Total number of bits received",
 		"packets": "Total number of packets received"
 	},
 	"AccountIpFlows1mGroups": {
+		"__description": "Beta. Minutely rollups of IP flows",
 		"avg": "The average value for a metric",
 		"dimensions": "List of dimensions to group by",
 		"max": "The max value for a metric",
@@ -1047,11 +1253,13 @@
 		"sum": "The sum of values for a metric per dimension"
 	},
 	"AccountIpFlows1mGroupsAvg": {
+		"__description": "",
 		"bitsPerSecond": "Average rate of bits received",
 		"packetsPerSecond": "Average rate of packets received",
 		"sampleInterval": "ipFlows sample interval. Data for this node is sampled at a rate of 1/8192."
 	},
 	"AccountIpFlows1mGroupsDimensions": {
+		"__description": "",
 		"attackDestinationIP": "Destination IP used by packets during an attack",
 		"attackDestinationPort": "Destination port used by packets during an attack",
 		"attackId": "The Cloudflare unique attack identifier this packet was part of",
@@ -1082,32 +1290,42 @@
 		"sourcePort": "Source port of the TCP/UDP packet",
 		"tcpFlags": "List of TCP flags"
 	},
-	"AccountIpFlows1mGroupsFilter_InputObject": {},
+	"AccountIpFlows1mGroupsFilter_InputObject": {
+		"__description": ""
+	},
 	"AccountIpFlows1mGroupsMax": {
+		"__description": "",
 		"bitsPerSecond": "Max rate of bits received",
 		"datetimeMinute": "Max datetime truncated to minute a packet was received",
 		"packetsPerSecond": "Max rate of packets received"
 	},
 	"AccountIpFlows1mGroupsMin": {
+		"__description": "",
 		"bitsPerSecond": "Min rate of bits received",
 		"datetimeMinute": "Min datetime truncated to minute a packet was received",
 		"packetsPerSecond": "Min rate of packets received"
 	},
-	"AccountIpFlows1mGroupsOrderBy": {},
+	"AccountIpFlows1mGroupsOrderBy": {
+		"__description": ""
+	},
 	"AccountIpFlows1mGroupsSum": {
+		"__description": "",
 		"bits": "Total number of bits received",
 		"packets": "Total number of packets received"
 	},
 	"AccountLogpushHealthAdaptiveGroups": {
+		"__description": "Beta. Logpush job health metrics",
 		"avg": "",
 		"count": "The number of values for a metric per dimension",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
 	},
 	"AccountLogpushHealthAdaptiveGroupsAvg": {
+		"__description": "",
 		"sampleInterval": "Average sample interval"
 	},
 	"AccountLogpushHealthAdaptiveGroupsDimensions": {
+		"__description": "",
 		"date": "Date that we completed pushing the log batch",
 		"datetime": "Datetime that we completed pushing the log batch",
 		"datetimeFifteenMinutes": "Datetime that we completed pushing the log batch, truncated to multiple of 15 minutes",
@@ -1119,19 +1337,26 @@
 		"jobId": "The Logpush Job ID",
 		"status": "HTTP response status code of the log destination"
 	},
-	"AccountLogpushHealthAdaptiveGroupsFilter_InputObject": {},
-	"AccountLogpushHealthAdaptiveGroupsOrderBy": {},
+	"AccountLogpushHealthAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountLogpushHealthAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
 	"AccountLogpushHealthAdaptiveGroupsSum": {
+		"__description": "",
 		"bytes": "Bytes of uncompressed log data pushed",
 		"bytesCompressed": "Bytes of compressed log data pushed",
 		"records": "A count of the total number of records pushed."
 	},
 	"AccountMagicFirewallNetworkAnalyticsAdaptiveGroups": {
+		"__description": "Network analytics data for Magic Firewall",
 		"avg": "The average of values for a metric per dimension",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
 	},
 	"AccountMagicFirewallNetworkAnalyticsAdaptiveGroupsAvg": {
+		"__description": "",
 		"bitRate": "Sum of bits received, divided by 1 second, providing a per-second bit rate when grouped by datetime",
 		"bitRateDay": "Sum of bits received, divided by 86400 seconds, providing a per-second bit rate when grouped by date",
 		"bitRateFifteenMinutes": "Sum of bits received, divided by 900 seconds, providing a per-second bit rate when grouped by datetimeFifteenMinutes",
@@ -1148,6 +1373,7 @@
 		"packetRateTenSeconds": "Sum of packets received, divided by 10 seconds, providing a per-second packet rate when grouped by datetimeTenSeconds"
 	},
 	"AccountMagicFirewallNetworkAnalyticsAdaptiveGroupsDimensions": {
+		"__description": "",
 		"coloCity": "City where the Cloudflare datacenter that received the packet is located",
 		"coloCode": "Cloudflare datacenter that received the packet (nearest IATA airport code)",
 		"coloCountry": "Country where the Cloudflare datacenter that received the packet is located (ISO 3166-1 alpha-2)",
@@ -1228,33 +1454,47 @@
 		"udpPayloadLength": "Value of the Payload Length header field in the UDP packet",
 		"verdict": "The action that Cloudflare thinks should be taken on the packet (possible values: pass, drop)"
 	},
-	"AccountMagicFirewallNetworkAnalyticsAdaptiveGroupsFilter_InputObject": {},
-	"AccountMagicFirewallNetworkAnalyticsAdaptiveGroupsOrderBy": {},
+	"AccountMagicFirewallNetworkAnalyticsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountMagicFirewallNetworkAnalyticsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
 	"AccountMagicFirewallNetworkAnalyticsAdaptiveGroupsSum": {
+		"__description": "",
 		"bits": "Sum of bits received",
 		"packets": "Sum of packets received"
 	},
 	"AccountMagicFirewallSamplesAdaptiveGroups": {
+		"__description": "Data to visualize traffic allowed and blocked by Magic Firewall rules",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
 	},
 	"AccountMagicFirewallSamplesAdaptiveGroupsDimensions": {
+		"__description": "",
 		"datetime": "Date and time that the packet was received",
 		"datetimeFiveMinute": "Date and time that the packet was received, rounded to the start of the nearest five minutes",
 		"ruleId": "Unique identifier of the rule that matched the packet, if any"
 	},
-	"AccountMagicFirewallSamplesAdaptiveGroupsFilter_InputObject": {},
-	"AccountMagicFirewallSamplesAdaptiveGroupsOrderBy": {},
+	"AccountMagicFirewallSamplesAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountMagicFirewallSamplesAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
 	"AccountMagicFirewallSamplesAdaptiveGroupsSum": {
+		"__description": "",
 		"bits": "Sum of bits received",
 		"packets": "Sum of packets received"
 	},
 	"AccountMagicTransitNetworkAnalyticsAdaptiveGroups": {
+		"__description": "Network analytics data for Magic Transit traffic",
 		"avg": "The average of values for a metric per dimension",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
 	},
 	"AccountMagicTransitNetworkAnalyticsAdaptiveGroupsAvg": {
+		"__description": "",
 		"bitRate": "Sum of bits received, divided by 1 second, providing a per-second bit rate when grouped by datetime",
 		"bitRateDay": "Sum of bits received, divided by 86400 seconds, providing a per-second bit rate when grouped by date",
 		"bitRateFifteenMinutes": "Sum of bits received, divided by 900 seconds, providing a per-second bit rate when grouped by datetimeFifteenMinutes",
@@ -1271,6 +1511,7 @@
 		"packetRateTenSeconds": "Sum of packets received, divided by 10 seconds, providing a per-second packet rate when grouped by datetimeTenSeconds"
 	},
 	"AccountMagicTransitNetworkAnalyticsAdaptiveGroupsDimensions": {
+		"__description": "",
 		"coloCity": "City where the Cloudflare datacenter that received the packet is located",
 		"coloCode": "Cloudflare datacenter that received the packet (nearest IATA airport code)",
 		"coloCountry": "Country where the Cloudflare datacenter that received the packet is located (ISO 3166-1 alpha-2)",
@@ -1349,22 +1590,30 @@
 		"udpChecksum": "Value of the Checkusm header field in the UDP packet",
 		"udpPayloadLength": "Value of the Payload Length header field in the UDP packet"
 	},
-	"AccountMagicTransitNetworkAnalyticsAdaptiveGroupsFilter_InputObject": {},
-	"AccountMagicTransitNetworkAnalyticsAdaptiveGroupsOrderBy": {},
+	"AccountMagicTransitNetworkAnalyticsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountMagicTransitNetworkAnalyticsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
 	"AccountMagicTransitNetworkAnalyticsAdaptiveGroupsSum": {
+		"__description": "",
 		"bits": "Sum of bits received",
 		"packets": "Sum of packets received"
 	},
 	"AccountMagicTransitTunnelHealthChecksAdaptiveGroups": {
+		"__description": "Beta. Magic Transit Health check results for customer GRE Tunnels with adaptive sampling (ABR).",
 		"avg": "",
 		"count": "Total number of healthcheck results",
 		"dimensions": "List of dimensions to group by"
 	},
 	"AccountMagicTransitTunnelHealthChecksAdaptiveGroupsAvg": {
+		"__description": "",
 		"sampleInterval": "Average sample interval per dimension",
 		"tunnelState": "Combined Tunnel State aggregated from multiple results. 0 is down, 0.5 is degraded and 1 is healthy"
 	},
 	"AccountMagicTransitTunnelHealthChecksAdaptiveGroupsDimensions": {
+		"__description": "",
 		"datetime": "The time the healthcheck request was sent",
 		"datetimeFifteenMinutes": "The time the healthcheck request was sent, truncated to multiple of 15 minutes",
 		"datetimeFiveMinutes": "The time the healthcheck request was sent, truncated to multiple of 5 minutes",
@@ -1380,18 +1629,25 @@
 		"resultStatus": "The status of the request",
 		"tunnelName": "Human friendly tunnel name"
 	},
-	"AccountMagicTransitTunnelHealthChecksAdaptiveGroupsFilter_InputObject": {},
-	"AccountMagicTransitTunnelHealthChecksAdaptiveGroupsOrderBy": {},
+	"AccountMagicTransitTunnelHealthChecksAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountMagicTransitTunnelHealthChecksAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
 	"AccountMagicTransitTunnelTrafficAdaptiveGroups": {
+		"__description": "Bandwidth usage metric of a Magic Transit tunnel.",
 		"avg": "Ingress/Egress bandwidth in bits per second for a past duration",
 		"dimensions": "List of dimensions to group by"
 	},
 	"AccountMagicTransitTunnelTrafficAdaptiveGroupsAvg": {
+		"__description": "",
 		"bitRateFifteenMinutes": "Sum of bits received, divided by 900 seconds, providing a per-second bit rate when grouped by datetimeFifteenMinutes",
 		"bitRateFiveMinutes": "Sum of bits received, divided by 300 seconds, providing a per-second bit rate when grouped by datetimeFiveMinutes",
 		"bitRateHour": "Sum of bits received, divided by 3600 seconds, providing a per-second bit rate when grouped by datetimeHour"
 	},
 	"AccountMagicTransitTunnelTrafficAdaptiveGroupsDimensions": {
+		"__description": "",
 		"datetime": "Date and time that the packet was received",
 		"datetimeFifteenMinutes": "Date and time that the packet was received, rounded to the start of the nearest fifteen minutes",
 		"datetimeFiveMinutes": "Date and time that the packet was received, rounded to the start of the nearest five minutes",
@@ -1405,14 +1661,20 @@
 		"system": "System to collect info on",
 		"tunnelName": "Tunnel device name"
 	},
-	"AccountMagicTransitTunnelTrafficAdaptiveGroupsFilter_InputObject": {},
-	"AccountMagicTransitTunnelTrafficAdaptiveGroupsOrderBy": {},
+	"AccountMagicTransitTunnelTrafficAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountMagicTransitTunnelTrafficAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
 	"AccountMnmFlowDataAdaptiveGroups": {
+		"__description": "Flow data collected through Magic Network Monitoring",
 		"avg": "The average of values for a metric per dimension",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
 	},
 	"AccountMnmFlowDataAdaptiveGroupsAvg": {
+		"__description": "",
 		"bitRate": "Sum of bits received, divided by 1 second, providing a per-second bit rate when grouped by datetime",
 		"bitRateDay": "Sum of bits received, divided by 86400 seconds, providing a per-second bit rate when grouped by date",
 		"bitRateFifteenMinutes": "Sum of bits received, divided by 900 seconds, providing a per-second bit rate when grouped by datetimeFifteenMinutes",
@@ -1430,6 +1692,7 @@
 		"sampleInterval": "Average sample interval applied to the data"
 	},
 	"AccountMnmFlowDataAdaptiveGroupsDimensions": {
+		"__description": "",
 		"date": "Date that the packet was received",
 		"datetime": "Date and time that the packet was received",
 		"datetimeFifteenMinutes": "Date and time that the packet was received, rounded to the start of the nearest fifteen minutes",
@@ -1449,21 +1712,29 @@
 		"tcpFlagsString": "Human-readable string representation of the Flags header field in the TCP packet",
 		"version": "Version of the record schema"
 	},
-	"AccountMnmFlowDataAdaptiveGroupsFilter_InputObject": {},
-	"AccountMnmFlowDataAdaptiveGroupsOrderBy": {},
+	"AccountMnmFlowDataAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountMnmFlowDataAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
 	"AccountMnmFlowDataAdaptiveGroupsSum": {
+		"__description": "",
 		"bits": "Sum of bits",
 		"packets": "Sum of packets"
 	},
 	"AccountNelReportsAdaptiveGroups": {
+		"__description": "Data to visualize network error logs",
 		"avg": "",
 		"count": "The number of NEL Reports",
 		"dimensions": "List of dimensions to group by"
 	},
 	"AccountNelReportsAdaptiveGroupsAvg": {
+		"__description": "",
 		"sampleInterval": "Average sample interval"
 	},
 	"AccountNelReportsAdaptiveGroupsDimensions": {
+		"__description": "",
 		"clientIPASN": "Client ASN",
 		"clientIPASNDescription": "Client ASN Description",
 		"clientIPCountry": "Client Country",
@@ -1481,18 +1752,25 @@
 		"protocol": "HTTP Protocol used when the error occured",
 		"type": "The type of error in the phase"
 	},
-	"AccountNelReportsAdaptiveGroupsFilter_InputObject": {},
-	"AccountNelReportsAdaptiveGroupsOrderBy": {},
+	"AccountNelReportsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountNelReportsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
 	"AccountPagesFunctionsInvocationsAdaptiveGroups": {
+		"__description": "Pages Functions invocations with adaptive sampling",
 		"avg": "",
 		"dimensions": "List of dimensions to group by",
 		"quantiles": "Quantiles of a metric per dimension",
 		"sum": "The sum of values for a metric per dimension"
 	},
 	"AccountPagesFunctionsInvocationsAdaptiveGroupsAvg": {
+		"__description": "",
 		"sampleInterval": "Average sample interval"
 	},
 	"AccountPagesFunctionsInvocationsAdaptiveGroupsDimensions": {
+		"__description": "",
 		"date": "Request datetime, truncated to start of a day",
 		"datetime": "Request datetime",
 		"datetimeHour": "Request datetime, truncated to start of an hour",
@@ -1501,15 +1779,21 @@
 		"status": "Status of the worker invocation",
 		"usageModel": "Usage model of the worker invocation"
 	},
-	"AccountPagesFunctionsInvocationsAdaptiveGroupsFilter_InputObject": {},
-	"AccountPagesFunctionsInvocationsAdaptiveGroupsOrderBy": {},
+	"AccountPagesFunctionsInvocationsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountPagesFunctionsInvocationsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
 	"AccountPagesFunctionsInvocationsAdaptiveGroupsQuantiles": {
+		"__description": "",
 		"cpuTimeP50": "CPU time 50th percentile - microseconds",
 		"cpuTimeP75": "CPU time 75th percentile - microseconds",
 		"cpuTimeP99": "CPU time 99th percentile - microseconds",
 		"cpuTimeP999": "CPU time 99.9th percentile - microseconds"
 	},
 	"AccountPagesFunctionsInvocationsAdaptiveGroupsSum": {
+		"__description": "",
 		"duration": "Sum of Duration - GB*s",
 		"errors": "Sum of Errors",
 		"requests": "Sum of Requests",
@@ -1518,10 +1802,12 @@
 		"wallTime": "Sum of Wall Time"
 	},
 	"AccountR2OperationsAdaptiveGroups": {
+		"__description": "Beta. R2 operations with adaptive sampling",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
 	},
 	"AccountR2OperationsAdaptiveGroupsDimensions": {
+		"__description": "",
 		"actionStatus": "Status of the R2 operation",
 		"actionType": "The name of the R2 operation",
 		"bucketName": "The name of the R2 bucket, if applicable to this request",
@@ -1532,41 +1818,56 @@
 		"objectName": "The name of the R2 object, if applicable to this request",
 		"responseStatusCode": "HTTP status code returned by R2"
 	},
-	"AccountR2OperationsAdaptiveGroupsFilter_InputObject": {},
-	"AccountR2OperationsAdaptiveGroupsOrderBy": {},
+	"AccountR2OperationsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountR2OperationsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
 	"AccountR2OperationsAdaptiveGroupsSum": {
+		"__description": "",
 		"requests": "Sum of Requests",
 		"responseObjectSize": "Sum of Response Object Sizes"
 	},
 	"AccountR2StorageAdaptiveGroups": {
+		"__description": "Beta. R2 storage with adaptive sampling",
 		"dimensions": "List of dimensions to group by",
 		"max": "The max of values for a metric per dimension"
 	},
 	"AccountR2StorageAdaptiveGroupsDimensions": {
+		"__description": "",
 		"bucketName": "The name of the R2 bucket, if applicable to this request",
 		"date": "Storage sample timestamp, truncated to start of a day",
 		"datetime": "Storage sample timestamp",
 		"datetimeHour": "Storage sample timestamp, truncated to start of an hour",
 		"datetimeMinute": "Storage sample timestamp, truncated to start of an minute"
 	},
-	"AccountR2StorageAdaptiveGroupsFilter_InputObject": {},
+	"AccountR2StorageAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
 	"AccountR2StorageAdaptiveGroupsMax": {
+		"__description": "",
 		"metadataSize": "Max of metadata size",
 		"objectCount": "Max of object count",
 		"payloadSize": "Max of payload size",
 		"uploadCount": "Max of upload count"
 	},
-	"AccountR2StorageAdaptiveGroupsOrderBy": {},
+	"AccountR2StorageAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
 	"AccountRumPageloadEventsAdaptiveGroups": {
+		"__description": "Beta. Aggregated RUM pageload event metrics with adaptive sampling",
 		"avg": "",
 		"count": "The number of pages viewed by end-users",
 		"dimensions": "List of dimensions to group by",
 		"sum": ""
 	},
 	"AccountRumPageloadEventsAdaptiveGroupsAvg": {
+		"__description": "",
 		"sampleInterval": "Average sample interval"
 	},
 	"AccountRumPageloadEventsAdaptiveGroupsDimensions": {
+		"__description": "",
 		"countryName": "Client country ISO 3166 alpha2 code",
 		"customTagInternalSxg": "Signed Exchange enabled status",
 		"date": "Request date from browser",
@@ -1586,12 +1887,18 @@
 		"userAgentBrowser": "Browser parsed from the user agent",
 		"userAgentOS": "OS parsed from the user agent"
 	},
-	"AccountRumPageloadEventsAdaptiveGroupsFilter_InputObject": {},
-	"AccountRumPageloadEventsAdaptiveGroupsOrderBy": {},
+	"AccountRumPageloadEventsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountRumPageloadEventsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
 	"AccountRumPageloadEventsAdaptiveGroupsSum": {
+		"__description": "",
 		"visits": "The number of pages viewed by end-users that were initiated from a different website (i.e. where the Document.referrer does not match the hostname)"
 	},
 	"AccountRumPerformanceEventsAdaptiveGroups": {
+		"__description": "Beta. Aggregated RUM performance event metrics with adaptive sampling",
 		"avg": "",
 		"count": "The number of pages viewed by end-users",
 		"dimensions": "List of dimensions to group by",
@@ -1599,6 +1906,7 @@
 		"sum": ""
 	},
 	"AccountRumPerformanceEventsAdaptiveGroupsAvg": {
+		"__description": "",
 		"connectionTime": "Connection time",
 		"dnsTime": "Domain lookup time",
 		"firstContentfulPaint": "The time when the first content piece from the DOM is painted (i.e. some text or an image)",
@@ -1611,6 +1919,7 @@
 		"sampleInterval": "Average sample interval"
 	},
 	"AccountRumPerformanceEventsAdaptiveGroupsDimensions": {
+		"__description": "",
 		"countryName": "Client country ISO 3166 alpha2 code",
 		"customTagInternalSxg": "Signed Exchange enabled status",
 		"date": "Request date from browser",
@@ -1630,9 +1939,14 @@
 		"userAgentBrowser": "Browser parsed from the user agent",
 		"userAgentOS": "OS parsed from the user agent"
 	},
-	"AccountRumPerformanceEventsAdaptiveGroupsFilter_InputObject": {},
-	"AccountRumPerformanceEventsAdaptiveGroupsOrderBy": {},
+	"AccountRumPerformanceEventsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountRumPerformanceEventsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
 	"AccountRumPerformanceEventsAdaptiveGroupsQuantiles": {
+		"__description": "",
 		"connectionTimeP50": "Connection time",
 		"connectionTimeP75": "Connection time",
 		"connectionTimeP90": "Connection time",
@@ -1671,9 +1985,11 @@
 		"responseTimeP99": "The time between receiving the first byte and the last byte of the response"
 	},
 	"AccountRumPerformanceEventsAdaptiveGroupsSum": {
+		"__description": "",
 		"visits": "The number of pages viewed by end-users that were initiated from a different website (i.e. where the Document.referrer does not match the hostname)"
 	},
 	"AccountRumWebVitalsEventsAdaptive": {
+		"__description": "Beta. RUM Web Vitals event metrics with adaptive sampling",
 		"countryName": "Client country ISO 3166 alpha2 code",
 		"cumulativeLayoutShift": "Cumulative Layout Shift (Core Web Vitals) (-1 indicates N/A)",
 		"cumulativeLayoutShiftCurrentRect": "Layout values of the rectangular area after the changes",
@@ -1700,8 +2016,11 @@
 		"userAgentBrowser": "Browser parsed from the user agent",
 		"userAgentOS": "OS parsed from the user agent"
 	},
-	"AccountRumWebVitalsEventsAdaptiveFilter_InputObject": {},
+	"AccountRumWebVitalsEventsAdaptiveFilter_InputObject": {
+		"__description": ""
+	},
 	"AccountRumWebVitalsEventsAdaptiveGroups": {
+		"__description": "Beta. Aggregated RUM Web Vitals event metrics with adaptive sampling",
 		"avg": "",
 		"count": "The number of pages viewed by end-users",
 		"dimensions": "List of dimensions to group by",
@@ -1709,12 +2028,14 @@
 		"sum": ""
 	},
 	"AccountRumWebVitalsEventsAdaptiveGroupsAvg": {
+		"__description": "",
 		"cumulativeLayoutShift": "Cumulative Layout Shift (Core Web Vitals) (negative value indicates N/A)",
 		"firstInputDelay": "First Input Delay (Core Web Vitals) in microseconds (negative value indicates N/A)",
 		"largestContentfulPaint": "Largest Contentful Paint (Core Web Vitals) in microseconds (negative value indicates N/A)",
 		"sampleInterval": "Average sample interval"
 	},
 	"AccountRumWebVitalsEventsAdaptiveGroupsDimensions": {
+		"__description": "",
 		"countryName": "Client country ISO 3166 alpha2 code",
 		"cumulativeLayoutShiftElement": "DOM selector name of the largest layout shift",
 		"cumulativeLayoutShiftPath": "Observed path of the Cumulative Layout Shift (Core Web Vitals)",
@@ -1744,9 +2065,14 @@
 		"userAgentBrowser": "Browser parsed from the user agent",
 		"userAgentOS": "OS parsed from the user agent"
 	},
-	"AccountRumWebVitalsEventsAdaptiveGroupsFilter_InputObject": {},
-	"AccountRumWebVitalsEventsAdaptiveGroupsOrderBy": {},
+	"AccountRumWebVitalsEventsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountRumWebVitalsEventsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
 	"AccountRumWebVitalsEventsAdaptiveGroupsQuantiles": {
+		"__description": "",
 		"cumulativeLayoutShiftP50": "Cumulative Layout Shift (Core Web Vitals) (negative value indicates N/A)",
 		"cumulativeLayoutShiftP75": "Cumulative Layout Shift (Core Web Vitals) (negative value indicates N/A)",
 		"cumulativeLayoutShiftP90": "Cumulative Layout Shift (Core Web Vitals) (negative value indicates N/A)",
@@ -1761,6 +2087,7 @@
 		"largestContentfulPaintP99": "Largest Contentful Paint (Core Web Vitals) in microseconds (negative value indicates N/A)"
 	},
 	"AccountRumWebVitalsEventsAdaptiveGroupsSum": {
+		"__description": "",
 		"clsGood": "Cumulative Layout Shift (Core Web Vitals), count of Good occurrences (under 0.1)",
 		"clsNeedsImprovement": "Cumulative Layout Shift (Core Web Vitals), count of Needs Improvement occurrences (between 0.1 and 0.25)",
 		"clsPoor": "Cumulative Layout Shift (Core Web Vitals), count of Poor occurrences (over 0.25)",
@@ -1775,8 +2102,11 @@
 		"lcpTotal": "Largest Contentful Paint (Core Web Vitals), total count",
 		"visits": "The number of pages viewed by end-users that were initiated from a different website (i.e. where the Document.referrer does not match the hostname)"
 	},
-	"AccountRumWebVitalsEventsAdaptiveOrderBy": {},
+	"AccountRumWebVitalsEventsAdaptiveOrderBy": {
+		"__description": ""
+	},
 	"AccountSettings": {
+		"__description": "Access and limitations for an account",
 		"accessLoginRequestsAdaptiveGroups": "",
 		"cdnNetworkAnalyticsAdaptiveGroups": "",
 		"dosdAttackAnalyticsGroups": "",
@@ -1829,11 +2159,13 @@
 		"zeroTrustPrivateNetworkDiscoveryGroups": ""
 	},
 	"AccountSpectrumNetworkAnalyticsAdaptiveGroups": {
+		"__description": "Network analytics data for Spectrum traffic",
 		"avg": "The average of values for a metric per dimension",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
 	},
 	"AccountSpectrumNetworkAnalyticsAdaptiveGroupsAvg": {
+		"__description": "",
 		"bitRate": "Sum of bits received, divided by 1 second, providing a per-second bit rate when grouped by datetime",
 		"bitRateDay": "Sum of bits received, divided by 86400 seconds, providing a per-second bit rate when grouped by date",
 		"bitRateFifteenMinutes": "Sum of bits received, divided by 900 seconds, providing a per-second bit rate when grouped by datetimeFifteenMinutes",
@@ -1850,6 +2182,7 @@
 		"packetRateTenSeconds": "Sum of packets received, divided by 10 seconds, providing a per-second packet rate when grouped by datetimeTenSeconds"
 	},
 	"AccountSpectrumNetworkAnalyticsAdaptiveGroupsDimensions": {
+		"__description": "",
 		"coloCity": "City where the Cloudflare datacenter that received the packet is located",
 		"coloCode": "Cloudflare datacenter that received the packet (nearest IATA airport code)",
 		"coloCountry": "Country where the Cloudflare datacenter that received the packet is located (ISO 3166-1 alpha-2)",
@@ -1928,18 +2261,25 @@
 		"udpChecksum": "Value of the Checkusm header field in the UDP packet",
 		"udpPayloadLength": "Value of the Payload Length header field in the UDP packet"
 	},
-	"AccountSpectrumNetworkAnalyticsAdaptiveGroupsFilter_InputObject": {},
-	"AccountSpectrumNetworkAnalyticsAdaptiveGroupsOrderBy": {},
+	"AccountSpectrumNetworkAnalyticsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountSpectrumNetworkAnalyticsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
 	"AccountSpectrumNetworkAnalyticsAdaptiveGroupsSum": {
+		"__description": "",
 		"bits": "Sum of bits received",
 		"packets": "Sum of packets received"
 	},
 	"AccountStreamMinutesViewedAdaptiveGroups": {
+		"__description": "A high-level summary of Cloudflare Stream minutes viewed.",
 		"count": "The number of values for a metric per dimension",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
 	},
 	"AccountStreamMinutesViewedAdaptiveGroupsDimensions": {
+		"__description": "",
 		"clientCountryName": "ISO 3166 alpha2 country code from the client",
 		"creator": "Customer-provided creator ID of a video",
 		"date": "The date the event occurred at the edge",
@@ -1951,20 +2291,28 @@
 		"mediaType": "The source of the minutes viewed",
 		"uid": "Unique ID of a video"
 	},
-	"AccountStreamMinutesViewedAdaptiveGroupsFilter_InputObject": {},
-	"AccountStreamMinutesViewedAdaptiveGroupsOrderBy": {},
+	"AccountStreamMinutesViewedAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountStreamMinutesViewedAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
 	"AccountStreamMinutesViewedAdaptiveGroupsSum": {
+		"__description": "",
 		"minutesViewed": ""
 	},
 	"AccountTurnstileAdaptiveGroups": {
+		"__description": "Beta. Cloudflare Turnstile aggregated events with adaptive sampling",
 		"avg": "",
 		"count": "Number of Cloudflare Turnstile events processed",
 		"dimensions": "List of dimensions to group by"
 	},
 	"AccountTurnstileAdaptiveGroupsAvg": {
+		"__description": "",
 		"sampleInterval": "Average sample interval"
 	},
 	"AccountTurnstileAdaptiveGroupsDimensions": {
+		"__description": "",
 		"action": "The action tag of the challenge event",
 		"date": "The date the challenge event was emitted",
 		"datetime": "The date and time the challenge event was emitted",
@@ -1977,17 +2325,24 @@
 		"eventType": "The type of the Cloudflare Turnstile event",
 		"siteKey": "The sitekey of the widget associated with the event"
 	},
-	"AccountTurnstileAdaptiveGroupsFilter_InputObject": {},
-	"AccountTurnstileAdaptiveGroupsOrderBy": {},
+	"AccountTurnstileAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountTurnstileAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
 	"AccountVideoBufferEventsAdaptiveGroups": {
+		"__description": "Beta. Aggregated video streaming buffer event metrics with adaptive sampling",
 		"avg": "",
 		"count": "Total number of buffer events",
 		"dimensions": "List of dimensions to group by"
 	},
 	"AccountVideoBufferEventsAdaptiveGroupsAvg": {
+		"__description": "",
 		"sampleInterval": "Average sample interval"
 	},
 	"AccountVideoBufferEventsAdaptiveGroupsDimensions": {
+		"__description": "",
 		"clientCountryName": "ISO 3166 alpha2 country code from the client",
 		"date": "Request date of the event",
 		"datetime": "Request datetime of the event",
@@ -2001,18 +2356,25 @@
 		"deviceType": "Device type used in playback",
 		"uid": "unique id for a video"
 	},
-	"AccountVideoBufferEventsAdaptiveGroupsFilter_InputObject": {},
-	"AccountVideoBufferEventsAdaptiveGroupsOrderBy": {},
+	"AccountVideoBufferEventsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountVideoBufferEventsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
 	"AccountVideoPlaybackEventsAdaptiveGroups": {
+		"__description": "Beta. Aggregated video streaming playback event metrics with adaptive sampling",
 		"avg": "",
 		"count": "Total number of playback starts",
 		"dimensions": "List of dimensions to group by",
 		"sum": ""
 	},
 	"AccountVideoPlaybackEventsAdaptiveGroupsAvg": {
+		"__description": "",
 		"sampleInterval": "Average sample interval"
 	},
 	"AccountVideoPlaybackEventsAdaptiveGroupsDimensions": {
+		"__description": "",
 		"clientCountryName": "ISO 3166 alpha2 country code from the client",
 		"date": "Request date of the event",
 		"datetime": "Request datetime of the event",
@@ -2026,20 +2388,28 @@
 		"deviceType": "Device type used in playback",
 		"uid": "unique id for a video"
 	},
-	"AccountVideoPlaybackEventsAdaptiveGroupsFilter_InputObject": {},
-	"AccountVideoPlaybackEventsAdaptiveGroupsOrderBy": {},
+	"AccountVideoPlaybackEventsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountVideoPlaybackEventsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
 	"AccountVideoPlaybackEventsAdaptiveGroupsSum": {
+		"__description": "",
 		"timeViewedMinutes": "Total time viewed in minutes"
 	},
 	"AccountVideoQualityEventsAdaptiveGroups": {
+		"__description": "Beta. Aggregated video streaming quality change event metrics with adaptive sampling",
 		"avg": "",
 		"count": "Total number of quality change events",
 		"dimensions": "List of dimensions to group by"
 	},
 	"AccountVideoQualityEventsAdaptiveGroupsAvg": {
+		"__description": "",
 		"sampleInterval": "Average sample interval"
 	},
 	"AccountVideoQualityEventsAdaptiveGroupsDimensions": {
+		"__description": "",
 		"clientCountryName": "ISO 3166 alpha2 country code from the client",
 		"date": "Request date of the event",
 		"datetime": "Request datetime of the event",
@@ -2054,13 +2424,19 @@
 		"qualityResolution": "Video playback vertical resolution",
 		"uid": "unique id for a video"
 	},
-	"AccountVideoQualityEventsAdaptiveGroupsFilter_InputObject": {},
-	"AccountVideoQualityEventsAdaptiveGroupsOrderBy": {},
+	"AccountVideoQualityEventsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountVideoQualityEventsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
 	"AccountWorkersAnalyticsEngineAdaptiveGroups": {
+		"__description": "Beta. Custom Events with adaptive sampling",
 		"count": "The number of values for a metric per dimension",
 		"dimensions": "List of dimensions to group by"
 	},
 	"AccountWorkersAnalyticsEngineAdaptiveGroupsDimensions": {
+		"__description": "",
 		"dataset": "The dataset name",
 		"date": "The date the event occurred",
 		"datetime": "The date and time the event occurred",
@@ -2069,9 +2445,14 @@
 		"datetimeHour": "The date and time the event occurred truncated to the start of an hour",
 		"datetimeMinute": "The date and time the event occurred truncated to the start of a minute"
 	},
-	"AccountWorkersAnalyticsEngineAdaptiveGroupsFilter_InputObject": {},
-	"AccountWorkersAnalyticsEngineAdaptiveGroupsOrderBy": {},
+	"AccountWorkersAnalyticsEngineAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountWorkersAnalyticsEngineAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
 	"AccountWorkersInvocationsAdaptive": {
+		"__description": "Beta. Workers invocations with adaptive sampling",
 		"avg": "The average value used for sample interval",
 		"dimensions": "List of dimensions to group by",
 		"max": "The max value for a metric",
@@ -2080,9 +2461,11 @@
 		"sum": "The sum of values for a metric per dimension"
 	},
 	"AccountWorkersInvocationsAdaptiveAvg": {
+		"__description": "",
 		"sampleInterval": ""
 	},
 	"AccountWorkersInvocationsAdaptiveDimensions": {
+		"__description": "",
 		"date": "Request datetime, truncated to start of a day",
 		"datetime": "Request datetime",
 		"datetimeHour": "Request datetime, truncated to start of an hour",
@@ -2094,21 +2477,28 @@
 		"status": "Status of the worker invocation",
 		"usageModel": "Usage model of the worker invocation"
 	},
-	"AccountWorkersInvocationsAdaptiveFilter_InputObject": {},
+	"AccountWorkersInvocationsAdaptiveFilter_InputObject": {
+		"__description": ""
+	},
 	"AccountWorkersInvocationsAdaptiveMax": {
+		"__description": "",
 		"cpuTime": "Maximum CPU time for one request - microseconds",
 		"duration": "Maximum duration of one request - GB*s",
 		"responseBodySize": "Maximum response body size for one request - bytes",
 		"wallTime": "Maximum wall time for one request - microseconds"
 	},
 	"AccountWorkersInvocationsAdaptiveMin": {
+		"__description": "",
 		"cpuTime": "Minimum CPU time for one request - microseconds",
 		"duration": "Minimum duration of one request - GB*s",
 		"responseBodySize": "Minimum response body size for one request - bytes",
 		"wallTime": "Minimum wall time for one request - microseconds"
 	},
-	"AccountWorkersInvocationsAdaptiveOrderBy": {},
+	"AccountWorkersInvocationsAdaptiveOrderBy": {
+		"__description": ""
+	},
 	"AccountWorkersInvocationsAdaptiveQuantiles": {
+		"__description": "",
 		"cpuTimeP25": "CPU time 25th percentile - microseconds",
 		"cpuTimeP50": "CPU time 50th percentile - microseconds",
 		"cpuTimeP75": "CPU time 75th percentile - microseconds",
@@ -2135,6 +2525,7 @@
 		"wallTimeP999": "Wall time 99.9th percentile - microseconds"
 	},
 	"AccountWorkersInvocationsAdaptiveSum": {
+		"__description": "",
 		"duration": "Sum of Duration - GB*s",
 		"errors": "Sum of Errors",
 		"requests": "Sum of Requests",
@@ -2143,6 +2534,7 @@
 		"wallTime": "Sum of Wall Time"
 	},
 	"AccountWorkersInvocationsScheduled": {
+		"__description": "Workers scheduled invocations",
 		"cpuTimeUs": "CPU time - microseconds",
 		"cron": "The cron string of the schedule",
 		"datetime": "Request datetime",
@@ -2151,13 +2543,19 @@
 		"scriptName": "The name of the script",
 		"status": "Status of the worker invocation"
 	},
-	"AccountWorkersInvocationsScheduledFilter_InputObject": {},
-	"AccountWorkersInvocationsScheduledOrderBy": {},
+	"AccountWorkersInvocationsScheduledFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountWorkersInvocationsScheduledOrderBy": {
+		"__description": ""
+	},
 	"AccountWorkersSubrequestsAdaptiveGroups": {
+		"__description": "Beta. Workers subrequests with adaptive sampling",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
 	},
 	"AccountWorkersSubrequestsAdaptiveGroupsDimensions": {
+		"__description": "",
 		"cacheStatus": "Cache status",
 		"date": "Request datetime, truncated to start of a day",
 		"datetime": "Request datetime",
@@ -2167,19 +2565,26 @@
 		"scriptName": "The name of the script",
 		"usageModel": "Usage model of the worker invocation"
 	},
-	"AccountWorkersSubrequestsAdaptiveGroupsFilter_InputObject": {},
-	"AccountWorkersSubrequestsAdaptiveGroupsOrderBy": {},
+	"AccountWorkersSubrequestsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"AccountWorkersSubrequestsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
 	"AccountWorkersSubrequestsAdaptiveGroupsSum": {
+		"__description": "",
 		"requestBodySizeUncached": "Workers fetch request body size in bytes where the request was not cached",
 		"subrequests": "Number of subrequests"
 	},
 	"AccountZeroTrustPrivateNetworkDiscoveryGroups": {
+		"__description": "Beta - Unique origins, applications, and users discovered for Zero Trust private networks",
 		"count": "Sum of network access during the select range",
 		"dimensions": "List of dimensions to group by",
 		"max": "",
 		"uniq": ""
 	},
 	"AccountZeroTrustPrivateNetworkDiscoveryGroupsDimensions": {
+		"__description": "",
 		"date": "Request date",
 		"datetimeHour": "Request datetime and start of the hour",
 		"destinationIP": "Destination IPv4 or IPv6",
@@ -2191,22 +2596,32 @@
 		"transport": "The transport protocol used in the session, one of (0, tcp) (1, quic) (2, udp)",
 		"userId": "The ID of the user who accessed the resource"
 	},
-	"AccountZeroTrustPrivateNetworkDiscoveryGroupsFilter_InputObject": {},
+	"AccountZeroTrustPrivateNetworkDiscoveryGroupsFilter_InputObject": {
+		"__description": ""
+	},
 	"AccountZeroTrustPrivateNetworkDiscoveryGroupsMax": {
+		"__description": "",
 		"dateTime": "Latest access time of a user"
 	},
-	"AccountZeroTrustPrivateNetworkDiscoveryGroupsOrderBy": {},
+	"AccountZeroTrustPrivateNetworkDiscoveryGroupsOrderBy": {
+		"__description": ""
+	},
 	"AccountZeroTrustPrivateNetworkDiscoveryGroupsUniq": {
+		"__description": "",
 		"emails": "Approximate count of unique emails",
 		"origins": "Approximate count of unique origins. An origin is a (transport, destinationIP, destinationPort)",
 		"userIds": "Approximate count of unique users"
 	},
-	"Date": {},
+	"Date": {
+		"__description": "Scalar type types.Date"
+	},
 	"Query": {
+		"__description": "",
 		"cost": "",
 		"viewer": ""
 	},
 	"Settings": {
+		"__description": "Access and limitations",
 		"availableFields": "The list of available fields to query",
 		"enabled": "",
 		"maxDuration": "Requested time range should not be wider than this (seconds)",
@@ -2214,12 +2629,16 @@
 		"maxPageSize": "Maximum allowed value for 'limit'",
 		"notOlderThan": "Cannot reach for data beyond this distance in the past (seconds)"
 	},
-	"Time": {},
+	"Time": {
+		"__description": "Scalar type time.Time"
+	},
 	"ZoneCacheReserveOperationsAdaptiveGroups": {
+		"__description": "Beta. Cache Reserve operations with adaptive sampling",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
 	},
 	"ZoneCacheReserveOperationsAdaptiveGroupsDimensions": {
+		"__description": "",
 		"actionStatus": "Status of the R2 operation",
 		"date": "Request timestamp, truncated to start of a day",
 		"datetime": "Request timestamp",
@@ -2227,28 +2646,41 @@
 		"datetimeMinute": "Request timestamp, truncated to start of an minute",
 		"operationClass": "Billable class of storage operation"
 	},
-	"ZoneCacheReserveOperationsAdaptiveGroupsFilter_InputObject": {},
-	"ZoneCacheReserveOperationsAdaptiveGroupsOrderBy": {},
+	"ZoneCacheReserveOperationsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"ZoneCacheReserveOperationsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
 	"ZoneCacheReserveOperationsAdaptiveGroupsSum": {
+		"__description": "",
 		"requests": "Sum of Requests"
 	},
 	"ZoneCacheReserveStorageAdaptiveGroups": {
+		"__description": "Beta. Cache Reserve storage with adaptive sampling",
 		"dimensions": "List of dimensions to group by",
 		"max": "The max of values for a metric per dimension"
 	},
 	"ZoneCacheReserveStorageAdaptiveGroupsDimensions": {
+		"__description": "",
 		"bucketHash": "Hash of bucket containing stored objects",
 		"date": "Storage sample timestamp, truncated to start of a day",
 		"datetime": "Storage sample timestamp",
 		"datetimeHour": "Storage sample timestamp, truncated to start of an hour",
 		"datetimeMinute": "Storage sample timestamp, truncated to start of an minute"
 	},
-	"ZoneCacheReserveStorageAdaptiveGroupsFilter_InputObject": {},
+	"ZoneCacheReserveStorageAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
 	"ZoneCacheReserveStorageAdaptiveGroupsMax": {
+		"__description": "",
 		"storedBytes": "Payload and metadata size of objects in bucket"
 	},
-	"ZoneCacheReserveStorageAdaptiveGroupsOrderBy": {},
+	"ZoneCacheReserveStorageAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
 	"ZoneEmailRoutingAdaptive": {
+		"__description": "Beta. Raw email routing logs with adaptive sampling",
 		"datetime": "The date and time the source email was received",
 		"dkim": "DKIM check status of the source email",
 		"dmarc": "DMARC check status of the source email",
@@ -2264,12 +2696,16 @@
 		"subject": "The subject of the source email",
 		"to": "The recipient email address of the source email"
 	},
-	"ZoneEmailRoutingAdaptiveFilter_InputObject": {},
+	"ZoneEmailRoutingAdaptiveFilter_InputObject": {
+		"__description": ""
+	},
 	"ZoneEmailRoutingAdaptiveGroups": {
+		"__description": "Beta. Aggregated email routing logs with adaptive sampling",
 		"count": "Number of emails processed (approximation when sampleInterval > 1)",
 		"dimensions": "List of dimensions to group by"
 	},
 	"ZoneEmailRoutingAdaptiveGroupsDimensions": {
+		"__description": "",
 		"date": "The date the source email was received",
 		"datetimeFifteenMinutes": "The date and time the source email was received truncated to fifteen minutes",
 		"datetimeFiveMinutes": "The date and time the source email was received truncated to five minutes",
@@ -2283,11 +2719,20 @@
 		"spf": "SPF check status of the source email",
 		"status": "The resulting outcome (action) for the email"
 	},
-	"ZoneEmailRoutingAdaptiveGroupsFilter_InputObject": {},
-	"ZoneEmailRoutingAdaptiveGroupsOrderBy": {},
-	"ZoneEmailRoutingAdaptiveOrderBy": {},
-	"ZoneFilter_InputObject": {},
+	"ZoneEmailRoutingAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"ZoneEmailRoutingAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"ZoneEmailRoutingAdaptiveOrderBy": {
+		"__description": ""
+	},
+	"ZoneFilter_InputObject": {
+		"__description": ""
+	},
 	"ZoneFirewallEventsAdaptive": {
+		"__description": "Raw Firewall events with adaptive sampling",
 		"action": "The code of the first-class action the Cloudflare Firewall took on this request",
 		"apiGatewayMatchedEndpoint": "API Gateway endpoint matched at the edge",
 		"botScore": "The final score originated from bot management detections.",
@@ -2344,14 +2789,17 @@
 		"wafXssAttackScore": "Beta. WAF score for a XSS attack"
 	},
 	"ZoneFirewallEventsAdaptiveByTimeGroups": {
+		"__description": "Aggregated Firewall events with adaptive sampling grouped by time",
 		"avg": "The average value used for sample interval",
 		"count": "The sum of sample interval values",
 		"dimensions": "List of dimensions to group by"
 	},
 	"ZoneFirewallEventsAdaptiveByTimeGroupsAvg": {
+		"__description": "",
 		"sampleInterval": ""
 	},
 	"ZoneFirewallEventsAdaptiveByTimeGroupsDimensions": {
+		"__description": "",
 		"apiGatewayMatchedEndpoint": "API Gateway endpoint matched at the edge",
 		"botScore": "The final score originated from bot management detections.",
 		"botScoreSrcName": "Name of the source detection which generated the bot management score.",
@@ -2372,18 +2820,27 @@
 		"wafSqliAttackScore": "Beta. WAF score for a SQLi attack",
 		"wafXssAttackScore": "Beta. WAF score for a XSS attack"
 	},
-	"ZoneFirewallEventsAdaptiveByTimeGroupsFilter_InputObject": {},
-	"ZoneFirewallEventsAdaptiveByTimeGroupsOrderBy": {},
-	"ZoneFirewallEventsAdaptiveFilter_InputObject": {},
+	"ZoneFirewallEventsAdaptiveByTimeGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"ZoneFirewallEventsAdaptiveByTimeGroupsOrderBy": {
+		"__description": ""
+	},
+	"ZoneFirewallEventsAdaptiveFilter_InputObject": {
+		"__description": ""
+	},
 	"ZoneFirewallEventsAdaptiveGroups": {
+		"__description": "Aggregated Firewall events with adaptive sampling",
 		"avg": "The average value used for sample interval",
 		"count": "The sum of sample interval values",
 		"dimensions": "List of dimensions to group by"
 	},
 	"ZoneFirewallEventsAdaptiveGroupsAvg": {
+		"__description": "",
 		"sampleInterval": ""
 	},
 	"ZoneFirewallEventsAdaptiveGroupsDimensions": {
+		"__description": "",
 		"action": "The code of the first-class action the Cloudflare Firewall took on this request",
 		"apiGatewayMatchedEndpoint": "API Gateway endpoint matched at the edge",
 		"botScore": "The final score originated from bot management detections.",
@@ -2433,14 +2890,22 @@
 		"wafSqliAttackScore": "Beta. WAF score for a SQLi attack",
 		"wafXssAttackScore": "Beta. WAF score for a XSS attack"
 	},
-	"ZoneFirewallEventsAdaptiveGroupsFilter_InputObject": {},
-	"ZoneFirewallEventsAdaptiveGroupsOrderBy": {},
+	"ZoneFirewallEventsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"ZoneFirewallEventsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
 	"ZoneFirewallEventsAdaptiveMetadataElem": {
+		"__description": "",
 		"key": "The key of the metadata. Key format can vary by Cloudflare security product and can change over time.",
 		"value": "The value of the metadata. Value format can vary by Cloudflare security product and can change over time."
 	},
-	"ZoneFirewallEventsAdaptiveOrderBy": {},
+	"ZoneFirewallEventsAdaptiveOrderBy": {
+		"__description": ""
+	},
 	"ZoneHealthCheckEventsAdaptive": {
+		"__description": "Raw Health Check events with adaptive sampling",
 		"datetime": "The date and time the event was written to the database",
 		"eventId": "The event id that created this healthcheck event",
 		"expectedResponseCodes": "The expected response codes for the health check",
@@ -2460,14 +2925,18 @@
 		"timeToFirstByteMs": "Time taken for the first byte to be received once connection is available",
 		"tlsHandshakeMs": "Time taken for the tls handshake to be completed"
 	},
-	"ZoneHealthCheckEventsAdaptiveFilter_InputObject": {},
+	"ZoneHealthCheckEventsAdaptiveFilter_InputObject": {
+		"__description": ""
+	},
 	"ZoneHealthCheckEventsAdaptiveGroups": {
+		"__description": "Aggregated Health Check events with adaptive sampling",
 		"avg": "The average value for a metric",
 		"count": "The number of values for a metric per dimension",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
 	},
 	"ZoneHealthCheckEventsAdaptiveGroupsAvg": {
+		"__description": "",
 		"rttMs": "Average RTT (milliseconds)",
 		"sampleInterval": "Average sample interval",
 		"tcpConnMs": "Average TCP Connection time (milliseconds)",
@@ -2475,6 +2944,7 @@
 		"tlsHandshakeMs": "Average TLS Handshake time (milliseconds)"
 	},
 	"ZoneHealthCheckEventsAdaptiveGroupsDimensions": {
+		"__description": "",
 		"datetime": "Datetime the event was written to the database",
 		"datetimeFifteenMinutes": "Datetime the event was written to the database truncated to a multiple of 15 minutes",
 		"datetimeFiveMinutes": "Datetime the event was written to the database truncated to a multiple of 5 minutes",
@@ -2496,32 +2966,48 @@
 		"timeToFirstByteMs": "Time taken for the first byte to be received once connection is available",
 		"tlsHandshakeMs": "Time taken for the tls handshake to be completed"
 	},
-	"ZoneHealthCheckEventsAdaptiveGroupsFilter_InputObject": {},
-	"ZoneHealthCheckEventsAdaptiveGroupsOrderBy": {},
+	"ZoneHealthCheckEventsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"ZoneHealthCheckEventsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
 	"ZoneHealthCheckEventsAdaptiveGroupsSum": {
+		"__description": "",
 		"healthStatus": ""
 	},
-	"ZoneHealthCheckEventsAdaptiveOrderBy": {},
+	"ZoneHealthCheckEventsAdaptiveOrderBy": {
+		"__description": ""
+	},
 	"ZoneHttpRequests1dByColoGroups": {
+		"__description": "Deprecated. Daily rollups of request data by colo",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
 	},
 	"ZoneHttpRequests1dByColoGroupsCountryMapElem": {
+		"__description": "",
 		"clientCountryName": "Country from which request originated",
 		"requests": "",
 		"threats": "Requests classified as threats"
 	},
 	"ZoneHttpRequests1dByColoGroupsDimensions": {
+		"__description": "",
 		"coloCode": "Code of edge server",
 		"date": "Request date"
 	},
-	"ZoneHttpRequests1dByColoGroupsFilter_InputObject": {},
-	"ZoneHttpRequests1dByColoGroupsOrderBy": {},
+	"ZoneHttpRequests1dByColoGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"ZoneHttpRequests1dByColoGroupsOrderBy": {
+		"__description": ""
+	},
 	"ZoneHttpRequests1dByColoGroupsResponseStatusMapElem": {
+		"__description": "",
 		"edgeResponseStatus": "HTTP response status code returned to client",
 		"requests": ""
 	},
 	"ZoneHttpRequests1dByColoGroupsSum": {
+		"__description": "",
 		"bytes": "Bytes returned to client",
 		"cachedBytes": "Bytes returned to client from cache",
 		"cachedRequests": "Requests served from cache",
@@ -2531,56 +3017,72 @@
 		"threatPathingMap": ""
 	},
 	"ZoneHttpRequests1dByColoGroupsThreatPathingMapElem": {
+		"__description": "",
 		"requests": "",
 		"threatPathingName": "Threat type"
 	},
 	"ZoneHttpRequests1dGroups": {
+		"__description": "Daily rollups of request data",
 		"avg": "The average value for a metric per dimension",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension",
 		"uniq": "The number of unique values for a metric per dimension"
 	},
 	"ZoneHttpRequests1dGroupsAvg": {
+		"__description": "",
 		"bytes": "",
 		"sampleInterval": "Average sample interval"
 	},
 	"ZoneHttpRequests1dGroupsBrowserMapElem": {
+		"__description": "",
 		"pageViews": "Successful requests for HTML content",
 		"uaBrowserFamily": "Browser type"
 	},
 	"ZoneHttpRequests1dGroupsClientHTTPVersionMapElem": {
+		"__description": "",
 		"clientHTTPProtocol": "HTTP version",
 		"requests": ""
 	},
 	"ZoneHttpRequests1dGroupsClientSSLMapElem": {
+		"__description": "",
 		"clientSSLProtocol": "Protocol version",
 		"requests": ""
 	},
 	"ZoneHttpRequests1dGroupsContentTypeMapElem": {
+		"__description": "",
 		"bytes": "Bytes returned to client",
 		"edgeResponseContentTypeName": "Content type returned to client",
 		"requests": ""
 	},
 	"ZoneHttpRequests1dGroupsCountryMapElem": {
+		"__description": "",
 		"bytes": "Bytes returned to client",
 		"clientCountryName": "Country from which request originated",
 		"requests": "",
 		"threats": "Requests classified as threats"
 	},
 	"ZoneHttpRequests1dGroupsDimensions": {
+		"__description": "",
 		"date": "Request date"
 	},
-	"ZoneHttpRequests1dGroupsFilter_InputObject": {},
+	"ZoneHttpRequests1dGroupsFilter_InputObject": {
+		"__description": ""
+	},
 	"ZoneHttpRequests1dGroupsIpClassMapElem": {
+		"__description": "",
 		"ipType": "IP class",
 		"requests": ""
 	},
-	"ZoneHttpRequests1dGroupsOrderBy": {},
+	"ZoneHttpRequests1dGroupsOrderBy": {
+		"__description": ""
+	},
 	"ZoneHttpRequests1dGroupsResponseStatusMapElem": {
+		"__description": "",
 		"edgeResponseStatus": "HTTP response status code returned to client",
 		"requests": ""
 	},
 	"ZoneHttpRequests1dGroupsSum": {
+		"__description": "",
 		"browserMap": "",
 		"bytes": "Bytes returned to client",
 		"cachedBytes": "Bytes returned to client from cache",
@@ -2599,60 +3101,77 @@
 		"threats": "Requests classified as threats"
 	},
 	"ZoneHttpRequests1dGroupsThreatPathingMapElem": {
+		"__description": "",
 		"requests": "",
 		"threatPathingName": "Threat type"
 	},
 	"ZoneHttpRequests1dGroupsUniq": {
+		"__description": "",
 		"uniques": "A number of unique IPs"
 	},
 	"ZoneHttpRequests1hGroups": {
+		"__description": "Hourly rollups of request data",
 		"avg": "The average value for a metric per dimension",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension",
 		"uniq": "The number of unique values for a metric per dimension"
 	},
 	"ZoneHttpRequests1hGroupsAvg": {
+		"__description": "",
 		"bytes": "",
 		"sampleInterval": "Average sample interval"
 	},
 	"ZoneHttpRequests1hGroupsBrowserMapElem": {
+		"__description": "",
 		"pageViews": "Successful requests for HTML content",
 		"uaBrowserFamily": "Browser type"
 	},
 	"ZoneHttpRequests1hGroupsClientHTTPVersionMapElem": {
+		"__description": "",
 		"clientHTTPProtocol": "HTTP version",
 		"requests": ""
 	},
 	"ZoneHttpRequests1hGroupsClientSSLMapElem": {
+		"__description": "",
 		"clientSSLProtocol": "Protocol version",
 		"requests": ""
 	},
 	"ZoneHttpRequests1hGroupsContentTypeMapElem": {
+		"__description": "",
 		"bytes": "Bytes returned to client",
 		"edgeResponseContentTypeName": "Content type returned to client",
 		"requests": ""
 	},
 	"ZoneHttpRequests1hGroupsCountryMapElem": {
+		"__description": "",
 		"bytes": "Bytes returned to client",
 		"clientCountryName": "Country from which request originated",
 		"requests": "",
 		"threats": "Requests classified as threats"
 	},
 	"ZoneHttpRequests1hGroupsDimensions": {
+		"__description": "",
 		"date": "Request date",
 		"datetime": "Request datetime truncated to the hour"
 	},
-	"ZoneHttpRequests1hGroupsFilter_InputObject": {},
+	"ZoneHttpRequests1hGroupsFilter_InputObject": {
+		"__description": ""
+	},
 	"ZoneHttpRequests1hGroupsIpClassMapElem": {
+		"__description": "",
 		"ipType": "IP class",
 		"requests": ""
 	},
-	"ZoneHttpRequests1hGroupsOrderBy": {},
+	"ZoneHttpRequests1hGroupsOrderBy": {
+		"__description": ""
+	},
 	"ZoneHttpRequests1hGroupsResponseStatusMapElem": {
+		"__description": "",
 		"edgeResponseStatus": "HTTP response status code returned to client",
 		"requests": ""
 	},
 	"ZoneHttpRequests1hGroupsSum": {
+		"__description": "",
 		"browserMap": "",
 		"bytes": "Bytes returned to client",
 		"cachedBytes": "Bytes returned to client from cache",
@@ -2671,22 +3190,27 @@
 		"threats": "Requests classified as threats"
 	},
 	"ZoneHttpRequests1hGroupsThreatPathingMapElem": {
+		"__description": "",
 		"requests": "",
 		"threatPathingName": "Threat type"
 	},
 	"ZoneHttpRequests1hGroupsUniq": {
+		"__description": "",
 		"uniques": "A number of unique IPs"
 	},
 	"ZoneHttpRequests1mByColoGroups": {
+		"__description": "Deprecated. Minutely rollups of request data by colo",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
 	},
 	"ZoneHttpRequests1mByColoGroupsCountryMapElem": {
+		"__description": "",
 		"clientCountryName": "Country from which request originated",
 		"requests": "",
 		"threats": "Requests classified as threats"
 	},
 	"ZoneHttpRequests1mByColoGroupsDimensions": {
+		"__description": "",
 		"coloCode": "Code of edge server",
 		"date": "Request date",
 		"datetime": "Request datetime",
@@ -2694,13 +3218,19 @@
 		"datetimeHalfOfHour": "Request datetime truncated to multiple of 30 minutes",
 		"datetimeHour": "Request datetime truncated to the hour"
 	},
-	"ZoneHttpRequests1mByColoGroupsFilter_InputObject": {},
-	"ZoneHttpRequests1mByColoGroupsOrderBy": {},
+	"ZoneHttpRequests1mByColoGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"ZoneHttpRequests1mByColoGroupsOrderBy": {
+		"__description": ""
+	},
 	"ZoneHttpRequests1mByColoGroupsResponseStatusMapElem": {
+		"__description": "",
 		"edgeResponseStatus": "HTTP response status code returned to client",
 		"requests": ""
 	},
 	"ZoneHttpRequests1mByColoGroupsSum": {
+		"__description": "",
 		"bytes": "Bytes returned to client",
 		"cachedBytes": "Bytes returned to client from cache",
 		"cachedRequests": "Requests served from cache",
@@ -2710,43 +3240,52 @@
 		"threatPathingMap": ""
 	},
 	"ZoneHttpRequests1mByColoGroupsThreatPathingMapElem": {
+		"__description": "",
 		"requests": "",
 		"threatPathingName": "Threat type"
 	},
 	"ZoneHttpRequests1mGroups": {
+		"__description": "Minutely rollups of request data",
 		"avg": "The average value for a metric per dimension",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension",
 		"uniq": "The number of unique values for a metric per dimension"
 	},
 	"ZoneHttpRequests1mGroupsAvg": {
+		"__description": "",
 		"bytes": "",
 		"sampleInterval": "Average sample interval"
 	},
 	"ZoneHttpRequests1mGroupsBrowserMapElem": {
+		"__description": "",
 		"pageViews": "Successful requests for HTML content",
 		"uaBrowserFamily": "Browser type"
 	},
 	"ZoneHttpRequests1mGroupsClientHTTPVersionMapElem": {
+		"__description": "",
 		"clientHTTPProtocol": "HTTP version",
 		"requests": ""
 	},
 	"ZoneHttpRequests1mGroupsClientSSLMapElem": {
+		"__description": "",
 		"clientSSLProtocol": "Protocol version",
 		"requests": ""
 	},
 	"ZoneHttpRequests1mGroupsContentTypeMapElem": {
+		"__description": "",
 		"bytes": "Bytes returned to client",
 		"edgeResponseContentTypeName": "Content type returned to client",
 		"requests": ""
 	},
 	"ZoneHttpRequests1mGroupsCountryMapElem": {
+		"__description": "",
 		"bytes": "Bytes returned to client",
 		"clientCountryName": "Country from which request originated",
 		"requests": "",
 		"threats": "Requests classified as threats"
 	},
 	"ZoneHttpRequests1mGroupsDimensions": {
+		"__description": "",
 		"date": "Request date",
 		"datetime": "Request datetime, truncated to the minute",
 		"datetimeDay": "Request datetime truncated to the day",
@@ -2756,17 +3295,24 @@
 		"datetimeHour": "Request datetime truncated to the hour",
 		"datetimeMinute": "Request datetime truncated to the minute. Deprecated, use datetime instead"
 	},
-	"ZoneHttpRequests1mGroupsFilter_InputObject": {},
+	"ZoneHttpRequests1mGroupsFilter_InputObject": {
+		"__description": ""
+	},
 	"ZoneHttpRequests1mGroupsIpClassMapElem": {
+		"__description": "",
 		"ipType": "IP class",
 		"requests": ""
 	},
-	"ZoneHttpRequests1mGroupsOrderBy": {},
+	"ZoneHttpRequests1mGroupsOrderBy": {
+		"__description": ""
+	},
 	"ZoneHttpRequests1mGroupsResponseStatusMapElem": {
+		"__description": "",
 		"edgeResponseStatus": "HTTP response status code returned to client",
 		"requests": ""
 	},
 	"ZoneHttpRequests1mGroupsSum": {
+		"__description": "",
 		"browserMap": "",
 		"bytes": "Bytes returned to client",
 		"cachedBytes": "Bytes returned to client from cache",
@@ -2785,13 +3331,16 @@
 		"threats": "Requests classified as threats"
 	},
 	"ZoneHttpRequests1mGroupsThreatPathingMapElem": {
+		"__description": "",
 		"requests": "",
 		"threatPathingName": "Threat type"
 	},
 	"ZoneHttpRequests1mGroupsUniq": {
+		"__description": "",
 		"uniques": "A number of unique IPs"
 	},
 	"ZoneHttpRequestsAdaptiveGroups": {
+		"__description": "Aggregated HTTP requests data with adaptive sampling",
 		"avg": "The average value used for sample interval",
 		"count": "The number of values for a metric per dimension",
 		"dimensions": "List of dimensions to group by",
@@ -2799,10 +3348,12 @@
 		"sum": "The sum of values for a metric per dimension"
 	},
 	"ZoneHttpRequestsAdaptiveGroupsAvg": {
+		"__description": "",
 		"originResponseDurationMs": "The average originResponseDuration, in milliseconds, excluding 0 values (i.e. cached ones)",
 		"sampleInterval": ""
 	},
 	"ZoneHttpRequestsAdaptiveGroupsDimensions": {
+		"__description": "",
 		"apiGatewayMatchedEndpoint": "API Gateway endpoint matched at the edge",
 		"botManagementDecision": "Judgement of the bot management system",
 		"botScore": "The final score originated from bot management detections.",
@@ -2854,27 +3405,36 @@
 		"wafXssAttackScore": "Beta. WAF score for a XSS attack",
 		"xRequestedWith": "The X-Requested-With header of the client request"
 	},
-	"ZoneHttpRequestsAdaptiveGroupsFilter_InputObject": {},
-	"ZoneHttpRequestsAdaptiveGroupsOrderBy": {},
+	"ZoneHttpRequestsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"ZoneHttpRequestsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
 	"ZoneHttpRequestsAdaptiveGroupsRatio": {
+		"__description": "",
 		"status4xx": "",
 		"status5xx": ""
 	},
 	"ZoneHttpRequestsAdaptiveGroupsSum": {
+		"__description": "",
 		"edgeResponseBytes": "",
 		"visits": "The number of requests by end-users that were initiated from a different website (i.e. where the request HTTP Referer header does not match the host in the HTTP Host header)"
 	},
 	"ZoneHttpRequestsOverviewAdaptiveGroups": {
+		"__description": "A high-level summary of HTTP requests made by end users.",
 		"avg": "The average value for a metric per dimension",
 		"dimensions": "List of dimensions to group by",
 		"ratio": "The ratio of a range of status codes, between 0 and 1",
 		"sum": "The sum of values for a metric per dimension"
 	},
 	"ZoneHttpRequestsOverviewAdaptiveGroupsAvg": {
+		"__description": "",
 		"originResponseDurationMs": "The average originResponseDuration, in milliseconds, excluding 0 values (i.e. cached ones)",
 		"sampleInterval": "Average sample interval"
 	},
 	"ZoneHttpRequestsOverviewAdaptiveGroupsDimensions": {
+		"__description": "",
 		"clientCountryName": "Country from which request originated",
 		"clientRequestHTTPProtocol": "HTTP protocol version",
 		"clientSSLProtocol": "SSL protocol version",
@@ -2890,13 +3450,19 @@
 		"httpApplicationVersion": "Version associated with HTTP Application",
 		"userAgentBrowser": "Browser parsed from the user agent"
 	},
-	"ZoneHttpRequestsOverviewAdaptiveGroupsFilter_InputObject": {},
-	"ZoneHttpRequestsOverviewAdaptiveGroupsOrderBy": {},
+	"ZoneHttpRequestsOverviewAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"ZoneHttpRequestsOverviewAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
 	"ZoneHttpRequestsOverviewAdaptiveGroupsRatio": {
+		"__description": "",
 		"status4xx": "",
 		"status5xx": ""
 	},
 	"ZoneHttpRequestsOverviewAdaptiveGroupsSum": {
+		"__description": "",
 		"bytes": "",
 		"cachedBytes": "Bytes returned to client from cache",
 		"cachedRequests": "Requests served from cache",
@@ -2905,11 +3471,13 @@
 		"visits": "The number of requests by end-users that were initiated from a different website (i.e. where the request HTTP Referer header does not match the host in the HTTP Host header)"
 	},
 	"ZoneImageResizingRequests1mGroups": {
+		"__description": "Minutely rollups of Image Resizing requests",
 		"count": "Counts a number of rows per specific dimensions",
 		"dimensions": "List of dimensions to group by",
 		"sum": "Calculates a sum of each field per speicific dimensions"
 	},
 	"ZoneImageResizingRequests1mGroupsDimensions": {
+		"__description": "",
 		"contentType": "",
 		"date": "",
 		"datetime": "",
@@ -2919,9 +3487,14 @@
 		"datetimeMinute": "",
 		"resizeError": "Error description when a resized image was requested but could not be served"
 	},
-	"ZoneImageResizingRequests1mGroupsFilter_InputObject": {},
-	"ZoneImageResizingRequests1mGroupsOrderBy": {},
+	"ZoneImageResizingRequests1mGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"ZoneImageResizingRequests1mGroupsOrderBy": {
+		"__description": ""
+	},
 	"ZoneImageResizingRequests1mGroupsSum": {
+		"__description": "",
 		"originalBytes": "The size of the image before resizing",
 		"originalPixels": "The area of the image before resizing",
 		"requests": "Count of image resizing requests",
@@ -2929,6 +3502,7 @@
 		"resizedPixels": "The area of the image after resizing"
 	},
 	"ZoneLoadBalancingRequestsAdaptive": {
+		"__description": "Raw Load Balancing origin requests with adaptive sampling",
 		"coloCode": "IATA airport code of data center that received the request",
 		"datetime": "Request datetime",
 		"errorType": "Error generated when selecting an origin",
@@ -2950,16 +3524,21 @@
 		"sessionAffinityStatus": "Current status of session affinity",
 		"steeringPolicy": "Policy by which the load balancer will route traffic"
 	},
-	"ZoneLoadBalancingRequestsAdaptiveFilter_InputObject": {},
+	"ZoneLoadBalancingRequestsAdaptiveFilter_InputObject": {
+		"__description": ""
+	},
 	"ZoneLoadBalancingRequestsAdaptiveGroups": {
+		"__description": "Aggregated Load Balancing origin requests with adaptive sampling",
 		"avg": "",
 		"count": "The number of values for a metric per dimension",
 		"dimensions": "List of dimensions to group by"
 	},
 	"ZoneLoadBalancingRequestsAdaptiveGroupsAvg": {
+		"__description": "",
 		"sampleInterval": "Average sample interval"
 	},
 	"ZoneLoadBalancingRequestsAdaptiveGroupsDimensions": {
+		"__description": "",
 		"coloCode": "IATA airport code of data center that received the request",
 		"datetime": "Request datetime",
 		"datetimeFifteenMinutes": "Request datetime truncated to multiple of 15 minutes",
@@ -2987,10 +3566,17 @@
 		"sessionAffinityStatus": "Current status of session affinity",
 		"steeringPolicy": "Policy by which the load balancer will route traffic"
 	},
-	"ZoneLoadBalancingRequestsAdaptiveGroupsFilter_InputObject": {},
-	"ZoneLoadBalancingRequestsAdaptiveGroupsOrderBy": {},
-	"ZoneLoadBalancingRequestsAdaptiveOrderBy": {},
+	"ZoneLoadBalancingRequestsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"ZoneLoadBalancingRequestsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"ZoneLoadBalancingRequestsAdaptiveOrderBy": {
+		"__description": ""
+	},
 	"ZoneLoadBalancingRequestsAdaptiveOriginsElem": {
+		"__description": "",
 		"fqdn": "Fully qualified domain name of the origin (if available)",
 		"health": "Origin health status",
 		"ipv4": "IPv4 Address of the origin",
@@ -3000,6 +3586,7 @@
 		"weight": "Ratio of traffic that will be distributed to this origin among all origins in the pool"
 	},
 	"ZoneLoadBalancingRequestsAdaptivePoolsElem": {
+		"__description": "",
 		"avgRttMs": "Dynamic Latency: RTT (milliseconds) to reach the origin pool",
 		"distance": "Distance to Pool KM",
 		"healthCheckEnabled": "Health checks status",
@@ -3008,15 +3595,18 @@
 		"poolName": "Pool name"
 	},
 	"ZoneLogpushHealthAdaptiveGroups": {
+		"__description": "Beta. Logpush job health metrics",
 		"avg": "",
 		"count": "The number of values for a metric per dimension",
 		"dimensions": "List of dimensions to group by",
 		"sum": "The sum of values for a metric per dimension"
 	},
 	"ZoneLogpushHealthAdaptiveGroupsAvg": {
+		"__description": "",
 		"sampleInterval": "Average sample interval"
 	},
 	"ZoneLogpushHealthAdaptiveGroupsDimensions": {
+		"__description": "",
 		"date": "Date that we completed pushing the log batch",
 		"datetime": "Datetime that we completed pushing the log batch",
 		"datetimeFifteenMinutes": "Datetime that we completed pushing the log batch, truncated to multiple of 15 minutes",
@@ -3028,22 +3618,30 @@
 		"jobId": "The Logpush Job ID",
 		"status": "HTTP response status code of the log destination"
 	},
-	"ZoneLogpushHealthAdaptiveGroupsFilter_InputObject": {},
-	"ZoneLogpushHealthAdaptiveGroupsOrderBy": {},
+	"ZoneLogpushHealthAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"ZoneLogpushHealthAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
 	"ZoneLogpushHealthAdaptiveGroupsSum": {
+		"__description": "",
 		"bytes": "Bytes of uncompressed log data pushed",
 		"bytesCompressed": "Bytes of compressed log data pushed",
 		"records": "A count of the total number of records pushed."
 	},
 	"ZoneNelReportsAdaptiveGroups": {
+		"__description": "Data to visualize network error logs",
 		"avg": "",
 		"count": "The number of NEL Reports",
 		"dimensions": "List of dimensions to group by"
 	},
 	"ZoneNelReportsAdaptiveGroupsAvg": {
+		"__description": "",
 		"sampleInterval": "Average sample interval"
 	},
 	"ZoneNelReportsAdaptiveGroupsDimensions": {
+		"__description": "",
 		"clientIPASN": "Client ASN",
 		"clientIPASNDescription": "Client ASN Description",
 		"clientIPCountry": "Client Country",
@@ -3061,9 +3659,14 @@
 		"protocol": "HTTP Protocol used when the error occured",
 		"type": "The type of error in the phase"
 	},
-	"ZoneNelReportsAdaptiveGroupsFilter_InputObject": {},
-	"ZoneNelReportsAdaptiveGroupsOrderBy": {},
+	"ZoneNelReportsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"ZoneNelReportsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
 	"ZoneSettings": {
+		"__description": "Access and limitations for a zone",
 		"cacheReserveOperationsAdaptiveGroups": "",
 		"cacheReserveStorageAdaptiveGroups": "",
 		"emailRoutingAdaptive": "",
@@ -3093,11 +3696,13 @@
 		"zarazTriggersAdaptiveGroups": ""
 	},
 	"ZoneSynAvgPps1mGroups": {
+		"__description": "Minutely rollups of average packets per second sent in a SYN attack",
 		"count": "Counts a number of rows per specific dimensions",
 		"dimensions": "List of dimensions to group by",
 		"sum": "Calculates a sum of each field per speicific dimensions"
 	},
 	"ZoneSynAvgPps1mGroupsDimensions": {
+		"__description": "",
 		"date": "Date of this record.",
 		"datetimeDay": "Specific minute for which we gathered samples truncated to a multiple of a day.",
 		"datetimeFifteenMinutes": "Specific minute for which we gathered samples truncated to a multiple of 15 minutes.",
@@ -3105,12 +3710,18 @@
 		"datetimeHour": "Specific minute for which we gathered samples truncated to a multiple of an hour.",
 		"datetimeMinute": "Specific minute for which we gathered samples."
 	},
-	"ZoneSynAvgPps1mGroupsFilter_InputObject": {},
-	"ZoneSynAvgPps1mGroupsOrderBy": {},
+	"ZoneSynAvgPps1mGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"ZoneSynAvgPps1mGroupsOrderBy": {
+		"__description": ""
+	},
 	"ZoneSynAvgPps1mGroupsSum": {
+		"__description": "",
 		"avgPpsPerMinute": "Avg packets per second for this minute."
 	},
 	"ZoneWaitingRoomAnalyticsAdaptive": {
+		"__description": "Beta. Raw waiting room analytics logs",
 		"datetime": "The date and time of the state of analytics for the waiting room",
 		"maxEstimatedTimeMinutes": "Maximum value of estimated time in minutes",
 		"newUsersPerMinute": "Actual value of new users per minute",
@@ -3135,8 +3746,11 @@
 		"waitingRoomId": "Unique Identifier for the waiting room",
 		"waitingRoomName": "Name of the waiting room"
 	},
-	"ZoneWaitingRoomAnalyticsAdaptiveFilter_InputObject": {},
+	"ZoneWaitingRoomAnalyticsAdaptiveFilter_InputObject": {
+		"__description": ""
+	},
 	"ZoneWaitingRoomAnalyticsAdaptiveGroups": {
+		"__description": "Beta. Aggregated waiting room analytics logs with adaptive sampling",
 		"avg": "Beta. The avg of values for a metric per dimension",
 		"avgWeighted": "Beta. The avgWeighted values for a metric per dimension",
 		"dimensions": "List of dimensions to group by",
@@ -3144,6 +3758,7 @@
 		"min": "Beta. The minimum value for a metric per dimenstion"
 	},
 	"ZoneWaitingRoomAnalyticsAdaptiveGroupsAvg": {
+		"__description": "",
 		"maxEstimatedTimeMinutes": "Average of the maximum estimated wait time per minute. A negative number means no data",
 		"newUsersPerMinute": "Average rate of new users per minute. A negative number means no data",
 		"newUsersPerMinuteConfig": "Configured value of new users per minute. A negative number means no data",
@@ -3154,6 +3769,7 @@
 		"totalQueuedUsers": "Average of total queued users"
 	},
 	"ZoneWaitingRoomAnalyticsAdaptiveGroupsAvgWeighted": {
+		"__description": "",
 		"timeBetweenRefreshesP50": "Weighted average of 50th percentile of time spent between session refreshes in seconds. A negative number means no data",
 		"timeBetweenRefreshesP75": "Weighted average of 75th percentile of time spent between session refreshes in seconds. A negative number means no data",
 		"timeBetweenRefreshesP90": "Weighted average of 90th percentile of time spent between session refreshes in seconds. A negative number means no data",
@@ -3168,6 +3784,7 @@
 		"timeOnOriginP95": "Weighted average of 95th percentile of time spent on origin in seconds. A negative number means no data"
 	},
 	"ZoneWaitingRoomAnalyticsAdaptiveGroupsDimensions": {
+		"__description": "",
 		"date": "The date the event was written to the database",
 		"datetime": "The date and time the event was written to the database",
 		"datetimeFifteenMinutes": "The date and time the event was written to the database, truncated to a multiple of 15 minutes",
@@ -3177,8 +3794,11 @@
 		"sampleInterval": "ABR sample interval",
 		"waitingRoomId": "Unique Identifier for the waiting room"
 	},
-	"ZoneWaitingRoomAnalyticsAdaptiveGroupsFilter_InputObject": {},
+	"ZoneWaitingRoomAnalyticsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
 	"ZoneWaitingRoomAnalyticsAdaptiveGroupsMax": {
+		"__description": "",
 		"maxEstimatedTimeMinutes": "The maximum value of estimated time in minutes. A negative number means no data",
 		"newUsersPerMinute": "The maximum value of the actual new users per minute. A negative number means no data",
 		"newUsersPerMinuteConfig": "The maximum value of the configured new users per minute. A negative number means no data",
@@ -3188,6 +3808,7 @@
 		"totalQueuedUsers": "The maximum value of total number of queued users. A negative number means no data"
 	},
 	"ZoneWaitingRoomAnalyticsAdaptiveGroupsMin": {
+		"__description": "",
 		"maxEstimatedTimeMinutes": "The minimum value of estimated time in minutes. A negative number means no data",
 		"newUsersPerMinute": "The minimum value of the actual new users per minute. A negative number means no data",
 		"newUsersPerMinuteConfig": "The minimum value of the configured new users per minute. A negative number means no data",
@@ -3196,13 +3817,19 @@
 		"totalActiveUsersConfig": "The minimum value of the configured total active users. A negative number means no data",
 		"totalQueuedUsers": "The minimum value of total number of queued users. A negative number means no data"
 	},
-	"ZoneWaitingRoomAnalyticsAdaptiveGroupsOrderBy": {},
-	"ZoneWaitingRoomAnalyticsAdaptiveOrderBy": {},
+	"ZoneWaitingRoomAnalyticsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
+	"ZoneWaitingRoomAnalyticsAdaptiveOrderBy": {
+		"__description": ""
+	},
 	"ZoneZarazActionsAdaptiveGroups": {
+		"__description": "Zaraz Actions Analytics",
 		"count": "Number of processed Zaraz Actions",
 		"dimensions": "List of dimensions to group by"
 	},
 	"ZoneZarazActionsAdaptiveGroupsDimensions": {
+		"__description": "",
 		"actionName": "Action Name",
 		"date": "The date the Action was triggered",
 		"datetimeFifteenMinutes": "The date and time truncated to fifteen minutes",
@@ -3211,13 +3838,19 @@
 		"datetimeMinute": "The date and time truncated to the minute",
 		"toolName": "Tool Name"
 	},
-	"ZoneZarazActionsAdaptiveGroupsFilter_InputObject": {},
-	"ZoneZarazActionsAdaptiveGroupsOrderBy": {},
+	"ZoneZarazActionsAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"ZoneZarazActionsAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
 	"ZoneZarazTrackAdaptiveGroups": {
+		"__description": "Zaraz Track Analytics - counts zaraz.track calls",
 		"count": "Number of processed Zaraz Track requests",
 		"dimensions": "List of dimensions to group by"
 	},
 	"ZoneZarazTrackAdaptiveGroupsDimensions": {
+		"__description": "",
 		"date": "Date when track was called",
 		"datetimeFifteenMinutes": "The date and time truncated to fifteen minutes",
 		"datetimeFiveMinutes": "The date and time truncated to five minutes",
@@ -3226,13 +3859,19 @@
 		"trackName": "Track Name",
 		"urlPath": "The URL from where Track was called"
 	},
-	"ZoneZarazTrackAdaptiveGroupsFilter_InputObject": {},
-	"ZoneZarazTrackAdaptiveGroupsOrderBy": {},
+	"ZoneZarazTrackAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"ZoneZarazTrackAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
 	"ZoneZarazTriggersAdaptiveGroups": {
+		"__description": "Zaraz Triggers Analytics (a trigger is a set of rules that can trigger a zaraz action)",
 		"count": "Number of processed Zaraz Triggers",
 		"dimensions": "List of dimensions to group by"
 	},
 	"ZoneZarazTriggersAdaptiveGroupsDimensions": {
+		"__description": "",
 		"date": "The date when trigger was triggerd",
 		"datetimeFifteenMinutes": "The date and time truncated to fifteen minutes",
 		"datetimeFiveMinutes": "The date and time truncated to five minutes",
@@ -3240,9 +3879,14 @@
 		"datetimeMinute": "The date and time truncated to the minute",
 		"triggerName": "Trigger Name"
 	},
-	"ZoneZarazTriggersAdaptiveGroupsFilter_InputObject": {},
-	"ZoneZarazTriggersAdaptiveGroupsOrderBy": {},
+	"ZoneZarazTriggersAdaptiveGroupsFilter_InputObject": {
+		"__description": ""
+	},
+	"ZoneZarazTriggersAdaptiveGroupsOrderBy": {
+		"__description": ""
+	},
 	"account": {
+		"__description": "",
 		"accessLoginRequestsAdaptiveGroups": "Access login requests",
 		"accountTag": "",
 		"cdnNetworkAnalyticsAdaptiveGroups": "Network analytics data for Cloudflare CDN traffic",
@@ -3297,23 +3941,47 @@
 		"zeroTrustPrivateNetworkDiscoveryGroups": "Beta - Unique origins, applications, and users discovered for Zero Trust private networks",
 		"zones": ""
 	},
-	"bool": {},
-	"bytes": {},
-	"float32": {},
-	"float64": {},
-	"int64": {},
-	"mutation": {},
-	"string": {},
-	"uint16": {},
-	"uint32": {},
-	"uint64": {},
-	"uint8": {},
+	"bool": {
+		"__description": "Scalar type bool"
+	},
+	"bytes": {
+		"__description": "Scalar type []uint8"
+	},
+	"float32": {
+		"__description": "Scalar type float32"
+	},
+	"float64": {
+		"__description": "Scalar type float64"
+	},
+	"int64": {
+		"__description": "Scalar type int64"
+	},
+	"mutation": {
+		"__description": ""
+	},
+	"string": {
+		"__description": "Scalar type string"
+	},
+	"uint16": {
+		"__description": "Scalar type uint16"
+	},
+	"uint32": {
+		"__description": "Scalar type uint32"
+	},
+	"uint64": {
+		"__description": "Scalar type uint64"
+	},
+	"uint8": {
+		"__description": "Scalar type uint8"
+	},
 	"viewer": {
+		"__description": "",
 		"accounts": "",
 		"budget": "",
 		"zones": ""
 	},
 	"zone": {
+		"__description": "",
 		"cacheReserveOperationsAdaptiveGroups": "Beta. Cache Reserve operations with adaptive sampling",
 		"cacheReserveStorageAdaptiveGroups": "Beta. Cache Reserve storage with adaptive sampling",
 		"emailRoutingAdaptive": "Beta. Raw email routing logs with adaptive sampling",
