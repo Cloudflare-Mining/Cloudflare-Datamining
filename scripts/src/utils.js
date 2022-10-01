@@ -26,6 +26,8 @@ export async function sendToDiscord(name, msg, type){
 	let url = process.env.DISCORD_URL;
 	if(type === 'marketing'){
 		url = process.env.DISCORD_MARKETING_URL;
+	}else if(type === 'cdn_cgi_dev'){
+		url = process.env.DISCORD_CGI_DEV_URL;
 	}
 	return fetch(`${url}?wait=true`, {
 		method: 'POST',

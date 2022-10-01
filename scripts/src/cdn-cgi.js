@@ -56,7 +56,6 @@ if(traceKeys.length >= 0){
 
 // colos with mostly stable versions across metals
 const colos = {
-	'pig': 'pig',
 	'canary': 'lis01',
 	'mcp': 'lhr01',
 	// 'mcp-canary-candidate-01': 'gru05',
@@ -66,22 +65,12 @@ const colos = {
 	// 'mcp-canary-candidate-05': 'poa01',
 	'main': 'dfw01',
 };
-// colos with very unstable versions across metals, so get an aggregate of all versions
-const aggregateColos = {
-	'dog': 'sfo06',
-	'lab': 'sfo07',
-};
 
 const buildVersions = {};
 for(const [name, colo] of Object.entries(colos)){
 	buildVersions[`build-info/fl-${name}`] = `${process.env.FETCH_FROM_COLO_URL}colo=${colo}&url=https://trace.colo.quest/info?type=fl`;
 	buildVersions[`build-info/cache-${name}`] = `${process.env.FETCH_FROM_COLO_URL}colo=${colo}&url=https://trace.colo.quest/info?type=cache`;
 	buildVersions[`build-info/challenge-platform-${name}`] = `${process.env.FETCH_FROM_COLO_URL}colo=${colo}&url=https://trace.colo.quest/info?type=challenge-platform`;
-}
-for(const [name, colo] of Object.entries(aggregateColos)){
-	buildVersions[`build-info/fl-${name}`] = `${process.env.FETCH_FROM_COLO_MULTI_URL}colo=${colo}&url=https://trace.colo.quest/info?type=fl`;
-	buildVersions[`build-info/cache-${name}`] = `${process.env.FETCH_FROM_COLO_MULTI_URL}colo=${colo}&url=https://trace.colo.quest/info?type=cache`;
-	buildVersions[`build-info/challenge-platform-${name}`] = `${process.env.FETCH_FROM_COLO_MULTI_URL}colo=${colo}&url=https://trace.colo.quest/info?type=challenge-platform`;
 }
 
 for(const [file, url] of Object.entries(buildVersions)){

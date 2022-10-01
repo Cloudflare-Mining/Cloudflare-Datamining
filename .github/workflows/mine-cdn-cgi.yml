@@ -28,8 +28,9 @@ jobs:
           git config user.email "<>"
           cd scripts
           npm ci
-          npm run mine:cdn-cgi
+          npm run mine:cdn-cgi && npm run mine:cdn-cgi-dev
         env:
           DISCORD_URL: ${{ secrets.DISCORD_CGI_URL }}
+          DISCORD_CGI_DEV_URL: ${{ secrets.DISCORD_CGI_DEV_URL }}
           FETCH_FROM_COLO_URL: ${{ secrets.FETCH_FROM_COLO_URL }}
           FETCH_FROM_COLO_MULTI_URL: ${{ secrets.FETCH_FROM_COLO_MULTI_URL }}
