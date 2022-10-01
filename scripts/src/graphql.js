@@ -42,7 +42,9 @@ async function run(){
           + `    }\n`
           + `  }\n`;
 
-		result[type.name] = {};
+		result[type.name] = {
+			__description: type.description,
+		};
 	}
 
 	query += `}`;
