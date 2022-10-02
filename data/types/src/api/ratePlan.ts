@@ -171,7 +171,9 @@ export const ProductPlanId = eg.union([
   eg.literal('argo_zone_ent_tryout'),
   eg.literal('ARGO_ZONE_ENT_TRYOUT'),
   eg.literal('IMAGES_ENT_TRYOUT'),
-  eg.literal('images_ent_tryout')
+  eg.literal('images_ent_tryout'),
+  eg.literal('advanced_cert_manager_tryout'),
+  eg.literal('ADVANCED_CERT_MANAGER_TRYOUT')
 ]);
 export type ProductPlanId = TypeFromCodec<typeof ProductPlanId>;
 
