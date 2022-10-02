@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.16.0](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/types@6.15.27...@cloudflare/types@6.16.0) (2022-10-02)
+
+
+### Features
+
+* **stratus:** UI-5471 Enterprise Product Enablement - ACM ([ca71396](http://stash.cfops.it:7999/fe/stratus/commits/ca71396))
+
+
+
+
+
 ## [6.15.27](http://stash.cfops.it:7999/fe/stratus/compare/@cloudflare/types@6.15.26...@cloudflare/types@6.15.27) (2022-09-27)
 
 
