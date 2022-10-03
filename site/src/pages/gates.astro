@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Table from '../components/Table.astro';
 
-const importFiles = await Astro.glob('../../../data/gates/config.json');
+const importFiles = await Astro.glob('../../../data/gates/dashboard.json');
 const gates = importFiles[0].default;
 
 ---
