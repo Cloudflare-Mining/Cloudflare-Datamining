@@ -370,6 +370,16 @@
 		"id": "ssl_tls.custom_origin_trust_store_drawer_api_delete"
 	},
 	{
+		"uri": "/zones/:zone_identifier/acm/total_tls",
+		"method": "POST",
+		"id": "total-tls-enable-or-disable-total-tls"
+	},
+	{
+		"uri": "/zones/:zone_identifier/acm/total_tls",
+		"method": "GET",
+		"id": "total-tls-total-tls-settings-details"
+	},
+	{
 		"uri": "/zones/:zone_identifier/custom_certificates",
 		"method": "POST",
 		"id": "custom-ssl-for-a-zone-create-ssl-configuration"

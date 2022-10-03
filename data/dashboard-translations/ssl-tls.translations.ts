@@ -680,6 +680,14 @@ TLS 1.3 is the newest, fastest, and most secure version of the TLS protocol. SSL
 Authenticated Origin Pulls allow you to cryptographically verify that requests to your origin server have come from Cloudflare using a TLS client certificate. This prevents clients from sending requests directly to your origin, bypassing security measures provided by Cloudflare, such as IP and Web Application Firewalls, logging, and encryption.
 This feature requires additional configuration at your web server. Refer to our support guide on [Authenticated Origin Pulls](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull).`,
 	tls_client_auth_title: "Authenticated Origin Pulls",
+	total_tls: {
+		card_title: "Total TLS",
+		card_description: "Cloudflare will issue individual certificates for every proxied hostname. These certificates will protect proxied hostnames that are not covered by the Universal certificate.",
+		disable_modal_title: "Disable Total TLS",
+		disable_modal_description: "Immediately after confirming the downgrade, your certificates will be deleted and no longer served to visitors.",
+		disable_modal_confirmation: "I understand that any hostnames not covered by my Universal SSL or uploaded certificates will no longer be reachable over HTTPS once I disable this feature.",
+		purchase_acm_link: "To enable Total TLS, purchase Advanced Certificate Manager."
+	},
 	general_checkbox_confirmation: "I understand",
 	general_acknowledgement_modal_title: "Acknowledgement",
 	dcv_cname: "CNAME",
