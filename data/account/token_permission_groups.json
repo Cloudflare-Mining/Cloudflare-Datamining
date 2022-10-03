@@ -352,22 +352,6 @@
 		]
 	},
 	{
-		"id": "5d78fd7895974fd0bdbbbb079482721b",
-		"name": "Challenge Widgets Read",
-		"description": "Grants read access to Challenge Widgets",
-		"scopes": [
-			"com.cloudflare.api.account"
-		]
-	},
-	{
-		"id": "755c05aa014b4f9ab263aa80b8167bd8",
-		"name": "Challenges Widgets Write",
-		"description": "Grants write access to Challenges widgets",
-		"scopes": [
-			"com.cloudflare.api.account"
-		]
-	},
-	{
 		"id": "9ade9cfc8f8949bcb2371be2f0ec8db1",
 		"name": "China Network Steering Read",
 		"description": "Grants read access to China Network Steering",
@@ -1051,6 +1035,22 @@
 		"id": "ae16e88bc7814753a1894c7ce187ab72",
 		"name": "Transform Rules Write",
 		"description": "Grants write access to transform rules",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "5d78fd7895974fd0bdbbbb079482721b",
+		"name": "Turnstile Sites Read",
+		"description": "Grants read access to Turnstile",
+		"scopes": [
+			"com.cloudflare.api.account"
+		]
+	},
+	{
+		"id": "755c05aa014b4f9ab263aa80b8167bd8",
+		"name": "Turnstile Sites Write",
+		"description": "Grants write access to Turnstile",
 		"scopes": [
 			"com.cloudflare.api.account"
 		]
