@@ -72,18 +72,24 @@ const getUnescapedAny = (sequence, code) => {
 		return String.fromCodePoint(code);
 	}
 	switch(sequence){
-		case '\\b':
+		case '\\b': {
 			return '\b';
-		case '\\f':
+		}
+		case '\\f': {
 			return '\f';
-		case '\\n':
+		}
+		case '\\n': {
 			return '\n';
-		case '\\r':
+		}
+		case '\\r': {
 			return '\r';
-		case '\\t':
+		}
+		case '\\t': {
 			return '\t';
-		case '\\v':
+		}
+		case '\\v': {
 			return '\v';
+		}
 	}
 	return false;
 };
