@@ -4,7 +4,7 @@
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "DDoS - HUB - Product Page (8/2022 Test page)",
+				"pageName": "DDoS - HUB - Product Page (9/2022 Test page)",
 				"localeList": {
 					"enUS": "English for Locale",
 					"zhCN": "English for Locale",
@@ -59,7 +59,7 @@
 				"template": null,
 				"relatedBlades": [
 					{
-						"contentfulId": "3pnKiecwVKlAZFDu0n4Z16",
+						"contentfulId": "51DmMvaEjGutZmwFg37zkh",
 						"contentTypeId": "bladeHeroAnimation",
 						"title": "Industry Leading DDoS Mitigation",
 						"subtitle": "Highly rated web, application & network DDoS protection",
@@ -78,11 +78,10 @@
 						"bladeBorder": "none",
 						"htmlId": null,
 						"textColor": "black",
-						"includeVideo": false,
-						"streamVideoId": null,
+						"includeVideo": true,
+						"streamVideoId": "808a6b871d4b5ea035b6ab1785ae8477",
 						"streamOptions": [
-							"controls",
-							"captions"
+							"controls"
 						],
 						"streamCaptions": "en",
 						"popupStreamId": null,
@@ -91,9 +90,22 @@
 						"button2OpenInNewTab": null,
 						"streamThumbnails": null,
 						"sectionPadding": "tile--no-top-bottom-padding",
-						"streamPosterAssetFile": null,
+						"streamPosterAssetFile": {
+							"id": "00146103-f7dd-59e3-8c69-8bbaefb10756",
+							"altText": null,
+							"title": null,
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "[path]/mt-hero-banner.png"
+								}
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
 						"streamPoster": null,
-						"imageSize": "Large",
+						"imageSize": "Medium",
 						"imagePosition": null,
 						"leftLinkUrl": null,
 						"leftLink": "[Need more than just DDoS protection? Talk to an Expert!](#ent-demo-form \"DDoS Enterprise Demo\")",
@@ -104,20 +116,7 @@
 						"backgroundAssetFile": null,
 						"imageLayout": null,
 						"image": null,
-						"imageAssetFile": {
-							"id": "9c7a06bd-2cf2-5e69-b640-7ffa79aa4ec2",
-							"altText": "Cloudflare One Week 2022 - Cloudflare won Security Software Innovator Award",
-							"title": "Cloudflare One Week 2022 - Cloudflare won Security Software Innovator Award",
-							"activeAsset": "Contentful Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "[path]/Cloudflare_won_Security_Software_Innovator_Award.png"
-								}
-							},
-							"brandfolderAsset": null,
-							"brandfolderAssetMobile": null
-						}
+						"imageAssetFile": null
 					},
 					{
 						"contentfulId": "2PZhdwWK2ATNCCp2BZmD8u",

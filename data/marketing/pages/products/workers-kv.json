@@ -56,14 +56,14 @@
 					{
 						"contentfulId": "36bdxAX9lY4sYUqIs8yqoy",
 						"contentTypeId": "bladeHeroAnimation",
-						"title": "Build serverless applications with Cloudflare Workers KV",
+						"title": "Leverage data stored at the edge",
 						"subtitle": "Serverless key-value storage for applications on Cloudflare",
-						"copy": "Cloudflare Workers KV provides access to a secure low latency key-value store at all of the data centers in Cloudflare's global network. Developers can use Cloudflare Workers and Workers KV to augment existing applications or to build entirely new applications on top of Cloudflare's global cloud network. Workers KV scales seamlessly to support applications serving dozens or millions of users.",
+						"copy": "Extend your applications' functionality with our serverless key-value store. Workers KV provides a secure low-latency key-value store across 275+ global locations. Automatic scaling supports applications that serve dozens or millions of users. \n\nEventually consistent by design, KV caches data globally and is ideal for reference data or assets that don't change frequently. \n",
 						"buttonColor": null,
 						"buttonColor2": null,
-						"buttonText1": "Sign Up",
+						"buttonText1": "Developer Docs",
 						"buttonText1LoggedIn": "View in Dashboard",
-						"buttonUrl1": "https://dash.cloudflare.com/sign-up/workers",
+						"buttonUrl1": "https://developers.cloudflare.com/workers/learning/how-kv-works/",
 						"buttonUrl1LoggedIn": "https://dash.cloudflare.com/?to=/:account/:zone/analytics/workers",
 						"button1ExtraClass": null,
 						"buttonText2": "Contact Sales",
@@ -125,8 +125,8 @@
 					},
 					{
 						"contentfulId": "7amZDKmmUh5xJzqtD0Eid1",
-						"title": "Build more with serverless storage",
-						"copy": "Building serverless applications with fast global response times requires moving compute and storage closer to the user. Cloudflare created a serverless execution environment at all of Cloudflare's data centers in our global network, but customers still faced the time-intensive and complex task of managing their own storage. With Workers KV, low-latency global application access to a scalable key-value store is only an API call away.",
+						"title": "Improve global response times",
+						"copy": "Move your application closer to the user, with edge storage, improving both site performance and the overall user experience. Store, modify, and query key-value data across our globally distributed network quickly and securely. ",
 						"toggleText": null,
 						"button": null,
 						"learnMoreUrl": null,
@@ -184,17 +184,17 @@
 						"bladeName": "WorkersKV - Solution",
 						"title": null,
 						"longCopy": null,
-						"header1": "Responsive applications anywhere",
+						"header1": "Reliable by default",
 						"subheader1": null,
-						"copy1": "Serverless applications running on Cloudflare Workers receive low latency access to a globally distributed key-value store. Cloudflare Workers KV achieves this low latency by caching replicas of the keys and values in Cloudflare's global cloud network.",
+						"copy1": "\nKV replicates data automatically to avoid a single point of failure. Application developers can rely on KV to recover from failures with zero downtime.",
 						"image": null,
 						"imageAssetFile": null,
 						"buttonText1": null,
 						"buttonUrl1": null,
 						"button1ExtraClass": null,
-						"header2": "Build without scaling concerns",
+						"header2": "Improve developer productivity",
 						"subheader2": null,
-						"copy2": "Cloudflare Workers KV lets developers focus their time on adding new capabilities to their serverless applications instead of wasting time scaling their key-value stores.",
+						"copy2": "Improve developers productivity by allowing them to focus their time on building new features rather than scaling out key-value stores. \n\nWorkers-KV automatically replicates data to all of Cloudflare's global locations, allowing you to scale seamlessly. ",
 						"buttonText2": null,
 						"buttonUrl2": null,
 						"button2ExtraClass": null,
@@ -245,133 +245,9 @@
 						"quoteCarousel": null
 					},
 					{
-						"contentfulId": "2EHkD4488ISe4EckY6UeoU",
-						"title": "Create targeted ecommerce experiences",
-						"copy": "Using Workers KV to quickly access data, generate customized pages just as quickly as serving static sites. This makes it possible to add shopping cart data to ecommerce sites, target marketing to subsets of visitors, and significantly reduce latency for a whole host of applications.",
-						"toggleText": null,
-						"button": null,
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": null,
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": null,
-						"streamCaptions": null,
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": {
-							"file": {
-								"publicURL": "[path]/Create_Targeted_E-Commerce_Experiences.svg"
-							}
-						},
-						"imageAssetFile": {
-							"id": "1bd5d70c-4f50-55ee-993c-8856fd951f1a",
-							"altText": "workers-kv-ecom-v1",
-							"title": "workers-kv-ecom-v1",
-							"activeAsset": "Brandfolder Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "[path]/Create_Targeted_E-Commerce_Experiences.svg"
-								}
-							},
-							"brandfolderAsset": {
-								"size": 17791,
-								"height": 1024,
-								"width": 1796,
-								"filename": "workers-KV-targeted-ecommerce-spot-illustration.svg",
-								"file": {
-									"publicURL": "[path]/workers-KV-targeted-ecommerce-spot-illustration.svg"
-								}
-							},
-							"brandfolderAssetMobile": null
-						},
-						"featureList": null,
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": null,
-						"backgroundColor": "light-blue",
-						"bladeBorder": "none",
-						"imagePosition": true,
-						"imageSize": null,
-						"imageTextAlignment": null,
-						"togglesTo": null
-					},
-					{
-						"contentfulId": "1znLxwqlQccggEYI4wq4cS",
-						"title": "Enforce custom authorization and authentication",
-						"copy": "Store session tokens or other user information to quickly ensure the right user has access to the right content. Move the authentication layer out of applications and into the network itself to improve site speed while reducing the threat of application-level authentication vulnerabilities.\n\n",
-						"toggleText": null,
-						"button": null,
-						"learnMoreUrl": null,
-						"learnMoreText": null,
-						"link": null,
-						"subheadline": null,
-						"button1Text": null,
-						"button1Url": null,
-						"button1Color": null,
-						"button2Text": null,
-						"button2Url": null,
-						"button2Color": null,
-						"streamOptions": null,
-						"streamCaptions": null,
-						"streamVideoId": null,
-						"streamThumbnails": null,
-						"streamPoster": null,
-						"streamPosterAssetFile": null,
-						"image": {
-							"file": {
-								"publicURL": "[path]/Enforce_Custom_Authorization_and_Authentication.svg"
-							}
-						},
-						"imageAssetFile": {
-							"id": "5f4ea169-25de-5b69-95f2-60f1d468e2a8",
-							"altText": "workerskv-custom-auth-v1",
-							"title": "workerskv-custom-auth-v1",
-							"activeAsset": "Brandfolder Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "[path]/Enforce_Custom_Authorization_and_Authentication.svg"
-								}
-							},
-							"brandfolderAsset": {
-								"size": 16502,
-								"height": 1024,
-								"width": 1796,
-								"filename": "workers-KV-custom-authorization-authentication-spot-illustration.svg",
-								"file": {
-									"publicURL": "[path]/workers-KV-custom-authorization-authentication-spot-illustration.svg"
-								}
-							},
-							"brandfolderAssetMobile": null
-						},
-						"featureList": null,
-						"contentTypeId": "bladeImageText",
-						"sectionTitle": null,
-						"htmlId": null,
-						"titleSize": null,
-						"sectionPadding": null,
-						"backgroundColor": "light-blue",
-						"bladeBorder": "border-top",
-						"imagePosition": false,
-						"imageSize": null,
-						"imageTextAlignment": null,
-						"togglesTo": null
-					},
-					{
 						"contentfulId": "68OL8KMDJKsAG2uM8C64iu",
-						"title": "Customize application behavior",
-						"copy": "Store and return custom content based on user, session, cookie, or any other request attribute. Perform low latency injection of personalized content from Workers KV into any cached or uncached template before returning it to the user.",
+						"title": "Create targeted experiences",
+						"copy": "Generate customized content  instead of  serving static sites. Serve unique content to returning visitors, target marketing to subsets of visitors, or store user preferences. \n\nQuickly modify, cached or uncached content, with low latency injection of personalized content from Workers KV.",
 						"toggleText": null,
 						"button": null,
 						"learnMoreUrl": null,
@@ -431,9 +307,9 @@
 						"togglesTo": null
 					},
 					{
-						"contentfulId": "6vivTP2uQ0gUiuY0sY2MiC",
-						"title": "Deploy granular tests",
-						"copy": "Run A/B tests or stage release rollouts on a per-user basis. Use Cloudflare Workers KV to store millions of tests that can be quickly run from Workers anywhere in the world. Write analytics back to Workers KV or any other analytics services directly from the Worker.",
+						"contentfulId": "1znLxwqlQccggEYI4wq4cS",
+						"title": "Enforce custom authorization and authentication",
+						"copy": "Store session tokens or other user information to quickly ensure the right user has access to the right content. Move the authentication layer out of applications and into the network.   Reduce the threat of application-level authentication vulnerabilities while improving performance.\n",
 						"toggleText": null,
 						"button": null,
 						"learnMoreUrl": null,
@@ -454,27 +330,27 @@
 						"streamPosterAssetFile": null,
 						"image": {
 							"file": {
-								"publicURL": "[path]/AB_Testing.svg"
+								"publicURL": "[path]/Enforce_Custom_Authorization_and_Authentication.svg"
 							}
 						},
 						"imageAssetFile": {
-							"id": "5f8a1159-78fe-5b66-a783-74191701dbe2",
-							"altText": "workerskv-abtesting-v1",
-							"title": "workerskv-abtesting-v1",
+							"id": "5f4ea169-25de-5b69-95f2-60f1d468e2a8",
+							"altText": "workerskv-custom-auth-v1",
+							"title": "workerskv-custom-auth-v1",
 							"activeAsset": "Brandfolder Asset",
 							"locale": "en-US",
 							"contentfulAsset": {
 								"file": {
-									"publicURL": "[path]/AB_Testing.svg"
+									"publicURL": "[path]/Enforce_Custom_Authorization_and_Authentication.svg"
 								}
 							},
 							"brandfolderAsset": {
-								"size": 7203,
+								"size": 16502,
 								"height": 1024,
 								"width": 1796,
-								"filename": "workers-KV-deploy-granular-tests-spot-illustration.svg",
+								"filename": "workers-KV-custom-authorization-authentication-spot-illustration.svg",
 								"file": {
-									"publicURL": "[path]/workers-KV-deploy-granular-tests-spot-illustration.svg"
+									"publicURL": "[path]/workers-KV-custom-authorization-authentication-spot-illustration.svg"
 								}
 							},
 							"brandfolderAssetMobile": null
@@ -595,6 +471,29 @@
 						"quoteCarousel": null
 					},
 					{
+						"contentfulId": "1NxhMfsLkQMO8uiqQ0umag",
+						"contentTypeId": "bladeKeyFeatures",
+						"backgroundColor": "light-blue",
+						"title": "Key Features",
+						"keyFeature": [
+							"Reduce latency when values are stored and read across Cloudflare's global network. ",
+							"Store assets up to 25 MB in size. ",
+							"Integrate with 3rd party applications.",
+							"Set customized TTLs to avoid serving stale values. ",
+							"Read and write from Cloudflare Workers",
+							"API to write to Workers KV from 3rd party applications",
+							"Uses Cloudflare's robust caching infrastructure",
+							"Integrates with Workers Preview"
+						],
+						"bladeBorder": "none",
+						"sectionPadding": null,
+						"titleColor": null,
+						"variant": null,
+						"description": null,
+						"featuresTextStyle": null,
+						"htmlId": null
+					},
+					{
 						"contentfulId": "DyPNZQleYyjz7rsw4jfrA",
 						"backgroundColor": "light-gray",
 						"contentTypeId": "bladeFourFeatures",
@@ -658,29 +557,6 @@
 								"streamThumbnailAssetFile": null
 							}
 						]
-					},
-					{
-						"contentfulId": "1NxhMfsLkQMO8uiqQ0umag",
-						"contentTypeId": "bladeKeyFeatures",
-						"backgroundColor": "light-blue",
-						"title": "Key Features",
-						"keyFeature": [
-							"Accessible from all %{DataCenterCount} Cloudflare locations",
-							"Supports values up to 25 MB",
-							"Supports keys up to 512 Bytes",
-							"Read and write from Cloudflare Workers",
-							"API to write to Workers KV from 3rd party applications",
-							"Uses Cloudflare's robust caching infrastructure",
-							"Set arbitrary TTLs for values",
-							"Integrates with Workers Preview"
-						],
-						"bladeBorder": "none",
-						"sectionPadding": null,
-						"titleColor": null,
-						"variant": null,
-						"description": null,
-						"featuresTextStyle": null,
-						"htmlId": null
 					}
 				],
 				"noindex": false,

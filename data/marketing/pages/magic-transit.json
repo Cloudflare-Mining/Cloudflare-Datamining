@@ -59,7 +59,7 @@
 				"template": null,
 				"relatedBlades": [
 					{
-						"contentfulId": "8WsIP8fbREmvsrcTWqv0p",
+						"contentfulId": "7or3qVTAJ0vFra30JcGdus",
 						"contentTypeId": "bladeHeroAnimation",
 						"title": "Magic Transit",
 						"subtitle": "Extending Cloudflare to all your networks",
@@ -78,23 +78,34 @@
 						"bladeBorder": "none",
 						"htmlId": null,
 						"textColor": "black",
-						"includeVideo": false,
-						"streamVideoId": null,
+						"includeVideo": true,
+						"streamVideoId": "808a6b871d4b5ea035b6ab1785ae8477",
 						"streamOptions": [
-							"autoplay",
-							"muted",
-							"loop"
+							"controls"
 						],
-						"streamCaptions": null,
+						"streamCaptions": "en",
 						"popupStreamId": null,
 						"popupText": null,
 						"button1OpenInNewTab": null,
 						"button2OpenInNewTab": null,
 						"streamThumbnails": null,
 						"sectionPadding": null,
-						"streamPosterAssetFile": null,
+						"streamPosterAssetFile": {
+							"id": "00146103-f7dd-59e3-8c69-8bbaefb10756",
+							"altText": null,
+							"title": null,
+							"activeAsset": "Contentful Asset",
+							"locale": "en-US",
+							"contentfulAsset": {
+								"file": {
+									"publicURL": "[path]/mt-hero-banner.png"
+								}
+							},
+							"brandfolderAsset": null,
+							"brandfolderAssetMobile": null
+						},
 						"streamPoster": null,
-						"imageSize": "Regular",
+						"imageSize": "Medium",
 						"imagePosition": null,
 						"leftLinkUrl": null,
 						"leftLink": null,
@@ -104,33 +115,8 @@
 						"textlayoutMode": null,
 						"backgroundAssetFile": null,
 						"imageLayout": null,
-						"image": {
-							"file": {
-								"publicURL": "[path]/magic-transit-hero-illustration.svg"
-							}
-						},
-						"imageAssetFile": {
-							"id": "a063e1cf-6c03-5e2c-9359-cb0f4d21e5a4",
-							"altText": "Magic transit hero illustration",
-							"title": "Magic transit hero illustration",
-							"activeAsset": "Brandfolder Asset",
-							"locale": "en-US",
-							"contentfulAsset": {
-								"file": {
-									"publicURL": "[path]/magic-transit-hero-illustration.svg"
-								}
-							},
-							"brandfolderAsset": {
-								"size": 25744,
-								"height": 3310,
-								"width": 3490,
-								"filename": "magic-transit-hero-illustration.svg",
-								"file": {
-									"publicURL": "[path]/magic-transit-hero-illustration.svg"
-								}
-							},
-							"brandfolderAssetMobile": null
-						}
+						"image": null,
+						"imageAssetFile": null
 					},
 					{
 						"contentTypeId": "bladeQuote",
