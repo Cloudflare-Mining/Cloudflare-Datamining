@@ -1612,7 +1612,7 @@ Commit \u2014 `).concat(I.commit)
 						Pt = I.isDashboardSearchEnabled,
 						vn = (0, a.useLocation)(),
 						Nn = vn.pathname,
-						Bn = (0, q.qf)("sign-up-background-image") === "variant-image" && Nn === "/sign-up",
+						Bn = (0, q.qf)("signup-form-background-illustration") === "illustration" && Nn === "/sign-up",
 						Yn = X == null ? void 0 : X.id,
 						wn = (0, E.useContext)(to.VY),
 						Zn = wn.hasSidebarNav;
@@ -2045,7 +2045,7 @@ Commit \u2014 `).concat(I.commit)
 					return r().createElement(tr, I)
 				},
 				Rl = r().lazy(function() {
-					return Promise.all([e.e(8415), e.e(43561), e.e(87122), e.e(67118), e.e(53149), e.e(34599), e.e(10317), e.e(78297), e.e(90399), e.e(54135), e.e(86277), e.e(74711), e.e(75735), e.e(39760), e.e(636)]).then(e.bind(e, "../react/pages/images/Main.tsx"))
+					return Promise.all([e.e(8415), e.e(43561), e.e(87122), e.e(67118), e.e(53149), e.e(34599), e.e(10317), e.e(78297), e.e(90399), e.e(54135), e.e(86277), e.e(44579), e.e(75735), e.e(39760), e.e(636)]).then(e.bind(e, "../react/pages/images/Main.tsx"))
 				}),
 				Cs = function(I) {
 					var X = (0, c.useSelector)(Ce.getAccount);
@@ -2076,7 +2076,7 @@ Commit \u2014 `).concat(I.commit)
 				xl = Ri,
 				wi = e("../react/pages/home/domain-registration/index.ts"),
 				zi = r().lazy(function() {
-					return Promise.all([e.e(8415), e.e(80048), e.e(8048), e.e(258), e.e(53482), e.e(85474), e.e(53149), e.e(97311), e.e(60590), e.e(55863), e.e(14629), e.e(264), e.e(33679), e.e(54484), e.e(69419), e.e(11407), e.e(36476), e.e(34744), e.e(85223), e.e(90865), e.e(10317), e.e(24603), e.e(31174), e.e(89771), e.e(77088), e.e(30261), e.e(84728), e.e(52435), e.e(77839), e.e(39169), e.e(81671), e.e(5866), e.e(89665), e.e(33249)]).then(e.bind(e, "../react/pages/zoneless-workers/Main.tsx"))
+					return Promise.all([e.e(8415), e.e(80048), e.e(8048), e.e(258), e.e(53482), e.e(85474), e.e(53149), e.e(97311), e.e(60590), e.e(55863), e.e(14629), e.e(264), e.e(33679), e.e(54484), e.e(69419), e.e(11407), e.e(36476), e.e(34744), e.e(85223), e.e(90865), e.e(10317), e.e(24603), e.e(31174), e.e(89771), e.e(77088), e.e(30261), e.e(84728), e.e(52435), e.e(44579), e.e(77839), e.e(39169), e.e(81671), e.e(5866), e.e(89665), e.e(33249)]).then(e.bind(e, "../react/pages/zoneless-workers/Main.tsx"))
 				}),
 				xi = function(I) {
 					var X = !!(0, Wa.P)(),
@@ -5809,14 +5809,14 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			};
 			try {
 				e.g.build = ac({}, {
-					branch: "rachel/yubico-copy-update",
+					branch: "release-1664892266",
 					isReleaseCandidate: "true",
-					commit: "74de43771852b3bf9f41fcb9f7d71e0bab88b0aa",
+					commit: "2659dc640ae9678665e2eca80615a868e007645c",
 					env: "production",
-					builtAt: 1664850651268,
-					dashVersion: "710cf10ea5778ba2d515b7862657ab75b6a3c83f",
+					builtAt: 1664906855011,
+					dashVersion: "dfd33f8e8873f35e2dcd969ec70d456d5321bc87",
 					versions: {
-						"@cloudflare/app-dash": "25.92.2",
+						"@cloudflare/app-dash": "25.92.11",
 						node: "14.18.3",
 						yarn: "3.2.2",
 						webpack: "5.74.0"
@@ -7426,7 +7426,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				ie = function() {
 					var B, K, P = (0, m.useLocation)(),
 						Q = P.pathname,
-						k = (0, o.qf)("sign-up-background-image") === "variant-image" && Q === "/sign-up";
+						k = (0, o.qf)("signup-form-background-illustration") === "illustration" && Q === "/sign-up";
 					return (0, O.PP)() ? t().createElement(c, null) : k ? null : t().createElement(u.$_, {
 						bg: "background",
 						borderTop: "1px solid",
@@ -12264,7 +12264,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			};
 			var w = Me,
 				he = a().lazy(function() {
-					return Promise.all([e.e(8415), e.e(43561), e.e(87122), e.e(67118), e.e(258), e.e(53482), e.e(85474), e.e(53149), e.e(60590), e.e(33679), e.e(69419), e.e(11407), e.e(27605), e.e(90322), e.e(78836), e.e(74711), e.e(89014), e.e(96712), e.e(86178)]).then(e.bind(e, "../react/pages/ssl-tls/Main.tsx"))
+					return Promise.all([e.e(8415), e.e(43561), e.e(87122), e.e(67118), e.e(258), e.e(53482), e.e(85474), e.e(53149), e.e(60590), e.e(33679), e.e(69419), e.e(11407), e.e(27605), e.e(90322), e.e(78836), e.e(44579), e.e(89014), e.e(96712), e.e(86178)]).then(e.bind(e, "../react/pages/ssl-tls/Main.tsx"))
 				}),
 				it = function(It) {
 					return a().createElement(c.ZP, {
@@ -66855,6 +66855,10 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 								applyMarkdown: !0
 							})), t().createElement(M.I, {
 								type: "password",
+								spellCheck: "false",
+								autoComplete: "off",
+								autoCorrect: "off",
+								autoCapitalize: "off",
 								onChange: this.handlePasswordChange,
 								name: "password",
 								value: this.state.password,
@@ -67135,6 +67139,10 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 					}), t().createElement(g.I, {
 						name: "password",
 						type: "password",
+						spellCheck: "false",
+						autoComplete: "off",
+						autoCorrect: "off",
+						autoCapitalize: "off",
 						value: me,
 						onChange: function(H) {
 							ce(H.target.value)
@@ -68380,7 +68388,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 				s = e("../react/common/components/AccessCheck/index.ts"),
 				L = e("../react/common/selectors/accountSelectors.ts"),
 				h = t().lazy(function() {
-					return Promise.all([e.e(80048), e.e(8048), e.e(258), e.e(53482), e.e(85474), e.e(97311), e.e(60590), e.e(55863), e.e(14629), e.e(264), e.e(54484), e.e(69419), e.e(85223), e.e(20455), e.e(28299), e.e(90399), e.e(24788), e.e(30261), e.e(84728), e.e(74711), e.e(75735), e.e(22515)]).then(e.bind(e, "../react/pages/stream/Main.tsx"))
+					return Promise.all([e.e(80048), e.e(8048), e.e(258), e.e(53482), e.e(85474), e.e(97311), e.e(60590), e.e(55863), e.e(14629), e.e(264), e.e(54484), e.e(69419), e.e(85223), e.e(20455), e.e(28299), e.e(90399), e.e(24788), e.e(30261), e.e(84728), e.e(44579), e.e(75735), e.e(22515)]).then(e.bind(e, "../react/pages/stream/Main.tsx"))
 				}),
 				M = function(p) {
 					var y = (0, u.useSelector)(L.getAccount),
@@ -75962,7 +75970,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			var n = e("../../../../node_modules/@cloudflare/util-en-garde/es/index.js"),
 				t = n.eg.union([n.eg.literal("free"), n.eg.literal("pro"), n.eg.literal("business"), n.eg.literal("enterprise"), n.eg.literal("enterprise_trial")]),
 				m = n.eg.union([n.eg.literal("cf_biz"), n.eg.literal("CF_BIZ"), n.eg.literal("cf_biz_emp"), n.eg.literal("CF_BIZ_EMP"), n.eg.literal("cf_biz_free"), n.eg.literal("CF_BIZ_FREE"), n.eg.literal("cf_biz_galileo"), n.eg.literal("CF_BIZ_GALILEO"), n.eg.literal("cf_biz_plus"), n.eg.literal("CF_BIZ_PLUS"), n.eg.literal("cf_ent"), n.eg.literal("CF_ENT"), n.eg.literal("cf_ent_trial"), n.eg.literal("CF_ENT_TRIAL"), n.eg.literal("cf_free"), n.eg.literal("CF_FREE"), n.eg.literal("cf_pro_20_20"), n.eg.literal("CF_PRO_20_20"), n.eg.literal("cf_pro_20_5"), n.eg.literal("CF_PRO_20_5"), n.eg.literal("cf_pro_free"), n.eg.literal("CF_PRO_FREE")]),
-				u = n.eg.union([n.eg.literal("access_basic"), n.eg.literal("ACCESS_BASIC"), n.eg.literal("access_ent"), n.eg.literal("ACCESS_ENT"), n.eg.literal("access_free"), n.eg.literal("ACCESS_FREE"), n.eg.literal("access_premium"), n.eg.literal("ACCESS_PREMIUM"), n.eg.literal("access_ent_paygo"), n.eg.literal("ACCESS_ENT_PAYGO"), n.eg.literal("access_ent_contract"), n.eg.literal("ACCESS_ENT_CONTRACT"), n.eg.literal("ADVANCED_CERT_MANAGER"), n.eg.literal("ADVANCED_CERT_MANAGER_FREE"), n.eg.literal("ADVANCED_CERT_MANAGER_GF"), n.eg.literal("argo"), n.eg.literal("ARGO"), n.eg.literal("argo_basic"), n.eg.literal("ARGO_BASIC"), n.eg.literal("argo_free"), n.eg.literal("ARGO_FREE"), n.eg.literal("argo_zone_basic"), n.eg.literal("ARGO_ZONE_BASIC"), n.eg.literal("argo_zone_free"), n.eg.literal("ARGO_ZONE_FREE"), n.eg.literal("argo_ent_paygo"), n.eg.literal("ARGO_ENT_PAYGO"), n.eg.literal("argo_ent_contract"), n.eg.literal("ARGO_ENT_CONTRACT"), n.eg.literal("browser_blaster_basic"), n.eg.literal("BROWSER_BLASTER_BASIC"), n.eg.literal("load_balancing_basic"), n.eg.literal("LOAD_BALANCING_BASIC"), n.eg.literal("load_balancing_basic_plus"), n.eg.literal("LOAD_BALANCING_BASIC_PLUS"), n.eg.literal("load_balancing_free"), n.eg.literal("LOAD_BALANCING_FREE"), n.eg.literal("rate_limiting"), n.eg.literal("RATE_LIMITING"), n.eg.literal("rate_limiting_basic"), n.eg.literal("RATE_LIMITING_BASIC"), n.eg.literal("rate_limiting_free"), n.eg.literal("RATE_LIMITING_FREE"), n.eg.literal("rate_limiting_ent_paygo"), n.eg.literal("RATE_LIMITING_ENT_PAYGO"), n.eg.literal("rate_limiting_ent_contract"), n.eg.literal("RATE_LIMITING_ENT_CONTRACT"), n.eg.literal("stream_basic"), n.eg.literal("STREAM_BASIC"), n.eg.literal("stream_ent"), n.eg.literal("STREAM_ENT"), n.eg.literal("stream_free"), n.eg.literal("STREAM_FREE"), n.eg.literal("waiting_rooms_fairshot"), n.eg.literal("WAITING_ROOMS_FAIRSHOT"), n.eg.literal("waiting_rooms_basic"), n.eg.literal("WAITING_ROOMS_BASIC"), n.eg.literal("waiting_rooms_adv"), n.eg.literal("WAITING_ROOMS_ADV"), n.eg.literal("workers_basic"), n.eg.literal("WORKERS_BASIC"), n.eg.literal("workers_ent"), n.eg.literal("WORKERS_ENT"), n.eg.literal("workers_free"), n.eg.literal("WORKERS_FREE"), n.eg.literal("WORKERS_ENT_PAYGO"), n.eg.literal("workers_ent_paygo"), n.eg.literal("WORKERS_ENT_CONTRACT"), n.eg.literal("workers_ent_contract"), n.eg.literal("workers_paid"), n.eg.literal("WORKERS_PAID"), n.eg.literal("workers_paid_nocost"), n.eg.literal("WORKERS_PAID_NOCOST"), n.eg.literal("WORKERS_PAID_ENT_PAYGO"), n.eg.literal("workers_paid_ent_paygo"), n.eg.literal("WORKERS_PAID_ENT_CONTRACT"), n.eg.literal("workers_paid_ent_contract"), n.eg.literal("workers_trial"), n.eg.literal("images_basic"), n.eg.literal("IMAGES_BASIC"), n.eg.literal("images_ent"), n.eg.literal("IMAGES_ENT"), n.eg.literal("images_nocost"), n.eg.literal("IMAGES_NOCOST"), n.eg.literal("images_stream_basic"), n.eg.literal("IMAGES_STREAM_BASIC"), n.eg.literal("images_stream_ent"), n.eg.literal("IMAGES_STREAM_ENT"), n.eg.literal("images_stream_nocost"), n.eg.literal("IMAGES_STREAM_NOCOST"), n.eg.literal("images_stream_bundle_basic"), n.eg.literal("IMAGES_STREAM_BUNDLE_BASIC"), n.eg.literal("images_stream_bundle_advanced"), n.eg.literal("IMAGES_STREAM_BUNDLE_ADVANCED"), n.eg.literal("images_stream_bundle_ent"), n.eg.literal("IMAGES_STREAM_BUNDLE_ENT"), n.eg.literal("images_stream_bundle_nocost"), n.eg.literal("IMAGES_STREAM_BUNDLE_NOCOST"), n.eg.literal("ssl_for_saas_basic"), n.eg.literal("SSL_FOR_SAAS_BASIC"), n.eg.literal("TEAMS_FREE"), n.eg.literal("teams_free"), n.eg.literal("TEAMS_STANDARD_FREE"), n.eg.literal("teams_standard_free"), n.eg.literal("CACHE_RESERVE_PAID"), n.eg.literal("cache_reserve_paid"), n.eg.literal("CACHE_RESERVE_ENT"), n.eg.literal("cache_reserve_ent"), n.eg.literal("CACHE_RESERVE_NOCOST"), n.eg.literal("cache_reserve_nocost"), n.eg.literal("r2_paid"), n.eg.literal("R2_PAID"), n.eg.literal("R2_ENT_CONTRACT"), n.eg.literal("r2_ent_contract"), n.eg.literal("R2_ENT_PAYGO"), n.eg.literal("r2_ent_paygo"), n.eg.literal("R2_NOCOST"), n.eg.literal("r2_nocost"), n.eg.literal("web3_ipfs_basic"), n.eg.literal("WEB3_IPFS_BASIC"), n.eg.literal("web3_ipfs_premium"), n.eg.literal("WEB3_IPFS_PREMIUM"), n.eg.literal("web3_ethereum_basic"), n.eg.literal("WEB3_ETHEREUM_BASIC"), n.eg.literal("web3_ethereum_premium"), n.eg.literal("WEB3_ETHEREUM_PREMIUM"), n.eg.literal("beta_analytics_engine_api"), n.eg.literal("BETA_ANALYTICS_ENGINE_API"), n.eg.literal("LOAD_BALANCING_ENT_TRYOUT"), n.eg.literal("load_balancing_ent_tryout"), n.eg.literal("STREAM_ENT_TRYOUT"), n.eg.literal("stream_ent_tryout"), n.eg.literal("argo_zone_ent_tryout"), n.eg.literal("ARGO_ZONE_ENT_TRYOUT"), n.eg.literal("IMAGES_ENT_TRYOUT"), n.eg.literal("images_ent_tryout"), n.eg.literal("advanced_cert_manager_tryout"), n.eg.literal("ADVANCED_CERT_MANAGER_TRYOUT")]),
+				u = n.eg.union([n.eg.literal("access_basic"), n.eg.literal("ACCESS_BASIC"), n.eg.literal("access_ent"), n.eg.literal("ACCESS_ENT"), n.eg.literal("access_free"), n.eg.literal("ACCESS_FREE"), n.eg.literal("access_premium"), n.eg.literal("ACCESS_PREMIUM"), n.eg.literal("access_ent_paygo"), n.eg.literal("ACCESS_ENT_PAYGO"), n.eg.literal("access_ent_contract"), n.eg.literal("ACCESS_ENT_CONTRACT"), n.eg.literal("ADVANCED_CERT_MANAGER"), n.eg.literal("ADVANCED_CERT_MANAGER_FREE"), n.eg.literal("ADVANCED_CERT_MANAGER_GF"), n.eg.literal("argo"), n.eg.literal("ARGO"), n.eg.literal("argo_basic"), n.eg.literal("ARGO_BASIC"), n.eg.literal("argo_free"), n.eg.literal("ARGO_FREE"), n.eg.literal("argo_zone_basic"), n.eg.literal("ARGO_ZONE_BASIC"), n.eg.literal("argo_zone_free"), n.eg.literal("ARGO_ZONE_FREE"), n.eg.literal("argo_ent_paygo"), n.eg.literal("ARGO_ENT_PAYGO"), n.eg.literal("argo_ent_contract"), n.eg.literal("ARGO_ENT_CONTRACT"), n.eg.literal("browser_blaster_basic"), n.eg.literal("BROWSER_BLASTER_BASIC"), n.eg.literal("load_balancing_basic"), n.eg.literal("LOAD_BALANCING_BASIC"), n.eg.literal("load_balancing_basic_plus"), n.eg.literal("LOAD_BALANCING_BASIC_PLUS"), n.eg.literal("load_balancing_free"), n.eg.literal("LOAD_BALANCING_FREE"), n.eg.literal("rate_limiting"), n.eg.literal("RATE_LIMITING"), n.eg.literal("rate_limiting_basic"), n.eg.literal("RATE_LIMITING_BASIC"), n.eg.literal("rate_limiting_free"), n.eg.literal("RATE_LIMITING_FREE"), n.eg.literal("rate_limiting_ent_paygo"), n.eg.literal("RATE_LIMITING_ENT_PAYGO"), n.eg.literal("rate_limiting_ent_contract"), n.eg.literal("RATE_LIMITING_ENT_CONTRACT"), n.eg.literal("stream_basic"), n.eg.literal("STREAM_BASIC"), n.eg.literal("stream_ent"), n.eg.literal("STREAM_ENT"), n.eg.literal("stream_free"), n.eg.literal("STREAM_FREE"), n.eg.literal("waiting_rooms_fairshot"), n.eg.literal("WAITING_ROOMS_FAIRSHOT"), n.eg.literal("waiting_rooms_basic"), n.eg.literal("WAITING_ROOMS_BASIC"), n.eg.literal("waiting_rooms_adv"), n.eg.literal("WAITING_ROOMS_ADV"), n.eg.literal("workers_basic"), n.eg.literal("WORKERS_BASIC"), n.eg.literal("workers_ent"), n.eg.literal("WORKERS_ENT"), n.eg.literal("workers_free"), n.eg.literal("WORKERS_FREE"), n.eg.literal("WORKERS_ENT_PAYGO"), n.eg.literal("workers_ent_paygo"), n.eg.literal("WORKERS_ENT_CONTRACT"), n.eg.literal("workers_ent_contract"), n.eg.literal("workers_paid"), n.eg.literal("WORKERS_PAID"), n.eg.literal("workers_paid_nocost"), n.eg.literal("WORKERS_PAID_NOCOST"), n.eg.literal("WORKERS_PAID_ENT_PAYGO"), n.eg.literal("workers_paid_ent_paygo"), n.eg.literal("WORKERS_PAID_ENT_CONTRACT"), n.eg.literal("workers_paid_ent_contract"), n.eg.literal("workers_trial"), n.eg.literal("images_basic"), n.eg.literal("IMAGES_BASIC"), n.eg.literal("images_ent"), n.eg.literal("IMAGES_ENT"), n.eg.literal("images_nocost"), n.eg.literal("IMAGES_NOCOST"), n.eg.literal("images_stream_basic"), n.eg.literal("IMAGES_STREAM_BASIC"), n.eg.literal("images_stream_ent"), n.eg.literal("IMAGES_STREAM_ENT"), n.eg.literal("images_stream_nocost"), n.eg.literal("IMAGES_STREAM_NOCOST"), n.eg.literal("images_stream_bundle_basic"), n.eg.literal("IMAGES_STREAM_BUNDLE_BASIC"), n.eg.literal("images_stream_bundle_advanced"), n.eg.literal("IMAGES_STREAM_BUNDLE_ADVANCED"), n.eg.literal("images_stream_bundle_ent"), n.eg.literal("IMAGES_STREAM_BUNDLE_ENT"), n.eg.literal("images_stream_bundle_nocost"), n.eg.literal("IMAGES_STREAM_BUNDLE_NOCOST"), n.eg.literal("ssl_for_saas_basic"), n.eg.literal("SSL_FOR_SAAS_BASIC"), n.eg.literal("TEAMS_FREE"), n.eg.literal("teams_free"), n.eg.literal("TEAMS_STANDARD_FREE"), n.eg.literal("teams_standard_free"), n.eg.literal("CACHE_RESERVE_PAID"), n.eg.literal("cache_reserve_paid"), n.eg.literal("CACHE_RESERVE_ENT"), n.eg.literal("cache_reserve_ent"), n.eg.literal("CACHE_RESERVE_NOCOST"), n.eg.literal("cache_reserve_nocost"), n.eg.literal("r2_paid"), n.eg.literal("R2_PAID"), n.eg.literal("R2_ENT_CONTRACT"), n.eg.literal("r2_ent_contract"), n.eg.literal("R2_ENT_PAYGO"), n.eg.literal("r2_ent_paygo"), n.eg.literal("R2_NOCOST"), n.eg.literal("r2_nocost"), n.eg.literal("web3_ipfs_basic"), n.eg.literal("WEB3_IPFS_BASIC"), n.eg.literal("web3_ipfs_premium"), n.eg.literal("WEB3_IPFS_PREMIUM"), n.eg.literal("web3_ethereum_basic"), n.eg.literal("WEB3_ETHEREUM_BASIC"), n.eg.literal("web3_ethereum_premium"), n.eg.literal("WEB3_ETHEREUM_PREMIUM"), n.eg.literal("beta_analytics_engine_api"), n.eg.literal("BETA_ANALYTICS_ENGINE_API"), n.eg.literal("LOAD_BALANCING_ENT_TRYOUT"), n.eg.literal("load_balancing_ent_tryout"), n.eg.literal("STREAM_ENT_TRYOUT"), n.eg.literal("stream_ent_tryout"), n.eg.literal("argo_zone_ent_tryout"), n.eg.literal("ARGO_ZONE_ENT_TRYOUT"), n.eg.literal("IMAGES_ENT_TRYOUT"), n.eg.literal("images_ent_tryout"), n.eg.literal("advanced_cert_manager_tryout"), n.eg.literal("ADVANCED_CERT_MANAGER_TRYOUT"), n.eg.literal("BOT_ZONE_ENT_TRYOUT"), n.eg.literal("bot_zone_ent_tryout"), n.eg.literal("workers_paid_ent_tryout"), n.eg.literal("WORKERS_PAID_ENT_TRYOUT")]),
 				o = n.eg.union([t, m, u]),
 				s = n.eg.object({
 					lowerThreshold: n.eg.number,
@@ -76325,4 +76333,4 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 	}
 ]);
 
-//# sourceMappingURL=a236d566dc22d751b9c7.js.map
+//# sourceMappingURL=e8e8bf195994a2532e20.js.map
