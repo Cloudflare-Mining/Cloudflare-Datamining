@@ -58,15 +58,15 @@
 						"contentTypeId": "bladeHeroAnimation",
 						"title": "Build applications for the modern cloud",
 						"subtitle": "Deploy serverless code, globally with exceptional performance, reliability, and scale.",
-						"copy": "Build web functions and applications without configuring or maintaining infrastructure when it's deployed globally to over 275+ data centers around the world on Cloudflare's network.",
+						"copy": "Build web functions and applications without configuring or maintaining infrastructure when it's deployed globally to over %{DataCenterCount} data centers around the world on Cloudflare's network.",
 						"buttonColor": null,
 						"buttonColor2": "orange",
-						"buttonText1": "Contact Sales",
+						"buttonText1": "For Developers",
 						"buttonText1LoggedIn": null,
-						"buttonUrl1": "#",
+						"buttonUrl1": "https://workers.cloudflare.com/",
 						"buttonUrl1LoggedIn": null,
 						"button1ExtraClass": "workers-kv-contact-us-modal",
-						"buttonText2": "Sign up to workers",
+						"buttonText2": "Start Building",
 						"buttonText2LoggedIn": null,
 						"buttonUrl2": "https://dash.cloudflare.com/sign-up/workers",
 						"button2ExtraClass": null,
@@ -79,7 +79,7 @@
 						"streamCaptions": "en",
 						"popupStreamId": null,
 						"popupText": null,
-						"button1OpenInNewTab": null,
+						"button1OpenInNewTab": true,
 						"button2OpenInNewTab": false,
 						"streamThumbnails": null,
 						"sectionPadding": null,
@@ -92,7 +92,7 @@
 						"leftLinkLoggedIn": null,
 						"leftLinkOptions": "hide",
 						"backgroundColor": "white",
-						"textlayoutMode": "left medium",
+						"textlayoutMode": null,
 						"backgroundAssetFile": null,
 						"imageLayout": null,
 						"image": {
@@ -139,7 +139,7 @@
 						"streamPosterAssetFile": null,
 						"image": {
 							"file": {
-								"publicURL": "[path]/Workers_for_Platforms.png"
+								"publicURL": "[path]/Workers_for_Platforms__1_.png"
 							}
 						},
 						"imageAssetFile": null,
@@ -158,8 +158,8 @@
 					},
 					{
 						"contentfulId": "4Q43JVwiYKN4Yhx8a16OvF",
-						"title": "Build applications for the modern cloud",
-						"copy": "From fast and light to longer running and more CPU-intensive workloads, code is deployed and executes globally reducing network round-trips and providing exceptional performance, reliability, and scale. ",
+						"title": "Scale projects with built-in security",
+						"copy": "Get the security and reliability you need with out-of-the-box tools from Cloudflare's secure ecosystem. Workers offers robust security built in including: \n\n- WAF\n- SSL/TLS\n- DDoS protection\n- Highly reliable DNS & CDN network\n- Latest web standards (HTTP3/QUIC)\n",
 						"toggleText": null,
 						"button": null,
 						"learnMoreUrl": null,
@@ -180,7 +180,7 @@
 						"streamPosterAssetFile": null,
 						"image": {
 							"file": {
-								"publicURL": "[path]/Workers_Unbound.png"
+								"publicURL": "[path]/workers-apps-scaling-globally-spot-illustration.png"
 							}
 						},
 						"imageAssetFile": null,
@@ -190,11 +190,11 @@
 						"htmlId": null,
 						"titleSize": null,
 						"sectionPadding": null,
-						"backgroundColor": "white",
+						"backgroundColor": "light-blue",
 						"bladeBorder": "none",
-						"imagePosition": true,
-						"imageSize": null,
-						"imageTextAlignment": null,
+						"imagePosition": false,
+						"imageSize": "small",
+						"imageTextAlignment": "top",
 						"togglesTo": null
 					},
 					{
@@ -219,6 +219,31 @@
 						"logoList": null,
 						"logoListAssetFile": null,
 						"quoteCarousel": null
+					},
+					{
+						"contentfulId": "3mFjmCJCzXWahImrsi1pED",
+						"contentTypeId": "bladeKeyFeatures",
+						"backgroundColor": "light-blue",
+						"title": "Key Features",
+						"keyFeature": [
+							"Service bindings to send request from one Worker to another",
+							"Automatic configuration of certificates, origin servers and DNS",
+							"DB connectors ",
+							"Zero cold-starts",
+							"Transparent pricing",
+							"Debug and troubleshoot with tracing & logging",
+							"Capture metrics on Workers utilization with Workers Analytics Engine",
+							"Wrangler, a command-line tool for building Workers",
+							"Run periodic jobs or maintenance tasks with Cron Triggers",
+							"Ecosystem of developer tools "
+						],
+						"bladeBorder": "none",
+						"sectionPadding": null,
+						"titleColor": null,
+						"variant": null,
+						"description": null,
+						"featuresTextStyle": "body1",
+						"htmlId": null
 					},
 					{
 						"button": null,
@@ -246,6 +271,508 @@
 						"textColor": "black",
 						"sectionPadding": null,
 						"link": null
+					},
+					{
+						"contentfulId": "OIJs34feno5C8ijh4hWOI",
+						"backgroundColor": "white",
+						"contentTypeId": "bladeFourFeatures",
+						"htmlId": null,
+						"copy": "With Workers you can deploy and run serverless code from Cloudflare's global network. Build web functions and applications without the hassle of maintaining infrastructure. Workers is a part of the Cloudflare Developer Platform giving you compute, storage, and services to build and scale your application. ",
+						"title": "Learn more about Workers",
+						"subtitle": null,
+						"bladeStyle": null,
+						"bladeBorder": "none",
+						"sectionPadding": null,
+						"carouselSlidesToShow": null,
+						"carouselSlidesToScroll": null,
+						"locale": "en-US",
+						"features": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "4IAxBEefUhx6E6jBlowBsr",
+								"title": "Built-with Workers",
+								"titleSize": null,
+								"description": "Explore what other companies are building with Workers. ",
+								"learnMoreUrl": "https://workers.cloudflare.com/built-with",
+								"learnMoreText": "Explore",
+								"displayBorder": true,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "a93b78c9-f96b-52f7-b9d7-2d29ebc1d917",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/Pages_Goes_Full_Stack.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "7g5iSRLxVOpdwQ1RlX7v5k",
+								"title": "Community of Developers",
+								"titleSize": null,
+								"description": "Join the Developers Discord. Share what you're building or ask questions with the Workers community and Cloudflare employees. ",
+								"learnMoreUrl": "https://discord.com/invite/cloudflaredev",
+								"learnMoreText": "Join today ",
+								"displayBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "0ccf32ba-b7bd-50ae-aaec-5787aa662bcc",
+									"altText": null,
+									"title": null,
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/Developers-Discord-Logo_2.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "3hHSMeWHEBoDHnnugVuDP5",
+								"title": "Start building today",
+								"titleSize": null,
+								"description": "After taking this Egghead course you'll be ready to start experimenting with your own Cloudflare Workers projects. ",
+								"learnMoreUrl": "https://egghead.io/courses/introduction-to-cloudflare-workers-5aa3",
+								"learnMoreText": "Start building",
+								"displayBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "d739dd1d-6651-5345-a74f-ea781a8b54fa",
+									"altText": "Platform Week 22 - Announcing our Spring Developer Challenge",
+									"title": "Platform Week 22 - Announcing our Spring Developer Challenge",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/Developer_Challenges__1_.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						]
+					},
+					{
+						"contentTypeId": "bladeTable",
+						"contentfulId": "2yZWjAy2GRTKwFfd3FgLvf",
+						"locale": "en-US",
+						"sectionPadding": null,
+						"bladeBorder": "none",
+						"backgroundColor": "white",
+						"displayHeader": null,
+						"showFilter": null,
+						"sectionTitle": null,
+						"title": "Pricing plans",
+						"copy": "All plans come with a free workers.dev subdomain. ",
+						"htmlId": null,
+						"columnHeaders": [
+							{
+								"cellText": "Free",
+								"cellTextLinkUrl": null,
+								"cellSubtitle": null,
+								"buttonText": null,
+								"buttonUrl": null,
+								"commonElements": null,
+								"imageAssetFile": null
+							},
+							{
+								"cellText": "Paid",
+								"cellTextLinkUrl": null,
+								"cellSubtitle": "Starting at $5 / month",
+								"buttonText": null,
+								"buttonUrl": null,
+								"commonElements": null,
+								"imageAssetFile": null
+							},
+							{
+								"cellText": "Incremental cost",
+								"cellTextLinkUrl": null,
+								"cellSubtitle": null,
+								"buttonText": null,
+								"buttonUrl": null,
+								"commonElements": null,
+								"imageAssetFile": null
+							}
+						],
+						"groupsInTable": null,
+						"rowsInTable": [
+							{
+								"contentfulId": "1gnpCAHg05n5dph3TaIXDY",
+								"rowHeader2": {
+									"contentfulId": "1dEAbmPjctoA5xrpjEdiIj",
+									"cellText": "Maximum number of scripts",
+									"cellTextLinkUrl": null,
+									"buttonText": null,
+									"buttonUrl": null,
+									"commonElements": null,
+									"imageAssetFile": null
+								},
+								"cellsInRow": [
+									{
+										"contentfulId": "5mXwG1LZAx06c344km7dGO",
+										"cellText": "30",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "27V1a5BhZr4u0TiyqzViui",
+										"cellText": "100",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "3vDkNfpB1opzMkxGumkJAM",
+										"cellText": null,
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									}
+								]
+							},
+							{
+								"contentfulId": "6peAXSTnHy0zL0KL45SA8q",
+								"rowHeader2": {
+									"contentfulId": "1SHM5n02YLYAjWg9hxFU8P",
+									"cellText": "Max CPU time",
+									"cellTextLinkUrl": null,
+									"buttonText": null,
+									"buttonUrl": null,
+									"commonElements": null,
+									"imageAssetFile": null
+								},
+								"cellsInRow": [
+									{
+										"contentfulId": "6NOY5ytL1UmckJZyXg49dw",
+										"cellText": "10 ms",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "7IdbDixmVqrNUlnUjdz95V",
+										"cellText": "400,000 GB-s",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "3vDkNfpB1opzMkxGumkJAM",
+										"cellText": null,
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									}
+								]
+							},
+							{
+								"contentfulId": "5WCVcXB8kMYB2L0fTllkJZ",
+								"rowHeader2": {
+									"contentfulId": "5mgoudwjrcTDSNLMLaNmT6",
+									"cellText": "Included requests",
+									"cellTextLinkUrl": null,
+									"buttonText": null,
+									"buttonUrl": null,
+									"commonElements": null,
+									"imageAssetFile": null
+								},
+								"cellsInRow": [
+									{
+										"contentfulId": "2uWdyfvJh492TDW9ArJyzX",
+										"cellText": "100,000 / day",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "4tVQWNSiC2bTXkiMJU99Dx",
+										"cellText": "1,000,000 / month",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "RzHsv7A0WyxWSwSxm0ucP",
+										"cellText": "$0.15 / million",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									}
+								]
+							},
+							{
+								"contentfulId": "1kmmMf6L8Ti6PIDqedZrvb",
+								"rowHeader2": {
+									"contentfulId": "6ksXXwoyjzfXWh38B9zKeK",
+									"cellText": "Included Workers KV read operations",
+									"cellTextLinkUrl": null,
+									"buttonText": null,
+									"buttonUrl": null,
+									"commonElements": null,
+									"imageAssetFile": null
+								},
+								"cellsInRow": [
+									{
+										"contentfulId": "3ZmtFV1iN44reX3tZlnvtW",
+										"cellText": "100,000 / day",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "6zsuAojeiS40JF3YiBIiSW",
+										"cellText": "10,000,000 / month",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "56m7B8pDd5AdyHp3UafVMR",
+										"cellText": "$0.50 / million",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									}
+								]
+							},
+							{
+								"contentfulId": "4Ilc8s1AtmzlscM9DNaJc1",
+								"rowHeader2": {
+									"contentfulId": "Y66OaEh7BZNA0i4msIYh5",
+									"cellText": "Included Workers KV write, delete, and list operations",
+									"cellTextLinkUrl": null,
+									"buttonText": null,
+									"buttonUrl": null,
+									"commonElements": null,
+									"imageAssetFile": null
+								},
+								"cellsInRow": [
+									{
+										"contentfulId": "3dCYxdwLcLIY7ISzHqK9qy",
+										"cellText": "1,000 / day",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "1vEQjUWRMQmXnobl4P9OQa",
+										"cellText": "1,000,000 / month",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "1bZl6BlxrRtVDhHLWtXBRx",
+										"cellText": "$5.00 / million",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									}
+								]
+							},
+							{
+								"contentfulId": "312D4ICAY03yjV3mLhMtp3",
+								"rowHeader2": {
+									"contentfulId": "xVLjQl1t1xIMScNgbKkSd",
+									"cellText": "Included KV storage",
+									"cellTextLinkUrl": null,
+									"buttonText": null,
+									"buttonUrl": null,
+									"commonElements": null,
+									"imageAssetFile": null
+								},
+								"cellsInRow": [
+									{
+										"contentfulId": "5kIozEIy4dGEo1JXJEONaF",
+										"cellText": "1 GB",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "2VijeHi8Slw3lsrEgViGKz",
+										"cellText": "1 GB",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "7w0kFbmDnDrDcB5l4EFuip",
+										"cellText": "$0.50 / GB-month",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									}
+								]
+							},
+							{
+								"contentfulId": "HU0BUC2Q71uLUICqqy1qi",
+								"rowHeader2": {
+									"contentfulId": "5dTSZ2yM0h5v8BiCHP47PM",
+									"cellText": "Included Durable Objects",
+									"cellTextLinkUrl": null,
+									"buttonText": null,
+									"buttonUrl": null,
+									"commonElements": null,
+									"imageAssetFile": null
+								},
+								"cellsInRow": [
+									{
+										"contentfulId": "4Ge18B8z2vYBHyCydNFQmw",
+										"cellText": "N/A",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "m2l29xToyjl6NzZ1pSRqq",
+										"cellText": "1,000,000 ",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "5q187Nt0mzVKnCjhRyNRg6",
+										"cellText": "$0.15 / million",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									}
+								]
+							},
+							{
+								"contentfulId": "2c9pCP1602VTqKwlDlukOx",
+								"rowHeader2": {
+									"contentfulId": "kYRvLC9RaMsyVkAgHR7lo",
+									"cellText": "Duration (measured in GB-s)",
+									"cellTextLinkUrl": "https://developers.cloudflare.com/workers/platform/limits/#duration",
+									"buttonText": null,
+									"buttonUrl": null,
+									"commonElements": null,
+									"imageAssetFile": null
+								},
+								"cellsInRow": [
+									{
+										"contentfulId": "4avy9OTCdwFlElzjlhYesR",
+										"cellText": "-",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "4pURADCjRNeBY4SIYl20bQ",
+										"cellText": "400,000 GB-s ",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "4oTzKgQWGP1fZq5qSXeyQY",
+										"cellText": "$12.50 / million GB-s",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									}
+								]
+							},
+							{
+								"contentfulId": "3tGev2twpcmyfVixG3UBIj",
+								"rowHeader2": {
+									"contentfulId": "4TDk999k0N7KJAohkkNwvk",
+									"cellText": "Workers storage ",
+									"cellTextLinkUrl": null,
+									"buttonText": null,
+									"buttonUrl": null,
+									"commonElements": null,
+									"imageAssetFile": null
+								},
+								"cellsInRow": [
+									{
+										"contentfulId": "3vDkNfpB1opzMkxGumkJAM",
+										"cellText": null,
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									}
+								]
+							}
+						],
+						"dataSource": null
 					}
 				],
 				"noindex": false,
