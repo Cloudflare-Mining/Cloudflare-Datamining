@@ -32215,17 +32215,6 @@
 															"enum": [
 																90
 															]
-														},
-														"status": {
-															"description": "The current status for Total TLS. Pending states represent that all certificates have not yet had orders initiated or removed.",
-															"type": "string",
-															"enum": [
-																"enabled",
-																"disabled",
-																"pending_enabled",
-																"pending_disabled"
-															],
-															"example": "pending_enabled"
 														}
 													}
 												}
