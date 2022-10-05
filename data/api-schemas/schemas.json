@@ -78474,8 +78474,8 @@
 										"description": "A list of network ranges that requests from this location would originate from",
 										"items": {
 											"type": "string",
-											"description": "The IPv4 address, IPv4 CIDR or IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /16",
-											"example": "192.0.2.1"
+											"description": "The IPv4 address or IPv4 CIDR. IPv4 CIDRs are limited to a maximum of /24",
+											"example": "192.0.2.1/32"
 										}
 									},
 									"client_default": {
@@ -78638,8 +78638,8 @@
 										"description": "A list of network ranges that requests from this location would originate from",
 										"items": {
 											"type": "string",
-											"description": "The IPv4 address, IPv4 CIDR or IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /16",
-											"example": "192.0.2.1"
+											"description": "The IPv4 address or IPv4 CIDR. IPv4 CIDRs are limited to a maximum of /24",
+											"example": "192.0.2.1/32"
 										}
 									},
 									"client_default": {
