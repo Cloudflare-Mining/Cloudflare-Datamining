@@ -19574,6 +19574,195 @@
 				}
 			}
 		},
+		"/zones/{zone_identifier}/cache/cache_reserve": {
+			"get": {
+				"summary": "Get Cache Reserve setting",
+				"description": "Increase cache lifetimes by automatically storing all cacheable files into Cloudflare's persistent object storage buckets. Requires Cache Reserve subscription. Note: using Tiered Cache with Cache Reserve is highly recommended to reduce Reserve operations costs. See the [developer docs](https://developers.cloudflare.com/cache/about/cache-reserve) for more information.",
+				"parameters": [
+					{
+						"name": "zone_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1argo~1smart_routing/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Get Cache Reserve setting response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"allOf": [
+												{
+													"$ref": "#/paths/~1user/get/responses/200/content/application~1json/schema/allOf/0"
+												},
+												{
+													"properties": {
+														"result": {
+															"type": "object"
+														}
+													}
+												}
+											]
+										},
+										{
+											"properties": {
+												"result": {
+													"allOf": [
+														{
+															"title": "Cache Reserve",
+															"description": "Increase cache lifetimes by automatically storing all cacheable files into Cloudflare's persistent object storage buckets. Requires Cache Reserve subscription. Note: using Tiered Cache with Cache Reserve is highly recommended to reduce Reserve operations costs. See the [developer docs](https://developers.cloudflare.com/cache/about/cache-reserve) for more information.",
+															"allOf": [
+																{
+																	"properties": {
+																		"id": {
+																			"type": "string",
+																			"example": "development_mode",
+																			"description": "Identifier of the zone setting"
+																		},
+																		"modified_on": {
+																			"type": "string",
+																			"readOnly": true,
+																			"format": "date-time",
+																			"description": "last time this setting was modified",
+																			"example": "2014-01-01T05:20:00.123450+00:00",
+																			"nullable": true
+																		}
+																	},
+																	"required": [
+																		"id",
+																		"modified_on"
+																	]
+																},
+																{
+																	"properties": {
+																		"id": {
+																			"enum": [
+																				"cache_reserve"
+																			],
+																			"example": "cache_reserve",
+																			"description": "ID of the zone setting"
+																		}
+																	}
+																}
+															]
+														},
+														{
+															"properties": {
+																"value": {
+																	"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1cache~1cache_reserve/patch/requestBody/content/application~1json/schema/properties/value"
+																}
+															},
+															"required": [
+																"value"
+															]
+														}
+													]
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"#zone_settings:read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			},
+			"patch": {
+				"summary": "Change Cache Reserve setting",
+				"description": "Increase cache lifetimes by automatically storing all cacheable files into Cloudflare's persistent object storage buckets. Requires Cache Reserve subscription. Note: using Tiered Cache with Cache Reserve is highly recommended to reduce Reserve operations costs. See the [developer docs](https://developers.cloudflare.com/cache/about/cache-reserve) for more information.",
+				"parameters": [
+					{
+						"name": "zone_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1cache~1cache_reserve/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Change Cache Reserve setting response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1cache~1cache_reserve/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
+											"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1cache~1cache_reserve/get/responses/200/content/application~1json/schema/allOf/1"
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"#zone_settings:edit"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				},
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"required": [
+									"value"
+								],
+								"properties": {
+									"value": {
+										"type": "string",
+										"enum": [
+											true,
+											false
+										],
+										"description": "Value of the Cache Reserve zone setting.",
+										"default": false
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
 		"/zones/{zone_identifier}/analytics/dashboard": {
 			"get": {
 				"summary": "Get dashboard",

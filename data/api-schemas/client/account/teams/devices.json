@@ -202,7 +202,7 @@
 		},
 		{
 			"title": "Set Local Domain Fallback List",
-			"description": "Set the list of domains resolved locally by WARP clients",
+			"description": "Set the list of domains to bypass Gateway for DNS resolution and instead use the specified server",
 			"rel": "collection",
 			"href": "accounts/{#/definitions/identifier}/devices/policy/fallback_domains",
 			"method": "PUT",
@@ -244,8 +244,51 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"suffix\": \"example.com\",\n      \"description\": \"Domain bypass for local development\",\n      \"dns_server\": \"['192.168.0.1', '10.1.1.1']\"\n    }\n  ]\n}"
 		},
 		{
+			"title": "Set Local Domain Fallback List for a Device Settings Policy",
+			"description": "Set the list of domains to bypass Gateway for DNS resolution and instead use the specified server",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/identifier}/devices/policy/{#/definitions/uuid}/fallback_domains",
+			"method": "PUT",
+			"cfOwnership": "teams",
+			"html_id": "devices-set-local-domain-fallback-list-for-a-device-settings-policy",
+			"uri": "accounts/:identifier/devices/policy/:uuid/fallback_domains",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/devices/policy/f174e90a-fafe-4643-bbbc-4a0ed4fc8415/fallback_domains\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '[{\"suffix\":\"example.com\",\"description\":\"Domain bypass for local development\",\"dns_server\":\"['192.168.0.1', '10.1.1.1']\"}]'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"suffix": {
+						"type": "string",
+						"example": "\"example.com\"",
+						"description": "The domain suffix to match when resolving locally."
+					},
+					"description": {
+						"type": "string",
+						"example": "\"Domain bypass for local development\"",
+						"maxLength": 100,
+						"description": "A description of the fallback domain, displayed in the client UI"
+					},
+					"dns_server": {
+						"type": "array",
+						"example": "\"['192.168.0.1', '10.1.1.1']\"",
+						"description": "A list of IP addresses to handle domain resolution."
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"suffix",
+					"description",
+					"dns_server"
+				],
+				"objects": [],
+				"example": "{\n  \"suffix\": \"example.com\",\n  \"description\": \"Domain bypass for local development\",\n  \"dns_server\": \"['192.168.0.1', '10.1.1.1']\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"suffix\": \"example.com\",\n      \"description\": \"Domain bypass for local development\",\n      \"dns_server\": \"['192.168.0.1', '10.1.1.1']\"\n    }\n  ]\n}"
+		},
+		{
 			"title": "Get Local Domain Fallback List",
-			"description": "Get the list of domains resolved locally by WARP clients",
+			"description": "Get the list of domains to bypass Gateway for DNS resolution and instead use the specified server",
 			"rel": "collection",
 			"href": "accounts/{#/definitions/identifier}/devices/policy/fallback_domains",
 			"method": "GET",
@@ -253,6 +296,18 @@
 			"html_id": "devices-get-local-domain-fallback-list",
 			"uri": "accounts/:identifier/devices/policy/fallback_domains",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/devices/policy/fallback_domains\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"suffix\": \"example.com\",\n      \"description\": \"Domain bypass for local development\",\n      \"dns_server\": \"['192.168.0.1', '10.1.1.1']\"\n    }\n  ]\n}"
+		},
+		{
+			"title": "Get Local Domain Fallback List for a Device Settings Policy",
+			"description": "Get the list of domains to bypass Gateway for DNS resolution and instead use the specified server",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/identifier}/devices/policy/{#/definitions/uuid}/fallback_domains",
+			"method": "GET",
+			"cfOwnership": "teams",
+			"html_id": "devices-get-local-domain-fallback-list-for-a-device-settings-policy",
+			"uri": "accounts/:identifier/devices/policy/:uuid/fallback_domains",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/devices/policy/f174e90a-fafe-4643-bbbc-4a0ed4fc8415/fallback_domains\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"suffix\": \"example.com\",\n      \"description\": \"Domain bypass for local development\",\n      \"dns_server\": \"['192.168.0.1', '10.1.1.1']\"\n    }\n  ]\n}"
 		},
 		{
@@ -299,6 +354,49 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"address\": \"192.0.2.0/24\",\n      \"description\": \"Exclude testing domains from the tunnel\"\n    }\n  ]\n}"
 		},
 		{
+			"title": "Set Split Tunnel Exclude List for a Device Settings Policy",
+			"description": "Set the list of routes excluded from the WARP client's tunnel for one specific device settings policy",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/identifier}/devices/policy/{#/definitions/uuid}/exclude",
+			"method": "PUT",
+			"cfOwnership": "teams",
+			"html_id": "devices-set-split-tunnel-exclude-list-for-a-device-settings-policy",
+			"uri": "accounts/:identifier/devices/policy/:uuid/exclude",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/devices/policy/f174e90a-fafe-4643-bbbc-4a0ed4fc8415/exclude\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '[{\"address\":\"192.0.2.0/24\",\"description\":\"Exclude testing domains from the tunnel\"}]'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"address": {
+						"type": "string",
+						"example": "\"192.0.2.0/24\"",
+						"description": "The address in CIDR format to exclude from the tunnel. If address is present, host must not be present."
+					},
+					"description": {
+						"type": "string",
+						"example": "\"Exclude testing domains from the tunnel\"",
+						"maxLength": 100,
+						"description": "A description of the split tunnel item, displayed in the client UI."
+					},
+					"host": {
+						"type": "string",
+						"example": "\"*.example.com\"",
+						"description": "The domain name to exclude from the tunnel. If host is present, address must not be present."
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"address",
+					"description",
+					"host"
+				],
+				"objects": [],
+				"example": "{\n  \"address\": \"192.0.2.0/24\",\n  \"description\": \"Exclude testing domains from the tunnel\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"address\": \"192.0.2.0/24\",\n      \"description\": \"Exclude testing domains from the tunnel\"\n    }\n  ]\n}"
+		},
+		{
 			"title": "Get Split Tunnel Exclude List",
 			"description": "Get the list of routes excluded from the WARP client's tunnel",
 			"rel": "collection",
@@ -308,6 +406,18 @@
 			"html_id": "devices-get-split-tunnel-exclude-list",
 			"uri": "accounts/:identifier/devices/policy/exclude",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/devices/policy/exclude\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"address\": \"192.0.2.0/24\",\n      \"description\": \"Exclude testing domains from the tunnel\"\n    }\n  ]\n}"
+		},
+		{
+			"title": "Get Split Tunnel Exclude List for a Device Settings Policy",
+			"description": "Get the list of routes excluded from the WARP client's tunnel for one specific device settings policy",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/identifier}/devices/policy/{#/definitions/uuid}/exclude",
+			"method": "GET",
+			"cfOwnership": "teams",
+			"html_id": "devices-get-split-tunnel-exclude-list-for-a-device-settings-policy",
+			"uri": "accounts/:identifier/devices/policy/:uuid/exclude",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/devices/policy/f174e90a-fafe-4643-bbbc-4a0ed4fc8415/exclude\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"address\": \"192.0.2.0/24\",\n      \"description\": \"Exclude testing domains from the tunnel\"\n    }\n  ]\n}"
 		},
 		{
@@ -354,6 +464,49 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"address\": \"192.0.2.0/24\",\n      \"description\": \"Include testing domains from the tunnel\"\n    }\n  ]\n}"
 		},
 		{
+			"title": "Set Split Tunnel Include List for a Device Settings Policy",
+			"description": "Set the list of routes included in the WARP client's tunnel for one specific device settings policy",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/identifier}/devices/policy/{#/definitions/uuid}/include",
+			"method": "PUT",
+			"cfOwnership": "teams",
+			"html_id": "devices-set-split-tunnel-include-list-for-a-device-settings-policy",
+			"uri": "accounts/:identifier/devices/policy/:uuid/include",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/devices/policy/f174e90a-fafe-4643-bbbc-4a0ed4fc8415/include\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '[{\"address\":\"192.0.2.0/24\",\"description\":\"Include testing domains from the tunnel\"}]'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"address": {
+						"type": "string",
+						"example": "\"192.0.2.0/24\"",
+						"description": "The address in CIDR format to include in the tunnel. If address is present, host must not be present."
+					},
+					"description": {
+						"type": "string",
+						"example": "\"Include testing domains from the tunnel\"",
+						"maxLength": 100,
+						"description": "A description of the split tunnel item, displayed in the client UI"
+					},
+					"host": {
+						"type": "string",
+						"example": "\"*.example.com\"",
+						"description": "The domain name to include in the tunnel. If host is present, address must not be present."
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"address",
+					"description",
+					"host"
+				],
+				"objects": [],
+				"example": "{\n  \"address\": \"192.0.2.0/24\",\n  \"description\": \"Include testing domains from the tunnel\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"address\": \"192.0.2.0/24\",\n      \"description\": \"Include testing domains from the tunnel\"\n    }\n  ]\n}"
+		},
+		{
 			"title": "Get Split Tunnel Include List",
 			"description": "Get the list of routes included in the WARP client's tunnel",
 			"rel": "collection",
@@ -364,6 +517,386 @@
 			"uri": "accounts/:identifier/devices/policy/include",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/devices/policy/include\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"address\": \"192.0.2.0/24\",\n      \"description\": \"Include testing domains from the tunnel\"\n    }\n  ]\n}"
+		},
+		{
+			"title": "Get Split Tunnel Include List for a Device Settings Policy",
+			"description": "Get the list of routes included in the WARP client's tunnel for one specific device settings policy",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/identifier}/devices/policy/{#/definitions/uuid}/include",
+			"method": "GET",
+			"cfOwnership": "teams",
+			"html_id": "devices-get-split-tunnel-include-list-for-a-device-settings-policy",
+			"uri": "accounts/:identifier/devices/policy/:uuid/include",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/devices/policy/f174e90a-fafe-4643-bbbc-4a0ed4fc8415/include\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"address\": \"192.0.2.0/24\",\n      \"description\": \"Include testing domains from the tunnel\"\n    }\n  ]\n}"
+		},
+		{
+			"title": "Create Device Settings Policy",
+			"description": "Create a device settings policy to be applied to certain devices matching the criteria",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/identifier}/devices/policy",
+			"method": "POST",
+			"cfOwnership": "teams",
+			"html_id": "devices-create-device-settings-policy",
+			"uri": "accounts/:identifier/devices/policy",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/devices/policy\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"service_mode_v2\":{\"mode\":\"proxy\",\"port\":3000},\"disable_auto_fallback\":true,\"support_url\":\"https://1.1.1.1/help\",\"captive_portal\":180,\"allow_mode_switch\":true,\"switch_locked\":true,\"allow_updates\":true,\"auto_connect\":0,\"allowed_to_leave\":true,\"enabled\":true,\"name\":\"Allow Developers\",\"match\":\"user.identity == \\\"test@cloudflare.com\\\"\",\"precedence\":100}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"service_mode_v2": {
+						"type": "object",
+						"example": "{\n  \"mode\": \"proxy\",\n  \"port\": 3000\n}",
+						"properties": {
+							"mode": {
+								"type": "string",
+								"example": "\"proxy\"",
+								"description": "The mode to run the WARP client under"
+							},
+							"port": {
+								"type": "number",
+								"example": "3000",
+								"description": "The port number when used with proxy mode"
+							}
+						}
+					},
+					"disable_auto_fallback": {
+						"type": "boolean",
+						"example": "true",
+						"description": "If the dns_server field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers, unless this policy option is set"
+					},
+					"support_url": {
+						"type": "string",
+						"example": "\"https://1.1.1.1/help\"",
+						"description": "The URL to launch when the Send Feedback button is clicked"
+					},
+					"captive_portal": {
+						"type": "number",
+						"example": "180",
+						"description": "Turn on the captive portal after the specified amount of time"
+					},
+					"allow_mode_switch": {
+						"type": "boolean",
+						"example": "true",
+						"description": "Whether to allow the user to switch WARP between modes"
+					},
+					"switch_locked": {
+						"type": "boolean",
+						"example": "true",
+						"description": "Whether to allow the user to turn off the WARP switch and disconnect the client"
+					},
+					"allow_updates": {
+						"type": "boolean",
+						"example": "true",
+						"description": "Whether to receive update notifications when a new version of the client is available"
+					},
+					"auto_connect": {
+						"type": "number",
+						"example": "0",
+						"description": "The amount of time in minutes to reconnect after having been disabled"
+					},
+					"allowed_to_leave": {
+						"type": "boolean",
+						"example": "true",
+						"description": "Whether to allow devices to leave the organization"
+					},
+					"enabled": {
+						"type": "boolean",
+						"example": "true",
+						"description": "Whether the policy will be applied to matching devices"
+					},
+					"name": {
+						"type": "string",
+						"example": "\"Allow Developers\"",
+						"maxLength": 100,
+						"description": "The name of the device settings policy"
+					},
+					"match": {
+						"type": "string",
+						"example": "\"user.identity == \\\"test@cloudflare.com\\\"\"",
+						"description": "The wirefilter expression to match devices",
+						"maxLength": 500
+					},
+					"precedence": {
+						"type": "number",
+						"example": "100",
+						"description": "The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field"
+					}
+				},
+				"required_props": [
+					"name",
+					"precedence",
+					"match"
+				],
+				"optional_props": [
+					"service_mode_v2",
+					"disable_auto_fallback",
+					"support_url",
+					"captive_portal",
+					"allow_mode_switch",
+					"switch_locked",
+					"allow_updates",
+					"auto_connect",
+					"allowed_to_leave",
+					"enabled"
+				],
+				"objects": [],
+				"example": "{\n  \"service_mode_v2\": {\n    \"mode\": \"proxy\",\n    \"port\": 3000\n  },\n  \"disable_auto_fallback\": true,\n  \"support_url\": \"https://1.1.1.1/help\",\n  \"captive_portal\": 180,\n  \"allow_mode_switch\": true,\n  \"switch_locked\": true,\n  \"allow_updates\": true,\n  \"auto_connect\": 0,\n  \"allowed_to_leave\": true,\n  \"enabled\": true,\n  \"name\": \"Allow Developers\",\n  \"match\": \"user.identity == \\\"test@cloudflare.com\\\"\",\n  \"precedence\": 100\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"service_mode_v2\": {\n      \"mode\": \"proxy\",\n      \"port\": 3000\n    },\n    \"disable_auto_fallback\": true,\n    \"fallback_domains\": [\n      {\n        \"suffix\": \"example.com\",\n        \"description\": \"Domain bypass for local development\",\n        \"dns_server\": \"['192.168.0.1', '10.1.1.1']\"\n      }\n    ],\n    \"include\": [\n      {\n        \"address\": \"192.0.2.0/24\",\n        \"description\": \"Include testing domains from the tunnel\"\n      }\n    ],\n    \"exclude\": [\n      {\n        \"address\": \"192.0.2.0/24\",\n        \"description\": \"Exclude testing domains from the tunnel\"\n      }\n    ],\n    \"gateway_unique_id\": \"699d98642c564d2e855e9661899b7252\",\n    \"support_url\": \"https://1.1.1.1/help\",\n    \"captive_portal\": 180,\n    \"allow_mode_switch\": true,\n    \"switch_locked\": true,\n    \"allow_updates\": true,\n    \"auto_connect\": 0,\n    \"allowed_to_leave\": true,\n    \"policy_id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"enabled\": true,\n    \"name\": \"Allow Developers\",\n    \"match\": \"user.identity == \\\"test@cloudflare.com\\\"\",\n    \"precedence\": 100,\n    \"default\": false\n  }\n}"
+		},
+		{
+			"title": "Update Default Device Settings Policy",
+			"description": "Update the default device settings policy for an account",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/identifier}/devices/policy",
+			"method": "PATCH",
+			"cfOwnership": "teams",
+			"html_id": "devices-update-default-device-settings-policy",
+			"uri": "accounts/:identifier/devices/policy",
+			"curl": "curl -X PATCH \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/devices/policy\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"service_mode_v2\":{\"mode\":\"proxy\",\"port\":3000},\"disable_auto_fallback\":true,\"support_url\":\"https://1.1.1.1/help\",\"captive_portal\":180,\"allow_mode_switch\":true,\"switch_locked\":true,\"allow_updates\":true,\"auto_connect\":0,\"allowed_to_leave\":true}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"service_mode_v2": {
+						"type": "object",
+						"example": "{\n  \"mode\": \"proxy\",\n  \"port\": 3000\n}",
+						"properties": {
+							"mode": {
+								"type": "string",
+								"example": "\"proxy\"",
+								"description": "The mode to run the WARP client under"
+							},
+							"port": {
+								"type": "number",
+								"example": "3000",
+								"description": "The port number when used with proxy mode"
+							}
+						}
+					},
+					"disable_auto_fallback": {
+						"type": "boolean",
+						"example": "true",
+						"description": "If the dns_server field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers, unless this policy option is set"
+					},
+					"support_url": {
+						"type": "string",
+						"example": "\"https://1.1.1.1/help\"",
+						"description": "The URL to launch when the Send Feedback button is clicked"
+					},
+					"captive_portal": {
+						"type": "number",
+						"example": "180",
+						"description": "Turn on the captive portal after the specified amount of time"
+					},
+					"allow_mode_switch": {
+						"type": "boolean",
+						"example": "true",
+						"description": "Whether to allow the user to switch WARP between modes"
+					},
+					"switch_locked": {
+						"type": "boolean",
+						"example": "true",
+						"description": "Whether to allow the user to turn off the WARP switch and disconnect the client"
+					},
+					"allow_updates": {
+						"type": "boolean",
+						"example": "true",
+						"description": "Whether to receive update notifications when a new version of the client is available"
+					},
+					"auto_connect": {
+						"type": "number",
+						"example": "0",
+						"description": "The amount of time in minutes to reconnect after having been disabled"
+					},
+					"allowed_to_leave": {
+						"type": "boolean",
+						"example": "true",
+						"description": "Whether to allow devices to leave the organization"
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"service_mode_v2",
+					"disable_auto_fallback",
+					"support_url",
+					"captive_portal",
+					"allow_mode_switch",
+					"switch_locked",
+					"allow_updates",
+					"auto_connect",
+					"allowed_to_leave"
+				],
+				"objects": [],
+				"example": "{\n  \"service_mode_v2\": {\n    \"mode\": \"proxy\",\n    \"port\": 3000\n  },\n  \"disable_auto_fallback\": true,\n  \"support_url\": \"https://1.1.1.1/help\",\n  \"captive_portal\": 180,\n  \"allow_mode_switch\": true,\n  \"switch_locked\": true,\n  \"allow_updates\": true,\n  \"auto_connect\": 0,\n  \"allowed_to_leave\": true\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"service_mode_v2\": {\n      \"mode\": \"proxy\",\n      \"port\": 3000\n    },\n    \"disable_auto_fallback\": true,\n    \"fallback_domains\": [\n      {\n        \"suffix\": \"example.com\",\n        \"description\": \"Domain bypass for local development\",\n        \"dns_server\": \"['192.168.0.1', '10.1.1.1']\"\n      }\n    ],\n    \"include\": [\n      {\n        \"address\": \"192.0.2.0/24\",\n        \"description\": \"Include testing domains from the tunnel\"\n      }\n    ],\n    \"exclude\": [\n      {\n        \"address\": \"192.0.2.0/24\",\n        \"description\": \"Exclude testing domains from the tunnel\"\n      }\n    ],\n    \"gateway_unique_id\": \"699d98642c564d2e855e9661899b7252\",\n    \"support_url\": \"https://1.1.1.1/help\",\n    \"captive_portal\": 180,\n    \"allow_mode_switch\": true,\n    \"switch_locked\": true,\n    \"allow_updates\": true,\n    \"auto_connect\": 0,\n    \"allowed_to_leave\": true,\n    \"enabled\": true,\n    \"default\": true\n  }\n}"
+		},
+		{
+			"title": "Update Device Settings Policy",
+			"description": "Update a device settings policy",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/identifier}/devices/policy/{#/definitions/uuid}",
+			"method": "PATCH",
+			"cfOwnership": "teams",
+			"html_id": "devices-update-device-settings-policy",
+			"uri": "accounts/:identifier/devices/policy/:uuid",
+			"curl": "curl -X PATCH \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/devices/policy/f174e90a-fafe-4643-bbbc-4a0ed4fc8415\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"service_mode_v2\":{\"mode\":\"proxy\",\"port\":3000},\"disable_auto_fallback\":true,\"support_url\":\"https://1.1.1.1/help\",\"captive_portal\":180,\"allow_mode_switch\":true,\"switch_locked\":true,\"allow_updates\":true,\"auto_connect\":0,\"allowed_to_leave\":true,\"enabled\":true,\"name\":\"Allow Developers\",\"match\":\"user.identity == \\\"test@cloudflare.com\\\"\",\"precedence\":100}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"service_mode_v2": {
+						"type": "object",
+						"example": "{\n  \"mode\": \"proxy\",\n  \"port\": 3000\n}",
+						"properties": {
+							"mode": {
+								"type": "string",
+								"example": "\"proxy\"",
+								"description": "The mode to run the WARP client under"
+							},
+							"port": {
+								"type": "number",
+								"example": "3000",
+								"description": "The port number when used with proxy mode"
+							}
+						}
+					},
+					"disable_auto_fallback": {
+						"type": "boolean",
+						"example": "true",
+						"description": "If the dns_server field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers, unless this policy option is set"
+					},
+					"support_url": {
+						"type": "string",
+						"example": "\"https://1.1.1.1/help\"",
+						"description": "The URL to launch when the Send Feedback button is clicked"
+					},
+					"captive_portal": {
+						"type": "number",
+						"example": "180",
+						"description": "Turn on the captive portal after the specified amount of time"
+					},
+					"allow_mode_switch": {
+						"type": "boolean",
+						"example": "true",
+						"description": "Whether to allow the user to switch WARP between modes"
+					},
+					"switch_locked": {
+						"type": "boolean",
+						"example": "true",
+						"description": "Whether to allow the user to turn off the WARP switch and disconnect the client"
+					},
+					"allow_updates": {
+						"type": "boolean",
+						"example": "true",
+						"description": "Whether to receive update notifications when a new version of the client is available"
+					},
+					"auto_connect": {
+						"type": "number",
+						"example": "0",
+						"description": "The amount of time in minutes to reconnect after having been disabled"
+					},
+					"allowed_to_leave": {
+						"type": "boolean",
+						"example": "true",
+						"description": "Whether to allow devices to leave the organization"
+					},
+					"enabled": {
+						"type": "boolean",
+						"example": "true",
+						"description": "Whether the policy will be applied to matching devices"
+					},
+					"name": {
+						"type": "string",
+						"example": "\"Allow Developers\"",
+						"maxLength": 100,
+						"description": "The name of the device settings policy"
+					},
+					"match": {
+						"type": "string",
+						"example": "\"user.identity == \\\"test@cloudflare.com\\\"\"",
+						"description": "The wirefilter expression to match devices",
+						"maxLength": 500
+					},
+					"precedence": {
+						"type": "number",
+						"example": "100",
+						"description": "The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field"
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"service_mode_v2",
+					"disable_auto_fallback",
+					"support_url",
+					"captive_portal",
+					"allow_mode_switch",
+					"switch_locked",
+					"allow_updates",
+					"auto_connect",
+					"allowed_to_leave",
+					"enabled",
+					"name",
+					"match",
+					"precedence"
+				],
+				"objects": [],
+				"example": "{\n  \"service_mode_v2\": {\n    \"mode\": \"proxy\",\n    \"port\": 3000\n  },\n  \"disable_auto_fallback\": true,\n  \"support_url\": \"https://1.1.1.1/help\",\n  \"captive_portal\": 180,\n  \"allow_mode_switch\": true,\n  \"switch_locked\": true,\n  \"allow_updates\": true,\n  \"auto_connect\": 0,\n  \"allowed_to_leave\": true,\n  \"enabled\": true,\n  \"name\": \"Allow Developers\",\n  \"match\": \"user.identity == \\\"test@cloudflare.com\\\"\",\n  \"precedence\": 100\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"service_mode_v2\": {\n      \"mode\": \"proxy\",\n      \"port\": 3000\n    },\n    \"disable_auto_fallback\": true,\n    \"fallback_domains\": [\n      {\n        \"suffix\": \"example.com\",\n        \"description\": \"Domain bypass for local development\",\n        \"dns_server\": \"['192.168.0.1', '10.1.1.1']\"\n      }\n    ],\n    \"include\": [\n      {\n        \"address\": \"192.0.2.0/24\",\n        \"description\": \"Include testing domains from the tunnel\"\n      }\n    ],\n    \"exclude\": [\n      {\n        \"address\": \"192.0.2.0/24\",\n        \"description\": \"Exclude testing domains from the tunnel\"\n      }\n    ],\n    \"gateway_unique_id\": \"699d98642c564d2e855e9661899b7252\",\n    \"support_url\": \"https://1.1.1.1/help\",\n    \"captive_portal\": 180,\n    \"allow_mode_switch\": true,\n    \"switch_locked\": true,\n    \"allow_updates\": true,\n    \"auto_connect\": 0,\n    \"allowed_to_leave\": true,\n    \"policy_id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"enabled\": true,\n    \"name\": \"Allow Developers\",\n    \"match\": \"user.identity == \\\"test@cloudflare.com\\\"\",\n    \"precedence\": 100,\n    \"default\": false\n  }\n}"
+		},
+		{
+			"title": "Get Default Device Settings Policy",
+			"description": "Get the default device settings policy for an account",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/identifier}/devices/policy",
+			"method": "GET",
+			"cfOwnership": "teams",
+			"html_id": "devices-get-default-device-settings-policy",
+			"uri": "accounts/:identifier/devices/policy",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/devices/policy\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"service_mode_v2\": {\n      \"mode\": \"proxy\",\n      \"port\": 3000\n    },\n    \"disable_auto_fallback\": true,\n    \"fallback_domains\": [\n      {\n        \"suffix\": \"example.com\",\n        \"description\": \"Domain bypass for local development\",\n        \"dns_server\": \"['192.168.0.1', '10.1.1.1']\"\n      }\n    ],\n    \"include\": [\n      {\n        \"address\": \"192.0.2.0/24\",\n        \"description\": \"Include testing domains from the tunnel\"\n      }\n    ],\n    \"exclude\": [\n      {\n        \"address\": \"192.0.2.0/24\",\n        \"description\": \"Exclude testing domains from the tunnel\"\n      }\n    ],\n    \"gateway_unique_id\": \"699d98642c564d2e855e9661899b7252\",\n    \"support_url\": \"https://1.1.1.1/help\",\n    \"captive_portal\": 180,\n    \"allow_mode_switch\": true,\n    \"switch_locked\": true,\n    \"allow_updates\": true,\n    \"auto_connect\": 0,\n    \"allowed_to_leave\": true,\n    \"enabled\": true,\n    \"default\": true\n  }\n}"
+		},
+		{
+			"title": "Get Device Settings Policy by ID",
+			"description": "Get the device settings policy by ID",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/identifier}/devices/policy/{#/definitions/uuid}",
+			"method": "GET",
+			"cfOwnership": "teams",
+			"html_id": "devices-get-device-settings-policy-by-id",
+			"uri": "accounts/:identifier/devices/policy/:uuid",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/devices/policy/f174e90a-fafe-4643-bbbc-4a0ed4fc8415\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"service_mode_v2\": {\n      \"mode\": \"proxy\",\n      \"port\": 3000\n    },\n    \"disable_auto_fallback\": true,\n    \"fallback_domains\": [\n      {\n        \"suffix\": \"example.com\",\n        \"description\": \"Domain bypass for local development\",\n        \"dns_server\": \"['192.168.0.1', '10.1.1.1']\"\n      }\n    ],\n    \"include\": [\n      {\n        \"address\": \"192.0.2.0/24\",\n        \"description\": \"Include testing domains from the tunnel\"\n      }\n    ],\n    \"exclude\": [\n      {\n        \"address\": \"192.0.2.0/24\",\n        \"description\": \"Exclude testing domains from the tunnel\"\n      }\n    ],\n    \"gateway_unique_id\": \"699d98642c564d2e855e9661899b7252\",\n    \"support_url\": \"https://1.1.1.1/help\",\n    \"captive_portal\": 180,\n    \"allow_mode_switch\": true,\n    \"switch_locked\": true,\n    \"allow_updates\": true,\n    \"auto_connect\": 0,\n    \"allowed_to_leave\": true,\n    \"policy_id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n    \"enabled\": true,\n    \"name\": \"Allow Developers\",\n    \"match\": \"user.identity == \\\"test@cloudflare.com\\\"\",\n    \"precedence\": 100,\n    \"default\": false\n  }\n}"
+		},
+		{
+			"title": "List Device Settings Policies",
+			"description": "Lists the device settings policies for an account",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/identifier}/devices/policies",
+			"method": "GET",
+			"cfOwnership": "teams",
+			"html_id": "devices-list-device-settings-policies",
+			"uri": "accounts/:identifier/devices/policies",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/devices/policies\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"service_mode_v2\": {\n        \"mode\": \"proxy\",\n        \"port\": 3000\n      },\n      \"disable_auto_fallback\": true,\n      \"fallback_domains\": [\n        {\n          \"suffix\": \"example.com\",\n          \"description\": \"Domain bypass for local development\",\n          \"dns_server\": \"['192.168.0.1', '10.1.1.1']\"\n        }\n      ],\n      \"include\": [\n        {\n          \"address\": \"192.0.2.0/24\",\n          \"description\": \"Include testing domains from the tunnel\"\n        }\n      ],\n      \"exclude\": [\n        {\n          \"address\": \"192.0.2.0/24\",\n          \"description\": \"Exclude testing domains from the tunnel\"\n        }\n      ],\n      \"gateway_unique_id\": \"699d98642c564d2e855e9661899b7252\",\n      \"support_url\": \"https://1.1.1.1/help\",\n      \"captive_portal\": 180,\n      \"allow_mode_switch\": true,\n      \"switch_locked\": true,\n      \"allow_updates\": true,\n      \"auto_connect\": 0,\n      \"allowed_to_leave\": true,\n      \"policy_id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n      \"enabled\": true,\n      \"name\": \"Allow Developers\",\n      \"match\": \"user.identity == \\\"test@cloudflare.com\\\"\",\n      \"precedence\": 100,\n      \"default\": false\n    }\n  ]\n}"
+		},
+		{
+			"title": "Delete Device Settings Policy",
+			"description": "Delete a device settings policy. Returns the remaining policies for the account",
+			"rel": "collection",
+			"href": "accounts/{#/definitions/identifier}/devices/policy/{#/definitions/uuid}",
+			"method": "DELETE",
+			"cfOwnership": "teams",
+			"html_id": "devices-delete-device-settings-policy",
+			"uri": "accounts/:identifier/devices/policy/:uuid",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/devices/policy/f174e90a-fafe-4643-bbbc-4a0ed4fc8415\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"service_mode_v2\": {\n        \"mode\": \"proxy\",\n        \"port\": 3000\n      },\n      \"disable_auto_fallback\": true,\n      \"fallback_domains\": [\n        {\n          \"suffix\": \"example.com\",\n          \"description\": \"Domain bypass for local development\",\n          \"dns_server\": \"['192.168.0.1', '10.1.1.1']\"\n        }\n      ],\n      \"include\": [\n        {\n          \"address\": \"192.0.2.0/24\",\n          \"description\": \"Include testing domains from the tunnel\"\n        }\n      ],\n      \"exclude\": [\n        {\n          \"address\": \"192.0.2.0/24\",\n          \"description\": \"Exclude testing domains from the tunnel\"\n        }\n      ],\n      \"gateway_unique_id\": \"699d98642c564d2e855e9661899b7252\",\n      \"support_url\": \"https://1.1.1.1/help\",\n      \"captive_portal\": 180,\n      \"allow_mode_switch\": true,\n      \"switch_locked\": true,\n      \"allow_updates\": true,\n      \"auto_connect\": 0,\n      \"allowed_to_leave\": true,\n      \"policy_id\": \"f174e90a-fafe-4643-bbbc-4a0ed4fc8415\",\n      \"enabled\": true,\n      \"name\": \"Allow Developers\",\n      \"match\": \"user.identity == \\\"test@cloudflare.com\\\"\",\n      \"precedence\": 100,\n      \"default\": false\n    }\n  ]\n}"
 		}
 	],
 	"html_id": "devices",

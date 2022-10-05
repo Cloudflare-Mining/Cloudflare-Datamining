@@ -800,11 +800,11 @@ components:
         app_uid:
           $ref: '#/components/schemas/app_uid'
         connection:
-          $ref: '#/components/schemas/schemas-connection'
+          $ref: '#/components/schemas/components-schemas-connection'
         created_at:
           $ref: '#/components/schemas/timestamp'
         ip_address:
-          $ref: '#/components/schemas/schemas-ip'
+          $ref: '#/components/schemas/components-schemas-ip'
         ray_id:
           $ref: '#/components/schemas/ray_id'
         user_email:
@@ -1130,6 +1130,61 @@ components:
         not be a hostname proxied by Cloudflare.
       example: 0.0.0.0
       type: string
+    address-maps:
+      properties:
+        can_delete:
+          $ref: '#/components/schemas/can_delete'
+        can_modify_ips:
+          $ref: '#/components/schemas/can_modify_ips'
+        created_at:
+          $ref: '#/components/schemas/timestamp'
+        default_sni:
+          $ref: '#/components/schemas/default_sni'
+        description:
+          $ref: '#/components/schemas/address-maps_components-schemas-description'
+        id:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+        modified_at:
+          $ref: '#/components/schemas/timestamp'
+      type: object
+    address-maps-ip:
+      properties:
+        created_at:
+          $ref: '#/components/schemas/created-on'
+        ip:
+          $ref: '#/components/schemas/schemas-ip'
+      type: object
+    address-maps-membership:
+      properties:
+        can_delete:
+          $ref: '#/components/schemas/schemas-can_delete'
+        created_at:
+          $ref: '#/components/schemas/created-on'
+        identifier:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+        kind:
+          $ref: '#/components/schemas/components-schemas-kind'
+      type: object
+    address-maps_components-schemas-description:
+      description: An optional description field which may be used to describe the
+        types of IPs or zones on the map
+      example: My Ecommerce zones
+      nullable: true
+      type: string
+    address-maps_components-schemas-response_collection:
+      allOf:
+      - $ref: '#/components/schemas/api-response-collection'
+      - properties:
+          result:
+            items:
+              $ref: '#/components/schemas/address-maps'
+            type: array
+    address-maps_components-schemas-single_response:
+      allOf:
+      - $ref: '#/components/schemas/api-response-single'
+      - properties:
+          result:
+            $ref: '#/components/schemas/address-maps'
     address2:
       description: Optional address line for unit, floor, suite, etc.
       example: Suite 430
@@ -1284,9 +1339,18 @@ components:
         is currently only valid for HTTP and HTTPS monitors.
       example: true
       type: boolean
+    allow_mode_switch:
+      description: Whether to allow the user to switch WARP between modes
+      example: true
+      type: boolean
     allow_null_cipher:
       description: When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in
         the ESP tunnel (Phase 2).
+      example: true
+      type: boolean
+    allow_updates:
+      description: Whether to receive update notifications when a new version of the
+        client is available
       example: true
       type: boolean
     allowed:
@@ -1369,6 +1433,10 @@ components:
       - https://example.com
       items: {}
       type: array
+    allowed_to_leave:
+      description: Whether to allow devices to leave the organization
+      example: true
+      type: boolean
     allowedOrigins:
       description: Lists the origins allowed to display the video. Enter allowed origin
         domains in an array and use `*` for wildcard subdomains. Empty arrays allow
@@ -1887,7 +1955,7 @@ components:
           description: Connections between cloudflared and the Cloudflare edge that
             are serving this tunnel
           items:
-            $ref: '#/components/schemas/components-schemas-connection'
+            $ref: '#/components/schemas/argo-tunnel_components-schemas-connection'
           type: array
         created_at:
           description: Timestamps when the tunnel was created, formatted in RFC 3339
@@ -1908,6 +1976,22 @@ components:
       - created_at
       - connections
       type: object
+    argo-tunnel_components-schemas-connection:
+      properties:
+        colo_name:
+          description: Short ID for the colo this connection is connected to
+          example: DFW
+          type: string
+        is_pending_reconnect:
+          description: Cloudflare continues to track connections for several minutes
+            after they disconnect. This is an optimization to improve latency and
+            reliability of reconnecting. If this field is true, the connection has
+            disconnected but is still being tracked for these optimized reconnects.
+            If false, the connection is still actively serving
+          example: false
+          type: boolean
+        uuid:
+          $ref: '#/components/schemas/uuid'
     argo-tunnel_components-schemas-empty_response:
       allOf:
       - $ref: '#/components/schemas/api-response-common'
@@ -2118,6 +2202,10 @@ components:
       description: The unique subdomain assigned to your Zero Trust organization.
       example: test.cloudflareaccess.com
       type: string
+    auto_connect:
+      description: The amount of time in minutes to reconnect after having been disabled
+      example: 0
+      type: number
     auto_redirect_to_identity:
       default: false
       description: When set to `true`, users skip the identity provider selection
@@ -2866,6 +2954,18 @@ components:
       - basic
       - simplified
       type: string
+    can_delete:
+      description: If set to false, then the Address Map cannot be deleted via API.
+        This is true for Cloudflare-managed maps
+      example: true
+      readOnly: true
+      type: boolean
+    can_modify_ips:
+      description: If set to false, then the IPs on the Address Map cannot be modified
+        via the API. This is true for Cloudflare-managed maps
+      example: true
+      readOnly: true
+      type: boolean
     can_register:
       description: Indicates if the domain can be registered as a new domain.
       example: false
@@ -2891,6 +2991,10 @@ components:
         language:
           $ref: '#/components/schemas/language'
       type: object
+    captive_portal:
+      description: Turn on the captive portal after the specified amount of time
+      example: 180
+      type: number
     catch_all_rule_response_single:
       properties:
         actions:
@@ -3776,21 +3880,9 @@ components:
           result:
             $ref: '#/components/schemas/schemas-certificateObject'
     components-schemas-connection:
-      properties:
-        colo_name:
-          description: Short ID for the colo this connection is connected to
-          example: DFW
-          type: string
-        is_pending_reconnect:
-          description: Cloudflare continues to track connections for several minutes
-            after they disconnect. This is an optimization to improve latency and
-            reliability of reconnecting. If this field is true, the connection has
-            disconnected but is still being tracked for these optimized reconnects.
-            If false, the connection is still actively serving
-          example: false
-          type: boolean
-        uuid:
-          $ref: '#/components/schemas/uuid'
+      description: The IdP used to authenticate.
+      example: saml
+      type: string
     components-schemas-created:
       description: The date and a time a watermark profile was created.
       example: "2014-01-02T02:20:00Z"
@@ -3852,6 +3944,10 @@ components:
         If you do not have a valid custom or dedicated certificate at Cloudflare's edge and are unsure if any of the above Cloudflare settings are enabled, or if any HTTP redirects exist at your origin, we advise leaving Universal SSL enabled for your domain.
       example: true
       type: boolean
+    components-schemas-exclude:
+      items:
+        $ref: '#/components/schemas/split_tunnel'
+      type: array
     components-schemas-expires_on:
       description: When the certificate from the authority expires
       example: "2016-01-01T05:20:00Z"
@@ -3911,9 +4007,28 @@ components:
         on the origin as we check from multiple locations.
       type: integer
     components-schemas-ip:
-      description: IPV6 destination ip assigned to this location. DNS requests sent
-        to this IP will counted as the request under this location. (auto-generated)
-      example: 2001:0db8:85a3:0000:0000:8a2e:0370:7334
+      description: The IP address of the authenticating user.
+      example: 198.41.129.166
+      type: string
+    components-schemas-ips:
+      description: A list of CIDRs to restrict ingress connections
+      items:
+        description: The IPv4 CIDR or IPv6 CIDR. IPv6 CIDRs are limited to a maximum
+          of /109. IPv4 CIDRs are limited to a maximum of /25
+        example: 192.0.2.1/32
+        type: string
+      type: array
+    components-schemas-kind:
+      description: The type of the membership
+      enum:
+      - zone
+      - account
+      example: zone
+      type: string
+    components-schemas-match:
+      description: The wirefilter expression to match devices
+      example: user.identity == "test@cloudflare.com"
+      maxLength: 500
       type: string
     components-schemas-member:
       properties:
@@ -4056,6 +4171,11 @@ components:
         UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when
         using a non-standard port (HTTP: default 80, HTTPS: default 443).'
       type: integer
+    components-schemas-precedence:
+      description: The precedence of the policy. Lower values indicate higher precedence.
+        Policies will be evaluated in ascending order of this field
+      example: 100
+      type: number
     components-schemas-priority:
       default: 0
       description: Priority of the routing rule.
@@ -4478,28 +4598,35 @@ components:
       type: boolean
     connection:
       properties:
-        created_on:
-          $ref: '#/components/schemas/connection_components-schemas-created_on'
-        enabled:
-          $ref: '#/components/schemas/connection_components-schemas-enabled'
+        added_at:
+          example: "2021-08-18T10:51:10.09615Z"
+        domain_reported_malicious:
+          example: false
+        first_page_url:
+          example: blog.cloudflare.com/page
+        first_seen_at:
+          example: "2021-08-18T10:51:08Z"
+        host:
+          example: blog.cloudflare.com
         id:
-          $ref: '#/components/schemas/connection_components-schemas-identifier'
-        modified_on:
-          $ref: '#/components/schemas/connection_components-schemas-modified_on'
-        zone:
-          $ref: '#/components/schemas/connection_components-schemas-zone'
-      required:
-      - id
-      - zone
-      - enabled
-      type: object
+          example: c9ef84a6bf5e47138c75d95e2f933e8f
+        last_seen_at:
+          example: "2021-09-02T09:57:54Z"
+        page_urls:
+          example:
+          - blog.cloudflare.com/page1
+          - blog.cloudflare.com/page2
+        url:
+          example: https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js
+        url_contains_cdn_cgi_path:
+          example: false
     connection_collection_response:
       allOf:
       - $ref: '#/components/schemas/api-response-collection'
       - properties:
           result:
             items:
-              $ref: '#/components/schemas/connection'
+              $ref: '#/components/schemas/schemas-connection'
             type: array
     connection_components-schemas-created_on:
       description: When the connection was created.
@@ -5009,6 +5136,11 @@ components:
       format: date-time
       readOnly: true
       type: string
+    created-on:
+      example: "2014-01-01T05:20:00.12345Z"
+      format: date-time
+      readOnly: true
+      type: string
     created_at:
       description: This is the time the hostname was created.
       example: "2020-02-06T18:11:23.531995Z"
@@ -5461,6 +5593,49 @@ components:
       description: The default amount allocated
       example: 5
       type: number
+    default_device_settings_policy:
+      properties:
+        allow_mode_switch:
+          $ref: '#/components/schemas/allow_mode_switch'
+        allow_updates:
+          $ref: '#/components/schemas/allow_updates'
+        allowed_to_leave:
+          $ref: '#/components/schemas/allowed_to_leave'
+        auto_connect:
+          $ref: '#/components/schemas/auto_connect'
+        captive_portal:
+          $ref: '#/components/schemas/captive_portal'
+        default:
+          description: Whether the policy will be applied to matching devices
+          example: true
+          type: boolean
+        disable_auto_fallback:
+          $ref: '#/components/schemas/disable_auto_fallback'
+        enabled:
+          description: Whether the policy will be applied to matching devices
+          example: true
+          type: boolean
+        exclude:
+          $ref: '#/components/schemas/components-schemas-exclude'
+        fallback_domains:
+          $ref: '#/components/schemas/fallback_domains'
+        gateway_unique_id:
+          $ref: '#/components/schemas/gateway_unique_id'
+        include:
+          $ref: '#/components/schemas/schemas-include'
+        service_mode_v2:
+          $ref: '#/components/schemas/service_mode_v2'
+        support_url:
+          $ref: '#/components/schemas/support_url'
+        switch_locked:
+          $ref: '#/components/schemas/switch_locked'
+      type: object
+    default_device_settings_response:
+      allOf:
+      - $ref: '#/components/schemas/api-response-collection'
+      - properties:
+          result:
+            $ref: '#/components/schemas/default_device_settings_policy'
     default_mode:
       description: The default action/mode of a rule.
       enum:
@@ -5482,6 +5657,15 @@ components:
         description: A pool ID
         type: string
       type: array
+    default_sni:
+      description: If you have legacy TLS clients which do not send the TLS server
+        name indicator, then you can specify one default SNI on the map. If Cloudflare
+        receives a TLS handshake from a client without an SNI, it will respond with
+        the default SNI on those IPs. The default SNI can be any valid zone or subdomain
+        owned by the account.
+      example: '*.example.com'
+      nullable: true
+      type: string
     default_template_language:
       default: en-US
       description: The language of the default page template. If no default_template_language
@@ -6313,6 +6497,66 @@ components:
       - properties:
           result:
             type: object
+    device_settings_policy:
+      properties:
+        allow_mode_switch:
+          $ref: '#/components/schemas/allow_mode_switch'
+        allow_updates:
+          $ref: '#/components/schemas/allow_updates'
+        allowed_to_leave:
+          $ref: '#/components/schemas/allowed_to_leave'
+        auto_connect:
+          $ref: '#/components/schemas/auto_connect'
+        captive_portal:
+          $ref: '#/components/schemas/captive_portal'
+        default:
+          $ref: '#/components/schemas/schemas-default'
+        disable_auto_fallback:
+          $ref: '#/components/schemas/disable_auto_fallback'
+        enabled:
+          description: Whether the policy will be applied to matching devices
+          example: true
+          type: boolean
+        exclude:
+          $ref: '#/components/schemas/components-schemas-exclude'
+        fallback_domains:
+          $ref: '#/components/schemas/fallback_domains'
+        gateway_unique_id:
+          $ref: '#/components/schemas/gateway_unique_id'
+        include:
+          $ref: '#/components/schemas/schemas-include'
+        match:
+          $ref: '#/components/schemas/components-schemas-match'
+        name:
+          description: The name of the device settings policy
+          example: Allow Developers
+          maxLength: 100
+          type: string
+        policy_id:
+          $ref: '#/components/schemas/uuid'
+        precedence:
+          $ref: '#/components/schemas/components-schemas-precedence'
+        service_mode_v2:
+          $ref: '#/components/schemas/service_mode_v2'
+        support_url:
+          $ref: '#/components/schemas/support_url'
+        switch_locked:
+          $ref: '#/components/schemas/switch_locked'
+      type: object
+    device_settings_response:
+      allOf:
+      - $ref: '#/components/schemas/api-response-collection'
+      - properties:
+          result:
+            $ref: '#/components/schemas/device_settings_policy'
+    device_settings_response_collection:
+      allOf:
+      - $ref: '#/components/schemas/api-response-collection'
+      - properties:
+          result:
+            items:
+              $ref: '#/components/schemas/device_settings_policy'
+            type: array
     device_type:
       default: desktop
       description: Device type
@@ -6493,6 +6737,12 @@ components:
                   using a single HTTP POST (multipart/form-data) request.
                 example: https://upload.imagedelivery.net/FxUufywByo0m2v3xhKSiU8/e22e9e6b-c02b-42fd-c405-6c32af5fe600
                 type: string
+    disable_auto_fallback:
+      description: If the dns_server field of a fallback domain is not present, the
+        client will fall back to a best guess of the default/system DNS resolvers,
+        unless this policy option is set
+      example: true
+      type: boolean
     disable_for_time:
       properties:
         "1":
@@ -7655,6 +7905,10 @@ components:
             items:
               $ref: '#/components/schemas/fallback_domain'
             type: array
+    fallback_domains:
+      items:
+        $ref: '#/components/schemas/fallback_domain'
+      type: array
     fallback_origin_response:
       allOf:
       - $ref: '#/components/schemas/api-response-single'
@@ -8038,6 +8292,20 @@ components:
       - yearly
       example: monthly
       type: string
+    full_response:
+      allOf:
+      - $ref: '#/components/schemas/api-response-single'
+      - properties:
+          result:
+            allOf:
+            - $ref: '#/components/schemas/address-maps'
+            - properties:
+                ips:
+                  $ref: '#/components/schemas/schemas-ips'
+                memberships:
+                  $ref: '#/components/schemas/memberships'
+              type: object
+        type: object
     gateway-account-device-settings:
       properties:
         gateway_proxy_enabled:
@@ -8142,6 +8410,9 @@ components:
       example: f174e90afafe4643bbbc4a0ed4fc8415
       maxLength: 32
       type: string
+    gateway_unique_id:
+      example: 699d98642c564d2e855e9661899b7252
+      type: string
     geo_restrictions:
       description: Specify the region where your private key can be held locally for
         optimal TLS performance. HTTPS connections to any excluded data center will
@@ -8158,6 +8429,9 @@ components:
           - highest_security
           example: us
       type: object
+    get-zone-connection-response:
+      allOf:
+      - $ref: '#/components/schemas/connection'
     get-zone-script-response:
       allOf:
       - $ref: '#/components/schemas/script'
@@ -9257,6 +9531,10 @@ components:
         name:
           example: Malware
           type: string
+    ip_address:
+      description: An IPv4 or IPv6 address
+      example: 192.0.2.1
+      type: string
     ip_components-schemas-ip:
       properties:
         belongs_to_ref:
@@ -10167,6 +10445,17 @@ components:
           result:
             $ref: '#/components/schemas/list'
         type: object
+    list-zone-connections-response:
+      allOf:
+      - $ref: '#/components/schemas/api-response-collection'
+      - properties:
+          result:
+            items:
+              $ref: '#/components/schemas/connection'
+            type: array
+          result_info:
+            $ref: '#/components/schemas/result_info'
+        type: object
     list-zone-scripts-response:
       allOf:
       - $ref: '#/components/schemas/api-response-collection'
@@ -10720,7 +11009,7 @@ components:
         id:
           $ref: '#/components/schemas/locations_components-schemas-uuid'
         ip:
-          $ref: '#/components/schemas/components-schemas-ip'
+          $ref: '#/components/schemas/locations_components-schemas-ip'
         name:
           $ref: '#/components/schemas/locations_components-schemas-name'
         networks:
@@ -10736,6 +11025,11 @@ components:
             type: object
     locations_components-schemas-identifier:
       example: 699d98642c564d2e855e9661899b7252
+    locations_components-schemas-ip:
+      description: IPV6 destination ip assigned to this location. DNS requests sent
+        to this IP will counted as the request under this location. (auto-generated)
+      example: 2001:0db8:85a3:0000:0000:8a2e:0370:7334
+      type: string
     locations_components-schemas-name:
       description: The name of the Location
       example: Austin Office Location
@@ -11141,6 +11435,12 @@ components:
       maxLength: 32
       readOnly: true
       type: string
+    memberships:
+      description: Zones and Accounts which will be assigned IPs on this Address Map.
+        A zone membership will take priority over an account membership.
+      items:
+        $ref: '#/components/schemas/address-maps-membership'
+      type: array
     messages:
       example: []
       items:
@@ -13662,7 +13962,7 @@ components:
         id:
           $ref: '#/components/schemas/proxy-endpoints_components-schemas-uuid'
         ips:
-          $ref: '#/components/schemas/schemas-ips'
+          $ref: '#/components/schemas/components-schemas-ips'
         name:
           $ref: '#/components/schemas/proxy-endpoints_components-schemas-name'
         subdomain:
@@ -15969,6 +16269,10 @@ components:
           type: string
       title: Bookmark Application
       type: object
+    schemas-can_delete:
+      description: Controls whether the membership can be deleted via the API or not.
+      example: true
+      type: boolean
     schemas-certificate:
       description: The zone's SSL certificate or SSL certificate and intermediate(s)
       example: '-----BEGIN CERTIFICATE----- MIIDtTCCAp2gAwIBAgIJAM15n7fdxhRtMA0GCSqGSIb3DQEBBQUAMEUxCzAJBgNV
@@ -16136,9 +16440,22 @@ components:
           type: string
       type: object
     schemas-connection:
-      description: The IdP used to authenticate.
-      example: saml
-      type: string
+      properties:
+        created_on:
+          $ref: '#/components/schemas/connection_components-schemas-created_on'
+        enabled:
+          $ref: '#/components/schemas/connection_components-schemas-enabled'
+        id:
+          $ref: '#/components/schemas/connection_components-schemas-identifier'
+        modified_on:
+          $ref: '#/components/schemas/connection_components-schemas-modified_on'
+        zone:
+          $ref: '#/components/schemas/connection_components-schemas-zone'
+      required:
+      - id
+      - zone
+      - enabled
+      type: object
     schemas-count:
       description: Total results returned based on your search parameters
       example: 1
@@ -16183,6 +16500,10 @@ components:
         from the cursors object in the result_info structure.
       example: AAAAANuhDN7SjacTnSVsDu3WW1Lvst6dxJGTjRY5BhxPXdf6L6uTcpd_NVtjhn11OUYRsVEykxoUwF-JQU4dn6QylZSKTOJuG0indrdn_MlHpMRtsxgXjs-RPdHYIVm3odE_uvEQ_dTQGFm8oikZMohns34DLBgrQpc
       type: string
+    schemas-default:
+      description: Whether the policy is the default policy for an account
+      example: false
+      type: boolean
     schemas-deleted:
       description: True if the device was deleted
       example: true
@@ -16569,6 +16890,10 @@ components:
                 $ref: '#/components/schemas/dns-secondary-primary-zone_components-schemas-identifier'
             type: object
     schemas-identifier: {}
+    schemas-include:
+      items:
+        $ref: '#/components/schemas/split_tunnel_include'
+      type: array
     schemas-input:
       description: The value to be checked against.
       properties:
@@ -16585,8 +16910,8 @@ components:
       - $ref: '#/components/schemas/user_invite'
       type: object
     schemas-ip:
-      description: The IP address of the authenticating user.
-      example: 198.41.129.166
+      description: An IPv4 or IPv6 address
+      example: 192.0.2.1
       type: string
     schemas-ip_configuration:
       properties:
@@ -16603,12 +16928,9 @@ components:
           type: string
       title: An IP address configuration.
     schemas-ips:
-      description: A list of CIDRs to restrict ingress connections
+      description: The set of IPs on the Address Map
       items:
-        description: The IPv4 CIDR or IPv6 CIDR. IPv6 CIDRs are limited to a maximum
-          of /109. IPv4 CIDRs are limited to a maximum of /25
-        example: 192.0.2.1/32
-        type: string
+        $ref: '#/components/schemas/address-maps-ip'
       type: array
     schemas-ipv6:
       example: '2001:0DB8::'
@@ -17783,35 +18105,41 @@ components:
       properties:
         added_at:
           example: "2021-08-18T10:51:10.09615Z"
-        appears_in_cdn_cgi_path:
-          example: false
         domain_reported_malicious:
           example: false
         fetched_at:
           example: "2021-09-02T10:17:54Z"
+        first_page_url:
+          example: blog.cloudflare.com/page
         first_seen_at:
           example: "2021-08-18T10:51:08Z"
         hash:
           example: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
         host:
           example: blog.cloudflare.com
+        id:
+          example: c9ef84a6bf5e47138c75d95e2f933e8f
         js_integrity_score:
           example: 10
         last_seen_at:
           example: "2021-09-02T09:57:54Z"
-        script_id:
-          example: c9ef84a6bf5e47138c75d95e2f933e8f
-        script_url:
-          example: https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js
-        seen_on:
+        page_urls:
           example:
           - blog.cloudflare.com/page1
           - blog.cloudflare.com/page2
-        seen_on_first:
-          example: blog.cloudflare.com/page
+        url:
+          example: https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js
+        url_contains_cdn_cgi_path:
+          example: false
     script-monitor_components-schemas-enabled:
       description: When true, indicates that Page Shield is enabled.
       type: boolean
+    script-monitor_components-schemas-id:
+      description: The ID of the resource.
+      example: c9ef84a6bf5e47138c75d95e2f933e8f
+      maxLength: 32
+      minLength: 32
+      type: string
     script-response-collection:
       allOf:
       - $ref: '#/components/schemas/api-response-common'
@@ -17836,12 +18164,6 @@ components:
       - properties:
           result:
             type: object
-    script_id:
-      description: The ID of the script.
-      example: c9ef84a6bf5e47138c75d95e2f933e8f
-      maxLength: 32
-      minLength: 32
-      type: string
     script_name:
       description: Name of the script, used in URLs and route configuration
       example: this-is_my_script-01
@@ -18100,6 +18422,17 @@ components:
         Auth policy.
       example: true
       type: boolean
+    service_mode_v2:
+      properties:
+        mode:
+          description: The mode to run the WARP client under
+          example: proxy
+          type: string
+        port:
+          description: The port number when used with proxy mode
+          example: 3000
+          type: number
+      type: object
     session_affinity:
       default: '""'
       description: The session_affinity specifies the type of session affinity the
@@ -19182,6 +19515,10 @@ components:
       maxLength: 32
       readOnly: true
       type: string
+    support_url:
+      description: The URL to launch when the Send Feedback button is clicked
+      example: https://1.1.1.1/help
+      type: string
     supported_tld:
       description: Whether a particular TLD is currently supported by Cloudflare Registrar.
         Refer to [TLD Policies](https://www.cloudflare.com/tld-policies/) for a list
@@ -19191,6 +19528,11 @@ components:
     suspended:
       default: false
       description: If suspended, no health checks are sent to the origin.
+      type: boolean
+    switch_locked:
+      description: Whether to allow the user to turn off the WARP switch and disconnect
+        the client
+      example: true
       type: boolean
     tail-response:
       allOf:
@@ -22373,6 +22715,375 @@ paths:
         enterprise: true
         free: true
         pro: true
+  /accounts/{account_identifier}/addressing/address_maps:
+    get:
+      description: List all address maps owned by the account.
+      operationId: ip-address-management-address-maps-list-address-maps
+      parameters:
+      - in: path
+        name: account_identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/address-maps_components-schemas-response_collection'
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: List Address Maps response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/address-maps_components-schemas-response_collection'
+          description: List Address Maps response
+      security:
+      - api_email: []
+        api_key: []
+      summary: List Address Maps
+      tags:
+      - IP Address Management Address Maps
+    post:
+      description: Create a new address map under the account.
+      operationId: ip-address-management-address-maps-create-address-map
+      parameters:
+      - in: path
+        name: account_identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                description:
+                  $ref: '#/components/schemas/address-maps_components-schemas-description'
+        required: true
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/full_response'
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: Create Address Map response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/full_response'
+          description: Create Address Map response
+      security:
+      - api_email: []
+        api_key: []
+      summary: Create Address Map
+      tags:
+      - IP Address Management Address Maps
+  /accounts/{account_identifier}/addressing/address_maps/{address_map_identifier}:
+    delete:
+      description: Delete a particular address map owned by the account.
+      operationId: ip-address-management-address-maps-delete-address-map
+      parameters:
+      - in: path
+        name: address_map_identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      - in: path
+        name: account_identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      requestBody:
+        content:
+          application/json: {}
+        required: true
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/api-response-collection'
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: Delete Address Map response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/api-response-collection'
+          description: Delete Address Map response
+      security:
+      - api_email: []
+        api_key: []
+      summary: Delete Address Map
+      tags:
+      - IP Address Management Address Maps
+    get:
+      description: Show a particular address map owned by the account.
+      operationId: ip-address-management-address-maps-address-map-details
+      parameters:
+      - in: path
+        name: address_map_identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      - in: path
+        name: account_identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/full_response'
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: Address Map Details response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/full_response'
+          description: Address Map Details response
+      security:
+      - api_email: []
+        api_key: []
+      summary: Address Map Details
+      tags:
+      - IP Address Management Address Maps
+    patch:
+      description: Modify the description or default SNI for an address map owned
+        by the account.
+      operationId: ip-address-management-address-maps-update-address-map
+      parameters:
+      - in: path
+        name: address_map_identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      - in: path
+        name: account_identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                default_sni:
+                  $ref: '#/components/schemas/default_sni'
+                description:
+                  $ref: '#/components/schemas/address-maps_components-schemas-description'
+        required: true
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/address-maps_components-schemas-single_response'
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: Update Address Map response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/address-maps_components-schemas-single_response'
+          description: Update Address Map response
+      security:
+      - api_email: []
+        api_key: []
+      summary: Update Address Map
+      tags:
+      - IP Address Management Address Maps
+  /accounts/{account_identifier}/addressing/address_maps/{address_map_identifier}/ips/{ip_address}:
+    delete:
+      description: Remove an IP from a particular address map.
+      operationId: ip-address-management-address-maps-remove-an-ip-from-an-address-map
+      parameters:
+      - in: path
+        name: ip_address
+        required: true
+        schema:
+          $ref: '#/components/schemas/ip_address'
+      - in: path
+        name: address_map_identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      - in: path
+        name: account_identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      requestBody:
+        content:
+          application/json: {}
+        required: true
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/api-response-collection'
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: Remove an IP from an Address Map response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/api-response-collection'
+          description: Remove an IP from an Address Map response
+      security:
+      - api_email: []
+        api_key: []
+      summary: Remove an IP from an Address Map
+      tags:
+      - IP Address Management Address Maps
+    put:
+      description: Add an IP from a prefix owned by the account to a particular address
+        map.
+      operationId: ip-address-management-address-maps-add-an-ip-to-an-address-map
+      parameters:
+      - in: path
+        name: ip_address
+        required: true
+        schema:
+          $ref: '#/components/schemas/ip_address'
+      - in: path
+        name: address_map_identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      - in: path
+        name: account_identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      requestBody:
+        content:
+          application/json: {}
+        required: true
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/api-response-collection'
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: Add an IP to an Address Map response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/api-response-collection'
+          description: Add an IP to an Address Map response
+      security:
+      - api_email: []
+        api_key: []
+      summary: Add an IP to an Address Map
+      tags:
+      - IP Address Management Address Maps
+  /accounts/{account_identifier}/addressing/address_maps/{address_map_identifier}/zones/{zone_identifier}:
+    delete:
+      description: Remove a zone as a member of a particular address map.
+      operationId: ip-address-management-address-maps-remove-a-zone-membership-from-an-address-map
+      parameters:
+      - in: path
+        name: zone_identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      - in: path
+        name: address_map_identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      - in: path
+        name: account_identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      requestBody:
+        content:
+          application/json: {}
+        required: true
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/api-response-collection'
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: Remove a zone membership from an Address Map response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/api-response-collection'
+          description: Remove a zone membership from an Address Map response
+      security:
+      - api_email: []
+        api_key: []
+      summary: Remove a zone membership from an Address Map
+      tags:
+      - IP Address Management Address Maps
+    put:
+      description: Add a zone as a member of a particular address map.
+      operationId: ip-address-management-address-maps-add-a-zone-membership-to-an-address-map
+      parameters:
+      - in: path
+        name: zone_identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      - in: path
+        name: address_map_identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      - in: path
+        name: account_identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      requestBody:
+        content:
+          application/json: {}
+        required: true
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/api-response-collection'
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: Add a zone membership to an Address Map response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/api-response-collection'
+          description: Add a zone membership to an Address Map response
+      security:
+      - api_email: []
+        api_key: []
+      summary: Add a zone membership to an Address Map
+      tags:
+      - IP Address Management Address Maps
   /accounts/{account_identifier}/addressing/loa_documents:
     post:
       description: Submit LOA document (pdf format) under the account.
@@ -29116,7 +29827,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/connection'
+              $ref: '#/components/schemas/schemas-connection'
         required: true
       responses:
         4xx:
@@ -34539,6 +35250,95 @@ paths:
       x-cfPermissionsRequired:
         enum:
         - com.cloudflare.edge.worker.cron.subdomain.create
+  /accounts/{account_identifier1}/addressing/address_maps/{address_map_identifier}/accounts/{account_identifier}:
+    delete:
+      description: Remove an account as a member of a particular address map.
+      operationId: ip-address-management-address-maps-remove-an-account-membership-from-an-address-map
+      parameters:
+      - in: path
+        name: account_identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      - in: path
+        name: address_map_identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      - in: path
+        name: account_identifier1
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      requestBody:
+        content:
+          application/json: {}
+        required: true
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/api-response-collection'
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: Remove an account membership from an Address Map response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/api-response-collection'
+          description: Remove an account membership from an Address Map response
+      security:
+      - api_email: []
+        api_key: []
+      summary: Remove an account membership from an Address Map
+      tags:
+      - IP Address Management Address Maps
+    put:
+      description: Add an account as a member of a particular address map.
+      operationId: ip-address-management-address-maps-add-an-account-membership-to-an-address-map
+      parameters:
+      - in: path
+        name: account_identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      - in: path
+        name: address_map_identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      - in: path
+        name: account_identifier1
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      requestBody:
+        content:
+          application/json: {}
+        required: true
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/api-response-collection'
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: Add an account membership to an Address Map response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/api-response-collection'
+          description: Add an account membership to an Address Map response
+      security:
+      - api_email: []
+        api_key: []
+      summary: Add an account membership to an Address Map
+      tags:
+      - IP Address Management Address Maps
   /accounts/{identifier}:
     get:
       description: Get information about a specific account that you are a member
@@ -37609,6 +38409,597 @@ paths:
       summary: List Admin Override code for device
       tags:
       - Devices
+  /accounts/{identifier}/devices/policies:
+    get:
+      description: Lists the device settings policies for an account
+      operationId: devices-list-device-settings-policies
+      parameters:
+      - in: path
+        name: identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/devices_components-schemas-identifier'
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/device_settings_response_collection'
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: List Device Settings Policies response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/device_settings_response_collection'
+          description: List Device Settings Policies response
+      security:
+      - api_email: []
+        api_key: []
+      summary: List Device Settings Policies
+      tags:
+      - Devices
+  /accounts/{identifier}/devices/policy:
+    get:
+      description: Get the default device settings policy for an account
+      operationId: devices-get-default-device-settings-policy
+      parameters:
+      - in: path
+        name: identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/devices_components-schemas-identifier'
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/default_device_settings_response'
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: Get Default Device Settings Policy response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/default_device_settings_response'
+          description: Get Default Device Settings Policy response
+      security:
+      - api_email: []
+        api_key: []
+      summary: Get Default Device Settings Policy
+      tags:
+      - Devices
+    patch:
+      description: Update the default device settings policy for an account
+      operationId: devices-update-default-device-settings-policy
+      parameters:
+      - in: path
+        name: identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/devices_components-schemas-identifier'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                allow_mode_switch:
+                  $ref: '#/components/schemas/allow_mode_switch'
+                allow_updates:
+                  $ref: '#/components/schemas/allow_updates'
+                allowed_to_leave:
+                  $ref: '#/components/schemas/allowed_to_leave'
+                auto_connect:
+                  $ref: '#/components/schemas/auto_connect'
+                captive_portal:
+                  $ref: '#/components/schemas/captive_portal'
+                disable_auto_fallback:
+                  $ref: '#/components/schemas/disable_auto_fallback'
+                service_mode_v2:
+                  $ref: '#/components/schemas/service_mode_v2'
+                support_url:
+                  $ref: '#/components/schemas/support_url'
+                switch_locked:
+                  $ref: '#/components/schemas/switch_locked'
+        required: true
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/default_device_settings_response'
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: Update Default Device Settings Policy response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/default_device_settings_response'
+          description: Update Default Device Settings Policy response
+      security:
+      - api_email: []
+        api_key: []
+      summary: Update Default Device Settings Policy
+      tags:
+      - Devices
+    post:
+      description: Create a device settings policy to be applied to certain devices
+        matching the criteria
+      operationId: devices-create-device-settings-policy
+      parameters:
+      - in: path
+        name: identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/devices_components-schemas-identifier'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                allow_mode_switch:
+                  $ref: '#/components/schemas/allow_mode_switch'
+                allow_updates:
+                  $ref: '#/components/schemas/allow_updates'
+                allowed_to_leave:
+                  $ref: '#/components/schemas/allowed_to_leave'
+                auto_connect:
+                  $ref: '#/components/schemas/auto_connect'
+                captive_portal:
+                  $ref: '#/components/schemas/captive_portal'
+                disable_auto_fallback:
+                  $ref: '#/components/schemas/disable_auto_fallback'
+                enabled:
+                  description: Whether the policy will be applied to matching devices
+                  example: true
+                  type: boolean
+                match:
+                  $ref: '#/components/schemas/components-schemas-match'
+                name:
+                  description: The name of the device settings policy
+                  example: Allow Developers
+                  maxLength: 100
+                  type: string
+                precedence:
+                  $ref: '#/components/schemas/components-schemas-precedence'
+                service_mode_v2:
+                  $ref: '#/components/schemas/service_mode_v2'
+                support_url:
+                  $ref: '#/components/schemas/support_url'
+                switch_locked:
+                  $ref: '#/components/schemas/switch_locked'
+              required:
+              - name
+              - precedence
+              - match
+        required: true
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/device_settings_response'
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: Create Device Settings Policy response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/device_settings_response'
+          description: Create Device Settings Policy response
+      security:
+      - api_email: []
+        api_key: []
+      summary: Create Device Settings Policy
+      tags:
+      - Devices
+  /accounts/{identifier}/devices/policy/{uuid}:
+    delete:
+      description: Delete a device settings policy. Returns the remaining policies
+        for the account
+      operationId: devices-delete-device-settings-policy
+      parameters:
+      - in: path
+        name: uuid
+        required: true
+        schema:
+          $ref: '#/components/schemas/uuid'
+      - in: path
+        name: identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/devices_components-schemas-identifier'
+      requestBody:
+        content:
+          application/json: {}
+        required: true
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/device_settings_response_collection'
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: Delete Device Settings Policy response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/device_settings_response_collection'
+          description: Delete Device Settings Policy response
+      security:
+      - api_email: []
+        api_key: []
+      summary: Delete Device Settings Policy
+      tags:
+      - Devices
+    get:
+      description: Get the device settings policy by ID
+      operationId: devices-get-device-settings-policy-by-id
+      parameters:
+      - in: path
+        name: uuid
+        required: true
+        schema:
+          $ref: '#/components/schemas/uuid'
+      - in: path
+        name: identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/devices_components-schemas-identifier'
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/device_settings_response'
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: Get Device Settings Policy by ID response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/device_settings_response'
+          description: Get Device Settings Policy by ID response
+      security:
+      - api_email: []
+        api_key: []
+      summary: Get Device Settings Policy by ID
+      tags:
+      - Devices
+    patch:
+      description: Update a device settings policy
+      operationId: devices-update-device-settings-policy
+      parameters:
+      - in: path
+        name: uuid
+        required: true
+        schema:
+          $ref: '#/components/schemas/uuid'
+      - in: path
+        name: identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/devices_components-schemas-identifier'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                allow_mode_switch:
+                  $ref: '#/components/schemas/allow_mode_switch'
+                allow_updates:
+                  $ref: '#/components/schemas/allow_updates'
+                allowed_to_leave:
+                  $ref: '#/components/schemas/allowed_to_leave'
+                auto_connect:
+                  $ref: '#/components/schemas/auto_connect'
+                captive_portal:
+                  $ref: '#/components/schemas/captive_portal'
+                disable_auto_fallback:
+                  $ref: '#/components/schemas/disable_auto_fallback'
+                enabled:
+                  description: Whether the policy will be applied to matching devices
+                  example: true
+                  type: boolean
+                match:
+                  $ref: '#/components/schemas/components-schemas-match'
+                name:
+                  description: The name of the device settings policy
+                  example: Allow Developers
+                  maxLength: 100
+                  type: string
+                precedence:
+                  $ref: '#/components/schemas/components-schemas-precedence'
+                service_mode_v2:
+                  $ref: '#/components/schemas/service_mode_v2'
+                support_url:
+                  $ref: '#/components/schemas/support_url'
+                switch_locked:
+                  $ref: '#/components/schemas/switch_locked'
+        required: true
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/device_settings_response'
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: Update Device Settings Policy response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/device_settings_response'
+          description: Update Device Settings Policy response
+      security:
+      - api_email: []
+        api_key: []
+      summary: Update Device Settings Policy
+      tags:
+      - Devices
+  /accounts/{identifier}/devices/policy/{uuid}/exclude:
+    get:
+      description: Get the list of routes excluded from the WARP client's tunnel for
+        one specific device settings policy
+      operationId: devices-get-split-tunnel-exclude-list-for-a-device-settings-policy
+      parameters:
+      - in: path
+        name: uuid
+        required: true
+        schema:
+          $ref: '#/components/schemas/uuid'
+      - in: path
+        name: identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/devices_components-schemas-identifier'
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/split_tunnel_response_collection'
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: Get Split Tunnel Exclude List for a Device Settings Policy
+            response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/split_tunnel_response_collection'
+          description: Get Split Tunnel Exclude List for a Device Settings Policy
+            response
+      security:
+      - api_email: []
+        api_key: []
+      summary: Get Split Tunnel Exclude List for a Device Settings Policy
+      tags:
+      - Devices
+    put:
+      description: Set the list of routes excluded from the WARP client's tunnel for
+        one specific device settings policy
+      operationId: devices-set-split-tunnel-exclude-list-for-a-device-settings-policy
+      parameters:
+      - in: path
+        name: uuid
+        required: true
+        schema:
+          $ref: '#/components/schemas/uuid'
+      - in: path
+        name: identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/devices_components-schemas-identifier'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              items:
+                $ref: '#/components/schemas/split_tunnel'
+              type: array
+        required: true
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/split_tunnel_response_collection'
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: Set Split Tunnel Exclude List for a Device Settings Policy
+            response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/split_tunnel_response_collection'
+          description: Set Split Tunnel Exclude List for a Device Settings Policy
+            response
+      security:
+      - api_email: []
+        api_key: []
+      summary: Set Split Tunnel Exclude List for a Device Settings Policy
+      tags:
+      - Devices
+  /accounts/{identifier}/devices/policy/{uuid}/fallback_domains:
+    get:
+      description: Get the list of domains to bypass Gateway for DNS resolution and
+        instead use the specified server
+      operationId: devices-get-local-domain-fallback-list-for-a-device-settings-policy
+      parameters:
+      - in: path
+        name: uuid
+        required: true
+        schema:
+          $ref: '#/components/schemas/uuid'
+      - in: path
+        name: identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/devices_components-schemas-identifier'
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/fallback_domain_response_collection'
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: Get Local Domain Fallback List for a Device Settings Policy
+            response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/fallback_domain_response_collection'
+          description: Get Local Domain Fallback List for a Device Settings Policy
+            response
+      security:
+      - api_email: []
+        api_key: []
+      summary: Get Local Domain Fallback List for a Device Settings Policy
+      tags:
+      - Devices
+    put:
+      description: Set the list of domains to bypass Gateway for DNS resolution and
+        instead use the specified server
+      operationId: devices-set-local-domain-fallback-list-for-a-device-settings-policy
+      parameters:
+      - in: path
+        name: uuid
+        required: true
+        schema:
+          $ref: '#/components/schemas/uuid'
+      - in: path
+        name: identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/devices_components-schemas-identifier'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              items:
+                $ref: '#/components/schemas/fallback_domain'
+              type: array
+        required: true
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/fallback_domain_response_collection'
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: Set Local Domain Fallback List for a Device Settings Policy
+            response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/fallback_domain_response_collection'
+          description: Set Local Domain Fallback List for a Device Settings Policy
+            response
+      security:
+      - api_email: []
+        api_key: []
+      summary: Set Local Domain Fallback List for a Device Settings Policy
+      tags:
+      - Devices
+  /accounts/{identifier}/devices/policy/{uuid}/include:
+    get:
+      description: Get the list of routes included in the WARP client's tunnel for
+        one specific device settings policy
+      operationId: devices-get-split-tunnel-include-list-for-a-device-settings-policy
+      parameters:
+      - in: path
+        name: uuid
+        required: true
+        schema:
+          $ref: '#/components/schemas/uuid'
+      - in: path
+        name: identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/devices_components-schemas-identifier'
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/split_tunnel_include_response_collection'
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: Get Split Tunnel Include List for a Device Settings Policy
+            response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/split_tunnel_include_response_collection'
+          description: Get Split Tunnel Include List for a Device Settings Policy
+            response
+      security:
+      - api_email: []
+        api_key: []
+      summary: Get Split Tunnel Include List for a Device Settings Policy
+      tags:
+      - Devices
+    put:
+      description: Set the list of routes included in the WARP client's tunnel for
+        one specific device settings policy
+      operationId: devices-set-split-tunnel-include-list-for-a-device-settings-policy
+      parameters:
+      - in: path
+        name: uuid
+        required: true
+        schema:
+          $ref: '#/components/schemas/uuid'
+      - in: path
+        name: identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/devices_components-schemas-identifier'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              items:
+                $ref: '#/components/schemas/split_tunnel_include'
+              type: array
+        required: true
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/split_tunnel_include_response_collection'
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: Set Split Tunnel Include List for a Device Settings Policy
+            response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/split_tunnel_include_response_collection'
+          description: Set Split Tunnel Include List for a Device Settings Policy
+            response
+      security:
+      - api_email: []
+        api_key: []
+      summary: Set Split Tunnel Include List for a Device Settings Policy
+      tags:
+      - Devices
   /accounts/{identifier}/devices/policy/exclude:
     get:
       description: Get the list of routes excluded from the WARP client's tunnel
@@ -37680,7 +39071,8 @@ paths:
       - Devices
   /accounts/{identifier}/devices/policy/fallback_domains:
     get:
-      description: Get the list of domains resolved locally by WARP clients
+      description: Get the list of domains to bypass Gateway for DNS resolution and
+        instead use the specified server
       operationId: devices-get-local-domain-fallback-list
       parameters:
       - in: path
@@ -37710,7 +39102,8 @@ paths:
       tags:
       - Devices
     put:
-      description: Set the list of domains resolved locally by WARP clients
+      description: Set the list of domains to bypass Gateway for DNS resolution and
+        instead use the specified server
       operationId: devices-set-local-domain-fallback-list
       parameters:
       - in: path
@@ -39149,7 +40542,7 @@ paths:
             schema:
               properties:
                 ips:
-                  $ref: '#/components/schemas/schemas-ips'
+                  $ref: '#/components/schemas/components-schemas-ips'
                 name:
                   $ref: '#/components/schemas/proxy-endpoints_components-schemas-name'
                 subdomain:
@@ -39274,7 +40667,7 @@ paths:
             schema:
               properties:
                 ips:
-                  $ref: '#/components/schemas/schemas-ips'
+                  $ref: '#/components/schemas/components-schemas-ips'
                 name:
                   $ref: '#/components/schemas/proxy-endpoints_components-schemas-name'
                 subdomain:
@@ -55139,6 +56532,83 @@ paths:
         enterprise: true
         free: false
         pro: true
+  /zones/{zone_id}/page_shield/connections:
+    get:
+      description: Lists all connections detected by Page Shield.
+      operationId: page-shield-list-page-shield-connections
+      parameters:
+      - in: path
+        name: zone_id
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/list-zone-connections-response'
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: List Page Shield connections response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/list-zone-connections-response'
+          description: List Page Shield connections response
+      security:
+      - api_email: []
+        api_key: []
+      summary: List Page Shield connections
+      tags:
+      - Page Shield
+      x-cfPlanAvailability:
+        business: true
+        enterprise: true
+        free: false
+        pro: false
+  /zones/{zone_id}/page_shield/connections/{id}:
+    get:
+      description: Fetches a connection detected by Page Shield by connection ID.
+      operationId: page-shield-get-a-page-shield-connection
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          $ref: '#/components/schemas/script-monitor_components-schemas-id'
+      - in: path
+        name: zone_id
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/get-zone-connection-response'
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: Get a Page Shield connection response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/get-zone-connection-response'
+          description: Get a Page Shield connection response
+      security:
+      - api_email: []
+        api_key: []
+      summary: Get a Page Shield connection
+      tags:
+      - Page Shield
+      x-cfPlanAvailability:
+        business: true
+        enterprise: true
+        free: false
+        pro: false
   /zones/{zone_id}/page_shield/scripts:
     get:
       description: Lists all scripts detected by Page Shield.
@@ -55175,16 +56645,16 @@ paths:
         enterprise: true
         free: false
         pro: true
-  /zones/{zone_id}/page_shield/scripts/{script_id}:
+  /zones/{zone_id}/page_shield/scripts/{id}:
     get:
       description: Fetches a script detected by Page Shield by script ID.
       operationId: page-shield-get-a-page-shield-script
       parameters:
       - in: path
-        name: script_id
+        name: id
         required: true
         schema:
-          $ref: '#/components/schemas/script_id'
+          $ref: '#/components/schemas/script-monitor_components-schemas-id'
       - in: path
         name: zone_id
         required: true
