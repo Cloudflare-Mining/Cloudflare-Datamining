@@ -70,6 +70,11 @@ const reqs = [
 		method: 'GET',
 	},
 	{
+		name: 'services-versions-get',
+		url: `https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/workers/services/${id}/environments/production/versions`,
+		method: 'GET',
+	},
+	{
 		name: 'services-delete',
 		url: `https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/workers/services/${id}?force=true`,
 		method: 'DELETE',
