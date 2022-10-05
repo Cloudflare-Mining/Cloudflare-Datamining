@@ -4,7 +4,7 @@
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "Birthday Week 2022 - Today",
+				"pageName": "Birthday Week 2022 - Updates",
 				"localeList": {
 					"enUS": "English for Locale",
 					"zhCN": "Translated for Locale",
@@ -30,7 +30,7 @@
 					"zhHansCN": "Translated for Locale"
 				},
 				"relativePath": "birthday-week",
-				"topNavOptions": null,
+				"topNavOptions": "default",
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
 				"metaTags": {
@@ -44,14 +44,9 @@
 					},
 					"facebookCustomImage": null
 				},
-				"contentfulId": "5HFnNizVq7hFK8LR3AXoZb",
+				"contentfulId": "4mwQBR9VYHFTKAQAVljmuO",
 				"contentTypeId": "page",
-				"promotionalBanner": {
-					"pillText": "GA Week",
-					"linkText": "GA Week",
-					"linkUrl": "/ga-week",
-					"desktopText": "Learn more about our Pre-Birthday Week"
-				},
+				"promotionalBanner": null,
 				"psaBanner": null,
 				"customTopNav": null,
 				"headerLogo": null,
@@ -67,17 +62,10 @@
 						"htmlId": null,
 						"menuItems": [
 							{
-								"contentfulId": "11E496GOWP4ZFlNGXg83NO",
-								"linkText": "Today's News",
-								"page": null,
-								"url": "/birthday-week",
-								"subMenuItems": null
-							},
-							{
 								"contentfulId": "42sX5OK63yPnB6ZWkwUDS3",
 								"linkText": "Updates and announcements",
 								"page": null,
-								"url": "/birthday-week/updates",
+								"url": "/birthday-week",
 								"subMenuItems": null
 							},
 							{
@@ -140,9 +128,9 @@
 						"streamPoster": null,
 						"imageSize": null,
 						"imagePosition": null,
-						"leftLinkUrl": "https://blog.cloudflare.com/cloudflares-annual-founders-letter-2022",
-						"leftLink": "Learn more about Birthday Week in  \n[Cloudflare's 2022 Annual Founders' Letter](https://blog.cloudflare.com/cloudflares-annual-founders-letter-2022)",
-						"leftLinkLoggedIn": "Learn more about Birthday Week in  \n[Cloudflare's 2022 Annual Founders' Letter](https://blog.cloudflare.com/cloudflares-annual-founders-letter-2022)",
+						"leftLinkUrl": null,
+						"leftLink": null,
+						"leftLinkLoggedIn": null,
 						"leftLinkOptions": "show",
 						"backgroundColor": "white",
 						"textlayoutMode": null,
@@ -172,7 +160,7 @@
 						"copy": null,
 						"title": null,
 						"subtitle": null,
-						"bladeStyle": "Feature Blocks - 3 columns",
+						"bladeStyle": "Feature Blocks - 2 columns",
 						"bladeBorder": "none",
 						"sectionPadding": "tile--no-top-bottom-padding",
 						"carouselSlidesToShow": null,
@@ -181,24 +169,1027 @@
 						"features": [
 							{
 								"contentTypeId": "feature",
-								"contentfulId": "3FPP0mMB6kFY7qHdaRxyXK",
-								"title": "Defending against future threats: Cloudflare goes post-quantum",
+								"contentfulId": "8Spcq9NNMnNvplFIpUEDz",
+								"title": "Cloudflare's 2022 Annual Founders' Letter",
 								"titleSize": null,
-								"description": "The future of a private and secure Internet is at stake; that is why today we have enabled post-quantum cryptography support for all our customers",
-								"learnMoreUrl": "https://blog.cloudflare.com/post-quantum-for-all/",
+								"description": "Cloudflare launched on September 27, 2010. This week we'll celebrate our 12th birthday. As has become our tradition, we'll be announcing a series of products that we think of as our gifts back to the Internet",
+								"learnMoreUrl": "https://blog.cloudflare.com/cloudflares-annual-founders-letter-2022",
 								"learnMoreText": "Learn More",
 								"displayBorder": false,
 								"icon": null,
 								"iconAssetFile": null,
 								"imageAssetFile": {
-									"id": "7d6e00d4-de2d-533e-ae37-2044f5058077",
-									"altText": "Deploying post-quantum cryptography for all (announcing PQ in nginx-ssl)",
-									"title": "Deploying post-quantum cryptography for all (announcing PQ in nginx-ssl)",
+									"id": "fb40c205-49bc-5bc3-8559-4b52c8a5aea6",
+									"altText": "Welcome to Birthday Week",
+									"title": "Welcome to Birthday Week",
 									"activeAsset": "Contentful Asset",
 									"locale": "en-US",
 									"contentfulAsset": {
 										"file": {
-											"publicURL": "[path]/Deploying_post-quantum_cryptography_for_all.png"
+											"publicURL": "[path]/Birthday_Week_2022.svg"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "2Ct96Atb1pctCJJv1qRKNB",
+								"title": "What we served up for the last Birthday Week before we're a teenager",
+								"titleSize": null,
+								"description": "Cloudflare's 12th birthday week: 36 announcements ranging from SIM cards to post quantum encryption via hardware keys and so much more. Here's a review of everything we announced this week",
+								"learnMoreUrl": "https://blog.cloudflare.com/what-we-served-up-for-the-last-birthday-week-before-were-a-teenager/",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "8e969e2f-90eb-51a0-9f00-1b03c29bd379",
+									"altText": "Birthday Week Wrap Up",
+									"title": "Birthday Week Wrap Up",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/Birthday_Week_2022.svg"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							}
+						]
+					},
+					{
+						"contentfulId": "1lgYTo3ArvkyqqpqTmaaMh",
+						"backgroundColor": "white",
+						"contentTypeId": "bladeFourFeatures",
+						"htmlId": null,
+						"copy": null,
+						"title": "Updates and announcements",
+						"subtitle": null,
+						"bladeStyle": "Feature Blocks - 4 columns",
+						"bladeBorder": "none",
+						"sectionPadding": "tile--no-top-padding",
+						"carouselSlidesToShow": null,
+						"carouselSlidesToScroll": null,
+						"locale": "en-US",
+						"features": [
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "1h9JBcLu665aBdq0y7CYk1",
+								"title": "The First Zero Trust SIM",
+								"titleSize": null,
+								"description": "We're announcing the first Zero Trust SIM: the next major part of Cloudflare One, combining both software and hardware layers to rethink mobile device security for organizations.",
+								"learnMoreUrl": "https://blog.cloudflare.com//the-first-zero-trust-sim",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "a191b597-a414-5d51-96bb-9954ea772dbd",
+									"altText": "SIM Brings Zero Trust to Mobile Devices",
+									"title": "SIM Brings Zero Trust to Mobile Devices",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/SIM_Brings_Zero_Trust_to_Mobile_Devices.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "6Hk92iNfqzk7TA6I0VxFKt",
+								"title": "Securing the Internet of Things",
+								"titleSize": null,
+								"description": "We've been defending customers from Internet of Things botnets for years now, and it's time to turn the tides: we're bringing the same security behind our Zero Trust platform to IoT.",
+								"learnMoreUrl": "https://blog.cloudflare.com/rethinking-internet-of-things-security",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "cf3f93cb-e2e1-57a8-aba4-5b7558a9b88c",
+									"altText": "Internet of Things Platform",
+									"title": "Internet of Things Platform",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/Internet_of_Things_Platform.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "2PxYKewiyZQWeKmr6Y6W9",
+								"title": "Bringing Zero Trust to Mobile Network Operators",
+								"titleSize": null,
+								"description": "Better together: 5G mobile networks and Cloudflare's all-in-one SASE platform",
+								"learnMoreUrl": "https://blog.cloudflare.com/zero-trust-for-mobile-operators",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "7f043ae6-c809-5cde-a9f1-ed78bb9c9c91",
+									"altText": "Zero Trust + Mobile Operator Program",
+									"title": "Zero Trust + Mobile Operator Program",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/Zero_Trust___Mobile_Operator_Program.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "a2MwmLnIJVikmy382oj8O",
+								"title": "Cloudflare named a Leader in WAF by Forrester",
+								"titleSize": null,
+								"description": "Forrester has recognised Cloudflare as a Leader in The Forrester Wave™: Web Application Firewalls, Q3 2022 report. The report evaluated 12 Web Application Firewall (WAF) providers on 24 criteria across current offering, strategy and market presence.",
+								"learnMoreUrl": "https://blog.cloudflare.com/cloudflare-named-leader-waf-forrester-2022",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "d898a750-6c2e-5e92-9044-c184838b5964",
+									"altText": "Forrester WAF",
+									"title": "Forrester WAF",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/Forrester-Wave.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "6My5SiOJg0pjyvRi2CqkOl",
+								"title": "The world's leading venture capital firms commit $1.25 BILLION to back startups built on Cloudflare Workers",
+								"titleSize": null,
+								"description": "Building and scaling a startup is hard work. Apply to the $1BN the Workers Launchpad funding program for an opportunity to pitch leading VCs and other perks.",
+								"learnMoreUrl": "https://blog.cloudflare.com/workers-launchpad",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "e3430c9b-65e8-5452-805f-877852aa161a",
+									"altText": "Workers Fund",
+									"title": "Workers Fund",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/Workers_Fund.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "5XDnHKANI7uXxGA1o5mV4I",
+								"title": "Introducing workerd: The Open Source Workers Runtime",
+								"titleSize": null,
+								"description": "workerd is the JavaScript/Wasm runtime code that powers Cloudflare Workers, now open source under the Apache 2.0 license.",
+								"learnMoreUrl": "https://blog.cloudflare.com/workerd-open-source-workers-runtime",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "bb72d45a-ad75-518c-a1bb-f164f3ec08fd",
+									"altText": "Open Source Workers Runtime",
+									"title": "Open Source Workers Runtime",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/Open_Source_Workers_Runtime__1_.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "0q3gTfAJRRsKR9hpmEn1t",
+								"title": "Build real-time video and audio apps on the world's most interconnected network",
+								"titleSize": null,
+								"description": "We are announcing Cloudflare Calls, a new product that lets developers build real-time audio and video apps.",
+								"learnMoreUrl": "https://blog.cloudflare.com/announcing-cloudflare-calls",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "43e2bc76-a3cc-5cf7-8741-b9936b9b8733",
+									"altText": "Cloudflare Calls",
+									"title": "Cloudflare Calls",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/Cloudflare_Calls.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "1Ezc48d6zEKrnNXNSxtg5s",
+								"title": "Cloudflare Queues: globally distributed queues without the egress fees",
+								"titleSize": null,
+								"description": "Cloudflare Queues is a message queuing service that allows applications to reliably send and receive messages using Cloudflare Workers.",
+								"learnMoreUrl": "https://blog.cloudflare.com/introducing-cloudflare-queues",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "8a9c5cf7-5a94-5c92-9d6d-a7b6639a170f",
+									"altText": "Queues Private Beta",
+									"title": "Queues Private Beta",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/Workers_Queues.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "5B29AxRq4XOXXzp0TcqcIX",
+								"title": "D1: Our Quest to Simplify Databases",
+								"titleSize": null,
+								"description": "Learn about the D1 experience today, what the team is currently working on and what's coming up! ",
+								"learnMoreUrl": "https://blog.cloudflare.com/whats-new-with-d1",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "07d9ca7d-b699-58d1-91d7-8113eb29de57",
+									"altText": "D1 New Features, new bets",
+									"title": "D1 New Features, new bets",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/D1_Open_Beta_dark_.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "6tg2wi2r5Hzl556YboioB7",
+								"title": "WebRTC live streaming to unlimited viewers, with sub-second latency",
+								"titleSize": null,
+								"description": "Cloudflare Stream now supports live streaming over WebRTC to unlimited concurrent viewers, using open standards WHIP and WHEP, with zero dependencies or client SDKs necessary.",
+								"learnMoreUrl": "https://blog.cloudflare.com/webrtc-whip-whep-cloudflare-stream",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "be932b7b-e94f-5e60-8cde-b19b49ccd233",
+									"altText": "Go Live in Real Time",
+									"title": "Go Live in Real Time",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/Go_Live_in_Real_Time.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "4hCxxCxNNqjHS8o33XlmfK",
+								"title": "Build your next startup on Cloudflare with our comprehensive Startup Plan, v2.0",
+								"titleSize": null,
+								"description": "The Startup Plan now has an expanded product basket and broader eligibility criteria, which means more startups now qualify for the program.",
+								"learnMoreUrl": "https://blog.cloudflare.com/startup-program-v2",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "efbbcbb4-8f99-5223-a296-1e6640649be7",
+									"altText": "Startup Program",
+									"title": "Startup Program",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/Startup_Accelerator_.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "6UpQ8rMi1vEP9BP1pYN7zd",
+								"title": "Introducing Cache Rules: precision caching at your fingertips",
+								"titleSize": null,
+								"description": "We have spent the last ten years learning how customers use Page Rules to customize their cached content, and it's clear the time is ripe for evolving rules-based caching on Cloudflare.",
+								"learnMoreUrl": "https://blog.cloudflare.com/introducing-cache-rules",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "e7b61a69-bf9e-52ec-9c26-ba7596f59835",
+									"altText": "Cache Rules",
+									"title": "Cache Rules",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/Cache_Rules_Everything_Around_Me__.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "4N2rOc59k0YU6YUSpdVr1",
+								"title": "Introducing Configuration Rules",
+								"titleSize": null,
+								"description": "Configuration Rules is the new and improved way for Cloudflare customers to control and manipulate features that are enabled or disabled for specific requests on their zone.",
+								"learnMoreUrl": "https://blog.cloudflare.com/configuration-rules",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "aa1a620a-8c18-5dd3-b50e-81e0b7489aad",
+									"altText": null,
+									"title": "Config Rules",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/Config_Rules.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "6QJ9ad1zxxMfPtmXMjNxiI",
+								"title": "Where to? Introducing Origin Rules",
+								"titleSize": null,
+								"description": "Origin Rules is a dedicated product for 'where does this traffic go where it leaves Cloudflare.' Customers are able to match on an HTTP request using filters and override the host, port, SNI, and the origin a request resolves to.",
+								"learnMoreUrl": "https://blog.cloudflare.com/origin-rules",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "864dd287-1e4c-540b-b379-debd2dbb869b",
+									"altText": "Origin Rules",
+									"title": "Origin Rules",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/Origin_Rules.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "45yJn5Tn0JISvZnh4B7qWR",
+								"title": "The future of Page Rules",
+								"titleSize": null,
+								"description": "Learn about four new products that will eventually replace Page Rules by putting more power into the hands of users.",
+								"learnMoreUrl": "https://blog.cloudflare.com/future-of-page-rules",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "b13678ad-9c13-59ba-985e-c9e18d74750c",
+									"altText": "Next Gen Page Rules",
+									"title": "Next Gen Page Rules",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/Next_Gen_Page_Rules__1_.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "5TeyEbCuWOVYymyV0Zwp2V",
+								"title": "Dynamic URL Redirects: 301 to the future",
+								"titleSize": null,
+								"description": "With Dynamic redirects, users can redirect visitors to another webpage or website based upon hundreds of options such as the visitor's country of origin or language, without having to write a single line of code.",
+								"learnMoreUrl": "https://blog.cloudflare.com/dynamic-redirect-rules",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "70343359-f061-5381-b0b2-9061c3432033",
+									"altText": "Dynamic Redirect Rules",
+									"title": "Dynamic Redirect Rules",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/Dynamic_Redirect_Rules.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "kBgJrXgDFzSRVCfOQYWGh",
+								"title": "Announcing Turnstile, a user-friendly, privacy-preserving alternative to CAPTCHA",
+								"titleSize": null,
+								"description": "Any website can use a simple API to replace CAPTCHAs with our invisible alternative, whether they're on the Cloudflare network or not.",
+								"learnMoreUrl": "https://blog.cloudflare.com/turnstile-private-captcha-alternative",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "b144f517-7f2a-52c4-b712-0897739f0579",
+									"altText": "Privacy Preserving to Alternative to ReCAPTCHA . AKA Turnstile.",
+									"title": "Privacy Preserving to Alternative to ReCAPTCHA . AKA Turnstile.",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/Turnstile.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "4D1RRHLN1CsuxwRyXyXgzN",
+								"title": "Monitor you own network with free network flow analytics from Cloudflare",
+								"titleSize": null,
+								"description": "Cloudflare is excited to announce that we are releasing a free version of Magic Networking Monitoring (previously called Flow Based Monitoring). Magic Network Monitoring receives network flow data from a customer's router(s) and provides network traffic analytics via Cloudflare's dashboard.",
+								"learnMoreUrl": "https://blog.cloudflare.com/free-magic-network-monitoring",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "1b70cd39-66de-536c-8d33-87df88a87623",
+									"altText": "Magic Network Monitoring Free Version",
+									"title": "Magic Network Monitoring Free Version",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/Magic_Network_Monitoring.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "2sEJxifQvDFCOJcWNmMcZV",
+								"title": "Introducing Cloudflare's free Botnet Threat Feed for Service Providers",
+								"titleSize": null,
+								"description": "We're pleased to introduce Cloudflare's free Botnet Threat Feed for Service Providers. This includes all types of service providers, ranging from hosting providers to ISPs and cloud compute providers.",
+								"learnMoreUrl": "https://blog.cloudflare.com/botnet-threat-feed-for-isp",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "bc0eb174-1ded-5447-a41c-c962f2990fa8",
+									"altText": "Botnet Threat Feed for ISP",
+									"title": "Botnet Threat Feed for ISP",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/Botnet_Thread_Feed.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "2i9d5VlKXwRbA7qk0yX2LB",
+								"title": "Private by design: building privacy-preserving products with Cloudflare's Privacy Edge",
+								"titleSize": null,
+								"description": "Introducing Privacy Edge – a collection of products that make it easier for site owners and developers to protect their users' privacy by default. ",
+								"learnMoreUrl": "https://blog.cloudflare.com/privacy-edge-making-building-privacy-first-apps-easier",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "14e6bf2e-2cf3-5715-8b27-bf79bc4d1c62",
+									"altText": "Privacy Edge",
+									"title": "Privacy Edge",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/Privacy_Edge.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "3bnb0AttQ5k614mM1VvHfd",
+								"title": "We've shipped so many products the Cloudflare dashboard needed its own search engine",
+								"titleSize": null,
+								"description": "Today we're proud to announce our beta release of quick search for the Cloudflare dashboard, our first ever cross-dashboard search tool to help you navigate our products and features.",
+								"learnMoreUrl": "https://blog.cloudflare.com/quick-search-beta",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "7d2413ee-6a08-53f0-a1b1-7a25566ccb98",
+									"altText": "Dashboard: Quick Navigation",
+									"title": "Dashboard: Quick Navigation",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/Dashboard__Quick_Navigation.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "4k8WTiSVK1EOgPWT3MEsmR",
+								"title": "The (hardware) key to making phishing defense seamless with Cloudflare Zero Trust and Yubico",
+								"titleSize": null,
+								"description": "Announcing a new collaboration with Yubico, to remove any barriers for organizations of any size to deploying hardware keys.",
+								"learnMoreUrl": "https://blog.cloudflare.com/making-phishing-defense-seamless-cloudflare-yubico/",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "41e8c04d-42dd-5225-b22f-a0db0e57c8cd",
+									"altText": "HW Keys at Cost",
+									"title": "HW Keys at Cost",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/HW_Keys_.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "7ye06LH6ievdVzUqwX3Me2",
+								"title": "How Cloudflare implemented hardware keys with FIDO2 and Zero Trust to prevent phishing",
+								"titleSize": null,
+								"description": "Adopting a phishing resistant second factor, like a YubiKey with FIDO2, is the number one way to prevent phishing attacks. Cloudflare has used phishing resistant second factors only since February of 2021, and these were the steps we took to accomplish that.",
+								"learnMoreUrl": "https://blog.cloudflare.com/how-cloudflare-implemented-fido2-and-zero-trust",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "bc441b3a-5be9-51fd-ac19-d368623d01c6",
+									"altText": "How Cloudflare implemented FIDO2 and Zero Trust to prevent phishing",
+									"title": "How Cloudflare implemented FIDO2 and Zero Trust to prevent phishing",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/FIDO2___Zero_Trust.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "6Gt9VJCiHenDQjHHoARP7L",
+								"title": "Worried about unsafe links in emails? Email Link Isolation is here to help",
+								"titleSize": null,
+								"description": "There's always a cat and mouse game between hackers and security companies. New attacks try to weaponize website links after emails have been delivered to mailboxes, and Email Link Isolation is here to revolutionize protection against those attacks.",
+								"learnMoreUrl": "https://blog.cloudflare.com/safe-email-links",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "78bcc47c-3d2a-576e-a47e-ad80d88a2cb0",
+									"altText": "Making Email Links Safer to Click on",
+									"title": "Making Email Links Safer to Click on",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/Email_link_isolation.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "1XBuBHnPKUI7lMNi2SiwnJ",
+								"title": "Now all customers can share access to their Cloudflare account with Role Based Access Controls",
+								"titleSize": null,
+								"description": "Role Based Access Controls are now available for every plan!\n",
+								"learnMoreUrl": "https://blog.cloudflare.com/rbac-for-everyone",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "03439bbf-537d-5ca8-bdae-b077edaa3c9c",
+									"altText": "RBAC for Every Plan",
+									"title": "RBAC for Every Plan",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/RBAC_for_every_plan.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "2mKM3eX9Bex3Buz9YVt6tN",
+								"title": "Back in 2017 we gave you Unmetered DDoS Mitigation, here's a birthday gift: Unmetered Rate Limiting",
+								"titleSize": null,
+								"description": "From today, Free, Pro and Business plans include Rate Limiting rules without additional charges.",
+								"learnMoreUrl": "https://blog.cloudflare.com/unmetered-ratelimiting",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "f5eeba81-ffa4-50ff-842a-d08200908c93",
+									"altText": "Unmetered Rate Limiting",
+									"title": "Unmetered Rate Limiting",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/Unmetered_Rate_Limiting.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "7zFVj8OLS4WyhkjNJapIew",
+								"title": "Gateway + CASB: alphabetti spaghetti that spells better SaaS security",
+								"titleSize": null,
+								"description": "Now that Cloudflare CASB is Generally Available, let's take a look at how users have been leveraging other Cloudflare Zero Trust products with CASB, starting with Gateway.",
+								"learnMoreUrl": "https://blog.cloudflare.com/gateway-casb-in-action",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "fd6dfd84-ad59-534f-9b84-13d2263d5e34",
+									"altText": "Gateway + CASB integration",
+									"title": "Gateway + CASB integration",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/AnGateway___CASB.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "77gFEmAaqchKedfnSjSLC2",
+								"title": "Project A11Y: how we upgraded Cloudflare's dashboard to adhere to industry accessibility standards",
+								"titleSize": null,
+								"description": "At Cloudflare, we believe the internet should be accessible to __everyone__. And today, we're happy to announce a more inclusive Cloudflare dashboard experience: adherence to the industry accessibility standards, including WCAG 2.1 AA and section 508 compliance. ",
+								"learnMoreUrl": "https://blog.cloudflare.com/project-a11y",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "b2982f82-b620-5d03-a532-ae6425f8422f",
+									"altText": "Dashboard: WCAG Certification for Accessibility",
+									"title": "Dashboard: WCAG Certification for Accessibility",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/Dashboard__WCAG_Certification_for_Accessibility.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "7wK3sd441MfFIwlkYYLsrB",
+								"title": "Lights, Camera, Action! Business and Pro customers get bundled streaming video",
+								"titleSize": null,
+								"description": "Beginning October 27, 2022, if you have a Business or Pro subscription, you will receive a complimentary allocation of Cloudflare Stream.",
+								"learnMoreUrl": "https://blog.cloudflare.com/stream-for-pro-biz-customers",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "7dee6923-e7e0-5237-ac26-584c8807c91f",
+									"altText": "Stream Bundling with Pro/Biz Plans",
+									"title": "Stream Bundling with Pro/Biz Plans",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/Stream_Bundling_b.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "4pgAyLj9M2tI1clOZd4Bxd",
+								"title": "Don't roll your own high cardinality analytics, use Workers Analytics Engine",
+								"titleSize": null,
+								"description": "Join our open beta and start collecting telemetry about anything using Cloudflare Workers today!",
+								"learnMoreUrl": "https://blog.cloudflare.com/analytics-engine-open-beta",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "0053a5cd-3fcc-5d19-a91e-93eb93e2170e",
+									"altText": "Workers Analytics Engine Public Beta",
+									"title": "Workers Analytics Engine Public Beta",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/Workers_Analytics_Engine_Public_Beta.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "2ypYGCw3yJs6JLipWFmeUE",
+								"title": "The home page for Internet insights: Cloudflare Radar 2.0",
+								"titleSize": null,
+								"description": "Cloudflare Radar makes Internet trends, patterns and insights available to everyone, and we're now making them even easier to find, understand and share. ",
+								"learnMoreUrl": "https://blog.cloudflare.com/radar2",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "a93fa400-c82b-5d11-b834-fbca5c7f0237",
+									"altText": "Radar 2.0",
+									"title": "Radar 2.0",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/Radar_2.0.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "2CzJEgfF0gFHUm6XlH1NfF",
+								"title": "The status page the Internet needs: Cloudflare Radar Outage Center",
+								"titleSize": null,
+								"description": "The new Cloudflare Radar Outage Center (CROC), launched as part of Radar 2.0, is intended to be an archive of information about Internet outages observed by Cloudflare, organized by location, type, date, etc.",
+								"learnMoreUrl": "https://blog.cloudflare.com/announcing-cloudflare-radar-outage-center/",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "748046fa-4db9-51fa-aaa0-2428712e7fa0",
+									"altText": "Outage Center",
+									"title": "Outage Center",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/Radar_Outage_Center_.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
+								"contentfulId": "2uXxnp2JyNJWI06ShG2UnF",
+								"title": "Goodbye, Alexa. Hello, Cloudflare Radar Domain Rankings",
+								"titleSize": null,
+								"description": "Today, we are launching a new dataset called Radar Rankings, where we identify the top most popular domains that reflect how people use the Internet globally and per country.",
+								"learnMoreUrl": "https://blog.cloudflare.com/radar-domain-rankings",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "7e0dd151-dfe1-513a-9aef-05df195eb6cb",
+									"altText": "Radar Ranks",
+									"title": "Radar Ranks",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/Radar_Ranks_.png"
 										}
 									},
 									"brandfolderAsset": null,
@@ -239,6 +1230,35 @@
 							},
 							{
 								"contentTypeId": "feature",
+								"contentfulId": "3FPP0mMB6kFY7qHdaRxyXK",
+								"title": "Defending against future threats: Cloudflare goes post-quantum",
+								"titleSize": null,
+								"description": "The future of a private and secure Internet is at stake; that is why today we have enabled post-quantum cryptography support for all our customers",
+								"learnMoreUrl": "https://blog.cloudflare.com/post-quantum-for-all/",
+								"learnMoreText": "Learn More",
+								"displayBorder": false,
+								"icon": null,
+								"iconAssetFile": null,
+								"imageAssetFile": {
+									"id": "7d6e00d4-de2d-533e-ae37-2044f5058077",
+									"altText": "Deploying post-quantum cryptography for all (announcing PQ in nginx-ssl)",
+									"title": "Deploying post-quantum cryptography for all (announcing PQ in nginx-ssl)",
+									"activeAsset": "Contentful Asset",
+									"locale": "en-US",
+									"contentfulAsset": {
+										"file": {
+											"publicURL": "[path]/Deploying_post-quantum_cryptography_for_all.png"
+										}
+									},
+									"brandfolderAsset": null,
+									"brandfolderAssetMobile": null
+								},
+								"streamId": null,
+								"streamThumbnail": null,
+								"streamThumbnailAssetFile": null
+							},
+							{
+								"contentTypeId": "feature",
 								"contentfulId": "6HsS6jogrVF5j626eXzUuu",
 								"title": "Automatic (secure) transmission: taking the pain out of origin connection security ",
 								"titleSize": null,
@@ -265,440 +1285,6 @@
 								"streamId": null,
 								"streamThumbnail": null,
 								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "2Ct96Atb1pctCJJv1qRKNB",
-								"title": "What we served up for the last Birthday Week before we're a teenager",
-								"titleSize": null,
-								"description": "Cloudflare's 12th birthday week: 36 announcements ranging from SIM cards to post quantum encryption via hardware keys and so much more. Here's a review of everything we announced this week",
-								"learnMoreUrl": "https://blog.cloudflare.com/what-we-served-up-for-the-last-birthday-week-before-were-a-teenager/",
-								"learnMoreText": "Learn More",
-								"displayBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageAssetFile": {
-									"id": "8e969e2f-90eb-51a0-9f00-1b03c29bd379",
-									"altText": "Birthday Week Wrap Up",
-									"title": "Birthday Week Wrap Up",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "[path]/Birthday_Week_2022.svg"
-										}
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "7qaxPwr7JSqQH8snbZrV5d",
-								"title": "CloudflareTV-Introducing post-quantum Cloudflare Tunnel",
-								"titleSize": null,
-								"description": "__Monday October 3 7:30 AM PT__\n\nAbe Carryl, Bas Westerbaan & Wesley Evans",
-								"learnMoreUrl": "https://cloudflare.tv/event/dg7ejeaO",
-								"learnMoreText": "Tune In",
-								"displayBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageAssetFile": {
-									"id": "196f472e-7a2a-56e8-8a34-adf96a0d51bc",
-									"altText": "Cloudflare TV Header",
-									"title": "Cloudflare TV Header",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "[path]/CFTV.png"
-										}
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "4Mi4WqHzudwjTn8ToM7Dwz",
-								"title": "CloudflareTV- Defending against future threats: Cloudflare goes post-quantum",
-								"titleSize": null,
-								"description": "__Monday October 3 8:30 AM PT__\n\nWesley Evans, Bas Westerbaan & Cefan Rubin and guest \nJohn Schanck",
-								"learnMoreUrl": "https://cloudflare.tv/event/Mg6JXwgl",
-								"learnMoreText": "Tune In",
-								"displayBorder": false,
-								"icon": null,
-								"iconAssetFile": null,
-								"imageAssetFile": {
-									"id": "196f472e-7a2a-56e8-8a34-adf96a0d51bc",
-									"altText": "Cloudflare TV Header",
-									"title": "Cloudflare TV Header",
-									"activeAsset": "Contentful Asset",
-									"locale": "en-US",
-									"contentfulAsset": {
-										"file": {
-											"publicURL": "[path]/CFTV.png"
-										}
-									},
-									"brandfolderAsset": null,
-									"brandfolderAssetMobile": null
-								},
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							}
-						]
-					},
-					{
-						"contentfulId": "3nWxLsMnNwGKFkTG2qUq1c",
-						"backgroundColor": "white",
-						"contentTypeId": "bladeFourFeatures",
-						"htmlId": null,
-						"copy": null,
-						"title": "History of Birthday Week",
-						"subtitle": null,
-						"bladeStyle": "Carousel",
-						"bladeBorder": "none",
-						"sectionPadding": null,
-						"carouselSlidesToShow": 4,
-						"carouselSlidesToScroll": 3,
-						"locale": "en-US",
-						"features": [
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "4ErP5DpTl9FQh6xzw5pxpD",
-								"title": "2021",
-								"titleSize": "large",
-								"description": "Email Security  \nWeb3  \nRegistrar for Everyone  \nR2 Announced  \nDark Mode  \nCloudflare TV as a service  ",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "00a7aa18-8f3b-52d3-a7c6-37466635265b",
-									"altText": "Email blue",
-									"title": "Email blue",
-									"activeAsset": "Brandfolder Asset",
-									"locale": "en-US",
-									"contentfulAsset": null,
-									"brandfolderAsset": {
-										"size": 474,
-										"height": 192,
-										"width": 192,
-										"filename": "email-blue.svg",
-										"file": {
-											"publicURL": "[path]/email-blue.svg"
-										}
-									},
-									"brandfolderAssetMobile": null
-								},
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "5qn6j2BcZ68ADRhDuQKUEI",
-								"title": "2020",
-								"titleSize": "large",
-								"description": "__Cloudflare turns 10!__  \nCron Triggers  \nDurable Objects  \nWeb Analytics  \nCloudflare Radar  \nAPI Shield   \nAutomatic Platform Optimizations\n",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "2511535e-f879-5d28-9620-dcddee2abffe",
-									"altText": "Drive blue",
-									"title": "Drive blue",
-									"activeAsset": "Brandfolder Asset",
-									"locale": "en-US",
-									"contentfulAsset": null,
-									"brandfolderAsset": {
-										"size": 1098,
-										"height": 192,
-										"width": 192,
-										"filename": "drive-blue.svg",
-										"file": {
-											"publicURL": "[path]/drive-blue.svg"
-										}
-									},
-									"brandfolderAssetMobile": null
-								},
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "7g7qU7Hwq9j7jkCr4KbLtn",
-								"title": "2019",
-								"titleSize": "large",
-								"description": "WARP Plus  \nBrowser Insights  \nBot Defend Mode  \nWorkers Sites  \nHTTP3",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "5b4eab44-b982-5a06-b5ac-2320cd2964b5",
-									"altText": "Calendar blue",
-									"title": "Calendar blue",
-									"activeAsset": "Brandfolder Asset",
-									"locale": "en-US",
-									"contentfulAsset": null,
-									"brandfolderAsset": {
-										"size": 1771,
-										"height": 192,
-										"width": 192,
-										"filename": "calendar-blue.svg",
-										"file": {
-											"publicURL": "[path]/calendar-blue.svg"
-										}
-									},
-									"brandfolderAssetMobile": null
-								},
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "5HyoxbOwiySmyufvlYQ3P2",
-								"title": "2018",
-								"titleSize": "large",
-								"description": "Registrar  \nBandwidth Alliance  \nQUIC support  \nWorkers KV  \nESNI",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "0cfe36ab-abe1-5f77-965c-c24fe0837bdf",
-									"altText": "Cloud multi blue",
-									"title": "Cloud multi blue",
-									"activeAsset": "Brandfolder Asset",
-									"locale": "en-US",
-									"contentfulAsset": null,
-									"brandfolderAsset": {
-										"size": 2641,
-										"height": 192,
-										"width": 192,
-										"filename": "cloud-multi-blue.svg",
-										"file": {
-											"publicURL": "[path]/cloud-multi-blue.svg"
-										}
-									},
-									"brandfolderAssetMobile": null
-								},
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "2IDp2kFBRDHd3mt2KKrJPi",
-								"title": "2017",
-								"titleSize": "large",
-								"description": "Unmetered DDoS mitigation  \nCloudflare Stream  \nGeo Key Manager  \nWorkers",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "56e4ad29-94fc-5b3f-92ff-e7e657e886cb",
-									"altText": "Certificate blue",
-									"title": "Certificate blue",
-									"activeAsset": "Brandfolder Asset",
-									"locale": "en-US",
-									"contentfulAsset": null,
-									"brandfolderAsset": {
-										"size": 1415,
-										"height": 192,
-										"width": 192,
-										"filename": "certificate-blue.svg",
-										"file": {
-											"publicURL": "[path]/certificate-blue.svg"
-										}
-									},
-									"brandfolderAssetMobile": null
-								},
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "6aucl4kBSJ6U1djj4KBhPb",
-								"title": "2016",
-								"titleSize": "large",
-								"description": "Rebranding effort and CloudFlare becomes Cloudflare, along with a new logo and website. Also introduced early access to managed dedicated SSL certificates, global load balancing and rate limiting.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "f21a895b-0eae-52ee-8be4-07c61337b5e5",
-									"altText": "Eyeball blue",
-									"title": "Eyeball blue",
-									"activeAsset": "Brandfolder Asset",
-									"locale": "en-US",
-									"contentfulAsset": null,
-									"brandfolderAsset": {
-										"size": 2050,
-										"height": 192,
-										"width": 192,
-										"filename": "eyeball-blue.svg",
-										"file": {
-											"publicURL": "[path]/eyeball-blue.svg"
-										}
-									},
-									"brandfolderAssetMobile": null
-								},
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "7o1J2dyqAGfPewQfUlILji",
-								"title": "2015",
-								"titleSize": "large",
-								"description": "Expansion to China and announcement of our partnership with Baidu to bring 17 new data centers online in mainland China.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": false,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "76a11ba2-f049-5af8-803e-8d933358063b",
-									"altText": "Internet globe blue",
-									"title": "Internet globe blue",
-									"activeAsset": "Brandfolder Asset",
-									"locale": "en-US",
-									"contentfulAsset": null,
-									"brandfolderAsset": {
-										"size": 2017,
-										"height": 192,
-										"width": 192,
-										"filename": "internet-globe-blue.svg",
-										"file": {
-											"publicURL": "[path]/internet-globe-blue.svg"
-										}
-									},
-									"brandfolderAssetMobile": null
-								},
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "1VILL1aT6UeboAi1W9L2QQ",
-								"title": "2014",
-								"titleSize": "large",
-								"description": "Launch of Universal SSL for all Cloudflare customers ensuring that every website supported on our network is secure.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": null,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "148afc63-873a-50db-ab55-afee5425740b",
-									"altText": "Documentation clipboard blue",
-									"title": "Documentation clipboard blue",
-									"activeAsset": "Brandfolder Asset",
-									"locale": "en-US",
-									"contentfulAsset": null,
-									"brandfolderAsset": {
-										"size": 517,
-										"height": 192,
-										"width": 192,
-										"filename": "documentation-clipboard-blue.svg",
-										"file": {
-											"publicURL": "[path]/documentation-clipboard-blue.svg"
-										}
-									},
-									"brandfolderAssetMobile": null
-								},
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "MGFx4BA6RQ9yng5IQAuli",
-								"title": "2011",
-								"titleSize": "large",
-								"description": "Cloudflare launches a free automatic IPv6 Gateway for all users to ease their transition to IPv6.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": null,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "f1cefe1e-0ba3-5ad8-b7f9-16dc63d1d2ed",
-									"altText": "Analytics bots blue",
-									"title": "Analytics bots blue",
-									"activeAsset": "Brandfolder Asset",
-									"locale": "en-US",
-									"contentfulAsset": null,
-									"brandfolderAsset": {
-										"size": 1564,
-										"height": 192,
-										"width": 192,
-										"filename": "analytics-bots-blue.svg",
-										"file": {
-											"publicURL": "[path]/analytics-bots-blue.svg"
-										}
-									},
-									"brandfolderAssetMobile": null
-								},
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
-							},
-							{
-								"contentTypeId": "feature",
-								"contentfulId": "2VyuvVHXrjix3QsM3mErA0",
-								"title": "2010",
-								"titleSize": "large",
-								"description": "Cloudflare officially launched in 2010 at TechCrunch Disrupt with 1,000 websites subscribed during the initial beta.",
-								"learnMoreUrl": null,
-								"learnMoreText": null,
-								"displayBorder": null,
-								"icon": null,
-								"iconAssetFile": {
-									"id": "b1b7275d-3503-5173-a651-9cfd70157c3c",
-									"altText": "Performance acceleration rocket blue",
-									"title": "Performance acceleration rocket blue",
-									"activeAsset": "Brandfolder Asset",
-									"locale": "en-US",
-									"contentfulAsset": null,
-									"brandfolderAsset": {
-										"size": 1970,
-										"height": 192,
-										"width": 192,
-										"filename": "performance-acceleration-rocket-blue.svg",
-										"file": {
-											"publicURL": "[path]/performance-acceleration-rocket-blue.svg"
-										}
-									},
-									"brandfolderAssetMobile": null
-								},
-								"imageAssetFile": null,
-								"streamId": null,
-								"streamThumbnail": null,
-								"streamThumbnailAssetFile": null
 							}
 						]
 					}
@@ -717,7 +1303,7 @@
 		"pageContext": {
 			"locale": "en-US",
 			"pathname": "/birthday-week/",
-			"contentfulId": "5HFnNizVq7hFK8LR3AXoZb",
+			"contentfulId": "4mwQBR9VYHFTKAQAVljmuO",
 			"allowedHrefLangs": [
 				"en-US",
 				"zh-CN",
