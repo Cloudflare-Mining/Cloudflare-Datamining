@@ -608,6 +608,7 @@
 		"__description": "",
 		"bytesRecvd": "Total bytes received in this session",
 		"bytesSent": "Total bytes sent in this session",
+		"clientBytesRetransmitted": "Total bytes retransmitted by client in this session",
 		"packetsRecvd": "Total number of packets received in this session",
 		"packetsSent": "Total number of packets sent in this session",
 		"tokenAuthDurationUs": "Time taken for client token authentication in microseconds"
@@ -683,6 +684,7 @@
 		"bytesRecvd": "Total bytes received in this session",
 		"bytesSent": "Total bytes sent in this session",
 		"connectReqHandlingDurationUs": "Time taken for CONNECT request handling in microseconds",
+		"originBytesRetransmitted": "Total bytes retransmitted by origin in this session",
 		"packetsRecvd": "Total number of packets received in this session",
 		"packetsSent": "Total number of packets sent in this session",
 		"totalTunnelSetupDurationUs": "Total time taken for tunnel setup in microseconds",
@@ -2640,6 +2642,7 @@
 	"ZoneCacheReserveOperationsAdaptiveGroupsDimensions": {
 		"__description": "",
 		"actionStatus": "Status of the R2 operation",
+		"bucketName": "Name of bucket containing stored objects",
 		"date": "Request timestamp, truncated to start of a day",
 		"datetime": "Request timestamp",
 		"datetimeHour": "Request timestamp, truncated to start of an hour",
@@ -2664,6 +2667,7 @@
 	"ZoneCacheReserveStorageAdaptiveGroupsDimensions": {
 		"__description": "",
 		"bucketHash": "Hash of bucket containing stored objects",
+		"bucketName": "Name of bucket containing stored objects",
 		"date": "Storage sample timestamp, truncated to start of a day",
 		"datetime": "Storage sample timestamp",
 		"datetimeHour": "Storage sample timestamp, truncated to start of an hour",
