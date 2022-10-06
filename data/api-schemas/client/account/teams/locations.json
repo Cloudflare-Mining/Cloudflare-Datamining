@@ -14,7 +14,7 @@
 			"html_id": "zero-trust-gateway-locations-list-zero-trust-gateway-locations",
 			"uri": "accounts/:identifier/gateway/locations",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/gateway/locations\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"ed35569b41ce4d1facfe683550f54086\",\n      \"name\": \"Austin Office Location\",\n      \"ip\": \"2001:0db8:85a3:0000:0000:8a2e:0370:7334\",\n      \"networks\": [\n        \"192.0.2.1\"\n      ],\n      \"doh_subdomain\": \"oli3n9zkz5\",\n      \"client_default\": false,\n      \"ecs_support\": false,\n      \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n      \"updated_at\": \"2014-01-01T05:20:00.12345Z\"\n    }\n  ]\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"ed35569b41ce4d1facfe683550f54086\",\n      \"name\": \"Austin Office Location\",\n      \"ip\": \"2001:0db8:85a3:0000:0000:8a2e:0370:7334\",\n      \"networks\": [\n        \"192.0.2.1/32\"\n      ],\n      \"doh_subdomain\": \"oli3n9zkz5\",\n      \"client_default\": false,\n      \"ecs_support\": false,\n      \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n      \"updated_at\": \"2014-01-01T05:20:00.12345Z\"\n    }\n  ]\n}"
 		},
 		{
 			"title": "Zero Trust Gateway Location Details",
@@ -26,7 +26,7 @@
 			"html_id": "zero-trust-gateway-locations-zero-trust-gateway-location-details",
 			"uri": "accounts/:identifier/gateway/locations/:uuid",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/gateway/locations/ed35569b41ce4d1facfe683550f54086\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"ed35569b41ce4d1facfe683550f54086\",\n    \"name\": \"Austin Office Location\",\n    \"ip\": \"2001:0db8:85a3:0000:0000:8a2e:0370:7334\",\n    \"networks\": [\n      \"192.0.2.1\"\n    ],\n    \"doh_subdomain\": \"oli3n9zkz5\",\n    \"client_default\": false,\n    \"ecs_support\": false,\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\"\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"ed35569b41ce4d1facfe683550f54086\",\n    \"name\": \"Austin Office Location\",\n    \"ip\": \"2001:0db8:85a3:0000:0000:8a2e:0370:7334\",\n    \"networks\": [\n      \"192.0.2.1/32\"\n    ],\n    \"doh_subdomain\": \"oli3n9zkz5\",\n    \"client_default\": false,\n    \"ecs_support\": false,\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\"\n  }\n}"
 		},
 		{
 			"title": "Create Zero Trust Gateway Location",
@@ -37,7 +37,7 @@
 			"cfOwnership": "gateway",
 			"html_id": "zero-trust-gateway-locations-create-zero-trust-gateway-location",
 			"uri": "accounts/:identifier/gateway/locations",
-			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/gateway/locations\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"name\":\"Austin Office Location\",\"networks\":[\"192.0.2.1\"],\"client_default\":false,\"ecs_support\":false}'",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/gateway/locations\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"name\":\"Austin Office Location\",\"networks\":[\"192.0.2.1/32\"],\"client_default\":false,\"ecs_support\":false}'",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}
@@ -50,12 +50,12 @@
 					},
 					"networks": {
 						"type": "array",
-						"example": "[\n  \"192.0.2.1\"\n]",
+						"example": "[\n  \"192.0.2.1/32\"\n]",
 						"description": "A list of network ranges that requests from this location would originate from",
 						"items": {
 							"type": "string",
-							"description": "The IPv4 address, IPv4 CIDR or IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /16",
-							"example": "192.0.2.1"
+							"description": "The IPv4 address or IPv4 CIDR. IPv4 CIDRs are limited to a maximum of /24",
+							"example": "192.0.2.1/32"
 						}
 					},
 					"client_default": {
@@ -78,9 +78,9 @@
 					"ecs_support"
 				],
 				"objects": [],
-				"example": "{\n  \"name\": \"Austin Office Location\",\n  \"networks\": [\n    \"192.0.2.1\"\n  ],\n  \"client_default\": false,\n  \"ecs_support\": false\n}"
+				"example": "{\n  \"name\": \"Austin Office Location\",\n  \"networks\": [\n    \"192.0.2.1/32\"\n  ],\n  \"client_default\": false,\n  \"ecs_support\": false\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"ed35569b41ce4d1facfe683550f54086\",\n    \"name\": \"Austin Office Location\",\n    \"ip\": \"2001:0db8:85a3:0000:0000:8a2e:0370:7334\",\n    \"networks\": [\n      \"192.0.2.1\"\n    ],\n    \"doh_subdomain\": \"oli3n9zkz5\",\n    \"client_default\": false,\n    \"ecs_support\": false,\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\"\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"ed35569b41ce4d1facfe683550f54086\",\n    \"name\": \"Austin Office Location\",\n    \"ip\": \"2001:0db8:85a3:0000:0000:8a2e:0370:7334\",\n    \"networks\": [\n      \"192.0.2.1/32\"\n    ],\n    \"doh_subdomain\": \"oli3n9zkz5\",\n    \"client_default\": false,\n    \"ecs_support\": false,\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\"\n  }\n}"
 		},
 		{
 			"title": "Update Zero Trust Gateway Location",
@@ -91,7 +91,7 @@
 			"cfOwnership": "gateway",
 			"html_id": "zero-trust-gateway-locations-update-zero-trust-gateway-location",
 			"uri": "accounts/:identifier/gateway/locations/:uuid",
-			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/gateway/locations/ed35569b41ce4d1facfe683550f54086\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"name\":\"Austin Office Location\",\"networks\":[\"192.0.2.1\"],\"client_default\":false,\"ecs_support\":false}'",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/699d98642c564d2e855e9661899b7252/gateway/locations/ed35569b41ce4d1facfe683550f54086\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"name\":\"Austin Office Location\",\"networks\":[\"192.0.2.1/32\"],\"client_default\":false,\"ecs_support\":false}'",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}
@@ -104,12 +104,12 @@
 					},
 					"networks": {
 						"type": "array",
-						"example": "[\n  \"192.0.2.1\"\n]",
+						"example": "[\n  \"192.0.2.1/32\"\n]",
 						"description": "A list of network ranges that requests from this location would originate from",
 						"items": {
 							"type": "string",
-							"description": "The IPv4 address, IPv4 CIDR or IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /16",
-							"example": "192.0.2.1"
+							"description": "The IPv4 address or IPv4 CIDR. IPv4 CIDRs are limited to a maximum of /24",
+							"example": "192.0.2.1/32"
 						}
 					},
 					"client_default": {
@@ -132,9 +132,9 @@
 					"ecs_support"
 				],
 				"objects": [],
-				"example": "{\n  \"name\": \"Austin Office Location\",\n  \"networks\": [\n    \"192.0.2.1\"\n  ],\n  \"client_default\": false,\n  \"ecs_support\": false\n}"
+				"example": "{\n  \"name\": \"Austin Office Location\",\n  \"networks\": [\n    \"192.0.2.1/32\"\n  ],\n  \"client_default\": false,\n  \"ecs_support\": false\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"ed35569b41ce4d1facfe683550f54086\",\n    \"name\": \"Austin Office Location\",\n    \"ip\": \"2001:0db8:85a3:0000:0000:8a2e:0370:7334\",\n    \"networks\": [\n      \"192.0.2.1\"\n    ],\n    \"doh_subdomain\": \"oli3n9zkz5\",\n    \"client_default\": false,\n    \"ecs_support\": false,\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\"\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"ed35569b41ce4d1facfe683550f54086\",\n    \"name\": \"Austin Office Location\",\n    \"ip\": \"2001:0db8:85a3:0000:0000:8a2e:0370:7334\",\n    \"networks\": [\n      \"192.0.2.1/32\"\n    ],\n    \"doh_subdomain\": \"oli3n9zkz5\",\n    \"client_default\": false,\n    \"ecs_support\": false,\n    \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n    \"updated_at\": \"2014-01-01T05:20:00.12345Z\"\n  }\n}"
 		},
 		{
 			"title": "Delete Zero Trust Gateway Location",
@@ -176,12 +176,12 @@
 			},
 			"networks": {
 				"type": "array",
-				"example": "[\n  \"192.0.2.1\"\n]",
+				"example": "[\n  \"192.0.2.1/32\"\n]",
 				"description": "A list of network ranges that requests from this location would originate from",
 				"items": {
 					"type": "string",
-					"description": "The IPv4 address, IPv4 CIDR or IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /16",
-					"example": "192.0.2.1"
+					"description": "The IPv4 address or IPv4 CIDR. IPv4 CIDRs are limited to a maximum of /24",
+					"example": "192.0.2.1/32"
 				}
 			},
 			"doh_subdomain": {
@@ -231,7 +231,7 @@
 			"updated_at"
 		],
 		"objects": [],
-		"example": "{\n  \"id\": \"ed35569b41ce4d1facfe683550f54086\",\n  \"name\": \"Austin Office Location\",\n  \"ip\": \"2001:0db8:85a3:0000:0000:8a2e:0370:7334\",\n  \"networks\": [\n    \"192.0.2.1\"\n  ],\n  \"doh_subdomain\": \"oli3n9zkz5\",\n  \"client_default\": false,\n  \"ecs_support\": false,\n  \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n  \"updated_at\": \"2014-01-01T05:20:00.12345Z\"\n}",
+		"example": "{\n  \"id\": \"ed35569b41ce4d1facfe683550f54086\",\n  \"name\": \"Austin Office Location\",\n  \"ip\": \"2001:0db8:85a3:0000:0000:8a2e:0370:7334\",\n  \"networks\": [\n    \"192.0.2.1/32\"\n  ],\n  \"doh_subdomain\": \"oli3n9zkz5\",\n  \"client_default\": false,\n  \"ecs_support\": false,\n  \"created_at\": \"2014-01-01T05:20:00.12345Z\",\n  \"updated_at\": \"2014-01-01T05:20:00.12345Z\"\n}",
 		"title": "Zero Trust Gateway Locations",
 		"description": "Locations are a collection of resources like network ranges or destination IPs that can map to a physical location like an office and are used when creating Zero Trust Gateway Resolver DNS policies"
 	}

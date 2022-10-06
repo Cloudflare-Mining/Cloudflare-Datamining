@@ -2954,6 +2954,38 @@ components:
       - basic
       - simplified
       type: string
+    cache_reserve:
+      allOf:
+      - $ref: '#/components/schemas/components-schemas-base'
+      - properties:
+          id:
+            description: ID of the zone setting
+            enum:
+            - cache_reserve
+            example: cache_reserve
+      description: 'Increase cache lifetimes by automatically storing all cacheable
+        files into Cloudflare''s persistent object storage buckets. Requires Cache
+        Reserve subscription. Note: using Tiered Cache with Cache Reserve is highly
+        recommended to reduce Reserve operations costs. See the [developer docs](https://developers.cloudflare.com/cache/about/cache-reserve)
+        for more information.'
+      title: Cache Reserve
+    cache_reserve_response_value:
+      properties:
+        result:
+          allOf:
+          - $ref: '#/components/schemas/cache_reserve'
+          - properties:
+              value:
+                $ref: '#/components/schemas/cache_reserve_value'
+            required:
+            - value
+    cache_reserve_value:
+      default: "off"
+      description: Value of the Cache Reserve zone setting.
+      enum:
+      - "on"
+      - "off"
+      type: string
     can_delete:
       description: If set to false, then the Address Map cannot be deleted via API.
         This is true for Cloudflare-managed maps
@@ -11920,9 +11952,9 @@ components:
       description: A list of network ranges that requests from this location would
         originate from
       items:
-        description: The IPv4 address, IPv4 CIDR or IPv6 CIDR. IPv6 CIDRs are limited
-          to a maximum of /16
-        example: 192.0.2.1
+        description: The IPv4 address or IPv4 CIDR. IPv4 CIDRs are limited to a maximum
+          of /24
+        example: 192.0.2.1/32
         type: string
       type: array
     neverRequireSignedURLs:
@@ -19944,16 +19976,6 @@ components:
         for any proxied A, AAAA, or CNAME record in your zone.
       example: true
       type: boolean
-    total-tls_components-schemas-status:
-      description: The current status for Total TLS. Pending states represent that
-        all certificates have not yet had orders initiated or removed.
-      enum:
-      - enabled
-      - disabled
-      - pending_enabled
-      - pending_disabled
-      example: pending_enabled
-      type: string
     total_active_users:
       description: Sets the total number of active user sessions on the route at a
         point in time. A route is a combination of host and path on which a waiting
@@ -19974,8 +19996,6 @@ components:
                 $ref: '#/components/schemas/schemas-certificate_authority'
               enabled:
                 $ref: '#/components/schemas/total-tls_components-schemas-enabled'
-              status:
-                $ref: '#/components/schemas/total-tls_components-schemas-status'
               validity_days:
                 $ref: '#/components/schemas/schemas-validity_days'
     totals:
@@ -22071,7 +22091,7 @@ components:
       name: X-Auth-User-Service-Key
       type: apiKey
 info:
-  description: |
+  description: |-
     # Cloudflare's API
 
     Interact with Cloudflare's products and services via the Cloudflare API.
@@ -58307,6 +58327,109 @@ paths:
         enterprise: true
         free: true
         pro: true
+  /zones/{zone_identifier}/cache/cache_reserve:
+    get:
+      description: 'Increase cache lifetimes by automatically storing all cacheable
+        files into Cloudflare''s persistent object storage buckets. Requires Cache
+        Reserve subscription. Note: using Tiered Cache with Cache Reserve is highly
+        recommended to reduce Reserve operations costs. See the [developer docs](https://developers.cloudflare.com/cache/about/cache-reserve)
+        for more information.'
+      operationId: zone-cache-settings-get-cache-reserve-setting
+      parameters:
+      - in: path
+        name: zone_identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - allOf:
+                  - $ref: '#/components/schemas/zone_cache_settings_response_single'
+                  - $ref: '#/components/schemas/cache_reserve_response_value'
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: Get Cache Reserve setting response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/zone_cache_settings_response_single'
+                - $ref: '#/components/schemas/cache_reserve_response_value'
+          description: Get Cache Reserve setting response
+      security:
+      - api_email: []
+        api_key: []
+      summary: Get Cache Reserve setting
+      tags:
+      - Zone Cache Settings
+      x-cfPermissionsRequired:
+        enum:
+        - '#zone_settings:read'
+      x-cfPlanAvailability:
+        business: true
+        enterprise: true
+        free: true
+        pro: true
+    patch:
+      description: 'Increase cache lifetimes by automatically storing all cacheable
+        files into Cloudflare''s persistent object storage buckets. Requires Cache
+        Reserve subscription. Note: using Tiered Cache with Cache Reserve is highly
+        recommended to reduce Reserve operations costs. See the [developer docs](https://developers.cloudflare.com/cache/about/cache-reserve)
+        for more information.'
+      operationId: zone-cache-settings-change-cache-reserve-setting
+      parameters:
+      - in: path
+        name: zone_identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/common_components-schemas-identifier'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                value:
+                  $ref: '#/components/schemas/cache_reserve_value'
+              required:
+              - value
+        required: true
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - allOf:
+                  - $ref: '#/components/schemas/zone_cache_settings_response_single'
+                  - $ref: '#/components/schemas/cache_reserve_response_value'
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: Change Cache Reserve setting response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/zone_cache_settings_response_single'
+                - $ref: '#/components/schemas/cache_reserve_response_value'
+          description: Change Cache Reserve setting response
+      security:
+      - api_email: []
+        api_key: []
+      summary: Change Cache Reserve setting
+      tags:
+      - Zone Cache Settings
+      x-cfPermissionsRequired:
+        enum:
+        - '#zone_settings:edit'
+      x-cfPlanAvailability:
+        business: true
+        enterprise: true
+        free: true
+        pro: true
   /zones/{zone_identifier}/cache/variants:
     delete:
       description: 'Variant support enables caching variants of images with certain
@@ -72540,9 +72663,3 @@ paths:
 servers:
 - description: Client API
   url: https://api.cloudflare.com/client/v4
-- description: Client API (Staging)
-  url: https://api.staging.cloudflare.com/client/v4
-- description: Client API (LUX)
-  url: https://api.cfinlux.com/client/v4
-- description: Client API (LUX Staging)
-  url: https://api.staging.cfinlux.com/client/v4
