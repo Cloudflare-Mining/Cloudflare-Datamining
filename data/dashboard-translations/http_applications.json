@@ -31,6 +31,7 @@
 	"http_applications.rules.table.column.type": "Type",
 	"http_applications.rules.modal.delete.title": "Delete rule",
 	"http_applications.rules.modal.delete.body": "You are deleting the rule named %{name}. Deleting this rule will impact your traffic and cannot be undone.",
+	"http_applications.rules.modal.delete.body.error": "The rule you are trying to delete is enabled. You must first disable it before you can delete it.",
 	"http_applications.rules.backlink": "Back to Routing Rules",
 	"http_applications.rules.staging": "Staging",
 	"http_applications.rules.production": "Production",
