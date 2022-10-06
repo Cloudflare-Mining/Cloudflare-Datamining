@@ -1,0 +1,80 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/image2-1.png" class="kg-image" alt="Introducing post-quantum Cloudflare Tunnel"></figure>
+	<p>Il ne fait aucun doute que l'une des grandes thématiques de l'informatique au cours de la prochaine décennie sera <em>la migration</em> vers la <em>cryptographie post-quantique</em>. Des géants de la technologie jusqu'aux petites entreprises, nous devrons tous nous assurer que notre matériel et nos logiciels sont mis à jour, afin que nos données soient protégées contre l'arrivée des <a href="https://blog.cloudflare.com/the-quantum-menace/">ordinateurs quantiques</a>. L'échéance paraît lointaine, mais il ne s'agit pas d'un problème que l'on peut « remettre à plus tard » : toute donnée chiffrée saisie aujourd'hui, non protégée par la cryptographie post-quantique, pourra être percée par un ordinateur quantique suffisamment puissant à l'avenir.</p>
+	<p>Heureusement, nous y sommes presque : après un immense effort mondial de la communauté cryptographique, <a href="https://blog.cloudflare.com/nist-post-quantum-surprise/">nous savons</a> ce qui constituera l'étalon-or de la cryptographie post-quantique au cours des prochaines décennies. Date de lancement : un jour en 2024. Espérons que, pour la plupart, la transition ne nécessitera qu'une simple mise à jour logicielle, mais ce ne sera pas aussi simple pour tout le monde : tous les logiciels ne bénéficient pas d'une maintenance, et il est bien possible que le matériel ait, lui aussi, besoin d'une mise à niveau. Lorsque l'on prend un peu de recul, on constate que de nombreuses entreprises ne disposent même pas d'une liste complète de tous les logiciels exécutés sur leur réseau.</p>
+	<p>Pour les clients de Cloudflare Tunnel, cette migration sera beaucoup plus simple : nous vous présentons <strong>Post-Quantum Cloudflare Tunnel</strong>. Dans cet article de blog, nous présentons d'abord le fonctionnement de Cloudflare Tunnel et expliquons comment la solution peut vous aider à accomplir votre migration post-quantique. Ensuite, nous vous expliquons comment vous lancer et, pour conclure, nous abordons les détails techniques de fond.</p>
+	<h2 id="cloudflare-tunnel">Cloudflare Tunnel</h2>
+	<p>Avec <a href="https://www.cloudflare.com/en-gb/products/tunnel/" target="_blank">Cloudflare Tunnel</a>, vous pouvez exposer un serveur situé sur un réseau interne à Internet, en toute sécurité, en exécutant en parallèle le service <code>cloudflared</code>. Par exemple, après avoir installé <code><a href="https://github.com/cloudflare/cloudflared" target="_blank">cloudflared</a></code> sur votre réseau interne, vous pouvez exposer votre application web sur site à Internet sous exemple.com, afin que le personnel distant puisse y accéder depuis n'importe quel endroit,</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/image1.png" class="kg-image" alt="Life of a Cloudflare Tunnel request.">
+		<figcaption>L<em>a vie d'une requête Cloudflare Tunnel.</em></figcaption>
+	</figure>
+	<p>Comment cela fonctionne-t-il ? Le service <code>cloudflared</code> établit des connexions de longue durée à deux datacenters Cloudflare proches, par exemple, San Francisco (connexion 3) et un autre. Lorsque votre employé consulte votre domaine, il se connecte (1) à un serveur Cloudflare proche de lui – par exemple, à Francfort. Ce serveur sait qu'il s'agit d'un tunnel Cloudflare et que votre service <code>cloudflared</code> a établi une connexion avec un serveur à San Francisco, et il lui transmet (2) donc la requête. À son tour, via la connexion inverse, la requête est transmise à <code>cloudflared</code>, qui la transmet (4) à l'application web via votre réseau interne.</p>
+	<p>En substance, Cloudflare Tunnel est un outil simple, mais pratique ; toutefois, la magie réside dans ce qu'il vous permet d'accomplir en plus : vous bénéficiez gratuitement de la <a href="https://www.cloudflare.com/en-gb/ddos/" target="_blank">protection contre les attaques DDoS de Cloudflare</a>, d'un contrôle d'accès précis avec <a href="https://www.cloudflare.com/en-gb/products/zero-trust/access/" target="_blank">Cloudflare Access</a> (même si l'application ne le prend pas en charge) et de <a href="https://developers.cloudflare.com/cloudflare-one/analytics/logs/audit-logs/" target="_blank">journaux de requêtes</a>, pour ne citer que quelques exemples. Et n'oublions pas la question qui nous préoccupe :</p>
+	<h2 id="les-tunnels-post-quantiques">Les tunnels post-quantiques</h2>
+	<p>Notre objectif est de permettre à chacun de disposer facilement d'une connexion entièrement sécurisée post-quantique, de l'utilisateur au serveur d'origine. À cette fin, Post-Quantum Cloudflare Tunnel est un outil puissant, avec lequel vos utilisateurs peuvent bénéficier d'une connexion sécurisée post-quantique, sans nécessiter une mise à niveau de votre application (connexion 4 sur le schéma).</p>
+	<p>Aujourd'hui, nous adoptons deux mesures importantes pour atteindre cet objectif : <code>cloudflared</code> <a href="https://github.com/cloudflare/cloudflared/releases/tag/2022.9.1" target="_blank">2022.9.1</a> ajoute l'indicateur <code>--post-quantum</code>, qui, lorsqu'il est activé, applique une sécurité post-quantique à la connexion de <code>cloudflared</code> à notre réseau (connexion 3).</p>
+	<p>Aujourd'hui également, nous avons annoncé la prise en charge des connexions de navigateurs post-quantiques (connexion 1).</p>
+	<p>Nous n'y sommes pas encore : les navigateurs (et autres clients HTTP) ne prennent pas encore en charge la sécurité post-quantique qu'offre notre réseau, et nous devons encore appliquer une sécurité post-quantique aux connexions entre nos datacenters données (connexion 2).</p>
+	<p>Les acteurs malveillants n'ont besoin d'avoir accès qu'à une seule connexion vulnérable, mais ils ne disposent pas d'un accès omniprésent : avec chaque connexion à laquelle nous appliquons une sécurité post-quantique, nous supprimons une opportunité de compromission.</p>
+	<p>Nous sommes impatients de voir les tunnels post-quantiques devenir la solution par défaut, mais pour l'instant, il s'agit d'une fonctionnalité bêta. La raison est que la cryptographie employée et son intégration au protocole réseau ne sont pas encore définitives. Si nous faisions dès maintenant de la sécurité post-quantique la fonctionnalité par défaut, cela exigerait des utilisateurs qu'ils mettent à jour <code>cloudflared</code> plus souvent que ce que nous pouvons raisonnablement attendre d'eux.</p>
+	<h2 id="premiers-pas">Premiers pas</h2>
+	<p>Si des mises à jour fréquentes de <code>cloudflared</code> ne vous posent pas de problème, nous vous invitons à essayer Post-Quantum Cloudflare Tunnel. Assurez-vous d'utiliser la version <a href="https://github.com/cloudflare/cloudflared/releases/tag/2022.9.1" target="_blank">2022.9.1</a> ou une version ultérieure, et exécutez simplement <code>cloudflared</code> avec l'indicateur <code>--post-quantum</code> :</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>$ cloudflared tunnel run --post-quantum tunnel-name
+2022-09-23T11:44:42Z INF Starting tunnel tunnelID=[...]
+2022-09-23T11:44:42Z INF Version 2022.9.1
+2022-09-23T11:44:42Z INF GOOS: darwin, GOVersion: go1.19.1, GoArch: amd64
+2022-09-23T11:44:42Z INF Settings: map[post-quantum:true pq:true]
+2022-09-23T11:44:42Z INF Generated Connector ID: [...]
+2022-09-23T11:44:42Z INF cloudflared will not automatically update if installed by a package manager.
+2022-09-23T11:44:42Z INF Initial protocol quic
+2022-09-23T11:44:42Z INF Using experimental hybrid post-quantum key agreement X25519Kyber768Draft00
+2022-09-23T11:44:42Z INF Starting metrics server on 127.0.0.1:53533/metrics
+2022-09-23T11:44:42Z INF Connection [...] registered connIndex=0 ip=[...] location=AMS
+2022-09-23T11:44:43Z INF Connection [...] registered connIndex=1 ip=[...] location=AMS
+2022-09-23T11:44:44Z INF Connection [...] registered connIndex=2 ip=[...] location=AMS
+2022-09-23T11:44:45Z INF Connection [...] registered connIndex=3 ip=[...] location=AMS
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Si vous exécutez <code>cloudflared</code><a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/as-a-service/" target="_blank"> en tant que service</a>, vous pouvez activer la sécurité post-quantique en ajoutant l'indicateur post-quantum: true dans le fichier de configuration du tunnel. De manière pratique, le service <code>cloudflared</code> <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/local-management/arguments/#no-autoupdate" target="_blank">se mettra automatiquement à jour</a> s'il n'a pas été installé par un gestionnaire de packages.</p>
+	<p>Si, pour une raison quelconque, la création d'un tunnel post-quantique échoue, vous verrez s'afficher un message d'erreur du type</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>2022-09-22T17:30:39Z INF Starting tunnel tunnelID=[...]
+2022-09-22T17:30:39Z INF Version 2022.9.1
+2022-09-22T17:30:39Z INF GOOS: darwin, GOVersion: go1.19.1, GoArch: amd64
+2022-09-22T17:30:39Z INF Settings: map[post-quantum:true pq:true]
+2022-09-22T17:30:39Z INF Generated Connector ID: [...]
+2022-09-22T17:30:39Z INF cloudflared will not automatically update if installed by a package manager.
+2022-09-22T17:30:39Z INF Initial protocol quic
+2022-09-22T17:30:39Z INF Using experimental hybrid post-quantum key agreement X25519Kyber512Draft00
+2022-09-22T17:30:39Z INF Starting metrics server on 127.0.0.1:55889/metrics
+2022-09-22T17:30:39Z INF 
+
+===================================================================================
+Vous rencontrez une erreur lorsque vous utilisez la fonctionnalité expérimentale de tunnel post-quantique ?
+
+Veuillez vous référer à  :
+
+    https://pqtunnels.cloudflareresearch.com
+
+pour consulter une liste de problèmes connus.
+===================================================================================
+
+
+2022-09-22T17:30:39Z ERR Failed to create new quic connection error="failed to dial to edge with quic: CRYPTO_ERROR (0x128): tls: handshake failure" connIndex=0 ip=[...]
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Lorsque l'indicateur post-quantum est activé, le service <code>cloudflared</code> ne rétablira <em>pas</em> une connexion non-post-quantique.</p>
+	<h3 id="ce-quoi-vous-devez-pr-ter-attention">Ce à quoi vous devez prêter attention</h3>
+	<p>La phase de configuration est l'étape cruciale : une fois établi, le tunnel est identique à un tunnel normal. Cela signifie que les performances et la fiabilité devraient être identiques, une fois le tunnel établi.</p>
+	<p>La cryptographie post-quantique que nous utilisons est très rapide, mais nécessite l'échange d'environ un kilooctet de données supplémentaires pendant la négociation. La différence sera difficilement perceptible, dans la pratique.</p>
+	<p>Notre plus grande préoccupation est que certains équipements réseau/boîtiers intermédiaires puissent être perturbés par le volume plus important de données de négociation. Si Post-Quantum Cloudflare Tunnel ne fonctionne pas pour vous, nous aimerions en être informés. Contactez-nous à l'adresse <a href="mailto:ask-research@cloudflare.com" target="_blank">ask-research@cloudflare.com</a> et indiquez quels boîtiers intermédiaires ou FAI vous utilisez.</p>
+	<h2 id="sous-le-capot">Sous le capot</h2>
+	<p>Lorsque l'indicateur <code>--post-quantum</code> est activé, le service <code>cloudflared</code> se restreint au transport QUIC pour l'établissement la connexion du tunnel à notre réseau, et autorisera uniquement les échanges de clés hybrides post-quantiques <code>X25519Kyber512Draft00</code> et <code>X25519Kyber768Draft00</code> avec les identifiants TLS <code>0xfe30</code> et <code>0xfe31</code>, respectivement. Il s'agit d'échanges de clés <a href="https://datatracker.ietf.org/doc/draft-stebila-tls-hybrid-design/" target="_blank">hybrides</a>, entre l'échange conventionnel <a href="https://cr.yp.to/ecdh.html" target="_blank">X25519</a> et l'échange sécurisé post-quantique <a href="https://pq-crystals.org/kyber/index.shtml" target="_blank">Kyber</a>. Ainsi, dans l'éventualité où l'échange Kyber ne serait pas sûr, nous pouvons toujours compter sur la sécurité non-post-quantique de la méthode X25519. Il s'agit des mêmes échanges de clés que ceux pris en charge par notre réseau.</p>
+	<p><code>cloudflared</code> choisit aléatoirement l'un de ces deux échanges de clés. La raison est que le second nécessite généralement deux paquets initiaux pour le message TLS <em>ClientHello</em>, tandis que le premier n'en requiert qu'un. Ceci nous permet de tester si un message <em>ClientHello</em> fragmenté cause des problèmes.</p>
+	<p>Si <code>cloudflared</code> ne parvient pas à établir la connexion post-quantique, la tentative d'échange de clés, la version de <code>cloudflared</code> et l'erreur seront déclarées à <a href="https://pqtunnels.cloudflareresearch.com" target="_blank">pqtunnels.cloudflareresearch.com</a>, afin de nous permettre d'avoir une visibilité des problèmes de réseau. Référez-vous à cette page pour consulter des mises à jour du déploiement de notre tunnel post-quantique.</p>
+	<p>La connexion de contrôle et l'authentification du tunnel entre <code>cloudflared</code> et notre réseau ne bénéficient pas encore d'une sécurité post-quantique. C'est moins urgent que la problématique « <em>stocker maintenant, déchiffrer plus tard</em> » liée aux données sur le tunnel lui-même.</p>
+	<p>Nous proposons la prise en charge <a href="https://github.com/cloudflare/qtls-pq" target="_blank">ouverte</a> de ces échanges de clés QUIC post-quantiques dans Go.</p>
+	<h2 id="outlook">Outlook</h2>
+	<p>Au cours de la prochaine décennie, l'industrie va déployer une protection des données post-quantique. Dans certains cas, cela sera simple comme une mise à jour logicielle, et dans d'autres, cela sera beaucoup plus difficile. La solution Post-Quantum Tunnel sécurisera la connexion entre le réseau de Cloudflare et votre serveur origine de manière simple et conviviale – une étape importante vers l'Internet post-quantique, afin que chacun puisse continuer à bénéficier d'un Internet privé et sécurisé.</p>
+</div>

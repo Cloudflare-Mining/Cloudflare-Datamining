@@ -1,0 +1,213 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/image1-2.png" class="kg-image" alt="Defending against future threats: Cloudflare goes post-quantum"></figure>
+	<p>我们日常使用的加密技术会有过时的一天。难以准确预判，但大约 <a href="https://globalriskinstitute.org/download/quantum-threat-timeline-report-2021-full-report/" target="_blank">15 到 40 年之间</a>，预计会诞生足够强大的量子计算机，它<a href="https://en.wikipedia.org/wiki/Shor%27s_algorithm" target="_blank">能够解密</a>当今互联网上的几乎所有加密数据。</p>
+	<p>幸运的是，有一种解决方案：<strong>后量子</strong> (PQ) 加密技术能够抵御量子计算机的威胁。就在三个月前即 2022 年 7 月，历经六年的全球竞争之后，以 AES 和 SHA2 著称的美国国家标准与技术研究院 (NIST) <a href="https://blog.cloudflare.com/nist-post-quantum-surprise/">宣布</a>推出了他们将进行标准化的后量子加密技术。NIST 计划在 2024 年发布最终标准，但我们希望帮助推动及早采用后量子加密技术。</p>
+	<!--kg-card-begin: markdown-->
+	<p>从今天开始，作为测试版服务，通过 Cloudflare 提供的所有网站和 API 都将支持后量子混合密钥协议。此项默认开启<sup>1</sup>；无需选择加入。这意味着，如果您的浏览器/应用支持该协议，与我们网络的连接也就能够抵御未来任何量子计算机的威胁。</p>
+	<!--kg-card-end: markdown-->
+	<p>我们免费提供这种后量子加密技术：我们相信，后量子安全性应当成为互联网的新基准。</p>
+	<p>随着量子计算机即将来临，部署后量子加密技术的必要性似乎毋庸置疑，但这样做并非没有风险。首先，这是一项新技术：哪怕是经过多年的仔细审查，仍有可能发现灾难性的攻击。正因为如此，我们才部署<em>混合模式</em>：将久经考验的密钥协议与新协议相结合，以增加后量子安全性。</p>
+	<p>我们主要担心可能看似仅仅是实用性的一些东西。尽管用于保护互联网的协议设计为支持像这样的顺畅过渡，但在现实中，存在许多有漏洞的代码：试图创建后量子安全连接可能因各种原因而失败，例如，中间盒对更大的后量子密钥感到困惑，以及我们尚未观察到的其他原因，因为这些后量子密钥协议是全新的。正是由于这些问题的存在，我们感到很有必要及早部署后量子加密技术，这样我们就能与浏览器和其他客户端一起发现并解决这些问题。 </p>
+	<p>在本博客文章中，我们将介绍用于保护互联网的协议 TLS 如何设计为支持顺畅安全地迁移它所使用的加密技术。接着，我们将探讨我们已部署的后量子加密技术的技术细节，以及这种迁移在实践中可能有多大的难度。在本博客文章末尾，我们会说明您可以如何帮助我们测试这种新一代加密技术，一起打造更好的后量子安全互联网。</p>
+	<h2 id="tls-">TLS：传输层安全性</h2>
+	<p>当您使用<em>安全连接</em>浏览网站时，无论是使用 HTTP/1.1 还是 <a href="https://blog.cloudflare.com/quic-version-1-is-live-on-cloudflare/">QUIC</a>，底层都会使用传输层安全性 (<strong>TLS</strong>) 协议。有两个 TLS <a href="https://radar.cloudflare.com/" target="_blank">主版本如今很常用</a>：新的 <a href="https://blog.cloudflare.com/rfc-8446-aka-tls-1-3/">TLS 1.3</a>（约 90%）和旧的 TLS 1.2（约 10%），后者用得越来越少。</p>
+	<p>TLS 1.3 相对于 TLS 1.2 是<a href="https://blog.cloudflare.com/rfc-8446-aka-tls-1-3/">巨大的改进</a>：在合适的方面更快速、更安全、更简单、更灵活。因此，向 TLS 1.3 添加后量子安全性相较于 TLS 1.2 更容易。目前，我们只向 TLS 1.3 添加了后量子支持功能，暂不管 TLS 1.2。</p>
+	<p>那么，TLS 到底是干什么的呢？其目标就是在浏览器与网站之间设置连接，从而实现</p>
+	<ul>
+		<li><strong>保密性和完整性</strong>，致使任何人都无法阅读或篡改数据而不被发现。</li>
+		<li><strong>真实性</strong>，保证您确信自己连接到了正确的网站，而非假冒网站。</li>
+	</ul>
+	<h3 id="-aead-">构建块：AEAD、密钥协议和签名</h3>
+	<p>TLS 中使用了三种不同类型的加密技术来实现此目标。</p>
+	<ul>
+		<li><strong>对称加密</strong>，更确切的名称是<em>使用关联数据的身份验证加密</em> (AEAD)，它是加密技术的“老黄牛”：它用于确保保密性和完整性。这是一种简单明了的加密：有<em>单个密钥</em>用于加密和解密数据。没有合适的密钥，就无法解密数据，对已加密数据进行任何篡改都会在解密时导致错误。</li>
+	</ul>
+	<p>在 TLS 1.3 中，<a href="https://blog.cloudflare.com/do-the-chacha-better-mobile-performance-with-cryptography/">ChaCha20-Poly1305</a> 和 AES128-GCM 如今很常用。<br>那量子攻击呢？乍一看，我们似乎需要切换到 256 位对称密钥来防御 <a href="https://en.wikipedia.org/wiki/Grover%27s_algorithm" target="_blank">Grover 算法</a>。然而，在现实中，Grover 算法<a href="https://blog.cloudflare.com/nist-post-quantum-surprise/#post-quantum-security-levels">并不能很好地并行化</a>，因此目前部署的 AEAD 就够用了。</p>
+	<p>因此，如果我们可以就用于对称加密的共享密钥达成一致，就很有希望了。但如何获取共享密钥呢？总不能挑选一个密钥就发送给服务器吧，那样的话，正在侦听的任何人也会知道该密钥。这项任务看起来似乎无法实现，但这正是非对称加密技术可以大显身手的方面：</p>
+	<ul>
+		<li><strong><strong><strong>密钥协议</strong>也称为<em>密钥交换</em>或<em>密钥分发</em>，</strong></strong>是一种加密协议，其中两方就共享密钥达成一致，而杜绝了第三方窃听到任何信息的可能性。如今，<a href="https://cr.yp.to/ecdh.html" target="_blank">X25519</a> 椭圆曲线 <a href="https://developers.cloudflare.com/internet/protocols/tls#ephemeral-diffie-hellman-handshake" target="_blank">Diffie–Hellman</a> 协议 (ECDH) 是 TLS 1.3 中使用的名副其实的标准密钥协议。X25519 的安全性基于椭圆曲线的<a href="https://en.wikipedia.org/wiki/Discrete_logarithm" target="_blank">离散对数问题</a>，但容易受到量子攻击，因为使用 <a href="https://en.wikipedia.org/wiki/Shor%27s_algorithm" target="_blank">Shor 算法</a>的加密相关量子计算机能够轻松进行解算。解决方案是使用后量子密钥协议，例如 <a href="https://pq-crystals.org/kyber/index.shtml" target="_blank">Kyber</a>。</li>
+	</ul>
+	<p>密钥协议只能防御消极攻击者。而积极攻击者如果拦截并修改了消息 (<a href="https://en.wikipedia.org/wiki/Man-in-the-middle_attack" target="_blank">MitM</a>)，就能与服务器和浏览器分别确立单独的共享密钥，从而重新加密在其中传递的所有数据。要解决该问题，我们需要加密技术的最后一个要素。</p>
+	<ul>
+		<li>使用<strong>数字签名</strong>算法，例如 <a href="https://en.wikipedia.org/wiki/RSA_(cryptosystem)" target="_blank">RSA</a> 或 <a href="https://blog.cloudflare.com/ecdsa-the-digital-signature-algorithm-of-a-better-internet/">ECDSA</a>，有两个密钥：一个<em>公钥</em>和一个<em>私钥</em>。只有使用私钥才能创建消息的<em>签名</em>。有对应公钥的任何人都可以检查签名对于给定消息是否确实有效。这些数字签名在用于对网站进行身份验证的 <a href="https://www.cloudflare.com/learning/ssl/what-is-an-ssl-certificate/" target="_blank"><em>TLS 证书</em></a>中居于核心地位。<br>RSA 和 ECDSA 都容易受到量子攻击。我们尚未将它们替换为后量子签名。原因是，身份验证不太紧迫：我们只需要在足够大型的量子计算机建造出来时将其替换即可，而当下由有漏洞的密钥协议保护的任何数据都可以存储起来并在未来解密。尽管时间宽裕，但部署后量子身份验证会<a href="https://blog.cloudflare.com/sizing-up-post-quantum-signatures/">相当有挑战性</a>。</li>
+	</ul>
+	<p>那么，这些构建块是如何组合起来创建 TLS 的呢？</p>
+	<!--kg-card-begin: html-->
+	<h2 id="tls-anchor">TLS 1.3 的高度概述</h2>
+	<!--kg-card-end: html-->
+	<p>TLS 连接始于<strong>握手</strong>，后者用于对服务器进行身份验证并派生共享密钥。浏览器（客户端）首先发送一条 <em>ClientHello</em> 消息，其中包含其支持的 AEAD、签名算法和密钥协议方法的列表。为避免往返，客户端可以猜测服务器支持什么，并发送一个或多个<em>客户端密钥共享</em>来开始密钥协议。猜测可能正确（下图左侧），也可能客户端需要重试（右侧）。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/image4.png" class="kg-image" alt="Protocol flow for server-authenticated TLS 1.3 with a supported client keyshare on the left and a HelloRetryRequest on the right.">
+		<figcaption><em>已对服务器进行身份验证的 TLS 1.3 的协议流，左侧是支持的客户端密钥共享，右侧是 </em>HelloRetryRequest<em>。</em></figcaption>
+	</figure>
+	<p><strong>密钥协议</strong><br>在说明此交互的其余部分之前，我们先来深入研究一下密钥协议：什么是密钥共享？Kyber 和 X25519 密钥协议的工作方式<a href="https://blog.cloudflare.com/nist-post-quantum-surprise/#kem-versus-diffie-hellman">不同</a>：前者是密钥封装机制 (KEM)，而后者是 Diffie–Hellman (DH) 样式的协议。后者更灵活，但对于 TLS 而言并没有区别。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/image3.png" class="kg-image" alt="The shape of a KEM and Diffie–Hellman key agreement in TLS-compatible handshake is the same.">
+		<figcaption><em>TLS 中 KEM 和 Diffie–Hellman 密钥协议的形状相同。</em></figcaption>
+	</figure>
+	<p>在两种情况下，客户端都会向服务器发送一个<em>客户端密钥共享</em>。服务器会根据此<em>客户端密钥共享</em>生成<em>共享密钥 ss</em>。接着，服务器会返回一个<em>服务器密钥共享</em>，客户端也可以使用它来计算共享密钥。</p>
+	<p>返回 TLS 1.3 流：服务器收到 <em>ClientHello</em> 消息时，会提取其支持的 AEAD（密码）、签名算法和客户端密钥共享。它使用 <em>ServerHello</em> 消息来回复，其中包含所选密钥协议的所选 AEAD 和<em>服务器密钥共享</em>。锁定 AEAD 和共享密钥后，服务器开始加密数据（图中涂为绿色）。</p>
+	<p><strong>身份验证</strong><br>服务器随 AEAD 和服务器密钥共享一起发送签名（即<em>握手签名</em>），这些会放在目前为止的通信记录中，与用于创建签名的公钥的<a href="https://www.cloudflare.com/en-gb/learning/ssl/what-is-an-ssl-certificate/" target="_blank"><em>证书</em></a><em>（链）</em>一起保存。这样一来，客户端就可以对服务器进行身份验证：它会检查自己是否信任对公钥进行认证的<em>证书颁发机构</em>（例如，<a href="https://letsencrypt.org/" target="_blank">Let’s Encrypt</a>），以及签名是否验证了它目前为止收发的消息。这不仅会对服务器进行身份验证，还能防御降级攻击。</p>
+	<p><strong>降级攻击</strong><br>我们无法同时将所有客户端和服务器升级到后量子加密技术。而是存在一个过渡期，其中只有一些客户端和一些服务器支持后量子加密技术。TLS 1.3 中的密钥协议协商允许出现这种情况：在过渡期间，服务器和客户端仍将支持非后量子密钥协议，并可以根据需要回退到这些协议。</p>
+	<p>这种灵活性非常好，但也让人害怕：如果客户端和服务器都支持后量子密钥协议，我们想确保它们也协商后量子密钥协议。在 TLS 1.3 中就是这种情况，但并非显而易见：密钥共享、所选密钥共享和支持的密钥协议列表都采用明文发送。有没有可能攻击者在中间去除后量子密钥协议？这称为<em>降级攻击</em>。</p>
+	<p>此时记录就派上用场了：握手签名是对服务器目前为止收发的所有消息签署的。这包括支持的密钥协议和选取的密钥协议。如果攻击者更改了客户端发送的支持的密钥协议列表，服务器不会注意到。但是，客户端会根据自己实际发送的支持的密钥协议列表检查服务器的握手签名，从而能够检测到篡改行为。</p>
+	<p>降级攻击问题对于 TLS 1.2 <a href="https://www.rfc-editor.org/rfc/rfc7627" target="_blank">复杂</a><a href="https://eprint.iacr.org/2016/072.pdf" target="_blank">得</a><a href="https://www.rfc-editor.org/rfc/rfc7627" target="_blank">多</a>，这也是我们不愿在 TLS 1.2 中翻新后量子安全性的原因之一。</p>
+	<p><strong>结束握手</strong><br>服务器响应的最后一部分是<em>“服务器完成的”</em>，是目前为止整个记录上的<em>消息身份验证代码</em> (MAC)。这些工作大部分已由握手签名完成，但在没有握手签名的其他 TLS 运行模式（例如会话恢复）中，这很重要。</p>
+	<p>使用所选 AEAD 和服务器密钥共享，客户端可以计算共享密钥并解密和验证证书链、握手签名和握手 MAC。我们之前没有提到这一点，但共享密钥并未直接用于加密，而是作为额外措施与通信记录<a href="https://www.rfc-editor.org/rfc/rfc8446.html#page-93" target="_blank">混合在一起</a>，从而派生出多个特定密钥以供在握手期间以及后面的主连接期间使用。</p>
+	<p>客户端发送其自己的握手 MAC，然后继续发送使用握手期间派生的密钥加密的特定于应用程序的数据，才能结束握手。</p>
+	<p><strong>喂！重试请求？</strong><br>我们刚才概述的就是一种理想的流程，即客户端发送服务器支持的密钥共享。实际情况可能并非如此。服务器如果不接受客户端公告的任何密钥协议，就会告知客户端并中止连接。</p>
+	<!--kg-card-begin: html-->如果有双方都支持的密钥协议，但客户端未针对该协议发送密钥共享，则服务器将使用 HelloRetryRequest (HRR) 消息进行响应，请求客户端支持的特定密钥协议的密钥共享, <a href="#tls-anchor">如图右侧所示</a>。反过来，客户端会使用带有所选密钥共享的新 ClientHello 进行响应。
+	<p></p>
+	<!--kg-card-end: html-->
+	<p>这并非事情的全貌：服务器也可以发送 <em>HelloRetryRequest</em>，请求它所偏好的不同密钥协议，而不是客户端为其发送共享的协议。例如，如果客户端支持某后量子密钥协议，但未针对该协议发送密钥共享，则服务器可以将 <em>HelloRetryRequest</em> 发送到该协议。</p>
+	<p><em>HelloRetryRequest</em> 如今很罕见。几乎每个服务器都支持 X25519 密钥协议，而且几乎每个客户端（目前的比例高达 98%）都会发送 X25519 密钥共享。早先，P-256 是名副其实的标准，在很长一段时间内，许多浏览器会同时发送 P-256 和 X25519 密钥共享，防止发出 HelloRetryRequest。正如后面要讨论的那样，我们可能无法承受发送两个后量子密钥共享的高昂代价。</p>
+	<p><strong>理论上是这样</strong><br>TLS 1.3 设计为能够灵活应对其使用的加密技术中的各种情况，而不会降低安全性或性能，这便于我们迁移到后量子加密技术。理论上是这样，但现实中存在一些严重的问题，我们会在后面详谈。但首先，我们来看一下我们已经部署的后量子密钥协议。</p>
+	<h3 id="-">我们已经部署的内容</h3>
+	<p>今天，我们启用了对 <strong>X25519Kyber512Draft00</strong> 和 <strong>X25519Kyber768Draft00</strong> 密钥协议的支持，使用的分别为 TLS 标识符 0xfe30 和 0xfe31。这些就是我们今年 7 月在有限数量的区域上<a href="https://blog.cloudflare.com/experiment-with-pq/">启用</a>的相同密钥协议。</p>
+	<p>这两个密钥协议是一种<a href="https://datatracker.ietf.org/doc/draft-stebila-tls-hybrid-design/" target="_blank"><strong>混合协议</strong></a>，将经典的 <a href="https://www.rfc-editor.org/rfc/rfc8410" target="_blank">X25519</a> 分别与新的后量子 Kyber512 和 Kyber768 相结合（按此顺序）。这意味着，如果 Kyber 不安全，连接的安全性仍然与 X25519 等同。</p>
+	<p><a href="https://pq-crystals.org/kyber/index.shtml" target="_blank">Kyber</a> 目前是 NIST <a href="https://blog.cloudflare.com/nist-post-quantum-surprise/">选择</a>进行标准化的唯一密钥协议。Kyber 要求 CPU 非常轻量：它比以快速著称的 X25519 还要快。另一方面，其密钥共享明显更大：</p>
+	<!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-c6q4 {
+			font-family: inherit;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-1jcf {
+			font-family: inherit;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-u5z2 {
+			font-family: inherit;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-3xvn {
+			font-family: inherit;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-mpw7 {
+			font-family: inherit;
+			text-align: right;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-c6q4" colspan="2"></th>
+				<th class="tg-u5z2" colspan="2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">密钥共享大小（以字节为单位)</span></th>
+				<th class="tg-u5z2" colspan="2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">操作次数/秒（越高越好）</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-c6q4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">算法</span></td>
+				<td class="tg-u5z2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">PQ</span></td>
+				<td class="tg-1jcf"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">客户端</span></td>
+				<td class="tg-1jcf"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">服务器</span></td>
+				<td class="tg-1jcf"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">客户端</span></td>
+				<td class="tg-1jcf"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">服务器</span></td>
+			</tr>
+			<tr>
+				<td class="tg-3xvn"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Kyber512</span></td>
+				<td class="tg-u5z2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+				<td class="tg-mpw7"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">800</span></td>
+				<td class="tg-mpw7"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">768</span></td>
+				<td class="tg-mpw7"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">50,000</span></td>
+				<td class="tg-mpw7"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">100,000</span></td>
+			</tr>
+			<tr>
+				<td class="tg-3xvn"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Kyber768</span></td>
+				<td class="tg-u5z2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+				<td class="tg-mpw7"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1,184</span></td>
+				<td class="tg-mpw7"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1,088</span></td>
+				<td class="tg-mpw7"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">31,000</span></td>
+				<td class="tg-mpw7"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">70,000</span></td>
+			</tr>
+			<tr>
+				<td class="tg-3xvn"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">X25519</span></td>
+				<td class="tg-u5z2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">❌</span></td>
+				<td class="tg-mpw7"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">32</span></td>
+				<td class="tg-mpw7"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">32</span></td>
+				<td class="tg-mpw7"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">17,000</span></td>
+				<td class="tg-mpw7"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">17,000</span></td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: html-->
+	<!--kg-card-begin: markdown-->
+	<p><em><small>X25519 和 Kyber 之间的大小和 CPU 性能比较。性能在不同硬件平台和实现约束之间的差异非常大，应仅视为粗略参考。</small></em></p>
+	<!--kg-card-end: markdown-->
+	<p>在 NIST 于 2024 年进行最终标准化之前，Kyber 预计会有轻微改动，但这些改动向后不兼容。此外，与 TLS 的集成（包括混合密钥协议的选择与细节）尚未由 TLS 工作组最终确定。最终确定之后，我们会立即加以采用。</p>
+	<p>有鉴于此，长期来看我们不会支持今天宣布的初步密钥协议；它们是作为测试版服务提供的。我们会在 <a href="http://pq.cloudflareresearch.com" target="_blank">pq.cloudflareresearch.com</a> 上发布关于我们的部署的更新，并在 <a href="https://www.ietf.org/mailman/listinfo/Pqc" target="_blank">IETF PQC 邮寄列表</a>中宣布。</p>
+	<p>现在我们已经知道 TLS 协商在理论上的运作方式，以及我们要添加哪些密钥协议，那怎么会失败呢？</p>
+	<h2 id="--1">现实中可能失败的情况</h2>
+	<h3 id="--2">协议僵化</h3>
+	<p>协议通常在设计时会充分考虑到灵活性，但如果在现实中没有运用灵活性，往往会丧失灵活性。这称为协议僵化。多种僵化情况加大了推出 TLS 1.3 的<a href="https://blog.cloudflare.com/why-tls-1-3-isnt-in-browsers-yet/">难度</a>。一个令人感伤的例子是 TLS 的版本协商：在 ClientHello 消息中有一个版本字段，指示客户端支持的最新版本。新版本已分配给 TLS 1.3，但测试结果表明，许多服务器不会正确回退到 TLS 1.2，而是让连接崩溃。我们该如何解决僵化问题呢？</p>
+	<p><strong>解决办法</strong><br>如今，TLS 1.3 将自己伪装成 TLS 1.2，在 <em>ClientHello</em> 中包含许多旧版字段。实际版本协商移至消息的新<em>扩展</em>。TLS 1.2 服务器将忽略新扩展，并且不知情地继续使用 TLS 1.2，而 TLS 1.3 服务器会提取扩展并继续使用严格意义上的 TLS 1.3。</p>
+	<p><strong>协议润滑脂</strong><br>如何防止僵化？浏览器在从这种经历中获得经验教训后，会在这个新的版本字段中公告虚拟版本，这样就能及早发现行为不良的服务器。这样做不仅是针对新版本字段，还针对 TLS 握手中的其他许多方面，而且还预见性地针对密钥协议标识符。如今，40% 的浏览器会发送两个客户端密钥共享：一个 X25519 和一个虚假的 1 字节密钥共享，用于保持密钥协议灵活性。</p>
+	<p>此行为在 <a href="https://datatracker.ietf.org/doc/html/rfc8701" target="_blank">RFC 8701</a> 中已标准化：<em>生成随机扩展并维持可扩展性</em> (GREASE)，我们称之为协议<em>润滑</em>，正如 Adam Langley 比喻的那样，<a href="https://www.imperialviolet.org/2016/05/16/agility.html" target="_blank">协议有关节生锈</a>而需要润滑油来“润滑关节”。</p>
+	<p>此密钥共享润滑脂会有所助益，但并不完美，因为在此会导致最大担忧的是密钥共享大小。</p>
+	<h3 id="-clienthello">碎片化 ClientHello</h3>
+	<p>后量子密钥共享很大。两个 Kyber 混合分别是 832 字节和 1,216 字节。相比较而言，X25519 则很微小，只有 32 字节。一些实现在遇到如此巨大的密钥共享时会失败，这并非不可能。</p>
+	<p>我们最大的担忧是基于 Kyber768 的更大密钥共享。使用更小的 832 字节基于 Kyber512 的密钥共享的 ClientHello 刚刚好能放入典型的 TCP 数据包中。另一方面，更大的 1,216 字节基于 Kyber768 的密钥共享通常会将 ClientHello 分为两个数据包。</p>
+	<p>将数据包组合起来是有代价的：您需要跟踪部分消息的去向。通常这是由操作系统的 TCP 堆栈以透明方式执行的，但经优化的中间盒与负载平衡器会单独考虑每个数据包，因此必须（可能不会）自行跟踪连接。</p>
+	<h3 id="quic">QUIC</h3>
+	<p>HTTP/3 是在 <a href="https://blog.cloudflare.com/quic-version-1-is-live-on-cloudflare/">QUIC</a> 基础之上构建的，它的情况特别有意思。客户端不会选择一个简单的端口号（如 TCP 中那样），相反，来自客户端的 QUIC 数据包中包含服务器选择的<em>连接 ID</em>。不妨将其视为传统信件中“您的引用”和“我们的引用”。这样一来，QUIC 负载平衡器就可以将处理连接的特定机器编码为连接 ID。</p>
+	<p>打开连接时，QUIC 客户端并不知道服务器想要哪个连接 ID，便发送一个随机连接 ID。如果客户端需要多个初始数据包，例如带有大型 ClientHello 的数据包，则客户端将使用相同的随机连接 ID。尽管 QUIC 标准允许存在多个初始数据包，但 QUIC 负载平衡器可能并未预料到这种情况，因而无法引用底层 TCP 连接。</p>
+	<h3 id="--3">性能</h3>
+	<p>除了这些硬故障之外，性能降级之类的<em>软</em>故障也值得关注：如果加载速度太慢，那么这跟网站一开始就崩溃也没什么两样。</p>
+	<p>早在 2019 年与 Google 开展的联合实验中，我们就部署了两个后量子密钥协议：基于 NTRU-HRSS 的 CECPQ2 和基于 SIKE 的 CECPQ2b。NTRU-HRSS 非常类似于 Kyber，但更大一些，也更慢一些。<a href="https://blog.cloudflare.com/the-tls-post-quantum-experiment/">2019 年的结果</a>很乐观：X25519+NTRU-HRSS（橙线）与单独的 X25519（蓝线）很难分辨开。</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/10/image2-2.png" class="kg-image" alt="Diagrams of performance of CECPQ2 based on NTRU-HRSS and CECPQ2b based on SIKE compared to X25519."></figure>
+	<p>我们将继续密切关注性能，尤其是尾部性能：我们希望所有人都能从互联网上最快的客户端顺畅过渡到最慢的客户端。</p>
+	<h2 id="--4">如何提供帮助</h2>
+	<p>互联网是一个高度异构的系统。要找到所有问题，我们需要足够数量的各类测试者。我们与浏览器一起密切合作，添加对这些密钥协议的支持，但可能不是每个网络中都有其中一个浏览器。</p>
+	<p>因此，为了向互联网提供帮助，请尝试将您的一小部分流量切换到 Cloudflare 域，以使用这些新的密钥协议方法。我们为 <a href="https://github.com/cloudflare/boringssl-pq" target="_blank">BoringSSL</a>、<a href="https://github.com/cloudflare/go" target="_blank">Go</a> 和 <a href="https://github.com/cloudflare/qtls-pq" target="_blank">quic-go</a> 设立了开源分叉。对于 BoringSSL 和 Go，请查看<a href="https://blog.cloudflare.com/experiment-with-pq/#boringssl">此处的示例代码</a>。如果您有任何问题，请向 <a href="mailto:ask-research@cloudflare.com" target="_blank">ask-research@cloudflare.com</a> 发送邮件告诉我们。我们将在 IETF <a href="https://datatracker.ietf.org/group/tls/about/" target="_blank">TLS 工作组</a>层面讨论所有问题和解决办法。</p>
+	<h2 id="--5">前景</h2>
+	<p>过渡到后量子安全互联网势不容缓，但也存在一些挑战。如今，我们已经在我们的所有服务器（构成互联网中不小的一部分）上部署了初步后量子密钥协议，这样我们大家就可以立即开始测试这场大迁移。我们希望到 2024 年 NIST 最终完成 Kyber 时，我们大家都为顺畅过渡到后量子互联网打好了基础。</p>
+	<!--kg-card-begin: markdown-->
+	<p>.....<br>
+		<small><sup>1</sup>只有在基于 TLS 1.3（包括 HTTP/3）的协议中，我们才会支持这些后量子密钥协议。一个例外情况是：目前，我们在 FIPS 模式下禁止交换这些网站的混合密钥。</small>
+	</p>
+	<!--kg-card-end: markdown-->
+</div>

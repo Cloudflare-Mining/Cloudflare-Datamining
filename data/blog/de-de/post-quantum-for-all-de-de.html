@@ -1,0 +1,213 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/image1-2.png" class="kg-image" alt="Defending against future threats: Cloudflare goes post-quantum"></figure>
+	<p>Die Kryptographie, die wir tagtäglich verwenden, hat ein Verfallsdatum. Das Datum lässt sich nur schwer abschätzen, aber es wird erwartet, dass <a href="https://globalriskinstitute.org/download/quantum-threat-timeline-report-2021-full-report/" target="_blank">in ca. 15 bis 40 Jahren</a> ein ausreichend leistungsfähiger Quantencomputer existiert, der praktisch <a href="https://en.wikipedia.org/wiki/Shor%27s_algorithm" target="_blank">alle verschlüsselten Daten entschlüsseln</a> kann, die heute im Internet verfügbar sind.</p>
+	<p>Zum Glück gibt es eine Lösung: <strong>Post-Quanten</strong> (PQ)-Kryptographie wurde entwickelt, um vor der Bedrohung durch Quantencomputer sicher zu sein. Erst vor drei Monaten, im Juli 2022, hat das US-amerikanische National Institute of Standards and Technology (NIST), bekannt für die Entwicklung von AES und SHA2, nach einem sechsjährigen weltweiten Wettbewerb, <a href="https://blog.cloudflare.com/nist-post-quantum-surprise/">bekannt gegeben</a>, welche Post-Quanten-Kryptographie es standardisieren wird. Das NIST plant, die endgültigen Standards im Jahr 2024 zu veröffentlichen, aber wir möchten dazu beitragen, dass die Post-Quanten-Kryptographie frühzeitig eingeführt wird.</p>
+	<!--kg-card-begin: markdown-->
+	<p>Ab heute unterstützen <strong>alle</strong> Websites und APIs, die über Cloudflare bereitgestellt werden, die Post-Quanten-Hybrid-Schlüsselvereinbarung als Beta-Service. Diese ist standardmäßig aktiviert <sup>1</sup>; es ist kein Opt-in erforderlich. Das bedeutet, dass die Verbindung zu unserem Netzwerk auch gegen zukünftige Quantencomputer sicher ist, wenn Ihr Browser/Ihre Anwendung dies unterstützt.</p>
+	<!--kg-card-end: markdown-->
+	<p>Wir bieten diese Post-Quanten-Kryptographie kostenlos an: Wir glauben, dass Post-Quanten-Sicherheit die neue Grundlage für das Internet sein sollte.</p>
+	<p>Der Einsatz von Post-Quanten-Kryptographie scheint angesichts der bevorstehenden Quantencomputer einleuchtend zu sein, aber er ist nicht ohne Risiken. Zunächst einmal handelt es sich um eine neue Kryptographie: Selbst nach jahrelanger Prüfung ist nicht auszuschließen, dass immer noch ein katastrophaler Angriff entdeckt werden könnte. Deshalb setzen wir <em>Hybride</em> ein: eine Kombination aus einer bewährten Schlüsselvereinbarung und einer neuen, die die Post-Quanten-Sicherheit erhöht.</p>
+	<p>Wir sorgen uns in erster Linie um Dinge, die zunächst als reine Formalitäten erscheinen. Obwohl die zur Sicherung des Internets verwendeten Protokolle so konzipiert sind, dass sie reibungslose Übergänge wie diesen ermöglichen, gibt es in der Realität eine Menge fehlerhaften Code: Der Versuch, eine sichere Post-Quanten-Verbindung herzustellen, kann aus vielen Gründen fehlschlagen – zum Beispiel, weil eine Middlebox mit den größeren Post-Quanten-Schlüsseln nicht zurechtkommt und aus anderen Gründen, die wir angesichts der Neuheit dieser Post-Quanten-Schlüsselvereinbarungen noch nicht kennen. Aus diesem Grund halten wir es für wichtig, die Post-Quanten-Kryptographie frühzeitig einzusetzen, damit wir gemeinsam mit Browsern und anderen Clients diese Probleme finden und lösen können. </p>
+	<p>In diesem Blogbeitrag erläutern wir, wie TLS, das Protokoll zur Sicherung des Internets, so konzipiert ist, dass eine reibungslose und sichere Migration der verwendeten Kryptographie möglich ist. Dann werden wir die technischen Details der von uns eingesetzten Post-Quanten-Kryptographie erörtern und aufzeigen, dass diese Umstellung in der Praxis möglicherweise gar nicht so reibungslos verläuft. Zum Abschluss dieses Blogbeitrags erklären wir Ihnen, wie Sie ein besseres, sicheres Post-Quanten-Internet schaffen können, indem Sie uns helfen, diese neuartige Kryptographie zu testen.</p>
+	<h2 id="tls-transport-layer-security">TLS: Transport Layer Security</h2>
+	<p>Wenn Sie eine Website über eine <em>sichere Verbindung</em> besuchen, sei es über HTTP/1.1 oder <a href="https://blog.cloudflare.com/quic-version-1-is-live-on-cloudflare/">QUIC</a>, verwenden Sie im Hintergrund das Transport Layer Security (<strong>TLS</strong>)-Protokoll. Es gibt zwei Hauptversionen von TLS, <a href="https://radar.cloudflare.com/" target="_blank">die heute gebräuchlich sind</a>: das neue <a href="https://blog.cloudflare.com/rfc-8446-aka-tls-1-3/">TLS 1.3</a> (~90 %) und das ältere TLS 1.2 (~10 %), das immer seltener zum Einsatz kommt. </p>
+	<p>TLS 1.3 ist eine <a href="https://blog.cloudflare.com/rfc-8446-aka-tls-1-3/">enorme Verbesserung</a> gegenüber TLS 1.2: es ist schneller, sicherer, einfacher und in den richtigen Aspekten flexibler. Dadurch kann man TLS 1.3 einfacher mit Post-Quanten-Sicherheit erweitern als TLS 1.2. Für den Moment belassen wir es dabei: Wir haben die Post-Quanten-Unterstützung nur zu TLS 1.3. hinzugefügt.</p>
+	<p>Worum geht es also bei TLS? Das Ziel ist es, eine Verbindung zwischen einem Browser und einer Website derart herzustellen, dass</p>
+	<ul>
+		<li><strong>Vertraulichkeit und Integrität</strong>, niemand die Daten unbemerkt mitlesen oder verfälschen kann.</li>
+		<li><strong>Authentizität</strong> Sie wissen, dass Sie mit der richtigen Website verbunden sind und nicht mit einer betrügerischen nachgeahmten Webseite.</li>
+	</ul>
+	<h3 id="bausteine-aead-schl-sselvereinbarung-und-signaturen">Bausteine: AEAD, Schlüsselvereinbarung und Signaturen</h3>
+	<p>Um dieses Ziel zu erreichen, werden in TLS drei verschiedene Arten der Kryptographie verwendet.</p>
+	<ul>
+		<li><strong>Symmetrische Verschlüsselung</strong>, oder genauer gesagt <em>Authenticated Encryption With Associated Data</em> (AEAD), ist das Arbeitspferd der Kryptographie: Sie wird verwendet, um Vertraulichkeit und Integrität zu gewährleisten. Es handelt sich um eine einfache Art der Verschlüsselung: Es gibt einen <em>einzigen Schlüssel</em>, der zum Ver- und Entschlüsseln der Daten verwendet wird. Ohne den richtigen Schlüssel können Sie die Daten nicht entschlüsseln und jede Manipulation der verschlüsselten Daten führt zu einem Fehler beim Entschlüsseln.</li>
+	</ul>
+	<p>In TLS 1.3 sind <a href="https://blog.cloudflare.com/do-the-chacha-better-mobile-performance-with-cryptography/">ChaCha20-Poly1305</a> und AES128-GCM heute gebräuchlich.<br>Was ist mit Quantenangriffen? Auf den ersten Blick sieht es so aus, als müssten wir auf symmetrische 256-Bit-Schlüssel umsteigen, um uns gegen den <a href="https://en.wikipedia.org/wiki/Grover%27s_algorithm" target="_blank">Grover-Algorithmus</a> zu schützen. In der Praxis lässt sich der Grover-Algorithmus <a href="https://blog.cloudflare.com/nist-post-quantum-surprise/#post-quantum-security-levels">jedoch nicht gut parallelisieren</a>, so dass die derzeit eingesetzten AEADs ausreichen werden.</p>
+	<p>Wenn wir uns also auf einen gemeinsamen Schlüssel einigen können, den wir für die symmetrische Verschlüsselung verwenden, ist alles in Butter. Aber wie kommt man zu einem gemeinsamen Schlüssel? Sie können nicht einfach einen Schlüssel auswählen und ihn an den Server senden: Jeder, der mithört, würde den Schlüssel ebenfalls kennen. Man könnte meinen, dies sei eine unmögliche Aufgabe, aber hier hilft der Zauber der asymmetrischen Kryptographie:</p>
+	<ul>
+		<li><strong><strong>Die <strong>Schlüsselvereinbarung</strong>, </strong></strong>auch <em>Schlüsselaustausch</em> oder <em>Schlüsselverteilung</em> genannt, ist ein kryptographisches Protokoll, mit dem sich zwei Parteien auf einen gemeinsamen Schlüssel einigen können, ohne dass ein Abhörer etwas erfahren kann. Heute ist das <a href="https://cr.yp.to/ecdh.html" target="_blank">X25519</a> Elliptic Curve <a href="https://developers.cloudflare.com/internet/protocols/tls#ephemeral-diffie-hellman-handshake" target="_blank">Diffie–Hellman</a>-Protokoll (ECDH) der De-facto-Standard für die in TLS 1.3 verwendete Schlüsselvereinbarung. Die Sicherheit von X25519 basiert auf dem <a href="https://en.wikipedia.org/wiki/Discrete_logarithm" target="_blank">Problem des diskreten Logarithmus</a> für elliptische Kurven, das für Quantenangriffe anfällig ist, da es von einem kryptographisch relevanten Quantencomputer unter Verwendung des <a href="https://en.wikipedia.org/wiki/Shor%27s_algorithm" target="_blank">Shor-Algorithmus</a> leicht gelöst werden kann. Die Lösung ist die Verwendung einer Post-Quanten-Schlüsselvereinbarung, wie <a href="https://pq-crystals.org/kyber/index.shtml" target="_blank">Kyber</a>.</li>
+	</ul>
+	<p>Eine Schlüsselvereinbarung schützt nur vor einem passiven Angreifer. Ein aktiver Angreifer, der Nachrichten abfangen und verändern kann (<a href="https://de.wikipedia.org/wiki/Man-in-the-Middle-Angriff" target="_blank">MitM</a>), kann sowohl mit dem Server als auch mit dem Browser getrennte gemeinsame Schlüssel erstellen und so alle Daten, die übertragen werden, erneut verschlüsseln. Um dieses Problem zu lösen, benötigen wir den letzten Teil der Kryptographie.</p>
+	<ul>
+		<li>Bei einem <strong>digitalen Signatur</strong>algorithmus wie <a href="https://de.wikipedia.org/wiki/RSA-Kryptosystem" target="_blank">RSA</a> oder <a href="https://blog.cloudflare.com/ecdsa-the-digital-signature-algorithm-of-a-better-internet/">ECDSA</a> gibt es zwei Schlüssel: einen <em>öffentlichen</em> und einen <em>privaten Schlüssel</em>. Nur mit dem privaten Schlüssel kann man eine <em>Signatur</em> für eine Nachricht erstellen. Jeder, der über den entsprechenden öffentlichen Schlüssel verfügt, kann überprüfen, ob eine Signatur für eine bestimmte Nachricht tatsächlich gültig ist. Diese digitalen Signaturen sind das Herzstück von <a href="https://www.cloudflare.com/de-de/learning/ssl/what-is-an-ssl-certificate/" target="_blank"><em>TLS-Zertifikaten</em></a>, die zur Authentifizierung von Websites verwendet werden.<br>Sowohl RSA als auch ECDSA sind anfällig für Quantenangriffe. Wir haben sie noch nicht durch Post-Quanten-Signaturen ersetzt. Der Grund dafür ist, dass die Authentifizierung weniger dringend ist: Wir müssen sie erst ersetzen, wenn ein ausreichend großer Quantencomputer gebaut wird, während alle Daten, die heute durch eine angreifbare Schlüsselvereinbarung gesichert sind, in der Zukunft gespeichert und entschlüsselt werden können. Auch wenn wir mehr Zeit haben, wird die Einführung der Post-Quanten-Authentifizierung eine <a href="https://blog.cloudflare.com/sizing-up-post-quantum-signatures/">große Herausforderung </a>sein.</li>
+	</ul>
+	<p>Wie werden nun diese Bausteine zu TLS zusammengefügt?</p>
+	<!--kg-card-begin: html-->
+	<h2 id="tls-anchor">Grober Überblick über TLS 1.3</h2>
+	<!--kg-card-end: html-->
+	<p>Eine TLS-Verbindung beginnt mit einem <strong>Handshake</strong>, der zur Authentifizierung des Servers und zur Ableitung eines gemeinsamen Schlüssels dient. Der Browser (Client) sendet zunächst eine <em>ClientHello</em>-Nachricht, die eine Liste der von ihm unterstützten AEADs, Signaturalgorithmen und Methoden der Schlüsselvereinbarung enthält. Um einen Roundtrip zu vermeiden, kann der Client raten, was der Server unterstützt, und die Schlüsselvereinbarung starten, indem er einen oder mehrere <em>Client-Keyshares</em> sendet. Diese Vermutung kann richtig sein (links im Diagramm unten) oder der Client muss es erneut versuchen (rechts).</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/image4.png" class="kg-image" alt="Protocol flow for server-authenticated TLS 1.3 with a supported client keyshare on the left and a HelloRetryRequest on the right.">
+		<figcaption><em>Protokollfluss für Server-authentifiziertes TLS 1.3 mit einer unterstützten Client-Keyshare auf der linken Seite und einer </em>HelloRetryRequest<em> auf der rechten Seite.</em></figcaption>
+	</figure>
+	<p><strong>Schlüsselvereinbarung</strong><br>Bevor wir den Rest dieser Interaktion erklären, wollen wir uns mit der Schlüsselvereinbarung befassen: Was ist ein Key Share? Die Schlüsselvereinbarung für Kyber und X25519 funktioniert <a href="https://blog.cloudflare.com/nist-post-quantum-surprise/#kem-versus-diffie-hellman">auf unterschiedliche Weise</a>: Ersteres ist ein Key Encapsulation Mechanism (KEM), während letzteres eine Vereinbarung im Stil von Diffie-Hellman (DH) ist. Letztere ist flexibler, aber für TLS macht das keinen Unterschied.</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/image3.png" class="kg-image" alt="The shape of a KEM and Diffie–Hellman key agreement in TLS-compatible handshake is the same.">
+		<figcaption><em>Der Aufbau einer KEM- und Diffie-Hellman-Schlüsselvereinbarung in TLS ist ident.</em></figcaption>
+	</figure>
+	<p>In beiden Fällen sendet der Client einen<em> Client-Keyshare</em> an den Server. Aus diesem <em>Client-Keyshare</em> erzeugt der Server den <em>gemeinsamen Schlüssel ss</em>. Der Server sendet daraufhin einen <em>Server-Keyshare</em> aus, mit der der Client ebenfalls den gemeinsamen Schlüssel berechnen kann.</p>
+	<p>Zurück zum Ablauf von TLS 1.3: Wenn der Server die <em>ClientHello</em>-Nachricht empfängt, wählt er einen AEAD (Cipher), einen Signaturalgorithmus und einen Client-Keyshare, den er unterstützt. Er antwortet mit einer <em>ServerHello</em>-Nachricht, die den gewählten AEAD und den <em>Server-Keyshare</em> für die gewählte Schlüsselvereinbarung enthält. Wenn der AEAD und der gemeinsame Schlüssel feststehen, beginnt der Server mit der Verschlüsselung der Daten (im Diagramm grün dargestellt).</p>
+	<p><strong>Authentifizierung</strong><br>Zusammen mit dem AEAD und dem Server-Keyshare sendet der Server eine Signatur, die <em>Handshake-Signatur</em>, auf dem Transkript der bisherigen Kommunikation zusammen mit einem <a href="https://www.cloudflare.com/de-de/learning/ssl/what-is-an-ssl-certificate/" target="_blank"><em>Zertifikat</em></a><em> (chain) </em>für den öffentlichen Schlüssel, den er zur Erstellung der Signatur verwendet hat. Damit kann der Client den Server authentifizieren: Er prüft, ob er der <em>Zertifizierungsstelle</em> (z.B. <a href="https://letsencrypt.org/" target="_blank">Let’s Encrypt</a>), die den öffentlichen Schlüssel zertifiziert hat, vertraut und ob die Signatur für die bisher gesendeten und empfangenen Nachrichten gültig ist. Dies authentifiziert nicht nur den Server, sondern schützt auch vor Downgrade-Angriffen.</p>
+	<p><strong>Downgrade-Schutz</strong><br>Wir können nicht alle Clients und Server gleichzeitig auf Post-Quanten-Kryptographie umstellen. Stattdessen wird es eine Übergangszeit geben, in der nur einige Clients und einige Server Post-Quanten-Kryptographie unterstützen. Die Aushandlung von Schlüsselvereinbarungen in TLS 1.3 ermöglicht dies: Während der Umstellung unterstützen Server und Clients weiterhin Schlüsselvereinbarungen ohne Post-Quantum und können bei Bedarf auf diese zurückgreifen.</p>
+	<p>Diese Flexibilität ist großartig, aber auch beängstigend: Wenn sowohl Client als auch Server die Post-Quanten-Schlüsselvereinbarung unterstützen, wollen wir sicher sein, dass sie auch die Post-Quanten-Schlüsselvereinbarung aushandeln. Dies ist in TLS 1.3 der Fall, aber nicht offensichtlich: Die Keyshares, der gewählte Keyshare und die Liste der unterstützten Schlüsselvereinbarungen werden alle im Klartext gesendet. Ist es nicht möglich, dass ein Angreifer in der Mitte die Post-Quanten-Schlüsselvereinbarungen entfernt? Hierbei spricht man von einem <em>Downgrade-Angriff</em>.</p>
+	<p>Hier kommt das Transkript ins Spiel: Die Handshake-Signatur wird über alle bisher vom Server empfangenen und gesendeten Nachrichten erstellt. Dazu gehören die unterstützten Schlüsselvereinbarungen und die gewählte Schlüsselvereinbarung. Wenn ein Angreifer die Liste der unterstützten Schlüsselvereinbarungen, die der Client sendet, ändert, merkt der Server dies nicht. Der Client prüft jedoch die Handshake-Signatur des Servers anhand der Liste der unterstützten Schlüsselvereinbarungen, die er tatsächlich gesendet hat, und erkennt so den Missbrauch.</p>
+	<p>Die Probleme mit Downgrade-Angriffen sind bei TLS 1.2 <a href="https://www.rfc-editor.org/rfc/rfc7627" target="_blank">viel</a> <a href="https://eprint.iacr.org/2016/072.pdf" target="_blank">viel</a> <a href="https://www.rfc-editor.org/rfc/rfc7627" target="_blank">komplizierter</a>, was einer der Gründe ist, warum wir zögern, die Post-Quanten-Sicherheit in TLS 1.2. nachzurüsten.</p>
+	<p><strong>Abschluss des Handshakes</strong><br>Der letzte Teil der Server-Antwort ist <em>„server finished“</em>, ein <em>Message Authentication Code</em> (MAC) für das gesamte bisherige Transkript. Den Großteil der Arbeit hat die Handshake-Signatur erledigt, aber in anderen Betriebsmodi von TLS ohne Handshake-Signatur, wie z.B. der Wiederaufnahme von Sitzungen, ist sie wichtig.</p>
+	<p>Mit dem gewählten AEAD und dem Server-Keyshare kann der Client den gemeinsamen Schlüssel berechnen und die Zertifikatskette, die Handshake-Signatur und die Handshake-MAC entschlüsseln und verifizieren. Wir haben es bisher nicht erwähnt, aber der gemeinsame Schlüssel wird nicht direkt zur Verschlüsselung verwendet. Stattdessen wird er vorsichtshalber mit Kommunikationstranskripten <a href="https://www.rfc-editor.org/rfc/rfc8446.html#page-93" target="_blank">gemischt</a>, um mehrere spezifische Schlüssel für die Verwendung während des Handshakes und der Hauptverbindung danach abzuleiten.</p>
+	<p>Zum Abschluss des Handshakes sendet der Client seine eigene Handshake-MAC und kann dann anwendungsspezifische Daten senden, die mit den während des Handshakes abgeleiteten Schlüsseln verschlüsselt wurden.</p>
+	<p><strong>Hallo! Anfrage erneut versuchen?</strong><br>Wir haben gerade den wünschenswerten Ablauf skizziert, bei dem der Client einen Keyshare sendet, der vom Server unterstützt wird. Es könnte jedoch auch anders kommen. Wenn der Server keine der vom Client angekündigten Schlüsselvereinbarungen akzeptiert, teilt er dies dem Client mit und bricht die Verbindung ab.</p>
+	<!--kg-card-begin: html-->Wenn es eine Schlüsselvereinbarung gibt, die beide unterstützen, für die der Client aber keinen Keyshare gesendet hat, dann antwortet der Server mit einer HelloRetryRequest (HRR)-Nachricht. In dieser Nachricht wird ein Keyshare einer bestimmten Schlüsselvereinbarung angefordert, die der Client unterstützt, <a href="#tls-anchor">wie in der Abbildung rechts dargestellt</a>. Im Gegenzug antwortet der Client mit einem neuen ClientHello mit dem ausgewählten Keyshare.
+	<p></p>
+	<!--kg-card-end: html-->
+	<p>Das ist noch nicht alles: Ein Server kann auch eine <em>HelloRetryRequest</em> senden, um eine andere Schlüsselvereinbarung anzufordern, die er gegenüber denjenigen bevorzugt, für die der Client-Keyshares gesendet hat. So kann ein Server beispielsweise eine <em>HelloRetryRequest</em> für eine Post-Quanten-Schlüsselvereinbarung senden, wenn der Client diese unterstützt, aber keine Schlüsselfreigabe für sie gesendet hat.</p>
+	<p><em>HelloRetryRequest</em>s sind heute selten. Fast jeder Server unterstützt die X25519-Schlüsselvereinbarung und fast jeder Client (derzeit 98%) sendet einen X25519-Keyshare. Früher war P-256 der De-facto-Standard, und lange Zeit haben viele Browser sowohl einen P-256- als auch einen X25519-Keyshare gesendet, um eine HelloRetryRequest zu verhindern. Wie wir später noch erörtern werden, haben wir möglicherweise nicht den Luxus, zwei Post-Quanten-Keyshares zu senden.</p>
+	<p><strong>So weit die Theorie</strong><br>TLS 1.3 ist so konzipiert, dass es bei der verwendeten Kryptographie flexibel ist, ohne dass die Sicherheit oder die Performance beeinträchtigt wird, was für unsere Migration zur Post-Quanten-Kryptographie von Vorteil ist. So weit die Theorie, aber in der Praxis gibt es einige schwerwiegende Probleme, auf die wir später noch näher eingehen werden. Aber sehen wir uns zunächst die Post-Quanten-Schlüsselvereinbarungen an, die wir eingesetzt haben.</p>
+	<h3 id="was-wir-bereitgestellt-haben">Was wir bereitgestellt haben</h3>
+	<p>Heute haben wir die Unterstützung für die Schlüsselvereinbarungen <strong>X25519Kyber512Draft00</strong> und <strong>X25519Kyber768Draft00</strong> mit den TLS-Identifikatoren 0xfe30 bzw. 0xfe31 aktiviert. Dies sind genau die gleichen Schlüsselvereinbarungen, die wir im Juli dieses Jahres in einer begrenzten Anzahl von Zonen <a href="https://blog.cloudflare.com/experiment-with-pq/">aktiviert haben</a>.</p>
+	<p>Diese beiden Schlüsselvereinbarungen sind eine Kombination, ein <a href="https://datatracker.ietf.org/doc/draft-stebila-tls-hybrid-design/" target="_blank"><strong>Hybrid</strong></a>, aus dem klassischen <a href="https://www.rfc-editor.org/rfc/rfc8410" target="_blank">X25519</a> und dem neuen Post-Quanten- Kyber bzw. Kyber und zwar in dieser Reihenfolge. Das bedeutet, dass selbst wenn sich Kyber als unsicher erweist, die Verbindung genauso sicher bleibt wie X25519.</p>
+	<p><a href="https://pq-crystals.org/kyber/index.shtml" target="_blank">Kyber</a> ist derzeit die einzige Schlüsselvereinbarung, die das NIST für die Standardisierung <a href="https://blog.cloudflare.com/nist-post-quantum-surprise/">ausgewählt hat</a>. Kyber belastet die CPU kaum: Es ist schneller als X25519, das bereits für seine Geschwindigkeit bekannt ist. Andererseits sind seine Keyshares viel größer:</p>
+	<!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-c6q4 {
+			font-family: inherit;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-1jcf {
+			font-family: inherit;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-u5z2 {
+			font-family: inherit;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-3xvn {
+			font-family: inherit;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		.tg .tg-mpw7 {
+			font-family: inherit;
+			text-align: right;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-c6q4" colspan="2"></th>
+				<th class="tg-u5z2" colspan="2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Größe d. Keyshares(in bytes)</span></th>
+				<th class="tg-u5z2" colspan="2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Vorgänge/Sek (höher ist besser)</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-c6q4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Algorithmus</span></td>
+				<td class="tg-u5z2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">PQ</span></td>
+				<td class="tg-1jcf"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Client</span></td>
+				<td class="tg-1jcf"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Server</span></td>
+				<td class="tg-1jcf"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Client</span></td>
+				<td class="tg-1jcf"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Server</span></td>
+			</tr>
+			<tr>
+				<td class="tg-3xvn"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Kyber512</span></td>
+				<td class="tg-u5z2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+				<td class="tg-mpw7"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">800</span></td>
+				<td class="tg-mpw7"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">768</span></td>
+				<td class="tg-mpw7"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">50.000</span></td>
+				<td class="tg-mpw7"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">100.000</span></td>
+			</tr>
+			<tr>
+				<td class="tg-3xvn"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Kyber768</span></td>
+				<td class="tg-u5z2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+				<td class="tg-mpw7"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1.184</span></td>
+				<td class="tg-mpw7"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1.088</span></td>
+				<td class="tg-mpw7"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">31.000</span></td>
+				<td class="tg-mpw7"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">70.000</span></td>
+			</tr>
+			<tr>
+				<td class="tg-3xvn"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">X25519</span></td>
+				<td class="tg-u5z2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">❌</span></td>
+				<td class="tg-mpw7"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">32</span></td>
+				<td class="tg-mpw7"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">32</span></td>
+				<td class="tg-mpw7"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">17.000</span></td>
+				<td class="tg-mpw7"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">17.000</span></td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: html-->
+	<!--kg-card-begin: markdown-->
+	<p><em><small>Größe und CPU-Performance im Vergleich zwischen X25519 und Kyber. Die Performance variiert je nach Hardwareplattform und Implementierungsbeschränkungen erheblich und sollte nur als grober Richtwert betrachtet werden.</small></em></p>
+	<!--kg-card-end: markdown-->
+	<p>Es wird erwartet, dass sich Kyber bis zur endgültigen Standardisierung durch das NIST im Jahr 2024 nur geringfügig, aber nicht rückwärtskompatibel, ändern wird. Auch die Integration mit TLS, einschließlich der Wahl und der Details der hybriden Schlüsselvereinbarung, ist von der TLS-Arbeitsgruppe noch nicht endgültig festgelegt worden. Sobald sie es sind, werden wir sie umgehend umsetzen.</p>
+	<p>Aus diesem Grund werden wir die heute angekündigten vorläufigen Schlüsselvereinbarungen nicht langfristig unterstützen; sie werden als Beta-Service bereitgestellt. Wir werden Updates zu unserer Bereitstellung auf <a href="http://pq.cloudflareresearch.com" target="_blank">pq.cloudflareresearch.com</a> veröffentlichen und diesen auf der <a href="https://www.ietf.org/mailman/listinfo/Pqc" target="_blank">IETF PQC Mailingliste</a> ankündigen.</p>
+	<p>Nun, da wir wissen, wie die TLS-Verhandlung theoretisch funktioniert und welche Schlüsselvereinbarungen wir hinzufügen: Wie könnte sie scheitern?</p>
+	<h2 id="wo-es-in-der-praxis-haken-k-nnte">Wo es in der Praxis haken könnte</h2>
+	<h3 id="verkn-cherung-des-protokolls">Verknöcherung des Protokolls</h3>
+	<p>Protokolle werden oft mit dem Gedanken an Flexibilität entworfen, aber wenn diese Flexibilität in der Praxis nicht genutzt wird, geht sie oft verloren. Hierbei spricht man von der Verknöcherung des Protokolls. Die Einführung von TLS 1.3 <a href="https://blog.cloudflare.com/why-tls-1-3-isnt-in-browsers-yet/">war schwierig</a>, weil es mehrere Fälle von Verknöcherung gab. Ein prägnantes Beispiel ist die Versionsaushandlung von TLS: Es gibt ein Versionsfeld in der ClientHello-Nachricht, das die neueste vom Client unterstützte Version angibt. Eine neue Version wurde TLS 1.3 zugewiesen, aber bei Tests stellte sich heraus, dass viele Server nicht ordnungsgemäß auf TLS 1.2 zurückgreifen, sondern die Verbindung stattdessen abbrechen. Wie gehen wir mit der Verknöcherung um?</p>
+	<p><strong>Abhilfemaßnahme</strong><br>Heute tarnt sich TLS 1.3 als TLS 1.2, bis hin zur Aufnahme vieler veralteter Felder in das <em>ClientHello</em>. Die eigentliche Versionsaushandlung wird in eine neue <em>Erweiterung</em> der Nachricht verschoben. Ein TLS 1.2-Server wird die neue Erweiterung ignorieren und unwissentlich mit TLS 1.2 fortfahren, während ein TLS 1.3-Server die Erweiterung aufnimmt und mit TLS 1.3 fortfährt.</p>
+	<p><strong>Protokoll-Grease</strong><br>Wie können wir die Verknöcherung verhindern? Aus dieser Erfahrung wurde gelernt, weshalb Browser heute regelmäßig Dummy-Versionen in diesem neuen Versionsfeld ankündigen werden, damit fehlerhafte Server frühzeitig erkannt werden. Dies gilt nicht nur für das neue Versionsfeld, sondern auch für viele andere Stellen im TLS-Handshake und vorsorglich auch für die Identifikatoren der Schlüsselvereinbarung. Heute senden 40 % der Browser zwei Client-Keyshares: einen X25519 und einen weiteren fingierten 1-Byte-Keyshare, um die Flexibilität der Schlüsselvereinbarung zu erhalten.</p>
+	<p>Dieses Verhalten ist in <a href="https://datatracker.ietf.org/doc/html/rfc8701" target="_blank">RFC 8701</a> standardisiert: <em>Generate Random Extensions And Sustain Extensibility</em> (GREASE) und wir nennen es „Protokoll-<em>Greasing</em>“ („Schmierung des Protokolls“), wie ein „Schmieren der Gelenke“, in Anlehnung an Adam Langleys Metapher der <a href="https://www.imperialviolet.org/2016/05/16/agility.html" target="_blank">rostigen Gelenke von Protokollen</a>, die mit Öl geschmiert werden müssen. </p>
+	<p>Dieses Keyshare-Greasing hilft, ist aber nicht perfekt, denn die Größe des Keyshares ist in diesem Fall das größte Problem.</p>
+	<h3 id="fragmentiertes-clienthello">Fragmentiertes ClientHello</h3>
+	<p>Post-Quanten-Keyshares sind groß. Die beiden Kyber-Hybride sind 832 und 1.216 Bytes groß. Im Vergleich dazu ist der X25519 mit nur 32 Bytes winzig. Es ist nicht unwahrscheinlich, dass einige Implementierungen bei so großen Keyshares scheitern werden.</p>
+	<p>Unsere größte Sorge gilt dem größeren Kyber768-basierten Keyshare. Ein ClientHello mit dem kleineren 832 Byte großen Kyber512-basierten Keyshare passt gerade noch in ein typisches TCP-Paket. Die größere Kyber768-Keyshare mit 1.216 Byte hingegen fragmentiert das ClientHello normalerweise in zwei Pakete.</p>
+	<p>Das Zusammensetzen von Paketen ist nicht kostenlos: Sie müssen die Teilnachrichten im Auge behalten. Normalerweise geschieht dies transparent durch den TCP-Stack des Betriebssystems, aber optimierte Middleboxen und Load Balancer, die jedes Paket einzeln betrachten, müssen (und dürfen) die Verbindungen selbst verfolgen.</p>
+	<h3 id="quic">QUIC</h3>
+	<p>Die Situation bei HTTP/3, das auf <a href="https://blog.cloudflare.com/quic-version-1-is-live-on-cloudflare/">QUIC</a> aufbaut, ist besonders interessant. Anstelle einer einfachen Portnummer, die vom Client gewählt wird (wie bei TCP), enthält ein QUIC-Paket vom Client eine <em>Verbindungs-ID</em>, die vom Server gewählt wird. Stellen Sie sich das wie „Ihre Referenz“ und „unsere Referenz“ in der Briefpost vor. Auf diese Weise kann ein QUIC-Load-Balancer den jeweiligen Rechner, der die Verbindung bearbeitet, in der Verbindungs-ID kodieren.</p>
+	<p>Beim Eröffnen einer Verbindung weiß der QUIC-Client nicht, welche Verbindungs-ID der Server haben möchte und sendet stattdessen eine zufällige. Wenn der Client mehrere Anfangspakete benötigt, z.B. bei einem großen ClientHello, dann verwendet der Client die gleiche zufällige Verbindungs-ID. Obwohl der QUIC-Standard mehrere Anfangspakete zulässt, erwartet ein QUIC-Load-Balancer dies möglicherweise nicht und ist nicht in der Lage, auf eine zugrunde liegende TCP-Verbindung zu verweisen.</p>
+	<h3 id="performance">Performance</h3>
+	<p>Neben diesen harten Ausfällen sind auch <em>weiche</em> Ausfälle, wie z.B. Performance-Einbußen, besorgniserregend: Wenn eine Website zu langsam geladen wird, könnte sie auch von Anfang an defekt gewesen sein.</p>
+	<p>2019 haben wir in einem gemeinsamen Experiment mit Google zwei Post-Quanten-Schlüsselvereinbarungen eingesetzt: CECPQ2, basierend auf NTRU-HRSS, und CECPQ2b, basierend auf SIKE. NTRU-HRSS ist Kyber sehr ähnlich: es ist ein bisschen größer und langsamer. <a href="https://blog.cloudflare.com/the-tls-post-quantum-experiment/">Die Ergebnisse von 2019</a> sind sehr vielversprechend: X25519+NTRU-HRSS (orange line) (orangefarbene Linie) ist kaum von X25519 allein zu unterscheiden (blaue Linie).</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/10/image2-2.png" class="kg-image" alt="Diagrams of performance of CECPQ2 based on NTRU-HRSS and CECPQ2b based on SIKE compared to X25519."></figure>
+	<p>Wir werden auch weiterhin ein Auge auf die Performance haben, insbesondere auf die Tail-Performance: Wir wollen einen reibungslosen Übergang für alle, von den schnellsten bis zu den langsamsten Clients im Internet.</p>
+	<h2 id="wie-sie-mithelfen-k-nnen">Wie Sie mithelfen können</h2>
+	<p>Das Internet ist ein sehr heterogenes System. Damit wir alle seine Probleme ermitteln können, brauchen wir eine ausreichende Anzahl verschiedener Tester. Wir arbeiten mit Browsern zusammen, um die Unterstützung für diese Schlüsselvereinbarungen hinzuzufügen, aber es kann sein, dass es nicht in jedem Netzwerk einen dieser Browser gibt.</p>
+	<p>Um dem Internet zu helfen, sollten Sie also versuchen, einen kleinen Teil Ihres Datenverkehrs auf Cloudflare-Domains umzuleiten, um diese neuen Methoden der Schlüsselvereinbarung zu verwenden. Wir haben Open Source-Forks für <a href="https://github.com/cloudflare/boringssl-pq" target="_blank">BoringSSL</a>, <a href="https://github.com/cloudflare/go" target="_blank">Go</a> und <a href="https://github.com/cloudflare/qtls-pq" target="_blank">quic-go</a>. Für BoringSSL und Go finden Sie <a href="https://blog.cloudflare.com/experiment-with-pq/#boringssl">den Beispielcode hier</a>. Wenn Sie irgendwelche Probleme haben, schreiben Sie uns bitte unter <a href="mailto:ask-research@cloudflare.com" target="_blank">ask-research@cloudflare.com</a>. Wir werden alle Probleme und Abhilfemaßnahmen in der <a href="https://datatracker.ietf.org/group/tls/about/" target="_blank">TLS-Arbeitsgruppe</a> besprechen.</p>
+	<h2 id="ausblick">Ausblick</h2>
+	<p>Der Übergang zu einem sicheren Post-Quanten-Internet ist dringend, aber nicht ohne Herausforderungen. Heute haben wir eine vorläufige Post-Quanten-Schlüsselvereinbarung auf allen unseren Servern – einem beträchtlichen Teil des Internets – bereitgestellt, so dass wir alle heute mit dem Testen der großen Umstellung beginnen können. Wir hoffen, dass wir bis 2024, wenn NIST Kyber vorstellen wird, die Grundlagen für einen reibungslosen Übergang zu einem Post-Quanten-Internet geschaffen haben werden.</p>
+	<!--kg-card-begin: markdown-->
+	<p>.....<br>
+		<small><sup>1</sup>Wir unterstützen diese Post-Quanten-Schlüsselvereinbarungen nur in Protokollen, die auf TLS 1.3 basieren, einschließlich HTTP/3. Es gibt eine Ausnahme: Im Moment deaktivieren wir diese hybriden Schlüsselaustausche für Websites im FIPS-Modus.</small>
+	</p>
+	<!--kg-card-end: markdown-->
+</div>

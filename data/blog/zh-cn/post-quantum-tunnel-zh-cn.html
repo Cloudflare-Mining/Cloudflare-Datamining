@@ -1,0 +1,80 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/image2-1.png" class="kg-image" alt="Introducing post-quantum Cloudflare Tunnel"></figure>
+	<p>毫无疑问，IT 行业未来十年的一大主题是<em>迁移</em>到<em>后量子加密技术</em>。从科技巨头到小企业：我们都必须确保及时更新硬件和软件，保护我们的数据，不受<a href="https://blog.cloudflare.com/the-quantum-menace/">量子计算机</a>的影响。这看似遥远，但在以后就不是问题：现在捕获的任何加密数据（不受后量子加密技术保护）在未来都可以被足够强大的量子计算机破解。</p>
+	<p>幸好我们已经做好基本准备：经过加密技术团体在全球范围内作出的巨大努力，<a href="https://blog.cloudflare.com/nist-post-quantum-surprise/">我们知道</a>，在未来几十年，量子密码学的黄金标准是什么。发布日期：2024 年的某个时候。希望对大多数人来说，只要更新软件就能完成过渡，但并非对所有人都是如此：并非所有软件都得到维护，很可能硬件也需要升级。退一步说，许多公司甚至没摸清在其网络上运行的软件有哪些。</p>
+	<p>对于 Cloudflare Tunnel 客户来说，迁移更加简单：引入<strong>后量子 Cloudflare Tunnel</strong>。在本博文中，我们首先将概述 Cloudflare Tunnel 的工作原理，解释它如何帮助您向后量子迁移。然后，我们会详细介绍技术。</p>
+	<h2 id="cloudflare-tunnel">Cloudflare Tunnel</h2>
+	<p>使用 <a href="https://www.cloudflare.com/en-gb/products/tunnel/" target="_blank">Cloudflare Tunnel</a>，您可以运行 <code><a href="https://github.com/cloudflare/cloudflared" target="_blank">cloudflared</a></code> 服务，将位于内部网络的服务器安全地暴露在互联网上。例如，在您的内部网络上安装 <code><a href="https://github.com/cloudflare/cloudflared" target="_blank">cloudflared</a></code> 后，您可以将您的本地 Web 应用程序暴露在互联网上，比如 example.com，使远程办公者可以在任何地方访问。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/image1.png" class="kg-image" alt="Life of a Cloudflare Tunnel request.">
+		<figcaption><em>Cloudflare Tunnel 请求的生命周期。</em></figcaption>
+	</figure>
+	<p>它是如何运行的？<code>cloudflared</code> 创建到附近两个 Cloudflare 数据中心长期运行的连接，例如旧金山（连接 3）和另一个。当您的员工访问您的域名时，他们连接 (1) 到他们附近的 Cloudflare 服务器，例如法兰克福。该服务器知道这是一个 Cloudflare 隧道，并且您的 <code>cloudflared</code> 已连接旧金山的服务器，所以将请求转发 (2) 给旧金山的服务器。反过来，通过反向连接，请求在 <code>cloudflared</code> 处结束，这通过您的内部网络传递 (4) 给 Web 应用程序。</p>
+	<p>本质上，Cloudflare Tunnel 是简单又便捷的工具，但它的作用却很神奇：免费获得 <a href="https://www.cloudflare.com/en-gb/ddos/" target="_blank">Cloudflare 的 DDoS 保护</a>；<a href="https://www.cloudflare.com/en-gb/products/zero-trust/access/" target="_blank">Cloudflare Access</a> 的细粒度访问控制（即使应用程序不支持此功能）以及<a href="https://developers.cloudflare.com/cloudflare-one/analytics/logs/audit-logs/" target="_blank">请求日志，优点众多，在此仅举几例</a>。好的，回归正题：</p>
+	<h2 id="-">后量子隧道</h2>
+	<p>我们的目标是，让每个人都能轻松拥有从用户到源主机的完全后量子安全连接。为此，我们推出了后量子 Cloudflare Tunnel。此工具功能强大，使您的用户可以从后量子安全连接中受益，而无需升级您的应用程序（图中的连接 4）。</p>
+	<p>今天，我们向此目标迈出重要两步：<code>cloudflared</code> <a href="https://github.com/cloudflare/cloudflared/releases/tag/2022.9.1" target="_blank">2022.9.1</a> 添加了 后量子 标记，使从 <code>cloudflared</code> 到我们网络的连接（连接 3）成为后量子安全连接。</p>
+	<p>同样在今天，我们宣布支持后量子浏览器连接（连接 1）。</p>
+	<p>我们还没有做到这一步：浏览器（和其他 HTTP 客户端）不支持我们网络提供的后量子安全性，但是我们仍然必须使我们数据中心之间的连接（连接 2）变成后量子安全连接。</p>
+	<p>攻击者只需要访问一个脆弱的连接，但攻击者不可能访问所有连接：只要使每个连接都成为后量子安全连接，我们就消除了一个漏洞。</p>
+	<p>我们迫切希望将后量子隧道设置为默认设置，但目前它还只是测试功能。因为使用的加密技术和将其集成到网络协议并不是最终的。现在就将后量子变成默认设置，会让用户更新 <code>cloudflared</code> 的频率超出我们的合理预期。</p>
+	<h2 id="--1">立即开始</h2>
+	<p>频繁更新 <code>cloudflared</code> 对您来说，不是问题？那么，请试试后量子 Cloudflare Tunnel。确保版本至少为 <a href="https://github.com/cloudflare/cloudflared/releases/tag/2022.9.1" target="_blank">2022.9.1</a>，然后运行带 --post-quantum 标记的 <code>cloudflared</code> 即可：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>$ cloudflared tunnel run --post-quantum tunnel-name
+2022-09-23T11:44:42Z INF Starting tunnel tunnelID=[...]
+2022-09-23T11:44:42Z INF Version 2022.9.1
+2022-09-23T11:44:42Z INF GOOS: darwin, GOVersion: go1.19.1, GoArch: amd64
+2022-09-23T11:44:42Z INF Settings: map[post-quantum:true pq:true]
+2022-09-23T11:44:42Z INF Generated Connector ID: [...]
+2022-09-23T11:44:42Z INF cloudflared will not automatically update if installed by a package manager.
+2022-09-23T11:44:42Z INF Initial protocol quic
+2022-09-23T11:44:42Z INF Using experimental hybrid post-quantum key agreement X25519Kyber768Draft00
+2022-09-23T11:44:42Z INF Starting metrics server on 127.0.0.1:53533/metrics
+2022-09-23T11:44:42Z INF Connection [...] registered connIndex=0 ip=[...] location=AMS
+2022-09-23T11:44:43Z INF Connection [...] registered connIndex=1 ip=[...] location=AMS
+2022-09-23T11:44:44Z INF Connection [...] registered connIndex=2 ip=[...] location=AMS
+2022-09-23T11:44:45Z INF Connection [...] registered connIndex=3 ip=[...] location=AMS
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>如果您运行 <code>cloudflared</code> <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/as-a-service/" target="_blank">即服务</a>，您可以在隧道配置文件中添加 <code>post-quantum: true</code> 开启后量子。这样，<code>cloudflared</code> 服务就会<a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/local-management/arguments/#no-autoupdate" target="_blank">自动更新</a>（如果未使用软件包管理器安装）。</p>
+	<p>如果出于某些原因，创建后量子隧道失败，就会看到如下错误消息</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>2022-09-22T17:30:39Z INF Starting tunnel tunnelID=[...]
+2022-09-22T17:30:39Z INF Version 2022.9.1
+2022-09-22T17:30:39Z INF GOOS: darwin, GOVersion: go1.19.1, GoArch: amd64
+2022-09-22T17:30:39Z INF Settings: map[post-quantum:true pq:true]
+2022-09-22T17:30:39Z INF Generated Connector ID: [...]
+2022-09-22T17:30:39Z INF cloudflared will not automatically update if installed by a package manager.
+2022-09-22T17:30:39Z INF Initial protocol quic
+2022-09-22T17:30:39Z INF Using experimental hybrid post-quantum key agreement X25519Kyber512Draft00
+2022-09-22T17:30:39Z INF Starting metrics server on 127.0.0.1:55889/metrics
+2022-09-22T17:30:39Z INF 
+
+===================================================================================
+您在使用实验后量子隧道功能时遇到一个错误。
+
+请查看：
+
+    https://pqtunnels.cloudflareresearch.com
+
+了解已知问题。
+===================================================================================
+
+
+2022-09-22T17:30:39Z ERR Failed to create new quic connection error="failed to dial to edge with quic: CRYPTO_ERROR (0x128): tls: handshake failure" connIndex=0 ip=[...]
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>添加后量子标记后，<code>cloudflared</code>将<em>不会</em>回退到非后量子连接。</p>
+	<h3 id="--2">注意事项</h3>
+	<p>设置阶段至关重要：一旦建立，隧道就和普通隧道一样。这意味着，隧道一旦建立，性能和可靠性应该是一致的。</p>
+	<p>我们使用的后量子加密速度非常快，但在握手过程中需要再交换大约一千字节的数据。实际上，这种差异很难察觉。</p>
+	<p>我们最担心的是，较大的握手数据可能会让一些网络设备/中间盒感觉困惑。如果后量子 Cloudflare Tunnel 不起作用，请随时向我们反馈。请通过 <a href="mailto:ask-research@cloudflare.com" target="_blank">ask-research@cloudflare.com</a> 联系我们，并告知您使用的中间盒或 ISP。</p>
+	<h2 id="--3">底层实现</h2>
+	<p>添加 <code>--post-quantum</code> 标记时，<code>cloudflared</code> 限制其自身的 QUIC 传输隧道连接到我们的网络，只允许后量子混合密钥 <code>X25519Kyber512Draft00</code> 和 <code>X25519Kyber768Draft00</code> 与 TLS 标识符 <code>0xfe30</code> 和 <code>0xfe31</code> 分别交换。这些是经典 <a href="https://cr.yp.to/ecdh.html" target="_blank">X25519</a> 和后量子安全 <a href="https://pq-crystals.org/kyber/index.shtml" target="_blank">Kyber</a> 之间的<a href="https://datatracker.ietf.org/doc/draft-stebila-tls-hybrid-design/" target="_blank">混合</a>密钥交换。因此，即使证明 Kyber 不安全，X25519 的非后量子安全性。这些是我们网络支持的相同的密钥交换。</p>
+	<p><code>cloudflared</code> 在这两种密钥交换中随机选择一种。因为后者通常使用 TLS <em>ClientHello</em> 的两个初始数据包，而前者只需要一个。这样，我们可以测试碎片化 <em>ClientHello</em> 是否会有问题。</p>
+	<p>当 <code>cloudflared</code> 无法建立后量子连接时，它会将尝试的密钥交换、<code>cloudflared</code> 版本和错误报告给 <a href="https://pqtunnels.cloudflareresearch.com" target="_blank">pqtunnels.cloudflareresearch.com</a>，以便我们了解网络问题。查看该页了解后量子隧道部署的最新进展。</p>
+	<p><code>cloudflared</code> 和我们网络之间的隧道的控制连接和身份验证尚不具备后量子安全性。它没有隧道上的数据<em>先存储再解密</em>问题那么紧急。</p>
+	<p>我们在 Go 中为这些后量子 QUIC 密钥交换提供了<a href="https://github.com/cloudflare/qtls-pq" target="_blank">开源</a>支持。</p>
+	<h2 id="--4">前景</h2>
+	<p>未来十年，行业将推出后量子数据保护。有些情况就像软件更新一样简单，而有些则要困难得多。后量子隧道将以简单、友好的方式保护 Cloudflare 网络和您的源主机之间的连接 — 这是迈向后量子互联网的重要一步，让每个人都可以继续使用私密且安全的互联网。<br></p>
+</div>
