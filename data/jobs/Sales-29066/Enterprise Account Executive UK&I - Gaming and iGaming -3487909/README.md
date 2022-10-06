@@ -27,7 +27,7 @@
 <ul>
 	<li>Closing experience and track-record of exceeding quota</li>
 	<li>Deep understanding of the sales process as it relates to Enterprise, Mid-Market, &amp; SMB companies</li>
-	<li>Relevant direct experience, track record, and relationships within gaming &amp; igaming accounts in Russia and Russian speaking markets&nbsp;&nbsp;&nbsp;</li>
+	<li>Relevant direct experience, track record, and relationships within gaming &amp; igaming accounts in the UK&amp;I</li>
 	<li>Exemplary communication skills, both written and verbal, with confidence to develop and present ideas to varying levels of audiences</li>
 	<li>Experience directly managing a pipeline of complex, large deals</li>
 	<li>Direct experience selling network security and/or CDN solutions and services preferred</li>
