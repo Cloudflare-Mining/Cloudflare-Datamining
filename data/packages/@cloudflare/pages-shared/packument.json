@@ -1,7 +1,7 @@
 {
 	"name": "@cloudflare/pages-shared",
 	"dist-tags": {
-		"latest": "0.0.7"
+		"latest": "0.0.8"
 	},
 	"versions": {
 		"0.0.1": {
@@ -189,6 +189,35 @@
 					}
 				],
 				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjPDphACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmoLkg//fjLYvK9+y3ByyTk3dmMS3ObL/MqI8Gdh2/b7r09OVerWFRff\r\nhjq28A2LVxttFeUrwe3jgH1rc1gPTNmmI8hIlHZ5k3CZP5Fbf7A2SyVQ8UBK\r\n6euYeeut2/Bj8/uXH/zEs88yAmppQEdfLTmGfe30EpPUoV+slM5yutZGenIK\r\n9MejMWlqriwa+ibaPJSuLdHowGyPxfsW6cICLotWkKzBwG+j1+EjD+QzDkeD\r\nSJzqPlaZgL4p3si9oUOeCljfuu5wtN0828GGR3qU9ZqjQ77fslwXLDBIZ5Uc\r\nKqIsmj+aNvSzQXLk8qSJkUBgUN5SoqqZAP1RnnvBjEOPCLd80qAfv5tKlFgD\r\nwmLnVFMiKjE+Y4cyKN6NvrsUrMad3bZco+oalgYcMiD+eTeGmAIAcVH2Xwt/\r\n+jwbxy2XKqrgcTCW0ySjjoRiuZYVIOLzyvrjM3wAKTVQ2bek4svt7FNLQJAS\r\nklAAqPZatbLOwQ8kuGwefsNa1ithB2N37XFZenPmrD0Ru2aNVTWDk3zHAq/2\r\nVv6IY7PGz2z+1Uqppep2styVV4OyNBpAMgAFDtaWfIUaY6/IX4QqeMiTfihj\r\nWUGUhew21Y/S+qcWzUTAmzQitLHzzNUdy4W04Mmkyay7TI13QtJsVU/XFWrz\r\n5zFLYSW8yJ3A6vNuDmxApDouKO7YSiKN9aM=\r\n=zy3a\r\n-----END PGP SIGNATURE-----\r\n"
+			}
+		},
+		"0.0.8": {
+			"name": "@cloudflare/pages-shared",
+			"version": "0.0.8",
+			"dependencies": {
+				"@miniflare/core": "2.9.0"
+			},
+			"devDependencies": {
+				"@miniflare/cache": "2.9.0",
+				"@miniflare/html-rewriter": "2.9.0",
+				"@types/service-worker-mock": "^2.0.1",
+				"concurrently": "^7.3.0",
+				"glob": "^8.0.3",
+				"service-worker-mock": "^2.0.5"
+			},
+			"dist": {
+				"integrity": "sha512-RVGmh1Qi3L3+o4sTtMEzm3x06kej31jHQxNRRGkmV9CL8f7JA867kvar+l/FsAauLcBXEjTO5gUAi2lwMW1U2Q==",
+				"shasum": "e5c0f5af6f3677bd28ff69cd6a746fa698bd0ef8",
+				"tarball": "https://registry.npmjs.org/@cloudflare/pages-shared/-/pages-shared-0.0.8.tgz",
+				"fileCount": 17,
+				"unpackedSize": 43692,
+				"signatures": [
+					{
+						"keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+						"sig": "MEUCIEgfg042HXUw8wuHAXqQ9sshFyAe8BRgWvls2dZtP3sOAiEA+2qCjqDZ7T1aZhTxwrYg1MbOCjKxPjIft1JmHbccQDY="
+					}
+				],
+				"npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjPvaOACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmoLxQ//d4Ftg1kL7WcKMLCU/8/gscFN/3kHC2jn1BKe2K+/9MyLGjGo\r\n/yzYFUuHIwOm9QEWFeF5GBfQJfHSMaNhFSD5BaUGgDlAr9hWuVxs96T/iquw\r\n2OPxSFIwdkwQgOWw0TlUAfUl1VZ2mYEIerqPvlNow4o1ZePOfHZ60O17dEsY\r\n8iinQI6F6M/NPLh+B5Gr6BvpORNf0wbJOfFdtsKcCCv0JoVBQoNPhpViBfud\r\nQmzjwpZhj8KGZfFi1L19ZgUzJBWjllHTgyAtLBozT9iRuN542IQ8N6AMS7BA\r\nAZBM0c2sQ/N2etunBcJwP+NIKkUcXPtNyCrSheLBTPWlVmLADDhieskk3Aab\r\nqVh63WGoSFgVJDFDH/3itZv0Ltk3gJ2OJu+mDmFkWud3zaumLRuCrya+Junq\r\nfY/3doBqHJeVyRWONUsCMuCFAeeTqy+dcCk85o2ec0C4NLWXMoEXdnNEu4+7\r\n6XOflutvpghJI27SDxDupH7feAp6Qi8hXuMgkTJLggzkNkg03eztVKDwlarM\r\nMQUX52Of0tryJTH53stkKd1TFEUQokNc25/bwlXhqlPE32LXwDUBg0+2aEun\r\nXDOZ0LYgpr4qVadskl7aBtTiji4F/Wp7VsBVBSM928o8WHTJ84jXLK5VLZUQ\r\n08WiyrQpqDDlSZx1rmix5m2/5xN1i3ltgtI=\r\n=SFgJ\r\n-----END PGP SIGNATURE-----\r\n"
 			}
 		}
 	}
