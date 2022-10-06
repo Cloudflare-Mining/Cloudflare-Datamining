@@ -1,0 +1,83 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image4-21.png" class="kg-image" alt="Announcing Turnstile, a user-friendly, privacy-preserving alternative to CAPTCHA"></figure>
+	<p>本日、私たちはCAPTCHAの目に見えない代替品であるTurnstileのオープンベータを発表します。インターネット上の誰でも、どこでも、自分のサイトでCAPTCHAを置き換えたいと考える方であれば、Cloudflareのお客様でなくても、またトラフィックの送信にCloudflareのグローバルネットワークを使用しなくても、誰でもインターネットのどこからでもシンプルなAPIを呼び出すことができるようになります。<a href="https://www.cloudflare.com/lp/turnstile/" target="_blank">こちらから無料で登録</a>いただけます。</p>
+	<p>CAPTCHAが煩雑なユーザーエクスペリエンスを生み出すという事実を蒸し返すことに意味はありません。これに関しては<a href="https://blog.cloudflare.com/ja-jp/moving-from-recaptcha-to-hcaptcha-ja-jp/">このブログ</a>で以前にも、そして他の場所でも何度となく取り上げられています。CAPTCHAの創始者は、「人間の脳のサイクルという貴重な資源を<a href="https://thewalrus.ca/human-resources/" target="_blank">10秒ごとに何百万時間も浪費する</a>システムを無意識のうちに作り上げてしまいました」と公に嘆いています。私たちはそれを嫌い、あなたもそれを嫌い、誰もがそれを嫌います。本日、私たちは皆様により良い選択肢を提供します。</p>
+	<!--kg-card-begin: html-->
+	<div style="position: relative;padding-top: 0;width: 300px;height: 64px;margin: 2rem 0;"><iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/c22b7ec2f112d38101d85f3fff666e59/iframe?preload=true&amp;loop=true&amp;autoplay=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2Fc22b7ec2f112d38101d85f3fff666e59%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D3s%26height%3D600&amp;controls=false" style="border: none;position: absolute;top: 0;left: 0;height: 64px;width: 300px;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
+	<!--kg-card-end: html-->
+	<p>Turnstileは、当社の提供するスマートなCAPTCHAの代替品です。遠隔測定法とセッション中に示されるクライアントの行動に基づいて、非侵入型のブラウザチャレンジが入れ替え式の製品群の中から自動的に選択されます。<a href="https://blog.cloudflare.com/end-cloudflare-captcha/">Managed Challengeシステムを利用して、CAPTCHAの使用を91%削減</a>したことは、以前の記事でお話しました。今、誰でもこれと同じ技術を利用して、自分のサイトでCAPTCHAの使用をやめることができます。</p>
+	<h3 id="captcha-ux-">CAPTCHAの大きな問題はUXだけではありません — プライバシーも同様です。</h3>
+	<p>CAPTCHAを解かなければならないというのは、ユーザーにとってフラストレーションのたまる体験ですが、CAPTCHAを使う際にWebサイト側に隠れたトレードオフが生じる可能性もあります。現在CAPTCHAを使用している小規模なサイトを運営されている方の選択肢は、本質的に1つです。それは、<a href="https://trends.builtwith.com/widgets/captcha" target="_blank">CAPTCHAの市場シェアの98%</a>を占める「800-pound gorilla」です。このツールは無料で使えますが、個人情報を広告販売会社に渡さなければなりません。</p>
+	<p>セキュリティ研究者らによると、Googleがユーザーが悪意を持っているかどうかを判断するために使用する信号の1つに、ブラウザにGoogle Cookieが入っているかどうかというものがあり、このCookieが入っていると、Googleは<a href="https://www.fastcompany.com/90369697/googles-new-recaptcha-has-a-dark-side" target="_blank">より高いスコアを与える</a>と言います。Googleはこの情報を広告のターゲティングに使用しないと言っていますが、結局のところGoogleは広告販売会社なのです。一方、Cloudflareは、お客様がWebサイトの保護やサービスの動作を改善するために当社を選択いただくことで収益を得ています。これは、双方のインセンティブを完全に一致させる、シンプルで直接的な関係です。</p>
+	<h3 id="-">より少ないデータ収集で、より高いプライバシー・同等のセキュリティを実現</h3>
+	<p>6月、私たちは<a href="https://blog.cloudflare.com/eliminating-captchas-on-iphones-and-macs-using-new-standard/">プライベートアクセストークンを使用するAppleとの取り組み</a>を発表しました。macOSまたはiOSの次期バージョンなど、これらのトークンをサポートするオペレーティングシステムを使用している訪問者は、CAPTCHAを完了したり個人データを提供することなく、自分が人間であることを証明できるようになりました。</p>
+	<p>デバイスの検証に役立つデータをすでに持っているデバイスメーカーのようなサードパーティと提携することで、検証プロセスの一部を抽象化し、実際に収集したり、触ったり、そのデータを自分で保存したりせずにデータを確認することができるのです。デバイスに直接問い合わせるのではなく、当社はデバイスベンダーに依頼します。</p>
+	<p>プライベートアクセストークンはTurnstileに直接組み込まれています。Turnstileは、ユーザーによるチャレンジを排除してユーザーを検証するために、いくつかのセッションデータ（ヘッダー、ユーザーエージェント、ブラウザの特性など）を確認する必要がありますが、プライベートアクセストークンを使用すると、デバイスの検証をAppleに任せることで、データ収集を最小限に抑えることができます。さらに、Turnstileは、クッキー（ログインクッキーなど）を探したり、クッキーを使用してあらゆる種類の情報を収集または保存したりすることはありません。Cloudflareは<a href="https://blog.cloudflare.com/next-generation-privacy-protocols/">長きに渡り</a>、<a href="https://blog.cloudflare.com/zaraz-privacy-features-in-response-to-cnil/">ユーザーのプライバシー</a>に<a href="https://blog.cloudflare.com/certifying-our-commitment-to-your-right-to-information-privacy/">投資</a>してきたという<a href="https://blog.cloudflare.com/announcing-the-results-of-the-1-1-1-1-public-dns-resolver-privacy-examination/">実績</a>があり、これはTurnstileでも継続します。</p>
+	<h3 id="-captcha-">当社の提供するCAPTCHAの代替は、すべての方が使用できます</h3>
+	<p>すべての人により良いインターネットを提供するために、私たちは <a href="https://blog.cloudflare.com/end-cloudflare-captcha/">マネージド・チャレンジ</a> を支える技術を、Turnstileというスタンドアローン製品としてベータ版ですべての方へ公開することにしました。</p>
+	<p>私たちは、CAPTCHAを一方的に廃止して一つの代替品に置き換えようというのではなく、多くの選択肢をテストし、効果の増減によって新しいチャレンジを入れ替えるプラットフォームを構築しました。Turnstileでは、実際のチャレンジの結果を個々の訪問者／ブラウザに適応させます。最初に、訪問者やブラウザの環境についてより多くのシグナルを収集するために、操作不要な一連の小さなJavaScriptのチャレンジを実行します。これらのチャレンジには、プルーフ・オブ・ワーク、プルーフ・オブ・スペース、Web APIのプロービングなど、ブラウザの異常や人間の動作を検出するためのさまざまなチャレンジが含まれます。結果として、特定の要求に対するチャレンジの難易度を細かく調整することができます。</p>
+	<p>また、Turnstileには機械学習モデルが搭載されており、これまでにチャレンジをパスできたエンドユーザーの共通点を検出します。これらのイニシャルチャレンジの計算難易度は訪問者によって異なりますが、高速に動作することを目標としています。</p>
+	<h3 id="-captcha--1">既存のCAPTCHAを数分で入れ替え</h3>
+	<p>Turnstileを利用すれば、Cloudflareのネットワーク上でなくても、訪問者にCAPTCHAで煩わしい思いをさせることがなくなります。私たちは、ネットワークのできる限り簡単な利用を目指していますが、これがプライバシーやユーザーエクスペリエンスの向上を妨げるものになることは望んでいません。</p>
+	<p>CAPTCHAサービスから切り替えるために必要なことは、以下の通りです。</p>
+	<ol>
+		<li><a href="https://dash.cloudflare.com/?to=/:account/turnstile" target="_blank">Cloudflareのアカウントを作成</a>し、ナビゲーションバーの「Turnstile」タブに移動し、sitekeyとsecret keyを取得します。</li>
+		<li>ダッシュボードからJavaScriptをコピーして、現在お使いのCAPTCHA用JavaScriptの上に貼り付けます。</li>
+		<li>古いsiteverifyのURLを当社のものに置き換えてサーバーサイドの統合を更新します。</li>
+	</ol>
+	<p>以下に、設定できるオプションなど、処理の詳細が記載されていますが、本当にこれだけです。私たちは変化をもたらすシンプルさに、ワクワクしています。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image2-55.png" class="kg-image"></figure>
+	<h3 id="--1">展開オプションと分析</h3>
+	<p>Turnstileを利用するには、まずアカウントを作成し、sitekeyとsecret keyを取得します。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image3-39.png" class="kg-image"></figure>
+	<p>次に、HTMLスニペットをコピー＆ペーストします：</p>
+	<p><code>&lt;script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer&gt;&lt;/script&gt;</code></p>
+	<p>スクリプトが埋め込まれると、暗黙的なレンダリングを使用することができます。ここでは、cf-turnstileクラスを持つ要素について、HTMLがスキャンされます。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-HTML">&lt;form action="/login" method="POST"&gt;
+  &lt;div class="cf-turnstile" data-sitekey="yourSiteKey"&gt;&lt;/div&gt;
+  &lt;input type="submit"&gt;
+&lt;/form&gt;
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>チャレンジが解決されると、cf-turnstile-responseという名前のトークンがフォームに挿入されます。このトークンは、siteverifyエンドポイントとともに使用し、チャレンジ・レスポンスを検証することができます。トークンの検証は1回のみ可能であり、トークンを2回引き換えることはできません。検証はサーバー側でもクラウド上でも、<a href="https://demo.turnstile.workers.dev/" target="_blank">例えば</a>シンプルなWorkers fetch（<a href="https://github.com/cloudflare/turnstile-demo-workers" target="_blank">こちらのデモを参照</a>）を使用して行うことができます。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-JavaScript">async function handleRequest() {
+    // ... Receive token
+    let formData = new FormData();
+    formData.append('secret', turnstileISecretKey);
+    formData.append('response', receivedToken);
+ 
+    await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify',
+        {
+            body: formData,
+            method: 'POST'
+        });
+    // ...
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>より複雑なユースケースの場合、JavaScriptで明示的にチャレンジを呼び出すことができます。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-JavaScript">&lt;script&gt;
+    window.turnstileCallbackFunction = function () {
+        const turnstileOptions = {
+            sitekey: 'yourSitekey',
+            callback: function(token) {
+                console.log(`Challenge Success: ${token}`);
+            }
+        };
+        turnstile.render('#container', turnstileOptions);
+    };
+&lt;/script&gt;
+&lt;div id="container"&gt;&lt;/div&gt;
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>また、「アクション」と呼ばれるものを作成することも可能です。ログイン、チェックアウト、アカウント作成ページなど、Turnstileを使用している異なるページを区別することができるカスタムラベルです。</p>
+	<p>Turnstileをデプロイした後は、ダッシュボードに戻り、ウィジェットがどこにデプロイされているか、ユーザーがどのように解決しているか、定義されたアクションを見るための分析結果を見ることができます。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image1-64.png" class="kg-image"></figure>
+	<h3 id="--2">なぜ、これを無料で提供するのか？</h3>
+	<p>外部の人には信じがたいことかもしれませんが、よりよいインターネットを構築する手助けをすることは、本当に<a href="https://www.cloudflare.com/careers/people/#:~:text=%E2%80%9CCloudflare's%20mission%20is%20to%20help,quantum%20algorithms%20at%20Cloudflare%20scale.%E2%80%9D" target="_blank">私たちの使命</a>です。<a href="https://blog.cloudflare.com/announcing-1111/">より良いインターネットを実現</a>したいと考えた<a href="https://blog.cloudflare.com/1111-warp-better-vpn/">無料ツール</a>を作ったのは今回が初めてではありませんし、これが最後というわけでもありません。私たちにとって、これはとても重要なことなのです。</p>
+	<p>そのため、CAPTCHAを使用している方であれば、現在Cloudflareのお客様であるかどうかに関わらず、代替製品としてのTurnstileを是非無料でお試しください。ユーザーの満足度を高め、第三者へのデータ送信を最小限に抑えることができます。</p>
+	<p><a href="https://www.cloudflare.com/lp/turnstile/" target="_blank">こちらのページ</a>へアクセスし、目に見えない、プライバシー優先の、CAPTCHAの代替製品にサインアップし、Turnstileベータ版のsitekeyを取得してください。</p>
+</div>

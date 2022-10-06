@@ -1,0 +1,30 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image5-25.png" class="kg-image" alt="Gateway + CASB: alphabetti spaghetti that spells better SaaS security"></figure>
+	<p>6月、私たちはCloudflare Zero Trustユーザーが、<a href="https://www.cloudflare.com/products/zero-trust/gateway/" target="_blank">Cloudflare Gateway</a>(Cloudflare の Secure Web Gateway ソリューション) で、CASBによって特定された問題を介して、入力済みのHTTPポリシーを簡単に作成できるようにする次期機能を<a href="https://blog.cloudflare.com/ja-jp/announcing-gateway-and-casb-ja-jp/">発表しました</a>。CASBは、Google WorkspaceやMicrosoft 365などのSaaSアプリを接続、スキャン、監視し、セキュリティ問題を解決する<a href="https://blog.cloudflare.com/ja-jp/casb-ga-ja-jp/">Cloudflareの新製品</a>です。</p>
+	<p>Cloudflareの12周年のバースデーウィークが間もなく終わるので、Cloudflareらしく、この新機能の活用例を紹介したいと思います。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image2-65.png" class="kg-image"></figure>
+	<h3 id="casb-">CASBとは？ゲートウェイとは？</h3>
+	<p>簡単にまとめると、CloudflareのAPI駆動型CASBは、ファイルの露出、設定ミス、シャドーITなどのセキュリティ問題についてSaaSアプリケーションを接続、スキャン、監視する高速かつ効果的な方法を、ITおよびセキュリティチームに提供します。Google Workspace、Microsoft 365、Slack、GitHubなどのSaaSアプリケーションのセキュリティに影響を及ぼす可能性のあるセキュリティ問題を、数クリックで網羅的に確認することができるのです。</p>
+	<p>セキュアWebゲートウェイ（SWG）であるCloudflare Gatewayは、エンドポイントデバイスから発信されるアウトバウンド接続を、チームが監視・制御することを可能にするサービスです。例えば、従業員に、会社のデバイスでギャンブルやソーシャルメディアのWebサイトにアクセスして欲しくない場合、どうすればよいでしょうか？使いやすいZero Trustダッシュボードで、そのようなサイトへのアクセスをブロックするだけです。</p>
+	<h3 id="-">身近な所にある問題</h3>
+	<p>最初の記事で紹介したように、シャドーIT（従業員が使用する未承認のサードパーティアプリケーション）は、クラウド時代のIT管理者にとって最大の悩みの種であり続けています。従業員が、IT部門やセキュリティ部門の同意なしに外部サービスへのアクセスを承諾すると、これらのSaaSアプリケーションに保存されている会社の最高機密データへのアクセスを悪用者に許可してしまう危険性があります。</p>
+	<p>クラウドに保存されたデータのセキュリティに影響を与えるもう一つの大きな問題は、過剰共有という形でファイルが公開されることです。従業員が機密性の高いGoogleドキュメントを公開リンクで誰かに共有した場合、ITチームやセキュリティチームは、それを知ることができるでしょうか？また、仮に知ることができたとしても、リスクを最小限に抑え、アクセスをブロックする方法はあるのでしょうか？</p>
+	<p>この2つの製品は現在、世界中のお客様に利用されており、その他にも多くあるSaaSのセキュリティ問題を可視化し、基本的な認識を持つことがいかに重要であるかをお伝えします。管理者は次に、何をすればいいのでしょうか？</p>
+	<h3 id="-casb-3-3-">ゲートウェイ＋CASB：3クリックで（本当に3クリックです）、特定した脅威をブロック</h3>
+	<p>現在、CASBが問題（ <em>Finding</em>（結果）と呼ぶ）を発見すると、それに対応するゲートウェイポリシーをわずか3クリックで簡単に作成できるようになったのです。</p>
+	<p>つまり、企業ポリシーに合った予想されるアクセスや利用をなおも許可する一方、ユーザーは、特定の不適切な動作が継続することを防止するため、きめ細やかなゲートウェイポリシーを自動的に生成できるようになりました。</p>
+	<h3 id="-1-google-drive-">例1：従業員の個人用Google Driveへのアップロードをブロック</h3>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image3-49.png" class="kg-image"></figure>
+	<p>CASBのベータ版プログラムでは、従業員が会社のデータ（ドキュメント、スプレッドシート、ファイル、フォルダなど）を個人のGoogle Drive（または同様のものの）アカウントにアップロードする傾向があるというユースケースをよく耳にしました。このような場合、知的財産が安全な企業環境から流出する危険性があります。ゲートウェイとCASBの連携により、IT管理者は、Google DriveやMicrosoft OneDriveの企業テナント以外の場所からの<a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering/http-policies/tenant-control/" target="_blank">アップロードアクティビティを直接ブロック</a>できるようになりました。</p>
+	<h3 id="-2-">例2：繰り返しオーバーシェアする人のファイルのアップロードやダウンロードを制限</h3>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image1-80.png" class="kg-image"></figure>
+	<p>Cloudflare CASBの既存の優れたユースケースとして、企業のGoogleやMicrosoftのテナントで、ファイルを常習的にオーバーシェア（リンクを持つ人へのファイル共有や社外のメールとのファイル共有など）している従業員を特定する機能があります。</p>
+	<p>このような従業員が特定された場合、CASB管理者はゲートウェイポリシーを作成し、その行動に対処するまで特定のユーザーのさらなるアップロードやダウンロードのアクティビティをブロックできます。</p>
+	<h3 id="-3-it-">例3：未承認のシャドーITアプリケーションへのファイルアップロードの防止</h3>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image4-27.png" class="kg-image"></figure>
+	<p>シャドーITの懸念に対応するため、CASBを起点とするゲートウェイポリシーをカスタマイズし、アップロードやダウンロードのイベントを組織で使用するSaaSアプリケーションのみに制限することが可能です。例えば、あなたの会社がBoxをファイルストレージソリューションとして使用しているとします。わずか数クリックで、特定されたCASB Finding（CASBの結果）を使用して、Box以外のファイル共有アプリケーションへのアクティビティをブロックするゲートウェイポリシーを作成することができます。これによりITおよびセキュリティ管理者は、彼らが使用する承認済みのクラウドアプリケーションにのみファイルが行き着くという安心感を得ることができます。</p>
+	<h3 id="cloudflare-zero-trust-">Cloudflare Zero Trustを今すぐ開始する</h3>
+	<p>最終的に、Cloudflare Zero Trustのパワーは、製品や機能の組み合わせから強みを引き出す、単一の統合プラットフォームとしての存在から生まれるのです。私たちは、これらの新しくエキサイティングなサービスを市場に提供するための取り組みを続ける中で、今回はCloudflare GatewayとCASBから、その相乗効果および関連するユースケースを紹介することも同様に重要だと考えています。</p>
+	<p>まだCloudflare Zero Trustを利用していない方は、ぜひ今日から始めてください。<a href="https://dash.cloudflare.com/sign-up" target="_blank">こちらからサインアップ</a>し、無料の50席を利用してプラットフォームをお確かめください。</p>
+	<p>すでにCloudflare Zero Trustをご利用の方は、Cloudflareの営業担当までご連絡いただければ、CASBとGatewayの利用を開始することができます。この新しいクロスプロダクト機能によって、どのような興味深いユースケースが見つかるのか、私たちは楽しみにしています。</p>
+</div>

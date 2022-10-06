@@ -1,0 +1,81 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/image2-1.png" class="kg-image" alt="Introducing post-quantum Cloudflare Tunnel"></figure>
+	<p>今後10年間のITの大きなテーマの一つは、間違いなく<em>ポスト量子暗号</em>への<em>移行</em>になるでしょう。大手ハイテク企業から中小企業まで、私たちは皆、<a href="https://blog.cloudflare.com/the-quantum-menace/">量子コンピュータ</a>の到来からデータを保護するために、ハードウェアとソフトウェアを確実にアップデートしなければならないでしょう。遠い未来のことのように思えますが、それは後回しにできる問題ではありません。現在取り込まれた暗号化された（ポスト量子暗号で保護されていない）データは、将来、十分に強力な量子コンピュータによって解読されてしまう可能性があります。</p>
+	<p>幸いなことに、私たちはもうすぐそこに到達します。暗号コミュニティによる世界規模の多大な努力の結果、私たちは、今後数十年にわたってポスト量子暗号の絶対的基準となるものをすでに<a href="https://blog.cloudflare.com/nist-post-quantum-surprise/">把握</a>しています。公開日：2024年のどこか。ほとんどの人にとって、移行は簡単なソフトウェアアップデートで済むことを願っていますが、すべての人にとってそう簡単にはならないでしょう。すべてのソフトウェアがメンテナンスされているわけではありませんし、ハードウェアのアップグレードが必要になる可能性もあるでしょう。一歩引いて見てみると、多くの企業はネットワーク上で動作するすべてのソフトウェアの完全なリストさえ持っていないのです。</p>
+	<p>Cloudflare Tunnelのお客様にとって、この移行はよりシンプルなものになります。<strong>ポスト量子Cloudflareトンネル</strong>の導入：このブログ記事では、最初にCloudflareトンネルの仕組みの概要を説明し、お客様がポスト量子マイグレーションを行う際にどのように役立つかについて説明します。次に、始め方について説明し、最後に細かい技術的な核心部分について説明します。</p>
+	<h2 id="cloudflare-">Cloudflareトンネル</h2>
+	<p><a href="https://www.cloudflare.com/en-gb/products/tunnel/" target="_blank">Cloudflareトンネル</a>を利用すると、内部ネットワーク内にあるサーバーの隣で<code><a href="https://github.com/cloudflare/cloudflared" target="_blank">cloudflared</a></code>サービスを実行することにより、インターネットに安全に公開することができます。例えば、<code><a href="https://github.com/cloudflare/cloudflared" target="_blank">cloudflared</a></code>をお客様の内部ネットワークにインストールした後、オンプレミスのウェブアプリをインターネットに公開し、例えばexample.comで公開して、リモートワーカーがどこからでもアクセスすることができます。</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/image1.png" class="kg-image" alt="Life of a Cloudflare Tunnel request.">
+		<figcaption><em>Cloudflareトンネルリクエストの有効期間。</em></figcaption>
+	</figure>
+	<p>その仕組みは？<code>cloudflared</code>は、近くの2つのCloudflareデータセンター、例えばサンフランシスコ（接続3）と他の1つへの長時間接続を確立します。従業員がお客様のドメインにアクセスすると、近く（例えばフランクフルト）のCloudflareサーバーに接続します（1）。そのサーバーは、これがCloudflareトンネルであり、<code>cloudflared</code>がサンフランシスコのサーバーに接続していることを知っているため、リクエストをそこに中継します（2）。帰りは逆方向の接続でリクエストが<code>cloudflared</code>に到達し、貴社の内部ネットワーク経由でウェブアプリに渡されます（4）。</p>
+	<p>Cloudflareトンネルは本質的にシンプルで便利なツールですが、その素晴らしさはその上で何ができるかにあります。無料で利用できる<a href="https://www.cloudflare.com/en-gb/ddos/" target="_blank">CloudflareのDDoS攻撃対策</a>、<a href="https://www.cloudflare.com/en-gb/products/zero-trust/access/" target="_blank">Cloudflare Access</a>による細かいアクセス制御（アプリケーションがサポートしていなくても）、および<a href="https://developers.cloudflare.com/cloudflare-one/analytics/logs/audit-logs/" target="_blank">リクエストログ</a>などが可能です。そして、忘れてはならないのが、目の前の問題です。</p>
+	<h2 id="-">ポスト量子トンネル</h2>
+	<p>私たちの目標は、ユーザーからオリジンまで、誰もが簡単に完全なポスト量子セキュリティで保護された接続ができるようにすることです。ポスト量子Cloudflareトンネルはこのための強力なツールです。これを使えば、ユーザーはアプリケーションをアップグレードせずにポスト量子セキュリティで保護された接続の恩恵を受けることができます（図中の接続4）。</p>
+	<p>本日、この目標に向けて2つの重要なステップを実行します。<code>cloudflared</code> <a href="https://github.com/cloudflare/cloudflared/releases/tag/2022.9.1" target="_blank">2022.9.1</a>に、--post-quantumフラグが追加されました。これを指定すると<code>cloudflared</code>から当社のネットワーク（接続3）への接続がポスト量子セキュリティで保護されます。</p>
+	<p>また、本日、ポスト量子ブラウザー接続（接続1）への対応を発表しました。</p>
+	<p>ブラウザ（および他のHTTPクライアント）は、当社のネットワークが提供するポスト量子セキュリティをまだサポートしていません。また、当社のデータセンター間の接続（接続2）をポスト量子セキュリティにする必要があります。</p>
+	<p>攻撃者は脆弱な接続を1か所だけアクセスできるようになればよいですが、攻撃者はすべてにアクセスできるわけではありません。ポスト量子セキュアにするごとに、侵害の機会を1つ減らすことができるのです。</p>
+	<p>私たちはポスト量子トンネルをデフォルトにしたいと強く願っていますが、現時点ではベータ機能です。その理由は、使用する暗号とネットワークプロトコルへの統合がまだ最終的なものになっていないためです。今すぐpost-quantumをデフォルトにしてしまうと、ユーザーは<code>cloudflared</code>を、私たちが合理的に予想するよりも頻繁に更新しなければならなくなってしまいます。</p>
+	<h2 id="--1">利用開始</h2>
+	<p><code>cloudflared</code>の頻繁な更新は問題ではないでしょうか？それでは、ポスト量子Cloudflareトンネルを試してみてください。<a href="https://github.com/cloudflare/cloudflared/releases/tag/2022.9.1" target="_blank">2022.9.1</a>以上を実行していることを確認し、<code>cloudflared</code>に--post-quantumフラグを付けてを実行するだけです。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>$ cloudflared tunnel run --post-quantum tunnel-name
+2022-09-23T11:44:42Z INF Starting tunnel tunnelID=[...]
+2022-09-23T11:44:42Z INF Version 2022.9.1
+2022-09-23T11:44:42Z INF GOOS: darwin, GOVersion: go1.19.1, GoArch: amd64
+2022-09-23T11:44:42Z INF Settings: map[post-quantum:true pq:true]
+2022-09-23T11:44:42Z INF Generated Connector ID: [...]
+2022-09-23T11:44:42Z INF cloudflared will not automatically update if installed by a package manager.
+2022-09-23T11:44:42Z INF Initial protocol quic
+2022-09-23T11:44:42Z INF Using experimental hybrid post-quantum key agreement X25519Kyber768Draft00
+2022-09-23T11:44:42Z INF Starting metrics server on 127.0.0.1:53533/metrics
+2022-09-23T11:44:42Z INF Connection [...] registered connIndex=0 ip=[...] location=AMS
+2022-09-23T11:44:43Z INF Connection [...] registered connIndex=1 ip=[...] location=AMS
+2022-09-23T11:44:44Z INF Connection [...] registered connIndex=2 ip=[...] location=AMS
+2022-09-23T11:44:45Z INF Connection [...] registered connIndex=3 ip=[...] location=AMS
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p><code>cloudflared</code>を<a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/as-a-service/" target="_blank">サービスとして</a>実行する場合、トンネル構成ファイルに<code>post-quantum: true</code>を追加することでポスト量子をオンにすることができます。便利なことに、<code>cloudflared</code>サービスは、パッケージマネージャによってインストールされていない場合、<a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/local-management/arguments/#no-autoupdate" target="_blank">自動的に自身を更新</a>します。</p>
+	<p>何らかの理由でポスト量子トンネルの作成に失敗した場合、次のようなエラーメッセージが表示されます。</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>2022-09-22T17:30:39Z INF Starting tunnel tunnelID=[...]
+2022-09-22T17:30:39Z INF Version 2022.9.1
+2022-09-22T17:30:39Z INF GOOS: darwin, GOVersion: go1.19.1, GoArch: amd64
+2022-09-22T17:30:39Z INF Settings: map[post-quantum:true pq:true]
+2022-09-22T17:30:39Z INF Generated Connector ID: [...]
+2022-09-22T17:30:39Z INF cloudflared will not automatically update if installed by a package manager.
+2022-09-22T17:30:39Z INF Initial protocol quic
+2022-09-22T17:30:39Z INF Using experimental hybrid post-quantum key agreement X25519Kyber512Draft00
+2022-09-22T17:30:39Z INF Starting metrics server on 127.0.0.1:55889/metrics
+2022-09-22T17:30:39Z INF 
+
+===================================================================================
+実験的なポスト量子トンネル機能の使用中にエラーが発生しています。
+
+既知の問題については
+
+    https://pqtunnels.cloudflareresearch.com
+
+をご確認ください。
+===================================================================================
+
+
+2022-09-22T17:30:39Z ERR Failed to create new quic connection error="failed to dial to edge with quic: CRYPTO_ERROR (0x128): tls: handshake failure" connIndex=0 ip=[...]
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p><br></p>
+	<p>post-quantumフラグが指定されている場合、<code>cloudflared</code>がポスト量子で<em>ない</em>接続にフォールバックすることはありません。</p>
+	<h3 id="--2">特徴</h3>
+	<p>セットアップの段階が肝心で、一度確立すれば、通常のトンネルと同じように使えます。つまり、トンネルが確立されれば、性能と信頼性は同一である必要があります。</p>
+	<p>私たちが使っているポスト量子暗号は非常に非常に高速ですが、ハンドシェイクの際におよそ1キロバイトの余分なデータをやり取りする必要があります。その差は、実際に使ってみても気付きにくいでしょう。</p>
+	<p>私たちの最大の懸念は、一部のネットワーク機器/ミドルボックスが、より大きなハンドシェイクによって混乱する可能性があることです。もし、量子化後のCloudflareトンネルがうまくいっていないのであれば、ぜひお知らせください。<a href="mailto:ask-research@cloudflare.com" target="_blank">ask-research@cloudflare.com</a>までご連絡いただき、お使いのミドルボックスまたはISPをお知らせください。</p>
+	<h2 id="--3">機器の中身</h2>
+	<p><code>--post-quantum</code>フラグが指定された場合、<code>cloudflared</code>は、ネットワークへのトンネル接続を QUICトランスポートに制限し、それぞれTLS識別子<code>0xfe30</code>と<code>0xfe31</code>を持つポスト量子ハイブリッド鍵交換<code>X25519Kyber512Draft00</code>と<code>X25519Kyber768Draft00</code>のみを許可します。これらは、古典的な<a href="https://cr.yp.to/ecdh.html" target="_blank">X25519</a>とポスト量子セキュア<a href="https://pq-crystals.org/kyber/index.shtml" target="_blank">Kyber</a>の間の<a href="https://datatracker.ietf.org/doc/draft-stebila-tls-hybrid-design/" target="_blank">ハイブリッド</a>鍵交換です。Kyberが安全でないことが判明した場合でも、X25519の非ポスト量子セキュリティに依存することができます。これらの鍵交換は、私たちのネットワークでサポートされているものと同じです。</p>
+	<p><code>cloudflared</code>は、この2つの鍵交換のいずれかをランダムに1つ選択します。後者は通常TLSの初期パケットを2つ必要とする<em>ClientHello</em>に対し、前者は1つで済むためです。これにより、断片化された<em>ClientHello</em>が問題を起こすかどうかをテストすることができます。</p>
+	<p><code>cloudflared</code>がポスト量子接続の確立に失敗すると、試行されたキー交換、<code>cloudflared</code>のバージョン、エラーを<a href="https://pqtunnels.cloudflareresearch.com" target="_blank">pqtunnels.cloudflareresearch.com</a>に報告し、ネットワークの問題を可視化することができるようにします。量子トンネル導入後のアップデートについては、そちらのページをご覧ください。</p>
+	<p><code>cloudflared</code>と当社のネットワークの間のトンネルの制御接続と認証は、まだポスト量子的な安全性ではありません。ここでは、トンネル自体のデータの<em>store-now-decrypt-later</em>に対する問題よりも緊急性はありません。</p>
+	<p>Goでは、これらのポスト量子QUIC鍵交換を<a href="https://github.com/cloudflare/qtls-pq" target="_blank">オープンソース</a>でサポートしています。</p>
+	<h2 id="--4">展望</h2>
+	<p>今後10年間で、業界はポスト量子データ保護を展開することになるでしょう。ソフトウェア・アップデートのように簡単なケースもあれば、はるかに難しいケースもあるでしょう。ポスト量子トンネルは、Cloudflareのネットワークとお客様のオリジン間の接続をシンプルかつ使いやすい方法で保護します。これは、誰もが個人情報を保護しながら安全なインターネットを楽しみ続けることができるための、ポスト量子インターネットへの重要な一歩です。<br></p>
+</div>

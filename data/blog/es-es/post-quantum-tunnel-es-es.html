@@ -1,0 +1,80 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/image2-1.png" class="kg-image" alt="Introducing post-quantum Cloudflare Tunnel"></figure>
+	<p>Sin duda, uno de los grandes temas de la informática de la próxima década será <em>la migración</em> a la <em>criptografía poscuántica</em>. Desde las gigantes tecnológicas hasta las empresas más pequeñas, todos tendremos que asegurarnos de actualizar nuestro hardware y software para que nuestros datos estén protegidos contra la llegada de los <a href="https://blog.cloudflare.com/the-quantum-menace/">ordenadores cuánticos</a>. Parece muy lejano, pero no es un problema que deberíamos dejar para más adelante dado que cualquier dato encriptado que se robe hoy día (y no esté protegido por la criptografía postcuántica) podría ser descifrado por un ordenador cuántico suficientemente potente en el futuro.</p>
+	<p>Por suerte, estamos cerca de conseguirlo. Tras un tremendo esfuerzo mundial de la comunidad criptográfica, <a href="https://blog.cloudflare.com/nist-post-quantum-surprise/">sabemos</a> cuál será el estándar de oro de la criptografía poscuántica para las próximas décadas. Fecha de lanzamiento: 2024. Con suerte, para la mayoría, la transición será una simple actualización de software, pero no será tan sencillo para todos. No todo el software está actualizado y bien podría ser que el hardware también necesite actualizaciones. Dando un paso atrás, muchas empresas ni siquiera tienen una lista completa de todo el software que se ejecuta en su red.</p>
+	<p>Para los clientes de Cloudflare Tunnel, esta migración será mucho más sencilla con <strong>Cloudflare Tunnel poscuántico</strong>. En esta publicación del blog, ofreceremos un resumen de cómo funciona Cloudflare Tunnel y explicaremos cómo puede ayudarte con tu migración poscuántica. A continuación, explicaremos los primeros pasos y terminaremos con los detalles técnicos más importantes.</p>
+	<h2 id="cloudflare-tunnel">Cloudflare Tunnel</h2>
+	<p>Con <a href="https://www.cloudflare.com/en-gb/products/tunnel/" target="_blank">Cloudflare Tunnel</a> puedes exponer de forma segura a Internet un servidor que se encuentra dentro de una red interna, ejecutando el servicio de <code><a href="https://github.com/cloudflare/cloudflared" target="_blank">cloudflared</a></code> junto a él. Por ejemplo, después de haber instalado <code><a href="https://github.com/cloudflare/cloudflared" target="_blank">cloudflared</a></code> en tu red interna, puedes exponer tu aplicación web local en Internet bajo, digamos, ejemplo.com, para que los trabajadores remotos puedan acceder a ella desde cualquier lugar.</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/image1.png" class="kg-image" alt="Life of a Cloudflare Tunnel request.">
+		<figcaption><em>Ciclo de una solicitud de Cloudflare Tunnel.</em></figcaption>
+	</figure>
+	<p>¿Cómo funciona? <code>cloudflared</code> crea conexiones de larga duración con dos centros de datos de Cloudflare cercanos, p. ej., San Francisco (conexión 3) y otro. Cuando uno de tus usuarios visita tu dominio, se conecta (1) a un servidor de Cloudflare cercano, p. ej., en Frankfurt. Ese servidor sabe que se trata de un Cloudflare Tunnel y que tu <code>cloudflared</code> tiene una conexión con un servidor en San Francisco, por lo que le reenvía (2) la solicitud. A su vez, a través de la conexión inversa, la solicitud acaba en <code>cloudflared</code>, que la transmite (4) a la aplicación web a través de tu red interna.</p>
+	<p>En resumen, Cloudflare Tunnel es una herramienta sencilla pero práctica, aunque la magia está en lo que, además, puedes hacer con ella. Obtienes la <a href="https://www.cloudflare.com/en-gb/ddos/" target="_blank">protección DDoS de Cloudflare</a> de forma gratuita, control de acceso detallado con <a href="https://www.cloudflare.com/en-gb/products/zero-trust/access/" target="_blank">Cloudflare Access</a> (incluso si la aplicación no lo admite) y <a href="https://developers.cloudflare.com/cloudflare-one/analytics/logs/audit-logs/" target="_blank">registros de solicitudes</a>, por nombrar algunas ventajas. Y no olvidemos el tema que nos ocupa:</p>
+	<h2 id="t-neles-poscu-nticos">Túneles poscuánticos</h2>
+	<p>Nuestro objetivo es facilitar a todo el mundo una conexión totalmente segura, desde los usuarios hasta los servidores, contra la amenaza de los ordenadores cuánticos. Para ello, Cloudflare Tunnel poscuántico es una herramienta eficaz que permite a tus usuarios beneficiarse de una conexión segura contra la amenaza de los ordenadores cuánticos sin necesidad de actualizar tu aplicación (conexión 4 en el diagrama).</p>
+	<p>Hoy, damos dos pasos importantes hacia este objetivo: la versión <code>cloudflared</code> <a href="https://github.com/cloudflare/cloudflared/releases/tag/2022.9.1" target="_blank">2022.9.1</a>, añade la marca <code>--post-quantum</code>, que cuando se entrega, garantiza la protección de la conexión desde <code>cloudflared</code> a nuestra red (conexión 3) contra la amenaza de los ordenadores cuánticos.</p>
+	<p>Además, hoy <a href="https://blog.cloudflare.com/post-quantum-for-all">hemos anunciado</a> la compatibilidad con las conexiones poscuánticas del navegador (conexión 1).</p>
+	<p>Todavía no hemos llegado a ese punto. Los navegadores (y otros clientes HTTP) no admiten la seguridad poscuántica que ofrece nuestra red, y todavía tenemos que hacer que las conexiones entre nuestros centros de datos (conexión 2) sean seguras contra los ordenadores cuánticos.</p>
+	<p>Un atacante solo necesita tener acceso a una conexión vulnerable, pero no pueden acceder a todo. Con cada conexión que protejamos contra ordenadores cuánticos, eliminamos un riesgo potencial.</p>
+	<p>Nos entusiasma la idea de hacer que los túneles poscuánticos sean predeterminados, pero por ahora es una función en fase beta. La razón es que la criptografía utilizada y su integración en el protocolo de red aún no son definitivas. Hacer que los túneles poscuánticos sean predeterminados ahora, requeriría que los usuarios actualizaran <code>cloudflared</code> más a menudo de lo que razonablemente podemos esperar que lo hagan.</p>
+	<h2 id="primeros-pasos">Primeros pasos</h2>
+	<p>¿Actualizas frecuentemente <code>cloudflared</code>? Entonces, prueba Cloudflare Tunnel poscuántico. Asegúrate de que estás usando al menos la versión <a href="https://github.com/cloudflare/cloudflared/releases/tag/2022.9.1" target="_blank">2022.9.1</a> y simplemente ejecuta <code>cloudflared</code> con la marca <code>--post-quantum</code>:</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>$ cloudflared tunnel run --post-quantum tunnel-name
+2022-09-23T11:44:42Z INF Starting tunnel tunnelID=[...]
+2022-09-23T11:44:42Z INF Version 2022.9.1
+2022-09-23T11:44:42Z INF GOOS: darwin, GOVersion: go1.19.1, GoArch: amd64
+2022-09-23T11:44:42Z INF Settings: map[post-quantum:true pq:true]
+2022-09-23T11:44:42Z INF Generated Connector ID: [...]
+2022-09-23T11:44:42Z INF cloudflared will not automatically update if installed by a package manager.
+2022-09-23T11:44:42Z INF Initial protocol quic
+2022-09-23T11:44:42Z INF Using experimental hybrid post-quantum key agreement X25519Kyber768Draft00
+2022-09-23T11:44:42Z INF Starting metrics server on 127.0.0.1:53533/metrics
+2022-09-23T11:44:42Z INF Connection [...] registered connIndex=0 ip=[...] location=AMS
+2022-09-23T11:44:43Z INF Connection [...] registered connIndex=1 ip=[...] location=AMS
+2022-09-23T11:44:44Z INF Connection [...] registered connIndex=2 ip=[...] location=AMS
+2022-09-23T11:44:45Z INF Connection [...] registered connIndex=3 ip=[...] location=AMS
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Si ejecutas <code>cloudflared</code> <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/as-a-service/" target="_blank">como un servicio</a>, puedes activar los túneles poscuánticos añadiendo post-quantum: true al archivo de configuración del túnel. Convenientemente, el servicio de <code>cloudflared</code> se <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/local-management/arguments/#no-autoupdate" target="_blank">actualizará automáticamente</a> si un gestor de paquetes no lo ha instalado.</p>
+	<p>Si, por alguna razón, la creación de un túnel poscuántico falla, verás un mensaje de error como:</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>2022-09-22T17:30:39Z INF Starting tunnel tunnelID=[...]
+2022-09-22T17:30:39Z INF Version 2022.9.1
+2022-09-22T17:30:39Z INF GOOS: darwin, GOVersion: go1.19.1, GoArch: amd64
+2022-09-22T17:30:39Z INF Settings: map[post-quantum:true pq:true]
+2022-09-22T17:30:39Z INF Generated Connector ID: [...]
+2022-09-22T17:30:39Z INF cloudflared will not automatically update if installed by a package manager.
+2022-09-22T17:30:39Z INF Initial protocol quic
+2022-09-22T17:30:39Z INF Using experimental hybrid post-quantum key agreement X25519Kyber512Draft00
+2022-09-22T17:30:39Z INF Starting metrics server on 127.0.0.1:55889/metrics
+2022-09-22T17:30:39Z INF 
+
+===================================================================================
+Si ves un error al utilizar la función experimental de túneles poscuánticos.
+
+Consulta
+
+    https://pqtunnels.cloudflareresearch.com
+
+para conocer los problemas conocidos.
+===================================================================================
+
+
+2022-09-22T17:30:39Z ERR Failed to create new quic connection error="failed to dial to edge with quic: CRYPTO_ERROR (0x128): tls: handshake failure" connIndex=0 ip=[...]
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Cuando se entrega la marca poscuántica, <code>cloudflared</code> <em>no recurrirá</em> a una conexión que no sea poscuántica.</p>
+	<h3 id="a-tener-en-cuenta">A tener en cuenta</h3>
+	<p>La fase de configuración es la parte crucial. Una vez configurado, el túnel es igual que un túnel normal. Eso significa que el rendimiento y la fiabilidad deberían ser idénticos.</p>
+	<p>La criptografía poscuántica que utilizamos es muy rápida, pero requiere aproximadamente un kilobyte de datos adicionales que se intercambian durante el protocolo de enlace. La diferencia apenas será perceptible en la práctica.</p>
+	<p>Nuestra mayor preocupación es que algunos equipos de red/firewalls puedan confundirse con el protocolo de enlace mayor. Si Cloudflare Tunnel poscuántico no funciona, nos encantaría saberlo. Ponte en contacto con nosotros en <a href="mailto:ask-research@cloudflare.com" target="_blank">ask-research@cloudflare.com</a> y dinos qué firewalls o proveedores de servicio de Internet estás utilizando.</p>
+	<h2 id="detalles-t-cnicos">Detalles técnicos</h2>
+	<p>Cuando se entrega la marca <code>--post-quantum</code>, <code>cloudflared</code> se limita al transporte QUIC para la conexión del túnel a nuestra red y solo permitirá los intercambios de claves híbridas postcuánticas <code>X25519Kyber512Draft00</code> y <code>X25519Kyber768Draft00</code> con los identificadores TLS <code>0xfe30</code> y <code>0xfe31</code>, respectivamente. Se trata de intercambios de claves <a href="https://datatracker.ietf.org/doc/draft-stebila-tls-hybrid-design/" target="_blank">híbridas</a> entre el algoritmo clásico <a href="https://cr.yp.to/ecdh.html" target="_blank">X25519</a> y el algoritmo <a href="https://pq-crystals.org/kyber/index.shtml" target="_blank">Kyber</a> seguro contra las amenazas de los ordenadores cuánticos. Así, en el caso de que Kyber resulte inseguro, podemos seguir contando con la seguridad no postcuántica del algoritmo X25519. Estos son los mismos intercambios de claves <a href="https://blog.cloudflare.com/post-quantum-for-all">que admite nuestra red</a>.</p>
+	<p><code>cloudflared</code> elige al azar uno de estos dos intercambios de claves. La razón es que este último suele requerir dos paquetes iniciales para el mensaje <em>ClientHello</em> del protocolo TLS, mientras que el primero solo requiere uno. Esto nos permite comprobar si un mensaje <em>ClientHello</em> fragmentado causa problemas.</p>
+	<p>Cuando <code>cloudflared</code> falle al establecer la conexión poscuántica, informará del intento de intercambio de claves, de la versión de <code>cloudflared</code> y del error a <a href="https://pqtunnels.cloudflareresearch.com" target="_blank">pqtunnels.cloudflareresearch.com</a> para que tengamos visibilidad de los problemas de la red. Echa un vistazo a esa página para ver las actualizaciones de nuestra implementación de túneles poscuánticos.</p>
+	<p>La conexión de control y la autenticación del túnel entre <code>cloudflared</code> y nuestra red aún no son seguras contra las amenazas de los ordenadores cuánticos. Esto es menos urgente que el problema de <em>almacenar-ahora-descifrar-después</em> de los datos en el propio túnel.</p>
+	<p>Hemos <a href="https://github.com/cloudflare/qtls-pq" target="_blank">abierto</a> el código de soporte para estos intercambios de claves QUIC poscuánticas en Go.</p>
+	<h2 id="perspectivas">Perspectivas</h2>
+	<p>En la próxima década, el sector implementará la protección de datos poscuánticos. Algunos casos serán tan sencillos como una actualización de software y otros serán mucho más difíciles. Cloudflare Tunnel poscuántico protegerá la conexión entre la red de Cloudflare y tu servidor de forma sencilla e intuitiva, un paso importante hacia la red de Internet poscuántica, para que todo el mundo pueda seguir disfrutando de una red de Internet privada y segura.</p>
+</div>

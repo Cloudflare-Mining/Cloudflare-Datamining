@@ -1,0 +1,80 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/image2-1.png" class="kg-image" alt="Introducing post-quantum Cloudflare Tunnel"></figure>
+	<p>Eines der großen IT-Themen des nächsten Jahrzehnts wird zweifelsohne <em>die Umstellung</em> auf <em>Post-Quanten-Kryptographie</em> sein. Von Tech-Giganten bis hin zu kleinen Unternehmen: Wir alle werden dafür sorgen müssen, dass unsere Hard- und Software auf den neuesten Stand gebracht wird, damit unsere Daten gegen die Einführung von <a href="https://blog.cloudflare.com/the-quantum-menace/">Quantencomputern</a> geschützt sind. Dieser Zeitpunkt scheint noch weit weg zu sein, aber dem Problem muss man sich schon heute stellen: Alle verschlüsselten Daten, die heute erfasst werden (und nicht durch Post-Quanten-Kryptographie geschützt sind), können in der Zukunft von einem ausreichend leistungsfähigen Quantencomputer geknackt werden.</p>
+	<p>Zum Glück sind wir fast am Ziel: Nach einer enormen weltweiten Anstrengung der Krypto-Community <a href="https://blog.cloudflare.com/nist-post-quantum-surprise/">wissen wir</a>, was der Goldstandard der Post-Quanten-Kryptografie für die nächsten Jahrzehnte sein wird. Veröffentlichungstermin: irgendwo im Jahr 2024. Für die meisten wird der Übergang dann hoffentlich ein einfaches Software-Update sein, aber nicht für jeden wird es so einfach sein: nicht jede Software wird gewartet und es könnte gut sein, dass auch die Hardware ein Upgrade benötigt. Es gibt ein größeres, ganz allgemeines Problem: Viele Unternehmen haben nicht einmal eine vollständige Liste aller Software, die in ihrem Netzwerk im Einsatz ist.</p>
+	<p>Für Kunden von Cloudflare Tunnel wird diese Migration viel einfacher sein – wr präsentieren: <strong>Post-Quantum Cloudflare Tunnel</strong>. In diesem Blogbeitrag geben wir zunächst einen Überblick über die Funktionsweise von Cloudflare Tunnel und erklären, wie es Ihnen bei Ihrer Migration ins Post-Quanten-Zeitalter helfen kann. Dann erklären wir, wie Sie loslegen können und schließen mit den kleinen technischen Details.</p>
+	<h2 id="cloudflare-tunnel">Cloudflare Tunnel</h2>
+	<p>Mit <a href="https://www.cloudflare.com/de-de/products/tunnel/" target="_blank">Cloudflare Tunnel</a> können Sie einen Server, der sich in einem internen Netzwerk befindet, sicher dem Internet aussetzen, indem Sie den <code>cloudflared</code>-Dienst parallel dazu ausführen. Nachdem Sie beispielsweise <code><a href="https://github.com/cloudflare/cloudflared" target="_blank">cloudflared</a></code> in Ihrem internen Netzwerk installiert haben, können Sie Ihre lokale Webanwendung dem Internet aussetzen, z.B. unter example.com, so dass Remote-Mitarbeiter von überall aus darauf zugreifen können,</p>
+	<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/image1.png" class="kg-image" alt="Life of a Cloudflare Tunnel request.">
+		<figcaption><em>Lebenszyklus einer Anfrage in Cloudflare-Tunnel.</em></figcaption>
+	</figure>
+	<p>Wie funktioniert es? <code>cloudflared</code> stellt langfristige Verbindungen zu zwei nahe gelegenen Cloudflare-Rechenzentren her, zum Beispiel San Francisco (Verbindung 3) und einem weiteren. Wenn Ihr Mitarbeiter Ihre Domain besucht, stellt er eine Verbindung (1) zu einem Cloudflare-Server in seiner Nähe her, beispielsweise in Frankfurt. Dieser Server weiß, dass es sich um einen Cloudflare-Tunnel handelt und dass Ihr <code>cloudflared</code> eine Verbindung zu einem Server in San Francisco hat, und leitet (2) die Anfrage an diesen weiter. Über die Reverse-Verbindung wiederum landet die Anfrage bei <code>cloudflared</code>, der sie (4) über Ihr internes Netzwerk an die Webapp weiterleitet.</p>
+	<p>Im Grunde ist Cloudflare Tunnel ein einfaches, aber praktisches Tool, aber der eigentliche Zauber liegt in dem, was Sie damit zusätzlich tun können: Sie erhalten den <a href="https://www.cloudflare.com/de-de/ddos/" target="_blank">DDoS-Schutz von Cloudflare</a> kostenlos, eine präzise Zugriffskontrolle mit <a href="https://www.cloudflare.com/de-de/products/zero-trust/access/" target="_blank">Cloudflare Access</a> (auch wenn die Anwendung dies nicht unterstützt) und <a href="https://developers.cloudflare.com/cloudflare-one/analytics/logs/audit-logs/" target="_blank">Anfrageprotokolle</a>, um nur einige wenige Beispiele zu nennen. Und lassen Sie uns nicht vergessen, worum es geht:</p>
+	<h2 id="post-quantum-tunnel">Post-Quantum-Tunnel</h2>
+	<p>Unser Ziel ist es, jedem eine sichere Post-Quanten-Verbindung vom Nutzer zum Ursprung zu ermöglichen. Hierfür ist der Post-Quantum Cloudflare Tunnel ein leistungsfähiges Tool, denn damit können Ihre Nutzer von einer sicheren Post-Quanten-Verbindung profitieren, ohne dass Sie Ihre Anwendung aktualisieren müssen (Verbindung 4 im Diagramm).</p>
+	<p>Heute machen wir zwei wichtige Schritte in Richtung dieses Ziels: <code>cloudflared</code> <a href="https://github.com/cloudflare/cloudflared/releases/tag/2022.9.1" target="_blank">2022.9.1</a> fügt das --post-quantum-Flag hinzu, das, wenn es gegeben ist, die Verbindung von <code>cloudflared</code> zu unserem Netzwerk (Verbindung 3) post-quanten-sicher macht.</p>
+	<p>Außerdem haben wir heute die Unterstützung für Post-Quanten-Browser-Verbindungen (Verbindung 1) bekanntgegeben.</p>
+	<p>Wir sind noch nicht so weit: Browser (und andere HTTP-Clients) unterstützen die Post-Quanten-Sicherheit, die unser Netzwerk bietet, noch nicht, und wir müssen die Verbindungen zwischen unseren Rechenzentren (Verbindung 2) noch post-quanten-sicher machen.</p>
+	<p>Ein Angreifer braucht nur Zugang zu einer verwundbaren Verbindung zu haben, aber Angreifer haben nicht überall Zugang: mit jeder Verbindung, die wir post-quanten-sicher herstellen, beseitigen wir eine Möglichkeit zur Kompromittierung.</p>
+	<p>Wir sind bestrebt, Post-Quanten-Tunnel zum Standard zu machen, aber im Moment ist es eine Beta-Funktion. Der Grund dafür ist, dass die verwendete Kryptographie und ihre Integration in das Netzwerkprotokoll noch nicht endgültig sind. Wenn wir Post-Quantum jetzt zum Standard machen würden, müssten die Nutzer <code>cloudflared</code> häufiger aktualisieren, als wir es ihnen zumuten können.</p>
+	<h2 id="erste-schritte">Erste Schritte</h2>
+	<p>Häufige Updates von <code>cloudflared</code> sind kein Problem für Sie? Dann probieren Sie bitte Post-Quantum Cloudflare Tunnel aus. Stellen Sie sicher, dass Sie mindestens <a href="https://github.com/cloudflare/cloudflared/releases/tag/2022.9.1" target="_blank">2022.9.1</a> installiert haben und führen Sie <code>cloudflared</code> einfach mit dem the --post-quantum-Flag aus:</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>$ cloudflared tunnel run --post-quantum tunnel-name
+2022-09-23T11:44:42Z INF Starting tunnel tunnelID=[...]
+2022-09-23T11:44:42Z INF Version 2022.9.1
+2022-09-23T11:44:42Z INF GOOS: darwin, GOVersion: go1.19.1, GoArch: amd64
+2022-09-23T11:44:42Z INF Settings: map[post-quantum:true pq:true]
+2022-09-23T11:44:42Z INF Generated Connector ID: [...]
+2022-09-23T11:44:42Z INF cloudflared will not automatically update if installed by a package manager.
+2022-09-23T11:44:42Z INF Initial protocol quic
+2022-09-23T11:44:42Z INF Using experimental hybrid post-quantum key agreement X25519Kyber768Draft00
+2022-09-23T11:44:42Z INF Starting metrics server on 127.0.0.1:53533/metrics
+2022-09-23T11:44:42Z INF Connection [...] registered connIndex=0 ip=[...] location=AMS
+2022-09-23T11:44:43Z INF Connection [...] registered connIndex=1 ip=[...] location=AMS
+2022-09-23T11:44:44Z INF Connection [...] registered connIndex=2 ip=[...] location=AMS
+2022-09-23T11:44:45Z INF Connection [...] registered connIndex=3 ip=[...] location=AMS
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Wenn Sie <code>cloudflared</code> <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/as-a-service/" target="_blank">als Dienst ausführen</a>, können Sie post-quantum einschalten, indem Sie <code>post-quantum: true</code> zur Konfigurationsdatei für den Tunnel hinzufügen. Praktischerweise wird sich der <code>cloudflared</code>-Dienst <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/local-management/arguments/#no-autoupdate" target="_blank">automatisch selbst aktualisieren</a>, wenn er nicht von einem Paketmanager installiert wird.</p>
+	<p>Wenn die Erstellung eines Post-Quanten-Tunnels aus irgendeinem Grund fehlschlägt, erhalten Sie eine Fehlermeldung wie</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code>2022-09-22T17:30:39Z INF Starting tunnel tunnelID=[...]
+2022-09-22T17:30:39Z INF Version 2022.9.1
+2022-09-22T17:30:39Z INF GOOS: darwin, GOVersion: go1.19.1, GoArch: amd64
+2022-09-22T17:30:39Z INF Settings: map[post-quantum:true pq:true]
+2022-09-22T17:30:39Z INF Generated Connector ID: [...]
+2022-09-22T17:30:39Z INF cloudflared will not automatically update if installed by a package manager.
+2022-09-22T17:30:39Z INF Initial protocol quic
+2022-09-22T17:30:39Z INF Using experimental hybrid post-quantum key agreement X25519Kyber512Draft00
+2022-09-22T17:30:39Z INF Starting metrics server on 127.0.0.1:55889/metrics
+2022-09-22T17:30:39Z INF 
+
+===================================================================================
+Sie stoßen auf einen Fehler bei der Verwendung der experimentellen Post-Quanten-Tunnel-Funktion.
+
+Bitte prüfen Sie:
+
+    https://pqtunnels.cloudflareresearch.com
+    
+auf bekannte Probleme.
+===================================================================================
+
+
+2022-09-22T17:30:39Z ERR Failed to create new quic connection error="failed to dial to edge with quic: CRYPTO_ERROR (0x128): tls: handshake failure" connIndex=0 ip=[...]
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Wenn das Post-Quantum-Flag gesetzt ist, wird <code>cloudflared</code> <em>nicht</em> auf eine Verbindung ohne Post-Quantum zurückfallen.</p>
+	<h3 id="worauf-sie-achten-sollten">Worauf Sie achten sollten</h3>
+	<p>Die Einrichtungsphase ist der entscheidende Teil: Sobald der Tunnel eingerichtet ist, verhält er sich genauso wie ein normaler Tunnel. Das bedeutet, dass Performance und Zuverlässigkeit identisch sein sollten, sobald der Tunnel eingerichtet ist.</p>
+	<p>Die von uns verwendete Post-Quanten-Kryptographie ist sehr schnell, erfordert aber etwa ein Kilobyte an zusätzlichen Daten, die während des Handshakes ausgetauscht werden müssen. Der Unterschied wird in der Praxis kaum zu bemerken sein.</p>
+	<p>Unsere größte Sorge ist, dass einige Netzwerkgeräte/Middleboxen durch den größeren Handshake verwirrt werden könnten. Wenn der Post-Quantum-Cloudflare-Tunnel bei Ihnen nicht funktioniert, würden wir uns freuen, davon zu erfahren. Kontaktieren Sie uns bitte unter <a href="mailto:ask-research@cloudflare.com" target="_blank">ask-research@cloudflare.com</a> und teilen Sie uns mit, welche Middleboxen oder welchen ISP Sie verwenden.</p>
+	<h2 id="was-im-hintergrund-geschieht">Was im Hintergrund geschieht</h2>
+	<p>Wenn das <code>--post-quantum</code>-Flag gesetzt ist, beschränkt sich <code>cloudflared</code> auf den QUIC-Transport für die Tunnelverbindung zu unserem Netzwerk und erlaubt nur den Post-Quanten-Hybrid-Schlüsselaustausch <code>X25519Kyber512Draft00</code> und <code>X25519Kyber768Draft00</code> mit den TLS-Identifikatoren <code>0xfe30</code> bzw. <code>0xfe31</code>. Dies sind <a href="https://datatracker.ietf.org/doc/draft-stebila-tls-hybrid-design/" target="_blank">hybride</a> Schlüsselaustausche zwischen dem klassischen <a href="https://cr.yp.to/ecdh.html" target="_blank">X25519</a> und dem post-quantum-sicheren <a href="https://pq-crystals.org/kyber/index.shtml" target="_blank">Kyber</a>. Für den Fall, dass sich Kyber als unsicher erweist, können wir uns also immer noch auf die Nicht-Post-Quanten-Sicherheit von X25519 verlassen. Dies sind die gleichen Schlüsselaustauschverfahren, die in unserem Netzwerk unterstützt werden.</p>
+	<p><code>cloudflared</code> wählt zufällig einen dieser beiden Schlüsselaustausche aus. Der Grund dafür ist, dass bei letzterem in der Regel zwei Anfangspakete für das TLS <em>ClientHello</em> erforderlich sind, während bei ersterem nur eines benötigt wird. So können wir testen, ob ein fragmentiertes <em>ClientHello</em> Probleme verursacht.</p>
+	<p>Wenn <code>cloudflared</code> die Post-Quanten-Verbindung nicht einrichten kann, wird es den versuchten Schlüsselaustausch, die <code>cloudflared</code>-Version und den Fehler an <a href="https://pqtunnels.cloudflareresearch.com" target="_blank">pqtunnels.cloudflareresearch.com</a> berichten, damit wir Einblick in Netzwerkprobleme haben. Sehen Sie sich diese Seite an, um Updates zu unserer Einführung von Post-Quantum-Tunnel zu erhalten.</p>
+	<p>Die Kontrollverbindung und die Authentifizierung des Tunnels zwischen <code>cloudflared</code> und unserem Netzwerk sind noch nicht post-quanten-sicher. Dies ist weniger dringend als das Problem des <em>„store now, decrypt later“ („jetzt speichern, später entschlüsseln“)</em> der Daten im Tunnel selbst.</p>
+	<p>Wir haben die Unterstützung für diesen Post-Quantum-QUIC-Schlüsselaustausch in Go <a href="https://github.com/cloudflare/qtls-pq" target="_blank">als Open Source bereitgestellt</a>.</p>
+	<h2 id="ausblick">Ausblick</h2>
+	<p>Im kommenden Jahrzehnt wird die Branche den Post-Quanten-Datenschutz einführen. Manche Fälle werden sich mit einem einfachen Software-Update lösen lassen, andere sind viel schwieriger. Post-Quantum Tunnels sichern die Verbindung zwischen dem Netzwerk von Cloudflare und Ihrem Ursprung auf einfache und nutzerfreundliche Weise - ein wichtiger Schritt in Richtung Post-Quanten-Internet, so dass jeder weiterhin ein privates und sicheres Internet genießen kann.<br></p>
+</div>

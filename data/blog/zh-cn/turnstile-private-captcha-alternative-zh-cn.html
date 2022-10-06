@@ -1,0 +1,83 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image4-21.png" class="kg-image" alt="Announcing Turnstile, a user-friendly, privacy-preserving alternative to CAPTCHA"></figure>
+	<p>今天，我们公布了 Turnstile 的公开测试版，即 CAPTCHA 的隐形替代方案。互联网中任何想在网站上替换 CAPTCHA 的用户都可以调用一个简单的 API，无需成为 Cloudflare 客户或通过 Cloudflate 全局网络发送流量。<a href="https://www.cloudflare.com/lp/turnstile/" target="_blank">点击此处免费注册</a>。</p>
+	<p>没有必要再重复 CAPTCHA，这样会提供糟糕的用户体验。之前<a href="https://blog.cloudflare.com/moving-from-recaptcha-to-hcaptcha/">在这篇博文中</a>以及其他地方也多次讨论过详细情况。CAPTCHA 的创建者甚至公开哀叹，他“无意中创建了一个系统，<a href="https://thewalrus.ca/human-resources/" target="_blank">以 10 秒的增量浪费了数百万小时</a>最宝贵的资源：人类大脑周期”。我们讨厌它，您也讨厌它，每个人都讨厌它。今天，我们提供了一个更好的选择。</p>
+	<!--kg-card-begin: html-->
+	<div style="position: relative;padding-top: 0;width: 300px;height: 64px;margin: 2rem 0;"><iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/c22b7ec2f112d38101d85f3fff666e59/iframe?preload=true&amp;loop=true&amp;autoplay=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2Fc22b7ec2f112d38101d85f3fff666e59%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D3s%26height%3D600&amp;controls=false" style="border: none;position: absolute;top: 0;left: 0;height: 64px;width: 300px;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
+	<!--kg-card-end: html-->
+	<p>Turnstile 是我们的智能 CAPTCHA 替代方案。它可以根据会话期间显示的遥测和客户端行为，自动选择回应一系列轮换的非侵入性浏览器质询。早些时候，我们在一篇帖子中谈到了<a href="https://blog.cloudflare.com/end-cloudflare-captcha/">如何使用 Managed Challenge 系统将 CAPTCHA 的使用减少 91%</a>。现在，任何用户都可以利用这项技术在自己的网站上停止使用 CAPTCHA。</p>
+	<h3 id="captcha-">CAPTCHA 不仅存在用户体验问题，还存在隐私问题</h3>
+	<p>尽管必须解决 CAPTCHA 是一种令人沮丧的用户体验，但网站在使用 CAPTCHA 时还必须进行潜在的隐藏权衡。如今，使用 CAPTCHA 的小型网站基本上还有一个选择：一个重 800 磅的大块头，占 <a href="https://trends.builtwith.com/widgets/captcha" target="_blank">98% 的 CAPTCHA</a> 市场份额。这款工具是免费使用的，但实际上有隐私成本：您必须将数据提供给广告销售公司。</p>
+	<p>根据安全研究人员的说法，谷歌用来判断您是否存有恶意的信号之一是您的浏览器中是否有谷歌 cookie，如果有这个 cookie，<a href="https://www.fastcompany.com/90369697/googles-new-recaptcha-has-a-dark-side" target="_blank">谷歌会给您更高的分数</a>。谷歌表示，他们不会将这些信息用于广告定位，但归根结底，谷歌是一家广告销售公司。与此同时，当客户选择我们来保护他们的网站并让服务运行得更好时，Cloudflare 会获得利益。这是一种简单、直接的关系，完全契合我们的动机。</p>
+	<h3 id="-">收集更少的数据，保护更多的隐私，提供相同的安全性</h3>
+	<p>6 月，我们宣布<a href="https://blog.cloudflare.com/eliminating-captchas-on-iphones-and-macs-using-new-standard/">与苹果公司合作使用 Private Access Tokens。</a>采用支持这些令牌的操作系统（包括即将推出的 macOS 或 iOS 版本）的访问者现在可以证明他们是人类，无需完成 CAPTCHA 或放弃个人数据。</p>
+	<p>通过与设备制造商等已拥有能帮助我们验证设备的数据的第三方合作，我们能够提取验证过程的各个部分并确认数据，而无需实际自行收集、接触或存储相关数据。我们不是直接质询设备，而是要求设备供应商为我们进行询问。</p>
+	<p>Private Access Tokens 直接内置在 Turnstile 中。尽管 Turnstele 必须查看一些会话数据（如标题、用户代理和浏览器特征）来验证用户而不向他们提出质询，但 Private Access Tokens 让我们通过要求苹果公司为我们验证设备来最大限度减少数据收集。此外，Turnstele 从不查找 cookie（如登录 cookie），也不使用 cookie 收集或存储任何类型的信息。Cloudflare <a href="https://blog.cloudflare.com/next-generation-privacy-protocols/">在投资用户隐私方面有着悠久</a>的<a href="https://blog.cloudflare.com/announcing-the-results-of-the-1-1-1-1-public-dns-resolver-privacy-examination/">历史</a>，<a href="https://blog.cloudflare.com/certifying-our-commitment-to-your-right-to-information-privacy/">因此</a>我们<a href="https://blog.cloudflare.com/zaraz-privacy-features-in-response-to-cnil/">将</a>继续投资于 Turnstile。</p>
+	<h3 id="-captcha-">所有人都可以采用 CAPTCHA 替代方案</h3>
+	<p>为了改善每个人的互联网体验，我们决定将为 <a href="https://blog.cloudflare.com/end-cloudflare-captcha/">Managed Challenge</a> 提供支持的技术作为一款名为 Turnstile 的独立产品向测试版中的每个用户开放。</p>
+	<p>我们建立了一个平台来测试许多替代方案，在新的质询反复出现时，将其引入或退出，而不是试图单方面否决 CAPTCHA 并用单一的替代方案取代。通过 Turnstile，我们可以根据具体访问者/浏览器调整实际质询结果。首先，我们运行一系列小型非交互式 JavaScript 质询，从而收集更多关于访问者/浏览器环境的信号。这些质询包括工作证明、空间证明、Web API 探测，以及检测浏览器怪癖和人类行为的各种其他质询。因此，我们可以根据具体要求调整质询的难度。</p>
+	<p>此外，Turnstile 所采用的机器学习模型可以检测能够通过质询的最终访问者的共同特征。这些初始质询的计算难度可能因访问者而异，但目标是快速运行。</p>
+	<h3 id="-captcha">几分钟内即可换掉现有的 CAPTCHA</h3>
+	<p>您利用 Turnstile 时，即使不在 Cloudflare 网络上，也可以停止使用 CAPTCHA 来打扰您的访问者。尽管我们要采用尽量简单的方式使用网络，但我们不希望这成为增强隐私和改善用户体验的障碍。</p>
+	<p>要从 CAPTCHA 服务切换，您只需：</p>
+	<ol>
+		<li><a href="https://dash.cloudflare.com/?to=/:account/turnstile" target="_blank">创建 Cloudflare 帐户</a>，导航到导航栏上的“Turnstile”选项卡，然后获取站点密钥和密钥。</li>
+		<li>从仪表板复制 JavaScript 并粘贴到旧的 CAPTCHA JavaScript 上。</li>
+		<li>更新服务器端集成，方法是将旧的站点验证 URL 替换为我们的 URL。</li>
+	</ol>
+	<p>下面介绍了关于这个过程的更多细节，包括您可以配置的选项，但实际情况就是这样。对于改变之后带来的便利性，我们感到非常振奋。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image2-55.png" class="kg-image"></figure>
+	<h3 id="--1">部署选项和分析</h3>
+	<p>要使用 Turnstele，首先要创建一个帐户并获取您的站点密钥和密钥。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image3-39.png" class="kg-image"></figure>
+	<p>然后，复制并粘贴 HTML 片段：</p>
+	<p><code>&lt;script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer&gt;&lt;/script&gt;</code></p>
+	<p>嵌入脚本后，可以使用隐式渲染。在此处扫描 HTML 查找包含 cf-turnstile 分类的元素：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-HTML">&lt;form action="/login" method="POST"&gt;
+  &lt;div class="cf-turnstile" data-sitekey="yourSiteKey"&gt;&lt;/div&gt;
+  &lt;input type="submit"&gt;
+&lt;/form&gt;
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>回应质询后，cf-turnstile-response 令牌将注入您的表单。此令牌可用于我们的站点验证端点，以验证质询响应。令牌只能验证一次，不能兑换两次。可以在服务器端完成验证，甚至还可以在云端完成验证，<a href="https://demo.turnstile.workers.dev/" target="_blank">例如</a>使用简单的 Workers 获取（<a href="https://github.com/cloudflare/turnstile-demo-workers" target="_blank">点击此处观看演示</a>）：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-JavaScript">async function handleRequest() {
+    // ... Receive token
+    let formData = new FormData();
+    formData.append('secret', turnstileISecretKey);
+    formData.append('response', receivedToken);
+ 
+    await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify',
+        {
+            body: formData,
+            method: 'POST'
+        });
+    // ...
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>对于更复杂的用例，可以通过 JavaScript 显式调用质询：</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-JavaScript">&lt;script&gt;
+    window.turnstileCallbackFunction = function () {
+        const turnstileOptions = {
+            sitekey: 'yourSitekey',
+            callback: function(token) {
+                console.log(`Challenge Success: ${token}`);
+            }
+        };
+        turnstile.render('#container', turnstileOptions);
+    };
+&lt;/script&gt;
+&lt;div id="container"&gt;&lt;/div&gt;
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>您还可以创建“操作”。您可以使用自定义标签区分使用 Turnstile 的不同页面，如登录、退出或帐户创建页面。</p>
+	<p>一旦部署了 Turnstele，您就可以回到仪表板，查看关于您部署小部件的位置、用户如何解决这些小部件的分析，查看任何定义的操作。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image1-64.png" class="kg-image"></figure>
+	<h3 id="--2">我们为什么要免费赠送？</h3>
+	<p>尽管其他人觉得难以置信，但帮助用户建立一个更好的互联网环境确实是<a href="https://www.cloudflare.com/careers/people/#:~:text=%E2%80%9CCloudflare's%20mission%20is%20to%20help,quantum%20algorithms%20at%20Cloudflare%20scale.%E2%80%9D" target="_blank">我们的使命</a>。这不是我们第一次构建<a href="https://blog.cloudflare.com/1111-warp-better-vpn/">免费工具</a>，我们认为这些工具会<a href="https://blog.cloudflare.com/announcing-grpc/">让互联网变得更好</a>，后续我们还会提供类似产品。这对我们而言至关重要。</p>
+	<p>因此，无论您是否为 Cloudflare 客户，如果您正在使用 CAPTCHA，请免费试用 Turnstile。您会让用户拥有更好的体验，并最大程度减少发送给第三方的数据。</p>
+	<p>请访问<a href="https://www.cloudflare.com/lp/turnstile/" target="_blank">此页面</a>注册隐私优先的隐形 CAPTCHA 替代方案并检索您的 Turnstile 测试版站点密钥。</p>
+</div>

@@ -1,0 +1,30 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image5-25.png" class="kg-image" alt="Gateway + CASB: alphabetti spaghetti that spells better SaaS security"></figure>
+	<p>早在 6 月，我们就<a href="https://blog.cloudflare.com/announcing-gateway-and-casb/">宣布</a>即将推出一项功能，让 Cloudflare Zero Trust 用户能够在 <a href="https://www.cloudflare.com/products/zero-trust/gateway/" target="_blank">Cloudflare Gateway</a>（Cloudflare 的安全 Web 网关解决方案）中通过 CASB 识别的问题轻松创建预填写的 HTTP 策略，CASB 是一款<a href="https://blog.cloudflare.com/casb-ga/">新 Cloudflare 产品</a>，它会通过连接、扫描并监控您的 SaaS 应用来发现安全性问题，就像 Google Workspace 和 Microsoft 365 那样。</p>
+	<p>随着 Cloudflare 的第 12 届生日周临近尾声，我们想按照真正的 Cloudflare 方式强调一下这项新功能的运行方式。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image2-65.png" class="kg-image"></figure>
+	<h3 id="-casb-gateway-">什么是 CASB？什么是 Gateway？</h3>
+	<p>简单回顾一下，Cloudflare 的 API 驱动型 CASB 为 IT 和安全团队提供了一种快速而又有效的方式来连接、扫描并监控其 SaaS 应用以发现安全性问题，如文件暴露、错误配置和影子 IT。用户只需单击几次，就能看到可能影响 SaaS 应用（包括 Google Workspace、Microsoft 365、Slack 和 GitHub）安全性的安全性问题的详尽列表。</p>
+	<p>Cloudflare Gateway 是我们的安全 Web 网关 (SWG) 产品，它允许团队监控并控制源自端点设备的出站连接。例如，不想让员工在公司设备上访问游戏和社交媒体网站？只需在我们易于使用的 Zero Trust 仪表板上阻止其访问权限即可。</p>
+	<h3 id="-">当前的问题</h3>
+	<p>正如我们在第一篇文章中强调的那样，影子 IT（或员工在未经批准的情况下使用的第三方应用程序）仍是云时代 IT 管理员最大的痛点之一。员工未经 IT 或安全部门同意就向外部服务授予访问权限，其风险在于使恶意行为者有机会访问公司存储在这些 SaaS 应用程序中的一些最敏感数据。</p>
+	<p>影响云中所存储数据安全性的另一个重大问题是以过度共享的方式暴露文件。员工通过公共链接向某人共享高度敏感的 Google 文档时，IT 或安全团队会知道吗？即使他们知道，有办法尽可能降低风险、阻止访问权限吗？</p>
+	<p>鉴于这两款产品现已被全世界的客户使用，我们很高兴地告诉大家，对 SaaS 安全性问题的可见性和基本意识并非就只能这样，没法提高了。管理员下一步该怎么做呢？</p>
+	<h3 id="gateway-casb-">Gateway + CASB：只需点击三次（真的只要三次）就能阻止识别到的威胁</h3>
+	<p>现在，当 CASB 发现一个问题（我们称之为<em>发现</em>）时，只需点击三次就能轻松创建对应的 Gateway 策略。</p>
+	<p>这意味着，用户现在可以自动生成精细控制的 Gateway 策略，防止特定不当行为继续，同时仍允许符合公司策略的正常访问和使用。</p>
+	<h3 id="-1-google-">示例 1：阻止员工上传到其个人 Google 硬盘</h3>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image3-49.png" class="kg-image"></figure>
+	<p>我们在 CASB 的测试版程序期间听到的一个常见用例是，员工往往会将公司数据（文档、电子表格、文件、文件夹等）上传到其个人 Google 硬盘（或类似）帐户，造成知识产权外泄到安全的公司环境之外的风险。通过将 Gateway 和 CASB 协同工作，IT 管理员现在可以针对来自其 Google 硬盘或 Microsoft OneDrive 公司租户之外的任何地方直接<a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering/http-policies/tenant-control/" target="_blank">阻止上传活动</a>。</p>
+	<h3 id="-2-">示例 2：禁止反复过度共享者上传和下载文件</h3>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image1-80.png" class="kg-image"></figure>
+	<p>Cloudflare CASB 的一个很理想的现有用例就是，能够识别哪些员工经常过度共享其公司 Google 或 Microsoft 租户的文件，包括将文件共享给有链接的任何人、通过其公司外部的电子邮箱共享文件等等。</p>
+	<p>现在，识别到这些员工后，CASB 管理员可以创建 Gateway 策略，阻止特定用户继续执行上传和下载活动，直到该行为得到纠正。</p>
+	<h3 id="-3-it-">示例 3：防止文件上传到未经批准的影子 IT 应用程序</h3>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image4-27.png" class="kg-image"></figure>
+	<p>要解决影子 IT 的问题，可以自定义源自 CASB 的 Gateway 策略，包括能够将上传和下载活动仅限于您的组织使用的 SaaS 应用程序。假设您的公司使用 Box 作为文件存储解决方案；只需点击几次，您就可以使用识别到的 CASB 发现来创建 Gateway 策略，阻止对 Box 之外的任何文件共享应用程序的活动。这样一来，IT 和安全管理员就可以放心，其文件最终仅会进入他们使用的已获批云应用程序。</p>
+	<h3 id="-cloudflare-zero-trust">立即开始使用 Cloudflare Zero Trust</h3>
+	<p>最终，Cloudflare Zero Trust 的威力依靠它作为单个统一平台，利用其产品和功能组合充分发挥效力。随着我们继续致力于将这些激动人心的新产品推向市场，我们相信，强调其协同作用和相关用例也同等重要，这次是 Cloudflare Gateway 和 CASB。</p>
+	<p>如果您尚未使用 Cloudflare Zero Trust，别再犹豫，立即开始使用，<a href="https://dash.cloudflare.com/sign-up" target="_blank">点击此处注册</a>，利用 50 个免费席位亲自了解该平台。</p>
+	<p>如果您已经了解并喜欢 Cloudflare Zero Trust，请联系 Cloudflare 销售联系人，开始使用 CASB 和 Gateway。我们十分期待听到您在使用这项新的跨产品功能之后发现的有趣而激动人心的用例。</p>
+</div>

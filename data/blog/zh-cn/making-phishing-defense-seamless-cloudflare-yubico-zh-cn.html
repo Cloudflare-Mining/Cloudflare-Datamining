@@ -1,0 +1,31 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image1-blog-body-header.png" class="kg-image" alt="Making phishing defense seamless with Cloudflare Zero Trust and Yubico"></figure>
+	<p>硬件密钥可提供最强的身份验证安全性，并能防御网络钓鱼。但客户向我们询问如何实施，以及应该购买哪种安全密钥。如今我们针对 Cloudflare 客户推出一项独家计划，使硬件密钥比以往任何时候都更容易实施且更具经济效益。这项计划通过与业界领先的硬件安全密钥供应商 Yubico 开展新的合作得以实现，可为 Cloudflare 客户提供“适合互联网”的独家价格。</p>
+	<p>如今，Yubico 安全密钥可供所有 Cloudflare 客户使用，并且可与 Cloudflare 的 Zero Trust 服务轻松整合。此项服务向任何规模的企业开放，从保护家庭网络的家庭到地球上规模最大的雇主。如今，任何 Cloudflare 客户登录 Cloudflare Dashboard，即可以每个密钥低至 10 美元的价格订购硬件安全密钥。</p>
+	<p>2022 年 7 月，Cloudflare <a href="https://blog.cloudflare.com/zh-cn/2022-07-sms-phishing-attacks-zh-cn/">成功阻止了一起信息泄露事件</a>（由针对 130 多家公司的短信网络钓鱼攻击引起），这归因于该公司配合使用了 Cloudflare Zero Trust 与硬件安全密钥 YubiKey。同时，此次与 YubiKey 制造商 Yubico 开展新的合作，也为任何规模的企业部署硬件密钥消除了障碍。</p>
+	<h3 id="-">为什么要选择硬件安全密钥？</h3>
+	<p>企业需要确保只有合适的用户才能连接到其敏感资源——无论是自我托管的网络应用程序、SaaS 工具，还是依赖任意 TCP 连接和 UDP 流传输的服务。用户传统上通过用户名和密码来证明自己的身份，但网络钓鱼攻击可以通过欺骗用户来窃取这两项信息。</p>
+	<p>为应对网络钓鱼攻击，安全团队已着手部署<a href="https://www.cloudflare.com/learning/access-management/what-is-multi-factor-authentication/" target="_blank">多因素身份验证 (MFA)</a> 工具，以新增一个附加的安全层。用户需要输入其用户名、密码和部分其他值。例如，用户可能在其设备上运行一个生成随机数字的应用程序，也可能使用其电话号码注册以通过短信接收代码。虽然这些 MFA 选项确实助力用户提高了安全性，但用户仍易受到网络钓鱼攻击。网络钓鱼网站循循善诱，促使用户输入 MFA 代码，或者攻击者通过 SIM 卡交换攻击来窃取用户的电话号码。</p>
+	<p>硬件安全密钥可为企业提供一个防御网络钓鱼的 MFA 选项。这些密钥采用 <a href="https://www.yubico.com/authentication-standards/webauthn/" target="_blank">WebAuthn 标准</a>来向身份验证服务提供证书，从而在以加密方式保障安全性的交换中验证密钥，这是网络钓鱼网站无法获得、因此也无法骗取的信息。</p>
+	<p>用户通过其标识提供程序注册一个或多个密钥，除了让用户出示其用户名和密码外，提供程序还可能通过一个 MFA 选项提示用户输入硬件密钥。安全团队中的每一位成员在登录时点击密钥（而不是在应用程序中摸索代码），即可享受更顺畅的体验。此外，安全团队的成员如知晓其服务能够防御网络钓鱼攻击，必定能够安枕无忧。</p>
+	<h3 id="-cloudflare-zero-trust-">使用 Cloudflare 的 Zero Trust 产品扩展硬件安全密钥</h3>
+	<p>虽然目前大多数标识提供程序允许用户注册硬件密钥作为 MFA 选项，但管理员仍然没有控制权来要求使用硬件密钥。个人用户如果不能出示安全密钥本身，则可以退回到一个不太安全的选项，如基于应用程序的代码。</p>
+	<p>当 <a href="https://blog.cloudflare.com/require-hard-key-auth-with-cloudflare-access/">Cloudflare 首次部署安全密钥</a>时，我们就遇到了这个问题。如果用户可以退回到一个不太安全且更容易遭到网络钓鱼攻击的选项，如基于应用程序的代码，那么攻击者也同样可以。我们携手 10,000 多个企业，在内部使用 <a href="https://www.cloudflare.com/products/zero-trust/access/" target="_blank">Cloudflare 的 Zero Trust 产品</a>，以部分确保用户连接到其需要的资源和工具的安全。</p>
+	<p>当任何用户需要访问内部应用程序或服务时，Cloudflare 的网络会评估每次请求或连接的多个信号，例如标识、<a href="https://blog.cloudflare.com/6-new-ways-to-validate-device-posture/">设备状态</a>和<a href="https://blog.cloudflare.com/two-clicks-to-enable-regional-zero-trust-compliance/">国家/地区</a>。管理员也可以构建仅适用于某些目的地的精细规则。具有客户数据读取能力的内部管理员工具可能要求健康状况良好的公司设备连接自某个特定的国家/地区，并归特定标识提供程序组中的某个用户所有。此外，可能只需要标识即可通过共享一个新的营销启动页面来获取反馈。如果我们可以在用户的身份验证过程中出示安全密钥，而不是其他不太安全的 MFA 选项，那么我们也可以强制执行该信号。</p>
+	<p>几年前，标识提供程序、硬件供应商和安全公司合作开发了一项新的标准 — 身份验证方法参考标准 (AMR)，目的正是为了分享此类数据。根据 AMR，标识提供程序可以分享关于登录尝试的多项详情，包括正在使用的 MFA 选项的类型。该公告发布后不久，我们在 Cloudflare 的 Zero Trust 套件中推出了规则构建功能，以寻找和执行该信号。如今，任何规模的团队都可以构建基于资源的规则，从而确保团队成员始终使用其硬件密钥。</p>
+	<h3 id="--1">部署硬件安全密钥时面临哪些障碍？</h3>
+	<p>保证您实际控制的事物的安全性，也是导致部署硬件密钥增加了一层复杂性的原因—您需要找到一种方法，将这种物理密钥批量交由用户保管，使您团队的每一位成员都可以注册安全密钥。</p>
+	<p>在所有情况下，必须先购买硬件安全密钥才能实施这种部署。与基于应用程序的代码（可能是免费的）相比，安全密钥会产生实际成本。对于一些企业而言，这种成本让人望而却步，继而导致其安全性较低，但要注意的是，并非所有的 MFA 都具备同等效力。 </p>
+	<p>对于其他团队而言，特别是目前部分或完全实施远程办公的企业，向永远不会踏入实体办公室的终端用户提供这些密钥，对 IT 部门而言是一项莫大的挑战。Cloudflare 首次部署硬件密钥是在公司级务虚会上完成的。许多企业不再有这种机会在单一场所乃至全球办公室内以物理方式发放密钥。</p>
+	<h3 id="-yubico-">与 Yubico 开展合作</h3>
+	<p>Cloudflare 生日周始终是为了消除阻碍用户和团队更安全或更快速地访问互联网的壁垒和障碍而举办的。在实现该目标的过程中，我们与 Yubico 开展合作，继续消除采用硬件密钥安全模式的摩擦。</p>
+	<ul>
+		<li><a href="https://www.cloudflare.com/products/zero-trust/phishing-resistant-mfa/" target="_blank">这款产品</a>向所有 Cloudflare 客户开放。Cloudflare 客户可直接在 Cloudflare Dashboard 中针对 Yubico 安全密钥申领这款产品。</li>
+		<li>Yubico 将以“适合互联网”的价格提供安全密钥 — 每个密钥低至 10 美元。Yubico 将直接向客户发放密钥。</li>
+		<li>Cloudflare 和 Yubico 的开发人员文档和支持部门都将指导客户设置密钥并将其与他们的标识提供程序和 Cloudflare 的 Zero Trust 服务相整合。</li>
+	</ul>
+	<h3 id="--2">如何开始</h3>
+	<p>您可以导航到仪表板，按照<a href="https://dash.cloudflare.com/385bc93a9c7f7cdd937d4cc28fa5e061/yubico-promotion" target="_blank">横幅通知中列出的流程</a>申请您自己的硬件密钥。届时，Yubico 将以电子邮件形式将您申请的硬件密钥直接发送至您在 Cloudflare 帐户中提供的管理员电子邮箱。希望批量部署 YubiKey 的大型企业，可以探索 Yubico 的 YubiEnterprise 订阅并在三年期订阅中的第一年享受 50% 的折扣。</p>
+	<p>已经拥有硬件安全密钥？如果您拥有物理硬件密钥，则可以开始在 Cloudflare Access 中构建规则，从而通过将它们注册到支持 AMR 的标识提供程序（如 Okta 或 Azure AD）中来强制使用它们。</p>
+	<p>最后，如果您有意自行一同部署 Yubikeys 与我们的 Zero Trust 产品，请查看我们的安全总监 Evan Johnson 的这篇<a href="https://blog.cloudflare.com/how-cloudflare-implemented-fido2-and-zero-trust/">博文</a>，其中回顾了 Cloudflare 的经验以及我们根据经验教训提出的建议。</p>
+</div>
