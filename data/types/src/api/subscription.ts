@@ -80,8 +80,6 @@ export const SubscriptionProductName = eg.union([
   eg.literal('registrar'),
   eg.literal('apps_welcome_bar'),
   eg.literal('prod_argo'),
-  eg.literal('prod_dweb_ethereum'),
-  eg.literal('prod_dweb_ipfs'),
   eg.literal('prod_rate_limiting'),
   eg.literal('prod_load_balancing'),
   eg.literal('prod_workers'),
@@ -97,7 +95,10 @@ export const SubscriptionProductName = eg.union([
   eg.literal('prod_cache_reserve'),
   eg.literal('prod_r2'),
   eg.literal('prod_web3_ethereum'),
-  eg.literal('prod_web3_ipfs')
+  eg.literal('prod_web3_ipfs'),
+  eg.literal('msp_zone'),
+  eg.literal('jdc_cloudflare_zones'),
+  eg.literal('bots')
 ]);
 
 export type SubscriptionProductName = TypeFromCodec<
