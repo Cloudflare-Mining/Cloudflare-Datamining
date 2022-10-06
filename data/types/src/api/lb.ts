@@ -179,6 +179,15 @@ export const LoadBalancer = eg.object({
     eg.literal('gps'),
     eg.literal('proximity')
   ]).optional,
+  location_strategy: eg.object({
+    prefer_ecs: eg.union([
+      eg.literal('always'),
+      eg.literal('never'),
+      eg.literal('geo'),
+      eg.literal('proximity')
+    ]),
+    mode: eg.union([eg.literal('pop'), eg.literal('resolver_ip')])
+  }),
   random_steering: eg.object({
     default_weight: eg.number,
     pool_weights: eg.record(eg.string, eg.number).optional
