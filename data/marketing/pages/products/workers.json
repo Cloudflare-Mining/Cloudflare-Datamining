@@ -26,8 +26,8 @@
 					"ruRU": "No Page for Locale",
 					"svSE": "No Page for Locale",
 					"viVN": "No Page for Locale",
-					"trTR": null,
-					"zhHansCN": null
+					"trTR": "No Page for Locale",
+					"zhHansCN": "Translated for Locale"
 				},
 				"relativePath": "products/workers",
 				"topNavOptions": "default",
@@ -65,7 +65,7 @@
 						"buttonText1LoggedIn": null,
 						"buttonUrl1": "https://workers.cloudflare.com/",
 						"buttonUrl1LoggedIn": null,
-						"button1ExtraClass": "workers-kv-contact-us-modal",
+						"button1ExtraClass": null,
 						"buttonText2": "Start Building",
 						"buttonText2LoggedIn": null,
 						"buttonUrl2": "https://dash.cloudflare.com/sign-up/workers",
@@ -544,6 +544,70 @@
 								]
 							},
 							{
+								"contentfulId": "2c9pCP1602VTqKwlDlukOx",
+								"rowHeader2": {
+									"contentfulId": "kYRvLC9RaMsyVkAgHR7lo",
+									"cellText": "Duration (measured in GB-s)",
+									"cellTextLinkUrl": "https://developers.cloudflare.com/workers/platform/limits/#duration",
+									"buttonText": null,
+									"buttonUrl": null,
+									"commonElements": null,
+									"imageAssetFile": null
+								},
+								"cellsInRow": [
+									{
+										"contentfulId": "4avy9OTCdwFlElzjlhYesR",
+										"cellText": "-",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "4pURADCjRNeBY4SIYl20bQ",
+										"cellText": "400,000 GB-s ",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									},
+									{
+										"contentfulId": "4oTzKgQWGP1fZq5qSXeyQY",
+										"cellText": "$12.50 / million GB-s",
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									}
+								]
+							},
+							{
+								"contentfulId": "3tGev2twpcmyfVixG3UBIj",
+								"rowHeader2": {
+									"contentfulId": "4TDk999k0N7KJAohkkNwvk",
+									"cellText": "Workers storage ",
+									"cellTextLinkUrl": null,
+									"buttonText": null,
+									"buttonUrl": null,
+									"commonElements": null,
+									"imageAssetFile": null
+								},
+								"cellsInRow": [
+									{
+										"contentfulId": "3vDkNfpB1opzMkxGumkJAM",
+										"cellText": null,
+										"cellTextLinkUrl": null,
+										"buttonText": null,
+										"buttonUrl": null,
+										"commonElements": null,
+										"imageAssetFile": null
+									}
+								]
+							},
+							{
 								"contentfulId": "1kmmMf6L8Ti6PIDqedZrvb",
 								"rowHeader2": {
 									"contentfulId": "6ksXXwoyjzfXWh38B9zKeK",
@@ -706,70 +770,6 @@
 										"imageAssetFile": null
 									}
 								]
-							},
-							{
-								"contentfulId": "2c9pCP1602VTqKwlDlukOx",
-								"rowHeader2": {
-									"contentfulId": "kYRvLC9RaMsyVkAgHR7lo",
-									"cellText": "Duration (measured in GB-s)",
-									"cellTextLinkUrl": "https://developers.cloudflare.com/workers/platform/limits/#duration",
-									"buttonText": null,
-									"buttonUrl": null,
-									"commonElements": null,
-									"imageAssetFile": null
-								},
-								"cellsInRow": [
-									{
-										"contentfulId": "4avy9OTCdwFlElzjlhYesR",
-										"cellText": "-",
-										"cellTextLinkUrl": null,
-										"buttonText": null,
-										"buttonUrl": null,
-										"commonElements": null,
-										"imageAssetFile": null
-									},
-									{
-										"contentfulId": "4pURADCjRNeBY4SIYl20bQ",
-										"cellText": "400,000 GB-s ",
-										"cellTextLinkUrl": null,
-										"buttonText": null,
-										"buttonUrl": null,
-										"commonElements": null,
-										"imageAssetFile": null
-									},
-									{
-										"contentfulId": "4oTzKgQWGP1fZq5qSXeyQY",
-										"cellText": "$12.50 / million GB-s",
-										"cellTextLinkUrl": null,
-										"buttonText": null,
-										"buttonUrl": null,
-										"commonElements": null,
-										"imageAssetFile": null
-									}
-								]
-							},
-							{
-								"contentfulId": "3tGev2twpcmyfVixG3UBIj",
-								"rowHeader2": {
-									"contentfulId": "4TDk999k0N7KJAohkkNwvk",
-									"cellText": "Workers storage ",
-									"cellTextLinkUrl": null,
-									"buttonText": null,
-									"buttonUrl": null,
-									"commonElements": null,
-									"imageAssetFile": null
-								},
-								"cellsInRow": [
-									{
-										"contentfulId": "3vDkNfpB1opzMkxGumkJAM",
-										"cellText": null,
-										"cellTextLinkUrl": null,
-										"buttonText": null,
-										"buttonUrl": null,
-										"commonElements": null,
-										"imageAssetFile": null
-									}
-								]
 							}
 						],
 						"dataSource": null
@@ -800,7 +800,8 @@
 				"ja-JP",
 				"ko-KR",
 				"pt-BR",
-				"es-ES"
+				"es-ES",
+				"zh-Hans-CN"
 			],
 			"baseURL": "https://www.cloudflare.com"
 		}
