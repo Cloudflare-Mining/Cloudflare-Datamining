@@ -1,4 +1,5 @@
 import { eg, TypeFromCodec } from '@cloudflare/util-en-garde';
+
 import { Frequency } from './subscription';
 import { PlanId } from './ratePlan';
 
@@ -147,3 +148,45 @@ export const Zone = eg.object({
 });
 
 export type Zone = TypeFromCodec<typeof Zone>;
+
+export const ZoneBlock = eg.object({
+  id: eg.string,
+  account_id: eg.number,
+  brand_id: eg.number,
+  cadence_workflow_id: eg.string,
+  created: eg.string,
+  delete_reason: eg.string,
+  hostname: eg.string,
+  list_item_id: eg.string,
+  lumen_database_url: eg.string,
+  match_subdomain: eg.boolean,
+  match_subpath: eg.boolean,
+  path: eg.string,
+  protocol: eg.union([eg.literal('http'), eg.literal('https')]),
+  reference_id: eg.string,
+  reference_type: eg.string,
+  review_status: eg.union([eg.literal('no_review'), eg.literal('requested')]),
+  review_date: eg.string,
+  ruleset_id: eg.string,
+  status: eg.union([
+    eg.literal('block_active'),
+    eg.literal('block_failed'),
+    eg.literal('block_pending'),
+    eg.literal('block_in_progress'),
+    eg.literal('delete_pending'),
+    eg.literal('delete_in_progress'),
+    eg.literal('delete_failed'),
+    eg.literal('deleted')
+  ]),
+  type: eg.union([
+    eg.literal('geo_block'),
+    eg.literal('legal_block'),
+    eg.literal('phishing_interstitial'),
+    eg.literal('malware_interstitial')
+  ]),
+  updated: eg.string,
+  zone_id: eg.number,
+  zone_plan: eg.string
+});
+
+export type ZoneBlock = TypeFromCodec<typeof ZoneBlock>;
