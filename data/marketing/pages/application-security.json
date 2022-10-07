@@ -1637,6 +1637,82 @@
 								]
 							},
 							{
+								"contentfulId": "3AdaP6Gkua4w77dUpnB0YQ",
+								"contentTypeId": "planElementFeatures",
+								"name": "Unmetered DDoS Protection",
+								"description": "Cloudflare DDoS protection secures websites, applications, and entire networks while ensuring the performance of legitimate traffic is not compromised.",
+								"planValues": [
+									{
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "KrkA1GrdRJF8aQnqkPF52",
+										"value": true,
+										"plan": {
+											"contentfulId": "4J2b292gM2Io6Xb2UjbsLo",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Free Plan",
+											"name": "Free",
+											"description": "For personal or hobby projects that aren't business-critical.",
+											"pricingDescription": "Add-ons billed monthly",
+											"price": 0,
+											"currency": "$",
+											"customPricingText": "$0/month",
+											"billingCycle": "monthly"
+										}
+									},
+									{
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "1UeSJksCMsZ1JuSmsATDQs",
+										"value": true,
+										"plan": {
+											"contentfulId": "7JMDjiexzE2evvzrTjly8l",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Pro Plan",
+											"name": "Pro",
+											"description": "For professional websites that aren't business-critical.",
+											"pricingDescription": "Billed monthly",
+											"price": 20,
+											"currency": "$",
+											"customPricingText": "$20/month",
+											"billingCycle": "monthly"
+										}
+									},
+									{
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "7M0zilue0cnxZBmN95rPbY",
+										"value": true,
+										"plan": {
+											"contentfulId": "X0mi2lABGJXFQqE4wieTW",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Business Plan",
+											"name": "Business",
+											"description": "For small businesses operating online.",
+											"pricingDescription": "Billed monthly",
+											"price": 200,
+											"currency": "$",
+											"customPricingText": "$200/month",
+											"billingCycle": "monthly"
+										}
+									},
+									{
+										"contentTypeId": "planElementFeatureValueBoolean",
+										"contentfulId": "1B7s10dX513dW9h4wtrG3c",
+										"value": true,
+										"plan": {
+											"contentfulId": "9KE9tgEmXrKuduOkp2NKd",
+											"contentTypeId": "planElementPlan",
+											"entryTitle": "Application Services - Enterprise Plan",
+											"name": "Enterprise",
+											"description": "For mission-critical applications that are core to your business.",
+											"pricingDescription": "Billed annually",
+											"price": null,
+											"currency": null,
+											"customPricingText": "Custom",
+											"billingCycle": null
+										}
+									}
+								]
+							},
+							{
 								"contentfulId": "1Qg7GWVP8EoEfhQaKvDjBQ",
 								"contentTypeId": "planElementFeatures",
 								"name": "CDN",
