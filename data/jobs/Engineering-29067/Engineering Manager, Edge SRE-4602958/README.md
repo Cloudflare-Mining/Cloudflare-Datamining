@@ -20,8 +20,8 @@
 	<li style="font-weight: 400;"><span style="font-weight: 400;">You are capable of leading a discussion with upper management, and are able to tailor the level of technical detail to suit your audience</span></li>
 </ul>
 <h4><strong>What you'll do</strong></h4>
-<p><span style="font-weight: 400;">We are looking for an Engineering Manager to join the Edge SRE team in APAC to lead and develop a team of SREs that are responsible for Cloudflare edge production and to develop tools to consistently increase the visibility into all the systems running on our network. You will play a lead role in driving initiatives for edge services to adopt best practices and will be tasked with leading engineers who build tools and guidelines for engineering teams to measure availability and performance indicators.&nbsp;</span></p>
-<p><span style="font-weight: 400;">Key responsibilities</span></p>
+<p><span style="font-weight: 400;">We are looking for an Engineering Manager to join the Edge SRE team in APAC. You will lead and develop a team of SREs that are responsible for Cloudflare edge production and building the tools for all teams to understand and interact with it. You will play a lead role in driving initiatives for edge services to adopt best practices and will be tasked with leading engineers who build tools and guidelines for engineering teams to measure availability and performance indicators.&nbsp;</span></p>
+<p><strong>Key responsibilities</strong></p>
 <ul>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Lead a team of engineers who are working to keep the Cloudflare edge reliable and scalable</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Mentor, grow, and empower your team by giving them the skills, confidence and motivation to make decisions</span></li>
@@ -44,7 +44,7 @@
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Familiarity working with Proxies, DNS, Databases, Internet and Security</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience developing tools and APIs</span></li>
 </ul>
-<h4>&nbsp;</h4>
+<p><br><br></p>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
 	<p><span style="font-weight: 400;">We’re not just a highly ambitious, large-scale technology company. We’re a highly ambitious, large-scale technology company with a soul. Fundamental to our mission to help build a better Internet is protecting the free and open Internet.</span></p>
