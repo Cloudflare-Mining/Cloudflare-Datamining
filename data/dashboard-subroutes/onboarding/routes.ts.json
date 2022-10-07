@@ -33,7 +33,6 @@
 	"/quick-scan",
 	"/recommendations",
 	"/register-domain/[id]/*",
-	"/registrar",
 	"/rules",
 	"/search-domain",
 	"/select-plan",
@@ -51,5 +50,6 @@
 	"/two-factor/recovery",
 	"/update-nameservers",
 	"/verify-dns",
-	"/workers"
+	"/workers",
+	"domains/[id]/*"
 ]
