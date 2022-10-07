@@ -915,6 +915,7 @@
 	"traffic.waiting_rooms.field_errors.path.starts_with_slash": "Must begin with a forward slash (/)",
 	"traffic.waiting_rooms.field_errors.path.no_params": "Must not contain URL parameters or hashes (?, &, #, =)",
 	"traffic.waiting_rooms.field_errors.name.pattern": "Name must consist of alphanumeric characters, dashes, and underscores",
+	"traffic.waiting_rooms.field_errors.name.host": "Name must consist of alphanumeric characters",
 	"traffic.waiting_rooms.field_errors.new_users_per_minute.too_high": "Must be less than or equal to total active users",
 	"traffic.waiting_rooms.field_errors.session_duration.too_high": "Must be less than %{count} minutes",
 	"traffic.waiting_rooms.field_errors.users_too_low": "Must be greater than or equal to %{count} users",

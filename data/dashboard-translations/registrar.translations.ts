@@ -10,7 +10,7 @@
 		delete: "Delete",
 		addCard: "Add card",
 		invalid_email: "Invalid email",
-		back_to_zone: (0, a.d)(k(), "zoneName"),
+		back_to_zone: (0, a.d)(C(), "zoneName"),
 		email_notification: "Please <0>verify your account email address</0> to access all Registrar features such as Registration and Transfer.",
 		invalid_auth_code: "The registry has indicated that the authorization code is not correct. Please re-enter the code again. If you continue to receive an authorization code error, please request a new code from your current registrar.",
 		registrar_managed: "As this is a Cloudflare Registrar managed account, no payment is needed."
@@ -57,8 +57,8 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 		},
 		complete_purchase: "Complete purchase",
 		purchase_security: "All transactions are secure and encrypted.",
-		purchase_agreement: (0, a.d)(v()),
-		purchase_agreement_with_icloud: (0, a.d)(b()),
+		purchase_agreement: (0, a.d)(k()),
+		purchase_agreement_with_icloud: (0, a.d)(v()),
 		automatic_renewal_agreement: "Automatic renewals may be cancelled at any time via the Domain Management page in your account. Automatic renewals will be billed to the payment method on file, until cancelled.",
 		automatic_renewal_agreement_enabled: "You are consenting to the automatic renewal of your domain names(s)."
 	},
@@ -68,6 +68,8 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 		part_2: "for more info."
 	},
 	domain_page: {
+		title: (0, a.d)(b(), "domainName"),
+		back: "Back to Manage Domains",
 		unverified_contacts: "You have unverified Contacts.",
 		view_contacts: "View Contacts",
 		registration: "Registration",
@@ -115,12 +117,12 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 		auto_renew_on: "Auto Renew is on",
 		auto_renew_off: "Auto Renew is off",
 		auto_renew_description: "Your domain will automatically renew every year.",
-		expires_on: (0, a.d)(p(), "expires_on"),
+		expires_on: (0, a.d)(f(), "expires_on"),
 		deleted_description: "This domain was deleted",
 		check_availability: "Check availability",
 		grace_period: {
 			title: "Domain expired",
-			details: (0, a.d)(f(), "grace_period_start", "grace_period_end")
+			details: (0, a.d)(p(), "grace_period_start", "grace_period_end")
 		},
 		not_on_cloudflare: {
 			expiration: (0, a.d)(m(), "expiration"),
@@ -129,7 +131,9 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 		},
 		transfer_in_progress: {
 			title: "Transfer Progress",
-			uk: 'Please request your current Registrar to update the [IPS Tag](https://developers.cloudflare.com/registrar/get-started/transfer-uk-domain#possible-reasons-a-transfer-may-fail-or-be-rejected) for this domain to "CLOUDFLARE".  Please be sure to follow any additional instructions provided by your registrar.   Once your registrar has updated the [IPS Tag](https://developers.cloudflare.com/registrar/get-started/transfer-uk-domain#possible-reasons-a-transfer-may-fail-or-be-rejected), Cloudflare will be notified and the transfer will be processed.'
+			uk: 'Please request your current Registrar to update the [IPS Tag](https://developers.cloudflare.com/registrar/get-started/transfer-uk-domain#possible-reasons-a-transfer-may-fail-or-be-rejected) for this domain to "CLOUDFLARE".  Please be sure to follow any additional instructions provided by your registrar.   Once your registrar has updated the [IPS Tag](https://developers.cloudflare.com/registrar/get-started/transfer-uk-domain#possible-reasons-a-transfer-may-fail-or-be-rejected), Cloudflare will be notified and the transfer will be processed.',
+			refresh: "Refresh",
+			cancel: "Cancel transfer"
 		},
 		pending_deletion_contact_support: "This domain is currently pending deletion. Please contact support to determine if the domain may be restored."
 	},
@@ -185,6 +189,14 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 		billing: (0, a.d)(d(), "last4"),
 		billing_cloud: (0, a.d)(s(), "last4")
 	},
+	domain_page_sidebar_domain_details: "Domain Details",
+	domain_page_sidebar_status: "Status",
+	domain_page_sidebar_auto_renew: "Auto-renew",
+	domain_page_sidebar_auto_renew_on: "Auto",
+	domain_page_sidebar_auto_renew_off: "Off",
+	domain_page_sidebar_expiry: "Expiry date",
+	domain_page_sidebar_quick_actions: "Quick actions",
+	domain_page_sidebar_update_dns: "Update DNS configuration",
 	registered_on: (0, a.d)(i(), "registration_date"),
 	renewals_billing_modal_title: "Confirm domain renewal for %{domain}",
 	renewals_billing_line_item_1: "%{smart_count} year %{tld} renewal |||| %{smart_count} years %{tld} renewal",
@@ -291,13 +303,13 @@ By providing your card information, you allow Cloudflare, Inc. to charge your ca
 	eligibility_unknown_domains_hide: "Hide %{smart_count} domain with unknown transfer eligibility* |||| Hide %{smart_count} domains with unknown transfer eligibility*",
 	unknown_eligibility_domains_description: "*These domains MAY be available for transfer, however we don't have enough information to make a determination at this moment.  Don't worry, we're attempting to determine the current state of each  domain.  This process may take some time so please try back in 5 minutes.  If we are still unable to make a determination please contact support for assistance.",
 	instructions_enom: A,
-	instructions_godaddy: D,
-	instructions_namecheap: R,
-	instructions_network_solutions: x,
-	instructions_one_and_one: I,
+	instructions_godaddy: R,
+	instructions_namecheap: x,
+	instructions_network_solutions: I,
+	instructions_one_and_one: P,
 	instructions_unknown: T,
-	instructions_uk: P,
-	instructions_restrictions: S,
+	instructions_uk: O,
+	instructions_restrictions: D,
 	instructions_restrictions_title: "Show restrictions",
 	instructions_known_title: "Transfer your domain from %{registrar}",
 	instructions_unknown_title: "Follow these instructions to transfer your domain",

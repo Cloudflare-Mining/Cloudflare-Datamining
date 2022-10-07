@@ -5,5 +5,8 @@
 	"/zones/[id]/abuse_urls/[id]/*",
 	"/zones/[id]/activation_check",
 	"/zones/[id]/analytics/unreachability?limit=&since=/*",
+	"/zones/[id]/blocks",
+	"/zones/[id]/blocks/review/request",
+	"/zones/[id]/blocks?type=phishing_interstitial&type=malware_interstitial&review_states=requested",
 	"/zones/[id]/pending"
 ]
