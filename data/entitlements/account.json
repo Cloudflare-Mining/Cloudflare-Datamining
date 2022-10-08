@@ -924,6 +924,30 @@
 		}
 	},
 	{
+		"id": "intel.brand_protection.brand_limit",
+		"feature": {
+			"feature_set": "intel",
+			"id": 1053,
+			"key": "intel.brand_protection.brand_limit",
+			"name": "Brand Protection - Account Brands Limit"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
+		"id": "intel.brand_protection.pattern_limit",
+		"feature": {
+			"feature_set": "intel",
+			"id": 1054,
+			"key": "intel.brand_protection.pattern_limit",
+			"name": "Brand Protection - Account Subscribed Brand Patterns Limit"
+		},
+		"allocation": {
+			"type": "max_count"
+		}
+	},
+	{
 		"id": "intel.dash_ip_enabled",
 		"feature": {
 			"feature_set": "intel",
