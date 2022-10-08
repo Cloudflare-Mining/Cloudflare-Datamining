@@ -1188,12 +1188,36 @@
 		}
 	},
 	{
+		"id": "rulesets.config_rule_security_level_off_allowed",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 1110,
+			"key": "rulesets.config_rule_security_level_off_allowed",
+			"name": "Rulesets - Config Rule Security Level OFF Allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "rulesets.config_rule_ssl_origin_pull_allowed",
 		"feature": {
 			"feature_set": "rulesets",
 			"id": 1040,
 			"key": "rulesets.config_rule_ssl_origin_pull_allowed",
 			"name": "Rulesets - Config Rule SSL Origin Pull Allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "rulesets.config_rule_sxg_allowed",
+		"feature": {
+			"feature_set": "rulesets",
+			"id": 1111,
+			"key": "rulesets.config_rule_sxg_allowed",
+			"name": "Rulesets - Config Rule SXG Allowed"
 		},
 		"allocation": {
 			"type": "bool"
