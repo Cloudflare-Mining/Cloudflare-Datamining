@@ -1,0 +1,138 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/radar/reports",
+	"title": "Radar reports",
+	"description": "",
+	"type": "object",
+	"links": [
+		{
+			"title": "Get Datasets",
+			"description": "Get a list of datasets.",
+			"rel": "collection",
+			"href": "radar/reports/datasets",
+			"method": "GET",
+			"cfOwnership": "radar",
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.api.user.read"
+				]
+			},
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "radar-reports-get-datasets",
+			"uri": "radar/reports/datasets",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/reports/datasets?limit=5&offset=0&datasetType=RANKING_BUCKET&format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"limit": {
+						"type": "number",
+						"example": "5",
+						"default": 5,
+						"description": "Limit the number of objects in the response"
+					},
+					"offset": {
+						"type": "number",
+						"example": "\"0\"",
+						"default": "0",
+						"description": "Number of objects to skip before grabbing results"
+					},
+					"datasetType": {
+						"type": "string",
+						"example": "\"RANKING_BUCKET\"",
+						"enum": [
+							"RANKING_BUCKET",
+							"REPORT"
+						],
+						"description": "Dataset type."
+					},
+					"format": {
+						"type": "string",
+						"example": "\"json\"",
+						"default": "json",
+						"enum": [
+							"json",
+							"csv"
+						],
+						"description": "Format results are returned in."
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"limit",
+					"offset",
+					"datasetType",
+					"format"
+				],
+				"objects": [],
+				"example": "{\n  \"limit\": 5,\n  \"offset\": \"0\",\n  \"datasetType\": \"RANKING_BUCKET\",\n  \"format\": \"json\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"result\": {\n    \"datasets\": [\n      {\n        \"id\": 3,\n        \"title\": \"Top bucket 20000 domains\",\n        \"description\": \"This dataset contains a list of the op 20000 domains globally\",\n        \"type\": \"RANKING_BUCKET\",\n        \"tags\": [\n          \"global\"\n        ],\n        \"meta\": {}\n      }\n    ]\n  }\n}"
+		},
+		{
+			"title": "Get Dataset download url",
+			"description": "Get a list of datasets.",
+			"rel": "collection",
+			"href": "radar/reports/datasets/download",
+			"method": "POST",
+			"cfOwnership": "radar",
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.api.user.read"
+				]
+			},
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "radar-reports-get-dataset-download-url",
+			"uri": "radar/reports/datasets/download",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/radar/reports/datasets/download\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"format\":\"json\"}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"format": {
+						"type": "string",
+						"example": "\"json\"",
+						"default": "json",
+						"enum": [
+							"json",
+							"csv"
+						],
+						"description": "Format results are returned in."
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"format"
+				],
+				"objects": [],
+				"example": "{\n  \"format\": \"json\"\n}"
+			},
+			"response": "{\n  \"dataset\": [\n    {\n      \"url\": \"https://example.com/download\"\n    }\n  ]\n}"
+		}
+	],
+	"cfExtendedDescription": "",
+	"html_id": "radar-reports",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {},
+		"required_props": [],
+		"optional_props": [],
+		"objects": [],
+		"example": "{}",
+		"title": "Radar reports",
+		"description": ""
+	}
+}

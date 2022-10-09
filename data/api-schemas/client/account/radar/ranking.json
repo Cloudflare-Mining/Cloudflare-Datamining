@@ -1,0 +1,241 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/radar/ranking",
+	"title": "Radar ranking",
+	"description": "",
+	"type": "object",
+	"links": [
+		{
+			"title": "Get Domains Rank time series",
+			"description": "Gets Domains Rank updates change over time. Raw values are returned.",
+			"rel": "collection",
+			"href": "radar/ranking/timeseries",
+			"method": "GET",
+			"cfOwnership": "radar",
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.api.user.read"
+				]
+			},
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "radar-ranking-get-domains-rank-time-series",
+			"uri": "radar/ranking/timeseries",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/ranking/timeseries?limit=5&name=main_series&location=US&domains=google.com,facebook.com&dateRange=7d&dateStart=2022-08-01T09:58:33Z&dateEnd=2022-09-01T09:58:33Z&format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"limit": {
+						"type": "number",
+						"example": "5",
+						"default": 5,
+						"description": "Limit the number of objects in the response"
+					},
+					"name": {
+						"type": "array",
+						"example": "[\n  \"main_series\"\n]",
+						"items": {
+							"type": "string",
+							"example": "main_series"
+						},
+						"description": "Array of names that will be used to name the series in responses."
+					},
+					"location": {
+						"type": "array",
+						"example": "[\n  \"US\"\n]",
+						"items": {
+							"type": "string",
+							"example": "US"
+						},
+						"description": "Array of locations (alpha-2 country codes)."
+					},
+					"domains": {
+						"type": "array",
+						"example": "[\n  \"google.com,facebook.com\"\n]",
+						"items": {
+							"type": "string",
+							"example": "google.com,facebook.com"
+						},
+						"description": "Array of comma separated list of domains names."
+					},
+					"dateRange": {
+						"type": "array",
+						"example": "[\n  \"7d\"\n]",
+						"items": {
+							"type": "string",
+							"enum": [
+								"1d",
+								"7d",
+								"14d",
+								"28d",
+								"1dControl",
+								"7dControl",
+								"14dControl",
+								"28dControl"
+							],
+							"example": "7d"
+						},
+						"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+						"enum": [
+							"1d",
+							"7d",
+							"14d",
+							"28d",
+							"1dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl"
+						]
+					},
+					"dateStart": {
+						"type": "array",
+						"example": "[\n  \"2022-08-01T09:58:33Z\"\n]",
+						"items": {
+							"type": "string",
+							"format": "date-time",
+							"example": "2022-08-01T09:58:33Z"
+						},
+						"description": "Array of datetimes to filter the start of a series."
+					},
+					"dateEnd": {
+						"type": "array",
+						"example": "[\n  \"2022-09-01T09:58:33Z\"\n]",
+						"items": {
+							"type": "string",
+							"format": "date-time",
+							"example": "2022-09-01T09:58:33Z"
+						},
+						"description": "Array of datetimes to filter the end of a series."
+					},
+					"format": {
+						"type": "string",
+						"example": "\"json\"",
+						"default": "json",
+						"enum": [
+							"json",
+							"csv"
+						],
+						"description": "Format results are returned in."
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"limit",
+					"name",
+					"location",
+					"domains",
+					"dateRange",
+					"dateStart",
+					"dateEnd",
+					"format"
+				],
+				"objects": [],
+				"example": "{\n  \"limit\": 5,\n  \"name\": [\n    \"main_series\"\n  ],\n  \"location\": [\n    \"US\"\n  ],\n  \"domains\": [\n    \"google.com,facebook.com\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"format\": \"json\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"meta\": {\n    \"dateRange\": {\n      \"startTime\": \"2022-09-16T10:22:57.555Z\",\n      \"endTime\": \"2022-09-17T10:22:57.555Z\"\n    }\n  },\n  \"result\": {\n    \"serie_0\": {\n      \"timestamps\": [\n        \"2022-09-02\"\n      ],\n      \"<domain name>\": [\n        2\n      ]\n    }\n  }\n}"
+		},
+		{
+			"title": "Get Domains Rank top",
+			"description": "Gets Top Domains Rank globally or by country.",
+			"rel": "collection",
+			"href": "radar/ranking/top",
+			"method": "GET",
+			"cfOwnership": "radar",
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.api.user.read"
+				]
+			},
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "radar-ranking-get-domains-rank-top",
+			"uri": "radar/ranking/top",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/ranking/top?limit=5&name=main_series&location=US&date=2022-09-19&format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"limit": {
+						"type": "number",
+						"example": "5",
+						"default": 5,
+						"description": "Limit the number of objects in the response"
+					},
+					"name": {
+						"type": "array",
+						"example": "[\n  \"main_series\"\n]",
+						"items": {
+							"type": "string",
+							"example": "main_series"
+						},
+						"description": "Array of names that will be used to name the series in responses."
+					},
+					"location": {
+						"type": "array",
+						"example": "[\n  \"US\"\n]",
+						"items": {
+							"type": "string",
+							"example": "US"
+						},
+						"description": "Array of locations (alpha-2 country codes)."
+					},
+					"date": {
+						"type": "array",
+						"example": "[\n  \"2022-09-19\"\n]",
+						"items": {
+							"type": "string",
+							"format": "date-time",
+							"example": "2022-09-19"
+						},
+						"description": "Array of dates to filter the ranking."
+					},
+					"format": {
+						"type": "string",
+						"example": "\"json\"",
+						"default": "json",
+						"enum": [
+							"json",
+							"csv"
+						],
+						"description": "Format results are returned in."
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"limit",
+					"name",
+					"location",
+					"date",
+					"format"
+				],
+				"objects": [],
+				"example": "{\n  \"limit\": 5,\n  \"name\": [\n    \"main_series\"\n  ],\n  \"location\": [\n    \"US\"\n  ],\n  \"date\": [\n    \"2022-09-19\"\n  ],\n  \"format\": \"json\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"meta\": {\n    \"top_0\": {\n      \"date\": \"2022-09-19\"\n    }\n  },\n  \"result\": {\n    \"top_0\": [\n      {\n        \"rank\": 1,\n        \"domain\": \"google.com\"\n      }\n    ]\n  }\n}"
+		}
+	],
+	"cfExtendedDescription": "",
+	"html_id": "radar-ranking",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {},
+		"required_props": [],
+		"optional_props": [],
+		"objects": [],
+		"example": "{}",
+		"title": "Radar ranking",
+		"description": ""
+	}
+}

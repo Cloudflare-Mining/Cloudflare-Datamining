@@ -45,8 +45,11 @@ async function run(){
 		}
 	});
 	for(const [url, schema] of Object.entries(schemas)){
-		const schemaname = url.replace(SCHEMAS_URL, '');
+		let schemaname = url.replace(SCHEMAS_URL, '');
 		if(!schemaname){ continue; }
+		if(!schemaname.endsWith('.json')){
+			schemaname = `${schemaname}.json`;
+		}
 		const filename = path.resolve(`../data/api-schemas/${schemaname}`);
 		console.log('Writing API schema', schemaname);
 		await fs.ensureFile(filename);

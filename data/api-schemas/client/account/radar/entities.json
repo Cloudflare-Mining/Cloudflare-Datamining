@@ -1,0 +1,298 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/radar/entities",
+	"title": "Radar entities",
+	"description": "Metadata information on locations and autonomous systems (AS). (Beta)",
+	"type": "object",
+	"links": [
+		{
+			"title": "Get location",
+			"description": "Get the requested location information. A confidence level below `5` indicates a low level of confidence in the traffic data - normally this happens because Cloudflare has a small amount of traffic from/to this location).",
+			"rel": "collection",
+			"href": "radar/entities/locations/{#/definitions/location}",
+			"method": "GET",
+			"cfOwnership": "radar",
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.api.user.read"
+				]
+			},
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "radar-entities-get-location",
+			"uri": "radar/entities/locations/:location",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/entities/locations/US?format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"format": {
+						"type": "string",
+						"example": "\"json\"",
+						"default": "json",
+						"enum": [
+							"json",
+							"csv"
+						],
+						"description": "Format results are returned in."
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"format"
+				],
+				"objects": [],
+				"example": "{\n  \"format\": \"json\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"result\": {\n    \"location\": {\n      \"name\": \"Afghanistan\",\n      \"region\": \"Middle East\",\n      \"subregion\": \"Southern Asia\",\n      \"latitude\": 33.939116,\n      \"longitude\": 67.709953,\n      \"alpha2\": \"AF\",\n      \"confidenceLvel\": 5\n    }\n  }\n}"
+		},
+		{
+			"title": "Get locations",
+			"description": "Get a list of locations.",
+			"rel": "collection",
+			"href": "radar/entities/locations",
+			"method": "GET",
+			"cfOwnership": "radar",
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.api.user.read"
+				]
+			},
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "radar-entities-get-locations",
+			"uri": "radar/entities/locations",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/entities/locations?limit=5&offset=0&location=US,CA&format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"limit": {
+						"type": "number",
+						"example": "5",
+						"default": 5,
+						"description": "Limit the number of objects in the response"
+					},
+					"offset": {
+						"type": "number",
+						"example": "\"0\"",
+						"default": "0",
+						"description": "Number of objects to skip before grabbing results"
+					},
+					"location": {
+						"type": "string",
+						"example": "\"US,CA\"",
+						"description": "Comma separated list of locations. Start with `-` to exclude from results. For example, `[-US, PT]` excludes results from the US, but includes results from PT."
+					},
+					"format": {
+						"type": "string",
+						"example": "\"json\"",
+						"default": "json",
+						"enum": [
+							"json",
+							"csv"
+						],
+						"description": "Format results are returned in."
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"limit",
+					"offset",
+					"location",
+					"format"
+				],
+				"objects": [],
+				"example": "{\n  \"limit\": 5,\n  \"offset\": \"0\",\n  \"location\": \"US,CA\",\n  \"format\": \"json\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"result\": {\n    \"locations\": [\n      {\n        \"name\": \"Afghanistan\",\n        \"latitude\": 33.939116,\n        \"longitude\": 67.709953,\n        \"alpha2\": \"AF\"\n      }\n    ]\n  }\n}"
+		},
+		{
+			"title": "Get autonomous system information by IP address",
+			"description": "",
+			"rel": "collection",
+			"href": "radar/entities/asns/ip",
+			"method": "GET",
+			"cfOwnership": "radar",
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.api.user.read"
+				]
+			},
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "radar-entities-get-autonomous-system-information-by-ip-address",
+			"uri": "radar/entities/asns/ip",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/entities/asns/ip?ip=1.1.1.1&format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"ip": {
+						"type": "string",
+						"example": "\"1.1.1.1\"",
+						"description": "IP address"
+					},
+					"format": {
+						"type": "string",
+						"example": "\"json\"",
+						"default": "json",
+						"enum": [
+							"json",
+							"csv"
+						],
+						"description": "Format results are returned in."
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"ip",
+					"format"
+				],
+				"objects": [],
+				"example": "{\n  \"ip\": \"1.1.1.1\",\n  \"format\": \"json\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"result\": {\n    \"asn\": {\n      \"name\": \"Apple Inc.\",\n      \"related\": [\n        {}\n      ],\n      \"asn\": 714,\n      \"website\": \"https://www.apple.com/support/systemstatus/\"\n    }\n  }\n}"
+		},
+		{
+			"title": "Get autonomous system (AS) by ID",
+			"description": "Get the requested autonomous system information. A confidence level below `5` indicates a low level of confidence in the traffic data - normally this happens because Cloudflare has a small amount of traffic from/to this AS).",
+			"rel": "collection",
+			"href": "radar/entities/asns/{#/definitions/asn}",
+			"method": "GET",
+			"cfOwnership": "radar",
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.api.user.read"
+				]
+			},
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "radar-entities-get-autonomous-system-as-by-id",
+			"uri": "radar/entities/asns/:asn",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/entities/asns/3?format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"format": {
+						"type": "string",
+						"example": "\"json\"",
+						"default": "json",
+						"enum": [
+							"json",
+							"csv"
+						],
+						"description": "Format results are returned in."
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"format"
+				],
+				"objects": [],
+				"example": "{\n  \"format\": \"json\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"result\": {\n    \"asn\": {\n      \"name\": \"Apple Inc.\",\n      \"confidenceLevel\": 5,\n      \"related\": [\n        {\n          \"name\": \"Cogent-174\",\n          \"asn\": 174\n        }\n      ],\n      \"asn\": 714,\n      \"website\": \"https://www.apple.com/support/systemstatus/\"\n    }\n  }\n}"
+		},
+		{
+			"title": "Get autonomous systems",
+			"description": "Gets a list of autonomous systems (AS).",
+			"rel": "collection",
+			"href": "radar/entities/asns",
+			"method": "GET",
+			"cfOwnership": "radar",
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.api.user.read"
+				]
+			},
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "radar-entities-get-autonomous-systems",
+			"uri": "radar/entities/asns",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/entities/asns?limit=5&offset=0&asn=174,7922&format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"limit": {
+						"type": "number",
+						"example": "5",
+						"default": 5,
+						"description": "Limit the number of objects in the response"
+					},
+					"offset": {
+						"type": "number",
+						"example": "\"0\"",
+						"default": "0",
+						"description": "Number of objects to skip before grabbing results"
+					},
+					"asn": {
+						"type": "string",
+						"example": "\"174,7922\"",
+						"description": "Comma separated list of ASNs. Start with `-` to exclude from results. For example, `[-174, 3356]` excludes results from AS174, but includes results from AS3356."
+					},
+					"format": {
+						"type": "string",
+						"example": "\"json\"",
+						"default": "json",
+						"enum": [
+							"json",
+							"csv"
+						],
+						"description": "Format results are returned in."
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"limit",
+					"offset",
+					"asn",
+					"format"
+				],
+				"objects": [],
+				"example": "{\n  \"limit\": 5,\n  \"offset\": \"0\",\n  \"asn\": \"174,7922\",\n  \"format\": \"json\"\n}"
+			},
+			"response": "{\n  \"ases\": [\n    {\n      \"name\": \"Apple Inc.\",\n      \"asn\": 714,\n      \"website\": \"https://www.apple.com/support/systemstatus/\"\n    }\n  ]\n}"
+		}
+	],
+	"cfExtendedDescription": "",
+	"html_id": "radar-entities",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {},
+		"required_props": [],
+		"optional_props": [],
+		"objects": [],
+		"example": "{}",
+		"title": "Radar entities",
+		"description": "Metadata information on locations and autonomous systems (AS). (Beta)"
+	}
+}
