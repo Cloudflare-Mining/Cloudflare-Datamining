@@ -1,0 +1,4544 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/radar/http",
+	"title": "Radar HTTP",
+	"description": "Shows HTTP requests traffic data. (Beta)",
+	"type": "object",
+	"links": [
+		{
+			"title": "Get a summary of device types",
+			"description": "Percentage distribution of traffic per device type.",
+			"rel": "collection",
+			"href": "radar/http/summary/device_type",
+			"method": "GET",
+			"cfOwnership": "radar",
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.api.user.read"
+				]
+			},
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "radar-http-get-a-summary-of-device-types",
+			"uri": "radar/http/summary/device_type",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/http/summary/device_type?name=main_series&dateRange=7d&dateStart=2022-08-01T09:58:33Z&dateEnd=2022-09-01T09:58:33Z&asn=15169&location=US,CA&botClass=LIKELY_AUTOMATED&format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"name": {
+						"type": "array",
+						"example": "[\n  \"main_series\"\n]",
+						"items": {
+							"type": "string",
+							"example": "main_series"
+						},
+						"description": "Array of names that will be used to name the series in responses."
+					},
+					"dateRange": {
+						"type": "array",
+						"example": "[\n  \"7d\"\n]",
+						"items": {
+							"type": "string",
+							"enum": [
+								"1d",
+								"7d",
+								"14d",
+								"28d",
+								"1dControl",
+								"7dControl",
+								"14dControl",
+								"28dControl"
+							],
+							"example": "7d"
+						},
+						"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+						"enum": [
+							"1d",
+							"7d",
+							"14d",
+							"28d",
+							"1dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl"
+						]
+					},
+					"dateStart": {
+						"type": "array",
+						"example": "[\n  \"2022-08-01T09:58:33Z\"\n]",
+						"items": {
+							"type": "string",
+							"format": "date-time",
+							"example": "2022-08-01T09:58:33Z"
+						},
+						"description": "Array of datetimes to filter the start of a series."
+					},
+					"dateEnd": {
+						"type": "array",
+						"example": "[\n  \"2022-09-01T09:58:33Z\"\n]",
+						"items": {
+							"type": "string",
+							"format": "date-time",
+							"example": "2022-09-01T09:58:33Z"
+						},
+						"description": "Array of datetimes to filter the end of a series."
+					},
+					"asn": {
+						"type": "array",
+						"example": "[\n  \"15169\"\n]",
+						"items": {
+							"type": "string",
+							"example": "15169"
+						},
+						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `[-174, 3356]` excludes results from AS174, but includes results from AS3356."
+					},
+					"location": {
+						"type": "array",
+						"example": "[\n  \"US,CA\"\n]",
+						"items": {
+							"type": "string",
+							"example": "US,CA"
+						},
+						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `[-US, PT]` excludes results from the US, but includes results from PT."
+					},
+					"botClass": {
+						"type": "array",
+						"example": "[\n  \"LIKELY_AUTOMATED\"\n]",
+						"items": {
+							"type": "string",
+							"enum": [
+								"LIKELY_AUTOMATED",
+								"LIKELY_HUMAN"
+							],
+							"example": "LIKELY_AUTOMATED"
+						},
+						"description": "Filter for bot class. Refer to [Bot Groupings](https://developers.cloudflare.com/bots/concepts/bot-score#bot-groupings).",
+						"enum": [
+							"LIKELY_AUTOMATED",
+							"LIKELY_HUMAN"
+						]
+					},
+					"format": {
+						"type": "string",
+						"example": "\"json\"",
+						"default": "json",
+						"enum": [
+							"json",
+							"csv"
+						],
+						"description": "Format results are returned in."
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"name",
+					"dateRange",
+					"dateStart",
+					"dateEnd",
+					"asn",
+					"location",
+					"botClass",
+					"format"
+				],
+				"objects": [],
+				"example": "{\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"botClass\": [\n    \"LIKELY_AUTOMATED\"\n  ],\n  \"format\": \"json\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"meta\": {},\n  \"result\": {\n    \"summary_0\": {\n      \"desktop\": \"65\",\n      \"mobile\": \"30\",\n      \"other\": \"5\"\n    }\n  }\n}"
+		},
+		{
+			"title": "Get a summary of HTTP protocols",
+			"description": "Percentage distribution of traffic per HTTP protocol.",
+			"rel": "collection",
+			"href": "radar/http/summary/http_protocol",
+			"method": "GET",
+			"cfOwnership": "radar",
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.api.user.read"
+				]
+			},
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "radar-http-get-a-summary-of-http-protocols",
+			"uri": "radar/http/summary/http_protocol",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/http/summary/http_protocol?name=main_series&dateRange=7d&dateStart=2022-08-01T09:58:33Z&dateEnd=2022-09-01T09:58:33Z&asn=15169&location=US,CA&botClass=LIKELY_AUTOMATED&format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"name": {
+						"type": "array",
+						"example": "[\n  \"main_series\"\n]",
+						"items": {
+							"type": "string",
+							"example": "main_series"
+						},
+						"description": "Array of names that will be used to name the series in responses."
+					},
+					"dateRange": {
+						"type": "array",
+						"example": "[\n  \"7d\"\n]",
+						"items": {
+							"type": "string",
+							"enum": [
+								"1d",
+								"7d",
+								"14d",
+								"28d",
+								"1dControl",
+								"7dControl",
+								"14dControl",
+								"28dControl"
+							],
+							"example": "7d"
+						},
+						"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+						"enum": [
+							"1d",
+							"7d",
+							"14d",
+							"28d",
+							"1dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl"
+						]
+					},
+					"dateStart": {
+						"type": "array",
+						"example": "[\n  \"2022-08-01T09:58:33Z\"\n]",
+						"items": {
+							"type": "string",
+							"format": "date-time",
+							"example": "2022-08-01T09:58:33Z"
+						},
+						"description": "Array of datetimes to filter the start of a series."
+					},
+					"dateEnd": {
+						"type": "array",
+						"example": "[\n  \"2022-09-01T09:58:33Z\"\n]",
+						"items": {
+							"type": "string",
+							"format": "date-time",
+							"example": "2022-09-01T09:58:33Z"
+						},
+						"description": "Array of datetimes to filter the end of a series."
+					},
+					"asn": {
+						"type": "array",
+						"example": "[\n  \"15169\"\n]",
+						"items": {
+							"type": "string",
+							"example": "15169"
+						},
+						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `[-174, 3356]` excludes results from AS174, but includes results from AS3356."
+					},
+					"location": {
+						"type": "array",
+						"example": "[\n  \"US,CA\"\n]",
+						"items": {
+							"type": "string",
+							"example": "US,CA"
+						},
+						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `[-US, PT]` excludes results from the US, but includes results from PT."
+					},
+					"botClass": {
+						"type": "array",
+						"example": "[\n  \"LIKELY_AUTOMATED\"\n]",
+						"items": {
+							"type": "string",
+							"enum": [
+								"LIKELY_AUTOMATED",
+								"LIKELY_HUMAN"
+							],
+							"example": "LIKELY_AUTOMATED"
+						},
+						"description": "Filter for bot class. Refer to [Bot Groupings](https://developers.cloudflare.com/bots/concepts/bot-score#bot-groupings).",
+						"enum": [
+							"LIKELY_AUTOMATED",
+							"LIKELY_HUMAN"
+						]
+					},
+					"format": {
+						"type": "string",
+						"example": "\"json\"",
+						"default": "json",
+						"enum": [
+							"json",
+							"csv"
+						],
+						"description": "Format results are returned in."
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"name",
+					"dateRange",
+					"dateStart",
+					"dateEnd",
+					"asn",
+					"location",
+					"botClass",
+					"format"
+				],
+				"objects": [],
+				"example": "{\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"botClass\": [\n    \"LIKELY_AUTOMATED\"\n  ],\n  \"format\": \"json\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"meta\": {},\n  \"result\": {\n    \"summary_0\": {\n      \"http\": \"99\",\n      \"https\": \"1\"\n    }\n  }\n}"
+		},
+		{
+			"title": "Get a summary of HTTP versions",
+			"description": "Percentage distribution of traffic per HTTP protocol version.",
+			"rel": "collection",
+			"href": "radar/http/summary/http_version",
+			"method": "GET",
+			"cfOwnership": "radar",
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.api.user.read"
+				]
+			},
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "radar-http-get-a-summary-of-http-versions",
+			"uri": "radar/http/summary/http_version",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/http/summary/http_version?name=main_series&dateRange=7d&dateStart=2022-08-01T09:58:33Z&dateEnd=2022-09-01T09:58:33Z&asn=15169&location=US,CA&botClass=LIKELY_AUTOMATED&format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"name": {
+						"type": "array",
+						"example": "[\n  \"main_series\"\n]",
+						"items": {
+							"type": "string",
+							"example": "main_series"
+						},
+						"description": "Array of names that will be used to name the series in responses."
+					},
+					"dateRange": {
+						"type": "array",
+						"example": "[\n  \"7d\"\n]",
+						"items": {
+							"type": "string",
+							"enum": [
+								"1d",
+								"7d",
+								"14d",
+								"28d",
+								"1dControl",
+								"7dControl",
+								"14dControl",
+								"28dControl"
+							],
+							"example": "7d"
+						},
+						"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+						"enum": [
+							"1d",
+							"7d",
+							"14d",
+							"28d",
+							"1dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl"
+						]
+					},
+					"dateStart": {
+						"type": "array",
+						"example": "[\n  \"2022-08-01T09:58:33Z\"\n]",
+						"items": {
+							"type": "string",
+							"format": "date-time",
+							"example": "2022-08-01T09:58:33Z"
+						},
+						"description": "Array of datetimes to filter the start of a series."
+					},
+					"dateEnd": {
+						"type": "array",
+						"example": "[\n  \"2022-09-01T09:58:33Z\"\n]",
+						"items": {
+							"type": "string",
+							"format": "date-time",
+							"example": "2022-09-01T09:58:33Z"
+						},
+						"description": "Array of datetimes to filter the end of a series."
+					},
+					"asn": {
+						"type": "array",
+						"example": "[\n  \"15169\"\n]",
+						"items": {
+							"type": "string",
+							"example": "15169"
+						},
+						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `[-174, 3356]` excludes results from AS174, but includes results from AS3356."
+					},
+					"location": {
+						"type": "array",
+						"example": "[\n  \"US,CA\"\n]",
+						"items": {
+							"type": "string",
+							"example": "US,CA"
+						},
+						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `[-US, PT]` excludes results from the US, but includes results from PT."
+					},
+					"botClass": {
+						"type": "array",
+						"example": "[\n  \"LIKELY_AUTOMATED\"\n]",
+						"items": {
+							"type": "string",
+							"enum": [
+								"LIKELY_AUTOMATED",
+								"LIKELY_HUMAN"
+							],
+							"example": "LIKELY_AUTOMATED"
+						},
+						"description": "Filter for bot class. Refer to [Bot Groupings](https://developers.cloudflare.com/bots/concepts/bot-score#bot-groupings).",
+						"enum": [
+							"LIKELY_AUTOMATED",
+							"LIKELY_HUMAN"
+						]
+					},
+					"format": {
+						"type": "string",
+						"example": "\"json\"",
+						"default": "json",
+						"enum": [
+							"json",
+							"csv"
+						],
+						"description": "Format results are returned in."
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"name",
+					"dateRange",
+					"dateStart",
+					"dateEnd",
+					"asn",
+					"location",
+					"botClass",
+					"format"
+				],
+				"objects": [],
+				"example": "{\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"botClass\": [\n    \"LIKELY_AUTOMATED\"\n  ],\n  \"format\": \"json\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"meta\": {},\n  \"result\": {\n    \"summary_0\": {\n      \"HTTP/1.x\": \"1\",\n      \"HTTP/2\": \"39\",\n      \"HTTP/3\": \"60\"\n    }\n  }\n}"
+		},
+		{
+			"title": "Get a summary of bot classes",
+			"description": "Percentage distribution of traffic classified as automated or human.",
+			"rel": "collection",
+			"href": "radar/http/summary/bot_class",
+			"method": "GET",
+			"cfOwnership": "radar",
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.api.user.read"
+				]
+			},
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "radar-http-get-a-summary-of-bot-classes",
+			"uri": "radar/http/summary/bot_class",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/http/summary/bot_class?name=main_series&dateRange=7d&dateStart=2022-08-01T09:58:33Z&dateEnd=2022-09-01T09:58:33Z&asn=15169&location=US,CA&format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"name": {
+						"type": "array",
+						"example": "[\n  \"main_series\"\n]",
+						"items": {
+							"type": "string",
+							"example": "main_series"
+						},
+						"description": "Array of names that will be used to name the series in responses."
+					},
+					"dateRange": {
+						"type": "array",
+						"example": "[\n  \"7d\"\n]",
+						"items": {
+							"type": "string",
+							"enum": [
+								"1d",
+								"7d",
+								"14d",
+								"28d",
+								"1dControl",
+								"7dControl",
+								"14dControl",
+								"28dControl"
+							],
+							"example": "7d"
+						},
+						"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+						"enum": [
+							"1d",
+							"7d",
+							"14d",
+							"28d",
+							"1dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl"
+						]
+					},
+					"dateStart": {
+						"type": "array",
+						"example": "[\n  \"2022-08-01T09:58:33Z\"\n]",
+						"items": {
+							"type": "string",
+							"format": "date-time",
+							"example": "2022-08-01T09:58:33Z"
+						},
+						"description": "Array of datetimes to filter the start of a series."
+					},
+					"dateEnd": {
+						"type": "array",
+						"example": "[\n  \"2022-09-01T09:58:33Z\"\n]",
+						"items": {
+							"type": "string",
+							"format": "date-time",
+							"example": "2022-09-01T09:58:33Z"
+						},
+						"description": "Array of datetimes to filter the end of a series."
+					},
+					"asn": {
+						"type": "array",
+						"example": "[\n  \"15169\"\n]",
+						"items": {
+							"type": "string",
+							"example": "15169"
+						},
+						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `[-174, 3356]` excludes results from AS174, but includes results from AS3356."
+					},
+					"location": {
+						"type": "array",
+						"example": "[\n  \"US,CA\"\n]",
+						"items": {
+							"type": "string",
+							"example": "US,CA"
+						},
+						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `[-US, PT]` excludes results from the US, but includes results from PT."
+					},
+					"format": {
+						"type": "string",
+						"example": "\"json\"",
+						"default": "json",
+						"enum": [
+							"json",
+							"csv"
+						],
+						"description": "Format results are returned in."
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"name",
+					"dateRange",
+					"dateStart",
+					"dateEnd",
+					"asn",
+					"location",
+					"format"
+				],
+				"objects": [],
+				"example": "{\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"format\": \"json\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"meta\": {},\n  \"result\": {\n    \"summary_0\": {\n      \"human\": \"65\",\n      \"bot\": \"35\"\n    }\n  }\n}"
+		},
+		{
+			"title": "Get a summary of IP versions",
+			"description": "Percentage distribution of traffic per IP protocol version.",
+			"rel": "collection",
+			"href": "radar/http/summary/ip_version",
+			"method": "GET",
+			"cfOwnership": "radar",
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.api.user.read"
+				]
+			},
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "radar-http-get-a-summary-of-ip-versions",
+			"uri": "radar/http/summary/ip_version",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/http/summary/ip_version?name=main_series&dateRange=7d&dateStart=2022-08-01T09:58:33Z&dateEnd=2022-09-01T09:58:33Z&asn=15169&location=US,CA&botClass=LIKELY_AUTOMATED&format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"name": {
+						"type": "array",
+						"example": "[\n  \"main_series\"\n]",
+						"items": {
+							"type": "string",
+							"example": "main_series"
+						},
+						"description": "Array of names that will be used to name the series in responses."
+					},
+					"dateRange": {
+						"type": "array",
+						"example": "[\n  \"7d\"\n]",
+						"items": {
+							"type": "string",
+							"enum": [
+								"1d",
+								"7d",
+								"14d",
+								"28d",
+								"1dControl",
+								"7dControl",
+								"14dControl",
+								"28dControl"
+							],
+							"example": "7d"
+						},
+						"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+						"enum": [
+							"1d",
+							"7d",
+							"14d",
+							"28d",
+							"1dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl"
+						]
+					},
+					"dateStart": {
+						"type": "array",
+						"example": "[\n  \"2022-08-01T09:58:33Z\"\n]",
+						"items": {
+							"type": "string",
+							"format": "date-time",
+							"example": "2022-08-01T09:58:33Z"
+						},
+						"description": "Array of datetimes to filter the start of a series."
+					},
+					"dateEnd": {
+						"type": "array",
+						"example": "[\n  \"2022-09-01T09:58:33Z\"\n]",
+						"items": {
+							"type": "string",
+							"format": "date-time",
+							"example": "2022-09-01T09:58:33Z"
+						},
+						"description": "Array of datetimes to filter the end of a series."
+					},
+					"asn": {
+						"type": "array",
+						"example": "[\n  \"15169\"\n]",
+						"items": {
+							"type": "string",
+							"example": "15169"
+						},
+						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `[-174, 3356]` excludes results from AS174, but includes results from AS3356."
+					},
+					"location": {
+						"type": "array",
+						"example": "[\n  \"US,CA\"\n]",
+						"items": {
+							"type": "string",
+							"example": "US,CA"
+						},
+						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `[-US, PT]` excludes results from the US, but includes results from PT."
+					},
+					"botClass": {
+						"type": "array",
+						"example": "[\n  \"LIKELY_AUTOMATED\"\n]",
+						"items": {
+							"type": "string",
+							"enum": [
+								"LIKELY_AUTOMATED",
+								"LIKELY_HUMAN"
+							],
+							"example": "LIKELY_AUTOMATED"
+						},
+						"description": "Filter for bot class. Refer to [Bot Groupings](https://developers.cloudflare.com/bots/concepts/bot-score#bot-groupings).",
+						"enum": [
+							"LIKELY_AUTOMATED",
+							"LIKELY_HUMAN"
+						]
+					},
+					"format": {
+						"type": "string",
+						"example": "\"json\"",
+						"default": "json",
+						"enum": [
+							"json",
+							"csv"
+						],
+						"description": "Format results are returned in."
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"name",
+					"dateRange",
+					"dateStart",
+					"dateEnd",
+					"asn",
+					"location",
+					"botClass",
+					"format"
+				],
+				"objects": [],
+				"example": "{\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"botClass\": [\n    \"LIKELY_AUTOMATED\"\n  ],\n  \"format\": \"json\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"meta\": {},\n  \"result\": {\n    \"summary_0\": {\n      \"IPv4\": \"65\",\n      \"IPv6\": \"35\"\n    }\n  }\n}"
+		},
+		{
+			"title": "Get a summary of TLS versions",
+			"description": "Percentage distribution of traffic per TLS protocol version.",
+			"rel": "collection",
+			"href": "radar/http/summary/tls_version",
+			"method": "GET",
+			"cfOwnership": "radar",
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.api.user.read"
+				]
+			},
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "radar-http-get-a-summary-of-tls-versions",
+			"uri": "radar/http/summary/tls_version",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/http/summary/tls_version?name=main_series&dateRange=7d&dateStart=2022-08-01T09:58:33Z&dateEnd=2022-09-01T09:58:33Z&asn=15169&location=US,CA&botClass=LIKELY_AUTOMATED&format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"name": {
+						"type": "array",
+						"example": "[\n  \"main_series\"\n]",
+						"items": {
+							"type": "string",
+							"example": "main_series"
+						},
+						"description": "Array of names that will be used to name the series in responses."
+					},
+					"dateRange": {
+						"type": "array",
+						"example": "[\n  \"7d\"\n]",
+						"items": {
+							"type": "string",
+							"enum": [
+								"1d",
+								"7d",
+								"14d",
+								"28d",
+								"1dControl",
+								"7dControl",
+								"14dControl",
+								"28dControl"
+							],
+							"example": "7d"
+						},
+						"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+						"enum": [
+							"1d",
+							"7d",
+							"14d",
+							"28d",
+							"1dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl"
+						]
+					},
+					"dateStart": {
+						"type": "array",
+						"example": "[\n  \"2022-08-01T09:58:33Z\"\n]",
+						"items": {
+							"type": "string",
+							"format": "date-time",
+							"example": "2022-08-01T09:58:33Z"
+						},
+						"description": "Array of datetimes to filter the start of a series."
+					},
+					"dateEnd": {
+						"type": "array",
+						"example": "[\n  \"2022-09-01T09:58:33Z\"\n]",
+						"items": {
+							"type": "string",
+							"format": "date-time",
+							"example": "2022-09-01T09:58:33Z"
+						},
+						"description": "Array of datetimes to filter the end of a series."
+					},
+					"asn": {
+						"type": "array",
+						"example": "[\n  \"15169\"\n]",
+						"items": {
+							"type": "string",
+							"example": "15169"
+						},
+						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `[-174, 3356]` excludes results from AS174, but includes results from AS3356."
+					},
+					"location": {
+						"type": "array",
+						"example": "[\n  \"US,CA\"\n]",
+						"items": {
+							"type": "string",
+							"example": "US,CA"
+						},
+						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `[-US, PT]` excludes results from the US, but includes results from PT."
+					},
+					"botClass": {
+						"type": "array",
+						"example": "[\n  \"LIKELY_AUTOMATED\"\n]",
+						"items": {
+							"type": "string",
+							"enum": [
+								"LIKELY_AUTOMATED",
+								"LIKELY_HUMAN"
+							],
+							"example": "LIKELY_AUTOMATED"
+						},
+						"description": "Filter for bot class. Refer to [Bot Groupings](https://developers.cloudflare.com/bots/concepts/bot-score#bot-groupings).",
+						"enum": [
+							"LIKELY_AUTOMATED",
+							"LIKELY_HUMAN"
+						]
+					},
+					"format": {
+						"type": "string",
+						"example": "\"json\"",
+						"default": "json",
+						"enum": [
+							"json",
+							"csv"
+						],
+						"description": "Format results are returned in."
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"name",
+					"dateRange",
+					"dateStart",
+					"dateEnd",
+					"asn",
+					"location",
+					"botClass",
+					"format"
+				],
+				"objects": [],
+				"example": "{\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"botClass\": [\n    \"LIKELY_AUTOMATED\"\n  ],\n  \"format\": \"json\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"meta\": {},\n  \"result\": {\n    \"summary_0\": {\n      \"TLS 1.0\": \"0.5\",\n      \"TLS 1.1\": \"0.5\",\n      \"TLS 1.2\": \"60\",\n      \"TLS 1.3\": \"10\",\n      \"TLS QUIC\": \"29\"\n    }\n  }\n}"
+		},
+		{
+			"title": "Get time series of device types",
+			"description": "Percentage distribution of traffic per device type over time.",
+			"rel": "collection",
+			"href": "radar/http/timeseries/device_type",
+			"method": "GET",
+			"cfOwnership": "radar",
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.api.user.read"
+				]
+			},
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "radar-http-get-time-series-of-device-types",
+			"uri": "radar/http/timeseries/device_type",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/http/timeseries/device_type?aggInterval=1h&name=main_series&dateRange=7d&dateStart=2022-08-01T09:58:33Z&dateEnd=2022-09-01T09:58:33Z&asn=15169&location=US,CA&botClass=LIKELY_AUTOMATED&format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"aggInterval": {
+						"type": "string",
+						"example": "\"1h\"",
+						"enum": [
+							"15m",
+							"1h",
+							"1d"
+						],
+						"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals)."
+					},
+					"name": {
+						"type": "array",
+						"example": "[\n  \"main_series\"\n]",
+						"items": {
+							"type": "string",
+							"example": "main_series"
+						},
+						"description": "Array of names that will be used to name the series in responses."
+					},
+					"dateRange": {
+						"type": "array",
+						"example": "[\n  \"7d\"\n]",
+						"items": {
+							"type": "string",
+							"enum": [
+								"1d",
+								"7d",
+								"14d",
+								"28d",
+								"1dControl",
+								"7dControl",
+								"14dControl",
+								"28dControl"
+							],
+							"example": "7d"
+						},
+						"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+						"enum": [
+							"1d",
+							"7d",
+							"14d",
+							"28d",
+							"1dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl"
+						]
+					},
+					"dateStart": {
+						"type": "array",
+						"example": "[\n  \"2022-08-01T09:58:33Z\"\n]",
+						"items": {
+							"type": "string",
+							"format": "date-time",
+							"example": "2022-08-01T09:58:33Z"
+						},
+						"description": "Array of datetimes to filter the start of a series."
+					},
+					"dateEnd": {
+						"type": "array",
+						"example": "[\n  \"2022-09-01T09:58:33Z\"\n]",
+						"items": {
+							"type": "string",
+							"format": "date-time",
+							"example": "2022-09-01T09:58:33Z"
+						},
+						"description": "Array of datetimes to filter the end of a series."
+					},
+					"asn": {
+						"type": "array",
+						"example": "[\n  \"15169\"\n]",
+						"items": {
+							"type": "string",
+							"example": "15169"
+						},
+						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `[-174, 3356]` excludes results from AS174, but includes results from AS3356."
+					},
+					"location": {
+						"type": "array",
+						"example": "[\n  \"US,CA\"\n]",
+						"items": {
+							"type": "string",
+							"example": "US,CA"
+						},
+						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `[-US, PT]` excludes results from the US, but includes results from PT."
+					},
+					"botClass": {
+						"type": "array",
+						"example": "[\n  \"LIKELY_AUTOMATED\"\n]",
+						"items": {
+							"type": "string",
+							"enum": [
+								"LIKELY_AUTOMATED",
+								"LIKELY_HUMAN"
+							],
+							"example": "LIKELY_AUTOMATED"
+						},
+						"description": "Filter for bot class. Refer to [Bot Groupings](https://developers.cloudflare.com/bots/concepts/bot-score#bot-groupings).",
+						"enum": [
+							"LIKELY_AUTOMATED",
+							"LIKELY_HUMAN"
+						]
+					},
+					"format": {
+						"type": "string",
+						"example": "\"json\"",
+						"default": "json",
+						"enum": [
+							"json",
+							"csv"
+						],
+						"description": "Format results are returned in."
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"aggInterval",
+					"name",
+					"dateRange",
+					"dateStart",
+					"dateEnd",
+					"asn",
+					"location",
+					"botClass",
+					"format"
+				],
+				"objects": [],
+				"example": "{\n  \"aggInterval\": \"1h\",\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"botClass\": [\n    \"LIKELY_AUTOMATED\"\n  ],\n  \"format\": \"json\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"meta\": {},\n  \"result\": {\n    \"serie_0\": {\n      \"timestamps\": [\n        {}\n      ],\n      \"desktop\": [\n        {}\n      ],\n      \"mobile\": [\n        {}\n      ],\n      \"other\": [\n        {}\n      ]\n    }\n  }\n}"
+		},
+		{
+			"title": "Get time series of HTTP protocols",
+			"description": "Percentage distribution of traffic per HTTP protocol over time.",
+			"rel": "collection",
+			"href": "radar/http/timeseries/http_protocol",
+			"method": "GET",
+			"cfOwnership": "radar",
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.api.user.read"
+				]
+			},
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "radar-http-get-time-series-of-http-protocols",
+			"uri": "radar/http/timeseries/http_protocol",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/http/timeseries/http_protocol?aggInterval=1h&name=main_series&dateRange=7d&dateStart=2022-08-01T09:58:33Z&dateEnd=2022-09-01T09:58:33Z&asn=15169&location=US,CA&botClass=LIKELY_AUTOMATED&format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"aggInterval": {
+						"type": "string",
+						"example": "\"1h\"",
+						"enum": [
+							"15m",
+							"1h",
+							"1d"
+						],
+						"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals)."
+					},
+					"name": {
+						"type": "array",
+						"example": "[\n  \"main_series\"\n]",
+						"items": {
+							"type": "string",
+							"example": "main_series"
+						},
+						"description": "Array of names that will be used to name the series in responses."
+					},
+					"dateRange": {
+						"type": "array",
+						"example": "[\n  \"7d\"\n]",
+						"items": {
+							"type": "string",
+							"enum": [
+								"1d",
+								"7d",
+								"14d",
+								"28d",
+								"1dControl",
+								"7dControl",
+								"14dControl",
+								"28dControl"
+							],
+							"example": "7d"
+						},
+						"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+						"enum": [
+							"1d",
+							"7d",
+							"14d",
+							"28d",
+							"1dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl"
+						]
+					},
+					"dateStart": {
+						"type": "array",
+						"example": "[\n  \"2022-08-01T09:58:33Z\"\n]",
+						"items": {
+							"type": "string",
+							"format": "date-time",
+							"example": "2022-08-01T09:58:33Z"
+						},
+						"description": "Array of datetimes to filter the start of a series."
+					},
+					"dateEnd": {
+						"type": "array",
+						"example": "[\n  \"2022-09-01T09:58:33Z\"\n]",
+						"items": {
+							"type": "string",
+							"format": "date-time",
+							"example": "2022-09-01T09:58:33Z"
+						},
+						"description": "Array of datetimes to filter the end of a series."
+					},
+					"asn": {
+						"type": "array",
+						"example": "[\n  \"15169\"\n]",
+						"items": {
+							"type": "string",
+							"example": "15169"
+						},
+						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `[-174, 3356]` excludes results from AS174, but includes results from AS3356."
+					},
+					"location": {
+						"type": "array",
+						"example": "[\n  \"US,CA\"\n]",
+						"items": {
+							"type": "string",
+							"example": "US,CA"
+						},
+						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `[-US, PT]` excludes results from the US, but includes results from PT."
+					},
+					"botClass": {
+						"type": "array",
+						"example": "[\n  \"LIKELY_AUTOMATED\"\n]",
+						"items": {
+							"type": "string",
+							"enum": [
+								"LIKELY_AUTOMATED",
+								"LIKELY_HUMAN"
+							],
+							"example": "LIKELY_AUTOMATED"
+						},
+						"description": "Filter for bot class. Refer to [Bot Groupings](https://developers.cloudflare.com/bots/concepts/bot-score#bot-groupings).",
+						"enum": [
+							"LIKELY_AUTOMATED",
+							"LIKELY_HUMAN"
+						]
+					},
+					"format": {
+						"type": "string",
+						"example": "\"json\"",
+						"default": "json",
+						"enum": [
+							"json",
+							"csv"
+						],
+						"description": "Format results are returned in."
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"aggInterval",
+					"name",
+					"dateRange",
+					"dateStart",
+					"dateEnd",
+					"asn",
+					"location",
+					"botClass",
+					"format"
+				],
+				"objects": [],
+				"example": "{\n  \"aggInterval\": \"1h\",\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"botClass\": [\n    \"LIKELY_AUTOMATED\"\n  ],\n  \"format\": \"json\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"meta\": {},\n  \"result\": {\n    \"serie_0\": {\n      \"timestamps\": [\n        {}\n      ],\n      \"http\": [\n        {}\n      ],\n      \"https\": [\n        {}\n      ]\n    }\n  }\n}"
+		},
+		{
+			"title": "Get time series of HTTP versions",
+			"description": "Percentage distribution of traffic per HTTP protocol version over time.",
+			"rel": "collection",
+			"href": "radar/http/timeseries/http_version",
+			"method": "GET",
+			"cfOwnership": "radar",
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.api.user.read"
+				]
+			},
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "radar-http-get-time-series-of-http-versions",
+			"uri": "radar/http/timeseries/http_version",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/http/timeseries/http_version?aggInterval=1h&name=main_series&dateRange=7d&dateStart=2022-08-01T09:58:33Z&dateEnd=2022-09-01T09:58:33Z&asn=15169&location=US,CA&botClass=LIKELY_AUTOMATED&format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"aggInterval": {
+						"type": "string",
+						"example": "\"1h\"",
+						"enum": [
+							"15m",
+							"1h",
+							"1d"
+						],
+						"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals)."
+					},
+					"name": {
+						"type": "array",
+						"example": "[\n  \"main_series\"\n]",
+						"items": {
+							"type": "string",
+							"example": "main_series"
+						},
+						"description": "Array of names that will be used to name the series in responses."
+					},
+					"dateRange": {
+						"type": "array",
+						"example": "[\n  \"7d\"\n]",
+						"items": {
+							"type": "string",
+							"enum": [
+								"1d",
+								"7d",
+								"14d",
+								"28d",
+								"1dControl",
+								"7dControl",
+								"14dControl",
+								"28dControl"
+							],
+							"example": "7d"
+						},
+						"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+						"enum": [
+							"1d",
+							"7d",
+							"14d",
+							"28d",
+							"1dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl"
+						]
+					},
+					"dateStart": {
+						"type": "array",
+						"example": "[\n  \"2022-08-01T09:58:33Z\"\n]",
+						"items": {
+							"type": "string",
+							"format": "date-time",
+							"example": "2022-08-01T09:58:33Z"
+						},
+						"description": "Array of datetimes to filter the start of a series."
+					},
+					"dateEnd": {
+						"type": "array",
+						"example": "[\n  \"2022-09-01T09:58:33Z\"\n]",
+						"items": {
+							"type": "string",
+							"format": "date-time",
+							"example": "2022-09-01T09:58:33Z"
+						},
+						"description": "Array of datetimes to filter the end of a series."
+					},
+					"asn": {
+						"type": "array",
+						"example": "[\n  \"15169\"\n]",
+						"items": {
+							"type": "string",
+							"example": "15169"
+						},
+						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `[-174, 3356]` excludes results from AS174, but includes results from AS3356."
+					},
+					"location": {
+						"type": "array",
+						"example": "[\n  \"US,CA\"\n]",
+						"items": {
+							"type": "string",
+							"example": "US,CA"
+						},
+						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `[-US, PT]` excludes results from the US, but includes results from PT."
+					},
+					"botClass": {
+						"type": "array",
+						"example": "[\n  \"LIKELY_AUTOMATED\"\n]",
+						"items": {
+							"type": "string",
+							"enum": [
+								"LIKELY_AUTOMATED",
+								"LIKELY_HUMAN"
+							],
+							"example": "LIKELY_AUTOMATED"
+						},
+						"description": "Filter for bot class. Refer to [Bot Groupings](https://developers.cloudflare.com/bots/concepts/bot-score#bot-groupings).",
+						"enum": [
+							"LIKELY_AUTOMATED",
+							"LIKELY_HUMAN"
+						]
+					},
+					"format": {
+						"type": "string",
+						"example": "\"json\"",
+						"default": "json",
+						"enum": [
+							"json",
+							"csv"
+						],
+						"description": "Format results are returned in."
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"aggInterval",
+					"name",
+					"dateRange",
+					"dateStart",
+					"dateEnd",
+					"asn",
+					"location",
+					"botClass",
+					"format"
+				],
+				"objects": [],
+				"example": "{\n  \"aggInterval\": \"1h\",\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"botClass\": [\n    \"LIKELY_AUTOMATED\"\n  ],\n  \"format\": \"json\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"meta\": {},\n  \"result\": {\n    \"serie_0\": {\n      \"timestamps\": [\n        {}\n      ],\n      \"HTTP/1.x\": [\n        {}\n      ],\n      \"HTTP/2\": [\n        {}\n      ],\n      \"HTTP/3\": [\n        {}\n      ]\n    }\n  }\n}"
+		},
+		{
+			"title": "Get time series of bot classes",
+			"description": "Percentage distribution of traffic classified as automated or human over time.",
+			"rel": "collection",
+			"href": "radar/http/timeseries/bot_class",
+			"method": "GET",
+			"cfOwnership": "radar",
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.api.user.read"
+				]
+			},
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "radar-http-get-time-series-of-bot-classes",
+			"uri": "radar/http/timeseries/bot_class",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/http/timeseries/bot_class?aggInterval=1h&name=main_series&dateRange=7d&dateStart=2022-08-01T09:58:33Z&dateEnd=2022-09-01T09:58:33Z&asn=15169&location=US,CA&format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"aggInterval": {
+						"type": "string",
+						"example": "\"1h\"",
+						"enum": [
+							"15m",
+							"1h",
+							"1d"
+						],
+						"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals)."
+					},
+					"name": {
+						"type": "array",
+						"example": "[\n  \"main_series\"\n]",
+						"items": {
+							"type": "string",
+							"example": "main_series"
+						},
+						"description": "Array of names that will be used to name the series in responses."
+					},
+					"dateRange": {
+						"type": "array",
+						"example": "[\n  \"7d\"\n]",
+						"items": {
+							"type": "string",
+							"enum": [
+								"1d",
+								"7d",
+								"14d",
+								"28d",
+								"1dControl",
+								"7dControl",
+								"14dControl",
+								"28dControl"
+							],
+							"example": "7d"
+						},
+						"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+						"enum": [
+							"1d",
+							"7d",
+							"14d",
+							"28d",
+							"1dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl"
+						]
+					},
+					"dateStart": {
+						"type": "array",
+						"example": "[\n  \"2022-08-01T09:58:33Z\"\n]",
+						"items": {
+							"type": "string",
+							"format": "date-time",
+							"example": "2022-08-01T09:58:33Z"
+						},
+						"description": "Array of datetimes to filter the start of a series."
+					},
+					"dateEnd": {
+						"type": "array",
+						"example": "[\n  \"2022-09-01T09:58:33Z\"\n]",
+						"items": {
+							"type": "string",
+							"format": "date-time",
+							"example": "2022-09-01T09:58:33Z"
+						},
+						"description": "Array of datetimes to filter the end of a series."
+					},
+					"asn": {
+						"type": "array",
+						"example": "[\n  \"15169\"\n]",
+						"items": {
+							"type": "string",
+							"example": "15169"
+						},
+						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `[-174, 3356]` excludes results from AS174, but includes results from AS3356."
+					},
+					"location": {
+						"type": "array",
+						"example": "[\n  \"US,CA\"\n]",
+						"items": {
+							"type": "string",
+							"example": "US,CA"
+						},
+						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `[-US, PT]` excludes results from the US, but includes results from PT."
+					},
+					"format": {
+						"type": "string",
+						"example": "\"json\"",
+						"default": "json",
+						"enum": [
+							"json",
+							"csv"
+						],
+						"description": "Format results are returned in."
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"aggInterval",
+					"name",
+					"dateRange",
+					"dateStart",
+					"dateEnd",
+					"asn",
+					"location",
+					"format"
+				],
+				"objects": [],
+				"example": "{\n  \"aggInterval\": \"1h\",\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"format\": \"json\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"meta\": {},\n  \"result\": {\n    \"serie_0\": {\n      \"timestamps\": [\n        {}\n      ],\n      \"human\": [\n        {}\n      ],\n      \"bot\": [\n        {}\n      ]\n    }\n  }\n}"
+		},
+		{
+			"title": "Get time series of IP versions",
+			"description": "Percentage distribution of traffic per IP protocol version over time.",
+			"rel": "collection",
+			"href": "radar/http/timeseries/ip_version",
+			"method": "GET",
+			"cfOwnership": "radar",
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.api.user.read"
+				]
+			},
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "radar-http-get-time-series-of-ip-versions",
+			"uri": "radar/http/timeseries/ip_version",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/http/timeseries/ip_version?aggInterval=1h&name=main_series&dateRange=7d&dateStart=2022-08-01T09:58:33Z&dateEnd=2022-09-01T09:58:33Z&asn=15169&location=US,CA&botClass=LIKELY_AUTOMATED&format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"aggInterval": {
+						"type": "string",
+						"example": "\"1h\"",
+						"enum": [
+							"15m",
+							"1h",
+							"1d"
+						],
+						"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals)."
+					},
+					"name": {
+						"type": "array",
+						"example": "[\n  \"main_series\"\n]",
+						"items": {
+							"type": "string",
+							"example": "main_series"
+						},
+						"description": "Array of names that will be used to name the series in responses."
+					},
+					"dateRange": {
+						"type": "array",
+						"example": "[\n  \"7d\"\n]",
+						"items": {
+							"type": "string",
+							"enum": [
+								"1d",
+								"7d",
+								"14d",
+								"28d",
+								"1dControl",
+								"7dControl",
+								"14dControl",
+								"28dControl"
+							],
+							"example": "7d"
+						},
+						"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+						"enum": [
+							"1d",
+							"7d",
+							"14d",
+							"28d",
+							"1dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl"
+						]
+					},
+					"dateStart": {
+						"type": "array",
+						"example": "[\n  \"2022-08-01T09:58:33Z\"\n]",
+						"items": {
+							"type": "string",
+							"format": "date-time",
+							"example": "2022-08-01T09:58:33Z"
+						},
+						"description": "Array of datetimes to filter the start of a series."
+					},
+					"dateEnd": {
+						"type": "array",
+						"example": "[\n  \"2022-09-01T09:58:33Z\"\n]",
+						"items": {
+							"type": "string",
+							"format": "date-time",
+							"example": "2022-09-01T09:58:33Z"
+						},
+						"description": "Array of datetimes to filter the end of a series."
+					},
+					"asn": {
+						"type": "array",
+						"example": "[\n  \"15169\"\n]",
+						"items": {
+							"type": "string",
+							"example": "15169"
+						},
+						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `[-174, 3356]` excludes results from AS174, but includes results from AS3356."
+					},
+					"location": {
+						"type": "array",
+						"example": "[\n  \"US,CA\"\n]",
+						"items": {
+							"type": "string",
+							"example": "US,CA"
+						},
+						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `[-US, PT]` excludes results from the US, but includes results from PT."
+					},
+					"botClass": {
+						"type": "array",
+						"example": "[\n  \"LIKELY_AUTOMATED\"\n]",
+						"items": {
+							"type": "string",
+							"enum": [
+								"LIKELY_AUTOMATED",
+								"LIKELY_HUMAN"
+							],
+							"example": "LIKELY_AUTOMATED"
+						},
+						"description": "Filter for bot class. Refer to [Bot Groupings](https://developers.cloudflare.com/bots/concepts/bot-score#bot-groupings).",
+						"enum": [
+							"LIKELY_AUTOMATED",
+							"LIKELY_HUMAN"
+						]
+					},
+					"format": {
+						"type": "string",
+						"example": "\"json\"",
+						"default": "json",
+						"enum": [
+							"json",
+							"csv"
+						],
+						"description": "Format results are returned in."
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"aggInterval",
+					"name",
+					"dateRange",
+					"dateStart",
+					"dateEnd",
+					"asn",
+					"location",
+					"botClass",
+					"format"
+				],
+				"objects": [],
+				"example": "{\n  \"aggInterval\": \"1h\",\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"botClass\": [\n    \"LIKELY_AUTOMATED\"\n  ],\n  \"format\": \"json\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"meta\": {},\n  \"result\": {\n    \"serie_0\": {\n      \"timestamps\": [\n        {}\n      ],\n      \"IPv4\": [\n        {}\n      ],\n      \"IPv6\": [\n        {}\n      ]\n    }\n  }\n}"
+		},
+		{
+			"title": "Get time series of TLS versions",
+			"description": "Percentage distribution of traffic per TLS protocol version over time.",
+			"rel": "collection",
+			"href": "radar/http/timeseries/tls_version",
+			"method": "GET",
+			"cfOwnership": "radar",
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.api.user.read"
+				]
+			},
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "radar-http-get-time-series-of-tls-versions",
+			"uri": "radar/http/timeseries/tls_version",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/http/timeseries/tls_version?aggInterval=1h&name=main_series&dateRange=7d&dateStart=2022-08-01T09:58:33Z&dateEnd=2022-09-01T09:58:33Z&asn=15169&location=US,CA&botClass=LIKELY_AUTOMATED&format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"aggInterval": {
+						"type": "string",
+						"example": "\"1h\"",
+						"enum": [
+							"15m",
+							"1h",
+							"1d"
+						],
+						"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals)."
+					},
+					"name": {
+						"type": "array",
+						"example": "[\n  \"main_series\"\n]",
+						"items": {
+							"type": "string",
+							"example": "main_series"
+						},
+						"description": "Array of names that will be used to name the series in responses."
+					},
+					"dateRange": {
+						"type": "array",
+						"example": "[\n  \"7d\"\n]",
+						"items": {
+							"type": "string",
+							"enum": [
+								"1d",
+								"7d",
+								"14d",
+								"28d",
+								"1dControl",
+								"7dControl",
+								"14dControl",
+								"28dControl"
+							],
+							"example": "7d"
+						},
+						"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+						"enum": [
+							"1d",
+							"7d",
+							"14d",
+							"28d",
+							"1dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl"
+						]
+					},
+					"dateStart": {
+						"type": "array",
+						"example": "[\n  \"2022-08-01T09:58:33Z\"\n]",
+						"items": {
+							"type": "string",
+							"format": "date-time",
+							"example": "2022-08-01T09:58:33Z"
+						},
+						"description": "Array of datetimes to filter the start of a series."
+					},
+					"dateEnd": {
+						"type": "array",
+						"example": "[\n  \"2022-09-01T09:58:33Z\"\n]",
+						"items": {
+							"type": "string",
+							"format": "date-time",
+							"example": "2022-09-01T09:58:33Z"
+						},
+						"description": "Array of datetimes to filter the end of a series."
+					},
+					"asn": {
+						"type": "array",
+						"example": "[\n  \"15169\"\n]",
+						"items": {
+							"type": "string",
+							"example": "15169"
+						},
+						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `[-174, 3356]` excludes results from AS174, but includes results from AS3356."
+					},
+					"location": {
+						"type": "array",
+						"example": "[\n  \"US,CA\"\n]",
+						"items": {
+							"type": "string",
+							"example": "US,CA"
+						},
+						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `[-US, PT]` excludes results from the US, but includes results from PT."
+					},
+					"botClass": {
+						"type": "array",
+						"example": "[\n  \"LIKELY_AUTOMATED\"\n]",
+						"items": {
+							"type": "string",
+							"enum": [
+								"LIKELY_AUTOMATED",
+								"LIKELY_HUMAN"
+							],
+							"example": "LIKELY_AUTOMATED"
+						},
+						"description": "Filter for bot class. Refer to [Bot Groupings](https://developers.cloudflare.com/bots/concepts/bot-score#bot-groupings).",
+						"enum": [
+							"LIKELY_AUTOMATED",
+							"LIKELY_HUMAN"
+						]
+					},
+					"format": {
+						"type": "string",
+						"example": "\"json\"",
+						"default": "json",
+						"enum": [
+							"json",
+							"csv"
+						],
+						"description": "Format results are returned in."
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"aggInterval",
+					"name",
+					"dateRange",
+					"dateStart",
+					"dateEnd",
+					"asn",
+					"location",
+					"botClass",
+					"format"
+				],
+				"objects": [],
+				"example": "{\n  \"aggInterval\": \"1h\",\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"botClass\": [\n    \"LIKELY_AUTOMATED\"\n  ],\n  \"format\": \"json\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"meta\": {},\n  \"result\": {\n    \"serie_0\": {\n      \"timestamps\": [\n        {}\n      ],\n      \"TLS 1.0\": [\n        {}\n      ],\n      \"TLS 1.1\": [\n        {}\n      ],\n      \"TLS 1.2\": [\n        {}\n      ],\n      \"TLS 1.3\": [\n        {}\n      ],\n      \"TLS QUIC\": [\n        {}\n      ]\n    }\n  }\n}"
+		},
+		{
+			"title": "Get time series of user agents",
+			"description": "Percentage distribution of traffic of the top user agents in the selected time range, over time.",
+			"rel": "collection",
+			"href": "radar/http/timeseries/browser",
+			"method": "GET",
+			"cfOwnership": "radar",
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.api.user.read"
+				]
+			},
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "radar-http-get-time-series-of-user-agents",
+			"uri": "radar/http/timeseries/browser",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/http/timeseries/browser?aggInterval=1h&name=main_series&dateRange=7d&dateStart=2022-08-01T09:58:33Z&dateEnd=2022-09-01T09:58:33Z&asn=15169&location=US,CA&botClass=LIKELY_AUTOMATED&limitPerGroup=2&format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"aggInterval": {
+						"type": "string",
+						"example": "\"1h\"",
+						"enum": [
+							"15m",
+							"1h",
+							"1d"
+						],
+						"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals)."
+					},
+					"name": {
+						"type": "array",
+						"example": "[\n  \"main_series\"\n]",
+						"items": {
+							"type": "string",
+							"example": "main_series"
+						},
+						"description": "Array of names that will be used to name the series in responses."
+					},
+					"dateRange": {
+						"type": "array",
+						"example": "[\n  \"7d\"\n]",
+						"items": {
+							"type": "string",
+							"enum": [
+								"1d",
+								"7d",
+								"14d",
+								"28d",
+								"1dControl",
+								"7dControl",
+								"14dControl",
+								"28dControl"
+							],
+							"example": "7d"
+						},
+						"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+						"enum": [
+							"1d",
+							"7d",
+							"14d",
+							"28d",
+							"1dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl"
+						]
+					},
+					"dateStart": {
+						"type": "array",
+						"example": "[\n  \"2022-08-01T09:58:33Z\"\n]",
+						"items": {
+							"type": "string",
+							"format": "date-time",
+							"example": "2022-08-01T09:58:33Z"
+						},
+						"description": "Array of datetimes to filter the start of a series."
+					},
+					"dateEnd": {
+						"type": "array",
+						"example": "[\n  \"2022-09-01T09:58:33Z\"\n]",
+						"items": {
+							"type": "string",
+							"format": "date-time",
+							"example": "2022-09-01T09:58:33Z"
+						},
+						"description": "Array of datetimes to filter the end of a series."
+					},
+					"asn": {
+						"type": "array",
+						"example": "[\n  \"15169\"\n]",
+						"items": {
+							"type": "string",
+							"example": "15169"
+						},
+						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `[-174, 3356]` excludes results from AS174, but includes results from AS3356."
+					},
+					"location": {
+						"type": "array",
+						"example": "[\n  \"US,CA\"\n]",
+						"items": {
+							"type": "string",
+							"example": "US,CA"
+						},
+						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `[-US, PT]` excludes results from the US, but includes results from PT."
+					},
+					"botClass": {
+						"type": "array",
+						"example": "[\n  \"LIKELY_AUTOMATED\"\n]",
+						"items": {
+							"type": "string",
+							"enum": [
+								"LIKELY_AUTOMATED",
+								"LIKELY_HUMAN"
+							],
+							"example": "LIKELY_AUTOMATED"
+						},
+						"description": "Filter for bot class. Refer to [Bot Groupings](https://developers.cloudflare.com/bots/concepts/bot-score#bot-groupings).",
+						"enum": [
+							"LIKELY_AUTOMATED",
+							"LIKELY_HUMAN"
+						]
+					},
+					"limitPerGroup": {
+						"type": "number",
+						"example": "2",
+						"default": 2,
+						"description": "Limit the number of objects (eg browsers) to the top items over the time range."
+					},
+					"format": {
+						"type": "string",
+						"example": "\"json\"",
+						"default": "json",
+						"enum": [
+							"json",
+							"csv"
+						],
+						"description": "Format results are returned in."
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"aggInterval",
+					"name",
+					"dateRange",
+					"dateStart",
+					"dateEnd",
+					"asn",
+					"location",
+					"botClass",
+					"limitPerGroup",
+					"format"
+				],
+				"objects": [],
+				"example": "{\n  \"aggInterval\": \"1h\",\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"botClass\": [\n    \"LIKELY_AUTOMATED\"\n  ],\n  \"limitPerGroup\": 2,\n  \"format\": \"json\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"meta\": {},\n  \"result\": {\n    \"serie_0\": {\n      \"timestamps\": [\n        {}\n      ],\n      \"<browser name>\": [\n        {}\n      ]\n    }\n  }\n}"
+		},
+		{
+			"title": "Get time series of user agents aggregated in families",
+			"description": "Percentage distribution of traffic of the top user agents aggregated in families in the selected time range, over time.",
+			"rel": "collection",
+			"href": "radar/http/timeseries/browser_family",
+			"method": "GET",
+			"cfOwnership": "radar",
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.api.user.read"
+				]
+			},
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "radar-http-get-time-series-of-user-agents-aggregated-in-families",
+			"uri": "radar/http/timeseries/browser_family",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/http/timeseries/browser_family?aggInterval=1h&name=main_series&dateRange=7d&dateStart=2022-08-01T09:58:33Z&dateEnd=2022-09-01T09:58:33Z&asn=15169&location=US,CA&botClass=LIKELY_AUTOMATED&limitPerGroup=2&format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"aggInterval": {
+						"type": "string",
+						"example": "\"1h\"",
+						"enum": [
+							"15m",
+							"1h",
+							"1d"
+						],
+						"description": "Aggregation interval results should be returned in (for example, in 15 minutes or 1 hour intervals)."
+					},
+					"name": {
+						"type": "array",
+						"example": "[\n  \"main_series\"\n]",
+						"items": {
+							"type": "string",
+							"example": "main_series"
+						},
+						"description": "Array of names that will be used to name the series in responses."
+					},
+					"dateRange": {
+						"type": "array",
+						"example": "[\n  \"7d\"\n]",
+						"items": {
+							"type": "string",
+							"enum": [
+								"1d",
+								"7d",
+								"14d",
+								"28d",
+								"1dControl",
+								"7dControl",
+								"14dControl",
+								"28dControl"
+							],
+							"example": "7d"
+						},
+						"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+						"enum": [
+							"1d",
+							"7d",
+							"14d",
+							"28d",
+							"1dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl"
+						]
+					},
+					"dateStart": {
+						"type": "array",
+						"example": "[\n  \"2022-08-01T09:58:33Z\"\n]",
+						"items": {
+							"type": "string",
+							"format": "date-time",
+							"example": "2022-08-01T09:58:33Z"
+						},
+						"description": "Array of datetimes to filter the start of a series."
+					},
+					"dateEnd": {
+						"type": "array",
+						"example": "[\n  \"2022-09-01T09:58:33Z\"\n]",
+						"items": {
+							"type": "string",
+							"format": "date-time",
+							"example": "2022-09-01T09:58:33Z"
+						},
+						"description": "Array of datetimes to filter the end of a series."
+					},
+					"asn": {
+						"type": "array",
+						"example": "[\n  \"15169\"\n]",
+						"items": {
+							"type": "string",
+							"example": "15169"
+						},
+						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `[-174, 3356]` excludes results from AS174, but includes results from AS3356."
+					},
+					"location": {
+						"type": "array",
+						"example": "[\n  \"US,CA\"\n]",
+						"items": {
+							"type": "string",
+							"example": "US,CA"
+						},
+						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `[-US, PT]` excludes results from the US, but includes results from PT."
+					},
+					"botClass": {
+						"type": "array",
+						"example": "[\n  \"LIKELY_AUTOMATED\"\n]",
+						"items": {
+							"type": "string",
+							"enum": [
+								"LIKELY_AUTOMATED",
+								"LIKELY_HUMAN"
+							],
+							"example": "LIKELY_AUTOMATED"
+						},
+						"description": "Filter for bot class. Refer to [Bot Groupings](https://developers.cloudflare.com/bots/concepts/bot-score#bot-groupings).",
+						"enum": [
+							"LIKELY_AUTOMATED",
+							"LIKELY_HUMAN"
+						]
+					},
+					"limitPerGroup": {
+						"type": "number",
+						"example": "2",
+						"default": 2,
+						"description": "Limit the number of objects (eg browsers) to the top items over the time range."
+					},
+					"format": {
+						"type": "string",
+						"example": "\"json\"",
+						"default": "json",
+						"enum": [
+							"json",
+							"csv"
+						],
+						"description": "Format results are returned in."
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"aggInterval",
+					"name",
+					"dateRange",
+					"dateStart",
+					"dateEnd",
+					"asn",
+					"location",
+					"botClass",
+					"limitPerGroup",
+					"format"
+				],
+				"objects": [],
+				"example": "{\n  \"aggInterval\": \"1h\",\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"botClass\": [\n    \"LIKELY_AUTOMATED\"\n  ],\n  \"limitPerGroup\": 2,\n  \"format\": \"json\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"meta\": {},\n  \"result\": {\n    \"serie_0\": {\n      \"timestamps\": [\n        {}\n      ],\n      \"<browser name>\": [\n        {}\n      ]\n    }\n  }\n}"
+		},
+		{
+			"title": "Get top locations by bot class",
+			"description": "Get the top locations, by HTTP traffic, of the requested bot class. These two categories use Cloudflare's bot score - refer to [Bot scores])https://developers.cloudflare.com/bots/concepts/bot-score). Values are a percentage out of the total traffic.",
+			"rel": "collection",
+			"href": "radar/http/top/locations/bot_class/{#/definitions/bot_class}",
+			"method": "GET",
+			"cfOwnership": "radar",
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.api.user.read"
+				]
+			},
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "radar-http-get-top-locations-by-bot-class",
+			"uri": "radar/http/top/locations/bot_class/:bot_class",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/http/top/locations/bot_class/likely_automated?limit=5&name=main_series&dateRange=7d&dateStart=2022-08-01T09:58:33Z&dateEnd=2022-09-01T09:58:33Z&asn=15169&location=US,CA&format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"limit": {
+						"type": "number",
+						"example": "5",
+						"default": 5,
+						"description": "Limit the number of objects in the response"
+					},
+					"name": {
+						"type": "array",
+						"example": "[\n  \"main_series\"\n]",
+						"items": {
+							"type": "string",
+							"example": "main_series"
+						},
+						"description": "Array of names that will be used to name the series in responses."
+					},
+					"dateRange": {
+						"type": "array",
+						"example": "[\n  \"7d\"\n]",
+						"items": {
+							"type": "string",
+							"enum": [
+								"1d",
+								"7d",
+								"14d",
+								"28d",
+								"1dControl",
+								"7dControl",
+								"14dControl",
+								"28dControl"
+							],
+							"example": "7d"
+						},
+						"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+						"enum": [
+							"1d",
+							"7d",
+							"14d",
+							"28d",
+							"1dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl"
+						]
+					},
+					"dateStart": {
+						"type": "array",
+						"example": "[\n  \"2022-08-01T09:58:33Z\"\n]",
+						"items": {
+							"type": "string",
+							"format": "date-time",
+							"example": "2022-08-01T09:58:33Z"
+						},
+						"description": "Array of datetimes to filter the start of a series."
+					},
+					"dateEnd": {
+						"type": "array",
+						"example": "[\n  \"2022-09-01T09:58:33Z\"\n]",
+						"items": {
+							"type": "string",
+							"format": "date-time",
+							"example": "2022-09-01T09:58:33Z"
+						},
+						"description": "Array of datetimes to filter the end of a series."
+					},
+					"asn": {
+						"type": "array",
+						"example": "[\n  \"15169\"\n]",
+						"items": {
+							"type": "string",
+							"example": "15169"
+						},
+						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `[-174, 3356]` excludes results from AS174, but includes results from AS3356."
+					},
+					"location": {
+						"type": "array",
+						"example": "[\n  \"US,CA\"\n]",
+						"items": {
+							"type": "string",
+							"example": "US,CA"
+						},
+						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `[-US, PT]` excludes results from the US, but includes results from PT."
+					},
+					"format": {
+						"type": "string",
+						"example": "\"json\"",
+						"default": "json",
+						"enum": [
+							"json",
+							"csv"
+						],
+						"description": "Format results are returned in."
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"limit",
+					"name",
+					"dateRange",
+					"dateStart",
+					"dateEnd",
+					"asn",
+					"location",
+					"format"
+				],
+				"objects": [],
+				"example": "{\n  \"limit\": 5,\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"format\": \"json\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"meta\": {\n    \"confidenceInfo\": {\n      \"annotations\": [\n        {\n          \"startTime\": \"2022-09-17T10:22:57.555Z\",\n          \"endTime\": \"2022-09-17T10:22:57.555Z\"\n        }\n      ]\n    },\n    \"dateRange\": {\n      \"startTime\": \"2022-09-17T10:22:57.555Z\",\n      \"endTime\": \"2022-09-17T10:22:57.555Z\"\n    }\n  },\n  \"result\": {\n    \"top_0\": [\n      {\n        \"clientCountryAlpha2\": \"US\",\n        \"clientCountryName\": \"United States\",\n        \"value\": \"65\"\n      }\n    ]\n  }\n}"
+		},
+		{
+			"title": "Get top locations by device type",
+			"description": "Get the top locations, by HTTP traffic, of the requested device type. Values are a percentage out of the total traffic.",
+			"rel": "collection",
+			"href": "radar/http/top/locations/device_type/{#/definitions/device_type}",
+			"method": "GET",
+			"cfOwnership": "radar",
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.api.user.read"
+				]
+			},
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "radar-http-get-top-locations-by-device-type",
+			"uri": "radar/http/top/locations/device_type/:device_type",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/http/top/locations/device_type/desktop?limit=5&name=main_series&dateRange=7d&dateStart=2022-08-01T09:58:33Z&dateEnd=2022-09-01T09:58:33Z&asn=15169&location=US,CA&botClass=LIKELY_AUTOMATED&format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"limit": {
+						"type": "number",
+						"example": "5",
+						"default": 5,
+						"description": "Limit the number of objects in the response"
+					},
+					"name": {
+						"type": "array",
+						"example": "[\n  \"main_series\"\n]",
+						"items": {
+							"type": "string",
+							"example": "main_series"
+						},
+						"description": "Array of names that will be used to name the series in responses."
+					},
+					"dateRange": {
+						"type": "array",
+						"example": "[\n  \"7d\"\n]",
+						"items": {
+							"type": "string",
+							"enum": [
+								"1d",
+								"7d",
+								"14d",
+								"28d",
+								"1dControl",
+								"7dControl",
+								"14dControl",
+								"28dControl"
+							],
+							"example": "7d"
+						},
+						"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+						"enum": [
+							"1d",
+							"7d",
+							"14d",
+							"28d",
+							"1dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl"
+						]
+					},
+					"dateStart": {
+						"type": "array",
+						"example": "[\n  \"2022-08-01T09:58:33Z\"\n]",
+						"items": {
+							"type": "string",
+							"format": "date-time",
+							"example": "2022-08-01T09:58:33Z"
+						},
+						"description": "Array of datetimes to filter the start of a series."
+					},
+					"dateEnd": {
+						"type": "array",
+						"example": "[\n  \"2022-09-01T09:58:33Z\"\n]",
+						"items": {
+							"type": "string",
+							"format": "date-time",
+							"example": "2022-09-01T09:58:33Z"
+						},
+						"description": "Array of datetimes to filter the end of a series."
+					},
+					"asn": {
+						"type": "array",
+						"example": "[\n  \"15169\"\n]",
+						"items": {
+							"type": "string",
+							"example": "15169"
+						},
+						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `[-174, 3356]` excludes results from AS174, but includes results from AS3356."
+					},
+					"location": {
+						"type": "array",
+						"example": "[\n  \"US,CA\"\n]",
+						"items": {
+							"type": "string",
+							"example": "US,CA"
+						},
+						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `[-US, PT]` excludes results from the US, but includes results from PT."
+					},
+					"botClass": {
+						"type": "array",
+						"example": "[\n  \"LIKELY_AUTOMATED\"\n]",
+						"items": {
+							"type": "string",
+							"enum": [
+								"LIKELY_AUTOMATED",
+								"LIKELY_HUMAN"
+							],
+							"example": "LIKELY_AUTOMATED"
+						},
+						"description": "Filter for bot class. Refer to [Bot Groupings](https://developers.cloudflare.com/bots/concepts/bot-score#bot-groupings).",
+						"enum": [
+							"LIKELY_AUTOMATED",
+							"LIKELY_HUMAN"
+						]
+					},
+					"format": {
+						"type": "string",
+						"example": "\"json\"",
+						"default": "json",
+						"enum": [
+							"json",
+							"csv"
+						],
+						"description": "Format results are returned in."
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"limit",
+					"name",
+					"dateRange",
+					"dateStart",
+					"dateEnd",
+					"asn",
+					"location",
+					"botClass",
+					"format"
+				],
+				"objects": [],
+				"example": "{\n  \"limit\": 5,\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"botClass\": [\n    \"LIKELY_AUTOMATED\"\n  ],\n  \"format\": \"json\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"meta\": {\n    \"confidenceInfo\": {\n      \"annotations\": [\n        {\n          \"startTime\": \"2022-09-17T10:22:57.555Z\",\n          \"endTime\": \"2022-09-17T10:22:57.555Z\"\n        }\n      ]\n    },\n    \"dateRange\": {\n      \"startTime\": \"2022-09-17T10:22:57.555Z\",\n      \"endTime\": \"2022-09-17T10:22:57.555Z\"\n    }\n  },\n  \"result\": {\n    \"top_0\": [\n      {\n        \"clientCountryAlpha2\": \"US\",\n        \"clientCountryName\": \"United States\",\n        \"value\": \"65\"\n      }\n    ]\n  }\n}"
+		},
+		{
+			"title": "Get top locations by TLS version",
+			"description": "Get the top locations, by HTTP traffic, of the requested TLS protocol version. Values are a percentage out of the total traffic.",
+			"rel": "collection",
+			"href": "radar/http/top/locations/tls_version/{#/definitions/tls_version}",
+			"method": "GET",
+			"cfOwnership": "radar",
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.api.user.read"
+				]
+			},
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "radar-http-get-top-locations-by-tls-version",
+			"uri": "radar/http/top/locations/tls_version/:tls_version",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/http/top/locations/tls_version/tlsv1_0?limit=5&name=main_series&dateRange=7d&dateStart=2022-08-01T09:58:33Z&dateEnd=2022-09-01T09:58:33Z&asn=15169&location=US,CA&botClass=LIKELY_AUTOMATED&format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"limit": {
+						"type": "number",
+						"example": "5",
+						"default": 5,
+						"description": "Limit the number of objects in the response"
+					},
+					"name": {
+						"type": "array",
+						"example": "[\n  \"main_series\"\n]",
+						"items": {
+							"type": "string",
+							"example": "main_series"
+						},
+						"description": "Array of names that will be used to name the series in responses."
+					},
+					"dateRange": {
+						"type": "array",
+						"example": "[\n  \"7d\"\n]",
+						"items": {
+							"type": "string",
+							"enum": [
+								"1d",
+								"7d",
+								"14d",
+								"28d",
+								"1dControl",
+								"7dControl",
+								"14dControl",
+								"28dControl"
+							],
+							"example": "7d"
+						},
+						"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+						"enum": [
+							"1d",
+							"7d",
+							"14d",
+							"28d",
+							"1dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl"
+						]
+					},
+					"dateStart": {
+						"type": "array",
+						"example": "[\n  \"2022-08-01T09:58:33Z\"\n]",
+						"items": {
+							"type": "string",
+							"format": "date-time",
+							"example": "2022-08-01T09:58:33Z"
+						},
+						"description": "Array of datetimes to filter the start of a series."
+					},
+					"dateEnd": {
+						"type": "array",
+						"example": "[\n  \"2022-09-01T09:58:33Z\"\n]",
+						"items": {
+							"type": "string",
+							"format": "date-time",
+							"example": "2022-09-01T09:58:33Z"
+						},
+						"description": "Array of datetimes to filter the end of a series."
+					},
+					"asn": {
+						"type": "array",
+						"example": "[\n  \"15169\"\n]",
+						"items": {
+							"type": "string",
+							"example": "15169"
+						},
+						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `[-174, 3356]` excludes results from AS174, but includes results from AS3356."
+					},
+					"location": {
+						"type": "array",
+						"example": "[\n  \"US,CA\"\n]",
+						"items": {
+							"type": "string",
+							"example": "US,CA"
+						},
+						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `[-US, PT]` excludes results from the US, but includes results from PT."
+					},
+					"botClass": {
+						"type": "array",
+						"example": "[\n  \"LIKELY_AUTOMATED\"\n]",
+						"items": {
+							"type": "string",
+							"enum": [
+								"LIKELY_AUTOMATED",
+								"LIKELY_HUMAN"
+							],
+							"example": "LIKELY_AUTOMATED"
+						},
+						"description": "Filter for bot class. Refer to [Bot Groupings](https://developers.cloudflare.com/bots/concepts/bot-score#bot-groupings).",
+						"enum": [
+							"LIKELY_AUTOMATED",
+							"LIKELY_HUMAN"
+						]
+					},
+					"format": {
+						"type": "string",
+						"example": "\"json\"",
+						"default": "json",
+						"enum": [
+							"json",
+							"csv"
+						],
+						"description": "Format results are returned in."
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"limit",
+					"name",
+					"dateRange",
+					"dateStart",
+					"dateEnd",
+					"asn",
+					"location",
+					"botClass",
+					"format"
+				],
+				"objects": [],
+				"example": "{\n  \"limit\": 5,\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"botClass\": [\n    \"LIKELY_AUTOMATED\"\n  ],\n  \"format\": \"json\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"meta\": {\n    \"confidenceInfo\": {\n      \"annotations\": [\n        {\n          \"startTime\": \"2022-09-17T10:22:57.555Z\",\n          \"endTime\": \"2022-09-17T10:22:57.555Z\"\n        }\n      ]\n    },\n    \"dateRange\": {\n      \"startTime\": \"2022-09-17T10:22:57.555Z\",\n      \"endTime\": \"2022-09-17T10:22:57.555Z\"\n    }\n  },\n  \"result\": {\n    \"top_0\": [\n      {\n        \"clientCountryAlpha2\": \"US\",\n        \"clientCountryName\": \"United States\",\n        \"value\": \"65\"\n      }\n    ]\n  }\n}"
+		},
+		{
+			"title": "Get top locations by HTTP protocol",
+			"description": "Get the top locations, by HTTP traffic, of the requested HTTP protocol. Values are a percentage out of the total traffic.",
+			"rel": "collection",
+			"href": "radar/http/top/locations/http_protocol/{#/definitions/http_protocol}",
+			"method": "GET",
+			"cfOwnership": "radar",
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.api.user.read"
+				]
+			},
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "radar-http-get-top-locations-by-http-protocol",
+			"uri": "radar/http/top/locations/http_protocol/:http_protocol",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/http/top/locations/http_protocol/http?limit=5&name=main_series&dateRange=7d&dateStart=2022-08-01T09:58:33Z&dateEnd=2022-09-01T09:58:33Z&asn=15169&location=US,CA&botClass=LIKELY_AUTOMATED&format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"limit": {
+						"type": "number",
+						"example": "5",
+						"default": 5,
+						"description": "Limit the number of objects in the response"
+					},
+					"name": {
+						"type": "array",
+						"example": "[\n  \"main_series\"\n]",
+						"items": {
+							"type": "string",
+							"example": "main_series"
+						},
+						"description": "Array of names that will be used to name the series in responses."
+					},
+					"dateRange": {
+						"type": "array",
+						"example": "[\n  \"7d\"\n]",
+						"items": {
+							"type": "string",
+							"enum": [
+								"1d",
+								"7d",
+								"14d",
+								"28d",
+								"1dControl",
+								"7dControl",
+								"14dControl",
+								"28dControl"
+							],
+							"example": "7d"
+						},
+						"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+						"enum": [
+							"1d",
+							"7d",
+							"14d",
+							"28d",
+							"1dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl"
+						]
+					},
+					"dateStart": {
+						"type": "array",
+						"example": "[\n  \"2022-08-01T09:58:33Z\"\n]",
+						"items": {
+							"type": "string",
+							"format": "date-time",
+							"example": "2022-08-01T09:58:33Z"
+						},
+						"description": "Array of datetimes to filter the start of a series."
+					},
+					"dateEnd": {
+						"type": "array",
+						"example": "[\n  \"2022-09-01T09:58:33Z\"\n]",
+						"items": {
+							"type": "string",
+							"format": "date-time",
+							"example": "2022-09-01T09:58:33Z"
+						},
+						"description": "Array of datetimes to filter the end of a series."
+					},
+					"asn": {
+						"type": "array",
+						"example": "[\n  \"15169\"\n]",
+						"items": {
+							"type": "string",
+							"example": "15169"
+						},
+						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `[-174, 3356]` excludes results from AS174, but includes results from AS3356."
+					},
+					"location": {
+						"type": "array",
+						"example": "[\n  \"US,CA\"\n]",
+						"items": {
+							"type": "string",
+							"example": "US,CA"
+						},
+						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `[-US, PT]` excludes results from the US, but includes results from PT."
+					},
+					"botClass": {
+						"type": "array",
+						"example": "[\n  \"LIKELY_AUTOMATED\"\n]",
+						"items": {
+							"type": "string",
+							"enum": [
+								"LIKELY_AUTOMATED",
+								"LIKELY_HUMAN"
+							],
+							"example": "LIKELY_AUTOMATED"
+						},
+						"description": "Filter for bot class. Refer to [Bot Groupings](https://developers.cloudflare.com/bots/concepts/bot-score#bot-groupings).",
+						"enum": [
+							"LIKELY_AUTOMATED",
+							"LIKELY_HUMAN"
+						]
+					},
+					"format": {
+						"type": "string",
+						"example": "\"json\"",
+						"default": "json",
+						"enum": [
+							"json",
+							"csv"
+						],
+						"description": "Format results are returned in."
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"limit",
+					"name",
+					"dateRange",
+					"dateStart",
+					"dateEnd",
+					"asn",
+					"location",
+					"botClass",
+					"format"
+				],
+				"objects": [],
+				"example": "{\n  \"limit\": 5,\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"botClass\": [\n    \"LIKELY_AUTOMATED\"\n  ],\n  \"format\": \"json\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"meta\": {\n    \"confidenceInfo\": {\n      \"annotations\": [\n        {\n          \"startTime\": \"2022-09-17T10:22:57.555Z\",\n          \"endTime\": \"2022-09-17T10:22:57.555Z\"\n        }\n      ]\n    },\n    \"dateRange\": {\n      \"startTime\": \"2022-09-17T10:22:57.555Z\",\n      \"endTime\": \"2022-09-17T10:22:57.555Z\"\n    }\n  },\n  \"result\": {\n    \"top_0\": [\n      {\n        \"clientCountryAlpha2\": \"US\",\n        \"clientCountryName\": \"United States\",\n        \"value\": \"65\"\n      }\n    ]\n  }\n}"
+		},
+		{
+			"title": "Get top locations by HTTP version",
+			"description": "Get the top locations, by HTTP traffic, of the requested HTTP protocol. Values are a percentage out of the total traffic.",
+			"rel": "collection",
+			"href": "radar/http/top/locations/http_version/{#/definitions/http_version}",
+			"method": "GET",
+			"cfOwnership": "radar",
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.api.user.read"
+				]
+			},
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "radar-http-get-top-locations-by-http-version",
+			"uri": "radar/http/top/locations/http_version/:http_version",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/http/top/locations/http_version/httpv1?limit=5&name=main_series&dateRange=7d&dateStart=2022-08-01T09:58:33Z&dateEnd=2022-09-01T09:58:33Z&asn=15169&location=US,CA&botClass=LIKELY_AUTOMATED&format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"limit": {
+						"type": "number",
+						"example": "5",
+						"default": 5,
+						"description": "Limit the number of objects in the response"
+					},
+					"name": {
+						"type": "array",
+						"example": "[\n  \"main_series\"\n]",
+						"items": {
+							"type": "string",
+							"example": "main_series"
+						},
+						"description": "Array of names that will be used to name the series in responses."
+					},
+					"dateRange": {
+						"type": "array",
+						"example": "[\n  \"7d\"\n]",
+						"items": {
+							"type": "string",
+							"enum": [
+								"1d",
+								"7d",
+								"14d",
+								"28d",
+								"1dControl",
+								"7dControl",
+								"14dControl",
+								"28dControl"
+							],
+							"example": "7d"
+						},
+						"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+						"enum": [
+							"1d",
+							"7d",
+							"14d",
+							"28d",
+							"1dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl"
+						]
+					},
+					"dateStart": {
+						"type": "array",
+						"example": "[\n  \"2022-08-01T09:58:33Z\"\n]",
+						"items": {
+							"type": "string",
+							"format": "date-time",
+							"example": "2022-08-01T09:58:33Z"
+						},
+						"description": "Array of datetimes to filter the start of a series."
+					},
+					"dateEnd": {
+						"type": "array",
+						"example": "[\n  \"2022-09-01T09:58:33Z\"\n]",
+						"items": {
+							"type": "string",
+							"format": "date-time",
+							"example": "2022-09-01T09:58:33Z"
+						},
+						"description": "Array of datetimes to filter the end of a series."
+					},
+					"asn": {
+						"type": "array",
+						"example": "[\n  \"15169\"\n]",
+						"items": {
+							"type": "string",
+							"example": "15169"
+						},
+						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `[-174, 3356]` excludes results from AS174, but includes results from AS3356."
+					},
+					"location": {
+						"type": "array",
+						"example": "[\n  \"US,CA\"\n]",
+						"items": {
+							"type": "string",
+							"example": "US,CA"
+						},
+						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `[-US, PT]` excludes results from the US, but includes results from PT."
+					},
+					"botClass": {
+						"type": "array",
+						"example": "[\n  \"LIKELY_AUTOMATED\"\n]",
+						"items": {
+							"type": "string",
+							"enum": [
+								"LIKELY_AUTOMATED",
+								"LIKELY_HUMAN"
+							],
+							"example": "LIKELY_AUTOMATED"
+						},
+						"description": "Filter for bot class. Refer to [Bot Groupings](https://developers.cloudflare.com/bots/concepts/bot-score#bot-groupings).",
+						"enum": [
+							"LIKELY_AUTOMATED",
+							"LIKELY_HUMAN"
+						]
+					},
+					"format": {
+						"type": "string",
+						"example": "\"json\"",
+						"default": "json",
+						"enum": [
+							"json",
+							"csv"
+						],
+						"description": "Format results are returned in."
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"limit",
+					"name",
+					"dateRange",
+					"dateStart",
+					"dateEnd",
+					"asn",
+					"location",
+					"botClass",
+					"format"
+				],
+				"objects": [],
+				"example": "{\n  \"limit\": 5,\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"botClass\": [\n    \"LIKELY_AUTOMATED\"\n  ],\n  \"format\": \"json\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"meta\": {\n    \"confidenceInfo\": {\n      \"annotations\": [\n        {\n          \"startTime\": \"2022-09-17T10:22:57.555Z\",\n          \"endTime\": \"2022-09-17T10:22:57.555Z\"\n        }\n      ]\n    },\n    \"dateRange\": {\n      \"startTime\": \"2022-09-17T10:22:57.555Z\",\n      \"endTime\": \"2022-09-17T10:22:57.555Z\"\n    }\n  },\n  \"result\": {\n    \"top_0\": [\n      {\n        \"clientCountryAlpha2\": \"US\",\n        \"clientCountryName\": \"United States\",\n        \"value\": \"65\"\n      }\n    ]\n  }\n}"
+		},
+		{
+			"title": "Get top locations by IP version",
+			"description": "Get the top locations, by HTTP traffic, of the requested IP protocol version. Values are a percentage out of the total traffic.",
+			"rel": "collection",
+			"href": "radar/http/top/locations/ip_version/{#/definitions/ip_version}",
+			"method": "GET",
+			"cfOwnership": "radar",
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.api.user.read"
+				]
+			},
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "radar-http-get-top-locations-by-ip-version",
+			"uri": "radar/http/top/locations/ip_version/:ip_version",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/http/top/locations/ip_version/ipv4?limit=5&name=main_series&dateRange=7d&dateStart=2022-08-01T09:58:33Z&dateEnd=2022-09-01T09:58:33Z&asn=15169&location=US,CA&botClass=LIKELY_AUTOMATED&format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"limit": {
+						"type": "number",
+						"example": "5",
+						"default": 5,
+						"description": "Limit the number of objects in the response"
+					},
+					"name": {
+						"type": "array",
+						"example": "[\n  \"main_series\"\n]",
+						"items": {
+							"type": "string",
+							"example": "main_series"
+						},
+						"description": "Array of names that will be used to name the series in responses."
+					},
+					"dateRange": {
+						"type": "array",
+						"example": "[\n  \"7d\"\n]",
+						"items": {
+							"type": "string",
+							"enum": [
+								"1d",
+								"7d",
+								"14d",
+								"28d",
+								"1dControl",
+								"7dControl",
+								"14dControl",
+								"28dControl"
+							],
+							"example": "7d"
+						},
+						"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+						"enum": [
+							"1d",
+							"7d",
+							"14d",
+							"28d",
+							"1dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl"
+						]
+					},
+					"dateStart": {
+						"type": "array",
+						"example": "[\n  \"2022-08-01T09:58:33Z\"\n]",
+						"items": {
+							"type": "string",
+							"format": "date-time",
+							"example": "2022-08-01T09:58:33Z"
+						},
+						"description": "Array of datetimes to filter the start of a series."
+					},
+					"dateEnd": {
+						"type": "array",
+						"example": "[\n  \"2022-09-01T09:58:33Z\"\n]",
+						"items": {
+							"type": "string",
+							"format": "date-time",
+							"example": "2022-09-01T09:58:33Z"
+						},
+						"description": "Array of datetimes to filter the end of a series."
+					},
+					"asn": {
+						"type": "array",
+						"example": "[\n  \"15169\"\n]",
+						"items": {
+							"type": "string",
+							"example": "15169"
+						},
+						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `[-174, 3356]` excludes results from AS174, but includes results from AS3356."
+					},
+					"location": {
+						"type": "array",
+						"example": "[\n  \"US,CA\"\n]",
+						"items": {
+							"type": "string",
+							"example": "US,CA"
+						},
+						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `[-US, PT]` excludes results from the US, but includes results from PT."
+					},
+					"botClass": {
+						"type": "array",
+						"example": "[\n  \"LIKELY_AUTOMATED\"\n]",
+						"items": {
+							"type": "string",
+							"enum": [
+								"LIKELY_AUTOMATED",
+								"LIKELY_HUMAN"
+							],
+							"example": "LIKELY_AUTOMATED"
+						},
+						"description": "Filter for bot class. Refer to [Bot Groupings](https://developers.cloudflare.com/bots/concepts/bot-score#bot-groupings).",
+						"enum": [
+							"LIKELY_AUTOMATED",
+							"LIKELY_HUMAN"
+						]
+					},
+					"format": {
+						"type": "string",
+						"example": "\"json\"",
+						"default": "json",
+						"enum": [
+							"json",
+							"csv"
+						],
+						"description": "Format results are returned in."
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"limit",
+					"name",
+					"dateRange",
+					"dateStart",
+					"dateEnd",
+					"asn",
+					"location",
+					"botClass",
+					"format"
+				],
+				"objects": [],
+				"example": "{\n  \"limit\": 5,\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"botClass\": [\n    \"LIKELY_AUTOMATED\"\n  ],\n  \"format\": \"json\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"meta\": {\n    \"confidenceInfo\": {\n      \"annotations\": [\n        {\n          \"startTime\": \"2022-09-17T10:22:57.555Z\",\n          \"endTime\": \"2022-09-17T10:22:57.555Z\"\n        }\n      ]\n    },\n    \"dateRange\": {\n      \"startTime\": \"2022-09-17T10:22:57.555Z\",\n      \"endTime\": \"2022-09-17T10:22:57.555Z\"\n    }\n  },\n  \"result\": {\n    \"top_0\": [\n      {\n        \"clientCountryAlpha2\": \"US\",\n        \"clientCountryName\": \"United States\",\n        \"value\": \"65\"\n      }\n    ]\n  }\n}"
+		},
+		{
+			"title": "Get top locations by HTTP requests",
+			"description": "Get the top locations by HTTP traffic. Values are a percentage out of the total traffic.",
+			"rel": "collection",
+			"href": "radar/http/top/locations",
+			"method": "GET",
+			"cfOwnership": "radar",
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.api.user.read"
+				]
+			},
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "radar-http-get-top-locations-by-http-requests",
+			"uri": "radar/http/top/locations",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/http/top/locations?limit=5&name=main_series&dateRange=7d&dateStart=2022-08-01T09:58:33Z&dateEnd=2022-09-01T09:58:33Z&asn=15169&location=US,CA&botClass=LIKELY_AUTOMATED&format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"limit": {
+						"type": "number",
+						"example": "5",
+						"default": 5,
+						"description": "Limit the number of objects in the response"
+					},
+					"name": {
+						"type": "array",
+						"example": "[\n  \"main_series\"\n]",
+						"items": {
+							"type": "string",
+							"example": "main_series"
+						},
+						"description": "Array of names that will be used to name the series in responses."
+					},
+					"dateRange": {
+						"type": "array",
+						"example": "[\n  \"7d\"\n]",
+						"items": {
+							"type": "string",
+							"enum": [
+								"1d",
+								"7d",
+								"14d",
+								"28d",
+								"1dControl",
+								"7dControl",
+								"14dControl",
+								"28dControl"
+							],
+							"example": "7d"
+						},
+						"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+						"enum": [
+							"1d",
+							"7d",
+							"14d",
+							"28d",
+							"1dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl"
+						]
+					},
+					"dateStart": {
+						"type": "array",
+						"example": "[\n  \"2022-08-01T09:58:33Z\"\n]",
+						"items": {
+							"type": "string",
+							"format": "date-time",
+							"example": "2022-08-01T09:58:33Z"
+						},
+						"description": "Array of datetimes to filter the start of a series."
+					},
+					"dateEnd": {
+						"type": "array",
+						"example": "[\n  \"2022-09-01T09:58:33Z\"\n]",
+						"items": {
+							"type": "string",
+							"format": "date-time",
+							"example": "2022-09-01T09:58:33Z"
+						},
+						"description": "Array of datetimes to filter the end of a series."
+					},
+					"asn": {
+						"type": "array",
+						"example": "[\n  \"15169\"\n]",
+						"items": {
+							"type": "string",
+							"example": "15169"
+						},
+						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `[-174, 3356]` excludes results from AS174, but includes results from AS3356."
+					},
+					"location": {
+						"type": "array",
+						"example": "[\n  \"US,CA\"\n]",
+						"items": {
+							"type": "string",
+							"example": "US,CA"
+						},
+						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `[-US, PT]` excludes results from the US, but includes results from PT."
+					},
+					"botClass": {
+						"type": "array",
+						"example": "[\n  \"LIKELY_AUTOMATED\"\n]",
+						"items": {
+							"type": "string",
+							"enum": [
+								"LIKELY_AUTOMATED",
+								"LIKELY_HUMAN"
+							],
+							"example": "LIKELY_AUTOMATED"
+						},
+						"description": "Filter for bot class. Refer to [Bot Groupings](https://developers.cloudflare.com/bots/concepts/bot-score#bot-groupings).",
+						"enum": [
+							"LIKELY_AUTOMATED",
+							"LIKELY_HUMAN"
+						]
+					},
+					"format": {
+						"type": "string",
+						"example": "\"json\"",
+						"default": "json",
+						"enum": [
+							"json",
+							"csv"
+						],
+						"description": "Format results are returned in."
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"limit",
+					"name",
+					"dateRange",
+					"dateStart",
+					"dateEnd",
+					"asn",
+					"location",
+					"botClass",
+					"format"
+				],
+				"objects": [],
+				"example": "{\n  \"limit\": 5,\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"botClass\": [\n    \"LIKELY_AUTOMATED\"\n  ],\n  \"format\": \"json\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"meta\": {\n    \"confidenceInfo\": {\n      \"annotations\": [\n        {\n          \"startTime\": \"2022-09-17T10:22:57.555Z\",\n          \"endTime\": \"2022-09-17T10:22:57.555Z\"\n        }\n      ]\n    },\n    \"dateRange\": {\n      \"startTime\": \"2022-09-17T10:22:57.555Z\",\n      \"endTime\": \"2022-09-17T10:22:57.555Z\"\n    }\n  },\n  \"result\": {\n    \"top_0\": [\n      {\n        \"clientCountryAlpha2\": \"US\",\n        \"clientCountryName\": \"United States\",\n        \"value\": \"65\"\n      }\n    ]\n  }\n}"
+		},
+		{
+			"title": "Get top autonomous systems by bot class",
+			"description": "Get the top autonomous systems (AS), by HTTP traffic, of the requested bot class. These two categories use Cloudflare's bot score - refer to [Bot Scores](https://developers.cloudflare.com/bots/concepts/bot-score) for more information. Values are a percentage out of the total traffic.",
+			"rel": "collection",
+			"href": "radar/http/top/ases/bot_class/{#/definitions/bot_class}",
+			"method": "GET",
+			"cfOwnership": "radar",
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.api.user.read"
+				]
+			},
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "radar-http-get-top-autonomous-systems-by-bot-class",
+			"uri": "radar/http/top/ases/bot_class/:bot_class",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/http/top/ases/bot_class/likely_automated?limit=5&name=main_series&dateRange=7d&dateStart=2022-08-01T09:58:33Z&dateEnd=2022-09-01T09:58:33Z&asn=15169&location=US,CA&format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"limit": {
+						"type": "number",
+						"example": "5",
+						"default": 5,
+						"description": "Limit the number of objects in the response"
+					},
+					"name": {
+						"type": "array",
+						"example": "[\n  \"main_series\"\n]",
+						"items": {
+							"type": "string",
+							"example": "main_series"
+						},
+						"description": "Array of names that will be used to name the series in responses."
+					},
+					"dateRange": {
+						"type": "array",
+						"example": "[\n  \"7d\"\n]",
+						"items": {
+							"type": "string",
+							"enum": [
+								"1d",
+								"7d",
+								"14d",
+								"28d",
+								"1dControl",
+								"7dControl",
+								"14dControl",
+								"28dControl"
+							],
+							"example": "7d"
+						},
+						"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+						"enum": [
+							"1d",
+							"7d",
+							"14d",
+							"28d",
+							"1dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl"
+						]
+					},
+					"dateStart": {
+						"type": "array",
+						"example": "[\n  \"2022-08-01T09:58:33Z\"\n]",
+						"items": {
+							"type": "string",
+							"format": "date-time",
+							"example": "2022-08-01T09:58:33Z"
+						},
+						"description": "Array of datetimes to filter the start of a series."
+					},
+					"dateEnd": {
+						"type": "array",
+						"example": "[\n  \"2022-09-01T09:58:33Z\"\n]",
+						"items": {
+							"type": "string",
+							"format": "date-time",
+							"example": "2022-09-01T09:58:33Z"
+						},
+						"description": "Array of datetimes to filter the end of a series."
+					},
+					"asn": {
+						"type": "array",
+						"example": "[\n  \"15169\"\n]",
+						"items": {
+							"type": "string",
+							"example": "15169"
+						},
+						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `[-174, 3356]` excludes results from AS174, but includes results from AS3356."
+					},
+					"location": {
+						"type": "array",
+						"example": "[\n  \"US,CA\"\n]",
+						"items": {
+							"type": "string",
+							"example": "US,CA"
+						},
+						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `[-US, PT]` excludes results from the US, but includes results from PT."
+					},
+					"format": {
+						"type": "string",
+						"example": "\"json\"",
+						"default": "json",
+						"enum": [
+							"json",
+							"csv"
+						],
+						"description": "Format results are returned in."
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"limit",
+					"name",
+					"dateRange",
+					"dateStart",
+					"dateEnd",
+					"asn",
+					"location",
+					"format"
+				],
+				"objects": [],
+				"example": "{\n  \"limit\": 5,\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"format\": \"json\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"meta\": {\n    \"confidenceInfo\": {\n      \"annotations\": [\n        {\n          \"startTime\": \"2022-09-17T10:22:57.555Z\",\n          \"endTime\": \"2022-09-17T10:22:57.555Z\"\n        }\n      ]\n    },\n    \"dateRange\": {\n      \"startTime\": \"2022-09-17T10:22:57.555Z\",\n      \"endTime\": \"2022-09-17T10:22:57.555Z\"\n    }\n  },\n  \"result\": {\n    \"top_0\": [\n      {\n        \"clientASN\": \"3243\",\n        \"clientASName\": \"MEO\",\n        \"value\": \"3\"\n      }\n    ]\n  }\n}"
+		},
+		{
+			"title": "Get top autonomous systems by device type",
+			"description": "Get the top autonomous systems (AS), by HTTP traffic, of the requested device type. Values are a percentage out of the total traffic.",
+			"rel": "collection",
+			"href": "radar/http/top/ases/device_type/{#/definitions/device_type}",
+			"method": "GET",
+			"cfOwnership": "radar",
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.api.user.read"
+				]
+			},
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "radar-http-get-top-autonomous-systems-by-device-type",
+			"uri": "radar/http/top/ases/device_type/:device_type",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/http/top/ases/device_type/desktop?limit=5&name=main_series&dateRange=7d&dateStart=2022-08-01T09:58:33Z&dateEnd=2022-09-01T09:58:33Z&asn=15169&location=US,CA&botClass=LIKELY_AUTOMATED&format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"limit": {
+						"type": "number",
+						"example": "5",
+						"default": 5,
+						"description": "Limit the number of objects in the response"
+					},
+					"name": {
+						"type": "array",
+						"example": "[\n  \"main_series\"\n]",
+						"items": {
+							"type": "string",
+							"example": "main_series"
+						},
+						"description": "Array of names that will be used to name the series in responses."
+					},
+					"dateRange": {
+						"type": "array",
+						"example": "[\n  \"7d\"\n]",
+						"items": {
+							"type": "string",
+							"enum": [
+								"1d",
+								"7d",
+								"14d",
+								"28d",
+								"1dControl",
+								"7dControl",
+								"14dControl",
+								"28dControl"
+							],
+							"example": "7d"
+						},
+						"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+						"enum": [
+							"1d",
+							"7d",
+							"14d",
+							"28d",
+							"1dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl"
+						]
+					},
+					"dateStart": {
+						"type": "array",
+						"example": "[\n  \"2022-08-01T09:58:33Z\"\n]",
+						"items": {
+							"type": "string",
+							"format": "date-time",
+							"example": "2022-08-01T09:58:33Z"
+						},
+						"description": "Array of datetimes to filter the start of a series."
+					},
+					"dateEnd": {
+						"type": "array",
+						"example": "[\n  \"2022-09-01T09:58:33Z\"\n]",
+						"items": {
+							"type": "string",
+							"format": "date-time",
+							"example": "2022-09-01T09:58:33Z"
+						},
+						"description": "Array of datetimes to filter the end of a series."
+					},
+					"asn": {
+						"type": "array",
+						"example": "[\n  \"15169\"\n]",
+						"items": {
+							"type": "string",
+							"example": "15169"
+						},
+						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `[-174, 3356]` excludes results from AS174, but includes results from AS3356."
+					},
+					"location": {
+						"type": "array",
+						"example": "[\n  \"US,CA\"\n]",
+						"items": {
+							"type": "string",
+							"example": "US,CA"
+						},
+						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `[-US, PT]` excludes results from the US, but includes results from PT."
+					},
+					"botClass": {
+						"type": "array",
+						"example": "[\n  \"LIKELY_AUTOMATED\"\n]",
+						"items": {
+							"type": "string",
+							"enum": [
+								"LIKELY_AUTOMATED",
+								"LIKELY_HUMAN"
+							],
+							"example": "LIKELY_AUTOMATED"
+						},
+						"description": "Filter for bot class. Refer to [Bot Groupings](https://developers.cloudflare.com/bots/concepts/bot-score#bot-groupings).",
+						"enum": [
+							"LIKELY_AUTOMATED",
+							"LIKELY_HUMAN"
+						]
+					},
+					"format": {
+						"type": "string",
+						"example": "\"json\"",
+						"default": "json",
+						"enum": [
+							"json",
+							"csv"
+						],
+						"description": "Format results are returned in."
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"limit",
+					"name",
+					"dateRange",
+					"dateStart",
+					"dateEnd",
+					"asn",
+					"location",
+					"botClass",
+					"format"
+				],
+				"objects": [],
+				"example": "{\n  \"limit\": 5,\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"botClass\": [\n    \"LIKELY_AUTOMATED\"\n  ],\n  \"format\": \"json\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"meta\": {\n    \"confidenceInfo\": {\n      \"annotations\": [\n        {\n          \"startTime\": \"2022-09-17T10:22:57.555Z\",\n          \"endTime\": \"2022-09-17T10:22:57.555Z\"\n        }\n      ]\n    },\n    \"dateRange\": {\n      \"startTime\": \"2022-09-17T10:22:57.555Z\",\n      \"endTime\": \"2022-09-17T10:22:57.555Z\"\n    }\n  },\n  \"result\": {\n    \"top_0\": [\n      {\n        \"clientASN\": \"3243\",\n        \"clientASName\": \"MEO\",\n        \"value\": \"3\"\n      }\n    ]\n  }\n}"
+		},
+		{
+			"title": "Get top autonomous systems by TLS version",
+			"description": "Get the top autonomous systems (AS), by HTTP traffic, of the requested TLS protocol version. Values are a percentage out of the total traffic.",
+			"rel": "collection",
+			"href": "radar/http/top/ases/tls_version/{#/definitions/tls_version}",
+			"method": "GET",
+			"cfOwnership": "radar",
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.api.user.read"
+				]
+			},
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "radar-http-get-top-autonomous-systems-by-tls-version",
+			"uri": "radar/http/top/ases/tls_version/:tls_version",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/http/top/ases/tls_version/tlsv1_0?limit=5&name=main_series&dateRange=7d&dateStart=2022-08-01T09:58:33Z&dateEnd=2022-09-01T09:58:33Z&asn=15169&location=US,CA&botClass=LIKELY_AUTOMATED&format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"limit": {
+						"type": "number",
+						"example": "5",
+						"default": 5,
+						"description": "Limit the number of objects in the response"
+					},
+					"name": {
+						"type": "array",
+						"example": "[\n  \"main_series\"\n]",
+						"items": {
+							"type": "string",
+							"example": "main_series"
+						},
+						"description": "Array of names that will be used to name the series in responses."
+					},
+					"dateRange": {
+						"type": "array",
+						"example": "[\n  \"7d\"\n]",
+						"items": {
+							"type": "string",
+							"enum": [
+								"1d",
+								"7d",
+								"14d",
+								"28d",
+								"1dControl",
+								"7dControl",
+								"14dControl",
+								"28dControl"
+							],
+							"example": "7d"
+						},
+						"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+						"enum": [
+							"1d",
+							"7d",
+							"14d",
+							"28d",
+							"1dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl"
+						]
+					},
+					"dateStart": {
+						"type": "array",
+						"example": "[\n  \"2022-08-01T09:58:33Z\"\n]",
+						"items": {
+							"type": "string",
+							"format": "date-time",
+							"example": "2022-08-01T09:58:33Z"
+						},
+						"description": "Array of datetimes to filter the start of a series."
+					},
+					"dateEnd": {
+						"type": "array",
+						"example": "[\n  \"2022-09-01T09:58:33Z\"\n]",
+						"items": {
+							"type": "string",
+							"format": "date-time",
+							"example": "2022-09-01T09:58:33Z"
+						},
+						"description": "Array of datetimes to filter the end of a series."
+					},
+					"asn": {
+						"type": "array",
+						"example": "[\n  \"15169\"\n]",
+						"items": {
+							"type": "string",
+							"example": "15169"
+						},
+						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `[-174, 3356]` excludes results from AS174, but includes results from AS3356."
+					},
+					"location": {
+						"type": "array",
+						"example": "[\n  \"US,CA\"\n]",
+						"items": {
+							"type": "string",
+							"example": "US,CA"
+						},
+						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `[-US, PT]` excludes results from the US, but includes results from PT."
+					},
+					"botClass": {
+						"type": "array",
+						"example": "[\n  \"LIKELY_AUTOMATED\"\n]",
+						"items": {
+							"type": "string",
+							"enum": [
+								"LIKELY_AUTOMATED",
+								"LIKELY_HUMAN"
+							],
+							"example": "LIKELY_AUTOMATED"
+						},
+						"description": "Filter for bot class. Refer to [Bot Groupings](https://developers.cloudflare.com/bots/concepts/bot-score#bot-groupings).",
+						"enum": [
+							"LIKELY_AUTOMATED",
+							"LIKELY_HUMAN"
+						]
+					},
+					"format": {
+						"type": "string",
+						"example": "\"json\"",
+						"default": "json",
+						"enum": [
+							"json",
+							"csv"
+						],
+						"description": "Format results are returned in."
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"limit",
+					"name",
+					"dateRange",
+					"dateStart",
+					"dateEnd",
+					"asn",
+					"location",
+					"botClass",
+					"format"
+				],
+				"objects": [],
+				"example": "{\n  \"limit\": 5,\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"botClass\": [\n    \"LIKELY_AUTOMATED\"\n  ],\n  \"format\": \"json\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"meta\": {\n    \"confidenceInfo\": {\n      \"annotations\": [\n        {\n          \"startTime\": \"2022-09-17T10:22:57.555Z\",\n          \"endTime\": \"2022-09-17T10:22:57.555Z\"\n        }\n      ]\n    },\n    \"dateRange\": {\n      \"startTime\": \"2022-09-17T10:22:57.555Z\",\n      \"endTime\": \"2022-09-17T10:22:57.555Z\"\n    }\n  },\n  \"result\": {\n    \"top_0\": [\n      {\n        \"clientASN\": \"3243\",\n        \"clientASName\": \"MEO\",\n        \"value\": \"3\"\n      }\n    ]\n  }\n}"
+		},
+		{
+			"title": "Get top autonomous systems by HTTP protocol",
+			"description": "Get the top autonomous systems (AS), by HTTP traffic, of the requested HTTP protocol. Values are a percentage out of the total traffic.",
+			"rel": "collection",
+			"href": "radar/http/top/ases/http_protocol/{#/definitions/http_protocol}",
+			"method": "GET",
+			"cfOwnership": "radar",
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.api.user.read"
+				]
+			},
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "radar-http-get-top-autonomous-systems-by-http-protocol",
+			"uri": "radar/http/top/ases/http_protocol/:http_protocol",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/http/top/ases/http_protocol/http?limit=5&name=main_series&dateRange=7d&dateStart=2022-08-01T09:58:33Z&dateEnd=2022-09-01T09:58:33Z&asn=15169&location=US,CA&botClass=LIKELY_AUTOMATED&format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"limit": {
+						"type": "number",
+						"example": "5",
+						"default": 5,
+						"description": "Limit the number of objects in the response"
+					},
+					"name": {
+						"type": "array",
+						"example": "[\n  \"main_series\"\n]",
+						"items": {
+							"type": "string",
+							"example": "main_series"
+						},
+						"description": "Array of names that will be used to name the series in responses."
+					},
+					"dateRange": {
+						"type": "array",
+						"example": "[\n  \"7d\"\n]",
+						"items": {
+							"type": "string",
+							"enum": [
+								"1d",
+								"7d",
+								"14d",
+								"28d",
+								"1dControl",
+								"7dControl",
+								"14dControl",
+								"28dControl"
+							],
+							"example": "7d"
+						},
+						"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+						"enum": [
+							"1d",
+							"7d",
+							"14d",
+							"28d",
+							"1dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl"
+						]
+					},
+					"dateStart": {
+						"type": "array",
+						"example": "[\n  \"2022-08-01T09:58:33Z\"\n]",
+						"items": {
+							"type": "string",
+							"format": "date-time",
+							"example": "2022-08-01T09:58:33Z"
+						},
+						"description": "Array of datetimes to filter the start of a series."
+					},
+					"dateEnd": {
+						"type": "array",
+						"example": "[\n  \"2022-09-01T09:58:33Z\"\n]",
+						"items": {
+							"type": "string",
+							"format": "date-time",
+							"example": "2022-09-01T09:58:33Z"
+						},
+						"description": "Array of datetimes to filter the end of a series."
+					},
+					"asn": {
+						"type": "array",
+						"example": "[\n  \"15169\"\n]",
+						"items": {
+							"type": "string",
+							"example": "15169"
+						},
+						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `[-174, 3356]` excludes results from AS174, but includes results from AS3356."
+					},
+					"location": {
+						"type": "array",
+						"example": "[\n  \"US,CA\"\n]",
+						"items": {
+							"type": "string",
+							"example": "US,CA"
+						},
+						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `[-US, PT]` excludes results from the US, but includes results from PT."
+					},
+					"botClass": {
+						"type": "array",
+						"example": "[\n  \"LIKELY_AUTOMATED\"\n]",
+						"items": {
+							"type": "string",
+							"enum": [
+								"LIKELY_AUTOMATED",
+								"LIKELY_HUMAN"
+							],
+							"example": "LIKELY_AUTOMATED"
+						},
+						"description": "Filter for bot class. Refer to [Bot Groupings](https://developers.cloudflare.com/bots/concepts/bot-score#bot-groupings).",
+						"enum": [
+							"LIKELY_AUTOMATED",
+							"LIKELY_HUMAN"
+						]
+					},
+					"format": {
+						"type": "string",
+						"example": "\"json\"",
+						"default": "json",
+						"enum": [
+							"json",
+							"csv"
+						],
+						"description": "Format results are returned in."
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"limit",
+					"name",
+					"dateRange",
+					"dateStart",
+					"dateEnd",
+					"asn",
+					"location",
+					"botClass",
+					"format"
+				],
+				"objects": [],
+				"example": "{\n  \"limit\": 5,\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"botClass\": [\n    \"LIKELY_AUTOMATED\"\n  ],\n  \"format\": \"json\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"meta\": {\n    \"confidenceInfo\": {\n      \"annotations\": [\n        {\n          \"startTime\": \"2022-09-17T10:22:57.555Z\",\n          \"endTime\": \"2022-09-17T10:22:57.555Z\"\n        }\n      ]\n    },\n    \"dateRange\": {\n      \"startTime\": \"2022-09-17T10:22:57.555Z\",\n      \"endTime\": \"2022-09-17T10:22:57.555Z\"\n    }\n  },\n  \"result\": {\n    \"top_0\": [\n      {\n        \"clientASN\": \"3243\",\n        \"clientASName\": \"MEO\",\n        \"value\": \"3\"\n      }\n    ]\n  }\n}"
+		},
+		{
+			"title": "Get top autonomous systems by HTTP version",
+			"description": "Get the top autonomous systems (AS), by HTTP traffic, of the requested HTTP protocol version. Values are a percentage out of the total traffic.",
+			"rel": "collection",
+			"href": "radar/http/top/ases/http_version/{#/definitions/http_version}",
+			"method": "GET",
+			"cfOwnership": "radar",
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.api.user.read"
+				]
+			},
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "radar-http-get-top-autonomous-systems-by-http-version",
+			"uri": "radar/http/top/ases/http_version/:http_version",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/http/top/ases/http_version/httpv1?limit=5&name=main_series&dateRange=7d&dateStart=2022-08-01T09:58:33Z&dateEnd=2022-09-01T09:58:33Z&asn=15169&location=US,CA&botClass=LIKELY_AUTOMATED&format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"limit": {
+						"type": "number",
+						"example": "5",
+						"default": 5,
+						"description": "Limit the number of objects in the response"
+					},
+					"name": {
+						"type": "array",
+						"example": "[\n  \"main_series\"\n]",
+						"items": {
+							"type": "string",
+							"example": "main_series"
+						},
+						"description": "Array of names that will be used to name the series in responses."
+					},
+					"dateRange": {
+						"type": "array",
+						"example": "[\n  \"7d\"\n]",
+						"items": {
+							"type": "string",
+							"enum": [
+								"1d",
+								"7d",
+								"14d",
+								"28d",
+								"1dControl",
+								"7dControl",
+								"14dControl",
+								"28dControl"
+							],
+							"example": "7d"
+						},
+						"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+						"enum": [
+							"1d",
+							"7d",
+							"14d",
+							"28d",
+							"1dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl"
+						]
+					},
+					"dateStart": {
+						"type": "array",
+						"example": "[\n  \"2022-08-01T09:58:33Z\"\n]",
+						"items": {
+							"type": "string",
+							"format": "date-time",
+							"example": "2022-08-01T09:58:33Z"
+						},
+						"description": "Array of datetimes to filter the start of a series."
+					},
+					"dateEnd": {
+						"type": "array",
+						"example": "[\n  \"2022-09-01T09:58:33Z\"\n]",
+						"items": {
+							"type": "string",
+							"format": "date-time",
+							"example": "2022-09-01T09:58:33Z"
+						},
+						"description": "Array of datetimes to filter the end of a series."
+					},
+					"asn": {
+						"type": "array",
+						"example": "[\n  \"15169\"\n]",
+						"items": {
+							"type": "string",
+							"example": "15169"
+						},
+						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `[-174, 3356]` excludes results from AS174, but includes results from AS3356."
+					},
+					"location": {
+						"type": "array",
+						"example": "[\n  \"US,CA\"\n]",
+						"items": {
+							"type": "string",
+							"example": "US,CA"
+						},
+						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `[-US, PT]` excludes results from the US, but includes results from PT."
+					},
+					"botClass": {
+						"type": "array",
+						"example": "[\n  \"LIKELY_AUTOMATED\"\n]",
+						"items": {
+							"type": "string",
+							"enum": [
+								"LIKELY_AUTOMATED",
+								"LIKELY_HUMAN"
+							],
+							"example": "LIKELY_AUTOMATED"
+						},
+						"description": "Filter for bot class. Refer to [Bot Groupings](https://developers.cloudflare.com/bots/concepts/bot-score#bot-groupings).",
+						"enum": [
+							"LIKELY_AUTOMATED",
+							"LIKELY_HUMAN"
+						]
+					},
+					"format": {
+						"type": "string",
+						"example": "\"json\"",
+						"default": "json",
+						"enum": [
+							"json",
+							"csv"
+						],
+						"description": "Format results are returned in."
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"limit",
+					"name",
+					"dateRange",
+					"dateStart",
+					"dateEnd",
+					"asn",
+					"location",
+					"botClass",
+					"format"
+				],
+				"objects": [],
+				"example": "{\n  \"limit\": 5,\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"botClass\": [\n    \"LIKELY_AUTOMATED\"\n  ],\n  \"format\": \"json\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"meta\": {\n    \"confidenceInfo\": {\n      \"annotations\": [\n        {\n          \"startTime\": \"2022-09-17T10:22:57.555Z\",\n          \"endTime\": \"2022-09-17T10:22:57.555Z\"\n        }\n      ]\n    },\n    \"dateRange\": {\n      \"startTime\": \"2022-09-17T10:22:57.555Z\",\n      \"endTime\": \"2022-09-17T10:22:57.555Z\"\n    }\n  },\n  \"result\": {\n    \"top_0\": [\n      {\n        \"clientASN\": \"3243\",\n        \"clientASName\": \"MEO\",\n        \"value\": \"3\"\n      }\n    ]\n  }\n}"
+		},
+		{
+			"title": "Get top autonomous systems by IP version",
+			"description": "Get the top autonomous systems, by HTTP traffic, of the requested IP protocol version. Values are a percentage out of the total traffic.",
+			"rel": "collection",
+			"href": "radar/http/top/ases/ip_version/{#/definitions/ip_version}",
+			"method": "GET",
+			"cfOwnership": "radar",
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.api.user.read"
+				]
+			},
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "radar-http-get-top-autonomous-systems-by-ip-version",
+			"uri": "radar/http/top/ases/ip_version/:ip_version",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/http/top/ases/ip_version/ipv4?limit=5&name=main_series&dateRange=7d&dateStart=2022-08-01T09:58:33Z&dateEnd=2022-09-01T09:58:33Z&asn=15169&location=US,CA&botClass=LIKELY_AUTOMATED&format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"limit": {
+						"type": "number",
+						"example": "5",
+						"default": 5,
+						"description": "Limit the number of objects in the response"
+					},
+					"name": {
+						"type": "array",
+						"example": "[\n  \"main_series\"\n]",
+						"items": {
+							"type": "string",
+							"example": "main_series"
+						},
+						"description": "Array of names that will be used to name the series in responses."
+					},
+					"dateRange": {
+						"type": "array",
+						"example": "[\n  \"7d\"\n]",
+						"items": {
+							"type": "string",
+							"enum": [
+								"1d",
+								"7d",
+								"14d",
+								"28d",
+								"1dControl",
+								"7dControl",
+								"14dControl",
+								"28dControl"
+							],
+							"example": "7d"
+						},
+						"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+						"enum": [
+							"1d",
+							"7d",
+							"14d",
+							"28d",
+							"1dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl"
+						]
+					},
+					"dateStart": {
+						"type": "array",
+						"example": "[\n  \"2022-08-01T09:58:33Z\"\n]",
+						"items": {
+							"type": "string",
+							"format": "date-time",
+							"example": "2022-08-01T09:58:33Z"
+						},
+						"description": "Array of datetimes to filter the start of a series."
+					},
+					"dateEnd": {
+						"type": "array",
+						"example": "[\n  \"2022-09-01T09:58:33Z\"\n]",
+						"items": {
+							"type": "string",
+							"format": "date-time",
+							"example": "2022-09-01T09:58:33Z"
+						},
+						"description": "Array of datetimes to filter the end of a series."
+					},
+					"asn": {
+						"type": "array",
+						"example": "[\n  \"15169\"\n]",
+						"items": {
+							"type": "string",
+							"example": "15169"
+						},
+						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `[-174, 3356]` excludes results from AS174, but includes results from AS3356."
+					},
+					"location": {
+						"type": "array",
+						"example": "[\n  \"US,CA\"\n]",
+						"items": {
+							"type": "string",
+							"example": "US,CA"
+						},
+						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `[-US, PT]` excludes results from the US, but includes results from PT."
+					},
+					"botClass": {
+						"type": "array",
+						"example": "[\n  \"LIKELY_AUTOMATED\"\n]",
+						"items": {
+							"type": "string",
+							"enum": [
+								"LIKELY_AUTOMATED",
+								"LIKELY_HUMAN"
+							],
+							"example": "LIKELY_AUTOMATED"
+						},
+						"description": "Filter for bot class. Refer to [Bot Groupings](https://developers.cloudflare.com/bots/concepts/bot-score#bot-groupings).",
+						"enum": [
+							"LIKELY_AUTOMATED",
+							"LIKELY_HUMAN"
+						]
+					},
+					"format": {
+						"type": "string",
+						"example": "\"json\"",
+						"default": "json",
+						"enum": [
+							"json",
+							"csv"
+						],
+						"description": "Format results are returned in."
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"limit",
+					"name",
+					"dateRange",
+					"dateStart",
+					"dateEnd",
+					"asn",
+					"location",
+					"botClass",
+					"format"
+				],
+				"objects": [],
+				"example": "{\n  \"limit\": 5,\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"botClass\": [\n    \"LIKELY_AUTOMATED\"\n  ],\n  \"format\": \"json\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"meta\": {\n    \"confidenceInfo\": {\n      \"annotations\": [\n        {\n          \"startTime\": \"2022-09-17T10:22:57.555Z\",\n          \"endTime\": \"2022-09-17T10:22:57.555Z\"\n        }\n      ]\n    },\n    \"dateRange\": {\n      \"startTime\": \"2022-09-17T10:22:57.555Z\",\n      \"endTime\": \"2022-09-17T10:22:57.555Z\"\n    }\n  },\n  \"result\": {\n    \"top_0\": [\n      {\n        \"clientASN\": \"3243\",\n        \"clientASName\": \"MEO\",\n        \"value\": \"3\"\n      }\n    ]\n  }\n}"
+		},
+		{
+			"title": "Get top autonomous systems by HTTP requests",
+			"description": "Get the top autonomous systems (AS) by HTTP traffic. Values are a percentage out of the total traffic.",
+			"rel": "collection",
+			"href": "radar/http/top/ases",
+			"method": "GET",
+			"cfOwnership": "radar",
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.api.user.read"
+				]
+			},
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "radar-http-get-top-autonomous-systems-by-http-requests",
+			"uri": "radar/http/top/ases",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/http/top/ases?limit=5&name=main_series&dateRange=7d&dateStart=2022-08-01T09:58:33Z&dateEnd=2022-09-01T09:58:33Z&asn=15169&location=US,CA&botClass=LIKELY_AUTOMATED&format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"limit": {
+						"type": "number",
+						"example": "5",
+						"default": 5,
+						"description": "Limit the number of objects in the response"
+					},
+					"name": {
+						"type": "array",
+						"example": "[\n  \"main_series\"\n]",
+						"items": {
+							"type": "string",
+							"example": "main_series"
+						},
+						"description": "Array of names that will be used to name the series in responses."
+					},
+					"dateRange": {
+						"type": "array",
+						"example": "[\n  \"7d\"\n]",
+						"items": {
+							"type": "string",
+							"enum": [
+								"1d",
+								"7d",
+								"14d",
+								"28d",
+								"1dControl",
+								"7dControl",
+								"14dControl",
+								"28dControl"
+							],
+							"example": "7d"
+						},
+						"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+						"enum": [
+							"1d",
+							"7d",
+							"14d",
+							"28d",
+							"1dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl"
+						]
+					},
+					"dateStart": {
+						"type": "array",
+						"example": "[\n  \"2022-08-01T09:58:33Z\"\n]",
+						"items": {
+							"type": "string",
+							"format": "date-time",
+							"example": "2022-08-01T09:58:33Z"
+						},
+						"description": "Array of datetimes to filter the start of a series."
+					},
+					"dateEnd": {
+						"type": "array",
+						"example": "[\n  \"2022-09-01T09:58:33Z\"\n]",
+						"items": {
+							"type": "string",
+							"format": "date-time",
+							"example": "2022-09-01T09:58:33Z"
+						},
+						"description": "Array of datetimes to filter the end of a series."
+					},
+					"asn": {
+						"type": "array",
+						"example": "[\n  \"15169\"\n]",
+						"items": {
+							"type": "string",
+							"example": "15169"
+						},
+						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `[-174, 3356]` excludes results from AS174, but includes results from AS3356."
+					},
+					"location": {
+						"type": "array",
+						"example": "[\n  \"US,CA\"\n]",
+						"items": {
+							"type": "string",
+							"example": "US,CA"
+						},
+						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `[-US, PT]` excludes results from the US, but includes results from PT."
+					},
+					"botClass": {
+						"type": "array",
+						"example": "[\n  \"LIKELY_AUTOMATED\"\n]",
+						"items": {
+							"type": "string",
+							"enum": [
+								"LIKELY_AUTOMATED",
+								"LIKELY_HUMAN"
+							],
+							"example": "LIKELY_AUTOMATED"
+						},
+						"description": "Filter for bot class. Refer to [Bot Groupings](https://developers.cloudflare.com/bots/concepts/bot-score#bot-groupings).",
+						"enum": [
+							"LIKELY_AUTOMATED",
+							"LIKELY_HUMAN"
+						]
+					},
+					"format": {
+						"type": "string",
+						"example": "\"json\"",
+						"default": "json",
+						"enum": [
+							"json",
+							"csv"
+						],
+						"description": "Format results are returned in."
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"limit",
+					"name",
+					"dateRange",
+					"dateStart",
+					"dateEnd",
+					"asn",
+					"location",
+					"botClass",
+					"format"
+				],
+				"objects": [],
+				"example": "{\n  \"limit\": 5,\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"botClass\": [\n    \"LIKELY_AUTOMATED\"\n  ],\n  \"format\": \"json\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"meta\": {\n    \"confidenceInfo\": {\n      \"annotations\": [\n        {\n          \"startTime\": \"2022-09-17T10:22:57.555Z\",\n          \"endTime\": \"2022-09-17T10:22:57.555Z\"\n        }\n      ]\n    },\n    \"dateRange\": {\n      \"startTime\": \"2022-09-17T10:22:57.555Z\",\n      \"endTime\": \"2022-09-17T10:22:57.555Z\"\n    }\n  },\n  \"result\": {\n    \"top_0\": [\n      {\n        \"clientASN\": \"3243\",\n        \"clientASName\": \"MEO\",\n        \"value\": \"3\"\n      }\n    ]\n  }\n}"
+		},
+		{
+			"title": "Get top user agents by HTTP requests",
+			"description": "Get the top user agents by HTTP traffic. Values are a percentage out of the total traffic.",
+			"rel": "collection",
+			"href": "radar/http/top/browsers",
+			"method": "GET",
+			"cfOwnership": "radar",
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.api.user.read"
+				]
+			},
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "radar-http-get-top-user-agents-by-http-requests",
+			"uri": "radar/http/top/browsers",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/http/top/browsers?limit=5&name=main_series&dateRange=7d&dateStart=2022-08-01T09:58:33Z&dateEnd=2022-09-01T09:58:33Z&asn=15169&location=US,CA&botClass=LIKELY_AUTOMATED&format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"limit": {
+						"type": "number",
+						"example": "5",
+						"default": 5,
+						"description": "Limit the number of objects in the response"
+					},
+					"name": {
+						"type": "array",
+						"example": "[\n  \"main_series\"\n]",
+						"items": {
+							"type": "string",
+							"example": "main_series"
+						},
+						"description": "Array of names that will be used to name the series in responses."
+					},
+					"dateRange": {
+						"type": "array",
+						"example": "[\n  \"7d\"\n]",
+						"items": {
+							"type": "string",
+							"enum": [
+								"1d",
+								"7d",
+								"14d",
+								"28d",
+								"1dControl",
+								"7dControl",
+								"14dControl",
+								"28dControl"
+							],
+							"example": "7d"
+						},
+						"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+						"enum": [
+							"1d",
+							"7d",
+							"14d",
+							"28d",
+							"1dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl"
+						]
+					},
+					"dateStart": {
+						"type": "array",
+						"example": "[\n  \"2022-08-01T09:58:33Z\"\n]",
+						"items": {
+							"type": "string",
+							"format": "date-time",
+							"example": "2022-08-01T09:58:33Z"
+						},
+						"description": "Array of datetimes to filter the start of a series."
+					},
+					"dateEnd": {
+						"type": "array",
+						"example": "[\n  \"2022-09-01T09:58:33Z\"\n]",
+						"items": {
+							"type": "string",
+							"format": "date-time",
+							"example": "2022-09-01T09:58:33Z"
+						},
+						"description": "Array of datetimes to filter the end of a series."
+					},
+					"asn": {
+						"type": "array",
+						"example": "[\n  \"15169\"\n]",
+						"items": {
+							"type": "string",
+							"example": "15169"
+						},
+						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `[-174, 3356]` excludes results from AS174, but includes results from AS3356."
+					},
+					"location": {
+						"type": "array",
+						"example": "[\n  \"US,CA\"\n]",
+						"items": {
+							"type": "string",
+							"example": "US,CA"
+						},
+						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `[-US, PT]` excludes results from the US, but includes results from PT."
+					},
+					"botClass": {
+						"type": "array",
+						"example": "[\n  \"LIKELY_AUTOMATED\"\n]",
+						"items": {
+							"type": "string",
+							"enum": [
+								"LIKELY_AUTOMATED",
+								"LIKELY_HUMAN"
+							],
+							"example": "LIKELY_AUTOMATED"
+						},
+						"description": "Filter for bot class. Refer to [Bot Groupings](https://developers.cloudflare.com/bots/concepts/bot-score#bot-groupings).",
+						"enum": [
+							"LIKELY_AUTOMATED",
+							"LIKELY_HUMAN"
+						]
+					},
+					"format": {
+						"type": "string",
+						"example": "\"json\"",
+						"default": "json",
+						"enum": [
+							"json",
+							"csv"
+						],
+						"description": "Format results are returned in."
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"limit",
+					"name",
+					"dateRange",
+					"dateStart",
+					"dateEnd",
+					"asn",
+					"location",
+					"botClass",
+					"format"
+				],
+				"objects": [],
+				"example": "{\n  \"limit\": 5,\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"botClass\": [\n    \"LIKELY_AUTOMATED\"\n  ],\n  \"format\": \"json\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"meta\": {\n    \"confidenceInfo\": {\n      \"annotations\": [\n        {\n          \"startTime\": \"2022-09-17T10:22:57.555Z\",\n          \"endTime\": \"2022-09-17T10:22:57.555Z\"\n        }\n      ]\n    },\n    \"dateRange\": {\n      \"startTime\": \"2022-09-17T10:22:57.555Z\",\n      \"endTime\": \"2022-09-17T10:22:57.555Z\"\n    }\n  },\n  \"result\": {\n    \"top_0\": [\n      {}\n    ]\n  }\n}"
+		},
+		{
+			"title": "Get top user agents aggregated in families by HTTP requests",
+			"description": "Get the top user agents aggregated in families by HTTP traffic. Values are a percentage out of the total traffic.",
+			"rel": "collection",
+			"href": "radar/http/top/browser_families",
+			"method": "GET",
+			"cfOwnership": "radar",
+			"cfPermissionsRequired": {
+				"enum": [
+					"com.cloudflare.api.user.read"
+				]
+			},
+			"cfPlanAvailability": {
+				"free": true,
+				"pro": true,
+				"business": true,
+				"enterprise": true
+			},
+			"html_id": "radar-http-get-top-user-agents-aggregated-in-families-by-http-requests",
+			"uri": "radar/http/top/browser_families",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/http/top/browser_families?limit=5&name=main_series&dateRange=7d&dateStart=2022-08-01T09:58:33Z&dateEnd=2022-09-01T09:58:33Z&asn=15169&location=US,CA&botClass=LIKELY_AUTOMATED&format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"limit": {
+						"type": "number",
+						"example": "5",
+						"default": 5,
+						"description": "Limit the number of objects in the response"
+					},
+					"name": {
+						"type": "array",
+						"example": "[\n  \"main_series\"\n]",
+						"items": {
+							"type": "string",
+							"example": "main_series"
+						},
+						"description": "Array of names that will be used to name the series in responses."
+					},
+					"dateRange": {
+						"type": "array",
+						"example": "[\n  \"7d\"\n]",
+						"items": {
+							"type": "string",
+							"enum": [
+								"1d",
+								"7d",
+								"14d",
+								"28d",
+								"1dControl",
+								"7dControl",
+								"14dControl",
+								"28dControl"
+							],
+							"example": "7d"
+						},
+						"description": "For example, use `7d` and `7dControl` to compare this week with the previous week. Use this parameter or set specific start and end dates (`dateStart` and `dateEnd` parameters).",
+						"enum": [
+							"1d",
+							"7d",
+							"14d",
+							"28d",
+							"1dControl",
+							"7dControl",
+							"14dControl",
+							"28dControl"
+						]
+					},
+					"dateStart": {
+						"type": "array",
+						"example": "[\n  \"2022-08-01T09:58:33Z\"\n]",
+						"items": {
+							"type": "string",
+							"format": "date-time",
+							"example": "2022-08-01T09:58:33Z"
+						},
+						"description": "Array of datetimes to filter the start of a series."
+					},
+					"dateEnd": {
+						"type": "array",
+						"example": "[\n  \"2022-09-01T09:58:33Z\"\n]",
+						"items": {
+							"type": "string",
+							"format": "date-time",
+							"example": "2022-09-01T09:58:33Z"
+						},
+						"description": "Array of datetimes to filter the end of a series."
+					},
+					"asn": {
+						"type": "array",
+						"example": "[\n  \"15169\"\n]",
+						"items": {
+							"type": "string",
+							"example": "15169"
+						},
+						"description": "Array of comma separated list of ASNs, start with `-` to exclude from results. For example, `[-174, 3356]` excludes results from AS174, but includes results from AS3356."
+					},
+					"location": {
+						"type": "array",
+						"example": "[\n  \"US,CA\"\n]",
+						"items": {
+							"type": "string",
+							"example": "US,CA"
+						},
+						"description": "Array of comma separated list of locations (alpha-2 country codes). Start with `-` to exclude from results. For example, `[-US, PT]` excludes results from the US, but includes results from PT."
+					},
+					"botClass": {
+						"type": "array",
+						"example": "[\n  \"LIKELY_AUTOMATED\"\n]",
+						"items": {
+							"type": "string",
+							"enum": [
+								"LIKELY_AUTOMATED",
+								"LIKELY_HUMAN"
+							],
+							"example": "LIKELY_AUTOMATED"
+						},
+						"description": "Filter for bot class. Refer to [Bot Groupings](https://developers.cloudflare.com/bots/concepts/bot-score#bot-groupings).",
+						"enum": [
+							"LIKELY_AUTOMATED",
+							"LIKELY_HUMAN"
+						]
+					},
+					"format": {
+						"type": "string",
+						"example": "\"json\"",
+						"default": "json",
+						"enum": [
+							"json",
+							"csv"
+						],
+						"description": "Format results are returned in."
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"limit",
+					"name",
+					"dateRange",
+					"dateStart",
+					"dateEnd",
+					"asn",
+					"location",
+					"botClass",
+					"format"
+				],
+				"objects": [],
+				"example": "{\n  \"limit\": 5,\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"botClass\": [\n    \"LIKELY_AUTOMATED\"\n  ],\n  \"format\": \"json\"\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"meta\": {\n    \"confidenceInfo\": {\n      \"annotations\": [\n        {\n          \"startTime\": \"2022-09-17T10:22:57.555Z\",\n          \"endTime\": \"2022-09-17T10:22:57.555Z\"\n        }\n      ]\n    },\n    \"dateRange\": {\n      \"startTime\": \"2022-09-17T10:22:57.555Z\",\n      \"endTime\": \"2022-09-17T10:22:57.555Z\"\n    }\n  },\n  \"result\": {\n    \"top_0\": [\n      {}\n    ]\n  }\n}"
+		}
+	],
+	"cfExtendedDescription": "Either one or multiple queries can be requested at the same time - this is useful when you want, for example, to compare multiple time series (eg. `dateRange=7d&location=US&dateRange=7d&location=CA` would fetch two time series at the same time, the first for the US, the second for Canada). Take into account that the api is not real time and has a delay of about two hours.",
+	"html_id": "radar-http",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {},
+		"required_props": [],
+		"optional_props": [],
+		"objects": [],
+		"example": "{}",
+		"title": "Radar HTTP",
+		"description": "Shows HTTP requests traffic data. (Beta)"
+	}
+}
