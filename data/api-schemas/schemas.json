@@ -94623,7 +94623,12 @@
 										{
 											"properties": {
 												"result": {
-													"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1web3~1hostnames~1%7Bidentifier%7D~1ipfs_universal_path~1content_list/put/requestBody/content/application~1json/schema"
+													"type": "object",
+													"properties": {
+														"action": {
+															"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1web3~1hostnames~1%7Bidentifier%7D~1ipfs_universal_path~1content_list/put/requestBody/content/application~1json/schema/properties/action"
+														}
+													}
 												}
 											}
 										}
@@ -94704,8 +94709,52 @@
 										],
 										"description": "Behavior of the content list",
 										"example": "block"
+									},
+									"entries": {
+										"description": "Content list entries",
+										"type": "array",
+										"items": {
+											"description": "Content list entry to be blocked",
+											"type": "object",
+											"properties": {
+												"id": {
+													"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1available_plans~1%7Bplan_identifier%7D/get/parameters/0/schema"
+												},
+												"type": {
+													"type": "string",
+													"enum": [
+														"cid",
+														"content_path"
+													],
+													"description": "Type of content list entry to block",
+													"example": "cid"
+												},
+												"content": {
+													"type": "string",
+													"maxLength": 500,
+													"description": "CID or content path of content to block",
+													"example": "QmPZ9gcCEpqKTo6aq61g2nXGUhM4iCL3ewB6LDXZCtioEB"
+												},
+												"description": {
+													"type": "string",
+													"maxLength": 500,
+													"description": "An optional description of the content list entry.",
+													"example": "this is my content list entry"
+												},
+												"created_on": {
+													"$ref": "#/paths/~1user~1load_balancers~1monitors/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/properties/created_on"
+												},
+												"modified_on": {
+													"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1ssl~1recommendation/get/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/modified_on"
+												}
+											}
+										}
 									}
-								}
+								},
+								"required": [
+									"action",
+									"entries"
+								]
 							}
 						}
 					}
