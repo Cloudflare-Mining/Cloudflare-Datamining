@@ -264,6 +264,18 @@
 		}
 	},
 	{
+		"id": "account_custom_ns.allowed",
+		"feature": {
+			"feature_set": "account_custom_ns",
+			"id": 849,
+			"key": "account_custom_ns.allowed",
+			"name": "Account Custom NS Allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "analytics_engine.not_older_than",
 		"feature": {
 			"feature_set": "analytics_engine",
