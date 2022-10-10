@@ -5,31 +5,36 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4><strong>About the department</strong></h4>
-<p><span style="font-weight: 400;">Because of the scope, complexity, and diversity of the company’s work, we need a world-class team to help the company avoid distractions, and guide company leadership around obstacles.&nbsp; Our legal and policy teams are made up of very accomplished lawyers and staff who comprise a flexible, talented, and very cohesive team.</span></p>
-<h4><strong>What you'll do</strong></h4>
-<p><span style="font-weight: 400;">Cloudflare is looking for a bright, proactive, and detail-oriented Executive Assistant who can support our General Counsel and our VP, Head of Legal–Commercial Transactions, and generally help coordinate the collaborative work of our larger Legal team.</span></p>
-<p><span style="font-weight: 400;">The perfect candidate must be comfortable with a significant volume of tasks and prioritization in a fast-paced environment with close attention to detail, accuracy, and timeliness. The position requires the ability to apply a good deal of common sense and a growing understanding of work habits and priorities to keep everything working smoothly and in good spirits.&nbsp; The candidate will have to work with team members at all levels, sometimes under pressure. A high level of integrity and discretion in handling confidential information and professionalism in dealing with executives both inside and outside the company is important, as is a positive attitude.</span></p>
-<p><span style="font-weight: 400;">The responsibilities of the Executive Assistant will be to provide administrative and substantive support, including:&nbsp;</span></p>
+<h3><strong>About the Team</strong></h3>
+<p><span style="font-weight: 400;">The BDR program has two goals—generate qualified pipeline and develop business development representatives’ careers. We care deeply about both goals.</span></p>
+<p><span style="font-weight: 400;">We have worked purposefully over the last 2 years to increase the percentage of our new business revenue that comes from the outbound BDR team by partnering closely with our internal customers, Account Executives, to generate high quality meetings and pipeline. During that time we have also helped many BDRs grow into Account Executive and Customer Success roles. As we scale, BDRs are also starting to find homes in other roles across the Sales Engineering, Sales Operations, Marketing, and Partner teams.</span></p>
+<p><span style="font-weight: 400;">While accomplishing these two goals we strive to be a team that always “puts our Cloudflare hat on” and focuses on the best interests of the company.</span></p>
+<h3><strong>What you’ll do</strong></h3>
+<p><span style="font-weight: 400;">We’re looking for someone who has extensive sales and management experience who can help to scale this team and at the same time preserve our collaborative culture. Over the next year our team will rapidly scale and that will bring with it new challenges including helping to develop a growing team of extraordinary managers.</span></p>
+<h3><strong>Responsibilities</strong></h3>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Proactively own and flawlessly execute on very active, fluid calendars, prioritizing with purpose, deflecting with tact, and understanding both the short and long-term impacts of each confirmed, declined, and rescheduled meeting. Scheduling needs range from regular Board committee meetings, to internal cross-functional meetings, connecting with external counsel, interviews with candidates, 1:1s with direct reports, and a weekly team teaming of 50+ attendees.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Coordinate participation in external and company events. Help book domestic and international travel, ensure timely submission of expense reports.&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Track and draft communications with tact, substance, and accuracy. Vet and provide confidential requested information to appropriate stakeholders.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Help organize internal and well as external events and other collaborative opportunities for the General Counsel, the VP, Head of Legal–Commercial Transactions, and the larger legal team, including event planning, assistance with scheduling, catering, working with the Places and IT teams to ensure a smooth and seamless experience.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Coordinate on ad hoc projects to support the General Counsel, the VP, Head of Legal-Commercial Transactions, and other leadership members of the Legal team as requested.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Develop and foster relationships across the company, from the Admins of each team to senior members of the various orgs to become a helpful bridge and representative of the LPT Team. Problem solve where pain points can be eliminated and efficiencies can be attained.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Lead a 130+ BDR organization</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Execute on vision to make the BDR team a company-wide incubator for talent</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Recruit, interview, and hire excellent BDRs at scale</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Drive execution through rigorous metrics and forecast management</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Maintain and improve relationships with sales and marketing leadership partners</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Work closely with marketing, sales, and sales operations to ensure alignment on your team’s strategy and execution</span></li>
 </ul>
-<p><strong>Examples of desirable skills, knowledge and experience</strong></p>
+<h3><strong>Requirements</strong></h3>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">The ideal candidate is someone who wants an opportunity for growth and is excited to jump into a close working relationship with the dynamic leadership of one of the fastest-growing tech companies in the world.&nbsp; This position is ideal for someone with a thirst for knowledge who is looking for the first step on creating a career, and a desire to learn more about technology, Internet policy, and legal issues.&nbsp;</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">4-6+ years minimum experience in an administrative or support role, experience in a law firm or tech in-house environment is a plus</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">High School diploma required, Associate or Bachelor's Degree preferred</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong written and verbal communication skills</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong sense of proactiveness, combined with good judgment</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Ability to manage their own time with limited or no supervision</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Ability to hit the ground running and take charge of the position</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Start-up background is a plus</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Working knowledge of Google Suite, Concur, and Coupa is a plus</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">6+ years leading a sales team of BDRs or Inside Sales Reps and 4+ years scaling a team of 50+ reps</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">5+ years working in a rapidly growing technology company</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Closing experience and track record of exceeding quota</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience building career development programs for high performing individual contributors</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with funnel management across multiple channels (inbound, upsell, outbound, marketing)</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Salesforce and systems knowledge</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Excellent project management skills</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Bachelor’s degree required</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Self-motivated; entrepreneurial spirit</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Comfortable working in a fast paced dynamic environment</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong interpersonal communication skills (verbal &amp; written)</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Aptitude to learn technical concepts/terms</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Demonstrate excellent communication skills</span></li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
