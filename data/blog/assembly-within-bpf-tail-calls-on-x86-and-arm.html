@@ -1,0 +1,777 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/unnamed-3.png" class="kg-image" alt="Assembly within! BPF tail calls on x86 and ARM"></figure>
+	<p>Early on when we learn to program, we get introduced to the concept of <a href="https://ocw.mit.edu/courses/6-00sc-introduction-to-computer-science-and-programming-spring-2011/resources/lecture-6-recursion/" target="_blank">recursion</a>. And that it is handy for computing, among other things, sequences defined in terms of recurrences. Such as the famous <a href="https://en.wikipedia.org/wiki/Fibonacci_number" target="_blank">Fibonnaci numbers</a> - <em>Fn = Fn-1 + Fn-2</em>.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/Screenshot-2022-10-10-at-10.13.32.png" class="kg-image"></figure>
+	<p>Later on, perhaps when diving into multithreaded programming, we come to terms with the fact that <a href="https://textbook.cs161.org/memory-safety/x86.html#26-stack-pushing-and-popping" target="_blank">the stack space</a> for call frames is finite. And that there is an “okay” way and a “cool” way to calculate the Fibonacci numbers using recursion:</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-C">// fib_okay.c
+
+#include &lt;stdint.h&gt;
+
+uint64_t fib(uint64_t n)
+{
+        if (n == 0 || n == 1)
+                return 1;
+
+        return fib(n - 1) + fib(n - 2);
+}
+</code></pre>
+	<p><small>Listing 1. An okay Fibonacci number generator implementation</small></p>
+	<!--kg-card-end: markdown-->
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-C">// fib_cool.c
+
+#include &lt;stdint.h&gt;
+
+static uint64_t fib_tail(uint64_t n, uint64_t a, uint64_t b)
+{
+    if (n == 0)
+        return a;
+    if (n == 1)
+        return b;
+
+    return fib_tail(n - 1, b, a + b);
+}
+
+uint64_t fib(uint64_t n)
+{
+    return fib_tail(n, 1, 1);
+}
+</code></pre>
+	<p><small>Listing 2. A better version of the same</small></p>
+	<!--kg-card-end: markdown-->
+	<p>If we take a look at the machine code the compiler produces, the “cool” variant translates to a nice and tight sequence of instructions:</p>
+	<p>⚠ DISCLAIMER: This blog post is assembly-heavy. We will be looking at assembly code for x86-64, arm64 and BPF architectures. If you need an introduction or a refresher, I can recommend <a href="https://github.com/Apress/low-level-programming" target="_blank">“Low-Level Programming”</a> by Igor Zhirkov for x86-64, and <a href="https://github.com/Apress/programming-with-64-bit-ARM-assembly-language" target="_blank">“Programming with 64-Bit ARM Assembly Language”</a> by Stephen Smith for arm64. For BPF, see the <a href="https://docs.kernel.org/bpf/instruction-set.html" target="_blank">Linux kernel documentation</a>.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/Screenshot-2022-10-10-at-10.25.23.png" class="kg-image"></figure>
+	<!--kg-card-begin: markdown-->
+	<p><small>Listing 3. <code>fib_cool.c</code> compiled for x86-64 and arm64</small></p>
+	<!--kg-card-end: markdown-->
+	<p>The “okay” variant, disappointingly, leads to <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2022-10-bpf-tail-call/fib_okay.x86-64.disasm" target="_blank">more instructions</a> than a listing can fit. It is a spaghetti of <a href="https://en.wikipedia.org/wiki/Basic_block" target="_blank">basic blocks</a>.</p>
+	<!--kg-card-begin: html-->
+	<p><a href="https://raw.githubusercontent.com/cloudflare/cloudflare-blog/master/2022-10-bpf-tail-call/fib_okay.dot.png" target="_blank"><img style="border-width: 0px; border-style: none;" src="https://blog.cloudflare.com/content/images/2022/10/image6.png" alt="" width="1000" height="161"></a></p>
+	<!--kg-card-end: html-->
+	<p>But more importantly, it is not free of <a href="https://textbook.cs161.org/memory-safety/x86.html#29-x86-function-call-in-assembly" target="_blank">x86 call instructions</a>.</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-shell">$ objdump -d fib_okay.o | grep call
+ 10c:   e8 00 00 00 00          call   111 &lt;fib+0x111&gt;
+$ objdump -d fib_cool.o | grep call
+$
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>This has an important consequence - as fib recursively calls itself, the stacks keep growing. We can observe it with a bit of <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2022-10-bpf-tail-call/trace_rsp.gdb" target="_blank">help from the debugger</a>.</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-shell">$ gdb --quiet --batch --command=trace_rsp.gdb --args ./fib_okay 6
+Breakpoint 1 at 0x401188: file fib_okay.c, line 3.
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib64/libthread_db.so.1".
+n = 6, %rsp = 0xffffd920
+n = 5, %rsp = 0xffffd900
+n = 4, %rsp = 0xffffd8e0
+n = 3, %rsp = 0xffffd8c0
+n = 2, %rsp = 0xffffd8a0
+n = 1, %rsp = 0xffffd880
+n = 1, %rsp = 0xffffd8c0
+n = 2, %rsp = 0xffffd8e0
+n = 1, %rsp = 0xffffd8c0
+n = 3, %rsp = 0xffffd900
+n = 2, %rsp = 0xffffd8e0
+n = 1, %rsp = 0xffffd8c0
+n = 1, %rsp = 0xffffd900
+13
+[Inferior 1 (process 50904) exited normally]
+$
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>While the “cool” variant makes no use of the stack.</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-shell">$ gdb --quiet --batch --command=trace_rsp.gdb --args ./fib_cool 6
+Breakpoint 1 at 0x40118a: file fib_cool.c, line 13.
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib64/libthread_db.so.1".
+n = 6, %rsp = 0xffffd938
+13
+[Inferior 1 (process 50949) exited normally]
+$
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<!--kg-card-begin: markdown-->
+	<h2 id="wheredidthecallsgo">Where did the <code>calls</code> go?</h2>
+	<!--kg-card-end: markdown-->
+	<p>The smart compiler turned the last function call in the body into a regular jump. Why was it allowed to do that?</p>
+	<p>It is the last instruction in the function body we are talking about. The caller stack frame is going to be destroyed right after we return anyway. So why keep it around when we can reuse it for the callee’s <a href="https://eli.thegreenplace.net/2011/02/04/where-the-top-of-the-stack-is-on-x86/" target="_blank">stack frame</a>?</p>
+	<p>This optimization, known as <a href="https://en.wikipedia.org/wiki/Tail_call#In_assembly" target="_blank">tail call elimination</a>, leaves us with no function calls in the “cool” variant of our fib implementation. There was only one call to eliminate - right at the end.</p>
+	<p>Once applied, the call becomes a jump (loop). If assembly is not your second language, decompiling the fib_cool.o object file with <a href="https://ghidra-sre.org/" target="_blank">Ghidra</a> helps see the transformation:</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-C">long fib(ulong param_1)
+
+{
+  long lVar1;
+  long lVar2;
+  long lVar3;
+  
+  if (param_1 &lt; 2) {
+    lVar3 = 1;
+  }
+  else {
+    lVar3 = 1;
+    lVar2 = 1;
+    do {
+      lVar1 = lVar3;
+      param_1 = param_1 - 1;
+      lVar3 = lVar2 + lVar1;
+      lVar2 = lVar1;
+    } while (param_1 != 1);
+  }
+  return lVar3;
+}
+</code></pre>
+	<p><small>Listing 4. <code>fib_cool.o</code> decompiled by Ghidra</small></p>
+	<!--kg-card-end: markdown-->
+	<p>This is very much desired. Not only is the generated machine code much shorter. It is also way faster due to lack of calls, which pop up on the <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2022-10-bpf-tail-call/fib_okay_50.perf.txt#L85" target="_blank">profile</a> for fib_okay.</p>
+	<p>But I am no <a href="https://github.com/dendibakh/perf-ninja" target="_blank">performance ninja</a> and this blog post is not about compiler optimizations. So why am I telling you about it?</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/image5.jpg" class="kg-image">
+		<figcaption><a href="https://commons.wikimedia.org/wiki/File:Lemur_catta_-_tail_length_01.jpg" target="_blank">Alex Dunkel (Maky), CC BY-SA 3.0</a>, via <a href="https://creativecommons.org/licenses/by-sa/3.0" target="_blank">Wikimedia Commons</a></figcaption>
+	</figure>
+	<h2 id="tail-calls-in-bpf">Tail calls in BPF</h2>
+	<p>The concept of tail call elimination made its way into the BPF world. Although not in the way you might expect. Yes, the LLVM compiler does get rid of the trailing function calls when building for -target bpf. The transformation happens at the intermediate representation level, so it is backend agnostic. This can save you some <a href="https://docs.cilium.io/en/stable/bpf/#bpf-to-bpf-calls" target="_blank">BPF-to-BPF function calls</a>, which you can spot by looking for call -N instructions in the BPF assembly.</p>
+	<p>However, when we talk about tail calls in the BPF context, we usually have something else in mind. And that is a mechanism, built into the BPF JIT compiler, for <a href="https://docs.cilium.io/en/stable/bpf/#tail-calls" target="_blank">chaining BPF programs</a>.</p>
+	<p>We first adopted BPF tail calls when building our <a href="https://legacy.netdevconf.info/0x13/session.html?talk-XDP-based-DDoS-mitigation" target="_blank">XDP-based packet processing pipeline</a>. Thanks to it, we were able to divide the processing logic into several XDP programs. Each responsible for doing one thing.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/image8.png" class="kg-image" alt="Slide from “XDP based DDoS Mitigation” talk by Arthur Fabre">
+		<figcaption>Slide from “<a href="https://legacy.netdevconf.info/0x13/session.html?talk-XDP-based-DDoS-mitigation" target="_blank">XDP based DDoS Mitigation</a>” talk by <a href="https://blog.cloudflare.com/author/arthur/">Arthur Fabre</a></figcaption>
+	</figure>
+	<p>BPF tail calls have served us well since then. But they do have their caveats. Until recently it was impossible to have both BPF tails calls and BPF-to-BPF function calls in the same XDP program on arm64, which is one of the supported architectures for us.</p>
+	<p>Why? Before we get to that, we have to clarify what a BPF tail call actually does.</p>
+	<h2 id="a-tail-call-is-a-tail-call-is-a-tail-call">A tail call is a tail call is a tail call</h2>
+	<p>BPF exposes the tail call mechanism through the <a href="https://elixir.bootlin.com/linux/v5.15.63/source/include/uapi/linux/bpf.h#L1712" target="_blank">bpf_tail_call helper</a>, which we can invoke from our BPF code. We don’t directly point out which BPF program we would like to call. Instead, we pass it a BPF map (a container) capable of holding references to BPF programs (BPF_MAP_TYPE_PROG_ARRAY), and an index into the map.</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-TXT">long bpf_tail_call(void *ctx, struct bpf_map *prog_array_map, u32 index)
+
+       Description
+              This  special  helper is used to trigger a "tail call", or
+              in other words, to jump into  another  eBPF  program.  The
+              same  stack frame is used (but values on stack and in reg‐
+              isters for the caller are not accessible to  the  callee).
+              This  mechanism  allows  for  program chaining, either for
+              raising the maximum number of available eBPF instructions,
+              or  to  execute  given programs in conditional blocks. For
+              security reasons, there is an upper limit to the number of
+              successive tail calls that can be performed.
+</code></pre>
+	<p><small><a href="https://man7.org/linux/man-pages/man7/bpf-helpers.7.html" target="_blank">bpf-helpers(7) man page</a></small></p>
+	<!--kg-card-end: markdown-->
+	<p>At first glance, this looks somewhat similar to the <a href="https://man7.org/linux/man-pages/man2/execve.2.html" target="_blank">execve(2) syscall</a>. It is easy to mistake it for a way to execute a new program from the current program context. To quote the excellent <a href="https://docs.cilium.io/en/stable/bpf/#tail-calls" target="_blank">BPF and XDP Reference Guide</a> from the Cilium project documentation:</p>
+	<blockquote><em>Tail calls can be seen as a mechanism that allows one BPF program to call another, without returning to the old program. Such a call has minimal overhead as unlike function calls, it is implemented as a long jump, reusing the same stack frame.</em></blockquote>
+	<p>But once we add <a href="https://docs.cilium.io/en/stable/bpf/#bpf-to-bpf-calls" target="_blank">BPF function calls</a> into the mix, it becomes clear that the BPF tail call mechanism is indeed an implementation of tail call elimination, rather than a way to replace one program with another:</p>
+	<blockquote><em>Tail calls, before the actual jump to the target program, will unwind only its current stack frame. As we can see in the example above, if a tail call occurs from within the sub-function, the function’s (func1) stack frame will be present on the stack when a program execution is at func2. Once the final function (func3) function terminates, all the previous stack frames will be unwinded and control will get back to the caller of BPF program caller.</em></blockquote>
+	<p>Alas, one with sometimes slightly surprising semantics. Consider the code <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2022-10-bpf-tail-call/tail_call_ex3.bpf.c" target="_blank">like below</a>, where a BPF function calls the <code>bpf_tail_call()</code> helper:</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-C">struct {
+    __uint(type, BPF_MAP_TYPE_PROG_ARRAY);
+    __uint(max_entries, 1);
+    __uint(key_size, sizeof(__u32));
+    __uint(value_size, sizeof(__u32));
+} bar SEC(".maps");
+
+SEC("tc")
+int serve_drink(struct __sk_buff *skb __unused)
+{
+    return 0xcafe;
+}
+
+static __noinline
+int bring_order(struct __sk_buff *skb)
+{
+    bpf_tail_call(skb, &amp;bar, 0);
+    return 0xf00d;
+}
+
+SEC("tc")
+int server1(struct __sk_buff *skb)
+{
+    return bring_order(skb);    
+}
+
+SEC("tc")
+int server2(struct __sk_buff *skb)
+{
+    __attribute__((musttail)) return bring_order(skb);  
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>We have two seemingly not so different BPF programs - <code>server1()</code> and <code>server2()</code>. They both call the same BPF function <code>bring_order()</code>. The function tail calls into the <code>serve_drink()</code> program, if the <code>bar[0]</code> map entry points to it (let’s assume that).</p>
+	<p>Do both <code>server1</code> and <code>server2</code> return the same value? Turns out that - no, they don’t. We get a hex 🍔 from <code>server1</code>, and a ☕ from <code>server2</code>. How so?</p>
+	<p>First thing to notice is that a BPF tail call unwinds just the current function stack frame. Code past the <code>bpf_tail_call()</code> invocation in the function body never executes, providing the tail call is successful (the map entry was set, and the tail call limit has not been reached).</p>
+	<p>When the tail call finishes, control returns to the caller of the function which made the tail call. Applying this to our example, the control flow is <code>serverX() --&gt; bring_order() --&gt; bpf_tail_call() --&gt; serve_drink() -return-&gt; serverX()</code> for both programs.</p>
+	<p>The second thing to keep in mind is that the compiler does not know that the bpf_tail_call() helper changes the control flow. Hence, the unsuspecting compiler optimizes the code as if the execution would continue past the BPF tail call.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/image2-8.png" class="kg-image">
+		<figcaption>The call graph for <code>server1()</code> and <code>server2()</code> is the same, but the return value differs due to build time optimizations.</figcaption>
+	</figure>
+	<p>In our case, the compiler thinks it is okay to propagate the constant which <code>bring_order()</code> returns to <code>server1()</code>. Possibly catching us by surprise, if we didn’t check the <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2022-10-bpf-tail-call/tail_call_ex3.bpf.disasm" target="_blank">generated BPF assembly</a>.</p>
+	<p>We can prevent it by <a href="https://clang.llvm.org/docs/AttributeReference.html#musttail" target="_blank">forcing the compiler</a> to make a tail call to <code>bring_order()</code>. This way we ensure that whatever <code>bring_order()</code> returns will be used as the <code>server2()</code> program result.</p>
+	<p>🛈 General rule - for least surprising results, use <a href="https://clang.llvm.org/docs/AttributeReference.html#musttail" target="_blank"><code>musttail attribute</code></a> when calling a function that contain a BPF tail call.</p>
+	<p>How does the <code>bpf_tail_call()</code> work underneath then? And why the BPF verifier wouldn’t let us mix the function calls with tail calls on arm64? Time to dig deeper.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/image7.jpg" class="kg-image" alt="Public Domain image">
+		<figcaption>Public Domain <a href="https://www.rawpixel.com/image/3578996/free-photo-image-bulldozer-construction-site" target="_blank">image</a></figcaption>
+	</figure>
+	<h2 id="bpf-tail-call-on-x86-64">BPF tail call on x86-64</h2>
+	<p>What does a <code>bpf_tail_call()</code> helper call translate to after BPF JIT for x86-64 has compiled it? How does the implementation guarantee that we don’t end up in a tail call loop forever?</p>
+	<p>To find out we will need to piece together a few things.</p>
+	<p>First, there is the BPF JIT compiler source code, which lives in <a href="https://elixir.bootlin.com/linux/v5.19.12/source/arch/x86/net/bpf_jit_comp.c" target="_blank"><code>arch/x86/net/bpf_jit_comp.c</code></a>. Its code is annotated with helpful comments. We will focus our attention on the following call chain within the JIT:</p>
+	<!--kg-card-begin: html-->
+	<p><a href="https://elixir.bootlin.com/linux/v5.19.12/source/arch/x86/net/bpf_jit_comp.c#L894" target="_blank"><span style="font-weight: 400;">do_jit()</span><span style="font-weight: 400;"> 🔗</span><span style="font-weight: 400;"><br></span></a><span style="font-weight: 400;">   </span><a href="https://elixir.bootlin.com/linux/v5.19.12/source/arch/x86/net/bpf_jit_comp.c#L292" target="_blank"><span style="font-weight: 400;">emit_prologue()</span><span style="font-weight: 400;"> 🔗</span><span style="font-weight: 400;"><br></span></a><span style="font-weight: 400;">   </span><a href="https://elixir.bootlin.com/linux/v5.19.12/source/arch/x86/net/bpf_jit_comp.c#L257" target="_blank"><span style="font-weight: 400;">push_callee_regs()</span><span style="font-weight: 400;"> 🔗</span><span style="font-weight: 400;"><br></span></a><span style="font-weight: 400;">   </span><span style="font-weight: 400;">for (i = 1; i &lt;= insn_cnt; i++, insn++) {</span><span style="font-weight: 400;"><br></span><span style="font-weight: 400;">     </span><span style="font-weight: 400;">switch (insn-&gt;code) {</span><span style="font-weight: 400;"><br></span><span style="font-weight: 400;">     </span><span style="font-weight: 400;">case BPF_JMP | BPF_CALL:</span><span style="font-weight: 400;"><br></span><span style="font-weight: 400;">       </span><a href="https://elixir.bootlin.com/linux/v5.19.12/source/arch/x86/net/bpf_jit_comp.c#L1434" target="_blank"><span style="font-weight: 400;">/* emit function call */</span><span style="font-weight: 400;"> 🔗</span><span style="font-weight: 400;"><br></span></a><span style="font-weight: 400;">     </span><span style="font-weight: 400;">case BPF_JMP | BPF_TAIL_CALL:</span><span style="font-weight: 400;"><br></span><span style="font-weight: 400;">       </span><a href="https://elixir.bootlin.com/linux/v5.19.12/source/arch/x86/net/bpf_jit_comp.c#L531" target="_blank"><span style="font-weight: 400;">emit_bpf_tail_call_direct()</span><span style="font-weight: 400;"> 🔗</span><span style="font-weight: 400;"><br></span></a><span style="font-weight: 400;">     </span><span style="font-weight: 400;">case BPF_JMP | BPF_EXIT:</span><span style="font-weight: 400;"><br></span><span style="font-weight: 400;">       </span><a href="https://elixir.bootlin.com/linux/v5.19.12/source/arch/x86/net/bpf_jit_comp.c#L1693" target="_blank"><span style="font-weight: 400;">/* emit epilogue */</span><span style="font-weight: 400;"> 🔗</span><span style="font-weight: 400;"><br></span></a><span style="font-weight: 400;">     </span><span style="font-weight: 400;">}</span> <span style="font-weight: 400;"><br></span><span style="font-weight: 400;">  </span><span style="font-weight: 400;">}</span></p>
+	<!--kg-card-end: html-->
+	<p>It is sometimes hard to visualize the generated instruction stream just from reading the compiler code. Hence, we will also want to inspect the input - BPF instructions - and the output - x86-64 instructions - of the JIT compiler.</p>
+	<p>To inspect BPF and x86-64 instructions of a loaded BPF program, we can use <code>bpftool prog dump</code>. However, first we must populate the BPF map used as the tail call jump table. Otherwise, we might not be able to see the tail call jump!</p>
+	<p>This is due to <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=428d5df1fa4f28daf622c48dd19da35585c9053c" target="_blank">optimizations</a> that use instruction patching when the index into the program array is known at load time.</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-shell"># bpftool prog loadall ./tail_call_ex1.o /sys/fs/bpf pinmaps /sys/fs/bpf
+# bpftool map update pinned /sys/fs/bpf/jmp_table key 0 0 0 0 value pinned /sys/fs/bpf/target_prog
+# bpftool prog dump xlated pinned /sys/fs/bpf/entry_prog
+int entry_prog(struct __sk_buff * skb):
+; bpf_tail_call(skb, &amp;jmp_table, 0);
+   0: (18) r2 = map[id:24]
+   2: (b7) r3 = 0
+   3: (85) call bpf_tail_call#12
+; return 0xf00d;
+   4: (b7) r0 = 61453
+   5: (95) exit
+# bpftool prog dump jited pinned /sys/fs/bpf/entry_prog
+int entry_prog(struct __sk_buff * skb):
+bpf_prog_4f697d723aa87765_entry_prog:
+; bpf_tail_call(skb, &amp;jmp_table, 0);
+   0:   nopl   0x0(%rax,%rax,1)
+   5:   xor    %eax,%eax
+   7:   push   %rbp
+   8:   mov    %rsp,%rbp
+   b:   push   %rax
+   c:   movabs $0xffff888102764800,%rsi
+  16:   xor    %edx,%edx
+  18:   mov    -0x4(%rbp),%eax
+  1e:   cmp    $0x21,%eax
+  21:   jae    0x0000000000000037
+  23:   add    $0x1,%eax
+  26:   mov    %eax,-0x4(%rbp)
+  2c:   nopl   0x0(%rax,%rax,1)
+  31:   pop    %rax
+  32:   jmp    0xffffffffffffffe3   // bug? 🤔
+; return 0xf00d;
+  37:   mov    $0xf00d,%eax
+  3c:   leave
+  3d:   ret
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>There is a caveat. The target addresses for tail call jumps in <code>bpftool prog dump jited</code> output will not make any sense. To discover the real jump targets, we have to peek into the kernel memory. That can be done with <code>gdb</code> after we find the address of our JIT’ed BPF programs in <code>/proc/kallsyms</code>:</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-shell"># tail -2 /proc/kallsyms
+ffffffffa0000720 t bpf_prog_f85b2547b00cbbe9_target_prog        [bpf]
+ffffffffa0000748 t bpf_prog_4f697d723aa87765_entry_prog [bpf]
+# gdb -q -c /proc/kcore -ex 'x/18i 0xffffffffa0000748' -ex 'quit'
+[New process 1]
+Core was generated by `earlyprintk=serial,ttyS0,115200 console=ttyS0 psmouse.proto=exps "virtme_stty_c'.
+#0  0x0000000000000000 in ?? ()
+   0xffffffffa0000748:  nopl   0x0(%rax,%rax,1)
+   0xffffffffa000074d:  xor    %eax,%eax
+   0xffffffffa000074f:  push   %rbp
+   0xffffffffa0000750:  mov    %rsp,%rbp
+   0xffffffffa0000753:  push   %rax
+   0xffffffffa0000754:  movabs $0xffff888102764800,%rsi
+   0xffffffffa000075e:  xor    %edx,%edx
+   0xffffffffa0000760:  mov    -0x4(%rbp),%eax
+   0xffffffffa0000766:  cmp    $0x21,%eax
+   0xffffffffa0000769:  jae    0xffffffffa000077f
+   0xffffffffa000076b:  add    $0x1,%eax
+   0xffffffffa000076e:  mov    %eax,-0x4(%rbp)
+   0xffffffffa0000774:  nopl   0x0(%rax,%rax,1)
+   0xffffffffa0000779:  pop    %rax
+   0xffffffffa000077a:  jmp    0xffffffffa000072b
+   0xffffffffa000077f:  mov    $0xf00d,%eax
+   0xffffffffa0000784:  leave
+   0xffffffffa0000785:  ret
+# gdb -q -c /proc/kcore -ex 'x/7i 0xffffffffa0000720' -ex 'quit'
+[New process 1]
+Core was generated by `earlyprintk=serial,ttyS0,115200 console=ttyS0 psmouse.proto=exps "virtme_stty_c'.
+#0  0x0000000000000000 in ?? ()
+   0xffffffffa0000720:  nopl   0x0(%rax,%rax,1)
+   0xffffffffa0000725:  xchg   %ax,%ax
+   0xffffffffa0000727:  push   %rbp
+   0xffffffffa0000728:  mov    %rsp,%rbp
+   0xffffffffa000072b:  mov    $0xcafe,%eax
+   0xffffffffa0000730:  leave
+   0xffffffffa0000731:  ret
+#
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Lastly, it will be handy to have a cheat sheet of <a href="https://elixir.bootlin.com/linux/v5.15.63/source/arch/x86/net/bpf_jit_comp.c#L104" target="_blank">mapping</a> between BPF registers (<code>r0</code>, <code>r1</code>, …) to hardware registers (<code>rax</code>, <code>rdi</code>, …) that the JIT compiler uses.</p>
+	<!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-tpes {
+			background-color: #FFF;
+			border-color: inherit;
+			color: #36393A;
+			text-align: center;
+			vertical-align: middle
+		}
+
+		.tg .tg-yb3f {
+			background-color: #FFF;
+			border-color: inherit;
+			color: #36393A;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: middle
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-yb3f">BPF</th>
+				<th class="tg-yb3f">x86-64</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-tpes">r0</td>
+				<td class="tg-tpes">rax</td>
+			</tr>
+			<tr>
+				<td class="tg-tpes">r1</td>
+				<td class="tg-tpes">rdi</td>
+			</tr>
+			<tr>
+				<td class="tg-tpes">r2</td>
+				<td class="tg-tpes">rsi</td>
+			</tr>
+			<tr>
+				<td class="tg-tpes">r3</td>
+				<td class="tg-tpes">rdx</td>
+			</tr>
+			<tr>
+				<td class="tg-tpes">r4</td>
+				<td class="tg-tpes">rcx</td>
+			</tr>
+			<tr>
+				<td class="tg-tpes">r5</td>
+				<td class="tg-tpes">r8</td>
+			</tr>
+			<tr>
+				<td class="tg-tpes">r6</td>
+				<td class="tg-tpes">rbx</td>
+			</tr>
+			<tr>
+				<td class="tg-tpes">r7</td>
+				<td class="tg-tpes">r13</td>
+			</tr>
+			<tr>
+				<td class="tg-tpes">r8</td>
+				<td class="tg-tpes">r14</td>
+			</tr>
+			<tr>
+				<td class="tg-tpes">r9</td>
+				<td class="tg-tpes">r15</td>
+			</tr>
+			<tr>
+				<td class="tg-tpes">r10</td>
+				<td class="tg-tpes">rbp</td>
+			</tr>
+			<tr>
+				<td class="tg-tpes">internal</td>
+				<td class="tg-tpes">r9-r12</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: html-->
+	<p>Now we are prepared to work out what happens when we use a BPF tail call.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/image9.png" class="kg-image"></figure>
+	<p>In essence, <code>bpf_tail_call()</code> emits a jump into another function, reusing the current stack frame. It is just like a regular optimized tail call, but with a twist.</p>
+	<p>Because of the BPF security guarantees - execution terminates, no stack overflows - there is a limit on the number of tail calls we can have (<a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=ebf7f6f0a6cdcc17a3da52b81e4b3a98c4005028" target="_blank"><code>MAX_TAIL_CALL_CNT = 33</code></a>).</p>
+	<p>Counting the tail calls across BPF programs is not something we can do at load-time. The jump table (BPF program array) contents can change after the program has been verified. Our only option is to keep track of tail calls at run-time. That is why the JIT’ed code for the <code>bpf_tail_call()</code> helper checks and updates the <code>tail_call_cnt</code> counter.</p>
+	<p>The updated count is then passed from one BPF program to another, and from one BPF function to another, as we will see, through the <code>rax register</code> (<code>r0</code> in BPF).</p>
+	<p>Luckily for us, the x86-64 calling convention dictates that the <code>rax</code> register does not partake in passing function arguments, but rather holds the function return value. The JIT can repurpose it to pass an additional - hidden - argument.</p>
+	<p>The function body is, however, free to make use of the <code>r0/rax</code> register in any way it pleases. This explains why we want to save the <code>tail_call_cnt</code> passed via <code>rax</code> onto stack right after we jump to another program. <code>bpf_tail_call()</code> can later load the value from a known location on the stack.</p>
+	<p>This way, the <a href="https://elixir.bootlin.com/linux/v5.15.63/source/arch/x86/net/bpf_jit_comp.c#L1437" target="_blank">code emitted</a> for each <code>bpf_tail_call()</code> invocation, and the <a href="https://elixir.bootlin.com/linux/v5.15.63/source/arch/x86/net/bpf_jit_comp.c#L281" target="_blank">BPF function prologue</a> work in tandem, keeping track of tail call count across BPF program boundaries.</p>
+	<p>But what if our BPF program is split up into several BPF functions, each with its own stack frame? What if these functions perform BPF tail calls? How is the tail call count tracked then?</p>
+	<h3 id="mixing-bpf-function-calls-with-bpf-tail-calls">Mixing BPF function calls with BPF tail calls</h3>
+	<p>BPF has its own terminology when it comes to functions and calling them, which is influenced by the internal implementation. Function calls are referred to as <a href="https://docs.cilium.io/en/stable/bpf/#bpf-to-bpf-calls" target="_blank">BPF to BPF calls</a>. Also, the main/entry function in your BPF code is called “the program”, while all other functions are known as “subprograms”.</p>
+	<p>Each call to subprogram allocates a stack frame for local state, which persists until the function returns. Naturally, BPF subprogram calls can be nested creating a call chain. Just like nested function calls in user-space.</p>
+	<p>BPF subprograms are also allowed to make BPF tail calls. This, effectively, is a mechanism for extending the call chain to another BPF program and its subprograms.</p>
+	<p>If we cannot track how long the call chain can be, and how much stack space each function uses, we put ourselves at risk of <a href="https://en.wikipedia.org/wiki/Stack_overflow" target="_blank">overflowing the stack</a>. We cannot let this happen, so BPF enforces limitations on <a href="https://elixir.bootlin.com/linux/v5.15.62/source/kernel/bpf/verifier.c#L3600" target="_blank">when and how many BPF tail calls can be done</a>:</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-C">static int check_max_stack_depth(struct bpf_verifier_env *env)
+{
+        …
+        /* protect against potential stack overflow that might happen when
+         * bpf2bpf calls get combined with tailcalls. Limit the caller's stack
+         * depth for such case down to 256 so that the worst case scenario
+         * would result in 8k stack size (32 which is tailcall limit * 256 =
+         * 8k).
+         *
+         * To get the idea what might happen, see an example:
+         * func1 -&gt; sub rsp, 128
+         *  subfunc1 -&gt; sub rsp, 256
+         *  tailcall1 -&gt; add rsp, 256
+         *   func2 -&gt; sub rsp, 192 (total stack size = 128 + 192 = 320)
+         *   subfunc2 -&gt; sub rsp, 64
+         *   subfunc22 -&gt; sub rsp, 128
+         *   tailcall2 -&gt; add rsp, 128
+         *    func3 -&gt; sub rsp, 32 (total stack size 128 + 192 + 64 + 32 = 416)
+         *
+         * tailcall will unwind the current stack frame but it will not get rid
+         * of caller's stack as shown on the example above.
+         */
+        if (idx &amp;&amp; subprog[idx].has_tail_call &amp;&amp; depth &gt;= 256) {
+                verbose(env,
+                        "tail_calls are not allowed when call stack of previous frames is %d bytes. Too large\n",
+                        depth);
+                return -EACCES;
+        }
+        …
+}
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>While the stack depth can be calculated by the BPF verifier at load-time, we still need to keep count of tail call jumps at run-time. Even when subprograms are involved.</p>
+	<p>This means that we have to pass the tail call count from one BPF subprogram to another, just like we did when making a BPF tail call, so we yet again turn to value passing through the <code>rax register</code>.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/image1-11.png" class="kg-image">
+		<figcaption>Control flow in a BPF program with a function call followed by a tail call.</figcaption>
+	</figure>
+	<p>🛈 To keep things simple, BPF code in our examples does not allocate anything on stack. I encourage you to check how the JIT’ed code changes when you <a href="https://elixir.bootlin.com/linux/v5.19.11/source/tools/testing/selftests/bpf/progs/tailcall_bpf2bpf6.c#L37" target="_blank">add some local variables</a>. Just make sure the compiler does not optimize them out.</p>
+	<p>To make it work, we need to:</p>
+	<p>① load the tail call count saved on stack into <code>rax</code> before <code>call</code>’ing the subprogram,<br>② adjust the subprogram prologue, so that it does not reset the <code>rax</code> like the main program does,<br>③ save the passed tail call count on subprogram’s stack for the <code>bpf_tail_call()</code> helper to consume it.</p>
+	<p>A <code>bpf_tail_call()</code> within our suprogram will then:</p>
+	<p>④ load the tail call count from stack,<br>⑤ unwind the BPF stack, but keep the current subprogram’s stack frame in tact, and<br>⑥ jump to the target BPF program.</p>
+	<p>Now we have seen how all the pieces of the puzzle fit together to make BPF tail work on x86-64 safely. The only open question is does it work the same way on other platforms like arm64? Time to shift gears and dive into a completely different BPF JIT implementation.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/image10.jpg" class="kg-image">
+		<figcaption>Based on an image by <a href="https://www.flickr.com/photos/pockethifi/48303582037/" target="_blank">Wutthichai Charoenburi</a>, <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank">CC BY 2.0</a></figcaption>
+	</figure>
+	<h2 id="tail-calls-on-arm64">Tail calls on arm64</h2>
+	<p>If you try loading a BPF program that uses both BPF function calls (aka BPF to BPF calls) and BPF tail calls on an arm64 machine running the latest 5.15 LTS kernel, or even the latest 5.19 stable kernel, the BPF verifier will kindly ask you to reconsider your choice:</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-shell"># uname -rm
+5.19.12 aarch64
+# bpftool prog loadall tail_call_ex2.o /sys/fs/bpf
+libbpf: prog 'entry_prog': BPF program load failed: Invalid argument
+libbpf: prog 'entry_prog': -- BEGIN PROG LOAD LOG --
+0: R1=ctx(off=0,imm=0) R10=fp0
+; __attribute__((musttail)) return sub_func(skb);
+0: (85) call pc+1
+caller:
+ R10=fp0
+callee:
+ frame1: R1=ctx(off=0,imm=0) R10=fp0
+; bpf_tail_call(skb, &amp;jmp_table, 0);
+2: (18) r2 = 0xffffff80c38c7200       ; frame1: R2_w=map_ptr(off=0,ks=4,vs=4,imm=0)
+4: (b7) r3 = 0                        ; frame1: R3_w=P0
+5: (85) call bpf_tail_call#12
+tail_calls are not allowed in non-JITed programs with bpf-to-bpf calls
+processed 4 insns (limit 1000000) max_states_per_insn 0 total_states 0 peak_states 0 mark_read 0
+-- END PROG LOAD LOG --
+…
+#
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>That is a pity! We have been looking forward to reaping the benefits of code sharing with BPF to BPF calls in our lengthy machine generated BPF programs. So we asked - how hard could it be to make it work?</p>
+	<p>After all, BPF<a href="https://elixir.bootlin.com/linux/v5.15.70/source/arch/arm64/net/bpf_jit_comp.c" target="_blank"> JIT for arm64</a> already can handle BPF tail calls and BPF to BPF calls, when used in isolation.</p>
+	<p>It is “just” a matter of understanding the existing JIT implementation, which lives in <code>arch/arm64/net/bpf_jit_comp.c</code>, and identifying the missing pieces.</p>
+	<p>To understand how BPF JIT for arm64 works, we will use the same method as before - look at its code together with sample input (BPF instructions) and output (arm64 instructions).</p>
+	<p>We don’t have to read the whole source code. It is enough to zero in on a few particular code paths:</p>
+	<!--kg-card-begin: html-->
+	<p><a href="https://elixir.bootlin.com/linux/v5.19.12/source/arch/arm64/net/bpf_jit_comp.c#L1356" target="_blank"><span style="font-weight: 400;">bpf_int_jit_compile()</span><span style="font-weight: 400;"> 🔗</span><span style="font-weight: 400;"><br></span></a><span style="font-weight: 400;">   </span><a href="https://elixir.bootlin.com/linux/v5.19.12/source/arch/arm64/net/bpf_jit_comp.c#L246" target="_blank"><span style="font-weight: 400;">build_prologue()</span><span style="font-weight: 400;"> 🔗</span><span style="font-weight: 400;"><br></span></a><span style="font-weight: 400;">   </span><a href="https://elixir.bootlin.com/linux/v5.19.12/source/arch/arm64/net/bpf_jit_comp.c#L1287" target="_blank"><span style="font-weight: 400;">build_body()</span><span style="font-weight: 400;"> 🔗</span><span style="font-weight: 400;"><br></span></a><span style="font-weight: 400;">     </span><span style="font-weight: 400;">for (i = 0; i &lt; prog-&gt;len; i++) {</span><span style="font-weight: 400;"><br></span><span style="font-weight: 400;">        </span><a href="https://elixir.bootlin.com/linux/v5.19.12/source/arch/arm64/net/bpf_jit_comp.c#L663" target="_blank"><span style="font-weight: 400;">build_insn()</span><span style="font-weight: 400;"> 🔗</span><span style="font-weight: 400;"><br></span></a><span style="font-weight: 400;">          </span><span style="font-weight: 400;">switch (code) {</span><span style="font-weight: 400;"><br></span><span style="font-weight: 400;">          </span><span style="font-weight: 400;">case BPF_JMP | BPF_CALL:</span><span style="font-weight: 400;"><br></span><span style="font-weight: 400;">            </span><a href="https://elixir.bootlin.com/linux/v5.19.12/source/arch/arm64/net/bpf_jit_comp.c#L983" target="_blank"><span style="font-weight: 400;">/* emit function call */</span><span style="font-weight: 400;"> 🔗</span><span style="font-weight: 400;"><br></span></a><span style="font-weight: 400;">          </span><span style="font-weight: 400;">case BPF_JMP | BPF_TAIL_CALL:</span><span style="font-weight: 400;"><br></span><span style="font-weight: 400;">            </span><a href="https://elixir.bootlin.com/linux/v5.19.12/source/arch/arm64/net/bpf_jit_comp.c#L329" target="_blank"><span style="font-weight: 400;">emit_bpf_tail_call()</span><span style="font-weight: 400;"> 🔗</span><span style="font-weight: 400;"><br></span></a><span style="font-weight: 400;">          </span><span style="font-weight: 400;">}</span><span style="font-weight: 400;"><br></span><span style="font-weight: 400;">     </span><span style="font-weight: 400;">}</span><span style="font-weight: 400;"><br></span><span style="font-weight: 400;">   </span><a href="https://elixir.bootlin.com/linux/v5.19.12/source/arch/arm64/net/bpf_jit_comp.c#L559" target="_blank"><span style="font-weight: 400;">build_epilogue()</span><span style="font-weight: 400;"> 🔗</span></a></p>
+	<!--kg-card-end: html-->
+	<p>One thing that the arm64 architecture, and RISC architectures in general, are known for is that it has a plethora of general purpose registers (<code>x0-x30</code>). This is a good thing. We have more registers to allocate to JIT internal state, like the tail call count. A cheat sheet of what <a href="https://elixir.bootlin.com/linux/v5.19.12/source/arch/arm64/net/bpf_jit_comp.c#L42" target="_blank">roles</a> the hardware registers play in the BPF JIT will be helpful:</p>
+	<!--kg-card-begin: html-->
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		.tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		.tg .tg-c3ow {
+			border-color: inherit;
+			text-align: center;
+			vertical-align: top
+		}
+
+		.tg .tg-0pky {
+			border-color: inherit;
+			text-align: center;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg" width="100%">
+		<thead>
+			<tr>
+				<th class="tg-c3ow">BPF</th>
+				<th class="tg-c3ow">arm64</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0pky">r0</td>
+				<td class="tg-0pky">x7</td>
+			</tr>
+			<tr>
+				<td class="tg-0pky">r1</td>
+				<td class="tg-0pky">x0</td>
+			</tr>
+			<tr>
+				<td class="tg-0pky">r2</td>
+				<td class="tg-0pky">x1</td>
+			</tr>
+			<tr>
+				<td class="tg-0pky">r3</td>
+				<td class="tg-0pky">x2</td>
+			</tr>
+			<tr>
+				<td class="tg-0pky">r4</td>
+				<td class="tg-0pky">x3</td>
+			</tr>
+			<tr>
+				<td class="tg-0pky">r5</td>
+				<td class="tg-0pky">x4</td>
+			</tr>
+			<tr>
+				<td class="tg-0pky">r6</td>
+				<td class="tg-0pky">x19</td>
+			</tr>
+			<tr>
+				<td class="tg-0pky">r7</td>
+				<td class="tg-0pky">x20</td>
+			</tr>
+			<tr>
+				<td class="tg-0pky">r8</td>
+				<td class="tg-0pky">x21</td>
+			</tr>
+			<tr>
+				<td class="tg-0pky">r9</td>
+				<td class="tg-0pky">x22</td>
+			</tr>
+			<tr>
+				<td class="tg-0pky">r10</td>
+				<td class="tg-0pky">x25</td>
+			</tr>
+			<tr>
+				<td class="tg-0pky">internal</td>
+				<td class="tg-0pky">x9-x12, x26 (tail_call_cnt), x27</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: html-->
+	<p>Now let’s try to understand the state of things by looking at the JIT’s input and output for two particular scenarios: (1) a BPF tail call, and (2) a BPF to BPF call.</p>
+	<p>It is hard to read assembly code selectively. We will have to go through all instructions one by one, and understand what each one is doing.</p>
+	<p>⚠ Brace yourself. Time to decipher a bit of ARM64 assembly. If this will be your first time reading ARM64 assembly, you might want to at least skim through this <a href="https://modexp.wordpress.com/2018/10/30/arm64-assembly/" target="_blank">Guide to ARM64 / AArch64 Assembly on Linux</a> before diving in.</p>
+	<p>Scenario #1: A single BPF tail call - <a href="https://github.com/jsitnicki/cloudflare-blog/blob/jakub/2022-10-bpf-tail-calls/2022-10-bpf-tail-call/tail_call_ex1.bpf.c" target="_blank"><code>tail_call_ex1.bpf.c</code></a></p>
+	<p>Input: BPF assembly (<code>bpftool prog dump xlated</code>)</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-TXT">   0: (18) r2 = map[id:4]           // jmp_table map
+   2: (b7) r3 = 0
+   3: (85) call bpf_tail_call#12
+   4: (b7) r0 = 61453               // 0xf00d
+   5: (95) exit
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Output: ARM64 assembly (<code>bpftool prog dump jited</code>)</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-TXT"> 0:   paciasp                            // Sign LR (ROP protection) ①
+ 4:   stp     x29, x30, [sp, #-16]!      // Save FP and LR registers ②
+ 8:   mov     x29, sp                    // Set up Frame Pointer
+ c:   stp     x19, x20, [sp, #-16]!      // Save callee-saved registers ③
+10:   stp     x21, x22, [sp, #-16]!      // ⋮ 
+14:   stp     x25, x26, [sp, #-16]!      // ⋮ 
+18:   stp     x27, x28, [sp, #-16]!      // ⋮ 
+1c:   mov     x25, sp                    // Set up BPF stack base register (r10)
+20:   mov     x26, #0x0                  // Initialize tail_call_cnt ④
+24:   sub     x27, x25, #0x0             // Calculate FP bottom ⑤
+28:   sub     sp, sp, #0x200             // Set up BPF program stack ⑥
+2c:   mov     x1, #0xffffff80ffffffff    // r2 = map[id:4] ⑦
+30:   movk    x1, #0xc38c, lsl #16       // ⋮ 
+34:   movk    x1, #0x7200                // ⋮
+38:   mov     x2, #0x0                   // r3 = 0
+3c:   mov     w10, #0x24                 // = offsetof(struct bpf_array, map.max_entries) ⑧
+40:   ldr     w10, [x1, x10]             // Load array-&gt;map.max_entries
+44:   add     w2, w2, #0x0               // = index (0)
+48:   cmp     w2, w10                    // if (index &gt;= array-&gt;map.max_entries)
+4c:   b.cs    0x0000000000000088         //     goto out;
+50:   mov     w10, #0x21                 // = MAX_TAIL_CALL_CNT (33)
+54:   cmp     x26, x10                   // if (tail_call_cnt &gt;= MAX_TAIL_CALL_CNT)
+58:   b.cs    0x0000000000000088         //     goto out;
+5c:   add     x26, x26, #0x1             // tail_call_cnt++;
+60:   mov     w10, #0x110                // = offsetof(struct bpf_array, ptrs)
+64:   add     x10, x1, x10               // = &amp;array-&gt;ptrs
+68:   lsl     x11, x2, #3                // = index * sizeof(array-&gt;ptrs[0])
+6c:   ldr     x11, [x10, x11]            // prog = array-&gt;ptrs[index];
+70:   cbz     x11, 0x0000000000000088    // if (prog == NULL) goto out;
+74:   mov     w10, #0x30                 // = offsetof(struct bpf_prog, bpf_func)
+78:   ldr     x10, [x11, x10]            // Load prog-&gt;bpf_func
+7c:   add     x10, x10, #0x24            // += PROLOGUE_OFFSET * AARCH64_INSN_SIZE (4)
+80:   add     sp, sp, #0x200             // Unwind BPF stack
+84:   br      x10                        // goto *(prog-&gt;bpf_func + prologue_offset)
+88:   mov     x7, #0xf00d                // r0 = 0xf00d
+8c:   add     sp, sp, #0x200             // Unwind BPF stack ⑨
+90:   ldp     x27, x28, [sp], #16        // Restore used callee-saved registers
+94:   ldp     x25, x26, [sp], #16        // ⋮
+98:   ldp     x21, x22, [sp], #16        // ⋮
+9c:   ldp     x19, x20, [sp], #16        // ⋮
+a0:   ldp     x29, x30, [sp], #16        // ⋮
+a4:   add     x0, x7, #0x0               // Set return value
+a8:   autiasp                            // Authenticate LR
+ac:   ret                                // Return to caller
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>① BPF program prologue starts with Pointer Authentication Code (PAC), which protects against Return <a href="https://developer.arm.com/documentation/102433/0100/Return-oriented-programming" target="_blank">Oriented Programming attacks</a>. PAC instructions are emitted by JIT only if CONFIG_ARM64_PTR_AUTH_KERNEL is enabled.</p>
+	<p>② <a href="https://github.com/ARM-software/abi-aa/blob/main/aapcs64/aapcs64.rst" target="_blank">Arm 64 Architecture Procedure Call Standard</a> <a href="https://github.com/ARM-software/abi-aa/blob/main/aapcs64/aapcs64.rst#the-frame-pointer" target="_blank">mandates</a> that the Frame Pointer (register X29) and the Link Register (register X30), aka the return address, of the caller should be recorded onto the stack.</p>
+	<p>③ Registers X19 to X28, and X29 (FP) plus X30 (LR), are callee saved. ARM64 BPF JIT does not use registers X23 and X24 currently, so they are not saved.</p>
+	<p>④ We track the tail call depth in X26. No need to save it onto stack since we use a register dedicated just for this purpose.</p>
+	<p>⑤ FP bottom is an optimization that allows store/loads to BPF stack <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=5b3d19b9bd4080d7f5e260f91ce8f639e19eb499" target="_blank">with a single instruction and an immediate offset value</a>.</p>
+	<p>⑥ Reserve space for the BPF program stack. The stack layout is now as shown in a <a href="https://elixir.bootlin.com/linux/v5.19.12/source/arch/arm64/net/bpf_jit_comp.c#L260" target="_blank">diagram in <code>build_prologue()</code></a> source code.</p>
+	<p>⑦ The BPF function body starts here.</p>
+	<p>⑧ <code>bpf_tail_call()</code> instructions start here.</p>
+	<p>⑨ The epilogue starts here.</p>
+	<p>Whew! That was a handful 😅.</p>
+	<p>Notice that the BPF tail call implementation on arm64 is not as optimized as on x86-64. There is no code patching to make direct jumps when the target program index is known at the JIT-compilation time. Instead, the target address is always loaded from the BPF program array.</p>
+	<p>Ready for the second scenario? I promise it will be shorter. Function prologue and epilogue instructions will look familiar, so we are going to keep annotations down to a minimum.</p>
+	<p>Scenario #2: A BPF to BPF call - <a href="https://github.com/jsitnicki/cloudflare-blog/blob/jakub/2022-10-bpf-tail-calls/2022-10-bpf-tail-call/sub_call_ex1.bpf.c" target="_blank"><code>sub_call_ex1.bpf.c</code></a></p>
+	<p>Input: BPF assembly (<code>bpftool prog dump xlated</code>)</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-TXT">int entry_prog(struct __sk_buff * skb):
+   0: (85) call pc+1#bpf_prog_a84919ecd878b8f3_sub_func
+   1: (95) exit
+int sub_func(struct __sk_buff * skb):
+   2: (b7) r0 = 61453                   // 0xf00d
+   3: (95) exit
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Output: ARM64 assembly</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-TXT">int entry_prog(struct __sk_buff * skb):
+bpf_prog_163e74e7188910f2_entry_prog:
+   0:   paciasp                                 // Begin prologue
+   4:   stp     x29, x30, [sp, #-16]!           // ⋮
+   8:   mov     x29, sp                         // ⋮
+   c:   stp     x19, x20, [sp, #-16]!           // ⋮
+  10:   stp     x21, x22, [sp, #-16]!           // ⋮
+  14:   stp     x25, x26, [sp, #-16]!           // ⋮
+  18:   stp     x27, x28, [sp, #-16]!           // ⋮
+  1c:   mov     x25, sp                         // ⋮
+  20:   mov     x26, #0x0                       // ⋮
+  24:   sub     x27, x25, #0x0                  // ⋮
+  28:   sub     sp, sp, #0x0                    // End prologue
+  2c:   mov     x10, #0xffffffffffff5420        // Build sub_func()+0x0 address
+  30:   movk    x10, #0x8ff, lsl #16            // ⋮
+  34:   movk    x10, #0xffc0, lsl #32           // ⋮
+  38:   blr     x10 ------------------.         // Call sub_func()+0x0 
+  3c:   add     x7, x0, #0x0 &lt;----------.       // r0 = sub_func()
+  40:   mov     sp, sp                | |       // Begin epilogue
+  44:   ldp     x27, x28, [sp], #16   | |       // ⋮
+  48:   ldp     x25, x26, [sp], #16   | |       // ⋮
+  4c:   ldp     x21, x22, [sp], #16   | |       // ⋮
+  50:   ldp     x19, x20, [sp], #16   | |       // ⋮
+  54:   ldp     x29, x30, [sp], #16   | |       // ⋮
+  58:   add     x0, x7, #0x0          | |       // ⋮
+  5c:   autiasp                       | |       // ⋮
+  60:   ret                           | |       // End epilogue
+                                      | |
+int sub_func(struct __sk_buff * skb): | |
+bpf_prog_a84919ecd878b8f3_sub_func:   | |
+   0:   paciasp &lt;---------------------' |       // Begin prologue
+   4:   stp     x29, x30, [sp, #-16]!   |       // ⋮
+   8:   mov     x29, sp                 |       // ⋮
+   c:   stp     x19, x20, [sp, #-16]!   |       // ⋮
+  10:   stp     x21, x22, [sp, #-16]!   |       // ⋮
+  14:   stp     x25, x26, [sp, #-16]!   |       // ⋮
+  18:   stp     x27, x28, [sp, #-16]!   |       // ⋮
+  1c:   mov     x25, sp                 |       // ⋮
+  20:   mov     x26, #0x0               |       // ⋮
+  24:   sub     x27, x25, #0x0          |       // ⋮
+  28:   sub     sp, sp, #0x0            |       // End prologue
+  2c:   mov     x7, #0xf00d             |       // r0 = 0xf00d
+  30:   mov     sp, sp                  |       // Begin epilogue
+  34:   ldp     x27, x28, [sp], #16     |       // ⋮
+  38:   ldp     x25, x26, [sp], #16     |       // ⋮
+  3c:   ldp     x21, x22, [sp], #16     |       // ⋮
+  40:   ldp     x19, x20, [sp], #16     |       // ⋮
+  44:   ldp     x29, x30, [sp], #16     |       // ⋮
+  48:   add     x0, x7, #0x0            |       // ⋮
+  4c:   autiasp                         |       // ⋮
+  50:   ret ----------------------------'       // End epilogue
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>We have now seen what a BPF tail call and a BPF function/subprogram call compiles down to. Can you already spot what would go wrong if mixing the two was allowed?</p>
+	<p>That’s right! Every time we enter a BPF subprogram, we reset the X26 register, which holds the tail call count, to zero (<code>mov x26</code>, <code>#0x0</code>). This is bad. It would let users create program chains longer than the <code>MAX_TAIL_CALL_CNT</code> limit.</p>
+	<p>How about we just skip this step when emitting the prologue for BPF subprograms?</p>
+	<!--kg-card-begin: markdown-->
+	<pre><code class="language-diff">@@ -246,6 +246,7 @@ static bool is_lsi_offset(int offset, int scale)
+ static int build_prologue(struct jit_ctx *ctx, bool ebpf_from_cbpf)
+ {
+        const struct bpf_prog *prog = ctx-&gt;prog;
++       const bool is_main_prog = prog-&gt;aux-&gt;func_idx == 0;
+        const u8 r6 = bpf2a64[BPF_REG_6];
+        const u8 r7 = bpf2a64[BPF_REG_7];
+        const u8 r8 = bpf2a64[BPF_REG_8];
+@@ -299,7 +300,7 @@ static int build_prologue(struct jit_ctx *ctx, bool ebpf_from_cbpf)
+        /* Set up BPF prog stack base register */
+        emit(A64_MOV(1, fp, A64_SP), ctx);
+
+-       if (!ebpf_from_cbpf) {
++       if (!ebpf_from_cbpf &amp;&amp; is_main_prog) {
+                /* Initialize tail_call_cnt */
+                emit(A64_MOVZ(1, tcc, 0, 0), ctx);
+</code></pre>
+	<!--kg-card-end: markdown-->
+	<p>Believe it or not. This is everything that <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=d4609a5d8c70d21b4a3f801cf896a3c16c613fe1" target="_blank">was missing</a> to get BPF tail calls working with function calls on arm64. The feature will be enabled in the upcoming Linux 6.0 release.</p>
+	<h2 id="outro">Outro</h2>
+	<p>From recursion to tweaking the BPF JIT. How did we get here? Not important. It’s all about the journey.</p>
+	<p>Along the way we have unveiled a few secrets behind BPF tails calls, and hopefully quenched your thirst for low-level programming. At least for today.</p>
+	<p>All that is left is to sit back and watch the fruits of our work. With GDB hooked up to a VM, we can observe how a BPF program calls into a BPF function, and from there tail calls to another BPF program:</p>
+	<p><a href="https://demo-gdb-step-thru-bpf.pages.dev/" target="_blank">https://demo-gdb-step-thru-bpf.pages.dev/</a></p>
+	<p>Until next time 🖖.</p>
+</div>
