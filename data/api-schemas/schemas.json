@@ -95322,78 +95322,78 @@
 												}
 											}
 										},
-										"meta": {
-											"type": "object",
-											"properties": {
-												"confidenceInfo": {
-													"type": "object",
-													"properties": {
-														"level": {
-															"type": "integer"
-														},
-														"annotations": {
-															"type": "array",
-															"items": {
-																"type": "object",
-																"properties": {
-																	"dataSource": {
-																		"type": "string",
-																		"example": "ALL"
-																	},
-																	"eventType": {
-																		"type": "string",
-																		"example": "OUTAGE"
-																	},
-																	"description": {
-																		"type": "string",
-																		"example": "Cable cut in Tonga"
-																	},
-																	"startTime": {
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2022-09-17T10:22:57.555000+00:00"
-																	},
-																	"endTime": {
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2022-09-17T10:22:57.555000+00:00"
-																	}
-																}
-															}
-														}
-													}
-												},
-												"dateRange": {
-													"type": "object",
-													"properties": {
-														"startTime": {
-															"type": "string",
-															"format": "date-time",
-															"example": "2022-09-16T10:22:57.555000+00:00",
-															"description": "Adjusted start of date range"
-														},
-														"endTime": {
-															"type": "string",
-															"format": "date-time",
-															"example": "2022-09-17T10:22:57.555000+00:00",
-															"description": "Adjusted end of date range"
-														}
-													}
-												},
-												"aggInterval": {
-													"type": "string",
-													"example": "1h"
-												},
-												"lastUpdated": {
-													"type": "string",
-													"format": "date-time",
-													"example": "2022-09-17T10:22:57.555000+00:00"
-												}
-											}
-										},
 										"result": {
 											"type": "object",
 											"properties": {
+												"meta": {
+													"type": "object",
+													"properties": {
+														"confidenceInfo": {
+															"type": "object",
+															"properties": {
+																"level": {
+																	"type": "integer"
+																},
+																"annotations": {
+																	"type": "array",
+																	"items": {
+																		"type": "object",
+																		"properties": {
+																			"dataSource": {
+																				"type": "string",
+																				"example": "ALL"
+																			},
+																			"eventType": {
+																				"type": "string",
+																				"example": "OUTAGE"
+																			},
+																			"description": {
+																				"type": "string",
+																				"example": "Cable cut in Tonga"
+																			},
+																			"startTime": {
+																				"type": "string",
+																				"format": "date-time",
+																				"example": "2022-09-17T10:22:57.555000+00:00"
+																			},
+																			"endTime": {
+																				"type": "string",
+																				"format": "date-time",
+																				"example": "2022-09-17T10:22:57.555000+00:00"
+																			}
+																		}
+																	}
+																}
+															}
+														},
+														"dateRange": {
+															"type": "object",
+															"properties": {
+																"startTime": {
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2022-09-16T10:22:57.555000+00:00",
+																	"description": "Adjusted start of date range"
+																},
+																"endTime": {
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2022-09-17T10:22:57.555000+00:00",
+																	"description": "Adjusted end of date range"
+																}
+															}
+														},
+														"aggInterval": {
+															"type": "string",
+															"example": "1h"
+														},
+														"lastUpdated": {
+															"type": "string",
+															"format": "date-time",
+															"example": "2022-09-17T10:22:57.555000+00:00"
+														}
+													}
+												},
 												"series": {
 													"type": "object",
 													"properties": {
@@ -95471,13 +95471,13 @@
 												}
 											}
 										},
-										"meta": {
-											"type": "object",
-											"properties": {}
-										},
 										"result": {
 											"type": "object",
 											"properties": {
+												"meta": {
+													"type": "object",
+													"properties": {}
+												},
 												"summary_0": {
 													"type": "object",
 													"properties": {
@@ -95553,13 +95553,13 @@
 												}
 											}
 										},
-										"meta": {
-											"type": "object",
-											"properties": {}
-										},
 										"result": {
 											"type": "object",
 											"properties": {
+												"meta": {
+													"type": "object",
+													"properties": {}
+												},
 												"summary_0": {
 													"type": "object",
 													"properties": {
@@ -95631,13 +95631,13 @@
 												}
 											}
 										},
-										"meta": {
-											"type": "object",
-											"properties": {}
-										},
 										"result": {
 											"type": "object",
 											"properties": {
+												"meta": {
+													"type": "object",
+													"properties": {}
+												},
 												"summary_0": {
 													"type": "object",
 													"properties": {
@@ -95713,13 +95713,13 @@
 												}
 											}
 										},
-										"meta": {
-											"type": "object",
-											"properties": {}
-										},
 										"result": {
 											"type": "object",
 											"properties": {
+												"meta": {
+													"type": "object",
+													"properties": {}
+												},
 												"summary_0": {
 													"type": "object",
 													"properties": {
@@ -95791,13 +95791,13 @@
 												}
 											}
 										},
-										"meta": {
-											"type": "object",
-											"properties": {}
-										},
 										"result": {
 											"type": "object",
 											"properties": {
+												"meta": {
+													"type": "object",
+													"properties": {}
+												},
 												"summary_0": {
 													"type": "object",
 													"properties": {
@@ -95869,13 +95869,13 @@
 												}
 											}
 										},
-										"meta": {
-											"type": "object",
-											"properties": {}
-										},
 										"result": {
 											"type": "object",
 											"properties": {
+												"meta": {
+													"type": "object",
+													"properties": {}
+												},
 												"summary_0": {
 													"type": "object",
 													"properties": {
@@ -95959,13 +95959,13 @@
 												}
 											}
 										},
-										"meta": {
-											"type": "object",
-											"properties": {}
-										},
 										"result": {
 											"type": "object",
 											"properties": {
+												"meta": {
+													"type": "object",
+													"properties": {}
+												},
 												"serie_0": {
 													"type": "object",
 													"properties": {
@@ -96053,13 +96053,13 @@
 												}
 											}
 										},
-										"meta": {
-											"type": "object",
-											"properties": {}
-										},
 										"result": {
 											"type": "object",
 											"properties": {
+												"meta": {
+													"type": "object",
+													"properties": {}
+												},
 												"serie_0": {
 													"type": "object",
 													"properties": {
@@ -96141,13 +96141,13 @@
 												}
 											}
 										},
-										"meta": {
-											"type": "object",
-											"properties": {}
-										},
 										"result": {
 											"type": "object",
 											"properties": {
+												"meta": {
+													"type": "object",
+													"properties": {}
+												},
 												"serie_0": {
 													"type": "object",
 													"properties": {
@@ -96235,13 +96235,13 @@
 												}
 											}
 										},
-										"meta": {
-											"type": "object",
-											"properties": {}
-										},
 										"result": {
 											"type": "object",
 											"properties": {
+												"meta": {
+													"type": "object",
+													"properties": {}
+												},
 												"serie_0": {
 													"type": "object",
 													"properties": {
@@ -96323,13 +96323,13 @@
 												}
 											}
 										},
-										"meta": {
-											"type": "object",
-											"properties": {}
-										},
 										"result": {
 											"type": "object",
 											"properties": {
+												"meta": {
+													"type": "object",
+													"properties": {}
+												},
 												"serie_0": {
 													"type": "object",
 													"properties": {
@@ -96411,13 +96411,13 @@
 												}
 											}
 										},
-										"meta": {
-											"type": "object",
-											"properties": {}
-										},
 										"result": {
 											"type": "object",
 											"properties": {
+												"meta": {
+													"type": "object",
+													"properties": {}
+												},
 												"serie_0": {
 													"type": "object",
 													"properties": {
@@ -96517,13 +96517,13 @@
 												}
 											}
 										},
-										"meta": {
-											"type": "object",
-											"properties": {}
-										},
 										"result": {
 											"type": "object",
 											"properties": {
+												"meta": {
+													"type": "object",
+													"properties": {}
+												},
 												"serie_0": {
 													"type": "object",
 													"properties": {
@@ -96599,13 +96599,13 @@
 												}
 											}
 										},
-										"meta": {
-											"type": "object",
-											"properties": {}
-										},
 										"result": {
 											"type": "object",
 											"properties": {
+												"meta": {
+													"type": "object",
+													"properties": {}
+												},
 												"serie_0": {
 													"type": "object",
 													"properties": {
@@ -96696,64 +96696,64 @@
 												}
 											}
 										},
-										"meta": {
+										"result": {
 											"type": "object",
 											"properties": {
-												"confidenceInfo": {
+												"meta": {
 													"type": "object",
 													"properties": {
-														"level": {
-															"type": "integer"
-														},
-														"annotations": {
-															"type": "array",
-															"items": {
-																"type": "object",
-																"properties": {
-																	"dataSource": {
-																		"type": "string"
-																	},
-																	"eventType": {
-																		"type": "string"
-																	},
-																	"description": {
-																		"type": "string"
-																	},
-																	"startTime": {
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2022-09-17T10:22:57.555000+00:00"
-																	},
-																	"endTime": {
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2022-09-17T10:22:57.555000+00:00"
+														"confidenceInfo": {
+															"type": "object",
+															"properties": {
+																"level": {
+																	"type": "integer"
+																},
+																"annotations": {
+																	"type": "array",
+																	"items": {
+																		"type": "object",
+																		"properties": {
+																			"dataSource": {
+																				"type": "string"
+																			},
+																			"eventType": {
+																				"type": "string"
+																			},
+																			"description": {
+																				"type": "string"
+																			},
+																			"startTime": {
+																				"type": "string",
+																				"format": "date-time",
+																				"example": "2022-09-17T10:22:57.555000+00:00"
+																			},
+																			"endTime": {
+																				"type": "string",
+																				"format": "date-time",
+																				"example": "2022-09-17T10:22:57.555000+00:00"
+																			}
+																		}
 																	}
+																}
+															}
+														},
+														"dateRange": {
+															"type": "object",
+															"properties": {
+																"startTime": {
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2022-09-17T10:22:57.555000+00:00"
+																},
+																"endTime": {
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2022-09-17T10:22:57.555000+00:00"
 																}
 															}
 														}
 													}
 												},
-												"dateRange": {
-													"type": "object",
-													"properties": {
-														"startTime": {
-															"type": "string",
-															"format": "date-time",
-															"example": "2022-09-17T10:22:57.555000+00:00"
-														},
-														"endTime": {
-															"type": "string",
-															"format": "date-time",
-															"example": "2022-09-17T10:22:57.555000+00:00"
-														}
-													}
-												}
-											}
-										},
-										"result": {
-											"type": "object",
-											"properties": {
 												"top_0": {
 													"type": "array",
 													"items": {
@@ -96848,64 +96848,64 @@
 												}
 											}
 										},
-										"meta": {
+										"result": {
 											"type": "object",
 											"properties": {
-												"confidenceInfo": {
+												"meta": {
 													"type": "object",
 													"properties": {
-														"level": {
-															"type": "integer"
-														},
-														"annotations": {
-															"type": "array",
-															"items": {
-																"type": "object",
-																"properties": {
-																	"dataSource": {
-																		"type": "string"
-																	},
-																	"eventType": {
-																		"type": "string"
-																	},
-																	"description": {
-																		"type": "string"
-																	},
-																	"startTime": {
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2022-09-17T10:22:57.555000+00:00"
-																	},
-																	"endTime": {
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2022-09-17T10:22:57.555000+00:00"
+														"confidenceInfo": {
+															"type": "object",
+															"properties": {
+																"level": {
+																	"type": "integer"
+																},
+																"annotations": {
+																	"type": "array",
+																	"items": {
+																		"type": "object",
+																		"properties": {
+																			"dataSource": {
+																				"type": "string"
+																			},
+																			"eventType": {
+																				"type": "string"
+																			},
+																			"description": {
+																				"type": "string"
+																			},
+																			"startTime": {
+																				"type": "string",
+																				"format": "date-time",
+																				"example": "2022-09-17T10:22:57.555000+00:00"
+																			},
+																			"endTime": {
+																				"type": "string",
+																				"format": "date-time",
+																				"example": "2022-09-17T10:22:57.555000+00:00"
+																			}
+																		}
 																	}
+																}
+															}
+														},
+														"dateRange": {
+															"type": "object",
+															"properties": {
+																"startTime": {
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2022-09-17T10:22:57.555000+00:00"
+																},
+																"endTime": {
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2022-09-17T10:22:57.555000+00:00"
 																}
 															}
 														}
 													}
 												},
-												"dateRange": {
-													"type": "object",
-													"properties": {
-														"startTime": {
-															"type": "string",
-															"format": "date-time",
-															"example": "2022-09-17T10:22:57.555000+00:00"
-														},
-														"endTime": {
-															"type": "string",
-															"format": "date-time",
-															"example": "2022-09-17T10:22:57.555000+00:00"
-														}
-													}
-												}
-											}
-										},
-										"result": {
-											"type": "object",
-											"properties": {
 												"top_0": {
 													"type": "array",
 													"items": {
@@ -97002,64 +97002,64 @@
 												}
 											}
 										},
-										"meta": {
+										"result": {
 											"type": "object",
 											"properties": {
-												"confidenceInfo": {
+												"meta": {
 													"type": "object",
 													"properties": {
-														"level": {
-															"type": "integer"
-														},
-														"annotations": {
-															"type": "array",
-															"items": {
-																"type": "object",
-																"properties": {
-																	"dataSource": {
-																		"type": "string"
-																	},
-																	"eventType": {
-																		"type": "string"
-																	},
-																	"description": {
-																		"type": "string"
-																	},
-																	"startTime": {
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2022-09-17T10:22:57.555000+00:00"
-																	},
-																	"endTime": {
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2022-09-17T10:22:57.555000+00:00"
+														"confidenceInfo": {
+															"type": "object",
+															"properties": {
+																"level": {
+																	"type": "integer"
+																},
+																"annotations": {
+																	"type": "array",
+																	"items": {
+																		"type": "object",
+																		"properties": {
+																			"dataSource": {
+																				"type": "string"
+																			},
+																			"eventType": {
+																				"type": "string"
+																			},
+																			"description": {
+																				"type": "string"
+																			},
+																			"startTime": {
+																				"type": "string",
+																				"format": "date-time",
+																				"example": "2022-09-17T10:22:57.555000+00:00"
+																			},
+																			"endTime": {
+																				"type": "string",
+																				"format": "date-time",
+																				"example": "2022-09-17T10:22:57.555000+00:00"
+																			}
+																		}
 																	}
+																}
+															}
+														},
+														"dateRange": {
+															"type": "object",
+															"properties": {
+																"startTime": {
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2022-09-17T10:22:57.555000+00:00"
+																},
+																"endTime": {
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2022-09-17T10:22:57.555000+00:00"
 																}
 															}
 														}
 													}
 												},
-												"dateRange": {
-													"type": "object",
-													"properties": {
-														"startTime": {
-															"type": "string",
-															"format": "date-time",
-															"example": "2022-09-17T10:22:57.555000+00:00"
-														},
-														"endTime": {
-															"type": "string",
-															"format": "date-time",
-															"example": "2022-09-17T10:22:57.555000+00:00"
-														}
-													}
-												}
-											}
-										},
-										"result": {
-											"type": "object",
-											"properties": {
 												"top_0": {
 													"type": "array",
 													"items": {
@@ -97153,64 +97153,64 @@
 												}
 											}
 										},
-										"meta": {
+										"result": {
 											"type": "object",
 											"properties": {
-												"confidenceInfo": {
+												"meta": {
 													"type": "object",
 													"properties": {
-														"level": {
-															"type": "integer"
-														},
-														"annotations": {
-															"type": "array",
-															"items": {
-																"type": "object",
-																"properties": {
-																	"dataSource": {
-																		"type": "string"
-																	},
-																	"eventType": {
-																		"type": "string"
-																	},
-																	"description": {
-																		"type": "string"
-																	},
-																	"startTime": {
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2022-09-17T10:22:57.555000+00:00"
-																	},
-																	"endTime": {
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2022-09-17T10:22:57.555000+00:00"
+														"confidenceInfo": {
+															"type": "object",
+															"properties": {
+																"level": {
+																	"type": "integer"
+																},
+																"annotations": {
+																	"type": "array",
+																	"items": {
+																		"type": "object",
+																		"properties": {
+																			"dataSource": {
+																				"type": "string"
+																			},
+																			"eventType": {
+																				"type": "string"
+																			},
+																			"description": {
+																				"type": "string"
+																			},
+																			"startTime": {
+																				"type": "string",
+																				"format": "date-time",
+																				"example": "2022-09-17T10:22:57.555000+00:00"
+																			},
+																			"endTime": {
+																				"type": "string",
+																				"format": "date-time",
+																				"example": "2022-09-17T10:22:57.555000+00:00"
+																			}
+																		}
 																	}
+																}
+															}
+														},
+														"dateRange": {
+															"type": "object",
+															"properties": {
+																"startTime": {
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2022-09-17T10:22:57.555000+00:00"
+																},
+																"endTime": {
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2022-09-17T10:22:57.555000+00:00"
 																}
 															}
 														}
 													}
 												},
-												"dateRange": {
-													"type": "object",
-													"properties": {
-														"startTime": {
-															"type": "string",
-															"format": "date-time",
-															"example": "2022-09-17T10:22:57.555000+00:00"
-														},
-														"endTime": {
-															"type": "string",
-															"format": "date-time",
-															"example": "2022-09-17T10:22:57.555000+00:00"
-														}
-													}
-												}
-											}
-										},
-										"result": {
-											"type": "object",
-											"properties": {
 												"top_0": {
 													"type": "array",
 													"items": {
@@ -97305,64 +97305,64 @@
 												}
 											}
 										},
-										"meta": {
+										"result": {
 											"type": "object",
 											"properties": {
-												"confidenceInfo": {
+												"meta": {
 													"type": "object",
 													"properties": {
-														"level": {
-															"type": "integer"
-														},
-														"annotations": {
-															"type": "array",
-															"items": {
-																"type": "object",
-																"properties": {
-																	"dataSource": {
-																		"type": "string"
-																	},
-																	"eventType": {
-																		"type": "string"
-																	},
-																	"description": {
-																		"type": "string"
-																	},
-																	"startTime": {
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2022-09-17T10:22:57.555000+00:00"
-																	},
-																	"endTime": {
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2022-09-17T10:22:57.555000+00:00"
+														"confidenceInfo": {
+															"type": "object",
+															"properties": {
+																"level": {
+																	"type": "integer"
+																},
+																"annotations": {
+																	"type": "array",
+																	"items": {
+																		"type": "object",
+																		"properties": {
+																			"dataSource": {
+																				"type": "string"
+																			},
+																			"eventType": {
+																				"type": "string"
+																			},
+																			"description": {
+																				"type": "string"
+																			},
+																			"startTime": {
+																				"type": "string",
+																				"format": "date-time",
+																				"example": "2022-09-17T10:22:57.555000+00:00"
+																			},
+																			"endTime": {
+																				"type": "string",
+																				"format": "date-time",
+																				"example": "2022-09-17T10:22:57.555000+00:00"
+																			}
+																		}
 																	}
+																}
+															}
+														},
+														"dateRange": {
+															"type": "object",
+															"properties": {
+																"startTime": {
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2022-09-17T10:22:57.555000+00:00"
+																},
+																"endTime": {
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2022-09-17T10:22:57.555000+00:00"
 																}
 															}
 														}
 													}
 												},
-												"dateRange": {
-													"type": "object",
-													"properties": {
-														"startTime": {
-															"type": "string",
-															"format": "date-time",
-															"example": "2022-09-17T10:22:57.555000+00:00"
-														},
-														"endTime": {
-															"type": "string",
-															"format": "date-time",
-															"example": "2022-09-17T10:22:57.555000+00:00"
-														}
-													}
-												}
-											}
-										},
-										"result": {
-											"type": "object",
-											"properties": {
 												"top_0": {
 													"type": "array",
 													"items": {
@@ -97456,64 +97456,64 @@
 												}
 											}
 										},
-										"meta": {
+										"result": {
 											"type": "object",
 											"properties": {
-												"confidenceInfo": {
+												"meta": {
 													"type": "object",
 													"properties": {
-														"level": {
-															"type": "integer"
-														},
-														"annotations": {
-															"type": "array",
-															"items": {
-																"type": "object",
-																"properties": {
-																	"dataSource": {
-																		"type": "string"
-																	},
-																	"eventType": {
-																		"type": "string"
-																	},
-																	"description": {
-																		"type": "string"
-																	},
-																	"startTime": {
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2022-09-17T10:22:57.555000+00:00"
-																	},
-																	"endTime": {
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2022-09-17T10:22:57.555000+00:00"
+														"confidenceInfo": {
+															"type": "object",
+															"properties": {
+																"level": {
+																	"type": "integer"
+																},
+																"annotations": {
+																	"type": "array",
+																	"items": {
+																		"type": "object",
+																		"properties": {
+																			"dataSource": {
+																				"type": "string"
+																			},
+																			"eventType": {
+																				"type": "string"
+																			},
+																			"description": {
+																				"type": "string"
+																			},
+																			"startTime": {
+																				"type": "string",
+																				"format": "date-time",
+																				"example": "2022-09-17T10:22:57.555000+00:00"
+																			},
+																			"endTime": {
+																				"type": "string",
+																				"format": "date-time",
+																				"example": "2022-09-17T10:22:57.555000+00:00"
+																			}
+																		}
 																	}
+																}
+															}
+														},
+														"dateRange": {
+															"type": "object",
+															"properties": {
+																"startTime": {
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2022-09-17T10:22:57.555000+00:00"
+																},
+																"endTime": {
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2022-09-17T10:22:57.555000+00:00"
 																}
 															}
 														}
 													}
 												},
-												"dateRange": {
-													"type": "object",
-													"properties": {
-														"startTime": {
-															"type": "string",
-															"format": "date-time",
-															"example": "2022-09-17T10:22:57.555000+00:00"
-														},
-														"endTime": {
-															"type": "string",
-															"format": "date-time",
-															"example": "2022-09-17T10:22:57.555000+00:00"
-														}
-													}
-												}
-											}
-										},
-										"result": {
-											"type": "object",
-											"properties": {
 												"top_0": {
 													"type": "array",
 													"items": {
@@ -97592,64 +97592,64 @@
 												}
 											}
 										},
-										"meta": {
+										"result": {
 											"type": "object",
 											"properties": {
-												"confidenceInfo": {
+												"meta": {
 													"type": "object",
 													"properties": {
-														"level": {
-															"type": "integer"
-														},
-														"annotations": {
-															"type": "array",
-															"items": {
-																"type": "object",
-																"properties": {
-																	"dataSource": {
-																		"type": "string"
-																	},
-																	"eventType": {
-																		"type": "string"
-																	},
-																	"description": {
-																		"type": "string"
-																	},
-																	"startTime": {
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2022-09-17T10:22:57.555000+00:00"
-																	},
-																	"endTime": {
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2022-09-17T10:22:57.555000+00:00"
+														"confidenceInfo": {
+															"type": "object",
+															"properties": {
+																"level": {
+																	"type": "integer"
+																},
+																"annotations": {
+																	"type": "array",
+																	"items": {
+																		"type": "object",
+																		"properties": {
+																			"dataSource": {
+																				"type": "string"
+																			},
+																			"eventType": {
+																				"type": "string"
+																			},
+																			"description": {
+																				"type": "string"
+																			},
+																			"startTime": {
+																				"type": "string",
+																				"format": "date-time",
+																				"example": "2022-09-17T10:22:57.555000+00:00"
+																			},
+																			"endTime": {
+																				"type": "string",
+																				"format": "date-time",
+																				"example": "2022-09-17T10:22:57.555000+00:00"
+																			}
+																		}
 																	}
+																}
+															}
+														},
+														"dateRange": {
+															"type": "object",
+															"properties": {
+																"startTime": {
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2022-09-17T10:22:57.555000+00:00"
+																},
+																"endTime": {
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2022-09-17T10:22:57.555000+00:00"
 																}
 															}
 														}
 													}
 												},
-												"dateRange": {
-													"type": "object",
-													"properties": {
-														"startTime": {
-															"type": "string",
-															"format": "date-time",
-															"example": "2022-09-17T10:22:57.555000+00:00"
-														},
-														"endTime": {
-															"type": "string",
-															"format": "date-time",
-															"example": "2022-09-17T10:22:57.555000+00:00"
-														}
-													}
-												}
-											}
-										},
-										"result": {
-											"type": "object",
-											"properties": {
 												"top_0": {
 													"type": "array",
 													"items": {
@@ -97743,64 +97743,64 @@
 												}
 											}
 										},
-										"meta": {
+										"result": {
 											"type": "object",
 											"properties": {
-												"confidenceInfo": {
+												"meta": {
 													"type": "object",
 													"properties": {
-														"level": {
-															"type": "integer"
-														},
-														"annotations": {
-															"type": "array",
-															"items": {
-																"type": "object",
-																"properties": {
-																	"dataSource": {
-																		"type": "string"
-																	},
-																	"eventType": {
-																		"type": "string"
-																	},
-																	"description": {
-																		"type": "string"
-																	},
-																	"startTime": {
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2022-09-17T10:22:57.555000+00:00"
-																	},
-																	"endTime": {
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2022-09-17T10:22:57.555000+00:00"
+														"confidenceInfo": {
+															"type": "object",
+															"properties": {
+																"level": {
+																	"type": "integer"
+																},
+																"annotations": {
+																	"type": "array",
+																	"items": {
+																		"type": "object",
+																		"properties": {
+																			"dataSource": {
+																				"type": "string"
+																			},
+																			"eventType": {
+																				"type": "string"
+																			},
+																			"description": {
+																				"type": "string"
+																			},
+																			"startTime": {
+																				"type": "string",
+																				"format": "date-time",
+																				"example": "2022-09-17T10:22:57.555000+00:00"
+																			},
+																			"endTime": {
+																				"type": "string",
+																				"format": "date-time",
+																				"example": "2022-09-17T10:22:57.555000+00:00"
+																			}
+																		}
 																	}
+																}
+															}
+														},
+														"dateRange": {
+															"type": "object",
+															"properties": {
+																"startTime": {
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2022-09-17T10:22:57.555000+00:00"
+																},
+																"endTime": {
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2022-09-17T10:22:57.555000+00:00"
 																}
 															}
 														}
 													}
 												},
-												"dateRange": {
-													"type": "object",
-													"properties": {
-														"startTime": {
-															"type": "string",
-															"format": "date-time",
-															"example": "2022-09-17T10:22:57.555000+00:00"
-														},
-														"endTime": {
-															"type": "string",
-															"format": "date-time",
-															"example": "2022-09-17T10:22:57.555000+00:00"
-														}
-													}
-												}
-											}
-										},
-										"result": {
-											"type": "object",
-											"properties": {
 												"top_0": {
 													"type": "array",
 													"items": {
@@ -97895,64 +97895,64 @@
 												}
 											}
 										},
-										"meta": {
+										"result": {
 											"type": "object",
 											"properties": {
-												"confidenceInfo": {
+												"meta": {
 													"type": "object",
 													"properties": {
-														"level": {
-															"type": "integer"
-														},
-														"annotations": {
-															"type": "array",
-															"items": {
-																"type": "object",
-																"properties": {
-																	"dataSource": {
-																		"type": "string"
-																	},
-																	"eventType": {
-																		"type": "string"
-																	},
-																	"description": {
-																		"type": "string"
-																	},
-																	"startTime": {
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2022-09-17T10:22:57.555000+00:00"
-																	},
-																	"endTime": {
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2022-09-17T10:22:57.555000+00:00"
+														"confidenceInfo": {
+															"type": "object",
+															"properties": {
+																"level": {
+																	"type": "integer"
+																},
+																"annotations": {
+																	"type": "array",
+																	"items": {
+																		"type": "object",
+																		"properties": {
+																			"dataSource": {
+																				"type": "string"
+																			},
+																			"eventType": {
+																				"type": "string"
+																			},
+																			"description": {
+																				"type": "string"
+																			},
+																			"startTime": {
+																				"type": "string",
+																				"format": "date-time",
+																				"example": "2022-09-17T10:22:57.555000+00:00"
+																			},
+																			"endTime": {
+																				"type": "string",
+																				"format": "date-time",
+																				"example": "2022-09-17T10:22:57.555000+00:00"
+																			}
+																		}
 																	}
+																}
+															}
+														},
+														"dateRange": {
+															"type": "object",
+															"properties": {
+																"startTime": {
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2022-09-17T10:22:57.555000+00:00"
+																},
+																"endTime": {
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2022-09-17T10:22:57.555000+00:00"
 																}
 															}
 														}
 													}
 												},
-												"dateRange": {
-													"type": "object",
-													"properties": {
-														"startTime": {
-															"type": "string",
-															"format": "date-time",
-															"example": "2022-09-17T10:22:57.555000+00:00"
-														},
-														"endTime": {
-															"type": "string",
-															"format": "date-time",
-															"example": "2022-09-17T10:22:57.555000+00:00"
-														}
-													}
-												}
-											}
-										},
-										"result": {
-											"type": "object",
-											"properties": {
 												"top_0": {
 													"type": "array",
 													"items": {
@@ -98049,64 +98049,64 @@
 												}
 											}
 										},
-										"meta": {
+										"result": {
 											"type": "object",
 											"properties": {
-												"confidenceInfo": {
+												"meta": {
 													"type": "object",
 													"properties": {
-														"level": {
-															"type": "integer"
-														},
-														"annotations": {
-															"type": "array",
-															"items": {
-																"type": "object",
-																"properties": {
-																	"dataSource": {
-																		"type": "string"
-																	},
-																	"eventType": {
-																		"type": "string"
-																	},
-																	"description": {
-																		"type": "string"
-																	},
-																	"startTime": {
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2022-09-17T10:22:57.555000+00:00"
-																	},
-																	"endTime": {
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2022-09-17T10:22:57.555000+00:00"
+														"confidenceInfo": {
+															"type": "object",
+															"properties": {
+																"level": {
+																	"type": "integer"
+																},
+																"annotations": {
+																	"type": "array",
+																	"items": {
+																		"type": "object",
+																		"properties": {
+																			"dataSource": {
+																				"type": "string"
+																			},
+																			"eventType": {
+																				"type": "string"
+																			},
+																			"description": {
+																				"type": "string"
+																			},
+																			"startTime": {
+																				"type": "string",
+																				"format": "date-time",
+																				"example": "2022-09-17T10:22:57.555000+00:00"
+																			},
+																			"endTime": {
+																				"type": "string",
+																				"format": "date-time",
+																				"example": "2022-09-17T10:22:57.555000+00:00"
+																			}
+																		}
 																	}
+																}
+															}
+														},
+														"dateRange": {
+															"type": "object",
+															"properties": {
+																"startTime": {
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2022-09-17T10:22:57.555000+00:00"
+																},
+																"endTime": {
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2022-09-17T10:22:57.555000+00:00"
 																}
 															}
 														}
 													}
 												},
-												"dateRange": {
-													"type": "object",
-													"properties": {
-														"startTime": {
-															"type": "string",
-															"format": "date-time",
-															"example": "2022-09-17T10:22:57.555000+00:00"
-														},
-														"endTime": {
-															"type": "string",
-															"format": "date-time",
-															"example": "2022-09-17T10:22:57.555000+00:00"
-														}
-													}
-												}
-											}
-										},
-										"result": {
-											"type": "object",
-											"properties": {
 												"top_0": {
 													"type": "array",
 													"items": {
@@ -98200,64 +98200,64 @@
 												}
 											}
 										},
-										"meta": {
+										"result": {
 											"type": "object",
 											"properties": {
-												"confidenceInfo": {
+												"meta": {
 													"type": "object",
 													"properties": {
-														"level": {
-															"type": "integer"
-														},
-														"annotations": {
-															"type": "array",
-															"items": {
-																"type": "object",
-																"properties": {
-																	"dataSource": {
-																		"type": "string"
-																	},
-																	"eventType": {
-																		"type": "string"
-																	},
-																	"description": {
-																		"type": "string"
-																	},
-																	"startTime": {
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2022-09-17T10:22:57.555000+00:00"
-																	},
-																	"endTime": {
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2022-09-17T10:22:57.555000+00:00"
+														"confidenceInfo": {
+															"type": "object",
+															"properties": {
+																"level": {
+																	"type": "integer"
+																},
+																"annotations": {
+																	"type": "array",
+																	"items": {
+																		"type": "object",
+																		"properties": {
+																			"dataSource": {
+																				"type": "string"
+																			},
+																			"eventType": {
+																				"type": "string"
+																			},
+																			"description": {
+																				"type": "string"
+																			},
+																			"startTime": {
+																				"type": "string",
+																				"format": "date-time",
+																				"example": "2022-09-17T10:22:57.555000+00:00"
+																			},
+																			"endTime": {
+																				"type": "string",
+																				"format": "date-time",
+																				"example": "2022-09-17T10:22:57.555000+00:00"
+																			}
+																		}
 																	}
+																}
+															}
+														},
+														"dateRange": {
+															"type": "object",
+															"properties": {
+																"startTime": {
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2022-09-17T10:22:57.555000+00:00"
+																},
+																"endTime": {
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2022-09-17T10:22:57.555000+00:00"
 																}
 															}
 														}
 													}
 												},
-												"dateRange": {
-													"type": "object",
-													"properties": {
-														"startTime": {
-															"type": "string",
-															"format": "date-time",
-															"example": "2022-09-17T10:22:57.555000+00:00"
-														},
-														"endTime": {
-															"type": "string",
-															"format": "date-time",
-															"example": "2022-09-17T10:22:57.555000+00:00"
-														}
-													}
-												}
-											}
-										},
-										"result": {
-											"type": "object",
-											"properties": {
 												"top_0": {
 													"type": "array",
 													"items": {
@@ -98352,64 +98352,64 @@
 												}
 											}
 										},
-										"meta": {
+										"result": {
 											"type": "object",
 											"properties": {
-												"confidenceInfo": {
+												"meta": {
 													"type": "object",
 													"properties": {
-														"level": {
-															"type": "integer"
-														},
-														"annotations": {
-															"type": "array",
-															"items": {
-																"type": "object",
-																"properties": {
-																	"dataSource": {
-																		"type": "string"
-																	},
-																	"eventType": {
-																		"type": "string"
-																	},
-																	"description": {
-																		"type": "string"
-																	},
-																	"startTime": {
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2022-09-17T10:22:57.555000+00:00"
-																	},
-																	"endTime": {
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2022-09-17T10:22:57.555000+00:00"
+														"confidenceInfo": {
+															"type": "object",
+															"properties": {
+																"level": {
+																	"type": "integer"
+																},
+																"annotations": {
+																	"type": "array",
+																	"items": {
+																		"type": "object",
+																		"properties": {
+																			"dataSource": {
+																				"type": "string"
+																			},
+																			"eventType": {
+																				"type": "string"
+																			},
+																			"description": {
+																				"type": "string"
+																			},
+																			"startTime": {
+																				"type": "string",
+																				"format": "date-time",
+																				"example": "2022-09-17T10:22:57.555000+00:00"
+																			},
+																			"endTime": {
+																				"type": "string",
+																				"format": "date-time",
+																				"example": "2022-09-17T10:22:57.555000+00:00"
+																			}
+																		}
 																	}
+																}
+															}
+														},
+														"dateRange": {
+															"type": "object",
+															"properties": {
+																"startTime": {
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2022-09-17T10:22:57.555000+00:00"
+																},
+																"endTime": {
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2022-09-17T10:22:57.555000+00:00"
 																}
 															}
 														}
 													}
 												},
-												"dateRange": {
-													"type": "object",
-													"properties": {
-														"startTime": {
-															"type": "string",
-															"format": "date-time",
-															"example": "2022-09-17T10:22:57.555000+00:00"
-														},
-														"endTime": {
-															"type": "string",
-															"format": "date-time",
-															"example": "2022-09-17T10:22:57.555000+00:00"
-														}
-													}
-												}
-											}
-										},
-										"result": {
-											"type": "object",
-											"properties": {
 												"top_0": {
 													"type": "array",
 													"items": {
@@ -98503,64 +98503,64 @@
 												}
 											}
 										},
-										"meta": {
+										"result": {
 											"type": "object",
 											"properties": {
-												"confidenceInfo": {
+												"meta": {
 													"type": "object",
 													"properties": {
-														"level": {
-															"type": "integer"
-														},
-														"annotations": {
-															"type": "array",
-															"items": {
-																"type": "object",
-																"properties": {
-																	"dataSource": {
-																		"type": "string"
-																	},
-																	"eventType": {
-																		"type": "string"
-																	},
-																	"description": {
-																		"type": "string"
-																	},
-																	"startTime": {
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2022-09-17T10:22:57.555000+00:00"
-																	},
-																	"endTime": {
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2022-09-17T10:22:57.555000+00:00"
+														"confidenceInfo": {
+															"type": "object",
+															"properties": {
+																"level": {
+																	"type": "integer"
+																},
+																"annotations": {
+																	"type": "array",
+																	"items": {
+																		"type": "object",
+																		"properties": {
+																			"dataSource": {
+																				"type": "string"
+																			},
+																			"eventType": {
+																				"type": "string"
+																			},
+																			"description": {
+																				"type": "string"
+																			},
+																			"startTime": {
+																				"type": "string",
+																				"format": "date-time",
+																				"example": "2022-09-17T10:22:57.555000+00:00"
+																			},
+																			"endTime": {
+																				"type": "string",
+																				"format": "date-time",
+																				"example": "2022-09-17T10:22:57.555000+00:00"
+																			}
+																		}
 																	}
+																}
+															}
+														},
+														"dateRange": {
+															"type": "object",
+															"properties": {
+																"startTime": {
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2022-09-17T10:22:57.555000+00:00"
+																},
+																"endTime": {
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2022-09-17T10:22:57.555000+00:00"
 																}
 															}
 														}
 													}
 												},
-												"dateRange": {
-													"type": "object",
-													"properties": {
-														"startTime": {
-															"type": "string",
-															"format": "date-time",
-															"example": "2022-09-17T10:22:57.555000+00:00"
-														},
-														"endTime": {
-															"type": "string",
-															"format": "date-time",
-															"example": "2022-09-17T10:22:57.555000+00:00"
-														}
-													}
-												}
-											}
-										},
-										"result": {
-											"type": "object",
-											"properties": {
 												"top_0": {
 													"type": "array",
 													"items": {
@@ -98639,64 +98639,64 @@
 												}
 											}
 										},
-										"meta": {
+										"result": {
 											"type": "object",
 											"properties": {
-												"confidenceInfo": {
+												"meta": {
 													"type": "object",
 													"properties": {
-														"level": {
-															"type": "integer"
-														},
-														"annotations": {
-															"type": "array",
-															"items": {
-																"type": "object",
-																"properties": {
-																	"dataSource": {
-																		"type": "string"
-																	},
-																	"eventType": {
-																		"type": "string"
-																	},
-																	"description": {
-																		"type": "string"
-																	},
-																	"startTime": {
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2022-09-17T10:22:57.555000+00:00"
-																	},
-																	"endTime": {
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2022-09-17T10:22:57.555000+00:00"
+														"confidenceInfo": {
+															"type": "object",
+															"properties": {
+																"level": {
+																	"type": "integer"
+																},
+																"annotations": {
+																	"type": "array",
+																	"items": {
+																		"type": "object",
+																		"properties": {
+																			"dataSource": {
+																				"type": "string"
+																			},
+																			"eventType": {
+																				"type": "string"
+																			},
+																			"description": {
+																				"type": "string"
+																			},
+																			"startTime": {
+																				"type": "string",
+																				"format": "date-time",
+																				"example": "2022-09-17T10:22:57.555000+00:00"
+																			},
+																			"endTime": {
+																				"type": "string",
+																				"format": "date-time",
+																				"example": "2022-09-17T10:22:57.555000+00:00"
+																			}
+																		}
 																	}
+																}
+															}
+														},
+														"dateRange": {
+															"type": "object",
+															"properties": {
+																"startTime": {
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2022-09-17T10:22:57.555000+00:00"
+																},
+																"endTime": {
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2022-09-17T10:22:57.555000+00:00"
 																}
 															}
 														}
 													}
 												},
-												"dateRange": {
-													"type": "object",
-													"properties": {
-														"startTime": {
-															"type": "string",
-															"format": "date-time",
-															"example": "2022-09-17T10:22:57.555000+00:00"
-														},
-														"endTime": {
-															"type": "string",
-															"format": "date-time",
-															"example": "2022-09-17T10:22:57.555000+00:00"
-														}
-													}
-												}
-											}
-										},
-										"result": {
-											"type": "object",
-											"properties": {
 												"top_0": {
 													"type": "array",
 													"items": {
@@ -98775,64 +98775,64 @@
 												}
 											}
 										},
-										"meta": {
+										"result": {
 											"type": "object",
 											"properties": {
-												"confidenceInfo": {
+												"meta": {
 													"type": "object",
 													"properties": {
-														"level": {
-															"type": "integer"
-														},
-														"annotations": {
-															"type": "array",
-															"items": {
-																"type": "object",
-																"properties": {
-																	"dataSource": {
-																		"type": "string"
-																	},
-																	"eventType": {
-																		"type": "string"
-																	},
-																	"description": {
-																		"type": "string"
-																	},
-																	"startTime": {
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2022-09-17T10:22:57.555000+00:00"
-																	},
-																	"endTime": {
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2022-09-17T10:22:57.555000+00:00"
+														"confidenceInfo": {
+															"type": "object",
+															"properties": {
+																"level": {
+																	"type": "integer"
+																},
+																"annotations": {
+																	"type": "array",
+																	"items": {
+																		"type": "object",
+																		"properties": {
+																			"dataSource": {
+																				"type": "string"
+																			},
+																			"eventType": {
+																				"type": "string"
+																			},
+																			"description": {
+																				"type": "string"
+																			},
+																			"startTime": {
+																				"type": "string",
+																				"format": "date-time",
+																				"example": "2022-09-17T10:22:57.555000+00:00"
+																			},
+																			"endTime": {
+																				"type": "string",
+																				"format": "date-time",
+																				"example": "2022-09-17T10:22:57.555000+00:00"
+																			}
+																		}
 																	}
+																}
+															}
+														},
+														"dateRange": {
+															"type": "object",
+															"properties": {
+																"startTime": {
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2022-09-17T10:22:57.555000+00:00"
+																},
+																"endTime": {
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2022-09-17T10:22:57.555000+00:00"
 																}
 															}
 														}
 													}
 												},
-												"dateRange": {
-													"type": "object",
-													"properties": {
-														"startTime": {
-															"type": "string",
-															"format": "date-time",
-															"example": "2022-09-17T10:22:57.555000+00:00"
-														},
-														"endTime": {
-															"type": "string",
-															"format": "date-time",
-															"example": "2022-09-17T10:22:57.555000+00:00"
-														}
-													}
-												}
-											}
-										},
-										"result": {
-											"type": "object",
-											"properties": {
 												"top_0": {
 													"type": "array",
 													"items": {
@@ -98905,64 +98905,64 @@
 												}
 											}
 										},
-										"meta": {
+										"result": {
 											"type": "object",
 											"properties": {
-												"confidenceInfo": {
+												"meta": {
 													"type": "object",
 													"properties": {
-														"level": {
-															"type": "integer"
-														},
-														"annotations": {
-															"type": "array",
-															"items": {
-																"type": "object",
-																"properties": {
-																	"dataSource": {
-																		"type": "string"
-																	},
-																	"eventType": {
-																		"type": "string"
-																	},
-																	"description": {
-																		"type": "string"
-																	},
-																	"startTime": {
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2022-09-17T10:22:57.555000+00:00"
-																	},
-																	"endTime": {
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2022-09-17T10:22:57.555000+00:00"
+														"confidenceInfo": {
+															"type": "object",
+															"properties": {
+																"level": {
+																	"type": "integer"
+																},
+																"annotations": {
+																	"type": "array",
+																	"items": {
+																		"type": "object",
+																		"properties": {
+																			"dataSource": {
+																				"type": "string"
+																			},
+																			"eventType": {
+																				"type": "string"
+																			},
+																			"description": {
+																				"type": "string"
+																			},
+																			"startTime": {
+																				"type": "string",
+																				"format": "date-time",
+																				"example": "2022-09-17T10:22:57.555000+00:00"
+																			},
+																			"endTime": {
+																				"type": "string",
+																				"format": "date-time",
+																				"example": "2022-09-17T10:22:57.555000+00:00"
+																			}
+																		}
 																	}
+																}
+															}
+														},
+														"dateRange": {
+															"type": "object",
+															"properties": {
+																"startTime": {
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2022-09-17T10:22:57.555000+00:00"
+																},
+																"endTime": {
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2022-09-17T10:22:57.555000+00:00"
 																}
 															}
 														}
 													}
 												},
-												"dateRange": {
-													"type": "object",
-													"properties": {
-														"startTime": {
-															"type": "string",
-															"format": "date-time",
-															"example": "2022-09-17T10:22:57.555000+00:00"
-														},
-														"endTime": {
-															"type": "string",
-															"format": "date-time",
-															"example": "2022-09-17T10:22:57.555000+00:00"
-														}
-													}
-												}
-											}
-										},
-										"result": {
-											"type": "object",
-											"properties": {
 												"top_0": {
 													"type": "array",
 													"items": {
@@ -99035,64 +99035,64 @@
 												}
 											}
 										},
-										"meta": {
+										"result": {
 											"type": "object",
 											"properties": {
-												"confidenceInfo": {
+												"meta": {
 													"type": "object",
 													"properties": {
-														"level": {
-															"type": "integer"
-														},
-														"annotations": {
-															"type": "array",
-															"items": {
-																"type": "object",
-																"properties": {
-																	"dataSource": {
-																		"type": "string"
-																	},
-																	"eventType": {
-																		"type": "string"
-																	},
-																	"description": {
-																		"type": "string"
-																	},
-																	"startTime": {
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2022-09-17T10:22:57.555000+00:00"
-																	},
-																	"endTime": {
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2022-09-17T10:22:57.555000+00:00"
+														"confidenceInfo": {
+															"type": "object",
+															"properties": {
+																"level": {
+																	"type": "integer"
+																},
+																"annotations": {
+																	"type": "array",
+																	"items": {
+																		"type": "object",
+																		"properties": {
+																			"dataSource": {
+																				"type": "string"
+																			},
+																			"eventType": {
+																				"type": "string"
+																			},
+																			"description": {
+																				"type": "string"
+																			},
+																			"startTime": {
+																				"type": "string",
+																				"format": "date-time",
+																				"example": "2022-09-17T10:22:57.555000+00:00"
+																			},
+																			"endTime": {
+																				"type": "string",
+																				"format": "date-time",
+																				"example": "2022-09-17T10:22:57.555000+00:00"
+																			}
+																		}
 																	}
+																}
+															}
+														},
+														"dateRange": {
+															"type": "object",
+															"properties": {
+																"startTime": {
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2022-09-17T10:22:57.555000+00:00"
+																},
+																"endTime": {
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2022-09-17T10:22:57.555000+00:00"
 																}
 															}
 														}
 													}
 												},
-												"dateRange": {
-													"type": "object",
-													"properties": {
-														"startTime": {
-															"type": "string",
-															"format": "date-time",
-															"example": "2022-09-17T10:22:57.555000+00:00"
-														},
-														"endTime": {
-															"type": "string",
-															"format": "date-time",
-															"example": "2022-09-17T10:22:57.555000+00:00"
-														}
-													}
-												}
-											}
-										},
-										"result": {
-											"type": "object",
-											"properties": {
 												"top_0": {
 													"type": "array",
 													"items": {
@@ -99175,64 +99175,64 @@
 												}
 											}
 										},
-										"meta": {
+										"result": {
 											"type": "object",
 											"properties": {
-												"confidenceInfo": {
+												"meta": {
 													"type": "object",
 													"properties": {
-														"level": {
-															"type": "integer"
-														},
-														"annotations": {
-															"type": "array",
-															"items": {
-																"type": "object",
-																"properties": {
-																	"dataSource": {
-																		"type": "string"
-																	},
-																	"eventType": {
-																		"type": "string"
-																	},
-																	"description": {
-																		"type": "string"
-																	},
-																	"startTime": {
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2022-09-17T10:22:57.555000+00:00"
-																	},
-																	"endTime": {
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2022-09-17T10:22:57.555000+00:00"
+														"confidenceInfo": {
+															"type": "object",
+															"properties": {
+																"level": {
+																	"type": "integer"
+																},
+																"annotations": {
+																	"type": "array",
+																	"items": {
+																		"type": "object",
+																		"properties": {
+																			"dataSource": {
+																				"type": "string"
+																			},
+																			"eventType": {
+																				"type": "string"
+																			},
+																			"description": {
+																				"type": "string"
+																			},
+																			"startTime": {
+																				"type": "string",
+																				"format": "date-time",
+																				"example": "2022-09-17T10:22:57.555000+00:00"
+																			},
+																			"endTime": {
+																				"type": "string",
+																				"format": "date-time",
+																				"example": "2022-09-17T10:22:57.555000+00:00"
+																			}
+																		}
 																	}
+																}
+															}
+														},
+														"dateRange": {
+															"type": "object",
+															"properties": {
+																"startTime": {
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2022-09-17T10:22:57.555000+00:00"
+																},
+																"endTime": {
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2022-09-17T10:22:57.555000+00:00"
 																}
 															}
 														}
 													}
 												},
-												"dateRange": {
-													"type": "object",
-													"properties": {
-														"startTime": {
-															"type": "string",
-															"format": "date-time",
-															"example": "2022-09-17T10:22:57.555000+00:00"
-														},
-														"endTime": {
-															"type": "string",
-															"format": "date-time",
-															"example": "2022-09-17T10:22:57.555000+00:00"
-														}
-													}
-												}
-											}
-										},
-										"result": {
-											"type": "object",
-											"properties": {
 												"top_0": {
 													"type": "array",
 													"items": {
@@ -99775,57 +99775,57 @@
 												}
 											}
 										},
-										"meta": {
-											"type": "object",
-											"properties": {
-												"confidenceInfo": {
-													"type": "object",
-													"properties": {
-														"startTime": {
-															"type": "string",
-															"format": "date-time",
-															"example": "2022-09-16T10:22:57.555000+00:00",
-															"description": "Adjusted start of date range"
-														},
-														"endTime": {
-															"type": "string",
-															"format": "date-time",
-															"example": "2022-09-17T10:22:57.555000+00:00",
-															"description": "Adjusted end of date range"
-														}
-													}
-												},
-												"dateRange": {
-													"type": "object",
-													"properties": {
-														"startTime": {
-															"type": "string",
-															"format": "date-time",
-															"example": "2022-09-16T10:22:57.555000+00:00",
-															"description": "Adjusted start of date range"
-														},
-														"endTime": {
-															"type": "string",
-															"format": "date-time",
-															"example": "2022-09-17T10:22:57.555000+00:00",
-															"description": "Adjusted end of date range"
-														}
-													}
-												},
-												"aggInterval": {
-													"type": "string",
-													"example": "1h"
-												},
-												"lastUpdated": {
-													"type": "string",
-													"format": "date-time",
-													"example": "2022-09-17T10:22:57.555000+00:00"
-												}
-											}
-										},
 										"result": {
 											"type": "object",
 											"properties": {
+												"meta": {
+													"type": "object",
+													"properties": {
+														"confidenceInfo": {
+															"type": "object",
+															"properties": {
+																"startTime": {
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2022-09-16T10:22:57.555000+00:00",
+																	"description": "Adjusted start of date range"
+																},
+																"endTime": {
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2022-09-17T10:22:57.555000+00:00",
+																	"description": "Adjusted end of date range"
+																}
+															}
+														},
+														"dateRange": {
+															"type": "object",
+															"properties": {
+																"startTime": {
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2022-09-16T10:22:57.555000+00:00",
+																	"description": "Adjusted start of date range"
+																},
+																"endTime": {
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2022-09-17T10:22:57.555000+00:00",
+																	"description": "Adjusted end of date range"
+																}
+															}
+														},
+														"aggInterval": {
+															"type": "string",
+															"example": "1h"
+														},
+														"lastUpdated": {
+															"type": "string",
+															"format": "date-time",
+															"example": "2022-09-17T10:22:57.555000+00:00"
+														}
+													}
+												},
 												"series": {
 													"type": "object",
 													"properties": {
@@ -99903,78 +99903,78 @@
 												}
 											}
 										},
-										"meta": {
-											"type": "object",
-											"properties": {
-												"confidenceInfo": {
-													"type": "object",
-													"properties": {
-														"level": {
-															"type": "integer"
-														},
-														"annotations": {
-															"type": "array",
-															"items": {
-																"type": "object",
-																"properties": {
-																	"dataSource": {
-																		"type": "string",
-																		"example": "ALL"
-																	},
-																	"eventType": {
-																		"type": "string",
-																		"example": "OUTAGE"
-																	},
-																	"description": {
-																		"type": "string",
-																		"example": "Cable cut in Tonga"
-																	},
-																	"startTime": {
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2022-09-17T10:22:57.555000+00:00"
-																	},
-																	"endTime": {
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2022-09-17T10:22:57.555000+00:00"
-																	}
-																}
-															}
-														}
-													}
-												},
-												"dateRange": {
-													"type": "object",
-													"properties": {
-														"startTime": {
-															"type": "string",
-															"format": "date-time",
-															"example": "2022-09-16T10:22:57.555000+00:00",
-															"description": "Adjusted start of date range"
-														},
-														"endTime": {
-															"type": "string",
-															"format": "date-time",
-															"example": "2022-09-17T10:22:57.555000+00:00",
-															"description": "Adjusted end of date range"
-														}
-													}
-												},
-												"aggInterval": {
-													"type": "string",
-													"example": "1h"
-												},
-												"lastUpdated": {
-													"type": "string",
-													"format": "date-time",
-													"example": "2022-09-17T10:22:57.555000+00:00"
-												}
-											}
-										},
 										"result": {
 											"type": "object",
 											"properties": {
+												"meta": {
+													"type": "object",
+													"properties": {
+														"confidenceInfo": {
+															"type": "object",
+															"properties": {
+																"level": {
+																	"type": "integer"
+																},
+																"annotations": {
+																	"type": "array",
+																	"items": {
+																		"type": "object",
+																		"properties": {
+																			"dataSource": {
+																				"type": "string",
+																				"example": "ALL"
+																			},
+																			"eventType": {
+																				"type": "string",
+																				"example": "OUTAGE"
+																			},
+																			"description": {
+																				"type": "string",
+																				"example": "Cable cut in Tonga"
+																			},
+																			"startTime": {
+																				"type": "string",
+																				"format": "date-time",
+																				"example": "2022-09-17T10:22:57.555000+00:00"
+																			},
+																			"endTime": {
+																				"type": "string",
+																				"format": "date-time",
+																				"example": "2022-09-17T10:22:57.555000+00:00"
+																			}
+																		}
+																	}
+																}
+															}
+														},
+														"dateRange": {
+															"type": "object",
+															"properties": {
+																"startTime": {
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2022-09-16T10:22:57.555000+00:00",
+																	"description": "Adjusted start of date range"
+																},
+																"endTime": {
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2022-09-17T10:22:57.555000+00:00",
+																	"description": "Adjusted end of date range"
+																}
+															}
+														},
+														"aggInterval": {
+															"type": "string",
+															"example": "1h"
+														},
+														"lastUpdated": {
+															"type": "string",
+															"format": "date-time",
+															"example": "2022-09-17T10:22:57.555000+00:00"
+														}
+													}
+												},
 												"serie_0": {
 													"type": "object",
 													"properties": {
@@ -100214,78 +100214,78 @@
 												}
 											}
 										},
-										"meta": {
-											"type": "object",
-											"properties": {
-												"confidenceInfo": {
-													"type": "object",
-													"properties": {
-														"level": {
-															"type": "integer"
-														},
-														"annotations": {
-															"type": "array",
-															"items": {
-																"type": "object",
-																"properties": {
-																	"dataSource": {
-																		"type": "string",
-																		"example": "ALL"
-																	},
-																	"eventType": {
-																		"type": "string",
-																		"example": "OUTAGE"
-																	},
-																	"description": {
-																		"type": "string",
-																		"example": "Cable cut in Tonga"
-																	},
-																	"startTime": {
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2022-09-17T10:22:57.555000+00:00"
-																	},
-																	"endTime": {
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2022-09-17T10:22:57.555000+00:00"
-																	}
-																}
-															}
-														}
-													}
-												},
-												"dateRange": {
-													"type": "object",
-													"properties": {
-														"startTime": {
-															"type": "string",
-															"format": "date-time",
-															"example": "2022-09-16T10:22:57.555000+00:00",
-															"description": "Adjusted start of date range"
-														},
-														"endTime": {
-															"type": "string",
-															"format": "date-time",
-															"example": "2022-09-17T10:22:57.555000+00:00",
-															"description": "Adjusted end of date range"
-														}
-													}
-												},
-												"aggInterval": {
-													"type": "string",
-													"example": "1h"
-												},
-												"lastUpdated": {
-													"type": "string",
-													"format": "date-time",
-													"example": "2022-09-17T10:22:57.555000+00:00"
-												}
-											}
-										},
 										"result": {
 											"type": "object",
 											"properties": {
+												"meta": {
+													"type": "object",
+													"properties": {
+														"confidenceInfo": {
+															"type": "object",
+															"properties": {
+																"level": {
+																	"type": "integer"
+																},
+																"annotations": {
+																	"type": "array",
+																	"items": {
+																		"type": "object",
+																		"properties": {
+																			"dataSource": {
+																				"type": "string",
+																				"example": "ALL"
+																			},
+																			"eventType": {
+																				"type": "string",
+																				"example": "OUTAGE"
+																			},
+																			"description": {
+																				"type": "string",
+																				"example": "Cable cut in Tonga"
+																			},
+																			"startTime": {
+																				"type": "string",
+																				"format": "date-time",
+																				"example": "2022-09-17T10:22:57.555000+00:00"
+																			},
+																			"endTime": {
+																				"type": "string",
+																				"format": "date-time",
+																				"example": "2022-09-17T10:22:57.555000+00:00"
+																			}
+																		}
+																	}
+																}
+															}
+														},
+														"dateRange": {
+															"type": "object",
+															"properties": {
+																"startTime": {
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2022-09-16T10:22:57.555000+00:00",
+																	"description": "Adjusted start of date range"
+																},
+																"endTime": {
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2022-09-17T10:22:57.555000+00:00",
+																	"description": "Adjusted end of date range"
+																}
+															}
+														},
+														"aggInterval": {
+															"type": "string",
+															"example": "1h"
+														},
+														"lastUpdated": {
+															"type": "string",
+															"format": "date-time",
+															"example": "2022-09-17T10:22:57.555000+00:00"
+														}
+													}
+												},
 												"series": {
 													"type": "object",
 													"properties": {
@@ -100363,78 +100363,78 @@
 												}
 											}
 										},
-										"meta": {
-											"type": "object",
-											"properties": {
-												"confidenceInfo": {
-													"type": "object",
-													"properties": {
-														"level": {
-															"type": "integer"
-														},
-														"annotations": {
-															"type": "array",
-															"items": {
-																"type": "object",
-																"properties": {
-																	"dataSource": {
-																		"type": "string",
-																		"example": "ALL"
-																	},
-																	"eventType": {
-																		"type": "string",
-																		"example": "OUTAGE"
-																	},
-																	"description": {
-																		"type": "string",
-																		"example": "Cable cut in Tonga"
-																	},
-																	"startTime": {
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2022-09-17T10:22:57.555000+00:00"
-																	},
-																	"endTime": {
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2022-09-17T10:22:57.555000+00:00"
-																	}
-																}
-															}
-														}
-													}
-												},
-												"dateRange": {
-													"type": "object",
-													"properties": {
-														"startTime": {
-															"type": "string",
-															"format": "date-time",
-															"example": "2022-09-16T10:22:57.555000+00:00",
-															"description": "Adjusted start of date range"
-														},
-														"endTime": {
-															"type": "string",
-															"format": "date-time",
-															"example": "2022-09-17T10:22:57.555000+00:00",
-															"description": "Adjusted end of date range"
-														}
-													}
-												},
-												"aggInterval": {
-													"type": "string",
-													"example": "1h"
-												},
-												"lastUpdated": {
-													"type": "string",
-													"format": "date-time",
-													"example": "2022-09-17T10:22:57.555000+00:00"
-												}
-											}
-										},
 										"result": {
 											"type": "object",
 											"properties": {
+												"meta": {
+													"type": "object",
+													"properties": {
+														"confidenceInfo": {
+															"type": "object",
+															"properties": {
+																"level": {
+																	"type": "integer"
+																},
+																"annotations": {
+																	"type": "array",
+																	"items": {
+																		"type": "object",
+																		"properties": {
+																			"dataSource": {
+																				"type": "string",
+																				"example": "ALL"
+																			},
+																			"eventType": {
+																				"type": "string",
+																				"example": "OUTAGE"
+																			},
+																			"description": {
+																				"type": "string",
+																				"example": "Cable cut in Tonga"
+																			},
+																			"startTime": {
+																				"type": "string",
+																				"format": "date-time",
+																				"example": "2022-09-17T10:22:57.555000+00:00"
+																			},
+																			"endTime": {
+																				"type": "string",
+																				"format": "date-time",
+																				"example": "2022-09-17T10:22:57.555000+00:00"
+																			}
+																		}
+																	}
+																}
+															}
+														},
+														"dateRange": {
+															"type": "object",
+															"properties": {
+																"startTime": {
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2022-09-16T10:22:57.555000+00:00",
+																	"description": "Adjusted start of date range"
+																},
+																"endTime": {
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2022-09-17T10:22:57.555000+00:00",
+																	"description": "Adjusted end of date range"
+																}
+															}
+														},
+														"aggInterval": {
+															"type": "string",
+															"example": "1h"
+														},
+														"lastUpdated": {
+															"type": "string",
+															"format": "date-time",
+															"example": "2022-09-17T10:22:57.555000+00:00"
+														}
+													}
+												},
 												"serie_0": {
 													"type": "object",
 													"properties": {
@@ -100730,6 +100730,91 @@
 				}
 			}
 		},
+		"/radar/attacks/layer7/top/ases/origin": {
+			"get": {
+				"summary": "Get layer 7 top origin ASes",
+				"description": "Get the top origin ASes by layer 7 attacks. Values are a percentage out of the total layer 7 attacks. The origin location is determined by the client IP.",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "Get layer 7 top origin ASes response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"success": {
+											"type": "boolean",
+											"example": true
+										},
+										"errors": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"code": {
+														"type": "string"
+													},
+													"message": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"result": {
+											"type": "object",
+											"properties": {
+												"top_0": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"originAsn": {
+																"type": "number",
+																"example": 16509
+															},
+															"originAsnName": {
+																"type": "string",
+																"example": "AMAZON-02"
+															},
+															"value": {
+																"type": "string",
+																"example": "0.73996"
+															},
+															"rank": {
+																"type": "string",
+																"example": "1"
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPermissionsRequired": {
+					"enum": [
+						"com.cloudflare.api.user.read"
+					]
+				},
+				"x-cfPlanAvailability": {
+					"free": true,
+					"pro": true,
+					"business": true,
+					"enterprise": true
+				}
+			}
+		},
 		"/radar/attacks/layer7/top/locations/target": {
 			"get": {
 				"summary": "Get layer 7 top target locations",
@@ -100921,78 +101006,78 @@
 												}
 											}
 										},
-										"meta": {
-											"type": "object",
-											"properties": {
-												"confidenceInfo": {
-													"type": "object",
-													"properties": {
-														"level": {
-															"type": "integer"
-														},
-														"annotations": {
-															"type": "array",
-															"items": {
-																"type": "object",
-																"properties": {
-																	"dataSource": {
-																		"type": "string",
-																		"example": "ALL"
-																	},
-																	"eventType": {
-																		"type": "string",
-																		"example": "OUTAGE"
-																	},
-																	"description": {
-																		"type": "string",
-																		"example": "Cable cut in Tonga"
-																	},
-																	"startTime": {
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2022-09-17T10:22:57.555000+00:00"
-																	},
-																	"endTime": {
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2022-09-17T10:22:57.555000+00:00"
-																	}
-																}
-															}
-														}
-													}
-												},
-												"dateRange": {
-													"type": "object",
-													"properties": {
-														"startTime": {
-															"type": "string",
-															"format": "date-time",
-															"example": "2022-09-16T10:22:57.555000+00:00",
-															"description": "Adjusted start of date range"
-														},
-														"endTime": {
-															"type": "string",
-															"format": "date-time",
-															"example": "2022-09-17T10:22:57.555000+00:00",
-															"description": "Adjusted end of date range"
-														}
-													}
-												},
-												"aggInterval": {
-													"type": "string",
-													"example": "1h"
-												},
-												"lastUpdated": {
-													"type": "string",
-													"format": "date-time",
-													"example": "2022-09-17T10:22:57.555000+00:00"
-												}
-											}
-										},
 										"result": {
 											"type": "object",
 											"properties": {
+												"meta": {
+													"type": "object",
+													"properties": {
+														"confidenceInfo": {
+															"type": "object",
+															"properties": {
+																"level": {
+																	"type": "integer"
+																},
+																"annotations": {
+																	"type": "array",
+																	"items": {
+																		"type": "object",
+																		"properties": {
+																			"dataSource": {
+																				"type": "string",
+																				"example": "ALL"
+																			},
+																			"eventType": {
+																				"type": "string",
+																				"example": "OUTAGE"
+																			},
+																			"description": {
+																				"type": "string",
+																				"example": "Cable cut in Tonga"
+																			},
+																			"startTime": {
+																				"type": "string",
+																				"format": "date-time",
+																				"example": "2022-09-17T10:22:57.555000+00:00"
+																			},
+																			"endTime": {
+																				"type": "string",
+																				"format": "date-time",
+																				"example": "2022-09-17T10:22:57.555000+00:00"
+																			}
+																		}
+																	}
+																}
+															}
+														},
+														"dateRange": {
+															"type": "object",
+															"properties": {
+																"startTime": {
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2022-09-16T10:22:57.555000+00:00",
+																	"description": "Adjusted start of date range"
+																},
+																"endTime": {
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2022-09-17T10:22:57.555000+00:00",
+																	"description": "Adjusted end of date range"
+																}
+															}
+														},
+														"aggInterval": {
+															"type": "string",
+															"example": "1h"
+														},
+														"lastUpdated": {
+															"type": "string",
+															"format": "date-time",
+															"example": "2022-09-17T10:22:57.555000+00:00"
+														}
+													}
+												},
 												"series": {
 													"type": "object",
 													"properties": {
@@ -101070,31 +101155,31 @@
 												}
 											}
 										},
-										"meta": {
-											"type": "object",
-											"properties": {
-												"dateRange": {
-													"type": "object",
-													"properties": {
-														"startTime": {
-															"type": "string",
-															"format": "date-time",
-															"example": "2022-09-16T10:22:57.555000+00:00",
-															"description": "Adjusted start of date range"
-														},
-														"endTime": {
-															"type": "string",
-															"format": "date-time",
-															"example": "2022-09-17T10:22:57.555000+00:00",
-															"description": "Adjusted end of date range"
-														}
-													}
-												}
-											}
-										},
 										"result": {
 											"type": "object",
 											"properties": {
+												"meta": {
+													"type": "object",
+													"properties": {
+														"dateRange": {
+															"type": "object",
+															"properties": {
+																"startTime": {
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2022-09-16T10:22:57.555000+00:00",
+																	"description": "Adjusted start of date range"
+																},
+																"endTime": {
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2022-09-17T10:22:57.555000+00:00",
+																	"description": "Adjusted end of date range"
+																}
+															}
+														}
+													}
+												},
 												"top_0": {
 													"type": "array",
 													"items": {
@@ -101169,31 +101254,31 @@
 												}
 											}
 										},
-										"meta": {
-											"type": "object",
-											"properties": {
-												"dateRange": {
-													"type": "object",
-													"properties": {
-														"startTime": {
-															"type": "string",
-															"format": "date-time",
-															"example": "2022-09-16T10:22:57.555000+00:00",
-															"description": "Adjusted start of date range"
-														},
-														"endTime": {
-															"type": "string",
-															"format": "date-time",
-															"example": "2022-09-17T10:22:57.555000+00:00",
-															"description": "Adjusted end of date range"
-														}
-													}
-												}
-											}
-										},
 										"result": {
 											"type": "object",
 											"properties": {
+												"meta": {
+													"type": "object",
+													"properties": {
+														"dateRange": {
+															"type": "object",
+															"properties": {
+																"startTime": {
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2022-09-16T10:22:57.555000+00:00",
+																	"description": "Adjusted start of date range"
+																},
+																"endTime": {
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2022-09-17T10:22:57.555000+00:00",
+																	"description": "Adjusted end of date range"
+																}
+															}
+														}
+													}
+												},
 												"top_0": {
 													"type": "array",
 													"items": {
@@ -101349,78 +101434,78 @@
 												}
 											}
 										},
-										"meta": {
-											"type": "object",
-											"properties": {
-												"confidenceInfo": {
-													"type": "object",
-													"properties": {
-														"level": {
-															"type": "integer"
-														},
-														"annotations": {
-															"type": "array",
-															"items": {
-																"type": "object",
-																"properties": {
-																	"dataSource": {
-																		"type": "string",
-																		"example": "ALL"
-																	},
-																	"eventType": {
-																		"type": "string",
-																		"example": "OUTAGE"
-																	},
-																	"description": {
-																		"type": "string",
-																		"example": "Cable cut in Tonga"
-																	},
-																	"startTime": {
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2022-09-17T10:22:57.555000+00:00"
-																	},
-																	"endTime": {
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2022-09-17T10:22:57.555000+00:00"
-																	}
-																}
-															}
-														}
-													}
-												},
-												"dateRange": {
-													"type": "object",
-													"properties": {
-														"startTime": {
-															"type": "string",
-															"format": "date-time",
-															"example": "2022-09-16T10:22:57.555000+00:00",
-															"description": "Adjusted start of date range"
-														},
-														"endTime": {
-															"type": "string",
-															"format": "date-time",
-															"example": "2022-09-17T10:22:57.555000+00:00",
-															"description": "Adjusted end of date range"
-														}
-													}
-												},
-												"aggInterval": {
-													"type": "string",
-													"example": "1h"
-												},
-												"lastUpdated": {
-													"type": "string",
-													"format": "date-time",
-													"example": "2022-09-17T10:22:57.555000+00:00"
-												}
-											}
-										},
 										"result": {
 											"type": "object",
 											"properties": {
+												"meta": {
+													"type": "object",
+													"properties": {
+														"confidenceInfo": {
+															"type": "object",
+															"properties": {
+																"level": {
+																	"type": "integer"
+																},
+																"annotations": {
+																	"type": "array",
+																	"items": {
+																		"type": "object",
+																		"properties": {
+																			"dataSource": {
+																				"type": "string",
+																				"example": "ALL"
+																			},
+																			"eventType": {
+																				"type": "string",
+																				"example": "OUTAGE"
+																			},
+																			"description": {
+																				"type": "string",
+																				"example": "Cable cut in Tonga"
+																			},
+																			"startTime": {
+																				"type": "string",
+																				"format": "date-time",
+																				"example": "2022-09-17T10:22:57.555000+00:00"
+																			},
+																			"endTime": {
+																				"type": "string",
+																				"format": "date-time",
+																				"example": "2022-09-17T10:22:57.555000+00:00"
+																			}
+																		}
+																	}
+																}
+															}
+														},
+														"dateRange": {
+															"type": "object",
+															"properties": {
+																"startTime": {
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2022-09-16T10:22:57.555000+00:00",
+																	"description": "Adjusted start of date range"
+																},
+																"endTime": {
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2022-09-17T10:22:57.555000+00:00",
+																	"description": "Adjusted end of date range"
+																}
+															}
+														},
+														"aggInterval": {
+															"type": "string",
+															"example": "1h"
+														},
+														"lastUpdated": {
+															"type": "string",
+															"format": "date-time",
+															"example": "2022-09-17T10:22:57.555000+00:00"
+														}
+													}
+												},
 												"series": {
 													"type": "object",
 													"properties": {
@@ -101498,64 +101583,64 @@
 												}
 											}
 										},
-										"meta": {
+										"result": {
 											"type": "object",
 											"properties": {
-												"confidenceInfo": {
+												"meta": {
 													"type": "object",
 													"properties": {
-														"level": {
-															"type": "integer"
-														},
-														"annotations": {
-															"type": "array",
-															"items": {
-																"type": "object",
-																"properties": {
-																	"dataSource": {
-																		"type": "string"
-																	},
-																	"eventType": {
-																		"type": "string"
-																	},
-																	"description": {
-																		"type": "string"
-																	},
-																	"startTime": {
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2022-09-17T10:22:57.555000+00:00"
-																	},
-																	"endTime": {
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2022-09-17T10:22:57.555000+00:00"
+														"confidenceInfo": {
+															"type": "object",
+															"properties": {
+																"level": {
+																	"type": "integer"
+																},
+																"annotations": {
+																	"type": "array",
+																	"items": {
+																		"type": "object",
+																		"properties": {
+																			"dataSource": {
+																				"type": "string"
+																			},
+																			"eventType": {
+																				"type": "string"
+																			},
+																			"description": {
+																				"type": "string"
+																			},
+																			"startTime": {
+																				"type": "string",
+																				"format": "date-time",
+																				"example": "2022-09-17T10:22:57.555000+00:00"
+																			},
+																			"endTime": {
+																				"type": "string",
+																				"format": "date-time",
+																				"example": "2022-09-17T10:22:57.555000+00:00"
+																			}
+																		}
 																	}
+																}
+															}
+														},
+														"dateRange": {
+															"type": "object",
+															"properties": {
+																"startTime": {
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2022-09-17T10:22:57.555000+00:00"
+																},
+																"endTime": {
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2022-09-17T10:22:57.555000+00:00"
 																}
 															}
 														}
 													}
 												},
-												"dateRange": {
-													"type": "object",
-													"properties": {
-														"startTime": {
-															"type": "string",
-															"format": "date-time",
-															"example": "2022-09-17T10:22:57.555000+00:00"
-														},
-														"endTime": {
-															"type": "string",
-															"format": "date-time",
-															"example": "2022-09-17T10:22:57.555000+00:00"
-														}
-													}
-												}
-											}
-										},
-										"result": {
-											"type": "object",
-											"properties": {
 												"top_0": {
 													"type": "array",
 													"items": {
@@ -101634,64 +101719,64 @@
 												}
 											}
 										},
-										"meta": {
+										"result": {
 											"type": "object",
 											"properties": {
-												"confidenceInfo": {
+												"meta": {
 													"type": "object",
 													"properties": {
-														"level": {
-															"type": "integer"
-														},
-														"annotations": {
-															"type": "array",
-															"items": {
-																"type": "object",
-																"properties": {
-																	"dataSource": {
-																		"type": "string"
-																	},
-																	"eventType": {
-																		"type": "string"
-																	},
-																	"description": {
-																		"type": "string"
-																	},
-																	"startTime": {
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2022-09-17T10:22:57.555000+00:00"
-																	},
-																	"endTime": {
-																		"type": "string",
-																		"format": "date-time",
-																		"example": "2022-09-17T10:22:57.555000+00:00"
+														"confidenceInfo": {
+															"type": "object",
+															"properties": {
+																"level": {
+																	"type": "integer"
+																},
+																"annotations": {
+																	"type": "array",
+																	"items": {
+																		"type": "object",
+																		"properties": {
+																			"dataSource": {
+																				"type": "string"
+																			},
+																			"eventType": {
+																				"type": "string"
+																			},
+																			"description": {
+																				"type": "string"
+																			},
+																			"startTime": {
+																				"type": "string",
+																				"format": "date-time",
+																				"example": "2022-09-17T10:22:57.555000+00:00"
+																			},
+																			"endTime": {
+																				"type": "string",
+																				"format": "date-time",
+																				"example": "2022-09-17T10:22:57.555000+00:00"
+																			}
+																		}
 																	}
+																}
+															}
+														},
+														"dateRange": {
+															"type": "object",
+															"properties": {
+																"startTime": {
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2022-09-17T10:22:57.555000+00:00"
+																},
+																"endTime": {
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2022-09-17T10:22:57.555000+00:00"
 																}
 															}
 														}
 													}
 												},
-												"dateRange": {
-													"type": "object",
-													"properties": {
-														"startTime": {
-															"type": "string",
-															"format": "date-time",
-															"example": "2022-09-17T10:22:57.555000+00:00"
-														},
-														"endTime": {
-															"type": "string",
-															"format": "date-time",
-															"example": "2022-09-17T10:22:57.555000+00:00"
-														}
-													}
-												}
-											}
-										},
-										"result": {
-											"type": "object",
-											"properties": {
 												"top_0": {
 													"type": "array",
 													"items": {
@@ -101770,31 +101855,31 @@
 												}
 											}
 										},
-										"meta": {
-											"type": "object",
-											"properties": {
-												"dateRange": {
-													"type": "object",
-													"properties": {
-														"startTime": {
-															"type": "string",
-															"format": "date-time",
-															"example": "2022-09-16T10:22:57.555000+00:00",
-															"description": "Adjusted start of date range"
-														},
-														"endTime": {
-															"type": "string",
-															"format": "date-time",
-															"example": "2022-09-17T10:22:57.555000+00:00",
-															"description": "Adjusted end of date range"
-														}
-													}
-												}
-											}
-										},
 										"result": {
 											"type": "object",
 											"properties": {
+												"meta": {
+													"type": "object",
+													"properties": {
+														"dateRange": {
+															"type": "object",
+															"properties": {
+																"startTime": {
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2022-09-16T10:22:57.555000+00:00",
+																	"description": "Adjusted start of date range"
+																},
+																"endTime": {
+																	"type": "string",
+																	"format": "date-time",
+																	"example": "2022-09-17T10:22:57.555000+00:00",
+																	"description": "Adjusted end of date range"
+																}
+															}
+														}
+													}
+												},
 												"serie_0": {
 													"type": "object",
 													"properties": {
@@ -101871,23 +101956,23 @@
 												}
 											}
 										},
-										"meta": {
-											"type": "object",
-											"properties": {
-												"top_0": {
-													"type": "object",
-													"properties": {
-														"date": {
-															"type": "string",
-															"example": "2022-09-19"
-														}
-													}
-												}
-											}
-										},
 										"result": {
 											"type": "object",
 											"properties": {
+												"meta": {
+													"type": "object",
+													"properties": {
+														"top_0": {
+															"type": "object",
+															"properties": {
+																"date": {
+																	"type": "string",
+																	"example": "2022-09-19"
+																}
+															}
+														}
+													}
+												},
 												"top_0": {
 													"type": "array",
 													"items": {
@@ -102134,7 +102219,7 @@
 				}
 			}
 		},
-		"/radar/reports/datasets": {
+		"/radar/datasets": {
 			"get": {
 				"summary": "Get Datasets",
 				"description": "Get a list of datasets.",
@@ -102229,7 +102314,7 @@
 				}
 			}
 		},
-		"/radar/reports/datasets/download": {
+		"/radar/datasets/download": {
 			"post": {
 				"summary": "Get Dataset download url",
 				"description": "Get a list of datasets.",
