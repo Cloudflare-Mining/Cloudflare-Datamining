@@ -55216,7 +55216,7 @@
 		"/accounts/{account_id}/rulesets": {
 			"get": {
 				"summary": "List account rulesets",
-				"description": "List all rulesets for an account",
+				"description": "Fetches all rulesets at the account level.",
 				"parameters": [
 					{
 						"name": "account_id",
@@ -55241,31 +55241,31 @@
 											"type": "object",
 											"properties": {
 												"result": {
-													"description": "The rulesets",
+													"description": "A list of rulesets. The returned information will not include the rules in each ruleset.",
 													"type": "array",
 													"items": {
-														"description": "The ruleset",
+														"description": "A ruleset object.",
 														"type": "object",
 														"properties": {
 															"id": {
-																"description": "The ID of the ruleset",
+																"description": "The unique ID of the ruleset.",
 																"type": "string",
 																"pattern": "^[0-9a-f]{32}$",
 																"example": "2f2feab2026849078ba485f918791bdc"
 															},
 															"name": {
-																"description": "The human readable name for the ruleset",
+																"description": "The human-readable name of the ruleset.",
 																"type": "string",
 																"example": "My ruleset"
 															},
 															"description": {
-																"description": "A description of the ruleset",
+																"description": "An informative description of the ruleset.",
 																"type": "string",
 																"default": "",
 																"example": "My ruleset to execute managed rulesets"
 															},
 															"kind": {
-																"description": "The kind of the ruleset",
+																"description": "The kind of the ruleset.",
 																"type": "string",
 																"enum": [
 																	"custom",
@@ -55275,19 +55275,19 @@
 																"example": "root"
 															},
 															"phase": {
-																"description": "The phase of the ruleset",
+																"description": "The phase of the ruleset.",
 																"type": "string",
 																"pattern": "^[a-z_]+$",
 																"example": "http_request_firewall_managed"
 															},
 															"version": {
-																"description": "The version of the ruleset",
+																"description": "The version of the ruleset.",
 																"type": "string",
 																"pattern": "^[0-9]+$",
 																"example": "1"
 															},
 															"last_updated": {
-																"description": "When the ruleset was last modified",
+																"description": "The timestamp of when the ruleset was last modified.",
 																"type": "string",
 																"example": "2000-01-01T00:00:00+00:00"
 															}
@@ -55317,7 +55317,7 @@
 			},
 			"post": {
 				"summary": "Create account ruleset",
-				"description": "Create an account ruleset",
+				"description": "Creates a ruleset at the account level.",
 				"parameters": [
 					{
 						"name": "account_id",
@@ -55342,28 +55342,28 @@
 											"type": "object",
 											"properties": {
 												"result": {
-													"description": "The ruleset",
+													"description": "A ruleset object.",
 													"type": "object",
 													"properties": {
 														"id": {
-															"description": "The ID of the ruleset",
+															"description": "The unique ID of the ruleset.",
 															"type": "string",
 															"pattern": "^[0-9a-f]{32}$",
 															"example": "2f2feab2026849078ba485f918791bdc"
 														},
 														"name": {
-															"description": "The human readable name for the ruleset",
+															"description": "The human-readable name of the ruleset.",
 															"type": "string",
 															"example": "My ruleset"
 														},
 														"description": {
-															"description": "A description of the ruleset",
+															"description": "An informative description of the ruleset.",
 															"type": "string",
 															"default": "",
 															"example": "My ruleset to execute managed rulesets"
 														},
 														"kind": {
-															"description": "The kind of the ruleset",
+															"description": "The kind of the ruleset.",
 															"type": "string",
 															"enum": [
 																"custom",
@@ -55373,76 +55373,76 @@
 															"example": "root"
 														},
 														"phase": {
-															"description": "The phase of the ruleset",
+															"description": "The phase of the ruleset.",
 															"type": "string",
 															"pattern": "^[a-z_]+$",
 															"example": "http_request_firewall_managed"
 														},
 														"version": {
-															"description": "The version of the ruleset",
+															"description": "The version of the ruleset.",
 															"type": "string",
 															"pattern": "^[0-9]+$",
 															"example": "1"
 														},
 														"rules": {
-															"description": "The rules in the ruleset",
+															"description": "The list of rules in the ruleset.",
 															"type": "array",
 															"items": {
-																"description": "The rule",
+																"description": "A rule object.",
 																"type": "object",
 																"properties": {
 																	"id": {
-																		"description": "The ID of the rule",
+																		"description": "The unique ID of the rule.",
 																		"type": "string",
 																		"example": "3a03d665bac047339bb530ecb439a90d"
 																	},
 																	"description": {
-																		"description": "A description of the rule",
+																		"description": "An informative description of the rule.",
 																		"type": "string",
 																		"default": "",
 																		"example": "Execute the OWASP ruleset when the IP address is not 1.1.1.1"
 																	},
 																	"version": {
-																		"description": "The version of the rule",
+																		"description": "The version of the rule.",
 																		"type": "string",
 																		"pattern": "^[0-9]+$",
 																		"example": "1"
 																	},
 																	"expression": {
-																		"description": "The expression of the rule to match traffic on",
+																		"description": "The expression defining which traffic will match the rule.",
 																		"type": "string",
 																		"example": "ip.src ne 1.1.1.1"
 																	},
 																	"action": {
-																		"description": "The action to take when the rule matches",
+																		"description": "The action to perform when the rule matches.",
 																		"type": "string",
 																		"pattern": "^[a-z_]+$",
 																		"example": "execute"
 																	},
 																	"action_parameters": {
-																		"description": "The parameters to configure the given action",
+																		"description": "The parameters configuring the rule action.",
 																		"type": "object",
 																		"example": {
 																			"id": "4814384a9e5d4991b9815dcfc25d2f1f"
 																		}
 																	},
 																	"ref": {
-																		"description": "A reference for the rule, defaults to the ID",
+																		"description": "The reference of the rule (the rule ID by default).",
 																		"type": "string",
 																		"example": "my_ref"
 																	},
 																	"enabled": {
-																		"description": "Whether the rule should be run",
+																		"description": "Whether the rule should be executed.",
 																		"type": "boolean",
 																		"default": "true",
 																		"example": true
 																	},
 																	"logging": {
-																		"description": "The parameters to configure how the rule generates logs",
+																		"description": "An object configuring the rule's logging behavior.",
 																		"type": "object",
 																		"properties": {
 																			"enabled": {
-																				"description": "Whether a log should be generated when the rule matches",
+																				"description": "Whether to generate a log when the rule matches.",
 																				"type": "boolean",
 																				"example": true
 																			}
@@ -55452,7 +55452,7 @@
 																		}
 																	},
 																	"last_updated": {
-																		"description": "When the rule was last modified",
+																		"description": "The timestamp of when the rule was last modified.",
 																		"type": "string",
 																		"example": "2000-01-01T00:00:00+00:00"
 																	}
@@ -55460,7 +55460,7 @@
 															}
 														},
 														"last_updated": {
-															"description": "When the ruleset was last modified",
+															"description": "The timestamp of when the ruleset was last modified.",
 															"type": "string",
 															"example": "2000-01-01T00:00:00+00:00"
 														}
@@ -55491,7 +55491,7 @@
 					"content": {
 						"application/json": {
 							"schema": {
-								"description": "A ruleset",
+								"description": "A ruleset object.",
 								"type": "object",
 								"required": [
 									"name",
@@ -55501,18 +55501,18 @@
 								],
 								"properties": {
 									"name": {
-										"description": "The human readable name for the ruleset",
+										"description": "The human-readable name of the ruleset.",
 										"type": "string",
 										"example": "My ruleset"
 									},
 									"description": {
-										"description": "A description of the ruleset",
+										"description": "An informative description of the ruleset.",
 										"type": "string",
 										"default": "",
 										"example": "My ruleset to execute managed rulesets"
 									},
 									"kind": {
-										"description": "The kind of the ruleset",
+										"description": "The kind of the ruleset.",
 										"type": "string",
 										"enum": [
 											"custom",
@@ -55522,13 +55522,13 @@
 										"example": "root"
 									},
 									"phase": {
-										"description": "The phase of the ruleset",
+										"description": "The phase of the ruleset.",
 										"type": "string",
 										"pattern": "^[a-z_]+$",
 										"example": "http_request_firewall_managed"
 									},
 									"rules": {
-										"description": "The rules in the ruleset",
+										"description": "The list of rules in the ruleset.",
 										"type": "array",
 										"items": {
 											"anyOf": [
@@ -55536,7 +55536,7 @@
 													"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets~1%7Bruleset_id%7D~1rules/post/requestBody/content/application~1json/schema"
 												},
 												{
-													"description": "An ID of a rule"
+													"description": "The unique ID of a rule."
 												}
 											]
 										}
@@ -55550,15 +55550,15 @@
 		},
 		"/accounts/{account_id}/rulesets/{ruleset_id}": {
 			"get": {
-				"summary": "Get account ruleset",
-				"description": "Get the latest version of an account ruleset",
+				"summary": "Get an account ruleset",
+				"description": "Fetches the latest version of an account ruleset.",
 				"parameters": [
 					{
 						"name": "ruleset_id",
 						"in": "path",
 						"required": true,
 						"schema": {
-							"description": "The ID of the ruleset",
+							"description": "The unique ID of the ruleset.",
 							"type": "string",
 							"pattern": "^[0-9a-f]{32}$",
 							"example": "2f2feab2026849078ba485f918791bdc"
@@ -55575,7 +55575,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Get account ruleset response",
+						"description": "Get an account ruleset response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -55599,8 +55599,8 @@
 				}
 			},
 			"put": {
-				"summary": "Update account ruleset",
-				"description": "Update an account ruleset, creating a new version",
+				"summary": "Update an account ruleset",
+				"description": "Updates an account ruleset, creating a new version.",
 				"parameters": [
 					{
 						"name": "ruleset_id",
@@ -55621,7 +55621,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Update account ruleset response",
+						"description": "Update an account ruleset response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -55648,20 +55648,20 @@
 					"content": {
 						"application/json": {
 							"schema": {
-								"description": "A ruleset",
+								"description": "A ruleset object.",
 								"type": "object",
 								"required": [
 									"rules"
 								],
 								"properties": {
 									"description": {
-										"description": "A description of the ruleset",
+										"description": "An informative description of the ruleset.",
 										"type": "string",
 										"default": "",
 										"example": "My ruleset to execute managed rulesets"
 									},
 									"rules": {
-										"description": "The rules in the ruleset",
+										"description": "The list of rules in the ruleset.",
 										"type": "array",
 										"items": {
 											"anyOf": [
@@ -55669,7 +55669,7 @@
 													"$ref": "#/paths/~1accounts~1%7Baccount_id%7D~1rulesets~1%7Bruleset_id%7D~1rules/post/requestBody/content/application~1json/schema"
 												},
 												{
-													"description": "An ID of a rule"
+													"description": "The unique ID of a rule."
 												}
 											]
 										}
@@ -55681,8 +55681,8 @@
 				}
 			},
 			"delete": {
-				"summary": "Delete account ruleset",
-				"description": "Delete all versions of an account ruleset",
+				"summary": "Delete an account ruleset",
+				"description": "Deletes all versions of an existing account ruleset.",
 				"parameters": [
 					{
 						"name": "ruleset_id",
@@ -55703,7 +55703,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Delete account ruleset response",
+						"description": "Delete an account ruleset response",
 						"content": {
 							"application/json": {}
 						}
@@ -55732,7 +55732,7 @@
 		"/accounts/{account_id}/rulesets/{ruleset_id}/versions": {
 			"get": {
 				"summary": "List account ruleset versions",
-				"description": "List the versions of an account ruleset",
+				"description": "Fetches the versions of an account ruleset.",
 				"parameters": [
 					{
 						"name": "ruleset_id",
@@ -55779,15 +55779,15 @@
 		},
 		"/accounts/{account_id}/rulesets/{ruleset_id}/versions/{ruleset_version}": {
 			"get": {
-				"summary": "Get account ruleset version",
-				"description": "Get a version of an account ruleset",
+				"summary": "Get an account ruleset version",
+				"description": "Fetches a specific version of an account ruleset.",
 				"parameters": [
 					{
 						"name": "ruleset_version",
 						"in": "path",
 						"required": true,
 						"schema": {
-							"description": "The version of the ruleset",
+							"description": "The version of the ruleset.",
 							"type": "string",
 							"pattern": "^[0-9]+$",
 							"example": "1"
@@ -55812,7 +55812,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Get account ruleset version response",
+						"description": "Get an account ruleset version response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -55836,8 +55836,8 @@
 				}
 			},
 			"delete": {
-				"summary": "Delete account ruleset version",
-				"description": "Delete a version of an account ruleset",
+				"summary": "Delete an account ruleset version",
+				"description": "Deletes an existing version of an account ruleset.",
 				"parameters": [
 					{
 						"name": "ruleset_version",
@@ -55866,7 +55866,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Delete account ruleset version response",
+						"description": "Delete an account ruleset version response",
 						"content": {
 							"application/json": {}
 						}
@@ -55895,7 +55895,7 @@
 		"/accounts/{account_id}/rulesets/{ruleset_id}/rules": {
 			"post": {
 				"summary": "Create account ruleset rule",
-				"description": "Add a new rule to an account ruleset",
+				"description": "Adds a new rule to an account ruleset. The rule will be added to the end of the existing list of rules in the ruleset.",
 				"parameters": [
 					{
 						"name": "ruleset_id",
@@ -55943,7 +55943,7 @@
 					"content": {
 						"application/json": {
 							"schema": {
-								"description": "A rule",
+								"description": "A rule object.",
 								"type": "object",
 								"required": [
 									"expression",
@@ -55951,46 +55951,46 @@
 								],
 								"properties": {
 									"description": {
-										"description": "A description of the rule",
+										"description": "An informative description of the rule.",
 										"type": "string",
 										"default": "",
 										"example": "Execute the OWASP ruleset when the IP address is not 1.1.1.1"
 									},
 									"expression": {
-										"description": "The expression of the rule to match traffic on",
+										"description": "The expression defining which traffic will match the rule.",
 										"type": "string",
 										"example": "ip.src ne 1.1.1.1"
 									},
 									"action": {
-										"description": "The action to take when the rule matches",
+										"description": "The action to perform when the rule matches.",
 										"type": "string",
 										"pattern": "^[a-z_]+$",
 										"example": "execute"
 									},
 									"action_parameters": {
-										"description": "The parameters to configure the given action",
+										"description": "The parameters configuring the rule action.",
 										"type": "object",
 										"example": {
 											"id": "4814384a9e5d4991b9815dcfc25d2f1f"
 										}
 									},
 									"ref": {
-										"description": "A reference for the rule, defaults to the ID",
+										"description": "The reference of the rule (the rule ID by default).",
 										"type": "string",
 										"example": "my_ref"
 									},
 									"enabled": {
-										"description": "Whether the rule should be run",
+										"description": "Whether the rule should be executed.",
 										"type": "boolean",
 										"default": "true",
 										"example": true
 									},
 									"logging": {
-										"description": "The parameters to configure how the rule generates logs",
+										"description": "An object configuring the rule's logging behavior.",
 										"type": "object",
 										"properties": {
 											"enabled": {
-												"description": "Whether a log should be generated when the rule matches",
+												"description": "Whether to generate a log when the rule matches.",
 												"type": "boolean",
 												"example": true
 											}
@@ -56008,15 +56008,15 @@
 		},
 		"/accounts/{account_id}/rulesets/{ruleset_id}/rules/{rule_id}": {
 			"patch": {
-				"summary": "Update account ruleset rule",
-				"description": "Update a rule in an account ruleset",
+				"summary": "Update an account ruleset rule",
+				"description": "Updates an existing rule in an account ruleset.",
 				"parameters": [
 					{
 						"name": "rule_id",
 						"in": "path",
 						"required": true,
 						"schema": {
-							"description": "The ID of the rule",
+							"description": "The unique ID of the rule.",
 							"type": "string",
 							"example": "3a03d665bac047339bb530ecb439a90d"
 						}
@@ -56040,7 +56040,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Update account ruleset rule response",
+						"description": "Update an account ruleset rule response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -56074,8 +56074,8 @@
 				}
 			},
 			"delete": {
-				"summary": "Delete account ruleset rule",
-				"description": "Delete a rule from an account ruleset",
+				"summary": "Delete an account ruleset rule",
+				"description": "Deletes an existing rule from an account ruleset.",
 				"parameters": [
 					{
 						"name": "rule_id",
@@ -56104,7 +56104,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Delete account ruleset rule response",
+						"description": "Delete an account ruleset rule response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -56136,15 +56136,15 @@
 		},
 		"/accounts/{account_id}/rulesets/phases/{ruleset_phase}/entrypoint": {
 			"get": {
-				"summary": "Get account entrypoint ruleset",
-				"description": "Get the latest version of an account entrypoint ruleset",
+				"summary": "Get an account entry point ruleset",
+				"description": "Fetches the latest version of an account entry point ruleset for a given phase.",
 				"parameters": [
 					{
 						"name": "ruleset_phase",
 						"in": "path",
 						"required": true,
 						"schema": {
-							"description": "The phase of the ruleset",
+							"description": "The phase of the ruleset.",
 							"type": "string",
 							"pattern": "^[a-z_]+$",
 							"example": "http_request_firewall_managed"
@@ -56161,7 +56161,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Get account entrypoint ruleset response",
+						"description": "Get an account entry point ruleset response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -56185,8 +56185,8 @@
 				}
 			},
 			"put": {
-				"summary": "Update account entrypoint ruleset",
-				"description": "Update an account entrypoint ruleset, creating a new version",
+				"summary": "Update an account entry point ruleset",
+				"description": "Updates an account entry point ruleset, creating a new version.",
 				"parameters": [
 					{
 						"name": "ruleset_phase",
@@ -56207,7 +56207,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Update account entrypoint ruleset response",
+						"description": "Update an account entry point ruleset response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -56244,7 +56244,7 @@
 		"/zones/{zone_id}/rulesets": {
 			"get": {
 				"summary": "List zone rulesets",
-				"description": "List all rulesets for a zone",
+				"description": "Fetches all rulesets at the zone level.",
 				"parameters": [
 					{
 						"name": "zone_id",
@@ -56282,7 +56282,7 @@
 			},
 			"post": {
 				"summary": "Create zone ruleset",
-				"description": "Create a zone ruleset",
+				"description": "Creates a ruleset at the zone level.",
 				"parameters": [
 					{
 						"name": "zone_id",
@@ -56331,8 +56331,8 @@
 		},
 		"/zones/{zone_id}/rulesets/{ruleset_id}": {
 			"get": {
-				"summary": "Get zone ruleset",
-				"description": "Get the latest version of a zone ruleset",
+				"summary": "Get a zone ruleset",
+				"description": "Fetches the latest version of a zone ruleset.",
 				"parameters": [
 					{
 						"name": "ruleset_id",
@@ -56353,7 +56353,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Get zone ruleset response",
+						"description": "Get a zone ruleset response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -56377,8 +56377,8 @@
 				}
 			},
 			"put": {
-				"summary": "Update zone ruleset",
-				"description": "Update a zone ruleset, creating a new version",
+				"summary": "Update a zone ruleset",
+				"description": "Updates a zone ruleset, creating a new version.",
 				"parameters": [
 					{
 						"name": "ruleset_id",
@@ -56399,7 +56399,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Update zone ruleset response",
+						"description": "Update a zone ruleset response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -56433,8 +56433,8 @@
 				}
 			},
 			"delete": {
-				"summary": "Delete zone ruleset",
-				"description": "Delete all versions of a zone ruleset",
+				"summary": "Delete a zone ruleset",
+				"description": "Deletes all versions of an existing zone ruleset.",
 				"parameters": [
 					{
 						"name": "ruleset_id",
@@ -56455,7 +56455,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Delete zone ruleset response",
+						"description": "Delete a zone ruleset response",
 						"content": {
 							"application/json": {}
 						}
@@ -56484,7 +56484,7 @@
 		"/zones/{zone_id}/rulesets/{ruleset_id}/versions": {
 			"get": {
 				"summary": "List zone ruleset versions",
-				"description": "List the versions of a zone ruleset",
+				"description": "Fetches the versions of a zone ruleset.",
 				"parameters": [
 					{
 						"name": "ruleset_id",
@@ -56531,8 +56531,8 @@
 		},
 		"/zones/{zone_id}/rulesets/{ruleset_id}/versions/{ruleset_version}": {
 			"get": {
-				"summary": "Get zone ruleset version",
-				"description": "Get a version of a zone ruleset",
+				"summary": "Get a zone ruleset version",
+				"description": "Fetches a specific version of a zone ruleset.",
 				"parameters": [
 					{
 						"name": "ruleset_version",
@@ -56561,7 +56561,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Get zone ruleset version response",
+						"description": "Get a zone ruleset version response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -56585,8 +56585,8 @@
 				}
 			},
 			"delete": {
-				"summary": "Delete zone ruleset version",
-				"description": "Delete a version of a zone ruleset",
+				"summary": "Delete a zone ruleset version",
+				"description": "Deletes an existing version of a zone ruleset.",
 				"parameters": [
 					{
 						"name": "ruleset_version",
@@ -56615,7 +56615,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Delete zone ruleset version response",
+						"description": "Delete a zone ruleset version response",
 						"content": {
 							"application/json": {}
 						}
@@ -56644,7 +56644,7 @@
 		"/zones/{zone_id}/rulesets/{ruleset_id}/rules": {
 			"post": {
 				"summary": "Create zone ruleset rule",
-				"description": "Add a new rule to a zone ruleset",
+				"description": "Adds a new rule to a zone ruleset. The rule will be added to the end of the existing list of rules in the ruleset.",
 				"parameters": [
 					{
 						"name": "ruleset_id",
@@ -56701,8 +56701,8 @@
 		},
 		"/zones/{zone_id}/rulesets/{ruleset_id}/rules/{rule_id}": {
 			"patch": {
-				"summary": "Update zone ruleset rule",
-				"description": "Update a rule in a zone ruleset",
+				"summary": "Update a zone ruleset rule",
+				"description": "Updates an existing rule in a zone ruleset.",
 				"parameters": [
 					{
 						"name": "rule_id",
@@ -56731,7 +56731,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Update zone ruleset rule response",
+						"description": "Update a zone ruleset rule response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -56765,8 +56765,8 @@
 				}
 			},
 			"delete": {
-				"summary": "Delete zone ruleset rule",
-				"description": "Delete a rule from a zone ruleset",
+				"summary": "Delete a zone ruleset rule",
+				"description": "Deletes an existing rule from a zone ruleset.",
 				"parameters": [
 					{
 						"name": "rule_id",
@@ -56795,7 +56795,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Delete zone ruleset rule response",
+						"description": "Delete a zone ruleset rule response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -56827,8 +56827,8 @@
 		},
 		"/zones/{zone_id}/rulesets/phases/{ruleset_phase}/entrypoint": {
 			"get": {
-				"summary": "Get zone entrypoint ruleset",
-				"description": "Get the latest version of a zone entrypoint ruleset",
+				"summary": "Get a zone entry point ruleset",
+				"description": "Fetches the latest version of a zone entry point ruleset for a given phase.",
 				"parameters": [
 					{
 						"name": "ruleset_phase",
@@ -56849,7 +56849,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Get zone entrypoint ruleset response",
+						"description": "Get a zone entry point ruleset response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -56873,8 +56873,8 @@
 				}
 			},
 			"put": {
-				"summary": "Update zone entrypoint ruleset",
-				"description": "Update a zone entrypoint ruleset, creating a new version",
+				"summary": "Update zone entry point ruleset",
+				"description": "Updates a zone entry point ruleset, creating a new version.",
 				"parameters": [
 					{
 						"name": "ruleset_phase",
@@ -56895,7 +56895,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Update zone entrypoint ruleset response",
+						"description": "Update zone entry point ruleset response",
 						"content": {
 							"application/json": {
 								"schema": {
