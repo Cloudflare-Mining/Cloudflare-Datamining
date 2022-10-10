@@ -5,6 +5,7 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
+<p><strong>Must be based in the UK or Portugal.</strong></p>
 <p><strong>About the team&nbsp;</strong></p>
 <p><span style="font-weight: 400;">UX Content Designers play an important role in the Product Content Experience (PCX) team, partnering with engineers, product managers, designers, customer-facing teams, and users to develop and improve the content design at Cloudflare. We are the customer advocates, ensuring Cloudflare’s business objectives are met through outstanding customer experiences. We r</span><span style="font-weight: 400;">esearch the audience to design effective content for Cloudflare users, making simple and effective decisions to ensure both technical and non-technical audiences are successful with the product. Our team manages the content and ensure it is useful and up to date. As a content designer, our focus is on in-product customer experience and its connection to technical and support content.</span></p>
 <p><strong>About the job</strong></p>
