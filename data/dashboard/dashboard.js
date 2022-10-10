@@ -6141,14 +6141,14 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 			};
 			try {
 				e.g.build = yc({}, {
-					branch: "sui/BILL-16247-hotfix",
+					branch: "release-1665410655",
 					isReleaseCandidate: "true",
-					commit: "70d70e65bea9b5a61a5988e6e64b6ba2e05cf0fd",
+					commit: "2ad3860043d04b154a5eef74beb88a3e54e43696",
 					env: "production",
-					builtAt: 1665171071043,
-					dashVersion: "5cd051dd4826a8aa2d320db0c246eaa743e80387",
+					builtAt: 1665416762478,
+					dashVersion: "a504db5d0d7f561c4547fbab736c7eff2f7271a4",
 					versions: {
-						"@cloudflare/app-dash": "25.94.5",
+						"@cloudflare/app-dash": "25.94.10",
 						node: "14.18.3",
 						yarn: "3.2.2",
 						webpack: "5.74.0"
@@ -77123,4 +77123,4 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 	}
 ]);
 
-//# sourceMappingURL=bb0f35fbbd1db9565448.js.map
+//# sourceMappingURL=aaf6e9f7c292722acd17.js.map
