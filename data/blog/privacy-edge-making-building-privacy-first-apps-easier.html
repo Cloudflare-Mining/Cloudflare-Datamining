@@ -16,7 +16,7 @@
 	<h3 id="privacy-gateway-ip-address-privacy-for-your-users">Privacy Gateway: IP address privacy for your users</h3>
 	<p>There are situations in which applications only need to receive certain HTTP requests for app functionality, but linking that data with who or where it came from creates a privacy concern.</p>
 	<p>We recently partnered with <a href="https://www.theverge.com/2022/9/14/23351957/flo-period-tracker-privacy-anonymous-mode" target="_blank">Flo Health</a>, a period tracking app, to solve exactly that privacy concern: for users that have turned on “Anonymous mode,” Flo encrypts and forwards traffic through Privacy Gateway so that the network-level request information (most importantly, users’ IP addresses) are replaced by the Cloudflare network.</p>
-	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/09/image2-60.png" class="kg-image">
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/Screen-Shot-2022-10-10-at-3.23.56-PM.png" class="kg-image">
 		<figcaption>How data is encapsulated, forwarded, and decapsulated in the Privacy Gateway system.</figcaption>
 	</figure>
 	<p>So how does it work? <strong>Privacy Gateway</strong> is based on Oblivious HTTP, an <a href="https://datatracker.ietf.org/doc/draft-ietf-ohai-ohttp/" target="_blank">emerging IETF standard</a>, and at a high level describes the following data flow:</p>
