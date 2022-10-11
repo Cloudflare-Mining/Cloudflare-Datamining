@@ -101,6 +101,13 @@
 	"google-certificate-authority": {
 		"enabled": false
 	},
+	"gurjinder-test": {
+		"enabled": false,
+		"branches": [
+			"baseline",
+			"experiment"
+		]
+	},
 	"lock-user-invites-to-sso-domains": {
 		"enabled": true
 	},
