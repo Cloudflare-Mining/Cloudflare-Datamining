@@ -46,6 +46,7 @@ async function run(){
 		`${prefix} - Gates Data was updated!`,
 		'CFData - Gates Update',
 		'Pushed Gates Update: ' + prefix,
+		'DISCORD_WEBHOOK_GATES',
 	);
 }
 
