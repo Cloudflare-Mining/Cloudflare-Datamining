@@ -115,4 +115,5 @@ await tryAndPush(
 	`${prefix} - Product: Workers Data was updated!`,
 	'CFData - Product: Workers Data Update',
 	'Pushed Product: Workers Data: ' + prefix,
+	'DISCORD_WEBHOOK_PRODUCT_WORKERS',
 );

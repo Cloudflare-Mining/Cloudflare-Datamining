@@ -30,4 +30,4 @@ jobs:
           npm ci
           npm run mine:blog
         env:
-          DISCORD_URL: ${{ secrets.DISCORD_BLOG_URL }}
+          DISCORD_WEBHOOK_BLOG: ${{ secrets.DISCORD_WEBHOOK_BLOG }}

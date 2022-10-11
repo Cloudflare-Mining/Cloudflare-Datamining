@@ -48,4 +48,5 @@ await tryAndPush(
 	`${prefix} - Product: Rules Data was updated!`,
 	'CFData - Product: Rules Data Update',
 	'Pushed Product: Rules Data: ' + prefix,
+	'DISCORD_WEBHOOK_PRODUCT_RULES',
 );

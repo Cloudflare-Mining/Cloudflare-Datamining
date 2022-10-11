@@ -416,6 +416,7 @@ async function run(){
 		`${prefix} - Zero Trust Dashboard Data was updated!`,
 		'CFData - ZT Dashboard Update',
 		'Pushed ZT Dashboard: ' + prefix,
+		'DISCORD_WEBHOOK_ZEROTRUST',
 	);
 }
 

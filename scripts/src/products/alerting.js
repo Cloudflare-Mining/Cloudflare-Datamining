@@ -60,4 +60,5 @@ await tryAndPush(
 	`${prefix} - Product: Alerting Data was updated!`,
 	'CFData - Product: Alerting Data Update',
 	'Pushed Product: Alerting Data: ' + prefix,
+	'DISCORD_WEBHOOK_PRODUCT_ALERTING',
 );

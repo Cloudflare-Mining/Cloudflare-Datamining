@@ -849,6 +849,7 @@ async function run(){
 		`${prefix} - Dashboard Data was updated!`,
 		'CFData - Dashboard Update',
 		'Pushed Dashboard: ' + prefix,
+		'DISCORD_WEBHOOK_DASHBOARD',
 	);
 }
 

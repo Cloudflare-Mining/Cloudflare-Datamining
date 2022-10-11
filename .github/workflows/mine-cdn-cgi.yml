@@ -30,7 +30,8 @@ jobs:
           npm ci
           npm run mine:cdn-cgi && npm run mine:cdn-cgi-dev
         env:
-          DISCORD_URL: ${{ secrets.DISCORD_CGI_URL }}
-          DISCORD_CGI_DEV_URL: ${{ secrets.DISCORD_CGI_DEV_URL }}
+          DISCORD_URL: ${{ secrets.DISCORD_URL }}
+          DISCORD_WEBHOOK_CDNCGI: ${{ secrets.DISCORD_WEBHOOK_CDNCGI }}
+          DISCORD_WEBHOOK_CDNCGI_DEV: ${{ secrets.DISCORD_WEBHOOK_CDNCGI_DEV }}
           FETCH_FROM_COLO_URL: ${{ secrets.FETCH_FROM_COLO_URL }}
           FETCH_FROM_COLO_MULTI_URL: ${{ secrets.FETCH_FROM_COLO_MULTI_URL }}

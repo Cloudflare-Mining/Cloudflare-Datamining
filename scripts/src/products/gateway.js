@@ -54,4 +54,5 @@ await tryAndPush(
 	`${prefix} - Product: Gateway Data was updated!`,
 	'CFData - Product: Gateway Data Update',
 	'Pushed Product: Gateway Data: ' + prefix,
+	'DISCORD_WEBHOOK_PRODUCT_GATEWAY',
 );

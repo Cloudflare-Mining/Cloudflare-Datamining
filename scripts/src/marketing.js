@@ -254,7 +254,7 @@ async function run(){
 		`${prefix} - Marketing Site Data was updated!`,
 		'CFData -Marketing Site Data Update',
 		'Pushed Marketing Site Data: ' + prefix,
-		'marketing',
+		'DISCORD_WEBHOOK_MARKETING',
 	);
 }
 run();

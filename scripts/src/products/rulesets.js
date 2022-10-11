@@ -40,6 +40,7 @@ async function run(){
 		`${prefix} - Product: Rulesets Data was updated!`,
 		'CFData - Product: Rulesets Data Update',
 		'Pushed Product: Rulesets Data: ' + prefix,
+		'DISCORD_WEBHOOK_PRODUCT_RULESETS',
 	);
 }
 

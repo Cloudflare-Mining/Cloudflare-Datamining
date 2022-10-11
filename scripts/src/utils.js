@@ -22,12 +22,13 @@ https.globalAgent = getHttpsAgent();
 const git = simpleGit({baseDir: path.resolve('..')});
 
 export async function sendToDiscord(name, msg, type){
-	// Send message
 	let url = process.env.DISCORD_URL;
-	if(type === 'marketing'){
-		url = process.env.DISCORD_MARKETING_URL;
-	}else if(type === 'cdn_cgi_dev'){
-		url = process.env.DISCORD_CGI_DEV_URL;
+	if(type?.startsWith?.('DISCORD_WEBHOOK') && process.env[type]){
+		url = process.env[type];
+	}
+	if(!url){
+		console.warn('Can not send Discord webhook as no URL is set', name, msg);
+		return;
 	}
 	return fetch(`${url}?wait=true`, {
 		method: 'POST',

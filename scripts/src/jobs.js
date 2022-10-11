@@ -89,4 +89,5 @@ await tryAndPush(
 	`${prefix} - Jobs Data was updated!`,
 	'CFData - Jobs Data Update',
 	'Pushed Jobs Data: ' + prefix,
+	'DISCORD_WEBHOOK_JOBS',
 );

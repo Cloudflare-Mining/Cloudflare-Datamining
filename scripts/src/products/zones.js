@@ -74,4 +74,5 @@ await tryAndPush(
 	`${prefix} - Product: Zones Data was updated!`,
 	'CFData - Product: Zones Data Update',
 	'Pushed Product: Zones Data: ' + prefix,
+	'DISCORD_WEBHOOK_PRODUCT_ZONES',
 );
