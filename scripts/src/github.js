@@ -61,6 +61,7 @@ async function run(){
 			`${prefix} - GitHub Data was updated!`,
 			'CFData - GitHub Data Update',
 			'Pushed GitHub Data: ' + prefix,
+			'DISCORD_WEBHOOK_GITHUB',
 		);
 
 		console.log('Done! :)');
