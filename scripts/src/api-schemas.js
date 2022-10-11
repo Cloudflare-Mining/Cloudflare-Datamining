@@ -83,6 +83,7 @@ async function run(){
 		`${prefix} - API Schemas were updated!`,
 		'CFData - API Schema Data Update',
 		'Pushed API Schema Data: ' + prefix,
+		'DISCORD_WEBHOOK_API',
 	);
 
 	console.log('Done! :)');

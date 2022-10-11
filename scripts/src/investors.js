@@ -84,4 +84,5 @@ await tryAndPush(
 	`${prefix} - Investors Data was updated!`,
 	'CFData - Investors Data Update',
 	'Pushed Investors Data: ' + prefix,
+	'DISCORD_WEBHOOK_INVESTORS',
 );

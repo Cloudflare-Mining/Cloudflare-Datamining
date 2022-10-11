@@ -31,3 +31,4 @@ jobs:
           npm run mine:domains -- --no-write
         env:
           WHOISXMLAPI_KEY: ${{ secrets.WHOISXMLAPI_KEY }}
+          DISCORD_WEBHOOK_DOMAINS: ${{ secrets.DISCORD_WEBHOOK_DOMAINS }}

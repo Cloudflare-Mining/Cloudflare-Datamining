@@ -30,4 +30,4 @@ jobs:
           npm ci
           npm run mine:marketing
         env:
-          DISCORD_MARKETING_URL: ${{ secrets.DISCORD_MARKETING_URL }}
+          DISCORD_WEBHOOK_MARKETING: ${{ secrets.DISCORD_WEBHOOK_MARKETING }}

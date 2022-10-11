@@ -248,6 +248,7 @@ async function run(){
 		`${prefix} - NPM Package Data was updated!`,
 		'CFData - NPM Package Data Update',
 		'Pushed NPM Package Data: ' + prefix,
+		'DISCORD_WEBHOOK_NPM',
 	);
 
 	console.log('Done! :)');

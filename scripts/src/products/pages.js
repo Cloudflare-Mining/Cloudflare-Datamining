@@ -260,4 +260,5 @@ await tryAndPush(
 	`${prefix} - Product: Pages Data was updated!`,
 	'CFData - Product: Pages Data Update',
 	'Pushed Product: Pages Data: ' + prefix,
+	'DISCORD_WEBHOOK_PRODUCT_PAGES',
 );

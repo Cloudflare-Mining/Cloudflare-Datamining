@@ -81,4 +81,5 @@ await tryAndPush(
 	`${prefix} - Domains Data was updated!`,
 	'CFData - Domains Data Update',
 	'Pushed Domains Data: ' + prefix,
+	'DISCORD_WEBHOOK_DOMAINS',
 );

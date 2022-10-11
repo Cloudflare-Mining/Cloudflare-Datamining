@@ -274,4 +274,5 @@ await tryAndPush(
 	`${prefix} - Blog Content was updated!`,
 	'CFData - Blog Content Update',
 	'Pushed Blog Content: ' + prefix,
+	'DISCORD_WEBHOOK_BLOG',
 );

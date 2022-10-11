@@ -196,6 +196,7 @@ async function run(){
 		`${prefix} - GraphQL Data was updated!`,
 		'CFData - GraphQL Data Update',
 		'Pushed GraphQL Data: ' + prefix,
+		'DISCORD_WEBHOOK_API',
 	);
 }
 

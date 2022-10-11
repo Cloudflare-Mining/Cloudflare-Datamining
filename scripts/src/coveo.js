@@ -125,4 +125,5 @@ await tryAndPush(
 	`${prefix} - Coveo data was updated!`,
 	'CFData - Coveo Update',
 	'Pushed Coveo: ' + prefix,
+	'DISCORD_WEBHOOK_COVEO',
 );

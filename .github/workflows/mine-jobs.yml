@@ -30,4 +30,4 @@ jobs:
           npm ci
           npm run mine:jobs
         env:
-          DISCORD_URL: ${{ secrets.DISCORD_JOBS_URL }}
+          DISCORD_WEBHOOK_JOBS: ${{ secrets.DISCORD_WEBHOOK_JOBS }}

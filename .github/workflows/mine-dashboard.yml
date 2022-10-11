@@ -32,5 +32,6 @@ jobs:
         env:
           CLOUDFLARE_EMAIL: ${{ secrets.CLOUDFLARE_EMAIL }}
           CLOUDFLARE_PASSWORD: ${{ secrets.CLOUDFLARE_PASSWORD }}
-          DISCORD_URL: ${{ secrets.DISCORD_URL }}
+          DISCORD_WEBHOOK_DASHBOARD: ${{ secrets.DISCORD_WEBHOOK_DASHBOARD }}
+          DISCORD_WEBHOOK_GATES: ${{ secrets.DISCORD_WEBHOOK_GATES }}
           GATES_API_KEY: ${{ secrets.GATES_API_KEY }}

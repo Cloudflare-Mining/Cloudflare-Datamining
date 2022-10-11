@@ -202,4 +202,5 @@ await tryAndPush(
 	`${prefix} - CDN CGI Data was updated!`,
 	'CFData - CDN CGI Update',
 	'Pushed CDN CGI: ' + prefix,
+	'DISCORD_WEBHOOK_CDNCGI',
 );
