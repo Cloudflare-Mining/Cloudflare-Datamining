@@ -1,0 +1,97 @@
+{
+	"componentChunkName": "component---src-components-case-studies-templates-case-study-template-tsx",
+	"path": "/case-studies/vfs-global/",
+	"result": {
+		"data": {
+			"caseStudy": {
+				"name": "VFS Global",
+				"contentfulId": "306IQtKi6gH7GWo3nnhnRc",
+				"nameUrlSlug": "vfs-global",
+				"metaTags": {
+					"metaTitle": "VFS Global | Cloudflare",
+					"metaDescription": "VFS Global & Cloudflare | Case Study",
+					"twitterCustomImage": {
+						"file": {
+							"publicURL": "[path]/VFS-Global-scaled.jpeg"
+						}
+					},
+					"metaImage": {
+						"file": {
+							"publicURL": "[path]/VFS-Global-scaled.jpeg"
+						}
+					},
+					"facebookCustomImage": {
+						"file": {
+							"publicURL": "[path]/VFS-Global-scaled.jpeg"
+						}
+					}
+				},
+				"orderDate": "2022-10-21",
+				"homepageUrl": "https://www.vfsglobal.com/en/individuals/index.html",
+				"hideFromCaseStudiesPage": false,
+				"shortDescription": "Cloudflare helps VFS Global protect sensitive client visa information by bolstering security with a single solution",
+				"longDescription": "## __Cloudflare helps VFS Global protect sensitive client visa information by bolstering security with a single solution__\n\nVFS Global is the world's largest outsourcing and technology services specialist for governments and diplomatic missions worldwide. With 3531 Application Centres, operations in 141 countries across five continents and over 238 million applications processed (since inception in 2001) as on 28 February 2022, VFS Global is the trusted partner of 63 client governments. The company manages non-judgmental and administrative tasks related to applications for visa, passport and consular services for its client governments, enabling them to focus entirely on the critical task of assessment.\n\n### __The challenge: meeting compliance requirements while keeping their services online__\nInformation security has been a business-critical function at VFS Global well before the General Data Protection Regulation (GDPR) of 2018 came into effect. Operating in a highly-regulated and information-sensitive ecosystem, \"VFS Global are custodians that hold data on behalf of client governments,\" explains Brajesh Jha, VFS Global Vice President of IT and the man responsible for the company's applications portfolio. \"Our entire business and reputation depends on how we secure private data.\"   \n\nAs a result, VFS Global has very specific security and compliance requirements for their multiple website deployments. Blocking bot attacks tops the list of challenges followed by DDoS attacks.\n\nJha explains VFS Global's unique situation, \"Because we are sometimes equated with governments, attackers try either to disrupt our services so travelers can't get appointments or worse, they look for exploits and ways to leak client data.\"  \n\nNext on VFS Global's checklist is improving site performance across the globe. After seeing record traffic in 2019, the company took advantage of the COVID-19 travel shutdown to move key systems to the cloud and enhance functionality. \n\n\"We prepared our visa application systems for heavy traffic when world travel restarted, but early warnings on reopening travel routes showed surges that exceeded the 5X peaks of 2019 as people began accessing our sites to find out when they could begin to travel again,\" says Jha. \"That's when we decided we needed something more robust and easier to manage.\" \n\n### __VFS Global replaces multi-vendor solutions with integrated Cloudflare tools__ \nIn anticipation of these traffic peaks, VFS global approached Cloudflare. The initial goal was to consolidate its multi-vendor content delivery, security, and performance infrastructure under the Cloudflare umbrella.\n\n\"What we had in place worked, but we wanted it integrated and more proactive,\" says Jha. \n\nVFS Global saw immediate performance results with the Cloudflare cache, rapidly offloading 97% of its static traffic to edge servers.  \n\nAdditionally, the integrated Cloudflare Web Application Firewall (WAF), Bot Management, and Rate Limiting solutions were an ideal match for VFS Global requirements.\n\n\"After our proof of concept (POC) testing, we adopted Cloudflare for all of our critical routes,\" says Jha. \"Five months in, we are very happy with what we have achieved by bringing it all together.\"\n\nUsing Cloudflare tools, the VFS Global team can quickly correlate key information from within the dashboard.\n\n\"With the visibility Cloudflare gives us, we can see what is happening, call a team meeting, and make the necessary changes right there. The ease of it is amazing, I sleep better,\" says Jha.   \n\n### __Cloudflare security solutions reduce server loads and eliminate bad bots__\n\nBy implementing Cloudflare Rate Limiting rules across its seven primary domains, VFS Global bolsters its in-application security while protecting its servers by blocking traffic before it becomes harmful. For example, Jha cites limiting the number of hourly calendar checks or registration attempts to levels they consider fair use.\n\n\"Earlier, if an individual or scripts attempted a high number of logins or tried to break a password, we blocked it at the application level, but that traffic would still get to our server and cause peaks or even the addition of more servers using auto-scale,\" says Jha. \"Now we've taken those blocks and challenges out to the perimeter on Cloudflare where we can tighten things up when we see excess traffic coming in and relax them when things revert to normal. We manage that with no more than 20 rules per domain.\"   \n\nWhen it comes to bot incursions, Cloudflare Bot Management gives VFS Global similar peace of mind and a level of automated detection their previous solutions couldn't match. In a single month, Cloudflare Bot Management identified 10 million automated bot requests by JA3 fingerprint and detected and mitigated 194 million app layer threats.\n\n\"The bot behavior we see is unique to us, and it took a long time to figure out how to identify and block each particular type of attack,\" says Jha. \"During the POC we were clear we didn't want a bot management product that identified generic bots, but the purpose-specific bots that came to our site. Cloudflare delivered by identifying patterns, thresholds, and JA3 fingerprints. Now we react much faster — Cloudflare saves us days and we avoid exposure to threats and the bad press even a minor disruption can cause. Currently, Cloudflare identifies and blocks as much as 15 percent of our traffic.\"\n\nIn addition, the Cloudflare WAF further secures VFS Global by shielding the company from threats in the Open Web Application Security Project (OWASP) Top 10, protecting API endpoints, and preventing sensitive data detection. In a single month, the WAF generated 581 million protective firewall events using a combination of managed rules, custom rulesets, and other native Cloudflare features.    \n\n### __Cloudflare improves efficiency and encourages proactive collaboration__\n\nSince moving to Cloudflare, VFS Global has significantly reduced its dependence on multiple vendor teams and been able to combine or restructure its existing teams to provide business value in other areas of the organization. \n\nThey are also seeing a positive response from external support teams. \"I rarely need to go back to our managed service provider to follow up on an issue,\" says Jha. \"With the Cloudflare dashboard  as their source of information, they contact me to point out issues and tell me they are opening a ticket.\"   \n\nCloudflare has had a similar effect as VFS Global employees outside of Jha's immediate seven-person team gravitate towards the console and consult the system unprompted.\n\n\"We see productivity gains from staff taking the initiative to monitor Cloudflare on their own and responding to what they find before we can even raise a ticket. I no longer hear, 'I'll investigate and get back to you.' Now they tell me, 'This is what is happening, I'm fixing it,'\" Jha relates. \"It's a beautiful product with a great onboarding experience.\"   \n\n### __Continuous improvement with Cloudflare enhanced customer and technical support__\n\nFollowing a successful onboarding, with controls established and baselines in place, the Cloudflare dedicated account and enhanced technical support teams continue to work with VFS Global to identify gaps and ensure the company achieves optimum performance. \n\n\"At our first account review, when I believed we had done everything we could do, the Cloudflare team came to us with detailed insights on where we could improve,\" says Jha. \"They have also been super helpful in several no-notice scenarios where we onboarded something and had problems or did not see the expected benefits.\"\n\nDue to Cloudflare's rapid support response, VFS Global has never had to roll back a change. \n",
+				"cloudflareStreamVideoId": null,
+				"keyResults": "- Cloudflare WAF protects VFS Global APIs by generating 581 million monthly protective firewall events \n\n- Cloudflare Bot Management detects and mitigates 194 million app layer threats every 30 days, ensuring VFS Global customers don't encounter system delays\n\n- Increases VFS Global website and app performance worldwide by handling 97% of their static content requests\n\n- With rapid Cloudflare support, VFS has never had to roll back a new network or security policy \n",
+				"relatedCaseStudies": [
+					{
+						"name": "Zerodha",
+						"nameUrlSlug": "zerodha-enable-security-performance-financial-compliance"
+					},
+					{
+						"name": "CARS24",
+						"nameUrlSlug": "cars24"
+					},
+					{
+						"name": "Carousell",
+						"nameUrlSlug": "carousell"
+					}
+				],
+				"inPartnershipWith": null,
+				"relatedCloudflareProducts": [
+					{
+						"title": "Web Application Firewall (WAF) ",
+						"url": "/waf/"
+					},
+					{
+						"title": "Bot Management",
+						"url": "https://www.cloudflare.com/products/bot-management/"
+					},
+					{
+						"title": "Rate Limiting",
+						"url": "/rate-limiting/"
+					}
+				],
+				"employeeHeadshot": null,
+				"employeeQuoteName": "Brajesh Jha",
+				"employeeQuoteText": "Cloudflare is a beautiful product with a great onboarding experience. We see productivity gains from staff taking the initiative to monitor Cloudflare on their own and responding to what they  find before we can even raise a ticket.",
+				"employeeQuoteJobTitle": "VFS Vice President of IT",
+				"employeeQuoteName2": "Brajesh Jha",
+				"employeeQuoteText2": "With the visibility Cloudflare gives us, we can see what is happening, call a team meeting, and make the necessary changes right there. The ease of it is amazing, I sleep better.",
+				"employeeQuoteJobTitle2": "VFS Vice President of IT",
+				"downloadPdfButtonLink": null,
+				"ref_streamVideoThumbnail": null,
+				"logo": {
+					"file": {
+						"publicURL": "[path]/VFS_Global_Logo.png"
+					}
+				},
+				"customCanonicalTag": null
+			},
+			"site": {
+				"siteMetadata": {
+					"baseURL": "https://www.cloudflare.com"
+				}
+			}
+		},
+		"pageContext": {
+			"locale": "en-US",
+			"contentfulId": "306IQtKi6gH7GWo3nnhnRc",
+			"pathname": "/case-studies/vfs-global/",
+			"baseURL": "https://www.cloudflare.com",
+			"allowedHrefLangs": [
+				"en-US"
+			]
+		}
+	}
+}
