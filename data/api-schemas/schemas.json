@@ -28352,7 +28352,7 @@
 		},
 		"/zones/{zone_identifier}/custom_pages": {
 			"get": {
-				"summary": "Get custom pages",
+				"summary": "List custom pages",
 				"description": "Fetches all the custom pages at the zone level.",
 				"parameters": [
 					{
@@ -28366,7 +28366,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Get custom pages response",
+						"description": "List custom pages response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -47133,7 +47133,7 @@
 		},
 		"/zones/{zone_identifier}/pagerules": {
 			"get": {
-				"summary": "Get Page Rules",
+				"summary": "List Page Rules",
 				"description": "Fetches Page Rules in a zone.",
 				"parameters": [
 					{
@@ -47147,7 +47147,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Get Page Rules response",
+						"description": "List Page Rules response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -47825,7 +47825,7 @@
 		},
 		"/zones/{zone_identifier}/pagerules/settings": {
 			"get": {
-				"summary": "Get available Page Rules settings",
+				"summary": "List available Page Rules settings",
 				"description": "Returns a list of settings (and their details) that Page Rules can apply to matching requests.",
 				"parameters": [
 					{
@@ -47839,7 +47839,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Get available Page Rules settings response",
+						"description": "List available Page Rules settings response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -48192,7 +48192,7 @@
 		},
 		"/zones/{zone_identifier}/rate_limits": {
 			"get": {
-				"summary": "Get rate limits",
+				"summary": "List rate limits",
 				"description": "Fetches the rate limits for a zone.",
 				"parameters": [
 					{
@@ -48206,7 +48206,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Get rate limits response",
+						"description": "List rate limits response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -48727,12 +48727,12 @@
 		},
 		"/user/firewall/access_rules/rules": {
 			"get": {
-				"summary": "Get IP Access rules",
+				"summary": "List IP Access rules",
 				"description": "Fetches IP Access rules of the user. You can filter the results using several optional parameters.",
 				"parameters": [],
 				"responses": {
 					"200": {
-						"description": "Get IP Access rules response",
+						"description": "List IP Access rules response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -49364,7 +49364,7 @@
 		},
 		"/accounts/{account_identifier}/firewall/access_rules/rules": {
 			"get": {
-				"summary": "Get IP Access rules",
+				"summary": "List IP Access rules",
 				"description": "Fetches IP Access rules of an account. These rules apply to all the zones in the account. You can filter the results using several optional parameters.",
 				"parameters": [
 					{
@@ -49378,7 +49378,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Get IP Access rules response",
+						"description": "List IP Access rules response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -49876,7 +49876,7 @@
 		},
 		"/zones/{zone_id}/firewall/access_rules/rules": {
 			"get": {
-				"summary": "Get IP Access rules",
+				"summary": "List IP Access rules",
 				"description": "Fetches IP Access rules of a zone. You can filter the results using several optional parameters.",
 				"parameters": [
 					{
@@ -49890,7 +49890,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Get IP Access rules response",
+						"description": "List IP Access rules response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -50111,7 +50111,7 @@
 		},
 		"/zones/{zone_identifier}/firewall/waf/packages": {
 			"get": {
-				"summary": "Get WAF packages",
+				"summary": "List WAF packages",
 				"description": "Fetches WAF packages for a zone.",
 				"parameters": [
 					{
@@ -50125,7 +50125,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Get WAF packages response",
+						"description": "List WAF packages response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -50495,7 +50495,7 @@
 		},
 		"/zones/{zone_identifier}/firewall/waf/packages/{package_identifier}/groups": {
 			"get": {
-				"summary": "Get WAF rule groups",
+				"summary": "List WAF rule groups",
 				"description": "Fetches the WAF rule groups in a WAF package.",
 				"parameters": [
 					{
@@ -50517,7 +50517,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Get WAF rule groups response",
+						"description": "List WAF rule groups response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -50778,7 +50778,7 @@
 		},
 		"/zones/{zone_id}/firewall/waf/packages/{package_id}/rules": {
 			"get": {
-				"summary": "Get WAF rules",
+				"summary": "List WAF rules",
 				"description": "Fetches WAF rules in a WAF package.",
 				"parameters": [
 					{
@@ -50800,7 +50800,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Get WAF rules response",
+						"description": "List WAF rules response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -51315,7 +51315,7 @@
 		},
 		"/zones/{zone_identifier}/firewall/waf/overrides": {
 			"get": {
-				"summary": "Get WAF overrides",
+				"summary": "List WAF overrides",
 				"description": "Fetches the URI-based WAF overrides in a zone.",
 				"parameters": [
 					{
@@ -51329,7 +51329,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Get WAF overrides response",
+						"description": "List WAF overrides response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -51840,7 +51840,7 @@
 		},
 		"/zones/{zone_identifier}/firewall/ua_rules": {
 			"get": {
-				"summary": "Get User Agent Blocking rules",
+				"summary": "List User Agent Blocking rules",
 				"description": "Fetches User Agent Blocking rules in a zone. You can filter the results using several optional parameters.",
 				"parameters": [
 					{
@@ -51854,7 +51854,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Get User Agent Blocking rules response",
+						"description": "List User Agent Blocking rules response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -52216,7 +52216,7 @@
 		},
 		"/zones/{zone_identifier}/firewall/lockdowns": {
 			"get": {
-				"summary": "Get Zone Lockdown rules",
+				"summary": "List Zone Lockdown rules",
 				"description": "Fetches Zone Lockdown rules. You can filter the results using several optional parameters.",
 				"parameters": [
 					{
@@ -52230,7 +52230,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Get Zone Lockdown rules response",
+						"description": "List Zone Lockdown rules response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -52725,7 +52725,7 @@
 		},
 		"/zones/{zone_identifier}/firewall/rules": {
 			"get": {
-				"summary": "Get firewall rules",
+				"summary": "List firewall rules",
 				"description": "Fetches firewall rules in a zone. You can filter the results using several optional parameters.",
 				"parameters": [
 					{
@@ -52739,7 +52739,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Get firewall rules response",
+						"description": "List firewall rules response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -53026,7 +53026,7 @@
 				}
 			},
 			"patch": {
-				"summary": "Update priority of firewall rules ",
+				"summary": "Update priority of firewall rules",
 				"description": "Updates the priority of existing firewall rules.",
 				"parameters": [
 					{
@@ -53040,7 +53040,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Update priority of firewall rules  response",
+						"description": "Update priority of firewall rules response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -53575,7 +53575,7 @@
 		},
 		"/zones/{zone_identifier}/filters": {
 			"get": {
-				"summary": "Get filters",
+				"summary": "List filters",
 				"description": "Fetches filters in a zone. You can filter the results using several optional parameters.",
 				"parameters": [
 					{
@@ -53589,7 +53589,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Get filters response",
+						"description": "List filters response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -56931,7 +56931,7 @@
 		},
 		"/zones/{zone_id}/rulesets/phases/{phase}/entrypoint": {
 			"get": {
-				"summary": "Get Transform Rules",
+				"summary": "List Transform Rules",
 				"description": "Fetches all Transform Rules in a zone.",
 				"parameters": [
 					{
@@ -56959,7 +56959,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Get Transform Rules response",
+						"description": "List Transform Rules response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -67674,7 +67674,7 @@
 		},
 		"/accounts/{account_identifier}/custom_pages": {
 			"get": {
-				"summary": "Get custom pages",
+				"summary": "List custom pages",
 				"description": "Fetches all the custom pages at the account level.",
 				"parameters": [
 					{
@@ -67688,7 +67688,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Get custom pages response",
+						"description": "List custom pages response",
 						"content": {
 							"application/json": {
 								"schema": {

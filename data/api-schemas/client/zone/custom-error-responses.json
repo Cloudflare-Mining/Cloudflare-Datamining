@@ -47,17 +47,17 @@
 					"description": {
 						"type": "string",
 						"example": "\"My ruleset to execute managed rulesets\"",
-						"description": "A description of the ruleset",
+						"description": "An informative description of the ruleset.",
 						"default": ""
 					},
 					"rules": {
 						"type": "array",
 						"example": "[\n  {\n    \"description\": \"Execute the OWASP ruleset when the IP address is not 1.1.1.1\",\n    \"expression\": \"ip.src ne 1.1.1.1\",\n    \"action\": \"execute\",\n    \"action_parameters\": {\n      \"id\": \"4814384a9e5d4991b9815dcfc25d2f1f\"\n    },\n    \"ref\": \"my_ref\",\n    \"enabled\": \"true\",\n    \"logging\": {\n      \"enabled\": \"true\"\n    }\n  }\n]",
-						"description": "The rules in the ruleset",
+						"description": "The list of rules in the ruleset.",
 						"items": {
 							"anyOf": [
 								{
-									"description": "A rule",
+									"description": "A rule object.",
 									"type": "object",
 									"required": [
 										"expression",
@@ -65,46 +65,46 @@
 									],
 									"properties": {
 										"description": {
-											"description": "A description of the rule",
+											"description": "An informative description of the rule.",
 											"type": "string",
 											"default": "",
 											"example": "Execute the OWASP ruleset when the IP address is not 1.1.1.1"
 										},
 										"expression": {
-											"description": "The expression of the rule to match traffic on",
+											"description": "The expression defining which traffic will match the rule.",
 											"type": "string",
 											"example": "ip.src ne 1.1.1.1"
 										},
 										"action": {
-											"description": "The action to take when the rule matches",
+											"description": "The action to perform when the rule matches.",
 											"type": "string",
 											"pattern": "^[a-z_]+$",
 											"example": "execute"
 										},
 										"action_parameters": {
-											"description": "The parameters to configure the given action",
+											"description": "The parameters configuring the rule action.",
 											"type": "object",
 											"example": {
 												"id": "4814384a9e5d4991b9815dcfc25d2f1f"
 											}
 										},
 										"ref": {
-											"description": "A reference for the rule, defaults to the ID",
+											"description": "The reference of the rule (the rule ID by default).",
 											"type": "string",
 											"example": "my_ref"
 										},
 										"enabled": {
-											"description": "Whether the rule should be run",
+											"description": "Whether the rule should be executed.",
 											"type": "boolean",
 											"default": "true",
 											"example": "true"
 										},
 										"logging": {
-											"description": "The parameters to configure how the rule generates logs",
+											"description": "An object configuring the rule's logging behavior.",
 											"type": "object",
 											"properties": {
 												"enabled": {
-													"description": "Whether a log should be generated when the rule matches",
+													"description": "Whether to generate a log when the rule matches.",
 													"type": "boolean",
 													"example": "true"
 												}
@@ -116,7 +116,7 @@
 									}
 								},
 								{
-									"description": "An ID of a rule",
+									"description": "The unique ID of a rule.",
 									"type": "string",
 									"example": "3a03d665bac047339bb530ecb439a90d"
 								}
@@ -132,7 +132,7 @@
 				],
 				"objects": [],
 				"example": "{\n  \"description\": \"My ruleset to execute managed rulesets\",\n  \"rules\": [\n    {\n      \"description\": \"Execute the OWASP ruleset when the IP address is not 1.1.1.1\",\n      \"expression\": \"ip.src ne 1.1.1.1\",\n      \"action\": \"execute\",\n      \"action_parameters\": {\n        \"id\": \"4814384a9e5d4991b9815dcfc25d2f1f\"\n      },\n      \"ref\": \"my_ref\",\n      \"enabled\": \"true\",\n      \"logging\": {\n        \"enabled\": \"true\"\n      }\n    }\n  ]\n}",
-				"description": "A ruleset"
+				"description": "A ruleset object."
 			},
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": []\n}"
 		}

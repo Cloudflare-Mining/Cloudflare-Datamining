@@ -148,7 +148,7 @@
 				"objects": [],
 				"example": "{\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"botClass\": [\n    \"LIKELY_AUTOMATED\"\n  ],\n  \"format\": \"json\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"meta\": {},\n  \"result\": {\n    \"summary_0\": {\n      \"desktop\": \"65\",\n      \"mobile\": \"30\",\n      \"other\": \"5\"\n    }\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"result\": {\n    \"meta\": {},\n    \"summary_0\": {\n      \"desktop\": \"65\",\n      \"mobile\": \"30\",\n      \"other\": \"5\"\n    }\n  }\n}"
 		},
 		{
 			"title": "Get a summary of HTTP protocols",
@@ -294,7 +294,7 @@
 				"objects": [],
 				"example": "{\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"botClass\": [\n    \"LIKELY_AUTOMATED\"\n  ],\n  \"format\": \"json\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"meta\": {},\n  \"result\": {\n    \"summary_0\": {\n      \"http\": \"99\",\n      \"https\": \"1\"\n    }\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"result\": {\n    \"meta\": {},\n    \"summary_0\": {\n      \"http\": \"99\",\n      \"https\": \"1\"\n    }\n  }\n}"
 		},
 		{
 			"title": "Get a summary of HTTP versions",
@@ -440,7 +440,7 @@
 				"objects": [],
 				"example": "{\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"botClass\": [\n    \"LIKELY_AUTOMATED\"\n  ],\n  \"format\": \"json\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"meta\": {},\n  \"result\": {\n    \"summary_0\": {\n      \"HTTP/1.x\": \"1\",\n      \"HTTP/2\": \"39\",\n      \"HTTP/3\": \"60\"\n    }\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"result\": {\n    \"meta\": {},\n    \"summary_0\": {\n      \"HTTP/1.x\": \"1\",\n      \"HTTP/2\": \"39\",\n      \"HTTP/3\": \"60\"\n    }\n  }\n}"
 		},
 		{
 			"title": "Get a summary of bot classes",
@@ -568,7 +568,7 @@
 				"objects": [],
 				"example": "{\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"format\": \"json\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"meta\": {},\n  \"result\": {\n    \"summary_0\": {\n      \"human\": \"65\",\n      \"bot\": \"35\"\n    }\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"result\": {\n    \"meta\": {},\n    \"summary_0\": {\n      \"human\": \"65\",\n      \"bot\": \"35\"\n    }\n  }\n}"
 		},
 		{
 			"title": "Get a summary of IP versions",
@@ -714,7 +714,7 @@
 				"objects": [],
 				"example": "{\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"botClass\": [\n    \"LIKELY_AUTOMATED\"\n  ],\n  \"format\": \"json\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"meta\": {},\n  \"result\": {\n    \"summary_0\": {\n      \"IPv4\": \"65\",\n      \"IPv6\": \"35\"\n    }\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"result\": {\n    \"meta\": {},\n    \"summary_0\": {\n      \"IPv4\": \"65\",\n      \"IPv6\": \"35\"\n    }\n  }\n}"
 		},
 		{
 			"title": "Get a summary of TLS versions",
@@ -860,7 +860,7 @@
 				"objects": [],
 				"example": "{\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"botClass\": [\n    \"LIKELY_AUTOMATED\"\n  ],\n  \"format\": \"json\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"meta\": {},\n  \"result\": {\n    \"summary_0\": {\n      \"TLS 1.0\": \"0.5\",\n      \"TLS 1.1\": \"0.5\",\n      \"TLS 1.2\": \"60\",\n      \"TLS 1.3\": \"10\",\n      \"TLS QUIC\": \"29\"\n    }\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"result\": {\n    \"meta\": {},\n    \"summary_0\": {\n      \"TLS 1.0\": \"0.5\",\n      \"TLS 1.1\": \"0.5\",\n      \"TLS 1.2\": \"60\",\n      \"TLS 1.3\": \"10\",\n      \"TLS QUIC\": \"29\"\n    }\n  }\n}"
 		},
 		{
 			"title": "Get time series of device types",
@@ -1017,7 +1017,7 @@
 				"objects": [],
 				"example": "{\n  \"aggInterval\": \"1h\",\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"botClass\": [\n    \"LIKELY_AUTOMATED\"\n  ],\n  \"format\": \"json\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"meta\": {},\n  \"result\": {\n    \"serie_0\": {\n      \"timestamps\": [\n        {}\n      ],\n      \"desktop\": [\n        {}\n      ],\n      \"mobile\": [\n        {}\n      ],\n      \"other\": [\n        {}\n      ]\n    }\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"result\": {\n    \"meta\": {},\n    \"serie_0\": {\n      \"timestamps\": [\n        {}\n      ],\n      \"desktop\": [\n        {}\n      ],\n      \"mobile\": [\n        {}\n      ],\n      \"other\": [\n        {}\n      ]\n    }\n  }\n}"
 		},
 		{
 			"title": "Get time series of HTTP protocols",
@@ -1174,7 +1174,7 @@
 				"objects": [],
 				"example": "{\n  \"aggInterval\": \"1h\",\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"botClass\": [\n    \"LIKELY_AUTOMATED\"\n  ],\n  \"format\": \"json\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"meta\": {},\n  \"result\": {\n    \"serie_0\": {\n      \"timestamps\": [\n        {}\n      ],\n      \"http\": [\n        {}\n      ],\n      \"https\": [\n        {}\n      ]\n    }\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"result\": {\n    \"meta\": {},\n    \"serie_0\": {\n      \"timestamps\": [\n        {}\n      ],\n      \"http\": [\n        {}\n      ],\n      \"https\": [\n        {}\n      ]\n    }\n  }\n}"
 		},
 		{
 			"title": "Get time series of HTTP versions",
@@ -1331,7 +1331,7 @@
 				"objects": [],
 				"example": "{\n  \"aggInterval\": \"1h\",\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"botClass\": [\n    \"LIKELY_AUTOMATED\"\n  ],\n  \"format\": \"json\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"meta\": {},\n  \"result\": {\n    \"serie_0\": {\n      \"timestamps\": [\n        {}\n      ],\n      \"HTTP/1.x\": [\n        {}\n      ],\n      \"HTTP/2\": [\n        {}\n      ],\n      \"HTTP/3\": [\n        {}\n      ]\n    }\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"result\": {\n    \"meta\": {},\n    \"serie_0\": {\n      \"timestamps\": [\n        {}\n      ],\n      \"HTTP/1.x\": [\n        {}\n      ],\n      \"HTTP/2\": [\n        {}\n      ],\n      \"HTTP/3\": [\n        {}\n      ]\n    }\n  }\n}"
 		},
 		{
 			"title": "Get time series of bot classes",
@@ -1470,7 +1470,7 @@
 				"objects": [],
 				"example": "{\n  \"aggInterval\": \"1h\",\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"format\": \"json\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"meta\": {},\n  \"result\": {\n    \"serie_0\": {\n      \"timestamps\": [\n        {}\n      ],\n      \"human\": [\n        {}\n      ],\n      \"bot\": [\n        {}\n      ]\n    }\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"result\": {\n    \"meta\": {},\n    \"serie_0\": {\n      \"timestamps\": [\n        {}\n      ],\n      \"human\": [\n        {}\n      ],\n      \"bot\": [\n        {}\n      ]\n    }\n  }\n}"
 		},
 		{
 			"title": "Get time series of IP versions",
@@ -1627,7 +1627,7 @@
 				"objects": [],
 				"example": "{\n  \"aggInterval\": \"1h\",\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"botClass\": [\n    \"LIKELY_AUTOMATED\"\n  ],\n  \"format\": \"json\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"meta\": {},\n  \"result\": {\n    \"serie_0\": {\n      \"timestamps\": [\n        {}\n      ],\n      \"IPv4\": [\n        {}\n      ],\n      \"IPv6\": [\n        {}\n      ]\n    }\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"result\": {\n    \"meta\": {},\n    \"serie_0\": {\n      \"timestamps\": [\n        {}\n      ],\n      \"IPv4\": [\n        {}\n      ],\n      \"IPv6\": [\n        {}\n      ]\n    }\n  }\n}"
 		},
 		{
 			"title": "Get time series of TLS versions",
@@ -1784,7 +1784,7 @@
 				"objects": [],
 				"example": "{\n  \"aggInterval\": \"1h\",\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"botClass\": [\n    \"LIKELY_AUTOMATED\"\n  ],\n  \"format\": \"json\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"meta\": {},\n  \"result\": {\n    \"serie_0\": {\n      \"timestamps\": [\n        {}\n      ],\n      \"TLS 1.0\": [\n        {}\n      ],\n      \"TLS 1.1\": [\n        {}\n      ],\n      \"TLS 1.2\": [\n        {}\n      ],\n      \"TLS 1.3\": [\n        {}\n      ],\n      \"TLS QUIC\": [\n        {}\n      ]\n    }\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"result\": {\n    \"meta\": {},\n    \"serie_0\": {\n      \"timestamps\": [\n        {}\n      ],\n      \"TLS 1.0\": [\n        {}\n      ],\n      \"TLS 1.1\": [\n        {}\n      ],\n      \"TLS 1.2\": [\n        {}\n      ],\n      \"TLS 1.3\": [\n        {}\n      ],\n      \"TLS QUIC\": [\n        {}\n      ]\n    }\n  }\n}"
 		},
 		{
 			"title": "Get time series of user agents",
@@ -1948,7 +1948,7 @@
 				"objects": [],
 				"example": "{\n  \"aggInterval\": \"1h\",\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"botClass\": [\n    \"LIKELY_AUTOMATED\"\n  ],\n  \"limitPerGroup\": 2,\n  \"format\": \"json\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"meta\": {},\n  \"result\": {\n    \"serie_0\": {\n      \"timestamps\": [\n        {}\n      ],\n      \"<browser name>\": [\n        {}\n      ]\n    }\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"result\": {\n    \"meta\": {},\n    \"serie_0\": {\n      \"timestamps\": [\n        {}\n      ],\n      \"<browser name>\": [\n        {}\n      ]\n    }\n  }\n}"
 		},
 		{
 			"title": "Get time series of user agents aggregated in families",
@@ -1970,7 +1970,7 @@
 			},
 			"html_id": "radar-http-get-time-series-of-user-agents-aggregated-in-families",
 			"uri": "radar/http/timeseries/browser_family",
-			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/http/timeseries/browser_family?aggInterval=1h&name=main_series&dateRange=7d&dateStart=2022-08-01T09:58:33Z&dateEnd=2022-09-01T09:58:33Z&asn=15169&location=US,CA&botClass=LIKELY_AUTOMATED&limitPerGroup=2&format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/radar/http/timeseries/browser_family?aggInterval=1h&name=main_series&dateRange=7d&dateStart=2022-08-01T09:58:33Z&dateEnd=2022-09-01T09:58:33Z&asn=15169&location=US,CA&botClass=LIKELY_AUTOMATED&format=json\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}
@@ -2079,12 +2079,6 @@
 							"LIKELY_HUMAN"
 						]
 					},
-					"limitPerGroup": {
-						"type": "number",
-						"example": "2",
-						"default": 2,
-						"description": "Limit the number of objects (eg browsers) to the top items over the time range."
-					},
 					"format": {
 						"type": "string",
 						"example": "\"json\"",
@@ -2106,13 +2100,12 @@
 					"asn",
 					"location",
 					"botClass",
-					"limitPerGroup",
 					"format"
 				],
 				"objects": [],
-				"example": "{\n  \"aggInterval\": \"1h\",\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"botClass\": [\n    \"LIKELY_AUTOMATED\"\n  ],\n  \"limitPerGroup\": 2,\n  \"format\": \"json\"\n}"
+				"example": "{\n  \"aggInterval\": \"1h\",\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"botClass\": [\n    \"LIKELY_AUTOMATED\"\n  ],\n  \"format\": \"json\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"meta\": {},\n  \"result\": {\n    \"serie_0\": {\n      \"timestamps\": [\n        {}\n      ],\n      \"<browser name>\": [\n        {}\n      ]\n    }\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"result\": {\n    \"meta\": {},\n    \"serie_0\": {\n      \"timestamps\": [\n        {}\n      ],\n      \"<browser name>\": [\n        {}\n      ]\n    }\n  }\n}"
 		},
 		{
 			"title": "Get top locations by bot class",
@@ -2247,7 +2240,7 @@
 				"objects": [],
 				"example": "{\n  \"limit\": 5,\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"format\": \"json\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"meta\": {\n    \"confidenceInfo\": {\n      \"annotations\": [\n        {\n          \"startTime\": \"2022-09-17T10:22:57.555Z\",\n          \"endTime\": \"2022-09-17T10:22:57.555Z\"\n        }\n      ]\n    },\n    \"dateRange\": {\n      \"startTime\": \"2022-09-17T10:22:57.555Z\",\n      \"endTime\": \"2022-09-17T10:22:57.555Z\"\n    }\n  },\n  \"result\": {\n    \"top_0\": [\n      {\n        \"clientCountryAlpha2\": \"US\",\n        \"clientCountryName\": \"United States\",\n        \"value\": \"65\"\n      }\n    ]\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"result\": {\n    \"meta\": {\n      \"confidenceInfo\": {\n        \"annotations\": [\n          {\n            \"startTime\": \"2022-09-17T10:22:57.555Z\",\n            \"endTime\": \"2022-09-17T10:22:57.555Z\"\n          }\n        ]\n      },\n      \"dateRange\": {\n        \"startTime\": \"2022-09-17T10:22:57.555Z\",\n        \"endTime\": \"2022-09-17T10:22:57.555Z\"\n      }\n    },\n    \"top_0\": [\n      {\n        \"clientCountryAlpha2\": \"US\",\n        \"clientCountryName\": \"United States\",\n        \"value\": \"65\"\n      }\n    ]\n  }\n}"
 		},
 		{
 			"title": "Get top locations by device type",
@@ -2400,7 +2393,7 @@
 				"objects": [],
 				"example": "{\n  \"limit\": 5,\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"botClass\": [\n    \"LIKELY_AUTOMATED\"\n  ],\n  \"format\": \"json\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"meta\": {\n    \"confidenceInfo\": {\n      \"annotations\": [\n        {\n          \"startTime\": \"2022-09-17T10:22:57.555Z\",\n          \"endTime\": \"2022-09-17T10:22:57.555Z\"\n        }\n      ]\n    },\n    \"dateRange\": {\n      \"startTime\": \"2022-09-17T10:22:57.555Z\",\n      \"endTime\": \"2022-09-17T10:22:57.555Z\"\n    }\n  },\n  \"result\": {\n    \"top_0\": [\n      {\n        \"clientCountryAlpha2\": \"US\",\n        \"clientCountryName\": \"United States\",\n        \"value\": \"65\"\n      }\n    ]\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"result\": {\n    \"meta\": {\n      \"confidenceInfo\": {\n        \"annotations\": [\n          {\n            \"startTime\": \"2022-09-17T10:22:57.555Z\",\n            \"endTime\": \"2022-09-17T10:22:57.555Z\"\n          }\n        ]\n      },\n      \"dateRange\": {\n        \"startTime\": \"2022-09-17T10:22:57.555Z\",\n        \"endTime\": \"2022-09-17T10:22:57.555Z\"\n      }\n    },\n    \"top_0\": [\n      {\n        \"clientCountryAlpha2\": \"US\",\n        \"clientCountryName\": \"United States\",\n        \"value\": \"65\"\n      }\n    ]\n  }\n}"
 		},
 		{
 			"title": "Get top locations by TLS version",
@@ -2553,7 +2546,7 @@
 				"objects": [],
 				"example": "{\n  \"limit\": 5,\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"botClass\": [\n    \"LIKELY_AUTOMATED\"\n  ],\n  \"format\": \"json\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"meta\": {\n    \"confidenceInfo\": {\n      \"annotations\": [\n        {\n          \"startTime\": \"2022-09-17T10:22:57.555Z\",\n          \"endTime\": \"2022-09-17T10:22:57.555Z\"\n        }\n      ]\n    },\n    \"dateRange\": {\n      \"startTime\": \"2022-09-17T10:22:57.555Z\",\n      \"endTime\": \"2022-09-17T10:22:57.555Z\"\n    }\n  },\n  \"result\": {\n    \"top_0\": [\n      {\n        \"clientCountryAlpha2\": \"US\",\n        \"clientCountryName\": \"United States\",\n        \"value\": \"65\"\n      }\n    ]\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"result\": {\n    \"meta\": {\n      \"confidenceInfo\": {\n        \"annotations\": [\n          {\n            \"startTime\": \"2022-09-17T10:22:57.555Z\",\n            \"endTime\": \"2022-09-17T10:22:57.555Z\"\n          }\n        ]\n      },\n      \"dateRange\": {\n        \"startTime\": \"2022-09-17T10:22:57.555Z\",\n        \"endTime\": \"2022-09-17T10:22:57.555Z\"\n      }\n    },\n    \"top_0\": [\n      {\n        \"clientCountryAlpha2\": \"US\",\n        \"clientCountryName\": \"United States\",\n        \"value\": \"65\"\n      }\n    ]\n  }\n}"
 		},
 		{
 			"title": "Get top locations by HTTP protocol",
@@ -2706,7 +2699,7 @@
 				"objects": [],
 				"example": "{\n  \"limit\": 5,\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"botClass\": [\n    \"LIKELY_AUTOMATED\"\n  ],\n  \"format\": \"json\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"meta\": {\n    \"confidenceInfo\": {\n      \"annotations\": [\n        {\n          \"startTime\": \"2022-09-17T10:22:57.555Z\",\n          \"endTime\": \"2022-09-17T10:22:57.555Z\"\n        }\n      ]\n    },\n    \"dateRange\": {\n      \"startTime\": \"2022-09-17T10:22:57.555Z\",\n      \"endTime\": \"2022-09-17T10:22:57.555Z\"\n    }\n  },\n  \"result\": {\n    \"top_0\": [\n      {\n        \"clientCountryAlpha2\": \"US\",\n        \"clientCountryName\": \"United States\",\n        \"value\": \"65\"\n      }\n    ]\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"result\": {\n    \"meta\": {\n      \"confidenceInfo\": {\n        \"annotations\": [\n          {\n            \"startTime\": \"2022-09-17T10:22:57.555Z\",\n            \"endTime\": \"2022-09-17T10:22:57.555Z\"\n          }\n        ]\n      },\n      \"dateRange\": {\n        \"startTime\": \"2022-09-17T10:22:57.555Z\",\n        \"endTime\": \"2022-09-17T10:22:57.555Z\"\n      }\n    },\n    \"top_0\": [\n      {\n        \"clientCountryAlpha2\": \"US\",\n        \"clientCountryName\": \"United States\",\n        \"value\": \"65\"\n      }\n    ]\n  }\n}"
 		},
 		{
 			"title": "Get top locations by HTTP version",
@@ -2859,7 +2852,7 @@
 				"objects": [],
 				"example": "{\n  \"limit\": 5,\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"botClass\": [\n    \"LIKELY_AUTOMATED\"\n  ],\n  \"format\": \"json\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"meta\": {\n    \"confidenceInfo\": {\n      \"annotations\": [\n        {\n          \"startTime\": \"2022-09-17T10:22:57.555Z\",\n          \"endTime\": \"2022-09-17T10:22:57.555Z\"\n        }\n      ]\n    },\n    \"dateRange\": {\n      \"startTime\": \"2022-09-17T10:22:57.555Z\",\n      \"endTime\": \"2022-09-17T10:22:57.555Z\"\n    }\n  },\n  \"result\": {\n    \"top_0\": [\n      {\n        \"clientCountryAlpha2\": \"US\",\n        \"clientCountryName\": \"United States\",\n        \"value\": \"65\"\n      }\n    ]\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"result\": {\n    \"meta\": {\n      \"confidenceInfo\": {\n        \"annotations\": [\n          {\n            \"startTime\": \"2022-09-17T10:22:57.555Z\",\n            \"endTime\": \"2022-09-17T10:22:57.555Z\"\n          }\n        ]\n      },\n      \"dateRange\": {\n        \"startTime\": \"2022-09-17T10:22:57.555Z\",\n        \"endTime\": \"2022-09-17T10:22:57.555Z\"\n      }\n    },\n    \"top_0\": [\n      {\n        \"clientCountryAlpha2\": \"US\",\n        \"clientCountryName\": \"United States\",\n        \"value\": \"65\"\n      }\n    ]\n  }\n}"
 		},
 		{
 			"title": "Get top locations by IP version",
@@ -3012,7 +3005,7 @@
 				"objects": [],
 				"example": "{\n  \"limit\": 5,\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"botClass\": [\n    \"LIKELY_AUTOMATED\"\n  ],\n  \"format\": \"json\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"meta\": {\n    \"confidenceInfo\": {\n      \"annotations\": [\n        {\n          \"startTime\": \"2022-09-17T10:22:57.555Z\",\n          \"endTime\": \"2022-09-17T10:22:57.555Z\"\n        }\n      ]\n    },\n    \"dateRange\": {\n      \"startTime\": \"2022-09-17T10:22:57.555Z\",\n      \"endTime\": \"2022-09-17T10:22:57.555Z\"\n    }\n  },\n  \"result\": {\n    \"top_0\": [\n      {\n        \"clientCountryAlpha2\": \"US\",\n        \"clientCountryName\": \"United States\",\n        \"value\": \"65\"\n      }\n    ]\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"result\": {\n    \"meta\": {\n      \"confidenceInfo\": {\n        \"annotations\": [\n          {\n            \"startTime\": \"2022-09-17T10:22:57.555Z\",\n            \"endTime\": \"2022-09-17T10:22:57.555Z\"\n          }\n        ]\n      },\n      \"dateRange\": {\n        \"startTime\": \"2022-09-17T10:22:57.555Z\",\n        \"endTime\": \"2022-09-17T10:22:57.555Z\"\n      }\n    },\n    \"top_0\": [\n      {\n        \"clientCountryAlpha2\": \"US\",\n        \"clientCountryName\": \"United States\",\n        \"value\": \"65\"\n      }\n    ]\n  }\n}"
 		},
 		{
 			"title": "Get top locations by HTTP requests",
@@ -3165,7 +3158,7 @@
 				"objects": [],
 				"example": "{\n  \"limit\": 5,\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"botClass\": [\n    \"LIKELY_AUTOMATED\"\n  ],\n  \"format\": \"json\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"meta\": {\n    \"confidenceInfo\": {\n      \"annotations\": [\n        {\n          \"startTime\": \"2022-09-17T10:22:57.555Z\",\n          \"endTime\": \"2022-09-17T10:22:57.555Z\"\n        }\n      ]\n    },\n    \"dateRange\": {\n      \"startTime\": \"2022-09-17T10:22:57.555Z\",\n      \"endTime\": \"2022-09-17T10:22:57.555Z\"\n    }\n  },\n  \"result\": {\n    \"top_0\": [\n      {\n        \"clientCountryAlpha2\": \"US\",\n        \"clientCountryName\": \"United States\",\n        \"value\": \"65\"\n      }\n    ]\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"result\": {\n    \"meta\": {\n      \"confidenceInfo\": {\n        \"annotations\": [\n          {\n            \"startTime\": \"2022-09-17T10:22:57.555Z\",\n            \"endTime\": \"2022-09-17T10:22:57.555Z\"\n          }\n        ]\n      },\n      \"dateRange\": {\n        \"startTime\": \"2022-09-17T10:22:57.555Z\",\n        \"endTime\": \"2022-09-17T10:22:57.555Z\"\n      }\n    },\n    \"top_0\": [\n      {\n        \"clientCountryAlpha2\": \"US\",\n        \"clientCountryName\": \"United States\",\n        \"value\": \"65\"\n      }\n    ]\n  }\n}"
 		},
 		{
 			"title": "Get top autonomous systems by bot class",
@@ -3300,7 +3293,7 @@
 				"objects": [],
 				"example": "{\n  \"limit\": 5,\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"format\": \"json\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"meta\": {\n    \"confidenceInfo\": {\n      \"annotations\": [\n        {\n          \"startTime\": \"2022-09-17T10:22:57.555Z\",\n          \"endTime\": \"2022-09-17T10:22:57.555Z\"\n        }\n      ]\n    },\n    \"dateRange\": {\n      \"startTime\": \"2022-09-17T10:22:57.555Z\",\n      \"endTime\": \"2022-09-17T10:22:57.555Z\"\n    }\n  },\n  \"result\": {\n    \"top_0\": [\n      {\n        \"clientASN\": \"3243\",\n        \"clientASName\": \"MEO\",\n        \"value\": \"3\"\n      }\n    ]\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"result\": {\n    \"meta\": {\n      \"confidenceInfo\": {\n        \"annotations\": [\n          {\n            \"startTime\": \"2022-09-17T10:22:57.555Z\",\n            \"endTime\": \"2022-09-17T10:22:57.555Z\"\n          }\n        ]\n      },\n      \"dateRange\": {\n        \"startTime\": \"2022-09-17T10:22:57.555Z\",\n        \"endTime\": \"2022-09-17T10:22:57.555Z\"\n      }\n    },\n    \"top_0\": [\n      {\n        \"clientASN\": \"3243\",\n        \"clientASName\": \"MEO\",\n        \"value\": \"3\"\n      }\n    ]\n  }\n}"
 		},
 		{
 			"title": "Get top autonomous systems by device type",
@@ -3453,7 +3446,7 @@
 				"objects": [],
 				"example": "{\n  \"limit\": 5,\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"botClass\": [\n    \"LIKELY_AUTOMATED\"\n  ],\n  \"format\": \"json\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"meta\": {\n    \"confidenceInfo\": {\n      \"annotations\": [\n        {\n          \"startTime\": \"2022-09-17T10:22:57.555Z\",\n          \"endTime\": \"2022-09-17T10:22:57.555Z\"\n        }\n      ]\n    },\n    \"dateRange\": {\n      \"startTime\": \"2022-09-17T10:22:57.555Z\",\n      \"endTime\": \"2022-09-17T10:22:57.555Z\"\n    }\n  },\n  \"result\": {\n    \"top_0\": [\n      {\n        \"clientASN\": \"3243\",\n        \"clientASName\": \"MEO\",\n        \"value\": \"3\"\n      }\n    ]\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"result\": {\n    \"meta\": {\n      \"confidenceInfo\": {\n        \"annotations\": [\n          {\n            \"startTime\": \"2022-09-17T10:22:57.555Z\",\n            \"endTime\": \"2022-09-17T10:22:57.555Z\"\n          }\n        ]\n      },\n      \"dateRange\": {\n        \"startTime\": \"2022-09-17T10:22:57.555Z\",\n        \"endTime\": \"2022-09-17T10:22:57.555Z\"\n      }\n    },\n    \"top_0\": [\n      {\n        \"clientASN\": \"3243\",\n        \"clientASName\": \"MEO\",\n        \"value\": \"3\"\n      }\n    ]\n  }\n}"
 		},
 		{
 			"title": "Get top autonomous systems by TLS version",
@@ -3606,7 +3599,7 @@
 				"objects": [],
 				"example": "{\n  \"limit\": 5,\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"botClass\": [\n    \"LIKELY_AUTOMATED\"\n  ],\n  \"format\": \"json\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"meta\": {\n    \"confidenceInfo\": {\n      \"annotations\": [\n        {\n          \"startTime\": \"2022-09-17T10:22:57.555Z\",\n          \"endTime\": \"2022-09-17T10:22:57.555Z\"\n        }\n      ]\n    },\n    \"dateRange\": {\n      \"startTime\": \"2022-09-17T10:22:57.555Z\",\n      \"endTime\": \"2022-09-17T10:22:57.555Z\"\n    }\n  },\n  \"result\": {\n    \"top_0\": [\n      {\n        \"clientASN\": \"3243\",\n        \"clientASName\": \"MEO\",\n        \"value\": \"3\"\n      }\n    ]\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"result\": {\n    \"meta\": {\n      \"confidenceInfo\": {\n        \"annotations\": [\n          {\n            \"startTime\": \"2022-09-17T10:22:57.555Z\",\n            \"endTime\": \"2022-09-17T10:22:57.555Z\"\n          }\n        ]\n      },\n      \"dateRange\": {\n        \"startTime\": \"2022-09-17T10:22:57.555Z\",\n        \"endTime\": \"2022-09-17T10:22:57.555Z\"\n      }\n    },\n    \"top_0\": [\n      {\n        \"clientASN\": \"3243\",\n        \"clientASName\": \"MEO\",\n        \"value\": \"3\"\n      }\n    ]\n  }\n}"
 		},
 		{
 			"title": "Get top autonomous systems by HTTP protocol",
@@ -3759,7 +3752,7 @@
 				"objects": [],
 				"example": "{\n  \"limit\": 5,\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"botClass\": [\n    \"LIKELY_AUTOMATED\"\n  ],\n  \"format\": \"json\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"meta\": {\n    \"confidenceInfo\": {\n      \"annotations\": [\n        {\n          \"startTime\": \"2022-09-17T10:22:57.555Z\",\n          \"endTime\": \"2022-09-17T10:22:57.555Z\"\n        }\n      ]\n    },\n    \"dateRange\": {\n      \"startTime\": \"2022-09-17T10:22:57.555Z\",\n      \"endTime\": \"2022-09-17T10:22:57.555Z\"\n    }\n  },\n  \"result\": {\n    \"top_0\": [\n      {\n        \"clientASN\": \"3243\",\n        \"clientASName\": \"MEO\",\n        \"value\": \"3\"\n      }\n    ]\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"result\": {\n    \"meta\": {\n      \"confidenceInfo\": {\n        \"annotations\": [\n          {\n            \"startTime\": \"2022-09-17T10:22:57.555Z\",\n            \"endTime\": \"2022-09-17T10:22:57.555Z\"\n          }\n        ]\n      },\n      \"dateRange\": {\n        \"startTime\": \"2022-09-17T10:22:57.555Z\",\n        \"endTime\": \"2022-09-17T10:22:57.555Z\"\n      }\n    },\n    \"top_0\": [\n      {\n        \"clientASN\": \"3243\",\n        \"clientASName\": \"MEO\",\n        \"value\": \"3\"\n      }\n    ]\n  }\n}"
 		},
 		{
 			"title": "Get top autonomous systems by HTTP version",
@@ -3912,7 +3905,7 @@
 				"objects": [],
 				"example": "{\n  \"limit\": 5,\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"botClass\": [\n    \"LIKELY_AUTOMATED\"\n  ],\n  \"format\": \"json\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"meta\": {\n    \"confidenceInfo\": {\n      \"annotations\": [\n        {\n          \"startTime\": \"2022-09-17T10:22:57.555Z\",\n          \"endTime\": \"2022-09-17T10:22:57.555Z\"\n        }\n      ]\n    },\n    \"dateRange\": {\n      \"startTime\": \"2022-09-17T10:22:57.555Z\",\n      \"endTime\": \"2022-09-17T10:22:57.555Z\"\n    }\n  },\n  \"result\": {\n    \"top_0\": [\n      {\n        \"clientASN\": \"3243\",\n        \"clientASName\": \"MEO\",\n        \"value\": \"3\"\n      }\n    ]\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"result\": {\n    \"meta\": {\n      \"confidenceInfo\": {\n        \"annotations\": [\n          {\n            \"startTime\": \"2022-09-17T10:22:57.555Z\",\n            \"endTime\": \"2022-09-17T10:22:57.555Z\"\n          }\n        ]\n      },\n      \"dateRange\": {\n        \"startTime\": \"2022-09-17T10:22:57.555Z\",\n        \"endTime\": \"2022-09-17T10:22:57.555Z\"\n      }\n    },\n    \"top_0\": [\n      {\n        \"clientASN\": \"3243\",\n        \"clientASName\": \"MEO\",\n        \"value\": \"3\"\n      }\n    ]\n  }\n}"
 		},
 		{
 			"title": "Get top autonomous systems by IP version",
@@ -4065,7 +4058,7 @@
 				"objects": [],
 				"example": "{\n  \"limit\": 5,\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"botClass\": [\n    \"LIKELY_AUTOMATED\"\n  ],\n  \"format\": \"json\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"meta\": {\n    \"confidenceInfo\": {\n      \"annotations\": [\n        {\n          \"startTime\": \"2022-09-17T10:22:57.555Z\",\n          \"endTime\": \"2022-09-17T10:22:57.555Z\"\n        }\n      ]\n    },\n    \"dateRange\": {\n      \"startTime\": \"2022-09-17T10:22:57.555Z\",\n      \"endTime\": \"2022-09-17T10:22:57.555Z\"\n    }\n  },\n  \"result\": {\n    \"top_0\": [\n      {\n        \"clientASN\": \"3243\",\n        \"clientASName\": \"MEO\",\n        \"value\": \"3\"\n      }\n    ]\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"result\": {\n    \"meta\": {\n      \"confidenceInfo\": {\n        \"annotations\": [\n          {\n            \"startTime\": \"2022-09-17T10:22:57.555Z\",\n            \"endTime\": \"2022-09-17T10:22:57.555Z\"\n          }\n        ]\n      },\n      \"dateRange\": {\n        \"startTime\": \"2022-09-17T10:22:57.555Z\",\n        \"endTime\": \"2022-09-17T10:22:57.555Z\"\n      }\n    },\n    \"top_0\": [\n      {\n        \"clientASN\": \"3243\",\n        \"clientASName\": \"MEO\",\n        \"value\": \"3\"\n      }\n    ]\n  }\n}"
 		},
 		{
 			"title": "Get top autonomous systems by HTTP requests",
@@ -4218,7 +4211,7 @@
 				"objects": [],
 				"example": "{\n  \"limit\": 5,\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"botClass\": [\n    \"LIKELY_AUTOMATED\"\n  ],\n  \"format\": \"json\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"meta\": {\n    \"confidenceInfo\": {\n      \"annotations\": [\n        {\n          \"startTime\": \"2022-09-17T10:22:57.555Z\",\n          \"endTime\": \"2022-09-17T10:22:57.555Z\"\n        }\n      ]\n    },\n    \"dateRange\": {\n      \"startTime\": \"2022-09-17T10:22:57.555Z\",\n      \"endTime\": \"2022-09-17T10:22:57.555Z\"\n    }\n  },\n  \"result\": {\n    \"top_0\": [\n      {\n        \"clientASN\": \"3243\",\n        \"clientASName\": \"MEO\",\n        \"value\": \"3\"\n      }\n    ]\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"result\": {\n    \"meta\": {\n      \"confidenceInfo\": {\n        \"annotations\": [\n          {\n            \"startTime\": \"2022-09-17T10:22:57.555Z\",\n            \"endTime\": \"2022-09-17T10:22:57.555Z\"\n          }\n        ]\n      },\n      \"dateRange\": {\n        \"startTime\": \"2022-09-17T10:22:57.555Z\",\n        \"endTime\": \"2022-09-17T10:22:57.555Z\"\n      }\n    },\n    \"top_0\": [\n      {\n        \"clientASN\": \"3243\",\n        \"clientASName\": \"MEO\",\n        \"value\": \"3\"\n      }\n    ]\n  }\n}"
 		},
 		{
 			"title": "Get top user agents by HTTP requests",
@@ -4371,7 +4364,7 @@
 				"objects": [],
 				"example": "{\n  \"limit\": 5,\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"botClass\": [\n    \"LIKELY_AUTOMATED\"\n  ],\n  \"format\": \"json\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"meta\": {\n    \"confidenceInfo\": {\n      \"annotations\": [\n        {\n          \"startTime\": \"2022-09-17T10:22:57.555Z\",\n          \"endTime\": \"2022-09-17T10:22:57.555Z\"\n        }\n      ]\n    },\n    \"dateRange\": {\n      \"startTime\": \"2022-09-17T10:22:57.555Z\",\n      \"endTime\": \"2022-09-17T10:22:57.555Z\"\n    }\n  },\n  \"result\": {\n    \"top_0\": [\n      {}\n    ]\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"result\": {\n    \"meta\": {\n      \"confidenceInfo\": {\n        \"annotations\": [\n          {\n            \"startTime\": \"2022-09-17T10:22:57.555Z\",\n            \"endTime\": \"2022-09-17T10:22:57.555Z\"\n          }\n        ]\n      },\n      \"dateRange\": {\n        \"startTime\": \"2022-09-17T10:22:57.555Z\",\n        \"endTime\": \"2022-09-17T10:22:57.555Z\"\n      }\n    },\n    \"top_0\": [\n      {}\n    ]\n  }\n}"
 		},
 		{
 			"title": "Get top user agents aggregated in families by HTTP requests",
@@ -4524,7 +4517,7 @@
 				"objects": [],
 				"example": "{\n  \"limit\": 5,\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"location\": [\n    \"US,CA\"\n  ],\n  \"botClass\": [\n    \"LIKELY_AUTOMATED\"\n  ],\n  \"format\": \"json\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"meta\": {\n    \"confidenceInfo\": {\n      \"annotations\": [\n        {\n          \"startTime\": \"2022-09-17T10:22:57.555Z\",\n          \"endTime\": \"2022-09-17T10:22:57.555Z\"\n        }\n      ]\n    },\n    \"dateRange\": {\n      \"startTime\": \"2022-09-17T10:22:57.555Z\",\n      \"endTime\": \"2022-09-17T10:22:57.555Z\"\n    }\n  },\n  \"result\": {\n    \"top_0\": [\n      {}\n    ]\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"result\": {\n    \"meta\": {\n      \"confidenceInfo\": {\n        \"annotations\": [\n          {\n            \"startTime\": \"2022-09-17T10:22:57.555Z\",\n            \"endTime\": \"2022-09-17T10:22:57.555Z\"\n          }\n        ]\n      },\n      \"dateRange\": {\n        \"startTime\": \"2022-09-17T10:22:57.555Z\",\n        \"endTime\": \"2022-09-17T10:22:57.555Z\"\n      }\n    },\n    \"top_0\": [\n      {}\n    ]\n  }\n}"
 		}
 	],
 	"cfExtendedDescription": "Either one or multiple queries can be requested at the same time - this is useful when you want, for example, to compare multiple time series (eg. `dateRange=7d&location=US&dateRange=7d&location=CA` would fetch two time series at the same time, the first for the US, the second for Canada). Take into account that the api is not real time and has a delay of about two hours.",

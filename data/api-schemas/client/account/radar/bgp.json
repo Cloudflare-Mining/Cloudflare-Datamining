@@ -155,7 +155,7 @@
 				"objects": [],
 				"example": "{\n  \"aggInterval\": \"1h\",\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"prefix\": \"1.1.1.0/24\",\n  \"updateType\": [\n    \"ANNOUNCEMENT\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"format\": \"json\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"meta\": {\n    \"confidenceInfo\": {\n      \"annotations\": [\n        {\n          \"dataSource\": \"ALL\",\n          \"eventType\": \"OUTAGE\",\n          \"description\": \"Cable cut in Tonga\",\n          \"startTime\": \"2022-09-17T10:22:57.555Z\",\n          \"endTime\": \"2022-09-17T10:22:57.555Z\"\n        }\n      ]\n    },\n    \"dateRange\": {\n      \"startTime\": \"2022-09-16T10:22:57.555Z\",\n      \"endTime\": \"2022-09-17T10:22:57.555Z\"\n    },\n    \"aggInterval\": \"1h\",\n    \"lastUpdated\": \"2022-09-17T10:22:57.555Z\"\n  },\n  \"result\": {\n    \"series\": {\n      \"timestamps\": [\n        \"2022-09-17T10:22:57.555Z\"\n      ],\n      \"values\": [\n        0.56\n      ]\n    }\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"result\": {\n    \"meta\": {\n      \"confidenceInfo\": {\n        \"annotations\": [\n          {\n            \"dataSource\": \"ALL\",\n            \"eventType\": \"OUTAGE\",\n            \"description\": \"Cable cut in Tonga\",\n            \"startTime\": \"2022-09-17T10:22:57.555Z\",\n            \"endTime\": \"2022-09-17T10:22:57.555Z\"\n          }\n        ]\n      },\n      \"dateRange\": {\n        \"startTime\": \"2022-09-16T10:22:57.555Z\",\n        \"endTime\": \"2022-09-17T10:22:57.555Z\"\n      },\n      \"aggInterval\": \"1h\",\n      \"lastUpdated\": \"2022-09-17T10:22:57.555Z\"\n    },\n    \"series\": {\n      \"timestamps\": [\n        \"2022-09-17T10:22:57.555Z\"\n      ],\n      \"values\": [\n        0.56\n      ]\n    }\n  }\n}"
 		},
 		{
 			"title": "Get top prefixes",
@@ -298,7 +298,7 @@
 				"objects": [],
 				"example": "{\n  \"limit\": 5,\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"updateType\": [\n    \"ANNOUNCEMENT\"\n  ],\n  \"format\": \"json\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"meta\": {\n    \"dateRange\": {\n      \"startTime\": \"2022-09-16T10:22:57.555Z\",\n      \"endTime\": \"2022-09-17T10:22:57.555Z\"\n    }\n  },\n  \"result\": {\n    \"top_0\": [\n      {\n        \"prefix\": \"2804:77cc:8000::/33\",\n        \"value\": \"0.73996\"\n      }\n    ]\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"result\": {\n    \"meta\": {\n      \"dateRange\": {\n        \"startTime\": \"2022-09-16T10:22:57.555Z\",\n        \"endTime\": \"2022-09-17T10:22:57.555Z\"\n      }\n    },\n    \"top_0\": [\n      {\n        \"prefix\": \"2804:77cc:8000::/33\",\n        \"value\": \"0.73996\"\n      }\n    ]\n  }\n}"
 		},
 		{
 			"title": "Get top autonomous systems",
@@ -451,7 +451,7 @@
 				"objects": [],
 				"example": "{\n  \"limit\": 5,\n  \"name\": [\n    \"main_series\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"asn\": [\n    \"15169\"\n  ],\n  \"prefix\": [\n    \"1.1.1.0/24\"\n  ],\n  \"updateType\": [\n    \"ANNOUNCEMENT\"\n  ],\n  \"format\": \"json\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"meta\": {\n    \"dateRange\": {\n      \"startTime\": \"2022-09-16T10:22:57.555Z\",\n      \"endTime\": \"2022-09-17T10:22:57.555Z\"\n    }\n  },\n  \"result\": {\n    \"top_0\": [\n      {\n        \"asn\": \"714\",\n        \"ASName\": \"Apple-Engineering\",\n        \"value\": \"0.73996\"\n      }\n    ]\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"result\": {\n    \"meta\": {\n      \"dateRange\": {\n        \"startTime\": \"2022-09-16T10:22:57.555Z\",\n        \"endTime\": \"2022-09-17T10:22:57.555Z\"\n      }\n    },\n    \"top_0\": [\n      {\n        \"asn\": \"714\",\n        \"ASName\": \"Apple-Engineering\",\n        \"value\": \"0.73996\"\n      }\n    ]\n  }\n}"
 		}
 	],
 	"cfExtendedDescription": "Either one or multiple queries can be requested at the same time - this is useful when you want, for example, to compare multiple time series (eg. `dateRange=7d&location=US&dateRange=7d&location=CA` would fetch two time series at the same time, the first for the US, the second for Canada). Take into account that the api is not real time and has a delay of about two hours.",

@@ -190,7 +190,7 @@
 			},
 			"html_id": "web3-hostname-update-ipfs-universal-path-gateway-content-list",
 			"uri": "zones/:zone_identifier/web3/hostnames/:identifier/ipfs_universal_path/content_list",
-			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/zones/9a7806061c88ada191ed06f989cc3dac/web3/hostnames/9a7806061c88ada191ed06f989cc3dac/ipfs_universal_path/content_list\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"action\":\"block\"}'",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/zones/9a7806061c88ada191ed06f989cc3dac/web3/hostnames/9a7806061c88ada191ed06f989cc3dac/ipfs_universal_path/content_list\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"action\":\"block\",\"entries\":[{\"id\":\"9a7806061c88ada191ed06f989cc3dac\",\"type\":\"cid\",\"content\":\"QmPZ9gcCEpqKTo6aq61g2nXGUhM4iCL3ewB6LDXZCtioEB\",\"description\":\"this is my content list entry\",\"created_on\":\"2014-01-01T05:20:00.12345Z\",\"modified_on\":\"2014-01-01T05:20:00.12345Z\"}]}'",
 			"parameters": {
 				"_formatter": {
 					"jsonMediaType": {}
@@ -203,14 +203,74 @@
 							"block"
 						],
 						"description": "Behavior of the content list"
+					},
+					"entries": {
+						"type": "array",
+						"example": "[\n  {\n    \"id\": \"9a7806061c88ada191ed06f989cc3dac\",\n    \"type\": \"cid\",\n    \"content\": \"QmPZ9gcCEpqKTo6aq61g2nXGUhM4iCL3ewB6LDXZCtioEB\",\n    \"description\": \"this is my content list entry\",\n    \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n    \"modified_on\": \"2014-01-01T05:20:00.12345Z\"\n  }\n]",
+						"description": "Content list entries",
+						"items": {
+							"description": "Content list entry to be blocked",
+							"type": "object",
+							"properties": {
+								"id": {
+									"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
+									"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+									"description": "API item identifier tag",
+									"type": "string",
+									"maxLength": 32,
+									"readOnly": true,
+									"example": "9a7806061c88ada191ed06f989cc3dac"
+								},
+								"type": {
+									"type": "string",
+									"enum": [
+										"cid",
+										"content_path"
+									],
+									"description": "Type of content list entry to block",
+									"example": "cid"
+								},
+								"content": {
+									"type": "string",
+									"maxLength": 500,
+									"description": "CID or content path of content to block",
+									"example": "QmPZ9gcCEpqKTo6aq61g2nXGUhM4iCL3ewB6LDXZCtioEB"
+								},
+								"description": {
+									"type": "string",
+									"maxLength": 500,
+									"description": "An optional description of the content list entry.",
+									"example": "this is my content list entry"
+								},
+								"created_on": {
+									"id": "https://api.cloudflare.com/schemas/v4/client/definitions/created-on.json",
+									"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+									"description": "Creation time",
+									"type": "string",
+									"format": "date-time",
+									"readOnly": true,
+									"example": "2014-01-01T05:20:00.12345Z"
+								},
+								"modified_on": {
+									"id": "https://api.cloudflare.com/schemas/v4/client/definitions/modified-on.json",
+									"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+									"description": "Last modification time",
+									"type": "string",
+									"format": "date-time",
+									"readOnly": true,
+									"example": "2014-01-01T05:20:00.12345Z"
+								}
+							}
+						}
 					}
 				},
-				"required_props": [],
-				"optional_props": [
-					"action"
+				"required_props": [
+					"action",
+					"entries"
 				],
+				"optional_props": [],
 				"objects": [],
-				"example": "{\n  \"action\": \"block\"\n}"
+				"example": "{\n  \"action\": \"block\",\n  \"entries\": [\n    {\n      \"id\": \"9a7806061c88ada191ed06f989cc3dac\",\n      \"type\": \"cid\",\n      \"content\": \"QmPZ9gcCEpqKTo6aq61g2nXGUhM4iCL3ewB6LDXZCtioEB\",\n      \"description\": \"this is my content list entry\",\n      \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n      \"modified_on\": \"2014-01-01T05:20:00.12345Z\"\n    }\n  ]\n}"
 			},
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"action\": \"block\"\n  }\n}"
 		},

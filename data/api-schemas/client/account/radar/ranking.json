@@ -137,7 +137,7 @@
 				"objects": [],
 				"example": "{\n  \"limit\": 5,\n  \"name\": [\n    \"main_series\"\n  ],\n  \"location\": [\n    \"US\"\n  ],\n  \"domains\": [\n    \"google.com,facebook.com\"\n  ],\n  \"dateRange\": [\n    \"7d\"\n  ],\n  \"dateStart\": [\n    \"2022-08-01T09:58:33Z\"\n  ],\n  \"dateEnd\": [\n    \"2022-09-01T09:58:33Z\"\n  ],\n  \"format\": \"json\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"meta\": {\n    \"dateRange\": {\n      \"startTime\": \"2022-09-16T10:22:57.555Z\",\n      \"endTime\": \"2022-09-17T10:22:57.555Z\"\n    }\n  },\n  \"result\": {\n    \"serie_0\": {\n      \"timestamps\": [\n        \"2022-09-02\"\n      ],\n      \"<domain name>\": [\n        2\n      ]\n    }\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"result\": {\n    \"meta\": {\n      \"dateRange\": {\n        \"startTime\": \"2022-09-16T10:22:57.555Z\",\n        \"endTime\": \"2022-09-17T10:22:57.555Z\"\n      }\n    },\n    \"serie_0\": {\n      \"timestamps\": [\n        \"2022-09-02\"\n      ],\n      \"<domain name>\": [\n        2\n      ]\n    }\n  }\n}"
 		},
 		{
 			"title": "Get Domains Rank top",
@@ -221,7 +221,7 @@
 				"objects": [],
 				"example": "{\n  \"limit\": 5,\n  \"name\": [\n    \"main_series\"\n  ],\n  \"location\": [\n    \"US\"\n  ],\n  \"date\": [\n    \"2022-09-19\"\n  ],\n  \"format\": \"json\"\n}"
 			},
-			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"meta\": {\n    \"top_0\": {\n      \"date\": \"2022-09-19\"\n    }\n  },\n  \"result\": {\n    \"top_0\": [\n      {\n        \"rank\": 1,\n        \"domain\": \"google.com\"\n      }\n    ]\n  }\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [\n    {}\n  ],\n  \"result\": {\n    \"meta\": {\n      \"top_0\": {\n        \"date\": \"2022-09-19\"\n      }\n    },\n    \"top_0\": [\n      {\n        \"rank\": 1,\n        \"domain\": \"google.com\"\n      }\n    ]\n  }\n}"
 		}
 	],
 	"cfExtendedDescription": "",
