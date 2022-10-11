@@ -1,5 +1,4 @@
 <div class="post-content lh-copy gray1">
-	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2019/09/image2-1.png" class="kg-image"></figure>
 	<p><em><strong>Update</strong>: since publishing this blog post, we've released <a href="https://blog.cloudflare.com/big-ideas-on-pages/">Cloudflare Pages</a>. If you're using Cloudflare for hosting sites, Cloudflare Pages is better suited for this use case.</em></p>
 	<p>Performance on the web has always been a battle against the speed of light — accessing a site from London that is served from Seattle, WA means every single asset request has to travel over seven thousand miles. The first breakthrough in the web performance battle was HTTP/1.1 connection keep-alive and browsers opening multiple connections. The next breakthrough was the CDN, bringing your static assets closer to your end users by caching them in data centers closer to them. Today, with Workers Sites, we’re excited to announce the next big breakthrough — entire sites distributed directly onto the edge of the Internet.</p>
 	<h2 id="deploying-to-the-edge-of-the-network">Deploying to the edge of the network</h2>
@@ -38,7 +37,7 @@ cargo install wrangler</code></pre>
 	<p>So we passed the first test with flying colors — 100! However, running a benchmark from your own computer introduces a bias: your users are not necessarily where you are. In fact, your users are increasingly <em>not </em>where you are. </p>
 	<p>Where you’re benchmarking from is really important: running tests from different locations will yield different results. Benchmarking from Seattle and hitting a server on the West coast says very little about your global performance. </p>
 	<p>We decided to use a tool called Catchpoint to run benchmarks from cities around the world. To see how we compare, we deployed the site to three different static site deployment platforms including Workers Sites.</p>
-	<p>Since providers offer data center regions on the coasts of the United States, or central Europe, it’s common to see good performance in regions such as North America, and we’ve got you covered here:</p>
+	<p>Since providers offer data center regions on the coasts of the United States, or Central Europe, it’s common to see good performance in regions such as North America, and we’ve got you covered here:</p>
 	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2019/09/Screen-Shot-2019-09-26-at-10.58.41-PM.png" class="kg-image"></figure>
 	<p>But what about your users in the rest of the world? Performance is even more critical in those regions: the first users are not going to be connecting to your site on a MacBook Pro, on a blazing fast connection. Workers Sites allows you to reach those regions without any additional effort on your part — every time <a href="https://blog.cloudflare.com/scaling-the-cloudflare-global/">our map grows</a>, your global presence grows with it. </p>
 	<p>We’ve done the work of running some benchmarks from different parts of the world for you, and we’re pleased to share the results:</p>
@@ -46,7 +45,5 @@ cargo install wrangler</code></pre>
 	<h2 id="one-last-thing-">One last thing...</h2>
 	<p>Deploying your next site with Workers Sites is easy and leads to great performance, so we thought it was only right that we deploy with Workers Sites ourselves. With this announcement, we are also open sourcing the <a href="https://developers.cloudflare.com/workers" target="_blank">Cloudflare Workers docs</a>! And, they are now served from a Cloudflare data center near you using Workers Sites.</p>
 	<p>We can’t wait to see what you deploy with <a href="https://workers.cloudflare.com/sites" target="_blank">Workers Sites</a>!</p>
-	<hr>
-	<p><em>Have you built something interesting with Workers or Workers Sites? Let us know @CloudflareDev!</em></p>
-	<p><br></p>
+	<p><em>Have you built something interesting with Workers or Workers Sites? Let us know <a href="https://twitter.com/CloudflareDev" target="_blank">@CloudflareDev</a>!</em></p>
 </div>
