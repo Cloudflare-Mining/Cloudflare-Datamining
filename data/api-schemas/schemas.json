@@ -91961,6 +91961,669 @@
 				}
 			}
 		},
+		"/accounts/{account_identifier}/mnm/config": {
+			"get": {
+				"summary": "List account configuration",
+				"description": "Lists default sampling and router IPs for account.",
+				"parameters": [
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"example": "6f91088a406011ed95aed352566e8d4c"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "List account configuration response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"required": [
+										"name",
+										"default_sampling",
+										"router_ips"
+									],
+									"properties": {
+										"name": {
+											"type": "string",
+											"description": "The account name.",
+											"example": "cloudflare user's account"
+										},
+										"default_sampling": {
+											"type": "number",
+											"minimum": 1,
+											"default": 1,
+											"description": "Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router."
+										},
+										"router_ips": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"description": "IPv4 CIDR of the router sourcing flow data. Only /32 addresses are currently supported.",
+												"example": "203.0.113.1/32"
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				]
+			},
+			"post": {
+				"summary": "Create account configuration",
+				"description": "Create a new network monitoring configuration",
+				"parameters": [
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1mnm~1config/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Create account configuration response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1mnm~1config/get/responses/200/content/application~1json/schema"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {}
+					}
+				}
+			},
+			"patch": {
+				"summary": "Update account configuration fields",
+				"description": "Update fields in an existing network monitoring configuration",
+				"parameters": [
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1mnm~1config/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Update account configuration fields response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1mnm~1config/get/responses/200/content/application~1json/schema"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {}
+					}
+				}
+			},
+			"put": {
+				"summary": "Update an entire account configuration",
+				"description": "Update an existing network monitoring configuration, requires the entire configuration to be updated at once.",
+				"parameters": [
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1mnm~1config/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Update an entire account configuration response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1mnm~1config/get/responses/200/content/application~1json/schema"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {}
+					}
+				}
+			},
+			"delete": {
+				"summary": "Delete account configuration",
+				"description": "Delete an existing network monitoring configuration",
+				"parameters": [
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1mnm~1config/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Delete account configuration response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1mnm~1config/get/responses/200/content/application~1json/schema"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {}
+					}
+				}
+			}
+		},
+		"/accounts/{account_identifier}/mnm/config/full": {
+			"get": {
+				"summary": "List rules and account configuration",
+				"description": "Lists default sampling, router IPs, and rules for account.",
+				"parameters": [
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"example": "6f91088a406011ed95aed352566e8d4c"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "List rules and account configuration response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"required": [
+										"name",
+										"default_sampling",
+										"router_ips"
+									],
+									"properties": {
+										"name": {
+											"type": "string",
+											"description": "The account name.",
+											"example": "cloudflare user's account"
+										},
+										"default_sampling": {
+											"type": "number",
+											"minimum": 1,
+											"default": 1,
+											"description": "Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router."
+										},
+										"router_ips": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"description": "IPv4 CIDR of the router sourcing flow data. Only /32 addresses are currently supported.",
+												"example": "203.0.113.1/32"
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				]
+			}
+		},
+		"/accounts/{account_identifier}/mnm/rules": {
+			"get": {
+				"summary": "List rules",
+				"description": "Lists network monitoring rules for account.",
+				"parameters": [
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"example": "6f91088a406011ed95aed352566e8d4c"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "List rules response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"required": [
+											"name",
+											"prefixes",
+											"automatic_advertisement",
+											"duration"
+										],
+										"properties": {
+											"name": {
+												"type": "string",
+												"description": "The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters.",
+												"example": "my_rule_1"
+											},
+											"id": {
+												"example": "2890e6fa406311ed9b5a23f70f6fb8cf"
+											},
+											"prefixes": {
+												"type": "array",
+												"items": {
+													"type": "string",
+													"description": "The IP prefixes that are monitored for this rule. Must be a CIDR range like 203.0.113.0/24. Max 5000 different CIDR ranges.",
+													"example": "203.0.113.1/32"
+												}
+											},
+											"packet_threshold": {
+												"type": "number",
+												"description": "The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
+												"minimum": 1,
+												"example": 10000
+											},
+											"bandwidth_threshold": {
+												"type": "number",
+												"description": "The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
+												"minimum": 1,
+												"example": 1000
+											},
+											"duration": {
+												"type": "string",
+												"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The minimum is 60 seconds and maximum is 21600 seconds. The format is XhYmZs where X, Y, and Z durations are optional; however at least one unit must be provided.",
+												"default": "60s",
+												"example": "1h2m3s"
+											},
+											"automatic_advertisement": {
+												"type": "boolean",
+												"description": "Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.",
+												"example": "false"
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				]
+			},
+			"post": {
+				"summary": "Create rules",
+				"description": "Create network monitoring rules for account.",
+				"parameters": [
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1mnm~1rules/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Create rules response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1mnm~1rules/get/responses/200/content/application~1json/schema"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {}
+					}
+				}
+			},
+			"put": {
+				"summary": "Update rules",
+				"description": "Update network monitoring rules for account.",
+				"parameters": [
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1mnm~1rules/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Update rules response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1mnm~1rules/get/responses/200/content/application~1json/schema"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {}
+					}
+				}
+			}
+		},
+		"/accounts/{account_identifier}/mnm/rules/{rule_identifier}": {
+			"get": {
+				"summary": "Get rule",
+				"description": "List a single network monitoring rule for account.",
+				"parameters": [
+					{
+						"name": "rule_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"example": "2890e6fa406311ed9b5a23f70f6fb8cf"
+						}
+					},
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"example": "6f91088a406011ed95aed352566e8d4c"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Get rule response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"required": [
+										"name",
+										"prefixes",
+										"automatic_advertisement",
+										"duration"
+									],
+									"properties": {
+										"name": {
+											"type": "string",
+											"description": "The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters.",
+											"example": "my_rule_1"
+										},
+										"id": {
+											"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1mnm~1rules~1%7Brule_identifier%7D/get/parameters/0/schema"
+										},
+										"prefixes": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"description": "The IP prefixes that are monitored for this rule. Must be a CIDR range like 203.0.113.0/24. Max 5000 different CIDR ranges.",
+												"example": "203.0.113.1/32"
+											}
+										},
+										"packet_threshold": {
+											"type": "number",
+											"description": "The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
+											"minimum": 1,
+											"example": 10000
+										},
+										"bandwidth_threshold": {
+											"type": "number",
+											"description": "The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.",
+											"minimum": 1,
+											"example": 1000
+										},
+										"duration": {
+											"type": "string",
+											"description": "The amount of time that the rule threshold must be exceeded to send an alert notification. The minimum is 60 seconds and maximum is 21600 seconds. The format is XhYmZs where X, Y, and Z durations are optional; however at least one unit must be provided.",
+											"default": "60s",
+											"example": "1h2m3s"
+										},
+										"automatic_advertisement": {
+											"type": "boolean",
+											"description": "Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.",
+											"example": "false"
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				]
+			},
+			"patch": {
+				"summary": "Update rule",
+				"description": "Update a network monitoring rule for account.",
+				"parameters": [
+					{
+						"name": "rule_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1mnm~1rules~1%7Brule_identifier%7D/get/parameters/0/schema"
+						}
+					},
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1mnm~1rules~1%7Brule_identifier%7D/get/parameters/1/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Update rule response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1mnm~1rules~1%7Brule_identifier%7D/get/responses/200/content/application~1json/schema"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {}
+					}
+				}
+			},
+			"delete": {
+				"summary": "Delete rule",
+				"description": "Delete a network monitoring rule for account.",
+				"parameters": [
+					{
+						"name": "rule_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1mnm~1rules~1%7Brule_identifier%7D/get/parameters/0/schema"
+						}
+					},
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1mnm~1rules~1%7Brule_identifier%7D/get/parameters/1/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Delete rule response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1mnm~1rules~1%7Brule_identifier%7D/get/responses/200/content/application~1json/schema"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {}
+					}
+				}
+			}
+		},
+		"/accounts/{account_identifier}/mnm/rules/{rule_identifier}/advertisement": {
+			"patch": {
+				"summary": "Update advertisement for rule",
+				"description": "Update advertisement for rule",
+				"parameters": [
+					{
+						"name": "rule_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"example": "2890e6fa406311ed9b5a23f70f6fb8cf"
+						}
+					},
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"example": "6f91088a406011ed95aed352566e8d4c"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Update advertisement for rule response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "boolean",
+									"description": "Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.",
+									"example": "false"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {}
+					}
+				}
+			}
+		},
 		"/accounts/{account_identifier}/intel/domain": {
 			"get": {
 				"summary": "Get Domain Details",
