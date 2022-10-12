@@ -186,6 +186,10 @@ export const DesignatedApprover = eg.object({
 
 export type Approver = TypeFromCodec<typeof DesignatedApprover>;
 
+export const DomainProtectionDesignatedApprovers = eg.object({
+  designated_approvers: eg.array(DesignatedApprover)
+});
+
 export const DomainProtectionConfig = eg.object({
   auto_relock_after: eg.number,
   number_of_designated_approvers: eg.number
@@ -197,7 +201,7 @@ export type DomainProtectionConfig = TypeFromCodec<
 
 export const DomainProtectionData = eg.intersection([
   DomainProtectionConfig,
-  eg.object({ designated_approvers: eg.array(DesignatedApprover) })
+  DomainProtectionDesignatedApprovers
 ]);
 
 export type DomainProtectionData = TypeFromCodec<typeof DomainProtectionData>;
