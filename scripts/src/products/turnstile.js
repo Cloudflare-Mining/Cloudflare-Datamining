@@ -111,4 +111,5 @@ await tryAndPush(
 	`${prefix} - Product: Turnstile Data was updated!`,
 	'CFData - Product: Turnstile Data Update',
 	'Pushed Product: Turnstile Data: ' + prefix,
+	'DISCORD_WEBHOOK_PRODUCT_TURNSTILE',
 );
