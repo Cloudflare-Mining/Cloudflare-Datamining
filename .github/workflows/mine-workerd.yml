@@ -2,7 +2,6 @@ on:
   schedule:
     - cron:  '50 * * * *'
   workflow_dispatch: {}
-  push: {} # temporary
 
 name: Mine Workerd
 jobs:
