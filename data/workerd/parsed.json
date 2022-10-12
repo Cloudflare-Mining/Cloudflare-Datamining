@@ -1,7 +1,7 @@
 {
 	"structs": [
 		{
-			"name": "workerd/api/analytics-engine.capnp:AnalyticsEngineEvent",
+			"name": "workerd/src/workerd/api/analytics-engine.capnp:AnalyticsEngineEvent",
 			"fields": [
 				{
 					"name": "accountId",
@@ -186,7 +186,7 @@
 			]
 		},
 		{
-			"name": "workerd/api/r2-api.capnp:R2HeadRequest",
+			"name": "workerd/src/workerd/api/r2-api.capnp:R2HeadRequest",
 			"fields": [
 				{
 					"name": "object",
@@ -195,7 +195,7 @@
 			]
 		},
 		{
-			"name": "workerd/api/r2-api.capnp:R2GetRequest",
+			"name": "workerd/src/workerd/api/r2-api.capnp:R2GetRequest",
 			"fields": [
 				{
 					"name": "object",
@@ -216,7 +216,7 @@
 			]
 		},
 		{
-			"name": "workerd/api/r2-api.capnp:R2PutRequest",
+			"name": "workerd/src/workerd/api/r2-api.capnp:R2PutRequest",
 			"fields": [
 				{
 					"name": "object",
@@ -257,7 +257,7 @@
 			]
 		},
 		{
-			"name": "workerd/api/r2-api.capnp:R2ListRequest",
+			"name": "workerd/src/workerd/api/r2-api.capnp:R2ListRequest",
 			"fields": [
 				{
 					"name": "limit",
@@ -290,7 +290,7 @@
 			]
 		},
 		{
-			"name": "workerd/api/r2-api.capnp:R2DeleteRequest",
+			"name": "workerd/src/workerd/api/r2-api.capnp:R2DeleteRequest",
 			"fields": [
 				{
 					"name": "object",
@@ -303,7 +303,7 @@
 			]
 		},
 		{
-			"name": "workerd/api/r2-api.capnp:R2CreateBucketRequest",
+			"name": "workerd/src/workerd/api/r2-api.capnp:R2CreateBucketRequest",
 			"fields": [
 				{
 					"name": "bucket",
@@ -312,7 +312,7 @@
 			]
 		},
 		{
-			"name": "workerd/api/r2-api.capnp:R2ListBucketRequest",
+			"name": "workerd/src/workerd/api/r2-api.capnp:R2ListBucketRequest",
 			"fields": [
 				{
 					"name": "limit",
@@ -329,7 +329,7 @@
 			]
 		},
 		{
-			"name": "workerd/api/r2-api.capnp:R2DeleteBucketRequest",
+			"name": "workerd/src/workerd/api/r2-api.capnp:R2DeleteBucketRequest",
 			"fields": [
 				{
 					"name": "bucket",
@@ -338,7 +338,7 @@
 			]
 		},
 		{
-			"name": "workerd/api/r2-api.capnp:R2BindingRequest",
+			"name": "workerd/src/workerd/api/r2-api.capnp:R2BindingRequest",
 			"fields": [
 				{
 					"name": "version",
@@ -351,7 +351,7 @@
 			]
 		},
 		{
-			"name": "workerd/api/r2-api.capnp:R2BindingRequest.payload",
+			"name": "workerd/src/workerd/api/r2-api.capnp:R2BindingRequest.payload",
 			"fields": [
 				{
 					"name": "head",
@@ -410,7 +410,7 @@
 			]
 		},
 		{
-			"name": "workerd/api/r2-api.capnp:R2Range",
+			"name": "workerd/src/workerd/api/r2-api.capnp:R2Range",
 			"fields": [
 				{
 					"name": "offset",
@@ -427,7 +427,7 @@
 			]
 		},
 		{
-			"name": "workerd/api/r2-api.capnp:R2Conditional",
+			"name": "workerd/src/workerd/api/r2-api.capnp:R2Conditional",
 			"fields": [
 				{
 					"name": "etagMatches",
@@ -452,7 +452,7 @@
 			]
 		},
 		{
-			"name": "workerd/api/r2-api.capnp:Record",
+			"name": "workerd/src/workerd/api/r2-api.capnp:Record",
 			"fields": [
 				{
 					"name": "k",
@@ -465,7 +465,7 @@
 			]
 		},
 		{
-			"name": "workerd/api/r2-api.capnp:R2HttpFields",
+			"name": "workerd/src/workerd/api/r2-api.capnp:R2HttpFields",
 			"fields": [
 				{
 					"name": "contentType",
@@ -494,7 +494,7 @@
 			]
 		},
 		{
-			"name": "workerd/api/r2-api.capnp:R2Checksums",
+			"name": "workerd/src/workerd/api/r2-api.capnp:R2Checksums",
 			"fields": [
 				{
 					"name": "md5",
@@ -529,7 +529,7 @@
 			]
 		},
 		{
-			"name": "workerd/api/r2-api.capnp:R2ErrorResponse",
+			"name": "workerd/src/workerd/api/r2-api.capnp:R2ErrorResponse",
 			"fields": [
 				{
 					"name": "version",
@@ -546,7 +546,7 @@
 			]
 		},
 		{
-			"name": "workerd/api/r2-api.capnp:R2HeadResponse",
+			"name": "workerd/src/workerd/api/r2-api.capnp:R2HeadResponse",
 			"fields": [
 				{
 					"name": "name",
@@ -589,7 +589,7 @@
 			]
 		},
 		{
-			"name": "workerd/api/r2-api.capnp:R2ListResponse",
+			"name": "workerd/src/workerd/api/r2-api.capnp:R2ListResponse",
 			"fields": [
 				{
 					"name": "objects",
@@ -610,15 +610,15 @@
 			]
 		},
 		{
-			"name": "workerd/api/r2-api.capnp:R2DeleteResponse",
+			"name": "workerd/src/workerd/api/r2-api.capnp:R2DeleteResponse",
 			"fields": []
 		},
 		{
-			"name": "workerd/api/r2-api.capnp:R2CreateBucketResponse",
+			"name": "workerd/src/workerd/api/r2-api.capnp:R2CreateBucketResponse",
 			"fields": []
 		},
 		{
-			"name": "workerd/api/r2-api.capnp:R2ListBucketResponse.Bucket",
+			"name": "workerd/src/workerd/api/r2-api.capnp:R2ListBucketResponse.Bucket",
 			"fields": [
 				{
 					"name": "name",
@@ -633,7 +633,7 @@
 			]
 		},
 		{
-			"name": "workerd/api/r2-api.capnp:R2ListBucketResponse",
+			"name": "workerd/src/workerd/api/r2-api.capnp:R2ListBucketResponse",
 			"fields": [
 				{
 					"name": "buckets",
@@ -650,11 +650,11 @@
 			]
 		},
 		{
-			"name": "workerd/api/r2-api.capnp:R2DeleteBucketResponse",
+			"name": "workerd/src/workerd/api/r2-api.capnp:R2DeleteBucketResponse",
 			"fields": []
 		},
 		{
-			"name": "workerd/io/actor-storage.capnp:ActorStorage.getStage$Params",
+			"name": "workerd/src/workerd/io/actor-storage.capnp:ActorStorage.getStage$Params",
 			"fields": [
 				{
 					"name": "stableId",
@@ -663,7 +663,7 @@
 			]
 		},
 		{
-			"name": "workerd/io/actor-storage.capnp:ActorStorage.getStage$Results",
+			"name": "workerd/src/workerd/io/actor-storage.capnp:ActorStorage.getStage$Results",
 			"fields": [
 				{
 					"name": "stage",
@@ -672,7 +672,7 @@
 			]
 		},
 		{
-			"name": "workerd/io/actor-storage.capnp:ActorStorage.DbSettings",
+			"name": "workerd/src/workerd/io/actor-storage.capnp:ActorStorage.DbSettings",
 			"fields": [
 				{
 					"name": "priority",
@@ -685,7 +685,7 @@
 			]
 		},
 		{
-			"name": "workerd/io/actor-storage.capnp:ActorStorage.Stage.txn$Params",
+			"name": "workerd/src/workerd/io/actor-storage.capnp:ActorStorage.Stage.txn$Params",
 			"fields": [
 				{
 					"name": "settings",
@@ -694,7 +694,7 @@
 			]
 		},
 		{
-			"name": "workerd/io/actor-storage.capnp:ActorStorage.Stage.txn$Results",
+			"name": "workerd/src/workerd/io/actor-storage.capnp:ActorStorage.Stage.txn$Results",
 			"fields": [
 				{
 					"name": "transaction",
@@ -703,7 +703,7 @@
 			]
 		},
 		{
-			"name": "workerd/io/actor-storage.capnp:ActorStorage.Operations.get$Params",
+			"name": "workerd/src/workerd/io/actor-storage.capnp:ActorStorage.Operations.get$Params",
 			"fields": [
 				{
 					"name": "key",
@@ -712,7 +712,7 @@
 			]
 		},
 		{
-			"name": "workerd/io/actor-storage.capnp:ActorStorage.Operations.get$Results",
+			"name": "workerd/src/workerd/io/actor-storage.capnp:ActorStorage.Operations.get$Results",
 			"fields": [
 				{
 					"name": "value",
@@ -721,7 +721,7 @@
 			]
 		},
 		{
-			"name": "workerd/io/actor-storage.capnp:ActorStorage.KeyValue",
+			"name": "workerd/src/workerd/io/actor-storage.capnp:ActorStorage.KeyValue",
 			"fields": [
 				{
 					"name": "key",
@@ -734,7 +734,7 @@
 			]
 		},
 		{
-			"name": "workerd/io/actor-storage.capnp:ActorStorage.Operations.put$Params",
+			"name": "workerd/src/workerd/io/actor-storage.capnp:ActorStorage.Operations.put$Params",
 			"fields": [
 				{
 					"name": "entries",
@@ -743,11 +743,11 @@
 			]
 		},
 		{
-			"name": "workerd/io/actor-storage.capnp:ActorStorage.Operations.put$Results",
+			"name": "workerd/src/workerd/io/actor-storage.capnp:ActorStorage.Operations.put$Results",
 			"fields": []
 		},
 		{
-			"name": "workerd/io/actor-storage.capnp:ActorStorage.Operations.delete$Params",
+			"name": "workerd/src/workerd/io/actor-storage.capnp:ActorStorage.Operations.delete$Params",
 			"fields": [
 				{
 					"name": "keys",
@@ -756,7 +756,7 @@
 			]
 		},
 		{
-			"name": "workerd/io/actor-storage.capnp:ActorStorage.Operations.delete$Results",
+			"name": "workerd/src/workerd/io/actor-storage.capnp:ActorStorage.Operations.delete$Results",
 			"fields": [
 				{
 					"name": "numDeleted",
@@ -765,7 +765,7 @@
 			]
 		},
 		{
-			"name": "workerd/io/actor-storage.capnp:ActorStorage.Operations.list$Params",
+			"name": "workerd/src/workerd/io/actor-storage.capnp:ActorStorage.Operations.list$Params",
 			"fields": [
 				{
 					"name": "start",
@@ -794,11 +794,11 @@
 			]
 		},
 		{
-			"name": "workerd/io/actor-storage.capnp:ActorStorage.Operations.list$Results",
+			"name": "workerd/src/workerd/io/actor-storage.capnp:ActorStorage.Operations.list$Results",
 			"fields": []
 		},
 		{
-			"name": "workerd/io/actor-storage.capnp:ActorStorage.Operations.getMultiple$Params",
+			"name": "workerd/src/workerd/io/actor-storage.capnp:ActorStorage.Operations.getMultiple$Params",
 			"fields": [
 				{
 					"name": "keys",
@@ -811,15 +811,15 @@
 			]
 		},
 		{
-			"name": "workerd/io/actor-storage.capnp:ActorStorage.Operations.getMultiple$Results",
+			"name": "workerd/src/workerd/io/actor-storage.capnp:ActorStorage.Operations.getMultiple$Results",
 			"fields": []
 		},
 		{
-			"name": "workerd/io/actor-storage.capnp:ActorStorage.Operations.deleteAll$Params",
+			"name": "workerd/src/workerd/io/actor-storage.capnp:ActorStorage.Operations.deleteAll$Params",
 			"fields": []
 		},
 		{
-			"name": "workerd/io/actor-storage.capnp:ActorStorage.Operations.deleteAll$Results",
+			"name": "workerd/src/workerd/io/actor-storage.capnp:ActorStorage.Operations.deleteAll$Results",
 			"fields": [
 				{
 					"name": "numDeleted",
@@ -828,11 +828,11 @@
 			]
 		},
 		{
-			"name": "workerd/io/actor-storage.capnp:ActorStorage.Operations.getAlarm$Params",
+			"name": "workerd/src/workerd/io/actor-storage.capnp:ActorStorage.Operations.getAlarm$Params",
 			"fields": []
 		},
 		{
-			"name": "workerd/io/actor-storage.capnp:ActorStorage.Operations.getAlarm$Results",
+			"name": "workerd/src/workerd/io/actor-storage.capnp:ActorStorage.Operations.getAlarm$Results",
 			"fields": [
 				{
 					"name": "scheduledTimeMs",
@@ -841,7 +841,7 @@
 			]
 		},
 		{
-			"name": "workerd/io/actor-storage.capnp:ActorStorage.Operations.setAlarm$Params",
+			"name": "workerd/src/workerd/io/actor-storage.capnp:ActorStorage.Operations.setAlarm$Params",
 			"fields": [
 				{
 					"name": "scheduledTimeMs",
@@ -850,11 +850,11 @@
 			]
 		},
 		{
-			"name": "workerd/io/actor-storage.capnp:ActorStorage.Operations.setAlarm$Results",
+			"name": "workerd/src/workerd/io/actor-storage.capnp:ActorStorage.Operations.setAlarm$Results",
 			"fields": []
 		},
 		{
-			"name": "workerd/io/actor-storage.capnp:ActorStorage.Operations.deleteAlarm$Params",
+			"name": "workerd/src/workerd/io/actor-storage.capnp:ActorStorage.Operations.deleteAlarm$Params",
 			"fields": [
 				{
 					"name": "timeToDeleteMs",
@@ -863,7 +863,7 @@
 			]
 		},
 		{
-			"name": "workerd/io/actor-storage.capnp:ActorStorage.Operations.deleteAlarm$Results",
+			"name": "workerd/src/workerd/io/actor-storage.capnp:ActorStorage.Operations.deleteAlarm$Results",
 			"fields": [
 				{
 					"name": "deleted",
@@ -872,7 +872,7 @@
 			]
 		},
 		{
-			"name": "workerd/io/actor-storage.capnp:ActorStorage.KeyRename",
+			"name": "workerd/src/workerd/io/actor-storage.capnp:ActorStorage.KeyRename",
 			"fields": [
 				{
 					"name": "oldKey",
@@ -885,7 +885,7 @@
 			]
 		},
 		{
-			"name": "workerd/io/actor-storage.capnp:ActorStorage.Operations.rename$Params",
+			"name": "workerd/src/workerd/io/actor-storage.capnp:ActorStorage.Operations.rename$Params",
 			"fields": [
 				{
 					"name": "entries",
@@ -894,7 +894,7 @@
 			]
 		},
 		{
-			"name": "workerd/io/actor-storage.capnp:ActorStorage.Operations.rename$Results",
+			"name": "workerd/src/workerd/io/actor-storage.capnp:ActorStorage.Operations.rename$Results",
 			"fields": [
 				{
 					"name": "renamed",
@@ -903,7 +903,7 @@
 			]
 		},
 		{
-			"name": "workerd/io/actor-storage.capnp:ActorStorage.ListStream.values$Params",
+			"name": "workerd/src/workerd/io/actor-storage.capnp:ActorStorage.ListStream.values$Params",
 			"fields": [
 				{
 					"name": "list",
@@ -912,11 +912,11 @@
 			]
 		},
 		{
-			"name": "workerd/io/actor-storage.capnp:ActorStorage.ListStream.end$Params",
+			"name": "workerd/src/workerd/io/actor-storage.capnp:ActorStorage.ListStream.end$Params",
 			"fields": []
 		},
 		{
-			"name": "workerd/io/actor-storage.capnp:ActorStorage.ListStream.end$Results",
+			"name": "workerd/src/workerd/io/actor-storage.capnp:ActorStorage.ListStream.end$Results",
 			"fields": []
 		},
 		{
@@ -924,27 +924,27 @@
 			"fields": []
 		},
 		{
-			"name": "workerd/io/actor-storage.capnp:ActorStorage.Stage.Transaction.commit$Params",
+			"name": "workerd/src/workerd/io/actor-storage.capnp:ActorStorage.Stage.Transaction.commit$Params",
 			"fields": []
 		},
 		{
-			"name": "workerd/io/actor-storage.capnp:ActorStorage.Stage.Transaction.commit$Results",
+			"name": "workerd/src/workerd/io/actor-storage.capnp:ActorStorage.Stage.Transaction.commit$Results",
 			"fields": []
 		},
 		{
-			"name": "workerd/io/actor-storage.capnp:ActorStorage.Stage.Transaction.rollback$Params",
+			"name": "workerd/src/workerd/io/actor-storage.capnp:ActorStorage.Stage.Transaction.rollback$Params",
 			"fields": []
 		},
 		{
-			"name": "workerd/io/actor-storage.capnp:ActorStorage.Stage.Transaction.rollback$Results",
+			"name": "workerd/src/workerd/io/actor-storage.capnp:ActorStorage.Stage.Transaction.rollback$Results",
 			"fields": []
 		},
 		{
-			"name": "workerd/io/cdp.capnp:Runtime",
+			"name": "workerd/src/workerd/io/cdp.capnp:Runtime",
 			"fields": []
 		},
 		{
-			"name": "workerd/io/cdp.capnp:Runtime.CallFrame",
+			"name": "workerd/src/workerd/io/cdp.capnp:Runtime.CallFrame",
 			"fields": [
 				{
 					"name": "functionName",
@@ -969,7 +969,7 @@
 			]
 		},
 		{
-			"name": "workerd/io/cdp.capnp:Runtime.StackTrace",
+			"name": "workerd/src/workerd/io/cdp.capnp:Runtime.StackTrace",
 			"fields": [
 				{
 					"name": "description",
@@ -990,7 +990,7 @@
 			]
 		},
 		{
-			"name": "workerd/io/cdp.capnp:Runtime.StackTraceId",
+			"name": "workerd/src/workerd/io/cdp.capnp:Runtime.StackTraceId",
 			"fields": [
 				{
 					"name": "id",
@@ -1003,11 +1003,11 @@
 			]
 		},
 		{
-			"name": "workerd/io/cdp.capnp:Runtime.Event",
+			"name": "workerd/src/workerd/io/cdp.capnp:Runtime.Event",
 			"fields": []
 		},
 		{
-			"name": "workerd/io/cdp.capnp:Runtime.Event.ConsoleApiCalled.Arg",
+			"name": "workerd/src/workerd/io/cdp.capnp:Runtime.Event.ConsoleApiCalled.Arg",
 			"fields": [
 				{
 					"name": "undefined",
@@ -1020,7 +1020,7 @@
 			]
 		},
 		{
-			"name": "workerd/io/cdp.capnp:Runtime.Event.ConsoleApiCalled",
+			"name": "workerd/src/workerd/io/cdp.capnp:Runtime.Event.ConsoleApiCalled",
 			"fields": [
 				{
 					"name": "type",
@@ -1045,7 +1045,7 @@
 			]
 		},
 		{
-			"name": "workerd/io/cdp.capnp:Runtime.Event.ConsoleApiCalled.Arg.string",
+			"name": "workerd/src/workerd/io/cdp.capnp:Runtime.Event.ConsoleApiCalled.Arg.string",
 			"fields": [
 				{
 					"name": "value",
@@ -1054,19 +1054,19 @@
 			]
 		},
 		{
-			"name": "workerd/io/cdp.capnp:Page",
+			"name": "workerd/src/workerd/io/cdp.capnp:Page",
 			"fields": []
 		},
 		{
-			"name": "workerd/io/cdp.capnp:Security",
+			"name": "workerd/src/workerd/io/cdp.capnp:Security",
 			"fields": []
 		},
 		{
-			"name": "workerd/io/cdp.capnp:Network",
+			"name": "workerd/src/workerd/io/cdp.capnp:Network",
 			"fields": []
 		},
 		{
-			"name": "workerd/io/cdp.capnp:Network.ResourceTiming",
+			"name": "workerd/src/workerd/io/cdp.capnp:Network.ResourceTiming",
 			"fields": [
 				{
 					"name": "requestTime",
@@ -1168,7 +1168,7 @@
 			]
 		},
 		{
-			"name": "workerd/io/cdp.capnp:Network.Request",
+			"name": "workerd/src/workerd/io/cdp.capnp:Network.Request",
 			"fields": [
 				{
 					"name": "url",
@@ -1231,7 +1231,7 @@
 			]
 		},
 		{
-			"name": "workerd/io/cdp.capnp:Network.SignedCertificateTimestamp",
+			"name": "workerd/src/workerd/io/cdp.capnp:Network.SignedCertificateTimestamp",
 			"fields": [
 				{
 					"name": "status",
@@ -1268,7 +1268,7 @@
 			]
 		},
 		{
-			"name": "workerd/io/cdp.capnp:Network.SecurityDetails",
+			"name": "workerd/src/workerd/io/cdp.capnp:Network.SecurityDetails",
 			"fields": [
 				{
 					"name": "protocol",
@@ -1321,7 +1321,7 @@
 			]
 		},
 		{
-			"name": "workerd/io/cdp.capnp:Network.Response",
+			"name": "workerd/src/workerd/io/cdp.capnp:Network.Response",
 			"fields": [
 				{
 					"name": "url",
@@ -1402,7 +1402,7 @@
 			]
 		},
 		{
-			"name": "workerd/io/cdp.capnp:Network.Initiator",
+			"name": "workerd/src/workerd/io/cdp.capnp:Network.Initiator",
 			"fields": [
 				{
 					"name": "type",
@@ -1423,15 +1423,15 @@
 			]
 		},
 		{
-			"name": "workerd/io/cdp.capnp:Network.Command",
+			"name": "workerd/src/workerd/io/cdp.capnp:Network.Command",
 			"fields": []
 		},
 		{
-			"name": "workerd/io/cdp.capnp:Network.Command.Enable",
+			"name": "workerd/src/workerd/io/cdp.capnp:Network.Command.Enable",
 			"fields": []
 		},
 		{
-			"name": "workerd/io/cdp.capnp:Network.Command.Enable.Params",
+			"name": "workerd/src/workerd/io/cdp.capnp:Network.Command.Enable.Params",
 			"fields": [
 				{
 					"name": "maxTotalBufferSize",
@@ -1444,27 +1444,27 @@
 			]
 		},
 		{
-			"name": "workerd/io/cdp.capnp:Network.Command.Enable.Result",
+			"name": "workerd/src/workerd/io/cdp.capnp:Network.Command.Enable.Result",
 			"fields": []
 		},
 		{
-			"name": "workerd/io/cdp.capnp:Network.Command.Disable",
+			"name": "workerd/src/workerd/io/cdp.capnp:Network.Command.Disable",
 			"fields": []
 		},
 		{
-			"name": "workerd/io/cdp.capnp:Network.Command.Disable.Params",
+			"name": "workerd/src/workerd/io/cdp.capnp:Network.Command.Disable.Params",
 			"fields": []
 		},
 		{
-			"name": "workerd/io/cdp.capnp:Network.Command.Disable.Result",
+			"name": "workerd/src/workerd/io/cdp.capnp:Network.Command.Disable.Result",
 			"fields": []
 		},
 		{
-			"name": "workerd/io/cdp.capnp:Network.Command.GetResponseBody",
+			"name": "workerd/src/workerd/io/cdp.capnp:Network.Command.GetResponseBody",
 			"fields": []
 		},
 		{
-			"name": "workerd/io/cdp.capnp:Network.Command.GetResponseBody.Params",
+			"name": "workerd/src/workerd/io/cdp.capnp:Network.Command.GetResponseBody.Params",
 			"fields": [
 				{
 					"name": "requestId",
@@ -1473,7 +1473,7 @@
 			]
 		},
 		{
-			"name": "workerd/io/cdp.capnp:Network.Command.GetResponseBody.Result",
+			"name": "workerd/src/workerd/io/cdp.capnp:Network.Command.GetResponseBody.Result",
 			"fields": [
 				{
 					"name": "body",
@@ -1486,11 +1486,11 @@
 			]
 		},
 		{
-			"name": "workerd/io/cdp.capnp:Network.Event",
+			"name": "workerd/src/workerd/io/cdp.capnp:Network.Event",
 			"fields": []
 		},
 		{
-			"name": "workerd/io/cdp.capnp:Network.Event.RequestWillBeSent",
+			"name": "workerd/src/workerd/io/cdp.capnp:Network.Event.RequestWillBeSent",
 			"fields": [
 				{
 					"name": "requestId",
@@ -1535,7 +1535,7 @@
 			]
 		},
 		{
-			"name": "workerd/io/cdp.capnp:Network.Event.ResponseReceived",
+			"name": "workerd/src/workerd/io/cdp.capnp:Network.Event.ResponseReceived",
 			"fields": [
 				{
 					"name": "requestId",
@@ -1564,7 +1564,7 @@
 			]
 		},
 		{
-			"name": "workerd/io/cdp.capnp:Network.Event.DataReceived",
+			"name": "workerd/src/workerd/io/cdp.capnp:Network.Event.DataReceived",
 			"fields": [
 				{
 					"name": "requestId",
@@ -1585,7 +1585,7 @@
 			]
 		},
 		{
-			"name": "workerd/io/cdp.capnp:Network.Event.LoadingFinished",
+			"name": "workerd/src/workerd/io/cdp.capnp:Network.Event.LoadingFinished",
 			"fields": [
 				{
 					"name": "requestId",
@@ -1606,11 +1606,11 @@
 			]
 		},
 		{
-			"name": "workerd/io/cdp.capnp:Profiler",
+			"name": "workerd/src/workerd/io/cdp.capnp:Profiler",
 			"fields": []
 		},
 		{
-			"name": "workerd/io/cdp.capnp:Profiler.PositionTickInfo",
+			"name": "workerd/src/workerd/io/cdp.capnp:Profiler.PositionTickInfo",
 			"fields": [
 				{
 					"name": "line",
@@ -1623,7 +1623,7 @@
 			]
 		},
 		{
-			"name": "workerd/io/cdp.capnp:Profiler.ProfileNode",
+			"name": "workerd/src/workerd/io/cdp.capnp:Profiler.ProfileNode",
 			"fields": [
 				{
 					"name": "id",
@@ -1652,7 +1652,7 @@
 			]
 		},
 		{
-			"name": "workerd/io/cdp.capnp:Profiler.Profile",
+			"name": "workerd/src/workerd/io/cdp.capnp:Profiler.Profile",
 			"fields": [
 				{
 					"name": "nodes",
@@ -1677,27 +1677,27 @@
 			]
 		},
 		{
-			"name": "workerd/io/cdp.capnp:Profiler.Command",
+			"name": "workerd/src/workerd/io/cdp.capnp:Profiler.Command",
 			"fields": []
 		},
 		{
-			"name": "workerd/io/cdp.capnp:Profiler.Command.Enable",
+			"name": "workerd/src/workerd/io/cdp.capnp:Profiler.Command.Enable",
 			"fields": []
 		},
 		{
-			"name": "workerd/io/cdp.capnp:Profiler.Command.Enable.Params",
+			"name": "workerd/src/workerd/io/cdp.capnp:Profiler.Command.Enable.Params",
 			"fields": []
 		},
 		{
-			"name": "workerd/io/cdp.capnp:Profiler.Command.Enable.Result",
+			"name": "workerd/src/workerd/io/cdp.capnp:Profiler.Command.Enable.Result",
 			"fields": []
 		},
 		{
-			"name": "workerd/io/cdp.capnp:Profiler.Command.SetSamplingInterval",
+			"name": "workerd/src/workerd/io/cdp.capnp:Profiler.Command.SetSamplingInterval",
 			"fields": []
 		},
 		{
-			"name": "workerd/io/cdp.capnp:Profiler.Command.SetSamplingInterval.Params",
+			"name": "workerd/src/workerd/io/cdp.capnp:Profiler.Command.SetSamplingInterval.Params",
 			"fields": [
 				{
 					"name": "interval",
@@ -1706,31 +1706,31 @@
 			]
 		},
 		{
-			"name": "workerd/io/cdp.capnp:Profiler.Command.SetSamplingInterval.Result",
+			"name": "workerd/src/workerd/io/cdp.capnp:Profiler.Command.SetSamplingInterval.Result",
 			"fields": []
 		},
 		{
-			"name": "workerd/io/cdp.capnp:Profiler.Command.Start",
+			"name": "workerd/src/workerd/io/cdp.capnp:Profiler.Command.Start",
 			"fields": []
 		},
 		{
-			"name": "workerd/io/cdp.capnp:Profiler.Command.Start.Params",
+			"name": "workerd/src/workerd/io/cdp.capnp:Profiler.Command.Start.Params",
 			"fields": []
 		},
 		{
-			"name": "workerd/io/cdp.capnp:Profiler.Command.Start.Result",
+			"name": "workerd/src/workerd/io/cdp.capnp:Profiler.Command.Start.Result",
 			"fields": []
 		},
 		{
-			"name": "workerd/io/cdp.capnp:Profiler.Command.Stop",
+			"name": "workerd/src/workerd/io/cdp.capnp:Profiler.Command.Stop",
 			"fields": []
 		},
 		{
-			"name": "workerd/io/cdp.capnp:Profiler.Command.Stop.Params",
+			"name": "workerd/src/workerd/io/cdp.capnp:Profiler.Command.Stop.Params",
 			"fields": []
 		},
 		{
-			"name": "workerd/io/cdp.capnp:Profiler.Command.Stop.Result",
+			"name": "workerd/src/workerd/io/cdp.capnp:Profiler.Command.Stop.Result",
 			"fields": [
 				{
 					"name": "profile",
@@ -1739,43 +1739,43 @@
 			]
 		},
 		{
-			"name": "workerd/io/cdp.capnp:HeapProfiler",
+			"name": "workerd/src/workerd/io/cdp.capnp:HeapProfiler",
 			"fields": []
 		},
 		{
-			"name": "workerd/io/cdp.capnp:HeapProfiler.Command",
+			"name": "workerd/src/workerd/io/cdp.capnp:HeapProfiler.Command",
 			"fields": []
 		},
 		{
-			"name": "workerd/io/cdp.capnp:HeapProfiler.Command.Enable",
+			"name": "workerd/src/workerd/io/cdp.capnp:HeapProfiler.Command.Enable",
 			"fields": []
 		},
 		{
-			"name": "workerd/io/cdp.capnp:HeapProfiler.Command.Enable.Params",
+			"name": "workerd/src/workerd/io/cdp.capnp:HeapProfiler.Command.Enable.Params",
 			"fields": []
 		},
 		{
-			"name": "workerd/io/cdp.capnp:HeapProfiler.Command.Enable.Result",
+			"name": "workerd/src/workerd/io/cdp.capnp:HeapProfiler.Command.Enable.Result",
 			"fields": []
 		},
 		{
-			"name": "workerd/io/cdp.capnp:HeapProfiler.Command.Disable",
+			"name": "workerd/src/workerd/io/cdp.capnp:HeapProfiler.Command.Disable",
 			"fields": []
 		},
 		{
-			"name": "workerd/io/cdp.capnp:HeapProfiler.Command.Disable.Params",
+			"name": "workerd/src/workerd/io/cdp.capnp:HeapProfiler.Command.Disable.Params",
 			"fields": []
 		},
 		{
-			"name": "workerd/io/cdp.capnp:HeapProfiler.Command.Disable.Result",
+			"name": "workerd/src/workerd/io/cdp.capnp:HeapProfiler.Command.Disable.Result",
 			"fields": []
 		},
 		{
-			"name": "workerd/io/cdp.capnp:HeapProfiler.Command.TakeHeapSnapshot",
+			"name": "workerd/src/workerd/io/cdp.capnp:HeapProfiler.Command.TakeHeapSnapshot",
 			"fields": []
 		},
 		{
-			"name": "workerd/io/cdp.capnp:HeapProfiler.Command.TakeHeapSnapshot.Params",
+			"name": "workerd/src/workerd/io/cdp.capnp:HeapProfiler.Command.TakeHeapSnapshot.Params",
 			"fields": [
 				{
 					"name": "reportProgress",
@@ -1792,15 +1792,15 @@
 			]
 		},
 		{
-			"name": "workerd/io/cdp.capnp:HeapProfiler.Command.TakeHeapSnapshot.Result",
+			"name": "workerd/src/workerd/io/cdp.capnp:HeapProfiler.Command.TakeHeapSnapshot.Result",
 			"fields": []
 		},
 		{
-			"name": "workerd/io/cdp.capnp:HeapProfiler.Event",
+			"name": "workerd/src/workerd/io/cdp.capnp:HeapProfiler.Event",
 			"fields": []
 		},
 		{
-			"name": "workerd/io/cdp.capnp:HeapProfiler.Event.AddHeapSnapshotChunk",
+			"name": "workerd/src/workerd/io/cdp.capnp:HeapProfiler.Event.AddHeapSnapshotChunk",
 			"fields": [
 				{
 					"name": "chunk",
@@ -1809,7 +1809,7 @@
 			]
 		},
 		{
-			"name": "workerd/io/cdp.capnp:HeapProfiler.Event.ReportHeapSnapshotProgress",
+			"name": "workerd/src/workerd/io/cdp.capnp:HeapProfiler.Event.ReportHeapSnapshotProgress",
 			"fields": [
 				{
 					"name": "done",
@@ -1826,7 +1826,7 @@
 			]
 		},
 		{
-			"name": "workerd/io/cdp.capnp:Error",
+			"name": "workerd/src/workerd/io/cdp.capnp:Error",
 			"fields": [
 				{
 					"name": "code",
@@ -1839,7 +1839,7 @@
 			]
 		},
 		{
-			"name": "workerd/io/cdp.capnp:Method",
+			"name": "workerd/src/workerd/io/cdp.capnp:Method",
 			"fields": [
 				{
 					"name": "params",
@@ -1856,7 +1856,7 @@
 			]
 		},
 		{
-			"name": "workerd/io/cdp.capnp:Command",
+			"name": "workerd/src/workerd/io/cdp.capnp:Command",
 			"fields": [
 				{
 					"name": "id",
@@ -1929,7 +1929,7 @@
 			]
 		},
 		{
-			"name": "workerd/io/cdp.capnp:Event",
+			"name": "workerd/src/workerd/io/cdp.capnp:Event",
 			"fields": [
 				{
 					"name": "networkRequestWillBeSent",
@@ -1976,7 +1976,7 @@
 			]
 		},
 		{
-			"name": "workerd/io/compatibility-date.capnp:CompatibilityFlags",
+			"name": "workerd/src/workerd/io/compatibility-date.capnp:CompatibilityFlags",
 			"fields": [
 				{
 					"name": "formDataParserSupportsFiles",
@@ -2126,11 +2126,17 @@
 					"annotations": [
 						"web_socket_compression"
 					]
+				},
+				{
+					"name": "nodeJs18CompatExperimental",
+					"annotations": [
+						"nodejs_18_compat_experimental"
+					]
 				}
 			]
 		},
 		{
-			"name": "workerd/io/jaeger.capnp:JaegerSpan",
+			"name": "workerd/src/workerd/io/jaeger.capnp:JaegerSpan",
 			"fields": [
 				{
 					"name": "traceIdHigh",
@@ -2155,7 +2161,7 @@
 			]
 		},
 		{
-			"name": "workerd/jsg/rtti.capnp:NumberType",
+			"name": "workerd/src/workerd/jsg/rtti.capnp:NumberType",
 			"fields": [
 				{
 					"name": "name",
@@ -2164,7 +2170,7 @@
 			]
 		},
 		{
-			"name": "workerd/jsg/rtti.capnp:PromiseType",
+			"name": "workerd/src/workerd/jsg/rtti.capnp:PromiseType",
 			"fields": [
 				{
 					"name": "value",
@@ -2173,7 +2179,7 @@
 			]
 		},
 		{
-			"name": "workerd/jsg/rtti.capnp:StructureType",
+			"name": "workerd/src/workerd/jsg/rtti.capnp:StructureType",
 			"fields": [
 				{
 					"name": "name",
@@ -2182,7 +2188,7 @@
 			]
 		},
 		{
-			"name": "workerd/jsg/rtti.capnp:StringType",
+			"name": "workerd/src/workerd/jsg/rtti.capnp:StringType",
 			"fields": [
 				{
 					"name": "name",
@@ -2191,7 +2197,7 @@
 			]
 		},
 		{
-			"name": "workerd/jsg/rtti.capnp:ArrayType",
+			"name": "workerd/src/workerd/jsg/rtti.capnp:ArrayType",
 			"fields": [
 				{
 					"name": "element",
@@ -2200,7 +2206,7 @@
 			]
 		},
 		{
-			"name": "workerd/jsg/rtti.capnp:MaybeType",
+			"name": "workerd/src/workerd/jsg/rtti.capnp:MaybeType",
 			"fields": [
 				{
 					"name": "value",
@@ -2209,7 +2215,7 @@
 			]
 		},
 		{
-			"name": "workerd/jsg/rtti.capnp:DictType",
+			"name": "workerd/src/workerd/jsg/rtti.capnp:DictType",
 			"fields": [
 				{
 					"name": "key",
@@ -2222,7 +2228,7 @@
 			]
 		},
 		{
-			"name": "workerd/jsg/rtti.capnp:OneOfType",
+			"name": "workerd/src/workerd/jsg/rtti.capnp:OneOfType",
 			"fields": [
 				{
 					"name": "variants",
@@ -2231,7 +2237,7 @@
 			]
 		},
 		{
-			"name": "workerd/jsg/rtti.capnp:BuiltinType",
+			"name": "workerd/src/workerd/jsg/rtti.capnp:BuiltinType",
 			"fields": [
 				{
 					"name": "type",
@@ -2240,7 +2246,7 @@
 			]
 		},
 		{
-			"name": "workerd/jsg/rtti.capnp:IntrinsicType",
+			"name": "workerd/src/workerd/jsg/rtti.capnp:IntrinsicType",
 			"fields": [
 				{
 					"name": "name",
@@ -2249,7 +2255,7 @@
 			]
 		},
 		{
-			"name": "workerd/jsg/rtti.capnp:FunctionType",
+			"name": "workerd/src/workerd/jsg/rtti.capnp:FunctionType",
 			"fields": [
 				{
 					"name": "returnType",
@@ -2262,7 +2268,7 @@
 			]
 		},
 		{
-			"name": "workerd/jsg/rtti.capnp:JsgImplType",
+			"name": "workerd/src/workerd/jsg/rtti.capnp:JsgImplType",
 			"fields": [
 				{
 					"name": "type",
@@ -2271,7 +2277,7 @@
 			]
 		},
 		{
-			"name": "workerd/jsg/rtti.capnp:Type",
+			"name": "workerd/src/workerd/jsg/rtti.capnp:Type",
 			"fields": [
 				{
 					"name": "unknown",
@@ -2340,7 +2346,7 @@
 			]
 		},
 		{
-			"name": "workerd/jsg/rtti.capnp:Member",
+			"name": "workerd/src/workerd/jsg/rtti.capnp:Member",
 			"fields": [
 				{
 					"name": "method",
@@ -2365,7 +2371,7 @@
 			]
 		},
 		{
-			"name": "workerd/jsg/rtti.capnp:Structure",
+			"name": "workerd/src/workerd/jsg/rtti.capnp:Structure",
 			"fields": [
 				{
 					"name": "name",
@@ -2390,7 +2396,7 @@
 			]
 		},
 		{
-			"name": "workerd/jsg/rtti.capnp:Method",
+			"name": "workerd/src/workerd/jsg/rtti.capnp:Method",
 			"fields": [
 				{
 					"name": "name",
@@ -2411,7 +2417,7 @@
 			]
 		},
 		{
-			"name": "workerd/jsg/rtti.capnp:Property",
+			"name": "workerd/src/workerd/jsg/rtti.capnp:Property",
 			"fields": [
 				{
 					"name": "name",
@@ -2436,7 +2442,7 @@
 			]
 		},
 		{
-			"name": "workerd/jsg/rtti.capnp:Constant",
+			"name": "workerd/src/workerd/jsg/rtti.capnp:Constant",
 			"fields": [
 				{
 					"name": "name",
@@ -2449,7 +2455,7 @@
 			]
 		},
 		{
-			"name": "workerd/jsg/rtti.capnp:Constructor",
+			"name": "workerd/src/workerd/jsg/rtti.capnp:Constructor",
 			"fields": [
 				{
 					"name": "args",
@@ -2460,7 +2466,7 @@
 	],
 	"enums": [
 		{
-			"name": "workerd/api/r2-api.capnp:R2ListRequest.IncludeField",
+			"name": "workerd/src/workerd/api/r2-api.capnp:R2ListRequest.IncludeField",
 			"enumerants": [
 				{
 					"name": "http",
@@ -2473,7 +2479,7 @@
 			]
 		},
 		{
-			"name": "workerd/io/actor-storage.capnp:ActorStorage.DbSettings.Priority",
+			"name": "workerd/src/workerd/io/actor-storage.capnp:ActorStorage.DbSettings.Priority",
 			"enumerants": [
 				{
 					"name": "default",
@@ -2486,7 +2492,7 @@
 			]
 		},
 		{
-			"name": "workerd/io/cdp.capnp:LogType",
+			"name": "workerd/src/workerd/io/cdp.capnp:LogType",
 			"enumerants": [
 				{
 					"name": "log",
@@ -2513,7 +2519,7 @@
 			]
 		},
 		{
-			"name": "workerd/io/cdp.capnp:Page.ResourceType",
+			"name": "workerd/src/workerd/io/cdp.capnp:Page.ResourceType",
 			"enumerants": [
 				{
 					"name": "document",
@@ -2596,7 +2602,7 @@
 			]
 		},
 		{
-			"name": "workerd/io/cdp.capnp:Security.MixedContentType",
+			"name": "workerd/src/workerd/io/cdp.capnp:Security.MixedContentType",
 			"enumerants": [
 				{
 					"name": "blockable",
@@ -2615,7 +2621,7 @@
 			]
 		},
 		{
-			"name": "workerd/io/cdp.capnp:Security.SecurityState",
+			"name": "workerd/src/workerd/io/cdp.capnp:Security.SecurityState",
 			"enumerants": [
 				{
 					"name": "unknown",
@@ -2640,7 +2646,7 @@
 			]
 		},
 		{
-			"name": "workerd/io/cdp.capnp:Network.ResourcePriority",
+			"name": "workerd/src/workerd/io/cdp.capnp:Network.ResourcePriority",
 			"enumerants": [
 				{
 					"name": "veryLow",
@@ -2675,7 +2681,7 @@
 			]
 		},
 		{
-			"name": "workerd/io/cdp.capnp:Network.Request.ReferrerPolicy",
+			"name": "workerd/src/workerd/io/cdp.capnp:Network.Request.ReferrerPolicy",
 			"enumerants": [
 				{
 					"name": "unsafeUrl",
@@ -2726,7 +2732,7 @@
 			]
 		},
 		{
-			"name": "workerd/io/cdp.capnp:Network.Initiator.Type",
+			"name": "workerd/src/workerd/io/cdp.capnp:Network.Initiator.Type",
 			"enumerants": [
 				{
 					"name": "parser",
@@ -2747,7 +2753,7 @@
 			]
 		},
 		{
-			"name": "workerd/io/outcome.capnp:EventOutcome",
+			"name": "workerd/src/workerd/io/outcome.capnp:EventOutcome",
 			"enumerants": [
 				{
 					"name": "unknown",
@@ -2788,7 +2794,7 @@
 			]
 		},
 		{
-			"name": "workerd/jsg/rtti.capnp:BuiltinType.Type",
+			"name": "workerd/src/workerd/jsg/rtti.capnp:BuiltinType.Type",
 			"enumerants": [
 				{
 					"name": "v8Uint8Array",
@@ -2813,7 +2819,7 @@
 			]
 		},
 		{
-			"name": "workerd/jsg/rtti.capnp:JsgImplType.Type",
+			"name": "workerd/src/workerd/jsg/rtti.capnp:JsgImplType.Type",
 			"enumerants": [
 				{
 					"name": "configuration",
@@ -2844,7 +2850,7 @@
 	],
 	"interfaces": [
 		{
-			"name": "workerd/io/actor-storage.capnp:ActorStorage.Stage",
+			"name": "workerd/src/workerd/io/actor-storage.capnp:ActorStorage.Stage",
 			"methods": [
 				{
 					"name": "txn",
@@ -2853,7 +2859,7 @@
 			]
 		},
 		{
-			"name": "workerd/io/actor-storage.capnp:ActorStorage",
+			"name": "workerd/src/workerd/io/actor-storage.capnp:ActorStorage",
 			"methods": [
 				{
 					"name": "getStage",
@@ -2862,7 +2868,7 @@
 			]
 		},
 		{
-			"name": "workerd/io/actor-storage.capnp:ActorStorage.Stage.Transaction",
+			"name": "workerd/src/workerd/io/actor-storage.capnp:ActorStorage.Stage.Transaction",
 			"methods": [
 				{
 					"name": "commit",
@@ -2875,7 +2881,7 @@
 			]
 		},
 		{
-			"name": "workerd/io/actor-storage.capnp:ActorStorage.Operations",
+			"name": "workerd/src/workerd/io/actor-storage.capnp:ActorStorage.Operations",
 			"methods": [
 				{
 					"name": "get",
@@ -2920,7 +2926,7 @@
 			]
 		},
 		{
-			"name": "workerd/io/actor-storage.capnp:ActorStorage.ListStream",
+			"name": "workerd/src/workerd/io/actor-storage.capnp:ActorStorage.ListStream",
 			"methods": [
 				{
 					"name": "values",
@@ -2934,35 +2940,35 @@
 		}
 	],
 	"unk": [
-		"workerd/api/analytics-engine.capnp",
+		"workerd/src/workerd/api/analytics-engine.capnp",
 		"capnp/c++.capnp:namespace",
 		"capnp/c++.capnp",
-		"workerd/api/r2-api.capnp",
-		"workerd/api/r2-api.capnp:versionPublicBeta",
+		"workerd/src/workerd/api/r2-api.capnp",
+		"workerd/src/workerd/api/r2-api.capnp:versionPublicBeta",
 		"capnp/compat/json.capnp:flatten",
 		"capnp/compat/json.capnp",
 		"capnp/compat/json.capnp:discriminator",
 		"capnp/compat/json.capnp:base64",
 		"capnp/compat/json.capnp:hex",
 		"capnp/compat/json.capnp:name",
-		"workerd/io/actor-storage.capnp",
+		"workerd/src/workerd/io/actor-storage.capnp",
 		"capnp/stream.capnp",
-		"workerd/io/actor-storage.capnp:ActorStorage.maxKeys",
-		"workerd/io/actor-storage.capnp:ActorStorage.renameLimit",
-		"workerd/io/cdp.capnp",
+		"workerd/src/workerd/io/actor-storage.capnp:ActorStorage.maxKeys",
+		"workerd/src/workerd/io/actor-storage.capnp:ActorStorage.renameLimit",
+		"workerd/src/workerd/io/cdp.capnp",
 		"capnp/c++.capnp:name",
-		"workerd/io/compatibility-date.capnp",
-		"workerd/io/compatibility-date.capnp:supportedCompatibilityDate",
-		"workerd/io/compatibility-date.capnp:CompatibilityFlags.compatEnableFlag",
-		"workerd/io/compatibility-date.capnp:CompatibilityFlags.compatEnableDate",
-		"workerd/io/compatibility-date.capnp:CompatibilityFlags.compatDisableFlag",
-		"workerd/io/compatibility-date.capnp:CompatibilityFlags.neededByFl",
-		"workerd/io/compatibility-date.capnp:CompatibilityFlags.compatEnableAllDates",
-		"workerd/io/jaeger.capnp",
-		"workerd/io/outcome.capnp",
-		"workerd/jsg/rtti.capnp",
-		"workerd/server/workerd-meta.capnp",
-		"workerd/server/workerd-meta.capnp:cppCapnpSchema",
-		"workerd/server/workerd-meta.capnp:workerdCapnpSchema"
+		"workerd/src/workerd/io/compatibility-date.capnp",
+		"workerd/src/workerd/io/compatibility-date.capnp:supportedCompatibilityDate",
+		"workerd/src/workerd/io/compatibility-date.capnp:CompatibilityFlags.compatEnableFlag",
+		"workerd/src/workerd/io/compatibility-date.capnp:CompatibilityFlags.compatEnableDate",
+		"workerd/src/workerd/io/compatibility-date.capnp:CompatibilityFlags.compatDisableFlag",
+		"workerd/src/workerd/io/compatibility-date.capnp:CompatibilityFlags.neededByFl",
+		"workerd/src/workerd/io/compatibility-date.capnp:CompatibilityFlags.compatEnableAllDates",
+		"workerd/src/workerd/io/jaeger.capnp",
+		"workerd/src/workerd/io/outcome.capnp",
+		"workerd/src/workerd/jsg/rtti.capnp",
+		"workerd/src/workerd/server/workerd-meta.capnp",
+		"workerd/src/workerd/server/workerd-meta.capnp:cppCapnpSchema",
+		"workerd/src/workerd/server/workerd-meta.capnp:workerdCapnpSchema"
 	]
 }
