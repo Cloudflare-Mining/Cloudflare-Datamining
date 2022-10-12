@@ -1,0 +1,2968 @@
+{
+	"structs": [
+		{
+			"name": "workerd/api/analytics-engine.capnp:AnalyticsEngineEvent",
+			"fields": [
+				{
+					"name": "accountId",
+					"annotations": []
+				},
+				{
+					"name": "dataset",
+					"annotations": []
+				},
+				{
+					"name": "schemaVersion",
+					"annotations": []
+				},
+				{
+					"name": "index1",
+					"annotations": []
+				},
+				{
+					"name": "timestamp",
+					"annotations": []
+				},
+				{
+					"name": "double1",
+					"annotations": []
+				},
+				{
+					"name": "double2",
+					"annotations": []
+				},
+				{
+					"name": "double3",
+					"annotations": []
+				},
+				{
+					"name": "double4",
+					"annotations": []
+				},
+				{
+					"name": "double5",
+					"annotations": []
+				},
+				{
+					"name": "double6",
+					"annotations": []
+				},
+				{
+					"name": "double7",
+					"annotations": []
+				},
+				{
+					"name": "double8",
+					"annotations": []
+				},
+				{
+					"name": "double9",
+					"annotations": []
+				},
+				{
+					"name": "double10",
+					"annotations": []
+				},
+				{
+					"name": "double11",
+					"annotations": []
+				},
+				{
+					"name": "double12",
+					"annotations": []
+				},
+				{
+					"name": "double13",
+					"annotations": []
+				},
+				{
+					"name": "double14",
+					"annotations": []
+				},
+				{
+					"name": "double15",
+					"annotations": []
+				},
+				{
+					"name": "double16",
+					"annotations": []
+				},
+				{
+					"name": "double17",
+					"annotations": []
+				},
+				{
+					"name": "double18",
+					"annotations": []
+				},
+				{
+					"name": "double19",
+					"annotations": []
+				},
+				{
+					"name": "double20",
+					"annotations": []
+				},
+				{
+					"name": "blob1",
+					"annotations": []
+				},
+				{
+					"name": "blob2",
+					"annotations": []
+				},
+				{
+					"name": "blob3",
+					"annotations": []
+				},
+				{
+					"name": "blob4",
+					"annotations": []
+				},
+				{
+					"name": "blob5",
+					"annotations": []
+				},
+				{
+					"name": "blob6",
+					"annotations": []
+				},
+				{
+					"name": "blob7",
+					"annotations": []
+				},
+				{
+					"name": "blob8",
+					"annotations": []
+				},
+				{
+					"name": "blob9",
+					"annotations": []
+				},
+				{
+					"name": "blob10",
+					"annotations": []
+				},
+				{
+					"name": "blob11",
+					"annotations": []
+				},
+				{
+					"name": "blob12",
+					"annotations": []
+				},
+				{
+					"name": "blob13",
+					"annotations": []
+				},
+				{
+					"name": "blob14",
+					"annotations": []
+				},
+				{
+					"name": "blob15",
+					"annotations": []
+				},
+				{
+					"name": "blob16",
+					"annotations": []
+				},
+				{
+					"name": "blob17",
+					"annotations": []
+				},
+				{
+					"name": "blob18",
+					"annotations": []
+				},
+				{
+					"name": "blob19",
+					"annotations": []
+				},
+				{
+					"name": "blob20",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/api/r2-api.capnp:R2HeadRequest",
+			"fields": [
+				{
+					"name": "object",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/api/r2-api.capnp:R2GetRequest",
+			"fields": [
+				{
+					"name": "object",
+					"annotations": []
+				},
+				{
+					"name": "range",
+					"annotations": []
+				},
+				{
+					"name": "onlyIf",
+					"annotations": []
+				},
+				{
+					"name": "rangeHeader",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/api/r2-api.capnp:R2PutRequest",
+			"fields": [
+				{
+					"name": "object",
+					"annotations": []
+				},
+				{
+					"name": "customFields",
+					"annotations": []
+				},
+				{
+					"name": "httpFields",
+					"annotations": []
+				},
+				{
+					"name": "onlyIf",
+					"annotations": []
+				},
+				{
+					"name": "md5",
+					"annotations": []
+				},
+				{
+					"name": "sha1",
+					"annotations": []
+				},
+				{
+					"name": "sha256",
+					"annotations": []
+				},
+				{
+					"name": "sha384",
+					"annotations": []
+				},
+				{
+					"name": "sha512",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/api/r2-api.capnp:R2ListRequest",
+			"fields": [
+				{
+					"name": "limit",
+					"annotations": []
+				},
+				{
+					"name": "prefix",
+					"annotations": []
+				},
+				{
+					"name": "cursor",
+					"annotations": []
+				},
+				{
+					"name": "delimiter",
+					"annotations": []
+				},
+				{
+					"name": "startAfter",
+					"annotations": []
+				},
+				{
+					"name": "include",
+					"annotations": []
+				},
+				{
+					"name": "newRuntime",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/api/r2-api.capnp:R2DeleteRequest",
+			"fields": [
+				{
+					"name": "object",
+					"annotations": []
+				},
+				{
+					"name": "objects",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/api/r2-api.capnp:R2CreateBucketRequest",
+			"fields": [
+				{
+					"name": "bucket",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/api/r2-api.capnp:R2ListBucketRequest",
+			"fields": [
+				{
+					"name": "limit",
+					"annotations": []
+				},
+				{
+					"name": "prefix",
+					"annotations": []
+				},
+				{
+					"name": "cursor",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/api/r2-api.capnp:R2DeleteBucketRequest",
+			"fields": [
+				{
+					"name": "bucket",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/api/r2-api.capnp:R2BindingRequest",
+			"fields": [
+				{
+					"name": "version",
+					"annotations": []
+				},
+				{
+					"name": "payload",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/api/r2-api.capnp:R2BindingRequest.payload",
+			"fields": [
+				{
+					"name": "head",
+					"annotations": []
+				},
+				{
+					"name": "get",
+					"annotations": []
+				},
+				{
+					"name": "put",
+					"annotations": []
+				},
+				{
+					"name": "list",
+					"annotations": []
+				},
+				{
+					"name": "delete",
+					"annotations": []
+				},
+				{
+					"name": "createBucket",
+					"annotations": []
+				},
+				{
+					"name": "listBucket",
+					"annotations": []
+				},
+				{
+					"name": "deleteBucket",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "capnp/compat/json.capnp:FlattenOptions",
+			"fields": [
+				{
+					"name": "prefix",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "capnp/compat/json.capnp:DiscriminatorOptions",
+			"fields": [
+				{
+					"name": "name",
+					"annotations": []
+				},
+				{
+					"name": "valueName",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/api/r2-api.capnp:R2Range",
+			"fields": [
+				{
+					"name": "offset",
+					"annotations": []
+				},
+				{
+					"name": "length",
+					"annotations": []
+				},
+				{
+					"name": "suffix",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/api/r2-api.capnp:R2Conditional",
+			"fields": [
+				{
+					"name": "etagMatches",
+					"annotations": []
+				},
+				{
+					"name": "etagDoesNotMatch",
+					"annotations": []
+				},
+				{
+					"name": "uploadedBefore",
+					"annotations": []
+				},
+				{
+					"name": "uploadedAfter",
+					"annotations": []
+				},
+				{
+					"name": "secondsGranularity",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/api/r2-api.capnp:Record",
+			"fields": [
+				{
+					"name": "k",
+					"annotations": []
+				},
+				{
+					"name": "v",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/api/r2-api.capnp:R2HttpFields",
+			"fields": [
+				{
+					"name": "contentType",
+					"annotations": []
+				},
+				{
+					"name": "contentLanguage",
+					"annotations": []
+				},
+				{
+					"name": "contentDisposition",
+					"annotations": []
+				},
+				{
+					"name": "contentEncoding",
+					"annotations": []
+				},
+				{
+					"name": "cacheControl",
+					"annotations": []
+				},
+				{
+					"name": "cacheExpiry",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/api/r2-api.capnp:R2Checksums",
+			"fields": [
+				{
+					"name": "md5",
+					"annotations": [
+						"0"
+					]
+				},
+				{
+					"name": "sha1",
+					"annotations": [
+						"1"
+					]
+				},
+				{
+					"name": "sha256",
+					"annotations": [
+						"2"
+					]
+				},
+				{
+					"name": "sha384",
+					"annotations": [
+						"3"
+					]
+				},
+				{
+					"name": "sha512",
+					"annotations": [
+						"4"
+					]
+				}
+			]
+		},
+		{
+			"name": "workerd/api/r2-api.capnp:R2ErrorResponse",
+			"fields": [
+				{
+					"name": "version",
+					"annotations": []
+				},
+				{
+					"name": "v4code",
+					"annotations": []
+				},
+				{
+					"name": "message",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/api/r2-api.capnp:R2HeadResponse",
+			"fields": [
+				{
+					"name": "name",
+					"annotations": []
+				},
+				{
+					"name": "version",
+					"annotations": []
+				},
+				{
+					"name": "size",
+					"annotations": []
+				},
+				{
+					"name": "etag",
+					"annotations": []
+				},
+				{
+					"name": "uploadedMillisecondsSinceEpoch",
+					"annotations": [
+						"uploaded"
+					]
+				},
+				{
+					"name": "httpFields",
+					"annotations": []
+				},
+				{
+					"name": "customFields",
+					"annotations": []
+				},
+				{
+					"name": "range",
+					"annotations": []
+				},
+				{
+					"name": "checksums",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/api/r2-api.capnp:R2ListResponse",
+			"fields": [
+				{
+					"name": "objects",
+					"annotations": []
+				},
+				{
+					"name": "truncated",
+					"annotations": []
+				},
+				{
+					"name": "cursor",
+					"annotations": []
+				},
+				{
+					"name": "delimitedPrefixes",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/api/r2-api.capnp:R2DeleteResponse",
+			"fields": []
+		},
+		{
+			"name": "workerd/api/r2-api.capnp:R2CreateBucketResponse",
+			"fields": []
+		},
+		{
+			"name": "workerd/api/r2-api.capnp:R2ListBucketResponse.Bucket",
+			"fields": [
+				{
+					"name": "name",
+					"annotations": []
+				},
+				{
+					"name": "createdMillisecondsSinceEpoch",
+					"annotations": [
+						"created"
+					]
+				}
+			]
+		},
+		{
+			"name": "workerd/api/r2-api.capnp:R2ListBucketResponse",
+			"fields": [
+				{
+					"name": "buckets",
+					"annotations": []
+				},
+				{
+					"name": "truncated",
+					"annotations": []
+				},
+				{
+					"name": "cursor",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/api/r2-api.capnp:R2DeleteBucketResponse",
+			"fields": []
+		},
+		{
+			"name": "workerd/io/actor-storage.capnp:ActorStorage.getStage$Params",
+			"fields": [
+				{
+					"name": "stableId",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/io/actor-storage.capnp:ActorStorage.getStage$Results",
+			"fields": [
+				{
+					"name": "stage",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/io/actor-storage.capnp:ActorStorage.DbSettings",
+			"fields": [
+				{
+					"name": "priority",
+					"annotations": []
+				},
+				{
+					"name": "asOfTimeMs",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/io/actor-storage.capnp:ActorStorage.Stage.txn$Params",
+			"fields": [
+				{
+					"name": "settings",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/io/actor-storage.capnp:ActorStorage.Stage.txn$Results",
+			"fields": [
+				{
+					"name": "transaction",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/io/actor-storage.capnp:ActorStorage.Operations.get$Params",
+			"fields": [
+				{
+					"name": "key",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/io/actor-storage.capnp:ActorStorage.Operations.get$Results",
+			"fields": [
+				{
+					"name": "value",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/io/actor-storage.capnp:ActorStorage.KeyValue",
+			"fields": [
+				{
+					"name": "key",
+					"annotations": []
+				},
+				{
+					"name": "value",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/io/actor-storage.capnp:ActorStorage.Operations.put$Params",
+			"fields": [
+				{
+					"name": "entries",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/io/actor-storage.capnp:ActorStorage.Operations.put$Results",
+			"fields": []
+		},
+		{
+			"name": "workerd/io/actor-storage.capnp:ActorStorage.Operations.delete$Params",
+			"fields": [
+				{
+					"name": "keys",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/io/actor-storage.capnp:ActorStorage.Operations.delete$Results",
+			"fields": [
+				{
+					"name": "numDeleted",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/io/actor-storage.capnp:ActorStorage.Operations.list$Params",
+			"fields": [
+				{
+					"name": "start",
+					"annotations": []
+				},
+				{
+					"name": "end",
+					"annotations": []
+				},
+				{
+					"name": "limit",
+					"annotations": []
+				},
+				{
+					"name": "reverse",
+					"annotations": []
+				},
+				{
+					"name": "stream",
+					"annotations": []
+				},
+				{
+					"name": "prefix",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/io/actor-storage.capnp:ActorStorage.Operations.list$Results",
+			"fields": []
+		},
+		{
+			"name": "workerd/io/actor-storage.capnp:ActorStorage.Operations.getMultiple$Params",
+			"fields": [
+				{
+					"name": "keys",
+					"annotations": []
+				},
+				{
+					"name": "stream",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/io/actor-storage.capnp:ActorStorage.Operations.getMultiple$Results",
+			"fields": []
+		},
+		{
+			"name": "workerd/io/actor-storage.capnp:ActorStorage.Operations.deleteAll$Params",
+			"fields": []
+		},
+		{
+			"name": "workerd/io/actor-storage.capnp:ActorStorage.Operations.deleteAll$Results",
+			"fields": [
+				{
+					"name": "numDeleted",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/io/actor-storage.capnp:ActorStorage.Operations.getAlarm$Params",
+			"fields": []
+		},
+		{
+			"name": "workerd/io/actor-storage.capnp:ActorStorage.Operations.getAlarm$Results",
+			"fields": [
+				{
+					"name": "scheduledTimeMs",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/io/actor-storage.capnp:ActorStorage.Operations.setAlarm$Params",
+			"fields": [
+				{
+					"name": "scheduledTimeMs",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/io/actor-storage.capnp:ActorStorage.Operations.setAlarm$Results",
+			"fields": []
+		},
+		{
+			"name": "workerd/io/actor-storage.capnp:ActorStorage.Operations.deleteAlarm$Params",
+			"fields": [
+				{
+					"name": "timeToDeleteMs",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/io/actor-storage.capnp:ActorStorage.Operations.deleteAlarm$Results",
+			"fields": [
+				{
+					"name": "deleted",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/io/actor-storage.capnp:ActorStorage.KeyRename",
+			"fields": [
+				{
+					"name": "oldKey",
+					"annotations": []
+				},
+				{
+					"name": "newKey",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/io/actor-storage.capnp:ActorStorage.Operations.rename$Params",
+			"fields": [
+				{
+					"name": "entries",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/io/actor-storage.capnp:ActorStorage.Operations.rename$Results",
+			"fields": [
+				{
+					"name": "renamed",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/io/actor-storage.capnp:ActorStorage.ListStream.values$Params",
+			"fields": [
+				{
+					"name": "list",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/io/actor-storage.capnp:ActorStorage.ListStream.end$Params",
+			"fields": []
+		},
+		{
+			"name": "workerd/io/actor-storage.capnp:ActorStorage.ListStream.end$Results",
+			"fields": []
+		},
+		{
+			"name": "capnp/stream.capnp:StreamResult",
+			"fields": []
+		},
+		{
+			"name": "workerd/io/actor-storage.capnp:ActorStorage.Stage.Transaction.commit$Params",
+			"fields": []
+		},
+		{
+			"name": "workerd/io/actor-storage.capnp:ActorStorage.Stage.Transaction.commit$Results",
+			"fields": []
+		},
+		{
+			"name": "workerd/io/actor-storage.capnp:ActorStorage.Stage.Transaction.rollback$Params",
+			"fields": []
+		},
+		{
+			"name": "workerd/io/actor-storage.capnp:ActorStorage.Stage.Transaction.rollback$Results",
+			"fields": []
+		},
+		{
+			"name": "workerd/io/cdp.capnp:Runtime",
+			"fields": []
+		},
+		{
+			"name": "workerd/io/cdp.capnp:Runtime.CallFrame",
+			"fields": [
+				{
+					"name": "functionName",
+					"annotations": []
+				},
+				{
+					"name": "scriptId",
+					"annotations": []
+				},
+				{
+					"name": "url",
+					"annotations": []
+				},
+				{
+					"name": "lineNumber",
+					"annotations": []
+				},
+				{
+					"name": "columnNumber",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/io/cdp.capnp:Runtime.StackTrace",
+			"fields": [
+				{
+					"name": "description",
+					"annotations": []
+				},
+				{
+					"name": "callFrames",
+					"annotations": []
+				},
+				{
+					"name": "parent",
+					"annotations": []
+				},
+				{
+					"name": "parentId",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/io/cdp.capnp:Runtime.StackTraceId",
+			"fields": [
+				{
+					"name": "id",
+					"annotations": []
+				},
+				{
+					"name": "debuggerId",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/io/cdp.capnp:Runtime.Event",
+			"fields": []
+		},
+		{
+			"name": "workerd/io/cdp.capnp:Runtime.Event.ConsoleApiCalled.Arg",
+			"fields": [
+				{
+					"name": "undefined",
+					"annotations": []
+				},
+				{
+					"name": "string",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/io/cdp.capnp:Runtime.Event.ConsoleApiCalled",
+			"fields": [
+				{
+					"name": "type",
+					"annotations": []
+				},
+				{
+					"name": "args",
+					"annotations": []
+				},
+				{
+					"name": "executionContextId",
+					"annotations": []
+				},
+				{
+					"name": "timestamp",
+					"annotations": []
+				},
+				{
+					"name": "stackTrace",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/io/cdp.capnp:Runtime.Event.ConsoleApiCalled.Arg.string",
+			"fields": [
+				{
+					"name": "value",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/io/cdp.capnp:Page",
+			"fields": []
+		},
+		{
+			"name": "workerd/io/cdp.capnp:Security",
+			"fields": []
+		},
+		{
+			"name": "workerd/io/cdp.capnp:Network",
+			"fields": []
+		},
+		{
+			"name": "workerd/io/cdp.capnp:Network.ResourceTiming",
+			"fields": [
+				{
+					"name": "requestTime",
+					"annotations": []
+				},
+				{
+					"name": "proxyStart",
+					"annotations": []
+				},
+				{
+					"name": "proxyEnd",
+					"annotations": []
+				},
+				{
+					"name": "dnsStart",
+					"annotations": []
+				},
+				{
+					"name": "dnsEnd",
+					"annotations": []
+				},
+				{
+					"name": "connectStart",
+					"annotations": []
+				},
+				{
+					"name": "connectEnd",
+					"annotations": []
+				},
+				{
+					"name": "sslStart",
+					"annotations": []
+				},
+				{
+					"name": "sslEnd",
+					"annotations": []
+				},
+				{
+					"name": "workerStart",
+					"annotations": []
+				},
+				{
+					"name": "workerReady",
+					"annotations": []
+				},
+				{
+					"name": "sendStart",
+					"annotations": []
+				},
+				{
+					"name": "sendEnd",
+					"annotations": []
+				},
+				{
+					"name": "pushStart",
+					"annotations": []
+				},
+				{
+					"name": "pushEnd",
+					"annotations": []
+				},
+				{
+					"name": "receiveHeadersEnd",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "capnp/compat/json.capnp:Value",
+			"fields": [
+				{
+					"name": "null",
+					"annotations": []
+				},
+				{
+					"name": "boolean",
+					"annotations": []
+				},
+				{
+					"name": "number",
+					"annotations": []
+				},
+				{
+					"name": "string",
+					"annotations": []
+				},
+				{
+					"name": "array",
+					"annotations": []
+				},
+				{
+					"name": "object",
+					"annotations": []
+				},
+				{
+					"name": "call",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/io/cdp.capnp:Network.Request",
+			"fields": [
+				{
+					"name": "url",
+					"annotations": []
+				},
+				{
+					"name": "method",
+					"annotations": []
+				},
+				{
+					"name": "headers",
+					"annotations": []
+				},
+				{
+					"name": "postData",
+					"annotations": []
+				},
+				{
+					"name": "mixedContentType",
+					"annotations": []
+				},
+				{
+					"name": "initialPriority",
+					"annotations": []
+				},
+				{
+					"name": "referrerPolicy",
+					"annotations": []
+				},
+				{
+					"name": "isLinkPreload",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "capnp/compat/json.capnp:Value.Field",
+			"fields": [
+				{
+					"name": "name",
+					"annotations": []
+				},
+				{
+					"name": "value",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "capnp/compat/json.capnp:Value.Call",
+			"fields": [
+				{
+					"name": "function",
+					"annotations": []
+				},
+				{
+					"name": "params",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/io/cdp.capnp:Network.SignedCertificateTimestamp",
+			"fields": [
+				{
+					"name": "status",
+					"annotations": []
+				},
+				{
+					"name": "origin",
+					"annotations": []
+				},
+				{
+					"name": "logDescription",
+					"annotations": []
+				},
+				{
+					"name": "logId",
+					"annotations": []
+				},
+				{
+					"name": "timestamp",
+					"annotations": []
+				},
+				{
+					"name": "hashAlgorithm",
+					"annotations": []
+				},
+				{
+					"name": "signatureAlgorithm",
+					"annotations": []
+				},
+				{
+					"name": "signatureData",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/io/cdp.capnp:Network.SecurityDetails",
+			"fields": [
+				{
+					"name": "protocol",
+					"annotations": []
+				},
+				{
+					"name": "keyExchange",
+					"annotations": []
+				},
+				{
+					"name": "keyExchangeGroup",
+					"annotations": []
+				},
+				{
+					"name": "cipher",
+					"annotations": []
+				},
+				{
+					"name": "mac",
+					"annotations": []
+				},
+				{
+					"name": "certificateId",
+					"annotations": []
+				},
+				{
+					"name": "subjectName",
+					"annotations": []
+				},
+				{
+					"name": "sanList",
+					"annotations": []
+				},
+				{
+					"name": "issuer",
+					"annotations": []
+				},
+				{
+					"name": "validFrom",
+					"annotations": []
+				},
+				{
+					"name": "validTo",
+					"annotations": []
+				},
+				{
+					"name": "signedCertificateTimestampList",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/io/cdp.capnp:Network.Response",
+			"fields": [
+				{
+					"name": "url",
+					"annotations": []
+				},
+				{
+					"name": "status",
+					"annotations": []
+				},
+				{
+					"name": "statusText",
+					"annotations": []
+				},
+				{
+					"name": "headers",
+					"annotations": []
+				},
+				{
+					"name": "headersText",
+					"annotations": []
+				},
+				{
+					"name": "mimeType",
+					"annotations": []
+				},
+				{
+					"name": "requestHeaders",
+					"annotations": []
+				},
+				{
+					"name": "requestHeadersText",
+					"annotations": []
+				},
+				{
+					"name": "connectionReused",
+					"annotations": []
+				},
+				{
+					"name": "connectionId",
+					"annotations": []
+				},
+				{
+					"name": "remoteIPAddress",
+					"annotations": []
+				},
+				{
+					"name": "remotePort",
+					"annotations": []
+				},
+				{
+					"name": "fromDiskCache",
+					"annotations": []
+				},
+				{
+					"name": "fromServiceWorker",
+					"annotations": []
+				},
+				{
+					"name": "encodedDataLength",
+					"annotations": []
+				},
+				{
+					"name": "timing",
+					"annotations": []
+				},
+				{
+					"name": "protocol",
+					"annotations": []
+				},
+				{
+					"name": "securityState",
+					"annotations": []
+				},
+				{
+					"name": "securityDetails",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/io/cdp.capnp:Network.Initiator",
+			"fields": [
+				{
+					"name": "type",
+					"annotations": []
+				},
+				{
+					"name": "stack",
+					"annotations": []
+				},
+				{
+					"name": "url",
+					"annotations": []
+				},
+				{
+					"name": "lineNumber",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/io/cdp.capnp:Network.Command",
+			"fields": []
+		},
+		{
+			"name": "workerd/io/cdp.capnp:Network.Command.Enable",
+			"fields": []
+		},
+		{
+			"name": "workerd/io/cdp.capnp:Network.Command.Enable.Params",
+			"fields": [
+				{
+					"name": "maxTotalBufferSize",
+					"annotations": []
+				},
+				{
+					"name": "maxResourceBufferSize",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/io/cdp.capnp:Network.Command.Enable.Result",
+			"fields": []
+		},
+		{
+			"name": "workerd/io/cdp.capnp:Network.Command.Disable",
+			"fields": []
+		},
+		{
+			"name": "workerd/io/cdp.capnp:Network.Command.Disable.Params",
+			"fields": []
+		},
+		{
+			"name": "workerd/io/cdp.capnp:Network.Command.Disable.Result",
+			"fields": []
+		},
+		{
+			"name": "workerd/io/cdp.capnp:Network.Command.GetResponseBody",
+			"fields": []
+		},
+		{
+			"name": "workerd/io/cdp.capnp:Network.Command.GetResponseBody.Params",
+			"fields": [
+				{
+					"name": "requestId",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/io/cdp.capnp:Network.Command.GetResponseBody.Result",
+			"fields": [
+				{
+					"name": "body",
+					"annotations": []
+				},
+				{
+					"name": "base64Encoded",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/io/cdp.capnp:Network.Event",
+			"fields": []
+		},
+		{
+			"name": "workerd/io/cdp.capnp:Network.Event.RequestWillBeSent",
+			"fields": [
+				{
+					"name": "requestId",
+					"annotations": []
+				},
+				{
+					"name": "loaderId",
+					"annotations": []
+				},
+				{
+					"name": "documentURL",
+					"annotations": []
+				},
+				{
+					"name": "request",
+					"annotations": []
+				},
+				{
+					"name": "timestamp",
+					"annotations": []
+				},
+				{
+					"name": "wallTime",
+					"annotations": []
+				},
+				{
+					"name": "initiator",
+					"annotations": []
+				},
+				{
+					"name": "redirectResponse",
+					"annotations": []
+				},
+				{
+					"name": "type",
+					"annotations": []
+				},
+				{
+					"name": "frameId",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/io/cdp.capnp:Network.Event.ResponseReceived",
+			"fields": [
+				{
+					"name": "requestId",
+					"annotations": []
+				},
+				{
+					"name": "loaderId",
+					"annotations": []
+				},
+				{
+					"name": "timestamp",
+					"annotations": []
+				},
+				{
+					"name": "type",
+					"annotations": []
+				},
+				{
+					"name": "response",
+					"annotations": []
+				},
+				{
+					"name": "frameId",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/io/cdp.capnp:Network.Event.DataReceived",
+			"fields": [
+				{
+					"name": "requestId",
+					"annotations": []
+				},
+				{
+					"name": "timestamp",
+					"annotations": []
+				},
+				{
+					"name": "dataLength",
+					"annotations": []
+				},
+				{
+					"name": "encodedDataLength",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/io/cdp.capnp:Network.Event.LoadingFinished",
+			"fields": [
+				{
+					"name": "requestId",
+					"annotations": []
+				},
+				{
+					"name": "timestamp",
+					"annotations": []
+				},
+				{
+					"name": "encodedDataLength",
+					"annotations": []
+				},
+				{
+					"name": "cfResponse",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/io/cdp.capnp:Profiler",
+			"fields": []
+		},
+		{
+			"name": "workerd/io/cdp.capnp:Profiler.PositionTickInfo",
+			"fields": [
+				{
+					"name": "line",
+					"annotations": []
+				},
+				{
+					"name": "ticks",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/io/cdp.capnp:Profiler.ProfileNode",
+			"fields": [
+				{
+					"name": "id",
+					"annotations": []
+				},
+				{
+					"name": "callFrame",
+					"annotations": []
+				},
+				{
+					"name": "hitCount",
+					"annotations": []
+				},
+				{
+					"name": "children",
+					"annotations": []
+				},
+				{
+					"name": "deoptReason",
+					"annotations": []
+				},
+				{
+					"name": "positionTicks",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/io/cdp.capnp:Profiler.Profile",
+			"fields": [
+				{
+					"name": "nodes",
+					"annotations": []
+				},
+				{
+					"name": "startTime",
+					"annotations": []
+				},
+				{
+					"name": "endTime",
+					"annotations": []
+				},
+				{
+					"name": "samples",
+					"annotations": []
+				},
+				{
+					"name": "timeDeltas",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/io/cdp.capnp:Profiler.Command",
+			"fields": []
+		},
+		{
+			"name": "workerd/io/cdp.capnp:Profiler.Command.Enable",
+			"fields": []
+		},
+		{
+			"name": "workerd/io/cdp.capnp:Profiler.Command.Enable.Params",
+			"fields": []
+		},
+		{
+			"name": "workerd/io/cdp.capnp:Profiler.Command.Enable.Result",
+			"fields": []
+		},
+		{
+			"name": "workerd/io/cdp.capnp:Profiler.Command.SetSamplingInterval",
+			"fields": []
+		},
+		{
+			"name": "workerd/io/cdp.capnp:Profiler.Command.SetSamplingInterval.Params",
+			"fields": [
+				{
+					"name": "interval",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/io/cdp.capnp:Profiler.Command.SetSamplingInterval.Result",
+			"fields": []
+		},
+		{
+			"name": "workerd/io/cdp.capnp:Profiler.Command.Start",
+			"fields": []
+		},
+		{
+			"name": "workerd/io/cdp.capnp:Profiler.Command.Start.Params",
+			"fields": []
+		},
+		{
+			"name": "workerd/io/cdp.capnp:Profiler.Command.Start.Result",
+			"fields": []
+		},
+		{
+			"name": "workerd/io/cdp.capnp:Profiler.Command.Stop",
+			"fields": []
+		},
+		{
+			"name": "workerd/io/cdp.capnp:Profiler.Command.Stop.Params",
+			"fields": []
+		},
+		{
+			"name": "workerd/io/cdp.capnp:Profiler.Command.Stop.Result",
+			"fields": [
+				{
+					"name": "profile",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/io/cdp.capnp:HeapProfiler",
+			"fields": []
+		},
+		{
+			"name": "workerd/io/cdp.capnp:HeapProfiler.Command",
+			"fields": []
+		},
+		{
+			"name": "workerd/io/cdp.capnp:HeapProfiler.Command.Enable",
+			"fields": []
+		},
+		{
+			"name": "workerd/io/cdp.capnp:HeapProfiler.Command.Enable.Params",
+			"fields": []
+		},
+		{
+			"name": "workerd/io/cdp.capnp:HeapProfiler.Command.Enable.Result",
+			"fields": []
+		},
+		{
+			"name": "workerd/io/cdp.capnp:HeapProfiler.Command.Disable",
+			"fields": []
+		},
+		{
+			"name": "workerd/io/cdp.capnp:HeapProfiler.Command.Disable.Params",
+			"fields": []
+		},
+		{
+			"name": "workerd/io/cdp.capnp:HeapProfiler.Command.Disable.Result",
+			"fields": []
+		},
+		{
+			"name": "workerd/io/cdp.capnp:HeapProfiler.Command.TakeHeapSnapshot",
+			"fields": []
+		},
+		{
+			"name": "workerd/io/cdp.capnp:HeapProfiler.Command.TakeHeapSnapshot.Params",
+			"fields": [
+				{
+					"name": "reportProgress",
+					"annotations": []
+				},
+				{
+					"name": "captureNumericValue",
+					"annotations": []
+				},
+				{
+					"name": "exposeInternals",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/io/cdp.capnp:HeapProfiler.Command.TakeHeapSnapshot.Result",
+			"fields": []
+		},
+		{
+			"name": "workerd/io/cdp.capnp:HeapProfiler.Event",
+			"fields": []
+		},
+		{
+			"name": "workerd/io/cdp.capnp:HeapProfiler.Event.AddHeapSnapshotChunk",
+			"fields": [
+				{
+					"name": "chunk",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/io/cdp.capnp:HeapProfiler.Event.ReportHeapSnapshotProgress",
+			"fields": [
+				{
+					"name": "done",
+					"annotations": []
+				},
+				{
+					"name": "total",
+					"annotations": []
+				},
+				{
+					"name": "finished",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/io/cdp.capnp:Error",
+			"fields": [
+				{
+					"name": "code",
+					"annotations": []
+				},
+				{
+					"name": "message",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/io/cdp.capnp:Method",
+			"fields": [
+				{
+					"name": "params",
+					"annotations": []
+				},
+				{
+					"name": "result",
+					"annotations": []
+				},
+				{
+					"name": "error",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/io/cdp.capnp:Command",
+			"fields": [
+				{
+					"name": "id",
+					"annotations": []
+				},
+				{
+					"name": "unknown",
+					"annotations": []
+				},
+				{
+					"name": "networkEnable",
+					"annotations": [
+						"Network.enable"
+					]
+				},
+				{
+					"name": "networkDisable",
+					"annotations": [
+						"Network.disable"
+					]
+				},
+				{
+					"name": "networkGetResponseBody",
+					"annotations": [
+						"Network.getResponseBody"
+					]
+				},
+				{
+					"name": "profilerSetSamplingInterval",
+					"annotations": [
+						"Profiler.setSamplingInterval"
+					]
+				},
+				{
+					"name": "profilerEnable",
+					"annotations": [
+						"Profiler.enable"
+					]
+				},
+				{
+					"name": "profilerStart",
+					"annotations": [
+						"Profiler.start"
+					]
+				},
+				{
+					"name": "profilerStop",
+					"annotations": [
+						"Profiler.stop"
+					]
+				},
+				{
+					"name": "heapProfilerEnable",
+					"annotations": [
+						"HeapProfiler.enable"
+					]
+				},
+				{
+					"name": "heapProfilerDisable",
+					"annotations": [
+						"HeapProfiler.disable"
+					]
+				},
+				{
+					"name": "takeHeapSnapshot",
+					"annotations": [
+						"HeapProfiler.takeHeapSnapshot"
+					]
+				}
+			]
+		},
+		{
+			"name": "workerd/io/cdp.capnp:Event",
+			"fields": [
+				{
+					"name": "networkRequestWillBeSent",
+					"annotations": [
+						"Network.requestWillBeSent"
+					]
+				},
+				{
+					"name": "networkResponseReceived",
+					"annotations": [
+						"Network.responseReceived"
+					]
+				},
+				{
+					"name": "networkDataReceived",
+					"annotations": [
+						"Network.dataReceived"
+					]
+				},
+				{
+					"name": "networkLoadingFinished",
+					"annotations": [
+						"Network.loadingFinished"
+					]
+				},
+				{
+					"name": "runtimeConsoleApiCalled",
+					"annotations": [
+						"Runtime.consoleAPICalled"
+					]
+				},
+				{
+					"name": "addHeapSnapshotChunk",
+					"annotations": [
+						"HeapProfiler.addHeapSnapshotChunk"
+					]
+				},
+				{
+					"name": "reportHeapSnapshotProgress",
+					"annotations": [
+						"HeapProfiler.reportHeapSnapshotProgress"
+					]
+				}
+			]
+		},
+		{
+			"name": "workerd/io/compatibility-date.capnp:CompatibilityFlags",
+			"fields": [
+				{
+					"name": "formDataParserSupportsFiles",
+					"annotations": [
+						"formdata_parser_supports_files",
+						"2021-11-03",
+						"formdata_parser_converts_files_to_strings"
+					]
+				},
+				{
+					"name": "fetchRefusesUnknownProtocols",
+					"annotations": [
+						"fetch_refuses_unknown_protocols",
+						"2021-11-10",
+						"fetch_treats_unknown_protocols_as_http"
+					]
+				},
+				{
+					"name": "esiIncludeIsVoidTag",
+					"annotations": [
+						"html_rewriter_treats_esi_include_as_void_tag"
+					]
+				},
+				{
+					"name": "obsolete3",
+					"annotations": []
+				},
+				{
+					"name": "durableObjectFetchRequiresSchemeAuthority",
+					"annotations": [
+						"durable_object_fetch_requires_full_url",
+						"2021-11-10",
+						"durable_object_fetch_allows_relative_url"
+					]
+				},
+				{
+					"name": "streamsByobReaderDetachesBuffer",
+					"annotations": [
+						"streams_byob_reader_detaches_buffer",
+						"2021-11-10",
+						"streams_byob_reader_does_not_detach_buffer"
+					]
+				},
+				{
+					"name": "streamsJavaScriptControllers",
+					"annotations": [
+						"streams_enable_constructors",
+						"streams_disable_constructors"
+					]
+				},
+				{
+					"name": "jsgPropertyOnPrototypeTemplate",
+					"annotations": [
+						"workers_api_getters_setters_on_prototype",
+						"2022-01-31",
+						"workers_api_getters_setters_on_instance"
+					]
+				},
+				{
+					"name": "minimalSubrequests",
+					"annotations": [
+						"minimal_subrequests",
+						"2022-04-05",
+						"no_minimal_subrequests"
+					]
+				},
+				{
+					"name": "noCotsOnExternalFetch",
+					"annotations": [
+						"no_cots_on_external_fetch",
+						"2022-03-08",
+						"cots_on_external_fetch"
+					]
+				},
+				{
+					"name": "specCompliantUrl",
+					"annotations": [
+						"url_standard",
+						"url_original"
+					]
+				},
+				{
+					"name": "globalNavigator",
+					"annotations": [
+						"global_navigator",
+						"2022-03-21",
+						"no_global_navigator"
+					]
+				},
+				{
+					"name": "captureThrowsAsRejections",
+					"annotations": [
+						"capture_async_api_throws",
+						"do_not_capture_async_api_throws"
+					]
+				},
+				{
+					"name": "r2PublicBetaApi",
+					"annotations": [
+						"r2_public_beta_bindings",
+						"r2_internal_beta_bindings"
+					]
+				},
+				{
+					"name": "obsolete14",
+					"annotations": [
+						"durable_object_alarms"
+					]
+				},
+				{
+					"name": "noSubstituteNull",
+					"annotations": [
+						"dont_substitute_null_on_type_error",
+						"2022-06-01",
+						"substitute_null_on_type_error"
+					]
+				},
+				{
+					"name": "transformStreamJavaScriptControllers",
+					"annotations": [
+						"transformstream_enable_standard_constructor",
+						"transformstream_disable_standard_constructor"
+					]
+				},
+				{
+					"name": "r2ListHonorIncludeFields",
+					"annotations": [
+						"r2_list_honor_include",
+						"2022-08-04"
+					]
+				},
+				{
+					"name": "exportCommonJsDefaultNamespace",
+					"annotations": [
+						"export_commonjs_default",
+						"export_commonjs_namespace"
+					]
+				},
+				{
+					"name": "obsolete19",
+					"annotations": [
+						"durable_object_rename"
+					]
+				},
+				{
+					"name": "webSocketCompression",
+					"annotations": [
+						"web_socket_compression"
+					]
+				}
+			]
+		},
+		{
+			"name": "workerd/io/jaeger.capnp:JaegerSpan",
+			"fields": [
+				{
+					"name": "traceIdHigh",
+					"annotations": []
+				},
+				{
+					"name": "traceIdLow",
+					"annotations": []
+				},
+				{
+					"name": "spanId",
+					"annotations": []
+				},
+				{
+					"name": "parentSpanId",
+					"annotations": []
+				},
+				{
+					"name": "flags",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/jsg/rtti.capnp:NumberType",
+			"fields": [
+				{
+					"name": "name",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/jsg/rtti.capnp:PromiseType",
+			"fields": [
+				{
+					"name": "value",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/jsg/rtti.capnp:StructureType",
+			"fields": [
+				{
+					"name": "name",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/jsg/rtti.capnp:StringType",
+			"fields": [
+				{
+					"name": "name",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/jsg/rtti.capnp:ArrayType",
+			"fields": [
+				{
+					"name": "element",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/jsg/rtti.capnp:MaybeType",
+			"fields": [
+				{
+					"name": "value",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/jsg/rtti.capnp:DictType",
+			"fields": [
+				{
+					"name": "key",
+					"annotations": []
+				},
+				{
+					"name": "value",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/jsg/rtti.capnp:OneOfType",
+			"fields": [
+				{
+					"name": "variants",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/jsg/rtti.capnp:BuiltinType",
+			"fields": [
+				{
+					"name": "type",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/jsg/rtti.capnp:IntrinsicType",
+			"fields": [
+				{
+					"name": "name",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/jsg/rtti.capnp:FunctionType",
+			"fields": [
+				{
+					"name": "returnType",
+					"annotations": []
+				},
+				{
+					"name": "args",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/jsg/rtti.capnp:JsgImplType",
+			"fields": [
+				{
+					"name": "type",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/jsg/rtti.capnp:Type",
+			"fields": [
+				{
+					"name": "unknown",
+					"annotations": []
+				},
+				{
+					"name": "voidt",
+					"annotations": []
+				},
+				{
+					"name": "boolt",
+					"annotations": []
+				},
+				{
+					"name": "number",
+					"annotations": []
+				},
+				{
+					"name": "promise",
+					"annotations": []
+				},
+				{
+					"name": "structure",
+					"annotations": []
+				},
+				{
+					"name": "string",
+					"annotations": []
+				},
+				{
+					"name": "object",
+					"annotations": []
+				},
+				{
+					"name": "array",
+					"annotations": []
+				},
+				{
+					"name": "maybe",
+					"annotations": []
+				},
+				{
+					"name": "dict",
+					"annotations": []
+				},
+				{
+					"name": "oneOf",
+					"annotations": []
+				},
+				{
+					"name": "builtin",
+					"annotations": []
+				},
+				{
+					"name": "intrinsic",
+					"annotations": []
+				},
+				{
+					"name": "function",
+					"annotations": []
+				},
+				{
+					"name": "jsgImpl",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/jsg/rtti.capnp:Member",
+			"fields": [
+				{
+					"name": "method",
+					"annotations": []
+				},
+				{
+					"name": "property",
+					"annotations": []
+				},
+				{
+					"name": "nested",
+					"annotations": []
+				},
+				{
+					"name": "constant",
+					"annotations": []
+				},
+				{
+					"name": "constructor",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/jsg/rtti.capnp:Structure",
+			"fields": [
+				{
+					"name": "name",
+					"annotations": []
+				},
+				{
+					"name": "members",
+					"annotations": []
+				},
+				{
+					"name": "extends",
+					"annotations": []
+				},
+				{
+					"name": "iterable",
+					"annotations": []
+				},
+				{
+					"name": "asyncIterable",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/jsg/rtti.capnp:Method",
+			"fields": [
+				{
+					"name": "name",
+					"annotations": []
+				},
+				{
+					"name": "returnType",
+					"annotations": []
+				},
+				{
+					"name": "args",
+					"annotations": []
+				},
+				{
+					"name": "static",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/jsg/rtti.capnp:Property",
+			"fields": [
+				{
+					"name": "name",
+					"annotations": []
+				},
+				{
+					"name": "type",
+					"annotations": []
+				},
+				{
+					"name": "readonly",
+					"annotations": []
+				},
+				{
+					"name": "lazy",
+					"annotations": []
+				},
+				{
+					"name": "prototype",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/jsg/rtti.capnp:Constant",
+			"fields": [
+				{
+					"name": "name",
+					"annotations": []
+				},
+				{
+					"name": "value",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/jsg/rtti.capnp:Constructor",
+			"fields": [
+				{
+					"name": "args",
+					"annotations": []
+				}
+			]
+		}
+	],
+	"enums": [
+		{
+			"name": "workerd/api/r2-api.capnp:R2ListRequest.IncludeField",
+			"enumerants": [
+				{
+					"name": "http",
+					"annotations": []
+				},
+				{
+					"name": "custom",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/io/actor-storage.capnp:ActorStorage.DbSettings.Priority",
+			"enumerants": [
+				{
+					"name": "default",
+					"annotations": []
+				},
+				{
+					"name": "low",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/io/cdp.capnp:LogType",
+			"enumerants": [
+				{
+					"name": "log",
+					"annotations": []
+				},
+				{
+					"name": "debug",
+					"annotations": [
+						"debug_"
+					]
+				},
+				{
+					"name": "info",
+					"annotations": []
+				},
+				{
+					"name": "error",
+					"annotations": []
+				},
+				{
+					"name": "warning",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/io/cdp.capnp:Page.ResourceType",
+			"enumerants": [
+				{
+					"name": "document",
+					"annotations": [
+						"Document"
+					]
+				},
+				{
+					"name": "stylesheet",
+					"annotations": [
+						"Stylesheet"
+					]
+				},
+				{
+					"name": "image",
+					"annotations": [
+						"Image"
+					]
+				},
+				{
+					"name": "media",
+					"annotations": [
+						"Media"
+					]
+				},
+				{
+					"name": "font",
+					"annotations": [
+						"Font"
+					]
+				},
+				{
+					"name": "script",
+					"annotations": [
+						"Script"
+					]
+				},
+				{
+					"name": "textTrack",
+					"annotations": [
+						"TextTrack"
+					]
+				},
+				{
+					"name": "xhr",
+					"annotations": [
+						"XHR"
+					]
+				},
+				{
+					"name": "fetch",
+					"annotations": [
+						"Fetch"
+					]
+				},
+				{
+					"name": "eventSource",
+					"annotations": [
+						"EventSource"
+					]
+				},
+				{
+					"name": "webSocket",
+					"annotations": [
+						"WebSocket"
+					]
+				},
+				{
+					"name": "manifest",
+					"annotations": [
+						"Manifest"
+					]
+				},
+				{
+					"name": "other",
+					"annotations": [
+						"Other"
+					]
+				}
+			]
+		},
+		{
+			"name": "workerd/io/cdp.capnp:Security.MixedContentType",
+			"enumerants": [
+				{
+					"name": "blockable",
+					"annotations": []
+				},
+				{
+					"name": "optionallyBlockable",
+					"annotations": [
+						"optionally-blockable"
+					]
+				},
+				{
+					"name": "none",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/io/cdp.capnp:Security.SecurityState",
+			"enumerants": [
+				{
+					"name": "unknown",
+					"annotations": []
+				},
+				{
+					"name": "neutral",
+					"annotations": []
+				},
+				{
+					"name": "insecure",
+					"annotations": []
+				},
+				{
+					"name": "secure",
+					"annotations": []
+				},
+				{
+					"name": "info",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/io/cdp.capnp:Network.ResourcePriority",
+			"enumerants": [
+				{
+					"name": "veryLow",
+					"annotations": [
+						"VeryLow"
+					]
+				},
+				{
+					"name": "low",
+					"annotations": [
+						"Low"
+					]
+				},
+				{
+					"name": "medium",
+					"annotations": [
+						"Medium"
+					]
+				},
+				{
+					"name": "high",
+					"annotations": [
+						"High"
+					]
+				},
+				{
+					"name": "veryHigh",
+					"annotations": [
+						"VeryHigh"
+					]
+				}
+			]
+		},
+		{
+			"name": "workerd/io/cdp.capnp:Network.Request.ReferrerPolicy",
+			"enumerants": [
+				{
+					"name": "unsafeUrl",
+					"annotations": [
+						"unsafe-url"
+					]
+				},
+				{
+					"name": "noReferrerWhenDowngrade",
+					"annotations": [
+						"no-referrer-when-downgrade"
+					]
+				},
+				{
+					"name": "noReferrer",
+					"annotations": [
+						"no-referrer"
+					]
+				},
+				{
+					"name": "origin",
+					"annotations": []
+				},
+				{
+					"name": "originWhenCrossOrigin",
+					"annotations": [
+						"origin-when-cross-origin"
+					]
+				},
+				{
+					"name": "sameOrigin",
+					"annotations": [
+						"same-origin"
+					]
+				},
+				{
+					"name": "strictOrigin",
+					"annotations": [
+						"strict-origin"
+					]
+				},
+				{
+					"name": "strictOriginWhenCrossOrigin",
+					"annotations": [
+						"strict-origin-when-cross-origin"
+					]
+				}
+			]
+		},
+		{
+			"name": "workerd/io/cdp.capnp:Network.Initiator.Type",
+			"enumerants": [
+				{
+					"name": "parser",
+					"annotations": []
+				},
+				{
+					"name": "script",
+					"annotations": []
+				},
+				{
+					"name": "preload",
+					"annotations": []
+				},
+				{
+					"name": "other",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/io/outcome.capnp:EventOutcome",
+			"enumerants": [
+				{
+					"name": "unknown",
+					"annotations": []
+				},
+				{
+					"name": "ok",
+					"annotations": []
+				},
+				{
+					"name": "exception",
+					"annotations": []
+				},
+				{
+					"name": "exceededCpu",
+					"annotations": []
+				},
+				{
+					"name": "killSwitch",
+					"annotations": []
+				},
+				{
+					"name": "daemonDown",
+					"annotations": []
+				},
+				{
+					"name": "scriptNotFound",
+					"annotations": []
+				},
+				{
+					"name": "canceled",
+					"annotations": []
+				},
+				{
+					"name": "exceededMemory",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/jsg/rtti.capnp:BuiltinType.Type",
+			"enumerants": [
+				{
+					"name": "v8Uint8Array",
+					"annotations": []
+				},
+				{
+					"name": "v8ArrayBufferView",
+					"annotations": []
+				},
+				{
+					"name": "jsgBufferSource",
+					"annotations": []
+				},
+				{
+					"name": "kjDate",
+					"annotations": []
+				},
+				{
+					"name": "v8Function",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/jsg/rtti.capnp:JsgImplType.Type",
+			"enumerants": [
+				{
+					"name": "configuration",
+					"annotations": []
+				},
+				{
+					"name": "v8Isolate",
+					"annotations": []
+				},
+				{
+					"name": "jsgLock",
+					"annotations": []
+				},
+				{
+					"name": "jsgTypeHandler",
+					"annotations": []
+				},
+				{
+					"name": "jsgUnimplemented",
+					"annotations": []
+				},
+				{
+					"name": "jsgVarargs",
+					"annotations": []
+				}
+			]
+		}
+	],
+	"interfaces": [
+		{
+			"name": "workerd/io/actor-storage.capnp:ActorStorage.Stage",
+			"methods": [
+				{
+					"name": "txn",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/io/actor-storage.capnp:ActorStorage",
+			"methods": [
+				{
+					"name": "getStage",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/io/actor-storage.capnp:ActorStorage.Stage.Transaction",
+			"methods": [
+				{
+					"name": "commit",
+					"annotations": []
+				},
+				{
+					"name": "rollback",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/io/actor-storage.capnp:ActorStorage.Operations",
+			"methods": [
+				{
+					"name": "get",
+					"annotations": []
+				},
+				{
+					"name": "put",
+					"annotations": []
+				},
+				{
+					"name": "delete",
+					"annotations": []
+				},
+				{
+					"name": "list",
+					"annotations": []
+				},
+				{
+					"name": "getMultiple",
+					"annotations": []
+				},
+				{
+					"name": "deleteAll",
+					"annotations": []
+				},
+				{
+					"name": "getAlarm",
+					"annotations": []
+				},
+				{
+					"name": "setAlarm",
+					"annotations": []
+				},
+				{
+					"name": "deleteAlarm",
+					"annotations": []
+				},
+				{
+					"name": "rename",
+					"annotations": []
+				}
+			]
+		},
+		{
+			"name": "workerd/io/actor-storage.capnp:ActorStorage.ListStream",
+			"methods": [
+				{
+					"name": "values",
+					"annotations": []
+				},
+				{
+					"name": "end",
+					"annotations": []
+				}
+			]
+		}
+	],
+	"unk": [
+		"workerd/api/analytics-engine.capnp",
+		"capnp/c++.capnp:namespace",
+		"capnp/c++.capnp",
+		"workerd/api/r2-api.capnp",
+		"workerd/api/r2-api.capnp:versionPublicBeta",
+		"capnp/compat/json.capnp:flatten",
+		"capnp/compat/json.capnp",
+		"capnp/compat/json.capnp:discriminator",
+		"capnp/compat/json.capnp:base64",
+		"capnp/compat/json.capnp:hex",
+		"capnp/compat/json.capnp:name",
+		"workerd/io/actor-storage.capnp",
+		"capnp/stream.capnp",
+		"workerd/io/actor-storage.capnp:ActorStorage.maxKeys",
+		"workerd/io/actor-storage.capnp:ActorStorage.renameLimit",
+		"workerd/io/cdp.capnp",
+		"capnp/c++.capnp:name",
+		"workerd/io/compatibility-date.capnp",
+		"workerd/io/compatibility-date.capnp:supportedCompatibilityDate",
+		"workerd/io/compatibility-date.capnp:CompatibilityFlags.compatEnableFlag",
+		"workerd/io/compatibility-date.capnp:CompatibilityFlags.compatEnableDate",
+		"workerd/io/compatibility-date.capnp:CompatibilityFlags.compatDisableFlag",
+		"workerd/io/compatibility-date.capnp:CompatibilityFlags.neededByFl",
+		"workerd/io/compatibility-date.capnp:CompatibilityFlags.compatEnableAllDates",
+		"workerd/io/jaeger.capnp",
+		"workerd/io/outcome.capnp",
+		"workerd/jsg/rtti.capnp",
+		"workerd/server/workerd-meta.capnp",
+		"workerd/server/workerd-meta.capnp:cppCapnpSchema",
+		"workerd/server/workerd-meta.capnp:workerdCapnpSchema"
+	]
+}
