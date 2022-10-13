@@ -5,7 +5,7 @@
 	"type": "object",
 	"links": [
 		{
-			"title": "Get IP Access rules",
+			"title": "List IP Access rules",
 			"description": "Fetches IP Access rules of an account. These rules apply to all the zones in the account. You can filter the results using several optional parameters.",
 			"rel": "collection",
 			"href": "accounts/{#/definitions/account_identifier}/firewall/access_rules/rules",
@@ -22,7 +22,7 @@
 					"#waf:read"
 				]
 			},
-			"html_id": "ip-access-rules-for-an-account-get-ip-access-rules",
+			"html_id": "ip-access-rules-for-an-account-list-ip-access-rules",
 			"uri": "accounts/:account_identifier/firewall/access_rules/rules",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/firewall/access_rules/rules?page=1&per_page=20&mode=challenge&configuration.target=ip&configuration.value=198.51.100.4&notes=my note&match=all&order=mode&direction=desc\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"parameters": {

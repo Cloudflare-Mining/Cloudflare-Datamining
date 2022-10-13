@@ -6,7 +6,7 @@
 	"type": "object",
 	"links": [
 		{
-			"title": "Get Transform Rules",
+			"title": "List Transform Rules",
 			"description": "Fetches all Transform Rules in a zone.",
 			"rel": "collection",
 			"href": "zones/{#/definitions/zone_id}/rulesets/phases/{#/definitions/phase}/entrypoint",
@@ -18,7 +18,7 @@
 				"business": true,
 				"enterprise": true
 			},
-			"html_id": "transform-rules-get-transform-rules",
+			"html_id": "transform-rules-list-transform-rules",
 			"uri": "zones/:zone_id/rulesets/phases/:phase/entrypoint",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/rulesets/phases/undefined/entrypoint\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"response": "{\n  \"id\": \"2f2feab2026849078ba485f918791bdc\",\n  \"name\": \"default\",\n  \"description\": \"\",\n  \"kind\": \"zone\",\n  \"phase\": \"http_request_transform\",\n  \"rules\": [\n    {\n      \"id\": \"3a03d665bac047339bb530ecb439a90d\",\n      \"version\": \"1\",\n      \"action\": \"rewrite\",\n      \"expression\": \"ip.geoip.country eq \\\"AL\\\"\",\n      \"description\": \"change request based on ip location\",\n      \"action_parameters\": {\n        \"uri\": {\n          \"path\": {\n            \"expression\": \"concat(\\\"/new/\\\", http.request.uri)\"\n          },\n          \"query\": {\n            \"expression\": \"concat(\\\"/new/\\\", http.request.uri)\"\n          }\n        }\n      }\n    }\n  ]\n}"

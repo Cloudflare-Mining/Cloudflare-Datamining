@@ -6,7 +6,7 @@
 	"type": "object",
 	"links": [
 		{
-			"title": "Get rate limits",
+			"title": "List rate limits",
 			"description": "Fetches the rate limits for a zone.",
 			"rel": "collection",
 			"href": "zones/{#/definitions/zone_identifier}/rate_limits",
@@ -18,7 +18,7 @@
 				"business": true,
 				"enterprise": true
 			},
-			"html_id": "rate-limits-for-a-zone-get-rate-limits",
+			"html_id": "rate-limits-for-a-zone-list-rate-limits",
 			"uri": "zones/:zone_identifier/rate_limits",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/rate_limits?page=1&per_page=20\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"parameters": {

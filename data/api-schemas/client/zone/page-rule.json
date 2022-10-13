@@ -5,7 +5,7 @@
 	"type": "object",
 	"links": [
 		{
-			"title": "Get Page Rules",
+			"title": "List Page Rules",
 			"description": "Fetches Page Rules in a zone.",
 			"rel": "collection",
 			"href": "zones/{#/definitions/zone_identifier}/pagerules",
@@ -22,7 +22,7 @@
 					"#zone:read"
 				]
 			},
-			"html_id": "page-rules-get-page-rules",
+			"html_id": "page-rules-list-page-rules",
 			"uri": "zones/:zone_identifier/pagerules",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/pagerules?status=active&order=status&direction=desc&match=all\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"parameters": {

@@ -6,7 +6,7 @@
 	"type": "object",
 	"links": [
 		{
-			"title": "Get IP Access rules",
+			"title": "List IP Access rules",
 			"description": "Fetches IP Access rules of the user. You can filter the results using several optional parameters.",
 			"rel": "collection",
 			"href": "user/firewall/access_rules/rules",
@@ -18,7 +18,7 @@
 				"business": true,
 				"enterprise": true
 			},
-			"html_id": "ip-access-rules-for-a-user-get-ip-access-rules",
+			"html_id": "ip-access-rules-for-a-user-list-ip-access-rules",
 			"uri": "user/firewall/access_rules/rules",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/user/firewall/access_rules/rules?page=1&per_page=20&mode=challenge&configuration.target=ip&configuration.value=198.51.100.4&notes=my note&match=all&order=mode&direction=desc\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"parameters": {
