@@ -48,6 +48,7 @@ export async function tryAndPush(files, commitMessage, webhookUsername, webhookM
 		return;
 	}
 	try{
+		await git.pull();
 		const prevCommit = (await git.log({maxCount: 1})).latest;
 		const result = await git.status();
 		if(result.files.length === 0){
@@ -55,7 +56,6 @@ export async function tryAndPush(files, commitMessage, webhookUsername, webhookM
 			return;
 		}
 
-		await git.pull();
 		await git.add(files);
 		await git.commit(commitMessage);
 		await git.push('origin', 'main');
