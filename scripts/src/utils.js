@@ -55,6 +55,7 @@ export async function tryAndPush(files, commitMessage, webhookUsername, webhookM
 			return;
 		}
 
+		await git.pull();
 		await git.add(files);
 		await git.commit(commitMessage);
 		await git.push('origin', 'main');
