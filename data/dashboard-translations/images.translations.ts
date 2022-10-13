@@ -418,5 +418,6 @@ To read the full docs, [click here](https://developers.cloudflare.com/images).`,
 	guidance_and_feedback: "Guidance & Feedback",
 	guidance_description: "For <b>guidance</b> on Sourcing Kit\u2019s capabilities, refer to our developer documentation. For bug reporting or <b>feedback</b>, join the #images Discord channel, or use our Community board.",
 	discord_channel: "Images Discord Channel",
-	join_discord_server: "Join Discord Server"
+	join_discord_server: "Join Discord Server",
+	images_feedback_banner_description: "We're improving Cloudflare Images. <0>Have your say</0>."
 }
