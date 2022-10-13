@@ -4567,6 +4567,8 @@ components:
       items:
         $ref: '#/components/schemas/hostname_certid_input'
       type: array
+    config_components-schemas-account_identifier:
+      example: 6f91088a406011ed95aed352566e8d4c
     config_request:
       description: The configuration object containing third party integration information
       example:
@@ -11666,6 +11668,107 @@ components:
             if indicator_type is `domain`: `example.com`. Example if indicator_type
             is `url`: `https://example.com/news/`'
           type: string
+    mnm_config:
+      properties:
+        default_sampling:
+          $ref: '#/components/schemas/mnm_config_default_sampling'
+        name:
+          $ref: '#/components/schemas/mnm_config_name'
+        router_ips:
+          $ref: '#/components/schemas/mnm_config_router_ips'
+      required:
+      - name
+      - default_sampling
+      - router_ips
+      type: object
+    mnm_config_default_sampling:
+      default: 1
+      description: Fallback sampling rate of flow messages being sent in packets per
+        second. This should match the packet sampling rate configured on the router.
+      minimum: 1
+      type: number
+    mnm_config_name:
+      description: The account name.
+      example: cloudflare user's account
+      type: string
+    mnm_config_router_ip:
+      description: IPv4 CIDR of the router sourcing flow data. Only /32 addresses
+        are currently supported.
+      example: 203.0.113.1/32
+      type: string
+    mnm_config_router_ips:
+      items:
+        $ref: '#/components/schemas/mnm_config_router_ip'
+      type: array
+    mnm_rule:
+      properties:
+        automatic_advertisement:
+          $ref: '#/components/schemas/mnm_rule_automatic_advertisement'
+        bandwidth_threshold:
+          $ref: '#/components/schemas/mnm_rule_bandwidth_threshold'
+        duration:
+          $ref: '#/components/schemas/mnm_rule_duration'
+        id:
+          $ref: '#/components/schemas/schemas-rule_identifier'
+        name:
+          $ref: '#/components/schemas/mnm_rule_name'
+        packet_threshold:
+          $ref: '#/components/schemas/mnm_rule_packet_threshold'
+        prefixes:
+          $ref: '#/components/schemas/mnm_rule_ip_prefixes'
+      required:
+      - name
+      - prefixes
+      - automatic_advertisement
+      - duration
+      type: object
+    mnm_rule_automatic_advertisement:
+      description: Toggle on if you would like Cloudflare to automatically advertise
+        the IP Prefixes within the rule via Magic Transit when the rule is triggered.
+        Only available for users of Magic Transit.
+      example: "false"
+      type: boolean
+    mnm_rule_bandwidth_threshold:
+      description: The number of bits per second for the rule. When this value is
+        exceeded for the set duration, an alert notification is sent. Minimum of 1
+        and no maximum.
+      example: 1000
+      minimum: 1
+      type: number
+    mnm_rule_duration:
+      default: 60s
+      description: The amount of time that the rule threshold must be exceeded to
+        send an alert notification. The minimum is 60 seconds and maximum is 21600
+        seconds. The format is XhYmZs where X, Y, and Z durations are optional; however
+        at least one unit must be provided.
+      example: 1h2m3s
+      type: string
+    mnm_rule_ip_prefix:
+      description: The IP prefixes that are monitored for this rule. Must be a CIDR
+        range like 203.0.113.0/24. Max 5000 different CIDR ranges.
+      example: 203.0.113.1/32
+      type: string
+    mnm_rule_ip_prefixes:
+      items:
+        $ref: '#/components/schemas/mnm_rule_ip_prefix'
+      type: array
+    mnm_rule_name:
+      description: The name of the rule. Must be unique. Supports characters A-Z,
+        a-z, 0-9, underscore (_), dash (-), period (.), and tilde (~). You can’t have
+        a space in the rule name. Max 256 characters.
+      example: my_rule_1
+      type: string
+    mnm_rule_packet_threshold:
+      description: The number of packets per second for the rule. When this value
+        is exceeded for the set duration, an alert notification is sent. Minimum of
+        1 and no maximum.
+      example: 10000
+      minimum: 1
+      type: number
+    mnm_rules:
+      items:
+        $ref: '#/components/schemas/mnm_rule'
+      type: array
     mobile_redirect:
       allOf:
       - $ref: '#/components/schemas/schemas-base'
@@ -15744,6 +15847,8 @@ components:
       allOf:
       - $ref: '#/components/schemas/rule_properties'
       type: object
+    rules_components-schemas-account_identifier:
+      example: 6f91088a406011ed95aed352566e8d4c
     rules_components-schemas-action:
       description: The action to perform when the rule matches.
       example: execute
@@ -17648,6 +17753,8 @@ components:
       - configuration
       - scope
       type: object
+    schemas-rule_identifier:
+      example: 2890e6fa406311ed9b5a23f70f6fb8cf
     schemas-rules:
       additionalProperties:
         allOf:
@@ -24082,7 +24189,7 @@ paths:
   /accounts/{account_identifier}/custom_pages:
     get:
       description: Fetches all the custom pages at the account level.
-      operationId: custom-pages-for-an-account-get-custom-pages
+      operationId: custom-pages-for-an-account-list-custom-pages
       parameters:
       - in: path
         name: account_identifier
@@ -24097,17 +24204,17 @@ paths:
                 allOf:
                 - $ref: '#/components/schemas/custom_pages_response_collection'
                 - $ref: '#/components/schemas/api-response-common-failure'
-          description: Get custom pages response failure
+          description: List custom pages response failure
         "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/custom_pages_response_collection'
-          description: Get custom pages response
+          description: List custom pages response
       security:
       - api_email: []
         api_key: []
-      summary: Get custom pages
+      summary: List custom pages
       tags:
       - Custom pages for an account
       x-cfPermissionsRequired:
@@ -24801,7 +24908,7 @@ paths:
       description: Fetches IP Access rules of an account. These rules apply to all
         the zones in the account. You can filter the results using several optional
         parameters.
-      operationId: ip-access-rules-for-an-account-get-ip-access-rules
+      operationId: ip-access-rules-for-an-account-list-ip-access-rules
       parameters:
       - in: path
         name: account_identifier
@@ -24816,17 +24923,17 @@ paths:
                 allOf:
                 - $ref: '#/components/schemas/response_collection'
                 - $ref: '#/components/schemas/api-response-common-failure'
-          description: Get IP Access rules response failure
+          description: List IP Access rules response failure
         "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/response_collection'
-          description: Get IP Access rules response
+          description: List IP Access rules response
       security:
       - api_email: []
         api_key: []
-      summary: Get IP Access rules
+      summary: List IP Access rules
       tags:
       - IP Access rules for an account
       x-cfPermissionsRequired:
@@ -28272,6 +28379,458 @@ paths:
         enterprise: true
         free: true
         pro: true
+  /accounts/{account_identifier}/mnm/config:
+    delete:
+      description: Delete an existing network monitoring configuration
+      operationId: magic-network-monitoring-configuration-delete-account-configuration
+      parameters:
+      - in: path
+        name: account_identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/config_components-schemas-account_identifier'
+      requestBody:
+        content:
+          application/json: {}
+        required: true
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/mnm_config'
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: Delete account configuration response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/mnm_config'
+          description: Delete account configuration response
+      security:
+      - api_email: []
+        api_key: []
+      summary: Delete account configuration
+      tags:
+      - Magic Network Monitoring Configuration
+    get:
+      description: Lists default sampling and router IPs for account.
+      operationId: magic-network-monitoring-configuration-list-account-configuration
+      parameters:
+      - in: path
+        name: account_identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/config_components-schemas-account_identifier'
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/mnm_config'
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: List account configuration response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/mnm_config'
+          description: List account configuration response
+      security:
+      - api_email: []
+        api_key: []
+      summary: List account configuration
+      tags:
+      - Magic Network Monitoring Configuration
+    patch:
+      description: Update fields in an existing network monitoring configuration
+      operationId: magic-network-monitoring-configuration-update-account-configuration-fields
+      parameters:
+      - in: path
+        name: account_identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/config_components-schemas-account_identifier'
+      requestBody:
+        content:
+          application/json: {}
+        required: true
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/mnm_config'
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: Update account configuration fields response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/mnm_config'
+          description: Update account configuration fields response
+      security:
+      - api_email: []
+        api_key: []
+      summary: Update account configuration fields
+      tags:
+      - Magic Network Monitoring Configuration
+    post:
+      description: Create a new network monitoring configuration
+      operationId: magic-network-monitoring-configuration-create-account-configuration
+      parameters:
+      - in: path
+        name: account_identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/config_components-schemas-account_identifier'
+      requestBody:
+        content:
+          application/json: {}
+        required: true
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/mnm_config'
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: Create account configuration response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/mnm_config'
+          description: Create account configuration response
+      security:
+      - api_email: []
+        api_key: []
+      summary: Create account configuration
+      tags:
+      - Magic Network Monitoring Configuration
+    put:
+      description: Update an existing network monitoring configuration, requires the
+        entire configuration to be updated at once.
+      operationId: magic-network-monitoring-configuration-update-an-entire-account-configuration
+      parameters:
+      - in: path
+        name: account_identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/config_components-schemas-account_identifier'
+      requestBody:
+        content:
+          application/json: {}
+        required: true
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/mnm_config'
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: Update an entire account configuration response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/mnm_config'
+          description: Update an entire account configuration response
+      security:
+      - api_email: []
+        api_key: []
+      summary: Update an entire account configuration
+      tags:
+      - Magic Network Monitoring Configuration
+  /accounts/{account_identifier}/mnm/config/full:
+    get:
+      description: Lists default sampling, router IPs, and rules for account.
+      operationId: magic-network-monitoring-configuration-list-rules-and-account-configuration
+      parameters:
+      - in: path
+        name: account_identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/config_components-schemas-account_identifier'
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/mnm_config'
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: List rules and account configuration response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/mnm_config'
+          description: List rules and account configuration response
+      security:
+      - api_email: []
+        api_key: []
+      summary: List rules and account configuration
+      tags:
+      - Magic Network Monitoring Configuration
+  /accounts/{account_identifier}/mnm/rules:
+    get:
+      description: Lists network monitoring rules for account.
+      operationId: magic-network-monitoring-rules-list-rules
+      parameters:
+      - in: path
+        name: account_identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/rules_components-schemas-account_identifier'
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/mnm_rules'
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: List rules response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/mnm_rules'
+          description: List rules response
+      security:
+      - api_email: []
+        api_key: []
+      summary: List rules
+      tags:
+      - Magic Network Monitoring Rules
+    post:
+      description: Create network monitoring rules for account.
+      operationId: magic-network-monitoring-rules-create-rules
+      parameters:
+      - in: path
+        name: account_identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/rules_components-schemas-account_identifier'
+      requestBody:
+        content:
+          application/json: {}
+        required: true
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/mnm_rules'
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: Create rules response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/mnm_rules'
+          description: Create rules response
+      security:
+      - api_email: []
+        api_key: []
+      summary: Create rules
+      tags:
+      - Magic Network Monitoring Rules
+    put:
+      description: Update network monitoring rules for account.
+      operationId: magic-network-monitoring-rules-update-rules
+      parameters:
+      - in: path
+        name: account_identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/rules_components-schemas-account_identifier'
+      requestBody:
+        content:
+          application/json: {}
+        required: true
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/mnm_rules'
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: Update rules response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/mnm_rules'
+          description: Update rules response
+      security:
+      - api_email: []
+        api_key: []
+      summary: Update rules
+      tags:
+      - Magic Network Monitoring Rules
+  /accounts/{account_identifier}/mnm/rules/{rule_identifier}:
+    delete:
+      description: Delete a network monitoring rule for account.
+      operationId: magic-network-monitoring-rules-delete-rule
+      parameters:
+      - in: path
+        name: rule_identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/schemas-rule_identifier'
+      - in: path
+        name: account_identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/rules_components-schemas-account_identifier'
+      requestBody:
+        content:
+          application/json: {}
+        required: true
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/mnm_rule'
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: Delete rule response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/mnm_rule'
+          description: Delete rule response
+      security:
+      - api_email: []
+        api_key: []
+      summary: Delete rule
+      tags:
+      - Magic Network Monitoring Rules
+    get:
+      description: List a single network monitoring rule for account.
+      operationId: magic-network-monitoring-rules-get-rule
+      parameters:
+      - in: path
+        name: rule_identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/schemas-rule_identifier'
+      - in: path
+        name: account_identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/rules_components-schemas-account_identifier'
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/mnm_rule'
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: Get rule response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/mnm_rule'
+          description: Get rule response
+      security:
+      - api_email: []
+        api_key: []
+      summary: Get rule
+      tags:
+      - Magic Network Monitoring Rules
+    patch:
+      description: Update a network monitoring rule for account.
+      operationId: magic-network-monitoring-rules-update-rule
+      parameters:
+      - in: path
+        name: rule_identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/schemas-rule_identifier'
+      - in: path
+        name: account_identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/rules_components-schemas-account_identifier'
+      requestBody:
+        content:
+          application/json: {}
+        required: true
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/mnm_rule'
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: Update rule response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/mnm_rule'
+          description: Update rule response
+      security:
+      - api_email: []
+        api_key: []
+      summary: Update rule
+      tags:
+      - Magic Network Monitoring Rules
+  /accounts/{account_identifier}/mnm/rules/{rule_identifier}/advertisement:
+    patch:
+      description: Update advertisement for rule
+      operationId: magic-network-monitoring-rules-update-advertisement-for-rule
+      parameters:
+      - in: path
+        name: rule_identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/schemas-rule_identifier'
+      - in: path
+        name: account_identifier
+        required: true
+        schema:
+          $ref: '#/components/schemas/rules_components-schemas-account_identifier'
+      requestBody:
+        content:
+          application/json: {}
+        required: true
+      responses:
+        4xx:
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/mnm_rule_automatic_advertisement'
+                - $ref: '#/components/schemas/api-response-common-failure'
+          description: Update advertisement for rule response failure
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/mnm_rule_automatic_advertisement'
+          description: Update advertisement for rule response
+      security:
+      - api_email: []
+        api_key: []
+      summary: Update advertisement for rule
+      tags:
+      - Magic Network Monitoring Rules
   /accounts/{account_identifier}/pages/projects:
     get:
       description: Fetch a list of all user projects
@@ -51389,7 +51948,7 @@ paths:
     get:
       description: Fetches IP Access rules of the user. You can filter the results
         using several optional parameters.
-      operationId: ip-access-rules-for-a-user-get-ip-access-rules
+      operationId: ip-access-rules-for-a-user-list-ip-access-rules
       responses:
         4xx:
           content:
@@ -51398,17 +51957,17 @@ paths:
                 allOf:
                 - $ref: '#/components/schemas/rule_collection_response'
                 - $ref: '#/components/schemas/api-response-common-failure'
-          description: Get IP Access rules response failure
+          description: List IP Access rules response failure
         "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/rule_collection_response'
-          description: Get IP Access rules response
+          description: List IP Access rules response
       security:
       - api_email: []
         api_key: []
-      summary: Get IP Access rules
+      summary: List IP Access rules
       tags:
       - IP Access rules for a user
       x-cfPlanAvailability:
@@ -56106,7 +56665,7 @@ paths:
     get:
       description: Fetches IP Access rules of a zone. You can filter the results using
         several optional parameters.
-      operationId: ip-access-rules-for-a-zone-get-ip-access-rules
+      operationId: ip-access-rules-for-a-zone-list-ip-access-rules
       parameters:
       - in: path
         name: zone_id
@@ -56121,17 +56680,17 @@ paths:
                 allOf:
                 - $ref: '#/components/schemas/rule_collection_response'
                 - $ref: '#/components/schemas/api-response-common-failure'
-          description: Get IP Access rules response failure
+          description: List IP Access rules response failure
         "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/rule_collection_response'
-          description: Get IP Access rules response
+          description: List IP Access rules response
       security:
       - api_email: []
         api_key: []
-      summary: Get IP Access rules
+      summary: List IP Access rules
       tags:
       - IP Access rules for a zone
       x-cfPlanAvailability:
@@ -56308,7 +56867,7 @@ paths:
   /zones/{zone_id}/firewall/waf/packages/{package_id}/rules:
     get:
       description: Fetches WAF rules in a WAF package.
-      operationId: waf-rules-get-waf-rules
+      operationId: waf-rules-list-waf-rules
       parameters:
       - in: path
         name: package_id
@@ -56328,17 +56887,17 @@ paths:
                 allOf:
                 - $ref: '#/components/schemas/rule_response_collection'
                 - $ref: '#/components/schemas/api-response-common-failure'
-          description: Get WAF rules response failure
+          description: List WAF rules response failure
         "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/rule_response_collection'
-          description: Get WAF rules response
+          description: List WAF rules response
       security:
       - api_email: []
         api_key: []
-      summary: Get WAF rules
+      summary: List WAF rules
       tags:
       - WAF rules
       x-cfPlanAvailability:
@@ -57304,7 +57863,7 @@ paths:
   /zones/{zone_id}/rulesets/phases/{phase}/entrypoint:
     get:
       description: Fetches all Transform Rules in a zone.
-      operationId: transform-rules-get-transform-rules
+      operationId: transform-rules-list-transform-rules
       parameters:
       - in: path
         name: phase
@@ -57324,17 +57883,17 @@ paths:
                 allOf:
                 - $ref: '#/components/schemas/schemas-ruleset'
                 - $ref: '#/components/schemas/api-response-common-failure'
-          description: Get Transform Rules response failure
+          description: List Transform Rules response failure
         "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/schemas-ruleset'
-          description: Get Transform Rules response
+          description: List Transform Rules response
       security:
       - api_email: []
         api_key: []
-      summary: Get Transform Rules
+      summary: List Transform Rules
       tags:
       - Transform Rules
       x-cfPlanAvailability:
@@ -59490,7 +60049,7 @@ paths:
   /zones/{zone_identifier}/custom_pages:
     get:
       description: Fetches all the custom pages at the zone level.
-      operationId: custom-pages-for-a-zone-get-custom-pages
+      operationId: custom-pages-for-a-zone-list-custom-pages
       parameters:
       - in: path
         name: zone_identifier
@@ -59505,17 +60064,17 @@ paths:
                 allOf:
                 - $ref: '#/components/schemas/custom_pages_response_collection'
                 - $ref: '#/components/schemas/api-response-common-failure'
-          description: Get custom pages response failure
+          description: List custom pages response failure
         "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/custom_pages_response_collection'
-          description: Get custom pages response
+          description: List custom pages response
       security:
       - api_email: []
         api_key: []
-      summary: Get custom pages
+      summary: List custom pages
       tags:
       - Custom pages for a zone
       x-cfPermissionsRequired:
@@ -60752,7 +61311,7 @@ paths:
     get:
       description: Fetches filters in a zone. You can filter the results using several
         optional parameters.
-      operationId: filters-get-filters
+      operationId: filters-list-filters
       parameters:
       - in: path
         name: zone_identifier
@@ -60767,17 +61326,17 @@ paths:
                 allOf:
                 - $ref: '#/components/schemas/schemas-filter-response-collection'
                 - $ref: '#/components/schemas/api-response-common-failure'
-          description: Get filters response failure
+          description: List filters response failure
         "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/schemas-filter-response-collection'
-          description: Get filters response
+          description: List filters response
       security:
       - api_email: []
         api_key: []
-      summary: Get filters
+      summary: List filters
       tags:
       - Filters
       x-cfPlanAvailability:
@@ -61005,7 +61564,7 @@ paths:
     get:
       description: Fetches Zone Lockdown rules. You can filter the results using several
         optional parameters.
-      operationId: zone-lockdown-get-zone-lockdown-rules
+      operationId: zone-lockdown-list-zone-lockdown-rules
       parameters:
       - in: path
         name: zone_identifier
@@ -61020,17 +61579,17 @@ paths:
                 allOf:
                 - $ref: '#/components/schemas/zonelockdown_response_collection'
                 - $ref: '#/components/schemas/api-response-common-failure'
-          description: Get Zone Lockdown rules response failure
+          description: List Zone Lockdown rules response failure
         "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/zonelockdown_response_collection'
-          description: Get Zone Lockdown rules response
+          description: List Zone Lockdown rules response
       security:
       - api_email: []
         api_key: []
-      summary: Get Zone Lockdown rules
+      summary: List Zone Lockdown rules
       tags:
       - Zone Lockdown
       x-cfPlanAvailability:
@@ -61274,7 +61833,7 @@ paths:
     get:
       description: Fetches firewall rules in a zone. You can filter the results using
         several optional parameters.
-      operationId: firewall-rules-get-firewall-rules
+      operationId: firewall-rules-list-firewall-rules
       parameters:
       - in: path
         name: zone_identifier
@@ -61289,17 +61848,17 @@ paths:
                 allOf:
                 - $ref: '#/components/schemas/filter-rules-response-collection'
                 - $ref: '#/components/schemas/api-response-common-failure'
-          description: Get firewall rules response failure
+          description: List firewall rules response failure
         "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/filter-rules-response-collection'
-          description: Get firewall rules response
+          description: List firewall rules response
       security:
       - api_email: []
         api_key: []
-      summary: Get firewall rules
+      summary: List firewall rules
       tags:
       - Firewall rules
       x-cfPlanAvailability:
@@ -61331,17 +61890,17 @@ paths:
                 allOf:
                 - $ref: '#/components/schemas/filter-rules-response-collection'
                 - $ref: '#/components/schemas/api-response-common-failure'
-          description: Update priority of firewall rules  response failure
+          description: Update priority of firewall rules response failure
         "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/filter-rules-response-collection'
-          description: Update priority of firewall rules  response
+          description: Update priority of firewall rules response
       security:
       - api_email: []
         api_key: []
-      summary: 'Update priority of firewall rules '
+      summary: Update priority of firewall rules
       tags:
       - Firewall rules
       x-cfPlanAvailability:
@@ -61624,7 +62183,7 @@ paths:
     get:
       description: Fetches User Agent Blocking rules in a zone. You can filter the
         results using several optional parameters.
-      operationId: user-agent-blocking-rules-get-user-agent-blocking-rules
+      operationId: user-agent-blocking-rules-list-user-agent-blocking-rules
       parameters:
       - in: path
         name: zone_identifier
@@ -61639,17 +62198,17 @@ paths:
                 allOf:
                 - $ref: '#/components/schemas/firewalluablock_response_collection'
                 - $ref: '#/components/schemas/api-response-common-failure'
-          description: Get User Agent Blocking rules response failure
+          description: List User Agent Blocking rules response failure
         "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/firewalluablock_response_collection'
-          description: Get User Agent Blocking rules response
+          description: List User Agent Blocking rules response
       security:
       - api_email: []
         api_key: []
-      summary: Get User Agent Blocking rules
+      summary: List User Agent Blocking rules
       tags:
       - User Agent Blocking rules
       x-cfPlanAvailability:
@@ -61851,7 +62410,7 @@ paths:
   /zones/{zone_identifier}/firewall/waf/overrides:
     get:
       description: Fetches the URI-based WAF overrides in a zone.
-      operationId: waf-overrides-get-waf-overrides
+      operationId: waf-overrides-list-waf-overrides
       parameters:
       - in: path
         name: zone_identifier
@@ -61866,17 +62425,17 @@ paths:
                 allOf:
                 - $ref: '#/components/schemas/override_response_collection'
                 - $ref: '#/components/schemas/api-response-common-failure'
-          description: Get WAF overrides response failure
+          description: List WAF overrides response failure
         "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/override_response_collection'
-          description: Get WAF overrides response
+          description: List WAF overrides response
       security:
       - api_email: []
         api_key: []
-      summary: Get WAF overrides
+      summary: List WAF overrides
       tags:
       - WAF overrides
       x-cfPlanAvailability:
@@ -62074,7 +62633,7 @@ paths:
   /zones/{zone_identifier}/firewall/waf/packages:
     get:
       description: Fetches WAF packages for a zone.
-      operationId: waf-packages-get-waf-packages
+      operationId: waf-packages-list-waf-packages
       parameters:
       - in: path
         name: zone_identifier
@@ -62089,17 +62648,17 @@ paths:
                 allOf:
                 - $ref: '#/components/schemas/package_response_collection'
                 - $ref: '#/components/schemas/api-response-common-failure'
-          description: Get WAF packages response failure
+          description: List WAF packages response failure
         "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/package_response_collection'
-          description: Get WAF packages response
+          description: List WAF packages response
       security:
       - api_email: []
         api_key: []
-      summary: Get WAF packages
+      summary: List WAF packages
       tags:
       - WAF packages
       x-cfPlanAvailability:
@@ -62211,7 +62770,7 @@ paths:
   /zones/{zone_identifier}/firewall/waf/packages/{package_identifier}/groups:
     get:
       description: Fetches the WAF rule groups in a WAF package.
-      operationId: waf-rule-groups-get-waf-rule-groups
+      operationId: waf-rule-groups-list-waf-rule-groups
       parameters:
       - in: path
         name: package_identifier
@@ -62231,17 +62790,17 @@ paths:
                 allOf:
                 - $ref: '#/components/schemas/rule_group_response_collection'
                 - $ref: '#/components/schemas/api-response-common-failure'
-          description: Get WAF rule groups response failure
+          description: List WAF rule groups response failure
         "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/rule_group_response_collection'
-          description: Get WAF rule groups response
+          description: List WAF rule groups response
       security:
       - api_email: []
         api_key: []
-      summary: Get WAF rule groups
+      summary: List WAF rule groups
       tags:
       - WAF rule groups
       x-cfPlanAvailability:
@@ -64401,7 +64960,7 @@ paths:
   /zones/{zone_identifier}/pagerules:
     get:
       description: Fetches Page Rules in a zone.
-      operationId: page-rules-get-page-rules
+      operationId: page-rules-list-page-rules
       parameters:
       - in: path
         name: zone_identifier
@@ -64416,17 +64975,17 @@ paths:
                 allOf:
                 - $ref: '#/components/schemas/pagerule_response_collection'
                 - $ref: '#/components/schemas/api-response-common-failure'
-          description: Get Page Rules response failure
+          description: List Page Rules response failure
         "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/pagerule_response_collection'
-          description: Get Page Rules response
+          description: List Page Rules response
       security:
       - api_email: []
         api_key: []
-      summary: Get Page Rules
+      summary: List Page Rules
       tags:
       - Page Rules
       x-cfPermissionsRequired:
@@ -64708,7 +65267,7 @@ paths:
     get:
       description: Returns a list of settings (and their details) that Page Rules
         can apply to matching requests.
-      operationId: available-page-rules-settings-get-available-page-rules-settings
+      operationId: available-page-rules-settings-list-available-page-rules-settings
       parameters:
       - in: path
         name: zone_identifier
@@ -64723,17 +65282,17 @@ paths:
                 allOf:
                 - $ref: '#/components/schemas/pagerule_settings_response_collection'
                 - $ref: '#/components/schemas/api-response-common-failure'
-          description: Get available Page Rules settings response failure
+          description: List available Page Rules settings response failure
         "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/pagerule_settings_response_collection'
-          description: Get available Page Rules settings response
+          description: List available Page Rules settings response
       security:
       - api_email: []
         api_key: []
-      summary: Get available Page Rules settings
+      summary: List available Page Rules settings
       tags:
       - Available Page Rules settings
       x-cfPermissionsRequired:
@@ -64927,7 +65486,7 @@ paths:
   /zones/{zone_identifier}/rate_limits:
     get:
       description: Fetches the rate limits for a zone.
-      operationId: rate-limits-for-a-zone-get-rate-limits
+      operationId: rate-limits-for-a-zone-list-rate-limits
       parameters:
       - in: path
         name: zone_identifier
@@ -64942,17 +65501,17 @@ paths:
                 allOf:
                 - $ref: '#/components/schemas/ratelimit_response_collection'
                 - $ref: '#/components/schemas/api-response-common-failure'
-          description: Get rate limits response failure
+          description: List rate limits response failure
         "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ratelimit_response_collection'
-          description: Get rate limits response
+          description: List rate limits response
       security:
       - api_email: []
         api_key: []
-      summary: Get rate limits
+      summary: List rate limits
       tags:
       - Rate limits for a zone
       x-cfPlanAvailability:
