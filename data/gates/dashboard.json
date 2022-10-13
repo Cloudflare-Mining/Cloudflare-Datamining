@@ -232,6 +232,14 @@
 	"speed-test-result": {
 		"enabled": false
 	},
+	"targeting-test-experiment": {
+		"enabled": false,
+		"branches": [
+			"baseline",
+			"variantA",
+			"variantB"
+		]
+	},
 	"targeting-test-feature-flag": {
 		"enabled": false
 	},
