@@ -5,7 +5,7 @@
 	"type": "object",
 	"links": [
 		{
-			"title": "Get WAF overrides",
+			"title": "List WAF overrides",
 			"description": "Fetches the URI-based WAF overrides in a zone.",
 			"href": "zones/{#/definitions/zone_identifier}/firewall/waf/overrides",
 			"method": "GET",
@@ -17,7 +17,7 @@
 			},
 			"rel": "collection",
 			"cfOwnership": "firewall",
-			"html_id": "waf-overrides-get-waf-overrides",
+			"html_id": "waf-overrides-list-waf-overrides",
 			"uri": "zones/:zone_identifier/firewall/waf/overrides",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/firewall/waf/overrides?page=1&per_page=50\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"parameters": {

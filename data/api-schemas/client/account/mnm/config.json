@@ -1,0 +1,105 @@
+{
+	"id": "https://api.cloudflare.com/schemas/v4/client/account/mnm/config.json",
+	"title": "Magic Network Monitoring Configuration",
+	"description": "APIs for Configuring Network Monitoring",
+	"type": "object",
+	"links": [
+		{
+			"title": "List account configuration",
+			"description": "Lists default sampling and router IPs for account.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/mnm/config",
+			"method": "GET",
+			"cfOwnership": "magic-visibility",
+			"html_id": "magic-network-monitoring-configuration-list-account-configuration",
+			"uri": "accounts/:account_identifier/mnm/config",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/6f91088a406011ed95aed352566e8d4c/mnm/config\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"name\": \"cloudflare user's account\",\n  \"default_sampling\": 1,\n  \"router_ips\": [\n    \"203.0.113.1/32\"\n  ]\n}"
+		},
+		{
+			"title": "List rules and account configuration",
+			"description": "Lists default sampling, router IPs, and rules for account.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/mnm/config/full",
+			"method": "GET",
+			"cfOwnership": "magic-visibility",
+			"html_id": "magic-network-monitoring-configuration-list-rules-and-account-configuration",
+			"uri": "accounts/:account_identifier/mnm/config/full",
+			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/6f91088a406011ed95aed352566e8d4c/mnm/config/full\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"name\": \"cloudflare user's account\",\n  \"default_sampling\": 1,\n  \"router_ips\": [\n    \"203.0.113.1/32\"\n  ]\n}"
+		},
+		{
+			"title": "Create account configuration",
+			"description": "Create a new network monitoring configuration",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/mnm/config",
+			"method": "POST",
+			"cfOwnership": "magic-visibility",
+			"html_id": "magic-network-monitoring-configuration-create-account-configuration",
+			"uri": "accounts/:account_identifier/mnm/config",
+			"curl": "curl -X POST \"https://api.cloudflare.com/client/v4/accounts/6f91088a406011ed95aed352566e8d4c/mnm/config\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"name\": \"cloudflare user's account\",\n  \"default_sampling\": 1,\n  \"router_ips\": [\n    \"203.0.113.1/32\"\n  ]\n}"
+		},
+		{
+			"title": "Update account configuration fields",
+			"description": "Update fields in an existing network monitoring configuration",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/mnm/config",
+			"method": "PATCH",
+			"cfOwnership": "magic-visibility",
+			"html_id": "magic-network-monitoring-configuration-update-account-configuration-fields",
+			"uri": "accounts/:account_identifier/mnm/config",
+			"curl": "curl -X PATCH \"https://api.cloudflare.com/client/v4/accounts/6f91088a406011ed95aed352566e8d4c/mnm/config\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"name\": \"cloudflare user's account\",\n  \"default_sampling\": 1,\n  \"router_ips\": [\n    \"203.0.113.1/32\"\n  ]\n}"
+		},
+		{
+			"title": "Update an entire account configuration",
+			"description": "Update an existing network monitoring configuration, requires the entire configuration to be updated at once.",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/mnm/config",
+			"method": "PUT",
+			"cfOwnership": "magic-visibility",
+			"html_id": "magic-network-monitoring-configuration-update-an-entire-account-configuration",
+			"uri": "accounts/:account_identifier/mnm/config",
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/accounts/6f91088a406011ed95aed352566e8d4c/mnm/config\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"name\": \"cloudflare user's account\",\n  \"default_sampling\": 1,\n  \"router_ips\": [\n    \"203.0.113.1/32\"\n  ]\n}"
+		},
+		{
+			"title": "Delete account configuration",
+			"description": "Delete an existing network monitoring configuration",
+			"rel": "self",
+			"href": "accounts/{#/definitions/account_identifier}/mnm/config",
+			"method": "DELETE",
+			"cfOwnership": "magic-visibility",
+			"html_id": "magic-network-monitoring-configuration-delete-account-configuration",
+			"uri": "accounts/:account_identifier/mnm/config",
+			"curl": "curl -X DELETE \"https://api.cloudflare.com/client/v4/accounts/6f91088a406011ed95aed352566e8d4c/mnm/config\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
+			"response": "{\n  \"name\": \"cloudflare user's account\",\n  \"default_sampling\": 1,\n  \"router_ips\": [\n    \"203.0.113.1/32\"\n  ]\n}"
+		}
+	],
+	"html_id": "magic-network-monitoring-configuration",
+	"object_definition": {
+		"_formatter": {
+			"jsonMediaType": {}
+		},
+		"all_props": {
+			"account_identifier": {
+				"type": "string",
+				"example": "\"6f91088a406011ed95aed352566e8d4c\"",
+				"id": "https://api.cloudflare.com/schemas/v4/common/identifier.json",
+				"$schema": "http://json-schema.org/draft-04/hyper-schema#",
+				"description": "API item identifier tag",
+				"maxLength": 32,
+				"readOnly": true
+			}
+		},
+		"required_props": [],
+		"optional_props": [
+			"account_identifier"
+		],
+		"objects": [],
+		"example": "{\n  \"account_identifier\": \"6f91088a406011ed95aed352566e8d4c\"\n}",
+		"title": "Magic Network Monitoring Configuration",
+		"description": "APIs for Configuring Network Monitoring"
+	}
+}

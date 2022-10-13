@@ -5,7 +5,7 @@
 	"type": "object",
 	"links": [
 		{
-			"title": "Get WAF rule groups",
+			"title": "List WAF rule groups",
 			"description": "Fetches the WAF rule groups in a WAF package.",
 			"rel": "collection",
 			"href": "zones/{#/definitions/zone_identifier}/firewall/waf/packages/{#/definitions/package_identifier}/groups",
@@ -17,7 +17,7 @@
 				"business": true,
 				"enterprise": true
 			},
-			"html_id": "waf-rule-groups-get-waf-rule-groups",
+			"html_id": "waf-rule-groups-list-waf-rule-groups",
 			"uri": "zones/:zone_identifier/firewall/waf/packages/:package_identifier/groups",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/firewall/waf/packages/a25a9a7e9c00afc1fb2e0245519d725b/groups?name=Project Honey Pot&mode=on&rules_count=10&page=1&per_page=50&order=mode&direction=desc&match=all\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"parameters": {

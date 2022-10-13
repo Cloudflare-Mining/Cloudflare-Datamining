@@ -5,7 +5,7 @@
 	"type": "object",
 	"links": [
 		{
-			"title": "Get WAF rules",
+			"title": "List WAF rules",
 			"description": "Fetches WAF rules in a WAF package.",
 			"rel": "collection",
 			"href": "zones/{#/definitions/zone_id}/firewall/waf/packages/{#/definitions/package_id}/rules",
@@ -17,7 +17,7 @@
 				"business": true,
 				"enterprise": true
 			},
-			"html_id": "waf-rules-get-waf-rules",
+			"html_id": "waf-rules-list-waf-rules",
 			"uri": "zones/:zone_id/firewall/waf/packages/:package_id/rules",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/firewall/waf/packages/a25a9a7e9c00afc1fb2e0245519d725b/rules?description=SQL injection prevention for SELECT statements&mode=CHL&priority=5&group_id=de677e5818985db1285d0e80225f06e5&page=1&per_page=50&order=status&direction=desc&match=all\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"parameters": {

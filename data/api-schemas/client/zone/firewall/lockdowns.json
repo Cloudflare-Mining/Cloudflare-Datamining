@@ -6,7 +6,7 @@
 	"type": "object",
 	"links": [
 		{
-			"title": "Get Zone Lockdown rules",
+			"title": "List Zone Lockdown rules",
 			"description": "Fetches Zone Lockdown rules. You can filter the results using several optional parameters.",
 			"rel": "collection",
 			"href": "zones/{#/definitions/zone_identifier}/firewall/lockdowns",
@@ -18,7 +18,7 @@
 				"business": true,
 				"enterprise": true
 			},
-			"html_id": "zone-lockdown-get-zone-lockdown-rules",
+			"html_id": "zone-lockdown-list-zone-lockdown-rules",
 			"uri": "zones/:zone_identifier/firewall/lockdowns",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/firewall/lockdowns?page=1&per_page=20&description=endpoints&created_on=2014-01-01T05:20:00.12345Z&modified_on=2014-01-01T05:20:00.12345Z&uri=/some/path&ip=1.2.3.4&ip_range=1.2.3.0/16&priority=5\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"parameters": {

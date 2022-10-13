@@ -6,7 +6,7 @@
 	"type": "object",
 	"links": [
 		{
-			"title": "Get WAF packages",
+			"title": "List WAF packages",
 			"description": "Fetches WAF packages for a zone.",
 			"rel": "collection",
 			"href": "zones/{#/definitions/zone_identifier}/firewall/waf/packages",
@@ -18,7 +18,7 @@
 				"business": true,
 				"enterprise": true
 			},
-			"html_id": "waf-packages-get-waf-packages",
+			"html_id": "waf-packages-list-waf-packages",
 			"uri": "zones/:zone_identifier/firewall/waf/packages",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/firewall/waf/packages?name=USER&page=1&per_page=50&order=status&direction=desc&match=all\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"parameters": {

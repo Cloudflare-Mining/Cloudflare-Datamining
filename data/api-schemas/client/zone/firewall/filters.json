@@ -6,7 +6,7 @@
 	"type": "object",
 	"links": [
 		{
-			"title": "Get filters",
+			"title": "List filters",
 			"description": "Fetches filters in a zone. You can filter the results using several optional parameters.",
 			"rel": "collection",
 			"href": "zones/{#/definitions/zone_identifier}/filters",
@@ -18,7 +18,7 @@
 				"business": true,
 				"enterprise": true
 			},
-			"html_id": "filters-get-filters",
+			"html_id": "filters-list-filters",
 			"uri": "zones/:zone_identifier/filters",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/filters?id=372e67954025e0ba6aaa6d586b9e0b61&paused=false&expression=php&description=browsers&ref=FIL-100&page=1&per_page=25\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"parameters": {

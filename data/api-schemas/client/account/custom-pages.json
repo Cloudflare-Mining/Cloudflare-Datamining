@@ -5,7 +5,7 @@
 	"type": "object",
 	"links": [
 		{
-			"title": "Get custom pages",
+			"title": "List custom pages",
 			"description": "Fetches all the custom pages at the account level.",
 			"rel": "collection",
 			"href": "accounts/{#/definitions/account_identifier}/custom_pages",
@@ -22,7 +22,7 @@
 					"#organization:read"
 				]
 			},
-			"html_id": "custom-pages-for-an-account-get-custom-pages",
+			"html_id": "custom-pages-for-an-account-list-custom-pages",
 			"uri": "accounts/:account_identifier/custom_pages",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/accounts/01a7362d577a6c3019a474fd6f485823/custom_pages\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": [\n    {\n      \"id\": \"basic_challenge\",\n      \"created_on\": \"2014-01-01T05:20:00.12345Z\",\n      \"modified_on\": \"2014-01-01T05:20:00.12345Z\",\n      \"url\": \"http://www.example.com\",\n      \"state\": \"default\",\n      \"required_tokens\": [\n        \"::CAPTCHA_BOX::\"\n      ],\n      \"preview_target\": \"preview:target\",\n      \"description\": true\n    }\n  ]\n}"

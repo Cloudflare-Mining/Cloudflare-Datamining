@@ -5,7 +5,7 @@
 	"type": "object",
 	"links": [
 		{
-			"title": "Get User Agent Blocking rules",
+			"title": "List User Agent Blocking rules",
 			"description": "Fetches User Agent Blocking rules in a zone. You can filter the results using several optional parameters.",
 			"rel": "collection",
 			"href": "zones/{#/definitions/zone_identifier}/firewall/ua_rules",
@@ -17,7 +17,7 @@
 				"business": true,
 				"enterprise": true
 			},
-			"html_id": "user-agent-blocking-rules-get-user-agent-blocking-rules",
+			"html_id": "user-agent-blocking-rules-list-user-agent-blocking-rules",
 			"uri": "zones/:zone_identifier/firewall/ua_rules",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/firewall/ua_rules?page=1&per_page=20&description=abusive&user_agent=Safari\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"parameters": {

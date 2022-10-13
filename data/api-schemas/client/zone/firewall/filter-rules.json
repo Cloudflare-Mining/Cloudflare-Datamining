@@ -6,7 +6,7 @@
 	"type": "object",
 	"links": [
 		{
-			"title": "Get firewall rules",
+			"title": "List firewall rules",
 			"description": "Fetches firewall rules in a zone. You can filter the results using several optional parameters.",
 			"rel": "collection",
 			"href": "zones/{#/definitions/zone_identifier}/firewall/rules",
@@ -18,7 +18,7 @@
 				"business": true,
 				"enterprise": true
 			},
-			"html_id": "firewall-rules-get-firewall-rules",
+			"html_id": "firewall-rules-list-firewall-rules",
 			"uri": "zones/:zone_identifier/firewall/rules",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/firewall/rules?id=372e67954025e0ba6aaa6d586b9e0b60&description=mir&action=block&paused=false&page=1&per_page=25\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"parameters": {
@@ -534,7 +534,7 @@
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"id\": \"372e67954025e0ba6aaa6d586b9e0b60\",\n    \"action\": \"block\",\n    \"products\": [\n      \"waf\"\n    ],\n    \"priority\": 50,\n    \"paused\": false,\n    \"description\": \"Blocks traffic identified during investigation for MIR-31\",\n    \"ref\": \"MIR-31\",\n    \"filter\": {\n      \"id\": \"372e67954025e0ba6aaa6d586b9e0b61\",\n      \"expression\": \"(http.request.uri.path ~ \\\".*wp-login.php\\\" or http.request.uri.path ~ \\\".*xmlrpc.php\\\") and ip.addr ne 172.16.22.155\",\n      \"paused\": false,\n      \"description\": \"Restrict access from these browsers on this address range.\",\n      \"ref\": \"FIL-100\"\n    }\n  }\n}"
 		},
 		{
-			"title": "Update priority of firewall rules ",
+			"title": "Update priority of firewall rules",
 			"rel": "collection",
 			"description": "Updates the priority of existing firewall rules.",
 			"href": "zones/{#/definitions/zone_identifier}/firewall/rules",
@@ -546,7 +546,7 @@
 				"business": true,
 				"enterprise": true
 			},
-			"html_id": "firewall-rules-update-priority-of-firewall-rules-",
+			"html_id": "firewall-rules-update-priority-of-firewall-rules",
 			"uri": "zones/:zone_identifier/firewall/rules",
 			"curl": "curl -X PATCH \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/firewall/rules\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '[{\"id\":\"372e67954025e0ba6aaa6d586b9e0b60\",\"priority\":50}]'",
 			"parameters": {
