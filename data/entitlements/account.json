@@ -384,6 +384,18 @@
 		}
 	},
 	{
+		"id": "cfone.briefings_enabled",
+		"feature": {
+			"feature_set": "cfone",
+			"id": 1100,
+			"key": "cfone.briefings_enabled",
+			"name": "CFOne - Briefings Enabled"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "contract.customer_enabled",
 		"feature": {
 			"feature_set": "contract",
@@ -1170,6 +1182,18 @@
 			"id": 19,
 			"key": "rate_limiting.enabled",
 			"name": "rate_limiting.enabled"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "rate_limiting.log_ref",
+		"feature": {
+			"feature_set": "rate_limiting",
+			"id": 713,
+			"key": "rate_limiting.log_ref",
+			"name": "Rate Limiting - Log customer-defined Ref field to firewall logs"
 		},
 		"allocation": {
 			"type": "bool"
