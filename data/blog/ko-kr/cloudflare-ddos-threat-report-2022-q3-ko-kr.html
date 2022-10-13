@@ -1,0 +1,138 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/image13.png" class="kg-image" alt="Cloudflare DDoS threat report 2022 Q3"></figure>
+	<p>Cloudflare의 2022년 3분기 DDoS 위협 보고서에 오신 것을 환영합니다. 이 보고서에는 Cloudflare <a href="https://www.cloudflare.com/network/" target="_blank">전역 네트워크</a> 전반에서 관찰된 DDoS 위협 환경에 대한 인사이트와 동향이 담겨있습니다.</p>
+	<p>강력한 멀티테라비트 급 DDoS 공격이 점점 잦아지고 있습니다. 3분기에 Cloudflare는 1Tbps를 넘는 여러 공격을 자동으로 감지하여 완화했습니다. 그중 규모가 가장 컸던 공격은 Mirai 봇넷 변종으로 수행된 2.5Tbps의 DDoS 공격으로, Minecraft 서버인 Wynncraft를 목표로 삼았습니다. 비트 전송률 관점에서 가장 규모가 큰 공격이었습니다. </p>
+	<p>이 공격은 UDP 및 TCP 폭주로 구성된 멀티 벡터 공격이었습니다. 하지만, 수많은 사용자가 동일한 서버에서 플레이할 수 있는 <a href="https://en.wikipedia.org/wiki/Massively_multiplayer_online_role-playing_game" target="_blank">대규모 멀티 플레이 온라인 롤플레이 게임</a>인 Minecraft의 Wynncraft 서버는 공격을 알아차리지도 못했습니다. Cloudflare에서 대신 필터링했기 때문입니다. </p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/1.png" class="kg-image" alt="A graph of the 2.5 Tbps DDoS attack that targeted Wynncraft">
+		<figcaption>Mirai로 실행되어 Wynncraft를 겨냥한 2.5Tbps 규모의 DDoS 공격</figcaption>
+	</figure>
+	<h2 id="-ddos-">일반적인 DDoS 공격 동향</h2>
+	<p>이번 분기에는 전체적으로 다음과 같은 동향이 있었습니다.</p>
+	<ul>
+		<li>작년에 비해 DDoS 공격이 증가했습니다.</li>
+		<li>볼류메트릭 공격이 더 오래 지속되고, <a href="https://www.cloudflare.com/learning/ddos/glossary/mirai-botnet/" target="_blank">Mirai 봇넷</a>과 <a href="https://blog.cloudflare.com/mantis-botnet/">변종</a>으로 수행된 공격이 급증했습니다.</li>
+		<li>대만과 일본을 겨냥한 공격이 급증했습니다.</li>
+	</ul>
+	<h2 id="-ddos--1">응용 프로그램 계층 DDoS 공격</h2>
+	<ul>
+		<li>HTTP DDoS 공격이 전년 대비 111% 늘었지만, 전 분기 대비로는 10% 줄었습니다.</li>
+		<li>대만을 겨냥한 HTTP DDoS 공격은 전 분기 대비 200%, 일본을 겨냥한 공격은 전 분기 대비 105% 늘었습니다.</li>
+		<li>랜섬 DDoS 공격에 대한 보고가 전년 대비 67%, 전 분기 대비 15% 늘었습니다.</li>
+	</ul>
+	<h2 id="-ddos--2">네트워크 계층 DDoS 공격</h2>
+	<ul>
+		<li>L3/4 DDoS 공격은 전년 대비 97%, 전 분기 대비 24% 늘었습니다.</li>
+		<li>Mirai 봇넷의 L3/4 DDoS 공격이 전 분기 대비 405% 늘었습니다.</li>
+		<li>L3/4 DDoS 공격은 대규모 2.5Tbps DDoS 공격을 포함해, 게임 / 도박 산업을 가장 목표로 많이 삼았습니다. </li>
+	</ul>
+	<p>이 보고서는 Cloudflare의 DDoS 방어 시스템에서 자동으로 감지되어 완화된 DDoS 공격을 기반으로 한 것입니다. 이 시스템의 원리에 대해 자세히 알아보려면 <a href="https://blog.cloudflare.com/deep-dive-cloudflare-autonomous-edge-ddos-protection/">이 심층 블로그 게시물</a>을 참고하세요.</p>
+	<h2 id="-">랜섬 공격</h2>
+	<p><a href="https://www.cloudflare.com/learning/ddos/ransom-ddos-attack/" target="_blank">랜섬 DDoS 공격</a>은 공격자가 주로 비트코인의 형태로 랜섬 지불을 요구하여 공격을 중단하거나 피하게 해주는 공격입니다. 3분기에 조사에 응답한 Cloudflare 고객 중 15%가 위협이나 랜섬 메모가 동반된 HTTP DDoS 공격의 표적이 되었다고 보고했습니다. 전 분기에 보고된 랜섬 DDoS 공격과 비교하면 15%가 늘었고, 전년과 비교하면 67%가 늘어난 것입니다. </p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/2.png" class="kg-image" alt="Graph of Ransom DDoS attacks by quarter" title="Chart">
+		<figcaption>분기별 랜섬 DDoS 공격 분포</figcaption>
+	</figure>
+	<p>3분기를 살펴보면 2022년 6월부터 랜섬 공격 보고가 꾸준히 줄었다는 점을 확인할 수 있습니다. 하지만 9월에는 또 다시 랜섬 공격 보고가 크게 늘었습니다. 9월 한 달 동안, 응답자 4명 중 1명 가량이 랜섬 DDoS 공격이나 위협을 받았다고 보고했으며, 9월은 2022년 현재까지 가장 횟수가 많은 달입니다.<br></p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/3.png" class="kg-image" alt="Graph of Ransom DDoS attacks by month" title="Chart">
+		<figcaption>월별 랜섬 DDoS 공격 분포</figcaption>
+	</figure>
+	<p><strong>랜섬 DDoS 공격 동향 계산 방법</strong></p>
+	<p>Cloudflare의 시스템에서는 지속해서 트래픽을 분석하면서 DDoS 공격이 감지되면 자동으로 완화 조치를 적용합니다. 공격의 특성을 보다 자세히 파악하고 완화에 성공하는 데 도움이 되도록 DDoS 공격을 당한 각 고객에게 자동 설문이 표시됩니다. Cloudflare는 2년 여에 걸쳐 공격 받은 고객에게 설문을 진행하고 있습니다. 해당 설문에는 DDoS 공격을 멈추는 대가로 돈을 요구하는 위협이나 랜섬 메모를 응답자가 받았는지에 대한 질문이 있습니다. 지난 한 해간 분기당 평균 174건의 응답을 모았습니다. 설문 응답을 이용해 랜섬 DDoS 공격의 비율을 계산합니다.</p>
+	<h2 id="-ddos--3">애플리케이션 계층 DDoS 공격</h2>
+	<p><a href="https://www.cloudflare.com/learning/ddos/application-layer-ddos-attack/" target="_blank">애플리케이션 계층 DDoS 공격</a> 중 특히 HTTP DDoS 공격은 주로 웹 서버가 합법적인 사용자 요청을 처리할 수 없도록 하여 웹 서버를 사용 불가능하게 만드는 것을 목표로 합니다. 서버가 처리할 수 있는 양보다 많은 요청이 쏟아질 경우, 해당 서버는 합법적인 요청의 처리를 중단하게 되고, 경우에 따라서는 충돌을 일으켜 성능이 저하되거나 합법적인 사용자의 서비스도 거부하게 됩니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/4.png" class="kg-image" alt="A diagram of an application-layer DDoS attack denying service to legitimate users"></figure>
+	<h3 id="-ddos--4">애플리케이션 계층 DDoS 공격 동향</h3>
+	<p>아래 그래프를 보면 2022년 1분기부터 각 분기에 10% 가량 공격이 줄어드는 동향이 명확히 보입니다. 감소하는 동향을 보임에도 불구하고, 2022년 3분기를 2021년 3분기와 비교하면 HTTP DDoS 공격은 전년 대비 111% 늘어난 상태입니다.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/5.png" class="kg-image" alt="Graph of HTTP DDoS attacks by quarter" title="Chart">
+		<figcaption>분기별 HTTP DDoS 공격 분포</figcaption>
+	</figure>
+	<p>이번 분기를 월별로 살펴보면, 9월과 8월에 수행된 공격은 각각 36%와 35%로 상당히 고르게 분포되어 있습니다. 7월에는 분기 중 가장 적게 공격이 수행되었습니다(29%).</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/001.png" class="kg-image" alt="Graph of HTTP DDoS attacks by month in 2022 Q3" title="Chart">
+		<figcaption>2022년 3분기 월별 HTTP DDoS 공격 분포</figcaption>
+	</figure>
+	<h3 id="-ddos--5">산업별 응용 프로그램 계층 DDoS 공격</h3>
+	<p>고객의 운영 산업별로 공격을 분류하면, 3분기에는 인터넷 회사에서 운영하는 HTTP 애플리케이션이 가장 많이 표적이 되었음을 알 수 있습니다. 인터넷 산업에 수행된 공격은 전 분기 대비 131%, 전년 대비 300% 늘었습니다.</p>
+	<p>두 번째로 공격을 많이 받은 산업은 전 분기 대비 93%, 전년 대비 2,317%(!) 증가한 통신 산업이었습니다. 세 번째는 전 분기 대비 17%, 전년 대비 36%로 비교적 증가율이 보수적이었던 게임 / 도박 산업이었습니다.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/7.png" class="kg-image" alt="Graph of the top industries targeted by HTTP DDoS attacks in 2022 Q3">
+		<figcaption>2022년 3분기에 가장 많이 HTTP DDoS 공격의 표적이 되었던 산업</figcaption>
+	</figure>
+	<h3 id="-ddos--6">대상 국가별 응용 프로그램 계층 DDoS 공격</h3>
+	<p>Cloudflare 고객의 청구 주소별로 공격을 분류하면 가장 공격을 많이 받은 국가를 파악할 수 있습니다. 3분기에는 미국 회사가 운영하는 HTTP 애플리케이션이 가장 많이 표적이 되었습니다. 미국 기반 웹 사이트를 겨냥한 공격은 전 분기 대비 60%, 전년 대비 105% 늘었습니다. 전 분기 대비 332%, 전년 대비 800%가 늘어난 중국이 미국의 뒤를 이었습니다.</p>
+	<p>우크라이나를 살펴보면, 우크라이나 웹 사이트를 겨냥한 공격은 전 분기 대비 67% 늘었지만 전년과 비교하면 50% 줄었습니다. 이와 더불어 러시아 웹 사이트를 겨냥한 공격은 전 분기 대비 31%, 전년 대비 2,400%(!) 늘었습니다.</p>
+	<p>동아시아에서는 대만 회사를 겨냥한 공격이 전 분기 대비 200%, 전년 대비 60% 늘었고, 일본 회사를 겨냥한 공격이 전 분기 대비 105% 늘었습니다.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/8.png" class="kg-image" alt="Graph of the top countries targeted by HTTP DDoS attacks in 2022 Q3">
+		<figcaption>2022년 3분기에 가장 많이 HTTP DDoS 공격의 표적이 되었던 국가</figcaption>
+	</figure>
+	<p>국가를 구체적으로 자세히 살펴보면, 우크라이나 전쟁과 동아시아의 지정학적 사건과 관련해 흥미로운 인사이트를 보여주는 듯한 동향을 다음과 같이 파악할 수 있습니다.</p>
+	<p><strong>우크라이나에서는 </strong>공격을 받은 산업이 놀라울 정도로 바뀌었습니다. 지난 2분기에는 정보를 은폐하고 민간인이 정보를 확인할 수 없게 하려는 듯한 시도로 방송, 온라인 미디어, 출판 회사가 가장 표적이 많이 되었습니다. 하지만 이번 분기에 이들 산업은 상위 10위에서 밀려났습니다. 그 대신 마케팅 및 광고 산업이 선두를 차지했고(40%), 교육 회사(20%)와 행정부(8%)가 그 뒤를 이었습니다.</p>
+	<p><strong>러시아에서는</strong> 뱅킹, 금융 서비스, 보험(BFSI) 산업에 대한 공격이 계속 이루어지고 있습니다(25%). 그렇기는 하지만, BFSI 부문에 대하여 수행되는 공격은 전 분기 대비 아직 44% 줄어든 상태입니다. 2위는 이벤트 서비스 산업(20%)이고, 암호화폐(16%), 방송 미디어(13%), 리테일(11%)이 그 뒤를 이었습니다. 공격 트래픽은 상당 부분 독일에 위치한 IP 주소에서 발생했고, 이를 제외하면 세계적인 분포를 보였습니다.</p>
+	<p><strong>대만에서 </strong>가장 공격을 많이 받은 산업은 온라인 미디어(50%)와 인터넷(23%)이었습니다. 이러한 산업에 대한 공격은 전 세계적으로 분산되었으며, 봇넷이 사용되었음을 나타내고 있습니다.</p>
+	<p><strong>일본에서 </strong>가장 공격을 많이 받은 산업은 인터넷/미디어 및 인터넷(52%), 비즈니스 서비스(12%), 정부 - 국가(11%) 부문이었습니다.</p>
+	<h3 id="-ddos--7">공격 출처 국가별 애플리케이션 계층 DDoS 공격 트래픽</h3>
+	<p>구체적인 출처 국가 지표를 살펴보기 전에, 출처 국가가 흥미롭기는 하지만, 그 국가가 반드시 공격자의 위치를 나타내지는 않는다는 점을 알아야 합니다. DDoS 공격은 원격으로 수행되기도 하며 공격자는 잡히지 않으려고 어떤 방식으로든 실제 위치를 숨기려고 합니다. 이 경우 봇넷 노드가 위치한 장소를 나타내는 것입니다. 그렇기는 해도 공격이 수행되는 IP 주소를 위치에 매핑하여 공격 트래픽이 발생하는 위치를 파악할 수 있습니다.</p>
+	<p>중국이 2분기 연속 HTTP DDoS 공격 트래픽의 주요 출처에 해당했던 미국을 제쳤습니다. 3분기에 중국은 HTTP DDoS 공격 트래픽 출처 중 가장 규모가 컸습니다. 중국 등록 IP 주소에서 발생한 공격 트래픽은 전년 대비 29%, 전 분기 대비 19% 늘었습니다. 중국에 이어 두 번째로 규모가 큰 HTTP DDoS 공격 트래픽 출처는 전년 대비 61% 증가한 인도였습니다. 인도의 뒤를 이은 주요 출처는 미국과 브라질이었습니다.</p>
+	<p>우크라이나를 살펴보면 이번 분기에는 우크라이나 및 러시아 IP 주소에서 발생한 공격 트래픽이 전 분기 대비 각각 29%와 11%로 줄었다는 점을 확인할 수 있습니다. 하지만 전년과 비교하면 우크라이나 및 러시아에서 발생한 공격 트래픽은 각각 47%와 18%로 늘어난 상태입니다.</p>
+	<p>데이터에서 또 한 가지 흥미로운 점은 일본 IP 주소에서 발생한 공격 트래픽이 전년 대비 130% 늘었다는 것입니다. </p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/9.png" class="kg-image" alt="Graph of the top source countries of HTTP DDoS attacks in 2022 Q3">
+		<figcaption>2022년 3분기 HTTP DDoS 공격의 상위 출처 국가</figcaption>
+	</figure>
+	<h2 id="-ddos--8">네트워크 계층 DDoS 공격</h2>
+	<p>응용 프로그램 계층 공격이 최종 사용자가 액세스하려는 서비스(우리의 경우 HTTP/S)를 구동하는 응용 프로그램(<a href="https://www.cloudflare.com/learning/ddos/glossary/open-systems-interconnection-model-osi/" target="_blank">OSI 모델</a>의 계층 7)를 대상으로 하는 반면, <a href="https://www.cloudflare.com/learning/ddos/layer-3-ddos-attacks/" target="_blank">네트워크 계층 공격</a>은 네트워크 인프라(예: 인라인 라우터 및 서버)와 인터넷 링크 자체를 마비시키는 것을 목표로 합니다.</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/10.png" class="kg-image" alt="Diagram of a L3/4 DDoS attack"></figure>
+	<h3 id="-ddos--9">네트워크 계층 DDoS 공격 동향</h3>
+	<p>3분기에는 L3/4 DDoS 공격이 전년 대비 97%, 전 분기 대비 24% 급증했습니다. 이와 더불어, 그래프를 살펴보면 지난 3분기 동안 공격의 증가 동향이 명확하게 보입니다.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/11.png" class="kg-image" alt="Graph of L3/4 DDoS attacks by quarter" title="Chart">
+		<figcaption>분기별 L3/4 DDoS 공격 분포</figcaption>
+	</figure>
+	<p>이번 분기를 자세히 살펴보면, 7월의 비율이 약간 더 크지만, 대부분의 공격은 분기 전체에 고르게 분포되어 있습니다.<br></p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/12.png" class="kg-image" alt="Graph of L3/4 DDoS attacks by month in 2022 Q3" title="Chart">
+		<figcaption>2022년 3분기 월별 L3/4 DDoS 공격 분포</figcaption>
+	</figure>
+	<h3 id="-ddos--10">산업별 네트워크 계층 DDoS 공격</h3>
+	<p>3분기에는 게임 / 도박 산업이 L3/4 DDoS 공격을 가장 많이 받았습니다. 게임 / 도박 네트워크에서 Cloudflare가 수집한 트래픽 5바이트 중 약 1바이트 가량은 DDoS 공격에 속해 있었습니다. 이는 전 분기 대비 무려 381%나 늘어난 수치입니다.</p>
+	<p>두 번째로 표적이 많이 되었던 산업은 통신 산업이었습니다. 통신 네트워크로 향하는 바이트 중 6% 가량이 DDoS 공격의 일환이었습니다. 통신 산업이 L3/4 DDoS 공격을 가장 많이 받은 것으로 드러났던 전 분기보다 58% 감소한 수치입니다.</p>
+	<p>그 다음으로는 소프트웨어 산업과 함께 정보 기술 및 서비스 산업이 뒤를 이었습니다. 두 산업에 수행된 공격은 전 분기 대비 각각 89%와 150%로 크게 늘었습니다.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/13.png" class="kg-image" alt="Graph of the top industries targeted by L3/4 DDoS attacks in 2022 Q3">
+		<figcaption>2022년 3분기에 가장 많이 L3/4 DDoS 공격의 표적이 되었던 산업</figcaption>
+	</figure>
+	<h3 id="-ddos--11">대상 국가별 네트워크 계층 DDoS 공격</h3>
+	<p>3분기에는 싱가포르에 위치한 회사가 L3/4 DDoS 공격을 가장 많이 받았습니다. 네트워크상의 모든 바이트 중 15% 이상이 DDoS 공격과 관련되어 있었습니다. 이는 놀랍게도 전 분기 대비 1,175%나 늘어난 수치입니다. </p>
+	<p>미국이 뒤를 이어, 미국 네트워크를 겨냥한 공격 트래픽이 전 분기 대비 45% 감소했습니다. 세 번째는 전 분기 대비 62% 증가한 중국입니다. 대만 회사에 대하여 수행된 공격도 전 분기 대비 200% 늘었습니다.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/14.png" class="kg-image" alt="Graph of the top countries targeted by L3/4 DDoS attacks in 2022 Q3">
+		<figcaption>2022년 3분기에 가장 많이 L3/4 DDoS 공격의 표적이 되었던 국가</figcaption>
+	</figure>
+	<h3 id="-ddos--12">수신 국가별 네트워크 계층 DDoS 공격</h3>
+	<p>3분기의 공격 트래픽 비율은 아제르바이잔에 위치한 Cloudflare 데이터 센터에서 가장 높았습니다. 수집한 전체 패킷 중 3분의 1 이상이 L3/4 DDoS 공격에 속해 있었습니다. 이는 전 분기 대비 44%, 전년 대비 무려 59배나 늘어난 수치입니다. </p>
+	<p>이와 유사하게 튀니지 소재 Cloudflare 데이터 센터에서도 공격 패킷이 크게 늘어나, 전년보다 173배 증가했습니다. 짐바브웨와 독일에서도 공격이 크게 늘어났습니다.</p>
+	<p>동아시아를 살펴보면 대만 소재 Cloudflare 데이터 센터에서도 공격이 늘어난 상황이 확인되는데, 전 분기 대비 207%, 전년 대비 1,989% 증가했습니다. 일본에서도 공격량이 전 분기 대비 278%, 전년 대비 1,921% 늘어나 유사한 수치를 보였습니다.</p>
+	<p>우크라이나를 살펴보면, 우크라이나와 러시아 소재 데이터 센터에서 관찰된 공격 패킷의 양은 실제로 전 분기 대비 49%및 16%만큼 감소했습니다.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/0011.png" class="kg-image" alt="A graph of top Cloudflare data center locations with the highest percentage of DDoS attack traffic in 2022 Q3">
+		<figcaption>2022년 3분기 DDoS 공격 트래픽 비율이 가장 높은 Cloudflare 데이터 센터 위치</figcaption>
+	</figure>
+	<h3 id="--1">공격 벡터 및 새롭게 떠오르는 위협</h3>
+	<p>공격 벡터란 공격을 개시하는 데 사용되는 방법, 또는 서비스 거부를 일으키려고 시도하는 데 사용되는 방법을 말합니다. <a href="https://www.cloudflare.com/learning/ddos/syn-flood-ddos-attack/" target="_blank">SYN 폭주</a> 및 <a href="https://www.cloudflare.com/learning/ddos/dns-amplification-ddos-attack/" target="_blank">DNS 공격</a>은 도합 71%로 3분기에도 가장 자주 이용된 DDoS 공격 벡터로 꼽혔습니다.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/16.png" class="kg-image" alt="A graph of the top attacks vectors in 2022 Q3">
+		<figcaption>2022년 3분기 상위 공격 벡터</figcaption>
+	</figure>
+	<p>지난 분기에는 CHARGEN 프로토콜, Ubiquity Discovery 프로토콜, 멤캐시드 반사 공격을 악용한 공격이 <a href="https://classic.radar.cloudflare.com/notebooks/ddos-2022-q2#emerging-threats" target="_blank">다시 발생</a>했습니다. 이번 분기에는 멤캐시드 DDoS 공격이 다소 증가하긴 했지만(48%), BitTorrent 프로토콜을 악용한 공격(1,221%)과 더불어 Mirai 봇넷과 변형을 이용해 수행한 공격이 더욱 크게 늘어났습니다. <br></p>
+	<p><strong>전 분기 대비 1,221% 늘어난 BitTorrent DDoS 공격</strong></p>
+	<p><a href="https://en.wikipedia.org/wiki/BitTorrent" target="_blank">BitTorrent 프로토콜</a>은 피어 투 피어 파일 공유 시 사용되는 통신 프로토콜입니다. BitTorrent 클라이언트가 효율적으로 파일을 찾아 다운로드하는 데 도움이 되도록, BitTorrent 클라이언트는 <a href="https://en.wikipedia.org/wiki/BitTorrent_tracker" target="_blank">BitTorrent 트래커</a> 또는 <a href="https://en.wikipedia.org/wiki/Distributed_hash_table" target="_blank">분산 해시 테이블(DHT)</a>을 사용해 원하는 파일을 <a href="https://en.wikipedia.org/wiki/Glossary_of_BitTorrent_terms#Seed_/_seeding" target="_blank">시드</a>하는 피어를 식별할 수 있습니다. 이러한 개념을 악용해 DDoS 공격을 개시할 수 있습니다. 악의적 행위자는 트래커 및 DHT 시스템 내에서 피해자의 IP 주소를 시더 IP 주소로 <a href="https://www.cloudflare.com/learning/ddos/glossary/ip-spoofing/" target="_blank">스푸핑</a>할 수 있습니다. 그러면 클라이언트가 이러한 IP에 파일을 요청하게 됩니다. 파일을 요청하는 클라이언트 수가 충분히 많아지면, 피해자가 처리할 수 있는 트래픽보다 많은 트래픽을 통해 폭주시킬 수 있습니다.<br></p>
+	<p><strong>전 분기 대비 405% 늘어난 Mirai DDoS 공격</strong></p>
+	<p><a href="https://www.cloudflare.com/learning/ddos/glossary/mirai-botnet/" target="_blank">Mirai</a>는 <a href="https://www.cloudflare.com/learning/ddos/glossary/malware/" target="_blank">맬웨어</a>의 한 종류로 <a href="https://en.wikipedia.org/wiki/ARC_(processor)" target="_blank">ARC 프로세서</a>에서 실행되는 스마트 장치를 감염시켜 DDoS 공격을 개시하는 데 이용될 수 있는 봇 네트워크로 바꿔버립니다. 이 프로세서는 Linux 운영 체제를 최소한의 버전으로 실행합니다. 기본 사용자 이름 및 암호 조합이 바뀌지 않는 경우, Mirai는 장치에 로그인하여 감염시켜 탈취할 수 있습니다. 이러한 봇넷 조작자는 UDP 패킷을 폭주시켜 피해자의 IP 주소에 패킷이 쏟아지도록 봇넷에게 지시를 내릴 수 있습니다.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/22.png" class="kg-image" alt="A graph of the top emerging threats in 2022 Q3">
+		<figcaption>2022년 3분기에 새롭게 부상하는 상위 위협</figcaption>
+	</figure>
+	<h3 id="-ddos--13">공격 속도 및 지속 시간별 네트워크 계층 DDoS 공격</h3>
+	<p>테라비트 급의 강력한 공격이 더욱 빈번해지고 있지만, 아직은 이상치에 해당합니다. 공격은 (Cloudflare의 규모 측면에서) 대부분 소규모입니다. 공격의 95% 이상이 최대치로 초당 50,000패킷(pps) 이하였으며 97% 이상이 초당 500메가비트(Mbps) 이하였습니다. 우리는 이를 "사이버 반달리즘"이라고 합니다. </p>
+	<p>사이버 반달리즘이란 무엇일까요? 건물 벽에 그려진 그래피티와 같이, <em>물리적인</em> 공공 재산이나 개인의 재산을 고의로 파괴하거나 손상시키려는 목적의 "기존" 반달리즘과는 달리, 사이버 세계의 사이버 반달리즘은 인터넷 자산에 고의로 손상을 입히려는 행위입니다. 현재 온라인에서 다양한 봇넷의 소스 코드를 찾아볼 수 있으며 패킷 폭주를 개시하는 데 사용할 수 있는 무료 도구가 많습니다. <a href="https://en.wikipedia.org/wiki/Script_kiddie" target="_blank"><em>스크립트 키드</em></a>는 이러한 도구를 인터넷 자산에 전달하는 방식으로 도구를 이용해 시험 기간에 학교를 공격하거나, 중단시키고 싶거나 지장을 주려는 웹 사이트를 공격할 수 있습니다. 더욱 규모가 크고 복잡한 공격을 개시할 수 있는 조직적 범죄, <a href="https://de.wikipedia.org/wiki/Advanced_Persistent_Threat" target="_blank">지능형 지속 위협</a> 행위자, 국가 수준의 행위자와는 반대되는 입니다.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/18.png" class="kg-image" alt="A graph of the distribution of DDoS attacks by bitrate in 2022 Q3">
+		<figcaption>2022년 3분기 비트 전송률별 DDoS 공격 분포</figcaption>
+	</figure>
+	<p>마찬가지로 공격은 대부분 아주 짧고 20분 이내로 끝납니다(94%). 이번 분기에는 1~3시간 지속된 공격이 9% 늘었고 3시간을 넘는 공격은 3% 늘었습니다. 하지만 이들 공격은 여전히 이상치에 해당합니다. </p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/19.png" class="kg-image" alt="A graph of the QoQ change in the duration of DDoS attacks in 2022 Q3">
+		<figcaption>2022년 3분기 전 분기 대비 DDoS 공격의 지속 시간 변화</figcaption>
+	</figure>
+	<p>Cloudflare가 이번 분기 초에 완화했던 2.5Tbps 공격, 여름에 완화했던 <a href="https://blog.cloudflare.com/ko-kr/26m-rps-ddos-ko-kr/">초당 요청이 2,600만에 달했던 공격</a> 등 대규모 공격에도 불구하고, 공격의 정점의 지속 시간은 짧았습니다. 2.5Tbps 공격은 전체적으로 2분 가량 지속되었으며 초당 요청수 2,600만에 달한 공격의 정점은 단 15초 지속되었습니다. 이를 통해 자동화된 상시 가동 솔루션의 필요성이 극명히 드러납니다. 보안 팀은 그만큼 빠르게 대응할 수 없습니다. 보안 엔지니어가 전화기로 PagerDuty 알림을 확인하는 그 때, 공격은 이미 진정된 상태입니다.</p>
+	<h2 id="--2">요약</h2>
+	<p>공격은 사람으로 인해 시작될 수 있지만, 봇으로 실행됩니다. 승리를 거두려면, 봇에는 봇으로 대응해야 합니다. 감지 및 완화는 최대한 자동화해야 합니다. 인간에게만 의지할 경우 방어하는 쪽이 불리하기 때문입니다. Cloudflare의 자동화된 시스템은 고객 대신 DDoS 공격을 지속해서 감지하고 완화하므로 고객은 이를 수행할 필요가 없습니다. <br></p>
+	<p>지난 몇 년간, 공격자 및 대가를 받고 공격을 제공하는 행위자는 더욱 쉽고 저렴하며 더욱 간편하게 DDoS 공격을 개시할 수 있게 되었습니다. 하지만 공격자가 쉽게 공격할 수 있는 만큼, Cloudflare도 모든 규모의 조직 방어자들이 모든 유형의 DDoS 공격에 맞서 더욱 수월하게, 무료로 자신들을 보호할 수 있게 만들려고 합니다. Cloudflare에서는 이러한 개념을 만들어낸 2017년부터 모든 고객에게 <a href="https://blog.cloudflare.com/unmetered-mitigation/">과금 없는 무제한 DDoS 방어</a>를 제공해 왔습니다. Cloudflare의 사명은 더 나은 인터넷을 구축하도록 돕는 것입니다. 더 나은 인터넷이란 DDoS 공격이 수행되는 상황에서도 모두에게 더 안전하고, 더 빠르며, 더 안정적인 인터넷입니다.</p>
+</div>

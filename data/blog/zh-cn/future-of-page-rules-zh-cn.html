@@ -1,0 +1,104 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image2-48.png" class="kg-image" alt="The future of Page Rules"></figure>
+	<p>页面规则是我们最常用的产品之一。它被数百万用户采用，用于配置从缓存到安全级别的所有内容。它是 Cloudflare 的“If This Then That”逻辑。其中“If…”是一个 URL，而“Then That”则将我们处理流量的方式更改为“区域”的特定部分。但这并非没有局限性。</p>
+	<p>页面规则只能在 URL 或 URL 模式上触发。每个区域最多有 125 个页面规则。页面规则也很难调试。甚至“页面”的概念现在听起来也比较过时。</p>
+	<p>我们将用四种新的专用产品替换页面规则，从而提供更多的规则配额、更多的功能和更细的粒度。这些产品可立即用于测试。页面规则并未下架，但我们预计能够很快正式开始报废流程。</p>
+	<h3 id="-">为什么要更改？</h3>
+	<p>自<a href="https://blog.cloudflare.com/introducing-pagerules-fine-grained-feature-co/">推出</a>以来的 10 年里，页面规则已成为一款成熟的产品，并且被广泛采用。仅在过去三个月中就部署了 <em>100 万个</em>页面规则。</p>
+	<p>页面规则用于调整文件应缓存多长时间，用于覆盖某些 URL 的区域范围设置，用于创建简单的 URL 重定向，用于选择性地添加/删除 HTTP 标头。页面规则就是如同<em>多刀工具</em>一样的产品。</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/09/image3-33.png" class="kg-image">
+		<figcaption>Photo by <a href="https://unsplash.com/@zelebb?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText" target="_blank">Andrey Matveev</a> on <a href="https://unsplash.com/?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText" target="_blank">Unsplash</a></figcaption>
+	</figure>
+	<p>与多刀工具和其他通用产品一样，页面规则在许多方面都做得很好，但在任何方面都不是同类产品中的佼佼者。这是普遍性的权衡。随着我们公司不断成长，我们的客户会理所当然地提出更多要求。仅过滤 URL 已经不够了；用户要求更多，而如今，我们也正在交付更多。</p>
+	<p>在过去的两年里，我们一直致力于页面规则的未来，并将数百条反馈提炼成共同的主题，例如：</p>
+	<ol>
+		<li>我需要超过 125 个页面规则</li>
+		<li>我需要能够在 URL 以外的地方触发页面规则</li>
+		<li>我需要能够在我的页面规则中使用正则表达式</li>
+		<li>我很难理解不同的页面规则之间是如何相互影响的</li>
+		<li>页面规则难以调试</li>
+		<li>我想在页面规则中执行更多操作</li>
+	</ol>
+	<p>分析这些主题后，我们得出结论，对页面规则而言，最好的办法是拆解它并创建新的离散产品，每个产品都可能是其相关领域的同类产品中的佼佼者。这种拆解还将提供有关互操作的更优清晰度（缓存 vs 配置 vs ...），并使调试更简单。</p>
+	<p>今天，我们宣布推出这些新产品：</p>
+	<p><strong>1. Cache Rules</strong>：用于设置和调整“所有缓存”的专用产品。</p>
+	<p><strong>2. Configuration Rules</strong>：用于设置及选择性地启用、禁用和覆盖区域范围设置的专用产品。</p>
+	<p><strong>3. Dynamic Redirects</strong>：与“转发 URL”类似，但最高为 11。根据访问者的所在国家/地区、首选语言、设备类型或者使用正则表达式（取决于方案级别）等进行重定向。</p>
+	<p><strong>4. Origin Rules</strong>：针对“该流量从 Cloudflare 离开后去往哪里”的专用产品。我们不仅在这种新产品中添加了主机标头和解析覆盖（仅限 ENT），还通过使客户能够选择性地覆盖目标端口，利用另一个常见的 Workers 用例创建产品。此外，我们还添加了覆盖服务器名称指示 (SNI) 的功能。</p>
+	<p>所有这四种产品现在都可以通过仪表板、API 和 Terraform 使用，并将与 Transform Rules 一起成为取代页面规则的产品套件，最终实现发布页面规则寿命终止公告。</p>
+	<p>对于这些产品发布，每一个都有专门的博客，其中详细介绍了它们提供的功能和解决的问题。</p>
+	<h3 id="--1">执行顺序</h3>
+	<p>这个新产品套件的主要优势之一是清晰。</p>
+	<p>页面规则是一个黑匣子，流量进入，“事情发生”，流量出来。很难调试缓存、配置、标头修改等之间的相互作用，并且它可能因区域而异，因为它完全是用户定义的。</p>
+	<p>其每个“功能”具有离散、独立的区域，从而更轻松地可视化 HTTP 请求的流程：</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/09/image1-58.png" class="kg-image"></figure>
+	<p>现在不再是单个页面规则，我们可以看到，Origin Rules 将最先运行，然后是 Cache Rules，然后是 Configuration Rules，最后是 Dynamic Redirects。这意味着我们将先修改主机标头，然后再调整缓存设置。我们将会先调整缓存参数，然后再修改为特定流量启用哪些设置。</p>
+	<p>我们已将这些新产品集成到<a href="https://blog.cloudflare.com/traffic-sequence-which-product-runs-first/">流量序列</a>仪表板元素中。</p>
+	<p>（对于同时使用页面规则和这套新产品的区域：新产品将优先于页面规则。这意味着如果发生冲突，页面规则将被覆盖）。</p>
+	<h3 id="-125-">我需要超过 125 个页面规则</h3>
+	<p>页面规则的限制之一是如何在我们的后端架构上存储和执行每个页面规则。我们最多只能为每个区域提供 125 个页面规则，超过此数字，就会出现性能下降 — HTTP 请求的延迟时间开始增加，因为评估它们与页面规则需要的时间越来越长。为了克服这一限制，用户将简单的工作负载转移到了 Workers，或者将区域分成多个子域，每个子域都有 125 个页面规则配额。这些都不是客户的理想选择。</p>
+	<p>为了克服这一限制，我们将<em>所有</em>替代产品构建在闪电般快速的<a href="https://developers.cloudflare.com/ruleset-engine/about/rulesets/" target="_blank">规则集引擎</a>上，该引擎还运行 Transform Rules、Custom Rules (WAF)、Bulk Redirects 和 API Shield 等产品。</p>
+	<p>这使我们能够为客户提供更多的配额，因为该引擎的构建规模远远超过每种产品 125 个规则。下表总结了这些新产品的前后影响，显示了每个计划的默认规则配额：</p>
+	<!--kg-card-begin: html-->
+	<table>
+		<thead>
+			<tr>
+				<th>Plan</th>
+				<th>Page Rules</th>
+				<th>Origin Rules</th>
+				<th>Cache Rules</th>
+				<th>Config Rules</th>
+				<th>Dynamic Redirects</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Enterprise</td>
+				<td>125</td>
+				<td>125+</td>
+				<td>125+</td>
+				<td>125+</td>
+				<td>125+</td>
+			</tr>
+			<tr>
+				<td>Business</td>
+				<td>50</td>
+				<td>50</td>
+				<td>50</td>
+				<td>50</td>
+				<td>50</td>
+			</tr>
+			<tr>
+				<td>Pro</td>
+				<td>20</td>
+				<td>25</td>
+				<td>25</td>
+				<td>25</td>
+				<td>25</td>
+			</tr>
+			<tr>
+				<td>Free</td>
+				<td>3</td>
+				<td>10</td>
+				<td>10</td>
+				<td>10</td>
+				<td>10</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: html-->
+	<p><em>无法为这些新产品购买额外的规则。</em></p>
+	<p>这意味着 Enterprise 计划中的区域现在至少有 <strong>500</strong> 条规则可以使用，而之前它们通过页面规则拥有 125 条规则。对于企业来说，新产品的配额是可以协商的。Pro 计划区域从 20 个页面规则变为 100 个。结合规则集引擎提供的精细控制，这些更改让客户能够以最细微的差别自定义其区域的流量。</p>
+	<p>在规则集引擎上构建所有这些产品的另一个好处是可扩展性。目前有超过 30 种产品在规则集引擎上构建和运行。上述每一种产品本质上都是一个称为“阶段”的逻辑桶，其中包含一个针对该产品的规则集。每个阶段都仅限于特定的操作和字段，例如字段 cf.bot_management.score 在 http_request_transform 中不可用，因为我们在执行 URL 重写时还没有计算机器人分数。此外，仅允许执行重写操作。而在 Origin Rules (http_request_origin) 中，我们只允许操作 <code>route</code></p>
+	<p>当我们为构建在规则集引擎之上的产品创建新功能时，我们很容易在以后将该新功能扩展到其他产品。</p>
+	<p>例如，我们在今年早些时候向 Transform Rules 添加了一个新的<a href="https://developers.cloudflare.com/ruleset-engine/rules-language/fields" target="_blank">“字段”</a><code>http.request.accepted_languages</code>。此前这仅在 Transform Rules 中可用。但是，由于两种产品都在<a href="https://developers.cloudflare.com/ruleset-engine/about/rulesets/" target="_blank">规则集引擎</a>上构建，因此可以轻松为 Dynamic Redirects 启用此功能。这将允许客户根据访问者的语言偏好执行 URL 重定向，从工程角度来看，我们的成本可以忽略不计，因为该字段已经实现。</p>
+	<p>这也意味着，在将来，如果根据客户请求为 Cache Rules 创建了一个新字段，例如 http.request.super_cool_field，只需点击一下，我们就可以为其他 30 种产品中的任何一种启用此字段，而不必跨多个平台重复工作。</p>
+	<p>简而言之，我们在规则集引擎之上构建的产品越多，我们移动的速度就越快，也就可以将更多的功能交到用户手中。</p>
+	<h3 id="--2">单一用户体验</h3>
+	<p>最重要的好处是一致性。上述每一种产品都有一个一致且可预测的 API。一致且可预测的 Terraform 配置，以及仪表板中一致且可预测的用户体验。规则集引擎允许我们保持一切不变，除了“操作”。过滤保持不变，API 保持不变，UI（大部分）保持不变，唯一的变化是“…then”，即规则的操作部分。</p>
+	<p>这可以确保一点，作为用户，当您在仪表板周围单击设置新区域时，您不必了解每个单独的产品页面以及如何导航它。您需要学习的唯一部分是该产品的独特之处及其<em>操作</em>：</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image4-15.png" class="kg-image"></figure>
+	<p>最后，当我们添加新产品时，可以轻松扩展 Terraform 提供程序以支持它。在这个项目中，这种一致的体验一直是我们的目标，并将在未来继续存在。</p>
+	<h3 id="--3">马上试试吧</h3>
+	<p>我们正在用一套新的产品取代页面规则，每个产品都是同类产品中的佼佼者，并将更多的能力交到我们用户的手中。在每篇专门博客中阅读有关新产品的更多信息。然后，亲自<a href="https://dash.cloudflare.com/?to=/:account/:zone/rules/" target="_blank">尝试</a>一下吧！</p>
+</div>

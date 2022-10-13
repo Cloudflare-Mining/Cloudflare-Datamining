@@ -1,0 +1,41 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/04/image2-6.png" class="kg-image" alt="What Cloudflare is doing to keep the Open Internet flowing into Russia and keep attacks from getting out"></figure>
+	<p>俄罗斯在 2 月下旬对乌克兰发动了无理、悲剧性的入侵，其后俄罗斯军队试图占领整个乌克兰，但遭到乌克兰人民的抵抗并予以击退，吸引了全世界的关注。同样，我们也看到了该地区的<a href="https://blog.cloudflare.com/internet-traffic-patterns-in-ukraine-since-february-21-2022/">大量</a>网络攻击活动。我们继续努力保护越来越多的乌克兰政府、媒体、金融和非营利网站，我们<a href="https://www.heise.de/hintergrund/Running-the-ua-top-level-domain-in-times-of-war-6611777.html" target="_blank">保护了乌克兰顶级域名</a> (.ua)，以帮助保持乌克兰在互联网上的存在。</p>
+	<p>与此同时，我们密切关注俄罗斯互联网上前所未有的大量活动。俄罗斯政府已经采取措施，加强对俄罗斯互联网技术组成部分和内容的控制。就俄罗斯人而言，他们正在做一件非常不同的事情。他们一直在采用各种工具来保持与全球互联网的连接，并寻找非俄罗斯媒体的信息来源。这篇博文概述了我们观察到的情况。</p>
+	<h3 id="-"><strong>俄罗斯政府控制互联网</strong></h3>
+	<p>在过去五年中，俄罗斯政府已经采取措施加强对俄罗斯境内主权互联网的控制，包括立法要求俄罗斯 ISP 安装允许政府监控和屏蔽互联网活动的设备，并要求建立一个俄罗斯专有 DNS （在 ICANN 之外）。它为俄罗斯政府创造了控制俄罗斯如何连接到全球互联网的机制，这样一来，他们随时断开互联网。</p>
+	<p>自俄罗斯入侵乌克兰以来，俄罗斯政府就其主权互联网法律的实施发布了一系列公告。俄罗斯政府机构被指示切换到俄罗斯的 DNS 服务器，将公共资源转移到俄罗斯的主机服务，并采取一系列旨在减少对非俄罗斯供应商依赖的其他措施。尽管一些人将这些举措视为俄罗斯<a href="https://www.vice.com/en/article/88gevb/russia-is-preparing-to-cut-itself-off-from-the-global-internet" target="_blank">宣布</a>从全球互联网断开连接的意向，但到目前为止，俄罗斯似乎并没有利用它所拥有的工具来完全切断自己与全球互联网的连接。我们继续看到通过非俄罗斯基础设施在俄罗斯成功处理连接。</p>
+	<p>与此同时，俄罗斯当局对他们认为存在异议的网站和运营商实施了一系列有针对性的屏蔽行动。最初，政府针对的是 Facebook、Instagram 和 Twitter 等流行的社交媒体网站，以及俄罗斯境外的俄语媒体。</p>
+	<p>我们可以看到一些此类封锁实施前后对俄罗斯用户访问俄罗斯和乌克兰不同新闻网站的流量的影响。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/04/image9-1.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/04/image3-2.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/04/image1-3.png" class="kg-image"></figure>
+	<p>在 2 月 24 日入侵乌克兰前后的日子里，这些新闻网站的流量都出现了指数级增长。但这一增长在几天后就遭遇到针对这些网站的封锁行动。在最初的几周里，屏蔽措施取得了不同程度的成功，不过，似乎每一项措施最终都成功地阻止了通过传统互联网渠道访问这些新闻来源的途径。</p>
+	<p>但这是故事的一半。随着俄罗斯政府采取措施控制传统的互联网接入渠道，许多俄罗斯人使用互联网的方式也发生了变化。</p>
+	<h3 id="--1">俄罗斯公民使用工具来访问开放的互联网</h3>
+	<p>俄罗斯人一直在采用一些应用程序和工具，使他们能够私下访问互联网，并避免俄罗斯政府用来控制和监测互联网访问的一些机制。在 3 月，世界上大多数国家的 Apple 应用商店中最受欢迎的应用程序仍然与社交媒体和游戏有关，而俄罗斯的排行榜则截然不同。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/04/image2-2.png" class="kg-image"></figure>
+	<p>今年 3 月，俄罗斯所有排名靠前的应用都是私密和安全的互联网访问或加密消息应用，包括下载量最高的应用——Cloudflare 自己的 WARP / 1.1.1.1（一个保护隐私的递归 DNS 解析器)。这个热门应用列表与世界上任何其他国家都形成鲜明对比。</p>
+	<p>由于 WARP(1.1.1.1) 显著且重要的流行，我们对这种情况的具体演变有一些详细的洞察。回顾 2 月初，当时 Cloudflare 的 WARP 在俄罗斯几乎无人使用。其使用量在战争的第一周开始起飞，并在两周后达到峰值。后来，在向这种安全工具的虚拟迁移变得明显之后，我们看到有人试图阻止获取用于安全访问互联网的工具。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/04/image10.png" class="kg-image"></figure>
+	<p>虽然已从峰值回落，但大量俄罗斯人继续使用 Cloudflare WARP，数量远远高于战前。</p>
+	<p>除了俄罗斯人使用互联网的方式越来越依赖私密和加密通信之外，我们也看到了他们试图访问的内容的转变。下图显示俄罗斯用户对一家美国知名报纸的 DNS 请求。该网站最近的 DNS 流量是战前水平的五倍，表明俄罗斯人正在试图访问该新闻来源。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/04/image8.png" class="kg-image"></figure>
+	<p>这是一个大型法国新闻来源的 DNS 流量。同样，由于俄罗斯人尝试访问它，DNS 查询已大幅增长。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/04/image5-1.png" class="kg-image"></figure>
+	<p>这是一份英国报纸。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/04/image4-1.png" class="kg-image"></figure>
+	<p>从这三张图表可以清楚地看出情况。俄罗斯人希望访问非俄罗斯新闻来源，而从私密互联网接入工具和 VPN 的普及来看，他们愿意为此而努力。</p>
+	<h3 id="--2">对抗网络攻击的前线</h3>
+	<p>除了我们能够为俄罗斯普通公民提供的以上服务外，我们位于国内互联网边缘的服务器还允许我们检测和阻止来自那里的攻击。当攻击在俄罗斯境内得到缓解，这些攻击就没有机会离开俄罗斯。这一直是 Cloudflare 分布式网络主张的一部分——在本地识别并阻止网络攻击(尤其是 DDoS 攻击)，使其无法离开当地。</p>
+	<p>以下是 2 月初以来，源于俄罗斯境内并被 Cloudflare 屏蔽的 DDoS 活动的情况。2 月期间，源于俄罗斯网络并被当地 Cloudflare 服务器拦截的正常 DDoS 活动相对较低，但在 3 月中旬出现大幅增长。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/04/image7.png" class="kg-image"></figure>
+	<p>需要明确的是，能够识别网络攻击流量的来源并不等同于能够确定攻击者的位置。网络攻击的归因并不容易，而现在是特别小心进行归因的时候。网络攻击者从世界各地的偏远地点发起攻击是相对常见的。他们的做法往往是通过入侵物联网等的方式劫持其他国家的设备。</p>
+	<p>但即使有这样的诡计，我们仍然看到达我们俄罗斯境内服务器的被拦截攻击数量显著增加。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/04/image6-1.png" class="kg-image"></figure>
+	<p>几周前，当入侵乌克兰还处于早期阶段时，我指出 “<a href="https://blog.cloudflare.com/steps-taken-around-cloudflares-services-in-ukraine-belarus-and-russia/">俄罗斯需要更多互联网，而非更少</a>。” 在美国和欧洲对俄罗斯实施前所未有的经济制裁之际，有人呼吁所有外国公司更进一步，彻底退出俄罗斯，包括呼吁互联网提供商切断与俄罗斯的联系。需要明确的是，Cloudflare 在俄罗斯的销售和商业活动非常少——我们从未在那里设立过公司实体、办公室或雇佣员工——我们已经采取措施，确保我们没有向俄罗斯政府缴纳税款或费用。但考虑到我们的服务对互联网可用性和安全性的重大影响，我们认为，将我们的服务完全从俄罗斯撤出弊大于利。</p>
+	<p>虽然我们非常理解要求公司退出俄罗斯的动机，但互联网公司的退出可能会产生意想不到的效果，促进和巩固俄罗斯政府控制俄罗斯互联网的利益。切断俄罗斯通过 <a href="https://www.icann.org/en/system/files/correspondence/marby-to-fedorov-02mar22-en.pdf" target="_blank">ICANN</a> 和 <a href="https://www.ripe.net/publications/news/announcements/ripe-ncc-response-to-request-from-ukrainian-government" target="_blank">RIPE</a> 连接互联网的努力只会导致俄罗斯人民无法获得与乌克兰战争有关的信息，而这些信息正是俄罗斯政府不希望他们接触的。在美国的一些证书机构停止为俄罗斯网站发放 SSL 证书后，俄罗斯在 3 月初<a href="https://www.bleepingcomputer.com/news/security/russia-creates-its-own-tls-certificate-authority-to-bypass-sanctions/" target="_blank">做出回应</a>，鼓励俄罗斯公民改为下载俄罗斯根证书机构。正如 <a href="https://www.eff.org/deeplinks/2022/03/you-should-not-trust-russias-new-trusted-root-ca" target="_blank">EFF</a> 所言，“俄罗斯政府维持其服务运行的权宜之计也使其能够监视俄罗斯人，包括现在和将来。”</p>
+	<p>这就是为什么专家们几乎一致认为，俄罗斯的互联网必须尽可能地对俄罗斯人民开放。数十个公民社会组织已经<a href="https://www.accessnow.org/letter-us-government-internet-access-russia-belarus-ukraine/" target="_blank">敦促</a>各国政府努力抵制威权主义行为，“并确保旨在对抗俄罗斯政府非法行为的制裁和其他措施不会通过加强普京维护信息控制的努力而产生适得其反的效果。” 俄罗斯数字权利活动人士<a href="https://roskomsvoboda.org/post/24-february-24-march-2022/" target="_blank">请求</a>服务提供商为俄罗斯人提供免费的 VPN 接入，这样他们就不会与全球新闻来源隔绝。甚至美国国务院也<a href="https://www.washingtonpost.com/technology/2022/03/16/apple-google-cloudflare-russia/" target="_blank">明确表示</a>， “维持尽可能充分的信息流向俄罗斯人民是至关重要的。”</p>
+	<p>为了支持我们帮助建设更好的互联网这一使命，我们的团队已经忙碌了六周来监测这些发展，并夜以继日地工作，以确保乌克兰的 Web 资产得到保护，让普通俄罗斯人能够访问全球互联网。我们依然钦佩勇敢地站起来保卫祖国的乌克兰人，并继续希望和平能够占上风。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/04/image1-8.png" class="kg-image"></figure>
+</div>
