@@ -1981,16 +1981,16 @@
 				{
 					"name": "formDataParserSupportsFiles",
 					"annotations": {
+						"compatDisableFlag": "formdata_parser_converts_files_to_strings",
 						"compatEnableFlag": "formdata_parser_supports_files",
-						"compatEnableDate": "2021-11-03",
-						"compatDisableFlag": "formdata_parser_converts_files_to_strings"
+						"compatEnableDate": "2021-11-03"
 					}
 				},
 				{
 					"name": "fetchRefusesUnknownProtocols",
 					"annotations": {
-						"compatEnableFlag": "fetch_refuses_unknown_protocols",
 						"compatEnableDate": "2021-11-10",
+						"compatEnableFlag": "fetch_refuses_unknown_protocols",
 						"compatDisableFlag": "fetch_treats_unknown_protocols_as_http"
 					}
 				},
@@ -2007,72 +2007,72 @@
 				{
 					"name": "durableObjectFetchRequiresSchemeAuthority",
 					"annotations": {
-						"compatDisableFlag": "durable_object_fetch_allows_relative_url",
+						"compatEnableFlag": "durable_object_fetch_requires_full_url",
 						"compatEnableDate": "2021-11-10",
-						"compatEnableFlag": "durable_object_fetch_requires_full_url"
+						"compatDisableFlag": "durable_object_fetch_allows_relative_url"
 					}
 				},
 				{
 					"name": "streamsByobReaderDetachesBuffer",
 					"annotations": {
-						"compatEnableFlag": "streams_byob_reader_detaches_buffer",
 						"compatEnableDate": "2021-11-10",
+						"compatEnableFlag": "streams_byob_reader_detaches_buffer",
 						"compatDisableFlag": "streams_byob_reader_does_not_detach_buffer"
 					}
 				},
 				{
 					"name": "streamsJavaScriptControllers",
 					"annotations": {
-						"compatEnableDate": "2022-11-30",
+						"compatDisableFlag": "streams_disable_constructors",
 						"compatEnableFlag": "streams_enable_constructors",
-						"compatDisableFlag": "streams_disable_constructors"
+						"compatEnableDate": "2022-11-30"
 					}
 				},
 				{
 					"name": "jsgPropertyOnPrototypeTemplate",
 					"annotations": {
-						"compatDisableFlag": "workers_api_getters_setters_on_instance",
 						"compatEnableFlag": "workers_api_getters_setters_on_prototype",
-						"compatEnableDate": "2022-01-31"
+						"compatEnableDate": "2022-01-31",
+						"compatDisableFlag": "workers_api_getters_setters_on_instance"
 					}
 				},
 				{
 					"name": "minimalSubrequests",
 					"annotations": {
-						"compatEnableFlag": "minimal_subrequests",
 						"compatEnableDate": "2022-04-05",
+						"compatEnableFlag": "minimal_subrequests",
 						"compatDisableFlag": "no_minimal_subrequests"
 					}
 				},
 				{
 					"name": "noCotsOnExternalFetch",
 					"annotations": {
-						"compatDisableFlag": "cots_on_external_fetch",
 						"compatEnableDate": "2022-03-08",
+						"compatDisableFlag": "cots_on_external_fetch",
 						"compatEnableFlag": "no_cots_on_external_fetch"
 					}
 				},
 				{
 					"name": "specCompliantUrl",
 					"annotations": {
+						"compatEnableFlag": "url_standard",
 						"compatEnableDate": "2022-10-31",
-						"compatDisableFlag": "url_original",
-						"compatEnableFlag": "url_standard"
+						"compatDisableFlag": "url_original"
 					}
 				},
 				{
 					"name": "globalNavigator",
 					"annotations": {
-						"compatDisableFlag": "no_global_navigator",
 						"compatEnableFlag": "global_navigator",
-						"compatEnableDate": "2022-03-21"
+						"compatEnableDate": "2022-03-21",
+						"compatDisableFlag": "no_global_navigator"
 					}
 				},
 				{
 					"name": "captureThrowsAsRejections",
 					"annotations": {
-						"compatEnableFlag": "capture_async_api_throws",
 						"compatEnableDate": "2022-10-31",
+						"compatEnableFlag": "capture_async_api_throws",
 						"compatDisableFlag": "do_not_capture_async_api_throws"
 					}
 				},
@@ -2092,32 +2092,32 @@
 				{
 					"name": "noSubstituteNull",
 					"annotations": {
-						"compatDisableFlag": "substitute_null_on_type_error",
 						"compatEnableDate": "2022-06-01",
-						"compatEnableFlag": "dont_substitute_null_on_type_error"
+						"compatEnableFlag": "dont_substitute_null_on_type_error",
+						"compatDisableFlag": "substitute_null_on_type_error"
 					}
 				},
 				{
 					"name": "transformStreamJavaScriptControllers",
 					"annotations": {
-						"compatEnableFlag": "transformstream_enable_standard_constructor",
+						"compatDisableFlag": "transformstream_disable_standard_constructor",
 						"compatEnableDate": "2022-11-30",
-						"compatDisableFlag": "transformstream_disable_standard_constructor"
+						"compatEnableFlag": "transformstream_enable_standard_constructor"
 					}
 				},
 				{
 					"name": "r2ListHonorIncludeFields",
 					"annotations": {
-						"compatEnableFlag": "r2_list_honor_include",
-						"compatEnableDate": "2022-08-04"
+						"compatEnableDate": "2022-08-04",
+						"compatEnableFlag": "r2_list_honor_include"
 					}
 				},
 				{
 					"name": "exportCommonJsDefaultNamespace",
 					"annotations": {
-						"compatDisableFlag": "export_commonjs_namespace",
+						"compatEnableFlag": "export_commonjs_default",
 						"compatEnableDate": "2022-10-31",
-						"compatEnableFlag": "export_commonjs_default"
+						"compatDisableFlag": "export_commonjs_namespace"
 					}
 				},
 				{
