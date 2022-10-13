@@ -1728,6 +1728,42 @@
 		}
 	},
 	{
+		"id": "script_monitor.configure_dedicated_domain_reporting_allowed",
+		"feature": {
+			"feature_set": "script_monitor",
+			"id": 986,
+			"key": "script_monitor.configure_dedicated_domain_reporting_allowed",
+			"name": "Script Monitor - Configure dedicated domain reporting allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "script_monitor.malicious_domain_checks_allowed",
+		"feature": {
+			"feature_set": "script_monitor",
+			"id": 924,
+			"key": "script_monitor.malicious_domain_checks_allowed",
+			"name": "Script Monitor - Malicious domain checks allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
+		"id": "script_monitor.malicious_script_checks_allowed",
+		"feature": {
+			"feature_set": "script_monitor",
+			"id": 933,
+			"key": "script_monitor.malicious_script_checks_allowed",
+			"name": "Script Monitor - Malicious script checks allowed"
+		},
+		"allocation": {
+			"type": "bool"
+		}
+	},
+	{
 		"id": "script_monitor.page_attribution_allowed",
 		"feature": {
 			"feature_set": "script_monitor",

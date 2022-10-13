@@ -22,6 +22,7 @@ You can join the Discord at https://discord.gg/Z94Hn6qVDm for notifications of c
 - `dashboard-subroutes`: This extracts subroutes from the dashboard which can be useful for determining undocumented APIs.
 - `dashboard-translations`: This extracts the translations from the dashboard, and tracks their changes over time. This is useful for seeing new features and changes in the dashboard.
 - `dashboard`: This extracts other miscellaneous data from the dashboard, and tracks their changes over time, including URLs, generic strings/callees/regexes, etc.
+- `doh`: This tracks the DOH schema returned by 1.1.1.1
 - `domains`: This tracks domains that Cloudflare owns. It's not perfect, but it does pick up a lot of domains owned by Cloudflare.
 - `entitlements`: This isn't automated, but tracks a list of all known entitlements for accounts and zones.
 - `gates`: This tracks the active gates used for A/B experiments on the dash, etc.
@@ -33,6 +34,7 @@ You can join the Discord at https://discord.gg/Z94Hn6qVDm for notifications of c
 - `products`: This tracks specific products API endpoints and their response keys.
 - `registrar`: This tracks Cloudflare Registrar available TLDs and pricing over time.
 - `types`: This tracks the `@cloudflare/types` NPM package, which can be useful for spotting changes to new billing subscriptions, etc.
+- `workerd`: This tracks various capnp schemas from `workerd`
 - `zt-dashboard-translations`: This extracts the translations from the Zero Trust dashboard, and tracks their changes over time. This is useful for seeing new features and changes in the ZT dashboard.
 - `zt-dashboard`: This extracts other miscellaneous data from the Zero Trust dashboard, and tracks their changes over time.
 
