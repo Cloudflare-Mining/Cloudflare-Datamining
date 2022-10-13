@@ -1,0 +1,41 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/04/image2-6.png" class="kg-image" alt="What Cloudflare is doing to keep the Open Internet flowing into Russia and keep attacks from getting out"></figure>
+	<p>2月下旬のロシアによる不当かつ悲劇的なウクライナ侵攻の後、世界はロシア軍がウクライナ全土に進撃しようとし、ウクライナ国民の抵抗と反撃を受けた様子を注視してきました。同様に、私たちはこの地域で<a href="https://blog.cloudflare.com/internet-traffic-patterns-in-ukraine-since-february-21-2022/">相当量</a>のサイバー攻撃活動が行われていることについても観測しています。私たちは、増え続けるウクライナの政府、メディア、金融、非営利団体のWebサイトの保護活動に取り組み続け、<a href="https://www.heise.de/hintergrund/Running-the-ua-top-level-domain-in-times-of-war-6611777.html" target="_blank">ウクライナのトップレベルドメイン</a> (.ua) を保護し、インターネット上でのウクライナの存在を維持できるよう支援しています。</p>
+	<p>同時に、私たちはロシアにおけるインターネット上での前例のない大規模な活動を注視してしています。ロシア政府は、ロシアのインターネットの技術的な構成要素とコンテンツの双方に対し、より厳しい統制をかけています。その一方で、ロシア国民はそれに反する行動をとっています。彼らは世界のインターネットへのアクセスを維持するためのツールを使用して、ロシア以外のメディアソースを探し求めているのです。このブログ記事では、私たちが観察した内容について概説しています。</p>
+	<h3 id="-">ロシア政府、インターネットの支配を主張</h3>
+	<p>ロシア政府は過去5年間、ロシアのISPに政府がインターネット活動を監視・遮断できる機器の設置を義務付ける法律や、ロシア専用のDNS（ICANN外）の設置を義務付けるなど、ロシア国内における主権的インターネットの統制を強化する措置をとってきました。そして、ロシア国民が世界のインターネットに接続する方法をロシア政府が制御する仕組みを作り、その気になればプラグを抜くこともできるようにしたのです。</p>
+	<p>ロシアによるウクライナ侵攻以来、ロシア政府は、主権インターネット法の実施に関して、一連の発表を行ってきています。ロシア政府機関は、ロシアのDNSサーバーへの切り替え、区的リソースのロシアのホスティングサービスへの移動、またロシア以外のプロバイダへの依存を減らすために設計されたその他多くの措置を講じるように指示されました。これらの構想を、ロシアが世界のインターネットから切り離すつもりの<a href="https://www.vice.com/en/article/88gevb/russia-is-preparing-to-cut-itself-off-from-the-global-internet" target="_blank">発表</a>として受け取った人もいましたが、これまでのところ、ロシアが世界のインターネットから完全に切断するようなツールを活用している様子は観測されていません。私たちはロシア以外のインフラストラクチャを通じて、ロシアで接続が正常に処理されるのを確認し続けています。</p>
+	<p>一方、ロシアでは、当局が好ましくないと判断したWebサイトや事業者に対して、標的を絞ったブロック措置を次々と実施しています。当初、当局はFacebook、Instagram、Twitterなどの人気ソーシャルメディアサイトや、国外に拠点を置くロシア語放送局をターゲットにしていました。</p>
+	<p>これらのブロックのいくつかが、ブロックの実施前後でロシアとウクライナのさまざまなニュースサイトへのロシアユーザーからのトラフィックに影響を与えていることがわかります。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/04/image9-1.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/04/image3-2.png" class="kg-image"></figure>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/04/image1-3.png" class="kg-image"></figure>
+	<p>いずれの場合も、2月24日のウクライナ侵攻後の数日間に、これらのニュースサイトのトラフィックは急激に増加しています。しかし、この増加は、数日のうちにこれらのサイトへのトラフィックをブロックする措置に見舞われました。最初の数週間はブロックの成功の度合いに差があったものの、いずれも最終的には従来のインターネット経路を通じたこれらのニュースソースへのアクセス拒否は成功したようです。</p>
+	<p>しかし、これは話の半分に過ぎません。ロシア政府が従来のインターネットアクセス経路を統制する措置を講じたことで、多くのロシア国民のインターネット利用方法にも変化が生じたのです。</p>
+	<h3 id="--1">ロシア市民、オープンなインターネットにアクセスするためのツールに注目</h3>
+	<p>ロシア国民は、ロシア政府がインターネットへのアクセスを統制・監視するために使用しているメカニズムの一部を回避し、個人的にインターネットに関わることができるアプリケーションやツールを採用しています。3月に世界のほとんどの地域でApple App Storeで最も人気のあったアプリケーションは、引き続きソーシャルメディアやゲームに関連するものであったことに対し、ロシアでのリーダーボードは全く異なるものでした。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/04/image2-2.png" class="kg-image"></figure>
+	<p>3月のロシアでの上位アプリはすべて、最もダウンロードされたアプリであるCloudflare独自のWARP / 1.1.1.1（プライバシーベースの再帰的DNSリゾルバ）などの、プライベートで安全なインターネットアクセスや暗号化メッセージングアプリでした。この人気アプリのリストは、世界のどの国とも驚くほど対照的です。</p>
+	<p>WARP（1.1.1.1）が意義深く重要な人気を博したことから、これがどのように展開されたかを正確に把握するために、いくつかの詳細な洞察を得ました。2月初旬を振り返ると、CloudflareのWARPツールはロシアではほとんど使われていないことがわかります。その使用は戦争が開始された最初の週末から軌道に乗り、2週間前にピークに達しました。その後、このような安全なツールへの実質的な移行が明らかになった後、インターネットに安全にアクセスするためのツールへのアクセスを遮断しようとする試みが見られるようになりました。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/04/image10.png" class="kg-image"></figure>
+	<p>レベルはピーク時から後退していますが、ロシアでは多くのロシア国民が、戦前よりも非常に高いレベルでCloudflare WARP in Russiaを使い続けています。</p>
+	<p>ロシア国民のインターネット利用において、個人通信や暗号化通信への依存度が高まっていることに加え、彼らがアクセスしようとする対象にも変化が見られます。これは、米国の有名な新聞社に対するロシアのユーザーからのDNSリクエストのグラフです。このサイトへの最近のDNSトラフィックは、戦前に比べて5倍になっており、ロシア国民がこのニュースソースにアクセスしようとしていることを示しています。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/04/image8.png" class="kg-image"></figure>
+	<p>また、こちらはフランスの大手ニュースサイトのDNSトラフィックです。ここでも、ロシア国民からのアクセスを試みるDNSのルックアップが著しく増えています。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/04/image5-1.png" class="kg-image"></figure>
+	<p>そして、こちらはイギリスの新聞社です。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/04/image4-1.png" class="kg-image"></figure>
+	<p>この3つのグラフを見れば、その様子は一目瞭然です。ロシア国民はロシア以外のニュースソースにアクセスすることを望んでおり、プライベートなインターネットアクセスツールやVPNの普及を基に、ロシア国民はこぞってそれらを入手しています。</p>
+	<h3 id="--2">サイバー攻撃への最前線</h3>
+	<p>ロシアで兼ねてから一般市民への提供が可能であったサービスに加え、国内のインターネットのエッジに位置するサーバーで、ロシア発の攻撃を検出・遮断することができるようになりました。ロシア国内で軽減された攻撃は、ロシアの国境を越えることはありません。Cloudflareの分散型ネットワークの命題の一部として、サイバー攻撃（特にDDoS攻撃）が軌道に乗る前に国内で特定しブロックするというものを常に掲げています。</p>
+	<p>2月初めから、ロシア国内から発信され、CloudflareによってブロックされたDDoS活動は以下のような状況でした。ロシアのネットワークから発信され、Cloudflareのサーバーによってブロックされた通常のDDoS活動は、2月を通じて比較的少ないものの、3月中旬には大幅に増加しています。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/04/image7.png" class="kg-image"></figure>
+	<p>ここではっきりとお伝えすることとして、サイバー攻撃のトラフィックの発信元を特定できることと、攻撃者の所在を特定できることは同じではありません。サイバー攻撃の帰属を明らかにすることは困難であり、今は特に帰属を明らかにすることに注意を払うべき時期です。サイバー攻撃者が世界中の遠隔地から攻撃を仕掛けることが比較的一般的になっています。これは多くの場合、モノのインターネット（IoT）の不正利用などで、他国の機器が乗っ取られてしまった場合に発生します。</p>
+	<p>しかし、そのような偽装行為を使っても、ロシア国内の当社のサーバー上でブロックされた攻撃の数は依然として大幅に増加しています。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/04/image6-1.png" class="kg-image"></figure>
+	<p>数週間前、ウクライナへの侵攻が初期段階にあったとき、私は「<a href="https://blog.cloudflare.com/steps-taken-around-cloudflares-services-in-ukraine-belarus-and-russia/">ロシアはより多くのインターネットを必要としている。</a>」と指摘しました。米国と欧州による前例のない経済制裁が行われている今、インターネットプロバイダーに対してロシアを遮断するよう求めるなど、あらゆる外国企業に対して進んでロシアから完全に撤退することを求める声が上がっています。明確にしておくと、Cloudflareはロシアでの営業・商業活動を最小限に抑えており、現地に法人やオフィス、従業員を置いたことは一度もなく、ロシア政府に税金や手数料を支払わないような措置を取っています。しかし、当社のサービスがインターネットの可用性とセキュリティに大きな影響を与えることを考えると、ロシアから当社のサービスを完全に排除することは、益となるよりも害となるほうが大きいと考えています。</p>
+	<p>企業がロシアから撤退することを求める動機は深く評価できますが、インターネット企業によるこの撤退は、ロシアのインターネットを支配しようとするロシア政府の利益を促進し、定着させるという意図しない効果をもたらす可能性があります。<a href="https://www.icann.org/en/system/files/correspondence/marby-to-fedorov-02mar22-en.pdf" target="_blank">ICANN</a>と<a href="https://www.ripe.net/publications/news/announcements/ripe-ncc-response-to-request-from-ukrainian-government" target="_blank">RIPE</a>を通じてロシアを世界のインターネットから遮断させようとする努力は、ロシア政府がアクセスさせたくないウクライナでの戦争に関する情報からロシア国民を切り離すだけとなってしまいます。米国を拠点とする多くの認証局がロシアのWebサイトに対するSSL証明書の発行を停止した後、ロシアは<a href="https://www.bleepingcomputer.com/news/security/russia-creates-its-own-tls-certificate-authority-to-bypass-sanctions/" target="_blank">3月初旬</a>にこれに対抗し、代わりにロシアのルート認証局をダウンロードするようロシア国民に呼びかけました。これに対し<a href="https://www.eff.org/deeplinks/2022/03/you-should-not-trust-russias-new-trusted-root-ca" target="_blank">EFF</a>は、「ロシア国家がサービスを維持するためのこの応急処置は、現在および将来のロシア国民に対するスパイ行為を可能にするものだ。」と観察しています。</p>
+	<p>このため、専門家の間では、ロシア国民のためにはロシアのインターネットが可能な限りオープンであることが不可欠であるという点でほぼ共通した見解が得られています。数十もの市民社会団体が政府に対し、権威主義的な行動に対抗するよう働きかけ、「ロシア政府の違法行為を否認するための制裁やその他の措置などが裏目に出て、情報統制を主張するプーチンの努力を強化してしまうことのないように」と<a href="https://www.accessnow.org/letter-us-government-internet-access-russia-belarus-ukraine/" target="_blank">要請</a>しています。ロシアのデジタル権利活動家らは、ロシア国民が世界のニュースソースから孤立しないように、サービスプロバイダに無料のVPNアクセスを提供するよう<a href="https://roskomsvoboda.org/post/24-february-24-march-2022/" target="_blank">訴え</a>ています。米国務省でさえ、「ロシア国民への情報の流れを最大限に維持することが重要である」と<a href="https://www.washingtonpost.com/technology/2022/03/16/apple-google-cloudflare-russia/" target="_blank">明言</a>しています。</p>
+	<p>より良いインターネットの構築を支援するという私たちの使命のもと、この6週間は、ウクライナのWebプロパティが守られるとともにロシアの一般国民が世界のインターネットにアクセスできるようにするためにこれらの開発を監視し、24時間体制で作業するという、私たちのチームにとって多忙な日々を過ごしました。私たちは、祖国を守るために立ち上がった勇敢なウクライナ国民に畏敬の念を抱くとともに、平和が訪れることを願い続けています。</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/04/image1-8.png" class="kg-image"></figure>
+</div>

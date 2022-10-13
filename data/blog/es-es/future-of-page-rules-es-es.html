@@ -1,0 +1,105 @@
+<div class="post-content lh-copy gray1">
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image2-48.png" class="kg-image" alt="The future of Page Rules"></figure>
+	<p>Reglas de página es uno de nuestros productos mejor utilizados. Adoptado por millones de usuarios, se utiliza para configurar todo, desde la caché a los niveles de seguridad. Es el "si esto, entonces aquello" de Cloudflare. Donde el "si…" es una URL, y el "entonces aquello" cambia cómo gestionamos el tráfico a partes específicas de una "zona". Sin embargo, presenta algunas limitaciones.</p>
+	<p>Las reglas de página solo pueden activarse para una URL o un patrón de URL. Hay un máximo de 125 reglas de página por zona. La depuración de las reglas de página también es complicada. Incluso la idea de una “página” ahora parece bastante obsoleta.</p>
+	<p>Vamos a sustituir Reglas de página por cuatro nuevos productos dedicados, que ofrecen una mayor cuota de reglas, más funcionalidad y mejor granularidad. Estos productos están ya disponibles para pruebas. Reglas de página aún no va a desaparecer, pero prevemos que pronto podremos empezar formalmente el proceso de fin de vida útil.</p>
+	<h3 id="-por-qu-cambiar">¿Por qué cambiar?</h3>
+	<p>En los 10 años desde su<a href="https://blog.cloudflare.com/introducing-pagerules-fine-grained-feature-co/"> lanzamiento</a>, Reglas de página ha pasado a ser un producto consolidado y ampliamente adoptado. Solo en los últimos 3 meses se han implementado un <em>millón</em> de reglas de página.</p>
+	<p>Las reglas de página se utilizan para ajustar cuánto tiempo deben permanecer los archivos en la caché, para anular configuraciones con ámbito de zona para determinadas URL, y para añadir o eliminar selectivamente encabezados HTTP. Reglas de página es un producto<em> multiusos</em>.</p>
+	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/09/image3-33.png" class="kg-image">
+		<figcaption>Foto de <a href="https://unsplash.com/@zelebb?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText" target="_blank">Andrey Matveev</a> en <a href="https://unsplash.com/?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText" target="_blank">Unsplash</a></figcaption>
+	</figure>
+	<p>Al igual que otros productos multiusos y generalistas, Reglas de página hace un buen trabajo en muchas cosas, pero no es lo mejor en nada. Ese es el inconveniente de la generalidad. Conforme hemos crecido como empresa, nuestros clientes nos han pedido más. Ya no es suficiente filtrar solo por URL. Los usuarios piden más, y hoy se lo entregamos.</p>
+	<p>Durante los últimos dos años, hemos estado trabajando en el futuro de Reglas de página y sintetizando cientos de comentarios sobre temas comunes, como por ejemplo:</p>
+	<ol>
+		<li>Necesito más de 125 reglas de página</li>
+		<li>Necesito poder activar reglas de página para algo más que solo el URL</li>
+		<li>Necesito poder utilizar expresiones regulares en mis reglas de página</li>
+		<li>Me resulta difícil comprender cómo las distintas reglas de página interaccionan entre ellas</li>
+		<li>La depuración de las reglas de página es difícil</li>
+		<li>Quiero más acciones en las reglas de página</li>
+	</ol>
+	<p>Analizando estos temas, llegamos a la conclusión de que lo mejor para Reglas de página era descompilarlo y crear nuevos productos individuales, cada uno de los cuales podría ser el mejor en su área específica. Esta disolución también proporcionaría mayor claridad en cuanto a la interoperabilidad (caché vs. configuración vs…) y simplificaría la depuración.</p>
+	<p>Hoy anunciamos estos nuevos productos:</p>
+	<p><strong>Reglas de caché</strong>: un producto dedicado para establecer y ajustar todo aquello relacionado con la caché.</p>
+	<p><strong>Reglas de configuración</strong>: un producto dedicado para establecer y habilitar, deshabilitar y anular de forma selectiva configuraciones con ámbito de zona.</p>
+	<p><strong>Redirecciones dinámicas</strong>: igual que ‘Reenvío de URL’ pero llevado a su nivel máximo. Redirección basada en el país de los visitantes, su idioma preferido, su tipo de dispositivo, el uso de expresiones regulares (en función del nivel del plan) y más.</p>
+	<p><strong>Reglas de origen</strong>: un producto dedicado para "adónde se dirige este tráfico cuando sale de Cloudflare". No solo hemos añadido a este nuevo producto (solo ENT) encabezado de host y resoluciones de anulación, sino que también hemos incorporado otro caso de uso común de Workers, permitiendo que los clientes anulen selectivamente el puerto de destino. También hemos añadido la capacidad de anular la indicación del nombre del servidor (SNI).</p>
+	<p>Estos cuatro productos ya están disponibles para su uso mediante el panel de control, la API y Terraform, y junto a Reglas de transformación proporcionan el conjunto de productos de sustitución que con el tiempo permitirán el anuncio del fin de vida útil de Reglas de página.</p>
+	<p>Tenemos blogs dedicados a cada uno de estos lanzamientos de producto con información adicional sobre lo que ofrecen y los problemas que resuelven.</p>
+	<h3 id="orden-de-ejecuci-n">Orden de ejecución</h3>
+	<p>Una de las principales ventajas de este nuevo paquete de productos es la claridad.</p>
+	<p>La función Reglas de página es una caja negra, donde entra tráfico, "suceden cosas" y sale tráfico. Es difícil depurar la interacción entre caché, configuración, modificación de encabezado, etc., y esta puede variar entre zonas, ya que la define por completo el usuario.</p>
+	<p>Tener áreas individuales separadas por "función" facilita mucho la visualización del flujo de una solicitud HTTP:</p>
+	<figure class="kg-card kg-image-card kg-width-wide"><img src="https://blog.cloudflare.com/content/images/2022/09/image1-58.png" class="kg-image"></figure>
+	<p>En lugar de tener Reglas de página como remedio único, ahora podemos ver que Reglas de origen se ejecutará primero, luego Reglas de caché, luego Reglas de configuración y finalmente Redirecciones dinámicas. Esto significa que modificaremos los encabezados de host antes de ajustar la configuración de caché. Y ajustaremos los parámetros de caché antes de modificar qué configuraciones se habilitan para el tráfico específico.</p>
+	<p>También hemos integrado estos nuevos productos en el elemento <a href="https://blog.cloudflare.com/traffic-sequence-which-product-runs-first/">Secuencia del tráfico</a> del panel de control.</p>
+	<p>(Para las zonas que utilicen Reglas de página y este nuevo paquete de productos: Los nuevos productos tendrán prioridad sobre Reglas de página. Es decir, en caso de un conflicto, Reglas de página se anulará).</p>
+	<h3 id="necesito-m-s-de-125-reglas-de-p-gina">Necesito más de 125 reglas de página</h3>
+	<p>Una de las limitaciones de Reglas de página es cómo cada regla de página se almacena y ejecuta en nuestra arquitectura back-end. No podemos ofrecer más de 125 reglas de página por zona sin que el rendimiento se vea afectado (la latencia en las solicitudes HTTP empieza a aumentar mientras estas se evalúan vs. las reglas de página cada vez requieren más tiempo). Para combatir esta limitación, los usuarios trasladaban cargas de trabajo sencillas a Workers, o dividían la zona en varios subdominios, cada uno de los cuales tenía una cuota de 125 reglas de página. Ninguna de estas soluciones era óptima para el cliente.</p>
+	<p>Para combatir esta limitación, hemos creado <em>todos</em> los productos de sustitución sobre nuestro<a href="https://developers.cloudflare.com/ruleset-engine/about/rulesets/" target="_blank"> motor de reglas</a> ultrarápido, que también ejecuta productos como Reglas de transformación, Reglas personalizadas (WAF), Redirecciones masivas y API Shield.</p>
+	<p>Esto nos permite ofrecer mucha más cuota a los clientes, ya que este motor se ha creado para superar ampliamente las 125 reglas por producto. La siguiente tabla resume el impacto antes y después de estos nuevos productos, y muestra la cuota de reglas predeterminada por plan:</p>
+	<!--kg-card-begin: html-->
+	<table>
+		<thead>
+			<tr>
+				<th>Plan</th>
+				<th>Reglas de página</th>
+				<th>Reglas de origen</th>
+				<th>Reglas de caché</th>
+				<th>Reglas de configuración</th>
+				<th>Redirecciones dinámicas</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Enterprise</td>
+				<td>125</td>
+				<td>125+</td>
+				<td>125+</td>
+				<td>125+</td>
+				<td>125+</td>
+			</tr>
+			<tr>
+				<td>Business</td>
+				<td>50</td>
+				<td>50</td>
+				<td>50</td>
+				<td>50</td>
+				<td>50</td>
+			</tr>
+			<tr>
+				<td>Pro</td>
+				<td>20</td>
+				<td>25</td>
+				<td>25</td>
+				<td>25</td>
+				<td>25</td>
+			</tr>
+			<tr>
+				<td>Free</td>
+				<td>3</td>
+				<td>10</td>
+				<td>10</td>
+				<td>10</td>
+				<td>10</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--kg-card-end: html-->
+	<p><em>No es posible comprar reglas adicionales para estos nuevos productos.</em></p>
+	<p>Esto significa que las zonas en el plan Enterprise ahora tienen un mínimo de <strong>500</strong> reglas para utilizar donde antes tenían 125 con Reglas de página. Para Enterprise, la cuota de los nuevos productos es negociable. Las zonas del plan Pro van de 20 a 100 reglas de página. Junto con el control detallado que ofrece el motor de reglas, estos cambios permiten a los clientes personalizar el tráfico de su zona hasta el más mínimo detalle.</p>
+	<p>La otra ventaja de crear todos estos productos sobre el motor de reglas es la extensibilidad. Actualmente, hay más de 30 productos que se han creado y se ejecutan sobre el motor de reglas. Cada uno de estos productos es básicamente un bucket lógico denominado "fase" que contiene un único conjunto de reglas cuyo ámbito es ese producto. Cada fase está restringida a acciones y campos específicos, por ejemplo, el campo cf.bot_management.score no está disponible en http_request_transform ya que no hemos calculado la puntuación del bot en el momento de realizar las reescrituras de URL. Además, solo se permite la acción "<code>rewrite</code>". En cambio, en Reglas de origen (http_request_origin) solo permitimos la acción "<code>route</code>".</p>
+	<p>Cuando creamos nuevas funciones para un producto creado sobre el motor de reglas, es extremadamente sencillo para nosotros ampliar posteriormente la nueva función a otros productos.</p>
+	<p>Por ejemplo, este año hemos añadido un nuevo<a href="https://developers.cloudflare.com/ruleset-engine/rules-language/fields" target="_blank"> "campo"</a>, <code>http.request.accepted_languages</code>, a Reglas de transformación. Hasta hace poco, solo estaba disponible en Reglas de transformación. No obstante, puesto que ambos productos se basan en el<a href="https://developers.cloudflare.com/ruleset-engine/about/rulesets/" target="_blank"> motor de reglas</a>, es muy sencillo habilitar esta función para Redirecciones dinámicas. Esto permite a los clientes realizar redirecciones de URL en función de la preferencia de idioma del visitante, y el coste para nosotros, desde la perspectiva de la ingeniería, sería insignificante, ya que el campo ya está implementado.</p>
+	<p>Esto significa que, en el futuro, si creáramos un nuevo campo para Reglas de caché debido a la solicitud de un cliente, por ejemplo, http.request.super_cool_field, en solo unos clics podríamos habilitar este campo para cualquiera de los otros 30 productos, en lugar de tener que duplicar los esfuerzos en distintas plataformas.</p>
+	<p>En pocas palabras, cuantos más productos creamos sobre el motor de reglas, más rápido podemos avanzar y más funcionalidad podemos poner en manos de los usuarios.</p>
+	<h3 id="una-experiencia-de-usuario-individual">Una experiencia de usuario individual</h3>
+	<p>La ventaja más importante es la coherencia. Cada uno de estos productos tiene una API coherente y predecible, una configuración de Terraform coherente y predecible y una experiencia de usuario coherente y predecible en el panel de control. El motor de reglas nos permite mantener todo igual, excepto la "acción". El filtrado no cambia, la API no cambia, la interfaz de usuario (básicamente) no cambia. El único cambio es el "‘...entonces", la sección de la regla correspondiente a la acción.</p>
+	<p>Esto garantiza que, como usuario, cuando haces clic en el panel de control al configurar una nueva zona, no necesitas aprender cómo funciona la página de cada producto individual ni cómo desplazarte por ella. Lo único que necesitas aprender es lo que hace único a ese producto, sus <em>acciones</em>:</p>
+	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/09/image4-15.png" class="kg-image"></figure>
+	<p>Finalmente, cuando añadimos un nuevo producto, ampliar el proveedor de Terraform para que le dé soporte es muy sencillo. Esta experiencia coherente ha guiado nuestro camino durante este proyecto, y lo seguirá haciendo en el futuro.</p>
+	<h3 id="pru-balos-ahora">Pruébalos ahora</h3>
+	<p>Vamos a sustituir Reglas de página por un nuevo paquete de productos, cada uno de los cuales se ha creado para ser el mejor y poner más poder en manos de nuestros usuarios.</p>
+	<p>Obtén más información sobre los nuevos productos en cada uno de sus blogs dedicados. Y luego <a href="https://dash.cloudflare.com/?to=/:account/:zone/rules/" target="_blank">pruébalos</a> tú mismo.</p>
+</div>
