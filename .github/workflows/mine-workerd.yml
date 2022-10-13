@@ -26,9 +26,9 @@ jobs:
 
       - name: Setup capnp
         run: |
-          curl -O https://capnproto.org/capnproto-c++-0.10.2.tar.gz
-          tar zxf capnproto-c++-0.10.2.tar.gz
-          cd capnproto-c++-0.10.2
+          git clone https://github.com/capnproto/capnproto.git
+          cd capnproto/c++
+          autoreconf -i
           ./configure
           make -j6 check
           sudo make install
@@ -38,7 +38,7 @@ jobs:
         run: |
           mkdir -p temp
           cd temp
-          curl -L -O https://github.com/KianNH/capnp-parse/releases/download/0.0.3/capnp-parse-x86_64-unknown-linux-gnu.tar.gz
+          curl -L -O https://github.com/KianNH/capnp-parse/releases/download/0.0.4/capnp-parse-x86_64-unknown-linux-gnu.tar.gz
           tar zxf capnp-parse-x86_64-unknown-linux-gnu.tar.gz
           git clone --depth 1 https://github.com/cloudflare/workerd.git
           ./capnp-parse -g "./workerd/**/*.capnp" -e "config.capnp" -e "worker-interface.capnp" -e "workerd.capnp" -e "icudata-embed.capnp" -o "workerd-output.json"
