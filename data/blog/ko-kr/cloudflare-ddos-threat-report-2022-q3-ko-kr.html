@@ -13,7 +13,7 @@
 		<li>볼류메트릭 공격이 더 오래 지속되고, <a href="https://www.cloudflare.com/learning/ddos/glossary/mirai-botnet/" target="_blank">Mirai 봇넷</a>과 <a href="https://blog.cloudflare.com/mantis-botnet/">변종</a>으로 수행된 공격이 급증했습니다.</li>
 		<li>대만과 일본을 겨냥한 공격이 급증했습니다.</li>
 	</ul>
-	<h2 id="-ddos--1">응용 프로그램 계층 DDoS 공격</h2>
+	<h2 id="-ddos--1">애플리케이션계층 DDoS 공격</h2>
 	<ul>
 		<li>HTTP DDoS 공격이 전년 대비 111% 늘었지만, 전 분기 대비로는 10% 줄었습니다.</li>
 		<li>대만을 겨냥한 HTTP DDoS 공격은 전 분기 대비 200%, 일본을 겨냥한 공격은 전 분기 대비 105% 늘었습니다.</li>
@@ -26,6 +26,7 @@
 		<li>L3/4 DDoS 공격은 대규모 2.5Tbps DDoS 공격을 포함해, 게임 / 도박 산업을 가장 목표로 많이 삼았습니다. </li>
 	</ul>
 	<p>이 보고서는 Cloudflare의 DDoS 방어 시스템에서 자동으로 감지되어 완화된 DDoS 공격을 기반으로 한 것입니다. 이 시스템의 원리에 대해 자세히 알아보려면 <a href="https://blog.cloudflare.com/deep-dive-cloudflare-autonomous-edge-ddos-protection/">이 심층 블로그 게시물</a>을 참고하세요.</p>
+	<p><strong><strong>인터랙티브 DDoS 보고서를 </strong><a href="https://radar.cloudflare.com/reports/ddos-2022-q3" target="_blank"><strong> Cloudflare Radar</strong></a><strong>에서 확인하세요.</strong></strong></p>
 	<h2 id="-">랜섬 공격</h2>
 	<p><a href="https://www.cloudflare.com/learning/ddos/ransom-ddos-attack/" target="_blank">랜섬 DDoS 공격</a>은 공격자가 주로 비트코인의 형태로 랜섬 지불을 요구하여 공격을 중단하거나 피하게 해주는 공격입니다. 3분기에 조사에 응답한 Cloudflare 고객 중 15%가 위협이나 랜섬 메모가 동반된 HTTP DDoS 공격의 표적이 되었다고 보고했습니다. 전 분기에 보고된 랜섬 DDoS 공격과 비교하면 15%가 늘었고, 전년과 비교하면 67%가 늘어난 것입니다. </p>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/2.png" class="kg-image" alt="Graph of Ransom DDoS attacks by quarter" title="Chart">
@@ -49,13 +50,13 @@
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/001.png" class="kg-image" alt="Graph of HTTP DDoS attacks by month in 2022 Q3" title="Chart">
 		<figcaption>2022년 3분기 월별 HTTP DDoS 공격 분포</figcaption>
 	</figure>
-	<h3 id="-ddos--5">산업별 응용 프로그램 계층 DDoS 공격</h3>
+	<h3 id="-ddos--5">산업별 애플리케이션 계층 DDoS 공격</h3>
 	<p>고객의 운영 산업별로 공격을 분류하면, 3분기에는 인터넷 회사에서 운영하는 HTTP 애플리케이션이 가장 많이 표적이 되었음을 알 수 있습니다. 인터넷 산업에 수행된 공격은 전 분기 대비 131%, 전년 대비 300% 늘었습니다.</p>
 	<p>두 번째로 공격을 많이 받은 산업은 전 분기 대비 93%, 전년 대비 2,317%(!) 증가한 통신 산업이었습니다. 세 번째는 전 분기 대비 17%, 전년 대비 36%로 비교적 증가율이 보수적이었던 게임 / 도박 산업이었습니다.</p>
 	<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://blog.cloudflare.com/content/images/2022/10/7.png" class="kg-image" alt="Graph of the top industries targeted by HTTP DDoS attacks in 2022 Q3">
 		<figcaption>2022년 3분기에 가장 많이 HTTP DDoS 공격의 표적이 되었던 산업</figcaption>
 	</figure>
-	<h3 id="-ddos--6">대상 국가별 응용 프로그램 계층 DDoS 공격</h3>
+	<h3 id="-ddos--6">대상 국가별 애플리케이션계층 DDoS 공격</h3>
 	<p>Cloudflare 고객의 청구 주소별로 공격을 분류하면 가장 공격을 많이 받은 국가를 파악할 수 있습니다. 3분기에는 미국 회사가 운영하는 HTTP 애플리케이션이 가장 많이 표적이 되었습니다. 미국 기반 웹 사이트를 겨냥한 공격은 전 분기 대비 60%, 전년 대비 105% 늘었습니다. 전 분기 대비 332%, 전년 대비 800%가 늘어난 중국이 미국의 뒤를 이었습니다.</p>
 	<p>우크라이나를 살펴보면, 우크라이나 웹 사이트를 겨냥한 공격은 전 분기 대비 67% 늘었지만 전년과 비교하면 50% 줄었습니다. 이와 더불어 러시아 웹 사이트를 겨냥한 공격은 전 분기 대비 31%, 전년 대비 2,400%(!) 늘었습니다.</p>
 	<p>동아시아에서는 대만 회사를 겨냥한 공격이 전 분기 대비 200%, 전년 대비 60% 늘었고, 일본 회사를 겨냥한 공격이 전 분기 대비 105% 늘었습니다.</p>
@@ -76,7 +77,7 @@
 		<figcaption>2022년 3분기 HTTP DDoS 공격의 상위 출처 국가</figcaption>
 	</figure>
 	<h2 id="-ddos--8">네트워크 계층 DDoS 공격</h2>
-	<p>응용 프로그램 계층 공격이 최종 사용자가 액세스하려는 서비스(우리의 경우 HTTP/S)를 구동하는 응용 프로그램(<a href="https://www.cloudflare.com/learning/ddos/glossary/open-systems-interconnection-model-osi/" target="_blank">OSI 모델</a>의 계층 7)를 대상으로 하는 반면, <a href="https://www.cloudflare.com/learning/ddos/layer-3-ddos-attacks/" target="_blank">네트워크 계층 공격</a>은 네트워크 인프라(예: 인라인 라우터 및 서버)와 인터넷 링크 자체를 마비시키는 것을 목표로 합니다.</p>
+	<p>애플리케이션 계층 공격이 최종 사용자가 액세스하려는 서비스(우리의 경우 HTTP/S)를 구동하는 애플리케이션(<a href="https://www.cloudflare.com/learning/ddos/glossary/open-systems-interconnection-model-osi/" target="_blank">OSI 모델</a>의 계층 7)를 대상으로 하는 반면, <a href="https://www.cloudflare.com/learning/ddos/layer-3-ddos-attacks/" target="_blank">네트워크 계층 공격</a>은 네트워크 인프라(예: 인라인 라우터 및 서버)와 인터넷 링크 자체를 마비시키는 것을 목표로 합니다.</p>
 	<figure class="kg-card kg-image-card"><img src="https://blog.cloudflare.com/content/images/2022/10/10.png" class="kg-image" alt="Diagram of a L3/4 DDoS attack"></figure>
 	<h3 id="-ddos--9">네트워크 계층 DDoS 공격 동향</h3>
 	<p>3분기에는 L3/4 DDoS 공격이 전년 대비 97%, 전 분기 대비 24% 급증했습니다. 이와 더불어, 그래프를 살펴보면 지난 3분기 동안 공격의 증가 동향이 명확하게 보입니다.</p>
