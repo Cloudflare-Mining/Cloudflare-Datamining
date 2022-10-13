@@ -6907,7 +6907,7 @@
 												},
 												{
 													"title": "Brotli Compression",
-													"description": "When the client requesting an asset supports the brotli compression algorithm, Cloudflare will serve a brotli compressed version of the asset.",
+													"description": "When the client requesting an asset supports the Brotli compression algorithm, Cloudflare will serve a Brotli compressed version of the asset.",
 													"allOf": [
 														{
 															"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1settings/patch/requestBody/content/application~1json/schema/properties/items/items/oneOf/0/allOf/0"
@@ -8520,7 +8520,7 @@
 												},
 												{
 													"title": "Image Resizing",
-													"description": "Image Resizing provides on-demand resizing, conversion and optimisation for images served through Cloudflare's network. (https://developers.cloudflare.com/images/)",
+													"description": "Image Resizing provides on-demand resizing, conversion and optimisation for images served through Cloudflare's network. Refer to the [Image Resizing documentation](https://developers.cloudflare.com/images/) for more information.",
 													"allOf": [
 														{
 															"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1settings/patch/requestBody/content/application~1json/schema/properties/items/items/oneOf/0/allOf/0"
@@ -8541,7 +8541,7 @@
 																		false,
 																		"open"
 																	],
-																	"description": "Whether the feature is enabled, disabled, or enabled in 'open proxy' mode",
+																	"description": "Whether the feature is enabled, disabled, or enabled in `open proxy` mode.",
 																	"default": false
 																}
 															}
@@ -13553,7 +13553,7 @@
 		"/zones/{zone_identifier}/settings/brotli": {
 			"get": {
 				"summary": "Get Brotli setting",
-				"description": "When the client requesting an asset supports the brotli compression algorithm, Cloudflare will serve a brotli compressed version of the asset.",
+				"description": "When the client requesting an asset supports the Brotli compression algorithm, Cloudflare will serve a Brotli compressed version of the asset.",
 				"parameters": [
 					{
 						"name": "zone_identifier",
@@ -13589,7 +13589,7 @@
 											"properties": {
 												"result": {
 													"title": "Brotli Compression",
-													"description": "When the client requesting an asset supports the brotli compression algorithm, Cloudflare will serve a brotli compressed version of the asset.",
+													"description": "When the client requesting an asset supports the Brotli compression algorithm, Cloudflare will serve a Brotli compressed version of the asset.",
 													"allOf": [
 														{
 															"properties": {
@@ -13685,7 +13685,7 @@
 			},
 			"patch": {
 				"summary": "Change Brotli setting",
-				"description": "When the client requesting an asset supports the brotli compression algorithm, Cloudflare will serve a brotli compressed version of the asset.",
+				"description": "When the client requesting an asset supports the Brotli compression algorithm, Cloudflare will serve a Brotli compressed version of the asset.",
 				"parameters": [
 					{
 						"name": "zone_identifier",
@@ -18592,7 +18592,7 @@
 		"/zones/{zone_identifier}/settings/image_resizing": {
 			"get": {
 				"summary": "Get Image Resizing setting",
-				"description": "Image Resizing provides on-demand resizing, conversion and optimisation for images served through Cloudflare's network. (https://developers.cloudflare.com/images/)",
+				"description": "Image Resizing provides on-demand resizing, conversion and optimisation for images served through Cloudflare's network. Refer to the [Image Resizing documentation](https://developers.cloudflare.com/images/) for more information.",
 				"parameters": [
 					{
 						"name": "zone_identifier",
@@ -18628,7 +18628,7 @@
 											"properties": {
 												"result": {
 													"title": "Image Resizing",
-													"description": "Image Resizing provides on-demand resizing, conversion and optimisation for images served through Cloudflare's network. (https://developers.cloudflare.com/images/)",
+													"description": "Image Resizing provides on-demand resizing, conversion and optimisation for images served through Cloudflare's network. Refer to the [Image Resizing documentation](https://developers.cloudflare.com/images/) for more information.",
 													"allOf": [
 														{
 															"properties": {
@@ -18724,7 +18724,7 @@
 			},
 			"patch": {
 				"summary": "Change Image Resizing setting",
-				"description": "Image Resizing provides on-demand resizing, conversion and optimisation for images served through Cloudflare's network. (https://developers.cloudflare.com/images/)",
+				"description": "Image Resizing provides on-demand resizing, conversion and optimisation for images served through Cloudflare's network. Refer to the [Image Resizing documentation](https://developers.cloudflare.com/images/) for more information.",
 				"parameters": [
 					{
 						"name": "zone_identifier",
@@ -18791,7 +18791,7 @@
 											false,
 											"open"
 										],
-										"description": "Whether the feature is enabled, disabled, or enabled in 'open proxy' mode",
+										"description": "Whether the feature is enabled, disabled, or enabled in `open proxy` mode.",
 										"default": false
 									}
 								}
