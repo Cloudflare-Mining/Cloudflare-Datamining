@@ -8,23 +8,33 @@ export interface Props {
 const {headers, data, widths} = Astro.props;
 
 ---
-<div class="overflow-x-auto">
-	<table class="mb-8 w-full table-auto overflow-scroll  p-2">
-		<thead class="border-b-2 border-solid border-b-gray-700 bg-gray-200 text-left dark:bg-gray-800">
-			<tr>
-				{(headers ?? []).map((header:string) => (
-					<th class="p-1">{header}</th>
-				))}
-			</tr>
-		</thead>
-		<tbody>
-			{data.map((item:string[]) => (
-				<tr class="border-b border-solid border-b-gray-600">
-					{item.map((value: string, index: number) => (
-						<td class={["p-1", widths?.[index]].join(' ').trim()}>{value}</td>
-					))}
-				</tr>
-			))}
-		</tbody>
-	</table>
+<div>
+	<div>
+		<div class="mt-2 flex flex-col">
+			<div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
+				<div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
+					<div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
+						<table class="min-w-full divide-y divide-gray-300">
+							<thead class="bg-gray-50">
+								<tr>
+									{(headers ?? []).map((header:string) => (
+										<th scope="col" class="whitespace-nowrap pl-2 first:pl-4 pr-2 py-3.5 text-left text-sm font-semibold text-gray-900 truncate">{header}</th>
+									))}
+								</tr>
+							</thead>
+							<tbody class="divide-y divide-gray-200 bg-white">
+								{data.map((item:string[]) => (
+									<tr>
+										{item.map((value: string, index: number) => (
+											<td class={["whitespace-nowrap py-2 pl-2 first:pl-4 pr-3 text-sm text-gray-500 truncate font-mono", widths?.[index]].join(' ').trim()}>{value}</td>
+										))}
+									</tr>
+								))}
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
