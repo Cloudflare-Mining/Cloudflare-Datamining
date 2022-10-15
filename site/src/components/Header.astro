@@ -1,13 +1,15 @@
 ---
 import Nav from './Nav.astro';
+const updated = new Date().toISOString();
 ---
 
 <header id="header" class="bg-white shadow-sm lg:static lg:overflow-y-visible">
 	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-		<div class="relative flex justify-between h-16 items-center lg:gap-8 xl:grid xl:grid-cols-12">
+		<div class="relative flex justify-between h-16 items-center lg:gap-8">
 			<a class="text-xl leading-none" href="/">
 				<span class="font-extrabold">Cloudflare</span><br>Datamining
 			</a>
+			<span class="hidden lg:block text-right leading-tight"><span class="uppercase text-xs">Last Updated</span><br/><span id="updated">{updated}</span></span>
 			<div class="flex items-center md:absolute md:inset-y-0 md:right-0 lg:hidden">
 				<button id="toggle" type="button" class="-mx-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-rose-500" aria-expanded="false">
 					<span class="sr-only">Toggle menu</span>
@@ -39,4 +41,11 @@ import Nav from './Nav.astro';
 		header?.classList.toggle("z-40");
 		header?.classList.toggle("overflow-y-auto");
 	});
+
+	const updated = document.getElementById("updated");
+	if (updated) {
+		const diff = new Date(updated.innerText) - new Date();
+		const formatter = new Intl.RelativeTimeFormat('en-UK', { numeric: 'auto' });
+		updated.innerText = formatter.format(Math.round(diff / 1000 / 60 / 60 / 24), 'day');
+	}
 </script>
