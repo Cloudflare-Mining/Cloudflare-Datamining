@@ -1,9 +1,9 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import FlagsTable from '../components/FlagsTable.astro';
-import {sortObjectByKeys} from '../utils.js';
+import Layout from '../../layouts/Layout.astro';
+import FlagsTable from '../../components/FlagsTable.astro';
+import {sortObjectByKeys} from '../../utils.js';
 
-const importFiles = await Astro.glob('../../../data/entitlements/zone.json');
+const importFiles = await Astro.glob('../../../../data/entitlements/account.json');
 const rawCategories:any = {};
 for(const entitlement of importFiles[0].default){
 	const category = rawCategories[entitlement.feature.feature_set] ?? {};
@@ -13,9 +13,9 @@ for(const entitlement of importFiles[0].default){
 const categories = sortObjectByKeys(rawCategories);
 
 ---
-<Layout title="Known Zone Entitlements - Cloudflare Datamining" description="All known Cloudflare zone entitlements">
+<Layout title="Known Account Entitlements - Cloudflare Datamining" description="All known Cloudflare account entitlements">
 	<main class="m-auto max-w-5xl p-4">
-		<FlagsTable title="Known Zone Entitlements" data={categories} headers={["Entitlement", "Type"]}></FlagsTable>
+		<FlagsTable title="Known Account Entitlements" data={categories} headers={["Entitlement", "Type"]}></FlagsTable>
 		<p>Have an entitlement not covered on the list? Reach out to <a href="https://twitter.com/CherryJimbo">@CherryJimbo</a> on Twitter or <code>CherryJimbo#0001</code> on Discord.</p>
 	</main>
 </Layout>

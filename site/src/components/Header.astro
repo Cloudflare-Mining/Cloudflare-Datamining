@@ -1,74 +1,42 @@
 ---
-const navItems = [
-	{
-		label: 'Account Flags',
-		path: '/account-flags/',
-	},
-	{
-		label: 'Account Entitlements',
-		path: '/account-entitlements/',
-	},
-	{
-		label: 'Known Account Entitlements',
-		path: '/known-account-entitlements/',
-	},
-	{
-		label: 'Zone Flags',
-		path: '/zone-flags/',
-	},
-	{
-		label: 'Zone Entitlements',
-		path: '/zone-entitlements/',
-	},
-	{
-		label: 'Known Zone Entitlements',
-		path: '/known-zone-entitlements/',
-	},
-	{
-		label: 'Gates',
-		path: '/gates/',
-	},
-	{
-		label: 'GraphQL',
-		path: '/graphql/',
-	},
-	{
-		label: 'Colos',
-		path: '/colos/',
-	},
-	{
-		label: 'NPM',
-		path: '/npm/',
-	},
-	{
-		label: 'Products',
-		path: '/products/',
-	},
-];
+import Nav from './Nav.astro';
 ---
 
-<header>
-	<nav class="flex flex-wrap items-center justify-between bg-blue-800 p-6">
-		<div class="mr-6 flex shrink-0 items-center text-white">
-			<a href="/" class="text-xl font-semibold tracking-tight">Cloudflare Datamining</a>
-		</div>
-
-		<nav class="block w-full grow gap-4 lg:flex lg:w-auto lg:items-center">
-			{navItems.map(item => (
-				<a
-					href={item.path}
-					class={[
-						Astro.url.href.endsWith(item.path) || Astro.url.href.endsWith(item.path + '/') ? 'underline underline-offset-4	' : '',
-						"block mt-4 lg:inline-block lg:mt-0 text-blue-100 hover:text-white",
-					].join(' ').trim()}
-				>
-					{item.label}
-				</a>
-			))}
-			<div class="ml-auto block flex-wrap gap-4 lg:flex">
-				<a href="https://discord.gg/Z94Hn6qVDm" target="_blank" class="mt-4 block text-blue-100 hover:text-white lg:mt-0 lg:inline-block">Discord</a>
-				<a href="https://github.com/Cloudflare-Mining/Cloudflare-Datamining" target="_blank" class="mt-4 block text-blue-100 hover:text-white lg:mt-0 lg:inline-block">GitHub</a>
+<header id="header" class="bg-white shadow-sm lg:static lg:overflow-y-visible">
+	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+		<div class="relative flex justify-between h-16 items-center lg:gap-8 xl:grid xl:grid-cols-12">
+			<a class="text-xl leading-none" href="/">
+				<span class="font-extrabold">Cloudflare</span><br>Datamining
+			</a>
+			<div class="flex items-center md:absolute md:inset-y-0 md:right-0 lg:hidden">
+				<button id="toggle" type="button" class="-mx-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-rose-500" aria-expanded="false">
+					<span class="sr-only">Toggle menu</span>
+					<svg id="open" class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+						<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+					</svg>
+					<svg id="close" class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+						<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+					</svg>
+				</button>
 			</div>
-		</nav>
+		</div>
+	</div>
+
+	<nav id="menu" class="hidden lg:hidden p-4" aria-label="Global">
+		<Nav usage="mobile" />
 	</nav>
 </header>
+
+<script>
+	document.getElementById("toggle")?.addEventListener("click", function() {
+		document.getElementById("open")?.classList.toggle("hidden");
+		document.getElementById("close")?.classList.toggle("hidden");
+		document.getElementById("menu")?.classList.toggle("hidden");
+		document.getElementsByTagName('body')[0]?.classList.toggle("overflow-hidden");
+		const header = document.getElementById("header");
+		header?.classList.toggle("fixed");
+		header?.classList.toggle("inset-0");
+		header?.classList.toggle("z-40");
+		header?.classList.toggle("overflow-y-auto");
+	});
+</script>
