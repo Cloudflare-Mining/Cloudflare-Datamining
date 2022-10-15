@@ -83,7 +83,7 @@ const {usage} = Astro.props;
 		{navItems.map((item, index) => {
 			if (item.submenu) {
 				return (
-					<div>
+					<div class="space-y-1">
 						<button id={`${usage}-submenu-${index}`} type="button" class="text-gray-700 hover:bg-gray-50 group w-full flex items-center pr-2 py-2 text-left text-sm font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" aria-controls="sub-menu-2" aria-expanded="false">
 							<!-- Expanded: "text-gray-400 rotate-90", Collapsed: "text-gray-300" -->
 							<svg id={`${usage}-submenu-${index}-icon`} class={[
@@ -121,16 +121,30 @@ const {usage} = Astro.props;
 			}
 		})}
 	</div>
+	<div class="mt-4 pt-4">
+		<a href="https://discord.gg/Z94Hn6qVDm" target="_blank" class="text-gray-700 hover:bg-gray-50 group flex items-center px-2 py-2 text-sm font-medium rounded-md space-x-2">
+			<span class="truncate">Discord</span>
+			<svg class="fill-gray-600 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+				<path d="M272 64C263.2 64 256 56.84 256 48C256 39.16 263.2 32 272 32H432C440.8 32 448 39.16 448 48V208C448 216.8 440.8 224 432 224C423.2 224 416 216.8 416 208V86.63L187.3 315.3C181.1 321.6 170.9 321.6 164.7 315.3C158.4 309.1 158.4 298.9 164.7 292.7L393.4 64H272zM0 112C0 85.49 21.49 64 48 64H176C184.8 64 192 71.16 192 80C192 88.84 184.8 96 176 96H48C39.16 96 32 103.2 32 112V432C32 440.8 39.16 448 48 448H368C376.8 448 384 440.8 384 432V304C384 295.2 391.2 288 400 288C408.8 288 416 295.2 416 304V432C416 458.5 394.5 480 368 480H48C21.49 480 0 458.5 0 432V112z"/>
+			</svg>
+		</a>
+		<a href="https://github.com/Cloudflare-Mining/Cloudflare-Datamining" target="_blank" class="text-gray-700 hover:bg-gray-50 group flex items-center px-2 py-2 text-sm font-medium rounded-md space-x-2">
+			<span class="truncate">GitHub</span>
+			<svg class="fill-gray-600 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+				<path d="M272 64C263.2 64 256 56.84 256 48C256 39.16 263.2 32 272 32H432C440.8 32 448 39.16 448 48V208C448 216.8 440.8 224 432 224C423.2 224 416 216.8 416 208V86.63L187.3 315.3C181.1 321.6 170.9 321.6 164.7 315.3C158.4 309.1 158.4 298.9 164.7 292.7L393.4 64H272zM0 112C0 85.49 21.49 64 48 64H176C184.8 64 192 71.16 192 80C192 88.84 184.8 96 176 96H48C39.16 96 32 103.2 32 112V432C32 440.8 39.16 448 48 448H368C376.8 448 384 440.8 384 432V304C384 295.2 391.2 288 400 288C408.8 288 416 295.2 416 304V432C416 458.5 394.5 480 368 480H48C21.49 480 0 458.5 0 432V112z"/>
+			</svg>
+		</a>
+	</div>
 </nav>
 
 <script>
 	document.querySelectorAll('button').forEach(function (button) {
 		button.addEventListener('click', function() {
-			const icon = document.getElementById(button.id + '-icon')!;
-			document.getElementById(`${button.id}-menu`)?.classList.toggle("hidden");
-			icon.classList.toggle('text-gray-300');
-			icon.classList.toggle('text-gray-400');
-			icon.classList.toggle('rotate-90');
-		});
-	});
+			const icon = document.getElementById(`${button.id}-icon`)!
+			document.getElementById(`${button.id}-menu`)?.classList.toggle('hidden')
+			icon.classList.toggle('text-gray-300')
+			icon.classList.toggle('text-gray-400')
+			icon.classList.toggle('rotate-90')
+		})
+	})
 </script>
