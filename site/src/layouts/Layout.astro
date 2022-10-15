@@ -16,18 +16,12 @@ const {title, description} = Astro.props;
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width">
 		<meta name="generator" content={Astro.generator}>
-		<!-- <meta name="color-scheme" content="dark light"> -->
 		<meta name="theme-color" content="#1e40af">
 		{description && <meta name="description" content={description}/>}
 		<title>{title}</title>
 	</head>
 	<body class="h-full">
 		<div class="min-h-full">
-			<!--
-				When the mobile menu is open, add `overflow-hidden` to the `body` element to prevent double scrollbars
-
-				Menu open: "fixed inset-0 z-40 overflow-y-auto", Menu closed: ""
-			-->
 			<Header />
 
 			<div class="py-10">
