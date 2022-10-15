@@ -1,6 +1,8 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Table from '../../components/Table.astro';
+import MainHeading from '../../components/MainHeading.astro';
+import SubHeading from '../../components/SubHeading.astro';
 
 const importFiles = await import.meta.glob('../../../../data/products/pages/*.json');
 
@@ -10,42 +12,40 @@ const env: any = await importFiles[Object.keys(importFiles).find(path => path.en
 const OS: any = await importFiles[Object.keys(importFiles).find(path => path.endsWith('deployments-logs-os-release.json')) as string]();
 ---
 <Layout title="Product: Pages - Cloudflare Datamining">
-	<main class="m-auto max-w-5xl p-4">
-		<h1 class="my-4 text-3xl">Product: Pages</h1>
+	<MainHeading title="Product: Pages" />
 
-		<!-- Environment -->
-		<h2 class="my-4 text-xl">Environment</h2>
-		<Table
-			headers = {["Key", "Value"]}
-			data = {Object.keys(env.default).map((item:string) => [item, JSON.stringify(env.default[item], null, '\t')])}
-		></Table>
+	<!-- Environment -->
+	<SubHeading category="Environment" />
+	<Table
+		headers = {["Key", "Value"]}
+		data = {Object.keys(env.default).map((item:string) => [item, JSON.stringify(env.default[item], null, '\t')])}
+	></Table>
 
-		<!-- OS -->
-		<h2 class="my-4 text-xl">OS Info</h2>
-		<Table
-			headers = {["Key", "Value"]}
-			data = {Object.keys(OS.default).map((item:string) => [item, OS.default[item]])}
-		></Table>
+	<!-- OS -->
+	<SubHeading category="OS Info" />
+	<Table
+		headers = {["Key", "Value"]}
+		data = {Object.keys(OS.default).map((item:string) => [item, OS.default[item]])}
+	></Table>
 
-		<!-- CPU -->
-		<h2 class="my-4 text-xl">CPU Info</h2>
-		<Table
-			headers = {["Key", "Value"]}
-			data = {Object.keys(CPU.default).map((item:string) => [item, CPU.default[item]])}
-		></Table>
+	<!-- CPU -->
+	<SubHeading category="CPU Info" />
+	<Table
+		headers = {["Key", "Value"]}
+		data = {Object.keys(CPU.default).map((item:string) => [item, CPU.default[item]])}
+	></Table>
 
-		<!-- Package versions -->
-		<h2 class="my-4 text-xl">Package Versions</h2>
-		<Table
-			headers = {["Package", "Version", "Description", "Author"]}
-			data = {Object.keys(packageVersions.default).map((item:string) => [
-				item,
-				packageVersions.default[item]?.version,
-				packageVersions.default[item]?.short_description,
-				packageVersions.default[item]?.author,
-			])}
-		></Table>
-	</main>
+	<!-- Package versions -->
+	<SubHeading category="Package Versions" />
+	<Table
+		headers = {["Package", "Version", "Description", "Author"]}
+		data = {Object.keys(packageVersions.default).map((item:string) => [
+			item,
+			packageVersions.default[item]?.version,
+			packageVersions.default[item]?.short_description,
+			packageVersions.default[item]?.author,
+		])}
+	></Table>
 </Layout>
 
 <style>

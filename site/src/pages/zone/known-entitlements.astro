@@ -14,9 +14,7 @@ const categories = sortObjectByKeys(rawCategories);
 
 ---
 <Layout title="Known Zone Entitlements - Cloudflare Datamining" description="All known Cloudflare zone entitlements">
-	<main class="m-auto max-w-5xl p-4">
-		<FlagsTable title="Known Zone Entitlements" data={categories} headers={["Entitlement", "Type"]}></FlagsTable>
-		<p>Have an entitlement not covered on the list? Reach out to <a href="https://twitter.com/CherryJimbo">@CherryJimbo</a> on Twitter or <code>CherryJimbo#0001</code> on Discord.</p>
-	</main>
+	<FlagsTable title="Known Zone Entitlements" data={categories} headers={["Entitlement", "Type"]}></FlagsTable>
+	<p>Have an entitlement not covered on the list? Reach out to <a href="https://twitter.com/CherryJimbo">@CherryJimbo</a> on Twitter or <code>CherryJimbo#0001</code> on Discord.</p>
 </Layout>
 

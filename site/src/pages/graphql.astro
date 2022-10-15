@@ -1,21 +1,25 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Table from '../components/Table.astro';
+import MainHeading from '../components/MainHeading.astro';
+import SubHeading from '../components/SubHeading.astro';
 
 const importFiles = await Astro.glob('../../../data/other/graphql.json');
 const sections = importFiles[0].default;
 
 ---
 <Layout title="GraphQL - Cloudflare Datamining" description="Discover Cloudflare's full GraphQL Schema">
-	<main class="m-auto max-w-5xl p-4">
+	<MainHeading title="GraphQL" />
+	<div class="space-y-6">
 		{Object.keys(sections).map((section: string) => (
-			<h2 class="mb-2 break-words text-lg" id={section}><a href={`#${section}`}>{section}</a></h2>
-			<p class="mb-2">{sections[section].__description}</p>
-			<Table
-				headers = {["Field", "Description"]}
-				widths={["w-1/4", "w-3/4"]}
-				data = {Object.keys(sections[section]).map((field:string) => field !== '__description' && [field, sections[section][field]] || [])}
-			></Table>
+			<div>
+				<SubHeading category={section} subcategory={sections[section].__description} />
+				<Table
+					headers = {["Field", "Description"]}
+					widths={["w-1/4", "w-3/4"]}
+					data = {Object.keys(sections[section]).map((field:string) => field !== '__description' && [field, sections[section][field]] || [])}
+				></Table>
+			</div>
 		))}
-	</main>
+	</div>
 </Layout>

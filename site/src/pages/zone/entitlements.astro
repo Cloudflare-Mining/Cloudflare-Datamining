@@ -14,8 +14,6 @@ const categories = sortObjectByKeys(rawCategories);
 
 ---
 <Layout title="Zone Entitlements - Cloudflare Datamining" description="Cloudflare default zone entitlements">
-	<main class="m-auto max-w-5xl p-4">
-		<FlagsTable title="Zone Entitlements" data={categories}></FlagsTable>
-	</main>
+	<FlagsTable title="Zone Entitlements" data={categories}></FlagsTable>
 </Layout>
 

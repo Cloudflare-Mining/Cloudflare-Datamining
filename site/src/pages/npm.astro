@@ -1,4 +1,6 @@
 ---
+import MainHeading from '../components/MainHeading.astro';
+import SubHeading from '../components/SubHeading.astro';
 import Layout from '../layouts/Layout.astro';
 
 const importFiles = await import.meta.glob('../../../data/packages/**/info.json');
@@ -34,35 +36,32 @@ for(const scope in packages){
 const headers = ["Name", "Description", "Version", "Last Updated", "Tags"];
 ---
 <Layout title="NPM Packages - Cloudflare Datamining" description="List of Cloudflare NPM packages">
-	<main class="m-auto max-w-5xl p-4">
-		<h2 class="mb-2 text-xl">NPM Packages</h2>
-		{Object.keys(packages).map((scope: string) => (
-			<Fragment>
-				{scope !== "_unscoped" && <h3 class="mb-2 break-words text-lg" id={scope}><a href={`#${scope}`}>{scope}</a></h3>}
-				<div class="overflow-x-auto">
-					<table class="mb-8 w-full table-auto overflow-scroll  p-2">
-						<thead class="border-b-2 border-solid border-b-gray-700 bg-gray-200 text-left dark:bg-gray-800">
-							<tr>
-								{(headers ?? []).map((header:string) => (
-									<th class="p-1">{header}</th>
-								))}
-							</tr>
-						</thead>
-						<tbody>
-							{Object.keys(packages[scope]).map((name:string) => (
-								<tr class="border-b border-solid border-b-gray-600">
-									<td class="w-[20%] p-1"><a href={packages[scope][name].links.npm} rel="nofollow">{name}</a></td>
-									<td class="w-[40%] p-1">{packages[scope][name].description}</td>
-									<td class="w-[10%] p-1">{packages[scope][name].version}</td>
-									<td class="w-[20%] p-1">{packages[scope][name].date}</td>
-									<td class="w-[10%] p-1">{(Object.keys(packages[scope][name].tags) ?? []).join(', ')}</td>
-								</tr>
+	<MainHeading title="NPM Packages" />
+	{Object.keys(packages).map((scope: string) => (
+		<Fragment>
+			{scope !== "_unscoped" && <SubHeading category={scope} />}
+			<div class="overflow-x-auto">
+				<table class="mb-8 w-full table-auto overflow-scroll  p-2">
+					<thead class="border-b-2 border-solid border-b-gray-700 bg-gray-200 text-left dark:bg-gray-800">
+						<tr>
+							{(headers ?? []).map((header:string) => (
+								<th class="p-1">{header}</th>
 							))}
-						</tbody>
-					</table>
-				</div>
-			</Fragment>
-		))}
-
-	</main>
+						</tr>
+					</thead>
+					<tbody>
+						{Object.keys(packages[scope]).map((name:string) => (
+							<tr class="border-b border-solid border-b-gray-600">
+								<td class="w-[20%] p-1"><a href={packages[scope][name].links.npm} rel="nofollow">{name}</a></td>
+								<td class="w-[40%] p-1">{packages[scope][name].description}</td>
+								<td class="w-[10%] p-1">{packages[scope][name].version}</td>
+								<td class="w-[20%] p-1">{packages[scope][name].date}</td>
+								<td class="w-[10%] p-1">{(Object.keys(packages[scope][name].tags) ?? []).join(', ')}</td>
+							</tr>
+						))}
+					</tbody>
+				</table>
+			</div>
+		</Fragment>
+	))}
 </Layout>
