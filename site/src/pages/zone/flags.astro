@@ -1,8 +1,8 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import FlagsTable from '../components/FlagsTable.astro';
+import Layout from '../../layouts/Layout.astro';
+import FlagsTable from '../../components/FlagsTable.astro';
 
-const importFiles = await Astro.glob('../../../data/account/zone_flags.json');
+const importFiles = await Astro.glob('../../../../data/account/zone_flags.json');
 const flags = importFiles[0].default;
 
 // manual overrides
