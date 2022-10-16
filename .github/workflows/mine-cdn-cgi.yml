@@ -28,7 +28,7 @@ jobs:
           git config user.email "<>"
           cd scripts
           npm ci
-          npm run mine:cdn-cgi && npm run mine:cdn-cgi-dev
+          npm run mine:cdn-cgi && npm run mine:cdn-cgi-dev && npm run mine:cdn-cgi-files
         env:
           DISCORD_URL: ${{ secrets.DISCORD_URL }}
           DISCORD_WEBHOOK_CDNCGI: ${{ secrets.DISCORD_WEBHOOK_CDNCGI }}
