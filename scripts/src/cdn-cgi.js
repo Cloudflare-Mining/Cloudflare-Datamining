@@ -9,11 +9,6 @@ import {tryAndPush, getHttpsAgent, propertiesToArray} from './utils.js';
 const agent = getHttpsAgent();
 
 const dir = path.resolve(`../data/cdn-cgi`);
-try{
-	await fs.rm(path.resolve(dir, './error'), {
-		recursive: true,
-	});
-}catch{} // we tried
 await fs.ensureDir(dir);
 
 // get keys for request.cf
