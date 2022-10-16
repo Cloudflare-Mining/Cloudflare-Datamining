@@ -4,7 +4,7 @@
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "Insights - Roadmap to Zero Trust",
+				"pageName": "Brand Thought Leadership - Roadmap to Zero Trust",
 				"localeList": {
 					"enUS": "English for Locale",
 					"zhCN": "English for Locale",
@@ -33,9 +33,10 @@
 				"topNavOptions": "default",
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
+				"footerOptions": null,
 				"metaTags": {
 					"metaTitle": "Roadmap to Zero Trust",
-					"metaDescription": "Zero Trust adoption is complex, but getting started doesn't have to be\nAdopting Zero Trust security is widely recognized as a difficult journey. In many ways, this reputation is well deserved. ",
+					"metaDescription": "The roadmap to Zero Trust solves the challenges of traditional network architecture without disrupting employee productivity and connectivity. Initiate a roadmap for your organization in 5 steps that require little effort.",
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
@@ -50,17 +51,55 @@
 				"psaBanner": null,
 				"customTopNav": null,
 				"headerLogo": null,
-				"proactivePopup": null,
+				"proactivePopup": {
+					"contentTypeId": "proactivePopup",
+					"contentfulId": "1CsLKj1fesYJdTYADz0tWP",
+					"headerText": "Subscribe to Trending Stories",
+					"subHeadingText": "Receive a monthly recap of the most popular Internet insights!",
+					"marketoForm": {
+						"contentTypeId": "marketoEmbeddedForm",
+						"contentfulId": "55VRCxLgGVxT4XfkaKSPQ7",
+						"bladeName": "Trending Stories - Form: Proactive Pop-up - Subscribe",
+						"backgroundColor": "white",
+						"marketoFormId": 2459,
+						"marketoFormLeadSource": "Inbound - Blog Subscriber",
+						"marketoFormLeadSourceDetail": "[BRD] Q1'22 WEB - GBL - Brand Gen Newsletter Subscription",
+						"marketoFormHeaderText": "Receive a monthly recap of the most popular Internet insights!",
+						"marketoFormDefaultComment": null,
+						"showCommentBox": false,
+						"marketoFormThankYouText": null,
+						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
+						"marketoFormPdfDownload": null,
+						"marketoFormPdfDownloadI18n": null,
+						"marketoFormAssetDownloadButtonText": null,
+						"marketoFormSuccessRedirectUrl": null,
+						"sendAdRoll": null,
+						"meta_adRollCustomSegment": null,
+						"enableSandbox": null,
+						"marketoFormSubmitButtonText": "Subscribe",
+						"marketoFormSubmitButtonColor": "orange",
+						"enableEmailVerification": null,
+						"disableEnterpriseEmailNotification": null,
+						"enableRingout": null
+					},
+					"timeDelay": 60000
+				},
 				"template": null,
 				"relatedBlades": [
+					{
+						"contentfulId": "576O92JxT8RxnSLXT3Pk59",
+						"contentTypeId": "bladePadding",
+						"height": 6,
+						"backgroundColor": "blue5"
+					},
 					{
 						"contentTypeId": "bladeRichTextColumnGroup",
 						"contentfulId": "13pum8ysAQ9LCuRnw9xufe",
 						"htmlId": null,
 						"mainHeadline": null,
-						"backgroundColor": "white",
+						"backgroundColor": "light-blue",
 						"bladeBorder": "none",
-						"sectionPadding": "tile--no-bottom-padding",
+						"sectionPadding": "tile--no-top-bottom-padding",
 						"columnLayout": "Two Thirds & One Third",
 						"columns": [
 							{
@@ -96,7 +135,7 @@
 											]
 										},
 										{
-											"nodeType": "heading-4",
+											"nodeType": "heading-5",
 											"data": {
 												"target": null,
 												"uri": null
@@ -110,12 +149,29 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "5 simple projects toward a Zero Trust future",
-													"marks": [
-														{
-															"type": "bold"
-														}
-													],
+													"value": "Learn 5 simple projects toward a Zero Trust future",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
 													"content": null
 												}
 											]
@@ -457,6 +513,58 @@
 											]
 										},
 										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
 											"nodeType": "heading-3",
 											"data": {
 												"target": null,
@@ -545,6 +653,83 @@
 											]
 										},
 										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "heading-5",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "PROJECT 1",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												}
+											]
+										},
+										{
 											"nodeType": "heading-3",
 											"data": {
 												"target": null,
@@ -559,7 +744,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Project 1: Enforce multi-factor authentication for critical applications",
+													"value": "Enforce multi-factor authentication for critical applications",
 													"marks": [
 														{
 															"type": "bold"
@@ -707,6 +892,83 @@
 											]
 										},
 										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "heading-5",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "PROJECT 2",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												}
+											]
+										},
+										{
 											"nodeType": "heading-3",
 											"data": {
 												"target": null,
@@ -721,7 +983,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Project 2: Zero Trust policy enforcement for critical applications",
+													"value": "Zero Trust policy enforcement for critical applications",
 													"marks": [
 														{
 															"type": "bold"
@@ -959,6 +1221,83 @@
 											"content": []
 										},
 										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "heading-5",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "PROJECT 3",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												}
+											]
+										},
+										{
 											"nodeType": "heading-3",
 											"data": {
 												"target": null,
@@ -973,7 +1312,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Project 3: Monitor email applications and filter out phishing attempts",
+													"value": "Monitor email applications and filter out phishing attempts",
 													"marks": [
 														{
 															"type": "bold"
@@ -1065,6 +1404,83 @@
 											"content": []
 										},
 										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "heading-5",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "PROJECT 4",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												}
+											]
+										},
+										{
 											"nodeType": "heading-3",
 											"data": {
 												"target": null,
@@ -1079,7 +1495,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Project 4: Close all inbound ports open to the Internet for application delivery",
+													"value": "Close all inbound ports open to the Internet for application delivery",
 													"marks": [
 														{
 															"type": "bold"
@@ -1192,6 +1608,83 @@
 											"content": []
 										},
 										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "heading-5",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "PROJECT 5",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												}
+											]
+										},
+										{
 											"nodeType": "heading-3",
 											"data": {
 												"target": null,
@@ -1206,7 +1699,7 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "Project 5: Block DNS requests to known threats or risky destinations",
+													"value": "Block DNS requests to known threats or risky destinations",
 													"marks": [
 														{
 															"type": "bold"
@@ -1296,6 +1789,58 @@
 											"value": null,
 											"marks": null,
 											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
 										},
 										{
 											"nodeType": "heading-3",
@@ -1479,37 +2024,6 @@
 													"content": null
 												}
 											]
-										}
-									]
-								}
-							},
-							{
-								"contentTypeId": "elementRichText",
-								"contentfulId": "GxO1BmBqXNII5JRt3lThk",
-								"title": null,
-								"column": {
-									"nodeType": "document",
-									"content": [
-										{
-											"nodeType": "heading-4",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Key takeaways",
-													"marks": [],
-													"content": null
-												}
-											]
 										},
 										{
 											"nodeType": "paragraph",
@@ -1526,7 +2040,104 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "After reading this article you will be able to understand:",
+													"value": "",
+													"marks": [
+														{
+															"type": "italic"
+														}
+													],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "GxO1BmBqXNII5JRt3lThk",
+								"title": null,
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "heading-5",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Key takeaways",
 													"marks": [],
 													"content": null
 												}
@@ -1565,7 +2176,31 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "That there are 28 comprehensive steps in the Zero Trust roadmap",
+																	"value": "There are ",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "28 comprehensive steps",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": " in the Zero Trust roadmap",
 																	"marks": [],
 																	"content": null
 																}
@@ -1597,7 +2232,21 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "5 Zero Trust adoption projects that require comparatively little effort",
+																	"value": "5 Zero Trust adoption projects",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": " require comparatively little effort",
 																	"marks": [],
 																	"content": null
 																}
@@ -1629,8 +2278,22 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "The types of services that enable implementation",
+																	"value": "The types of services that ",
 																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "enable implementation",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
 																	"content": null
 																}
 															]
@@ -1661,7 +2324,31 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "How to initiate an adoption roadmap for your organization",
+																	"value": "How to ",
+																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "initiate an adoption roadmap",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": " for your organization",
 																	"marks": [],
 																	"content": null
 																}
@@ -1693,7 +2380,17 @@
 											]
 										},
 										{
-											"nodeType": "heading-6",
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
 											"data": {
 												"target": null,
 												"uri": null
@@ -1707,25 +2404,32 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "RELATED RESOURCES",
-													"marks": [
-														{
-															"type": "bold"
-														}
-													],
+													"value": "",
+													"marks": [],
 													"content": null
 												}
 											]
 										},
 										{
-											"nodeType": "hr",
+											"nodeType": "heading-5",
 											"data": {
 												"target": null,
 												"uri": null
 											},
 											"value": null,
 											"marks": null,
-											"content": []
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Related resources",
+													"marks": [],
+													"content": null
+												}
+											]
 										},
 										{
 											"nodeType": "unordered-list",
@@ -2010,6 +2714,37 @@
 													"content": null
 												}
 											]
+										},
+										{
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
 										}
 									]
 								}
@@ -2023,7 +2758,7 @@
 						"mainHeadline": null,
 						"backgroundColor": "light-blue",
 						"bladeBorder": "none",
-						"sectionPadding": null,
+						"sectionPadding": "tile--no-top-bottom-padding",
 						"columnLayout": "Two Thirds & One Third",
 						"columns": [
 							{
@@ -2132,7 +2867,7 @@
 													"entry_button": [
 														{
 															"buttonAssetFile": null,
-															"buttonWidth": "narrow",
+															"buttonWidth": "extra-wide",
 															"buttonColor": "orange",
 															"buttonTextLoggedIn": null,
 															"contentTypeId": "button",
@@ -2189,7 +2924,6 @@
 					{
 						"contentTypeId": "bladeEnablement",
 						"contentfulId": "6a0AK8klnguk8T7mRLYvRt",
-						"copy": null,
 						"buttonExtraClass": null,
 						"buttonColor": "orange",
 						"buttonColor2": "orange",
@@ -2242,7 +2976,7 @@
 									"sendAdRoll": null,
 									"meta_adRollCustomSegment": null,
 									"enableSandbox": null,
-									"marketoFormSubmitButtonText": "Subscribe to Trending Stories",
+									"marketoFormSubmitButtonText": "Subscribe to The Edge",
 									"marketoFormSubmitButtonColor": "orange",
 									"enableEmailVerification": null,
 									"disableEnterpriseEmailNotification": null,

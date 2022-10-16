@@ -4,7 +4,7 @@
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "[brand Article] insights malicious insiders - LP",
+				"pageName": "Brand TL - Mitigating the risk of malicious insiders in the hybrid era",
 				"localeList": {
 					"enUS": "English for Locale",
 					"zhCN": "English for Locale",
@@ -31,26 +31,19 @@
 				},
 				"relativePath": "learning/insights-malicious-insiders",
 				"topNavOptions": "default",
-				"topNavButtonText": "Get in touch",
-				"topNavButtonUrl": "/lp/overview-x/",
+				"topNavButtonText": null,
+				"topNavButtonUrl": null,
+				"footerOptions": "default",
 				"metaTags": {
 					"metaTitle": "Mitigating the risk of malicious insiders in the hybrid era",
-					"metaDescription": "A deep dive into this heightened insider threat",
-					"twitterCustomImage": {
-						"file": {
-							"publicURL": "[path]/BDES-3396_Native_stock-1200_x_627-Assets_for_Article_Mitigating_risk_in_the_hybrid_era_A.png"
-						}
-					},
+					"metaDescription": "Malicious insiders use advanced techniques to exfiltrate data. Malicious insiders cost companies $648K on average. Learn the contributing factors and 6 ways to reduce the risk with immediate safeguards.",
+					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
 							"publicURL": "[path]/BDES-3396_Native_stock-1200_x_627-Assets_for_Article_Mitigating_risk_in_the_hybrid_era_A.png"
 						}
 					},
-					"facebookCustomImage": {
-						"file": {
-							"publicURL": "[path]/BDES-3396_Native_stock-1200_x_627-Assets_for_Article_Mitigating_risk_in_the_hybrid_era_A.png"
-						}
-					}
+					"facebookCustomImage": null
 				},
 				"contentfulId": "19jasJ94lr2d7LAZH4wGE0",
 				"contentTypeId": "page",
@@ -58,28 +51,66 @@
 				"psaBanner": null,
 				"customTopNav": null,
 				"headerLogo": null,
-				"proactivePopup": null,
+				"proactivePopup": {
+					"contentTypeId": "proactivePopup",
+					"contentfulId": "1CsLKj1fesYJdTYADz0tWP",
+					"headerText": "Subscribe to Trending Stories",
+					"subHeadingText": "Receive a monthly recap of the most popular Internet insights!",
+					"marketoForm": {
+						"contentTypeId": "marketoEmbeddedForm",
+						"contentfulId": "55VRCxLgGVxT4XfkaKSPQ7",
+						"bladeName": "Trending Stories - Form: Proactive Pop-up - Subscribe",
+						"backgroundColor": "white",
+						"marketoFormId": 2459,
+						"marketoFormLeadSource": "Inbound - Blog Subscriber",
+						"marketoFormLeadSourceDetail": "[BRD] Q1'22 WEB - GBL - Brand Gen Newsletter Subscription",
+						"marketoFormHeaderText": "Receive a monthly recap of the most popular Internet insights!",
+						"marketoFormDefaultComment": null,
+						"showCommentBox": false,
+						"marketoFormThankYouText": null,
+						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
+						"marketoFormPdfDownload": null,
+						"marketoFormPdfDownloadI18n": null,
+						"marketoFormAssetDownloadButtonText": null,
+						"marketoFormSuccessRedirectUrl": null,
+						"sendAdRoll": null,
+						"meta_adRollCustomSegment": null,
+						"enableSandbox": null,
+						"marketoFormSubmitButtonText": "Subscribe",
+						"marketoFormSubmitButtonColor": "orange",
+						"enableEmailVerification": null,
+						"disableEnterpriseEmailNotification": null,
+						"enableRingout": null
+					},
+					"timeDelay": 60000
+				},
 				"template": null,
 				"relatedBlades": [
+					{
+						"contentfulId": "576O92JxT8RxnSLXT3Pk59",
+						"contentTypeId": "bladePadding",
+						"height": 6,
+						"backgroundColor": "blue5"
+					},
 					{
 						"contentTypeId": "bladeRichTextColumnGroup",
 						"contentfulId": "6lMYFpXMl8HoQIWdwc4QSb",
 						"htmlId": null,
 						"mainHeadline": null,
-						"backgroundColor": "white",
+						"backgroundColor": "light-blue",
 						"bladeBorder": "none",
-						"sectionPadding": "tile--no-bottom-padding",
+						"sectionPadding": "tile--no-top-bottom-padding",
 						"columnLayout": "Two Thirds & One Third",
 						"columns": [
 							{
 								"contentTypeId": "elementRichText",
 								"contentfulId": "5HhAFsCXY3zCU3or3EiPnD",
-								"title": "Mitigating the risk of malicious insiders in the hybrid era",
+								"title": null,
 								"column": {
 									"nodeType": "document",
 									"content": [
 										{
-											"nodeType": "heading-2",
+											"nodeType": "heading-1",
 											"data": {
 												"target": null,
 												"uri": null
@@ -539,6 +570,58 @@
 														"uri": null
 													},
 													"value": "Malicious insiders have existed for decades, however, the risk posed by these attackers has increased with the shift to remote work. With many employees, contractors, and partners now working outside the office and the traditional corporate network, differentiating between a malicious insider and normal behavior is far more difficult.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
 													"marks": [],
 													"content": null
 												}
@@ -1041,6 +1124,58 @@
 											]
 										},
 										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
 											"nodeType": "heading-3",
 											"data": {
 												"target": null,
@@ -1317,6 +1452,58 @@
 															]
 														}
 													]
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
 												}
 											]
 										},
@@ -1721,37 +1908,6 @@
 													"content": null
 												}
 											]
-										}
-									]
-								}
-							},
-							{
-								"contentTypeId": "elementRichText",
-								"contentfulId": "6eeJQsTx2wnXyX26nojggi",
-								"title": null,
-								"column": {
-									"nodeType": "document",
-									"content": [
-										{
-											"nodeType": "heading-4",
-											"data": {
-												"target": null,
-												"uri": null
-											},
-											"value": null,
-											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Key takeaways",
-													"marks": [],
-													"content": null
-												}
-											]
 										},
 										{
 											"nodeType": "paragraph",
@@ -1768,7 +1924,104 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "After reading this article you will be able to understand:",
+													"value": "",
+													"marks": [
+														{
+															"type": "italic"
+														}
+													],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"contentTypeId": "elementRichText",
+								"contentfulId": "6eeJQsTx2wnXyX26nojggi",
+								"title": null,
+								"column": {
+									"nodeType": "document",
+									"content": [
+										{
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "heading-5",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Key takeaways",
 													"marks": [],
 													"content": null
 												}
@@ -1914,7 +2167,7 @@
 											]
 										},
 										{
-											"nodeType": "heading-6",
+											"nodeType": "paragraph",
 											"data": {
 												"target": null,
 												"uri": null
@@ -1928,12 +2181,8 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "RELATED RESOURCES",
-													"marks": [
-														{
-															"type": "bold"
-														}
-													],
+													"value": "",
+													"marks": [],
 													"content": null
 												}
 											]
@@ -1947,6 +2196,48 @@
 											"value": null,
 											"marks": null,
 											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "heading-5",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Related resources",
+													"marks": [],
+													"content": null
+												}
+											]
 										},
 										{
 											"nodeType": "unordered-list",
@@ -2247,6 +2538,37 @@
 													"content": null
 												}
 											]
+										},
+										{
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
 										}
 									]
 								}
@@ -2260,7 +2582,7 @@
 						"mainHeadline": null,
 						"backgroundColor": "light-blue",
 						"bladeBorder": "none",
-						"sectionPadding": null,
+						"sectionPadding": "tile--no-top-bottom-padding",
 						"columnLayout": "Two Thirds & One Third",
 						"columns": [
 							{
@@ -2286,7 +2608,11 @@
 														"uri": null
 													},
 													"value": "Dive deeper into this topic",
-													"marks": [],
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
 													"content": null
 												}
 											]
@@ -2358,7 +2684,7 @@
 													"entry_button": [
 														{
 															"buttonAssetFile": null,
-															"buttonWidth": "wide",
+															"buttonWidth": "extra-wide",
 															"buttonColor": "orange",
 															"buttonTextLoggedIn": null,
 															"contentTypeId": "button",
@@ -2415,7 +2741,6 @@
 					{
 						"contentTypeId": "bladeEnablement",
 						"contentfulId": "6a0AK8klnguk8T7mRLYvRt",
-						"copy": null,
 						"buttonExtraClass": null,
 						"buttonColor": "orange",
 						"buttonColor2": "orange",
@@ -2468,7 +2793,7 @@
 									"sendAdRoll": null,
 									"meta_adRollCustomSegment": null,
 									"enableSandbox": null,
-									"marketoFormSubmitButtonText": "Subscribe to Trending Stories",
+									"marketoFormSubmitButtonText": "Subscribe to The Edge",
 									"marketoFormSubmitButtonColor": "orange",
 									"enableEmailVerification": null,
 									"disableEnterpriseEmailNotification": null,
