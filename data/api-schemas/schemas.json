@@ -17776,7 +17776,7 @@
 				}
 			}
 		},
-		"/zones/{zone_identifier}/origin_max_http_version": {
+		"/zones/{zone_identifier}/settings/origin_max_http_version": {
 			"get": {
 				"summary": "Get Origin Max HTTP version setting",
 				"description": "Value of the Origin Max HTTP version setting (Note that the default value for Enterprise is \"1\")",
@@ -17846,7 +17846,7 @@
 														{
 															"properties": {
 																"value": {
-																	"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1origin_max_http_version/patch/requestBody/content/application~1json/schema/properties/value"
+																	"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1settings~1origin_max_http_version/patch/requestBody/content/application~1json/schema/properties/value"
 																}
 															},
 															"required": [
@@ -17890,7 +17890,7 @@
 						"in": "path",
 						"required": true,
 						"schema": {
-							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1origin_max_http_version/get/parameters/0/schema"
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1settings~1origin_max_http_version/get/parameters/0/schema"
 						}
 					}
 				],
@@ -17902,10 +17902,10 @@
 								"schema": {
 									"allOf": [
 										{
-											"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1origin_max_http_version/get/responses/200/content/application~1json/schema/allOf/0"
+											"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1settings~1origin_max_http_version/get/responses/200/content/application~1json/schema/allOf/0"
 										},
 										{
-											"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1origin_max_http_version/get/responses/200/content/application~1json/schema/allOf/1"
+											"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1settings~1origin_max_http_version/get/responses/200/content/application~1json/schema/allOf/1"
 										}
 									]
 								}

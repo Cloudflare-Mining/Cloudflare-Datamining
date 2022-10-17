@@ -4,6 +4,7 @@ import fs from 'fs-extra';
 import fetch from 'node-fetch';
 import dateFormat from 'dateformat';
 import jsBeautify from 'js-beautify';
+import * as cheerio from 'cheerio';
 
 import {tryAndPush, propertiesToArray, cfRequest} from '../utils.js';
 
@@ -99,6 +100,42 @@ for(const js of javascripts){
 		},
 	);
 	await fs.writeFile(file, pretty);
+}
+
+// get HTML/CSS
+const htmlCssUrls = [
+	{
+		name: 'staging',
+		url: `https://challenges-staging.cloudflare.com/cdn-cgi/challenge-platform/turnstile/if/ov2/av0/00000/${results['widgets-list'].result[0].sitekey}/auto`,
+	},
+	{
+		name: 'prod',
+		url: `https://challenges.cloudflare.com/cdn-cgi/challenge-platform/turnstile/if/ov2/av0/00000/${results['widgets-list'].result[0].sitekey}/auto`,
+	},
+];
+for(const htmlCss of htmlCssUrls){
+	const htmlFile = path.resolve(dir, `widget-${htmlCss.name}.html`);
+	const cssFile = path.resolve(dir, `widget-${htmlCss.name}.css`);
+	console.log(`Fetch for HTML/CSS ${htmlCss.name}...`);
+	const res = await fetch(htmlCss.url);
+	if(!res.ok){
+		console.log(`${htmlCss.name} failed: ${res.status} ${res.statusText}`);
+		continue;
+	}
+	const text = await res.text();
+	const doc = cheerio.load(text);
+	const cssText = doc('style').html();
+	const htmlText = doc('body').html();
+	await fs.writeFile(cssFile, jsBeautify.css(cssText, {
+		indent_size: 4,
+		indent_char: '\t',
+		indent_with_tabs: true,
+	}));
+	await fs.writeFile(htmlFile, jsBeautify.html(htmlText, {
+		indent_size: 4,
+		indent_char: '\t',
+		indent_with_tabs: true,
+	}));
 }
 
 const prefix = dateFormat(new Date(), 'd mmmm yyyy');

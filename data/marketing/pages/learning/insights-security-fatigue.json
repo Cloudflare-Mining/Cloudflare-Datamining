@@ -4,15 +4,15 @@
 	"result": {
 		"data": {
 			"page": {
-				"pageName": "Insights - Security monitoring fatigue puts organizations at risk",
+				"pageName": "Brand Thought Leadership - Security monitoring fatigue puts organizations at risk",
 				"localeList": {
 					"enUS": "English for Locale",
 					"zhCN": "English for Locale",
 					"zhTW": "English for Locale",
-					"frFR": "English for Locale",
-					"deDE": "English for Locale",
+					"frFR": "Translated for Locale",
+					"deDE": "Translated for Locale",
 					"itIT": "English for Locale",
-					"jaJP": "English for Locale",
+					"jaJP": "Translated for Locale",
 					"koKR": "English for Locale",
 					"ptBR": "English for Locale",
 					"esES": "English for Locale",
@@ -20,7 +20,7 @@
 					"enCA": "English for Locale",
 					"enIN": "English for Locale",
 					"enGB": "English for Locale",
-					"nlNL": "English for Locale",
+					"nlNL": "No Page for Locale",
 					"idID": "No Page for Locale",
 					"thTH": "No Page for Locale",
 					"ruRU": "No Page for Locale",
@@ -30,16 +30,17 @@
 					"zhHansCN": "English for Locale"
 				},
 				"relativePath": "learning/insights-security-fatigue/",
-				"topNavOptions": null,
+				"topNavOptions": "default",
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
+				"footerOptions": null,
 				"metaTags": {
-					"metaTitle": "Network Services | FWaaS | DDoS Protection",
-					"metaDescription": "Connect, secure and accelerate your corporate network with cloud-native WAN, SASE, FWaaS and DDoS protection solutions — with SD-WAN integrations.",
+					"metaTitle": "Security monitoring fatigue puts organizations at risk",
+					"metaDescription": "Security monitoring fatigue often leads to security gaps. Consolidating essential security services can help. 4 recommendations to reduce data overload and burnout.",
 					"twitterCustomImage": null,
 					"metaImage": {
 						"file": {
-							"publicURL": "[path]/Magic-WAN-OG.png"
+							"publicURL": "[path]/fatigue.jpeg"
 						}
 					},
 					"facebookCustomImage": null
@@ -50,17 +51,55 @@
 				"psaBanner": null,
 				"customTopNav": null,
 				"headerLogo": null,
-				"proactivePopup": null,
+				"proactivePopup": {
+					"contentTypeId": "proactivePopup",
+					"contentfulId": "1CsLKj1fesYJdTYADz0tWP",
+					"headerText": "Subscribe to Trending Stories",
+					"subHeadingText": "Receive a monthly recap of the most popular Internet insights!",
+					"marketoForm": {
+						"contentTypeId": "marketoEmbeddedForm",
+						"contentfulId": "55VRCxLgGVxT4XfkaKSPQ7",
+						"bladeName": "Trending Stories - Form: Proactive Pop-up - Subscribe",
+						"backgroundColor": "white",
+						"marketoFormId": 2459,
+						"marketoFormLeadSource": "Inbound - Blog Subscriber",
+						"marketoFormLeadSourceDetail": "[BRD] Q1'22 WEB - GBL - Brand Gen Newsletter Subscription",
+						"marketoFormHeaderText": "Receive a monthly recap of the most popular Internet insights!",
+						"marketoFormDefaultComment": null,
+						"showCommentBox": false,
+						"marketoFormThankYouText": null,
+						"marketoFormCustomSuccessMessage": "We're looking forward to sharing content with you.",
+						"marketoFormPdfDownload": null,
+						"marketoFormPdfDownloadI18n": null,
+						"marketoFormAssetDownloadButtonText": null,
+						"marketoFormSuccessRedirectUrl": null,
+						"sendAdRoll": null,
+						"meta_adRollCustomSegment": null,
+						"enableSandbox": null,
+						"marketoFormSubmitButtonText": "Subscribe",
+						"marketoFormSubmitButtonColor": "orange",
+						"enableEmailVerification": null,
+						"disableEnterpriseEmailNotification": null,
+						"enableRingout": null
+					},
+					"timeDelay": 60000
+				},
 				"template": null,
 				"relatedBlades": [
+					{
+						"contentfulId": "576O92JxT8RxnSLXT3Pk59",
+						"contentTypeId": "bladePadding",
+						"height": 6,
+						"backgroundColor": "blue5"
+					},
 					{
 						"contentTypeId": "bladeRichTextColumnGroup",
 						"contentfulId": "5cw8E6DG3Vjk9pdESIOvCw",
 						"htmlId": null,
 						"mainHeadline": null,
-						"backgroundColor": "white",
+						"backgroundColor": "light-blue",
 						"bladeBorder": "none",
-						"sectionPadding": "tile--no-bottom-padding",
+						"sectionPadding": "tile--no-top-bottom-padding",
 						"columnLayout": "Two Thirds & One Third",
 						"columns": [
 							{
@@ -96,7 +135,7 @@
 											]
 										},
 										{
-											"nodeType": "heading-4",
+											"nodeType": "heading-5",
 											"data": {
 												"target": null,
 												"uri": null
@@ -110,12 +149,29 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "How data overload is pushing security professionals to the brink",
-													"marks": [
-														{
-															"type": "bold"
-														}
-													],
+													"value": "Learn how data overload is pushing security professionals to the brink",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
 													"content": null
 												}
 											]
@@ -125,18 +181,18 @@
 											"data": {
 												"target": {
 													"sys": {
-														"id": "YDk8rw00KZDgFAaSjegqe",
+														"id": "21zleTlrstQ1HPDB2XofIM",
 														"type": "Link",
 														"linkType": "Asset"
 													},
 													"related_asset": [
 														{
-															"contentfulId": "YDk8rw00KZDgFAaSjegqe",
+															"contentfulId": "21zleTlrstQ1HPDB2XofIM",
 															"locale": "en-US",
-															"title": "Insights Security Article",
+															"title": "The Edge - Security monitoring fatigue - Content image",
 															"file": {
-																"name": "insights-security-article-image",
-																"publicURL": "[path]/insights-security-article-image.png",
+																"name": "Security_monitoring_fatigue_stock_photo",
+																"publicURL": "[path]/Security_monitoring_fatigue_stock_photo.png",
 																"internal": {
 																	"mediaType": "image/png"
 																}
@@ -181,7 +237,7 @@
 											]
 										},
 										{
-											"nodeType": "heading-4",
+											"nodeType": "heading-3",
 											"data": {
 												"target": null,
 												"uri": null
@@ -363,7 +419,59 @@
 											]
 										},
 										{
-											"nodeType": "heading-4",
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "heading-3",
 											"data": {
 												"target": null,
 												"uri": null
@@ -475,7 +583,7 @@
 											]
 										},
 										{
-											"nodeType": "unordered-list",
+											"nodeType": "heading-5",
 											"data": {
 												"target": null,
 												"uri": null
@@ -484,223 +592,222 @@
 											"marks": null,
 											"content": [
 												{
-													"nodeType": "list-item",
+													"nodeType": "text",
 													"data": {
 														"target": null,
 														"uri": null
+													},
+													"value": "False positives",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												},
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": " ",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "In a ",
+													"marks": [],
+													"content": null
+												},
+												{
+													"nodeType": "hyperlink",
+													"data": {
+														"target": null,
+														"uri": "https://www.devo.com/resources/ponemon-soc-effectiveness-report-2019/"
 													},
 													"value": null,
 													"marks": null,
 													"content": [
 														{
-															"nodeType": "paragraph",
+															"nodeType": "text",
 															"data": {
 																"target": null,
 																"uri": null
 															},
-															"value": null,
-															"marks": null,
-															"content": [
+															"value": "survey",
+															"marks": [
 																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": "False positives:",
-																	"marks": [
-																		{
-																			"type": "bold"
-																		}
-																	],
-																	"content": null
-																},
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": " In a ",
-																	"marks": [],
-																	"content": null
-																},
-																{
-																	"nodeType": "hyperlink",
-																	"data": {
-																		"target": null,
-																		"uri": "https://www.devo.com/resources/ponemon-soc-effectiveness-report-2019/"
-																	},
-																	"value": null,
-																	"marks": null,
-																	"content": [
-																		{
-																			"nodeType": "text",
-																			"data": {
-																				"target": null,
-																				"uri": null
-																			},
-																			"value": "survey",
-																			"marks": [
-																				{
-																					"type": "underline"
-																				}
-																			],
-																			"content": null
-																		}
-																	]
-																},
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": " conducted by the Ponemon Institute, respondents noted a 20-50% false-positive rate, which prevents security from gaining an accurate picture of the threats facing their organization.",
-																	"marks": [],
-																	"content": null
+																	"type": "underline"
 																}
-															]
+															],
+															"content": null
 														}
 													]
 												},
 												{
-													"nodeType": "list-item",
+													"nodeType": "text",
 													"data": {
 														"target": null,
 														"uri": null
 													},
-													"value": null,
-													"marks": null,
-													"content": [
-														{
-															"nodeType": "paragraph",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": null,
-															"marks": null,
-															"content": [
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": "Security tools may be siloed or send duplicative alerts:",
-																	"marks": [
-																		{
-																			"type": "bold"
-																		}
-																	],
-																	"content": null
-																},
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": " Point products don't work together to streamline the volume and quality of data being sent, which can make it more difficult to assess an organization's security posture and analyze threats as they arise. Traditional security monitoring tools — whether they operate at the host, system, application, or network level — are often over-reliant on manual processes to track down and resolve incidents, while many cloud security tools are not built for the scale or complexity of hybrid environments.",
-																	"marks": [],
-																	"content": null
-																}
-															]
-														}
-													]
-												},
+													"value": " conducted by the Ponemon Institute, respondents noted a 20-50% false-positive rate, which prevents security from gaining an accurate picture of the threats facing their organization.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "heading-5",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
 												{
-													"nodeType": "list-item",
+													"nodeType": "text",
 													"data": {
 														"target": null,
 														"uri": null
 													},
-													"value": null,
-													"marks": null,
-													"content": [
+													"value": "Security tools may be siloed or send duplicative alerts",
+													"marks": [
 														{
-															"nodeType": "paragraph",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": null,
-															"marks": null,
-															"content": [
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": "Data logs lack context and advanced capabilities:",
-																	"marks": [
-																		{
-																			"type": "bold"
-																		}
-																	],
-																	"content": null
-																},
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": " Since logs are often siloed in hardware and software, they cannot offer context that takes into account an organization's entire infrastructure. Identifying and remediating an attack can be both time-consuming and challenging to sift through the high volume of technical data.",
-																	"marks": [],
-																	"content": null
-																}
-															]
+															"type": "bold"
 														}
-													]
-												},
+													],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
 												{
-													"nodeType": "list-item",
+													"nodeType": "text",
 													"data": {
 														"target": null,
 														"uri": null
 													},
-													"value": null,
-													"marks": null,
-													"content": [
+													"value": "Point products don't work together to streamline the volume and quality of data being sent, which can make it more difficult to assess an organization's security posture and analyze threats as they arise. Traditional security monitoring tools — whether they operate at the host, system, application, or network level — are often over-reliant on manual processes to track down and resolve incidents, while many cloud security tools are not built for the scale or complexity of hybrid environments.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "heading-5",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Data logs lack context and advanced capabilities",
+													"marks": [
 														{
-															"nodeType": "paragraph",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": null,
-															"marks": null,
-															"content": [
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": "When everything is important, nothing is: ",
-																	"marks": [
-																		{
-																			"type": "bold"
-																		}
-																	],
-																	"content": null
-																},
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": "With the wrong toolset, every event is prioritized, making it burdensome for security to manually identify the most pressing threat. The right toolset is one that allows security to automatically prioritize the data they receive, enabling them to identify attack patterns and the evolution of other security risks within their organizations — without wasting valuable time or resources.",
-																	"marks": [],
-																	"content": null
-																}
-															]
+															"type": "bold"
 														}
-													]
+													],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Since logs are often siloed in hardware and software, they cannot offer context that takes into account an organization's entire infrastructure. Identifying and remediating an attack can be both time-consuming and challenging to sift through the high volume of technical data.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "heading-5",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "When everything is important, nothing is",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "With the wrong toolset, every event is prioritized, making it burdensome for security to manually identify the most pressing threat. The right toolset is one that allows security to automatically prioritize the data they receive, enabling them to identify attack patterns and the evolution of other security risks within their organizations — without wasting valuable time or resources.",
+													"marks": [],
+													"content": null
 												}
 											]
 										},
@@ -726,7 +833,59 @@
 											]
 										},
 										{
-											"nodeType": "heading-4",
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "heading-3",
 											"data": {
 												"target": null,
 												"uri": null
@@ -849,6 +1008,52 @@
 											]
 										},
 										{
+											"nodeType": "heading-5",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Improving logs and machine learning models",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Logging is most useful when security has a clear and concise picture of the threats to their organization. Teams may augment the log data by implementing one or more of the following features:",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
 											"nodeType": "unordered-list",
 											"data": {
 												"target": null,
@@ -881,10 +1086,10 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "Improving logs and machine learning models:",
+																	"value": "AI-driven event and root cause analysis: ",
 																	"marks": [
 																		{
-																			"type": "bold"
+																			"type": "italic"
 																		}
 																	],
 																	"content": null
@@ -895,248 +1100,7 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": " Logging is most useful when security has a clear and concise picture of the threats to their organization. Teams may augment the log data by implementing one or more of the following features:",
-																	"marks": [],
-																	"content": null
-																}
-															]
-														},
-														{
-															"nodeType": "unordered-list",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": null,
-															"marks": null,
-															"content": [
-																{
-																	"nodeType": "list-item",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": null,
-																	"marks": null,
-																	"content": [
-																		{
-																			"nodeType": "paragraph",
-																			"data": {
-																				"target": null,
-																				"uri": null
-																			},
-																			"value": null,
-																			"marks": null,
-																			"content": [
-																				{
-																					"nodeType": "text",
-																					"data": {
-																						"target": null,
-																						"uri": null
-																					},
-																					"value": "AI-driven event and root cause analysis: ",
-																					"marks": [
-																						{
-																							"type": "italic"
-																						}
-																					],
-																					"content": null
-																				},
-																				{
-																					"nodeType": "text",
-																					"data": {
-																						"target": null,
-																						"uri": null
-																					},
-																					"value": "Noting what happens before, during, and after an incident",
-																					"marks": [],
-																					"content": null
-																				}
-																			]
-																		}
-																	]
-																},
-																{
-																	"nodeType": "list-item",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": null,
-																	"marks": null,
-																	"content": [
-																		{
-																			"nodeType": "paragraph",
-																			"data": {
-																				"target": null,
-																				"uri": null
-																			},
-																			"value": null,
-																			"marks": null,
-																			"content": [
-																				{
-																					"nodeType": "text",
-																					"data": {
-																						"target": null,
-																						"uri": null
-																					},
-																					"value": "Predictive analysis:",
-																					"marks": [
-																						{
-																							"type": "italic"
-																						}
-																					],
-																					"content": null
-																				},
-																				{
-																					"nodeType": "text",
-																					"data": {
-																						"target": null,
-																						"uri": null
-																					},
-																					"value": " Identifying weak areas of infrastructure that should be addressed prior to an incident occurring",
-																					"marks": [],
-																					"content": null
-																				}
-																			]
-																		}
-																	]
-																},
-																{
-																	"nodeType": "list-item",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": null,
-																	"marks": null,
-																	"content": [
-																		{
-																			"nodeType": "paragraph",
-																			"data": {
-																				"target": null,
-																				"uri": null
-																			},
-																			"value": null,
-																			"marks": null,
-																			"content": [
-																				{
-																					"nodeType": "text",
-																					"data": {
-																						"target": null,
-																						"uri": null
-																					},
-																					"value": "Network detection and response:",
-																					"marks": [
-																						{
-																							"type": "italic"
-																						}
-																					],
-																					"content": null
-																				},
-																				{
-																					"nodeType": "text",
-																					"data": {
-																						"target": null,
-																						"uri": null
-																					},
-																					"value": " Eliminating silos between DevOps, microservices, and API-based integrations to get a full picture of the data security lifecycle",
-																					"marks": [],
-																					"content": null
-																				}
-																			]
-																		}
-																	]
-																},
-																{
-																	"nodeType": "list-item",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": null,
-																	"marks": null,
-																	"content": [
-																		{
-																			"nodeType": "paragraph",
-																			"data": {
-																				"target": null,
-																				"uri": null
-																			},
-																			"value": null,
-																			"marks": null,
-																			"content": [
-																				{
-																					"nodeType": "text",
-																					"data": {
-																						"target": null,
-																						"uri": null
-																					},
-																					"value": "Behavior baselining:",
-																					"marks": [
-																						{
-																							"type": "italic"
-																						}
-																					],
-																					"content": null
-																				},
-																				{
-																					"nodeType": "text",
-																					"data": {
-																						"target": null,
-																						"uri": null
-																					},
-																					"value": " Cataloging expected and unexpected actions and behaviors",
-																					"marks": [],
-																					"content": null
-																				}
-																			]
-																		}
-																	]
-																}
-															]
-														}
-													]
-												},
-												{
-													"nodeType": "list-item",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": null,
-													"marks": null,
-													"content": [
-														{
-															"nodeType": "paragraph",
-															"data": {
-																"target": null,
-																"uri": null
-															},
-															"value": null,
-															"marks": null,
-															"content": [
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": "Making better use of automation:",
-																	"marks": [
-																		{
-																			"type": "bold"
-																		}
-																	],
-																	"content": null
-																},
-																{
-																	"nodeType": "text",
-																	"data": {
-																		"target": null,
-																		"uri": null
-																	},
-																	"value": " Some parts of the threat detection process will require manual input. But, automating processes where possible — ideally tactical, repeatable steps of investigation and analysis — can reduce the overall workload security faces in detecting threats. For example, establishing an automated workflow for scanning endpoint devices or email accounts is faster than setting up the scan from scratch every time.",
+																	"value": "Noting what happens before, during, and after an incident",
 																	"marks": [],
 																	"content": null
 																}
@@ -1168,10 +1132,10 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "Cadenced auditing of security tools:",
+																	"value": "Predictive analysis:",
 																	"marks": [
 																		{
-																			"type": "bold"
+																			"type": "italic"
 																		}
 																	],
 																	"content": null
@@ -1182,13 +1146,197 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": " Regularly audit and streamline existing security monitoring tools to ensure they are working as expected.",
+																	"value": " Identifying weak areas of infrastructure that should be addressed prior to an incident occurring",
 																	"marks": [],
 																	"content": null
 																}
 															]
 														}
 													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "Network detection and response:",
+																	"marks": [
+																		{
+																			"type": "italic"
+																		}
+																	],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": " Eliminating silos between DevOps, microservices, and API-based integrations to get a full picture of the data security lifecycle",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												},
+												{
+													"nodeType": "list-item",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": null,
+													"marks": null,
+													"content": [
+														{
+															"nodeType": "paragraph",
+															"data": {
+																"target": null,
+																"uri": null
+															},
+															"value": null,
+															"marks": null,
+															"content": [
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "Behavior baselining:",
+																	"marks": [
+																		{
+																			"type": "italic"
+																		}
+																	],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": " Cataloging expected and unexpected actions and behaviors",
+																	"marks": [],
+																	"content": null
+																}
+															]
+														}
+													]
+												}
+											]
+										},
+										{
+											"nodeType": "heading-5",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Making better use of automation",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Some parts of the threat detection process will require manual input. But, automating processes where possible — ideally tactical, repeatable steps of investigation and analysis — can reduce the overall workload security faces in detecting threats. For example, establishing an automated workflow for scanning endpoint devices or email accounts is faster than setting up the scan from scratch every time.",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "heading-5",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Cadenced auditing of security tools",
+													"marks": [
+														{
+															"type": "bold"
+														}
+													],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Regularly audit and streamline existing security monitoring tools to ensure they are working as expected.",
+													"marks": [],
+													"content": null
 												}
 											]
 										},
@@ -1214,7 +1362,59 @@
 											]
 										},
 										{
-											"nodeType": "heading-4",
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "heading-3",
 											"data": {
 												"target": null,
 												"uri": null
@@ -1355,6 +1555,37 @@
 														"target": null,
 														"uri": null
 													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
 													"value": "\n",
 													"marks": [],
 													"content": null
@@ -1372,25 +1603,14 @@
 									"nodeType": "document",
 									"content": [
 										{
-											"nodeType": "heading-4",
+											"nodeType": "hr",
 											"data": {
 												"target": null,
 												"uri": null
 											},
 											"value": null,
 											"marks": null,
-											"content": [
-												{
-													"nodeType": "text",
-													"data": {
-														"target": null,
-														"uri": null
-													},
-													"value": "Key takeaways",
-													"marks": [],
-													"content": null
-												}
-											]
+											"content": []
 										},
 										{
 											"nodeType": "paragraph",
@@ -1407,7 +1627,28 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "After reading this article you will be able to understand:",
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
+										},
+										{
+											"nodeType": "heading-5",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Key takeaways",
 													"marks": [],
 													"content": null
 												}
@@ -1446,8 +1687,22 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "Why 68% of security professionals are reducing security alerts",
+																	"value": "Why 68% of security professionals are ",
 																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "reducing security alerts",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
 																	"content": null
 																}
 															]
@@ -1478,8 +1733,22 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "How security point products feed into data overload and burnout",
+																	"value": "How security point products feed into ",
 																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "data overload and burnout",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
 																	"content": null
 																}
 															]
@@ -1510,8 +1779,22 @@
 																		"target": null,
 																		"uri": null
 																	},
-																	"value": "Recommendations to reduce security monitoring fatigue",
+																	"value": "Recommendations to ",
 																	"marks": [],
+																	"content": null
+																},
+																{
+																	"nodeType": "text",
+																	"data": {
+																		"target": null,
+																		"uri": null
+																	},
+																	"value": "reduce security monitoring fatigue",
+																	"marks": [
+																		{
+																			"type": "bold"
+																		}
+																	],
 																	"content": null
 																}
 															]
@@ -1542,7 +1825,17 @@
 											]
 										},
 										{
-											"nodeType": "heading-6",
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
 											"data": {
 												"target": null,
 												"uri": null
@@ -1556,25 +1849,32 @@
 														"target": null,
 														"uri": null
 													},
-													"value": "RELATED RESOURCES",
-													"marks": [
-														{
-															"type": "bold"
-														}
-													],
+													"value": "",
+													"marks": [],
 													"content": null
 												}
 											]
 										},
 										{
-											"nodeType": "hr",
+											"nodeType": "heading-5",
 											"data": {
 												"target": null,
 												"uri": null
 											},
 											"value": null,
 											"marks": null,
-											"content": []
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "Related resources",
+													"marks": [],
+													"content": null
+												}
+											]
 										},
 										{
 											"nodeType": "unordered-list",
@@ -1875,6 +2175,37 @@
 													"content": null
 												}
 											]
+										},
+										{
+											"nodeType": "hr",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": []
+										},
+										{
+											"nodeType": "paragraph",
+											"data": {
+												"target": null,
+												"uri": null
+											},
+											"value": null,
+											"marks": null,
+											"content": [
+												{
+													"nodeType": "text",
+													"data": {
+														"target": null,
+														"uri": null
+													},
+													"value": "",
+													"marks": [],
+													"content": null
+												}
+											]
 										}
 									]
 								}
@@ -1886,9 +2217,9 @@
 						"contentfulId": "p1XUhrKlymQFbnmXhkam7",
 						"htmlId": null,
 						"mainHeadline": null,
-						"backgroundColor": "white",
+						"backgroundColor": "light-blue",
 						"bladeBorder": "none",
-						"sectionPadding": null,
+						"sectionPadding": "tile--no-top-bottom-padding",
 						"columnLayout": "Two Thirds & One Third",
 						"columns": [
 							{
@@ -2051,7 +2382,6 @@
 					{
 						"contentTypeId": "bladeEnablement",
 						"contentfulId": "6a0AK8klnguk8T7mRLYvRt",
-						"copy": null,
 						"buttonExtraClass": null,
 						"buttonColor": "orange",
 						"buttonColor2": "orange",
@@ -2104,7 +2434,7 @@
 									"sendAdRoll": null,
 									"meta_adRollCustomSegment": null,
 									"enableSandbox": null,
-									"marketoFormSubmitButtonText": "Subscribe to Trending Stories",
+									"marketoFormSubmitButtonText": "Subscribe to The Edge",
 									"marketoFormSubmitButtonColor": "orange",
 									"enableEmailVerification": null,
 									"disableEnterpriseEmailNotification": null,
@@ -2141,7 +2471,10 @@
 			"pathname": "/learning/insights-security-fatigue/",
 			"contentfulId": "5ymCbecFMV9BXsQLkUC49k",
 			"allowedHrefLangs": [
-				"en-US"
+				"en-US",
+				"fr-FR",
+				"de-DE",
+				"ja-JP"
 			],
 			"baseURL": "https://www.cloudflare.com"
 		}
