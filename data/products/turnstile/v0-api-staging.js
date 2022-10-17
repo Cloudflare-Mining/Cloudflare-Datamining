@@ -2,27 +2,27 @@
 	function A(e, s) {
 		return e.indexOf(s) !== -1
 	}
-	var B = /^[0-9A-Za-z_-]{3,100}$/;
+	var V = /^[0-9A-Za-z_-]{3,100}$/;
 
 	function N(e) {
-		return B.test(e)
-	}
-	var V = /^[a-z0-9_-]{0,32}$/i;
-
-	function P(e) {
 		return V.test(e)
 	}
-	var j = /^[a-z0-9_-]{0,255}$/i;
+	var j = /^[a-z0-9_-]{0,32}$/i;
 
-	function W(e) {
+	function P(e) {
 		return j.test(e)
 	}
-	var q = ".cf-turnstile",
-		U = ".cf-challenge",
-		G = ".g-recaptcha",
-		X = "cf_challenge_response",
-		Y = "cf-turnstile-response",
-		J = "g-recaptcha-response",
+	var q = /^[a-z0-9_-]{0,255}$/i;
+
+	function W(e) {
+		return q.test(e)
+	}
+	var U = ".cf-turnstile",
+		G = ".cf-challenge",
+		X = ".g-recaptcha",
+		Y = "cf_challenge_response",
+		J = "cf-turnstile-response",
+		Z = "g-recaptcha-response",
 		_ = !1;
 
 	function c(e) {
@@ -34,7 +34,7 @@
 	}
 
 	function k(e) {
-		H(e, "")
+		O(e, "")
 	}
 	var T = "cf-chl-widget-";
 
@@ -46,7 +46,7 @@
 		return `${T}${e}`
 	}
 
-	function H(e, s) {
+	function O(e, s) {
 		let i = document.getElementById(`${e}_response`);
 		i !== null && (i.value = s);
 		let l = document.getElementById(`${e}_legacy_response`);
@@ -56,11 +56,11 @@
 		}
 	}
 
-	function Z(e) {
+	function K(e) {
 		return e.origin ? e.origin === "https://challenges.cloudflare.com" || e.origin === "https://challenges-staging.cloudflare.com" : !0
 	}
 
-	function K(e) {
+	function Q(e) {
 		return e.startsWith("0x4AAAAAAAAAA") || e.startsWith("0x4AAAAAAAAj")
 	}
 	var $ = function() {
@@ -68,7 +68,7 @@
 			s = function(t) {
 				let n = t.data;
 				if (n.source !== "cloudflare-challenge") return;
-				if (!Z(t)) {
+				if (!K(t)) {
 					c("Ignored message from wrong origin: " + t.origin);
 					return
 				}
@@ -99,7 +99,7 @@
 						break
 					}
 					case "complete": {
-						e.get(n.widgetId).response = n.token, H(o, n.token);
+						e.get(n.widgetId).response = n.token, O(o, n.token);
 						let r = d.cbSuccess;
 						r && r(n.token);
 						break
@@ -130,7 +130,7 @@
 					}
 				}
 			};
-		window.addEventListener ? window.addEventListener("message", s) : window.attachEvent("onmessage", s);
+		window.addEventListener("message", s);
 
 		function i() {
 			let t;
@@ -161,7 +161,7 @@
 		}
 		return {
 			render: function(t, n) {
-				var C, R, ie, S, L, M;
+				var C, S, ie, R, L, M;
 				let o;
 				if (typeof t == "string") try {
 						if (o = document.querySelector(t), !o) {
@@ -175,7 +175,7 @@
 					else {
 						c('Invalid type for parameter "container", expected "string" or an implementation of "HTMLElement"');
 						return
-					} let d = Q(o),
+					} let d = ee(o),
 					r = Object.assign(d, n),
 					{
 						action: a,
@@ -183,10 +183,10 @@
 					} = r,
 					g = r.sitekey,
 					E = (C = r.theme) != null ? C : "auto",
-					b = (R = r.size) != null ? R : "normal",
+					b = (S = r.size) != null ? S : "normal",
 					w = r.callback,
-					O = r["expired-callback"],
-					z = r["error-callback"];
+					z = r["expired-callback"],
+					F = r["error-callback"];
 				if (typeof g != "string") {
 					c(`Invalid or missing type for parameter "sitekey", expected "string", got "${typeof g}"`);
 					return
@@ -218,26 +218,26 @@
 					return
 				}
 				u = u === void 0 ? null : u;
-				let F = "https://challenges.cloudflare.com",
+				let B = "https://challenges.cloudflare.com",
 					x = i(),
 					h = v(x);
 				if (e.set(x, {
 						action: a,
 						cData: u,
 						cbSuccess: w,
-						cbError: z,
-						cbExpired: O,
+						cbError: F,
+						cbExpired: z,
 						params: r
-					}), p.style.display = "none", p.style.border = "none", p.style.overflow = "hidden", p.setAttribute("src", `${F}/cdn-cgi/challenge-platform/turnstile/if/ov2/av0/${x}/${g}/${E}`), p.id = h, p.tabIndex = (S = r.tabindex) != null ? S : 0, p.title = "Widget containing a Cloudflare security challenge", o.appendChild(p), (L = r["response-field"]) != null ? L : !0) {
+					}), p.style.display = "none", p.style.border = "none", p.style.overflow = "hidden", p.setAttribute("src", `${B}/cdn-cgi/challenge-platform/turnstile/if/ov2/av0/${x}/${g}/${E}`), p.id = h, p.tabIndex = (R = r.tabindex) != null ? R : 0, p.title = "Widget containing a Cloudflare security challenge", o.appendChild(p), (L = r["response-field"]) != null ? L : !0) {
 					let f = document.createElement("input");
-					if (f.type = "hidden", f.name = (M = r["response-field-name"]) != null ? M : Y, f.id = `${h}_response`, o.appendChild(f), typeof r["response-field-name"] != "string" && K(g)) {
+					if (f.type = "hidden", f.name = (M = r["response-field-name"]) != null ? M : J, f.id = `${h}_response`, o.appendChild(f), typeof r["response-field-name"] != "string" && Q(g)) {
 						let y = document.createElement("input");
-						y.type = "hidden", y.name = X, y.id = `${h}_legacy_response`, o.appendChild(y)
+						y.type = "hidden", y.name = Y, y.id = `${h}_legacy_response`, o.appendChild(y)
 					}
 				}
 				if (_) {
 					let f = document.createElement("input");
-					f.type = "hidden", f.name = J, f.id = `${h}_g_response`, o.appendChild(f)
+					f.type = "hidden", f.name = Z, f.id = `${h}_g_response`, o.appendChild(f)
 				}
 				return h
 			},
@@ -276,7 +276,7 @@
 	window.cfChallengeAPI = $;
 	window.turnstile = $;
 
-	function Q(e) {
+	function ee(e) {
 		var w;
 		let i = {
 				sitekey: e.getAttribute("data-sitekey")
@@ -305,9 +305,9 @@
 		return b && (i["response-field-name"] = b), i
 	}
 
-	function ee() {
-		let e = [q, U];
-		_ && e.push(G);
+	function H() {
+		let e = [U, G];
+		_ && e.push(X);
 		let s = document.querySelectorAll(e.join(", "));
 		for (let i = 0; i < s.length; i++) $.render(s[i])
 	}
@@ -340,7 +340,5 @@
 			typeof window[s] == "function" && window[s]()
 		}, 0)
 	}
-	I.get("render") !== "explicit" && setTimeout(function() {
-		ee()
-	}, 0);
+	I.get("render") !== "explicit" && (document.readyState === "complete" || document.readyState === "interactive" ? setTimeout(H, 0) : window.addEventListener("DOMContentLoaded", H));
 })();
