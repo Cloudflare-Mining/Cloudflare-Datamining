@@ -1,0 +1,193 @@
+#cf-wrapper .cf-columns .cf-column {
+	float: left;
+	padding: 0
+}
+
+#cf-wrapper .cf-columns.two>.cf-column,
+#cf-wrapper .cf-columns.cols-2>.cf-column,
+#cf-wrapper .cf-columns.four>.cf-column,
+#cf-wrapper .cf-columns.cols-4>.cf-column {
+	width: 50%
+}
+
+#cf-wrapper .cf-columns.three>.cf-column,
+#cf-wrapper .cf-columns.cols-3>.cf-column {
+	width: 33.3333333333333%
+}
+
+#cf-wrapper .cf-columns.four>.cf-column,
+#cf-wrapper .cf-columns.cols-4>.cf-column {
+	width: 25%
+}
+
+#cf-error-banner {
+	padding: 20px 20px 25px
+}
+
+#cf-error-banner .cf-error-actions {
+	margin-bottom: 15px
+}
+
+#cf-error-banner .cf-error-header-desc h4 {
+	margin-right: 0.5em
+}
+
+#cf-wrapper #cf-error-details h1 {
+	font-size: 4em
+}
+
+#cf-wrapper #cf-error-details .cf-error-overview {
+	padding-top: 2.33333em
+}
+
+#cf-wrapper #cf-error-details .cf-highlight {
+	padding: 4em 0
+}
+
+#cf-wrapper #cf-error-details .cf-status-item {
+	text-align: center
+}
+
+#cf-wrapper #cf-error-details .cf-status-item,
+#cf-wrapper #cf-error-details .cf-status-item.cf-column {
+	padding-bottom: 0
+}
+
+#cf-wrapper #cf-error-details .cf-status-item.cf-error-source:after,
+#cf-wrapper #cf-error-details .cf-status-item .cf-icon {
+	display: block
+}
+
+#cf-wrapper #cf-error-details .cf-status-item+.cf-status-item {
+	border-top: 0;
+	padding-top: 0
+}
+
+#cf-wrapper #cf-error-details .cf-icon-error-container {
+	height: 85px;
+	margin-bottom: 2.5em
+}
+
+#cf-wrapper #cf-error-details .cf-icon-status {
+	bottom: -10px;
+	left: 50%;
+	top: auto;
+	right: auto
+}
+
+#cf-wrapper #cf-error-details .cf-status-name,
+#cf-wrapper #cf-error-details .cf-status-label {
+	display: block
+}
+
+#cf-wrapper #cf-error-details .cf-error-footer {
+	padding: 2.66667em 0
+}
+
+#cf-wrapper #cf-error-details .cf-footer-item,
+#cf-wrapper #cf-error-details .cf-footer-separator {
+	display: -moz-inline-stack;
+	display: inline-block;
+	vertical-align: baseline;
+	*vertical-align: auto;
+	zoom: 1;
+	*display: inline
+}
+
+#cf-wrapper #cf-error-details .cf-footer-separator {
+	padding: 0 0.25em;
+	vertical-align: middle
+}
+
+#cf-wrapper #cf-error-details .cf-captcha-image {
+	float: left
+}
+
+#cf-wrapper #cf-error-details .cf-captcha-actions {
+	margin-top: 0;
+	position: absolute;
+	right: 0;
+	top: 0;
+	text-align: right;
+	width: 100%
+}
+
+#cf-wrapper #cf-error-details .cf-captcha-actions a {
+	padding: 0
+}
+
+#cf-wrapper #cf-error-details .cf-screenshot-container,
+#cf-wrapper #cf-error-details .cf-captcha-container .cf-screenshot-container {
+	display: block;
+	height: 400px;
+	margin-left: 30px;
+	margin-bottom: -4em;
+	max-width: none
+}
+
+#cf-wrapper #cf-error-details .cf-screenshot-container img,
+#cf-wrapper #cf-error-details .cf-captcha-container .cf-screenshot-container img {
+	display: block
+}
+
+#cf-wrapper .cf-wrapper {
+	width: 960px
+}
+
+#cf-wrapper .cf-btn-accept {
+	height: 36px;
+	width: 36px
+}
+
+#cf-wrapper .cf-btn-accept span {
+	margin-top: -18px
+}
+
+#cf-wrapper #cf-error-banner .cf-close {
+	position: relative;
+	right: auto;
+	top: auto
+}
+
+#cf-wrapper #cf-error-banner .cf-details {
+	white-space: nowrap
+}
+
+#cf-wrapper #cf-error-banner .cf-details-link {
+	padding-right: 0.5em
+}
+
+#cf-wrapper #cf-error-banner .cf-error-actions {
+	float: right;
+	margin-bottom: 0;
+	text-align: left;
+	width: auto
+}
+
+.ie6 #cf-wrapper .cf-form-stacked input,
+.ie6 #cf-wrapper .cf-form-stacked textarea,
+.ie7 #cf-wrapper .cf-form-stacked input,
+.ie7 #cf-wrapper .cf-form-stacked textarea {
+	width: 95%
+}
+
+.ie8 #cf-wrapper .cf-btn-accept.cf-btn span {
+	margin-top: -25px
+}
+
+.ie6 #cf-wrapper .two>.cf-column,
+.ie6 #cf-wrapper .cols-2>.cf-column,
+.ie6 #cf-wrapper .four>.cf-column,
+.ie6 #cf-wrapper .cols-4>.cf-column {
+	width: 50%
+}
+
+.ie6 #cf-wrapper .three>.cf-column,
+.ie6 #cf-wrapper .cols-3>.cf-column {
+	width: 33.3333333333333%
+}
+
+.ie6 #cf-wrapper .four>.cf-column,
+.ie6 #cf-wrapper .cols-4>.cf-column {
+	width: 25%
+}

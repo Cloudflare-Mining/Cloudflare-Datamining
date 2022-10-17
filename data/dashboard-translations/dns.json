@@ -347,6 +347,7 @@
 	"secondary.peers.card.peer_modal.description": "Peers are created at the account level. In order to edit a peer you will be taken to the account level DNS configurations page. Once you save the peer you will be brought back to your zone level DNS page.",
 	"secondary.peers.card.peer_modal.hide": "Do not show this message again for this account.",
 	"secondary.peers.card.help.common": "**What is a DNS peer server?**\n\nA peer is an external nameserver that either acts as the primary or secondary depending on how your zone is configured on Cloudflare. These setups are supported:",
+	"secondary.peers.card.help.common.documentation_link": "To learn more about DNS Zone Transfers, check out the [developer documentation](https://developers.cloudflare.com/dns/zone-setups/zone-transfers).",
 	"secondary.peers.card.help.outgoing": "**Outgoing zone transfers:** Cloudflare acts as primary DNS server. You are managing all your DNS records of your domain on Cloudflare. A linked peer acts as secondary DNS server. DNS records will be transferred from Cloudflare to your external DNS server.\n\nNote: Your zone needs to be converted to Secondary DNS to allow incoming zone transfers.",
 	"secondary.peers.card.help.incoming": "**Incoming zone transfers:** Cloudflare acts as secondary DNS server. You are managing all your DNS records of your domain on your external DNS server. A linked peer acts as primary DNS server. DNS records will be transferred from your external DNS server to Cloudflare.",
 	"secondary.peers.link.title": "Manage linked peers",

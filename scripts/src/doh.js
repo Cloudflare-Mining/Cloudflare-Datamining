@@ -20,6 +20,10 @@ async function run(){
 			name: 'nxdomain',
 			url: 'https://cloudflare-dns.com/dns-query?name=fakedomain&do=true',
 		},
+		{
+			name: 'dnssec-failed',
+			url: 'https://cloudflare-dns.com/dns-query?name=dnssec-failed.org&do=true',
+		},
 	];
 
 	for(const test of tests){
@@ -36,16 +40,12 @@ async function run(){
 		const json = await dohResponse.json();
 		console.log(headers, json);
 
-		// trim to a single answer for nice diffs
+		// trim to a single item in arrays for nice diffs
 		const trimmed = json;
-		if(trimmed.Answer && Array.isArray(trimmed.Answer)){
-			trimmed.Answer = trimmed.Answer.slice(0, 1);
-		}
-		if(trimmed.Authority && Array.isArray(trimmed.Authority)){
-			trimmed.Authority = trimmed.Authority.slice(0, 1);
-		}
-		if(trimmed.Additional && Array.isArray(trimmed.Additional)){
-			trimmed.Additional = trimmed.Additional.slice(0, 1);
+		for(const key in trimmed){
+			if(Array.isArray(trimmed[key])){
+				trimmed[key] = trimmed[key].slice(0, 1);
+			}
 		}
 
 		await fs.writeFile(path.resolve(dir, `${test.name}.json`), JSON.stringify(propertiesToArray(trimmed), null, '\t'));

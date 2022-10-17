@@ -33,6 +33,7 @@
 				"topNavOptions": "empty",
 				"topNavButtonText": null,
 				"topNavButtonUrl": null,
+				"footerOptions": "empty",
 				"metaTags": {
 					"metaTitle": "Zero Trust browsing with Cloudflare's Browser Isolation ",
 					"metaDescription": "Cloudflare's browser isolation can apply threat and data protections to any devices, even ones that an organization does not control.",
@@ -1007,6 +1008,18 @@
 															"specialLinkType": null,
 															"openInNewWindow": false,
 															"isExternalUrl": null
+														},
+														{
+															"contentTypeId": "elementNavLink",
+															"contentfulId": "6yuRUFexE3P4PcUOSOMQ2O",
+															"locale": "en-US",
+															"title": "Activate Phishing-Resistant MFA",
+															"description": null,
+															"url": "/products/zero-trust/phishing-resistant-mfa/",
+															"badges": null,
+															"specialLinkType": null,
+															"openInNewWindow": false,
+															"isExternalUrl": null
 														}
 													],
 													"navIcon": null,
@@ -1601,7 +1614,7 @@
 															"contentfulId": "2P7LeJIYDt69PTmKgq9aQ7",
 															"locale": "en-US",
 															"title": "Magic Firewall",
-															"description": "Enforce consistent network security policies across your entire WAN.",
+															"description": "Enforce consistent network security policies across your entire WAN",
 															"url": "https://www.cloudflare.com/magic-firewall/",
 															"badges": null,
 															"specialLinkType": null,
@@ -1897,7 +1910,7 @@
 															"contentfulId": "7IedhxQncH3tekbbuW61E9",
 															"locale": "en-US",
 															"title": "Web3 Gateways",
-															"description": "Leverage Cloudflare's IPFS and Ethereum gateways to build fast, secure and reliable Web3 applications.",
+															"description": "Leverage Cloudflare's IPFS and Ethereum gateways to build fast, secure and reliable Web3 applications",
 															"url": "web3",
 															"badges": [
 																"New"
@@ -2061,7 +2074,7 @@
 													"contentfulId": "2P7LeJIYDt69PTmKgq9aQ7",
 													"locale": "en-US",
 													"title": "Magic Firewall",
-													"description": "Enforce consistent network security policies across your entire WAN.",
+													"description": "Enforce consistent network security policies across your entire WAN",
 													"url": "https://www.cloudflare.com/magic-firewall/",
 													"badges": null,
 													"specialLinkType": null,
@@ -2162,10 +2175,10 @@
 															"locale": "en-US",
 															"title": "Workers",
 															"description": "Build applications directly onto our network",
-															"url": "https://workers.cloudflare.com",
+															"url": "/products/workers",
 															"badges": null,
 															"specialLinkType": null,
-															"openInNewWindow": true,
+															"openInNewWindow": false,
 															"isExternalUrl": null
 														},
 														{
@@ -2243,6 +2256,18 @@
 															"specialLinkType": null,
 															"openInNewWindow": false,
 															"isExternalUrl": null
+														},
+														{
+															"contentTypeId": "elementNavLink",
+															"contentfulId": "4OEpjnmyDmnTB49YY3mKyN",
+															"locale": "en-US",
+															"title": "Durable Objects",
+															"description": "Strongly consistent data store",
+															"url": "/products/durable-objects",
+															"badges": null,
+															"specialLinkType": null,
+															"openInNewWindow": false,
+															"isExternalUrl": null
 														}
 													],
 													"navIcon": null,
@@ -2264,10 +2289,10 @@
 															"locale": "en-US",
 															"title": "Pages (JAMstack)",
 															"description": "JAMstack platform for frontend developers to collaborate and deploy websites",
-															"url": "https://pages.cloudflare.com",
+															"url": "/products/pages",
 															"badges": null,
 															"specialLinkType": null,
-															"openInNewWindow": true,
+															"openInNewWindow": false,
 															"isExternalUrl": null
 														},
 														{
@@ -2455,7 +2480,7 @@
 													"contentfulId": "6SVxH328unOPEpU7htYOXy",
 													"locale": "en-US",
 													"title": "Radar",
-													"description": "Internet insights, threats and trends based on aggregated Cloudflare network data.",
+													"description": "Internet insights, threats and trends based on aggregated Cloudflare network data",
 													"url": "https://radar.cloudflare.com/",
 													"badges": null,
 													"specialLinkType": null,
@@ -2646,7 +2671,7 @@
 															"locale": "en-US",
 															"title": "New to Cloudflare? Start here",
 															"description": null,
-															"url": "https://developers.cloudflare.com/fundamentals/get-started/",
+															"url": "https://developers.cloudflare.com/learning-paths/get-started/",
 															"badges": null,
 															"specialLinkType": null,
 															"openInNewWindow": false,
