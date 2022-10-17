@@ -90,7 +90,7 @@
 						"streamPosterAssetFile": null,
 						"streamPoster": null,
 						"imageSize": "Medium",
-						"imagePosition": null,
+						"imagePosition": false,
 						"leftLinkUrl": null,
 						"leftLink": null,
 						"leftLinkLoggedIn": null,
@@ -101,14 +101,14 @@
 						"imageLayout": null,
 						"image": null,
 						"imageAssetFile": {
-							"id": "4acec23a-a705-5649-b356-95bfc5a42154",
-							"altText": "Area 1 email security",
-							"title": "Area 1 Product Page - Hero Illustration",
+							"id": "6c481e5f-471f-578d-9168-fa477ae5db5f",
+							"altText": null,
+							"title": null,
 							"activeAsset": "Contentful Asset",
 							"locale": "en-US",
 							"contentfulAsset": {
 								"file": {
-									"publicURL": "[path]/Email_Security_-_sheild.png"
+									"publicURL": "[path]/449x255_CFA1_logo.png"
 								}
 							},
 							"brandfolderAsset": null,
@@ -511,32 +511,32 @@
 							{
 								"contentTypeId": "feature",
 								"contentfulId": "6a3QoCCPeRYjRaQ00Fo1pr",
-								"title": "Remove complexity",
+								"title": "Save IT time and resources",
 								"titleSize": null,
 								"description": "Replace ineffective SEGs with cloud-native, API-first email security, with nothing to install or endlessly \"tune.\"",
 								"learnMoreUrl": null,
 								"learnMoreText": null,
 								"displayBorder": false,
 								"icon": null,
-								"iconAssetFile": null,
-								"imageAssetFile": {
-									"id": "983072c7-5ce1-5326-98fe-b83b3e044a87",
-									"altText": "Time white",
-									"title": "Time white",
+								"iconAssetFile": {
+									"id": "da7be7ce-7adf-5a42-89c2-02ec388c838d",
+									"altText": "Time blue",
+									"title": "Time blue",
 									"activeAsset": "Brandfolder Asset",
 									"locale": "en-US",
 									"contentfulAsset": null,
 									"brandfolderAsset": {
-										"size": 1135,
+										"size": 1138,
 										"height": 192,
 										"width": 192,
-										"filename": "time-white.svg",
+										"filename": "time-blue.svg",
 										"file": {
-											"publicURL": "[path]/time-white.svg"
+											"publicURL": "[path]/time-blue.svg"
 										}
 									},
 									"brandfolderAssetMobile": null
 								},
+								"imageAssetFile": null,
 								"streamId": null,
 								"streamThumbnail": null,
 								"streamThumbnailAssetFile": null
@@ -631,7 +631,7 @@
 					{
 						"contentfulId": "6oe3nI1sMAecv79b11EC6J",
 						"title": "Preemptively block phishing attacks",
-						"copy": "- Uncover new tactics used by malicious actors to block phishing in real-time, versus waiting days or weeks for signature updates.\n- Open links in an isolated browser to neutralize multi-channel phishing.\n- Accurately detect and contain low-volume targeted phish without requiring large attack sample volumes.\n- Get visibility into compromised accounts and domains, as well as new, lookalike, and proximity domains impersonating your brand.\n",
+						"copy": "- Uncover new tactics used by malicious actors to block phishing in real-time, versus waiting days or weeks for signature updates.\n- Neutralize multi-channel phishing attacks that span email and web delivery, by turning on Area 1's integration with [Cloudflare Browser Isolation](https://www.cloudflare.com/products/zero-trust/browser-isolation/).\n- Accurately detect and contain low-volume targeted phish without requiring large attack sample volumes.\n- Get visibility into compromised accounts and domains, as well as new, lookalike, and proximity domains impersonating your brand.\n",
 						"toggleText": null,
 						"button": null,
 						"learnMoreUrl": null,
