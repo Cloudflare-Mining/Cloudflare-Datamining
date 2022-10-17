@@ -5,34 +5,35 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h3><strong>About the department</strong></h3>
+<p><strong>About the department</strong></p>
 <p><span style="font-weight: 400;">Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare. Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers. Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency which would be impossible for almost any other organization.</span></p>
-<h3><strong>What you’ll do</strong></h3>
+<p><strong>What you’ll do</strong></p>
 <p><span style="font-weight: 400;">Here at Cloudflare, privacy is core to what we do. This includes giving users more control over their data, working with browser and operating system vendors to reduce cross-site tracking, and/or building first-party, privacy-focused products for customers ourselves, we’re increasingly working to improve the default state of privacy and security on the web.</span></p>
-<p><span style="font-weight: 400;">We’re looking for engineers to join our team and address these challenges (and more). You’ll work on projects related to </span><a href="https://blog.cloudflare.com/cloudflare-verifies-code-whatsapp-web-serves-users/"><span style="font-weight: 400;">improving how we verify code served in the browser</span></a><span style="font-weight: 400;">, software supply chain security, scaling the systems that power our </span><a href="https://1.1.1.1/"><span style="font-weight: 400;">WARP (1.1.1.1) mobile apps</span></a><span style="font-weight: 400;">—and brainstorm ideas with a team keen to do even more.</span></p>
-<h3><strong>Examples of desirable skills, knowledge and experience:</strong></h3>
+<p><span style="font-weight: 400;">On the job, you'll collaborate with our research team to build of </span><a href="https://blog.cloudflare.com/privacy-edge-making-building-privacy-first-apps-easier/"><span style="font-weight: 400;">privacy-preserving measurement and analytics</span></a><span style="font-weight: 400;"> systems based on emerging cryptography standards, deploy new versions of our production grade </span><a href="https://blog.cloudflare.com/icloud-private-relay/"><span style="font-weight: 400;">connection</span></a><span style="font-weight: 400;"> and </span><a href="https://blog.cloudflare.com/oblivious-dns/"><span style="font-weight: 400;">application layer</span></a><span style="font-weight: 400;"> proxies, iterate on and improve our solution for verifying the authenticity of </span><a href="https://blog.cloudflare.com/cloudflare-verifies-code-whatsapp-web-serves-users/"><span style="font-weight: 400;">code served in the browser</span></a><span style="font-weight: 400;">, and help us scale the systems that power our </span><a href="https://1.1.1.1/"><span style="font-weight: 400;">WARP (1.1.1.1) mobile apps</span></a><span style="font-weight: 400;">. We’re looking for someone excited about building – and helping us brainstorm – the future of privacy infrastructure at Cloudflare.&nbsp;</span></p>
+<p><strong>Examples of desirable skills, knowledge and experience:</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">4+ years of experience working with browsers, web frameworks, or building privacy software</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Solid foundation in computer science and software engineering with strong competencies in software design, and building distributed systems</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">3+ years of experience working with browsers, web frameworks, or building privacy software</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Solid foundation in computer science and software engineering with strong competencies in software design and building distributed systems</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience implementing tools, process, internal instrumentation, methodologies and resolving blockages</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Comfortable with systems level languages like Rust and/or Go</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Great communication skills and the ability to work on various initiatives.</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">A kind and generous attitude towards customers and coworkers alike.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">A passion for solving meaningful real-world problems for end-users.</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Own your work from early discussions to the day it ships.</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">A high regard for good documentation.</span></li>
 </ul>
-<h3><strong>Responsibilities:</strong></h3>
+<p><strong>Responsibilities</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Working hands-on with your team and our users to deliver production ready, industry-standard code.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Collaborating with engineers, product managers, designers, and other stakeholders.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Working hands-on with your team and our users to ship production ready, industry-standard code.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Collaborating with engineers, researchers, product managers, designers, and other stakeholders.</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Advocating for end-user privacy in the applications and services you build and contribute to maintaining a high degree of reliability and stability for the applications we ship.</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Communicating effectively across the team.</span></li>
 </ul>
-<h3><strong>Bonus Points:</strong></h3>
+<p><strong>Bonus Points:</strong></p>
 <ul>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">You’ve worked on and/or contributed to a major browser or web framework, and understand the web security model well</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">You are comfortable working with cryptographic concepts, such as public-key encryption, digital signatures, hash functions, etc., and have an appetite to learn more advanced cryptography.</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">An interest in collaborating on new Internet standards surrounding privacy and security.</span></li>
-	<li><span style="font-weight: 400;">You have experience implementing cryptographic algorithms and have some familiarity with AEADs, public-key cryptography, and/or hashes.</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Experience with TypeScript, JavaScript and/or WebAssembly &amp; Cloud deployments (we increasingly deploy services on our </span><a href="https://workers.cloudflare.com/"><span style="font-weight: 400;">Workers platform</span></a><span style="font-weight: 400;">)</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Previous experience shipping privacy-centric products and/or in a privacy-first organization.</span></li>
 </ul>
