@@ -2418,10 +2418,6 @@
 				{
 					"name": "name",
 					"annotations": []
-				},
-				{
-					"name": "fullyQualifiedName",
-					"annotations": []
 				}
 			]
 		},
@@ -2440,10 +2436,6 @@
 				{
 					"name": "element",
 					"annotations": []
-				},
-				{
-					"name": "name",
-					"annotations": []
 				}
 			]
 		},
@@ -2452,10 +2444,6 @@
 			"fields": [
 				{
 					"name": "value",
-					"annotations": []
-				},
-				{
-					"name": "name",
 					"annotations": []
 				}
 			]
@@ -2617,27 +2605,6 @@
 			]
 		},
 		{
-			"name": "workerd/src/workerd/jsg/rtti.capnp:Method",
-			"fields": [
-				{
-					"name": "name",
-					"annotations": []
-				},
-				{
-					"name": "returnType",
-					"annotations": []
-				},
-				{
-					"name": "args",
-					"annotations": []
-				},
-				{
-					"name": "static",
-					"annotations": []
-				}
-			]
-		},
-		{
 			"name": "workerd/src/workerd/jsg/rtti.capnp:Structure",
 			"fields": [
 				{
@@ -2659,30 +2626,26 @@
 				{
 					"name": "asyncIterable",
 					"annotations": []
-				},
-				{
-					"name": "fullyQualifiedName",
-					"annotations": []
-				},
-				{
-					"name": "iterator",
-					"annotations": []
-				},
-				{
-					"name": "asyncIterator",
-					"annotations": []
 				}
 			]
 		},
 		{
-			"name": "workerd/src/workerd/jsg/rtti.capnp:Member.nested",
+			"name": "workerd/src/workerd/jsg/rtti.capnp:Method",
 			"fields": [
 				{
-					"name": "structure",
+					"name": "name",
 					"annotations": []
 				},
 				{
-					"name": "name",
+					"name": "returnType",
+					"annotations": []
+				},
+				{
+					"name": "args",
+					"annotations": []
+				},
+				{
+					"name": "static",
 					"annotations": []
 				}
 			]
@@ -2730,28 +2693,6 @@
 			"fields": [
 				{
 					"name": "args",
-					"annotations": []
-				}
-			]
-		},
-		{
-			"name": "workerd/src/workerd/jsg/rtti.capnp:DefinitionGeneratorRequest.StructureGroup",
-			"fields": [
-				{
-					"name": "name",
-					"annotations": []
-				},
-				{
-					"name": "structures",
-					"annotations": []
-				}
-			]
-		},
-		{
-			"name": "workerd/src/workerd/jsg/rtti.capnp:DefinitionGeneratorRequest",
-			"fields": [
-				{
-					"name": "groups",
 					"annotations": []
 				}
 			]
@@ -3756,18 +3697,6 @@
 				},
 				{
 					"name": "jsgVarargs",
-					"annotations": []
-				},
-				{
-					"name": "jsgSelfRef",
-					"annotations": []
-				},
-				{
-					"name": "v8FunctionCallbackInfo",
-					"annotations": []
-				},
-				{
-					"name": "v8PropertyCallbackInfo",
 					"annotations": []
 				}
 			]
