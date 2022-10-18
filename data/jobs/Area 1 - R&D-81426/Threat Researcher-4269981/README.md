@@ -5,24 +5,24 @@
 		<p><span style="font-weight: 400;">We realize people do not fit into neat boxes. We are looking for curious and empathetic individuals who are committed to developing themselves and learning new skills, and we are ready to help you do that. We cannot complete our mission without building a diverse and inclusive team. We hire the best people based on an evaluation of their potential and support them throughout their time at Cloudflare. Come join us!&nbsp;</span></p>
 	</div>
 </div>
-<h4 id="ThreatResearcher-AbouttheDepartment"><strong>About the Department</strong></h4>
-<p>Emerging Technologies &amp; Incubation (ETI) is where new and bold products are built and released within Cloudflare.&nbsp; Rather than being constrained by the structures which make Cloudflare a massively successful business, we are able to leverage them to deliver entirely new tools and products to our customers.&nbsp; Cloudflare’s edge and network make it possible to solve problems at massive scale and efficiency, which would be impossible for almost any other organization.</p>
+<h4 id="ThreatResearcher-AbouttheTeam"><strong>About the Team</strong></h4>
+<p>Cloudforce One is Cloudflare’s threat operations and research team, responsible for identifying and disrupting cyber threats ranging from sophisticated cyber criminal activity to nation-state sponsored advanced persistent threats (APTs).&nbsp; Cloudforce One works in close partnership with external organizations and internal Cloudflare teams, continuously developing operational tradecraft and expanding ever-growing sources of threat intelligence to enable expedited threat hunting and remediation.&nbsp; Members of Cloudforce One are at the helm of leveraging an incredibly vast and varied set of data points that only one of the world’s largest global networks can provide.&nbsp; The team is able to analyze these unique data points, at massive scale and efficiency, synthesizing findings into actionable threat intelligence to better protect our customers.</p>
 <p>&nbsp;</p>
 <p><strong>About the Role</strong></p>
-<p>Cloudflare is a system spanning the globe, on a mission to make the internet better, safer, and more powerful everyday.&nbsp; To help fulfill this mission, we are seeking a talented Threat Researcher to join us in growing our Threat Intelligence Organization, where you will be instrumental in building a proactive and threat intelligence-driven approach to protecting Cloudflare and its customers from sophisticated and ever-evolving global threat actors. &nbsp;This position requires an innovative, OPSEC-savvy, self-starting, and detail-oriented problem solver with a passion for identifying, tracking, and defeating sophisticated cyber threats.</p>
+<p>Cloudflare is a system spanning the globe, on a mission to make the internet better, safer, and more powerful everyday.&nbsp; To help fulfill this mission, we are seeking a talented Threat Researcher to join us in growing our Cloudforce One Organization, where you will be instrumental in building a proactive and threat intelligence-driven approach to protecting Cloudflare and its customers from sophisticated and ever-evolving global threat actors. &nbsp;This position requires an innovative, OPSEC-savvy, self-starting, and detail-oriented problem solver with a passion for identifying, tracking, and defeating sophisticated cyber threats.</p>
 <p>As a Threat Researcher, your analytical thinking and quick action will be the key to our success.&nbsp; You will serve an integral role in the discovery and analysis of cyber threat adversaries, their Tactics, Techniques, and Procedures (TTPs), along with applying knowledge of transnational issues and geopolitical developments to understand adversary actions and anticipate their next moves.&nbsp; In this position, you will develop and maintain sources of unique threat intelligence to enable analysis, as well as examine and mitigate threats in realtime, leveraging emerging technologies to build detections that protect millions of people from attack.&nbsp; You will work in close collaboration with team members to develop new and innovative ways to present and interact with our unique insights, ranging from completion of finished intelligence products to development of advanced tactical and strategic countermeasures.&nbsp;&nbsp;</p>
 <p>Strong candidates will have excellent OSINT research skills, firsthand experience in Threat Intelligence (in particular, familiarity with advanced persistent threats), a strong technical foundation, practical knowledge of intelligence report writing, and ability to work well in a group of distributed remote team members.</p>
 <p>&nbsp;</p>
 <p><strong>Examples of desirable skills, knowledge and experience</strong></p>
 <ul>
+	<li>Understanding of the cyber threat landscape, cyber intelligence, the intelligence lifecycle, and working knowledge of threat actors and their techniques</li>
+	<li>Experience tracking, analyzing and defending against cyber campaigns utilizing technical Indicators of Compromise (IOCs)</li>
+	<li>Understanding of the latest security trends as they relate to cyber threat adversary detection, response, and mitigation</li>
+	<li>Experience in network and/or host-based intrusion analysis</li>
+	<li>Experience in one of the following: Packet, and/or Metadata analysis</li>
+	<li>Experience using a comprehensive data analysis platform and rule configuration, with ability to recognize patterns and transform data into useful information</li>
 	<li>Advanced communication (written and verbal) and presentation skills, both internally to CXO level and externally to customers</li>
 	<li>Strong knowledge in technical reporting and editing</li>
-	<li>Experience in one of the following: Packet, and/or Metadata analysis</li>
-	<li class="li1">Experience in network and/or host-based intrusion analysis</li>
-	<li>Understanding of the latest security trends as they relate to cyber threat adversary detection, response, and mitigation</li>
-	<li>Experience using a comprehensive data analysis platform and rule configuration, with ability to recognize patterns and transform data into useful information</li>
-	<li>Understanding of the cyber threat landscape, cyber intelligence, the intelligence lifecycle, and working knowledge of threat actors and their techniques</li>
-	<li>Experience tracking and analyzing cyber campaigns utilizing technical Indicators of Compromise (IOCs)</li>
 	<li>Ability to synthesize technical information and document it, in both a technical and non-technical manner, through written, graphical and verbal representation</li>
 	<li>One of the following:
 		<ul>
@@ -30,7 +30,7 @@
 			<li>Military training and experience in cyber intelligence, general intelligence studies, security studies, or related discipline</li>
 		</ul>
 	</li>
-	<li>At least 2 years experience in one or more of the following:
+	<li>At least 5 years experience in one or more of the following:
 		<ul>
 			<li>Intrusion analysis</li>
 			<li>Cyber threat hunting</li>
@@ -48,9 +48,8 @@
 <p>&nbsp;</p>
 <p><strong>Bonus Points</strong></p>
 <ul>
-	<li>Extensive knowledge of an advanced persistent threat (APT) group(s)</li>
+	<li>Expert knowledge of at least one APT group</li>
 	<li>Experience in netflow analysis</li>
-	<li>Experience analyzing, tracking and defending against cyber threat campaigns</li>
 	<li>Familiarity with regular expressions and their practical application in tracking malicious activity</li>
 	<li>Working knowledge of SQL and devising SQL queries</li>
 	<li>Experience with detection development using YARA</li>
