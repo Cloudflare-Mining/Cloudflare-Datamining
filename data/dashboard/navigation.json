@@ -171,26 +171,6 @@
 			"testId": "sidenav-r2-link"
 		},
 		{
-			"title": "navigation.account.firewall_rulesets",
-			"url": "/rulesets",
-			"iconType": "shield",
-			"pages": [
-				{
-					"title": "navigation.account.firewall_rulesets.ddos",
-					"url": "/rulesets/ddos"
-				},
-				{
-					"title": "navigation.account.firewall_rulesets.application_firewall",
-					"url": "/rulesets/waf"
-				},
-				{
-					"title": "navigation.account.firewall_rulesets.magic_firewall",
-					"url": "/rulesets/magic_firewall",
-					"testId": "account-magic-firewall-rules"
-				}
-			]
-		},
-		{
 			"title": "navigation.account.stream",
 			"url": "/stream",
 			"iconType": "stream",
@@ -269,6 +249,33 @@
 				{
 					"title": "navigation.account.security_center.cfone",
 					"url": "/security-center/cloudforce-one"
+				}
+			]
+		},
+		{
+			"title": "navigation.account.firewall_rulesets",
+			"url": "/application-security",
+			"iconType": "cloudflare-security-application",
+			"pages": [
+				{
+					"title": "navigation.account.firewall_rulesets.application_firewall",
+					"url": "/application-security/waf"
+				}
+			]
+		},
+		{
+			"title": "navigation.account.network_security",
+			"url": "/network-security",
+			"iconType": "cloudflare-security-network",
+			"pages": [
+				{
+					"title": "navigation.account.firewall_rulesets.ddos",
+					"url": "/network-security/ddos"
+				},
+				{
+					"title": "navigation.account.firewall_rulesets.magic_firewall",
+					"url": "/network-security/magic_firewall",
+					"testId": "account-magic-firewall-rules"
 				}
 			]
 		},

@@ -186,34 +186,6 @@ const navigation = {
 			return f(m)
 		}
 	}, {
-		title: "navigation.account.firewall_rulesets",
-		url: "/rulesets",
-		iconType: "shield",
-		hasPermission: function(m) {
-			return f(m) && !!(se(m) || _(m))
-		},
-		pages: [{
-			title: "navigation.account.firewall_rulesets.ddos",
-			url: "/rulesets/ddos",
-			hasPermission: function(m) {
-				var V = !!U(m) && !!Y(m);
-				return !!u(m) || V
-			}
-		}, {
-			title: "navigation.account.firewall_rulesets.application_firewall",
-			url: "/rulesets/waf",
-			hasPermission: function(m) {
-				return !!se(m)
-			}
-		}, {
-			title: "navigation.account.firewall_rulesets.magic_firewall",
-			url: "/rulesets/magic_firewall",
-			testId: "account-magic-firewall-rules",
-			hasPermission: function(m) {
-				return !!_(m)
-			}
-		}]
-	}, {
 		title: "navigation.account.stream",
 		url: "/stream",
 		iconType: "stream",
@@ -316,6 +288,42 @@ const navigation = {
 			url: "/security-center/cloudforce-one",
 			hasPermission: function(m) {
 				return f(m) && (0, b.sK)(m)
+			}
+		}]
+	}, {
+		title: "navigation.account.firewall_rulesets",
+		url: "/application-security",
+		iconType: "cloudflare-security-application",
+		hasPermission: function(m) {
+			return f(m) && !!le(m)
+		},
+		pages: [{
+			title: "navigation.account.firewall_rulesets.application_firewall",
+			url: "/application-security/waf",
+			hasPermission: function(m) {
+				return !!le(m)
+			}
+		}]
+	}, {
+		title: "navigation.account.network_security",
+		url: "/network-security",
+		iconType: "cloudflare-security-network",
+		hasPermission: function(m) {
+			return f(m) && !!_(m)
+		},
+		pages: [{
+			title: "navigation.account.firewall_rulesets.ddos",
+			url: "/network-security/ddos",
+			hasPermission: function(m) {
+				var V = !!U(m) && !!Y(m);
+				return !!u(m) || V
+			}
+		}, {
+			title: "navigation.account.firewall_rulesets.magic_firewall",
+			url: "/network-security/magic_firewall",
+			testId: "account-magic-firewall-rules",
+			hasPermission: function(m) {
+				return !!_(m)
 			}
 		}]
 	}, {
