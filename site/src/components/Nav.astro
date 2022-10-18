@@ -78,63 +78,67 @@ if (currentPath.charAt(-1) === '/') {
 const {usage} = Astro.props;
 ---
 
-<nav aria-label="Sidebar" class="sticky top-4 divide-y divide-gray-300">
-	<div class="space-y-1">
-		{navItems.map((item, index) => {
-			if (item.submenu) {
-				return (
-					<div class="space-y-1">
-						<button id={`${usage}-submenu-${index}`} type="button" class="text-gray-700 hover:bg-gray-50 group w-full flex items-center pr-2 py-2 text-left text-sm font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" aria-controls="sub-menu-2" aria-expanded="false">
-							<!-- Expanded: "text-gray-400 rotate-90", Collapsed: "text-gray-300" -->
-							<svg id={`${usage}-submenu-${index}-icon`} class={[
-									currentPath.startsWith(item.path) ? 'text-gray-400 rotate-90' : 'text-gray-300', "mr-2 h-5 w-5 flex-shrink-0 transform transition-colors duration-150 ease-in-out",
-								].join(' ').trim()} viewBox="0 0 20 20" aria-hidden="true">
-								<path d="M6 6L14 10L6 14V6Z" fill="currentColor" />
-							</svg>
-							<span class="truncate">{item.label}</span>
-						</button>
-						<div id={`${usage}-submenu-${index}-menu`} class={currentPath.startsWith(item.path) ? '' : 'hidden'}>
-							{item.submenu.map((submenu) => {
-								return (<a
-									href={`${item.path}${submenu.path}/`}
-									class={[
-											currentPath == `${item.path}${submenu.path}/` ? 'bg-gray-200 text-gray-900' : 'text-gray-700 hover:bg-gray-50',
-											"group flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md",
-										].join(' ').trim()}
-										>
-									<span class="truncate">{submenu.label}</span>
-								</a>)
-							})}
+<nav aria-label="Sidebar" class="sticky top-4">
+	<div class="divide-y divide-gray-300">
+		<div class="space-y-1">
+			{navItems.map((item, index) => {
+				if (item.submenu) {
+					return (
+						<div class="space-y-1">
+							<button id={`${usage}-submenu-${index}`} type="button" class="text-gray-700 hover:bg-gray-50 dark:text-gray-200 dark:hover:bg-gray-700 group w-full flex items-center pr-2 py-2 text-left text-sm font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500" aria-controls="sub-menu-2" aria-expanded="false">
+								<svg id={`${usage}-submenu-${index}-icon`} class={[
+										currentPath.startsWith(item.path) ? 'text-gray-300 dark:text-gray-500 rotate-90' : 'text-gray-300 dark:text-gray-500', "mr-2 h-5 w-5 flex-shrink-0 transform transition-colors duration-150 ease-in-out",
+									].join(' ').trim()} viewBox="0 0 20 20" aria-hidden="true">
+									<path d="M6 6L14 10L6 14V6Z" fill="currentColor" />
+								</svg>
+								<span class="truncate">{item.label}</span>
+							</button>
+							<div id={`${usage}-submenu-${index}-menu`} class={currentPath.startsWith(item.path) ? '' : 'hidden'}>
+								{item.submenu.map((submenu) => {
+									return (<a
+										href={`${item.path}${submenu.path}/`}
+										class={[
+												currentPath == `${item.path}${submenu.path}/` ? 'bg-gray-200 text-gray-900 dark:text-gray-200 dark:bg-gray-700' : 'text-gray-700 hover:bg-gray-50 dark:text-gray-200 dark:hover:bg-gray-700',
+												"group flex items-center pl-10 pr-2 py-2 text-sm font-medium rounded-md",
+											].join(' ').trim()}
+											>
+										<span class="truncate">{submenu.label}</span>
+									</a>)
+								})}
+							</div>
 						</div>
-					</div>
-				)
-			} else {
-				return (<a
-					href={`${item.path}/`}
-					class={[
-							currentPath == `${item.path}/` ? 'bg-gray-200 text-gray-900' : 'text-gray-700 hover:bg-gray-50',
-							"group flex items-center pl-7 pr-2 py-2 text-sm font-medium rounded-md",
-						].join(' ').trim()}
-				>
-					<span class="truncate">{item.label}</span>
-				</a>)
-			}
-		})}
+					)
+				} else {
+					return (<a
+						href={`${item.path}/`}
+						class={[
+								currentPath == `${item.path}/` ? 'bg-gray-200 text-gray-900 dark:bg-gray-700 dark:text-gray-200' : 'text-gray-700 hover:bg-gray-50 dark:text-gray-100 dark:hover:bg-gray-700',
+								"group flex items-center pl-7 pr-2 py-2 text-sm font-medium rounded-md",
+							].join(' ').trim()}
+					>
+						<span class="truncate">{item.label}</span>
+					</a>)
+				}
+			})}
+		</div>
+		<div class="mt-4 pt-4">
+			<a href="https://discord.gg/Z94Hn6qVDm" target="_blank" class="text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700 group flex items-center px-2 py-2 text-sm font-medium rounded-md space-x-2">
+				<span class="truncate">Discord</span>
+				<svg class="fill-gray-600 dark:fill-gray-200 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+					<path d="M272 64C263.2 64 256 56.84 256 48C256 39.16 263.2 32 272 32H432C440.8 32 448 39.16 448 48V208C448 216.8 440.8 224 432 224C423.2 224 416 216.8 416 208V86.63L187.3 315.3C181.1 321.6 170.9 321.6 164.7 315.3C158.4 309.1 158.4 298.9 164.7 292.7L393.4 64H272zM0 112C0 85.49 21.49 64 48 64H176C184.8 64 192 71.16 192 80C192 88.84 184.8 96 176 96H48C39.16 96 32 103.2 32 112V432C32 440.8 39.16 448 48 448H368C376.8 448 384 440.8 384 432V304C384 295.2 391.2 288 400 288C408.8 288 416 295.2 416 304V432C416 458.5 394.5 480 368 480H48C21.49 480 0 458.5 0 432V112z"/>
+				</svg>
+			</a>
+			<a href="https://github.com/Cloudflare-Mining/Cloudflare-Datamining" target="_blank" class="text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700 group flex items-center px-2 py-2 text-sm font-medium rounded-md space-x-2">
+				<span class="truncate">GitHub</span>
+				<svg class="fill-gray-600 dark:fill-gray-200 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+					<path d="M272 64C263.2 64 256 56.84 256 48C256 39.16 263.2 32 272 32H432C440.8 32 448 39.16 448 48V208C448 216.8 440.8 224 432 224C423.2 224 416 216.8 416 208V86.63L187.3 315.3C181.1 321.6 170.9 321.6 164.7 315.3C158.4 309.1 158.4 298.9 164.7 292.7L393.4 64H272zM0 112C0 85.49 21.49 64 48 64H176C184.8 64 192 71.16 192 80C192 88.84 184.8 96 176 96H48C39.16 96 32 103.2 32 112V432C32 440.8 39.16 448 48 448H368C376.8 448 384 440.8 384 432V304C384 295.2 391.2 288 400 288C408.8 288 416 295.2 416 304V432C416 458.5 394.5 480 368 480H48C21.49 480 0 458.5 0 432V112z"/>
+				</svg>
+			</a>
+		</div>
 	</div>
-	<div class="mt-4 pt-4">
-		<a href="https://discord.gg/Z94Hn6qVDm" target="_blank" class="text-gray-700 hover:bg-gray-50 group flex items-center px-2 py-2 text-sm font-medium rounded-md space-x-2">
-			<span class="truncate">Discord</span>
-			<svg class="fill-gray-600 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-				<path d="M272 64C263.2 64 256 56.84 256 48C256 39.16 263.2 32 272 32H432C440.8 32 448 39.16 448 48V208C448 216.8 440.8 224 432 224C423.2 224 416 216.8 416 208V86.63L187.3 315.3C181.1 321.6 170.9 321.6 164.7 315.3C158.4 309.1 158.4 298.9 164.7 292.7L393.4 64H272zM0 112C0 85.49 21.49 64 48 64H176C184.8 64 192 71.16 192 80C192 88.84 184.8 96 176 96H48C39.16 96 32 103.2 32 112V432C32 440.8 39.16 448 48 448H368C376.8 448 384 440.8 384 432V304C384 295.2 391.2 288 400 288C408.8 288 416 295.2 416 304V432C416 458.5 394.5 480 368 480H48C21.49 480 0 458.5 0 432V112z"/>
-			</svg>
-		</a>
-		<a href="https://github.com/Cloudflare-Mining/Cloudflare-Datamining" target="_blank" class="text-gray-700 hover:bg-gray-50 group flex items-center px-2 py-2 text-sm font-medium rounded-md space-x-2">
-			<span class="truncate">GitHub</span>
-			<svg class="fill-gray-600 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-				<path d="M272 64C263.2 64 256 56.84 256 48C256 39.16 263.2 32 272 32H432C440.8 32 448 39.16 448 48V208C448 216.8 440.8 224 432 224C423.2 224 416 216.8 416 208V86.63L187.3 315.3C181.1 321.6 170.9 321.6 164.7 315.3C158.4 309.1 158.4 298.9 164.7 292.7L393.4 64H272zM0 112C0 85.49 21.49 64 48 64H176C184.8 64 192 71.16 192 80C192 88.84 184.8 96 176 96H48C39.16 96 32 103.2 32 112V432C32 440.8 39.16 448 48 448H368C376.8 448 384 440.8 384 432V304C384 295.2 391.2 288 400 288C408.8 288 416 295.2 416 304V432C416 458.5 394.5 480 368 480H48C21.49 480 0 458.5 0 432V112z"/>
-			</svg>
-		</a>
-	</div>
+	<p class="mt-4 pt-4 lg:text-xs max-w-prose mx-auto">
+		All data listed on this website is copyright Cloudflare, Inc. unless otherwise stated. I assert no claims to its accuracy or ownership, and am happy to remove anything upon request. I only do this because I love Cloudflare. 🧡
+	</p>
 </nav>
 
 <script>
