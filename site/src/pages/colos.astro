@@ -4,6 +4,7 @@ import Table from '../components/Table.astro';
 
 import {airports} from '../airportsWithLocations.js';
 import {types} from '../coloTypes';
+import MainHeading from '../components/MainHeading.astro';
 
 const importFiles = await Astro.glob('../../../data/other/colos-id-map.json');
 const colos = importFiles[0].default;
@@ -24,19 +25,17 @@ for(const coloId in colos){
 
 ---
 <Layout title="Colos - Cloudflare Datamining" description="A lot of Cloudflare locations and types with their current status.">
-	<main class="m-auto max-w-5xl p-4">
-		<h2 class="mb-2 text-xl">Colos</h2>
-		<Table
-			headers = {["ID", "Colo", "Type", "Status"]}
-			widths={["w-[30%]", "w-[30%]", "w-[30%]", "w-[10%]"]}
-			data = {Object.keys(colos).map((id:string) => [
-				id,
-				colos[id],
-				types[colos[id]],
-				'loading...',
-			])}
-		></Table>
-	</main>
+	<MainHeading title="Colos" />
+	<Table
+		headers = {["ID", "Colo", "Type", "Status"]}
+		widths={["w-[30%]", "w-[30%]", "w-[30%]", "w-[10%]"]}
+		data = {Object.keys(colos).map((id:string) => [
+			id,
+			colos[id],
+			types[colos[id]],
+			'loading...',
+		])}
+	></Table>
 </Layout>
 
 <script>
@@ -78,17 +77,17 @@ async function getColosStatus(){
 			spanElement = document.createElement('span');
 			status.append(spanElement);
 		}
-		spanElement.classList.add('w-4', 'h-4', 'inline-block', 'rounded-full', 'mr-2');
+		spanElement.classList.add('font-sans', 'inline-flex', 'items-center', 'rounded-full', 'px-2.5', 'py-0.5', 'text-xs', 'font-medium');
 		const online = coloStatus[coloName] === true;
 		if(online){
-			spanElement.classList.add('bg-green-500');
-			spanElement.title = 'Online';
+			spanElement.classList.add('bg-green-100', 'dark:bg-green-800', 'text-green-800', 'dark:text-green-100');
+			spanElement.innerText = 'Online';
 		}else if(type === 'JDC'){
-			spanElement.classList.add('bg-gray-500');
-			spanElement.title = 'China network. Unknown status';
+			spanElement.classList.add('bg-gray-100', 'dark:bg-gray-800', 'text-gray-800', 'dark:text-gray-100');
+			spanElement.innerText = 'China';
 		}else{
-			spanElement.classList.add('bg-red-500');
-			spanElement.title = 'Offline or non-responsive';
+			spanElement.classList.add('bg-red-100', 'dark:bg-red-800', 'text-red-800', 'dark:text-red-100');
+			spanElement.innerText = 'Offline';
 		}
 	}
 }

@@ -1,5 +1,6 @@
 ---
 import Header from '../components/Header.astro';
+import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 export interface Props {
 	title: string;
@@ -10,19 +11,29 @@ const {title, description} = Astro.props;
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-full bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-200">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width">
-		<meta name="generator" content={Astro.generator}>
-		<meta name="color-scheme" content="dark light">
-		<meta name="theme-color" content="#1e40af">
+		<!-- <meta name="generator" content={Astro.generator}> -->
+		<!-- <meta name="theme-color" content="#1e40af"> -->
 		{description && <meta name="description" content={description}/>}
 		<title>{title}</title>
 	</head>
-	<body>
-		<Header></Header>
-		<slot />
-		<Footer></Footer>
+	<body class="h-full">
+		<div class="min-h-full">
+			<Header />
+
+			<div class="py-10">
+				<div class="mx-auto max-w-3xl px-4 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-12 lg:gap-8 lg:px-8">
+					<div class="hidden lg:col-span-3 lg:block xl:col-span-2">
+						<Nav usage="desktop" />
+					</div>
+					<main class="lg:col-span-9 xl:col-span-10">
+						<slot />
+					</main>
+				</div>
+			</div>
+		</div>
 	</body>
 </html>

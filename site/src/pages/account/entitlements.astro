@@ -1,9 +1,9 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import FlagsTable from '../components/FlagsTable.astro';
-import {sortObjectByKeys} from '../utils.js';
+import Layout from '../../layouts/Layout.astro';
+import FlagsTable from '../../components/FlagsTable.astro';
+import {sortObjectByKeys} from '../../utils.js';
 
-const importFiles = await Astro.glob('../../../data/account/account_entitlements.json');
+const importFiles = await Astro.glob('../../../../data/account/account_entitlements.json');
 const rawCategories:any = {};
 for(const entitlement of importFiles[0].default){
 	const category = rawCategories[entitlement.feature.feature_set] ?? {};
@@ -14,8 +14,5 @@ const categories = sortObjectByKeys(rawCategories);
 
 ---
 <Layout title="Account Entitlements - Cloudflare Datamining" description="Cloudflare default account entitlements">
-	<main class="m-auto max-w-5xl p-4">
-		<FlagsTable title="Account Entitlements" data={categories}></FlagsTable>
-	</main>
+	<FlagsTable title="Account Entitlements" data={categories}></FlagsTable>
 </Layout>
-
