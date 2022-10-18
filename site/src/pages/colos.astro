@@ -81,13 +81,13 @@ async function getColosStatus(){
 		const online = coloStatus[coloName] === true;
 		if(online){
 			spanElement.classList.add('bg-green-100', 'dark:bg-green-800', 'text-green-800', 'dark:text-green-100');
-			spanElement.innerText = 'Online';
+			spanElement.textContent = 'Online';
 		}else if(type === 'JDC'){
 			spanElement.classList.add('bg-gray-100', 'dark:bg-gray-800', 'text-gray-800', 'dark:text-gray-100');
-			spanElement.innerText = 'China';
+			spanElement.textContent = 'China';
 		}else{
 			spanElement.classList.add('bg-red-100', 'dark:bg-red-800', 'text-red-800', 'dark:text-red-100');
-			spanElement.innerText = 'Offline';
+			spanElement.textContent = 'Offline';
 		}
 	}
 }

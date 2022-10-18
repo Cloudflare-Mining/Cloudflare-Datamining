@@ -4,8 +4,8 @@ export interface Props {
 	subcategory?: string;
 }
 
-const {category, subcategory} = Astro.props
+const {category, subcategory} = Astro.props;
 ---
 
-<h3 class="text-xl font-semibold" id={category}><a href={`#${category}`}>{category}</a></h3>
+<h3 class="break-all text-xl font-semibold" id={category}><a href={`#${category}`}>{category}</a></h3>
 {subcategory && <h4>{subcategory}</h4>}
