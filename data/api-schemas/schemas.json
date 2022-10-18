@@ -87997,6 +87997,472 @@
 				}
 			}
 		},
+		"/zones/{zone_identifier}/waiting_rooms/{waiting_room_id}/rules": {
+			"get": {
+				"summary": "List Waiting Room Rules",
+				"description": "Lists rules for a waiting room.",
+				"parameters": [
+					{
+						"name": "waiting_room_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"example": "699d98642c564d2e855e9661899b7252"
+						}
+					},
+					{
+						"name": "zone_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1available_plans~1%7Bplan_identifier%7D/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "List Waiting Room Rules response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user~1tokens~1permission_groups/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"id": {
+																"description": "The ID of the rule.",
+																"example": "25756b2dfe6e378a06b033b670413757",
+																"type": "string"
+															},
+															"version": {
+																"description": "The version of the rule.",
+																"example": "1",
+																"type": "string"
+															},
+															"action": {
+																"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1waiting_rooms~1%7Bwaiting_room_id%7D~1rules/post/requestBody/content/application~1json/schema/properties/action"
+															},
+															"expression": {
+																"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1waiting_rooms~1%7Bwaiting_room_id%7D~1rules/post/requestBody/content/application~1json/schema/properties/expression"
+															},
+															"description": {
+																"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1waiting_rooms~1%7Bwaiting_room_id%7D~1rules/post/requestBody/content/application~1json/schema/properties/description"
+															},
+															"enabled": {
+																"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1waiting_rooms~1%7Bwaiting_room_id%7D~1rules/post/requestBody/content/application~1json/schema/properties/enabled"
+															},
+															"last_updated": {
+																"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1ssl~1recommendation/get/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/modified_on"
+															}
+														}
+													}
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPlanAvailability": {
+					"free": false,
+					"pro": false,
+					"business": false,
+					"enterprise": true
+				}
+			},
+			"put": {
+				"summary": "Replace Waiting Room Rules",
+				"description": "Only available for the Waiting Room Advanced subscription. Replaces all rules for a waiting room.",
+				"parameters": [
+					{
+						"name": "waiting_room_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1waiting_rooms~1%7Bwaiting_room_id%7D~1rules/get/parameters/0/schema"
+						}
+					},
+					{
+						"name": "zone_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1waiting_rooms~1%7Bwaiting_room_id%7D~1rules/get/parameters/1/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Replace Waiting Room Rules response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1waiting_rooms~1%7Bwaiting_room_id%7D~1rules/get/responses/200/content/application~1json/schema"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPlanAvailability": {
+					"free": false,
+					"pro": false,
+					"business": false,
+					"enterprise": true
+				},
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1waiting_rooms~1%7Bwaiting_room_id%7D~1rules/post/requestBody/content/application~1json/schema"
+								}
+							}
+						}
+					}
+				}
+			},
+			"post": {
+				"summary": "Create Waiting Room Rule",
+				"description": "Only available for the Waiting Room Advanced subscription. Creates a rule for a waiting room.",
+				"parameters": [
+					{
+						"name": "waiting_room_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1waiting_rooms~1%7Bwaiting_room_id%7D~1rules/get/parameters/0/schema"
+						}
+					},
+					{
+						"name": "zone_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1waiting_rooms~1%7Bwaiting_room_id%7D~1rules/get/parameters/1/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Create Waiting Room Rule response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1waiting_rooms~1%7Bwaiting_room_id%7D~1rules/get/responses/200/content/application~1json/schema"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPlanAvailability": {
+					"free": false,
+					"pro": false,
+					"business": false,
+					"enterprise": true
+				},
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"action": {
+										"description": "The action to take when the expression matches.",
+										"type": "string",
+										"example": "bypass_waiting_room",
+										"enum": [
+											"bypass_waiting_room"
+										]
+									},
+									"expression": {
+										"description": "Criteria defining when there is a match for the current rule.",
+										"example": "ip.src in {10.20.30.40}",
+										"type": "string"
+									},
+									"description": {
+										"description": "The description of the rule.",
+										"example": "allow all traffic from 10.20.30.40",
+										"type": "string",
+										"default": ""
+									},
+									"enabled": {
+										"description": "When set to true, the rule is enabled.",
+										"example": true,
+										"type": "boolean",
+										"default": true
+									}
+								},
+								"required": [
+									"action",
+									"expression"
+								]
+							}
+						}
+					}
+				}
+			}
+		},
+		"/zones/{zone_identifier}/waiting_rooms/{waiting_room_id}/rules/{rule_id}": {
+			"patch": {
+				"summary": "Patch Waiting Room Rule",
+				"description": "Patches a rule for a waiting room.",
+				"parameters": [
+					{
+						"name": "rule_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"description": "The ID of the rule.",
+							"example": "25756b2dfe6e378a06b033b670413757",
+							"type": "string"
+						}
+					},
+					{
+						"name": "waiting_room_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"example": "699d98642c564d2e855e9661899b7252"
+						}
+					},
+					{
+						"name": "zone_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1available_plans~1%7Bplan_identifier%7D/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Patch Waiting Room Rule response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user~1tokens~1permission_groups/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"id": {
+																"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1waiting_rooms~1%7Bwaiting_room_id%7D~1rules~1%7Brule_id%7D/patch/parameters/0/schema"
+															},
+															"version": {
+																"description": "The version of the rule.",
+																"example": "1",
+																"type": "string"
+															},
+															"action": {
+																"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1waiting_rooms~1%7Bwaiting_room_id%7D~1rules~1%7Brule_id%7D/patch/requestBody/content/application~1json/schema/properties/action"
+															},
+															"expression": {
+																"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1waiting_rooms~1%7Bwaiting_room_id%7D~1rules~1%7Brule_id%7D/patch/requestBody/content/application~1json/schema/properties/expression"
+															},
+															"description": {
+																"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1waiting_rooms~1%7Bwaiting_room_id%7D~1rules~1%7Brule_id%7D/patch/requestBody/content/application~1json/schema/properties/description"
+															},
+															"enabled": {
+																"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1waiting_rooms~1%7Bwaiting_room_id%7D~1rules~1%7Brule_id%7D/patch/requestBody/content/application~1json/schema/properties/enabled"
+															},
+															"last_updated": {
+																"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1ssl~1recommendation/get/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/modified_on"
+															}
+														}
+													}
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPlanAvailability": {
+					"free": false,
+					"pro": false,
+					"business": false,
+					"enterprise": true
+				},
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"action": {
+										"description": "The action to take when the expression matches.",
+										"type": "string",
+										"example": "bypass_waiting_room",
+										"enum": [
+											"bypass_waiting_room"
+										]
+									},
+									"expression": {
+										"description": "Criteria defining when there is a match for the current rule.",
+										"example": "ip.src in {10.20.30.40}",
+										"type": "string"
+									},
+									"description": {
+										"description": "The description of the rule.",
+										"example": "allow all traffic from 10.20.30.40",
+										"type": "string",
+										"default": ""
+									},
+									"enabled": {
+										"description": "When set to true, the rule is enabled.",
+										"example": true,
+										"type": "boolean",
+										"default": true
+									},
+									"position": {
+										"description": "Reorder the position of a rule",
+										"type": "object",
+										"oneOf": [
+											{
+												"type": "object",
+												"properties": {
+													"index": {
+														"type": "integer",
+														"description": " Places the rule in the exact position specified by the integer number <POSITION_NUMBER>. Position numbers start with 1. Existing rules in the ruleset from the specified position number onward are shifted one position (no rule is overwritten)."
+													}
+												}
+											},
+											{
+												"type": "object",
+												"properties": {
+													"before": {
+														"type": "string",
+														"description": " Places the rule before rule <RULE_ID>. Use this argument with an empty rule ID value (\"\") to set the rule as the first rule in the ruleset.",
+														"example": "<RULE_ID>"
+													}
+												}
+											},
+											{
+												"type": "object",
+												"properties": {
+													"after": {
+														"type": "string",
+														"description": "Places the rule after rule <RULE_ID>. Use this argument with an empty rule ID value (\"\") to set the rule as the last rule in the ruleset.",
+														"example": "<RULE_ID>"
+													}
+												}
+											}
+										]
+									}
+								},
+								"required": [
+									"action",
+									"expression"
+								]
+							}
+						}
+					}
+				}
+			},
+			"delete": {
+				"summary": "Delete Waiting Room Rule",
+				"description": "Deletes a rule for a waiting room.",
+				"parameters": [
+					{
+						"name": "rule_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1waiting_rooms~1%7Bwaiting_room_id%7D~1rules~1%7Brule_id%7D/patch/parameters/0/schema"
+						}
+					},
+					{
+						"name": "waiting_room_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1waiting_rooms~1%7Bwaiting_room_id%7D~1rules~1%7Brule_id%7D/patch/parameters/1/schema"
+						}
+					},
+					{
+						"name": "zone_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1waiting_rooms~1%7Bwaiting_room_id%7D~1rules~1%7Brule_id%7D/patch/parameters/2/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Delete Waiting Room Rule response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1waiting_rooms~1%7Bwaiting_room_id%7D~1rules~1%7Brule_id%7D/patch/responses/200/content/application~1json/schema"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPlanAvailability": {
+					"free": false,
+					"pro": false,
+					"business": false,
+					"enterprise": true
+				},
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {}
+					}
+				}
+			}
+		},
 		"/accounts/{account_identifier}/registrar/domains": {
 			"post": {
 				"summary": "List domains",
