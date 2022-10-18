@@ -1,21 +1,19 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Table from '../components/Table.astro';
+import MainHeading from '../components/MainHeading.astro';
 
-const importFiles = await Astro.glob('../../../data/gates/dashboard.json');
-const gates = importFiles[0].default;
+import gates from '../../../data/gates/dashboard.json';
 
 ---
 <Layout title="Gates - Cloudflare Datamining" description="List of Cloudflare Gates for feature rollouts, A/B testing, etc.">
-	<main class="m-auto max-w-5xl p-4">
-		<h2 class="mb-2 text-xl">Gates</h2>
-		<Table
-			headers = {["ID", "Enabled", "Branches"]}
-			data = {Object.keys(gates).map((id:string) => [
-				id,
-				String(gates[id].enabled),
-				JSON.stringify(gates[id].branches),
-			])}
-		></Table>
-	</main>
+	<MainHeading title="Gates" />
+	<Table
+		headers = {["ID", "Enabled", "Branches"]}
+		data = {Object.keys(gates).map((id:string) => [
+			id,
+			String(gates[id].enabled),
+			JSON.stringify(gates[id].branches),
+		])}
+	></Table>
 </Layout>
