@@ -8,12 +8,10 @@
 <p><strong>About the Department:</strong></p>
 <p><span style="font-weight: 400;">Cloudflare’s IT/Enterprise Engineering, Planning and Governance Team is a crucial pillar of the CIO Organization. It manages programs and initiatives across IT Infrastructure, Enterprise Systems, and Enterprise Engineering to enable Cloudflare internal teams to operate most efficiently. The team establishes end-to-end governance principles and frameworks, leads business partnering, drives program planning, execution and demand capacity management.&nbsp;</span></p>
 <p><strong>About the role:</strong></p>
-<p><span style="font-weight: 400;">We are looking for a highly skilled and self-motivated Technical Program Manager with excellent communication skills who thrives on solving challenges to join our team. You will work with a team of talented engineers who are building innovative products that touch billions of web requests each day. Your main role will be to work with the team to plan, manage, execute, and track programs to successful completion. Our large programs span over multiple quarters involving Engineering, various Business Verticals and Technical Operations teams.&nbsp;</span></p>
-<p>&nbsp;</p>
+<p><span style="font-weight: 400;">We are looking for a highly skilled and self-motivated Technical Program Manager, IT/Enterprise Engineering with excellent communication skills who thrives on solving challenges to join our team. You will work with a team of talented engineers who are building innovative products that touch billions of web requests each day. Your main role will be to work with the team to plan, manage, execute, and track programs to successful completion. Our large programs span over multiple quarters involving Engineering, various Business Verticals and Technical Operations teams.&nbsp;</span></p>
 <p><span style="font-weight: 400;">You bring a passion for matching up business needs with building technically innovative solutions, and excel at shifting between the two—understanding how big-picture goals inform technical details, and vice-versa. You are able to implement and drive processes and persistently make progress.&nbsp; The ideal candidate is flexible and comfortable in playing multiple roles (diplomat, moderator, negotiator, reporter, coach, etc.), leading initiatives, and is able to adapt to changing situations. Combined with technical expertise, you have the ability to build trust and strong partnership with counterparts in Engineering, Development, Operations, and Business teams.</span></p>
 <p><strong>Responsibilities:</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Establishes and maintains relationships with various business teams, and drives various highly cross-functional platform and business initiatives.</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Manages full life-cycle program development including requirements, design, development, testing and deployment.</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Establishes and maintains relationships with vendors and internal customers, </span><span style="font-weight: 400;">and drives IT vendor engagements and internal customer deliveries.</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Works with partners on defining and controlling program scope, creating, and executing to committed schedules, as well as maintaining and reporting out program deliverables across the multiple teams and business units.</span></li>
@@ -32,50 +30,21 @@
 </ul>
 <p><strong>Examples of desirable skills, knowledge, and experience:</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Track record of delivering technical programs in a highly technical dispersed multi-team environment</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">BA/BS in Business Administration or Computer Science, or an equivalent combination of education and experience</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">10+ years experience in program management</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">7+ years proven experience and proven track record of coordinating project delivery within fast-growing or large IT Infrastructure experience and industry concepts.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Track record of delivering technical programs, projects, and products in a highly technical dispersed multi-team environment.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">BA/BS in Business Administration or Computer Science, or an equivalent combination of education and experience.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">7+ years experience in project and program management.&nbsp;</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">5+ years proven experience and proven track record of coordinating project delivery within fast-growing or large IT Business Systems experience and industry concepts.</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong competency with program management tools (Confluence, JIRA, Smartsheets, etc.) and various methodologies (Agile, Waterfall, Scrum, etc).&nbsp;&nbsp;</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Highly motivated, self-driven, and able to deal well with ambiguity.</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">The ability to set agendas and facilitate meetings, while focusing on critical path discussion topics and necessary decisions</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">The ability to set agendas and facilitate meetings, while focusing on critical path discussion topics and necessary decisions.</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Excellent technical, problem-solving and partnering skills</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Proven ability to clearly and concisely communicate with an executive audience in both written and verbal communications</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong analytical skills and the ability to research issues, make evaluations on problems and recommend viable solutions</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Strong analytical skills and the ability to research issues, make evaluations on problems and recommend viable solutions.</span></li>
 </ul>
 <p><strong>Bonus Points</strong></p>
 <ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Proven working experience as a program manager in the technology sector, preferably with an international consulting firm.</span></li>
+	<li style="font-weight: 400;"><span style="font-weight: 400;">Proven working experience as a program manager in the technology sector, preferably with an IT or Corporate Technology department.</span></li>
 	<li style="font-weight: 400;"><span style="font-weight: 400;">Thrive in a fast-paced iterative engineering environment, and embrace creating paths where none existed before</span></li>
-</ul>
-<p><strong>Compensation</strong></p>
-<p><span style="font-weight: 400;">Compensation may be adjusted depending on work location. For Colorado-based hires: Estimated annual salary of $<span data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:115000}" data-sheets-userformat="{&quot;2&quot;:515,&quot;3&quot;:{&quot;1&quot;:0},&quot;4&quot;:{&quot;1&quot;:2,&quot;2&quot;:15724527},&quot;12&quot;:0}">115,000</span> - $<span data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:173000}" data-sheets-userformat="{&quot;2&quot;:515,&quot;3&quot;:{&quot;1&quot;:0},&quot;4&quot;:{&quot;1&quot;:2,&quot;2&quot;:15724527},&quot;12&quot;:0}">173,000</span>.</span></p>
-<p><strong>Equity</strong></p>
-<p><span style="font-weight: 400;">This role is eligible to participate in Cloudflare’s equity plan.</span></p>
-<p><strong>Benefits</strong></p>
-<p><span style="font-weight: 400;">Cloudflare offers a complete package of benefits and programs to support you and your family.&nbsp; Our benefits programs can help you pay health care expenses, support caregiving, build capital for the future and make life a little easier and fun!&nbsp; The below is a description of our benefits for employees in the United States, and benefits may vary for employees based outside the U.S.</span></p>
-<p><strong>Health &amp; Welfare Benefits</strong></p>
-<ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Medical/Rx Insurance</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Dental Insurance</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Vision Insurance</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Flexible Spending Accounts</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Commuter Spending Accounts</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Fertility &amp; Family Forming Benefits</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">On-demand mental health support and Employee Assistance Program</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Global Travel Medical Insurance</span></li>
-</ul>
-<p><strong>Financial Benefits</strong></p>
-<ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Short and Long Term Disability Insurance</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Life &amp; Accident Insurance</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">401(k) Retirement Savings Plan</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Employee Stock Participation Plan</span></li>
-</ul>
-<p><strong>Time Off</strong></p>
-<ul>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Flexible paid time off covering vacation and sick leave</span></li>
-	<li style="font-weight: 400;"><span style="font-weight: 400;">Leave programs, including parental, pregnancy health, medical, and bereavement leave</span></li>
 </ul>
 <div class="content-conclusion">
 	<p><strong>What Makes Cloudflare Special?</strong></p>
