@@ -57506,8 +57506,8 @@
 		},
 		"/zones/{zone_id}/page_shield": {
 			"get": {
-				"summary": "Get Page Shield status",
-				"description": "Fetches the Page Shield status.",
+				"summary": "Get Page Shield settings",
+				"description": "Fetches the Page Shield settings.",
 				"parameters": [
 					{
 						"name": "zone_id",
@@ -57520,7 +57520,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Get Page Shield status response",
+						"description": "Get Page Shield settings response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -57544,12 +57544,18 @@
 												"result": {
 													"properties": {
 														"enabled": {
-															"description": "When true, indicates that Page Shield is enabled.",
-															"type": "boolean"
+															"$ref": "#/paths/~1zones~1%7Bzone_id%7D~1page_shield/put/requestBody/content/application~1json/schema/properties/enabled"
 														},
 														"updated_at": {
 															"description": "The timestamp of when Page Shield was last updated.",
-															"type": "string"
+															"type": "string",
+															"example": "2022-10-12T17:56:52.083582+01:00"
+														},
+														"use_cloudflare_reporting_endpoint": {
+															"$ref": "#/paths/~1zones~1%7Bzone_id%7D~1page_shield/put/requestBody/content/application~1json/schema/properties/use_cloudflare_reporting_endpoint"
+														},
+														"use_connection_url_path": {
+															"$ref": "#/paths/~1zones~1%7Bzone_id%7D~1page_shield/put/requestBody/content/application~1json/schema/properties/use_connection_url_path"
 														}
 													}
 												}
@@ -57575,8 +57581,8 @@
 				}
 			},
 			"put": {
-				"summary": "Update Page Shield status",
-				"description": "Updates the status of Page Shield.",
+				"summary": "Update Page Shield settings",
+				"description": "Updates Page Shield settings.",
 				"parameters": [
 					{
 						"name": "zone_id",
@@ -57589,7 +57595,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Update Page Shield status response",
+						"description": "Update Page Shield settings response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -57602,10 +57608,16 @@
 												"result": {
 													"properties": {
 														"enabled": {
-															"$ref": "#/paths/~1zones~1%7Bzone_id%7D~1page_shield/get/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/enabled"
+															"$ref": "#/paths/~1zones~1%7Bzone_id%7D~1page_shield/put/requestBody/content/application~1json/schema/properties/enabled"
 														},
 														"updated_at": {
 															"$ref": "#/paths/~1zones~1%7Bzone_id%7D~1page_shield/get/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/updated_at"
+														},
+														"use_cloudflare_reporting_endpoint": {
+															"$ref": "#/paths/~1zones~1%7Bzone_id%7D~1page_shield/put/requestBody/content/application~1json/schema/properties/use_cloudflare_reporting_endpoint"
+														},
+														"use_connection_url_path": {
+															"$ref": "#/paths/~1zones~1%7Bzone_id%7D~1page_shield/put/requestBody/content/application~1json/schema/properties/use_connection_url_path"
 														}
 													}
 												}
@@ -57632,7 +57644,27 @@
 				"requestBody": {
 					"required": true,
 					"content": {
-						"application/json": {}
+						"application/json": {
+							"schema": {
+								"properties": {
+									"enabled": {
+										"description": "When true, indicates that Page Shield is enabled.",
+										"type": "boolean",
+										"example": true
+									},
+									"use_cloudflare_reporting_endpoint": {
+										"description": "When true, CSP reports will be sent to https://csp-reporting.cloudflare.com/cdn-cgi/script_monitor/report",
+										"type": "boolean",
+										"example": true
+									},
+									"use_connection_url_path": {
+										"description": "When true, the paths associated with connections URLs will also be analyzed.",
+										"type": "boolean",
+										"example": true
+									}
+								}
+							}
+						}
 					}
 				}
 			}
