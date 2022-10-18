@@ -5615,6 +5615,7 @@
 			},
 			"patch": {
 				"summary": "Patch Argo Smart Routing setting",
+				"description": "Updates enablement of Argo Smart Routing.",
 				"parameters": [
 					{
 						"name": "zone_identifier",
@@ -5660,11 +5661,11 @@
 					"content": {
 						"application/json": {
 							"schema": {
-								"description": "Update Enablement of Argo smart routing",
+								"description": "Update enablement of Argo Smart Routing",
 								"type": "object",
 								"properties": {
 									"value": {
-										"description": "Enablement of Argo smart routing",
+										"description": "Enables Argo Smart Routing.",
 										"type": "string",
 										"enum": [
 											true,
@@ -5740,7 +5741,7 @@
 		},
 		"/zones/{zone_identifier}/analytics/latency/colos": {
 			"get": {
-				"summary": "Argo Analytics for a zone at differnt PoPs",
+				"summary": "Argo Analytics for a zone at different PoPs",
 				"parameters": [
 					{
 						"name": "zone_identifier",
@@ -5753,7 +5754,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Argo Analytics for a zone at differnt PoPs response",
+						"description": "Argo Analytics for a zone at different PoPs response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -57505,8 +57506,8 @@
 		},
 		"/zones/{zone_id}/page_shield": {
 			"get": {
-				"summary": "Get Page Shield status",
-				"description": "Fetches the Page Shield status.",
+				"summary": "Get Page Shield settings",
+				"description": "Fetches the Page Shield settings.",
 				"parameters": [
 					{
 						"name": "zone_id",
@@ -57519,7 +57520,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Get Page Shield status response",
+						"description": "Get Page Shield settings response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -57543,12 +57544,18 @@
 												"result": {
 													"properties": {
 														"enabled": {
-															"description": "When true, indicates that Page Shield is enabled.",
-															"type": "boolean"
+															"$ref": "#/paths/~1zones~1%7Bzone_id%7D~1page_shield/put/requestBody/content/application~1json/schema/properties/enabled"
 														},
 														"updated_at": {
 															"description": "The timestamp of when Page Shield was last updated.",
-															"type": "string"
+															"type": "string",
+															"example": "2022-10-12T17:56:52.083582+01:00"
+														},
+														"use_cloudflare_reporting_endpoint": {
+															"$ref": "#/paths/~1zones~1%7Bzone_id%7D~1page_shield/put/requestBody/content/application~1json/schema/properties/use_cloudflare_reporting_endpoint"
+														},
+														"use_connection_url_path": {
+															"$ref": "#/paths/~1zones~1%7Bzone_id%7D~1page_shield/put/requestBody/content/application~1json/schema/properties/use_connection_url_path"
 														}
 													}
 												}
@@ -57574,8 +57581,8 @@
 				}
 			},
 			"put": {
-				"summary": "Update Page Shield status",
-				"description": "Updates the status of Page Shield.",
+				"summary": "Update Page Shield settings",
+				"description": "Updates Page Shield settings.",
 				"parameters": [
 					{
 						"name": "zone_id",
@@ -57588,7 +57595,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Update Page Shield status response",
+						"description": "Update Page Shield settings response",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -57601,10 +57608,16 @@
 												"result": {
 													"properties": {
 														"enabled": {
-															"$ref": "#/paths/~1zones~1%7Bzone_id%7D~1page_shield/get/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/enabled"
+															"$ref": "#/paths/~1zones~1%7Bzone_id%7D~1page_shield/put/requestBody/content/application~1json/schema/properties/enabled"
 														},
 														"updated_at": {
 															"$ref": "#/paths/~1zones~1%7Bzone_id%7D~1page_shield/get/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/updated_at"
+														},
+														"use_cloudflare_reporting_endpoint": {
+															"$ref": "#/paths/~1zones~1%7Bzone_id%7D~1page_shield/put/requestBody/content/application~1json/schema/properties/use_cloudflare_reporting_endpoint"
+														},
+														"use_connection_url_path": {
+															"$ref": "#/paths/~1zones~1%7Bzone_id%7D~1page_shield/put/requestBody/content/application~1json/schema/properties/use_connection_url_path"
 														}
 													}
 												}
@@ -57631,7 +57644,27 @@
 				"requestBody": {
 					"required": true,
 					"content": {
-						"application/json": {}
+						"application/json": {
+							"schema": {
+								"properties": {
+									"enabled": {
+										"description": "When true, indicates that Page Shield is enabled.",
+										"type": "boolean",
+										"example": true
+									},
+									"use_cloudflare_reporting_endpoint": {
+										"description": "When true, CSP reports will be sent to https://csp-reporting.cloudflare.com/cdn-cgi/script_monitor/report",
+										"type": "boolean",
+										"example": true
+									},
+									"use_connection_url_path": {
+										"description": "When true, the paths associated with connections URLs will also be analyzed.",
+										"type": "boolean",
+										"example": true
+									}
+								}
+							}
+						}
 					}
 				}
 			}
@@ -83323,6 +83356,1147 @@
 				}
 			}
 		},
+		"/accounts/{account_identifier}/dlp/profiles": {
+			"get": {
+				"summary": "List all profiles",
+				"description": "Lists all DLP profiles in an account.",
+				"parameters": [
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1subscriptions/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "List all profiles response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user~1tokens~1permission_groups/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "array",
+													"items": {
+														"anyOf": [
+															{
+																"type": "object",
+																"title": "Predefined profile",
+																"properties": {
+																	"id": {
+																		"allOf": [
+																			{
+																				"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1identity_providers/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/properties/id"
+																			}
+																		],
+																		"description": "The ID for this profile",
+																		"example": "384e129d-25bd-403c-8019-bc19eb7a8a5f"
+																	},
+																	"name": {
+																		"description": "The name of the profile.",
+																		"type": "string",
+																		"example": "Generic CVV Card Number"
+																	},
+																	"type": {
+																		"description": "The type of the profile.",
+																		"type": "string",
+																		"enum": [
+																			"predefined"
+																		],
+																		"example": "predefined"
+																	},
+																	"entries": {
+																		"type": "array",
+																		"description": "The entries for this profile.",
+																		"items": {
+																			"type": "object",
+																			"title": "Predefined entry",
+																			"description": "A predefined entry that matches a profile",
+																			"properties": {
+																				"id": {
+																					"allOf": [
+																						{
+																							"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1identity_providers/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/properties/id"
+																						}
+																					],
+																					"description": "The ID for this entry",
+																					"example": "719d1215-260f-41d0-8c32-eb320ad107f7"
+																				},
+																				"name": {
+																					"description": "The name of the entry.",
+																					"type": "string",
+																					"example": "Credit card (Visa)"
+																				},
+																				"profile_id": {
+																					"description": "ID of the parent profile"
+																				},
+																				"enabled": {
+																					"description": "Whether the entry is enabled or not.",
+																					"type": "boolean",
+																					"example": true
+																				}
+																			}
+																		}
+																	}
+																}
+															},
+															{
+																"type": "object",
+																"title": "Custom profile",
+																"properties": {
+																	"id": {
+																		"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1dlp~1profiles/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/anyOf/0/properties/id"
+																	},
+																	"name": {
+																		"description": "The name of the profile.",
+																		"type": "string",
+																		"example": "Generic CVV Card Number"
+																	},
+																	"type": {
+																		"description": "The type of the profile.",
+																		"type": "string",
+																		"enum": [
+																			"custom"
+																		],
+																		"example": "custom"
+																	},
+																	"description": {
+																		"description": "The description of the profile.",
+																		"type": "string",
+																		"example": "A standard CVV card number"
+																	},
+																	"entries": {
+																		"type": "array",
+																		"description": "The entries for this profile.",
+																		"items": {
+																			"type": "object",
+																			"title": "Custom entry",
+																			"description": "A custom entry that matches a profile",
+																			"properties": {
+																				"id": {
+																					"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1dlp~1profiles/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/anyOf/0/properties/entries/items/properties/id"
+																				},
+																				"name": {
+																					"description": "The name of the entry.",
+																					"type": "string",
+																					"example": "Credit card (Visa)"
+																				},
+																				"profile_id": {
+																					"description": "ID of the parent profile"
+																				},
+																				"enabled": {
+																					"description": "Whether the entry is enabled or not.",
+																					"type": "boolean",
+																					"example": true
+																				},
+																				"pattern": {
+																					"type": "object",
+																					"title": "Pattern",
+																					"description": "A pattern that matches an entry",
+																					"properties": {
+																						"regex": {
+																							"description": "The regex pattern.",
+																							"type": "string",
+																							"example": "^4[0-9]{6,}$"
+																						},
+																						"validation": {
+																							"description": "Validation algorithm for the pattern. This algorithm will get run on potential matches, and if it returns false, the entry will not be matched.",
+																							"type": "string",
+																							"enum": [
+																								"luhn"
+																							],
+																							"example": "luhn"
+																						}
+																					},
+																					"required": [
+																						"regex"
+																					]
+																				},
+																				"created_at": {
+																					"$ref": "#/paths/~1user~1load_balancers~1monitors/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/properties/created_on"
+																				},
+																				"updated_at": {
+																					"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1ssl~1recommendation/get/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/modified_on"
+																				}
+																			}
+																		}
+																	},
+																	"created_at": {
+																		"$ref": "#/paths/~1user~1load_balancers~1monitors/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/properties/created_on"
+																	},
+																	"updated_at": {
+																		"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1ssl~1recommendation/get/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/modified_on"
+																	}
+																}
+															}
+														]
+													}
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				]
+			}
+		},
+		"/accounts/{account_identifier}/dlp/profiles/{profile_id}": {
+			"get": {
+				"summary": "Get DLP Profile",
+				"description": "Fetches a DLP profile by ID. Supports both predefined and custom profiles",
+				"parameters": [
+					{
+						"name": "profile_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1identity_providers/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/properties/id"
+								}
+							],
+							"description": "The ID for this profile",
+							"example": "384e129d-25bd-403c-8019-bc19eb7a8a5f"
+						}
+					},
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1subscriptions/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Get DLP Profile response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
+											"properties": {
+												"result": {
+													"anyOf": [
+														{
+															"type": "object",
+															"title": "Predefined profile",
+															"properties": {
+																"id": {
+																	"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1dlp~1profiles~1%7Bprofile_id%7D/get/parameters/0/schema"
+																},
+																"name": {
+																	"description": "The name of the profile.",
+																	"type": "string",
+																	"example": "Generic CVV Card Number"
+																},
+																"type": {
+																	"description": "The type of the profile.",
+																	"type": "string",
+																	"enum": [
+																		"predefined"
+																	],
+																	"example": "predefined"
+																},
+																"entries": {
+																	"type": "array",
+																	"description": "The entries for this profile.",
+																	"items": {
+																		"type": "object",
+																		"title": "Predefined entry",
+																		"description": "A predefined entry that matches a profile",
+																		"properties": {
+																			"id": {
+																				"allOf": [
+																					{
+																						"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1identity_providers/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/properties/id"
+																					}
+																				],
+																				"description": "The ID for this entry",
+																				"example": "719d1215-260f-41d0-8c32-eb320ad107f7"
+																			},
+																			"name": {
+																				"description": "The name of the entry.",
+																				"type": "string",
+																				"example": "Credit card (Visa)"
+																			},
+																			"profile_id": {
+																				"description": "ID of the parent profile"
+																			},
+																			"enabled": {
+																				"description": "Whether the entry is enabled or not.",
+																				"type": "boolean",
+																				"example": true
+																			}
+																		}
+																	}
+																}
+															}
+														},
+														{
+															"type": "object",
+															"title": "Custom profile",
+															"properties": {
+																"id": {
+																	"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1dlp~1profiles~1%7Bprofile_id%7D/get/parameters/0/schema"
+																},
+																"name": {
+																	"description": "The name of the profile.",
+																	"type": "string",
+																	"example": "Generic CVV Card Number"
+																},
+																"type": {
+																	"description": "The type of the profile.",
+																	"type": "string",
+																	"enum": [
+																		"custom"
+																	],
+																	"example": "custom"
+																},
+																"description": {
+																	"description": "The description of the profile.",
+																	"type": "string",
+																	"example": "A standard CVV card number"
+																},
+																"entries": {
+																	"type": "array",
+																	"description": "The entries for this profile.",
+																	"items": {
+																		"type": "object",
+																		"title": "Custom entry",
+																		"description": "A custom entry that matches a profile",
+																		"properties": {
+																			"id": {
+																				"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1dlp~1profiles~1%7Bprofile_id%7D/get/responses/200/content/application~1json/schema/allOf/1/properties/result/anyOf/0/properties/entries/items/properties/id"
+																			},
+																			"name": {
+																				"description": "The name of the entry.",
+																				"type": "string",
+																				"example": "Credit card (Visa)"
+																			},
+																			"profile_id": {
+																				"description": "ID of the parent profile"
+																			},
+																			"enabled": {
+																				"description": "Whether the entry is enabled or not.",
+																				"type": "boolean",
+																				"example": true
+																			},
+																			"pattern": {
+																				"type": "object",
+																				"title": "Pattern",
+																				"description": "A pattern that matches an entry",
+																				"properties": {
+																					"regex": {
+																						"description": "The regex pattern.",
+																						"type": "string",
+																						"example": "^4[0-9]{6,}$"
+																					},
+																					"validation": {
+																						"description": "Validation algorithm for the pattern. This algorithm will get run on potential matches, and if it returns false, the entry will not be matched.",
+																						"type": "string",
+																						"enum": [
+																							"luhn"
+																						],
+																						"example": "luhn"
+																					}
+																				},
+																				"required": [
+																					"regex"
+																				]
+																			},
+																			"created_at": {
+																				"$ref": "#/paths/~1user~1load_balancers~1monitors/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/properties/created_on"
+																			},
+																			"updated_at": {
+																				"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1ssl~1recommendation/get/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/modified_on"
+																			}
+																		}
+																	}
+																},
+																"created_at": {
+																	"$ref": "#/paths/~1user~1load_balancers~1monitors/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/properties/created_on"
+																},
+																"updated_at": {
+																	"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1ssl~1recommendation/get/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/modified_on"
+																}
+															}
+														}
+													]
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				]
+			}
+		},
+		"/accounts/{account_identifier}/dlp/profiles/predefined/{profile_id}": {
+			"get": {
+				"summary": "Get predefined profile",
+				"description": "Fetches a predefined DLP profile.",
+				"parameters": [
+					{
+						"name": "profile_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1identity_providers/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/properties/id"
+								}
+							],
+							"description": "The ID for this profile",
+							"example": "384e129d-25bd-403c-8019-bc19eb7a8a5f"
+						}
+					},
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1subscriptions/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Get predefined profile response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
+											"properties": {
+												"result": {
+													"allOf": [
+														{
+															"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1dlp~1profiles~1predefined~1%7Bprofile_id%7D/put/responses/200/content/application~1json/schema"
+														}
+													]
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				]
+			},
+			"put": {
+				"summary": "Update predefined profile",
+				"description": "Updates a DLP predefined profile. Only supports enabling/disabling entries.",
+				"parameters": [
+					{
+						"name": "profile_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1dlp~1profiles~1predefined~1%7Bprofile_id%7D/get/parameters/0/schema"
+						}
+					},
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1dlp~1profiles~1predefined~1%7Bprofile_id%7D/get/parameters/1/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Update predefined profile response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"title": "Predefined profile",
+									"properties": {
+										"id": {
+											"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1dlp~1profiles~1predefined~1%7Bprofile_id%7D/get/parameters/0/schema"
+										},
+										"name": {
+											"description": "The name of the profile.",
+											"type": "string",
+											"example": "Generic CVV Card Number"
+										},
+										"type": {
+											"description": "The type of the profile.",
+											"type": "string",
+											"enum": [
+												"predefined"
+											],
+											"example": "predefined"
+										},
+										"entries": {
+											"type": "array",
+											"description": "The entries for this profile.",
+											"items": {
+												"type": "object",
+												"title": "Predefined entry",
+												"description": "A predefined entry that matches a profile",
+												"properties": {
+													"id": {
+														"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1dlp~1profiles~1predefined~1%7Bprofile_id%7D/put/requestBody/content/application~1json/schema/properties/entries/items/properties/id"
+													},
+													"name": {
+														"description": "The name of the entry.",
+														"type": "string",
+														"example": "Credit card (Visa)"
+													},
+													"profile_id": {
+														"description": "ID of the parent profile"
+													},
+													"enabled": {
+														"description": "Whether the entry is enabled or not.",
+														"type": "boolean",
+														"example": true
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"title": "Update predefined profile",
+								"properties": {
+									"entries": {
+										"type": "array",
+										"description": "The entries for this profile.",
+										"items": {
+											"properties": {
+												"id": {
+													"allOf": [
+														{
+															"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1identity_providers/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/properties/id"
+														}
+													],
+													"description": "The ID for this entry",
+													"example": "719d1215-260f-41d0-8c32-eb320ad107f7"
+												},
+												"enabled": {
+													"description": "Wheter the entry is enabled or not.",
+													"type": "boolean",
+													"example": true
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/accounts/{account_identifier}/dlp/profiles/custom/{profile_id}": {
+			"get": {
+				"summary": "Get custom profile",
+				"description": "Fetches a custom DLP profile.",
+				"parameters": [
+					{
+						"name": "profile_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"allOf": [
+								{
+									"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1identity_providers/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/properties/id"
+								}
+							],
+							"description": "The ID for this profile",
+							"example": "384e129d-25bd-403c-8019-bc19eb7a8a5f"
+						}
+					},
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1subscriptions/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Get custom profile response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
+											"properties": {
+												"result": {
+													"allOf": [
+														{
+															"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1dlp~1profiles~1custom~1%7Bprofile_id%7D/put/responses/200/content/application~1json/schema"
+														}
+													]
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				]
+			},
+			"delete": {
+				"summary": "Delete custom profile",
+				"description": "Deletes a DLP custom profile.",
+				"parameters": [
+					{
+						"name": "profile_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1dlp~1profiles~1custom~1%7Bprofile_id%7D/get/parameters/0/schema"
+						}
+					},
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1dlp~1profiles~1custom~1%7Bprofile_id%7D/get/parameters/1/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Delete custom profile response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/paths/~1user/get/responses/200/content/application~1json/schema/allOf/0"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {}
+					}
+				}
+			},
+			"put": {
+				"summary": "Update custom profile",
+				"description": "Updates a DLP custom profile.",
+				"parameters": [
+					{
+						"name": "profile_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1dlp~1profiles~1custom~1%7Bprofile_id%7D/get/parameters/0/schema"
+						}
+					},
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1dlp~1profiles~1custom~1%7Bprofile_id%7D/get/parameters/1/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Update custom profile response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"title": "Custom profile",
+									"properties": {
+										"id": {
+											"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1dlp~1profiles~1custom~1%7Bprofile_id%7D/get/parameters/0/schema"
+										},
+										"name": {
+											"description": "The name of the profile.",
+											"type": "string",
+											"example": "Generic CVV Card Number"
+										},
+										"type": {
+											"description": "The type of the profile.",
+											"type": "string",
+											"enum": [
+												"custom"
+											],
+											"example": "custom"
+										},
+										"description": {
+											"description": "The description of the profile.",
+											"type": "string",
+											"example": "A standard CVV card number"
+										},
+										"entries": {
+											"type": "array",
+											"description": "The entries for this profile.",
+											"items": {
+												"type": "object",
+												"title": "Custom entry",
+												"description": "A custom entry that matches a profile",
+												"properties": {
+													"id": {
+														"allOf": [
+															{
+																"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1identity_providers/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/properties/id"
+															}
+														],
+														"description": "The ID for this entry",
+														"example": "719d1215-260f-41d0-8c32-eb320ad107f7"
+													},
+													"name": {
+														"description": "The name of the entry.",
+														"type": "string",
+														"example": "Credit card (Visa)"
+													},
+													"profile_id": {
+														"description": "ID of the parent profile"
+													},
+													"enabled": {
+														"description": "Whether the entry is enabled or not.",
+														"type": "boolean",
+														"example": true
+													},
+													"pattern": {
+														"type": "object",
+														"title": "Pattern",
+														"description": "A pattern that matches an entry",
+														"properties": {
+															"regex": {
+																"description": "The regex pattern.",
+																"type": "string",
+																"example": "^4[0-9]{6,}$"
+															},
+															"validation": {
+																"description": "Validation algorithm for the pattern. This algorithm will get run on potential matches, and if it returns false, the entry will not be matched.",
+																"type": "string",
+																"enum": [
+																	"luhn"
+																],
+																"example": "luhn"
+															}
+														},
+														"required": [
+															"regex"
+														]
+													},
+													"created_at": {
+														"$ref": "#/paths/~1user~1load_balancers~1monitors/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/properties/created_on"
+													},
+													"updated_at": {
+														"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1ssl~1recommendation/get/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/modified_on"
+													}
+												}
+											}
+										},
+										"created_at": {
+											"$ref": "#/paths/~1user~1load_balancers~1monitors/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/properties/created_on"
+										},
+										"updated_at": {
+											"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1ssl~1recommendation/get/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/modified_on"
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"title": "Update custom profile",
+								"properties": {
+									"name": {
+										"description": "The name of the profile.",
+										"type": "string",
+										"example": "Generic CVV Card Number"
+									},
+									"description": {
+										"description": "The description of the profile.",
+										"type": "string",
+										"example": "A standard CVV card number"
+									},
+									"entries": {
+										"type": "array",
+										"description": "The entries for this profile. Array elements with IDs are modifying the existing entry with that ID. Elements without ID will create new entries. Any entry not in the list will be deleted.",
+										"items": {
+											"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1dlp~1profiles~1custom~1%7Bprofile_id%7D/put/responses/200/content/application~1json/schema/properties/entries/items"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/accounts/{account_identifier}/dlp/profiles/custom": {
+			"post": {
+				"summary": "Create custom profiles",
+				"description": "Creates a set of DLP custom profiles.",
+				"parameters": [
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1subscriptions/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Create custom profiles response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user~1tokens~1permission_groups/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"title": "Custom profile",
+														"properties": {
+															"id": {
+																"allOf": [
+																	{
+																		"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1identity_providers/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/properties/id"
+																	}
+																],
+																"description": "The ID for this profile",
+																"example": "384e129d-25bd-403c-8019-bc19eb7a8a5f"
+															},
+															"name": {
+																"description": "The name of the profile.",
+																"type": "string",
+																"example": "Generic CVV Card Number"
+															},
+															"type": {
+																"description": "The type of the profile.",
+																"type": "string",
+																"enum": [
+																	"custom"
+																],
+																"example": "custom"
+															},
+															"description": {
+																"description": "The description of the profile.",
+																"type": "string",
+																"example": "A standard CVV card number"
+															},
+															"entries": {
+																"type": "array",
+																"description": "The entries for this profile.",
+																"items": {
+																	"type": "object",
+																	"title": "Custom entry",
+																	"description": "A custom entry that matches a profile",
+																	"properties": {
+																		"id": {
+																			"allOf": [
+																				{
+																					"$ref": "#/paths/~1accounts~1%7Bidentifier%7D~1access~1identity_providers/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/properties/id"
+																				}
+																			],
+																			"description": "The ID for this entry",
+																			"example": "719d1215-260f-41d0-8c32-eb320ad107f7"
+																		},
+																		"name": {
+																			"description": "The name of the entry.",
+																			"type": "string",
+																			"example": "Credit card (Visa)"
+																		},
+																		"profile_id": {
+																			"description": "ID of the parent profile"
+																		},
+																		"enabled": {
+																			"description": "Whether the entry is enabled or not.",
+																			"type": "boolean",
+																			"example": true
+																		},
+																		"pattern": {
+																			"type": "object",
+																			"title": "Pattern",
+																			"description": "A pattern that matches an entry",
+																			"properties": {
+																				"regex": {
+																					"description": "The regex pattern.",
+																					"type": "string",
+																					"example": "^4[0-9]{6,}$"
+																				},
+																				"validation": {
+																					"description": "Validation algorithm for the pattern. This algorithm will get run on potential matches, and if it returns false, the entry will not be matched.",
+																					"type": "string",
+																					"enum": [
+																						"luhn"
+																					],
+																					"example": "luhn"
+																				}
+																			},
+																			"required": [
+																				"regex"
+																			]
+																		},
+																		"created_at": {
+																			"$ref": "#/paths/~1user~1load_balancers~1monitors/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/properties/created_on"
+																		},
+																		"updated_at": {
+																			"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1ssl~1recommendation/get/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/modified_on"
+																		}
+																	}
+																}
+															},
+															"created_at": {
+																"$ref": "#/paths/~1user~1load_balancers~1monitors/get/responses/200/content/application~1json/schema/allOf/1/properties/result/items/properties/created_on"
+															},
+															"updated_at": {
+																"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1ssl~1recommendation/get/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/modified_on"
+															}
+														}
+													}
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"profiles": {
+										"type": "array",
+										"items": {
+											"type": "object",
+											"properties": {
+												"name": {
+													"description": "The name of the profile.",
+													"type": "string",
+													"example": "Generic CVV Card Number"
+												},
+												"description": {
+													"description": "The description of the profile.",
+													"type": "string",
+													"example": "A standard CVV card number"
+												},
+												"entries": {
+													"type": "array",
+													"description": "The entries for this profile.",
+													"items": {
+														"type": "object",
+														"title": "Custom entry",
+														"description": "A custom entry create payload",
+														"properties": {
+															"name": {
+																"description": "The name of the entry.",
+																"type": "string",
+																"example": "Credit card (Visa)"
+															},
+															"enabled": {
+																"description": "Whether the entry is enabled or not.",
+																"type": "boolean",
+																"example": true
+															},
+															"pattern": {
+																"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1dlp~1profiles~1custom/post/responses/200/content/application~1json/schema/allOf/1/properties/result/items/properties/entries/items/properties/pattern"
+															}
+														},
+														"required": [
+															"name",
+															"enabled",
+															"pattern"
+														]
+													}
+												}
+											}
+										},
+										"required": [
+											"name",
+											"entries"
+										]
+									}
+								},
+								"required": [
+									"profiles"
+								]
+							}
+						}
+					}
+				}
+			}
+		},
+		"/accounts/{account_identifier}/dlp/patterns/validate": {
+			"post": {
+				"summary": "Validate pattern",
+				"description": "Validates whether this pattern is a valid regular expression. Rejects it if the regular expression is too complex or can match an unbounded-length string. Your regex will be rejected if it uses the Kleene Star -- be sure to bound the maximum number of characters that can be matched.",
+				"parameters": [
+					{
+						"name": "account_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1accounts~1%7Baccount_identifier%7D~1subscriptions/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Validate pattern response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
+											"properties": {
+												"result": {
+													"properties": {
+														"valid": {
+															"type": "boolean",
+															"example": true
+														}
+													}
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"title": "Pattern",
+								"description": "A request to validate a pattern",
+								"properties": {
+									"regex": {
+										"description": "The regex pattern.",
+										"type": "string",
+										"example": "^4[0-9]{6,}$"
+									}
+								},
+								"required": [
+									"regex"
+								]
+							}
+						}
+					}
+				}
+			}
+		},
 		"/zones/{zone_identifier}/healthchecks": {
 			"get": {
 				"summary": "List Health Checks",
@@ -86819,6 +87993,472 @@
 								]
 							}
 						}
+					}
+				}
+			}
+		},
+		"/zones/{zone_identifier}/waiting_rooms/{waiting_room_id}/rules": {
+			"get": {
+				"summary": "List Waiting Room Rules",
+				"description": "Lists rules for a waiting room.",
+				"parameters": [
+					{
+						"name": "waiting_room_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"example": "699d98642c564d2e855e9661899b7252"
+						}
+					},
+					{
+						"name": "zone_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1available_plans~1%7Bplan_identifier%7D/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "List Waiting Room Rules response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user~1tokens~1permission_groups/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"id": {
+																"description": "The ID of the rule.",
+																"example": "25756b2dfe6e378a06b033b670413757",
+																"type": "string"
+															},
+															"version": {
+																"description": "The version of the rule.",
+																"example": "1",
+																"type": "string"
+															},
+															"action": {
+																"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1waiting_rooms~1%7Bwaiting_room_id%7D~1rules/post/requestBody/content/application~1json/schema/properties/action"
+															},
+															"expression": {
+																"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1waiting_rooms~1%7Bwaiting_room_id%7D~1rules/post/requestBody/content/application~1json/schema/properties/expression"
+															},
+															"description": {
+																"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1waiting_rooms~1%7Bwaiting_room_id%7D~1rules/post/requestBody/content/application~1json/schema/properties/description"
+															},
+															"enabled": {
+																"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1waiting_rooms~1%7Bwaiting_room_id%7D~1rules/post/requestBody/content/application~1json/schema/properties/enabled"
+															},
+															"last_updated": {
+																"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1ssl~1recommendation/get/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/modified_on"
+															}
+														}
+													}
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPlanAvailability": {
+					"free": false,
+					"pro": false,
+					"business": false,
+					"enterprise": true
+				}
+			},
+			"put": {
+				"summary": "Replace Waiting Room Rules",
+				"description": "Only available for the Waiting Room Advanced subscription. Replaces all rules for a waiting room.",
+				"parameters": [
+					{
+						"name": "waiting_room_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1waiting_rooms~1%7Bwaiting_room_id%7D~1rules/get/parameters/0/schema"
+						}
+					},
+					{
+						"name": "zone_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1waiting_rooms~1%7Bwaiting_room_id%7D~1rules/get/parameters/1/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Replace Waiting Room Rules response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1waiting_rooms~1%7Bwaiting_room_id%7D~1rules/get/responses/200/content/application~1json/schema"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPlanAvailability": {
+					"free": false,
+					"pro": false,
+					"business": false,
+					"enterprise": true
+				},
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1waiting_rooms~1%7Bwaiting_room_id%7D~1rules/post/requestBody/content/application~1json/schema"
+								}
+							}
+						}
+					}
+				}
+			},
+			"post": {
+				"summary": "Create Waiting Room Rule",
+				"description": "Only available for the Waiting Room Advanced subscription. Creates a rule for a waiting room.",
+				"parameters": [
+					{
+						"name": "waiting_room_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1waiting_rooms~1%7Bwaiting_room_id%7D~1rules/get/parameters/0/schema"
+						}
+					},
+					{
+						"name": "zone_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1waiting_rooms~1%7Bwaiting_room_id%7D~1rules/get/parameters/1/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Create Waiting Room Rule response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1waiting_rooms~1%7Bwaiting_room_id%7D~1rules/get/responses/200/content/application~1json/schema"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPlanAvailability": {
+					"free": false,
+					"pro": false,
+					"business": false,
+					"enterprise": true
+				},
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"action": {
+										"description": "The action to take when the expression matches.",
+										"type": "string",
+										"example": "bypass_waiting_room",
+										"enum": [
+											"bypass_waiting_room"
+										]
+									},
+									"expression": {
+										"description": "Criteria defining when there is a match for the current rule.",
+										"example": "ip.src in {10.20.30.40}",
+										"type": "string"
+									},
+									"description": {
+										"description": "The description of the rule.",
+										"example": "allow all traffic from 10.20.30.40",
+										"type": "string",
+										"default": ""
+									},
+									"enabled": {
+										"description": "When set to true, the rule is enabled.",
+										"example": true,
+										"type": "boolean",
+										"default": true
+									}
+								},
+								"required": [
+									"action",
+									"expression"
+								]
+							}
+						}
+					}
+				}
+			}
+		},
+		"/zones/{zone_identifier}/waiting_rooms/{waiting_room_id}/rules/{rule_id}": {
+			"patch": {
+				"summary": "Patch Waiting Room Rule",
+				"description": "Patches a rule for a waiting room.",
+				"parameters": [
+					{
+						"name": "rule_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"description": "The ID of the rule.",
+							"example": "25756b2dfe6e378a06b033b670413757",
+							"type": "string"
+						}
+					},
+					{
+						"name": "waiting_room_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"example": "699d98642c564d2e855e9661899b7252"
+						}
+					},
+					{
+						"name": "zone_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1available_plans~1%7Bplan_identifier%7D/get/parameters/0/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Patch Waiting Room Rule response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"allOf": [
+										{
+											"$ref": "#/paths/~1user~1tokens~1permission_groups/get/responses/200/content/application~1json/schema/allOf/0"
+										},
+										{
+											"properties": {
+												"result": {
+													"type": "array",
+													"items": {
+														"type": "object",
+														"properties": {
+															"id": {
+																"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1waiting_rooms~1%7Bwaiting_room_id%7D~1rules~1%7Brule_id%7D/patch/parameters/0/schema"
+															},
+															"version": {
+																"description": "The version of the rule.",
+																"example": "1",
+																"type": "string"
+															},
+															"action": {
+																"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1waiting_rooms~1%7Bwaiting_room_id%7D~1rules~1%7Brule_id%7D/patch/requestBody/content/application~1json/schema/properties/action"
+															},
+															"expression": {
+																"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1waiting_rooms~1%7Bwaiting_room_id%7D~1rules~1%7Brule_id%7D/patch/requestBody/content/application~1json/schema/properties/expression"
+															},
+															"description": {
+																"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1waiting_rooms~1%7Bwaiting_room_id%7D~1rules~1%7Brule_id%7D/patch/requestBody/content/application~1json/schema/properties/description"
+															},
+															"enabled": {
+																"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1waiting_rooms~1%7Bwaiting_room_id%7D~1rules~1%7Brule_id%7D/patch/requestBody/content/application~1json/schema/properties/enabled"
+															},
+															"last_updated": {
+																"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1ssl~1recommendation/get/responses/200/content/application~1json/schema/allOf/1/properties/result/properties/modified_on"
+															}
+														}
+													}
+												}
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPlanAvailability": {
+					"free": false,
+					"pro": false,
+					"business": false,
+					"enterprise": true
+				},
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"action": {
+										"description": "The action to take when the expression matches.",
+										"type": "string",
+										"example": "bypass_waiting_room",
+										"enum": [
+											"bypass_waiting_room"
+										]
+									},
+									"expression": {
+										"description": "Criteria defining when there is a match for the current rule.",
+										"example": "ip.src in {10.20.30.40}",
+										"type": "string"
+									},
+									"description": {
+										"description": "The description of the rule.",
+										"example": "allow all traffic from 10.20.30.40",
+										"type": "string",
+										"default": ""
+									},
+									"enabled": {
+										"description": "When set to true, the rule is enabled.",
+										"example": true,
+										"type": "boolean",
+										"default": true
+									},
+									"position": {
+										"description": "Reorder the position of a rule",
+										"type": "object",
+										"oneOf": [
+											{
+												"type": "object",
+												"properties": {
+													"index": {
+														"type": "integer",
+														"description": " Places the rule in the exact position specified by the integer number <POSITION_NUMBER>. Position numbers start with 1. Existing rules in the ruleset from the specified position number onward are shifted one position (no rule is overwritten)."
+													}
+												}
+											},
+											{
+												"type": "object",
+												"properties": {
+													"before": {
+														"type": "string",
+														"description": " Places the rule before rule <RULE_ID>. Use this argument with an empty rule ID value (\"\") to set the rule as the first rule in the ruleset.",
+														"example": "<RULE_ID>"
+													}
+												}
+											},
+											{
+												"type": "object",
+												"properties": {
+													"after": {
+														"type": "string",
+														"description": "Places the rule after rule <RULE_ID>. Use this argument with an empty rule ID value (\"\") to set the rule as the last rule in the ruleset.",
+														"example": "<RULE_ID>"
+													}
+												}
+											}
+										]
+									}
+								},
+								"required": [
+									"action",
+									"expression"
+								]
+							}
+						}
+					}
+				}
+			},
+			"delete": {
+				"summary": "Delete Waiting Room Rule",
+				"description": "Deletes a rule for a waiting room.",
+				"parameters": [
+					{
+						"name": "rule_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1waiting_rooms~1%7Bwaiting_room_id%7D~1rules~1%7Brule_id%7D/patch/parameters/0/schema"
+						}
+					},
+					{
+						"name": "waiting_room_id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1waiting_rooms~1%7Bwaiting_room_id%7D~1rules~1%7Brule_id%7D/patch/parameters/1/schema"
+						}
+					},
+					{
+						"name": "zone_identifier",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1waiting_rooms~1%7Bwaiting_room_id%7D~1rules~1%7Brule_id%7D/patch/parameters/2/schema"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Delete Waiting Room Rule response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/paths/~1zones~1%7Bzone_identifier%7D~1waiting_rooms~1%7Bwaiting_room_id%7D~1rules~1%7Brule_id%7D/patch/responses/200/content/application~1json/schema"
+								}
+							}
+						}
+					}
+				},
+				"security": [
+					{
+						"api_key": [],
+						"api_email": []
+					}
+				],
+				"x-cfPlanAvailability": {
+					"free": false,
+					"pro": false,
+					"business": false,
+					"enterprise": true
+				},
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {}
 					}
 				}
 			}
