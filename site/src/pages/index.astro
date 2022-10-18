@@ -2,36 +2,11 @@
 import Layout from '../layouts/Layout.astro';
 ---
 <Layout title="Cloudflare Datamining" description="Discover Cloudflare flags, entitlements, GraphQL schemas, and more!">
-	<h1 class="text-gradient my-4 text-4xl">Cloudflare Datamining</h1>
-	<p class="my-4 bg-blue-600 p-4 text-white">
-		For more information, check out the <a href="https://github.com/Cloudflare-Mining/Cloudflare-Datamining">GitHub Repository</a>. Not all information is available on this site yet.
-	</p>
-	<p>Visit the pages linked above for more information.</p>
+	<div class="prose dark:prose-invert mx-auto">
+		<h1>Cloudflare Datamining</h1>
+		<p>
+			For more information, check out the <a href="https://github.com/Cloudflare-Mining/Cloudflare-Datamining" target="_blank">GitHub Repository</a>. Not all information is available on this site yet.
+		</p>
+		<p>Visit the pages linked in the site's navigation for more information.</p>
+	</div>
 </Layout>
-
-<style>
-	:root {
-		--astro-gradient: linear-gradient(0deg, #4f39fa, #da62c4);
-	}
-
-	.text-gradient {
-		font-weight: 900;
-		background-image: var(--astro-gradient);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-size: 100% 200%;
-		background-position-y: 100%;
-		border-radius: 0.4rem;
-		animation: pulse 4s ease-in-out infinite;
-	}
-
-	@keyframes pulse {
-		0%,
-		100% {
-			background-position-y: 0%;
-		}
-		50% {
-			background-position-y: 80%;
-		}
-	}
-</style>
