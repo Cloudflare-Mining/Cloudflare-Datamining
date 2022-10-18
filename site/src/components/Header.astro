@@ -3,15 +3,15 @@ import Nav from './Nav.astro';
 const updated = new Date().toISOString();
 ---
 
-<header id="header" class="bg-white dark:bg-gray-900 shadow-sm lg:static lg:overflow-y-visible">
+<header id="header" class="bg-white shadow-sm dark:bg-gray-900 lg:static lg:overflow-y-visible">
 	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-		<div class="relative flex justify-between h-16 items-center lg:gap-8">
+		<div class="relative flex h-16 items-center justify-between lg:gap-8">
 			<a class="text-xl leading-none" href="/">
 				<span class="font-extrabold">Cloudflare</span><br>Datamining
 			</a>
-			<span class="hidden lg:block text-right leading-tight"><span class="uppercase text-xs">Last Updated</span><br/><span id="updated">{updated}</span></span>
+			<span class="hidden text-right leading-tight lg:block"><span class="text-xs uppercase">Last Updated</span><br/><span id="updated">{updated}</span></span>
 			<div class="flex items-center md:absolute md:inset-y-0 md:right-0 lg:hidden">
-				<button id="toggle" type="button" class="-mx-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 dark:text-gray-500 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-500" aria-expanded="false">
+				<button id="toggle" type="button" class="-mx-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-500 dark:text-gray-500 dark:hover:bg-gray-800" aria-expanded="false">
 					<span class="sr-only">Toggle menu</span>
 					<svg id="open" class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
 						<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
@@ -24,28 +24,29 @@ const updated = new Date().toISOString();
 		</div>
 	</div>
 
-	<nav id="menu" class="hidden lg:hidden p-4" aria-label="Global">
+	<nav id="menu" class="hidden p-4 lg:hidden" aria-label="Global">
 		<Nav usage="mobile" />
 	</nav>
 </header>
 
 <script>
-	document.getElementById("toggle")?.addEventListener("click", function() {
-		document.getElementById("open")?.classList.toggle("hidden");
-		document.getElementById("close")?.classList.toggle("hidden");
-		document.getElementById("menu")?.classList.toggle("hidden");
-		document.getElementsByTagName('body')[0]?.classList.toggle("overflow-hidden");
-		const header = document.getElementById("header");
+	document.querySelector("#toggle")?.addEventListener("click", function(){
+		document.querySelector("#open")?.classList.toggle("hidden");
+		document.querySelector("#close")?.classList.toggle("hidden");
+		document.querySelector("#menu")?.classList.toggle("hidden");
+		document.querySelectorAll('body')[0]?.classList.toggle("overflow-hidden");
+		const header = document.querySelector("#header");
 		header?.classList.toggle("fixed");
 		header?.classList.toggle("inset-0");
 		header?.classList.toggle("z-40");
 		header?.classList.toggle("overflow-y-auto");
 	});
 
-	const updated = document.getElementById("updated");
-	if (updated) {
-		const diff = new Date(updated.innerText) - new Date();
-		const formatter = new Intl.RelativeTimeFormat('en-UK', { numeric: 'auto' });
-		updated.innerText = formatter.format(Math.round(diff / 1000 / 60 / 60 / 24), 'day');
+	const updated = document.querySelector("#updated");
+	if(updated){
+		const time = updated.textContent as string;
+		const diff = new Date(time).getTime() - Date.now();
+		const formatter = new Intl.RelativeTimeFormat('en-GB', {numeric: 'auto'});
+		updated.textContent = formatter.format(Math.round(diff / 1000 / 60 / 60 / 24), 'day');
 	}
 </script>
