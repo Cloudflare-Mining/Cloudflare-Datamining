@@ -33,6 +33,8 @@ async function run(){
 				console.log('Writing gates config', gate.name);
 				await fs.writeFile(file, JSON.stringify(json.result, null, '\t'));
 			}
+		}else{
+			console.log('Error fetching gates config', gate.name);
 		}
 	}
 
