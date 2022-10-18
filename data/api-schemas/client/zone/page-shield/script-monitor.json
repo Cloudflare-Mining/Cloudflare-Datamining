@@ -14,8 +14,8 @@
 	"type": "object",
 	"links": [
 		{
-			"title": "Get Page Shield status",
-			"description": "Fetches the Page Shield status.",
+			"title": "Get Page Shield settings",
+			"description": "Fetches the Page Shield settings.",
 			"rel": "self",
 			"href": "zones/{#/definitions/zone_id}/page_shield",
 			"method": "GET",
@@ -26,14 +26,14 @@
 				"business": true,
 				"enterprise": true
 			},
-			"html_id": "page-shield-get-page-shield-status",
+			"html_id": "page-shield-get-page-shield-settings",
 			"uri": "zones/:zone_id/page_shield",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/page_shield\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {}\n}"
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"enabled\": true,\n    \"updated_at\": \"2022-10-12T17:56:52.083582+01:00\",\n    \"use_cloudflare_reporting_endpoint\": true,\n    \"use_connection_url_path\": true\n  }\n}"
 		},
 		{
-			"title": "Update Page Shield status",
-			"description": "Updates the status of Page Shield.",
+			"title": "Update Page Shield settings",
+			"description": "Updates Page Shield settings.",
 			"rel": "self",
 			"href": "zones/{#/definitions/zone_id}/page_shield",
 			"method": "PUT",
@@ -44,10 +44,40 @@
 				"business": true,
 				"enterprise": true
 			},
-			"html_id": "page-shield-update-page-shield-status",
+			"html_id": "page-shield-update-page-shield-settings",
 			"uri": "zones/:zone_id/page_shield",
-			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/page_shield\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
-			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {}\n}"
+			"curl": "curl -X PUT \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/page_shield\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\" \\\n     --data '{\"enabled\":true,\"use_cloudflare_reporting_endpoint\":true,\"use_connection_url_path\":true}'",
+			"parameters": {
+				"_formatter": {
+					"jsonMediaType": {}
+				},
+				"all_props": {
+					"enabled": {
+						"type": "boolean",
+						"example": "true",
+						"description": "When true, indicates that Page Shield is enabled."
+					},
+					"use_cloudflare_reporting_endpoint": {
+						"type": "boolean",
+						"example": "true",
+						"description": "When true, CSP reports will be sent to https://csp-reporting.cloudflare.com/cdn-cgi/script_monitor/report"
+					},
+					"use_connection_url_path": {
+						"type": "boolean",
+						"example": "true",
+						"description": "When true, the paths associated with connections URLs will also be analyzed."
+					}
+				},
+				"required_props": [],
+				"optional_props": [
+					"enabled",
+					"use_cloudflare_reporting_endpoint",
+					"use_connection_url_path"
+				],
+				"objects": [],
+				"example": "{\n  \"enabled\": true,\n  \"use_cloudflare_reporting_endpoint\": true,\n  \"use_connection_url_path\": true\n}"
+			},
+			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"enabled\": true,\n    \"updated_at\": \"2022-10-12T17:56:52.083582+01:00\",\n    \"use_cloudflare_reporting_endpoint\": true,\n    \"use_connection_url_path\": true\n  }\n}"
 		},
 		{
 			"title": "List Page Shield scripts",

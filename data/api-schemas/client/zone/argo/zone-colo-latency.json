@@ -1,11 +1,11 @@
 {
 	"id": "https://api.cloudflare.com/schemas/v4/client/zone/argo/zone-colo-latency.json",
 	"title": "Argo Analytics for Geolocation",
-	"description": "Argo Smart Routing Analytics for a zone at different PoPs",
+	"description": "Query Argo Smart Routing analytics for a zone at different data centers",
 	"type": "object",
 	"links": [
 		{
-			"title": "Argo Analytics for a zone at differnt PoPs",
+			"title": "Argo Analytics for a zone at different PoPs",
 			"rel": "self",
 			"href": "zones/{#/definitions/zone_identifier}/analytics/latency/colos",
 			"method": "GET",
@@ -21,7 +21,7 @@
 					"#analytics:read"
 				]
 			},
-			"html_id": "argo-analytics-for-geolocation-argo-analytics-for-a-zone-at-differnt-pops",
+			"html_id": "argo-analytics-for-geolocation-argo-analytics-for-a-zone-at-different-pops",
 			"uri": "zones/:zone_identifier/analytics/latency/colos",
 			"curl": "curl -X GET \"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/analytics/latency/colos\" \\\n     -H \"X-Auth-Email: user@example.com\" \\\n     -H \"X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41\" \\\n     -H \"Content-Type: application/json\"",
 			"response": "{\n  \"success\": true,\n  \"errors\": [],\n  \"messages\": [],\n  \"result\": {\n    \"type\": \"FeatureCollection\",\n    \"features\": [\n      {\n        \"properties\": {\n          \"code\": \"ATL\",\n          \"argo_req_count\": 15644,\n          \"pct_avg_change\": -0.38009502863254624,\n          \"no_argo_avg\": 319.0564263322884,\n          \"argo_avg\": 197.78466483011937\n        },\n        \"type\": \"Feature\",\n        \"geometry\": {\n          \"type\": \"Point\",\n          \"coordinates\": [\n            -84.44403,\n            33.640068\n          ]\n        }\n      }\n    ]\n  }\n}"
@@ -36,7 +36,7 @@
 			"type": {
 				"type": "string",
 				"example": "\"FeatureCollection\"",
-				"description": "Feature collection",
+				"description": "Feature collection.",
 				"enum": [
 					"FeatureCollection"
 				]
@@ -44,38 +44,38 @@
 			"features": {
 				"type": "array",
 				"example": "[\n  {\n    \"properties\": {\n      \"code\": \"ATL\",\n      \"argo_req_count\": 15644,\n      \"pct_avg_change\": -0.38009502863254624,\n      \"no_argo_avg\": 319.0564263322884,\n      \"argo_avg\": 197.78466483011937\n    },\n    \"type\": \"Feature\",\n    \"geometry\": {\n      \"type\": \"Point\",\n      \"coordinates\": [\n        -84.44403,\n        33.640068\n      ]\n    }\n  }\n]",
-				"description": "Latency analytics for PoPs",
+				"description": "Latency analytics for data centers",
 				"minItems": 0,
 				"items": {
-					"description": "Latency analytics for one PoP",
+					"description": "Latency analytics for one data center.",
 					"type": "object",
 					"properties": {
 						"properties": {
-							"description": "Information of Argo latency at the PoP",
+							"description": "Information about Argo latency at the data center.",
 							"type": "object",
 							"properties": {
 								"code": {
-									"description": "Code of PoP. The airport code",
+									"description": "Code for the data center, which is the airport code.",
 									"type": "string",
 									"example": "ATL"
 								},
 								"argo_req_count": {
-									"description": "Number of requests Argo routed",
+									"description": "Number of requests Argo routed.",
 									"type": "number",
 									"example": 15644
 								},
 								"pct_avg_change": {
-									"description": "Percentage of improvement of average latency by Argo. This is calculated as (Argo - NoArgo)/NoArgo.",
+									"description": "Percentage of improvement of average latency by Argo. Calculated as (Argo - NoArgo)/NoArgo.",
 									"type": "number",
 									"example": -0.38009502863254624
 								},
 								"no_argo_avg": {
-									"description": "Average latency of requests not using Argo, in milliseconds",
+									"description": "Average latency of requests not using Argo, in milliseconds.",
 									"type": "number",
 									"example": 319.0564263322884
 								},
 								"argo_avg": {
-									"description": "Average latency of requests using Argo, in milliseconds",
+									"description": "Average latency of requests using Argo, in milliseconds.",
 									"type": "number",
 									"example": 197.78466483011937
 								}
@@ -90,11 +90,11 @@
 							"example": "Feature"
 						},
 						"geometry": {
-							"description": "Geolocation of the PoP",
+							"description": "Geolocation of the data center.",
 							"type": "object",
 							"properties": {
 								"type": {
-									"description": "Geolocation type",
+									"description": "Geolocation type.",
 									"type": "string",
 									"enum": [
 										"Point"
@@ -102,7 +102,7 @@
 									"example": "Point"
 								},
 								"coordinates": {
-									"description": "Longitude and latitude of the PoP",
+									"description": "Longitude and latitude of the data center.",
 									"type": "array",
 									"items": {
 										"type": "number"
@@ -128,6 +128,6 @@
 		"objects": [],
 		"example": "{\n  \"type\": \"FeatureCollection\",\n  \"features\": [\n    {\n      \"properties\": {\n        \"code\": \"ATL\",\n        \"argo_req_count\": 15644,\n        \"pct_avg_change\": -0.38009502863254624,\n        \"no_argo_avg\": 319.0564263322884,\n        \"argo_avg\": 197.78466483011937\n      },\n      \"type\": \"Feature\",\n      \"geometry\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n          -84.44403,\n          33.640068\n        ]\n      }\n    }\n  ]\n}",
 		"title": "Argo Analytics for Geolocation",
-		"description": "Argo Smart Routing Analytics for a zone at different PoPs"
+		"description": "Query Argo Smart Routing analytics for a zone at different data centers"
 	}
 }

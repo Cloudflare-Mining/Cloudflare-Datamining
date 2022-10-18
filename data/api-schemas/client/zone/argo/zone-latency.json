@@ -32,7 +32,7 @@
 					"bins": {
 						"type": "integer",
 						"example": "3",
-						"description": "Number of buckets latency is split into",
+						"description": "Number of buckets that latency is split into.",
 						"minimum": 1,
 						"maximum": 1000
 					}
@@ -57,7 +57,7 @@
 			"bins": {
 				"type": "integer",
 				"example": "3",
-				"description": "Number of buckets latency is split into",
+				"description": "Number of buckets that latency is split into.",
 				"minimum": 1,
 				"maximum": 1000
 			},
@@ -76,7 +76,7 @@
 						"minimum": 0
 					}
 				},
-				"description": "The range of latency in milliseconds"
+				"description": "The range of latency, in milliseconds."
 			},
 			"time_range": {
 				"type": "object",
@@ -95,7 +95,7 @@
 						"readOnly": true
 					}
 				},
-				"description": "Time range of the requests queried"
+				"description": "Time range of the requests queried."
 			},
 			"data": {
 				"type": "object",
@@ -104,7 +104,7 @@
 					"labels": {
 						"type": "array",
 						"example": "[\n  \"without_argo\",\n  \"with_argo\"\n]",
-						"description": "Labels applied to the counts and averages",
+						"description": "Labels applied to the counts and averages.",
 						"items": {
 							"type": "string"
 						},
@@ -113,9 +113,9 @@
 					"counts": {
 						"type": "array",
 						"example": "[\n  [\n    3306,\n    362,\n    1267\n  ],\n  [\n    30685,\n    11775,\n    42169\n  ]\n]",
-						"description": "Number of requests for each label",
+						"description": "Number of requests for each label.",
 						"items": {
-							"description": "Number of requests for each bucket",
+							"description": "Number of requests for each bucket.",
 							"type": "array",
 							"items": {
 								"type": "integer"
@@ -126,7 +126,7 @@
 					"averages": {
 						"type": "array",
 						"example": "[\n  192,\n  120\n]",
-						"description": "Average latency for each label",
+						"description": "Average latency for each label.",
 						"items": {
 							"type": "integer"
 						},
@@ -135,11 +135,11 @@
 					"percent_smart_routed": {
 						"type": "number",
 						"example": "42.5",
-						"description": "Percentage of smart routed requests",
+						"description": "Percentage of smart routed requests.",
 						"maximum": 100
 					}
 				},
-				"description": "Analytics data containing requests using argo and not using argo",
+				"description": "Analytics data containing requests using Argo and not using Argo.",
 				"required": [
 					"labels",
 					"counts",
